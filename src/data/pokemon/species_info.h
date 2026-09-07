@@ -31,7 +31,7 @@
 #define COMP OW_GFX_COMPRESS
 
 #if OW_POKEMON_OBJECT_EVENTS
-#if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
+#if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE && OW_FOLLOWERS_UNIQUE_SPRITES
 #define OVERWORLD_PAL(...)                                  \
     .overworldPalette = DEFAULT(NULL, __VA_ARGS__),         \
     .overworldShinyPalette = DEFAULT_2(NULL, __VA_ARGS__),
@@ -45,8 +45,9 @@
 #else
 #define OVERWORLD_PAL(...)
 #define OVERWORLD_PAL_FEMALE(...)
-#endif //OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
+#endif //OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE && OW_FOLLOWERS_UNIQUE_SPRITES
 
+#if OW_FOLLOWERS_UNIQUE_SPRITES
 #define OVERWORLD_DATA(picTable, _size, shadow, _tracks, _anims)                                                                     \
 {                                                                                                                                       \
     .tileTag = TAG_NONE,                                                                                                                \
@@ -65,18 +66,39 @@
     .anims = _anims,                                                                                                                    \
     .images = picTable,                                                                                                                 \
 }
+#else
+// Every species shares the generic substitute doll sprite/palette instead of its own follower graphics.
+#define OVERWORLD_DATA(picTable, _size, shadow, _tracks, _anims)                                                                     \
+{                                                                                                                                       \
+    .tileTag = TAG_NONE,                                                                                                                \
+    .paletteTag = OBJ_EVENT_PAL_TAG_SUBSTITUTE,                                                                                         \
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,                                                                                     \
+    .size = 512,                                                                                                                        \
+    .width = 32,                                                                                                                         \
+    .height = 32,                                                                                                                        \
+    .paletteSlot = PALSLOT_NPC_1,                                                                                                       \
+    .shadowSize = SHADOW_SIZE_M,                                                                                                        \
+    .inanimate = FALSE,                                                                                                                 \
+    .compressed = COMP,                                                                                                                 \
+    .tracks = TRACKS_FOOT,                                                                                                              \
+    .oam = &gObjectEventBaseOam_32x32,                                                                                                  \
+    .subspriteTables = sOamTables_32x32,                                                                                                \
+    .anims = sAnimTable_Following,                                                                                                      \
+    .images = sPicTable_Substitute,                                                                                                     \
+}
+#endif //OW_FOLLOWERS_UNIQUE_SPRITES
 
 #define OVERWORLD(objEventPic, _size, shadow, _tracks, _anims, ...)                                 \
     .overworldData = OVERWORLD_DATA(objEventPic, _size, shadow, _tracks, _anims),                   \
     OVERWORLD_PAL(__VA_ARGS__)
 
-#if P_GENDER_DIFFERENCES
+#if P_GENDER_DIFFERENCES && OW_FOLLOWERS_UNIQUE_SPRITES
 #define OVERWORLD_FEMALE(objEventPic, _size, shadow, _tracks, _anims, ...)                          \
     .overworldDataFemale = OVERWORLD_DATA(objEventPic, _size, shadow, _tracks, _anims),             \
     OVERWORLD_PAL_FEMALE(__VA_ARGS__)
 #else
 #define OVERWORLD_FEMALE(...)
-#endif //P_GENDER_DIFFERENCES
+#endif //P_GENDER_DIFFERENCES && OW_FOLLOWERS_UNIQUE_SPRITES
 
 #else
 #define OVERWORLD(...)

@@ -57,6 +57,16 @@ enum ScrollMulti
 #define MAX_SCROLL_MULTI_ON_SCREEN 6
 #define MAX_SCROLL_MULTI_LENGTH 16
 
+// Mom's Grooming service
+enum GroomTargetCategory
+{
+    GROOM_CATEGORY_NORMAL,
+    GROOM_CATEGORY_FURFROU,
+    GROOM_CATEGORY_DEERLING,
+};
+
+#define FURFROU_TRIM_COUNT 10 // Natural + 9 unlockable trims, one per point of VAR_MOM_FURFROU_EXP
+
 // Dept Store Floor Numbers
 enum DeptStoreFloorNumber
 {

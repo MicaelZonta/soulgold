@@ -203,773 +203,773 @@ RuinsOfAlph_Lab_EventScript_GiveSailFossil::
 # 102 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
 # 103 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_DeclineGiveFossil::
+RuinsOfAlph_Lab_EventScript_GiveCoverFossil::
 # 104 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_OhIsThatSo, MSGBOX_DEFAULT
+	bufferitemname STR_VAR_1, ITEM_COVER_FOSSIL
 # 105 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	release
+	msgbox RuinsOfAlph_Lab_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
 # 106 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
+	removeitem ITEM_COVER_FOSSIL
 # 107 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	goto RuinsOfAlph_Lab_EventScript_TirtougaReady
 # 108 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_DeclineGiveFossil2::
+
 # 109 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_OhIsThatSo2, MSGBOX_DEFAULT
+RuinsOfAlph_Lab_EventScript_DeclineGiveFossil::
 # 110 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	release
+	msgbox RuinsOfAlph_Lab_Text_OhIsThatSo, MSGBOX_DEFAULT
 # 111 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
+	release
 # 112 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	end
 # 113 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_StillRegenerating::
+
 # 114 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_FossilRegeneratorTakesTime, MSGBOX_DEFAULT
+RuinsOfAlph_Lab_EventScript_DeclineGiveFossil2::
 # 115 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	release
+	msgbox RuinsOfAlph_Lab_Text_OhIsThatSo2, MSGBOX_DEFAULT
 # 116 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
+	release
 # 117 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	end
 # 118 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_FossilMonReady::
+
 # 119 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 1, RuinsOfAlph_Lab_EventScript_LileepReady
+RuinsOfAlph_Lab_EventScript_StillRegenerating::
 # 120 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 2, RuinsOfAlph_Lab_EventScript_AnorithReady
+	msgbox RuinsOfAlph_Lab_Text_FossilRegeneratorTakesTime, MSGBOX_DEFAULT
 # 121 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 3, RuinsOfAlph_Lab_EventScript_OmanyteReady
+	release
 # 122 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 4, RuinsOfAlph_Lab_EventScript_KabutoReady
+	end
 # 123 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 5, RuinsOfAlph_Lab_EventScript_AeroReady
+
 # 124 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 6, RuinsOfAlph_Lab_EventScript_ArchenReady
+RuinsOfAlph_Lab_EventScript_FossilMonReady::
 # 125 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 7, RuinsOfAlph_Lab_EventScript_TyruntReady
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 1, RuinsOfAlph_Lab_EventScript_LileepReady
 # 126 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 8, RuinsOfAlph_Lab_EventScript_AmauraReady
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 2, RuinsOfAlph_Lab_EventScript_AnorithReady
 # 127 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 3, RuinsOfAlph_Lab_EventScript_OmanyteReady
 # 128 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 4, RuinsOfAlph_Lab_EventScript_KabutoReady
 # 129 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_LileepReady::
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 5, RuinsOfAlph_Lab_EventScript_AeroReady
 # 130 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_2, SPECIES_LILEEP
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 6, RuinsOfAlph_Lab_EventScript_ArchenReady
 # 131 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 7, RuinsOfAlph_Lab_EventScript_TyruntReady
 # 132 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_ReceiveLileep
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 8, RuinsOfAlph_Lab_EventScript_AmauraReady
 # 133 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 9, RuinsOfAlph_Lab_EventScript_TirtougaReady
 # 134 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	end
 # 135 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_AnorithReady::
+
 # 136 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_2, SPECIES_ANORITH
+RuinsOfAlph_Lab_EventScript_LileepReady::
 # 137 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
-# 138 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_ReceiveAnorith
-# 139 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 140 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 141 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_OmanyteReady::
-# 142 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_2, SPECIES_OMANYTE
-# 143 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
-# 144 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_ReceiveOmanyte
-# 145 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 146 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 147 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_KabutoReady::
-# 148 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_2, SPECIES_KABUTO
-# 149 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
-# 150 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_ReceiveKabuto
-# 151 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 152 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 153 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_AeroReady::
-# 154 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_2, SPECIES_AERODACTYL
-# 155 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
-# 156 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_ReceiveAero
-# 157 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 158 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 159 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ArchenReady::
-# 160 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ARCHEN
-# 161 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
-# 162 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 163 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_TyruntReady::
-# 164 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TYRUNT
-# 165 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
-# 166 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 167 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_AmauraReady::
-# 168 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_AMAURA
-# 169 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
-# 170 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 171 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_NewFossilReady::
-# 172 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_2, VAR_TEMP_TRANSFERRED_SPECIES
-# 173 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
-# 174 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMon
-# 175 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 176 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 177 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveLileep::
-# 178 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_LILEEP
-# 179 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	givemon SPECIES_LILEEP, 20
-# 180 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveLileepParty
-# 181 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveLileepPC
-# 182 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto Common_EventScript_NoMoreRoomForPokemon
-# 183 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 184 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 185 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveLileepParty::
-# 186 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedLileepFanfare
-# 187 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 188 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingLileep
-# 189 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_GetGiftMonPartySlot
-# 190 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedPartyMon
-# 191 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingLileep
-# 192 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 193 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 194 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveLileepPC::
-# 195 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedLileepFanfare
-# 196 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 197 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferLileepToPC
-# 198 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedBoxMon
-# 199 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_TransferLileepToPC
-# 200 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 201 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	
-# 202 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_TransferLileepToPC::
-# 203 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_TransferredToPC
-# 204 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingLileep
-# 205 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 206 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 207 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceivedLileepFanfare::
-# 208 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	bufferspeciesname STR_VAR_2, SPECIES_LILEEP
-# 209 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 210 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
-# 211 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	waitmessage
-# 212 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	waitfanfare
-# 213 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_LILEEP
-# 214 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	return
-# 215 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 216 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_FinishReceivingLileep::
-# 217 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
-# 218 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
-# 219 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	release
-# 220 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 138 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
+# 139 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_ReceiveLileep
+# 140 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	end
-# 221 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 141 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
-# 222 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveAnorith::
-# 223 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ANORITH
-# 224 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	givemon SPECIES_ANORITH, 20
-# 225 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveAnorithParty
-# 226 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveAnorithPC
-# 227 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto Common_EventScript_NoMoreRoomForPokemon
-# 228 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 229 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 230 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveAnorithParty::
-# 231 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedAnorithFanfare
-# 232 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 233 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingAnorith
-# 234 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_GetGiftMonPartySlot
-# 235 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedPartyMon
-# 236 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingAnorith
-# 237 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 238 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 239 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveAnorithPC::
-# 240 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedAnorithFanfare
-# 241 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 242 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferAnorithToPC
-# 243 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedBoxMon
-# 244 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_TransferAnorithToPC
-# 245 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 246 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 247 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_TransferAnorithToPC::
-# 248 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_TransferredToPC
-# 249 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingAnorith
-# 250 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 251 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 252 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceivedAnorithFanfare::
-# 253 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 142 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_AnorithReady::
+# 143 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	bufferspeciesname STR_VAR_2, SPECIES_ANORITH
-# 254 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 255 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
-# 256 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	waitmessage
-# 257 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	waitfanfare
-# 258 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_ANORITH
-# 259 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	return
-# 260 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 261 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_FinishReceivingAnorith::
-# 262 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
-# 263 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
-# 264 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	release
-# 265 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 144 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
+# 145 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_ReceiveAnorith
+# 146 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	end
-# 266 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 147 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
-# 267 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveOmanyte::
-# 268 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_TEMP_1, SPECIES_OMANYTE
-# 269 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	givemon SPECIES_OMANYTE, 20
-# 270 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveOmanyteParty
-# 271 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveOmanytePC
-# 272 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto Common_EventScript_NoMoreRoomForPokemon
-# 273 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 274 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 275 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveOmanyteParty::
-# 276 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedOmanyteFanfare
-# 277 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 278 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingOmanyte
-# 279 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_GetGiftMonPartySlot
-# 280 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedPartyMon
-# 281 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingOmanyte
-# 282 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 283 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 284 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveOmanytePC::
-# 285 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedOmanyteFanfare
-# 286 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 287 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferOmanyteToPC
-# 288 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedBoxMon
-# 289 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_TransferOmanyteToPC
-# 290 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 291 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	
-# 292 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_TransferOmanyteToPC::
-# 293 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_TransferredToPC
-# 294 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingOmanyte
-# 295 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 296 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 297 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceivedOmanyteFanfare::
-# 298 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 148 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_OmanyteReady::
+# 149 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	bufferspeciesname STR_VAR_2, SPECIES_OMANYTE
-# 299 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 300 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
-# 301 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	waitmessage
-# 302 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	waitfanfare
-# 303 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_OMANYTE
-# 304 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	return
-# 305 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 306 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_FinishReceivingOmanyte::
-# 307 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
-# 308 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
-# 309 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	release
-# 310 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 150 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
+# 151 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_ReceiveOmanyte
+# 152 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	end
-# 311 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 153 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
-# 312 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveKabuto::
-# 313 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_TEMP_1, SPECIES_KABUTO
-# 314 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call_if_unset FLAG_BADGE04_GET, RuinsOfAlph_Lab_EventScript_GiveEarlyKabuto
-# 315 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call_if_set FLAG_BADGE04_GET, RuinsOfAlph_Lab_EventScript_GiveLateKabuto
-# 316 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveKabutoParty
-# 317 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveKabutoPC
-# 318 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto Common_EventScript_NoMoreRoomForPokemon
-# 319 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 320 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 321 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_GiveEarlyKabuto::
-# 322 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	givemon SPECIES_KABUTO, 5
-# 323 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	return
-# 324 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 325 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_GiveLateKabuto::
-# 326 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	givemon SPECIES_KABUTO, 20
-# 327 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	return
-# 328 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 329 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveKabutoParty::
-# 330 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedKabutoFanfare
-# 331 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 332 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingKabuto
-# 333 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_GetGiftMonPartySlot
-# 334 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedPartyMon
-# 335 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingKabuto
-# 336 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 337 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 338 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 339 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveKabutoPC::
-# 340 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedKabutoFanfare
-# 341 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 342 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferKabutoToPC
-# 343 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedBoxMon
-# 344 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_TransferKabutoToPC
-# 345 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 346 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	
-# 347 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_TransferKabutoToPC::
-# 348 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_TransferredToPC
-# 349 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingKabuto
-# 350 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 351 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 352 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceivedKabutoFanfare::
-# 353 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 154 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_KabutoReady::
+# 155 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	bufferspeciesname STR_VAR_2, SPECIES_KABUTO
-# 354 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 355 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
-# 356 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	waitmessage
-# 357 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	waitfanfare
-# 358 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_KABUTO
-# 359 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	return
-# 360 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 361 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_FinishReceivingKabuto::
-# 362 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
-# 363 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
-# 364 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	release
-# 365 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 156 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
+# 157 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_ReceiveKabuto
+# 158 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	end
-# 366 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 159 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
-# 367 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveAero::
-# 368 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_TEMP_1, SPECIES_AERODACTYL
-# 369 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	givemon SPECIES_AERODACTYL, 20
-# 370 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveAeroParty
-# 371 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveAeroPC
-# 372 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto Common_EventScript_NoMoreRoomForPokemon
-# 373 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 374 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 375 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveAeroParty::
-# 376 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedAeroFanfare
-# 377 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 378 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingAero
-# 379 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_GetGiftMonPartySlot
-# 380 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedPartyMon
-# 381 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingAero
-# 382 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 383 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 384 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveAeroPC::
-# 385 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedAeroFanfare
-# 386 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 387 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferAeroToPC
-# 388 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedBoxMon
-# 389 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_TransferAeroToPC
-# 390 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 391 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	
-# 392 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_TransferAeroToPC::
-# 393 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_TransferredToPC
-# 394 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingAero
-# 395 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 396 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 397 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceivedAeroFanfare::
-# 398 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 160 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_AeroReady::
+# 161 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	bufferspeciesname STR_VAR_2, SPECIES_AERODACTYL
-# 399 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 400 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
-# 401 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	waitmessage
-# 402 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	waitfanfare
-# 403 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_AERODACTYL
-# 404 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	return
-# 405 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
-# 406 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_FinishReceivingAero::
-# 407 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
-# 408 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
-# 409 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	release
-# 410 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 162 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
+# 163 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_ReceiveAero
+# 164 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	end
-# 411 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 165 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
-# 412 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMon::
-# 413 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	givemon VAR_TEMP_TRANSFERRED_SPECIES, 20
-# 414 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMonParty
-# 415 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMonPC
-# 416 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto Common_EventScript_NoMoreRoomForPokemon
-# 417 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 418 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 166 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ArchenReady::
+# 167 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ARCHEN
+# 168 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
+# 169 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
-# 419 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMonParty::
-# 420 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedNewFossilMonFanfare
-# 421 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 422 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingNewFossilMon
-# 423 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_GetGiftMonPartySlot
-# 424 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedPartyMon
-# 425 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingNewFossilMon
-# 426 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 427 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 170 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_TyruntReady::
+# 171 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TYRUNT
+# 172 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
+# 173 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
-# 428 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMonPC::
-# 429 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call RuinsOfAlph_Lab_EventScript_ReceivedNewFossilMonFanfare
-# 430 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 431 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferNewFossilMonToPC
-# 432 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_NameReceivedBoxMon
-# 433 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_TransferNewFossilMonToPC
-# 434 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 435 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 174 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_AmauraReady::
+# 175 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_AMAURA
+# 176 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
+# 177 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
-# 436 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_TransferNewFossilMonToPC::
-# 437 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	call Common_EventScript_TransferredToPC
-# 438 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_FinishReceivingNewFossilMon
-# 439 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
-# 440 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 178 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_TirtougaReady::
+# 179 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TIRTOUGA
+# 180 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
+# 181 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
-# 441 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ReceivedNewFossilMonFanfare::
-# 442 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 182 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_NewFossilReady::
+# 183 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	bufferspeciesname STR_VAR_2, VAR_TEMP_TRANSFERRED_SPECIES
-# 443 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 184 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
+# 185 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMon
+# 186 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 187 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 188 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveLileep::
+# 189 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_LILEEP
+# 190 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	givemon SPECIES_LILEEP, 20
+# 191 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveLileepParty
+# 192 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveLileepPC
+# 193 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto Common_EventScript_NoMoreRoomForPokemon
+# 194 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 195 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 196 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveLileepParty::
+# 197 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedLileepFanfare
+# 198 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 199 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingLileep
+# 200 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_GetGiftMonPartySlot
+# 201 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedPartyMon
+# 202 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingLileep
+# 203 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 204 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 205 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveLileepPC::
+# 206 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedLileepFanfare
+# 207 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 208 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferLileepToPC
+# 209 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedBoxMon
+# 210 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_TransferLileepToPC
+# 211 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 212 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	
+# 213 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_TransferLileepToPC::
+# 214 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_TransferredToPC
+# 215 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingLileep
+# 216 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 217 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 218 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceivedLileepFanfare::
+# 219 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_2, SPECIES_LILEEP
+# 220 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 444 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 221 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
-# 445 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 222 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	waitmessage
-# 446 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 223 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	waitfanfare
-# 447 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	bufferspeciesname STR_VAR_1, VAR_TEMP_TRANSFERRED_SPECIES
-# 448 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 224 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_1, SPECIES_LILEEP
+# 225 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	return
-# 449 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 226 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
-# 450 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_FinishReceivingNewFossilMon::
-# 451 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 227 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_FinishReceivingLileep::
+# 228 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
-# 452 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 229 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
-# 453 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+# 230 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	release
+# 231 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 232 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 233 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveAnorith::
+# 234 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ANORITH
+# 235 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	givemon SPECIES_ANORITH, 20
+# 236 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveAnorithParty
+# 237 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveAnorithPC
+# 238 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto Common_EventScript_NoMoreRoomForPokemon
+# 239 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 240 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 241 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveAnorithParty::
+# 242 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedAnorithFanfare
+# 243 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 244 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingAnorith
+# 245 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_GetGiftMonPartySlot
+# 246 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedPartyMon
+# 247 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingAnorith
+# 248 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 249 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 250 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveAnorithPC::
+# 251 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedAnorithFanfare
+# 252 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 253 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferAnorithToPC
+# 254 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedBoxMon
+# 255 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_TransferAnorithToPC
+# 256 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 257 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 258 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_TransferAnorithToPC::
+# 259 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_TransferredToPC
+# 260 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingAnorith
+# 261 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 262 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 263 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceivedAnorithFanfare::
+# 264 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_2, SPECIES_ANORITH
+# 265 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 266 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
+# 267 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	waitmessage
+# 268 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	waitfanfare
+# 269 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_1, SPECIES_ANORITH
+# 270 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	return
+# 271 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 272 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_FinishReceivingAnorith::
+# 273 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
+# 274 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
+# 275 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	release
+# 276 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 277 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 278 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveOmanyte::
+# 279 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_TEMP_1, SPECIES_OMANYTE
+# 280 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	givemon SPECIES_OMANYTE, 20
+# 281 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveOmanyteParty
+# 282 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveOmanytePC
+# 283 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto Common_EventScript_NoMoreRoomForPokemon
+# 284 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 285 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 286 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveOmanyteParty::
+# 287 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedOmanyteFanfare
+# 288 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 289 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingOmanyte
+# 290 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_GetGiftMonPartySlot
+# 291 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedPartyMon
+# 292 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingOmanyte
+# 293 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 294 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 295 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveOmanytePC::
+# 296 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedOmanyteFanfare
+# 297 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 298 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferOmanyteToPC
+# 299 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedBoxMon
+# 300 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_TransferOmanyteToPC
+# 301 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 302 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	
+# 303 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_TransferOmanyteToPC::
+# 304 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_TransferredToPC
+# 305 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingOmanyte
+# 306 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 307 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 308 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceivedOmanyteFanfare::
+# 309 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_2, SPECIES_OMANYTE
+# 310 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 311 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
+# 312 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	waitmessage
+# 313 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	waitfanfare
+# 314 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_1, SPECIES_OMANYTE
+# 315 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	return
+# 316 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 317 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_FinishReceivingOmanyte::
+# 318 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
+# 319 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
+# 320 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	release
+# 321 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 322 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 323 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveKabuto::
+# 324 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_TEMP_1, SPECIES_KABUTO
+# 325 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call_if_unset FLAG_BADGE04_GET, RuinsOfAlph_Lab_EventScript_GiveEarlyKabuto
+# 326 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call_if_set FLAG_BADGE04_GET, RuinsOfAlph_Lab_EventScript_GiveLateKabuto
+# 327 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveKabutoParty
+# 328 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveKabutoPC
+# 329 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto Common_EventScript_NoMoreRoomForPokemon
+# 330 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 331 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 332 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_GiveEarlyKabuto::
+# 333 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	givemon SPECIES_KABUTO, 5
+# 334 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	return
+# 335 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 336 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_GiveLateKabuto::
+# 337 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	givemon SPECIES_KABUTO, 20
+# 338 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	return
+# 339 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 340 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveKabutoParty::
+# 341 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedKabutoFanfare
+# 342 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 343 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingKabuto
+# 344 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_GetGiftMonPartySlot
+# 345 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedPartyMon
+# 346 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingKabuto
+# 347 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 348 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 349 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 350 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveKabutoPC::
+# 351 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedKabutoFanfare
+# 352 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 353 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferKabutoToPC
+# 354 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedBoxMon
+# 355 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_TransferKabutoToPC
+# 356 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 357 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	
+# 358 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_TransferKabutoToPC::
+# 359 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_TransferredToPC
+# 360 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingKabuto
+# 361 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 362 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 363 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceivedKabutoFanfare::
+# 364 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_2, SPECIES_KABUTO
+# 365 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 366 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
+# 367 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	waitmessage
+# 368 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	waitfanfare
+# 369 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_1, SPECIES_KABUTO
+# 370 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	return
+# 371 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 372 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_FinishReceivingKabuto::
+# 373 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
+# 374 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
+# 375 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	release
+# 376 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 377 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 378 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveAero::
+# 379 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_TEMP_1, SPECIES_AERODACTYL
+# 380 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	givemon SPECIES_AERODACTYL, 20
+# 381 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveAeroParty
+# 382 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveAeroPC
+# 383 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto Common_EventScript_NoMoreRoomForPokemon
+# 384 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 385 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 386 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveAeroParty::
+# 387 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedAeroFanfare
+# 388 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 389 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingAero
+# 390 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_GetGiftMonPartySlot
+# 391 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedPartyMon
+# 392 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingAero
+# 393 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 394 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 395 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveAeroPC::
+# 396 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedAeroFanfare
+# 397 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 398 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferAeroToPC
+# 399 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedBoxMon
+# 400 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_TransferAeroToPC
+# 401 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 402 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	
+# 403 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_TransferAeroToPC::
+# 404 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_TransferredToPC
+# 405 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingAero
+# 406 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 407 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 408 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceivedAeroFanfare::
+# 409 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_2, SPECIES_AERODACTYL
+# 410 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 411 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
+# 412 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	waitmessage
+# 413 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	waitfanfare
+# 414 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_1, SPECIES_AERODACTYL
+# 415 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	return
+# 416 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 417 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_FinishReceivingAero::
+# 418 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
+# 419 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
+# 420 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	release
+# 421 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 422 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 423 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMon::
+# 424 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	givemon VAR_TEMP_TRANSFERRED_SPECIES, 20
+# 425 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMonParty
+# 426 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMonPC
+# 427 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto Common_EventScript_NoMoreRoomForPokemon
+# 428 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 429 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 430 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMonParty::
+# 431 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedNewFossilMonFanfare
+# 432 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 433 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_FinishReceivingNewFossilMon
+# 434 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_GetGiftMonPartySlot
+# 435 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedPartyMon
+# 436 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingNewFossilMon
+# 437 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 438 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 439 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceiveNewFossilMonPC::
+# 440 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call RuinsOfAlph_Lab_EventScript_ReceivedNewFossilMonFanfare
+# 441 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 442 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_TransferNewFossilMonToPC
+# 443 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_NameReceivedBoxMon
+# 444 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_TransferNewFossilMonToPC
+# 445 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 446 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 447 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_TransferNewFossilMonToPC::
+# 448 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	call Common_EventScript_TransferredToPC
+# 449 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	goto RuinsOfAlph_Lab_EventScript_FinishReceivingNewFossilMon
+# 450 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	end
+# 451 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 452 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ReceivedNewFossilMonFanfare::
+# 453 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	bufferspeciesname STR_VAR_2, VAR_TEMP_TRANSFERRED_SPECIES
 # 454 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
+	playfanfare MUS_OBTAIN_ITEM
 # 455 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	message RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher
 # 456 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	waitmessage
 # 457 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ChooseFossil::
+	waitfanfare
 # 458 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_PickFossilFromBag, MSGBOX_DEFAULT
+	bufferspeciesname STR_VAR_1, VAR_TEMP_TRANSFERRED_SPECIES
 # 459 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	chooseitem POCKET_ITEMS
+	return
 # 460 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	switch VAR_ITEM_ID
+
 # 461 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	case ITEM_NONE, RuinsOfAlph_Lab_EventScript_CancelFossilSelect
+RuinsOfAlph_Lab_EventScript_FinishReceivingNewFossilMon::
 # 462 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	case ITEM_DOME_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveDomeFossil
+	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
 # 463 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	case ITEM_ROOT_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveRootFossil
+	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
 # 464 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	case ITEM_PLUME_FOSSIL, RuinsOfAlph_Lab_EventScript_GivePlumeFossil
+	release
 # 465 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	case ITEM_JAW_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveJawFossil
+	end
 # 466 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	case ITEM_SAIL_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveSailFossil
+
 # 467 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	case ITEM_OLD_AMBER, RuinsOfAlph_Lab_EventScript_GiveOldAmber
+
 # 468 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_ThatsNotAFossil, MSGBOX_DEFAULT
+RuinsOfAlph_Lab_EventScript_ChooseFossil::
 # 469 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto RuinsOfAlph_Lab_EventScript_ChooseFossil
+	msgbox RuinsOfAlph_Lab_Text_PickFossilFromBag, MSGBOX_DEFAULT
 # 470 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
+	chooseitem POCKET_ITEMS
 # 471 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	switch VAR_ITEM_ID
 # 472 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ChooseClawFossil::
+	case ITEM_NONE, RuinsOfAlph_Lab_EventScript_CancelFossilSelect
 # 473 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	checkitem ITEM_CLAW_FOSSIL
+	case ITEM_DOME_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveDomeFossil
 # 474 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_GiveClawFossil
+	case ITEM_ROOT_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveRootFossil
 # 475 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, RuinsOfAlph_Lab_EventScript_DeclineGiveFossil2
+	case ITEM_PLUME_FOSSIL, RuinsOfAlph_Lab_EventScript_GivePlumeFossil
 # 476 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
+	case ITEM_JAW_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveJawFossil
 # 477 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	case ITEM_SAIL_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveSailFossil
 # 478 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ChooseRootFossil::
+	case ITEM_OLD_AMBER, RuinsOfAlph_Lab_EventScript_GiveOldAmber
 # 479 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	checkitem ITEM_ROOT_FOSSIL
+	case ITEM_COVER_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveCoverFossil
 # 480 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_GiveRootFossil
+	msgbox RuinsOfAlph_Lab_Text_ThatsNotAFossil, MSGBOX_DEFAULT
 # 481 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, RuinsOfAlph_Lab_EventScript_DeclineGiveFossil2
+	goto RuinsOfAlph_Lab_EventScript_ChooseFossil
 # 482 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	end
 # 483 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
 # 484 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ChooseHelixFossil::
+RuinsOfAlph_Lab_EventScript_ChooseClawFossil::
 # 485 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	checkitem ITEM_HELIX_FOSSIL
+	checkitem ITEM_CLAW_FOSSIL
 # 486 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_GiveHelixFossil
+	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_GiveClawFossil
 # 487 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, RuinsOfAlph_Lab_EventScript_DeclineGiveFossil2
 # 488 "data/maps/RuinsOfAlph_Lab/scripts.pory"
@@ -977,11 +977,11 @@ RuinsOfAlph_Lab_EventScript_ChooseHelixFossil::
 # 489 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
 # 490 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ChooseDomeFossil::
+RuinsOfAlph_Lab_EventScript_ChooseRootFossil::
 # 491 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	checkitem ITEM_DOME_FOSSIL
+	checkitem ITEM_ROOT_FOSSIL
 # 492 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_GiveDomeFossil
+	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_GiveRootFossil
 # 493 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, RuinsOfAlph_Lab_EventScript_DeclineGiveFossil2
 # 494 "data/maps/RuinsOfAlph_Lab/scripts.pory"
@@ -989,11 +989,11 @@ RuinsOfAlph_Lab_EventScript_ChooseDomeFossil::
 # 495 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
 # 496 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_ChooseOldAmber::
+RuinsOfAlph_Lab_EventScript_ChooseHelixFossil::
 # 497 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	checkitem ITEM_OLD_AMBER
+	checkitem ITEM_HELIX_FOSSIL
 # 498 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_GiveOldAmber
+	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_GiveHelixFossil
 # 499 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, RuinsOfAlph_Lab_EventScript_DeclineGiveFossil2
 # 500 "data/maps/RuinsOfAlph_Lab/scripts.pory"
@@ -1001,260 +1001,284 @@ RuinsOfAlph_Lab_EventScript_ChooseOldAmber::
 # 501 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
 # 502 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_CancelFossilSelect::
+RuinsOfAlph_Lab_EventScript_ChooseDomeFossil::
 # 503 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	release
+	checkitem ITEM_DOME_FOSSIL
 # 504 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	end
+	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_GiveDomeFossil
 # 505 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	goto_if_eq VAR_RESULT, FALSE, RuinsOfAlph_Lab_EventScript_DeclineGiveFossil2
 # 506 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_EventScript_WorkOnNext::
-# 507 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	msgbox RuinsOfAlph_Lab_Text_WhatToWorkOnNext, MSGBOX_DEFAULT
-# 508 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	release
-# 509 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	end
+# 507 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 508 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_EventScript_ChooseOldAmber::
+# 509 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	checkitem ITEM_OLD_AMBER
 # 510 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_GiveOldAmber
 # 511 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_DeviceForTalkingToPokemon:
+	goto_if_eq VAR_RESULT, FALSE, RuinsOfAlph_Lab_EventScript_DeclineGiveFossil2
 # 512 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "We're developing a device for talking\n"
+	end
 # 513 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "with Pokémon.\p"
+
 # 514 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "But we haven't had much success…$"
+RuinsOfAlph_Lab_EventScript_CancelFossilSelect::
 # 515 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	release
 # 516 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_DevelopingNewBalls:
+	end
 # 517 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "I'm developing new kinds of\n"
+
 # 518 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Poké Balls…\p"
+RuinsOfAlph_Lab_EventScript_WorkOnNext::
 # 519 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "But I haven't made much headway…$"
+	msgbox RuinsOfAlph_Lab_Text_WhatToWorkOnNext, MSGBOX_DEFAULT
 # 520 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	release
 # 521 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_WeFinallyMadeNewBalls:
+	end
 # 522 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "We finally made new kinds of\n"
+
 # 523 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Poké Balls!\p"
+RuinsOfAlph_Lab_Text_DeviceForTalkingToPokemon:
 # 524 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "The Repeat Ball makes it easier to\n"
+	.string "We're developing a device for talking\n"
 # 525 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "catch Pokémon you've caught before.\p"
+	.string "with Pokémon.\p"
 # 526 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "The Timer Ball gets better at catching\n"
+	.string "But we haven't had much success…$"
 # 527 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Pokémon the longer a battle runs.\p"
+
 # 528 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Both are proudly developed by\n"
+RuinsOfAlph_Lab_Text_DevelopingNewBalls:
 # 529 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "the Devon Corporation.\p"
+	.string "I'm developing new kinds of\n"
 # 530 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Please give them a try!$"
+	.string "Poké Balls…\p"
 # 531 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "But I haven't made much headway…$"
 # 532 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_IMadePokenav:
+
 # 533 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "I made the Pokégear!\p"
+RuinsOfAlph_Lab_Text_WeFinallyMadeNewBalls:
 # 534 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "As an engineer, I feel blessed to have\n"
+	.string "We finally made new kinds of\n"
 # 535 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "made something so great!$"
+	.string "Poké Balls!\p"
 # 536 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "The Repeat Ball makes it easier to\n"
 # 537 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_WowThatsAPokenav:
+	.string "catch Pokémon you've caught before.\p"
 # 538 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Oh, wow!\n"
+	.string "The Timer Ball gets better at catching\n"
 # 539 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "That's a Pokégear!\p"
+	.string "Pokémon the longer a battle runs.\p"
 # 540 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "It came about as a result of our\n"
+	.string "Both are proudly developed by\n"
 # 541 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "President's desire to learn about\l"
+	.string "the Devon Corporation.\p"
 # 542 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "the feelings of Pokémon.\p"
+	.string "Please give them a try!$"
 # 543 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Would you like me to describe its\n"
+
 # 544 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "features in detail?\p"
+RuinsOfAlph_Lab_Text_IMadePokenav:
 # 545 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "No, no. I think you'll find out just by\n"
+	.string "I made the Pokégear!\p"
 # 546 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "trying the Pokégear out.$"
+	.string "As an engineer, I feel blessed to have\n"
 # 547 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "made something so great!$"
 # 548 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_DeviceToVisualizePokemonDreams:
+
 # 549 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "I'm trying to develop a device that\n"
+RuinsOfAlph_Lab_Text_WowThatsAPokenav:
 # 550 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "visually reproduces the dreams of\l"
+	.string "Oh, wow!\n"
 # 551 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Pokémon…\p"
+	.string "That's a Pokégear!\p"
 # 552 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "But it's not going well.$"
+	.string "It came about as a result of our\n"
 # 553 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "President's desire to learn about\l"
 # 554 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_DevelopDeviceToResurrectFossils:
+	.string "the feelings of Pokémon.\p"
 # 555 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "I've been trying to develop a device\n"
+	.string "Would you like me to describe its\n"
 # 556 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "that resurrects Pokémon from fossils…\p"
+	.string "features in detail?\p"
 # 557 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "And, it's working!$"
+	.string "No, no. I think you'll find out just by\n"
 # 558 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "trying the Pokégear out.$"
 # 559 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_WantToBringFossilBackToLife:
+
 # 560 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Would you like to bring that Pokémon\n"
+RuinsOfAlph_Lab_Text_DeviceToVisualizePokemonDreams:
 # 561 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "back to life?\p"
+	.string "I'm trying to develop a device that\n"
 # 562 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "I can with my newly developed\n"
+	.string "visually reproduces the dreams of\l"
 # 563 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Fossil Regenerator.$"
+	.string "Pokémon…\p"
 # 564 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "But it's not going well.$"
 # 565 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_OhIsThatSo:
+
 # 566 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Oh, is that so?\p"
+RuinsOfAlph_Lab_Text_DevelopDeviceToResurrectFossils:
 # 567 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "My technological expertise\n"
+	.string "I've been trying to develop a device\n"
 # 568 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "is outstanding, I tell you.$"
+	.string "that resurrects Pokémon from fossils…\p"
 # 569 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "And, it's working!$"
 # 570 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_OhIsThatSo2:
-# 571 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Oh, you don't have this fossil.\n"
-# 572 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Come back if you manage to find it.$"
-# 573 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
+# 571 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_Text_WantToBringFossilBackToLife:
+# 572 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "Would you like to bring that Pokémon\n"
+# 573 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "back to life?\p"
 # 574 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_TwoFossilsPickOne:
+	.string "I can with my newly developed\n"
 # 575 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Oh, now that's a surprise!\n"
+	.string "Fossil Regenerator.$"
 # 576 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "You have more than one fossil?\p"
+
 # 577 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Unfortunately, my machine can only\n"
+RuinsOfAlph_Lab_Text_OhIsThatSo:
 # 578 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "regenerate one Pokémon at a time.\p"
+	.string "Oh, is that so?\p"
 # 579 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Which fossil would you like to\n"
+	.string "My technological expertise\n"
 # 580 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "regenerate?$"
+	.string "is outstanding, I tell you.$"
 # 581 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
 # 582 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_PickFossilFromBag:
+RuinsOfAlph_Lab_Text_OhIsThatSo2:
 # 583 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Please choose the fossil you'd like\n"
+	.string "Oh, you don't have this fossil.\n"
 # 584 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "to regenerate.$"
+	.string "Come back if you manage to find it.$"
 # 585 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
 # 586 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_ThatsNotAFossil:
+RuinsOfAlph_Lab_Text_TwoFossilsPickOne:
 # 587 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "That's not a fossil!$"
+	.string "Oh, now that's a surprise!\n"
 # 588 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "You have more than one fossil?\p"
 # 589 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_HandedFossilToResearcher:
+	.string "Unfortunately, my machine can only\n"
 # 590 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Excellent!\n"
+	.string "regenerate one Pokémon at a time.\p"
 # 591 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Let's do this right away.\p"
+	.string "Which fossil would you like to\n"
 # 592 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "{PLAYER} handed the {STR_VAR_1} to\n"
+	.string "regenerate?$"
 # 593 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "the Ruins Researcher.$"
+
 # 594 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+RuinsOfAlph_Lab_Text_PickFossilFromBag:
 # 595 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_FossilRegeneratorTakesTime:
+	.string "Please choose the fossil you'd like\n"
 # 596 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "The Fossil Regenerator, which I made,\n"
+	.string "to regenerate.$"
 # 597 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "is incredible.\p"
+
 # 598 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "But it has one drawback--it takes\n"
+RuinsOfAlph_Lab_Text_ThatsNotAFossil:
 # 599 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "a long time to work.\p"
+	.string "That's not a fossil!$"
 # 600 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "So, uh… How about you go for a stroll\n"
+
 # 601 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "and look around for a while?$"
+RuinsOfAlph_Lab_Text_HandedFossilToResearcher:
 # 602 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "Excellent!\n"
 # 603 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife:
+	.string "Let's do this right away.\p"
 # 604 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Thanks for waiting!\p"
+	.string "{PLAYER} handed the {STR_VAR_1} to\n"
 # 605 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Your fossilized Pokémon has been\n"
+	.string "the Ruins Researcher.$"
 # 606 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "brought back to life!\p"
+
 # 607 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "The fossil was an ancient Pokémon.\n"
+RuinsOfAlph_Lab_Text_FossilRegeneratorTakesTime:
 # 608 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "{STR_VAR_2}, it was!$"
+	.string "The Fossil Regenerator, which I made,\n"
 # 609 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "is incredible.\p"
 # 610 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher:
+	.string "But it has one drawback--it takes\n"
 # 611 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "{PLAYER} received {STR_VAR_2} from\n"
+	.string "a long time to work.\p"
 # 612 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "the Researcher.$"
+	.string "So, uh… How about you go for a stroll\n"
 # 613 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "and look around for a while?$"
 # 614 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-@ Unused
+
 # 615 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_TooManyPokemon:
+RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife:
 # 616 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Uh-oh, you've got too many Pokémon.\n"
+	.string "Thanks for waiting!\p"
 # 617 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "You have no room for this one.$"
+	.string "Your fossilized Pokémon has been\n"
 # 618 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-
+	.string "brought back to life!\p"
 # 619 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_DevelopNewPokenavFeature:
+	.string "The fossil was an ancient Pokémon.\n"
 # 620 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "I'm trying to develop a new feature\n"
+	.string "{STR_VAR_2}, it was!$"
 # 621 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "for the Pokégear...\p"
-# 622 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "But it's not going well.$"
-# 623 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 
+# 622 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_Text_ReceivedMonFromResearcher:
+# 623 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "{PLAYER} received {STR_VAR_2} from\n"
 # 624 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-RuinsOfAlph_Lab_Text_WhatToWorkOnNext:
+	.string "the Researcher.$"
 # 625 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Well, now what shall I work on\n"
+
 # 626 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "developing next?\p"
+@ Unused
 # 627 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "Our company allows us to make our\n"
+RuinsOfAlph_Lab_Text_TooManyPokemon:
 # 628 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "inspirations into reality.\p"
+	.string "Uh-oh, you've got too many Pokémon.\n"
 # 629 "data/maps/RuinsOfAlph_Lab/scripts.pory"
-	.string "One couldn't ask for a better\n"
+	.string "You have no room for this one.$"
 # 630 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 631 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_Text_DevelopNewPokenavFeature:
+# 632 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "I'm trying to develop a new feature\n"
+# 633 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "for the Pokégear...\p"
+# 634 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "But it's not going well.$"
+# 635 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+
+# 636 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+RuinsOfAlph_Lab_Text_WhatToWorkOnNext:
+# 637 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "Well, now what shall I work on\n"
+# 638 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "developing next?\p"
+# 639 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "Our company allows us to make our\n"
+# 640 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "inspirations into reality.\p"
+# 641 "data/maps/RuinsOfAlph_Lab/scripts.pory"
+	.string "One couldn't ask for a better\n"
+# 642 "data/maps/RuinsOfAlph_Lab/scripts.pory"
 	.string "environment as an engineer.$"

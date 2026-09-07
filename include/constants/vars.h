@@ -307,6 +307,7 @@
 #define VAR_BATTLE_CAFE_POINTS                          0x411C
 #define VAR_BATTLE_CAFE_ENDLESS_CHALLENGE_RECORD        0x411D
 #define VAR_BATTLE_CAFE_ENDLESS_RUSH_RECORD             0x411E
+#define VAR_MOM_FURFROU_EXP                             0x411F // Mom's Furfrou grooming experience, 0-9. See FURFROU_TRIM_COUNT.
 
 #define VARS_END                                         0x42FF
 

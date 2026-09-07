@@ -606,6 +606,10 @@ gSpecials::
 	def_special CheckCelebi
 	def_special HaircutBrother1
 	def_special HaircutBrother2
+	def_special GroomPokemon
+	def_special GetGroomTargetCategory
+	def_special ApplyFurfrouTrim
+	def_special ApplySeasonalForm
 	def_special SetHpStat
 	def_special SetAtkStat
 	def_special SetDefStat

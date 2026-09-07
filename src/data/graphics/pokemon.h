@@ -30229,10 +30229,10 @@ const u16 gMonPalette_TyphlosionMega[] = INCBIN_U16("graphics/pokemon/typhlosion
 #if P_FOOTPRINTS
     const u8 gMonFootprint_GardevoirMegaZ[] = INCBIN_U8("graphics/pokemon/gardevoir/mega_z/footprint.1bpp");
 #endif //P_FOOTPRINTS
-#if OW_POKEMON_OBJECT_EVENTS
+#if OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
     const u32 gObjectEventPic_GardevoirMegaZ[] = INCBIN_COMP("graphics/pokemon/gardevoir/mega_z/overworld.4bpp");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
     const u16 gOverworldPalette_GardevoirMegaZ[] = INCBIN_U16("graphics/pokemon/gardevoir/mega_z/overworld_normal.gbapal");
     const u16 gShinyOverworldPalette_GardevoirMegaZ[] = INCBIN_U16("graphics/pokemon/gardevoir/mega_z/overworld_shiny.gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
-#endif //OW_POKEMON_OBJECT_EVENTS
+#endif //OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS

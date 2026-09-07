@@ -17589,6 +17589,40 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_ReverseCandy,
         .iconPalette = gItemIconPalette_ReverseCandy,
     },
+
+    [ITEM_GROOMING_KIT] =
+    {
+        .name = ITEM_NAME("Grooming Kit"),
+        .price = 500000,
+        .description = COMPOUND_STRING(
+            "A set of brushes\n"
+            "and tools for\n"
+            "grooming Pokémon."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_PokeblockCase,
+        .iconPalette = gItemIconPalette_PokeblockCase,
+    },
+
+    [ITEM_SEASONAL_PERFUME] =
+    {
+        .name = ITEM_NAME("Seasonal Perfume"),
+        .price = 1000000,
+        .description = COMPOUND_STRING(
+            "A perfume with\n"
+            "scents inspired\n"
+            "by the seasons."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_AuxBottle,
+        .iconPalette = gItemIconPalette_AuxEvasion,
+    },
 };
 
 #undef ITEM_NAME

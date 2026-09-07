@@ -85,11 +85,23 @@ STATIC_ASSERT(sizeof(struct SaveBlock2) <= SECTOR_DATA_SIZE, SaveBlock2FreeSpace
 STATIC_ASSERT(sizeof(struct SaveBlock1) <= SECTOR_DATA_SIZE * (SECTOR_ID_SAVEBLOCK1_END - SECTOR_ID_SAVEBLOCK1_START + 1), SaveBlock1FreeSpace);
 STATIC_ASSERT(offsetof(struct SaveBlock2, playerTrainerId) == 0xA, SaveBlock2TrainerIdOffset);
 STATIC_ASSERT(offsetof(struct SaveBlock2, pokedex) == 0x20, SaveBlock2PokedexOffset);
+#if FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK2 == FALSE
 STATIC_ASSERT(offsetof(struct SaveBlock2, encryptionKey) == 0xB4, SaveBlock2EncryptionKeyOffset);
 STATIC_ASSERT(offsetof(struct SaveBlock2, playerApprentice) == 0xB8, SaveBlock2ApprenticeOffset);
 STATIC_ASSERT(offsetof(struct SaveBlock2, contestLinkResults) == 0x254, SaveBlock2ContestResultsOffset);
 STATIC_ASSERT(offsetof(struct SaveBlock2, frontier) == 0x27C, SaveBlock2FrontierOffset);
 STATIC_ASSERT(sizeof(struct SaveBlock2) == 0xB30, SaveBlock2LegacySize);
+#else
+// Offsets below shift down by 0x68 (the freed Pokédex filler) relative to the
+// vanilla layout above. This breaks binary compatibility with Pokémon
+// Colosseum/XD bonus disc link transfers, which read SaveBlock2 at fixed
+// offsets (see gcnLinkFlags) -- accepted tradeoff for the reclaimed 104 bytes.
+STATIC_ASSERT(offsetof(struct SaveBlock2, encryptionKey) == 0x4C, SaveBlock2EncryptionKeyOffset);
+STATIC_ASSERT(offsetof(struct SaveBlock2, playerApprentice) == 0x50, SaveBlock2ApprenticeOffset);
+STATIC_ASSERT(offsetof(struct SaveBlock2, contestLinkResults) == 0x1EC, SaveBlock2ContestResultsOffset);
+STATIC_ASSERT(offsetof(struct SaveBlock2, frontier) == 0x214, SaveBlock2FrontierOffset);
+STATIC_ASSERT(sizeof(struct SaveBlock2) == 0xAC8, SaveBlock2LegacySize);
+#endif //FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK2
 STATIC_ASSERT(offsetof(struct SaveBlock3, dexNavChain) == 0xC, SaveBlock3DexNavChainOffset);
 STATIC_ASSERT(offsetof(struct SaveBlock3, hiddenGrottoContents) == 0x10, SaveBlock3HiddenGrottoOffset);
 STATIC_ASSERT(offsetof(struct SaveBlock3, candyJarExp) == 0x60, SaveBlock3CandyJarOffset);

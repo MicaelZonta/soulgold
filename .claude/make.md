@@ -1,0 +1,1 @@
+Use make release USE_LTO_ON_RELEASE=1 -j32

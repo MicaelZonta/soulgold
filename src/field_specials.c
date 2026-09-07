@@ -4662,6 +4662,98 @@ void HaircutBrother2(void)
     AdjustFriendship(&gPlayerParty[gSpecialVar_0x8004], FRIENDSHIP_EVENT_HAIRCUT2);
 }
 
+// Mom's Grooming service (New Bark Town)
+// Trim order matches the VAR_MOM_FURFROU_EXP unlock progression (0 = Natural only, 9 = every trim known)
+static const u16 sMomFurfrouTrimOrder[FURFROU_TRIM_COUNT] =
+{
+    SPECIES_FURFROU_NATURAL,
+    SPECIES_FURFROU_HEART,
+    SPECIES_FURFROU_STAR,
+    SPECIES_FURFROU_DIAMOND,
+    SPECIES_FURFROU_DANDY,
+    SPECIES_FURFROU_DEBUTANTE,
+    SPECIES_FURFROU_MATRON,
+    SPECIES_FURFROU_LA_REINE,
+    SPECIES_FURFROU_KABUKI,
+    SPECIES_FURFROU_PHARAOH,
+};
+
+// Indexed by season (0 = Spring, 1 = Summer, 2 = Autumn, 3 = Winter)
+static const u16 sMomDeerlingSeasonalForms[][2] =
+{
+    {SPECIES_DEERLING_SPRING, SPECIES_SAWSBUCK_SPRING},
+    {SPECIES_DEERLING_SUMMER, SPECIES_SAWSBUCK_SUMMER},
+    {SPECIES_DEERLING_AUTUMN, SPECIES_SAWSBUCK_AUTUMN},
+    {SPECIES_DEERLING_WINTER, SPECIES_SAWSBUCK_WINTER},
+};
+
+void GroomPokemon(void)
+{
+    AdjustFriendship(&gPlayerParty[gSpecialVar_0x8004], FRIENDSHIP_EVENT_GROOMING);
+}
+
+// Returns which special grooming mini-game (if any) applies to the mon chosen via ChoosePartyMon
+u16 GetGroomTargetCategory(void)
+{
+    u16 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES, NULL);
+
+    switch (species)
+    {
+    case SPECIES_FURFROU_NATURAL:
+    case SPECIES_FURFROU_HEART:
+    case SPECIES_FURFROU_STAR:
+    case SPECIES_FURFROU_DIAMOND:
+    case SPECIES_FURFROU_DEBUTANTE:
+    case SPECIES_FURFROU_MATRON:
+    case SPECIES_FURFROU_DANDY:
+    case SPECIES_FURFROU_LA_REINE:
+    case SPECIES_FURFROU_KABUKI:
+    case SPECIES_FURFROU_PHARAOH:
+        return GROOM_CATEGORY_FURFROU;
+    case SPECIES_DEERLING_SPRING:
+    case SPECIES_DEERLING_SUMMER:
+    case SPECIES_DEERLING_AUTUMN:
+    case SPECIES_DEERLING_WINTER:
+    case SPECIES_SAWSBUCK_SPRING:
+    case SPECIES_SAWSBUCK_SUMMER:
+    case SPECIES_SAWSBUCK_AUTUMN:
+    case SPECIES_SAWSBUCK_WINTER:
+        return GROOM_CATEGORY_DEERLING;
+    default:
+        return GROOM_CATEGORY_NORMAL;
+    }
+}
+
+// Applies the trim chosen from the grooming menu (index in gSpecialVar_0x8005) to the mon in gSpecialVar_0x8004.
+// Only the species field changes, so nickname/OT/IVs/EVs/moves/happiness/shininess are untouched.
+void ApplyFurfrouTrim(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
+    u16 species = sMomFurfrouTrimOrder[gSpecialVar_0x8005];
+
+    SetMonData(mon, MON_DATA_SPECIES, &species);
+    CalculateMonStats(mon);
+    TrySetDayLimitToFormChange(mon);
+}
+
+// Applies the season chosen from the perfume menu (index in gSpecialVar_0x8005) to the mon in gSpecialVar_0x8004,
+// preserving whether it is currently a Deerling or an (already evolved) Sawsbuck.
+void ApplySeasonalForm(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u32 season = gSpecialVar_0x8005;
+    u32 stage = 0; // 0 = Deerling, 1 = Sawsbuck
+
+    if (species == SPECIES_SAWSBUCK_SPRING || species == SPECIES_SAWSBUCK_SUMMER
+     || species == SPECIES_SAWSBUCK_AUTUMN || species == SPECIES_SAWSBUCK_WINTER)
+        stage = 1;
+
+    species = sMomDeerlingSeasonalForms[season][stage];
+    SetMonData(mon, MON_DATA_SPECIES, &species);
+    CalculateMonStats(mon);
+}
+
 void SetVermilionTrashCans(void)
 {
     u16 idx = (Random() % 15) + 1;

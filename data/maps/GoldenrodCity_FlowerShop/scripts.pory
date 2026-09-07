@@ -10,7 +10,7 @@ GoldenrodCity_FlowerShop_EventScript_Owner::
 	goto_if_set FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_GiveSquirtBottle
 	msgbox GoldenrodCity_FlowerShop_Text_Owner1, MSGBOX_DEFAULT
 	closemessage
-	release
+	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
 	end
 
 GoldenrodCity_FlowerShop_EventScript_GiveSquirtBottle::
@@ -20,7 +20,7 @@ GoldenrodCity_FlowerShop_EventScript_GiveSquirtBottle::
 	giveitem ITEM_SQUIRTBOTTLE
 	setflag FLAG_RECEIVED_SQUIRTBOTTLE
 	closemessage
-	release
+	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
 	end
 
 GoldenrodCity_FlowerShop_EventScript_GotSquirtBottle::
@@ -28,7 +28,7 @@ GoldenrodCity_FlowerShop_EventScript_GotSquirtBottle::
 	faceplayer
 	msgbox GoldenrodCity_FlowerShop_Text_Owner3, MSGBOX_DEFAULT
 	closemessage
-	release
+	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
 	end
 
 GoldenrodCity_FlowerShop_EventScript_Normal::
@@ -36,6 +36,44 @@ GoldenrodCity_FlowerShop_EventScript_Normal::
 	faceplayer
 	msgbox GoldenrodCity_FlowerShop_Text_Owner4, MSGBOX_DEFAULT
 	closemessage
+	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
+	end
+
+@ Runs after every Squirtbottle/Sudowoodo branch above, so both topics are always
+@ covered in the same conversation instead of one hiding the other.
+GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck::
+	goto_if_unset FLAG_STARTED_SEASONAL_PERFUME_QUEST, GoldenrodCity_FlowerShop_EventScript_EndConversation
+	checkitem ITEM_SEASONAL_PERFUME, 1
+	goto_if_eq VAR_RESULT, TRUE, GoldenrodCity_FlowerShop_EventScript_EndConversation
+	showmoneybox 0, 0
+	msgbox GoldenrodCity_FlowerShop_Text_SeasonalPerfumeOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_DeclineSeasonalPerfume
+	checkmoney 1000000, 0
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_NotEnoughForSeasonalPerfume
+	removemoney 1000000
+	updatemoneybox 0
+	playse SE_SHOP
+	giveitem ITEM_SEASONAL_PERFUME
+	msgbox GoldenrodCity_FlowerShop_Text_SeasonalPerfumeAfterBuy, MSGBOX_DEFAULT
+	hidemoneybox
+	closemessage
+	release
+	end
+
+GoldenrodCity_FlowerShop_EventScript_NotEnoughForSeasonalPerfume::
+	msgbox GoldenrodCity_FlowerShop_Text_SeasonalPerfumeNotEnoughMoney, MSGBOX_DEFAULT
+	hidemoneybox
+	closemessage
+	release
+	end
+
+GoldenrodCity_FlowerShop_EventScript_DeclineSeasonalPerfume::
+	hidemoneybox
+	closemessage
+	release
+	end
+
+GoldenrodCity_FlowerShop_EventScript_EndConversation::
 	release
 	end
 
@@ -197,6 +235,21 @@ GoldenrodCity_FlowerShop_Text_FloriaYouBeatWhitney:
 
 GoldenrodCity_FlowerShop_Text_FloriaItWasAMon:
     .string "So it really was a Pokémon!$"
+
+GoldenrodCity_FlowerShop_Text_SeasonalPerfumeOffer:
+    .string "Your mother asked about our\n"
+    .string "Seasonal Perfume?\p"
+    .string "It blends scents inspired by\n"
+    .string "spring, summer, autumn and winter.\l"
+    .string "It's ¥1,000,000. Would you like it?$"
+
+GoldenrodCity_FlowerShop_Text_SeasonalPerfumeAfterBuy:
+    .string "Thank you! Each scent brings out\n"
+    .string "a different side of certain\l"
+    .string "Pokémon. I hope she enjoys it!$"
+
+GoldenrodCity_FlowerShop_Text_SeasonalPerfumeNotEnoughMoney:
+    .string "You'll need more money than that.$"
 `
 
 script FlowerShopMulchVendor {

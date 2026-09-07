@@ -302,6 +302,7 @@ static void DebugAction_PCBag_ClearBoxes(u8 taskId);
 static void DebugAction_Party_HealParty(u8 taskId);
 static void DebugAction_Party_ClearPokerus(u8 taskId);
 static void DebugAction_Party_ClearParty(u8 taskId);
+static void DebugAction_Party_ResetGroomingDaily(u8 taskId);
 static void DebugAction_Party_SetParty(u8 taskId);
 static void DebugAction_Party_BattleSingle(u8 taskId);
 
@@ -648,6 +649,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Party[] =
     { COMPOUND_STRING("Give Pokerus"),       DebugAction_ExecuteScript, Debug_EventScript_GivePokerus },
     { COMPOUND_STRING("Clear Pokerus"),      DebugAction_Party_ClearPokerus},
     { COMPOUND_STRING("Clear Party"),        DebugAction_Party_ClearParty },
+    { COMPOUND_STRING("Reset Grooming Day"), DebugAction_Party_ResetGroomingDaily },
     { COMPOUND_STRING("Set Party"),          DebugAction_Party_SetParty },
     { COMPOUND_STRING("Start Debug Battle"), DebugAction_Party_BattleSingle },
     { NULL }
@@ -5123,6 +5125,14 @@ static void DebugAction_Party_ClearPokerus(u8 taskId)
 static void DebugAction_Party_ClearParty(u8 taskId)
 {
     ZeroPlayerPartyMons();
+    ScriptContext_Enable();
+    Debug_DestroyMenu_Full(taskId);
+}
+
+// Clears Mom's daily Grooming usage (FLAG_GOT_GROOMED) without waiting for the day to roll over.
+static void DebugAction_Party_ResetGroomingDaily(u8 taskId)
+{
+    FlagClear(FLAG_GOT_GROOMED);
     ScriptContext_Enable();
     Debug_DestroyMenu_Full(taskId);
 }

@@ -1353,7 +1353,7 @@
 #define FLAG_SYS_POKEMON_GET                         (SYSTEM_FLAGS + 0x0)
 #define FLAG_SYS_POKEDEX_GET                         (SYSTEM_FLAGS + 0x1)
 #define FLAG_SYS_POKENAV_GET                         (SYSTEM_FLAGS + 0x2)
-#define FLAG_UNUSED_0x863                            (SYSTEM_FLAGS + 0x3) // Unused Flag
+#define FLAG_STARTED_SEASONAL_PERFUME_QUEST          (SYSTEM_FLAGS + 0x3) // Mom noticed Deerling/Sawsbuck's coat and mentioned the Flower Shop's perfume
 #define FLAG_SYS_GAME_CLEAR                          (SYSTEM_FLAGS + 0x4)
 #define FLAG_SYS_CHAT_USED                           (SYSTEM_FLAGS + 0x5)
 #define FLAG_UNLOCKED_TRENDY_SAYINGS                 (SYSTEM_FLAGS + 0x6)
@@ -1405,7 +1405,7 @@
 #define FLAG_SYS_CRUISE_MODE                        (SYSTEM_FLAGS + 0x2D)
 
 #define FLAG_STARTED_VICTINI_QUEST                  (SYSTEM_FLAGS + 0x2E)
-#define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x2F) // Unused Flag
+#define FLAG_GAVE_MOM_SEASONAL_PERFUME               (SYSTEM_FLAGS + 0x2F) // Delivered the Seasonal Perfume to Mom, unlocking the seasonal grooming menu
 
 #define FLAG_SYS_TV_HOME                            (SYSTEM_FLAGS + 0x30)
 #define FLAG_SYS_TV_WATCH                           (SYSTEM_FLAGS + 0x31)
@@ -1796,7 +1796,7 @@
 #define FLAG_DAILY_BATTLE_CAFE_RUSH_WON             (DAILY_FLAGS_START + 0x25)
 #define FLAG_DAILY_BATTLE_CAFE_SUPER_RUSH_WON       (DAILY_FLAGS_START + 0x26)
 #define FLAG_DAILY_BATTLE_CAFE_SUPER_CHALLENGE_WON  (DAILY_FLAGS_START + 0x27)
-#define FLAG_UNUSED_0x948                           (DAILY_FLAGS_START + 0x28) // Unused Flag
+#define FLAG_GOT_GROOMED                            (DAILY_FLAGS_START + 0x28) // Mom's Grooming service, once per day
 #define FLAG_UNUSED_0x949                           (DAILY_FLAGS_START + 0x29) // Unused Flag
 #define FLAG_UNUSED_0x94A                           (DAILY_FLAGS_START + 0x2A) // Unused Flag
 #define FLAG_UNUSED_0x94B                           (DAILY_FLAGS_START + 0x2B) // Unused Flag

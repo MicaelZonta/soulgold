@@ -318,46 +318,50 @@ IndigoPlateau_StoneMerchantMart:
 	.2byte ITEM_AUSPICIOUS_ARMOR
 # 165 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
 	.2byte ITEM_MALICIOUS_ARMOR
+# 166 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
+	.2byte ITEM_SACHET
+# 167 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
+	.2byte ITEM_WHIPPED_DREAM
 	.2byte ITEM_NONE
 
 	.align 2
-# 168 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-IndigoPlateau_GemMerchantMart:
-# 169 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_NORMAL_GEM
 # 170 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_FIRE_GEM
+IndigoPlateau_GemMerchantMart:
 # 171 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_WATER_GEM
+	.2byte ITEM_NORMAL_GEM
 # 172 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_ELECTRIC_GEM
+	.2byte ITEM_FIRE_GEM
 # 173 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_GRASS_GEM
+	.2byte ITEM_WATER_GEM
 # 174 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_ICE_GEM
+	.2byte ITEM_ELECTRIC_GEM
 # 175 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_FIGHTING_GEM
+	.2byte ITEM_GRASS_GEM
 # 176 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_POISON_GEM
+	.2byte ITEM_ICE_GEM
 # 177 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_GROUND_GEM
+	.2byte ITEM_FIGHTING_GEM
 # 178 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_FLYING_GEM
+	.2byte ITEM_POISON_GEM
 # 179 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_PSYCHIC_GEM
+	.2byte ITEM_GROUND_GEM
 # 180 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_BUG_GEM
+	.2byte ITEM_FLYING_GEM
 # 181 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_ROCK_GEM
+	.2byte ITEM_PSYCHIC_GEM
 # 182 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_GHOST_GEM
+	.2byte ITEM_BUG_GEM
 # 183 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_DRAGON_GEM
+	.2byte ITEM_ROCK_GEM
 # 184 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_DARK_GEM
+	.2byte ITEM_GHOST_GEM
 # 185 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
-	.2byte ITEM_STEEL_GEM
+	.2byte ITEM_DRAGON_GEM
 # 186 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
+	.2byte ITEM_DARK_GEM
+# 187 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
+	.2byte ITEM_STEEL_GEM
+# 188 "data/maps/IndigoPlateau_PokemonCenter/scripts.pory"
 	.2byte ITEM_FAIRY_GEM
 	.2byte ITEM_NONE
 

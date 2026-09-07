@@ -3284,6 +3284,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .shinyIconPalette = gMonShinyIconPalette_GardevoirMegaZ,
         FOOTPRINT(Gardevoir)
         SHADOW(0, 13, SHADOW_SIZE_S)
+    #if OW_BATTLE_ONLY_FORMS
         OVERWORLD(
             sPicTable_GardevoirMegaZ,
             SIZE_32x32,
@@ -3293,6 +3294,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gOverworldPalette_GardevoirMegaZ,
             gShinyOverworldPalette_GardevoirMegaZ
         )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sGardevoirLevelUpLearnset,
         .teachableLearnset = sGardevoirTeachableLearnset,

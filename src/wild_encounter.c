@@ -130,6 +130,7 @@ static const struct RockSmashItem sRockSmashItems_RuinsOfAlph[] =
     {ITEM_JAW_FOSSIL,   10},
     {ITEM_SAIL_FOSSIL,  10},
     {ITEM_OLD_AMBER,    10},
+    {ITEM_COVER_FOSSIL, 10},
 };
 
 static const struct RockSmashItemTable sRockSmashItemTables[] =
@@ -568,8 +569,67 @@ static u8 PickWildMonNature(u32 species)
     return GetSynchronizedNature(WILDMON_ORIGIN, species);
 }
 
+// Wild slots for these species represent a whole family of cosmetic forms rather
+// than one specific member; the actual form is drawn at encounter time so a single wild
+// slot can produce any of them without needing one slot per form.
+static const u16 sWildMiniorMeteorForms[] =
+{
+    SPECIES_MINIOR_METEOR_RED,
+    SPECIES_MINIOR_METEOR_ORANGE,
+    SPECIES_MINIOR_METEOR_YELLOW,
+    SPECIES_MINIOR_METEOR_GREEN,
+    SPECIES_MINIOR_METEOR_BLUE,
+    SPECIES_MINIOR_METEOR_INDIGO,
+    SPECIES_MINIOR_METEOR_VIOLET,
+};
+
+static const u16 sWildPumpkabooSizeForms[] =
+{
+    SPECIES_PUMPKABOO_SMALL,
+    SPECIES_PUMPKABOO_AVERAGE,
+    SPECIES_PUMPKABOO_LARGE,
+    SPECIES_PUMPKABOO_SUPER,
+};
+
+static const u16 sWildScatterbugPatternForms[] =
+{
+    SPECIES_SCATTERBUG_ICY_SNOW,
+    SPECIES_SCATTERBUG_POLAR,
+    SPECIES_SCATTERBUG_TUNDRA,
+    SPECIES_SCATTERBUG_CONTINENTAL,
+    SPECIES_SCATTERBUG_GARDEN,
+    SPECIES_SCATTERBUG_ELEGANT,
+    SPECIES_SCATTERBUG_MEADOW,
+    SPECIES_SCATTERBUG_MODERN,
+    SPECIES_SCATTERBUG_MARINE,
+    SPECIES_SCATTERBUG_ARCHIPELAGO,
+    SPECIES_SCATTERBUG_HIGH_PLAINS,
+    SPECIES_SCATTERBUG_SANDSTORM,
+    SPECIES_SCATTERBUG_RIVER,
+    SPECIES_SCATTERBUG_MONSOON,
+    SPECIES_SCATTERBUG_SAVANNA,
+    SPECIES_SCATTERBUG_SUN,
+    SPECIES_SCATTERBUG_OCEAN,
+    SPECIES_SCATTERBUG_JUNGLE,
+    SPECIES_SCATTERBUG_FANCY,
+    SPECIES_SCATTERBUG_POKEBALL,
+};
+
+static u16 GetWildFormVariantSpecies(u16 species)
+{
+    if (species == SPECIES_MINIOR_METEOR_RED)
+        return sWildMiniorMeteorForms[Random() % ARRAY_COUNT(sWildMiniorMeteorForms)];
+    if (species == SPECIES_PUMPKABOO_AVERAGE)
+        return sWildPumpkabooSizeForms[Random() % ARRAY_COUNT(sWildPumpkabooSizeForms)];
+    if (species == SPECIES_SCATTERBUG_FANCY)
+        return sWildScatterbugPatternForms[Random() % ARRAY_COUNT(sWildScatterbugPatternForms)];
+    return species;
+}
+
 static void CreateWildMonWithLevelFloor(u16 species, u8 level, u8 minimumLevel)
 {
+    species = GetWildFormVariantSpecies(species);
+
     // Apply level scaling for wild encounters
 #if B_LEVEL_SCALING_ENABLED
     level = CalculateWildScaledLevel(species, level, minimumLevel);

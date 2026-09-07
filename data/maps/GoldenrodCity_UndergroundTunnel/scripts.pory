@@ -146,64 +146,44 @@ GoldenrodUnderground_EventScript_Donald::
 	msgbox GoldenrodUnderground_Text_PokemaniacDonaldAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
+@ The older brother no longer gives haircuts himself; he only sells the Grooming Kit
+@ so the player can groom Pokemon at home with Mom. The younger brother still cuts hair.
 GoldenrodUnderground_EventScript_Brother_Haircut1::
 	lock
 	faceplayer
-	goto_if_set FLAG_GOT_HAIRCUT, GoldenrodUnderground_EventScript_Already_Got_Haircut1
+	checkitem ITEM_GROOMING_KIT, 1
+	goto_if_eq VAR_RESULT, TRUE, GoldenrodUnderground_EventScript_GroomingKitReminder
 	showmoneybox 0, 0
-	msgbox GoldenrodUnderground_Text_OlderBrotherOffer, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, TRUE, GoldenrodUnderground_EventScript_Haircut1
-	msgbox GoldenrodUnderground_Text_OlderBrotherThatsAShame, MSGBOX_DEFAULT
+	msgbox GoldenrodUnderground_Text_OlderBrotherGroomingKitOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, TRUE, GoldenrodUnderground_EventScript_BuyGroomingKit
 	hidemoneybox
 	closemessage
+	release
 	end
 
-GoldenrodUnderground_EventScript_Haircut1::
-	msgbox GoldenrodUnderground_Text_OlderBrotherAskWhich
-	special ChoosePartyMon
-	waitstate
-	showmoneybox 0, 0
-	lock
-	faceplayer
-	goto_if_ge VAR_0x8004, PARTY_SIZE, GoldenrodUnderground_EventScript_Declined_Haircut1
-	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
-	goto_if_eq VAR_RESULT, SPECIES_EGG, GoldenrodUnderground_EventScript_Declined_Haircut1
-	checkmoney 500, 0
-	goto_if_eq VAR_RESULT, FALSE, GoldenrodUnderground_EventScript_NotEnough_Haircut1
-	removemoney 500
+GoldenrodUnderground_EventScript_BuyGroomingKit::
+	checkmoney 500000, 0
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodUnderground_EventScript_NotEnoughForGroomingKit
+	removemoney 500000
 	updatemoneybox 0
 	playse SE_SHOP
-	msgbox GoldenrodUnderground_Text_OlderBrotherWatchItBeautiful
-	closemessage
-	fadescreen FADE_TO_BLACK
-	playfanfare MUS_HEAL
-	waitfanfare
-	special HaircutBrother1
-	fadescreen FADE_FROM_BLACK
-	special BufferMonNickname
-	msgbox GoldenrodUnderground_Text_OlderBrotherAllDone
-	hidemoneybox
-	setflag FLAG_GOT_HAIRCUT
-	release
-	end
-
-GoldenrodUnderground_EventScript_Declined_Haircut1::
-	msgbox GoldenrodUnderground_Text_OlderBrotherThatsAShame, MSGBOX_DEFAULT
+	giveitem ITEM_GROOMING_KIT
+	msgbox GoldenrodUnderground_Text_OlderBrotherGroomingKitAfterBuy, MSGBOX_DEFAULT
 	hidemoneybox
 	closemessage
 	release
 	end
 
-GoldenrodUnderground_EventScript_Already_Got_Haircut1::
-	msgbox GoldenrodUnderground_Text_OlderBrotherOnePerDay, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
-
-GoldenrodUnderground_EventScript_NotEnough_Haircut1::
+GoldenrodUnderground_EventScript_NotEnoughForGroomingKit::
 	msgbox GoldenrodUnderground_Text_OlderBrotherNeedMoreMoney, MSGBOX_DEFAULT
 	closemessage
 	hidemoneybox
+	release
+	end
+
+GoldenrodUnderground_EventScript_GroomingKitReminder::
+	msgbox GoldenrodUnderground_Text_OlderBrotherGroomingKitReminder, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 
@@ -359,33 +339,25 @@ GoldenrodUnderground_Text_YoungerBrotherOnePerDay:
 
 
 
-GoldenrodUnderground_Text_OlderBrotherOffer:
-    .string "Welcome!\p"
-    .string "I run the Pokémon Salon!\p"
-    .string "I'm the older and better of the two\n"
-    .string "Haircut Brothers.\p"
-    .string "I can make your Pokémon beautiful\n"
-    .string "for just ¥500.\p"
-    .string "Would you like me to do that?$"
-
-GoldenrodUnderground_Text_OlderBrotherAskWhich:
-    .string "Which Pokémon should I work on?$"
-
-GoldenrodUnderground_Text_OlderBrotherWatchItBeautiful:
-    .string "Ok! Watch it become beautiful!$"
-
-GoldenrodUnderground_Text_OlderBrotherAllDone:
-    .string "There! All done!$"
-
-GoldenrodUnderground_Text_OlderBrotherThatsAShame:
-    .string "Is that right? That's a shame!$"
-
 GoldenrodUnderground_Text_OlderBrotherNeedMoreMoney:
     .string "You'll need more money than that.$"
 
-GoldenrodUnderground_Text_OlderBrotherOnePerDay:
-    .string "I do only one haircut a day.\n"
-    .string "I'm done for today.$"
+GoldenrodUnderground_Text_OlderBrotherGroomingKitOffer:
+    .string "Your Pokémon seem well cared for!\p"
+    .string "Would you like to try grooming them\n"
+    .string "at home?\p"
+    .string "This Grooming Kit has everything\n"
+    .string "a beginner needs. It's ¥500,000.$"
+
+GoldenrodUnderground_Text_OlderBrotherGroomingKitAfterBuy:
+    .string "Start gently and be patient.\n"
+    .string "Even a simple grooming can make\l"
+    .string "a Pokémon much happier!$"
+
+GoldenrodUnderground_Text_OlderBrotherGroomingKitReminder:
+    .string "How is the grooming going?\p"
+    .string "Remember, patience is more\n"
+    .string "important than fancy tools!$"
 
 GoldenrodUnderground_Text_SupernerdEricSeen:
     .string "I got booted out of the Game Corner.\p"
