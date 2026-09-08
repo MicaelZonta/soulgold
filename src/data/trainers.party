@@ -19669,3 +19669,55 @@ IVs: 0 Atk / 0 Spe
 - Hex
 - Trick Room
 - Ice Beam
+
+=== TRAINER_LUSAMINE ===
+Name: Lusamine
+Class: Beauty
+Pic: Lusamine
+Gender: Female
+Music: Hg Girl 2
+Double Battle: No
+AI: Basic Trainer
+
+Rattata
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_LILLIE ===
+Name: Lillie
+Class: Lass
+Pic: Lillie
+Gender: Female
+Music: Hg Girl 1
+Double Battle: No
+AI: Basic Trainer
+
+Vulpix Alola
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_KUKUI ===
+Name: Kukui
+Class: Expert
+Pic: Kukui
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Basic Trainer
+
+Rattata
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_GLADION ===
+Name: Gladion
+Class: Rival
+Pic: Gladion
+Gender: Male
+Music: Silver
+Double Battle: No
+AI: Basic Trainer
+
+Rattata
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe

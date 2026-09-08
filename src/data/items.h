@@ -8064,6 +8064,26 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Audinite,
     },
 
+    [ITEM_GIGANTATITE] =
+    {
+        .name = ITEM_NAME("Gigantatite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "A stone that lets\n"
+            "former Gigantamax\n"
+            "{PKMN} Mega Evolve."),
+        .pocket = POCKET_MEGASTONES,
+        .notConsumed = TRUE,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .heldSlot = 0,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_GiveHeldItem,
+        .flingPower = 0,
+        .iconPic = gItemIcon_DynamaxBand,
+        .iconPalette = gItemIconPalette_DynamaxBand,
+    },
+
 // Gems
     #if I_PRICE >= GEN_9
         #define GEM_PRICE 15000
@@ -17593,7 +17613,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GROOMING_KIT] =
     {
         .name = ITEM_NAME("Grooming Kit"),
-        .price = 500000,
+        .price = 100000,
         .description = COMPOUND_STRING(
             "A set of brushes\n"
             "and tools for\n"
@@ -17610,7 +17630,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_SEASONAL_PERFUME] =
     {
         .name = ITEM_NAME("Seasonal Perfume"),
-        .price = 1000000,
+        .price = 100000,
         .description = COMPOUND_STRING(
             "A perfume with\n"
             "scents inspired\n"

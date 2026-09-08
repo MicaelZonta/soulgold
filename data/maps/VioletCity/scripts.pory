@@ -478,11 +478,12 @@ VioletCity_Text_Kimono_Girl1:
 .string "That Egg must be...!$"
 
 VioletCity_Text_Kimono_Girl2:
-.string "I see...\p"
-.string "So it was handed from Mr. Pokémon\n"
-.string "to Prof. Elm, then from \l"
-.string "Prof. Elm to you.\p"
-.string "Now I get it...$"
+.string "Ah, that explains it.\p"
+.string "Professor Kukui sent the Egg\n"
+.string "to Professor Elm...\p"
+.string "And Elm entrusted it to you.\p"
+.string "It has found its way into\n"
+.string "some very caring hands.$"
 
 VioletCity_Text_Kimono_Girl3:
 .string "That Egg is truly an important Egg.\p"

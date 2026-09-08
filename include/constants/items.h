@@ -1113,6 +1113,7 @@ enum __attribute__((packed)) Item
 
     ITEM_GROOMING_KIT = 930,
     ITEM_SEASONAL_PERFUME = 931,
+    ITEM_GIGANTATITE = 932,
 
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,

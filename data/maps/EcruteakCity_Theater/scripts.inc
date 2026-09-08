@@ -1021,10 +1021,10 @@ EcruteakCity_Theater_Text_ZukiSeen:
 	.string "To bring back {STR_VAR_1}, we\n"
 	.string "needed someone with the right bond\l"
 	.string "with Pokémon.\p"
-	.string "We asked Mr. Pokémon to give this\n"
+	.string "We asked Kukui to give this\n"
 	.string "Mystery Egg to\l"
 	.string "whoever showed potential.\p"
-	.string "The Egg went from Mr. Pokémon\n"
+	.string "The Egg went from Kukui\n"
 	.string "to Prof. Elm, then to you.\p"
 	.string "But being pure alone is not enough\n"
 	.string "to face the power of this Pokémon.$"
@@ -1122,7 +1122,7 @@ EcruteakCity_Theater_Text_ZukiAfterAll:
 	.string "We appreciate how you lived up\n"
 	.string "to our hopes, {PLAYER}!\p"
 	.string "If you learned anything from\n"
-	.string "this, thank Mr. Pokémon and\l"
+	.string "this, thank Prof. Kukui and\l"
 	.string "Prof. Elm...$"
 
 EcruteakCity_Theater_Text_KimonoGirlsBeforeBattle:

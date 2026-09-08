@@ -1,5 +1,24 @@
 raw `
 
+@ ---------------------------------------------------------------------------
+@ Route30_MrPokemonsHouse staging notes (map-relative tile coords, 13x10 map)
+@
+@   collision grid (. = walkable, # = blocked)
+@        x 0 1 2 3 4 5 6 7 8 9 10
+@    y=2    . . . . . . . . . .  .
+@    y=3    . . . . . . . . . .  .
+@    y=4    . . . # # . . . # #  .     (3-4,4-5) table   (8-9,4) computer desk
+@    y=5    . . . # # . . . . .  .
+@    y=6    . . . . . . . . . .  .
+@    y=7    . . . . . . . . . .  .
+@    y=8    # . . . . . . . . .  #     door/warp at (5,8)
+@
+@   NPC home positions (map.json - do not move them there):
+@     Kukui  (7,5)   Oak (8,5)   Lillie (5,5) = chair east of the table
+@   Scene anchor positions:
+@     player (7,6)   Lillie approach stop (6,6)   Oak talk stop (8,6)
+@ ---------------------------------------------------------------------------
+
 Route30_MrPokemonsHouse_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, MrPokemonHouse_OnFrame
 	.byte 0
@@ -8,107 +27,177 @@ MrPokemonHouse_OnFrame::
 	map_script_2 VAR_CHERRYGROVE_CITY_STATE, 1, MrPokemonHouse_EventScript_GiveEgg
 	.2byte 0
 
+@ Runs while VAR_CHERRYGROVE_CITY_STATE == 1. If the player loses to Lillie the
+@ battle blacks out, the script never reaches the rewards and the var stays at 1,
+@ so re-entering the house respawns every NPC at its map.json tile and replays
+@ the whole scene from the top.
 MrPokemonHouse_EventScript_GiveEgg::
 	lock
+
+	@ --- 1. Kukui (7,5) notices the player standing on the door tile (5,8) ---
 	playse SE_PIN
-	applymovement LOCALID_MRPOKEMON, Common_Movement_ExclamationMark	
-	delay 60
-	turnobject LOCALID_MRPOKEMON, DIR_SOUTH
-    createfieldmugshot MUGSHOT_GENTLEMAN
+	applymovement LOCALID_ROUTE30_KUKUI, Common_Movement_ExclamationMark
+	waitmovement 0
+	delay 30
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_SOUTH
 	msgbox MrPokemonHouse_Text_Intro1, MSGBOX_DEFAULT
 	closemessage
-    removefieldmugshot
-	applymovement OBJ_EVENT_ID_PLAYER, MrPokemonHouse_Movement_MeetMrPokemon
+	@ (5,8) -> (5,7) -> (5,6) -> (6,6) -> (7,6), facing Kukui
+	applymovement OBJ_EVENT_ID_PLAYER, MrPokemonHouse_Movement_PlayerToProfessors
 	waitmovement 0
-    createfieldmugshot MUGSHOT_GENTLEMAN
-	msgbox MrPokemonHouse_Text_Intro2, MSGBOX_DEFAULT
-    removefieldmugshot
-	giveitem ITEM_MYSTERY_EGG
 
-    createfieldmugshot MUGSHOT_GENTLEMAN
+	@ --- 2. Kukui introduces himself, Oak (8,5) joins in right away ---
+	msgbox MrPokemonHouse_Text_Intro2, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_ROUTE30_OAK, DIR_SOUTH
+	msgbox MrPokemonHouse_Text_OakGreeting, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- 3. Kukui explains the Egg, but hands nothing over yet ---
 	msgbox MrPokemonHouse_Text_Intro3, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- 4. Kukui turns west toward Lillie's chair and introduces her ---
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_WEST
 	msgbox MrPokemonHouse_Text_Intro4, MSGBOX_DEFAULT
-    removefieldmugshot
-	turnobject LOCALID_ROUTE30_OAK, DIR_WEST
-    createfieldmugshot MUGSHOT_GENTLEMAN
 	msgbox MrPokemonHouse_Text_Intro5, MSGBOX_DEFAULT
 	closemessage
-    removefieldmugshot
+
+	@ --- 5. Lillie answers from the chair ---
+	turnobject LOCALID_ROUTE30_LILLIE, DIR_EAST
+	msgbox MrPokemonHouse_Text_LillieAnswer, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- 6. Lillie leaves the chair: (5,5) -> (5,6) -> (6,6), beside the player ---
+	applymovement LOCALID_ROUTE30_LILLIE, MrPokemonHouse_Movement_LillieToPlayer
+	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+
+	@ --- 7. Lillie's challenge ---
+	msgbox MrPokemonHouse_Text_LillieIntro, MSGBOX_DEFAULT
+	msgbox MrPokemonHouse_Text_LillieVulpix, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- 8. Oak comments on the match ---
+	turnobject LOCALID_ROUTE30_OAK, DIR_SOUTH
+	msgbox MrPokemonHouse_Text_OakBeforeBattle, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- 9. Kukui heals the party, then the battle starts ---
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_SOUTH
+	msgbox MrPokemonHouse_Text_KukuiBeforeBattle, MSGBOX_DEFAULT
+	closemessage
+	call Common_EventScript_OutOfCenterPartyHeal
+	msgbox MrPokemonHouse_Text_LillieBeforeBattle, MSGBOX_DEFAULT
+	closemessage
+	removefieldmugshot
+	trainerbattle_no_intro TRAINER_LILLIE, MrPokemonHouse_Text_LillieDefeated
+
+	@ --- 11. Victory: Lillie, Kukui, and the Mystery Egg ---
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	msgbox MrPokemonHouse_Text_LillieAfterBattle, MSGBOX_DEFAULT
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox MrPokemonHouse_Text_KukuiAfterBattle, MSGBOX_DEFAULT
+	msgbox MrPokemonHouse_Text_KukuiGiveEgg, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_MYSTERY_EGG
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+
+	@ --- 12. Oak steps down to (8,6) so he is next to the player at (7,6) ---
 	playbgm MUS_HG_OAK, TRUE
 	applymovement LOCALID_ROUTE30_OAK, MrPokemonHouse_Movement_OakToPlayer
-	waitmovement 0 
+	waitmovement 0
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-    createfieldmugshot MUGSHOT_OAK
+	createfieldmugshot MUGSHOT_OAK
 	msgbox MrPokemonHouse_Text_OakIntro, MSGBOX_DEFAULT
-    removefieldmugshot
-
+	closemessage
+	removefieldmugshot
 
 	playfanfare MUS_OBTAIN_ITEM
 	message MrPokemonHouse_Text_GetDex
 	waitfanfare
-
-    createfieldmugshot MUGSHOT_OAK
-	msgbox MrPokemonHouse_Text_OakParting MSGBOX_DEFAULT
 	closemessage
-    removefieldmugshot
+	setflag FLAG_SYS_POKEDEX_GET
+	setflag FLAG_DEXNAV_OBTAINED
+
+	@ --- 13. Oak says goodbye and walks out: (8,6) -> (8,7) -> (5,7) -> (5,8) ---
+	createfieldmugshot MUGSHOT_OAK
+	msgbox MrPokemonHouse_Text_OakParting, MSGBOX_DEFAULT
+	closemessage
+	removefieldmugshot
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_EAST
+	msgbox MrPokemonHouse_Text_KukuiOakParting, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_ROUTE30_OAK, MrPokemonHouse_Movement_OakLeave
 	waitmovement 0
 	playse SE_EXIT
 	removeobject LOCALID_ROUTE30_OAK
-	setflag FLAG_DELIVERED_EGG
-	turnobject OBJ_EVENT_ID_PLAYER DIR_NORTH
 	fadedefaultbgm
-    createfieldmugshot MUGSHOT_GENTLEMAN
+
+	@ --- 14. Lillie leaves from where she is standing: (6,6) -> (6,7) -> (5,7) -> (5,8) ---
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	msgbox MrPokemonHouse_Text_LillieParting, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ROUTE30_LILLIE, MrPokemonHouse_Movement_LillieLeave
+	waitmovement 0
+	playse SE_EXIT
+	removeobject LOCALID_ROUTE30_LILLIE
+
+	@ --- 15. Kukui stays at (7,5), heals the party and sends the player off ---
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_SOUTH
 	msgbox MrPokemonHouse_Text_Heal, MSGBOX_DEFAULT
+	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
 	msgbox MrPokemonHouse_Text_DependingOnYou, MSGBOX_DEFAULT
 	closemessage
-    removefieldmugshot
-	applymovement LOCALID_MRPOKEMON, MrPokemonHouse_Movement_MrPokemon_Leave
-	waitmovement 0
-	removeobject LOCALID_MRPOKEMON
-	clearflag FLAG_HIDE_MRPOKEMON
-	addobject LOCALID_MRPOKEMON2
-	
+
+	setflag FLAG_DELIVERED_EGG
 	setvar VAR_NEWBARKTOWN_LABSTATE, 4
 	setflag FLAG_HIDE_SILVER_NEWBARKTOWN
-	setflag FLAG_SYS_POKEDEX_GET
-	setflag FLAG_DEXNAV_OBTAINED
 	clearflag FLAG_HIDE_LAB_POLICEMAN
-	setvar VAR_CHERRYGROVE_CITY_STATE, 2
 	setrespawn HEAL_LOCATION_CHERRYGROVE_CITY
 	clearflag FLAG_HIDE_SILVER_CHERRYGROVE
 	setflag FLAG_HIDE_GUIDE_GENT_CHERRYGROVE
 	clearflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT_HOUSE
+	setvar VAR_CHERRYGROVE_CITY_STATE, 2
 
 	release
 	end
 
-MrPokemonHouse_EventScript_MrPokemon::
+MrPokemonHouse_EventScript_Kukui::
 	lock
 	faceplayer
 	checkitem ITEM_RED_SCALE
-	goto_if_eq VAR_RESULT, TRUE, MrPokemonHouse_EventScript_MrPokemon_RedScale
+	goto_if_eq VAR_RESULT, TRUE, MrPokemonHouse_EventScript_Kukui_RedScale
 	msgbox MrPokemonHouse_Text_AlwaysNewDiscoveries, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
 
-MrPokemonHouse_EventScript_MrPokemon_RedScale::
+MrPokemonHouse_EventScript_Kukui_RedScale::
 	msgbox MrPokemonHouse_Text_GimmeTheScale, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, TRUE, MrPokemonHouse_EventScript_MrPokemon_RedScale_Accepted
+	goto_if_eq VAR_RESULT, TRUE, MrPokemonHouse_EventScript_Kukui_RedScale_Accepted
 	msgbox MrPokemonHouse_Text_Disappointed, MSGBOX_DEFAULT
 	closemessage
 	release
-	end	
+	end
 
-MrPokemonHouse_EventScript_MrPokemon_RedScale_Accepted::
-	removeitem ITEM_RED_SCALE
+MrPokemonHouse_EventScript_Kukui_RedScale_Accepted::
 	giveitem ITEM_FAIRYTITE
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, FALSE, MrPokemonHouse_EventScript_Kukui_RedScale_NoRoom
+	removeitem ITEM_RED_SCALE
+	msgbox MrPokemonHouse_Text_ScaleAccepted, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 
+MrPokemonHouse_EventScript_Kukui_RedScale_NoRoom::
+	msgbox MrPokemonHouse_Text_ScaleBagFull, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
 
 MrPokemonHouse_EventScript_Computer::
 	lock
@@ -128,7 +217,9 @@ MrPokemonHouse_EventScript_Coins::
 	release
 	end
 
-MrPokemonHouse_Movement_MeetMrPokemon:
+@ Player: door (5,8) -> (5,7) -> (5,6) -> (6,6) -> (7,6), facing Kukui at (7,5).
+@ (7,6) leaves (6,6) free for Lillie and (8,6) free for Oak.
+MrPokemonHouse_Movement_PlayerToProfessors:
 	walk_up
 	walk_up
 	walk_right
@@ -136,11 +227,21 @@ MrPokemonHouse_Movement_MeetMrPokemon:
 	face_up
 	step_end
 
+@ Lillie: chair (5,5) -> (5,6) -> (6,6), facing the player at (7,6).
+@ Skirts the table, whose blocked tiles are (3,4) (4,4) (3,5) (4,5).
+MrPokemonHouse_Movement_LillieToPlayer:
+	walk_down
+	walk_right
+	face_right
+	step_end
+
+@ Oak: (8,5) -> (8,6), facing the player at (7,6).
 MrPokemonHouse_Movement_OakToPlayer:
 	walk_down
 	face_left
 	step_end
 
+@ Oak: (8,6) -> (8,7) -> (7,7) -> (6,7) -> (5,7) -> door (5,8).
 MrPokemonHouse_Movement_OakLeave:
 	walk_down
 	walk_left
@@ -150,124 +251,227 @@ MrPokemonHouse_Movement_OakLeave:
 	walk_in_place_down
 	step_end
 
-MrPokemonHouse_Movement_MrPokemon_Leave:
-	walk_up
+@ Lillie: (6,6) -> (6,7) -> (5,7) -> door (5,8).
+MrPokemonHouse_Movement_LillieLeave:
+	walk_down
 	walk_left
-	walk_left
+	walk_down
+	walk_in_place_down
 	step_end
 
 MrPokemonHouse_Text_Intro1:
-	.string "Hello, hello! You must be\n"
-	.string "{PLAYER}.\p"
-	.string "Prof. Elm said that you would\n"
-	.string "visit.$"
+	.string "Kukui: Alola! You're {PLAYER},\n"
+	.string "right? Elm said you'd come!\p"
+	.string "Come in! We've got quite a\n"
+	.string "little gathering here today.$"
 
 MrPokemonHouse_Text_Intro2:
-	.string "This is what I want Prof. Elm\n"
-	.string "to examine.$"
+	.string "Kukui: I'm Professor Kukui.\n"
+	.string "I study Pokémon moves in Alola!\p"
+	.string "I was traveling through Kanto\n"
+	.string "when I heard about Johto.\p"
+	.string "Apparently, some Pokémon from\n"
+	.string "Alola have been appearing here!\p"
+	.string "I had to see that for myself.\n"
+	.string "I've been working from this house.$"
 
-MrPokemonHouse_Text_GotEgg:
-	.string "{PLAYER} received Mystery Egg.$"
+MrPokemonHouse_Text_OakGreeting:
+	.string "Oak: Ah, you must be {PLAYER}!\n"
+	.string "Elm told us you were coming.$"
 
 MrPokemonHouse_Text_Intro3:
-	.string "I know a couple who run a\n"
-	.string "Pokémon Day-Care service.\p"
-	.string "They gave me that Egg.\p"
-	.string "I was intrigued, so I sent\n"
-	.string "mail to Prof. Elm.\p"
-	.string "For Pokémon evolution,\n"
-	.string "Prof. Elm is the authority.$"
-
+	.string "Kukui: A couple who run a\n"
+	.string "Day-Care gave me an unusual Egg.\p"
+	.string "I contacted Elm right away.\n"
+	.string "He knows much more about Eggs!\p"
+	.string "I'd like you to take it to him.\n"
+	.string "But first, introductions!$"
 
 MrPokemonHouse_Text_Intro4:
-	.string "Even Prof. Oak here recognizes\n"
-	.string "that.$"
+	.string "Kukui: And this is Lillie.\n"
+	.string "She's visiting from Alola too!$"
 
 MrPokemonHouse_Text_Intro5:
-	.string "If my assumption is correct,\n"
-	.string "Prof. Elm will know it.$"
+	.string "Kukui: Lillie, weren't you\n"
+	.string "looking for a training partner?$"
 
-MrPokemonHouse_Text_Heal:
-	.string "You are returning to Prof. Elm?\p"
-	.string "Here. Your Pokémon should have\n"
-	.string "some rest.$"
+MrPokemonHouse_Text_LillieAnswer:
+	.string "Lillie: Oh! Yes, Professor.\n"
+	.string "Just a moment!$"
 
-MrPokemonHouse_Text_DependingOnYou:
-	.string "I'm depending on you!$"
+MrPokemonHouse_Text_LillieIntro:
+	.string "Lillie: Yes! Though I wasn't\n"
+	.string "expecting to meet one so soon.\p"
+	.string "It's nice to meet you, {PLAYER}.\n"
+	.string "I'm traveling with my mother.\p"
+	.string "I've started training Pokémon,\n"
+	.string "and there's so much to learn.\p"
+	.string "Would you battle me?\n"
+	.string "Vulpix and I have been practicing!$"
 
-MrPokemonHouse_Text_AlwaysNewDiscoveries:
-	.string "Life is delightful!\n"
-	.string "Always, new discoveries to be made.$"
+MrPokemonHouse_Text_LillieVulpix:
+	.string "Lillie: My Vulpix is from Alola.\n"
+	.string "That's why her fur is white.\p"
+	.string "People here keep asking about it.\n"
+	.string "She seems quite pleased!$"
+
+MrPokemonHouse_Text_OakBeforeBattle:
+	.string "Oak: A battle? An excellent chance\n"
+	.string "to see how you work together!$"
+
+MrPokemonHouse_Text_KukuiBeforeBattle:
+	.string "Kukui: Let's get your partner\n"
+	.string "rested before we begin.\p"
+	.string "You walked all the way from\n"
+	.string "Elm's lab, after all!$"
+
+MrPokemonHouse_Text_LillieBeforeBattle:
+	.string "Lillie: All right, Vulpix.\n"
+	.string "Let's do this together!$"
+
+MrPokemonHouse_Text_LillieDefeated:
+	.string "Lillie: We did our best, Vulpix.\n"
+	.string "Thank you!$"
+
+MrPokemonHouse_Text_LillieAfterBattle:
+	.string "Lillie: Oh! You changed your\n"
+	.string "approach before I noticed.\p"
+	.string "I was so busy thinking about\n"
+	.string "our next move…\p"
+	.string "I need to watch our opponent\n"
+	.string "more carefully too.\p"
+	.string "Thank you, {PLAYER}.\n"
+	.string "I'm glad I asked!$"
+
+MrPokemonHouse_Text_KukuiAfterBattle:
+	.string "Kukui: There's a lesson you\n"
+	.string "won't find in a notebook!\p"
+	.string "Knowing a move is one thing.\n"
+	.string "Finding its moment takes practice.\p"
+	.string "You both gave your partners\n"
+	.string "something to be proud of!$"
+
+MrPokemonHouse_Text_LillieRematch:
+	.string "Lillie: Shall we try again?\n"
+	.string "We'll be ready when you are.$"
+
+MrPokemonHouse_Text_KukuiGiveEgg:
+	.string "Kukui: Now, about Elm's errand!\p"
+	.string "Please take this Egg to him.\n"
+	.string "I'd like to hear what he thinks.$"
 
 MrPokemonHouse_Text_OakIntro:
-	.string "Oak: Aha! So you're {PLAYER}!\p"
-	.string "I'm Oak! A Pokémon researcher.\p"
-	.string "I was just visiting my old friend\n"
-	.string "Mr. Pokémon.\p"
-	.string "I heard you were running an errand\n"
-	.string "for Prof. Elm, so I waited here.\p"
-	.string "Oh! What's this? A rare Pokémon!\p"
-	.string "Let's see…\n"
-	.string "Hm, I see!\p"
-	.string "I understand why Prof. Elm gave\n"
-	.string "you a Pokémon for this errand.\p"
-	.string "To researchers like Prof. Elm and\n"
-	.string "I, Pokémon are our friends.\p"
-	.string "He saw that you would treat your\n"
-	.string "Pokémon with love and care.\p"
-	.string "…Ah!\p"
-	.string "You seem to be dependable. How\n"
-	.string "would you like to help me out?\p"
-	.string "See? This is the latest version of\n"
-	.string "the Pokédex.\p"
-	.string "It automatically records data on\n"
-	.string "Pokémon you've seen or caught.\p"
-	.string "It's a hi-tech encyclopedia!\p"
-	.string "It shows their habitats, how\n"
-	.string "they evolve, and their moves.$"
+	.string "Oak: That was worth staying for!\p"
+	.string "I came to hear Kukui's findings,\n"
+	.string "but you've given me another idea.\p"
+	.string "You paid close attention to\n"
+	.string "your Pokémon during that battle.\p"
+	.string "That same care will serve you\n"
+	.string "well on a journey of discovery.\p"
+	.string "I'd like you to take a Pokédex.\p"
+	.string "It records the Pokémon you see\n"
+	.string "and catch during your travels.\p"
+	.string "You can look up their habitats,\n"
+	.string "evolutions, and moves as well.\p"
+	.string "Johto still has surprises for us.\n"
+	.string "Help us discover them!$"
 
 MrPokemonHouse_Text_GetDex:
-	.string "{PLAYER} received Pokédex!$"
+	.string "{PLAYER} received the Pokédex!$"
 
 MrPokemonHouse_Text_OakParting:
-	.string "Go meet many kinds of Pokémon and\n"
-	.string "complete that Pokédex!\p"
-	.string "But I've stayed too long.\p"
-	.string "I have to get to Goldenrod\n"
-	.string "for my usual radio show.\p"
-	.string "{PLAYER}, I'm counting on you!$"
+	.string "Oak: Take your time to observe\n"
+	.string "the Pokémon you meet, {PLAYER}.\p"
+	.string "Even a familiar species may\n"
+	.string "have something new to teach you!\p"
+	.string "Now I must leave for Goldenrod.\n"
+	.string "My radio audience is waiting!\p"
+	.string "Kukui, keep those notes coming.\n"
+	.string "And good luck to both of you!$"
+
+MrPokemonHouse_Text_KukuiOakParting:
+	.string "Kukui: Count on it, Professor!\n"
+	.string "Have a good trip!$"
+
+MrPokemonHouse_Text_LillieParting:
+	.string "Lillie: I should be going too.\n"
+	.string "My mother is waiting for me.\p"
+	.string "I told her I'd only stop by\n"
+	.string "to see Professor Kukui.\p"
+	.string "Now I have a battle to tell\n"
+	.string "her about!\p"
+	.string "Let's meet again, {PLAYER}.\n"
+	.string "We'll have more to show you then.\p"
+	.string "Come along, Vulpix!$"
+
+MrPokemonHouse_Text_Heal:
+	.string "Kukui: Before you head out,\n"
+	.string "let me take care of your Pokémon.\p"
+	.string "A good rest is part of\n"
+	.string "good training!$"
+
+MrPokemonHouse_Text_DependingOnYou:
+	.string "Kukui: I'll stay here and\n"
+	.string "keep working on my research.\p"
+	.string "Give Elm my regards!\n"
+	.string "And drop by whenever you like.$"
+
+MrPokemonHouse_Text_AlwaysNewDiscoveries:
+	.string "Kukui: Alola, {PLAYER}!\n"
+	.string "How's the journey going?\p"
+	.string "I've been comparing Pokémon\n"
+	.string "from Johto with those back home.\p"
+	.string "Different surroundings can mean\n"
+	.string "a very different way of living.\p"
+	.string "Sometimes even a different type!\n"
+	.string "There's always more to learn.$"
 
 MrPokemonHouse_Text_GimmeTheScale:
-	.string "Hm? That Scale! What's that?\n"
-	.string "A red Gyarados?\p"
-	.string "That's rare! I, I want it…\p"
-	.string "{PLAYER}, would you care to\n"
-	.string "trade it?\p"
-	.string "I can offer this Mega Stone\n"
-	.string "that I got from Prof. Oak.$"
+	.string "Kukui: Hold on. That red scale…\n"
+	.string "Did it come from a Gyarados?\p"
+	.string "Now that's something I'd love\n"
+	.string "to examine up close!\p"
+	.string "Would you trade it for a\n"
+	.string "Mega Stone Oak left with me?\p"
+	.string "You could put it to good use,\n"
+	.string "and I could study that scale!$"
 
 MrPokemonHouse_Text_Disappointed:
-	.string "That's disappointing.\n"
-	.string "That happens to be very rare.$"
+	.string "Kukui: No problem!\n"
+	.string "It's quite a keepsake.\p"
+	.string "If you change your mind,\n"
+	.string "you know where to find me!$"
 
-MrPokemonHouse_Text_ExpShare:
-	.string "I also have a special item\n"
-	.string "for you.$"
+MrPokemonHouse_Text_ScaleAccepted:
+	.string "Kukui: Thanks, {PLAYER}!\n"
+	.string "I'll take good care of it.\p"
+	.string "A whole research project,\n"
+	.string "right in the palm of my hand!$"
+
+MrPokemonHouse_Text_ScaleBagFull:
+	.string "Kukui: Make room for the stone\n"
+	.string "first, and we'll make the trade.\p"
+	.string "Keep your scale until then!$"
 
 MrPokemonHouse_Text_ForeignMagazines:
-	.string "It's packed with foreign\n"
-	.string "magazines.\p"
-	.string "Can't even read their titles…$"
+	.string "Research journals from Alola\n"
+	.string "cover the shelves.\p"
+	.string "One article compares Vulpix\n"
+	.string "from different regions.\p"
+	.string "Kukui has filled the margins\n"
+	.string "with handwritten questions.$"
 
 MrPokemonHouse_Text_BrokenComputer:
-	.string "It's a big computer.\n"
-	.string "Hmm. It's broken.$"
+	.string "A computer displays a map\n"
+	.string "of Johto beside a map of Alola.\p"
+	.string "An unfinished report is open:\n"
+	.string "“Regional Forms in Johto.”\p"
+	.string "There are more questions\n"
+	.string "than answers so far.$"
 
 MrPokemonHouse_Text_StrangeCoins:
-	.string "A whole pile of strange coins!\p"
-	.string "Maybe they're from another\n"
-	.string "country…$"
-
-MrPokemonHouse_Text_GotExpShare:
-	.string "{PLAYER} received Eviolite!$"
+	.string "A collection of travel souvenirs\n"
+	.string "is spread across the table.\p"
+	.string "Tickets, coins, and a photograph\n"
+	.string "of a beach in Alola.$"
 `

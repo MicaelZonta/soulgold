@@ -7,6 +7,18 @@ const u16 gTrainerPalette_Hiker[] = INCBIN_U16("graphics/trainers/front_pics/hik
 const u32 gTrainerFrontPic_AquaGruntM[] = INCBIN_U32("graphics/trainers/front_pics/aqua_grunt_m.4bpp.smol");
 const u16 gTrainerPalette_AquaGruntM[] = INCBIN_U16("graphics/trainers/front_pics/aqua_grunt_m.gbapal");
 
+const u32 gTrainerFrontPic_Lusamine[] = INCBIN_U32("graphics/trainers/front_pics/lusamine.4bpp.smol");
+const u16 gTrainerPalette_Lusamine[] = INCBIN_U16("graphics/trainers/front_pics/lusamine.gbapal");
+
+const u32 gTrainerFrontPic_Gladion[] = INCBIN_U32("graphics/trainers/front_pics/gladion.4bpp.smol");
+const u16 gTrainerPalette_Gladion[] = INCBIN_U16("graphics/trainers/front_pics/gladion.gbapal");
+
+const u32 gTrainerFrontPic_Lillie[] = INCBIN_U32("graphics/trainers/front_pics/lillie.4bpp.smol");
+const u16 gTrainerPalette_Lillie[] = INCBIN_U16("graphics/trainers/front_pics/lillie.gbapal");
+
+const u32 gTrainerFrontPic_Kukui[] = INCBIN_U32("graphics/trainers/front_pics/kukui.4bpp.smol");
+const u16 gTrainerPalette_Kukui[] = INCBIN_U16("graphics/trainers/front_pics/kukui.gbapal");
+
 const u32 gTrainerFrontPic_PokemonBreederF[] = INCBIN_U32("graphics/trainers/front_pics/pokemon_breeder_f.4bpp.smol");
 const u16 gTrainerPalette_PokemonBreederF[] = INCBIN_U16("graphics/trainers/front_pics/pokemon_breeder_f.gbapal");
 
@@ -540,6 +552,10 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_SCIENTIST, gTrainerFrontPic_Scientist, gTrainerPalette_Scientist),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_GHOST, gTrainerFrontPic_Ghost, gTrainerPalette_Ghost),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_GAMBLER, gTrainerFrontPic_Gambler, gTrainerPalette_Gambler),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_LUSAMINE, gTrainerFrontPic_Lusamine, gTrainerPalette_Lusamine),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_GLADION, gTrainerFrontPic_Gladion, gTrainerPalette_Gladion),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_LILLIE, gTrainerFrontPic_Lillie, gTrainerPalette_Lillie),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_KUKUI, gTrainerFrontPic_Kukui, gTrainerPalette_Kukui),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =

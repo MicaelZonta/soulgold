@@ -725,7 +725,7 @@ CherrygroveCity_Text_TeacherHaveMapCard:
 # 363 "data/maps/CherrygroveCity/scripts.pory"
 CherrygroveCity_Text_YoungsterNoPokedex:
 # 364 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Mr. Pokémon's house is still\n"
+	.string "Kukui's house is still\n"
 # 365 "data/maps/CherrygroveCity/scripts.pory"
 	.string "farther up ahead.$"
 # 366 "data/maps/CherrygroveCity/scripts.pory"

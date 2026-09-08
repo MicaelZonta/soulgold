@@ -695,20 +695,20 @@ NewBarkTown_Lab_Text_ElmGotAnEmail:
 	.string "Okay…$"
 
 NewBarkTown_Lab_Text_ElmMissionFromMrPokemon:
-	.string "Hey, listen.\p"
-	.string "I have an acquaintance called\n"
-	.string "Mr. Pokémon.\p"
-	.string "He keeps finding weird things and\n"
-	.string "raving about his discoveries.\p"
-	.string "Anyway, I just got an e-mail\n"
-	.string "from him saying that this\l"
-	.string "time it's real.\p"
-	.string "It is intriguing, but we're\n"
-	.string "busy with our Pokémon research...\p"
-	.string "Wait!\n"
-	.string "I know!\p"
-	.string "{PLAYER}, can you go in our\n"
-	.string "place?$"
+	.string "That was Professor Kukui,\n"
+	.string "a researcher from Alola.\p"
+	.string "He's visiting Johto to study\n"
+	.string "Alolan Pokémon spotted here.\p"
+	.string "A Day-Care couple gave him\n"
+	.string "an unusual Egg.\p"
+	.string "He'd like me to examine it!\p"
+	.string "He's working from a house on\n"
+	.string "Route 30, north of Cherrygrove.\p"
+	.string "I'd go myself, but I can't\n"
+	.string "leave the lab right now...\p"
+	.string "Wait! I have an idea!\p"
+	.string "{PLAYER}, could you pick up\n"
+	.string "the Egg for me?$"
 
 NewBarkTown_Lab_Text_ElmChooseAPokemon:
 	.string "I want you to raise one of\n"
@@ -749,14 +749,13 @@ NewBarkTown_Lab_Text_Nickname:
 	.string "{STR_VAR_1} a nickname?$"
 
 NewBarkTown_Lab_Text_ElmDirections1:
-	.string "Mr. Pokémon lives a little bit\n"
-	.string "beyond Cherrygrove, the next\l"
-	.string "city over.\p"
-	.string "It's almost a direct route\n"
-	.string "there, so you can't miss it.\p"
-	.string "But just in case, you have my\n"
-	.string "phone number. Call me if\l"
-	.string "anything comes up!$"
+	.string "Kukui is staying in a house\n"
+	.string "on Route 30, just north of\l"
+	.string "Cherrygrove City.\p"
+	.string "Head west to Cherrygrove,\n"
+	.string "then follow the road north.\p"
+	.string "You have my phone number,\n"
+	.string "so call me if you need help!$"
 
 
 NewBarkTown_Lab_Text_ElmLetYourMonBattle:
@@ -776,10 +775,10 @@ NewBarkTown_Lab_Text_GotElmsNumber:
 	.string "number.$"
 
 NewBarkTown_Lab_Text_ElmDescribesMrPokemon:
-	.string "Mr. Pokémon goes everywhere and\n"
-	.string "finds rarities.\p"
-	.string "Too bad they're just rare and\n"
-	.string "not very useful…$"
+	.string "Kukui says familiar Pokémon\n"
+	.string "can look quite different in Alola.\p"
+	.string "Even their types can change!\n"
+	.string "I'd love to study how they adapt.$"
 
 NewBarkTown_Lab_Text_ElmPokeBall:
 	.string "It contains Pokémon caught\n"
@@ -789,7 +788,7 @@ NewBarkTown_Lab_Text_ElmPokeBall:
 
 NewBarkTown_Lab_Text_ElmAfterTheft1:
 	.string "Elm: {PLAYER}, this is terrible…\p"
-	.string "Oh, yes, what was Mr. Pokémon's\n"
+	.string "Oh, yes, what was Kukui's\n"
 	.string "big discovery?$"
 
 NewBarkTown_Lab_Text_ElmAfterTheft2:

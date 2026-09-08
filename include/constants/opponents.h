@@ -942,10 +942,10 @@
 #define TRAINER_UNUSED_97                 961
 #define TRAINER_UNUSED_98                 962
 #define TRAINER_UNUSED_99                 963
-#define TRAINER_UNUSED_100                964
-#define TRAINER_UNUSED_101                965
-#define TRAINER_UNUSED_102                966
-#define TRAINER_UNUSED_103                967
+#define TRAINER_LUSAMINE                  964
+#define TRAINER_LILLIE                    965
+#define TRAINER_KUKUI                     966
+#define TRAINER_GLADION                   967
 #define TRAINER_UNUSED_104                968
 #define TRAINER_UNUSED_105                969
 #define TRAINER_UNUSED_106                970

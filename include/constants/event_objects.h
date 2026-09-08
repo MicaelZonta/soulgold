@@ -334,11 +334,16 @@
 #define OBJ_EVENT_GFX_RUIN_MANIAC               327
 #define OBJ_EVENT_GFX_PORTAL                    328
 #define OBJ_EVENT_GFX_TIMEGEAR                  329
+#define OBJ_EVENT_GFX_LUSAMINE                  330
+#define OBJ_EVENT_GFX_LILLIE                     331
+#define OBJ_EVENT_GFX_KUKUI                      332
+#define OBJ_EVENT_GFX_GLADION                    333
+#define OBJ_EVENT_GFX_LOOKER                     334
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        330
+#define NUM_OBJ_EVENT_GFX                        335
 
 
 // These are dynamic object gfx ids.
@@ -507,6 +512,10 @@
 #define OBJ_EVENT_PAL_TAG_BLAINE                  0x1149
 #define OBJ_EVENT_PAL_TAG_PORTAL                  0x114A
 #define OBJ_EVENT_PAL_TAG_TIMEGEAR                0x114B
+#define OBJ_EVENT_PAL_TAG_LUSAMINE                0x114C
+#define OBJ_EVENT_PAL_TAG_LILLIE                  0x114D
+#define OBJ_EVENT_PAL_TAG_KUKUI                   0x114E
+#define OBJ_EVENT_PAL_TAG_GLADION                 0x114F
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla
@@ -543,6 +552,7 @@
 // Gen VIII
 #define OBJ_EVENT_PAL_TAG_BALL_STRANGE            0x116A
 #endif //OW_FOLLOWERS_POKEBALLS
+#define OBJ_EVENT_PAL_TAG_LOOKER                  0x116B
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

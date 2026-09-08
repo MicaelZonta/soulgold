@@ -311,185 +311,285 @@ Route29_EventScript_Sign::
 # 156 "data/maps/Route29/scripts.pory"
 
 # 157 "data/maps/Route29/scripts.pory"
-Route29_Text_OldMan1:
+Route29_EventScript_Lusamine::
 # 158 "data/maps/Route29/scripts.pory"
-	.string "Pokémon hide in the grass.\n"
+	trainerbattle_single TRAINER_LUSAMINE, Route29_Text_LusamineSeen, Route29_Text_LusamineBeaten
 # 159 "data/maps/Route29/scripts.pory"
-	.string "Who knows when they'll pop out…$"
+	msgbox Route29_Text_LusamineAfterBattle, MSGBOX_AUTOCLOSE
 # 160 "data/maps/Route29/scripts.pory"
-
+	end
 # 161 "data/maps/Route29/scripts.pory"
-Route29_Text_OldMan2:
+
 # 162 "data/maps/Route29/scripts.pory"
-	.string "I've seen you a couple times.\n"
+Route29_EventScript_Gladion::
 # 163 "data/maps/Route29/scripts.pory"
-	.string "How many Pokémon have you caught?\p"
+	trainerbattle_single TRAINER_GLADION, Route29_Text_GladionSeen, Route29_Text_GladionBeaten
 # 164 "data/maps/Route29/scripts.pory"
-	.string "Would you like me to tell you\n"
+	msgbox Route29_Text_GladionAfterBattle, MSGBOX_AUTOCLOSE
 # 165 "data/maps/Route29/scripts.pory"
-	.string "how to catch Pokémon?$"
+	end
 # 166 "data/maps/Route29/scripts.pory"
 
 # 167 "data/maps/Route29/scripts.pory"
-Route29_Text_OldManExplanation:
+Route29_EventScript_Looker::
 # 168 "data/maps/Route29/scripts.pory"
-	.string "If you weaken them first,\n"
+	lock
 # 169 "data/maps/Route29/scripts.pory"
-	.string "Pokémon are easier to catch.\p"
+	faceplayer
 # 170 "data/maps/Route29/scripts.pory"
-	.string "Then, throw a ball at them from\n"
+	msgbox Route29_Text_Looker, MSGBOX_DEFAULT
 # 171 "data/maps/Route29/scripts.pory"
-	.string "your bag! Any ball will do.\p"
+	closemessage
 # 172 "data/maps/Route29/scripts.pory"
-	.string "If you want to learn more,\n"
+	release
 # 173 "data/maps/Route29/scripts.pory"
-	.string "go to the Academy in Violet City!\p"
+	end
 # 174 "data/maps/Route29/scripts.pory"
-	.string "The students there know a lot\n"
+
 # 175 "data/maps/Route29/scripts.pory"
-	.string "about Pokémon.$"
+Route29_Text_OldMan1:
 # 176 "data/maps/Route29/scripts.pory"
-
+	.string "Pokémon hide in the grass.\n"
 # 177 "data/maps/Route29/scripts.pory"
-Route29_Text_OldManDeclined:
+	.string "Who knows when they'll pop out…$"
 # 178 "data/maps/Route29/scripts.pory"
-	.string "Oh. Fine, then.\p"
+
 # 179 "data/maps/Route29/scripts.pory"
-	.string "Check every route to find\n"
+Route29_Text_OldMan2:
 # 180 "data/maps/Route29/scripts.pory"
-	.string "different types of Pokémon.\p"
+	.string "I've seen you a couple times.\n"
 # 181 "data/maps/Route29/scripts.pory"
-	.string "Your Pokédex shows where you can\n"
+	.string "How many Pokémon have you caught?\p"
 # 182 "data/maps/Route29/scripts.pory"
-	.string "find them too!\p"
+	.string "Would you like me to tell you\n"
 # 183 "data/maps/Route29/scripts.pory"
-	.string "If you want to learn more,\n"
+	.string "how to catch Pokémon?$"
 # 184 "data/maps/Route29/scripts.pory"
-	.string "go to the Academy in Violet City!\p"
+
 # 185 "data/maps/Route29/scripts.pory"
-	.string "The students know a lot about\n"
+Route29_Text_OldManExplanation:
 # 186 "data/maps/Route29/scripts.pory"
-	.string "Pokémon.$"
+	.string "If you weaken them first,\n"
 # 187 "data/maps/Route29/scripts.pory"
-
+	.string "Pokémon are easier to catch.\p"
 # 188 "data/maps/Route29/scripts.pory"
-Route29_Text_Youngster:
+	.string "Then, throw a ball at them from\n"
 # 189 "data/maps/Route29/scripts.pory"
-	.string "Yo. How are your Pokémon?\p"
+	.string "your bag! Any ball will do.\p"
 # 190 "data/maps/Route29/scripts.pory"
-	.string "If they're weak and not ready\n"
+	.string "If you want to learn more,\n"
 # 191 "data/maps/Route29/scripts.pory"
-	.string "for battle, keep out of the grass.$"
+	.string "go to the Academy in Violet City!\p"
 # 192 "data/maps/Route29/scripts.pory"
-
+	.string "The students there know a lot\n"
 # 193 "data/maps/Route29/scripts.pory"
-Route29_Text_Lass:
+	.string "about Pokémon.$"
 # 194 "data/maps/Route29/scripts.pory"
-	.string "See those ledges?\n"
+
 # 195 "data/maps/Route29/scripts.pory"
-	.string "It's scary to jump off them.\p"
+Route29_Text_OldManDeclined:
 # 196 "data/maps/Route29/scripts.pory"
-	.string "But you can go to New Bark\n"
+	.string "Oh. Fine, then.\p"
 # 197 "data/maps/Route29/scripts.pory"
-	.string "without walking through the grass.$"
+	.string "Check every route to find\n"
 # 198 "data/maps/Route29/scripts.pory"
-
+	.string "different types of Pokémon.\p"
 # 199 "data/maps/Route29/scripts.pory"
-Route29_Text_Girl:
+	.string "Your Pokédex shows where you can\n"
 # 200 "data/maps/Route29/scripts.pory"
-	.string "I wanted to take a break,\n"
+	.string "find them too!\p"
 # 201 "data/maps/Route29/scripts.pory"
-	.string "so I saved to record my progress.$"
+	.string "If you want to learn more,\n"
 # 202 "data/maps/Route29/scripts.pory"
-
+	.string "go to the Academy in Violet City!\p"
 # 203 "data/maps/Route29/scripts.pory"
-Route29_Text_Boy_WaitingForDay:
+	.string "The students know a lot about\n"
 # 204 "data/maps/Route29/scripts.pory"
-	.string "I'm waiting for Pokémon that\n"
+	.string "Pokémon.$"
 # 205 "data/maps/Route29/scripts.pory"
-	.string "appear only later in the day.$"
-# 206 "data/maps/Route29/scripts.pory"
 
+# 206 "data/maps/Route29/scripts.pory"
+Route29_Text_Youngster:
 # 207 "data/maps/Route29/scripts.pory"
-Route29_Text_Boy_WaitingForNight:
+	.string "Yo. How are your Pokémon?\p"
 # 208 "data/maps/Route29/scripts.pory"
-	.string "I'm waiting for Pokémon that\n"
+	.string "If they're weak and not ready\n"
 # 209 "data/maps/Route29/scripts.pory"
-	.string "appear only at night.$"
+	.string "for battle, keep out of the grass.$"
 # 210 "data/maps/Route29/scripts.pory"
 
 # 211 "data/maps/Route29/scripts.pory"
-Route29_Text_MeetTuscany:
+Route29_Text_Lass:
 # 212 "data/maps/Route29/scripts.pory"
-	.string "Tuscany: I do believe that this\n"
+	.string "See those ledges?\n"
 # 213 "data/maps/Route29/scripts.pory"
-	.string "is the first time we've met?\p"
+	.string "It's scary to jump off them.\p"
 # 214 "data/maps/Route29/scripts.pory"
-	.string "I'm Tuscany of the Weekday Family.\p"
+	.string "But you can go to New Bark\n"
 # 215 "data/maps/Route29/scripts.pory"
-	.string "If you can guess my favorite day,\n"
+	.string "without walking through the grass.$"
 # 216 "data/maps/Route29/scripts.pory"
-	.string "I'll give you a reward.$"
-# 217 "data/maps/Route29/scripts.pory"
 
+# 217 "data/maps/Route29/scripts.pory"
+Route29_Text_Girl:
 # 218 "data/maps/Route29/scripts.pory"
-Route29_Text_TuscanyNope:
+	.string "I wanted to take a break,\n"
 # 219 "data/maps/Route29/scripts.pory"
-	.string "Not quite!$"
+	.string "so I saved to record my progress.$"
 # 220 "data/maps/Route29/scripts.pory"
 
 # 221 "data/maps/Route29/scripts.pory"
-Route29_Text_TuscanyGivesGift:
+Route29_Text_Boy_WaitingForDay:
 # 222 "data/maps/Route29/scripts.pory"
-	.string "Yes! By way of introduction,\n"
+	.string "I'm waiting for Pokémon that\n"
 # 223 "data/maps/Route29/scripts.pory"
-	.string "please accept this gift, a Silk\l"
+	.string "appear only later in the day.$"
 # 224 "data/maps/Route29/scripts.pory"
-	.string "Scarf.$"
+
 # 225 "data/maps/Route29/scripts.pory"
-
+Route29_Text_Boy_WaitingForNight:
 # 226 "data/maps/Route29/scripts.pory"
-Route29_Text_TuscanyGaveGift:
+	.string "I'm waiting for Pokémon that\n"
 # 227 "data/maps/Route29/scripts.pory"
-	.string "Tuscany: Wouldn't you agree\n"
+	.string "appear only at night.$"
 # 228 "data/maps/Route29/scripts.pory"
-	.string "that it is most adorable?\p"
+
 # 229 "data/maps/Route29/scripts.pory"
-	.string "It strengthens Normal-type\n"
+Route29_Text_MeetTuscany:
 # 230 "data/maps/Route29/scripts.pory"
-	.string "moves.\p"
+	.string "Tuscany: I do believe that this\n"
 # 231 "data/maps/Route29/scripts.pory"
-	.string "I am certain it will be of use.$"
+	.string "is the first time we've met?\p"
 # 232 "data/maps/Route29/scripts.pory"
-
+	.string "I'm Tuscany of the Weekday Family.\p"
 # 233 "data/maps/Route29/scripts.pory"
-Route29_Text_TuscanyTuesday:
+	.string "If you can guess my favorite day,\n"
 # 234 "data/maps/Route29/scripts.pory"
-	.string "Tuscany: Have you met Monica,\n"
+	.string "I'll give you a reward.$"
 # 235 "data/maps/Route29/scripts.pory"
-	.string "my older sister?\p"
-# 236 "data/maps/Route29/scripts.pory"
-	.string "Or my younger brother, Wesley?\p"
-# 237 "data/maps/Route29/scripts.pory"
-	.string "I am the third of seven\n"
-# 238 "data/maps/Route29/scripts.pory"
-	.string "children.$"
-# 239 "data/maps/Route29/scripts.pory"
 
+# 236 "data/maps/Route29/scripts.pory"
+Route29_Text_TuscanyNope:
+# 237 "data/maps/Route29/scripts.pory"
+	.string "Not quite!$"
+# 238 "data/maps/Route29/scripts.pory"
+
+# 239 "data/maps/Route29/scripts.pory"
+Route29_Text_TuscanyGivesGift:
 # 240 "data/maps/Route29/scripts.pory"
-Route29_Text_Sign1:
+	.string "Yes! By way of introduction,\n"
 # 241 "data/maps/Route29/scripts.pory"
-	.string "Route 29\p"
+	.string "please accept this gift, a Silk\l"
 # 242 "data/maps/Route29/scripts.pory"
+	.string "Scarf.$"
+# 243 "data/maps/Route29/scripts.pory"
+
+# 244 "data/maps/Route29/scripts.pory"
+Route29_Text_TuscanyGaveGift:
+# 245 "data/maps/Route29/scripts.pory"
+	.string "Tuscany: Wouldn't you agree\n"
+# 246 "data/maps/Route29/scripts.pory"
+	.string "that it is most adorable?\p"
+# 247 "data/maps/Route29/scripts.pory"
+	.string "It strengthens Normal-type\n"
+# 248 "data/maps/Route29/scripts.pory"
+	.string "moves.\p"
+# 249 "data/maps/Route29/scripts.pory"
+	.string "I am certain it will be of use.$"
+# 250 "data/maps/Route29/scripts.pory"
+
+# 251 "data/maps/Route29/scripts.pory"
+Route29_Text_TuscanyTuesday:
+# 252 "data/maps/Route29/scripts.pory"
+	.string "Tuscany: Have you met Monica,\n"
+# 253 "data/maps/Route29/scripts.pory"
+	.string "my older sister?\p"
+# 254 "data/maps/Route29/scripts.pory"
+	.string "Or my younger brother, Wesley?\p"
+# 255 "data/maps/Route29/scripts.pory"
+	.string "I am the third of seven\n"
+# 256 "data/maps/Route29/scripts.pory"
+	.string "children.$"
+# 257 "data/maps/Route29/scripts.pory"
+
+# 258 "data/maps/Route29/scripts.pory"
+Route29_Text_Sign1:
+# 259 "data/maps/Route29/scripts.pory"
+	.string "Route 29\p"
+# 260 "data/maps/Route29/scripts.pory"
 	.string "Cherrygrove City - New Bark Town$"
+# 261 "data/maps/Route29/scripts.pory"
+
+# 262 "data/maps/Route29/scripts.pory"
+Route29_Text_LusamineSeen:
+# 263 "data/maps/Route29/scripts.pory"
+	.string "Lusamine: …Interesting.\p"
+# 264 "data/maps/Route29/scripts.pory"
+	.string "This world has so much more\n"
+# 265 "data/maps/Route29/scripts.pory"
+	.string "to offer than I imagined.\p"
+# 266 "data/maps/Route29/scripts.pory"
+	.string "Show me what your Pokémon\n"
+# 267 "data/maps/Route29/scripts.pory"
+	.string "can do.$"
+# 268 "data/maps/Route29/scripts.pory"
+
+# 269 "data/maps/Route29/scripts.pory"
+Route29_Text_LusamineBeaten:
+# 270 "data/maps/Route29/scripts.pory"
+	.string "Lusamine: My, how curious.$"
+# 271 "data/maps/Route29/scripts.pory"
+
+# 272 "data/maps/Route29/scripts.pory"
+Route29_Text_LusamineAfterBattle:
+# 273 "data/maps/Route29/scripts.pory"
+	.string "Lusamine: …Interesting.$"
+# 274 "data/maps/Route29/scripts.pory"
+
+# 275 "data/maps/Route29/scripts.pory"
+Route29_Text_GladionSeen:
+# 276 "data/maps/Route29/scripts.pory"
+	.string "Gladion: …\p"
+# 277 "data/maps/Route29/scripts.pory"
+	.string "Don't get the wrong idea. I'm\n"
+# 278 "data/maps/Route29/scripts.pory"
+	.string "just passing through.\p"
+# 279 "data/maps/Route29/scripts.pory"
+	.string "…Fine. Let's make this quick.$"
+# 280 "data/maps/Route29/scripts.pory"
+
+# 281 "data/maps/Route29/scripts.pory"
+Route29_Text_GladionBeaten:
+# 282 "data/maps/Route29/scripts.pory"
+	.string "Gladion: …Tch.$"
+# 283 "data/maps/Route29/scripts.pory"
+
+# 284 "data/maps/Route29/scripts.pory"
+Route29_Text_GladionAfterBattle:
+# 285 "data/maps/Route29/scripts.pory"
+	.string "Gladion: I told you, I'm just\n"
+# 286 "data/maps/Route29/scripts.pory"
+	.string "passing through.$"
+# 287 "data/maps/Route29/scripts.pory"
+
+# 288 "data/maps/Route29/scripts.pory"
+Route29_Text_Looker:
+# 289 "data/maps/Route29/scripts.pory"
+	.string "Looker: Hmm? Oh, pay no\n"
+# 290 "data/maps/Route29/scripts.pory"
+	.string "attention to moi.\p"
+# 291 "data/maps/Route29/scripts.pory"
+	.string "I am merely… keeping an eye\n"
+# 292 "data/maps/Route29/scripts.pory"
+	.string "on this curious gathering.$"
 
 Route29ExNightNpc::
-# 247 "data/maps/Route29/scripts.pory"
+# 297 "data/maps/Route29/scripts.pory"
 	msgbox Route29ExNightNpc_Text_0, MSGBOX_NPC
 	return
 
 
 Route29ExNightNpc_Text_0:
-# 247 "data/maps/Route29/scripts.pory"
+# 297 "data/maps/Route29/scripts.pory"
 	.string "I'm checking my Pokégear for a map\n"
 	.string "to see where I am going!$"

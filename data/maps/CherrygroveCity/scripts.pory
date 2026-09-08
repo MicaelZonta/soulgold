@@ -361,7 +361,7 @@ CherrygroveCity_Text_TeacherHaveMapCard:
 	.string "going anywhere is fun.$"
 
 CherrygroveCity_Text_YoungsterNoPokedex:
-	.string "Mr. Pokémon's house is still\n"
+	.string "Kukui's house is still\n"
 	.string "farther up ahead.$"
 
 CherrygroveCity_Text_YoungsterHavePokedex:

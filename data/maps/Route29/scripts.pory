@@ -154,6 +154,24 @@ Route29_EventScript_Sign::
 	release
 	end
 
+Route29_EventScript_Lusamine::
+	trainerbattle_single TRAINER_LUSAMINE, Route29_Text_LusamineSeen, Route29_Text_LusamineBeaten
+	msgbox Route29_Text_LusamineAfterBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route29_EventScript_Gladion::
+	trainerbattle_single TRAINER_GLADION, Route29_Text_GladionSeen, Route29_Text_GladionBeaten
+	msgbox Route29_Text_GladionAfterBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route29_EventScript_Looker::
+	lock
+	faceplayer
+	msgbox Route29_Text_Looker, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
 Route29_Text_OldMan1:
 	.string "Pokémon hide in the grass.\n"
 	.string "Who knows when they'll pop out…$"
@@ -240,6 +258,38 @@ Route29_Text_TuscanyTuesday:
 Route29_Text_Sign1:
 	.string "Route 29\p"
 	.string "Cherrygrove City - New Bark Town$"
+
+Route29_Text_LusamineSeen:
+	.string "Lusamine: …Interesting.\p"
+	.string "This world has so much more\n"
+	.string "to offer than I imagined.\p"
+	.string "Show me what your Pokémon\n"
+	.string "can do.$"
+
+Route29_Text_LusamineBeaten:
+	.string "Lusamine: My, how curious.$"
+
+Route29_Text_LusamineAfterBattle:
+	.string "Lusamine: …Interesting.$"
+
+Route29_Text_GladionSeen:
+	.string "Gladion: …\p"
+	.string "Don't get the wrong idea. I'm\n"
+	.string "just passing through.\p"
+	.string "…Fine. Let's make this quick.$"
+
+Route29_Text_GladionBeaten:
+	.string "Gladion: …Tch.$"
+
+Route29_Text_GladionAfterBattle:
+	.string "Gladion: I told you, I'm just\n"
+	.string "passing through.$"
+
+Route29_Text_Looker:
+	.string "Looker: Hmm? Oh, pay no\n"
+	.string "attention to moi.\p"
+	.string "I am merely… keeping an eye\n"
+	.string "on this curious gathering.$"
 
 `
 

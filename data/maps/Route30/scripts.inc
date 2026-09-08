@@ -161,7 +161,7 @@ Route30_Text_BugCatcherDonAfter:
 	.string "I should've bought some more…$"
 
 Route30_Text_YoungsterDirectionsToMrPokemon:
-	.string "Mr. Pokémon's house?\n"
+	.string "Kukui's house?\n"
 	.string "It's a bit farther ahead.$"
 
 Route30_Text_YoungsterEveryoneIsBattling:
@@ -179,11 +179,11 @@ Route30_Text_Sign:
 	.string "Violet City - Cherrygrove City$"
 
 Route30_Text_MrPokemonsHouseDirectionsSign:
-	.string "Mr. Pokémon's House\n"
+	.string "Kukui's House\n"
 	.string "Straight Ahead!$"
 
 Route30_Text_MrPokemonsHouseSign:
-	.string "Mr. Pokémon's House$"
+	.string "Kukui's House$"
 
 Route30_Text_TrainerTips:
 	.string "Trainer Tips\p"
