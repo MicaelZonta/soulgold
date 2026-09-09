@@ -49,7 +49,7 @@ VioletCity_EventScript_Trigger::
 # 25 "data/maps/VioletCity/scripts.pory"
 	@LOCAL FLAGHEAP
 # 26 "data/maps/VioletCity/scripts.pory"
-	clearflag FLAG_RECEIVED_TOGEPI_EGG
+	clearflag FLAG_RECEIVED_MYSTERY_EGG
 # 27 "data/maps/VioletCity/scripts.pory"
 	clearflag FLAG_VIOLET_NPC_TRADE_COMPLETED
 # 28 "data/maps/VioletCity/scripts.pory"

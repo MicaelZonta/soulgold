@@ -73,8 +73,8 @@ NewBarkTown_Lab_EventScript_Elm::
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 9, NewBarkTown_Lab_EventScript_ElmLeague
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 10, NewBarkTown_Lab_EventScript_ElmPostgameHint
 
-	goto_if_set FLAG_SHOWN_ELM_TOGEPI, NewBarkTown_Lab_EventScript_Elm_CallMe
-	call_if_unset FLAG_SHOWN_ELM_TOGEPI, NewBarkTown_Lab_EventScript_Elm_Check_Togepi
+	goto_if_set FLAG_SHOWN_ELM_COSMOG, NewBarkTown_Lab_EventScript_Elm_CallMe
+	call_if_unset FLAG_SHOWN_ELM_COSMOG, NewBarkTown_Lab_EventScript_Elm_Check_Cosmog
 	goto_if_ge VAR_GOLDENROD_CITY_STATE, 1, NewBarkTown_Lab_EventScript_Elm_Check_WhereIsEgg
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 5, NewBarkTown_Lab_EventScript_ElmState5
 
@@ -503,25 +503,53 @@ NewBarkTown_Lab_EventScript_Elm_Check_WhereIsEgg::
 	release
 	end
 
-NewBarkTown_Lab_EventScript_Elm_Check_Togepi::
-	specialvar VAR_RESULT, CheckTogepi
-	goto_if_eq VAR_RESULT, TRUE, NewBarkTown_Lab_EventScript_Elm_Togepi_Seen
+NewBarkTown_Lab_EventScript_Elm_Check_Cosmog::
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
+	goto_if_eq VAR_RESULT, SPECIES_COSMOG, NewBarkTown_Lab_EventScript_Elm_Cosmog_Seen
+	goto_if_eq VAR_RESULT, SPECIES_COSMOEM, NewBarkTown_Lab_EventScript_Elm_Cosmog_Evolved_Seen
+	goto_if_eq VAR_RESULT, SPECIES_SOLGALEO, NewBarkTown_Lab_EventScript_Elm_Cosmog_Evolved_Seen
+	goto_if_eq VAR_RESULT, SPECIES_LUNALA, NewBarkTown_Lab_EventScript_Elm_Cosmog_Evolved_Seen
 	return
 
-NewBarkTown_Lab_EventScript_Elm_Togepi_Seen::
-	msgbox NewBarkTown_Lab_Text_ShowTogepi1, MSGBOX_DEFAULT
+NewBarkTown_Lab_EventScript_Elm_Cosmog_Seen::
+	createfieldmugshot MUGSHOT_ELM
+	msgbox NewBarkTown_Lab_Text_CosmogVisitIntro, MSGBOX_DEFAULT
 	waitmessage
-	msgbox NewBarkTown_Lab_Text_ShowTogepi2, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_CosmogObservation, MSGBOX_DEFAULT
 	waitmessage
-	msgbox NewBarkTown_Lab_Text_ShowTogepi3, MSGBOX_DEFAULT
+	goto NewBarkTown_Lab_EventScript_Elm_Cosmog_Reward
+
+NewBarkTown_Lab_EventScript_Elm_Cosmog_Evolved_Seen::
+	createfieldmugshot MUGSHOT_ELM
+	msgbox NewBarkTown_Lab_Text_CosmogVisitIntro, MSGBOX_DEFAULT
 	waitmessage
-	msgbox NewBarkTown_Lab_Text_ElmGiveEverstone1, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_CosmogEvolvedObservation, MSGBOX_DEFAULT
 	waitmessage
-	giveitem ITEM_SHINY_STONE
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	msgbox NewBarkTown_Lab_Text_ElmGiveEverstone2, MSGBOX_DEFAULT
+
+NewBarkTown_Lab_EventScript_Elm_Cosmog_Reward::
+	msgbox NewBarkTown_Lab_Text_CosmogResearchNotes, MSGBOX_DEFAULT
+	waitmessage
+	msgbox NewBarkTown_Lab_Text_CosmogCare, MSGBOX_DEFAULT
+	waitmessage
+	msgbox NewBarkTown_Lab_Text_CosmogOfferEviolite, MSGBOX_DEFAULT
+	waitmessage
 	closemessage
-	setflag FLAG_SHOWN_ELM_TOGEPI
+	removefieldmugshot
+	giveitem ITEM_EVIOLITE
+	goto_if_eq VAR_RESULT, FALSE, NewBarkTown_Lab_EventScript_Elm_Cosmog_BagFull
+	setflag FLAG_SHOWN_ELM_COSMOG
+	createfieldmugshot MUGSHOT_ELM
+	msgbox NewBarkTown_Lab_Text_CosmogExplainEviolite, MSGBOX_DEFAULT
+	waitmessage
+	msgbox NewBarkTown_Lab_Text_CosmogFarewell, MSGBOX_DEFAULT
+	closemessage
+	removefieldmugshot
+	release
+	end
+
+NewBarkTown_Lab_EventScript_Elm_Cosmog_BagFull::
+	msgbox NewBarkTown_Lab_Text_CosmogBagFull, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 
@@ -844,32 +872,75 @@ NewBarkTown_Lab_Text_ElmThoughtEggHatched:
 	.string "hatched.\p"
 	.string "Where is the Pokémon?$"
 
-NewBarkTown_Lab_Text_ShowTogepi1:
-	.string "Elm: {PLAYER}, you look great!$"
+NewBarkTown_Lab_Text_CosmogVisitIntro:
+	.string "Elm: {PLAYER}! You came back!\p"
+	.string "And you brought the Pokémon\n"
+	.string "from Kukui's Egg?\p"
+	.string "Let me put these notes aside.\n"
+	.string "I'd like a closer look!$"
 
-NewBarkTown_Lab_Text_ShowTogepi2:
-	.string "What? That Pokémon!?!$"
+NewBarkTown_Lab_Text_CosmogObservation:
+	.string "So this is Cosmog...\p"
+	.string "It looks as though a piece\n"
+	.string "of the night sky drifted inside!\p"
+	.string "To think it was tucked away\n"
+	.string "in that little Egg all along.\p"
+	.string "Hmm... Where did I put\n"
+	.string "my other notebook?$"
 
-NewBarkTown_Lab_Text_ShowTogepi3:
-	.string "The Egg hatched! So, Pokémon\n"
-	.string "are born from Eggs…\p"
-	.string "No, perhaps not all Pokémon\n"
-	.string "are.\p"
-	.string "Wow, there's still a lot of\n"
-	.string "research to be done.$"
+NewBarkTown_Lab_Text_CosmogEvolvedObservation:
+	.string "It's already evolved?\n"
+	.string "I have some catching up to do!\p"
+	.string "What was it like when\n"
+	.string "it first came out of the Egg?\p"
+	.string "Even a small detail could help.\n"
+	.string "Let me find a fresh page!$"
 
-NewBarkTown_Lab_Text_ElmGiveEverstone1:
-	.string "Thanks, {PLAYER}! You're helping\n"
-	.string "unravel Pokémon mysteries for us!\p"
-	.string "I want you to have this as a\n"
-	.string "token of our appreciation.$"
+NewBarkTown_Lab_Text_CosmogResearchNotes:
+	.string "Kukui sent me one Egg,\n"
+	.string "and now I have a hundred questions.\p"
+	.string "I'll send him my observations.\n"
+	.string "He may know where to start.\p"
+	.string "I suspect his reply will bring\n"
+	.string "a few more questions too!$"
 
-NewBarkTown_Lab_Text_ElmGiveEverstone2:
-	.string "That's a Shiny Stone.\p"
-	.string "Some species of Pokémon evolve\n"
-	.string "when they grow to certain levels.\p"
-	.string "A Togetic will evolve\n"
-	.string "with this one.$"
+NewBarkTown_Lab_Text_CosmogCare:
+	.string "Oh, listen to me rambling.\n"
+	.string "You're here for a visit!\p"
+	.string "Thank you for taking care\n"
+	.string "of this Pokémon, {PLAYER}.\p"
+	.string "You get to see things together\n"
+	.string "that I'd never see in this lab.$"
+
+NewBarkTown_Lab_Text_CosmogOfferEviolite:
+	.string "Actually, I have something\n"
+	.string "for your travels.\p"
+	.string "I've been keeping it here\n"
+	.string "for a young Trainer to use.$"
+
+NewBarkTown_Lab_Text_CosmogBagFull:
+	.string "Oh! There's no room\n"
+	.string "in your Bag right now.\p"
+	.string "Make some space and come back.\n"
+	.string "I'll keep it safe for you!$"
+
+NewBarkTown_Lab_Text_CosmogExplainEviolite:
+	.string "That's an Eviolite.\p"
+	.string "Have a Pokémon that can still\n"
+	.string "evolve hold it. It will boost\l"
+	.string "its Defense and Sp. Def.\p"
+	.string "A little extra protection\n"
+	.string "while it's growing!\p"
+	.string "You can give it to whichever\n"
+	.string "partner needs it most.$"
+
+NewBarkTown_Lab_Text_CosmogFarewell:
+	.string "If you notice anything unusual,\n"
+	.string "you have my number.\p"
+	.string "Now, where was that notebook...?\n"
+	.string "Ah! Under the first one.\p"
+	.string "Take care, {PLAYER}.\n"
+	.string "Both of you!$"
 
 NewBarkTown_Lab_Text_ElmCallYou:
 	.string "Elm: {PLAYER}, I'll call you if\n"

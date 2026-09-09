@@ -797,7 +797,7 @@
 #define FLAG_HIDE_ILEX_FOREST_KURT                                  0x2EA
 #define FLAG_MOVE_TUTOR_TAUGHT_HEADBUTT                             0x2EB
 #define FLAG_GOLDENROD_CITY_AIDE_VISITED                            0x2EC
-#define FLAG_SHOWN_ELM_TOGEPI                                       0x2ED
+#define FLAG_SHOWN_ELM_COSMOG                                       0x2ED // Formerly FLAG_SHOWN_ELM_TOGEPI; ID preserved for existing saves
 #define FLAG_HIDE_AZALEA_ARIADOS_LEFT                               0x2EE
 #define FLAG_HIDE_AZALEA_ARIADOS_MID                                0x2EF
 #define FLAG_HIDE_AZALEA_ARIADOS_RIGHT                              0x2F0
@@ -937,7 +937,7 @@
 #define FLAG_DELIVERED_EGG                                          0x376
 #define FLAG_HIDE_MRPOKEMON                                         0x377
 #define FLAG_HIDE_BATTLE_TOWER_OPPONENT                             0x378
-#define FLAG_RECEIVED_TOGEPI_EGG                                    0x379
+#define FLAG_RECEIVED_MYSTERY_EGG                                   0x379 // Formerly FLAG_RECEIVED_TOGEPI_EGG; ID preserved for existing saves
 #define FLAG_HIDE_VIOLET_CITY_AIDE                                  0x37A
 #define FLAG_HIDE_SPROUT_TOWER_SILVER                               0x37B
 #define FLAG_HIDE_JOHTO_GYM_LEADERS                                 0x37C

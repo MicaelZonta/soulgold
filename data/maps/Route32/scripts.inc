@@ -437,7 +437,7 @@ Route32_EventScript_BaldingManCheck::
 # 219 "data/maps/Route32/scripts.pory"
 	goto_if_unset FLAG_DEFEATED_VIOLET_GYM, Route32_EventScript_BaldingManGym
 # 220 "data/maps/Route32/scripts.pory"
-	goto_if_unset FLAG_RECEIVED_TOGEPI_EGG, Route32_EventScript_BaldingManEgg
+	goto_if_unset FLAG_RECEIVED_MYSTERY_EGG, Route32_EventScript_BaldingManEgg
 # 221 "data/maps/Route32/scripts.pory"
 	msgbox Route32_Text_CooltrainerM_HaveThisSeed, MSGBOX_DEFAULT
 # 222 "data/maps/Route32/scripts.pory"

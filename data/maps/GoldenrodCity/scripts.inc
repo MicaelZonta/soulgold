@@ -25,7 +25,7 @@ GoldenrodCity_OnLoad::
 # 13 "data/maps/GoldenrodCity/scripts.pory"
 GoldenrodCity_EventScript_Trigger:: @flagheap
 # 14 "data/maps/GoldenrodCity/scripts.pory"
-	call_if_unset FLAG_SHOWN_ELM_TOGEPI, GoldenrodCity_Elm_Togepi_Call
+	call_if_unset FLAG_SHOWN_ELM_COSMOG, GoldenrodCity_Elm_Togepi_Call
 # 15 "data/maps/GoldenrodCity/scripts.pory"
 	setflag FLAG_VISITED_GOLDENROD_CITY
 # 16 "data/maps/GoldenrodCity/scripts.pory"
