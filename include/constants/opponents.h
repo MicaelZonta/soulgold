@@ -154,7 +154,7 @@
 #define TRAINER_STEVE_3                     148
 #define TRAINER_STEVE_4                     149
 #define TRAINER_STEVE_5                     150
-#define TRAINER_LUIS                        151
+#define TRAINER_UNUSED_011                  151  // Former TRAINER_LUIS; reserved after legacy-map removal.
 #define TRAINER_KENNY                     152
 #define TRAINER_DOUGLAS                     153
 #define TRAINER_JO_AND_ZOE                      154
@@ -741,7 +741,7 @@
 #define TRAINER_PETE                        735
 #define TRAINER_WILL_1                    736
 #define TRAINER_BRIANA                    737
-#define TRAINER_JOSUE                       738
+#define TRAINER_UNUSED_012                  738  // Former TRAINER_JOSUE; reserved after legacy-map removal.
 #define TRAINER_GREGORY                      739
 #define TRAINER_GRUNT_29                      740
 #define TRAINER_GRUNT_2                    741
