@@ -51,11 +51,6 @@ Route123_EventScript_Braxton::
 	msgbox Route123_Text_BraxtonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route123_EventScript_Violet::
-	trainerbattle_single TRAINER_VIOLET, Route123_Text_VioletIntro, Route123_Text_VioletDefeat
-	msgbox Route123_Text_VioletPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route123_EventScript_Cameron::
 	trainerbattle_single TRAINER_NONE, Route123_Text_CameronIntro, Route123_Text_CameronDefeat, Route123_EventScript_RegisterCameron
 	specialvar VAR_RESULT, ShouldTryRematchBattle
@@ -96,21 +91,6 @@ Route123_EventScript_RematchJacki::
 	msgbox Route123_Text_JackiPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-Route123_EventScript_Miu::
-	trainerbattle_double TRAINER_MIU_AND_YUKI, Route123_Text_MiuIntro, Route123_Text_MiuDefeat, Route123_Text_MiuNotEnoughMons
-	msgbox Route123_Text_MiuPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route123_EventScript_Yuki::
-	trainerbattle_double TRAINER_MIU_AND_YUKI, Route123_Text_YukiIntro, Route123_Text_YukiDefeat, Route123_Text_YukiNotEnoughMons
-	msgbox Route123_Text_YukiPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route123_EventScript_Kindra::
-	trainerbattle_single TRAINER_KINDRA, Route123_Text_KindraIntro, Route123_Text_KindraDefeat
-	msgbox Route123_Text_KindraPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route123_EventScript_Frederick::
 	trainerbattle_single TRAINER_NONE, Route123_Text_FrederickIntro, Route123_Text_FrederickDefeat
 	msgbox Route123_Text_FrederickPostBattle, MSGBOX_AUTOCLOSE
@@ -124,16 +104,6 @@ Route123_EventScript_Alberto::
 Route123_EventScript_Ed::
 	trainerbattle_single TRAINER_ED, Route123_Text_EdIntro, Route123_Text_EdDefeat
 	msgbox Route123_Text_EdPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route123_EventScript_Kayley::
-	trainerbattle_single TRAINER_KAYLEY, Route123_Text_KayleyIntro, Route123_Text_KayleyDefeat
-	msgbox Route123_Text_KayleyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route123_EventScript_Jonas::
-	trainerbattle_single TRAINER_JONAS, Route123_Text_JonasIntro, Route123_Text_JonasDefeat
-	msgbox Route123_Text_JonasPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Jazmyn::
@@ -191,4 +161,3 @@ Route123_Text_RouteSignMtPyre:
 
 Route123_Text_BerryMastersHouse:
 	.string "Berry Master's House$"
-

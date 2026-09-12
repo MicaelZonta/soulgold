@@ -42,7 +42,7 @@
 #define TRAINER_JEFFREY                        36
 #define TRAINER_GRUNT_33                       37
 #define TRAINER_NORMAN                        38
-#define TRAINER_VIOLET                       39
+#define TRAINER_UNUSED_019                   39  // Former TRAINER_VIOLET; reserved after legacy-map removal.
 #define TRAINER_ROSE_2                       40
 #define TRAINER_ROSE_3                       41
 #define TRAINER_ROSE_4                       42
@@ -109,7 +109,7 @@
 #define TRAINER_ERIN                    103
 #define TRAINER_ERNEST                    104
 #define TRAINER_UNUSED_004                  105  // Former TRAINER_PATRICIA; reserved after legacy-map removal.
-#define TRAINER_KINDRA                      106
+#define TRAINER_UNUSED_020                  106  // Former TRAINER_KINDRA; reserved after legacy-map removal.
 #define TRAINER_TAMMY                       107
 #define TRAINER_VALERIE_1                   108
 #define TRAINER_UNUSED_014                  109  // Former TRAINER_TASHA; reserved after legacy-map removal.
@@ -487,7 +487,7 @@
 #define TRAINER_AMY_AND_MAY               481
 #define TRAINER_ANN_AND_ANNE               482
 #define TRAINER_RUTH              483
-#define TRAINER_MIU_AND_YUKI                484
+#define TRAINER_UNUSED_021                  484  // Former TRAINER_MIU_AND_YUKI; reserved after legacy-map removal.
 #define TRAINER_AMY_AND_LIV_3               485
 #define TRAINER_RYAN              486
 #define TRAINER_AMY_AND_LIV_4               487
@@ -507,8 +507,8 @@
 #define TRAINER_ELI                         501
 #define TRAINER_CARRIE                      502
 #define TRAINER_RIVAL_TOTODILE_4                      503
-#define TRAINER_JONAS                       504
-#define TRAINER_KAYLEY                      505
+#define TRAINER_UNUSED_022                  504  // Former TRAINER_JONAS; reserved after legacy-map removal.
+#define TRAINER_UNUSED_023                  505  // Former TRAINER_KAYLEY; reserved after legacy-map removal.
 #define TRAINER_CLYDE                       506
 #define TRAINER_KELVIN                      507
 #define TRAINER_MARLEY                      508
