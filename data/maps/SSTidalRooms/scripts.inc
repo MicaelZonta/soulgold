@@ -42,16 +42,6 @@ SSTidalRooms_EventScript_Thomas::
 	msgbox SSTidalRooms_Text_ThomasPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-SSTidalRooms_EventScript_Jed::
-	trainerbattle_double TRAINER_LEA_AND_JED, SSTidalRooms_Text_JedIntro, SSTidalRooms_Text_JedDefeat, SSTidalRooms_Text_JedNotEnoughMons
-	msgbox SSTidalRooms_Text_JedPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-SSTidalRooms_EventScript_Lea::
-	trainerbattle_double TRAINER_LEA_AND_JED, SSTidalRooms_Text_LeaIntro, SSTidalRooms_Text_LeaDefeat, SSTidalRooms_Text_LeaNotEnoughMons
-	msgbox SSTidalRooms_Text_LeaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 SSTidalRooms_Text_TakeRestOnBed:
 	.string "There's a bed…\n"
 	.string "Let's take a rest.$"

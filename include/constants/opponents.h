@@ -80,8 +80,8 @@
 #define TRAINER_BERKE                        74
 #define TRAINER_ELAINE                      75
 #define TRAINER_VINCENT                      76
-#define TRAINER_LEROY                        77
-#define TRAINER_WILTON_1                     78
+#define TRAINER_UNUSED_443                        77  // Former TRAINER_LEROY; pending legacy battle removed.
+#define TRAINER_UNUSED_444                     78  // Former TRAINER_WILTON_1; pending legacy battle removed.
 #define TRAINER_EDGAR                        79
 #define TRAINER_ALBERT                       80
 #define TRAINER_SAMUEL                       81
@@ -92,9 +92,9 @@
 #define TRAINER_WILTON_4                     86
 #define TRAINER_WILTON_5                     87
 #define TRAINER_WARREN                       88
-#define TRAINER_MARY                         89
+#define TRAINER_UNUSED_441                         89  // Former TRAINER_MARY; pending legacy battle removed.
 #define TRAINER_BARNEY                       90
-#define TRAINER_JODY                         91
+#define TRAINER_UNUSED_442                         91  // Former TRAINER_JODY; pending legacy battle removed.
 #define TRAINER_WENDY                        92
 #define TRAINER_KEIRA                        93
 #define TRAINER_EMMA                     94
@@ -644,8 +644,8 @@
 #define TRAINER_TRENT_4                     638
 #define TRAINER_TRENT_5                     639
 #define TRAINER_UNUSED_017                  640  // Former TRAINER_DEZ_AND_LUKE; reserved after legacy-map removal.
-#define TRAINER_LEA_AND_JED                 641
-#define TRAINER_KIRA_AND_DAN_1              642
+#define TRAINER_UNUSED_447                 641  // Former TRAINER_LEA_AND_JED; pending legacy battle removed.
+#define TRAINER_UNUSED_448              642  // Former TRAINER_KIRA_AND_DAN_1; pending legacy battle removed.
 #define TRAINER_KIRA_AND_DAN_2              643
 #define TRAINER_KIRA_AND_DAN_3              644
 #define TRAINER_KIRA_AND_DAN_4              645
@@ -659,8 +659,8 @@
 #define TRAINER_RILEY                       653
 #define TRAINER_RAY                       654
 #define TRAINER_CHARLES                      655
-#define TRAINER_WALLY_MAUVILLE              656
-#define TRAINER_WALLY_VR_2                  657
+#define TRAINER_UNUSED_445              656  // Former TRAINER_WALLY_MAUVILLE; pending legacy battle removed.
+#define TRAINER_UNUSED_446                  657  // Former TRAINER_WALLY_VR_2; pending legacy battle removed.
 #define TRAINER_WALLY_VR_3                  658
 #define TRAINER_WALLY_VR_4                  659
 #define TRAINER_WALLY_VR_5                  660

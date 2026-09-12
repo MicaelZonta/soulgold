@@ -931,19 +931,6 @@ Rattata
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_MARY ===
-Name: Mary
-Class: Swimmer F
-Pic: Swimmer F
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Finizen
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_TOBY ===
 Name: Toby
 Class: Bird Keeper
@@ -6443,19 +6430,6 @@ Level: 57
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 
-=== TRAINER_JODY ===
-Name: Jody
-Class: Swimmer F
-Pic: Swimmer F
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Finizen
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_ARNOLD ===
 Name: Arnold
 Class: Fisherman
@@ -7953,28 +7927,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Jolteon
 Level: 55
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_LEROY ===
-Name: Leroy
-Class: Camper
-Pic: Camper
-Gender: Male
-Music: Hg Boy 1
-Double Battle: No
-AI: Basic Trainer
-
-Graveler
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Graveler
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Golbat
-Level: 40
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 
 === TRAINER_DENISE ===
 Name: Denise
