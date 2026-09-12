@@ -1,0 +1,1138 @@
+id,name,has_party,used_map_script,used_other_system,status,accessible,reason
+1,TRAINER_SAWYER_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+2,TRAINER_SAYO,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+3,TRAINER_SCOTT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+4,TRAINER_SEAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+5,TRAINER_SETH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+6,TRAINER_TROY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+7,TRAINER_TULLY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+8,TRAINER_TYLER,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+9,TRAINER_ROD,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+10,TRAINER_TONY,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+11,TRAINER_MARCEL,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+12,TRAINER_ARNOLD,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+13,TRAINER_ED,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+14,TRAINER_VALERIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+15,TRAINER_JOYCE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+16,TRAINER_TREVOR,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+17,TRAINER_ZEKE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+18,TRAINER_ZUKI,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+19,TRAINER_FALKNER_1,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+20,TRAINER_TODD,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+21,TRAINER_TOM,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+22,TRAINER_VERONICA,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+23,TRAINER_THERESA,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+24,TRAINER_TIM,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+25,TRAINER_TIMOTHY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+26,TRAINER_FALKNER_2,Yes,Yes,BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+27,TRAINER_SID,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+28,TRAINER_STANLY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+29,TRAINER_REBECCA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+30,TRAINER_MATT,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+31,TRAINER_ZANDER,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+32,TRAINER_DEVIN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+33,TRAINER_GRANT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+34,TRAINER_CASSIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+35,TRAINER_LEAH,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+36,TRAINER_JEFFREY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+37,TRAINER_GRUNT_33,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+38,TRAINER_NORMAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+39,TRAINER_VIOLET,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+40,TRAINER_ROSE_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+41,TRAINER_ROSE_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+42,TRAINER_ROSE_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+43,TRAINER_BLAINE_OLIVINE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+44,TRAINER_KRISE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+45,TRAINER_GRUNT_16,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+46,TRAINER_RAYMOND,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+47,TRAINER_KUNI,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+48,TRAINER_KYLE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+49,TRAINER_LAO,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+50,TRAINER_LEA_AND_PIA,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+51,TRAINER_REENA,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+52,TRAINER_REX,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+53,TRAINER_RICH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+54,TRAINER_RICKY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+55,TRAINER_ROB,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+56,TRAINER_ROBERT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+57,TRAINER_LOLA_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+58,TRAINER_CODY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+59,TRAINER_GWEN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+60,TRAINER_LOLA_2,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+61,TRAINER_LOLA_3,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+62,TRAINER_LOLA_4,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+63,TRAINER_MAD_SCIENTIST,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+64,TRAINER_RICKY_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+65,TRAINER_SIMON,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+66,TRAINER_CHARLIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+67,TRAINER_RICKY_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+68,TRAINER_RICKY_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+69,TRAINER_RICKY_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+70,TRAINER_RICKY_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+71,TRAINER_RANDALL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+72,TRAINER_PARKER,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+73,TRAINER_GEORGE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+74,TRAINER_BERKE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+75,TRAINER_ELAINE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+76,TRAINER_VINCENT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+77,TRAINER_LEROY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+78,TRAINER_WILTON_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+79,TRAINER_EDGAR,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+80,TRAINER_ALBERT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+81,TRAINER_SAMUEL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+82,TRAINER_VITO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+83,TRAINER_OWEN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+84,TRAINER_WILTON_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+85,TRAINER_WILTON_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+86,TRAINER_WILTON_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+87,TRAINER_WILTON_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+88,TRAINER_WARREN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+89,TRAINER_MARY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+90,TRAINER_BARNEY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+91,TRAINER_JODY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+92,TRAINER_WENDY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+93,TRAINER_KEIRA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+94,TRAINER_EMMA,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+95,TRAINER_GIOVANNI,Yes,No,BattleDome/PWT,OK,Yes,Has party and is triggered via: BattleDome/PWT
+96,TRAINER_HOPE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+97,TRAINER_SHANNON,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+98,TRAINER_MICHELLE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+99,TRAINER_CAROLINE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+100,TRAINER_JULIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+101,TRAINER_ERICK,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+102,TRAINER_ERIK,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+103,TRAINER_ERIN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+104,TRAINER_ERNEST,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+105,TRAINER_PATRICIA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+106,TRAINER_KINDRA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+107,TRAINER_TAMMY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+108,TRAINER_VALERIE_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+109,TRAINER_TASHA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+110,TRAINER_EMA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+111,TRAINER_JO,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+112,TRAINER_VALERIE_4,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+113,TRAINER_VALERIE_5,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+114,TRAINER_GRUNT_18,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+115,TRAINER_KIPP,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+116,TRAINER_WAI,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+117,TRAINER_GRUNT_19,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+118,TRAINER_ELLEN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+119,TRAINER_NAOMI,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+120,TRAINER_GRUNT_20,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+121,TRAINER_GRUNT_21,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+122,TRAINER_GRUNT_22,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+123,TRAINER_GRUNT_23,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+124,TRAINER_MELISSA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+125,TRAINER_SHEILA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+126,TRAINER_SHIRLEY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+127,TRAINER_ARIANA_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+128,TRAINER_CONNIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+129,TRAINER_BRIDGET,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+130,TRAINER_OLIVIA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+131,TRAINER_TIFFANY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+132,TRAINER_ARIANA_2,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+133,TRAINER_JESSICA_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+134,TRAINER_JESSICA_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+135,TRAINER_JESSICA_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+136,TRAINER_WINSTON_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+137,TRAINER_MOLLIE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+138,TRAINER_GARRET,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+139,TRAINER_RODAROS,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+140,TRAINER_BELMARE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+141,TRAINER_KENNEDY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+142,TRAINER_WINSTON_5,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+143,TRAINER_STEVE_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+144,TRAINER_THALIA_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+145,TRAINER_MARK,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+146,TRAINER_TERU,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+147,TRAINER_STEVE_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+148,TRAINER_STEVE_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+149,TRAINER_STEVE_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+150,TRAINER_STEVE_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+151,TRAINER_LUIS,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+152,TRAINER_KENNY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+153,TRAINER_DOUGLAS,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+154,TRAINER_JO_AND_ZOE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+155,TRAINER_TONY_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+156,TRAINER_JEROME,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+157,TRAINER_MATTHEW,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+158,TRAINER_DAVID,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+159,TRAINER_SPENCER,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+160,TRAINER_ROLAND,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+161,TRAINER_NOLEN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+162,TRAINER_STAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+163,TRAINER_BARRY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+164,TRAINER_DEAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+165,TRAINER_RODNEY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+166,TRAINER_RICHARD,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+167,TRAINER_HERMAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+168,TRAINER_SANTIAGO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+169,TRAINER_GILBERT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+170,TRAINER_FRANKLIN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+171,TRAINER_KEVIN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+172,TRAINER_JACK,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+173,TRAINER_DUDLEY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+174,TRAINER_CHAD,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+175,TRAINER_TONY_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+176,TRAINER_TONY_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+177,TRAINER_TONY_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+178,TRAINER_TONY_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+179,TRAINER_TAKAO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+180,TRAINER_JASMINE_1_3,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+181,TRAINER_KIYO,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+182,TRAINER_KOICHI,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+183,TRAINER_NOB_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+184,TRAINER_NOB_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+185,TRAINER_NOB_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+186,TRAINER_NOB_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+187,TRAINER_NOB_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+188,TRAINER_YUJI,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+189,TRAINER_JED,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+190,TRAINER_CINDY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+191,TRAINER_KIRK,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+192,TRAINER_STEPHEN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+193,TRAINER_STEVE,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+194,TRAINER_SHAWN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+195,TRAINER_NORTON,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+196,TRAINER_JENN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+197,TRAINER_JEREMY,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+198,TRAINER_JERRY,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+199,TRAINER_JESSICA,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+200,TRAINER_JILL,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+201,TRAINER_COLE,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+202,TRAINER_JEFF,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+203,TRAINER_COREY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+204,TRAINER_KOGA_2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+205,TRAINER_KEEGAN,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+206,TRAINER_DARYL,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+207,TRAINER_DAVE,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+208,TRAINER_DAWN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+209,TRAINER_DENIS,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+210,TRAINER_DIANA,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+211,TRAINER_KOJI,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+212,TRAINER_DANIEL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+213,TRAINER_LARRY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+214,TRAINER_SHANE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+215,TRAINER_JUSTIN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+216,TRAINER_NAOKO,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+217,TRAINER_COLETTE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+218,TRAINER_TRAVIS,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+219,TRAINER_NATHAN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+220,TRAINER_NEAL,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+221,TRAINER_NICK,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+222,TRAINER_NICO,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+223,TRAINER_BRENT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+224,TRAINER_DONALD,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+225,TRAINER_TAYLOR,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+226,TRAINER_RIVAL_TOTODILE_5,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+227,TRAINER_DEREK,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+228,TRAINER_RIVAL_TOTODILE_6,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+229,TRAINER_RIVAL_TOTODILE_7,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+230,TRAINER_RED_1,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+231,TRAINER_RED_2,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+232,TRAINER_EDWARD,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+233,TRAINER_PRESTON,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+234,TRAINER_VIRGIL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+235,TRAINER_BLAKE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+236,TRAINER_WILLIAM,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+237,TRAINER_JOSHUA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+238,TRAINER_GAVEN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+239,TRAINER_GINA,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+240,TRAINER_GLENN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+241,TRAINER_GORDON,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+242,TRAINER_GREGG,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+243,TRAINER_JACLYN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+244,TRAINER_PRYCE_2,Yes,Yes,BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+245,TRAINER_SAMANTHA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+246,TRAINER_MAURA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+247,TRAINER_KAYLA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+248,TRAINER_BENJAMIN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+249,TRAINER_LANCE_1,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+250,TRAINER_LANCE_2,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+251,TRAINER_RIVAL_CHIKORITA_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+252,TRAINER_RIVAL_CHIKORITA_2,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+253,TRAINER_RIVAL_CHIKORITA_3,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+254,TRAINER_WALTER_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+255,TRAINER_MICAH,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+256,TRAINER_THOMAS,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+257,TRAINER_WALTER_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+258,TRAINER_WALTER_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+259,TRAINER_WALTER_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+260,TRAINER_WALTER_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+261,TRAINER_SIDNEY,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+262,TRAINER_PHOEBE,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+263,TRAINER_GLACIA,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+264,TRAINER_KIP,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+265,TRAINER_ROXANNE_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+266,TRAINER_DICK,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+267,TRAINER_WATTSON_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+268,TRAINER_PING,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+269,TRAINER_NORMAN_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+270,TRAINER_WINONA_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+271,TRAINER_TATE_AND_LIZA_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+272,TRAINER_JUAN_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+273,TRAINER_ARCHER_1,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+274,TRAINER_TED,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+275,TRAINER_PAUL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+276,TRAINER_ARCHER_4,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+277,TRAINER_ARCHER_5,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+278,TRAINER_PETREL_2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+279,TRAINER_PROTON_2,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+280,TRAINER_UNUSEDNAME_2,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+281,TRAINER_GEORGIA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+282,TRAINER_BLUE_2,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+283,TRAINER_KAREN_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+284,TRAINER_KAREN_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+285,TRAINER_KAREN_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+286,TRAINER_KATE_AND_JOY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+287,TRAINER_ANNA_AND_MEG_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+288,TRAINER_ANNA_AND_MEG_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+289,TRAINER_ANNA_AND_MEG_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+290,TRAINER_ANNA_AND_MEG_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+291,TRAINER_ANNA_AND_MEG_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+292,TRAINER_VICTOR,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+293,TRAINER_MIGUEL_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+294,TRAINER_GRUNT_26,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+295,TRAINER_MIGUEL_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+296,TRAINER_MIGUEL_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+297,TRAINER_MIGUEL_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+298,TRAINER_MIGUEL_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+299,TRAINER_VICTORIA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+300,TRAINER_VANESSA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+301,TRAINER_BETHANY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+302,TRAINER_LTSURGE,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+303,TRAINER_ERIKA,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+304,TRAINER_SABRINA,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+305,TRAINER_JANINE,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+306,TRAINER_BLAINE,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+307,TRAINER_TIMOTHY_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+308,TRAINER_BEARNESE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+309,TRAINER_TIMOTHY_3,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+310,TRAINER_TIMOTHY_4,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+311,TRAINER_TIMOTHY_5,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+312,TRAINER_VICKY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+313,TRAINER_SHELBY_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+314,TRAINER_SHELBY_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+315,TRAINER_SHELBY_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+316,TRAINER_SHELBY_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+317,TRAINER_SHELBY_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+318,TRAINER_EUGENE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+319,TRAINER_BILLY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+320,TRAINER_JOSH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+321,TRAINER_TOMMY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+322,TRAINER_JOEY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+323,TRAINER_BEN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+324,TRAINER_QUINCY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+325,TRAINER_KATELYNN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+326,TRAINER_RIVAL_TOTODILE_3,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+327,TRAINER_KENNETH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+328,TRAINER_FIDEL,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+329,TRAINER_FRAN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+330,TRAINER_FRITZ,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+331,TRAINER_GAKU,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+332,TRAINER_EDDIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+333,TRAINER_ALLEN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+334,TRAINER_TIMMY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+335,TRAINER_WALLACE,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+336,TRAINER_ANDREW,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+337,TRAINER_IVAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+338,TRAINER_CLAUDE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+339,TRAINER_MASA,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+340,TRAINER_NED,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+341,TRAINER_DALE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+342,TRAINER_NOLAN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+343,TRAINER_CYBIL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+344,TRAINER_WADE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+345,TRAINER_CARTER,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+346,TRAINER_MATHEW,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+347,TRAINER_MEG_AND_PEG,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+348,TRAINER_MEGAN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+349,TRAINER_MICHAEL,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+350,TRAINER_RONALD,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+351,TRAINER_RIVAL_CYNDAQUIL_2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+352,TRAINER_ANTHONY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+353,TRAINER_BENJAMIN_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+354,TRAINER_BENJAMIN_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+355,TRAINER_BENJAMIN_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+356,TRAINER_BENJAMIN_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+357,TRAINER_BENJAMIN_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+358,TRAINER_ABE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+359,TRAINER_JASMINE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+360,TRAINER_AL,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+361,TRAINER_ALFRED,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+362,TRAINER_ALLAN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+363,TRAINER_ANDRE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+364,TRAINER_LEWIS,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+365,TRAINER_LI,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+366,TRAINER_LISA,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+367,TRAINER_LIZ,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+368,TRAINER_LLOYD,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+369,TRAINER_MARIA_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+370,TRAINER_MARIA_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+371,TRAINER_MARIA_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+372,TRAINER_MARIA_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+373,TRAINER_MARIA_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+374,TRAINER_GARRETT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+375,TRAINER_JULIA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+376,TRAINER_WILL_2,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+377,TRAINER_PABLO_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+378,TRAINER_GRUNT_14,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+379,TRAINER_BRUNO_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+380,TRAINER_BRUNO_2,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+381,TRAINER_KAREN_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+382,TRAINER_KAREN_2,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+383,TRAINER_KOGA_1,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+384,TRAINER_KIM,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+385,TRAINER_TALIA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+386,TRAINER_KATELYN_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+387,TRAINER_BOB,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+388,TRAINER_KATELYN_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+389,TRAINER_KATELYN_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+390,TRAINER_KATELYN_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+391,TRAINER_KATELYN_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+392,TRAINER_NICOLAS_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+393,TRAINER_NICOLAS_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+394,TRAINER_NICOLAS_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+395,TRAINER_NICOLAS_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+396,TRAINER_NICOLAS_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+397,TRAINER_AARON,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+398,TRAINER_PERRY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+399,TRAINER_HUGH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+400,TRAINER_PHIL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+401,TRAINER_JARED,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+402,TRAINER_CHUCK_2,Yes,Yes,BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+403,TRAINER_PRESLEY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+404,TRAINER_LOIS,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+405,TRAINER_COLIN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+406,TRAINER_ROBERT_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+407,TRAINER_BENNY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+408,TRAINER_GRUNT_15,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+409,TRAINER_ROBERT_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+410,TRAINER_ROBERT_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+411,TRAINER_ROBERT_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+412,TRAINER_ROBERT_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+413,TRAINER_ALEX,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+414,TRAINER_DANNY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+415,TRAINER_YASU,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+416,TRAINER_TAKASHI,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+417,TRAINER_KENJI,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+418,TRAINER_JANI,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+419,TRAINER_LAO_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+420,TRAINER_LUNG,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+421,TRAINER_LAO_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+422,TRAINER_LAO_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+423,TRAINER_LAO_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+424,TRAINER_LAO_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+425,TRAINER_JOCELYN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+426,TRAINER_LAURA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+427,TRAINER_JASMINE_2,Yes,Yes,BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+428,TRAINER_GRUNT_28,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+429,TRAINER_PAULA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+430,TRAINER_JAKE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+431,TRAINER_JAMES,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+432,TRAINER_JASON,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+433,TRAINER_JAY,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+434,TRAINER_MADELINE_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+435,TRAINER_CLARISSA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+436,TRAINER_ANGELICA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+437,TRAINER_MADELINE_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+438,TRAINER_MADELINE_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+439,TRAINER_MADELINE_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+440,TRAINER_MADELINE_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+441,TRAINER_BEVERLY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+442,TRAINER_CHUCK_1_2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+443,TRAINER_KYLA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+444,TRAINER_DENISE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+445,TRAINER_BETH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+446,TRAINER_TARA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+447,TRAINER_MISSY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+448,TRAINER_ALICE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+449,TRAINER_GRUNT_30,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+450,TRAINER_GRACE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+451,TRAINER_TANYA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+452,TRAINER_SHARON,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+453,TRAINER_NIKKI,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+454,TRAINER_BRENDA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+455,TRAINER_KATIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+456,TRAINER_SUSIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+457,TRAINER_KARA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+458,TRAINER_DANA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+459,TRAINER_SIENNA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+460,TRAINER_DEBRA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+461,TRAINER_LINDA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+462,TRAINER_KAYLEE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+463,TRAINER_LAUREL,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+464,TRAINER_GRUNT,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+465,TRAINER_GRUNT_31,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+466,TRAINER_GRUNT_32,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+467,TRAINER_PETREL_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+468,TRAINER_ARCHER,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+469,TRAINER_HEIDI,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+470,TRAINER_DARIN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+471,TRAINER_CAROL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+472,TRAINER_NANCY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+473,TRAINER_MARTHA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+474,TRAINER_KAZU,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+475,TRAINER_GRUNT_8,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+476,TRAINER_IRENE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+477,TRAINER_KEITH,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+478,TRAINER_KELLY,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+479,TRAINER_KEN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+480,TRAINER_KEANDRA,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+481,TRAINER_AMY_AND_MAY,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+482,TRAINER_ANN_AND_ANNE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+483,TRAINER_RUTH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+484,TRAINER_MIU_AND_YUKI,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+485,TRAINER_AMY_AND_LIV_3,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+486,TRAINER_RYAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+487,TRAINER_AMY_AND_LIV_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+488,TRAINER_AMY_AND_LIV_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+489,TRAINER_AMY_AND_LIV_6,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+490,TRAINER_HUEY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+491,TRAINER_EDMOND,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+492,TRAINER_MIKE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+493,TRAINER_DWAYNE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+494,TRAINER_PHILLIP,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+495,TRAINER_LEONARD,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+496,TRAINER_DUNCAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+497,TRAINER_MIKEY,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+498,TRAINER_MIKI,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+499,TRAINER_MILLER,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+500,TRAINER_MITCH,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+501,TRAINER_ELI,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+502,TRAINER_CARRIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+503,TRAINER_RIVAL_TOTODILE_4,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+504,TRAINER_JONAS,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+505,TRAINER_KAYLEY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+506,TRAINER_CLYDE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+507,TRAINER_KELVIN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+508,TRAINER_MARLEY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+509,TRAINER_REYNA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+510,TRAINER_CHUCK_1,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+511,TRAINER_GRUNT_27,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+512,TRAINER_LOLA,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+513,TRAINER_JASMINE_1,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+514,TRAINER_TABITHA_MOSSDEEP,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+515,TRAINER_LORI,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+516,TRAINER_MARGRET,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+517,TRAINER_MARKUS,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+518,TRAINER_MARTIN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+519,TRAINER_WALLY_VR_1,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+520,TRAINER_THOM_AND_KAE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+521,TRAINER_DUFF_AND_EDA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+522,TRAINER_BRENDAN_ROUTE_119_MUDKIP,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+523,TRAINER_BRENDAN_ROUTE_103_TREECKO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+524,TRAINER_BRENDAN_ROUTE_110_TREECKO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+525,TRAINER_BRENDAN_ROUTE_119_TREECKO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+526,TRAINER_BRENDAN_ROUTE_103_TORCHIC,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+527,TRAINER_BRENDAN_ROUTE_110_TORCHIC,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+528,TRAINER_BRENDAN_ROUTE_119_TORCHIC,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+529,TRAINER_MAY_ROUTE_103_MUDKIP,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+530,TRAINER_MAY_ROUTE_110_MUDKIP,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+531,TRAINER_MAY_ROUTE_119_MUDKIP,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+532,TRAINER_MAY_ROUTE_103_TREECKO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+533,TRAINER_MAY_ROUTE_110_TREECKO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+534,TRAINER_MAY_ROUTE_119_TREECKO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+535,TRAINER_MAY_ROUTE_103_TORCHIC,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+536,TRAINER_MAY_ROUTE_110_TORCHIC,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+537,TRAINER_MAY_ROUTE_119_TORCHIC,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+538,TRAINER_CHUCK_1_3,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+539,TRAINER_JOE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+540,TRAINER_MITCHELL,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+541,TRAINER_CLAIR_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+542,TRAINER_CLAIR_2,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+543,TRAINER_BROCK,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+544,TRAINER_MISTY,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+545,TRAINER_LYDIA_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+546,TRAINER_PRYCE_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+547,TRAINER_RUSS,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+548,TRAINER_LYDIA_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+549,TRAINER_LYDIA_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+550,TRAINER_LYDIA_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+551,TRAINER_LYDIA_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+552,TRAINER_RIVAL_CHIKORITA_4,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+553,TRAINER_LORENZO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+554,TRAINER_SEBASTIAN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+555,TRAINER_RIVAL_CHIKORITA_5,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+556,TRAINER_RIVAL_CHIKORITA_6,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+557,TRAINER_RIVAL_CHIKORITA_7,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+558,TRAINER_RIVAL_CYNDAQUIL_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+559,TRAINER_GRUNT_3,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+560,TRAINER_EUSINE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+561,TRAINER_SOPHIA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+562,TRAINER_GRUNT_4,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+563,TRAINER_GRUNT_5,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+564,TRAINER_GRUNT_6,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+565,TRAINER_GRUNT_7,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+566,TRAINER_JULIO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+567,TRAINER_VANCE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+568,TRAINER_STEVEN2,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+569,TRAINER_TOBY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+570,TRAINER_TERRELL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+571,TRAINER_MARC,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+572,TRAINER_BRENDEN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+573,TRAINER_LILITH,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+574,TRAINER_HARVEY,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+575,TRAINER_SYLVIA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+576,TRAINER_LEONARDO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+577,TRAINER_CHOW,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+578,TRAINER_PRYCE_1_2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+579,TRAINER_THEO,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+580,TRAINER_GRUNT_24,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+581,TRAINER_TERRY,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+582,TRAINER_NATE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+583,TRAINER_KATHLEEN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+584,TRAINER_CLIFFORD,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+585,TRAINER_NICHOLAS,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+586,TRAINER_WALT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+587,TRAINER_WALTER,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+588,TRAINER_WILTON,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+589,TRAINER_YOSHI,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+590,TRAINER_ZACH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+591,TRAINER_MACEY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+592,TRAINER_BRENDAN_RUSTBORO_TREECKO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+593,TRAINER_BRENDAN_RUSTBORO_MUDKIP,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+594,TRAINER_PAXTON,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+595,TRAINER_BLUE,Yes,Yes,BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+596,TRAINER_BUGSY_1,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+597,TRAINER_TABITHA_MT_CHIMNEY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+598,TRAINER_JONATHAN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+599,TRAINER_BRENDAN_RUSTBORO_TORCHIC,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+600,TRAINER_MAY_RUSTBORO_MUDKIP,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+601,TRAINER_MAXIE_MAGMA_HIDEOUT,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+602,TRAINER_MAXIE_MT_CHIMNEY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+603,TRAINER_TIANA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+604,TRAINER_WHITNEY_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+605,TRAINER_RIVAL_TOTODILE_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+606,TRAINER_VIVI,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+607,TRAINER_WHITNEY_2,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+608,TRAINER_MORTY_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+609,TRAINER_MORTY_2,Yes,Yes,Rematch/MatchCall|BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+610,TRAINER_JAMIE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+611,TRAINER_SALLY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+612,TRAINER_ROBIN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+613,TRAINER_BRIAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+614,TRAINER_HARRY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+615,TRAINER_RICK,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+616,TRAINER_LYLE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+617,TRAINER_JOSE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+618,TRAINER_DOUG,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+619,TRAINER_GREG,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+620,TRAINER_KENT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+621,TRAINER_RIVAL_CYNDAQUIL_4,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+622,TRAINER_RIVAL_CYNDAQUIL_5,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+623,TRAINER_RIVAL_CYNDAQUIL_6,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+624,TRAINER_RIVAL_CYNDAQUIL_7,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+625,TRAINER_RIVAL_TOTODILE_2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+626,TRAINER_ELLIOT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+627,TRAINER_TRENT_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+628,TRAINER_LENNY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+629,TRAINER_LUCAS_1,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+630,TRAINER_ALAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+631,TRAINER_CLARK,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+632,TRAINER_ERIC,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+633,TRAINER_LUCAS_2,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+634,TRAINER_MIKE_1,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+635,TRAINER_MIKE_2,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+636,TRAINER_TRENT_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+637,TRAINER_TRENT_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+638,TRAINER_TRENT_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+639,TRAINER_TRENT_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+640,TRAINER_DEZ_AND_LUKE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+641,TRAINER_LEA_AND_JED,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+642,TRAINER_KIRA_AND_DAN_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+643,TRAINER_KIRA_AND_DAN_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+644,TRAINER_KIRA_AND_DAN_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+645,TRAINER_KIRA_AND_DAN_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+646,TRAINER_KIRA_AND_DAN_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+647,TRAINER_JOHANNA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+648,TRAINER_RUSSELL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+649,TRAINER_VIVIAN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+650,TRAINER_KENDRA,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+651,TRAINER_JASMINE_1_2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+652,TRAINER_KEIGO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+653,TRAINER_RILEY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+654,TRAINER_RAY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+655,TRAINER_CHARLES,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+656,TRAINER_WALLY_MAUVILLE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+657,TRAINER_WALLY_VR_2,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+658,TRAINER_WALLY_VR_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+659,TRAINER_WALLY_VR_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+660,TRAINER_WALLY_VR_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+661,TRAINER_BRENDAN_LILYCOVE_MUDKIP,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+662,TRAINER_BRENDAN_LILYCOVE_TREECKO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+663,TRAINER_BRENDAN_LILYCOVE_TORCHIC,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+664,TRAINER_MAY_LILYCOVE_MUDKIP,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+665,TRAINER_MAY_LILYCOVE_TREECKO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+666,TRAINER_MAY_LILYCOVE_TORCHIC,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+667,TRAINER_JONAH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+668,TRAINER_HENRY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+669,TRAINER_ROGER,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+670,TRAINER_BAILEY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+671,TRAINER_RUBEN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+672,TRAINER_KOJI_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+673,TRAINER_WAYNE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+674,TRAINER_ANDY,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+675,TRAINER_REED,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+676,TRAINER_TISHA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+677,TRAINER_TORI_AND_TIA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+678,TRAINER_KIM_AND_IRIS,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+679,TRAINER_TYRA_AND_IVY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+680,TRAINER_MEL_AND_PAUL,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+681,TRAINER_JOHN_AND_JAY_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+682,TRAINER_JOHN_AND_JAY_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+683,TRAINER_JOHN_AND_JAY_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+684,TRAINER_JOHN_AND_JAY_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+685,TRAINER_JOHN_AND_JAY_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+686,TRAINER_RELI_AND_IAN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+687,TRAINER_LILA_AND_ROY_1,No,Yes,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+688,TRAINER_LILA_AND_ROY_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+689,TRAINER_LILA_AND_ROY_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+690,TRAINER_LILA_AND_ROY_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+691,TRAINER_LILA_AND_ROY_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+692,TRAINER_LISA_AND_RAY,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+693,TRAINER_GRUNT_17,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+694,TRAINER_JOEL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+695,TRAINER_SARAH,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+696,TRAINER_JIMMY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+697,TRAINER_BUGSY_2,Yes,Yes,BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+698,TRAINER_GRUNT_11,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+699,TRAINER_KALEB,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+700,TRAINER_JOSEPH,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+701,TRAINER_BRAD,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+702,TRAINER_MARCOS,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+703,TRAINER_RHETT,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+704,TRAINER_TYRON,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+705,TRAINER_GRUNT_10,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+706,TRAINER_BIANCA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+707,TRAINER_PRYCE_1_3,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+708,TRAINER_SOPHIE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+709,TRAINER_GRUNT_25,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+710,TRAINER_LAWRENCE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+711,TRAINER_WYATT,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+712,TRAINER_CARA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+713,TRAINER_KAI,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+714,TRAINER_GRUNT_13,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+715,TRAINER_JOHNNY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+716,TRAINER_GRUNT_MAGMA_HIDEOUT_1,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+717,TRAINER_RICHARDO,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+718,TRAINER_NARD,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+719,TRAINER_GRUNT_MAGMA_HIDEOUT_4,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+720,TRAINER_GRUNT_MAGMA_HIDEOUT_5,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+721,TRAINER_GRUNT_MAGMA_HIDEOUT_6,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+722,TRAINER_GRUNT_MAGMA_HIDEOUT_7,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+723,TRAINER_GRUNT_MAGMA_HIDEOUT_8,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+724,TRAINER_GRUNT_MAGMA_HIDEOUT_9,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+725,TRAINER_GRUNT_MAGMA_HIDEOUT_10,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+726,TRAINER_GRUNT_MAGMA_HIDEOUT_11,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+727,TRAINER_GRUNT_MAGMA_HIDEOUT_12,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+728,TRAINER_GRUNT_MAGMA_HIDEOUT_13,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+729,TRAINER_GRUNT_MAGMA_HIDEOUT_14,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+730,TRAINER_GRUNT_MAGMA_HIDEOUT_15,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+731,TRAINER_GRUNT_MAGMA_HIDEOUT_16,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+732,TRAINER_TABITHA_MAGMA_HIDEOUT,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+733,TRAINER_JIM,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+734,TRAINER_MAXIE_MOSSDEEP,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+735,TRAINER_PETE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+736,TRAINER_WILL_1,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+737,TRAINER_BRIANA,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+738,TRAINER_JOSUE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+739,TRAINER_GREGORY,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+740,TRAINER_GRUNT_29,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+741,TRAINER_GRUNT_2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+742,TRAINER_MARVIN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+743,TRAINER_GRUNT_9,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+744,TRAINER_BRYAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+745,TRAINER_BRANDEN,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+746,TRAINER_ETHAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+747,TRAINER_SHAYLA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+748,TRAINER_KYRA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+749,TRAINER_RIVAL_CYNDAQUIL_3,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+750,TRAINER_BILL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+751,TRAINER_HELENE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+752,TRAINER_MARLENE,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+753,TRAINER_KATE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+754,TRAINER_JOHNSON,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+755,TRAINER_MELINA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+756,TRAINER_BRANDI,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+757,TRAINER_ARNIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+758,TRAINER_MAKAYLA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+759,TRAINER_NOB,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+760,TRAINER_JOHN,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+761,TRAINER_RACHEL,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+762,TRAINER_LEONEL,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+763,TRAINER_ETO,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+764,TRAINER_ETHEL,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+765,TRAINER_MYLES,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+766,TRAINER_PAT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+767,TRAINER_HILLARY,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+768,TRAINER_MAY_RUSTBORO_TREECKO,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+769,TRAINER_MAY_RUSTBORO_TORCHIC,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+770,TRAINER_ROXANNE_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+771,TRAINER_ROXANNE_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+772,TRAINER_ROXANNE_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+773,TRAINER_ROXANNE_5,No,No,Rematch/MatchCall|BattleDome/PWT,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall|BattleDome/PWT but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+774,TRAINER_DIRK,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+775,TRAINER_DON,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+776,TRAINER_DORIS,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+777,TRAINER_EDNA,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+778,TRAINER_ETO_2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+779,TRAINER_ETO_3,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+780,TRAINER_WATTSON_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+781,TRAINER_WATTSON_5,No,No,Rematch/MatchCall|BattleDome/PWT,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall|BattleDome/PWT but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+782,TRAINER_QUENTIN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+783,TRAINER_QUINN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+784,TRAINER_RACHAEL,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+785,TRAINER_RALPH,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+786,TRAINER_NORMAN_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+787,TRAINER_NORMAN_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+788,TRAINER_NORMAN_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+789,TRAINER_NORMAN_5,No,No,Rematch/MatchCall|BattleDome/PWT,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall|BattleDome/PWT but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+790,TRAINER_WINONA_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+791,TRAINER_WINONA_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+792,TRAINER_WINONA_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+793,TRAINER_WINONA_5,No,No,Rematch/MatchCall|BattleDome/PWT,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall|BattleDome/PWT but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+794,TRAINER_TATE_AND_LIZA_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+795,TRAINER_TATE_AND_LIZA_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+796,TRAINER_TATE_AND_LIZA_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+797,TRAINER_TATE_AND_LIZA_5,No,No,Rematch/MatchCall|BattleDome/PWT,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall|BattleDome/PWT but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+798,TRAINER_JUAN_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+799,TRAINER_JUAN_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+800,TRAINER_JUAN_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+801,TRAINER_JUAN_5,No,No,Rematch/MatchCall|BattleDome/PWT,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall|BattleDome/PWT but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+802,TRAINER_CARLENE,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+803,TRAINER_JIN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+804,TRAINER_STEVEN,Yes,Yes,BattleDome/PWT,OK,Yes,Has party and is triggered by a map trainerbattle script
+805,TRAINER_BRET,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+806,TRAINER_TUCKER,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+807,TRAINER_SPENSER,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+808,TRAINER_SAM,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+809,TRAINER_NOLAND,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+810,TRAINER_LUCY,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+811,TRAINER_BRANDON,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+812,TRAINER_BROOKE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+813,TRAINER_BURT,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+814,TRAINER_CALVIN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+815,TRAINER_CAMERON,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+816,TRAINER_HAL,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+817,TRAINER_HANK,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+818,TRAINER_HAROLD,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+819,TRAINER_HARRIS,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+820,TRAINER_PABLO_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+821,TRAINER_PABLO_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+822,TRAINER_PABLO_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+823,TRAINER_PABLO_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+824,TRAINER_KOJI_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+825,TRAINER_KOJI_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+826,TRAINER_KOJI_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+827,TRAINER_KOJI_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+828,TRAINER_HORTON,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+829,TRAINER_IAN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+830,TRAINER_IRWIN,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+831,TRAINER_ISSAC,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+832,TRAINER_OTIS,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+833,TRAINER_PARRY,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+834,TRAINER_PATON,Yes,No,Rematch/MatchCall,OK,Yes,Has party and is triggered via: Rematch/MatchCall
+835,TRAINER_PETER,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+836,TRAINER_SAWYER_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+837,TRAINER_SAWYER_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+838,TRAINER_SAWYER_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+839,TRAINER_SAWYER_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+840,TRAINER_RON,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+841,TRAINER_ROSS,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+842,TRAINER_ROXANNE,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+843,TRAINER_ROY,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+844,TRAINER_THALIA_2,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+845,TRAINER_THALIA_3,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+846,TRAINER_THALIA_4,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+847,TRAINER_THALIA_5,No,No,Rematch/MatchCall,BROKEN_REFERENCE,No,Referenced by Rematch/MatchCall but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+848,TRAINER_MARIELA,No,Yes,-,BROKEN_REFERENCE,No,Referenced by map script but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+849,TRAINER_BORIS,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+850,TRAINER_NICOLE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+851,TRAINER_RED,No,No,BattleDome/PWT,BROKEN_REFERENCE,No,Referenced by BattleDome/PWT but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+852,TRAINER_LEAF,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+853,TRAINER_BRENDAN_PLACEHOLDER,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+854,TRAINER_MAY_PLACEHOLDER,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+855,TRAINER_GRUNT_12,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+856,TRAINER_WALLACE2,No,No,BattleDome/PWT,BROKEN_REFERENCE,No,Referenced by BattleDome/PWT but has NO party defined in trainers.party (battle would use an empty/zeroed trainer)
+857,TRAINER_CHANSEY3,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+858,TRAINER_CHANSEY4,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+859,TRAINER_CHANSEY5,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+860,TRAINER_SIDNEY2,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+861,TRAINER_PHOEBE2,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+862,TRAINER_PROTON_1,Yes,Yes,Rematch/MatchCall,OK,Yes,Has party and is triggered by a map trainerbattle script
+863,TRAINER_KIP2,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+864,TRAINER_ROUTE_31_EXPERT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+865,TRAINER_GOLDENROD_SHORE_EXPERT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+866,TRAINER_RIVALGOLD1,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+867,TRAINER_RIVALCRYSTAL1,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+868,TRAINER_RIVALGOLD2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+869,TRAINER_RIVALCRYSTAL2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+870,TRAINER_RAILWAYBOB,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+871,TRAINER_RAILWAYMASON,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+872,TRAINER_RAILWAYYODA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+873,TRAINER_RAILWAYSANADA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+874,TRAINER_ORB_EXPERT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+875,TRAINER_HERB_EXPERT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+876,TRAINER_CHOICE_BAND_EXPERT,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+877,TRAINER_TITLE_DEFENSE_LANCE,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+878,TRAINER_TITLE_DEFENSE_STEVEN,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+879,TRAINER_RIVAL_GOLD_ICEPATH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+880,TRAINER_RIVAL_CRYSTAL_ICEPATH,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+881,TRAINER_RIVAL_GOLD_FINAL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+882,TRAINER_RIVAL_CRYSTAL_FINAL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+883,TRAINER_PHILIP,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+884,TRAINER_MOULDER,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+885,TRAINER_DOJO_AUDINO,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+886,TRAINER_NIJO,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+887,TRAINER_SAE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+888,TRAINER_MINA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+889,TRAINER_LI_2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+890,TRAINER_DIRECTOR,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+891,TRAINER_TITLE_DEFENSE_FALKNER,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+892,TRAINER_TITLE_DEFENSE_BUGSY,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+893,TRAINER_TITLE_DEFENSE_WHITNEY,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+894,TRAINER_TITLE_DEFENSE_MORTY,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+895,TRAINER_TITLE_DEFENSE_CHUCK,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+896,TRAINER_TITLE_DEFENSE_JASMINE,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+897,TRAINER_TITLE_DEFENSE_PRYCE,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+898,TRAINER_TITLE_DEFENSE_CLAIR,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+899,TRAINER_NAMELESS_LEAF,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+927,TRAINER_VAJRA_EAST_SIROCCO,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+928,TRAINER_VAJRA_EAST_SOL,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+929,TRAINER_VAJRA_EAST_DUNE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+930,TRAINER_VAJRA_EAST_NORI,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+931,TRAINER_VAJRA_EAST_ATLAS,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+932,TRAINER_VAJRA_EAST_DYLAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+933,TRAINER_ROUTE50_ROWAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+934,TRAINER_ROUTE50_CASPIAN,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+935,TRAINER_ROUTE50_IGNIS,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+936,TRAINER_SPIRIT1,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+937,TRAINER_SPIRIT2,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+938,TRAINER_SPIRIT3,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+939,TRAINER_CAFE_SIMPLI,No,No,-,UNUSED_NAMED_ID,N/A,Named constant exists in opponents.h but has no party and is never referenced anywhere
+940,TRAINER_CAFE_DOVES,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+941,TRAINER_CAFE_ELTON,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+942,TRAINER_CAFE_NEM,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+943,TRAINER_CAFE_BAI,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+944,TRAINER_CAFE_DRAC,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+945,TRAINER_CAFE_JUNA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+946,TRAINER_CAFE_TYLARIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+947,TRAINER_CAFE_ATHENA,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+948,TRAINER_TITLE_DEFENSE_ELDER_LI,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+949,TRAINER_TITLE_DEFENSE_DIRECTOR,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+950,TRAINER_TITLE_DEFENSE_LEAF,Yes,No,TitleDefense,OK,Yes,Has party and is triggered via: TitleDefense
+951,TRAINER_UNUSED_87,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+952,TRAINER_UNUSED_88,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+953,TRAINER_UNUSED_89,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+954,TRAINER_UNUSED_90,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+955,TRAINER_UNUSED_91,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+956,TRAINER_UNUSED_92,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+957,TRAINER_UNUSED_93,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+958,TRAINER_UNUSED_94,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+959,TRAINER_UNUSED_95,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+960,TRAINER_UNUSED_96,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+961,TRAINER_UNUSED_97,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+962,TRAINER_UNUSED_98,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+963,TRAINER_UNUSED_99,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+964,TRAINER_LUSAMINE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+965,TRAINER_LILLIE,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+966,TRAINER_KUKUI,Yes,No,-,ORPHANED_PARTY,No,Has a full party defined but is never referenced by any script or game system found
+967,TRAINER_GLADION,Yes,Yes,-,OK,Yes,Has party and is triggered by a map trainerbattle script
+968,TRAINER_UNUSED_104,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+969,TRAINER_UNUSED_105,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+970,TRAINER_UNUSED_106,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+971,TRAINER_UNUSED_107,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+972,TRAINER_UNUSED_108,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+973,TRAINER_UNUSED_109,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+974,TRAINER_UNUSED_110,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+975,TRAINER_UNUSED_111,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+976,TRAINER_UNUSED_112,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+977,TRAINER_UNUSED_113,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+978,TRAINER_UNUSED_114,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+979,TRAINER_UNUSED_115,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+980,TRAINER_UNUSED_116,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+981,TRAINER_UNUSED_117,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+982,TRAINER_UNUSED_118,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+983,TRAINER_UNUSED_119,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+984,TRAINER_UNUSED_120,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+985,TRAINER_UNUSED_121,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+986,TRAINER_UNUSED_122,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+987,TRAINER_UNUSED_123,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+988,TRAINER_UNUSED_124,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+989,TRAINER_UNUSED_125,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+990,TRAINER_UNUSED_126,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+991,TRAINER_UNUSED_127,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+992,TRAINER_UNUSED_128,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+993,TRAINER_UNUSED_129,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+994,TRAINER_UNUSED_130,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+995,TRAINER_UNUSED_131,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+996,TRAINER_UNUSED_132,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+997,TRAINER_UNUSED_133,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+998,TRAINER_UNUSED_134,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+999,TRAINER_UNUSED_135,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1000,TRAINER_UNUSED_136,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1001,TRAINER_UNUSED_137,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1002,TRAINER_UNUSED_138,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1003,TRAINER_UNUSED_139,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1004,TRAINER_UNUSED_140,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1005,TRAINER_UNUSED_141,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1006,TRAINER_UNUSED_142,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1007,TRAINER_UNUSED_143,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1008,TRAINER_UNUSED_144,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1009,TRAINER_UNUSED_145,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1010,TRAINER_UNUSED_146,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1011,TRAINER_UNUSED_147,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1012,TRAINER_UNUSED_148,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1013,TRAINER_UNUSED_149,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1014,TRAINER_UNUSED_150,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1015,TRAINER_UNUSED_151,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1016,TRAINER_UNUSED_152,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1017,TRAINER_UNUSED_153,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1018,TRAINER_UNUSED_154,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1019,TRAINER_UNUSED_155,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1020,TRAINER_UNUSED_156,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1021,TRAINER_UNUSED_157,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1022,TRAINER_UNUSED_158,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1023,TRAINER_UNUSED_159,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1024,TRAINER_UNUSED_160,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1025,TRAINER_UNUSED_161,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1026,TRAINER_UNUSED_162,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1027,TRAINER_UNUSED_163,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1028,TRAINER_UNUSED_164,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1029,TRAINER_UNUSED_165,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1030,TRAINER_UNUSED_166,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1031,TRAINER_UNUSED_167,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1032,TRAINER_UNUSED_168,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1033,TRAINER_UNUSED_169,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1034,TRAINER_UNUSED_170,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1035,TRAINER_UNUSED_171,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1036,TRAINER_UNUSED_172,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1037,TRAINER_UNUSED_173,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1038,TRAINER_UNUSED_174,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1039,TRAINER_UNUSED_175,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1040,TRAINER_UNUSED_176,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1041,TRAINER_UNUSED_177,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1042,TRAINER_UNUSED_178,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1043,TRAINER_UNUSED_179,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1044,TRAINER_UNUSED_180,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1045,TRAINER_UNUSED_181,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1046,TRAINER_UNUSED_182,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1047,TRAINER_UNUSED_183,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1048,TRAINER_UNUSED_184,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1049,TRAINER_UNUSED_185,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1050,TRAINER_UNUSED_186,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1051,TRAINER_UNUSED_187,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1052,TRAINER_UNUSED_188,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1053,TRAINER_UNUSED_189,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1054,TRAINER_UNUSED_190,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1055,TRAINER_UNUSED_191,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1056,TRAINER_UNUSED_192,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1057,TRAINER_UNUSED_193,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1058,TRAINER_UNUSED_194,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1059,TRAINER_UNUSED_195,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1060,TRAINER_UNUSED_196,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1061,TRAINER_UNUSED_197,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1062,TRAINER_UNUSED_198,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1063,TRAINER_UNUSED_199,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1064,TRAINER_UNUSED_200,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1065,TRAINER_UNUSED_201,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1066,TRAINER_UNUSED_202,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1067,TRAINER_UNUSED_203,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1068,TRAINER_UNUSED_204,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1069,TRAINER_UNUSED_205,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1070,TRAINER_UNUSED_206,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1071,TRAINER_UNUSED_207,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1072,TRAINER_UNUSED_208,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1073,TRAINER_UNUSED_209,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1074,TRAINER_UNUSED_210,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1075,TRAINER_UNUSED_211,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1076,TRAINER_UNUSED_212,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1077,TRAINER_UNUSED_213,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1078,TRAINER_UNUSED_214,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1079,TRAINER_UNUSED_215,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1080,TRAINER_UNUSED_216,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1081,TRAINER_UNUSED_217,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1082,TRAINER_UNUSED_218,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1083,TRAINER_UNUSED_219,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1084,TRAINER_UNUSED_220,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1085,TRAINER_UNUSED_221,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1086,TRAINER_UNUSED_222,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1087,TRAINER_UNUSED_223,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1088,TRAINER_UNUSED_224,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1089,TRAINER_UNUSED_225,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1090,TRAINER_UNUSED_226,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1091,TRAINER_UNUSED_227,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1092,TRAINER_UNUSED_228,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1093,TRAINER_UNUSED_229,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1094,TRAINER_UNUSED_230,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1095,TRAINER_UNUSED_231,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1096,TRAINER_UNUSED_232,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1097,TRAINER_UNUSED_233,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1098,TRAINER_UNUSED_234,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1099,TRAINER_UNUSED_235,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1100,TRAINER_UNUSED_236,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1101,TRAINER_UNUSED_237,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1102,TRAINER_UNUSED_238,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1103,TRAINER_UNUSED_239,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1104,TRAINER_UNUSED_240,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1105,TRAINER_UNUSED_241,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1106,TRAINER_UNUSED_242,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1107,TRAINER_UNUSED_243,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1108,TRAINER_UNUSED_244,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1109,TRAINER_UNUSED_245,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1110,TRAINER_UNUSED_246,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1111,TRAINER_UNUSED_247,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1112,TRAINER_UNUSED_248,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1113,TRAINER_UNUSED_249,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1114,TRAINER_UNUSED_250,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1115,TRAINER_UNUSED_251,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1116,TRAINER_UNUSED_252,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1117,TRAINER_UNUSED_253,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1118,TRAINER_UNUSED_254,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1119,TRAINER_UNUSED_255,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1120,TRAINER_UNUSED_256,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1121,TRAINER_UNUSED_257,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1122,TRAINER_UNUSED_258,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1123,TRAINER_UNUSED_259,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1124,TRAINER_UNUSED_260,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1125,TRAINER_UNUSED_261,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1126,TRAINER_UNUSED_262,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1127,TRAINER_UNUSED_263,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1128,TRAINER_UNUSED_264,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1129,TRAINER_UNUSED_265,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1130,TRAINER_UNUSED_266,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1131,TRAINER_UNUSED_267,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1132,TRAINER_UNUSED_268,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1133,TRAINER_UNUSED_269,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1134,TRAINER_UNUSED_270,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1135,TRAINER_UNUSED_271,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1136,TRAINER_UNUSED_272,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1137,TRAINER_UNUSED_273,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1138,TRAINER_UNUSED_274,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1139,TRAINER_UNUSED_275,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1140,TRAINER_UNUSED_276,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1141,TRAINER_UNUSED_277,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1142,TRAINER_UNUSED_278,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1143,TRAINER_UNUSED_279,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1144,TRAINER_UNUSED_280,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1145,TRAINER_UNUSED_281,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1146,TRAINER_UNUSED_282,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1147,TRAINER_UNUSED_283,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1148,TRAINER_UNUSED_284,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1149,TRAINER_UNUSED_285,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1150,TRAINER_UNUSED_286,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1151,TRAINER_UNUSED_287,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1152,TRAINER_UNUSED_288,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1153,TRAINER_UNUSED_289,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1154,TRAINER_UNUSED_290,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1155,TRAINER_UNUSED_291,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1156,TRAINER_UNUSED_292,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1157,TRAINER_UNUSED_293,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1158,TRAINER_UNUSED_294,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1159,TRAINER_UNUSED_295,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1160,TRAINER_UNUSED_296,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1161,TRAINER_UNUSED_297,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1162,TRAINER_UNUSED_298,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1163,TRAINER_UNUSED_299,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
+1164,TRAINER_UNUSED_300,No,No,-,RESERVED_SLOT,N/A,"Reserved unused ID slot (TRAINER_UNUSED_*), no name, no party, not referenced"
