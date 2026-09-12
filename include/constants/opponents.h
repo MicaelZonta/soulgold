@@ -295,7 +295,7 @@
 #define TRAINER_UNUSED_352              289  // Former TRAINER_ANNA_AND_MEG_3; orphaned rematch variant.
 #define TRAINER_UNUSED_353              290  // Former TRAINER_ANNA_AND_MEG_4; orphaned rematch variant.
 #define TRAINER_UNUSED_354              291  // Former TRAINER_ANNA_AND_MEG_5; orphaned rematch variant.
-#define TRAINER_VICTOR                      292
+#define TRAINER_UNUSED_459                      292  // Former TRAINER_VICTOR; pending legacy battle removed.
 #define TRAINER_UNUSED_323                    293  // Former TRAINER_MIGUEL_1; reserved after legacy-map removal.
 #define TRAINER_GRUNT_26                      294
 #define TRAINER_UNUSED_355                    295  // Former TRAINER_MIGUEL_2; orphaned rematch variant.
