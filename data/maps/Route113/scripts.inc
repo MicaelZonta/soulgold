@@ -101,34 +101,9 @@ Route113_EventScript_Lung::
 	msgbox Route113_Text_LungPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route113_EventScript_Tori::
-	trainerbattle_double TRAINER_TORI_AND_TIA, Route113_Text_ToriIntro, Route113_Text_ToriDefeat, Route113_Text_ToriNotEnoughMons
-	msgbox Route113_Text_ToriPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route113_EventScript_Tia::
-	trainerbattle_double TRAINER_TORI_AND_TIA, Route113_Text_TiaIntro, Route113_Text_TiaDefeat, Route113_Text_TiaNotEnoughMons
-	msgbox Route113_Text_TiaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route113_EventScript_Sophie::
-	trainerbattle_single TRAINER_SOPHIE, Route113_Text_SophieIntro, Route113_Text_SophieDefeat
-	msgbox Route113_Text_SophiePostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route113_EventScript_Coby::
 	trainerbattle_single TRAINER_NONE, Route113_Text_CobyIntro, Route113_Text_CobyDefeat
 	msgbox Route113_Text_CobyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route113_EventScript_Lawrence::
-	trainerbattle_single TRAINER_LAWRENCE, Route113_Text_LawrenceIntro, Route113_Text_LawrenceDefeat
-	msgbox Route113_Text_LawrencePostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route113_EventScript_Wyatt::
-	trainerbattle_single TRAINER_WYATT, Route113_Text_WyattIntro, Route113_Text_WyattDefeat
-	msgbox Route113_Text_WyattPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route113_Text_AshCanBeFashionedIntoGlass:
@@ -161,4 +136,3 @@ Route113_Text_TrainerTipsRegisterKeyItems:
 Route113_Text_GlassWorkshopSign:
 	.string "Glass Workshop\n"
 	.string "“Turning Volcanic Ash into Glass Items”$"
-

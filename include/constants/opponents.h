@@ -680,7 +680,7 @@
 #define TRAINER_ANDY                       674
 #define TRAINER_REED                        675
 #define TRAINER_TISHA                       676
-#define TRAINER_TORI_AND_TIA                677
+#define TRAINER_UNUSED_036                  677  // Former TRAINER_TORI_AND_TIA; reserved after legacy-map removal.
 #define TRAINER_KIM_AND_IRIS                678
 #define TRAINER_TYRA_AND_IVY                679
 #define TRAINER_MEL_AND_PAUL                680
@@ -711,10 +711,10 @@
 #define TRAINER_GRUNT_10                      705
 #define TRAINER_BIANCA                      706
 #define TRAINER_PRYCE_1_3                      707
-#define TRAINER_SOPHIE                      708
+#define TRAINER_UNUSED_037                  708  // Former TRAINER_SOPHIE; reserved after legacy-map removal.
 #define TRAINER_GRUNT_25                        709
-#define TRAINER_LAWRENCE                    710
-#define TRAINER_WYATT                       711
+#define TRAINER_UNUSED_038                  710  // Former TRAINER_LAWRENCE; reserved after legacy-map removal.
+#define TRAINER_UNUSED_039                  711  // Former TRAINER_WYATT; reserved after legacy-map removal.
 #define TRAINER_CARA                    712
 #define TRAINER_KAI                         713
 #define TRAINER_GRUNT_13                   714
