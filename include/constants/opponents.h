@@ -250,7 +250,7 @@
 #define TRAINER_PRYCE_2                      244
 #define TRAINER_SAMANTHA                    245
 #define TRAINER_MAURA                       246
-#define TRAINER_KAYLA                       247
+#define TRAINER_UNUSED_013                  247  // Former TRAINER_KAYLA; reserved after legacy-map removal.
 #define TRAINER_BENJAMIN                      248
 #define TRAINER_LANCE_1                     249
 #define TRAINER_LANCE_2                     250
