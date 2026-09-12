@@ -538,11 +538,6 @@ Route111_EventScript_Bryan::
 	msgbox Route111_Text_BryanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route111_EventScript_Branden::
-	trainerbattle_single TRAINER_BRANDEN, Route111_Text_BrandenIntro, Route111_Text_BrandenDefeat
-	msgbox Route111_Text_BrandenPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route111_EventScript_TrainerHillSign::
 	msgbox Route111_Text_TrainerHillSign, MSGBOX_SIGN
 	end

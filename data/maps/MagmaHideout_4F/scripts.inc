@@ -105,11 +105,6 @@ MagmaHideout_4F_Movement_MaxieLookAround:
 	delay_16
 	step_end
 
-MagmaHideout_4F_EventScript_Tabitha::
-	trainerbattle_single TRAINER_TABITHA_MAGMA_HIDEOUT, MagmaHideout_4F_Text_TabithaIntro, MagmaHideout_4F_Text_TabithaDefeat
-	msgbox MagmaHideout_4F_Text_TabithaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 MagmaHideout_4F_Text_Grunt11Intro:
 	.string "I want to see Groudon, too, but they\n"
 	.string "won't let me see even its tail…\p"

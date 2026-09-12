@@ -1,11 +1,6 @@
 MagmaHideout_2F_2R_MapScripts::
 	.byte 0
 
-MagmaHideout_2F_2R_EventScript_Grunt15::
-	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_15, MagmaHideout_2F_2R_Text_Grunt15Intro, MagmaHideout_2F_2R_Text_Grunt15Defeat
-	msgbox MagmaHideout_2F_2R_Text_Grunt15PostBattle, MSGBOX_AUTOCLOSE
-	end
-
 MagmaHideout_2F_2R_Text_Grunt15Intro:
 	.string "I don't have a bone to pick with you.\n"
 	.string "I'm just following orders!$"

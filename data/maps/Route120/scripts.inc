@@ -337,11 +337,6 @@ Route120_EventScript_Riley::
 	msgbox Route120_Text_RileyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route120_EventScript_Leonel::
-	trainerbattle_single TRAINER_LEONEL, Route120_Text_LeonelIntro, Route120_Text_LeonelDefeat
-	msgbox Route120_Text_LeonelPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route120_EventScript_Callie::
 	trainerbattle_single TRAINER_NONE, Route120_Text_CallieIntro, Route120_Text_CallieDefeat
 	msgbox Route120_Text_CalliePostBattle, MSGBOX_AUTOCLOSE

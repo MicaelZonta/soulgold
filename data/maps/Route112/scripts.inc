@@ -100,11 +100,6 @@ Route112_EventScript_Bryant::
 	msgbox Route112_Text_BryantPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route112_EventScript_Shayla::
-	trainerbattle_single TRAINER_SHAYLA, Route112_Text_ShaylaIntro, Route112_Text_ShaylaDefeat
-	msgbox Route112_Text_ShaylaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route112_Text_LeaderGoingToAwakenThing:
 	.string "Hey, man, is our leader really going\n"
 	.string "to awaken that thing?$"
@@ -138,4 +133,3 @@ Route112_Text_MtChimneySign:
 Route112_Text_RouteSignLavaridge:
 	.string "Route 112\n"
 	.string "{LEFT_ARROW} Lavaridge Town$"
-
