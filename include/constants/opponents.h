@@ -569,7 +569,7 @@
 #define TRAINER_GRUNT_5                 563
 #define TRAINER_GRUNT_6                 564
 #define TRAINER_GRUNT_7                 565
-#define TRAINER_JULIO                       566
+#define TRAINER_UNUSED_010                  566  // Former TRAINER_JULIO; reserved after legacy-map removal.
 #define TRAINER_VANCE     567
 #define TRAINER_STEVEN2                     568
 #define TRAINER_TOBY             569
