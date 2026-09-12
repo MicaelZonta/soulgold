@@ -78,24 +78,11 @@ Route114_EventScript_Shane::
 	msgbox Route114_Text_ShanePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route114_EventScript_Steve::
-	trainerbattle_single TRAINER_STEVE_1, Route114_Text_SteveIntro, Route114_Text_SteveDefeat, Route114_EventScript_RegisterSteve
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route114_EventScript_RematchSteve
-	msgbox Route114_Text_StevePostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 Route114_EventScript_RegisterSteve::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route114_Text_SteveRegister, MSGBOX_DEFAULT
 	release
-	end
-
-Route114_EventScript_RematchSteve::
-	trainerbattle_rematch TRAINER_STEVE_1, Route114_Text_SteveRematchIntro, Route114_Text_SteveRematchDefeat
-	msgbox Route114_Text_StevePostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route114_EventScript_Bernie::

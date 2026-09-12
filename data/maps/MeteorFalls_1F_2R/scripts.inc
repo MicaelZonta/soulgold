@@ -1,24 +1,11 @@
 MeteorFalls_1F_2R_MapScripts::
 	.byte 0
 
-MeteorFalls_1F_2R_EventScript_Nicolas::
-	trainerbattle_single TRAINER_NICOLAS_1, MeteorFalls_1F_2R_Text_NicolasIntro, MeteorFalls_1F_2R_Text_NicolasDefeat, MeteorFalls_1F_2R_EventScript_RegisterNicolas
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, MeteorFalls_1F_2R_EventScript_RematchNicolas
-	msgbox MeteorFalls_1F_2R_Text_NicolasPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 MeteorFalls_1F_2R_EventScript_RegisterNicolas::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox MeteorFalls_1F_2R_Text_NicolasRegister, MSGBOX_DEFAULT
 	release
-	end
-
-MeteorFalls_1F_2R_EventScript_RematchNicolas::
-	trainerbattle_rematch TRAINER_NICOLAS_1, MeteorFalls_1F_2R_Text_NicolasRematchIntro, MeteorFalls_1F_2R_Text_NicolasRematchDefeat
-	msgbox MeteorFalls_1F_2R_Text_NicolasPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 MeteorFalls_1F_2R_EventScript_John::
@@ -177,4 +164,3 @@ MeteorFalls_1F_2R_Text_JayRematchNotEnoughMons:
 	.string "Trainer?\p"
 	.string "If you'd care to battle with us, you'll\n"
 	.string "have to come back with more Pokémon.$"
-
