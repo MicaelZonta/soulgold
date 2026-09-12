@@ -258,24 +258,24 @@
 #define TRAINER_RIVAL_CHIKORITA_2                     252
 #define TRAINER_RIVAL_CHIKORITA_3                     253
 #define TRAINER_UNUSED_321                    254  // Former TRAINER_WALTER_1; reserved after legacy-map removal.
-#define TRAINER_MICAH                       255
-#define TRAINER_THOMAS                      256
+#define TRAINER_UNUSED_449                       255  // Former TRAINER_MICAH; pending legacy battle removed.
+#define TRAINER_UNUSED_450                      256  // Former TRAINER_THOMAS; pending legacy battle removed.
 #define TRAINER_UNUSED_347                    257  // Former TRAINER_WALTER_2; orphaned rematch variant.
 #define TRAINER_UNUSED_348                    258  // Former TRAINER_WALTER_3; orphaned rematch variant.
 #define TRAINER_UNUSED_349                    259  // Former TRAINER_WALTER_4; orphaned rematch variant.
 #define TRAINER_UNUSED_350                    260  // Former TRAINER_WALTER_5; orphaned rematch variant.
 #define TRAINER_SIDNEY                      261
-#define TRAINER_PHOEBE                      262
+#define TRAINER_UNUSED_451                      262  // Former TRAINER_PHOEBE; pending legacy battle removed.
 #define TRAINER_GLACIA                      263
 #define TRAINER_KIP                       264
-#define TRAINER_ROXANNE_1                   265
+#define TRAINER_UNUSED_452                   265  // Former TRAINER_ROXANNE_1; pending legacy battle removed.
 #define TRAINER_DICK                    266
-#define TRAINER_WATTSON_1                   267
+#define TRAINER_UNUSED_453                   267  // Former TRAINER_WATTSON_1; pending legacy battle removed.
 #define TRAINER_PING                  268
-#define TRAINER_NORMAN_1                    269
-#define TRAINER_WINONA_1                    270
-#define TRAINER_TATE_AND_LIZA_1             271
-#define TRAINER_JUAN_1                      272
+#define TRAINER_UNUSED_454                    269  // Former TRAINER_NORMAN_1; pending legacy battle removed.
+#define TRAINER_UNUSED_455                    270  // Former TRAINER_WINONA_1; pending legacy battle removed.
+#define TRAINER_UNUSED_456             271  // Former TRAINER_TATE_AND_LIZA_1; pending legacy battle removed.
+#define TRAINER_UNUSED_457                      272  // Former TRAINER_JUAN_1; pending legacy battle removed.
 #define TRAINER_ARCHER_1                     273
 #define TRAINER_TED                         274
 #define TRAINER_PAUL                        275
@@ -284,7 +284,7 @@
 #define TRAINER_PETREL_2                     278
 #define TRAINER_PROTON_2                     279
 #define TRAINER_UNUSEDNAME_2                     280
-#define TRAINER_GEORGIA                     281
+#define TRAINER_UNUSED_458                     281  // Former TRAINER_GEORGIA; pending legacy battle removed.
 #define TRAINER_UNUSED_386                     282  // Former TRAINER_BLUE_2; orphaned party removed.
 #define TRAINER_KAREN_3                     283
 #define TRAINER_KAREN_4                     284

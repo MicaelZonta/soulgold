@@ -32,16 +32,6 @@ SSTidalRooms_EventScript_Colton::
 	msgbox SSTidalRooms_Text_ColtonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-SSTidalRooms_EventScript_Micah::
-	trainerbattle_single TRAINER_MICAH, SSTidalRooms_Text_MicahIntro, SSTidalRooms_Text_MicahDefeat
-	msgbox SSTidalRooms_Text_MicahPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-SSTidalRooms_EventScript_Thomas::
-	trainerbattle_single TRAINER_THOMAS, SSTidalRooms_Text_ThomasIntro, SSTidalRooms_Text_ThomasDefeat
-	msgbox SSTidalRooms_Text_ThomasPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 SSTidalRooms_Text_TakeRestOnBed:
 	.string "There's a bed…\n"
 	.string "Let's take a rest.$"

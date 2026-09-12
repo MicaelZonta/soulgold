@@ -1983,19 +1983,6 @@ Lampent
 Level: 30
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
-=== TRAINER_GEORGIA ===
-Name: Georgia
-Class: Parasol Lady
-Pic: Parasol Lady
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Floette
-Level: 61
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_DEVIN ===
 Name: Devin
 Class: Hiker
@@ -3830,28 +3817,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Exeggutor
 Level: 62
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_THOMAS ===
-Name: Thomas
-Class: Camper
-Pic: Camper
-Gender: Male
-Music: Hg Boy 1
-Double Battle: No
-AI: Basic Trainer
-
-Graveler
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Graveler
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Golbat
-Level: 40
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 
 === TRAINER_GREG ===
 Name: Greg

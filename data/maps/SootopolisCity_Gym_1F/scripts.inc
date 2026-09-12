@@ -79,16 +79,6 @@ SootopolisCity_Gym_1F_Movement_FallThroughIce:
 	set_invisible
 	step_end
 
-SootopolisCity_Gym_1F_EventScript_Juan::
-	trainerbattle_single TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanIntro, SootopolisCity_Gym_1F_Text_JuanDefeat, SootopolisCity_Gym_1F_EventScript_JuanDefeated, NO_MUSIC
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_Gym_1F_EventScript_JuanRematch
-	goto_if_unset FLAG_RECEIVED_TM_WATER_PULSE, SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2
-	goto_if_unset FLAG_GARBAGEFLAG, SootopolisCity_Gym_1F_EventScript_GoGetFortreeBadge
-	msgbox SootopolisCity_Gym_1F_Text_JuanPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 	message SootopolisCity_Gym_1F_Text_ReceivedRainBadge
 	waitmessage
@@ -133,11 +123,6 @@ SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2::
 SootopolisCity_Gym_1F_EventScript_GoGetFortreeBadge::
 	msgbox SootopolisCity_Gym_1F_Text_GoGetFortreeBadge, MSGBOX_DEFAULT
 	release
-	end
-
-SootopolisCity_Gym_1F_EventScript_JuanRematch::
-	trainerbattle_rematch_double TRAINER_JUAN_1, SootopolisCity_Gym_1F_Text_JuanPreRematch, SootopolisCity_Gym_1F_Text_JuanRematchDefeat, SootopolisCity_Gym_1F_Text_JuanRematchNeedTwoMons
-	msgbox SootopolisCity_Gym_1F_Text_JuanPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 SootopolisCity_Gym_1F_EventScript_GymGuide::
@@ -316,4 +301,3 @@ SootopolisCity_Gym_1F_Text_JuanRematchNeedTwoMons:
 	.string "You have with you but one Pokémon.\p"
 	.string "I wish that you would return with\n"
 	.string "two, perhaps more, Pokémon, please.$"
-

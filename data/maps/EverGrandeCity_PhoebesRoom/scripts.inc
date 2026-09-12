@@ -36,16 +36,6 @@ EverGrandeCity_PhoebesRoom_EventScript_CloseDoor::
 	call PokemonLeague_EliteFour_EventScript_CloseDoor
 	return
 
-EverGrandeCity_PhoebesRoom_EventScript_Phoebe::
-	lock
-	faceplayer
-	goto_if_set FLAG_GARBAGEFLAG, EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech
-	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
-	msgbox EverGrandeCity_PhoebesRoom_Text_IntroSpeech, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat
-	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
-	end
-
 EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech::
 	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release
@@ -81,4 +71,3 @@ EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech:
 	.string "Yup, I'd like to see how far your bond\n"
 	.string "will carry you.\p"
 	.string "Go ahead, move on to the next room.$"
-

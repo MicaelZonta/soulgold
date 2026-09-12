@@ -53,15 +53,6 @@ MossdeepCity_Gym_EventScript_SetSwitch4Metatiles::
 	setmetatile 5, 24, METATILE_RSMossdeepGym_Switch_Down, TRUE
 	end
 
-MossdeepCity_Gym_EventScript_TateAndLiza::
-	trainerbattle_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaIntro, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MossdeepCity_Gym_EventScript_TateAndLizaDefeated, NO_MUSIC
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, MossdeepCity_Gym_EventScript_TateAndLizaRematch
-	goto_if_unset FLAG_RECEIVED_TM_CALM_MIND, MossdeepCity_Gym_EventScript_GiveCalmMind2
-	msgbox MossdeepCity_Gym_Text_TateAndLizaPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	message MossdeepCity_Gym_Text_ReceivedMindBadge
 	waitmessage
@@ -101,12 +92,6 @@ MossdeepCity_Gym_EventScript_GiveCalmMind2::
 MossdeepCity_Gym_EventScript_GiveCalmMind::
 	return
 
-MossdeepCity_Gym_EventScript_TateAndLizaRematch::
-	trainerbattle_rematch_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaPreRematch, MossdeepCity_Gym_Text_TateAndLizaRematchDefeat, MossdeepCity_Gym_Text_TateAndLizaRematchNeedTwoMons
-	msgbox MossdeepCity_Gym_Text_TateAndLizaPostRematch, MSGBOX_AUTOCLOSE
-	end
-
-@ All the below switch scripts are leftover from RS and are functionally unused
 MossdeepCity_Gym_EventScript_Switch1::
 	lockall
 	goto_if_set FLAG_GARBAGEFLAG, MossdeepCity_Gym_EventScript_ClearSwitch1

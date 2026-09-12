@@ -37,14 +37,6 @@ PetalburgCity_Gym_EventScript_MoveNormanToEntrance::
 	setobjectxyperm LOCALID_PETALBURG_GYM_NORMAN, 4, 107
 	return
 
-PetalburgCity_Gym_EventScript_CheckNormanForRematch::
-	setorcopyvar VAR_TRAINER_BATTLE_OPPONENT_A, TRAINER_NORMAN_1
-	specialvar VAR_RESULT, IsTrainerReadyForRematch
-	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_Gym_EventScript_DontMoveNormanToFront
-	goto_if_eq VAR_GARBAGEVAR, 8, PetalburgCity_Gym_EventScript_DontMoveNormanToFront
-	setobjectxyperm LOCALID_PETALBURG_GYM_NORMAN, 4, 107
-	return
-
 PetalburgCity_Gym_EventScript_DontMoveNormanToFront::
 	setvar VAR_GARBAGEVAR, 8
 	end
@@ -86,27 +78,6 @@ PetalburgCity_Gym_Movement_WallyExitGym:
 	walk_down
 	delay_16
 	step_end
-
-PetalburgCity_Gym_EventScript_Norman::
-	vsseeker_rematchid TRAINER_NORMAN_1
-	lock
-	faceplayer
-	switch VAR_GARBAGEVAR
-	case 2, PetalburgCity_Gym_EventScript_NormanNoBadges
-	case 3, PetalburgCity_Gym_EventScript_NormanOneBadge
-	case 4, PetalburgCity_Gym_EventScript_NormanTwoBadges
-	case 5, PetalburgCity_Gym_EventScript_NormanThreeBadges
-	case 6, PetalburgCity_Gym_EventScript_NormanBattle
-	case 7, PetalburgCity_Gym_EventScript_NormanPostBattle
-	case 8, PetalburgCity_Gym_EventScript_NormanRematch
-	msgbox PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon, MSGBOX_DEFAULT
-	closemessage
-	switch VAR_FACING
-	case DIR_SOUTH, PetalburgCity_Gym_EventScript_BeginWallyTutorialSouth
-	case DIR_NORTH, PetalburgCity_Gym_EventScript_BeginWallyTutorialNorth
-	case DIR_WEST, PetalburgCity_Gym_EventScript_BeginWallyTutorialWest
-	case DIR_EAST, PetalburgCity_Gym_EventScript_BeginWallyTutorialEast
-	end
 
 PetalburgCity_Gym_EventScript_BeginWallyTutorialSouth::
 	setvar VAR_0x8008, 0
@@ -328,11 +299,6 @@ PetalburgCity_Gym_EventScript_GiveFacade2::
 	release
 	end
 
-PetalburgCity_Gym_EventScript_NormanRematch::
-	trainerbattle_rematch_double TRAINER_NORMAN_1, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanRematchDefeat, PetalburgCity_Gym_Text_NormanRematchNeedTwoMons
-	msgbox PetalburgCity_Gym_Text_NormanPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 PetalburgCity_Gym_EventScript_ShouldGiveEnigmaBerry::
 	specialvar VAR_RESULT, IsEnigmaBerryValid
 	goto_if_eq VAR_RESULT, FALSE, PetalburgCity_Gym_EventScript_DontGiveEnigmaBerry
@@ -354,39 +320,6 @@ PetalburgCity_Gym_EventScript_GiveEnigmaBerry::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setvar VAR_ENIGMA_BERRY_AVAILABLE, 0
 	release
-	end
-
-PetalburgCity_Gym_EventScript_NormanBattle::
-	msgbox PetalburgCity_Gym_Text_NormanIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_NORMAN_1, PetalburgCity_Gym_Text_NormanDefeat
-	message PetalburgCity_Gym_Text_ReceivedBalanceBadge
-	waitmessage
-	call Common_EventScript_PlayGymBadgeFanfare
-	msgbox PetalburgCity_Gym_Text_ExplainBalanceBadgeTakeThis, MSGBOX_DEFAULT
-	setflag FLAG_GARBAGEFLAG
-	setvar VAR_GARBAGEVAR, 7
-	setflag FLAG_GARBAGEFLAG
-	special ResetHealLocationFromDewford
-	call EventScript_HideMrBriney
-	setflag FLAG_GARBAGEFLAG
-	clearflag FLAG_GARBAGEFLAG
-	setvar VAR_0x8008, 5
-	call Common_EventScript_SetGymTrainers
-	clearflag FLAG_GARBAGEFLAG
-	call PetalburgCity_Gym_EventScript_UnlockAllDoors
-	special DrawWholeMapView
-	call PetalburgCity_Gym_EventScript_GiveFacade
-	delay 30
-	msgbox PetalburgCity_Gym_Text_DadHappyAndSad, MSGBOX_DEFAULT
-	closemessage
-	delay 40
-	playse SE_DOOR
-	delay 10
-	addobject LOCALID_PETALBURG_GYM_WALLYS_DAD
-	switch VAR_FACING
-	case DIR_NORTH, PetalburgCity_Gym_EventScript_WallysDadArrivesNorth
-	case DIR_WEST, PetalburgCity_Gym_EventScript_WallysDadArrivesWest
-	case DIR_EAST, PetalburgCity_Gym_EventScript_WallysDadArrivesEast
 	end
 
 PetalburgCity_Gym_EventScript_GiveFacade::

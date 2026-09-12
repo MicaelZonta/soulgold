@@ -14,7 +14,6 @@
 // EXAMPLES:
 //
 // 1. Override with custom config:
-//    [TRAINER_ROXANNE_1] = {
 //        .mode = LEVEL_SCALING_TO_LEVEL_CAP,
 //        .levelAugmentAdd = 2,         // +2 levels above cap
 //        .levelVariation = 1,          // Random 0-1 level reduction
@@ -102,37 +101,10 @@ const struct LevelScalingConfig gTrainerLevelScalingRules[TRAINERS_COUNT] =
         .manageEvolutions = FALSE,
     },
 
-    // Test 3: Scale to party highest
-    [TRAINER_WATTSON_1] = {
-        .mode = LEVEL_SCALING_PARTY_HIGHEST,
-        .levelAugmentAdd = 0,
-        .levelVariation = 2,
-        .manageEvolutions = TRUE,
-    },
-
-    // Test 5: Scale to party highest + augment with variation
-    [TRAINER_NORMAN_1] = {
-        .mode = LEVEL_SCALING_PARTY_HIGHEST,
-        .levelAugmentAdd = 2,
-        .levelVariation = 3,
-        .minLevel = 25,
-        .maxLevel = 50,
-        .manageEvolutions = TRUE,
-    },
-
-    // Test 6: Evolution management test (should devolve illegal mons)
-    [TRAINER_WINONA_1] = {
-        .mode = LEVEL_SCALING_TO_LEVEL_CAP,
-        .levelAugmentAdd = -20,  // Reduce levels significantly
-        .levelVariation = 0,
-        .manageEvolutions = TRUE,
-    },
-
     // Example configurations (commented out by default):
 
     /*
     // Gym Leaders scale to level cap + 2
-    [TRAINER_ROXANNE_1] = {
         .mode = LEVEL_SCALING_TO_LEVEL_CAP,
         .levelAugmentAdd = 2,
         .levelVariation = 1,
@@ -162,7 +134,6 @@ const struct LevelScalingConfig gTrainerLevelScalingRules[TRAINERS_COUNT] =
         .excludeFainted = TRUE,
     },
 
-    [TRAINER_PHOEBE] = {
         .mode = LEVEL_SCALING_PARTY_AVG,
         .levelAugmentAdd = 5,
         .levelVariation = 2,
