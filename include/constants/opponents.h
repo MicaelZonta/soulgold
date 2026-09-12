@@ -466,7 +466,7 @@
 #define TRAINER_DEBRA                       460
 #define TRAINER_LINDA                       461
 #define TRAINER_KAYLEE                      462
-#define TRAINER_LAUREL                      463
+#define TRAINER_UNUSED_024                  463  // Former TRAINER_LAUREL; reserved after legacy-map removal.
 #define TRAINER_GRUNT                      464
 #define TRAINER_GRUNT_31                     465
 #define TRAINER_GRUNT_32                     466
@@ -510,9 +510,9 @@
 #define TRAINER_UNUSED_022                  504  // Former TRAINER_JONAS; reserved after legacy-map removal.
 #define TRAINER_UNUSED_023                  505  // Former TRAINER_KAYLEY; reserved after legacy-map removal.
 #define TRAINER_CLYDE                       506
-#define TRAINER_KELVIN                      507
-#define TRAINER_MARLEY                      508
-#define TRAINER_REYNA                       509
+#define TRAINER_UNUSED_025                  507  // Former TRAINER_KELVIN; reserved after legacy-map removal.
+#define TRAINER_UNUSED_026                  508  // Former TRAINER_MARLEY; reserved after legacy-map removal.
+#define TRAINER_UNUSED_027                  509  // Former TRAINER_REYNA; reserved after legacy-map removal.
 #define TRAINER_CHUCK_1                      510
 #define TRAINER_GRUNT_27                       511
 #define TRAINER_LOLA                     512
