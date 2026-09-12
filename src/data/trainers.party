@@ -434,27 +434,6 @@ Pelipper
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_JOHN ===
-Name: John
-Class: Camper
-Pic: Camper
-Gender: Male
-Music: Hg Boy 1
-Double Battle: No
-AI: Basic Trainer
-
-Graveler
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Graveler
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Golbat
-Level: 40
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_RAY ===
 Name: Ray
 Class: Firebreather
@@ -2175,27 +2154,6 @@ Cottonee
 Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT ===
-Name: Grunt
-Class: Team Rocket
-Pic: Rocket Grunt M
-Gender: Male
-Music: Rocket
-Double Battle: No
-AI: Basic Trainer
-
-Koffing
-Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Slowpoke
-Level: 13
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Houndour
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_EUGENE ===
 Name: Eugene
 Class: Sailor
@@ -2818,27 +2776,6 @@ AI: Basic Trainer
 Miltank
 Level: 55
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-
-=== TRAINER_TYLER ===
-Name: Tyler
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Dp Ace Trainer
-Double Battle: No
-AI: Basic Trainer
-
-Bulbasaur
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Charmander
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Squirtle
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_JED ===
 Name: Jed
@@ -7286,27 +7223,6 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Poltergeist  
 - Shadow Ball  
 
-=== TRAINER_STEVE ===
-Name: Steve
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Dp Ace Trainer
-Double Battle: No
-AI: Basic Trainer
-
-Bulbasaur
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Charmander
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Squirtle
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_MARGRET ===
 Name: Margret
 Class: Hex Maniac
@@ -8101,19 +8017,6 @@ AI: Basic Trainer
 
 Quagsire
 Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_KENDRA ===
-Name: Kendra
-Class: Beauty
-Pic: Beauty
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Aipom
-Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_WILTON ===
@@ -9321,27 +9224,6 @@ Machoke
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_RUSS ===
-Name: Russ
-Class: Super Nerd
-Pic: Super Nerd
-Gender: Male
-Music: Hg Suspicious 1
-Double Battle: No
-AI: Basic Trainer
-
-Magnemite
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Magnemite
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Magnemite
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_KEITH ===
 Name: Keith
 Class: Policeman
@@ -10268,27 +10150,6 @@ Slowbro
 Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-
-=== TRAINER_KOJI ===
-Name: Koji
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Male
-Music: Hg Suspicious 1
-Double Battle: No
-AI: Basic Trainer
-
-Noctowl
-Level: 40
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Vaporeon
-Level: 40
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Victreebel
-Level: 40
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_FALKNER_1 ===
 Name: Falkner
