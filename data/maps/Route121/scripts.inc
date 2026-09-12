@@ -65,11 +65,6 @@ Route121_Movement_Grunt3Exit:
 	walk_down
 	step_end
 
-Route121_EventScript_Vanessa::
-	trainerbattle_single TRAINER_VANESSA, Route121_Text_VanessaIntro, Route121_Text_VanessaDefeat
-	msgbox Route121_Text_VanessaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route121_EventScript_Walter::
 	trainerbattle_single TRAINER_WALTER_1, Route121_Text_WalterIntro, Route121_Text_WalterDefeat, Route121_EventScript_RegisterWalter
 	specialvar VAR_RESULT, ShouldTryRematchBattle
@@ -93,16 +88,6 @@ Route121_EventScript_RematchWalter::
 Route121_EventScript_Tammy::
 	trainerbattle_single TRAINER_TAMMY, Route121_Text_TammyIntro, Route121_Text_TammyDefeat
 	msgbox Route121_Text_TammyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route121_EventScript_Kate::
-	trainerbattle_double TRAINER_KATE_AND_JOY, Route121_Text_KateIntro, Route121_Text_KateDefeat, Route121_Text_KateNotEnoughMons
-	msgbox Route121_Text_KatePostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route121_EventScript_Joy::
-	trainerbattle_double TRAINER_KATE_AND_JOY, Route121_Text_JoyIntro, Route121_Text_JoyDefeat, Route121_Text_JoyNotEnoughMons
-	msgbox Route121_Text_JoyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route121_EventScript_Jessica::
@@ -130,19 +115,9 @@ Route121_EventScript_Cale::
 	msgbox Route121_Text_CalePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route121_EventScript_Myles::
-	trainerbattle_single TRAINER_MYLES, Route121_Text_MylesIntro, Route121_Text_MylesDefeat
-	msgbox Route121_Text_MylesPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route121_EventScript_Pat::
 	trainerbattle_single TRAINER_PAT, Route121_Text_PatIntro, Route121_Text_PatDefeat
 	msgbox Route121_Text_PatPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route121_EventScript_Marcel::
-	trainerbattle_single TRAINER_MARCEL, Route121_Text_MarcelIntro, Route121_Text_MarcelDefeat
-	msgbox Route121_Text_MarcelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route121_EventScript_Cristin::
@@ -182,4 +157,3 @@ Route121_Text_MtPyrePierSign:
 Route121_Text_SafariZoneSign:
 	.string "“Filled with rare Pokémon!”\n"
 	.string "Safari Zone$"
-
