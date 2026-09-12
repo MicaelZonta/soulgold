@@ -34,11 +34,11 @@
 #define TRAINER_STANLY         28
 #define TRAINER_REBECCA                     29
 #define TRAINER_MATT                         30
-#define TRAINER_ZANDER                       31
+#define TRAINER_UNUSED_015                   31  // Former TRAINER_ZANDER; reserved after legacy-map removal.
 #define TRAINER_DEVIN     32
 #define TRAINER_GRANT       33
 #define TRAINER_CASSIE                       34
-#define TRAINER_LEAH                         35
+#define TRAINER_UNUSED_016                   35  // Former TRAINER_LEAH; reserved after legacy-map removal.
 #define TRAINER_JEFFREY                        36
 #define TRAINER_GRUNT_33                       37
 #define TRAINER_NORMAN                        38
@@ -643,7 +643,7 @@
 #define TRAINER_TRENT_3                     637
 #define TRAINER_TRENT_4                     638
 #define TRAINER_TRENT_5                     639
-#define TRAINER_DEZ_AND_LUKE                640
+#define TRAINER_UNUSED_017                  640  // Former TRAINER_DEZ_AND_LUKE; reserved after legacy-map removal.
 #define TRAINER_LEA_AND_JED                 641
 #define TRAINER_KIRA_AND_DAN_1              642
 #define TRAINER_KIRA_AND_DAN_2              643
