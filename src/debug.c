@@ -68,6 +68,7 @@
 #include "constants/rgb.h"
 #include "constants/script_commands.h"
 #include "constants/songs.h"
+#include "constants/vars.h"
 #include "constants/species.h"
 #include "constants/weather.h"
 #include "siirtc.h"
@@ -1231,11 +1232,9 @@ static u32 Debug_CheckToggleFlags(u8 id)
         result = FlagGet(OW_FLAG_NO_COLLISION);
         break;
     #endif
-    #if OW_FLAG_NO_ENCOUNTER != 0
     case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_ENCOUNTER:
-        result = FlagGet(OW_FLAG_NO_ENCOUNTER);
+        result = (REPEL_STEP_COUNT != 0);
         break;
-    #endif
     #if OW_FLAG_NO_TRAINER_SEE != 0
     case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_TRAINER_SEE:
         result = FlagGet(OW_FLAG_NO_TRAINER_SEE);
@@ -2770,15 +2769,16 @@ static void DebugAction_FlagsVars_CollisionOnOff(u8 taskId)
 
 static void DebugAction_FlagsVars_EncounterOnOff(u8 taskId)
 {
-#if OW_FLAG_NO_ENCOUNTER == 0
-    Debug_DestroyMenu_Full_Script(taskId, Debug_FlagsNotSetOverworldConfigMessage);
-#else
-    if (FlagGet(OW_FLAG_NO_ENCOUNTER))
+    if (REPEL_STEP_COUNT != 0)
+    {
         PlaySE(SE_PC_OFF);
+        VarSet(VAR_REPEL_STEP_COUNT, 0);
+    }
     else
+    {
         PlaySE(SE_PC_LOGIN);
-    FlagToggle(OW_FLAG_NO_ENCOUNTER);
-#endif
+        VarSet(VAR_REPEL_STEP_COUNT, 9999);
+    }
 }
 
 static void DebugAction_FlagsVars_TrainerSeeOnOff(u8 taskId)

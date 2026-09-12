@@ -1064,7 +1064,7 @@ enum __attribute__((packed)) Item
     ITEM_CLEAR_BELL = 884,
     ITEM_TIDAL_BELL = 885,
     ITEM_RADIO = 886,
-    ITEM_CANDY_JAR = 887,
+    ITEM_UNUSED_887 = 887, // Formerly ITEM_CANDY_JAR; ID reserved, no functional item
     ITEM_TYPHLOSIONITE = 888,
     ITEM_PRIMARINITE = 889,
     ITEM_MEOWSCARADITE = 890,

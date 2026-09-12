@@ -3,306 +3,396 @@
 # 2 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 .set LOCALID_NURSE, 1
 # 3 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
+.set LOCALID_VIOLET_GLADION, 6
 # 4 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokemonCenter_MapScripts::
+
 # 5 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	map_script MAP_SCRIPT_ON_TRANSITION, VioletCity_Pokecenter_OnTransition
+VioletCity_PokemonCenter_MapScripts::
 # 6 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.byte 0
+	map_script MAP_SCRIPT_ON_TRANSITION, VioletCity_Pokecenter_OnTransition
 # 7 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
+	.byte 0
 # 8 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_Pokecenter_OnTransition::
+
 # 9 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	setrespawn HEAL_LOCATION_VIOLET_CITY
+VioletCity_Pokecenter_OnTransition::
 # 10 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	end
+	setrespawn HEAL_LOCATION_VIOLET_CITY
 # 11 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
+	end
 # 12 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokemonCenter_EventScript_Aide::
+
 # 13 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	lock
+VioletCity_PokemonCenter_EventScript_Gladion::
 # 14 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	faceplayer
+	lock
 # 15 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	goto_if_set FLAG_RECEIVED_MYSTERY_EGG, VioletCity_PokemonCenter_EventScript_Aide_Received
+	faceplayer
 # 16 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	msgbox VioletCity_PokeCenter_Text_ElmsAideFavor, MSGBOX_YESNO
+	goto_if_set FLAG_RECEIVED_MYSTERY_EGG, VioletCity_PokemonCenter_EventScript_Gladion_Received
 # 17 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, VioletCity_PokemonCenter_EventScript_Aide_Refuse
+	getpartysize
 # 18 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	goto_if_eq VAR_RESULT, YES, VioletCity_PokemonCenter_EventScript_Aide_Accepted
+	goto_if_ne VAR_RESULT, PARTY_SIZE, VioletCity_PokemonCenter_EventScript_Gladion_Battle
 # 19 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	release
+	specialvar VAR_RESULT, ScriptCheckFreePokemonStorageSpace
 # 20 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	end
+	goto_if_eq VAR_RESULT, TRUE, VioletCity_PokemonCenter_EventScript_Gladion_Battle
 # 21 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
+	msgbox VioletCity_PokeCenter_Text_GladionNoRoom, MSGBOX_DEFAULT
 # 22 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
+	closemessage
 # 23 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokemonCenter_EventScript_AideNoRoom::
+	release
 # 24 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	msgbox VioletCity_PokeCenter_Text_ElmsAideNoRoom, MSGBOX_DEFAULT
+	end
 # 25 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	closemessage
+
 # 26 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	release
+VioletCity_PokemonCenter_EventScript_Gladion_Battle::
 # 27 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	end
+	msgbox VioletCity_PokeCenter_Text_GladionRecognizes, MSGBOX_DEFAULT
 # 28 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
+	closemessage
 # 29 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokemonCenter_EventScript_Aide_Refuse::
+	msgbox VioletCity_PokeCenter_Text_GladionPartner1, MSGBOX_DEFAULT
 # 30 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	msgbox VioletCity_PokeCenter_Text_ElmsAideRefuse, MSGBOX_YESNO
+	msgbox VioletCity_PokeCenter_Text_GladionPartner2, MSGBOX_DEFAULT
 # 31 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, VioletCity_PokemonCenter_EventScript_Aide_Refuse
+	closemessage
 # 32 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	goto_if_eq VAR_RESULT, YES, VioletCity_PokemonCenter_EventScript_Aide_Accepted
+	call Common_EventScript_OutOfCenterPartyHeal
 # 33 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	release
+	removefieldmugshot
 # 34 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	end
+	trainerbattle_no_intro TRAINER_GLADION, VioletCity_PokeCenter_Text_GladionVictory
 # 35 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
+	msgbox VioletCity_PokeCenter_Text_GladionGiveEgg, MSGBOX_DEFAULT
 # 36 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokemonCenter_EventScript_Aide_Accepted::
-# 37 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	msgbox VioletCity_PokeCenter_Text_ElmsAideGiveEgg, MSGBOX_DEFAULT
-# 38 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	giveegg SPECIES_COSMOG
+# 37 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	copyvar VAR_0x8008, VAR_RESULT
+# 38 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	goto_if_eq VAR_0x8008, MON_CANT_GIVE, VioletCity_PokemonCenter_EventScript_GladionNoRoomAfterBattle
 # 39 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	goto_if_eq VAR_RESULT, MON_CANT_GIVE, VioletCity_PokemonCenter_EventScript_AideNoRoom
-# 40 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
-# 41 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+# 40 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	message LavaridgeTown_Text_ReceivedTheEgg
-# 42 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+# 41 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	waitfanfare
+# 42 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	closemessage
 # 43 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-    call VioletPCGiveExpJar
+	call_if_eq VAR_0x8008, MON_GIVEN_TO_PC, VioletCity_PokemonCenter_EventScript_GladionEggSentToPC
 # 44 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-    closemessage
+	msgbox VioletCity_PokeCenter_Text_GladionParting, MSGBOX_DEFAULT
 # 45 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	setflag FLAG_RECEIVED_MYSTERY_EGG
+	closemessage
 # 46 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	setflag FLAG_HIDE_VIOLET_CITY_AIDE
+	specialvar VAR_RESULT, ScriptCheckPlayerWestOfGladion
 # 47 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	setvar VAR_VIOLET_CITY_KIMONO_GIRL, 1
+	goto_if_eq VAR_RESULT, TRUE, VioletCity_PokemonCenter_EventScript_GladionLeaveViaSouth
 # 48 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	clearflag FLAG_HIDE_VIOLET_CITY_KIMONO_GIRL
+	applymovement LOCALID_VIOLET_GLADION, VioletCity_PokemonCenter_Movement_GladionLeave
 # 49 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	clearflag FLAG_HIDE_NEWBARKTOWN_LAB_AIDE
+	goto VioletCity_PokemonCenter_EventScript_GladionLeaveDone
 # 50 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	release
+
 # 51 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	end
+VioletCity_PokemonCenter_EventScript_GladionLeaveViaSouth::
 # 52 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
+	applymovement LOCALID_VIOLET_GLADION, VioletCity_PokemonCenter_Movement_GladionLeaveViaSouth
 # 53 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokemonCenter_EventScript_Aide_Received::
+
 # 54 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	msgbox VioletCity_PokeCenter_Text_ElmsAideGiveEgg, MSGBOX_DEFAULT
+VioletCity_PokemonCenter_EventScript_GladionLeaveDone::
 # 55 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	closemessage
+	waitmovement 0
 # 56 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	release
+	playse SE_EXIT
 # 57 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	end
+	removeobject LOCALID_VIOLET_GLADION
 # 58 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
+	setflag FLAG_RECEIVED_MYSTERY_EGG
 # 59 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokemonCenter_EventScript_Gentleman::
+	setflag FLAG_HIDE_VIOLET_CITY_GLADION
 # 60 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	lock
+	setvar VAR_VIOLET_CITY_KIMONO_GIRL, 1
 # 61 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	faceplayer
+	clearflag FLAG_HIDE_VIOLET_CITY_KIMONO_GIRL
 # 62 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	msgbox VioletCity_PokeCenter_Text_Gentleman, MSGBOX_DEFAULT
+	release
 # 63 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	closemessage
+	end
 # 64 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	release
+
 # 65 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	end
+VioletCity_PokemonCenter_EventScript_GladionEggSentToPC::
 # 66 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
+	msgbox VioletCity_PokeCenter_Text_GladionEggSentToPC, MSGBOX_DEFAULT
 # 67 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokemonCenter_EVentScript_Kid::
+	closemessage
 # 68 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	lock
-# 69 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	faceplayer
-# 70 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	msgbox VioletCity_PokeCenter_Text_GameboyKid, MSGBOX_DEFAULT
-# 71 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	closemessage
-# 72 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	release
-# 73 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	end
-# 74 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 75 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokemonCenter_EventScript_Man::
-# 76 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	lock
-# 77 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	faceplayer
-# 78 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	msgbox VioletCity_PokeCenter_Text_Youngster, MSGBOX_DEFAULT
-# 79 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	closemessage
-# 80 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	release
-# 81 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	end
-# 82 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 83 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_ElmsAideFavor:
-# 84 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "{PLAYER}, long time, no see.\p"
-# 85 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Prof. Elm asked me to find you.\p"
-# 86 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "He has another favor to ask.\p"
-# 87 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Would you take the Pokémon Egg?$"
-# 88 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 89 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_ElmsAideNoRoom:
-# 90 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "{PLAYER}, long time, no see.\p"
-# 91 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Prof. Elm asked me to find you.\p"
-# 92 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "He has another favor to ask.\p"
-# 93 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Would you take the Pokémon Egg?\p"
-# 94 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Oh, wait... You need to make room\n"
-# 95 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "in your party first.$"
-# 96 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 97 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_ElmsAideGiveEgg:
-# 98 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "We discovered that a Pokémon won't\n"
-# 99 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "hatch until it grows in the Egg.\p"
-# 100 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "It also has to be with other\n"
-# 101 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "active Pokémon to hatch.\p"
-# 102 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "{PLAYER}, you're the only person\n"
-# 103 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "we can rely on.$"
-# 104 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 105 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_ElmsAideGiveItem:
-# 106 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Oh, and this might help when it hatches.$"
-# 107 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 108 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_ElmsAideFullParty:
-# 109 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Oh, no. You can't carry any more\n"
-# 110 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Pokémon with you.\p"
-# 111 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "I'll wait here while you make\n"
-# 112 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "room for the Egg.$"
-# 113 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 114 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_ElmsAideRefuse:
-# 115 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "B-but… Prof. Elm asked for you…$"
-# 116 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 117 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_FarawayLink:
-# 118 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "I've been thinking it'd be great\n"
-# 119 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "to link up and battle with my\n"
-# 120 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "friends who live far away.$"
-# 121 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 122 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_MobileAdapter:
-# 123 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "I just battled a friend in\n"
-# 124 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Cianwood over a link.\p"
-# 125 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "If you connect a Mobile Adapter,\n"
-# 126 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "you can link with a friend far\n"
-# 127 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "away.$"
-# 128 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 129 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_GameboyKid:
-# 130 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "A guy named Bill made the\n"
-# 131 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Pokémon PC storage system.$"
-# 132 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 133 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_Gentleman:
-# 134 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "It was around three years ago.\p"
-# 135 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Team Rocket was up to no good\n"
-# 136 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "with Pokémon.\p"
-# 137 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "But justice prevailed--a young\n"
-# 138 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "kid broke 'em up.$"
-# 139 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-
-# 140 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-VioletCity_PokeCenter_Text_Youngster:
-# 141 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Pokémon are smart. They won't\n"
-# 142 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "obey a trainer they don't respect.\p"
-# 143 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Without the right Gym Badges,\n"
-# 144 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "they will just do as they please.$"
-
-VioletPCGiveExpJar::
-# 148 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	msgbox VioletPCGiveExpJar_Text_0
-# 150 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	giveitem ITEM_CANDY_JAR
-# 151 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	msgbox VioletPCGiveExpJar_Text_1
 	return
+# 69 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 
+# 70 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+@ Defensive fallback: unreachable in practice, since the party/PC check above
+# 71 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+@ already guarantees room before the battle starts and nothing can deposit or
+# 72 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+@ withdraw Pokemon mid-battle.
+# 73 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokemonCenter_EventScript_GladionNoRoomAfterBattle::
+# 74 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	msgbox VioletCity_PokeCenter_Text_GladionNoRoom, MSGBOX_DEFAULT
+# 75 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	closemessage
+# 76 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	release
+# 77 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	end
+# 78 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 
-VioletPCGiveExpJar_Text_0:
+# 79 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokemonCenter_EventScript_Gladion_Received::
+# 80 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	msgbox VioletCity_PokeCenter_Text_GladionAfterDelivery, MSGBOX_DEFAULT
+# 81 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	closemessage
+# 82 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	release
+# 83 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	end
+# 84 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 85 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokemonCenter_EventScript_Gentleman::
+# 86 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	lock
+# 87 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	faceplayer
+# 88 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	msgbox VioletCity_PokeCenter_Text_Gentleman, MSGBOX_DEFAULT
+# 89 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	closemessage
+# 90 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	release
+# 91 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	end
+# 92 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 93 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokemonCenter_EVentScript_Kid::
+# 94 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	lock
+# 95 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	faceplayer
+# 96 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	msgbox VioletCity_PokeCenter_Text_GameboyKid, MSGBOX_DEFAULT
+# 97 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	closemessage
+# 98 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	release
+# 99 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	end
+# 100 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 101 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokemonCenter_EventScript_Man::
+# 102 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	lock
+# 103 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	faceplayer
+# 104 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	msgbox VioletCity_PokeCenter_Text_Youngster, MSGBOX_DEFAULT
+# 105 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	closemessage
+# 106 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	release
+# 107 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	end
+# 108 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 109 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_GladionNoRoom:
+# 110 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "There's no room for the Egg in\n"
+# 111 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "your party or your PC.\p"
+# 112 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Make some space first. I'll wait\n"
+# 113 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "here.$"
+# 114 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 115 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_GladionEggSentToPC:
+# 116 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Your party is full, so the Egg\n"
+# 117 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "was sent to your PC.\p"
+# 118 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Don't forget to check on it.$"
+# 119 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 120 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_GladionRecognizes:
+# 121 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "You're {PLAYER}?\p"
+# 122 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Lillie mentioned you.\n"
+# 123 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "She's planning your next battle.$"
+# 124 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 125 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_GladionPartner1:
+# 126 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "I found this Type: Null in Alola.\n"
+# 127 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Someone had left it behind.\p"
+# 128 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "It's traveling with me now.$"
+# 129 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 130 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_GladionPartner2:
+# 131 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "We're training. That doesn't\n"
+# 132 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "mean we'll hold back.\p"
+# 133 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Let me see how you fight.$"
+# 134 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 135 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_GladionVictory:
+# 136 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Gladion: We're getting there,\n"
+# 137 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Null. That was a good battle.$"
+# 138 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 139 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_GladionGiveEgg:
+# 140 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Here's the Egg. Elm asked me\n"
+# 141 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "to bring it to you.\p"
+# 142 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Take care of it.$"
+# 143 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 144 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_GladionParting:
+# 145 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "And when Lillie challenges you\n"
+# 146 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "again… give her a proper battle.$"
+# 147 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
 # 148 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "You should also take this for raising\n"
-	.string "more Pokémon.$"
+VioletCity_PokeCenter_Text_GladionAfterDelivery:
+# 149 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Gladion: Take care of that Egg.$"
+# 150 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 
-VioletPCGiveExpJar_Text_1:
 # 151 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "{PLAYER}, you're the only \n"
-	.string "person we can rely on.$"
+VioletCity_PokeCenter_Text_FarawayLink:
+# 152 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "I've been thinking it'd be great\n"
+# 153 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "to link up and battle with my\n"
+# 154 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "friends who live far away.$"
+# 155 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 156 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_MobileAdapter:
+# 157 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "I just battled a friend in\n"
+# 158 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Cianwood over a link.\p"
+# 159 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "If you connect a Mobile Adapter,\n"
+# 160 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "you can link with a friend far\n"
+# 161 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "away.$"
+# 162 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 163 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_GameboyKid:
+# 164 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "A guy named Bill made the\n"
+# 165 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Pokémon PC storage system.$"
+# 166 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 167 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_Gentleman:
+# 168 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "It was around three years ago.\p"
+# 169 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Team Rocket was up to no good\n"
+# 170 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "with Pokémon.\p"
+# 171 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "But justice prevailed--a young\n"
+# 172 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "kid broke 'em up.$"
+# 173 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 174 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokeCenter_Text_Youngster:
+# 175 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Pokémon are smart. They won't\n"
+# 176 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "obey a trainer they don't respect.\p"
+# 177 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "Without the right Gym Badges,\n"
+# 178 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	.string "they will just do as they please.$"
+# 179 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 180 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+@ Gladion: (9,4) -> (7,4) -> door (7,8).
+# 181 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokemonCenter_Movement_GladionLeave:
+# 182 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_left
+# 183 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_left
+# 184 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_down
+# 185 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_down
+# 186 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_down
+# 187 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_down
+# 188 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	step_end
+# 189 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+
+# 190 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+@ Used instead of the movement above when the player is standing directly
+# 191 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+@ west of Gladion (9,4), so the first step doesn't walk through them.
+# 192 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+VioletCity_PokemonCenter_Movement_GladionLeaveViaSouth:
+# 193 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_down
+# 194 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_left
+# 195 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_left
+# 196 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_down
+# 197 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_down
+# 198 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	walk_down
+# 199 "data/maps/VioletCity_PokemonCenter/scripts.pory"
+	step_end

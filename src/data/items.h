@@ -15476,20 +15476,18 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_PowderJar,
     },
 
-    [ITEM_CANDY_JAR] =
+    [ITEM_UNUSED_887] =
     {
-        .name = ITEM_NAME("Candy Jar"),
+        .name = gQuestionMarksItemName,
         .price = 0,
-        .description = COMPOUND_STRING(
-            "Stores extra Exp\n"
-            "and turns it into\n"
-            "candy."),
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
+        .description = sQuestionMarksDesc,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_UNCATEGORIZED,
+        .heldSlot = 0,
         .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CandyJar,
-        .iconPic = gItemIcon_PowderJar,
-        .iconPalette = gItemIconPalette_PowderJar,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
     },
 
     [ITEM_SQUIRTBOTTLE] =

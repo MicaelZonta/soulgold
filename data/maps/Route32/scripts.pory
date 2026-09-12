@@ -243,7 +243,7 @@ Route32_EventScript_BaldingManGym::
 	end
 Route32_EventScript_BaldingManEgg::
 	msgbox Route32_Text_CooltrainerM_WhatsTheHurry, MSGBOX_DEFAULT
-	msgbox Route32_Text_CooltrainerM_AideIsWaiting, MSGBOX_DEFAULT
+	msgbox Route32_Text_CooltrainerM_GladionIsWaiting, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route32_Movement_Turnback
 	waitmovement 0
@@ -300,12 +300,12 @@ Route32_Text_CooltrainerM_WhatsTheHurry:
 	.string "Wait up!\n"
 	.string "What's the hurry?$"
 
-Route32_Text_CooltrainerM_AideIsWaiting:
-	.string "{PLAYER}, right?\n"
-	.string "Some guy wearing glasses\p"
-	.string "was looking for you.\p"
-	.string "See for yourself. He's waiting for\n"
-	.string "you at the Pokémon Center.$"
+Route32_Text_CooltrainerM_GladionIsWaiting:
+	.string "{PLAYER}, right?\p"
+	.string "A Trainer named Gladion was\n"
+	.string "looking for you.\p"
+	.string "He's waiting at the Pokémon\n"
+	.string "Center.$"
 
 Route32_Text_CooltrainerM_SproutTower:
 	.string "Have you gone to Sprout Tower?\n"

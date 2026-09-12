@@ -1545,6 +1545,24 @@ bool8 ScriptCheckFreePokemonStorageSpace(void)
     return CheckFreePokemonStorageSpace();
 }
 
+// Used before Gladion walks out of the Violet City Pokemon Center, since the
+// player can approach him from the west, south, or east and scripted
+// movement doesn't check collision against the player's sprite.
+bool8 ScriptCheckPlayerWestOfGladion(void)
+{
+    u8 i;
+
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        if (gObjectEvents[i].active && gObjectEvents[i].graphicsId == OBJ_EVENT_GFX_GLADION)
+        {
+            return (gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x == gObjectEvents[i].currentCoords.x - 1
+                 && gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y == gObjectEvents[i].currentCoords.y);
+        }
+    }
+    return FALSE;
+}
+
 // Task data for Task_ShakeCamera
 #define tHorizontalPan  data[0]
 #define tDelayCounter   data[1]

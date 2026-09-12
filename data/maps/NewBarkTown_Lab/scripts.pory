@@ -67,7 +67,10 @@ NewBarkTown_EventScript_Aide2Testimony::
 NewBarkTown_Lab_EventScript_Elm::
 	lock
 	faceplayer
-	goto_if_set FLAG_HIDE_NEWBARKTOWN_LAB_AIDE, NewBarkTown_Lab_EventScript_ElmAideIsWaiting
+	goto_if_set FLAG_RECEIVED_MYSTERY_EGG, NewBarkTown_Lab_EventScript_ElmAfterGladion
+	goto_if_eq VAR_VIOLET_CITY_STATE, 4, NewBarkTown_Lab_EventScript_ElmGladionIsWaiting
+
+NewBarkTown_Lab_EventScript_ElmAfterGladion::
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 7, NewBarkTown_Lab_EventScript_ElmMasterBall
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 8, NewBarkTown_Lab_EventScript_ElmKimono
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 9, NewBarkTown_Lab_EventScript_ElmLeague
@@ -85,17 +88,19 @@ NewBarkTown_Lab_EventScript_Elm::
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 1, NewBarkTown_Lab_EventScript_ElmChoosePokemon
 	end
 
-NewBarkTown_Lab_EventScript_ElmAideIsWaiting::
-	msgbox NewBarkTown_Lab_Text_ElmAideIsWaiting, MSGBOX_DEFAULT
+NewBarkTown_Lab_EventScript_ElmGladionIsWaiting::
+	msgbox NewBarkTown_Lab_Text_ElmGladionIsWaiting, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
 
-NewBarkTown_Lab_Text_ElmAideIsWaiting:
+NewBarkTown_Lab_Text_ElmGladionIsWaiting:
 	.string "{PLAYER}!\p"
 	.string "What are you doing here?\p"
-	.string "My aide is still waiting for you\n"
-	.string "In Violet City!$"
+	.string "Gladion is waiting for you at\n"
+	.string "Violet City's Pokémon Center.\p"
+	.string "He has the Egg I wanted you to\n"
+	.string "look after.$"
 
 NewBarkTown_Lab_EventScript_ElmIntro::
 	createfieldmugshot MUGSHOT_ELM

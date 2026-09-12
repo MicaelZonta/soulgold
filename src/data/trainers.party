@@ -19716,8 +19716,48 @@ Pic: Gladion
 Gender: Male
 Music: Silver
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Rattata
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Grubbin @ Oran Berry
+Modest Nature
+Level: 14
+Ability: Swarm
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 40 HP / 40 SpA
+- Struggle Bug
+- Electroweb
+- Mud-Slap
+- String Shot
+
+Sandile @ Oran Berry
+Jolly Nature
+Level: 14
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 40 Atk / 40 Spe
+- Bite
+- Bulldoze
+- Rock Tomb
+- Taunt
+
+Rockruff @ Oran Berry
+Jolly Nature
+Level: 14
+Ability: Vital Spirit
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 40 Atk / 40 Spe
+- Rock Tomb
+- Bite
+- Sucker Punch
+- Howl
+
+Type: Null @ Sitrus Berry
+Adamant Nature
+Level: 15
+Ability: Battle Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 40 HP / 40 Atk
+- Take Down
+- Aerial Ace
+- Iron Head
+- Work Up

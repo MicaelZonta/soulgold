@@ -1,7 +1,6 @@
 #include "global.h"
 #include "malloc.h"
 #include "berry_powder.h"
-#include "candy_jar.h"
 #include "fake_rtc.h"
 #include "follower_npc.h"
 #include "item.h"
@@ -308,7 +307,6 @@ static void ApplyNewEncryptionKeyToAllEncryptedData(u32 encryptionKey)
     ApplyNewEncryptionKeyToGameStats(encryptionKey);
     ApplyNewEncryptionKeyToBagItems(encryptionKey);
     ApplyNewEncryptionKeyToBerryPowder(encryptionKey);
-    ApplyNewEncryptionKeyToCandyJarExp(encryptionKey);
     ApplyNewEncryptionKeyToWord(&gSaveBlock1Ptr->money, encryptionKey);
     ApplyNewEncryptionKeyToHword(&gSaveBlock1Ptr->coins, encryptionKey);
 }

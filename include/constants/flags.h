@@ -908,7 +908,7 @@
 #define FLAG_SPOKEN_VICTORYROAD_RIVAL                               0x359
 #define FLAG_RECEIVED_ODD_EGG                                       0x35A
 #define FLAG_HIDE_CERULEAN_GYM_POKEMON                              0x35B
-#define FLAG_HIDE_NEWBARKTOWN_LAB_AIDE                              0x35C
+#define FLAG_UNUSED_35C                                              0x35C // Formerly FLAG_HIDE_NEWBARKTOWN_LAB_AIDE; freed when the lab aide stopped being hidden for the Gladion Egg hand-off
 #define FLAG_HIDE_AZALEA_TOWN_CUT_MASTER                            0x35D
 #define FLAG_RAILWAY_ELECTRITE                                      0x35E
 #define FLAG_HIDE_POISOTITE                                         0x35F
@@ -938,7 +938,7 @@
 #define FLAG_HIDE_MRPOKEMON                                         0x377
 #define FLAG_HIDE_BATTLE_TOWER_OPPONENT                             0x378
 #define FLAG_RECEIVED_MYSTERY_EGG                                   0x379 // Formerly FLAG_RECEIVED_TOGEPI_EGG; ID preserved for existing saves
-#define FLAG_HIDE_VIOLET_CITY_AIDE                                  0x37A
+#define FLAG_HIDE_VIOLET_CITY_GLADION                                0x37A // Formerly FLAG_HIDE_VIOLET_CITY_AIDE; ID preserved for existing saves
 #define FLAG_HIDE_SPROUT_TOWER_SILVER                               0x37B
 #define FLAG_HIDE_JOHTO_GYM_LEADERS                                 0x37C
 #define FLAG_HIDE_AZALEA_TOWN_ROCKETS                               0x37D

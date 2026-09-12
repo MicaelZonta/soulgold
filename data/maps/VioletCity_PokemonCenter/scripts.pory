@@ -1,5 +1,6 @@
 raw `
 .set LOCALID_NURSE, 1
+.set LOCALID_VIOLET_GLADION, 6
 
 VioletCity_PokemonCenter_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VioletCity_Pokecenter_OnTransition
@@ -9,49 +10,74 @@ VioletCity_Pokecenter_OnTransition::
 	setrespawn HEAL_LOCATION_VIOLET_CITY
 	end
 
-VioletCity_PokemonCenter_EventScript_Aide::
+VioletCity_PokemonCenter_EventScript_Gladion::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_MYSTERY_EGG, VioletCity_PokemonCenter_EventScript_Aide_Received
-	msgbox VioletCity_PokeCenter_Text_ElmsAideFavor, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, VioletCity_PokemonCenter_EventScript_Aide_Refuse
-	goto_if_eq VAR_RESULT, YES, VioletCity_PokemonCenter_EventScript_Aide_Accepted
-	release
-	end
-
-
-VioletCity_PokemonCenter_EventScript_AideNoRoom::
-	msgbox VioletCity_PokeCenter_Text_ElmsAideNoRoom, MSGBOX_DEFAULT
+	goto_if_set FLAG_RECEIVED_MYSTERY_EGG, VioletCity_PokemonCenter_EventScript_Gladion_Received
+	getpartysize
+	goto_if_ne VAR_RESULT, PARTY_SIZE, VioletCity_PokemonCenter_EventScript_Gladion_Battle
+	specialvar VAR_RESULT, ScriptCheckFreePokemonStorageSpace
+	goto_if_eq VAR_RESULT, TRUE, VioletCity_PokemonCenter_EventScript_Gladion_Battle
+	msgbox VioletCity_PokeCenter_Text_GladionNoRoom, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
 
-VioletCity_PokemonCenter_EventScript_Aide_Refuse::
-	msgbox VioletCity_PokeCenter_Text_ElmsAideRefuse, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, VioletCity_PokemonCenter_EventScript_Aide_Refuse
-	goto_if_eq VAR_RESULT, YES, VioletCity_PokemonCenter_EventScript_Aide_Accepted
-	release
-	end
-
-VioletCity_PokemonCenter_EventScript_Aide_Accepted::
-	msgbox VioletCity_PokeCenter_Text_ElmsAideGiveEgg, MSGBOX_DEFAULT
+VioletCity_PokemonCenter_EventScript_Gladion_Battle::
+	msgbox VioletCity_PokeCenter_Text_GladionRecognizes, MSGBOX_DEFAULT
+	closemessage
+	msgbox VioletCity_PokeCenter_Text_GladionPartner1, MSGBOX_DEFAULT
+	msgbox VioletCity_PokeCenter_Text_GladionPartner2, MSGBOX_DEFAULT
+	closemessage
+	call Common_EventScript_OutOfCenterPartyHeal
+	removefieldmugshot
+	trainerbattle_no_intro TRAINER_GLADION, VioletCity_PokeCenter_Text_GladionVictory
+	msgbox VioletCity_PokeCenter_Text_GladionGiveEgg, MSGBOX_DEFAULT
 	giveegg SPECIES_COSMOG
-	goto_if_eq VAR_RESULT, MON_CANT_GIVE, VioletCity_PokemonCenter_EventScript_AideNoRoom
+	copyvar VAR_0x8008, VAR_RESULT
+	goto_if_eq VAR_0x8008, MON_CANT_GIVE, VioletCity_PokemonCenter_EventScript_GladionNoRoomAfterBattle
 	playfanfare MUS_OBTAIN_ITEM
 	message LavaridgeTown_Text_ReceivedTheEgg
 	waitfanfare
-    call VioletPCGiveExpJar
-    closemessage
+	closemessage
+	call_if_eq VAR_0x8008, MON_GIVEN_TO_PC, VioletCity_PokemonCenter_EventScript_GladionEggSentToPC
+	msgbox VioletCity_PokeCenter_Text_GladionParting, MSGBOX_DEFAULT
+	closemessage
+	specialvar VAR_RESULT, ScriptCheckPlayerWestOfGladion
+	goto_if_eq VAR_RESULT, TRUE, VioletCity_PokemonCenter_EventScript_GladionLeaveViaSouth
+	applymovement LOCALID_VIOLET_GLADION, VioletCity_PokemonCenter_Movement_GladionLeave
+	goto VioletCity_PokemonCenter_EventScript_GladionLeaveDone
+
+VioletCity_PokemonCenter_EventScript_GladionLeaveViaSouth::
+	applymovement LOCALID_VIOLET_GLADION, VioletCity_PokemonCenter_Movement_GladionLeaveViaSouth
+
+VioletCity_PokemonCenter_EventScript_GladionLeaveDone::
+	waitmovement 0
+	playse SE_EXIT
+	removeobject LOCALID_VIOLET_GLADION
 	setflag FLAG_RECEIVED_MYSTERY_EGG
-	setflag FLAG_HIDE_VIOLET_CITY_AIDE
+	setflag FLAG_HIDE_VIOLET_CITY_GLADION
 	setvar VAR_VIOLET_CITY_KIMONO_GIRL, 1
 	clearflag FLAG_HIDE_VIOLET_CITY_KIMONO_GIRL
-	clearflag FLAG_HIDE_NEWBARKTOWN_LAB_AIDE
 	release
 	end
 
-VioletCity_PokemonCenter_EventScript_Aide_Received::
-	msgbox VioletCity_PokeCenter_Text_ElmsAideGiveEgg, MSGBOX_DEFAULT
+VioletCity_PokemonCenter_EventScript_GladionEggSentToPC::
+	msgbox VioletCity_PokeCenter_Text_GladionEggSentToPC, MSGBOX_DEFAULT
+	closemessage
+	return
+
+@ Defensive fallback: unreachable in practice, since the party/PC check above
+@ already guarantees room before the battle starts and nothing can deposit or
+@ withdraw Pokemon mid-battle.
+VioletCity_PokemonCenter_EventScript_GladionNoRoomAfterBattle::
+	msgbox VioletCity_PokeCenter_Text_GladionNoRoom, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+VioletCity_PokemonCenter_EventScript_Gladion_Received::
+	msgbox VioletCity_PokeCenter_Text_GladionAfterDelivery, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -80,39 +106,47 @@ VioletCity_PokemonCenter_EventScript_Man::
 	release
 	end
 
-VioletCity_PokeCenter_Text_ElmsAideFavor:
-	.string "{PLAYER}, long time, no see.\p"
-	.string "Prof. Elm asked me to find you.\p"
-	.string "He has another favor to ask.\p"
-	.string "Would you take the Pokémon Egg?$"
+VioletCity_PokeCenter_Text_GladionNoRoom:
+	.string "There's no room for the Egg in\n"
+	.string "your party or your PC.\p"
+	.string "Make some space first. I'll wait\n"
+	.string "here.$"
 
-VioletCity_PokeCenter_Text_ElmsAideNoRoom:
-	.string "{PLAYER}, long time, no see.\p"
-	.string "Prof. Elm asked me to find you.\p"
-	.string "He has another favor to ask.\p"
-	.string "Would you take the Pokémon Egg?\p"
-	.string "Oh, wait... You need to make room\n"
-	.string "in your party first.$"
+VioletCity_PokeCenter_Text_GladionEggSentToPC:
+	.string "Your party is full, so the Egg\n"
+	.string "was sent to your PC.\p"
+	.string "Don't forget to check on it.$"
 
-VioletCity_PokeCenter_Text_ElmsAideGiveEgg:
-	.string "We discovered that a Pokémon won't\n"
-	.string "hatch until it grows in the Egg.\p"
-	.string "It also has to be with other\n"
-	.string "active Pokémon to hatch.\p"
-	.string "{PLAYER}, you're the only person\n"
-	.string "we can rely on.$"
+VioletCity_PokeCenter_Text_GladionRecognizes:
+	.string "You're {PLAYER}?\p"
+	.string "Lillie mentioned you.\n"
+	.string "She's planning your next battle.$"
 
-VioletCity_PokeCenter_Text_ElmsAideGiveItem:
-	.string "Oh, and this might help when it hatches.$"
+VioletCity_PokeCenter_Text_GladionPartner1:
+	.string "I found this Type: Null in Alola.\n"
+	.string "Someone had left it behind.\p"
+	.string "It's traveling with me now.$"
 
-VioletCity_PokeCenter_Text_ElmsAideFullParty:
-	.string "Oh, no. You can't carry any more\n"
-	.string "Pokémon with you.\p"
-	.string "I'll wait here while you make\n"
-	.string "room for the Egg.$"
+VioletCity_PokeCenter_Text_GladionPartner2:
+	.string "We're training. That doesn't\n"
+	.string "mean we'll hold back.\p"
+	.string "Let me see how you fight.$"
 
-VioletCity_PokeCenter_Text_ElmsAideRefuse:
-	.string "B-but… Prof. Elm asked for you…$"
+VioletCity_PokeCenter_Text_GladionVictory:
+	.string "Gladion: We're getting there,\n"
+	.string "Null. That was a good battle.$"
+
+VioletCity_PokeCenter_Text_GladionGiveEgg:
+	.string "Here's the Egg. Elm asked me\n"
+	.string "to bring it to you.\p"
+	.string "Take care of it.$"
+
+VioletCity_PokeCenter_Text_GladionParting:
+	.string "And when Lillie challenges you\n"
+	.string "again… give her a proper battle.$"
+
+VioletCity_PokeCenter_Text_GladionAfterDelivery:
+	.string "Gladion: Take care of that Egg.$"
 
 VioletCity_PokeCenter_Text_FarawayLink:
 	.string "I've been thinking it'd be great\n"
@@ -142,13 +176,25 @@ VioletCity_PokeCenter_Text_Youngster:
 	.string "obey a trainer they don't respect.\p"
 	.string "Without the right Gym Badges,\n"
 	.string "they will just do as they please.$"
-`
 
-script VioletPCGiveExpJar {
-    msgbox("You should also take this for raising
-            more Pokémon.")
-    giveitem(ITEM_CANDY_JAR)
-    msgbox("{PLAYER}, you're the only 
-			person we can rely on.")
-    return
-}
+@ Gladion: (9,4) -> (7,4) -> door (7,8).
+VioletCity_PokemonCenter_Movement_GladionLeave:
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+@ Used instead of the movement above when the player is standing directly
+@ west of Gladion (9,4), so the first step doesn't walk through them.
+VioletCity_PokemonCenter_Movement_GladionLeaveViaSouth:
+	walk_down
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+`

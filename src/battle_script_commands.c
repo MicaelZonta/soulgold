@@ -41,7 +41,6 @@
 #include "task.h"
 #include "naming_screen.h"
 #include "battle_setup.h"
-#include "candy_jar.h"
 #include "overworld.h"
 #include "wild_encounter.h"
 #include "rtc.h"
@@ -4681,9 +4680,6 @@ static void Cmd_getexp(void)
                 else
                     calculatedExp = (calculatedExp * GetConfig(B_MODERN_TRAINER_EXP_PERCENT)) / 100;
             }
-
-            if (CheckBagHasItem(ITEM_CANDY_JAR, 1))
-                GiveCandyJarExp(calculatedExp * 9 / 10);
 
             if (B_SPLIT_EXP < GEN_6)
             {

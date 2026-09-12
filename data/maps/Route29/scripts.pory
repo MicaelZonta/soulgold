@@ -159,11 +159,6 @@ Route29_EventScript_Lusamine::
 	msgbox Route29_Text_LusamineAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route29_EventScript_Gladion::
-	trainerbattle_single TRAINER_GLADION, Route29_Text_GladionSeen, Route29_Text_GladionBeaten
-	msgbox Route29_Text_GladionAfterBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route29_EventScript_Looker::
 	lock
 	faceplayer
@@ -271,19 +266,6 @@ Route29_Text_LusamineBeaten:
 
 Route29_Text_LusamineAfterBattle:
 	.string "Lusamine: …Interesting.$"
-
-Route29_Text_GladionSeen:
-	.string "Gladion: …\p"
-	.string "Don't get the wrong idea. I'm\n"
-	.string "just passing through.\p"
-	.string "…Fine. Let's make this quick.$"
-
-Route29_Text_GladionBeaten:
-	.string "Gladion: …Tch.$"
-
-Route29_Text_GladionAfterBattle:
-	.string "Gladion: I told you, I'm just\n"
-	.string "passing through.$"
 
 Route29_Text_Looker:
 	.string "Looker: Hmm? Oh, pay no\n"

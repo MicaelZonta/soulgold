@@ -104,8 +104,7 @@ STATIC_ASSERT(sizeof(struct SaveBlock2) == 0xAC8, SaveBlock2LegacySize);
 #endif //FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK2
 STATIC_ASSERT(offsetof(struct SaveBlock3, dexNavChain) == 0xC, SaveBlock3DexNavChainOffset);
 STATIC_ASSERT(offsetof(struct SaveBlock3, hiddenGrottoContents) == 0x10, SaveBlock3HiddenGrottoOffset);
-STATIC_ASSERT(offsetof(struct SaveBlock3, candyJarExp) == 0x60, SaveBlock3CandyJarOffset);
-STATIC_ASSERT(sizeof(struct SaveBlock3) == 0x64, SaveBlock3LegacySize);
+STATIC_ASSERT(sizeof(struct SaveBlock3) == 0x60, SaveBlock3LegacySize);
 STATIC_ASSERT(offsetof(struct SaveBlock1, registeredItemCompat) == 0x47E, SaveBlock1LegacyRegisteredItemOffset);
 STATIC_ASSERT(offsetof(struct SaveBlock1, registeredItems) == 0x3484, SaveBlock1RegisteredItemsOffset);
 STATIC_ASSERT(offsetof(struct SaveBlock1, optionsPartyMenuStyle) == 0x348C, SaveBlock1PartyMenuStyleOffset);
