@@ -456,19 +456,6 @@ Pelipper
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_VERONICA ===
-Name: Veronica
-Class: Beauty
-Pic: Beauty
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Jigglypuff
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_JOHN ===
 Name: John
 Class: Camper
@@ -2440,19 +2427,6 @@ Yamask
 Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CARLENE ===
-Name: Carlene
-Class: Beauty
-Pic: Beauty
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Rufflet
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_CHUCK_1_2 ===
 Name: Chuck
 Class: Leader
@@ -2523,20 +2497,6 @@ AI: Basic Trainer
 
 Lumineon
 Level: 60
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_32 ===
-Name: Grunt
-Class: Team Rocket
-Pic: Rocket Grunt M
-Gender: Male
-Music: Rocket
-Items: Full Restore / Full Restore
-Double Battle: No
-AI: Basic Trainer
-
-Zubat
-Level: 22
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_33 ===
@@ -2850,19 +2810,6 @@ Modest Nature
 - Dragon Pulse
 - Flash Cannon
 - Dark Pulse
-
-=== TRAINER_THERESA ===
-Name: Theresa
-Class: Beauty
-Pic: Beauty
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Swablu
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ROSS ===
 Name: Ross
@@ -3344,19 +3291,6 @@ AI: Basic Trainer
 
 Noctowl
 Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_ETHEL ===
-Name: Ethel
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Hg Suspicious 1
-Double Battle: No
-AI: Basic Trainer
-
-Haunter
-Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_NICO ===
@@ -3885,64 +3819,6 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Recover
 - Thunderbolt
 
-=== TRAINER_BLUE_2 ===
-Name: Blue
-Class: Leader
-Pic: Leader Blue
-Gender: Male
-Music: Male
-Items: Full Restore / Full Restore
-Double Battle: No
-AI: Basic Trainer
-
-Articuno @ Sitrus Berry
-Level: 69
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Ice Beam
-- Sky Attack
-- Rest
-- Toxic
-
-Alakazam @ Twisted Spoon
-Level: 68
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Thunderbolt
-- Recover
-- Psychic
-- Shadow Ball
-
-Rhydon @ Quick Claw
-Level: 67
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Rock Slide
-- Earthquake
-- Iron Tail
-- Crunch
-
-Exeggutor @ Leftovers
-Level: 68
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Leech Seed
-- Sleep Powder
-- Psychic
-- Giga Drain
-
-Gyarados @ Focus Band
-Level: 68
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Hydro Pump
-- Double Team
-- Body Slam
-- Reversal
-
-Arcanine @ Silk Scarf
-Level: 69
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Flamethrower
-- Curse
-- Crunch
-- Extreme Speed
-
 === TRAINER_WAI ===
 Name: Wai
 Class: Black Belt
@@ -4320,27 +4196,6 @@ Koffing
 Level: 20
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_WALTER ===
-Name: Walter
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Hg Boy 2
-Double Battle: No
-AI: Basic Trainer
-
-Horsea
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Horsea
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Seadra
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_JONAH ===
 Name: Jonah
 Class: Fisherman
@@ -4374,20 +4229,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Politoed
 Level: 55
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_30 ===
-Name: Grunt
-Class: Team Rocket
-Pic: Rocket Grunt M
-Gender: Male
-Music: Rocket
-Items: Full Restore / Full Restore
-Double Battle: No
-AI: Basic Trainer
-
-Golbat
-Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_JANINE ===
@@ -6271,48 +6112,6 @@ Lanturn
 Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_25 ===
-Name: Grunt
-Class: Team Rocket
-Pic: Rocket Grunt M
-Gender: Male
-Music: Rocket
-Double Battle: No
-AI: Basic Trainer
-
-Zubat
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Ekans
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_24 ===
-Name: Grunt
-Class: Team Rocket
-Pic: Rocket Grunt M
-Gender: Male
-Music: Rocket
-Double Battle: No
-AI: Basic Trainer
-
-Crobat
-Level: 58
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Weezing
-Level: 58
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Marowak
-Level: 58
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Cloyster
-Level: 58
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_GRUNT_27 ===
 Name: Grunt
 Class: Team Rocket
@@ -6735,27 +6534,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_JAMES ===
 Name: James
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Hg Boy 2
-Double Battle: No
-AI: Basic Trainer
-
-Staryu
-Level: 13
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Starmie
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Horsea
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_TONY ===
-Name: Tony
 Class: Swimmer M
 Pic: Swimmer M
 Gender: Male
@@ -7813,27 +7591,6 @@ Espathra
 Level: 58
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-
-=== TRAINER_ANDY ===
-Name: Andy
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Dp Ace Trainer
-Double Battle: No
-AI: Basic Trainer
-
-Bulbasaur
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Charmander
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Squirtle
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_18 ===
 Name: Grunt
@@ -9699,19 +9456,6 @@ AI: Basic Trainer
 
 Growlithe
 Level: 21
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_HARVEY ===
-Name: Harvey
-Class: Camper
-Pic: Camper
-Gender: Male
-Music: Hg Boy 1
-Double Battle: No
-AI: Basic Trainer
-
-Nidorino
-Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ALBERT ===
