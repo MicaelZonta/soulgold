@@ -4,7 +4,7 @@
 #include "constants/battle_partner.h"
 
 #define TRAINER_NONE                          0
-#define TRAINER_SAWYER_1                      1
+#define TRAINER_UNUSED_424                      1  // Former TRAINER_SAWYER_1; pending legacy battle removed.
 #define TRAINER_SAYO          2
 #define TRAINER_SCOTT          3
 #define TRAINER_SEAN          4
@@ -122,7 +122,7 @@
 #define TRAINER_WAI        116
 #define TRAINER_GRUNT_19                     117
 #define TRAINER_ELLEN                     118
-#define TRAINER_NAOMI                       119
+#define TRAINER_UNUSED_425                       119  // Former TRAINER_NAOMI; pending legacy battle removed.
 #define TRAINER_GRUNT_20                     120
 #define TRAINER_GRUNT_21                     121
 #define TRAINER_GRUNT_22                     122
@@ -141,7 +141,7 @@
 #define TRAINER_JESSICA_5                   135
 #define TRAINER_UNUSED_316                   136  // Former TRAINER_WINSTON_1; reserved after legacy-map removal.
 #define TRAINER_UNUSED_018                  137  // Former TRAINER_MOLLIE; reserved after legacy-map removal.
-#define TRAINER_GARRET                      138
+#define TRAINER_UNUSED_426                      138  // Former TRAINER_GARRET; pending legacy battle removed.
 #define TRAINER_RODAROS                     139
 #define TRAINER_BELMARE                     140
 #define TRAINER_KENNEDY                     141
@@ -161,14 +161,14 @@
 #define TRAINER_UNUSED_319                      155  // Former TRAINER_TONY_1; reserved after legacy-map removal.
 #define TRAINER_JEROME                      156
 #define TRAINER_UNUSED_042                     157  // Former TRAINER_MATTHEW; reserved after legacy-map removal.
-#define TRAINER_DAVID                       158
+#define TRAINER_UNUSED_427                       158  // Former TRAINER_DAVID; pending legacy battle removed.
 #define TRAINER_SPENCER                     159
 #define TRAINER_ROLAND                      160
 #define TRAINER_UNUSED_043                       161  // Former TRAINER_NOLEN; reserved after legacy-map removal.
 #define TRAINER_STAN                        162
 #define TRAINER_BARRY                       163
 #define TRAINER_DEAN                        164
-#define TRAINER_RODNEY                      165
+#define TRAINER_UNUSED_428                      165  // Former TRAINER_RODNEY; pending legacy battle removed.
 #define TRAINER_RICHARD                     166
 #define TRAINER_HERMAN                      167
 #define TRAINER_UNUSED_044                    168  // Former TRAINER_SANTIAGO; reserved after legacy-map removal.

@@ -96,28 +96,6 @@ Gender: Male
 Music: Male
 Double Battle: No
 
-=== TRAINER_DAVID ===
-Name: David
-Class: Camper
-Pic: Camper
-Gender: Male
-Music: Hg Boy 1
-Double Battle: No
-AI: Basic Trainer
-
-Graveler
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Graveler
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Golbat
-Level: 40
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-
 === TRAINER_MARVIN ===
 Name: Marvin
 Class: Fisherman
@@ -5152,23 +5130,6 @@ Porygon2
 Level: 56
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_SAWYER_1 ===
-Name: Philip
-Class: Burglar
-Pic: Burglar
-Gender: Male
-Music: Hg Suspicious 2
-Double Battle: No
-AI: Basic Trainer
-
-Baltoy
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Naclstack
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_RYAN ===
 Name: Ryan
 Class: Bird Keeper
@@ -9320,23 +9281,6 @@ AI: Basic Trainer
 
 Wigglytuff
 Level: 55
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_RODNEY ===
-Name: Rodney
-Class: Psychic M
-Pic: Psychic M
-Gender: Male
-Music: Hg Boy 1
-Double Battle: No
-AI: Basic Trainer
-
-Kadabra
-Level: 59
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Alakazam
-Level: 63
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BARNEY ===

@@ -53,12 +53,12 @@ SSTidalRooms_EventScript_Lea::
 	end
 
 SSTidalRooms_EventScript_Garret::
-	trainerbattle_single TRAINER_GARRET, SSTidalRooms_Text_GarretIntro, SSTidalRooms_Text_GarretDefeat
+	trainerbattle_single TRAINER_UNUSED_426, SSTidalRooms_Text_GarretIntro, SSTidalRooms_Text_GarretDefeat
 	msgbox SSTidalRooms_Text_GarretPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SSTidalRooms_EventScript_Naomi::
-	trainerbattle_single TRAINER_NAOMI, SSTidalRooms_Text_NaomiIntro, SSTidalRooms_Text_NaomiDefeat
+	trainerbattle_single TRAINER_UNUSED_425, SSTidalRooms_Text_NaomiIntro, SSTidalRooms_Text_NaomiDefeat
 	msgbox SSTidalRooms_Text_NaomiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -172,4 +172,3 @@ SSTidalRooms_Text_ExplainSnatch:
 	.string "Snatch steals the beneficial effects\n"
 	.string "of certain moves before they can be\l"
 	.string "used by a foe or ally.$"
-
