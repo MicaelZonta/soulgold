@@ -150,10 +150,10 @@
 #define TRAINER_UNUSED_318                    144  // Former TRAINER_THALIA_1; reserved after legacy-map removal.
 #define TRAINER_MARK                        145
 #define TRAINER_TERU          146
-#define TRAINER_STEVE_2                     147
-#define TRAINER_STEVE_3                     148
-#define TRAINER_STEVE_4                     149
-#define TRAINER_STEVE_5                     150
+#define TRAINER_UNUSED_331                     147  // Former TRAINER_STEVE_2; orphaned rematch variant.
+#define TRAINER_UNUSED_332                     148  // Former TRAINER_STEVE_3; orphaned rematch variant.
+#define TRAINER_UNUSED_333                     149  // Former TRAINER_STEVE_4; orphaned rematch variant.
+#define TRAINER_UNUSED_334                     150  // Former TRAINER_STEVE_5; orphaned rematch variant.
 #define TRAINER_UNUSED_011                  151  // Former TRAINER_LUIS; reserved after legacy-map removal.
 #define TRAINER_KENNY                     152
 #define TRAINER_DOUGLAS                     153
@@ -178,19 +178,19 @@
 #define TRAINER_JACK                        172
 #define TRAINER_DUDLEY                      173
 #define TRAINER_CHAD                        174
-#define TRAINER_TONY_2                      175
-#define TRAINER_TONY_3                      176
-#define TRAINER_TONY_4                      177
-#define TRAINER_TONY_5                      178
+#define TRAINER_UNUSED_339                      175  // Former TRAINER_TONY_2; orphaned rematch variant.
+#define TRAINER_UNUSED_340                      176  // Former TRAINER_TONY_3; orphaned rematch variant.
+#define TRAINER_UNUSED_341                      177  // Former TRAINER_TONY_4; orphaned rematch variant.
+#define TRAINER_UNUSED_342                      178  // Former TRAINER_TONY_5; orphaned rematch variant.
 #define TRAINER_UNUSED_005                  179  // Former TRAINER_TAKAO; reserved after legacy-map removal.
 #define TRAINER_JASMINE_1_3                     180
 #define TRAINER_KIYO                        181
 #define TRAINER_UNUSED_045                      182  // Former TRAINER_KOICHI; reserved after legacy-map removal.
 #define TRAINER_UNUSED_320                       183  // Former TRAINER_NOB_1; reserved after legacy-map removal.
-#define TRAINER_NOB_2                       184
-#define TRAINER_NOB_3                       185
-#define TRAINER_NOB_4                       186
-#define TRAINER_NOB_5                       187
+#define TRAINER_UNUSED_343                       184  // Former TRAINER_NOB_2; orphaned rematch variant.
+#define TRAINER_UNUSED_344                       185  // Former TRAINER_NOB_3; orphaned rematch variant.
+#define TRAINER_UNUSED_345                       186  // Former TRAINER_NOB_4; orphaned rematch variant.
+#define TRAINER_UNUSED_346                       187  // Former TRAINER_NOB_5; orphaned rematch variant.
 #define TRAINER_UNUSED_046                        188  // Former TRAINER_YUJI; reserved after legacy-map removal.
 #define TRAINER_JED                     189
 #define TRAINER_CINDY                     190
@@ -260,10 +260,10 @@
 #define TRAINER_UNUSED_321                    254  // Former TRAINER_WALTER_1; reserved after legacy-map removal.
 #define TRAINER_MICAH                       255
 #define TRAINER_THOMAS                      256
-#define TRAINER_WALTER_2                    257
-#define TRAINER_WALTER_3                    258
-#define TRAINER_WALTER_4                    259
-#define TRAINER_WALTER_5                    260
+#define TRAINER_UNUSED_347                    257  // Former TRAINER_WALTER_2; orphaned rematch variant.
+#define TRAINER_UNUSED_348                    258  // Former TRAINER_WALTER_3; orphaned rematch variant.
+#define TRAINER_UNUSED_349                    259  // Former TRAINER_WALTER_4; orphaned rematch variant.
+#define TRAINER_UNUSED_350                    260  // Former TRAINER_WALTER_5; orphaned rematch variant.
 #define TRAINER_SIDNEY                      261
 #define TRAINER_PHOEBE                      262
 #define TRAINER_GLACIA                      263
@@ -291,17 +291,17 @@
 #define TRAINER_KAREN_5                     285
 #define TRAINER_UNUSED_029                  286  // Former TRAINER_KATE_AND_JOY; reserved after legacy-map removal.
 #define TRAINER_UNUSED_322              287  // Former TRAINER_ANNA_AND_MEG_1; reserved after legacy-map removal.
-#define TRAINER_ANNA_AND_MEG_2              288
-#define TRAINER_ANNA_AND_MEG_3              289
-#define TRAINER_ANNA_AND_MEG_4              290
-#define TRAINER_ANNA_AND_MEG_5              291
+#define TRAINER_UNUSED_351              288  // Former TRAINER_ANNA_AND_MEG_2; orphaned rematch variant.
+#define TRAINER_UNUSED_352              289  // Former TRAINER_ANNA_AND_MEG_3; orphaned rematch variant.
+#define TRAINER_UNUSED_353              290  // Former TRAINER_ANNA_AND_MEG_4; orphaned rematch variant.
+#define TRAINER_UNUSED_354              291  // Former TRAINER_ANNA_AND_MEG_5; orphaned rematch variant.
 #define TRAINER_VICTOR                      292
 #define TRAINER_UNUSED_323                    293  // Former TRAINER_MIGUEL_1; reserved after legacy-map removal.
 #define TRAINER_GRUNT_26                      294
-#define TRAINER_MIGUEL_2                    295
-#define TRAINER_MIGUEL_3                    296
-#define TRAINER_MIGUEL_4                    297
-#define TRAINER_MIGUEL_5                    298
+#define TRAINER_UNUSED_355                    295  // Former TRAINER_MIGUEL_2; orphaned rematch variant.
+#define TRAINER_UNUSED_356                    296  // Former TRAINER_MIGUEL_3; orphaned rematch variant.
+#define TRAINER_UNUSED_357                    297  // Former TRAINER_MIGUEL_4; orphaned rematch variant.
+#define TRAINER_UNUSED_358                    298  // Former TRAINER_MIGUEL_5; orphaned rematch variant.
 #define TRAINER_VICTORIA                    299
 #define TRAINER_UNUSED_030                  300  // Former TRAINER_VANESSA; reserved after legacy-map removal.
 #define TRAINER_BETHANY                     301
@@ -357,10 +357,10 @@
 #define TRAINER_RIVAL_CYNDAQUIL_2                       351
 #define TRAINER_ANTHONY                     352
 #define TRAINER_UNUSED_325                  353  // Former TRAINER_BENJAMIN_1; reserved after legacy-map removal.
-#define TRAINER_BENJAMIN_2                  354
-#define TRAINER_BENJAMIN_3                  355
-#define TRAINER_BENJAMIN_4                  356
-#define TRAINER_BENJAMIN_5                  357
+#define TRAINER_UNUSED_359                  354  // Former TRAINER_BENJAMIN_2; orphaned rematch variant.
+#define TRAINER_UNUSED_360                  355  // Former TRAINER_BENJAMIN_3; orphaned rematch variant.
+#define TRAINER_UNUSED_361                  356  // Former TRAINER_BENJAMIN_4; orphaned rematch variant.
+#define TRAINER_UNUSED_362                  357  // Former TRAINER_BENJAMIN_5; orphaned rematch variant.
 #define TRAINER_ABE                   358
 #define TRAINER_JASMINE                     359
 #define TRAINER_AL                   360
@@ -373,10 +373,10 @@
 #define TRAINER_LIZ                     367
 #define TRAINER_LLOYD                     368
 #define TRAINER_UNUSED_326                     369  // Former TRAINER_MARIA_1; reserved after legacy-map removal.
-#define TRAINER_MARIA_2                     370
-#define TRAINER_MARIA_3                     371
-#define TRAINER_MARIA_4                     372
-#define TRAINER_MARIA_5                     373
+#define TRAINER_UNUSED_363                     370  // Former TRAINER_MARIA_2; orphaned rematch variant.
+#define TRAINER_UNUSED_364                     371  // Former TRAINER_MARIA_3; orphaned rematch variant.
+#define TRAINER_UNUSED_365                     372  // Former TRAINER_MARIA_4; orphaned rematch variant.
+#define TRAINER_UNUSED_366                     373  // Former TRAINER_MARIA_5; orphaned rematch variant.
 #define TRAINER_GARRETT                      374
 #define TRAINER_JULIA                   375
 #define TRAINER_WILL_2                    376
@@ -391,15 +391,15 @@
 #define TRAINER_UNUSED_053                       385  // Former TRAINER_TALIA; reserved after legacy-map removal.
 #define TRAINER_UNUSED_328                   386  // Former TRAINER_KATELYN_1; reserved after legacy-map removal.
 #define TRAINER_BOB                     387
-#define TRAINER_KATELYN_2                   388
-#define TRAINER_KATELYN_3                   389
-#define TRAINER_KATELYN_4                   390
-#define TRAINER_KATELYN_5                   391
+#define TRAINER_UNUSED_371                   388  // Former TRAINER_KATELYN_2; orphaned rematch variant.
+#define TRAINER_UNUSED_372                   389  // Former TRAINER_KATELYN_3; orphaned rematch variant.
+#define TRAINER_UNUSED_373                   390  // Former TRAINER_KATELYN_4; orphaned rematch variant.
+#define TRAINER_UNUSED_374                   391  // Former TRAINER_KATELYN_5; orphaned rematch variant.
 #define TRAINER_UNUSED_329                   392  // Former TRAINER_NICOLAS_1; reserved after legacy-map removal.
-#define TRAINER_NICOLAS_2                   393
-#define TRAINER_NICOLAS_3                   394
-#define TRAINER_NICOLAS_4                   395
-#define TRAINER_NICOLAS_5                   396
+#define TRAINER_UNUSED_375                   393  // Former TRAINER_NICOLAS_2; orphaned rematch variant.
+#define TRAINER_UNUSED_376                   394  // Former TRAINER_NICOLAS_3; orphaned rematch variant.
+#define TRAINER_UNUSED_377                   395  // Former TRAINER_NICOLAS_4; orphaned rematch variant.
+#define TRAINER_UNUSED_378                   396  // Former TRAINER_NICOLAS_5; orphaned rematch variant.
 #define TRAINER_AARON                       397
 #define TRAINER_PERRY                       398
 #define TRAINER_HUGH                        399
@@ -412,10 +412,10 @@
 #define TRAINER_UNUSED_330                    406  // Former TRAINER_ROBERT_1; reserved after legacy-map removal.
 #define TRAINER_BENNY                       407
 #define TRAINER_GRUNT_15                     408
-#define TRAINER_ROBERT_2                    409
-#define TRAINER_ROBERT_3                    410
-#define TRAINER_ROBERT_4                    411
-#define TRAINER_ROBERT_5                    412
+#define TRAINER_UNUSED_379                    409  // Former TRAINER_ROBERT_2; orphaned rematch variant.
+#define TRAINER_UNUSED_380                    410  // Former TRAINER_ROBERT_3; orphaned rematch variant.
+#define TRAINER_UNUSED_381                    411  // Former TRAINER_ROBERT_4; orphaned rematch variant.
+#define TRAINER_UNUSED_382                    412  // Former TRAINER_ROBERT_5; orphaned rematch variant.
 #define TRAINER_ALEX                        413
 #define TRAINER_DANNY                        414
 #define TRAINER_UNUSED_033                  415  // Former TRAINER_YASU; reserved after legacy-map removal.
@@ -823,10 +823,10 @@
 #define TRAINER_HANK                      817
 #define TRAINER_HAROLD                      818
 #define TRAINER_HARRIS                      819
-#define TRAINER_PABLO_2                     820
-#define TRAINER_PABLO_3                     821
-#define TRAINER_PABLO_4                     822
-#define TRAINER_PABLO_5                     823
+#define TRAINER_UNUSED_367                     820  // Former TRAINER_PABLO_2; orphaned rematch variant.
+#define TRAINER_UNUSED_368                     821  // Former TRAINER_PABLO_3; orphaned rematch variant.
+#define TRAINER_UNUSED_369                     822  // Former TRAINER_PABLO_4; orphaned rematch variant.
+#define TRAINER_UNUSED_370                     823  // Former TRAINER_PABLO_5; orphaned rematch variant.
 #define TRAINER_KOJI_2                      824
 #define TRAINER_KOJI_3                      825
 #define TRAINER_KOJI_4                      826
@@ -847,10 +847,10 @@
 #define TRAINER_ROSS                 841
 #define TRAINER_ROXANNE                 842
 #define TRAINER_ROY                 843
-#define TRAINER_THALIA_2                    844
-#define TRAINER_THALIA_3                    845
-#define TRAINER_THALIA_4                    846
-#define TRAINER_THALIA_5                    847
+#define TRAINER_UNUSED_335                    844  // Former TRAINER_THALIA_2; orphaned rematch variant.
+#define TRAINER_UNUSED_336                    845  // Former TRAINER_THALIA_3; orphaned rematch variant.
+#define TRAINER_UNUSED_337                    846  // Former TRAINER_THALIA_4; orphaned rematch variant.
+#define TRAINER_UNUSED_338                    847  // Former TRAINER_THALIA_5; orphaned rematch variant.
 #define TRAINER_UNUSED_009                  848  // Former TRAINER_MARIELA; reserved after legacy-map removal.
 #define TRAINER_BORIS                      849
 #define TRAINER_NICOLE                     850
