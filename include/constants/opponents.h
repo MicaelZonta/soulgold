@@ -525,22 +525,22 @@
 #define TRAINER_WALLY_VR_1                  519
 #define TRAINER_THOM_AND_KAE    520
 #define TRAINER_DUFF_AND_EDA    521
-#define TRAINER_BRENDAN_ROUTE_119_MUDKIP    522
-#define TRAINER_BRENDAN_ROUTE_103_TREECKO   523
+#define TRAINER_UNUSED_401    522  // Former TRAINER_BRENDAN_ROUTE_119_MUDKIP; Route 119 legacy trigger removed.
+#define TRAINER_UNUSED_407   523  // Former TRAINER_BRENDAN_ROUTE_103_TREECKO; Route 103 legacy trigger removed.
 #define TRAINER_UNUSED_396   524  // Former TRAINER_BRENDAN_ROUTE_110_TREECKO; Route 110 legacy trigger removed.
-#define TRAINER_BRENDAN_ROUTE_119_TREECKO   525
-#define TRAINER_BRENDAN_ROUTE_103_TORCHIC   526
+#define TRAINER_UNUSED_402   525  // Former TRAINER_BRENDAN_ROUTE_119_TREECKO; Route 119 legacy trigger removed.
+#define TRAINER_UNUSED_408   526  // Former TRAINER_BRENDAN_ROUTE_103_TORCHIC; Route 103 legacy trigger removed.
 #define TRAINER_UNUSED_397   527  // Former TRAINER_BRENDAN_ROUTE_110_TORCHIC; Route 110 legacy trigger removed.
-#define TRAINER_BRENDAN_ROUTE_119_TORCHIC   528
-#define TRAINER_MAY_ROUTE_103_MUDKIP        529
+#define TRAINER_UNUSED_403   528  // Former TRAINER_BRENDAN_ROUTE_119_TORCHIC; Route 119 legacy trigger removed.
+#define TRAINER_UNUSED_409        529  // Former TRAINER_MAY_ROUTE_103_MUDKIP; Route 103 legacy trigger removed.
 #define TRAINER_UNUSED_398        530  // Former TRAINER_MAY_ROUTE_110_MUDKIP; Route 110 legacy trigger removed.
-#define TRAINER_MAY_ROUTE_119_MUDKIP        531
-#define TRAINER_MAY_ROUTE_103_TREECKO       532
+#define TRAINER_UNUSED_404        531  // Former TRAINER_MAY_ROUTE_119_MUDKIP; Route 119 legacy trigger removed.
+#define TRAINER_UNUSED_410       532  // Former TRAINER_MAY_ROUTE_103_TREECKO; Route 103 legacy trigger removed.
 #define TRAINER_UNUSED_399       533  // Former TRAINER_MAY_ROUTE_110_TREECKO; Route 110 legacy trigger removed.
-#define TRAINER_MAY_ROUTE_119_TREECKO       534
-#define TRAINER_MAY_ROUTE_103_TORCHIC       535
+#define TRAINER_UNUSED_405       534  // Former TRAINER_MAY_ROUTE_119_TREECKO; Route 119 legacy trigger removed.
+#define TRAINER_UNUSED_411       535  // Former TRAINER_MAY_ROUTE_103_TORCHIC; Route 103 legacy trigger removed.
 #define TRAINER_UNUSED_400       536  // Former TRAINER_MAY_ROUTE_110_TORCHIC; Route 110 legacy trigger removed.
-#define TRAINER_MAY_ROUTE_119_TORCHIC       537
+#define TRAINER_UNUSED_406       537  // Former TRAINER_MAY_ROUTE_119_TORCHIC; Route 119 legacy trigger removed.
 #define TRAINER_CHUCK_1_3                     538
 #define TRAINER_JOE                       539
 #define TRAINER_UNUSED_059                    540  // Former TRAINER_MITCHELL; reserved after legacy-map removal.
@@ -595,15 +595,15 @@
 #define TRAINER_YOSHI        589
 #define TRAINER_ZACH        590
 #define TRAINER_UNUSED_069                       591  // Former TRAINER_MACEY; reserved after legacy-map removal.
-#define TRAINER_BRENDAN_RUSTBORO_TREECKO    592
-#define TRAINER_BRENDAN_RUSTBORO_MUDKIP     593
+#define TRAINER_UNUSED_412    592  // Former TRAINER_BRENDAN_RUSTBORO_TREECKO; Rustboro legacy triggers removed.
+#define TRAINER_UNUSED_413     593  // Former TRAINER_BRENDAN_RUSTBORO_MUDKIP; Rustboro legacy triggers removed.
 #define TRAINER_UNUSED_070                      594  // Former TRAINER_PAXTON; reserved after legacy-map removal.
 #define TRAINER_BLUE                    595
 #define TRAINER_BUGSY_1        596
 #define TRAINER_TABITHA_MT_CHIMNEY          597
 #define TRAINER_UNUSED_071                    598  // Former TRAINER_JONATHAN; reserved after legacy-map removal.
-#define TRAINER_BRENDAN_RUSTBORO_TORCHIC    599
-#define TRAINER_MAY_RUSTBORO_MUDKIP         600
+#define TRAINER_UNUSED_414    599  // Former TRAINER_BRENDAN_RUSTBORO_TORCHIC; Rustboro legacy triggers removed.
+#define TRAINER_UNUSED_415         600  // Former TRAINER_MAY_RUSTBORO_MUDKIP; Rustboro legacy triggers removed.
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
 #define TRAINER_TIANA                       603
@@ -664,12 +664,12 @@
 #define TRAINER_WALLY_VR_3                  658
 #define TRAINER_WALLY_VR_4                  659
 #define TRAINER_WALLY_VR_5                  660
-#define TRAINER_BRENDAN_LILYCOVE_MUDKIP     661
-#define TRAINER_BRENDAN_LILYCOVE_TREECKO    662
-#define TRAINER_BRENDAN_LILYCOVE_TORCHIC    663
-#define TRAINER_MAY_LILYCOVE_MUDKIP         664
-#define TRAINER_MAY_LILYCOVE_TREECKO        665
-#define TRAINER_MAY_LILYCOVE_TORCHIC        666
+#define TRAINER_UNUSED_418     661  // Former TRAINER_BRENDAN_LILYCOVE_MUDKIP; Lilycove legacy trigger removed.
+#define TRAINER_UNUSED_419    662  // Former TRAINER_BRENDAN_LILYCOVE_TREECKO; Lilycove legacy trigger removed.
+#define TRAINER_UNUSED_420    663  // Former TRAINER_BRENDAN_LILYCOVE_TORCHIC; Lilycove legacy trigger removed.
+#define TRAINER_UNUSED_421         664  // Former TRAINER_MAY_LILYCOVE_MUDKIP; Lilycove legacy trigger removed.
+#define TRAINER_UNUSED_422        665  // Former TRAINER_MAY_LILYCOVE_TREECKO; Lilycove legacy trigger removed.
+#define TRAINER_UNUSED_423        666  // Former TRAINER_MAY_LILYCOVE_TORCHIC; Lilycove legacy trigger removed.
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668
 #define TRAINER_UNUSED_080                  669  // Former TRAINER_ROGER; reserved after legacy-map removal.
@@ -771,8 +771,8 @@
 #define TRAINER_UNUSED_031                  765  // Former TRAINER_MYLES; reserved after legacy-map removal.
 #define TRAINER_PAT                         766
 #define TRAINER_HILLARY                   767
-#define TRAINER_MAY_RUSTBORO_TREECKO        768
-#define TRAINER_MAY_RUSTBORO_TORCHIC        769
+#define TRAINER_UNUSED_416        768  // Former TRAINER_MAY_RUSTBORO_TREECKO; Rustboro legacy triggers removed.
+#define TRAINER_UNUSED_417        769  // Former TRAINER_MAY_RUSTBORO_TORCHIC; Rustboro legacy triggers removed.
 #define TRAINER_ROXANNE_2                   770
 #define TRAINER_ROXANNE_3                   771
 #define TRAINER_ROXANNE_4                   772
