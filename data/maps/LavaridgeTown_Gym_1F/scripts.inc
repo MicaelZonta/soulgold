@@ -14,7 +14,6 @@ LavaridgeTown_Gym_1F_EventScript_SetTrainerTempVars::
 	setvar VAR_TEMP_D, 0
 	setvar VAR_TEMP_E, 0
 	setvar VAR_TEMP_F, 0
-	goto_if_defeated TRAINER_COLE, LavaridgeTown_Gym_1F_EventScript_SetGeraldTempVar
 	setvar VAR_TEMP_B, 1
 LavaridgeTown_Gym_1F_EventScript_SetGeraldTempVar::
 	goto_if_defeated TRAINER_NONE, LavaridgeTown_Gym_1F_EventScript_SetAxleTempVar
@@ -29,7 +28,6 @@ LavaridgeTown_Gym_1F_EventScript_EndSetTrainerTempVars::
 	return
 
 LavaridgeTown_Gym_1F_EventScript_CheckBuryTrainers::
-	goto_if_defeated TRAINER_COLE, LavaridgeTown_Gym_1F_EventScript_CheckBuryGerald
 	setobjectmovementtype LOCALID_COLE, MOVEMENT_TYPE_BURIED
 LavaridgeTown_Gym_1F_EventScript_CheckBuryGerald::
 	goto_if_defeated TRAINER_NONE, LavaridgeTown_Gym_1F_EventScript_CheckBuryAxle
@@ -96,11 +94,6 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryRematch::
 	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-LavaridgeTown_Gym_1F_EventScript_Cole::
-	trainerbattle TRAINER_NONE, LOCALID_COLE, TRAINER_COLE, LavaridgeTown_Gym_1F_Text_ColeIntro, LavaridgeTown_Gym_1F_Text_ColeDefeat, LavaridgeTown_Gym_EventScript_CheckTrainerScript, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
-	msgbox LavaridgeTown_Gym_1F_Text_ColePostBattle, MSGBOX_AUTOCLOSE
-	end
-
 LavaridgeTown_Gym_EventScript_CheckTrainerScript::
 	call LavaridgeTown_Gym_1F_EventScript_SetTrainerTempVars
 	release
@@ -111,11 +104,6 @@ LavaridgeTown_Gym_EventScript_CheckTrainerScript::
 LavaridgeTown_Gym_1F_EventScript_Axle::
 	trainerbattle TRAINER_NONE, LOCALID_AXLE, TRAINER_NONE, LavaridgeTown_Gym_1F_Text_AxleIntro, LavaridgeTown_Gym_1F_Text_AxleDefeat, LavaridgeTown_Gym_EventScript_CheckTrainerScript, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	msgbox LavaridgeTown_Gym_1F_Text_AxlePostBattle, MSGBOX_AUTOCLOSE
-	end
-
-LavaridgeTown_Gym_B1F_EventScript_Keegan::
-	trainerbattle TRAINER_NONE, LOCALID_KEEGAN, TRAINER_KEEGAN, LavaridgeTown_Gym_B1F_Text_KeeganIntro, LavaridgeTown_Gym_B1F_Text_KeeganDefeat, LavaridgeTown_Gym_EventScript_CheckTrainerScript, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
-	msgbox LavaridgeTown_Gym_B1F_Text_KeeganPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 LavaridgeTown_Gym_1F_EventScript_Danielle::

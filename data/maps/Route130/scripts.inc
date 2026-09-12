@@ -33,11 +33,6 @@ Route130_EventScript_CheckSetAbnormalWeather::
 	call_if_set FLAG_GARBAGEFLAG, Common_EventScript_SetAbnormalWeather
 	return
 
-Route130_EventScript_Rodney::
-	trainerbattle_single TRAINER_UNUSED_428, Route130_Text_RodneyIntro, Route130_Text_RodneyDefeat
-	msgbox Route130_Text_RodneyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route130_EventScript_Katie::
 	trainerbattle_single TRAINER_KATIE, Route130_Text_KatieIntro, Route130_Text_KatieDefeat
 	msgbox Route130_Text_KatiePostBattle, MSGBOX_AUTOCLOSE

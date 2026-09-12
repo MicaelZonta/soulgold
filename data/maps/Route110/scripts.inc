@@ -165,11 +165,6 @@ Route110_EventScript_Edward::
 	msgbox Route110_Text_EdwardPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_EventScript_Jaclyn::
-	trainerbattle_single TRAINER_JACLYN, Route110_Text_JaclynIntro, Route110_Text_JaclynDefeated
-	msgbox Route110_Text_JaclynPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_EventScript_Edwin::
 	trainerbattle_single TRAINER_NONE, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated, Route110_EventScript_EdwinRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle

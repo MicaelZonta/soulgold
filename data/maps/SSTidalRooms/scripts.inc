@@ -52,16 +52,6 @@ SSTidalRooms_EventScript_Lea::
 	msgbox SSTidalRooms_Text_LeaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-SSTidalRooms_EventScript_Garret::
-	trainerbattle_single TRAINER_UNUSED_426, SSTidalRooms_Text_GarretIntro, SSTidalRooms_Text_GarretDefeat
-	msgbox SSTidalRooms_Text_GarretPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-SSTidalRooms_EventScript_Naomi::
-	trainerbattle_single TRAINER_UNUSED_425, SSTidalRooms_Text_NaomiIntro, SSTidalRooms_Text_NaomiDefeat
-	msgbox SSTidalRooms_Text_NaomiPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 SSTidalRooms_Text_TakeRestOnBed:
 	.string "There's a bed…\n"
 	.string "Let's take a rest.$"

@@ -4955,19 +4955,6 @@ Whiscash
 Level: 48
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_VIRGIL ===
-Name: Virgil
-Class: Gentleman
-Pic: Gentleman
-Gender: Male
-Music: Dp Rich
-Double Battle: No
-AI: Basic Trainer
-
-Ponyta
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_DONALD ===
 Name: Donald
 Class: Pokemaniac
@@ -6182,19 +6169,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Slowpoke
 Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_JACLYN ===
-Name: Jaclyn
-Class: Beauty
-Pic: Beauty
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Teddiursa
-Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_29 ===
@@ -8553,27 +8527,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Vaporeon
 Level: 56
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_SHAWN ===
-Name: Shawn
-Class: Super Nerd
-Pic: Super Nerd
-Gender: Male
-Music: Hg Suspicious 1
-Double Battle: No
-AI: Basic Trainer
-
-Arcanine
-Level: 57
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Muk
-Level: 58
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Magneton
-Level: 59
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ETO_2 ===

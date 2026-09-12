@@ -509,24 +509,11 @@ MtChimney_EventScript_Grunt1::
 	msgbox MtChimney_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-MtChimney_EventScript_Sawyer::
-	trainerbattle_single TRAINER_UNUSED_424, MtChimney_Text_SawyerIntro, MtChimney_Text_SawyerDefeat, MtChimney_EventScript_SawyerDefeated
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, MtChimney_EventScript_SawyerRematch
-	msgbox MtChimney_Text_SawyerPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 MtChimney_EventScript_SawyerDefeated::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox MtChimney_Text_SawyerRegister, MSGBOX_DEFAULT
 	release
-	end
-
-MtChimney_EventScript_SawyerRematch::
-	trainerbattle_rematch TRAINER_UNUSED_424, MtChimney_Text_SawyerRematchIntro, MtChimney_Text_SawyerRematchDefeat
-	msgbox MtChimney_Text_SawyerPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 MtChimney_Text_MeteoriteWillActivateVolcano:

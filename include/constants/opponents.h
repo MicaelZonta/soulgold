@@ -197,18 +197,18 @@
 #define TRAINER_KIRK                        191
 #define TRAINER_STEPHEN        192
 #define TRAINER_STEVE        193
-#define TRAINER_SHAWN                       194
+#define TRAINER_UNUSED_429                       194  // Former TRAINER_SHAWN; pending legacy battle removed.
 #define TRAINER_NORTON                  195
 #define TRAINER_JENN                    196
 #define TRAINER_JEREMY                    197
 #define TRAINER_JERRY                    198
 #define TRAINER_JESSICA                    199
 #define TRAINER_JILL                    200
-#define TRAINER_COLE                        201
+#define TRAINER_UNUSED_430                        201  // Former TRAINER_COLE; pending legacy battle removed.
 #define TRAINER_JEFF                        202
 #define TRAINER_COREY                        203
 #define TRAINER_KOGA_2                        204
-#define TRAINER_KEEGAN                      205
+#define TRAINER_UNUSED_431                      205  // Former TRAINER_KEEGAN; pending legacy battle removed.
 #define TRAINER_DARYL                    206
 #define TRAINER_DAVE                    207
 #define TRAINER_DAWN                    208
@@ -237,7 +237,7 @@
 #define TRAINER_RED_2                   231
 #define TRAINER_EDWARD                      232
 #define TRAINER_PRESTON                     233
-#define TRAINER_VIRGIL                      234
+#define TRAINER_UNUSED_432                      234  // Former TRAINER_VIRGIL; pending legacy battle removed.
 #define TRAINER_BLAKE                       235
 #define TRAINER_WILLIAM                     236
 #define TRAINER_JOSHUA                      237
@@ -246,7 +246,7 @@
 #define TRAINER_GLENN                   240
 #define TRAINER_GORDON                   241
 #define TRAINER_GREGG                   242
-#define TRAINER_JACLYN                      243
+#define TRAINER_UNUSED_433                      243  // Former TRAINER_JACLYN; pending legacy battle removed.
 #define TRAINER_PRYCE_2                      244
 #define TRAINER_SAMANTHA                    245
 #define TRAINER_UNUSED_048                       246  // Former TRAINER_MAURA; reserved after legacy-map removal.
