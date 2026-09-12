@@ -158,24 +158,6 @@ Route104_EventScript_RestoreMusic::
 	fadedefaultbgm
 	return
 
-Route104_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_UNUSED_416, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_UNUSED_417, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_UNUSED_415, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
 Route104_EventScript_BrendanEncounter::
 	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, Route104_EventScript_BrendanDefeated
 	goto_if_set FLAG_REGISTER_RIVAL_POKENAV, Route104_EventScript_BrendanAskToBattle
@@ -223,24 +205,6 @@ Route104_EventScript_BrendanDefeated::
 	msgbox Route104_Text_BrendanPostBattle, MSGBOX_DEFAULT
 	call_if_eq VAR_0x8008, 0, Route104_EventScript_RestoreMusic
 	releaseall
-	end
-
-Route104_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_UNUSED_412, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_UNUSED_414, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_UNUSED_413, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
 	end
 
 Route104_Movement_PlayerBackUp:

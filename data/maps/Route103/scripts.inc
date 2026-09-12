@@ -58,31 +58,6 @@ Route103_EventScript_RivalBrendan::
 	case 2, Route103_EventScript_StartBrendanBattleMudkip
 	end
 
-Route103_EventScript_StartMayBattleTreecko::
-	trainerbattle_no_intro TRAINER_UNUSED_410, Route103_Text_MayDefeated
-	goto Route103_EventScript_AfterMayBattle
-	end
-
-Route103_EventScript_StartMayBattleTorchic::
-	trainerbattle_no_intro TRAINER_UNUSED_411, Route103_Text_MayDefeated
-	goto Route103_EventScript_AfterMayBattle
-	end
-
-Route103_EventScript_StartMayBattleMudkip::
-	trainerbattle_no_intro TRAINER_UNUSED_409, Route103_Text_MayDefeated
-	goto Route103_EventScript_AfterMayBattle
-	end
-
-Route103_EventScript_StartBrendanBattleTreecko::
-	trainerbattle_no_intro TRAINER_UNUSED_407, Route103_Text_BrendanDefeated
-	goto Route103_EventScript_AfterBrendanBattle
-	end
-
-Route103_EventScript_StartBrendanBattleTorchic::
-	trainerbattle_no_intro TRAINER_UNUSED_408, Route103_Text_BrendanDefeated
-	goto Route103_EventScript_AfterBrendanBattle
-	end
-
 Route103_EventScript_StartBrendanBattleMudkip::
 	trainerbattle_no_intro TRAINER_NONE, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle

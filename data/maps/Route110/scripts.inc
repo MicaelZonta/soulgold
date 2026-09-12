@@ -368,21 +368,6 @@ Route110_EventScript_MayBattle::
 	case 2, Route110_EventScript_MayBattleMudkip
 	end
 
-Route110_EventScript_MayBattleTreecko::
-	trainerbattle_no_intro TRAINER_UNUSED_399, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
-Route110_EventScript_MayBattleTorchic::
-	trainerbattle_no_intro TRAINER_UNUSED_400, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
-Route110_EventScript_MayBattleMudkip::
-	trainerbattle_no_intro TRAINER_UNUSED_398, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
 Route110_EventScript_MayDefeated::
 	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
 	call Route110_EventScript_GiveItemfinder
@@ -396,16 +381,6 @@ Route110_EventScript_BrendanBattle::
 	case 0, Route110_EventScript_BrendanBattleTreecko
 	case 1, Route110_EventScript_BrendanBattleTorchic
 	case 2, Route110_EventScript_BrendanBattleMudkip
-	end
-
-Route110_EventScript_BrendanBattleTreecko::
-	trainerbattle_no_intro TRAINER_UNUSED_396, Route110_Text_BrendanDefeated
-	goto Route110_EventScript_BrendanDefeated
-	end
-
-Route110_EventScript_BrendanBattleTorchic::
-	trainerbattle_no_intro TRAINER_UNUSED_397, Route110_Text_BrendanDefeated
-	goto Route110_EventScript_BrendanDefeated
 	end
 
 Route110_EventScript_BrendanBattleMudkip::

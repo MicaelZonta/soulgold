@@ -68,27 +68,7 @@ Route119_EventScript_PlayBrendanMusic::
 	return
 
 Route119_EventScript_BattleMay::
-	msgbox Route119_Text_MayIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route119_EventScript_BattleMayTreecko
-	case 1, Route119_EventScript_BattleMayTorchic
-	case 2, Route119_EventScript_BattleMayMudkip
-	end
-
-Route119_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_UNUSED_405, Route119_Text_MayDefeat
 	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_UNUSED_406, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_UNUSED_404, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
 
 Route119_EventScript_DefeatedMay::
 	msgbox Route119_Text_MayPresentForYou, MSGBOX_DEFAULT
@@ -98,27 +78,7 @@ Route119_EventScript_DefeatedMay::
 	end
 
 Route119_EventScript_BattleBrendan::
-	msgbox Route119_Text_BrendanIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route119_EventScript_BattleBrendanTreecko
-	case 1, Route119_EventScript_BattleBrendanTorchic
-	case 2, Route119_EventScript_BattleBrendanMudkip
-	end
-
-Route119_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_UNUSED_402, Route119_Text_BrendanDefeat
 	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_UNUSED_403, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_UNUSED_401, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
 
 Route119_EventScript_DefeatedBrendan::
 	msgbox Route119_Text_BrendanIllGiveYouThis, MSGBOX_DEFAULT

@@ -150,13 +150,6 @@ const struct LevelScalingConfig gTrainerLevelScalingRules[TRAINERS_COUNT] =
     },
 
     // Rival battles scale to player's highest
-    [TRAINER_UNUSED_407] = {
-        .mode = LEVEL_SCALING_PARTY_HIGHEST,
-        .levelAugmentAdd = 0,
-        .levelVariation = 1,
-        .manageEvolutions = TRUE,
-        .excludeFainted = TRUE,
-    },
 
     // Elite Four scale to party average + 5
     [TRAINER_SIDNEY] = {
