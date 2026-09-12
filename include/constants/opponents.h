@@ -127,8 +127,8 @@
 #define TRAINER_GRUNT_21                     121
 #define TRAINER_GRUNT_22                     122
 #define TRAINER_GRUNT_23                     123
-#define TRAINER_MELISSA                     124
-#define TRAINER_SHEILA                      125
+#define TRAINER_UNUSED_040                     124  // Former TRAINER_MELISSA; reserved after legacy-map removal.
+#define TRAINER_UNUSED_041                      125  // Former TRAINER_SHEILA; reserved after legacy-map removal.
 #define TRAINER_SHIRLEY                     126
 #define TRAINER_ARIANA_1                   127
 #define TRAINER_CONNIE                      128
@@ -160,18 +160,18 @@
 #define TRAINER_JO_AND_ZOE                      154
 #define TRAINER_TONY_1                      155
 #define TRAINER_JEROME                      156
-#define TRAINER_MATTHEW                     157
+#define TRAINER_UNUSED_042                     157  // Former TRAINER_MATTHEW; reserved after legacy-map removal.
 #define TRAINER_DAVID                       158
 #define TRAINER_SPENCER                     159
 #define TRAINER_ROLAND                      160
-#define TRAINER_NOLEN                       161
+#define TRAINER_UNUSED_043                       161  // Former TRAINER_NOLEN; reserved after legacy-map removal.
 #define TRAINER_STAN                        162
 #define TRAINER_BARRY                       163
 #define TRAINER_DEAN                        164
 #define TRAINER_RODNEY                      165
 #define TRAINER_RICHARD                     166
 #define TRAINER_HERMAN                      167
-#define TRAINER_SANTIAGO                    168
+#define TRAINER_UNUSED_044                    168  // Former TRAINER_SANTIAGO; reserved after legacy-map removal.
 #define TRAINER_GILBERT                     169
 #define TRAINER_FRANKLIN                    170
 #define TRAINER_KEVIN                       171
@@ -185,13 +185,13 @@
 #define TRAINER_UNUSED_005                  179  // Former TRAINER_TAKAO; reserved after legacy-map removal.
 #define TRAINER_JASMINE_1_3                     180
 #define TRAINER_KIYO                        181
-#define TRAINER_KOICHI                      182
+#define TRAINER_UNUSED_045                      182  // Former TRAINER_KOICHI; reserved after legacy-map removal.
 #define TRAINER_NOB_1                       183
 #define TRAINER_NOB_2                       184
 #define TRAINER_NOB_3                       185
 #define TRAINER_NOB_4                       186
 #define TRAINER_NOB_5                       187
-#define TRAINER_YUJI                        188
+#define TRAINER_UNUSED_046                        188  // Former TRAINER_YUJI; reserved after legacy-map removal.
 #define TRAINER_JED                     189
 #define TRAINER_CINDY                     190
 #define TRAINER_KIRK                        191
@@ -221,7 +221,7 @@
 #define TRAINER_JUSTIN                      215
 #define TRAINER_NAOKO                     216
 #define TRAINER_COLETTE                      217
-#define TRAINER_TRAVIS                      218
+#define TRAINER_UNUSED_047                      218  // Former TRAINER_TRAVIS; reserved after legacy-map removal.
 #define TRAINER_NATHAN                     219
 #define TRAINER_NEAL                     220
 #define TRAINER_NICK                     221
@@ -249,7 +249,7 @@
 #define TRAINER_JACLYN                      243
 #define TRAINER_PRYCE_2                      244
 #define TRAINER_SAMANTHA                    245
-#define TRAINER_MAURA                       246
+#define TRAINER_UNUSED_048                       246  // Former TRAINER_MAURA; reserved after legacy-map removal.
 #define TRAINER_UNUSED_013                  247  // Former TRAINER_KAYLA; reserved after legacy-map removal.
 #define TRAINER_BENJAMIN                      248
 #define TRAINER_LANCE_1                     249
@@ -327,8 +327,8 @@
 #define TRAINER_TOMMY                       321
 #define TRAINER_JOEY                        322
 #define TRAINER_BEN                         323
-#define TRAINER_QUINCY                      324
-#define TRAINER_KATELYNN                    325
+#define TRAINER_UNUSED_049                      324  // Former TRAINER_QUINCY; reserved after legacy-map removal.
+#define TRAINER_UNUSED_050                    325  // Former TRAINER_KATELYNN; reserved after legacy-map removal.
 #define TRAINER_RIVAL_TOTODILE_3                      326
 #define TRAINER_KENNETH                      327
 #define TRAINER_FIDEL                    328
@@ -337,11 +337,11 @@
 #define TRAINER_GAKU                    331
 #define TRAINER_EDDIE                       332
 #define TRAINER_ALLEN                       333
-#define TRAINER_TIMMY                       334
+#define TRAINER_UNUSED_051                       334  // Former TRAINER_TIMMY; reserved after legacy-map removal.
 #define TRAINER_WALLACE                     335
 #define TRAINER_ANDREW                      336
 #define TRAINER_IVAN                        337
-#define TRAINER_CLAUDE                      338
+#define TRAINER_UNUSED_052                      338  // Former TRAINER_CLAUDE; reserved after legacy-map removal.
 #define TRAINER_MASA                    339
 #define TRAINER_NED                         340
 #define TRAINER_DALE                        341
@@ -388,7 +388,7 @@
 #define TRAINER_KAREN_2                    382
 #define TRAINER_KOGA_1                      383
 #define TRAINER_KIM                       384
-#define TRAINER_TALIA                       385
+#define TRAINER_UNUSED_053                       385  // Former TRAINER_TALIA; reserved after legacy-map removal.
 #define TRAINER_KATELYN_1                   386
 #define TRAINER_BOB                     387
 #define TRAINER_KATELYN_2                   388
@@ -406,7 +406,7 @@
 #define TRAINER_PHIL                        400
 #define TRAINER_JARED                       401
 #define TRAINER_CHUCK_2                    402
-#define TRAINER_PRESLEY                     403
+#define TRAINER_UNUSED_054                     403  // Former TRAINER_PRESLEY; reserved after legacy-map removal.
 #define TRAINER_LOIS                     404
 #define TRAINER_COLIN                       405
 #define TRAINER_ROBERT_1                    406
@@ -446,11 +446,11 @@
 #define TRAINER_MADELINE_5                  440
 #define TRAINER_BEVERLY                     441
 #define TRAINER_CHUCK_1_2                       442
-#define TRAINER_KYLA                        443
+#define TRAINER_UNUSED_055                        443  // Former TRAINER_KYLA; reserved after legacy-map removal.
 #define TRAINER_DENISE                      444
 #define TRAINER_BETH                        445
 #define TRAINER_TARA                        446
-#define TRAINER_MISSY                       447
+#define TRAINER_UNUSED_056                       447  // Former TRAINER_MISSY; reserved after legacy-map removal.
 #define TRAINER_ALICE                       448
 #define TRAINER_GRUNT_30                     449
 #define TRAINER_GRACE                       450
@@ -462,7 +462,7 @@
 #define TRAINER_SUSIE                       456
 #define TRAINER_KARA                        457
 #define TRAINER_DANA                        458
-#define TRAINER_SIENNA                      459
+#define TRAINER_UNUSED_057                      459  // Former TRAINER_SIENNA; reserved after legacy-map removal.
 #define TRAINER_DEBRA                       460
 #define TRAINER_LINDA                       461
 #define TRAINER_KAYLEE                      462
@@ -475,7 +475,7 @@
 #define TRAINER_HEIDI                       469
 #define TRAINER_DARIN                       470
 #define TRAINER_CAROL                       471
-#define TRAINER_NANCY                       472
+#define TRAINER_UNUSED_058                       472  // Former TRAINER_NANCY; reserved after legacy-map removal.
 #define TRAINER_MARTHA                      473
 #define TRAINER_KAZU                     474
 #define TRAINER_GRUNT_8                      475
@@ -543,7 +543,7 @@
 #define TRAINER_MAY_ROUTE_119_TORCHIC       537
 #define TRAINER_CHUCK_1_3                     538
 #define TRAINER_JOE                       539
-#define TRAINER_MITCHELL                    540
+#define TRAINER_UNUSED_059                    540  // Former TRAINER_MITCHELL; reserved after legacy-map removal.
 #define TRAINER_CLAIR_1                     541
 #define TRAINER_CLAIR_2                     542
 #define TRAINER_BROCK                     543

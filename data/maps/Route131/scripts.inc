@@ -45,13 +45,7 @@ Route131_EventScript_Ian::
 	msgbox Route131_Text_IanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route131_EventScript_Talia::
-	trainerbattle_single TRAINER_TALIA, Route131_Text_TaliaIntro, Route131_Text_TaliaDefeat
-	msgbox Route131_Text_TaliaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route131_EventScript_Kevin::
 	trainerbattle_single TRAINER_KEVIN, Route131_Text_KevinIntro, Route131_Text_KevinDefeat
 	msgbox Route131_Text_KevinPostBattle, MSGBOX_AUTOCLOSE
 	end
-

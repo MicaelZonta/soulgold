@@ -10,11 +10,6 @@ Route106_EventScript_Douglas::
 	msgbox Route106_Text_DouglasPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route106_EventScript_Kyla::
-	trainerbattle_single TRAINER_KYLA, Route106_Text_KylaIntro, Route106_Text_KylaDefeated
-	msgbox Route106_Text_KylaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route106_EventScript_Elliot::
 	trainerbattle_single TRAINER_NONE, Route106_Text_ElliotIntro, Route106_Text_ElliotDefeated, Route106_EventScript_ElliotRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
@@ -44,4 +39,3 @@ Route106_Text_TrainerTips:
 	.string "Trainer Tips\p"
 	.string "Advice on catching Pokémon with a Rod:\n"
 	.string "Press the A Button if you get a bite.$"
-

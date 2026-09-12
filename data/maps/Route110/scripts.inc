@@ -270,11 +270,6 @@ Route110_EventScript_IsabelRematch::
 	msgbox Route110_Text_IsabelRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_EventScript_Timmy::
-	trainerbattle_single TRAINER_TIMMY, Route110_Text_TimmyIntro, Route110_Text_TimmyDefeated
-	msgbox Route110_Text_TimmyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_EventScript_Unused::
 	end
 
@@ -982,4 +977,3 @@ Route110_Text_KeepAnEyeOutForRival:
 	.string "… … … … … …\p"
 	.string "Well, I had better get going.\n"
 	.string "See you again, {PLAYER}{KUN}!$"
-

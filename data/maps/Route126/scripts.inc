@@ -36,11 +36,6 @@ Route126_EventScript_Isobel::
 	msgbox Route126_Text_IsobelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route126_EventScript_Sienna::
-	trainerbattle_single TRAINER_SIENNA, Route126_Text_SiennaIntro, Route126_Text_SiennaDefeat
-	msgbox Route126_Text_SiennaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route126_EventScript_Pablo::
 	trainerbattle_single TRAINER_PABLO_1, Route126_Text_PabloIntro, Route126_Text_PabloDefeat, Route126_EventScript_RegisterPablo
 	specialvar VAR_RESULT, ShouldTryRematchBattle
@@ -60,4 +55,3 @@ Route126_EventScript_RematchPablo::
 	trainerbattle_rematch TRAINER_PABLO_1, Route126_Text_PabloRematchIntro, Route126_Text_PabloRematchDefeat
 	msgbox Route126_Text_PabloPostRematch, MSGBOX_AUTOCLOSE
 	end
-

@@ -20,11 +20,6 @@ Route125_OnFrame:
 	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
 	.2byte 0
 
-Route125_EventScript_Nolen::
-	trainerbattle_single TRAINER_NOLEN, Route125_Text_NolenIntro, Route125_Text_NolenDefeat
-	msgbox Route125_Text_NolenPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route125_EventScript_Stan::
 	trainerbattle_single TRAINER_STAN, Route125_Text_StanIntro, Route125_Text_StanDefeat
 	msgbox Route125_Text_StanPostBattle, MSGBOX_AUTOCLOSE
@@ -70,13 +65,7 @@ Route125_EventScript_Iris::
 	msgbox Route125_Text_IrisPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route125_EventScript_Presley::
-	trainerbattle_single TRAINER_PRESLEY, Route125_Text_PresleyIntro, Route125_Text_PresleyDefeat
-	msgbox Route125_Text_PresleyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route125_EventScript_Auron::
 	trainerbattle_single TRAINER_NONE, Route125_Text_AuronIntro, Route125_Text_AuronDefeat
 	msgbox Route125_Text_AuronPostBattle, MSGBOX_AUTOCLOSE
 	end
-

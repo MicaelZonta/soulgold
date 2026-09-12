@@ -51,11 +51,6 @@ Route115_EventScript_RematchTimothy::
 	msgbox Route115_Text_TimothyPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-Route115_EventScript_Koichi::
-	trainerbattle_single TRAINER_KOICHI, Route115_Text_KoichiIntro, Route115_Text_KoichiDefeat
-	msgbox Route115_Text_KoichiPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route115_EventScript_Nob::
 	trainerbattle_single TRAINER_NOB_1, Route115_Text_NobIntro, Route115_Text_NobDefeat, Route115_EventScript_RegisterNob
 	specialvar VAR_RESULT, ShouldTryRematchBattle
@@ -139,4 +134,3 @@ Route115_Text_RouteSignRustboro:
 Route115_Text_MeteorFallsSign:
 	.string "Meteor Falls\n"
 	.string "Fallarbor Town Through Here$"
-

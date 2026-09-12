@@ -17,11 +17,6 @@ Route110_TrickHousePuzzle4_EventScript_Cora::
 	msgbox Route110_TrickHousePuzzle4_Text_CoraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_TrickHousePuzzle4_EventScript_Yuji::
-	trainerbattle_single TRAINER_YUJI, Route110_TrickHousePuzzle4_Text_YujiIntro, Route110_TrickHousePuzzle4_Text_YujiDefeat
-	msgbox Route110_TrickHousePuzzle4_Text_YujiPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_TrickHousePuzzle4_EventScript_Paula::
 	trainerbattle_single TRAINER_PAULA, Route110_TrickHousePuzzle4_Text_PaulaIntro, Route110_TrickHousePuzzle4_Text_PaulaDefeat
 	msgbox Route110_TrickHousePuzzle4_Text_PaulaPostBattle, MSGBOX_AUTOCLOSE
@@ -67,4 +62,3 @@ Route110_TrickHousePuzzle4_Text_PaulaDefeat:
 
 Route110_TrickHousePuzzle4_Text_PaulaPostBattle:
 	.string "Has anyone made it to the end?$"
-

@@ -499,16 +499,6 @@ MtChimney_EventScript_RematchShelby::
 	msgbox MtChimney_Text_ShelbyPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-MtChimney_EventScript_Melissa::
-	trainerbattle_single TRAINER_MELISSA, MtChimney_Text_MelissaIntro, MtChimney_Text_MelissaDefeat
-	msgbox MtChimney_Text_MelissaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-MtChimney_EventScript_Sheila::
-	trainerbattle_single TRAINER_SHEILA, MtChimney_Text_SheilaIntro, MtChimney_Text_SheilaDefeat
-	msgbox MtChimney_Text_SheilaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 MtChimney_EventScript_Shirley::
 	trainerbattle_single TRAINER_SHIRLEY, MtChimney_Text_ShirleyIntro, MtChimney_Text_ShirleyDefeat
 	msgbox MtChimney_Text_ShirleyPostBattle, MSGBOX_AUTOCLOSE
