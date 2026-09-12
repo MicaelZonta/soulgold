@@ -228,7 +228,7 @@
 #define TRAINER_NICO                     222
 #define TRAINER_BRENT                       223
 #define TRAINER_DONALD                      224
-#define TRAINER_TAYLOR                      225
+#define TRAINER_UNUSED_032                  225  // Former TRAINER_TAYLOR; reserved after legacy-map removal.
 #define TRAINER_RIVAL_TOTODILE_5                   226
 #define TRAINER_DEREK                       227
 #define TRAINER_RIVAL_TOTODILE_6                   228
@@ -418,8 +418,8 @@
 #define TRAINER_ROBERT_5                    412
 #define TRAINER_ALEX                        413
 #define TRAINER_DANNY                        414
-#define TRAINER_YASU                        415
-#define TRAINER_TAKASHI                     416
+#define TRAINER_UNUSED_033                  415  // Former TRAINER_YASU; reserved after legacy-map removal.
+#define TRAINER_UNUSED_034                  416  // Former TRAINER_TAKASHI; reserved after legacy-map removal.
 #define TRAINER_KENJI                      417
 #define TRAINER_JANI                        418
 #define TRAINER_LAO_1                       419
@@ -764,7 +764,7 @@
 #define TRAINER_MAKAYLA                     758
 #define TRAINER_NOB                      759
 #define TRAINER_JOHN                      760
-#define TRAINER_RACHEL                      761
+#define TRAINER_UNUSED_035                  761  // Former TRAINER_RACHEL; reserved after legacy-map removal.
 #define TRAINER_LEONEL                      762
 #define TRAINER_ETO                      763
 #define TRAINER_ETHEL                        764

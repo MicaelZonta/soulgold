@@ -326,11 +326,6 @@ Route119_EventScript_Donald::
 	msgbox Route119_Text_DonaldPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route119_EventScript_Taylor::
-	trainerbattle_single TRAINER_TAYLOR, Route119_Text_TaylorIntro, Route119_Text_TaylorDefeat
-	msgbox Route119_Text_TaylorPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route119_EventScript_Doug::
 	trainerbattle_single TRAINER_DOUG, Route119_Text_DougIntro, Route119_Text_DougDefeat
 	msgbox Route119_Text_DougPostBattle, MSGBOX_AUTOCLOSE
@@ -396,16 +391,6 @@ Route119_EventScript_Phil::
 	msgbox Route119_Text_PhilPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route119_EventScript_Yasu::
-	trainerbattle_single TRAINER_YASU, Route119_Text_YasuIntro, Route119_Text_YasuDefeat
-	msgbox Route119_Text_YasuPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route119_EventScript_Takashi::
-	trainerbattle_single TRAINER_TAKASHI, Route119_Text_TakashiIntro, Route119_Text_TakashiDefeat
-	msgbox Route119_Text_TakashiPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route119_EventScript_Hideo::
 	trainerbattle_single TRAINER_NONE, Route119_Text_HideoIntro, Route119_Text_HideoDefeat
 	msgbox Route119_Text_HideoPostBattle, MSGBOX_AUTOCLOSE
@@ -424,11 +409,6 @@ Route119_EventScript_Fabian::
 Route119_EventScript_Dayton::
 	trainerbattle_single TRAINER_NONE, Route119_Text_DaytonIntro, Route119_Text_DaytonDefeat
 	msgbox Route119_Text_DaytonPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route119_EventScript_Rachel::
-	trainerbattle_single TRAINER_RACHEL, Route119_Text_RachelIntro, Route119_Text_RachelDefeat
-	msgbox Route119_Text_RachelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route119_EventScript_BridgeAquaGrunt1::
