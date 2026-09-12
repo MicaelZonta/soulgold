@@ -140,7 +140,7 @@
 #define TRAINER_JESSICA_4                   134
 #define TRAINER_JESSICA_5                   135
 #define TRAINER_WINSTON_1                   136
-#define TRAINER_MOLLIE                      137
+#define TRAINER_UNUSED_018                  137  // Former TRAINER_MOLLIE; reserved after legacy-map removal.
 #define TRAINER_GARRET                      138
 #define TRAINER_RODAROS                     139
 #define TRAINER_BELMARE                     140
