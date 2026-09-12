@@ -635,7 +635,7 @@ struct SaveBlock2
              u16 unused1:1; // Legacy one-bit party-menu style; read only for migration.
              u16 optionsTrainerLevelScaling:1; //0 = off, 1 = on
              u16 optionsWildLevelScaling:1; //0 = off, 1 = on
-             u16 optionsDifficulty:1; //0 = normal, 1 = hard
+             u16 optionsDifficulty:1; // Reserved legacy difficulty bit; ignored.
              u16 optionsFastIntroNoSlide:1; //0 = show intro slide, 1 = skip intro slide
              u16 optionsBattleSpeed:2;
              u16 optionsFont:2; //0 = emerald, 1 = fire red

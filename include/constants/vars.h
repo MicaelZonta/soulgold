@@ -203,7 +203,7 @@
 #define VAR_SLATEPORT_FAN_CLUB_STATE                     0x40B7
 #define VAR_PLAYER_STARTER_SPECIES                           0x40B8
 #define VAR_DAY_OF_WEEK                                  0x40B9 // 0 = Sunday, 1 = Monday etc.
-#define VAR_DIFFICULTY                                   0x40BA // Sets difficulty of gym leaders and other important trainers by player hoice
+#define VAR_DIFFICULTY                                   0x40BA // Reserved legacy difficulty variable; do not reuse in existing saves.
 #define VAR_DEXNAV_SPECIES                                0x40BB
 #define VAR_STEP_COUNTER                                0x40BC
 #define VAR_LAST_REPEL                                0x40BD

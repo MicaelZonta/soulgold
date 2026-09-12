@@ -1,7 +1,6 @@
 #include "global.h"
 #include "option_menu.h"
 #include "bg.h"
-#include "difficulty.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"
 #include "level_scaling.h"
@@ -38,7 +37,6 @@
 #define tAutorun data[9]
 #define tTrainerLevelScaling data[10]
 #define tWildLevelScaling data[11]
-#define tDifficulty data[12]
 #define tOverworldSpeedup data[13]
 #define tBattleSpeed data[14]
 #define tFastIntroNoSlide data[15]
@@ -66,7 +64,6 @@ enum
     MENUITEM_BATTLE_SPEED,
     MENUITEM_TRAINER_LEVEL_SCALING,
     MENUITEM_WILD_LEVEL_SCALING,
-    MENUITEM_DIFFICULTY,
     MENUITEM_COUNT_PG2,
 };
 
@@ -112,7 +109,6 @@ enum
 #define YPOS_BATTLE_SPEED          sOptionDrawY
 #define YPOS_TRAINER_LEVEL_SCALING sOptionDrawY
 #define YPOS_WILD_LEVEL_SCALING    sOptionDrawY
-#define YPOS_DIFFICULTY            sOptionDrawY
 #define YPOS_INTRO_SLIDE           sOptionDrawY
 #define YPOS_UI_ANIMATIONS         sOptionDrawY
 #define YPOS_DARK_BATTLE_UI        sOptionDrawY
@@ -161,8 +157,6 @@ static void LevelCaps_DrawChoices(u8 selection);
 static u8 LevelScaling_ProcessInput(u8 selection);
 static void TrainerLevelScaling_DrawChoices(u8 selection);
 static void WildLevelScaling_DrawChoices(u8 selection);
-static u8 Difficulty_ProcessInput(u8 selection);
-static void Difficulty_DrawChoices(u8 selection);
 static u8   Autorun_ProcessInput(u8 selection);
 static void Autorun_DrawChoices(u8 selection);
 static u8 OverworldSpeedup_ProcessInput(u8 selection);
@@ -226,8 +220,6 @@ static const u8 gText_SoftCaps[]             = _("{COLOR GREEN}{SHADOW LIGHT_GRE
 static const u8 gText_HardCaps[]             = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Hard");
 static const u8 gText_ScalingOff[]         = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 static const u8 gText_ScalingOn[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
-static const u8 gText_DifficultyNormal[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Normal");
-static const u8 gText_DifficultyHard[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Hard");
 static const u8 gText_OverworldSpeed1x[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}1x");
 static const u8 gText_OverworldSpeed2x[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}2x");
 static const u8 gText_OverworldSpeed3x[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}3x");
@@ -295,7 +287,6 @@ static const u8 *const sOptionMenuItemsNames_Pg2[MENUITEM_COUNT_PG2] =
     [MENUITEM_BATTLE_SPEED] = COMPOUND_STRING("Battle speed"),
     [MENUITEM_TRAINER_LEVEL_SCALING] = COMPOUND_STRING("Trainer scaling"),
     [MENUITEM_WILD_LEVEL_SCALING] = COMPOUND_STRING("Wild scaling"),
-    [MENUITEM_DIFFICULTY] = COMPOUND_STRING("Difficulty"),
 };
 
 static const u8 *const sOptionMenuItemsNames_Pg3[MENUITEM_COUNT_PG3] =
@@ -376,11 +367,6 @@ static const u8 *const sOptionMenuHelpTexts_Pg2[MENUITEM_COUNT_PG2] =
         "trail 8-10 levels behind your party.\n"
         "Never scales below the nonscaled\n"
         "wild encounter levels."),
-    [MENUITEM_DIFFICULTY] = COMPOUND_STRING(
-        "Normal uses standard trainer teams.\n"
-        "Hard uses tougher teams for Gym\n"
-        "battles, the Elite Four and\n"
-        "makes them Doubles.\n"),
 };
 
 static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
@@ -498,7 +484,6 @@ static void ReadAllCurrentSettings(u8 taskId)
         gTasks[taskId].tAutorun = gSaveBlock2Ptr->optionsAutorun;
         gTasks[taskId].tTrainerLevelScaling = gSaveBlock2Ptr->optionsTrainerLevelScaling;
         gTasks[taskId].tWildLevelScaling = gSaveBlock2Ptr->optionsWildLevelScaling;
-        gTasks[taskId].tDifficulty = GetCurrentDifficultyLevel() == DIFFICULTY_HARD;
         gTasks[taskId].tOverworldSpeedup = VarGet(VAR_OVERWORLD_SPEEDUP);
         if (gTasks[taskId].tOverworldSpeedup > OPTIONS_OVERWORLD_SPEED_4X)
             gTasks[taskId].tOverworldSpeedup = OPTIONS_OVERWORLD_SPEED_1X;
@@ -685,9 +670,6 @@ static void DrawOptionChoices(u8 taskId, u8 option)
     case OPTION_MENU_PG2_START + MENUITEM_WILD_LEVEL_SCALING:
         WildLevelScaling_DrawChoices(gTasks[taskId].tWildLevelScaling);
         break;
-    case OPTION_MENU_PG2_START + MENUITEM_DIFFICULTY:
-        Difficulty_DrawChoices(gTasks[taskId].tDifficulty);
-        break;
     case OPTION_MENU_PG3_START + MENUITEM_INTRO_SLIDE:
         IntroSlide_DrawChoices(gTasks[taskId].tFastIntroNoSlide);
         break;
@@ -800,12 +782,6 @@ static void ProcessOptionInput(u8 taskId)
         gTasks[taskId].tWildLevelScaling = LevelScaling_ProcessInput(gTasks[taskId].tWildLevelScaling);
         if (previousOption != gTasks[taskId].tWildLevelScaling)
             WildLevelScaling_DrawChoices(gTasks[taskId].tWildLevelScaling);
-        break;
-    case OPTION_MENU_PG2_START + MENUITEM_DIFFICULTY:
-        previousOption = gTasks[taskId].tDifficulty;
-        gTasks[taskId].tDifficulty = Difficulty_ProcessInput(gTasks[taskId].tDifficulty);
-        if (previousOption != gTasks[taskId].tDifficulty)
-            Difficulty_DrawChoices(gTasks[taskId].tDifficulty);
         break;
     case OPTION_MENU_PG3_START + MENUITEM_INTRO_SLIDE:
         previousOption = gTasks[taskId].tFastIntroNoSlide;
@@ -985,7 +961,6 @@ static void SaveCurrentSettings(u8 taskId)
     gSaveBlock2Ptr->optionsAutorun = gTasks[taskId].tAutorun;
     gSaveBlock2Ptr->optionsTrainerLevelScaling = gTasks[taskId].tTrainerLevelScaling;
     gSaveBlock2Ptr->optionsWildLevelScaling = gTasks[taskId].tWildLevelScaling;
-    SetCurrentDifficultyLevel(gTasks[taskId].tDifficulty ? DIFFICULTY_HARD : DIFFICULTY_NORMAL);
     VarSet(VAR_OVERWORLD_SPEEDUP, gTasks[taskId].tOverworldSpeedup);
     gSaveBlock2Ptr->optionsBattleSpeed = gTasks[taskId].tBattleSpeed;
     VarSet(VAR_BATTLE_SPEED, gTasks[taskId].tBattleSpeed);
@@ -1895,29 +1870,6 @@ static void TrainerLevelScaling_DrawChoices(u8 selection)
 static void WildLevelScaling_DrawChoices(u8 selection)
 {
     LevelScaling_DrawChoices(selection, YPOS_WILD_LEVEL_SCALING);
-}
-
-static u8 Difficulty_ProcessInput(u8 selection)
-{
-    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
-    {
-        selection ^= 1;
-        sArrowPressed = TRUE;
-    }
-
-    return selection;
-}
-
-static void Difficulty_DrawChoices(u8 selection)
-{
-    u8 styles[2];
-
-    styles[0] = 0;
-    styles[1] = 0;
-    styles[selection] = 1;
-
-    DrawOptionMenuChoice(gText_DifficultyNormal, 104, YPOS_DIFFICULTY, styles[0]);
-    DrawOptionMenuChoice(gText_DifficultyHard, GetStringRightAlignXOffset(FONT_NORMAL, gText_DifficultyHard, 198), YPOS_DIFFICULTY, styles[1]);
 }
 
 static void DrawHeaderText(void)

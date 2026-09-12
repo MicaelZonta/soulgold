@@ -2,101 +2,51 @@
 #include "data.h"
 #include "event_data.h"
 #include "script.h"
-#include "constants/battle.h"
 
 enum DifficultyLevel GetCurrentDifficultyLevel(void)
 {
-    return gSaveBlock2Ptr->optionsDifficulty ? DIFFICULTY_HARD : DIFFICULTY_NORMAL;
+    // The sole trainer dataset is stored in the default slot for save and data
+    // compatibility. Its parties were promoted from the former Hard dataset.
+    return DIFFICULTY_NORMAL;
 }
 
 void SetCurrentDifficultyLevel(enum DifficultyLevel desiredDifficulty)
 {
-    if (desiredDifficulty > DIFFICULTY_MAX)
-        desiredDifficulty = DIFFICULTY_MAX;
-
-    gSaveBlock2Ptr->optionsDifficulty = desiredDifficulty == DIFFICULTY_HARD;
-
-    if (B_VAR_DIFFICULTY)
-        VarSet(B_VAR_DIFFICULTY, GetCurrentDifficultyLevel());
+    // Keep this entry point for scripts and old saves, but do not persist or
+    // select a difficulty. The serialized bit remains reserved in SaveBlock2.
+    (void)desiredDifficulty;
 }
 
 enum DifficultyLevel GetBattlePartnerDifficultyLevel(u16 partnerId)
 {
-    enum DifficultyLevel difficulty = GetCurrentDifficultyLevel();
-
     if (partnerId > TRAINER_PARTNER(PARTNER_NONE))
         partnerId -= TRAINER_PARTNER(PARTNER_NONE);
 
-    if (difficulty == DIFFICULTY_NORMAL)
-        return DIFFICULTY_NORMAL;
-
-    if (gBattlePartners[difficulty][partnerId].party == NULL)
-        return DIFFICULTY_NORMAL;
-
-    return difficulty;
+    return DIFFICULTY_NORMAL;
 }
 
 enum DifficultyLevel GetTrainerDifficultyLevel(u16 trainerId)
 {
-    enum DifficultyLevel difficulty = GetCurrentDifficultyLevel();
-
-    if (difficulty == DIFFICULTY_NORMAL)
-        return DIFFICULTY_NORMAL;
-
-    if (gTrainers[difficulty][trainerId].party == NULL)
-        return DIFFICULTY_NORMAL;
-
-    return difficulty;
+    (void)trainerId;
+    return DIFFICULTY_NORMAL;
 }
 
 void Script_IncreaseDifficulty(void)
 {
-    enum DifficultyLevel currentDifficulty;
-
-    if (!B_VAR_DIFFICULTY)
-        return;
-
-    currentDifficulty = GetCurrentDifficultyLevel();
-
-    if (currentDifficulty++ > DIFFICULTY_MAX)
-        return;
-
-    Script_RequestEffects(SCREFF_V1);
-    Script_RequestWriteVar(B_VAR_DIFFICULTY);
-
-    SetCurrentDifficultyLevel(currentDifficulty);
+    // Legacy script command retained as a no-op for compiled map scripts.
 }
 
 void Script_DecreaseDifficulty(void)
 {
-    enum DifficultyLevel currentDifficulty;
-
-    if (!B_VAR_DIFFICULTY)
-        return;
-
-    currentDifficulty = GetCurrentDifficultyLevel();
-
-    if (!currentDifficulty)
-        return;
-
-    Script_RequestEffects(SCREFF_V1);
-    Script_RequestWriteVar(B_VAR_DIFFICULTY);
-
-    SetCurrentDifficultyLevel(--currentDifficulty);
+    // Legacy script command retained as a no-op for compiled map scripts.
 }
 
 void Script_GetDifficulty(void)
 {
-    Script_RequestEffects(SCREFF_V1);
     gSpecialVar_Result = GetCurrentDifficultyLevel();
 }
 
 void Script_SetDifficulty(struct ScriptContext *ctx)
 {
-    enum DifficultyLevel desiredDifficulty = ScriptReadByte(ctx);
-
-    Script_RequestEffects(SCREFF_V1);
-    Script_RequestWriteVar(B_VAR_DIFFICULTY);
-
-    SetCurrentDifficultyLevel(desiredDifficulty);
+    (void)ctx;
 }

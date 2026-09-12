@@ -1330,7 +1330,7 @@
 #define FLAG_DEFEATED_MTSILVER_RIVAL                                0x4F8
 
 #define FLAG_NO_SHINY                                           0x4F9
-#define FLAG_DIFFICULTY_HARD                                           0x4FA
+#define FLAG_UNUSED_4FA                                                0x4FA // Reserved legacy difficulty flag; do not reuse in existing saves.
 
 #define FLAG_DEFEATED_ELITE_4_WILL                                  0x4FB
 #define FLAG_DEFEATED_ELITE_4_KOGA                                  0x4FC
