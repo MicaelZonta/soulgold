@@ -73,16 +73,6 @@ Route114_EventScript_LanettesHouseSign::
 	msgbox Route114_Text_LanettesHouse, MSGBOX_SIGN
 	end
 
-Route114_EventScript_Lenny::
-	trainerbattle_single TRAINER_LENNY, Route114_Text_LennyIntro, Route114_Text_LennyDefeat
-	msgbox Route114_Text_LennyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route114_EventScript_Lucas::
-	trainerbattle_single TRAINER_LUCAS_1, Route114_Text_LucasIntro, Route114_Text_LucasDefeat
-	msgbox Route114_Text_LucasPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route114_EventScript_Shane::
 	trainerbattle_single TRAINER_SHANE, Route114_Text_ShaneIntro, Route114_Text_ShaneDefeat
 	msgbox Route114_Text_ShanePostBattle, MSGBOX_AUTOCLOSE

@@ -40,11 +40,6 @@ Route127_EventScript_Henry::
 	msgbox Route127_Text_HenryPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route127_EventScript_Roger::
-	trainerbattle_single TRAINER_ROGER, Route127_Text_RogerIntro, Route127_Text_RogerDefeat
-	msgbox Route127_Text_RogerPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route127_EventScript_Aidan::
 	trainerbattle_single TRAINER_NONE, Route127_Text_AidanIntro, Route127_Text_AidanDefeat
 	msgbox Route127_Text_AidanPostBattle, MSGBOX_AUTOCLOSE
@@ -74,4 +69,3 @@ Route127_EventScript_RematchKoji::
 	trainerbattle_rematch TRAINER_KOJI_1, Route127_Text_KojiRematchIntro, Route127_Text_KojiRematchDefeat
 	msgbox Route127_Text_KojiPostRematch, MSGBOX_AUTOCLOSE
 	end
-

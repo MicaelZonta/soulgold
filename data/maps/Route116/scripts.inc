@@ -274,11 +274,6 @@ Route116_EventScript_RematchJerry::
 	msgbox Route116_Text_JerryPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-Route116_EventScript_Clark::
-	trainerbattle_single TRAINER_CLARK, Route116_Text_ClarkIntro, Route116_Text_ClarkDefeat
-	msgbox Route116_Text_ClarkPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route116_EventScript_Janice::
 	trainerbattle_single TRAINER_NONE, Route116_Text_JaniceIntro, Route116_Text_JaniceDefeat
 	msgbox Route116_Text_JanicePostBattle, MSGBOX_AUTOCLOSE
@@ -462,4 +457,3 @@ Route116_Text_TrainerTipsBagHasPockets:
 	.string "placed in the appropriate Pockets.\p"
 	.string "No Trainer can afford to be without\n"
 	.string "a Bag of their own.$"
-

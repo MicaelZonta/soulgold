@@ -26,11 +26,6 @@ Route126_EventScript_Brenda::
 	msgbox Route126_Text_BrendaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route126_EventScript_Leonardo::
-	trainerbattle_single TRAINER_LEONARDO, Route126_Text_LeonardoIntro, Route126_Text_LeonardoDefeat
-	msgbox Route126_Text_LeonardoPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route126_EventScript_Isobel::
 	trainerbattle_single TRAINER_NONE, Route126_Text_IsobelIntro, Route126_Text_IsobelDefeat
 	msgbox Route126_Text_IsobelPostBattle, MSGBOX_AUTOCLOSE

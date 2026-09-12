@@ -287,11 +287,6 @@ Route120_EventScript_RematchRobert::
 	msgbox Route120_Text_RobertPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-Route120_EventScript_Lorenzo::
-	trainerbattle_single TRAINER_LORENZO, Route120_Text_LorenzoIntro, Route120_Text_LorenzoDefeat
-	msgbox Route120_Text_LorenzoPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route120_EventScript_Jenna::
 	trainerbattle_single TRAINER_NONE, Route120_Text_JennaIntro, Route120_Text_JennaDefeat
 	msgbox Route120_Text_JennaPostBattle, MSGBOX_AUTOCLOSE

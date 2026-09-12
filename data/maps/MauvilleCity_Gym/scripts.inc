@@ -209,11 +209,6 @@ MauvilleCity_Gym_EventScript_Ben::
 	msgbox MauvilleCity_Gym_Text_BenPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-MauvilleCity_Gym_EventScript_Vivian::
-	trainerbattle_single TRAINER_VIVIAN, MauvilleCity_Gym_Text_VivianIntro, MauvilleCity_Gym_Text_VivianDefeat
-	msgbox MauvilleCity_Gym_Text_VivianPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 MauvilleCity_Gym_EventScript_Angelo::
 	trainerbattle_single TRAINER_NONE, MauvilleCity_Gym_Text_AngeloIntro, MauvilleCity_Gym_Text_AngeloDefeat
 	msgbox MauvilleCity_Gym_Text_AngeloPostBattle, MSGBOX_AUTOCLOSE
@@ -416,4 +411,3 @@ MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons:
 	.string "You've only one Pokémon with you!\p"
 	.string "Come see me with two or more\n"
 	.string "Pokémon, all right?$"
-
