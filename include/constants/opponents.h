@@ -655,7 +655,7 @@
 #define TRAINER_UNUSED_079                      649  // Former TRAINER_VIVIAN; reserved after legacy-map removal.
 #define TRAINER_KENDRA                    650
 #define TRAINER_JASMINE_1_2                       651
-#define TRAINER_KEIGO                       652
+#define TRAINER_UNUSED_081                       652  // Former TRAINER_KEIGO; reserved after legacy-map removal.
 #define TRAINER_RILEY                       653
 #define TRAINER_RAY                       654
 #define TRAINER_CHARLES                      655
@@ -678,8 +678,8 @@
 #define TRAINER_KOJI_1                      672
 #define TRAINER_WAYNE                       673
 #define TRAINER_ANDY                       674
-#define TRAINER_REED                        675
-#define TRAINER_TISHA                       676
+#define TRAINER_UNUSED_082                        675  // Former TRAINER_REED; reserved after legacy-map removal.
+#define TRAINER_UNUSED_083                       676  // Former TRAINER_TISHA; reserved after legacy-map removal.
 #define TRAINER_UNUSED_036                  677  // Former TRAINER_TORI_AND_TIA; reserved after legacy-map removal.
 #define TRAINER_KIM_AND_IRIS                678
 #define TRAINER_TYRA_AND_IVY                679
@@ -698,18 +698,18 @@
 #define TRAINER_LISA_AND_RAY                692
 #define TRAINER_GRUNT_17                       693
 #define TRAINER_JOEL                      694
-#define TRAINER_SARAH                       695
+#define TRAINER_UNUSED_084                       695  // Former TRAINER_SARAH; reserved after legacy-map removal.
 #define TRAINER_JIMMY                      696
 #define TRAINER_BUGSY_2                      697
 #define TRAINER_GRUNT_11                    698
-#define TRAINER_KALEB                       699
-#define TRAINER_JOSEPH                      700
+#define TRAINER_UNUSED_085                       699  // Former TRAINER_KALEB; reserved after legacy-map removal.
+#define TRAINER_UNUSED_086                      700  // Former TRAINER_JOSEPH; reserved after legacy-map removal.
 #define TRAINER_BRAD                      701
-#define TRAINER_MARCOS                      702
-#define TRAINER_RHETT                       703
-#define TRAINER_TYRON                       704
+#define TRAINER_UNUSED_087                      702  // Former TRAINER_MARCOS; reserved after legacy-map removal.
+#define TRAINER_UNUSED_088                       703  // Former TRAINER_RHETT; reserved after legacy-map removal.
+#define TRAINER_UNUSED_089                       704  // Former TRAINER_TYRON; reserved after legacy-map removal.
 #define TRAINER_GRUNT_10                      705
-#define TRAINER_BIANCA                      706
+#define TRAINER_UNUSED_090                      706  // Former TRAINER_BIANCA; reserved after legacy-map removal.
 #define TRAINER_PRYCE_1_3                      707
 #define TRAINER_UNUSED_037                  708  // Former TRAINER_SOPHIE; reserved after legacy-map removal.
 #define TRAINER_GRUNT_25                        709
@@ -722,16 +722,16 @@
 #define TRAINER_GRUNT_MAGMA_HIDEOUT_1       716
 #define TRAINER_RICHARDO       717
 #define TRAINER_NARD       718
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_4       719
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_5       720
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_6       721
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_7       722
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_8       723
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_9       724
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_10      725
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_11      726
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_12      727
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_13      728
+#define TRAINER_UNUSED_091       719  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_4; reserved after legacy-map removal.
+#define TRAINER_UNUSED_092       720  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_5; reserved after legacy-map removal.
+#define TRAINER_UNUSED_093       721  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_6; reserved after legacy-map removal.
+#define TRAINER_UNUSED_094       722  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_7; reserved after legacy-map removal.
+#define TRAINER_UNUSED_095       723  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_8; reserved after legacy-map removal.
+#define TRAINER_UNUSED_096       724  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_9; reserved after legacy-map removal.
+#define TRAINER_UNUSED_097      725  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_10; reserved after legacy-map removal.
+#define TRAINER_UNUSED_098      726  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_11; reserved after legacy-map removal.
+#define TRAINER_UNUSED_099      727  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_12; reserved after legacy-map removal.
+#define TRAINER_UNUSED_100      728  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_13; reserved after legacy-map removal.
 #define TRAINER_GRUNT_MAGMA_HIDEOUT_14      729
 #define TRAINER_GRUNT_MAGMA_HIDEOUT_15      730
 #define TRAINER_GRUNT_MAGMA_HIDEOUT_16      731

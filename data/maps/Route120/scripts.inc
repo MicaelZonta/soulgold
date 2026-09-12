@@ -332,11 +332,6 @@ Route120_EventScript_Angelica::
 	msgbox Route120_Text_AngelicaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route120_EventScript_Keigo::
-	trainerbattle_single TRAINER_KEIGO, Route120_Text_KeigoIntro, Route120_Text_KeigoDefeat
-	msgbox Route120_Text_KeigoPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route120_EventScript_Riley::
 	trainerbattle_single TRAINER_RILEY, Route120_Text_RileyIntro, Route120_Text_RileyDefeat
 	msgbox Route120_Text_RileyPostBattle, MSGBOX_AUTOCLOSE

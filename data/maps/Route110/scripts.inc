@@ -273,16 +273,6 @@ Route110_EventScript_IsabelRematch::
 Route110_EventScript_Unused::
 	end
 
-Route110_EventScript_Kaleb::
-	trainerbattle_single TRAINER_KALEB, Route110_Text_KalebIntro, Route110_Text_KalebDefeated
-	msgbox Route110_Text_KalebPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route110_EventScript_Joseph::
-	trainerbattle_single TRAINER_JOSEPH, Route110_Text_JosephIntro, Route110_Text_JosephDefeated
-	msgbox Route110_Text_JosephPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_EventScript_Alyssa::
 	trainerbattle_single TRAINER_NONE, Route110_Text_AlyssaIntro, Route110_Text_AlyssaDefeated
 	msgbox Route110_Text_AlyssaPostBattle, MSGBOX_AUTOCLOSE
