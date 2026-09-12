@@ -112,7 +112,7 @@
 #define TRAINER_KINDRA                      106
 #define TRAINER_TAMMY                       107
 #define TRAINER_VALERIE_1                   108
-#define TRAINER_TASHA                       109
+#define TRAINER_UNUSED_014                  109  // Former TRAINER_TASHA; reserved after legacy-map removal.
 #define TRAINER_EMA                   110
 #define TRAINER_JO                   111
 #define TRAINER_VALERIE_4                   112
