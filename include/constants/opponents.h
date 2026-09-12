@@ -108,7 +108,6 @@
 #define TRAINER_ERIK                    102
 #define TRAINER_ERIN                    103
 #define TRAINER_ERNEST                    104
-#define TRAINER_PATRICIA                    105
 #define TRAINER_KINDRA                      106
 #define TRAINER_TAMMY                       107
 #define TRAINER_VALERIE_1                   108
@@ -182,7 +181,6 @@
 #define TRAINER_TONY_3                      176
 #define TRAINER_TONY_4                      177
 #define TRAINER_TONY_5                      178
-#define TRAINER_TAKAO                       179
 #define TRAINER_JASMINE_1_3                     180
 #define TRAINER_KIYO                        181
 #define TRAINER_KOICHI                      182
@@ -428,7 +426,6 @@
 #define TRAINER_LAO_3                       422
 #define TRAINER_LAO_4                       423
 #define TRAINER_LAO_5                       424
-#define TRAINER_JOCELYN                     425
 #define TRAINER_LAURA                       426
 #define TRAINER_JASMINE_2                   427
 #define TRAINER_GRUNT_28                        428
@@ -575,8 +572,6 @@
 #define TRAINER_TOBY             569
 #define TRAINER_TERRELL           570
 #define TRAINER_MARC                        571
-#define TRAINER_BRENDEN                     572
-#define TRAINER_LILITH                      573
 #define TRAINER_HARVEY                    574
 #define TRAINER_SYLVIA                      575
 #define TRAINER_LEONARDO                    576
@@ -851,7 +846,6 @@
 #define TRAINER_THALIA_3                    845
 #define TRAINER_THALIA_4                    846
 #define TRAINER_THALIA_5                    847
-#define TRAINER_MARIELA                     848
 #define TRAINER_BORIS                      849
 #define TRAINER_NICOLE                     850
 #define TRAINER_RED                         851
