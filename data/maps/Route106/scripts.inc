@@ -30,11 +30,6 @@ Route106_EventScript_ElliotRematch::
 	msgbox Route106_Text_ElliotRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route106_EventScript_Ned::
-	trainerbattle_single TRAINER_NED, Route106_Text_NedIntro, Route106_Text_NedDefeated
-	msgbox Route106_Text_NedPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route106_Text_TrainerTips:
 	.string "Trainer Tips\p"
 	.string "Advice on catching Pokémon with a Rod:\n"

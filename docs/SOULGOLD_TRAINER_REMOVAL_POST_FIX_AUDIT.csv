@@ -1,0 +1,11 @@
+audit_id,audit_scope,status,evidence,follow_up
+POST-001,baseline,"PASS","Audited HEAD 34ba590f72 with the current worktree; source plan is docs/SOULGOLD_TRAINER_REMOVAL_ACTIONS.csv.",None
+POST-002,hard_party_promotion,"PASS","All 83 PROMOTE_HARD_TO_DEFAULT targets have one party block and zero Difficulty: Hard markers.",None
+POST-003,difficulty_runtime,"PASS","DIFFICULTY_COUNT is one; former Easy and Hard names alias DIFFICULTY_NORMAL only for source compatibility.",None
+POST-004,difficulty_save_compatibility,"PASS","The legacy difficulty save bit and var/flag positions remain reserved and ignored; save layout was not shifted.",None
+POST-005,legacy_hoenn_battle_removals,"PASS","All 228 REMOVE_INACCESSIBLE_LEGACY_BATTLE rows are marked CONCLUIDO; pending rematch; Match Call; VS Seeker; and script consumers were removed or reconciled.",None
+POST-006,orphaned_parties,"PASS","All 20 REMOVE_ORPHANED_PARTY targets are absent from src/data/trainers.party.",None
+POST-007,protected_trainers,"PASS","Steven 804; Kukui 966; Glacia 263; Wally VR 5 660; and Maxie Mossdeep 734 remain defined. The full 18-item canonical roster remains protected.",None
+POST-008,johto_protection,"PASS","No Johto trainer battle was removed. The only Johto map diff is a nonfunctional comma correction in GoldenrodCity_Gym/scripts.inc.",None
+POST-009,build,"PASS","make -j4 completed successfully. ROM 31,008,708 B; EWRAM 247,140 B; IWRAM 24,164 B.",None
+POST-010,canonical_rift_migrations,"PENDING_DESIGN","Glacia 263 and Maxie Mossdeep 734 remain PENDENTE_MIGRACAO. The plan requires future canonical Rift attachments but prohibits inventing teams without approval.",Provide approved canonical Rift teams and attachment locations

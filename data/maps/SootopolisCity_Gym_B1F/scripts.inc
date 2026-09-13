@@ -36,11 +36,6 @@ SootopolisCity_Gym_B1F_EventScript_Tiffany::
 	msgbox SootopolisCity_Gym_B1F_Text_TiffanyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-SootopolisCity_Gym_B1F_EventScript_Bethany::
-	trainerbattle_single TRAINER_BETHANY, SootopolisCity_Gym_B1F_Text_BethanyIntro, SootopolisCity_Gym_B1F_Text_BethanyDefeat
-	msgbox SootopolisCity_Gym_B1F_Text_BethanyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 SootopolisCity_Gym_B1F_EventScript_Annika::
 	trainerbattle_single TRAINER_NONE, SootopolisCity_Gym_B1F_Text_AnnikaIntro, SootopolisCity_Gym_B1F_Text_AnnikaDefeat
 	msgbox SootopolisCity_Gym_B1F_Text_AnnikaPostBattle, MSGBOX_AUTOCLOSE
@@ -180,4 +175,3 @@ SootopolisCity_Gym_B1F_Text_BriannaDefeat:
 SootopolisCity_Gym_B1F_Text_BriannaPostBattle:
 	.string "You couldn't lay a finger on Juan,\n"
 	.string "I'm sure. Giggle…$"
-

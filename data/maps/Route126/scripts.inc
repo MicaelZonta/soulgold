@@ -21,11 +21,6 @@ Route126_EventScript_Nikki::
 	msgbox Route126_Text_NikkiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route126_EventScript_Brenda::
-	trainerbattle_single TRAINER_BRENDA, Route126_Text_BrendaIntro, Route126_Text_BrendaDefeat
-	msgbox Route126_Text_BrendaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route126_EventScript_Isobel::
 	trainerbattle_single TRAINER_NONE, Route126_Text_IsobelIntro, Route126_Text_IsobelDefeat
 	msgbox Route126_Text_IsobelPostBattle, MSGBOX_AUTOCLOSE

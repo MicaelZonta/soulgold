@@ -35,19 +35,6 @@ VictoryRoad_1F_EventScript_WallyBattleTrigger2::
 	goto VictoryRoad_1F_EventScript_WallyEntranceBattle
 	end
 
-VictoryRoad_1F_EventScript_WallyEntranceBattle::
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	msgbox VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WALLY_VR_1, VictoryRoad_1F_Text_WallyEntranceDefeat
-	msgbox VictoryRoad_1F_Text_WallyPostEntranceBattle, MSGBOX_DEFAULT
-	clearflag FLAG_GARBAGEFLAG
-	copyobjectxytoperm LOCALID_VICTORY_ROAD_ENTRANCE_WALLY
-	setflag FLAG_DEFEATED_WALLY_VICTORY_ROAD
-	copyvar VAR_VICTORY_ROAD_1F_STATE, VAR_0x8008
-	releaseall
-	end
-
 VictoryRoad_1F_Movement_WallyApproachPlayer1:
 	walk_left
 	walk_left

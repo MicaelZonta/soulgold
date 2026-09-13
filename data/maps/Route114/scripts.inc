@@ -105,21 +105,6 @@ Route114_EventScript_RematchBernie::
 	msgbox Route114_Text_BerniePostRematch, MSGBOX_AUTOCLOSE
 	end
 
-Route114_EventScript_Nolan::
-	trainerbattle_single TRAINER_NOLAN, Route114_Text_NolanIntro, Route114_Text_NolanDefeat
-	msgbox Route114_Text_NolanPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route114_EventScript_Tyra::
-	trainerbattle_double TRAINER_TYRA_AND_IVY, Route114_Text_TyraIntro, Route114_Text_TyraDefeat, Route114_Text_TyraNotEnoughMons
-	msgbox Route114_Text_TyraPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route114_EventScript_Ivy::
-	trainerbattle_double TRAINER_TYRA_AND_IVY, Route114_Text_IvyIntro, Route114_Text_IvyDefeat, Route114_Text_IvyNotEnoughMons
-	msgbox Route114_Text_IvyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route114_EventScript_Angelina::
 	trainerbattle_single TRAINER_NONE, Route114_Text_AngelinaIntro, Route114_Text_AngelinaDefeat
 	msgbox Route114_Text_AngelinaPostBattle, MSGBOX_AUTOCLOSE
@@ -128,11 +113,6 @@ Route114_EventScript_Angelina::
 Route114_EventScript_Charlotte::
 	trainerbattle_single TRAINER_NONE, Route114_Text_CharlotteIntro, Route114_Text_CharlotteDefeat
 	msgbox Route114_Text_CharlottePostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route114_EventScript_Kai::
-	trainerbattle_single TRAINER_KAI, Route114_Text_KaiIntro, Route114_Text_KaiDefeat
-	msgbox Route114_Text_KaiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route114_Text_AllMyMonDoesIsRoarTakeThis:

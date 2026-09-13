@@ -35,16 +35,6 @@ Route131_EventScript_Kara::
 	msgbox Route131_Text_KaraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route131_EventScript_Reli::
-	trainerbattle_double TRAINER_RELI_AND_IAN, Route131_Text_ReliIntro, Route131_Text_ReliDefeat, Route131_Text_ReliNotEnoughMons
-	msgbox Route131_Text_ReliPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route131_EventScript_Ian::
-	trainerbattle_double TRAINER_RELI_AND_IAN, Route131_Text_IanIntro, Route131_Text_IanDefeat, Route131_Text_IanNotEnoughMons
-	msgbox Route131_Text_IanPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route131_EventScript_Kevin::
 	trainerbattle_single TRAINER_KEVIN, Route131_Text_KevinIntro, Route131_Text_KevinDefeat
 	msgbox Route131_Text_KevinPostBattle, MSGBOX_AUTOCLOSE

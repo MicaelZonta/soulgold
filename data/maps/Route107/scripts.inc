@@ -23,16 +23,6 @@ Route107_EventScript_Beth::
 	msgbox Route107_Text_BethPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route107_EventScript_Lisa::
-	trainerbattle_double TRAINER_LISA_AND_RAY, Route107_Text_LisaIntro, Route107_Text_LisaDefeated, Route107_Text_LisaNotEnoughPokemon
-	msgbox Route107_Text_LisaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route107_EventScript_Ray::
-	trainerbattle_double TRAINER_LISA_AND_RAY, Route107_Text_RayIntro, Route107_Text_RayDefeated, Route107_Text_RayNotEnoughPokemon
-	msgbox Route107_Text_RayPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route107_EventScript_Camron::
 	trainerbattle_single TRAINER_NONE, Route107_Text_CamronIntro, Route107_Text_CamronDefeated
 	msgbox Route107_Text_CamronPostBattle, MSGBOX_AUTOCLOSE

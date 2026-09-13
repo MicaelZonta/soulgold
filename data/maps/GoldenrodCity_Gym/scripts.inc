@@ -37,7 +37,7 @@ GoldenrodCity_Gym_EventScript_Bridget::
 # 19 "data/maps/GoldenrodCity_Gym/scripts.pory"
 GoldenrodCity_Gym_EventScript_Victoria::
 # 20 "data/maps/GoldenrodCity_Gym/scripts.pory"
-	trainerbattle_single TRAINER_VICTORIA GoldenrodCity_Gym_Text_BeautyVictoriaSeen, GoldenrodCity_Gym_Text_BeautyVictoriaBeaten
+	trainerbattle_single TRAINER_VICTORIA, GoldenrodCity_Gym_Text_BeautyVictoriaSeen, GoldenrodCity_Gym_Text_BeautyVictoriaBeaten
 # 21 "data/maps/GoldenrodCity_Gym/scripts.pory"
 	msgbox GoldenrodCity_Gym_Text_BeautyVictoriaAfter, MSGBOX_AUTOCLOSE
 # 22 "data/maps/GoldenrodCity_Gym/scripts.pory"

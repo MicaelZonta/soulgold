@@ -6,11 +6,6 @@ Route108_EventScript_Jerome::
 	msgbox Route108_Text_JeromePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route108_EventScript_Tara::
-	trainerbattle_single TRAINER_TARA, Route108_Text_TaraIntro, Route108_Text_TaraDefeated
-	msgbox Route108_Text_TaraPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route108_EventScript_Carolina::
 	trainerbattle_single TRAINER_NONE, Route108_Text_CarolinaIntro, Route108_Text_CarolinaDefeated
 	msgbox Route108_Text_CarolinaPostBattle, MSGBOX_AUTOCLOSE

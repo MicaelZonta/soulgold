@@ -27,7 +27,6 @@
 //    [TRAINER_BRAWLY_1] = LEVEL_SCALING_CONFIG_PARTY_AVG,
 //
 // 3. Explicitly disable scaling (opt-out):
-//    [TRAINER_WALLY_VR_1] = LEVEL_SCALING_CONFIG_NONE,
 //
 // Available macros: LEVEL_SCALING_CONFIG_NONE, LEVEL_SCALING_CONFIG_LEVEL_CAP,
 //                   LEVEL_SCALING_CONFIG_PARTY_AVG, LEVEL_SCALING_CONFIG_PARTY_HIGHEST
@@ -164,14 +163,5 @@ const struct LevelScalingConfig gTrainerLevelScalingRules[TRAINERS_COUNT] =
     },
 
     // Champion scales to party or PC highest
-    [TRAINER_WALLACE] = {
-        .mode = LEVEL_SCALING_PARTY_OR_PC_HIGHEST,
-        .levelAugmentAdd = 7,
-        .levelVariation = 2,
-        .minLevel = 60,
-        .maxLevel = 80,
-        .manageEvolutions = TRUE,
-        .excludeFainted = TRUE,
-    },
     */
 };

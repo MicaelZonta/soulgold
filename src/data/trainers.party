@@ -192,19 +192,6 @@ Level: 58
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 
-=== TRAINER_ANGELICA ===
-Name: Angelica
-Class: Beauty
-Pic: Beauty
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Buneary
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_LEWIS ===
 Name: Lewis
 Class: Swimmer M
@@ -509,27 +496,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Reuniclus
 Level: 47
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_RICK ===
-Name: Rick
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Hg Boy 2
-Double Battle: No
-AI: Basic Trainer
-
-Staryu
-Level: 13
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Starmie
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Horsea
-Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BLUE ===
@@ -4343,19 +4309,6 @@ EVs: 252 SpA / 252 HP
 - Recover
 - Expanding Force
 
-=== TRAINER_TARA ===
-Name: Tara
-Class: Swimmer F
-Pic: Swimmer F
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Pyukumuku
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_PRESTON ===
 Name: Preston
 Class: Gentleman
@@ -5688,19 +5641,6 @@ AI: Basic Trainer
 
 Electrode Hisui
 Level: 43
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_DALE ===
-Name: Dale
-Class: Camper
-Pic: Camper
-Gender: Male
-Music: Hg Boy 1
-Double Battle: No
-AI: Basic Trainer
-
-Nidorino
-Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ETO_3 ===
@@ -8047,19 +7987,6 @@ Donphan
 Level: 60
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_KATIE ===
-Name: Katie
-Class: Swimmer F
-Pic: Swimmer F
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Dewgong
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_DON ===
 Name: Don
 Class: Bug Catcher
@@ -8973,19 +8900,6 @@ Graveler
 Level: 59
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_BRENDA ===
-Name: Brenda
-Class: Beauty
-Pic: Beauty
-Gender: Male
-Music: Hg Girl 2
-Double Battle: No
-AI: Basic Trainer
-
-Cherrim
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_JASON ===
 Name: Jason
 Class: Youngster
@@ -9092,19 +9006,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Charcadet
 Level: 28
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_BETHANY ===
-Name: Bethany
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Hg Suspicious 1
-Double Battle: No
-AI: Basic Trainer
-
-Haunter
-Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ALAN ===
@@ -9865,27 +9766,6 @@ Sharpedo
 Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_NED ===
-Name: Ned
-Class: Firebreather
-Pic: Firebreather
-Gender: Male
-Music: Hg Boy 2
-Double Battle: No
-AI: Basic Trainer
-
-Koffing
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Growlithe
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Koffing
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_GEORGE ===
 Name: George
 Class: Swimmer M
@@ -10428,23 +10308,6 @@ AI: Basic Trainer
 
 Porygon2
 Level: 62
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_BEN ===
-Name: Ben
-Class: Pokemaniac
-Pic: Pokemaniac
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Naclstack
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Rhydon
-Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_KENT ===

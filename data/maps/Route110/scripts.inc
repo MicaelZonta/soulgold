@@ -185,11 +185,6 @@ Route110_EventScript_EdwinRematch::
 	msgbox Route110_Text_EdwinRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_EventScript_Dale::
-	trainerbattle_single TRAINER_DALE, Route110_Text_DaleIntro, Route110_Text_DaleDefeated
-	msgbox Route110_Text_DalePostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_EventScript_Jacob::
 	trainerbattle_single TRAINER_NONE, Route110_Text_JacobIntro, Route110_Text_JacobDefeated
 	msgbox Route110_Text_JacobPostBattle, MSGBOX_AUTOCLOSE
@@ -205,11 +200,6 @@ Route110_EventScript_BenjaminRegisterMatchCallAfterBattle::
 	waitmovement 0
 	msgbox Route110_Text_BenjaminRegister, MSGBOX_DEFAULT
 	release
-	end
-
-Route110_EventScript_Jasmine::
-	trainerbattle_single TRAINER_JASMINE, Route110_Text_JasmineIntro, Route110_Text_JasmineDefeated
-	msgbox Route110_Text_JasminePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_EventScript_Abigail::

@@ -60,7 +60,7 @@
 #define TRAINER_RICKY               54
 #define TRAINER_ROB               55
 #define TRAINER_ROBERT               56
-#define TRAINER_LOLA_1                       57
+#define TRAINER_UNUSED_475                       57  // Former TRAINER_LOLA_1; pending legacy battle removed.
 #define TRAINER_CODY                      58
 #define TRAINER_GWEN                         59
 #define TRAINER_LOLA_2                       60
@@ -141,7 +141,7 @@
 #define TRAINER_JESSICA_5                   135
 #define TRAINER_UNUSED_316                   136  // Former TRAINER_WINSTON_1; reserved after legacy-map removal.
 #define TRAINER_UNUSED_018                  137  // Former TRAINER_MOLLIE; reserved after legacy-map removal.
-#define TRAINER_UNUSED_426                      138  // Former TRAINER_GARRET; pending legacy battle removed.
+#define TRAINER_GARRET                          138  // Retained for active S.S. Aqua and facility consumers.
 #define TRAINER_RODAROS                     139
 #define TRAINER_BELMARE                     140
 #define TRAINER_KENNEDY                     141
@@ -204,7 +204,7 @@
 #define TRAINER_JERRY                    198
 #define TRAINER_JESSICA                    199
 #define TRAINER_JILL                    200
-#define TRAINER_UNUSED_430                        201  // Former TRAINER_COLE; pending legacy battle removed.
+#define TRAINER_COLE                            201  // Retained for active Route 15 battle.
 #define TRAINER_JEFF                        202
 #define TRAINER_COREY                        203
 #define TRAINER_KOGA_2                        204
@@ -295,7 +295,7 @@
 #define TRAINER_UNUSED_352              289  // Former TRAINER_ANNA_AND_MEG_3; orphaned rematch variant.
 #define TRAINER_UNUSED_353              290  // Former TRAINER_ANNA_AND_MEG_4; orphaned rematch variant.
 #define TRAINER_UNUSED_354              291  // Former TRAINER_ANNA_AND_MEG_5; orphaned rematch variant.
-#define TRAINER_UNUSED_459                      292  // Former TRAINER_VICTOR; pending legacy battle removed.
+#define TRAINER_VICTOR                          292  // Retained for active Goldenrod Gym battle.
 #define TRAINER_UNUSED_323                    293  // Former TRAINER_MIGUEL_1; reserved after legacy-map removal.
 #define TRAINER_GRUNT_26                      294
 #define TRAINER_UNUSED_355                    295  // Former TRAINER_MIGUEL_2; orphaned rematch variant.
@@ -304,7 +304,7 @@
 #define TRAINER_UNUSED_358                    298  // Former TRAINER_MIGUEL_5; orphaned rematch variant.
 #define TRAINER_VICTORIA                    299
 #define TRAINER_UNUSED_030                  300  // Former TRAINER_VANESSA; reserved after legacy-map removal.
-#define TRAINER_BETHANY                     301
+#define TRAINER_UNUSED_492                     301  // Former TRAINER_BETHANY; pending legacy battle removed.
 #define TRAINER_LTSURGE                    302
 #define TRAINER_ERIKA                    303
 #define TRAINER_SABRINA                    304
@@ -315,8 +315,8 @@
 #define TRAINER_TIMOTHY_3                   309
 #define TRAINER_TIMOTHY_4                   310
 #define TRAINER_TIMOTHY_5                   311
-#define TRAINER_VICKY                       312
-#define TRAINER_SHELBY_1                    313
+#define TRAINER_UNUSED_460                       312  // Former TRAINER_VICKY; pending legacy battle removed.
+#define TRAINER_UNUSED_491                    313  // Former TRAINER_SHELBY_1; pending legacy battle removed.
 #define TRAINER_SHELBY_2                    314
 #define TRAINER_SHELBY_3                    315
 #define TRAINER_SHELBY_4                    316
@@ -326,7 +326,7 @@
 #define TRAINER_JOSH                        320
 #define TRAINER_TOMMY                       321
 #define TRAINER_JOEY                        322
-#define TRAINER_BEN                         323
+#define TRAINER_BEN                             323  // Retained for active Johto and legacy-map consumers.
 #define TRAINER_UNUSED_049                      324  // Former TRAINER_QUINCY; reserved after legacy-map removal.
 #define TRAINER_UNUSED_050                    325  // Former TRAINER_KATELYNN; reserved after legacy-map removal.
 #define TRAINER_RIVAL_TOTODILE_3                      326
@@ -338,14 +338,14 @@
 #define TRAINER_EDDIE                       332
 #define TRAINER_ALLEN                       333
 #define TRAINER_UNUSED_051                       334  // Former TRAINER_TIMMY; reserved after legacy-map removal.
-#define TRAINER_WALLACE                     335
+#define TRAINER_WALLACE                         335  // Retained for Battle Dome consumer.
 #define TRAINER_ANDREW                      336
 #define TRAINER_IVAN                        337
 #define TRAINER_UNUSED_052                      338  // Former TRAINER_CLAUDE; reserved after legacy-map removal.
 #define TRAINER_MASA                    339
-#define TRAINER_NED                         340
-#define TRAINER_DALE                        341
-#define TRAINER_NOLAN                       342
+#define TRAINER_UNUSED_463                         340  // Former TRAINER_NED; pending legacy battle removed.
+#define TRAINER_UNUSED_464                        341  // Former TRAINER_DALE; pending legacy battle removed.
+#define TRAINER_NOLAN                           342  // Retained for active S.S. Aqua battle.
 #define TRAINER_CYBIL                       343
 #define TRAINER_WADE                        344
 #define TRAINER_CARTER                      345
@@ -362,7 +362,7 @@
 #define TRAINER_UNUSED_361                  356  // Former TRAINER_BENJAMIN_4; orphaned rematch variant.
 #define TRAINER_UNUSED_362                  357  // Former TRAINER_BENJAMIN_5; orphaned rematch variant.
 #define TRAINER_ABE                   358
-#define TRAINER_JASMINE                     359
+#define TRAINER_JASMINE                         359  // Retained for active Johto, Kanto, and custom consumers.
 #define TRAINER_AL                   360
 #define TRAINER_ALFRED                   361
 #define TRAINER_ALLAN                   362
@@ -421,8 +421,8 @@
 #define TRAINER_UNUSED_033                  415  // Former TRAINER_YASU; reserved after legacy-map removal.
 #define TRAINER_UNUSED_034                  416  // Former TRAINER_TAKASHI; reserved after legacy-map removal.
 #define TRAINER_KENJI                      417
-#define TRAINER_JANI                        418
-#define TRAINER_LAO_1                       419
+#define TRAINER_JANI                            418  // Retained for active Kanto and facility consumers.
+#define TRAINER_UNUSED_494                  419  // Former TRAINER_LAO_1; legacy Route 113 battle removed.
 #define TRAINER_LUNG                        420
 #define TRAINER_LAO_2                       421
 #define TRAINER_LAO_3                       422
@@ -437,9 +437,9 @@
 #define TRAINER_JAMES                     431
 #define TRAINER_JASON                     432
 #define TRAINER_JAY                     433
-#define TRAINER_MADELINE_1                  434
+#define TRAINER_UNUSED_495                  434  // Former TRAINER_MADELINE_1; legacy Route 113 battle removed.
 #define TRAINER_CLARISSA                    435
-#define TRAINER_ANGELICA                    436
+#define TRAINER_UNUSED_496                  436  // Former TRAINER_ANGELICA; legacy Route 120 battle removed.
 #define TRAINER_MADELINE_2                  437
 #define TRAINER_MADELINE_3                  438
 #define TRAINER_MADELINE_4                  439
@@ -449,7 +449,7 @@
 #define TRAINER_UNUSED_055                        443  // Former TRAINER_KYLA; reserved after legacy-map removal.
 #define TRAINER_DENISE                      444
 #define TRAINER_BETH                        445
-#define TRAINER_TARA                        446
+#define TRAINER_UNUSED_468                        446  // Former TRAINER_TARA; pending legacy battle removed.
 #define TRAINER_UNUSED_056                       447  // Former TRAINER_MISSY; reserved after legacy-map removal.
 #define TRAINER_ALICE                       448
 #define TRAINER_UNUSED_387                     449  // Former TRAINER_GRUNT_30; orphaned party removed.
@@ -457,8 +457,8 @@
 #define TRAINER_TANYA                       451
 #define TRAINER_SHARON                      452
 #define TRAINER_NIKKI                       453
-#define TRAINER_BRENDA                      454
-#define TRAINER_KATIE                       455
+#define TRAINER_UNUSED_469                      454  // Former TRAINER_BRENDA; pending legacy battle removed.
+#define TRAINER_UNUSED_470                       455  // Former TRAINER_KATIE; pending legacy battle removed.
 #define TRAINER_SUSIE                       456
 #define TRAINER_KARA                        457
 #define TRAINER_DANA                        458
@@ -504,7 +504,7 @@
 #define TRAINER_MIKI                    498
 #define TRAINER_MILLER                    499
 #define TRAINER_MITCH                    500
-#define TRAINER_ELI                         501
+#define TRAINER_ELI                             501  // Retained for Battle Tent and Frontier consumers.
 #define TRAINER_CARRIE                      502
 #define TRAINER_RIVAL_TOTODILE_4                      503
 #define TRAINER_UNUSED_022                  504  // Former TRAINER_JONAS; reserved after legacy-map removal.
@@ -517,12 +517,12 @@
 #define TRAINER_GRUNT_27                       511
 #define TRAINER_LOLA                     512
 #define TRAINER_JASMINE_1                      513
-#define TRAINER_TABITHA_MOSSDEEP            514
+#define TRAINER_UNUSED_472            514  // Former TRAINER_TABITHA_MOSSDEEP; pending legacy battle removed.
 #define TRAINER_LORI                     515
 #define TRAINER_MARGRET                     516
 #define TRAINER_MARKUS                     517
 #define TRAINER_MARTIN                     518
-#define TRAINER_WALLY_VR_1                  519
+#define TRAINER_UNUSED_473                  519  // Former TRAINER_WALLY_VR_1; pending legacy battle removed.
 #define TRAINER_THOM_AND_KAE    520
 #define TRAINER_DUFF_AND_EDA    521
 #define TRAINER_UNUSED_401    522  // Former TRAINER_BRENDAN_ROUTE_119_MUDKIP; Route 119 legacy trigger removed.
@@ -548,7 +548,7 @@
 #define TRAINER_CLAIR_2                     542
 #define TRAINER_BROCK                     543
 #define TRAINER_MISTY                     544
-#define TRAINER_LYDIA_1                     545
+#define TRAINER_UNUSED_474                     545  // Former TRAINER_LYDIA_1; pending legacy battle removed.
 #define TRAINER_PRYCE_1                       546
 #define TRAINER_UNUSED_437                    547  // Former TRAINER_RUSS; orphaned party removed.
 #define TRAINER_LYDIA_2                     548
@@ -600,16 +600,16 @@
 #define TRAINER_UNUSED_070                      594  // Former TRAINER_PAXTON; reserved after legacy-map removal.
 #define TRAINER_BLUE                    595
 #define TRAINER_BUGSY_1        596
-#define TRAINER_TABITHA_MT_CHIMNEY          597
+#define TRAINER_UNUSED_476          597  // Former TRAINER_TABITHA_MT_CHIMNEY; pending legacy battle removed.
 #define TRAINER_UNUSED_071                    598  // Former TRAINER_JONATHAN; reserved after legacy-map removal.
 #define TRAINER_UNUSED_414    599  // Former TRAINER_BRENDAN_RUSTBORO_TORCHIC; Rustboro legacy triggers removed.
 #define TRAINER_UNUSED_415         600  // Former TRAINER_MAY_RUSTBORO_MUDKIP; Rustboro legacy triggers removed.
-#define TRAINER_MAXIE_MAGMA_HIDEOUT         601
-#define TRAINER_MAXIE_MT_CHIMNEY            602
-#define TRAINER_TIANA                       603
+#define TRAINER_UNUSED_477         601  // Former TRAINER_MAXIE_MAGMA_HIDEOUT; pending legacy battle removed.
+#define TRAINER_UNUSED_478            602  // Former TRAINER_MAXIE_MT_CHIMNEY; pending legacy battle removed.
+#define TRAINER_UNUSED_479                       603  // Former TRAINER_TIANA; pending legacy battle removed.
 #define TRAINER_WHITNEY_1                     604
 #define TRAINER_RIVAL_TOTODILE_1                      605
-#define TRAINER_VIVI                        606
+#define TRAINER_UNUSED_480                        606  // Former TRAINER_VIVI; pending legacy battle removed.
 #define TRAINER_WHITNEY_2                     607
 #define TRAINER_MORTY_1                     608
 #define TRAINER_MORTY_2                     609
@@ -618,7 +618,7 @@
 #define TRAINER_UNUSED_074                       612  // Former TRAINER_ROBIN; reserved after legacy-map removal.
 #define TRAINER_BRIAN                      613
 #define TRAINER_HARRY                      614
-#define TRAINER_RICK                        615
+#define TRAINER_UNUSED_497                  615  // Former TRAINER_RICK; legacy Route 102 battle removed.
 #define TRAINER_LYLE                        616
 #define TRAINER_JOSE                        617
 #define TRAINER_DOUG                        618
@@ -630,7 +630,7 @@
 #define TRAINER_RIVAL_CYNDAQUIL_7                     624
 #define TRAINER_RIVAL_TOTODILE_2                     625
 #define TRAINER_ELLIOT                       626
-#define TRAINER_TRENT_1                     627
+#define TRAINER_UNUSED_498                  627  // Former TRAINER_TRENT_1; legacy Route 112 battle removed.
 #define TRAINER_UNUSED_075                       628  // Former TRAINER_LENNY; reserved after legacy-map removal.
 #define TRAINER_UNUSED_076                     629  // Former TRAINER_LUCAS_1; reserved after legacy-map removal.
 #define TRAINER_ALAN                        630
@@ -650,7 +650,7 @@
 #define TRAINER_KIRA_AND_DAN_3              644
 #define TRAINER_KIRA_AND_DAN_4              645
 #define TRAINER_KIRA_AND_DAN_5              646
-#define TRAINER_JOHANNA                     647
+#define TRAINER_UNUSED_499                  647  // Former TRAINER_JOHANNA; legacy Route 109 Seashore House battle removed.
 #define TRAINER_RUSSELL                      648
 #define TRAINER_UNUSED_079                      649  // Former TRAINER_VIVIAN; reserved after legacy-map removal.
 #define TRAINER_UNUSED_438                    650  // Former TRAINER_KENDRA; orphaned party removed.
@@ -674,28 +674,28 @@
 #define TRAINER_HENRY                       668
 #define TRAINER_UNUSED_080                  669  // Former TRAINER_ROGER; reserved after legacy-map removal.
 #define TRAINER_BAILEY                       670
-#define TRAINER_RUBEN                       671
-#define TRAINER_KOJI_1                      672
+#define TRAINER_UNUSED_500                  671  // Former TRAINER_RUBEN; legacy Route 128 battle removed.
+#define TRAINER_UNUSED_501                  672  // Former TRAINER_KOJI_1; legacy Route 127 battle removed.
 #define TRAINER_WAYNE                       673
 #define TRAINER_UNUSED_392                       674  // Former TRAINER_ANDY; orphaned party removed.
 #define TRAINER_UNUSED_082                        675  // Former TRAINER_REED; reserved after legacy-map removal.
 #define TRAINER_UNUSED_083                       676  // Former TRAINER_TISHA; reserved after legacy-map removal.
 #define TRAINER_UNUSED_036                  677  // Former TRAINER_TORI_AND_TIA; reserved after legacy-map removal.
-#define TRAINER_KIM_AND_IRIS                678
-#define TRAINER_TYRA_AND_IVY                679
-#define TRAINER_MEL_AND_PAUL                680
-#define TRAINER_JOHN_AND_JAY_1              681
+#define TRAINER_UNUSED_485                678  // Former TRAINER_KIM_AND_IRIS; pending legacy battle removed.
+#define TRAINER_UNUSED_486                679  // Former TRAINER_TYRA_AND_IVY; pending legacy battle removed.
+#define TRAINER_UNUSED_487                680  // Former TRAINER_MEL_AND_PAUL; pending legacy battle removed.
+#define TRAINER_UNUSED_481              681  // Former TRAINER_JOHN_AND_JAY_1; pending legacy battle removed.
 #define TRAINER_JOHN_AND_JAY_2              682
 #define TRAINER_JOHN_AND_JAY_3              683
 #define TRAINER_JOHN_AND_JAY_4              684
 #define TRAINER_JOHN_AND_JAY_5              685
-#define TRAINER_RELI_AND_IAN                686
-#define TRAINER_LILA_AND_ROY_1              687
+#define TRAINER_UNUSED_482                686  // Former TRAINER_RELI_AND_IAN; pending legacy battle removed.
+#define TRAINER_UNUSED_483              687  // Former TRAINER_LILA_AND_ROY_1; pending legacy battle removed.
 #define TRAINER_LILA_AND_ROY_2              688
 #define TRAINER_LILA_AND_ROY_3              689
 #define TRAINER_LILA_AND_ROY_4              690
 #define TRAINER_LILA_AND_ROY_5              691
-#define TRAINER_LISA_AND_RAY                692
+#define TRAINER_UNUSED_484                692  // Former TRAINER_LISA_AND_RAY; pending legacy battle removed.
 #define TRAINER_GRUNT_17                       693
 #define TRAINER_JOEL                      694
 #define TRAINER_UNUSED_084                       695  // Former TRAINER_SARAH; reserved after legacy-map removal.
@@ -716,10 +716,10 @@
 #define TRAINER_UNUSED_038                  710  // Former TRAINER_LAWRENCE; reserved after legacy-map removal.
 #define TRAINER_UNUSED_039                  711  // Former TRAINER_WYATT; reserved after legacy-map removal.
 #define TRAINER_CARA                    712
-#define TRAINER_KAI                         713
+#define TRAINER_KAI                             713  // Retained for Battle Frontier consumer.
 #define TRAINER_GRUNT_13                   714
 #define TRAINER_JOHNNY                     715
-#define TRAINER_GRUNT_MAGMA_HIDEOUT_1       716
+#define TRAINER_UNUSED_489       716  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_1; pending legacy battle removed.
 #define TRAINER_RICHARDO       717
 #define TRAINER_NARD       718
 #define TRAINER_UNUSED_091       719  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_4; reserved after legacy-map removal.
@@ -738,7 +738,7 @@
 #define TRAINER_UNUSED_304       732  // Former TRAINER_TABITHA_MAGMA_HIDEOUT; reserved after legacy-map removal.
 #define TRAINER_JIM                       733
 #define TRAINER_MAXIE_MOSSDEEP              734
-#define TRAINER_PETE                        735
+#define TRAINER_PETE                            735  // Retained for active Route 32 and Frontier consumers.
 #define TRAINER_WILL_1                    736
 #define TRAINER_BRIANA                    737
 #define TRAINER_UNUSED_012                  738  // Former TRAINER_JOSUE; reserved after legacy-map removal.

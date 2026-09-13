@@ -314,11 +314,6 @@ Route120_EventScript_Clarissa::
 	msgbox Route120_Text_ClarissaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route120_EventScript_Angelica::
-	trainerbattle_single TRAINER_ANGELICA, Route120_Text_AngelicaIntro, Route120_Text_AngelicaDefeat
-	msgbox Route120_Text_AngelicaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route120_EventScript_Riley::
 	trainerbattle_single TRAINER_RILEY, Route120_Text_RileyIntro, Route120_Text_RileyDefeat
 	msgbox Route120_Text_RileyPostBattle, MSGBOX_AUTOCLOSE

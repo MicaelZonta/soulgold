@@ -206,11 +206,6 @@ Route128_EventScript_Alexa::
 	msgbox Route128_Text_AlexaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route128_EventScript_Ruben::
-	trainerbattle_single TRAINER_RUBEN, Route128_Text_RubenIntro, Route128_Text_RubenDefeat
-	msgbox Route128_Text_RubenPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route128_EventScript_Wayne::
 	trainerbattle_single TRAINER_WAYNE, Route128_Text_WayneIntro, Route128_Text_WayneDefeat
 	msgbox Route128_Text_WaynePostBattle, MSGBOX_AUTOCLOSE

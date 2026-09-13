@@ -55,16 +55,6 @@ Route125_EventScript_RematchErnest::
 	msgbox Route125_Text_ErnestRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route125_EventScript_Kim::
-	trainerbattle_double TRAINER_KIM_AND_IRIS, Route125_Text_KimIntro, Route125_Text_KimDefeat, Route125_Text_KimNotEnoughMons
-	msgbox Route125_Text_KimPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route125_EventScript_Iris::
-	trainerbattle_double TRAINER_KIM_AND_IRIS, Route125_Text_IrisIntro, Route125_Text_IrisDefeat, Route125_Text_IrisNotEnoughMons
-	msgbox Route125_Text_IrisPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route125_EventScript_Auron::
 	trainerbattle_single TRAINER_NONE, Route125_Text_AuronIntro, Route125_Text_AuronDefeat
 	msgbox Route125_Text_AuronPostBattle, MSGBOX_AUTOCLOSE
