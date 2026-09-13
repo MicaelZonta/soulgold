@@ -1,5 +1,17 @@
 # Auditoria: Lillie na Floricultura de Goldenrod (revanche + entrega do SquirtBottle)
 
+> **Superado pela implementação.** Este documento é a auditoria pré-implementação
+> (2026-09-12, "nada foi implementado ainda"). A implementação final seguiu
+> `docs/LILLIE_GOLDENROD_REFINAMENTO_COMPLETO_V5.md`, que decidiu diferente do
+> assumido abaixo em pontos importantes: **vitória não é requisito** (ganhar ou
+> perder conclui a cena e entrega o item — a seção 7 e o item de teste "perder
+> de propósito" abaixo descrevem o modelo antigo, já substituído); **nenhuma
+> flag persistente nova foi criada** (o objeto de Lillie usa diretamente
+> `FLAG_RECEIVED_SQUIRTBOTTLE`, sem nova entrada de flagheap); e a Lillie é
+> declarada no `map.json` via um campo `local_id` nominal (não um `.set
+> LOCALID_...` manual no `.pory`). Mantido aqui só como registro histórico do
+> levantamento de código original.
+
 Escopo: avaliar o impacto técnico de colocar a Lillie dentro de
 `GoldenrodCity_FlowerShop`, assumindo o evento de entrega do SquirtBottle
 (hoje feito pela dona da loja, após Whitney), com uma batalha obrigatória

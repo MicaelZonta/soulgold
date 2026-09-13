@@ -395,31 +395,15 @@ Ele não sabe automaticamente qual espécie está dentro do ovo. A entrega é um
 
 ### 4.6. Lillie em Goldenrod — revanche e entrega do SquirtBottle
 
-A revanche de Lillie ocupa o evento de entrega do SquirtBottle em Goldenrod. Ela é a responsável por entregar o item ao jogador. A floricultura é o ponto de encenação adotado para aproveitar a entrega existente; coordenadas e movimentos serão ajustados no mapa. Gladion permanece ligado ao ovo em Violet.
+**Status: implementado.** A versão final desta cena (roteiro, equipe, contrato técnico de script) está em `docs/LILLIE_GOLDENROD_REFINAMENTO_COMPLETO_V5.md`, que substitui o texto originalmente proposto aqui. A mudança mais importante em relação à proposta abaixo: **vencer não é mais requisito** — ganhar ou perder a revanche conclui a cena e entrega o item; só o diálogo varia por resultado (vitória, derrota, empate, desistência). Gladion permanece ligado ao ovo em Violet.
 
-**Motivação proposta:** Lillie passou pela floricultura para perguntar sobre a árvore da Route 36 e conseguiu um SquirtBottle. Ao reencontrar o jogador, resolve confiá-lo a ele e aproveitar o momento para a revanche. Não precisa trabalhar na loja nem interromper uma entrega feita por outra NPC.
+A revanche de Lillie ocupa o evento de entrega do SquirtBottle em Goldenrod, na floricultura de Goldenrod City. Ela é a responsável por entregar o item ao jogador; a antiga NPC da loja não entrega mais o item diretamente, apenas comenta que já falou com Lillie sobre isso.
 
-**Sequência para Terra:**
+**Sequência implementada** (ver V5 para o script completo): Lillie está na loja perguntando à dona sobre a árvore de Route 36 quando percebe o jogador; reencontro (Whitney, Ilex Forest, Gladion e o Type: Null); a dona autoriza a entrega; checagem de espaço na Bag antes de curar e lutar; batalha de treino (vitória ou derrota concluem igualmente); cura antes e depois; entrega do SquirtBottle e despedida com `FLAG_RECEIVED_SQUIRTBOTTLE`. Nenhuma flag persistente nova foi criada — a visibilidade de Lillie usa a própria `FLAG_RECEIVED_SQUIRTBOTTLE`.
 
-1. Preservar os requisitos de progressão da entrega, incluindo Whitney, verificando as condições exatas nos scripts atuais.
-2. Lillie recebe o jogador no evento e comenta o motivo de estar com o SquirtBottle.
-3. Ela menciona seu treino com Vulpix e pede a revanche. Aproximar e orientar os personagens, curando o time antes da batalha.
-4. A vitória é necessária para continuar esta sequência e receber o item. Em derrota, manter a cena disponível para nova tentativa.
-5. Depois da vitória, Lillie comenta um aprendizado concreto e entrega o SquirtBottle usando a lógica existente do item.
-6. Marcar a entrega como concluída somente após sucesso. Caso falhe, retomar apenas a entrega, preservando a vitória.
-7. Ela explica que o item permite tentar fazer a árvore sair do caminho, despede-se e segue viagem. Não revelar antecipadamente tudo sobre Sudowoodo.
+As falas em inglês usadas na implementação final estão em V5 (seção 3) e diferem das propostas originais abaixo, mantidas aqui só como registro histórico da ideia inicial:
 
-Reutilizar o estado de recebimento do SquirtBottle e conferir o estado de treinador derrotado ou a variável local para separar batalha e entrega. Atualizar as falas de encaminhamento e a antiga NPC entregadora para que apontem para Lillie e não ofereçam outra cópia. A cena não depende do quiz da Torre de Rádio nem de Gladion ou de uma intervenção no ginásio.
-
-**Falas originais propostas em inglês:**
-
-> Lillie, reencontro: “{PLAYER}! I came to ask about that strange tree on Route 36. The florist gave me this SquirtBottle. You're heading that way, aren't you?”
-
-> Lillie: “I've been practicing with Vulpix. Last time, I was so busy remembering my plan that I almost stopped watching her. I'd like another battle, if you're ready.”
->
-> Lillie, depois: “We changed our plan halfway through! I couldn't have done that last time. Next time, I'd like to win, too.”
-
-> Lillie, entrega: “Here, take the SquirtBottle. A little water might persuade that tree to move. I'd like to hear what happens!”
+> Lillie, reencontro (proposta original, não usada): “{PLAYER}! I came to ask about that strange tree on Route 36. The florist gave me this SquirtBottle. You're heading that way, aren't you?”
 
 O encontro de Gladion em Mahogany foi uma sugestão anterior, sem aprovação final. Não adicioná-lo como obrigatório. As propostas de Gladion em Azalea e Lillie no Sudowoodo também não são encontros adicionais confirmados.
 

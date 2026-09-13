@@ -8,6 +8,10 @@ Complementa [`adicionar-npc.md`](adicionar-npc.md) — aquele ensina a **desenha
 Se o seu treinador usa um sprite que já existe (`OBJ_EVENT_GFX_YOUNGSTER`, etc.),
 só este guia basta.
 
+> Se a sua batalha precisa continuar **mesmo se o jogador perder** (treino de
+> história, sem blackout), este guia não cobre isso — veja
+> [`permitir-derrota-em-batalha.md`](permitir-derrota-em-batalha.md).
+
 ---
 
 ## Checklist rápido

@@ -946,7 +946,7 @@
 #define TRAINER_LILLIE                    965
 #define TRAINER_KUKUI                     966
 #define TRAINER_GLADION                   967
-#define TRAINER_UNUSED_104                968
+#define TRAINER_LILLIE_GOLDENROD          968
 #define TRAINER_UNUSED_105                969
 #define TRAINER_UNUSED_106                970
 #define TRAINER_UNUSED_107                971

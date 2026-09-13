@@ -6,7 +6,11 @@ Guia derivado da cena dos professores em `Route30_MrPokemonsHouse`
 Serve para qualquer cena com NPCs andando, falando e saindo de cena.
 Para **criar** o NPC do zero veja [adicionar-npc.md](adicionar-npc.md) e
 [adicionar-grafico-trainer.md](adicionar-grafico-trainer.md); para a
-batalha em si veja [adicionar-batalha-npc.md](adicionar-batalha-npc.md).
+batalha em si veja [adicionar-batalha-npc.md](adicionar-batalha-npc.md) ou,
+se a cena precisa sobreviver a uma derrota do jogador sem blackout,
+[permitir-derrota-em-batalha.md](permitir-derrota-em-batalha.md) — que
+também cobre reset de `VAR_TEMP_*` por visita e o `checkitemspace` antes de
+uma entrega.
 
 > ⚠️ **Regra de ouro:** as posições no `map.json` são a **fonte de verdade**.
 > Nunca reposicione um objeto para fazer um `applymovement` antigo funcionar —

@@ -3,43 +3,43 @@
 # 2 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_MapScripts::
 # 3 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.byte 0
+	map_script MAP_SCRIPT_ON_TRANSITION, GoldenrodCity_FlowerShop_OnTransition
 # 4 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+	.byte 0
 # 5 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_Owner::
-# 6 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	lock
-# 7 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	faceplayer
-# 8 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_set FLAG_HIDE_SUDOWOODO, GoldenrodCity_FlowerShop_EventScript_Normal
-# 9 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_set FLAG_RECEIVED_SQUIRTBOTTLE, GoldenrodCity_FlowerShop_EventScript_GotSquirtBottle
-# 10 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_set FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_GiveSquirtBottle
-# 11 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox GoldenrodCity_FlowerShop_Text_Owner1, MSGBOX_DEFAULT
-# 12 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	closemessage
-# 13 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
-# 14 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
-# 15 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 
+# 6 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ Resets the Lillie cutscene's per-visit scratch state every time the player
+# 7 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ warps into this map, so stale values left over from unrelated scripts that
+# 8 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ also use VAR_TEMP_2/3/4 elsewhere can never block or misfire the trigger.
+# 9 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_OnTransition::
+# 10 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	setvar VAR_TEMP_2, 0
+# 11 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	setvar VAR_TEMP_3, 0
+# 12 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	setvar VAR_TEMP_4, 0
+# 13 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 14 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 15 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_Owner::
 # 16 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_GiveSquirtBottle::
-# 17 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	lock
-# 18 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 17 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	faceplayer
+# 18 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_set FLAG_HIDE_SUDOWOODO, GoldenrodCity_FlowerShop_EventScript_Normal
 # 19 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox GoldenrodCity_FlowerShop_Text_Owner2, MSGBOX_DEFAULT
+	goto_if_set FLAG_RECEIVED_SQUIRTBOTTLE, GoldenrodCity_FlowerShop_EventScript_GotSquirtBottle
 # 20 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	giveitem ITEM_SQUIRTBOTTLE
+	goto_if_set FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_OwnerLillieWillHandleIt
 # 21 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	setflag FLAG_RECEIVED_SQUIRTBOTTLE
+	msgbox GoldenrodCity_FlowerShop_Text_Owner1, MSGBOX_DEFAULT
 # 22 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	closemessage
 # 23 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -49,107 +49,107 @@ GoldenrodCity_FlowerShop_EventScript_GiveSquirtBottle::
 # 25 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 
 # 26 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_GotSquirtBottle::
+@ The owner no longer hands over the SquirtBottle herself: Lillie delivers it
 # 27 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	lock
+@ after their battle (see GoldenrodCity_FlowerShop_EventScript_Lillie below).
 # 28 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	faceplayer
+GoldenrodCity_FlowerShop_EventScript_OwnerLillieWillHandleIt::
 # 29 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox GoldenrodCity_FlowerShop_Text_Owner3, MSGBOX_DEFAULT
-# 30 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	closemessage
-# 31 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
-# 32 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
-# 33 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
-# 34 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_Normal::
-# 35 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	lock
-# 36 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 30 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	faceplayer
-# 37 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox GoldenrodCity_FlowerShop_Text_Owner4, MSGBOX_DEFAULT
-# 38 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 31 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_OwnerLillieWillHandleIt, MSGBOX_DEFAULT
+# 32 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	closemessage
-# 39 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 33 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
+# 34 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 35 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 36 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_GotSquirtBottle::
+# 37 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	lock
+# 38 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	faceplayer
+# 39 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_Owner3, MSGBOX_DEFAULT
 # 40 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
+	closemessage
 # 41 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
 # 42 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-@ Runs after every Squirtbottle/Sudowoodo branch above, so both topics are always
+	end
 # 43 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-@ covered in the same conversation instead of one hiding the other.
+
 # 44 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck::
+GoldenrodCity_FlowerShop_EventScript_Normal::
 # 45 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_unset FLAG_STARTED_SEASONAL_PERFUME_QUEST, GoldenrodCity_FlowerShop_EventScript_EndConversation
+	lock
 # 46 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	checkitem ITEM_SEASONAL_PERFUME, 1
+	faceplayer
 # 47 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, GoldenrodCity_FlowerShop_EventScript_EndConversation
+	msgbox GoldenrodCity_FlowerShop_Text_Owner4, MSGBOX_DEFAULT
 # 48 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	showmoneybox 0, 0
+	closemessage
 # 49 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox GoldenrodCity_FlowerShop_Text_SeasonalPerfumeOffer, MSGBOX_YESNO
+	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
 # 50 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_DeclineSeasonalPerfume
+	end
 # 51 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	checkmoney 1000000, 0
+
 # 52 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_NotEnoughForSeasonalPerfume
+@ Runs after every Squirtbottle/Sudowoodo branch above, so both topics are always
 # 53 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	removemoney 1000000
+@ covered in the same conversation instead of one hiding the other.
 # 54 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	updatemoneybox 0
+GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck::
 # 55 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	playse SE_SHOP
+	goto_if_unset FLAG_STARTED_SEASONAL_PERFUME_QUEST, GoldenrodCity_FlowerShop_EventScript_EndConversation
 # 56 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	giveitem ITEM_SEASONAL_PERFUME
+	checkitem ITEM_SEASONAL_PERFUME, 1
 # 57 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox GoldenrodCity_FlowerShop_Text_SeasonalPerfumeAfterBuy, MSGBOX_DEFAULT
+	goto_if_eq VAR_RESULT, TRUE, GoldenrodCity_FlowerShop_EventScript_EndConversation
 # 58 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	hidemoneybox
+	showmoneybox 0, 0
 # 59 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	closemessage
+	msgbox GoldenrodCity_FlowerShop_Text_SeasonalPerfumeOffer, MSGBOX_YESNO
 # 60 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	release
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_DeclineSeasonalPerfume
 # 61 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
+	checkmoney 1000000, 0
 # 62 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_NotEnoughForSeasonalPerfume
 # 63 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_NotEnoughForSeasonalPerfume::
+	removemoney 1000000
 # 64 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox GoldenrodCity_FlowerShop_Text_SeasonalPerfumeNotEnoughMoney, MSGBOX_DEFAULT
+	updatemoneybox 0
 # 65 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	hidemoneybox
+	playse SE_SHOP
 # 66 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	closemessage
+	giveitem ITEM_SEASONAL_PERFUME
 # 67 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	release
+	msgbox GoldenrodCity_FlowerShop_Text_SeasonalPerfumeAfterBuy, MSGBOX_DEFAULT
 # 68 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
-# 69 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
-# 70 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_DeclineSeasonalPerfume::
-# 71 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	hidemoneybox
-# 72 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 69 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	closemessage
-# 73 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 70 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	release
-# 74 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 71 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	end
-# 75 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 72 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 
+# 73 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_NotEnoughForSeasonalPerfume::
+# 74 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_SeasonalPerfumeNotEnoughMoney, MSGBOX_DEFAULT
+# 75 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	hidemoneybox
 # 76 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_EndConversation::
+	closemessage
 # 77 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	release
 # 78 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -157,528 +157,1352 @@ GoldenrodCity_FlowerShop_EventScript_EndConversation::
 # 79 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 
 # 80 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_Floria1::
+GoldenrodCity_FlowerShop_EventScript_DeclineSeasonalPerfume::
 # 81 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	lock
+	hidemoneybox
 # 82 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	faceplayer
-# 83 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_set FLAG_HIDE_SUDOWOODO, GoldenrodCity_FlowerShop_EventScript_Floria3
-# 84 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_set FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_Floria2
-# 85 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox GoldenrodCity_FlowerShop_Text_Floria, MSGBOX_DEFAULT
-# 86 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	closemessage
+# 83 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	release
+# 84 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 85 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 86 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_EndConversation::
 # 87 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	release
 # 88 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	end
 # 89 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	
+
 # 90 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_Floria2::
+GoldenrodCity_FlowerShop_EventScript_Floria1::
 # 91 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox GoldenrodCity_FlowerShop_Text_FloriaYouBeatWhitney, MSGBOX_DEFAULT
+	lock
 # 92 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	closemessage
+	faceplayer
 # 93 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	release
+	goto_if_set FLAG_HIDE_SUDOWOODO, GoldenrodCity_FlowerShop_EventScript_Floria3
 # 94 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
+	goto_if_set FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_Floria2
 # 95 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+	msgbox GoldenrodCity_FlowerShop_Text_Floria, MSGBOX_DEFAULT
 # 96 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_EventScript_Floria3::
-# 97 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox GoldenrodCity_FlowerShop_Text_FloriaItWasAMon, MSGBOX_DEFAULT
-# 98 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	closemessage
+# 97 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	release
+# 98 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
 # 99 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	release
+	
 # 100 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
+GoldenrodCity_FlowerShop_EventScript_Floria2::
 # 101 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+	msgbox GoldenrodCity_FlowerShop_Text_FloriaYouBeatWhitney, MSGBOX_DEFAULT
 # 102 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-Route104_PrettyPetalFlowerShop_EventScript_RandomBerryGirl::
+	closemessage
 # 103 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	lock
+	release
 # 104 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	faceplayer
+	end
 # 105 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	dotimebasedevents
+
 # 106 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_set FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY, Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry
+GoldenrodCity_FlowerShop_EventScript_Floria3::
 # 107 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox Route104_PrettyPetalFlowerShop_Text_ImGrowingFlowers, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_FloriaItWasAMon, MSGBOX_DEFAULT
 # 108 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	random 8
+	closemessage
 # 109 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	addvar VAR_RESULT, FIRST_BERRY_INDEX
+	release
 # 110 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	giveitem VAR_RESULT
+	end
 # 111 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+
 # 112 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	setflag FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY
+Route104_PrettyPetalFlowerShop_EventScript_RandomBerryGirl::
 # 113 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries, MSGBOX_DEFAULT
-# 114 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	release
-# 115 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
-# 116 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
-# 117 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry::
-# 118 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries, MSGBOX_DEFAULT
-# 119 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	release
-# 120 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
-# 121 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
-# 122 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-Route104_PrettyPetalFlowerShop_EventScript_MintOwner::
-# 123 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	lock
-# 124 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 114 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	faceplayer
-# 125 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	goto_if_unset FLAG_BADGE04_GET, Route104_PrettyPetalFlowerShop_EventScript_NoSellMints
-# 126 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox Route104_PrettyPetalFlowerShop_Text_Mints1, MSGBOX_DEFAULT
-# 127 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	waitmessage
-# 128 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	pokemart Route104_PrettyPetalFlowerShop_MintShop
-# 129 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-# 130 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 115 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	dotimebasedevents
+# 116 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_set FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY, Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry
+# 117 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox Route104_PrettyPetalFlowerShop_Text_ImGrowingFlowers, MSGBOX_DEFAULT
+# 118 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	random 8
+# 119 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	addvar VAR_RESULT, FIRST_BERRY_INDEX
+# 120 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	giveitem VAR_RESULT
+# 121 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+# 122 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	setflag FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY
+# 123 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries, MSGBOX_DEFAULT
+# 124 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	release
-# 131 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 125 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	end
+# 126 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 127 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry::
+# 128 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries, MSGBOX_DEFAULT
+# 129 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	release
+# 130 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 131 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
 # 132 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+Route104_PrettyPetalFlowerShop_EventScript_MintOwner::
 # 133 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-Route104_PrettyPetalFlowerShop_Text_Mints1:
+	lock
 # 134 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "Our Nature Mints are back!\n"
+	faceplayer
 # 135 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "Have a look!$"
+	goto_if_unset FLAG_BADGE04_GET, Route104_PrettyPetalFlowerShop_EventScript_NoSellMints
 # 136 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+	msgbox Route104_PrettyPetalFlowerShop_Text_Mints1, MSGBOX_DEFAULT
 # 137 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-Route104_PrettyPetalFlowerShop_Text_Mints2:
+	waitmessage
 # 138 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "Hi, dear trainer. If you are looking\n"
+	pokemart Route104_PrettyPetalFlowerShop_MintShop
 # 139 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "to buy Nature Mints, you should have\l"
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 # 140 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "come earlier. I just sold the last one.\n"
+	release
 # 141 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "Come back later.$"
+	end
 # 142 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 
 # 143 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.align 2
+Route104_PrettyPetalFlowerShop_Text_Mints1:
 # 144 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-Route104_PrettyPetalFlowerShop_MintShop:
+	.string "Our Nature Mints are back!\n"
 # 145 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_SERIOUS_MINT
+	.string "Have a look!$"
 # 146 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_ADAMANT_MINT
+
 # 147 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_BOLD_MINT
+Route104_PrettyPetalFlowerShop_Text_Mints2:
 # 148 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_BRAVE_MINT
+	.string "Hi, dear trainer. If you are looking\n"
 # 149 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_CALM_MINT
+	.string "to buy Nature Mints, you should have\l"
 # 150 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_CAREFUL_MINT
+	.string "come earlier. I just sold the last one.\n"
 # 151 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_GENTLE_MINT
+	.string "Come back later.$"
 # 152 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_HASTY_MINT
+
 # 153 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_IMPISH_MINT
+	.align 2
 # 154 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_JOLLY_MINT
+Route104_PrettyPetalFlowerShop_MintShop:
 # 155 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_LAX_MINT
+	.2byte ITEM_SERIOUS_MINT
 # 156 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_LONELY_MINT
+	.2byte ITEM_ADAMANT_MINT
 # 157 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_MILD_MINT
+	.2byte ITEM_BOLD_MINT
 # 158 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_MODEST_MINT
+	.2byte ITEM_BRAVE_MINT
 # 159 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_NAIVE_MINT
+	.2byte ITEM_CALM_MINT
 # 160 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_NAUGHTY_MINT
+	.2byte ITEM_CAREFUL_MINT
 # 161 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_QUIET_MINT
+	.2byte ITEM_GENTLE_MINT
 # 162 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_RASH_MINT
+	.2byte ITEM_HASTY_MINT
 # 163 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_RELAXED_MINT
+	.2byte ITEM_IMPISH_MINT
 # 164 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_SASSY_MINT
+	.2byte ITEM_JOLLY_MINT
 # 165 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_TIMID_MINT
+	.2byte ITEM_LAX_MINT
 # 166 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.2byte ITEM_NONE
+	.2byte ITEM_LONELY_MINT
 # 167 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	release
+	.2byte ITEM_MILD_MINT
 # 168 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
+	.2byte ITEM_MODEST_MINT
 # 169 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+	.2byte ITEM_NAIVE_MINT
 # 170 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-Route104_PrettyPetalFlowerShop_EventScript_NoSellMints::
+	.2byte ITEM_NAUGHTY_MINT
 # 171 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox Route104_PrettyPetalFlowerShop_Text_Mints2, MSGBOX_DEFAULT
+	.2byte ITEM_QUIET_MINT
 # 172 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	release
+	.2byte ITEM_RASH_MINT
 # 173 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	end
+	.2byte ITEM_RELAXED_MINT
 # 174 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+	.2byte ITEM_SASSY_MINT
 # 175 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-Route104_PrettyPetalFlowerShop_EventScript_AlreadyMet::
+	.2byte ITEM_TIMID_MINT
 # 176 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox Route104_PrettyPetalFlowerShop_Text_LearnAboutBerries, MSGBOX_YESNO
+	.2byte ITEM_NONE
 # 177 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	call_if_eq VAR_RESULT, YES, Route104_PrettyPetalFlowerShop_EventScript_ExplainBerries
-# 178 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	call_if_eq VAR_RESULT, NO, Route104_PrettyPetalFlowerShop_EventScript_DontExplainBerries
-# 179 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	release
-# 180 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 178 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	end
+# 179 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 180 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+Route104_PrettyPetalFlowerShop_EventScript_NoSellMints::
 # 181 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+	msgbox Route104_PrettyPetalFlowerShop_Text_Mints2, MSGBOX_DEFAULT
 # 182 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-Route104_PrettyPetalFlowerShop_EventScript_ExplainBerries::
+	release
 # 183 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox Route104_PrettyPetalFlowerShop_Text_BerriesExplanation, MSGBOX_DEFAULT
+	end
 # 184 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	return
+
 # 185 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+Route104_PrettyPetalFlowerShop_EventScript_AlreadyMet::
 # 186 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-Route104_PrettyPetalFlowerShop_EventScript_DontExplainBerries::
+	msgbox Route104_PrettyPetalFlowerShop_Text_LearnAboutBerries, MSGBOX_YESNO
 # 187 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	msgbox Route104_PrettyPetalFlowerShop_Text_FlowersBringHappiness, MSGBOX_DEFAULT
+	call_if_eq VAR_RESULT, YES, Route104_PrettyPetalFlowerShop_EventScript_ExplainBerries
 # 188 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	return
+	call_if_eq VAR_RESULT, NO, Route104_PrettyPetalFlowerShop_EventScript_DontExplainBerries
 # 189 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+	release
 # 190 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_Text_Floria:
+	end
 # 191 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "When I told my sis about the jiggly\n"
+
 # 192 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "tree, she said it's dangerous.\p"
+Route104_PrettyPetalFlowerShop_EventScript_ExplainBerries::
 # 193 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "If I beat Whitney, I wonder if\n"
+	msgbox Route104_PrettyPetalFlowerShop_Text_BerriesExplanation, MSGBOX_DEFAULT
 # 194 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "she'll lend me her water bottle…$"
+	return
 # 195 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 
 # 196 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_Text_Owner1:
+Route104_PrettyPetalFlowerShop_EventScript_DontExplainBerries::
 # 197 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Apparently, there is an odd tree\n"
+	msgbox Route104_PrettyPetalFlowerShop_Text_FlowersBringHappiness, MSGBOX_DEFAULT
 # 198 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "on Route 36.\p"
+	return
 # 199 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "They say it dances when you water\n"
+
 # 200 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "it...\p"
+GoldenrodCity_FlowerShop_Text_Floria:
 # 201 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Oh, of course not!\p"
+	.string "When I told my sis about the jiggly\n"
 # 202 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "This is a flower shop, so we do\n"
+	.string "tree, she said it's dangerous.\p"
 # 203 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "have watering cans...\p"
+	.string "If I beat Whitney, I wonder if\n"
 # 204 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "But I cannot let you have one!\n"
+	.string "she'll lend me her water bottle…$"
 # 205 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "It's too dangerous!\p"
+
 # 206 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Well, maybe if you manage to\n"
+GoldenrodCity_FlowerShop_Text_Owner1:
 # 207 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "defeat gym leader Whitney, it\l"
-# 208 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "might be okay.$"
-# 209 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
-# 210 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_Text_Owner2:
-# 211 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "Apparently, there is an odd tree\n"
-# 212 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 208 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "on Route 36.\p"
-# 213 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 209 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "They say it dances when you water\n"
-# 214 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 210 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "it...\p"
+# 211 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Oh, of course not!\p"
+# 212 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "This is a flower shop, so we do\n"
+# 213 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "have watering cans...\p"
+# 214 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "But I cannot let you have one!\n"
 # 215 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Oh, that's a Plainbadge from\n"
+.string "It's too dangerous!\p"
 # 216 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "The Goldenrod Gym!\p"
+.string "Well, maybe if you manage to\n"
 # 217 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Did you defeat Whitney?!\p"
+.string "defeat gym leader Whitney, it\l"
 # 218 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Well, then there's nothing to worry\n"
+.string "might be okay.$"
 # 219 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "about, is there?\p"
+
 # 220 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "I'll let you use this Squirtbottle\n"
+GoldenrodCity_FlowerShop_Text_OwnerLillieWillHandleIt:
 # 221 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "for a while then.\l"
+.string "Apparently, there is an odd tree\n"
 # 222 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "...\p"
+.string "on Route 36.\p"
 # 223 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Oh, never mind. Keep it!$"
+.string "They say it dances when you water\n"
 # 224 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+.string "it...\p"
 # 225 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_Text_Owner3:
+.string "Oh, that's a Plainbadge from\n"
 # 226 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "The odd tree is on Route 36.\n"
+.string "The Goldenrod Gym!\p"
 # 227 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Please be careful!$"
+.string "I've already spoken with Lillie\n"
 # 228 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+.string "about the SquirtBottle.\p"
 # 229 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_Text_Owner4:
+.string "She'll take care of it with you.$"
 # 230 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "Lalala lalalala. Have plenty of\n"
+
 # 231 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "water, my lovely!$"
+GoldenrodCity_FlowerShop_Text_Owner3:
 # 232 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+.string "The odd tree is on Route 36.\n"
 # 233 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_Text_FloriaYouBeatWhitney:
+.string "Please be careful!$"
 # 234 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "Wow, you beat Whitney? Cool!$"
-# 235 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 
+# 235 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_Owner4:
 # 236 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_Text_FloriaItWasAMon:
+    .string "Lalala lalalala. Have plenty of\n"
 # 237 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "So it really was a Pokémon!$"
+    .string "water, my lovely!$"
 # 238 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 
 # 239 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_Text_SeasonalPerfumeOffer:
+GoldenrodCity_FlowerShop_Text_FloriaYouBeatWhitney:
 # 240 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "Your mother asked about our\n"
+    .string "Wow, you beat Whitney? Cool!$"
 # 241 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "Seasonal Perfume?\p"
+
 # 242 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "It blends scents inspired by\n"
+GoldenrodCity_FlowerShop_Text_FloriaItWasAMon:
 # 243 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "spring, summer, autumn and winter.\l"
+    .string "So it really was a Pokémon!$"
 # 244 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "It's ¥1,000,000. Would you like it?$"
+
 # 245 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+GoldenrodCity_FlowerShop_Text_SeasonalPerfumeOffer:
 # 246 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_Text_SeasonalPerfumeAfterBuy:
+    .string "Your mother asked about our\n"
 # 247 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "Thank you! Each scent brings out\n"
+    .string "Seasonal Perfume?\p"
 # 248 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "a different side of certain\l"
+    .string "It blends scents inspired by\n"
 # 249 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-    .string "Pokémon. I hope she enjoys it!$"
+    .string "spring, summer, autumn and winter.\l"
 # 250 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-
+    .string "It's ¥1,000,000. Would you like it?$"
 # 251 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-GoldenrodCity_FlowerShop_Text_SeasonalPerfumeNotEnoughMoney:
+
 # 252 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_SeasonalPerfumeAfterBuy:
+# 253 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+    .string "Thank you! Each scent brings out\n"
+# 254 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+    .string "a different side of certain\l"
+# 255 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+    .string "Pokémon. I hope she enjoys it!$"
+# 256 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 257 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_SeasonalPerfumeNotEnoughMoney:
+# 258 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
     .string "You'll need more money than that.$"
+# 259 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 260 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ ---------------------------------------------------------------------------
+# 261 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ Lillie cutscene (post-Whitney SquirtBottle handoff)
+# 262 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@
+# 263 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@   collision-checked tile plan (see data/layouts/GoldenrodCity_FlowerShop):
+# 264 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@     Owner/florist (2,4) - unchanged      Lillie home tile (4,4)
+# 265 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@     approach stop (6,7)                  player trigger tile (6,8)
+# 266 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@     door/warp (6,9)
+# 267 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@   Path Lillie walks to approach the player, and later to leave, only
+# 268 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@   crosses tiles confirmed open in the collision layer; sprite-level
+# 269 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@   pathing (obstacles, follower behavior) still needs an emulator pass.
+# 270 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@
+# 271 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ State (all VAR_TEMP_2/3/4 are reset to 0 by GoldenrodCity_FlowerShop_OnTransition
+# 272 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ every time this map is entered, so they only ever describe the current visit):
+# 273 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@   VAR_TEMP_2 - 0 = approach not done yet, 1 = Lillie already walked up to the player
+# 274 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@   VAR_TEMP_3 - battle outcome captured right after GetBattleOutcome
+# 275 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@   VAR_TEMP_4 - 1 = training accepted (win, loss, draw or forfeit), delivery pending
+# 276 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ ---------------------------------------------------------------------------
+# 277 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 278 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_Lillie::
+# 279 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_unset FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_LillieBeforeBadge
+# 280 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_TEMP_4, 1, GoldenrodCity_FlowerShop_EventScript_LillieRetryDelivery
+# 281 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_TEMP_2, 1, GoldenrodCity_FlowerShop_EventScript_LillieRetryTraining
+# 282 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto GoldenrodCity_FlowerShop_EventScript_LillieTrigger
+# 283 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 284 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 285 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieBeforeBadge::
+# 286 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	lock
+# 287 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	faceplayer
+# 288 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieBeforeBadge, MSGBOX_DEFAULT
+# 289 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 290 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	release
+# 291 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 292 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 293 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ Fired by the coord_event trigger at (6,8), and reused above if the player
+# 294 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ instead walks straight up to Lillie and talks to her before ever stepping
+# 295 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ on that tile. goto_if_unset/goto_if_set below make the trigger itself
+# 296 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ idempotent: stepping on (6,8) again after Whitney but before the item is
+# 297 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ received, or after it's already been delivered, is a harmless no-op.
+# 298 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieTrigger::
+# 299 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_set FLAG_RECEIVED_SQUIRTBOTTLE, GoldenrodCity_FlowerShop_EventScript_LillieTrigger_Skip
+# 300 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_unset FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_LillieTrigger_Skip
+# 301 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_TEMP_2, 1, GoldenrodCity_FlowerShop_EventScript_LillieTrigger_Skip
+# 302 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto GoldenrodCity_FlowerShop_EventScript_LillieScene
+# 303 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieTrigger_Skip::
+# 304 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 305 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 306 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieScene::
+# 307 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	lockall
+# 308 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	turnobject LOCALID_GOLDENROD_FLOWER_SHOP_OWNER, DIR_EAST
+# 309 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	turnobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, DIR_WEST
+# 310 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieSceneFloristTree, MSGBOX_DEFAULT
+# 311 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieSuggestsPersuading, MSGBOX_DEFAULT
+# 312 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_FloristOffersBottle, MSGBOX_DEFAULT
+# 313 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 314 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 315 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	@ --- Lillie notices the player and hurries over ---
+# 316 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	playse SE_PIN
+# 317 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, Common_Movement_ExclamationMark
+# 318 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	waitmovement 0
+# 319 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	playbgm MUS_HG_LYRA, TRUE
+# 320 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, GoldenrodCity_FlowerShop_Movement_LillieApproach
+# 321 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	waitmovement 0
+# 322 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	setvar VAR_TEMP_2, 1
+# 323 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+# 324 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 325 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	@ --- Reencounter ---
+# 326 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieRecognizesBadge, MSGBOX_DEFAULT
+# 327 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieIlexForest, MSGBOX_DEFAULT
+# 328 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieRibombeeWind, MSGBOX_DEFAULT
+# 329 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 330 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 331 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	@ --- Gladion and the Type: Null ---
+# 332 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieGladionViolet, MSGBOX_DEFAULT
+# 333 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieTypeNull, MSGBOX_DEFAULT
+# 334 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 335 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 336 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	@ --- Why the SquirtBottle changes hands ---
+# 337 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieHeadingNorth, MSGBOX_DEFAULT
+# 338 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieAsksFlorist, MSGBOX_DEFAULT
+# 339 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_FloristAgrees, MSGBOX_DEFAULT
+# 340 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieChallenge, MSGBOX_DEFAULT
+# 341 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 342 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto GoldenrodCity_FlowerShop_EventScript_LillieCheckRoomForTraining
+# 343 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 344 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ Re-entered manually (VAR_TEMP_2 == 1, VAR_TEMP_4 == 0): the approach and
+# 345 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ the delivery permission already happened this visit, only retry the
+# 346 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ item-space check and the battle itself.
+# 347 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieRetryTraining::
+# 348 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	lockall
+# 349 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	turnobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, DIR_SOUTH
+# 350 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieRetryChallenge, MSGBOX_DEFAULT
+# 351 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 352 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 353 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieCheckRoomForTraining::
+# 354 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	checkitemspace ITEM_SQUIRTBOTTLE, 1
+# 355 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_LillieNoRoom
+# 356 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 357 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieVulpixPracticing, MSGBOX_DEFAULT
+# 358 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieDontHoldBack, MSGBOX_DEFAULT
+# 359 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 360 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	call Common_EventScript_OutOfCenterPartyHeal
+# 361 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 362 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	checkflag B_FLAG_NO_WHITEOUT
+# 363 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	copyvar VAR_TEMP_5, VAR_RESULT
+# 364 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	setflag B_FLAG_NO_WHITEOUT
+# 365 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	setvar VAR_LAST_TALKED, LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE
+# 366 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	removefieldmugshot
+# 367 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	trainerbattle_no_intro TRAINER_LILLIE_GOLDENROD, GoldenrodCity_FlowerShop_Text_LillieDefeated
+# 368 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	specialvar VAR_RESULT, GetBattleOutcome
+# 369 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	copyvar VAR_TEMP_3, VAR_RESULT
+# 370 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_TEMP_5, TRUE, GoldenrodCity_FlowerShop_EventScript_LillieKeepWhiteoutOff
+# 371 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	clearflag B_FLAG_NO_WHITEOUT
+# 372 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieKeepWhiteoutOff::
+# 373 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	playbgm MUS_HG_LYRA, TRUE
+# 374 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 375 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_WON, GoldenrodCity_FlowerShop_EventScript_LilliePlayerWon
+# 376 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_LOST, GoldenrodCity_FlowerShop_EventScript_LilliePlayerLost
+# 377 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_DREW, GoldenrodCity_FlowerShop_EventScript_LillieDraw
+# 378 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_FORFEITED, GoldenrodCity_FlowerShop_EventScript_LillieForfeit
+# 379 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto GoldenrodCity_FlowerShop_EventScript_LillieUnexpectedOutcome
+# 380 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 381 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ B_OUTCOME_WON: Lillie's own text (GoldenrodCity_FlowerShop_Text_LillieDefeated)
+# 382 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ already played automatically when her Pokémon fainted.
+# 383 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LilliePlayerWon::
+# 384 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieWonFollowUp1, MSGBOX_DEFAULT
+# 385 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieWonFollowUp2, MSGBOX_DEFAULT
+# 386 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 387 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto GoldenrodCity_FlowerShop_EventScript_LillieDeliverBottle
+# 388 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 389 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LilliePlayerLost::
+# 390 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieLost1, MSGBOX_DEFAULT
+# 391 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieLost2, MSGBOX_DEFAULT
+# 392 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieLost3, MSGBOX_DEFAULT
+# 393 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 394 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto GoldenrodCity_FlowerShop_EventScript_LillieDeliverBottle
+# 395 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 396 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieDraw::
+# 397 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieDraw, MSGBOX_DEFAULT
+# 398 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 399 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto GoldenrodCity_FlowerShop_EventScript_LillieDeliverBottle
+# 400 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 401 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieForfeit::
+# 402 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieForfeit, MSGBOX_DEFAULT
+# 403 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 404 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto GoldenrodCity_FlowerShop_EventScript_LillieDeliverBottle
+# 405 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 406 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ Unknown/link-battle-shaped outcome: heal, restore music and controls,
+# 407 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ but do not deliver the item or mark the training as concluded.
+# 408 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieUnexpectedOutcome::
+# 409 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	call Common_EventScript_OutOfCenterPartyHeal
+# 410 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	fadedefaultbgm
+# 411 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	releaseall
+# 412 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 413 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 414 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieDeliverBottle::
+# 415 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	setvar VAR_TEMP_4, 1
+# 416 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	call Common_EventScript_OutOfCenterPartyHeal
+# 417 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 418 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieRetryDelivery::
+# 419 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	lockall
+# 420 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieGiveBottle, MSGBOX_DEFAULT
+# 421 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	giveitem ITEM_SQUIRTBOTTLE
+# 422 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_LillieGiveItemFailed
+# 423 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	setflag FLAG_RECEIVED_SQUIRTBOTTLE
+# 424 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 425 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	turnobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, DIR_WEST
+# 426 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieThanksFlorist, MSGBOX_DEFAULT
+# 427 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_FloristDontBattleHere, MSGBOX_DEFAULT
+# 428 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	turnobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, DIR_SOUTH
+# 429 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LilliePartingWords, MSGBOX_DEFAULT
+# 430 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 431 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 432 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, GoldenrodCity_FlowerShop_Movement_LillieLeave
+# 433 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	waitmovement 0
+# 434 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	playse SE_EXIT
+# 435 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	removeobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE
+# 436 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	fadedefaultbgm
+# 437 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	releaseall
+# 438 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 439 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 440 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ Should not happen: checkitemspace already confirmed room before the
+# 441 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ battle. If it fails anyway, VAR_TEMP_4 stays 1 so talking to Lillie
+# 442 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ again only retries this delivery step, without repeating the battle.
+# 443 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieGiveItemFailed::
+# 444 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieGiveItemFailed, MSGBOX_DEFAULT
+# 445 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 446 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	fadedefaultbgm
+# 447 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	releaseall
+# 448 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 449 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 450 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_EventScript_LillieNoRoom::
+# 451 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	msgbox GoldenrodCity_FlowerShop_Text_LillieNoRoom, MSGBOX_DEFAULT
+# 452 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	closemessage
+# 453 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	fadedefaultbgm
+# 454 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	releaseall
+# 455 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	end
+# 456 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 457 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ Lillie: (4,4) -> (4,5) -> (4,6) -> (5,6) -> (5,7) -> (6,7), facing the
+# 458 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ player at (6,8). Every tile on this path is open in the collision layer.
+# 459 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Movement_LillieApproach:
+# 460 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	walk_down
+# 461 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	walk_down
+# 462 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	walk_right
+# 463 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	walk_down
+# 464 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	walk_right
+# 465 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	face_down
+# 466 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	step_end
+# 467 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 468 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+@ Lillie: (6,7) -> (6,8) -> door (6,9).
+# 469 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Movement_LillieLeave:
+# 470 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	walk_down
+# 471 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	walk_down
+# 472 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	walk_in_place_down
+# 473 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+	step_end
+# 474 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 475 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieBeforeBadge:
+# 476 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: I'm just talking with\n"
+# 477 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "the shop owner about that odd\l"
+# 478 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "tree on Route 36.$"
+# 479 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 480 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieSceneFloristTree:
+# 481 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Florist: It stops people on\n"
+# 482 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "their way to Ecruteak.\p"
+# 483 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "A little water makes it\n"
+# 484 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "wriggle, but nobody wants to\l"
+# 485 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "get too close.$"
+# 486 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 487 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieSuggestsPersuading:
+# 488 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Then we shouldn't pull\n"
+# 489 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "at its branches.\p"
+# 490 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "If it can move, perhaps we\n"
+# 491 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "can persuade it to move on\l"
+# 492 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "its own.$"
+# 493 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 494 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_FloristOffersBottle:
+# 495 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Florist: You can take this\n"
+# 496 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "SquirtBottle.\p"
+# 497 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Just be careful, dear.$"
+# 498 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 499 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieRecognizesBadge:
+# 500 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: {PLAYER}! You've been\n"
+# 501 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "to Whitney's Gym, haven't\l"
+# 502 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "you?\p"
+# 503 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "I recognized the Badge.$"
+# 504 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 505 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieIlexForest:
+# 506 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: I thought traveling\n"
+# 507 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "would mean getting better at\l"
+# 508 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "following a map.\p"
+# 509 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Then I spent half a morning\n"
+# 510 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "in Ilex Forest watching which\l"
+# 511 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "flowers Ribombee visited.$"
+# 512 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 513 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieRibombeeWind:
+# 514 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: She kept returning to\n"
+# 515 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "the sheltered flowers whenever\l"
+# 516 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "the wind picked up.\p"
+# 517 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "I was watching the path.\n"
+# 518 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "She was watching everything\l"
+# 519 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "around us.$"
+# 520 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 521 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieGladionViolet:
+# 522 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Gladion told me he\n"
+# 523 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "met you in Violet.\p"
+# 524 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "He said, 'They didn't\n"
+# 525 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "hesitate.' From him, that's\l"
+# 526 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "practically a speech.$"
+# 527 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 528 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieTypeNull:
+# 529 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: And you met the\n"
+# 530 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Type: Null traveling with\l"
+# 531 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "him.\p"
+# 532 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "He pretends not to fuss over\n"
+# 533 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "it, but he checks on it\l"
+# 534 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "whenever he thinks nobody\l"
+# 535 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "is looking.$"
+# 536 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 537 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieHeadingNorth:
+# 538 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Are you heading\n"
+# 539 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "north?\p"
+# 540 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "I promised Mother I'd meet\n"
+# 541 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "her before we leave\l"
+# 542 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Goldenrod.$"
+# 543 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 544 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieAsksFlorist:
+# 545 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Would it be all right\n"
+# 546 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "if {PLAYER} took the bottle?\p"
+# 547 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "We've traveled some of the\n"
+# 548 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "same roads.$"
+# 549 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 550 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_FloristAgrees:
+# 551 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Florist: Of course. You may\n"
+# 552 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "keep it.\p"
+# 553 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "I'd just like that path\n"
+# 554 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "clear again!$"
+# 555 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 556 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieChallenge:
+# 557 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Then it's yours.\p"
+# 558 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "But before you go... could\n"
+# 559 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "we have another battle?\p"
+# 560 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "I want to see how much\n"
+# 561 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "we've learned.$"
+# 562 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 563 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieRetryChallenge:
+# 564 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Shall we try again?$"
+# 565 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 566 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieNoRoom:
+# 567 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Your Bag looks full.\n"
+# 568 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Make room for the bottle\l"
+# 569 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "first. I'll be here.$"
+# 570 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 571 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieVulpixPracticing:
+# 572 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Vulpix and I have\n"
+# 573 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "been practicing.\p"
+# 574 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "She's started looking back\n"
+# 575 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "at me when she sees an\l"
+# 576 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "opening.\p"
+# 577 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "I'm learning not to miss it.$"
+# 578 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 579 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieDontHoldBack:
+# 580 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Let's take care of\n"
+# 581 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "your Pokémon first.\p"
+# 582 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "And please don't hold back.\n"
+# 583 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "I won't, either.$"
+# 584 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 585 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieDefeated:
+# 586 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "We couldn't quite catch\n"
+# 587 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "up... but we kept trying!$"
+# 588 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 589 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieWonFollowUp1:
+# 590 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: I spent so long\n"
+# 591 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "deciding what to do that I\l"
+# 592 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "missed some of Vulpix's\l"
+# 593 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "signals.\p"
+# 594 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "I want to get better at\n"
+# 595 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "answering her.$"
+# 596 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 597 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieWonFollowUp2:
+# 598 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: I want to try that\n"
+# 599 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "again someday.\p"
+# 600 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "After I've worked out a\n"
+# 601 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "better answer!$"
+# 602 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 603 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieLost1:
+# 604 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: We did it...? We\n"
+# 605 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "did!\p"
+# 606 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Oh, Vulpix, you were\n"
+# 607 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "wonderful!$"
+# 608 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 609 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieLost2:
+# 610 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Sorry! I didn't mean\n"
+# 611 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "to get carried away.\p"
+# 612 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "I kept watching Vulpix\n"
+# 613 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "instead of worrying about\l"
+# 614 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "every command.\p"
+# 615 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "That felt different.$"
+# 616 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 617 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieLost3:
+# 618 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Thank you for taking\n"
+# 619 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "us seriously.\p"
+# 620 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Let's get your Pokémon\n"
+# 621 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "feeling better.$"
+# 622 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 623 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieDraw:
+# 624 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: That was close for\n"
+# 625 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "both of us.\p"
+# 626 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Let's take a moment to look\n"
+# 627 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "after everyone.$"
+# 628 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 629 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieForfeit:
+# 630 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Of course. We can\n"
+# 631 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "stop here.\p"
+# 632 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Let's look after your\n"
+# 633 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Pokémon.$"
+# 634 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 635 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieGiveBottle:
+# 636 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Here, the\n"
+# 637 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "SquirtBottle, just as we\l"
+# 638 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "agreed.\p"
+# 639 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Try a little water first.\n"
+# 640 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Whatever that tree is,\l"
+# 641 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "there's no need to frighten\l"
+# 642 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "it.$"
+# 643 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 644 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieGiveItemFailed:
+# 645 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: It looks like there\n"
+# 646 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "still isn't room. Let's try\l"
+# 647 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "again later.$"
+# 648 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 649 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LillieThanksFlorist:
+# 650 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: Thank you for your\n"
+# 651 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "help.\p"
+# 652 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "And for letting us borrow a\n"
+# 653 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "little room!$"
+# 654 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 655 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_FloristDontBattleHere:
+# 656 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Florist: Just don't make a\n"
+# 657 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "habit of battling beside my\l"
+# 658 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "flowers!$"
+# 659 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+
+# 660 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+GoldenrodCity_FlowerShop_Text_LilliePartingWords:
+# 661 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Lillie: I'd better find\n"
+# 662 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Mother.\p"
+# 663 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "Tell me what happened when\n"
+# 664 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+.string "we meet again, won't you?$"
 
 FlowerShopMulchVendor::
-# 256 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 668 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	lock
-# 257 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 669 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	faceplayer
-# 258 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 670 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	msgbox FlowerShopMulchVendor_Text_0
-# 259 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 671 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	goto_if_set FLAG_BADGE06_GET, FlowerShopMulchVendor_2
-# 263 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 675 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	pokemart FlowerShopMulches
-# 264 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 676 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	msgbox FlowerShopMulchVendor_Text_2
 FlowerShopMulchVendor_1:
-# 268 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 680 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	release
 	end
 
 FlowerShopMulchVendor_2:
-# 260 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 672 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	pokemart FlowerShopMulchesSixBadges
-# 261 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 673 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	msgbox FlowerShopMulchVendor_Text_1
 	goto FlowerShopMulchVendor_1
 
 
 	.align 2
-# 272 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 684 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 FlowerShopMulches:
-# 273 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 685 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_GRASSY_SEED
-# 274 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 686 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_LUMINOUS_MOSS
-# 275 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 687 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_GROWTH_MULCH
-# 276 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 688 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_DAMP_MULCH
-# 277 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 689 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_STABLE_MULCH
-# 278 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 690 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_GOOEY_MULCH
 	.2byte ITEM_NONE
 
 	.align 2
-# 281 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 693 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 FlowerShopMulchesSixBadges:
-# 282 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 694 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_CHILAN_BERRY
-# 283 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 695 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_OCCA_BERRY
-# 284 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 696 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_PASSHO_BERRY
-# 285 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 697 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_WACAN_BERRY
-# 286 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 698 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_RINDO_BERRY
-# 287 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 699 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_YACHE_BERRY
-# 288 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 700 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_CHOPLE_BERRY
-# 289 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 701 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_KEBIA_BERRY
-# 290 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 702 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_SHUCA_BERRY
-# 291 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 703 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_COBA_BERRY
-# 292 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 704 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_PAYAPA_BERRY
-# 293 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 705 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_TANGA_BERRY
-# 294 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 706 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_CHARTI_BERRY
-# 295 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 707 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_KASIB_BERRY
-# 296 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 708 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_HABAN_BERRY
-# 297 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 709 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_COLBUR_BERRY
-# 298 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 710 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_BABIRI_BERRY
-# 299 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 711 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_ROSELI_BERRY
-# 300 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 712 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_GRASSY_SEED
-# 301 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 713 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_LUMINOUS_MOSS
-# 302 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 714 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_GROWTH_MULCH
-# 303 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 715 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_DAMP_MULCH
-# 304 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 716 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_STABLE_MULCH
-# 305 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 717 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.2byte ITEM_GOOEY_MULCH
 	.2byte ITEM_NONE
 
 UniversityFlorist::
-# 309 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 721 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	lock
-# 310 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 722 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	faceplayer
-# 311 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 723 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	msgbox UniversityFlorist_Text_0
-# 315 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 727 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	checkspecies SPECIES_SHAYMIN
-# 316 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 728 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq UniversityFlorist_2
 UniversityFlorist_1:
-# 319 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 731 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	release
 	end
 
 UniversityFlorist_2:
-# 317 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 729 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	goto GiveGracidea
 	goto UniversityFlorist_1
 
 
 GiveGracidea::
-# 324 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 736 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	goto_if_set FLAG_GOT_GRACIDEA, GiveGracidea_2
-# 330 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 742 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	playse SE_PIN
-# 331 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 743 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	applymovement 5, Common_Movement_ExclamationMark
-# 332 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 744 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	waitse
-# 333 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 745 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	waitmovement 0
-# 334 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 746 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	msgbox GiveGracidea_Text_1
-# 343 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 755 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	giveitem ITEM_GRACIDEA
-# 344 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 756 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	msgbox GiveGracidea_Text_0
-# 346 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 758 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	setflag FLAG_GOT_GRACIDEA
-# 347 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 759 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	release
 	end
 
 GiveGracidea_2:
-# 325 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 737 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	msgbox GiveGracidea_Text_0
-# 327 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 739 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	release
 	end
 
 
 FlowerShopMulchVendor_Text_0:
-# 258 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 670 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.string "Welcome! Have a look at our inventory!$"
 
 FlowerShopMulchVendor_Text_1:
-# 261 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 673 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.string "Thank you! Come again!$"
 
 FlowerShopMulchVendor_Text_2:
-# 264 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 676 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.string "Thank you, we hope to stock some \n"
 	.string "rare berries in the near future!$"
 
 UniversityFlorist_Text_0:
-# 311 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 723 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.string "I'm studying to become a botanist!\p"
 	.string "I strive to learn all about rare\n"
 	.string "plants and flowers!$"
 
 GiveGracidea_Text_0:
-# 325 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 737 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.string "It is said that Shaymin can\n"
 	.string "change its form with that flower.$"
 
 GiveGracidea_Text_1:
-# 334 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
+# 746 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.string "Oh! That Pokémon you have!\p"
 	.string "It really is a Shaymin!\p"
 	.string "I have read about it, but I would never\n"

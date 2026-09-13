@@ -14001,3 +14001,56 @@ EVs: 40 HP / 40 Atk
 - Aerial Ace
 - Iron Head
 - Work Up
+
+=== TRAINER_LILLIE_GOLDENROD ===
+Name: Lillie
+Class: Lass
+Pic: Lillie
+Gender: Female
+Music: Hg Girl 1
+Double Battle: No
+AI: Smart Trainer
+
+Clefairy @ Eviolite
+Bold Nature
+Level: 28
+Ability: Magic Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 100 HP / 100 Def / 60 SpA
+- Reflect
+- Moonblast
+- Thunder Wave
+- Flamethrower
+
+Ribombee @ Sitrus Berry
+Timid Nature
+Level: 29
+Ability: Shield Dust
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 60 HP / 100 SpA / 100 Spe
+- Pollen Puff
+- Draining Kiss
+- Psychic
+- Stun Spore
+
+Comfey @ Sitrus Berry
+Modest Nature
+Level: 28
+Ability: Triage
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 100 HP / 60 Def / 100 SpA
+- Draining Kiss
+- Giga Drain
+- Calm Mind
+- Synthesis
+
+Vulpix Alola @ Eviolite
+Timid Nature
+Level: 29
+Ability: Snow Warning
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 100 HP / 60 SpA / 100 Spe
+- Aurora Veil
+- Ice Beam
+- Icy Wind
+- Encore

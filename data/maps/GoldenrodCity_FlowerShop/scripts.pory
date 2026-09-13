@@ -1,24 +1,34 @@
 raw `
 GoldenrodCity_FlowerShop_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, GoldenrodCity_FlowerShop_OnTransition
 	.byte 0
+
+@ Resets the Lillie cutscene's per-visit scratch state every time the player
+@ warps into this map, so stale values left over from unrelated scripts that
+@ also use VAR_TEMP_2/3/4 elsewhere can never block or misfire the trigger.
+GoldenrodCity_FlowerShop_OnTransition::
+	setvar VAR_TEMP_2, 0
+	setvar VAR_TEMP_3, 0
+	setvar VAR_TEMP_4, 0
+	end
 
 GoldenrodCity_FlowerShop_EventScript_Owner::
 	lock
 	faceplayer
 	goto_if_set FLAG_HIDE_SUDOWOODO, GoldenrodCity_FlowerShop_EventScript_Normal
 	goto_if_set FLAG_RECEIVED_SQUIRTBOTTLE, GoldenrodCity_FlowerShop_EventScript_GotSquirtBottle
-	goto_if_set FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_GiveSquirtBottle
+	goto_if_set FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_OwnerLillieWillHandleIt
 	msgbox GoldenrodCity_FlowerShop_Text_Owner1, MSGBOX_DEFAULT
 	closemessage
 	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
 	end
 
-GoldenrodCity_FlowerShop_EventScript_GiveSquirtBottle::
+@ The owner no longer hands over the SquirtBottle herself: Lillie delivers it
+@ after their battle (see GoldenrodCity_FlowerShop_EventScript_Lillie below).
+GoldenrodCity_FlowerShop_EventScript_OwnerLillieWillHandleIt::
 	lock
 	faceplayer
-	msgbox GoldenrodCity_FlowerShop_Text_Owner2, MSGBOX_DEFAULT
-	giveitem ITEM_SQUIRTBOTTLE
-	setflag FLAG_RECEIVED_SQUIRTBOTTLE
+	msgbox GoldenrodCity_FlowerShop_Text_OwnerLillieWillHandleIt, MSGBOX_DEFAULT
 	closemessage
 	goto GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck
 	end
@@ -207,20 +217,16 @@ GoldenrodCity_FlowerShop_Text_Owner1:
 .string "defeat gym leader Whitney, it\l"
 .string "might be okay.$"
 
-GoldenrodCity_FlowerShop_Text_Owner2:
+GoldenrodCity_FlowerShop_Text_OwnerLillieWillHandleIt:
 .string "Apparently, there is an odd tree\n"
 .string "on Route 36.\p"
 .string "They say it dances when you water\n"
 .string "it...\p"
 .string "Oh, that's a Plainbadge from\n"
 .string "The Goldenrod Gym!\p"
-.string "Did you defeat Whitney?!\p"
-.string "Well, then there's nothing to worry\n"
-.string "about, is there?\p"
-.string "I'll let you use this Squirtbottle\n"
-.string "for a while then.\l"
-.string "...\p"
-.string "Oh, never mind. Keep it!$"
+.string "I've already spoken with Lillie\n"
+.string "about the SquirtBottle.\p"
+.string "She'll take care of it with you.$"
 
 GoldenrodCity_FlowerShop_Text_Owner3:
 .string "The odd tree is on Route 36.\n"
@@ -250,6 +256,412 @@ GoldenrodCity_FlowerShop_Text_SeasonalPerfumeAfterBuy:
 
 GoldenrodCity_FlowerShop_Text_SeasonalPerfumeNotEnoughMoney:
     .string "You'll need more money than that.$"
+
+@ ---------------------------------------------------------------------------
+@ Lillie cutscene (post-Whitney SquirtBottle handoff)
+@
+@   collision-checked tile plan (see data/layouts/GoldenrodCity_FlowerShop):
+@     Owner/florist (2,4) - unchanged      Lillie home tile (4,4)
+@     approach stop (6,7)                  player trigger tile (6,8)
+@     door/warp (6,9)
+@   Path Lillie walks to approach the player, and later to leave, only
+@   crosses tiles confirmed open in the collision layer; sprite-level
+@   pathing (obstacles, follower behavior) still needs an emulator pass.
+@
+@ State (all VAR_TEMP_2/3/4 are reset to 0 by GoldenrodCity_FlowerShop_OnTransition
+@ every time this map is entered, so they only ever describe the current visit):
+@   VAR_TEMP_2 - 0 = approach not done yet, 1 = Lillie already walked up to the player
+@   VAR_TEMP_3 - battle outcome captured right after GetBattleOutcome
+@   VAR_TEMP_4 - 1 = training accepted (win, loss, draw or forfeit), delivery pending
+@ ---------------------------------------------------------------------------
+
+GoldenrodCity_FlowerShop_EventScript_Lillie::
+	goto_if_unset FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_LillieBeforeBadge
+	goto_if_eq VAR_TEMP_4, 1, GoldenrodCity_FlowerShop_EventScript_LillieRetryDelivery
+	goto_if_eq VAR_TEMP_2, 1, GoldenrodCity_FlowerShop_EventScript_LillieRetryTraining
+	goto GoldenrodCity_FlowerShop_EventScript_LillieTrigger
+	end
+
+GoldenrodCity_FlowerShop_EventScript_LillieBeforeBadge::
+	lock
+	faceplayer
+	msgbox GoldenrodCity_FlowerShop_Text_LillieBeforeBadge, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+@ Fired by the coord_event trigger at (6,8), and reused above if the player
+@ instead walks straight up to Lillie and talks to her before ever stepping
+@ on that tile. goto_if_unset/goto_if_set below make the trigger itself
+@ idempotent: stepping on (6,8) again after Whitney but before the item is
+@ received, or after it's already been delivered, is a harmless no-op.
+GoldenrodCity_FlowerShop_EventScript_LillieTrigger::
+	goto_if_set FLAG_RECEIVED_SQUIRTBOTTLE, GoldenrodCity_FlowerShop_EventScript_LillieTrigger_Skip
+	goto_if_unset FLAG_BADGE03_GET, GoldenrodCity_FlowerShop_EventScript_LillieTrigger_Skip
+	goto_if_eq VAR_TEMP_2, 1, GoldenrodCity_FlowerShop_EventScript_LillieTrigger_Skip
+	goto GoldenrodCity_FlowerShop_EventScript_LillieScene
+GoldenrodCity_FlowerShop_EventScript_LillieTrigger_Skip::
+	end
+
+GoldenrodCity_FlowerShop_EventScript_LillieScene::
+	lockall
+	turnobject LOCALID_GOLDENROD_FLOWER_SHOP_OWNER, DIR_EAST
+	turnobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, DIR_WEST
+	msgbox GoldenrodCity_FlowerShop_Text_LillieSceneFloristTree, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_LillieSuggestsPersuading, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_FloristOffersBottle, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- Lillie notices the player and hurries over ---
+	playse SE_PIN
+	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_HG_LYRA, TRUE
+	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, GoldenrodCity_FlowerShop_Movement_LillieApproach
+	waitmovement 0
+	setvar VAR_TEMP_2, 1
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+
+	@ --- Reencounter ---
+	msgbox GoldenrodCity_FlowerShop_Text_LillieRecognizesBadge, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_LillieIlexForest, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_LillieRibombeeWind, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- Gladion and the Type: Null ---
+	msgbox GoldenrodCity_FlowerShop_Text_LillieGladionViolet, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_LillieTypeNull, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- Why the SquirtBottle changes hands ---
+	msgbox GoldenrodCity_FlowerShop_Text_LillieHeadingNorth, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_LillieAsksFlorist, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_FloristAgrees, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_LillieChallenge, MSGBOX_DEFAULT
+	closemessage
+	goto GoldenrodCity_FlowerShop_EventScript_LillieCheckRoomForTraining
+
+@ Re-entered manually (VAR_TEMP_2 == 1, VAR_TEMP_4 == 0): the approach and
+@ the delivery permission already happened this visit, only retry the
+@ item-space check and the battle itself.
+GoldenrodCity_FlowerShop_EventScript_LillieRetryTraining::
+	lockall
+	turnobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, DIR_SOUTH
+	msgbox GoldenrodCity_FlowerShop_Text_LillieRetryChallenge, MSGBOX_DEFAULT
+	closemessage
+
+GoldenrodCity_FlowerShop_EventScript_LillieCheckRoomForTraining::
+	checkitemspace ITEM_SQUIRTBOTTLE, 1
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_LillieNoRoom
+
+	msgbox GoldenrodCity_FlowerShop_Text_LillieVulpixPracticing, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_LillieDontHoldBack, MSGBOX_DEFAULT
+	closemessage
+	call Common_EventScript_OutOfCenterPartyHeal
+
+	checkflag B_FLAG_NO_WHITEOUT
+	copyvar VAR_TEMP_5, VAR_RESULT
+	setflag B_FLAG_NO_WHITEOUT
+	setvar VAR_LAST_TALKED, LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE
+	removefieldmugshot
+	trainerbattle_no_intro TRAINER_LILLIE_GOLDENROD, GoldenrodCity_FlowerShop_Text_LillieDefeated
+	specialvar VAR_RESULT, GetBattleOutcome
+	copyvar VAR_TEMP_3, VAR_RESULT
+	goto_if_eq VAR_TEMP_5, TRUE, GoldenrodCity_FlowerShop_EventScript_LillieKeepWhiteoutOff
+	clearflag B_FLAG_NO_WHITEOUT
+GoldenrodCity_FlowerShop_EventScript_LillieKeepWhiteoutOff::
+	playbgm MUS_HG_LYRA, TRUE
+
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_WON, GoldenrodCity_FlowerShop_EventScript_LilliePlayerWon
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_LOST, GoldenrodCity_FlowerShop_EventScript_LilliePlayerLost
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_DREW, GoldenrodCity_FlowerShop_EventScript_LillieDraw
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_FORFEITED, GoldenrodCity_FlowerShop_EventScript_LillieForfeit
+	goto GoldenrodCity_FlowerShop_EventScript_LillieUnexpectedOutcome
+
+@ B_OUTCOME_WON: Lillie's own text (GoldenrodCity_FlowerShop_Text_LillieDefeated)
+@ already played automatically when her Pokémon fainted.
+GoldenrodCity_FlowerShop_EventScript_LilliePlayerWon::
+	msgbox GoldenrodCity_FlowerShop_Text_LillieWonFollowUp1, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_LillieWonFollowUp2, MSGBOX_DEFAULT
+	closemessage
+	goto GoldenrodCity_FlowerShop_EventScript_LillieDeliverBottle
+
+GoldenrodCity_FlowerShop_EventScript_LilliePlayerLost::
+	msgbox GoldenrodCity_FlowerShop_Text_LillieLost1, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_LillieLost2, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_LillieLost3, MSGBOX_DEFAULT
+	closemessage
+	goto GoldenrodCity_FlowerShop_EventScript_LillieDeliverBottle
+
+GoldenrodCity_FlowerShop_EventScript_LillieDraw::
+	msgbox GoldenrodCity_FlowerShop_Text_LillieDraw, MSGBOX_DEFAULT
+	closemessage
+	goto GoldenrodCity_FlowerShop_EventScript_LillieDeliverBottle
+
+GoldenrodCity_FlowerShop_EventScript_LillieForfeit::
+	msgbox GoldenrodCity_FlowerShop_Text_LillieForfeit, MSGBOX_DEFAULT
+	closemessage
+	goto GoldenrodCity_FlowerShop_EventScript_LillieDeliverBottle
+
+@ Unknown/link-battle-shaped outcome: heal, restore music and controls,
+@ but do not deliver the item or mark the training as concluded.
+GoldenrodCity_FlowerShop_EventScript_LillieUnexpectedOutcome::
+	call Common_EventScript_OutOfCenterPartyHeal
+	fadedefaultbgm
+	releaseall
+	end
+
+GoldenrodCity_FlowerShop_EventScript_LillieDeliverBottle::
+	setvar VAR_TEMP_4, 1
+	call Common_EventScript_OutOfCenterPartyHeal
+
+GoldenrodCity_FlowerShop_EventScript_LillieRetryDelivery::
+	lockall
+	msgbox GoldenrodCity_FlowerShop_Text_LillieGiveBottle, MSGBOX_DEFAULT
+	giveitem ITEM_SQUIRTBOTTLE
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_LillieGiveItemFailed
+	setflag FLAG_RECEIVED_SQUIRTBOTTLE
+
+	turnobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, DIR_WEST
+	msgbox GoldenrodCity_FlowerShop_Text_LillieThanksFlorist, MSGBOX_DEFAULT
+	msgbox GoldenrodCity_FlowerShop_Text_FloristDontBattleHere, MSGBOX_DEFAULT
+	turnobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, DIR_SOUTH
+	msgbox GoldenrodCity_FlowerShop_Text_LilliePartingWords, MSGBOX_DEFAULT
+	closemessage
+
+	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, GoldenrodCity_FlowerShop_Movement_LillieLeave
+	waitmovement 0
+	playse SE_EXIT
+	removeobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE
+	fadedefaultbgm
+	releaseall
+	end
+
+@ Should not happen: checkitemspace already confirmed room before the
+@ battle. If it fails anyway, VAR_TEMP_4 stays 1 so talking to Lillie
+@ again only retries this delivery step, without repeating the battle.
+GoldenrodCity_FlowerShop_EventScript_LillieGiveItemFailed::
+	msgbox GoldenrodCity_FlowerShop_Text_LillieGiveItemFailed, MSGBOX_DEFAULT
+	closemessage
+	fadedefaultbgm
+	releaseall
+	end
+
+GoldenrodCity_FlowerShop_EventScript_LillieNoRoom::
+	msgbox GoldenrodCity_FlowerShop_Text_LillieNoRoom, MSGBOX_DEFAULT
+	closemessage
+	fadedefaultbgm
+	releaseall
+	end
+
+@ Lillie: (4,4) -> (4,5) -> (4,6) -> (5,6) -> (5,7) -> (6,7), facing the
+@ player at (6,8). Every tile on this path is open in the collision layer.
+GoldenrodCity_FlowerShop_Movement_LillieApproach:
+	walk_down
+	walk_down
+	walk_right
+	walk_down
+	walk_right
+	face_down
+	step_end
+
+@ Lillie: (6,7) -> (6,8) -> door (6,9).
+GoldenrodCity_FlowerShop_Movement_LillieLeave:
+	walk_down
+	walk_down
+	walk_in_place_down
+	step_end
+
+GoldenrodCity_FlowerShop_Text_LillieBeforeBadge:
+.string "Lillie: I'm just talking with\n"
+.string "the shop owner about that odd\l"
+.string "tree on Route 36.$"
+
+GoldenrodCity_FlowerShop_Text_LillieSceneFloristTree:
+.string "Florist: It stops people on\n"
+.string "their way to Ecruteak.\p"
+.string "A little water makes it\n"
+.string "wriggle, but nobody wants to\l"
+.string "get too close.$"
+
+GoldenrodCity_FlowerShop_Text_LillieSuggestsPersuading:
+.string "Lillie: Then we shouldn't pull\n"
+.string "at its branches.\p"
+.string "If it can move, perhaps we\n"
+.string "can persuade it to move on\l"
+.string "its own.$"
+
+GoldenrodCity_FlowerShop_Text_FloristOffersBottle:
+.string "Florist: You can take this\n"
+.string "SquirtBottle.\p"
+.string "Just be careful, dear.$"
+
+GoldenrodCity_FlowerShop_Text_LillieRecognizesBadge:
+.string "Lillie: {PLAYER}! You've been\n"
+.string "to Whitney's Gym, haven't\l"
+.string "you?\p"
+.string "I recognized the Badge.$"
+
+GoldenrodCity_FlowerShop_Text_LillieIlexForest:
+.string "Lillie: I thought traveling\n"
+.string "would mean getting better at\l"
+.string "following a map.\p"
+.string "Then I spent half a morning\n"
+.string "in Ilex Forest watching which\l"
+.string "flowers Ribombee visited.$"
+
+GoldenrodCity_FlowerShop_Text_LillieRibombeeWind:
+.string "Lillie: She kept returning to\n"
+.string "the sheltered flowers whenever\l"
+.string "the wind picked up.\p"
+.string "I was watching the path.\n"
+.string "She was watching everything\l"
+.string "around us.$"
+
+GoldenrodCity_FlowerShop_Text_LillieGladionViolet:
+.string "Lillie: Gladion told me he\n"
+.string "met you in Violet.\p"
+.string "He said, 'They didn't\n"
+.string "hesitate.' From him, that's\l"
+.string "practically a speech.$"
+
+GoldenrodCity_FlowerShop_Text_LillieTypeNull:
+.string "Lillie: And you met the\n"
+.string "Type: Null traveling with\l"
+.string "him.\p"
+.string "He pretends not to fuss over\n"
+.string "it, but he checks on it\l"
+.string "whenever he thinks nobody\l"
+.string "is looking.$"
+
+GoldenrodCity_FlowerShop_Text_LillieHeadingNorth:
+.string "Lillie: Are you heading\n"
+.string "north?\p"
+.string "I promised Mother I'd meet\n"
+.string "her before we leave\l"
+.string "Goldenrod.$"
+
+GoldenrodCity_FlowerShop_Text_LillieAsksFlorist:
+.string "Lillie: Would it be all right\n"
+.string "if {PLAYER} took the bottle?\p"
+.string "We've traveled some of the\n"
+.string "same roads.$"
+
+GoldenrodCity_FlowerShop_Text_FloristAgrees:
+.string "Florist: Of course. You may\n"
+.string "keep it.\p"
+.string "I'd just like that path\n"
+.string "clear again!$"
+
+GoldenrodCity_FlowerShop_Text_LillieChallenge:
+.string "Lillie: Then it's yours.\p"
+.string "But before you go... could\n"
+.string "we have another battle?\p"
+.string "I want to see how much\n"
+.string "we've learned.$"
+
+GoldenrodCity_FlowerShop_Text_LillieRetryChallenge:
+.string "Lillie: Shall we try again?$"
+
+GoldenrodCity_FlowerShop_Text_LillieNoRoom:
+.string "Lillie: Your Bag looks full.\n"
+.string "Make room for the bottle\l"
+.string "first. I'll be here.$"
+
+GoldenrodCity_FlowerShop_Text_LillieVulpixPracticing:
+.string "Lillie: Vulpix and I have\n"
+.string "been practicing.\p"
+.string "She's started looking back\n"
+.string "at me when she sees an\l"
+.string "opening.\p"
+.string "I'm learning not to miss it.$"
+
+GoldenrodCity_FlowerShop_Text_LillieDontHoldBack:
+.string "Lillie: Let's take care of\n"
+.string "your Pokémon first.\p"
+.string "And please don't hold back.\n"
+.string "I won't, either.$"
+
+GoldenrodCity_FlowerShop_Text_LillieDefeated:
+.string "We couldn't quite catch\n"
+.string "up... but we kept trying!$"
+
+GoldenrodCity_FlowerShop_Text_LillieWonFollowUp1:
+.string "Lillie: I spent so long\n"
+.string "deciding what to do that I\l"
+.string "missed some of Vulpix's\l"
+.string "signals.\p"
+.string "I want to get better at\n"
+.string "answering her.$"
+
+GoldenrodCity_FlowerShop_Text_LillieWonFollowUp2:
+.string "Lillie: I want to try that\n"
+.string "again someday.\p"
+.string "After I've worked out a\n"
+.string "better answer!$"
+
+GoldenrodCity_FlowerShop_Text_LillieLost1:
+.string "Lillie: We did it...? We\n"
+.string "did!\p"
+.string "Oh, Vulpix, you were\n"
+.string "wonderful!$"
+
+GoldenrodCity_FlowerShop_Text_LillieLost2:
+.string "Lillie: Sorry! I didn't mean\n"
+.string "to get carried away.\p"
+.string "I kept watching Vulpix\n"
+.string "instead of worrying about\l"
+.string "every command.\p"
+.string "That felt different.$"
+
+GoldenrodCity_FlowerShop_Text_LillieLost3:
+.string "Lillie: Thank you for taking\n"
+.string "us seriously.\p"
+.string "Let's get your Pokémon\n"
+.string "feeling better.$"
+
+GoldenrodCity_FlowerShop_Text_LillieDraw:
+.string "Lillie: That was close for\n"
+.string "both of us.\p"
+.string "Let's take a moment to look\n"
+.string "after everyone.$"
+
+GoldenrodCity_FlowerShop_Text_LillieForfeit:
+.string "Lillie: Of course. We can\n"
+.string "stop here.\p"
+.string "Let's look after your\n"
+.string "Pokémon.$"
+
+GoldenrodCity_FlowerShop_Text_LillieGiveBottle:
+.string "Lillie: Here, the\n"
+.string "SquirtBottle, just as we\l"
+.string "agreed.\p"
+.string "Try a little water first.\n"
+.string "Whatever that tree is,\l"
+.string "there's no need to frighten\l"
+.string "it.$"
+
+GoldenrodCity_FlowerShop_Text_LillieGiveItemFailed:
+.string "Lillie: It looks like there\n"
+.string "still isn't room. Let's try\l"
+.string "again later.$"
+
+GoldenrodCity_FlowerShop_Text_LillieThanksFlorist:
+.string "Lillie: Thank you for your\n"
+.string "help.\p"
+.string "And for letting us borrow a\n"
+.string "little room!$"
+
+GoldenrodCity_FlowerShop_Text_FloristDontBattleHere:
+.string "Florist: Just don't make a\n"
+.string "habit of battling beside my\l"
+.string "flowers!$"
+
+GoldenrodCity_FlowerShop_Text_LilliePartingWords:
+.string "Lillie: I'd better find\n"
+.string "Mother.\p"
+.string "Tell me what happened when\n"
+.string "we meet again, won't you?$"
 `
 
 script FlowerShopMulchVendor {
