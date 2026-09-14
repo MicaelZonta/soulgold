@@ -947,7 +947,7 @@
 #define TRAINER_KUKUI                     966
 #define TRAINER_GLADION                   967
 #define TRAINER_LILLIE_GOLDENROD          968
-#define TRAINER_UNUSED_105                969
+#define TRAINER_GLADION_CIANWOOD          969 // Cianwood rematch (see docs/GLADION_CIANWOOD_REFINAMENTO_COMPLETO_V3.md), reclaimed from TRAINER_UNUSED_105
 #define TRAINER_UNUSED_106                970
 #define TRAINER_UNUSED_107                971
 #define TRAINER_UNUSED_108                972

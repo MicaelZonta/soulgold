@@ -14002,6 +14002,59 @@ EVs: 40 HP / 40 Atk
 - Iron Head
 - Work Up
 
+=== TRAINER_GLADION_CIANWOOD ===
+Name: Gladion
+Class: Rival
+Pic: Gladion
+Gender: Male
+Music: Silver
+Double Battle: No
+AI: Smart Trainer
+
+Krookodile @ Sitrus Berry
+Jolly Nature
+Level: 43
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 100 HP / 100 Atk / 100 Spe
+- Earthquake
+- Crunch
+- Rock Slide
+- Taunt
+
+Vikavolt @ Sitrus Berry
+Modest Nature
+Level: 43
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 100 HP / 100 SpA / 100 Spe
+- Thunderbolt
+- Bug Buzz
+- Energy Ball
+- Volt Switch
+
+Lycanroc Midday @ Focus Sash
+Jolly Nature
+Level: 44
+Ability: Sand Rush
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 60 HP / 100 Atk / 100 Spe
+- Stone Edge
+- Accelerock
+- Drill Run
+- Swords Dance
+
+Type: Null @ Eviolite
+Adamant Nature
+Level: 44
+Ability: Battle Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 100 HP / 100 Atk / 60 SpD
+- Crush Claw
+- X-Scissor
+- Shadow Claw
+- Swords Dance
+
 === TRAINER_LILLIE_GOLDENROD ===
 Name: Lillie
 Class: Lass
