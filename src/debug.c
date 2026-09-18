@@ -1233,7 +1233,7 @@ static u32 Debug_CheckToggleFlags(u8 id)
         break;
     #endif
     case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_ENCOUNTER:
-        result = (REPEL_STEP_COUNT != 0);
+        result = FlagGet(OW_FLAG_NO_ENCOUNTER);
         break;
     #if OW_FLAG_NO_TRAINER_SEE != 0
     case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_TRAINER_SEE:
@@ -2769,16 +2769,11 @@ static void DebugAction_FlagsVars_CollisionOnOff(u8 taskId)
 
 static void DebugAction_FlagsVars_EncounterOnOff(u8 taskId)
 {
-    if (REPEL_STEP_COUNT != 0)
-    {
+    if (FlagGet(OW_FLAG_NO_ENCOUNTER))
         PlaySE(SE_PC_OFF);
-        VarSet(VAR_REPEL_STEP_COUNT, 0);
-    }
     else
-    {
         PlaySE(SE_PC_LOGIN);
-        VarSet(VAR_REPEL_STEP_COUNT, 9999);
-    }
+    FlagToggle(OW_FLAG_NO_ENCOUNTER);
 }
 
 static void DebugAction_FlagsVars_TrainerSeeOnOff(u8 taskId)

@@ -1,14 +1,14 @@
 # SoulGold — Rift Missions
 
-**Design consolidado v8 — revisão integral de continuidade, campanha e Rift Missions**
+**Design consolidado v12 — parceiros fora da Poké Ball, Dragon’s Den refinado e arco pré-Liga consolidado**
 
-Revisão: 13 de setembro de 2026. Substitui o V7; preserva o restante do arco, as nove missões e o loop pós-Necrozma.
+Revisão: 16 de setembro de 2026. Substitui o V12; preserva a política de duelos narrativos, o encontro de Gladion antes da Victory Road, o arco pós-game e o loop pós-Necrozma, e refaz integralmente o Dragon’s Den para que Lillie participe do mesmo teste do Elder e reaja às escolhas do jogador.
 
 ## 1. Objetivo e autoridade deste documento
 
 Rift Missions é uma história adicional de SoulGold que apresenta personagens de Alola durante a campanha de Johto, desenvolve uma investigação de Ultra Beasts após a Elite Four e termina em um sistema permanente de expedições com batalhas e capturas de lendários.
 
-Este documento consolida as decisões mais recentes da conversa. É uma especificação de design com status informado pelo autor: Lillie em Goldenrod já foi implementada, conforme confirmação nesta conversa. Esta revisão incorpora o refinamento aprovado dessa cena, sem alegar nova inspeção de código, build ou teste de cada detalhe. Gladion em Cianwood está aprovado narrativamente, mas depende da auditoria da entrega de Fly e de implementação. O repositório público pode não refletir as alterações locais do projeto.
+Este documento consolida as decisões mais recentes da conversa. Gladion em Violet, Lillie em Goldenrod e Gladion em Cianwood já possuíam implementação confirmada pelo autor, mas o V12 mantém o contrato de resultado de algumas dessas cenas; portanto, comportamento antigo incompatível deve ser refatorado sem reconstruir desnecessariamente equipes, mapas ou parâmetros já integrados. Lillie no Dragon’s Den e Gladion antes da Victory Road estão fechados em design, mas não são declarados implementados ou testados nesta revisão. O repositório público pode não refletir as alterações locais do projeto.
 
 As seções de conteúdo estabelecido são a referência para a execução. Recomendações técnicas e pendências são identificadas separadamente; não devem ser confundidas com novas decisões aprovadas. As fontes dos jogos contextualizam a inspiração; o estado vigente de cada personagem neste documento governa os diálogos do hack.
 
@@ -16,36 +16,74 @@ As seções de conteúdo estabelecido são a referência para a execução. Reco
 
 | Conteúdo | Status nesta revisão |
 | --- | --- |
-| Gladion em Violet | Implementado conforme informação do autor; preservar a batalha e a entrega já existentes. |
-| Lillie em Goldenrod | Implementada conforme informação do autor; refinamento aprovado consolidado na seção 4.6. |
-| Gladion em Cianwood | Roteiro aprovado, auditoria e implementação pendentes; equipe ainda não fechada. |
+| Lillie inicial / Route 30 | Cena existente; V12 mantém a derrota para continuidade sem blackout. Refatoração de resultado pendente. |
+| Gladion em Violet | Implementado anteriormente; V12 passa a aceitar vitória **ou derrota** antes da entrega do Mystery Egg. Refatoração de resultado pendente. |
+| Lillie em Goldenrod | Implementada e já compatível com a política V12 de vitória/derrota sem blackout. |
+| Gladion em Cianwood | Implementado anteriormente; V12 mantém removida a recusa da revanche. A batalha passa a ser obrigatória e vitória/derrota convergem para Fly. Refatoração de fluxo pendente. |
+| Lillie no Dragon’s Den | Design V12: Lillie acompanha as cinco perguntas vanilla com Alolan Ninetales visível fora da Poké Ball, reage a cada escolha do jogador em branches locais e dá sua própria resposta; a batalha final conclui em vitória ou derrota sem blackout. Implementação e validação pendentes. |
+| Gladion antes da Victory Road | Novo encontro fechado em design: batalha obrigatória, primeira apresentação de Silvally, vitória ou derrota continuam sem blackout. Implementação pendente. |
+| Incidente de Blackthorn | Pós-game; primeira batalha de ameaça da questline e início da política normal de derrota/blackout/retry. |
 | Limpeza de treinadores | Informada como concluída pelo autor; este documento não certifica IDs ou contagens livres. |
 | Restante das Rift Missions | Design estabelecido ou pendência explicitamente indicada; não presumir implementação. |
 
-As decisões mais recentes prevalecem sobre trechos antigos: dificuldade única com base no antigo Hard; Vulpix Alola mantida em Goldenrod; vitória ou derrota concluem o treino de Lillie; Fly também pode ser recebido após recusar a revanche de Gladion. “Remover Hard”, nas discussões anteriores de limpeza, não autoriza eliminar a única equipe mantida ou restaurar Normal.
+As decisões mais recentes prevalecem sobre trechos antigos. Nos **duelos narrativos com treinadores**, a luta pode ser obrigatória, mas a vitória não é requisito de progresso: vitória ou derrota recebem falas próprias e convergem sem blackout. Menus de recusa deixam de ser usados nos encontros de campanha aqui definidos. A primeira falha tratada como derrota real de uma ameaça ocorre contra Ultra Beasts em Blackthorn; encontros de ameaça posteriores seguem sua própria recuperação. A política de dificuldade única baseada no antigo Hard permanece vigente.
 
 O documento é autossuficiente para o design. Não exigir leitura dos refinamentos antigos para compreender as cenas aqui consolidadas. As referências externas são herdadas do V7 e do refinamento de Lillie; não representam nova pesquisa nesta revisão.
+
+### Política V12 — duelo narrativo não é gate de vitória
+
+Os encontros de Lillie, Gladion e outros personagens usados para desenvolvimento narrativo são conteúdo bônus integrado à jornada. Neles, **a batalha precisa acontecer quando o roteiro a prevê, mas o jogador não precisa vencer para a história continuar**.
+
+Contrato padrão para duelo narrativo:
+
+1. Curar quando a cena exigir igualdade de condições.
+2. Ativar o mecanismo de batalha sem blackout/whiteout.
+3. Executar a batalha obrigatória; não oferecer opção de recusa nos encontros definidos pelo V12.
+4. Capturar o resultado imediatamente ao retornar da batalha, antes de qualquer cura ou comando que possa sobrescrever variáveis especiais.
+5. Usar diálogo próprio para vitória e derrota. Nunca reescrever uma derrota como vitória do jogador.
+6. Curar novamente quando apropriado.
+7. Fazer os branches convergirem para a mesma entrega, despedida ou continuação da campanha.
+8. Marcar progresso pelo estado real do evento/recompensa, não pela flag de `trainer defeated`, quando a derrota também conclui a cena.
+
+Essa política se aplica às lutas de personagem da campanha: Lillie na abertura, Gladion em Violet, Lillie em Goldenrod, Gladion em Cianwood, Lillie no Dragon’s Den e Gladion antes da Victory Road. Também se aplica a confrontos de personagem posteriores quando o objetivo narrativo é a conversa/decisão, como a batalha com Lusamine no clímax, salvo decisão posterior explícita.
+
+**Batalhas de ameaça são diferentes.** A partir do incidente pós-game de Blackthorn, Ultra Beasts, Ultra Necrozma e bosses capturáveis não são simples duelos de relacionamento. Derrota pode usar blackout/retorno seguro e exigir nova tentativa, porque a ameaça continua sem resolução. Isso não autoriza perda permanente de Pokémon únicos ou softlock. O loop repetível e eventuais gauntlets de treinadores possuem regras próprias e não herdam automaticamente a política de duelos narrativos apenas por serem batalhas contra treinadores.
+
+Empate, desistência ou resultados especiais, se o engine os expuser, precisam de tratamento explícito. Não convertê-los silenciosamente em vitória; também não provocar blackout por acidente em uma cena marcada como duelo narrativo.
 
 ### Direção narrativa: uma história que acontece em paralelo
 
 O arco de Alola se desenvolve ao mesmo tempo que a jornada pelos ginásios de Johto. Lillie está aprendendo a ser treinadora, Gladion viaja e desafia o jogador, Kukui pesquisa formas regionais e Looker e Anabel investigam acontecimentos que ainda não são plenamente compreendidos. Eles têm motivos próprios para estar na região e reaparecem em momentos naturais da viagem.
 
-A campanha de Johto mantém seu próprio conflito e sua conclusão. Os encontros recorrentes, o crescimento do Cosmog e o incidente de Blackthorn constroem gradualmente uma segunda história, cuja investigação principal e resolução ficam para depois da Liga. Não atribuir todos os acontecimentos de Johto a Necrozma nem transformar cada encontro em uma explicação sobre portais.
+A campanha de Johto mantém seu próprio conflito e sua conclusão. Os encontros recorrentes e o crescimento do Cosmog constroem o arco dos personagens durante a jornada, mas a primeira ruptura explícita das Rift Missions fica para depois da Liga. O incidente de Blackthorn funciona como prólogo da investigação pós-game, não como evento pré-E4. Não atribuir todos os acontecimentos de Johto a Necrozma nem transformar cada encontro em uma explicação sobre portais.
 
 O efeito desejado é um mundo maior e em movimento: o jogador cruza caminhos com outras pessoas, acompanha suas mudanças e, no final, reúne aliados que conheceu ao longo da jornada. Cosmog conecta o início íntimo dessa relação à escala do desfecho no altar.
 
+### Regra visual de parceiros recorrentes
+
+Nos encontros de campanha e nas cenas narrativas em que estão presentes, os parceiros principais de Gladion e Lillie devem aparecer **fora da Poké Ball**, acompanhando seus Trainers no mapa sempre que a cena permitir sem quebrar colisão, follower, warps ou limites de objetos.
+
+- **Gladion:** Type: Null permanece fora da Poké Ball em Violet e Cianwood. Depois da evolução, **Silvally continua fora da Poké Ball em todas as aparições narrativas posteriores de Gladion**, incluindo Victory Road, Blackthorn, suas Rift Missions, reunião e clímax quando ele estiver presente.
+- **Lillie:** Alolan Vulpix permanece fora da Poké Ball em seus encontros iniciais e em Goldenrod. No Dragon’s Den, ela já aparece como **Alolan Ninetales**. A partir daí, **Ninetales continua fora da Poké Ball em todas as aparições narrativas posteriores de Lillie**, incluindo Pheromosa, Celesteela, Guzzlord, reunião e clímax quando ela estiver presente.
+- Essa regra é visual e narrativa; não exige sistema de follower genérico nem altera quem inicia cada batalha.
+- Quando a cena começar, o parceiro deve estar posicionado de forma coerente ao lado do Trainer. Quando a cena terminar, ambos devem sair ou ser ocultados de forma coordenada quando aplicável.
+- Se um mapa específico não comportar o objeto extra sem conflito técnico real, a implementação deve registrar a limitação e preservar a intenção por outro meio de encenação, sem simplesmente remover o parceiro por conveniência.
+
+
 ## 2. Estrutura geral
 
-1. Apresentar Lillie, Gladion e Kukui durante a campanha normal; receber o Mystery Egg de Cosmog em Violet, o SquirtBottle com Lillie em Goldenrod e Fly com Gladion em Cianwood.
-2. Mostrar uma ruptura em Blackthorn, com Buzzwole e Pheromosa em batalha dupla.
-3. Após a E4, iniciar a investigação no escritório de Looker e Anabel em Olivine.
-4. Concluir nove missões consecutivas de Ultra Beasts, retornando ao escritório após cada uma.
-5. Após as nove missões, apresentar Solgaleo **ou** Lunala a Looker para liberar a reunião e o navio.
-6. Viajar ao altar com o parceiro evoluído do Mystery Egg para abrir a passagem até Necrozma.
-7. Encenar o clímax conhecido como Eclipse no mesmo altar, resolver o conflito com Lusamine e enfrentar Ultra Necrozma.
-8. Encerrar a história com uma despedida e manter Looker e Anabel no altar para expedições repetíveis.
+1. Apresentar Lillie, Gladion e Kukui durante a campanha normal; receber o Mystery Egg de Cosmog em Violet, o SquirtBottle com Lillie em Goldenrod e Fly com Gladion em Cianwood; concluir o arco pré-Liga de Lillie no Dragon’s Den após Clair.
+2. Antes de entrar na Victory Road, reencontrar Gladion. Ele apresenta Silvally e ocorre uma batalha obrigatória que avança tanto em vitória quanto em derrota, sem blackout.
+3. Concluir Victory Road e a Liga normalmente, sem ruptura de Ultra Beast obrigatória antes da E4.
+4. No pós-game, mostrar a primeira ruptura explícita em Blackthorn, com Buzzwole e Pheromosa em batalha dupla ao lado de Gladion e com participação de Looker. A partir daqui derrotas contra ameaças podem usar blackout/retry.
+5. Ao final do incidente, Looker encaminha o jogador ao escritório de Olivine; essa visita inicia formalmente a sequência das nove Rift Missions.
+6. Concluir nove missões consecutivas de Ultra Beasts, retornando ao escritório após cada uma.
+7. Após as nove missões, apresentar Solgaleo **ou** Lunala a Looker para liberar a reunião e o navio.
+8. Viajar ao altar com o parceiro evoluído do Mystery Egg para abrir a passagem até Necrozma.
+9. Encenar o clímax conhecido como Eclipse no mesmo altar, resolver o conflito com Lusamine e enfrentar Ultra Necrozma.
+10. Encerrar a história com uma despedida e manter Looker e Anabel no altar para expedições repetíveis.
 
-O conteúdo de captura de Ultra Beasts desta história fica no pós-E4. A batalha de Blackthorn é a única aparição antecipada prevista nesta questline. Isso não instrui remover fontes de Pokémon já existentes em outros sistemas do jogo.
+Todo o conteúdo explícito de Ultra Beasts desta questline fica no pós-E4, incluindo Blackthorn. O incidente é um prólogo especial da investigação e não conta entre as nove missões consecutivas. Isso não instrui remover fontes de Pokémon já existentes em outros sistemas do jogo.
 
 ## 3. Elenco e arcos
 
@@ -73,17 +111,19 @@ O encerramento do arco deve mostrar responsabilidade, cooperação e continuidad
 
 ### Lillie
 
-Viaja com a mãe e está se encontrando como treinadora. Sua progressão passa pela batalha inicial com Oak e Kukui, pela revanche e entrega do SquirtBottle em Goldenrod e pelo teste do Dragon’s Den. Atua nas missões de Pheromosa, Celesteela e Guzzlord.
+Viaja com a mãe e está se encontrando como treinadora. Sua progressão pré-Liga possui três estágios claros: na Route 30 começa a batalhar; em Goldenrod aprende a observar sua parceira e adaptar um plano; no Dragon’s Den participa do mesmo teste do jogador, escuta respostas diferentes das suas e demonstra que consegue considerar outra perspectiva sem abandonar o próprio julgamento. **Vulpix acompanha Lillie fora da Poké Ball nos encontros anteriores; no Dragon’s Den, a parceira já evoluiu para Alolan Ninetales e continua visível ao lado dela. Ninetales permanece fora da Poké Ball também nas aparições pós-game de Lillie.** Atua depois nas missões de Pheromosa, Celesteela e Guzzlord.
+
+No Dragon’s Den, o jogador não escolhe as respostas de Lillie. O Elder faz ao protagonista as cinco perguntas do teste vanilla; depois de cada escolha, Lillie reage ao que ouviu e formula sua própria posição. Ela pode concordar, discordar ou aceitar parte do raciocínio sem copiar o jogador. A cena não deve transformar sua independência em hostilidade à família: seu crescimento é demonstrado justamente pela capacidade de ouvir sem entregar o próprio julgamento.
 
 Ela não entrega Cosmog nem Cosmoem. O jogador recebe Cosmog pelo Mystery Egg em Violet e o desenvolve ao longo da jornada.
 
 ### Gladion
 
-Age como um rival recorrente ao longo da história, alternando desafios e cooperação. Sua primeira batalha ocorre no Pokémon Center de Violet, onde substitui o assistente de Elm e entrega o Mystery Egg após a vitória do jogador. Reaparece em Cianwood após Chuck, oferece revanche opcional e assume a entrega de Fly. Oferece aquecimento opcional na Liga, luta ao lado do jogador em Blackthorn e participa das missões de Buzzwole, Xurkitree e Guzzlord. O antigo encontro ligado à Whitney foi removido.
+Age como um rival recorrente ao longo da história, alternando desafios e cooperação. Sua primeira batalha ocorre no Pokémon Center de Violet, onde substitui o assistente de Elm e entrega o Mystery Egg após a batalha, independentemente de vitória ou derrota do jogador. Reaparece em Cianwood após Chuck, enfrenta o jogador novamente e assume a entrega de Fly; a revanche deixa de ser opcional no V12. Antes da Victory Road, apresenta Silvally e trava a última batalha de rival da campanha, também com continuidade em vitória ou derrota. No pós-game luta ao lado do jogador em Blackthorn e participa das missões de Buzzwole, Xurkitree e Guzzlord. O antigo encontro ligado à Whitney e o antigo aquecimento opcional na entrada da Liga foram removidos.
 
 #### Novo parceiro de Gladion
 
-Gladion encontrou outro Type: Null abandonado em Alola, acolheu-o e o trouxe para sua jornada por Johto. Ele está treinando esse novo parceiro e construindo uma relação de confiança. Esta origem é uma adição autoral do hack à continuidade híbrida SM/USUM.
+Gladion encontrou outro Type: Null abandonado em Alola, acolheu-o e o trouxe para sua jornada por Johto. Ele está treinando esse novo parceiro e construindo uma relação de confiança. **Type: Null deve acompanhar Gladion fora da Poké Ball em seus encontros de Violet e Cianwood; após evoluir, Silvally assume a mesma presença visual em todas as aparições seguintes de Gladion.** Esta origem é uma adição autoral do hack à continuidade híbrida SM/USUM.
 
 O Silvally de sua jornada anterior continua existindo na história. O Type: Null atual é outro indivíduo: não houve regressão do parceiro original. Não é necessário explicar nesta trama onde está cada integrante de sua equipe anterior. O responsável pelo abandono e a procedência específica deste novo Type: Null ficam em aberto, sem criar outra investigação obrigatória.
 
@@ -91,21 +131,20 @@ Gladion continua sendo um treinador experiente. Seu objetivo nesta viagem é dar
 
 | Etapa | Parceiro | Desenvolvimento narrativo |
 | --- | --- | --- |
-| Violet, antes da entrega do ovo | Type: Null | Está se acostumando a Gladion e a batalhar contra outros treinadores. |
-| Cianwood, entrega de Fly após Chuck | Type: Null | Explora a praia, reconhece o jogador e toma a iniciativa de partir; Gladion acompanha seu ritmo. |
-| Blackthorn, dupla contra as Ultra Beasts | Type: Null | Coopera com o jogador e Gladion confia nele para ajudar a proteger os outros. |
-| Entrada da Liga, aquecimento opcional | Silvally | A evolução revela a confiança construída ao longo da viagem. |
-| Missões pós-E4 | Silvally | Mantém a evolução e a relação consolidada, mesmo se o jogador recusou o aquecimento. |
+| Violet, antes da entrega do ovo | Type: Null | Está se acostumando a Gladion e a batalhar contra outros treinadores; o resultado não bloqueia a entrega. |
+| Cianwood, entrega de Fly após Chuck | Type: Null | Explora a praia e toma a iniciativa de partir; a batalha obrigatória mostra a parceria em crescimento. |
+| Antes da Victory Road | Silvally | A evolução é revelada. Silvally já toma a iniciativa, materializando o progresso construído desde Violet. |
+| Blackthorn, dupla pós-game contra as Ultra Beasts | Silvally | O parceiro já evoluído coopera com o jogador; a relação consolidada aparece sob pressão real. |
+| Missões pós-E4 | Silvally | Mantém a evolução e a relação consolidada. |
 
-A evolução acontece na jornada de Gladion entre Blackthorn e a Liga. Não depende de vencer o jogador nem de aceitar a batalha opcional. Não exige uma cutscene de evolução ou nova flag: as equipes de cada encontro podem representar os estágios previstos. Níveis, golpes, itens, demais membros e Memórias ainda precisam de balanceamento.
+A evolução acontece na jornada de Gladion entre Cianwood e a Victory Road. Não depende de vencer o jogador em nenhuma batalha anterior. A primeira apresentação explícita de Silvally ocorre no encontro anterior à Victory Road; portanto, Blackthorn já usa Silvally. Não exige uma cutscene de evolução ou nova flag: as equipes de cada encontro podem representar os estágios previstos. Níveis, golpes, itens, demais membros e Memórias ainda precisam de balanceamento.
 
 **Sequência de diálogo para implementação:**
 
-1. Em Violet, depois de mencionar Lillie e antes do desafio, Gladion apresenta brevemente o parceiro. O ovo continua sendo entregue após a vitória, conforme a cena existente no design.
-2. Após a batalha, ele reconhece uma iniciativa do Type: Null em vez de avaliar somente o resultado.
-3. Em Cianwood, o diálogo sobre Johto e Lillie mostra Gladion vivendo sua própria viagem; Type: Null sai na frente na despedida, mesmo se o jogador recusar a revanche.
-4. Em Blackthorn, uma instrução curta mostra a confiança maior entre os dois, sem repetir a história do abandono.
-5. Na Liga, antes de oferecer o aquecimento, Gladion apresenta a evolução. Assim, o jogador acompanha o arco mesmo recusando a luta.
+1. Em Violet, depois de mencionar Lillie e antes do desafio, Gladion apresenta brevemente Type: Null. Após qualquer resultado válido da batalha, reconhece algo observado e entrega o ovo.
+2. Em Cianwood, o diálogo sobre Johto e Lillie mostra Gladion vivendo sua própria viagem; a batalha acontece sem menu de recusa e Type: Null sai na frente na despedida.
+3. Antes da Victory Road, Gladion apresenta Silvally antes da luta. A evolução precisa ser vista mesmo se o jogador perder; não depende de resultado anterior.
+4. Em Blackthorn, já no pós-game, uma instrução curta mostra a parceria consolidada entre Gladion e Silvally, sem repetir a história do abandono.
 
 **Falas originais propostas em inglês:**
 
@@ -115,9 +154,9 @@ A evolução acontece na jornada de Gladion entre Blackthorn e a Liga. Não depe
 >
 > Após a batalha: “You saw that? It made that move on its own. That's progress.”
 >
-> Blackthorn: “Stay with me, Null. We'll cover them.”
+> Victory Road: “Remember the Type: Null you met in Violet? Take a look. It used to wait for me to decide everything. Now it takes the first step.”
 >
-> Liga: “Remember the Type: Null you met in Violet? Take a look. It used to wait for me to decide everything. Now it takes the first step.”
+> Blackthorn: “Silvally, stay with me. We'll cover them.”
 
 Não repetir a mesma explicação em todos os encontros. A evolução deve ser percebida nas atitudes de ambos. Esse parceiro permanece com Gladion; esta decisão não autoriza um presente de Type: Null ao jogador.
 
@@ -143,7 +182,7 @@ Os resumos canônicos abaixo são separados das escolhas de escrita de SoulGold.
 
 **Direção autoral:** frases curtas e concretas; reconhecimento relutante, mas sincero. Demonstra cuidado por ações e instruções práticas. Não converter toda fala em reticências, ameaça ou provocação. Sua competição serve ao desejo de estar preparado para proteger alguém. Evitar repetir a dinâmica de Silver: Gladion pode desconfiar de pessoas, mas valoriza seus parceiros Pokémon.
 
-Em Violet, a menção a Lillie explica sua curiosidade; a entrega mostra responsabilidade. Em Cianwood, fala de Lillie e da própria viagem, e acompanha a iniciativa do parceiro na despedida. Na dupla de Blackthorn, ele divide tarefas com o jogador. Na Liga, o convite opcional mostra respeito pela escolha alheia. Sua preocupação com Lillie não lhe dá autoridade para escolher por ela.
+Em Violet, a menção a Lillie explica sua curiosidade; a entrega mostra responsabilidade independentemente do resultado. Em Cianwood, fala de Lillie e da própria viagem, e acompanha a iniciativa do parceiro na despedida. Antes da Victory Road, apresenta Silvally e busca uma última comparação entre os dois treinadores; a luta é obrigatória no roteiro, mas não funciona como permissão para passar. Na dupla pós-game de Blackthorn, ele divide tarefas com o jogador já ao lado de Silvally. Sua preocupação com Lillie não lhe dá autoridade para escolher por ela.
 
 > “You take the one on the left. I'll keep the other away from the houses.”
 
@@ -295,6 +334,8 @@ Estas são orientações de escrita propostas, preservando cidades e acompanhant
 
 Looker participa de todas as quests. Anabel ajuda a estabelecer objetivos e condições de segurança. Os acompanhantes não devem repetir a mesma explicação do investigador com palavras diferentes.
 
+**Continuidade visual dos parceiros:** quando Lillie participa de Pheromosa, Celesteela ou Guzzlord, Alolan Ninetales deve estar presente fora da Poké Ball ao lado dela. Quando Gladion participa de Buzzwole, Xurkitree ou Guzzlord, Silvally deve estar presente fora da Poké Ball ao lado dele. A batalha específica da missão pode usar outros membros da equipe; a presença overworld do parceiro principal continua sendo parte da identidade visual da cena.
+
 ### 3.3. Regras de escrita e revisão de cenas
 
 - Antes de escrever, identificar o que cada personagem sabe naquele momento. Experiência com Cosmog não revela automaticamente a espécie de um ovo fechado.
@@ -308,31 +349,35 @@ Looker participa de todas as quests. Anabel ajuda a estabelecer objetivos e cond
 
 | Evento | Gatilho narrativo | Conteúdo fechado |
 | --- | --- | --- |
-| Primeira batalha de Lillie | Recebimento da Pokédex | Lillie está com Oak e Kukui; usa Alolan Vulpix nível 7. |
-| Gladion em Violet | Ligação de Elm e entrega do Mystery Egg no Pokémon Center | Substitui o assistente; reconhece o jogador pela conversa com Lillie, batalha obrigatoriamente antes de entregar o ovo. |
-| Lillie em Goldenrod | Evento de entrega do SquirtBottle, após Whitney | Cena automática: conversa com a dona, reencontro, batalha com continuidade em vitória ou derrota, entrega e saída pela porta. Implementada conforme informado pelo autor. |
-| Gladion em Cianwood | Entrega existente de Fly, após Chuck | Interação manual, conversa sobre Johto/Lillie, revanche opcional e Fly em vitória, derrota ou recusa; Type: Null sai na frente. Roteiro aprovado; auditoria técnica pendente. |
-| Lillie no Dragon’s Den | Depois de derrotar Clair, durante o teste de perguntas | Jogador e Lillie participam das perguntas. Ao final, o mestre pede uma demonstração da sintonia de ambos com seus Pokémon, levando à batalha entre eles. |
-| Incidente de Blackthorn | Durante a passagem pela cidade, antes da E4 | Jogador e Gladion enfrentam Buzzwole + Pheromosa em uma batalha dupla conjunta; Looker participa da história. |
-| Aquecimento de Gladion | Entrada da Liga | Gladion oferece uma batalha opcional antes do desafio da E4. |
+| Primeira batalha de Lillie | Recebimento da Pokédex | Batalha obrigatória com Alolan Vulpix nível 7; vitória ou derrota continuam a cena sem blackout. |
+| Gladion em Violet | Ligação de Elm e entrega do Mystery Egg no Pokémon Center | Substitui o assistente; batalha obrigatória antes do ovo; vitória ou derrota permitem a entrega. |
+| Lillie em Goldenrod | Evento de entrega do SquirtBottle, após Whitney | Cena automática; batalha obrigatória com continuidade em vitória ou derrota, entrega e saída pela porta. |
+| Gladion em Cianwood | Entrega existente de Fly, após Chuck | Conversa sobre Johto/Lillie, batalha obrigatória e Fly em vitória ou derrota; Type: Null sai na frente. |
+| Lillie no Dragon’s Den | Depois de derrotar Clair, durante o teste de perguntas | Lillie acompanha as cinco perguntas vanilla, reage às escolhas do jogador e responde por si mesma; o Elder encerra com uma demonstração prática. Vitória ou derrota concluem sem blackout. |
+| Gladion antes da Victory Road | Imediatamente antes do acesso à Victory Road | Primeira apresentação de Silvally; batalha obrigatória, sem menu de recusa, com continuidade em vitória ou derrota. Gladion não é gate de acesso. |
+| Incidente de Blackthorn | Pós-game, após concluir a E4 | Primeira ruptura explícita: jogador e Gladion/Silvally enfrentam Buzzwole + Pheromosa; derrota é falha real e pode usar blackout/retry. Looker encaminha o jogador para Olivine após resolução. |
 
-O posicionamento exato do incidente de Blackthorn em relação ao Dragon’s Den ainda precisa ser definido no roteiro. A entrega da insígnia de Whitney e os eventos de Clair devem continuar funcionando normalmente após a inserção das cenas.
+A ordem pré-Liga fica: **Route 30 → Violet → Goldenrod → Cianwood → Dragon’s Den → Gladion antes da Victory Road → Victory Road → Liga**. A ordem lista apenas os encontros desta questline, não todos os eventos vanilla entre eles. Não existe mais batalha opcional de Gladion na entrada da Liga.
 
-**Diretriz para Blackthorn:** apresentar a ameaça sem antecipar o ciclo de captura pós-E4. A implementação deve definir explicitamente a restrição de captura desse encontro. A falta de Beast Balls, por si só, não é uma regra suficiente para impedir capturas. O formato exato da batalha com aliado depende de verificação do engine.
+Depois da E4: **Blackthorn → escritório de Olivine → nove missões → reunião/altar → Lusamine → Ultra Necrozma**.
+
+**Diretriz para Blackthorn:** o incidente abre a trama pós-game e é o primeiro confronto em que derrota deixa de ser apenas um resultado de personagem. Ele não conta como uma das nove missões e não deve oferecer captura antecipada de Buzzwole ou Pheromosa. A implementação precisa restringir explicitamente a captura desse encontro. O formato exato da batalha com aliado depende de verificação do engine.
 
 ### Política de resultados por encontro
 
-| Encontro | Aceitar/recusar | Derrota do jogador | Conclusão |
+| Encontro | Escolha antes da luta | Derrota do jogador | Conclusão |
 | --- | --- | --- | --- |
-| Lillie inicial, Route 30 | Batalha obrigatória no fluxo definido | Fluxo normal e nova tentativa | Vitória e entregas da cena |
-| Gladion, Violet | Batalha obrigatória | Nova tentativa | Vitória e ovo entregue com sucesso |
-| Lillie, Goldenrod | Treino integrado à entrega | Continua, com cura e fala própria | SquirtBottle entregue |
-| Gladion, Cianwood | Revanche opcional | Continua, com cura e fala própria | Fly entregue; recusa também permite entrega |
-| Lillie, Dragon’s Den | Batalha prevista no teste | Tratamento ainda a fechar | Preservar o progresso original de Clair |
-| Incidente de Blackthorn | Confronto conjunto previsto | Recuperação ainda a fechar | Incidente resolvido, sem captura antecipada |
-| Gladion, Liga | Aquecimento opcional | Tratamento ainda a fechar | Recusa não bloqueia a Liga nem a apresentação de Silvally |
+| Lillie inicial, Route 30 | Não; batalha obrigatória | Sem blackout; fala própria e continuação | Pokédex/Mystery Egg e demais entregas seguem normalmente |
+| Gladion, Violet | Não; batalha obrigatória | Sem blackout; fala própria e continuação | Mystery Egg entregue se houver espaço em party/PC |
+| Lillie, Goldenrod | Não; batalha obrigatória | Sem blackout; fala própria e cura | SquirtBottle entregue |
+| Gladion, Cianwood | Não; batalha obrigatória | Sem blackout; fala própria e cura | Fly entregue |
+| Lillie, Dragon’s Den | Não; batalha obrigatória | Sem blackout; Elder avalia a demonstração e a cena continua | Retorna ao fluxo original de Clair em qualquer resultado |
+| Gladion, Victory Road | Não; batalha obrigatória | Sem blackout; fala própria e cura | Gladion se despede e Victory Road permanece acessível |
+| Blackthorn / Ultra Beasts | Não; confronto de ameaça | Blackout/retorno seguro e retry conforme implementação | Só avança quando a ameaça for resolvida |
+| Lusamine, clímax | Não; confronto de personagem | Sem blackout; fala própria e continuação do conflito | Ambos os resultados conduzem à aceitação do plano coletivo |
+| Ultra Necrozma | Boss de ameaça | Blackout/retorno seguro e retry | Só conclui após resolução; captura não pode ficar perdida para sempre |
 
-As regras de Goldenrod/Cianwood não alteram automaticamente os outros encontros. Empate, desistência e resultados inesperados precisam de tratamento específico quando o engine os oferecer.
+A flag automática de trainer vencido não deve ser usada como único estado de conclusão nos duelos narrativos, porque derrota também é um resultado válido. O evento precisa registrar que **a batalha ocorreu e a cena avançou**, não que o jogador necessariamente venceu.
 
 ### 4.1. Oak, Kukui e Lillie — abertura da jornada
 
@@ -343,13 +388,13 @@ Sequência de encenação:
 1. Kukui recebe o jogador e identifica a visita enviada por Elm.
 2. Oak participa cedo da conversa, reconhecendo o jogador e observando seu Pokémon. Evitar deixá-lo sem reação durante uma longa apresentação.
 3. Kukui contextualiza sua viagem por Kanto e o interesse nas formas de Alola vistas em Johto.
-4. Lillie reage da cadeira, se apresenta e se aproxima fisicamente do jogador por um caminho livre. Ela deve parar perto dele e ambos se encarar antes do desafio.
-5. Lillie desafia o jogador com Alolan Vulpix nível 7. A batalha ocorre antes de qualquer entrega de item ou Pokédex dessa cena.
-6. Em derrota, o fluxo normal leva o jogador ao Pokémon Center. O estado atual do evento permanece pendente; ao retornar, a cena recomeça, sem uma flag adicional exclusiva para Lillie.
-7. Em vitória, Lillie comenta a batalha; Kukui entrega o Mystery Egg destinado a Elm e Oak conclui a apresentação e entrega da Pokédex.
+4. Lillie reage da cadeira, se apresenta e se aproxima fisicamente do jogador por um caminho livre. **Alolan Vulpix deve estar fora da Poké Ball e acompanhá-la visualmente na cena**, mantendo posição segura ao lado dela. Lillie deve parar perto do jogador e ambos se encarar antes do desafio.
+5. Lillie desafia o jogador com Alolan Vulpix nível 7. A batalha ocorre antes de qualquer entrega de item ou Pokédex dessa cena. Curar se necessário e usar batalha sem blackout.
+6. Capturar o resultado imediatamente ao retornar. Em vitória do jogador, Lillie reconhece o que ainda precisa aprender; em derrota do jogador, ela comemora sua primeira vitória sem transformar o momento em humilhação ou gate. Ambos os resultados são válidos.
+7. Curar após a batalha quando necessário e convergir para a mesma continuação: Kukui entrega o Mystery Egg destinado a Elm e Oak conclui a apresentação e entrega da Pokédex.
 8. Oak se despede para seu programa de rádio em Goldenrod e sai.
 9. Lillie diz que sua mãe está esperando e sai caminhando até a saída. Kukui permanece na sala e oferece o suporte de cura previsto no evento.
-10. Concluir as mudanças de estado da campanha somente após as entregas necessárias, preservando os eventos seguintes de Elm e Silver.
+10. Concluir as mudanças de estado da campanha somente após as entregas necessárias, preservando os eventos seguintes de Elm e Silver. Não usar vitória contra Lillie como requisito persistente dessa progressão.
 
 O caminho exato de Lillie depende das coordenadas já configuradas no mapa; não inventar movimentos a partir de coordenadas antigas. A aproximação, o desafio e a saída precisam usar esperas de movimento para não sobrepor texto e deslocamento.
 
@@ -401,16 +446,19 @@ Essas falas definem intenção e sequência, não novos comandos ou labels obrig
 - As falas das Kimono Girls em Violet e de Zuki no teatro continuam válidas com Kukui. O cuidado com o ovo demonstra o vínculo do jogador; não afirma que Cosmog seja uma evolução de Lugia ou Ho-Oh. Essa revisão narrativa está encerrada conforme confirmação do autor.
 - Compatibilidade com saves antigos não é requisito. Não criar migração nem conversão de antigos Togepi.
 
-### 4.5. Gladion em Violet — sequência definitiva
+### 4.5. Gladion em Violet — sequência vigente
+
+**Status:** a cena já existe no projeto, mas o V12 altera o contrato de derrota. Preservar mapa, equipe e entrega implementados; refatorar apenas o necessário para remover blackout/retry por derrota e permitir que ambos os resultados cheguem ao ovo.
 
 1. A ligação de Elm informa que Gladion passou pelo laboratório e aceitou levar o ovo a Violet. Elm pede ao jogador que o encontre no Pokémon Center.
-2. O evento de aparição antes usado pelo assistente passa a apresentar Gladion. Revisar a ação que escondia o assistente em New Bark: a entrega agora não exige a ausência dele do laboratório.
-3. Gladion ouve ou confirma o nome do jogador. Lillie lhe contou sobre a batalha inicial e seu desejo de tentar novamente.
-4. Gladion confirma que trouxe o ovo e pede uma batalha para conhecer o estilo do jogador. Ele não alega que Elm condicionou a entrega a um teste: o desafio é iniciativa sua.
-5. Antes do confronto, verificar espaço na party OU no PC para o ovo. Com espaço na party, entregar nela; caso contrário, usar o PC conforme o suporte implementado. Se ambos estiverem lotados, não iniciar a batalha nem marcar entrega. Curar o time antes do confronto. Aproximar e orientar os personagens antes de iniciar a batalha obrigatória.
-6. Em derrota, permitir nova tentativa pelo fluxo normal. Em vitória, seguir para a entrega existente do ovo de Cosmog e demais entregas realmente presentes no script.
-7. Confirmar sucesso da entrega antes de concluir seu estado. Se a entrega falhar após a vitória, retomar a entrega sem exigir nova batalha; verificar se a flag de treinador derrotado ou variável existente resolve esse caso.
-8. Gladion se despede e sai. O recebimento do ovo libera o bloqueio correspondente da Route 32.
+2. O evento de aparição antes usado pelo assistente passa a apresentar Gladion. A entrega não exige que o assistente desapareça do laboratório por motivo narrativo novo.
+3. Gladion confirma o nome do jogador. Lillie lhe contou sobre a batalha inicial e seu desejo de tentar novamente.
+4. Gladion confirma que trouxe o ovo e inicia uma batalha para conhecer o estilo do jogador. Ele não alega que Elm condicionou a entrega ao resultado.
+5. Antes do confronto, verificar espaço na party OU no PC para o ovo. Se ambos estiverem lotados, não iniciar batalha nem marcar progresso. Curar e iniciar a batalha obrigatória em modo sem blackout.
+6. Ao retornar, salvar o resultado antes da cura. Vitória e derrota possuem falas diferentes, mas convergem para a entrega. Não oferecer retry apenas porque o jogador perdeu.
+7. Entregar Cosmog Egg na party quando houver espaço; caso contrário, usar o PC conforme o suporte implementado. Confirmar sucesso antes de marcar o estado de recebimento.
+8. Se a entrega falhar excepcionalmente depois da batalha, retomar somente a entrega; nunca exigir repetir o duelo para obter o ovo.
+9. Gladion se despede e sai. O recebimento do ovo libera o bloqueio correspondente da Route 32.
 
 **Falas originais propostas em inglês:**
 
@@ -418,13 +466,15 @@ Essas falas definem intenção e sequência, não novos comandos ou labels obrig
 >
 > Gladion: “You're {PLAYER}? Lillie mentioned you. She's already planning your next battle. Before that, let me see how you fight.”
 >
-> Gladion, após vencer o jogador: “Your Pokémon kept trying. Pay attention to what they need. We'll try again when you're ready.”
+> Se o jogador vencer: “All right. I see why she wants another match.”
 >
-> Gladion, após perder: “All right. I see why she wants another match. Here's the Egg. Elm asked me to bring it to you. Take care of it.”
+> Se Gladion vencer: “Your Pokémon kept looking for a way through. That's enough for me to understand how you fight.”
 >
-> Gladion, despedida: “And when Lillie challenges you again... give her a proper battle.”
+> Gladion, convergência: “Here's the Egg. Elm asked me to bring it to you. Take care of it.”
+>
+> Despedida: “And when Lillie challenges you again... give her a proper battle.”
 
-Ele não sabe automaticamente qual espécie está dentro do ovo. A entrega é um favor plausível durante sua viagem, não um emprego como assistente de Elm.
+Ele não sabe automaticamente qual espécie está dentro do ovo. A entrega é um favor plausível durante sua viagem, não um emprego como assistente de Elm. A batalha é parte da relação com o jogador; **o ovo nunca é prêmio por vitória**.
 
 ### 4.6. Lillie em Goldenrod — evento implementado e refinamento consolidado
 
@@ -434,13 +484,14 @@ Ele não sabe automaticamente qual espécie está dentro do ovo. A entrega é um
 
 1. Após Whitney, ao entrar na floricultura com FLAG_RECEIVED_SQUIRTBOTTLE ainda desmarcada, iniciar a cena automática. Preservar os demais requisitos existentes da entrega.
 2. Lillie conversa com a dona; percebe o jogador, vira, mostra exclamação e se aproxima. Usar MUS_HG_LYRA no reencontro e no retorno da batalha.
-3. O diálogo conecta a viagem em Johto, observações em Ilex Forest, Vulpix e o encontro anterior com Gladion e seu novo Type: Null. Não presumir que o ovo chocou ou quem venceu batalhas anteriores.
-4. A florista autoriza passar o SquirtBottle ao jogador, que seguirá ao norte. Lillie pretende encontrar a mãe antes de continuar a viagem. O item não é prêmio por vitória.
-5. Verificar capacidade para receber ITEM_SQUIRTBOTTLE antes de curar e lutar. Falta de espaço não inicia batalha nem marca progresso.
-6. Curar antes do treino. Vitória e derrota permitem continuar, com falas diferentes; sem blackout. Curar novamente após capturar o resultado.
-7. Entregar uma unidade; confirmar sucesso antes de marcar FLAG_RECEIVED_SQUIRTBOTTLE.
-8. Lillie se despede, caminha até a porta e é removida da cena; restaurar música e controles. A mesma FLAG_RECEIVED_SQUIRTBOTTLE controla sua ausência em visitas futuras. Não criar flag de ocultação.
-9. A dona preserva seus demais serviços, inclusive os relacionados a perfume, e não entrega outra cópia. Preservar o evento de Sudowoodo e ajustar apenas encaminhamentos necessários.
+3. **Alolan Vulpix permanece fora da Poké Ball durante a cena**, posicionada próxima de Lillie sem bloquear balcão, flores, saída, follower ou movimentos. Quando Lillie caminha até a porta no encerramento, Vulpix sai junto ou é removida de forma sincronizada.
+4. O diálogo conecta a viagem em Johto, observações em Ilex Forest, Vulpix e o encontro anterior com Gladion e seu novo Type: Null. Não presumir que o ovo chocou ou quem venceu batalhas anteriores.
+5. A florista autoriza passar o SquirtBottle ao jogador, que seguirá ao norte. Lillie pretende encontrar a mãe antes de continuar a viagem. O item não é prêmio por vitória.
+6. Verificar capacidade para receber ITEM_SQUIRTBOTTLE antes de curar e lutar. Falta de espaço não inicia batalha nem marca progresso.
+7. Curar antes do treino. Vitória e derrota permitem continuar, com falas diferentes; sem blackout. Curar novamente após capturar o resultado.
+8. Entregar uma unidade; confirmar sucesso antes de marcar FLAG_RECEIVED_SQUIRTBOTTLE.
+9. Lillie se despede, caminha até a porta e é removida da cena; restaurar música e controles. A mesma FLAG_RECEIVED_SQUIRTBOTTLE controla sua ausência em visitas futuras. Não criar flag de ocultação.
+10. A dona preserva seus demais serviços, inclusive os relacionados a perfume, e não entrega outra cópia. Preservar o evento de Sudowoodo e ajustar apenas encaminhamentos necessários.
 
 **Dificuldade única:** por confirmação do autor, Whitney usa a equipe do antigo Hard como única versão: Maushold, Audino, Cinccino e Miltank, todos nível 27. Não exigir outra consulta para validar essa premissa nem recriar variantes. Lillie mantém Clefairy 28, Ribombee 29, Comfey 28 e Vulpix Alola 29, em batalha simples com Smart Trainer. Vulpix não evolui nesta cena, inclusive por scaling. O objetivo é um desafio superior a Whitney; isso não equivale a afirmar balanceamento comprovado apenas pelos níveis.
 
@@ -558,13 +609,13 @@ Preservar o estado anterior do controle existente de no-whiteout e restaurá-lo 
 
 ### 4.7. Gladion em Cianwood — “O caminho de volta”
 
-**Status:** novo encontro aprovado. Roteiro fechado; integração, controles reais da entrega de Fly, caminhos e equipe ainda dependem da auditoria. Não considerar implementado.
+**Status:** implementado anteriormente conforme informação do autor, mas o V12 altera o fluxo: a opção de recusar a revanche é removida. Preservar equipe, mapa, entrega e soluções técnicas já integradas; refatorar somente o necessário para tornar a batalha obrigatória e manter vitória/derrota como resultados válidos sem blackout.
 
 #### Escopo e gatilho
 
-Substituir a entrega existente de Fly por uma cena compartilhada com a esposa de Chuck, após os requisitos originais, em momento narrativo anterior a Blackthorn. O jogador inicia a interação manualmente. Gladion e o novo Type: Null ficam próximos do ginásio; o parceiro permanece sem evoluir.
+Substituir a entrega existente de Fly por uma cena compartilhada com a esposa de Chuck, após os requisitos originais, durante a campanha pré-Liga. O jogador inicia a interação manualmente. Gladion e o novo Type: Null ficam próximos do ginásio; **Type: Null permanece fora da Poké Ball durante todo o encontro**, inclusive conversa, revanche e despedida. O parceiro permanece sem evoluir.
 
-A esposa de Chuck fornece a HM e pede que Gladion a entregue. Ela mantém sua presença e função normais; não criar outra fonte de Fly. A revanche é opcional, não condiciona a HM e não deixa revanche pendente após recusa.
+A esposa de Chuck fornece a HM e pede que Gladion a entregue. Ela mantém sua presença e função normais; não criar outra fonte de Fly. A batalha com Gladion é obrigatória como parte da cena, mas **não condiciona Fly à vitória**: vitória ou derrota convergem para a mesma entrega.
 
 #### Checagem silenciosa no início
 
@@ -577,7 +628,7 @@ Antes de conversa longa, deslocamentos ou batalha:
 >
 > “Volte depois.”
 
-Liberar controles sem batalha ou progresso. Não mencionar HM ou bolsa nessa fala. A auditoria deve determinar se falta de espaço sequer é possível para esse item e identificar outras condições reais de falha. A checagem prévia não elimina a confirmação de sucesso na entrega.
+Liberar controles sem batalha ou progresso. Não mencionar HM ou bolsa nessa fala. Na manutenção, preservar a checagem efetivamente implementada para capacidade e outras condições reais de falha. A checagem prévia não elimina a confirmação de sucesso na entrega.
 
 #### Roteiro aprovado
 
@@ -631,7 +682,7 @@ Pausa curta; ele volta a olhar para o jogador.
 
 > “Foi uma boa manhã.”
 
-**Revanche**
+**Revanche obrigatória**
 
 Type: Null se levanta e dá alguns passos na direção do jogador.
 
@@ -639,25 +690,17 @@ Type: Null se levanta e dá alguns passos na direção do jogador.
 >
 > “É. Eu também quero saber.”
 >
-> “Uma revanche antes de partir?”
+> “Antes de partir, vamos lutar de novo.”
 >
-> “Fly já é sua. A batalha é um pedido meu.”
+> “A HM é sua de qualquer jeito. Isto é entre nós.”
 
-Opções: “Vamos batalhar!” / “Hoje não.”
-
-Recusa:
-
-> “Tudo bem. Fica para a próxima.”
-
-A fala é despedida narrativa, não promessa de um sistema de revanche: seguir diretamente à entrega e conclusão.
-
-Aceite:
+Não mostrar menu de aceitar/recusar.
 
 > “Primeiro, vamos cuidar dos seus Pokémon. Você acabou de sair de um ginásio.”
 >
 > “Pronto. Agora não precisa pegar leve.”
 
-Curar e iniciar a batalha. A fala sobre ter acabado de sair do ginásio pressupõe realização imediata; a auditoria deve indicar ajuste caso a interação seja adiada.
+Curar e iniciar a batalha sem blackout. A fala sobre ter acabado de sair do ginásio pressupõe realização imediata; se a implementação final já tratou interação adiada, preservar essa solução.
 
 **Vitória do jogador**
 
@@ -679,11 +722,11 @@ Gladion se volta para Type: Null.
 
 Ele olha para Type: Null.
 
-> “Na última troca, você já estava pronto antes da minha ordem.”
+> “Você já estava pronto antes da minha ordem.”
 >
 > “Bom trabalho.”
 
-São falas de intenção narrativa; a implementação deve evitar presumir uma troca específica se o combate não a garantir. Vitória e derrota convergem para cura e entrega, sem blackout ou penalidade correspondente.
+São falas de intenção narrativa; não presumir uma troca específica se o combate não a garantir. Capturar o resultado antes da cura. Vitória e derrota convergem para cura e entrega, sem blackout, retry ou penalidade correspondente.
 
 **Entrega e despedida**
 
@@ -712,41 +755,647 @@ Type: Null segue na frente; Gladion o acompanha. Ambos saem visivelmente, a mús
 #### Contrato técnico sem novas flags
 
 - Reutilizar o controle real de recebimento de Fly, conservando seu significado. O nome da constante e até o tipo de controle ainda não foram comprovados nesta revisão.
-- Não alocar flag persistente de presença, conversa, recusa, batalha concluída ou revanche. Não reutilizar flags alheias apenas por parecerem livres.
+- Não alocar flag persistente de presença, conversa, recusa ou resultado. Como a batalha agora é obrigatória, não existe branch de recusa a persistir. Não reutilizar flags alheias apenas por parecerem livres.
 - Condicionar presença dos dois objetos ao recebimento por mecanismo suportado pelo mapa; se não for flag de objeto, verificar script de carregamento existente.
 - Não esconder permanentemente a esposa de Chuck.
-- Aceite com vitória, aceite com derrota e recusa convergem à mesma entrega. O estado de vitória de treinador não governa a conclusão.
+- Vitória e derrota convergem à mesma entrega. O estado de vitória de treinador não governa a conclusão; o recebimento de Fly continua sendo o estado persistente principal.
 - A batalha precisa de entrada/ID de treinador disponível; isso tem custo próprio e não é promessa de ausência de qualquer armazenamento.
 - Usar temporários apenas quando necessários, sem colisão com outros scripts; não afirmar que sobrevivem à saída do mapa.
 - Confirmar resultado antes de chamadas que o sobrescrevam; preservar/restaurar no-whiteout, música, interlocutor e posições.
-- Entrega excepcionalmente frustrada não marca recebimento nem inicia saída. Retomar somente entrega na mesma visita; comportamento após reload precisa constar na auditoria.
-- Não bloquear Fly para sempre se o jogador chegar ao evento depois de Blackthorn ou da Liga. Auditar ordem e adaptar a apresentação com estados existentes sem contrariar a evolução futura do parceiro.
-- Equipe e níveis de Gladion ainda não aprovados: usar a equipe de Violet e a referência de Chuck para uma proposta posterior de boss. Não preencher com espécies inventadas.
+- Entrega excepcionalmente frustrada não marca recebimento nem inicia saída. Retomar somente a entrega conforme o comportamento implementado.
+- Não bloquear Fly para sempre se o jogador chegar ao evento em uma ordem incomum. Preservar a solução final integrada para interação tardia e evolução futura do parceiro.
+- Equipe, níveis, moves e demais parâmetros reais de Gladion passam a ser os da implementação final. Não substituir por propostas antigas do V8 sem uma decisão posterior explícita.
 
-#### Auditoria necessária antes de alterar
+#### Checklist de regressão para manutenção
 
-1. Rastrear evento original, fonte/derivados, requisitos, item, quantidade e todas as leituras/escritas do recebimento; distinguir obtenção da HM de permissão de uso.
-2. Demonstrar viabilidade de ocultar Gladion e Type: Null sem novos estados persistentes e sem efeitos sobre terceiros.
-3. Verificar capacidade real, duplicatas, retorno da entrega e mudanças possíveis entre checagem e entrega.
-4. Verificar batalha com continuidade após derrota, cura, dinheiro, estatísticas, empate/desistência e restauração de controles.
-5. Inspecionar mapa, caminhos, portas, retorno do combate, follower, limites de objetos e gráficos disponíveis.
-6. Examinar progressão alternativa: Lillie ainda não encontrada, interação adiada, evento após Blackthorn/Liga e Fly já recebido.
-7. Relatar evidência por arquivo/símbolo, severidade, condição de reprodução e correção mínima. Separar inspeção de teste executado.
-8. Não implementar nesta etapa de auditoria nem trocar/mesclar branches. Respeitar a premissa de dificuldade única; registrar limitações da referência local de Chuck.
+1. A entrega continua reutilizando a fonte original de Fly e não cria duplicata.
+2. A batalha ocorre sem menu de recusa; vitória e derrota convergem para a entrega sem blackout.
+3. Type: Null permanece sem evoluir neste encontro e sai na frente de Gladion.
+4. Reentrada, interação tardia, follower, música, controles e posições pós-batalha não bloqueiam progressão.
+5. A esposa de Chuck permanece funcional e não é escondida permanentemente.
+6. Alterações futuras devem partir dos arquivos implementados, não de hipóteses antigas de auditoria.
 
 As alternativas de Gladion em Mahogany, Route 44, Azalea e outros locais não são encontros adicionais aprovados. A escolha desta revisão é a entrega de Fly em Cianwood.
 
-### 4.8. Encadeamento econômico dos eventos
+### 4.8. Lillie no Dragon’s Den — “Escutar sem copiar”
 
-Reutilizar eventos e estados existentes é uma prioridade. Para Goldenrod, a conclusão usa FLAG_RECEIVED_SQUIRTBOTTLE. Para Cianwood, auditar e usar o controle já existente de Fly. Nenhuma nova flag persistente de história/ocultação está autorizada para essas duas cenas.
+**Status:** refinamento refeito no V12 e fechado narrativamente. Implementação, coordenadas, integração com o script real do Dragon Shrine e validação de batalha ainda precisam ser executadas. O objetivo é preservar integralmente o teste e as recompensas vanilla, adicionando Lillie como participante narrativa do **mesmo teste**, não como dona de um segundo questionário paralelo.
 
-Vencer, concluir um treino e receber um presente são estados diferentes. Nessas duas cenas o recebimento conclui o evento; derrota também permite a entrega, e em Cianwood recusa também. Não usar a vitória automática do trainer como único controle.
+#### Papel no arco de Lillie
 
-Checar capacidade antes da luta e confirmar entrega antes de esconder NPCs. Temporários atendem retomadas na mesma visita, não garantem persistência após reload. Não apagar recebimentos concluídos, duplicar presentes nem bloquear saídas. O alvo continua New Game, sem migração de saves antigos.
+O encontro fecha a progressão pré-Liga de Lillie:
+
+1. **Route 30:** ela decide começar a batalhar e experimentar uma nova forma de se relacionar com seus Pokémon.
+2. **Goldenrod:** aprende que seguir um plano não pode fazê-la ignorar os sinais da parceira; vitória ou derrota servem como treino.
+3. **Dragon’s Den:** aprende a ouvir uma resposta diferente, considerar o que ela revela e ainda formular sua própria posição.
+
+O ponto central não é “Lillie finalmente sabe todas as respostas certas”. O Elder deve perceber que ela **escuta antes de responder, mas não copia automaticamente o jogador**. Essa é a maturidade que prepara seus encontros posteriores com Gladion e Lusamine.
+
+A cena não deve fazê-la regredir à insegurança do início de Alola nem transformá-la em confrontacional. Ela pode discordar com calma, mudar uma nuance da própria resposta ou concordar sem parecer dependente da validação do protagonista.
+
+#### Ordem e gatilho
+
+1. O jogador derrota Clair e recebe normalmente a orientação para procurar o Dragon Shrine.
+2. Lillie já está no Shrine quando o jogador chega. Ela não está esperando pelo protagonista e não foi enviada por Gladion, Lusamine ou Kukui. **Alolan Ninetales está fora da Poké Ball ao lado dela desde a chegada do jogador.**
+3. Sua motivação é própria: ouviu que o Dragon Clan avalia a maneira como Trainers pensam sobre seus Pokémon e pediu ao Elder para acompanhar o teste.
+4. O Elder realiza **as cinco perguntas vanilla do jogador**, preservando exatamente a lógica, as alternativas, os estados e as consequências existentes no projeto.
+5. Depois de cada escolha do jogador, o script lê temporariamente a alternativa escolhida e executa um branch curto de Lillie.
+6. Lillie reage à escolha e então declara sua própria posição. O jogador nunca seleciona a resposta dela.
+7. Cada branch converge imediatamente para a próxima pergunta vanilla. Não criar combinações acumuladas de respostas.
+8. Depois da quinta pergunta e da avaliação vanilla necessária, o Elder comenta a participação dos dois e pede uma demonstração prática.
+9. Curar o time e iniciar a batalha obrigatória entre jogador e Lillie.
+10. Vitória ou derrota concluem a demonstração; não há blackout nem retry obrigatório.
+11. A sequência retorna ao fluxo original de Clair/Dragon Shrine e Lillie deixa o Shrine normalmente.
+12. Nenhuma Ultra Beast aparece como consequência imediata da cena. Blackthorn permanece pós-game.
+
+#### Chegada e reencontro
+
+Lillie deve estar próxima do Elder em uma posição que não bloqueie o caminho, objetos vanilla, follower nem movimentos posteriores da cena. **Alolan Ninetales deve ocupar uma posição própria próxima de Lillie**, visível durante o reencontro, as perguntas e a transição para a batalha.
+
+Falas propostas em inglês:
+
+> Lillie: “{PLAYER}! I didn't know Clair had sent you here.”
+>
+> “I heard the Dragon Clan doesn't test Trainers only by battling them.”
+>
+> “They ask what you think about your Pokémon, too. I wanted to hear the questions for myself.”
+
+O Elder contextualiza por que ela participa:
+
+> Elder: “The young lady asked to observe your trial.”
+>
+> “But an answer can teach us something about the person who gives it... and the person who hears it.”
+>
+> “So I have asked her to answer as well.”
+
+Lillie:
+
+> “I thought I knew exactly what I would say on the way here.”
+>
+> “Now I'm not so sure.”
+>
+> “I think that may be the point.”
+
+Se o jogador falar com Lillie antes de iniciar o teste, manter uma fala curta e não disparar a batalha separadamente:
+
+> “I thought about my answers all the way here. I'm trying not to decide them before I hear the questions.”
+
+#### Estrutura das ramificações
+
+O teste do jogador continua sendo o teste vanilla. O V12 adiciona **15 branches locais**: cinco perguntas, três alternativas em cada uma.
+
+A estrutura desejada é:
+
+```text
+pergunta vanilla
+      ↓
+escolha do jogador
+   /    |    \
+  A     B     C
+  ↓     ↓     ↓
+fala específica de Lillie
+   \    |    /
+      ↓
+próxima pergunta vanilla
+```
+
+Não combinar respostas anteriores para criar finais diferentes. Cinco perguntas com três alternativas dariam 243 combinações possíveis; isso não agrega valor proporcional e não deve ser implementado.
+
+As falas abaixo usam nomes conceituais das alternativas para facilitar o design. A implementação deve mapear cada branch para os valores reais usados pelo script vanilla do projeto, sem reescrever ou substituir o texto original do quiz.
+
+---
+
+#### Pergunta 1 — relação com os Pokémon
+
+Tema vanilla: como o jogador enxerga seus Pokémon.
+
+##### Se o jogador escolher `ALLY`
+
+> Lillie: “An ally... Someone who stands beside you.”
+>
+> “I like that.”
+>
+> “I think I'd say ‘friend,’ though. Sometimes Ninetales understands what I'm trying to do before I've even worked it out myself.”
+
+##### Se o jogador escolher `JUNIOR`
+
+Lillie pensa por um instante.
+
+> Lillie: “I don't think I could call my Pokémon juniors.”
+>
+> “I'm supposed to be teaching them, but they notice things I don't all the time.”
+>
+> “I'd say ‘friend.’”
+
+A discordância é calma. Ela não repreende o jogador nem transforma a resposta em julgamento moral.
+
+##### Se o jogador escolher `FRIEND`
+
+> Lillie: “Friend... Yes. That's my answer too.”
+>
+> “Though lately I've wondered which of us is teaching the other.”
+
+Essa primeira pergunta estabelece a dinâmica da cena: Lillie escuta, considera e só então responde. Quando a fala mencionar Ninetales, uma pequena virada de sprite entre Lillie e a parceira pode reforçar a relação sem interromper o fluxo do quiz.
+
+---
+
+#### Pergunta 2 — o que ajuda a vencer
+
+Tema vanilla: o que mais contribui para vencer uma batalha.
+
+Essa pergunta conecta diretamente o teste ao desenvolvimento de Goldenrod.
+
+##### Se o jogador escolher `STRATEGY`
+
+> Lillie: “I used to think having the right plan was the most important part.”
+>
+> “Then I started noticing how often my Pokémon saw something before I did.”
+>
+> “Strategy matters... but only if I'm willing to change it.”
+
+##### Se o jogador escolher `TRAINING`
+
+> Lillie: “Training.”
+>
+> “I think I understand that answer much better now.”
+>
+> “It isn't only practicing the same thing until we get it right. It's learning how each of us reacts when something goes wrong.”
+
+##### Se o jogador escolher `CHEATING`
+
+Lillie demonstra surpresa, mas não hostilidade.
+
+> Lillie: “I don't think that would be my answer.”
+>
+> “You might get the result you wanted...”
+>
+> “But I don't think my Pokémon and I would have learned anything from it.”
+>
+> “I'd choose training.”
+
+Não adicionar punição própria de Lillie. Qualquer consequência da escolha continua pertencendo exclusivamente à lógica vanilla.
+
+---
+
+#### Pergunta 3 — quem vale a pena enfrentar
+
+Tema vanilla: que tipo de Trainer vale a pena enfrentar.
+
+A resposta mostra que Lillie já não encara batalha apenas como medição de força.
+
+##### Se o jogador escolher `WEAK`
+
+> Lillie: “Someone weaker...”
+>
+> “I don't think I'd want to choose an opponent because I expected to beat them.”
+>
+> “I'd rather battle anyone and find out what they can show me.”
+
+##### Se o jogador escolher `STRONG`
+
+> Lillie: “I understand that.”
+>
+> “A strong Trainer can show you very quickly what you still need to learn.”
+>
+> “But someone doesn't have to look strong to surprise you.”
+>
+> “I think I'd choose anyone.”
+
+##### Se o jogador escolher `ANYONE`
+
+> Lillie: “Anyone.”
+>
+> “That's mine too.”
+>
+> “You don't really know what you'll learn from a battle until it starts.”
+
+Essa resposta também prepara conceitualmente a batalha entre jogador e Lillie ao final.
+
+---
+
+#### Pergunta 4 — cuidado e desenvolvimento
+
+Tema vanilla: o que mais importa ao cuidar e desenvolver Pokémon.
+
+Esta é a pergunta de maior peso para o subtexto familiar, mas **não nomear Lusamine nem Gladion**.
+
+##### Se o jogador escolher `LOVE`
+
+Lillie demora um pouco mais para responder.
+
+> Lillie: “Love.”
+>
+> “Yes... but I think I'm still learning what that means.”
+>
+> “Caring about someone doesn't mean deciding everything for them.”
+>
+> “Sometimes it means listening when they choose something you didn't expect.”
+
+Essa fala deve receber uma pequena pausa de encenação. O crescimento familiar aparece sem transformar a cena em exposição sobre Alola.
+
+##### Se o jogador escolher `KNOWLEDGE`
+
+> Lillie: “Knowledge is important.”
+>
+> “The more I understand my Pokémon, the easier it is to notice what they need.”
+>
+> “But knowing more about someone doesn't mean you should make every choice for them.”
+>
+> “I'd still choose love.”
+
+##### Se o jogador escolher `VIOLENCE`
+
+Lillie fica séria, sem reação melodramática.
+
+> Lillie: “No.”
+>
+> “I want my Pokémon to become stronger because they trust me enough to try.”
+>
+> “Not because they're afraid of what happens if they don't.”
+>
+> “I'd choose love.”
+
+Aqui ela pode discordar com clareza. A firmeza é parte do crescimento.
+
+---
+
+#### Pergunta 5 — força e fraqueza
+
+Tema vanilla: como interpretar força e fraqueza em um Pokémon.
+
+A última resposta deve funcionar como conclusão natural do teste compartilhado.
+
+##### Se o jogador escolher `STRENGTH`
+
+> Lillie: “Strength matters.”
+>
+> “Especially when someone is depending on you.”
+>
+> “But if I only looked at what they were strongest at, I'd miss half of who they are.”
+>
+> “I'd choose both.”
+
+##### Se o jogador escolher `BOTH`
+
+> Lillie: “Both.”
+>
+> “That's my answer too.”
+>
+> “Their strengths tell me what they can do.”
+>
+> “Their weaknesses tell me where I need to stand beside them.”
+
+Essa é a resposta em que Lillie soa mais segura.
+
+##### Se o jogador escolher `WEAKNESS`
+
+> Lillie: “I think weaknesses are important to understand.”
+>
+> “But I wouldn't want a Pokémon to believe that's all I see when I look at them.”
+>
+> “I'd choose both.”
+
+---
+
+#### Conclusão das perguntas
+
+Depois da quinta resposta, executar toda avaliação vanilla necessária do jogador antes da conclusão adicional de Lillie.
+
+O Elder não deve resumir as quinze possibilidades nem declarar um “vencedor” filosófico do quiz.
+
+> Elder: “Interesting.”
+>
+> “You did not always give the same answers.”
+>
+> “That is not a failing.”
+>
+> “Understanding another Trainer does not require becoming that Trainer.”
+
+Ele olha para Lillie:
+
+> Elder: “You listened before answering, yet you did not surrender your own judgment.”
+
+Lillie:
+
+> “I almost did.”
+>
+> “A few times.”
+>
+> “But then they wouldn't really have been my answers.”
+
+Esse é o payoff principal do teste. Lillie aprendeu a **escutar sem copiar**.
+
+#### Transição para a demonstração
+
+O Elder muda o teste de palavras para ação:
+
+> Elder: “Words reveal conviction.”
+>
+> “But a Trainer cannot prepare every moment of a battle.”
+>
+> “When circumstances change, understanding must become action.”
+>
+> “Show me.”
+
+Lillie:
+
+> “A battle...”
+>
+> “Yes.”
+>
+> “That makes sense.”
+>
+> “{PLAYER}, we've just spent all this time explaining what kind of Trainers we want to be.”
+>
+> “Let's see what we actually do when the plan stops being simple.”
+
+Curar o time do jogador antes do combate. A batalha é obrigatória como parte da demonstração, mas **não exige vitória**.
+
+#### Equipe V12
+
+A equipe preserva os quatro parceiros de Goldenrod e mostra progressão sem adicionar espécies novas. **Alolan Vulpix evolui para Alolan Ninetales neste estágio**, tornando a mudança visual da parceira um marcador natural do crescimento de ambas.
+
+Os números abaixo são a baseline de design do V12. Balanceamento após teste pode ajustar níveis, EVs, itens ou um golpe sem alterar o roster, o papel de cada membro ou o fato de Ninetales ser o ás.
+
+| Ordem | Pokémon | Nível | Item | Ability | Nature | Golpes |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Ribombee | 43 | Sitrus Berry | Shield Dust | Timid | Sticky Web, Pollen Puff, Psychic, U-turn |
+| 2 | Clefairy | 43 | Eviolite | Magic Guard | Bold | Moonblast, Thunder Wave, Moonlight, Flamethrower |
+| 3 | Comfey | 44 | Sitrus Berry | Triage | Modest | Draining Kiss, Giga Drain, Calm Mind, Synthesis |
+| 4 | Ninetales Alola | 45 | Light Clay | Snow Warning | Timid | Aurora Veil, Freeze-Dry, Moonblast, Encore |
+
+Todos devem usar IVs altos/coerentes com o padrão de bosses do hack. Não alterar dados globais das espécies para conseguir o comportamento desta luta. Conferir no projeto se `Snow Warning`, clima, `Aurora Veil`, `Sticky Web`, itens e IA funcionam com a semântica local esperada.
+
+**Identidade de batalha:** preparar, observar e responder. Ribombee cria ritmo e pivota; Clefairy interrompe e cobre fraquezas; Comfey transforma dano em sustain; Ninetales entra como ás e comprime defesa, pressão e controle. A equipe não precisa responder perfeitamente a Poison e Steel: manter fraquezas exploráveis.
+
+A batalha deve usar a IA de treinador forte já disponível no projeto. Não dar itens de cura consumidos por Lillie durante a luta salvo se isso for padrão do trainer class existente.
+
+#### Revelação de Ninetales
+
+Não é necessária uma cutscene de evolução. **A evolução já aconteceu antes da chegada ao Dragon’s Den, fora de cena.** Ninetales está visível fora da Poké Ball desde o início do encontro. Antes da batalha, Lillie pode reconhecer a mudança:
+
+> Lillie: “You remember Vulpix, don't you?”
+>
+> “She evolved while we were traveling. I thought I would need to change everything.”
+>
+> “But she didn't become someone different. I just had to learn to keep up.”
+
+#### Resultado — jogador vence
+
+Trainer defeat text:
+
+> “We adjusted again... and you still found the opening!”
+
+Depois da batalha:
+
+> Lillie: “I thought I knew what you were going to do twice.”
+>
+> “I was wrong twice.”
+>
+> “But we didn't freeze when it happened.”
+>
+> “Goldenrod felt different from our first battle.”
+>
+> “This felt different again.”
+
+O foco não é elogiar genericamente o protagonista; ela identifica o próprio progresso.
+
+#### Resultado — Lillie vence
+
+A derrota do jogador é um resultado válido, sem blackout e sem retry.
+
+> Lillie: “We did it.”
+>
+> “And this time I don't think I need to apologize for being happy about that.”
+
+Ela olha para o jogador:
+
+> “You changed what you were doing halfway through.”
+>
+> “We noticed.”
+>
+> “And we changed too.”
+
+Lillie pode celebrar a própria vitória sem voltar imediatamente a pedir desculpas por ter vencido.
+
+#### Empate, forfeit e resultados inesperados
+
+Se o engine expuser empate ou desistência, tratar explicitamente sem blackout. Não declarar vitória de ninguém.
+
+> Lillie: “Let's look after everyone first.”
+>
+> “I think we both learned something from that.”
+
+Resultado desconhecido não deve ser convertido silenciosamente em vitória do jogador.
+
+#### Conclusão comum
+
+Depois de registrar o resultado, curar o time.
+
+O Elder não avalia a relação pelo vencedor:
+
+> Elder: “Good.”
+>
+> “Neither result changes what I wished to see.”
+>
+> “You watched your Pokémon. You watched your opponent. And when the battle changed, you answered it together.”
+
+Ele conclui:
+
+> Elder: “Remember your answers.”
+>
+> “Not because they must remain the same forever.”
+>
+> “Remember why you gave them.”
+
+Lillie:
+
+> “I will.”
+>
+> “And I think I'll remember some of yours, too.”
+>
+> “Even the ones I wouldn't have chosen.”
+
+A sequência retorna então ao fluxo normal de Clair/Dragon Shrine.
+
+Lillie deixa o Shrine antes da continuação apropriada de Clair, usando movimento seguro e sem bloquear objetos, warps ou follower. **Ninetales sai junto com ela**; não deve desaparecer isoladamente antes da Trainer.
+
+#### Integração com Clair e progressão pós-Liga
+
+- Não remover, duplicar nem substituir badge, TM, Dratini, Dragon Fang ou qualquer outra recompensa/controle vanilla existente no projeto.
+- As cinco perguntas do jogador preservam sua lógica original. As falas de Lillie são camadas narrativas executadas **depois de cada escolha**, não substituições do quiz.
+- As escolhas de Lillie não alteram a avaliação do jogador nem os rewards/estados vanilla.
+- A batalha de Lillie é uma demonstração intermediária, não uma recompensa material.
+- Após qualquer resultado válido da batalha, retornar ao label/estado vanilla correto para que Clair continue exatamente de onde deveria.
+- Nenhum incidente de Ultra Beast é disparado ao sair do Dragon Shrine; Blackthorn permanece inativo durante a campanha pré-Liga.
+- A presença futura de Lillie nas Rift Missions não depende de uma nova flag narrativa exclusiva desta cena.
+- Ninetales permanece fora da Poké Ball durante toda a cena do Shrine, salvo transição técnica estritamente necessária para iniciar a batalha.
+
+#### Contrato técnico das 15 ramificações
+
+Implementar como branches **locais e imediatos**, não como combinações persistentes.
+
+Padrão:
+
+```text
+Q1 vanilla
+→ ler escolha Q1
+→ Lillie_Q1_A/B/C
+→ Q2 vanilla
+→ ler escolha Q2
+→ Lillie_Q2_A/B/C
+→ ...
+→ Q5 vanilla
+→ ler escolha Q5
+→ Lillie_Q5_A/B/C
+→ avaliação vanilla
+→ conclusão compartilhada
+→ batalha
+```
+
+Se o script vanilla usar uma variável especial reutilizada entre perguntas, capturar a alternativa **antes** de iniciar a próxima pergunta. Não reservar cinco flags persistentes apenas para lembrar respostas cujo branch já foi consumido.
+
+A implementação deve auditar:
+- qual variável/retorno contém cada alternativa;
+- quando esse valor é sobrescrito;
+- quais labels executam sucesso/avaliação vanilla;
+- se alguma escolha pula diretamente para outro trecho;
+- se o Dratini ou outra recompensa depende de contagem/estado acumulado;
+- como inserir a fala de Lillie sem alterar essa contagem.
+
+A camada de Lillie não deve modificar a pontuação, contador ou condição vanilla.
+
+#### Contrato técnico da batalha e economia de estado
+
+O executor deve distinguir no mínimo:
+- teste vanilla ainda não concluído;
+- cinco perguntas processadas e conclusão compartilhada ainda pendente;
+- batalha de Lillie ainda não executada;
+- batalha executada, independentemente do vencedor, e retorno ao fluxo vanilla;
+- sequência de Clair concluída.
+
+A flag automática de trainer derrotado não é suficiente, porque ela pode não ser marcada quando Lillie vence. Preferir o próprio estado de progressão do Shrine/Clair ou outro estado já existente que represente que a cena aconteceu. Só reservar nova flag persistente se a auditoria provar que não há como distinguir reentrada/reload com os estados existentes.
+
+Preservar música, no-whiteout quando usado, follower, direção dos sprites, posições após combate e controles em todas as saídas.
+
+
+### 4.9. Gladion antes da Victory Road — “O primeiro passo”
+
+**Status:** novo encontro fechado em design no V12; implementação e balanceamento pendentes.
+
+#### Papel no arco
+
+Este é o último duelo de Gladion com o jogador antes da Liga e a primeira apresentação explícita do novo parceiro como **Silvally**. A cena não funciona como teste de permissão para entrar na Victory Road. Gladion está ali porque quer comparar o quanto ambos mudaram desde Violet; a passagem permanece parte da progressão normal do jogo.
+
+A transformação do parceiro deve ser percebida em comportamento, não em exposição longa. A frase “now it takes the first step” é materializada em gameplay: **Silvally é o lead planejado da batalha**, entrando primeiro por iniciativa do par narrativo. O restante da equipe deve formar um boss forte para a etapa; alvo atual de estrutura: cinco Pokémon no total. As outras quatro espécies, itens, níveis, EVs e golpes permanecem pendentes de balanceamento e não devem ser inventados como decisão fechada sem revisão posterior.
+
+#### Gatilho e encenação
+
+1. Usar um ponto imediatamente anterior ao acesso à Victory Road que não interfira com guardas, checagens de badges, followers ou warps.
+2. Ao entrar no gatilho, Gladion e Silvally chamam a atenção do jogador. A cena é automática.
+3. Gladion apresenta a evolução antes da batalha. Não depende de resultado em Violet/Cianwood.
+4. Curar o jogador.
+5. Iniciar batalha obrigatória sem blackout; não mostrar menu de recusa.
+6. Capturar o resultado imediatamente após retornar.
+7. Usar branch de vitória ou derrota; ambos convergem para cura e despedida.
+8. Gladion e Silvally saem; restaurar música/controles. A Victory Road continua acessível normalmente.
+9. Não deixar revanche infinita nem mover esse confronto para a entrada da Liga.
+
+#### Roteiro em inglês
+
+Chegada:
+
+> Gladion: “You made it.”
+>
+> “Victory Road is just ahead.”
+
+Ele olha para Silvally.
+
+> “Remember the Type: Null you met in Violet?”
+>
+> “Take a look.”
+>
+> “It used to wait for me to decide everything.”
+>
+> “Now it takes the first step.”
+
+Silvally avança primeiro.
+
+> Gladion: “Seems like it already decided what it wants.”
+>
+> “One battle before Victory Road.”
+>
+> “Not because you need my permission.”
+>
+> “I want to know how far we've both come.”
+
+Não há opção de recusar. Gladion cura o time e inicia a luta.
+
+**Se o jogador vencer:**
+
+> Gladion: “That's different.”
+>
+> “In Violet, I was trying to figure out how you battled.”
+>
+> “This time, I knew what you would try.”
+>
+> “You still found another way.”
+
+Ele olha para Silvally.
+
+> “Looks like we're not the only ones who learned something.”
+
+**Se Gladion vencer:**
+
+> Gladion: “This time, we got you.”
+>
+> “But you didn't stop looking for an opening.”
+
+Ele olha para Silvally.
+
+> “Neither did you.”
+>
+> “Good.”
+
+**Conclusão comum:**
+
+> Gladion: “Victory Road is ahead.”
+>
+> “Whatever happens in there, make your Pokémon part of the answer.”
+>
+> “See you after the League, {PLAYER}.”
+
+Silvally começa a caminhar primeiro e Gladion o acompanha. Essa repetição visual ecoa Cianwood: antes Type: Null começava a se adiantar; agora Silvally faz isso com confiança plena.
+
+#### Contrato técnico
+
+- Batalha obrigatória, sem menu de escolha.
+- Vitória e derrota são conclusões válidas; nenhuma causa blackout.
+- Salvar resultado antes de cura/comandos que possam sobrescrevê-lo.
+- Não usar `trainer defeated` como único estado de conclusão. O evento precisa ficar concluído mesmo quando Gladion vence.
+- Não criar gate artificial da Victory Road baseado no resultado.
+- Não repetir a cena em reentrada após conclusão.
+- Preservar guardas, checagem de badges e warp original.
+- Silvally deve aparecer tanto na overworld/cutscene quanto na equipe, conforme os assets e sistema disponíveis; se não for viável mostrar follower separado, preservar ao menos a apresentação e a equipe sem inventar asset novo.
+
+### 4.10. Encadeamento econômico dos eventos
+
+Reutilizar eventos e estados existentes é prioridade, mas o V12 separa claramente **resultado de batalha** de **conclusão narrativa**.
+
+- Route 30: progresso pertence à cena de Oak/Kukui e às entregas; não à vitória contra Lillie.
+- Violet: progresso pertence ao recebimento do Mystery Egg; vitória contra Gladion não é requisito.
+- Goldenrod: conclusão continua sendo `FLAG_RECEIVED_SQUIRTBOTTLE`; resultado da batalha não governa o item.
+- Cianwood: conclusão continua sendo o controle real de Fly; a batalha passa a ser obrigatória, mas resultado não governa a HM.
+- Dragon’s Den: conclusão pertence ao progresso do teste/Clair; a flag automática de trainer derrotado não pode ser a única condição.
+- Victory Road: usar estado de cena já concluída ou mecanismo existente do mapa; derrota precisa ocultar Gladion da mesma forma que vitória.
+
+O padrão técnico desejado é: **battle occurred → save result → dialogue branch → common continuation → persist actual event state**.
+
+Checar capacidade antes de presentes, confirmar entregas antes de esconder NPCs e nunca confiar em temporários para persistência após reload. Não apagar recebimentos concluídos, duplicar presentes nem bloquear saídas. O alvo continua New Game, sem migração de saves antigos.
 
 ## 5. Escritório em Olivine
 
-O início formal da investigação exige que o jogador tenha concluído a E4 e visite o escritório de Looker e Anabel em Olivine. A casa ou sala exata ainda será escolhida.
+O início formal da sequência das nove missões exige que o jogador tenha concluído a E4 **e resolvido o incidente pós-game de Blackthorn**. Ao final desse incidente, Looker encaminha o jogador ao escritório de Looker e Anabel em Olivine. A casa ou sala exata ainda será escolhida.
 
 O escritório concentra o briefing da missão ativa, o retorno após cada missão e a compra de Beast Balls com Anabel. As missões são consecutivas, seguindo a ordem fixa abaixo. Não é necessário criar um sistema aberto de seleção durante essa parte da história.
 
@@ -833,11 +1482,11 @@ As imagens conceituais produzidas são referências visuais. Ainda não constitu
 
 Com as nove missões concluídas e Solgaleo ou Lunala apresentado a Looker, a investigação chega ao ponto de enfrentar a origem da instabilidade. A travessia até Necrozma envolve risco de a passagem se desestabilizar e impedir o retorno.
 
-Lusamine insiste em realizar a operação sozinha. A única batalha do jogador contra ela ocorre aqui, resolvendo a disputa e levando-a a aceitar a ajuda do grupo. O roteiro deve dar espaço à reação de Lillie e Gladion sem retirar do jogador o papel no confronto final.
+Lusamine insiste em realizar a operação sozinha. A única batalha do jogador contra ela ocorre aqui como **duelo de personagem**, não como boss de ameaça: usar o contrato V12 sem blackout. Vitória e derrota recebem respostas próprias, mas ambas resolvem a disputa narrativa e levam Lusamine a aceitar a ajuda do grupo. O resultado não deve ser reescrito como vitória do jogador. O roteiro deve dar espaço à reação de Lillie e Gladion sem retirar do jogador o papel no confronto contra Necrozma.
 
 O jogador então atravessa para enfrentar Ultra Necrozma em uma boss battle e obter Necrozma por captura. O tratamento da forma após a batalha precisa respeitar a implementação local: não presumir que Ultra Necrozma pode permanecer como forma de armazenamento. Também não está definido se a captura ocorre durante o combate ou em uma etapa posterior.
 
-Perder, fugir quando permitido ou derrotar sem capturar não pode bloquear definitivamente o encerramento nem a obtenção do Pokémon. O mecanismo de repetição deve ser definido antes da implementação do encontro.
+Ultra Necrozma é um **boss de ameaça**. Derrota pode usar blackout ou retorno seguro para um checkpoint e exige nova tentativa; fugir quando permitido ou derrotar sem capturar também não pode tornar Necrozma permanentemente indisponível. O mecanismo de retry/captura deve ser definido antes da implementação do encontro.
 
 Após a resolução, ocorre o evento de despedida. Looker e Anabel permanecem no altar; os destinos e falas finais dos demais personagens ainda serão escritos.
 
@@ -888,6 +1537,9 @@ Uma luta por personagem não exige uma cópia por dificuldade ou por expedição
 
 Estas são diretrizes de execução para preservar a intenção do design, não sistemas adicionais de progressão.
 
+- Duelos narrativos de personagem avançam em vitória ou derrota sem blackout; armazenar o resultado apenas para diálogo, não como gate.
+- Blackthorn marca a transição para confrontos de ameaça: Ultra Beasts e bosses equivalentes podem usar blackout/retorno seguro e retry.
+
 - Distinguir encontro apresentado, batalha vencida, Pokémon capturado, missão resolvida e relatório entregue.
 - Não apagar progresso concluído ao perder uma batalha posterior.
 - Oferecer nova tentativa quando uma captura necessária não acontece.
@@ -910,16 +1562,19 @@ O elenco recorrente e o altar compartilhado favorecem reutilização de assets. 
 
 | Ideia anterior | Situação vigente |
 | --- | --- |
-| Quatro missões completas de Ultra Beasts antes da E4 | Substituída: apenas o incidente duplo de Blackthorn ocorre antes da E4. |
+| Qualquer incidente obrigatório de Ultra Beast antes da E4 | Substituído: Blackthorn foi movido para o pós-game; a campanha pré-Liga não contém ruptura obrigatória desta questline. |
 | Escritório em local indefinido ou Goldenrod | Substituída por Olivine. |
 | Revelação de Anabel | Ela já sabe ser Faller; conta sua história ao jogador na reunião antes do navio. |
 | Gladion ligado ao choro de Whitney | Substituído pela batalha e entrega do ovo em Violet. |
 | Assistente de Elm entrega o ovo | Substituído por Gladion; revisar ligação de Violet e indicação da Route 32. |
 | Lillie em Goldenrod | Evento implementado conforme o autor; vitória ou derrota permitem SquirtBottle, seguido de saída pela porta. FLAG_RECEIVED_SQUIRTBOTTLE controla a ausência. |
-| Vitória obrigatória contra Lillie em Goldenrod | Substituída por treino com continuidade em vitória e derrota. A regra de vitória em Violet permanece. |
-| Gladion sem encontro intermediário antes de Blackthorn | Cianwood aprovado: entrega de Fly com revanche opcional após Chuck. |
-| Fly condicionado a vencer Gladion | Não aprovado: vitória, derrota e recusa permitem receber a HM. |
+| Vitória obrigatória contra Lillie em Goldenrod | Substituída por continuidade em vitória e derrota. O V12 preserva a mesma filosofia aos demais duelos narrativos. |
+| Gladion sem encontro intermediário antes de Blackthorn | Substituído por Cianwood e pelo novo encontro obrigatório antes da Victory Road. |
+| Fly condicionado a vencer Gladion | Não aprovado: vitória ou derrota permitem receber a HM. A opção de recusa foi removida no V12. |
 | Aviso explícito de bolsa/HM na checagem inicial de Gladion | Substituído por fala de treino ocupado, sem iniciar a cena. |
+| Vitória obrigatória em Route 30/Violet/Dragon’s Den | Substituída: esses duelos concluem em vitória ou derrota, sem blackout. |
+| Gladion opcional na entrada da Liga | Removido: a luta foi movida para antes da Victory Road, é obrigatória e não exige vitória. |
+| Retry de Lillie após derrota no Dragon’s Den | Removido: a demonstração termina após a batalha independentemente do vencedor. |
 | Altares do Sol, Lua e Eclipse em locais separados | Substituída por um único local com estados diferentes. |
 | Sol à noite e Lua de dia | Corrigida: visual do Sol de dia e da Lua à noite, sem capturas nesses horários. |
 | Blacephalon com Lillie e Stakataka com Gladion | Substituída: ambas as missões têm Kukui em destaque. |
@@ -942,10 +1597,12 @@ O desenho geral está fechado. As pendências abaixo completam a implementação
 | Tema | Detalhe pendente |
 | --- | --- |
 | Escritório | Edifício e coordenadas em Olivine; presença dos NPCs antes e depois da história. |
-| Campanha | Fechar detalhes dos encontros ainda não implementados; Goldenrod tem equipe e resultados definidos nesta revisão. |
+| Campanha | Refatorar Route 30, Violet e Cianwood para a política V12; Goldenrod já é compatível. Implementar Dragon’s Den e Victory Road. |
 | Lillie em Goldenrod | Implementada conforme o autor; preservar o evento e registrar evidências de regressão quando houver manutenção, sem tratá-lo como tarefa nova. |
-| Gladion em Cianwood | Auditar entrega de Fly, controles e mapa; fechar equipe/níveis e tratamento de interação tardia antes da implementação. |
-| Blackthorn | Posição na sequência de eventos e suporte real à batalha com aliado contra duas Ultra Beasts. |
+| Gladion em Cianwood | Preservar a implementação existente, mas remover a recusa e garantir batalha obrigatória com vitória/derrota sem blackout. |
+| Lillie no Dragon’s Den | Integrar o roteiro V12; validar estado de batalha executada independentemente do vencedor, mapa, música, follower e retorno à sequência de Clair. |
+| Gladion / Victory Road | Escolher gatilho/mapa seguro antes do acesso, criar estado de conclusão independente do vencedor e fechar equipe de cinco com Silvally lead. |
+| Blackthorn | Pós-game, imediatamente antes da abertura formal do escritório de Olivine; verificar suporte real à batalha com aliado contra duas Ultra Beasts, restrição de captura e gatilho após E4. |
 | Missões | Objetivos locais, diálogos, pontos de encontro, níveis e parâmetros de boss. |
 | Capturas | Condição de conclusão da missão e mecanismo de revanche/recuperação. |
 | Beast Balls | Preço, estoque e eventual entrega inicial; nenhum valor está fechado. |
@@ -957,22 +1614,23 @@ O desenho geral está fechado. As pendências abaixo completam a implementação
 | Conteúdo total | Disponibilidade de Type: Null e Poipole/Naganadel fora desta sequência; auditar antes de adicionar fontes. |
 | Texto | Adaptar os roteiros autorais ao idioma existente do jogo e às caixas de texto; preservar falas já implementadas salvo correção necessária. |
 | Pool de Hoenn | Mapear uma luta por personagem aprovado, incluindo Steven, e identificar formatos/IDs preservados após limpeza. |
-| Cianwood tardio | Resolver presença do parceiro e falas quando o jogador adia Fly; não introduzir bloqueio de progressão. |
+| Cianwood tardio | Não é mais pendência de design; preservar o tratamento existente da implementação final e reabrir apenas se surgir regressão comprovada. |
 
 ## 15. Critérios de aceite do design implementado
 
-As caixas abaixo são critérios de verificação, não uma declaração de teste executado nesta revisão. O status de Goldenrod é implementado por informação do autor; Cianwood permanece pendente de auditoria e implementação.
+As caixas abaixo são critérios de verificação, não uma declaração de teste executado nesta revisão. Violet, Goldenrod e Cianwood possuem implementação anterior confirmada pelo autor, mas Violet e Cianwood precisam do retrofit V12. Dragon’s Den e Victory Road estão fechados em design e pendentes de implementação/teste.
 
 - [ ] Encontros de campanha preservam os personagens, locais e motivações definidos.
-- [ ] Vulpix de Alola da primeira Lillie está no nível 7; ela se aproxima antes da batalha e as entregas ocorrem depois da vitória.
+- [ ] Vulpix de Alola da primeira Lillie está no nível 7; a batalha é obrigatória e vitória ou derrota continuam para as entregas sem blackout.
 - [ ] Mystery Egg recebido em Violet nasce como Cosmog.
 - [ ] Elm aceita a família de Cosmog no time e entrega Eviolite uma única vez, reutilizando os estados existentes.
 - [ ] O arco se desenvolve em paralelo à campanha de Johto, preservando suas motivações e conclusão próprias.
-- [ ] Aquecimento de Gladion na Liga pode ser recusado.
-- [ ] Gladion usa um novo Type: Null em Violet, Cianwood e Blackthorn; o parceiro anterior não foi regredido.
-- [ ] Na Liga e no pós-E4, esse novo parceiro aparece como Silvally, mesmo se a batalha opcional for recusada.
-- [ ] A apresentação de Silvally precede o convite de aquecimento e não cria exigência adicional de vitória.
-- [ ] Gladion substitui o assistente na entrega de Violet, com batalha obrigatória anterior ao ovo e falas de encaminhamento atualizadas.
+- [ ] O antigo aquecimento opcional na entrada da Liga foi removido; Gladion enfrenta o jogador obrigatoriamente antes da Victory Road.
+- [ ] Gladion usa o novo Type: Null em Violet e Cianwood; o parceiro anterior não foi regredido.
+- [ ] Type: Null permanece fora da Poké Ball ao lado de Gladion em Violet e Cianwood; após a evolução, Silvally assume essa presença visual em Victory Road, Blackthorn e todas as aparições posteriores de Gladion.
+- [ ] Silvally é apresentado antes da Victory Road e permanece com Gladion em Blackthorn e no pós-E4, independentemente dos resultados anteriores.
+- [ ] A apresentação de Silvally precede a batalha obrigatória de Victory Road e não transforma Gladion em gate de acesso.
+- [ ] Gladion substitui o assistente em Violet; a batalha é obrigatória, mas vitória e derrota permitem a entrega do ovo sem blackout.
 - [ ] O antigo encontro de Gladion com Whitney foi removido do roteiro.
 - [ ] Lillie realiza a revanche e entrega o SquirtBottle no evento da floricultura, preservando os requisitos da entrega.
 - [ ] Goldenrod permite entrega em vitória e derrota, cura antes/depois e mantém Vulpix Alola sem evolução.
@@ -980,13 +1638,25 @@ As caixas abaixo são critérios de verificação, não uma declaração de test
 - [ ] Falha na entrega não esconde NPCs; retoma só a entrega na mesma visita, sem prometer persistência de temporários após reload.
 - [ ] Cianwood reutiliza a entrega original de Fly sem nova flag/variável persistente e sem duplicar a fonte da esposa de Chuck.
 - [ ] Checagem inicial de Fly é silenciosa; impedimento usa fala de treino ocupado antes da cena longa ou batalha.
-- [ ] Gladion entrega Fly após vitória, derrota ou recusa; não exige flag de treinador vencido.
+- [ ] Gladion entrega Fly após vitória ou derrota; o V12 mantém removida a recusa e não usa flag de trainer vencido como gate.
 - [ ] Type: Null sai na frente e Gladion o acompanha; ambos permanecem ausentes após entrega.
-- [ ] Evento tardio de Cianwood não bloqueia Fly nem contradiz a evolução do parceiro; auditoria documenta a solução.
+- [ ] Evento tardio de Cianwood não bloqueia Fly nem contradiz a evolução do parceiro; preservar a solução já implementada.
 - [ ] Esposa de Chuck, follower, música, controles e posições pós-batalha permanecem corretos.
+- [ ] Dragon’s Den preserva as cinco perguntas, avaliação e recompensas vanilla e adiciona exatamente uma reação/resposta de Lillie após cada escolha do jogador, sem permitir que o jogador responda por ela.
+- [ ] As cinco perguntas geram 15 branches locais (3 por pergunta), convergindo imediatamente para a próxima pergunta; não existem 243 combinações persistentes.
+- [ ] As respostas de Lillie nunca alteram pontuação, contador, Dratini ou qualquer outro estado/recompensa vanilla do teste.
+- [ ] No Dragon’s Den, Alolan Ninetales já está evoluída antes da chegada do jogador e permanece fora da Poké Ball ao lado de Lillie durante reencontro, quiz e transição para a batalha.
+- [ ] Após o Dragon’s Den, Ninetales continua fora da Poké Ball em todas as aparições posteriores de Lillie, inclusive nas Rift Missions e cenas finais em que ela estiver presente.
+- [ ] A batalha de Dragon’s Den usa Ribombee, Clefairy, Comfey e Alolan Ninetales, com Ninetales como ás e identidade de controle/adaptação.
+- [ ] Derrota contra Lillie no Dragon’s Den não repete Clair nem o quiz e conclui a demonstração sem blackout ou retry obrigatório.
+- [ ] Vitória ou derrota contra Lillie devolvem o fluxo ao estado correto de Clair e Lillie deixa o Shrine normalmente.
+- [ ] A ordem final pré-Liga inclui Gladion antes da Victory Road: Clair → Dragon’s Den/Lillie → Victory Road Gladion → Victory Road → Liga, sem ruptura obrigatória de Ultra Beast.
+- [ ] Gladion antes da Victory Road usa Silvally como lead planejado, batalha obrigatória sem blackout e saída definitiva da cena em vitória ou derrota.
+- [ ] Victory Road permanece acessível independentemente do resultado e o encontro antigo na entrada da Liga não existe mais.
 - [ ] Diálogos seguem o guia de voz; diferenças entre SM, USUM e adaptações próprias permanecem explícitas.
-- [ ] Blackthorn contém a batalha jogador + Gladion contra Buzzwole + Pheromosa e a participação de Looker.
-- [ ] Escritório de Olivine inicia a sequência somente após a E4.
+- [ ] Blackthorn só dispara no pós-game e contém a batalha jogador + Gladion/Silvally contra Buzzwole + Pheromosa, com participação de Looker; **Silvally já está fora da Poké Ball ao lado de Gladion quando a crise começa**. Derrota usa recuperação de ameaça e exige retry; não avança o incidente.
+- [ ] Ao resolver Blackthorn, Looker encaminha o jogador ao escritório de Olivine.
+- [ ] Escritório de Olivine inicia as nove missões somente após a E4 e a resolução de Blackthorn.
 - [ ] Nove missões seguem a ordem e os acompanhantes da tabela, com Looker em todas.
 - [ ] Há retorno ao escritório após cada missão e venda de Beast Balls desde o começo.
 - [ ] Após Nihilego e apresentação de Solgaleo OU Lunala no time, a reunião libera o navio.
@@ -995,7 +1665,7 @@ As caixas abaixo são critérios de verificação, não uma declaração de test
 - [ ] Existe apenas um altar físico, com visual diurno/noturno e sem capturas de Solgaleo/Lunala.
 - [ ] Um dos dois lendários permite abrir o portal em qualquer horário.
 - [ ] Não há presente de Cosmoem nem evolução automática no altar.
-- [ ] Lusamine é enfrentada apenas uma vez na história, perto da travessia final.
+- [ ] Lusamine é enfrentada apenas uma vez na história, perto da travessia final. Vitória ou derrota continuam sem blackout e levam à aceitação do plano coletivo.
 - [ ] Necrozma pode ser obtido e falhas não bloqueiam permanentemente sua captura.
 - [ ] Despedida deixa Looker e Anabel no altar.
 - [ ] Anabel revela sua condição de Faller na reunião anterior ao navio, sem uma flag exclusiva.
@@ -1007,30 +1677,39 @@ As caixas abaixo são critérios de verificação, não uma declaração de test
 - [ ] Pool preserva uma luta de cada personagem de Hoenn aprovado, incluindo Steven, sem variantes de dificuldade adicionais.
 - [ ] Repetição do loop não depende de apagar flags de vitória da campanha.
 - [ ] Espaço para o ovo em Violet considera party e PC antes da batalha.
-- [ ] Regras de derrota e recusa são aplicadas por encontro, sem mudar a abertura ou Violet por analogia com Goldenrod.
+- [ ] Todos os duelos narrativos V12 salvam o resultado e continuam sem blackout; progressão não depende de vitória nem de menu de recusa.
 - [ ] Memória, assets e persistência são validados na ROM local, sem presumir suporte pelo design.
 
 ## 16. Entrega por etapas
 
-1. Preservar os eventos informados como implementados em Violet e Goldenrod; usar seus contratos como referência de regressão, não recomeçar sua implementação.
-2. Auditar Cianwood com a seção 4.7; fechar equipe e limitações reais antes de implementar a cena.
-3. Desenvolver os encontros ainda pendentes de campanha, com resultados e recuperação próprios.
-4. Implementar escritório, missões, expedição e clímax conforme os contratos aprovados.
-5. Integrar o inventário de treinadores preservados ao loop repetível e validar acesso e repetição.
+1. Refatorar os duelos já existentes de campanha para a política V12: Route 30 e Violet passam a continuar após derrota; Cianwood perde a opção de recusa e continua em vitória/derrota. Preservar equipes, mapas e entregas já implementados.
+2. Implementar Lillie no Dragon’s Den conforme a seção 4.8: primeiro auditar os cinco retornos de escolha do quiz, inserir os 15 branches locais sem tocar na avaliação vanilla e então usar estado de **batalha executada** — não de vitória — para devolver o fluxo a Clair.
+3. Implementar Gladion antes da Victory Road conforme a seção 4.9; fechar equipe de cinco e gatilho seguro sem criar gate de acesso.
+4. Preservar Victory Road e Liga sem incidente obrigatório de Ultra Beast e sem segundo encontro de Gladion na entrada da Liga.
+5. Implementar Blackthorn como primeiro confronto de ameaça pós-game; derrota deve usar recuperação/retry e não avançar a resolução.
+6. Implementar escritório, nove missões, expedição, duelo de Lusamine sem blackout e boss de Ultra Necrozma com retry conforme os contratos aprovados.
+7. Integrar o inventário de treinadores preservados ao loop repetível e validar acesso e repetição.
 
-Uma divisão prática de implementação é: encontros de campanha; escritório e progressão das nove missões; expedição/navio/Fly/altar; clímax e despedida; loop repetível. Cada etapa deve entregar seus gatilhos, textos, batalhas e recuperação de falhas de forma verificável antes da próxima.
+Uma divisão prática de produção continua sendo: encontros de campanha; Blackthorn/escritório e progressão das nove missões; expedição/navio/Fly/altar; clímax e despedida; loop repetível. Cada etapa deve entregar gatilhos, textos, batalhas e recuperação de falhas de forma verificável antes da próxima.
 
 Esta divisão é uma recomendação de produção. Não autoriza alterar o elenco, a ordem das missões, a condição de evolução exigida por Looker ou a estrutura do loop.
 
-## 17. Registro da revisão V8
+## 17. Registro da revisão V12
 
-- Consolidado o evento de Lillie já implementado, segundo o autor: roteiro, música, motivação, equipe, vitória/derrota, checagem prévia e saída definitiva por FLAG_RECEIVED_SQUIRTBOTTLE.
-- Removida a exigência antiga de vitória em Goldenrod e a afirmação de que sua equipe ainda não estava definida.
-- Incluído Gladion em Cianwood na campanha e no arco de Type: Null, com roteiro completo “O caminho de volta” e entrega de Fly.
-- Registradas recusa, derrota, checagem silenciosa, saída conjunta e exigência de reaproveitar o controle existente sem novas flags.
-- Mantidas como pendências reais a auditoria de Fly, equipe de Gladion e continuidade em interações tardias; não há alegação de implementação dessa cena.
-- Preservados escritório, nove missões, expedição, altar, Necrozma e loop repetível do V7.
+- Preservada a política global de duelos narrativos sem blackout: vitória ou derrota continuam a história; bosses de ameaça permanecem sujeitos a retry.
+- Preservado o Dragon’s Den compartilhado do V12, com cinco perguntas vanilla e 15 branches locais de Lillie.
+- Adicionada uma regra visual de continuidade para parceiros recorrentes fora da Poké Ball.
+- **Type: Null permanece fora da Poké Ball ao lado de Gladion em Violet e Cianwood.**
+- Depois da evolução, **Silvally** assume a mesma presença visual em Victory Road e continua fora da Poké Ball em todas as aparições posteriores de Gladion.
+- **Alolan Vulpix permanece fora da Poké Ball com Lillie** nos encontros anteriores ao Dragon’s Den, incluindo Route 30 e Goldenrod.
+- No Dragon’s Den, a evolução já aconteceu fora de cena: **Alolan Ninetales está fora da Poké Ball desde a chegada do jogador**, participa visualmente do quiz e sai junto com Lillie.
+- A partir do Dragon’s Den, **Ninetales permanece fora da Poké Ball em todas as aparições posteriores de Lillie**, inclusive Rift Missions, reunião e clímax quando aplicável.
+- Mantida Ninetales como ás da batalha do Dragon’s Den; não há cutscene obrigatória de evolução.
+- Acrescentadas exigências de posicionamento, saída sincronizada e compatibilidade com follower, warps, objetos vanilla e limites de objetos dos mapas.
+- Preservados Gladion antes da Victory Road, Blackthorn pós-game, escritório de Olivine, nove missões, altar único, clímax e loop repetível.
 
-### Complementos da revisão integral
+### Nota de autoridade da V12
 
-Revisadas todas as seções do V7 em relação às decisões posteriores. Acrescentados status por etapa, matriz de resultados, espaço party/PC em Violet, voz de Gladion em Cianwood, dificuldade única, distinção entre HM e destino de Fly, definição do Eclipse como clímax do mesmo altar, reserva de treinadores de Hoenn/Steven e regras de repetição do loop. Não foi executada auditoria de código nem declarado novo resultado de build.
+O V12 substitui o V9 para decisões de design. Para cenas já implementadas, preservar dados técnicos que não foram alterados — equipes, mapas, assets e entregas — mas refatorar branches incompatíveis com a nova política de resultado. Uma implementação antiga não prevalece sobre a decisão V12 de permitir continuidade após derrota.
+
+O contrato editorial principal é: **duelo de personagem testa/revela relação; boss de ameaça precisa ser resolvido**. Assim, perder para Lillie, Gladion ou Lusamine pode fazer parte da história sem punição estrutural, enquanto perder para Ultra Beasts, Ultra Necrozma ou outro boss de ameaça mantém o conflito pendente e exige recuperação/retry.

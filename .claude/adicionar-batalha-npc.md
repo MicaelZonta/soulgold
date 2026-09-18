@@ -105,11 +105,25 @@ nem todo `TRAINER_UNUSED_*` tem a flag livre neste projeto.
 
 #### IDs realmente livres
 
+> ⚠️ **Não decore faixa — ela envelhece.** A tabela abaixo já ficou
+> desatualizada uma vez: `968` e `969` foram consumidos por
+> `TRAINER_LILLIE_GOLDENROD` e `TRAINER_GLADION_CIANWOOD` depois que este
+> guia foi escrito. Rode sempre:
+>
+> ```bash
+> python3 .claude/skills/adicionar-batalha-npc/ids_livres.py
+> ```
+>
+> Ele cruza `opponents.h` + `trainers.party` + `flags.h` e lista o que está
+> livre hoje. Na última verificação: **388 IDs livres**, sendo as maiores
+> faixas contíguas `970-1055` (86) e `951-963` (13).
+
 | Faixa de ID | Flags | Status |
 |-------------|-------|--------|
-| `280`, `951-963`, `968-1055` | `0x500+ID`, ainda intocadas | ✅ **use estes** (102 slots) |
+| `951-963`, `970-1055` | `0x500+ID`, ainda intocadas | ✅ maiores blocos contíguos |
+| espalhados em `1-848` | idem | ✅ livres também (ver o script) |
 | `1056-1163` | `0x920-0x98B` foram **reaproveitadas** como flags normais | ❌ **não use** |
-| `1164` (`TRAINER_UNUSED_300`) | fora do range | ❌ não use |
+| `1164` (`TRAINER_UNUSED_300`) | fora do range (`MAX_TRAINERS_COUNT`) | ❌ não use |
 
 O bloco `RECLAIMED_TRAINER_FLAGS_START/END` (`include/constants/flags.h:1573`) diz isso
 explicitamente — `// unused trainer IDs 1056-1163` — e as flags dessa faixa hoje são

@@ -9,13 +9,23 @@ CianwoodCity_RemoveEusine::
 	setflag FLAG_HIDE_CIANWOOD_EUSINE
 	end
 
+@ Gated on VAR_TEMP_1 (reset to 0 by CityEnter below on every map entry), not
+@ on a flag/var that is constantly true. MAP_SCRIPT_ON_FRAME_TABLE
+@ conditions are re-checked by TryRunOnFrameMapScript() every single frame
+@ the map is loaded, and merely queuing a script that frame
+@ (ScriptContext_SetupScript) locks the player's field controls for it -
+@ PlayerStep only runs on frames where no script gets queued. Gating
+@ directly on a condition that holds for most of the game (e.g. "Fly not
+@ received yet") would re-lock controls every single frame forever and
+@ PlayerStep would never run again: the player stuck in place the instant
+@ they enter Cianwood City, indistinguishable from the game freezing.
+@ Gating on VAR_TEMP_1 instead - the very first thing
+@ CianwoodCity_EventScript_GladionAutoTrigger does is mark it 1 - makes this
+@ fire at most once per visit.
 CianwoodCity_OnFrame::
+	map_script_2 VAR_TEMP_1, 0, CianwoodCity_EventScript_GladionAutoTrigger
 	.2byte 0
 
-@ Fly used to be handed over automatically the first time this map script ran
-@ with VAR_GETFLY == 1 (CianwoodCity_EventScript_Flytrigger, now removed).
-@ The handoff is manual now, through Gladion (see the Gladion cutscene below),
-@ so nothing should fire on its own here anymore.
 CianwoodCity_EventScript_CityEnter::
 	setflag FLAG_VISITED_CIANWOOD_CITY
 	callnative SetTimeBasedEncounters
@@ -26,7 +36,7 @@ CianwoodCity_EventScript_CityEnter::
 	end
 
 CianwoodCity_EventScript_InitializeSuicune::
-	call CianwoodCity_EventScript_ApplyGladionSceneObjects
+	call CianwoodCity_EventScript_ApplyGladionVisibility
 	goto_if_ge VAR_SUICUNE_ENCOUNTERS, 2, CianwoodCity_EventScript_InitializeNothing
 	clearflag FLAG_HIDE_CIANWOOD_SUICUNE
 	setflag FLAG_HIDE_CIANWOOD_EUSINE
@@ -38,24 +48,92 @@ CianwoodCity_EventScript_InitializeNothing::
 	setvar VAR_TEMP_0, 1
 	end
 
-@ Runs on every entry into this map (MAP_SCRIPT_ON_LOAD, via
-@ CianwoodCity_EventScript_InitializeSuicune above). Gladion and Type: Null
-@ only exist in their map.json template (flag "0", always spawned); this is
-@ what actually gates their presence to VAR_GETFLY == 1, by removing them
-@ again on every load where that isn't true. While they're around, the
-@ Youngster/Battle Girl decoratives are removed instead, so Cianwood's peak
-@ object-event count doesn't grow: see docs/GLADION_CIANWOOD_REFINAMENTO_COMPLETO_V3.md
-@ section 6. Neither swap needs a new flag: both sides are recomputed here,
-@ every load, straight from VAR_GETFLY.
-CianwoodCity_EventScript_ApplyGladionSceneObjects::
-	goto_if_eq VAR_GETFLY, 1, CianwoodCity_EventScript_ApplyGladionSceneObjects_Active
-	removeobject LOCALID_CIANWOOD_GLADION
-	removeobject LOCALID_CIANWOOD_TYPENULL
+@ Runs on MAP_SCRIPT_ON_LOAD (via InitializeSuicune above), which is BEFORE
+@ this map's object events spawn (TrySpawnObjectEvents). Gladion/Type: Null
+@ share one map.json template flag, FLAG_HIDE_CIANWOOD_GLADION, which is
+@ the only thing the object-spawn system actually checks on every
+@ camera-triggered (re)spawn attempt (UpdateObjectEventsForCameraUpdate ->
+@ TrySpawnObjectEvents, src/event_object_movement.c) - a script that just
+@ removeobjects them once is not enough, because that same camera system
+@ respawns any in-view object whose template flag is clear every time it
+@ scrolls back into view, independent of anything a script already did.
+@ FLAG_HIDE_CIANWOOD_GLADION itself carries no meaning - it is recomputed
+@ here, every load, straight from FLAG_DEFEATED_CIANWOOD_GYM (set in
+@ CianwoodGym_EventScript_ChuckVictory) and FLAG_RECEIVED_HM_FLY (set once
+@ the cutscene actually delivers the HM), which remain the only real source
+@ of truth for whether Gladion is around.
+CianwoodCity_EventScript_ApplyGladionVisibility::
+	goto_if_unset FLAG_DEFEATED_CIANWOOD_GYM, CianwoodCity_EventScript_ApplyGladionVisibility_Hide
+	goto_if_set FLAG_RECEIVED_HM_FLY, CianwoodCity_EventScript_ApplyGladionVisibility_Hide
+	clearflag FLAG_HIDE_CIANWOOD_GLADION
 	return
 
-CianwoodCity_EventScript_ApplyGladionSceneObjects_Active::
+CianwoodCity_EventScript_ApplyGladionVisibility_Hide::
+	setflag FLAG_HIDE_CIANWOOD_GLADION
+	return
+
+@ Runs at most once per visit (see the VAR_TEMP_1 guard above). Gladion/
+@ Type: Null's visibility itself is already handled reliably by
+@ CianwoodCity_EventScript_ApplyGladionVisibility on every load - this only
+@ needs to decide whether to launch the cutscene this visit.
+CianwoodCity_EventScript_GladionAutoTrigger::
+	setvar VAR_TEMP_1, 1
+	goto_if_unset FLAG_DEFEATED_CIANWOOD_GYM, CianwoodCity_EventScript_GladionAutoTrigger_End
+	goto_if_set FLAG_RECEIVED_HM_FLY, CianwoodCity_EventScript_GladionAutoTrigger_End
+	@ checkitemspace gates before lockall/dialogue: a full bag just skips the
+	@ cutscene this visit (Gladion/Type: Null stay visible, per the flag
+	@ above) - leaving and re-entering the map retries it, instead of the
+	@ game replaying the whole cutscene mid-visit.
+	checkitemspace ITEM_HM_FLY, 1
+	goto_if_eq VAR_RESULT, FALSE, CianwoodCity_EventScript_GladionAutoTrigger_End
+	lockall
+	call CianwoodCity_EventScript_HideDecorativesForGladionScene
+	goto CianwoodCity_EventScript_GladionIntro
+
+CianwoodCity_EventScript_GladionAutoTrigger_End::
+	end
+
+@ Hides every other Cianwood City decorative for the duration of the scene
+@ (only Gladion, Type: Null and Chuck's wife stay), both for the "all NPCs
+@ gone during the cutscene" staging and to free object-event slots. Only
+@ touches objects whose map.json flag is the dummy "0" - removeobject also
+@ FlagSets whatever flag is wired to the object it removes
+@ (RemoveObjectEventByLocalIdAndMap in src/event_object_movement.c), so this
+@ deliberately excludes Suicune/Eusine (FLAG_HIDE_CIANWOOD_SUICUNE/EUSINE -
+@ their own encounter state), the two breakable rocks (FLAG_TEMP_1/2 -
+@ generic scratch flags reused all over the ROM), the Engineer
+@ (FLAG_AMPHAROS_HEALED - an unrelated achievement flag) and the item ball
+@ (FLAG_CIANWOOD_GOLDEN_BOTTLECAP - "already picked up"), and Cameron
+@ (FLAG_HIDE_CAMERON - his own quest state). Removing any of those would
+@ silently set a flag that means something else entirely. The objects
+@ below have no named LOCALID constant in map.json, so they're addressed by
+@ their plain local id (matches the numbering in CianwoodCity_ObjectEvents).
+CianwoodCity_EventScript_HideDecorativesForGladionScene::
 	removeobject LOCALID_CIANWOOD_YOUNGSTER
 	removeobject LOCALID_CIANWOOD_BATTLEGIRL
+	removeobject 3  @ Fat Man (PokefanM)
+	removeobject 7  @ Staryu
+	removeobject 8  @ Staryu
+	removeobject 9  @ Staryu
+	removeobject 10 @ Binacle
+	removeobject 11 @ Crabrawler
+	removeobject 12 @ Geodude
+	removeobject 13 @ Geodude
+	removeobject 14 @ Pidgeotto
+	return
+
+CianwoodCity_EventScript_RestoreDecorativesAfterGladionScene::
+	addobject LOCALID_CIANWOOD_YOUNGSTER
+	addobject LOCALID_CIANWOOD_BATTLEGIRL
+	addobject 3
+	addobject 7
+	addobject 8
+	addobject 9
+	addobject 10
+	addobject 11
+	addobject 12
+	addobject 13
+	addobject 14
 	return
 
 CianwoodCity_EventScript_Test::
@@ -65,21 +143,20 @@ CianwoodCity_EventScript_Test::
 	release
 	end
 
-@ VAR_GETFLY is the single source of truth here (see the Gladion cutscene
-@ below): this no longer hands out the HM itself during the normal story
-@ window. GLD-01 (audit finding: this used to give the HM without ever
-@ syncing VAR_GETFLY to 2, so the old OnFrame trigger could hand out a
-@ second one) is fixed by removing that direct handoff entirely, not by
-@ patching it - she now points the player to Gladion instead, and only
-@ falls back to delivering the HM herself if the player reaches her after
-@ the Gladion/Type: Null window has already closed (FLAG_SYS_GAME_CLEAR,
-@ used here as the "post-League" guard since there is no dedicated
-@ post-Blackthorn flag yet; see docs/GLADION_CIANWOOD_REFINAMENTO_COMPLETO_V3.md
-@ section 7).
+@ FLAG_RECEIVED_HM_FLY is the single source of truth here (see the Gladion
+@ cutscene below, and CianwoodCity_EventScript_ApplyGladionVisibility): this
+@ no longer hands out the HM itself during the normal story window. She now
+@ points the player to Gladion instead, and only falls back to delivering
+@ the HM herself if the player reaches her after the Gladion/Type: Null
+@ window has already closed (FLAG_SYS_GAME_CLEAR, used here as the
+@ "post-League" guard since there is no dedicated post-Blackthorn flag yet;
+@ see docs/GLADION_CIANWOOD_REFINAMENTO_COMPLETO_V3.md section 7) - Gladion's
+@ own auto-trigger already covers every other visit, so this is mostly a
+@ defensive backstop at this point.
 CianwoodCity_EventScript_ChucksWife::
 	lock
 	faceplayer
-	goto_if_eq VAR_GETFLY, 2, CianwoodCity_EventScript_ChucksWifeAlreadyHasFly
+	goto_if_set FLAG_RECEIVED_HM_FLY, CianwoodCity_EventScript_ChucksWifeAlreadyHasFly
 	goto_if_unset FLAG_BADGE05_GET, CianwoodCity_EventScript_ChucksWifeBeforeBadge
 	goto_if_set FLAG_SYS_GAME_CLEAR, CianwoodCity_EventScript_ChucksWifeLateDelivery
 	msgbox CianwoodCity_Text_ChucksWifePointToGladion, MSGBOX_DEFAULT
@@ -103,9 +180,9 @@ CianwoodCity_EventScript_ChucksWifeAlreadyHasFly::
 @ Late/deferred path only (player never crossed paths with Gladion before
 @ finishing the League): same delivery contract as Gladion's own
 @ (checkitemspace first, reconcile if the HM is somehow already present,
-@ confirm giveitem's result before marking VAR_GETFLY complete), just
-@ without the choreography since Gladion/Type: Null are not part of this
-@ branch.
+@ confirm giveitem's result before marking FLAG_RECEIVED_HM_FLY complete),
+@ just without the choreography since Gladion/Type: Null are not part of
+@ this branch.
 CianwoodCity_EventScript_ChucksWifeLateDelivery::
 	checkitemspace ITEM_HM_FLY, 1
 	goto_if_eq VAR_RESULT, FALSE, CianwoodCity_EventScript_ChucksWifeLateDeliveryFailed
@@ -115,7 +192,7 @@ CianwoodCity_EventScript_ChucksWifeLateDelivery::
 	giveitem ITEM_HM_FLY
 	goto_if_eq VAR_RESULT, FALSE, CianwoodCity_EventScript_ChucksWifeLateDeliveryFailed
 CianwoodCity_EventScript_ChucksWifeLateDeliveryReconcile::
-	setvar VAR_GETFLY, 2
+	setflag FLAG_RECEIVED_HM_FLY
 	msgbox CianwoodCity_Text_ChucksWifeFlySpeech, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -164,19 +241,14 @@ CianwoodCity_Text_ChucksWifeLateDeliveryFailed:
 	.string "Come back in a little while.$"
 
 @ ---------------------------------------------------------------------------
-@ Gladion at Cianwood: manual Fly handoff after Chuck.
-@ See docs/GLADION_CIANWOOD_REFINAMENTO_COMPLETO_V3.md for the full design.
+@ Gladion at Cianwood: forced automatic Fly handoff right after Chuck.
+@ Entered only from CianwoodCity_EventScript_GladionAutoTrigger above (see
+@ CianwoodCity_OnFrame) - there is no player-triggered entry point anymore,
+@ so there is no yes/no about starting it and no way to walk away mid-scene
+@ (lockall is already active by the time this runs).
 @
-@ Presence: Gladion (LOCALID_CIANWOOD_GLADION) and Type: Null
-@ (LOCALID_CIANWOOD_TYPENULL) are gated purely by VAR_GETFLY == 1, recomputed
-@ on every map load by CianwoodCity_EventScript_ApplyGladionSceneObjects
-@ above - no flag of their own. Declining, winning, or losing the rematch all
-@ lead to the same delivery step; only VAR_GETFLY (0/1/2, already existing)
-@ tracks completion.
-@
-@ VAR_TEMP_1/2/3 are scratch for this single visit only (CianwoodCity_EventScript_CityEnter
+@ VAR_TEMP_2/3 are scratch for this single visit only (CianwoodCity_EventScript_CityEnter
 @ zeroes them on every entry, so no other script reusing these slots can leak in):
-@   VAR_TEMP_1 - 0 = intro not played yet this visit, 1 = intro done, 2 = delivery pending
 @   VAR_TEMP_2 - battle outcome, copied right after GetBattleOutcome
 @   VAR_TEMP_3 - B_FLAG_NO_WHITEOUT state from before the battle, to restore exactly
 @
@@ -184,32 +256,6 @@ CianwoodCity_Text_ChucksWifeLateDeliveryFailed:
 @ (17,48), Chuck's wife (18,47, already her existing position). Movement
 @ scripts here are a first pass, not confirmed against the live collision map.
 @ ---------------------------------------------------------------------------
-
-CianwoodCity_EventScript_Gladion::
-	lock
-	goto_if_ne VAR_GETFLY, 1, CianwoodCity_EventScript_GladionAlreadyGone
-	goto_if_eq VAR_TEMP_1, 2, CianwoodCity_EventScript_GladionRetryDelivery
-	checkitemspace ITEM_HM_FLY, 1
-	goto_if_eq VAR_RESULT, FALSE, CianwoodCity_EventScript_GladionBusy
-	lockall
-	goto_if_eq VAR_TEMP_1, 1, CianwoodCity_EventScript_GladionChallenge
-	goto CianwoodCity_EventScript_GladionIntro
-	end
-
-@ Defensive only: the object shouldn't be on the map at all once VAR_GETFLY
-@ leaves 1 (see CianwoodCity_EventScript_ApplyGladionSceneObjects).
-CianwoodCity_EventScript_GladionAlreadyGone::
-	release
-	end
-
-CianwoodCity_EventScript_GladionBusy::
-	faceplayer
-	msgbox CianwoodCity_Text_GladionBusy1, MSGBOX_DEFAULT
-	msgbox CianwoodCity_Text_GladionBusy2, MSGBOX_DEFAULT
-	closemessage
-	turnobject LOCALID_CIANWOOD_GLADION, DIR_SOUTH
-	release
-	end
 
 CianwoodCity_EventScript_GladionIntro::
 	turnobject LOCALID_CIANWOOD_GLADION, DIR_EAST
@@ -225,17 +271,43 @@ CianwoodCity_EventScript_GladionIntro::
 	applymovement LOCALID_CIANWOOD_GLADION, Common_Movement_ExclamationMark
 	waitmovement 0
 	playbgm MUS_HG_ENCOUNTER_RIVAL, TRUE
-	faceplayer
+
+	@ Player steps off the door tile down into the plaza, to (15,46).
+	applymovement OBJ_EVENT_ID_PLAYER, CianwoodCity_Movement_PlayerStepForward
+	waitmovement 0
+
+	@ Both walk over together (queued before one waitmovement, so they move
+	@ side by side instead of one after the other): Gladion (17,47) ->
+	@ (15,47), Type: Null (17,48) -> (14,47), ending up on Gladion's west,
+	@ same row. Step-by-step they never want the same tile at the same time.
+	applymovement LOCALID_CIANWOOD_GLADION, CianwoodCity_Movement_GladionToPlayer
+	applymovement LOCALID_CIANWOOD_TYPENULL, CianwoodCity_Movement_TypeNullToGladionsWest
+	waitmovement 0
+	@ The player is NORTH of both of them (they came up from the beach side,
+	@ the player came down out of the gym door) - so facing the player is
+	@ DIR_NORTH. Facing south here is what had them staring away from the
+	@ player the whole scene.
+	turnobject LOCALID_CIANWOOD_GLADION, DIR_NORTH
+	turnobject LOCALID_CIANWOOD_TYPENULL, DIR_NORTH
 	msgbox CianwoodCity_Text_GladionLookWhoItIs, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionBeatChuck, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_WifeLostTrackOfTime, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_WifeBroughtHM, MSGBOX_DEFAULT
 	closemessage
 
+	@ She heads inside to check on Chuck. The door tile (15,44) is solid in
+	@ the collision map and NPCs can't trigger a real door warp anyway, so
+	@ she walks to (15,45) directly below it, turns to face the door
+	@ (face_up, end of her movement), and the fade covers her vanishing -
+	@ same trick already used for Erika in CeladonCity/scripts.inc.
 	turnobject LOCALID_CIANWOOD_CHUCKSWIFE, DIR_WEST
 	delay 12
-	applymovement LOCALID_CIANWOOD_CHUCKSWIFE, CianwoodCity_Movement_ChucksWifeToSafeSpot
+	applymovement LOCALID_CIANWOOD_CHUCKSWIFE, CianwoodCity_Movement_ChucksWifeToGymDoor
 	waitmovement 0
+	delay 12
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject LOCALID_CIANWOOD_CHUCKSWIFE
+	fadescreenswapbuffers FADE_FROM_BLACK
 
 	msgbox CianwoodCity_Text_GladionLillieGoldenrod, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionFlowersBattle, MSGBOX_DEFAULT
@@ -247,32 +319,40 @@ CianwoodCity_EventScript_GladionIntro::
 	msgbox CianwoodCity_Text_GladionWholeMorning, MSGBOX_DEFAULT
 	closemessage
 
-	turnobject LOCALID_CIANWOOD_GLADION, DIR_SOUTH
+	@ Talking about Type: Null now (west of him) - Type: Null looks back up
+	@ at Gladion (east) while he does, then both settle back on the player.
+	turnobject LOCALID_CIANWOOD_GLADION, DIR_WEST
+	turnobject LOCALID_CIANWOOD_TYPENULL, DIR_EAST
 	msgbox CianwoodCity_Text_GladionEveryTimeWater, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionThenFollowing, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionStayedLonger, MSGBOX_DEFAULT
 	closemessage
 
 	delay 24
-	faceplayer
+	turnobject LOCALID_CIANWOOD_GLADION, DIR_NORTH
+	turnobject LOCALID_CIANWOOD_TYPENULL, DIR_NORTH
 	msgbox CianwoodCity_Text_GladionGoodMorning, MSGBOX_DEFAULT
 	closemessage
 
-	setvar VAR_TEMP_1, 1
 	goto CianwoodCity_EventScript_GladionChallenge
 
+@ No choice offered: the fight is forced (see the auto-trigger this is
+@ entered from). CianwoodCity_Text_GladionBattleQuestion is shown as a
+@ statement, not an actual MSGBOX_YESNO prompt.
 CianwoodCity_EventScript_GladionChallenge::
-	turnobject LOCALID_CIANWOOD_GLADION, DIR_SOUTH
-	applymovement LOCALID_CIANWOOD_TYPENULL, CianwoodCity_Movement_TypeNullApproach
+	@ Asking Type: Null if he remembers you - looks west at him first, then
+	@ back at you (DIR_NORTH) for the rest. Type: Null perks up in place
+	@ rather than walking anywhere, so he stays on Gladion's west for the
+	@ whole conversation.
+	turnobject LOCALID_CIANWOOD_GLADION, DIR_WEST
+	applymovement LOCALID_CIANWOOD_TYPENULL, CianwoodCity_Movement_TypeNullPerkUp
 	waitmovement 0
-	faceplayer
 	msgbox CianwoodCity_Text_GladionRememberTrainer, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionWantToFindOut, MSGBOX_DEFAULT
+	turnobject LOCALID_CIANWOOD_GLADION, DIR_NORTH
 	msgbox CianwoodCity_Text_GladionRematchBeforeLeave, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionFlyEitherWay, MSGBOX_DEFAULT
-	msgbox CianwoodCity_Text_GladionBattleQuestion, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, CianwoodCity_EventScript_GladionDecline
-
+	msgbox CianwoodCity_Text_GladionBattleQuestion, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionFirstHeal, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionReadyDontHoldBack, MSGBOX_DEFAULT
 	closemessage
@@ -296,15 +376,11 @@ CianwoodCity_EventScript_GladionKeepWhiteoutOff::
 	goto_if_eq VAR_TEMP_2, B_OUTCOME_FORFEITED, CianwoodCity_EventScript_GladionForfeit
 	goto CianwoodCity_EventScript_GladionUnexpectedOutcome
 
-CianwoodCity_EventScript_GladionDecline::
-	msgbox CianwoodCity_Text_GladionFineAnotherTime, MSGBOX_DEFAULT
-	closemessage
-	goto CianwoodCity_EventScript_GladionDeliver
-
 @ B_OUTCOME_WON: Gladion's own line (CianwoodCity_Text_GladionDefeatedByPlayer)
 @ already played automatically when his last Pokémon fainted.
 CianwoodCity_EventScript_GladionPlayerWon::
-	turnobject LOCALID_CIANWOOD_GLADION, DIR_SOUTH
+	turnobject LOCALID_CIANWOOD_GLADION, DIR_WEST
+	turnobject LOCALID_CIANWOOD_TYPENULL, DIR_EAST
 	msgbox CianwoodCity_Text_GladionNeedAnotherPlan, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionYouNoticedToo, MSGBOX_DEFAULT
 	closemessage
@@ -313,7 +389,8 @@ CianwoodCity_EventScript_GladionPlayerWon::
 CianwoodCity_EventScript_GladionPlayerLost::
 	msgbox CianwoodCity_Text_GladionThatOneWasOurs, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionMadeUsWorkForIt, MSGBOX_DEFAULT
-	turnobject LOCALID_CIANWOOD_GLADION, DIR_SOUTH
+	turnobject LOCALID_CIANWOOD_GLADION, DIR_WEST
+	turnobject LOCALID_CIANWOOD_TYPENULL, DIR_EAST
 	msgbox CianwoodCity_Text_GladionStayedFocused, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionGoodWork, MSGBOX_DEFAULT
 	closemessage
@@ -332,89 +409,160 @@ CianwoodCity_EventScript_GladionForfeit::
 @ Link-battle-shaped/unexpected outcome only: heal, restore music and
 @ controls, but do not deliver the item or mark the encounter concluded -
 @ mirrors GoldenrodCity_FlowerShop_EventScript_LillieUnexpectedOutcome.
+@ NPCs hidden for the scene (see CianwoodCity_EventScript_GladionAutoTrigger)
+@ still need to come back here, since FLAG_RECEIVED_HM_FLY stays unset and
+@ there is no later point that restores them for this bail-out path.
 CianwoodCity_EventScript_GladionUnexpectedOutcome::
 	msgbox CianwoodCity_Text_GladionUnexpectedOutcome, MSGBOX_DEFAULT
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
+	call CianwoodCity_EventScript_RestoreDecorativesAfterGladionScene
 	fadedefaultbgm
 	releaseall
 	end
 
 CianwoodCity_EventScript_GladionDeliver::
-	setvar VAR_TEMP_1, 2
 	call Common_EventScript_OutOfCenterPartyHeal
-
-@ Re-entered manually (VAR_TEMP_1 == 2): the intro, challenge and battle
-@ already happened this visit, only retry the delivery step. Should not
-@ normally be needed - checkitemspace already confirmed room back in
-@ CianwoodCity_EventScript_Gladion - but if giveitem fails anyway, VAR_TEMP_1
-@ stays 2 so talking to Gladion again only retries this step.
-CianwoodCity_EventScript_GladionRetryDelivery::
-	lockall
+	@ Every outcome branch above (Won/Lost/Draw/Forfeit/UnexpectedOutcome)
+	@ funnels in here; Won/Lost leave them facing each other, so put both
+	@ back on the player (north of them) before talking to them.
+	turnobject LOCALID_CIANWOOD_GLADION, DIR_NORTH
+	turnobject LOCALID_CIANWOOD_TYPENULL, DIR_NORTH
 	msgbox CianwoodCity_Text_GladionHereHMFromWife, MSGBOX_DEFAULT
 	checkitem ITEM_HM_FLY
 	goto_if_eq VAR_RESULT, TRUE, CianwoodCity_EventScript_GladionItemAlreadyPresent
 	giveitem ITEM_HM_FLY
 	goto_if_eq VAR_RESULT, FALSE, CianwoodCity_EventScript_GladionGiveItemFailed
 CianwoodCity_EventScript_GladionItemAlreadyPresent::
-	setvar VAR_GETFLY, 2
+	setflag FLAG_RECEIVED_HM_FLY
 	msgbox CianwoodCity_Text_GladionFlyMakesTripEasier, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionTellLillie, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionHeardWholeStory, MSGBOX_DEFAULT
 	closemessage
 
+	@ Type: Null walks ahead onto column 16 (the only one that stays clear
+	@ going south - 14 and 15 are both walled off at y=50/51) and looks
+	@ back. Gladion watches him go (south-west of Gladion now, but DIR_SOUTH
+	@ reads fine for "watching him walk off"), then turns back to the player.
 	applymovement LOCALID_CIANWOOD_TYPENULL, CianwoodCity_Movement_TypeNullFirstStep
 	waitmovement 0
+	turnobject LOCALID_CIANWOOD_GLADION, DIR_SOUTH
 	delay 20
 	msgbox CianwoodCity_Text_GladionMadeUpYourMind, MSGBOX_DEFAULT
 	msgbox CianwoodCity_Text_GladionImComing, MSGBOX_DEFAULT
 	closemessage
-	faceplayer
+	turnobject LOCALID_CIANWOOD_GLADION, DIR_NORTH
 	msgbox CianwoodCity_Text_GladionSeeYouAround, MSGBOX_DEFAULT
 	closemessage
 
 	playbgm MUS_HG_RIVAL_EXIT, TRUE
 	applymovement LOCALID_CIANWOOD_TYPENULL, CianwoodCity_Movement_TypeNullContinue
+	waitmovement 0
 	applymovement LOCALID_CIANWOOD_GLADION, CianwoodCity_Movement_GladionFollow
 	waitmovement 0
 	removeobject LOCALID_CIANWOOD_TYPENULL
 	removeobject LOCALID_CIANWOOD_GLADION
+	@ Mini dark fade once they're actually gone, before the city (Chuck's
+	@ wife included - she went inside to check on him earlier in this same
+	@ scene, see the fade in GladionIntro) comes back.
+	fadescreenswapbuffers FADE_TO_BLACK
+	delay 30
+	addobject LOCALID_CIANWOOD_CHUCKSWIFE
+	fadescreenswapbuffers FADE_FROM_BLACK
+	call CianwoodCity_EventScript_RestoreDecorativesAfterGladionScene
 	fadedefaultbgm
 	releaseall
 	end
 
 @ Should not happen: checkitemspace already confirmed room before the
-@ battle. If it fails anyway, VAR_TEMP_1 stays 2 so talking to Gladion
-@ again only retries this delivery step, without repeating the intro/battle.
+@ battle. If it fails anyway, FLAG_RECEIVED_HM_FLY stays unset, so the
+@ on-frame trigger (CianwoodCity_EventScript_GladionAutoTrigger) just
+@ replays the whole cutscene the next time checkitemspace passes.
 CianwoodCity_EventScript_GladionGiveItemFailed::
 	msgbox CianwoodCity_Text_GladionDeliveryFailed, MSGBOX_DEFAULT
 	closemessage
+	call CianwoodCity_EventScript_RestoreDecorativesAfterGladionScene
 	fadedefaultbgm
 	releaseall
 	end
 
-CianwoodCity_EventScript_TypeNullInteract::
-	lock
-	playmoncry SPECIES_TYPE_NULL, CRY_MODE_NORMAL
-	waitmoncry
-	goto CianwoodCity_EventScript_Gladion
+@ Every movement below is checked against data/layouts/CianwoodCity/map.bin.
+@ Collision there is ONE bit (bit 11, MAPGRID_COLLISION_MASK 0x0800 in
+@ include/global.fieldmap.h) - metatile ids take bits 0-10 - and any
+@ nonzero value is impassable (GetCollisionFlagsAtCoords). The relevant
+@ part of the plaza, with # = blocked:
+@
+@        x=12 13 14 15 16 17 18
+@   y=44   .  .  #  #  #  #  .     gym facade; the door tile (15,44) itself
+@   y=45   .  .  .  .  .  .  .     is solid, NPCs can't stand on or cross it
+@   y=46   .  .  .  .  .  .  .
+@   y=47   .  .  .  .  .  .  .
+@   y=48   .  .  .  .  .  .  .
+@   y=49   #  #  .  .  .  .  .
+@   y=50   #  #  #  #  .  .  .     going south, only column 16+ stays open
+@   y=51   #  #  #  #  .  .  .
+@
+@ Layout of the scene: the player comes DOWN out of the gym door, so the
+@ player ends up NORTH of everyone else - facing the player is DIR_NORTH,
+@ not DIR_SOUTH.
+@   player      (15,45) -> (15,46)
+@   Gladion     (17,47) -> (15,47)
+@   Type: Null  (17,48) -> (14,47), on Gladion's west, same row
+@   wife        (18,47) -> (15,45), below the door, facing up into it
 
-CianwoodCity_Movement_ChucksWifeToSafeSpot:
-	walk_right
-	walk_right
-	face_down
+@ One step further into the plaza, off the door tile.
+CianwoodCity_Movement_PlayerStepForward:
+	walk_down
 	step_end
 
-CianwoodCity_Movement_TypeNullApproach:
-	walk_down
+@ Gladion (17,47) -> (15,47).
+CianwoodCity_Movement_GladionToPlayer:
+	walk_left
+	walk_left
+	step_end
+
+@ Type: Null (17,48) -> (14,47). Queued together with GladionToPlayer above
+@ so they cross the plaza side by side. Tile by tile they never want the
+@ same square at the same time: Gladion takes (16,47) then (15,47) while
+@ Type: Null takes (16,48) then (15,48), and Type: Null's last two steps
+@ happen after Gladion has already stopped.
+CianwoodCity_Movement_TypeNullToGladionsWest:
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+@ (18,47) -> (15,45), directly below the door, then faces up into it.
+@ Routed over row 47 -> 45 so she never crosses Gladion (15,47),
+@ Type: Null (14,47) or the player (15,46).
+CianwoodCity_Movement_ChucksWifeToGymDoor:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_left
 	face_up
 	step_end
 
+@ Type: Null perks up without leaving Gladion's west - no position change,
+@ so nothing can collide and he stays put for the whole conversation.
+CianwoodCity_Movement_TypeNullPerkUp:
+	walk_in_place_faster_up
+	face_up
+	step_end
+
+@ Farewell. Type: Null (14,47) walks ahead and shifts onto column 16, the
+@ only one that stays clear heading south (14 and 15 are walled off at
+@ y=50/51), then looks back: (14,48) -> (15,48) -> (16,48), face up.
 CianwoodCity_Movement_TypeNullFirstStep:
 	walk_down
+	walk_right
+	walk_right
 	face_up
 	step_end
 
+@ (16,48) -> (16,52), straight down the clear column.
 CianwoodCity_Movement_TypeNullContinue:
 	walk_down
 	walk_down
@@ -422,19 +570,16 @@ CianwoodCity_Movement_TypeNullContinue:
 	walk_down
 	step_end
 
+@ Gladion (15,47) -> (16,50), following him down the same column. Runs
+@ after Type: Null has already finished, so the column is clear behind him;
+@ stops two tiles short of Type: Null, which is fine - both get
+@ removeobject'd immediately after.
 CianwoodCity_Movement_GladionFollow:
-	walk_down
+	walk_right
 	walk_down
 	walk_down
 	walk_down
 	step_end
-
-CianwoodCity_Text_GladionBusy1:
-	.string "Not now. We're finishing our\n"
-	.string "training.$"
-
-CianwoodCity_Text_GladionBusy2:
-	.string "Come back later.$"
 
 CianwoodCity_Text_WifeAllThisWay:
 	.string "Chuck's wife: You came all this\n"
@@ -523,10 +668,7 @@ CianwoodCity_Text_GladionFlyEitherWay:
 	.string "for.$"
 
 CianwoodCity_Text_GladionBattleQuestion:
-	.string "Let's battle?$"
-
-CianwoodCity_Text_GladionFineAnotherTime:
-	.string "Fine. Another time.$"
+	.string "Let's battle.$"
 
 CianwoodCity_Text_GladionFirstHeal:
 	.string "First, let's take care of your\n"

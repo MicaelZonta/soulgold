@@ -283,8 +283,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "CianwoodCity_EventScript_Gladion",
-      "flag": "0"
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CIANWOOD_GLADION"
     },
     {
       "local_id": "LOCALID_CIANWOOD_TYPENULL",
@@ -297,8 +297,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "CianwoodCity_EventScript_TypeNullInteract",
-      "flag": "0"
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CIANWOOD_GLADION"
     }
   ],
   "warp_events": [

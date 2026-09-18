@@ -1751,7 +1751,14 @@
 #define FLAG_ROUTE47_EXPERT_QUALIFIED               0x103B
 #define FLAG_ROUTE27_EXPERT_QUALIFIED               0x103C
 #define FLAG_TM_PICKUP_MIGRATION_COMPLETE           0x103D
-#define CUSTOM_FLAGS_END                            FLAG_TM_PICKUP_MIGRATION_COMPLETE
+// Cache flag for the Gladion/Type: Null object templates in CianwoodCity
+// (map.json "flag" field) - carries no meaning of its own, only exists
+// because the object-spawn system checks one flag per template on every
+// camera-triggered respawn attempt. Recomputed on every map load from
+// FLAG_DEFEATED_CIANWOOD_GYM/FLAG_RECEIVED_HM_FLY, which remain the actual
+// source of truth (see CianwoodCity_EventScript_ApplyGladionVisibility).
+#define FLAG_HIDE_CIANWOOD_GLADION                  0x103E
+#define CUSTOM_FLAGS_END                            FLAG_HIDE_CIANWOOD_GLADION
 
 
 #define FLAG_0x1500                                 0x1500
