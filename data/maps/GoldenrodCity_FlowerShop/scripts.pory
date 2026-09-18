@@ -264,6 +264,9 @@ GoldenrodCity_FlowerShop_Text_SeasonalPerfumeNotEnoughMoney:
 @     Owner/florist (2,4) - unchanged      Lillie home tile (4,4)
 @     approach stop (6,7)                  player trigger tile (6,8)
 @     door/warp (6,9)
+@     Vulpix home tile (3,4)               Vulpix approach stop (5,7)
+@   Lillie's Alolan Vulpix is out of its Poké Ball, shares Lillie's hide flag
+@   (FLAG_RECEIVED_SQUIRTBOTTLE) and trails one step behind her both ways.
 @   Path Lillie walks to approach the player, and later to leave, only
 @   crosses tiles confirmed open in the collision layer; sprite-level
 @   pathing (obstacles, follower behavior) still needs an emulator pass.
@@ -318,7 +321,9 @@ GoldenrodCity_FlowerShop_EventScript_LillieScene::
 	waitmovement 0
 	playbgm MUS_HG_LYRA, TRUE
 	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, GoldenrodCity_FlowerShop_Movement_LillieApproach
-	waitmovement 0
+	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_VULPIX, GoldenrodCity_FlowerShop_Movement_VulpixApproach
+	waitmovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE
+	waitmovement LOCALID_GOLDENROD_FLOWER_SHOP_VULPIX
 	setvar VAR_TEMP_2, 1
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 
@@ -430,8 +435,11 @@ GoldenrodCity_FlowerShop_EventScript_LillieRetryDelivery::
 	closemessage
 
 	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, GoldenrodCity_FlowerShop_Movement_LillieLeave
-	waitmovement 0
+	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_VULPIX, GoldenrodCity_FlowerShop_Movement_VulpixLeave
+	waitmovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE
+	waitmovement LOCALID_GOLDENROD_FLOWER_SHOP_VULPIX
 	playse SE_EXIT
+	removeobject LOCALID_GOLDENROD_FLOWER_SHOP_VULPIX
 	removeobject LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE
 	fadedefaultbgm
 	releaseall
@@ -465,9 +473,27 @@ GoldenrodCity_FlowerShop_Movement_LillieApproach:
 	face_down
 	step_end
 
+@ Vulpix: (3,4) -> (4,4) -> (4,5) -> (4,6) -> (5,6) -> (5,7), one step
+@ behind Lillie the whole way, ending beside her on her west side.
+GoldenrodCity_FlowerShop_Movement_VulpixApproach:
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	walk_down
+	face_down
+	step_end
+
 @ Lillie: (6,7) -> (6,8) -> door (6,9).
 GoldenrodCity_FlowerShop_Movement_LillieLeave:
 	walk_down
+	walk_down
+	walk_in_place_down
+	step_end
+
+@ Vulpix: (5,7) -> (6,7) -> (6,8), right behind Lillie on the door tile.
+GoldenrodCity_FlowerShop_Movement_VulpixLeave:
+	walk_right
 	walk_down
 	walk_in_place_down
 	step_end

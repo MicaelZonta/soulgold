@@ -15,8 +15,14 @@ raw `
 @
 @   NPC home positions (map.json - do not move them there):
 @     Kukui  (7,5)   Oak (8,5)   Lillie (5,5) = chair east of the table
+@     Vulpix (4,6) = Lillie's Alolan Vulpix, out of its Poké Ball
 @   Scene anchor positions:
 @     player (7,6)   Lillie approach stop (6,6)   Oak talk stop (8,6)
+@     Vulpix stop (5,6), right behind Lillie
+@
+@ Per-visit scratch state (VAR_TEMP_* is cleared on every warp):
+@   VAR_TEMP_3 - battle outcome, copied right after GetBattleOutcome
+@   VAR_TEMP_5 - previous state of B_FLAG_NO_WHITEOUT
 @ ---------------------------------------------------------------------------
 
 Route30_MrPokemonsHouse_MapScripts::
@@ -27,10 +33,10 @@ MrPokemonHouse_OnFrame::
 	map_script_2 VAR_CHERRYGROVE_CITY_STATE, 1, MrPokemonHouse_EventScript_GiveEgg
 	.2byte 0
 
-@ Runs while VAR_CHERRYGROVE_CITY_STATE == 1. If the player loses to Lillie the
-@ battle blacks out, the script never reaches the rewards and the var stays at 1,
-@ so re-entering the house respawns every NPC at its map.json tile and replays
-@ the whole scene from the top.
+@ Runs while VAR_CHERRYGROVE_CITY_STATE == 1. The battle with Lillie runs with
+@ B_FLAG_NO_WHITEOUT, so winning, losing, drawing or forfeiting all continue to
+@ the Mystery Egg and the Pokédex. The var only becomes 2 at the very end; a
+@ reset before that replays the whole scene from the top.
 MrPokemonHouse_EventScript_GiveEgg::
 	lock
 
@@ -69,8 +75,11 @@ MrPokemonHouse_EventScript_GiveEgg::
 	closemessage
 
 	@ --- 6. Lillie leaves the chair: (5,5) -> (5,6) -> (6,6), beside the player ---
+	@ Vulpix trails one step behind: (4,6) -> (5,6), once Lillie has left it.
 	applymovement LOCALID_ROUTE30_LILLIE, MrPokemonHouse_Movement_LillieToPlayer
-	waitmovement 0
+	applymovement LOCALID_ROUTE30_VULPIX, MrPokemonHouse_Movement_VulpixToPlayer
+	waitmovement LOCALID_ROUTE30_LILLIE
+	waitmovement LOCALID_ROUTE30_VULPIX
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 
 	@ --- 7. Lillie's challenge ---
@@ -90,13 +99,54 @@ MrPokemonHouse_EventScript_GiveEgg::
 	call Common_EventScript_OutOfCenterPartyHeal
 	msgbox MrPokemonHouse_Text_LillieBeforeBattle, MSGBOX_DEFAULT
 	closemessage
+	@ --- 10. Battle without blackout: every outcome continues the scene ---
+	checkflag B_FLAG_NO_WHITEOUT
+	copyvar VAR_TEMP_5, VAR_RESULT
+	setflag B_FLAG_NO_WHITEOUT
+	setvar VAR_LAST_TALKED, LOCALID_ROUTE30_LILLIE
 	removefieldmugshot
 	trainerbattle_no_intro TRAINER_LILLIE, MrPokemonHouse_Text_LillieDefeated
-
-	@ --- 11. Victory: Lillie, Kukui, and the Mystery Egg ---
+	specialvar VAR_RESULT, GetBattleOutcome
+	copyvar VAR_TEMP_3, VAR_RESULT
+	goto_if_eq VAR_TEMP_5, TRUE, MrPokemonHouse_EventScript_KeepWhiteoutOff
+	clearflag B_FLAG_NO_WHITEOUT
+MrPokemonHouse_EventScript_KeepWhiteoutOff::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_WON, MrPokemonHouse_EventScript_LilliePlayerWon
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_LOST, MrPokemonHouse_EventScript_LilliePlayerLost
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_DREW, MrPokemonHouse_EventScript_LillieDraw
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_FORFEITED, MrPokemonHouse_EventScript_LillieForfeit
+	goto MrPokemonHouse_EventScript_LillieUnexpectedOutcome
+
+@ B_OUTCOME_WON: MrPokemonHouse_Text_LillieDefeated already played in battle.
+MrPokemonHouse_EventScript_LilliePlayerWon::
 	msgbox MrPokemonHouse_Text_LillieAfterBattle, MSGBOX_DEFAULT
 	closemessage
+	goto MrPokemonHouse_EventScript_AfterBattle
+
+MrPokemonHouse_EventScript_LilliePlayerLost::
+	msgbox MrPokemonHouse_Text_LillieWon, MSGBOX_DEFAULT
+	closemessage
+	goto MrPokemonHouse_EventScript_AfterBattle
+
+MrPokemonHouse_EventScript_LillieDraw::
+	msgbox MrPokemonHouse_Text_LillieDraw, MSGBOX_DEFAULT
+	closemessage
+	goto MrPokemonHouse_EventScript_AfterBattle
+
+MrPokemonHouse_EventScript_LillieForfeit::
+	msgbox MrPokemonHouse_Text_LillieForfeit, MSGBOX_DEFAULT
+	closemessage
+	goto MrPokemonHouse_EventScript_AfterBattle
+
+@ Should not happen in a trainer battle. It is not treated as a win; the scene
+@ still continues so the ON_FRAME trigger can never re-run it half-staged.
+MrPokemonHouse_EventScript_LillieUnexpectedOutcome::
+	msgbox MrPokemonHouse_Text_LillieUnexpectedOutcome, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- 11. Kukui wraps up the battle and hands over the Mystery Egg ---
+MrPokemonHouse_EventScript_AfterBattle::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	msgbox MrPokemonHouse_Text_KukuiAfterBattle, MSGBOX_DEFAULT
 	msgbox MrPokemonHouse_Text_KukuiGiveEgg, MSGBOX_DEFAULT
@@ -135,13 +185,18 @@ MrPokemonHouse_EventScript_GiveEgg::
 	removeobject LOCALID_ROUTE30_OAK
 	fadedefaultbgm
 
-	@ --- 14. Lillie leaves from where she is standing: (6,6) -> (6,7) -> (5,7) -> (5,8) ---
+	@ --- 14. Lillie and Vulpix leave together ---
+	@ Vulpix leads: (5,6) -> (5,7) -> door (5,8).
+	@ Lillie follows: (6,6) -> (6,7) -> (5,7), right behind her.
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	msgbox MrPokemonHouse_Text_LillieParting, MSGBOX_DEFAULT
 	closemessage
+	applymovement LOCALID_ROUTE30_VULPIX, MrPokemonHouse_Movement_VulpixLeave
 	applymovement LOCALID_ROUTE30_LILLIE, MrPokemonHouse_Movement_LillieLeave
-	waitmovement 0
+	waitmovement LOCALID_ROUTE30_VULPIX
+	waitmovement LOCALID_ROUTE30_LILLIE
 	playse SE_EXIT
+	removeobject LOCALID_ROUTE30_VULPIX
 	removeobject LOCALID_ROUTE30_LILLIE
 
 	@ --- 15. Kukui stays at (7,5), heals the party and sends the player off ---
@@ -235,6 +290,13 @@ MrPokemonHouse_Movement_LillieToPlayer:
 	face_right
 	step_end
 
+@ Vulpix: (4,6) waits one step, then -> (5,6) once Lillie has moved on to (6,6).
+MrPokemonHouse_Movement_VulpixToPlayer:
+	delay_16
+	walk_right
+	face_right
+	step_end
+
 @ Oak: (8,5) -> (8,6), facing the player at (7,6).
 MrPokemonHouse_Movement_OakToPlayer:
 	walk_down
@@ -251,11 +313,17 @@ MrPokemonHouse_Movement_OakLeave:
 	walk_in_place_down
 	step_end
 
-@ Lillie: (6,6) -> (6,7) -> (5,7) -> door (5,8).
+@ Vulpix: (5,6) -> (5,7) -> door (5,8).
+MrPokemonHouse_Movement_VulpixLeave:
+	walk_down
+	walk_down
+	walk_in_place_down
+	step_end
+
+@ Lillie: (6,6) -> (6,7) -> (5,7), stopping behind Vulpix on the door tile.
 MrPokemonHouse_Movement_LillieLeave:
 	walk_down
 	walk_left
-	walk_down
 	walk_in_place_down
 	step_end
 
@@ -342,6 +410,30 @@ MrPokemonHouse_Text_LillieAfterBattle:
 	.string "more carefully too.\p"
 	.string "Thank you, {PLAYER}.\n"
 	.string "I'm glad I asked!$"
+
+MrPokemonHouse_Text_LillieWon:
+	.string "Lillie: We… we won?\n"
+	.string "Vulpix, we actually won!\p"
+	.string "Oh! I'm sorry, {PLAYER}.\n"
+	.string "I'm just so happy for her!\p"
+	.string "Your Pokémon never gave up\n"
+	.string "on you, not even once.\p"
+	.string "Thank you. I'm glad I asked!$"
+
+MrPokemonHouse_Text_LillieDraw:
+	.string "Lillie: Both of them at once?\n"
+	.string "Then it's a draw!\p"
+	.string "We'll have to settle it\n"
+	.string "another time, {PLAYER}.$"
+
+MrPokemonHouse_Text_LillieForfeit:
+	.string "Lillie: Oh… We're stopping here?\p"
+	.string "That's all right. Knowing when\n"
+	.string "to rest is important too.$"
+
+MrPokemonHouse_Text_LillieUnexpectedOutcome:
+	.string "Lillie: Thank you for battling\n"
+	.string "with us, {PLAYER}!$"
 
 MrPokemonHouse_Text_KukuiAfterBattle:
 	.string "Kukui: There's a lesson you\n"

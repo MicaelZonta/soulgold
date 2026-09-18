@@ -14107,3 +14107,78 @@ EVs: 100 HP / 60 SpA / 100 Spe
 - Ice Beam
 - Icy Wind
 - Encore
+
+=== TRAINER_LILLIE_DRAGONS_DEN ===
+Name: Lillie
+Class: Lass
+Pic: Lillie
+Gender: Female
+Music: Hg Girl 1
+Double Battle: No
+AI: Smart Trainer
+
+Ninetales Alola @ Light Clay
+Timid Nature
+Level: 62
+Ability: Snow Warning
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 SpA / 4 SpD / 252 Spe
+- Aurora Veil
+- Freeze-Dry
+- Moonblast
+- Encore
+
+Ribombee @ Focus Sash
+Timid Nature
+Level: 59
+Ability: Shield Dust
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Sticky Web
+- Pollen Puff
+- Psychic
+- U-Turn
+
+Clefable @ Leftovers
+Bold Nature
+Level: 60
+Ability: Magic Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Def / 4 SpA
+- Moonblast
+- Thunder Wave
+- Moonlight
+- Flamethrower
+
+Lilligant @ Lum Berry
+Timid Nature
+Level: 59
+Ability: Own Tempo
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Quiver Dance
+- Giga Drain
+- Sleep Powder
+- Pollen Puff
+
+Milotic @ Leftovers
+Bold Nature
+Level: 61
+Ability: Marvel Scale
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Def / 4 SpA
+- Scald
+- Ice Beam
+- Recover
+- Haze
+
+Comfey @ Big Root
+Modest Nature
+Level: 60
+Ability: Triage
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 Def / 252 SpA
+- Draining Kiss
+- Giga Drain
+- Calm Mind
+- Synthesis

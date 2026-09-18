@@ -1,14 +1,14 @@
 # SoulGold — Rift Missions
 
-**Design consolidado v12 — parceiros fora da Poké Ball, Dragon’s Den refinado e arco pré-Liga consolidado**
+**Design consolidado v13 — Lillie implementada/compilada, Dragon’s Den integrado e parceiros recorrentes consolidados**
 
-Revisão: 16 de setembro de 2026. Substitui o V12; preserva a política de duelos narrativos, o encontro de Gladion antes da Victory Road, o arco pós-game e o loop pós-Necrozma, e refaz integralmente o Dragon’s Den para que Lillie participe do mesmo teste do Elder e reaja às escolhas do jogador.
+Revisão: 17 de setembro de 2026. Substitui o V12; preserva a política global de duelos narrativos, os parceiros fora da Poké Ball, Gladion antes da Victory Road e todo o arco pós-game. Consolida a implementação compilada da Lillie em Route 30, Goldenrod e Dragon’s Den, sem declarar validação em runtime.
 
 ## 1. Objetivo e autoridade deste documento
 
 Rift Missions é uma história adicional de SoulGold que apresenta personagens de Alola durante a campanha de Johto, desenvolve uma investigação de Ultra Beasts após a Elite Four e termina em um sistema permanente de expedições com batalhas e capturas de lendários.
 
-Este documento consolida as decisões mais recentes da conversa. Gladion em Violet, Lillie em Goldenrod e Gladion em Cianwood já possuíam implementação confirmada pelo autor, mas o V12 mantém o contrato de resultado de algumas dessas cenas; portanto, comportamento antigo incompatível deve ser refatorado sem reconstruir desnecessariamente equipes, mapas ou parâmetros já integrados. Lillie no Dragon’s Den e Gladion antes da Victory Road estão fechados em design, mas não são declarados implementados ou testados nesta revisão. O repositório público pode não refletir as alterações locais do projeto.
+Este documento consolida as decisões mais recentes da conversa. Gladion em Violet, Lillie em Goldenrod e Gladion em Cianwood já possuíam implementação confirmada pelo autor, mas o V12 mantém o contrato de resultado de algumas dessas cenas; portanto, comportamento antigo incompatível deve ser refatorado sem reconstruir desnecessariamente equipes, mapas ou parâmetros já integrados. Lillie em Route 30, Goldenrod e Dragon’s Den está implementada e compilada segundo o registro de execução de 17/09/2026, mas ainda não foi validada em runtime. Gladion antes da Victory Road permanece fechado em design e pendente de implementação/teste. O estado descrito aqui refere-se ao planejamento e à implementação local documentada neste projeto.
 
 As seções de conteúdo estabelecido são a referência para a execução. Recomendações técnicas e pendências são identificadas separadamente; não devem ser confundidas com novas decisões aprovadas. As fontes dos jogos contextualizam a inspiração; o estado vigente de cada personagem neste documento governa os diálogos do hack.
 
@@ -16,11 +16,11 @@ As seções de conteúdo estabelecido são a referência para a execução. Reco
 
 | Conteúdo | Status nesta revisão |
 | --- | --- |
-| Lillie inicial / Route 30 | Cena existente; V12 mantém a derrota para continuidade sem blackout. Refatoração de resultado pendente. |
+| Lillie inicial / Route 30 | **Implementada e compilada:** batalha com no-whiteout, outcomes WON/LOST/DREW/FORFEITED/UNKNOWN convergentes, Vulpix Alola fora da Poké Ball e saída pareada. Runtime pendente. |
 | Gladion em Violet | Implementado anteriormente; V12 passa a aceitar vitória **ou derrota** antes da entrega do Mystery Egg. Refatoração de resultado pendente. |
-| Lillie em Goldenrod | Implementada e já compatível com a política V12 de vitória/derrota sem blackout. |
+| Lillie em Goldenrod | **Implementada e compilada:** política de vitória/derrota preservada, Vulpix Alola fora da Poké Ball e saída pareada adicionada. Runtime pendente para regressão visual. |
 | Gladion em Cianwood | Implementado anteriormente; V12 mantém removida a recusa da revanche. A batalha passa a ser obrigatória e vitória/derrota convergem para Fly. Refatoração de fluxo pendente. |
-| Lillie no Dragon’s Den | Design V12: Lillie acompanha as cinco perguntas vanilla com Alolan Ninetales visível fora da Poké Ball, reage a cada escolha do jogador em branches locais e dá sua própria resposta; a batalha final conclui em vitória ou derrota sem blackout. Implementação e validação pendentes. |
+| Lillie no Dragon’s Den | **Implementada e compilada:** 15 reações integradas ao quiz vanilla; 9 respostas aceitas avançam e 6 rejeitadas preservam punição/re-pergunta; Ninetales fora da Poké Ball; batalha final de 6 Pokémon com no-whiteout. Runtime pendente. |
 | Gladion antes da Victory Road | Novo encontro fechado em design: batalha obrigatória, primeira apresentação de Silvally, vitória ou derrota continuam sem blackout. Implementação pendente. |
 | Incidente de Blackthorn | Pós-game; primeira batalha de ameaça da questline e início da política normal de derrota/blackout/retry. |
 | Limpeza de treinadores | Informada como concluída pelo autor; este documento não certifica IDs ou contagens livres. |
@@ -30,7 +30,7 @@ As decisões mais recentes prevalecem sobre trechos antigos. Nos **duelos narrat
 
 O documento é autossuficiente para o design. Não exigir leitura dos refinamentos antigos para compreender as cenas aqui consolidadas. As referências externas são herdadas do V7 e do refinamento de Lillie; não representam nova pesquisa nesta revisão.
 
-### Política V12 — duelo narrativo não é gate de vitória
+### Política V13 — duelo narrativo não é gate de vitória
 
 Os encontros de Lillie, Gladion e outros personagens usados para desenvolvimento narrativo são conteúdo bônus integrado à jornada. Neles, **a batalha precisa acontecer quando o roteiro a prevê, mas o jogador não precisa vencer para a história continuar**.
 
@@ -38,7 +38,7 @@ Contrato padrão para duelo narrativo:
 
 1. Curar quando a cena exigir igualdade de condições.
 2. Ativar o mecanismo de batalha sem blackout/whiteout.
-3. Executar a batalha obrigatória; não oferecer opção de recusa nos encontros definidos pelo V12.
+3. Executar a batalha obrigatória; não oferecer opção de recusa nos encontros definidos pelo V13.
 4. Capturar o resultado imediatamente ao retornar da batalha, antes de qualquer cura ou comando que possa sobrescrever variáveis especiais.
 5. Usar diálogo próprio para vitória e derrota. Nunca reescrever uma derrota como vitória do jogador.
 6. Curar novamente quando apropriado.
@@ -113,13 +113,13 @@ O encerramento do arco deve mostrar responsabilidade, cooperação e continuidad
 
 Viaja com a mãe e está se encontrando como treinadora. Sua progressão pré-Liga possui três estágios claros: na Route 30 começa a batalhar; em Goldenrod aprende a observar sua parceira e adaptar um plano; no Dragon’s Den participa do mesmo teste do jogador, escuta respostas diferentes das suas e demonstra que consegue considerar outra perspectiva sem abandonar o próprio julgamento. **Vulpix acompanha Lillie fora da Poké Ball nos encontros anteriores; no Dragon’s Den, a parceira já evoluiu para Alolan Ninetales e continua visível ao lado dela. Ninetales permanece fora da Poké Ball também nas aparições pós-game de Lillie.** Atua depois nas missões de Pheromosa, Celesteela e Guzzlord.
 
-No Dragon’s Den, o jogador não escolhe as respostas de Lillie. O Elder faz ao protagonista as cinco perguntas do teste vanilla; depois de cada escolha, Lillie reage ao que ouviu e formula sua própria posição. Ela pode concordar, discordar ou aceitar parte do raciocínio sem copiar o jogador. A cena não deve transformar sua independência em hostilidade à família: seu crescimento é demonstrado justamente pela capacidade de ouvir sem entregar o próprio julgamento.
+No Dragon’s Den, o jogador não escolhe as respostas de Lillie. O Elder faz ao protagonista as cinco perguntas do teste vanilla; depois de cada escolha, Lillie reage ao que ouviu e formula sua própria posição. A implementação preserva o comportamento real do quiz: **9 alternativas são aceitas e avançam; 6 são rejeitadas, incrementam o contador vanilla e fazem o Elder repetir a pergunta**. Lillie reage também às seis rejeitadas, uma vez por visita, sem alterar `VAR_DRAGONS_DEN_QUIZ`. Ela pode concordar, discordar ou aceitar parte do raciocínio sem copiar o jogador. A cena não transforma sua independência em hostilidade à família: seu crescimento é demonstrado pela capacidade de ouvir sem entregar o próprio julgamento.
 
 Ela não entrega Cosmog nem Cosmoem. O jogador recebe Cosmog pelo Mystery Egg em Violet e o desenvolve ao longo da jornada.
 
 ### Gladion
 
-Age como um rival recorrente ao longo da história, alternando desafios e cooperação. Sua primeira batalha ocorre no Pokémon Center de Violet, onde substitui o assistente de Elm e entrega o Mystery Egg após a batalha, independentemente de vitória ou derrota do jogador. Reaparece em Cianwood após Chuck, enfrenta o jogador novamente e assume a entrega de Fly; a revanche deixa de ser opcional no V12. Antes da Victory Road, apresenta Silvally e trava a última batalha de rival da campanha, também com continuidade em vitória ou derrota. No pós-game luta ao lado do jogador em Blackthorn e participa das missões de Buzzwole, Xurkitree e Guzzlord. O antigo encontro ligado à Whitney e o antigo aquecimento opcional na entrada da Liga foram removidos.
+Age como um rival recorrente ao longo da história, alternando desafios e cooperação. Sua primeira batalha ocorre no Pokémon Center de Violet, onde substitui o assistente de Elm e entrega o Mystery Egg após a batalha, independentemente de vitória ou derrota do jogador. Reaparece em Cianwood após Chuck, enfrenta o jogador novamente e assume a entrega de Fly; a revanche deixa de ser opcional no V13. Antes da Victory Road, apresenta Silvally e trava a última batalha de rival da campanha, também com continuidade em vitória ou derrota. No pós-game luta ao lado do jogador em Blackthorn e participa das missões de Buzzwole, Xurkitree e Guzzlord. O antigo encontro ligado à Whitney e o antigo aquecimento opcional na entrada da Liga foram removidos.
 
 #### Novo parceiro de Gladion
 
@@ -779,299 +779,116 @@ As alternativas de Gladion em Mahogany, Route 44, Azalea e outros locais não s�
 
 ### 4.8. Lillie no Dragon’s Den — “Escutar sem copiar”
 
-**Status:** refinamento refeito no V12 e fechado narrativamente. Implementação, coordenadas, integração com o script real do Dragon Shrine e validação de batalha ainda precisam ser executadas. O objetivo é preservar integralmente o teste e as recompensas vanilla, adicionando Lillie como participante narrativa do **mesmo teste**, não como dona de um segundo questionário paralelo.
+**Status V13:** implementado e compilado em 17/09/2026; runtime ainda pendente. A implementação preserva o quiz vanilla, integra Lillie/Ninetales ao Shrine e adiciona a batalha final pré-Liga da Lillie.
 
-#### Papel no arco de Lillie
+#### Papel no arco
 
-O encontro fecha a progressão pré-Liga de Lillie:
+O Dragon’s Den fecha o mini-arco pré-Liga da Lillie:
 
-1. **Route 30:** ela decide começar a batalhar e experimentar uma nova forma de se relacionar com seus Pokémon.
-2. **Goldenrod:** aprende que seguir um plano não pode fazê-la ignorar os sinais da parceira; vitória ou derrota servem como treino.
-3. **Dragon’s Den:** aprende a ouvir uma resposta diferente, considerar o que ela revela e ainda formular sua própria posição.
+1. **Route 30:** começa a batalhar.
+2. **Goldenrod:** aprende que um plano só funciona se ela continuar observando sua parceira.
+3. **Dragon’s Den:** escuta as mesmas perguntas que o jogador, reage às escolhas dele e demonstra que consegue considerar outra perspectiva sem abandonar o próprio julgamento.
 
-O ponto central não é “Lillie finalmente sabe todas as respostas certas”. O Elder deve perceber que ela **escuta antes de responder, mas não copia automaticamente o jogador**. Essa é a maturidade que prepara seus encontros posteriores com Gladion e Lusamine.
+Alolan Vulpix já evoluiu antes da cena. **Alolan Ninetales está fora da Poké Ball desde a chegada ao Shrine** e permanece visível durante o reencontro, quiz, transição para batalha e despedida.
 
-A cena não deve fazê-la regredir à insegurança do início de Alola nem transformá-la em confrontacional. Ela pode discordar com calma, mudar uma nuance da própria resposta ou concordar sem parecer dependente da validação do protagonista.
+#### Estrutura real do quiz
 
-#### Ordem e gatilho
+O quiz deste projeto é `loop-until-correct`, não um questionário em que todas as alternativas avançam.
 
-1. O jogador derrota Clair e recebe normalmente a orientação para procurar o Dragon Shrine.
-2. Lillie já está no Shrine quando o jogador chega. Ela não está esperando pelo protagonista e não foi enviada por Gladion, Lusamine ou Kukui. **Alolan Ninetales está fora da Poké Ball ao lado dela desde a chegada do jogador.**
-3. Sua motivação é própria: ouviu que o Dragon Clan avalia a maneira como Trainers pensam sobre seus Pokémon e pediu ao Elder para acompanhar o teste.
-4. O Elder realiza **as cinco perguntas vanilla do jogador**, preservando exatamente a lógica, as alternativas, os estados e as consequências existentes no projeto.
-5. Depois de cada escolha do jogador, o script lê temporariamente a alternativa escolhida e executa um branch curto de Lillie.
-6. Lillie reage à escolha e então declara sua própria posição. O jogador nunca seleciona a resposta dela.
-7. Cada branch converge imediatamente para a próxima pergunta vanilla. Não criar combinações acumuladas de respostas.
-8. Depois da quinta pergunta e da avaliação vanilla necessária, o Elder comenta a participação dos dois e pede uma demonstração prática.
-9. Curar o time e iniciar a batalha obrigatória entre jogador e Lillie.
-10. Vitória ou derrota concluem a demonstração; não há blackout nem retry obrigatório.
-11. A sequência retorna ao fluxo original de Clair/Dragon Shrine e Lillie deixa o Shrine normalmente.
-12. Nenhuma Ultra Beast aparece como consequência imediata da cena. Blackthorn permanece pós-game.
+Mapa real:
 
-#### Chegada e reencontro
+| Pergunta | Alternativa | Índice | Resultado vanilla |
+| --- | --- | ---: | --- |
+| Q1 | Pal / Ally | 0 | aceita |
+| Q1 | Underling / Junior | 1 | rejeitada |
+| Q1 | Friend | 2 | aceita |
+| Q2 | Strategy | 0 | aceita |
+| Q2 | Training | 1 | aceita |
+| Q2 | Cheating | 2 | rejeitada |
+| Q3 | Weak person | 0 | rejeitada |
+| Q3 | Tough person / Strong | 1 | aceita |
+| Q3 | Anybody | 2 | aceita |
+| Q4 | Love | 0 | aceita |
+| Q4 | Violence | 1 | rejeitada |
+| Q4 | Knowledge | 2 | aceita |
+| Q5 | Tough / Strength | 0 | rejeitada |
+| Q5 | Weak / Weakness | 1 | rejeitada |
+| Q5 | Both | 2 | aceita |
 
-Lillie deve estar próxima do Elder em uma posição que não bloqueie o caminho, objetos vanilla, follower nem movimentos posteriores da cena. **Alolan Ninetales deve ocupar uma posição própria próxima de Lillie**, visível durante o reencontro, as perguntas e a transição para a batalha.
-
-Falas propostas em inglês:
-
-> Lillie: “{PLAYER}! I didn't know Clair had sent you here.”
->
-> “I heard the Dragon Clan doesn't test Trainers only by battling them.”
->
-> “They ask what you think about your Pokémon, too. I wanted to hear the questions for myself.”
-
-O Elder contextualiza por que ela participa:
-
-> Elder: “The young lady asked to observe your trial.”
->
-> “But an answer can teach us something about the person who gives it... and the person who hears it.”
->
-> “So I have asked her to answer as well.”
-
-Lillie:
-
-> “I thought I knew exactly what I would say on the way here.”
->
-> “Now I'm not so sure.”
->
-> “I think that may be the point.”
-
-Se o jogador falar com Lillie antes de iniciar o teste, manter uma fala curta e não disparar a batalha separadamente:
-
-> “I thought about my answers all the way here. I'm trying not to decide them before I hear the questions.”
-
-#### Estrutura das ramificações
-
-O teste do jogador continua sendo o teste vanilla. O V12 adiciona **15 branches locais**: cinco perguntas, três alternativas em cada uma.
-
-A estrutura desejada é:
+Portanto:
 
 ```text
-pergunta vanilla
-      ↓
-escolha do jogador
-   /    |    \
-  A     B     C
-  ↓     ↓     ↓
-fala específica de Lillie
-   \    |    /
-      ↓
-próxima pergunta vanilla
+9 respostas aceitas
+→ RightAnswer vanilla
+→ reação completa da Lillie
+→ próxima pergunta
+
+6 respostas rejeitadas
+→ ElderWrong vanilla
+→ VAR_DRAGONS_DEN_QUIZ++
+→ reação curta da Lillie (uma vez por visita)
+→ repetir a mesma pergunta
 ```
 
-Não combinar respostas anteriores para criar finais diferentes. Cinco perguntas com três alternativas dariam 243 combinações possíveis; isso não agrega valor proporcional e não deve ser implementado.
+As seis falas rejeitadas usam `FLAG_TEMP_2` até `FLAG_TEMP_7`, uma por fala. Elas são temporárias e não criam save persistente.
 
-As falas abaixo usam nomes conceituais das alternativas para facilitar o design. A implementação deve mapear cada branch para os valores reais usados pelo script vanilla do projeto, sem reescrever ou substituir o texto original do quiz.
+A ordem real dos menus deve ser respeitada:
+- Q4 = Love / Violence / Knowledge
+- Q5 = Tough / Weak / Both
 
----
+#### Recompensa e contador
 
-#### Pergunta 1 — relação com os Pokémon
+A camada da Lillie não altera:
+- `VAR_DRAGONS_DEN_QUIZ`;
+- lógica de resposta correta/incorreta;
+- Risingbadge;
+- estado de Clair;
+- Dratini;
+- movimentos/recompensas vanilla.
 
-Tema vanilla: como o jogador enxerga seus Pokémon.
+O Dratini especial continua dependendo de **zero erros**. Uma resposta rejeitada continua custando essa condição exatamente como no jogo atual.
 
-##### Se o jogador escolher `ALLY`
+#### Encenação implementada
 
-> Lillie: “An ally... Someone who stands beside you.”
->
-> “I like that.”
->
-> “I think I'd say ‘friend,’ though. Sometimes Ninetales understands what I'm trying to do before I've even worked it out myself.”
+Posições:
 
-##### Se o jogador escolher `JUNIOR`
+```text
+Elder      (6,9)
+Lillie     (7,9)
+Ninetales  (8,9)
+Player     (6,10)
+Follower   ~ (6,11)
+```
 
-Lillie pensa por um instante.
+Objetos do Shrine:
+1. Elder
+2. Elder2
+3. Elder3
+4. Clair
+5. Lillie
+6. Ninetales
 
-> Lillie: “I don't think I could call my Pokémon juniors.”
->
-> “I'm supposed to be teaching them, but they notice things I don't all the time.”
->
-> “I'd say ‘friend.’”
+**Clair continua obrigatoriamente como objeto 4.**
 
-A discordância é calma. Ela não repreende o jogador nem transforma a resposta em julgamento moral.
+Lillie e Ninetales foram appendados após Clair. `LOCALID_DRAGONSDEN3_LILLIE = 5` e `LOCALID_DRAGONSDEN3_NINETALES = 6`.
 
-##### Se o jogador escolher `FRIEND`
+Um `MAP_SCRIPT_ON_TRANSITION` foi adicionado. `FLAG_TEMP_1` controla a visibilidade temporária de Lillie/Ninetales conforme `VAR_BLACKTHORN_CITY_STATE == 2`. As flags temporárias 2–7 controlam as seis reações rejeitadas já mostradas naquela visita.
 
-> Lillie: “Friend... Yes. That's my answer too.”
->
-> “Though lately I've wondered which of us is teaching the other.”
+#### Fala de conclusão do Elder
 
-Essa primeira pergunta estabelece a dinâmica da cena: Lillie escuta, considera e só então responde. Quando a fala mencionar Ninetales, uma pequena virada de sprite entre Lillie e a parceira pode reforçar a relação sem interromper o fluxo do quiz.
+A fala antiga que dizia que os dois “não deram sempre as mesmas respostas” foi removida porque podia ser falsa.
 
----
-
-#### Pergunta 2 — o que ajuda a vencer
-
-Tema vanilla: o que mais contribui para vencer uma batalha.
-
-Essa pergunta conecta diretamente o teste ao desenvolvimento de Goldenrod.
-
-##### Se o jogador escolher `STRATEGY`
-
-> Lillie: “I used to think having the right plan was the most important part.”
->
-> “Then I started noticing how often my Pokémon saw something before I did.”
->
-> “Strategy matters... but only if I'm willing to change it.”
-
-##### Se o jogador escolher `TRAINING`
-
-> Lillie: “Training.”
->
-> “I think I understand that answer much better now.”
->
-> “It isn't only practicing the same thing until we get it right. It's learning how each of us reacts when something goes wrong.”
-
-##### Se o jogador escolher `CHEATING`
-
-Lillie demonstra surpresa, mas não hostilidade.
-
-> Lillie: “I don't think that would be my answer.”
->
-> “You might get the result you wanted...”
->
-> “But I don't think my Pokémon and I would have learned anything from it.”
->
-> “I'd choose training.”
-
-Não adicionar punição própria de Lillie. Qualquer consequência da escolha continua pertencendo exclusivamente à lógica vanilla.
-
----
-
-#### Pergunta 3 — quem vale a pena enfrentar
-
-Tema vanilla: que tipo de Trainer vale a pena enfrentar.
-
-A resposta mostra que Lillie já não encara batalha apenas como medição de força.
-
-##### Se o jogador escolher `WEAK`
-
-> Lillie: “Someone weaker...”
->
-> “I don't think I'd want to choose an opponent because I expected to beat them.”
->
-> “I'd rather battle anyone and find out what they can show me.”
-
-##### Se o jogador escolher `STRONG`
-
-> Lillie: “I understand that.”
->
-> “A strong Trainer can show you very quickly what you still need to learn.”
->
-> “But someone doesn't have to look strong to surprise you.”
->
-> “I think I'd choose anyone.”
-
-##### Se o jogador escolher `ANYONE`
-
-> Lillie: “Anyone.”
->
-> “That's mine too.”
->
-> “You don't really know what you'll learn from a battle until it starts.”
-
-Essa resposta também prepara conceitualmente a batalha entre jogador e Lillie ao final.
-
----
-
-#### Pergunta 4 — cuidado e desenvolvimento
-
-Tema vanilla: o que mais importa ao cuidar e desenvolver Pokémon.
-
-Esta é a pergunta de maior peso para o subtexto familiar, mas **não nomear Lusamine nem Gladion**.
-
-##### Se o jogador escolher `LOVE`
-
-Lillie demora um pouco mais para responder.
-
-> Lillie: “Love.”
->
-> “Yes... but I think I'm still learning what that means.”
->
-> “Caring about someone doesn't mean deciding everything for them.”
->
-> “Sometimes it means listening when they choose something you didn't expect.”
-
-Essa fala deve receber uma pequena pausa de encenação. O crescimento familiar aparece sem transformar a cena em exposição sobre Alola.
-
-##### Se o jogador escolher `KNOWLEDGE`
-
-> Lillie: “Knowledge is important.”
->
-> “The more I understand my Pokémon, the easier it is to notice what they need.”
->
-> “But knowing more about someone doesn't mean you should make every choice for them.”
->
-> “I'd still choose love.”
-
-##### Se o jogador escolher `VIOLENCE`
-
-Lillie fica séria, sem reação melodramática.
-
-> Lillie: “No.”
->
-> “I want my Pokémon to become stronger because they trust me enough to try.”
->
-> “Not because they're afraid of what happens if they don't.”
->
-> “I'd choose love.”
-
-Aqui ela pode discordar com clareza. A firmeza é parte do crescimento.
-
----
-
-#### Pergunta 5 — força e fraqueza
-
-Tema vanilla: como interpretar força e fraqueza em um Pokémon.
-
-A última resposta deve funcionar como conclusão natural do teste compartilhado.
-
-##### Se o jogador escolher `STRENGTH`
-
-> Lillie: “Strength matters.”
->
-> “Especially when someone is depending on you.”
->
-> “But if I only looked at what they were strongest at, I'd miss half of who they are.”
->
-> “I'd choose both.”
-
-##### Se o jogador escolher `BOTH`
-
-> Lillie: “Both.”
->
-> “That's my answer too.”
->
-> “Their strengths tell me what they can do.”
->
-> “Their weaknesses tell me where I need to stand beside them.”
-
-Essa é a resposta em que Lillie soa mais segura.
-
-##### Se o jogador escolher `WEAKNESS`
-
-> Lillie: “I think weaknesses are important to understand.”
->
-> “But I wouldn't want a Pokémon to believe that's all I see when I look at them.”
->
-> “I'd choose both.”
-
----
-
-#### Conclusão das perguntas
-
-Depois da quinta resposta, executar toda avaliação vanilla necessária do jogador antes da conclusão adicional de Lillie.
-
-O Elder não deve resumir as quinze possibilidades nem declarar um “vencedor” filosófico do quiz.
+Texto vigente:
 
 > Elder: “Interesting.”
 >
-> “You did not always give the same answers.”
+> “You listened to the same questions.”
 >
-> “That is not a failing.”
+> “Yet each answer still had to be your own.”
 >
-> “Understanding another Trainer does not require becoming that Trainer.”
+> “Understanding another Trainer does not require surrendering your own judgment.”
 
-Ele olha para Lillie:
+Depois:
 
 > Elder: “You listened before answering, yet you did not surrender your own judgment.”
 
@@ -1083,205 +900,98 @@ Lillie:
 >
 > “But then they wouldn't really have been my answers.”
 
-Esse é o payoff principal do teste. Lillie aprendeu a **escutar sem copiar**.
+#### Transição para a batalha
 
-#### Transição para a demonstração
+O Elder transforma o teste de palavras em demonstração prática. A batalha é obrigatória, mas não exige vitória.
 
-O Elder muda o teste de palavras para ação:
-
-> Elder: “Words reveal conviction.”
->
-> “But a Trainer cannot prepare every moment of a battle.”
->
-> “When circumstances change, understanding must become action.”
->
-> “Show me.”
-
-Lillie:
-
-> “A battle...”
->
-> “Yes.”
->
-> “That makes sense.”
->
-> “{PLAYER}, we've just spent all this time explaining what kind of Trainers we want to be.”
->
-> “Let's see what we actually do when the plan stops being simple.”
-
-Curar o time do jogador antes do combate. A batalha é obrigatória como parte da demonstração, mas **não exige vitória**.
-
-#### Equipe V12
-
-A equipe preserva os quatro parceiros de Goldenrod e mostra progressão sem adicionar espécies novas. **Alolan Vulpix evolui para Alolan Ninetales neste estágio**, tornando a mudança visual da parceira um marcador natural do crescimento de ambas.
-
-Os números abaixo são a baseline de design do V12. Balanceamento após teste pode ajustar níveis, EVs, itens ou um golpe sem alterar o roster, o papel de cada membro ou o fato de Ninetales ser o ás.
-
-| Ordem | Pokémon | Nível | Item | Ability | Nature | Golpes |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | Ribombee | 43 | Sitrus Berry | Shield Dust | Timid | Sticky Web, Pollen Puff, Psychic, U-turn |
-| 2 | Clefairy | 43 | Eviolite | Magic Guard | Bold | Moonblast, Thunder Wave, Moonlight, Flamethrower |
-| 3 | Comfey | 44 | Sitrus Berry | Triage | Modest | Draining Kiss, Giga Drain, Calm Mind, Synthesis |
-| 4 | Ninetales Alola | 45 | Light Clay | Snow Warning | Timid | Aurora Veil, Freeze-Dry, Moonblast, Encore |
-
-Todos devem usar IVs altos/coerentes com o padrão de bosses do hack. Não alterar dados globais das espécies para conseguir o comportamento desta luta. Conferir no projeto se `Snow Warning`, clima, `Aurora Veil`, `Sticky Web`, itens e IA funcionam com a semântica local esperada.
-
-**Identidade de batalha:** preparar, observar e responder. Ribombee cria ritmo e pivota; Clefairy interrompe e cobre fraquezas; Comfey transforma dano em sustain; Ninetales entra como ás e comprime defesa, pressão e controle. A equipe não precisa responder perfeitamente a Poison e Steel: manter fraquezas exploráveis.
-
-A batalha deve usar a IA de treinador forte já disponível no projeto. Não dar itens de cura consumidos por Lillie durante a luta salvo se isso for padrão do trainer class existente.
-
-#### Revelação de Ninetales
-
-Não é necessária uma cutscene de evolução. **A evolução já aconteceu antes da chegada ao Dragon’s Den, fora de cena.** Ninetales está visível fora da Poké Ball desde o início do encontro. Antes da batalha, Lillie pode reconhecer a mudança:
-
-> Lillie: “You remember Vulpix, don't you?”
->
-> “She evolved while we were traveling. I thought I would need to change everything.”
->
-> “But she didn't become someone different. I just had to learn to keep up.”
-
-#### Resultado — jogador vence
-
-Trainer defeat text:
-
-> “We adjusted again... and you still found the opening!”
-
-Depois da batalha:
-
-> Lillie: “I thought I knew what you were going to do twice.”
->
-> “I was wrong twice.”
->
-> “But we didn't freeze when it happened.”
->
-> “Goldenrod felt different from our first battle.”
->
-> “This felt different again.”
-
-O foco não é elogiar genericamente o protagonista; ela identifica o próprio progresso.
-
-#### Resultado — Lillie vence
-
-A derrota do jogador é um resultado válido, sem blackout e sem retry.
-
-> Lillie: “We did it.”
->
-> “And this time I don't think I need to apologize for being happy about that.”
-
-Ela olha para o jogador:
-
-> “You changed what you were doing halfway through.”
->
-> “We noticed.”
->
-> “And we changed too.”
-
-Lillie pode celebrar a própria vitória sem voltar imediatamente a pedir desculpas por ter vencido.
-
-#### Empate, forfeit e resultados inesperados
-
-Se o engine expuser empate ou desistência, tratar explicitamente sem blackout. Não declarar vitória de ninguém.
-
-> Lillie: “Let's look after everyone first.”
->
-> “I think we both learned something from that.”
-
-Resultado desconhecido não deve ser convertido silenciosamente em vitória do jogador.
-
-#### Conclusão comum
-
-Depois de registrar o resultado, curar o time.
-
-O Elder não avalia a relação pelo vencedor:
-
-> Elder: “Good.”
->
-> “Neither result changes what I wished to see.”
->
-> “You watched your Pokémon. You watched your opponent. And when the battle changed, you answered it together.”
-
-Ele conclui:
-
-> Elder: “Remember your answers.”
->
-> “Not because they must remain the same forever.”
->
-> “Remember why you gave them.”
-
-Lillie:
-
-> “I will.”
->
-> “And I think I'll remember some of yours, too.”
->
-> “Even the ones I wouldn't have chosen.”
-
-A sequência retorna então ao fluxo normal de Clair/Dragon Shrine.
-
-Lillie deixa o Shrine antes da continuação apropriada de Clair, usando movimento seguro e sem bloquear objetos, warps ou follower. **Ninetales sai junto com ela**; não deve desaparecer isoladamente antes da Trainer.
-
-#### Integração com Clair e progressão pós-Liga
-
-- Não remover, duplicar nem substituir badge, TM, Dratini, Dragon Fang ou qualquer outra recompensa/controle vanilla existente no projeto.
-- As cinco perguntas do jogador preservam sua lógica original. As falas de Lillie são camadas narrativas executadas **depois de cada escolha**, não substituições do quiz.
-- As escolhas de Lillie não alteram a avaliação do jogador nem os rewards/estados vanilla.
-- A batalha de Lillie é uma demonstração intermediária, não uma recompensa material.
-- Após qualquer resultado válido da batalha, retornar ao label/estado vanilla correto para que Clair continue exatamente de onde deveria.
-- Nenhum incidente de Ultra Beast é disparado ao sair do Dragon Shrine; Blackthorn permanece inativo durante a campanha pré-Liga.
-- A presença futura de Lillie nas Rift Missions não depende de uma nova flag narrativa exclusiva desta cena.
-- Ninetales permanece fora da Poké Ball durante toda a cena do Shrine, salvo transição técnica estritamente necessária para iniciar a batalha.
-
-#### Contrato técnico das 15 ramificações
-
-Implementar como branches **locais e imediatos**, não como combinações persistentes.
-
-Padrão:
+Contrato:
 
 ```text
-Q1 vanilla
-→ ler escolha Q1
-→ Lillie_Q1_A/B/C
-→ Q2 vanilla
-→ ler escolha Q2
-→ Lillie_Q2_A/B/C
-→ ...
-→ Q5 vanilla
-→ ler escolha Q5
-→ Lillie_Q5_A/B/C
-→ avaliação vanilla
-→ conclusão compartilhada
-→ batalha
+cura
+→ salvar estado anterior de B_FLAG_NO_WHITEOUT
+→ ativar B_FLAG_NO_WHITEOUT
+→ trainerbattle_no_intro TRAINER_LILLIE_DRAGONS_DEN
+→ GetBattleOutcome
+→ copiar imediatamente para VAR_TEMP_3
+→ restaurar B_FLAG_NO_WHITEOUT
+→ WON / LOST / DREW / FORFEITED / UNKNOWN
+→ cura
+→ conclusão do Elder
+→ saída Lillie + Ninetales
+→ ClairEnter vanilla
 ```
 
-Se o script vanilla usar uma variável especial reutilizada entre perguntas, capturar a alternativa **antes** de iniciar a próxima pergunta. Não reservar cinco flags persistentes apenas para lembrar respostas cujo branch já foi consumido.
+A progressão nunca depende da flag de trainer derrotado.
 
-A implementação deve auditar:
-- qual variável/retorno contém cada alternativa;
-- quando esse valor é sobrescrito;
-- quais labels executam sucesso/avaliação vanilla;
-- se alguma escolha pula diretamente para outro trecho;
-- se o Dratini ou outra recompensa depende de contagem/estado acumulado;
-- como inserir a fala de Lillie sem alterar essa contagem.
+#### Trainer e equipe final
 
-A camada de Lillie não deve modificar a pontuação, contador ou condição vanilla.
+`TRAINER_LILLIE_DRAGONS_DEN = 970`, reaproveitando o antigo `TRAINER_UNUSED_106`, que foi verificado como livre antes do uso.
 
-#### Contrato técnico da batalha e economia de estado
+A party foi calibrada contra o dataset único atual de Clair. Não existe mais uma equipe Hard separada: `DIFFICULTY_HARD` é alias do único dataset vigente.
 
-O executor deve distinguir no mínimo:
-- teste vanilla ainda não concluído;
-- cinco perguntas processadas e conclusão compartilhada ainda pendente;
-- batalha de Lillie ainda não executada;
-- batalha executada, independentemente do vencedor, e retorno ao fluxo vanilla;
-- sequência de Clair concluída.
+Referência:
+- Clair: níveis 58/58/58/58/58/59;
+- Elite Four / Lance: aproximadamente 68–70.
 
-A flag automática de trainer derrotado não é suficiente, porque ela pode não ser marcada quando Lillie vence. Preferir o próprio estado de progressão do Shrine/Clair ou outro estado já existente que represente que a cena aconteceu. Só reservar nova flag persistente se a auditoria provar que não há como distinguir reentrada/reload com os estados existentes.
+Equipe final da Lillie:
 
-Preservar música, no-whiteout quando usado, follower, direção dos sprites, posições após combate e controles em todas as saídas.
+| Ordem | Pokémon | Lv | Item | Ability | Nature | Golpes |
+| ---: | --- | ---: | --- | --- | --- | --- |
+| 1 | **Alolan Ninetales** | 62 | Light Clay | Snow Warning | Timid | Aurora Veil, Freeze-Dry, Moonblast, Encore |
+| 2 | Ribombee | 59 | Focus Sash | Shield Dust | Timid | Sticky Web, Pollen Puff, Psychic, U-Turn |
+| 3 | Clefable | 60 | Leftovers | Magic Guard | Bold | Moonblast, Thunder Wave, Moonlight, Flamethrower |
+| 4 | Lilligant | 59 | Lum Berry | Own Tempo | Timid | Quiver Dance, Giga Drain, Sleep Powder, Pollen Puff |
+| 5 | Milotic | 61 | Leftovers | Marvel Scale | Bold | Scald, Ice Beam, Recover, Haze |
+| 6 | Comfey | 60 | Big Root | Triage | Modest | Draining Kiss, Giga Drain, Calm Mind, Synthesis |
+
+Configuração:
+- `Smart Trainer`;
+- IVs 31;
+- EVs 252/252/4;
+- Ninetales é **lead e ace narrativo**;
+- time completo de seis Pokémon;
+- dificuldade acima de Clair e abaixo da Elite Four.
+
+Ninetales abre para ativar Snow no turno 1 e tornar Aurora Veil utilizável pela IA. O comportamento real da IA ainda precisa ser testado em runtime.
+
+#### Snow e recuperação
+
+Não alterar Moonlight/Synthesis antes do runtime. Como Snow reduz a eficiência desses golpes no engine local, o primeiro teste deve verificar se Clefable/Comfey ficam significativamente piores. Só então considerar mudança.
+
+#### Saída
+
+Lillie e Ninetales saem **antes de Clair entrar**. Ambos usam movimentos próprios e `waitmovement` com IDs explícitos. Depois da remoção dos dois, a coreografia vanilla de Clair/Elder roda com o corredor livre.
+
+#### Estado
+
+`VAR_BLACKTHORN_CITY_STATE` permanece a autoridade:
+- 2 = cena/quiz pendentes;
+- 3 = quiz + batalha + ClairEnter concluídos;
+- 4 = cena posterior de Clair na Cavern concluída / Dratini liberado.
+
+Nenhuma nova flag persistente foi criada.
+
+#### Evidência atual
+
+- **Inspecionado:** sim.
+- **Compilado:** sim.
+- **Runtime:** não testado ainda.
+
+Pontos obrigatórios para runtime:
+- 0 erros → Dratini especial;
+- ≥1 erro → Dratini básico;
+- seis respostas rejeitadas repetem corretamente;
+- 15 falas aparecem no branch correto;
+- Ninetales visível e sem colisão;
+- vitória/derrota/empate/forfeit continuam;
+- Aurora Veil é usada adequadamente;
+- Snow não destrói o sustain do próprio time;
+- Risingbadge/Clair/Dratini permanecem intactos.
 
 
 ### 4.9. Gladion antes da Victory Road — “O primeiro passo”
 
-**Status:** novo encontro fechado em design no V12; implementação e balanceamento pendentes.
+**Status:** novo encontro fechado em design no V13; implementação e balanceamento pendentes.
 
 #### Papel no arco
 
@@ -1570,7 +1280,7 @@ O elenco recorrente e o altar compartilhado favorecem reutilização de assets. 
 | Lillie em Goldenrod | Evento implementado conforme o autor; vitória ou derrota permitem SquirtBottle, seguido de saída pela porta. FLAG_RECEIVED_SQUIRTBOTTLE controla a ausência. |
 | Vitória obrigatória contra Lillie em Goldenrod | Substituída por continuidade em vitória e derrota. O V12 preserva a mesma filosofia aos demais duelos narrativos. |
 | Gladion sem encontro intermediário antes de Blackthorn | Substituído por Cianwood e pelo novo encontro obrigatório antes da Victory Road. |
-| Fly condicionado a vencer Gladion | Não aprovado: vitória ou derrota permitem receber a HM. A opção de recusa foi removida no V12. |
+| Fly condicionado a vencer Gladion | Não aprovado: vitória ou derrota permitem receber a HM. A opção de recusa foi removida no V13. |
 | Aviso explícito de bolsa/HM na checagem inicial de Gladion | Substituído por fala de treino ocupado, sem iniciar a cena. |
 | Vitória obrigatória em Route 30/Violet/Dragon’s Den | Substituída: esses duelos concluem em vitória ou derrota, sem blackout. |
 | Gladion opcional na entrada da Liga | Removido: a luta foi movida para antes da Victory Road, é obrigatória e não exige vitória. |
@@ -1597,10 +1307,10 @@ O desenho geral está fechado. As pendências abaixo completam a implementação
 | Tema | Detalhe pendente |
 | --- | --- |
 | Escritório | Edifício e coordenadas em Olivine; presença dos NPCs antes e depois da história. |
-| Campanha | Refatorar Route 30, Violet e Cianwood para a política V12; Goldenrod já é compatível. Implementar Dragon’s Den e Victory Road. |
-| Lillie em Goldenrod | Implementada conforme o autor; preservar o evento e registrar evidências de regressão quando houver manutenção, sem tratá-lo como tarefa nova. |
+| Campanha | Route 30, Goldenrod e Dragon’s Den da Lillie estão implementados e compilados; runtime/regressão ainda pendentes. Violet/Cianwood/Gladion seguem conforme seus próprios estados. Victory Road Gladion permanece pendente. |
+| Lillie em Goldenrod | Implementada e compilada com Vulpix fora da Poké Ball. Preservar batalha/entrega existentes e validar em runtime a nova coreografia, especialmente possível sobreposição visual na saída. |
 | Gladion em Cianwood | Preservar a implementação existente, mas remover a recusa e garantir batalha obrigatória com vitória/derrota sem blackout. |
-| Lillie no Dragon’s Den | Integrar o roteiro V12; validar estado de batalha executada independentemente do vencedor, mapa, música, follower e retorno à sequência de Clair. |
+| Lillie no Dragon’s Den | Implementação compilada concluída. Validar em runtime quiz, 15 reações, flags temporárias, Ninetales OW, battle outcomes, IA/Aurora Veil, Snow/recovery, Clair, Risingbadge e Dratini. |
 | Gladion / Victory Road | Escolher gatilho/mapa seguro antes do acesso, criar estado de conclusão independente do vencedor e fechar equipe de cinco com Silvally lead. |
 | Blackthorn | Pós-game, imediatamente antes da abertura formal do escritório de Olivine; verificar suporte real à batalha com aliado contra duas Ultra Beasts, restrição de captura e gatilho após E4. |
 | Missões | Objetivos locais, diálogos, pontos de encontro, níveis e parâmetros de boss. |
@@ -1642,13 +1352,13 @@ As caixas abaixo são critérios de verificação, não uma declaração de test
 - [ ] Type: Null sai na frente e Gladion o acompanha; ambos permanecem ausentes após entrega.
 - [ ] Evento tardio de Cianwood não bloqueia Fly nem contradiz a evolução do parceiro; preservar a solução já implementada.
 - [ ] Esposa de Chuck, follower, música, controles e posições pós-batalha permanecem corretos.
-- [ ] Dragon’s Den preserva as cinco perguntas, avaliação e recompensas vanilla e adiciona exatamente uma reação/resposta de Lillie após cada escolha do jogador, sem permitir que o jogador responda por ela.
-- [ ] As cinco perguntas geram 15 branches locais (3 por pergunta), convergindo imediatamente para a próxima pergunta; não existem 243 combinações persistentes.
-- [ ] As respostas de Lillie nunca alteram pontuação, contador, Dratini ou qualquer outro estado/recompensa vanilla do teste.
+- [ ] Dragon’s Den preserva as cinco perguntas, avaliação e recompensas vanilla; Lillie reage às 15 alternativas sem responder pelo jogador.
+- [ ] Das 15 alternativas, 9 aceitas avançam e 6 rejeitadas preservam `ElderWrong`, incremento de `VAR_DRAGONS_DEN_QUIZ` e re-pergunta; as seis falas rejeitadas aparecem uma vez por visita via `FLAG_TEMP_2..7`.
+- [ ] As falas de Lillie não modificam diretamente pontuação, contador, Dratini ou qualquer outro estado/recompensa vanilla; a punição decorre exclusivamente da escolha rejeitada original.
 - [ ] No Dragon’s Den, Alolan Ninetales já está evoluída antes da chegada do jogador e permanece fora da Poké Ball ao lado de Lillie durante reencontro, quiz e transição para a batalha.
 - [ ] Após o Dragon’s Den, Ninetales continua fora da Poké Ball em todas as aparições posteriores de Lillie, inclusive nas Rift Missions e cenas finais em que ela estiver presente.
-- [ ] A batalha de Dragon’s Den usa Ribombee, Clefairy, Comfey e Alolan Ninetales, com Ninetales como ás e identidade de controle/adaptação.
-- [ ] Derrota contra Lillie no Dragon’s Den não repete Clair nem o quiz e conclui a demonstração sem blackout ou retry obrigatório.
+- [ ] A batalha de Dragon’s Den usa um time completo de 6 Pokémon: Ninetales-A 62, Ribombee 59, Clefable 60, Lilligant 59, Milotic 61 e Comfey 60; Ninetales é lead e ace narrativo.
+- [ ] Derrota contra Lillie no Dragon’s Den conclui a demonstração sem blackout ou retry obrigatório; o script continua para a conclusão e Clair. Reset manual antes de `state 3` pode repetir quiz+batalha e deve ser validado como comportamento seguro.
 - [ ] Vitória ou derrota contra Lillie devolvem o fluxo ao estado correto de Clair e Lillie deixa o Shrine normalmente.
 - [ ] A ordem final pré-Liga inclui Gladion antes da Victory Road: Clair → Dragon’s Den/Lillie → Victory Road Gladion → Victory Road → Liga, sem ruptura obrigatória de Ultra Beast.
 - [ ] Gladion antes da Victory Road usa Silvally como lead planejado, batalha obrigatória sem blackout e saída definitiva da cena em vitória ou derrota.
@@ -1677,13 +1387,13 @@ As caixas abaixo são critérios de verificação, não uma declaração de test
 - [ ] Pool preserva uma luta de cada personagem de Hoenn aprovado, incluindo Steven, sem variantes de dificuldade adicionais.
 - [ ] Repetição do loop não depende de apagar flags de vitória da campanha.
 - [ ] Espaço para o ovo em Violet considera party e PC antes da batalha.
-- [ ] Todos os duelos narrativos V12 salvam o resultado e continuam sem blackout; progressão não depende de vitória nem de menu de recusa.
+- [ ] Todos os duelos narrativos V13 salvam o resultado e continuam sem blackout; progressão não depende de vitória nem de menu de recusa.
 - [ ] Memória, assets e persistência são validados na ROM local, sem presumir suporte pelo design.
 
 ## 16. Entrega por etapas
 
-1. Refatorar os duelos já existentes de campanha para a política V12: Route 30 e Violet passam a continuar após derrota; Cianwood perde a opção de recusa e continua em vitória/derrota. Preservar equipes, mapas e entregas já implementados.
-2. Implementar Lillie no Dragon’s Den conforme a seção 4.8: primeiro auditar os cinco retornos de escolha do quiz, inserir os 15 branches locais sem tocar na avaliação vanilla e então usar estado de **batalha executada** — não de vitória — para devolver o fluxo a Clair.
+1. **Lillie / campanha:** Route 30, Goldenrod e Dragon’s Den estão implementados e compilados. Próxima etapa é runtime/regressão: outcomes sem blackout, Vulpix/Ninetales OW, follower, quiz/Dratini, IA e coreografia.
+2. **Dragon’s Den:** validar em runtime a implementação vigente da seção 4.8; não reescrever os 15 branches nem a party antes dos testes, salvo correção de bug comprovado.
 3. Implementar Gladion antes da Victory Road conforme a seção 4.9; fechar equipe de cinco e gatilho seguro sem criar gate de acesso.
 4. Preservar Victory Road e Liga sem incidente obrigatório de Ultra Beast e sem segundo encontro de Gladion na entrada da Liga.
 5. Implementar Blackthorn como primeiro confronto de ameaça pós-game; derrota deve usar recuperação/retry e não avançar a resolução.
@@ -1694,22 +1404,29 @@ Uma divisão prática de produção continua sendo: encontros de campanha; Black
 
 Esta divisão é uma recomendação de produção. Não autoriza alterar o elenco, a ordem das missões, a condição de evolução exigida por Looker ou a estrutura do loop.
 
-## 17. Registro da revisão V12
+## 17. Registro da revisão V13
 
-- Preservada a política global de duelos narrativos sem blackout: vitória ou derrota continuam a história; bosses de ameaça permanecem sujeitos a retry.
-- Preservado o Dragon’s Den compartilhado do V12, com cinco perguntas vanilla e 15 branches locais de Lillie.
-- Adicionada uma regra visual de continuidade para parceiros recorrentes fora da Poké Ball.
-- **Type: Null permanece fora da Poké Ball ao lado de Gladion em Violet e Cianwood.**
-- Depois da evolução, **Silvally** assume a mesma presença visual em Victory Road e continua fora da Poké Ball em todas as aparições posteriores de Gladion.
-- **Alolan Vulpix permanece fora da Poké Ball com Lillie** nos encontros anteriores ao Dragon’s Den, incluindo Route 30 e Goldenrod.
-- No Dragon’s Den, a evolução já aconteceu fora de cena: **Alolan Ninetales está fora da Poké Ball desde a chegada do jogador**, participa visualmente do quiz e sai junto com Lillie.
-- A partir do Dragon’s Den, **Ninetales permanece fora da Poké Ball em todas as aparições posteriores de Lillie**, inclusive Rift Missions, reunião e clímax quando aplicável.
-- Mantida Ninetales como ás da batalha do Dragon’s Den; não há cutscene obrigatória de evolução.
-- Acrescentadas exigências de posicionamento, saída sincronizada e compatibilidade com follower, warps, objetos vanilla e limites de objetos dos mapas.
-- Preservados Gladion antes da Victory Road, Blackthorn pós-game, escritório de Olivine, nove missões, altar único, clímax e loop repetível.
+- Consolidado o estado real da implementação da Lillie em 17/09/2026.
+- Route 30 foi refatorada para no-whiteout com tratamento explícito de WON/LOST/DREW/FORFEITED/UNKNOWN e continua para Mystery Egg/Pokédex.
+- Alolan Vulpix foi adicionado ao overworld de Route 30 e Goldenrod, saindo em conjunto com Lillie.
+- Dragon’s Den foi implementado e compilado.
+- O quiz real é `loop-until-correct`: 9 alternativas aceitas avançam e 6 rejeitadas preservam punição e re-pergunta.
+- As 15 reações da Lillie foram mantidas. As seis rejeitadas usam `FLAG_TEMP_2..7` para aparecer uma vez por visita.
+- `FLAG_TEMP_1` controla temporariamente a visibilidade de Lillie/Ninetales no Shrine conforme `VAR_BLACKTHORN_CITY_STATE`.
+- Lillie e Ninetales são objetos 5 e 6; Clair permanece objeto 4.
+- A fala do Elder foi corrigida para funcionar tanto quando jogador e Lillie concordam quanto quando discordam.
+- `TRAINER_LILLIE_DRAGONS_DEN = 970` foi criado a partir do antigo `TRAINER_UNUSED_106`.
+- A batalha final pré-Liga da Lillie usa seis Pokémon e foi calibrada acima de Clair: Ninetales-A 62, Ribombee 59, Clefable 60, Lilligant 59, Milotic 61, Comfey 60.
+- Ninetales é lead e ace narrativo para ativar Snow e permitir uso coerente de Aurora Veil.
+- Não existe dataset Hard separado; o antigo Hard foi promovido ao dataset único atual.
+- Nenhuma flag ou var persistente nova foi necessária.
+- Todo esse conjunto foi **inspecionado e compilado**, mas ainda **não testado em runtime**.
+- Moonlight/Synthesis permanecem até o runtime confirmar se Snow prejudica demais o sustain.
+- Pequenas correções de coreografia em Goldenrod/Route 30 estão autorizadas se sobreposições aparecerem no emulador.
+- Preservados Gladion antes da Victory Road, Blackthorn pós-game, escritório de Olivine, nove Rift Missions, altar, clímax e loop repetível.
 
-### Nota de autoridade da V12
+### Nota de autoridade da V13
 
-O V12 substitui o V9 para decisões de design. Para cenas já implementadas, preservar dados técnicos que não foram alterados — equipes, mapas, assets e entregas — mas refatorar branches incompatíveis com a nova política de resultado. Uma implementação antiga não prevalece sobre a decisão V12 de permitir continuidade após derrota.
+O V13 substitui o V12 para decisões de design e estado da implementação documentada. Para cenas já implementadas, preservar dados técnicos que não foram alterados — equipes, mapas, assets e entregas — mas refatorar branches incompatíveis com a nova política de resultado. Uma implementação antiga não prevalece sobre a decisão V13 de permitir continuidade após derrota.
 
 O contrato editorial principal é: **duelo de personagem testa/revela relação; boss de ameaça precisa ser resolvido**. Assim, perder para Lillie, Gladion ou Lusamine pode fazer parte da história sem punição estrutural, enquanto perder para Ultra Beasts, Ultra Necrozma ou outro boss de ameaça mantém o conflito pendente e exige recuperação/retry.
