@@ -33,6 +33,7 @@ Ambos geram `Soulgold.gba`. O build regenera sozinho tudo que é derivado
 | NPC com o próprio Pokémon fora da Poké Ball ao lado dele | `parceiro-pokemon-de-npc` |
 | Script que entrega Pokémon ou ovo (`givemon`, `giveegg`) | `entregar-pokemon-ou-ovo` |
 | Evento em modo esqueleto (Rift Missions) e seu doc de implementação | `evento-esqueleto` |
+| Transformar esqueleto em história: falas, arco da cena, surpresa, feedback do autor | `evoluir-historia-de-evento` |
 
 Todas cobrem armadilhas que **não dão erro de build** — compilam limpo e
 quebram no jogo: NPC invisível, NPC olhando pro lado errado, NPC

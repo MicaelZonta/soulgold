@@ -367,6 +367,7 @@ ReceptionGate_EventScript_GladionFarewell::
 	turnobject LOCALID_RECEPTIONGATE_SILVALLY, DIR_SOUTH
 	msgbox ReceptionGate_Text_GladionFromHere, MSGBOX_DEFAULT
 	closemessage
+	call ReceptionGate_EventScript_CosmogComment
 
 	@ Side by side on columns 11/12, one step down, on the player's east:
 	@   Silvally (11,4) -> (12,4) -> wait -> (12,5)
@@ -531,3 +532,53 @@ ReceptionGate_Text_GladionFromHere:
 ReceptionGate_Text_GladionSeeYouAfterLeague:
 	.string "Gladion: …See you after the League,\n"
 	.string "{PLAYER}.$"
+
+@ Optional Sun & Moon callback: Gladion measures the player's Cosmog against his own partner's growth.
+@ Reacts to the first non-egg Cosmog/Cosmoem/Solgaleo/Lunala in the party
+@ (CheckMysteryEggPokemon, the special Elm's Eviolite scene uses). Nothing
+@ else changes: no flag, no var; VAR_RESULT is free at every call site.
+ReceptionGate_EventScript_CosmogComment::
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
+	goto_if_eq VAR_RESULT, SPECIES_NONE, ReceptionGate_EventScript_CosmogCommentEnd
+	bufferspeciesname STR_VAR_1, VAR_RESULT
+	applymovement LOCALID_RECEPTIONGATE_SILVALLY, Common_Movement_ExclamationMark
+	waitmovement LOCALID_RECEPTIONGATE_SILVALLY
+	goto_if_eq VAR_RESULT, SPECIES_COSMOG, ReceptionGate_EventScript_CosmogCommentCosmog
+	goto_if_eq VAR_RESULT, SPECIES_COSMOEM, ReceptionGate_EventScript_CosmogCommentCosmoem
+	msgbox ReceptionGate_Text_CosmogLegend, MSGBOX_DEFAULT
+	closemessage
+	return
+
+ReceptionGate_EventScript_CosmogCommentCosmog::
+	msgbox ReceptionGate_Text_Cosmog, MSGBOX_DEFAULT
+	closemessage
+	return
+
+ReceptionGate_EventScript_CosmogCommentCosmoem::
+	msgbox ReceptionGate_Text_CosmogCosmoem, MSGBOX_DEFAULT
+	closemessage
+	return
+
+ReceptionGate_EventScript_CosmogCommentEnd::
+	return
+
+ReceptionGate_Text_Cosmog:
+	.string "Gladion: Still a Cosmog.\p"
+	.string "…That's fine. Type: Null took\n"
+	.string "its time too.\p"
+	.string "Don't let the League rush it.$"
+
+ReceptionGate_Text_CosmogCosmoem:
+	.string "Gladion: A Cosmoem now.\n"
+	.string "It's close.\p"
+	.string "When it wakes up, it won't be\n"
+	.string "small anymore. Be ready for\l"
+	.string "that.$"
+
+ReceptionGate_Text_CosmogLegend:
+	.string "Gladion: {STR_VAR_1}.\p"
+	.string "From the egg I handed you in\n"
+	.string "Violet.\p"
+	.string "Silvally, look. We weren't the\n"
+	.string "only ones who changed.$"
+

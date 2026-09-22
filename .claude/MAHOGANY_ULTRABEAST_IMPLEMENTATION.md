@@ -1,27 +1,41 @@
-# Mahogany — Xurkitree + Celesteela (Rift Mission 2) — plano de implementação ESQUELETO
+# Mahogany — Necrozma, Xurkitree + Celesteela (Rift Mission 2) — implementação
 
-**Status:** **esqueleto implementado** — 19/09/2026. Build limpo
-(`make -j$(nproc)`). Runtime pendente: checklist em §10.
-Revisão 2 — 19/09/2026 (revisão 1: plano; revisão 2: implementação + §12).
-**Modo:** esqueleto (skill `evento-esqueleto`). Diálogo curto, coreografia mínima,
-mas estado, visibilidade, gatilhos, batalha e retry **completos e corretos**.
-**Design de referência:** [`SOULGOLD_RIFT_MISSIONS_DESIGN.md`](SOULGOLD_RIFT_MISSIONS_DESIGN.md) §5, §6 (V14/V15).
+**Status:** **história evoluída (revisão 3)** — 22/09/2026. Build limpo
+(`make -j$(nproc)`). Runtime pendente: checklist em §10. A tabela *pedido →
+como ficou* está em §13.
+Revisão 3 — 22/09/2026 (revisão 1: plano; revisão 2: esqueleto + §12;
+revisão 3: a história, skill `evoluir-historia-de-evento`).
+**Modo:** a cena deixou de ser esqueleto: falas finais, arco dramático completo,
+Pryce, Necrozma e duas batalhas seguidas. Estado, flags, invariantes, ponto de
+saída e retry continuam os da revisão 2 (§1, sem mudança de valor).
+**Design de referência:** [`SOULGOLD_RIFT_MISSIONS_DESIGN.md`](SOULGOLD_RIFT_MISSIONS_DESIGN.md) §6 (regras comuns) e §6.2.
 **Missão anterior:** [`BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md`](BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md)
-— este doc **continua** a máquina de estados dela e **substitui** o stub da Missão 2
-que ficou em `OlivineCity_House1` (§4.4 daquele doc).
+— este doc **continua** a máquina de estados dela; a M1 revisão 3 é o modelo da
+história (§5–§7 e §13 daquele doc).
 
 Escopo: do gancho final de Blackthorn (o jogador volta a Olivine) até o fim do
-incidente de Mahogany, terminando com o gancho que manda o jogador de volta a
-Olivine para a Missão 3 (Blacephalon + Stakataka, Cherrygrove, Kukui).
+incidente de Mahogany, terminando com o gancho **sem destino** que manda o
+jogador de volta a Olivine. A Missão 3 (Cherrygrove) é revelada no briefing dela.
+
+**A história em três linhas.** Mahogany está sem luz há três noites; a Lillie
+está lá há dois dias (o jogador descobre isso ao chegar) e o Pryce termina de
+levar os últimos moradores para o Ginásio na frente do jogador. O Necrozma
+aparece, ignora o Blizzard do Pryce e deixa Xurkitree e Celesteela passarem —
+duas UBs que se mantêm vivas uma pela outra; o jogador vence a sua, a outra a
+revive, a Lillie entende o porquê e pede gelo ao Pryce: uma parede de gelo
+separa as duas e a segunda luta é para valer. O Necrozma absorve as duas e some;
+a Lillie reconhece aquela luz de Alola e não diz mais nada. O Pryce volta para
+o Ginásio.
 
 **Decisões desta missão:**
-- Elenco: **Looker, Anabel e Lillie** (+ Alolan Ninetales fora da Poké Ball).
-- Local: `Mahoganytown`, praça sul, na frente do Pokémon Center.
-- Os chefes são **muito mais fortes** que os de Blackthorn: 4 barras, nível 80,
-  multiplicador 130, moveset curado e item segurado. É a escalada deliberada da
-  Missão 1 → Missão 2 (§6.4). Blackthorn fica como a missão-tutorial.
+- Elenco: **Looker, Anabel, Lillie (+ Alolan Ninetales), Pryce (+ Mamoswine)**,
+  dois moradores (velho + menino) e o **Necrozma**.
+- Local: `Mahoganytown`, rua sul, entre o Pokémon Center e o Ginásio.
+- **Duas batalhas seguidas contra a mesma UB** (a escolhida): rodada 1 curta
+  (2 barras), rodada 2 no alvo da escala (4 barras / Lv80 / x130). A Anabel cura
+  o time entre as duas.
 - Mesma estrutura padrão: escolha + boss simples, captura bloqueada, derrota =
-  blackout e retry.
+  blackout e retry — agora da cena inteira, as duas rodadas.
 
 ---
 
@@ -31,16 +45,29 @@ Olivine para a Missão 3 (Blacephalon + Stakataka, Cherrygrove, Kukui).
 Blackthorn resolvido                     VAR_RIFT_MISSIONS_STATE = 4
   └─ entrar em OlivineCity_House1 ─────▶ cena: Looker + Anabel, briefing M2 → 5
                                            + setflag FLAG_EVENT_ULTRABEAST_MAHOGANY
-       └─ Mahogany: cidade vazia (só Looker, Anabel, Lillie, Ninetales)
+                                           (briefing NÃO cita Lillie nem evacuação)
+       └─ Mahogany: portas trancadas (menos o Centro); na rua só o elenco:
+          Looker, Anabel, Lillie + Ninetales (descoberta), Pryce + Mamoswine
+          e os dois últimos moradores na porta do Ginásio
             └─ falar com Looker ▶ Lillie expõe a leitura dela ▶ SIM
-                 └─ cena 100% scriptada ▶ ruptura: Xurkitree + Celesteela
+                 └─ cena 100% scriptada:
+                    Pryce leva os moradores para dentro ▶ Necrozma chega ▶ Blizzard sem efeito
+                    ▶ fenda: Xurkitree + Celesteela ▶ a sinergia na tela ▶ Celesteela avança
+                    no jogador, Ninetales o salva
                       └─ ESCOLHA: qual você enfrenta? Lillie + Ninetales ficam com a outra
-                           └─ boss battle simples, 4 barras, Lv80, x130, moveset + item
-                                ├─ perdeu / desistiu → blackout → Centro de Mahogany (Joy) → flag setada → recomeça
+                           └─ RODADA 1: boss 2 barras, Lv80, x130
+                                ├─ perdeu / desistiu → blackout → Centro → recomeça do SIM
                                 ├─ outro             → reset silencioso → recomeça
-                                └─ venceu            → fala da Lillie conforme a escolha → gancho
-                                                       → clearflag + estado 6 → warp no lugar (cidade repovoa)
-                                     └─ Olivine House1: stub da Missão 3 (Cherrygrove / Kukui)
+                                └─ venceu → a outra UB REVIVE a derrotada pela sinergia
+                                     └─ Lillie bola o plano; Anabel cura o time;
+                                        Ninetales + Mamoswine erguem a parede de gelo
+                                          └─ RODADA 2: boss 4 barras, Lv80, x130
+                                               ├─ perdeu / desistiu / outro → idem acima
+                                               └─ venceu → Necrozma ABSORVE as duas e some
+                                                    → reações; Pryce entra no Ginásio
+                                                    → gancho sem destino
+                                                    → clearflag + estado 6 → warp no lugar
+                                     └─ Olivine House1: briefing da Missão 3 revela Cherrygrove
 ```
 
 ---
@@ -52,7 +79,7 @@ Blackthorn resolvido                     VAR_RIFT_MISSIONS_STATE = 4
 | Constante | Arquivo | Valor | Observação |
 |---|---|---|---|
 | `FLAG_EVENT_ULTRABEAST_MAHOGANY` | `include/constants/flags.h` | `0x1042` | Primeira livre depois de `FLAG_NO_CATCHING` (0x1041). **Atualizar `CUSTOM_FLAGS_END`** para apontar nela (hoje aponta para `FLAG_NO_CATCHING`, `flags.h:1776`). |
-| `LOCALID_MAHOGANY_UB_*` | `include/constants/map_event_ids.h` | 10-15 | Seis linhas novas, à mão, sob um cabeçalho `// MAP_MAHOGANYTOWN` novo (o arquivo ainda não tem essa seção). |
+| `LOCALID_MAHOGANY_UB_*` | `include/constants/map_event_ids.h` | 10-20 | **Gerado** pelo `mapjson` a partir do campo `local_id` do `map.json` (não editar à mão). 10-15 na rev. 2; 16-20 (Necrozma, Pryce, Mamoswine, velho, menino) na rev. 3. |
 
 Nenhuma var nova, nenhuma flag de batalha nova: `FLAG_NO_CATCHING` /
 `B_FLAG_NO_CATCHING` já existem desde Blackthorn e são compartilhadas por
@@ -99,8 +126,12 @@ temporária: numa nova tentativa ele escolhe de novo.
 | `OlivineCity_House1` | `VAR_TEMP_1` | Trava uma-vez-por-visita do gatilho de frame (**já existe**; agora serve aos estados 2 **e** 4) |
 | `Mahoganytown` | `FLAG_TEMP_1` | Cache de visibilidade do elenco (Looker, Anabel, Lillie, Ninetales) |
 | `Mahoganytown` | `FLAG_TEMP_2` | Cache das Ultra Beasts (sempre escondidas até a cena) |
-| `Mahoganytown` | `VAR_TEMP_2` | Resultado da batalha |
-| `Mahoganytown` | `VAR_TEMP_3` | Escolha do jogador: 0 = Xurkitree, 1 = Celesteela. Sobrevive à batalha (voltar da batalha não passa por `LoadMapFromWarp`) |
+| `Mahoganytown` | `FLAG_TEMP_3` | Os dois últimos moradores (velho, menino) — visíveis com o incidente; a cena os faz entrar no Ginásio (rev. 3) |
+| `Mahoganytown` | `FLAG_TEMP_4` | Necrozma — sempre escondido no load; só a cena o traz (rev. 3) |
+| `Mahoganytown` | `FLAG_TEMP_5` | Pryce + Mamoswine — visíveis com o incidente; entram no Ginásio no fim (rev. 3) |
+| `Mahoganytown` | `VAR_TEMP_2` | Resultado da batalha (as duas rodadas) |
+| `Mahoganytown` | `VAR_TEMP_3` | Escolha do jogador: 0 = Xurkitree, 1 = Celesteela. Vale para as **duas** rodadas da tentativa. Sobrevive às batalhas (voltar da batalha não passa por `LoadMapFromWarp`) |
+| `Mahoganytown` | `VAR_TEMP_4` | Espécie da família Cosmog a que o Necrozma reagiu (`SPECIES_NONE` = sem reação); relida na conversa final (rev. 3) |
 
 > ⚠ **`VAR_TEMP_0` e `VAR_TEMP_1` estão OCUPADOS em `Mahoganytown`.**
 > `MahoganyTown_EventScript_MerchantTrigger` e os quatro ramos do vendedor de
@@ -197,7 +228,7 @@ houve no meio.
 | 2 | `call ..._BriefingTalk` (inalterado) |
 | 3 | `Text_AnabelGoAhead` (inalterado) |
 | **4** | `call ..._BriefingTalk` → M2. Substitui `..._AnabelMission2` / `..._Text_AnabelMission2Stub`. |
-| **5** | "Anabel: Go on. Lillie is already there. She has been for two days." |
+| **5** | "Anabel: Go on. Mr. Pryce does not strike me as a man who calls for help lightly." (rev. 3: a Lillie saiu daqui — ela é descoberta em Mahogany) |
 | **≥ 6** | "Anabel: Rest. Looker will brief you on Cherrygrove." |
 
 Ordem dos `goto_if_eq`: 2, 3, 4, 5, depois `goto_if_ge ... 6`, e o `msgbox` de
@@ -206,17 +237,18 @@ atual: ele engoliria os estados 5 e 6.
 
 Todos os ramos continuam terminando em `OlivineCity_House1_EventScript_ReleaseEnd`.
 
-> `Text_BriefingM2` (inglês, placeholder — caixas de ~34 colunas):
-> Looker: {PLAYER}! Perfect timing. The Mahogany report is confirmed.
-> Anabel: Two signatures again. One electrical. One... heavy.
-> Looker: The town lost its power three nights ago. Every lamp, every machine.
-> Anabel: And the readings did not come from the Lake of Rage after all. They came from the town itself.
-> Looker: There is more. A young lady reached Mahogany before we did, and has been taking notes for two days.
-> Anabel: Lillie. She refused to leave. She says she already knows what those two are doing.
-> Looker: Mahogany Town, {PLAYER}. Hear her out before you act.
+> `Text_BriefingM2` — **final (rev. 3)**. Cita a ligação do Pryce e o apagão,
+> e mais nada: a Lillie, a evacuação (fala do próprio Pryce) e o Necrozma são o
+> que o jogador encontra em Mahogany.
+> Looker: {PLAYER}! Your timing is uncanny. It has started again. Mahogany Town.
+> Anabel: Two signatures again. One electrical. One… heavy.
+> Looker: The town lost its power three nights ago. Every lamp, every machine. Only the Pokémon Center still has light.
+> Anabel: The readings come from the town itself. Every night, at the same hour. No sign of the light from Blackthorn. Not yet.
+> Looker: The Gym Leader, Pryce, telephoned us himself. He said four words. “Lights out. Come now.” …I have decided to find that reassuring.
+> Anabel: Meet us by the Pokémon Center, {PLAYER}. Prepare for two of them. Not one.
 
-(Continuidade: o gancho de Blackthorn falava em "strange lights over the Lake of
-Rage". O briefing corrige a origem de propósito — é o que Lillie descobriu.)
+"No sign of the light from Blackthorn. Not yet." é a promessa que a cena quebra:
+o Necrozma aparece em Mahogany.
 
 ---
 
@@ -249,9 +281,9 @@ pós-E4 ele já está invisível — a cidade fica vazia sem tocar na flag de ou
 quest.
 
 **A Joy continua:** está em `MahoganyTown_PokemonCenter` (outro mapa), intocado.
-Porta do Centro (21,19) livre durante todo o evento. Ginásio (10,19), Shop
-(15,10), House1 (27,10), Valor Cavern (33,19) e o gate da Route 43 (14,4)
-continuam acessíveis — só o exterior esvazia.
+Porta do Centro (21,19) livre durante todo o evento. **Rev. 3:** Ginásio, Shop
+e House1 ficam trancados (§3.1.1); Valor Cavern (33,19) e o gate da Route 43
+(14,4) continuam acessíveis.
 
 **Gatilhos herdados, conferidos como inofensivos no pós-E4:**
 - Os 50 `coord_events` do vendedor cobrem `VAR_MAHOGANY_TOWN_STATE` 1-16. No
@@ -268,7 +300,32 @@ continuam acessíveis — só o exterior esvazia.
 > dos oito objetos acima **seta `FLAG_EVENT_ULTRABEAST_MAHOGANY` e esvazia a
 > cidade**. Antes eram `flag: 0`, onde `removeobject` era inofensivo.
 
-### 3.2 Elenco — anexar no fim de `object_events` (locais 10-15)
+### 3.1.1 Portas trancadas (rev. 3, pedido do autor: "igual Blackthorn")
+
+Com a flag do evento setada, **toda porta de prédio de Mahogany recusa o
+jogador, menos a do Pokémon Center**. Mesmo mecanismo da M1 (§5.2 daquele doc):
+uma linha a mais em `sLockedTownDoors` (`src/field_control_avatar.c`):
+
+```c
+{ FLAG_EVENT_ULTRABEAST_MAHOGANY,   MAP_MAHOGANYTOWN,    MAP_MAHOGANY_TOWN_POKEMON_CENTER,   Mahoganytown_EventScript_DoorLocked },
+```
+
+e o `extern` em `include/event_scripts.h`. Fala: "The door is locked tight. A
+note is taped to it, stiff with frost: “Everyone is safe. This door stays shut
+until I say so. --Pryce”".
+
+Portas afetadas (comportamento `0x69`, porta animada): Ginásio (10,19), Shop
+(15,10), House1 (27,10). **Não afetadas** (comportamento `0x60`, porta não
+animada — `MetatileBehavior_IsWarpDoor` só aceita a animada): o **gate da Route
+43** (14,4) e a **Valor Cavern** (33,19). Medido no `metatile_attributes.bin`
+dos dois tilesets, não suposto. Isso é o desejado: o gate é saída de rota, não
+casa, e a caverna segue a regra "entrada de caverna fica aberta".
+
+A trava dura o tempo da flag: o `clearflag` da vitória destranca tudo. É também
+o que dá sentido ao Pryce entrar no Ginásio no fim: a porta abre para ele
+(`opendoor`) e a trava cai logo depois com a flag.
+
+### 3.2 Objetos — `object_events` 10-20
 
 | Local id | Nome | Gráfico | (x,y) | movement_type | script | flag |
 |---|---|---|---|---|---|---|
@@ -276,103 +333,98 @@ continuam acessíveis — só o exterior esvazia.
 | 11 | `LOCALID_MAHOGANY_UB_LILLIE` | `OBJ_EVENT_GFX_LILLIE` | (20,22) | `FACE_UP` | `Mahoganytown_EventScript_UBLillie` | `FLAG_TEMP_1` |
 | 12 | `LOCALID_MAHOGANY_UB_LOOKER` | `OBJ_EVENT_GFX_LOOKER` | (21,22) | `FACE_UP` | `Mahoganytown_EventScript_UBLooker` | `FLAG_TEMP_1` |
 | 13 | `LOCALID_MAHOGANY_UB_ANABEL` | `OBJ_EVENT_GFX_ANABEL` | (22,22) | `FACE_UP` | `Mahoganytown_EventScript_UBAnabel` | `FLAG_TEMP_1` |
-| 14 | `LOCALID_MAHOGANY_UB_XURKITREE` | `OBJ_EVENT_GFX_SPECIES(XURKITREE)` | (13,21) | `FACE_RIGHT` | `NULL` | `FLAG_TEMP_2` |
-| 15 | `LOCALID_MAHOGANY_UB_CELESTEELA` | `OBJ_EVENT_GFX_SPECIES(CELESTEELA)` | (13,22) | `FACE_RIGHT` | `NULL` | `FLAG_TEMP_2` |
+| 14 | `LOCALID_MAHOGANY_UB_XURKITREE` | `OBJ_EVENT_GFX_SPECIES(XURKITREE)` | **(12,20)** | `FACE_RIGHT` | `NULL` | `FLAG_TEMP_2` |
+| 15 | `LOCALID_MAHOGANY_UB_CELESTEELA` | `OBJ_EVENT_GFX_SPECIES(CELESTEELA)` | **(12,22)** | `FACE_RIGHT` | `NULL` | `FLAG_TEMP_2` |
+| 16 | `LOCALID_MAHOGANY_UB_NECROZMA` | `OBJ_EVENT_GFX_SPECIES(NECROZMA)` | (11,21) | `FACE_RIGHT` | `NULL` | `FLAG_TEMP_4` |
+| 17 | `LOCALID_MAHOGANY_UB_PRYCE` | `OBJ_EVENT_GFX_PRYCE` | (11,20) | `FACE_LEFT` | `Mahoganytown_EventScript_UBPryce` | `FLAG_TEMP_5` |
+| 18 | `LOCALID_MAHOGANY_UB_MAMOSWINE` | `OBJ_EVENT_GFX_SPECIES(MAMOSWINE)` | (11,21) | `FACE_LEFT` | `Mahoganytown_EventScript_UBMamoswine` | `FLAG_TEMP_5` |
+| 19 | `LOCALID_MAHOGANY_UB_OLD_MAN` | `OBJ_EVENT_GFX_OLD_MAN_1` | (10,20) | `FACE_RIGHT` | `Mahoganytown_EventScript_UBOldMan` | `FLAG_TEMP_3` |
+| 20 | `LOCALID_MAHOGANY_UB_BOY` | `OBJ_EVENT_GFX_LITTLE_BOY` | (10,21) | `FACE_UP` | `Mahoganytown_EventScript_UBBoy` | `FLAG_TEMP_3` |
 
-- Todos com `"elevation": 0`, `movement_range_x/y: 0`, `TRAINER_TYPE_NONE`,
-  `trainer_sight_or_berry_tree_id: "0"`.
-- Conferido: `XURKITREE` e `CELESTEELA` têm bloco `OVERWORLD(` em
-  `src/data/pokemon/species_info/gen_7_families.h:6913` e `:6989` (tabelas de pic em `:6914` e `:6990`)
-  (`SIZE_32x32`, paletas próprias). `NINETALES_ALOLA` já é usado em
-  `DragonsDen_Shrine` (objeto 6), `LILLIE` em três mapas, `LOOKER`/`ANABEL` em
-  Olivine House1 e Blackthorn.
-- **Sempre no fim de `object_events`:** os locais 10-15 são posicionais; inserir
-  qualquer coisa no meio renumera o elenco inteiro.
-- Seis linhas novas em `include/constants/map_event_ids.h`, à mão, sob um
-  cabeçalho `// MAP_MAHOGANYTOWN` novo. Cuidado: `LOCALID_MAHOGANY_NURSE` já
-  existe **duas vezes** no arquivo (`:657` e `:904`, ambas com valor 1, para o
-  Centro) — usar o prefixo `LOCALID_MAHOGANY_UB_` evita colisão.
-- `LOCALID_MAHOGANY_MERCHANT` continua definido com `.set` no topo do
-  `scripts.inc` (valor 3). Não mexer.
-- 15 templates < limite de 64.
+- Negrito = mudou na rev. 3 (as UBs saíram de (13,21)/(13,22) para flanquear o
+  Necrozma com um tile livre entre elas — (12,21) —, onde fica a parede de gelo).
+  16-20 são **novos, no fim**; nenhum local id anterior mudou.
+- `map_event_ids.h` é **gerado** pelo `mapjson` a partir do `local_id` (a §3.2
+  antiga mandava editar à mão; corrigido, como na M1).
+- Necrozma e Mamoswine dividem (11,21) no `map.json`: o Necrozma está sempre
+  escondido no load e só é adicionado depois que o Mamoswine saiu dali.
+- O velho fica em (10,20), o tile do Fat man vanilla (local 4,
+  `FLAG_HIDE_MAHOGANY_TOWN_FATMAN`, setada para sempre em `RocketHideout_B2F`).
+- `OBJ_EVENT_GFX_OLD_MAN_1` e `LITTLE_BOY` usam a paleta `NPC_4`, a mesma da
+  Anabel: nenhuma paleta nova para os moradores.
+- Conferido: `MAMOSWINE` tem bloco `OVERWORLD(` (`gen_2_families.h`, 32x32);
+  `NECROZMA` já é usado em Blackthorn; `OBJ_EVENT_GFX_PRYCE` existe (Ginásio,
+  Lake of Rage).
+- **Orçamento:** jogador + follower + 11 = **13/16**. Paletas na tela: jogador,
+  follower, Lillie, Looker, NPC_4, Pryce, Ninetales, Xurkitree, Celesteela,
+  Necrozma, Mamoswine = **11**, o mesmo número de Blackthorn (validado).
+- 20 templates < limite de 64.
 
 Looker e Anabel ficam em Olivine **e** aqui durante o estado 5 — aceito pelo
 autor, o evento inteiro é cutscene (design §5). Ver §9.
 
-### 3.3 Visibilidade — `ON_TRANSITION` (novo)
-
-`Mahoganytown` hoje só tem `ON_LOAD` e `ON_FRAME_TABLE`. Adicionar a linha do
-meio, sem reordenar as outras:
+### 3.3 Visibilidade — `ON_TRANSITION`
 
 ```asm
-Mahoganytown_MapScripts::
-	map_script MAP_SCRIPT_ON_LOAD, Mahoganytown_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, Mahoganytown_OnTransition   @ NOVO
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Mahoganytown_OnFrame
-	.byte 0
-
-Mahoganytown_OnTransition::
-	call Mahoganytown_EventScript_ApplyUBVisibility
-	end
-
-@ Elenco (FLAG_TEMP_1) visível só com o incidente ativo. Ultra Beasts
-@ (FLAG_TEMP_2) sempre escondidas no load: só a cena as faz aparecer.
-@ Temps zeram a cada load (ClearTempFieldEventData), então recalcula sempre.
 Mahoganytown_EventScript_ApplyUBVisibility::
-	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_2          @ UBs: sempre escondidas no load
+	setflag FLAG_TEMP_4          @ Necrozma: sempre escondido no load
 	goto_if_unset FLAG_EVENT_ULTRABEAST_MAHOGANY, Mahoganytown_EventScript_HideUBCast
-	clearflag FLAG_TEMP_1
+	clearflag FLAG_TEMP_1        @ elenco
+	clearflag FLAG_TEMP_3        @ os dois moradores
+	clearflag FLAG_TEMP_5        @ Pryce + Mamoswine
 	return
-
 Mahoganytown_EventScript_HideUBCast::
 	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_5
 	return
 ```
 
-Roda também ao entrar pela borda — Route 42 (oeste), Route 43 (norte, pelo gate)
-e Route 44 (leste) —, não só por warp.
+Roda também ao entrar pela borda (Route 42, 44) e pelo gate da Route 43.
+Retry depois de blackout: moradores, Pryce e Mamoswine voltam à porta do
+Ginásio; UBs e Necrozma voltam escondidos. A cena inteira se repete.
 
 ### 3.4 Planta da cena (dump real, bit 11; `#` = bloqueado)
 
-`python3 .claude/skills/encenar-cutscene/dump_mapa.py Mahoganytown 11 24 19 23`
+`python3 .claude/skills/encenar-cutscene/dump_mapa.py Mahoganytown`
 
 ```text
-       x= 11 12 13 14 15 16 17 18 19 20 21 22 23 24
-  y=19      #  #  .  .  .  .  .  .  #  #  W  #  #  #    W (21,19) = porta do Pokémon Center
-  y=20      .  .  .  .  .  .  .  .  .  .  f  .  .  .    f (21,20) = pouso do Fly / saída do Centro
-  y=21      .  .  X  .  .  .  .  .  .  .  t  .  .  .    t (21,21) = ÚNICO tile para falar com Looker
-  y=22      .  .  C  .  .  .  *  .  N  L  K  A  .  .    * (17,22) = posição de combate do jogador
-  y=23      #  #  #  #  #  #  #  #  #  #  #  #  #  #
+       x= 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+  y=19     #  W  #  #  .  .  .  .  .  .  #  #  W  #  #   W (10,19) Ginásio, (21,19) Centro
+  y=20     .  O  P  X  >  >  .  .  .  .  .  .  f  .  .   f (21,20) pouso do Fly
+  y=21     .  B  M  :  >  n  N  L  .  .  .  .  t  .  .   t (21,21) ÚNICO tile para falar com Looker
+  y=22     .  .  .  C  >  >  *  .  .  n  L  K  A  .  .   * (17,22) posição do jogador
+  y=23     #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
 
-  N Ninetales (19,22)  L Lillie (20,22)  K Looker (21,22)  A Anabel (22,22)
-  X Xurkitree (13,21)  C Celesteela (13,22)   — X/C escondidos até a cena
+  Antes da cena: O velho (10,20)  B menino (10,21)  P Pryce (11,20)  M Mamoswine (11,21)
+                 n Ninetales (19,22)  L Lillie (20,22)  K Looker (21,22)  A Anabel (22,22)
+  Na cena:       Pryce -> (14,20), Mamoswine -> (13,21) (linha de frente)
+                 Ninetales -> (15,21) -> (14,21) na parede; Lillie -> (16,21)
+                 Necrozma aparece em (11,21); X Xurkitree (12,20), C Celesteela (12,22)
+                 ':' (12,21) = o vão entre as duas, onde a parede de gelo sobe
 ```
 
-O Looker fica no "bolso" (21,22): (21,23) é parede, (20,22) é a Lillie e (22,22) é
-a Anabel. **Só dá para falar com ele de (21,21), olhando para baixo.** Isso torna
-o início da cena determinístico sem `getplayerxy`. Documentar num comentário `@`
-acima do script.
+Câmera com o jogador em (17,22): x 10..24, y ~18..27. A porta do Ginásio
+(10,19) está na tela — a evacuação e a saída do Pryce acontecem à vista.
+**Ninguém fica ao sul do jogador** em nenhum momento.
 
-Bônus conferido: `HEAL_LOCATION_MAHOGANYTOWN` fica em **(21,20)**
-(`src/data/heal_locations.h:181-185`) — o mesmo tile em que o jogador sai do
-Centro. Chegar de Fly ou sair do Centro deixa o jogador a um passo do tile de
-conversa, olhando na direção certa.
-
-Lillie e Anabel continuam conversáveis antes da cena: (20,21) e (22,21) estão
-livres acima delas. Ninetales é `script: NULL`.
+O Looker continua no bolso (21,22) — início determinístico sem `getplayerxy`.
+O Pryce só é alcançável de (12,20) antes da cena ((11,19) é parede, (10,20) o
+velho, (11,21) o Mamoswine).
 
 ### 3.5 Conversas antes da cena
 
-- `Mahoganytown_EventScript_UBAnabel` (`lock`, `faceplayer`):
-  "Anabel: The residents are in the Gym basement. Pryce opened it himself."
-  "Speak with Looker when you're ready."
-- `Mahoganytown_EventScript_UBLillie` (`lock`, `faceplayer`):
-  "Lillie: {PLAYER}. I was hoping it would be you."
-  "I've watched them for two days. I'd rather explain it to everyone at once —
-  go on, talk to Looker."
-  Depois `turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_NORTH` (volta ao
-  `FACE_UP` do `map.json`; ela e o Ninetales precisam continuar olhando para a
-  rua quando a cena começar).
+| Objeto | Script | Comportamento |
+|---|---|---|
+| Anabel | `UBAnabel` | `faceplayer`; o Centro tem gerador próprio, "a única luz da cidade"; cure-se lá e fale com o Looker. |
+| Lillie | `UBLillie` | **A descoberta.** "{PLAYER}?! You're the Champion they've been waiting for? …Of course you are." Veio ver Johto por conta própria, as luzes apagaram, observa há dois dias; prefere explicar a todos de uma vez. **Com família Cosmog:** Ninetales dá "!" primeiro; Cosmog — "keeps looking up at the sky. Nebby used to do that. Right before something went wrong."; Cosmoem — "gone so still. Nebby went still like that, once."; Solgaleo/Lunala — "hasn't taken its eyes off the west end of town… I think it already knows." Termina com `turnobject ... DIR_NORTH`. |
+| Pryce | `UBPryce` | **Sem** `faceplayer` (está ocupado evacuando). "Every soul in Mahogany is under my Gym tonight. Every soul but this one." — o velho recusa largar a lamparina; o Pryce manda o jogador ao detetive. **Com família Cosmog:** "That {species} of yours is shivering in its ball. It isn't the cold. I would know." |
+| Mamoswine | `UBMamoswine` | Grito + "standing guard beside Pryce, still as ice." |
+| Velho | `UBOldMan` | Sessenta anos acendendo a lamparina da varanda; não vai se esconder. Volta a olhar para o Pryce (leste). |
+| Menino | `UBBoy` | "Grandpa says the monster only eats electricity. …It doesn't eat Pokémon too, does it?" Volta a olhar para o avô (norte). |
+
+Nenhuma muda estado.
 
 ---
 
@@ -380,400 +432,247 @@ livres acima delas. Ninetales é `script: NULL`.
 
 ### 4.1 Pré-checagens (`Mahoganytown_EventScript_UBLooker`)
 
-```asm
-@ Só alcançável de (21,21), olhando para baixo: (21,23) é parede e os vizinhos
-@ leste/oeste do Looker são a Anabel e a Lillie. Não precisa de getplayerxy.
-Mahoganytown_EventScript_UBLooker::
-	lock
-	faceplayer
-	msgbox Mahoganytown_Text_UBLookerGreet, MSGBOX_DEFAULT
-	msgbox Mahoganytown_Text_UBLillieTheory, MSGBOX_DEFAULT
-	msgbox Mahoganytown_Text_UBReady, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, Mahoganytown_EventScript_UBNotReady
-	goto Mahoganytown_EventScript_UBScene
+Igual à rev. 2: `UBLookerGreet` → `UBLillieTheory` → `UBReady` (SIM/NÃO). Nenhum
+estado muda antes do SIM; sem presente, sem checagem de espaço.
 
-Mahoganytown_EventScript_UBNotReady::
-	msgbox Mahoganytown_Text_UBNotReady, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
-```
+- `UBLookerGreet` — o Looker apresenta a Lillie ao jogador com humor ("yes,
+  before you ask. That is a young lady with a notebook"); ela chegou antes de
+  todos; o Pryce pediu que ela saísse, duas vezes, e ela agradeceu educadamente
+  as duas vezes.
+- `UBLillieTheory` — a Lillie expõe o que viu: duas UBs, mesma fenda, mesma hora;
+  **"First there's a light. Then the tear. Then them."** (semente do Necrozma); uma
+  puxa a eletricidade, a outra queima e devolve. A Anabel nomeia ("A closed
+  loop"); o Looker duvida ("a great deal to conclude from one notebook"); a Lillie
+  sustenta ("Two nights of notes. Same order. Same hour."), a Anabel confirma com
+  os instrumentos. O plano dela: **separar as duas.** Ela ainda não sabe que isso
+  não basta — é o que a cena ensina.
+- `UBReady` — "Then we do it her way. Once it opens, there is no stepping back."
 
-- Nenhum estado muda antes do SIM. O SIM é o último ponto de saída.
-- Batalha simples: não é preciso checar quantidade de Pokémon.
-- A exposição da Lillie vem **antes** do SIM de propósito: ela precisa ter dito a
-  ideia dela para o grupo antes de qualquer um se mexer (design §3.2 — "observa
-  antes de agir, explica sua ideia ao grupo e sustenta sua posição").
+### 4.2 A cena (`Mahoganytown_EventScript_UBScene`)
 
-> `UBLookerGreet` — Looker: {PLAYER}! You are here, and the street is empty. Excellent.
-> The power is still out. Whatever is drawing it has not finished.
->
-> `UBLillieTheory` —
-> Lillie: May I? I've had two days to watch them.
-> Looker: Please, mademoiselle.
-> Lillie: They aren't hunting anything. They're feeding each other.
-> The tall one pulls the current out of everything in the town. The other burns it off, and the air fills up again.
-> Looker: ...Forgive me. That is a great deal to conclude from notes.
-> Lillie: It's what I saw. Four times, at the same interval.
-> If we push them both at once, they only come back stronger. We have to split them and hold them apart.
-> Anabel: She's right. The instruments show the same cycle. I should have read it sooner.
-> Looker: Then we do it her way.
->
-> `UBReady` — Looker: One warning, {PLAYER}. These two have been feeding for three nights.
-> They are not what we met in Blackthorn.
-> Anabel: Bring everything you have. Are you ready?
->
-> `UBNotReady` — Looker: Wise. The Center still has its own generator. I will be here.
+1. **Aproximação** — idêntica à rev. 2 e com a mesma ordem obrigatória:
+   Lillie/Ninetales → jogador → Looker/Anabel.
+2. **A evacuação, na tela.** Lillie: "Mr. Pryce! It's almost time!" O velho vira
+   para o Pryce; `UBPryceEvacuates` ("You heard her, Hector. Inside." — "Sixty
+   years, Pryce." — "Then don't make tonight the night I lose you over it. You'll
+   light it tomorrow. Take the boy."). `opendoor 10,19`; velho (10,20)→(10,19),
+   `set_invisible`, `removeobject`; depois o menino (10,21)→(10,20)→(10,19) —
+   **sequencial**, ele pisa no tile que o velho deixa. `closedoor`.
+3. **O Pryce assume a linha de frente.** Pryce (11,20)→(14,20) e Mamoswine
+   (11,21)→(13,21), linhas diferentes, juntos. Pryce vira para o leste (jogador
+   em (17,22): dx=+3 domina) e diz **ele mesmo** que evacuou ("That's the last of
+   them. Mahogany is empty. … I moved every family into my Gym myself."), se
+   apresenta ao Campeão e se recusa a entrar. Volta para o oeste.
+4. **A ameaça chega.** Lillie: "There! The light!" → tremor → flash →
+   `clearflag FLAG_TEMP_4` + `addobject` Necrozma em (11,21) → grito → "!" em
+   Lillie, Pryce, Looker e Anabel → `UBNecrozmaArrives`: Looker o reconhece de
+   Blackthorn; Anabel conclui que ele **abre** as fendas; a Lillie reconhece a
+   luz ("No, no, no. I know that light." — "Not now. Please."); Pryce: "Mamoswine!
+   Blizzard!"
+5. **A autoridade local tenta e falha.** Mamoswine `walk_in_place_fast_left` ×2
+   + grito → flash → Necrozma pulsa → `UBNoEffect` ("Not even frost on it. Fifty
+   years."; Looker: "In Blackthorn it was the same").
+6. **Escalada.** Grito do Necrozma → tremor → flash → Xurkitree (12,20) e
+   Celesteela (12,22) → gritos → `UBAppear` (Anabel: "Rift opening!" + a **semente
+   de Faller**, "I felt that one before the readings moved. Never mind. Later.";
+   Looker nomeia as duas, como na rev. 2 — são UBs catalogadas, não o mistério).
+7. **A sinergia, mostrada antes de explicada.** Xurkitree pulsa (drena), pulsa
+   para baixo (manda a corrente), flash, Celesteela pulsa para cima (recebe) com
+   grito → `UBSynergy` (narração + Anabel: "Energy passing between the two
+   signatures. Both ways." + Lillie: "One drinks, the other burns. Together they
+   never run dry.").
+8. **Perigo direto ao jogador.** Looker: "The heavy one! It is coming at you!" →
+   Celesteela `walk_fast_right` ×3, (12,22)→(15,22), dois tiles do jogador. O
+   Ninetales, logo acima em (15,21), ataca para baixo + grito → tremor → flash →
+   Celesteela é **jogada de volta** a (12,22) de costas (`lock_facing_direction`).
+   `UBSaved`: Lillie ("Ninetales, Icy Wind! Keep it away from {PLAYER}!"), e o
+   Pryce aprova ("That one's got a good cold in her.").
 
-### 4.2 Ruptura
+### 4.3 A escolha
 
-Ordem obrigatória: **Lillie e Ninetales primeiro, depois o jogador, depois Looker
-e Anabel.** O caminho do Ninetales passa por (17,22), que é o tile final do
-jogador; e Looker/Anabel só podem subir depois que o jogador libera (21,21).
+Igual à rev. 2 (`dynmultichoice ... TRUE ...`, `VAR_TEMP_3`, "!" na escolhida).
+Todos já olham certo: jogador (17,22), Lillie (16,21) e Ninetales (15,21) a
+leste das duas UBs em x=12, que olham para o leste. O `UBChoosePrompt` inclui o
+Pryce ("And I'll watch the crystal one. For whatever good it does."). A escolha
+vale para as **duas** rodadas.
 
-```asm
-Mahoganytown_EventScript_UBScene::
-	closemessage
-	lockall
-	hidefollower
-	@ Ninetales (19,22)->(18,22)->(17,22)->(16,22)->(15,22)->(15,21), olha oeste.
-	@ Lillie    (20,22)->(20,21)->(19,21)->(18,21)->(17,21)->(16,21), olha oeste.
-	@ Linhas diferentes o tempo todo (ele em y=22, ela em y=21) e nenhum tile em
-	@ comum em nenhum passo -> andam juntos. O parceiro vai na frente.
-	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesAdvance
-	applymovement LOCALID_MAHOGANY_UB_LILLIE, Mahoganytown_Movement_LillieAdvance
-	waitmovement LOCALID_MAHOGANY_UB_NINETALES
-	waitmovement LOCALID_MAHOGANY_UB_LILLIE
-	@ Jogador (21,21)->(20,21)->(19,21)->(18,21)->(17,21)->(17,22), olha oeste.
-	@ Só depois dos dois: (17,22) é tile de passagem do Ninetales.
-	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerToLine
-	waitmovement OBJ_EVENT_ID_PLAYER
-	@ Looker (21,22)->(21,21), Anabel (22,22)->(22,21): colunas diferentes, sem
-	@ cruzamento -> juntos. (21,21) só vaga quando o jogador sai, acima.
-	applymovement LOCALID_MAHOGANY_UB_LOOKER, Mahoganytown_Movement_StepUpFaceLeft
-	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_StepUpFaceLeft
-	waitmovement LOCALID_MAHOGANY_UB_LOOKER
-	waitmovement LOCALID_MAHOGANY_UB_ANABEL
-	msgbox Mahoganytown_Text_UBRiftWarning, MSGBOX_DEFAULT
-	closemessage
-	setvar VAR_0x8004, 1          @ vertical pan
-	setvar VAR_0x8005, 1          @ horizontal pan
-	setvar VAR_0x8006, 24         @ num shakes
-	setvar VAR_0x8007, 5          @ shake delay
-	special ShakeCamera
-	waitstate
-	fadescreen FADE_TO_WHITE
-	clearflag FLAG_TEMP_2
-	addobject LOCALID_MAHOGANY_UB_XURKITREE
-	addobject LOCALID_MAHOGANY_UB_CELESTEELA
-	fadescreen FADE_FROM_WHITE
-	playmoncry SPECIES_XURKITREE, CRY_MODE_ENCOUNTER
-	waitmoncry
-	playmoncry SPECIES_CELESTEELA, CRY_MODE_ENCOUNTER
-	waitmoncry
-	msgbox Mahoganytown_Text_UBAppear, MSGBOX_DEFAULT
-	goto Mahoganytown_EventScript_UBChoose
+### 4.4 Duas batalhas seguidas (pedido do autor)
 
-Mahoganytown_Movement_NinetalesAdvance:
-	walk_left, walk_left, walk_left, walk_left, walk_up, face_left, step_end
-Mahoganytown_Movement_LillieAdvance:
-	walk_up, walk_left, walk_left, walk_left, walk_left, face_left, step_end
-Mahoganytown_Movement_PlayerToLine:
-	walk_left, walk_left, walk_left, walk_left, walk_down, face_left, step_end
-Mahoganytown_Movement_StepUpFaceLeft:
-	walk_up, face_left, step_end
-```
+| | Rodada 1 | Rodada 2 |
+|---|---|---|
+| `setbossbattle` | **2 barras**, x130, sem perfil | **4 barras**, x130, sem perfil |
+| Xurkitree | Lv80, Magnet, Tail Glow / Thunderbolt / Energy Ball / Dazzling Gleam | idem |
+| Celesteela | Lv80, Leftovers, Heavy Slam / Flamethrower / Earthquake / Air Slash | idem |
+| Entre as rodadas | — | a Anabel cura o time (`special HealPlayerParty` + `MUS_HEAL`) |
 
-Conferido tile a tile (bit 11, `dump_mapa.py Mahoganytown 11 26 20 22`): a faixa
-x=11..26 em y=20, 21 e 22 é **toda** livre, e y=23 é parede de x=1 a x=27.
-Nenhum objeto da cidade fica no caminho (os oito estão escondidos; o Fat man em
-(10,20) já está escondido desde o Rocket Hideout e está fora da faixa).
+- A rodada 1 é **curta de propósito**: precisa parecer vitória para a virada
+  funcionar. A rodada 2 é o alvo da escala do design (M2 = 4 / Lv80 / x130).
+- `B_FLAG_NO_CATCHING` é setada antes de **cada** rodada (a engine limpa no fim
+  de toda batalha). `B_FLAG_NO_WHITEOUT` em nenhuma.
+- Ordem das macros igual à rev. 2 e à de `bosslegendaryencounterwithmoves`.
+- **Se o playtest disser parede:** rodada 1 → 1 barra; x130 → 120 nas duas;
+  rodada 2 → 3 barras; tirar o item; só então o nível. Um parafuso por vez.
 
-Posições ao fim da aproximação:
+Resultados (as duas rodadas têm o mesmo tratamento):
+
+| Resultado | O que acontece |
+|---|---|
+| `B_OUTCOME_WON` na rodada 1 | §4.5 (a virada) |
+| `B_OUTCOME_WON` na rodada 2 | §5 |
+| `LOST` / `DREW` / `FORFEITED` ("Run" no boss) | Blackout → Centro de Mahogany; o script não continua |
+| `CAUGHT` / `RAN` / outro (inalcançáveis) | `UBUnresolved`: fala + `warpsilent` (21,20) → recomeça |
+
+**Retry:** nada é salvo entre as rodadas. Perder na rodada 2 recomeça a cena
+inteira, rodada 1 inclusive (a escolha também). Aceito: a rodada 1 é curta. Se o
+runtime mostrar que isso cansa, a saída exige estado novo (um `VAR_TEMP` não
+sobrevive ao blackout) — decisão do autor, não de quem evoluir.
+
+### 4.5 A virada: a sinergia revive a derrotada (`UBRevived` / `UBLilliePlan`)
+
+1. `UBDown<escolhida>` — a Lillie comemora e se corta ("It's down! … It's--
+   …Wait. Celesteela!").
+2. A parceira **manda** (pulsa na direção da derrotada: Celesteela para cima,
+   Xurkitree para baixo), flash, a derrotada **recebe** (pulsa de volta) com
+   grito → `UBRevived<escolhida>` (narração: a derrotada se levanta inteira).
+3. "!" em Lillie, Pryce, Looker e Anabel → `UBLilliePlan`: Looker ("Impossible!
+   We had it!"), Anabel ("Whatever one loses, the other gives back."), Pryce
+   ("Like melting a glacier with a match."), e a Lillie **admite o erro e
+   refaz o plano** ("…I was wrong. Splitting them isn't enough. The current
+   still jumps the gap. So we close the gap. … Ice doesn't carry current. Mr.
+   Pryce, can Mamoswine make ice?" — "Can it make ice. …Girl, you are standing
+   in Mahogany.").
+4. **Cuidado antes da luta:** Anabel (22,21)→(22,22)→(18,22), ao lado do jogador
+   (linha 22 vazia desde a aproximação); o jogador vira para ela; fade → cura →
+   fanfarra → "There. Every one of them, ready. Now finish it." A Anabel fica em
+   (18,22) até o fim.
+5. **A parede.** Ninetales (15,21)→(14,21), ao lado do Mamoswine (13,21). Lillie:
+   "Ninetales, Aurora Veil! Right between them!"; Pryce: "Mamoswine. Freeze it
+   solid." Os dois atacam para o oeste, no vão (12,21) → gritos → tremor → flash.
+   As UBs tentam de novo (pulsam uma para a outra) → `UBWallHolds`: "The current
+   crackled against it… and died." — "This time it stays down!"
+
+A sinergia **nossa** (Lillie + Pryce, gelo de dois Pokémon) vence a sinergia
+**deles**. É a leitura do tema da missão (design §3.2: observar, explicar,
+sustentar — e aqui também corrigir o próprio plano diante do grupo).
+
+---
+
+## 5. Etapa D — Absorção, reações e gancho
+
+### 5.1 Absorção pelo Necrozma (`UBResolved` / `UBAbsorb`) — padrão de todas as missões
+
+1. Fala da Lillie conforme a escolha (a luta dela é narrativa): a UB dela "kept
+   reaching for the other one. There was nothing left to reach" / "Ice doesn't
+   give anything back."
+2. Necrozma pulsa + grito. As duas UBs são **arrastadas de costas** um tile até
+   ele: (12,20)→(11,20) e (12,22)→(11,22).
+3. Tremor → flash → `removeobject` das duas (`FLAG_TEMP_2`) → grito.
+4. "!" em Pryce, Lillie, Looker e Anabel → `UBAbsorbed`: Pryce ("It's…
+   swallowing them."), Looker ("Again! Just as in Blackthorn."), Anabel ("It
+   opened the tear, let them feed for three nights… and now it collects them."),
+   Lillie ("It's feeding. The same way it did before." — Looker: "Before?
+   Mademoiselle, before WHEN?" — "…Later. I promise.").
+5. §5.2 (opcional).
+6. Tremor → flash → `removeobject` do Necrozma (`FLAG_TEMP_4`, própria) →
+   `UBNecrozmaGone` (Pryce: "…Gone."; Looker: as lâmpadas voltando).
+
+**Ninguém o nomeia.** Looker e Anabel: "the creature from Blackthorn". Pryce nunca
+o viu. A Lillie **reconhece** (continuidade USUM) e se recusa a falar na rua — o
+mesmo corte do Gladion em Blackthorn ("In Alola." — "Later."). Os dois irmãos
+sabem; nenhum dos dois conta ainda. O nome fica para a reunião de Olivine.
+
+### 5.2 Reação opcional à família Cosmog (`UBNecrozmaSensesCosmog`)
+
+Idêntica em mecânica à M1 §6.6: `CheckMysteryEggPokemon` → `VAR_TEMP_4`,
+checado **depois** das batalhas. Necrozma dá um passo para o jogador,
+(11,21)→(12,21) (o vão, vazio); "!" no jogador; grito.
+- Cosmog/Cosmoem: encara a Poké Ball, o Pokémon treme; **Lillie**: "No! Not that
+  one! Ninetales, stay by {PLAYER}!" (na M1 era o Gladion com o Silvally).
+- Solgaleo/Lunala: a luz se acende entre os dois; ele recua e encara.
+- Na conversa final, bloco extra: Lillie ("It looked at your {species}. Only at
+  it. Promise me you'll keep it close.") + Anabel ("In Blackthorn, and now here.
+  It keeps finding one."); ou, com a lendária, Lillie ("I've never seen that
+  light back away from anything.") + Anabel.
+
+Pré-cena, sem estado: Lillie (três falas, uma por estágio, lembrando o Nebby
+sem chamar o Pokémon do jogador de Nebby) e Pryce (§3.5).
+
+### 5.3 Conversa, Pryce volta ao Ginásio, gancho
 
 ```text
-  y=21   ... X(13,21)  .  Ninetales(15,21) Lillie(16,21)  .  ...  Looker(21,21) Anabel(22,21)
-  y=22   ... C(13,22)  .        .               .     Jogador(17,22)
+Looker (21,21) → (18,21) olhando oeste. Anabel já está em (18,22).
+turnobject: Pryce, Mamoswine e Ninetales → leste; Lillie → sul. Jogador → leste.
 ```
 
-Com o jogador em (17,22) a câmera cobre x 10..24, y ~18..27: as duas UBs (x=13),
-Lillie, Ninetales, Looker e Anabel ficam na tela. **O jogador é o ator mais ao
-sul da cena** — ninguém fica abaixo dele, então a caixa de texto não cobre
-nenhum personagem (ao contrário de Blackthorn §12.5).
+1. `UBAftermath`: Looker pergunta primeiro se alguém se feriu ("the report can
+   wait a moment"); Pryce ("more winters than the three of you put together…
+   Not one like this, though."); Anabel ("Twice now. That is not chance. That is
+   a pattern."); Looker cobra a Lillie; ela promete contar tudo, "not in the
+   middle of the street. Not tonight."; Looker: "Waiting is also detective work."
+2. Bloco Cosmog/lendária se `VAR_TEMP_4` ≠ `SPECIES_NONE` (§5.2).
+3. **Pryce volta para o seu povo** (pedido do autor). Jogador vira para o oeste;
+   `UBPryceGoodbye` (Mahogany deve uma noite de luz ao Campeão; elogia a Lillie
+   — "clear thinking with a storm in your face. Winter would approve."; "And
+   Hector can light his blasted lamp."). `opendoor 10,19`; Pryce
+   (14,20)→(10,20)→(10,19), some; **depois** o Mamoswine (13,21)→(10,21)→(10,20)
+   →(10,19), some (sequencial: os dois últimos tiles dele são os do Pryce).
+   `closedoor`.
+4. Jogador → leste. `UBHook` — **sem destino**: Anabel pede as anotações da
+   Lillie; Lillie fica mais uns dias "in case it comes back"; Anabel: "It will
+   open another rift. Where, and when, we don't know yet."; Looker: "So we keep
+   watching. Rest, {PLAYER}. Then come back to our house in Olivine. The moment
+   something opens, you will be the first to know."; Lillie agradece por ouvirem
+   o plano dela — "Both of them. Even the wrong one."
+5. `FADE_TO_BLACK` → `clearflag FLAG_EVENT_ULTRABEAST_MAHOGANY` + `setvar
+   VAR_RIFT_MISSIONS_STATE, 6` → `warpsilent MAP_MAHOGANYTOWN, 17, 22` →
+   `waitstate` → `releaseall` → `end`. A cidade repovoa, o elenco some, as portas
+   destrancam, o follower volta.
 
-Todo mundo já olha para o lado certo em qualquer ramo da escolha: o jogador e
-Lillie estão a leste das duas UBs, e as duas UBs olham para o leste
-(`FACE_RIGHT`). Nenhum `turnobject` é necessário.
+**Continuidade corrigida junto:** o briefing da M3 abria com "Cherrygrove at
+last", apoiado no gancho antigo que citava Cherrygrove e Kukui. Agora abre com
+"It has opened again. Cherrygrove City." — o briefing é quem revela o lugar.
 
-> `UBRiftWarning` — Lillie: There. The air is folding over itself— get back!
-> `UBAppear` — Looker: Xurkitree! And Celesteela!
-> Anabel: ...I felt that one before the readings moved.
-> Anabel: Never mind. Later.
+---
 
-(A fala da Anabel é a única semente de Faller aqui. O design reserva a revelação
-para a reunião antes do altar, §7 item 6 — não adiantar.)
+## 6. Arquivos tocados
 
-### 4.3 A escolha — estrutura padrão de todas as missões
-
-Sem opção de cancelar (`ignoreBPress = TRUE`): a cena já começou. Confirmado em
-`Task_HandleScrollingMultichoiceInput` (`src/script_menu.c:500-506`) que o
-`LIST_CANCEL` é engolido — `VAR_RESULT` só pode sair 0 ou 1, não falta
-tratamento de `MULTI_B_PRESSED`.
-
-```asm
-Mahoganytown_EventScript_UBChoose::
-	msgbox Mahoganytown_Text_UBChoosePrompt, MSGBOX_DEFAULT
-	dynmultichoice 0, 0, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, Mahoganytown_Text_ChoiceXurkitree, Mahoganytown_Text_ChoiceCelesteela
-	copyvar VAR_TEMP_3, VAR_RESULT               @ 0 = Xurkitree, 1 = Celesteela
-	closemessage
-	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBPickCelesteela
-	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Common_Movement_ExclamationMark
-	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
-	msgbox Mahoganytown_Text_UBPickedXurkitree, MSGBOX_DEFAULT
-	closemessage
-	goto Mahoganytown_EventScript_UBBattle
-
-Mahoganytown_EventScript_UBPickCelesteela::
-	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Common_Movement_ExclamationMark
-	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
-	msgbox Mahoganytown_Text_UBPickedCelesteela, MSGBOX_DEFAULT
-	closemessage
-	goto Mahoganytown_EventScript_UBBattle
-```
-
-> `UBChoosePrompt` — Lillie: We split them now, while they're still apart.
-> Pick one, {PLAYER}. Ninetales and I will hold the other.
-> `ChoiceXurkitree` — "Xurkitree" · `ChoiceCelesteela` — "Celesteela"
-> `UBPickedXurkitree` — Lillie: Then the tall one is ours. Ninetales — Snow, now!
-> `UBPickedCelesteela` — Lillie: All right. Ninetales, get between it and the power lines. Don't let it drink!
-
-### 4.4 Batalha — boss simples e **muito** mais forte
-
-Mesmas peças de Blackthorn, com os quatro parafusos apertados. O sistema de boss
-só existe em batalha **simples** (`InitBossBattleData`), que é a outra razão de a
-missão dividir as UBs.
-
-```asm
-@ SKELETON: coreografia e falas são placeholder; os números abaixo NÃO são.
-@ Escalada deliberada sobre Blackthorn (2 barras / Lv70 / x110).
-Mahoganytown_EventScript_UBBattle::
-	setflag B_FLAG_NO_CATCHING                   @ limpa pela engine no fim da batalha
-	@ B_FLAG_NO_WHITEOUT NÃO é setado: perder = blackout (batalha de ameaça).
-	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBSetupCelesteela
-	setbossbattle 4, SPECIES_NONE, 130, BOSS_PHASE_PROFILE_NONE
-	playmoncry SPECIES_XURKITREE, CRY_MODE_ENCOUNTER
-	waitmoncry
-	seteventmon SPECIES_XURKITREE, 80, ITEM_MAGNET
-	seteventmonmoves MOVE_TAIL_GLOW, MOVE_THUNDERBOLT, MOVE_ENERGY_BALL, MOVE_DAZZLING_GLEAM
-	goto Mahoganytown_EventScript_UBStartBattle
-
-Mahoganytown_EventScript_UBSetupCelesteela::
-	setbossbattle 4, SPECIES_NONE, 130, BOSS_PHASE_PROFILE_NONE
-	playmoncry SPECIES_CELESTEELA, CRY_MODE_ENCOUNTER
-	waitmoncry
-	seteventmon SPECIES_CELESTEELA, 80, ITEM_LEFTOVERS
-	seteventmonmoves MOVE_HEAVY_SLAM, MOVE_FLAMETHROWER, MOVE_EARTHQUAKE, MOVE_AIR_SLASH
-
-Mahoganytown_EventScript_UBStartBattle::
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	copyvar VAR_TEMP_2, VAR_RESULT
-	goto_if_eq VAR_TEMP_2, B_OUTCOME_WON, Mahoganytown_EventScript_UBResolved
-	goto Mahoganytown_EventScript_UBUnresolved
-```
-
-Ordem das macros idêntica à de `bosslegendaryencounterwithmoves`
-(`asm/macros/event.inc:2231-2247`): `setbossbattle` → `playmoncry` →
-`seteventmon` → `seteventmonmoves` → `special`. Nenhum caminho sai do script
-entre elas, então não é preciso `clearbossbattle`.
-
-**Os números, e por que estes:**
-
-| Parafuso | Blackthorn (M1) | **Mahogany (M2)** | Limite / referência |
-|---|---|---|---|
-| Barras | 2 | **4** | `MAX_BOSS_HEALTH_BARS 4` (`include/battle_boss.h:4`) — é o teto |
-| Nível | 70 | **80** | Mewtwo, Kyogre, Latios, Hoopa do repo usam 80 |
-| Multiplicador | 110 | **130** | `DEFAULT_BOSS_STAT_MULTIPLIER 110`. **Nada no repo passa de 110 hoje** — este é o primeiro. Aplica-se a Atk/Def/Spe/SpA/SpD, com `min(MAX_u16, …)` (`src/battle_boss.c:678-687`) |
-| Moveset | golpes de nível | **curado, 4 slots** | `seteventmonmoves` |
-| Item | nenhum | **Magnet / Leftovers** | terceiro parâmetro de `seteventmon` |
-| Perfil de fases | `NONE` | `NONE` | UBs não têm Mega/Primal/Tera; os 9 perfis existentes são todos de troca de forma (`src/battle_boss.c:355-400`) |
-
-Movesets conferidos contra `src/data/pokemon/all_learnables.json`: os oito
-golpes são aprendíveis pelas espécies (não é exigência da engine — é coerência).
-Ambas têm `ABILITY_BEAST_BOOST` e `perfectIVCount = LEGENDARY_PERFECT_IV_COUNT`.
-
-- **Xurkitree** — Tail Glow (+3 SpA) + STAB especial + cobertura. Com 4 barras ela
-  usa Tail Glow cedo e o resto da luta é corrida contra o relógio. Magnet reforça
-  o Thunderbolt.
-- **Celesteela** — parede ofensiva: Heavy Slam (STAB físico pesado),
-  Flamethrower e Earthquake cobrem Aço/Fada/Elétrico, Air Slash é o segundo STAB.
-  Leftovers alonga as quatro barras sem criar loop de stall (por isso **não** tem
-  Leech Seed).
-
-Música: `BattleSetup_StartLegendaryBattle` cai no `default` → `MUS_DP_VS_LEGEND`.
-
-**Se o playtest disser que é parede em vez de ameaça**, mexer nesta ordem, um de
-cada vez: multiplicador 130 → 120; barras 4 → 3; tirar o item; só então o nível.
-Não mexer em nada de §1 para "compensar".
-
-Resultados (`IsPlayerDefeated`, `src/battle_setup.c:1107`):
-
-| Resultado | O que acontece | Por quê |
+| Arquivo | Rev. 2 (esqueleto) | Rev. 3 (história) |
 |---|---|---|
-| `B_OUTCOME_WON` | Continua para §5 | A UB escolhida desmaiou |
-| `LOST` / `DREW` | **Blackout** → Centro de Mahogany (Joy) | `CB2_WhiteOut`; `Mahoganytown_OnLoad` faz `setrespawn HEAL_LOCATION_MAHOGANYTOWN` |
-| `FORFEITED` ("Run" no boss) | **Blackout**, igual à derrota | Boss transforma fuga em desistência (`HandleEndTurn_RanFromBattle`, `src/battle_main.c:5893`) |
-| `CAUGHT` / `RAN` / outro | `UBUnresolved`: reset da cena | Inalcançáveis (bola bloqueada; fuga vira FORFEITED), tratados por segurança. Nunca viram vitória. |
-
-**Retry:** nada foi salvo como concluído. A flag do evento continua setada; ao
-sair do Centro a cidade continua vazia, o elenco volta às posições do `map.json`
-e as UBs voltam a ficar escondidas. Falar com o Looker recomeça do §4.1 —
-**inclusive a escolha**, que pode ser outra.
-
-```asm
-Mahoganytown_EventScript_UBUnresolved::
-	msgbox Mahoganytown_Text_UBGotAway, MSGBOX_DEFAULT
-	closemessage
-	fadescreen FADE_TO_BLACK
-	warpsilent MAP_MAHOGANYTOWN, 21, 20          @ recarrega: elenco no lugar, UBs escondidas
-	waitstate
-	releaseall
-	end
-```
-
-> `UBGotAway` — Looker: They closed the gap again... The cycle starts over.
-> Lillie: Then we do it again. I'm not leaving.
-
-(21,20) é o tile de Fly / saída do Centro: o jogador reaparece a um passo do
-tile de conversa do Looker.
-
----
-
-## 5. Etapa D — Resolução e gancho
-
-A luta da Lillie contra a outra UB é **narrativa**: não há batalha para ela. Ela
-se resolve junto com a vitória do jogador, e a fala da Lillie muda conforme a
-escolha.
-
-```asm
-Mahoganytown_EventScript_UBResolved::
-	@ Os dois objetos continuam no mapa após a batalha (não há recarga).
-	fadescreen FADE_TO_WHITE
-	removeobject LOCALID_MAHOGANY_UB_XURKITREE       @ flag = FLAG_TEMP_2: seguro
-	removeobject LOCALID_MAHOGANY_UB_CELESTEELA
-	fadescreen FADE_FROM_WHITE
-	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBLillieFoughtXurkitree
-	msgbox Mahoganytown_Text_UBLillieFoughtCelesteela, MSGBOX_DEFAULT
-	goto Mahoganytown_EventScript_UBAfterBattle
-
-Mahoganytown_EventScript_UBLillieFoughtXurkitree::
-	msgbox Mahoganytown_Text_UBLillieFoughtXurkitree, MSGBOX_DEFAULT
-
-Mahoganytown_EventScript_UBAfterBattle::
-	msgbox Mahoganytown_Text_UBAfterLillie, MSGBOX_DEFAULT
-	closemessage
-	@ Looker (21,21)->(20,21)->(19,21)->(18,21), olha oeste.
-	applymovement LOCALID_MAHOGANY_UB_LOOKER, Mahoganytown_Movement_LookerToPlayer
-	waitmovement LOCALID_MAHOGANY_UB_LOOKER
-	@ Anabel (22,21)->(22,22)->(21,22)->(20,22)->(19,22)->(18,22), olha oeste.
-	@ Linha própria (y=22) e sempre atrás do jogador (17,22): nenhum tile em
-	@ comum com o Looker, mas SEQUENCIAL por clareza de leitura da cena.
-	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_AnabelToPlayer
-	waitmovement LOCALID_MAHOGANY_UB_ANABEL
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight   @ data/scripts/movement.inc:46
-	waitmovement OBJ_EVENT_ID_PLAYER
-	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_SOUTH               @ jogador (17,22) está abaixo
-	turnobject LOCALID_MAHOGANY_UB_NINETALES, DIR_SOUTH
-	msgbox Mahoganytown_Text_UBHook, MSGBOX_DEFAULT
-	closemessage
-	fadescreen FADE_TO_BLACK
-	clearflag FLAG_EVENT_ULTRABEAST_MAHOGANY     @ invariante: flag e var juntas
-	setvar VAR_RIFT_MISSIONS_STATE, 6
-	warpsilent MAP_MAHOGANYTOWN, 17, 22          @ recarrega no lugar: cidade repovoa,
-	waitstate                                    @ elenco some pelo ON_TRANSITION
-	releaseall
-	end
-
-Mahoganytown_Movement_LookerToPlayer:
-	walk_left, walk_left, walk_left, face_left, step_end
-Mahoganytown_Movement_AnabelToPlayer:
-	walk_down, walk_left, walk_left, walk_left, walk_left, face_left, step_end
-```
-
-Posições finais: jogador (17,22) → leste; Looker (18,21) → oeste;
-Anabel (18,22) → oeste (imediatamente a leste do jogador, na mesma linha);
-Lillie (16,21) → sul; Ninetales (15,21) → sul.
-Conferido: (18,21), (18,22), (19..22,22) e (22,22) estão livres; a Anabel desce
-para y=22 só depois que o Looker já passou por y=21, e o caminho dela em y=22
-está vazio porque a Lillie e o Ninetales estão em y=21.
-**Ninguém fica ao sul do jogador** — a caixa de texto não cobre ator nenhum.
-
-Por que `warpsilent` no lugar: com a flag limpa, os oito NPCs escondidos só
-voltariam quando a câmera andasse, surgindo do nada. Recarregar faz o
-`ON_TRANSITION` esconder o elenco e spawnar a cidade de uma vez, sob o fade.
-Lillie e Ninetales somem juntos, como pede `parceiro-pokemon-de-npc`, e o
-follower do jogador volta pelo warp.
-
-Textos (inglês, placeholder) — **o último bloco é o gancho para Olivine**:
-
-> `UBLillieFoughtCelesteela` (jogador escolheu Xurkitree) — Lillie: Celesteela never got off the ground. Ninetales kept the air cold, and it stayed heavy.
-> `UBLillieFoughtXurkitree` (jogador escolheu Celesteela) — Lillie: Xurkitree had nothing left to pull. We kept it off the lines until it went dim.
-> `UBAfterLillie` — Lillie: They're going back on their own now. Look — they're not even fighting it.
-> ...I was right about them. I'm glad I said it out loud.
->
-> `UBHook` — Looker: Magnifique! And the lamps — {PLAYER}, look! The town has its light back!
-> Anabel: Lillie. Your reading was better than my instruments. I'd like your notes.
-> Lillie: You can have all of them. I'm going to keep watching.
-> Looker: One more thing before you rest, {PLAYER}. A report came in while we were busy.
-> Anabel: Cherrygrove City. Two more signatures — and a man in a lab coat who will not leave the shore.
-> Looker: Professor Kukui. But of course it is Professor Kukui.
-> Anabel: Come back to the house in Olivine when you're ready. We'll brief you there.
-> Lillie: Cherrygrove... Tell the Professor I'm fine. He worries.
-
----
-
-## 6. Arquivos tocados (checklist de implementação)
-
-| Arquivo | Mudança |
-|---|---|
-| `include/constants/flags.h` | `FLAG_EVENT_ULTRABEAST_MAHOGANY 0x1042` + comentário; mover `CUSTOM_FLAGS_END` |
-| `include/constants/map_event_ids.h` | seção `// MAP_MAHOGANYTOWN` nova, 6 locais (10-15), à mão |
-| `data/maps/OlivineCity_House1/scripts.pory` | gatilho atende estados 2 e 4; `BriefingTalk` vira despachante; ramos 4/5/≥6 em Looker e Anabel; apaga os dois stubs da M2; textos novos |
-| `data/maps/Mahoganytown/map.json` | flag do evento em 8 objetos; 6 objetos novos no fim |
-| `data/maps/Mahoganytown/scripts.inc` | `ON_TRANSITION` + visibilidade, conversas, cena, escolha, boss, resolução, textos, movimentos |
+| `include/constants/flags.h` | `FLAG_EVENT_ULTRABEAST_MAHOGANY 0x1042` + comentário; `CUSTOM_FLAGS_END` | — |
+| `include/constants/map_event_ids.h` | (gerado) | (gerado) locais 16-20 |
+| `data/maps/OlivineCity_House1/scripts.pory` | gatilho de dois estados, despachante, ramos 4/5/≥6 | `Text_BriefingM2` final (sem Lillie, sem evacuação, com a ligação do Pryce); `Text_AnabelGoAheadM2` sem a Lillie; `Text_BriefingM3` abre revelando Cherrygrove |
+| `data/maps/Mahoganytown/map.json` | flag do evento em 8 moradores; locais 10-15 | UBs para (12,20)/(12,22); locais 16-20 (Necrozma, Pryce, Mamoswine, velho, menino) |
+| `data/maps/Mahoganytown/scripts.inc` | visibilidade + seção da Missão 2 | visibilidade com `FLAG_TEMP_3..5`; seção da Missão 2 **reescrita** (cena, duas rodadas, absorção, reações, falas finais) |
+| `src/field_control_avatar.c` | — | linha de Mahogany em `sLockedTownDoors` |
+| `include/event_scripts.h` | — | `extern Mahoganytown_EventScript_DoorLocked` |
 
 Não editar `events.inc`/`header.inc`/`connections.inc` nem o `.inc` gerado de
 `OlivineCity_House1`. Validar com `make -j$(nproc)`.
 
-Ordem sugerida: flags/localids → `map.json` de Mahogany → `scripts.inc` de
-Mahogany → `scripts.pory` de Olivine → build.
-
 ---
 
-## 7. Esqueleto × evolução
+## 7. O que ainda é simples × evolução
 
-O que está **deliberadamente simples**. Cada item vira um comentário
-`@ SKELETON: <o que falta>` no script correspondente, para que
-`grep -rn "SKELETON:" data/maps/{Mahoganytown,OlivineCity_House1}` liste tudo que
-falta polir:
+Rev. 3 apagou todos os `@ SKELETON:` de falas de Mahogany. O único que sobra na
+seção é o da coreografia (topo de `UBScene`):
+`grep -rn "SKELETON:" data/maps/Mahoganytown`.
 
-| Item | Esqueleto | Evolução prevista |
+| Item | Hoje | Evolução possível |
 |---|---|---|
-| Luta da Lillie | Narrativa: resolvida junto com a vitória do jogador, fala muda pela escolha | Mostrar o combate dela na tela (Ninetales, Snow, animação de golpe, UB recuando). Batalha real contra Lillie **não** é o plano. |
-| Chefes | 4 barras, Lv80, x130, moveset + item — **já é o alvo**, não é placeholder | Perfil de fases próprio em `battle_boss.c` (ex.: Xurkitree trocando de comportamento quando a última barra abre); `setdynamicaifunc`. |
-| Diálogos | Curtos, placeholder | Reescrever pela voz do design §3.1 (Lillie observadora e firme; Looker teatral/caloroso; Anabel precisa). |
-| Coreografia | Ruptura = tremor + flash; UBs surgem paradas; a escolhida só dá "!" | Apagão visual da cidade (paleta/`setweather`), luzes voltando no fim, animação de portal, música própria. |
-| Saída do elenco | Warp no lugar em Mahogany | Lillie e Ninetales saindo a pé para a Route 43, Looker e Anabel indo para o Centro. |
-| Moradores | Somem | Reações dos moradores depois do evento (o vendedor de Rage Candy Bar tem material óbvio). |
-| Anabel | Só fala; a semente de Faller é uma linha | Beast Balls em Olivine (design §5, ainda pendente desde a M1); desenvolver a semente sem adiantar a revelação do §7. |
-| Gancho da M3 | Stub "come back soon" em Olivine | Substituído pelo doc da Missão 3 (Cherrygrove / Kukui), que continua a var em 7+. |
+| Golpes, fenda, parede de gelo | Tremor + flash; Pokémon só andam no lugar | Animações de golpe (field effects), sprite de portal, metatile de gelo com `setmetatile` no vão (12,21) |
+| Apagão | Só dito nas falas | Paleta escura na cidade durante o incidente, lâmpadas voltando no fim |
+| Música | `MUS_DP_VS_LEGEND` nas duas rodadas | Tema próprio do Necrozma na chegada |
+| Moradores depois do evento | Voltam como eram | O velho acendendo a lamparina; o vendedor de Rage Candy Bar comentando |
+| Rodada 1 no retry | Refeita junto com a 2 | Só com estado novo; decisão do autor (§4.4) |
+| Beast Balls | Pendentes desde a M1 | Design §5 |
 
 **O que NÃO pode regredir numa evolução:** a máquina de estados §1.2, a
 invariante flag ⇔ estado 5, a visibilidade por template, o SIM como único ponto
-de saída, a escolha refeita a cada tentativa, o tratamento de todos os
-resultados, a proibição de captura e a regra de que `VAR_TEMP_0`/`VAR_TEMP_1` são
-do vendedor de Rage Candy Bar.
+de saída, a escolha refeita a cada tentativa e válida para as duas rodadas, o
+tratamento de todos os resultados **nas duas rodadas**, a proibição de captura
+(setada antes de cada rodada), a regra de que `VAR_TEMP_0`/`VAR_TEMP_1` são do
+vendedor, a surpresa da Lillie (nada antes da cena a cita), o gancho sem
+destino e ninguém nomeando o Necrozma.
 
 ---
 
@@ -796,6 +695,16 @@ Coisas que não existem hoje e que uma evolução distraída quebra em silêncio
   a Lillie narra a UB errada.
 - **Objetos novos sempre no fim de `object_events`.** Os locais 10-15 são
   posicionais.
+- **(Rev. 3) A ordem da evacuação e da saída do Pryce é sequencial.** O menino
+  pisa no tile que o velho deixa; o Mamoswine usa os dois últimos tiles do
+  Pryce. Juntar qualquer par num só `waitmovement` faz um tentar entrar no tile
+  do outro no mesmo tick.
+- **(Rev. 3) O vão (12,21) precisa ficar vazio.** É onde a parede "fica" e onde o
+  Necrozma dá o passo da reação ao Cosmog. Nenhum ator pode terminar ali.
+- **(Rev. 3) `B_FLAG_NO_CATCHING` antes de cada rodada.** A engine a limpa ao fim
+  da rodada 1; tirar o segundo `setflag` libera a bola na rodada 2.
+- **(Rev. 3) A Anabel mora em (18,22) da cura em diante.** A conversa final não a
+  move de novo; mover a cura para outro ponto exige refazer §5.3.
 - **O despachante `BriefingTalk` de Olivine agora serve duas missões.** Um
   `goto_if_ge VAR_RIFT_MISSIONS_STATE, 4` sobrando em qualquer ramo de Looker ou
   Anabel engole os estados 5 e 6.
@@ -805,50 +714,47 @@ Coisas que não existem hoje e que uma evolução distraída quebra em silêncio
 ## 9. Pendências e riscos conhecidos
 
 - **Looker e Anabel em dois lugares no estado 5: aceito pelo autor** (mesma
-  decisão da M1). O evento inteiro é cutscene; eles continuam na casa de Olivine
-  (sem flag) e também aparecem em Mahogany. Não esconder em Olivine.
-- **Multiplicador 130 é inédito no repo.** Nenhum boss existente passa de 110.
-  O caminho de redução está em §4.4; a decisão de "beeem mais forte" é do autor.
-- **Assimetria M1 × M2.** Blackthorn (2 barras / Lv70 / x110) fica bem mais fácil
-  que Mahogany. Isso é escalada intencional. Se o autor quiser nivelar por cima,
-  é uma edição de duas linhas em `BlackthornCity/scripts.inc:440,447` mais o
-  `seteventmon` — **e** uma atualização do doc da M1 §9.
-- **O Fat man (10,20) não é tocado.** Ele já está escondido desde
-  `RocketHideout_B2F/scripts.inc:555`. Se alguma revisão futura voltar a
-  mostrá-lo no pós-game, ele passa a ser o único morador visível durante o
-  incidente e precisará entrar na lista de §3.1 — o que exige resolver o conflito
-  de duas flags num só campo. **Esse conflito já tem solução aprovada:** ver
-  §3.1.1 do doc da Missão 3 (`CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md`), que
-  troca o campo `flag` do template por um cache temporário recalculado no
-  `ON_TRANSITION` e mantém a flag antiga como verdade persistente.
-- Money loss no blackout/desistência é o padrão da engine; aceito pelo design
-  (batalha de ameaça).
-- **Beast Balls continuam pendentes** desde a M1 (design §5). Enquanto a captura
-  estiver bloqueada nas missões, a venda não tem função — mas o design promete
-  "desde o início das missões pós-E4".
+  decisão da M1). Não esconder em Olivine.
+- **Duas rodadas de x130 seguidas.** A rodada 1 tem 2 barras e há cura entre
+  elas, mas nada disso foi jogado. Caminho de redução em §4.4.
+- **Retry refaz as duas rodadas.** Perder na rodada 2 custa a rodada 1 de novo.
+  Sem estado novo não há como pular (§4.4).
+- **Cura no meio da cutscene** (`special HealPlayerParty` sob `FADE_TO_BLACK`)
+  é inédita nas Rift Missions; o runtime confirma que a fanfarra não briga com a
+  música do mapa.
+- **`opendoor`/`closedoor` com a trava ativa:** a animação é só de metatile e
+  não passa por `TryLockedDoorScript`; confirmar em runtime que o velho, o menino
+  e o Pryce "entram" pela porta sem glitch visual.
+- **O velho em (10,20)** depende de `FLAG_HIDE_MAHOGANY_TOWN_FATMAN` continuar
+  setada no pós-game (§3.2). Se alguma revisão voltar a mostrar o Fat man, os
+  dois disputam o tile.
+- **O Fat man (10,20) não é tocado.** Conflito de duas flags num só campo já tem
+  solução aprovada no doc da M3 §3.1.1, se um dia for preciso.
+- Money loss no blackout/desistência é o padrão da engine; aceito pelo design.
+- **Beast Balls continuam pendentes** desde a M1 (design §5).
 
 ---
 
 ## 10. Teste em runtime
 
-- [ ] Estado 4: entrar em Olivine House1 pela porta dispara a cena; Looker e Anabel param lado a lado, dão o briefing da M2 e voltam ao lugar sem atravessar a mesa. Estado vira 5.
-- [ ] Estado 4 entrando de outro jeito (sem a coreografia): falar com Looker **ou** com Anabel dá o mesmo briefing e o mesmo estado 5.
-- [ ] Estado 3 (Blackthorn ainda ativo) continua se comportando como antes: a cena de chegada **não** dispara e o diálogo é "vá na frente".
-- [ ] Estado 5: diálogo "vá na frente" em Olivine; Mahogany sem Gramps, Lass, vendedor, os 4 Aipom e o Delibird; Centro, Joy, Ginásio, Shop, House1, Valor Cavern e o gate da Route 43 acessíveis.
-- [ ] Chegar por Fly, Route 42, Route 43 (gate) e Route 44: elenco sempre presente, UBs sempre ausentes.
-- [ ] Falar com Anabel e Lillie antes: falas curtas, nada muda; Lillie volta a olhar para cima. "Não" com o Looker libera e não muda estado.
-- [ ] Confirmar que **(21,21) é mesmo o único tile** de onde se fala com o Looker: tentar por (20,21), (22,21) e pela linha y=22 dos dois lados.
-- [ ] "Sim": Ninetales e Lillie avançam juntos sem se atravessar, o jogador desce para (17,22), Looker e Anabel sobem. Nenhum ator sobreposto, nenhum atravessando parede.
-- [ ] Tremor + flash + as duas UBs aparecendo em (13,21)/(13,22); os dois gritos tocam.
+- [ ] Estado 4: a cena de chegada em Olivine dá o briefing da M2 **sem** citar a Lillie nem a evacuação; cita a ligação do Pryce. Estado vira 5.
+- [ ] Estado 5 em Olivine: Anabel fala do Pryce, não da Lillie.
+- [ ] Estado 5 em Mahogany (chegar por Fly, Route 42, gate da Route 43 e Route 44): moradores vanilla ausentes; Looker, Anabel, Lillie + Ninetales, Pryce + Mamoswine, velho e menino presentes; UBs e Necrozma ausentes.
+- [ ] Portas: Ginásio, Shop e House1 recusam com o bilhete do Pryce; Centro abre; gate da Route 43 e Valor Cavern abrem.
+- [ ] Conversas antes da cena (Lillie surpresa, Pryce ocupado, velho, menino, Mamoswine, Anabel), com e sem família Cosmog; cada um volta a olhar para onde olhava.
+- [ ] (21,21) continua sendo o único tile para falar com o Looker.
+- [ ] SIM: aproximação sem sobreposição; velho e menino entram no Ginásio pela porta animada; Pryce e Mamoswine vão para (14,20)/(13,21) sem atravessar ninguém.
+- [ ] Necrozma aparece em (11,21) com "!" nos quatro; Blizzard sem efeito; fenda com as UBs em (12,20)/(12,22); a sinergia lê como troca de energia.
+- [ ] Celesteela avança até (15,22) e é jogada de volta a (12,22) pelo Ninetales.
 - [ ] Menu da escolha não fecha com B.
-- [ ] Escolher Xurkitree: boss Xurkitree com **4 barras**, nível 80, Tail Glow no primeiro ou segundo turno, Magnet no bolso. Lillie fala da Celesteela depois. Idem invertido (Celesteela, Leftovers, Heavy Slam).
-- [ ] Bolsa: bola bloqueada nas duas. "Run": desistência → blackout.
-- [ ] Perder de propósito: acorda no Centro de **Mahogany**; cidade ainda vazia, elenco no lugar, UBs ausentes; Looker recomeça e a escolha pode ser outra.
-- [ ] Vencer: UBs somem, Looker e Anabel se aproximam sem sobrepor ninguém, Lillie e Ninetales viram para o sul, gancho de Cherrygrove/Olivine, fade, cidade repovoada, elenco ausente, follower de volta.
-- [ ] Estado 6: stub da Missão 3 em Olivine, com Looker e Anabel; reentrar em Mahogany não traz o elenco nem as UBs de volta.
-- [ ] Vendedor de Rage Candy Bar continua funcionando depois do evento (é o único script da cidade que usa `VAR_TEMP_0/1`).
-- [ ] Salvar/recarregar em cada estado (4, 5, 6) mantém tudo acima.
-- [ ] Regressão da M1: `FLAG_EVENT_ULTRABEAST_BLACKTHORN` continua limpa e Blackthorn continua povoada em todos os estados ≥ 4.
+- [ ] Rodada 1 (2 barras) → a outra UB revive a derrotada → "!" → plano da Lillie → Anabel anda até (18,22) e cura (time cheio de HP/PP depois) → Ninetales vai a (14,21) → parede → rodada 2 (4 barras) contra a **mesma** UB. Testar as duas escolhas.
+- [ ] Bolsa: bola bloqueada nas **duas** rodadas. "Run": desistência → blackout.
+- [ ] Perder na rodada 1 **e** na rodada 2 de propósito: acorda no Centro de Mahogany; tudo volta ao estado de antes do SIM (moradores e Pryce na porta do Ginásio).
+- [ ] Vencer: absorção (UBs arrastadas até o Necrozma), "!" nos quatro, reação ao Cosmog (se houver), Necrozma some, Looker se aproxima, Pryce e Mamoswine entram no Ginásio, gancho sem destino, fade, cidade repovoada, portas destrancadas, follower de volta.
+- [ ] Estado 6: briefing da M3 em Olivine começa com "It has opened again. Cherrygrove City."
+- [ ] Vendedor de Rage Candy Bar continua funcionando depois do evento.
+- [ ] Salvar/recarregar em cada estado (4, 5, 6).
+- [ ] Regressão da M1: Blackthorn povoada e destrancada em todos os estados ≥ 4.
 
 ---
 
@@ -878,7 +784,10 @@ lugar sob fade e a tabela "esqueleto × evolução".
 
 ---
 
-## 12. Feedback da implementação (19/09/2026)
+## 12. Feedback da implementação da revisão 2 (19/09/2026) — histórico
+
+Registro do esqueleto. Onde contradiz §3–§5 (posições das UBs, falas, uma
+batalha só), vale a revisão 3.
 
 Seção escrita **depois** de implementar, conforme a skill `evento-esqueleto` §6
 ("atualizado quando o código divergir"). Serve para o próximo agente saber o
@@ -1011,3 +920,51 @@ provavelmente serão quebrados por distração, em ordem de risco:
 
 `grep -rn "SKELETON:" data/maps/Mahoganytown data/maps/OlivineCity_House1`
 lista tudo que ainda é placeholder.
+
+---
+
+## 13. Revisão 3 — a história (22/09/2026)
+
+Feedback do autor sobre o esqueleto: "o esqueleto está pronto, agora vamos
+montar uma história épica". Feito com a skill `evoluir-historia-de-evento`,
+tendo a M1 revisão 3 como modelo. O que foi pedido e como ficou:
+
+| Pedido | Como ficou |
+|---|---|
+| História épica; a vibe é boa, falta história | Arco completo (§4.2–§5.3): a cidade já em movimento (evacuação), a autoridade local tenta e falha (Blizzard), escalada (fenda), perigo ao jogador (Celesteela avança, Ninetales salva), a virada (revive), o plano, a vitória de verdade, a consequência inesperada (absorção), reações, cuidado (Looker pergunta pelas pessoas; Anabel cura), gancho. |
+| Diálogos naturais, pela personalidade | Todas as falas reescritas pela voz do design §3.1: Looker teatral que se corrige e pergunta primeiro pelas pessoas; Anabel precisa (nomeia o loop, conclui que o Necrozma abre as fendas, "That is a pattern"); Lillie educada, específica, sustenta e **corrige** o próprio plano; Pryce seco, paciente, fala em inverno. Nenhum `@ SKELETON:` de fala sobrou. |
+| Trancar todas as portas como em Blackthorn | §3.1.1: uma linha em `sLockedTownDoors`, bilhete do Pryce. O gate da Route 43 e a Valor Cavern ficam abertos — são porta não animada, medido no tileset. |
+| A Lillie estar na cidade é descoberta, não aviso | Tirada do `BriefingM2` e do "vá na frente" da Anabel em Olivine; `grep` confirma que nenhum texto antes da cena a cita. A fala dela ao ser encontrada é de surpresa ("{PLAYER}?! You're the Champion they've been waiting for?"). |
+| O Pryce aparece evacuando e é ele quem diz que evacuou; talvez depois entra no Ginásio | Objetos 17-20. Antes da cena ele discute com o último morador na porta do Ginásio; na cena leva o velho e o menino para dentro (porta animada), diz "I moved every family into my Gym myself", e no fim volta para o Ginásio com o Mamoswine. O briefing não fala de evacuação. |
+| Reforçar a sinergia das UBs; virar padrão | A sinergia é **mostrada** (pulsos + flash) antes de explicada, **vence** a rodada 1 (revive) e é **derrotada** por outra sinergia (Lillie + Pryce, gelo). Regra comum no design §6. |
+| Pryce luta com o Necrozma | Mamoswine usa Blizzard na chegada, sem efeito (passo "autoridade local tenta e falha", como a Clair). Ele fica "de olho na criatura de cristal" durante a luta e depois empresta o gelo para a parede. |
+| Lutar 2× seguidas; a sinergia os recupera; a Lillie percebe e bola a estratégia | §4.4–§4.5: rodada 1 (2 barras) → a parceira revive a derrotada → a Lillie admite que separar não basta, "Ice doesn't carry current" → parede de gelo no vão entre as duas → a Anabel cura → rodada 2 (4 barras). |
+| Na segunda vocês derrotam de verdade | A parede corta a troca na tela ("The current crackled against it… and died") antes da rodada 2; depois dela, a fala da Lillie confirma que a UB dela também caiu sem ter a quem recorrer. |
+| O Necrozma absorve os dois e desaparece | §5.1, mesmo padrão da M1 (arrasto de costas, flash, some). |
+| Personagens espantados com o Necrozma | "!" nos quatro na **chegada** e na **absorção**; falas próprias em `UBNecrozmaArrives`, `UBAbsorbed` e `UBAftermath`. A Lillie reconhece a luz de Alola e não diz mais — o eco do Gladion na M1. |
+| Reação opcional do Necrozma e dos NPCs ao Cosmog | §5.2 (Necrozma + Lillie/Anabel depois da batalha) e §3.5 (Lillie e Pryce antes). Sem estado. |
+| Absorção em todos os encontros | Já era regra comum (V19); agora M1 e M2 cumprem. |
+| Não dizer onde é o próximo evento | `UBHook` sem destino ("volte a Olivine, a gente avisa"). O `BriefingM3` deixou de dizer "Cherrygrove at last" e passou a revelar o lugar. |
+
+**Ambiguidades resolvidas por escrito:**
+- "Pryce lutará com Necrozma novamente" — lido como "igual à Clair na M1": um
+  golpe na chegada que não faz efeito. Ele não batalha com o jogador.
+- "Talvez depois entrar na Gym" — feito no fim, depois da absorção: é o líder
+  voltando para o povo que ele guardou.
+- Dificuldade de duas lutas seguidas: a rodada 1 ficou curta (2 barras) para
+  parecer vitória; a rodada 2 é o alvo da escala (4 / Lv80 / x130); a Anabel cura
+  entre elas (cuidado antes do relatório, e evita que a rodada 2 vire parede
+  por desgaste).
+- A Lillie conhecer o Necrozma: coerente com a continuidade USUM do design
+  §3.1; ela **reconhece** sem nomear, como o Gladion.
+
+**Conferido:** `make -j$(nproc)` limpo; local ids 10-15 intactos, 16-20 no fim
+(`map_event_ids.h` gerado); todos os 19 caminhos da cena simulados contra a
+colisão (bit 11) e livres; nenhum par de atores disputa tile no mesmo passo
+(os pares simultâneos andam em linhas diferentes; os que dividem tiles são
+sequenciais); larguras de linha dentro do máximo já usado em Blackthorn;
+nenhuma ocorrência de "Lillie" em Olivine antes da cena.
+
+**Runtime:** pendente — §10. Maiores riscos: o equilíbrio de duas rodadas de
+x130, a cura sob fade no meio da cutscene, e as portas animadas abrindo com a
+trava ativa.

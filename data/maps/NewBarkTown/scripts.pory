@@ -312,27 +312,31 @@ NewBarkTown_Text_PlayersHouse:
 NewBarkTown_Text_ElmsHouse:
 	.string "Prof. Elm's House$"
 
-@ SKELETON: placeholder call, rewrite in the design's voice (Looker theatrical
-@ and warm). See SOULGOLD_RIFT_MISSIONS_DESIGN.md section 3.1.
+@ Looker's first call (final text, 22/09/2026). Theatrical opening, corrected
+@ at once; says only that he needs the Champion in person. No creature, no
+@ town and no name is given away on the phone.
 NewBarkTown_Text_LookerCall:
-	.string "Looker: Hello? Is this\n"
-	.string "{PLAYER}, the new Champion\l"
-	.string "of Johto?\p"
+	.string "Looker: Hello? Is this {PLAYER}?\n"
+	.string "The Champion of Johto?\p"
+	.string "…Forgive me. Allow me to begin\n"
+	.string "again.\p"
 	.string "My name is Looker.\n"
 	.string "International Police.\p"
-	.string "You may have seen me in\n"
-	.string "Olivine… on holiday.\p"
-	.string "The holiday is over.\p"
-	.string "Strange creatures have been\n"
-	.string "appearing in Johto.\p"
-	.string "Creatures that should not\n"
-	.string "be here.\p"
-	.string "I would very much like your\n"
-	.string "help.\p"
-	.string "Please come to our house in\n"
-	.string "Olivine City. The one on the\l"
-	.string "north side, closest to the\l"
-	.string "Gym.$"
+	.string "We have not been introduced,\n"
+	.string "but you may have passed me in\l"
+	.string "Olivine. The man on holiday.\p"
+	.string "Yes. That was me.\p"
+	.string "I am afraid the holiday was\n"
+	.string "not entirely a holiday.\p"
+	.string "Something is happening in\n"
+	.string "Johto, and I would rather\l"
+	.string "explain it in person.\p"
+	.string "Our house is on the north\n"
+	.string "side of Olivine, closest to\l"
+	.string "the Gym.\p"
+	.string "Please come when you can.\p"
+	.string "And, {PLAYER}… congratulations.\n"
+	.string "Truly.$"
 `
 
 script NewBarkTown_EventScript_RivalIntro {

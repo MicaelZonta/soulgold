@@ -497,67 +497,87 @@ OlivineCity_House1_EventScript_ReleaseEnd::
 	release
 	end
 
-@ SKELETON: all placeholder dialogue below, rewrite in the design's voice
-@ (Looker theatrical and warm; Anabel precise). See design section 3.1.
+@ Mission 1 briefing: final text (22/09/2026). It names Clair and "a Pokemon
+@ made of light" and nothing else: Gladion and the two Ultra Beasts are the
+@ surprises of the scene in Blackthorn, so they are never mentioned here.
+@ SKELETON: the placeholder dialogue from BriefingM3 on still needs the pass
+@ in the design's voice (Looker theatrical and warm; Anabel precise), 3.1.
 OlivineCity_House1_Text_Briefing:
-	.string "Looker: Ah, {PLAYER}! You came.\p"
-	.string "Allow me to introduce myself\n"
-	.string "properly: Looker,\l"
+	.string "Looker: Ah, {PLAYER}! You came.\n"
+	.string "Please, come in.\p"
+	.string "First, the truth. Looker,\n"
 	.string "International Police.\p"
-	.string "And this is my Chief, Anabel.\n"
-	.string "The holiday was… a cover.\p"
+	.string "And this is my Chief, Anabel.\p"
 	.string "Anabel: Thank you for coming,\n"
-	.string "Champion.\p"
-	.string "Looker: Creatures from beyond\n"
-	.string "Ultra Wormholes have been\l"
-	.string "sighted in Johto.\p"
-	.string "We call them Ultra Beasts.\p"
-	.string "Anabel: Two of them were\n"
-	.string "reported in Blackthorn City.\p"
-	.string "The residents are staying\n"
-	.string "indoors.\p"
-	.string "Looker: A young Trainer named\n"
-	.string "Gladion is already there,\l"
-	.string "keeping watch.\p"
-	.string "Anabel: We leave at once.\n"
-	.string "Meet us by the Pokémon Center\l"
-	.string "in Blackthorn.\p"
-	.string "And prepare well. These are\n"
-	.string "not ordinary Pokémon.$"
+	.string "Champion. We owe you an\l"
+	.string "explanation for the holiday.\p"
+	.string "Looker: We came to Johto\n"
+	.string "following readings.\l"
+	.string "Distortions in space.\p"
+	.string "In Alola, readings like these\n"
+	.string "came before Ultra Wormholes.\p"
+	.string "Anabel: Openings to other\n"
+	.string "worlds. What comes through,\l"
+	.string "we call Ultra Beasts.\p"
+	.string "They are not villains. Most\n"
+	.string "are lost, and frightened,\l"
+	.string "and very strong.\p"
+	.string "Looker: This morning the Gym\n"
+	.string "Leader of Blackthorn called us.\p"
+	.string "She described a Pokémon\n"
+	.string "standing in the middle of her\l"
+	.string "town. A Pokémon… made of light.\p"
+	.string "Anabel: Clair has ordered\n"
+	.string "everyone indoors and is\l"
+	.string "holding it off herself.\p"
+	.string "We need to be there.\n"
+	.string "And we would like you with us.\p"
+	.string "Looker: Meet us by the Pokémon\n"
+	.string "Center in Blackthorn.\p"
+	.string "Prepare as you would for the\n"
+	.string "League, {PLAYER}. Perhaps more.$"
 
-@ Continuity: the Blackthorn hook spoke of "strange lights over the Lake of
-@ Rage". This briefing corrects the origin on purpose - it is what Lillie
-@ found out.
+@ Continuity: the Blackthorn hook names no place on purpose ("the moment
+@ something opens, you will be the first to know"). This briefing is that
+@ moment: Mahogany is news to the player here.
+@ Mission 2 briefing: final text (22/09/2026). It names Pryce's call and the
+@ blackout and nothing else: Lillie, the evacuation (Pryce's own line) and
+@ the creature from Blackthorn are what the player finds in Mahogany, so
+@ they are never mentioned here.
 OlivineCity_House1_Text_BriefingM2:
-	.string "Looker: {PLAYER}! Perfect timing.\p"
-	.string "The Mahogany report is\n"
-	.string "confirmed.\p"
+	.string "Looker: {PLAYER}! Your timing\n"
+	.string "is uncanny. It has started\l"
+	.string "again. Mahogany Town.\p"
 	.string "Anabel: Two signatures again.\n"
 	.string "One electrical. One… heavy.\p"
 	.string "Looker: The town lost its power\n"
 	.string "three nights ago.\p"
-	.string "Every lamp, every machine.\p"
-	.string "Anabel: And the readings did not\n"
-	.string "come from the Lake of Rage after\l"
-	.string "all.\p"
-	.string "They came from the town itself.\p"
-	.string "Looker: There is more.\p"
-	.string "A young lady reached Mahogany\n"
-	.string "before we did, and has been\l"
-	.string "taking notes for two days.\p"
-	.string "Anabel: Lillie. She refused to\n"
-	.string "leave.\p"
-	.string "She says she already knows what\n"
-	.string "those two are doing.\p"
-	.string "Looker: Mahogany Town, {PLAYER}.\p"
-	.string "Hear her out before you act.$"
+	.string "Every lamp, every machine.\n"
+	.string "Only the Pokémon Center still\l"
+	.string "has light.\p"
+	.string "Anabel: The readings come from\n"
+	.string "the town itself. Every night,\l"
+	.string "at the same hour.\p"
+	.string "No sign of the light from\n"
+	.string "Blackthorn. Not yet.\p"
+	.string "Looker: The Gym Leader, Pryce,\n"
+	.string "telephoned us himself.\p"
+	.string "He said four words.\n"
+	.string "“Lights out. Come now.”\p"
+	.string "…I have decided to find that\n"
+	.string "reassuring.\p"
+	.string "Anabel: Meet us by the Pokémon\n"
+	.string "Center, {PLAYER}.\p"
+	.string "Prepare for two of them.\n"
+	.string "Not one.$"
 
-@ Continuity: the Mahogany hook sent the player to "a shore". This is it -
-@ the northwest beach of Cherrygrove, where Kukui has been camped for four
-@ days watching a tear open over the sea.
+@ Continuity: the Mahogany hook names no place on purpose (design section 6,
+@ "gancho sem destino"). This briefing is where Cherrygrove is revealed -
+@ the northwest beach, where Kukui has been camped for four days watching a
+@ tear open over the sea.
 OlivineCity_House1_Text_BriefingM3:
-	.string "Looker: {PLAYER}! Cherrygrove at\n"
-	.string "last.\p"
+	.string "Looker: {PLAYER}! It has opened\n"
+	.string "again. Cherrygrove City.\p"
 	.string "The report is confirmed.\p"
 	.string "Anabel: Two signatures.\p"
 	.string "One of them will not hold\n"
@@ -634,7 +654,8 @@ OlivineCity_House1_Text_LookerHoliday:
 
 OlivineCity_House1_Text_LookerGoAhead:
 	.string "Looker: Blackthorn, {PLAYER}!\n"
-	.string "We are leaving right behind\l"
+	.string "Clair cannot hold it forever.\p"
+	.string "We are leaving right behind\n"
 	.string "you!$"
 
 OlivineCity_House1_Text_LookerGoAheadM2:
@@ -665,9 +686,10 @@ OlivineCity_House1_Text_AnabelGoAhead:
 	.string "reach the Pokémon Center.$"
 
 OlivineCity_House1_Text_AnabelGoAheadM2:
-	.string "Anabel: Go on. Lillie is already\n"
-	.string "there.\p"
-	.string "She has been for two days.$"
+	.string "Anabel: Go on.\p"
+	.string "Mr. Pryce does not strike me\n"
+	.string "as a man who calls for help\l"
+	.string "lightly.$"
 
 OlivineCity_House1_Text_AnabelGoAheadM3:
 	.string "Anabel: Go on.\p"

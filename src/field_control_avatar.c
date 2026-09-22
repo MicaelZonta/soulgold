@@ -72,6 +72,7 @@ static bool8 IsArrowWarpMetatileBehavior(u16, enum Direction);
 static s8 GetWarpEventAtMapPosition(struct MapHeader *, struct MapPosition *);
 static void SetupWarp(struct MapHeader *, s8, struct MapPosition *);
 static bool8 TryDoorWarp(struct MapPosition *, u16, enum Direction);
+static bool8 TryLockedDoorScript(struct MapPosition *, u16, enum Direction);
 static s8 GetWarpEventAtPosition(struct MapHeader *, u16, u16, u8);
 static const u8 *GetCoordEventScriptAtPosition(struct MapHeader *, u16, u16, u8);
 static const struct BgEvent *GetBackgroundEventAtPosition(struct MapHeader *, u16, u16, u8);
@@ -277,6 +278,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (input->heldDirection2 && input->dpadDirection == playerDirection)
     {
+        if (TryLockedDoorScript(&position, metatileBehavior, playerDirection) == TRUE)
+            return TRUE;
         if (TryDoorWarp(&position, metatileBehavior, playerDirection) == TRUE)
             return TRUE;
     }
@@ -1107,6 +1110,50 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
         if (mapHeader->events->warps[warpEvent->warpId].mapNum == MAP_NUM(MAP_DYNAMIC))
             SetDynamicWarp(mapHeader->events->warps[warpEventId].warpId, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, warpEventId);
     }
+}
+
+// Rift Missions: while a town is evacuated its residents are locked indoors.
+// Every building door of that town refuses the player, except the one that
+// must stay open (the Pokémon Center: healing, and the blackout respawn).
+// One row per mission; the lock lives exactly as long as the event flag.
+struct LockedTownDoors
+{
+    u16 eventFlag;
+    u16 townMap;
+    u16 openDoorMap;
+    const u8 *script;
+};
+
+static const struct LockedTownDoors sLockedTownDoors[] =
+{
+    { FLAG_EVENT_ULTRABEAST_BLACKTHORN, MAP_BLACKTHORN_CITY, MAP_BLACKTHORN_CITY_POKEMON_CENTER, BlackthornCity_EventScript_DoorLocked },
+    { FLAG_EVENT_ULTRABEAST_MAHOGANY,   MAP_MAHOGANYTOWN,    MAP_MAHOGANY_TOWN_POKEMON_CENTER,   Mahoganytown_EventScript_DoorLocked },
+};
+
+static bool8 TryLockedDoorScript(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)
+{
+    u32 i;
+    s8 warpEventId;
+    const struct WarpEvent *warp;
+    u16 currentMap = (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
+
+    if (direction != DIR_NORTH || MetatileBehavior_IsWarpDoor(metatileBehavior) != TRUE)
+        return FALSE;
+
+    for (i = 0; i < ARRAY_COUNT(sLockedTownDoors); i++)
+    {
+        if (sLockedTownDoors[i].townMap != currentMap || !FlagGet(sLockedTownDoors[i].eventFlag))
+            continue;
+        warpEventId = GetWarpEventAtMapPosition(&gMapHeader, position);
+        if (warpEventId == WARP_ID_NONE)
+            return FALSE;
+        warp = &gMapHeader.events->warps[warpEventId];
+        if (((warp->mapGroup << 8) | warp->mapNum) == sLockedTownDoors[i].openDoorMap)
+            return FALSE;
+        ScriptContext_SetupScript(sLockedTownDoors[i].script);
+        return TRUE;
+    }
+    return FALSE;
 }
 
 static bool8 TryDoorWarp(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)

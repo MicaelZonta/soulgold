@@ -1,15 +1,24 @@
-# Blackthorn — Buzzwole + Pheromosa (Rift Mission 1) — plano de implementação ESQUELETO
+# Blackthorn — Necrozma, Buzzwole + Pheromosa (Rift Mission 1) — implementação
 
-**Status:** **esqueleto implementado**, `make -j$(nproc)` limpo. Runtime pendente (§11).
-Revisão 2 — 19/09/2026; implementado em 19/09/2026.
+**Status:** **história evoluída (revisão 3, 22/09/2026) e validada em runtime pelo autor (22/09/2026: "testei tudo, ficou perfeito")**, incluindo as reações pré-Liga à família Cosmog. `make -j$(nproc)` limpo. Receita reutilizável: skill `evoluir-historia-de-evento`.
+Revisão 3 — 22/09/2026 (feedback do autor, §13). Revisão 2 — 19/09/2026.
 **Modo:** esqueleto (skill `evento-esqueleto`). Diálogo curto, coreografia mínima,
 mas estado, visibilidade, gatilhos, batalha e retry **completos e corretos**.
-**Design de referência:** [`SOULGOLD_RIFT_MISSIONS_DESIGN.md`](SOULGOLD_RIFT_MISSIONS_DESIGN.md) §5, §6 (V14).
+**Design de referência:** [`SOULGOLD_RIFT_MISSIONS_DESIGN.md`](SOULGOLD_RIFT_MISSIONS_DESIGN.md) §5, §6 regras comuns (V19), §23.
 **Missão seguinte:** [`MAHOGANY_ULTRABEAST_IMPLEMENTATION.md`](MAHOGANY_ULTRABEAST_IMPLEMENTATION.md) — continua a var nos estados 4→5→6 e substitui o stub da Missão 2 deixado em `OlivineCity_House1` (§4.4).
 
 Escopo: da ligação do Looker após o Hall of Fame até o fim do incidente de
-Blackthorn, terminando com o gancho que manda o jogador de volta a Olivine para
-a Missão 2 (Xurkitree + Celesteela, Mahogany, Lillie).
+Blackthorn, terminando com o gancho que manda o jogador de volta a Olivine **sem dizer
+onde será a próxima ocorrência** (a Missão 2 é revelada no briefing).
+
+**Mudanças da revisão 3 (22/09/2026)** — detalhe em §13:
+- História: Clair (+ Kingdra) já luta contra o Necrozma na chegada; o Necrozma abre a fenda; Buzzwole e Pheromosa atacam o jogador; Gladion + Silvally chegam de surpresa; depois da luta o Necrozma absorve as duas UBs; o Gladion dá um Type: Null.
+- Gladion não é mencionado antes da cena e fica escondido até o resgate.
+- Portas da cidade trancadas (menos o Centro) durante o incidente — mecanismo em C.
+- Checagem de equipe **e** PC cheios antes do SIM do Looker (presente do Type: Null).
+- Boss mais difícil: 3 barras / Lv75 / x120 / moveset curado + item.
+- Reação opcional à família Cosmog (Necrozma e elenco).
+- Gancho sem destino; falas finais na ligação, no briefing e em toda a cena.
 
 **Mudanças da revisão 2:**
 - Looker sai da Route 29. Looker e Anabel moram em `OlivineCity_House1` **desde o começo do jogo, sem flag**; `VAR_RIFT_MISSIONS_STATE` só troca o diálogo e dispara a cena.
@@ -25,16 +34,24 @@ a Missão 2 (Xurkitree + Celesteela, Mahogany, Lillie).
 New Game ─ Looker + Anabel já estão em OlivineCity_House1 (diálogo "de férias")
 Hall of Fame (1ª vez)                  VAR_RIFT_MISSIONS_STATE = 1
   └─ sair de casa em New Bark ───────▶ ligação do Elm, depois do Looker    → 2
-       └─ entrar em OlivineCity_House1 ▶ cena: Looker + Anabel, briefing  → 3  + setflag FLAG_EVENT_ULTRABEAST_BLACKTHORN
-            └─ Blackthorn: cidade vazia (só Looker, Anabel, Gladion, Silvally)
-                 └─ falar com Looker ▶ SIM ▶ cena 100% scriptada ▶ ruptura: Buzzwole + Pheromosa
-                      └─ ESCOLHA: qual você enfrenta? Gladion + Silvally ficam com a outra
-                           └─ boss battle simples contra a escolhida
-                                ├─ perdeu / desistiu → blackout → Centro de Blackthorn (Joy) → flag setada → recomeça
-                                ├─ outro             → reset silencioso → recomeça
-                                └─ venceu            → fala do Gladion conforme a escolha → gancho
-                                                       → clearflag + estado 4 → warp no lugar (cidade repovoa)
-                                     └─ Olivine House1: stub da Missão 2
+       └─ entrar em OlivineCity_House1 ▶ briefing: Clair e "um Pokémon feito de luz"
+                                          (sem Gladion)                  → 3  + setflag FLAG_EVENT_ULTRABEAST_BLACKTHORN
+            └─ Blackthorn: cidade vazia, portas trancadas (menos o Centro)
+               na rua: Looker, Anabel, Clair + Kingdra contra o Necrozma
+                 └─ falar com Looker ▶ equipe E PC cheios? → "regra da Anabel", volta depois
+                      └─ SIM ▶ cena 100% scriptada:
+                           Kingdra ataca, sem efeito ▶ Necrozma abre a fenda ▶ Buzzwole + Pheromosa
+                           avançam no jogador ▶ Silvally salta na frente, Gladion chega
+                           └─ ESCOLHA: qual você enfrenta? Gladion + Silvally ficam com a outra
+                                └─ boss 3 barras / Lv75 / x120 contra a escolhida
+                                     ├─ perdeu / desistiu → blackout → Centro de Blackthorn → recomeça
+                                     ├─ outro             → reset silencioso → recomeça
+                                     └─ venceu → Necrozma absorve as duas UBs, elenco espantado
+                                                 → [família Cosmog na equipe: Necrozma reage]
+                                                 → Necrozma some → conversa → Gladion dá Type: Null
+                                                 → gancho sem destino
+                                                 → clearflag + estado 4 → warp no lugar (cidade repovoa)
+                                          └─ Olivine House1: briefing da Missão 2 (Mahogany revelado ali)
 ```
 
 ---
@@ -86,14 +103,18 @@ temporária: numa nova tentativa ele escolhe de novo.
 | Mapa | Temp | Uso |
 |---|---|---|
 | `OlivineCity_House1` | `VAR_TEMP_1` | Trava uma-vez-por-visita do gatilho de frame |
-| `BlackthornCity` | `FLAG_TEMP_1` | Cache de visibilidade do elenco (Looker, Anabel, Gladion, Silvally) |
+| `BlackthornCity` | `FLAG_TEMP_1` | Cache do elenco da rua: Looker, Anabel, Clair, Kingdra (visível com o incidente ativo) |
 | `BlackthornCity` | `FLAG_TEMP_2` | Cache das Ultra Beasts (sempre escondidas até a cena) |
+| `BlackthornCity` | `FLAG_TEMP_3` | Cache de Gladion + Silvally (sempre escondidos até o resgate) — rev. 3 |
+| `BlackthornCity` | `FLAG_TEMP_4` | Cache do Necrozma (visível com o incidente ativo; flag própria porque a cena o remove sozinho) — rev. 3 |
 | `BlackthornCity` | `VAR_TEMP_2` | Resultado da batalha |
 | `BlackthornCity` | `VAR_TEMP_3` | Escolha do jogador: 0 = Buzzwole, 1 = Pheromosa. Sobrevive à batalha (voltar da batalha não recarrega o mapa, mesmo padrão de `ReceptionGate`). |
+| `BlackthornCity` | `VAR_TEMP_4` | Espécie da família Cosmog a que o Necrozma reagiu (`SPECIES_NONE` = sem reação). Lida de novo na conversa final — rev. 3 |
 
-Conferido: nenhum `FLAG_TEMP`/`VAR_TEMP` em `BlackthornCity/scripts.inc` nem em
-`OlivineCity_House1/scripts.pory`. Reconfirmar antes de implementar:
-`grep -rn "FLAG_TEMP_[12]\b\|VAR_TEMP_[123]\b" data/maps/BlackthornCity data/maps/OlivineCity_House1 data/scripts/`.
+Conferido em 22/09/2026: nenhum `FLAG_TEMP_1..4` nem `VAR_TEMP_1..4` em
+`BlackthornCity/scripts.inc` além destes, nem em script comum alcançável do mapa.
+O fluxo de apelido do Type: Null (`Common_EventScript_GiftMon`) passa por
+`ChangePokemonNickname` e volta ao campo por `ResumeMap`, que **não** zera temps.
 
 ---
 
@@ -160,12 +181,9 @@ NewBarkTown_EventScript_LookerCall::
 	end
 ```
 
-Texto (inglês, placeholder — caixas de ~34 colunas):
-
-> Looker: Hello? Is this {PLAYER}, the new Champion of Johto?
-> My name is Looker. International Police. You may have seen me in Olivine... on holiday.
-> The holiday is over. Strange creatures have been appearing in Johto. Creatures that should not be here.
-> I would very much like your help. Please come to our house in Olivine City — the one on the north side, closest to the Gym.
+Texto final (rev. 3) em `NewBarkTown_Text_LookerCall`. Abertura teatral que ele
+mesmo corrige, confissão do "homem de férias", e só o pedido para ir a Olivine:
+**nenhuma criatura, cidade ou nome é revelado por telefone.**
 
 (Casa: `OlivineCity` warp 4 → `OlivineCity_House1` em (27,24); das três casas da rua
 norte (x=27, 31, 36) é a mais próxima do Ginásio em (11,27).)
@@ -287,15 +305,15 @@ OlivineCity_House1_EventScript_BriefingTalk::
 	return
 ```
 
-Textos do briefing (inglês, placeholder):
+Texto final (rev. 3) em `OlivineCity_House1_Text_Briefing`. Conteúdo, nesta ordem:
+Looker se apresenta de verdade e apresenta a chefe; Anabel explica o "holiday";
+Looker fala das leituras que em Alola precediam Ultra Wormholes; Anabel define
+Ultra Beasts ("não são vilões: a maioria está perdida, assustada e é muito forte");
+Looker conta que a **Líder de Ginásio de Blackthorn** ligou descrevendo "um Pokémon
+feito de luz" no meio da cidade; Anabel: a Clair mandou todos para dentro e segura
+a criatura sozinha; ponto de encontro no Centro de Blackthorn.
 
-> Looker: Ah, {PLAYER}! You came. Allow me to introduce myself properly: Looker, International Police.
-> And this is my Chief, Anabel. The holiday was... a cover.
-> Anabel: Thank you for coming, Champion.
-> Looker: Creatures from beyond Ultra Wormholes have been sighted in Johto. We call them Ultra Beasts.
-> Anabel: Two of them were reported in Blackthorn City. The residents are staying indoors.
-> Looker: A young Trainer named Gladion is already there, keeping watch.
-> Anabel: We leave at once. Meet us by the Pokémon Center in Blackthorn. And prepare well — these are not ordinary Pokémon.
+**Não mencionar o Gladion nem as duas Ultra Beasts** — são as surpresas da cena.
 
 ### 4.4 Scripts de objeto — diálogo por estado
 
@@ -305,8 +323,8 @@ Textos do briefing (inglês, placeholder):
 |---|---|
 | 0-1 | "Looker: Hm? Oh, pay no attention to moi. I am simply... on holiday. Yes. A holiday by the sea." |
 | 2 | `call OlivineCity_House1_EventScript_BriefingTalk` (sem coreografia) |
-| 3 | "Looker: Blackthorn, {PLAYER}! We are leaving right behind you!" |
-| ≥ 4 | **Stub da Missão 2:** "Looker: We are still confirming reports from Mahogany Town. Come back soon, {PLAYER}!" — substituído pelo doc da Missão 2. |
+| 3 | "Looker: Blackthorn, {PLAYER}! Clair cannot hold it forever. We are leaving right behind you!" |
+| ≥ 4 | Substituído pelo briefing da Missão 2 (doc da M2). Rev. 3: o texto `BriefingM2` agora **revela** Mahogany ("It has started again. Mahogany Town.") e não cita mais o "Lake of Rage" do gancho antigo. |
 
 `OlivineCity_House1_EventScript_Anabel`:
 
@@ -321,12 +339,12 @@ Textos do briefing (inglês, placeholder):
 
 ---
 
-## 5. Etapa D — Blackthorn: cidade vazia
+## 5. Etapa D — Blackthorn: cidade vazia e portas trancadas
 
 ### 5.1 Esconder a cidade
 
-`BlackthornCity/map.json`: trocar `"flag": "0"` por
-`"flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"` em todos os NPCs e Pokémon ambientes:
+`BlackthornCity/map.json`: os 16 NPCs e Pokémon ambientes têm
+`"flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"`:
 
 | Local id | Objeto | (x,y) |
 |---|---|---|
@@ -343,77 +361,106 @@ Textos do briefing (inglês, placeholder):
 **Não mexer:** 16 (item ball, `FLAG_BLACKTHORN_ADRENALINE_ORB`) e 17-26 (light sprites,
 `FLAG_NIGHT_POKEMON`). Nunca `removeobject` nesses objetos (setaria a flag do evento).
 
-**A Joy continua:** está em `BlackthornCity_PokemonCenter` (outro mapa), que não é
-tocado. Porta do Centro (27,48) livre durante todo o evento. Ginásio, Mart e casas
-continuam acessíveis — só o exterior esvazia.
+### 5.2 Portas trancadas (rev. 3, sugestão do autor)
 
-### 5.2 Elenco — anexar no fim de `object_events` (locais 28-33)
+Com a flag do evento setada, **toda porta de prédio de Blackthorn recusa o
+jogador, menos a do Pokémon Center** (cura e retorno do blackout). Resolve de
+uma vez o problema da Clair duplicada: não dá para entrar no Ginásio e encontrá-la
+lá enquanto ela luta na rua.
+
+Mecanismo em `src/field_control_avatar.c`:
+
+- `sLockedTownDoors[]` — uma linha por missão: `{ flag do evento, mapa da cidade,
+  mapa da porta que fica aberta, script }`. Linha atual:
+  `{ FLAG_EVENT_ULTRABEAST_BLACKTHORN, MAP_BLACKTHORN_CITY, MAP_BLACKTHORN_CITY_POKEMON_CENTER, BlackthornCity_EventScript_DoorLocked }`.
+- `TryLockedDoorScript` roda **antes** de `TryDoorWarp` em `ProcessPlayerFieldInput`,
+  com as mesmas condições de entrada (olhando para o norte, metatile de porta, warp
+  no tile). Se a linha casa e o destino não é o Centro, dispara o script e não há warp.
+- `BlackthornCity_EventScript_DoorLocked` (declarado em `include/event_scripts.h`):
+  "The door is locked tight. A note is taped to it: “Stay inside until I say so.
+  --Clair, Gym Leader”".
+
+Portas afetadas: Ginásio (24,26), House1 (21,39), House2/Move Bros (36,41), Mart
+(16,48), House3 (10,49). **Não afetadas** (não são porta): Dragon's Den (26,12),
+Ice Path (42,22), Blackthorn Cave (39,18). A trava dura exatamente o tempo da flag:
+o `clearflag` da vitória destranca tudo, sem estado novo.
+
+### 5.3 Elenco — `object_events` 28-36
 
 | Local id | Nome | Gráfico | (x,y) | movement_type | script | flag |
 |---|---|---|---|---|---|---|
 | 28 | `LOCALID_BLACKTHORN_UB_LOOKER` | `OBJ_EVENT_GFX_LOOKER` | (25,53) | `FACE_UP` | `BlackthornCity_EventScript_UBLooker` | `FLAG_TEMP_1` |
 | 29 | `LOCALID_BLACKTHORN_UB_ANABEL` | `OBJ_EVENT_GFX_ANABEL` | (26,53) | `FACE_UP` | `BlackthornCity_EventScript_UBAnabel` | `FLAG_TEMP_1` |
-| 30 | `LOCALID_BLACKTHORN_UB_GLADION` | `OBJ_EVENT_GFX_GLADION` | (20,49) | `FACE_LEFT` | `BlackthornCity_EventScript_UBGladion` | `FLAG_TEMP_1` |
-| 31 | `LOCALID_BLACKTHORN_UB_SILVALLY` | `OBJ_EVENT_GFX_SPECIES(SILVALLY)` | (19,49) | `FACE_LEFT` | `NULL` | `FLAG_TEMP_1` |
-| 32 | `LOCALID_BLACKTHORN_UB_BUZZWOLE` | `OBJ_EVENT_GFX_SPECIES(BUZZWOLE)` | (16,50) | `FACE_RIGHT` | `NULL` | `FLAG_TEMP_2` |
-| 33 | `LOCALID_BLACKTHORN_UB_PHEROMOSA` | `OBJ_EVENT_GFX_SPECIES(PHEROMOSA)` | (16,49) | `FACE_RIGHT` | `NULL` | `FLAG_TEMP_2` |
+| 30 | `LOCALID_BLACKTHORN_UB_GLADION` | `OBJ_EVENT_GFX_GLADION` | **(20,44)** | `FACE_DOWN` | `NULL` | **`FLAG_TEMP_3`** |
+| 31 | `LOCALID_BLACKTHORN_UB_SILVALLY` | `OBJ_EVENT_GFX_SPECIES(SILVALLY)` | **(19,44)** | `FACE_DOWN` | `NULL` | **`FLAG_TEMP_3`** |
+| 32 | `LOCALID_BLACKTHORN_UB_BUZZWOLE` | `OBJ_EVENT_GFX_SPECIES(BUZZWOLE)` | **(15,50)** | `FACE_RIGHT` | `NULL` | `FLAG_TEMP_2` |
+| 33 | `LOCALID_BLACKTHORN_UB_PHEROMOSA` | `OBJ_EVENT_GFX_SPECIES(PHEROMOSA)` | **(15,51)** | `FACE_RIGHT` | `NULL` | `FLAG_TEMP_2` |
+| 34 | `LOCALID_BLACKTHORN_UB_CLAIR` | `OBJ_EVENT_GFX_CLAIR` | (18,49) | `FACE_LEFT` | `BlackthornCity_EventScript_UBClair` | `FLAG_TEMP_1` |
+| 35 | `LOCALID_BLACKTHORN_UB_KINGDRA` | `OBJ_EVENT_GFX_SPECIES(KINGDRA)` | (17,49) | `FACE_LEFT` | `BlackthornCity_EventScript_UBKingdra` | `FLAG_TEMP_1` |
+| 36 | `LOCALID_BLACKTHORN_UB_NECROZMA` | `OBJ_EVENT_GFX_SPECIES(NECROZMA)` | (14,50) | `FACE_RIGHT` | `BlackthornCity_EventScript_UBNecrozma` | `FLAG_TEMP_4` |
 
-- Todos com `movement_range 0`, `TRAINER_TYPE_NONE`.
-- Buzzwole e Pheromosa têm `overworld.png` e bloco `OVERWORLD(`; Silvally já é usado em `ReceptionGate`.
-- Linhas novas em `map_event_ids.h` sob `// MAP_BLACKTHORN_CITY`, à mão.
-- 33 templates < limite de 64.
+- Negrito = mudou na rev. 3. 34-36 são **novos, no fim**; nenhum local id anterior mudou.
+- `map_event_ids.h` é **gerado** pelo `mapjson` a partir do campo `local_id` (corrige a
+  §5.2 antiga, que mandava editar à mão).
+- Gladion e Silvally ficam em y=44, seis linhas acima do ponto de combate: fora da
+  câmera quando são adicionados.
+- Kingdra e Necrozma têm `overworld.png` (o do Necrozma é 32x32, marcado TODO no species info).
+- Orçamento: jogador + follower + 9 = **11/16**. Light sprites não contam (doc da M4 §12.8).
+- (16,49), saída do Mart, fica livre de propósito.
 
-Looker e Anabel ficam em Olivine **e** aqui durante o estado 3 — aceito pelo autor, o
-evento inteiro é cutscene. Ver §10.
+### 5.4 Visibilidade — `ON_TRANSITION`
 
-### 5.3 Visibilidade — `ON_TRANSITION`
-
-`BlackthornCity/scripts.inc` (sem `.pory`). Em `BlackthornCity_EventScript_CityEnter`
-(o `ON_TRANSITION` atual), adicionar `call BlackthornCity_EventScript_ApplyUBVisibility`:
+`BlackthornCity_EventScript_ApplyUBVisibility`, chamado de `BlackthornCity_EventScript_CityEnter`:
 
 ```asm
-@ Elenco (FLAG_TEMP_1) visível só com o incidente ativo. Ultra Beasts
-@ (FLAG_TEMP_2) sempre escondidas no load: só a cena as faz aparecer.
-@ Temps zeram a cada load (ClearTempFieldEventData), então recalcula sempre.
 BlackthornCity_EventScript_ApplyUBVisibility::
-	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_2          @ UBs: sempre escondidas no load
+	setflag FLAG_TEMP_3          @ Gladion + Silvally: sempre escondidos no load
 	goto_if_unset FLAG_EVENT_ULTRABEAST_BLACKTHORN, BlackthornCity_EventScript_HideUBCast
-	clearflag FLAG_TEMP_1
+	clearflag FLAG_TEMP_1        @ elenco da rua
+	clearflag FLAG_TEMP_4        @ Necrozma
 	return
 BlackthornCity_EventScript_HideUBCast::
 	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_4
 	return
 ```
 
-Roda também ao entrar pela borda (Route 44/45), não só por warp.
-
-### 5.4 Planta da cena (dump real, bit 11; `#` = bloqueado)
+### 5.5 Planta da cena (dump real, bit 11; `#` = bloqueado)
 
 ```text
-       x= 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
-  y=48     #  #  #  #  #  .  .  .  .  .  #  #  #  W  #     W (27,48) = porta do Pokémon Center
-  y=49     .  .  P  .  .  S  G  .  .  .  .  .  .  f  .     f (27,49) = pouso do Fly / saída do Centro
-  y=50     .  .  B  .  .  .  *  .  .  .  .  .  .  .  .     * (20,50) = posição de combate do jogador
-  y=51     .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
-  y=52     .  #  .  .  #  #  .  .  .  #  #  t  a  .  .     t (25,52) = ÚNICO tile para falar com Looker
-  y=53     #  #  #  #  #  #  .  .  .  #  #  L  A  #  #     a (26,52) = único tile para falar com Anabel
-  y=54     .  .  .  #  #  #  .  .  .  #  #  #  #  #  #
+       x= 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27
+  y=44     .  .  .  .  .  .  s  g  .  .  .  .  .  .  .     s/g spawn de Silvally/Gladion (escondidos)
+  y=45     #  #  #  #  #  .  |  |  .  .  .  .  #  #  #
+  y=46     #  #  #  #  #  .  |  |  .  .  .  .  #  #  #
+  y=47     #  #  #  #  #  .  |  |  .  .  .  .  #  #  #
+  y=48     .  #  #  W  #  .  v  |  .  .  .  .  #  #  W     W (16,48) Mart, (27,48) Centro
+  y=49     #  .  .  .  K  C  :  G  .  .  .  .  .  .  f     f (27,49) pouso do Fly
+  y=50     .  N  B  >  >  b  S  *  .  .  .  .  .  .  .     * (20,50) posição de combate do jogador
+  y=51     .  .  P  >  >  p  .  .  .  .  .  .  .  .  .
+  y=52     .  .  #  .  .  #  #  .  .  .  #  #  t  a  .     t (25,52) ÚNICO tile para falar com Looker
+  y=53     #  #  #  #  #  #  #  .  .  .  #  #  L  A  #
 
-  L Looker (25,53)   A Anabel (26,53)   G Gladion (20,49)   S Silvally (19,49)
-  B Buzzwole (16,50) P Pheromosa (16,49)   — B/P escondidos até a cena
+  N Necrozma (14,50)   K Kingdra (17,49)   C Clair (18,49)
+  B Buzzwole (15,50) → carga até b (18,50) → recua para (17,50)
+  P Pheromosa (15,51) → carga até p (18,51) → recua para (17,51)
+  s Silvally (19,44) → desce a coluna 19 até (19,48) → jump_2 sobre (19,49) → S (19,50)
+  g Gladion (20,44) → desce a coluna 20 → G (20,49), logo acima do jogador
 ```
 
-O Looker fica no "bolso" (25,53): (24,53) e (25,54) são parede e (26,53) é a Anabel.
-**Só dá para falar com ele de (25,52), olhando para baixo.** Isso torna o início da
-cena determinístico sem `getplayerxy`. Documentar num comentário `@` acima do script.
+O Looker continua no bolso (25,53): só dá para falar com ele de (25,52), olhando para
+baixo — início determinístico sem `getplayerxy`.
 
-### 5.5 Conversas antes da cena
+### 5.6 Conversas antes da cena
 
-- `BlackthornCity_EventScript_UBAnabel` (`lock`, `faceplayer`):
-  "Anabel: Looker has the details. Speak with him when you're ready."
-- `BlackthornCity_EventScript_UBGladion` (`lock`, `faceplayer`):
-  "Gladion: ...You're the Champion now? Good. Talk to Looker. Silvally and I are watching the west road."
-  Depois `turnobject LOCALID_BLACKTHORN_UB_GLADION, DIR_WEST`.
+| Objeto | Script | Comportamento |
+|---|---|---|
+| Anabel | `UBAnabel` | `faceplayer`; casas seladas, a Clair não recuou um passo; "fale com o Looker quando estiver pronto". **Com família Cosmog:** "is that a {species} with you? In Alola they call them children of the stars. Keep it close today." |
+| Clair | `UBClair` | **Sem** `faceplayer` (não tira os olhos do Necrozma). "Stay back. I've got it." — a criatura saiu de um clarão de manhã, não machuca ninguém, "está esperando alguma coisa"; manda falar com o detetive. |
+| Kingdra | `UBKingdra` | Grito + "não tira os olhos da criatura". |
+| Necrozma | `UBNecrozma` | Descrição (cristal negro, luz sumindo para dentro dele, não nota o jogador). **Reação opcional:** com família Cosmog, vira a cabeça para a Poké Ball do {species}, com grito. |
+
+Todas terminam em `BlackthornCity_EventScript_UBReleaseEnd`. Nenhuma muda estado.
 
 ---
 
@@ -422,348 +469,252 @@ cena determinístico sem `getplayerxy`. Documentar num comentário `@` acima do 
 ### 6.1 Pré-checagens (`BlackthornCity_EventScript_UBLooker`)
 
 ```asm
-BlackthornCity_EventScript_UBLooker::
 	lock
 	faceplayer
 	msgbox BlackthornCity_Text_UBLookerGreet, MSGBOX_DEFAULT
+	getpartysize                                   @ presente do Type: Null no fim:
+	goto_if_ne VAR_RESULT, PARTY_SIZE, ..._UBLookerAsk   @ só equipe E PC cheios bloqueiam
+	specialvar VAR_RESULT, ScriptCheckFreePokemonStorageSpace
+	goto_if_eq VAR_RESULT, TRUE, ..._UBLookerAsk
+	msgbox BlackthornCity_Text_UBNoRoom, MSGBOX_DEFAULT   @ "regra da Anabel"
+	goto BlackthornCity_EventScript_UBReleaseEnd
+..._UBLookerAsk::
 	msgbox BlackthornCity_Text_UBReady, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, BlackthornCity_EventScript_UBNotReady
 	goto BlackthornCity_EventScript_UBScene
 ```
 
-- `UBNotReady`: "Looker: Of course. The Pokémon Center is right behind us. I will be here." → `release`, `end`.
 - Nenhum estado muda antes do SIM. O SIM é o último ponto de saída.
-- Não é preciso checar quantidade de Pokémon: a batalha é simples (a revisão 1 exigia 2 por ser dupla).
+- A checagem de espaço vem antes de qualquer oferta (skill `entregar-pokemon-ou-ovo`)
+  e não revela o presente: a justificativa é a regra da Anabel — "sempre espaço para
+  mais um Pokémon; se uma fenda deixar alguém para trás, ele precisa ter para onde ir".
+- Nada entre o SIM e o `givemon` pode encher equipe ou PC: a batalha bloqueia captura.
 
-> `UBLookerGreet` — Looker: {PLAYER}! Good. The street is clear, the residents are safe indoors. The readings are strongest to the west.
-> `UBReady` — Looker: Once we begin, there is no stopping halfway. Are your Pokémon ready?
+### 6.2 Chegada e ruptura (`BlackthornCity_EventScript_UBScene`)
 
-### 6.2 Ruptura
+1. `lockall`, `hidefollower`; jogador (25,52) → (20,50) olhando oeste
+   (`PlayerToLine`, igual à rev. 2). Looker e Anabel sobem um passo juntos.
+2. Clair vira para o leste (jogador em (20,50): dx=+2 domina), fala
+   (`UBClairArrive`: Lance falou do Campeão; "estou tentando machucar isso há uma
+   hora"; "Kingdra! Dragon Pulse!") e volta para o oeste.
+3. Kingdra `walk_in_place_fast_left` ×2 + grito → flash branco → Necrozma
+   `walk_in_place_fast_right` ×3 → `UBNoEffect` ("nem um arranhão... ele bebe a luz").
+4. Grito do Necrozma → tremor → `FADE_TO_WHITE` → `clearflag FLAG_TEMP_2` + `addobject`
+   das duas UBs → `FADE_FROM_WHITE` → gritos → `UBAppear` (Anabel: "Rift opening! Two
+   signatures!"; Looker: "get back! They are coming right at you!").
+5. **Carga:** Buzzwole (15,50)→(18,50), Pheromosa (15,51)→(18,51), `walk_fast_right` ×3,
+   mesma sequência em linhas deslocadas → formação preservada.
+6. **Resgate:** `clearflag FLAG_TEMP_3` + `addobject` Silvally e Gladion (fora da tela).
+   Silvally `walk_faster_down` ×4 + `jump_2_down` → (19,50), entre o Buzzwole e o
+   jogador; Gladion `walk_fast_down` ×5 → (20,49). Colunas diferentes → juntos.
+   Grito do Silvally + tremor; as duas UBs recuam um tile de costas
+   (`lock_facing_direction` + `walk_fast_left`) para (17,50)/(17,51).
+7. "!" sobre Looker, Anabel e Clair → `UBGladionArrives` (Gladion: "Don't just stand
+   there."; Looker: "And who might YOU be?!"; Gladion se apresenta — viu a luz sobre as
+   montanhas; Clair: "Another Trainer? Fine. The more the better!").
 
-```asm
-BlackthornCity_EventScript_UBScene::
-	closemessage
-	lockall
-	hidefollower
-	@ Jogador (25,52) -> (25,51) -> (25,50) -> (24..20,50), olha para oeste.
-	applymovement OBJ_EVENT_ID_PLAYER, BlackthornCity_Movement_PlayerToLine
-	waitmovement OBJ_EVENT_ID_PLAYER
-	@ Looker (25,53)->(25,52), Anabel (26,53)->(26,52): mesma sequência, colunas
-	@ diferentes, sem cruzamento -> juntos. Ambos terminam olhando para oeste.
-	applymovement LOCALID_BLACKTHORN_UB_LOOKER, BlackthornCity_Movement_StepUpFaceLeft
-	applymovement LOCALID_BLACKTHORN_UB_ANABEL, BlackthornCity_Movement_StepUpFaceLeft
-	waitmovement LOCALID_BLACKTHORN_UB_LOOKER
-	waitmovement LOCALID_BLACKTHORN_UB_ANABEL
-	msgbox BlackthornCity_Text_UBGladionBrief, MSGBOX_DEFAULT
-	closemessage
-	setvar VAR_0x8004, 1          @ vertical pan
-	setvar VAR_0x8005, 1          @ horizontal pan
-	setvar VAR_0x8006, 20         @ num shakes
-	setvar VAR_0x8007, 6          @ shake delay
-	special ShakeCamera
-	waitstate
-	fadescreen FADE_TO_WHITE
-	clearflag FLAG_TEMP_2
-	addobject LOCALID_BLACKTHORN_UB_BUZZWOLE
-	addobject LOCALID_BLACKTHORN_UB_PHEROMOSA
-	fadescreen FADE_FROM_WHITE
-	playmoncry SPECIES_BUZZWOLE, CRY_MODE_ENCOUNTER
-	waitmoncry
-	playmoncry SPECIES_PHEROMOSA, CRY_MODE_ENCOUNTER
-	waitmoncry
-	msgbox BlackthornCity_Text_UBAppear, MSGBOX_DEFAULT
-	goto BlackthornCity_EventScript_UBChoose
+### 6.3 A escolha — estrutura padrão
 
-BlackthornCity_Movement_PlayerToLine:
-	walk_up, walk_up, walk_left, walk_left, walk_left, walk_left, walk_left, face_left, step_end
-BlackthornCity_Movement_StepUpFaceLeft:
-	walk_up, face_left, step_end
-```
+Igual à rev. 2 (`dynmultichoice ... TRUE ...`, `VAR_TEMP_3`, "!" na escolhida). Todos
+já olham certo: jogador (20,50), Silvally (19,50) e Gladion (20,49) estão a leste das
+duas UBs em x=17, que olham para o leste. O `UBChoosePrompt` inclui a Clair:
+"And I'll keep that crystal thing busy. Go!".
 
-Conferido tile a tile (bit 11): (25,51), (25,50), (24..20,50) livres; ninguém no caminho
-(Gladion/Silvally estão na linha 49). Com o jogador em (20,50) a câmera cobre x 13..27,
-y ~46..55: UBs, Gladion, Looker e Anabel ficam na tela.
+### 6.4 Batalha — boss simples, mais difícil (rev. 3)
 
-> `UBGladionBrief` — Gladion: You're here. Something tore the air open over there a minute ago.
-> Anabel: Looker, keep the doors shut. I'll watch the Center.
-> `UBAppear` — Looker: Two of them! Buzzwole and Pheromosa!
-
-### 6.3 A escolha — estrutura padrão de todas as missões
-
-O jogador escolhe qual Ultra Beast enfrenta. O acompanhante da missão enfrenta a outra.
-Sem opção de cancelar (`ignoreBPress = TRUE`): a cena já começou.
-
-```asm
-BlackthornCity_EventScript_UBChoose::
-	msgbox BlackthornCity_Text_UBChoosePrompt, MSGBOX_DEFAULT
-	dynmultichoice 0, 0, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, BlackthornCity_Text_ChoiceBuzzwole, BlackthornCity_Text_ChoicePheromosa
-	copyvar VAR_TEMP_3, VAR_RESULT               @ 0 = Buzzwole, 1 = Pheromosa
-	closemessage
-	goto_if_eq VAR_TEMP_3, 1, BlackthornCity_EventScript_UBPickPheromosa
-	@ Buzzwole: ela reage ao jogador; Gladion/Silvally já olham para oeste (Pheromosa em (16,49)).
-	applymovement LOCALID_BLACKTHORN_UB_BUZZWOLE, Common_Movement_ExclamationMark
-	waitmovement LOCALID_BLACKTHORN_UB_BUZZWOLE
-	msgbox BlackthornCity_Text_UBPickedBuzzwole, MSGBOX_DEFAULT
-	closemessage
-	goto BlackthornCity_EventScript_UBBattle
-BlackthornCity_EventScript_UBPickPheromosa::
-	applymovement LOCALID_BLACKTHORN_UB_PHEROMOSA, Common_Movement_ExclamationMark
-	waitmovement LOCALID_BLACKTHORN_UB_PHEROMOSA
-	msgbox BlackthornCity_Text_UBPickedPheromosa, MSGBOX_DEFAULT
-	closemessage
-	goto BlackthornCity_EventScript_UBBattle
-```
-
-Modelo de menu: `GoldenrodCity_RadioTower_2F/scripts.inc:222`. Direções: todos os atores
-já estão virados para o oeste e as UBs para o leste, qualquer que seja a escolha — o
-jogador em (20,50) e o Gladion em (20,49) estão a leste das duas. Nenhum `turnobject` é
-necessário.
-
-> `UBChoosePrompt` — Gladion: We split them. Pick one, {PLAYER}. Silvally and I take the other.
-> `ChoiceBuzzwole` — "Buzzwole" · `ChoicePheromosa` — "Pheromosa"
-> `UBPickedBuzzwole` — Gladion: The big one's yours, then. Silvally — the fast one!
-> `UBPickedPheromosa` — Gladion: Fine. Silvally, we hold the big one. Don't let it near the houses!
-
-### 6.4 Batalha — boss simples
-
-Sistema de boss do projeto (`src/battle_boss.c`, macros em `asm/macros/event.inc:2193-2245`):
-barras de HP múltiplas, IA inteligente automática (`IsWildMonSmart`), "Run" vira
-desistência. Só existe em batalha **simples** — batalha dupla cancela a configuração de
-boss (`InitBossBattleData`). Por isso a escolha também resolve a limitação do engine.
-
-Usa as mesmas peças de `bosslegendaryencounter`, mas sem esconder objeto por captura
-(captura está bloqueada) e com tratamento próprio dos resultados:
-
-```asm
-BlackthornCity_EventScript_UBBattle::
-	setflag B_FLAG_NO_CATCHING                   @ design: sem captura antecipada em Blackthorn
-	@ B_FLAG_NO_WHITEOUT NÃO é setado: perder = blackout (batalha de ameaça).
-	goto_if_eq VAR_TEMP_3, 1, BlackthornCity_EventScript_UBSetupPheromosa
-	setbossbattle 2, SPECIES_NONE, 110, BOSS_PHASE_PROFILE_NONE
-	playmoncry SPECIES_BUZZWOLE, CRY_MODE_ENCOUNTER
-	waitmoncry
-	seteventmon SPECIES_BUZZWOLE, 70
-	goto BlackthornCity_EventScript_UBStartBattle
-BlackthornCity_EventScript_UBSetupPheromosa::
-	setbossbattle 2, SPECIES_NONE, 110, BOSS_PHASE_PROFILE_NONE
-	playmoncry SPECIES_PHEROMOSA, CRY_MODE_ENCOUNTER
-	waitmoncry
-	seteventmon SPECIES_PHEROMOSA, 70
-BlackthornCity_EventScript_UBStartBattle::
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	copyvar VAR_TEMP_2, VAR_RESULT
-	goto_if_eq VAR_TEMP_2, B_OUTCOME_WON, BlackthornCity_EventScript_UBResolved
-	goto BlackthornCity_EventScript_UBUnresolved
-```
-
-- `setbossbattle` antes de `seteventmon`, na mesma ordem das macros existentes. Nenhum
-  caminho sai do script entre os dois, então não é preciso `clearbossbattle`.
-- 2 barras, multiplicador 110, sem perfil de fases (Buzzwole/Pheromosa não têm Mega nem
-  perfil; `autoMega` não encontra nada e segue normal). Nível 70 (referência: Rayquaza e
-  Genesect bosses usam 70; Lance/E4 ~68-70).
-- Música: `BattleSetup_StartLegendaryBattle` cai no `default` → `MUS_DP_VS_LEGEND`.
-- Golpes: os de nível do `learnset` (sem `seteventmonmoves` no esqueleto).
-
-Resultados (`IsPlayerDefeated`, `src/battle_setup.c:1107`; `CB2_EndScriptedWildBattle`, `:679`):
-
-| Resultado | O que acontece | Por quê |
+| | Buzzwole | Pheromosa |
 |---|---|---|
-| `B_OUTCOME_WON` | Continua para §7 | A UB escolhida desmaiou |
-| `LOST` / `DREW` | **Blackout** → Centro de Blackthorn (Joy) | `CB2_WhiteOut`; `BlackthornCity_OnLoad` faz `setrespawn HEAL_LOCATION_BLACKTHORN_CITY` |
-| `FORFEITED` (o jogador escolheu "Run" no boss) | **Blackout**, igual à derrota | Boss transforma fuga em desistência (`HandleEndTurn_RanFromBattle`, `src/battle_main.c:5893`) |
-| `CAUGHT` / `RAN` / outro | `UBUnresolved`: reset da cena | Inalcançáveis (bola bloqueada; fuga vira FORFEITED), tratados por segurança. Nunca viram vitória. |
+| `setbossbattle` | 3 barras, x120, sem perfil | 3 barras, x120, sem perfil |
+| Nível / item | 75 / Leftovers | 75 / Life Orb |
+| Golpes (`seteventmonmoves`) | Bulk Up, Drain Punch, Leech Life, Ice Punch | Quiver Dance, Bug Buzz, Focus Blast, Ice Beam |
 
-**Retry:** nada foi salvo como concluído. A flag do evento continua setada; ao sair do
-Centro a cidade continua vazia, o elenco volta às posições do `map.json` e as UBs voltam
-a ficar escondidas. Falar com o Looker recomeça do §6.1 — **inclusive a escolha**, que
-pode ser outra.
+Ordem: `setbossbattle` → `playmoncry` → `seteventmon` → `seteventmonmoves` →
+`BattleSetup_StartLegendaryBattle`. `B_FLAG_NO_CATCHING` setada logo antes;
+`B_FLAG_NO_WHITEOUT` **não**. A escala continua subindo: M2 = 4 / Lv80 / x130.
 
-```asm
-BlackthornCity_EventScript_UBUnresolved::
-	msgbox BlackthornCity_Text_UBGotAway, MSGBOX_DEFAULT
-	closemessage
-	fadescreen FADE_TO_BLACK
-	warpsilent MAP_BLACKTHORN_CITY, 27, 49       @ recarrega: elenco no lugar, UBs escondidas
-	waitstate
-```
+Resultados — sem mudança em relação à rev. 2:
 
-> `UBGotAway` — Looker: They slipped back through the rift... It is not over. Regroup, and we try again.
-
----
-
-## 7. Etapa F — Resolução e gancho
-
-A luta do Gladion contra a outra UB é **narrativa**: não há batalha para ela. Ela se
-resolve junto com a vitória do jogador, e a fala do Gladion muda conforme a escolha.
-
-```asm
-BlackthornCity_EventScript_UBResolved::
-	@ Os dois objetos continuam no mapa após a batalha (não há recarga).
-	fadescreen FADE_TO_WHITE
-	removeobject LOCALID_BLACKTHORN_UB_BUZZWOLE      @ flag = FLAG_TEMP_2: seguro
-	removeobject LOCALID_BLACKTHORN_UB_PHEROMOSA
-	fadescreen FADE_FROM_WHITE
-	goto_if_eq VAR_TEMP_3, 1, BlackthornCity_EventScript_UBGladionFoughtBuzzwole
-	msgbox BlackthornCity_Text_UBGladionFoughtPheromosa, MSGBOX_DEFAULT
-	goto BlackthornCity_EventScript_UBAfterBattle
-BlackthornCity_EventScript_UBGladionFoughtBuzzwole::
-	msgbox BlackthornCity_Text_UBGladionFoughtBuzzwole, MSGBOX_DEFAULT
-BlackthornCity_EventScript_UBAfterBattle::
-	msgbox BlackthornCity_Text_UBAfterGladion, MSGBOX_DEFAULT
-	closemessage
-	@ Looker (25,52)->(25,51)->(25,50)->(24..21,50), olha oeste (jogador em (20,50)).
-	applymovement LOCALID_BLACKTHORN_UB_LOOKER, BlackthornCity_Movement_LookerToPlayer
-	waitmovement LOCALID_BLACKTHORN_UB_LOOKER
-	@ Anabel (26,52)->(26,51)->(25..22,51), olha oeste. SEQUENCIAL: o caminho dela
-	@ passa por (25,51), que o Looker ocupa no passo 1 -> nunca andar juntos.
-	applymovement LOCALID_BLACKTHORN_UB_ANABEL, BlackthornCity_Movement_AnabelToPlayer
-	waitmovement LOCALID_BLACKTHORN_UB_ANABEL
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight   @ data/scripts/movement.inc:46
-	waitmovement OBJ_EVENT_ID_PLAYER
-	turnobject LOCALID_BLACKTHORN_UB_GLADION, DIR_SOUTH             @ jogador (20,50) está abaixo
-	msgbox BlackthornCity_Text_UBHook, MSGBOX_DEFAULT
-	closemessage
-	fadescreen FADE_TO_BLACK
-	clearflag FLAG_EVENT_ULTRABEAST_BLACKTHORN   @ invariante: flag e var juntas
-	setvar VAR_RIFT_MISSIONS_STATE, 4
-	warpsilent MAP_BLACKTHORN_CITY, 20, 50       @ recarrega no lugar: cidade repovoa,
-	waitstate                                    @ elenco some pelo ON_TRANSITION
-
-BlackthornCity_Movement_LookerToPlayer:
-	walk_up, walk_up, walk_left, walk_left, walk_left, walk_left, face_left, step_end
-BlackthornCity_Movement_AnabelToPlayer:
-	walk_up, walk_left, walk_left, walk_left, walk_left, face_left, step_end
-```
-
-Posições finais: jogador (20,50) → leste; Looker (21,50) → oeste; Anabel (22,51) → oeste;
-Gladion (20,49) → sul; Silvally (19,49) → oeste. Anabel fica uma linha abaixo do jogador:
-visível acima da caixa de texto.
-
-Por que `warpsilent` no lugar: com a flag limpa, os NPCs escondidos só voltariam quando a
-câmera andasse, surgindo do nada. Recarregar faz o `ON_TRANSITION` esconder o elenco e
-spawnar a cidade de uma vez, sob o fade. Gladion e Silvally somem juntos, como pede
-`parceiro-pokemon-de-npc`.
-
-Textos (inglês, placeholder) — **o último bloco é o gancho para Olivine**:
-
-> `UBGladionFoughtPheromosa` (jogador escolheu Buzzwole) — Gladion: Pheromosa was fast. Silvally was faster.
-> `UBGladionFoughtBuzzwole` (jogador escolheu Pheromosa) — Gladion: That Buzzwole hit like a wall. Silvally didn't give it an inch.
-> `UBAfterGladion` — Gladion: ...They're gone. Back through wherever they came from. You held your side. Good.
->
-> `UBHook` — Looker: Magnificent work, both of you! And no one was hurt. That is what matters most.
-> Anabel: This was not a single incident. The rift closed, but the readings did not stop.
-> Looker: While you were fighting, our office received another report. Strange lights over the Lake of Rage, near Mahogany Town.
-> Anabel: Rest first, {PLAYER}. When you're ready, come back to our house in Olivine. We'll brief you there.
-> Gladion: Mahogany... Lillie was heading that way. If this involves her, I want to know.
-> Looker: Then it is settled! Olivine, {PLAYER}. We will be waiting!
-
----
-
-## 8. Arquivos tocados (checklist de implementação)
-
-| Arquivo | Mudança |
+| Resultado | O que acontece |
 |---|---|
-| `include/constants/vars.h` | `VAR_RIFT_MISSIONS_STATE 0x4120` + comentário |
-| `include/constants/flags.h` | `FLAG_EVENT_ULTRABEAST_BLACKTHORN` 0x1040, `FLAG_NO_CATCHING` 0x1041 + comentários; `CUSTOM_FLAGS_END` |
-| `include/config/battle.h` | `B_FLAG_NO_CATCHING FLAG_NO_CATCHING` |
-| `include/constants/map_event_ids.h` | 2 locais em Olivine House1, 6 em Blackthorn (à mão) |
-| `data/maps/Route29/map.json` | apaga o objeto do Looker |
-| `data/maps/Route29/scripts.pory` | apaga `Route29_EventScript_Looker` e `Route29_Text_Looker` |
-| `data/maps/PokemonLeague_HallOfFame/scripts.inc` | `setvar VAR_RIFT_MISSIONS_STATE, 1` |
-| `data/maps/NewBarkTown/scripts.pory` | entrada no `OnFrame` + `LookerCall` + texto |
-| `data/maps/OlivineCity_House1/map.json` | remove engenheiro; adiciona Looker e Anabel com flag `0` |
-| `data/maps/OlivineCity_House1/scripts.pory` | remove Voltorb; `ON_FRAME`, cena, briefing, diálogos por estado |
-| `data/maps/OlivineCity_House3/map.json` | engenheiro do Voltorb em (7,4), no fim |
-| `data/maps/OlivineCity_House3/scripts.inc` | scripts/textos do Voltorb (asm) |
-| `data/maps/BlackthornCity/map.json` | flag do evento em 16 objetos; 6 objetos novos no fim |
-| `data/maps/BlackthornCity/scripts.inc` | visibilidade, conversas, cena, escolha, boss, resolução, textos, movimentos |
+| `B_OUTCOME_WON` | §7 |
+| `LOST` / `DREW` / `FORFEITED` ("Run" no boss) | Blackout → Centro de Blackthorn; o script não continua |
+| `CAUGHT` / `RAN` / outro (inalcançáveis) | `UBUnresolved`: fala + `warpsilent` (27,49) → recomeça |
 
-Não editar `events.inc`/`header.inc`/`connections.inc` nem os `.inc` gerados de mapas
-com `.pory`. Validar com `make -j$(nproc)`.
+**Retry:** a flag continua setada; o load devolve o elenco da rua ao lugar e esconde
+de novo UBs, Gladion e Silvally. Falar com o Looker refaz tudo — pré-checagem e
+escolha inclusive.
 
-### 8.1 Divergências da implementação em relação ao texto acima
+### 6.5 Absorção pelo Necrozma (`BlackthornCity_EventScript_UBResolved` / `UBAbsorb`)
 
-Todas cosméticas; o contrato de §1, §6 e §7 foi seguido à risca.
+Padrão de **todas** as missões (design §6, regras comuns).
 
-- Todo `warpsilent` é seguido de `waitstate`, `releaseall`, `end` (o plano parava no
-  `waitstate`; sem `end` o script cairia nos bytes seguintes).
-- `BlackthornCity_EventScript_UBGladionFoughtBuzzwole` **cai** em
-  `..._UBAfterBattle` em vez de saltar: são rótulos contíguos.
-- Os diálogos por estado em Olivine terminam num rótulo comum
-  `OlivineCity_House1_EventScript_ReleaseEnd` (`closemessage`, `release`, `end`).
-- Os textos foram quebrados em linhas reais de `.string` (`\n`/`\l`/`\p`).
-- Reconferido na implementação: `0x4120` livre; nenhum `FLAG_TEMP_1/2` nem
-  `VAR_TEMP_1/2/3` em Blackthorn, Olivine House1/House3 ou New Bark, nem em
-  script comum alcançável desses mapas; nenhum `LOCALID_ROUTE29_*` nem
-  `removeobject` sobre objeto da Route 29 ou de Blackthorn; a colisão real de
-  Blackthorn (y=48..54, x=14..28) e de Olivine House1 bate tile a tile com as
-  plantas de §4.2 e §5.4; `ClearTempFieldEventData` só roda em `LoadMapFromWarp`
-  e `LoadMapFromCameraTransition` (`src/overworld.c:874,936`), logo `VAR_TEMP_3`
-  sobrevive à batalha; `Overworld_ResetBattleFlagsAndVars` limpa
-  `B_FLAG_NO_CATCHING` (`src/overworld.c:440`).
-- O Sage (25,13) fica ao lado, não em cima, do caminho para a Dragon's Den
-  (warp em (26,12)): escondê-lo durante o incidente não abre nem fecha nada.
+1. Fala do Gladion conforme a escolha (a luta dele é narrativa, como na rev. 2).
+2. Necrozma pulsa + grito. As duas UBs são **arrastadas de costas** de (17,y) para
+   (15,y) (`lock_facing_direction` + `walk_slow_left` ×2), ao lado dele.
+3. Tremor → `FADE_TO_WHITE` → `removeobject` das duas (flag `FLAG_TEMP_2`) →
+   `FADE_FROM_WHITE` → grito.
+4. "!" sobre Clair, Gladion, Looker e Anabel → `UBAbsorbed`: Clair ("It's pulling
+   them in!"), Looker ("It... took them."), Gladion ("It didn't fight them. It fed on
+   them."), Anabel ("That is not how an Ultra Beast behaves. That is not how anything
+   behaves.").
+5. §6.6 (opcional).
+6. Tremor → flash → `removeobject` do Necrozma (flag própria `FLAG_TEMP_4`, não toca
+   no elenco) → `UBNecrozmaGone` (Clair: abriu um buraco no céu, comeu o que saiu e foi embora).
+
+**Ninguém o nomeia.** Para todos é "the creature" / "that crystal thing".
+
+### 6.6 Reação opcional à família Cosmog (`UBNecrozmaSensesCosmog`)
+
+`specialvar VAR_RESULT, CheckMysteryEggPokemon` → `VAR_TEMP_4`. Checado **depois** da
+batalha, porque a batalha pode evoluir o Pokémon. Com `SPECIES_NONE` a cena segue
+sem nada.
+
+- Necrozma dá um passo para o jogador, (14,50)→(15,50) (livre desde a remoção do
+  Buzzwole); "!" sobre o jogador; grito.
+- Cosmog/Cosmoem: encara a Poké Ball; o Pokémon treme; Gladion manda o Silvally
+  para a frente.
+- Solgaleo/Lunala: a luz se acende entre os dois; ele recua, se firma e encara; o
+  Pokémon do jogador não desvia o olhar.
+- Na conversa final (§7), um bloco extra: Gladion ("It looked at your {species}. Not
+  at us. Keep it close.") e Anabel ("children of the stars..."), ou, com a lendária,
+  Gladion ("It flinched at your {species}. Remember that.") e Anabel ("legend of the
+  sky itself").
+
+---
+
+## 7. Etapa F — Conversa, presente e gancho
+
+```text
+Looker (25,52) → (21,50) olhando oeste; depois Anabel (26,52) → (22,51) — sequencial,
+o caminho dela cruza (25,51) (igual à rev. 2).
+turnobject: Clair e Kingdra → leste; Gladion → sul (jogador abaixo); Silvally → leste.
+Jogador → leste.
+```
+
+1. `UBAftermath`: Looker pergunta primeiro se alguém se feriu ("the report can wait a
+   moment"); Clair agradece em nome da cidade e vai treinar "até entender o que acabou
+   de ver"; Anabel resume ("It wasn't attacking Blackthorn. It was feeding."); Gladion:
+   "I've seen light like that before. In Alola." — Looker quer saber mais — "Later."
+2. Bloco Cosmog/lendária se `VAR_TEMP_4` ≠ `SPECIES_NONE` (§6.6).
+3. **Presente** (`UBGift`): jogador vira para o norte (Gladion). `UBGladionGift`: outro
+   Type: Null, encontrado sozinho nas montanhas depois da Route 45, abandonado; não se
+   acomoda com ele, "vive tentando ser a sombra do Silvally"; assistiu o jogador lutar,
+   "já decidiu".
+   ```asm
+   bufferspeciesname STR_VAR_1, SPECIES_TYPE_NULL
+   givemon SPECIES_TYPE_NULL, 50
+   goto_if_eq VAR_RESULT, MON_CANT_GIVE, BlackthornCity_EventScript_UBGiftNoRoom
+   call Common_EventScript_GiftMon                 @ fanfarra, apelido, aviso de PC
+   ```
+   `UBGladionGiftAfter`: "Don't decide everything for it. Let it take the first step.
+   It'll surprise you." — a lição do arco do próprio Gladion (design §3).
+   **Guarda:** `MON_CANT_GIVE` é inalcançável (§6.1), mas se acontecer vai para
+   `UBGiftNoRoom` → `UBUnresolved`, **antes** de qualquer mudança de estado: a missão é
+   refeita e o presente nunca se perde.
+4. Jogador → leste. `UBHook` — **sem destino**: Anabel ("the readings haven't settled;
+   that creature will open another rift; where and when, we don't know yet"); Looker
+   ("So we keep watching. Rest, then come to our house in Olivine. The moment something
+   opens, you will be the first to know."); Gladion ("If it shows up again, it won't be
+   alone. Silvally. We're going.").
+5. `FADE_TO_BLACK` → `clearflag FLAG_EVENT_ULTRABEAST_BLACKTHORN` + `setvar
+   VAR_RIFT_MISSIONS_STATE, 4` → `warpsilent MAP_BLACKTHORN_CITY, 20, 50` → `waitstate`
+   → `releaseall` → `end`. A cidade repovoa, o elenco some, as portas destrancam.
+
+---
+
+## 8. Arquivos tocados
+
+| Arquivo | Rev. 2 | Rev. 3 |
+|---|---|---|
+| `include/constants/vars.h` | `VAR_RIFT_MISSIONS_STATE 0x4120` | — |
+| `include/constants/flags.h` | `FLAG_EVENT_ULTRABEAST_BLACKTHORN` 0x1040, `FLAG_NO_CATCHING` 0x1041 | — |
+| `include/config/battle.h` | `B_FLAG_NO_CATCHING FLAG_NO_CATCHING` | — |
+| `include/constants/map_event_ids.h` | locais de Olivine/Blackthorn | regenerado (34-36) |
+| `include/event_scripts.h` | — | `BlackthornCity_EventScript_DoorLocked` |
+| `src/field_control_avatar.c` | — | `sLockedTownDoors`, `TryLockedDoorScript` |
+| `data/maps/Route29/*` | remove o Looker | — |
+| `data/maps/PokemonLeague_HallOfFame/scripts.inc` | `setvar ..., 1` | — |
+| `data/maps/NewBarkTown/scripts.pory` | ligação | texto final da ligação |
+| `data/maps/OlivineCity_House1/*` | casa, briefing, diálogos | briefing M1 final (sem Gladion); `BriefingM2` revela Mahogany; "go ahead" do estado 3 |
+| `data/maps/OlivineCity_House3/*` | troca do Voltorb | — |
+| `data/maps/BlackthornCity/map.json` | flag nos 16; elenco 28-33 | Gladion/Silvally/UBs reposicionados; 34-36 novos |
+| `data/maps/BlackthornCity/scripts.inc` | visibilidade, cena, boss | seção da M1 reescrita inteira |
+
+Fora da M1, na mesma revisão (design §4.11): comentários opcionais sobre a família
+Cosmog em `GoldenrodCity_FlowerShop/scripts.pory`, `CianwoodCity/scripts.inc`,
+`DragonsDen_Shrine/scripts.inc` e `ReceptionGate/scripts.inc`.
 
 ---
 
 ## 9. Esqueleto × evolução
 
-O que está **deliberadamente simples**. Cada item vira um comentário
-`@ SKELETON: <o que falta>` no script correspondente, para que
-`grep -rn "SKELETON:" data/maps/{Route29,NewBarkTown,OlivineCity_House1,BlackthornCity}`
-liste tudo que falta polir:
+`grep -rn "SKELETON:" data/maps/BlackthornCity` lista o que falta polir.
 
-| Item | Esqueleto | Evolução prevista |
+| Item | Hoje (rev. 3) | Evolução prevista |
 |---|---|---|
-| Luta do Gladion | Narrativa: resolvida junto com a vitória do jogador, fala muda pela escolha | Mostrar o combate dele na tela (animação de golpe, grito, UB recuando) antes ou depois da luta do jogador. Batalha real com Gladion **não** é o plano: a estrutura "cada um enfrenta uma" é a decisão de design. |
-| Chefes | `setbossbattle 2, …, 110`, nível 70, golpes de nível | `bosslegendaryencounterwithmoves`-style: `seteventmonmoves` com moveset curado, mais barras, multiplicador, item; perfil de fases próprio em `battle_boss.c` se quiser mudança de fase. |
-| Diálogos | Curtos, placeholder | Reescrever pela voz do design §3.1 (Gladion curto e concreto; Looker teatral/caloroso; Anabel precisa). |
-| Coreografia | Ruptura = tremor + flash; UBs surgem paradas; a escolhida só dá "!" | Movimento das UBs, a escolhida avançar até o jogador, música própria, animação de portal. |
-| Saída do elenco | Warp no lugar em Blackthorn | Gladion e Silvally caminhando para fora (Silvally na frente), Looker e Anabel indo para o Centro. |
-| Moradores | Somem | Reações dos moradores depois do evento. |
+| Falas | **Finais** (ligação, briefing M1, cena inteira) | Só ajuste de quebra de linha depois do runtime. |
+| Coreografia | Golpes = andar no lugar + flash; ruptura = tremor + flash | Animações de golpe (field effects), sprite de portal, música própria do Necrozma. |
+| Luta do Gladion | Narrativa, fala muda pela escolha | Mostrar o combate dele na tela. Batalha real com ele **não** é o plano. |
+| Chefes | 3 barras / Lv75 / x120 / moveset curado + item | Ajustar só depois do runtime; perfil de fases próprio se quiser. |
+| Type: Null | Lv50, Poké Ball comum, sem item | Nível/bola/itens (Memórias?) a decidir. |
+| Saída do elenco | Warp no lugar | Gladion + Silvally saindo a pé pelo norte; Clair abrindo as portas. |
+| Moradores | Somem; portas trancadas | Reações dos moradores depois do evento. |
 | Anabel | Só fala | Beast Balls em Olivine a partir do estado 4 (design §5). |
 
-**O que NÃO pode regredir numa evolução:** a máquina de estados §1.2, a invariante
-flag ⇔ estado 3, a visibilidade por template, o SIM como único ponto de saída, a escolha
-refeita a cada tentativa, o tratamento de todos os resultados e a proibição de captura
-em Blackthorn.
+**O que NÃO pode regredir:** a máquina de estados §1.2, a invariante flag ⇔ estado 3,
+a visibilidade por template (inclusive Gladion/Silvally **sempre** escondidos no load),
+o SIM como único ponto de saída, a checagem de espaço **antes** do SIM, a guarda
+`MON_CANT_GIVE` antes do `clearflag`/`setvar`, a escolha refeita a cada tentativa, o
+tratamento de todos os resultados, a proibição de captura, a absorção das **duas** UBs
+pelo Necrozma, o Necrozma sem nome, o gancho sem destino e o Centro como única porta aberta.
 
 ---
 
 ## 10. Pendências e riscos conhecidos
 
-- **Looker e Anabel em dois lugares no estado 3: aceito pelo autor.** O evento inteiro é uma
-  cutscene; eles continuam na casa de Olivine (sem flag) e também aparecem em Blackthorn. Não
-  esconder em Olivine. O diálogo do estado 3 ("we are leaving right behind you") basta.
-- ~~`FLAG_GLADION_VICTORY_ROAD_DONE` (0x103F) ainda não commitado~~ — confirmado em 0x103F na implementação; `FLAG_EVENT_ULTRABEAST_BLACKTHORN` = 0x1040 e `FLAG_NO_CATCHING` = 0x1041, com `CUSTOM_FLAGS_END` apontando para a última.
-- Money loss no blackout/desistência é o padrão da engine; aceito pelo design (batalha de ameaça).
-- `FLAG_NO_CATCHING` passa a existir para qualquer script. Como a engine a limpa após toda
-  batalha, esquecer de limpá-la não vaza para batalhas futuras.
+- **Looker e Anabel em dois lugares no estado 3: aceito pelo autor** (inalterado).
+- **Clair no Dragon's Den.** Se a revanche do Den ainda não aconteceu, a Clair pode
+  estar lá também — a entrada do Den é caverna, não porta, e fica aberta. Não há como
+  escondê-la sem mexer em `FLAG_HIDE_DEN_CLAIR`. Baixo impacto; conferir no runtime.
+- **`VAR_TEMP_3`/`VAR_TEMP_4` dependem de não haver recarga de mapa** entre a escolha e
+  o fim da cena. O apelido do Type: Null passa por `ChangePokemonNickname` e volta por
+  `ResumeMap` (sem `ClearTempFieldEventData`) — e acontece depois da última leitura de
+  `VAR_TEMP_4` de qualquer jeito.
+- **Portas:** `TryLockedDoorScript` compara o mapa atual com a linha da tabela a cada
+  tentativa de porta; custo desprezível. Uma porta nova no Blackthorn fica trancada
+  automaticamente; um segundo prédio que precise ficar aberto exigiria outro campo.
+- Money loss no blackout/desistência: padrão da engine, aceito.
+- O sprite de overworld do Necrozma é 32x32 (TODO 64x64 no species info).
 
 ---
 
 ## 11. Teste em runtime
 
-- [ ] Route 29 sem Looker; Lusamine, Lass, Cut tree, berry tree e item continuam funcionando.
-- [ ] New Game → Olivine House1: Looker e Anabel presentes com diálogo "de férias"; engenheiro do Voltorb em House3 (7,4), troca funciona e lembra `FLAG_OLIVINE_NPC_TRADE_COMPLETED`.
-- [ ] HoF → sair de casa: ligação do Elm, depois do Looker; reentrar em New Bark não repete. Revanche da Liga não reativa.
-- [ ] Estado 2: entrar na casa dispara a cena; os dois param lado a lado olhando para baixo, falam e voltam ao lugar sem atravessar a mesa. Estado vira 3.
-- [ ] Estado 3: diálogo "vá na frente" em Olivine; Blackthorn sem nenhum NPC/Pokémon ambiente; item ball e luzes noturnas intactos; Centro, Joy, Mart, Ginásio acessíveis.
-- [ ] Chegar por Fly, Route 45, Route 44 e Ice Path: elenco sempre presente, UBs sempre ausentes.
-- [ ] Falar com Anabel e Gladion antes: falas curtas, nada muda. "Não" com o Looker libera.
-- [ ] "Sim": cena roda sem input até o menu; menu não fecha com B.
-- [ ] Escolher Buzzwole: boss Buzzwole com 2 barras; Gladion fala da Pheromosa depois. Idem invertido.
-- [ ] Bolsa: bola bloqueada. "Run": desistência → blackout.
-- [ ] Perder: acorda no Centro de Blackthorn; cidade ainda vazia, elenco no lugar; Looker recomeça e a escolha pode ser outra.
-- [ ] Vencer: UBs somem, Looker e Anabel se aproximam sem sobrepor ninguém, gancho de Mahogany/Olivine, fade, cidade repovoada, elenco ausente, follower de volta.
-- [ ] Estado 4: stub da Missão 2 em Olivine.
-- [ ] Salvar/recarregar em cada estado (2, 3, 4) mantém tudo acima.
+- [ ] Route 29 sem Looker; troca do Voltorb em House3 (inalterados da rev. 2).
+- [ ] HoF → sair de casa: ligação do Elm, depois do Looker (texto novo, sem spoiler).
+- [ ] Estado 2 → briefing em Olivine: cita Clair e "um Pokémon feito de luz"; **não** cita Gladion.
+- [ ] Estado 3 em Blackthorn: rua vazia; Looker, Anabel, Clair, Kingdra e Necrozma presentes; **Gladion e Silvally ausentes**.
+- [ ] Portas: Ginásio, Mart e as três casas mostram a fala da Clair e não entram; o Centro entra. Dragon's Den e Ice Path continuam acessíveis.
+- [ ] Chegar por Fly, Route 45, Route 44 e Ice Path: mesmo elenco, UBs/Gladion ausentes.
+- [ ] Falar com Anabel, Clair, Kingdra e Necrozma com e sem Cosmog na equipe.
+- [ ] Equipe 6 + PC cheio: Looker dá a "regra da Anabel" e não pergunta SIM/NÃO. Liberar espaço → pergunta normal.
+- [ ] SIM: a Clair olha para o jogador e volta; ataque do Kingdra; ruptura; carga das UBs **sem atravessar a Clair**; o Silvally salta e cai em (19,50); o Gladion chega em (20,49); ninguém sobreposto.
+- [ ] Escolha Buzzwole e Pheromosa: boss com 3 barras, moveset e item certos. Ver se a luta é ameaça ou parede.
+- [ ] Bola bloqueada; "Run" → blackout; perder → Centro; cidade vazia; Gladion escondido de novo; nova escolha.
+- [ ] Vencer: absorção das duas UBs, "!" em quatro personagens, Necrozma some.
+- [ ] Com Cosmog, Cosmoem, Solgaleo e Lunala (um por vez): Necrozma dá o passo, falas certas, bloco extra na conversa. Sem nenhum: nada.
+- [ ] Type: Null com vaga na equipe (fanfarra + apelido) e com equipe cheia (vai para o PC com aviso). Cena continua depois do apelido.
+- [ ] Anabel em (22,51) visível acima da caixa de texto (risco herdado, §12.5).
+- [ ] Gancho sem destino; fade; cidade repovoada; portas abertas; follower de volta.
+- [ ] Estado 4 em Olivine: briefing da M2 revela Mahogany.
+- [ ] Salvar/recarregar nos estados 2, 3 e 4.
 
 ---
 
-## 12. Feedback da implementação (19/09/2026)
+## 12. Feedback da implementação da revisão 2 (19/09/2026) — histórico
+
+> Registro da rev. 2. Onde contradiz as seções acima (posições, textos, números do
+> boss), valem as de cima e o §13.
 
 Escrito depois de implementar o plano inteiro, para quem for evoluir esta cena
 ou escrever o doc da Missão 2. O §8.1 lista *o que* ficou diferente; esta seção
@@ -868,3 +819,40 @@ planta ASCII tirada da colisão real com o caminho de cada ator em coordenadas
 diferente: terminar todo bloco de script do doc em `end`, e dizer
 explicitamente o que acontece com o follower em cada cena que não termina em
 warp.
+
+---
+
+## 13. Revisão 3 — a história (22/09/2026)
+
+Feedback do autor sobre o esqueleto: "o esqueleto está pronto, agora vamos montar
+uma história épica". O que foi pedido e como ficou:
+
+| Pedido | Como ficou |
+|---|---|
+| Diálogos naturais, pela personalidade | Falas finais na ligação, no briefing e na cena; vozes do design §3.1 (Looker teatral que se corrige e pergunta primeiro pelas pessoas; Anabel precisa; Gladion curto; Clair orgulhosa e responsável pela cidade). |
+| Looker não fala do Gladion antes | Briefing reescrito; Gladion/Silvally escondidos (`FLAG_TEMP_3`) até o resgate; o Looker nem sabe quem ele é. |
+| Uma história real em Blackthorn | §6.2: Clair já lutando → golpe sem efeito → ruptura → carga → resgate. |
+| UBs atacam o jogador; Gladion salva no último segundo | Carga até (18,y); Silvally salta para (19,50); Gladion para em (20,49). O pedido dizia "Type: Null"; o parceiro do Gladion no pós-game é o **Silvally** (design §1, regra visual), então o resgate é dele. |
+| Próximo evento é mistério | Gancho sem destino; `BriefingM2` passou a revelar Mahogany. |
+| Clair participa | Objetos 34 (Clair) e 35 (Kingdra); foi ela quem chamou a polícia e evacuou a cidade. |
+| Clair já lutando com o Necrozma; os outros dois aparecem e atacam | Objeto 36 (Necrozma); §6.2. |
+| Necrozma absorve as UBs em todos os encontros | §6.5; regra comum no design §6. **Só a M1 cumpre hoje.** |
+| Personagens espantados com o Necrozma | "!" em quatro personagens + `UBAbsorbed` + `UBAftermath`. |
+| Luta mais difícil | 3 barras / Lv75 / x120 / moveset curado + item (§6.4). |
+| Gladion dá um Type: Null; equipe e PC cheios bloqueiam o SIM | §6.1 e §7.3. O design proibia esse presente; a proibição foi substituída (design §3). |
+| Reação opcional do Necrozma e dos NPCs ao Cosmog | §5.6 (antes da cena) e §6.6 (depois da batalha). |
+| Sugestão no meio do trabalho: fechar as portas em vez de esconder a Clair do Ginásio | §5.2, mecanismo em C com uma linha por missão. |
+
+Também nesta revisão, fora do mapa: comentários opcionais da Lillie e do Gladion
+sobre a família Cosmog nos quatro encontros pré-Liga em que ela pode existir
+(design §4.11).
+
+**Conferido:** `make -j$(nproc)` limpo; local ids 28-33 intactos, 34-36 no fim;
+todos os tiles dos caminhos novos livres no `dump_mapa.py`; nenhum ator termina no
+tile de outro; `VAR_RESULT` não é lido depois de nenhum dos quatro pontos de
+inserção pré-Liga antes de ser reescrito.
+
+**Runtime (22/09/2026):** validado pelo autor, sem correções. Os pontos abaixo eram os riscos antes do teste: o salto do Silvally (`jump_2_down` sobre um tile
+livre) e se a carga das UBs parece ataque ou passeio; o equilíbrio da luta nova;
+se a Anabel em (22,51) fica visível; o fluxo de apelido do Type: Null no meio de uma
+cutscene com `lockall`.

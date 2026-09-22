@@ -167,6 +167,8 @@ o estado do evento: planejado / esqueleto implementado / evoluído.
   flags, ponto de saída, tratamento de resultados, local ids (objetos novos
   sempre no **fim** de `object_events`).
 - Ao terminar, apague o `@ SKELETON:` correspondente e atualize a seção 7 do doc.
+- Para a passada de **história** (falas finais, arco da cena, surpresas, reações
+  opcionais), use a skill `evoluir-historia-de-evento`.
 
 ## Checklist
 

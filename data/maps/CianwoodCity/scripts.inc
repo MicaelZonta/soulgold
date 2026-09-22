@@ -333,6 +333,7 @@ CianwoodCity_EventScript_GladionIntro::
 	turnobject LOCALID_CIANWOOD_TYPENULL, DIR_NORTH
 	msgbox CianwoodCity_Text_GladionGoodMorning, MSGBOX_DEFAULT
 	closemessage
+	call CianwoodCity_EventScript_CosmogComment
 
 	goto CianwoodCity_EventScript_GladionChallenge
 
@@ -978,3 +979,58 @@ CianwoodCity_Text_Engineer:
 	.string "This path is under construction.\n"
 	.string "We're getting the new Safari Zone\l"
 	.string "up and running!$"
+
+@ Optional Sun & Moon callback: Gladion recognises Cosmog from Alola and learns what was in the egg he handed over (he never knew).
+@ Reacts to the first non-egg Cosmog/Cosmoem/Solgaleo/Lunala in the party
+@ (CheckMysteryEggPokemon, the special Elm's Eviolite scene uses). Nothing
+@ else changes: no flag, no var; VAR_RESULT is free at every call site.
+CianwoodCity_EventScript_CosmogComment::
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
+	goto_if_eq VAR_RESULT, SPECIES_NONE, CianwoodCity_EventScript_CosmogCommentEnd
+	bufferspeciesname STR_VAR_1, VAR_RESULT
+	applymovement LOCALID_CIANWOOD_TYPENULL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_CIANWOOD_TYPENULL
+	goto_if_eq VAR_RESULT, SPECIES_COSMOG, CianwoodCity_EventScript_CosmogCommentCosmog
+	goto_if_eq VAR_RESULT, SPECIES_COSMOEM, CianwoodCity_EventScript_CosmogCommentCosmoem
+	msgbox CianwoodCity_Text_CosmogLegend, MSGBOX_DEFAULT
+	closemessage
+	return
+
+CianwoodCity_EventScript_CosmogCommentCosmog::
+	msgbox CianwoodCity_Text_Cosmog, MSGBOX_DEFAULT
+	closemessage
+	return
+
+CianwoodCity_EventScript_CosmogCommentCosmoem::
+	msgbox CianwoodCity_Text_CosmogCosmoem, MSGBOX_DEFAULT
+	closemessage
+	return
+
+CianwoodCity_EventScript_CosmogCommentEnd::
+	return
+
+CianwoodCity_Text_Cosmog:
+	.string "Gladion: …Wait. That's a\n"
+	.string "Cosmog.\p"
+	.string "So that's what was in the egg.\p"
+	.string "Lillie had one, in Alola. It got\n"
+	.string "her into more trouble than I\l"
+	.string "can count.\p"
+	.string "Got her out of some, too.\p"
+	.string "Keep it close. They wander.$"
+
+CianwoodCity_Text_CosmogCosmoem:
+	.string "Gladion: That's a Cosmoem.\n"
+	.string "So that's what was in the egg.\p"
+	.string "It's not asleep. It's building\n"
+	.string "itself.\p"
+	.string "Don't rush it.$"
+
+CianwoodCity_Text_CosmogLegend:
+	.string "Gladion: …A {STR_VAR_1}.\n"
+	.string "From that egg.\p"
+	.string "Type: Null, look. Somebody\n"
+	.string "grew up faster than you.\p"
+	.string "Lillie is going to want to see\n"
+	.string "this.$"
+

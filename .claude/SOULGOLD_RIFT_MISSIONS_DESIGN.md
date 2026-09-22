@@ -1,6 +1,10 @@
 # SoulGold — Rift Missions
 
-**Design consolidado v18 — Missões 1 (Blackthorn), 2 (Mahogany), 3 (Cherrygrove) e 4 (New Bark) e o evento PRÉ-NECROZMA (reunião de Olivine) em esqueleto implementado; arco de missões fechado no código e a reunião em cima dele; runtime pendente nos cinco**
+**Design consolidado v20 — Missões 1 (Blackthorn) e 2 (Mahogany) com a história evoluída (M1: Clair, Necrozma, resgate do Gladion, presente do Type: Null; M2: Pryce evacuando, Lillie como descoberta, sinergia das UBs, duas rodadas, Necrozma); Missões 1 (Blackthorn), 2 (Mahogany), 3 (Cherrygrove) e 4 (New Bark) e o evento PRÉ-NECROZMA (reunião de Olivine) em esqueleto implementado; arco de missões fechado no código e a reunião em cima dele; runtime pendente nos cinco**
+
+Revisão V20: 22 de setembro de 2026. Substitui o V19 apenas no pós-E4: a **Missão 2 (Mahogany)** ganha a história, a partir do feedback do autor sobre o esqueleto. A Lillie deixa de ser anunciada no briefing e vira descoberta; o Pryce aparece evacuando a cidade, tenta atingir o Necrozma e empresta o gelo para a estratégia da Lillie; o jogador enfrenta a UB escolhida **duas vezes seguidas** — na primeira vitória a parceira a revive pela sinergia, a Lillie refaz o plano e uma parede de gelo corta a troca; o Necrozma absorve as duas. Portas trancadas, padrão do Necrozma, gancho sem destino e acompanhante surpresa passam a valer também na M2. A **sinergia entre as Ultra Beasts** de cada missão vira regra comum (§6). Registro em §24; implementação em [`.claude/MAHOGANY_ULTRABEAST_IMPLEMENTATION.md`](MAHOGANY_ULTRABEAST_IMPLEMENTATION.md) §13.
+
+Revisão V19: 22 de setembro de 2026. Substitui o V18 no pós-E4 **e** acrescenta reações opcionais à família Cosmog em quatro encontros pré-Liga (§4.11). Feedback do autor sobre o esqueleto da Missão 1, que passa a ter uma **história de verdade**: a Clair já está lutando contra um Pokémon desconhecido (Necrozma) quando o jogador chega; Buzzwole e Pheromosa saem da fenda que ele abre e partem **para cima do jogador**; Gladion e Silvally chegam no último segundo; depois da luta o Necrozma **absorve as duas Ultra Beasts** e vai embora, diante de um elenco espantado; e o Gladion dá ao jogador um **Type: Null** que encontrou abandonado. Quatro decisões novas valem para o arco inteiro: o **padrão do Necrozma** (§6, regras comuns), as **portas trancadas** da cidade evacuada, o **gancho sem destino** (o próximo local é mistério até voltar a Olivine) e a **surpresa do acompanhante** (ninguém o anuncia antes da cena). Registro completo em §23.
 
 Revisão V18: 20 de setembro de 2026. Substitui o V17 apenas no pós-E4. Faz duas coisas: (1) consolida no design o que a **implementação** da Missão 4 fixou como contrato (§6.4 e §22) — com isso as **quatro** missões estão em esqueleto implementado e o arco de missões está fechado no código, com runtime pendente em todas; (2) abre o primeiro evento depois das missões, o **PRÉ-NECROZMA** (§7), com documento de implementação próprio: a reunião do escritório de Olivine. Nada da campanha pré-Liga muda. Três decisões de escopo do autor nesta revisão, todas sobre esse evento: ele **acontece inteiro dentro de `OlivineCity_House1`**, com os seis personagens e os dois parceiros; **termina antes da ida ao altar**; e **entrega o gancho do altar** em vez de encená-lo, terminando numa flag persistente que o encontro com Necrozma vai consumir na sessão seguinte. O evento foi **implementado em esqueleto no mesmo dia**, inteiro e sem cortes, com build limpo e runtime pendente; o §12 do doc dele registra o feedback da implementação e vence o resto daquele arquivo onde os dois divergem.
 
@@ -32,9 +36,9 @@ As seções de conteúdo estabelecido são a referência para a execução. Reco
 | Gladion em Cianwood | Implementado anteriormente; V12 mantém removida a recusa da revanche. A batalha passa a ser obrigatória e vitória/derrota convergem para Fly. Refatoração de fluxo pendente. |
 | Lillie no Dragon’s Den | **Implementada e compilada:** 15 reações integradas ao quiz vanilla; 9 respostas aceitas avançam e 6 rejeitadas preservam punição/re-pergunta; Ninetales fora da Poké Ball; batalha final de 6 Pokémon com no-whiteout. Runtime pendente. |
 | Gladion antes da Victory Road | **Implementada e compilada:**  Novo encontro fechado em design: batalha obrigatória, primeira apresentação de Silvally, vitória ou derrota continuam sem blackout. Implementação pendente. |
-| Ligação do Looker + escritório de Olivine + Blackthorn (Missão 1) | **Esqueleto implementado (19/09/2026):** conforme [`.claude/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md`](BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md), da ligação ao gancho para a Missão 2 (Looker e Anabel moram em Olivine desde o New Game; escolha da UB + boss battle). Build limpo; runtime pendente. Primeira batalha de ameaça: derrota = blackout/retry. |
+| Ligação do Looker + escritório de Olivine + Blackthorn (Missão 1) | **História evoluída (22/09/2026, V19):** Clair contra Necrozma na chegada, UBs atacando o jogador, resgate do Gladion + Silvally, absorção pelo Necrozma, reação opcional à família Cosmog, presente do Type: Null com checagem de espaço antes do SIM, portas trancadas exceto o Centro, boss 3 barras / Lv75 / x120 / moveset curado + item. Falas finais. Build limpo; **validado em runtime pelo autor (22/09/2026)**. Receita na skill `evoluir-historia-de-evento`. **Antes: esqueleto implementado (19/09/2026):** conforme [`.claude/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md`](BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md), da ligação ao gancho para a Missão 2 (Looker e Anabel moram em Olivine desde o New Game; escolha da UB + boss battle). Build limpo; runtime pendente. Primeira batalha de ameaça: derrota = blackout/retry. |
 | Limpeza de treinadores | Informada como concluída pelo autor; este documento não certifica IDs ou contagens livres. |
-| Missão 2 — Mahogany (Xurkitree + Celesteela, Lillie) | **Esqueleto implementado (19/09/2026):** conforme [`.claude/MAHOGANY_ULTRABEAST_IMPLEMENTATION.md`](MAHOGANY_ULTRABEAST_IMPLEMENTATION.md) (§12 registra o feedback da implementação). Implementada **inteira, sem cortes**, nos cinco arquivos previstos e sem alterar nenhuma decisão de estado. Continua a var da M1 nos estados 4→5→6 e substituiu o stub da M2 em Olivine, que virou stub da M3. Primeira aplicação da escala crescente (4 barras / Lv80 / x130 / moveset curado + item). Build limpo; runtime pendente. |
+| Missão 2 — Mahogany (Xurkitree + Celesteela, Lillie) | **História evoluída (22/09/2026, V20):** Lillie como descoberta ao chegar (fora do briefing); Pryce + Mamoswine evacuando os últimos moradores na tela, Blizzard sem efeito no Necrozma, entrada no Ginásio no fim; sinergia das UBs mostrada, vencendo a rodada 1 (revive) e derrotada pela parede de gelo da Lillie + Pryce; duas rodadas seguidas (2 barras, depois 4 / Lv80 / x130) com cura da Anabel entre elas; absorção pelo Necrozma; reação opcional à família Cosmog; portas trancadas exceto o Centro; gancho sem destino. Falas finais. Build limpo; **runtime pendente**. **Antes: esqueleto implementado (19/09/2026)**, conforme [`.claude/MAHOGANY_ULTRABEAST_IMPLEMENTATION.md`](MAHOGANY_ULTRABEAST_IMPLEMENTATION.md) §12. |
 | Missão 3 — Cherrygrove (Blacephalon + Stakataka, Kukui) | **Esqueleto implementado (20/09/2026):** conforme [`.claude/CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md`](CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md) (§12 registra o feedback da implementação). Implementada **inteira, sem cortes**, nos cinco arquivos previstos e sem alterar nenhuma decisão de estado. Continua a var nos estados 6→7→8 e substituiu o stub da M3 em Olivine, que virou stub da M4. Terceiro degrau da escala (4 barras / Lv85 / x140 / moveset curado + golpe de controle + item) e **primeira missão a mexer em conteúdo pré-existente** (os dois presentes do Friendly Trader). Build limpo; runtime pendente. |
 | Missão 4 — New Bark (Kartana + Guzzlord + Nihilego, Lusamine) | **Esqueleto implementado (20/09/2026):** conforme [`.claude/NEWBARK_ULTRABEAST_IMPLEMENTATION.md`](NEWBARK_ULTRABEAST_IMPLEMENTATION.md) (§12 registra o feedback da implementação e **vence o resto daquele doc** onde os dois divergem). Implementada **inteira, sem cortes**, nos nove arquivos previstos e sem alterar nenhuma decisão de estado. Continua a var nos estados 8→9→10, **encerra a cadeia de missões** e transformou o stub da M4 em Olivine no stub da **reunião**. Quarto degrau da escala (4 barras / Lv90 / x150 / moveset de dois eixos + item) e primeira cena do arco com **orçamento de objetos medido em código** (12/16). Build limpo; runtime pendente. |
 | Evento PRÉ-NECROZMA — reunião de Olivine (Looker, Anabel, Lusamine, Lillie + Ninetales, Gladion + Silvally, Kukui) | **Esqueleto implementado (20/09/2026):** conforme [`.claude/PRE_NECROZMA_ULTRABEAST_IMPLEMENTATION.md`](PRE_NECROZMA_ULTRABEAST_IMPLEMENTATION.md) (§12 registra o feedback da implementação e **vence o resto daquele doc** onde os dois divergem). Implementada **inteira, sem cortes**, nos cinco arquivos previstos e sem alterar nenhuma decisão de estado. Continua a var nos estados 10→11→12, **substituiu o stub da reunião** que a M4 deixou em Olivine e termina ligando `FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED` — a primeira flag do arco que **nunca é limpa** e o primeiro handoff por flag entre dois documentos. Primeiro evento do arco **sem batalha nenhuma**: o papel do retry cabe ao estado 11, e a única checagem de time do arco (Solgaleo **ou** Lunala, só na equipe) pode falhar indefinidamente sem custo. Oito objetos numa sala de 11x7 (10/16 de orçamento). Build limpo; runtime pendente. Navio, altar, duelo da Lusamine e Ultra Necrozma **não** são escopo dele. |
@@ -89,8 +93,8 @@ Nos encontros de campanha e nas cenas narrativas em que estão presentes, os par
 2. Antes de entrar na Victory Road, reencontrar Gladion. Ele apresenta Silvally e ocorre uma batalha obrigatória que avança tanto em vitória quanto em derrota, sem blackout.
 3. Concluir Victory Road e a Liga normalmente, sem ruptura de Ultra Beast obrigatória antes da E4.
 4. Looker e Anabel moram em Olivine (`OlivineCity_House1`) desde o começo do jogo, com um diálogo discreto de "férias". No pós-game, depois do Hall of Fame, ao sair de casa em New Bark o jogador recebe a ligação do Elm e, logo em seguida, a de Looker, pedindo a ajuda do novo Campeão de Johto e chamando-o a Olivine.
-5. Na casa de Olivine, Looker e Anabel apresentam a investigação e enviam o jogador a Blackthorn.
-6. **Missão 1 — Blackthorn:** primeira ruptura explícita; Buzzwole e Pheromosa surgem juntos, com Gladion/Silvally, Looker e Anabel presentes e a cidade evacuada. O jogador escolhe qual enfrenta numa boss battle; Gladion e Silvally ficam com a outra. A partir daqui derrotas contra ameaças usam blackout/retry. O fim da missão manda o jogador de volta a Olivine.
+5. Na casa de Olivine, Looker e Anabel apresentam a investigação e enviam o jogador a Blackthorn, onde a Líder de Ginásio Clair relatou “um Pokémon feito de luz” e segura a criatura sozinha. **Ninguém menciona o Gladion** (V19).
+6. **Missão 1 — Blackthorn:** a Clair já enfrenta o Necrozma na rua com o Kingdra, sem efeito. O Necrozma abre a primeira ruptura explícita; Buzzwole e Pheromosa atravessam e partem para cima do jogador; Gladion e Silvally chegam no último instante. O jogador escolhe qual enfrenta numa boss battle; Gladion e Silvally ficam com a outra. Depois da vitória, o Necrozma absorve as duas e some. A partir daqui derrotas contra ameaças usam blackout/retry. O fim da missão manda o jogador de volta a Olivine **sem dizer para onde vai a próxima** (V19).
 7. Concluir as Missões 2–4 (§6), retornando ao escritório após cada uma. Após as quatro missões, apresentar Solgaleo **ou** Lunala a Looker para liberar a reunião e o navio.
 8. Viajar ao altar com o parceiro evoluído do Mystery Egg para abrir a passagem até Necrozma.
 9. Encenar o clímax conhecido como Eclipse no mesmo altar, resolver o conflito com Lusamine e enfrentar Ultra Necrozma.
@@ -147,7 +151,7 @@ Gladion continua sendo um treinador experiente. Seu objetivo nesta viagem é dar
 | Violet, antes da entrega do ovo | Type: Null | Está se acostumando a Gladion e a batalhar contra outros treinadores; o resultado não bloqueia a entrega. |
 | Cianwood, entrega de Fly após Chuck | Type: Null | Explora a praia e toma a iniciativa de partir; a batalha obrigatória mostra a parceria em crescimento. |
 | Antes da Victory Road | Silvally | A evolução é revelada. Silvally já toma a iniciativa, materializando o progresso construído desde Violet. |
-| Blackthorn, dupla pós-game contra as Ultra Beasts | Silvally | O parceiro já evoluído coopera com o jogador; a relação consolidada aparece sob pressão real. |
+| Blackthorn, Missão 1 pós-game | Silvally | Chega sem aviso e salta entre o jogador e as Ultra Beasts; a relação consolidada aparece sob pressão real. Gladion entrega ao jogador o Type: Null que encontrou. |
 | Missões pós-E4 | Silvally | Mantém a evolução e a relação consolidada. |
 
 A evolução acontece na jornada de Gladion entre Cianwood e a Victory Road. Não depende de vencer o jogador em nenhuma batalha anterior. A primeira apresentação explícita de Silvally ocorre no encontro anterior à Victory Road; portanto, Blackthorn já usa Silvally. Não exige uma cutscene de evolução ou nova flag: as equipes de cada encontro podem representar os estágios previstos. Níveis, golpes, itens, demais membros e Memórias ainda precisam de balanceamento.
@@ -157,7 +161,7 @@ A evolução acontece na jornada de Gladion entre Cianwood e a Victory Road. Nã
 1. Em Violet, depois de mencionar Lillie e antes do desafio, Gladion apresenta brevemente Type: Null. Após qualquer resultado válido da batalha, reconhece algo observado e entrega o ovo.
 2. Em Cianwood, o diálogo sobre Johto e Lillie mostra Gladion vivendo sua própria viagem; a batalha acontece sem menu de recusa e Type: Null sai na frente na despedida.
 3. Antes da Victory Road, Gladion apresenta Silvally antes da luta. A evolução precisa ser vista mesmo se o jogador perder; não depende de resultado anterior.
-4. Em Blackthorn, já no pós-game, uma instrução curta mostra a parceria consolidada entre Gladion e Silvally, sem repetir a história do abandono.
+4. Em Blackthorn, já no pós-game, Gladion e Silvally chegam de surpresa e cortam o ataque; uma instrução curta mostra a parceria consolidada. A história do abandono volta **uma vez**, para explicar o Type: Null que ele entrega ao jogador — sobre o bicho novo, não sobre o Silvally.
 
 **Falas originais propostas em inglês:**
 
@@ -171,7 +175,9 @@ A evolução acontece na jornada de Gladion entre Cianwood e a Victory Road. Nã
 >
 > Blackthorn: “Silvally, stay with me. We'll cover them.”
 
-Não repetir a mesma explicação em todos os encontros. A evolução deve ser percebida nas atitudes de ambos. Esse parceiro permanece com Gladion; esta decisão não autoriza um presente de Type: Null ao jogador.
+Não repetir a mesma explicação em todos os encontros. A evolução deve ser percebida nas atitudes de ambos. Esse parceiro permanece com Gladion.
+
+**Presente de Type: Null (V19, decisão do autor, substitui a proibição anterior).** Ao fim da Missão 1, em Blackthorn, Gladion entrega ao jogador **outro** Type: Null — um terceiro indivíduo, que ele encontrou sozinho nas montanhas depois da Route 45, abandonado como o dele. O bicho não se acomoda com ele (“vive tentando ser a sombra do Silvally”), assistiu o jogador lutar e “já decidiu”. A fala de despedida devolve ao jogador a lição do arco do próprio Gladion: *não decida tudo por ele; deixe que ele dê o primeiro passo*. Como toda entrega de Pokémon (skill `entregar-pokemon-ou-ovo`), a checagem de espaço vem **antes** da oferta: com equipe **e** PC cheios o Looker não aceita o SIM (“regra da Anabel: sempre espaço para mais um Pokémon — se uma fenda deixar alguém para trás, ele precisa ter para onde ir”). Nível 50 no esqueleto; quem abandonou este Type: Null continua em aberto.
 
 ### Kukui
 
@@ -292,7 +298,7 @@ Ele faz perguntas antes de concluir, confere testemunhos e separa pistas de hip�
 
 **Com Anabel:** respeita sua liderança e experiência; ela orienta a operação, enquanto ele conduz entrevistas, acompanha ocorrências e recebe relatórios. A centralidade do escritório de Looker na interface não o transforma automaticamente no chefe dela. Sua preocupação pode aparecer num pedido discreto de descanso; não deve retirar a autonomia de Anabel.
 
-**Em Blackthorn:** ajuda a afastar moradores, observa a ruptura e orienta o retorno enquanto jogador e Gladion combatem. Participar de todas as quests não exige dar-lhe uma batalha ou equipe nova. **No escritório:** reconhece uma informação específica de cada missão, em vez de repetir apenas que surgiu outra ocorrência. **No altar:** informa o que foi confirmado sobre a passagem e admite o que ainda é incerto. **No loop:** mantém falas breves para partidas repetidas, com interesse pelo retorno da equipe.
+**Em Blackthorn:** chega depois da Clair, que já evacuou a cidade; recebe o jogador no Centro, impõe a regra da Anabel (espaço para mais um Pokémon), observa a ruptura e, terminada a luta, pergunta primeiro se alguém se feriu. Não nomeia a criatura: ninguém em Johto a conhece. Participar de todas as quests não exige dar-lhe uma batalha ou equipe nova. **No escritório:** reconhece uma informação específica de cada missão, em vez de repetir apenas que surgiu outra ocorrência. **No altar:** informa o que foi confirmado sobre a passagem e admite o que ainda é incerto. **No loop:** mantém falas breves para partidas repetidas, com interesse pelo retorno da equipe.
 
 **Referências ao longo dos jogos:** a base de Looker inclui sua trajetória na série principal, não apenas Alola. A tabela distingue acontecimentos pesquisados de aplicações propostas para Johto. [Histórico por jogo](https://bulbapedia.bulbagarden.net/wiki/Looker#In_the_core_series_games) e [registro dos diálogos](https://bulbapedia.bulbagarden.net/wiki/Looker/Quotes).
 
@@ -366,13 +372,13 @@ Looker participa de todas as quests. Anabel ajuda a estabelecer objetivos e cond
 | Gladion em Cianwood | Entrega existente de Fly, após Chuck | Conversa sobre Johto/Lillie, batalha obrigatória e Fly em vitória ou derrota; Type: Null sai na frente. |
 | Lillie no Dragon’s Den | Depois de derrotar Clair, durante o teste de perguntas | Lillie acompanha as cinco perguntas vanilla, reage às escolhas do jogador e responde por si mesma; o Elder encerra com uma demonstração prática. Vitória ou derrota concluem sem blackout. |
 | Gladion antes da Victory Road | Imediatamente antes do acesso à Victory Road | Primeira apresentação de Silvally; batalha obrigatória, sem menu de recusa, com continuidade em vitória ou derrota. Gladion não é gate de acesso. |
-| Blackthorn — Missão 1 | Pós-game: ligação do Looker ao sair de casa após o HoF → briefing em Olivine | Primeira ruptura explícita: Buzzwole + Pheromosa ao mesmo tempo, com Gladion/Silvally, Looker e Anabel na cidade evacuada; o jogador escolhe qual enfrenta (boss battle) e Gladion fica com a outra; derrota é falha real com blackout/retry. Termina com gancho de volta a Olivine. |
+| Blackthorn — Missão 1 | Pós-game: ligação do Looker ao sair de casa após o HoF → briefing em Olivine | Clair contra Necrozma na cidade evacuada, portas trancadas; o Necrozma abre a ruptura e Buzzwole + Pheromosa atacam o jogador; Gladion/Silvally chegam de surpresa; o jogador escolhe qual enfrenta (boss battle) e Gladion fica com a outra; derrota é falha real com blackout/retry. O Necrozma absorve as duas; Gladion entrega um Type: Null. Gancho de volta a Olivine, sem destino. |
 
 A ordem pré-Liga fica: **Route 30 → Violet → Goldenrod → Cianwood → Dragon’s Den → Gladion antes da Victory Road → Victory Road → Liga**. A ordem lista apenas os encontros desta questline, não todos os eventos vanilla entre eles. Não existe mais batalha opcional de Gladion na entrada da Liga.
 
 Depois da E4: **ligação do Looker → escritório de Olivine → Missão 1 (Blackthorn) → Olivine → Missões 2, 3 e 4 com retorno a Olivine após cada → reunião/altar → Lusamine → Ultra Necrozma**.
 
-**Diretriz para Blackthorn:** o incidente abre a trama pós-game e é o primeiro confronto em que derrota deixa de ser apenas um resultado de personagem. No V14 ele é a Missão 1 e não deve oferecer captura antecipada de Buzzwole ou Pheromosa: a implementação bloqueia a captura (`B_FLAG_NO_CATCHING`). **Formato da batalha (V14, revisão 2):** o jogador escolhe Buzzwole ou Pheromosa e enfrenta a escolhida numa **boss battle simples** pelo sistema de boss do projeto (`setbossbattle`, várias barras de HP, IA inteligente); Gladion e Silvally enfrentam a outra, de forma narrativa. "Run" num boss é desistência e dá blackout, como a derrota. Motivo técnico, verificado em 19/09/2026: o boss só existe em batalha simples, e batalha selvagem com parceiro só existe via NPC follower (desligado).
+**Diretriz para Blackthorn (atualizada na V19 — história em §6, regras comuns, e no doc da M1 §5–§7):** o incidente abre a trama pós-game e é o primeiro confronto em que derrota deixa de ser apenas um resultado de personagem. No V14 ele é a Missão 1 e não deve oferecer captura antecipada de Buzzwole ou Pheromosa: a implementação bloqueia a captura (`B_FLAG_NO_CATCHING`). **Formato da batalha (V14, revisão 2):** o jogador escolhe Buzzwole ou Pheromosa e enfrenta a escolhida numa **boss battle simples** pelo sistema de boss do projeto (`setbossbattle`, várias barras de HP, IA inteligente); Gladion e Silvally enfrentam a outra, de forma narrativa. "Run" num boss é desistência e dá blackout, como a derrota. Motivo técnico, verificado em 19/09/2026: o boss só existe em batalha simples, e batalha selvagem com parceiro só existe via NPC follower (desligado).
 
 ### Política de resultados por encontro
 
@@ -1114,6 +1120,39 @@ O padrão técnico desejado é: **battle occurred → save result → dialogue b
 
 Checar capacidade antes de presentes, confirmar entregas antes de esconder NPCs e nunca confiar em temporários para persistência após reload. Não apagar recebimentos concluídos, duplicar presentes nem bloquear saídas. O alvo continua New Game, sem migração de saves antigos.
 
+### 4.11. Reações à família Cosmog nos encontros pré-Liga (V19)
+
+Pedido do autor: quem traz o Pokémon do Mystery Egg na equipe recebe um momento
+de Sun & Moon. Lillie e Gladion conhecem Cosmog de Alola — a Lillie viajou com o
+**Nebby**, e o Gladion o viu metê-la em confusão e tirá-la dela. Ver um Cosmog em
+Johto é, para os dois, uma lembrança.
+
+Regras:
+
+- **Opcional e sem estado.** Nenhuma flag, nenhuma var. Sem a família na equipe,
+  a cena corre exatamente como antes.
+- Detecção pelo special `CheckMysteryEggPokemon` (`src/braille_puzzles.c`), o
+  mesmo da Eviolite do Elm: percorre a equipe inteira, ignora ovos, devolve a
+  primeira espécie da família. Três falas por encontro: Cosmog, Cosmoem e
+  Solgaleo/Lunala (nome pelo `{STR_VAR_1}`).
+- O parceiro fora da Poké Ball reage primeiro (“!”) — é o Pokémon que percebe.
+- **O Cosmog do jogador não é o Nebby** (§3.1). A Lillie **lembra** do Nebby; nunca
+  chama o Pokémon do jogador por esse nome.
+- **O Gladion não sabia o que havia no ovo** (§3.3): em Cianwood, a primeira vez
+  que vê o Pokémon chocado, ele descobre ali (“então era isso que tinha no ovo”).
+
+| Encontro | Arquivo | Onde entra | Quem reage | O que diz |
+|---|---|---|---|---|
+| Lillie inicial, Route 30 | — | **não se aplica** | — | O ovo ainda não existe. |
+| Gladion, Violet | — | **não se aplica** | — | É ele quem entrega o ovo; não há Cosmog chocado. |
+| Lillie, Goldenrod | `GoldenrodCity_FlowerShop/scripts.pory` | depois da fala sobre o Type: Null do irmão | Lillie | Cosmog: lembra do Nebby, que nunca ficava na bolsa. Cosmoem: “o Nebby fez igual; não está doente, está crescendo”. Solgaleo/Lunala: “o Nebby virou um também; escolheu alguém corajoso”. |
+| Gladion, Cianwood | `CianwoodCity/scripts.inc` | depois de “Good morning”, antes do desafio | Type: Null, depois Gladion | Descobre o que havia no ovo; a Lillie teve um em Alola, que a meteu em mais confusão do que ele consegue contar — e a tirou de algumas. “Mantenha perto. Eles se perdem.” |
+| Lillie, Dragon's Den | `DragonsDen_Shrine/scripts.inc` | depois da batalha, antes da despedida | Ninetales, depois Lillie | Liga o Nebby ao teste do Elder: o Nebby observava e fazia o contrário do que ela pedia — confiando que ela o alcançaria. |
+| Gladion, Victory Road | `ReceptionGate/scripts.inc` | depois de “From here, it's you and your team” | Silvally, depois Gladion | Mede o Cosmog do jogador pelo crescimento do próprio parceiro: “o Type: Null também levou o tempo dele; não deixe a Liga apressá-lo”. |
+
+No pós-game, a mesma reação aparece na Missão 1 (Necrozma e o elenco, §6 regras
+comuns, doc da M1 §6.6).
+
 ## 5. Escritório em Olivine
 
 **Local definido (V14):** `OlivineCity_House1` — a casa da rua norte de Olivine mais próxima do Ginásio. O NPC da troca do Voltorb Hisuiano que ocupava a casa muda para `OlivineCity_House3`, posição (7,4), mantendo `FLAG_OLIVINE_NPC_TRADE_COMPLETED`.
@@ -1132,8 +1171,8 @@ Para deixar o pós-game mais dinâmico e menos maçante, as nove missões de uma
 
 | Ordem | Ultra Beasts | Cidade | Personagem em destaque, além de Looker | Estado do evento | Implementação |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Buzzwole + Pheromosa | Blackthorn | Gladion (+ Silvally); Anabel presente | **Esqueleto implementado** (19/09/2026), build limpo, runtime pendente | [`.claude/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md`](BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md) |
-| 2 | Xurkitree + Celesteela | Mahogany | Lillie (+ Ninetales); Anabel presente | **Esqueleto implementado** (19/09/2026), build limpo, runtime pendente | [`.claude/MAHOGANY_ULTRABEAST_IMPLEMENTATION.md`](MAHOGANY_ULTRABEAST_IMPLEMENTATION.md) |
+| 1 | Buzzwole + Pheromosa (+ Necrozma, que absorve as duas) | Blackthorn | Gladion (+ Silvally), de surpresa; **Clair** (+ Kingdra), Líder de Ginásio defendendo a cidade; Anabel presente | **História evoluída e validada em runtime** (22/09/2026, V19) | [`.claude/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md`](BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md) |
+| 2 | Xurkitree + Celesteela (+ Necrozma, que absorve as duas) | Mahogany | Lillie (+ Ninetales), descoberta ao chegar; **Pryce** (+ Mamoswine), Líder de Ginásio evacuando a cidade; Anabel presente | **História evoluída** (22/09/2026, V20), build limpo, runtime pendente | [`.claude/MAHOGANY_ULTRABEAST_IMPLEMENTATION.md`](MAHOGANY_ULTRABEAST_IMPLEMENTATION.md) |
 | 3 | Blacephalon + Stakataka | Cherrygrove | Kukui (sem parceiro fora da Poké Ball); Anabel presente | **Esqueleto implementado** (20/09/2026), build limpo, runtime pendente | [`.claude/CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md`](CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md) |
 | 4 | Kartana + Guzzlord + Nihilego | New Bark | Lusamine + Anabel (ficam com as duas UBs que o jogador não escolher); **Prof. Elm, a mãe do jogador e Gold/Crystal** em papéis sem batalha | **Esqueleto implementado** (20/09/2026), build limpo, runtime pendente | [`.claude/NEWBARK_ULTRABEAST_IMPLEMENTATION.md`](NEWBARK_ULTRABEAST_IMPLEMENTATION.md) |
 
@@ -1145,11 +1184,17 @@ Regras comuns a todas as missões:
 
 - **Escolha + boss (estrutura padrão, V14 revisão 2):** as UBs da missão surgem juntas; o jogador escolhe qual enfrenta e o acompanhante fica com a(s) outra(s). A luta do jogador é uma boss battle simples com captura bloqueada; a do acompanhante é narrativa e muda a fala depois da vitória. A escolha é refeita a cada tentativa. Isso deixa a história dinâmica e cada missão rejogável de outro jeito.
 - Batalha de ameaça: derrota ou desistência = blackout no Pokémon Center e retry, sem avançar o estado. O retry vem de manter o estado "missão ativa" até a vitória.
-- Durante a missão ativa, a cidade é evacuada: NPCs e Pokémon ambientes escondidos por uma flag de evento; ficam só o elenco da missão. Joy e o interior dos prédios continuam funcionando.
+- Durante a missão ativa, a cidade é evacuada: NPCs e Pokémon ambientes escondidos por uma flag de evento; ficam só o elenco da missão. **Portas trancadas (V19, sugestão do autor):** toda porta de prédio da cidade recusa o jogador (“trancada — ordens da Líder de Ginásio”), **menos a do Pokémon Center**, que precisa continuar aberta para cura e para o retorno do blackout. Mecanismo: tabela `sLockedTownDoors` em `src/field_control_avatar.c` (flag do evento, mapa, porta que fica aberta, script da fala); cada missão acrescenta **uma linha**. É o que impede o jogador de achar o Líder de Ginásio lá dentro enquanto ele luta na rua. Entradas de caverna (Dragon's Den, Ice Path, Valor Cavern) e gates de rota com porta não animada (o da Route 43 em Mahogany) não passam pela trava e continuam abertos — `MetatileBehavior_IsWarpDoor` só aceita a porta animada. **Implementado na M1 e na M2; M3–M4 pendentes.**
+- **Padrão do Necrozma (V19, decisão do autor — vale para todas as missões).** Toda missão tem o Necrozma em cena. As Ultra Beasts atravessam a ruptura **que ele abre**; ele não luta contra ninguém e nenhum golpe o afeta. Depois da vitória do jogador ele **absorve as Ultra Beasts da missão** — a derrotada e a do acompanhante — e vai embora pela mesma luz. Os personagens **reagem espantados** às ações dele, cada um na própria voz (na M1: Clair não acredita, Looker registra, Gladion diz o que viu — “ele se alimentou delas” —, Anabel diz que nenhum Ultra Beast age assim). **Ninguém o nomeia** até a reunião de Olivine/altar: para Johto é “a criatura feita de luz”; na M1 o Gladion só admite ter visto “uma luz assim, em Alola”, e corta o assunto. Na M2 ele **chega** na cena (não está parado na rua como na M1): a Lillie tinha visto "primeiro uma luz, depois a fenda" nas noites anteriores; Looker e Anabel o reconhecem de Blackthorn e a Anabel conclui que é ele quem abre as fendas; a Lillie **reconhece** a luz de Alola (continuidade USUM) e, como o Gladion, corta o assunto ("Later. I promise."). O padrão é o fio que liga as quatro missões ao clímax: o que ele leva em cada cidade explica por que o grupo precisa ir atrás dele. **Implementado na M1 e na M2; M3–M4 pendentes** (cada uma precisa de um objeto de Necrozma, do orçamento medido e de um ponto de absorção depois da batalha).
+- **Reação opcional à família Cosmog (V19).** Com Cosmog, Cosmoem, Solgaleo ou Lunala (não ovo) na equipe, o Necrozma reage: com Cosmog/Cosmoem ele encara a Poké Ball e o Pokémon treme; com Solgaleo/Lunala a luz se acende entre os dois e ele recua. Os NPCs comentam depois. É opcional: sem a família na equipe a cena corre sem nenhuma falta. Detecção pelo special `CheckMysteryEggPokemon`, checado **depois** da batalha (a batalha pode evoluir o Pokémon). Base para o clímax: é o parceiro do Mystery Egg que abre a passagem até o Necrozma (§8).
+- **Gancho sem destino (V19).** O fim de uma missão **não diz onde é a próxima**: “vamos continuar monitorando; volte a Olivine e a gente avisa quando acontecer”. O destino é revelado no briefing, ao voltar ao escritório. **M1 e M2 cumprem** (o briefing da M3 passou a abrir revelando Cherrygrove, em vez de "Cherrygrove at last"); o gancho da M3 ainda cita o próximo lugar e fica pendente.
+- **Acompanhante é surpresa (V19).** O briefing não anuncia quem vai estar no local. Na M1 o Looker não fala do Gladion; ele aparece no meio da cena. Na M2 a Lillie já está na cidade quando o jogador chega — a surpresa é **encontrá-la** (fala de espanto dela), e nem o briefing nem o "vá na frente" da Anabel a citam. M3 (Kukui nomeado no briefing) e M4 pendentes.
+- **Sinergia entre as Ultra Beasts (V20, pedido do autor — padrão dos próximos encontros).** As UBs de uma missão não são dois chefes soltos: existe uma **relação entre elas** que as torna mais perigosas juntas, e a cena a **mostra** (movimento + flash) antes de alguém explicá-la. A estratégia do grupo existe para quebrar essa relação, e é o acompanhante quem a enxerga. Na M2: Xurkitree drena a corrente, Celesteela a queima e devolve; na primeira vitória a parceira **revive** a derrotada; a Lillie entende e pede ao Pryce uma parede de gelo entre as duas ("ice doesn't carry current"), e só então a vitória é de verdade — a sinergia do grupo (Lillie + Pryce) vence a sinergia delas. A M3 já tinha uma relação parecida (Blacephalon se esconde atrás do Stakataka); ao evoluí-la, aplicar a regra por completo. Cada missão escolhe sua forma; não é obrigatório repetir as duas rodadas da M2.
+- **Líder de Ginásio local (M1, M2).** Onde a cidade tem Ginásio, o Líder é quem chamou a polícia, evacuou a cidade e **tenta** atingir o Necrozma sem efeito (Clair e Kingdra; Pryce e Mamoswine). É a "autoridade local que tenta e falha" da skill `evoluir-historia-de-evento`, e justifica a evacuação sem exposição.
 - A cena é 100% scriptada a partir da confirmação do jogador na primeira conversa com Looker.
 - Progresso em uma única var (`VAR_RIFT_MISSIONS_STATE`, numeração continua a partir do doc de Blackthorn). Cada missão ocupa **três valores**: briefing pendente → incidente ativo → resolvido. Missão 1 = 2/3/4, Missão 2 = 4/5/6, e assim por diante, com o valor "resolvido" de uma servindo de "briefing pendente" da seguinte.
 - Cada missão ganha **uma** flag persistente própria, só para esvaziar a cidade (o campo `flag` do `map.json` não lê var), com a invariante flag setada ⇔ var no valor "ativo". Flag de batalha (`FLAG_NO_CATCHING`) é compartilhada por todas.
-- **Dificuldade crescente (V15).** A Missão 1 é a mais fácil de propósito: é onde o jogador aprende que perder para uma Ultra Beast custa blackout. As missões seguintes sobem de patamar em barras de vida, nível, multiplicador de status, moveset curado e item segurado. Referência fixada: M1 = 2 barras / Lv70 / x110 / golpes de nível; M2 = 4 barras / Lv80 / x130 / moveset curado + item; **M3 = 4 barras / Lv85 / x140 / moveset curado com um golpe de controle por chefe + item**; **M4 = 4 barras / Lv90 / x150 / moveset de dois eixos (preparo + controle) + item**. A partir da M2 as barras estão no teto da engine (`MAX_BOSS_HEALTH_BARS 4`), então a escalada passa a vir de nível, multiplicador e **qualidade do moveset** — não de mais barras.
+- **Dificuldade crescente (V15).** A Missão 1 continua sendo a mais fácil da escala, mesmo depois de endurecida na V19: é onde o jogador aprende que perder para uma Ultra Beast custa blackout. As missões seguintes sobem de patamar em barras de vida, nível, multiplicador de status, moveset curado e item segurado. Referência fixada: M1 = **3 barras / Lv75 / x120 / moveset curado + item** (V19: o autor pediu uma luta mais difícil; antes era 2 barras / Lv70 / x110 / golpes de nível); M2 = 4 barras / Lv80 / x130 / moveset curado + item (**V20:** precedida de uma rodada curta de 2 barras contra a mesma UB, com cura da Anabel entre as duas — a rodada 2 é quem carrega o número da escala); **M3 = 4 barras / Lv85 / x140 / moveset curado com um golpe de controle por chefe + item**; **M4 = 4 barras / Lv90 / x150 / moveset de dois eixos (preparo + controle) + item**. A partir da M2 as barras estão no teto da engine (`MAX_BOSS_HEALTH_BARS 4`), então a escalada passa a vir de nível, multiplicador e **qualidade do moveset** — não de mais barras.
 
 
   **Ressalva da V17.** x140 (M3) nunca foi jogado, e o doc da M3 o registra como possível parede. O x150 da M4 é portanto um **alvo condicional**: se o runtime da M3 mostrar que x140 já é parede, a M4 herda o número corrigido em vez de continuar subindo. Nenhuma missão se balanceia por cima de um número não testado abaixo dela.
@@ -1186,17 +1231,56 @@ Os acompanhantes indicam participação narrativa. Não se deve presumir que tod
 
 Decidido na V15; implementação detalhada em [`.claude/MAHOGANY_ULTRABEAST_IMPLEMENTATION.md`](MAHOGANY_ULTRABEAST_IMPLEMENTATION.md).
 
-**Ocorrência.** Mahogany Town está sem energia há três noites. O gancho de Blackthorn aponta para "luzes estranhas sobre o Lake of Rage"; o briefing de Olivine **corrige** a origem: a leitura vem da própria cidade. Essa correção é obra da Lillie, que chegou antes da polícia e passou dois dias observando.
+**Ocorrência.** Mahogany Town está sem energia há três noites. O briefing (V20)
+revela a cidade, o apagão e a ligação do Pryce ("Lights out. Come now.") — e
+mais nada: nem a Lillie, nem a evacuação, nem a criatura de Blackthorn ("no sign
+of the light from Blackthorn. Not yet." é a promessa que a cena quebra).
 
-**Elenco e função.** Looker conduz e recebe o relatório; Anabel cuida da evacuação (os moradores estão no porão do Ginásio) e confirma pelos instrumentos o que Lillie deduziu observando; Lillie é a autoridade técnica da cena. Alolan Ninetales está fora da Poké Ball ao lado dela do começo ao fim, conforme §3.2.
+**Elenco e função (V20).**
+- **Lillie** (+ Alolan Ninetales, §3.2) chegou dois dias antes de todos e não
+  saiu. O jogador **a descobre** ao chegar. É a autoridade técnica da cena.
+- **Pryce** (+ Mamoswine), Líder de Ginásio: levou cada família para o próprio
+  Ginásio e está terminando isso quando a cena começa; é ele quem diz que
+  evacuou. Tenta atingir o Necrozma (Blizzard, sem efeito), empresta o gelo para o
+  plano da Lillie e, no fim, volta para o Ginásio para dizer ao povo que acabou.
+  Voz: seco, paciente, fala em inverno ("I've stood in the cold for fifty years").
+- **Looker** conduz, apresenta a Lillie ao jogador com humor, duvida da conclusão
+  dela e, terminada a luta, pergunta primeiro se alguém se feriu.
+- **Anabel** confirma a leitura pelos instrumentos, conclui que o Necrozma é quem
+  abre as fendas e **cura o time do jogador** entre as duas rodadas.
 
-**O que Lillie revela.** As duas Ultra Beasts não estão caçando: estão se alimentando uma da outra. Xurkitree drena a corrente da cidade, Celesteela queima essa energia e recarrega o ambiente. Atacar as duas juntas as fortalece; a única saída é **separá-las e segurá-las apartadas** — que é exatamente a estrutura padrão escolha + boss. Looker duvida da conclusão ("isso é muita coisa a concluir de anotações"), Lillie **sustenta a posição** com o que mediu, e Anabel a confirma. É a cena que entrega o tema da missão definido em §3.2: observar antes de agir, explicar a ideia ao grupo, sustentá-la.
+**O que Lillie revela, e o que ela aprende.** Antes do SIM: duas UBs, mesma
+fenda, mesma hora; "primeiro uma luz, depois a fenda, depois elas"; uma drena a
+corrente, a outra a queima e devolve — um circuito fechado. O Looker duvida
+("muita coisa a concluir de um caderno"), ela **sustenta** com as noites de
+anotação, a Anabel confirma. O plano dela é **separá-las** (a escolha + boss). A
+cena prova que não basta: vencida, a UB do jogador é **revivida** pela parceira.
+A Lillie **admite o erro diante do grupo** e refaz o plano — o gelo não conduz
+corrente; Ninetales e o Mamoswine do Pryce erguem uma parede entre as duas — e a
+segunda vitória é de verdade. É o tema da missão (§3.2) levado um passo além:
+observar, explicar, sustentar **e corrigir**.
 
-**Anabel.** Uma única linha planta sua condição de Faller — ela sente a ruptura antes de os instrumentos se moverem e corta o assunto ("Never mind. Later."). A revelação completa continua reservada para a reunião antes do altar (§7, item 6). Não adiantar.
+**Anabel.** Uma única linha planta sua condição de Faller — ela sente a ruptura
+antes de os instrumentos se moverem e corta o assunto ("Never mind. Later.").
 
-**Chefes.** Primeira aplicação da escala crescente: 4 barras (teto da engine), nível 80, multiplicador de status 130, moveset curado de quatro golpes e item segurado — Xurkitree com Tail Glow + Magnet, Celesteela com cobertura física/especial + Leftovers. Captura bloqueada; derrota ou desistência = blackout no Centro de Mahogany e retry, com a escolha refeita.
+**Necrozma.** Chega na cena numa luz, é reconhecido por Looker e Anabel ("the
+creature from Blackthorn"), abre a fenda, ignora o Blizzard e, depois da segunda
+vitória, absorve as duas UBs. A Lillie o **reconhece** de Alola ("I know that
+light"; "It's feeding. The same way it did before.") e promete contar tudo
+"not in the middle of the street". Ninguém o nomeia.
 
-**Gancho.** A cidade recupera a luz; Anabel pede as anotações de Lillie; chega o relatório de **Cherrygrove**, com duas assinaturas e "um homem de jaleco que não sai da praia" — Kukui. Looker manda o jogador de volta ao escritório de Olivine para o briefing da Missão 3. Lillie fica em campo e pede que avisem o Professor de que ela está bem.
+**Chefes.** Duas rodadas contra a UB escolhida: rodada 1 = 2 barras / Lv80 / x130;
+rodada 2 = 4 barras / Lv80 / x130 (o degrau da escala). Xurkitree com Tail Glow +
+Magnet, Celesteela com cobertura física/especial + Leftovers. Captura bloqueada
+nas duas; derrota ou desistência em qualquer uma = blackout no Centro de
+Mahogany e retry da cena inteira, com a escolha refeita.
+
+**Gancho (V20, sem destino).** As luzes voltam; o Pryce elogia a Lillie e entra
+no Ginásio; a Anabel pede as anotações dela; a Lillie fica mais uns dias "in case
+it comes back"; Looker: "Rest, then come back to our house in Olivine. The moment
+something opens, you will be the first to know." A Lillie agradece por terem
+ouvido os dois planos dela — "even the wrong one". Cherrygrove e Kukui só
+aparecem no briefing da M3.
 
 **O que a implementação da Missão 2 fixou (19/09/2026).** O esqueleto foi
 implementado inteiro, sem cortes, nos cinco arquivos previstos pelo plano e sem
@@ -1233,9 +1317,10 @@ Decidido na V16; implementação detalhada em [`.claude/CHERRYGROVE_ULTRABEAST_I
 
 **Ocorrência.** A ruptura de Cherrygrove não abre em terra: abre **sobre o mar**,
 na frente da praia noroeste, e vem se abrindo e fechando num ritmo há quatro
-dias. É por isso que o gancho da Missão 2 descreve Kukui como "um homem de jaleco
-que não sai da praia" — ele não sai porque a abertura é intermitente e alguém
-precisa estar olhando quando acontecer.
+dias. Kukui não sai da praia porque a abertura é intermitente e alguém precisa estar
+olhando quando acontecer. (Até a V19 o gancho da Missão 2 o descrevia como "um
+homem de jaleco que não sai da praia"; desde a V20 esse gancho não cita destino e
+quem apresenta Cherrygrove e o Kukui é o briefing da M3.)
 
 **Elenco e função.** Looker conduz e recebe o relatório; Anabel cuidou da
 evacuação (a cidade foi levada para o Ginásio de Violet) e confirma a leitura do
@@ -2036,3 +2121,101 @@ o último da lista pode ser `goto_if_ge`.
   reunião, e não guarda “qual dos dois”.
 - O presente do Friendly Trader de Cherrygrove continua sendo o ponto de maior
   risco de regressão silenciosa do projeto até ser testado.
+
+## 23. Registro da revisão V19
+
+Escopo: pós-E4 (Missão 1 e regras comuns das missões) e quatro encontros
+pré-Liga, só com falas opcionais. Política de duelos, altar, clímax e loop
+ficam **inalterados**. Feedback do autor sobre o esqueleto da M1: “o esqueleto
+está pronto, agora vamos montar uma história épica”.
+
+### O que muda na Missão 1
+
+- **História.** A Clair (+ Kingdra) já enfrenta o Necrozma na rua quando o
+  jogador chega; o golpe dela não o arranha. O Necrozma abre a ruptura,
+  Buzzwole e Pheromosa atravessam e **partem para cima do jogador**; o Silvally
+  salta entre eles no último segundo e o Gladion chega correndo pelo norte. O
+  resto da estrutura (escolha + boss, retry) não muda. Depois da vitória, o
+  Necrozma **absorve as duas** Ultra Beasts e some; o elenco reage espantado.
+- **Gladion é surpresa.** O briefing de Olivine não o menciona; ele fica
+  escondido até o resgate. Ninguém sabe quem ele é — o Looker pergunta.
+- **Clair participa** como Líder de Ginásio que protege a própria cidade: foi
+  ela quem chamou a polícia, evacuou a cidade e segurou a criatura sozinha.
+- **Portas trancadas** em vez de esconder a Clair do Ginásio (sugestão do
+  autor): mecanismo genérico em C, uma linha por missão (§6, regras comuns).
+- **Luta mais difícil:** 3 barras / Lv75 / x120 / moveset curado + item.
+  Buzzwole: Bulk Up, Drain Punch, Leech Life, Ice Punch, Leftovers. Pheromosa:
+  Quiver Dance, Bug Buzz, Focus Blast, Ice Beam, Life Orb. A escala continua
+  crescendo (M2 = 4 / Lv80 / x130).
+- **Presente de Type: Null** (§3, Gladion), com a checagem de espaço **antes do
+  SIM** do Looker.
+- **Reação opcional ao Cosmog** do Necrozma e do elenco.
+- **Gancho sem destino:** “volte a Olivine, a gente avisa”. O briefing da M2
+  deixou de citar o “Lake of Rage” do gancho antigo e agora é quem revela
+  Mahogany; ganhou uma linha de continuidade (“nenhum sinal da luz de
+  Blackthorn — ainda”).
+- **Falas finais** na ligação do Looker, no briefing da M1 e em toda a cena de
+  Blackthorn, pela voz do §3.1.
+
+### Regras novas para o arco inteiro
+
+Padrão do Necrozma, portas trancadas, gancho sem destino, acompanhante surpresa
+e reação à família Cosmog — todas em §6, regras comuns. **Só a M1 as cumpre
+hoje.** Aplicar nas M2–M4 é trabalho de evolução de cada uma e precisa
+reconferir o orçamento de objetos (o Necrozma é um objeto a mais).
+
+### O que continua em aberto
+
+- ~~Runtime: nada da V19 foi jogado.~~ **Validado pelo autor em 22/09/2026** (M1 e reações pré-Liga), sem correções. Antes do teste, Os pontos de maior risco estão no §11 do doc
+  da M1: o salto do Silvally, a caixa de texto sobre a Anabel, a dificuldade
+  nova e o fluxo de apelido do Type: Null no meio da cutscene.
+- A reunião de Olivine (PRÉ-NECROZMA) foi escrita antes de o elenco ter visto o
+  Necrozma; na evolução dela, o nome “Necrozma” deve chegar como resposta ao que
+  todos viram em Blackthorn, não como notícia.
+- A Clair pode continuar aparecendo no Dragon's Den durante o incidente (a
+  entrada é caverna, não porta). Não há flag que a esconda de lá sem mexer em
+  `FLAG_HIDE_DEN_CLAIR`; registrado como pendência no doc da M1.
+
+## 24. Registro da revisão V20
+
+Escopo: pós-E4, Missão 2 (Mahogany) e uma regra comum nova. Pré-Liga, política de
+duelos, altar, clímax e loop ficam **inalterados**. Feedback do autor sobre o
+esqueleto da M2: "o esqueleto está pronto, agora vamos montar uma história
+épica". A tabela *pedido → como ficou* está no doc da M2, §13.
+
+### O que muda na Missão 2
+
+- **Lillie é descoberta**, não anunciada: saiu do briefing e do "vá na frente"
+  da Anabel; ao ser encontrada, reage com espanto.
+- **Pryce evacua a cidade na tela** e é ele quem diz que evacuou; tenta atingir
+  o Necrozma (Blizzard, sem efeito) e, no fim, volta para o Ginásio.
+- **Portas trancadas** como em Blackthorn (Ginásio, Shop e House1); gate da Route
+  43 e Valor Cavern abertos (porta não animada).
+- **Necrozma em cena**: chega numa luz, abre a fenda, absorve as duas UBs no fim.
+  A Lillie o reconhece de Alola e corta o assunto.
+- **Duas rodadas seguidas contra a mesma UB.** Na primeira vitória a parceira a
+  revive pela sinergia; a Lillie admite o erro e refaz o plano com o gelo do
+  Pryce; a Anabel cura o time; a segunda vitória é de verdade. Rodada 1 = 2
+  barras; rodada 2 = 4 / Lv80 / x130.
+- **Reação opcional à família Cosmog** do Necrozma, da Lillie e do Pryce.
+- **Gancho sem destino.** O briefing da M3 deixou de dizer "Cherrygrove at last"
+  e passou a revelar o lugar.
+- Falas finais no briefing da M2 e em toda a cena de Mahogany.
+
+### Regras novas ou ampliadas para o arco
+
+- **Sinergia entre as Ultra Beasts** (§6, regras comuns): nova, padrão dos
+  próximos encontros. M2 cumpre; M3 tem uma relação parecida a desenvolver; M4
+  pendente.
+- **Líder de Ginásio local** (§6): registrado como padrão das M1 e M2.
+- Portas trancadas, padrão do Necrozma, gancho sem destino e acompanhante
+  surpresa: agora **M1 e M2** cumprem; M3 e M4 pendentes.
+
+### O que continua em aberto
+
+- **Runtime da M2 pendente.** Maiores riscos (doc da M2 §9 e §10): o equilíbrio
+  de duas rodadas de x130, a cura sob fade no meio da cutscene, as portas
+  animadas abrindo com a trava ativa, e o retry que refaz as duas rodadas.
+- A reunião de Olivine (PRÉ-NECROZMA) precisa, na evolução dela, cobrar as duas
+  promessas: o "Later" do Gladion (M1) e o "Later. I promise." da Lillie (M2). Os
+  dois irmãos reconheceram a luz; é ali que o nome chega.

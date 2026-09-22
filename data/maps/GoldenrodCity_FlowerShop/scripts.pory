@@ -337,6 +337,7 @@ GoldenrodCity_FlowerShop_EventScript_LillieScene::
 	msgbox GoldenrodCity_FlowerShop_Text_LillieGladionViolet, MSGBOX_DEFAULT
 	msgbox GoldenrodCity_FlowerShop_Text_LillieTypeNull, MSGBOX_DEFAULT
 	closemessage
+	call GoldenrodCity_FlowerShop_EventScript_CosmogComment
 
 	@ --- Why the SquirtBottle changes hands ---
 	msgbox GoldenrodCity_FlowerShop_Text_LillieHeadingNorth, MSGBOX_DEFAULT
@@ -688,6 +689,65 @@ GoldenrodCity_FlowerShop_Text_LilliePartingWords:
 .string "Mother.\p"
 .string "Tell me what happened when\n"
 .string "we meet again, won't you?$"
+
+@ Optional Sun & Moon callback: Lillie remembers Nebby.
+@ Reacts to the first non-egg Cosmog/Cosmoem/Solgaleo/Lunala in the party
+@ (CheckMysteryEggPokemon, the special Elm's Eviolite scene uses). Nothing
+@ else changes: no flag, no var; VAR_RESULT is free at every call site.
+GoldenrodCity_FlowerShop_EventScript_CosmogComment::
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
+	goto_if_eq VAR_RESULT, SPECIES_NONE, GoldenrodCity_FlowerShop_EventScript_CosmogCommentEnd
+	bufferspeciesname STR_VAR_1, VAR_RESULT
+	applymovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE, Common_Movement_ExclamationMark
+	waitmovement LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE
+	goto_if_eq VAR_RESULT, SPECIES_COSMOG, GoldenrodCity_FlowerShop_EventScript_CosmogCommentCosmog
+	goto_if_eq VAR_RESULT, SPECIES_COSMOEM, GoldenrodCity_FlowerShop_EventScript_CosmogCommentCosmoem
+	msgbox GoldenrodCity_FlowerShop_Text_CosmogLegend, MSGBOX_DEFAULT
+	closemessage
+	return
+
+GoldenrodCity_FlowerShop_EventScript_CosmogCommentCosmog::
+	msgbox GoldenrodCity_FlowerShop_Text_Cosmog, MSGBOX_DEFAULT
+	closemessage
+	return
+
+GoldenrodCity_FlowerShop_EventScript_CosmogCommentCosmoem::
+	msgbox GoldenrodCity_FlowerShop_Text_CosmogCosmoem, MSGBOX_DEFAULT
+	closemessage
+	return
+
+GoldenrodCity_FlowerShop_EventScript_CosmogCommentEnd::
+	return
+
+GoldenrodCity_FlowerShop_Text_Cosmog:
+	.string "Lillie: Oh…! {PLAYER}, is that…\n"
+	.string "May I see? A Cosmog!\p"
+	.string "I traveled with a Cosmog once,\n"
+	.string "in Alola. I called it Nebby.\p"
+	.string "It never stayed in my bag, no\n"
+	.string "matter how nicely I asked.\p"
+	.string "…Yours looks happy with you.\n"
+	.string "I'm glad.$"
+
+GoldenrodCity_FlowerShop_Text_CosmogCosmoem:
+	.string "Lillie: Is that… a Cosmoem?\p"
+	.string "It went quiet and hard as a\n"
+	.string "shell, didn't it?\p"
+	.string "Nebby did the same. Please\n"
+	.string "don't worry. It isn't sick.\p"
+	.string "It's growing. On the inside,\n"
+	.string "where no one can see.$"
+
+GoldenrodCity_FlowerShop_Text_CosmogLegend:
+	.string "Lillie: …A {STR_VAR_1}.\p"
+	.string "I never thought I would see\n"
+	.string "one again.\p"
+	.string "Nebby became one too, in\n"
+	.string "Alola. It chose someone brave.\p"
+	.string "It looks like yours did the\n"
+	.string "same.$"
+
+
 `
 
 script FlowerShopMulchVendor {

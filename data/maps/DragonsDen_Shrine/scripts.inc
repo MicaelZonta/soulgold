@@ -414,6 +414,7 @@ DragonsDen_Shrine_EventScript_LillieAfterBattle::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	msgbox DragonsDen_Shrine_Text_LillieIWill, MSGBOX_DEFAULT
 	closemessage
+	call DragonsDen_Shrine_EventScript_CosmogComment
 
 	@ --- Lillie and Ninetales leave together, before Clair arrives ---
 	@ Lillie: (7,9) down column 7 -> (7,16) -> warp (6,16).
@@ -1039,3 +1040,61 @@ DragonsDen_Shrine_Text_ClairsGrandfather:
     .string "Clair appears to have learned an\n"
     .string "invaluable lesson from you.\p"
     .string "I thank you as her grandfather.$"
+
+@ Optional Sun & Moon callback: Lillie ties Nebby to the Elder's test.
+@ Reacts to the first non-egg Cosmog/Cosmoem/Solgaleo/Lunala in the party
+@ (CheckMysteryEggPokemon, the special Elm's Eviolite scene uses). Nothing
+@ else changes: no flag, no var; VAR_RESULT is free at every call site.
+DragonsDen_Shrine_EventScript_CosmogComment::
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
+	goto_if_eq VAR_RESULT, SPECIES_NONE, DragonsDen_Shrine_EventScript_CosmogCommentEnd
+	bufferspeciesname STR_VAR_1, VAR_RESULT
+	applymovement LOCALID_DRAGONSDEN3_NINETALES, Common_Movement_ExclamationMark
+	waitmovement LOCALID_DRAGONSDEN3_NINETALES
+	goto_if_eq VAR_RESULT, SPECIES_COSMOG, DragonsDen_Shrine_EventScript_CosmogCommentCosmog
+	goto_if_eq VAR_RESULT, SPECIES_COSMOEM, DragonsDen_Shrine_EventScript_CosmogCommentCosmoem
+	msgbox DragonsDen_Shrine_Text_CosmogLegend, MSGBOX_DEFAULT
+	closemessage
+	return
+
+DragonsDen_Shrine_EventScript_CosmogCommentCosmog::
+	msgbox DragonsDen_Shrine_Text_Cosmog, MSGBOX_DEFAULT
+	closemessage
+	return
+
+DragonsDen_Shrine_EventScript_CosmogCommentCosmoem::
+	msgbox DragonsDen_Shrine_Text_CosmogCosmoem, MSGBOX_DEFAULT
+	closemessage
+	return
+
+DragonsDen_Shrine_EventScript_CosmogCommentEnd::
+	return
+
+DragonsDen_Shrine_Text_Cosmog:
+	.string "Lillie: {PLAYER}, before I go…\p"
+	.string "Your Cosmog watched the whole\n"
+	.string "test, didn't it?\p"
+	.string "Nebby used to do that. Watch\n"
+	.string "me carefully… and then do the\l"
+	.string "exact opposite of what I asked.\p"
+	.string "I think it was trusting me to\n"
+	.string "catch up.\p"
+	.string "The Elder might like that\n"
+	.string "answer, I think.$"
+
+DragonsDen_Shrine_Text_CosmogCosmoem:
+	.string "Lillie: Your Cosmoem hasn't\n"
+	.string "moved all day, has it?\p"
+	.string "Nebby was like that, right\n"
+	.string "before it changed. Everything\l"
+	.string "was happening on the inside.\p"
+	.string "Maybe that is what the Elder\n"
+	.string "meant by strength.$"
+
+DragonsDen_Shrine_Text_CosmogLegend:
+	.string "Lillie: Your {STR_VAR_1}…\p"
+	.string "Nebby grew up like that too.\n"
+	.string "All at once, when it mattered.\p"
+	.string "Ninetales and I are still\n"
+	.string "catching up with you two.$"
+
