@@ -308,6 +308,29 @@
 #define VAR_BATTLE_CAFE_ENDLESS_CHALLENGE_RECORD        0x411D
 #define VAR_BATTLE_CAFE_ENDLESS_RUSH_RECORD             0x411E
 #define VAR_MOM_FURFROU_EXP                             0x411F // Mom's Furfrou grooming experience, 0-9. See FURFROU_TRIM_COUNT.
+// Rift Missions questline progress (Looker/Anabel, Ultra Beasts). The story's
+// single source of truth; every mission continues this numbering.
+// 0 = before the first Hall of Fame (New Game default)
+// 1 = League cleared, Looker's call pending     (set by PokemonLeague_HallOfFame)
+// 2 = call received, go to Olivine              (set by NewBarkTown_EventScript_LookerCall)
+// 3 = briefed, Blackthorn incident ACTIVE       (set by OlivineCity_House1_EventScript_BriefingTalk)
+// 4 = Blackthorn resolved, mission 2 pending    (set by BlackthornCity_EventScript_UBResolved)
+// 5 = briefed, Mahogany incident ACTIVE         (set by OlivineCity_House1_EventScript_BriefingTalk)
+// 6 = Mahogany resolved, mission 3 pending      (set by Mahoganytown_EventScript_UBResolved)
+// 7 = briefed, Cherrygrove incident ACTIVE      (set by OlivineCity_House1_EventScript_BriefingTalk)
+// 8 = Cherrygrove resolved, mission 4 pending   (set by CherrygroveCity_EventScript_UBResolved)
+// 9 = briefed, New Bark incident ACTIVE         (set by OlivineCity_House1_EventScript_BriefingTalk)
+// 10 = four missions done, Olivine reunion pending (set by NewBarkTown_EventScript_UBResolved)
+// 11 = reunion held, Solgaleo/Lunala still missing (set by OlivineCity_House1_EventScript_ReunionNotYet)
+// 12 = reunion complete, altar expedition released (set by OlivineCity_House1_EventScript_ReunionConfirmed)
+// 13+ = reserved for the altar / Ultra Necrozma
+// The four mission flags are mutually exclusive, because the var holds one value:
+// Invariant: FLAG_EVENT_ULTRABEAST_BLACKTHORN  is set if and only if this == 3.
+// Invariant: FLAG_EVENT_ULTRABEAST_MAHOGANY    is set if and only if this == 5.
+// Invariant: FLAG_EVENT_ULTRABEAST_CHERRYGROVE is set if and only if this == 7.
+// Invariant: FLAG_EVENT_ULTRABEAST_NEWBARK     is set if and only if this == 9.
+// Invariant: FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED is set if and only if this >= 12.
+#define VAR_RIFT_MISSIONS_STATE                         0x4120
 
 #define VARS_END                                         0x42FF
 

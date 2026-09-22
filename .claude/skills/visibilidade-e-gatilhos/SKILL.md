@@ -1,6 +1,6 @@
 ---
 name: visibilidade-e-gatilhos
-description: Use ao fazer um NPC aparecer ou sumir conforme o progresso da historia (addobject, removeobject, campo flag do map.json) ou ao criar um gatilho automatico de mapa (MAP_SCRIPT_ON_FRAME_TABLE, map_script_2, ON_LOAD, ON_TRANSITION). Cobre por que removeobject sozinho nunca segura um NPC escondido, por que ele corrompe flags de terceiros, e o padrao de gatilho que trava o jogo.
+description: Use ao fazer um NPC aparecer ou sumir conforme o progresso da historia (addobject, removeobject, campo flag do map.json) ou ao criar um gatilho automatico de mapa (MAP_SCRIPT_ON_FRAME_TABLE, map_script_2, ON_LOAD, ON_TRANSITION). Cobre por que removeobject sozinho nunca segura um NPC escondido, por que ele corrompe flags de terceiros, o padrao de gatilho que trava o jogo, e como usar FLAG_TEMP_* como flag de ocultacao sem gastar flag persistente.
 ---
 
 # Visibilidade de NPC e gatilhos de mapa
@@ -154,9 +154,59 @@ grep -rn "FLAG_RECEIVED_HM_\|FLAG_DEFEATED_.*_GYM" include/constants/flags.h
 todos os ginásios/HMs. Flag nova só para o **cache de visibilidade** da
 seção 1, e no fim do bloco `CUSTOM_FLAGS`, atualizando `CUSTOM_FLAGS_END`.
 
+## 6. NPC preso a um único mapa: `FLAG_TEMP_*` como cache, sem flag nova
+
+Se o NPC só existe **num mapa** e **num valor de var** (ex.: Lillie no
+Shrine só quando `VAR_BLACKTHORN_CITY_STATE == 2`), o cache da seção 1 não
+precisa de flag persistente. Use uma `FLAG_TEMP_*` e recalcule no
+`ON_TRANSITION`:
+
+```
+DragonsDen_Shrine_OnTransition::
+	call_if_eq VAR_BLACKTHORN_CITY_STATE, 2, DragonsDen_Shrine_EventScript_ShowLillie
+	call_if_ne VAR_BLACKTHORN_CITY_STATE, 2, DragonsDen_Shrine_EventScript_HideLillie
+	end
+```
+
+(`ShowLillie` = `clearflag FLAG_TEMP_1`, `HideLillie` = `setflag FLAG_TEMP_1`;
+`"flag": "FLAG_TEMP_1"` nos objetos do `map.json`.)
+
+Por que é seguro:
+
+- `ClearTempFieldEventData()` (`src/event_data.c:60`) zera **todas** as
+  `FLAG_TEMP_*` e `VAR_TEMP_*` a cada carregamento de mapa. Isso acontece nas
+  duas rotas, warp e troca de mapa por borda (`LoadMapFromWarp` e
+  `LoadMapFromCameraTransition`, `src/overworld.c`), **antes** do
+  `RunOnTransitionMapScript()`. O seu `ON_TRANSITION` sempre parte do zero.
+- `ON_TRANSITION` roda antes do spawn (seção 3), então o `setflag` vale para
+  o primeiro spawn.
+- O `removeobject` da saída seta a própria `FLAG_TEMP_*` (seção 2), o que é
+  inofensivo porque a flag não significa nada fora desse mapa.
+
+Antes de escolher o número, confira que nenhum script do mapa ou script
+comum chamado nele usa a mesma temp:
+
+```bash
+grep -rn "FLAG_TEMP_<N>\b" data/maps/<Mapa>/ data/scripts/ src/*.c
+```
+
+(`FLAG_TEMP_2` é usada por `data/scripts/contest_hall.inc` e
+`interview.inc`.)
+
+Não serve quando o NPC aparece em **mais de um mapa** pelo mesmo estado, nem
+quando o estado precisa sobreviver a sair e voltar sem ser recalculado.
+Nesses casos use flag dedicada (seção 1).
+
+**Mesma ideia para marcas de "já mostrei esta fala nesta visita":** o
+script não tem operação bitwise (só `setvar`/`addvar`/`subvar`/`copyvar`),
+então não dá para montar bitmask num `VAR_TEMP_*`. Use uma `FLAG_TEMP_*`
+por marca, com `goto_if_set`/`setflag`. Exemplo: as seis reações rejeitadas
+do quiz em `DragonsDen_Shrine/scripts.inc` (`FLAG_TEMP_2..7`).
+
 ## Checklist
 
 - [ ] Todo NPC que precisa sumir por progresso tem `flag` própria no `map.json`
+      (ou uma `FLAG_TEMP_*` recalculada no `ON_TRANSITION`, se ele é de um mapa só — seção 6)
 - [ ] Essa flag é recalculada no `ON_LOAD` a partir das flags de progresso reais
 - [ ] Conferi a flag de cada objeto antes de `removeobject` nele
 - [ ] Nenhum `removeobject`/`addobject` em `ON_LOAD`/`ON_TRANSITION`

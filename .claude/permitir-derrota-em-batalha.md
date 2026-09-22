@@ -201,7 +201,7 @@ quem". O teste é sobre a cena, não sobre o personagem:
   não no caso de um falante só.
 
 Teste rápido antes de fechar o texto de uma cena com 2+ falantes (já é
-regra editorial em `.claude/SOULGOLD_RIFT_MISSIONS_DESIGN_V1.md`, seção
+regra editorial em `.claude/SOULGOLD_RIFT_MISSIONS_DESIGN.md`, seção
 3.3): tirando a identificação do falante, a escolha de palavras ainda dá
 pra saber quem fala? Se não, ou falta o prefixo, ou a fala está genérica
 demais.

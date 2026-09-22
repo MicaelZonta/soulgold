@@ -46,6 +46,20 @@ Três detalhes que não podem ser cortados:
 3. **Trate os 4 resultados** + um ramo de inesperado. `B_OUTCOME_DREW` e
    `B_OUTCOME_FORFEITED` acontecem de verdade.
 
+### O ramo inesperado depende de como a cena foi disparada
+
+Em nenhum caso o inesperado vira vitória. O que muda é se o script pode
+parar ali:
+
+| Gatilho da cena | Ramo inesperado | Exemplo |
+|---|---|---|
+| Falar com o NPC / `coord_event` | Pode curar, `releaseall`, `end` sem marcar progresso. O jogador tenta de novo | `GoldenrodCity_FlowerShop` |
+| `MAP_SCRIPT_ON_FRAME_TABLE` (`map_script_2`) | **Não pode parar.** A var da condição continua no valor que dispara a cena, então ela recomeça do zero no frame seguinte, com os NPCs onde a cena os deixou. Mostre uma fala neutra e **siga para a continuação comum** | `Route30_MrPokemonsHouse` |
+| Parte de uma cena atômica maior sob `lockall` | Idem: fala neutra e segue, para não deixar a cena pela metade | `DragonsDen_Shrine` |
+
+Motivo do caso `ON_FRAME`: `map_script_2` é reavaliado todo frame
+(skill `visibilidade-e-gatilhos` §4).
+
 ## Entregar item: `checkitemspace` antes, confirmar depois
 
 ```

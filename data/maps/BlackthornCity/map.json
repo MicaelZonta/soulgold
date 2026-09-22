@@ -36,7 +36,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BlackthornCity_EventScript_Youngster",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY",
@@ -49,7 +49,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BlackthornCity_EventScript_GymBoy",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
@@ -62,7 +62,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BlackthornCity_EventScript_Santos",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_COOLTRAINER_F",
@@ -75,7 +75,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BlackthornCity_EventScript_CoolTrainerF2",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BATTLE_GIRL",
@@ -88,7 +88,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BlackthornCity_EventScript_CoolTrainerF",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
@@ -101,7 +101,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BlackthornCity_EventScript_BlackBelt",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "local_id": "LOCALID_BLACKTHORN_SAGE",
@@ -115,7 +115,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BlackThornCity_EventScript_Sage",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(DRAGONAIR)",
@@ -128,7 +128,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(GRAVELER)",
@@ -141,7 +141,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(GRAVELER)",
@@ -154,7 +154,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(GLIGAR)",
@@ -167,7 +167,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(URSARING)",
@@ -180,7 +180,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(DONPHAN)",
@@ -193,7 +193,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(HORSEA)",
@@ -206,7 +206,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(HORSEA)",
@@ -219,7 +219,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -375,7 +375,91 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Blackthorn_EventScript_SuperRod",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_BLACKTHORN"
+    },
+    {
+      "local_id": "LOCALID_BLACKTHORN_UB_LOOKER",
+      "graphics_id": "OBJ_EVENT_GFX_LOOKER",
+      "x": 25,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BlackthornCity_EventScript_UBLooker",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_BLACKTHORN_UB_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "x": 26,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BlackthornCity_EventScript_UBAnabel",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_BLACKTHORN_UB_GLADION",
+      "graphics_id": "OBJ_EVENT_GFX_GLADION",
+      "x": 20,
+      "y": 49,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BlackthornCity_EventScript_UBGladion",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_BLACKTHORN_UB_SILVALLY",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SILVALLY)",
+      "x": 19,
+      "y": 49,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_BLACKTHORN_UB_BUZZWOLE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BUZZWOLE)",
+      "x": 16,
+      "y": 50,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
+    },
+    {
+      "local_id": "LOCALID_BLACKTHORN_UB_PHEROMOSA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PHEROMOSA)",
+      "x": 16,
+      "y": 49,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
     }
   ],
   "warp_events": [

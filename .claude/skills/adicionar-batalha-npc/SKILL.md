@@ -77,12 +77,37 @@ Renomeie o `TRAINER_UNUSED_*` daquele ID, **mantendo o número**.
 | Editou `src/data/trainers.h` e sumiu | É **gerado** e gitignored — a fonte é `trainers.party` |
 | Texto pós-batalha nunca aparece | Ele só roda ao **falar** com o treinador já derrotado — correto |
 | Treinador invisível | É sprite, não batalha → skill `adicionar-npc` |
+| **Build limpo, batalha estoura ao começar** | `Ability:` que a espécie não tem. O trainerproc aceita qualquer ability; quem valida é `CreateNPCTrainerPartyFromTrainer`, em runtime (`assertf(... "illegal ability %S for %S")`, `src/battle_main.c:2131`) |
+
+## Ability: conferir contra a espécie
+
+Antes de escrever `Ability: X`, confira que `ABILITY_X` está no `.abilities`
+da espécie **exata** (forma regional tem entrada própria):
+
+```bash
+grep -rn -A40 "\[SPECIES_<NOME>\] =" src/data/pokemon/species_info/ | grep -m1 "abilities"
+```
+
+## Dificuldade: só existe um conjunto de times
+
+`include/constants/difficulty.h` tem apenas `DIFFICULTY_NORMAL`.
+`DIFFICULTY_EASY` e `DIFFICULTY_HARD` são aliases dele ("the former Hard
+teams were promoted into this sole dataset"). Não procure party "Hard"
+separada: o bloco `=== TRAINER_X ===` em `trainers.party` é o time que o
+jogador enfrenta.
+
+Para calibrar um boss pelos níveis de outro:
+
+```bash
+awk -v t="=== TRAINER_CLAIR_1" 'index($0,t)==1{f=1;next} f&&/^=== /{exit} f&&/^Level:/{printf "%s ",$2}' src/data/trainers.party
+```
 
 ## Checklist
 
 - [ ] ID saiu do `ids_livres.py` (não de faixa decorada) e não é citado fora do `opponents.h`
 - [ ] `#define` em `opponents.h` **e** bloco em `trainers.party`
 - [ ] Todo mon tem `Level:`, `IVs:` e os 4 golpes explícitos
+- [ ] Toda `Ability:` conferida contra o `.abilities` da espécie
 - [ ] Linha em branco entre cabeçalho e mons
 - [ ] `trainer_type` e raio de visão setados no `map.json`
 - [ ] Sem `lock`/`faceplayer` antes do `trainerbattle`

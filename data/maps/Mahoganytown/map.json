@@ -41,7 +41,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MahoganyTown_EventScript_Gramps",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_MAHOGANY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
@@ -54,7 +54,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MahoganyTown_EventScript_Lass",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_MAHOGANY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BALDING_MAN",
@@ -67,7 +67,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MahoganyTown_EventScript_Merchant",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_MAHOGANY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
@@ -93,7 +93,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_MAHOGANY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(AIPOM)",
@@ -106,7 +106,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_MAHOGANY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(AIPOM)",
@@ -119,7 +119,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_MAHOGANY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(AIPOM)",
@@ -132,7 +132,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_MAHOGANY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(DELIBIRD)",
@@ -145,7 +145,91 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_MAHOGANY"
+    },
+    {
+      "local_id": "LOCALID_MAHOGANY_UB_NINETALES",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NINETALES_ALOLA)",
+      "x": 19,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_MAHOGANY_UB_LILLIE",
+      "graphics_id": "OBJ_EVENT_GFX_LILLIE",
+      "x": 20,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Mahoganytown_EventScript_UBLillie",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_MAHOGANY_UB_LOOKER",
+      "graphics_id": "OBJ_EVENT_GFX_LOOKER",
+      "x": 21,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Mahoganytown_EventScript_UBLooker",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_MAHOGANY_UB_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "x": 22,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Mahoganytown_EventScript_UBAnabel",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_MAHOGANY_UB_XURKITREE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(XURKITREE)",
+      "x": 13,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
+    },
+    {
+      "local_id": "LOCALID_MAHOGANY_UB_CELESTEELA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CELESTEELA)",
+      "x": 13,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
     }
   ],
   "warp_events": [

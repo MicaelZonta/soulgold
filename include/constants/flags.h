@@ -1758,7 +1758,52 @@
 // FLAG_DEFEATED_CIANWOOD_GYM/FLAG_RECEIVED_HM_FLY, which remain the actual
 // source of truth (see CianwoodCity_EventScript_ApplyGladionVisibility).
 #define FLAG_HIDE_CIANWOOD_GLADION                  0x103E
-#define CUSTOM_FLAGS_END                            FLAG_HIDE_CIANWOOD_GLADION
+// Set once the ReceptionGate Gladion/Silvally farewell scene has concluded,
+// whatever the battle outcome (see ReceptionGate_EventScript_GladionTrigger).
+// Also the template flag of both objects: they stand there until it is set.
+#define FLAG_GLADION_VICTORY_ROAD_DONE              0x103F
+// Rift Mission 1: the Blackthorn Ultra Beast incident is active. Set together
+// with VAR_RIFT_MISSIONS_STATE = 3 by OlivineCity_House1_EventScript_BriefingTalk,
+// cleared together with state 4 by BlackthornCity_EventScript_UBResolved. It only
+// exists because a map.json "flag" field cannot read a var: it is what empties
+// BlackthornCity of its residents. The var is the story's authority.
+#define FLAG_EVENT_ULTRABEAST_BLACKTHORN            0x1040
+// Battle flag for B_FLAG_NO_CATCHING (include/config/battle.h). Set immediately
+// before a wild/boss battle that must not be catchable; the engine clears it at
+// the end of every battle (Overworld_ResetBattleFlagsAndVars, src/overworld.c).
+// Never set outside of a battle setup. Shared by all Rift Missions.
+#define FLAG_NO_CATCHING                            0x1041
+// Rift Mission 2: the Mahogany Ultra Beast incident is active. Set together
+// with VAR_RIFT_MISSIONS_STATE = 5 by OlivineCity_House1_EventScript_BriefingTalk,
+// cleared together with state 6 by Mahoganytown_EventScript_UBResolved. It only
+// exists because a map.json "flag" field cannot read a var: it is what empties
+// Mahogany Town of its residents. The var is the story's authority.
+#define FLAG_EVENT_ULTRABEAST_MAHOGANY              0x1042
+// Rift Mission 3: the Cherrygrove Ultra Beast incident is active. Set together
+// with VAR_RIFT_MISSIONS_STATE = 7 by OlivineCity_House1_EventScript_BriefingTalk,
+// cleared together with state 8 by CherrygroveCity_EventScript_UBResolved. It only
+// exists because a map.json "flag" field cannot read a var: it is what empties
+// Cherrygrove City of its residents. The var is the story's authority.
+#define FLAG_EVENT_ULTRABEAST_CHERRYGROVE           0x1043
+// Rift Mission 4: the New Bark Ultra Beast incident is active. Set together
+// with VAR_RIFT_MISSIONS_STATE = 9 by OlivineCity_House1_EventScript_BriefingTalk,
+// cleared together with state 10 by NewBarkTown_EventScript_UBResolved. It only
+// exists because a map.json "flag" field cannot read a var: it is what empties
+// New Bark Town of its residents AND what takes Mom out of the house and Elm
+// out of the lab (their two interiors recompute a FLAG_TEMP_1 cache from it).
+// The var is the story's authority. This is the last mission of the arc: state
+// 10 opens no mission, it means "four done, the Olivine reunion pending".
+#define FLAG_EVENT_ULTRABEAST_NEWBARK               0x1044
+// Pre-Necrozma: the Olivine reunion is over, Solgaleo or Lunala was confirmed
+// in the party, and the expedition to the altar is released. Set together with
+// VAR_RIFT_MISSIONS_STATE = 12 by OlivineCity_House1_EventScript_ReunionConfirmed
+// and NEVER cleared - unlike the four mission flags, this one is a permanent
+// unlock. It exists because a map.json "flag" field cannot read a var: it is
+// what the altar document will use to light up the ship and the altar objects.
+// The var is still the story's authority.
+// Invariant: set if and only if VAR_RIFT_MISSIONS_STATE >= 12.
+#define FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED          0x1045
+#define CUSTOM_FLAGS_END                            FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED
 
 
 #define FLAG_0x1500                                 0x1500

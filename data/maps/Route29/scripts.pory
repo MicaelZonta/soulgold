@@ -154,19 +154,6 @@ Route29_EventScript_Sign::
 	release
 	end
 
-Route29_EventScript_Lusamine::
-	trainerbattle_single TRAINER_LUSAMINE, Route29_Text_LusamineSeen, Route29_Text_LusamineBeaten
-	msgbox Route29_Text_LusamineAfterBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route29_EventScript_Looker::
-	lock
-	faceplayer
-	msgbox Route29_Text_Looker, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
-
 Route29_Text_OldMan1:
 	.string "Pokémon hide in the grass.\n"
 	.string "Who knows when they'll pop out…$"
@@ -254,24 +241,6 @@ Route29_Text_Sign1:
 	.string "Route 29\p"
 	.string "Cherrygrove City - New Bark Town$"
 
-Route29_Text_LusamineSeen:
-	.string "Lusamine: …Interesting.\p"
-	.string "This world has so much more\n"
-	.string "to offer than I imagined.\p"
-	.string "Show me what your Pokémon\n"
-	.string "can do.$"
-
-Route29_Text_LusamineBeaten:
-	.string "Lusamine: My, how curious.$"
-
-Route29_Text_LusamineAfterBattle:
-	.string "Lusamine: …Interesting.$"
-
-Route29_Text_Looker:
-	.string "Looker: Hmm? Oh, pay no\n"
-	.string "attention to moi.\p"
-	.string "I am merely… keeping an eye\n"
-	.string "on this curious gathering.$"
 
 `
 

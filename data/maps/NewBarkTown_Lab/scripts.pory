@@ -5,7 +5,11 @@ NewBarkTown_Lab_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, NewBarkTown_Lab_OnFrame
 	.byte 0
 
+@ WARNING: the three lines below are goto_if_eq, NOT call_if_eq - whoever
+@ matches one never comes back here. Any new call must go ABOVE them or it
+@ silently stops running in those lab states. (Rift Mission 4, section 3.6.)
 NewBarkTown_Lab_OnTransition::
+	call NewBarkTown_Lab_ApplyElmVisibility                @ Rift Mission 4 - must stay first
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 6, NewBarkTown_Lab_EventScript_ElmAtComputer
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 2, NewBarkTown_Lab_EventScript_ElmAtComputer
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 3, NewBarkTown_Lab_EventScript_ElmAtComputer
@@ -14,6 +18,27 @@ NewBarkTown_Lab_OnTransition::
 NewBarkTown_Lab_OnFrame::
 	map_script_2 VAR_NEWBARKTOWN_LABSTATE, 4, NewBarkTown_Lab_EventScript_PoliceEpisode
 	.2byte 0
+
+@ Rift Mission 4 (.claude/NEWBARK_ULTRABEAST_IMPLEMENTATION.md, section 3.6).
+@ Professor Elm stands on the road outside during the New Bark incident, and
+@ the lab door is one warp from the scene, so he must not also be in here.
+@ LOCALID_ELM's map.json "flag" field used to be 0; it is now FLAG_TEMP_1, a
+@ dumb per-visit cache, and FLAG_EVENT_ULTRABEAST_NEWBARK stays the
+@ persistent truth. The two changes are a PAIR: the map.json without this
+@ script deletes Elm from the lab permanently.
+@   visible <=> no incident running
+@ Temps are zeroed on every map load, so the default is VISIBLE - the safe
+@ error. NEVER removeobject LOCALID_ELM.
+@ NewBarkTown_Lab_EventScript_ElmAtComputer below does setobjectxyperm on the
+@ same local id. That is position, not visibility, and the two do not fight:
+@ after the mission the template is re-read from map.json and Elm is back at
+@ (6,3) - or at (3,2) in the lab states that ask for it.
+NewBarkTown_Lab_ApplyElmVisibility::
+	clearflag FLAG_TEMP_1
+	goto_if_unset FLAG_EVENT_ULTRABEAST_NEWBARK, NewBarkTown_Lab_ElmStays
+	setflag FLAG_TEMP_1
+NewBarkTown_Lab_ElmStays::
+	return
 
 NewBarkTown_Lab_EventScript_ElmAtComputer::
 	setobjectxyperm LOCALID_ELM, 3, 2
@@ -447,6 +472,7 @@ NewBarkTown_Lab_EventScript_ElmMasterBall::
 	delay 60
 	msgbox NewBarkTown_Lab_Text_KimonoGirls, MSGBOX_DEFAULT
 	call NewBarkTown_Lab_GiveStarterMega
+	call NewBarkTown_Lab_EventScript_GiveMissedSurf
 	closemessage
 	setvar VAR_NEWBARKTOWN_LABSTATE, 8
 	setvar VAR_ECRUTEAK_CITY_THEATER, 4
@@ -459,10 +485,25 @@ NewBarkTown_Lab_EventScript_ElmMasterBall::
 NewBarkTown_Lab_EventScript_ElmKimono::
 	lock
 	faceplayer
+	call NewBarkTown_Lab_EventScript_GiveMissedSurf
 	msgbox NewBarkTown_Lab_Text_KimonoWaiting, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
+
+@ HM Surf normally comes from the man in the Ecruteak Dance Theater after
+@ the Rocket Grunt is beaten. The Master Ball scene above hides him
+@ (FLAG_HIDE_ECRUTEAK_CITY_THEATER_NPCS) and jumps the theater to state 4,
+@ so a player who skipped that arc would lose Surf for good. Elm hands it
+@ over instead. Also called from ElmKimono for saves already past the scene.
+NewBarkTown_Lab_EventScript_GiveMissedSurf::
+	goto_if_set FLAG_RECEIVED_HM_SURF, NewBarkTown_Lab_EventScript_GiveMissedSurfEnd
+	msgbox NewBarkTown_Lab_Text_ElmMissedSurf, MSGBOX_DEFAULT
+	giveitem ITEM_HM_SURF
+	goto_if_eq VAR_RESULT, FALSE, NewBarkTown_Lab_EventScript_GiveMissedSurfEnd
+	setflag FLAG_RECEIVED_HM_SURF
+NewBarkTown_Lab_EventScript_GiveMissedSurfEnd::
+	return
 
 NewBarkTown_Lab_EventScript_ElmLeague::
 	lock
@@ -984,6 +1025,11 @@ NewBarkTown_Lab_Text_KimonoGirls:
 	.string "things since that Egg got you\l"
 	.string "involved in all this...\p"
 	.string "I hope you'll carry through it.$"
+
+NewBarkTown_Lab_Text_ElmMissedSurf:
+	.string "Prof. Elm: Oh, and a gentleman\n"
+	.string "from the Dance Theater left this\l"
+	.string "here for you.$"
 
 NewBarkTown_Lab_Text_KimonoWaiting:
 	.string "Prof. Elm: The Kimono\n"

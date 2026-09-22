@@ -14182,3 +14182,78 @@ EVs: 252 HP / 4 Def / 252 SpA
 - Giga Drain
 - Calm Mind
 - Synthesis
+
+=== TRAINER_GLADION_VICTORY_ROAD ===
+Name: Gladion
+Class: Rival
+Pic: Gladion
+Gender: Male
+Music: Silver
+Double Battle: No
+AI: Smart Trainer
+
+Silvally @ Sitrus Berry
+Adamant Nature
+Level: 65
+Ability: RKS System
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 156 HP / 252 Atk / 100 Spe
+- Multi-Attack
+- Crunch
+- Ice Fang
+- Parting Shot
+
+Krookodile @ Muscle Band
+Jolly Nature
+Level: 64
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 252 Spe
+- Earthquake
+- Crunch
+- Rock Slide
+- Taunt
+
+Vikavolt @ Magnet
+Modest Nature
+Level: 63
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+- Thunderbolt
+- Bug Buzz
+- Energy Ball
+- Volt Switch
+
+Lycanroc Midday @ Focus Sash
+Jolly Nature
+Level: 63
+Ability: Tough Claws
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 252 Spe
+- Accelerock
+- Stone Edge
+- Close Combat
+- Stealth Rock
+
+Zoroark @ Expert Belt
+Timid Nature
+Level: 64
+Ability: Illusion
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Dark Pulse
+- Flamethrower
+- Grass Knot
+- U-turn
+
+Gastrodon West @ Leftovers
+Calm Nature
+Level: 64
+Ability: Storm Drain
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 Def / 252 SpD
+- Surf
+- Earth Power
+- Ice Beam
+- Recover

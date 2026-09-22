@@ -15,6 +15,28 @@ Se o NPC usa um gráfico existente (`OBJ_EVENT_GFX_YOUNGSTER`, `OBJ_EVENT_GFX_GL
 **pule tudo isto**: basta um `object_event` no `map.json` do mapa. Os 8 passos
 do pipeline só valem para um sprite que ainda não existe.
 
+Pokémon de overworld (`OBJ_EVENT_GFX_SPECIES(X)`) também não precisa deste
+pipeline: veja a skill `parceiro-pokemon-de-npc`.
+
+### Ao adicionar o objeto: mapa sem `local_id`
+
+O ID local de um objeto é a **posição dele (1-based) no array
+`object_events`**, tenha ou não campo `"local_id"`. Muitos mapas antigos não
+têm `"local_id"` nenhum. Nesses, o script fixa os números à mão:
+
+```
+.set LOCALID_DRAGONSDEN3_CLAIR, 4        @ data/maps/DragonsDen_Shrine/scripts.inc
+```
+
+e `include/constants/map_event_ids.h` não tem entrada para o mapa.
+
+Consequência: **objeto novo sempre no fim do array.** Inserir no meio
+renumera todos os seguintes, e os `.set` passam a apontar para o objeto
+errado. Build limpo, cena quebrada (no Shrine, a Clair deixaria de ser 4 e
+a cena do badge moveria outro NPC). Depois do build, confira a ordem no
+`data/maps/<Mapa>/events.inc` gerado: o primeiro número de cada
+`object_event` é o ID.
+
 ## A armadilha: `spritesheet_rules.mk`
 
 **Sintoma:** o NPC existe, colide, conversa — e é **totalmente invisível**.

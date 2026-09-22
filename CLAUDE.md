@@ -24,8 +24,15 @@ Ambos geram `Soulgold.gba`. O build regenera sozinho tudo que é derivado
 | NPC aparecer/sumir por progresso; gatilho automático de mapa | `visibilidade-e-gatilhos` |
 | NPC novo com sprite próprio (ou NPC invisível) | `adicionar-npc` |
 | Front pic / back pic / field mugshot | `adicionar-grafico-trainer` |
+| Tileset novo ou portado; mapa com desenho deslocado | `adicionar-tileset` |
+| Criar a arte/paletas de um tileset por código; peças do primário em outra cor; troca dia/noite | `montar-tileset` |
+| Protótipo de mapa (map.bin gerado, renders, NPCs) e a página de proposta | `prototipo-de-mapa` |
+| Bordas, árvores, montanha; revisar mapa; aprender com retoque do autor no Porymap | `acabamento-de-mapa` |
 | Treinador batalhável (ID, time, raio de visão) | `adicionar-batalha-npc` |
 | Batalha que continua mesmo se o jogador perder | `batalha-sem-blackout` |
+| NPC com o próprio Pokémon fora da Poké Ball ao lado dele | `parceiro-pokemon-de-npc` |
+| Script que entrega Pokémon ou ovo (`givemon`, `giveegg`) | `entregar-pokemon-ou-ovo` |
+| Evento em modo esqueleto (Rift Missions) e seu doc de implementação | `evento-esqueleto` |
 
 Todas cobrem armadilhas que **não dão erro de build** — compilam limpo e
 quebram no jogo: NPC invisível, NPC olhando pro lado errado, NPC

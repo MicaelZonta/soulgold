@@ -3,6 +3,10 @@
 // Whether a palette has a night version, located at ((x + 9) % 16).pal
 #define SWAP_PAL(x) ((x) < NUM_PALS_IN_PRIMARY ? 1 << (x) : 1 << ((x) - NUM_PALS_IN_PRIMARY))
 
+// Kept as a single identifier so Porymap's C parser can read the tileset struct
+// (it chokes on an expression in an initializer and then drops the whole tileset).
+#define SWAP_PALS_ALTAR_SUN_MOON (SWAP_PAL(7) | SWAP_PAL(9) | SWAP_PAL(10))
+
 const struct Tileset gTileset_General =
 {
     .isCompressed = TRUE,
@@ -2281,5 +2285,30 @@ const struct Tileset gTileset_underwater =
     .palettes = gTilesetPalettes_underwater,
     .metatiles = gMetatiles_underwater,
     .metatileAttributes = gMetatileAttributes_underwater,
+    .callback = NULL,
+};
+
+// Sun by day, moon at night: palettes 7, 9 and 10 blend with their night versions
+// (secondary palettes 00, 02, 03). Only works on maps where MapHasNaturalLight() is true.
+const struct Tileset gTileset_AltarSunMoon =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_AltarSunMoon,
+    .palettes = gTilesetPalettes_AltarSunMoon,
+    .metatiles = gMetatiles_AltarSunMoon,
+    .metatileAttributes = gMetatileAttributes_AltarSunMoon,
+    .callback = NULL,
+    .swapPalettes = SWAP_PALS_ALTAR_SUN_MOON,
+};
+
+const struct Tileset gTileset_UltraSpaceArena =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_UltraSpaceArena,
+    .palettes = gTilesetPalettes_UltraSpaceArena,
+    .metatiles = gMetatiles_UltraSpaceArena,
+    .metatileAttributes = gMetatileAttributes_UltraSpaceArena,
     .callback = NULL,
 };

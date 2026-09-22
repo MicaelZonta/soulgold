@@ -633,6 +633,11 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .secretPowerEffect = MOVE_EFFECT_DEF_MINUS_1,
         .camouflageType = TYPE_PSYCHIC,
         .camouflageBlend = DEFAULT_CAMOUFLAGE_BLEND,
+        // SoulGold: the rift and the two gold-rimmed stages of the UltraSpaceArena.
+        .entry = ENVIRONMENT_ENTRY(Building),
+        .background = ENVIRONMENT_BACKGROUND(UltraSpace),
+        .palette = gBattleEnvironmentPalette_UltraSpace,
+        .battleIntroSlide = PLAIN_BATTLE_INTRO_SLIDE,
     },
 };
 
@@ -651,5 +656,6 @@ static const struct {
     {MAP_BATTLE_SCENE_WILL,    BATTLE_ENVIRONMENT_WILL},
     {MAP_BATTLE_SCENE_KOGA,    BATTLE_ENVIRONMENT_KOGA},
     {MAP_BATTLE_SCENE_BRUNO,    BATTLE_ENVIRONMENT_BRUNO},
-    {MAP_BATTLE_SCENE_KAREN,    BATTLE_ENVIRONMENT_KAREN}
+    {MAP_BATTLE_SCENE_KAREN,    BATTLE_ENVIRONMENT_KAREN},
+    {MAP_BATTLE_SCENE_ULTRA_SPACE, BATTLE_ENVIRONMENT_ULTRA_SPACE},
 };

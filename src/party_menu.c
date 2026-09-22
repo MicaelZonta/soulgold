@@ -468,6 +468,7 @@ static void Task_ValidateChosenHalfParty(u8);
 static bool8 GetBattleEntryEligibility(struct Pokemon *);
 static bool8 IsFrontierSpeciesBanEnforcedForBattleEntry(void);
 static bool8 HasPartySlotAlreadyBeenSelected(u8);
+static bool8 HasUnselectedEligibleMon(void);
 static u8 GetBattleEntryLevelCap(void);
 static u8 GetMaxBattleEntries(void);
 static u8 GetMinBattleEntries(void);
@@ -4037,7 +4038,9 @@ static void CursorCb_Enter(u8 taskId)
             PlaySE(SE_SELECT);
             gSelectedOrderFromParty[i] = gPartyMenu.slotId + 1;
             DisplayPartyPokemonDescriptionText(i + PARTYBOX_DESC_FIRST, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
-            if (i == (maxBattlers - 1))
+            // Also jump to Confirm when nothing eligible is left to pick, e.g. a
+            // 3-mon multi battle with only 2 healthy mons (or 2 mons + an Egg).
+            if (i == (maxBattlers - 1) || !HasUnselectedEligibleMon())
                 MoveCursorToConfirm();
             DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
             gTasks[taskId].func = Task_HandleChooseMonInput;
@@ -4049,6 +4052,18 @@ static void CursorCb_Enter(u8 taskId)
     PlaySE(SE_FAILURE);
     DisplayPartyMenuMessage(gStringVar4, TRUE);
     gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+}
+
+static bool8 HasUnselectedEligibleMon(void)
+{
+    u8 slot;
+
+    for (slot = 0; slot < gPlayerPartyCount; slot++)
+    {
+        if (GetPartySlotEntryStatus(slot) == 0)
+            return TRUE;
+    }
+    return FALSE;
 }
 
 static void MoveCursorToConfirm(void)

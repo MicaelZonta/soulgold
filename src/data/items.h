@@ -15681,6 +15681,23 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_AuroraTicket,
     },
 
+    [ITEM_SUN_MOON_TICKET] =
+    {
+        .name = ITEM_NAME("Sun&Moon Ticket"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A ferry ticket from\n"
+            "Olivine to the Sun\n"
+            "and Moon Altar."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SunMoonTicket,
+        .iconPalette = gItemIconPalette_SunMoonTicket,
+    },
+
     [ITEM_OLD_SEA_MAP] =
     {
         .name = ITEM_NAME("Old Sea Map"),

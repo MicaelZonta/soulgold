@@ -13,6 +13,11 @@ EcruteakCity_Theater_MapScripts::
 	.byte 0
 
 EcruteakCity_Theater_OnTransition::
+	@ Prof. Elm jumps this var straight to 4 (Kimono Girls) whether or not the
+	@ Rocket arc (0 -> 1 -> 2 -> 3) was played. From 4 on the Grunt must be
+	@ gone, or beating him late rewinds the var to 2 and the Kimono Girls
+	@ event can never start.
+	call_if_ge VAR_ECRUTEAK_CITY_THEATER, 4, EcruteakCity_Theater_MapScript_CloseRocketArc
 	call_if_eq VAR_ECRUTEAK_CITY_THEATER, 1, EcruteakCity_Theater_MapScript_SetRocketSceneActive
 	call_if_eq VAR_ECRUTEAK_CITY_THEATER, 7, EcruteakCity_Theater_MapScript_SetKimonoMovement
 	goto_if_set FLAG_IS_CHAMPION, EcruteakTheater_ShowOrHideMeloetta
@@ -28,6 +33,10 @@ EcruteakTheater_ShowMeloetta::
 	return
 EcruteakTheater_HideMeloetta::
 	setflag FLAG_HIDE_MELOETTA
+	return
+
+EcruteakCity_Theater_MapScript_CloseRocketArc::
+	setflag FLAG_HIDE_ECRUTEAK_ROCKET
 	return
 
 EcruteakCity_Theater_MapScript_SetRocketSceneActive::
@@ -171,7 +180,9 @@ EcruteakCity_Theater_EventScript_Rocket::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	msgbox EcruteakCity_Theater_Text_KimonoRocket3, MSGBOX_DEFAULT
 	closemessage	
+	goto_if_ge VAR_ECRUTEAK_CITY_THEATER, 2, EcruteakCity_Theater_EventScript_RocketDone
 	setvar VAR_ECRUTEAK_CITY_THEATER, 2
+EcruteakCity_Theater_EventScript_RocketDone::
 	release
 	end
 	

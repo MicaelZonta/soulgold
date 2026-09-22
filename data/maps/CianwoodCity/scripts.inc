@@ -406,20 +406,14 @@ CianwoodCity_EventScript_GladionForfeit::
 	closemessage
 	goto CianwoodCity_EventScript_GladionDeliver
 
-@ Link-battle-shaped/unexpected outcome only: heal, restore music and
-@ controls, but do not deliver the item or mark the encounter concluded -
-@ mirrors GoldenrodCity_FlowerShop_EventScript_LillieUnexpectedOutcome.
-@ NPCs hidden for the scene (see CianwoodCity_EventScript_GladionAutoTrigger)
-@ still need to come back here, since FLAG_RECEIVED_HM_FLY stays unset and
-@ there is no later point that restores them for this bail-out path.
+@ Not a real outcome of a local trainer battle. Still concludes the event
+@ and delivers Fly (same policy as DragonsDen_Shrine and the Violet City
+@ Pokemon Center), so the player is never sent back to re-battle Gladion.
+@ GladionDeliver heals the party and restores the hidden NPCs at the end.
 CianwoodCity_EventScript_GladionUnexpectedOutcome::
 	msgbox CianwoodCity_Text_GladionUnexpectedOutcome, MSGBOX_DEFAULT
 	closemessage
-	call Common_EventScript_OutOfCenterPartyHeal
-	call CianwoodCity_EventScript_RestoreDecorativesAfterGladionScene
-	fadedefaultbgm
-	releaseall
-	end
+	goto CianwoodCity_EventScript_GladionDeliver
 
 CianwoodCity_EventScript_GladionDeliver::
 	call Common_EventScript_OutOfCenterPartyHeal
@@ -711,7 +705,7 @@ CianwoodCity_Text_GladionForfeit:
 	.string "take care of your Pokémon.$"
 
 CianwoodCity_Text_GladionUnexpectedOutcome:
-	.string "We should stop here. Let me\n"
+	.string "That didn't end cleanly. Let me\n"
 	.string "take care of your Pokémon.$"
 
 CianwoodCity_Text_GladionHereHMFromWife:

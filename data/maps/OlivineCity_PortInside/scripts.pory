@@ -156,29 +156,90 @@ mapscripts OlivineCity_PortInside_MapScripts {
     }
 }
 
+// Ferry desk. Two destinations, each unlocked separately:
+//   Sun and Moon Altar  - carrying ITEM_SUN_MOON_TICKET (Looker hands it over at
+//                         the end of the pre-Necrozma meeting, OlivineCity_House1)
+//   Faraway Island      - FLAG_CANSAIL_FARAWAYISLAND (Blaine, below)
+// Both unlocked: a menu. One: a yes/no. None: the old "not leaving" line.
+// The way back from the altar is the sailor on the altar pier (SunMoonAltar).
 script OlivinePort_Sailor {
-	if (!flag(FLAG_CANSAIL_FARAWAYISLAND)) {
-		msgbox("Sorry, but the ship is not going to
-				leave anywhere anytime soon.", MSGBOX_NPC)
-	} else { 
-		msgbox("I was told to sail you to this
-				oddly specific location. Do you
-				want to go now?", MSGBOX_YESNO)
-		if (var(VAR_RESULT) == NO) {
-			msgbox("Oh, alright...")
+	lock
+	faceplayer
+	// Save made after the meeting but before the ticket existed: hand it over here,
+	// so the altar can never be locked out by an old save.
+	if (flag(FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED)) {
+		checkitem(ITEM_SUN_MOON_TICKET)
+		if (var(VAR_RESULT) == FALSE) {
+			msgbox("Oh! A man in a trench coat left
+					this here for you.")
+			giveitem(ITEM_SUN_MOON_TICKET)
+		}
+	}
+	checkitem(ITEM_SUN_MOON_TICKET)
+	if (var(VAR_RESULT) == TRUE) {
+		if (flag(FLAG_CANSAIL_FARAWAYISLAND)) {
+			msgbox("Where would you like to sail?")
+			dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Sun & Moon Altar", "Faraway Island", "Cancel")
+			switch (var(VAR_RESULT)) {
+				case 0:
+					goto(OlivinePort_EventScript_SailAltar)
+				case 1:
+					goto(OlivinePort_EventScript_SailFaraway)
+			}
+			msgbox("We hope to see you again!")
 			release
 			end
 		}
-		msgbox("Then let's do it!
-		
-				Anchors aweigh! We're setting sail
-				to the unknown!")
-		closemessage
-		warp(MAP_FARAWAY_ISLAND_OUTSIDE, 13, 38)
-		waitstate
+		msgbox("Ah, the Sun & Moon Ticket!
+				Shall we set sail for the altar?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == NO) {
+			msgbox("We hope to see you again!")
+			release
+			end
+		}
+		goto(OlivinePort_EventScript_SailAltar)
+	}
+	if (!flag(FLAG_CANSAIL_FARAWAYISLAND)) {
+		msgbox("Sorry, but the ship is not going to
+				leave anywhere anytime soon.")
 		release
 		end
-	}	
+	}
+	msgbox("I was told to sail you to this
+			oddly specific location. Do you
+			want to go now?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		msgbox("Oh, alright...")
+		release
+		end
+	}
+	goto(OlivinePort_EventScript_SailFaraway)
+}
+
+script OlivinePort_EventScript_SailAltar {
+	msgbox("{PLAYER} flashed the
+			Sun & Moon Ticket.
+
+			Anchors aweigh! Next stop,
+			the Sun and Moon Altar!")
+	closemessage
+	// (14,27): the altar pier, next to the sailor who brings you back.
+	warp(MAP_SUN_MOON_ALTAR, 14, 27)
+	waitstate
+	release
+	end
+}
+
+script OlivinePort_EventScript_SailFaraway {
+	msgbox("Then let's do it!
+
+			Anchors aweigh! We're setting sail
+			to the unknown!")
+	closemessage
+	warp(MAP_FARAWAY_ISLAND_OUTSIDE, 13, 38)
+	waitstate
+	release
+	end
 }
 
 script OlivinePortBlaine {

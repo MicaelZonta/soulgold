@@ -13,6 +13,8 @@ OlivineCity_OnLoad::
 
 OlivineCity_MapScript_OnTransition::
 	call Common_EventScript_SetupRivalGfxId
+	call OlivineCity_EventScript_SetupSilverDoor
+	call_if_eq VAR_OLIVINE_CITY_STATE, 0, OlivineCity_EventScript_InitCity
 	goto OlivineCity_MapScript_CheckWeather
 
 OlivineCity_MapScript_CheckWeather::
@@ -52,9 +54,17 @@ OlivineCity_Text_Baoba:
 	.string "We're a little out of the way, but\n"
 	.string "please come visit!$"
 
-OlivineCity_EventScript_CityTrigger:: @FLAGHEAP
+@ Route39's entry trigger (VAR_OLIVINE_CITY_STATE == 0).
+OlivineCity_EventScript_CityTrigger::
+	call OlivineCity_EventScript_InitCity
+	end
+
+@ First-arrival setup of Olivine and Cianwood. Called from the Route39 trigger
+@ and from OnTransition, so arriving by any route (GoldenrodShore, Surf, Fly)
+@ sets the city up the same way. Flags/vars only: safe before the spawn. Must
+@ end in return, not end, or OnTransition would stop before the weather check.
+OlivineCity_EventScript_InitCity:: @FLAGHEAP
 	setflag FLAG_HIDE_OLIVINE_CITY_GYM_JASMINE
-	setflag FLAG_HIDE_OLIVINE_SILVER
 	setflag FLAG_VISITED_OLIVINE_CITY
 	clearflag FLAG_HIDE_BATTLEFRONTIER_ENGINEER
 	clearflag FLAG_HIDE_LIGHTHOUSE_JASMINE
@@ -68,11 +78,24 @@ OlivineCity_EventScript_CityTrigger:: @FLAGHEAP
 	clearflag FLAG_HIDE_CIANWOOD_SUICUNE
 	setflag FLAG_HIDE_CIANWOOD_EUSINE
 	setvar VAR_CIANWOOD_CITY_STATE, 1
-	end
+	return
+
+@ Silver's gym-door scene plays by default, from the very start of the game,
+@ until it has been seen once: FLAG_HIDE_OLIVINE_SILVER means "scene done".
+@ The Silver object itself is hidden by FLAG_TEMP_1 (reset on every load, set
+@ here before the spawn) and only appears while the scene runs. VAR_TEMP_2 is
+@ the coord trigger's var: 0 = armed, 1 = scene done or already running.
+OlivineCity_EventScript_SetupSilverDoor::
+	setflag FLAG_TEMP_1
+	goto_if_unset FLAG_HIDE_OLIVINE_SILVER, OlivineCity_EventScript_SetupSilverDoorEnd
+	setvar VAR_TEMP_2, 1
+OlivineCity_EventScript_SetupSilverDoorEnd::
+	return
 
 OlivineCity_EventScript_SilverTrigger::
 	lock
-	clearflag FLAG_HIDE_OLIVINE_SILVER
+	setvar VAR_TEMP_2, 1
+	clearflag FLAG_TEMP_1
 	opendoor 11, 27
 	addobject LOCALID_OLIVINE_SILVER
 	playbgm MUS_HG_ENCOUNTER_RIVAL, TRUE
@@ -83,20 +106,34 @@ OlivineCity_EventScript_SilverTrigger::
 	call_if_eq VAR_TEMP_1, 29, OlivineCity_EventScript_SilverWalkToPlayer2
 	call_if_eq VAR_TEMP_1, 30, OlivineCity_EventScript_SilverWalkToPlayer3
 	createfieldmugshot MUGSHOT_SILVER
-	msgbox OlivineCity_Text_SilverEncounter, MSGBOX_DEFAULT
+	call_if_unset FLAG_AMPHAROS_HEALED, OlivineCity_EventScript_SilverTalkAmpharosSick
+	call_if_set FLAG_AMPHAROS_HEALED, OlivineCity_EventScript_SilverTalkAmpharosHealed
 	closemessage
 	call_if_eq VAR_TEMP_1, 28, OlivineCity_EventScript_SilverLeaveAdjust1
 	call_if_eq VAR_TEMP_1, 29, OlivineCity_EventScript_SilverLeaveAdjust2
 	call_if_eq VAR_TEMP_1, 30, OlivineCity_EventScript_SilverLeaveAdjust2
 	applymovement LOCALID_OLIVINE_SILVER, OlivineCity_Movement_SilverLeave
 	waitmovement 0
-	setvar VAR_OLIVINE_CITY_STATE, 2
+	call_if_lt VAR_OLIVINE_CITY_STATE, 2, OlivineCity_EventScript_SilverSetClimbLighthouse
 	setflag FLAG_HIDE_OLIVINE_SILVER
 	setflag FLAG_HIDE_MAREANIES
 	removeobject LOCALID_OLIVINE_SILVER
 	fadedefaultbgm
 	release
 	end
+
+OlivineCity_EventScript_SilverTalkAmpharosSick::
+	msgbox OlivineCity_Text_SilverEncounter, MSGBOX_DEFAULT
+	return
+
+OlivineCity_EventScript_SilverTalkAmpharosHealed::
+	msgbox OlivineCity_Text_SilverEncounterGymBeaten, MSGBOX_DEFAULT
+	return
+
+@ Never lowers the var: the scene can now play after the Lighthouse arc.
+OlivineCity_EventScript_SilverSetClimbLighthouse::
+	setvar VAR_OLIVINE_CITY_STATE, 2
+	return
 
 OlivineCity_EventScript_SilverWalkToPlayer1::
 	applymovement LOCALID_OLIVINE_SILVER OlivineCity_Movement_SilverWalkToPlayer1
@@ -179,6 +216,22 @@ OlivineCity_Text_SilverEncounter:
 	.string "Lighthouse?\p"
 	.string "Who knows? It may make you a\n"
 	.string "bit of a better Trainer!$"
+
+OlivineCity_Text_SilverEncounterGymBeaten:
+	.string "You again?\n"
+	.string "There's no need to be alert.\p"
+	.string "I don't bother with wimps\n"
+	.string "like you.\p"
+	.string "I just beat the Gym Leader\n"
+	.string "here. Her Steel-types were\l"
+	.string "a joke.\p"
+	.string "She wasted her time babysitting\n"
+	.string "a sick Pokémon at the\l"
+	.string "Lighthouse.\p"
+	.string "A Pokémon that can't battle\n"
+	.string "is worthless!\p"
+	.string "Go on, try your luck in there.\n"
+	.string "Not that it'll help a weakling!$"
 
 OlivineCity_EventScript_Sailor1::
 	lock

@@ -1,6 +1,5 @@
 raw `
 .set LOCALID_NURSE, 1
-.set LOCALID_VIOLET_GLADION, 6
 
 VioletCity_PokemonCenter_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VioletCity_Pokecenter_OnTransition
@@ -23,15 +22,67 @@ VioletCity_PokemonCenter_EventScript_Gladion::
 	release
 	end
 
+@ Stage (y grows downward): Gladion (9,4), Type: Null (10,4) on his east.
+@ Type: Null blocks the east side, so the player can only be west (8,4) or
+@ south (9,5) of Gladion here - the two cases the exit routes below cover.
 VioletCity_PokemonCenter_EventScript_Gladion_Battle::
 	msgbox VioletCity_PokeCenter_Text_GladionRecognizes, MSGBOX_DEFAULT
 	closemessage
+	@ Introducing his partner: Gladion looks east at Type: Null, which
+	@ glances back at him in place (no walking toward the player).
+	turnobject LOCALID_VIOLET_GLADION, DIR_EAST
+	applymovement LOCALID_VIOLET_TYPENULL, VioletCity_PokemonCenter_Movement_TypeNullReact
+	waitmovement LOCALID_VIOLET_TYPENULL
 	msgbox VioletCity_PokeCenter_Text_GladionPartner1, MSGBOX_DEFAULT
+	closemessage
+	faceplayer
 	msgbox VioletCity_PokeCenter_Text_GladionPartner2, MSGBOX_DEFAULT
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
 	removefieldmugshot
+
+	@ Losing is allowed: the Egg is delivered on every outcome.
+	checkflag B_FLAG_NO_WHITEOUT
+	copyvar VAR_TEMP_3, VAR_RESULT
+	setflag B_FLAG_NO_WHITEOUT
+	setvar VAR_LAST_TALKED, LOCALID_VIOLET_GLADION
 	trainerbattle_no_intro TRAINER_GLADION, VioletCity_PokeCenter_Text_GladionVictory
+	specialvar VAR_RESULT, GetBattleOutcome
+	copyvar VAR_TEMP_2, VAR_RESULT
+	goto_if_eq VAR_TEMP_3, TRUE, VioletCity_PokemonCenter_EventScript_GladionKeepWhiteoutOff
+	clearflag B_FLAG_NO_WHITEOUT
+VioletCity_PokemonCenter_EventScript_GladionKeepWhiteoutOff::
+	call Common_EventScript_OutOfCenterPartyHeal
+	goto_if_eq VAR_TEMP_2, B_OUTCOME_WON, VioletCity_PokemonCenter_EventScript_GladionPlayerWon
+	goto_if_eq VAR_TEMP_2, B_OUTCOME_LOST, VioletCity_PokemonCenter_EventScript_GladionPlayerLost
+	goto_if_eq VAR_TEMP_2, B_OUTCOME_DREW, VioletCity_PokemonCenter_EventScript_GladionDraw
+	goto_if_eq VAR_TEMP_2, B_OUTCOME_FORFEITED, VioletCity_PokemonCenter_EventScript_GladionForfeit
+	goto VioletCity_PokemonCenter_EventScript_GladionUnexpectedOutcome
+
+@ B_OUTCOME_WON: Gladion's own line (VioletCity_PokeCenter_Text_GladionVictory)
+@ already played automatically when his last Pokémon fainted.
+VioletCity_PokemonCenter_EventScript_GladionPlayerWon::
+	msgbox VioletCity_PokeCenter_Text_GladionWon, MSGBOX_DEFAULT
+	goto VioletCity_PokemonCenter_EventScript_GladionDeliver
+
+VioletCity_PokemonCenter_EventScript_GladionPlayerLost::
+	msgbox VioletCity_PokeCenter_Text_GladionLost, MSGBOX_DEFAULT
+	goto VioletCity_PokemonCenter_EventScript_GladionDeliver
+
+VioletCity_PokemonCenter_EventScript_GladionDraw::
+	msgbox VioletCity_PokeCenter_Text_GladionDraw, MSGBOX_DEFAULT
+	goto VioletCity_PokemonCenter_EventScript_GladionDeliver
+
+VioletCity_PokemonCenter_EventScript_GladionForfeit::
+	msgbox VioletCity_PokeCenter_Text_GladionForfeit, MSGBOX_DEFAULT
+	goto VioletCity_PokemonCenter_EventScript_GladionDeliver
+
+@ Not a real outcome of a local trainer battle. Still concludes the event
+@ (same as DragonsDen_Shrine) rather than letting the player re-battle
+@ Gladion for free experience.
+VioletCity_PokemonCenter_EventScript_GladionUnexpectedOutcome::
+	msgbox VioletCity_PokeCenter_Text_GladionUnexpectedOutcome, MSGBOX_DEFAULT
+VioletCity_PokemonCenter_EventScript_GladionDeliver::
 	msgbox VioletCity_PokeCenter_Text_GladionGiveEgg, MSGBOX_DEFAULT
 	giveegg SPECIES_COSMOG
 	copyvar VAR_0x8008, VAR_RESULT
@@ -43,17 +94,23 @@ VioletCity_PokemonCenter_EventScript_Gladion_Battle::
 	call_if_eq VAR_0x8008, MON_GIVEN_TO_PC, VioletCity_PokemonCenter_EventScript_GladionEggSentToPC
 	msgbox VioletCity_PokeCenter_Text_GladionParting, MSGBOX_DEFAULT
 	closemessage
+	@ Gladion leaves first; Type: Null hesitates, then follows his exact path
+	@ one tile behind, ending on (7,7) while Gladion stands on the door (7,8).
 	specialvar VAR_RESULT, ScriptCheckPlayerWestOfGladion
 	goto_if_eq VAR_RESULT, TRUE, VioletCity_PokemonCenter_EventScript_GladionLeaveViaSouth
 	applymovement LOCALID_VIOLET_GLADION, VioletCity_PokemonCenter_Movement_GladionLeave
+	applymovement LOCALID_VIOLET_TYPENULL, VioletCity_PokemonCenter_Movement_TypeNullFollow
 	goto VioletCity_PokemonCenter_EventScript_GladionLeaveDone
 
 VioletCity_PokemonCenter_EventScript_GladionLeaveViaSouth::
 	applymovement LOCALID_VIOLET_GLADION, VioletCity_PokemonCenter_Movement_GladionLeaveViaSouth
+	applymovement LOCALID_VIOLET_TYPENULL, VioletCity_PokemonCenter_Movement_TypeNullFollowViaSouth
 
 VioletCity_PokemonCenter_EventScript_GladionLeaveDone::
-	waitmovement 0
+	waitmovement LOCALID_VIOLET_GLADION
+	waitmovement LOCALID_VIOLET_TYPENULL
 	playse SE_EXIT
+	removeobject LOCALID_VIOLET_TYPENULL
 	removeobject LOCALID_VIOLET_GLADION
 	setflag FLAG_RECEIVED_MYSTERY_EGG
 	setflag FLAG_HIDE_VIOLET_CITY_GLADION
@@ -69,7 +126,8 @@ VioletCity_PokemonCenter_EventScript_GladionEggSentToPC::
 
 @ Defensive fallback: unreachable in practice, since the party/PC check above
 @ already guarantees room before the battle starts and nothing can deposit or
-@ withdraw Pokemon mid-battle.
+@ withdraw Pokemon mid-battle. FLAG_RECEIVED_MYSTERY_EGG stays unset, so
+@ Gladion and Type: Null remain and the player can talk to him again.
 VioletCity_PokemonCenter_EventScript_GladionNoRoomAfterBattle::
 	msgbox VioletCity_PokeCenter_Text_GladionNoRoom, MSGBOX_DEFAULT
 	closemessage
@@ -136,6 +194,31 @@ VioletCity_PokeCenter_Text_GladionVictory:
 	.string "Gladion: We're getting there,\n"
 	.string "Null. That was a good battle.$"
 
+VioletCity_PokeCenter_Text_GladionWon:
+	.string "I see why Lillie wants\n"
+	.string "another match.$"
+
+VioletCity_PokeCenter_Text_GladionLost:
+	.string "Gladion: You kept looking\n"
+	.string "for a way through.\p"
+	.string "That's enough for me to understand\n"
+	.string "how you fight.$"
+
+VioletCity_PokeCenter_Text_GladionDraw:
+	.string "Gladion: Neither team\n"
+	.string "could finish that.\p"
+	.string "I still saw what I needed to see.$"
+
+VioletCity_PokeCenter_Text_GladionForfeit:
+	.string "Gladion: You're stopping?\n"
+	.string "Fine.\p"
+	.string "Look after your team.\n"
+	.string "Elm's Egg still belongs with you.$"
+
+VioletCity_PokeCenter_Text_GladionUnexpectedOutcome:
+	.string "Gladion: That didn't end cleanly.\n"
+	.string "Let's check on everyone.$"
+
 VioletCity_PokeCenter_Text_GladionGiveEgg:
 	.string "Here's the Egg. Elm asked me\n"
 	.string "to bring it to you.\p"
@@ -177,6 +260,15 @@ VioletCity_PokeCenter_Text_Youngster:
 	.string "Without the right Gym Badges,\n"
 	.string "they will just do as they please.$"
 
+@ Type: Null (10,4): looks west at Gladion (9,4), shuffles in place, then
+@ faces front again.
+VioletCity_PokemonCenter_Movement_TypeNullReact:
+	face_left
+	walk_in_place_faster_left
+	delay_16
+	face_down
+	step_end
+
 @ Gladion: (9,4) -> (7,4) -> door (7,8).
 VioletCity_PokemonCenter_Movement_GladionLeave:
 	walk_left
@@ -194,6 +286,36 @@ VioletCity_PokemonCenter_Movement_GladionLeaveViaSouth:
 	walk_left
 	walk_left
 	walk_down
+	walk_down
+	walk_down
+	step_end
+
+@ Type: Null follows the route above one step behind Gladion, after a short
+@ hesitation looking at him: (10,4) -> (7,4) -> (7,7). Each tile it enters
+@ was vacated by Gladion at least one step earlier; the player (south of
+@ Gladion at (9,5)) is never on this path.
+VioletCity_PokemonCenter_Movement_TypeNullFollow:
+	face_left
+	delay_16
+	delay_8
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+@ Same, following the south route; the player is west of Gladion at (8,4):
+@ (10,4) -> (9,4) -> (9,5) -> (7,5) -> (7,7).
+VioletCity_PokemonCenter_Movement_TypeNullFollowViaSouth:
+	face_left
+	delay_16
+	delay_8
+	walk_left
+	walk_down
+	walk_left
+	walk_left
 	walk_down
 	walk_down
 	step_end

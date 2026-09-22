@@ -5,10 +5,35 @@ NewBarkTown_PlayersHouse_1F_MapScripts::
 	.byte 0
 
 NewBarkTown_PlayersHouse_1F_OnTransition::
+	call NewBarkTown_PlayersHouse_1F_ApplyMomVisibility     @ Rift Mission 4
 	call_if_eq VAR_NEWBARK_TOWN_STATE, 1, NewBarkTown_PlayersHouse_1F_SetMomStandingAtTable
 	call_if_eq VAR_NEWBARK_TOWN_STATE, 2, NewBarkTown_PlayersHouse_1F_SetMomStandingAtTable
 	call_if_eq VAR_NEWBARK_TOWN_STATE, 3, NewBarkTown_PlayersHouse_1F_SetMomStandingAtTable
 	end
+
+@ Rift Mission 4 (.claude/NEWBARK_ULTRABEAST_IMPLEMENTATION.md, section 3.6).
+@ Mom stands on the road outside during the New Bark incident, and she is one
+@ warp - one tile, really - from the scene, so she must not also be standing
+@ in here. LOCALID_MOM's map.json "flag" field used to be 0; it is now
+@ FLAG_TEMP_1, a dumb per-visit cache, and FLAG_EVENT_ULTRABEAST_NEWBARK
+@ stays the persistent truth. The two changes are a PAIR: the map.json
+@ without this script deletes Mom from the house permanently.
+@   visible <=> no incident running
+@ Temps are zeroed by ClearTempFieldEventData on every map load, so the
+@ default is VISIBLE: if this block ever fails to run, Mom appears, which is
+@ the safe error. ON_TRANSITION runs before any object spawns, so setflag and
+@ clearflag work here and removeobject would not.
+@ NEVER removeobject LOCALID_MOM: that would set FLAG_TEMP_1 by hand and is
+@ pointless anyway, since the camera respawns from the template flag.
+@ This map's ON_TRANSITION uses call_if_eq, which returns, so the line above
+@ is safe in any position - unlike NewBarkTown and NewBarkTown_Lab, whose
+@ ON_TRANSITION blocks use goto_if_eq and never come back.
+NewBarkTown_PlayersHouse_1F_ApplyMomVisibility::
+	clearflag FLAG_TEMP_1
+	goto_if_unset FLAG_EVENT_ULTRABEAST_NEWBARK, NewBarkTown_PlayersHouse_1F_MomStays
+	setflag FLAG_TEMP_1
+NewBarkTown_PlayersHouse_1F_MomStays::
+	return
 
 NewBarkTown_PlayersHouse_1F_SetMomStandingAtTable::
 	setobjectxyperm LOCALID_MOM, 8, 4
