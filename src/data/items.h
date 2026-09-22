@@ -8064,6 +8064,26 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Audinite,
     },
 
+    [ITEM_GIGANTATITE] =
+    {
+        .name = ITEM_NAME("Gigantatite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "A stone that lets\n"
+            "former Gigantamax\n"
+            "{PKMN} Mega Evolve."),
+        .pocket = POCKET_MEGASTONES,
+        .notConsumed = TRUE,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .heldSlot = 0,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_GiveHeldItem,
+        .flingPower = 0,
+        .iconPic = gItemIcon_DynamaxBand,
+        .iconPalette = gItemIconPalette_DynamaxBand,
+    },
+
 // Gems
     #if I_PRICE >= GEN_9
         #define GEM_PRICE 15000
@@ -15456,20 +15476,18 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_PowderJar,
     },
 
-    [ITEM_CANDY_JAR] =
+    [ITEM_UNUSED_887] =
     {
-        .name = ITEM_NAME("Candy Jar"),
+        .name = gQuestionMarksItemName,
         .price = 0,
-        .description = COMPOUND_STRING(
-            "Stores extra Exp\n"
-            "and turns it into\n"
-            "candy."),
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
+        .description = sQuestionMarksDesc,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_UNCATEGORIZED,
+        .heldSlot = 0,
         .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CandyJar,
-        .iconPic = gItemIcon_PowderJar,
-        .iconPalette = gItemIconPalette_PowderJar,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
     },
 
     [ITEM_SQUIRTBOTTLE] =
@@ -15661,6 +15679,23 @@ const struct ItemInfo gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_AuroraTicket,
         .iconPalette = gItemIconPalette_AuroraTicket,
+    },
+
+    [ITEM_SUN_MOON_TICKET] =
+    {
+        .name = ITEM_NAME("Sun&Moon Ticket"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A ferry ticket from\n"
+            "Olivine to the Sun\n"
+            "and Moon Altar."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SunMoonTicket,
+        .iconPalette = gItemIconPalette_SunMoonTicket,
     },
 
     [ITEM_OLD_SEA_MAP] =
@@ -17593,7 +17628,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GROOMING_KIT] =
     {
         .name = ITEM_NAME("Grooming Kit"),
-        .price = 500000,
+        .price = 100000,
         .description = COMPOUND_STRING(
             "A set of brushes\n"
             "and tools for\n"
@@ -17610,7 +17645,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_SEASONAL_PERFUME] =
     {
         .name = ITEM_NAME("Seasonal Perfume"),
-        .price = 1000000,
+        .price = 100000,
         .description = COMPOUND_STRING(
             "A perfume with\n"
             "scents inspired\n"

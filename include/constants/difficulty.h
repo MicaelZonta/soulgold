@@ -3,12 +3,15 @@
 
 enum DifficultyLevel
 {
-    DIFFICULTY_EASY,
-    DIFFICULTY_NORMAL, //If you rename this, the word "Normal" in fprint_trainers must be replaced with the new difficulty name.
-    DIFFICULTY_HARD,
+    // The former Hard teams were promoted into this sole dataset.
+    DIFFICULTY_NORMAL,
     DIFFICULTY_COUNT,
 };
 
+// Source compatibility for archived scripts and tests. These names no longer
+// select separate data or player-facing modes.
+#define DIFFICULTY_EASY DIFFICULTY_NORMAL
+#define DIFFICULTY_HARD DIFFICULTY_NORMAL
 #define DIFFICULTY_MIN 0
 #define DIFFICULTY_MAX (DIFFICULTY_COUNT - 1)
 

@@ -256,7 +256,7 @@
 #define B_FLAG_INVERSE_BATTLE       0     // If this flag is set, the battle's type effectiveness are inversed. For example, fire is super effective against water.
 #define B_FLAG_FORCE_DOUBLE_WILD    0     // If this flag is set, all land and surfing wild battles will be double battles.
 #define B_SMART_WILD_AI_FLAG        0     // If this flag is set, wild Pokémon will become smart, with all AI flags enabled.
-#define B_FLAG_NO_CATCHING          0     // If this flag is set, the ability to catch wild Pokémon is disabled.
+#define B_FLAG_NO_CATCHING          FLAG_NO_CATCHING     // If this flag is set, the ability to catch wild Pokémon is disabled.
 #define B_FLAG_NO_RUNNING           0     // If this flag is set, the ability to escape from wild battles is disabled. Also makes Roar/Whirlwind and Teleport (under Gen8) fail.
 #define B_FLAG_AI_VS_AI_BATTLE      0     // If this flag is set, the player's mons will be controlled by the ai next battles.
 #define B_FLAG_DYNAMAX_BATTLE       0     // If this flag is set, the ability to Dynamax in battle is enabled for all trainers.
@@ -272,7 +272,7 @@
                                           // This var should never remain non-zero long enough for the player to save.
                                           // For better wild AI handling, edit GetWildAiFlags() in src/battle_ai_main.c
 
-#define B_VAR_DIFFICULTY            VAR_DIFFICULTY     // If not 0, you can use this var to control which difficulty version of a Trainer is loaded. This should be manually set by the developer using Script_SetDifficulty AFTER NewGameInitData has run.
+#define B_VAR_DIFFICULTY            0                  // Difficulty selection was removed; VAR_DIFFICULTY is reserved.
 
 // No bag settings
 #define NO_BAG_RESTRICTION       0

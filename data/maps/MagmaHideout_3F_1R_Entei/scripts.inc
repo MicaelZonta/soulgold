@@ -127,7 +127,7 @@ MagmaHideout_3F_1R_Entei_EnteiBattle2::
 	setflag FLAG_SYS_NO_CATCHING
 	setflag FLAG_SYS_SET_BATTLE_BGM
 	setvar VAR_TEMP_F, MUS_RG_VS_LEGEND
-	call_if_set FLAG_DIFFICULTY_HARD, MagmaHideout_3F_1R_Entei_EnteiBattle2_Stats
+	call MagmaHideout_3F_1R_Entei_EnteiBattle2_Stats
 	dowildbattle
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome

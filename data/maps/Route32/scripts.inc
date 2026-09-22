@@ -437,7 +437,7 @@ Route32_EventScript_BaldingManCheck::
 # 219 "data/maps/Route32/scripts.pory"
 	goto_if_unset FLAG_DEFEATED_VIOLET_GYM, Route32_EventScript_BaldingManGym
 # 220 "data/maps/Route32/scripts.pory"
-	goto_if_unset FLAG_RECEIVED_TOGEPI_EGG, Route32_EventScript_BaldingManEgg
+	goto_if_unset FLAG_RECEIVED_MYSTERY_EGG, Route32_EventScript_BaldingManEgg
 # 221 "data/maps/Route32/scripts.pory"
 	msgbox Route32_Text_CooltrainerM_HaveThisSeed, MSGBOX_DEFAULT
 # 222 "data/maps/Route32/scripts.pory"
@@ -489,7 +489,7 @@ Route32_EventScript_BaldingManEgg::
 # 245 "data/maps/Route32/scripts.pory"
 	msgbox Route32_Text_CooltrainerM_WhatsTheHurry, MSGBOX_DEFAULT
 # 246 "data/maps/Route32/scripts.pory"
-	msgbox Route32_Text_CooltrainerM_AideIsWaiting, MSGBOX_DEFAULT
+	msgbox Route32_Text_CooltrainerM_GladionIsWaiting, MSGBOX_DEFAULT
 # 247 "data/maps/Route32/scripts.pory"
 	closemessage
 # 248 "data/maps/Route32/scripts.pory"
@@ -603,17 +603,17 @@ Route32_Text_CooltrainerM_WhatsTheHurry:
 # 302 "data/maps/Route32/scripts.pory"
 
 # 303 "data/maps/Route32/scripts.pory"
-Route32_Text_CooltrainerM_AideIsWaiting:
+Route32_Text_CooltrainerM_GladionIsWaiting:
 # 304 "data/maps/Route32/scripts.pory"
-	.string "{PLAYER}, right?\n"
+	.string "{PLAYER}, right?\p"
 # 305 "data/maps/Route32/scripts.pory"
-	.string "Some guy wearing glasses\p"
+	.string "A Trainer named Gladion was\n"
 # 306 "data/maps/Route32/scripts.pory"
-	.string "was looking for you.\p"
+	.string "looking for you.\p"
 # 307 "data/maps/Route32/scripts.pory"
-	.string "See for yourself. He's waiting for\n"
+	.string "He's waiting at the Pokémon\n"
 # 308 "data/maps/Route32/scripts.pory"
-	.string "you at the Pokémon Center.$"
+	.string "Center.$"
 # 309 "data/maps/Route32/scripts.pory"
 
 # 310 "data/maps/Route32/scripts.pory"

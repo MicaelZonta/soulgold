@@ -1,0 +1,327 @@
+<title>Altar do Sol e da Lua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#eceff3; --surface:#f8f9fb; --ink:#1d2130; --muted:#5a6072; --rule:#cfd4dc;
+  --sun:#b87612; --sun-soft:#f6e3b8; --moon:#6d4fc4; --moon-soft:#e4dcfa; --water:#1f7fa8; --water-soft:#d6ecf5;
+  --code:#e3e7ee;
+  --display:"Pixelify Sans",ui-monospace,monospace;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#141724; --surface:#1c2031; --ink:#e8e7ef; --muted:#a3a7b8; --rule:#323851;
+    --sun:#f0bd4c; --sun-soft:#3a2f17; --moon:#b7a1ff; --moon-soft:#2c2548; --water:#6cc9ee; --water-soft:#16323f; --code:#262b40;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#141724; --surface:#1c2031; --ink:#e8e7ef; --muted:#a3a7b8; --rule:#323851;
+  --sun:#f0bd4c; --sun-soft:#3a2f17; --moon:#b7a1ff; --moon-soft:#2c2548; --water:#6cc9ee; --water-soft:#16323f; --code:#262b40;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--body);}
+.wrap{max-width:960px;margin:0 auto;padding-inline:20px;padding-block:40px 72px;display:flex;flex-direction:column;gap:56px}
+h1,h2{font-family:var(--display);font-weight:700;text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,2.9rem);letter-spacing:.01em}
+h2{font-size:1.45rem}
+h3{font-size:1.05rem;margin:0 0 4px}
+p{margin:0;max-width:68ch}
+.mono,code{font-family:var(--mono);font-size:.86em}
+code{background:var(--code);padding:1px 5px;border-radius:3px}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px}
+.lede{font-size:1.12rem;color:var(--muted)}
+.note{font-size:.93rem;color:var(--muted)}
+.pixel{image-rendering:pixelated;image-rendering:crisp-edges;display:block;max-width:100%;height:auto}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:start}
+.viewer{display:flex;flex-direction:column;gap:10px}
+.stage{background:#000;border-radius:4px;overflow:hidden;border:1px solid var(--rule)}
+.stage img{width:100%}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{font:600 .9rem var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:5px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.seg button:focus-visible{outline:2px solid var(--moon);outline-offset:2px}
+.caption{font-size:.92rem;color:var(--muted);min-height:4.8em}
+.intro{display:flex;flex-direction:column;gap:16px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.facts div{background:var(--surface);padding:10px 12px}
+.facts b{display:block;font-family:var(--mono);font-size:1.2rem;font-variant-numeric:tabular-nums}
+.facts span{font-size:.85rem;color:var(--muted)}
+
+.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.route div{background:var(--surface);padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.route .rows{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.route b{font-size:1rem}
+.route p{font-size:.92rem}
+
+.table-scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{text-align:left;padding:7px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;background:var(--ground)}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{font:600 .74rem var(--mono);padding:1px 7px;border-radius:999px;white-space:nowrap}
+.pill.cast{background:var(--moon-soft);color:var(--moon)}
+.pill.fixed{background:var(--water-soft);color:var(--water)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+
+.meters{display:flex;flex-direction:column;gap:14px}
+.meter{display:grid;grid-template-columns:170px minmax(0,1fr) 110px;gap:12px;align-items:center}
+.meter .bar{height:12px;background:var(--code);border-radius:2px;overflow:hidden;display:flex}
+.meter .bar i{display:block;height:100%}
+.meter .num{font-family:var(--mono);font-size:.9rem;font-variant-numeric:tabular-nums;text-align:right}
+.meter .name{font-weight:600}
+
+.discs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.discs figure{margin:0;display:flex;flex-direction:column;gap:6px}
+.discs img{width:100%;border-radius:3px}
+.discs figcaption{font-size:.88rem;color:var(--muted);line-height:1.4}
+.discs figcaption b{color:var(--ink);display:block}
+
+.pals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:14px}
+.pal{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.pal-head{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;font-weight:600}
+.tag{font:600 .75rem var(--mono);padding:1px 7px;border-radius:999px}
+.tag.moon{background:var(--moon-soft);color:var(--moon)}
+.sw{display:flex;align-items:center;gap:2px}
+.sw .lbl{width:44px;font-size:.78rem;color:var(--muted);flex:none}
+.sw i{flex:1;height:20px;min-width:0}
+
+.sheet{max-width:384px;width:100%}
+ol.steps{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:12px}
+pre{background:var(--code);padding:12px 14px;border-radius:4px;overflow-x:auto;font:.84rem/1.5 var(--mono);margin:6px 0 0}
+.open{display:flex;flex-direction:column;gap:12px}
+.open div{border-left:3px solid var(--rule);padding-left:14px}
+.open div.hi{border-color:var(--sun)}
+footer{font-size:.85rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:16px}
+
+@media (max-width:760px){
+  .hero,.two{grid-template-columns:1fr}
+  .discs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .meter{grid-template-columns:1fr 90px}
+  .meter .bar{grid-column:1/-1;order:3}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<section class="hero" aria-label="Visão geral">
+  <div class="viewer">
+    <div class="stage"><img id="shot" class="pixel" src="{{IMG:ilha/dia.png}}" width="960" height="960" alt="Ilha do altar de dia"></div>
+    <div class="seg" role="group" aria-label="Estado do mapa">
+      <button type="button" id="v-day" aria-pressed="true" data-k="day">Dia</button>
+      <button type="button" id="v-night" aria-pressed="false" data-k="night">Noite</button>
+      <button type="button" id="v-climax" aria-pressed="false" data-k="climax">Clímax</button>
+      <button type="button" id="v-base" aria-pressed="false" data-k="base">Base pós-Necrozma</button>
+      <button type="button" id="v-coll" aria-pressed="false" data-k="coll">Colisão</button>
+    </div>
+    <p class="caption" id="cap">Chegada: o navio atraca no cais sul. Das 10h às 19h o disco, os medalhões e os orbes mostram o sol.</p>
+  </div>
+  <div class="intro">
+    <span class="eyebrow">Proposta · SunMoonAltar · Rift Missions §7–§10</span>
+    <h1>Altar do Sol e da Lua</h1>
+    <p class="lede">Uma ilha de 30×30 com o altar no alto. Mar, praia, grama, floresta e cais vêm do <code>johto_general</code>; o único tileset novo é o secundário do altar, que troca Sol por Lua sozinho com o horário.</p>
+    <div class="facts">
+      <div><b>30 × 30</b><span>metatiles, borda de mar</span></div>
+      <div><b>249 / 384</b><span>tiles do secundário</span></div>
+      <div><b>10</b><span>objetos no clímax</span></div>
+      <div><b>0</b><span>tiles para o navio (é sprite)</span></div>
+    </div>
+    <p class="note">Tudo aqui é render do rascunho de verdade: o <code>map.bin</code> de 30×30, os tiles e as paletas do secundário, o <code>johto_general</code> do projeto e os sprites reais do elenco. A noite lê as paletas noturnas dos arquivos, como o jogo faz.</p>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">O mapa</span>
+  <h2>Do cais ao disco, em linha reta</h2>
+  <p>A ilha é uma subida só, de sul para norte. O jogador desce do navio no cais, pisa na praia, que é o ponto de Fly, e segue a trilha de areia até a escadaria. O altar ocupa 15 metatiles de largura, a largura exata da tela do GBA: quando a câmera chega ao terraço, a cena inteira cabe de uma vez.</p>
+  <div class="route">
+    <div><span class="rows">linhas 26–28</span><b>Cais e navio</b><p>Cais de 3 colunas (453 · 454 · 455) e o SS Tidal atracado a leste. O marinheiro fica no cais.</p></div>
+    <div><span class="rows">linhas 24–25</span><b>Praia</b><p>Pouso do Fly em <code>(14,25)</code>, logo acima do cais, como pede o §7.</p></div>
+    <div><span class="rows">linhas 16–23</span><b>Clareira</b><p>Grama aberta dos dois lados da trilha. O lado oeste vira a base de Looker e Anabel depois de Necrozma.</p></div>
+    <div><span class="rows">linhas 13–15</span><b>Terraço e escadaria</b><p>Escadaria de 5 de largura e terraço de 13×2, com orbes e espelhos d'água. Lugar de quem assiste.</p></div>
+    <div><span class="rows">linhas 9–11</span><b>Palco</b><p>9×3 andáveis na frente do disco, com os dois medalhões no chão. Duelo da Lusamine e abertura do portal.</p></div>
+    <div><span class="rows">linhas 1–8</span><b>Montanha e disco</b><p>Bloqueado. Montanha de terracota em degraus, fechada atrás, com a estela e o disco no meio. Floresta nas laterais.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Objetos</span>
+  <h2>Quem fica onde</h2>
+  <p>No clímax são <strong>10 objetos</strong>: os seis do elenco, os dois parceiros fora da Poké Ball (§3.2), o marinheiro e o navio. O elenco fica no palco e no terraço, virado para a Lusamine e o disco. O navio e o marinheiro estão 15 linhas abaixo e ficam fora da câmera durante a cena, então não disputam paletas de sprite com o elenco.</p>
+  <div class="two">
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Clímax</th><th>x,y</th><th>Olhando</th></tr></thead>
+        <tbody>
+          <tr><td>Lusamine <span class="pill cast">palco</span></td><td class="num">14,9</td><td>baixo</td></tr>
+          <tr><td>Jogador</td><td class="num">14,11</td><td>cima</td></tr>
+          <tr><td>Lillie · Ninetales</td><td class="num">12,11 · 11,11</td><td>cima</td></tr>
+          <tr><td>Gladion · Silvally</td><td class="num">16,11 · 17,11</td><td>cima</td></tr>
+          <tr><td>Looker · Anabel <span class="pill cast">terraço</span></td><td class="num">13,13 · 15,13</td><td>cima</td></tr>
+          <tr><td>Kukui</td><td class="num">10,14</td><td>cima</td></tr>
+          <tr><td>Marinheiro <span class="pill fixed">fixo</span></td><td class="num">15,27</td><td>direita</td></tr>
+          <tr><td>SS Tidal <span class="pill fixed">fixo</span></td><td class="num">19,28</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Pontos do mapa</th><th>x,y</th></tr></thead>
+        <tbody>
+          <tr><td>Pouso do Fly / heal location</td><td class="num">14,25</td></tr>
+          <tr><td>Warp do portal (pós-Necrozma)</td><td class="num">14,9</td></tr>
+          <tr><td>Base: Looker</td><td class="num">9,19</td></tr>
+          <tr><td>Base: Anabel (Beast Balls)</td><td class="num">11,19</td></tr>
+          <tr><td>Escadaria (entrada do altar)</td><td class="num">12–16,15</td></tr>
+          <tr><td>Escada do palco</td><td class="num">13–15,12</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="note">Todas as posições foram checadas contra a colisão gerada: nenhum NPC em cima de bloqueio ou de água. As flags de visibilidade seguem a skill <code>visibilidade-e-gatilhos</code>: uma flag de ocultação para o elenco do clímax e outra para a dupla da base.</p>
+</section>
+
+<section>
+  <span class="eyebrow">Tilesets</span>
+  <h2>Um primário que já existe, um secundário novo</h2>
+  <div class="two">
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th><code>johto_general</code></th><th>Metatiles</th></tr></thead>
+        <tbody>
+          <tr><td>Mar</td><td class="num">299</td></tr>
+          <tr><td>Areia · bordas N S O L</td><td class="num">277 · 269 285 276 278</td></tr>
+          <tr><td>Cantos da praia</td><td class="num">268 270 284 286</td></tr>
+          <tr><td>Areia com grama N S O L</td><td class="num">212 228 219 221</td></tr>
+          <tr><td>Grama · flores</td><td class="num">1 · 4</td></tr>
+          <tr><td>Floresta (miolo 2×2)</td><td class="num">646 647 / 654 655</td></tr>
+          <tr><td>Floresta (bordas)</td><td class="num">26 27 36 37 18 19</td></tr>
+          <tr><td>Cais</td><td class="num">453 454 455</td></tr>
+          <tr><td>Pedras no mar 2×2</td><td class="num">459 460 / 467 468</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th><code>altar_sun_moon</code> v2</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>Tamanho do altar</td><td class="num">15 × 13 (montanha remodelada no Porymap)</td></tr>
+          <tr><td>Montanha terracota (clones do <code>johto_general</code>)</td><td class="num">166 metatiles · 0 tiles</td></tr>
+          <tr><td>Tiles (templo + portal)</td><td class="num">231 + 18</td></tr>
+          <tr><td>Metatiles (altar + portal)</td><td class="num">112 + 7</td></tr>
+          <tr><td>Paletas</td><td class="num">07–11 (12 livre); 08 = rocha</td></tr>
+          <tr><td>Paletas com versão noturna</td><td class="num">07 09 10 → 00 02 03</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="note">Os metatiles do primário não foram escolhidos no olho: a praia, a borda de grama e o padrão da floresta foram aprendidos lendo o <code>map.bin</code> de Route 41, Cianwood, Olivine e das rotas de Johto, contando qual metatile os mapeadores puseram em cada vizinhança. Uma limitação real apareceu: o <code>johto_general</code> não tem canto côncavo de areia com água. Os mapas de Johto fogem disso com costa reta, e a ilha fez o mesmo.</p>
+  <div class="meters">
+    <div class="meter"><span class="name">Tiles do secundário</span><div class="bar" role="img" aria-label="231 tiles de altar e 18 de portal, de 384"><i style="width:60.2%;background:var(--sun)"></i><i style="width:4.7%;background:var(--moon)"></i></div><span class="num">249 / 384</span></div>
+    <div class="meter"><span class="name">Metatiles</span><div class="bar" role="img" aria-label="285 de 1024: 112 do altar, 7 do portal, 166 de montanha"><i style="width:10.9%;background:var(--sun)"></i><i style="width:.7%;background:var(--moon)"></i><i style="width:16.2%;background:var(--water)"></i></div><span class="num">285 / 1024</span></div>
+    <div class="meter"><span class="name">Paletas 7–12</span><div class="bar" role="img" aria-label="5 de 6 paletas"><i style="width:83.3%;background:var(--water)"></i></div><span class="num">5 / 6</span></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Dia e noite</span>
+  <h2>Um tile, duas tintas</h2>
+  <p>O disco, os medalhões do palco e os orbes desenham o sol e a lua <strong>nos mesmos pixels</strong>, com índices de cor separados. De dia, a paleta pinta os índices da lua com a cor da pedra; à noite, a paleta noturna faz o mesmo com os do sol. A troca é do motor (<code>swapPalettes</code>, já implementado em <code>UpdateAltBgPalettes</code>): cada paleta marcada mistura com uma versão noturna guardada nos slots 00–05 do próprio secundário. Das 19h às 21h e das 6h às 10h as duas se misturam, e o disco mostra um eclipse.</p>
+  <div class="discs">
+    <figure><img class="pixel" src="{{IMG:ilha/disco_dia.png}}" alt="Disco de dia"><figcaption><b>10h–19h</b>sol dourado</figcaption></figure>
+    <figure><img class="pixel" src="{{IMG:ilha/disco_transicao.png}}" alt="Disco na transição"><figcaption><b>Transição</b>o motor mistura as duas</figcaption></figure>
+    <figure><img class="pixel" src="{{IMG:ilha/disco_noite.png}}" alt="Disco à noite"><figcaption><b>21h–6h</b>lua lilás</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Cores</span>
+  <h2>As cinco paletas do secundário</h2>
+  <p>A 08 é a paleta 1 do <code>johto_general</code> inteira, índice por índice, com os marrons em terracota e os cinzas aquecidos. Nenhum tile desenhado usa o slot 8: ele existe só para recolorir as peças de montanha do primário. Por isso o secundário traz 166 clones de montanha (índices 119 a 284 no Porymap) que desenham com os tiles do primário e custam zero tile.</p>
+  <div class="pals">
+{{PALETAS}}
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">tiles.png</span>
+  <h2>Folha de tiles do altar</h2>
+  <p>Os 249 tiles únicos do templo, cada um com sua paleta. A encosta não aparece aqui porque não tem tile próprio: ela aponta direto para os tiles do <code>johto_general</code>. O templo é simétrico, e a metade direita reaproveita a esquerda com flip horizontal.</p>
+  <img class="pixel sheet" src="{{IMG:tiles_colored.png}}" alt="Folha de tiles do altar">
+</section>
+
+<section>
+  <span class="eyebrow">O que muda no SunMoonAltar atual</span>
+  <h2>Do mapa em branco ao mapa da proposta</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Campo</th><th>Hoje</th><th>Proposta</th></tr></thead>
+      <tbody>
+        <tr><td>Layout</td><td class="num">25 × 20</td><td class="num">30 × 30, borda de mar (299)</td></tr>
+        <tr><td>Tilesets</td><td><code>Grotto1</code> + <code>Cave</code></td><td><code>Johto_General</code> + <code>AltarSunMoon</code> (novo)</td></tr>
+        <tr><td><code>map_type</code></td><td><code>MAP_TYPE_NONE</code></td><td><code>MAP_TYPE_ROUTE</code>: <strong>obrigatório</strong>, sem ele o DNS não troca as paletas e o altar fica sol para sempre</td></tr>
+        <tr><td><code>region_map_section</code></td><td><code>MAPSEC_ABANDONED_LAB</code></td><td>MAPSEC novo para o altar (nome no mapa ainda em aberto, §10)</td></tr>
+        <tr><td><code>music</code></td><td><code>MUS_DUMMY</code></td><td>a definir</td></tr>
+        <tr><td><code>allow_running</code> · <code>allow_cycling</code></td><td>false · false</td><td>true · false</td></tr>
+        <tr><td>Heal location</td><td>—</td><td>novo, em <code>(14,25)</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Integração</span>
+  <h2>Passos</h2>
+  <ol class="steps">
+    <li><strong>Tileset</strong> em <code>data/tilesets/secondary/altar_sun_moon/</code>, registrado em <code>graphics.h</code>, <code>metatiles.h</code> e <code>headers.h</code>, com a troca ligada:
+      <pre>.swapPalettes = SWAP_PAL(7) | SWAP_PAL(9) | SWAP_PAL(10),</pre>
+      As paletas 00, 02 e 03 são as versões noturnas de 07, 09 e 10 (o motor lê o slot <code>s</code> junto com <code>(s + 9) % 16</code>).</li>
+    <li><strong>Layout</strong>: trocar em <code>layouts.json</code> o tamanho e os tilesets, e substituir <code>map.bin</code> e <code>border.bin</code> pelos gerados. O mapa já vem com colisão e elevação: mar com elevação 1, terra com 3.</li>
+    <li><strong>map.json</strong>: os campos da tabela acima, mais os 10 objetos com os <code>local_id</code> propostos (<code>LOCALID_SUN_MOON_ALTAR_*</code>).</li>
+    <li><strong>Fly</strong>: nova entrada em <code>heal_locations.json</code>, uma flag <code>FLAG_VISITED_*</code> ligada na primeira chegada (§7) e a posição da ilha no mapa de Johto.</li>
+    <li><strong>Portal</strong>: 9 metatiles alternativos no disco via <code>setmetatile</code> no <code>ON_LOAD</code>, com a flag de encerramento. O warp em <code>(14,9)</code> leva às expedições.</li>
+    <li><strong>Validar</strong> com <code>check_tileset.py</code>, <code>make</code> e entrando no mapa em três horários.</li>
+  </ol>
+</section>
+
+<section>
+  <span class="eyebrow">Pendências</span>
+  <h2>O que ainda falta decidir ou polir</h2>
+  <div class="open">
+    <div class="hi"><h3>Onde o jogador acorda se perder para o Ultra Necrozma</h3><p>Toda heal location precisa de um <code>respawn_map</code> com enfermeira. A ilha não tem Centro Pokémon: o caminho natural é apontar para o de Olivine, onde fica o navio. A alternativa é um NPC curandeiro na base, como 11º objeto.</p></div>
+    <div><h3>Acabamento fino</h3><p>A encosta já é arte nativa do jogo. O templo de pedra segue as convenções de Johto (luz de cima à esquerda, chanfro, sombra projetada), mas ainda foi desenhado por código: um ajuste à mão nos glifos e na estela ainda rende.</p></div>
+    <div><h3>Floresta atrás do altar</h3><p>A faixa de trás saiu com uma fileira só, parecendo sebe. Uma floresta de duas fileiras ou o paredão de pedra de Cianwood ficaria mais natural.</p></div>
+    <div><h3>Paletas de sprite em runtime</h3><p>Elenco (8 paletas) mais o jogador e o follower dá umas 11 das 16. Pela conta cabe, mas é a cena mais pesada do arco; medir no emulador.</p></div>
+    <div><h3>Música, nome no mapa e destino do portal</h3><p>Seguem em aberto no design (§10 e §14).</p></div>
+  </div>
+</section>
+
+<footer>Gerado a partir de <span class="mono">data/maps/SunMoonAltar</span>, do <span class="mono">johto_general</span> e da arte conceitual. O rascunho (<span class="mono">map.bin</span>, <span class="mono">border.bin</span>, tileset e objetos) ainda está fora do repositório.</footer>
+</div>
+
+<script>
+(function(){
+  var shots={
+    day:["{{IMG:ilha/dia.png}}","Chegada: o navio atraca no cais sul. Das 10h às 19h o disco, os medalhões e os orbes mostram o sol."],
+    night:["{{IMG:ilha/noite.png}}","Das 21h às 6h: a lua no disco, nos medalhões e nos orbes, flores lilases nos canteiros do altar. Nenhum script envolvido."],
+    climax:["{{IMG:ilha/climax.png}}","Clímax: Lusamine diante do disco, o jogador no palco, Lillie e Gladion com os parceiros, Looker, Anabel e Kukui no terraço."],
+    base:["{{IMG:ilha/base_noite.png}}","Depois de Necrozma: o disco vira portal (setmetatile), Looker e Anabel montam base na clareira oeste. À noite."],
+    coll:["{{IMG:ilha/colisao.png}}","Colisão gerada: vermelho bloqueia. Palco, terraço, escadas, trilha, praia e cais são andáveis. Verde: pouso do Fly. Lilás: warp do portal."]
+  };
+  var img=document.getElementById('shot'),cap=document.getElementById('cap');
+  var btns=document.querySelectorAll('.seg button');
+  function show(k){
+    img.src=shots[k][0];cap.textContent=shots[k][1];
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===k?'true':'false')});
+    try{localStorage.setItem('altar-island-view',k)}catch(e){}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.k)})});
+  try{var k=localStorage.getItem('altar-island-view');if(k&&shots[k])show(k)}catch(e){}
+})();
+</script>

@@ -67,6 +67,9 @@ PokemonLeague_HallOfFame_EventScript_SetFirstGameClearFlags::
 	setvar VAR_NEWBARK_TOWN_STATE, 6
 	setvar VAR_SSAQUA_STATE, 0
 	setvar VAR_POSTGAME_UNLOCKS_STATE, 1
+	@ Rift Missions: arms Looker's call in New Bark. Only the first Hall of
+	@ Fame runs this block, so League rematches never re-arm it.
+	setvar VAR_RIFT_MISSIONS_STATE, 1
 	return
 
 PokemonLeague_HallOfFame_EventScript_SetGameClearFlags::

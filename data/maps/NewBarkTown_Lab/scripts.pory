@@ -5,7 +5,11 @@ NewBarkTown_Lab_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, NewBarkTown_Lab_OnFrame
 	.byte 0
 
+@ WARNING: the three lines below are goto_if_eq, NOT call_if_eq - whoever
+@ matches one never comes back here. Any new call must go ABOVE them or it
+@ silently stops running in those lab states. (Rift Mission 4, section 3.6.)
 NewBarkTown_Lab_OnTransition::
+	call NewBarkTown_Lab_ApplyElmVisibility                @ Rift Mission 4 - must stay first
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 6, NewBarkTown_Lab_EventScript_ElmAtComputer
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 2, NewBarkTown_Lab_EventScript_ElmAtComputer
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 3, NewBarkTown_Lab_EventScript_ElmAtComputer
@@ -14,6 +18,27 @@ NewBarkTown_Lab_OnTransition::
 NewBarkTown_Lab_OnFrame::
 	map_script_2 VAR_NEWBARKTOWN_LABSTATE, 4, NewBarkTown_Lab_EventScript_PoliceEpisode
 	.2byte 0
+
+@ Rift Mission 4 (.claude/NEWBARK_ULTRABEAST_IMPLEMENTATION.md, section 3.6).
+@ Professor Elm stands on the road outside during the New Bark incident, and
+@ the lab door is one warp from the scene, so he must not also be in here.
+@ LOCALID_ELM's map.json "flag" field used to be 0; it is now FLAG_TEMP_1, a
+@ dumb per-visit cache, and FLAG_EVENT_ULTRABEAST_NEWBARK stays the
+@ persistent truth. The two changes are a PAIR: the map.json without this
+@ script deletes Elm from the lab permanently.
+@   visible <=> no incident running
+@ Temps are zeroed on every map load, so the default is VISIBLE - the safe
+@ error. NEVER removeobject LOCALID_ELM.
+@ NewBarkTown_Lab_EventScript_ElmAtComputer below does setobjectxyperm on the
+@ same local id. That is position, not visibility, and the two do not fight:
+@ after the mission the template is re-read from map.json and Elm is back at
+@ (6,3) - or at (3,2) in the lab states that ask for it.
+NewBarkTown_Lab_ApplyElmVisibility::
+	clearflag FLAG_TEMP_1
+	goto_if_unset FLAG_EVENT_ULTRABEAST_NEWBARK, NewBarkTown_Lab_ElmStays
+	setflag FLAG_TEMP_1
+NewBarkTown_Lab_ElmStays::
+	return
 
 NewBarkTown_Lab_EventScript_ElmAtComputer::
 	setobjectxyperm LOCALID_ELM, 3, 2
@@ -67,14 +92,17 @@ NewBarkTown_EventScript_Aide2Testimony::
 NewBarkTown_Lab_EventScript_Elm::
 	lock
 	faceplayer
-	goto_if_set FLAG_HIDE_NEWBARKTOWN_LAB_AIDE, NewBarkTown_Lab_EventScript_ElmAideIsWaiting
+	goto_if_set FLAG_RECEIVED_MYSTERY_EGG, NewBarkTown_Lab_EventScript_ElmAfterGladion
+	goto_if_eq VAR_VIOLET_CITY_STATE, 4, NewBarkTown_Lab_EventScript_ElmGladionIsWaiting
+
+NewBarkTown_Lab_EventScript_ElmAfterGladion::
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 7, NewBarkTown_Lab_EventScript_ElmMasterBall
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 8, NewBarkTown_Lab_EventScript_ElmKimono
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 9, NewBarkTown_Lab_EventScript_ElmLeague
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 10, NewBarkTown_Lab_EventScript_ElmPostgameHint
 
-	goto_if_set FLAG_SHOWN_ELM_TOGEPI, NewBarkTown_Lab_EventScript_Elm_CallMe
-	call_if_unset FLAG_SHOWN_ELM_TOGEPI, NewBarkTown_Lab_EventScript_Elm_Check_Togepi
+	goto_if_set FLAG_SHOWN_ELM_COSMOG, NewBarkTown_Lab_EventScript_Elm_CallMe
+	call_if_unset FLAG_SHOWN_ELM_COSMOG, NewBarkTown_Lab_EventScript_Elm_Check_Cosmog
 	goto_if_ge VAR_GOLDENROD_CITY_STATE, 1, NewBarkTown_Lab_EventScript_Elm_Check_WhereIsEgg
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 5, NewBarkTown_Lab_EventScript_ElmState5
 
@@ -85,17 +113,19 @@ NewBarkTown_Lab_EventScript_Elm::
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 1, NewBarkTown_Lab_EventScript_ElmChoosePokemon
 	end
 
-NewBarkTown_Lab_EventScript_ElmAideIsWaiting::
-	msgbox NewBarkTown_Lab_Text_ElmAideIsWaiting, MSGBOX_DEFAULT
+NewBarkTown_Lab_EventScript_ElmGladionIsWaiting::
+	msgbox NewBarkTown_Lab_Text_ElmGladionIsWaiting, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
 
-NewBarkTown_Lab_Text_ElmAideIsWaiting:
+NewBarkTown_Lab_Text_ElmGladionIsWaiting:
 	.string "{PLAYER}!\p"
 	.string "What are you doing here?\p"
-	.string "My aide is still waiting for you\n"
-	.string "In Violet City!$"
+	.string "Gladion is waiting for you at\n"
+	.string "Violet City's Pokémon Center.\p"
+	.string "He has the Egg I wanted you to\n"
+	.string "look after.$"
 
 NewBarkTown_Lab_EventScript_ElmIntro::
 	createfieldmugshot MUGSHOT_ELM
@@ -442,6 +472,7 @@ NewBarkTown_Lab_EventScript_ElmMasterBall::
 	delay 60
 	msgbox NewBarkTown_Lab_Text_KimonoGirls, MSGBOX_DEFAULT
 	call NewBarkTown_Lab_GiveStarterMega
+	call NewBarkTown_Lab_EventScript_GiveMissedSurf
 	closemessage
 	setvar VAR_NEWBARKTOWN_LABSTATE, 8
 	setvar VAR_ECRUTEAK_CITY_THEATER, 4
@@ -454,10 +485,25 @@ NewBarkTown_Lab_EventScript_ElmMasterBall::
 NewBarkTown_Lab_EventScript_ElmKimono::
 	lock
 	faceplayer
+	call NewBarkTown_Lab_EventScript_GiveMissedSurf
 	msgbox NewBarkTown_Lab_Text_KimonoWaiting, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
+
+@ HM Surf normally comes from the man in the Ecruteak Dance Theater after
+@ the Rocket Grunt is beaten. The Master Ball scene above hides him
+@ (FLAG_HIDE_ECRUTEAK_CITY_THEATER_NPCS) and jumps the theater to state 4,
+@ so a player who skipped that arc would lose Surf for good. Elm hands it
+@ over instead. Also called from ElmKimono for saves already past the scene.
+NewBarkTown_Lab_EventScript_GiveMissedSurf::
+	goto_if_set FLAG_RECEIVED_HM_SURF, NewBarkTown_Lab_EventScript_GiveMissedSurfEnd
+	msgbox NewBarkTown_Lab_Text_ElmMissedSurf, MSGBOX_DEFAULT
+	giveitem ITEM_HM_SURF
+	goto_if_eq VAR_RESULT, FALSE, NewBarkTown_Lab_EventScript_GiveMissedSurfEnd
+	setflag FLAG_RECEIVED_HM_SURF
+NewBarkTown_Lab_EventScript_GiveMissedSurfEnd::
+	return
 
 NewBarkTown_Lab_EventScript_ElmLeague::
 	lock
@@ -503,25 +549,53 @@ NewBarkTown_Lab_EventScript_Elm_Check_WhereIsEgg::
 	release
 	end
 
-NewBarkTown_Lab_EventScript_Elm_Check_Togepi::
-	specialvar VAR_RESULT, CheckTogepi
-	goto_if_eq VAR_RESULT, TRUE, NewBarkTown_Lab_EventScript_Elm_Togepi_Seen
+NewBarkTown_Lab_EventScript_Elm_Check_Cosmog::
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
+	goto_if_eq VAR_RESULT, SPECIES_COSMOG, NewBarkTown_Lab_EventScript_Elm_Cosmog_Seen
+	goto_if_eq VAR_RESULT, SPECIES_COSMOEM, NewBarkTown_Lab_EventScript_Elm_Cosmog_Evolved_Seen
+	goto_if_eq VAR_RESULT, SPECIES_SOLGALEO, NewBarkTown_Lab_EventScript_Elm_Cosmog_Evolved_Seen
+	goto_if_eq VAR_RESULT, SPECIES_LUNALA, NewBarkTown_Lab_EventScript_Elm_Cosmog_Evolved_Seen
 	return
 
-NewBarkTown_Lab_EventScript_Elm_Togepi_Seen::
-	msgbox NewBarkTown_Lab_Text_ShowTogepi1, MSGBOX_DEFAULT
+NewBarkTown_Lab_EventScript_Elm_Cosmog_Seen::
+	createfieldmugshot MUGSHOT_ELM
+	msgbox NewBarkTown_Lab_Text_CosmogVisitIntro, MSGBOX_DEFAULT
 	waitmessage
-	msgbox NewBarkTown_Lab_Text_ShowTogepi2, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_CosmogObservation, MSGBOX_DEFAULT
 	waitmessage
-	msgbox NewBarkTown_Lab_Text_ShowTogepi3, MSGBOX_DEFAULT
+	goto NewBarkTown_Lab_EventScript_Elm_Cosmog_Reward
+
+NewBarkTown_Lab_EventScript_Elm_Cosmog_Evolved_Seen::
+	createfieldmugshot MUGSHOT_ELM
+	msgbox NewBarkTown_Lab_Text_CosmogVisitIntro, MSGBOX_DEFAULT
 	waitmessage
-	msgbox NewBarkTown_Lab_Text_ElmGiveEverstone1, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_CosmogEvolvedObservation, MSGBOX_DEFAULT
 	waitmessage
-	giveitem ITEM_SHINY_STONE
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	msgbox NewBarkTown_Lab_Text_ElmGiveEverstone2, MSGBOX_DEFAULT
+
+NewBarkTown_Lab_EventScript_Elm_Cosmog_Reward::
+	msgbox NewBarkTown_Lab_Text_CosmogResearchNotes, MSGBOX_DEFAULT
+	waitmessage
+	msgbox NewBarkTown_Lab_Text_CosmogCare, MSGBOX_DEFAULT
+	waitmessage
+	msgbox NewBarkTown_Lab_Text_CosmogOfferEviolite, MSGBOX_DEFAULT
+	waitmessage
 	closemessage
-	setflag FLAG_SHOWN_ELM_TOGEPI
+	removefieldmugshot
+	giveitem ITEM_EVIOLITE
+	goto_if_eq VAR_RESULT, FALSE, NewBarkTown_Lab_EventScript_Elm_Cosmog_BagFull
+	setflag FLAG_SHOWN_ELM_COSMOG
+	createfieldmugshot MUGSHOT_ELM
+	msgbox NewBarkTown_Lab_Text_CosmogExplainEviolite, MSGBOX_DEFAULT
+	waitmessage
+	msgbox NewBarkTown_Lab_Text_CosmogFarewell, MSGBOX_DEFAULT
+	closemessage
+	removefieldmugshot
+	release
+	end
+
+NewBarkTown_Lab_EventScript_Elm_Cosmog_BagFull::
+	msgbox NewBarkTown_Lab_Text_CosmogBagFull, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 
@@ -695,20 +769,20 @@ NewBarkTown_Lab_Text_ElmGotAnEmail:
 	.string "Okay…$"
 
 NewBarkTown_Lab_Text_ElmMissionFromMrPokemon:
-	.string "Hey, listen.\p"
-	.string "I have an acquaintance called\n"
-	.string "Mr. Pokémon.\p"
-	.string "He keeps finding weird things and\n"
-	.string "raving about his discoveries.\p"
-	.string "Anyway, I just got an e-mail\n"
-	.string "from him saying that this\l"
-	.string "time it's real.\p"
-	.string "It is intriguing, but we're\n"
-	.string "busy with our Pokémon research...\p"
-	.string "Wait!\n"
-	.string "I know!\p"
-	.string "{PLAYER}, can you go in our\n"
-	.string "place?$"
+	.string "That was Professor Kukui,\n"
+	.string "a researcher from Alola.\p"
+	.string "He's visiting Johto to study\n"
+	.string "Alolan Pokémon spotted here.\p"
+	.string "A Day-Care couple gave him\n"
+	.string "an unusual Egg.\p"
+	.string "He'd like me to examine it!\p"
+	.string "He's working from a house on\n"
+	.string "Route 30, north of Cherrygrove.\p"
+	.string "I'd go myself, but I can't\n"
+	.string "leave the lab right now...\p"
+	.string "Wait! I have an idea!\p"
+	.string "{PLAYER}, could you pick up\n"
+	.string "the Egg for me?$"
 
 NewBarkTown_Lab_Text_ElmChooseAPokemon:
 	.string "I want you to raise one of\n"
@@ -749,14 +823,13 @@ NewBarkTown_Lab_Text_Nickname:
 	.string "{STR_VAR_1} a nickname?$"
 
 NewBarkTown_Lab_Text_ElmDirections1:
-	.string "Mr. Pokémon lives a little bit\n"
-	.string "beyond Cherrygrove, the next\l"
-	.string "city over.\p"
-	.string "It's almost a direct route\n"
-	.string "there, so you can't miss it.\p"
-	.string "But just in case, you have my\n"
-	.string "phone number. Call me if\l"
-	.string "anything comes up!$"
+	.string "Kukui is staying in a house\n"
+	.string "on Route 30, just north of\l"
+	.string "Cherrygrove City.\p"
+	.string "Head west to Cherrygrove,\n"
+	.string "then follow the road north.\p"
+	.string "You have my phone number,\n"
+	.string "so call me if you need help!$"
 
 
 NewBarkTown_Lab_Text_ElmLetYourMonBattle:
@@ -776,10 +849,10 @@ NewBarkTown_Lab_Text_GotElmsNumber:
 	.string "number.$"
 
 NewBarkTown_Lab_Text_ElmDescribesMrPokemon:
-	.string "Mr. Pokémon goes everywhere and\n"
-	.string "finds rarities.\p"
-	.string "Too bad they're just rare and\n"
-	.string "not very useful…$"
+	.string "Kukui says familiar Pokémon\n"
+	.string "can look quite different in Alola.\p"
+	.string "Even their types can change!\n"
+	.string "I'd love to study how they adapt.$"
 
 NewBarkTown_Lab_Text_ElmPokeBall:
 	.string "It contains Pokémon caught\n"
@@ -789,7 +862,7 @@ NewBarkTown_Lab_Text_ElmPokeBall:
 
 NewBarkTown_Lab_Text_ElmAfterTheft1:
 	.string "Elm: {PLAYER}, this is terrible…\p"
-	.string "Oh, yes, what was Mr. Pokémon's\n"
+	.string "Oh, yes, what was Kukui's\n"
 	.string "big discovery?$"
 
 NewBarkTown_Lab_Text_ElmAfterTheft2:
@@ -845,32 +918,75 @@ NewBarkTown_Lab_Text_ElmThoughtEggHatched:
 	.string "hatched.\p"
 	.string "Where is the Pokémon?$"
 
-NewBarkTown_Lab_Text_ShowTogepi1:
-	.string "Elm: {PLAYER}, you look great!$"
+NewBarkTown_Lab_Text_CosmogVisitIntro:
+	.string "Elm: {PLAYER}! You came back!\p"
+	.string "And you brought the Pokémon\n"
+	.string "from Kukui's Egg?\p"
+	.string "Let me put these notes aside.\n"
+	.string "I'd like a closer look!$"
 
-NewBarkTown_Lab_Text_ShowTogepi2:
-	.string "What? That Pokémon!?!$"
+NewBarkTown_Lab_Text_CosmogObservation:
+	.string "So this is Cosmog...\p"
+	.string "It looks as though a piece\n"
+	.string "of the night sky drifted inside!\p"
+	.string "To think it was tucked away\n"
+	.string "in that little Egg all along.\p"
+	.string "Hmm... Where did I put\n"
+	.string "my other notebook?$"
 
-NewBarkTown_Lab_Text_ShowTogepi3:
-	.string "The Egg hatched! So, Pokémon\n"
-	.string "are born from Eggs…\p"
-	.string "No, perhaps not all Pokémon\n"
-	.string "are.\p"
-	.string "Wow, there's still a lot of\n"
-	.string "research to be done.$"
+NewBarkTown_Lab_Text_CosmogEvolvedObservation:
+	.string "It's already evolved?\n"
+	.string "I have some catching up to do!\p"
+	.string "What was it like when\n"
+	.string "it first came out of the Egg?\p"
+	.string "Even a small detail could help.\n"
+	.string "Let me find a fresh page!$"
 
-NewBarkTown_Lab_Text_ElmGiveEverstone1:
-	.string "Thanks, {PLAYER}! You're helping\n"
-	.string "unravel Pokémon mysteries for us!\p"
-	.string "I want you to have this as a\n"
-	.string "token of our appreciation.$"
+NewBarkTown_Lab_Text_CosmogResearchNotes:
+	.string "Kukui sent me one Egg,\n"
+	.string "and now I have a hundred questions.\p"
+	.string "I'll send him my observations.\n"
+	.string "He may know where to start.\p"
+	.string "I suspect his reply will bring\n"
+	.string "a few more questions too!$"
 
-NewBarkTown_Lab_Text_ElmGiveEverstone2:
-	.string "That's a Shiny Stone.\p"
-	.string "Some species of Pokémon evolve\n"
-	.string "when they grow to certain levels.\p"
-	.string "A Togetic will evolve\n"
-	.string "with this one.$"
+NewBarkTown_Lab_Text_CosmogCare:
+	.string "Oh, listen to me rambling.\n"
+	.string "You're here for a visit!\p"
+	.string "Thank you for taking care\n"
+	.string "of this Pokémon, {PLAYER}.\p"
+	.string "You get to see things together\n"
+	.string "that I'd never see in this lab.$"
+
+NewBarkTown_Lab_Text_CosmogOfferEviolite:
+	.string "Actually, I have something\n"
+	.string "for your travels.\p"
+	.string "I've been keeping it here\n"
+	.string "for a young Trainer to use.$"
+
+NewBarkTown_Lab_Text_CosmogBagFull:
+	.string "Oh! There's no room\n"
+	.string "in your Bag right now.\p"
+	.string "Make some space and come back.\n"
+	.string "I'll keep it safe for you!$"
+
+NewBarkTown_Lab_Text_CosmogExplainEviolite:
+	.string "That's an Eviolite.\p"
+	.string "Have a Pokémon that can still\n"
+	.string "evolve hold it. It will boost\l"
+	.string "its Defense and Sp. Def.\p"
+	.string "A little extra protection\n"
+	.string "while it's growing!\p"
+	.string "You can give it to whichever\n"
+	.string "partner needs it most.$"
+
+NewBarkTown_Lab_Text_CosmogFarewell:
+	.string "If you notice anything unusual,\n"
+	.string "you have my number.\p"
+	.string "Now, where was that notebook...?\n"
+	.string "Ah! Under the first one.\p"
+	.string "Take care, {PLAYER}.\n"
+	.string "Both of you!$"
 
 NewBarkTown_Lab_Text_ElmCallYou:
 	.string "Elm: {PLAYER}, I'll call you if\n"
@@ -909,6 +1025,11 @@ NewBarkTown_Lab_Text_KimonoGirls:
 	.string "things since that Egg got you\l"
 	.string "involved in all this...\p"
 	.string "I hope you'll carry through it.$"
+
+NewBarkTown_Lab_Text_ElmMissedSurf:
+	.string "Prof. Elm: Oh, and a gentleman\n"
+	.string "from the Dance Theater left this\l"
+	.string "here for you.$"
 
 NewBarkTown_Lab_Text_KimonoWaiting:
 	.string "Prof. Elm: The Kimono\n"

@@ -305,6 +305,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MrFuji;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giovanni;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ProfOak;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Eusine;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Lusamine;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Lillie;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Kukui;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Gladion;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Looker;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_NurseChansey;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LegendaryShadow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SlowpokeNoTail;
@@ -662,6 +667,11 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_CASE] =                    &gObjectEventGraphicsInfo_Case,
     [OBJ_EVENT_GFX_PORTAL] =                    &gObjectEventGraphicsInfo_Portal,
     [OBJ_EVENT_GFX_TIMEGEAR] =                    &gObjectEventGraphicsInfo_Timegear,
+    [OBJ_EVENT_GFX_LUSAMINE] =                    &gObjectEventGraphicsInfo_Lusamine,
+    [OBJ_EVENT_GFX_LILLIE] =                    &gObjectEventGraphicsInfo_Lillie,
+    [OBJ_EVENT_GFX_KUKUI] =                    &gObjectEventGraphicsInfo_Kukui,
+    [OBJ_EVENT_GFX_GLADION] =                    &gObjectEventGraphicsInfo_Gladion,
+    [OBJ_EVENT_GFX_LOOKER] =                    &gObjectEventGraphicsInfo_Looker,
     [OBJ_EVENT_GFX_TMBALL] =                  &gObjectEventGraphicsInfo_TMBall,
     [OBJ_EVENT_GFX_MEGASTONE] =                  &gObjectEventGraphicsInfo_Megastone,
     [OBJ_EVENT_GFX_RUIN_MANIAC] =                &gObjectEventGraphicsInfo_RuinManiac,

@@ -206,7 +206,6 @@ Debug_LevelScaling_PartySetup_Complete:
 
 Debug_EventScript_Script_2::
 	msgbox Debug_LevelScaling_Test1_Intro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_ROXANNE_1, Debug_LevelScaling_Defeated
 	msgbox Debug_LevelScaling_Test1_Result, MSGBOX_DEFAULT
 	release
 	end
@@ -218,7 +217,6 @@ Debug_EventScript_Script_3::
 
 Debug_EventScript_Script_4::
 	msgbox Debug_LevelScaling_Test3_Intro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WATTSON_1, Debug_LevelScaling_Defeated
 	msgbox Debug_LevelScaling_Test3_Result, MSGBOX_DEFAULT
 	release
 	end
@@ -230,14 +228,12 @@ Debug_EventScript_Script_5::
 
 Debug_EventScript_Script_6::
 	msgbox Debug_LevelScaling_Test5_Intro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_NORMAN_1, Debug_LevelScaling_Defeated
 	msgbox Debug_LevelScaling_Test5_Result, MSGBOX_DEFAULT
 	release
 	end
 
 Debug_EventScript_Script_7::
 	msgbox Debug_LevelScaling_Test6_Intro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WINONA_1, Debug_LevelScaling_Defeated
 	msgbox Debug_LevelScaling_Test6_Result, MSGBOX_DEFAULT
 	release
 	end

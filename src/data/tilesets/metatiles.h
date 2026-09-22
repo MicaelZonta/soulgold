@@ -581,3 +581,9 @@ const u16 gMetatileAttributes_SpearPillar[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_underwater[] = INCBIN_U16("data/tilesets/primary/underwater/metatiles.bin");
 const u16 gMetatileAttributes_underwater[] = INCBIN_U16("data/tilesets/primary/underwater/metatile_attributes.bin");
+
+const u16 gMetatiles_AltarSunMoon[] = INCBIN_U16("data/tilesets/secondary/altar_sun_moon/metatiles.bin");
+const u16 gMetatileAttributes_AltarSunMoon[] = INCBIN_U16("data/tilesets/secondary/altar_sun_moon/metatile_attributes.bin");
+
+const u16 gMetatiles_UltraSpaceArena[] = INCBIN_U16("data/tilesets/secondary/ultra_space_arena/metatiles.bin");
+const u16 gMetatileAttributes_UltraSpaceArena[] = INCBIN_U16("data/tilesets/secondary/ultra_space_arena/metatile_attributes.bin");

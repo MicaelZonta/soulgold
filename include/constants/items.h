@@ -1064,7 +1064,7 @@ enum __attribute__((packed)) Item
     ITEM_CLEAR_BELL = 884,
     ITEM_TIDAL_BELL = 885,
     ITEM_RADIO = 886,
-    ITEM_CANDY_JAR = 887,
+    ITEM_UNUSED_887 = 887, // Formerly ITEM_CANDY_JAR; ID reserved, no functional item
     ITEM_TYPHLOSIONITE = 888,
     ITEM_PRIMARINITE = 889,
     ITEM_MEOWSCARADITE = 890,
@@ -1113,6 +1113,10 @@ enum __attribute__((packed)) Item
 
     ITEM_GROOMING_KIT = 930,
     ITEM_SEASONAL_PERFUME = 931,
+    ITEM_GIGANTATITE = 932,
+
+    // SoulGold: ferry pass Olivine <-> Sun and Moon Altar (Rift Missions)
+    ITEM_SUN_MOON_TICKET = 933,
 
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,

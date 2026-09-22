@@ -55,7 +55,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CherryGroveCity_EventScript_Fisherman",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY",
@@ -68,7 +68,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CherryGroveCity_EventScript_Boy",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FR_LASS",
@@ -81,7 +81,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CherryGroveCity_EventScript_Lass",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CORSOLA)",
@@ -94,7 +94,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CherryGroveCity_EventScript_Corsola",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(STARYU)",
@@ -120,7 +120,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CherryGroveCity_EventScript_Corsola",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(STARYU)",
@@ -133,7 +133,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CherryGroveCity_EventScript_Staryu",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CORSOLA)",
@@ -146,7 +146,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CORSOLA)",
@@ -159,7 +159,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CORSOLA)",
@@ -172,7 +172,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CORSOLA)",
@@ -185,7 +185,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "local_id": "LOCALID_CHERRYGROVE_SILVER",
@@ -212,7 +212,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
@@ -225,7 +225,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Cherrygrove_FriendlyTrader",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "local_id": "LOCALID_CHERRY_ZIGZAGOON",
@@ -239,7 +239,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Cherrygrove_Zigzagoon",
-      "flag": "FLAG_PICKED_ZIGZAGOON"
+      "flag": "FLAG_TEMP_3"
     },
     {
       "local_id": "LOCALID_CHERRY_RATTATA",
@@ -253,7 +253,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Cherrygrove_Rattata",
-      "flag": "FLAG_PICKED_RATTATA"
+      "flag": "FLAG_TEMP_4"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
@@ -266,7 +266,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Cherrygrove_Littlegirl",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZIGZAGOON)",
@@ -279,7 +279,77 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_CHERRYGROVE"
+    },
+    {
+      "local_id": "LOCALID_CHERRYGROVE_UB_KUKUI",
+      "graphics_id": "OBJ_EVENT_GFX_KUKUI",
+      "x": 26,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CherrygroveCity_EventScript_UBKukui",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_CHERRYGROVE_UB_LOOKER",
+      "graphics_id": "OBJ_EVENT_GFX_LOOKER",
+      "x": 27,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CherrygroveCity_EventScript_UBLooker",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_CHERRYGROVE_UB_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "x": 28,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CherrygroveCity_EventScript_UBAnabel",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_CHERRYGROVE_UB_BLACEPHALON",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BLACEPHALON)",
+      "x": 24,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
+    },
+    {
+      "local_id": "LOCALID_CHERRYGROVE_UB_STAKATAKA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(STAKATAKA)",
+      "x": 24,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
     }
   ],
   "warp_events": [

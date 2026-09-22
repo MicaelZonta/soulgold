@@ -351,6 +351,7 @@ gSpecials::
 	def_special IsStarterInParty
 	def_special CopyCurSecretBaseOwnerName_StrVar1
 	def_special ScriptCheckFreePokemonStorageSpace
+	def_special ScriptCheckPlayerWestOfGladion
 	def_special DoSealedChamberShakingEffect_Long
 	def_special ShowDeptStoreElevatorFloorSelect
 	def_special InteractWithShieldOrTVDecoration
@@ -602,7 +603,7 @@ gSpecials::
 	def_special CheckAerodactyl
 	def_special CheckKabuto
 	def_special CheckOmanyte
-	def_special CheckTogepi
+	def_special CheckMysteryEggPokemon
 	def_special CheckCelebi
 	def_special HaircutBrother1
 	def_special HaircutBrother2

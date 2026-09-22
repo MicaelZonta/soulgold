@@ -6,11 +6,6 @@ MagmaHideout_1F_OnTransition:
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 0
 	end
 
-MagmaHideout_1F_EventScript_Grunt1::
-	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_1, MagmaHideout_1F_Text_Grunt1Intro, MagmaHideout_1F_Text_Grunt1Defeat
-	msgbox MagmaHideout_1F_Text_Grunt1PostBattle, MSGBOX_AUTOCLOSE
-	end
-
 MagmaHideout_1F_EventScript_Grunt2::
 	trainerbattle_single TRAINER_NONE, MagmaHideout_1F_Text_Grunt2Intro, MagmaHideout_1F_Text_Grunt2Defeat
 	msgbox MagmaHideout_1F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
@@ -50,4 +45,3 @@ MagmaHideout_1F_Text_Grunt2PostBattle:
 	.string "You'll find out when you get there!\p"
 	.string "It'd be better if you saved surprises\n"
 	.string "to the end, don't you think?$"
-

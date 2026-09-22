@@ -241,6 +241,7 @@ Route29_Text_Sign1:
 	.string "Route 29\p"
 	.string "Cherrygrove City - New Bark Town$"
 
+
 `
 
 script Route29ExNightNpc {

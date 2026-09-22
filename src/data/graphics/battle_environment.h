@@ -56,6 +56,11 @@ const u32 gBattleEnvironmentTiles_Space[] = INCBIN_U32("graphics/battle_environm
 const u32 gBattleEnvironmentTilemap_Space[] = INCBIN_U32("graphics/battle_environment/space/tiles.bin.smolTM");
 const u16 gBattleEnvironmentPalette_Space[] = INCBIN_U16("graphics/battle_environment/space/palette.gbapal");
 
+// SoulGold: UltraSpaceArena (generator: .claude/skills/montar-tileset/exemplo_fundo_batalha_ultra.py)
+const u32 gBattleEnvironmentTiles_UltraSpace[] = INCBIN_U32("graphics/battle_environment/ultra_space/tiles.4bpp.smol");
+const u32 gBattleEnvironmentTilemap_UltraSpace[] = INCBIN_U32("graphics/battle_environment/ultra_space/tiles.bin.smolTM");
+const u16 gBattleEnvironmentPalette_UltraSpace[] = INCBIN_U16("graphics/battle_environment/ultra_space/palette.gbapal");
+
 const u16 gBattleEnvironmentPalette_StadiumWill[] = INCBIN_U16("graphics/battle_environment/stadium/palette3.gbapal");
 const u16 gBattleEnvironmentPalette_StadiumKoga[] = INCBIN_U16("graphics/battle_environment/stadium/palette4.gbapal");
 const u16 gBattleEnvironmentPalette_StadiumBruno[] = INCBIN_U16("graphics/battle_environment/stadium/palette5.gbapal");

@@ -1184,6 +1184,10 @@ enum
     MAP_RINTO_HOUSE3        = (3 | (34 << 8)),
     MAP_RINTO_VILLAGE_MART  = (4 | (34 << 8)),
 
+    // gMapGroup_RiftMissions
+    MAP_SUN_MOON_ALTAR    = (0 | (35 << 8)),
+    MAP_ULTRA_SPACE_ARENA = (1 | (35 << 8)),
+
 };
 
 //Constants for unused maps
@@ -1500,6 +1504,6 @@ enum
 #define MAP_POKEMON_MANSION_3F                           31293
 #define MAP_POKEMON_MANSION_B1F                          31294
 
-#define MAP_GROUPS_COUNT 35
+#define MAP_GROUPS_COUNT 36
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

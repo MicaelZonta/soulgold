@@ -3163,9 +3163,21 @@ static bool8 IsBattleEntrySelectionComplete(void)
     for (i = 0; i < maxBattlers; i++)
     {
         if (gSelectedOrderFromParty[i] == 0)
+            break;
+    }
+    if (i == maxBattlers)
+        return TRUE;
+
+    // Fewer picks than slots is still complete once the minimum is met and
+    // nothing eligible is left to pick - e.g. a 3-mon multi battle with only
+    // 2 healthy mons (or 2 mons + an Egg). Otherwise the menu can't close.
+    if (i < GetMinBattleEntries())
+        return FALSE;
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        if (GetPartySlotEntryStatus(i) == 0)
             return FALSE;
     }
-
     return TRUE;
 }
 
@@ -5263,7 +5275,7 @@ static void CursorCb_Enter(u8 taskId)
             gSelectedOrderFromParty[i] = gPartyMenu.slotId + 1;
             DisplayPartyPokemonDescriptionText(i + PARTYBOX_DESC_FIRST, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
             RefreshSelectedMonInfoAndPrompt();
-            if (i == maxBattlers - 1)
+            if (IsBattleEntrySelectionComplete())
                 gPartyMenu.task(taskId);
             else
                 gTasks[taskId].func = Task_HandleChooseMonInput;

@@ -484,12 +484,12 @@ Route29_Text_Sign1:
 	.string "Cherrygrove City - New Bark Town$"
 
 Route29ExNightNpc::
-# 247 "data/maps/Route29/scripts.pory"
+# 248 "data/maps/Route29/scripts.pory"
 	msgbox Route29ExNightNpc_Text_0, MSGBOX_NPC
 	return
 
 
 Route29ExNightNpc_Text_0:
-# 247 "data/maps/Route29/scripts.pory"
+# 248 "data/maps/Route29/scripts.pory"
 	.string "I'm checking my Pokégear for a map\n"
 	.string "to see where I am going!$"

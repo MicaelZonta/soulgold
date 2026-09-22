@@ -412,11 +412,6 @@ RusturfTunnel_Movement_PeekoExit:
 	walk_left
 	step_end
 
-RusturfTunnel_EventScript_Mike::
-	trainerbattle_single TRAINER_MIKE_2, RusturfTunnel_Text_MikeIntro, RusturfTunnel_Text_MikeDefeat
-	msgbox RusturfTunnel_Text_MikePostBattle, MSGBOX_AUTOCLOSE
-	end
-
 RusturfTunnel_Text_ComeAndGetSome:
 	.string "What, are you coming?\n"
 	.string "Come and get some, then!$"
@@ -523,4 +518,3 @@ RusturfTunnel_Text_MikePostBattle:
 	.string "They halted development here to\n"
 	.string "protect Pokémon, right?\l"
 	.string "There's a feel-good story!$"
-

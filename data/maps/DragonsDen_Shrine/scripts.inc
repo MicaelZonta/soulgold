@@ -1,8 +1,14 @@
+@ map.json has no local_id fields: these ids are the object's position in the
+@ object_events array. Lillie and Ninetales are appended AFTER Clair so that
+@ Clair keeps id 4. Never insert objects before them.
 .set LOCALID_DRAGONSDEN3_CLAIR, 4
 .set LOCALID_DRAGONSDEN3_ELDER, 1
+.set LOCALID_DRAGONSDEN3_LILLIE, 5
+.set LOCALID_DRAGONSDEN3_NINETALES, 6
 
 DragonsDen_Shrine_MapScripts::
 	@map_script MAP_SCRIPT_ON_FRAME_TABLE, DragonsDen_Shrine_OnFrame
+	map_script MAP_SCRIPT_ON_TRANSITION, DragonsDen_Shrine_OnTransition
 	.byte 0
 
 DragonsDen_Shrine_OnFrame::
@@ -95,74 +101,219 @@ DragonsDen_Shrine_Movement_MonWalkToElderRight:
 	walk_up
 	step_end
 
+@ ---------------------------------------------------------------------------
+@ Lillie and Ninetales in the Elder's test (see docs/IMPLEMENTACAO_LILLIE_PRE_V13.md)
+@
+@   tile plan (measured from map.bin; walkable area x 3-9, y 8-16):
+@     Elder (6,9)   Lillie (7,9)   Ninetales (8,9)
+@     player stops at (6,10), follower at ~(6,11)
+@     Clair enters (5,16) -> (5,10); Elder walks (6,9) -> (3,9) and back
+@   Lillie and Ninetales stand in the corridor (7,9)/(8,9), which no vanilla
+@   movement touches. They leave down column 7 BEFORE Clair enters.
+@
+@   Vanilla first: every accepted answer still shows Text_RightAnswer and
+@   every rejected one still runs ElderWrong (VAR_DRAGONS_DEN_QUIZ + 1) and
+@   re-asks. Lillie only speaks after that and never touches the counter.
+@
+@ Per-visit state (reset in DragonsDen_Shrine_OnTransition; VAR_TEMP_* and
+@ FLAG_TEMP_* are also wiped by the engine on every warp):
+@   FLAG_TEMP_1    - hide flag of Lillie and Ninetales; set unless state == 2
+@   FLAG_TEMP_2..7 - rejected-answer reaction already shown this visit:
+@                    2 Q1 Underling, 3 Q2 Cheating, 4 Q3 Weak person,
+@                    5 Q4 Violence, 6 Q5 Tough, 7 Q5 Weak
+@   VAR_TEMP_3     - battle outcome, copied right after GetBattleOutcome
+@   VAR_TEMP_5     - previous state of B_FLAG_NO_WHITEOUT
+@ ---------------------------------------------------------------------------
+
+DragonsDen_Shrine_OnTransition::
+	setvar VAR_TEMP_2, 0
+	setvar VAR_TEMP_3, 0
+	setvar VAR_TEMP_4, 0
+	setvar VAR_TEMP_5, 0
+	clearflag FLAG_TEMP_2
+	clearflag FLAG_TEMP_3
+	clearflag FLAG_TEMP_4
+	clearflag FLAG_TEMP_5
+	clearflag FLAG_TEMP_6
+	clearflag FLAG_TEMP_7
+	call_if_eq VAR_BLACKTHORN_CITY_STATE, 2, DragonsDen_Shrine_EventScript_ShowLillie
+	call_if_ne VAR_BLACKTHORN_CITY_STATE, 2, DragonsDen_Shrine_EventScript_HideLillie
+	end
+
+DragonsDen_Shrine_EventScript_ShowLillie::
+	clearflag FLAG_TEMP_1
+	return
+
+DragonsDen_Shrine_EventScript_HideLillie::
+	setflag FLAG_TEMP_1
+	return
+
 DragonsDen_Shrine_EventScript_ElderOfferQuiz::
+	@ --- Lillie was already here when the player arrived ---
+	turnobject LOCALID_DRAGONSDEN3_LILLIE, DIR_SOUTH
+	msgbox DragonsDen_Shrine_Text_LillieArrival, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_DRAGONSDEN3_LILLIE, DIR_WEST
+	msgbox DragonsDen_Shrine_Text_ElderLillieObserves, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_DRAGONSDEN3_LILLIE, DIR_SOUTH
+	msgbox DragonsDen_Shrine_Text_LillieNotSoSure, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_DRAGONSDEN3_LILLIE, DIR_WEST
+
 	msgbox DragonsDen_Shrine_Text_ElderGreeting, MSGBOX_DEFAULT
 	setvar VAR_DRAGONS_DEN_QUIZ, 0
 	goto DragonsDen_Shrine_EventScript_ElderQuiz1
 
+@ --- Q1: Pal (0) / Underling (1) / Friend (2) ---
 DragonsDen_Shrine_EventScript_ElderQuiz1::
 	message DragonsDen_Shrine_Text_Question1
 	multichoice 20, 6, MULTI_ELDERQUIIZ1, FALSE 
 	switch VAR_RESULT
-	case 0, DragonsDen_Shrine_EventScript_ElderQuiz1Correct
-	case 2, DragonsDen_Shrine_EventScript_ElderQuiz1Correct
+	case 0, DragonsDen_Shrine_EventScript_Quiz1_Pal
+	case 1, DragonsDen_Shrine_EventScript_Quiz1_Underling
+	case 2, DragonsDen_Shrine_EventScript_Quiz1_Friend
 	case MULTI_B_PRESSED, DragonsDen_Shrine_EventScript_ElderQuiz1
 	call DragonsDen_Shrine_EventScript_ElderWrong
 	goto DragonsDen_Shrine_EventScript_ElderQuiz1
 
-DragonsDen_Shrine_EventScript_ElderQuiz1Correct::
+DragonsDen_Shrine_EventScript_Quiz1_Pal::
 	msgbox DragonsDen_Shrine_Text_RightAnswer, MSGBOX_DEFAULT
+	msgbox DragonsDen_Shrine_Text_Lillie_Q1_Pal, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_DRAGONSDEN3_LILLIE, DIR_EAST
+	turnobject LOCALID_DRAGONSDEN3_NINETALES, DIR_WEST
+	delay 30
+	turnobject LOCALID_DRAGONSDEN3_LILLIE, DIR_WEST
+	turnobject LOCALID_DRAGONSDEN3_NINETALES, DIR_SOUTH
 	goto DragonsDen_Shrine_EventScript_ElderQuiz2
 
+DragonsDen_Shrine_EventScript_Quiz1_Friend::
+	msgbox DragonsDen_Shrine_Text_RightAnswer, MSGBOX_DEFAULT
+	msgbox DragonsDen_Shrine_Text_Lillie_Q1_Friend, MSGBOX_DEFAULT
+	goto DragonsDen_Shrine_EventScript_ElderQuiz2
+
+DragonsDen_Shrine_EventScript_Quiz1_Underling::
+	call DragonsDen_Shrine_EventScript_ElderWrong
+	goto_if_set FLAG_TEMP_2, DragonsDen_Shrine_EventScript_ElderQuiz1
+	setflag FLAG_TEMP_2
+	msgbox DragonsDen_Shrine_Text_Lillie_Q1_Underling, MSGBOX_DEFAULT
+	goto DragonsDen_Shrine_EventScript_ElderQuiz1
+
+@ --- Q2: Strategy (0) / Training (1) / Cheating (2) ---
 DragonsDen_Shrine_EventScript_ElderQuiz2::
 	message DragonsDen_Shrine_Text_Question2
 	multichoice 20, 6, MULTI_ELDERQUIIZ2, FALSE 
 	switch VAR_RESULT
-	case 0, DragonsDen_Shrine_EventScript_ElderQuiz2Correct
-	case 1, DragonsDen_Shrine_EventScript_ElderQuiz2Correct
+	case 0, DragonsDen_Shrine_EventScript_Quiz2_Strategy
+	case 1, DragonsDen_Shrine_EventScript_Quiz2_Training
+	case 2, DragonsDen_Shrine_EventScript_Quiz2_Cheating
 	case MULTI_B_PRESSED, DragonsDen_Shrine_EventScript_ElderQuiz2
 	call DragonsDen_Shrine_EventScript_ElderWrong
 	goto DragonsDen_Shrine_EventScript_ElderQuiz2
 
-DragonsDen_Shrine_EventScript_ElderQuiz2Correct::
+DragonsDen_Shrine_EventScript_Quiz2_Strategy::
 	msgbox DragonsDen_Shrine_Text_RightAnswer, MSGBOX_DEFAULT
+	msgbox DragonsDen_Shrine_Text_Lillie_Q2_Strategy, MSGBOX_DEFAULT
 	goto DragonsDen_Shrine_EventScript_ElderQuiz3
 
+DragonsDen_Shrine_EventScript_Quiz2_Training::
+	msgbox DragonsDen_Shrine_Text_RightAnswer, MSGBOX_DEFAULT
+	msgbox DragonsDen_Shrine_Text_Lillie_Q2_Training, MSGBOX_DEFAULT
+	goto DragonsDen_Shrine_EventScript_ElderQuiz3
+
+DragonsDen_Shrine_EventScript_Quiz2_Cheating::
+	call DragonsDen_Shrine_EventScript_ElderWrong
+	goto_if_set FLAG_TEMP_3, DragonsDen_Shrine_EventScript_ElderQuiz2
+	setflag FLAG_TEMP_3
+	msgbox DragonsDen_Shrine_Text_Lillie_Q2_Cheating, MSGBOX_DEFAULT
+	goto DragonsDen_Shrine_EventScript_ElderQuiz2
+
+@ --- Q3: Weak person (0) / Tough person (1) / Anybody (2) ---
 DragonsDen_Shrine_EventScript_ElderQuiz3::
 	message DragonsDen_Shrine_Text_Question3
 	multichoice 20, 6, MULTI_ELDERQUIIZ3, FALSE 
 	switch VAR_RESULT
-	case 1, DragonsDen_Shrine_EventScript_ElderQuiz3Correct
-	case 2, DragonsDen_Shrine_EventScript_ElderQuiz3Correct
+	case 0, DragonsDen_Shrine_EventScript_Quiz3_WeakPerson
+	case 1, DragonsDen_Shrine_EventScript_Quiz3_Tough
+	case 2, DragonsDen_Shrine_EventScript_Quiz3_Anybody
 	case MULTI_B_PRESSED, DragonsDen_Shrine_EventScript_ElderQuiz3
 	call DragonsDen_Shrine_EventScript_ElderWrong
 	goto DragonsDen_Shrine_EventScript_ElderQuiz3
 
-DragonsDen_Shrine_EventScript_ElderQuiz3Correct::
+DragonsDen_Shrine_EventScript_Quiz3_Tough::
 	msgbox DragonsDen_Shrine_Text_RightAnswer, MSGBOX_DEFAULT
+	msgbox DragonsDen_Shrine_Text_Lillie_Q3_Tough, MSGBOX_DEFAULT
 	goto DragonsDen_Shrine_EventScript_ElderQuiz4
 
+DragonsDen_Shrine_EventScript_Quiz3_Anybody::
+	msgbox DragonsDen_Shrine_Text_RightAnswer, MSGBOX_DEFAULT
+	msgbox DragonsDen_Shrine_Text_Lillie_Q3_Anybody, MSGBOX_DEFAULT
+	goto DragonsDen_Shrine_EventScript_ElderQuiz4
+
+DragonsDen_Shrine_EventScript_Quiz3_WeakPerson::
+	call DragonsDen_Shrine_EventScript_ElderWrong
+	goto_if_set FLAG_TEMP_4, DragonsDen_Shrine_EventScript_ElderQuiz3
+	setflag FLAG_TEMP_4
+	msgbox DragonsDen_Shrine_Text_Lillie_Q3_WeakPerson, MSGBOX_DEFAULT
+	goto DragonsDen_Shrine_EventScript_ElderQuiz3
+
+@ --- Q4: Love (0) / Violence (1) / Knowledge (2) ---
 DragonsDen_Shrine_EventScript_ElderQuiz4::
 	message DragonsDen_Shrine_Text_Question4
 	multichoice 20, 6, MULTI_ELDERQUIIZ4, FALSE 
 	switch VAR_RESULT
-	case 0, DragonsDen_Shrine_EventScript_ElderQuiz4Correct
-	case 2, DragonsDen_Shrine_EventScript_ElderQuiz4Correct
+	case 0, DragonsDen_Shrine_EventScript_Quiz4_Love
+	case 1, DragonsDen_Shrine_EventScript_Quiz4_Violence
+	case 2, DragonsDen_Shrine_EventScript_Quiz4_Knowledge
 	case MULTI_B_PRESSED, DragonsDen_Shrine_EventScript_ElderQuiz4
 	call DragonsDen_Shrine_EventScript_ElderWrong
 	goto DragonsDen_Shrine_EventScript_ElderQuiz4
 
-DragonsDen_Shrine_EventScript_ElderQuiz4Correct::
+@ Lillie takes a moment longer to answer this one.
+DragonsDen_Shrine_EventScript_Quiz4_Love::
 	msgbox DragonsDen_Shrine_Text_RightAnswer, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	msgbox DragonsDen_Shrine_Text_Lillie_Q4_Love, MSGBOX_DEFAULT
 	goto DragonsDen_Shrine_EventScript_ElderQuiz5
 
+DragonsDen_Shrine_EventScript_Quiz4_Knowledge::
+	msgbox DragonsDen_Shrine_Text_RightAnswer, MSGBOX_DEFAULT
+	msgbox DragonsDen_Shrine_Text_Lillie_Q4_Knowledge, MSGBOX_DEFAULT
+	goto DragonsDen_Shrine_EventScript_ElderQuiz5
+
+DragonsDen_Shrine_EventScript_Quiz4_Violence::
+	call DragonsDen_Shrine_EventScript_ElderWrong
+	goto_if_set FLAG_TEMP_5, DragonsDen_Shrine_EventScript_ElderQuiz4
+	setflag FLAG_TEMP_5
+	msgbox DragonsDen_Shrine_Text_Lillie_Q4_Violence, MSGBOX_DEFAULT
+	goto DragonsDen_Shrine_EventScript_ElderQuiz4
+
+@ --- Q5: Tough (0) / Weak (1) / Both (2) ---
 DragonsDen_Shrine_EventScript_ElderQuiz5::
 	message DragonsDen_Shrine_Text_Question5
 	multichoice 20, 6, MULTI_ELDERQUIIZ5, FALSE 
 	switch VAR_RESULT
+	case 0, DragonsDen_Shrine_EventScript_Quiz5_Tough
+	case 1, DragonsDen_Shrine_EventScript_Quiz5_Weak
 	case 2, DragonsDen_Shrine_EventScript_ElderQuizFinish
 	case MULTI_B_PRESSED, DragonsDen_Shrine_EventScript_ElderQuiz5
 	call DragonsDen_Shrine_EventScript_ElderWrong
+	goto DragonsDen_Shrine_EventScript_ElderQuiz5
+
+DragonsDen_Shrine_EventScript_Quiz5_Tough::
+	call DragonsDen_Shrine_EventScript_ElderWrong
+	goto_if_set FLAG_TEMP_6, DragonsDen_Shrine_EventScript_ElderQuiz5
+	setflag FLAG_TEMP_6
+	msgbox DragonsDen_Shrine_Text_Lillie_Q5_Tough, MSGBOX_DEFAULT
+	goto DragonsDen_Shrine_EventScript_ElderQuiz5
+
+DragonsDen_Shrine_EventScript_Quiz5_Weak::
+	call DragonsDen_Shrine_EventScript_ElderWrong
+	goto_if_set FLAG_TEMP_7, DragonsDen_Shrine_EventScript_ElderQuiz5
+	setflag FLAG_TEMP_7
+	msgbox DragonsDen_Shrine_Text_Lillie_Q5_Weak, MSGBOX_DEFAULT
 	goto DragonsDen_Shrine_EventScript_ElderQuiz5
 
 DragonsDen_Shrine_EventScript_ElderWrong::
@@ -170,13 +321,393 @@ DragonsDen_Shrine_EventScript_ElderWrong::
 	addvar VAR_DRAGONS_DEN_QUIZ, 1
 	return
 
+@ Q5 Both: the vanilla verdict (RightAnswer + PassedTest) comes first, then the
+@ Elder's words to both Trainers, the battle, and only then Clair's scene.
 DragonsDen_Shrine_EventScript_ElderQuizFinish::
 	msgbox DragonsDen_Shrine_Text_RightAnswer, MSGBOX_DEFAULT
+	msgbox DragonsDen_Shrine_Text_Lillie_Q5_Both, MSGBOX_DEFAULT
+	closemessage
 	delay 20
 	msgbox DragonsDen_Shrine_Text_PassedTest, MSGBOX_DEFAULT
 	closemessage
+	goto DragonsDen_Shrine_EventScript_LillieConclusion
+
+DragonsDen_Shrine_EventScript_LillieConclusion::
+	msgbox DragonsDen_Shrine_Text_ElderSameQuestions, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_DRAGONSDEN3_ELDER, DIR_EAST
+	msgbox DragonsDen_Shrine_Text_ElderToLillie, MSGBOX_DEFAULT
+	closemessage
+	msgbox DragonsDen_Shrine_Text_LillieAlmostDid, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_DRAGONSDEN3_ELDER, DIR_SOUTH
+	msgbox DragonsDen_Shrine_Text_ElderShowMe, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- Lillie accepts, then introduces Ninetales ---
+	turnobject LOCALID_DRAGONSDEN3_LILLIE, DIR_SOUTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	msgbox DragonsDen_Shrine_Text_LillieABattle, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_DRAGONSDEN3_LILLIE, DIR_EAST
+	turnobject LOCALID_DRAGONSDEN3_NINETALES, DIR_WEST
+	playmoncry SPECIES_NINETALES_ALOLA, CRY_MODE_NORMAL
+	waitmoncry
+	turnobject LOCALID_DRAGONSDEN3_LILLIE, DIR_SOUTH
+	turnobject LOCALID_DRAGONSDEN3_NINETALES, DIR_SOUTH
+	msgbox DragonsDen_Shrine_Text_LillieNinetales, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- Battle without blackout: every outcome continues to Clair ---
+	call Common_EventScript_OutOfCenterPartyHeal
+	checkflag B_FLAG_NO_WHITEOUT
+	copyvar VAR_TEMP_5, VAR_RESULT
+	setflag B_FLAG_NO_WHITEOUT
+	setvar VAR_LAST_TALKED, LOCALID_DRAGONSDEN3_LILLIE
+	removefieldmugshot
+	trainerbattle_no_intro TRAINER_LILLIE_DRAGONS_DEN, DragonsDen_Shrine_Text_LillieDefeated
+	specialvar VAR_RESULT, GetBattleOutcome
+	copyvar VAR_TEMP_3, VAR_RESULT
+	goto_if_eq VAR_TEMP_5, TRUE, DragonsDen_Shrine_EventScript_LillieKeepWhiteoutOff
+	clearflag B_FLAG_NO_WHITEOUT
+DragonsDen_Shrine_EventScript_LillieKeepWhiteoutOff::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	turnobject LOCALID_DRAGONSDEN3_LILLIE, DIR_SOUTH
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_WON, DragonsDen_Shrine_EventScript_LilliePlayerWon
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_LOST, DragonsDen_Shrine_EventScript_LilliePlayerLost
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_DREW, DragonsDen_Shrine_EventScript_LillieDraw
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_FORFEITED, DragonsDen_Shrine_EventScript_LillieForfeit
+	goto DragonsDen_Shrine_EventScript_LillieUnexpectedOutcome
+
+@ B_OUTCOME_WON: DragonsDen_Shrine_Text_LillieDefeated already played in battle.
+DragonsDen_Shrine_EventScript_LilliePlayerWon::
+	msgbox DragonsDen_Shrine_Text_LillieAfterPlayerWon, MSGBOX_DEFAULT
+	closemessage
+	goto DragonsDen_Shrine_EventScript_LillieAfterBattle
+
+DragonsDen_Shrine_EventScript_LilliePlayerLost::
+	msgbox DragonsDen_Shrine_Text_LillieAfterLillieWon, MSGBOX_DEFAULT
+	closemessage
+	goto DragonsDen_Shrine_EventScript_LillieAfterBattle
+
+DragonsDen_Shrine_EventScript_LillieDraw::
+	msgbox DragonsDen_Shrine_Text_LillieAfterDraw, MSGBOX_DEFAULT
+	closemessage
+	goto DragonsDen_Shrine_EventScript_LillieAfterBattle
+
+DragonsDen_Shrine_EventScript_LillieForfeit::
+	msgbox DragonsDen_Shrine_Text_LillieAfterForfeit, MSGBOX_DEFAULT
+	closemessage
+	goto DragonsDen_Shrine_EventScript_LillieAfterBattle
+
+@ Should not happen in a trainer battle. Nobody is declared the winner, and the
+@ scene still continues: stopping here would strand the state-2 scene halfway.
+DragonsDen_Shrine_EventScript_LillieUnexpectedOutcome::
+	msgbox DragonsDen_Shrine_Text_LillieAfterDraw, MSGBOX_DEFAULT
+	closemessage
+
+DragonsDen_Shrine_EventScript_LillieAfterBattle::
+	call Common_EventScript_OutOfCenterPartyHeal
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox DragonsDen_Shrine_Text_ElderNeitherResult, MSGBOX_DEFAULT
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	msgbox DragonsDen_Shrine_Text_LillieIWill, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- Lillie and Ninetales leave together, before Clair arrives ---
+	@ Lillie: (7,9) down column 7 -> (7,16) -> warp (6,16).
+	@ Ninetales: steps into (7,9) behind her, then down to (7,16).
+	@ Column 8 is blocked at (8,15), so Ninetales has to switch to column 7.
+	msgbox DragonsDen_Shrine_Text_LillieFarewell, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_DRAGONSDEN3_LILLIE, DragonsDen_Shrine_Movement_LillieLeave
+	applymovement LOCALID_DRAGONSDEN3_NINETALES, DragonsDen_Shrine_Movement_NinetalesLeave
+	waitmovement LOCALID_DRAGONSDEN3_LILLIE
+	waitmovement LOCALID_DRAGONSDEN3_NINETALES
+	playse SE_EXIT
+	removeobject LOCALID_DRAGONSDEN3_NINETALES
+	removeobject LOCALID_DRAGONSDEN3_LILLIE
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	delay 20
 	goto DragonsDen_Shrine_EventScript_ClairEnter
 
+DragonsDen_Shrine_Movement_LillieLeave:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_in_place_down
+	step_end
+
+DragonsDen_Shrine_Movement_NinetalesLeave:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_in_place_down
+	step_end
+
+DragonsDen_Shrine_Text_LillieArrival:
+	.string "Lillie: {PLAYER}! I didn't know\n"
+	.string "Clair had sent you here.\p"
+	.string "I heard the Dragon Clan doesn't\n"
+	.string "test Trainers only in battle.\p"
+	.string "They ask what you think about\n"
+	.string "your Pokémon, too.\p"
+	.string "I wanted to hear the questions\n"
+	.string "for myself.$"
+
+DragonsDen_Shrine_Text_ElderLillieObserves:
+	.string "The young lady asked to\n"
+	.string "observe your trial.\p"
+	.string "But an answer teaches us about\n"
+	.string "the one who gives it…\p"
+	.string "…and the one who hears it.\p"
+	.string "So I have asked her to answer\n"
+	.string "as well.$"
+
+DragonsDen_Shrine_Text_LillieNotSoSure:
+	.string "Lillie: I thought I knew exactly\n"
+	.string "what I would say on the way here.\p"
+	.string "Now I'm not so sure.\p"
+	.string "I think that may be the point.$"
+
+DragonsDen_Shrine_Text_Lillie_Q1_Pal:
+	.string "Lillie: An ally… Someone who\n"
+	.string "stands beside you.\p"
+	.string "I like that.\p"
+	.string "I think I'd say “friend,” though.\p"
+	.string "Sometimes Ninetales understands\n"
+	.string "what I'm trying to do…\p"
+	.string "…before I've even worked it\n"
+	.string "out myself.$"
+
+DragonsDen_Shrine_Text_Lillie_Q1_Friend:
+	.string "Lillie: Friend… Yes.\n"
+	.string "That's my answer too.\p"
+	.string "Though lately I've wondered\n"
+	.string "which of us is teaching\l"
+	.string "the other.$"
+
+DragonsDen_Shrine_Text_Lillie_Q1_Underling:
+	.string "Lillie: I don't think I could\n"
+	.string "call my Pokémon underlings.\p"
+	.string "They notice things I miss far\n"
+	.string "too often for that.$"
+
+DragonsDen_Shrine_Text_Lillie_Q2_Strategy:
+	.string "Lillie: I used to think having\n"
+	.string "the right plan mattered most.\p"
+	.string "Then I started noticing how\n"
+	.string "often my Pokémon saw something\l"
+	.string "before I did.\p"
+	.string "Strategy matters… but only if\n"
+	.string "I'm willing to change it.$"
+
+DragonsDen_Shrine_Text_Lillie_Q2_Training:
+	.string "Lillie: Training.\p"
+	.string "I think I understand that answer\n"
+	.string "much better now.\p"
+	.string "It isn't only practicing the\n"
+	.string "same thing until it's right.\p"
+	.string "It's learning how each of us\n"
+	.string "reacts when something goes\l"
+	.string "wrong.$"
+
+DragonsDen_Shrine_Text_Lillie_Q2_Cheating:
+	.string "Lillie: I don't think that would\n"
+	.string "be my answer.\p"
+	.string "Winning wouldn't mean very much\n"
+	.string "if we learned nothing from it.$"
+
+DragonsDen_Shrine_Text_Lillie_Q3_Tough:
+	.string "Lillie: I understand that.\p"
+	.string "A strong Trainer can show you\n"
+	.string "what you still need to learn.\p"
+	.string "But someone doesn't have to look\n"
+	.string "strong to surprise you.\p"
+	.string "I think I'd choose anybody.$"
+
+DragonsDen_Shrine_Text_Lillie_Q3_Anybody:
+	.string "Lillie: Anybody.\n"
+	.string "That's mine too.\p"
+	.string "You don't really know what\n"
+	.string "you'll learn from a battle\l"
+	.string "until it starts.$"
+
+DragonsDen_Shrine_Text_Lillie_Q3_WeakPerson:
+	.string "Lillie: I don't think I'd choose\n"
+	.string "someone because I expected\l"
+	.string "them to lose.$"
+
+DragonsDen_Shrine_Text_Lillie_Q4_Love:
+	.string "Lillie: Love.\p"
+	.string "Yes… but I think I'm still\n"
+	.string "learning what that means.\p"
+	.string "Caring about someone doesn't\n"
+	.string "mean deciding everything\l"
+	.string "for them.\p"
+	.string "Sometimes it means listening\n"
+	.string "when they choose something\l"
+	.string "you didn't expect.$"
+
+DragonsDen_Shrine_Text_Lillie_Q4_Knowledge:
+	.string "Lillie: Knowledge is important.\p"
+	.string "The more I understand my\n"
+	.string "Pokémon, the easier it is to\l"
+	.string "notice what they need.\p"
+	.string "But knowing more about someone\n"
+	.string "doesn't mean you should make\l"
+	.string "every choice for them.\p"
+	.string "I'd still choose love.$"
+
+DragonsDen_Shrine_Text_Lillie_Q4_Violence:
+	.string "Lillie: No.\p"
+	.string "I want my Pokémon to grow\n"
+	.string "because they trust me…\p"
+	.string "…not because they're afraid.$"
+
+DragonsDen_Shrine_Text_Lillie_Q5_Tough:
+	.string "Lillie: Strength matters.\p"
+	.string "But I wouldn't want that to be\n"
+	.string "the only thing I noticed.$"
+
+DragonsDen_Shrine_Text_Lillie_Q5_Weak:
+	.string "Lillie: Weakness matters too.\p"
+	.string "But I wouldn't want a Pokémon\n"
+	.string "to think that's all I see.$"
+
+DragonsDen_Shrine_Text_Lillie_Q5_Both:
+	.string "Lillie: Both.\n"
+	.string "That's my answer too.\p"
+	.string "Their strengths tell me what\n"
+	.string "they can do.\p"
+	.string "Their weaknesses tell me where\n"
+	.string "I need to stand beside them.$"
+
+@ Holds for every answer combination, including a player whose accepted
+@ answers match Lillie's own (Friend, Training, Anybody, Love, Both).
+DragonsDen_Shrine_Text_ElderSameQuestions:
+	.string "Interesting.\p"
+	.string "You listened to the same\n"
+	.string "questions.\p"
+	.string "Yet each answer still had\n"
+	.string "to be your own.\p"
+	.string "Understanding another Trainer\n"
+	.string "does not require surrendering\l"
+	.string "your own judgment.$"
+
+DragonsDen_Shrine_Text_ElderToLillie:
+	.string "You listened before answering,\n"
+	.string "yet you did not surrender your\l"
+	.string "own judgment.$"
+
+DragonsDen_Shrine_Text_LillieAlmostDid:
+	.string "Lillie: I almost did.\n"
+	.string "A few times.\p"
+	.string "But then they wouldn't really\n"
+	.string "have been my answers.$"
+
+DragonsDen_Shrine_Text_ElderShowMe:
+	.string "Words reveal conviction.\p"
+	.string "But a Trainer cannot prepare\n"
+	.string "every moment of a battle.\p"
+	.string "When circumstances change,\n"
+	.string "understanding must become\l"
+	.string "action.\p"
+	.string "Show me.$"
+
+DragonsDen_Shrine_Text_LillieABattle:
+	.string "Lillie: A battle…\n"
+	.string "Yes. That makes sense.\p"
+	.string "{PLAYER}, we've just spent all\n"
+	.string "this time explaining what kind\l"
+	.string "of Trainers we want to be.\p"
+	.string "Let's see what we actually do\n"
+	.string "when the plan stops being\l"
+	.string "simple.$"
+
+DragonsDen_Shrine_Text_LillieNinetales:
+	.string "Lillie: You remember Vulpix,\n"
+	.string "don't you?\p"
+	.string "She evolved while we were\n"
+	.string "traveling. I thought I would\l"
+	.string "need to change everything.\p"
+	.string "But she didn't become someone\n"
+	.string "different.\p"
+	.string "I just had to learn to keep up.$"
+
+DragonsDen_Shrine_Text_LillieDefeated:
+	.string "We adjusted again… and you\n"
+	.string "still found the opening!$"
+
+DragonsDen_Shrine_Text_LillieAfterPlayerWon:
+	.string "Lillie: I thought I knew what\n"
+	.string "you were going to do twice.\p"
+	.string "I was wrong twice.\p"
+	.string "But we didn't freeze when it\n"
+	.string "happened.\p"
+	.string "Goldenrod felt different from\n"
+	.string "our first battle.\p"
+	.string "This felt different again.$"
+
+DragonsDen_Shrine_Text_LillieAfterLillieWon:
+	.string "Lillie: We did it.\p"
+	.string "And this time I don't think I\n"
+	.string "need to apologize for being\l"
+	.string "happy about that.\p"
+	.string "You changed what you were doing\n"
+	.string "halfway through.\p"
+	.string "We noticed.\n"
+	.string "And we changed too.$"
+
+DragonsDen_Shrine_Text_LillieAfterDraw:
+	.string "Lillie: Let's look after\n"
+	.string "everyone first.\p"
+	.string "I think we both learned\n"
+	.string "something from that.$"
+
+DragonsDen_Shrine_Text_LillieAfterForfeit:
+	.string "Lillie: Oh… You're stopping\n"
+	.string "there?\p"
+	.string "Then let's look after\n"
+	.string "everyone first.\p"
+	.string "I think we both learned\n"
+	.string "something from that.$"
+
+DragonsDen_Shrine_Text_ElderNeitherResult:
+	.string "Good.\p"
+	.string "Neither result changes what I\n"
+	.string "wished to see.\p"
+	.string "You watched your Pokémon.\n"
+	.string "You watched your opponent.\p"
+	.string "And when the battle changed,\n"
+	.string "you answered it together.\p"
+	.string "Remember your answers.\p"
+	.string "Not because they must remain\n"
+	.string "the same forever.\p"
+	.string "Remember why you gave them.$"
+
+DragonsDen_Shrine_Text_LillieIWill:
+	.string "Lillie: I will.\p"
+	.string "And I think I'll remember some\n"
+	.string "of yours, too.\p"
+	.string "Even the ones I wouldn't have\n"
+	.string "chosen.$"
+
+DragonsDen_Shrine_Text_LillieFarewell:
+	.string "Lillie: Thank you, Elder.\n"
+	.string "And thank you, {PLAYER}.\p"
+	.string "Come along, Ninetales!$"
 
 DragonsDen_Shrine_Text_ElderGreeting:
     .string "Hm… Good to see you here.\p"

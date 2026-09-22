@@ -55,16 +55,6 @@ Route102_EventScript_CalvinRematch::
 	msgbox Route102_Text_CalvinRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route102_EventScript_Rick::
-	trainerbattle_single TRAINER_RICK, Route102_Text_RickIntro, Route102_Text_RickDefeated
-	msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route102_EventScript_Tiana::
-	trainerbattle_single TRAINER_TIANA, Route102_Text_TianaIntro, Route102_Text_TianaDefeated
-	msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route102_EventScript_Allen::
 	trainerbattle_single TRAINER_ALLEN, Route102_Text_AllenIntro, Route102_Text_AllenDefeated
 	msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE

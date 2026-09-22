@@ -103,7 +103,7 @@ MauvilleCity_EventScript_Wally::
 	end
 
 MauvilleCity_EventScript_BattleWallyPrompt::
-	call_if_eq VAR_RESULT, YES, MauvilleCity_EventScript_BattleWally
+	goto_if_eq VAR_RESULT, YES, MauvilleCity_EventScript_DeclineWallyBattle
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_EventScript_DeclineWallyBattle
 	closemessage
 	switch VAR_FACING
@@ -194,20 +194,6 @@ MauvilleCity_EventScript_ScottExitEast::
 	applymovement LOCALID_PLAYER, MauvilleCity_Movement_PlayerWatchScottExitEast
 	applymovement LOCALID_MAUVILLE_SCOTT, MauvilleCity_Movement_ScottExitEast
 	waitmovement 0
-	return
-
-MauvilleCity_EventScript_BattleWally::
-	msgbox MauvilleCity_Text_WallyHereICome, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WALLY_MAUVILLE, MauvilleCity_Text_WallyDefeat
-	applymovement LOCALID_MAUVILLE_WALLY, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	msgbox MauvilleCity_Text_WallyIllGoBackToVerdanturf, MSGBOX_DEFAULT
-	applymovement LOCALID_MAUVILLE_WALLY, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox MauvilleCity_Text_ThankYouNotEnoughToBattle, MSGBOX_DEFAULT
-	applymovement LOCALID_MAUVILLE_WALLY, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	msgbox MauvilleCity_Text_UncleNoNeedToBeDown, MSGBOX_DEFAULT
 	return
 
 MauvilleCity_EventScript_DeclineWallyBattle::

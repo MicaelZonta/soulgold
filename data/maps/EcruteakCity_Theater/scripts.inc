@@ -13,6 +13,11 @@ EcruteakCity_Theater_MapScripts::
 	.byte 0
 
 EcruteakCity_Theater_OnTransition::
+	@ Prof. Elm jumps this var straight to 4 (Kimono Girls) whether or not the
+	@ Rocket arc (0 -> 1 -> 2 -> 3) was played. From 4 on the Grunt must be
+	@ gone, or beating him late rewinds the var to 2 and the Kimono Girls
+	@ event can never start.
+	call_if_ge VAR_ECRUTEAK_CITY_THEATER, 4, EcruteakCity_Theater_MapScript_CloseRocketArc
 	call_if_eq VAR_ECRUTEAK_CITY_THEATER, 1, EcruteakCity_Theater_MapScript_SetRocketSceneActive
 	call_if_eq VAR_ECRUTEAK_CITY_THEATER, 7, EcruteakCity_Theater_MapScript_SetKimonoMovement
 	goto_if_set FLAG_IS_CHAMPION, EcruteakTheater_ShowOrHideMeloetta
@@ -28,6 +33,10 @@ EcruteakTheater_ShowMeloetta::
 	return
 EcruteakTheater_HideMeloetta::
 	setflag FLAG_HIDE_MELOETTA
+	return
+
+EcruteakCity_Theater_MapScript_CloseRocketArc::
+	setflag FLAG_HIDE_ECRUTEAK_ROCKET
 	return
 
 EcruteakCity_Theater_MapScript_SetRocketSceneActive::
@@ -171,7 +180,9 @@ EcruteakCity_Theater_EventScript_Rocket::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	msgbox EcruteakCity_Theater_Text_KimonoRocket3, MSGBOX_DEFAULT
 	closemessage	
+	goto_if_ge VAR_ECRUTEAK_CITY_THEATER, 2, EcruteakCity_Theater_EventScript_RocketDone
 	setvar VAR_ECRUTEAK_CITY_THEATER, 2
+EcruteakCity_Theater_EventScript_RocketDone::
 	release
 	end
 	
@@ -1021,10 +1032,10 @@ EcruteakCity_Theater_Text_ZukiSeen:
 	.string "To bring back {STR_VAR_1}, we\n"
 	.string "needed someone with the right bond\l"
 	.string "with Pokémon.\p"
-	.string "We asked Mr. Pokémon to give this\n"
+	.string "We asked Kukui to give this\n"
 	.string "Mystery Egg to\l"
 	.string "whoever showed potential.\p"
-	.string "The Egg went from Mr. Pokémon\n"
+	.string "The Egg went from Kukui\n"
 	.string "to Prof. Elm, then to you.\p"
 	.string "But being pure alone is not enough\n"
 	.string "to face the power of this Pokémon.$"
@@ -1122,7 +1133,7 @@ EcruteakCity_Theater_Text_ZukiAfterAll:
 	.string "We appreciate how you lived up\n"
 	.string "to our hopes, {PLAYER}!\p"
 	.string "If you learned anything from\n"
-	.string "this, thank Mr. Pokémon and\l"
+	.string "this, thank Prof. Kukui and\l"
 	.string "Prof. Elm...$"
 
 EcruteakCity_Theater_Text_KimonoGirlsBeforeBattle:

@@ -62,6 +62,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CIANWOOD_YOUNGSTER",
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
       "x": 27,
       "y": 41,
@@ -75,6 +76,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_CIANWOOD_BATTLEGIRL",
       "graphics_id": "OBJ_EVENT_GFX_BATTLE_GIRL",
       "x": 20,
       "y": 54,
@@ -269,6 +271,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CameronCamera3",
       "flag": "FLAG_HIDE_CAMERON"
+    },
+    {
+      "local_id": "LOCALID_CIANWOOD_GLADION",
+      "graphics_id": "OBJ_EVENT_GFX_GLADION",
+      "x": 17,
+      "y": 47,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CIANWOOD_GLADION"
+    },
+    {
+      "local_id": "LOCALID_CIANWOOD_TYPENULL",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TYPE_NULL)",
+      "x": 17,
+      "y": 48,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CIANWOOD_GLADION"
     }
   ],
   "warp_events": [

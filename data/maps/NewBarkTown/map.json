@@ -36,7 +36,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewBarkTown_EventScript_FatMan",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FR_LASS",
@@ -49,7 +49,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewBarkTown_EventScript_Lass",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SILVER",
@@ -75,7 +75,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewBarkTown_EventScript_Wooper",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -88,7 +88,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -101,7 +101,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -114,7 +114,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -127,7 +127,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "local_id": "LOCALID_NEWBARK_MARILL",
@@ -222,6 +222,146 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_NIGHT_POKEMON"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_LOOKER",
+      "graphics_id": "OBJ_EVENT_GFX_LOOKER",
+      "x": 21,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBLooker",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "x": 22,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBAnabel",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_MOM",
+      "graphics_id": "OBJ_EVENT_GFX_MOM",
+      "x": 19,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBMom",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_RIVAL",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 21,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBRival",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_MARILL",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MARILL)",
+      "x": 22,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_ELM",
+      "graphics_id": "OBJ_EVENT_GFX_PROF_ELM",
+      "x": 11,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBElm",
+      "flag": "FLAG_TEMP_3"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_LUSAMINE",
+      "graphics_id": "OBJ_EVENT_GFX_LUSAMINE",
+      "x": 3,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBLusamine",
+      "flag": "FLAG_TEMP_4"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_KARTANA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KARTANA)",
+      "x": 15,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_GUZZLORD",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GUZZLORD)",
+      "x": 23,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_NIHILEGO",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NIHILEGO)",
+      "x": 14,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
     }
   ],
   "warp_events": [

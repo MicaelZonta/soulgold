@@ -381,6 +381,26 @@
 // Some Match Call entries (like those for gym leaders, Wally, and all non-trainer NPCs like Prof. Birch)
 // have their own separate flag that needs to be set to be enabled; see src/pokenav_match_call_data.c
 #define TRAINER_REGISTERED_FLAGS_START       0x15C
+
+// Reclaimed former Match Call registration flags. These raw positions are
+// intentionally stable so future features can reuse them without collisions.
+#define FLAG_UNUSED_165                      0x165 // Former FLAG_REGISTERED_VALERIE
+#define FLAG_UNUSED_167                      0x167 // Former FLAG_REGISTERED_THALIA
+#define FLAG_UNUSED_169                      0x169 // Former FLAG_REGISTERED_WINSTON
+#define FLAG_UNUSED_16A                      0x16A // Former FLAG_REGISTERED_STEVE
+#define FLAG_UNUSED_16B                      0x16B // Former FLAG_REGISTERED_TONY
+#define FLAG_UNUSED_16C                      0x16C // Former FLAG_REGISTERED_NOB
+#define FLAG_UNUSED_176                      0x176 // Former FLAG_REGISTERED_WALTER
+#define FLAG_UNUSED_179                      0x179 // Former FLAG_REGISTERED_ANNA_AND_MEG
+#define FLAG_UNUSED_17B                      0x17B // Former FLAG_REGISTERED_MIGUEL
+#define FLAG_UNUSED_17C                      0x17C // Former FLAG_REGISTERED_TIMOTHY
+#define FLAG_UNUSED_181                      0x181 // Former FLAG_REGISTERED_MARIA
+#define FLAG_UNUSED_184                      0x184 // Former FLAG_REGISTERED_KATELYN
+#define FLAG_UNUSED_185                      0x185 // Former FLAG_REGISTERED_BENJAMIN
+#define FLAG_UNUSED_186                      0x186 // Former FLAG_REGISTERED_PABLO
+#define FLAG_UNUSED_187                      0x187 // Former FLAG_REGISTERED_NICOLAS
+#define FLAG_UNUSED_188                      0x188 // Former FLAG_REGISTERED_ROBERT
+
 #define FLAG_REGISTERED_ROSE                 (TRAINER_REGISTERED_FLAGS_START + REMATCH_ROSE)
 #define FLAG_REGISTERED_ANDRES               (TRAINER_REGISTERED_FLAGS_START + REMATCH_ANDRES)
 #define FLAG_REGISTERED_DUSTY                (TRAINER_REGISTERED_FLAGS_START + REMATCH_DUSTY)
@@ -390,14 +410,8 @@
 #define FLAG_REGISTERED_CRISTIN              (TRAINER_REGISTERED_FLAGS_START + REMATCH_CRISTIN)
 #define FLAG_REGISTERED_BROOKE               (TRAINER_REGISTERED_FLAGS_START + REMATCH_BROOKE)
 #define FLAG_REGISTERED_WILTON               (TRAINER_REGISTERED_FLAGS_START + REMATCH_WILTON)
-#define FLAG_REGISTERED_VALERIE              (TRAINER_REGISTERED_FLAGS_START + REMATCH_VALERIE)
 #define FLAG_REGISTERED_CINDY                (TRAINER_REGISTERED_FLAGS_START + REMATCH_CINDY)
-#define FLAG_REGISTERED_THALIA               (TRAINER_REGISTERED_FLAGS_START + REMATCH_THALIA)
 #define FLAG_REGISTERED_JESSICA              (TRAINER_REGISTERED_FLAGS_START + REMATCH_JESSICA)
-#define FLAG_REGISTERED_WINSTON              (TRAINER_REGISTERED_FLAGS_START + REMATCH_WINSTON)
-#define FLAG_REGISTERED_STEVE                (TRAINER_REGISTERED_FLAGS_START + REMATCH_STEVE)
-#define FLAG_REGISTERED_TONY                 (TRAINER_REGISTERED_FLAGS_START + REMATCH_TONY)
-#define FLAG_REGISTERED_NOB                  (TRAINER_REGISTERED_FLAGS_START + REMATCH_NOB)
 #define FLAG_REGISTERED_KOJI                 (TRAINER_REGISTERED_FLAGS_START + REMATCH_KOJI)
 #define FLAG_REGISTERED_FERNANDO             (TRAINER_REGISTERED_FLAGS_START + REMATCH_FERNANDO)
 #define FLAG_REGISTERED_DALTON               (TRAINER_REGISTERED_FLAGS_START + REMATCH_DALTON)
@@ -407,25 +421,15 @@
 #define FLAG_REGISTERED_JEFFREY              (TRAINER_REGISTERED_FLAGS_START + REMATCH_JEFFREY)
 #define FLAG_REGISTERED_CAMERON              (TRAINER_REGISTERED_FLAGS_START + REMATCH_CAMERON)
 #define FLAG_REGISTERED_JACKI                (TRAINER_REGISTERED_FLAGS_START + REMATCH_JACKI)
-#define FLAG_REGISTERED_WALTER               (TRAINER_REGISTERED_FLAGS_START + REMATCH_WALTER)
 #define FLAG_REGISTERED_KAREN                (TRAINER_REGISTERED_FLAGS_START + REMATCH_KAREN)
 #define FLAG_REGISTERED_JERRY                (TRAINER_REGISTERED_FLAGS_START + REMATCH_JERRY)
-#define FLAG_REGISTERED_ANNA_AND_MEG         (TRAINER_REGISTERED_FLAGS_START + REMATCH_ANNA_AND_MEG)
 #define FLAG_REGISTERED_ISABEL               (TRAINER_REGISTERED_FLAGS_START + REMATCH_ISABEL)
-#define FLAG_REGISTERED_MIGUEL               (TRAINER_REGISTERED_FLAGS_START + REMATCH_MIGUEL)
-#define FLAG_REGISTERED_TIMOTHY              (TRAINER_REGISTERED_FLAGS_START + REMATCH_TIMOTHY)
 #define FLAG_REGISTERED_SHELBY               (TRAINER_REGISTERED_FLAGS_START + REMATCH_SHELBY)
 #define FLAG_REGISTERED_CALVIN               (TRAINER_REGISTERED_FLAGS_START + REMATCH_CALVIN)
 #define FLAG_REGISTERED_ELLIOT               (TRAINER_REGISTERED_FLAGS_START + REMATCH_ELLIOT)
 #define FLAG_REGISTERED_ISAIAH               (TRAINER_REGISTERED_FLAGS_START + REMATCH_ISAIAH)
-#define FLAG_REGISTERED_MARIA                (TRAINER_REGISTERED_FLAGS_START + REMATCH_MARIA)
 #define FLAG_REGISTERED_ABIGAIL              (TRAINER_REGISTERED_FLAGS_START + REMATCH_ABIGAIL)
 #define FLAG_REGISTERED_DYLAN                (TRAINER_REGISTERED_FLAGS_START + REMATCH_DYLAN)
-#define FLAG_REGISTERED_KATELYN              (TRAINER_REGISTERED_FLAGS_START + REMATCH_KATELYN)
-#define FLAG_REGISTERED_BENJAMIN             (TRAINER_REGISTERED_FLAGS_START + REMATCH_BENJAMIN)
-#define FLAG_REGISTERED_PABLO                (TRAINER_REGISTERED_FLAGS_START + REMATCH_PABLO)
-#define FLAG_REGISTERED_NICOLAS              (TRAINER_REGISTERED_FLAGS_START + REMATCH_NICOLAS)
-#define FLAG_REGISTERED_ROBERT               (TRAINER_REGISTERED_FLAGS_START + REMATCH_ROBERT)
 #define FLAG_REGISTERED_LAO                  (TRAINER_REGISTERED_FLAGS_START + REMATCH_LAO)
 #define FLAG_REGISTERED_CYNDY                (TRAINER_REGISTERED_FLAGS_START + REMATCH_CYNDY)
 #define FLAG_REGISTERED_MADELINE             (TRAINER_REGISTERED_FLAGS_START + REMATCH_MADELINE)
@@ -797,7 +801,7 @@
 #define FLAG_HIDE_ILEX_FOREST_KURT                                  0x2EA
 #define FLAG_MOVE_TUTOR_TAUGHT_HEADBUTT                             0x2EB
 #define FLAG_GOLDENROD_CITY_AIDE_VISITED                            0x2EC
-#define FLAG_SHOWN_ELM_TOGEPI                                       0x2ED
+#define FLAG_SHOWN_ELM_COSMOG                                       0x2ED // Formerly FLAG_SHOWN_ELM_TOGEPI; ID preserved for existing saves
 #define FLAG_HIDE_AZALEA_ARIADOS_LEFT                               0x2EE
 #define FLAG_HIDE_AZALEA_ARIADOS_MID                                0x2EF
 #define FLAG_HIDE_AZALEA_ARIADOS_RIGHT                              0x2F0
@@ -908,7 +912,7 @@
 #define FLAG_SPOKEN_VICTORYROAD_RIVAL                               0x359
 #define FLAG_RECEIVED_ODD_EGG                                       0x35A
 #define FLAG_HIDE_CERULEAN_GYM_POKEMON                              0x35B
-#define FLAG_HIDE_NEWBARKTOWN_LAB_AIDE                              0x35C
+#define FLAG_UNUSED_35C                                              0x35C // Formerly FLAG_HIDE_NEWBARKTOWN_LAB_AIDE; freed when the lab aide stopped being hidden for the Gladion Egg hand-off
 #define FLAG_HIDE_AZALEA_TOWN_CUT_MASTER                            0x35D
 #define FLAG_RAILWAY_ELECTRITE                                      0x35E
 #define FLAG_HIDE_POISOTITE                                         0x35F
@@ -937,8 +941,8 @@
 #define FLAG_DELIVERED_EGG                                          0x376
 #define FLAG_HIDE_MRPOKEMON                                         0x377
 #define FLAG_HIDE_BATTLE_TOWER_OPPONENT                             0x378
-#define FLAG_RECEIVED_TOGEPI_EGG                                    0x379
-#define FLAG_HIDE_VIOLET_CITY_AIDE                                  0x37A
+#define FLAG_RECEIVED_MYSTERY_EGG                                   0x379 // Formerly FLAG_RECEIVED_TOGEPI_EGG; ID preserved for existing saves
+#define FLAG_HIDE_VIOLET_CITY_GLADION                                0x37A // Formerly FLAG_HIDE_VIOLET_CITY_AIDE; ID preserved for existing saves
 #define FLAG_HIDE_SPROUT_TOWER_SILVER                               0x37B
 #define FLAG_HIDE_JOHTO_GYM_LEADERS                                 0x37C
 #define FLAG_HIDE_AZALEA_TOWN_ROCKETS                               0x37D
@@ -1330,7 +1334,7 @@
 #define FLAG_DEFEATED_MTSILVER_RIVAL                                0x4F8
 
 #define FLAG_NO_SHINY                                           0x4F9
-#define FLAG_DIFFICULTY_HARD                                           0x4FA
+#define FLAG_UNUSED_4FA                                                0x4FA // Reserved legacy difficulty flag; do not reuse in existing saves.
 
 #define FLAG_DEFEATED_ELITE_4_WILL                                  0x4FB
 #define FLAG_DEFEATED_ELITE_4_KOGA                                  0x4FC
@@ -1747,7 +1751,59 @@
 #define FLAG_ROUTE47_EXPERT_QUALIFIED               0x103B
 #define FLAG_ROUTE27_EXPERT_QUALIFIED               0x103C
 #define FLAG_TM_PICKUP_MIGRATION_COMPLETE           0x103D
-#define CUSTOM_FLAGS_END                            FLAG_TM_PICKUP_MIGRATION_COMPLETE
+// Cache flag for the Gladion/Type: Null object templates in CianwoodCity
+// (map.json "flag" field) - carries no meaning of its own, only exists
+// because the object-spawn system checks one flag per template on every
+// camera-triggered respawn attempt. Recomputed on every map load from
+// FLAG_DEFEATED_CIANWOOD_GYM/FLAG_RECEIVED_HM_FLY, which remain the actual
+// source of truth (see CianwoodCity_EventScript_ApplyGladionVisibility).
+#define FLAG_HIDE_CIANWOOD_GLADION                  0x103E
+// Set once the ReceptionGate Gladion/Silvally farewell scene has concluded,
+// whatever the battle outcome (see ReceptionGate_EventScript_GladionTrigger).
+// Also the template flag of both objects: they stand there until it is set.
+#define FLAG_GLADION_VICTORY_ROAD_DONE              0x103F
+// Rift Mission 1: the Blackthorn Ultra Beast incident is active. Set together
+// with VAR_RIFT_MISSIONS_STATE = 3 by OlivineCity_House1_EventScript_BriefingTalk,
+// cleared together with state 4 by BlackthornCity_EventScript_UBResolved. It only
+// exists because a map.json "flag" field cannot read a var: it is what empties
+// BlackthornCity of its residents. The var is the story's authority.
+#define FLAG_EVENT_ULTRABEAST_BLACKTHORN            0x1040
+// Battle flag for B_FLAG_NO_CATCHING (include/config/battle.h). Set immediately
+// before a wild/boss battle that must not be catchable; the engine clears it at
+// the end of every battle (Overworld_ResetBattleFlagsAndVars, src/overworld.c).
+// Never set outside of a battle setup. Shared by all Rift Missions.
+#define FLAG_NO_CATCHING                            0x1041
+// Rift Mission 2: the Mahogany Ultra Beast incident is active. Set together
+// with VAR_RIFT_MISSIONS_STATE = 5 by OlivineCity_House1_EventScript_BriefingTalk,
+// cleared together with state 6 by Mahoganytown_EventScript_UBResolved. It only
+// exists because a map.json "flag" field cannot read a var: it is what empties
+// Mahogany Town of its residents. The var is the story's authority.
+#define FLAG_EVENT_ULTRABEAST_MAHOGANY              0x1042
+// Rift Mission 3: the Cherrygrove Ultra Beast incident is active. Set together
+// with VAR_RIFT_MISSIONS_STATE = 7 by OlivineCity_House1_EventScript_BriefingTalk,
+// cleared together with state 8 by CherrygroveCity_EventScript_UBResolved. It only
+// exists because a map.json "flag" field cannot read a var: it is what empties
+// Cherrygrove City of its residents. The var is the story's authority.
+#define FLAG_EVENT_ULTRABEAST_CHERRYGROVE           0x1043
+// Rift Mission 4: the New Bark Ultra Beast incident is active. Set together
+// with VAR_RIFT_MISSIONS_STATE = 9 by OlivineCity_House1_EventScript_BriefingTalk,
+// cleared together with state 10 by NewBarkTown_EventScript_UBResolved. It only
+// exists because a map.json "flag" field cannot read a var: it is what empties
+// New Bark Town of its residents AND what takes Mom out of the house and Elm
+// out of the lab (their two interiors recompute a FLAG_TEMP_1 cache from it).
+// The var is the story's authority. This is the last mission of the arc: state
+// 10 opens no mission, it means "four done, the Olivine reunion pending".
+#define FLAG_EVENT_ULTRABEAST_NEWBARK               0x1044
+// Pre-Necrozma: the Olivine reunion is over, Solgaleo or Lunala was confirmed
+// in the party, and the expedition to the altar is released. Set together with
+// VAR_RIFT_MISSIONS_STATE = 12 by OlivineCity_House1_EventScript_ReunionConfirmed
+// and NEVER cleared - unlike the four mission flags, this one is a permanent
+// unlock. It exists because a map.json "flag" field cannot read a var: it is
+// what the altar document will use to light up the ship and the altar objects.
+// The var is still the story's authority.
+// Invariant: set if and only if VAR_RIFT_MISSIONS_STATE >= 12.
+#define FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED          0x1045
+#define CUSTOM_FLAGS_END                            FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED
 
 
 #define FLAG_0x1500                                 0x1500

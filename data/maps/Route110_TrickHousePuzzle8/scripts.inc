@@ -21,11 +21,6 @@ Route110_TrickHousePuzzle8_EventScript_Keira::
 	msgbox Route110_TrickHousePuzzle8_Text_KeiraPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_TrickHousePuzzle8_EventScript_Leroy::
-	trainerbattle_single TRAINER_LEROY, Route110_TrickHousePuzzle8_Text_LeroyIntro, Route110_TrickHousePuzzle8_Text_LeroyDefeat
-	msgbox Route110_TrickHousePuzzle8_Text_LeroyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_TrickHousePuzzle8_Text_WroteSecretCodeLockOpened::
 	.string "{PLAYER} wrote down the secret code\n"
 	.string "on the door.\p"
@@ -67,4 +62,3 @@ Route110_TrickHousePuzzle8_Text_LeroyDefeat:
 Route110_TrickHousePuzzle8_Text_LeroyPostBattle:
 	.string "Seeing someone like you should please\n"
 	.string "the Trick Master.$"
-

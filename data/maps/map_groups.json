@@ -34,7 +34,8 @@
     "gMapGroup_Emerald3",
     "gMapGroup_Emerald4",
     "gMapGroup_Emerald5",
-    "gMapGroup_IndoorRinto"
+    "gMapGroup_IndoorRinto",
+    "gMapGroup_RiftMissions"
   ],
   "gMapGroup_TownsAndRoutes": [
     "NewBarkTown",
@@ -1207,6 +1208,10 @@
     "RintoHouse2",
     "RintoHouse3",
     "RintoVillage_Mart"
+  ],
+  "gMapGroup_RiftMissions": [
+    "SunMoonAltar",
+    "UltraSpaceArena"
   ],
   "rom_excluded_groups": [
     "gMapGroup_Emerald1",

@@ -62,9 +62,6 @@ order: 1
 ### How do I remove the weird tree after beating 3rd Gym?
 - Go to Goldenrod Flower Shop next to the gym and get Squirtbottle to wake up the tree.
 
-### What's Candy Jar and how do I get it?
-- After beating the first gym, Elm's aide will give it to you alongside the egg. It will accumulate extra exp from battles and convert them to Exp Candy on use.
-
 ### Mega Ring?
 - After Team Rocket takeover event in Goldenrod City.
 

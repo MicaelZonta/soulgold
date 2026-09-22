@@ -16,11 +16,6 @@ VictoryRoad_B1F_EventScript_Michelle::
 	msgbox VictoryRoad_B1F_Text_MichellePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-VictoryRoad_B1F_EventScript_Mitchell::
-	trainerbattle_single TRAINER_MITCHELL, VictoryRoad_B1F_Text_MitchellIntro, VictoryRoad_B1F_Text_MitchellDefeat
-	msgbox VictoryRoad_B1F_Text_MitchellPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 VictoryRoad_B1F_EventScript_Halle::
 	trainerbattle_single TRAINER_NONE, VictoryRoad_B1F_Text_HalleIntro, VictoryRoad_B1F_Text_HalleDefeat
 	msgbox VictoryRoad_B1F_Text_HallePostBattle, MSGBOX_AUTOCLOSE
@@ -88,4 +83,3 @@ VictoryRoad_B1F_Text_HallePostBattle:
 	.string "the path you've taken so far.\p"
 	.string "Try to enjoy things the rest of\n"
 	.string "the way!$"
-

@@ -21,19 +21,9 @@ Route110_TrickHousePuzzle1_EventScript_FoundScroll::
 	goto Route110_TrickHousePuzzle_EventScript_FoundScroll
 	end
 
-Route110_TrickHousePuzzle1_EventScript_Sally::
-	trainerbattle_single TRAINER_SALLY, Route110_TrickHousePuzzle1_Text_SallyIntro, Route110_TrickHousePuzzle1_Text_SallyDefeat
-	msgbox Route110_TrickHousePuzzle1_Text_SallyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_TrickHousePuzzle1_EventScript_Eddie::
 	trainerbattle_single TRAINER_EDDIE, Route110_TrickHousePuzzle1_Text_EddieIntro, Route110_TrickHousePuzzle1_Text_EddieDefeat
 	msgbox Route110_TrickHousePuzzle1_Text_EddiePostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route110_TrickHousePuzzle1_EventScript_Robin::
-	trainerbattle_single TRAINER_ROBIN, Route110_TrickHousePuzzle1_Text_RobinIntro, Route110_TrickHousePuzzle1_Text_RobinDefeat
-	msgbox Route110_TrickHousePuzzle1_Text_RobinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_TrickHousePuzzle1_Text_WroteSecretCodeLockOpened::
@@ -74,4 +64,3 @@ Route110_TrickHousePuzzle1_Text_RobinDefeat:
 Route110_TrickHousePuzzle1_Text_RobinPostBattle:
 	.string "You're strong!\n"
 	.string "Just who are you?$"
-
