@@ -2,13 +2,27 @@ raw `
 @ ============================================================================
 @ Rift Missions - Looker and Anabel's house in Olivine.
 @
-@ Both NPCs have "flag": "0": they live here from New Game on, and
-@ VAR_RIFT_MISSIONS_STATE only changes what they say. NEVER removeobject
-@ them - with a clear flag the camera respawns them on the player's next
-@ step. Scene exits are done by walking back to their spots.
+@ CHANGED by the Sun and Moon Altar event
+@ (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.6): Looker and Anabel no
+@ longer have "flag": "0". They are on FLAG_TEMP_2, because from state 16 on they
+@ live at the altar and this room is empty of them for good.
+@ NEVER removeobject them even so - removeobject SETS the object's flag and the
+@ camera respawns anything whose flag is clear on the player's next step. Scene
+@ exits are still done by walking back to their spots; what takes them out of the
+@ room permanently is ApplyInvestigatorVisibility below.
 @
-@ The six pre-Necrozma reunion objects ARE flagged (FLAG_TEMP_1) and DO need
-@ visibility recomputed on every load - see ApplyReunionVisibility below.
+@ With a temporary flag THE DEFAULT IS VISIBLE, because ClearTempFieldEventData
+@ zeroes every FLAG_TEMP_* on every load. If somebody ever deletes
+@ ApplyInvestigatorVisibility "because it looked redundant", Looker and Anabel are
+@ back in Olivine AND still at the altar, at the same time, for ever, and nothing
+@ in the build says so.
+@
+@ Three independent visibility decisions now, not one:
+@   FLAG_TEMP_1  the family: the reunion visitors in 10..11, and the five of them
+@                again from 16 on, by the weekday rota
+@   FLAG_TEMP_2  Looker and Anabel: present below 16, gone from 16 on
+@   FLAG_TEMP_3  Kukui: 10..11 only. He never comes back to this room - from 16
+@                on he is in Alola, and on some days on a Cherrygrove beach
 @
 @ Floor plan (dump_mapa.py OlivineCity_House1; y grows DOWNWARD).
 @ x=11 and x=12 are wall on every row and are left out.
@@ -40,6 +54,8 @@ OlivineCity_House1_MapScripts::
 @ It runs before the first spawn, on every load of this map.
 OlivineCity_House1_OnTransition::
 	call OlivineCity_House1_EventScript_ApplyReunionVisibility
+	call OlivineCity_House1_EventScript_ApplyInvestigatorVisibility
+	call OlivineCity_House1_EventScript_ApplyKukuiVisibility
 	end
 
 @ FLAG_TEMP_1 - the four visitors and the two partners. Shown ONLY in states 10
@@ -52,11 +68,42 @@ OlivineCity_House1_OnTransition::
 OlivineCity_House1_EventScript_ApplyReunionVisibility::
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_ShowReunionCast
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_ShowReunionCast
+	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HideReunionCast
+	@ Post-game: Sunday and Friday are the family's days. The whole arc was about
+	@ a family that could not be in the same place; two days a week where the only
+	@ thing they do is be together is the reward, and it needs no line of dialogue
+	@ explaining itself. Kukui is NOT part of this - he is on FLAG_TEMP_3.
+	specialvar VAR_RESULT, GetDayOfWeek
+	goto_if_eq VAR_RESULT, WEEKDAY_SUN, OlivineCity_House1_EventScript_ShowReunionCast
+	goto_if_eq VAR_RESULT, WEEKDAY_FRI, OlivineCity_House1_EventScript_ShowReunionCast
+OlivineCity_House1_EventScript_HideReunionCast::
 	setflag FLAG_TEMP_1
 	return
 
 OlivineCity_House1_EventScript_ShowReunionCast::
 	clearflag FLAG_TEMP_1
+	return
+
+@ Looker and Anabel: the whole game up to the farewell, and then never again.
+@ Runs unconditionally on every load, and it is the ONLY thing that ever removes
+@ them (see the header block for what happens if it is deleted).
+OlivineCity_House1_EventScript_ApplyInvestigatorVisibility::
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HideInvestigators
+	clearflag FLAG_TEMP_2
+	return
+OlivineCity_House1_EventScript_HideInvestigators::
+	setflag FLAG_TEMP_2
+	return
+
+@ Kukui: states 10 and 11 only, and a closed window on purpose - goto_if_ge here
+@ would put him in this room for the rest of the game.
+OlivineCity_House1_EventScript_ApplyKukuiVisibility::
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_ShowKukui
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_ShowKukui
+	setflag FLAG_TEMP_3
+	return
+OlivineCity_House1_EventScript_ShowKukui::
+	clearflag FLAG_TEMP_3
 	return
 
 @ VAR_TEMP_1 is a once-per-visit latch (temps are zeroed by
@@ -153,8 +200,9 @@ OlivineCity_House1_EventScript_StageRecheck::
 @      both go back to DIR_EAST, facing the room and their mother.
 @      The family conversation opens here and is NOT resolved here (design 7).
 @   4. Lusamine states she intends to cross. ANABEL sets the condition, as a
-@      Faller - and it is an ARGUMENT, not news: she told them in New Bark
-@      (design 3.1 / 6.4). ONE box of recap, no more. Lusamine is east of her
+@      Faller - and it is an ARGUMENT, not news: she told them on the beach
+@      in Cherrygrove and the rest of it in New Bark (design 3.1 / 6.3 /
+@      6.4). ONE box of recap, no more. Lusamine is east of her
 @      on both paths in, so she turns DIR_EAST to face her, then back.
 @   5-6. Anabel names what the passage needs; Looker checks -> ReunionCheck.
 @
@@ -332,8 +380,20 @@ OlivineCity_House1_EventScript_BriefingTalkM3::
 	setvar VAR_RIFT_MISSIONS_STATE, 7
 	return
 
+@ TRES msgbox, nao um. msgbox expande o texto inteiro em gStringVar4, que tem
+@ 1000 bytes (EWRAM_DATA u8 gStringVar4[0x3E8], src/string_util.c). Este
+@ briefing tem ~2000 e travava o jogo ao chegar em Olivine vindo de
+@ Cherrygrove: StringExpandPlaceholders nao checa tamanho, entao ele escrevia
+@ 1000 bytes por cima da EWRAM seguinte. Cada parte fica abaixo de ~800.
+@ Sem closemessage entre elas: sFieldMessageBoxVisible continua TRUE, a caixa
+@ nao desce nem sobe de novo, e a cena roda como uma fala so.
+@ Cada parte PRECISA comecar com o seu {SPEAKER ...}: TrySetSpeakerFromMessage
+@ le so o inicio de cada mensagem, e uma parte sem o codigo perderia a
+@ plaquinha no meio da conversa.
 OlivineCity_House1_EventScript_BriefingTalkM4::
 	msgbox OlivineCity_House1_Text_BriefingM4, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingM4Faller, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingM4NewBark, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_EVENT_ULTRABEAST_NEWBARK
 	setvar VAR_RIFT_MISSIONS_STATE, 9
@@ -468,22 +528,39 @@ OlivineCity_House1_EventScript_AnabelAltar::
 @ parceiro-pokemon-de-npc): they are their owners' partners out of the ball,
 @ share FLAG_TEMP_1 with them, and come and go together.
 @ SKELETON: placeholder dialogue, one box each.
+@ The three who come back. There is NO battle anywhere in this room in the
+@ post-game: this is the place where they are not working.
 OlivineCity_House1_EventScript_ReunionLusamine::
 	lock
 	faceplayer
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseLusaminePost
 	msgbox OlivineCity_House1_Text_IdleLusamine, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_HouseLusaminePost::
+	msgbox OlivineCity_House1_Text_HouseLusaminePost, MSGBOX_DEFAULT
 	goto OlivineCity_House1_EventScript_ReleaseEnd
 
 OlivineCity_House1_EventScript_ReunionLillie::
 	lock
 	faceplayer
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseLilliePost
 	msgbox OlivineCity_House1_Text_IdleLillie, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_HouseLilliePost::
+	msgbox OlivineCity_House1_Text_HouseLilliePost, MSGBOX_DEFAULT
 	goto OlivineCity_House1_EventScript_ReleaseEnd
 
 OlivineCity_House1_EventScript_ReunionGladion::
 	lock
 	faceplayer
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseGladionPost
 	msgbox OlivineCity_House1_Text_IdleGladion, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_HouseGladionPost::
+	msgbox OlivineCity_House1_Text_HouseGladionPost, MSGBOX_DEFAULT
 	goto OlivineCity_House1_EventScript_ReleaseEnd
 
 OlivineCity_House1_EventScript_ReunionKukui::
@@ -500,39 +577,37 @@ OlivineCity_House1_EventScript_ReleaseEnd::
 @ Mission 1 briefing: final text (22/09/2026). It names Clair and "a Pokemon
 @ made of light" and nothing else: Gladion and the two Ultra Beasts are the
 @ surprises of the scene in Blackthorn, so they are never mentioned here.
-@ SKELETON: the placeholder dialogue from BriefingM3 on still needs the pass
-@ in the design's voice (Looker theatrical and warm; Anabel precise), 3.1.
 OlivineCity_House1_Text_Briefing:
-	.string "Looker: Ah, {PLAYER}! You came.\n"
+	.string "{SPEAKER NAME_LOOKER}Ah, {PLAYER}! You came.\n"
 	.string "Please, come in.\p"
 	.string "First, the truth. Looker,\n"
 	.string "International Police.\p"
 	.string "And this is my Chief, Anabel.\p"
-	.string "Anabel: Thank you for coming,\n"
+	.string "{SPEAKER NAME_ANABEL}Thank you for coming,\n"
 	.string "Champion. We owe you an\l"
 	.string "explanation for the holiday.\p"
-	.string "Looker: We came to Johto\n"
+	.string "{SPEAKER NAME_LOOKER}We came to Johto\n"
 	.string "following readings.\l"
 	.string "Distortions in space.\p"
 	.string "In Alola, readings like these\n"
 	.string "came before Ultra Wormholes.\p"
-	.string "Anabel: Openings to other\n"
+	.string "{SPEAKER NAME_ANABEL}Openings to other\n"
 	.string "worlds. What comes through,\l"
 	.string "we call Ultra Beasts.\p"
 	.string "They are not villains. Most\n"
 	.string "are lost, and frightened,\l"
 	.string "and very strong.\p"
-	.string "Looker: This morning the Gym\n"
+	.string "{SPEAKER NAME_LOOKER}This morning the Gym\n"
 	.string "Leader of Blackthorn called us.\p"
 	.string "She described a Pokémon\n"
 	.string "standing in the middle of her\l"
 	.string "town. A Pokémon… made of light.\p"
-	.string "Anabel: Clair has ordered\n"
+	.string "{SPEAKER NAME_ANABEL}Clair has ordered\n"
 	.string "everyone indoors and is\l"
 	.string "holding it off herself.\p"
 	.string "We need to be there.\n"
 	.string "And we would like you with us.\p"
-	.string "Looker: Meet us by the Pokémon\n"
+	.string "{SPEAKER NAME_LOOKER}Meet us by the Pokémon\n"
 	.string "Center in Blackthorn.\p"
 	.string "Prepare as you would for the\n"
 	.string "League, {PLAYER}. Perhaps more.$"
@@ -545,86 +620,183 @@ OlivineCity_House1_Text_Briefing:
 @ the creature from Blackthorn are what the player finds in Mahogany, so
 @ they are never mentioned here.
 OlivineCity_House1_Text_BriefingM2:
-	.string "Looker: {PLAYER}! Your timing\n"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Your timing\n"
 	.string "is uncanny. It has started\l"
 	.string "again. Mahogany Town.\p"
-	.string "Anabel: Two signatures again.\n"
+	.string "{SPEAKER NAME_ANABEL}Two signatures again.\n"
 	.string "One electrical. One… heavy.\p"
-	.string "Looker: The town lost its power\n"
+	.string "{SPEAKER NAME_LOOKER}The town lost its power\n"
 	.string "three nights ago.\p"
 	.string "Every lamp, every machine.\n"
 	.string "Only the Pokémon Center still\l"
 	.string "has light.\p"
-	.string "Anabel: The readings come from\n"
+	.string "{SPEAKER NAME_ANABEL}The readings come from\n"
 	.string "the town itself. Every night,\l"
 	.string "at the same hour.\p"
 	.string "No sign of the light from\n"
 	.string "Blackthorn. Not yet.\p"
-	.string "Looker: The Gym Leader, Pryce,\n"
+	.string "{SPEAKER NAME_LOOKER}The Gym Leader, Pryce,\n"
 	.string "telephoned us himself.\p"
 	.string "He said four words.\n"
 	.string "“Lights out. Come now.”\p"
 	.string "…I have decided to find that\n"
 	.string "reassuring.\p"
-	.string "Anabel: Meet us by the Pokémon\n"
+	.string "{SPEAKER NAME_ANABEL}Meet us by the Pokémon\n"
 	.string "Center, {PLAYER}.\p"
 	.string "Prepare for two of them.\n"
 	.string "Not one.$"
 
 @ Continuity: the Mahogany hook names no place on purpose (design section 6,
-@ "gancho sem destino"). This briefing is where Cherrygrove is revealed -
-@ the northwest beach, where Kukui has been camped for four days watching a
-@ tear open over the sea.
+@ "gancho sem destino"). This briefing is where Cherrygrove is revealed.
+@ V21: the call came from KUKUI, not from a Gym Leader - Cherrygrove has no
+@ Gym, and the author asked for the Professor to be the one who raised the
+@ alarm. The scene in the house is also where Looker and Anabel decide,
+@ out loud and wrongly, that he is a civilian who needs collecting: that
+@ misjudgement is what the beach pays off. The Ultra Beasts are never named
+@ here, and neither is the creature - those belong to the shore.
 OlivineCity_House1_Text_BriefingM3:
-	.string "Looker: {PLAYER}! It has opened\n"
-	.string "again. Cherrygrove City.\p"
-	.string "The report is confirmed.\p"
-	.string "Anabel: Two signatures.\p"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Come in, come\n"
+	.string "in. It has opened again.\p"
+	.string "Cherrygrove City.\p"
+	.string "{SPEAKER NAME_ANABEL}Two signatures.\p"
 	.string "One of them will not hold\n"
 	.string "still.\p"
-	.string "Looker: Professor Kukui has been\n"
-	.string "on that shore for four days.\p"
-	.string "He will not leave it.\p"
-	.string "Anabel: He says the tear over\n"
-	.string "the sea opens and closes on a\l"
-	.string "rhythm.\p"
-	.string "He wants to see it open.\p"
-	.string "Looker: He is a scientist.\p"
-	.string "I would also like him to be a\n"
-	.string "careful man.\p"
-	.string "Anabel: The town is clear,\n"
-	.string "{PLAYER}.\p"
-	.string "Go and get the Professor off\n"
-	.string "that beach.$"
+	.string "{SPEAKER NAME_LOOKER}And here is the part I\n"
+	.string "cannot account for.\p"
+	.string "We did not find it.\p"
+	.string "It was reported to us. By\n"
+	.string "telephone. Four days ago.\p"
+	.string "{SPEAKER NAME_ANABEL}A researcher from Alola.\p"
+	.string "He gave us a time window, a\n"
+	.string "bearing, and the tide.\p"
+	.string "Then he called back and\n"
+	.string "corrected the window.\p"
+	.string "{SPEAKER NAME_LOOKER}Twice.\p"
+	.string "He was right twice.\p"
+	.string "Anabel, read me his file\n"
+	.string "again.\p"
+	.string "{SPEAKER NAME_ANABEL}“Professor Kukui.\n"
+	.string "Pokémon move research.”\p"
+	.string "No enforcement record. No\n"
+	.string "combat authorisation.\p"
+	.string "It is two pages long, Looker.\p"
+	.string "{SPEAKER NAME_LOOKER}Two pages, and he is\n"
+	.string "sitting on a beach under an\l"
+	.string "open sky.\p"
+	.string "{PLAYER}, we have evacuated\n"
+	.string "Cherrygrove into the Violet\l"
+	.string "Gym. Every soul but one.\p"
+	.string "{SPEAKER NAME_ANABEL}He will not leave the\n"
+	.string "shore. He says somebody has to\l"
+	.string "be looking when it opens.\p"
+	.string "{SPEAKER NAME_LOOKER}He is quite right, and\n"
+	.string "that is what frightens me.\p"
+	.string "The northwest beach, {PLAYER}.\p"
+	.string "Prepare for two of them, and\n"
+	.string "go and stand in front of that\l"
+	.string "man.$"
 
 @ The longest briefing of the arc on purpose (design section 6.4): it is the
 @ one that names the town the player grew up in, puts their mother in the
 @ half that refused to evacuate, and has Looker ask - once, in four missions
 @ - whether they actually want to go.
+@
+@ IT IS ALSO WHERE THE FALLER CONVERSATION LIVES. Author's note, revision 4:
+@ that conversation does not belong in the middle of a fight. Three rifts
+@ opening at once is the first thing Anabel has ever felt from another city,
+@ and feeling it from a chair in Olivine is what makes her finally sit the
+@ player down and explain the whole of it - what she is, what she remembers,
+@ what she does not, and the promise she made out of it. New Bark only gets
+@ the callback (NewBarkTown_Text_UBAnabelPromise). Do not move this back.
+@
+@ TWO THINGS THIS BRIEFING DOES NOT SAY, both deliberate:
+@ 1. Kukui is NOT going to New Bark. The chain is Elm -> Kukui -> Looker:
+@    Elm posted six weeks of a reading he thought was broken to the one man
+@    who would not laugh at it, and that man telephoned the police. Elm is
+@    inside the analysis from here on; Kukui is not in the scene.
+@ 2. Lusamine is not mentioned AT ALL. Nobody sent for her and nobody
+@    announces her - she is simply standing on the road when the player
+@    arrives. Putting her name in here spends the only surprise the mission
+@    has before the creature.
 OlivineCity_House1_Text_BriefingM4:
-	.string "Looker: {PLAYER}. Sit down.\p"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}. Sit down.\p"
 	.string "No - actually, don't.\p"
 	.string "There isn't time, and you would\n"
 	.string "not anyway.\p"
 	.string "Cherrygrove holds.\p"
 	.string "And the Professor? Did he eat\n"
 	.string "something, at last?\p"
-	.string "Anabel: He went straight to New\n"
-	.string "Bark.\p"
-	.string "He says Professor Elm has had\n"
-	.string "the same reading for six weeks\l"
-	.string "and wrote it off as a broken\l"
-	.string "sensor.\p"
-	.string "Looker: Then let us look at it.\p"
-	.string "…Three, Anabel?\p"
-	.string "Anabel: Three.\p"
+	.string "{SPEAKER NAME_ANABEL}He ate, and then he\n"
+	.string "read every log in Johto.\p"
+	.string "He telephoned at six this\n"
+	.string "morning, from a post office, to\l"
+	.string "read us somebody else's\l"
+	.string "notebook.\p"
+	.string "Professor Elm has had the same\n"
+	.string "reading for six weeks. He wrote\l"
+	.string "“check the sensor” in the\l"
+	.string "margin every time.\p"
+	.string "And then he posted the whole\n"
+	.string "thing to Alola anyway.\p"
+	.string "{SPEAKER NAME_LOOKER}A man who suspects he\n"
+	.string "is wrong and files it in\l"
+	.string "writing. There are worse\l"
+	.string "witnesses.\p"
+	.string "Is the Professor going?\p"
+	.string "{SPEAKER NAME_ANABEL}No. He is going home.\p"
+	.string "He did the one thing only he\n"
+	.string "could do, which was recognise\l"
+	.string "it, and he handed it to us.\p"
+	.string "Elm is the one on the ground\n"
+	.string "now. It is his instrument, his\l"
+	.string "six weeks and his town.$"
+
+@ Parte 2 de 3 (ver o comentario em BriefingTalkM4 sobre gStringVar4).
+@ Continua na MESMA caixa; comeca no "...Three, Anabel?" do Looker.
+OlivineCity_House1_Text_BriefingM4Faller:
+	.string "{SPEAKER NAME_LOOKER}…Three, Anabel?\p"
+	.string "{SPEAKER NAME_ANABEL}Three.\p"
 	.string "Opening together. Closing\n"
 	.string "together.\p"
-	.string "It isn't a rhythm this time,\n"
-	.string "it's-\p"
-	.string "…Put it in the report.\p"
-	.string "I'll write it myself.\p"
-	.string "Looker: {PLAYER}. New Bark Town\n"
+	.string "…Looker, I need the chair.\p"
+	.string "{SPEAKER NAME_LOOKER}Chief-\p"
+	.string "{SPEAKER NAME_ANABEL}I'm fine. Sit down,\n"
+	.string "{PLAYER}. This part is for you\l"
+	.string "and I would rather say it here\l"
+	.string "than shout it later.\p"
+	.string "On that beach in Cherrygrove I\n"
+	.string "told you what I am.\p"
+	.string "I did not tell you the rest.\p"
+	.string "A Faller is someone who came\n"
+	.string "through one of those tears and\l"
+	.string "stayed on this side.\p"
+	.string "I don't remember where I came\n"
+	.string "from. I've stopped pretending\l"
+	.string "that will come back.\p"
+	.string "I remember someone's hand.\p"
+	.string "That is the whole memory.\n"
+	.string "Someone reached down, and I\l"
+	.string "wasn't alone anymore.\p"
+	.string "And I feel them open. Only\n"
+	.string "that, and only a few seconds\l"
+	.string "before the meter does.\p"
+	.string "Blackthorn I felt from the\n"
+	.string "street. The Lake from the\l"
+	.string "street. The beach from the\l"
+	.string "sand.$"
+
+@ Parte 3 de 3. A Anabel ainda esta falando, por isso o {SPEAKER NAME_ANABEL}
+@ no comeco: sem ele esta parte subiria sem plaquinha nenhuma.
+OlivineCity_House1_Text_BriefingM4NewBark:
+	.string "{SPEAKER NAME_ANABEL}{PLAYER} - I felt these three\n"
+	.string "from this chair.\p"
+	.string "From Olivine. Sixty miles of\n"
+	.string "water and a mountain.\p"
+	.string "{SPEAKER NAME_LOOKER}…You have never once\n"
+	.string "put that in a report.\p"
+	.string "{SPEAKER NAME_ANABEL}Put it in this one.\p"
+	.string "I'll sign it.\p"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}. New Bark Town\n"
 	.string "has no Pokémon Center.\p"
 	.string "No Gym.\p"
 	.string "It has a laboratory and about\n"
@@ -632,72 +804,70 @@ OlivineCity_House1_Text_BriefingM4:
 	.string "We told them to leave.\p"
 	.string "Half of them would not.\p"
 	.string "Your mother is one of the half.\p"
-	.string "Anabel: Madame Lusamine is\n"
-	.string "already there, standing on the\l"
-	.string "road in.\p"
-	.string "She asked for you by name, and\n"
-	.string "she asked us to stay out of it.\p"
-	.string "Looker: Three missions,\n"
-	.string "{PLAYER}, and I have never once\l"
-	.string "asked you this.\p"
+	.string "Three missions, {PLAYER}, and I\n"
+	.string "have never once asked you this.\p"
 	.string "…Do you want to go?\p"
-	.string "Anabel: Heal everything.\p"
+	.string "{SPEAKER NAME_ANABEL}Heal everything.\p"
 	.string "Take these.\p"
 	.string "And we are going with you -\n"
 	.string "that part is not a question.$"
 
 OlivineCity_House1_Text_LookerHoliday:
-	.string "Looker: Hm? Oh, pay no\n"
+	.string "{SPEAKER NAME_LOOKER}Hm? Oh, pay no\n"
 	.string "attention to moi.\p"
 	.string "I am simply… on holiday.\n"
 	.string "Yes. A holiday by the sea.$"
 
 OlivineCity_House1_Text_LookerGoAhead:
-	.string "Looker: Blackthorn, {PLAYER}!\n"
+	.string "{SPEAKER NAME_LOOKER}Blackthorn, {PLAYER}!\n"
 	.string "Clair cannot hold it forever.\p"
 	.string "We are leaving right behind\n"
 	.string "you!$"
 
 OlivineCity_House1_Text_LookerGoAheadM2:
-	.string "Looker: Mahogany, {PLAYER}!\n"
+	.string "{SPEAKER NAME_LOOKER}Mahogany, {PLAYER}!\n"
 	.string "We are right behind you.$"
 
 OlivineCity_House1_Text_LookerGoAheadM3:
-	.string "Looker: The northwest shore,\n"
+	.string "{SPEAKER NAME_LOOKER}The northwest shore,\n"
 	.string "{PLAYER}.\p"
-	.string "You cannot miss him. He is the\n"
-	.string "one in the lab coat.$"
+	.string "You cannot miss him.\p"
+	.string "He is the only man left in\n"
+	.string "that town, and he is wearing a\l"
+	.string "lab coat on a beach.$"
 
 OlivineCity_House1_Text_LookerGoAheadM4:
-	.string "Looker: New Bark Town,\n"
+	.string "{SPEAKER NAME_LOOKER}New Bark Town,\n"
 	.string "{PLAYER}. Your own front door.\p"
 	.string "I am sorry it is this one.$"
 
 
 OlivineCity_House1_Text_AnabelHoliday:
-	.string "Anabel: Looker insists we are\n"
+	.string "{SPEAKER NAME_ANABEL}Looker insists we are\n"
 	.string "on vacation.\p"
 	.string "He has been reading the same\n"
 	.string "newspaper for three days.$"
 
 OlivineCity_House1_Text_AnabelGoAhead:
-	.string "Anabel: Go on ahead.\p"
+	.string "{SPEAKER NAME_ANABEL}Go on ahead.\p"
 	.string "We'll be there before you\n"
 	.string "reach the Pokémon Center.$"
 
 OlivineCity_House1_Text_AnabelGoAheadM2:
-	.string "Anabel: Go on.\p"
+	.string "{SPEAKER NAME_ANABEL}Go on.\p"
 	.string "Mr. Pryce does not strike me\n"
 	.string "as a man who calls for help\l"
 	.string "lightly.$"
 
 OlivineCity_House1_Text_AnabelGoAheadM3:
-	.string "Anabel: Go on.\p"
-	.string "And please make the Professor\n"
-	.string "sit down for one minute.$"
+	.string "{SPEAKER NAME_ANABEL}Go on.\p"
+	.string "And whatever he is doing when\n"
+	.string "you get there, {PLAYER}-\p"
+	.string "make him sit down for one\n"
+	.string "minute.$"
 
 OlivineCity_House1_Text_AnabelGoAheadM4:
-	.string "Anabel: Go.\p"
+	.string "{SPEAKER NAME_ANABEL}Go.\p"
 	.string "We'll be a step behind you the\n"
 	.string "whole way.$"
 
@@ -710,19 +880,23 @@ OlivineCity_House1_Text_AnabelGoAheadM4:
 @ ============================================================================
 
 OlivineCity_House1_Text_ReunionOpen:
-	.string "Looker: {PLAYER}. Come in.\p"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}. Come in.\p"
 	.string "Mind the chairs - there are\n"
 	.string "not enough of them, and I\l"
 	.string "have stopped apologising.\p"
-	.string "New Bark holds. Four in four.\n"
-	.string "The file is closed.\p"
+	.string "New Bark holds. Four in four,\n"
+	.string "and I am not certain that is\l"
+	.string "the word for it.\p"
+	.string "The file is closed. What is in\n"
+	.string "it is worse than what we\l"
+	.string "opened it for.\p"
 	.string "Which is why everyone in this\n"
 	.string "room came when I asked.\p"
 	.string "Look at them. I did not have\n"
 	.string "to explain twice.$"
 
 OlivineCity_House1_Text_ReunionKukui:
-	.string "Kukui: Your rifts closed\n"
+	.string "{SPEAKER NAME_KUKUI}Your rifts closed\n"
 	.string "toward one bearing.\p"
 	.string "Anabel's number, Elm's six\n"
 	.string "weeks of it, my rhythm.\p"
@@ -733,7 +907,7 @@ OlivineCity_House1_Text_ReunionKukui:
 	.string "We can put a boat on it.$"
 
 OlivineCity_House1_Text_ReunionLusamineCalled:
-	.string "Lusamine: I asked the\n"
+	.string "{SPEAKER NAME_LUSAMINE}I asked the\n"
 	.string "Inspector to call this\l"
 	.string "meeting.\p"
 	.string "Not as Aether. Aether would\n"
@@ -744,21 +918,21 @@ OlivineCity_House1_Text_ReunionLusamineCalled:
 
 @ Lillie (3,6) and Gladion (3,7) have just turned to face each other.
 OlivineCity_House1_Text_ReunionLillie:
-	.string "Lillie: …You asked for us.\n"
+	.string "{SPEAKER NAME_LILLIE}…You asked for us.\n"
 	.string "Both of us.\p"
 	.string "I'm not going to pretend\n"
 	.string "that's nothing.\p"
 	.string "It isn't nothing.$"
 
 OlivineCity_House1_Text_ReunionGladion:
-	.string "Gladion: We'll do the\n"
+	.string "{SPEAKER NAME_GLADION}We'll do the\n"
 	.string "accounting after.\p"
 	.string "Whatever is at that altar, it\n"
 	.string "doesn't wait for our family\l"
 	.string "to sort itself out.$"
 
 OlivineCity_House1_Text_ReunionCross:
-	.string "Lusamine: Then let me say the\n"
+	.string "{SPEAKER NAME_LUSAMINE}Then let me say the\n"
 	.string "rest of it plainly.\p"
 	.string "I intend to cross.\p"
 	.string "I have been on the other side\n"
@@ -768,7 +942,7 @@ OlivineCity_House1_Text_ReunionCross:
 @ ONE box of recap and no more (design 3.1): Anabel told them all of this in
 @ New Bark. Here it is an argument, not news.
 OlivineCity_House1_Text_ReunionCondition:
-	.string "Anabel: You have. I have as\n"
+	.string "{SPEAKER NAME_ANABEL}You have. I have as\n"
 	.string "well, and I came back wrong,\l"
 	.string "and I told you all so in New\l"
 	.string "Bark.\p"
@@ -782,24 +956,24 @@ OlivineCity_House1_Text_ReunionCondition:
 
 @ Must read standalone: this is also the whole of the state-11 question.
 OlivineCity_House1_Text_ReunionAsk:
-	.string "Anabel: And a way through\n"
+	.string "{SPEAKER NAME_ANABEL}And a way through\n"
 	.string "needs something that can open\l"
 	.string "it.\p"
 	.string "Not a machine. We tried\n"
 	.string "machines for six weeks.\p"
-	.string "Looker: {PLAYER}. Your\n"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}. Your\n"
 	.string "partner.\p"
 	.string "The one that started as an\n"
 	.string "egg.\p"
 	.string "May we see them?$"
 
 OlivineCity_House1_Text_ReunionNotYet:
-	.string "Looker: …Ah. Not yet.\p"
-	.string "Kukui: That's not a no!\n"
+	.string "{SPEAKER NAME_LOOKER}…Ah. Not yet.\p"
+	.string "{SPEAKER NAME_KUKUI}That's not a no!\n"
 	.string "That's a “give it time”.\p"
 	.string "It's still growing into what\n"
 	.string "it's going to be.\p"
-	.string "Looker: Then we prepare, and\n"
+	.string "{SPEAKER NAME_LOOKER}Then we prepare, and\n"
 	.string "you raise them.\p"
 	.string "Come back when they have\n"
 	.string "finished becoming Solgaleo\l"
@@ -810,13 +984,13 @@ OlivineCity_House1_Text_ReunionNotYet:
 	.string "room.$"
 
 OlivineCity_House1_Text_ReunionSeeIt:
-	.string "Looker: …Oh.\p"
-	.string "Anabel: That is it.\p"
+	.string "{SPEAKER NAME_LOOKER}…Oh.\p"
+	.string "{SPEAKER NAME_ANABEL}That is it.\p"
 	.string "That is the reading, standing\n"
 	.string "in a living room in Olivine.$"
 
 OlivineCity_House1_Text_ReunionGladionEgg:
-	.string "Gladion: I handed you that\n"
+	.string "{SPEAKER NAME_GLADION}I handed you that\n"
 	.string "egg in Violet and told you to\l"
 	.string "keep it away from people\l"
 	.string "like us.\p"
@@ -824,14 +998,14 @@ OlivineCity_House1_Text_ReunionGladionEgg:
 	.string "You raised it.$"
 
 OlivineCity_House1_Text_ReunionLillieProud:
-	.string "Lillie: I knew the whole way.\p"
+	.string "{SPEAKER NAME_LILLIE}I knew the whole way.\p"
 	.string "Every time we met, I knew.\p"
 	.string "I just wanted to be here when\n"
 	.string "somebody finally said it out\l"
 	.string "loud.$"
 
 OlivineCity_House1_Text_ReunionLusamineKnows:
-	.string "Lusamine: That light is what\n"
+	.string "{SPEAKER NAME_LUSAMINE}That light is what\n"
 	.string "opens the way.\p"
 	.string "I am the only person alive\n"
 	.string "who knows what it looks like\l"
@@ -841,14 +1015,14 @@ OlivineCity_House1_Text_ReunionLusamineKnows:
 	.string "I am told that is the lesson.$"
 
 OlivineCity_House1_Text_ReunionWayBack:
-	.string "Anabel: My condition stands.\p"
+	.string "{SPEAKER NAME_ANABEL}My condition stands.\p"
 	.string "We go together, and we come\n"
 	.string "back.$"
 
 @ The handoff to the altar document. The last box is the one that tells the
 @ player the game is not taking them anywhere yet.
 OlivineCity_House1_Text_ReunionHook:
-	.string "Looker: Then it is settled.\p"
+	.string "{SPEAKER NAME_LOOKER}Then it is settled.\p"
 	.string "There is a ship at the\n"
 	.string "Olivine port, and it is ours\l"
 	.string "for as long as this takes.\p"
@@ -864,7 +1038,7 @@ OlivineCity_House1_Text_ReunionHook:
 	.string "It can wait for you to heal.$"
 
 OlivineCity_House1_Text_ReunionTicket:
-	.string "Looker: One more thing.\n"
+	.string "{SPEAKER NAME_LOOKER}One more thing.\n"
 	.string "Take this.$"
 
 OlivineCity_House1_Text_ReunionTicketUse:
@@ -874,38 +1048,65 @@ OlivineCity_House1_Text_ReunionTicketUse:
 
 @ SKELETON: state 12 and up, the repeatable reminder of where to go.
 OlivineCity_House1_Text_LookerAltar:
-	.string "Looker: The ship is at the\n"
+	.string "{SPEAKER NAME_LOOKER}The ship is at the\n"
 	.string "port whenever you are ready,\l"
 	.string "{PLAYER}.\p"
 	.string "Madame Lusamine went ahead.\n"
 	.string "Of course she did.$"
 
 OlivineCity_House1_Text_AnabelAltar:
-	.string "Anabel: We leave when you do,\n"
+	.string "{SPEAKER NAME_ANABEL}We leave when you do,\n"
 	.string "not before.\p"
 	.string "And we come back.\p"
 	.string "That part is the whole plan.$"
 
 @ SKELETON: idle lines for state 11, one box each.
 OlivineCity_House1_Text_IdleLusamine:
-	.string "Lusamine: I will not pace.\p"
+	.string "{SPEAKER NAME_LUSAMINE}I will not pace.\p"
 	.string "Pacing is for people without\n"
 	.string "instruments.$"
 
 OlivineCity_House1_Text_IdleLillie:
-	.string "Lillie: Take your time with\n"
+	.string "{SPEAKER NAME_LILLIE}Take your time with\n"
 	.string "them.\p"
 	.string "I mean it - that's not a\n"
 	.string "polite thing to say, it's the\l"
 	.string "actual advice.$"
 
 OlivineCity_House1_Text_IdleGladion:
-	.string "Gladion: Go and train.\p"
+	.string "{SPEAKER NAME_GLADION}Go and train.\p"
 	.string "That's not an insult, it's\n"
 	.string "what I'd be doing.$"
 
 OlivineCity_House1_Text_IdleKukui:
-	.string "Kukui: Six weeks of bad data\n"
+	.string "{SPEAKER NAME_KUKUI}Six weeks of bad data\n"
 	.string "and one good afternoon!\p"
 	.string "Science, {PLAYER}!$"
+@ Post-game, state >= 16: the family's two days a week in this room
+@ (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.6).
+OlivineCity_House1_Text_HouseLusaminePost:
+	.string "{SPEAKER NAME_LUSAMINE}The Inspector left us the key and a\n"
+	.string "note asking us not to reorganise\l"
+	.string "anything.\p"
+	.string "I have reorganised three things.\p"
+	.string "…Sit down, {PLAYER}. Nobody here is\n"
+	.string "going anywhere for several hours, which\l"
+	.string "I understand is what people do.$"
+
+OlivineCity_House1_Text_HouseLilliePost:
+	.string "{SPEAKER NAME_LILLIE}Two days a week. That's what we agreed\n"
+	.string "on -- two days, here, no instruments, no\l"
+	.string "reports.\p"
+	.string "The first one was terrible. We all sat in\n"
+	.string "different corners.\p"
+	.string "This is the fourth one. It's getting\n"
+	.string "better. It's allowed to take a while.$"
+
+OlivineCity_House1_Text_HouseGladionPost:
+	.string "{SPEAKER NAME_GLADION}I'm not good at this part.\p"
+	.string "…Silvally likes it. Look at him. He's\n"
+	.string "asleep under the table where Looker\l"
+	.string "used to put his files.\p"
+	.string "If he's fine with it, I'm fine with it.\n"
+	.string "That's the system I'm using.$"
 `

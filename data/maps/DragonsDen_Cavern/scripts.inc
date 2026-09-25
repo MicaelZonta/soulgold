@@ -209,7 +209,7 @@ DragonsDen_Cavern_Movement_ClairLeaveRight:
 # 105 "data/maps/DragonsDen_Cavern/scripts.pory"
 DragonsDen_Cavern_Text_ClairGiveDragonclaw:
 # 106 "data/maps/DragonsDen_Cavern/scripts.pory"
-    .string "Clair: Wait!\p"
+    .string "{SPEAKER NAME_CLAIR}Wait!\p"
 # 107 "data/maps/DragonsDen_Cavern/scripts.pory"
 	.string "I'm sorry about this.\n"
 # 108 "data/maps/DragonsDen_Cavern/scripts.pory"

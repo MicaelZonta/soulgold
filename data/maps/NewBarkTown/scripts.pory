@@ -47,7 +47,7 @@ NewBarkTown_EventScript_LookerCall::
 @ WARNING: the two lines after the calls are goto_if_eq, NOT call_if_eq -
 @ whoever matches one never comes back here. Any new call must go ABOVE them
 @ or it silently stops running in NEWBARK_TOWN_STATE 2 and 4. (Rift Mission 4,
-@ .claude/NEWBARK_ULTRABEAST_IMPLEMENTATION.md section 3.3.)
+@ .claude/rift_missions/NEWBARK_ULTRABEAST/NEWBARK_ULTRABEAST_IMPLEMENTATION.md section 3.3.)
 NewBarkTown_OnTransition::
     call Common_EventScript_SetupRivalGfxId
 	call NewBarkTown_EventScript_ApplyUBVisibility      @ Rift Mission 4 - must stay above the gotos
@@ -316,7 +316,7 @@ NewBarkTown_Text_ElmsHouse:
 @ at once; says only that he needs the Champion in person. No creature, no
 @ town and no name is given away on the phone.
 NewBarkTown_Text_LookerCall:
-	.string "Looker: Hello? Is this {PLAYER}?\n"
+	.string "{SPEAKER NAME_LOOKER}Hello? Is this {PLAYER}?\n"
 	.string "The Champion of Johto?\p"
 	.string "…Forgive me. Allow me to begin\n"
 	.string "again.\p"
@@ -484,33 +484,53 @@ script NewBarkTown_EventScript_ArcherArcadeCall {
 	end
 }
 
+
 raw `
 @ ============================================================================
 @ Rift Mission 4 - Kartana + Guzzlord + Nihilego on the road outside the
-@ player's own front door. Last mission of the arc.
-@ Cast: Looker, Anabel, Mom, Gold/Crystal (+ Marill), Professor Elm and
-@ Madame Lusamine. Only the player battles.
-@ Plan: .claude/NEWBARK_ULTRABEAST_IMPLEMENTATION.md
+@ player's own front door. Last mission of the arc, and the one they lose.
+@
+@ The story in four lines. Three rifts open over New Bark and the three
+@ beasts do not behave like three beasts: they move in the same instant, in
+@ the same direction, like one thing wearing three bodies. The only counter
+@ is to break all three at once, which takes four pairs of hands, which is
+@ how the kid who was told "no" gets let in - by the woman who has just been
+@ taught to ask. And when the three are down, the creature from the other
+@ three missions walks out of the light, EATS them, becomes something else,
+@ and puts all four of them on the ground in one motion. The town stands.
+@ Nobody wins. That was the plan from the first mission.
+@
+@ Cast: Looker, Anabel, Mom, Gold/Crystal (+ Azumarill), Professor Elm and
+@ Madame Lusamine, plus the creature and what it turns into.
+@ Plan: .claude/rift_missions/NEWBARK_ULTRABEAST/NEWBARK_ULTRABEAST_IMPLEMENTATION.md
 @
 @ Floor plan (dump_mapa.py NewBarkTown; y grows DOWNWARD). There is not one
 @ water tile in LAYOUT_NEW_BARK_TOWN, so the collision bit is the whole
 @ truth here - unlike the Cherrygrove beach.
 @
-@       x= 2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
-@   y= 9   #  #  #  .  .  #  #  #  D  #  .  #  .  .  .  .  #  #  #  #  #  #  #
-@   y=10   #  #  .  .  .  .  .  .  .  E' .  .  .  1  .  .  #  #  #  #  #  #  #
-@   y=11   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  #  #  #  d  #  #  .  .
-@   y=12   .  U' .  .  .  .  .  .  .  .  .  .  .  .  .  U  M  *  K  A  E  .  .
-@   y=13   .  .  .  .  .  .  .  .  .  .  .  2  .  .  .  .  .  .  G  m  .  .  .
-@   y=14   .  .  .  .  .  .  .  #  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
-@   y=15   #  #  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  3  .  .
+@       x= 2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+@   y= 9   #  #  #  .  .  #  #  #  D  #  .  #  .  .  .  .  #  #  #  #  #  #  #  #
+@   y=10   #  #  .  .  .  .  .  .  .  E' .  .  .  1  1a 1b #  #  #  #  #  #  #  #
+@   y=11   .  .  .  .  .  .  .  .  .  .  .  .  .  .  Nk #  #  #  d  #  #  .  .  .
+@   y=12   .  U' .  .  .  .  .  .  .  .  .  .  .  .  N  U  M  *  K  A  E  .  .  .
+@   y=13   .  .  .  .  .  .  .  .  .  .  .  .  2  2a 2b 2c 2d 2e .  G  z  .  .  .
+@   y=14   .  .  .  .  .  .  .  #  .  .  .  .  .  .  a3 a2 a1 aX .  .  z' .  .  .
+@   y=15   #  #  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  3  3a 3b
 @
 @   D  lab door, warp (10,9)          d  player's house door, warp (20,11)
 @   *  player (20,12)                 K  Looker (21,12)   A  Anabel (22,12)
-@   M  Mom (19,12)                    G  Gold/Crystal (21,13)   m  Marill (22,13)
-@   U' Lusamine starts (3,12)         U  Lusamine after the fade (18,12)
+@   M  Mom (19,12)                    G  Gold/Crystal (21,13)
+@   z  Azumarill starts (22,13)       z' Azumarill after the cut-off (19,14)
+@   U' Lusamine starts (3,12)         U  Lusamine after the fade (18,12),
+@                                        then (17,12) from UBKnot onward
 @   E' Elm starts (11,10)             E  Elm after the fade (23,12)
-@   1  Kartana (15,10)   2  Nihilego (14,13)   3  Guzzlord (23,15)
+@   1  Kartana (15,10) -> 1a (16,10) -> 1b (17,10) in the lockstep drift
+@   2  Nihilego (14,13) -> 2a -> 2b in the drift, then 2c 2d 2e in the lunge,
+@      ending at (19,13), one diagonal step from the player and under Mom
+@   3  Guzzlord (23,15) -> 3a (24,15) -> 3b (25,15); (26,15) is wall
+@   a1 a2 a3  Azumarill's charge at the creature, ending (16,14)
+@   N  the creature (16,12), which is also where what it becomes stands
+@   Nk (16,11) is where Kartana is dragged to before it is eaten
 @
 @ LOOKER'S POCKET. (21,11) is the wall of the player's house, (22,12) is
 @ Anabel and (21,13) is Gold/Crystal. The ONLY tile Looker can be talked to
@@ -521,9 +541,9 @@ raw `
 @ a Fly both land on the talk tile. Retry costs zero steps - the only mission
 @ in the arc where that is true.
 @
-@ (20,13) IS DELIBERATELY EMPTY. With the player on y=12 the text box covers
-@ the bottom of the screen; the actors on y=13 sit just above it. Putting an
-@ object at (20,13) would bury it under every line of dialogue.
+@ (20,13) IS DELIBERATELY EMPTY, before the scene and during it. Nothing is
+@ ever parked there. The Azumarill choreography goes around the outside, on
+@ y=14, precisely so that it never has to stand in front of the player.
 @
 @ The player's front door at (20,11) stays usable before the scene. Harmless:
 @ the scene only starts by talking to Looker, the house is empty during the
@@ -535,16 +555,22 @@ raw `
 @ have script NULL. Do not "fix" this by inventing collision.
 @
 @ Per-map temporaries (all zeroed by ClearTempFieldEventData on every load):
-@   FLAG_TEMP_1 - fixed cast cache (Looker, Anabel, Mom, Gold/Crystal, Marill)
+@   FLAG_TEMP_1 - fixed cast cache (Looker, Anabel, Mom, Gold/Crystal,
+@                 Azumarill)
 @   FLAG_TEMP_2 - the three Ultra Beasts; always hidden on load
 @   FLAG_TEMP_3 - Elm ONLY          \ separate because the cutscene
 @   FLAG_TEMP_4 - Lusamine ONLY     / removeobjects these two to move them,
 @                 and removeobject SETS the template's flag. If they shared
 @                 FLAG_TEMP_1 the fade in UBScene would hide the whole cast.
+@   FLAG_TEMP_5 - the creature ONLY       \ same reason: the absorption
+@   FLAG_TEMP_6 - what it becomes ONLY    / removeobjects both of them
 @   VAR_TEMP_2  - battle outcome
 @   VAR_TEMP_3  - the player's pick: 0 = Kartana, 1 = Guzzlord, 2 = Nihilego.
 @                 Survives the battle: coming back from a battle does not
 @                 reload the map, so ClearTempFieldEventData does not run.
+@   VAR_TEMP_4  - which Cosmog-family Pokemon the player is carrying, sampled
+@                 AFTER the battle (the battle can evolve it) and re-read by
+@                 the closing conversation. SPECIES_NONE = none.
 @ Checked 20/09/2026: this map used no FLAG_TEMP_* or VAR_TEMP_* at all
 @ before this mission. VAR_TEMP_1 is skipped anyway, for uniformity with the
 @ three earlier missions (there it is VAR_TEMP_TRANSFERRED_SPECIES).
@@ -562,9 +588,11 @@ raw `
 @ at (21,13), and a stray Marill at (11,13) right beside Nihilego.
 @
 @ OBJECT BUDGET. OBJECT_EVENTS_COUNT is 16 and includes the player
-@ (include/constants/global.h:83). During the incident the road holds the
-@ player, the follower and this mission's ten objects = 12/16. Four spare
-@ slots, and every object added here spends one.
+@ (include/constants/global.h:83). The peak of this scene is the player, the
+@ follower, this mission's ten road objects and the creature = 13/16. What it
+@ becomes only ever spawns after the three beasts and the creature have been
+@ removed, so it never adds to the peak. Three spare slots, and every object
+@ added here spends one.
 @
 @ The four OBJ_EVENT_GFX_LIGHT_SPRITE on this map cost NOTHING against that
 @ 16. TrySpawnObjectEvents special-cases them (src/event_object_movement.c:
@@ -576,15 +604,20 @@ raw `
 @ What the budget DOES matter for: an object that does not fit simply fails
 @ to spawn, with no error and no warning, and TrySpawnObjectEvents walks the
 @ templates IN ORDER - so the ones that would lose are this mission's
-@ (locals 16-25), the LAST in the array. Overspend and Looker is the one who
+@ (locals 16-27), the LAST in the array. Overspend and Looker is the one who
 @ goes missing, which leaves the mission with no way to start.
 @ ============================================================================
 
 @ Called from NewBarkTown_OnTransition, which runs before any object spawns -
 @ so setflag/clearflag work here and removeobject would not. Temps are zeroed
 @ on every load, so this recomputes from scratch every time.
+@ The three unconditional setflag are what makes a retry after a blackout
+@ start clean for free: the beasts and the creature are never on the road
+@ until the cutscene puts them there.
 NewBarkTown_EventScript_ApplyUBVisibility::
 	setflag FLAG_TEMP_2                        @ the beasts: only the cutscene brings them in
+	setflag FLAG_TEMP_5                        @ the creature
+	setflag FLAG_TEMP_6                        @ what it becomes
 	goto_if_unset FLAG_EVENT_ULTRABEAST_NEWBARK, NewBarkTown_EventScript_HideUBCast
 	clearflag FLAG_TEMP_1
 	clearflag FLAG_TEMP_3
@@ -598,23 +631,58 @@ NewBarkTown_EventScript_HideUBCast::
 	return
 
 @ ----------------------------------------------------------------------------
+@ Two staging helpers, used all through the scene.
+@ ----------------------------------------------------------------------------
+
+@ Flash da cena. fadescreenswapbuffers e NAO fadescreen: fadescreen copia
+@ gPlttBufferFaded -> gPlttBufferUnfaded ao escurecer (src/field_weather.c,
+@ FadeScreen) e o FADE_FROM_* seguinte reaplica o tint de horario por cima do
+@ que ja estava tintado. A noite (coeff 10) cada par de flashes multiplicava a
+@ cena por ~0,46 de novo, e depois de tres ou quatro a cidade ficava preta.
+@ fadescreenswapbuffers usa BLDY no hardware e nao encosta nas paletas.
+NewBarkTown_EventScript_UBFlash::
+	fadescreenswapbuffers FADE_TO_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
+	return
+
+NewBarkTown_EventScript_UBShake::
+	setvar VAR_0x8004, 1   @ vertical pan
+	setvar VAR_0x8005, 1   @ horizontal pan
+	setvar VAR_0x8006, 12  @ num shakes
+	setvar VAR_0x8007, 4   @ shake delay
+	special ShakeCamera
+	waitstate
+	return
+
+@ ----------------------------------------------------------------------------
 @ Idle conversations, available from the moment the player reaches town and
 @ until the YES. Each one ends by turning the actor back to the facing its
 @ map.json template asks for, so a talk from an odd tile cannot leave anyone
 @ crooked when the cutscene starts.
-@ SKELETON: every line below is placeholder. Rewrite in the design's voice
-@ (section 3.1): Looker theatrical and warm, Anabel precise, Lusamine formal
-@ and rehearsed, Elm apologetic, Mom plain.
+@
+@ Two of them react to the Cosmog family in the party (design section 4.11):
+@ Lusamine, who is the only living person who knows what that light looks
+@ like from the other side, and Elm, who is the one who identified the egg in
+@ the first place. Both are OPTIONAL and carry NO state - without the Pokemon
+@ the conversation is exactly the one line it always was.
+@ Lusamine's version has one non-negotiable rule (design section 6.4): the
+@ scene does not suggest, at any point, that any of this is the player's
+@ fault, and SHE is the one who says so out loud.
 @ ----------------------------------------------------------------------------
 
 @ Lusamine alone on the road in, at (3,12), reachable from (2,12), (4,12),
-@ (3,11) and (3,13). This is her first spoken line in the whole arc and the
-@ beat Mission 3's hook promised: the player meets her BEFORE the emergency.
-@ She gives away nothing about the knot in UBKnot.
+@ (3,11) and (3,13). This is her first spoken line in the whole arc. Nobody
+@ announced her - the Olivine briefing does not mention her at all, on
+@ purpose. She gives away nothing about the knot in UBKnot.
 NewBarkTown_EventScript_UBLusamine::
 	lock
 	faceplayer
 	msgbox NewBarkTown_Text_UBLusamineIdle, MSGBOX_DEFAULT
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
+	goto_if_eq VAR_RESULT, SPECIES_NONE, NewBarkTown_EventScript_UBLusamineEnd
+	bufferspeciesname STR_VAR_1, VAR_RESULT
+	msgbox NewBarkTown_Text_UBLusamineIdleCosmog, MSGBOX_DEFAULT
+NewBarkTown_EventScript_UBLusamineEnd::
 	closemessage
 	turnobject LOCALID_NEWBARK_UB_LUSAMINE, DIR_EAST     @ map.json FACE_RIGHT
 	release
@@ -625,6 +693,11 @@ NewBarkTown_EventScript_UBElm::
 	lock
 	faceplayer
 	msgbox NewBarkTown_Text_UBElmIdle, MSGBOX_DEFAULT
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
+	goto_if_eq VAR_RESULT, SPECIES_NONE, NewBarkTown_EventScript_UBElmEnd
+	bufferspeciesname STR_VAR_1, VAR_RESULT
+	msgbox NewBarkTown_Text_UBElmIdleCosmog, MSGBOX_DEFAULT
+NewBarkTown_EventScript_UBElmEnd::
 	closemessage
 	turnobject LOCALID_NEWBARK_UB_ELM, DIR_SOUTH         @ map.json FACE_DOWN
 	release
@@ -641,8 +714,9 @@ NewBarkTown_EventScript_UBMom::
 	end
 
 @ Gold/Crystal at (21,13), reachable from (20,13) and (21,14). They ask to be
-@ put in the fight HERE, early - and the refusal comes later, on camera, in
-@ NewBarkTown_EventScript_UBRivalRefused. Do not delete either half.
+@ put in the fight HERE, early. The refusal comes later, on camera, in
+@ NewBarkTown_EventScript_UBRivalIn - and so does the person who overrules
+@ it. Do not delete any of the three halves.
 NewBarkTown_EventScript_UBRival::
 	lock
 	faceplayer
@@ -652,11 +726,12 @@ NewBarkTown_EventScript_UBRival::
 	release
 	end
 
-@ Anabel at (22,12). Looker fills (21,12), Marill fills (22,13) and (22,11)
-@ is wall, so the only way to her is the long way round: (20,13) -> (20,14)
-@ -> east along y=14 -> (23,14) -> (23,13) -> (23,12).
-@ She plants NOTHING here. The seeds were sown in Missions 2 and 3 and in the
-@ Olivine briefing; the next time she touches the subject is the reveal.
+@ Anabel at (22,12). Looker fills (21,12), Azumarill fills (22,13) and
+@ (22,11) is wall, so the only way to her is the long way round: (20,13) ->
+@ (20,14) -> east along y=14 -> (23,14) -> (23,13) -> (23,12).
+@ She plants NOTHING here and she does not explain herself here either. All
+@ of that happened in Olivine, in the briefing, sitting down, with time -
+@ which is where the author asked for it. On this road she is working.
 NewBarkTown_EventScript_UBAnabel::
 	lock
 	faceplayer
@@ -668,7 +743,7 @@ NewBarkTown_EventScript_UBAnabel::
 
 @ ----------------------------------------------------------------------------
 @ The cutscene. Everything from the YES onward is scripted through to a
-@ battle outcome.
+@ battle outcome, and then through to the thing that takes the win away.
 @ ----------------------------------------------------------------------------
 
 @ Only reachable from (20,12) facing east (see LOOKER'S POCKET above), so no
@@ -699,16 +774,6 @@ NewBarkTown_EventScript_UBNotReady::
 @ A simple battle, so there is no party-size check to do, and the mission
 @ hands out nothing, so the entregar-pokemon-ou-ovo space rule does not apply.
 @
-@ SKELETON: Elm and Lusamine arrive under a fade. Evolution: both of them
-@ actually running in, with a long applymovement. The rift is a camera shake
-@ plus a white flash and the three beasts appear standing still; evolution can
-@ give it its own palette, weather and music, and open the three tears at
-@ different moments.
-@
-@ NOBODY WALKS IN THIS SCENE. All seven cast members are already on their
-@ final tiles and the two who are not simply appear there. That is what makes
-@ a scene with twice Mission 3's cast cheaper to stage than Mission 3 was.
-@
 @ WARNING: setobjectxy DOES NOT WORK HERE AND FAILS SILENTLY.
 @ TryMoveObjectEventToMapCoords (src/event_object_movement.c:3812) only acts
 @ on a SPAWNED object, and spawning only happens near the camera
@@ -727,7 +792,7 @@ NewBarkTown_EventScript_UBScene::
 	closemessage
 	lockall
 	hidefollower
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	@ Elm (11,10) -> (23,12), then faces west at the line of people.
 	removeobject LOCALID_NEWBARK_UB_ELM
 	setobjectxyperm LOCALID_NEWBARK_UB_ELM, 23, 12
@@ -740,7 +805,7 @@ NewBarkTown_EventScript_UBScene::
 	clearflag FLAG_TEMP_4
 	addobject LOCALID_NEWBARK_UB_LUSAMINE
 	turnobject LOCALID_NEWBARK_UB_LUSAMINE, DIR_EAST
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	msgbox NewBarkTown_Text_UBTheyArrive, MSGBOX_DEFAULT
 	closemessage
 	@ Tremor, then the white flash that brings all three in at once.
@@ -750,12 +815,12 @@ NewBarkTown_EventScript_UBScene::
 	setvar VAR_0x8007, 4   @ shake delay
 	special ShakeCamera
 	waitstate
-	fadescreen FADE_TO_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
 	clearflag FLAG_TEMP_2
 	addobject LOCALID_NEWBARK_UB_KARTANA
 	addobject LOCALID_NEWBARK_UB_GUZZLORD
 	addobject LOCALID_NEWBARK_UB_NIHILEGO
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	playmoncry SPECIES_KARTANA, CRY_MODE_ENCOUNTER
 	waitmoncry
 	playmoncry SPECIES_GUZZLORD, CRY_MODE_ENCOUNTER
@@ -763,6 +828,56 @@ NewBarkTown_EventScript_UBScene::
 	playmoncry SPECIES_NIHILEGO, CRY_MODE_ENCOUNTER
 	waitmoncry
 	msgbox NewBarkTown_Text_UBAppear, MSGBOX_DEFAULT
+	closemessage
+	goto NewBarkTown_EventScript_UBSynergy
+
+@ THE SYNERGY, SHOWN BEFORE IT IS EXPLAINED - the theme of the arc since
+@ Mission 3, and from here on the house style for every Ultra Beast encounter
+@ (design section 6, regras comuns).
+@ It costs three applymovements: all three drift ONE tile east in the same
+@ instant, from three corners of the map that cannot see each other. Then
+@ they do it again. Elm is the one who notices it is the SAME instant,
+@ because he is the only one on the road holding a clock.
+@ Tiles checked with dump_mapa.py: Kartana (15,10)->(16,10)->(17,10),
+@ Nihilego (14,13)->(15,13)->(16,13), Guzzlord (23,15)->(24,15)->(25,15).
+@ All six are walkable and all six stay inside the camera (x 13..27).
+NewBarkTown_EventScript_UBSynergy::
+	applymovement LOCALID_NEWBARK_UB_KARTANA, NewBarkTown_Movement_UBDrift
+	applymovement LOCALID_NEWBARK_UB_NIHILEGO, NewBarkTown_Movement_UBDrift
+	applymovement LOCALID_NEWBARK_UB_GUZZLORD, NewBarkTown_Movement_UBDrift
+	waitmovement LOCALID_NEWBARK_UB_KARTANA
+	waitmovement LOCALID_NEWBARK_UB_NIHILEGO
+	waitmovement LOCALID_NEWBARK_UB_GUZZLORD
+	msgbox NewBarkTown_Text_UBSynergyFirst, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_NEWBARK_UB_KARTANA, NewBarkTown_Movement_UBDrift
+	applymovement LOCALID_NEWBARK_UB_NIHILEGO, NewBarkTown_Movement_UBDrift
+	applymovement LOCALID_NEWBARK_UB_GUZZLORD, NewBarkTown_Movement_UBDrift
+	waitmovement LOCALID_NEWBARK_UB_KARTANA
+	waitmovement LOCALID_NEWBARK_UB_NIHILEGO
+	waitmovement LOCALID_NEWBARK_UB_GUZZLORD
+	msgbox NewBarkTown_Text_UBSynergyNamed, MSGBOX_DEFAULT
+	closemessage
+	goto NewBarkTown_EventScript_UBLunge
+
+@ DIRECT DANGER TO THE PLAYER, and the first thing in this mission that
+@ somebody stops. Nihilego breaks the formation and runs the last three tiles
+@ of y=13 to (19,13) - diagonally touching the player, directly under Mom,
+@ who is the one person on this road who was told to go inside and would not.
+@ The rescue is the Azumarill, and it goes AROUND, on y=14, because nothing
+@ is ever parked at (20,13). (22,13) -> (22,14) -> (21,14) -> (20,14) ->
+@ (19,14), facing north at the thing. The two paths never share a tile.
+@ This beat is why Lusamine says what she says next. Do not reorder them.
+NewBarkTown_EventScript_UBLunge::
+	playse SE_PIN
+	applymovement LOCALID_NEWBARK_UB_ANABEL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_NEWBARK_UB_ANABEL
+	applymovement LOCALID_NEWBARK_UB_NIHILEGO, NewBarkTown_Movement_NihilegoLunge
+	applymovement LOCALID_NEWBARK_UB_AZUMARILL, NewBarkTown_Movement_AzumarillCutOff
+	waitmovement LOCALID_NEWBARK_UB_NIHILEGO
+	waitmovement LOCALID_NEWBARK_UB_AZUMARILL
+	call NewBarkTown_EventScript_UBShake
+	msgbox NewBarkTown_Text_UBCutOff, MSGBOX_DEFAULT
 	closemessage
 	goto NewBarkTown_EventScript_UBKnot
 
@@ -783,15 +898,25 @@ NewBarkTown_EventScript_UBKnot::
 	closemessage
 	turnobject LOCALID_NEWBARK_UB_LUSAMINE, DIR_EAST
 	msgbox NewBarkTown_Text_UBLusamineAsks, MSGBOX_DEFAULT
-	goto NewBarkTown_EventScript_UBAnabelReveal
+	closemessage
+	goto NewBarkTown_EventScript_UBPlan
 
-@ Anabel's reveal, between Lusamine's question and the player's choice, per
-@ the seven beats of design section 3.1 (V17). It is NOT a flashback, it sets
-@ no flag, and it does not pause the mission.
-@ Looker is at (21,12) and Anabel at (22,12), right beside him, so he does
-@ not need to walk to catch her: the exclamation mark and a turn are enough.
-@ x 22 > 21 -> east to her, x 20 < 21 -> west to come back to the player.
-NewBarkTown_EventScript_UBAnabelReveal::
+@ Anabel answers the question, and answering it costs her something: three
+@ rifts open at once is more than she can stand in front of quietly. Looker
+@ is at (21,12) and she is at (22,12), right beside him, so he does not need
+@ to walk to catch her. x 22 > 21 -> east to her, x 20 < 21 -> west to come
+@ back to the player.
+@ SHE DOES NOT EXPLAIN HERSELF HERE. The author was explicit: the Faller
+@ conversation does not belong in the middle of a fight. It happens in
+@ Olivine, in the briefing, before any of this - Text_BriefingM4 in
+@ data/maps/OlivineCity_House1/scripts.pory - and it comes back once, at the
+@ end, when everyone is standing on the road again (UBAnabelPromise). Two
+@ boxes here, and she is back at work in the third.
+@ What she gives the scene instead is the COUNTER, and the counter is what
+@ turns the standard pick-one-Ultra-Beast menu into a plan: three things that
+@ move in one instant have to be broken in one instant, and that needs a
+@ fourth pair of hands.
+NewBarkTown_EventScript_UBPlan::
 	msgbox NewBarkTown_Text_UBAnabelBreaks, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
@@ -799,24 +924,36 @@ NewBarkTown_EventScript_UBAnabelReveal::
 	waitmovement LOCALID_NEWBARK_UB_LOOKER
 	turnobject LOCALID_NEWBARK_UB_LOOKER, DIR_EAST
 	delay 30
-	msgbox NewBarkTown_Text_UBAnabelFaller, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Text_UBAnabelStands, MSGBOX_DEFAULT
 	closemessage
 	turnobject LOCALID_NEWBARK_UB_LOOKER, DIR_WEST      @ back to the player
-	msgbox NewBarkTown_Text_UBAnabelPicks, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Text_UBCounter, MSGBOX_DEFAULT
 	closemessage
-	goto NewBarkTown_EventScript_UBRivalRefused
+	goto NewBarkTown_EventScript_UBRivalIn
 
 @ Pays off the idle line: Gold/Crystal asked to be put in the fight, so the
-@ refusal has to happen on camera or the promise is dropped.
+@ answer has to happen on camera or the promise is dropped. The answer is no,
+@ for a reason that is about them and not about the plan - and then the plan
+@ needs four, and the person who overrules the no is LUSAMINE, thirty seconds
+@ after being told that deciding for everybody is not protection. That is the
+@ whole point of the scene: Mom teaches her to ask, and the first thing she
+@ does with it is believe in somebody else's kid.
 @ Gold/Crystal sit at (21,13), diagonally below-right of the player at
 @ (20,12). There is no cardinal direction that points at the player, so they
 @ turn WEST - onto the player's column - which reads as turning to them.
 @ Nobody is at (20,13), so nothing is hidden behind the text box.
-NewBarkTown_EventScript_UBRivalRefused::
+NewBarkTown_EventScript_UBRivalIn::
 	turnobject LOCALID_NEWBARK_UB_RIVAL, DIR_WEST
 	msgbox NewBarkTown_Text_UBRivalAsks, MSGBOX_DEFAULT
 	closemessage
 	msgbox NewBarkTown_Text_UBRivalRefused, MSGBOX_DEFAULT
+	closemessage
+	msgbox NewBarkTown_Text_UBLusamineLetsHimIn, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+	applymovement LOCALID_NEWBARK_UB_RIVAL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_NEWBARK_UB_RIVAL
+	msgbox NewBarkTown_Text_UBRivalIn, MSGBOX_DEFAULT
 	closemessage
 	goto NewBarkTown_EventScript_UBChoose
 
@@ -833,6 +970,8 @@ NewBarkTown_EventScript_UBRivalRefused::
 @   pick 0 Kartana   -> Lusamine Nihilego, Anabel Guzzlord
 @   pick 1 Guzzlord  -> Lusamine Nihilego, Anabel Kartana
 @   pick 2 Nihilego  -> Lusamine Guzzlord, Anabel Kartana
+@ Gold/Crystal are the fourth pair of hands on whichever one the player
+@ takes: four people, three beasts, one instant.
 @ Each UBPicked* line SAYS which two the others take, so the table is
 @ readable from inside the game and not only from this comment.
 NewBarkTown_EventScript_UBChoose::
@@ -939,7 +1078,8 @@ NewBarkTown_EventScript_UBStartBattle::
 @ map puts the cast back on its map.json tiles with the beasts hidden again,
 @ and talking to Looker restarts the whole scene - the pick included. The warp
 @ also puts Elm and Lusamine back on their original template coordinates,
-@ because LoadMapFromWarp re-reads the templates.
+@ because LoadMapFromWarp re-reads the templates, and it undoes every step of
+@ choreography above, because those only live in the loaded map.
 NewBarkTown_EventScript_UBUnresolved::
 	msgbox NewBarkTown_Text_UBGotAway, MSGBOX_DEFAULT
 	closemessage
@@ -949,35 +1089,200 @@ NewBarkTown_EventScript_UBUnresolved::
 	releaseall
 	end
 
-@ Lusamine's fight and Anabel's are narrative: they resolve with the player's
-@ win, and only the lines afterwards change with the pick.
-@ SKELETON: evolution can stage them on screen. A real battle against either
-@ of them is NOT the plan - Lusamine's is reserved for design sections 7/9.
+@ The plan worked. Lusamine's fight, Anabel's and Gold/Crystal's are
+@ narrative: they resolve with the player's win, and the lines change with
+@ the pick so the four-way split is legible from inside the game.
+@ THE THREE BEASTS ARE NOT REMOVED HERE. They are down, not gone, and they
+@ have to still be standing on the road for what comes to collect them.
 NewBarkTown_EventScript_UBResolved::
-	@ All three beast objects are still on the map: a battle does not reload
-	@ it. Their flag is FLAG_TEMP_2, so removeobject setting it is harmless.
-	fadescreen FADE_TO_WHITE
-	removeobject LOCALID_NEWBARK_UB_KARTANA
-	removeobject LOCALID_NEWBARK_UB_GUZZLORD
-	removeobject LOCALID_NEWBARK_UB_NIHILEGO
-	fadescreen FADE_FROM_WHITE
 	goto_if_eq VAR_TEMP_3, 1, NewBarkTown_EventScript_UBAfterGuzzlord
 	goto_if_eq VAR_TEMP_3, 2, NewBarkTown_EventScript_UBAfterNihilego
 	msgbox NewBarkTown_Text_UBAfterKartana, MSGBOX_DEFAULT
-	goto NewBarkTown_EventScript_UBAftermath
+	goto NewBarkTown_EventScript_UBNecrozmaArrives
 
 NewBarkTown_EventScript_UBAfterGuzzlord::
 	msgbox NewBarkTown_Text_UBAfterGuzzlord, MSGBOX_DEFAULT
-	goto NewBarkTown_EventScript_UBAftermath
+	goto NewBarkTown_EventScript_UBNecrozmaArrives
 
 NewBarkTown_EventScript_UBAfterNihilego::
 	msgbox NewBarkTown_Text_UBAfterNihilego, MSGBOX_DEFAULT
 
-@ Four short beats: the cost (Elm), what the protagonist cannot say out loud
-@ (Gold/Crystal), Mom, and the hook. Nobody walks: everyone is already on the
-@ line and nobody is at (20,13), so the text box hides no one.
+@ THE CONSEQUENCE. Same entrance the creature has used in all three previous
+@ missions - shake, white flash, object - but this time it walks out onto the
+@ road itself, at (16,12), one tile west of Lusamine, in the middle of the
+@ street it has been opening for four missions.
+@ Its flag is FLAG_TEMP_5, its own, so nothing else's removeobject can touch
+@ it and so the ON_TRANSITION setflag hides it again on any reload.
+NewBarkTown_EventScript_UBNecrozmaArrives::
+	closemessage
+	call NewBarkTown_EventScript_UBShake
+	fadescreenswapbuffers FADE_TO_WHITE
+	clearflag FLAG_TEMP_5
+	addobject LOCALID_NEWBARK_UB_NECROZMA
+	fadescreenswapbuffers FADE_FROM_WHITE
+	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
+	waitmoncry
+	msgbox NewBarkTown_Text_UBNecrozmaArrives, MSGBOX_DEFAULT
+	closemessage
+	goto NewBarkTown_EventScript_UBRivalFights
+
+@ The kid goes at it. Nobody told them to, and this time nobody gets to tell
+@ them not to - they were let in thirty seconds ago and this is what being
+@ let in looks like to somebody who has spent the whole game feeling like
+@ the spare part.
+@ Azumarill (19,14) -> (18,14) -> (17,14) -> (16,14), two tiles south of the
+@ creature, faces north, hits it twice. Then it is thrown back to (18,14),
+@ still facing the thing, because it does not turn around.
+NewBarkTown_EventScript_UBRivalFights::
+	msgbox NewBarkTown_Text_UBRivalCharges, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_NEWBARK_UB_AZUMARILL, NewBarkTown_Movement_AzumarillCharge
+	waitmovement LOCALID_NEWBARK_UB_AZUMARILL
+	playmoncry SPECIES_AZUMARILL, CRY_MODE_ENCOUNTER
+	applymovement LOCALID_NEWBARK_UB_AZUMARILL, NewBarkTown_Movement_StrikeUp
+	waitmovement LOCALID_NEWBARK_UB_AZUMARILL
+	waitmoncry
+	call NewBarkTown_EventScript_UBFlash
+	applymovement LOCALID_NEWBARK_UB_AZUMARILL, NewBarkTown_Movement_AzumarillThrown
+	waitmovement LOCALID_NEWBARK_UB_AZUMARILL
+	call NewBarkTown_EventScript_UBShake
+	msgbox NewBarkTown_Text_UBRivalRepelled, MSGBOX_DEFAULT
+	closemessage
+	goto NewBarkTown_EventScript_UBAbsorb
+
+@ It eats them. Same pattern as Missions 1, 2 and 3 - pulse, the beasts
+@ dragged backwards toward it, flash, removeobject - except that this time
+@ there are three, and this time somebody on the road does the arithmetic
+@ out loud afterwards.
+@ Drag paths, all measured: Kartana (17,10) -> (16,10) -> (16,11), which puts
+@ it directly north of the creature; Nihilego (19,13) -> (18,13) -> (17,13);
+@ Guzzlord (25,15) -> (24,15) -> (23,15). Every tile walkable, every path
+@ pointed at (16,12), and none of the three crosses another.
+@ Their flag is FLAG_TEMP_2, shared, and that is fine: all three go at once.
+NewBarkTown_EventScript_UBAbsorb::
+	applymovement LOCALID_NEWBARK_UB_NECROZMA, NewBarkTown_Movement_NecrozmaPulse
+	waitmovement LOCALID_NEWBARK_UB_NECROZMA
+	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
+	waitmoncry
+	applymovement LOCALID_NEWBARK_UB_KARTANA, NewBarkTown_Movement_KartanaPulledIn
+	applymovement LOCALID_NEWBARK_UB_NIHILEGO, NewBarkTown_Movement_UBPulledInWest
+	applymovement LOCALID_NEWBARK_UB_GUZZLORD, NewBarkTown_Movement_UBPulledInWest
+	waitmovement LOCALID_NEWBARK_UB_KARTANA
+	waitmovement LOCALID_NEWBARK_UB_NIHILEGO
+	waitmovement LOCALID_NEWBARK_UB_GUZZLORD
+	call NewBarkTown_EventScript_UBShake
+	fadescreenswapbuffers FADE_TO_WHITE
+	removeobject LOCALID_NEWBARK_UB_KARTANA
+	removeobject LOCALID_NEWBARK_UB_GUZZLORD
+	removeobject LOCALID_NEWBARK_UB_NIHILEGO
+	fadescreenswapbuffers FADE_FROM_WHITE
+	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
+	waitmoncry
+	msgbox NewBarkTown_Text_UBAbsorbed, MSGBOX_DEFAULT
+	closemessage
+	goto NewBarkTown_EventScript_UBUltra
+
+@ What it becomes. The creature is removed and the other object is added on
+@ the SAME tile (16,12) under one flash - the two are never spawned at the
+@ same time, which is why the peak object count of this scene is 13 and not
+@ 14, and why each of them needs its own FLAG_TEMP.
+@ Then the four of them do exactly what worked ten seconds ago - the same
+@ instant, the same plan - and it does not matter at all. That is the whole
+@ point: the counter that beat the beasts is nothing to the thing that was
+@ collecting them.
+@ All four face west at (16,12): Lusamine (17,12), the player (20,12),
+@ Gold/Crystal (21,13), Anabel (22,12).
+NewBarkTown_EventScript_UBUltra::
+	call NewBarkTown_EventScript_UBShake
+	fadescreenswapbuffers FADE_TO_WHITE
+	removeobject LOCALID_NEWBARK_UB_NECROZMA
+	clearflag FLAG_TEMP_6
+	addobject LOCALID_NEWBARK_UB_ULTRA_NECROZMA
+	fadescreenswapbuffers FADE_FROM_WHITE
+	playmoncry SPECIES_NECROZMA_ULTRA, CRY_MODE_ENCOUNTER
+	waitmoncry
+	msgbox NewBarkTown_Text_UBUltraRises, MSGBOX_DEFAULT
+	closemessage
+	@ Four at once, the same way they broke the three.
+	applymovement LOCALID_NEWBARK_UB_LUSAMINE, NewBarkTown_Movement_StrikeWest
+	applymovement LOCALID_NEWBARK_UB_ANABEL, NewBarkTown_Movement_StrikeWest
+	applymovement LOCALID_NEWBARK_UB_RIVAL, NewBarkTown_Movement_StrikeWest
+	applymovement OBJ_EVENT_ID_PLAYER, NewBarkTown_Movement_StrikeWest
+	waitmovement LOCALID_NEWBARK_UB_LUSAMINE
+	waitmovement LOCALID_NEWBARK_UB_ANABEL
+	waitmovement LOCALID_NEWBARK_UB_RIVAL
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement LOCALID_NEWBARK_UB_ULTRA_NECROZMA, NewBarkTown_Movement_UltraFlare
+	waitmovement LOCALID_NEWBARK_UB_ULTRA_NECROZMA
+	fadescreenswapbuffers FADE_TO_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
+	setvar VAR_0x8004, 3   @ vertical pan
+	setvar VAR_0x8005, 2   @ horizontal pan
+	setvar VAR_0x8006, 48  @ num shakes
+	setvar VAR_0x8007, 3   @ shake delay
+	special ShakeCamera
+	waitstate
+	msgbox NewBarkTown_Text_UBUltraBreaksThem, MSGBOX_DEFAULT
+	closemessage
+	call NewBarkTown_EventScript_UBUltraSensesCosmog
+	goto NewBarkTown_EventScript_UBUltraLeaves
+
+@ OPTIONAL, STATELESS reaction to the Cosmog family in the party - design
+@ section 4.11, same shape as Mission 3's. Checked HERE and not before the
+@ battle on purpose: the battle can evolve the Pokemon. The answer is kept
+@ in VAR_TEMP_4 and re-read by the closing conversation, so Lusamine's last
+@ box lines up with what actually happened.
+@ Without the Pokemon nothing is missing from the scene and nothing is spent:
+@ no flag, no persistent var.
+NewBarkTown_EventScript_UBUltraSensesCosmog::
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
+	copyvar VAR_TEMP_4, VAR_RESULT
+	goto_if_eq VAR_TEMP_4, SPECIES_NONE, NewBarkTown_EventScript_UBCosmogEnd
+	bufferspeciesname STR_VAR_1, VAR_TEMP_4
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement LOCALID_NEWBARK_UB_ULTRA_NECROZMA, NewBarkTown_Movement_UltraFlare
+	waitmovement LOCALID_NEWBARK_UB_ULTRA_NECROZMA
+	playmoncry SPECIES_NECROZMA_ULTRA, CRY_MODE_NORMAL
+	waitmoncry
+	goto_if_eq VAR_TEMP_4, SPECIES_SOLGALEO, NewBarkTown_EventScript_UBCosmogLegend
+	goto_if_eq VAR_TEMP_4, SPECIES_LUNALA, NewBarkTown_EventScript_UBCosmogLegend
+	msgbox NewBarkTown_Text_UBUltraSensesCosmog, MSGBOX_DEFAULT
+	closemessage
+	return
+
+NewBarkTown_EventScript_UBCosmogLegend::
+	msgbox NewBarkTown_Text_UBUltraSensesLegend, MSGBOX_DEFAULT
+	closemessage
+NewBarkTown_EventScript_UBCosmogEnd::
+	return
+
+@ It leaves the way it arrived, and nobody stops it. Its flag is FLAG_TEMP_6,
+@ its own, so the removeobject touches nothing else.
+NewBarkTown_EventScript_UBUltraLeaves::
+	call NewBarkTown_EventScript_UBShake
+	fadescreenswapbuffers FADE_TO_WHITE
+	removeobject LOCALID_NEWBARK_UB_ULTRA_NECROZMA
+	fadescreenswapbuffers FADE_FROM_WHITE
+	msgbox NewBarkTown_Text_UBUltraGone, MSGBOX_DEFAULT
+	closemessage
+	goto NewBarkTown_EventScript_UBAftermath
+
+@ The town stands and the mission is lost, and the order of the boxes is the
+@ argument: the people first (Looker, always), then the cost, then what it
+@ actually was, then the three who have to live in this town, then the
+@ promise that is the only thing anybody still has, then the hook.
+@ Nobody walks: everyone is already on the line and nobody is at (20,13), so
+@ the text box hides no one. Azumarill is at (18,14) and Lusamine at (17,12),
+@ where the fight left them, which is the picture the scene wants.
 NewBarkTown_EventScript_UBAftermath::
+	msgbox NewBarkTown_Text_UBAftermathHurt, MSGBOX_DEFAULT
+	closemessage
 	msgbox NewBarkTown_Text_UBElmCost, MSGBOX_DEFAULT
+	closemessage
+	msgbox NewBarkTown_Text_UBWhatItWas, MSGBOX_DEFAULT
+	closemessage
+	msgbox NewBarkTown_Text_UBLusamineLost, MSGBOX_DEFAULT
 	closemessage
 	turnobject LOCALID_NEWBARK_UB_RIVAL, DIR_WEST     @ onto the player's column
 	msgbox NewBarkTown_Text_UBRival, MSGBOX_DEFAULT
@@ -985,6 +1290,9 @@ NewBarkTown_EventScript_UBAftermath::
 	turnobject LOCALID_NEWBARK_UB_MOM, DIR_EAST       @ back to facing her child
 	msgbox NewBarkTown_Text_UBMom, MSGBOX_DEFAULT
 	closemessage
+	msgbox NewBarkTown_Text_UBAnabelPromise, MSGBOX_DEFAULT
+	closemessage
+	call NewBarkTown_EventScript_UBAftermathCosmog
 	msgbox NewBarkTown_Text_UBHook, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
@@ -1000,24 +1308,119 @@ NewBarkTown_EventScript_UBAftermath::
 	releaseall
 	end
 
+@ Re-reads what UBUltraSensesCosmog sampled. Design section 6.4: Lusamine is
+@ the only living person who knows what that light looks like from the other
+@ side, because she used one. She says it without being asked, and she says
+@ the other half of it too - that none of this is the player's doing.
+NewBarkTown_EventScript_UBAftermathCosmog::
+	goto_if_eq VAR_TEMP_4, SPECIES_NONE, NewBarkTown_EventScript_UBAftermathCosmogEnd
+	bufferspeciesname STR_VAR_1, VAR_TEMP_4
+	msgbox NewBarkTown_Text_UBAftermathCosmog, MSGBOX_DEFAULT
+	closemessage
+NewBarkTown_EventScript_UBAftermathCosmogEnd::
+	return
+
 NewBarkTown_Movement_StepLeftFaceLeft:
 	walk_left
 	face_left
+	step_end
+
+@ One tile east, slowly, and all three do it in the same frame.
+NewBarkTown_Movement_UBDrift:
+	walk_slow_right
+	step_end
+
+@ (16,13) -> (19,13), the last three tiles between it and the player.
+NewBarkTown_Movement_NihilegoLunge:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+@ (22,13) -> (22,14) -> (21,14) -> (20,14) -> (19,14), facing north. Around
+@ the outside, never through (20,13).
+NewBarkTown_Movement_AzumarillCutOff:
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	face_up
+	step_end
+
+@ (19,14) -> (16,14), two tiles south of the creature, facing it.
+NewBarkTown_Movement_AzumarillCharge:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	face_up
+	step_end
+
+NewBarkTown_Movement_StrikeUp:
+	walk_in_place_fast_up
+	walk_in_place_fast_up
+	step_end
+
+NewBarkTown_Movement_StrikeWest:
+	walk_in_place_fast_left
+	walk_in_place_fast_left
+	step_end
+
+@ (16,14) -> (18,14) without turning around.
+NewBarkTown_Movement_AzumarillThrown:
+	lock_facing_direction
+	walk_fast_right
+	walk_fast_right
+	unlock_facing_direction
+	step_end
+
+@ Dragged backwards, two tiles, still facing away from what is pulling.
+NewBarkTown_Movement_UBPulledInWest:
+	lock_facing_direction
+	walk_slow_left
+	walk_slow_left
+	unlock_facing_direction
+	step_end
+
+@ Kartana comes down the side of the lab: (17,10) -> (16,10) -> (16,11).
+NewBarkTown_Movement_KartanaPulledIn:
+	lock_facing_direction
+	walk_slow_left
+	walk_slow_down
+	unlock_facing_direction
+	step_end
+
+NewBarkTown_Movement_NecrozmaPulse:
+	walk_in_place_fast_right
+	walk_in_place_fast_right
+	walk_in_place_fast_right
+	step_end
+
+NewBarkTown_Movement_UltraFlare:
+	walk_in_place_fast_right
+	walk_in_place_fast_right
+	walk_in_place_fast_right
+	walk_in_place_fast_right
 	step_end
 `
 
 raw `
 @ ============================================================================
 @ Rift Mission 4 dialogue.
-@ SKELETON: every string below is placeholder. Rewrite in the design's voice
-@ (section 3.1). Keep the speaker's name at the head of each box, keep the
-@ two gender-neutral rival texts free of any name, and keep UBHook pointing
-@ at the Olivine reunion (design section 7) - it is the hook the next
-@ document picks up.
+@ Voices: design section 3.1. Looker theatrical, formal in a personal way,
+@ and asks about the people before the report. Anabel precise, separating
+@ observation from hypothesis. Lusamine elaborate, used to deciding, learning
+@ to ask. Elm humble and specific. Mom plain, short, no speeches.
+@ Gold/Crystal: NO speaker plaque anywhere, ever - the two texts have to
+@ serve both of them. When a rival line follows a named line inside the SAME
+@ box it opens with {SPEAKER NAME_NONE}, or it would inherit the plaque above
+@ it and put somebody else's name over the kid's words.
+@ No em dash anywhere: U+2014 is not in charmap.txt and breaks the build.
+@ UBHook is the hook into the Olivine reunion (design section 7) - it is what
+@ the next document picks up.
 @ ============================================================================
 
 NewBarkTown_Text_UBLusamineIdle:
-	.string "Lusamine: You are taller than\n"
+	.string "{SPEAKER NAME_LUSAMINE}You are taller than\n"
 	.string "the photographs.\p"
 	.string "…Forgive me. I have practiced\n"
 	.string "this, and I am still doing it\l"
@@ -1026,28 +1429,69 @@ NewBarkTown_Text_UBLusamineIdle:
 	.string "Gladion does not write, but he\n"
 	.string "mentions you, which from him is\l"
 	.string "the same thing.\p"
+	.string "Nobody sent for me. I read the\n"
+	.string "same numbers they did and I got\l"
+	.string "in a boat.\p"
 	.string "We will talk properly when this\n"
 	.string "is over.\p"
 	.string "If I am still someone you want\n"
 	.string "to talk to.$"
 
+@ Optional. Design section 6.4: she is the only living person who knows what
+@ that light looks like from the other side. And the rule that cannot be
+@ broken - she says out loud that none of it is the player's doing.
+NewBarkTown_Text_UBLusamineIdleCosmog:
+	.string "{SPEAKER NAME_LUSAMINE}…Oh.\p"
+	.string "Oh, you brought it with you.\p"
+	.string "{STR_VAR_1} is standing on a\n"
+	.string "road with three tears over it,\l"
+	.string "and it is not frightened.\p"
+	.string "I knew one of those, once.\p"
+	.string "I did not deserve it, and I\n"
+	.string "used it, and I would like you\l"
+	.string "to hear the next part from me\l"
+	.string "before anyone else says it.\p"
+	.string "They shine. Things on the other\n"
+	.string "side can see that.\p"
+	.string "That is not your fault and it\n"
+	.string "never was.\p"
+	.string "It is why I came.$"
+
 NewBarkTown_Text_UBElmIdle:
-	.string "Elm: Six weeks.\p"
+	.string "{SPEAKER NAME_ELM}Six weeks.\p"
 	.string "Six weeks of the same reading,\n"
 	.string "and every time I wrote “check\l"
 	.string "the sensor” in the margin.\p"
-	.string "Professor Kukui's notes came\n"
-	.string "this morning.\p"
-	.string "I ran them against my log,\n"
-	.string "and… it isn't the sensor.\p"
-	.string "It never was.\p"
+	.string "Then Cherrygrove was in the\n"
+	.string "morning paper.\p"
+	.string "So I posted the whole log to\n"
+	.string "the one man in the world who\l"
+	.string "would not laugh at it, and he\l"
+	.string "telephoned the police before he\l"
+	.string "finished reading it.\p"
+	.string "Professor Kukui works fast when\n"
+	.string "he is frightened.\p"
 	.string "Everyone who would come is in\n"
 	.string "the lab. It's the strongest\l"
 	.string "building in town, which is not\l"
 	.string "saying much.$"
 
+@ Optional. Elm is the one who identified the egg in the first place, so he
+@ is allowed to be delighted for exactly two boxes and then remember where
+@ he is standing.
+NewBarkTown_Text_UBElmIdleCosmog:
+	.string "{SPEAKER NAME_ELM}And there it is.\p"
+	.string "I had a {STR_VAR_1} on my table\n"
+	.string "in a shell, and now it is on my\l"
+	.string "street, and I still cannot tell\l"
+	.string "you what it is.\p"
+	.string "…I'm going to stop looking at\n"
+	.string "it now.\p"
+	.string "Every instrument in my window\n"
+	.string "leans when it walks past.$"
+
 NewBarkTown_Text_UBMomIdle:
-	.string "Mom: I'm not going into the\n"
+	.string "{SPEAKER NAME_MOM}I'm not going into the\n"
 	.string "lab, {PLAYER}.\p"
 	.string "Don't ask me again.\p"
 	.string "I've been watching that road\n"
@@ -1060,22 +1504,28 @@ NewBarkTown_Text_UBRivalIdle:
 	.string "twice.\p"
 	.string "The Hanlons wouldn't open the\n"
 	.string "door until I said your name.\p"
+	.string "Which is the story of the last\n"
+	.string "two years, honestly.\p"
 	.string "Hey - when it starts, put me\n"
 	.string "in.\p"
 	.string "I've got a full team. I've had\n"
-	.string "a full team for a year.$"
+	.string "a full team for a year, and I\l"
+	.string "have never once been in the\l"
+	.string "room where it mattered.$"
 
 NewBarkTown_Text_UBAnabelIdle:
-	.string "Anabel: Three signatures, and\n"
+	.string "{SPEAKER NAME_ANABEL}Three signatures, and\n"
 	.string "they are breathing together.\p"
 	.string "In, and out.\p"
-	.string "I have never seen that.\p"
+	.string "I told you in Olivine what that\n"
+	.string "does to me. I won't say it\l"
+	.string "twice on an open road.\p"
 	.string "Stay on this street.\p"
 	.string "If I tell you to move, move\n"
 	.string "first and ask me after.$"
 
 NewBarkTown_Text_UBLookerGreet:
-	.string "Looker: {PLAYER}. Right on your\n"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}. Right on your\n"
 	.string "own doorstep.\p"
 	.string "I have worked a great many\n"
 	.string "streets, and I have never liked\l"
@@ -1084,57 +1534,101 @@ NewBarkTown_Text_UBLookerGreet:
 @ Elm is still at (11,10) and off camera at this point, so Anabel reads his
 @ log out for him. His own voice arrives with his object, in UBTheyArrive.
 NewBarkTown_Text_UBClockRelay:
-	.string "Anabel: The Professor called it\n"
+	.string "{SPEAKER NAME_ANABEL}The Professor called it\n"
 	.string "in four minutes ago.\p"
 	.string "Three minutes, he says. Maybe\n"
 	.string "four - the interval has been\l"
 	.string "shortening all morning.\p"
 	.string "All three breathe together.\p"
-	.string "That is what he could not see\n"
-	.string "in six weeks and Kukui saw in\l"
-	.string "one page.\p"
-	.string "Looker: {PLAYER}. Madame\n"
-	.string "Lusamine intends to handle all\l"
-	.string "three herself.\p"
-	.string "I would very much like you\n"
-	.string "standing beside me when she\l"
-	.string "says it out loud.$"
+	.string "He had six weeks of that on\n"
+	.string "paper and called it a fault.\p"
+	.string "It took a stranger in Alola one\n"
+	.string "page to tell him it wasn't.\p"
+	.string "{SPEAKER NAME_LOOKER}And so we are here, on\n"
+	.string "a road with no Pokémon Center,\l"
+	.string "because a man in a laboratory\l"
+	.string "was brave enough to be wrong in\l"
+	.string "writing.$"
 
 NewBarkTown_Text_UBReady:
-	.string "Looker: Worse than Cherrygrove.\p"
+	.string "{SPEAKER NAME_LOOKER}Worse than Cherrygrove.\p"
 	.string "Worse than anything we have\n"
 	.string "sent you into.\p"
-	.string "Anabel: Are you ready?$"
+	.string "{SPEAKER NAME_ANABEL}Are you ready?$"
 
 NewBarkTown_Text_UBNotReady:
-	.string "Looker: Then take the time.\p"
+	.string "{SPEAKER NAME_LOOKER}Then take the time.\p"
 	.string "Your mother is not moving,\n"
 	.string "and neither am I.$"
 
 NewBarkTown_Text_UBTheyArrive:
-	.string "Lusamine: I came the moment I\n"
-	.string "read it.\p"
-	.string "Professor, your log - you kept\n"
-	.string "it. You kept six weeks of it.\p"
-	.string "Elm: I kept it because I\n"
+	.string "{SPEAKER NAME_LUSAMINE}Professor. Your log.\p"
+	.string "You kept six weeks of a reading\n"
+	.string "you were certain was wrong.\p"
+	.string "{SPEAKER NAME_ELM}I kept it because I\n"
 	.string "thought it was wrong.\p"
 	.string "That is not the same as being\n"
 	.string "useful.\p"
-	.string "Lusamine: Today it is exactly\n"
-	.string "the same thing.$"
+	.string "{SPEAKER NAME_LUSAMINE}Today it is exactly\n"
+	.string "the same thing.\p"
+	.string "{SPEAKER NAME_LOOKER}Madame. Nobody told me\n"
+	.string "you were coming.\p"
+	.string "{SPEAKER NAME_LUSAMINE}Nobody told me either,\n"
+	.string "Inspector.$"
 
 NewBarkTown_Text_UBAppear:
-	.string "Looker: Three.\p"
+	.string "{SPEAKER NAME_LOOKER}Three.\p"
 	.string "Over the laboratory, over the\n"
 	.string "road, over this street.\p"
-	.string "Elm: That's them. That's the\n"
+	.string "{SPEAKER NAME_ELM}That's them. That's the\n"
 	.string "reading.\p"
 	.string "Six weeks of it, standing in\n"
 	.string "my town.$"
 
+@ The synergy, shown first and named second.
+NewBarkTown_Text_UBSynergyFirst:
+	.string "{SPEAKER NAME_ELM}Wait.\p"
+	.string "Wait, they all moved.\p"
+	.string "{SPEAKER NAME_LUSAMINE}Yes. Toward us. That is\n"
+	.string "what they do.\p"
+	.string "{SPEAKER NAME_ELM}No, madame - they all\n"
+	.string "moved at the SAME time.\p"
+	.string "I have a clock. That is the\n"
+	.string "only thing I am good for today.$"
+
+NewBarkTown_Text_UBSynergyNamed:
+	.string "{SPEAKER NAME_ELM}Again. Same instant.\p"
+	.string "There are two buildings between\n"
+	.string "them. They cannot see each\l"
+	.string "other.\p"
+	.string "{SPEAKER NAME_ANABEL}Then stop counting them\n"
+	.string "as three.\p"
+	.string "That is one thing wearing three\n"
+	.string "bodies, and it has been doing\l"
+	.string "it since Blackthorn.\p"
+	.string "{SPEAKER NAME_LUSAMINE}…In Alola they never\n"
+	.string "did that.\p"
+	.string "Not once. Not for me.$"
+
+NewBarkTown_Text_UBCutOff:
+	.string "{SPEAKER NAME_ANABEL}MOVE!\p"
+	.string "{SPEAKER NAME_NONE}Azumarill, cut it off!\n"
+	.string "Go around, go around!\p"
+	.string "{SPEAKER NAME_ANABEL}…It stopped.\p"
+	.string "It came straight down the road\n"
+	.string "at a fifteen-year-old and a\l"
+	.string "woman who refused to go inside,\l"
+	.string "and a Pokémon nobody asked for\l"
+	.string "is what stopped it.\p"
+	.string "{SPEAKER NAME_MOM}I'm still not going\n"
+	.string "inside.$"
+
 NewBarkTown_Text_UBLusamineTakesThree:
-	.string "Lusamine: Three of them.\p"
-	.string "Then I will take three.\p"
+	.string "{SPEAKER NAME_LUSAMINE}It went for your child.\p"
+	.string "In front of you. In front of\n"
+	.string "me.\p"
+	.string "Three of them. Then I will take\n"
+	.string "three.\p"
 	.string "No - listen to me.\p"
 	.string "I know what they are. I know it\n"
 	.string "better than anyone standing on\l"
@@ -1142,8 +1636,11 @@ NewBarkTown_Text_UBLusamineTakesThree:
 	.string "Nobody else here has to go near\n"
 	.string "them.$"
 
+@ The plotline the author asked to keep: Mom does not out-argue her. She
+@ tells her what believing in somebody looks like from the inside, and she
+@ has exactly one example.
 NewBarkTown_Text_UBMomStopsHer:
-	.string "Mom: Ma'am.\p"
+	.string "{SPEAKER NAME_MOM}Ma'am.\p"
 	.string "My child is standing right\n"
 	.string "there, and I'm not going inside\l"
 	.string "either, so I won't lecture you.\p"
@@ -1155,83 +1652,120 @@ NewBarkTown_Text_UBMomStopsHer:
 	.string "I know the difference. I've\n"
 	.string "wanted to do it too.\p"
 	.string "Every week, for two years.\p"
-	.string "It isn't the same thing.\p"
-	.string "It only feels like it from in\n"
-	.string "here.\p"
-	.string "Lusamine: …\p"
+	.string "And then one morning I stood at\n"
+	.string "that door and let a ten-year-\l"
+	.string "old walk to Cherrygrove alone.\p"
+	.string "That's the part nobody tells\n"
+	.string "you. Believing in somebody is\l"
+	.string "worse than doing it yourself.\p"
+	.string "It just happens to be the thing\n"
+	.string "that works.\p"
+	.string "{SPEAKER NAME_LUSAMINE}…\p"
 	.string "My daughter said something very\n"
 	.string "close to that to me, once.\p"
 	.string "I did not hear it either.$"
 
 NewBarkTown_Text_UBLusamineAsks:
-	.string "Lusamine: Very well.\p"
+	.string "{SPEAKER NAME_LUSAMINE}Very well.\p"
 	.string "Then I will do the thing I am\n"
 	.string "worst at.\p"
 	.string "Anabel. What do your\n"
 	.string "instruments give me?$"
 
 NewBarkTown_Text_UBAnabelBreaks:
-	.string "Anabel: They give me… they\n"
+	.string "{SPEAKER NAME_ANABEL}They give me… they\n"
 	.string "give me…\p"
 	.string "…\p"
-	.string "Looker: Chief. Chief.$"
+	.string "{SPEAKER NAME_LOOKER}Chief. Chief.$"
 
-NewBarkTown_Text_UBAnabelFaller:
-	.string "Anabel: I'm here. I'm here.\p"
-	.string "Looker, let go. I can stand.\p"
-	.string "{PLAYER}. You should hear this\n"
-	.string "from me, and not from a file.\p"
-	.string "I came through one of these.\p"
-	.string "I'm a Faller.\p"
-	.string "I don't remember where I came\n"
-	.string "from. I've stopped pretending\l"
-	.string "that will come back.\p"
-	.string "I remember someone's hand.\p"
-	.string "That's the whole memory.\p"
-	.string "Someone reached down, and I\n"
-	.string "wasn't alone anymore.\p"
-	.string "So that's what we do.\p"
-	.string "Everyone who comes through gets\n"
-	.string "that, and everyone who goes in\l"
-	.string "comes home.\p"
-	.string "Both. Always both.\p"
-	.string "Looker: Thank you for telling\n"
-	.string "them, Chief.$"
+@ Two boxes and she is back at work. The long version of this happened in
+@ Olivine, before any of it. Do not move it back here.
+NewBarkTown_Text_UBAnabelStands:
+	.string "{SPEAKER NAME_ANABEL}I'm here. Let go,\n"
+	.string "Looker. I can stand.\p"
+	.string "Three at once is loud.\p"
+	.string "{PLAYER} knows why. I'm not\n"
+	.string "saying it again in the middle\l"
+	.string "of a road.\p"
+	.string "{SPEAKER NAME_LOOKER}You are not required\n"
+	.string "to.$"
 
-NewBarkTown_Text_UBAnabelPicks:
-	.string "Anabel: Report later.\p"
-	.string "I'm taking one now.$"
+@ The counter, and the reason the scene needs a fourth person.
+NewBarkTown_Text_UBCounter:
+	.string "{SPEAKER NAME_ANABEL}Here is what the\n"
+	.string "instruments give you, madame.\p"
+	.string "One thing, three bodies, one\n"
+	.string "instant.\p"
+	.string "Break one and the other two\n"
+	.string "carry it. Break two and the\l"
+	.string "third one carries both.\p"
+	.string "They have to go down in the\n"
+	.string "same instant or they do not go\l"
+	.string "down at all.\p"
+	.string "{SPEAKER NAME_LUSAMINE}Then I cannot take\n"
+	.string "three.\p"
+	.string "{SPEAKER NAME_ANABEL}No. You take one, I\n"
+	.string "take one, {PLAYER} takes one.\p"
+	.string "And the one {PLAYER} takes is\n"
+	.string "the one that has already tried\l"
+	.string "for them once.\p"
+	.string "It will not go down to one\n"
+	.string "trainer.$"
 
 @ No name: serves both Gold and Crystal.
 NewBarkTown_Text_UBRivalAsks:
-	.string "Wait. Wait!\p"
+	.string "Then take me.\p"
 	.string "I asked first. I asked before\n"
 	.string "any of you got here.\p"
-	.string "I've got a full team and I'm\n"
-	.string "standing in the same road.$"
+	.string "My Azumarill is the reason that\n"
+	.string "thing is still ten feet away.$"
 
 NewBarkTown_Text_UBRivalRefused:
-	.string "Looker: You are. And you are\n"
-	.string "the only one on it who is not\l"
-	.string "police, not Aether, and not the\l"
+	.string "{SPEAKER NAME_LOOKER}You are the only person\n"
+	.string "on this road who is not police,\l"
+	.string "not Aether, and not the\l"
 	.string "Champion.\p"
-	.string "Anabel: Forty people came back\n"
+	.string "{SPEAKER NAME_ANABEL}Forty people came back\n"
 	.string "out of their houses because you\l"
 	.string "knocked.\p"
-	.string "If this goes badly, they will\n"
+	.string "If this goes badly they will\n"
 	.string "need someone who knows which\l"
 	.string "doors are which.\p"
-	.string "…\p"
-	.string "Fine. Fine!\p"
-	.string "But I'm not going inside\n"
-	.string "either.$"
+	.string "{SPEAKER NAME_NONE}…Right. Doors.\p"
+	.string "It's always doors.$"
+
+@ Thirty seconds after being told that deciding for everybody is not
+@ protection. This is the whole argument of the scene landing.
+NewBarkTown_Text_UBLusamineLetsHimIn:
+	.string "{SPEAKER NAME_LUSAMINE}No.\p"
+	.string "Inspector, you are wrong, and I\n"
+	.string "am the last person in Johto\l"
+	.string "with the right to say so.\p"
+	.string "I have spent my life deciding\n"
+	.string "who was ready.\p"
+	.string "I was told, four minutes ago,\n"
+	.string "what that actually is.\p"
+	.string "We need four. There are four of\n"
+	.string "us standing here.\p"
+	.string "{SPEAKER NAME_MOM}Ma'am.\p"
+	.string "{SPEAKER NAME_LUSAMINE}I heard you the first\n"
+	.string "time.$"
+
+@ No name: serves both Gold and Crystal.
+NewBarkTown_Text_UBRivalIn:
+	.string "…Say that again.\p"
+	.string "No. Don't. If you say it again\n"
+	.string "I'll cry, and I am NOT doing\l"
+	.string "that in front of {PLAYER}.\p"
+	.string "Azumarill! Back to me!\p"
+	.string "We're in. We're actually in.$"
 
 NewBarkTown_Text_UBChoosePrompt:
-	.string "Lusamine: {PLAYER} - which one\n"
+	.string "{SPEAKER NAME_LUSAMINE}{PLAYER} - which one\n"
 	.string "will you take?\p"
 	.string "I am asking. I am not deciding\n"
 	.string "it for you.\p"
-	.string "Looker: Choose, {PLAYER}.\p"
+	.string "{SPEAKER NAME_LOOKER}Choose, {PLAYER}.\p"
 	.string "Quickly, and then not again.$"
 
 NewBarkTown_Text_ChoiceKartana:
@@ -1245,116 +1779,328 @@ NewBarkTown_Text_ChoiceNihilego:
 
 @ Each of the three says the whole split out loud - design section 6.4.
 NewBarkTown_Text_UBPickedKartana:
-	.string "Lusamine: The blade.\p"
+	.string "{SPEAKER NAME_LUSAMINE}The blade.\p"
 	.string "Then I take the one that\n"
 	.string "matters to me, and Anabel takes\l"
 	.string "the weight.\p"
-	.string "Anabel: Nihilego is hers.\n"
-	.string "Guzzlord is mine. Go.$"
+	.string "{SPEAKER NAME_ANABEL}Nihilego is hers.\n"
+	.string "Guzzlord is mine.\p"
+	.string "{SPEAKER NAME_NONE}And I'm on the blade\n"
+	.string "with {PLAYER}.\p"
+	.string "{SPEAKER NAME_ANABEL}On my mark. All four.$"
 
 NewBarkTown_Text_UBPickedGuzzlord:
-	.string "Lusamine: The mouth.\p"
+	.string "{SPEAKER NAME_LUSAMINE}The mouth.\p"
 	.string "Be careful - it does not stop\n"
 	.string "because you are tired.\p"
 	.string "I take Nihilego. It is the one\n"
 	.string "I came for.\p"
-	.string "Anabel: Then the blade is mine.\n"
-	.string "Go.$"
+	.string "{SPEAKER NAME_ANABEL}Then the blade is\n"
+	.string "mine.\p"
+	.string "{SPEAKER NAME_NONE}And I'm on the mouth\n"
+	.string "with {PLAYER}.\p"
+	.string "{SPEAKER NAME_ANABEL}On my mark. All four.$"
 
 NewBarkTown_Text_UBPickedNihilego:
-	.string "Lusamine: …That one was mine to\n"
+	.string "{SPEAKER NAME_LUSAMINE}…That one was mine to\n"
 	.string "answer for.\p"
 	.string "No. That is exactly the\n"
 	.string "sentence I promised my children\l"
 	.string "I would stop saying.\p"
 	.string "Thank you for taking it.\p"
 	.string "I will take the mouth instead.\p"
-	.string "Anabel: And I'll take the\n"
-	.string "blade. Go.$"
+	.string "{SPEAKER NAME_ANABEL}And I'll take the\n"
+	.string "blade.\p"
+	.string "{SPEAKER NAME_NONE}I'm going where\n"
+	.string "{PLAYER} goes.\p"
+	.string "{SPEAKER NAME_ANABEL}On my mark. All four.$"
 
 NewBarkTown_Text_UBGotAway:
-	.string "Looker: It is still here.\p"
+	.string "{SPEAKER NAME_LOOKER}It is still here.\p"
 	.string "All three of them are still\n"
 	.string "here.\p"
-	.string "Anabel: Back to the line,\n"
-	.string "{PLAYER}. We go again.$"
+	.string "{SPEAKER NAME_ANABEL}Back to the line,\n"
+	.string "{PLAYER}. We go again.\p"
+	.string "All four of us.$"
 
 NewBarkTown_Text_UBAfterKartana:
-	.string "Lusamine: Mine went back the\n"
-	.string "moment yours did.\p"
+	.string "{SPEAKER NAME_ANABEL}Down. All three, inside\n"
+	.string "the same second.\p"
+	.string "{SPEAKER NAME_LUSAMINE}Mine folded the moment\n"
+	.string "yours did.\p"
 	.string "They came together and they\n"
-	.string "leave together - of course they\l"
+	.string "fall together - of course they\l"
 	.string "do.\p"
-	.string "Anabel: Mine too.\p"
-	.string "Nothing I did. They just…\n"
-	.string "stopped being interested.$"
+	.string "{SPEAKER NAME_NONE}We did it. We actually\n"
+	.string "did it.$"
 
 NewBarkTown_Text_UBAfterGuzzlord:
-	.string "Lusamine: You stood in front of\n"
-	.string "that for how long?\p"
+	.string "{SPEAKER NAME_ANABEL}Down. All three, inside\n"
+	.string "the same second.\p"
+	.string "{SPEAKER NAME_LUSAMINE}You stood in front of\n"
+	.string "that thing for how long?\p"
 	.string "…Lillie was right about you.\p"
 	.string "She is right a great deal\n"
 	.string "lately.\p"
-	.string "Anabel: All three withdrew at\n"
-	.string "once.\p"
-	.string "Whatever held them here let go.$"
+	.string "{SPEAKER NAME_NONE}We did it. We actually\n"
+	.string "did it.$"
 
 NewBarkTown_Text_UBAfterNihilego:
-	.string "Lusamine: I watched you do\n"
-	.string "that.\p"
+	.string "{SPEAKER NAME_ANABEL}Down. All three, inside\n"
+	.string "the same second.\p"
+	.string "{SPEAKER NAME_LUSAMINE}I watched you do that.\p"
 	.string "I made myself watch all of it.\p"
-	.string "Thank you.\p"
-	.string "I will not say it a third time,\n"
-	.string "but I mean it more each time.\p"
-	.string "Anabel: The other two went with\n"
-	.string "it. All three at once.$"
+	.string "Thank you. I will not say it a\n"
+	.string "third time, but I mean it more\l"
+	.string "each time.\p"
+	.string "{SPEAKER NAME_NONE}We did it. We actually\n"
+	.string "did it.$"
+
+@ Nobody in Johto names it. It has been "the thing from Blackthorn" for
+@ three missions and it stays that way until the reunion.
+NewBarkTown_Text_UBNecrozmaArrives:
+	.string "The road opens.\p"
+	.string "Not a tear this time. The air\n"
+	.string "itself steps aside, and\l"
+	.string "something walks out of it onto\l"
+	.string "the street.\p"
+	.string "{SPEAKER NAME_LOOKER}…That is the thing from\n"
+	.string "Blackthorn.\p"
+	.string "{SPEAKER NAME_ELM}It's on the ROAD. The\n"
+	.string "others came out of the sky and\l"
+	.string "that one used the road.\p"
+	.string "{SPEAKER NAME_LUSAMINE}I have seen light like\n"
+	.string "that before.\p"
+	.string "{SPEAKER NAME_ANABEL}Madame.\p"
+	.string "{SPEAKER NAME_LUSAMINE}…Later.$"
+
+@ No name: serves both Gold and Crystal.
+NewBarkTown_Text_UBRivalCharges:
+	.string "It's walking past them.\p"
+	.string "It's not even looking at the\n"
+	.string "three of them, it's-\p"
+	.string "No. No, I got let in.\p"
+	.string "AZUMARILL!$"
+
+NewBarkTown_Text_UBRivalRepelled:
+	.string "{SPEAKER NAME_ANABEL}Get it back! Now!\p"
+	.string "{SPEAKER NAME_NONE}It's up. It's up, it's\n"
+	.string "fine, it's-\p"
+	.string "It didn't block. It didn't\n"
+	.string "dodge. It didn't do anything.\p"
+	.string "{SPEAKER NAME_LOOKER}My friend, that was\n"
+	.string "the bravest useless thing I\l"
+	.string "have seen in twenty years of\l"
+	.string "this work.\p"
+	.string "Do not do it twice.$"
+
+NewBarkTown_Text_UBAbsorbed:
+	.string "{SPEAKER NAME_ELM}They're moving. They\n"
+	.string "were down and they're moving.\p"
+	.string "{SPEAKER NAME_ANABEL}They are not moving.\n"
+	.string "They are being moved.\p"
+	.string "{SPEAKER NAME_LUSAMINE}It is not fighting\n"
+	.string "them.\p"
+	.string "Inspector - it is not fighting\n"
+	.string "them, it is COLLECTING them.\p"
+	.string "{SPEAKER NAME_LOOKER}Three at once.\p"
+	.string "It took two in Blackthorn. Two\n"
+	.string "at the Lake. Two on the beach.$"
+
+NewBarkTown_Text_UBUltraRises:
+	.string "The light does not go out this\n"
+	.string "time.\p"
+	.string "It folds. It keeps folding,\n"
+	.string "into something with a shape,\l"
+	.string "and the shape is standing in\l"
+	.string "the middle of New Bark Town.\p"
+	.string "{SPEAKER NAME_ANABEL}Formation. NOW.\p"
+	.string "Same mark. Same instant. It is\n"
+	.string "the only thing that has worked\l"
+	.string "all day.\p"
+	.string "{SPEAKER NAME_LUSAMINE}All four. Together.$"
+
+NewBarkTown_Text_UBUltraBreaksThem:
+	.string "It was over before any of them\n"
+	.string "finished the motion.\p"
+	.string "One light, across the whole\n"
+	.string "road, at once.\p"
+	.string "{SPEAKER NAME_ANABEL}…Report.\p"
+	.string "Somebody report. Anybody.\p"
+	.string "{SPEAKER NAME_LUSAMINE}I am on the ground,\n"
+	.string "Chief.\p"
+	.string "We are all on the ground.$"
+
+@ Optional, stateless. It is the only thing on this road that it looks at
+@ twice, and it does not take it.
+NewBarkTown_Text_UBUltraSensesCosmog:
+	.string "It turns.\p"
+	.string "Not to Lusamine, not to the\n"
+	.string "police. To {STR_VAR_1}, which is\l"
+	.string "the only thing on this road\l"
+	.string "still standing up.\p"
+	.string "{SPEAKER NAME_LUSAMINE}Don't move. Don't you\n"
+	.string "move, either of you.\p"
+	.string "{SPEAKER NAME_ANABEL}It is not going to\n"
+	.string "take it.\p"
+	.string "{SPEAKER NAME_LUSAMINE}No. It is not.\p"
+	.string "It is WAITING for it.$"
+
+NewBarkTown_Text_UBUltraSensesLegend:
+	.string "It turns.\p"
+	.string "{STR_VAR_1} stands up between\n"
+	.string "the light and everyone lying in\l"
+	.string "the road, and does not step\l"
+	.string "back.\p"
+	.string "And the thing in the street\n"
+	.string "stops.\p"
+	.string "{SPEAKER NAME_LUSAMINE}…It knows that shape.\p"
+	.string "{SPEAKER NAME_ANABEL}Madame, it just\n"
+	.string "hesitated. That thing flattened\l"
+	.string "four trainers and it just\l"
+	.string "hesitated.\p"
+	.string "{SPEAKER NAME_LUSAMINE}Write that down,\n"
+	.string "Professor. Write exactly that\l"
+	.string "down.$"
+
+NewBarkTown_Text_UBUltraGone:
+	.string "It steps back into the place\n"
+	.string "the road opened, and the road\l"
+	.string "closes behind it.\p"
+	.string "Nothing is broken. No house, no\n"
+	.string "fence, no window.\p"
+	.string "It never wanted the town at\n"
+	.string "all.$"
+
+@ The people first. Looker, every mission, before the report.
+NewBarkTown_Text_UBAftermathHurt:
+	.string "{SPEAKER NAME_LOOKER}Is anyone hurt?\p"
+	.string "{PLAYER}? Your Pokémon?\p"
+	.string "Chief? Madame?\p"
+	.string "…And you. The one with the\n"
+	.string "Azumarill. Look at me when I\l"
+	.string "ask you.\p"
+	.string "…Good. Good.\p"
+	.string "The report can wait a moment.$"
 
 NewBarkTown_Text_UBElmCost:
-	.string "Elm: The sensors are gone.\p"
+	.string "{SPEAKER NAME_ELM}The sensors are gone.\p"
 	.string "Every one of them. Melted, or\n"
 	.string "whatever that was.\p"
-	.string "…I don't mind.\p"
-	.string "I have six weeks of data and I\n"
-	.string "finally know what it was.\p"
-	.string "That's a better trade than most\n"
-	.string "of my week.$"
+	.string "…I don't mind. I have six weeks\n"
+	.string "of data.\p"
+	.string "The last thirty seconds of it\n"
+	.string "are three signatures going into\l"
+	.string "one signature.\p"
+	.string "Three into one. I watched a\n"
+	.string "number do that.$"
+
+@ The gut punch, and the point of the whole mission. Anabel does the
+@ arithmetic of four missions out loud.
+NewBarkTown_Text_UBWhatItWas:
+	.string "{SPEAKER NAME_ANABEL}Nine.\p"
+	.string "{SPEAKER NAME_LOOKER}Chief?\p"
+	.string "{SPEAKER NAME_ANABEL}Nine Ultra Beasts.\n"
+	.string "Blackthorn, the Lake, the\l"
+	.string "beach, this road.\p"
+	.string "It has been at every one of\n"
+	.string "them, and it has left with\l"
+	.string "every single one of them.\p"
+	.string "It was never attacking Johto.\p"
+	.string "It was never attacking us at\n"
+	.string "all.\p"
+	.string "{SPEAKER NAME_LOOKER}…It was collecting.\p"
+	.string "{SPEAKER NAME_ANABEL}And we softened them\n"
+	.string "for it. Four times.\p"
+	.string "Put that in the report, Looker.\p"
+	.string "Put that in first.$"
+
+NewBarkTown_Text_UBLusamineLost:
+	.string "{SPEAKER NAME_LUSAMINE}We held the street.\p"
+	.string "Not one person on it is hurt,\n"
+	.string "and not one window is broken,\l"
+	.string "and I want that said plainly\l"
+	.string "before anything else.\p"
+	.string "And we lost.\p"
+	.string "It came for something, it took\n"
+	.string "it, and it walked out.\p"
+	.string "I have been on the other end of\n"
+	.string "a plan like that.\p"
+	.string "You do not notice it is a plan\n"
+	.string "until it is finished.$"
 
 @ No name: serves both Gold and Crystal.
 NewBarkTown_Text_UBRival:
-	.string "I stood in the road and watched\n"
-	.string "you do that.\p"
-	.string "I'm not sad about it.\p"
-	.string "I just wanted to say it out\n"
-	.string "loud, one time, while everybody\l"
-	.string "could hear me.\p"
-	.string "Right. Doors.\p"
-	.string "Forty people to let back out.$"
+	.string "I got in.\p"
+	.string "I finally got in, and I hit it\n"
+	.string "with everything I've got, and\l"
+	.string "it didn't even turn its head.\p"
+	.string "{SPEAKER NAME_LUSAMINE}Neither did mine.\p"
+	.string "Neither did the Champion's.\p"
+	.string "That is not a thing that\n"
+	.string "happened to you. That is a\l"
+	.string "thing that happened to all of\l"
+	.string "us, and you were in it.\p"
+	.string "{SPEAKER NAME_NONE}…Yeah.\p"
+	.string "Yeah, okay.\p"
+	.string "Right. Doors. Forty people to\n"
+	.string "let back out.$"
 
 NewBarkTown_Text_UBMom:
-	.string "Mom: Come inside when you can.\p"
+	.string "{SPEAKER NAME_MOM}Come inside when you can.\p"
 	.string "I'll leave the light on.\p"
 	.string "You know I will.$"
 
+@ The other half of the Olivine briefing, and the only thing anybody has
+@ left to hold after a defeat. One box. Do not grow it back into the speech.
+NewBarkTown_Text_UBAnabelPromise:
+	.string "{SPEAKER NAME_ANABEL}{PLAYER}.\p"
+	.string "What I told you in that office,\n"
+	.string "before any of this.\p"
+	.string "Everyone who comes through gets\n"
+	.string "a hand. Everyone who goes in\l"
+	.string "comes home.\p"
+	.string "We lost the road today. We did\n"
+	.string "not lose that.\p"
+	.string "Both. Always both.$"
+
+@ Optional, re-read from VAR_TEMP_4.
+NewBarkTown_Text_UBAftermathCosmog:
+	.string "{SPEAKER NAME_LUSAMINE}{PLAYER}.\p"
+	.string "It looked at {STR_VAR_1} and it\n"
+	.string "chose to leave.\p"
+	.string "I have never once known that\n"
+	.string "thing to leave something it\l"
+	.string "wanted.\p"
+	.string "Keep them close. Not because\n"
+	.string "they are in danger.\p"
+	.string "Because they are the only\n"
+	.string "reason it stopped.$"
+
 @ This block IS the hook into the Olivine reunion, design section 7.
 NewBarkTown_Text_UBHook:
-	.string "Anabel: Looker. They didn't\n"
+	.string "{SPEAKER NAME_ANABEL}Looker. They didn't\n"
 	.string "scatter.\p"
-	.string "All three closed toward the\n"
-	.string "same bearing.\p"
+	.string "It left on a bearing, and the\n"
+	.string "three rifts closed toward the\l"
+	.string "same one.\p"
 	.string "I can put a place on a map now.\p"
 	.string "I have never once been able to\n"
 	.string "do that.\p"
-	.string "Looker: Then the investigation\n"
+	.string "{SPEAKER NAME_LOOKER}Then the investigation\n"
 	.string "is finished, and something else\l"
 	.string "begins.\p"
-	.string "Lusamine: Inspector. Call my\n"
+	.string "{SPEAKER NAME_LUSAMINE}Inspector. Call my\n"
 	.string "children. Both of them.\p"
-	.string "And Professor Kukui.\p"
+	.string "And Professor Kukui - he has\n"
+	.string "earned the room twice over\l"
+	.string "without ever setting foot in\l"
+	.string "it.\p"
 	.string "Not as Aether.\p"
 	.string "I owe these people an\n"
 	.string "accounting, and two of them are\l"
 	.string "mine.\p"
-	.string "Looker: Olivine, then.\p"
+	.string "{SPEAKER NAME_LOOKER}Olivine, then.\p"
 	.string "All of us, in that small room.\p"
 	.string "I apologise in advance for the\n"
 	.string "chairs.\p"

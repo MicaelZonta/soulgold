@@ -10,8 +10,8 @@ mínimo de enfeite. Quem pega o trabalho depois só acrescenta: fala melhor,
 movimento mais bonito, time mais difícil. Nunca precisa refazer estado,
 flags ou gatilhos.
 
-Exemplo real completo: [`.claude/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md`](../../BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md).
-Design da questline: [`.claude/SOULGOLD_RIFT_MISSIONS_DESIGN.md`](../../SOULGOLD_RIFT_MISSIONS_DESIGN.md).
+Exemplo real completo: [`.claude/rift_missions/BLACKTHORN_ULTRABEAST/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md`](../../rift_missions/BLACKTHORN_ULTRABEAST/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md).
+Design da questline: [`.claude/rift_missions/SOULGOLD_RIFT_MISSIONS_DESIGN.md`](../../rift_missions/SOULGOLD_RIFT_MISSIONS_DESIGN.md).
 
 ## 1. A linha que separa esqueleto de gambiarra
 

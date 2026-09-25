@@ -484,10 +484,23 @@ EMOTE_ALT = 01
 @ mugshot stuff ends
 
 @ Speaker names, the order must be matching with include/constants/speaker_names.h
+@ Written inside a text as {SPEAKER NAME_LILLIE}. Never reorder: the byte
+@ stored in every already-written line is the index below.
 NAME_NONE = 00
 NAME_MOM = 01
 NAME_PLAYER = 02
-NAME_COUNT = 03
+NAME_LOOKER = 03
+NAME_ANABEL = 04
+NAME_LILLIE = 05
+NAME_GLADION = 06
+NAME_KUKUI = 07
+NAME_PRYCE = 08
+NAME_CLAIR = 09
+NAME_OLD_MAN = 0A
+NAME_ELM = 0B
+NAME_LUSAMINE = 0C
+NAME_KURT = 0D
+NAME_COUNT = 0E
 
 @ fonts
 

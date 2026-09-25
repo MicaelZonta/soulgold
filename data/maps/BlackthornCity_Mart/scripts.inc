@@ -72,15 +72,7 @@ Blackthorn2:
 	.2byte ITEM_TM_DRAGON_TAIL
 # 40 "data/maps/BlackthornCity_Mart/scripts.pory"
 	.2byte ITEM_TM_SKY_DROP
-# 41 "data/maps/BlackthornCity_Mart/scripts.pory"
-	.2byte ITEM_QUICK_BALL
-# 42 "data/maps/BlackthornCity_Mart/scripts.pory"
-	.2byte ITEM_DUSK_BALL
-# 43 "data/maps/BlackthornCity_Mart/scripts.pory"
-	.2byte ITEM_PREMIER_BALL
 # 44 "data/maps/BlackthornCity_Mart/scripts.pory"
-	.2byte ITEM_LUXURY_BALL
-# 45 "data/maps/BlackthornCity_Mart/scripts.pory"
 	.2byte ITEM_RETRO_MAIL
 	.2byte ITEM_NONE
 

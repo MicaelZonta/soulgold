@@ -191,7 +191,7 @@ VioletCity_PokeCenter_Text_GladionPartner2:
 	.string "Let me see how you fight.$"
 
 VioletCity_PokeCenter_Text_GladionVictory:
-	.string "Gladion: We're getting there,\n"
+	.string "{SPEAKER NAME_GLADION}We're getting there,\n"
 	.string "Null. That was a good battle.$"
 
 VioletCity_PokeCenter_Text_GladionWon:
@@ -199,24 +199,24 @@ VioletCity_PokeCenter_Text_GladionWon:
 	.string "another match.$"
 
 VioletCity_PokeCenter_Text_GladionLost:
-	.string "Gladion: You kept looking\n"
+	.string "{SPEAKER NAME_GLADION}You kept looking\n"
 	.string "for a way through.\p"
 	.string "That's enough for me to understand\n"
 	.string "how you fight.$"
 
 VioletCity_PokeCenter_Text_GladionDraw:
-	.string "Gladion: Neither team\n"
+	.string "{SPEAKER NAME_GLADION}Neither team\n"
 	.string "could finish that.\p"
 	.string "I still saw what I needed to see.$"
 
 VioletCity_PokeCenter_Text_GladionForfeit:
-	.string "Gladion: You're stopping?\n"
+	.string "{SPEAKER NAME_GLADION}You're stopping?\n"
 	.string "Fine.\p"
 	.string "Look after your team.\n"
 	.string "Elm's Egg still belongs with you.$"
 
 VioletCity_PokeCenter_Text_GladionUnexpectedOutcome:
-	.string "Gladion: That didn't end cleanly.\n"
+	.string "{SPEAKER NAME_GLADION}That didn't end cleanly.\n"
 	.string "Let's check on everyone.$"
 
 VioletCity_PokeCenter_Text_GladionGiveEgg:
@@ -229,7 +229,7 @@ VioletCity_PokeCenter_Text_GladionParting:
 	.string "again… give her a proper battle.$"
 
 VioletCity_PokeCenter_Text_GladionAfterDelivery:
-	.string "Gladion: Take care of that Egg.$"
+	.string "{SPEAKER NAME_GLADION}Take care of that Egg.$"
 
 VioletCity_PokeCenter_Text_FarawayLink:
 	.string "I've been thinking it'd be great\n"

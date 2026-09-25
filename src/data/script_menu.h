@@ -807,18 +807,6 @@ static const struct MenuAction MultichoiceList_DaysOfWeek[] =
     {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_KurtsBalls[] =
-{
-    {gText_LoveBall},
-    {gText_Lure},
-    {gText_FriendBall},
-    {gText_Heavy},
-    {gText_Moon},
-    {gText_Fast},
-    {gText_LevelBall},
-    {gText_Exit},
-};
-
 static const struct MenuAction MultichoiceList_OlivineHarbor[] =
 {
     {gText_Vermilion},   
@@ -1083,7 +1071,6 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
     [MULTI_GAME_CORNER_DOLLS2]          = MULTICHOICE(MultichoiceList_GameCornerDolls2),
     [MULTI_DAYS_OF_WEEK]                 = MULTICHOICE(MultichoiceList_DaysOfWeek),
-    [MULTI_KURT_BALLS]                 = MULTICHOICE(MultichoiceList_KurtsBalls),
     [MULTI_PRIZE_MONS]                  = MULTICHOICE(MultichoiceList_PrizeMons),
     [MULTI_7FLOORS]                  = MULTICHOICE(MultichoiceList_7Floors),
     [MULTI_GOLDSILVER]                 = MULTICHOICE(MultichoiceList_GoldSilver),

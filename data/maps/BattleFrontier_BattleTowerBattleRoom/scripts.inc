@@ -1031,7 +1031,7 @@ BattleFrontier_BattleTowerBattleRoom_Text_LetMeSeeYourTalent:
 # 516 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
 BattleFrontier_BattleTowerBattleRoom_Text_AnabelTalentShallBeRecognized:
 # 517 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
-	.string "Anabel: Fufufu, nicely done…\p"
+	.string "{SPEAKER NAME_ANABEL}Fufufu, nicely done…\p"
 # 518 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
 	.string "Your Frontier Pass, please…\n"
 # 519 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
@@ -1067,7 +1067,7 @@ BattleFrontier_BattleTowerBattleRoom_Text_UntilNextTime:
 # 534 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
 BattleFrontier_BattleTowerBattleRoom_Text_AnabelYouCameBack:
 # 535 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
-	.string "Anabel: You really did come back to\n"
+	.string "{SPEAKER NAME_ANABEL}You really did come back to\n"
 # 536 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
 	.string "see me…\p"
 # 537 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
@@ -1093,7 +1093,7 @@ BattleFrontier_BattleTowerBattleRoom_Text_LetsBeginShallWe:
 # 547 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
 BattleFrontier_BattleTowerBattleRoom_Text_AnabelCongratsYourPassPlease:
 # 548 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
-	.string "Anabel: Fufu, congratulations…\n"
+	.string "{SPEAKER NAME_ANABEL}Fufu, congratulations…\n"
 # 549 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"
 	.string "Your Frontier Pass, please…$"
 # 550 "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.pory"

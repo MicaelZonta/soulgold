@@ -37,6 +37,7 @@ CianwoodCity_EventScript_CityEnter::
 
 CianwoodCity_EventScript_InitializeSuicune::
 	call CianwoodCity_EventScript_ApplyGladionVisibility
+	call CianwoodCity_EventScript_ApplyPostGladionVisibility
 	goto_if_ge VAR_SUICUNE_ENCOUNTERS, 2, CianwoodCity_EventScript_InitializeNothing
 	clearflag FLAG_HIDE_CIANWOOD_SUICUNE
 	setflag FLAG_HIDE_CIANWOOD_EUSINE
@@ -586,10 +587,10 @@ CianwoodCity_Text_WifeTakeFly:
 	.string "enjoys walking needs a rest.$"
 
 CianwoodCity_Text_GladionNotInHurry:
-	.string "Gladion: I'm not in a hurry.$"
+	.string "{SPEAKER NAME_GLADION}I'm not in a hurry.$"
 
 CianwoodCity_Text_GladionLookWhoItIs:
-	.string "Gladion: Look who it is.$"
+	.string "{SPEAKER NAME_GLADION}Look who it is.$"
 
 CianwoodCity_Text_GladionBeatChuck:
 	.string "You beat Chuck? He doesn't\n"
@@ -607,7 +608,7 @@ CianwoodCity_Text_WifeBroughtHM:
 	.string "will finally take a break.$"
 
 CianwoodCity_Text_GladionLillieGoldenrod:
-	.string "Gladion: Lillie told me about\n"
+	.string "{SPEAKER NAME_GLADION}Lillie told me about\n"
 	.string "Goldenrod.$"
 
 CianwoodCity_Text_GladionFlowersBattle:
@@ -619,7 +620,7 @@ CianwoodCity_Text_GladionEnjoyingHere:
 	.string "She's enjoying it here.$"
 
 CianwoodCity_Text_GladionSoAmI:
-	.string "Gladion: So am I.$"
+	.string "{SPEAKER NAME_GLADION}So am I.$"
 
 CianwoodCity_Text_GladionLookingForTrainers:
 	.string "I thought I'd spend my time in\n"
@@ -648,7 +649,7 @@ CianwoodCity_Text_GladionGoodMorning:
 	.string "It was a good morning.$"
 
 CianwoodCity_Text_GladionRememberTrainer:
-	.string "Gladion: You remember this\n"
+	.string "{SPEAKER NAME_GLADION}You remember this\n"
 	.string "Trainer?$"
 
 CianwoodCity_Text_GladionWantToFindOut:
@@ -710,7 +711,7 @@ CianwoodCity_Text_GladionUnexpectedOutcome:
 	.string "take care of your Pokémon.$"
 
 CianwoodCity_Text_GladionHereHMFromWife:
-	.string "Gladion: Here. The HM she left\n"
+	.string "{SPEAKER NAME_GLADION}Here. The HM she left\n"
 	.string "for you.$"
 
 CianwoodCity_Text_GladionFlyMakesTripEasier:
@@ -1010,7 +1011,7 @@ CianwoodCity_EventScript_CosmogCommentEnd::
 	return
 
 CianwoodCity_Text_Cosmog:
-	.string "Gladion: …Wait. That's a\n"
+	.string "{SPEAKER NAME_GLADION}…Wait. That's a\n"
 	.string "Cosmog.\p"
 	.string "So that's what was in the egg.\p"
 	.string "Lillie had one, in Alola. It got\n"
@@ -1020,17 +1021,110 @@ CianwoodCity_Text_Cosmog:
 	.string "Keep it close. They wander.$"
 
 CianwoodCity_Text_CosmogCosmoem:
-	.string "Gladion: That's a Cosmoem.\n"
+	.string "{SPEAKER NAME_GLADION}That's a Cosmoem.\n"
 	.string "So that's what was in the egg.\p"
 	.string "It's not asleep. It's building\n"
 	.string "itself.\p"
 	.string "Don't rush it.$"
 
 CianwoodCity_Text_CosmogLegend:
-	.string "Gladion: …A {STR_VAR_1}.\n"
+	.string "{SPEAKER NAME_GLADION}…A {STR_VAR_1}.\n"
 	.string "From that egg.\p"
 	.string "Type: Null, look. Somebody\n"
 	.string "grew up faster than you.\p"
 	.string "Lillie is going to want to see\n"
 	.string "this.$"
 
+@ ============================================================================
+@ Post-game Gladion (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.8).
+@ A NEW pair of objects beside the farewell tile, on FLAG_TEMP_3 - not
+@ FLAG_TEMP_1/2, which are this map's two breakable rocks, and not the old
+@ FLAG_HIDE_CIANWOOD_GLADION pair, whose flag belongs to the pre-League
+@ campaign.
+@ Tuesday, Wednesday and Saturday, and only from state 16 on. Same closed window
+@ as everywhere else in this event: a goto_if_ge alone would put him on this
+@ beach from New Game.
+@ The Silvally shares his flag and nothing here ever removeobjects either of
+@ them, so they appear and vanish together.
+@ ============================================================================
+CianwoodCity_EventScript_ApplyPostGladionVisibility::
+	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, CianwoodCity_EventScript_HidePostGladion
+	specialvar VAR_RESULT, GetDayOfWeek
+	goto_if_eq VAR_RESULT, WEEKDAY_TUE, CianwoodCity_EventScript_ShowPostGladion
+	goto_if_eq VAR_RESULT, WEEKDAY_WED, CianwoodCity_EventScript_ShowPostGladion
+	goto_if_eq VAR_RESULT, WEEKDAY_SAT, CianwoodCity_EventScript_ShowPostGladion
+CianwoodCity_EventScript_HidePostGladion::
+	setflag FLAG_TEMP_3
+	return
+CianwoodCity_EventScript_ShowPostGladion::
+	clearflag FLAG_TEMP_3
+	return
+
+@ One box, then the rematch if today's daily flag is still clear. A normal
+@ trainer battle: no B_FLAG_NO_WHITEOUT. The daily flag is set BEFORE the battle,
+@ because after it is unreachable on a loss.
+CianwoodCity_EventScript_PostGladion::
+	lock
+	faceplayer
+	msgbox CianwoodCity_Text_PostGladion, MSGBOX_DEFAULT
+	closemessage
+	goto_if_set FLAG_DAILY_REMATCH_GLADION, CianwoodCity_EventScript_PostGladionDone
+	msgbox CianwoodCity_Text_PostGladionRematchAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, CianwoodCity_EventScript_PostGladionNo
+	setflag FLAG_DAILY_REMATCH_GLADION
+	trainerbattle_no_intro TRAINER_GLADION_POSTGAME, CianwoodCity_Text_PostGladionBeaten
+	msgbox CianwoodCity_Text_PostGladionAfter, MSGBOX_DEFAULT
+	release
+	end
+
+CianwoodCity_EventScript_PostGladionNo::
+	msgbox CianwoodCity_Text_PostGladionRematchNo, MSGBOX_DEFAULT
+	release
+	end
+
+CianwoodCity_EventScript_PostGladionDone::
+	msgbox CianwoodCity_Text_PostGladionDoneToday, MSGBOX_DEFAULT
+	release
+	end
+
+CianwoodCity_Text_PostGladion:
+	.string "{SPEAKER NAME_GLADION}You found me.\p"
+	.string "This is where I told you I was going.\n"
+	.string "Three cities ago, on this beach, I said I\l"
+	.string "was going to train here until I was\l"
+	.string "worth something in a fight. You\l"
+	.string "probably don't remember.\p"
+	.string "I trained here. Then I got called to\n"
+	.string "Blackthorn, and then I spent four\l"
+	.string "cities watching you do the actual work.\l"
+	.string "So I came back and started over.$"
+
+@ the YES/NO
+CianwoodCity_Text_PostGladionRematchAsk:
+	.string "{SPEAKER NAME_GLADION}You know why you're here.\p"
+	.string "Every time we've done this, one of us\n"
+	.string "needed something. An egg. A HM. A road. A\l"
+	.string "city that was on fire.\p"
+	.string "Nobody needs anything today. That's\n"
+	.string "the only kind of fight I've never had\l"
+	.string "with you. Ready?$"
+
+CianwoodCity_Text_PostGladionRematchNo:
+	.string "{SPEAKER NAME_GLADION}Then go and do whatever it is you came\n"
+	.string "to Cianwood for.\p"
+	.string "I'm not going anywhere. That's rather\n"
+	.string "the point of this place.$"
+
+@ trainer defeat text
+CianwoodCity_Text_PostGladionBeaten:
+	.string "{SPEAKER NAME_GLADION}…Good.\p"
+	.string "Do it again tomorrow.$"
+
+CianwoodCity_Text_PostGladionAfter:
+	.string "{SPEAKER NAME_GLADION}Silvally wants another one. Silvally is\n"
+	.string "not in charge.\p"
+	.string "Tomorrow. Go on.$"
+
+CianwoodCity_Text_PostGladionDoneToday:
+	.string "{SPEAKER NAME_GLADION}Once a day. I train in between, and that\n"
+	.string "only works if there's an in between.$"

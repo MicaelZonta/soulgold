@@ -41,7 +41,7 @@ NewBarkTown_Lab_OnFrame::
 # 21 "data/maps/NewBarkTown_Lab/scripts.pory"
 
 # 22 "data/maps/NewBarkTown_Lab/scripts.pory"
-@ Rift Mission 4 (.claude/NEWBARK_ULTRABEAST_IMPLEMENTATION.md, section 3.6).
+@ Rift Mission 4 (.claude/rift_missions/NEWBARK_ULTRABEAST/NEWBARK_ULTRABEAST_IMPLEMENTATION.md, section 3.6).
 # 23 "data/maps/NewBarkTown_Lab/scripts.pory"
 @ Professor Elm stands on the road outside during the New Bark incident, and
 # 24 "data/maps/NewBarkTown_Lab/scripts.pory"

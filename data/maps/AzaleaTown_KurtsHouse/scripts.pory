@@ -72,6 +72,34 @@ AzaleaTown_KurtsHouse_EventScript_Girl3::
 AzaleaTown_KurtsHouse_EventScript_Girl4::
 	msgbox KurtsHouse_Text_GranddaughterSlowpokeBack, MSGBOX_DEFAULT
 	closemessage
+	goto KurtCraft_EventScript_GranddaughterTier
+
+@ How the player finds out Kurt got better, in her voice and not in a number.
+@ One box per band of five levels, four boxes for twenty levels - nobody ever
+@ says "level 13" out loud. The other half of the notification is the menu
+@ itself: a new line appearing in it is the clearest possible signal.
+KurtCraft_EventScript_GranddaughterTier::
+	call KurtCraft_EventScript_ComputeLevel
+	goto_if_ge VAR_0x8004, 16, KurtCraft_EventScript_GranddaughterTierFour
+	goto_if_ge VAR_0x8004, 11, KurtCraft_EventScript_GranddaughterTierThree
+	goto_if_ge VAR_0x8004, 6, KurtCraft_EventScript_GranddaughterTierTwo
+	msgbox KurtsHouse_Text_GranddaughterTierOne, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+KurtCraft_EventScript_GranddaughterTierTwo::
+	msgbox KurtsHouse_Text_GranddaughterTierTwo, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+KurtCraft_EventScript_GranddaughterTierThree::
+	msgbox KurtsHouse_Text_GranddaughterTierThree, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+KurtCraft_EventScript_GranddaughterTierFour::
+	msgbox KurtsHouse_Text_GranddaughterTierFour, MSGBOX_DEFAULT
+	closemessage
 	release
 	end	
 
@@ -104,209 +132,736 @@ AzaleaTown_KurtsHouse_EventScript_KurtCheckGSBall::
 	goto_if_eq VAR_RESULT, TRUE, AzaleaTown_KurtsHouse_EventScript_KurtGsBall
 	return
 
+@ ===========================================================================
+@ KURT'S RECIPES - the Poke Ball economy
+@ Plan: .claude/KURT_BALL_CRAFT_DESIGN.md
+@
+@ Every Poke Mart in the campaign now sells ITEM_POKE_BALL and nothing else, and
+@ Kurt is the only factory for the other twenty-six. He makes N lots a day, where
+@ N is his level, each lot is 5 Balls, and each lot costs Berries.
+@
+@ WHAT WAS WRONG BEFORE
+@   1. The recipe menu was UNREACHABLE. The old entry point ended in an
+@      unconditional goto KurtDaily, and the only thing in the repository that
+@      jumped to the menu was the "you don't have the Berry" branch INSIDE a
+@      recipe - a closed loop with no door. Seven recipes had been written and
+@      none of them could ever run.
+@   2. All seven ate the Berries when the bag was full:
+@           giveitem ITEM_LOVE_BALL, 5        <- fails, VAR_RESULT = FALSE
+@           removeitem ITEM_PECHA_BERRY, 5    <- takes them, VAR_RESULT = TRUE
+@           goto_if_eq VAR_RESULT, FALSE, ... <- reads the REMOVEITEM result
+@      Space first, then consume, then give, then guard. That order is not
+@      negotiable and it is why there is ONE generic recipe routine below instead
+@      of twenty-seven copies of twelve lines.
+@
+@ STATE
+@   VAR_KURT_PROFICIENCY  EXP, 0..1520. +1 per Ball, so +5 per lot. Written ONLY
+@                         by a recipe: the free daily draw no longer touches it,
+@                         because a gift must not buy progress.
+@                         level L is unlocked at EXP >= 4 * L * (L - 1)
+@   VAR_KURT_TODAY        lots made today, 0..level
+@   FLAG_DAILY_KURT_NEW_DAY     "today's quota has been zeroed"
+@   FLAG_DAILY_KURT_FREE_BALLS  "today's free draw has been taken" (pre-existing)
+@   Two daily flags and not one: sharing them would make the draw eat the quota.
+@   VAR_RIFT_MISSIONS_STATE     READ ONLY, >= 15 unlocks the Beast Ball
+@
+@ SCRATCH VARS, and they may not be renumbered casually
+@   VAR_0x8004  Kurt's level, from ComputeLevel
+@   VAR_0x8005  Berries per lot, from ComputeCost
+@   VAR_0x8006  the Ball this recipe makes
+@   VAR_0x8007  the Berry this recipe costs
+@   VAR_0x8000/0x8001 belong to giveitem, which is why nothing above uses them.
+@ ===========================================================================
+
 AzaleaTown_KurtsHouse_EventScript_Kurt::
 	lock
 	faceplayer
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 8, AzaleaTown_KurtsHouse_EventScript_KurtGsBall2
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 9, AzaleaTown_KurtsHouse_EventScript_KurtGsBall3
 	call_if_unset FLAG_CAUGHT_CELEBI, AzaleaTown_KurtsHouse_EventScript_KurtCheckGSBall
-	goto KurtDaily
+	goto KurtCraft_EventScript_Entry
 
-	AzaleaTown_KurtsHouse_EventScript_Kurt2::
-		multichoice 20, 0, MULTI_KURT_BALLS, FALSE
-		switch VAR_RESULT
-		case 0, AzaleaTown_KurtsHouse_EventScript_Kurt_Love
-		case 1, AzaleaTown_KurtsHouse_EventScript_Kurt_Lure
-		case 2, AzaleaTown_KurtsHouse_EventScript_Kurt_Friend
-		case 3, AzaleaTown_KurtsHouse_EventScript_Kurt_Heavy
-		case 4, AzaleaTown_KurtsHouse_EventScript_Kurt_Moon
-		case 5, AzaleaTown_KurtsHouse_EventScript_Kurt_Fast
-		case 6, AzaleaTown_KurtsHouse_EventScript_Kurt_Level
-		case 7, AzaleaTown_KurtsHouse_EventScript_KurtCancel
-		case MULTI_B_PRESSED, AzaleaTown_KurtsHouse_EventScript_KurtCancel
-		closemessage
+@ Order of guards, and none of them is reorderable:
+@   1. the day rollover, so the quota is always about today
+@   2. the free draw, if it has not been taken - it gives NO exp
+@   3. the level
+@   4. the quota, BEFORE the menu: never let the player pick and then refuse
+@   5. the menu
+KurtCraft_EventScript_Entry::
+	call KurtCraft_EventScript_RollOver
+	call_if_unset FLAG_DAILY_KURT_FREE_BALLS, KurtCraft_EventScript_FreeDraw
+	call KurtCraft_EventScript_ComputeLevel         @ VAR_0x8004 = level, 1..20
+	goto_if_lt VAR_KURT_TODAY, VAR_0x8004, KurtCraft_EventScript_GroupMenu
+	goto KurtCraft_EventScript_DoneForToday
 
-AzaleaTown_KurtsHouse_EventScript_Kurt_Love::
-	closemessage
-	bufferitemname STR_VAR_1, ITEM_PECHA_BERRY
-	checkitem ITEM_PECHA_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-	closemessage
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	faceplayer
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-	waitmessage
-	giveitem ITEM_LOVE_BALL, 5
-	removeitem ITEM_PECHA_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-	closemessage
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-	release
-	end
-AzaleaTown_KurtsHouse_EventScript_Kurt_Lure::
-	closemessage
-	bufferitemname STR_VAR_1, ITEM_RAWST_BERRY
-	checkitem ITEM_RAWST_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-	closemessage
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	faceplayer
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-	waitmessage
-	giveitem ITEM_LURE_BALL, 5
-	removeitem ITEM_RAWST_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-	closemessage
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-	release
-	end
-AzaleaTown_KurtsHouse_EventScript_Kurt_Friend::
-	closemessage
-	bufferitemname STR_VAR_1, ITEM_CHERI_BERRY
-	checkitem ITEM_CHERI_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-	closemessage
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	faceplayer
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-	waitmessage
-	giveitem ITEM_FRIEND_BALL, 5
-	removeitem ITEM_CHERI_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-	closemessage
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-	release
-	end
-AzaleaTown_KurtsHouse_EventScript_Kurt_Heavy::
-	closemessage
-	bufferitemname STR_VAR_1, ITEM_ORAN_BERRY
-	checkitem ITEM_ORAN_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-	closemessage
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	faceplayer
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-	waitmessage
-	giveitem ITEM_HEAVY_BALL, 5
-	removeitem ITEM_ORAN_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-	closemessage
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-	release
-	end
-AzaleaTown_KurtsHouse_EventScript_Kurt_Moon::
-	closemessage
-	bufferitemname STR_VAR_1, ITEM_CHESTO_BERRY
-	checkitem ITEM_CHESTO_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-	closemessage
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	faceplayer
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-	waitmessage
-	giveitem ITEM_MOON_BALL, 5
-	removeitem ITEM_CHESTO_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-	closemessage
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-	release
-	end
-AzaleaTown_KurtsHouse_EventScript_Kurt_Fast::
-	closemessage
-	bufferitemname STR_VAR_1, ITEM_ASPEAR_BERRY
-	checkitem ITEM_ASPEAR_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-	closemessage
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	faceplayer
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-	waitmessage
-	giveitem ITEM_FAST_BALL, 5
-	removeitem ITEM_ASPEAR_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-	closemessage
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-	release
-	end
-AzaleaTown_KurtsHouse_EventScript_Kurt_Level::
-	closemessage
-	bufferitemname STR_VAR_1, ITEM_PERSIM_BERRY
-	checkitem ITEM_PERSIM_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-	closemessage
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	playse SE_BANG
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-	waitmovement 0
-	faceplayer
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-	waitmessage
-	giveitem ITEM_LEVEL_BALL, 5
-	removeitem ITEM_PERSIM_BERRY, 5
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
+@ The reset is the engine's work: ClearDailyFlags clears FLAG_DAILY_KURT_NEW_DAY
+@ at the date rollover, and the first conversation of the new day finds it clear
+@ and zeroes the quota. No var holds a date and nothing polls the clock.
+KurtCraft_EventScript_RollOver::
+	goto_if_set FLAG_DAILY_KURT_NEW_DAY, KurtCraft_EventScript_RollOverDone
+	setvar VAR_KURT_TODAY, 0
+	setflag FLAG_DAILY_KURT_NEW_DAY
+KurtCraft_EventScript_RollOverDone::
+	return
+
+KurtCraft_EventScript_DoneForToday::
+	msgbox KurtsHouse_Text_KurtQuotaSpent, MSGBOX_DEFAULT
 	closemessage
 	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
 	release
 	end
 
-AzaleaTown_KurtsHouse_EventScript_DontHaveBerry::
+@ ---------------------------------------------------------------------------
+@ There is no divvar in this script language (only setvar, addvar, subvar and
+@ copyvar), so the level is a DESCENDING ladder against the 4*L*(L-1)
+@ thresholds. Twenty lines, read once per conversation, and the ONLY place in
+@ the repository that turns this var into a level.
+@ The whole pace of the system is the 4 in that formula: K=3 reaches level 20 in
+@ 25 days, K=4 in 32, K=5 in 38. Changing the pace is rewriting these twenty
+@ literals and nothing else.
+@ ---------------------------------------------------------------------------
+KurtCraft_EventScript_ComputeLevel::
+	setvar VAR_0x8004, 20
+	goto_if_ge VAR_KURT_PROFICIENCY, 1520, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 19
+	goto_if_ge VAR_KURT_PROFICIENCY, 1368, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 18
+	goto_if_ge VAR_KURT_PROFICIENCY, 1224, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 17
+	goto_if_ge VAR_KURT_PROFICIENCY, 1088, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 16
+	goto_if_ge VAR_KURT_PROFICIENCY, 960, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 15
+	goto_if_ge VAR_KURT_PROFICIENCY, 840, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 14
+	goto_if_ge VAR_KURT_PROFICIENCY, 728, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 13
+	goto_if_ge VAR_KURT_PROFICIENCY, 624, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 12
+	goto_if_ge VAR_KURT_PROFICIENCY, 528, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 11
+	goto_if_ge VAR_KURT_PROFICIENCY, 440, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 10
+	goto_if_ge VAR_KURT_PROFICIENCY, 360, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 9
+	goto_if_ge VAR_KURT_PROFICIENCY, 288, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 8
+	goto_if_ge VAR_KURT_PROFICIENCY, 224, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 7
+	goto_if_ge VAR_KURT_PROFICIENCY, 168, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 6
+	goto_if_ge VAR_KURT_PROFICIENCY, 120, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 5
+	goto_if_ge VAR_KURT_PROFICIENCY, 80, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 4
+	goto_if_ge VAR_KURT_PROFICIENCY, 48, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 3
+	goto_if_ge VAR_KURT_PROFICIENCY, 24, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 2
+	goto_if_ge VAR_KURT_PROFICIENCY, 8, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 1
+KurtCraft_EventScript_LevelDone::
+	return
+
+@ Berries per lot = 6 - ceil(level / 5): 5 for levels 1-5, 4 for 6-10, 3 for
+@ 11-15, 2 for 16-20. The cost falls as he gets better, which is what keeps the
+@ end of the curve from being pure grind: level 20 is 40 Berries a day for the
+@ full quota, and THAT number is where the "forever game" actually lives.
+KurtCraft_EventScript_ComputeCost::
+	setvar VAR_0x8005, 2
+	goto_if_ge VAR_0x8004, 16, KurtCraft_EventScript_CostDone
+	setvar VAR_0x8005, 3
+	goto_if_ge VAR_0x8004, 11, KurtCraft_EventScript_CostDone
+	setvar VAR_0x8005, 4
+	goto_if_ge VAR_0x8004, 6, KurtCraft_EventScript_CostDone
+	setvar VAR_0x8005, 5
+KurtCraft_EventScript_CostDone::
+	return
+
+@ +1 per BALL, and every lot is 5 Balls, so every lot is +5 - with no exception
+@ anywhere in the tree. The Master Ball is not a recipe (see the draw below) and
+@ it took the last special case with it, which is why no choice of recipe earns
+@ more EXP than another and there is no optimal play to discover.
+@ The cap is checked BEFORE the add, which is the shape the old code used.
+KurtCraft_EventScript_AddExp::
+	goto_if_ge VAR_KURT_PROFICIENCY, 1516, KurtCraft_EventScript_AddExpMax
+	addvar VAR_KURT_PROFICIENCY, 5
+	return
+KurtCraft_EventScript_AddExpMax::
+	setvar VAR_KURT_PROFICIENCY, 1520
+	return
+
+@ ---------------------------------------------------------------------------
+@ THE MENU. Two steps, group then recipe, because twenty-seven lines in one list
+@ is a wall. dynmultipush/dynmultistack is used and not multichoice: the old
+@ MULTI_KURT_BALLS was a fixed list of eight and could not grow, and a dynamic
+@ stack lets each entry be pushed only when it is actually unlocked - which
+@ makes the MENU the notification. A new line appearing is the clearest possible
+@ way to say "he learned something", and it costs no dialogue box.
+@ The id pushed is what comes back in VAR_RESULT, so the ids are the switch
+@ labels and not positions - a locked entry simply is not there.
+@ ---------------------------------------------------------------------------
+KurtCraft_EventScript_GroupMenu::
+	msgbox KurtsHouse_Text_KurtWhatToday, MSGBOX_DEFAULT
+	dynmultipush KurtCraft_Text_GroupBasic, 0
+	call_if_ge VAR_0x8004, 4, KurtCraft_EventScript_PushApricorn
+	call_if_ge VAR_0x8004, 11, KurtCraft_EventScript_PushModern
+	call_if_ge VAR_0x8004, 16, KurtCraft_EventScript_PushRare
+	call_if_ge VAR_RIFT_MISSIONS_STATE, 15, KurtCraft_EventScript_PushBeast
+	dynmultipush KurtCraft_Text_NeverMind, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	closemessage
+	switch VAR_RESULT
+	case 0, KurtCraft_EventScript_MenuBasic
+	case 1, KurtCraft_EventScript_MenuApricorn
+	case 2, KurtCraft_EventScript_MenuModern
+	case 3, KurtCraft_EventScript_MenuRare
+	case 4, KurtCraft_EventScript_MakeBeast
+	case 9, KurtCraft_EventScript_Cancel
+	case MULTI_B_PRESSED, KurtCraft_EventScript_Cancel
+	goto KurtCraft_EventScript_Cancel
+
+KurtCraft_EventScript_PushApricorn::
+	dynmultipush KurtCraft_Text_GroupApricorn, 1
+	return
+KurtCraft_EventScript_PushModern::
+	dynmultipush KurtCraft_Text_GroupModern, 2
+	return
+KurtCraft_EventScript_PushRare::
+	dynmultipush KurtCraft_Text_GroupRare, 3
+	return
+
+@ The Beast Ball is the ONLY recipe not gated by Kurt's level. It appears the
+@ moment the player beats Ultra Necrozma, because that is when Anabel sends them
+@ here (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.3) - and a pointer
+@ that leads to "I can't make that yet" is worse than no pointer at all.
+@ State 15 is "Necrozma beaten and received", set by the arena. NOT 16: the
+@ farewell has not played yet when the player could first come back, and one
+@ wasted trip to Azalea is exactly the friction this decision removes.
+KurtCraft_EventScript_PushBeast::
+	dynmultipush KurtCraft_Text_GroupBeast, 4
+	return
+
+@ Levels 1 to 3. The shop sells Poke Balls cheaper and always will; his version
+@ exists because "he makes every Ball" has to be literally true.
+KurtCraft_EventScript_MenuBasic::
+	dynmultipush KurtCraft_Text_PokeBall, 10
+	dynmultipush KurtCraft_Text_GreatBall, 11
+	call_if_ge VAR_0x8004, 2, KurtCraft_EventScript_PushHeal
+	call_if_ge VAR_0x8004, 3, KurtCraft_EventScript_PushUltra
+	dynmultipush KurtCraft_Text_Back, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 10, KurtCraft_EventScript_MakePoke
+	case 11, KurtCraft_EventScript_MakeGreat
+	case 12, KurtCraft_EventScript_MakeHeal
+	case 13, KurtCraft_EventScript_MakeUltra
+	case 9, KurtCraft_EventScript_Cancel
+	case MULTI_B_PRESSED, KurtCraft_EventScript_Cancel
+	goto KurtCraft_EventScript_Cancel
+
+KurtCraft_EventScript_PushHeal::
+	dynmultipush KurtCraft_Text_HealBall, 12
+	return
+KurtCraft_EventScript_PushUltra::
+	dynmultipush KurtCraft_Text_UltraBall, 13
+	return
+
+@ Levels 4 to 10: the seven that were already his, in the order he learns them.
+@ These are the recipes the dead code had, ingredient for ingredient.
+KurtCraft_EventScript_MenuApricorn::
+	dynmultipush KurtCraft_Text_LevelBall, 20
+	call_if_ge VAR_0x8004, 5, KurtCraft_EventScript_PushLure
+	call_if_ge VAR_0x8004, 6, KurtCraft_EventScript_PushMoon
+	call_if_ge VAR_0x8004, 7, KurtCraft_EventScript_PushFriend
+	call_if_ge VAR_0x8004, 8, KurtCraft_EventScript_PushFast
+	call_if_ge VAR_0x8004, 9, KurtCraft_EventScript_PushHeavy
+	call_if_ge VAR_0x8004, 10, KurtCraft_EventScript_PushLove
+	dynmultipush KurtCraft_Text_Back, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 20, KurtCraft_EventScript_MakeLevel
+	case 21, KurtCraft_EventScript_MakeLure
+	case 22, KurtCraft_EventScript_MakeMoon
+	case 23, KurtCraft_EventScript_MakeFriend
+	case 24, KurtCraft_EventScript_MakeFast
+	case 25, KurtCraft_EventScript_MakeHeavy
+	case 26, KurtCraft_EventScript_MakeLove
+	case 9, KurtCraft_EventScript_Cancel
+	case MULTI_B_PRESSED, KurtCraft_EventScript_Cancel
+	goto KurtCraft_EventScript_Cancel
+
+KurtCraft_EventScript_PushLure::
+	dynmultipush KurtCraft_Text_LureBall, 21
+	return
+KurtCraft_EventScript_PushMoon::
+	dynmultipush KurtCraft_Text_MoonBall, 22
+	return
+KurtCraft_EventScript_PushFriend::
+	dynmultipush KurtCraft_Text_FriendBall, 23
+	return
+KurtCraft_EventScript_PushFast::
+	dynmultipush KurtCraft_Text_FastBall, 24
+	return
+KurtCraft_EventScript_PushHeavy::
+	dynmultipush KurtCraft_Text_HeavyBall, 25
+	return
+KurtCraft_EventScript_PushLove::
+	dynmultipush KurtCraft_Text_LoveBall, 26
+	return
+
+@ Levels 11 to 15: the modern Balls, which he makes with visible reluctance.
+KurtCraft_EventScript_MenuModern::
+	dynmultipush KurtCraft_Text_NestBall, 30
+	dynmultipush KurtCraft_Text_NetBall, 31
+	call_if_ge VAR_0x8004, 12, KurtCraft_EventScript_PushQuick
+	call_if_ge VAR_0x8004, 13, KurtCraft_EventScript_PushTimer
+	call_if_ge VAR_0x8004, 14, KurtCraft_EventScript_PushRepeat
+	call_if_ge VAR_0x8004, 15, KurtCraft_EventScript_PushDive
+	call_if_ge VAR_0x8004, 15, KurtCraft_EventScript_PushDusk
+	dynmultipush KurtCraft_Text_Back, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 30, KurtCraft_EventScript_MakeNest
+	case 31, KurtCraft_EventScript_MakeNet
+	case 32, KurtCraft_EventScript_MakeQuick
+	case 33, KurtCraft_EventScript_MakeTimer
+	case 34, KurtCraft_EventScript_MakeRepeat
+	case 35, KurtCraft_EventScript_MakeDive
+	case 36, KurtCraft_EventScript_MakeDusk
+	case 9, KurtCraft_EventScript_Cancel
+	case MULTI_B_PRESSED, KurtCraft_EventScript_Cancel
+	goto KurtCraft_EventScript_Cancel
+
+KurtCraft_EventScript_PushQuick::
+	dynmultipush KurtCraft_Text_QuickBall, 32
+	return
+KurtCraft_EventScript_PushTimer::
+	dynmultipush KurtCraft_Text_TimerBall, 33
+	return
+KurtCraft_EventScript_PushRepeat::
+	dynmultipush KurtCraft_Text_RepeatBall, 34
+	return
+KurtCraft_EventScript_PushDive::
+	dynmultipush KurtCraft_Text_DiveBall, 35
+	return
+KurtCraft_EventScript_PushDusk::
+	dynmultipush KurtCraft_Text_DuskBall, 36
+	return
+
+@ Levels 16 to 20, and the last thing he ever learns is the Strange Ball: the
+@ Ball that does absolutely nothing, for Pokemon that came from another game.
+@ It is the only joke this system tells and it only works because it is last.
+KurtCraft_EventScript_MenuRare::
+	dynmultipush KurtCraft_Text_PremierBall, 40
+	dynmultipush KurtCraft_Text_LuxuryBall, 41
+	call_if_ge VAR_0x8004, 17, KurtCraft_EventScript_PushSport
+	call_if_ge VAR_0x8004, 17, KurtCraft_EventScript_PushPark
+	call_if_ge VAR_0x8004, 18, KurtCraft_EventScript_PushSafari
+	call_if_ge VAR_0x8004, 18, KurtCraft_EventScript_PushDream
+	call_if_ge VAR_0x8004, 19, KurtCraft_EventScript_PushCherish
+	call_if_ge VAR_0x8004, 20, KurtCraft_EventScript_PushStrange
+	dynmultipush KurtCraft_Text_Back, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 40, KurtCraft_EventScript_MakePremier
+	case 41, KurtCraft_EventScript_MakeLuxury
+	case 42, KurtCraft_EventScript_MakeSport
+	case 43, KurtCraft_EventScript_MakePark
+	case 44, KurtCraft_EventScript_MakeSafari
+	case 45, KurtCraft_EventScript_MakeDream
+	case 46, KurtCraft_EventScript_MakeCherish
+	case 47, KurtCraft_EventScript_MakeStrange
+	case 9, KurtCraft_EventScript_Cancel
+	case MULTI_B_PRESSED, KurtCraft_EventScript_Cancel
+	goto KurtCraft_EventScript_Cancel
+
+KurtCraft_EventScript_PushSport::
+	dynmultipush KurtCraft_Text_SportBall, 42
+	return
+KurtCraft_EventScript_PushPark::
+	dynmultipush KurtCraft_Text_ParkBall, 43
+	return
+KurtCraft_EventScript_PushSafari::
+	dynmultipush KurtCraft_Text_SafariBall, 44
+	return
+KurtCraft_EventScript_PushDream::
+	dynmultipush KurtCraft_Text_DreamBall, 45
+	return
+KurtCraft_EventScript_PushCherish::
+	dynmultipush KurtCraft_Text_CherishBall, 46
+	return
+KurtCraft_EventScript_PushStrange::
+	dynmultipush KurtCraft_Text_StrangeBall, 47
+	return
+
+KurtCraft_EventScript_Cancel::
+	closemessage
+	msgbox KurtsHouse_Text_KurtComeBack, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
+	release
+	end
+
+@ ---------------------------------------------------------------------------
+@ THE TWENTY-SEVEN RECIPES. Each one is two setvars and a goto: the Ball it
+@ makes, the Berry it costs, and the one generic routine that does the work.
+@ Twenty-seven copies of the twelve-line body is 324 lines in which the
+@ VAR_RESULT bug of the old code could come back, and it came back seven times
+@ the first time. This is the whole reason the table is data and not code.
+@ ---------------------------------------------------------------------------
+KurtCraft_EventScript_MakePoke::
+	setvar VAR_0x8006, ITEM_POKE_BALL
+	setvar VAR_0x8007, ITEM_LEPPA_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeGreat::
+	setvar VAR_0x8006, ITEM_GREAT_BALL
+	setvar VAR_0x8007, ITEM_AGUAV_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeHeal::
+	setvar VAR_0x8006, ITEM_HEAL_BALL
+	setvar VAR_0x8007, ITEM_LUM_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeUltra::
+	setvar VAR_0x8006, ITEM_ULTRA_BALL
+	setvar VAR_0x8007, ITEM_IAPAPA_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeLevel::
+	setvar VAR_0x8006, ITEM_LEVEL_BALL
+	setvar VAR_0x8007, ITEM_PERSIM_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeLure::
+	setvar VAR_0x8006, ITEM_LURE_BALL
+	setvar VAR_0x8007, ITEM_RAWST_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeMoon::
+	setvar VAR_0x8006, ITEM_MOON_BALL
+	setvar VAR_0x8007, ITEM_CHESTO_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeFriend::
+	setvar VAR_0x8006, ITEM_FRIEND_BALL
+	setvar VAR_0x8007, ITEM_CHERI_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeFast::
+	setvar VAR_0x8006, ITEM_FAST_BALL
+	setvar VAR_0x8007, ITEM_ASPEAR_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeHeavy::
+	setvar VAR_0x8006, ITEM_HEAVY_BALL
+	setvar VAR_0x8007, ITEM_ORAN_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeLove::
+	setvar VAR_0x8006, ITEM_LOVE_BALL
+	setvar VAR_0x8007, ITEM_PECHA_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeNest::
+	setvar VAR_0x8006, ITEM_NEST_BALL
+	setvar VAR_0x8007, ITEM_KELPSY_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeNet::
+	setvar VAR_0x8006, ITEM_NET_BALL
+	setvar VAR_0x8007, ITEM_QUALOT_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeQuick::
+	setvar VAR_0x8006, ITEM_QUICK_BALL
+	setvar VAR_0x8007, ITEM_SITRUS_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeTimer::
+	setvar VAR_0x8006, ITEM_TIMER_BALL
+	setvar VAR_0x8007, ITEM_WIKI_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeRepeat::
+	setvar VAR_0x8006, ITEM_REPEAT_BALL
+	setvar VAR_0x8007, ITEM_GREPA_BERRY
+	goto KurtCraft_EventScript_Make
+@ Passho resists Water, Kasib resists Ghost: the ingredient is the joke.
+KurtCraft_EventScript_MakeDive::
+	setvar VAR_0x8006, ITEM_DIVE_BALL
+	setvar VAR_0x8007, ITEM_PASSHO_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeDusk::
+	setvar VAR_0x8006, ITEM_DUSK_BALL
+	setvar VAR_0x8007, ITEM_KASIB_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakePremier::
+	setvar VAR_0x8006, ITEM_PREMIER_BALL
+	setvar VAR_0x8007, ITEM_HONDEW_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeLuxury::
+	setvar VAR_0x8006, ITEM_LUXURY_BALL
+	setvar VAR_0x8007, ITEM_TAMATO_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeSport::
+	setvar VAR_0x8006, ITEM_SPORT_BALL
+	setvar VAR_0x8007, ITEM_POMEG_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakePark::
+	setvar VAR_0x8006, ITEM_PARK_BALL
+	setvar VAR_0x8007, ITEM_CHILAN_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeSafari::
+	setvar VAR_0x8006, ITEM_SAFARI_BALL
+	setvar VAR_0x8007, ITEM_ROSELI_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeDream::
+	setvar VAR_0x8006, ITEM_DREAM_BALL
+	setvar VAR_0x8007, ITEM_YACHE_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeCherish::
+	setvar VAR_0x8006, ITEM_CHERISH_BALL
+	setvar VAR_0x8007, ITEM_COLBUR_BERRY
+	goto KurtCraft_EventScript_Make
+@ The Starf only comes from the Battle Frontier and from the Route 30 Berry
+@ Master's wife, both post-Hall of Fame - which is right for a level-20 recipe.
+KurtCraft_EventScript_MakeStrange::
+	setvar VAR_0x8006, ITEM_STRANGE_BALL
+	setvar VAR_0x8007, ITEM_STARF_BERRY
+	goto KurtCraft_EventScript_Make
+@ The Beast Ball costs quota and Berries like everything else - the story only
+@ decides WHETHER he can make it, never how cheap it is.
+KurtCraft_EventScript_MakeBeast::
+	setvar VAR_0x8006, ITEM_BEAST_BALL
+	setvar VAR_0x8007, ITEM_HABAN_BERRY
+	goto KurtCraft_EventScript_Make
+
+@ ---------------------------------------------------------------------------
+@ The one generic recipe. VAR_0x8006 is the Ball, VAR_0x8007 is the Berry, and
+@ the quantity comes from the level.
+@ checkitem/removeitem/checkitemspace all VarGet BOTH of their arguments
+@ (src/scrcmd.c), so item and quantity can be vars - which is what makes one
+@ routine possible instead of four branches per recipe.
+@
+@ THE ORDER IS THE WHOLE POINT: space first, then consume, then give, then a
+@ defensive guard. The old recipes gave first and consumed second, and read the
+@ CONSUME's VAR_RESULT as if it were the GIVE's - so a full bag lost the Berries
+@ and received nothing, with a clean build.
+@ ---------------------------------------------------------------------------
+KurtCraft_EventScript_Make::
+	closemessage
+	call KurtCraft_EventScript_ComputeCost           @ VAR_0x8005 = 5, 4, 3 or 2
+	bufferitemname STR_VAR_2, VAR_0x8006
+	bufferitemnameplural STR_VAR_1, VAR_0x8007, VAR_0x8005
+	buffernumberstring STR_VAR_3, VAR_0x8005
+	checkitemspace VAR_0x8006, 5
+	goto_if_eq VAR_RESULT, FALSE, KurtCraft_EventScript_BagFull
+	checkitem VAR_0x8007, VAR_0x8005
+	goto_if_eq VAR_RESULT, FALSE, KurtCraft_EventScript_NoIngredient
+	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
+	closemessage
+	call KurtCraft_EventScript_WorkAnimation
+	removeitem VAR_0x8007, VAR_0x8005
+	giveitem VAR_0x8006, 5
+	goto_if_eq VAR_RESULT, FALSE, KurtCraft_EventScript_BagFull
+	addvar VAR_KURT_TODAY, 1
+	call KurtCraft_EventScript_AddExp
+	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
+	release
+	end
+
+KurtCraft_EventScript_WorkAnimation::
+	playse SE_BANG
+	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
+	waitmovement 0
+	playse SE_BANG
+	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
+	waitmovement 0
+	faceplayer
+	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
+	waitmessage
+	return
+
+@ Nothing has been consumed and no quota has been spent, so the player goes
+@ straight back to the group menu and can pick something else.
+KurtCraft_EventScript_NoIngredient::
 	msgbox KurtsHouse_Text_KurtThatsALetdown, MSGBOX_DEFAULT
 	closemessage
-	goto AzaleaTown_KurtsHouse_EventScript_Kurt2
-	release
-	end
-	
-AzaleaTown_KurtsHouse_EventScript_KurtCancel::
+	goto KurtCraft_EventScript_GroupMenu
+
+@ Reached either before anything was taken (the checkitemspace) or from the
+@ defensive guard after the giveitem. Either way nothing marks progress: the
+@ quota is only spent on the line after a confirmed giveitem.
+KurtCraft_EventScript_BagFull::
+	msgbox KurtsHouse_Text_KurtNoRoom, MSGBOX_DEFAULT
 	closemessage
 	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
 	release
 	end
+
+@ ---------------------------------------------------------------------------
+@ THE FREE DAILY DRAW. Kept exactly as it was, with two changes:
+@   1. it no longer touches VAR_KURT_PROFICIENCY. That var is EXP now, and a
+@      gift must not buy progress - otherwise standing in his house for a month
+@      would unlock the whole tree without making a single Ball.
+@   2. the Master Ball face is re-gated from ">= 4" to ">= 360" (level 10),
+@      because the var changed meaning: ">= 4" used to be four days of visits
+@      and would now be passed by the second lot ever made.
+@
+@ The Master Ball has NO recipe and Kurt never learns one. This face of the die
+@ is the only place in the game it comes from besides Elm's gift, and that is by
+@ far the best thing it can be: a recipe would make it a shopping-list item, and
+@ luck keeps it a thing that happens to you. It is also what stops the draw
+@ becoming pointless at level 20 - even with all twenty-six recipes open, it is
+@ still worth talking to him every morning, for one face of one die.
+@
+@ This is a SUBROUTINE now (it used to release and end), because the
+@ conversation continues into the recipe menu afterwards.
+@ ---------------------------------------------------------------------------
+KurtCraft_EventScript_FreeDraw::
+	msgbox KurtsHouse_Text_KurtTodaysSurplus, MSGBOX_DEFAULT
+	goto_if_ge VAR_KURT_PROFICIENCY, 360, KurtCraft_EventScript_DrawSixteen
+	random 15
+	goto KurtCraft_EventScript_Draw
+KurtCraft_EventScript_DrawSixteen::
+	random 16
+KurtCraft_EventScript_Draw::
+	setflag FLAG_DAILY_KURT_FREE_BALLS
+	switch VAR_RESULT
+	case 0, KurtCraft_EventScript_DrawLuxury
+	case 1, KurtCraft_EventScript_DrawLevel
+	case 2, KurtCraft_EventScript_DrawLure
+	case 3, KurtCraft_EventScript_DrawMoon
+	case 4, KurtCraft_EventScript_DrawFriend
+	case 5, KurtCraft_EventScript_DrawLove
+	case 6, KurtCraft_EventScript_DrawFast
+	case 7, KurtCraft_EventScript_DrawHeavy
+	case 8, KurtCraft_EventScript_DrawDream
+	case 9, KurtCraft_EventScript_DrawSafari
+	case 10, KurtCraft_EventScript_DrawSport
+	case 11, KurtCraft_EventScript_DrawPark
+	case 12, KurtCraft_EventScript_DrawBeast
+	case 13, KurtCraft_EventScript_DrawCherish
+	case 14, KurtCraft_EventScript_DrawStrange
+	case 15, KurtCraft_EventScript_DrawMaster
+	return
+
+KurtCraft_EventScript_DrawLuxury::
+	giveitem ITEM_LUXURY_BALL, 5
+	return
+KurtCraft_EventScript_DrawLevel::
+	giveitem ITEM_LEVEL_BALL, 5
+	return
+KurtCraft_EventScript_DrawLure::
+	giveitem ITEM_LURE_BALL, 5
+	return
+KurtCraft_EventScript_DrawMoon::
+	giveitem ITEM_MOON_BALL, 5
+	return
+KurtCraft_EventScript_DrawFriend::
+	giveitem ITEM_FRIEND_BALL, 5
+	return
+KurtCraft_EventScript_DrawLove::
+	giveitem ITEM_LOVE_BALL, 5
+	return
+KurtCraft_EventScript_DrawFast::
+	giveitem ITEM_FAST_BALL, 5
+	return
+KurtCraft_EventScript_DrawHeavy::
+	giveitem ITEM_HEAVY_BALL, 5
+	return
+KurtCraft_EventScript_DrawDream::
+	giveitem ITEM_DREAM_BALL, 5
+	return
+KurtCraft_EventScript_DrawSafari::
+	giveitem ITEM_SAFARI_BALL, 5
+	return
+KurtCraft_EventScript_DrawSport::
+	giveitem ITEM_SPORT_BALL, 5
+	return
+KurtCraft_EventScript_DrawPark::
+	giveitem ITEM_PARK_BALL, 5
+	return
+@ The Beast Ball is in the draw as well as in the recipe list, which is now
+@ redundancy and not a source: it gives a slow trickle to a player who has not
+@ reached the altar yet.
+KurtCraft_EventScript_DrawBeast::
+	giveitem ITEM_BEAST_BALL, 5
+	return
+KurtCraft_EventScript_DrawCherish::
+	giveitem ITEM_CHERISH_BALL, 5
+	return
+KurtCraft_EventScript_DrawStrange::
+	giveitem ITEM_STRANGE_BALL, 5
+	return
+KurtCraft_EventScript_DrawMaster::
+	msgbox KurtsHouse_Text_KurtMasterpiece, MSGBOX_DEFAULT
+	giveitem ITEM_MASTER_BALL, 1
+	setflag FLAG_KURT_CRAFTED_MASTER_BALL
+	special Achievement_CheckAll
+	return
+
+@ ---------------------------------------------------------------------------
+@ Menu labels. They are plain names and never say a level number out loud: the
+@ player reads the list growing, not a number. The number is the document's.
+@ ---------------------------------------------------------------------------
+KurtCraft_Text_GroupBasic:
+	.string "Everyday Balls$"
+KurtCraft_Text_GroupApricorn:
+	.string "My own recipes$"
+KurtCraft_Text_GroupModern:
+	.string "The new-fangled ones$"
+KurtCraft_Text_GroupRare:
+	.string "The hard ones$"
+KurtCraft_Text_GroupBeast:
+	.string "BEAST BALL$"
+KurtCraft_Text_NeverMind:
+	.string "Never mind$"
+KurtCraft_Text_Back:
+	.string "Back$"
+
+KurtCraft_Text_PokeBall:
+	.string "POKé BALL$"
+KurtCraft_Text_GreatBall:
+	.string "GREAT BALL$"
+KurtCraft_Text_HealBall:
+	.string "HEAL BALL$"
+KurtCraft_Text_UltraBall:
+	.string "ULTRA BALL$"
+KurtCraft_Text_LevelBall:
+	.string "LEVEL BALL$"
+KurtCraft_Text_LureBall:
+	.string "LURE BALL$"
+KurtCraft_Text_MoonBall:
+	.string "MOON BALL$"
+KurtCraft_Text_FriendBall:
+	.string "FRIEND BALL$"
+KurtCraft_Text_FastBall:
+	.string "FAST BALL$"
+KurtCraft_Text_HeavyBall:
+	.string "HEAVY BALL$"
+KurtCraft_Text_LoveBall:
+	.string "LOVE BALL$"
+KurtCraft_Text_NestBall:
+	.string "NEST BALL$"
+KurtCraft_Text_NetBall:
+	.string "NET BALL$"
+KurtCraft_Text_QuickBall:
+	.string "QUICK BALL$"
+KurtCraft_Text_TimerBall:
+	.string "TIMER BALL$"
+KurtCraft_Text_RepeatBall:
+	.string "REPEAT BALL$"
+KurtCraft_Text_DiveBall:
+	.string "DIVE BALL$"
+KurtCraft_Text_DuskBall:
+	.string "DUSK BALL$"
+KurtCraft_Text_PremierBall:
+	.string "PREMIER BALL$"
+KurtCraft_Text_LuxuryBall:
+	.string "LUXURY BALL$"
+KurtCraft_Text_SportBall:
+	.string "SPORT BALL$"
+KurtCraft_Text_ParkBall:
+	.string "PARK BALL$"
+KurtCraft_Text_SafariBall:
+	.string "SAFARI BALL$"
+KurtCraft_Text_DreamBall:
+	.string "DREAM BALL$"
+KurtCraft_Text_CherishBall:
+	.string "CHERISH BALL$"
+KurtCraft_Text_StrangeBall:
+	.string "STRANGE BALL$"
 
 AzaleaTown_KurtsHouse_EventScript_KurtGsBall::
 	msgbox KurtsHouse_Text_KurtWhatIsThat, MSGBOX_DEFAULT
@@ -347,7 +902,7 @@ AzaleaTown_KurtsHouse_EventScript_KurtGsBall3::
 	delay 30
 	msgbox KurtsHouse_Text_BallAnyway, MSGBOX_DEFAULT
 	closemessage
-	goto KurtDaily
+	goto KurtCraft_EventScript_Entry
 	release
 	end
 KurtsHouse_Text_BallAnyway:
@@ -401,7 +956,7 @@ AzaleaTown_KurtsHouse_Movement_KurtWalkDown:
 	step_end
 
 KurtsHouse_Text_KurtGetStarted:
-	.string "Kurt: I'll get started right now!$"
+	.string "{SPEAKER NAME_KURT}I'll get started right now!$"
 
 KurtsHouse_Text_KurtMakingBallsMustWait:
 	.string "Hm? Who are you?\p"
@@ -423,7 +978,7 @@ KurtsHouse_Text_KurtMakingBallsMustWait:
 	.string "is on his way!$"
 
 KurtsHouse_Text_KurtHonoredToMakeBalls:
-	.string "Kurt: Hi, {PLAYER}!\p"
+	.string "{SPEAKER NAME_KURT}Hi, {PLAYER}!\p"
 	.string "You handled yourself like a\n"
 	.string "real hero at the Well.\p"
 	.string "I like your style!\p"
@@ -433,24 +988,30 @@ KurtsHouse_Text_KurtHonoredToMakeBalls:
 	.string "but take it.$"
 
 KurtsHouse_Text_KurtBallsFromApricorns:
-	.string "Kurt: I make Balls from Berries.\p"
-	.string "Collect them from trees and bring\n"
-	.string "'em to me in batches of 5.\p"
-	.string "I'll make Balls out of them.$"
+	.string "{SPEAKER NAME_KURT}I make Balls out of Berries.\p"
+	.string "Nobody else does. The shops sell you a\n"
+	.string "Poké Ball and that's the end of their\l"
+	.string "imagination.\p"
+	.string "Bring me Berries and tell me what you\n"
+	.string "want. The better I get at a shape, the\l"
+	.string "fewer Berries it costs you.$"
 
 KurtsHouse_Text_KurtAskYouHaveAnApricorn:
-	.string "Kurt: You have 5 Berries for me?\p"
+	.string "{SPEAKER NAME_KURT}You've brought me Berries?\p"
 	.string "Fine! I'll turn them into Balls.$"
 
 KurtsHouse_Text_KurtThatsALetdown:
-	.string "Kurt: I don't see 5 {STR_VAR_1}s!$"
+	.string "{SPEAKER NAME_KURT}That's a letdown.\p"
+	.string "I need {STR_VAR_3} {STR_VAR_1} for a\n"
+	.string "batch of those, and you haven't got\l"
+	.string "them on you.$"
 
 KurtsHouse_Text_KurtJustFinishedYourBall:
-	.string "Kurt: Ah, {PLAYER}! \p"
+	.string "{SPEAKER NAME_KURT}Ah, {PLAYER}!\p"
 	.string "I just finished your Ball. Here!$"
 
 KurtsHouse_Text_KurtTurnedOutGreat:
-	.string "Kurt: That turned out great.\p"
+	.string "{SPEAKER NAME_KURT}That turned out great.\p"
 	.string "Try catching Pokémon with it.$"
 
 KurtsHouse_Text_KurtWhatIsThat:
@@ -518,6 +1079,79 @@ KurtsHouse_Text_OakPhoto:
 KurtsHouse_Text_CelebiStatue:
 	.string "It's a statue of the forest's\n"
 	.string "protector.$"
+@ opens the group menu
+KurtsHouse_Text_KurtWhatToday:
+	.string "{SPEAKER NAME_KURT}Right then. What are we making?$"
+
+@ the quota is spent
+KurtsHouse_Text_KurtQuotaSpent:
+	.string "{SPEAKER NAME_KURT}That's my lot for today.\p"
+	.string "Ball-making isn't stirring soup,\n"
+	.string "{PLAYER}. Each one takes what it takes,\l"
+	.string "and these hands only have so many in\l"
+	.string "them before the shells start coming out\l"
+	.string "crooked.\p"
+	.string "Come back in the morning. I'll have the\n"
+	.string "fire up.$"
+
+KurtsHouse_Text_KurtComeBack:
+	.string "{SPEAKER NAME_KURT}Suit yourself.\p"
+	.string "I'll be here. I'm always here.$"
+
+KurtsHouse_Text_KurtNoRoom:
+	.string "{SPEAKER NAME_KURT}Hold on -- where were you planning to\n"
+	.string "put them?\p"
+	.string "Your bag's full, lad. Go and make room.\n"
+	.string "Nothing's wasted: I haven't touched\l"
+	.string "your Berries.$"
+
+@ the free daily draw, no exp
+KurtsHouse_Text_KurtTodaysSurplus:
+	.string "{SPEAKER NAME_KURT}Here's what I had spare this morning.\p"
+	.string "Come by tomorrow and there'll be more.\n"
+	.string "There always is.$"
+
+@ the sixteenth face of the die
+KurtsHouse_Text_KurtMasterpiece:
+	.string "{SPEAKER NAME_KURT}…Well, now.\p"
+	.string "This one's a masterpiece. I can hardly\n"
+	.string "believe I managed to craft it.\p"
+	.string "Don't ask me to make another. I\n"
+	.string "couldn't tell you how I did it.$"
+KurtsHouse_Text_GranddaughterTierOne:
+	.string "Grandpa only knows the easy shapes\n"
+	.string "right now.\p"
+	.string "He gets grumpy about it. He says his\n"
+	.string "hands have forgotten and they need\l"
+	.string "reminding.\p"
+	.string "Bring him more Berries! That's how you\n"
+	.string "remind hands.$"
+
+KurtsHouse_Text_GranddaughterTierTwo:
+	.string "He's doing the old ones again! The ones\n"
+	.string "with the funny names.\p"
+	.string "He made a Lure Ball yesterday and then\n"
+	.string "he sat looking at it for ages and didn't\l"
+	.string "say anything.\p"
+	.string "I think he was happy. It's hard to tell\n"
+	.string "with Grandpa.$"
+
+KurtsHouse_Text_GranddaughterTierThree:
+	.string "He's started making the new-fangled\n"
+	.string "ones.\p"
+	.string "He complains the whole time. He says\n"
+	.string "they're all springs and no soul.\p"
+	.string "…He's very good at them, though. Don't\n"
+	.string "tell him I said that.$"
+
+KurtsHouse_Text_GranddaughterTierFour:
+	.string "Grandpa can make anything now.\p"
+	.string "He uses hardly any Berries any more,\n"
+	.string "either. He says that's what getting\l"
+	.string "good means -- wasting less.\p"
+	.string "Ask him for the strange one. He\n"
+	.string "pretends he hates it and he laughs\l"
+	.string "every single time.$"
 `
 
 script KurtMakesBallsDaily {
@@ -525,66 +1159,4 @@ script KurtMakesBallsDaily {
 			I create every day, so stop by!")
 	closemessage
 	return
-}
-
-script KurtDaily {
-	if (flag(FLAG_DAILY_KURT_FREE_BALLS)) {
-		msgbox("Come back tomorrow when I have crafted
-				some more.")
-		release
-		end
-	}
-	msgbox("Here's what I got for you today.
-			Stop by tomorrow again for more.")
-	if (var(VAR_KURT_PROFICIENCY) >= 4) {
-		random(16)
-	} else {
-		random(15)
-	}
-	switch (var(VAR_RESULT)) {
-		case 0:
-			giveitem(ITEM_LUXURY_BALL, 5)
-		case 1:
-			giveitem(ITEM_LEVEL_BALL, 5)
-		case 2:
-			giveitem(ITEM_LURE_BALL, 5)
-		case 3:
-			giveitem(ITEM_MOON_BALL, 5)
-		case 4:
-			giveitem(ITEM_FRIEND_BALL, 5)
-		case 5:
-			giveitem(ITEM_LOVE_BALL, 5)
-		case 6:
-			giveitem(ITEM_FAST_BALL, 5)
-		case 7:
-			giveitem(ITEM_HEAVY_BALL, 5)
-		case 8:
-			giveitem(ITEM_DREAM_BALL, 5)
-		case 9:
-			giveitem(ITEM_SAFARI_BALL, 5)
-		case 10:
-			giveitem(ITEM_SPORT_BALL, 5)
-		case 11:
-			giveitem(ITEM_PARK_BALL, 5)
-		case 12:
-			giveitem(ITEM_BEAST_BALL, 5)
-		case 13:
-			giveitem(ITEM_CHERISH_BALL, 5)
-		case 14:
-			giveitem(ITEM_STRANGE_BALL, 5)
-		case 15:
-			msgbox("This once is a masterpiece!
-
-					I can hardly believe I managed
-					to craft it.")
-			giveitem(ITEM_MASTER_BALL, 1)
-			setflag(FLAG_KURT_CRAFTED_MASTER_BALL)
-			special(Achievement_CheckAll)
-	}
-	setflag(FLAG_DAILY_KURT_FREE_BALLS)
-	if (var(VAR_KURT_PROFICIENCY) < 255) {
-    	addvar(VAR_KURT_PROFICIENCY, 1)
-	}
-	release
-	end
 }

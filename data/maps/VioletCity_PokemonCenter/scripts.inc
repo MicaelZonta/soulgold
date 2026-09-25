@@ -385,7 +385,7 @@ VioletCity_PokeCenter_Text_GladionPartner2:
 # 193 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionVictory:
 # 194 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Gladion: We're getting there,\n"
+	.string "{SPEAKER NAME_GLADION}We're getting there,\n"
 # 195 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "Null. That was a good battle.$"
 # 196 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -401,7 +401,7 @@ VioletCity_PokeCenter_Text_GladionWon:
 # 201 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionLost:
 # 202 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Gladion: You kept looking\n"
+	.string "{SPEAKER NAME_GLADION}You kept looking\n"
 # 203 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "for a way through.\p"
 # 204 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -413,7 +413,7 @@ VioletCity_PokeCenter_Text_GladionLost:
 # 207 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionDraw:
 # 208 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Gladion: Neither team\n"
+	.string "{SPEAKER NAME_GLADION}Neither team\n"
 # 209 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "could finish that.\p"
 # 210 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -423,7 +423,7 @@ VioletCity_PokeCenter_Text_GladionDraw:
 # 212 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionForfeit:
 # 213 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Gladion: You're stopping?\n"
+	.string "{SPEAKER NAME_GLADION}You're stopping?\n"
 # 214 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "Fine.\p"
 # 215 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -435,7 +435,7 @@ VioletCity_PokeCenter_Text_GladionForfeit:
 # 218 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionUnexpectedOutcome:
 # 219 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Gladion: That didn't end cleanly.\n"
+	.string "{SPEAKER NAME_GLADION}That didn't end cleanly.\n"
 # 220 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "Let's check on everyone.$"
 # 221 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -461,7 +461,7 @@ VioletCity_PokeCenter_Text_GladionParting:
 # 231 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionAfterDelivery:
 # 232 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Gladion: Take care of that Egg.$"
+	.string "{SPEAKER NAME_GLADION}Take care of that Egg.$"
 # 233 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 
 # 234 "data/maps/VioletCity_PokemonCenter/scripts.pory"

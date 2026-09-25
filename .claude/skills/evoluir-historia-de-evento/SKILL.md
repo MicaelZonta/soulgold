@@ -7,7 +7,7 @@ description: Use ao transformar um evento que ja funciona (esqueleto, ou cena co
 
 O esqueleto prova que o evento **funciona**. Esta skill é o passo seguinte:
 fazer ele **valer a pena**. Exemplo completo, aprovado pelo autor depois de
-jogar: [`.claude/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md`](../../BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md)
+jogar: [`.claude/rift_missions/BLACKTHORN_ULTRABEAST/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md`](../../rift_missions/BLACKTHORN_ULTRABEAST/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md)
 §5–§7 e §13; código em `data/maps/BlackthornCity/scripts.inc` (seção "Rift Mission 1").
 
 Antes de mexer, carregue `evento-esqueleto` §7 (o que pode e o que não pode mudar)
@@ -125,15 +125,31 @@ Tudo com movimentos que já existem (`asm/macros/movement.inc`):
 | Efeito | Receita |
 |---|---|
 | Golpe | `walk_in_place_fast_<dir>` ×2 no atacante + grito + flash |
-| Flash | `fadescreen FADE_TO_WHITE` + `fadescreen FADE_FROM_WHITE` (sub-rotina) |
+| Flash | `fadescreenswapbuffers FADE_TO_WHITE` + `fadescreenswapbuffers FADE_FROM_WHITE` (sub-rotina) |
 | Impacto / ruptura | `special ShakeCamera` curto (12 tremores, delay 4) numa sub-rotina `call`ável |
 | Pulso de energia | `walk_in_place_fast_<dir>` ×3 no Pokémon parado |
 | Carga | `walk_fast_<dir>` ×N, mesma sequência para os dois atacantes em linhas vizinhas (formação preservada) |
 | Salto de resgate | `walk_faster_<dir>` até a borda + `jump_2_<dir>` por cima de um tile livre |
 | Recuo / arrasto | `lock_facing_direction` + `walk_fast_<dir>` (recuo) ou `walk_slow_<dir>` ×2 (arrasto) + `unlock_facing_direction` |
-| Aparecer/sumir de ruptura | tremor → `FADE_TO_WHITE` → `addobject`/`removeobject` → `FADE_FROM_WHITE` → grito |
+| Aparecer/sumir de ruptura | tremor → `fadescreenswapbuffers FADE_TO_WHITE` → `addobject`/`removeobject` → `fadescreenswapbuffers FADE_FROM_WHITE` → grito |
 | Espanto coletivo | `Common_Movement_ExclamationMark` em 3–4 atores seguidos, depois um `waitmovement` por ator |
 | Líder que não tira os olhos da ameaça | script de objeto **sem** `faceplayer` |
+
+**Nunca `fadescreen` no meio de uma cena que volta para o mesmo mapa.** Ao
+escurecer, `fadescreen` copia `gPlttBufferFaded` por cima de `gPlttBufferUnfaded`
+(`FadeScreen`, `src/field_weather.c`), e o `FADE_FROM_*` seguinte reaplica o tint
+de horário em cima de paletas já tintadas. À noite (coeff 10, ~0,46) cada par de
+flashes escurece a cena de novo, e em três ou quatro a cidade fica preta — sem
+erro de build, só no jogo. `fadescreenswapbuffers` faz o mesmo efeito com BLDY no
+hardware e não encosta nas paletas. `fadescreen` só onde um warp ou uma batalha
+recarrega o mapa logo depois (o fim da cena, o retry do blackout).
+
+**Trilha da cena.** O tema alegre da cidade tocando enquanto a ruptura abre
+estraga o beat. `fadeoutbgm 4` quando alguém percebe, `playbgm <trilha>, TRUE`
+quando a criatura aparece (o `TRUE` grava em `savedMusic`, então a batalha de
+boss devolve a trilha certa ao voltar), e `fadedefaultbgm` no pós-cena. Carregar
+mapa limpa o `savedMusic` sozinho, então o retry depois de blackout começa limpo.
+Trilha nova exige ligar o `SONG_*` em `include/config/songs_enabled.h`.
 
 Pokémon que some sozinho no meio da cena ganha **flag temporária própria**, para o
 `removeobject` não mexer no elenco. Reconte o orçamento de 16 object events a

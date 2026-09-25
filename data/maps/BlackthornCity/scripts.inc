@@ -471,11 +471,11 @@ BlackthornCity_EventScript_UBScene::
 	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
 	waitmoncry
 	call BlackthornCity_EventScript_UBShake
-	fadescreen FADE_TO_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
 	clearflag FLAG_TEMP_2
 	addobject LOCALID_BLACKTHORN_UB_BUZZWOLE
 	addobject LOCALID_BLACKTHORN_UB_PHEROMOSA
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	playmoncry SPECIES_BUZZWOLE, CRY_MODE_ENCOUNTER
 	waitmoncry
 	playmoncry SPECIES_PHEROMOSA, CRY_MODE_ENCOUNTER
@@ -519,9 +519,15 @@ BlackthornCity_EventScript_UBScene::
 	msgbox BlackthornCity_Text_UBGladionArrives, MSGBOX_DEFAULT
 	goto BlackthornCity_EventScript_UBChoose
 
+@ Flash da cena. fadescreenswapbuffers e NAO fadescreen: fadescreen copia
+@ gPlttBufferFaded -> gPlttBufferUnfaded ao escurecer (src/field_weather.c,
+@ FadeScreen) e o FADE_FROM_* seguinte reaplica o tint de horario por cima do
+@ que ja estava tintado. A noite (coeff 10) cada par de flashes multiplicava a
+@ cena por ~0,46 de novo, e depois de tres ou quatro a cidade ficava preta.
+@ fadescreenswapbuffers usa BLDY no hardware e nao encosta nas paletas.
 BlackthornCity_EventScript_UBFlash::
-	fadescreen FADE_TO_WHITE
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	return
 
 BlackthornCity_EventScript_UBShake::
@@ -638,10 +644,10 @@ BlackthornCity_EventScript_UBAbsorb::
 	waitmovement LOCALID_BLACKTHORN_UB_PHEROMOSA
 	call BlackthornCity_EventScript_UBShake
 	@ Their flag is FLAG_TEMP_2, so removeobject setting it is harmless.
-	fadescreen FADE_TO_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
 	removeobject LOCALID_BLACKTHORN_UB_BUZZWOLE
 	removeobject LOCALID_BLACKTHORN_UB_PHEROMOSA
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
 	applymovement LOCALID_BLACKTHORN_UB_CLAIR, Common_Movement_ExclamationMark
 	applymovement LOCALID_BLACKTHORN_UB_GLADION, Common_Movement_ExclamationMark
@@ -658,9 +664,9 @@ BlackthornCity_EventScript_UBAbsorb::
 	@ Necrozma leaves the way it came. Own flag (FLAG_TEMP_4): removeobject
 	@ touches nobody else.
 	call BlackthornCity_EventScript_UBShake
-	fadescreen FADE_TO_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
 	removeobject LOCALID_BLACKTHORN_UB_NECROZMA
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	msgbox BlackthornCity_Text_UBNecrozmaGone, MSGBOX_DEFAULT
 	closemessage
 	goto BlackthornCity_EventScript_UBAftermath
@@ -859,7 +865,7 @@ BlackthornCity_Text_DoorLocked:
 	.string "--Clair, Gym Leader”$"
 
 BlackthornCity_Text_UBAnabelIdle:
-	.string "Anabel: Every house is sealed\n"
+	.string "{SPEAKER NAME_ANABEL}Every house is sealed\n"
 	.string "and the Center is open.\p"
 	.string "Clair hasn't taken one step\n"
 	.string "back since we arrived.\p"
@@ -867,14 +873,14 @@ BlackthornCity_Text_UBAnabelIdle:
 	.string "are ready. Not before.$"
 
 BlackthornCity_Text_UBAnabelIdleCosmog:
-	.string "Anabel: …Is that a {STR_VAR_1}\n"
+	.string "{SPEAKER NAME_ANABEL}…Is that a {STR_VAR_1}\n"
 	.string "traveling with you?\p"
 	.string "In Alola they call them\n"
 	.string "children of the stars.\p"
 	.string "Keep it close today.$"
 
 BlackthornCity_Text_UBClairIdle:
-	.string "Clair: Stay back. I've got it.\p"
+	.string "{SPEAKER NAME_CLAIR}Stay back. I've got it.\p"
 	.string "It came out of a flash of\n"
 	.string "light this morning and hasn't\l"
 	.string "moved since.\p"
@@ -905,7 +911,7 @@ BlackthornCity_Text_UBNecrozmaIdleCosmog:
 	.string "{STR_VAR_1}.$"
 
 BlackthornCity_Text_UBLookerGreet:
-	.string "Looker: {PLAYER}! You came.\n"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}! You came.\n"
 	.string "Good. Very good.\p"
 	.string "Everyone is safe indoors.\n"
 	.string "Clair saw to that before we\l"
@@ -916,7 +922,7 @@ BlackthornCity_Text_UBLookerGreet:
 	.string "Neither has she.$"
 
 BlackthornCity_Text_UBNoRoom:
-	.string "Looker: Ah--but first, one of\n"
+	.string "{SPEAKER NAME_LOOKER}Ah--but first, one of\n"
 	.string "Anabel's rules.\p"
 	.string "On every operation, you keep\n"
 	.string "room for one more Pokémon.\l"
@@ -929,21 +935,21 @@ BlackthornCity_Text_UBNoRoom:
 	.string "back to me. I will be here.$"
 
 BlackthornCity_Text_UBReady:
-	.string "Looker: Once we step out\n"
+	.string "{SPEAKER NAME_LOOKER}Once we step out\n"
 	.string "there, there is no stepping\l"
 	.string "back.\p"
 	.string "Are you and your Pokémon\n"
 	.string "ready?$"
 
 BlackthornCity_Text_UBNotReady:
-	.string "Looker: Of course. Heal up.\n"
+	.string "{SPEAKER NAME_LOOKER}Of course. Heal up.\n"
 	.string "Check your team.\p"
 	.string "Clair can hold a little\n"
 	.string "longer. She has made that\l"
 	.string "very clear to me.$"
 
 BlackthornCity_Text_UBClairArrive:
-	.string "Clair: So you're the new\n"
+	.string "{SPEAKER NAME_CLAIR}So you're the new\n"
 	.string "Champion. Lance mentioned you.\p"
 	.string "Then watch closely. I've been\n"
 	.string "trying to hurt this thing for\l"
@@ -951,34 +957,34 @@ BlackthornCity_Text_UBClairArrive:
 	.string "Kingdra! Dragon Pulse!$"
 
 BlackthornCity_Text_UBNoEffect:
-	.string "Clair: …Nothing.\n"
+	.string "{SPEAKER NAME_CLAIR}…Nothing.\n"
 	.string "Not even a scratch.\p"
 	.string "It doesn't fight back.\n"
 	.string "It just… drinks the light.$"
 
 BlackthornCity_Text_UBAppear:
-	.string "Anabel: Rift opening!\n"
+	.string "{SPEAKER NAME_ANABEL}Rift opening!\n"
 	.string "Two signatures!\p"
-	.string "Looker: {PLAYER}, get back!\n"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}, get back!\n"
 	.string "They are coming right at you!$"
 
 BlackthornCity_Text_UBGladionArrives:
-	.string "Gladion: …Don't just stand\n"
+	.string "{SPEAKER NAME_GLADION}…Don't just stand\n"
 	.string "there.\p"
-	.string "Looker: And who might YOU be?!\p"
-	.string "Gladion: Gladion.\p"
+	.string "{SPEAKER NAME_LOOKER}And who might YOU be?!\p"
+	.string "{SPEAKER NAME_GLADION}Gladion.\p"
 	.string "I saw the light over the\n"
 	.string "mountains. Figured someone\l"
 	.string "would need help.\p"
-	.string "Clair: Another Trainer? Fine.\n"
+	.string "{SPEAKER NAME_CLAIR}Another Trainer? Fine.\n"
 	.string "The more the better!$"
 
 BlackthornCity_Text_UBChoosePrompt:
-	.string "Gladion: Two of them.\n"
+	.string "{SPEAKER NAME_GLADION}Two of them.\n"
 	.string "Two of us.\p"
 	.string "Pick one, {PLAYER}.\n"
 	.string "Silvally and I take the other.\p"
-	.string "Clair: And I'll keep that\n"
+	.string "{SPEAKER NAME_CLAIR}And I'll keep that\n"
 	.string "crystal thing busy. Go!$"
 
 BlackthornCity_Text_ChoiceBuzzwole:
@@ -988,42 +994,42 @@ BlackthornCity_Text_ChoicePheromosa:
 	.string "Pheromosa$"
 
 BlackthornCity_Text_UBPickedBuzzwole:
-	.string "Gladion: The big one's yours.\p"
+	.string "{SPEAKER NAME_GLADION}The big one's yours.\p"
 	.string "Silvally--the fast one.\n"
 	.string "Don't let it get past you!$"
 
 BlackthornCity_Text_UBPickedPheromosa:
-	.string "Gladion: Then we take the\n"
+	.string "{SPEAKER NAME_GLADION}Then we take the\n"
 	.string "heavy one.\p"
 	.string "Silvally, hold the line.\n"
 	.string "Nothing gets near the houses.$"
 
 BlackthornCity_Text_UBGotAway:
-	.string "Looker: They pulled back into\n"
+	.string "{SPEAKER NAME_LOOKER}They pulled back into\n"
 	.string "the rift…\p"
 	.string "It is not over. Regroup, and\n"
 	.string "we try again.$"
 
 BlackthornCity_Text_UBGladionFoughtPheromosa:
-	.string "Gladion: Silvally!\p"
+	.string "{SPEAKER NAME_GLADION}Silvally!\p"
 	.string "…Good. It's down.\p"
 	.string "Pheromosa was fast.\n"
 	.string "Silvally was faster.$"
 
 BlackthornCity_Text_UBGladionFoughtBuzzwole:
-	.string "Gladion: That's enough,\n"
+	.string "{SPEAKER NAME_GLADION}That's enough,\n"
 	.string "Silvally.\p"
 	.string "It hit like a wall. We didn't\n"
 	.string "give it an inch.$"
 
 BlackthornCity_Text_UBAbsorbed:
-	.string "Clair: What…?\n"
+	.string "{SPEAKER NAME_CLAIR}What…?\n"
 	.string "It's pulling them in!\p"
-	.string "Looker: It… took them.\n"
+	.string "{SPEAKER NAME_LOOKER}It… took them.\n"
 	.string "Both of them. Just like that.\p"
-	.string "Gladion: It didn't fight them.\n"
+	.string "{SPEAKER NAME_GLADION}It didn't fight them.\n"
 	.string "It fed on them.\p"
-	.string "Anabel: That is not how an\n"
+	.string "{SPEAKER NAME_ANABEL}That is not how an\n"
 	.string "Ultra Beast behaves.\p"
 	.string "That is not how anything\n"
 	.string "behaves.$"
@@ -1033,7 +1039,7 @@ BlackthornCity_Text_UBNecrozmaSensesCosmog:
 	.string "you… at the Poké Ball that\l"
 	.string "holds your {STR_VAR_1}.\p"
 	.string "Your {STR_VAR_1} is trembling.\p"
-	.string "Gladion: Silvally, in front!\n"
+	.string "{SPEAKER NAME_GLADION}Silvally, in front!\n"
 	.string "Don't let it closer!$"
 
 BlackthornCity_Text_UBNecrozmaSensesLegend:
@@ -1046,53 +1052,53 @@ BlackthornCity_Text_UBNecrozmaSensesLegend:
 	.string "away.$"
 
 BlackthornCity_Text_UBNecrozmaGone:
-	.string "Clair: …It's gone.\p"
+	.string "{SPEAKER NAME_CLAIR}…It's gone.\p"
 	.string "Opened a hole in the sky over\n"
 	.string "my town, ate what came out,\l"
 	.string "and left.$"
 
 BlackthornCity_Text_UBAftermath:
-	.string "Looker: Is anyone hurt?\n"
+	.string "{SPEAKER NAME_LOOKER}Is anyone hurt?\n"
 	.string "{PLAYER}? Your Pokémon?\p"
 	.string "…Good. Good. The report can\n"
 	.string "wait a moment.\p"
-	.string "Clair: Blackthorn owes you\n"
+	.string "{SPEAKER NAME_CLAIR}Blackthorn owes you\n"
 	.string "both. You and… Gladion, was it?\p"
 	.string "I'll tell the town it's safe.\n"
 	.string "Then I'm going to train until\l"
 	.string "I understand what I just saw.\p"
-	.string "Anabel: It opened the rift.\n"
+	.string "{SPEAKER NAME_ANABEL}It opened the rift.\n"
 	.string "It took the two that came\l"
 	.string "through. Then it left.\p"
 	.string "It wasn't attacking Blackthorn.\n"
 	.string "It was feeding.\p"
-	.string "Gladion: …I've seen light like\n"
+	.string "{SPEAKER NAME_GLADION}…I've seen light like\n"
 	.string "that before. In Alola.\p"
-	.string "Looker: Then we would very much\n"
+	.string "{SPEAKER NAME_LOOKER}Then we would very much\n"
 	.string "like to hear what you know.\p"
-	.string "Gladion: Later.$"
+	.string "{SPEAKER NAME_GLADION}Later.$"
 
 BlackthornCity_Text_UBAftermathCosmog:
-	.string "Gladion: It looked at your\n"
+	.string "{SPEAKER NAME_GLADION}It looked at your\n"
 	.string "{STR_VAR_1}. Not at us.\p"
 	.string "Keep it close, {PLAYER}.\n"
 	.string "I mean it.\p"
-	.string "Anabel: Children of the\n"
+	.string "{SPEAKER NAME_ANABEL}Children of the\n"
 	.string "stars… I would like to know\l"
 	.string "what that creature wanted\l"
 	.string "with one.$"
 
 BlackthornCity_Text_UBAftermathLegend:
-	.string "Gladion: It flinched at your\n"
+	.string "{SPEAKER NAME_GLADION}It flinched at your\n"
 	.string "{STR_VAR_1}. Remember that.\p"
-	.string "Anabel: In Alola, {STR_VAR_1} is a\n"
+	.string "{SPEAKER NAME_ANABEL}In Alola, {STR_VAR_1} is a\n"
 	.string "legend of the sky itself.\p"
 	.string "For something made of light\n"
 	.string "to flinch at one… that means\l"
 	.string "something.$"
 
 BlackthornCity_Text_UBGladionGift:
-	.string "Gladion: {PLAYER}.\n"
+	.string "{SPEAKER NAME_GLADION}{PLAYER}.\n"
 	.string "There's something else.\p"
 	.string "Two weeks ago I found another\n"
 	.string "Type: Null. In the mountains\l"
@@ -1108,29 +1114,29 @@ BlackthornCity_Text_UBGladionGift:
 	.string "Take care of it.$"
 
 BlackthornCity_Text_UBGladionGiftAfter:
-	.string "Gladion: Don't decide\n"
+	.string "{SPEAKER NAME_GLADION}Don't decide\n"
 	.string "everything for it.\p"
 	.string "Let it take the first step.\n"
 	.string "It'll surprise you.$"
 
 BlackthornCity_Text_UBGiftNoRoom:
-	.string "Gladion: …You don't have room\n"
+	.string "{SPEAKER NAME_GLADION}…You don't have room\n"
 	.string "for it. Not in your team, not\l"
 	.string "in your Boxes.\p"
 	.string "Sort that out. Then we'll do\n"
 	.string "this properly.$"
 
 BlackthornCity_Text_UBHook:
-	.string "Anabel: The readings haven't\n"
+	.string "{SPEAKER NAME_ANABEL}The readings haven't\n"
 	.string "settled. That creature will\l"
 	.string "open another rift.\p"
 	.string "Where, and when, we don't\n"
 	.string "know yet.\p"
-	.string "Looker: So we keep watching.\p"
+	.string "{SPEAKER NAME_LOOKER}So we keep watching.\p"
 	.string "Rest, {PLAYER}. Then come to\n"
 	.string "our house in Olivine.\p"
 	.string "The moment something opens,\n"
 	.string "you will be the first to know.\p"
-	.string "Gladion: …If it shows up\n"
+	.string "{SPEAKER NAME_GLADION}…If it shows up\n"
 	.string "again, it won't be alone.\p"
 	.string "Silvally. We're going.$"

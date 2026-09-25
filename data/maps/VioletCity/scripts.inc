@@ -1004,17 +1004,17 @@ berrytrader_juggler::
 	case 1, berrytrader_juggler_4
 # 537 "data/maps/VioletCity/scripts.pory"
 	case 2, berrytrader_juggler_5
-# 553 "data/maps/VioletCity/scripts.pory"
+# 558 "data/maps/VioletCity/scripts.pory"
 	case 3, berrytrader_juggler_6
-# 570 "data/maps/VioletCity/scripts.pory"
+# 575 "data/maps/VioletCity/scripts.pory"
 	msgbox berrytrader_juggler_Text_11, MSGBOX_DEFAULT
-# 571 "data/maps/VioletCity/scripts.pory"
+# 576 "data/maps/VioletCity/scripts.pory"
 	waitmessage
-# 572 "data/maps/VioletCity/scripts.pory"
+# 577 "data/maps/VioletCity/scripts.pory"
 	release
 	end
 
-# 575 "data/maps/VioletCity/scripts.pory"
+# 580 "data/maps/VioletCity/scripts.pory"
 	release
 	end
 
@@ -1048,21 +1048,21 @@ berrytrader_juggler_5:
 # 539 "data/maps/VioletCity/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq berrytrader_juggler_15
-# 549 "data/maps/VioletCity/scripts.pory"
+# 554 "data/maps/VioletCity/scripts.pory"
 	msgbox berrytrader_juggler_Text_7
-# 550 "data/maps/VioletCity/scripts.pory"
+# 555 "data/maps/VioletCity/scripts.pory"
 	release
 	end
 
 berrytrader_juggler_6:
-# 554 "data/maps/VioletCity/scripts.pory"
+# 559 "data/maps/VioletCity/scripts.pory"
 	checkitem ITEM_GREEN_SHARD
-# 555 "data/maps/VioletCity/scripts.pory"
+# 560 "data/maps/VioletCity/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq berrytrader_juggler_18
-# 565 "data/maps/VioletCity/scripts.pory"
+# 570 "data/maps/VioletCity/scripts.pory"
 	msgbox berrytrader_juggler_Text_7
-# 566 "data/maps/VioletCity/scripts.pory"
+# 571 "data/maps/VioletCity/scripts.pory"
 	release
 	end
 
@@ -1111,32 +1111,34 @@ berrytrader_juggler_15:
 	giveitem ITEM_SITRUS_BERRY
 # 544 "data/maps/VioletCity/scripts.pory"
 	giveitem ITEM_IAPAPA_BERRY
-# 545 "data/maps/VioletCity/scripts.pory"
+# 549 "data/maps/VioletCity/scripts.pory"
+	giveitem ITEM_PERSIM_BERRY
+# 550 "data/maps/VioletCity/scripts.pory"
 	waitmessage
-# 546 "data/maps/VioletCity/scripts.pory"
+# 551 "data/maps/VioletCity/scripts.pory"
 	release
 	end
 
 berrytrader_juggler_18:
-# 556 "data/maps/VioletCity/scripts.pory"
-	msgbox berrytrader_juggler_Text_10
-# 557 "data/maps/VioletCity/scripts.pory"
-	removeitem ITEM_GREEN_SHARD, 1
-# 558 "data/maps/VioletCity/scripts.pory"
-	giveitem ITEM_RAWST_BERRY
-# 559 "data/maps/VioletCity/scripts.pory"
-	giveitem ITEM_LUM_BERRY
-# 560 "data/maps/VioletCity/scripts.pory"
-	giveitem ITEM_AGUAV_BERRY
 # 561 "data/maps/VioletCity/scripts.pory"
-	waitmessage
+	msgbox berrytrader_juggler_Text_10
 # 562 "data/maps/VioletCity/scripts.pory"
+	removeitem ITEM_GREEN_SHARD, 1
+# 563 "data/maps/VioletCity/scripts.pory"
+	giveitem ITEM_RAWST_BERRY
+# 564 "data/maps/VioletCity/scripts.pory"
+	giveitem ITEM_LUM_BERRY
+# 565 "data/maps/VioletCity/scripts.pory"
+	giveitem ITEM_AGUAV_BERRY
+# 566 "data/maps/VioletCity/scripts.pory"
+	waitmessage
+# 567 "data/maps/VioletCity/scripts.pory"
 	release
 	end
 
 
 DexnavDude::
-# 580 "data/maps/VioletCity/scripts.pory"
+# 585 "data/maps/VioletCity/scripts.pory"
 	msgbox DexnavDude_Text_0, MSGBOX_NPC
 	return
 
@@ -1189,15 +1191,15 @@ berrytrader_juggler_Text_9:
 	.string "one, yah!$"
 
 berrytrader_juggler_Text_10:
-# 556 "data/maps/VioletCity/scripts.pory"
+# 561 "data/maps/VioletCity/scripts.pory"
 	.string "I'll give you my berry set D for that\n"
 	.string "one, yah!$"
 
 berrytrader_juggler_Text_11:
-# 570 "data/maps/VioletCity/scripts.pory"
+# 575 "data/maps/VioletCity/scripts.pory"
 	.string "Not interested huh? Shame...$"
 
 DexnavDude_Text_0:
-# 580 "data/maps/VioletCity/scripts.pory"
+# 585 "data/maps/VioletCity/scripts.pory"
 	.string "If you have a Pokegéar, you should\n"
 	.string "make use of the Dexnav feature in it.$"

@@ -150,6 +150,11 @@ static bool8 IsEnoughCurrencyForPurchase(u32 cost);
 static void BuyMenuPrintCurrencyAmountInMoneyBox(void);
 static void BuyMenuPrintTotalCost(u8 windowId, u8 y, u8 speed);
 
+// Every Poke Mart in the campaign sells ITEM_POKE_BALL and no other Ball
+// (.claude/KURT_BALL_CRAFT_DESIGN.md section 2.1). Great Ball and Ultra Ball were
+// removed from all eighteen lists below, and the nine special counters lost their
+// Balls too: from now on Kurt is the only factory, by recipe, N lots a day. The
+// unlimited Poke Ball here plus his five free Balls a day are the safety floor.
 static const u16 sShopInventory_ZeroBadges[] = {
     ITEM_POKE_BALL,
     ITEM_POTION,
@@ -165,7 +170,6 @@ static const u16 sShopInventory_ZeroBadges[] = {
 
 static const u16 sShopInventory_OneBadge[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_ANTIDOTE,
@@ -180,7 +184,6 @@ static const u16 sShopInventory_OneBadge[] = {
 
 static const u16 sShopInventory_TwoBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_ANTIDOTE,
@@ -196,7 +199,6 @@ static const u16 sShopInventory_TwoBadges[] = {
 
 static const u16 sShopInventory_ThreeBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_ANTIDOTE,
@@ -213,7 +215,6 @@ static const u16 sShopInventory_ThreeBadges[] = {
 
 static const u16 sShopInventory_FourBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_ANTIDOTE,
@@ -230,8 +231,6 @@ static const u16 sShopInventory_FourBadges[] = {
 
 static const u16 sShopInventory_FiveBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
-    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_HYPER_POTION,
@@ -250,8 +249,6 @@ static const u16 sShopInventory_FiveBadges[] = {
 
 static const u16 sShopInventory_SixBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
-    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_HYPER_POTION,
@@ -271,8 +268,6 @@ static const u16 sShopInventory_SixBadges[] = {
 
 static const u16 sShopInventory_SevenBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
-    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_HYPER_POTION,
@@ -294,8 +289,6 @@ static const u16 sShopInventory_SevenBadges[] = {
 
 static const u16 sShopInventory_EightBadges[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
-    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_HYPER_POTION,
@@ -345,7 +338,6 @@ static const u16 sShopInventory_ZeroBadges_PC[] = {
 
 static const u16 sShopInventory_OneBadge_PC[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_ETHER,
@@ -361,7 +353,6 @@ static const u16 sShopInventory_OneBadge_PC[] = {
 
 static const u16 sShopInventory_TwoBadges_PC[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_ETHER,
@@ -379,7 +370,6 @@ static const u16 sShopInventory_TwoBadges_PC[] = {
 
 static const u16 sShopInventory_ThreeBadges_PC[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_ETHER,
@@ -398,7 +388,6 @@ static const u16 sShopInventory_ThreeBadges_PC[] = {
 
 static const u16 sShopInventory_FourBadges_PC[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_ETHER,
@@ -417,8 +406,6 @@ static const u16 sShopInventory_FourBadges_PC[] = {
 
 static const u16 sShopInventory_FiveBadges_PC[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
-    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_HYPER_POTION,
@@ -440,8 +427,6 @@ static const u16 sShopInventory_FiveBadges_PC[] = {
 
 static const u16 sShopInventory_SixBadges_PC[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
-    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_HYPER_POTION,
@@ -464,8 +449,6 @@ static const u16 sShopInventory_SixBadges_PC[] = {
 
 static const u16 sShopInventory_SevenBadges_PC[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
-    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_HYPER_POTION,
@@ -490,8 +473,6 @@ static const u16 sShopInventory_SevenBadges_PC[] = {
 
 static const u16 sShopInventory_EightBadges_PC[] = {
     ITEM_POKE_BALL,
-    ITEM_GREAT_BALL,
-    ITEM_ULTRA_BALL,
     ITEM_POTION,
     ITEM_SUPER_POTION,
     ITEM_HYPER_POTION,

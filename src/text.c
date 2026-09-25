@@ -1533,7 +1533,12 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             case EXT_CTRL_CODE_SPEAKER:
                 {
                     enum SpeakerNames name = *textPrinter->printerTemplate.currentChar++;
-                    TrySpawnAndShowNamebox(gSpeakerNamesTable[name], NAME_BOX_BASE_TILE_NUM);
+                    const u8 *speaker = name < SP_NAME_COUNT ? gSpeakerNamesTable[name] : NULL;
+
+                    // Paginas seguidas do mesmo falante nao redesenham nada:
+                    // refazer a janela aqui pisca o quadro da caixa.
+                    if (!IsNameboxShowingSpeaker(speaker))
+                        TrySpawnAndShowNamebox(speaker, NAME_BOX_BASE_TILE_NUM);
 
                     return RENDER_REPEAT;
                 }

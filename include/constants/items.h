@@ -1154,6 +1154,26 @@ enum __attribute__((packed)) Item
 #define NUM_ROUTE_114_MAN_BERRIES         (LAST_ROUTE_114_MAN_BERRY - FIRST_ROUTE_114_MAN_BERRY + 1)
 #define NUM_ROUTE_114_MAN_BERRIES_SKIPPED (FIRST_ROUTE_114_MAN_BERRY - FIRST_BERRY_INDEX)
 
+// The Route 30 Berry Master's daily pools (.claude/KURT_BALL_CRAFT_DESIGN.md
+// section 5.2). The berry enum is CONTIGUOUS from ITEM_CHERI_BERRY (514) to
+// ITEM_MARANGA_BERRY (580), 67 with no hole, which is what makes a pool draw
+// `random N` + `addvar` + `giveitem VAR_RESULT` instead of a table.
+// The common range is Cheri..Roseli, 53 berries. It covers every ingredient of
+// the 27 recipes except Starf and Lansat - and those two are the level-20
+// recipes and belong to the post-game, which is exactly the rare range below.
+// It also contains the Persim, which is the Level Ball's ingredient and had no
+// source anywhere in the game before this.
+#define FIRST_BERRY_MASTER_COMMON     ITEM_CHERI_BERRY      // == FIRST_BERRY_INDEX
+#define LAST_BERRY_MASTER_COMMON      ITEM_ROSELI_BERRY
+#define NUM_BERRY_MASTER_COMMON       (LAST_BERRY_MASTER_COMMON - FIRST_BERRY_MASTER_COMMON + 1)
+
+// The rare range, Liechi..Maranga, 14 berries: the competitive ones, and the two
+// level-20 recipes. Gated on FLAG_SYS_GAME_CLEAR by the Berry Master's wife.
+#define FIRST_BERRY_MASTER_RARE       ITEM_LIECHI_BERRY
+#define LAST_BERRY_MASTER_RARE        ITEM_MARANGA_BERRY
+#define NUM_BERRY_MASTER_RARE         (LAST_BERRY_MASTER_RARE - FIRST_BERRY_MASTER_RARE + 1)
+#define NUM_BERRY_MASTER_RARE_SKIPPED (FIRST_BERRY_MASTER_RARE - FIRST_BERRY_INDEX)
+
 #define ITEM_TO_BERRY(itemId) (((itemId) - FIRST_BERRY_INDEX) + 1)
 #define ITEM_TO_MAIL(itemId) ((itemId) - FIRST_MAIL_INDEX)
 #define MAIL_NONE 0xFF

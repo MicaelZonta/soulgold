@@ -11,7 +11,7 @@ NewBarkTown_PlayersHouse_1F_OnTransition::
 	call_if_eq VAR_NEWBARK_TOWN_STATE, 3, NewBarkTown_PlayersHouse_1F_SetMomStandingAtTable
 	end
 
-@ Rift Mission 4 (.claude/NEWBARK_ULTRABEAST_IMPLEMENTATION.md, section 3.6).
+@ Rift Mission 4 (.claude/rift_missions/NEWBARK_ULTRABEAST/NEWBARK_ULTRABEAST_IMPLEMENTATION.md, section 3.6).
 @ Mom stands on the road outside during the New Bark incident, and she is one
 @ warp - one tile, really - from the scene, so she must not also be standing
 @ in here. LOCALID_MOM's map.json "flag" field used to be 0; it is now

@@ -242,6 +242,53 @@ static const struct BossPhaseProfile sGiratinaBossProfile =
 };
 #endif
 
+#if P_FAMILY_NECROZMA
+// Ultra Necrozma at the Sun and Moon Altar, the last story battle of the Rift
+// Missions arc (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 8.4).
+//
+// The creature does not escalate, it PEELS. The first three bars are the thing
+// New Bark saw, wearing the whole light armour; on the fourth the armour comes
+// off and what is left is a small Necrozma that starts spending turns healing.
+// The difficulty drops on purpose at the end: that is where the scene turns from
+// "you are surviving" into "you are looking at something starving".
+//
+// IsBossPhaseProfileValid (this file) silently DISCARDS a profile whose
+// phaseCount != totalBars, so these five phases require `setbossbattle 5` in
+// UltraSpaceArena_EventScript_Battle. Change one and the fight quietly becomes a
+// plain five-bar boss with no form changes and nothing in the build complains.
+static const struct BossPhase sNecrozmaBossPhases[] =
+{
+    {
+        .species = SPECIES_NECROZMA_ULTRA,
+        .moves = {MOVE_PHOTON_GEYSER, MOVE_PRISMATIC_LASER, MOVE_EARTH_POWER, MOVE_AUTOTOMIZE},
+    },
+    {
+        .species = SPECIES_NECROZMA_ULTRA,
+        .moves = {MOVE_PHOTON_GEYSER, MOVE_PRISMATIC_LASER, MOVE_SMART_STRIKE, MOVE_CALM_MIND},
+    },
+    {
+        .species = SPECIES_NECROZMA_ULTRA,
+        .moves = {MOVE_PHOTON_GEYSER, MOVE_PRISMATIC_LASER, MOVE_POWER_GEM, MOVE_EARTH_POWER},
+    },
+    {
+        // The armour comes off. Weaker, and it starts trying to heal.
+        .species = SPECIES_NECROZMA,
+        .moves = {MOVE_PHOTON_GEYSER, MOVE_POWER_GEM, MOVE_CALM_MIND, MOVE_MORNING_SUN},
+    },
+    {
+        .species = SPECIES_NECROZMA,
+        .moves = {MOVE_PHOTON_GEYSER, MOVE_POWER_GEM, MOVE_EARTH_POWER, MOVE_MORNING_SUN},
+    },
+};
+
+static const struct BossPhaseProfile sNecrozmaBossProfile =
+{
+    .baseSpecies = SPECIES_NECROZMA,
+    .phaseCount = ARRAY_COUNT(sNecrozmaBossPhases),
+    .phases = sNecrozmaBossPhases,
+};
+#endif
+
 #if P_FAMILY_OGERPON && P_TERA_FORMS
 static const struct BossPhase sOgerponBossPhases[] =
 {
@@ -393,6 +440,10 @@ static const struct BossPhaseProfile *GetBossPhaseProfile(u8 profileId)
 #if P_FAMILY_GIRATINA
     case BOSS_PHASE_PROFILE_GIRATINA:
         return &sGiratinaBossProfile;
+#endif
+#if P_FAMILY_NECROZMA
+    case BOSS_PHASE_PROFILE_NECROZMA:
+        return &sNecrozmaBossProfile;
 #endif
     default:
         return NULL;

@@ -729,7 +729,9 @@
 #define FLAG_DN_HIDDEN_MODE  0x2A6
 #define FLAG_GOLDENRODSHORE_EXPERT  0x2A7
 #define FLAG_R39_NORTH_TRADE  0x2A8
-#define FLAG_R39_NORTH_ROCKY_HELMET  0x2A92
+#define FLAG_R39_NORTH_ROCKY_HELMET  0x2A9 // Era 0x2A92 (digito a mais): 10898 fica fora de
+                                           // flags[] e escrevia no byte baixo de VAR 0x4154.
+                                           // Corrigido 25/09/2026 (auditoria secao 7.1)
 #define FLAG_COLLISION  0x2AA // Debug
 #define FLAG_HIDE_RADIOTOWER_OAK    0x2AB
 #define FLAG_ICEPATH_DEPTHS_FROSLASSITE  0x2AC
@@ -1803,7 +1805,13 @@
 // The var is still the story's authority.
 // Invariant: set if and only if VAR_RIFT_MISSIONS_STATE >= 12.
 #define FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED          0x1045
-#define CUSTOM_FLAGS_END                            FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED
+// The altar becomes a Fly destination at the end of Act I, not on landing at the
+// pier (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 4.7). It does NOT live in
+// the SYSTEM_FLAGS FLAG_VISITED_* block, which is full: that block ends at
+// FLAG_VISITED_RECEPTION_GATE and + 0x28 is already FLAG_SYS_USE_FLASH, which is
+// why FLAG_VISITED_BATTLE_FACTORY and FLAG_VISITED_ROUTE50 also live out here.
+#define FLAG_VISITED_SUN_MOON_ALTAR                 0x1046
+#define CUSTOM_FLAGS_END                            FLAG_VISITED_SUN_MOON_ALTAR
 
 
 #define FLAG_0x1500                                 0x1500
@@ -1828,7 +1836,7 @@
 #define FLAG_DAILY_ROUTE_120_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xE)
 #define FLAG_DAILY_LILYCOVE_RECEIVED_BERRY          (DAILY_FLAGS_START + 0xF)
 #define FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY       (DAILY_FLAGS_START + 0x10)
-#define FLAG_DAILY_BERRY_MASTERS_WIFE               (DAILY_FLAGS_START + 0x11)
+#define FLAG_DAILY_BERRY_MASTERS_WIFE               (DAILY_FLAGS_START + 0x11) // Route 30 Berry Master's wife: one rare Berry a day, post-Hall of Fame (.claude/KURT_BALL_CRAFT_DESIGN.md section 5.4). Was allocated and never used by anything
 #define FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY        (DAILY_FLAGS_START + 0x12)
 #define FLAG_LAKEOFRAGE_GROTTO                      (DAILY_FLAGS_START + 0x13)
 #define FLAG_DAILY_APPRENTICE_LEAVES                (DAILY_FLAGS_START + 0x14)
@@ -1853,12 +1861,19 @@
 #define FLAG_DAILY_BATTLE_CAFE_SUPER_RUSH_WON       (DAILY_FLAGS_START + 0x26)
 #define FLAG_DAILY_BATTLE_CAFE_SUPER_CHALLENGE_WON  (DAILY_FLAGS_START + 0x27)
 #define FLAG_GOT_GROOMED                            (DAILY_FLAGS_START + 0x28) // Mom's Grooming service, once per day
-#define FLAG_UNUSED_0x949                           (DAILY_FLAGS_START + 0x29) // Unused Flag
-#define FLAG_UNUSED_0x94A                           (DAILY_FLAGS_START + 0x2A) // Unused Flag
-#define FLAG_UNUSED_0x94B                           (DAILY_FLAGS_START + 0x2B) // Unused Flag
-#define FLAG_UNUSED_0x94C                           (DAILY_FLAGS_START + 0x2C) // Unused Flag
-#define FLAG_UNUSED_0x94D                           (DAILY_FLAGS_START + 0x2D) // Unused Flag
-#define FLAG_UNUSED_0x94E                           (DAILY_FLAGS_START + 0x2E) // Unused Flag
+// Sun and Moon Altar post-game (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 3.1).
+// Reclaimed from FLAG_UNUSED_0x949..0x94D, in place: DAILY_FLAGS_END and
+// FLAGS_COUNT are untouched (the block runs to + 0x3F).
+#define FLAG_DAILY_ALTAR_RIFT                       (DAILY_FLAGS_START + 0x29) // Today's rift at the altar has been used
+#define FLAG_DAILY_REMATCH_LUSAMINE                 (DAILY_FLAGS_START + 0x2A) // Lusamine rematch at the altar, once a day
+#define FLAG_DAILY_REMATCH_KUKUI                    (DAILY_FLAGS_START + 0x2B) // Kukui rematch on the Cherrygrove beach
+#define FLAG_DAILY_REMATCH_LILLIE                   (DAILY_FLAGS_START + 0x2C) // Lillie rematch on the Cherrygrove beach
+#define FLAG_DAILY_REMATCH_GLADION                  (DAILY_FLAGS_START + 0x2D) // Gladion rematch in Cianwood
+// Kurt's Poke Ball recipes (.claude/KURT_BALL_CRAFT_DESIGN.md section 3).
+// NOT the same flag as FLAG_DAILY_KURT_FREE_BALLS: that one is "I took today's
+// free draw", this one is "today's quota has been zeroed". Sharing one would
+// make the draw eat the quota.
+#define FLAG_DAILY_KURT_NEW_DAY                     (DAILY_FLAGS_START + 0x2E) // VAR_KURT_TODAY has been reset for today
 #define FLAG_UNUSED_0x94F                           (DAILY_FLAGS_START + 0x2F) // Unused Flag
 #define FLAG_UNUSED_0x950                           (DAILY_FLAGS_START + 0x30) // Unused Flag
 #define FLAG_UNUSED_0x951                           (DAILY_FLAGS_START + 0x31) // Unused Flag

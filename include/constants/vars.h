@@ -240,6 +240,16 @@
 #define VAR_BATTLE_SPEED                                 0x40DC
 #define VAR_GIFT_PICHU_SLOT                              0x40DD
 #define VAR_RIVAL_STATE                                  0x40DE
+// Kurt's craft EXP, 0..1520 (.claude/KURT_BALL_CRAFT_DESIGN.md section 2.2).
+// It USED to mean "days on which he made Balls for you" and only opened the
+// Master Ball face of the daily draw at >= 4. It is now EXP: +1 per Ball made,
+// so +5 per lot, written ONLY by a recipe - the free daily draw never touches it.
+//   level L is unlocked at EXP >= 4 * L * (L - 1)
+//   0, 8, 24, 48, 80, 120, 168, 224, 288, 360, 440, 528, 624, 728, 840, 960,
+//   1088, 1224, 1368, 1520   (levels 1..20; the cap is level 20's threshold)
+// The level is computed in ONE place, KurtCraft_EventScript_ComputeLevel, and
+// nothing else in the repository converts this var into a level.
+// It also re-gates the Master Ball face of the draw at >= 360 (level 10).
 #define VAR_KURT_PROFICIENCY                             0x40DF
 #define VAR_BUENA_POINTS                                 0x40E0
 #define VAR_BUENA_PASSWORDS_CORRECT                      0x40E1
@@ -323,14 +333,35 @@
 // 10 = four missions done, Olivine reunion pending (set by NewBarkTown_EventScript_UBResolved)
 // 11 = reunion held, Solgaleo/Lunala still missing (set by OlivineCity_House1_EventScript_ReunionNotYet)
 // 12 = reunion complete, altar expedition released (set by OlivineCity_House1_EventScript_ReunionConfirmed)
-// 13+ = reserved for the altar / Ultra Necrozma
+// 13 = Act I played, Lusamine's duel pending    (set by SunMoonAltar_EventScript_ArrivalDone)
+// 14 = duel resolved, the ground rift is OPEN   (set by SunMoonAltar_EventScript_DuelResolved)
+// 15 = Necrozma beaten and received, farewell pending (set by UltraSpaceArena_EventScript_NecrozmaCaught)
+// 16 = arc closed. PERMANENT post-game state    (set by SunMoonAltar_EventScript_FarewellDone)
+// 17+ = reserved for the Rift Missions loop
 // The four mission flags are mutually exclusive, because the var holds one value:
 // Invariant: FLAG_EVENT_ULTRABEAST_BLACKTHORN  is set if and only if this == 3.
 // Invariant: FLAG_EVENT_ULTRABEAST_MAHOGANY    is set if and only if this == 5.
 // Invariant: FLAG_EVENT_ULTRABEAST_CHERRYGROVE is set if and only if this == 7.
 // Invariant: FLAG_EVENT_ULTRABEAST_NEWBARK     is set if and only if this == 9.
 // Invariant: FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED is set if and only if this >= 12.
+// Invariant: 13 <= this <= 15 if and only if the altar is unstable - ash weather
+//   AND the seven disc metatiles showing their portal state. Both are recomputed
+//   in SunMoonAltar_OnTransition and NEVER persisted.
+// Invariant: this == 14 or 15 if and only if the rift object at (14,10) is visible
+//   unconditionally; this >= 16 shows it if and only if FLAG_DAILY_ALTAR_RIFT is
+//   clear; this <= 13 hides it.
+// Invariant: this >= 16 if and only if Looker and Anabel are NOT in
+//   OlivineCity_House1 and ARE at MAP_SUN_MOON_ALTAR. The two halves are
+//   recomputed in two different ON_TRANSITIONs from this one var.
+// Invariant: the player's Solgaleo/Lunala object is never left on a map between
+//   scenes: every load hides both, and only a scene addobjects one.
+// Read, never written, by Kurt's Beast Ball recipe: >= 15 unlocks it
+// (.claude/KURT_BALL_CRAFT_DESIGN.md section 2.5).
 #define VAR_RIFT_MISSIONS_STATE                         0x4120
+// Kurt's lots crafted today, 0..level. Zeroed by KurtCraft_EventScript_RollOver
+// when FLAG_DAILY_KURT_NEW_DAY is found clear, which ClearDailyFlags does at the
+// date rollover (.claude/KURT_BALL_CRAFT_DESIGN.md section 2.7).
+#define VAR_KURT_TODAY                                  0x4121
 
 #define VARS_END                                         0x42FF
 

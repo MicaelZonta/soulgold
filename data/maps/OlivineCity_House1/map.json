@@ -26,7 +26,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OlivineCity_House1_EventScript_Looker",
-      "flag": "0"
+      "flag": "FLAG_TEMP_2"
     },
     {
       "local_id": "LOCALID_OLIVINE_HOUSE1_ANABEL",
@@ -40,7 +40,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OlivineCity_House1_EventScript_Anabel",
-      "flag": "0"
+      "flag": "FLAG_TEMP_2"
     },
     {
       "local_id": "LOCALID_OLIVINE_HOUSE1_LUSAMINE",
@@ -124,7 +124,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OlivineCity_House1_EventScript_ReunionKukui",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_3"
     }
   ],
   "warp_events": [

@@ -13910,6 +13910,14 @@ IVs: 0 Atk / 0 Spe
 - Trick Room
 - Ice Beam
 
+/*
+Act II of the Sun and Moon Altar, the narrative duel
+(.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 6.5). NOT a boss: five
+post-League Pokemon, no bars, no multiplier. She is hard the way a trainer is.
+Nothing here is an Ultra Beast on purpose - she runs a conservation foundation
+and the whole argument of the scene is that she stopped collecting what she
+should not have.
+*/
 === TRAINER_LUSAMINE ===
 Name: Lusamine
 Class: Beauty
@@ -13917,11 +13925,62 @@ Pic: Lusamine
 Gender: Female
 Music: Hg Girl 2
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Rattata
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Clefable @ Leftovers
+Calm Nature
+Level: 70
+Ability: Magic Guard
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 Def / 252 SpD
+- Calm Mind
+- Moonblast
+- Moonlight
+- Thunder Wave
+
+Lilligant @ Focus Sash
+Timid Nature
+Level: 70
+Ability: Own Tempo
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Quiver Dance
+- Petal Dance
+- Sleep Powder
+- Giga Drain
+
+Mismagius @ Life Orb
+Timid Nature
+Level: 71
+Ability: Levitate
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Nasty Plot
+- Shadow Ball
+- Dazzling Gleam
+- Will-O-Wisp
+
+Bewear @ Assault Vest
+Adamant Nature
+Level: 71
+Ability: Fluffy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
+- Double-Edge
+- Drain Punch
+- Ice Punch
+- Darkest Lariat
+
+Milotic @ Flame Orb
+Bold Nature
+Level: 72
+Ability: Marvel Scale
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Def / 4 SpA
+- Recover
+- Scald
+- Ice Beam
+- Mirror Coat
 
 === TRAINER_LILLIE ===
 Name: Lillie
@@ -13936,6 +13995,11 @@ Vulpix Alola
 Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+/*
+Daily rematch on the Cherrygrove beach, post-game
+(.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5). The Incineroar is the
+one from Mission 3 on this same beach: the surprise of that scene closes here.
+*/
 === TRAINER_KUKUI ===
 Name: Kukui
 Class: Expert
@@ -13943,11 +14007,73 @@ Pic: Kukui
 Gender: Male
 Music: Hg Boy 1
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer / Prediction
 
-Rattata
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lycanroc Midday @ Focus Sash
+Jolly Nature
+Level: 78
+Ability: Sand Rush
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 252 Spe
+- Accelerock
+- Stone Edge
+- Close Combat
+- Swords Dance
+
+Braviary @ Choice Scarf
+Adamant Nature
+Level: 78
+Ability: Defiant
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 252 Spe
+- Brave Bird
+- Close Combat
+- U-turn
+- Rock Slide
+
+Ninetales Alola @ Light Clay
+Timid Nature
+Level: 79
+Ability: Snow Warning
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Blizzard
+- Moonblast
+- Aurora Veil
+- Freeze-Dry
+
+Magnezone @ Assault Vest
+Modest Nature
+Level: 79
+Ability: Magnet Pull
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+- Thunderbolt
+- Flash Cannon
+- Volt Switch
+- Body Press
+
+Snorlax @ Leftovers
+Careful Nature
+Level: 79
+Ability: Thick Fat
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 Atk / 252 SpD
+- Body Slam
+- Earthquake
+- Curse
+- Rest
+
+Incineroar @ Sitrus Berry
+Adamant Nature
+Level: 80
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
+- Flare Blitz
+- Darkest Lariat
+- Close Combat
+- Fake Out
 
 === TRAINER_GLADION ===
 Name: Gladion
@@ -14257,3 +14383,248 @@ EVs: 252 HP / 4 Def / 252 SpD
 - Earth Power
 - Ice Beam
 - Recover
+
+/*
+Daily rematch at the Sun and Moon Altar, post-game
+(.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5). The five from Act II
+plus the Nihilego, which is the only Ultra Beast in any character's hands in
+the game. It is NOT the Sun/Moon fusion: it is one of the nine the group
+recovered, and SunMoonAltar_Text_LusamineRematchAsk says so out loud so that
+nobody can read it as the fusion the design forbids importing.
+*/
+=== TRAINER_LUSAMINE_ALTAR ===
+Name: Lusamine
+Class: Beauty
+Pic: Lusamine
+Gender: Female
+Music: Hg Girl 2
+Double Battle: No
+AI: Smart Trainer / Prediction
+
+Clefable @ Leftovers
+Calm Nature
+Level: 78
+Ability: Magic Guard
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 Def / 252 SpD
+- Calm Mind
+- Moonblast
+- Moonlight
+- Thunder Wave
+
+Lilligant @ Focus Sash
+Timid Nature
+Level: 78
+Ability: Own Tempo
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Quiver Dance
+- Petal Dance
+- Sleep Powder
+- Giga Drain
+
+Mismagius @ Life Orb
+Timid Nature
+Level: 79
+Ability: Levitate
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Nasty Plot
+- Shadow Ball
+- Dazzling Gleam
+- Will-O-Wisp
+
+Bewear @ Assault Vest
+Adamant Nature
+Level: 79
+Ability: Fluffy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
+- Double-Edge
+- Drain Punch
+- Ice Punch
+- Darkest Lariat
+
+Milotic @ Flame Orb
+Bold Nature
+Level: 79
+Ability: Marvel Scale
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Def / 4 SpA
+- Recover
+- Scald
+- Ice Beam
+- Mirror Coat
+
+Nihilego @ Power Herb
+Timid Nature
+Level: 80
+Ability: Beast Boost
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Meteor Beam
+- Sludge Wave
+- Power Gem
+- Toxic Spikes
+
+/*
+Daily rematch on the Cherrygrove beach, post-game
+(.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5). The Alolan Ninetales
+is the same Vulpix from the Route 30 battle, five encounters and sixty-odd
+levels ago, which is the cheapest and best thing a post-game rematch can do.
+*/
+=== TRAINER_LILLIE_POSTGAME ===
+Name: Lillie
+Class: Lass
+Pic: Lillie
+Gender: Female
+Music: Hg Girl 1
+Double Battle: No
+AI: Smart Trainer / Prediction
+
+Clefable @ Leftovers
+Bold Nature
+Level: 76
+Ability: Magic Guard
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Def / 4 SpA
+- Moonblast
+- Soft-Boiled
+- Cosmic Power
+- Stored Power
+
+Comfey @ Big Root
+Calm Nature
+Level: 76
+Ability: Triage
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 SpA / 252 SpD
+- Draining Kiss
+- Giga Drain
+- Calm Mind
+- Synthesis
+
+Ribombee @ Focus Sash
+Timid Nature
+Level: 77
+Ability: Shield Dust
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Moonblast
+- Bug Buzz
+- Quiver Dance
+- Sticky Web
+
+Primarina @ Assault Vest
+Modest Nature
+Level: 77
+Ability: Torrent
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 SpA / 4 SpD
+- Sparkling Aria
+- Moonblast
+- Psychic
+- Ice Beam
+
+Togekiss @ Sitrus Berry
+Timid Nature
+Level: 78
+Ability: Serene Grace
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 SpA / 252 Spe
+- Air Slash
+- Dazzling Gleam
+- Nasty Plot
+- Roost
+
+Ninetales Alola @ Light Clay
+Timid Nature
+Level: 78
+Ability: Snow Warning
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Blizzard
+- Moonblast
+- Aurora Veil
+- Freeze-Dry
+
+/*
+Daily rematch in Cianwood, post-game
+(.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5). The Silvally leads in
+TRAINER_GLADION_VICTORY_ROAD and is LAST here: it stopped being the
+demonstration and became the answer.
+*/
+=== TRAINER_GLADION_POSTGAME ===
+Name: Gladion
+Class: Rival
+Pic: Gladion
+Gender: Male
+Music: Silver
+Double Battle: No
+AI: Smart Trainer / Prediction
+
+Lucario @ Life Orb
+Adamant Nature
+Level: 78
+Ability: Inner Focus
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 252 Spe
+- Close Combat
+- Meteor Mash
+- Extreme Speed
+- Swords Dance
+
+Crobat @ Sitrus Berry
+Jolly Nature
+Level: 78
+Ability: Inner Focus
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 252 Spe
+- Cross Poison
+- Brave Bird
+- U-turn
+- Roost
+
+Weavile @ Focus Sash
+Jolly Nature
+Level: 79
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 252 Spe
+- Triple Axel
+- Knock Off
+- Ice Shard
+- Swords Dance
+
+Zoroark @ Choice Specs
+Timid Nature
+Level: 79
+Ability: Illusion
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 SpA / 252 Spe
+- Dark Pulse
+- Flamethrower
+- Focus Blast
+- U-turn
+
+Umbreon @ Leftovers
+Careful Nature
+Level: 79
+Ability: Synchronize
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 Def / 252 SpD
+- Foul Play
+- Wish
+- Protect
+- Toxic
+
+Silvally @ Life Orb
+Adamant Nature
+Level: 80
+Ability: RKS System
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 252 Spe
+- Multi-Attack
+- Crunch
+- Flamethrower
+- Parting Shot

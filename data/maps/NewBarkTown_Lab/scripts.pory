@@ -19,7 +19,7 @@ NewBarkTown_Lab_OnFrame::
 	map_script_2 VAR_NEWBARKTOWN_LABSTATE, 4, NewBarkTown_Lab_EventScript_PoliceEpisode
 	.2byte 0
 
-@ Rift Mission 4 (.claude/NEWBARK_ULTRABEAST_IMPLEMENTATION.md, section 3.6).
+@ Rift Mission 4 (.claude/rift_missions/NEWBARK_ULTRABEAST/NEWBARK_ULTRABEAST_IMPLEMENTATION.md, section 3.6).
 @ Professor Elm stands on the road outside during the New Bark incident, and
 @ the lab door is one warp from the scene, so he must not also be in here.
 @ LOCALID_ELM's map.json "flag" field used to be 0; it is now FLAG_TEMP_1, a

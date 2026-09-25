@@ -328,13 +328,13 @@ MrPokemonHouse_Movement_LillieLeave:
 	step_end
 
 MrPokemonHouse_Text_Intro1:
-	.string "Kukui: Alola! You're {PLAYER},\n"
+	.string "{SPEAKER NAME_KUKUI}Alola! You're {PLAYER},\n"
 	.string "right? Elm said you'd come!\p"
 	.string "Come in! We've got quite a\n"
 	.string "little gathering here today.$"
 
 MrPokemonHouse_Text_Intro2:
-	.string "Kukui: I'm Professor Kukui.\n"
+	.string "{SPEAKER NAME_KUKUI}I'm Professor Kukui.\n"
 	.string "I study Pokémon moves in Alola!\p"
 	.string "I was traveling through Kanto\n"
 	.string "when I heard about Johto.\p"
@@ -348,7 +348,7 @@ MrPokemonHouse_Text_OakGreeting:
 	.string "Elm told us you were coming.$"
 
 MrPokemonHouse_Text_Intro3:
-	.string "Kukui: A couple who run a\n"
+	.string "{SPEAKER NAME_KUKUI}A couple who run a\n"
 	.string "Day-Care gave me an unusual Egg.\p"
 	.string "I contacted Elm right away.\n"
 	.string "He knows much more about Eggs!\p"
@@ -356,19 +356,19 @@ MrPokemonHouse_Text_Intro3:
 	.string "But first, introductions!$"
 
 MrPokemonHouse_Text_Intro4:
-	.string "Kukui: And this is Lillie.\n"
+	.string "{SPEAKER NAME_KUKUI}And this is Lillie.\n"
 	.string "She's visiting from Alola too!$"
 
 MrPokemonHouse_Text_Intro5:
-	.string "Kukui: Lillie, weren't you\n"
+	.string "{SPEAKER NAME_KUKUI}Lillie, weren't you\n"
 	.string "looking for a training partner?$"
 
 MrPokemonHouse_Text_LillieAnswer:
-	.string "Lillie: Oh! Yes, Professor.\n"
+	.string "{SPEAKER NAME_LILLIE}Oh! Yes, Professor.\n"
 	.string "Just a moment!$"
 
 MrPokemonHouse_Text_LillieIntro:
-	.string "Lillie: Yes! Though I wasn't\n"
+	.string "{SPEAKER NAME_LILLIE}Yes! Though I wasn't\n"
 	.string "expecting to meet one so soon.\p"
 	.string "It's nice to meet you, {PLAYER}.\n"
 	.string "I'm traveling with my mother.\p"
@@ -378,7 +378,7 @@ MrPokemonHouse_Text_LillieIntro:
 	.string "Vulpix and I have been practicing!$"
 
 MrPokemonHouse_Text_LillieVulpix:
-	.string "Lillie: My Vulpix is from Alola.\n"
+	.string "{SPEAKER NAME_LILLIE}My Vulpix is from Alola.\n"
 	.string "That's why her fur is white.\p"
 	.string "People here keep asking about it.\n"
 	.string "She seems quite pleased!$"
@@ -388,21 +388,21 @@ MrPokemonHouse_Text_OakBeforeBattle:
 	.string "to see how you work together!$"
 
 MrPokemonHouse_Text_KukuiBeforeBattle:
-	.string "Kukui: Let's get your partner\n"
+	.string "{SPEAKER NAME_KUKUI}Let's get your partner\n"
 	.string "rested before we begin.\p"
 	.string "You walked all the way from\n"
 	.string "Elm's lab, after all!$"
 
 MrPokemonHouse_Text_LillieBeforeBattle:
-	.string "Lillie: All right, Vulpix.\n"
+	.string "{SPEAKER NAME_LILLIE}All right, Vulpix.\n"
 	.string "Let's do this together!$"
 
 MrPokemonHouse_Text_LillieDefeated:
-	.string "Lillie: We did our best, Vulpix.\n"
+	.string "{SPEAKER NAME_LILLIE}We did our best, Vulpix.\n"
 	.string "Thank you!$"
 
 MrPokemonHouse_Text_LillieAfterBattle:
-	.string "Lillie: Oh! You changed your\n"
+	.string "{SPEAKER NAME_LILLIE}Oh! You changed your\n"
 	.string "approach before I noticed.\p"
 	.string "I was so busy thinking about\n"
 	.string "our next move…\p"
@@ -412,7 +412,7 @@ MrPokemonHouse_Text_LillieAfterBattle:
 	.string "I'm glad I asked!$"
 
 MrPokemonHouse_Text_LillieWon:
-	.string "Lillie: We… we won?\n"
+	.string "{SPEAKER NAME_LILLIE}We… we won?\n"
 	.string "Vulpix, we actually won!\p"
 	.string "Oh! I'm sorry, {PLAYER}.\n"
 	.string "I'm just so happy for her!\p"
@@ -421,22 +421,22 @@ MrPokemonHouse_Text_LillieWon:
 	.string "Thank you. I'm glad I asked!$"
 
 MrPokemonHouse_Text_LillieDraw:
-	.string "Lillie: Both of them at once?\n"
+	.string "{SPEAKER NAME_LILLIE}Both of them at once?\n"
 	.string "Then it's a draw!\p"
 	.string "We'll have to settle it\n"
 	.string "another time, {PLAYER}.$"
 
 MrPokemonHouse_Text_LillieForfeit:
-	.string "Lillie: Oh… We're stopping here?\p"
+	.string "{SPEAKER NAME_LILLIE}Oh… We're stopping here?\p"
 	.string "That's all right. Knowing when\n"
 	.string "to rest is important too.$"
 
 MrPokemonHouse_Text_LillieUnexpectedOutcome:
-	.string "Lillie: Thank you for battling\n"
+	.string "{SPEAKER NAME_LILLIE}Thank you for battling\n"
 	.string "with us, {PLAYER}!$"
 
 MrPokemonHouse_Text_KukuiAfterBattle:
-	.string "Kukui: There's a lesson you\n"
+	.string "{SPEAKER NAME_KUKUI}There's a lesson you\n"
 	.string "won't find in a notebook!\p"
 	.string "Knowing a move is one thing.\n"
 	.string "Finding its moment takes practice.\p"
@@ -444,11 +444,11 @@ MrPokemonHouse_Text_KukuiAfterBattle:
 	.string "something to be proud of!$"
 
 MrPokemonHouse_Text_LillieRematch:
-	.string "Lillie: Shall we try again?\n"
+	.string "{SPEAKER NAME_LILLIE}Shall we try again?\n"
 	.string "We'll be ready when you are.$"
 
 MrPokemonHouse_Text_KukuiGiveEgg:
-	.string "Kukui: Now, about Elm's errand!\p"
+	.string "{SPEAKER NAME_KUKUI}Now, about Elm's errand!\p"
 	.string "Please take this Egg to him.\n"
 	.string "I'd like to hear what he thinks.$"
 
@@ -482,11 +482,11 @@ MrPokemonHouse_Text_OakParting:
 	.string "And good luck to both of you!$"
 
 MrPokemonHouse_Text_KukuiOakParting:
-	.string "Kukui: Count on it, Professor!\n"
+	.string "{SPEAKER NAME_KUKUI}Count on it, Professor!\n"
 	.string "Have a good trip!$"
 
 MrPokemonHouse_Text_LillieParting:
-	.string "Lillie: I should be going too.\n"
+	.string "{SPEAKER NAME_LILLIE}I should be going too.\n"
 	.string "My mother is waiting for me.\p"
 	.string "I told her I'd only stop by\n"
 	.string "to see Professor Kukui.\p"
@@ -497,19 +497,19 @@ MrPokemonHouse_Text_LillieParting:
 	.string "Come along, Vulpix!$"
 
 MrPokemonHouse_Text_Heal:
-	.string "Kukui: Before you head out,\n"
+	.string "{SPEAKER NAME_KUKUI}Before you head out,\n"
 	.string "let me take care of your Pokémon.\p"
 	.string "A good rest is part of\n"
 	.string "good training!$"
 
 MrPokemonHouse_Text_DependingOnYou:
-	.string "Kukui: I'll stay here and\n"
+	.string "{SPEAKER NAME_KUKUI}I'll stay here and\n"
 	.string "keep working on my research.\p"
 	.string "Give Elm my regards!\n"
 	.string "And drop by whenever you like.$"
 
 MrPokemonHouse_Text_AlwaysNewDiscoveries:
-	.string "Kukui: Alola, {PLAYER}!\n"
+	.string "{SPEAKER NAME_KUKUI}Alola, {PLAYER}!\n"
 	.string "How's the journey going?\p"
 	.string "I've been comparing Pokémon\n"
 	.string "from Johto with those back home.\p"
@@ -519,7 +519,7 @@ MrPokemonHouse_Text_AlwaysNewDiscoveries:
 	.string "There's always more to learn.$"
 
 MrPokemonHouse_Text_GimmeTheScale:
-	.string "Kukui: Hold on. That red scale…\n"
+	.string "{SPEAKER NAME_KUKUI}Hold on. That red scale…\n"
 	.string "Did it come from a Gyarados?\p"
 	.string "Now that's something I'd love\n"
 	.string "to examine up close!\p"
@@ -529,19 +529,19 @@ MrPokemonHouse_Text_GimmeTheScale:
 	.string "and I could study that scale!$"
 
 MrPokemonHouse_Text_Disappointed:
-	.string "Kukui: No problem!\n"
+	.string "{SPEAKER NAME_KUKUI}No problem!\n"
 	.string "It's quite a keepsake.\p"
 	.string "If you change your mind,\n"
 	.string "you know where to find me!$"
 
 MrPokemonHouse_Text_ScaleAccepted:
-	.string "Kukui: Thanks, {PLAYER}!\n"
+	.string "{SPEAKER NAME_KUKUI}Thanks, {PLAYER}!\n"
 	.string "I'll take good care of it.\p"
 	.string "A whole research project,\n"
 	.string "right in the palm of my hand!$"
 
 MrPokemonHouse_Text_ScaleBagFull:
-	.string "Kukui: Make room for the stone\n"
+	.string "{SPEAKER NAME_KUKUI}Make room for the stone\n"
 	.string "first, and we'll make the trade.\p"
 	.string "Keep your scale until then!$"
 

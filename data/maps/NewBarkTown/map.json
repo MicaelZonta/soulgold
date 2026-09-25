@@ -280,8 +280,8 @@
       "flag": "FLAG_TEMP_1"
     },
     {
-      "local_id": "LOCALID_NEWBARK_UB_MARILL",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MARILL)",
+      "local_id": "LOCALID_NEWBARK_UB_AZUMARILL",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(AZUMARILL)",
       "x": 22,
       "y": 13,
       "elevation": 0,
@@ -362,6 +362,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_TEMP_2"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_NECROZMA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NECROZMA)",
+      "x": 16,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_5"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_ULTRA_NECROZMA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NECROZMA_ULTRA)",
+      "x": 16,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_6"
     }
   ],
   "warp_events": [

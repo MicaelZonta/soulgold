@@ -47,7 +47,7 @@ mart Olivine2 {
 	ITEM_TM_DRAINING_KISS
 	ITEM_TM_BRUTAL_SWING
 	ITEM_TM_CHARGE_BEAM
-    ITEM_DIVE_BALL
-    ITEM_LEVEL_BALL
-    ITEM_NET_BALL
+    // No Balls on this counter: every Poke Mart in the campaign sells
+    // ITEM_POKE_BALL and nothing else, and Kurt makes the rest by recipe
+    // (.claude/KURT_BALL_CRAFT_DESIGN.md section 2.1).
 }

@@ -500,7 +500,7 @@ GoldenrodCity_FlowerShop_Movement_VulpixLeave:
 	step_end
 
 GoldenrodCity_FlowerShop_Text_LillieBeforeBadge:
-.string "Lillie: I'm just talking with\n"
+.string "{SPEAKER NAME_LILLIE}I'm just talking with\n"
 .string "the shop owner about that odd\l"
 .string "tree on Route 36.$"
 
@@ -512,7 +512,7 @@ GoldenrodCity_FlowerShop_Text_LillieSceneFloristTree:
 .string "get too close.$"
 
 GoldenrodCity_FlowerShop_Text_LillieSuggestsPersuading:
-.string "Lillie: Then we shouldn't pull\n"
+.string "{SPEAKER NAME_LILLIE}Then we shouldn't pull\n"
 .string "at its branches.\p"
 .string "If it can move, perhaps we\n"
 .string "can persuade it to move on\l"
@@ -524,13 +524,13 @@ GoldenrodCity_FlowerShop_Text_FloristOffersBottle:
 .string "Just be careful, dear.$"
 
 GoldenrodCity_FlowerShop_Text_LillieRecognizesBadge:
-.string "Lillie: {PLAYER}! You've been\n"
+.string "{SPEAKER NAME_LILLIE}{PLAYER}! You've been\n"
 .string "to Whitney's Gym, haven't\l"
 .string "you?\p"
 .string "I recognized the Badge.$"
 
 GoldenrodCity_FlowerShop_Text_LillieIlexForest:
-.string "Lillie: I thought traveling\n"
+.string "{SPEAKER NAME_LILLIE}I thought traveling\n"
 .string "would mean getting better at\l"
 .string "following a map.\p"
 .string "Then I spent half a morning\n"
@@ -538,7 +538,7 @@ GoldenrodCity_FlowerShop_Text_LillieIlexForest:
 .string "flowers Ribombee visited.$"
 
 GoldenrodCity_FlowerShop_Text_LillieRibombeeWind:
-.string "Lillie: She kept returning to\n"
+.string "{SPEAKER NAME_LILLIE}She kept returning to\n"
 .string "the sheltered flowers whenever\l"
 .string "the wind picked up.\p"
 .string "I was watching the path.\n"
@@ -546,14 +546,14 @@ GoldenrodCity_FlowerShop_Text_LillieRibombeeWind:
 .string "around us.$"
 
 GoldenrodCity_FlowerShop_Text_LillieGladionViolet:
-.string "Lillie: Gladion told me he\n"
+.string "{SPEAKER NAME_LILLIE}Gladion told me he\n"
 .string "met you in Violet.\p"
 .string "He said, 'They didn't\n"
 .string "hesitate.' From him, that's\l"
 .string "practically a speech.$"
 
 GoldenrodCity_FlowerShop_Text_LillieTypeNull:
-.string "Lillie: And you met the\n"
+.string "{SPEAKER NAME_LILLIE}And you met the\n"
 .string "Type: Null traveling with\l"
 .string "him.\p"
 .string "He pretends not to fuss over\n"
@@ -562,14 +562,14 @@ GoldenrodCity_FlowerShop_Text_LillieTypeNull:
 .string "is looking.$"
 
 GoldenrodCity_FlowerShop_Text_LillieHeadingNorth:
-.string "Lillie: Are you heading\n"
+.string "{SPEAKER NAME_LILLIE}Are you heading\n"
 .string "north?\p"
 .string "I promised Mother I'd meet\n"
 .string "her before we leave\l"
 .string "Goldenrod.$"
 
 GoldenrodCity_FlowerShop_Text_LillieAsksFlorist:
-.string "Lillie: Would it be all right\n"
+.string "{SPEAKER NAME_LILLIE}Would it be all right\n"
 .string "if {PLAYER} took the bottle?\p"
 .string "We've traveled some of the\n"
 .string "same roads.$"
@@ -581,22 +581,22 @@ GoldenrodCity_FlowerShop_Text_FloristAgrees:
 .string "clear again!$"
 
 GoldenrodCity_FlowerShop_Text_LillieChallenge:
-.string "Lillie: Then it's yours.\p"
+.string "{SPEAKER NAME_LILLIE}Then it's yours.\p"
 .string "But before you go... could\n"
 .string "we have another battle?\p"
 .string "I want to see how much\n"
 .string "we've learned.$"
 
 GoldenrodCity_FlowerShop_Text_LillieRetryChallenge:
-.string "Lillie: Shall we try again?$"
+.string "{SPEAKER NAME_LILLIE}Shall we try again?$"
 
 GoldenrodCity_FlowerShop_Text_LillieNoRoom:
-.string "Lillie: Your Bag looks full.\n"
+.string "{SPEAKER NAME_LILLIE}Your Bag looks full.\n"
 .string "Make room for the bottle\l"
 .string "first. I'll be here.$"
 
 GoldenrodCity_FlowerShop_Text_LillieVulpixPracticing:
-.string "Lillie: Vulpix and I have\n"
+.string "{SPEAKER NAME_LILLIE}Vulpix and I have\n"
 .string "been practicing.\p"
 .string "She's started looking back\n"
 .string "at me when she sees an\l"
@@ -604,7 +604,7 @@ GoldenrodCity_FlowerShop_Text_LillieVulpixPracticing:
 .string "I'm learning not to miss it.$"
 
 GoldenrodCity_FlowerShop_Text_LillieDontHoldBack:
-.string "Lillie: Let's take care of\n"
+.string "{SPEAKER NAME_LILLIE}Let's take care of\n"
 .string "your Pokémon first.\p"
 .string "And please don't hold back.\n"
 .string "I won't, either.$"
@@ -614,7 +614,7 @@ GoldenrodCity_FlowerShop_Text_LillieDefeated:
 .string "up... but we kept trying!$"
 
 GoldenrodCity_FlowerShop_Text_LillieWonFollowUp1:
-.string "Lillie: I spent so long\n"
+.string "{SPEAKER NAME_LILLIE}I spent so long\n"
 .string "deciding what to do that I\l"
 .string "missed some of Vulpix's\l"
 .string "signals.\p"
@@ -622,19 +622,19 @@ GoldenrodCity_FlowerShop_Text_LillieWonFollowUp1:
 .string "answering her.$"
 
 GoldenrodCity_FlowerShop_Text_LillieWonFollowUp2:
-.string "Lillie: I want to try that\n"
+.string "{SPEAKER NAME_LILLIE}I want to try that\n"
 .string "again someday.\p"
 .string "After I've worked out a\n"
 .string "better answer!$"
 
 GoldenrodCity_FlowerShop_Text_LillieLost1:
-.string "Lillie: We did it...? We\n"
+.string "{SPEAKER NAME_LILLIE}We did it...? We\n"
 .string "did!\p"
 .string "Oh, Vulpix, you were\n"
 .string "wonderful!$"
 
 GoldenrodCity_FlowerShop_Text_LillieLost2:
-.string "Lillie: Sorry! I didn't mean\n"
+.string "{SPEAKER NAME_LILLIE}Sorry! I didn't mean\n"
 .string "to get carried away.\p"
 .string "I kept watching Vulpix\n"
 .string "instead of worrying about\l"
@@ -642,25 +642,25 @@ GoldenrodCity_FlowerShop_Text_LillieLost2:
 .string "That felt different.$"
 
 GoldenrodCity_FlowerShop_Text_LillieLost3:
-.string "Lillie: Thank you for taking\n"
+.string "{SPEAKER NAME_LILLIE}Thank you for taking\n"
 .string "us seriously.\p"
 .string "Let's get your Pokémon\n"
 .string "feeling better.$"
 
 GoldenrodCity_FlowerShop_Text_LillieDraw:
-.string "Lillie: That was close for\n"
+.string "{SPEAKER NAME_LILLIE}That was close for\n"
 .string "both of us.\p"
 .string "Let's take a moment to look\n"
 .string "after everyone.$"
 
 GoldenrodCity_FlowerShop_Text_LillieForfeit:
-.string "Lillie: Of course. We can\n"
+.string "{SPEAKER NAME_LILLIE}Of course. We can\n"
 .string "stop here.\p"
 .string "Let's look after your\n"
 .string "Pokémon.$"
 
 GoldenrodCity_FlowerShop_Text_LillieGiveBottle:
-.string "Lillie: Here, the\n"
+.string "{SPEAKER NAME_LILLIE}Here, the\n"
 .string "SquirtBottle, just as we\l"
 .string "agreed.\p"
 .string "Try a little water first.\n"
@@ -669,12 +669,12 @@ GoldenrodCity_FlowerShop_Text_LillieGiveBottle:
 .string "it.$"
 
 GoldenrodCity_FlowerShop_Text_LillieGiveItemFailed:
-.string "Lillie: It looks like there\n"
+.string "{SPEAKER NAME_LILLIE}It looks like there\n"
 .string "still isn't room. Let's try\l"
 .string "again later.$"
 
 GoldenrodCity_FlowerShop_Text_LillieThanksFlorist:
-.string "Lillie: Thank you for your\n"
+.string "{SPEAKER NAME_LILLIE}Thank you for your\n"
 .string "help.\p"
 .string "And for letting us borrow a\n"
 .string "little room!$"
@@ -685,7 +685,7 @@ GoldenrodCity_FlowerShop_Text_FloristDontBattleHere:
 .string "flowers!$"
 
 GoldenrodCity_FlowerShop_Text_LilliePartingWords:
-.string "Lillie: I'd better find\n"
+.string "{SPEAKER NAME_LILLIE}I'd better find\n"
 .string "Mother.\p"
 .string "Tell me what happened when\n"
 .string "we meet again, won't you?$"
@@ -720,7 +720,7 @@ GoldenrodCity_FlowerShop_EventScript_CosmogCommentEnd::
 	return
 
 GoldenrodCity_FlowerShop_Text_Cosmog:
-	.string "Lillie: Oh…! {PLAYER}, is that…\n"
+	.string "{SPEAKER NAME_LILLIE}Oh…! {PLAYER}, is that…\n"
 	.string "May I see? A Cosmog!\p"
 	.string "I traveled with a Cosmog once,\n"
 	.string "in Alola. I called it Nebby.\p"
@@ -730,7 +730,7 @@ GoldenrodCity_FlowerShop_Text_Cosmog:
 	.string "I'm glad.$"
 
 GoldenrodCity_FlowerShop_Text_CosmogCosmoem:
-	.string "Lillie: Is that… a Cosmoem?\p"
+	.string "{SPEAKER NAME_LILLIE}Is that… a Cosmoem?\p"
 	.string "It went quiet and hard as a\n"
 	.string "shell, didn't it?\p"
 	.string "Nebby did the same. Please\n"
@@ -739,7 +739,7 @@ GoldenrodCity_FlowerShop_Text_CosmogCosmoem:
 	.string "where no one can see.$"
 
 GoldenrodCity_FlowerShop_Text_CosmogLegend:
-	.string "Lillie: …A {STR_VAR_1}.\p"
+	.string "{SPEAKER NAME_LILLIE}…A {STR_VAR_1}.\p"
 	.string "I never thought I would see\n"
 	.string "one again.\p"
 	.string "Nebby became one too, in\n"

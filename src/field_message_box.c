@@ -395,8 +395,11 @@ bool8 ShowFieldMessageFromBuffer(void)
 
 static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkippingDelayWithButtonPress)
 {
-    TrySpawnNamebox(NAME_BOX_BASE_TILE_NUM);
     StringExpandPlaceholders(gStringVar4, str);
+    // Antes de montar a plaquinha: um {SPEAKER ...} no comeco da mensagem vale
+    // como se fosse um setspeaker, e assim a caixa ja sobe com o nome em cima.
+    TrySetSpeakerFromMessage(gStringVar4);
+    TrySpawnNamebox(NAME_BOX_BASE_TILE_NUM);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
     CreateTask_DrawFieldMessage();
     if (!sFieldMessageBoxVisible && IsFieldMugshotActive())
@@ -405,6 +408,8 @@ static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkip
 
 static void StartDrawFieldMessage(void)
 {
+    TrySetSpeakerFromMessage(gStringVar4);
+    TrySpawnNamebox(NAME_BOX_BASE_TILE_NUM);
     AddTextPrinterForMessage(TRUE);
     CreateTask_DrawFieldMessage();
     if (!sFieldMessageBoxVisible && IsFieldMugshotActive())

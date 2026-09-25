@@ -659,7 +659,7 @@ MrPokemonHouse_Movement_LillieLeave:
 # 330 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Intro1:
 # 331 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: Alola! You're {PLAYER},\n"
+	.string "{SPEAKER NAME_KUKUI}Alola! You're {PLAYER},\n"
 # 332 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "right? Elm said you'd come!\p"
 # 333 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -671,7 +671,7 @@ MrPokemonHouse_Text_Intro1:
 # 336 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Intro2:
 # 337 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: I'm Professor Kukui.\n"
+	.string "{SPEAKER NAME_KUKUI}I'm Professor Kukui.\n"
 # 338 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "I study Pokémon moves in Alola!\p"
 # 339 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -699,7 +699,7 @@ MrPokemonHouse_Text_OakGreeting:
 # 350 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Intro3:
 # 351 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: A couple who run a\n"
+	.string "{SPEAKER NAME_KUKUI}A couple who run a\n"
 # 352 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "Day-Care gave me an unusual Egg.\p"
 # 353 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -715,7 +715,7 @@ MrPokemonHouse_Text_Intro3:
 # 358 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Intro4:
 # 359 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: And this is Lillie.\n"
+	.string "{SPEAKER NAME_KUKUI}And this is Lillie.\n"
 # 360 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "She's visiting from Alola too!$"
 # 361 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -723,7 +723,7 @@ MrPokemonHouse_Text_Intro4:
 # 362 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Intro5:
 # 363 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: Lillie, weren't you\n"
+	.string "{SPEAKER NAME_KUKUI}Lillie, weren't you\n"
 # 364 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "looking for a training partner?$"
 # 365 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -731,7 +731,7 @@ MrPokemonHouse_Text_Intro5:
 # 366 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieAnswer:
 # 367 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: Oh! Yes, Professor.\n"
+	.string "{SPEAKER NAME_LILLIE}Oh! Yes, Professor.\n"
 # 368 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "Just a moment!$"
 # 369 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -739,7 +739,7 @@ MrPokemonHouse_Text_LillieAnswer:
 # 370 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieIntro:
 # 371 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: Yes! Though I wasn't\n"
+	.string "{SPEAKER NAME_LILLIE}Yes! Though I wasn't\n"
 # 372 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "expecting to meet one so soon.\p"
 # 373 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -759,7 +759,7 @@ MrPokemonHouse_Text_LillieIntro:
 # 380 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieVulpix:
 # 381 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: My Vulpix is from Alola.\n"
+	.string "{SPEAKER NAME_LILLIE}My Vulpix is from Alola.\n"
 # 382 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "That's why her fur is white.\p"
 # 383 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -779,7 +779,7 @@ MrPokemonHouse_Text_OakBeforeBattle:
 # 390 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_KukuiBeforeBattle:
 # 391 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: Let's get your partner\n"
+	.string "{SPEAKER NAME_KUKUI}Let's get your partner\n"
 # 392 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "rested before we begin.\p"
 # 393 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -791,7 +791,7 @@ MrPokemonHouse_Text_KukuiBeforeBattle:
 # 396 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieBeforeBattle:
 # 397 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: All right, Vulpix.\n"
+	.string "{SPEAKER NAME_LILLIE}All right, Vulpix.\n"
 # 398 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "Let's do this together!$"
 # 399 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -799,7 +799,7 @@ MrPokemonHouse_Text_LillieBeforeBattle:
 # 400 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieDefeated:
 # 401 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: We did our best, Vulpix.\n"
+	.string "{SPEAKER NAME_LILLIE}We did our best, Vulpix.\n"
 # 402 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "Thank you!$"
 # 403 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -807,7 +807,7 @@ MrPokemonHouse_Text_LillieDefeated:
 # 404 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieAfterBattle:
 # 405 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: Oh! You changed your\n"
+	.string "{SPEAKER NAME_LILLIE}Oh! You changed your\n"
 # 406 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "approach before I noticed.\p"
 # 407 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -827,7 +827,7 @@ MrPokemonHouse_Text_LillieAfterBattle:
 # 414 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieWon:
 # 415 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: We… we won?\n"
+	.string "{SPEAKER NAME_LILLIE}We… we won?\n"
 # 416 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "Vulpix, we actually won!\p"
 # 417 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -845,7 +845,7 @@ MrPokemonHouse_Text_LillieWon:
 # 423 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieDraw:
 # 424 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: Both of them at once?\n"
+	.string "{SPEAKER NAME_LILLIE}Both of them at once?\n"
 # 425 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "Then it's a draw!\p"
 # 426 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -857,7 +857,7 @@ MrPokemonHouse_Text_LillieDraw:
 # 429 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieForfeit:
 # 430 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: Oh… We're stopping here?\p"
+	.string "{SPEAKER NAME_LILLIE}Oh… We're stopping here?\p"
 # 431 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "That's all right. Knowing when\n"
 # 432 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -867,7 +867,7 @@ MrPokemonHouse_Text_LillieForfeit:
 # 434 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieUnexpectedOutcome:
 # 435 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: Thank you for battling\n"
+	.string "{SPEAKER NAME_LILLIE}Thank you for battling\n"
 # 436 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "with us, {PLAYER}!$"
 # 437 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -875,7 +875,7 @@ MrPokemonHouse_Text_LillieUnexpectedOutcome:
 # 438 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_KukuiAfterBattle:
 # 439 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: There's a lesson you\n"
+	.string "{SPEAKER NAME_KUKUI}There's a lesson you\n"
 # 440 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "won't find in a notebook!\p"
 # 441 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -891,7 +891,7 @@ MrPokemonHouse_Text_KukuiAfterBattle:
 # 446 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieRematch:
 # 447 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: Shall we try again?\n"
+	.string "{SPEAKER NAME_LILLIE}Shall we try again?\n"
 # 448 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "We'll be ready when you are.$"
 # 449 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -899,7 +899,7 @@ MrPokemonHouse_Text_LillieRematch:
 # 450 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_KukuiGiveEgg:
 # 451 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: Now, about Elm's errand!\p"
+	.string "{SPEAKER NAME_KUKUI}Now, about Elm's errand!\p"
 # 452 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "Please take this Egg to him.\n"
 # 453 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -967,7 +967,7 @@ MrPokemonHouse_Text_OakParting:
 # 484 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_KukuiOakParting:
 # 485 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: Count on it, Professor!\n"
+	.string "{SPEAKER NAME_KUKUI}Count on it, Professor!\n"
 # 486 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "Have a good trip!$"
 # 487 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -975,7 +975,7 @@ MrPokemonHouse_Text_KukuiOakParting:
 # 488 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_LillieParting:
 # 489 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Lillie: I should be going too.\n"
+	.string "{SPEAKER NAME_LILLIE}I should be going too.\n"
 # 490 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "My mother is waiting for me.\p"
 # 491 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -997,7 +997,7 @@ MrPokemonHouse_Text_LillieParting:
 # 499 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Heal:
 # 500 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: Before you head out,\n"
+	.string "{SPEAKER NAME_KUKUI}Before you head out,\n"
 # 501 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "let me take care of your Pokémon.\p"
 # 502 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -1009,7 +1009,7 @@ MrPokemonHouse_Text_Heal:
 # 505 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_DependingOnYou:
 # 506 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: I'll stay here and\n"
+	.string "{SPEAKER NAME_KUKUI}I'll stay here and\n"
 # 507 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "keep working on my research.\p"
 # 508 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -1021,7 +1021,7 @@ MrPokemonHouse_Text_DependingOnYou:
 # 511 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_AlwaysNewDiscoveries:
 # 512 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: Alola, {PLAYER}!\n"
+	.string "{SPEAKER NAME_KUKUI}Alola, {PLAYER}!\n"
 # 513 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "How's the journey going?\p"
 # 514 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -1041,7 +1041,7 @@ MrPokemonHouse_Text_AlwaysNewDiscoveries:
 # 521 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_GimmeTheScale:
 # 522 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: Hold on. That red scale…\n"
+	.string "{SPEAKER NAME_KUKUI}Hold on. That red scale…\n"
 # 523 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "Did it come from a Gyarados?\p"
 # 524 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -1061,7 +1061,7 @@ MrPokemonHouse_Text_GimmeTheScale:
 # 531 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Disappointed:
 # 532 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: No problem!\n"
+	.string "{SPEAKER NAME_KUKUI}No problem!\n"
 # 533 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "It's quite a keepsake.\p"
 # 534 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -1073,7 +1073,7 @@ MrPokemonHouse_Text_Disappointed:
 # 537 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_ScaleAccepted:
 # 538 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: Thanks, {PLAYER}!\n"
+	.string "{SPEAKER NAME_KUKUI}Thanks, {PLAYER}!\n"
 # 539 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "I'll take good care of it.\p"
 # 540 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -1085,7 +1085,7 @@ MrPokemonHouse_Text_ScaleAccepted:
 # 543 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_ScaleBagFull:
 # 544 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Kukui: Make room for the stone\n"
+	.string "{SPEAKER NAME_KUKUI}Make room for the stone\n"
 # 545 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "first, and we'll make the trade.\p"
 # 546 "data/maps/Route30_MrPokemonsHouse/scripts.pory"

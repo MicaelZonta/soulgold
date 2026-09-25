@@ -48,13 +48,14 @@ mart GalaricaVendor {
     ITEM_TM_X_SCISSOR
     ITEM_GALARICA_WREATH
     ITEM_GALARICA_CUFF
-    ITEM_NEST_BALL
+    // No Balls on this counter: every Poke Mart in the campaign sells
+    // ITEM_POKE_BALL and nothing else, and Kurt makes the rest by recipe
+    // (.claude/KURT_BALL_CRAFT_DESIGN.md section 2.1).
     ITEM_MECH_MAIL
 }
 
 mart GalaricaNoneVendor {
     ITEM_TM_GIGA_DRAIN
-    ITEM_NEST_BALL
     ITEM_MECH_MAIL
 }
 

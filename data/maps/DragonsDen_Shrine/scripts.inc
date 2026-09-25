@@ -458,7 +458,7 @@ DragonsDen_Shrine_Movement_NinetalesLeave:
 	step_end
 
 DragonsDen_Shrine_Text_LillieArrival:
-	.string "Lillie: {PLAYER}! I didn't know\n"
+	.string "{SPEAKER NAME_LILLIE}{PLAYER}! I didn't know\n"
 	.string "Clair had sent you here.\p"
 	.string "I heard the Dragon Clan doesn't\n"
 	.string "test Trainers only in battle.\p"
@@ -477,13 +477,13 @@ DragonsDen_Shrine_Text_ElderLillieObserves:
 	.string "as well.$"
 
 DragonsDen_Shrine_Text_LillieNotSoSure:
-	.string "Lillie: I thought I knew exactly\n"
+	.string "{SPEAKER NAME_LILLIE}I thought I knew exactly\n"
 	.string "what I would say on the way here.\p"
 	.string "Now I'm not so sure.\p"
 	.string "I think that may be the point.$"
 
 DragonsDen_Shrine_Text_Lillie_Q1_Pal:
-	.string "Lillie: An ally… Someone who\n"
+	.string "{SPEAKER NAME_LILLIE}An ally… Someone who\n"
 	.string "stands beside you.\p"
 	.string "I like that.\p"
 	.string "I think I'd say “friend,” though.\p"
@@ -493,20 +493,20 @@ DragonsDen_Shrine_Text_Lillie_Q1_Pal:
 	.string "out myself.$"
 
 DragonsDen_Shrine_Text_Lillie_Q1_Friend:
-	.string "Lillie: Friend… Yes.\n"
+	.string "{SPEAKER NAME_LILLIE}Friend… Yes.\n"
 	.string "That's my answer too.\p"
 	.string "Though lately I've wondered\n"
 	.string "which of us is teaching\l"
 	.string "the other.$"
 
 DragonsDen_Shrine_Text_Lillie_Q1_Underling:
-	.string "Lillie: I don't think I could\n"
+	.string "{SPEAKER NAME_LILLIE}I don't think I could\n"
 	.string "call my Pokémon underlings.\p"
 	.string "They notice things I miss far\n"
 	.string "too often for that.$"
 
 DragonsDen_Shrine_Text_Lillie_Q2_Strategy:
-	.string "Lillie: I used to think having\n"
+	.string "{SPEAKER NAME_LILLIE}I used to think having\n"
 	.string "the right plan mattered most.\p"
 	.string "Then I started noticing how\n"
 	.string "often my Pokémon saw something\l"
@@ -515,7 +515,7 @@ DragonsDen_Shrine_Text_Lillie_Q2_Strategy:
 	.string "I'm willing to change it.$"
 
 DragonsDen_Shrine_Text_Lillie_Q2_Training:
-	.string "Lillie: Training.\p"
+	.string "{SPEAKER NAME_LILLIE}Training.\p"
 	.string "I think I understand that answer\n"
 	.string "much better now.\p"
 	.string "It isn't only practicing the\n"
@@ -525,13 +525,13 @@ DragonsDen_Shrine_Text_Lillie_Q2_Training:
 	.string "wrong.$"
 
 DragonsDen_Shrine_Text_Lillie_Q2_Cheating:
-	.string "Lillie: I don't think that would\n"
+	.string "{SPEAKER NAME_LILLIE}I don't think that would\n"
 	.string "be my answer.\p"
 	.string "Winning wouldn't mean very much\n"
 	.string "if we learned nothing from it.$"
 
 DragonsDen_Shrine_Text_Lillie_Q3_Tough:
-	.string "Lillie: I understand that.\p"
+	.string "{SPEAKER NAME_LILLIE}I understand that.\p"
 	.string "A strong Trainer can show you\n"
 	.string "what you still need to learn.\p"
 	.string "But someone doesn't have to look\n"
@@ -539,19 +539,19 @@ DragonsDen_Shrine_Text_Lillie_Q3_Tough:
 	.string "I think I'd choose anybody.$"
 
 DragonsDen_Shrine_Text_Lillie_Q3_Anybody:
-	.string "Lillie: Anybody.\n"
+	.string "{SPEAKER NAME_LILLIE}Anybody.\n"
 	.string "That's mine too.\p"
 	.string "You don't really know what\n"
 	.string "you'll learn from a battle\l"
 	.string "until it starts.$"
 
 DragonsDen_Shrine_Text_Lillie_Q3_WeakPerson:
-	.string "Lillie: I don't think I'd choose\n"
+	.string "{SPEAKER NAME_LILLIE}I don't think I'd choose\n"
 	.string "someone because I expected\l"
 	.string "them to lose.$"
 
 DragonsDen_Shrine_Text_Lillie_Q4_Love:
-	.string "Lillie: Love.\p"
+	.string "{SPEAKER NAME_LILLIE}Love.\p"
 	.string "Yes… but I think I'm still\n"
 	.string "learning what that means.\p"
 	.string "Caring about someone doesn't\n"
@@ -562,7 +562,7 @@ DragonsDen_Shrine_Text_Lillie_Q4_Love:
 	.string "you didn't expect.$"
 
 DragonsDen_Shrine_Text_Lillie_Q4_Knowledge:
-	.string "Lillie: Knowledge is important.\p"
+	.string "{SPEAKER NAME_LILLIE}Knowledge is important.\p"
 	.string "The more I understand my\n"
 	.string "Pokémon, the easier it is to\l"
 	.string "notice what they need.\p"
@@ -572,23 +572,23 @@ DragonsDen_Shrine_Text_Lillie_Q4_Knowledge:
 	.string "I'd still choose love.$"
 
 DragonsDen_Shrine_Text_Lillie_Q4_Violence:
-	.string "Lillie: No.\p"
+	.string "{SPEAKER NAME_LILLIE}No.\p"
 	.string "I want my Pokémon to grow\n"
 	.string "because they trust me…\p"
 	.string "…not because they're afraid.$"
 
 DragonsDen_Shrine_Text_Lillie_Q5_Tough:
-	.string "Lillie: Strength matters.\p"
+	.string "{SPEAKER NAME_LILLIE}Strength matters.\p"
 	.string "But I wouldn't want that to be\n"
 	.string "the only thing I noticed.$"
 
 DragonsDen_Shrine_Text_Lillie_Q5_Weak:
-	.string "Lillie: Weakness matters too.\p"
+	.string "{SPEAKER NAME_LILLIE}Weakness matters too.\p"
 	.string "But I wouldn't want a Pokémon\n"
 	.string "to think that's all I see.$"
 
 DragonsDen_Shrine_Text_Lillie_Q5_Both:
-	.string "Lillie: Both.\n"
+	.string "{SPEAKER NAME_LILLIE}Both.\n"
 	.string "That's my answer too.\p"
 	.string "Their strengths tell me what\n"
 	.string "they can do.\p"
@@ -613,7 +613,7 @@ DragonsDen_Shrine_Text_ElderToLillie:
 	.string "own judgment.$"
 
 DragonsDen_Shrine_Text_LillieAlmostDid:
-	.string "Lillie: I almost did.\n"
+	.string "{SPEAKER NAME_LILLIE}I almost did.\n"
 	.string "A few times.\p"
 	.string "But then they wouldn't really\n"
 	.string "have been my answers.$"
@@ -628,7 +628,7 @@ DragonsDen_Shrine_Text_ElderShowMe:
 	.string "Show me.$"
 
 DragonsDen_Shrine_Text_LillieABattle:
-	.string "Lillie: A battle…\n"
+	.string "{SPEAKER NAME_LILLIE}A battle…\n"
 	.string "Yes. That makes sense.\p"
 	.string "{PLAYER}, we've just spent all\n"
 	.string "this time explaining what kind\l"
@@ -638,7 +638,7 @@ DragonsDen_Shrine_Text_LillieABattle:
 	.string "simple.$"
 
 DragonsDen_Shrine_Text_LillieNinetales:
-	.string "Lillie: You remember Vulpix,\n"
+	.string "{SPEAKER NAME_LILLIE}You remember Vulpix,\n"
 	.string "don't you?\p"
 	.string "She evolved while we were\n"
 	.string "traveling. I thought I would\l"
@@ -652,7 +652,7 @@ DragonsDen_Shrine_Text_LillieDefeated:
 	.string "still found the opening!$"
 
 DragonsDen_Shrine_Text_LillieAfterPlayerWon:
-	.string "Lillie: I thought I knew what\n"
+	.string "{SPEAKER NAME_LILLIE}I thought I knew what\n"
 	.string "you were going to do twice.\p"
 	.string "I was wrong twice.\p"
 	.string "But we didn't freeze when it\n"
@@ -662,7 +662,7 @@ DragonsDen_Shrine_Text_LillieAfterPlayerWon:
 	.string "This felt different again.$"
 
 DragonsDen_Shrine_Text_LillieAfterLillieWon:
-	.string "Lillie: We did it.\p"
+	.string "{SPEAKER NAME_LILLIE}We did it.\p"
 	.string "And this time I don't think I\n"
 	.string "need to apologize for being\l"
 	.string "happy about that.\p"
@@ -672,13 +672,13 @@ DragonsDen_Shrine_Text_LillieAfterLillieWon:
 	.string "And we changed too.$"
 
 DragonsDen_Shrine_Text_LillieAfterDraw:
-	.string "Lillie: Let's look after\n"
+	.string "{SPEAKER NAME_LILLIE}Let's look after\n"
 	.string "everyone first.\p"
 	.string "I think we both learned\n"
 	.string "something from that.$"
 
 DragonsDen_Shrine_Text_LillieAfterForfeit:
-	.string "Lillie: Oh… You're stopping\n"
+	.string "{SPEAKER NAME_LILLIE}Oh… You're stopping\n"
 	.string "there?\p"
 	.string "Then let's look after\n"
 	.string "everyone first.\p"
@@ -699,14 +699,14 @@ DragonsDen_Shrine_Text_ElderNeitherResult:
 	.string "Remember why you gave them.$"
 
 DragonsDen_Shrine_Text_LillieIWill:
-	.string "Lillie: I will.\p"
+	.string "{SPEAKER NAME_LILLIE}I will.\p"
 	.string "And I think I'll remember some\n"
 	.string "of yours, too.\p"
 	.string "Even the ones I wouldn't have\n"
 	.string "chosen.$"
 
 DragonsDen_Shrine_Text_LillieFarewell:
-	.string "Lillie: Thank you, Elder.\n"
+	.string "{SPEAKER NAME_LILLIE}Thank you, Elder.\n"
 	.string "And thank you, {PLAYER}.\p"
 	.string "Come along, Ninetales!$"
 
@@ -1071,7 +1071,7 @@ DragonsDen_Shrine_EventScript_CosmogCommentEnd::
 	return
 
 DragonsDen_Shrine_Text_Cosmog:
-	.string "Lillie: {PLAYER}, before I go…\p"
+	.string "{SPEAKER NAME_LILLIE}{PLAYER}, before I go…\p"
 	.string "Your Cosmog watched the whole\n"
 	.string "test, didn't it?\p"
 	.string "Nebby used to do that. Watch\n"
@@ -1083,7 +1083,7 @@ DragonsDen_Shrine_Text_Cosmog:
 	.string "answer, I think.$"
 
 DragonsDen_Shrine_Text_CosmogCosmoem:
-	.string "Lillie: Your Cosmoem hasn't\n"
+	.string "{SPEAKER NAME_LILLIE}Your Cosmoem hasn't\n"
 	.string "moved all day, has it?\p"
 	.string "Nebby was like that, right\n"
 	.string "before it changed. Everything\l"
@@ -1092,7 +1092,7 @@ DragonsDen_Shrine_Text_CosmogCosmoem:
 	.string "meant by strength.$"
 
 DragonsDen_Shrine_Text_CosmogLegend:
-	.string "Lillie: Your {STR_VAR_1}…\p"
+	.string "{SPEAKER NAME_LILLIE}Your {STR_VAR_1}…\p"
 	.string "Nebby grew up like that too.\n"
 	.string "All at once, when it mattered.\p"
 	.string "Ninetales and I are still\n"

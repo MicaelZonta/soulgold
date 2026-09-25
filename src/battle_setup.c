@@ -509,6 +509,16 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_GIRATINA_ORIGIN:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_DP_VS_LEGEND);
         break;
+    // Ultra Necrozma, the last story battle of the Rift Missions arc
+    // (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 8.4). Without this case
+    // the hardest fight in the game opens on the ordinary wild battle theme.
+    // SONG_MUS_DP_VS_DIALGA_PALKIA is already enabled, so this costs no ROM.
+    case SPECIES_NECROZMA:
+    case SPECIES_NECROZMA_DUSK_MANE:
+    case SPECIES_NECROZMA_DAWN_WINGS:
+    case SPECIES_NECROZMA_ULTRA:
+        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_DP_VS_DIALGA_PALKIA);
+        break;
     case SPECIES_DEOXYS_NORMAL:
     case SPECIES_DEOXYS_ATTACK:
     case SPECIES_DEOXYS_DEFENSE:
@@ -1834,11 +1844,11 @@ static const u8 *GetIntroSpeechOfApproachingTrainer(void)
             if (IsPwtDomeTrainerId(TRAINER_BATTLE_PARAM.opponentA))
             {
                 CopyPwtDomeTrainerName(gStringVar1, TRAINER_BATTLE_PARAM.opponentA);
-                gSpeakerName = gStringVar1;
+                SetSpeakerNameForNextMessage(gStringVar1);
             }
             else
             {
-                gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentA);
+                SetSpeakerNameForNextMessage(GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentA));
             }
         }
 
@@ -1851,11 +1861,11 @@ static const u8 *GetIntroSpeechOfApproachingTrainer(void)
             if (IsPwtDomeTrainerId(TRAINER_BATTLE_PARAM.opponentB))
             {
                 CopyPwtDomeTrainerName(gStringVar1, TRAINER_BATTLE_PARAM.opponentB);
-                gSpeakerName = gStringVar1;
+                SetSpeakerNameForNextMessage(gStringVar1);
             }
             else
             {
-                gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentB);
+                SetSpeakerNameForNextMessage(GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentB));
             }
         }
 

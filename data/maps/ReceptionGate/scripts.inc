@@ -452,19 +452,19 @@ ReceptionGate_Movement_LeaveSouth:
 	step_end
 
 ReceptionGate_Text_GladionThereYouAre:
-	.string "Gladion: There you are, {PLAYER}.\p"
+	.string "{SPEAKER NAME_GLADION}There you are, {PLAYER}.\p"
 	.string "Looks like he noticed you first.\p"
 	.string "Remember Type: Null from Cianwood?\p"
 	.string "This is Silvally.$"
 
 ReceptionGate_Text_GladionBackInCianwood:
-	.string "Gladion: Back in Cianwood, he\n"
+	.string "{SPEAKER NAME_GLADION}Back in Cianwood, he\n"
 	.string "walked ahead before I was ready.\p"
 	.string "I thought I had to call him back.\n"
 	.string "I just had to keep up.$"
 
 ReceptionGate_Text_GladionOneMoreBattle:
-	.string "Gladion: Victory Road is ahead.\n"
+	.string "{SPEAKER NAME_GLADION}Victory Road is ahead.\n"
 	.string "We took a different route here.\p"
 	.string "Before we go our separate ways,\n"
 	.string "I want one more battle.\p"
@@ -473,7 +473,7 @@ ReceptionGate_Text_GladionOneMoreBattle:
 	.string "Let's meet at full strength.$"
 
 ReceptionGate_Text_GladionReady:
-	.string "Gladion: Ready?$"
+	.string "{SPEAKER NAME_GLADION}Ready?$"
 
 ReceptionGate_Text_GladionTakeFirstStep:
 	.string "Then take the first step.$"
@@ -483,7 +483,7 @@ ReceptionGate_Text_GladionDefeated:
 	.string "All six of us.$"
 
 ReceptionGate_Text_GladionYouGaveUsAnAnswer:
-	.string "Gladion: I wanted to see how far\n"
+	.string "{SPEAKER NAME_GLADION}I wanted to see how far\n"
 	.string "we'd come. You gave us an answer.$"
 
 ReceptionGate_Text_GladionStillWorkToDo:
@@ -494,7 +494,7 @@ ReceptionGate_Text_GladionNotTheSameBattle:
 	.string "the same battle.$"
 
 ReceptionGate_Text_GladionReadyThisTime:
-	.string "Gladion: We were ready this time.$"
+	.string "{SPEAKER NAME_GLADION}We were ready this time.$"
 
 ReceptionGate_Text_GladionYouTrustedMe:
 	.string "You trusted me out there.\n"
@@ -505,24 +505,24 @@ ReceptionGate_Text_GladionMakeUsPay:
 	.string "Next time, make us pay for it.$"
 
 ReceptionGate_Text_GladionDraw:
-	.string "Gladion: Neither team has\n"
+	.string "{SPEAKER NAME_GLADION}Neither team has\n"
 	.string "anything left.\p"
 	.string "…We'll settle it another day.$"
 
 ReceptionGate_Text_GladionForfeit:
-	.string "Gladion: You're stopping here?\n"
+	.string "{SPEAKER NAME_GLADION}You're stopping here?\n"
 	.string "All right.\p"
 	.string "Then we'll leave it unfinished.\n"
 	.string "Take care of your team.$"
 
 ReceptionGate_Text_GladionUnexpectedOutcome:
-	.string "Gladion: That didn't end\n"
+	.string "{SPEAKER NAME_GLADION}That didn't end\n"
 	.string "the way I expected.\p"
 	.string "Let's make sure\n"
 	.string "everyone's all right.$"
 
 ReceptionGate_Text_GladionFromHere:
-	.string "Gladion: From here,\n"
+	.string "{SPEAKER NAME_GLADION}From here,\n"
 	.string "it's you and your team.\p"
 	.string "I won't tell you how\n"
 	.string "to face the League.\p"
@@ -530,7 +530,7 @@ ReceptionGate_Text_GladionFromHere:
 	.string "worth showing us.$"
 
 ReceptionGate_Text_GladionSeeYouAfterLeague:
-	.string "Gladion: …See you after the League,\n"
+	.string "{SPEAKER NAME_GLADION}…See you after the League,\n"
 	.string "{PLAYER}.$"
 
 @ Optional Sun & Moon callback: Gladion measures the player's Cosmog against his own partner's growth.
@@ -563,20 +563,20 @@ ReceptionGate_EventScript_CosmogCommentEnd::
 	return
 
 ReceptionGate_Text_Cosmog:
-	.string "Gladion: Still a Cosmog.\p"
+	.string "{SPEAKER NAME_GLADION}Still a Cosmog.\p"
 	.string "…That's fine. Type: Null took\n"
 	.string "its time too.\p"
 	.string "Don't let the League rush it.$"
 
 ReceptionGate_Text_CosmogCosmoem:
-	.string "Gladion: A Cosmoem now.\n"
+	.string "{SPEAKER NAME_GLADION}A Cosmoem now.\n"
 	.string "It's close.\p"
 	.string "When it wakes up, it won't be\n"
 	.string "small anymore. Be ready for\l"
 	.string "that.$"
 
 ReceptionGate_Text_CosmogLegend:
-	.string "Gladion: {STR_VAR_1}.\p"
+	.string "{SPEAKER NAME_GLADION}{STR_VAR_1}.\p"
 	.string "From the egg I handed you in\n"
 	.string "Violet.\p"
 	.string "Silvally, look. We weren't the\n"

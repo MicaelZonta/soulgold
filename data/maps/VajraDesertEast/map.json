@@ -242,7 +242,7 @@
       "x": 66,
       "y": 20,
       "elevation": 0,
-      "item": "ITEM_BEAST_BALL",
+      "item": "ITEM_POKE_BALL",
       "flag": "FLAG_HIDDEN_ITEM_VAJRA_EAST_BEAST_BALL",
       "quantity": 3
     },

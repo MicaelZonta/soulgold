@@ -3,7 +3,7 @@
 **Data:** 20/09/2026 · **Revisão:** V1 · **Escopo:** todo o repositório
 **Regra auditada:** skill [`entregar-pokemon-ou-ovo`](../.claude/skills/entregar-pokemon-ou-ovo/SKILL.md)
 **Motivo:** a correção do Friendly Trader de Cherrygrove
-([`CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md`](../.claude/CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md) §12.3
+([`CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md`](../.claude/rift_missions/CHERRYGROVE_ULTRABEAST/CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md) §12.3
 item 5) expôs um furo que não é local daquele NPC. Esta auditoria mede o
 tamanho dele no jogo inteiro.
 

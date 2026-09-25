@@ -386,9 +386,10 @@ ElmPhoneRoute39LegendaryText:
 @ Story: the town has had no power for three nights. Lillie has been here
 @ for two days, alone, with a notebook (the briefing never mentions her: the
 @ player discovers her). Pryce is walking the last two residents into his
-@ Gym when the scene starts. Lillie knows the hour the tear opens: Necrozma
-@ arrives, shrugs off Pryce's Blizzard and lets Xurkitree and Celesteela
-@ through. The beasts keep each other alive (one drinks the current, the
+@ Gym when the scene starts. Lillie recognised the beasts from Alola but has
+@ never seen what opens the tear, and she says so: Anabel's instruments keep
+@ the clock, not her. Then Necrozma arrives - which blindsides her - shrugs
+@ off Pryce's Blizzard and lets Xurkitree and Celesteela through. The beasts keep each other alive (one drinks the current, the
 @ other burns it and gives it back). Celesteela charges the player and
 @ Ninetales knocks it away. The player beats the one they picked - and the
 @ other one revives it through the link. Lillie works out why and asks
@@ -549,7 +550,7 @@ Mahoganytown_EventScript_UBReleaseEnd::
 @ there on everything is scripted through to a battle outcome.
 @ Lillie's reading comes BEFORE the YES on purpose: she has to have told the
 @ group what she saw before anyone moves (design section 3.2). What she does
-@ NOT know yet - that splitting them is not enough - is what the scene
+@ NOT know yet - that keeping them apart is not enough - is what the scene
 @ teaches her.
 Mahoganytown_EventScript_UBLooker::
 	lock
@@ -598,7 +599,7 @@ Mahoganytown_EventScript_UBScene::
 	waitmovement LOCALID_MAHOGANY_UB_ANABEL
 	@ The evacuation, finished on screen. Pryce (11,20) faces west at the old
 	@ man (10,20) already.
-	msgbox Mahoganytown_Text_UBLillieWarnsPryce, MSGBOX_DEFAULT
+	msgbox Mahoganytown_Text_UBTimeIsClose, MSGBOX_DEFAULT
 	closemessage
 	turnobject LOCALID_MAHOGANY_UB_OLD_MAN, DIR_EAST
 	msgbox Mahoganytown_Text_UBPryceEvacuates, MSGBOX_DEFAULT
@@ -631,10 +632,10 @@ Mahoganytown_EventScript_UBScene::
 	closemessage
 	@ Necrozma arrives in the light, on (11,21), Mamoswine's old tile.
 	call Mahoganytown_EventScript_UBShake
-	fadescreen FADE_TO_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
 	clearflag FLAG_TEMP_4
 	addobject LOCALID_MAHOGANY_UB_NECROZMA
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
 	applymovement LOCALID_MAHOGANY_UB_LILLIE, Common_Movement_ExclamationMark
 	applymovement LOCALID_MAHOGANY_UB_PRYCE, Common_Movement_ExclamationMark
@@ -661,11 +662,11 @@ Mahoganytown_EventScript_UBScene::
 	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
 	waitmoncry
 	call Mahoganytown_EventScript_UBShake
-	fadescreen FADE_TO_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
 	clearflag FLAG_TEMP_2
 	addobject LOCALID_MAHOGANY_UB_XURKITREE
 	addobject LOCALID_MAHOGANY_UB_CELESTEELA
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	playmoncry SPECIES_XURKITREE, CRY_MODE_ENCOUNTER
 	waitmoncry
 	playmoncry SPECIES_CELESTEELA, CRY_MODE_ENCOUNTER
@@ -706,9 +707,15 @@ Mahoganytown_EventScript_UBScene::
 	msgbox Mahoganytown_Text_UBSaved, MSGBOX_DEFAULT
 	goto Mahoganytown_EventScript_UBChoose
 
+@ Flash da cena. fadescreenswapbuffers e NAO fadescreen: fadescreen copia
+@ gPlttBufferFaded -> gPlttBufferUnfaded ao escurecer (src/field_weather.c,
+@ FadeScreen) e o FADE_FROM_* seguinte reaplica o tint de horario por cima do
+@ que ja estava tintado. A noite (coeff 10) cada par de flashes multiplicava a
+@ cena por ~0,46 de novo, e depois de tres ou quatro a cidade ficava preta.
+@ fadescreenswapbuffers usa BLDY no hardware e nao encosta nas paletas.
 Mahoganytown_EventScript_UBFlash::
-	fadescreen FADE_TO_WHITE
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	return
 
 Mahoganytown_EventScript_UBShake::
@@ -852,11 +859,11 @@ Mahoganytown_EventScript_UBLilliePlan::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox Mahoganytown_Text_UBAnabelHeals, MSGBOX_DEFAULT
 	closemessage
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	special HealPlayerParty
 	playfanfare MUS_HEAL
 	waitfanfare
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	msgbox Mahoganytown_Text_UBAnabelHealed, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
@@ -951,10 +958,10 @@ Mahoganytown_EventScript_UBAbsorb::
 	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
 	call Mahoganytown_EventScript_UBShake
 	@ Their flag is FLAG_TEMP_2, so removeobject setting it is harmless.
-	fadescreen FADE_TO_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
 	removeobject LOCALID_MAHOGANY_UB_XURKITREE
 	removeobject LOCALID_MAHOGANY_UB_CELESTEELA
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
 	applymovement LOCALID_MAHOGANY_UB_PRYCE, Common_Movement_ExclamationMark
 	applymovement LOCALID_MAHOGANY_UB_LILLIE, Common_Movement_ExclamationMark
@@ -971,9 +978,9 @@ Mahoganytown_EventScript_UBAbsorb::
 	@ Necrozma leaves the way it came. Own flag (FLAG_TEMP_4): removeobject
 	@ touches nobody else.
 	call Mahoganytown_EventScript_UBShake
-	fadescreen FADE_TO_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
 	removeobject LOCALID_MAHOGANY_UB_NECROZMA
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	msgbox Mahoganytown_Text_UBNecrozmaGone, MSGBOX_DEFAULT
 	closemessage
 	goto Mahoganytown_EventScript_UBAftermath
@@ -1224,7 +1231,12 @@ Mahoganytown_Movement_MamoswineToGym:
 @ asks about people first; Anabel precise, separates what she sees from
 @ what she thinks; Lillie polite, specific, holds her ground and changes her
 @ plan when the facts change; Pryce old, dry and patient, speaks in cold
-@ weather. Nobody names Necrozma: Looker and Anabel know it only as the
+@ weather.
+@ Lillie NEVER predicts anything. She has experience (she knows an Ultra
+@ Beast on sight and she knows Necrozma's light), but this incident is a
+@ surprise to her: she reports what she wrote down, hedges it, offers one
+@ idea, and is wrong about it. Anything that would make her sound like she
+@ saw this coming belongs to Anabel and her instruments instead. Nobody names Necrozma: Looker and Anabel know it only as the
 @ creature from Blackthorn, Pryce has never seen it, and Lillie recognises
 @ the light from Alola and refuses to say more yet. Nobody says where the
 @ next rift will open.
@@ -1238,30 +1250,43 @@ Mahoganytown_Text_DoorLocked:
 	.string "--Pryce”$"
 
 Mahoganytown_Text_UBAnabelIdle:
-	.string "Anabel: The Pokémon Center\n"
+	.string "{SPEAKER NAME_ANABEL}The Pokémon Center\n"
 	.string "runs on its own generator.\p"
 	.string "It is the only light left in\n"
 	.string "this town. Heal there first.\p"
 	.string "Then speak with Looker.$"
 
+@ Ela e a DESCOBERTA da missao, mas nao e uma desconhecida: o jogador ja
+@ batalhou com ela na Route 30, em Goldenrod (SquirtBottle) e no Dragon's Den.
+@ A fala e um reencontro, nao uma apresentacao, e ela nao explica ao jogador
+@ que veio para Johto - ele esteve com ela em Johto tres vezes. A Lusamine
+@ nao e citada: a primeira aparicao dela no arco e a M4 (New Bark).
 Mahoganytown_Text_UBLillieIdle:
-	.string "Lillie: {PLAYER}?!\p"
-	.string "You're the Champion they've\n"
-	.string "been waiting for?\p"
-	.string "…Of course you are.\n"
-	.string "Who else would it be?\p"
-	.string "I came to see Johto for\n"
-	.string "myself. Then the lights in\l"
-	.string "Mahogany went out.\p"
-	.string "I've been watching for two\n"
-	.string "days. I think I finally\l"
-	.string "understand what's happening.\p"
+	.string "{SPEAKER NAME_LILLIE}{PLAYER}! It's really\n"
+	.string "you.\p"
+	.string "The detective kept saying the\n"
+	.string "Champion was on the way.\p"
+	.string "He never said it would be\n"
+	.string "someone I've battled three\l"
+	.string "times.\p"
+	.string "I stopped in Mahogany for one\n"
+	.string "night. Ninetales loves this\l"
+	.string "cold.\p"
+	.string "Then the lights went out, and\n"
+	.string "I saw what was standing in\l"
+	.string "the street.\p"
+	.string "I knew what they were the\n"
+	.string "moment I saw them. I was\l"
+	.string "never supposed to see one\l"
+	.string "again.\p"
+	.string "I've written down everything\n"
+	.string "for two days and I still\l"
+	.string "don't understand any of it.\p"
 	.string "Talk to Looker. I'd rather\n"
-	.string "explain it to everyone at\l"
-	.string "once.$"
+	.string "show it to everyone at once.$"
 
 Mahoganytown_Text_UBLillieIdleCosmog:
-	.string "Lillie: Your {STR_VAR_1} keeps\n"
+	.string "{SPEAKER NAME_LILLIE}Your {STR_VAR_1} keeps\n"
 	.string "looking up at the sky.\p"
 	.string "Nebby used to do that. Right\n"
 	.string "before something went wrong.\p"
@@ -1269,7 +1294,7 @@ Mahoganytown_Text_UBLillieIdleCosmog:
 	.string "Please.$"
 
 Mahoganytown_Text_UBLillieIdleCosmoem:
-	.string "Lillie: Your {STR_VAR_1} has gone\n"
+	.string "{SPEAKER NAME_LILLIE}Your {STR_VAR_1} has gone\n"
 	.string "so still.\p"
 	.string "Nebby went still like that,\n"
 	.string "once. It was the hardest\l"
@@ -1278,27 +1303,27 @@ Mahoganytown_Text_UBLillieIdleCosmoem:
 	.string "dark. Keep it close.$"
 
 Mahoganytown_Text_UBLillieIdleLegend:
-	.string "Lillie: Your {STR_VAR_1} hasn't\n"
+	.string "{SPEAKER NAME_LILLIE}Your {STR_VAR_1} hasn't\n"
 	.string "taken its eyes off the west\l"
 	.string "end of town since you came.\p"
 	.string "Whatever comes tonight…\n"
 	.string "I think it already knows.$"
 
 Mahoganytown_Text_UBPryceIdle:
-	.string "Pryce: Hm. The Champion.\p"
+	.string "{SPEAKER NAME_PRYCE}Hm. The Champion.\p"
 	.string "Every soul in Mahogany is\n"
 	.string "under my Gym tonight.\p"
 	.string "Every soul but this one.\p"
-	.string "Old man: I'm not leaving my\n"
+	.string "{SPEAKER NAME_OLD_MAN}I'm not leaving my\n"
 	.string "lamp, Pryce.\p"
-	.string "Pryce: …The detective is by\n"
+	.string "{SPEAKER NAME_PRYCE}…The detective is by\n"
 	.string "the Pokémon Center. Go.\p"
 	.string "I've been arguing with this\n"
 	.string "man for forty years. I can\l"
 	.string "manage one more night.$"
 
 Mahoganytown_Text_UBPryceIdleCosmog:
-	.string "Pryce: That {STR_VAR_1} of yours\n"
+	.string "{SPEAKER NAME_PRYCE}That {STR_VAR_1} of yours\n"
 	.string "is shivering in its ball.\p"
 	.string "It isn't the cold.\n"
 	.string "I would know.$"
@@ -1320,7 +1345,7 @@ Mahoganytown_Text_UBBoyIdle:
 	.string "does it?$"
 
 Mahoganytown_Text_UBLookerGreet:
-	.string "Looker: {PLAYER}! You came.\n"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}! You came.\n"
 	.string "Good. Very good.\p"
 	.string "And yes, before you ask. That\n"
 	.string "is a young lady with a\l"
@@ -1333,64 +1358,78 @@ Mahoganytown_Text_UBLookerGreet:
 	.string "politely, both times.$"
 
 Mahoganytown_Text_UBLillieTheory:
-	.string "Lillie: I'm sorry. I couldn't\n"
+	.string "{SPEAKER NAME_LILLIE}I'm sorry. I couldn't\n"
 	.string "go. Not before I understood\l"
 	.string "them.\p"
-	.string "There are two. They come\n"
-	.string "through the same tear, every\l"
-	.string "night, at the same hour.\p"
-	.string "First there's a light. Then the\n"
-	.string "tear. Then them.\p"
-	.string "One pulls the electricity out\n"
-	.string "of everything. The lamps. The\l"
+	.string "There are two, and they come\n"
+	.string "at about the same hour.\p"
+	.string "I've never seen where they\n"
+	.string "come from. The street is too\l"
+	.string "dark, and I was watching from\l"
+	.string "a window.\p"
+	.string "By the time I find them,\n"
+	.string "they're already there.\p"
+	.string "But I did see this much.\p"
+	.string "One of them pulls the\n"
+	.string "electricity out of\l"
+	.string "everything. The lamps. The\l"
 	.string "lines. The houses.\p"
 	.string "The other takes it, burns it,\n"
 	.string "and gives it right back.\p"
-	.string "Anabel: A closed loop. Each one\n"
+	.string "{SPEAKER NAME_ANABEL}A closed loop. Each one\n"
 	.string "keeping the other alive.\p"
-	.string "Lillie: Yes! That's it exactly.\p"
-	.string "Looker: Hm. That is a great\n"
+	.string "{SPEAKER NAME_LILLIE}…Yes. I think so.\p"
+	.string "I couldn't have said it that\n"
+	.string "cleanly.\p"
+	.string "{SPEAKER NAME_LOOKER}Hm. That is a great\n"
 	.string "deal to conclude from one\l"
 	.string "notebook, mademoiselle.\p"
-	.string "Lillie: Two nights of notes.\n"
-	.string "Same order. Same hour.\p"
-	.string "And tonight's hour is soon.\p"
-	.string "Anabel: My readings agree with\n"
-	.string "her. To the minute.\p"
-	.string "Lillie: If we split them up,\n"
-	.string "neither one can feed the\l"
-	.string "other. That's my plan.$"
+	.string "{SPEAKER NAME_LILLIE}It's two nights of\n"
+	.string "notes, and I could still be\l"
+	.string "wrong about all of it.\p"
+	.string "I'd rather be wrong out loud\n"
+	.string "than quiet and right.\p"
+	.string "{SPEAKER NAME_ANABEL}My instruments say\n"
+	.string "what her notebook says. And\l"
+	.string "they say tonight is close.\p"
+	.string "{SPEAKER NAME_LILLIE}Then… if we keep them\n"
+	.string "apart, neither one can feed\l"
+	.string "the other.\p"
+	.string "It's the only idea I have.$"
 
 Mahoganytown_Text_UBReady:
-	.string "Looker: Then we do it her way.\p"
+	.string "{SPEAKER NAME_LOOKER}Then we do it her way.\p"
 	.string "Once it opens, there is no\n"
 	.string "stepping back, {PLAYER}.\p"
 	.string "Are you and your Pokémon\n"
 	.string "ready?$"
 
 Mahoganytown_Text_UBNotReady:
-	.string "Looker: Of course. Heal up.\n"
+	.string "{SPEAKER NAME_LOOKER}Of course. Heal up.\n"
 	.string "Check your team.\p"
-	.string "The young lady says we still\n"
-	.string "have a little time. I believe\l"
-	.string "her. I am learning to.$"
+	.string "Miss Anabel says we still have\n"
+	.string "a little time, and I have\l"
+	.string "learned not to argue with her\l"
+	.string "instruments.$"
 
-Mahoganytown_Text_UBLillieWarnsPryce:
-	.string "Lillie: Mr. Pryce!\n"
-	.string "It's almost time!$"
+Mahoganytown_Text_UBTimeIsClose:
+	.string "{SPEAKER NAME_ANABEL}The readings are\n"
+	.string "climbing. It is close.\p"
+	.string "{SPEAKER NAME_LILLIE}Mr. Pryce, please!\n"
+	.string "He shouldn't be out here!$"
 
 Mahoganytown_Text_UBPryceEvacuates:
-	.string "Pryce: You heard her, Hector.\n"
+	.string "{SPEAKER NAME_PRYCE}You heard her, Hector.\n"
 	.string "Inside. Now.\p"
-	.string "Old man: Sixty years, Pryce.\n"
+	.string "{SPEAKER NAME_OLD_MAN}Sixty years, Pryce.\n"
 	.string "Not one night without my lamp.\p"
-	.string "Pryce: Then don't make tonight\n"
+	.string "{SPEAKER NAME_PRYCE}Then don't make tonight\n"
 	.string "the night I lose you over it.\p"
 	.string "You'll light it tomorrow.\n"
 	.string "Take the boy. In.$"
 
 Mahoganytown_Text_UBPryceMeets:
-	.string "Pryce: That's the last of\n"
+	.string "{SPEAKER NAME_PRYCE}That's the last of\n"
 	.string "them. Mahogany is empty.\p"
 	.string "Three nights without light.\n"
 	.string "I moved every family into my\l"
@@ -1405,40 +1444,48 @@ Mahoganytown_Text_UBPryceMeets:
 	.string "together.$"
 
 Mahoganytown_Text_UBLightComing:
-	.string "Lillie: There! The light!\n"
-	.string "Here it comes!$"
+	.string "{SPEAKER NAME_ANABEL}It's starting--\p"
+	.string "…No. That is not the reading\n"
+	.string "I know. That is something\l"
+	.string "else.\p"
+	.string "{SPEAKER NAME_PRYCE}Light. In the middle of\n"
+	.string "my street.$"
 
 Mahoganytown_Text_UBNecrozmaArrives:
-	.string "Looker: That… that is the\n"
+	.string "{SPEAKER NAME_LOOKER}That… that is the\n"
 	.string "creature from Blackthorn!\p"
-	.string "Anabel: Then it is not only\n"
+	.string "{SPEAKER NAME_ANABEL}Then it is not only\n"
 	.string "feeding on the rifts.\p"
 	.string "It is the one opening them.\p"
-	.string "Lillie: …No.\p"
-	.string "No, no, no. I know that\n"
-	.string "light.\p"
-	.string "Anabel: Lillie?\p"
-	.string "Lillie: …Not now. Please.\p"
-	.string "Pryce: Whatever it is, it's\n"
+	.string "{SPEAKER NAME_LILLIE}…No.\p"
+	.string "No. No, not that. Not here.\p"
+	.string "{SPEAKER NAME_ANABEL}Lillie?\p"
+	.string "{SPEAKER NAME_LILLIE}I know that light. I\n"
+	.string "know it.\p"
+	.string "It has no business being\n"
+	.string "anywhere near this town.\p"
+	.string "…Please don't ask me. Not\n"
+	.string "now.\p"
+	.string "{SPEAKER NAME_PRYCE}Whatever it is, it's\n"
 	.string "standing in my town.\p"
 	.string "Mamoswine! Blizzard!$"
 
 Mahoganytown_Text_UBNoEffect:
-	.string "Pryce: …Nothing.\n"
+	.string "{SPEAKER NAME_PRYCE}…Nothing.\n"
 	.string "Not even frost on it.\p"
 	.string "Fifty years. I've never seen a\n"
 	.string "Pokémon shrug off a Blizzard.\p"
-	.string "Looker: In Blackthorn it was\n"
+	.string "{SPEAKER NAME_LOOKER}In Blackthorn it was\n"
 	.string "the same. It does not fight\l"
 	.string "back. It does not even look.$"
 
 Mahoganytown_Text_UBAppear:
-	.string "Anabel: Rift opening!\n"
+	.string "{SPEAKER NAME_ANABEL}Rift opening!\n"
 	.string "Two signatures!\p"
 	.string "…I felt that one before the\n"
 	.string "readings moved.\p"
 	.string "Never mind. Later.\p"
-	.string "Looker: Xurkitree!\n"
+	.string "{SPEAKER NAME_LOOKER}Xurkitree!\n"
 	.string "And Celesteela!$"
 
 Mahoganytown_Text_UBSynergy:
@@ -1447,31 +1494,34 @@ Mahoganytown_Text_UBSynergy:
 	.string "…and the current leapt across\n"
 	.string "to Celesteela, which burned\l"
 	.string "it like fuel.\p"
-	.string "Anabel: Energy passing between\n"
+	.string "{SPEAKER NAME_ANABEL}Energy passing between\n"
 	.string "the two signatures. Both ways.\p"
-	.string "Lillie: You see? They're\n"
-	.string "sharing it.\p"
+	.string "{SPEAKER NAME_LILLIE}That's it. That's what\n"
+	.string "I kept seeing from the\l"
+	.string "window.\p"
 	.string "One drinks, the other burns.\n"
 	.string "Together they never run dry.$"
 
 Mahoganytown_Text_UBCharge:
-	.string "Looker: {PLAYER}! The heavy one!\n"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}! The heavy one!\n"
 	.string "It is coming at you!$"
 
 Mahoganytown_Text_UBSaved:
-	.string "Lillie: Ninetales, Icy Wind!\n"
+	.string "{SPEAKER NAME_LILLIE}Ninetales, Icy Wind!\n"
 	.string "Keep it away from {PLAYER}!\p"
 	.string "…Are you all right?\n"
 	.string "Good. Good.\p"
-	.string "Pryce: Hmph. That one's got a\n"
+	.string "{SPEAKER NAME_PRYCE}Hmph. That one's got a\n"
 	.string "good cold in her.$"
 
 Mahoganytown_Text_UBChoosePrompt:
-	.string "Lillie: We split them now,\n"
-	.string "before they can feed again.\p"
+	.string "{SPEAKER NAME_LILLIE}We keep them apart.\n"
+	.string "Now, before they feed again.\p"
 	.string "Pick one, {PLAYER}. Ninetales and\n"
-	.string "I will keep the other busy.\p"
-	.string "Pryce: And I'll watch the\n"
+	.string "I will hold the other.\p"
+	.string "…I think this works. I'm not\n"
+	.string "certain. I'm sorry.\p"
+	.string "{SPEAKER NAME_PRYCE}And I'll watch the\n"
 	.string "crystal one. For whatever\l"
 	.string "good it does.$"
 
@@ -1482,27 +1532,27 @@ Mahoganytown_Text_ChoiceCelesteela:
 	.string "Celesteela$"
 
 Mahoganytown_Text_UBPickedXurkitree:
-	.string "Lillie: Then the tall one is\n"
+	.string "{SPEAKER NAME_LILLIE}Then the tall one is\n"
 	.string "yours.\p"
 	.string "Ninetales, Snow! Keep the\n"
 	.string "heavy one on the ground!$"
 
 Mahoganytown_Text_UBPickedCelesteela:
-	.string "Lillie: Then the heavy one is\n"
+	.string "{SPEAKER NAME_LILLIE}Then the heavy one is\n"
 	.string "yours.\p"
 	.string "Ninetales, get between the\n"
 	.string "tall one and the lines!$"
 
 Mahoganytown_Text_UBGotAway:
-	.string "Looker: They slipped back\n"
+	.string "{SPEAKER NAME_LOOKER}They slipped back\n"
 	.string "through the tear…\p"
-	.string "Lillie: It will open again.\n"
+	.string "{SPEAKER NAME_LILLIE}It will open again.\n"
 	.string "It always does.\p"
-	.string "Looker: Then we regroup,\n"
+	.string "{SPEAKER NAME_LOOKER}Then we regroup,\n"
 	.string "and we are ready for it.$"
 
 Mahoganytown_Text_UBDownXurkitree:
-	.string "Lillie: It's down! {PLAYER}, you\n"
+	.string "{SPEAKER NAME_LILLIE}It's down! {PLAYER}, you\n"
 	.string "did it! It's--\p"
 	.string "…Wait. Celesteela!$"
 
@@ -1514,7 +1564,7 @@ Mahoganytown_Text_UBRevivedXurkitree:
 	.string "crackling, whole.$"
 
 Mahoganytown_Text_UBDownCelesteela:
-	.string "Lillie: It's down! {PLAYER}, you\n"
+	.string "{SPEAKER NAME_LILLIE}It's down! {PLAYER}, you\n"
 	.string "did it! It's--\p"
 	.string "…Wait. Xurkitree!$"
 
@@ -1526,42 +1576,42 @@ Mahoganytown_Text_UBRevivedCelesteela:
 	.string "engines burning, whole.$"
 
 Mahoganytown_Text_UBLilliePlan:
-	.string "Looker: Impossible!\n"
+	.string "{SPEAKER NAME_LOOKER}Impossible!\n"
 	.string "We had it!\p"
-	.string "Anabel: The loop. Whatever\n"
+	.string "{SPEAKER NAME_ANABEL}The loop. Whatever\n"
 	.string "one loses, the other gives\l"
 	.string "back.\p"
-	.string "Pryce: Like melting a glacier\n"
+	.string "{SPEAKER NAME_PRYCE}Like melting a glacier\n"
 	.string "with a match.\p"
-	.string "Lillie: …I was wrong.\p"
-	.string "Splitting them isn't enough.\n"
-	.string "The current still jumps the\l"
-	.string "gap between them.\p"
+	.string "{SPEAKER NAME_LILLIE}…I was wrong.\p"
+	.string "Keeping them apart isn't\n"
+	.string "enough. The current still\l"
+	.string "jumps the gap between them.\p"
 	.string "So we close the gap. With\n"
 	.string "something it can't cross.\p"
 	.string "Ice doesn't carry current.\p"
 	.string "Mr. Pryce, can Mamoswine make\n"
 	.string "ice? A lot of it? Right\l"
 	.string "between them?\p"
-	.string "Pryce: Can it make ice.\p"
+	.string "{SPEAKER NAME_PRYCE}Can it make ice.\p"
 	.string "…Girl, you are standing in\n"
 	.string "Mahogany.\p"
-	.string "Anabel: Then do it. But first,\n"
+	.string "{SPEAKER NAME_ANABEL}Then do it. But first,\n"
 	.string "{PLAYER}. Your Pokémon.$"
 
 Mahoganytown_Text_UBAnabelHeals:
-	.string "Anabel: Hold still. Let me see\n"
+	.string "{SPEAKER NAME_ANABEL}Hold still. Let me see\n"
 	.string "them. All of them.$"
 
 Mahoganytown_Text_UBAnabelHealed:
-	.string "Anabel: There. Every one of\n"
+	.string "{SPEAKER NAME_ANABEL}There. Every one of\n"
 	.string "them, ready.\p"
 	.string "Now finish it.$"
 
 Mahoganytown_Text_UBWallOrder:
-	.string "Lillie: Ninetales, Aurora Veil!\n"
+	.string "{SPEAKER NAME_LILLIE}Ninetales, Aurora Veil!\n"
 	.string "Right between them!\p"
-	.string "Pryce: Mamoswine.\n"
+	.string "{SPEAKER NAME_PRYCE}Mamoswine.\n"
 	.string "Freeze it solid.$"
 
 Mahoganytown_Text_UBWallHolds:
@@ -1570,45 +1620,45 @@ Mahoganytown_Text_UBWallHolds:
 	.string "Celesteela.\p"
 	.string "The current crackled against\n"
 	.string "it… and died.\p"
-	.string "Lillie: It's holding!\n"
+	.string "{SPEAKER NAME_LILLIE}It's holding!\n"
 	.string "They can't reach each other!\p"
 	.string "{PLAYER}, now! This time it\n"
 	.string "stays down!$"
 
 Mahoganytown_Text_UBLillieFoughtCelesteela:
-	.string "Lillie: Ninetales! …It's down.\n"
+	.string "{SPEAKER NAME_LILLIE}Ninetales! …It's down.\n"
 	.string "Celesteela's down too.\p"
 	.string "It kept reaching for the\n"
 	.string "other one. There was nothing\l"
 	.string "left to reach.$"
 
 Mahoganytown_Text_UBLillieFoughtXurkitree:
-	.string "Lillie: Ninetales! …It's down.\n"
+	.string "{SPEAKER NAME_LILLIE}Ninetales! …It's down.\n"
 	.string "Xurkitree's down too.\p"
 	.string "It kept pulling at the wall.\n"
 	.string "Ice doesn't give anything\l"
 	.string "back.$"
 
 Mahoganytown_Text_UBAbsorbed:
-	.string "Pryce: It's… swallowing them.\p"
-	.string "Looker: Again! Just as in\n"
+	.string "{SPEAKER NAME_PRYCE}It's… swallowing them.\p"
+	.string "{SPEAKER NAME_LOOKER}Again! Just as in\n"
 	.string "Blackthorn. Both of them!\p"
-	.string "Anabel: It opened the tear,\n"
+	.string "{SPEAKER NAME_ANABEL}It opened the tear,\n"
 	.string "let them feed for three\l"
 	.string "nights…\p"
 	.string "…and now it collects them.\p"
-	.string "Lillie: It's feeding.\n"
+	.string "{SPEAKER NAME_LILLIE}It's feeding.\n"
 	.string "The same way it did before.\p"
-	.string "Looker: Before? Mademoiselle,\n"
+	.string "{SPEAKER NAME_LOOKER}Before? Mademoiselle,\n"
 	.string "before WHEN?\p"
-	.string "Lillie: …Later. I promise.$"
+	.string "{SPEAKER NAME_LILLIE}…Later. I promise.$"
 
 Mahoganytown_Text_UBNecrozmaSensesCosmog:
 	.string "The creature is staring past\n"
 	.string "you… at the Poké Ball that\l"
 	.string "holds your {STR_VAR_1}.\p"
 	.string "Your {STR_VAR_1} is trembling.\p"
-	.string "Lillie: No! Not that one!\n"
+	.string "{SPEAKER NAME_LILLIE}No! Not that one!\n"
 	.string "Ninetales, stay by {PLAYER}!$"
 
 Mahoganytown_Text_UBNecrozmaSensesLegend:
@@ -1621,62 +1671,64 @@ Mahoganytown_Text_UBNecrozmaSensesLegend:
 	.string "away.$"
 
 Mahoganytown_Text_UBNecrozmaGone:
-	.string "Pryce: …Gone.\p"
-	.string "Looker: And the lamps!\n"
+	.string "{SPEAKER NAME_PRYCE}…Gone.\p"
+	.string "{SPEAKER NAME_LOOKER}And the lamps!\n"
 	.string "{PLAYER}, look! The lamps are\l"
 	.string "coming back on!$"
 
 Mahoganytown_Text_UBAftermath:
-	.string "Looker: Is anyone hurt?\n"
+	.string "{SPEAKER NAME_LOOKER}Is anyone hurt?\n"
 	.string "{PLAYER}? Mademoiselle?\l"
 	.string "Mr. Pryce?\p"
 	.string "…Good. Then the report can\n"
 	.string "wait a moment.\p"
-	.string "Pryce: Hmph. I've seen more\n"
+	.string "{SPEAKER NAME_PRYCE}Hmph. I've seen more\n"
 	.string "winters than the three of you\l"
 	.string "put together, detective.\p"
 	.string "Not one like this, though.\p"
-	.string "Anabel: Two Ultra Beasts that\n"
+	.string "{SPEAKER NAME_ANABEL}Two Ultra Beasts that\n"
 	.string "kept each other alive. And\l"
 	.string "something that came back for\l"
 	.string "both of them.\p"
 	.string "Twice now. That is not chance.\n"
 	.string "That is a pattern.\p"
-	.string "Looker: Mademoiselle. You said\n"
+	.string "{SPEAKER NAME_LOOKER}Mademoiselle. You said\n"
 	.string "you knew that light.\p"
-	.string "Lillie: …I do. I saw it in\n"
+	.string "{SPEAKER NAME_LILLIE}…I do. I saw it in\n"
 	.string "Alola.\p"
+	.string "I thought that was the end of\n"
+	.string "it. I thought it was over.\p"
 	.string "I'll tell you everything I\n"
 	.string "know. Truly.\p"
 	.string "Just… not in the middle of the\n"
 	.string "street. Not tonight.\p"
-	.string "Looker: Then we will wait.\n"
+	.string "{SPEAKER NAME_LOOKER}Then we will wait.\n"
 	.string "Waiting is also detective\l"
 	.string "work.$"
 
 Mahoganytown_Text_UBAftermathCosmog:
-	.string "Lillie: {PLAYER}. It looked at\n"
+	.string "{SPEAKER NAME_LILLIE}{PLAYER}. It looked at\n"
 	.string "your {STR_VAR_1}. Only at it.\p"
 	.string "Promise me you'll keep it\n"
 	.string "close. Always.\p"
-	.string "Anabel: In Blackthorn, and\n"
+	.string "{SPEAKER NAME_ANABEL}In Blackthorn, and\n"
 	.string "now here. It keeps finding\l"
 	.string "one.\p"
 	.string "I would very much like to know\n"
 	.string "why.$"
 
 Mahoganytown_Text_UBAftermathLegend:
-	.string "Lillie: It backed away from\n"
+	.string "{SPEAKER NAME_LILLIE}It backed away from\n"
 	.string "your {STR_VAR_1}.\p"
 	.string "I've never seen that light\n"
 	.string "back away from anything.\p"
-	.string "Anabel: Something made of\n"
+	.string "{SPEAKER NAME_ANABEL}Something made of\n"
 	.string "light, afraid of a legend of\l"
 	.string "the sky… That means\l"
 	.string "something.$"
 
 Mahoganytown_Text_UBPryceGoodbye:
-	.string "Pryce: Champion. Mahogany owes\n"
+	.string "{SPEAKER NAME_PRYCE}Champion. Mahogany owes\n"
 	.string "you a night of light.\p"
 	.string "And you, girl. That was clear\n"
 	.string "thinking with a storm in your\l"
@@ -1687,24 +1739,24 @@ Mahoganytown_Text_UBPryceGoodbye:
 	.string "blasted lamp.$"
 
 Mahoganytown_Text_UBHook:
-	.string "Anabel: Lillie. May I copy your\n"
+	.string "{SPEAKER NAME_ANABEL}Lillie. May I copy your\n"
 	.string "notes? Your reading was better\l"
 	.string "than my instruments.\p"
-	.string "Lillie: You can have all of\n"
+	.string "{SPEAKER NAME_LILLIE}You can have all of\n"
 	.string "them.\p"
 	.string "I'd like to stay a few more\n"
 	.string "days. In case it comes back.\p"
-	.string "Anabel: The readings haven't\n"
+	.string "{SPEAKER NAME_ANABEL}The readings haven't\n"
 	.string "settled. It will open another\l"
 	.string "rift.\p"
 	.string "Where, and when, we don't know\n"
 	.string "yet.\p"
-	.string "Looker: So we keep watching.\p"
+	.string "{SPEAKER NAME_LOOKER}So we keep watching.\p"
 	.string "Rest, {PLAYER}. Then come back\n"
 	.string "to our house in Olivine.\p"
 	.string "The moment something opens,\n"
 	.string "you will be the first to know.\p"
-	.string "Lillie: {PLAYER}…\n"
+	.string "{SPEAKER NAME_LILLIE}{PLAYER}…\n"
 	.string "Thank you for listening.\p"
 	.string "To my plan, I mean. Both of\n"
 	.string "them. Even the wrong one.$"

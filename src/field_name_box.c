@@ -175,6 +175,17 @@ static void WindowFunc_ClearNamebox(u8 bg, u8 L, u8 T, u8 w, u8 h, u8 p)
     FillBgTilemapBufferRect(bg, 0, L - 1, T, w + 2, h, 0); // palette doesn't matter
 }
 
+// Armado por quem escolhe o falante de fora do texto (setspeaker, a fala de
+// entrada de um treinador). Vale para UMA mensagem: sem isto, a limpeza feita
+// por TrySetSpeakerFromMessage apagaria o nome logo antes de ele aparecer.
+static bool8 sSpeakerSetExternally = FALSE;
+
+void SetSpeakerNameForNextMessage(const u8 *speaker)
+{
+    gSpeakerName = speaker;
+    sSpeakerSetExternally = TRUE;
+}
+
 void SetSpeaker(struct ScriptContext *ctx)
 {
     u32 arg = ScriptReadWord(ctx);
@@ -185,7 +196,51 @@ void SetSpeaker(struct ScriptContext *ctx)
     else if (arg >= ROM_START && arg < ROM_END)
         speaker = (const u8 *)arg;
 
-    gSpeakerName = speaker;
+    SetSpeakerNameForNextMessage(speaker);
+}
+
+// Decide de quem e a plaquinha ANTES de a caixa comecar a subir, para que ela
+// ja entre com o nome em cima em vez de ganha-lo depois, com um pulo.
+//
+// A regra, que e a que a skill `nomear-falante` documenta: cada mensagem diz
+// quem fala. Um {SPEAKER ...} antes da primeira letra e o falante dela; uma
+// mensagem que nao diz nada nao tem plaquinha, e por isso narracao nunca
+// herda o nome de quem falou na caixa anterior. Dentro de uma mesma mensagem,
+// as paginas seguintes (\p) seguem com o mesmo nome ate outro {SPEAKER ...},
+// que o renderizador trata.
+void TrySetSpeakerFromMessage(const u8 *str)
+{
+    if (sSpeakerSetExternally)
+    {
+        sSpeakerSetExternally = FALSE;
+        return;
+    }
+
+    while (*str == EXT_CTRL_CODE_BEGIN)
+    {
+        u32 code = *++str;
+
+        if (code == EXT_CTRL_CODE_SPEAKER)
+        {
+            u32 name = *++str;
+
+            gSpeakerName = name < SP_NAME_COUNT ? gSpeakerNamesTable[name] : NULL;
+            return;
+        }
+
+        str += GetExtCtrlCodeLength(code);
+    }
+
+    gSpeakerName = NULL;
+}
+
+// TRUE quando a plaquinha na tela ja e a deste falante, e portanto nao
+// precisa ser destruida e redesenhada. So o renderizador de texto usa isto:
+// em match call e em batalha o dono do nome e outro (paleta diferente,
+// gSpeakerName apontando para gStringVar1), e la a janela sempre e refeita.
+bool32 IsNameboxShowingSpeaker(const u8 *speaker)
+{
+    return speaker != NULL && speaker == gSpeakerName && sNameboxWindowId != WINDOW_NONE;
 }
 
 // useful for other context e.g. match call

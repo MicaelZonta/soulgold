@@ -1128,6 +1128,7 @@ static const struct LockedTownDoors sLockedTownDoors[] =
 {
     { FLAG_EVENT_ULTRABEAST_BLACKTHORN, MAP_BLACKTHORN_CITY, MAP_BLACKTHORN_CITY_POKEMON_CENTER, BlackthornCity_EventScript_DoorLocked },
     { FLAG_EVENT_ULTRABEAST_MAHOGANY,   MAP_MAHOGANYTOWN,    MAP_MAHOGANY_TOWN_POKEMON_CENTER,   Mahoganytown_EventScript_DoorLocked },
+    { FLAG_EVENT_ULTRABEAST_CHERRYGROVE, MAP_CHERRYGROVE_CITY, MAP_CHERRYGROVE_CITY_POKEMON_CENTER, CherrygroveCity_EventScript_DoorLocked },
 };
 
 static bool8 TryLockedDoorScript(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)

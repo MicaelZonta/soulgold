@@ -1003,7 +1003,7 @@ GoldenrodCity_FlowerShop_Movement_VulpixLeave:
 # 502 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieBeforeBadge:
 # 503 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: I'm just talking with\n"
+.string "{SPEAKER NAME_LILLIE}I'm just talking with\n"
 # 504 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "the shop owner about that odd\l"
 # 505 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1027,7 +1027,7 @@ GoldenrodCity_FlowerShop_Text_LillieSceneFloristTree:
 # 514 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieSuggestsPersuading:
 # 515 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Then we shouldn't pull\n"
+.string "{SPEAKER NAME_LILLIE}Then we shouldn't pull\n"
 # 516 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "at its branches.\p"
 # 517 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1051,7 +1051,7 @@ GoldenrodCity_FlowerShop_Text_FloristOffersBottle:
 # 526 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieRecognizesBadge:
 # 527 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: {PLAYER}! You've been\n"
+.string "{SPEAKER NAME_LILLIE}{PLAYER}! You've been\n"
 # 528 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "to Whitney's Gym, haven't\l"
 # 529 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1063,7 +1063,7 @@ GoldenrodCity_FlowerShop_Text_LillieRecognizesBadge:
 # 532 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieIlexForest:
 # 533 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: I thought traveling\n"
+.string "{SPEAKER NAME_LILLIE}I thought traveling\n"
 # 534 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "would mean getting better at\l"
 # 535 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1079,7 +1079,7 @@ GoldenrodCity_FlowerShop_Text_LillieIlexForest:
 # 540 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieRibombeeWind:
 # 541 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: She kept returning to\n"
+.string "{SPEAKER NAME_LILLIE}She kept returning to\n"
 # 542 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "the sheltered flowers whenever\l"
 # 543 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1095,7 +1095,7 @@ GoldenrodCity_FlowerShop_Text_LillieRibombeeWind:
 # 548 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieGladionViolet:
 # 549 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Gladion told me he\n"
+.string "{SPEAKER NAME_LILLIE}Gladion told me he\n"
 # 550 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "met you in Violet.\p"
 # 551 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1109,7 +1109,7 @@ GoldenrodCity_FlowerShop_Text_LillieGladionViolet:
 # 555 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieTypeNull:
 # 556 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: And you met the\n"
+.string "{SPEAKER NAME_LILLIE}And you met the\n"
 # 557 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "Type: Null traveling with\l"
 # 558 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1127,7 +1127,7 @@ GoldenrodCity_FlowerShop_Text_LillieTypeNull:
 # 564 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieHeadingNorth:
 # 565 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Are you heading\n"
+.string "{SPEAKER NAME_LILLIE}Are you heading\n"
 # 566 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "north?\p"
 # 567 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1141,7 +1141,7 @@ GoldenrodCity_FlowerShop_Text_LillieHeadingNorth:
 # 571 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieAsksFlorist:
 # 572 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Would it be all right\n"
+.string "{SPEAKER NAME_LILLIE}Would it be all right\n"
 # 573 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "if {PLAYER} took the bottle?\p"
 # 574 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1165,7 +1165,7 @@ GoldenrodCity_FlowerShop_Text_FloristAgrees:
 # 583 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieChallenge:
 # 584 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Then it's yours.\p"
+.string "{SPEAKER NAME_LILLIE}Then it's yours.\p"
 # 585 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "But before you go... could\n"
 # 586 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1179,13 +1179,13 @@ GoldenrodCity_FlowerShop_Text_LillieChallenge:
 # 590 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieRetryChallenge:
 # 591 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Shall we try again?$"
+.string "{SPEAKER NAME_LILLIE}Shall we try again?$"
 # 592 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 
 # 593 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieNoRoom:
 # 594 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Your Bag looks full.\n"
+.string "{SPEAKER NAME_LILLIE}Your Bag looks full.\n"
 # 595 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "Make room for the bottle\l"
 # 596 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1195,7 +1195,7 @@ GoldenrodCity_FlowerShop_Text_LillieNoRoom:
 # 598 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieVulpixPracticing:
 # 599 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Vulpix and I have\n"
+.string "{SPEAKER NAME_LILLIE}Vulpix and I have\n"
 # 600 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "been practicing.\p"
 # 601 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1211,7 +1211,7 @@ GoldenrodCity_FlowerShop_Text_LillieVulpixPracticing:
 # 606 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieDontHoldBack:
 # 607 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Let's take care of\n"
+.string "{SPEAKER NAME_LILLIE}Let's take care of\n"
 # 608 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "your Pokémon first.\p"
 # 609 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1231,7 +1231,7 @@ GoldenrodCity_FlowerShop_Text_LillieDefeated:
 # 616 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieWonFollowUp1:
 # 617 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: I spent so long\n"
+.string "{SPEAKER NAME_LILLIE}I spent so long\n"
 # 618 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "deciding what to do that I\l"
 # 619 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1247,7 +1247,7 @@ GoldenrodCity_FlowerShop_Text_LillieWonFollowUp1:
 # 624 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieWonFollowUp2:
 # 625 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: I want to try that\n"
+.string "{SPEAKER NAME_LILLIE}I want to try that\n"
 # 626 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "again someday.\p"
 # 627 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1259,7 +1259,7 @@ GoldenrodCity_FlowerShop_Text_LillieWonFollowUp2:
 # 630 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieLost1:
 # 631 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: We did it...? We\n"
+.string "{SPEAKER NAME_LILLIE}We did it...? We\n"
 # 632 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "did!\p"
 # 633 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1271,7 +1271,7 @@ GoldenrodCity_FlowerShop_Text_LillieLost1:
 # 636 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieLost2:
 # 637 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Sorry! I didn't mean\n"
+.string "{SPEAKER NAME_LILLIE}Sorry! I didn't mean\n"
 # 638 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "to get carried away.\p"
 # 639 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1287,7 +1287,7 @@ GoldenrodCity_FlowerShop_Text_LillieLost2:
 # 644 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieLost3:
 # 645 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Thank you for taking\n"
+.string "{SPEAKER NAME_LILLIE}Thank you for taking\n"
 # 646 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "us seriously.\p"
 # 647 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1299,7 +1299,7 @@ GoldenrodCity_FlowerShop_Text_LillieLost3:
 # 650 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieDraw:
 # 651 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: That was close for\n"
+.string "{SPEAKER NAME_LILLIE}That was close for\n"
 # 652 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "both of us.\p"
 # 653 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1311,7 +1311,7 @@ GoldenrodCity_FlowerShop_Text_LillieDraw:
 # 656 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieForfeit:
 # 657 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Of course. We can\n"
+.string "{SPEAKER NAME_LILLIE}Of course. We can\n"
 # 658 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "stop here.\p"
 # 659 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1323,7 +1323,7 @@ GoldenrodCity_FlowerShop_Text_LillieForfeit:
 # 662 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieGiveBottle:
 # 663 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Here, the\n"
+.string "{SPEAKER NAME_LILLIE}Here, the\n"
 # 664 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "SquirtBottle, just as we\l"
 # 665 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1341,7 +1341,7 @@ GoldenrodCity_FlowerShop_Text_LillieGiveBottle:
 # 671 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieGiveItemFailed:
 # 672 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: It looks like there\n"
+.string "{SPEAKER NAME_LILLIE}It looks like there\n"
 # 673 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "still isn't room. Let's try\l"
 # 674 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1351,7 +1351,7 @@ GoldenrodCity_FlowerShop_Text_LillieGiveItemFailed:
 # 676 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieThanksFlorist:
 # 677 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: Thank you for your\n"
+.string "{SPEAKER NAME_LILLIE}Thank you for your\n"
 # 678 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "help.\p"
 # 679 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1373,7 +1373,7 @@ GoldenrodCity_FlowerShop_Text_FloristDontBattleHere:
 # 687 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LilliePartingWords:
 # 688 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Lillie: I'd better find\n"
+.string "{SPEAKER NAME_LILLIE}I'd better find\n"
 # 689 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "Mother.\p"
 # 690 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1443,7 +1443,7 @@ GoldenrodCity_FlowerShop_EventScript_CosmogCommentEnd::
 # 722 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_Cosmog:
 # 723 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "Lillie: Oh…! {PLAYER}, is that…\n"
+	.string "{SPEAKER NAME_LILLIE}Oh…! {PLAYER}, is that…\n"
 # 724 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.string "May I see? A Cosmog!\p"
 # 725 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1463,7 +1463,7 @@ GoldenrodCity_FlowerShop_Text_Cosmog:
 # 732 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_CosmogCosmoem:
 # 733 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "Lillie: Is that… a Cosmoem?\p"
+	.string "{SPEAKER NAME_LILLIE}Is that… a Cosmoem?\p"
 # 734 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.string "It went quiet and hard as a\n"
 # 735 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1481,7 +1481,7 @@ GoldenrodCity_FlowerShop_Text_CosmogCosmoem:
 # 741 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_CosmogLegend:
 # 742 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-	.string "Lillie: …A {STR_VAR_1}.\p"
+	.string "{SPEAKER NAME_LILLIE}…A {STR_VAR_1}.\p"
 # 743 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 	.string "I never thought I would see\n"
 # 744 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"

@@ -166,9 +166,7 @@ Cherrygrove_Mart2_2:
 Cherrygrove2:
 # 88 "data/maps/CherrygroveCity_Mart/scripts.pory"
 	.2byte ITEM_TM_SAFEGUARD
-# 89 "data/maps/CherrygroveCity_Mart/scripts.pory"
-	.2byte ITEM_HEAL_BALL
-# 90 "data/maps/CherrygroveCity_Mart/scripts.pory"
+# 92 "data/maps/CherrygroveCity_Mart/scripts.pory"
 	.2byte ITEM_ORANGE_MAIL
 	.2byte ITEM_NONE
 

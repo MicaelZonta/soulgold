@@ -950,9 +950,9 @@
 #define TRAINER_GLADION_CIANWOOD          969 // Cianwood rematch (see docs/GLADION_CIANWOOD_REFINAMENTO_COMPLETO_V3.md), reclaimed from TRAINER_UNUSED_105
 #define TRAINER_LILLIE_DRAGONS_DEN        970 // Dragon's Den Shrine battle (see docs/IMPLEMENTACAO_LILLIE_PRE_V13.md), reclaimed from TRAINER_UNUSED_106
 #define TRAINER_GLADION_VICTORY_ROAD      971 // ReceptionGate farewell battle before Victory Road (see docs/GLADION_VICTORY_ROAD_PROPOSTA_E_AUDITORIA_V2.md), reclaimed from TRAINER_UNUSED_107
-#define TRAINER_UNUSED_108                972
-#define TRAINER_UNUSED_109                973
-#define TRAINER_UNUSED_110                974
+#define TRAINER_LUSAMINE_ALTAR            972 // Daily rematch at the Sun and Moon Altar (see .claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5), reclaimed from TRAINER_UNUSED_108
+#define TRAINER_LILLIE_POSTGAME           973 // Daily rematch on the Cherrygrove beach (see .claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5), reclaimed from TRAINER_UNUSED_109
+#define TRAINER_GLADION_POSTGAME          974 // Daily rematch in Cianwood (see .claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5), reclaimed from TRAINER_UNUSED_110
 #define TRAINER_UNUSED_111                975
 #define TRAINER_UNUSED_112                976
 #define TRAINER_UNUSED_113                977
