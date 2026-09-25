@@ -30,6 +30,7 @@ Ambos geram `Soulgold.gba`. O build regenera sozinho tudo que é derivado
 | Tileset novo ou portado; mapa com desenho deslocado | `adicionar-tileset` |
 | Criar a arte/paletas de um tileset por código; peças do primário em outra cor; troca dia/noite | `montar-tileset` |
 | Protótipo de mapa (map.bin gerado, renders, NPCs) e a página de proposta | `prototipo-de-mapa` |
+| O que tem numa cidade/rota (casas, ginásio…), por onde se entra, se um mapa está ligado ao mundo | `mapa-de-ligacoes` |
 | Bordas, árvores, montanha; revisar mapa; aprender com retoque do autor no Porymap | `acabamento-de-mapa` |
 | Treinador batalhável (ID, time, raio de visão) | `adicionar-batalha-npc` |
 | Batalha que continua mesmo se o jogador perder | `batalha-sem-blackout` |

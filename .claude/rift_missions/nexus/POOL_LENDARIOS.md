@@ -10,15 +10,15 @@ Conferido no código em 25/09/2026.
 
 - **Quem entra.** Toda espécie com `isRestrictedLegendary`, `isSubLegendary`, `isMythical`, `isUltraBeast` ou `isParadox` em `src/data/pokemon/species_info/` (as 9 gerações estão ligadas em `species_enabled.h`). "Único" aqui = **Ultra Beasts e Paradoxos**, as duas categorias especiais que não são lendário nem mítico. Formas (Mega, Primal, Origin, Therian, Gmax, Tera…) contam dentro da espécie; as **aves de Galar** ficam separadas porque são outro Pokémon.
 - **O que conta como método:** encontro estático (`legendaryencounter`, `bosslegendaryencounter*`, `setwildbattle`, `seteventmon` com captura liberada), selvagem (`wild_encounters.json`), presente (`givemon`/`giveegg`), recompensa do Battle Café, troca in-game, roamer, evolução ou breeding a partir de algo obtível.
-- **O que não conta:** batalha com `B_FLAG_NO_CATCHING` (as UBs das Rift Missions e o Ultra Necrozma), e método em mapa **inalcançável**.
-- **Alcançável** = existe caminho de warps/conexões/`warp` de script a partir do quarto do jogador (554 de 1105 mapas da ROM). Os mapas de Hoenn herdados do Emerald (Navel Rock, Birth Island, Sky Pillar, Terra/Marine Cave, New Mauville…) caem fora. **Não** conferi se a cena está liberada pela história; só que o mapa é visitável.
+- **O que não conta:** batalha com `B_FLAG_NO_CATCHING` (as UBs das Rift Missions e o Ultra Necrozma), e método em mapa **fora da ROM** ou **inalcançável**.
+- **Fora da ROM / alcançável.** `data/maps/map_groups.json` exclui da ROM os grupos `gMapGroup_Emerald1..5` (`rom_excluded_groups`): dos 1105 mapas do repositório, só 619 são compilados. Dos 619, **555 são alcançáveis** a partir do quarto do jogador. Todos os encontros "extras" de Hoenn (Navel Rock, Birth Island, Sky Pillar, Terra/Marine Cave, New Mauville…) estão em mapas **fora da ROM**. Para refazer a conta: `python3 dev_scripts/map_graph.py info <mapa>` (skill `mapa-de-ligacoes`). **Não** conferi se a cena está liberada pela história; só que o mapa existe e é visitável.
 
 ## Resumo
 
 | | Espécies |
 |---|---|
 | ✅ Tem método | **96** |
-| ⚠️ Só em mapa inalcançável | **1** |
+| ⚠️ Só em mapa fora da ROM | **1** |
 | 🚫 Só batalha sem captura | **9** |
 | ❌ Nenhum método | **22** |
 | **Total** | **128** |
@@ -37,7 +37,7 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 
 | Espécie | Categoria | Situação |
 |---|---|---|
-| **Deoxys** | Mítico | ⚠️ só em mapa inalcançável: `BirthIsland_Exterior` |
+| **Deoxys** | Mítico | ⚠️ só em mapa fora da ROM: `BirthIsland_Exterior` |
 | **Reshiram** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Zekrom** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Kyurem** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
@@ -195,8 +195,8 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 
 ## Observações
 
-- **Métodos duplicados em mapas mortos.** Vários lendários de Johto/Kanto também têm o encontro original do Emerald num mapa inalcançável (Articuno em `MeteorFalls_Articuno`, Mewtwo em `CeruleanCave3`, Raikou em `NewMauville_Inside_Raikou`, Kyogre/Groudon/Rayquaza em Marine/Terra Cave e Sky Pillar, Lugia/Ho-Oh em Navel Rock, Latias/Latios em Southern Island, Mew em `FarawayIsland_Interior`). Não fazem falta, porque cada um tem outro método alcançável, mas continuam na ROM.
-- **Deoxys** só existe na Birth Island do Emerald, que é inalcançável. Na prática, sem método.
+- **Métodos duplicados em mapas mortos.** Vários lendários de Johto/Kanto também têm o encontro original do Emerald num mapa **fora da ROM** (Articuno em `MeteorFalls_Articuno`, Mewtwo em `CeruleanCave3`, Raikou em `NewMauville_Inside_Raikou`, Kyogre/Groudon/Rayquaza em Marine/Terra Cave e Sky Pillar, Lugia/Ho-Oh em Navel Rock, Latias/Latios em Southern Island, Mew em `FarawayIsland_Interior`). Não fazem falta, porque cada um tem outro método alcançável, mas continuam na ROM.
+- **Deoxys** só existe na Birth Island do Emerald, que está fora da ROM. Na prática, sem método.
 - **As 7 UBs das missões + Stakataka e Blacephalon** aparecem só como batalha sem captura (Rift Missions). O design prevê a Anabel vendendo Beast Balls no `UltraSpaceArena` (§10), o que já aponta para o loop como o lugar onde elas passam a ser capturáveis.
 - **Necrozma** é presente no fim do clímax (`UltraSpaceArena`, Lv75). O Ultra Necrozma do boss não é capturável. Dusk Mane e Dawn Wings dependem de fusão com Solgaleo/Lunala.
 - **Evoluções customizadas:** Manaphy evolui de **Phione** no Lv58 (Phione é pescado na `Route33South_2`); Melmetal de Meltan no Lv60; Naganadel de Poipole no Lv50; Cosmog → Cosmoem (Lv43) → Solgaleo/Lunala (Lv53). Os pergaminhos do Urshifu são vendidos no `GoldenrodBattleAracdeLobby`.

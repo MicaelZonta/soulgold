@@ -281,8 +281,8 @@ MAKEFLAGS += --no-print-directory
 # Delete files that weren't built properly
 .DELETE_ON_ERROR:
 
-RULES_NO_SCAN += libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated clean-teachables clean-teachables_intermediates
-.PHONY: all rom check-song-config bps nightly-bps agbcc modern compare check check-all debug release
+RULES_NO_SCAN += map-graph-check libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated clean-teachables clean-teachables_intermediates
+.PHONY: all rom map-graph-check check-song-config bps nightly-bps agbcc modern compare check check-all debug release
 .PHONY: $(RULES_NO_SCAN)
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
@@ -417,7 +417,19 @@ check check-all: $(TEST_SHARD_ELFS)
 check-song-config:
 	@python3 tools/check_song_config.py
 
-rom: $(ROM)
+# Avisa (sem quebrar o build) quando um mapa da ROM fica sem ligacao com o
+# mundo. So roda de novo quando mapa, script ou a lista de referencia mudam.
+# Ver dev_scripts/map_graph.py e a skill mapa-de-ligacoes.
+MAP_GRAPH_STAMP := $(BUILD_DIR)/map_graph.stamp
+$(MAP_GRAPH_STAMP): $(wildcard data/maps/*/map.json) data/maps/map_groups.json $(wildcard data/maps/*/scripts.inc) $(wildcard data/scripts/*.inc) $(wildcard docs/MAPAS_INALCANCAVEIS.txt) dev_scripts/map_graph.py
+	@mkdir -p $(@D)
+	@python3 dev_scripts/map_graph.py check || true
+	@touch $@
+
+map-graph-check:
+	@python3 dev_scripts/map_graph.py check --strict
+
+rom: $(ROM) $(MAP_GRAPH_STAMP)
 ifeq ($(COMPARE),1)
 	@$(SHA1) rom.sha1
 endif
