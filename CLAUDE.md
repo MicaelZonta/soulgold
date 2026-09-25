@@ -38,6 +38,7 @@ Ambos geram `Soulgold.gba`. O build regenera sozinho tudo que é derivado
 | Script que entrega Pokémon ou ovo (`givemon`, `giveegg`) | `entregar-pokemon-ou-ovo` |
 | Nome de quem fala numa plaquinha acima da caixa de diálogo | `nomear-falante` |
 | Evento em modo esqueleto (Rift Missions) e seu doc de implementação | `evento-esqueleto` |
+| **Qualquer coisa do Nexus** (loop pós-Necrozma: times, sorteio, pool de lendários, prêmio) — ler antes, sempre | `.claude/rift_missions/nexus/NEXUS_REGRAS.md` |
 | Transformar esqueleto em história: falas, arco da cena, surpresa, feedback do autor | `evoluir-historia-de-evento` |
 
 Todas cobrem armadilhas que **não dão erro de build** — compilam limpo e

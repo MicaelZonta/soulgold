@@ -1,5 +1,9 @@
 # Nexus — fichas dos treinadores das Rift Missions
 
+> **Regras do Nexus:** [`NEXUS_REGRAS.md`](NEXUS_REGRAS.md) — formato Traditional
+> (6 / 1 Mega / 1 Uber), 31 IV e 252 EV, level scaling no maior nível, Daily,
+> pool de lendários. Todo time e toda decisão de sorteio seguem aquele arquivo.
+
 Uma ficha por treinador candidato ao pool do loop pós-Necrozma (design
 [`SOULGOLD_RIFT_MISSIONS_DESIGN.md`](../SOULGOLD_RIFT_MISSIONS_DESIGN.md) §10:
 cinco treinadores por expedição, o quinto ligado ao lendário da vez). O índice

@@ -1968,6 +1968,12 @@ End of Time e Legendary Nexus foram nomes de trabalho usados para esse conteúdo
 >   expedição quiser mapa próprio, quem escolhe o destino é o script da fenda, e
 >   a decisão é do doc do loop.
 
+> **Regras do Nexus (25/09/2026):** o loop tem regras próprias do autor em
+> [`nexus/NEXUS_REGRAS.md`](nexus/NEXUS_REGRAS.md) — modo Daily (4 treinadores
+> escolhidos por teleporte + o campeão do lendário + boss), formato
+> Traditional, level scaling no maior nível da equipe, pool condicionado à
+> captura. Onde esta seção e aquele arquivo divergirem, **vale o arquivo**.
+
 ### Estrutura do loop
 
 1. Iniciar uma expedição com Looker e Anabel no altar.
