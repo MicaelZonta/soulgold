@@ -4,7 +4,9 @@ Uma ficha por treinador candidato ao pool do loop pós-Necrozma (design
 [`SOULGOLD_RIFT_MISSIONS_DESIGN.md`](../SOULGOLD_RIFT_MISSIONS_DESIGN.md) §10:
 cinco treinadores por expedição, o quinto ligado ao lendário da vez). O índice
 é o [checklist](../../Checklist_Treinadores_UltraDimension.md): cada nome
-de lá aponta para a ficha daqui.
+de lá aponta para a ficha daqui. O lado dos lendários — quais existem no
+jogo e quais já têm método de obtenção — está em
+[`POOL_LENDARIOS.md`](POOL_LENDARIOS.md).
 
 ## Estrutura
 
