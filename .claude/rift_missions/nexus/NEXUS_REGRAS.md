@@ -54,8 +54,13 @@ nível 100 (para se desafiar) ou nível 50 (para upar).
   treinadores de cada teleporte, o lendário e o campeão — é **sorteado uma vez
   por dia** e fica igual até virar o dia.
 - **Perder não custa nada**: sem blackout de verdade, sem perder dinheiro, sem
-  trancar o portal. O jogador sai, pode curar, **entra de novo no portal e
-  refaz o caminho** normalmente, quantas vezes quiser no mesmo dia.
+  trancar o portal. O jogador sai, pode curar e **entra de novo no portal**,
+  quantas vezes quiser no mesmo dia.
+- **O progresso do dia fica.** Ao voltar, o jogador **anda desde a primeira
+  sala**, mas **não luta de novo** com quem já venceu: os teleportes que ele
+  escolheu continuam os mesmos e os que ele descartou continuam desativados. A
+  primeira luta de verdade é a do treinador que o derrotou (ou o próximo, se
+  ele saiu por conta própria).
 - **No código:** flags do bloco `DAILY` (`include/constants/flags.h`,
   `DAILY_FLAGS_START`) zeram na virada do dia. A fenda do altar já usa daily
   flag (V24). Derrota sem penalidade → skill `batalha-sem-blackout`
@@ -70,7 +75,7 @@ nem ter estrutura preparada sem pedido do autor.
 
 | Modo | Regra | Status |
 |---|---|---|
-| **Daily** | dungeon reseta todo dia; no mesmo dia pode tentar quantas vezes quiser; perder não custa nada e o jogador refaz o caminho | **foco atual** |
+| **Daily** | dungeon reseta todo dia; no mesmo dia pode tentar quantas vezes quiser; perder não custa nada e quem já foi vencido não luta de novo | **foco atual** |
 | Gauntlet | perdeu, é expulso e recomeça do começo | ideia futura |
 | Infinito | segue enquanto não perder | ideia futura |
 
@@ -94,7 +99,8 @@ caminho.
 
 **Não há cura entre as lutas.** Dentro de uma tentativa, o HP e o PP que
 sobraram de uma luta vão para a próxima. Para recuperar, o jogador **sai** do
-Nexus — e ao voltar refaz o caminho (R3).
+Nexus — e ao voltar anda pelas salas já vencidas sem lutar (R3). Sair é,
+portanto, a forma de curar sem perder progresso.
 
 ## R6. Boss final
 
@@ -156,9 +162,45 @@ Garchomp, Dragapult…) e Slaking são **Pokémon comuns** aqui.
 | Categoria | Flag no engine | Exemplos |
 |---|---|---|
 | **Lendário** | `isRestrictedLegendary` | Mewtwo, Lugia, Kyogre, Dialga, Zacian, Koraidon, Cosmog/Solgaleo, Necrozma |
-| **Lendário** (proposta) | `isMythical` | Mew, Celebi, Arceus, Darkrai, Magearna, Zeraora |
 | **Semi-lendário** | `isSubLegendary` | aves, cães, Regis, Lati@s, Heatran, Tapus, Type: Null/Silvally, Urshifu, Ogerpon |
-| **Semi-lendário** (proposta) | `isUltraBeast`, `isParadox` | Buzzwole, Kartana, Poipole, Flutter Mane, Iron Valiant |
+| **Semi-lendário** | `isUltraBeast` | Buzzwole, Kartana, Poipole/Naganadel, Stakataka… |
+| **Semi-lendário** | `isParadox` | Flutter Mane, Iron Valiant, Walking Wake, Raging Bolt… |
+| **Mítico** | `isMythical` | **um a um**, pela tabela abaixo |
+
+### Míticos: lendário ou semi-lendário
+
+Decisão do autor: **depende do peso do Pokémon** — Mew é semi-lendário,
+Darkrai e Arceus são lendários. O BST **não** serve de régua aqui: quase todo
+mítico tem BST 600 (Mew e Darkrai inclusive). A régua usada é o **nível de
+poder competitivo** (quem historicamente é "Uber" nos jogos oficiais conta
+como lendário).
+
+| Mítico | BST | Vaga | Status |
+|---|---|---|---|
+| Arceus | 720 | **Lendário** | decidido |
+| Darkrai | 600 | **Lendário** | decidido |
+| Mew | 600 | Semi-lendário | decidido |
+| Deoxys (todas as formas) | 600 | Lendário | proposta |
+| Hoopa (Unbound 680) | 600/680 | Lendário | proposta |
+| Shaymin (Sky) | 600 | Lendário | proposta — a forma Land também ocupa a vaga, porque vira Sky |
+| Genesect | 600 | Lendário | proposta |
+| Magearna (e Original) | 600 | Lendário | proposta |
+| Marshadow | 600 | Lendário | proposta |
+| Celebi | 600 | Semi-lendário | proposta |
+| Jirachi | 600 | Semi-lendário | proposta |
+| Manaphy | 600 | Semi-lendário | proposta |
+| Phione | 480 | Semi-lendário | proposta |
+| Victini | 600 | Semi-lendário | proposta |
+| Keldeo | 580 | Semi-lendário | proposta |
+| Meloetta | 600 | Semi-lendário | proposta |
+| Diancie | 600 | Semi-lendário | proposta |
+| Volcanion | 600 | Semi-lendário | proposta |
+| Zeraora | 600 | Semi-lendário | proposta |
+| Meltan / Melmetal | 300/600 | Semi-lendário | proposta |
+| Zarude | 600 | Semi-lendário | proposta |
+| Pecharunt | 600 | Semi-lendário | proposta |
+
+Mítico novo no jogo → entra nesta tabela antes de aparecer num time.
 
 - O Mega pode ser de qualquer categoria. Um lendário ou semi-lendário que é o
   Mega do time (Mega Mewtwo, Mega Latios, Mega Heatran…) ocupa **as duas
@@ -257,11 +299,10 @@ contra elas (ex.: não dar Poké Ball em quantidade como prêmio).
 
 ## Pontos a confirmar com o autor
 
-1. **Míticos** contam como **lendário**, e **Ultra Beasts / Paradoxos** como
-   **semi-lendário**? (Marcado como proposta na tabela do R10.)
-2. **Refazer o caminho** depois de perder no Daily recomeça da **primeira
-   sala**, ou o jogador volta para a sala onde perdeu? (R3 hoje diz "refaz o
-   caminho"; o sorteio do dia é o mesmo nos dois casos.)
+1. A classificação dos **míticos marcados "proposta"** no R10.
+2. **Estado salvo do Daily:** guardar as escolhas de teleporte e quem já foi
+   vencido precisa de espaço no save (vars ou flags diárias). Definir na
+   implementação, com as skills `alocar-flag` e `catalogar-flags`.
 
 ## Decisões já tomadas (histórico)
 
@@ -270,6 +311,10 @@ contra elas (ex.: não dar Poké Ball em quantidade como prêmio).
 - 26/09/2026 — Singles/Doubles é **opção do jogo inteiro**, escolhida pelo
   jogador — é a opção **Battle Format** que já existe (Default/Singles/Doubles).
 - 26/09/2026 — o **jogador** também segue o Traditional.
-- 26/09/2026 — derrota no Daily **não custa nada**; o jogador refaz o caminho.
+- 26/09/2026 — derrota no Daily **não custa nada**.
 - 26/09/2026 — lendário do boss com **3 IVs perfeitos**.
+- 26/09/2026 — Ultra Beasts e Paradoxos são **semi-lendários**; míticos são
+  classificados um a um (Mew semi; Darkrai e Arceus lendários).
+- 26/09/2026 — depois de perder no Daily o jogador anda desde a primeira sala,
+  mas **não luta** com quem já venceu.
 - 26/09/2026 — restrição de EV/IV, Poké Balls e TMs é **direção futura** (R14).
