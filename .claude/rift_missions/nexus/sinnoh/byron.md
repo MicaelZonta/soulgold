@@ -6,12 +6,12 @@ Aparece no checklist como:
 
 - **Byron — Aço** (Sinnoh · Líderes de Ginásio) — Líder de Canalave e pai de Roark.
 
-**Pronto para o Nexus:** ❌ não — falta sprite de overworld e battle sprite (os dois são obrigatórios).
+**Pronto para o Nexus:** ✅ sim — tem sprite e battle sprite.
 
 ## Checklist
 
-- [ ] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)*
+- [x] Sprite de overworld *(obrigatório)*
+- [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
 - [ ] Time para as Rift Missions definido
 - [ ] Associado a um lendário
@@ -22,11 +22,17 @@ Aparece no checklist como:
 
 ### Sprite de overworld
 
-Não existe. Criar com a skill `adicionar-npc`.
+| Constante | Arquivo |
+|---|---|
+| `OBJ_EVENT_GFX_BYRON` | `graphics/object_events/pics/people/special/byron.png` |
+
+32x32, doze quadros (`sAnimTable_StandardAsym`, igual à Lusamine). Convertido em 26/09/2026 da arte em `.filetransfer/`.
 
 ### Battle sprite (front pic)
 
-Não existe. Criar com a skill `adicionar-grafico-trainer`.
+| Constante | Arquivo |
+|---|---|
+| `TRAINER_PIC_FRONT_BYRON` | `graphics/trainers/front_pics/byron.png` |
 
 ### Field mugshot
 
@@ -39,6 +45,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se precisar de flag nova).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 26/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_BYRON` = **983** (flag de batalha `0x8D7`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo `sNexusTrainerIds` (`src/data/level_scaling_rules.h`, R2). Falas e lutas em `data/scripts/nexus.inc`: `Nexus_EventScript_Byron_Fight` (genérica) e `Nexus_EventScript_Byron_ChampionFight` (campeão), sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Byron.
 
 📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_BYRON`, campeão da Stakataka. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 

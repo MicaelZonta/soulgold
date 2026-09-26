@@ -401,6 +401,19 @@ extern const u8 Debug_EventScript_Script_5[];
 extern const u8 Debug_EventScript_Script_6[];
 extern const u8 Debug_EventScript_Script_7[];
 extern const u8 Debug_EventScript_Script_8[];
+extern const u8 Debug_EventScript_RiftLookerCalled[];
+extern const u8 Debug_EventScript_RiftLookerCallNow[];
+extern const u8 Debug_EventScript_RiftLookerReset[];
+extern const u8 Debug_EventScript_NexusColress[];
+extern const u8 Debug_EventScript_NexusBruno[];
+extern const u8 Debug_EventScript_NexusElesa[];
+extern const u8 Debug_EventScript_NexusVolkner[];
+extern const u8 Debug_EventScript_NexusSteven[];
+extern const u8 Debug_EventScript_NexusRamos[];
+extern const u8 Debug_EventScript_NexusGuzma[];
+extern const u8 Debug_EventScript_NexusSoliera[];
+extern const u8 Debug_EventScript_NexusByron[];
+extern const u8 Debug_EventScript_NexusFantina[];
 extern const u8 DebugScript_DaycareMonsNotCompatible[];
 extern const u8 DebugScript_OneDaycareMons[];
 extern const u8 DebugScript_ZeroDaycareMons[];
@@ -755,6 +768,35 @@ static const u8 *const sDebugMenu_Actions_BagUse_Options[] =
     COMPOUND_STRING("No Bag: {STR_VAR_1}Invalid value"),
 };
 
+// Nexus fights (data/scripts/nexus.inc), one per trainer; the script asks
+// whether to use the champion lines.
+static const struct DebugMenuOption sDebugMenu_Actions_RiftNexus[] =
+{
+    { COMPOUND_STRING("Colress"), DebugAction_ExecuteScript, Debug_EventScript_NexusColress },
+    { COMPOUND_STRING("Bruno"), DebugAction_ExecuteScript, Debug_EventScript_NexusBruno },
+    { COMPOUND_STRING("Elesa"), DebugAction_ExecuteScript, Debug_EventScript_NexusElesa },
+    { COMPOUND_STRING("Volkner"), DebugAction_ExecuteScript, Debug_EventScript_NexusVolkner },
+    { COMPOUND_STRING("Steven"), DebugAction_ExecuteScript, Debug_EventScript_NexusSteven },
+    { COMPOUND_STRING("Ramos"), DebugAction_ExecuteScript, Debug_EventScript_NexusRamos },
+    { COMPOUND_STRING("Guzma"), DebugAction_ExecuteScript, Debug_EventScript_NexusGuzma },
+    { COMPOUND_STRING("Soliera"), DebugAction_ExecuteScript, Debug_EventScript_NexusSoliera },
+    { COMPOUND_STRING("Byron"), DebugAction_ExecuteScript, Debug_EventScript_NexusByron },
+    { COMPOUND_STRING("Fantina"), DebugAction_ExecuteScript, Debug_EventScript_NexusFantina },
+    { NULL }
+};
+
+// SoulGold: Rift Missions. The Looker call (states 4/6/8/10) is what lets the
+// next briefing in OlivineCity_House1 happen; these skip the wait for it.
+// data/scripts/debug.inc has the scripts.
+static const struct DebugMenuOption sDebugMenu_Actions_RiftMissions[] =
+{
+    { COMPOUND_STRING("Looker already called"), DebugAction_ExecuteScript, Debug_EventScript_RiftLookerCalled },
+    { COMPOUND_STRING("Looker call now"),       DebugAction_ExecuteScript, Debug_EventScript_RiftLookerCallNow },
+    { COMPOUND_STRING("Reset today's call"),    DebugAction_ExecuteScript, Debug_EventScript_RiftLookerReset },
+    { COMPOUND_STRING("Nexus fights…"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_RiftNexus },
+    { NULL }
+};
+
 static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
 {
     { COMPOUND_STRING("Utilities…"),    DebugAction_OpenSubMenu, sDebugMenu_Actions_Utilities, },
@@ -765,6 +807,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
     { COMPOUND_STRING("Scripts…"),      DebugAction_OpenSubMenu, sDebugMenu_Actions_Scripts, },
     { COMPOUND_STRING("Trainers…"),     DebugAction_OpenSubMenuTrainers, sDebugMenu_Actions_Trainers, },
     { COMPOUND_STRING("Flags & Vars…"), DebugAction_OpenSubMenuFlagsVars, sDebugMenu_Actions_Flags, },
+    { COMPOUND_STRING("Rift Missions…"), DebugAction_OpenSubMenu, sDebugMenu_Actions_RiftMissions, },
     { COMPOUND_STRING("Sound…"),        DebugAction_OpenSubMenu, sDebugMenu_Actions_Sound, },
     { COMPOUND_STRING("ROM Info…"),     DebugAction_OpenSubMenu, sDebugMenu_Actions_ROMInfo2, },
     { COMPOUND_STRING("Cancel"),        DebugAction_Cancel, },

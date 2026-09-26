@@ -26,6 +26,8 @@ Aparece no checklist como:
 |---|---|
 | `OBJ_EVENT_GFX_STEVEN` | `graphics/object_events/pics/people/steven.png` |
 
+Desde 26/09/2026 é a arte 32x32 de doze quadros (`sAnimTable_StandardAsym`, igual à Lusamine), na campanha e no Nexus.
+
 ### Battle sprite (front pic)
 
 | Constante | Arquivo |
@@ -52,6 +54,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 
 ### Time das Rift Missions
 
+✅ **Implementado em 26/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_STEVEN` = **979** (flag de batalha `0x8D3`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo `sNexusTrainerIds` (`src/data/level_scaling_rules.h`, R2). Falas e lutas em `data/scripts/nexus.inc`: `Nexus_EventScript_Steven_Fight` (genérica) e `Nexus_EventScript_Steven_ChampionFight` (campeão), sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Steven.
+
 📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_STEVEN`, campeão da Celesteela. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
 Lendário **Deoxys**, semi-lendário **Jirachi**, Mega **Metagross** (Steeltite, a pedra do Steven neste hack), mais Skarmory, Claydol e Cradily. **Tudo veio do céu ou da rocha antiga**: o Deoxys chegou num meteoro, o Jirachi acorda com um cometa, o Cradily é fóssil e o Claydol é argila antiga. É a coleção do Steven. *Plano:* Deoxys e Claydol armam Stealth Rock e as telas, o Skarmory espalha Spikes e põe Tailwind em Doubles, e a Mega Metagross limpa.
@@ -62,7 +66,7 @@ Lendário **Deoxys**, semi-lendário **Jirachi**, Mega **Metagross** (Steeltite,
 | Jirachi | Leftovers | Serene Grace | Careful | Iron Head, Body Slam, Wish, U-turn |
 | Metagross | Steeltite | Clear Body | Jolly | Meteor Mash, Zen Headbutt, Earthquake, Bullet Punch |
 | Skarmory | Rocky Helmet | Sturdy | Impish | Spikes, Tailwind, Brave Bird, Roost |
-| Claydol | Light Clay | Levitate | Bold | Stealth Rock, Earth Power, Reflect, Light Screen |
+| Claydol | Light Clay | Allseeing Idol | Bold | Stealth Rock, Earth Power, Reflect, Light Screen |
 | Cradily | Leftovers | Storm Drain | Careful | Giga Drain, Rock Slide, Recover, Toxic |
 
 <details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>trainerproc</code>, constantes, learnsets e categorias)</summary>
@@ -124,7 +128,7 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 Claydol @ Light Clay
 Bold Nature
 Level: 100
-Ability: Levitate
+Ability: Allseeing Idol
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Stealth Rock

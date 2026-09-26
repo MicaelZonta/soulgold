@@ -40,7 +40,7 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_ZOSSIE`, campeão da Poipole. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
+📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_ZOSSIE`, treinador das salas (sem lendário associado). Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
 Lendário **Magearna**, feita à mão e com um coração artificial (Soul-Heart); semi-lendário **Mew**, curioso e brincalhão como o Poipole; Mega **Clefable** (Fairytite: Fada/Voador, Magic Bounce). Mais Mimikyu, Ribombee e Goodra. Tudo gruda ou cuida (Sticky Web, Gooey, Follow Me), e o Mimikyu só quer ser amado, como ela. *Plano:* apoio em Doubles. A Clefable puxa os golpes com Follow Me, o Mew põe Tailwind e queima com Will-O-Wisp, o Ribombee arma a teia, e a Magearna fica mais forte a cada Pokémon que cai.
 
@@ -137,61 +137,10 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** **Poipole** (UB Adhesive). Zossie é o campeão dela: a quinta luta do Daily, logo antes da boss battle. **R1:** o Poipole tem método fora do Nexus (presente em `Route40_House4`), então este fragmento só entra no sorteio depois de o jogador capturar um.
-
-**Quem é.** Zossie, a mais nova e mais entusiasmada da Ultra Recon Squad, vinda de Ultra Megalopolis, o mundo que perdeu a luz.
-
-**A criatura.** O filhote das Ultra Beasts, dado ao jogador pela Ultra Recon Squad em USUM. O codinome é *Adhesive*: o veneno dele gruda.
-
-**O fragmento.** Uma sala pequena, clara, sem cantos. Luzes macias perto do teto. Quando uma encosta na manga do jogador, fica grudada um instante antes de soltar. É o único fragmento sem ameaça, e a expedição mais leve do loop.
-
-**Falas do fragmento** (narração e Looker; tocam só nos dias desta UB):
-
-**Chegada**
-
-> A small bright room with no corners.
->
-> Soft lights floated near the ceiling. When one brushed your sleeve, it stayed there a moment before letting go.
-
-**Boss**
-
-> One of the lights drifted down from the ceiling and landed in front of you.
->
-> It had a face, and it was very, very curious about yours.
-
-**Ficha do Looker, no altar, no dia em que a UB é capturada**
-
-> File UB Adhesive.
->
-> No harm done. No damage. One very small creature that followed you all the way to the door.
->
-> It is the shortest file I have. I have read it four times.
-
-<details><summary><code>.inc</code> do fragmento</summary>
-
-```asm
-Nexus_Text_Adhesive_Arrival:
-	.string "A small bright room with no corners.\p"
-	.string "Soft lights floated near the ceiling.\n"
-	.string "When one brushed your sleeve, it stayed\l"
-	.string "there a moment before letting go.$"
-
-Nexus_Text_Adhesive_Boss:
-	.string "One of the lights drifted down from the\n"
-	.string "ceiling and landed in front of you.\p"
-	.string "It had a face, and it was very, very\n"
-	.string "curious about yours.$"
-
-Nexus_Text_Adhesive_LookerFile:
-	.string "{SPEAKER NAME_LOOKER}File UB Adhesive.\p"
-	.string "No harm done. No damage. One very small\n"
-	.string "creature that followed you all the way\l"
-	.string "to the door.\p"
-	.string "It is the shortest file I have. I have\n"
-	.string "read it four times.$"
-```
-
-</details>
+Nenhum. A proposta de 26/09 a fazia campeã da Poipole, mas o autor tirou o
+Poipole do pool (26/09/2026): ele agora vem junto com a luta do Naganadel
+(ficha da [Soliera](soliera.md)). Zossie fica só como treinadora das quatro
+primeiras salas.
 
 
 ### Diálogo genérico
@@ -228,61 +177,4 @@ Nexus_Text_Zossie_Defeat:
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Zossie é o **campeão**, a luta logo antes da Poipole. A fala é sobre a criatura, sem dizer o nome dela.
-
-Tem um pequeno escondido nas luzes, seguindo a Zossie o dia todo. É venenoso, a cabeça inteira é uma agulha, mas só gruda em quem ele gosta, e ele quer ver se gosta do jogador. A vitória: "ele gostou de você!". O que fica é o mundo dela: ficou escuro por tanto tempo que esqueceram como é quando uma coisa pequena e brilhante só quer ficar perto. Ele vai vir dizer oi, talvez dê uma picadinha, e ela pede que o jogador prometa ser gentil.
-
-**Antes da luta**
-
-> There's a little one hiding up in the lights. It's been following me around all day!
->
-> It's poisonous, you know. Its whole head is a needle. But it only sticks to people it likes.
->
-> I think it likes me! …And I think it wants to see if it likes you.
->
-> So let's show it a really, really good battle!
-
-**Derrota**
-
-> Aww… It liked that! It liked you! I could tell!
-
-**Depois da luta**
-
-> Where I'm from, it was dark for so long. We forgot what it feels like when something small and bright just… wants to be near you.
->
-> It's going to come say hi. It might sting a little. That's just how it says hello!
->
-> Be gentle with it, okay? Promise.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Zossie_ChampionIntro:
-	.string "There's a little one hiding up in the\n"
-	.string "lights. It's been following me around\l"
-	.string "all day!\p"
-	.string "It's poisonous, you know. Its whole\n"
-	.string "head is a needle. But it only sticks to\l"
-	.string "people it likes.\p"
-	.string "I think it likes me! …And I think it\n"
-	.string "wants to see if it likes you.\p"
-	.string "So let's show it a really, really good\n"
-	.string "battle!$"
-
-Nexus_Text_Zossie_ChampionDefeat:
-	.string "Aww… It liked that! It liked you! I could\n"
-	.string "tell!$"
-
-Nexus_Text_Zossie_ChampionAfter:
-	.string "{SPEAKER NAME_ZOSSIE}Where I'm from, it was dark for so long.\n"
-	.string "We forgot what it feels like when\l"
-	.string "something small and bright just… wants\l"
-	.string "to be near you.\p"
-	.string "It's going to come say hi. It might\n"
-	.string "sting a little. That's just how it says\l"
-	.string "hello!\p"
-	.string "Be gentle with it, okay? Promise.$"
-```
-
-</details>
-
+Nenhum (sem lendário associado).

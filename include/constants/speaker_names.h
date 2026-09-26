@@ -33,6 +33,18 @@ enum SpeakerNames {
     SP_NAME_KURT,
     SP_NAME_HECTOR,
     SP_NAME_BOY,
+    SP_NAME_NEIGHBOR,   // Gold or Crystal: the plaque is "{NEIGHBOR}", resolved per player gender
+    SP_NAME_SAILOR,
+    SP_NAME_COLRESS,
+    SP_NAME_BRUNO,
+    SP_NAME_ELESA,
+    SP_NAME_VOLKNER,
+    SP_NAME_STEVEN,
+    SP_NAME_RAMOS,
+    SP_NAME_GUZMA,
+    SP_NAME_SOLIERA,
+    SP_NAME_BYRON,
+    SP_NAME_FANTINA,
     SP_NAME_COUNT
 };
 

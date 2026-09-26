@@ -34,11 +34,44 @@ NewBarkTown_Lab_OnFrame::
 @ after the mission the template is re-read from map.json and Elm is back at
 @ (6,3) - or at (3,2) in the lab states that ask for it.
 NewBarkTown_Lab_ApplyElmVisibility::
+	call NewBarkTown_Lab_ApplyShelterMomVisibility
 	clearflag FLAG_TEMP_1
 	goto_if_unset FLAG_EVENT_ULTRABEAST_NEWBARK, NewBarkTown_Lab_ElmStays
 	setflag FLAG_TEMP_1
 NewBarkTown_Lab_ElmStays::
 	return
+
+@ Rift Mission 4, New Bark V2 script (section 19): once Mom has crossed into the
+@ shelter (FLAG_NEWBARK_UB_ENGAGED), she stays in here until the street is
+@ clear, and she is where the player heals before another attempt. She is NOT
+@ in the street at the same time: NewBarkTown's ApplyUBVisibility hides the
+@ street Mom on the same flag. Before the crossing she is out on the road, and
+@ after the mission she is back home (PlayersHouse_1F).
+@   visible <=> FLAG_EVENT_ULTRABEAST_NEWBARK AND FLAG_NEWBARK_UB_ENGAGED
+@ FLAG_TEMP_2 is a per-visit cache; the default after a load is visible, so the
+@ setflag comes first and only the one true case clears it.
+NewBarkTown_Lab_ApplyShelterMomVisibility::
+	setflag FLAG_TEMP_2
+	goto_if_unset FLAG_EVENT_ULTRABEAST_NEWBARK, NewBarkTown_Lab_ShelterMomDone
+	goto_if_unset FLAG_NEWBARK_UB_ENGAGED, NewBarkTown_Lab_ShelterMomDone
+	clearflag FLAG_TEMP_2
+NewBarkTown_Lab_ShelterMomDone::
+	return
+
+@ Her usual heal, in the shelter. One box before, the standard heal after.
+NewBarkTown_Lab_EventScript_ShelterMom::
+	lock
+	faceplayer
+	msgbox NewBarkTown_Lab_Text_ShelterMomHeal, MSGBOX_DEFAULT
+	closemessage
+	call Common_EventScript_OutOfCenterPartyHeal
+	turnobject LOCALID_NEWBARK_LAB_MOM, DIR_EAST
+	release
+	end
+
+NewBarkTown_Lab_Text_ShelterMomHeal:
+	.string "{SPEAKER NAME_MOM}Let your Pokémon rest a\n"
+	.string "moment. I'll take care of them.$"
 
 NewBarkTown_Lab_EventScript_ElmAtComputer::
 	setobjectxyperm LOCALID_ELM, 3, 2

@@ -27,6 +27,8 @@ Aparece no checklist como:
 |---|---|
 | `OBJ_EVENT_GFX_BRUNO` | `graphics/object_events/pics/people/elite_four/bruno.png` |
 
+Desde 26/09/2026 é a arte 32x32 de doze quadros (`sAnimTable_StandardAsym`, igual à Lusamine), na campanha e no Nexus.
+
 ### Battle sprite (front pic)
 
 | Constante | Arquivo |
@@ -51,6 +53,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_BRUNO_2` | 380 | 0x67C | Hitmontop Lv85, Staraptor Lv85, Gallade Lv85, Annihilape Lv85, Kommo O Lv85, Machamp Lv85 | `PokemonLeague_BrunosRoom`, `src/battle_setup.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 26/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_BRUNO` = **976** (flag de batalha `0x8D0`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo `sNexusTrainerIds` (`src/data/level_scaling_rules.h`, R2). Falas e lutas em `data/scripts/nexus.inc`: `Nexus_EventScript_Bruno_Fight` (genérica) e `Nexus_EventScript_Bruno_ChampionFight` (campeão), sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Bruno.
 
 📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_BRUNO`, campeão da Buzzwole. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 

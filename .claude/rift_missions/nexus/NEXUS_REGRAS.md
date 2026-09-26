@@ -301,7 +301,8 @@ O que o jogador **fez** no dia cabe numa única var de 16 bits (nome sugerido
 | 6–7 | sala 4 | idem |
 | 8–10 | progresso | 0–5 = lutas vencidas (4 treinadores + campeão); 6 = lendário capturado |
 | 11 | prêmio do R9 já entregue hoje | 0/1 |
-| 12–15 | livres | — |
+| 12 | Poipole da luta do Naganadel já entregue hoje (ficha da [Soliera](alola/soliera.md)) | 0/1 |
+| 13–15 | livres | — |
 
 - Ao reentrar (R3), o script lê a var: teleporte escolhido ativo, os outros
   dois desativados, luta pulada enquanto `sala < progresso`. A primeira luta
@@ -380,5 +381,7 @@ Nenhum em aberto.
   (Mewtwo + Mewtwonite X/Y = lendário + Mega; Diancie + Diancite = semi + Mega).
 - 26/09/2026 — estado do Daily numa var só; sorteio pela `dailySeed`; zera
   pelo padrão do Kurt (R15).
+- 26/09/2026 — **Poipole sai do pool**: não tem dia próprio; o jogador ganha
+  um Poipole na luta do Naganadel (bit 12 do R15).
 - 26/09/2026 — dois registros de fala: genérico nas 4 salas, sobre o lendário
   no campeão (R16).

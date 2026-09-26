@@ -1829,10 +1829,12 @@
 #define FLAG_EVENT_ULTRABEAST_CHERRYGROVE           0x1043
 // Rift Mission 4: the New Bark Ultra Beast incident is active. Set together
 // with VAR_RIFT_MISSIONS_STATE = 9 by OlivineCity_House1_EventScript_BriefingTalk,
-// cleared together with state 10 by NewBarkTown_EventScript_UBResolved. It only
+// cleared together with state 10 by NewBarkTown_EventScript_UBFinish. It only
 // exists because a map.json "flag" field cannot read a var: it is what empties
-// New Bark Town of its residents AND what takes Mom out of the house and Elm
-// out of the lab (their two interiors recompute a FLAG_TEMP_1 cache from it).
+// New Bark Town of its residents, takes Mom out of the house and Elm out of the
+// lab (their interiors recompute a FLAG_TEMP_1 cache from it), draws the
+// temporary fence and barricade (NewBarkTown ON_LOAD) and locks every door but
+// the lab's and the player's house (sLockedTownDoors).
 // The var is the story's authority. This is the last mission of the arc: state
 // 10 opens no mission, it means "four done, the Olivine reunion pending".
 #define FLAG_EVENT_ULTRABEAST_NEWBARK               0x1044
@@ -1910,8 +1912,27 @@
 // Ninetales on the street; leaving town and coming back finds them gone, which
 // is exactly what her line promises.
 #define FLAG_MAHOGANY_UB_LILLIE_SETTLING            0x104D
-#define CUSTOM_FLAGS_END                            FLAG_MAHOGANY_UB_LILLIE_SETTLING
-// PROXIMA FLAG NOVA: 0x104E (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Rift Mission 3: Kukui's reading of the beach (the flash hides Stakataka's
+// steps) has been heard. Set by CherrygroveCity_EventScript_UBLooker the first
+// time it is told, so declining the YES and coming back from the Center does not
+// replay it. Cleared by CherrygroveCity_EventScript_UBFinish.
+#define FLAG_CHERRYGROVE_UB_PREPARED                0x104E
+// Rift Mission 3: the opening, Necrozma, both beasts, Incineroar's interception
+// and Anabel's rescue have all played. Set by CherrygroveCity_EventScript_UBRescue
+// right before the choice; read by the ON_TRANSITION, which puts the beasts,
+// Necrozma, the rift and Incineroar back on the shore after a blackout, and by
+// Looker, whose YES then goes straight to the choice. Cleared by
+// CherrygroveCity_EventScript_UBFinish.
+#define FLAG_CHERRYGROVE_UB_ENGAGED                 0x104F
+// Rift Mission 4 (New Bark V2 script): the three openings, the cut fence, the
+// broken barricade, Mom's crossing to the lab shelter and the Lusamine/Mom beat
+// have all played. Set by NewBarkTown_EventScript_UBChoose right before the
+// choice; read by NewBarkTown's ON_LOAD/ON_TRANSITION (a blackout comes back to
+// the staged street, Mom in the lab) and by Looker (short retry, straight to the
+// choice). Cleared by NewBarkTown_EventScript_UBFinish.
+#define FLAG_NEWBARK_UB_ENGAGED                     0x1050
+#define CUSTOM_FLAGS_END                            FLAG_NEWBARK_UB_ENGAGED
+// PROXIMA FLAG NOVA: 0x1051 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 
@@ -1983,7 +2004,11 @@
 // counted as today's call. Cleared with the rest of the daily flags at the date
 // change (ClearDailyFlags, src/event_data.c).
 #define FLAG_DAILY_LOOKER_CALL                      (DAILY_FLAGS_START + 0x2F)
-#define FLAG_UNUSED_0x950                           (DAILY_FLAGS_START + 0x30) // Unused Flag
+// Sun and Moon Altar V2 section 19: the arc closed TODAY. Set by
+// SunMoonAltar_EventScript_FarewellDone. While set, Lusamine's altar rematch
+// uses her duel team (no Nihilego yet - she was rescued hours ago); after the
+// date change the post-game team with Nihilego applies. Cleared by ClearDailyFlags.
+#define FLAG_DAILY_ALTAR_RESOLVED                   (DAILY_FLAGS_START + 0x30) // Altar arc closed today: Lusamine rematch without Nihilego
 #define FLAG_UNUSED_0x951                           (DAILY_FLAGS_START + 0x31) // Unused Flag
 #define FLAG_UNUSED_0x952                           (DAILY_FLAGS_START + 0x32) // Unused Flag
 #define FLAG_UNUSED_0x953                           (DAILY_FLAGS_START + 0x33) // Unused Flag

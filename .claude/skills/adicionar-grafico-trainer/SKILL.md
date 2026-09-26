@@ -37,6 +37,23 @@ Restrições e custo de ROM medidos: [`.claude/sprites-restricoes-e-custos.md`](
   Aquilo é só para object events (que usam metatile). Não confunda com a
   armadilha da skill `adicionar-npc`.
 
+### Front pic grande (80x80, só na batalha)
+
+Arte nativa que passa de 64 px (Gen 4/5, ~80x80) **não se reduz**: use
+`TRAINER_SPRITE_LARGE` em `src/data/graphics/trainers.h` com um segundo PNG
+`<nome>_large.png` 80x80, gerado 1:1 por
+`dev_scripts/trainer_pic_large.py <arte> <saida>` (Python do Windows, tem PIL).
+`--crop` tira moldura, `--grid N` recupera pixel art ampliada, `--merge`
+funde tons quase iguais até 15 cores. Arte maior que 80x80 (ilustração,
+140x175 do Ramos) só com `--palette <64x64 atual>`: reduz sobre a paleta já
+feita à mão, e o rosto costuma sumir e precisa ser redesenhado à mão (Ramos).
+Figura muito alta e fina (Soliera, 75x245) fica pior em 80x80: mantenha o 64x64.
+O 64x64 continua obrigatório: Pokénav, Dome, card e mugshot usam ele (buffer
+fixo de 64x64). A batalha monta o 80x80 com 6 subsprites
+(`battle_gfx_sfx_util.c`); o quadro começa em y=8 como os 64x64 e sobra
+para baixo, então a cabeça nunca corta. Só para oponente único (1 treinador
+na tela), sem transição de mugshot.
+
 > ⚠️ Front pic é **`u32` + `.4bpp.smol`** (comprimido).
 > Back pic é **`u8` + `.4bpp`** (cru). Trocar os dois embaralha o sprite.
 

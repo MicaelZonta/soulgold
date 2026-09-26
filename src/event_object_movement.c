@@ -567,12 +567,23 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Blaine,                OBJ_EVENT_PAL_TAG_BLAINE},
     {gObjectEventPal_Portal,                OBJ_EVENT_PAL_TAG_PORTAL},
     {gObjectEventPal_AltarRift,             OBJ_EVENT_PAL_TAG_ALTAR_RIFT},
+    {gObjectEventPal_AetherEmitter,         OBJ_EVENT_PAL_TAG_AETHER_EMITTER},
     {gObjectEventPal_Timegear,                OBJ_EVENT_PAL_TAG_TIMEGEAR},
     {gObjectEventPal_Lusamine,                OBJ_EVENT_PAL_TAG_LUSAMINE},
     {gObjectEventPal_Lillie,                OBJ_EVENT_PAL_TAG_LILLIE},
     {gObjectEventPal_Kukui,                OBJ_EVENT_PAL_TAG_KUKUI},
     {gObjectEventPal_Gladion,                OBJ_EVENT_PAL_TAG_GLADION},
     {gObjectEventPal_Looker,                OBJ_EVENT_PAL_TAG_LOOKER},
+    {gObjectEventPal_Colress,                OBJ_EVENT_PAL_TAG_COLRESS},
+    {gObjectEventPal_Elesa,                  OBJ_EVENT_PAL_TAG_ELESA},
+    {gObjectEventPal_Volkner,                OBJ_EVENT_PAL_TAG_VOLKNER},
+    {gObjectEventPal_Ramos,                  OBJ_EVENT_PAL_TAG_RAMOS},
+    {gObjectEventPal_Guzma,                  OBJ_EVENT_PAL_TAG_GUZMA},
+    {gObjectEventPal_Soliera,                OBJ_EVENT_PAL_TAG_SOLIERA},
+    {gObjectEventPal_Byron,                  OBJ_EVENT_PAL_TAG_BYRON},
+    {gObjectEventPal_Fantina,                OBJ_EVENT_PAL_TAG_FANTINA},
+    {gObjectEventPal_Bruno,                  OBJ_EVENT_PAL_TAG_BRUNO},
+    {gObjectEventPal_Steven,                 OBJ_EVENT_PAL_TAG_STEVEN},
 
 
 

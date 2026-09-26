@@ -443,10 +443,37 @@ static bool8 IsOptionalScalingTrainer(u16 trainerId)
     return FALSE;
 }
 
+static bool8 IsNexusTrainer(u16 trainerId)
+{
+    u32 i;
+
+    for (i = 0; sNexusTrainerIds[i] != TRAINERS_COUNT; i++)
+    {
+        if (sNexusTrainerIds[i] == trainerId)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
 const struct LevelScalingConfig *GetTrainerLevelScalingConfig(u16 trainerId, u8 intendedAverageLevel)
 {
     bool8 isOptionalTrainer = IsOptionalScalingTrainer(trainerId);
     bool8 forceScaling = FALSE;
+
+    if (IsNexusTrainer(trainerId))
+    {
+        sTrainerOptionConfig.mode = LEVEL_SCALING_PARTY_HIGHEST;
+        sTrainerOptionConfig.levelAugmentAdd = 0;
+        sTrainerOptionConfig.levelVariation = 0;
+        sTrainerOptionConfig.minLevel = 0;
+        sTrainerOptionConfig.maxLevel = 0;
+        sTrainerOptionConfig.manageEvolutions = FALSE;
+        sTrainerOptionConfig.excludeFainted = FALSE;
+        sTrainerOptionConfig.useAuthoredLevelFloor = FALSE;
+        sTrainerOptionConfig.evolveAboveLevel = FALSE;
+        return &sTrainerOptionConfig;
+    }
 
     if (isOptionalTrainer
      && CalculatePlayerPartyBaseLevel(LEVEL_SCALING_PARTY_AVG, FALSE)

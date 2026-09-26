@@ -351,6 +351,9 @@ MAXIE          = FD 0B
 KYOGRE         = FD 0C
 GROUDON        = FD 0D
 REGION         = FD 0E
+@ SoulGold: the rival next door - Crystal when the player is a boy, Gold when
+@ a girl (the same rule as NewBarkTown_EventScript_RivalBattle).
+NEIGHBOR       = FD 0F
 
 @ battle string placeholders
 
@@ -502,7 +505,19 @@ NAME_LUSAMINE = 0C
 NAME_KURT = 0D
 NAME_HECTOR = 0E
 NAME_BOY = 0F
-NAME_COUNT = 10
+NAME_NEIGHBOR = 10
+NAME_SAILOR = 11
+NAME_COLRESS = 12
+NAME_BRUNO = 13
+NAME_ELESA = 14
+NAME_VOLKNER = 15
+NAME_STEVEN = 16
+NAME_RAMOS = 17
+NAME_GUZMA = 18
+NAME_SOLIERA = 19
+NAME_BYRON = 1A
+NAME_FANTINA = 1B
+NAME_COUNT = 1C
 
 @ fonts
 

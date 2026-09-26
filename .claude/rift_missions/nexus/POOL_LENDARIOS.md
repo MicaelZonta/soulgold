@@ -37,6 +37,10 @@ O campeão é a quinta luta do Daily, logo antes da boss battle (R5 em
 [`NEXUS_REGRAS.md`](NEXUS_REGRAS.md)). A ficha do treinador traz o time, o
 fragmento e as falas. Lendário fora desta tabela ainda não tem campeão.
 
+**Poipole não tem dia próprio** (decisão do autor, 26/09/2026): ele vem
+junto com a luta do **Naganadel** — o jogador ganha um Poipole nela. Detalhes
+na ficha da [Soliera](alola/soliera.md).
+
 | Lendário | Categoria | Campeão | Situação |
 |---|---|---|---|
 | Kyogre | Lendário restrito | [Misty](kanto/misty.md) | aprovado (design §10) |
@@ -49,8 +53,7 @@ fragmento e as falas. Lendário fora desta tabela ainda não tem campeão.
 | Celesteela | Ultra Beast | [Steven](hoenn/steven.md) | 📝 proposta, 26/09 |
 | Kartana | Ultra Beast | [Ramos](kalos/ramos.md) | 📝 proposta, 26/09 |
 | Guzzlord | Ultra Beast | [Guzma](alola/guzma.md) | 📝 proposta, 26/09 |
-| Poipole | Ultra Beast | [Zossie](alola/zossie.md) | 📝 proposta, 26/09 · só depois de capturado (R1) |
-| Naganadel | Ultra Beast | [Soliera](alola/soliera.md) | 📝 proposta, 26/09 · só depois de capturado (R1) |
+| Naganadel | Ultra Beast | [Soliera](alola/soliera.md) | 📝 proposta, 26/09 · só depois de capturado (R1) · a luta dá um **Poipole** |
 | Stakataka | Ultra Beast | [Byron](sinnoh/byron.md) | 📝 proposta, 26/09 |
 | Blacephalon | Ultra Beast | [Fantina](sinnoh/fantina.md) | 📝 proposta, 26/09 |
 

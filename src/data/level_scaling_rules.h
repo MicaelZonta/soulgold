@@ -42,6 +42,25 @@ static const u16 sOptionalScalingTrainerIds[] =
     TRAINERS_COUNT,
 };
 
+// Nexus (Rift Missions). NEXUS_REGRAS R2: every Pokemon at exactly the highest
+// level of the player's party, up or down, whatever the Trainer Level Scaling
+// option says.
+static const u16 sNexusTrainerIds[] =
+{
+    TRAINER_NEXUS_COLRESS,
+    TRAINER_NEXUS_BRUNO,
+    TRAINER_NEXUS_ELESA,
+    TRAINER_NEXUS_VOLKNER,
+    TRAINER_NEXUS_STEVEN,
+    TRAINER_NEXUS_RAMOS,
+    TRAINER_NEXUS_GUZMA,
+    TRAINER_NEXUS_SOLIERA,
+    TRAINER_NEXUS_BYRON,
+    TRAINER_NEXUS_FANTINA,
+
+    TRAINERS_COUNT,
+};
+
 const struct LevelScalingConfig gTrainerLevelScalingRules[TRAINERS_COUNT] =
 {
     // Trainers not listed here will use the default from config/level_scaling.h

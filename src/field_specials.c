@@ -4430,6 +4430,23 @@ bool32 CheckPartyHasSpecies(u32 givenSpecies)
     return FALSE;
 }
 
+// Read-only PC consultation: does any storage box hold gSpecialVar_0x8004?
+// Used by the pre-Necrozma reunion to pick which guidance line is true when
+// the party gate (checkspecies) failed - it must never be used as the gate
+// itself. Eggs do not count: MON_DATA_SPECIES_OR_EGG reports SPECIES_EGG for
+// them, and an egg does not prove the species inside it.
+bool32 CheckPCHasSpecies(void)
+{
+    u32 box, pos;
+
+    for (box = 0; box < TOTAL_BOXES_COUNT; box++)
+        for (pos = 0; pos < IN_BOX_COUNT; pos++)
+            if (GetBoxMonData(GetBoxedMonPtr(box, pos), MON_DATA_SPECIES_OR_EGG, 0) == gSpecialVar_0x8004)
+                return TRUE;
+
+    return FALSE;
+}
+
 void UseBlankMessageToCancelPokemonPic(void)
 {
     DeactivateSingleTextPrinter(0, WINDOW_TEXT_PRINTER);

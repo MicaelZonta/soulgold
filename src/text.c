@@ -1535,6 +1535,15 @@ static u16 RenderText(struct TextPrinter *textPrinter)
                     enum SpeakerNames name = *textPrinter->printerTemplate.currentChar++;
                     const u8 *speaker = name < SP_NAME_COUNT ? gSpeakerNamesTable[name] : NULL;
 
+                    // Em batalha a plaquinha nao existe: a janela dela e um
+                    // template do overworld (tiles e BG do campo), e abri-la
+                    // por cima das janelas da batalha desenha lixo. E o que
+                    // acontecia com a fala de derrota da Lusamine no Altar
+                    // (`{SPEAKER NAME_LUSAMINE}` dentro da batalha). Na batalha
+                    // quem fala ja esta na tela; o codigo e so consumido.
+                    if (gMain.inBattle)
+                        return RENDER_REPEAT;
+
                     // Paginas seguidas do mesmo falante nao redesenham nada:
                     // refazer a janela aqui pisca o quadro da caixa.
                     if (!IsNameboxShowingSpeaker(speaker))

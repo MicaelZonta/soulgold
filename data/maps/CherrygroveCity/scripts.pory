@@ -804,18 +804,18 @@ script Cherrygrove_FriendlyTrader {
 raw `
 @ ============================================================================
 @ Rift Mission 3 - Necrozma, Blacephalon + Stakataka on the Cherrygrove beach.
-@ Cast: Looker, Anabel and Professor Kukui. Plan:
-@ .claude/rift_missions/CHERRYGROVE_ULTRABEAST/CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md
+@ Cast: Looker, Anabel and Professor Kukui (+ Incineroar, out of its Ball only
+@ for the interception). Script: CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md, applied
+@ 26/09/2026; implementation notes in CHERRYGROVE_ULTRABEAST_IMPLEMENTATION.md
+@ section 15, which wins over the rest of that file.
 @
-@ Story in three lines: Anabel feels the rift before any instrument does and
-@ says so; Necrozma rises out of the flat water, tears the tear open and
-@ sends the two beasts through, and their trick is that the bright one
-@ blinds the bay so the heavy one is simply CLOSER when it clears. Kukui -
-@ whom Looker has been treating as a civilian in a lab coat - puts an
-@ Incineroar between it and the player and turns out to be the man who built
-@ the Alola League. Necrozma then aims at the PLAYER, Anabel takes it
-@ instead, and tells them, on one knee in the wet sand, that she is a
-@ Faller. After the battle Necrozma absorbs both beasts and leaves.
+@ Story in four lines: Kukui has worked out that Blacephalon's flash hides
+@ Stakataka's steps. Anabel feels an opening seconds before the meter moves,
+@ Necrozma comes out of it, and the flash-and-step trick is shown and blocked by
+@ Incineroar. Anabel pulls the player out of a second, small opening; after the
+@ win the group throws a Ball BEFORE the pull and the link still wins. Only once
+@ the beach is safe does Anabel tell the player she is a Faller; Kukui goes to
+@ ask Elm for his readings, which is what opens Mission 4.
 @
 @ Active while FLAG_EVENT_ULTRABEAST_CHERRYGROVE is set, which by invariant
 @ means VAR_RIFT_MISSIONS_STATE == 7. Set by OlivineCity_House1, cleared here
@@ -825,76 +825,77 @@ raw `
 @
 @ Floor plan - read TWICE. The collision bit (dump_mapa.py) is NOT enough on
 @ a shore: half this beach has collision 0 and is still water. The sand /
-@ shallow / ocean split below comes from the metatile_attributes.bin of
-@ johto_general and cherrygrove_city. y grows DOWNWARD.
+@ shallow / ocean split below comes from metatile_attributes.bin of
+@ johto_general. y grows DOWNWARD.
 @
-@       x= 21 22 23 24 25 26 27 28 29 30 31 32
-@   y= 5     #  #  #  #  #  #  #  #  #  #  #  #
-@   y= 6     #  #  #  #  #  #  #  #  #  #  #  #   north wall
-@   y= 7     ~  w  w  w  w  U  K  A  s  .  .  .   U Kukui (26,7)  K Looker (27,7)
-@   y= 8     ~  ~  ~  ~  w  u  t  a  .  .  .  .   A Anabel (28,7)
-@   y= 9     ~  ~  n  B  w  i  l  n  .  .  .  .   t (27,8) = the ONLY talk tile
-@   y=10     ~  N  n  S  w  X  p  P  k  .  .  .   B Blacephalon (24,9)
-@   y=11     ~  ~  ~  ~  w  s  s  .  .  .  .  #   S Stakataka   (24,10)
-@   y=12     ~  ~  ~  ~  w  s  s  .  .  #  #  #   N Necrozma    (22,10)
+@       x= 21 22 23 24 25 26 27 28 29 30
+@   y= 6     #  #  #  #  #  #  #  #  #  #   north wall
+@   y= 7     ~  w  w  w  w  U  K  A  .  .   U Kukui (26,7)  K Looker (27,7)
+@   y= 8     ~  ~  ~  ~  w  u  t  .  .  .   A Anabel (28,7)
+@   y= 9     ~  ~  ~  B  w  i  l  a  .  .   t (27,8) = the ONLY talk tile
+@   y=10     R  N  ~  S  s  X  p  P  c  .   B Blacephalon (24,9)
+@   y=11     ~  ~  ~  w  s  s  s  .  .  .   S Stakataka (24,10), on the SANDBAR
+@   y=12     ~  ~  ~  ~  w  s  s  .  .  #   N Necrozma (22,10)  R rift (21,10)
 @
-@   #  collision        s  MB_SAND        .  MB_NORMAL
 @   ~  MB_OCEAN_WATER   - Surf only; the player on foot can NOT enter
 @   w  MB_SHALLOW_WATER - collision 0; the player on foot DOES walk on it
+@   s  MB_SAND
 @
-@   Where the cast ends up after the approach (lower case above):
-@     u Kukui (26,8)   l Looker (27,8)   a Anabel (28,9)   p player (27,10)
-@   Where it ends up after Anabel steps in front (second lower-case pass):
-@     l Looker (27,9)  p Anabel (27,10)  P player (28,10)  k Kukui (29,10)
-@     i Incineroar (26,9)   X = (26,10), where Stakataka ends its silent
-@     advance; n = the three ocean tiles the absorption uses, (23,9),
-@     (23,10) and Necrozma's lean target.
+@ THE SANDBAR (V2 section 5): (24,10) and (24,11) were ocean. They are now the
+@ two shallow corners of a small bar (metatiles 0x10C / 0x11C, elevation 3) and
+@ (25,10)/(25,11) became plain sand behind it. Stakataka WALKS on it: the
+@ flash hides its steps, it never teleports. Blacephalon floats over the water
+@ at (24,9); Necrozma hovers beside the rift.
 @
-@ WARNING: column x=25 and the strip (22..25,7) are SHALLOW water, not a
-@ barrier - the player wades through them. Only x<=24 is real ocean. The
-@ Ultra Beasts and Necrozma stand on ocean on purpose: nobody reaches them
-@ on foot.
+@ Approach (lower case above): u Kukui (26,8), i Incineroar (26,9), l Looker
+@ (27,8), a Anabel (28,9), p player (27,10). Stakataka steps to (25,10) under
+@ the flash; Incineroar drops to X = (26,10) BEFORE it can take that tile.
+@ After the rescue: Looker (27,9), Anabel (27,10), player P (28,10).
+@ Partner (Cosmog family, optional): c = (29,10). Aftermath: Looker (28,9),
+@ Kukui (29,10), Anabel (27,10), player (28,10). Nobody at (28,11).
 @
 @ Looker sits in a pocket: (27,6) is wall, (26,7) is Kukui and (28,7) is
-@ Anabel. The ONLY tile he can be talked to from is (27,8), facing up. That
-@ is what makes the start of the cutscene deterministic without a
-@ getplayerxy check.
-@
-@ Retry cost: HEAL_LOCATION_CHERRYGROVE_CITY is (47,8) and row y=8 is clear
-@ from x=27 to x=49, so a blackout costs a straight 20-tile walk back. That
-@ is accepted (section 9 of the doc): there is no Center nearer the beach.
+@ Anabel. The ONLY tile he can be talked to from is (27,8), facing up - on
+@ the first attempt AND on a retry, because the retry keeps the three of them
+@ on their template tiles. That is what makes both form-ups deterministic.
 @
 @ Per-map temporaries (all zeroed by ClearTempFieldEventData on every load):
 @   FLAG_TEMP_1 - cast visibility cache (Kukui, Looker, Anabel)
 @   FLAG_TEMP_2 - Ultra Beast visibility cache
 @   FLAG_TEMP_3 - Galarian Zigzagoon gift visibility cache
 @   FLAG_TEMP_4 - Alolan Rattata gift visibility cache
-@   FLAG_TEMP_5 - Necrozma visibility cache (its OWN flag, so that the
-@                 removeobject on the beasts never touches it)
-@   FLAG_TEMP_6 - Kukui's Incineroar visibility cache (same reason)
-@   FLAG_TEMP_7 - post-game Kukui on the beach (Sun and Moon Altar event,
-@                 .claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.7)
-@   FLAG_TEMP_8 - post-game Lillie AND her Ninetales, on a different rota from
-@                 Kukui's, which is why it is not the same flag as his. NOT
-@                 FLAG_TEMP_3/4: those are the Friendly Trader's gift Pokemon
+@   FLAG_TEMP_5 - Necrozma (its OWN flag: removeobject sets the template flag)
+@   FLAG_TEMP_6 - Kukui's Incineroar (same reason)
+@   FLAG_TEMP_7 - post-game Kukui on the beach (altar event, section 10.7)
+@   FLAG_TEMP_8 - post-game Lillie AND her Ninetales
+@   FLAG_TEMP_9 - the rift at (21,10)
+@   FLAG_TEMP_A - the player's Cosmog-family Pokemon as an actor: four templates
+@                 on (29,10), at most one of them ever added
 @   VAR_TEMP_2  - battle outcome
 @   VAR_TEMP_3  - the player's pick: 0 = Blacephalon, 1 = Stakataka. Survives
-@                 the battle because coming back from a battle does not
-@                 reload the map (ClearTempFieldEventData only runs on warp
-@                 and edge loads).
-@   VAR_TEMP_4  - Cosmog-family species Necrozma reacted to (SPECIES_NONE =
-@                 no reaction). Read again by the aftermath dialogue.
+@                 the battle (coming back from a battle does not reload the map)
+@   VAR_TEMP_4  - Cosmog-family species shown (SPECIES_NONE = none). Sampled
+@                 AFTER the battle, which can evolve it, and kept to the end.
 @ WARNING: VAR_TEMP_1 is VAR_TEMP_TRANSFERRED_SPECIES (vars.h:370) and
-@ belongs to Cherrygrove_FriendlyTrader, below in this file. This mission
+@ belongs to Cherrygrove_FriendlyTrader, above in this file. This mission
 @ starts at VAR_TEMP_2 on purpose - do NOT "harmonise" it away.
 @
-@ WARNING: fourteen residents of this map now carry
-@ FLAG_EVENT_ULTRABEAST_CHERRYGROVE in their map.json "flag" field. A
-@ removeobject on any of them SETS that flag and empties the city.
+@ Persistent flags of this mission (CUSTOM block), both cleared by UBFinish:
+@   FLAG_CHERRYGROVE_UB_PREPARED - Kukui's reading has been heard
+@   FLAG_CHERRYGROVE_UB_ENGAGED  - everything up to the rescue has played;
+@                                  a blackout comes back as a retry
 @
-@ Object budget: player + follower + 7 cast = 9/16.
+@ WARNING: fourteen residents of this map carry FLAG_EVENT_ULTRABEAST_CHERRYGROVE
+@ in their map.json "flag" field. A removeobject on any of them SETS that flag
+@ and empties the city.
+@
+@ Object budget at the fullest moment (partner out, before Necrozma leaves):
+@ player + hidden follower + Kukui + Looker + Anabel + Incineroar + Necrozma
+@ + rift + partner = 9/16 (the beasts are already gone by then; with them and
+@ no partner it is 10/16).
 @ ============================================================================
 
+@ A note, not a person: no speaker plaque (author's decision, Mahogany V3).
 CherrygroveCity_EventScript_DoorLocked::
 	lockall
 	msgbox CherrygroveCity_Text_DoorLocked, MSGBOX_DEFAULT
@@ -903,23 +904,38 @@ CherrygroveCity_EventScript_DoorLocked::
 	end
 
 @ Called from CherrygroveCity_OnTransition, which runs before any object is
-@ spawned - so setflag/clearflag work here and removeobject would not.
-@ The cast (FLAG_TEMP_1) is visible only while the incident is active. The
-@ Ultra Beasts (FLAG_TEMP_2), Necrozma (FLAG_TEMP_5) and Kukui's Incineroar
-@ (FLAG_TEMP_6) are always hidden on load: only the cutscene brings them in,
-@ which is also what makes a retry after a blackout start clean for free.
-@ Temps are zeroed on every load, so this recomputes from scratch every time.
+@ spawned - so setflag/clearflag and setobjectxyperm work here and removeobject
+@ would not. Temps are zeroed on every load, so this recomputes from scratch.
+@ Two shapes of beach while the incident is active:
+@   1. first attempt: only the three of them, waiting on their template tiles.
+@   2. FLAG_CHERRYGROVE_UB_ENGAGED (a retry after a blackout or an interrupted
+@      battle): the rift, Necrozma and both beasts are still there, and
+@      Incineroar is holding the shore at (26,10). Kukui, Looker and Anabel
+@      stay on their template tiles so the talk tile is still (27,8).
 CherrygroveCity_EventScript_ApplyUBVisibility::
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_5
 	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_9
+	setflag FLAG_TEMP_A
 	call CherrygroveCity_EventScript_ApplyGiftMonVisibility
 	goto_if_unset FLAG_EVENT_ULTRABEAST_CHERRYGROVE, CherrygroveCity_EventScript_HideUBCast
 	clearflag FLAG_TEMP_1
+	goto_if_set FLAG_CHERRYGROVE_UB_ENGAGED, CherrygroveCity_EventScript_StageUBRetry
 	return
 
 CherrygroveCity_EventScript_HideUBCast::
 	setflag FLAG_TEMP_1
+	return
+
+@ setobjectxyperm and not setobjectxy: templates are reloaded from the map
+@ header on every load, so this never leaks into the next visit.
+CherrygroveCity_EventScript_StageUBRetry::
+	clearflag FLAG_TEMP_2
+	clearflag FLAG_TEMP_5
+	clearflag FLAG_TEMP_6
+	clearflag FLAG_TEMP_9
+	setobjectxyperm LOCALID_CHERRYGROVE_UB_INCINEROAR, 26, 10
 	return
 
 @ The Friendly Trader's two gift Pokemon (locals 16 and 17). Their map.json
@@ -945,55 +961,58 @@ CherrygroveCity_EventScript_GiftMonRattataOnly::
 CherrygroveCity_EventScript_GiftMonsStayHidden::
 	return
 
-@ Optional Cosmog-family reaction, no state at all: without one in the party
-@ the line simply does not happen. The turnobject returns her to the map.json
-@ FACE_DOWN; it is a no-op when the player talks from (28,8) or (29,7), but
-@ it guards any evolution that moves her.
+@ She follows the player while talking and then goes back to watching the
+@ water to the west, where the opening is expected (V2 section 6). The
+@ Cosmog-family idle reactions of the old version are gone: the script
+@ removed the repeated warnings.
 CherrygroveCity_EventScript_UBAnabel::
 	lock
 	faceplayer
 	msgbox CherrygroveCity_Text_UBAnabelIdle, MSGBOX_DEFAULT
-	specialvar VAR_RESULT, CheckMysteryEggPokemon
-	goto_if_eq VAR_RESULT, SPECIES_NONE, CherrygroveCity_EventScript_UBAnabelEnd
-	bufferspeciesname STR_VAR_1, VAR_RESULT
-	msgbox CherrygroveCity_Text_UBAnabelIdleCosmog, MSGBOX_DEFAULT
-CherrygroveCity_EventScript_UBAnabelEnd::
 	closemessage
-	turnobject LOCALID_CHERRYGROVE_UB_ANABEL, DIR_SOUTH
+	turnobject LOCALID_CHERRYGROVE_UB_ANABEL, DIR_WEST
 	release
 	end
 
-@ Kukui knows a Cosmog on sight - he lived with one - but he never calls the
-@ player's Pokemon by the name of the one he knew (design section 3.3).
-@ Same no-op turnobject guard as Anabel; note he is also reachable from
+@ A short introduction that works without any earlier meeting. On a retry he
+@ is holding the line with Incineroar and says so. He is also reachable from
 @ (25,7), which is shallow water the player can wade in.
 CherrygroveCity_EventScript_UBKukui::
 	lock
 	faceplayer
+	goto_if_set FLAG_CHERRYGROVE_UB_ENGAGED, CherrygroveCity_EventScript_UBKukuiRetryIdle
 	msgbox CherrygroveCity_Text_UBKukuiIdle, MSGBOX_DEFAULT
-	specialvar VAR_RESULT, CheckMysteryEggPokemon
-	goto_if_eq VAR_RESULT, SPECIES_NONE, CherrygroveCity_EventScript_UBKukuiEnd
-	bufferspeciesname STR_VAR_1, VAR_RESULT
-	msgbox CherrygroveCity_Text_UBKukuiIdleCosmog, MSGBOX_DEFAULT
+	goto CherrygroveCity_EventScript_UBKukuiEnd
+
+CherrygroveCity_EventScript_UBKukuiRetryIdle::
+	msgbox CherrygroveCity_Text_UBRetryNotReady, MSGBOX_DEFAULT
 CherrygroveCity_EventScript_UBKukuiEnd::
 	closemessage
 	turnobject LOCALID_CHERRYGROVE_UB_KUKUI, DIR_SOUTH
 	release
 	end
 
-@ Only reachable from (27,8), facing up: (27,6) is wall and Looker's east and
-@ west neighbours are Anabel and Kukui. No getplayerxy needed.
-@ Nothing changes state before the YES. The YES is the last exit point: from
-@ there on everything is scripted through to a battle outcome.
-@ Kukui's read comes BEFORE the YES on purpose, and it is deliberately WRONG
-@ in one detail - he thinks the heavy one walks in behind the lights. The
-@ scene corrects him, which is how the synergy gets SHOWN before it is
-@ explained (design section 6, "sinergia entre as Ultra Beasts").
+@ Only reachable from (27,8), facing up. Nothing changes the incident before
+@ the YES; the YES is the last exit point.
+@ Kukui's reading is told once (FLAG_CHERRYGROVE_UB_PREPARED): declining and
+@ coming back from the Center goes straight to Anabel's question.
+@ While he talks about the sandbar he turns to it (west); the reading is of
+@ what he saw on the earlier openings, so it needs no track art on screen.
 CherrygroveCity_EventScript_UBLooker::
 	lock
 	faceplayer
+	goto_if_set FLAG_CHERRYGROVE_UB_ENGAGED, CherrygroveCity_EventScript_UBLookerRetry
+	goto_if_set FLAG_CHERRYGROVE_UB_PREPARED, CherrygroveCity_EventScript_UBAskReady
 	msgbox CherrygroveCity_Text_UBLookerGreet, MSGBOX_DEFAULT
-	msgbox CherrygroveCity_Text_UBKukuiTheory, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_CHERRYGROVE_UB_KUKUI, DIR_WEST
+	msgbox CherrygroveCity_Text_UBKukuiObservation, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBAnabelObservation, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBKukuiPlan, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_CHERRYGROVE_UB_KUKUI, DIR_SOUTH
+	setflag FLAG_CHERRYGROVE_UB_PREPARED
+CherrygroveCity_EventScript_UBAskReady::
 	msgbox CherrygroveCity_Text_UBReady, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, CherrygroveCity_EventScript_UBNotReady
 	goto CherrygroveCity_EventScript_UBScene
@@ -1004,69 +1023,92 @@ CherrygroveCity_EventScript_UBNotReady::
 	release
 	end
 
-@ The order of the three applymovement blocks is LOAD-BEARING:
-@ Kukui -> player -> Looker/Anabel. Looker can only step down once the
-@ player has vacated (27,8), and Kukui goes first because he is the one who
-@ has been standing closest to the water for four days. Every tile walked
-@ here was checked in the metatile attributes: (26,8), (27,8..10), (28,8)
-@ are MB_SAND and (28,9) is MB_NORMAL; nobody steps in water.
-@ Kukui stops at (26,8) and NOT at (26,10): (26,9) has to stay free for his
-@ Incineroar and (26,10) for Stakataka's silent advance.
+@ Retry (V2 section 18): nothing already seen is replayed - not the opening,
+@ not Necrozma's arrival, not the interception, not the rescue, and not
+@ Anabel's explanation, which still belongs to the aftermath of a win.
+CherrygroveCity_EventScript_UBLookerRetry::
+	msgbox CherrygroveCity_Text_UBRetryLooker, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBRetryKukui, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, CherrygroveCity_EventScript_UBRetryNotReady
+	goto CherrygroveCity_EventScript_UBSceneRetry
+
+CherrygroveCity_EventScript_UBRetryNotReady::
+	msgbox CherrygroveCity_Text_UBRetryNotReady, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+@ ---------------------------------------------------------------------------
+@ The scene, first attempt. 100% scripted from the YES to a battle outcome.
+@ The order of the three form-up blocks is LOAD-BEARING: Kukui -> player ->
+@ Looker/Anabel. Looker can only step down once the player has left (27,8).
+@ Tiles walked: (26,8), (27,8..10), (28,8) are sand and (28,9) is normal
+@ ground; nobody steps in water. Kukui stops at (26,8) and not lower: (26,9)
+@ is Incineroar's and (26,10) is the tile it has to take before Stakataka.
+@ ---------------------------------------------------------------------------
 CherrygroveCity_EventScript_UBScene::
 	closemessage
 	lockall
 	hidefollower
-	@ Kukui (26,7)->(26,8), faces west.
 	applymovement LOCALID_CHERRYGROVE_UB_KUKUI, CherrygroveCity_Movement_StepDownFaceLeft
 	waitmovement LOCALID_CHERRYGROVE_UB_KUKUI
-	@ Player (27,8)->(27,9)->(27,10), faces west. Column x=27 all the way, no
-	@ tile shared with Kukui on any step; still goes second so that (27,8)
-	@ only frees up after the player has left it.
 	applymovement OBJ_EVENT_ID_PLAYER, CherrygroveCity_Movement_PlayerToLine
 	waitmovement OBJ_EVENT_ID_PLAYER
-	@ Looker (27,7)->(27,8) and Anabel (28,7)->(28,8)->(28,9): different
-	@ columns, no contention, so they walk together.
 	applymovement LOCALID_CHERRYGROVE_UB_LOOKER, CherrygroveCity_Movement_StepDownFaceLeft
 	applymovement LOCALID_CHERRYGROVE_UB_ANABEL, CherrygroveCity_Movement_AnabelToLine
 	waitmovement LOCALID_CHERRYGROVE_UB_LOOKER
 	waitmovement LOCALID_CHERRYGROVE_UB_ANABEL
-	@ Anabel feels it before any instrument does (author's note, V21). This
-	@ is the first half of the Faller payoff: it is never explained here.
+	@ Kukui gets his partner out BEFORE the threat is on anyone: competence
+	@ shown early, not a trump card pulled at the last second. Nobody reacts
+	@ to him owning a Pokemon.
+	msgbox CherrygroveCity_Text_UBKukuiPrepare, MSGBOX_DEFAULT
+	closemessage
+	playse SE_BALL_OPEN
+	clearflag FLAG_TEMP_6
+	addobject LOCALID_CHERRYGROVE_UB_INCINEROAR
+	playmoncry SPECIES_INCINEROAR, CRY_MODE_NORMAL
+	waitmoncry
+	@ Anabel feels it before the meter moves. Local, seconds, and uncertain.
 	playse SE_PIN
 	applymovement LOCALID_CHERRYGROVE_UB_ANABEL, Common_Movement_ExclamationMark
 	waitmovement LOCALID_CHERRYGROVE_UB_ANABEL
-	msgbox CherrygroveCity_Text_UBAnabelSenses, MSGBOX_DEFAULT
-	closemessage
-	@ A cidade para de tocar o tema alegre dela aqui: a Anabel sentiu, e o que
-	@ vem depois nao e mais uma manha de praia. Silencio durante o tremor,
-	@ trilha propria a partir do momento em que a coisa aparece.
+	@ The town theme fades out on her warning, not when the creature appears.
 	fadeoutbgm 4
-	@ Necrozma rises out of the flat water at (22,10), five tiles west of the
-	@ player and well inside the camera (x 20..34 with the player at x=27).
+	msgbox CherrygroveCity_Text_UBAnabelSenses, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBLookerMeter, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBAnabelCertain, MSGBOX_DEFAULT
+	closemessage
+	@ ...and only now does the instrument answer.
+	playse SE_M_DETECT
+	waitse
+	msgbox CherrygroveCity_Text_UBKukuiWater, MSGBOX_DEFAULT
+	closemessage
+	@ A narrow opening over the water, and the threat theme BEFORE the full
+	@ reveal. save_song TRUE: the boss battle hands this theme back instead of
+	@ the town's (savedMusic). A map load clears savedMusic, so the retry
+	@ starts clean and sets it again.
 	call CherrygroveCity_EventScript_UBShake
+	fadescreenswapbuffers FADE_TO_WHITE
+	clearflag FLAG_TEMP_9
+	addobject LOCALID_CHERRYGROVE_UB_RIFT
+	fadescreenswapbuffers FADE_FROM_WHITE
+	playse SE_WARP_IN
+	playbgm MUS_DP_LEGEND_APPEARS, TRUE
+	waitse
+	@ Necrozma comes out THROUGH it, at (22,10), beside the rift.
 	fadescreenswapbuffers FADE_TO_WHITE
 	clearflag FLAG_TEMP_5
 	addobject LOCALID_CHERRYGROVE_UB_NECROZMA
 	fadescreenswapbuffers FADE_FROM_WHITE
-	@ save_song TRUE: a batalha de boss troca a musica, e ao voltar dela o
-	@ Overworld_PlaySpecialMapMusic le gSaveBlock1Ptr->savedMusic e retoma
-	@ esta, em vez do tema da cidade. Qualquer carregamento de mapa limpa o
-	@ savedMusic (Overworld_ClearSavedMusic), entao o retry depois de blackout
-	@ comeca do tema normal e a cena o troca de novo.
-	playbgm MUS_DP_LEGEND_APPEARS, TRUE
 	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
 	waitmoncry
 	msgbox CherrygroveCity_Text_UBNecrozmaArrives, MSGBOX_DEFAULT
 	closemessage
-	@ It opens the tear itself - the pattern of every Rift Mission.
+	@ It widens the opening; the two come out in separate places, with
+	@ separate cries and a beat to read the silhouettes.
 	applymovement LOCALID_CHERRYGROVE_UB_NECROZMA, CherrygroveCity_Movement_PulseInPlaceRight
 	waitmovement LOCALID_CHERRYGROVE_UB_NECROZMA
-	call CherrygroveCity_EventScript_UBFlash
-	msgbox CherrygroveCity_Text_UBRift, MSGBOX_DEFAULT
-	closemessage
-	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
-	waitmoncry
-	call CherrygroveCity_EventScript_UBShake
+	call CherrygroveCity_EventScript_UBRiftPulse
 	fadescreenswapbuffers FADE_TO_WHITE
 	clearflag FLAG_TEMP_2
 	addobject LOCALID_CHERRYGROVE_UB_BLACEPHALON
@@ -1076,97 +1118,129 @@ CherrygroveCity_EventScript_UBScene::
 	waitmoncry
 	playmoncry SPECIES_STAKATAKA, CRY_MODE_ENCOUNTER
 	waitmoncry
+	delay 30
 	msgbox CherrygroveCity_Text_UBAppear, MSGBOX_DEFAULT
-	goto CherrygroveCity_EventScript_UBSynergy
+	closemessage
+	goto CherrygroveCity_EventScript_UBFlashTrick
 
-@ THE SYNERGY, shown before anyone explains it, and it is the whole reason
-@ this mission is a choice-plus-boss: Blacephalon whites the bay out, and
-@ when the screen comes back Stakataka is simply CLOSER. It never walks, so
-@ setobjectxy under the fade is not a shortcut - the teleport IS the trick.
-@ (24,10) -> (25,10) -> (26,10), all on row 10, ending one tile west of the
-@ player at (27,10). (25,10) is shallow water and (26,10) is sand; both are
-@ empty, because Kukui stopped at (26,8).
-CherrygroveCity_EventScript_UBSynergy::
-	closemessage
+@ THE TRICK OF THE TWO (V2 section 8). Blacephalon's flash hides Stakataka's
+@ STEPS: it walks (24,10) -> (25,10) across the sandbar while the bay is white
+@ and the end of the step is visible as the light drops. No setobjectxy, no
+@ teleport: the movement starts under the white and finishes on screen, with
+@ splashing to tell the player what the characters could not see.
+@ Incineroar then drops from (26,9) to (26,10) BEFORE Stakataka can take it,
+@ and the impact sends it back ONE tile, to (24,10).
+CherrygroveCity_EventScript_UBFlashTrick::
 	applymovement LOCALID_CHERRYGROVE_UB_BLACEPHALON, CherrygroveCity_Movement_PulseInPlaceRight
-	playmoncry SPECIES_BLACEPHALON, CRY_MODE_NORMAL
 	waitmovement LOCALID_CHERRYGROVE_UB_BLACEPHALON
-	waitmoncry
-	fadescreenswapbuffers FADE_TO_WHITE
-	setobjectxy LOCALID_CHERRYGROVE_UB_STAKATAKA, 25, 10
-	fadescreenswapbuffers FADE_FROM_WHITE
-	msgbox CherrygroveCity_Text_UBSynergy, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBFlashWarning, MSGBOX_DEFAULT
 	closemessage
-	@ Again, and this time it lands next to the player: direct danger.
-	applymovement LOCALID_CHERRYGROVE_UB_BLACEPHALON, CherrygroveCity_Movement_PulseInPlaceRight
 	playmoncry SPECIES_BLACEPHALON, CRY_MODE_NORMAL
-	waitmovement LOCALID_CHERRYGROVE_UB_BLACEPHALON
-	waitmoncry
 	fadescreenswapbuffers FADE_TO_WHITE
-	setobjectxy LOCALID_CHERRYGROVE_UB_STAKATAKA, 26, 10
+	applymovement LOCALID_CHERRYGROVE_UB_STAKATAKA, CherrygroveCity_Movement_StakatakaWades
+	playse SE_PUDDLE
 	fadescreenswapbuffers FADE_FROM_WHITE
-	playmoncry SPECIES_STAKATAKA, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_CHERRYGROVE_UB_STAKATAKA
 	waitmoncry
-	applymovement LOCALID_CHERRYGROVE_UB_LOOKER, Common_Movement_ExclamationMark
-	waitmovement LOCALID_CHERRYGROVE_UB_LOOKER
-	msgbox CherrygroveCity_Text_UBSynergyClose, MSGBOX_DEFAULT
+	playse SE_PUDDLE
+	waitse
+	msgbox CherrygroveCity_Text_UBMovementConfirmed, MSGBOX_DEFAULT
 	closemessage
-	@ THE SURPRISE (author's note, V21). Looker has spent the whole mission
-	@ treating Kukui as a civilian in a lab coat. Nobody has seen a Poke Ball
-	@ on him in four days. Incineroar drops in at (26,9), directly north of
-	@ Stakataka and south of Kukui, and hits downward.
-	msgbox CherrygroveCity_Text_UBKukuiSendsOut, MSGBOX_DEFAULT
+	@ It leans for (26,10). The player is already facing west, at it.
+	applymovement LOCALID_CHERRYGROVE_UB_STAKATAKA, CherrygroveCity_Movement_PulseInPlaceRight
+	waitmovement LOCALID_CHERRYGROVE_UB_STAKATAKA
+	msgbox CherrygroveCity_Text_UBKukuiIntercept, MSGBOX_DEFAULT
 	closemessage
-	call CherrygroveCity_EventScript_UBFlash
-	clearflag FLAG_TEMP_6
-	addobject LOCALID_CHERRYGROVE_UB_INCINEROAR
+	applymovement LOCALID_CHERRYGROVE_UB_INCINEROAR, CherrygroveCity_Movement_IncineroarBlocks
+	waitmovement LOCALID_CHERRYGROVE_UB_INCINEROAR
+	applymovement LOCALID_CHERRYGROVE_UB_INCINEROAR, CherrygroveCity_Movement_AttackInPlaceLeft
 	playmoncry SPECIES_INCINEROAR, CRY_MODE_ENCOUNTER
-	waitmoncry
-	applymovement LOCALID_CHERRYGROVE_UB_INCINEROAR, CherrygroveCity_Movement_AttackInPlaceDown
 	waitmovement LOCALID_CHERRYGROVE_UB_INCINEROAR
 	call CherrygroveCity_EventScript_UBShake
-	call CherrygroveCity_EventScript_UBFlash
-	@ Thrown back along row 10 to its own tile: (26,10)->(25,10)->(24,10),
-	@ still facing east.
 	applymovement LOCALID_CHERRYGROVE_UB_STAKATAKA, CherrygroveCity_Movement_UBKnockedBack
 	waitmovement LOCALID_CHERRYGROVE_UB_STAKATAKA
-	turnobject LOCALID_CHERRYGROVE_UB_INCINEROAR, DIR_WEST
-	msgbox CherrygroveCity_Text_UBKukuiRevealed, MSGBOX_DEFAULT
-	goto CherrygroveCity_EventScript_UBAnabelSaves
-
-@ The creature aims at the PLAYER, and Anabel is already moving (author's
-@ note, V21: she feels it before it happens, and that is what finally has to
-@ be explained). The swap is sequential and never contends for a tile:
-@ Anabel (28,9)->(27,9); the player is pulled (27,10)->(28,10) still facing
-@ west; Anabel then drops into the vacated (27,10), between the player and
-@ the light. Nobody ends up south of the player, so the text box covers
-@ nobody for the rest of the mission.
-CherrygroveCity_EventScript_UBAnabelSaves::
+	waitmoncry
+	playse SE_PUDDLE
+	msgbox CherrygroveCity_Text_UBKukuiHold, MSGBOX_DEFAULT
 	closemessage
+	goto CherrygroveCity_EventScript_UBRescue
+
+@ ANABEL PULLS THE PLAYER OUT (V2 section 9). A small distortion starts to
+@ form where the player stands (sparkles at (27,10)); she sees it before it
+@ has any strength. Strictly sequential, no tile contended:
+@   1. Anabel (28,9)->(27,9), faces south, at the player.
+@   2. Player (27,10)->(28,10), facing preserved (west).
+@   3. The flash and the distortion hit the EMPTY (27,10). Anabel stays north
+@      of it until it is over - she does not take it on her body.
+@   4. Only then Anabel (27,9)->(27,10), faces west.
+@   5. Looker (27,8)->(27,9), faces south, at her.
+@ The player is turned west explicitly after the step and again after the
+@ flash: nothing relies on the facing a movement happened to leave.
+CherrygroveCity_EventScript_UBRescue::
 	applymovement LOCALID_CHERRYGROVE_UB_NECROZMA, CherrygroveCity_Movement_PulseInPlaceRight
 	waitmovement LOCALID_CHERRYGROVE_UB_NECROZMA
-	msgbox CherrygroveCity_Text_UBNecrozmaTargets, MSGBOX_DEFAULT
-	closemessage
+	playse SE_M_TELEPORT
+	dofieldeffectsparkle 27, 10, 0
+	waitfieldeffect FLDEFF_SPARKLE
 	playse SE_PIN
+	applymovement LOCALID_CHERRYGROVE_UB_ANABEL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_CHERRYGROVE_UB_ANABEL
+	msgbox CherrygroveCity_Text_UBAnabelMove, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_CHERRYGROVE_UB_ANABEL, CherrygroveCity_Movement_AnabelStepWest
 	waitmovement LOCALID_CHERRYGROVE_UB_ANABEL
 	applymovement OBJ_EVENT_ID_PLAYER, CherrygroveCity_Movement_PlayerPulledAside
 	waitmovement OBJ_EVENT_ID_PLAYER
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	@ The opening snaps shut on nobody.
+	playse SE_M_REFLECT
+	fadescreenswapbuffers FADE_TO_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
+	dofieldeffectsparkle 27, 10, 0
+	call CherrygroveCity_EventScript_UBShake
+	waitfieldeffect FLDEFF_SPARKLE
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	delay 20
 	applymovement LOCALID_CHERRYGROVE_UB_ANABEL, CherrygroveCity_Movement_AnabelTakesTheFront
 	waitmovement LOCALID_CHERRYGROVE_UB_ANABEL
-	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
-	call CherrygroveCity_EventScript_UBFlash
-	call CherrygroveCity_EventScript_UBShake
-	waitmoncry
-	@ Looker (27,8)->(27,9), ending facing down at her. (27,9) is free: she
-	@ walked through it on her way to the front.
 	applymovement LOCALID_CHERRYGROVE_UB_LOOKER, CherrygroveCity_Movement_LookerToAnabel
 	waitmovement LOCALID_CHERRYGROVE_UB_LOOKER
-	msgbox CherrygroveCity_Text_UBAnabelFaller, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBLookerChecks, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBAnabelReady, MSGBOX_DEFAULT
 	closemessage
-	@ Back to the water for the fight: she never stops working, and that is
-	@ the characterisation (design section 3.1).
 	turnobject LOCALID_CHERRYGROVE_UB_LOOKER, DIR_WEST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	@ Checkpoint: from here on a blackout comes back as a retry, and nothing
+	@ above is ever shown again in this mission.
+	setflag FLAG_CHERRYGROVE_UB_ENGAGED
+	goto CherrygroveCity_EventScript_UBChoose
+
+@ ---------------------------------------------------------------------------
+@ Retry after a blackout: the beach was staged by ON_TRANSITION (rift, Necrozma
+@ and both beasts in place, Incineroar at (26,10)). The line forms up into the
+@ post-rescue formation by free paths - nobody pretends the player was pulled
+@ again - and goes straight to the choice.
+@   Kukui   (26,7)->(26,8), faces west.
+@   Player  (27,8)->(28,8)->(28,9)->(28,10), faces west.
+@   Anabel  (28,7)->(28,8)->(27,8)->(27,9)->(27,10), faces west. Walks after
+@           the player has left both (28,8) and (27,8).
+@   Looker  (27,7)->(27,8)->(27,9), faces west. Walks after Anabel.
+@ The threat theme is set again: the map load cleared savedMusic.
+@ ---------------------------------------------------------------------------
+CherrygroveCity_EventScript_UBSceneRetry::
+	closemessage
+	lockall
+	hidefollower
+	playbgm MUS_DP_LEGEND_APPEARS, TRUE
+	applymovement LOCALID_CHERRYGROVE_UB_KUKUI, CherrygroveCity_Movement_StepDownFaceLeft
+	waitmovement LOCALID_CHERRYGROVE_UB_KUKUI
+	applymovement OBJ_EVENT_ID_PLAYER, CherrygroveCity_Movement_PlayerRetryToLine
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement LOCALID_CHERRYGROVE_UB_ANABEL, CherrygroveCity_Movement_AnabelRetryToFront
+	waitmovement LOCALID_CHERRYGROVE_UB_ANABEL
+	applymovement LOCALID_CHERRYGROVE_UB_LOOKER, CherrygroveCity_Movement_LookerRetryToLine
+	waitmovement LOCALID_CHERRYGROVE_UB_LOOKER
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	goto CherrygroveCity_EventScript_UBChoose
 
 @ Flash da cena. fadescreenswapbuffers e NAO fadescreen: fadescreen copia
@@ -1189,15 +1263,29 @@ CherrygroveCity_EventScript_UBShake::
 	waitstate
 	return
 
-@ Standard Rift Mission structure: the player picks which Ultra Beast to
-@ fight, the mission companion takes the other. No cancel (ignoreBPress
-@ TRUE) - the scene has already started, so VAR_RESULT can only be 0 or 1.
-@ The pick is per attempt: after a blackout the player chooses again.
-@ Splitting them is not a menu convenience - it is the counter-measure to
-@ the synergy the scene just showed: whoever is being looked at cannot hide.
-@ Everyone already faces the right way in either branch: player (28,10),
-@ Anabel (27,10), Looker (27,9), Kukui (26,8) and Incineroar (26,9) are all
-@ east of the beasts and face west, and both beasts are FACE_RIGHT.
+@ The edge of the rift wavering: a short sideways tremor and the warp sound,
+@ no flash - it must not read as another attack.
+CherrygroveCity_EventScript_UBRiftPulse::
+	playse SE_M_TELEPORT
+	setvar VAR_0x8004, 0
+	setvar VAR_0x8005, 1
+	setvar VAR_0x8006, 6
+	setvar VAR_0x8007, 3
+	special ShakeCamera
+	waitstate
+	waitse
+	return
+
+@ ---------------------------------------------------------------------------
+@ The split and the battle (V2 section 10). Kukui asks, so the menu wears his
+@ plaque. No cancel (ignoreBPress TRUE): the scene has started. The pick is
+@ per attempt. Positions: player (28,10), Anabel (27,10), Looker (27,9),
+@ Kukui (26,8), Incineroar (26,10); Blacephalon (24,9), Stakataka (24,10).
+@   Blacephalon: Incineroar keeps the south line at (26,10), on Stakataka.
+@   Stakataka:   Incineroar backs up to (26,9) and presses Blacephalon so the
+@                flashes point north, away from the player's front. It only
+@                leaves the south tile once the player has taken that front.
+@ ---------------------------------------------------------------------------
 CherrygroveCity_EventScript_UBChoose::
 	msgbox CherrygroveCity_Text_UBChoosePrompt, MSGBOX_DEFAULT
 	dynmultichoice 0, 0, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, CherrygroveCity_Text_ChoiceBlacephalon, CherrygroveCity_Text_ChoiceStakataka
@@ -1207,13 +1295,20 @@ CherrygroveCity_EventScript_UBChoose::
 	applymovement LOCALID_CHERRYGROVE_UB_BLACEPHALON, Common_Movement_ExclamationMark
 	waitmovement LOCALID_CHERRYGROVE_UB_BLACEPHALON
 	msgbox CherrygroveCity_Text_UBPickedBlacephalon, MSGBOX_DEFAULT
-	closemessage
-	goto CherrygroveCity_EventScript_UBBattle
+	goto CherrygroveCity_EventScript_UBAnabelWatch
 
 CherrygroveCity_EventScript_UBPickStakataka::
 	applymovement LOCALID_CHERRYGROVE_UB_STAKATAKA, Common_Movement_ExclamationMark
 	waitmovement LOCALID_CHERRYGROVE_UB_STAKATAKA
 	msgbox CherrygroveCity_Text_UBPickedStakataka, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_CHERRYGROVE_UB_INCINEROAR, CherrygroveCity_Movement_IncineroarToNorth
+	waitmovement LOCALID_CHERRYGROVE_UB_INCINEROAR
+	applymovement LOCALID_CHERRYGROVE_UB_INCINEROAR, CherrygroveCity_Movement_AttackInPlaceLeft
+	waitmovement LOCALID_CHERRYGROVE_UB_INCINEROAR
+
+CherrygroveCity_EventScript_UBAnabelWatch::
+	msgbox CherrygroveCity_Text_UBAnabelWatch, MSGBOX_DEFAULT
 	closemessage
 	goto CherrygroveCity_EventScript_UBBattle
 
@@ -1222,22 +1317,19 @@ CherrygroveCity_EventScript_UBPickStakataka::
 @ B_FLAG_NO_WHITEOUT is deliberately NOT set: this is a threat battle, so
 @ losing means a blackout and a retry.
 @
-@ NOT a skeleton: the numbers below are the target. Third step of the ladder
-@ after Blackthorn (3 bars / Lv75 / x120) and Mahogany (4 / Lv80 / x130).
-@ The bars have been at MAX_BOSS_HEALTH_BARS since Mission 2, so the step up
-@ here is the level, the multiplier and - above all - one control move per
-@ boss: Calm Mind on Blacephalon, Trick Room on Stakataka.
+@ Third step of the ladder after Blackthorn (3 bars / Lv75 / x120) and
+@ Mahogany (4 / Lv80 / x130). Unchanged by the V2 script. The bars have been
+@ at MAX_BOSS_HEALTH_BARS since Mission 2, so the step up here is the level,
+@ the multiplier and - above all - one control move per boss: Calm Mind on
+@ Blacephalon, Trick Room on Stakataka.
 @ Mind Blown is left off Blacephalon ON PURPOSE: it costs half its max HP,
 @ which on a 4-bar boss is the AI killing itself for free.
 @ If playtesting says "wall" instead of "threat", turn the screws in THIS
-@ order, one at a time (different from Mission 2, because here the held item
-@ is the loosest screw):
+@ order, one at a time:
 @   1. drop ITEM_WEAKNESS_POLICY from Stakataka (highest variance)
 @   2. multiplier 140 -> 135 -> 130
 @   3. swap Trick Room for a fourth attacking move
 @   4. level 85 -> 80
-@ The bars are at the ceiling and are not a screw. Do not touch anything in
-@ section 1 of the implementation doc to compensate.
 @
 @ Macro order is the same as bosslegendaryencounterwithmoves
 @ (asm/macros/event.inc): setbossbattle -> playmoncry -> seteventmon ->
@@ -1262,9 +1354,10 @@ CherrygroveCity_EventScript_UBSetupStakataka::
 
 @ LOST, DREW and FORFEITED never come back here - the engine blacks the
 @ player out to the Cherrygrove Pokemon Center (CherrygroveCity_OnLoad does
-@ the setrespawn). CAUGHT and RAN are unreachable (ball blocked; Run becomes
-@ FORFEITED in a boss) but are handled anyway: anything that is not WON
-@ resets the scene, never wins it.
+@ the setrespawn), and FLAG_CHERRYGROVE_UB_ENGAGED makes the next load a
+@ retry. CAUGHT and RAN are unreachable (ball blocked; Run becomes FORFEITED
+@ in a boss) but are handled anyway: anything that is not WON resets to the
+@ retry, never wins it.
 CherrygroveCity_EventScript_UBStartBattle::
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -1273,13 +1366,11 @@ CherrygroveCity_EventScript_UBStartBattle::
 	goto_if_eq VAR_TEMP_2, B_OUTCOME_WON, CherrygroveCity_EventScript_UBResolved
 	goto CherrygroveCity_EventScript_UBUnresolved
 
-@ Nothing was recorded as done: the event flag is still set, so reloading the
-@ map puts the cast back on its map.json spots with the beasts, Necrozma and
-@ Incineroar hidden again, and talking to Looker restarts the whole scene -
-@ the pick included.
-@ (28,8) is free sand, one step east of Looker's talk tile.
+@ Interrupted, not lost - and the beasts are still on the shore, so nobody
+@ says they escaped. Nothing is recorded as done; the reload puts the beach
+@ back as a retry. (28,8) is free sand, one step east of Looker's talk tile.
 CherrygroveCity_EventScript_UBUnresolved::
-	msgbox CherrygroveCity_Text_UBGotAway, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBUnresolved, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
 	warpsilent MAP_CHERRYGROVE_CITY, 28, 8
@@ -1287,42 +1378,88 @@ CherrygroveCity_EventScript_UBUnresolved::
 	releaseall
 	end
 
-@ Kukui's fight against the other beast is narrative: it resolves with the
-@ player's win, and only his line afterwards changes with the pick. It is
-@ staged, not fought - Incineroar swings west at the beasts once and that is
-@ the whole of it. A real battle against Kukui is NOT the plan.
+@ ---------------------------------------------------------------------------
+@ After the win (V2 section 11). A battle does not reload the map, so every
+@ object is where the scene left it. The threat theme is set again explicitly
+@ instead of trusting savedMusic alone, and the player is turned west.
+@ Kukui closes his front with one short action of Incineroar - from (26,10)
+@ if the player took Blacephalon, from (26,9) if they took Stakataka; either
+@ way it faces west.
+@ ---------------------------------------------------------------------------
 CherrygroveCity_EventScript_UBResolved::
-	@ Every object is still where the scene left it: a battle does not reload
-	@ the map. Incineroar (26,9) faces west at x=24.
+	playbgm MUS_DP_LEGEND_APPEARS, TRUE
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	applymovement LOCALID_CHERRYGROVE_UB_INCINEROAR, CherrygroveCity_Movement_AttackInPlaceLeft
-	playmoncry SPECIES_INCINEROAR, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_INCINEROAR, CRY_MODE_NORMAL
 	waitmovement LOCALID_CHERRYGROVE_UB_INCINEROAR
 	waitmoncry
-	call CherrygroveCity_EventScript_UBFlash
 	goto_if_eq VAR_TEMP_3, 1, CherrygroveCity_EventScript_UBKukuiFoughtBlacephalon
 	msgbox CherrygroveCity_Text_UBKukuiFoughtStakataka, MSGBOX_DEFAULT
-	goto CherrygroveCity_EventScript_UBAbsorb
+	goto CherrygroveCity_EventScript_UBContain
 
 CherrygroveCity_EventScript_UBKukuiFoughtBlacephalon::
 	msgbox CherrygroveCity_Text_UBKukuiFoughtBlacephalon, MSGBOX_DEFAULT
 
-@ Necrozma absorbs BOTH beasts and leaves - the pattern of every Rift
-@ Mission (design section 6). Positions here: Blacephalon (24,9), Stakataka
-@ (24,10), Necrozma (22,10). Both are dragged one tile west, to (23,9) and
-@ (23,10), which puts them against it; both tiles are open ocean.
-CherrygroveCity_EventScript_UBAbsorb::
+@ ANTICIPATION, WITH A LIMIT. Necrozma raises its arms and the meter repeats
+@ the pulse change Mahogany recorded - BEFORE any pull. Anabel throws an
+@ ordinary police Ball (not Kurt's Beast Ball, nothing leaves the player's bag)
+@ at the beast the player beat, from (27,10). The Ball arrives while the beast
+@ is still on its own tile - the team really acted first - and the link to
+@ the rift pulses, breaks the containment and throws the Ball back intact.
+CherrygroveCity_EventScript_UBContain::
 	closemessage
+	applymovement LOCALID_CHERRYGROVE_UB_NECROZMA, CherrygroveCity_Movement_PulseInPlaceRight
+	waitmovement LOCALID_CHERRYGROVE_UB_NECROZMA
+	playse SE_M_DETECT
+	waitse
+	msgbox CherrygroveCity_Text_UBAnabelWindow, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_CHERRYGROVE_UB_ANABEL, CherrygroveCity_Movement_AnabelThrows
+	playse SE_BALL_THROW
+	waitmovement LOCALID_CHERRYGROVE_UB_ANABEL
+	waitse
+	call CherrygroveCity_EventScript_UBTargetStartles
+	playse SE_M_REFLECT
+	waitse
+	call CherrygroveCity_EventScript_UBRiftPulse
+	playse SE_BALL_BOUNCE_1
+	waitse
+	msgbox CherrygroveCity_Text_UBContainmentFailed, MSGBOX_DEFAULT
+	closemessage
+	goto CherrygroveCity_EventScript_UBAbsorb
+
+CherrygroveCity_EventScript_UBTargetStartles::
+	goto_if_eq VAR_TEMP_3, 1, CherrygroveCity_EventScript_UBTargetStakataka
+	applymovement LOCALID_CHERRYGROVE_UB_BLACEPHALON, Common_Movement_ExclamationMark
+	waitmovement LOCALID_CHERRYGROVE_UB_BLACEPHALON
+	return
+
+CherrygroveCity_EventScript_UBTargetStakataka::
+	applymovement LOCALID_CHERRYGROVE_UB_STAKATAKA, Common_Movement_ExclamationMark
+	waitmovement LOCALID_CHERRYGROVE_UB_STAKATAKA
+	return
+
+@ The absorption is TRIED, not watched: Incineroar hits the light between them
+@ while the pull starts, the filament wavers and does not break in time. The
+@ beasts push back against the drag for a moment, then turn to light as they
+@ are pulled to (23,9) and (23,10), against Necrozma. Only the beasts are
+@ removed. Necrozma stays, glows, and - in every branch - wavers again.
+CherrygroveCity_EventScript_UBAbsorb::
 	applymovement LOCALID_CHERRYGROVE_UB_NECROZMA, CherrygroveCity_Movement_PulseInPlaceRight
 	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
 	waitmovement LOCALID_CHERRYGROVE_UB_NECROZMA
+	msgbox CherrygroveCity_Text_UBKukuiBreakLink, MSGBOX_DEFAULT
+	closemessage
 	waitmoncry
+	applymovement LOCALID_CHERRYGROVE_UB_INCINEROAR, CherrygroveCity_Movement_AttackInPlaceLeft
 	applymovement LOCALID_CHERRYGROVE_UB_BLACEPHALON, CherrygroveCity_Movement_UBPulledIn
 	applymovement LOCALID_CHERRYGROVE_UB_STAKATAKA, CherrygroveCity_Movement_UBPulledIn
+	waitmovement LOCALID_CHERRYGROVE_UB_INCINEROAR
+	call CherrygroveCity_EventScript_UBRiftPulse
 	waitmovement LOCALID_CHERRYGROVE_UB_BLACEPHALON
 	waitmovement LOCALID_CHERRYGROVE_UB_STAKATAKA
 	call CherrygroveCity_EventScript_UBShake
-	@ Their flag is FLAG_TEMP_2; Necrozma and Incineroar have their own, so
-	@ removeobject here touches nobody else.
+	@ Their flag is FLAG_TEMP_2; everybody else has their own.
 	fadescreenswapbuffers FADE_TO_WHITE
 	removeobject LOCALID_CHERRYGROVE_UB_BLACEPHALON
 	removeobject LOCALID_CHERRYGROVE_UB_STAKATAKA
@@ -1335,71 +1472,194 @@ CherrygroveCity_EventScript_UBAbsorb::
 	waitmovement LOCALID_CHERRYGROVE_UB_LOOKER
 	waitmovement LOCALID_CHERRYGROVE_UB_ANABEL
 	waitmoncry
-	msgbox CherrygroveCity_Text_UBAbsorbed, MSGBOX_DEFAULT
+	call CherrygroveCity_EventScript_UBFlash
+	applymovement LOCALID_CHERRYGROVE_UB_NECROZMA, CherrygroveCity_Movement_PulseInPlaceRight
+	waitmovement LOCALID_CHERRYGROVE_UB_NECROZMA
+	call CherrygroveCity_EventScript_UBRiftPulse
+	@ Anabel reads the instrument the team already has; Looker notes the
+	@ bearing it shows and the line of the opening. Nobody claims a count
+	@ bigger than these two, and nobody says where it will open next.
+	msgbox CherrygroveCity_Text_UBAbsorbedSignals, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBLookerRecording, MSGBOX_DEFAULT
 	closemessage
-	call CherrygroveCity_EventScript_UBNecrozmaSensesCosmog
-	@ It leaves the way it came. Own flag (FLAG_TEMP_5).
-	call CherrygroveCity_EventScript_UBShake
-	fadescreenswapbuffers FADE_TO_WHITE
-	removeobject LOCALID_CHERRYGROVE_UB_NECROZMA
-	fadescreenswapbuffers FADE_FROM_WHITE
-	msgbox CherrygroveCity_Text_UBNecrozmaGone, MSGBOX_DEFAULT
-	closemessage
-	goto CherrygroveCity_EventScript_UBAftermath
+	call CherrygroveCity_EventScript_UBPartner
+	goto CherrygroveCity_EventScript_UBRetreat
 
-@ Optional reaction to a Cosmog-family Pokemon in the party (non-egg; the
-@ special is the one Elm's Eviolite scene uses). Checked AFTER the battle on
-@ purpose: the battle can evolve it. Necrozma leans east, (22,10)->(23,10),
-@ free since Stakataka was removed. Without the Pokemon the whole block is
-@ one specialvar and a return - the scene is identical.
-CherrygroveCity_EventScript_UBNecrozmaSensesCosmog::
+@ ---------------------------------------------------------------------------
+@ Optional partner (V2 section 12). CheckMysteryEggPokemon is sampled AFTER
+@ the battle (it can evolve the Pokemon) and returns the first eligible one in
+@ party order, so the species, the cry, the actor and {STR_VAR_1} all agree and
+@ never change mid-scene. The Pokemon comes OUT of its Ball at (29,10), on the
+@ player's sheltered side, before anything is said about it. Four templates
+@ share FLAG_TEMP_A; at most one is ever added. Without the family the block
+@ is one specialvar and a return: Looker already has the bearing.
+@ ---------------------------------------------------------------------------
+CherrygroveCity_EventScript_UBPartner::
 	specialvar VAR_RESULT, CheckMysteryEggPokemon
 	copyvar VAR_TEMP_4, VAR_RESULT
 	goto_if_eq VAR_TEMP_4, SPECIES_NONE, CherrygroveCity_EventScript_UBReturn
 	bufferspeciesname STR_VAR_1, VAR_TEMP_4
-	applymovement LOCALID_CHERRYGROVE_UB_NECROZMA, CherrygroveCity_Movement_NecrozmaLean
-	waitmovement LOCALID_CHERRYGROVE_UB_NECROZMA
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	playmoncry SPECIES_NECROZMA, CRY_MODE_NORMAL
-	waitmovement OBJ_EVENT_ID_PLAYER
+	playse SE_BALL_OPEN
+	clearflag FLAG_TEMP_A
+	call CherrygroveCity_EventScript_UBAddPartner
+	playmoncry VAR_TEMP_4, CRY_MODE_ENCOUNTER
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	waitmoncry
-	goto_if_eq VAR_TEMP_4, SPECIES_SOLGALEO, CherrygroveCity_EventScript_UBNecrozmaSensesLegend
-	goto_if_eq VAR_TEMP_4, SPECIES_LUNALA, CherrygroveCity_EventScript_UBNecrozmaSensesLegend
+	@ Necrozma turns its attention to it - and does NOT come across the
+	@ sandbar: Incineroar still holds the shore.
+	applymovement LOCALID_CHERRYGROVE_UB_NECROZMA, CherrygroveCity_Movement_PulseInPlaceRight
+	waitmovement LOCALID_CHERRYGROVE_UB_NECROZMA
+	goto_if_eq VAR_TEMP_4, SPECIES_SOLGALEO, CherrygroveCity_EventScript_UBPartnerLegend
+	goto_if_eq VAR_TEMP_4, SPECIES_LUNALA, CherrygroveCity_EventScript_UBPartnerLegend
+	@ Cosmog / Cosmoem: kept beside the player. Cosmoem only floats, so its
+	@ recoil is in place, like Cosmog's: the movement has to be true of the
+	@ sprite on screen.
 	msgbox CherrygroveCity_Text_UBNecrozmaSensesCosmog, MSGBOX_DEFAULT
 	closemessage
+	applymovement LOCALID_CHERRYGROVE_UB_INCINEROAR, CherrygroveCity_Movement_AttackInPlaceLeft
+	waitmovement LOCALID_CHERRYGROVE_UB_INCINEROAR
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	return
 
-CherrygroveCity_EventScript_UBNecrozmaSensesLegend::
-	msgbox CherrygroveCity_Text_UBNecrozmaSensesLegend, MSGBOX_DEFAULT
+@ Solgaleo / Lunala: out of the Ball first, facing west, then a cry and a
+@ pulse. The edge of the opening steadies for a few moments - long enough for
+@ Looker to CONFIRM the bearing he already took. It frees no one, holds no one
+@ and fixes nothing: when the pulse ends the wavering comes back.
+CherrygroveCity_EventScript_UBPartnerLegend::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	playmoncry VAR_TEMP_4, CRY_MODE_ENCOUNTER
+	call CherrygroveCity_EventScript_UBFlash
+	waitmoncry
+	msgbox CherrygroveCity_Text_UBPartnerWindow, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBPartnerBearing, MSGBOX_DEFAULT
 	closemessage
+	call CherrygroveCity_EventScript_UBRiftPulse
+	return
+
+CherrygroveCity_EventScript_UBAddPartner::
+	goto_if_eq VAR_TEMP_4, SPECIES_COSMOEM, CherrygroveCity_EventScript_UBAddCosmoem
+	goto_if_eq VAR_TEMP_4, SPECIES_SOLGALEO, CherrygroveCity_EventScript_UBAddSolgaleo
+	goto_if_eq VAR_TEMP_4, SPECIES_LUNALA, CherrygroveCity_EventScript_UBAddLunala
+	addobject LOCALID_CHERRYGROVE_UB_COSMOG
+	return
+CherrygroveCity_EventScript_UBAddCosmoem::
+	addobject LOCALID_CHERRYGROVE_UB_COSMOEM
+	return
+CherrygroveCity_EventScript_UBAddSolgaleo::
+	addobject LOCALID_CHERRYGROVE_UB_SOLGALEO
+	return
+CherrygroveCity_EventScript_UBAddLunala::
+	addobject LOCALID_CHERRYGROVE_UB_LUNALA
 	return
 
 CherrygroveCity_EventScript_UBReturn::
 	return
 
-@ People before the report (design section 3.1, Looker). Then the cast lines
-@ up ORTHOGONALLY around the player at (28,10): Anabel already at (27,10)
-@ west, Looker one step east to (28,9) north, Kukui the long way round the
-@ back to (29,10) east. Nobody stands at (28,11), so the text box covers
-@ nobody. Incineroar is recalled first, which is what frees (26,9) for
-@ Kukui's first step.
-CherrygroveCity_EventScript_UBAftermath::
-	@ A ameaca foi embora: limpa o savedMusic e volta ao tema de Cherrygrove.
-	fadedefaultbgm
-	msgbox CherrygroveCity_Text_UBAftermath, MSGBOX_DEFAULT
+@ ---------------------------------------------------------------------------
+@ Retreat and safety (V2 section 13). Necrozma goes through the opening and
+@ the edge closes AFTER it - two beats, not one flash for everything. Anabel
+@ waits for the reading to drop before clearing the beach, and only then does
+@ the town theme come back. Then the recalls, on screen and without a flash:
+@ the player's partner first (its tile is Kukui's destination), Incineroar
+@ once Kukui has checked the shore.
+@ ---------------------------------------------------------------------------
+CherrygroveCity_EventScript_UBRetreat::
+	call CherrygroveCity_EventScript_UBShake
+	fadescreenswapbuffers FADE_TO_WHITE
+	removeobject LOCALID_CHERRYGROVE_UB_NECROZMA
+	fadescreenswapbuffers FADE_FROM_WHITE
+	delay 20
+	call CherrygroveCity_EventScript_UBRiftPulse
+	removeobject LOCALID_CHERRYGROVE_UB_RIFT
+	playse SE_WARP_OUT
+	waitse
+	msgbox CherrygroveCity_Text_UBNecrozmaGone, MSGBOX_DEFAULT
 	closemessage
-	call CherrygroveCity_EventScript_UBFlash
+	delay 60
+	msgbox CherrygroveCity_Text_UBStreetClear, MSGBOX_DEFAULT
+	closemessage
+	fadedefaultbgm
+	call CherrygroveCity_EventScript_UBPartnerRecalled
+	playse SE_BALL_OPEN
 	removeobject LOCALID_CHERRYGROVE_UB_INCINEROAR
-	@ Looker (27,9)->(28,9), then faces down at the player.
+	waitse
+	msgbox CherrygroveCity_Text_UBAftermathCheck, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBAftermathAnabel, MSGBOX_DEFAULT
+	closemessage
+	goto CherrygroveCity_EventScript_UBAftermath
+
+CherrygroveCity_EventScript_UBPartnerRecalled::
+	goto_if_eq VAR_TEMP_4, SPECIES_NONE, CherrygroveCity_EventScript_UBReturn
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	playse SE_BALL_OPEN
+	removeobject LOCALID_CHERRYGROVE_UB_COSMOG
+	removeobject LOCALID_CHERRYGROVE_UB_COSMOEM
+	removeobject LOCALID_CHERRYGROVE_UB_SOLGALEO
+	removeobject LOCALID_CHERRYGROVE_UB_LUNALA
+	waitse
+	return
+
+@ ---------------------------------------------------------------------------
+@ The conversation (V2 sections 13-16). Formation, built orthogonally around
+@ the player at (28,10):
+@   Looker (27,9)->(28,9), faces south: NORTH of the player.
+@   Kukui  (26,8)->(27,8)->(28,8)->(29,8)->(29,9)->(29,10), faces west: EAST.
+@          Row 8 is empty (Looker and Anabel both left it), (29,9) and (29,10)
+@          are free because the partner was recalled first.
+@   Anabel stays at (27,10) and faces east: WEST of the player.
+@ Nobody stands at (28,11), so the box covers nobody. The player turns to each
+@ speaker: west for Anabel, north for Looker, east for Kukui.
+@ ---------------------------------------------------------------------------
+CherrygroveCity_EventScript_UBAftermath::
 	applymovement LOCALID_CHERRYGROVE_UB_LOOKER, CherrygroveCity_Movement_LookerToPlayerSide
 	waitmovement LOCALID_CHERRYGROVE_UB_LOOKER
-	@ Kukui (26,8)->(27,8)->(28,8)->(29,8)->(29,9)->(29,10), faces west.
-	@ Row 8 is empty (Looker and Anabel both left it) and column 29 is clear.
 	applymovement LOCALID_CHERRYGROVE_UB_KUKUI, CherrygroveCity_Movement_KukuiToPlayer
 	waitmovement LOCALID_CHERRYGROVE_UB_KUKUI
 	turnobject LOCALID_CHERRYGROVE_UB_ANABEL, DIR_EAST
-	msgbox CherrygroveCity_Text_UBKukuiRecognition, MSGBOX_DEFAULT
+	@ Anabel's explanation, after the danger and in her own words. Looker
+	@ looks at her and does not interrupt; Kukui just listens.
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	msgbox CherrygroveCity_Text_UBAnabelFallerIntro, MSGBOX_DEFAULT
+	msgbox CherrygroveCity_Text_UBAnabelFaller, MSGBOX_DEFAULT
 	closemessage
+	turnobject LOCALID_CHERRYGROVE_UB_LOOKER, DIR_WEST
+	delay 30
+	msgbox CherrygroveCity_Text_UBAnabelFallerLimit, MSGBOX_DEFAULT
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox CherrygroveCity_Text_UBLookerSupport, MSGBOX_DEFAULT
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	msgbox CherrygroveCity_Text_UBAnabelSupport, MSGBOX_DEFAULT
+	closemessage
+	@ The player's acknowledgement is a gesture, not a line.
+	applymovement OBJ_EVENT_ID_PLAYER, CherrygroveCity_Movement_PlayerNods
+	waitmovement OBJ_EVENT_ID_PLAYER
+	turnobject LOCALID_CHERRYGROVE_UB_LOOKER, DIR_SOUTH
+	@ What Kukui and the records add.
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	msgbox CherrygroveCity_Text_UBKukuiThanks, MSGBOX_DEFAULT
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	msgbox CherrygroveCity_Text_UBAftermathPlan, MSGBOX_DEFAULT
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox CherrygroveCity_Text_UBAftermathBearing, MSGBOX_DEFAULT
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	msgbox CherrygroveCity_Text_UBAftermathLimit, MSGBOX_DEFAULT
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	msgbox CherrygroveCity_Text_UBKukuiElm, MSGBOX_DEFAULT
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox CherrygroveCity_Text_UBLookerElm, MSGBOX_DEFAULT
+	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	msgbox CherrygroveCity_Text_UBKukuiLogs, MSGBOX_DEFAULT
+	closemessage
+	@ Optional, only if the partner came out. It is back in its Ball now, and
+	@ nobody describes it acting outside it.
 	goto_if_eq VAR_TEMP_4, SPECIES_NONE, CherrygroveCity_EventScript_UBHook
 	goto_if_eq VAR_TEMP_4, SPECIES_SOLGALEO, CherrygroveCity_EventScript_UBAftermathLegend
 	goto_if_eq VAR_TEMP_4, SPECIES_LUNALA, CherrygroveCity_EventScript_UBAftermathLegend
@@ -1408,33 +1668,37 @@ CherrygroveCity_EventScript_UBAftermath::
 	goto CherrygroveCity_EventScript_UBHook
 
 CherrygroveCity_EventScript_UBAftermathLegend::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	msgbox CherrygroveCity_Text_UBAftermathLegend, MSGBOX_DEFAULT
 	closemessage
 
-@ The hook names NO place (design section 6, "gancho sem destino"): the
-@ briefing in Olivine is what reveals Mission 4. Looker dragging Kukui off
-@ the sand is load-bearing too - the Mission 4 briefing calls back to it.
-@
-@ REVISION 4: Kukui's last box used to say he was coming along, and the
-@ Mission 4 briefing used to put him in New Bark. The author cut that - he
-@ does not go. What he does instead is the chain that STARTS Mission 4:
-@ he goes reading, finds Elm's six weeks of "broken sensor", and telephones
-@ the police. Elm is the one on the ground from there.
-@ This box and OlivineCity_House1_Text_BriefingM4 are one pair. Never edit
-@ one of them alone.
+@ The hook names NO place: the NEXT summons does (Looker's call). Kukui's last
+@ box is one half of a pair with Mission 4 - he asks Elm for his readings,
+@ and Elm's answer is what opens New Bark. Kukui does NOT know about six weeks
+@ of "broken sensor"; that discovery is Elm's, in the interval.
+@ Pair: CherrygroveCity_Text_UBKukuiElm/UBHookKukui <->
+@ RiftMissions_Text_LookerCallM4 and OlivineCity_House1_Text_BriefingM4Evidence.
+@ Never edit one side alone.
 CherrygroveCity_EventScript_UBHook::
-	msgbox CherrygroveCity_Text_UBHook, MSGBOX_DEFAULT
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox CherrygroveCity_Text_UBHookLooker, MSGBOX_DEFAULT
 	closemessage
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	msgbox CherrygroveCity_Text_UBHookKukui, MSGBOX_DEFAULT
+	closemessage
+CherrygroveCity_EventScript_UBFinish::
 	fadescreen FADE_TO_BLACK
 	clearflag FLAG_EVENT_ULTRABEAST_CHERRYGROVE   @ invariant: flag and var together
+	clearflag FLAG_CHERRYGROVE_UB_PREPARED
+	clearflag FLAG_CHERRYGROVE_UB_ENGAGED
 	setvar VAR_RIFT_MISSIONS_STATE, 8
 	setflag FLAG_DAILY_LOOKER_CALL            @ he just said it in person
 	@ Reload in place under the fade. With the flag cleared the fourteen
-	@ residents - and the trader's gift Pokemon, whose visibility is also
-	@ recomputed on load - would otherwise pop in one by one as the camera
-	@ moved, and the cast would linger. ON_TRANSITION repopulates the city
-	@ and hides the cast in one go, the doors unlock with the flag, and the
-	@ warp undoes the hidefollower.
+	@ residents - and the trader's gift Pokemon, whose visibility is recomputed
+	@ from their own FLAG_PICKED_* - come back in one go, the cast is hidden,
+	@ the doors unlock with the flag, and the warp undoes the hidefollower.
+	@ Nobody is re-added just because the incident flag was cleared: each
+	@ object answers to its own flag.
 	warpsilent MAP_CHERRYGROVE_CITY, 28, 10
 	waitstate
 	releaseall
@@ -1463,35 +1727,48 @@ CherrygroveCity_Movement_PulseInPlaceRight:
 	walk_in_place_fast_right
 	step_end
 
-CherrygroveCity_Movement_AttackInPlaceDown:
-	walk_in_place_fast_down
-	walk_in_place_fast_down
-	step_end
-
 CherrygroveCity_Movement_AttackInPlaceLeft:
 	walk_in_place_fast_left
 	walk_in_place_fast_left
 	step_end
 
+@ (24,10)->(25,10), across the sandbar. Slow on purpose: it has to still be
+@ moving when the white drops.
+CherrygroveCity_Movement_StakatakaWades:
+	walk_slow_right
+	step_end
+
+@ (26,9)->(26,10), then faces the water.
+CherrygroveCity_Movement_IncineroarBlocks:
+	walk_fast_down
+	face_left
+	step_end
+
+@ (26,10)->(26,9) when the player takes Stakataka.
+CherrygroveCity_Movement_IncineroarToNorth:
+	walk_up
+	face_left
+	step_end
+
+@ (25,10)->(24,10): one tile back, still facing east. Not thrown across the bay.
 CherrygroveCity_Movement_UBKnockedBack:
 	lock_facing_direction
-	walk_fast_left
 	walk_fast_left
 	unlock_facing_direction
 	step_end
 
+@ Taken, not going: a push against the pull, then dragged one tile west.
 CherrygroveCity_Movement_UBPulledIn:
 	lock_facing_direction
+	walk_in_place_fast_right
 	walk_slow_left
 	unlock_facing_direction
 	step_end
 
-CherrygroveCity_Movement_NecrozmaLean:
-	walk_slow_right
-	step_end
-
+@ (28,9)->(27,9), then faces the player below her.
 CherrygroveCity_Movement_AnabelStepWest:
 	walk_fast_left
+	face_down
 	step_end
 
 CherrygroveCity_Movement_PlayerPulledAside:
@@ -1500,13 +1777,21 @@ CherrygroveCity_Movement_PlayerPulledAside:
 	unlock_facing_direction
 	step_end
 
+@ (27,9)->(27,10) once the distortion is over.
 CherrygroveCity_Movement_AnabelTakesTheFront:
-	walk_fast_down
+	walk_down
 	face_left
 	step_end
 
+@ (27,8)->(27,9), looking down at her.
 CherrygroveCity_Movement_LookerToAnabel:
 	walk_fast_down
+	face_down
+	step_end
+
+CherrygroveCity_Movement_AnabelThrows:
+	walk_in_place_fast_left
+	walk_in_place_fast_left
 	step_end
 
 CherrygroveCity_Movement_LookerToPlayerSide:
@@ -1523,242 +1808,156 @@ CherrygroveCity_Movement_KukuiToPlayer:
 	face_left
 	step_end
 
+CherrygroveCity_Movement_PlayerNods:
+	walk_in_place_slow_left
+	step_end
+
+@ Retry form-up (see UBSceneRetry).
+CherrygroveCity_Movement_PlayerRetryToLine:
+	walk_right
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+CherrygroveCity_Movement_AnabelRetryToFront:
+	walk_down
+	walk_left
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+CherrygroveCity_Movement_LookerRetryToLine:
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+@ ============================================================================
+@ Texts. Final lines of the V2 script, one speaker per message and the plaque
+@ opening every one of them. Narration and the door note have NO plaque: a
+@ message without {SPEAKER} gets none and never inherits the previous one.
+@ ============================================================================
+
 CherrygroveCity_Text_DoorLocked:
-	.string "The door is locked tight.\p"
-	.string "A note is taped to it:\n"
-	.string "“Closed until further notice.\l"
-	.string "The town is at the Violet Gym.”$"
+	.string "Residents are sheltered at\n"
+	.string "Violet Gym.\p"
+	.string "Please keep away from the\n"
+	.string "northwest shore.\p"
+	.string "- International Police$"
 
 CherrygroveCity_Text_UBAnabelIdle:
-	.string "{SPEAKER NAME_ANABEL}Cherrygrove is in the\n"
-	.string "Violet Gym.\p"
-	.string "Two buses and one argument,\n"
-	.string "which I won.\p"
-	.string "Talk to Looker when you're\n"
-	.string "ready. Not a moment before.$"
-
-CherrygroveCity_Text_UBAnabelIdleCosmog:
-	.string "{SPEAKER NAME_ANABEL}…A child of the stars.\p"
-	.string "Keep that one close today,\n"
-	.string "{PLAYER}.\p"
-	.string "Closer than you usually do.$"
+	.string "{SPEAKER NAME_ANABEL}The route back to town is\n"
+	.string "clear. Use the Center if you\l"
+	.string "need it.\p"
+	.string "Speak with Looker when you're\n"
+	.string "ready.$"
 
 CherrygroveCity_Text_UBKukuiIdle:
-	.string "{SPEAKER NAME_KUKUI}{PLAYER}! Four days on\n"
-	.string "this beach, cousin.\p"
-	.string "I'm tired. I'm not bored.\n"
-	.string "There's a difference.\p"
-	.string "Don't make me tell it twice,\n"
-	.string "though. Go on, talk to Looker.\p"
-	.string "You'll get the whole thing at\n"
-	.string "once.$"
-
-CherrygroveCity_Text_UBKukuiIdleCosmog:
-	.string "{SPEAKER NAME_KUKUI}…Hold on.\p"
-	.string "Hold on, that's a {STR_VAR_1}.\p"
-	.string "I've met exactly one of those.\p"
-	.string "It cost me a roof, a boat and\n"
-	.string "eleven weeks of paperwork.\p"
-	.string "You and I are having a very\n"
-	.string "long talk. After.$"
+	.string "{SPEAKER NAME_KUKUI}Hey, cousin. Kukui.\n"
+	.string "Looker said you'd be joining us.\p"
+	.string "I'd rather study these two\n"
+	.string "somewhere they can't flatten a\l"
+	.string "town.$"
 
 CherrygroveCity_Text_UBLookerGreet:
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Over here.\p"
-	.string "And mind your footing. That\n"
-	.string "water is not behaving.\p"
-	.string "It has opened twice since dawn.\p"
-	.string "Twice we ran. Twice it closed\n"
-	.string "before we arrived.\p"
-	.string "The Professor, meanwhile, has\n"
-	.string "not run anywhere.\p"
-	.string "He has been sitting in it.$"
+	.string "{SPEAKER NAME_LOOKER}Watch your footing,\n"
+	.string "{PLAYER}. The sand is firmer on\l"
+	.string "this side.\p"
+	.string "Professor, show us what you\n"
+	.string "noticed.$"
 
-CherrygroveCity_Text_UBKukuiTheory:
-	.string "{SPEAKER NAME_KUKUI}{PLAYER}! Man, am I glad\n"
-	.string "it's you.\p"
-	.string "Okay. Four days, three\n"
-	.string "openings, one notebook.\p"
-	.string "There are two of them, and\n"
-	.string "they never come through\l"
-	.string "together.\p"
-	.string "The bright one shows first. It\n"
-	.string "lights up the whole bay and\l"
-	.string "everybody looks.\p"
-	.string "Everybody. You can't help it.\p"
-	.string "And by the time you can see\n"
-	.string "again, the big one is closer\l"
-	.string "than it was.\p"
-	.string "{SPEAKER NAME_LOOKER}Professor. Four days.\n"
-	.string "On a beach.\p"
-	.string "Under a hole in the sky.\p"
-	.string "{SPEAKER NAME_KUKUI}Yeah. And if it opened\n"
-	.string "with nobody watching, who tells\l"
-	.string "this town when to run?\p"
-	.string "I stayed so somebody would\n"
-	.string "know.\p"
-	.string "{SPEAKER NAME_ANABEL}He called the second\n"
-	.string "opening eleven minutes early.\p"
-	.string "He has earned the sand.\p"
-	.string "{SPEAKER NAME_KUKUI}So here's the play.\p"
-	.string "One of us takes the bright\n"
-	.string "one's eyes. The other takes\l"
-	.string "the wall.\p"
-	.string "Nobody gets to hide if somebody\n"
-	.string "is always looking.$"
+@ The tracks are from the earlier openings (V2 section 6 allows it when there
+@ is no persistent decal): the sandbar he points at is on screen, the trail
+@ itself is shown live in the demonstration that follows.
+CherrygroveCity_Text_UBKukuiObservation:
+	.string "{SPEAKER NAME_KUKUI}Blacephalon flashes first.\n"
+	.string "When I can see again,\l"
+	.string "Stakataka's closer.\p"
+	.string "But see that sandbar? Every\n"
+	.string "time, there's a fresh trail\l"
+	.string "through the shallows.$"
+
+CherrygroveCity_Text_UBAnabelObservation:
+	.string "{SPEAKER NAME_ANABEL}So it moves while the\n"
+	.string "flash hides it.$"
+
+CherrygroveCity_Text_UBKukuiPlan:
+	.string "{SPEAKER NAME_KUKUI}That's what I think.\p"
+	.string "We need to keep the flashes\n"
+	.string "away from the other fight.\p"
+	.string "You take one. I'll take the\n"
+	.string "other.$"
 
 CherrygroveCity_Text_UBReady:
-	.string "{SPEAKER NAME_LOOKER}One warning, {PLAYER}.\p"
-	.string "These two are worse than\n"
-	.string "Mahogany.\p"
-	.string "{SPEAKER NAME_ANABEL}Bring everything you\n"
-	.string "have.\p"
-	.string "Are you ready?$"
+	.string "{SPEAKER NAME_ANABEL}Are you and your Pokémon\n"
+	.string "ready?$"
 
 CherrygroveCity_Text_UBNotReady:
-	.string "{SPEAKER NAME_LOOKER}Wise.\p"
-	.string "The Center is open, and I am\n"
-	.string "not moving from this sand.$"
+	.string "{SPEAKER NAME_LOOKER}The Center is open.\n"
+	.string "We'll keep the approach clear.$"
 
-@ She stops mid-instruction. Nothing is explained here - the explanation is
-@ the price of the rescue, later in this same scene.
+CherrygroveCity_Text_UBKukuiPrepare:
+	.string "{SPEAKER NAME_KUKUI}Incineroar, with me.\n"
+	.string "Keep the way back open.$"
+
 CherrygroveCity_Text_UBAnabelSenses:
-	.string "{SPEAKER NAME_ANABEL}Professor, stay east of\n"
-	.string "the tide line, and if anything\l"
-	.string "comes through you will-\p"
-	.string "…\p"
-	.string "{SPEAKER NAME_LOOKER}Chief?\p"
-	.string "{SPEAKER NAME_ANABEL}It's here.\p"
-	.string "{SPEAKER NAME_LOOKER}There is nothing on the\n"
-	.string "meter.\p"
-	.string "{SPEAKER NAME_ANABEL}I know.\p"
-	.string "{SPEAKER NAME_KUKUI}Whoa-look at the water!\p"
-	.string "It's going flat. That's the\n"
-	.string "tell! Everybody back!$"
+	.string "{SPEAKER NAME_ANABEL}Wait. An opening, close by.\n"
+	.string "Step back from the water.$"
+
+CherrygroveCity_Text_UBLookerMeter:
+	.string "{SPEAKER NAME_LOOKER}The meter hasn't changed\n"
+	.string "yet.$"
+
+CherrygroveCity_Text_UBAnabelCertain:
+	.string "{SPEAKER NAME_ANABEL}I know. Give it room.$"
+
+CherrygroveCity_Text_UBKukuiWater:
+	.string "{SPEAKER NAME_KUKUI}The water's going still.\n"
+	.string "Incineroar, hold there.$"
 
 CherrygroveCity_Text_UBNecrozmaArrives:
-	.string "Something stands up out of the\n"
-	.string "flat water.\p"
-	.string "It is made of light, and it is\n"
-	.string "looking at the beach.\p"
-	.string "{SPEAKER NAME_LOOKER}…That is the thing from\n"
-	.string "Blackthorn.\p"
-	.string "{SPEAKER NAME_KUKUI}That is not a Pokémon I\n"
-	.string "know.\p"
-	.string "And, cousin, I know a lot of\n"
-	.string "them.\p"
-	.string "{SPEAKER NAME_ANABEL}It was standing there\n"
-	.string "before my instruments said so.\p"
-	.string "It always is.$"
-
-CherrygroveCity_Text_UBRift:
-	.string "{SPEAKER NAME_KUKUI}It's- wait. Wait!\p"
-	.string "It isn't coming through the\n"
-	.string "tear.\p"
-	.string "It's making it!\p"
-	.string "{SPEAKER NAME_LOOKER}Behind me, Professor.\n"
-	.string "Behind me, please.\p"
-	.string "{SPEAKER NAME_KUKUI}Nah.$"
+	.string "{SPEAKER NAME_ANABEL}Necrozma.\n"
+	.string "Watch its arms and the light\l"
+	.string "around them.$"
 
 CherrygroveCity_Text_UBAppear:
-	.string "{SPEAKER NAME_LOOKER}Blacephalon! And that\n"
-	.string "is- what is that?\p"
-	.string "{SPEAKER NAME_KUKUI}Stakataka! Whoa.\p"
-	.string "That's not one Pokémon,\n"
-	.string "cousin.\p"
-	.string "That's a whole crowd of them,\n"
-	.string "stacked up.$"
+	.string "{SPEAKER NAME_KUKUI}Blacephalon and Stakataka.\n"
+	.string "Those are the two.$"
 
-@ The synergy, corrected on camera: he had the mechanism wrong, and being
-@ wrong out loud is how he earns the next line.
-CherrygroveCity_Text_UBSynergy:
-	.string "{SPEAKER NAME_KUKUI}Here it comes-don't look\n"
-	.string "at the ligh-\p"
-	.string "…\p"
-	.string "{SPEAKER NAME_KUKUI}Okay. Okay, I had it\n"
-	.string "wrong.\p"
-	.string "It isn't walking in behind the\n"
-	.string "lights.\p"
-	.string "It isn't walking at all.\p"
-	.string "{SPEAKER NAME_ANABEL}It crossed four lengths\n"
-	.string "while the bay was white.\p"
-	.string "{SPEAKER NAME_LOOKER}Then we simply do not\n"
-	.string "blink.\p"
-	.string "{SPEAKER NAME_KUKUI}That's the problem,\n"
-	.string "cousin.\p"
-	.string "Nobody can not blink.$"
+CherrygroveCity_Text_UBFlashWarning:
+	.string "{SPEAKER NAME_KUKUI}Here comes the flash!\n"
+	.string "Turn your eyes away from its\l"
+	.string "head!$"
 
-CherrygroveCity_Text_UBSynergyClose:
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}! It is on top\n"
-	.string "of you-!$"
+CherrygroveCity_Text_UBMovementConfirmed:
+	.string "{SPEAKER NAME_KUKUI}There! It's moving through\n"
+	.string "the shallows.\p"
+	.string "The flash hides its steps.$"
 
-CherrygroveCity_Text_UBKukuiSendsOut:
-	.string "{SPEAKER NAME_KUKUI}Not on my beach.\p"
-	.string "Incineroar-BETWEEN them!$"
+CherrygroveCity_Text_UBKukuiIntercept:
+	.string "{SPEAKER NAME_KUKUI}Incineroar, block the path!$"
 
-@ The surprise. Four days of lab coat, and nobody thought to ask.
-CherrygroveCity_Text_UBKukuiRevealed:
-	.string "{SPEAKER NAME_LOOKER}…Professor.\p"
-	.string "You are a civilian.\p"
-	.string "Your file is two pages long.\p"
-	.string "{SPEAKER NAME_KUKUI}Yeah, it would be.\p"
-	.string "Nobody back home writes reports\n"
-	.string "on the guy who built the\l"
-	.string "League.\p"
-	.string "Alola didn't have one. I made\n"
-	.string "it.\p"
-	.string "Then somebody had to stand at\n"
-	.string "the end of it, and that was me\l"
-	.string "too. For a while.\p"
-	.string "{SPEAKER NAME_ANABEL}…Sir. I apologise for\n"
-	.string "the file.\p"
-	.string "{SPEAKER NAME_KUKUI}Keep it! It's restful.\p"
-	.string "Now quit looking at me. That\n"
-	.string "thing in the water isn't done.$"
+CherrygroveCity_Text_UBKukuiHold:
+	.string "{SPEAKER NAME_KUKUI}Good! Keep it in the water.\n"
+	.string "Don't give it room to step\l"
+	.string "forward.$"
 
-CherrygroveCity_Text_UBNecrozmaTargets:
-	.string "The creature turns.\p"
-	.string "Not toward the Professor.\n"
-	.string "Not toward the Ultra Beasts.\p"
-	.string "Toward you.\p"
-	.string "{SPEAKER NAME_ANABEL}-MOVE!$"
+CherrygroveCity_Text_UBAnabelMove:
+	.string "{SPEAKER NAME_ANABEL}{PLAYER}, move right! Now!$"
 
-@ The payoff of the seeds planted in Mahogany and here. She says it standing
-@ up, in five boxes, in the middle of an incident, and then goes back to
-@ work - that is the characterisation, not the biography.
-@ CONTINUITY: New Bark (Mission 4) is now the REST of it, not the news.
-CherrygroveCity_Text_UBAnabelFaller:
-	.string "She is in front of you before\n"
-	.string "you have finished turning your\l"
-	.string "head.\p"
-	.string "The bay goes white.\p"
-	.string "When it comes back, Anabel is\n"
-	.string "on one knee in the wet sand.\p"
-	.string "{SPEAKER NAME_LOOKER}CHIEF-\p"
-	.string "{SPEAKER NAME_ANABEL}I'm here. I'm here.\p"
-	.string "Let go, Looker. I can stand.\p"
-	.string "{PLAYER}. You should hear this\n"
-	.string "from me, and not from a file.\p"
-	.string "I knew it was coming because I\n"
-	.string "have been on the other side of\l"
-	.string "one.\p"
-	.string "I'm a Faller. I came through a\n"
-	.string "tear like that one.\p"
-	.string "There are years of me I have\n"
-	.string "not got back.\p"
-	.string "{SPEAKER NAME_LOOKER}…Chief.\p"
-	.string "{SPEAKER NAME_ANABEL}The rest of it later.\p"
-	.string "There are two of them in the\n"
-	.string "water and one of you.\p"
-	.string "Professor. Your plan. Now.$"
+CherrygroveCity_Text_UBLookerChecks:
+	.string "{SPEAKER NAME_LOOKER}Anabel! Are you hurt?$"
+
+CherrygroveCity_Text_UBAnabelReady:
+	.string "{SPEAKER NAME_ANABEL}I'm all right.\n"
+	.string "Keep the way back clear.$"
 
 CherrygroveCity_Text_UBChoosePrompt:
-	.string "{SPEAKER NAME_KUKUI}Right. Call it,\n"
-	.string "{PLAYER}! Which one do you\l"
-	.string "want?\p"
-	.string "I'll take whatever's left, and\n"
-	.string "I will keep it looking at me.\p"
-	.string "That's the whole trick.\p"
-	.string "Nobody gets to hide.$"
+	.string "{SPEAKER NAME_KUKUI}Which one will you take,\n"
+	.string "{PLAYER}? Incineroar and I will\l"
+	.string "handle the other.$"
 
 CherrygroveCity_Text_ChoiceBlacephalon:
 	.string "Blacephalon$"
@@ -1767,168 +1966,181 @@ CherrygroveCity_Text_ChoiceStakataka:
 	.string "Stakataka$"
 
 CherrygroveCity_Text_UBPickedBlacephalon:
-	.string "{SPEAKER NAME_KUKUI}The bright one's yours!\p"
-	.string "Don't watch the lights. Watch\n"
-	.string "the water under it.\p"
-	.string "I've got the wall.\n"
-	.string "Incineroar, eyes on the big\l"
-	.string "guy-don't lose it!$"
+	.string "{SPEAKER NAME_KUKUI}Keep Blacephalon facing\n"
+	.string "your side.\p"
+	.string "We'll hold Stakataka here.$"
 
 CherrygroveCity_Text_UBPickedStakataka:
-	.string "{SPEAKER NAME_KUKUI}The wall is yours!\p"
-	.string "Get under it before it\n"
-	.string "settles!\p"
-	.string "I'll take the fireworks.\n"
-	.string "Incineroar, close your eyes-\l"
-	.string "you won't need them!$"
+	.string "{SPEAKER NAME_KUKUI}We'll draw Blacephalon this\n"
+	.string "way. Keep Stakataka off the\l"
+	.string "shore!$"
 
-CherrygroveCity_Text_UBGotAway:
-	.string "{SPEAKER NAME_LOOKER}The light closed over\n"
-	.string "them.\p"
-	.string "We are back where we started.\p"
-	.string "{SPEAKER NAME_KUKUI}Then we go again.\p"
-	.string "I'm not leaving this beach\n"
-	.string "either.\p"
-	.string "{SPEAKER NAME_ANABEL}Heal, and come back.\n"
-	.string "We hold here.$"
+CherrygroveCity_Text_UBAnabelWatch:
+	.string "{SPEAKER NAME_ANABEL}I'll watch Necrozma.\n"
+	.string "Leave the capture to me.$"
+
+CherrygroveCity_Text_UBUnresolved:
+	.string "{SPEAKER NAME_ANABEL}The shore isn't clear yet.\n"
+	.string "Regroup before we move in\l"
+	.string "again.$"
 
 CherrygroveCity_Text_UBKukuiFoughtStakataka:
-	.string "{SPEAKER NAME_KUKUI}Incineroar-through the\n"
-	.string "middle! Don't let it set!\p"
-	.string "…Down.\p"
-	.string "It never got to settle once.\p"
-	.string "Thing weighs as much as a\n"
-	.string "house, cousin.\p"
-	.string "But a house still has to decide\n"
-	.string "where to stand.$"
+	.string "{SPEAKER NAME_KUKUI}Stakataka's stopped.\n"
+	.string "Stay on it, Incineroar.$"
 
 CherrygroveCity_Text_UBKukuiFoughtBlacephalon:
-	.string "{SPEAKER NAME_KUKUI}Eyes shut, Incineroar!\n"
-	.string "Swing where it was!\p"
-	.string "…Yeah. That's it.\p"
-	.string "That's the one thing all those\n"
-	.string "lights can't beat.\p"
-	.string "Somebody who isn't looking.$"
+	.string "{SPEAKER NAME_KUKUI}No more flashes.\n"
+	.string "Good work, Incineroar.$"
 
-CherrygroveCity_Text_UBAbsorbed:
-	.string "{SPEAKER NAME_KUKUI}Hey-hey!\n"
-	.string "What is it doing?\p"
-	.string "{SPEAKER NAME_LOOKER}It took them.\n"
-	.string "Both of them.\p"
-	.string "It did not fight them.\p"
-	.string "{SPEAKER NAME_KUKUI}That's feeding.\p"
-	.string "I have watched a lot of things\n"
-	.string "eat. That's feeding.\p"
-	.string "{SPEAKER NAME_ANABEL}And nothing that comes\n"
-	.string "through a tear behaves like\l"
-	.string "that.\p"
-	.string "It doesn't come through them.\p"
-	.string "It opens them.$"
+CherrygroveCity_Text_UBAnabelWindow:
+	.string "{SPEAKER NAME_ANABEL}That pulse… it's starting.\n"
+	.string "Keep them still!$"
+
+CherrygroveCity_Text_UBContainmentFailed:
+	.string "{SPEAKER NAME_ANABEL}I reached it in time.\n"
+	.string "The connection still pulled it\l"
+	.string "back!$"
+
+CherrygroveCity_Text_UBKukuiBreakLink:
+	.string "{SPEAKER NAME_KUKUI}Incineroar, hit the light\n"
+	.string "between them!$"
+
+CherrygroveCity_Text_UBAbsorbedSignals:
+	.string "{SPEAKER NAME_ANABEL}Their signals are still\n"
+	.string "there. Keep recording, Looker.$"
+
+CherrygroveCity_Text_UBLookerRecording:
+	.string "{SPEAKER NAME_LOOKER}Recording. I have the\n"
+	.string "direction too.$"
 
 CherrygroveCity_Text_UBNecrozmaSensesCosmog:
-	.string "The creature is staring past\n"
-	.string "you… at the Poké Ball that\l"
-	.string "holds your {STR_VAR_1}.\p"
-	.string "Your {STR_VAR_1} is trembling.\p"
-	.string "{SPEAKER NAME_KUKUI}Incineroar! In front!\n"
-	.string "Don't let it any closer!$"
+	.string "{SPEAKER NAME_KUKUI}Keep {STR_VAR_1} beside you,\n"
+	.string "cousin. Incineroar, hold the\l"
+	.string "shore.$"
 
-CherrygroveCity_Text_UBNecrozmaSensesLegend:
-	.string "Light flares between the\n"
-	.string "creature and your\l"
-	.string "{STR_VAR_1}'s Poké Ball!\p"
-	.string "It pulls back… then steadies,\n"
-	.string "and stares.\p"
-	.string "{SPEAKER NAME_KUKUI}…It flinched.\n"
-	.string "Cousin, that thing flinched.$"
+CherrygroveCity_Text_UBPartnerWindow:
+	.string "{SPEAKER NAME_ANABEL}The opening's steady.\n"
+	.string "Looker, check the bearing now.$"
+
+CherrygroveCity_Text_UBPartnerBearing:
+	.string "{SPEAKER NAME_LOOKER}It matches. I've marked it.$"
 
 CherrygroveCity_Text_UBNecrozmaGone:
-	.string "{SPEAKER NAME_KUKUI}…And it's gone.\p"
-	.string "Back through a hole it made\n"
-	.string "itself.\p"
-	.string "{SPEAKER NAME_LOOKER}It opened the sky over a\n"
-	.string "town, ate what came out of it,\l"
-	.string "and left.\p"
-	.string "That is the third time.$"
+	.string "{SPEAKER NAME_ANABEL}The opening has closed.\n"
+	.string "Hold here a moment.$"
 
-CherrygroveCity_Text_UBAftermath:
-	.string "{SPEAKER NAME_LOOKER}Is anyone hurt?\n"
-	.string "{PLAYER}? Your Pokémon?\p"
-	.string "Chief?\p"
-	.string "…Good. Good.\p"
-	.string "The report can wait a moment.\p"
-	.string "{SPEAKER NAME_ANABEL}I am standing, Looker.\p"
-	.string "And you may put all of it in\n"
-	.string "the file this time.\p"
-	.string "I'll sign it myself.$"
+CherrygroveCity_Text_UBStreetClear:
+	.string "{SPEAKER NAME_ANABEL}It's clear.$"
 
-@ The gift of this mission is not an item. It is the founder of a League
-@ telling a Champion he wants them at the end of it.
-CherrygroveCity_Text_UBKukuiRecognition:
-	.string "{SPEAKER NAME_KUKUI}{PLAYER}.\p"
-	.string "That thing about not blinking?\n"
-	.string "Write it down.\p"
-	.string "Somebody out there is going to\n"
-	.string "need it.\p"
-	.string "And listen-when this is\n"
-	.string "finished.\p"
-	.string "Alola has a League now. I put\n"
-	.string "it together myself.\p"
-	.string "It's still missing the one\n"
-	.string "thing you can't build.\p"
-	.string "Somebody worth standing at the\n"
-	.string "end of it.\p"
-	.string "Come take a swing at it,\n"
-	.string "cousin. I mean that.$"
+CherrygroveCity_Text_UBAftermathCheck:
+	.string "{SPEAKER NAME_LOOKER}Everyone all right?\n"
+	.string "Anabel, take a moment.$"
+
+CherrygroveCity_Text_UBAftermathAnabel:
+	.string "{SPEAKER NAME_ANABEL}Thank you. I will.$"
+
+CherrygroveCity_Text_UBAnabelFallerIntro:
+	.string "{SPEAKER NAME_ANABEL}{PLAYER}, about what\n"
+	.string "happened…\p"
+	.string "I felt that opening before I\n"
+	.string "saw it.$"
+
+CherrygroveCity_Text_UBAnabelFaller:
+	.string "{SPEAKER NAME_ANABEL}I once came through an Ultra\n"
+	.string "Wormhole. That's what they call\l"
+	.string "a Faller.\p"
+	.string "I don't remember much from\n"
+	.string "before.$"
+
+CherrygroveCity_Text_UBAnabelFallerLimit:
+	.string "{SPEAKER NAME_ANABEL}Sometimes I feel an opening\n"
+	.string "nearby. Only a moment before it\l"
+	.string "happens.\p"
+	.string "I can't tell where the next one\n"
+	.string "will be.$"
+
+CherrygroveCity_Text_UBLookerSupport:
+	.string "{SPEAKER NAME_LOOKER}Then we won't leave you\n"
+	.string "watching it alone.$"
+
+CherrygroveCity_Text_UBAnabelSupport:
+	.string "{SPEAKER NAME_ANABEL}Agreed.$"
+
+CherrygroveCity_Text_UBKukuiThanks:
+	.string "{SPEAKER NAME_KUKUI}You kept your side covered,\n"
+	.string "cousin. That gave Incineroar\l"
+	.string "room to work.\p"
+	.string "Next time we team up, let's\n"
+	.string "leave the town out of it.$"
+
+CherrygroveCity_Text_UBAftermathPlan:
+	.string "{SPEAKER NAME_ANABEL}We acted before the pull\n"
+	.string "this time. It wasn't enough\l"
+	.string "while they were connected.\p"
+	.string "We need to stop the connection\n"
+	.string "before we try to capture them.$"
+
+CherrygroveCity_Text_UBAftermathBearing:
+	.string "{SPEAKER NAME_LOOKER}We have a direction for the\n"
+	.string "opening. Can we trace it?$"
+
+CherrygroveCity_Text_UBAftermathLimit:
+	.string "{SPEAKER NAME_ANABEL}Not from this reading alone.\n"
+	.string "We need another point of\l"
+	.string "comparison.$"
+
+CherrygroveCity_Text_UBKukuiElm:
+	.string "{SPEAKER NAME_KUKUI}I'll ask Professor Elm for\n"
+	.string "his readings. His lab is close\l"
+	.string "to this coast.\p"
+	.string "We can compare the times and\n"
+	.string "see whether he's picked up the\l"
+	.string "same pulses.$"
+
+CherrygroveCity_Text_UBLookerElm:
+	.string "{SPEAKER NAME_LOOKER}Send them to Olivine.\n"
+	.string "Even the readings he couldn't\l"
+	.string "explain.$"
+
+CherrygroveCity_Text_UBKukuiLogs:
+	.string "{SPEAKER NAME_KUKUI}You got it.\n"
+	.string "A strange result's still a\l"
+	.string "result.$"
 
 CherrygroveCity_Text_UBAftermathCosmog:
-	.string "{SPEAKER NAME_KUKUI}It looked at your\n"
-	.string "{STR_VAR_1}.\p"
-	.string "Not at me. Not at the Ultra\n"
-	.string "Beasts. At that.\p"
-	.string "{SPEAKER NAME_ANABEL}A child of the stars,\n"
-	.string "and a thing made of light.\p"
-	.string "Keep it where you can reach it,\n"
-	.string "{PLAYER}.$"
+	.string "{SPEAKER NAME_KUKUI}How's {STR_VAR_1} doing?\n"
+	.string "Give it a quiet place to rest.$"
 
 CherrygroveCity_Text_UBAftermathLegend:
-	.string "{SPEAKER NAME_KUKUI}It pulled back from\n"
-	.string "your {STR_VAR_1}. I saw it.\p"
-	.string "Back home, {STR_VAR_1} is the\n"
-	.string "sky itself, cousin.\p"
-	.string "{SPEAKER NAME_ANABEL}Whatever that creature\n"
-	.string "is made of, it knew exactly\l"
-	.string "what it was looking at.\p"
-	.string "That is worth more than my\n"
-	.string "instruments gave me all week.$"
+	.string "{SPEAKER NAME_ANABEL}{STR_VAR_1} gave us time to\n"
+	.string "check the bearing.\p"
+	.string "I'll include that in the\n"
+	.string "report.$"
 
-@ Hook: NO destination. Olivine reveals Mission 4.
-CherrygroveCity_Text_UBHook:
-	.string "{SPEAKER NAME_LOOKER}Professor, you will now\n"
-	.string "come off this beach and eat\l"
-	.string "something.\p"
-	.string "That is not a request.\p"
-	.string "{SPEAKER NAME_KUKUI}Yeah, yeah.\p"
-	.string "{SPEAKER NAME_ANABEL}The readings haven't\n"
-	.string "settled. It will open another\l"
-	.string "one.\p"
-	.string "Where, and when, we don't know\n"
-	.string "yet.\p"
-	.string "{SPEAKER NAME_LOOKER}So we keep watching.\p"
-	.string "Rest, {PLAYER}. Then come back\n"
-	.string "to our house in Olivine.\p"
-	.string "The moment something opens, you\n"
-	.string "will be the first to know.\p"
-	.string "{SPEAKER NAME_KUKUI}I'm going home,\n"
-	.string "cousin. But not tonight.\p"
-	.string "Tonight I'm going to sit in\n"
-	.string "every library in this region\l"
-	.string "and read every log nobody\l"
-	.string "thought was worth sending.\p"
-	.string "Somebody out there has been\n"
-	.string "writing this down for weeks and\l"
-	.string "calling it a broken sensor.\p"
-	.string "I'd bet the League on it.$"
+CherrygroveCity_Text_UBHookLooker:
+	.string "{SPEAKER NAME_LOOKER}We'll compare the records in\n"
+	.string "Olivine. I'll call when we have\l"
+	.string "a lead.\p"
+	.string "For now, leave this beach to\n"
+	.string "the waves.$"
+
+CherrygroveCity_Text_UBHookKukui:
+	.string "{SPEAKER NAME_KUKUI}I'll contact Elm before I\n"
+	.string "leave Johto. Take care, cousin.$"
+
+CherrygroveCity_Text_UBRetryLooker:
+	.string "{SPEAKER NAME_LOOKER}The approach is still clear.\n"
+	.string "How are your Pokémon?$"
+
+CherrygroveCity_Text_UBRetryKukui:
+	.string "{SPEAKER NAME_KUKUI}We've kept them off the\n"
+	.string "shore. Ready to take one\l"
+	.string "again?$"
+
+CherrygroveCity_Text_UBRetryNotReady:
+	.string "{SPEAKER NAME_KUKUI}Get your team ready.\n"
+	.string "Incineroar and I will hold\l"
+	.string "here.$"
 
 @ ============================================================================
 @ Post-game beach (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.7).

@@ -1,11 +1,12 @@
 # Cherrygrove — Necrozma, Blacephalon + Stakataka (Rift Mission 3) — implementação
 
-**Status:** **história evoluída** — revisão 3, 22/09/2026. Build limpo
-(`make -j$(nproc)`), **runtime pendente**. A revisão 3 transformou o esqueleto
-em história a pedido do autor ("o esqueleto está pronto, agora vamos montar uma
-história épica") — tabela *pedido → como ficou* em **§13**. O feedback da
-implementação do esqueleto está em §12 e vale como histórico: nada do que ele
-mediu mudou, mas §4, §5 e §7 foram reescritos por cima.
+**Status:** **roteiro V2 aplicado** — revisão 5, 26/09/2026. Build limpo,
+**runtime pendente**. **§15 é a verdade** e vence tudo o que vier antes neste
+arquivo (a história da revisão 3 — ficha de duas páginas, teleporte sob o flash,
+Fundador da Liga, Anabel levando a luz — foi substituída pelo
+[`CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md`](CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md)).
+§1–§14 ficam como histórico técnico: o estado (6/7/8), a evacuação, o Friendly
+Trader, as portas, a batalha e a leitura de colisão de §12.7 continuam valendo.
 **Modo:** história (skill `evoluir-historia-de-evento`). Estado, visibilidade,
 gatilhos, batalha e retry **não mudaram** desde o esqueleto.
 **Roteiro da cena (falas e movimentos):** [`CHERRYGROVE_ULTRABEAST_SCRIPT.md`](CHERRYGROVE_ULTRABEAST_SCRIPT.md)
@@ -1478,3 +1479,111 @@ mesma trilha mantém o padrão do Necrozma.
 **Conferido:** `make -j$(nproc)` limpo. **Runtime pendente** — testar **à noite**:
 a oitava ruptura tão clara quanto a primeira, a música caindo na fala da Anabel,
 voltando igual depois da batalha e virando tema de cidade no pós-cena.
+
+
+---
+
+## 15. Revisão 5 — o roteiro V2 aplicado (26/09/2026)
+
+**Fonte:** [`CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md`](CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md).
+Aplicado inteiro, com os três defaults do autor para roteiros V2 (Mahogany V3):
+alargar o mapa quando falta espaço, narração/bilhete **sem** plaquinha, e
+dependência de arte vira ajuste de texto quando dá.
+
+### 15.1 Arquivos
+
+| Arquivo | O que mudou |
+| --- | --- |
+| `data/layouts/CherrygroveCity/map.bin` | banco de areia rasa: (24,10) `0x10C` e (24,11) `0x11C` (cantos rasos, elevação 3); (25,10) e (25,11) viram areia `0x115` |
+| `data/maps/CherrygroveCity/map.json` | + fenda `LOCALID_CHERRYGROVE_UB_RIFT` (21,10, `FLAG_TEMP_9`) e 4 templates do parceiro em (29,10) (`FLAG_TEMP_A`) |
+| `data/maps/CherrygroveCity/scripts.pory` | bloco da M3 reescrito (cena, retry, textos) |
+| `data/maps/OlivineCity_House1/scripts.pory` | briefing M3 em 4 caixas, "vá na frente" novos, espera antes da ligação de New Bark, abertura do briefing M4 trocada pela ponte |
+| `data/scripts/rift_missions.inc` | ligações de convocação M3 e M4 |
+| `include/constants/flags.h` | `FLAG_CHERRYGROVE_UB_PREPARED` `0x104E`, `FLAG_CHERRYGROVE_UB_ENGAGED` `0x104F` |
+
+### 15.2 A bancada de Stakataka
+
+O roteiro exige que o Stakataka **ande** de (24,10) para (25,10), e (24,10) era
+oceano. Três variantes foram renderizadas; ficou a de dois tiles de altura, com
+os cantos rasos do primário (`sand_water` NW/SW do `mapa_kit`), porque a costa
+deste tileset não tem canto côncavo e uma ponta de um tile fica com borda seca.
+Comportamento `MB_SHALLOW_WATER` nos dois cantos: o jogador pode pisar neles,
+como já pisava na coluna 25. Nada além desses quatro tiles mudou. **Se o autor
+retocar a praia no Porymap, a versão dele é a referência.**
+
+### 15.3 Elenco e orçamento
+
+| Objeto | Tile | Flag |
+| --- | --- | --- |
+| Kukui / Looker / Anabel | (26,7) / (27,7) / (28,7) | `FLAG_TEMP_1` |
+| Blacephalon / Stakataka | (24,9) / (24,10) | `FLAG_TEMP_2` |
+| Necrozma | (22,10) | `FLAG_TEMP_5` |
+| Incineroar | (26,9); (26,10) no retry | `FLAG_TEMP_6` |
+| fenda (`OBJ_EVENT_GFX_ALTAR_RIFT`) | (21,10) | `FLAG_TEMP_9` |
+| Cosmog / Cosmoem / Solgaleo / Lunala | (29,10) | `FLAG_TEMP_A` |
+
+Pico: 10/16 (jogador, follower escondido, três do elenco, Incineroar, Necrozma,
+fenda, duas UBs). O parceiro só entra depois de as UBs saírem. Renders de
+confronto, escolha, parceiro e conversa conferidos: nenhum 32×32 apaga ninguém.
+
+### 15.4 Pedido → como ficou
+
+| Pedido do V2 | Como ficou |
+| --- | --- |
+| Ligação só nomeia local e motivo | `RiftMissions_Text_LookerCallM3`; mecanismo diário inalterado |
+| Espera antes da ligação | `WaitForCherrygroveCall` já existia com o texto do V2 |
+| Briefing: Kukui por profissão, pausa da Lillie como hipótese | `BriefingM3Welcome/Evidence/Plan/Safety`, um falante por caixa |
+| Bilhete da porta | `DoorLocked` sem plaquinha (default do autor) |
+| Kukui apresenta-se sem presumir encontro | `UBKukuiIdle` |
+| Anabel volta a olhar o oeste | `turnobject ... DIR_WEST` depois da fala |
+| Leitura do Kukui ouvida uma vez só | `FLAG_CHERRYGROVE_UB_PREPARED` |
+| Rastro sem decal persistente | a fala fala dos rastros **das aberturas anteriores** no banco; o rastro "ao vivo" é o passo com `SE_PUDDLE` |
+| Incineroar sai antes do perigo | `UBKukuiPrepare` + `addobject` em (26,9) logo após a formação |
+| Aviso antes do instrumento | `UBAnabelSenses` → `UBLookerMeter` → `UBAnabelCertain` → só então `SE_M_DETECT` |
+| Tema local sai no aviso; ameaça antes da revelação | `fadeoutbgm 4` no aviso; `playbgm MUS_DP_LEGEND_APPEARS, TRUE` quando a fenda abre, antes do Necrozma |
+| Necrozma sai **através** da abertura | fenda primeiro, Necrozma depois, em dois clarões |
+| Stakataka anda sob o clarão, sem teleporte | `walk_slow_right` começa sob o branco e termina visível; `setobjectxy` saiu |
+| Incineroar entre UB e jogador, recuo de um tile | desce para (26,10) antes; Stakataka volta a (24,10) |
+| Resgate sem Anabel levar a luz | distorção (`dofieldeffectsparkle 27,10`) no tile **abandonado**; Anabel espera ao norte e só depois ocupa (27,10) |
+| Jogador volta a olhar o oeste | `turnobject` explícito depois do passo, do clarão, da resposta e da batalha |
+| Escolha com a plaquinha do Kukui; papel do Incineroar por alvo | `UBChoosePrompt`; Stakataka → Incineroar recua a (26,9) e pressiona Blacephalon |
+| Ball antes do arrasto; ligação repele | `UBContain`: pulso no instrumento, arremesso, `SE_M_REFLECT`, pulso da fenda, Ball quicando |
+| Absorção tentada | Incineroar ataca o filamento enquanto as UBs resistem e são puxadas |
+| Oscilação depois da absorção em todos os ramos | clarão + `UBRiftPulse` antes das falas |
+| Parceiro real, sem avançar Necrozma | sai da Ball em (29,10); Cosmog/Cosmoem: Kukui manda manter ao lado; Solgaleo/Lunala: a borda firma e o Looker **confirma** o rumo |
+| Retirada em dois tempos | Necrozma some, depois a fenda fecha; `UBNecrozmaGone`, pausa, `UBStreetClear`, só então `fadedefaultbgm` |
+| Recolhimento visível, sem clarão | parceiro e Incineroar recolhidos com `SE_BALL_OPEN`, antes de o Kukui andar |
+| Faller no rescaldo | `UBAnabelFallerIntro/Faller/FallerLimit`, Looker e Anabel `Support`; o jogador faz um gesto, não fala |
+| Kukui pede os dados ao Elm | `UBKukuiElm/UBLookerElm/UBKukuiLogs`; gancho `UBHookLooker/UBHookKukui` sem destino |
+| Espera antes de New Bark | `OlivineCity_House1_Text_WaitForNewBarkCall`, estado 8 |
+| Ponte para New Bark (§17 do V2) | `RiftMissions_Text_LookerCallM4` e `BriefingM4Evidence/Comparison/Kukui` no lugar da abertura antiga; o resto do briefing M4 fica para o V2 de New Bark |
+| Retry sem repetir revelações | `FLAG_CHERRYGROVE_UB_ENGAGED`; `UBRetryLooker` + `UBRetryKukui` (SIM/NÃO) → formação pós-resgate → escolha |
+| Interrupção sem vitória | `UBUnresolved` (Anabel); sem absorção, conversa nem estado 8 |
+
+### 15.5 Retry
+
+`ON_TRANSITION` com `FLAG_CHERRYGROVE_UB_ENGAGED`: fenda, Necrozma e as duas UBs
+nos tiles de sempre, Incineroar em (26,10) por `setobjectxyperm`. Kukui, Looker
+e Anabel ficam nos tiles do template, então o único tile de fala continua sendo
+(27,8). No SIM: Kukui (26,7)→(26,8); jogador (27,8)→(28,8)→(28,9)→(28,10);
+Anabel (28,7)→(28,8)→(27,8)→(27,9)→(27,10); Looker (27,7)→(27,8)→(27,9), todos
+sequenciais e virados para oeste. A trilha de ameaça volta no SIM, porque o
+carregamento de mapa zerou o `savedMusic`.
+
+### 15.6 Conferido
+
+- `make -j$(nproc)` limpo.
+- `checar_falantes.py`: 16 falantes em ordem. `medir_linha.py`: nada acima de 208 px nos três arquivos.
+- `flag_audit.py --csv`: as duas flags novas `EM_USO`, `MAPA_UNICO:CherrygroveCity`, lidas e escritas.
+- Nenhum travessão (U+2014).
+
+### 15.7 Runtime pendente
+
+1. Primeira tentativa inteira, de dia **e** de noite (clarões).
+2. O passo do Stakataka: ele tem de estar ainda andando quando o branco cai.
+3. O brilho em (27,10) aparece e o jogador já não está lá quando o clarão bate.
+4. As duas escolhas, e o Incineroar recuando a (26,9) na do Stakataka.
+5. Perder e voltar do Centro: a praia montada, nenhuma revelação repetida.
+6. Os três ramos de parceiro.
+7. Fim: moradores e presentes do Friendly Trader conforme as próprias flags, portas abertas, follower de volta.
+8. Olivine: ligação M3, briefing, espera do estado 8, ligação M4 e a abertura nova do briefing M4.

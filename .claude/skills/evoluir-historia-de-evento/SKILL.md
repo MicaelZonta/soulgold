@@ -12,7 +12,7 @@ jogar: [`.claude/rift_missions/BLACKTHORN_ULTRABEAST/BLACKTHORN_ULTRABEAST_IMPLE
 
 Antes de mexer, carregue `evento-esqueleto` §7 (o que pode e o que não pode mudar)
 e `encenar-cutscene` (toda coordenada nova se mede). Voz dos personagens:
-`SOULGOLD_RIFT_MISSIONS_DESIGN.md` §3.1 e §3.3.
+`SOULGOLD_RIFT_MISSIONS_DESIGN.md` §3 e §5.3 (Texto), mais `SOULGOLD_RIFT_ARCO_NARRATIVO.md`.
 
 ## 1. Transforme o feedback numa tabela antes de escrever
 

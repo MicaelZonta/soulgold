@@ -8,6 +8,7 @@
 #include "battle_anim.h"
 #include "battle_controllers.h"
 #include "battle_dome.h"
+#include "battle_gfx_sfx_util.h"
 #include "battle_message.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -2080,6 +2081,8 @@ void SetMultiuseSpriteTemplateToTrainerFront(enum TrainerPicID trainerPicId, enu
 
     gMultiuseSpriteTemplate.paletteTag = trainerPicId;
     gMultiuseSpriteTemplate.anims = gAnims_Trainer;
+    if (gMonSpritesGfxPtr != NULL && IsLargeTrainerFrontPic(trainerPicId))
+        SetLargeTrainerFrontPicTemplate(&gMultiuseSpriteTemplate, battlerPosition);
 }
 
 /* GameFreak called GetMonData with either 2 or 3 arguments, for type

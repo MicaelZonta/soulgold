@@ -1,6 +1,19 @@
 # Altar do Sol e da Lua — Ultra Necrozma — plano de implementação
 
-**Status:** **IMPLEMENTADO E TESTADO — revisão 4** (25/09/2026). O autor jogou o
+**Status:** **ROTEIRO V2 IMPLEMENTADO — revisão 7** (26/09/2026). O
+[`ALTAR_sUN_MOON_SCRIPT_V2.md`](ALTAR_sUN_MOON_SCRIPT_V2.md) substituiu a cena
+inteira: chegada preparada, impasse, duelo com o parceiro exigido, acordo e
+**teste da passagem**, travessia a partir de uma **marca dormente**, Ultra
+Necrozma, **resgate das nove UBs na tela** (corte para o Altar no meio do Ato
+IV), captura com Beast Ball de verdade, **custódia** quando não há espaço,
+estabilização com Necrozma e o parceiro, família e despedida. `make` limpo.
+**Runtime: nada da revisão 7 foi jogado.** **Leia o §21 primeiro** — ele vence
+§2 e §5–§10 (que descrevem a cena V1 e ficam como histórico) e define o
+contrato novo (`VAR_RIFT_ALTAR_STEP`, `VAR_RIFT_ALTAR_PARTNER`). §14 e §17–§20
+continuam valendo naquilo que o §21 não mudou (Pokégear, sprite da fenda,
+Ultra Necrozma de overworld, tela branca da fenda diária).
+
+**Revisões anteriores:** **revisão 4** (25/09/2026), implementada e testada. O autor jogou o
 evento inteiro e voltou com **cinco itens**; os cinco estão corrigidos e estão em
 **§18**. Dois deles eram travamento de jogo, e o do mapa do Pokégear era um
 **estouro de buffer em cima de um ponteiro de função** — build limpo, crash
@@ -27,7 +40,7 @@ estado de portal, navio, arena, sprites), então não existe motivo para gastar
 uma rodada de placeholder. As regras de esqueleto (skill `evento-esqueleto`)
 continuam valendo **inteiras** para estado, visibilidade, gatilhos e resultados
 de batalha: o que muda é que as falas já nascem finais.
-**Roteiro da cena (falas e movimentos):** [`ALTAR_SUN_MOON_SCRIPT.md`](ALTAR_SUN_MOON_SCRIPT.md)
+**Roteiro da cena (falas e movimentos):** [`ALTAR_sUN_MOON_SCRIPT_V2.md`](ALTAR_sUN_MOON_SCRIPT_V2.md) (vigente); [`ALTAR_SUN_MOON_SCRIPT.md`](ALTAR_SUN_MOON_SCRIPT.md) é o V1, histórico
 **Design de referência:** [`SOULGOLD_RIFT_MISSIONS_DESIGN.md`](../SOULGOLD_RIFT_MISSIONS_DESIGN.md)
 §3.1 (voz), §3.3 (regras de escrita), §7 (o que a reunião entregou), §8 (o altar
 único), §9 (Lusamine e Ultra Necrozma), §10 (o loop pós-Necrozma) e §11
@@ -3646,3 +3659,227 @@ objetos já existiam e continuam existindo, com as mesmas flags.
       primeiro flash, sem transformação nenhuma no meio da cena; o parceiro se
       pôr na frente e ela dar o flare no lugar; e, ao ganhar, a armadura sair e
       sobrar o Necrozma pequeno para a captura.
+
+---
+
+## 21. Roteiro V2 aplicado (revisão 7, 26/09/2026)
+
+Substituição integral da cena pelo
+[`ALTAR_sUN_MOON_SCRIPT_V2.md`](ALTAR_sUN_MOON_SCRIPT_V2.md). **Esta seção vence
+§2 e §5–§10.** O que continua valendo das seções antigas: terreno e disco (§4.2,
+§4.3), Fly e `HEAL_LOCATION` (§4.7), escala de dias (§10.1), times e ids de
+treinador (§3.1, §6.5, §10.5), OlivineCity_House1/Cherrygrove/Cianwood no
+pós-game (§10.6–§10.8), Pokégear e sprite da fenda (§18), Ultra Necrozma de
+overworld (§19), "a criatura já chega dourada" (§20).
+
+### 21.1 Fluxo
+
+```text
+estado 12   porto: SAILOR, passe mostrado (SYSTEM, sem plaquinha); recuperação
+            do passe só com FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED
+            escada (12..16,15) ▶ ATO I: disco irregular + cinza, Looker recebe;
+            auxiliares nos suprimentos saem do quadro; Kukui/Anabel/Lusamine/
+            Lillie/Gladion - impasse sobre quem atravessa ▶ estado 13
+estado 13   Lusamine ▶ aproximação (1x por visita, FLAG_TEMP_D) ▶ Yes/No
+              ▶ parceiro na equipe (menu SYSTEM se os dois) - sem ele, não luta
+              ▶ cura ▶ duelo sem blackout ▶ 4 falas próprias + cura ▶ step
+              DUEL_DONE ▶ reload em (14,12)
+            frame (13, DUEL_DONE, (14,12)) ▶ ATO III: acordo (Lillie pede, a
+              Lusamine fica na base) ▶ TESTE: parceiro sai da Ball, pulso, a
+              abertura nasce, Anabel entra até a borda interna e volta, relatório
+              pelo comunicador, a abertura se contrai numa MARCA ▶ estado 14
+estado 14   Anabel (15,10) ou a marca (14,10) ▶ espaço (só equipe E PC cheios
+              bloqueiam; com espaço, nenhuma fala) ▶ parceiro ▶ qual ▶ Ready?
+              ▶ step CROSSING (ou RECROSSING depois de derrota) ▶ reload (14,11)
+            frame ▶ TRAVESSIA: parceiro sai, pulso, marca vira fenda; Looker,
+              Lusamine, Lillie; parceiro, jogador e Anabel entram ▶ arena
+ARENA       Ultra já visível do load ▶ entrada (curta no RECROSSING) ▶ step
+              BOSS_SEEN ▶ boss 5/90/160 (inalterado)
+              derrota ▶ blackout; na volta, a escada toca o reagrupamento 1x
+              vitória ▶ step RESCUE ▶ só Necrozma normal; Anabel/Looker pelo
+              comunicador; Anabel cura o parceiro (HealPlayerParty explícito);
+              o jogador sai da linha de retirada; cinco saídas, 1-2 por vez
+              ▶ warpsilent ALTAR (16,13)
+ALTAR/RESCUE jogador escondido (é só a câmera); as nove chegam pela fenda em
+              cinco grupos; Gladion, Kukui, Lillie pede e a Lusamine espera o
+              Stakataka, Nihilego; registro por som; "All nine are through"
+              ▶ step CAPTURE ▶ warpsilent ARENA (9,11)
+ARENA/CAPTURE Anabel entrega a Beast Ball ▶ checagem silenciosa ▶ lançamento,
+              entrada, queda, 3 balanços, clique, fanfarra ▶ givemon Lv75
+              ball=BALL_BEAST ▶ "{PLAYER} caught Necrozma!" (SYSTEM) ▶ apelido/PC
+              sem espaço ▶ Anabel captura sob custódia ▶ step CUSTODY
+              ▶ estado 15 ▶ warpsilent ALTAR (14,11)
+estado 15   frame ▶ ATO V: Looker, Anabel, Lillie (Nihilego à distância)
+              CUSTODY ▶ step CUSTODY_WAIT, controle solto; Anabel entrega
+                ▶ step DELIVERED ▶ reload (14,11) ▶ estabilização
+              normal ▶ estabilização: Necrozma e parceiro saem das Balls, a
+              luz solta volta a Necrozma, disco volta ao sol/lua, aparelhos
+              desligados sem a passagem cair, os dois recolhidos ▶ família
+              (Lillie ao lado da mãe; convite para o chá; Gladion fica) ▶
+              despedida ▶ FLAG_DAILY_ALTAR_RESOLVED + estado 16
+estado 16   pós-game como antes; revanche do próprio dia sem Nihilego
+```
+
+### 21.2 Estado — o que mudou
+
+**Duas vars novas** (`include/constants/vars.h`, depois de `VAR_KURT_TODAY`):
+
+| Var | Valor | Papel |
+|---|---|---|
+| `VAR_RIFT_ALTAR_STEP` | `0x4122` | Checkpoints **dentro** de 13–15. Existe porque a cena V2 cruza Altar ↔ arena no meio do Ato IV e `VAR_TEMP_*` zera a cada warp. Zerada no estado 16 |
+| `VAR_RIFT_ALTAR_PARTNER` | `0x4123` | `SPECIES_SOLGALEO`/`SPECIES_LUNALA` escolhido no duelo e em cada travessia. A arena e o Ato V mostram o mesmo Pokémon dos dois lados do warp |
+
+`ALTAR_STEP_*` (mesmo header): `NONE 0`, `DUEL_DONE 1` (13), `CROSSING 2`,
+`BOSS_SEEN 3`, `RETRY_READY 4`, `RECROSSING 5`, `RESCUE 6`, `CAPTURE 7` (14),
+`CUSTODY 8`, `CUSTODY_WAIT 9`, `DELIVERED 10` (15). `VAR_RIFT_MISSIONS_STATE`
+continua 12 → 13 → 14 → 15 → 16, e o significado de 14 e 15 mudou (comentário
+em `vars.h` atualizado): 14 = acordo e teste feitos, abertura dormente; 15 =
+boss vencido, nove resgatadas, Necrozma capturado **ou sob custódia**.
+
+**Uma daily flag nova:** `FLAG_DAILY_ALTAR_RESOLVED` (`DAILY_FLAGS_START + 0x30`,
+era `FLAG_UNUSED_0x950`; o nome "0x950" é enganoso — o valor real é `0x1538`,
+não colide com `FLAG_KITAKAMIMOUNTAIN_ITEM6`). Setada na despedida; enquanto
+setada, a revanche do Altar usa `TRAINER_LUSAMINE` (time do duelo, sem
+Nihilego). Nenhuma flag `CUSTOM` nova. Catálogo regenerado.
+
+**Por que var e não flags:** são onze estados mutuamente exclusivos de um
+único fio. Uma var é o que a skill `alocar-flag` §1 manda.
+
+**Checkpoints que realmente persistem.** Save só acontece com controle livre.
+Os passos que podem ir para um save são `NONE`/`DUEL_DONE` (13),
+`NONE`/`BOSS_SEEN`/`RETRY_READY` (14) e `CUSTODY_WAIT` (15). `CROSSING`,
+`RECROSSING`, `RESCUE`, `CAPTURE`, `CUSTODY` e `DELIVERED` só existem entre dois
+loads de uma mesma cena sob `lockall` — servem para atravessar o warp, não
+para um reset. Um reset no meio do resgate volta ao último save (boss de novo):
+o motor não tem autosave, e o V2 §21 aceita isso ("se o motor já opera assim").
+
+### 21.3 Objetos
+
+`SunMoonAltar` (18 objetos; ids gerados pelo `mapjson`):
+
+| Objeto | Posição | Flag | Nota |
+|---|---|---|---|
+| Lusamine | **(16,9)** (era 14,9) | `FLAG_TEMP_5` | na base externa, fora da coluna da abertura |
+| Kukui | **(17,9)** (era 10,14) | `FLAG_TEMP_1` | ao lado dela, lendo o indicador |
+| Anabel | (15,13) | **`FLAG_TEMP_6`** (era `0`) | escondida só no corte de acolhimento; `setobjectxyperm` (15,10) no 14, (15,12) no 15 |
+| `PARTNER` | (13,10) | `FLAG_TEMP_3` | **um** objeto `OBJ_EVENT_GFX_VAR_2` substitui Solgaleo e Lunala |
+| `MARK` | (14,10) | `FLAG_TEMP_4` | `OBJ_EVENT_GFX_PORTAL` (arte existente): a abertura dormente |
+| `NECROZMA` | (15,11) | `FLAG_TEMP_7` | só no Ato V |
+| `UB_A` / `UB_B` | (14,10) | `FLAG_TEMP_8` / `9` | `OBJ_EVENT_GFX_VAR_0/1`, reusados pelos cinco grupos |
+| `OFFICER` / `AETHER` | (15,17) / (13,17) | `FLAG_TEMP_A` / `B` | `POLICEMAN` e `SCIENTIST_M`, sem fala, só Ato I e acolhimento |
+
+`UltraSpaceArena`: Anabel agora nasce em **(9,19)**, o `PARTNER` (`VAR_2`) em
+**(11,19)**; `UB_A` (11,8) `FLAG_TEMP_5`, `UB_B` (9,8) `FLAG_TEMP_7`, bola
+`FLAG_TEMP_6`. Nenhum script fora dos dois mapas usava os ids antigos.
+
+**Orçamento (≤16 com jogador):** Ato I 12; Ato III 12; corte de acolhimento
+13 (jogador escondido + 6 visitantes + Looker + fenda + 2 auxiliares + 2 UBs;
+follower suprimido por `FLAG_TEMP_HIDE_FOLLOWER`); Ato V 14; arena 8.
+
+### 21.4 Pedido do V2 → como ficou
+
+| V2 pedia | Como ficou |
+|---|---|
+| Plaquinha em toda caixa (§2) | Todo texto começa com `{SPEAKER …}`. `NAME_SAILOR` **novo** (fim dos três arquivos; `NAME_COUNT` 12). SYSTEM/NARRATOR **sem** plaquinha — decisão do autor nos roteiros V2 |
+| Bug do nome corrompido depois da batalha da Lusamine (§2) | **Causa encontrada por leitura:** a fala de derrota (`{SPEAKER NAME_LUSAMINE}Well fought.`) é impressa **dentro** da batalha, e o renderizador abria a janela da plaquinha — template do overworld — por cima das janelas da batalha. `src/text.c`: `EXT_CTRL_CODE_SPEAKER` é consumido sem abrir nada quando `gMain.inBattle`. Vale para todas as revanches. Além disso, cada resultado reabre com a plaquinha da Lusamine na primeira caixa. **Confirmar em runtime** |
+| Porto: texto novo, recuperação de passe só com liberação comprovada | `OlivineCity_PortInside/scripts.pory`: SAILOR, `giveitem` checado, sem duplicar |
+| Chegada sem narração do disco; equipe preparada | Tremor + disco-portal + cinza antes da primeira fala; auxiliares visíveis e saem do quadro |
+| Parceiro exigido antes do duelo; menu SYSTEM se os dois | `PickPartner` (partilhado com a travessia); "Not now"/B devolve controle |
+| Pergunta curta na revisita | `FLAG_TEMP_D` por visita |
+| Cura antes e depois do duelo; Lost cura **entre** as duas caixas | `Common_EventScript_OutOfCenterPartyHeal` (fade por `fadescreenswapbuffers`) |
+| Checkpoint "duelo válido, teste pendente" | `ALTAR_STEP_DUEL_DONE`; falar com a Lusamine com ele pula a luta |
+| Teste da passagem visível e encerrado | Parceiro sai (`exit_pokeball`), pulso, fenda; Anabel entra até a borda (`set_invisible`) e reporta pelo comunicador — **o "corte curto da arena" virou isso**: só um warp é gasto no Ato IV |
+| Estado 14 sem abertura ativa; marca no chão | Marca = `OBJ_EVENT_GFX_PORTAL`; a fenda só volta na travessia |
+| Anabel e marca = um ponto | Anabel fica em (15,10) no 14; os dois scripts caem em `CrossChecks` |
+| Espaço: só equipe **e** PC cheios; com espaço, silêncio | `CheckRoom` |
+| Ordem de entrada: parceiro, jogador, Anabel | `set_invisible` em fila, depois o warp |
+| Ultra já Ultra; nada de nova transformação | Ultra visível desde o `ON_TRANSITION` |
+| Anabel não luta porque segura o módulo | Ela para em (11,12), fora da coluna 10 (retirada) |
+| Retry com intro curta; reagrupamento no Altar | `RECROSSING` + `Text_RetryStart`; escada toca `RetryAnabel/Lusamine/Gladion` uma vez (`BOSS_SEEN` → `RETRY_READY`) |
+| Parceiro desmaiado tratado antes de agir | `HealPlayerParty` explícito com fanfarra (única cura segura do motor, permitida pelo V2) |
+| As nove na tela, em grupos, saída ↔ chegada | Arena: cinco saídas; **um** corte para o Altar com as cinco chegadas e as falas do lado de fora; volta para a captura. `UltraSpaceArena_Text_AllNineSafe` é dito pelo Looker no registro (`SunMoonAltar_Text_AllNineSafe`) |
+| Lillie pede, Lusamine escuta, algo concreto dá certo | Grupo 3: a mão no ajuste, o pedido, a espera, "It's clear now", só então o ajuste |
+| Captura visível: Ball, trajetória, entrada, balanços, clique | Bola nasce no tile do jogador, `jump_up`, `enter_pokeball`, cai no tile da criatura, 3× `jump_in_place_down` + `SE_BALL`, clique, `MUS_HG_CAUGHT` |
+| Necrozma Lv75 **em Beast Ball nos dados** | `givemon …, ball=BALL_BEAST` (antes saía em Poké Ball) |
+| Uma confirmação só; rebuffer | "{PLAYER} caught {STR_VAR_1}!" próprio + apelido + PC, sem o "received" genérico |
+| Falha de entrega preserva tudo | Custódia: `CUSTODY` → `CUSTODY_WAIT` → Anabel entrega no Altar → `DELIVERED` → estabilização. Sem boss, sem nova captura |
+| Estabilização em cena com Necrozma e o parceiro | Os dois saem das Balls; a passagem fica estável com os aparelhos desligados |
+| Família sem abraço obrigatório | Lillie ao lado da mãe, mão que não chega, convite para o chá, Gladion "I can stay a while" |
+| Nove seguem para transporte | Nihilego (a única visível) sai para a área de transporte |
+| Nihilego da revanche só depois da virada de data | `FLAG_DAILY_ALTAR_RESOLVED` |
+| Pós-game: Anabel "survey"; dia usado | `RiftDailyAsk/No/Used`; o dia só é gasto no SIM |
+| Arena vazia NARRATOR | `Text_EmptySurvey`, sem plaquinha |
+| Base externa / módulo interno / estojo | **Só gesto e texto** ("texto antes de arte nova") |
+| Área de acolhimento maior (Stakataka, Celesteela, Guzzlord) | **Não precisou alargar o mapa:** a recepção é a base da escada (linhas 15–19, areia aberta) e cada UB sai por baixo do quadro |
+
+### 21.5 Arquivos tocados
+
+| Arquivo | Mudança |
+|---|---|
+| `data/maps/SunMoonAltar/scripts.inc` | Reescrito |
+| `data/maps/SunMoonAltar/map.json` | Posições, flag da Anabel, 7 objetos novos, partner único |
+| `data/maps/UltraSpaceArena/scripts.inc` | Reescrito |
+| `data/maps/UltraSpaceArena/map.json` | Anabel/partner nas colunas trocadas, partner único, dois slots de UB |
+| `data/maps/OlivineCity_PortInside/scripts.pory` | Marinheiro do Altar (V2 §6) |
+| `include/constants/vars.h` | `VAR_RIFT_ALTAR_STEP`, `VAR_RIFT_ALTAR_PARTNER`, `ALTAR_STEP_*`, comentário de 14/15 |
+| `include/constants/flags.h` | `FLAG_DAILY_ALTAR_RESOLVED` |
+| `include/constants/speaker_names.h`, `src/data/speaker_names.h`, `charmap.txt` | `SAILOR` |
+| `src/text.c` | Sem plaquinha dentro da batalha |
+| `docs/SOULGOLD_FLAGS_AUDIT.csv` | Regenerado |
+
+`medir_linha.py`: nada acima de 208 px nos três mapas. `checar_falantes.py`:
+limpo (fora o legado `Elm:` de `NewBarkTown_Lab`).
+
+### 21.6 O que não pode regredir
+
+- Todo gatilho de load confere estado **+ step + tile**; nenhum desembarque
+  normal (cais, Fly, `Unresolved`) dispara cena.
+- `BOSS_SEEN` antes da batalha; `RESCUE` antes de qualquer coisa depois da
+  vitória: boss vencido nunca volta.
+- Checagem de espaço antes da animação irreversível; `givemon` com
+  `ball=BALL_BEAST`; `STR_VAR_1` rebufferizado no próprio helper.
+- Ninguém sobre (14,10) ou a coluna 14 abaixo dela fora de cena.
+- `removeobject` só em objeto de flag própria; nunca nos de `FLAG_TEMP_1`.
+- Flashes que voltam ao mesmo mapa: `fadescreenswapbuffers`; `fadescreen` só
+  antes de warp.
+- `{SPEAKER}` em texto de batalha não abre plaquinha (`src/text.c`).
+
+### 21.7 Riscos e pendências
+
+- **Runtime: nada jogado.** Principais riscos que só o jogo mostra:
+  `hideobjectat OBJ_EVENT_ID_PLAYER` no `ON_WARP_INTO_MAP_TABLE` (o jogador
+  pode piscar um quadro no fade-in do corte); `exit_pokeball` em objeto não
+  follower (a animação usa a direção do jogador); `set_invisible` no jogador na
+  travessia; sprites 64×64 das UBs grandes passando pela escada; a bola de 16×16
+  com `jump_in_place`.
+- **Parceiro guardado durante a custódia.** Se o jogador depositar o Solgaleo
+  para abrir espaço, o Ato V ainda o mostra (identidade de
+  `VAR_RIFT_ALTAR_PARTNER`). Aceito: ninguém o tira do PC.
+- **Tela branca da fenda diária** (§18.5): não mexida; continua em aberto.
+- O `Unresolved` da arena (resultado sem vitória que volta ao script) só é
+  alcançável por CAUGHT/RAN, ambos bloqueados.
+
+### 21.8 Teste em runtime
+
+1. Porto: com Faraway liberado (menu) e sem; recusar não muda nada; save
+   antigo em ≥12 sem passe recebe "Looker left your pass".
+2. Ato I pela escada em cada x de 12 a 16; auxiliares visíveis e somem; ninguém
+   cobre ninguém; estado 13, Fly liberado.
+3. Duelo sem parceiro (fala), com os dois (menu, B), recusa, 2ª conversa só com
+   a pergunta. Vencer, perder, desistir: **a plaquinha dentro da batalha não
+   aparece e a da Lusamine volta certa depois**.
+4. Acordo e teste: Anabel some na abertura e volta; a abertura vira marca;
+   estado 14.
+5. Travessia: equipe cheia com PC livre segue calado; equipe e PC cheios
+   bloqueiam; sem parceiro na equipe; com os dois, menu; "Not yet".
+6. Arena: Ultra já visível; perder → blackout → voltar à escada → reagrupamento
+   uma vez → travessia com intro curta.
+7. Vencer: cura do parceiro; cinco saídas; corte para o Altar **sem o jogador
+   nem o follower**; cinco chegadas; o pedido da Lillie; volta à arena.
+8. Captura: bola, balanços, clique, "caught", apelido; party cheia → PC; a
+   espécie certa; **Beast Ball no resumo do Pokémon**.
+9. Custódia (party e PC cheios na última checagem, forçado): captura pela
+   Anabel, Ato V para depois do retorno, entrega pela Anabel, estabilização.
+10. Ato V completo de dia e de noite; disco volta ao sol/lua; estado 16.
+11. Pós-game: revanche no dia da conclusão sem Nihilego; no dia seguinte com;
+    fenda diária (recusa não gasta; o uso sim); "Come back tomorrow".

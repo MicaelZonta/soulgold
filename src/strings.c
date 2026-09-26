@@ -1546,5 +1546,7 @@ const u8 gText_EasyOption[]= _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Easy");
 const u8 gText_HardOption[]= _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Hard");
 const u8 gText_HnS[]= _("Soulgold");
 const u8 gText_ExpandedPlaceholder_Silver[]= _("Silver");
+const u8 gText_ExpandedPlaceholder_Gold[] = _("Gold");
+const u8 gText_ExpandedPlaceholder_Crystal[] = _("Crystal");
 //New Summary Screen Pages
 const u8 gText_PkmnTraits[] = _("TRAITS");

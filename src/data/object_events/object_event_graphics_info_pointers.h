@@ -1,4 +1,5 @@
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AltarRift;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherEmitter;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BeastBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RuinManiac;
@@ -312,6 +313,14 @@ extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Lillie;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Kukui;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Gladion;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Looker;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Colress;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Elesa;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Volkner;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Ramos;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Guzma;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Soliera;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Byron;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Fantina;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_NurseChansey;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LegendaryShadow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SlowpokeNoTail;
@@ -669,6 +678,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_CASE] =                    &gObjectEventGraphicsInfo_Case,
     [OBJ_EVENT_GFX_PORTAL] =                    &gObjectEventGraphicsInfo_Portal,
     [OBJ_EVENT_GFX_ALTAR_RIFT] =                &gObjectEventGraphicsInfo_AltarRift,
+    [OBJ_EVENT_GFX_AETHER_EMITTER] =            &gObjectEventGraphicsInfo_AetherEmitter,
     [OBJ_EVENT_GFX_BEAST_BALL] =                &gObjectEventGraphicsInfo_BeastBall,
     [OBJ_EVENT_GFX_TIMEGEAR] =                    &gObjectEventGraphicsInfo_Timegear,
     [OBJ_EVENT_GFX_LUSAMINE] =                    &gObjectEventGraphicsInfo_Lusamine,
@@ -676,6 +686,14 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_KUKUI] =                    &gObjectEventGraphicsInfo_Kukui,
     [OBJ_EVENT_GFX_GLADION] =                    &gObjectEventGraphicsInfo_Gladion,
     [OBJ_EVENT_GFX_LOOKER] =                    &gObjectEventGraphicsInfo_Looker,
+    [OBJ_EVENT_GFX_COLRESS] =                     &gObjectEventGraphicsInfo_Colress,
+    [OBJ_EVENT_GFX_ELESA] =                       &gObjectEventGraphicsInfo_Elesa,
+    [OBJ_EVENT_GFX_VOLKNER] =                     &gObjectEventGraphicsInfo_Volkner,
+    [OBJ_EVENT_GFX_RAMOS] =                       &gObjectEventGraphicsInfo_Ramos,
+    [OBJ_EVENT_GFX_GUZMA] =                       &gObjectEventGraphicsInfo_Guzma,
+    [OBJ_EVENT_GFX_SOLIERA] =                     &gObjectEventGraphicsInfo_Soliera,
+    [OBJ_EVENT_GFX_BYRON] =                       &gObjectEventGraphicsInfo_Byron,
+    [OBJ_EVENT_GFX_FANTINA] =                     &gObjectEventGraphicsInfo_Fantina,
     [OBJ_EVENT_GFX_TMBALL] =                  &gObjectEventGraphicsInfo_TMBall,
     [OBJ_EVENT_GFX_MEGASTONE] =                  &gObjectEventGraphicsInfo_Megastone,
     [OBJ_EVENT_GFX_RUIN_MANIAC] =                &gObjectEventGraphicsInfo_RuinManiac,

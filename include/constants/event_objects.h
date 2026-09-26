@@ -345,11 +345,27 @@
 // A Beast Ball da Anabel na cena de captura do Necrozma. Reaproveita inteiro o
 // grafico que gPokeballGraphics[BALL_BEAST] ja usa para follower.
 #define OBJ_EVENT_GFX_BEAST_BALL                 336
+// Emissor do campo de contencao da Aether (Rift Mission 4, New Bark): poste
+// 16x32 com lente, quatro quadros em loop (a lente pulsa e as luzes do poste
+// piscam). Paleta tirada das pecas de New Bark (caixa de correio, poste de luz).
+// NAO e o estabilizador de passagem da reuniao, que tem outra aparencia.
+#define OBJ_EVENT_GFX_AETHER_EMITTER             337
+// Nexus (Rift Missions): 32x32, twelve frames like the Lusamine
+// (sAnimTable_StandardAsym). Bruno and Steven use the same layout under
+// their old OBJ_EVENT_GFX_BRUNO / OBJ_EVENT_GFX_STEVEN.
+#define OBJ_EVENT_GFX_COLRESS                     338
+#define OBJ_EVENT_GFX_ELESA                       339
+#define OBJ_EVENT_GFX_VOLKNER                     340
+#define OBJ_EVENT_GFX_RAMOS                       341
+#define OBJ_EVENT_GFX_GUZMA                       342
+#define OBJ_EVENT_GFX_SOLIERA                     343
+#define OBJ_EVENT_GFX_BYRON                       344
+#define OBJ_EVENT_GFX_FANTINA                     345
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        337
+#define NUM_OBJ_EVENT_GFX                        346
 
 
 // These are dynamic object gfx ids.
@@ -560,6 +576,17 @@
 #endif //OW_FOLLOWERS_POKEBALLS
 #define OBJ_EVENT_PAL_TAG_LOOKER                  0x116B
 #define OBJ_EVENT_PAL_TAG_ALTAR_RIFT              0x116C
+#define OBJ_EVENT_PAL_TAG_AETHER_EMITTER          0x116D
+#define OBJ_EVENT_PAL_TAG_COLRESS                 0x116E
+#define OBJ_EVENT_PAL_TAG_ELESA                   0x116F
+#define OBJ_EVENT_PAL_TAG_VOLKNER                 0x1170
+#define OBJ_EVENT_PAL_TAG_RAMOS                   0x1171
+#define OBJ_EVENT_PAL_TAG_GUZMA                   0x1172
+#define OBJ_EVENT_PAL_TAG_SOLIERA                 0x1173
+#define OBJ_EVENT_PAL_TAG_BYRON                   0x1174
+#define OBJ_EVENT_PAL_TAG_FANTINA                 0x1175
+#define OBJ_EVENT_PAL_TAG_BRUNO                   0x1176
+#define OBJ_EVENT_PAL_TAG_STEVEN                  0x1177
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

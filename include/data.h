@@ -13,6 +13,11 @@
 #define TRAINER_PIC_HEIGHT 64
 #define TRAINER_PIC_SIZE (TRAINER_PIC_WIDTH * TRAINER_PIC_HEIGHT / 2)
 
+// SoulGold: front pic grande, so na batalha (ver TRAINER_SPRITE_LARGE).
+#define TRAINER_PIC_LARGE_WIDTH 80
+#define TRAINER_PIC_LARGE_HEIGHT 80
+#define TRAINER_PIC_LARGE_SIZE (TRAINER_PIC_LARGE_WIDTH * TRAINER_PIC_LARGE_HEIGHT / 2)
+
 // Red and Leaf's back pics have 5 frames, but this is presumably irrelevant in the places this is used.
 #define MAX_TRAINER_PIC_FRAMES 4
 
@@ -38,6 +43,10 @@ struct TrainerSprite
     const union AnimCmd *const *const animation;
     const struct Coords16 mugshotCoords;
     s16 mugshotRotation;
+    // SoulGold: versao 80x80 usada so na batalha; frontPic (64x64) segue
+    // valendo para as outras telas, que tem buffer de 64x64.
+    const u32 *largeFrontPic;
+    const u16 *largePalette;
 };
 
 struct TrainerBacksprite

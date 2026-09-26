@@ -37,2408 +37,2812 @@
 # 19 "data/maps/OlivineCity_House1/scripts.pory"
 @
 # 20 "data/maps/OlivineCity_House1/scripts.pory"
-@ Three independent visibility decisions now, not one:
+@ Four independent visibility decisions now, not one:
 # 21 "data/maps/OlivineCity_House1/scripts.pory"
-@   FLAG_TEMP_1  the family: the reunion visitors in 10..11, and the five of them
+@   FLAG_TEMP_1  the family: the reunion visitors in 10 (once summoned) and 11,
 # 22 "data/maps/OlivineCity_House1/scripts.pory"
-@                again from 16 on, by the weekday rota
+@                and the five of them again from 16 on, by the weekday rota
 # 23 "data/maps/OlivineCity_House1/scripts.pory"
 @   FLAG_TEMP_2  Looker and Anabel: present below 16, gone from 16 on
 # 24 "data/maps/OlivineCity_House1/scripts.pory"
-@   FLAG_TEMP_3  Kukui: 10..11 only. He never comes back to this room - from 16
+@   FLAG_TEMP_3  Kukui: 10 (once summoned) and 11 only. He never comes back to
 # 25 "data/maps/OlivineCity_House1/scripts.pory"
-@                on he is in Alola, and on some days on a Cherrygrove beach
+@                this room - from 16 on he is in Alola, and on some days on a
 # 26 "data/maps/OlivineCity_House1/scripts.pory"
-@
+@                Cherrygrove beach
 # 27 "data/maps/OlivineCity_House1/scripts.pory"
-@ Floor plan (dump_mapa.py OlivineCity_House1; y grows DOWNWARD).
+@   FLAG_TEMP_4  the player's partner, a SCENE instance (reunion V2 section 7):
 # 28 "data/maps/OlivineCity_House1/scripts.pory"
-@ x=11 and x=12 are wall on every row and are left out.
+@                object 9, OBJ_EVENT_GFX_VAR_0 resolved from VAR_OBJ_GFX_ID_0.
 # 29 "data/maps/OlivineCity_House1/scripts.pory"
-@
+@                Hidden on EVERY load; only the test clears it, and only the
 # 30 "data/maps/OlivineCity_House1/scripts.pory"
-@       x= 0 1 2 3 4 5 6 7 8 9 10
+@                test removes it. Its own flag, so removeobject is safe on it.
 # 31 "data/maps/OlivineCity_House1/scripts.pory"
-@   y=2    . . . . . . . . . . .     off camera when the player is at (4,8)
+@
 # 32 "data/maps/OlivineCity_House1/scripts.pory"
-@   y=3    . . . . . . . . . . .     off camera
+@ Floor plan (dump_mapa.py OlivineCity_House1; y grows DOWNWARD).
 # 33 "data/maps/OlivineCity_House1/scripts.pory"
-@   y=4    . . . . . # # . . . .     table (5-6,4-5) is solid
+@ x=11 and x=12 are wall on every row and are left out.
 # 34 "data/maps/OlivineCity_House1/scripts.pory"
-@   y=5    . . . . L # # A . . .     L = Looker (4,5)      A = Anabel (7,5)
+@
 # 35 "data/maps/OlivineCity_House1/scripts.pory"
-@   y=6    . . N I . . . . . U .     N = Ninetales (2,6)   I = Lillie (3,6)   U = Lusamine (9,6)
+@       x= 0 1 2 3 4 5 6 7 8 9 10
 # 36 "data/maps/OlivineCity_House1/scripts.pory"
-@   y=7    . . S G . . . . K . .     S = Silvally (2,7)    G = Gladion (3,7)  K = Kukui (8,7)
+@   y=2    . . . . . . . . . . .     off camera when the player is at (4,8)
 # 37 "data/maps/OlivineCity_House1/scripts.pory"
-@   y=8    # . . . W . . . . . #     W = door (4,8): the only warp, and where
+@   y=3    . . . . . . . . . . .     off camera
 # 38 "data/maps/OlivineCity_House1/scripts.pory"
-@   y=9    # # # # # # # # # # #         the player stands during the scene
+@   y=4    . . . . . # # . . . .     table (5-6,4-5) is solid
 # 39 "data/maps/OlivineCity_House1/scripts.pory"
-@
+@   y=5    . . . . L # # A . . .     L = Looker (4,5)      A = Anabel (7,5)
 # 40 "data/maps/OlivineCity_House1/scripts.pory"
-@ Nobody stands south of the player, so the text box covers no actor, and
+@   y=6    . . N I . . . . . U .     N = Ninetales (2,6)   I = Lillie (3,6)   U = Lusamine (9,6)
 # 41 "data/maps/OlivineCity_House1/scripts.pory"
-@ nobody stands on the Looker/Anabel briefing paths - (4,6), (4,7), (7,6),
+@   y=7    . . S G . . P . K . .     S = Silvally (2,7)    G = Gladion (3,7)  K = Kukui (8,7)
 # 42 "data/maps/OlivineCity_House1/scripts.pory"
-@ (7,7), (6,7), (5,7) are all clear of the six new objects.
+@   y=8    # . . . W . . . . . #     P = partner (6,7), scene instance only
 # 43 "data/maps/OlivineCity_House1/scripts.pory"
-@ ============================================================================
+@   y=9    # # # # # # # # # # #     W = door (4,8): the only warp
 # 44 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_MapScripts::
+@
 # 45 "data/maps/OlivineCity_House1/scripts.pory"
-	map_script MAP_SCRIPT_ON_TRANSITION, OlivineCity_House1_OnTransition
+@ Nobody stands south of the player, so the text box covers no actor. The
 # 46 "data/maps/OlivineCity_House1/scripts.pory"
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, OlivineCity_House1_OnFrame
+@ partner tile (6,7) is measured free; a 64x64 species sprite reaches into
 # 47 "data/maps/OlivineCity_House1/scripts.pory"
-	.byte 0
+@ row 6, columns 5-7, all floor, and never overlaps the solid table (rows
 # 48 "data/maps/OlivineCity_House1/scripts.pory"
-
+@ 4-5). In the V2 reunion nobody but the player walks to the door: Looker and
 # 49 "data/maps/OlivineCity_House1/scripts.pory"
-@ NEW with the pre-Necrozma reunion. Looker and Anabel still have "flag": "0"
+@ Anabel stay by the table, and the room centre stays open for the test.
 # 50 "data/maps/OlivineCity_House1/scripts.pory"
-@ and are never touched here. The six reunion objects DO need this: their hide
+@ Post-game (state >= 16) Lusamine's template is moved to (5,6) by
 # 51 "data/maps/OlivineCity_House1/scripts.pory"
-@ flag is FLAG_TEMP_1, and ClearTempFieldEventData zeroes every temp on every
+@ ApplyPostgameSeating below - by the table, near her children - measured
 # 52 "data/maps/OlivineCity_House1/scripts.pory"
-@ load - so the DEFAULT IS VISIBLE, and this block is the only thing that keeps
+@ free, facing left at Lillie in (3,6).
 # 53 "data/maps/OlivineCity_House1/scripts.pory"
-@ Lusamine and the others out of the room for the whole game before state 10.
+@ ============================================================================
 # 54 "data/maps/OlivineCity_House1/scripts.pory"
-@ It runs before the first spawn, on every load of this map.
+OlivineCity_House1_MapScripts::
 # 55 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_OnTransition::
+	map_script MAP_SCRIPT_ON_TRANSITION, OlivineCity_House1_OnTransition
 # 56 "data/maps/OlivineCity_House1/scripts.pory"
-	call OlivineCity_House1_EventScript_ApplyReunionVisibility
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, OlivineCity_House1_OnFrame
 # 57 "data/maps/OlivineCity_House1/scripts.pory"
-	call OlivineCity_House1_EventScript_ApplyInvestigatorVisibility
+	.byte 0
 # 58 "data/maps/OlivineCity_House1/scripts.pory"
-	call OlivineCity_House1_EventScript_ApplyKukuiVisibility
+
 # 59 "data/maps/OlivineCity_House1/scripts.pory"
-	end
+@ NEW with the pre-Necrozma reunion. Looker and Anabel still have "flag": "0"
 # 60 "data/maps/OlivineCity_House1/scripts.pory"
-
+@ and are never touched here. The six reunion objects DO need this: their hide
 # 61 "data/maps/OlivineCity_House1/scripts.pory"
-@ FLAG_TEMP_1 - the four visitors and the two partners. Shown ONLY in states 10
+@ flag is FLAG_TEMP_1, and ClearTempFieldEventData zeroes every temp on every
 # 62 "data/maps/OlivineCity_House1/scripts.pory"
-@ (reunion pending) and 11 (reunion held, waiting for the evolved partner).
+@ load - so the DEFAULT IS VISIBLE, and this block is the only thing that keeps
 # 63 "data/maps/OlivineCity_House1/scripts.pory"
-@ From 12 on they are gone for good: they went ahead to the port.
+@ Lusamine and the others out of the room for the whole game before state 10.
 # 64 "data/maps/OlivineCity_House1/scripts.pory"
-@ Runs UNCONDITIONALLY - an "optimised" version that only ran in state 10 would
+@ It runs before the first spawn, on every load of this map.
 # 65 "data/maps/OlivineCity_House1/scripts.pory"
-@ leave the house full of visitors from New Game on.
+OlivineCity_House1_OnTransition::
 # 66 "data/maps/OlivineCity_House1/scripts.pory"
-@ goto_if_eq on two values, NEVER goto_if_ge: that is the mistake this file has
+	call OlivineCity_House1_EventScript_ApplyReunionVisibility
 # 67 "data/maps/OlivineCity_House1/scripts.pory"
-@ already made three times (see the Looker branch block below).
+	call OlivineCity_House1_EventScript_ApplyInvestigatorVisibility
 # 68 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ApplyReunionVisibility::
+	call OlivineCity_House1_EventScript_ApplyKukuiVisibility
 # 69 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_ShowReunionCast
+	@ The partner is a scene instance: it exists only between the release and
 # 70 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_ShowReunionCast
+	@ the recall inside the test script, so on every load it is hidden. This
 # 71 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HideReunionCast
+	@ line is unconditional for the same reason the others are - temps come
 # 72 "data/maps/OlivineCity_House1/scripts.pory"
-	@ Post-game: Sunday and Friday are the family's days. The whole arc was about
+	@ back zeroed, and a zeroed temp means VISIBLE.
 # 73 "data/maps/OlivineCity_House1/scripts.pory"
-	@ a family that could not be in the same place; two days a week where the only
+	setflag FLAG_TEMP_4
 # 74 "data/maps/OlivineCity_House1/scripts.pory"
-	@ thing they do is be together is the reward, and it needs no line of dialogue
+	call OlivineCity_House1_EventScript_ApplyPostgameSeating
 # 75 "data/maps/OlivineCity_House1/scripts.pory"
-	@ explaining itself. Kukui is NOT part of this - he is on FLAG_TEMP_3.
+	end
 # 76 "data/maps/OlivineCity_House1/scripts.pory"
-	specialvar VAR_RESULT, GetDayOfWeek
+
 # 77 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RESULT, WEEKDAY_SUN, OlivineCity_House1_EventScript_ShowReunionCast
+@ FLAG_TEMP_1 - the four visitors and the two partners. Shown in state 10 only
 # 78 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RESULT, WEEKDAY_FRI, OlivineCity_House1_EventScript_ShowReunionCast
+@ once Looker's invitation went out (reunion V2 section 2: before the call the
 # 79 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_HideReunionCast::
+@ base is open but the cast is NOT gathered yet), in state 11 always (the
 # 80 "data/maps/OlivineCity_House1/scripts.pory"
-	setflag FLAG_TEMP_1
+@ meeting happened; they wait for the partner), and from 16 on by the weekday
 # 81 "data/maps/OlivineCity_House1/scripts.pory"
-	return
+@ rota. From 12 to 15 they are gone: they went ahead to the voyage.
 # 82 "data/maps/OlivineCity_House1/scripts.pory"
-
+@ Runs UNCONDITIONALLY - an "optimised" version that only ran in state 10 would
 # 83 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ShowReunionCast::
+@ leave the house full of visitors from New Game on.
 # 84 "data/maps/OlivineCity_House1/scripts.pory"
-	clearflag FLAG_TEMP_1
+@ goto_if_eq on listed values, NEVER goto_if_ge: that is the mistake this file
 # 85 "data/maps/OlivineCity_House1/scripts.pory"
-	return
+@ has already made three times (see the Looker branch block below).
 # 86 "data/maps/OlivineCity_House1/scripts.pory"
-
+OlivineCity_House1_EventScript_ApplyReunionVisibility::
 # 87 "data/maps/OlivineCity_House1/scripts.pory"
-@ Looker and Anabel: the whole game up to the farewell, and then never again.
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_ShowReunionCastIfSummoned
 # 88 "data/maps/OlivineCity_House1/scripts.pory"
-@ Runs unconditionally on every load, and it is the ONLY thing that ever removes
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_ShowReunionCast
 # 89 "data/maps/OlivineCity_House1/scripts.pory"
-@ them (see the header block for what happens if it is deleted).
+	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HideReunionCast
 # 90 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ApplyInvestigatorVisibility::
+	@ Post-game: Sunday and Friday are the family's days. The whole arc was about
 # 91 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HideInvestigators
+	@ a family that could not be in the same place; two days a week where the only
 # 92 "data/maps/OlivineCity_House1/scripts.pory"
-	clearflag FLAG_TEMP_2
+	@ thing they do is be together is the reward, and it needs no line of dialogue
 # 93 "data/maps/OlivineCity_House1/scripts.pory"
-	return
+	@ explaining itself. Kukui is NOT part of this - he is on FLAG_TEMP_3.
 # 94 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_HideInvestigators::
+	specialvar VAR_RESULT, GetDayOfWeek
 # 95 "data/maps/OlivineCity_House1/scripts.pory"
-	setflag FLAG_TEMP_2
+	goto_if_eq VAR_RESULT, WEEKDAY_SUN, OlivineCity_House1_EventScript_ShowReunionCast
 # 96 "data/maps/OlivineCity_House1/scripts.pory"
-	return
+	goto_if_eq VAR_RESULT, WEEKDAY_FRI, OlivineCity_House1_EventScript_ShowReunionCast
 # 97 "data/maps/OlivineCity_House1/scripts.pory"
-
+OlivineCity_House1_EventScript_HideReunionCast::
 # 98 "data/maps/OlivineCity_House1/scripts.pory"
-@ Kukui: states 10 and 11 only, and a closed window on purpose - goto_if_ge here
+	setflag FLAG_TEMP_1
 # 99 "data/maps/OlivineCity_House1/scripts.pory"
-@ would put him in this room for the rest of the game.
+	return
 # 100 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ApplyKukuiVisibility::
+
 # 101 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_ShowKukui
+@ State 10 before the invitation: the meeting does not exist yet, so neither
 # 102 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_ShowKukui
+@ does the gathering. FLAG_RIFT_LOOKER_SUMMONS is cleared by the scene itself
 # 103 "data/maps/OlivineCity_House1/scripts.pory"
-	setflag FLAG_TEMP_3
+@ (the invitation has been answered), but by then the state moves to 11 or 12
 # 104 "data/maps/OlivineCity_House1/scripts.pory"
-	return
+@ in the same script, so no load ever sees 10-with-cast-and-no-summons.
 # 105 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ShowKukui::
+OlivineCity_House1_EventScript_ShowReunionCastIfSummoned::
 # 106 "data/maps/OlivineCity_House1/scripts.pory"
-	clearflag FLAG_TEMP_3
+	goto_if_set FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_ShowReunionCast
 # 107 "data/maps/OlivineCity_House1/scripts.pory"
-	return
+	setflag FLAG_TEMP_1
 # 108 "data/maps/OlivineCity_House1/scripts.pory"
-
+	return
 # 109 "data/maps/OlivineCity_House1/scripts.pory"
-@ VAR_TEMP_1 is a once-per-visit latch (temps are zeroed by
+
 # 110 "data/maps/OlivineCity_House1/scripts.pory"
-@ ClearTempFieldEventData on every map load), so the frame trigger can never
+OlivineCity_House1_EventScript_ShowReunionCast::
 # 111 "data/maps/OlivineCity_House1/scripts.pory"
-@ re-fire and livelock the controls.
+	clearflag FLAG_TEMP_1
 # 112 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_OnFrame::
+	return
 # 113 "data/maps/OlivineCity_House1/scripts.pory"
-	map_script_2 VAR_TEMP_1, 0, OlivineCity_House1_EventScript_BriefingTrigger
+
 # 114 "data/maps/OlivineCity_House1/scripts.pory"
-	.2byte 0
+@ Looker and Anabel: the whole game up to the farewell, and then never again.
 # 115 "data/maps/OlivineCity_House1/scripts.pory"
-
+@ Runs unconditionally on every load, and it is the ONLY thing that ever removes
 # 116 "data/maps/OlivineCity_House1/scripts.pory"
-@ Only stages a scene in a briefing state (2 = Blackthorn, 4 = Mahogany,
+@ them (see the header block for what happens if it is deleted).
 # 117 "data/maps/OlivineCity_House1/scripts.pory"
-@ 6 = Cherrygrove, 8 = New Bark) or a reunion state (10 = the pre-Necrozma
+OlivineCity_House1_EventScript_ApplyInvestigatorVisibility::
 # 118 "data/maps/OlivineCity_House1/scripts.pory"
-@ meeting, 11 = the partner recheck) AND only if the player just came through
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HideInvestigators
 # 119 "data/maps/OlivineCity_House1/scripts.pory"
-@ the door at (4,8). Outside that, every one of those still runs - through the
+	clearflag FLAG_TEMP_2
 # 120 "data/maps/OlivineCity_House1/scripts.pory"
-@ Looker/Anabel object scripts, just without the choreography.
+	return
 # 121 "data/maps/OlivineCity_House1/scripts.pory"
-@ (4,8) is the ONLY warp of this house and there is no Fly or Dig indoors, so
+OlivineCity_House1_EventScript_HideInvestigators::
 # 122 "data/maps/OlivineCity_House1/scripts.pory"
-@ in state 10 the player is necessarily standing there when this fires.
+	setflag FLAG_TEMP_2
 # 123 "data/maps/OlivineCity_House1/scripts.pory"
-@ State 12 matches nothing here on purpose: the reunion is over.
+	return
 # 124 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_BriefingTrigger::
+
 # 125 "data/maps/OlivineCity_House1/scripts.pory"
-	setvar VAR_TEMP_1, 1                        @ first instruction: stops re-firing
+@ Kukui: states 10 (once summoned) and 11 only, and a closed window on purpose
 # 126 "data/maps/OlivineCity_House1/scripts.pory"
-	getplayerxy VAR_0x8004, VAR_0x8005
+@ - goto_if_ge here would put him in this room for the rest of the game. Same
 # 127 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_ne VAR_0x8004, 4, OlivineCity_House1_EventScript_End
+@ summons gate as the family: he arrives with the meeting, not before it.
 # 128 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_ne VAR_0x8005, 8, OlivineCity_House1_EventScript_End
+OlivineCity_House1_EventScript_ApplyKukuiVisibility::
 # 129 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_StageBriefing
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_ShowKukuiIfSummoned
 # 130 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_StageBriefingIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_ShowKukui
 # 131 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_StageBriefingIfCalled
+	setflag FLAG_TEMP_3
 # 132 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_StageBriefingIfCalled
+	return
 # 133 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_StageReunionIfCalled
+OlivineCity_House1_EventScript_ShowKukuiIfSummoned::
 # 134 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_StageRecheck
+	goto_if_set FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_ShowKukui
 # 135 "data/maps/OlivineCity_House1/scripts.pory"
-	end
+	setflag FLAG_TEMP_3
 # 136 "data/maps/OlivineCity_House1/scripts.pory"
-
+	return
 # 137 "data/maps/OlivineCity_House1/scripts.pory"
-@ States 4, 6, 8 and 10 are only ready once Looker has telephoned
+OlivineCity_House1_EventScript_ShowKukui::
 # 138 "data/maps/OlivineCity_House1/scripts.pory"
-@ (FLAG_RIFT_LOOKER_SUMMONS, set by RiftMissions_EventScript_LookerCall). Before
+	clearflag FLAG_TEMP_3
 # 139 "data/maps/OlivineCity_House1/scripts.pory"
-@ that the house has nothing staged: walking in gets the player nothing but the
+	return
 # 140 "data/maps/OlivineCity_House1/scripts.pory"
-@ waiting line from whichever detective they talk to.
+
 # 141 "data/maps/OlivineCity_House1/scripts.pory"
-@ State 2 is NOT gated. Its summons is the call scene in New Bark, that
+@ Reunion V2 section 11: in the post-game the room is the family's, so
 # 142 "data/maps/OlivineCity_House1/scripts.pory"
-@ invitation never expires and never repeats, and gating it would strand a save
+@ Lusamine does not keep her reunion spot against the east wall. She sits by
 # 143 "data/maps/OlivineCity_House1/scripts.pory"
-@ made before this flag existed.
+@ the table, near her children: (5,6), measured free, facing left at Lillie
 # 144 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_StageBriefingIfCalled::
+@ in (3,6). setobjectxyperm edits the RAM copy of the template that this very
 # 145 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_End
+@ load spawns from; below 16 the ROM position (9,6) is untouched, and every
 # 146 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_StageBriefing
+@ load recomputes this, so it never leaks into the reunion states.
 # 147 "data/maps/OlivineCity_House1/scripts.pory"
-
+OlivineCity_House1_EventScript_ApplyPostgameSeating::
 # 148 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_StageReunionIfCalled::
+	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_SeatingDone
 # 149 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_End
+	setobjectxyperm LOCALID_OLIVINE_HOUSE1_LUSAMINE, 5, 6
 # 150 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_StageReunion
+OlivineCity_House1_EventScript_SeatingDone::
 # 151 "data/maps/OlivineCity_House1/scripts.pory"
-
+	return
 # 152 "data/maps/OlivineCity_House1/scripts.pory"
-@ The choreography itself, shared by both briefings. Unchanged since Rift
+
 # 153 "data/maps/OlivineCity_House1/scripts.pory"
-@ Mission 1: only which text BriefingTalk picks differs.
+@ VAR_TEMP_1 is a once-per-visit latch (temps are zeroed by
 # 154 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_StageBriefing::
+@ ClearTempFieldEventData on every map load), so the frame trigger can never
 # 155 "data/maps/OlivineCity_House1/scripts.pory"
-	lockall
+@ re-fire and livelock the controls.
 # 156 "data/maps/OlivineCity_House1/scripts.pory"
-	hidefollower
+OlivineCity_House1_OnFrame::
 # 157 "data/maps/OlivineCity_House1/scripts.pory"
-	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, Common_Movement_ExclamationMark
+	map_script_2 VAR_TEMP_1, 0, OlivineCity_House1_EventScript_BriefingTrigger
 # 158 "data/maps/OlivineCity_House1/scripts.pory"
-	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+	.2byte 0
 # 159 "data/maps/OlivineCity_House1/scripts.pory"
-	@ Looker  (4,5)->(4,6)->(4,7), faces down at the player in (4,8).
+
 # 160 "data/maps/OlivineCity_House1/scripts.pory"
-	@ Anabel  (7,5)->(7,6)->(7,7)->(6,7)->(5,7), faces down.
+@ Only stages a scene in a briefing state (2 = Blackthorn, 4 = Mahogany,
 # 161 "data/maps/OlivineCity_House1/scripts.pory"
-	@ The two paths share no tile on any step, so they can walk together.
+@ 6 = Cherrygrove, 8 = New Bark) or in the reunion state 10 AND only if the
 # 162 "data/maps/OlivineCity_House1/scripts.pory"
-	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, OlivineCity_House1_Movement_LookerApproach
+@ player just came through the door at (4,8). Outside that, every one of those
 # 163 "data/maps/OlivineCity_House1/scripts.pory"
-	applymovement LOCALID_OLIVINE_HOUSE1_ANABEL, OlivineCity_House1_Movement_AnabelApproach
+@ still runs - through the Looker/Anabel object scripts, just without the
 # 164 "data/maps/OlivineCity_House1/scripts.pory"
-	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+@ choreography.
 # 165 "data/maps/OlivineCity_House1/scripts.pory"
-	waitmovement LOCALID_OLIVINE_HOUSE1_ANABEL
+@ (4,8) is the ONLY warp of this house and there is no Fly or Dig indoors, so
 # 166 "data/maps/OlivineCity_House1/scripts.pory"
-	call OlivineCity_House1_EventScript_BriefingTalk
+@ in state 10 the player is necessarily standing there when this fires.
 # 167 "data/maps/OlivineCity_House1/scripts.pory"
-	@ Back home: the reverse paths, also disjoint step by step.
+@ State 11 matches nothing here ON PURPOSE (reunion V2 section 6): entering
 # 168 "data/maps/OlivineCity_House1/scripts.pory"
-	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, OlivineCity_House1_Movement_LookerReturn
+@ the house in state 11 starts no dialogue. The retake is OFFERED by Looker
 # 169 "data/maps/OlivineCity_House1/scripts.pory"
-	applymovement LOCALID_OLIVINE_HOUSE1_ANABEL, OlivineCity_House1_Movement_AnabelReturn
+@ and Anabel in conversation, and nowhere else.
 # 170 "data/maps/OlivineCity_House1/scripts.pory"
-	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+@ State 12 matches nothing here on purpose: the reunion is over.
 # 171 "data/maps/OlivineCity_House1/scripts.pory"
-	waitmovement LOCALID_OLIVINE_HOUSE1_ANABEL
+OlivineCity_House1_EventScript_BriefingTrigger::
 # 172 "data/maps/OlivineCity_House1/scripts.pory"
-	releaseall
+	setvar VAR_TEMP_1, 1                        @ first instruction: stops re-firing
 # 173 "data/maps/OlivineCity_House1/scripts.pory"
-	end
+	getplayerxy VAR_0x8004, VAR_0x8005
 # 174 "data/maps/OlivineCity_House1/scripts.pory"
-
+	goto_if_ne VAR_0x8004, 4, OlivineCity_House1_EventScript_End
 # 175 "data/maps/OlivineCity_House1/scripts.pory"
-@ The reunion cutscene. Reached from the frame trigger at state 10 and from the
+	goto_if_ne VAR_0x8005, 8, OlivineCity_House1_EventScript_End
 # 176 "data/maps/OlivineCity_House1/scripts.pory"
-@ Looker/Anabel object scripts at state 10. It plays ONCE: it always ends in
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_StageBriefing
 # 177 "data/maps/OlivineCity_House1/scripts.pory"
-@ state 11 or 12, and neither re-enters it. That is the Rift Mission 4 lesson
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_StageBriefingIfCalled
 # 178 "data/maps/OlivineCity_House1/scripts.pory"
-@ applied before it costs anything (M4 doc section 9: the long scene replaying
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_StageBriefingIfCalled
 # 179 "data/maps/OlivineCity_House1/scripts.pory"
-@ on every attempt is tiring) - here the long version plays once and "did your
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_StageBriefingIfCalled
 # 180 "data/maps/OlivineCity_House1/scripts.pory"
-@ partner evolve yet?" is a short branch.
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_StageReunionIfCalled
 # 181 "data/maps/OlivineCity_House1/scripts.pory"
-@
-# 182 "data/maps/OlivineCity_House1/scripts.pory"
-@ Looker and Anabel reuse the SAME movements as the four briefings:
-# 183 "data/maps/OlivineCity_House1/scripts.pory"
-@   Looker  (4,5)->(4,6)->(4,7), faces down at the player in (4,8).
-# 184 "data/maps/OlivineCity_House1/scripts.pory"
-@   Anabel  (7,5)->(7,6)->(7,7)->(6,7)->(5,7), faces down.
-# 185 "data/maps/OlivineCity_House1/scripts.pory"
-@ Both paths are free of all six new objects and share no tile on any step.
-# 186 "data/maps/OlivineCity_House1/scripts.pory"
-@ Nobody walks back at the end: the reunion is still happening when the box
-# 187 "data/maps/OlivineCity_House1/scripts.pory"
-@ closes, and the next map load returns them to their template tiles.
-# 188 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_StageReunion::
-# 189 "data/maps/OlivineCity_House1/scripts.pory"
-	lockall
-# 190 "data/maps/OlivineCity_House1/scripts.pory"
-	hidefollower
-# 191 "data/maps/OlivineCity_House1/scripts.pory"
-	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, Common_Movement_ExclamationMark
-# 192 "data/maps/OlivineCity_House1/scripts.pory"
-	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
-# 193 "data/maps/OlivineCity_House1/scripts.pory"
-	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, OlivineCity_House1_Movement_LookerApproach
-# 194 "data/maps/OlivineCity_House1/scripts.pory"
-	applymovement LOCALID_OLIVINE_HOUSE1_ANABEL, OlivineCity_House1_Movement_AnabelApproach
-# 195 "data/maps/OlivineCity_House1/scripts.pory"
-	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
-# 196 "data/maps/OlivineCity_House1/scripts.pory"
-	waitmovement LOCALID_OLIVINE_HOUSE1_ANABEL
-# 197 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReunionScene
-# 198 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 199 "data/maps/OlivineCity_House1/scripts.pory"
-@ State 11 arrival: no choreography beyond Looker stepping down to the player,
-# 200 "data/maps/OlivineCity_House1/scripts.pory"
-@ and no recap of the meeting. He asks the one question that is still open.
-# 201 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_StageRecheck::
-# 202 "data/maps/OlivineCity_House1/scripts.pory"
-	lockall
-# 203 "data/maps/OlivineCity_House1/scripts.pory"
-	hidefollower
-# 204 "data/maps/OlivineCity_House1/scripts.pory"
-	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, OlivineCity_House1_Movement_LookerApproach
-# 205 "data/maps/OlivineCity_House1/scripts.pory"
-	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
-# 206 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReunionCheck
-# 207 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 208 "data/maps/OlivineCity_House1/scripts.pory"
-@ Beats, in the order design section 7 fixes them:
-# 209 "data/maps/OlivineCity_House1/scripts.pory"
-@   1. Looker closes the New Bark report and names the room.
-# 210 "data/maps/OlivineCity_House1/scripts.pory"
-@   2. Kukui: Anabel's bearing plus Elm's six weeks became a PLACE. He is
-# 211 "data/maps/OlivineCity_House1/scripts.pory"
-@      already facing west (into the room), so he needs no turnobject.
-# 212 "data/maps/OlivineCity_House1/scripts.pory"
-@   3. Lusamine says why she asked for this. Lillie (3,6) and Gladion (3,7) are
-# 213 "data/maps/OlivineCity_House1/scripts.pory"
-@      in the same column, one tile apart, so they can look AT EACH OTHER:
-# 214 "data/maps/OlivineCity_House1/scripts.pory"
-@      y grows downward, so Lillie faces DIR_SOUTH and Gladion DIR_NORTH. Then
-# 215 "data/maps/OlivineCity_House1/scripts.pory"
-@      both go back to DIR_EAST, facing the room and their mother.
-# 216 "data/maps/OlivineCity_House1/scripts.pory"
-@      The family conversation opens here and is NOT resolved here (design 7).
-# 217 "data/maps/OlivineCity_House1/scripts.pory"
-@   4. Lusamine states she intends to cross. ANABEL sets the condition, as a
-# 218 "data/maps/OlivineCity_House1/scripts.pory"
-@      Faller - and it is an ARGUMENT, not news: she told them on the beach
-# 219 "data/maps/OlivineCity_House1/scripts.pory"
-@      in Cherrygrove and the rest of it in New Bark (design 3.1 / 6.3 /
-# 220 "data/maps/OlivineCity_House1/scripts.pory"
-@      6.4). ONE box of recap, no more. Lusamine is east of her
-# 221 "data/maps/OlivineCity_House1/scripts.pory"
-@      on both paths in, so she turns DIR_EAST to face her, then back.
-# 222 "data/maps/OlivineCity_House1/scripts.pory"
-@   5-6. Anabel names what the passage needs; Looker checks -> ReunionCheck.
-# 223 "data/maps/OlivineCity_House1/scripts.pory"
-@
-# 224 "data/maps/OlivineCity_House1/scripts.pory"
-@ NO direction here is derived from the player's live position: every
-# 225 "data/maps/OlivineCity_House1/scripts.pory"
-@ turnobject aims at another actor on a fixed tile. That is what makes the
-# 226 "data/maps/OlivineCity_House1/scripts.pory"
-@ block correct both from the frame trigger (player at (4,8)) and from an
-# 227 "data/maps/OlivineCity_House1/scripts.pory"
-@ object script (player anywhere in the room).
-# 228 "data/maps/OlivineCity_House1/scripts.pory"
-@ closemessage before EVERY turnobject: without it the turn happens behind the
-# 229 "data/maps/OlivineCity_House1/scripts.pory"
-@ open text box.
-# 230 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ReunionScene::
-# 231 "data/maps/OlivineCity_House1/scripts.pory"
-	clearflag FLAG_RIFT_LOOKER_SUMMONS          @ the invitation has been answered
-# 232 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionOpen, MSGBOX_DEFAULT
-# 233 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 234 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionKukui, MSGBOX_DEFAULT
-# 235 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 236 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionLusamineCalled, MSGBOX_DEFAULT
-# 237 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 238 "data/maps/OlivineCity_House1/scripts.pory"
-	turnobject LOCALID_OLIVINE_HOUSE1_LILLIE, DIR_SOUTH
-# 239 "data/maps/OlivineCity_House1/scripts.pory"
-	turnobject LOCALID_OLIVINE_HOUSE1_GLADION, DIR_NORTH
-# 240 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionLillie, MSGBOX_DEFAULT
-# 241 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 242 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionGladion, MSGBOX_DEFAULT
-# 243 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 244 "data/maps/OlivineCity_House1/scripts.pory"
-	turnobject LOCALID_OLIVINE_HOUSE1_LILLIE, DIR_EAST
-# 245 "data/maps/OlivineCity_House1/scripts.pory"
-	turnobject LOCALID_OLIVINE_HOUSE1_GLADION, DIR_EAST
-# 246 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionCross, MSGBOX_DEFAULT
-# 247 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 248 "data/maps/OlivineCity_House1/scripts.pory"
-	turnobject LOCALID_OLIVINE_HOUSE1_ANABEL, DIR_EAST
-# 249 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionCondition, MSGBOX_DEFAULT
-# 250 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 251 "data/maps/OlivineCity_House1/scripts.pory"
-	turnobject LOCALID_OLIVINE_HOUSE1_ANABEL, DIR_SOUTH
-# 252 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReunionCheck
-# 253 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 254 "data/maps/OlivineCity_House1/scripts.pory"
-@ The one gate of the arc (design sections 7 and 8): Solgaleo OR Lunala, in the
-# 255 "data/maps/OlivineCity_House1/scripts.pory"
-@ PARTY. checkspecies compiles to Scrcmd_checkspecies (src/scrcmd.c), which
-# 256 "data/maps/OlivineCity_House1/scripts.pory"
-@ calls CheckPartyHasSpecies (src/field_specials.c): it walks gPlayerParty only
-# 257 "data/maps/OlivineCity_House1/scripts.pory"
-@ and returns into VAR_RESULT. Consequences, all of them wanted by the design:
-# 258 "data/maps/OlivineCity_House1/scripts.pory"
-@   - one in the PC does not count; a Pokedex entry does not count;
-# 259 "data/maps/OlivineCity_House1/scripts.pory"
-@   - Cosmog and Cosmoem do not pass, and no evolution happens here;
-# 260 "data/maps/OlivineCity_House1/scripts.pory"
-@   - EITHER species satisfies it, and having both is never required.
-# 261 "data/maps/OlivineCity_House1/scripts.pory"
-@ Two checks, never one, and never a check for the family.
-# 262 "data/maps/OlivineCity_House1/scripts.pory"
-@ Reachable from the long scene, from the state-11 trigger and from the Looker
-# 263 "data/maps/OlivineCity_House1/scripts.pory"
-@ and Anabel object scripts, so it must read as a standalone question.
-# 264 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ReunionCheck::
-# 265 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionAsk, MSGBOX_DEFAULT
-# 266 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 267 "data/maps/OlivineCity_House1/scripts.pory"
-	checkspecies SPECIES_SOLGALEO
-# 268 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_ReunionConfirmed
-# 269 "data/maps/OlivineCity_House1/scripts.pory"
-	checkspecies SPECIES_LUNALA
-# 270 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_ReunionConfirmed
-# 271 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReunionNotYet
-# 272 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 273 "data/maps/OlivineCity_House1/scripts.pory"
-@ Not yet. Nothing is spent: no mission is replayed, nobody leaves the room,
-# 274 "data/maps/OlivineCity_House1/scripts.pory"
-@ and the only thing that changes is 10 -> 11, which is what stops the long
-# 275 "data/maps/OlivineCity_House1/scripts.pory"
-@ cutscene from playing again. From 11 this whole block is four boxes.
-# 276 "data/maps/OlivineCity_House1/scripts.pory"
-@ The setvar is idempotent: running it again in state 11 rewrites 11, and
-# 277 "data/maps/OlivineCity_House1/scripts.pory"
-@ nothing ever goes back from 11 to 10.
-# 278 "data/maps/OlivineCity_House1/scripts.pory"
-@ releaseall (not release) because this script is reached from a lockall
-# 279 "data/maps/OlivineCity_House1/scripts.pory"
-@ context AND from a lock context: releaseall is correct in both, release would
-# 280 "data/maps/OlivineCity_House1/scripts.pory"
-@ leave the other objects frozen after the cutscene.
-# 281 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ReunionNotYet::
-# 282 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionNotYet, MSGBOX_DEFAULT
-# 283 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 284 "data/maps/OlivineCity_House1/scripts.pory"
-	setvar VAR_RIFT_MISSIONS_STATE, 11
-# 285 "data/maps/OlivineCity_House1/scripts.pory"
-	releaseall
-# 286 "data/maps/OlivineCity_House1/scripts.pory"
 	end
-# 287 "data/maps/OlivineCity_House1/scripts.pory"
+# 182 "data/maps/OlivineCity_House1/scripts.pory"
 
-# 288 "data/maps/OlivineCity_House1/scripts.pory"
-@ Confirmed. The room recognises the Pokemon that came out of the egg Gladion
-# 289 "data/maps/OlivineCity_House1/scripts.pory"
-@ handed the player in Violet, and then Looker gives the hook to the altar.
-# 290 "data/maps/OlivineCity_House1/scripts.pory"
-@ Design section 7 item 7 (releasing the ship) and everything at the altar
-# 291 "data/maps/OlivineCity_House1/scripts.pory"
-@ belong to the NEXT document: this event ends on the flag.
-# 292 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ReunionConfirmed::
-# 293 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionSeeIt, MSGBOX_DEFAULT
-# 294 "data/maps/OlivineCity_House1/scripts.pory"
+# 183 "data/maps/OlivineCity_House1/scripts.pory"
+@ States 4, 6, 8 and 10 are only ready once Looker has telephoned
+# 184 "data/maps/OlivineCity_House1/scripts.pory"
+@ (FLAG_RIFT_LOOKER_SUMMONS, set by RiftMissions_EventScript_LookerCall). Before
+# 185 "data/maps/OlivineCity_House1/scripts.pory"
+@ that the house has nothing staged: walking in gets the player nothing but the
+# 186 "data/maps/OlivineCity_House1/scripts.pory"
+@ waiting line from whichever detective they talk to.
+# 187 "data/maps/OlivineCity_House1/scripts.pory"
+@ State 2 is NOT gated. Its summons is the call scene in New Bark, that
+# 188 "data/maps/OlivineCity_House1/scripts.pory"
+@ invitation never expires and never repeats, and gating it would strand a save
+# 189 "data/maps/OlivineCity_House1/scripts.pory"
+@ made before this flag existed.
+# 190 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_StageBriefingIfCalled::
+# 191 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_End
+# 192 "data/maps/OlivineCity_House1/scripts.pory"
+	goto OlivineCity_House1_EventScript_StageBriefing
+# 193 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 194 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_StageReunionIfCalled::
+# 195 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_End
+# 196 "data/maps/OlivineCity_House1/scripts.pory"
+	goto OlivineCity_House1_EventScript_StageReunion
+# 197 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 198 "data/maps/OlivineCity_House1/scripts.pory"
+@ The choreography itself, shared by both briefings. Unchanged since Rift
+# 199 "data/maps/OlivineCity_House1/scripts.pory"
+@ Mission 1: only which text BriefingTalk picks differs.
+# 200 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_StageBriefing::
+# 201 "data/maps/OlivineCity_House1/scripts.pory"
+	lockall
+# 202 "data/maps/OlivineCity_House1/scripts.pory"
+	hidefollower
+# 203 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, Common_Movement_ExclamationMark
+# 204 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+# 205 "data/maps/OlivineCity_House1/scripts.pory"
+	@ Looker  (4,5)->(4,6)->(4,7), faces down at the player in (4,8).
+# 206 "data/maps/OlivineCity_House1/scripts.pory"
+	@ Anabel  (7,5)->(7,6)->(7,7)->(6,7)->(5,7), faces down.
+# 207 "data/maps/OlivineCity_House1/scripts.pory"
+	@ The two paths share no tile on any step, so they can walk together.
+# 208 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, OlivineCity_House1_Movement_LookerApproach
+# 209 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement LOCALID_OLIVINE_HOUSE1_ANABEL, OlivineCity_House1_Movement_AnabelApproach
+# 210 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+# 211 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement LOCALID_OLIVINE_HOUSE1_ANABEL
+# 212 "data/maps/OlivineCity_House1/scripts.pory"
+	call OlivineCity_House1_EventScript_BriefingTalk
+# 213 "data/maps/OlivineCity_House1/scripts.pory"
+	@ Back home: the reverse paths, also disjoint step by step.
+# 214 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, OlivineCity_House1_Movement_LookerReturn
+# 215 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement LOCALID_OLIVINE_HOUSE1_ANABEL, OlivineCity_House1_Movement_AnabelReturn
+# 216 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+# 217 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement LOCALID_OLIVINE_HOUSE1_ANABEL
+# 218 "data/maps/OlivineCity_House1/scripts.pory"
+	releaseall
+# 219 "data/maps/OlivineCity_House1/scripts.pory"
+	end
+# 220 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 221 "data/maps/OlivineCity_House1/scripts.pory"
+@ The reunion cutscene (script V2, 25/09/2026). Reached from the frame trigger
+# 222 "data/maps/OlivineCity_House1/scripts.pory"
+@ at state 10 and from the Looker/Anabel object scripts at state 10. It plays
+# 223 "data/maps/OlivineCity_House1/scripts.pory"
+@ ONCE: it always ends in state 11 or 12, and neither re-enters it.
+# 224 "data/maps/OlivineCity_House1/scripts.pory"
+@
+# 225 "data/maps/OlivineCity_House1/scripts.pory"
+@ V2 choreography change: Looker and Anabel STAY by the table. The two old
+# 226 "data/maps/OlivineCity_House1/scripts.pory"
+@ walks to the door are gone - the scene organises itself around the plan on
+# 227 "data/maps/OlivineCity_House1/scripts.pory"
+@ the table, and the room centre stays free for the partner's test. The only
+# 228 "data/maps/OlivineCity_House1/scripts.pory"
+@ approach is the player's: one step in, (4,8) -> (4,7), which keeps the warp
+# 229 "data/maps/OlivineCity_House1/scripts.pory"
+@ tile free and matches the respawn tile of the ending.
+# 230 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_StageReunion::
+# 231 "data/maps/OlivineCity_House1/scripts.pory"
+	lockall
+# 232 "data/maps/OlivineCity_House1/scripts.pory"
+	hidefollower
+# 233 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, Common_Movement_ExclamationMark
+# 234 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+# 235 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, OlivineCity_House1_Movement_PlayerEnter
+# 236 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement OBJ_EVENT_ID_PLAYER
+# 237 "data/maps/OlivineCity_House1/scripts.pory"
+	goto OlivineCity_House1_EventScript_ReunionScene
+# 238 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 239 "data/maps/OlivineCity_House1/scripts.pory"
+@ The reunion, script V2 section 4-5: the destination and the problem, then a
+# 240 "data/maps/OlivineCity_House1/scripts.pory"
+@ real way out. Beats in V2's order:
+# 241 "data/maps/OlivineCity_House1/scripts.pory"
+@   1. Looker opens and points the landing site out on the table map: from
+# 242 "data/maps/OlivineCity_House1/scripts.pory"
+@      (4,5) the table at (5-6,4-5) is due east.
+# 243 "data/maps/OlivineCity_House1/scripts.pory"
+@   2. Kukui walks the record - spike, then flicker. He already faces west,
+# 244 "data/maps/OlivineCity_House1/scripts.pory"
+@      into the room; the exclamation is him catching the spike.
+# 245 "data/maps/OlivineCity_House1/scripts.pory"
+@   3. Lillie turns to her MOTHER, not the floor: (3,6) -> (9,6), due east.
+# 246 "data/maps/OlivineCity_House1/scripts.pory"
+@      Lusamine answers with her equipment's limit, facing west at her
+# 247 "data/maps/OlivineCity_House1/scripts.pory"
+@      daughter (template direction, untouched).
+# 248 "data/maps/OlivineCity_House1/scripts.pory"
+@   4. Gladion asks how they come back. The case sits by Kukui at (8,7), due
+# 249 "data/maps/OlivineCity_House1/scripts.pory"
+@      east of him - his template already faces it.
+# 250 "data/maps/OlivineCity_House1/scripts.pory"
+@   5. Lusamine opens the case: one step down the east wall, (9,6) -> (9,7),
+# 251 "data/maps/OlivineCity_House1/scripts.pory"
+@      measured free, then she faces it (west). Anabel turns east to take the
+# 252 "data/maps/OlivineCity_House1/scripts.pory"
+@      portable unit and names the withdrawal criterion and the Beast Ball
+# 253 "data/maps/OlivineCity_House1/scripts.pory"
+@      (Kurt's, hers to keep - the altar's scripted capture uses it).
+# 254 "data/maps/OlivineCity_House1/scripts.pory"
+@   6. The leadership beat: Lusamine turns to the map (north), Lillie asks for
+# 255 "data/maps/OlivineCity_House1/scripts.pory"
+@      the controls, the pause, Lusamine faces her (west) and teaches ONE
+# 256 "data/maps/OlivineCity_House1/scripts.pory"
+@      concrete thing. Anabel closes: decided at the altar.
+# 257 "data/maps/OlivineCity_House1/scripts.pory"
+@ NO direction here is derived from the player's live position: every
+# 258 "data/maps/OlivineCity_House1/scripts.pory"
+@ turnobject aims at another actor on a fixed tile. That is what makes the
+# 259 "data/maps/OlivineCity_House1/scripts.pory"
+@ block correct both from the frame trigger (player at (4,7)) and from an
+# 260 "data/maps/OlivineCity_House1/scripts.pory"
+@ object script (player anywhere in the room).
+# 261 "data/maps/OlivineCity_House1/scripts.pory"
+@ Consecutive msgbox with no closemessage between them keep the box up and
+# 262 "data/maps/OlivineCity_House1/scripts.pory"
+@ swap the plaque per speaker; closemessage before EVERY movement, or the
+# 263 "data/maps/OlivineCity_House1/scripts.pory"
+@ movement happens behind the open box.
+# 264 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_ReunionScene::
+# 265 "data/maps/OlivineCity_House1/scripts.pory"
+	clearflag FLAG_RIFT_LOOKER_SUMMONS          @ the invitation has been answered
+# 266 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionOpen, MSGBOX_DEFAULT
+# 267 "data/maps/OlivineCity_House1/scripts.pory"
 	closemessage
+# 268 "data/maps/OlivineCity_House1/scripts.pory"
+	turnobject LOCALID_OLIVINE_HOUSE1_LOOKER, DIR_EAST
+# 269 "data/maps/OlivineCity_House1/scripts.pory"
+	delay 20
+# 270 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement LOCALID_OLIVINE_HOUSE1_KUKUI, Common_Movement_ExclamationMark
+# 271 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement LOCALID_OLIVINE_HOUSE1_KUKUI
+# 272 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionKukui, MSGBOX_DEFAULT
+# 273 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 274 "data/maps/OlivineCity_House1/scripts.pory"
+	turnobject LOCALID_OLIVINE_HOUSE1_LILLIE, DIR_EAST
+# 275 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionLillie, MSGBOX_DEFAULT
+# 276 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionLusamineEvidence, MSGBOX_DEFAULT
+# 277 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionGladionPlan, MSGBOX_DEFAULT
+# 278 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 279 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement LOCALID_OLIVINE_HOUSE1_LUSAMINE, OlivineCity_House1_Movement_LusamineToCase
+# 280 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement LOCALID_OLIVINE_HOUSE1_LUSAMINE
+# 281 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionStabilizer, MSGBOX_DEFAULT
+# 282 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 283 "data/maps/OlivineCity_House1/scripts.pory"
+	turnobject LOCALID_OLIVINE_HOUSE1_ANABEL, DIR_EAST
+# 284 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionAnabelReturn, MSGBOX_DEFAULT
+# 285 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionCapture, MSGBOX_DEFAULT
+# 286 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 287 "data/maps/OlivineCity_House1/scripts.pory"
+	turnobject LOCALID_OLIVINE_HOUSE1_LUSAMINE, DIR_NORTH
+# 288 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionLusamineCross, MSGBOX_DEFAULT
+# 289 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionLillieBoundary, MSGBOX_DEFAULT
+# 290 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 291 "data/maps/OlivineCity_House1/scripts.pory"
+	delay 40
+# 292 "data/maps/OlivineCity_House1/scripts.pory"
+	turnobject LOCALID_OLIVINE_HOUSE1_LUSAMINE, DIR_WEST
+# 293 "data/maps/OlivineCity_House1/scripts.pory"
+	delay 20
+# 294 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionLusamineControl, MSGBOX_DEFAULT
 # 295 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionGladionEgg, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_ReunionAnabelLeadership, MSGBOX_DEFAULT
 # 296 "data/maps/OlivineCity_House1/scripts.pory"
 	closemessage
 # 297 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionLillieProud, MSGBOX_DEFAULT
+	turnobject LOCALID_OLIVINE_HOUSE1_ANABEL, DIR_SOUTH
 # 298 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
+	@ falls through to the partner question
 # 299 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionLusamineKnows, MSGBOX_DEFAULT
+
 # 300 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
+@ Kukui asks for the partner. Reached ONCE, from the long scene above: the
 # 301 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionWayBack, MSGBOX_DEFAULT
+@ state-11 resume (Looker/Anabel) skips this box and re-enters at the
 # 302 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
+@ eligibility below (V2 section 6: "Yes repeats only the eligibility").
 # 303 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionHook, MSGBOX_DEFAULT
+OlivineCity_House1_EventScript_ReunionAskPartner::
 # 304 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
+	msgbox OlivineCity_House1_Text_ReunionAsk, MSGBOX_DEFAULT
 # 305 "data/maps/OlivineCity_House1/scripts.pory"
-	@ The ferry pass: the port sailor offers the altar route only to whoever
-# 306 "data/maps/OlivineCity_House1/scripts.pory"
-	@ carries it (OlivineCity_PortInside). Key item, so the bag cannot be full.
-# 307 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionTicket, MSGBOX_DEFAULT
-# 308 "data/maps/OlivineCity_House1/scripts.pory"
-	giveitem ITEM_SUN_MOON_TICKET
-# 309 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_ReunionTicketUse, MSGBOX_DEFAULT
-# 310 "data/maps/OlivineCity_House1/scripts.pory"
 	closemessage
+# 306 "data/maps/OlivineCity_House1/scripts.pory"
+	@ falls through to the eligibility
+# 307 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 308 "data/maps/OlivineCity_House1/scripts.pory"
+@ The one gate of the arc, unchanged in V2: Solgaleo OR Lunala, in the PARTY.
+# 309 "data/maps/OlivineCity_House1/scripts.pory"
+@ checkspecies compiles to Scrcmd_checkspecies (src/scrcmd.c), which calls
+# 310 "data/maps/OlivineCity_House1/scripts.pory"
+@ CheckPartyHasSpecies (src/field_specials.c): it walks gPlayerParty only and
 # 311 "data/maps/OlivineCity_House1/scripts.pory"
-	fadescreen FADE_TO_BLACK
+@ returns into VAR_RESULT. Consequences, all of them wanted by the design:
 # 312 "data/maps/OlivineCity_House1/scripts.pory"
-	setflag FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED   @ handoff; NEVER cleared
+@   - one in the PC does not count for the gate; a Pokedex entry does not
 # 313 "data/maps/OlivineCity_House1/scripts.pory"
-	setvar VAR_RIFT_MISSIONS_STATE, 12           @ invariant: flag and var together
+@     count; Cosmog and Cosmoem do not pass, and no evolution happens here;
 # 314 "data/maps/OlivineCity_House1/scripts.pory"
-	@ Reload in place: ON_TRANSITION hides the six visitors (they went ahead to
+@   - EITHER species satisfies it, and having both is never required.
 # 315 "data/maps/OlivineCity_House1/scripts.pory"
-	@ the port), Looker and Anabel snap back to (4,5)/(7,5) from their
+@ What V2 ADDS is on both edges of the gate, never in it:
 # 316 "data/maps/OlivineCity_House1/scripts.pory"
-	@ templates, and the follower comes back (undoes hidefollower). Without
+@   - both present -> an explicit SYSTEM menu; backing out (B) defers exactly
 # 317 "data/maps/OlivineCity_House1/scripts.pory"
-	@ this, all of that would happen in pieces as the camera moved.
+@     like "Not now" (menu exit hands control back, V2 checklist);
 # 318 "data/maps/OlivineCity_House1/scripts.pory"
-	@ (4,7), not (4,8): do not respawn the player on the room's only warp tile.
+@   - neither present -> the PC is consulted READ-ONLY to pick the one
 # 319 "data/maps/OlivineCity_House1/scripts.pory"
-	@ (4,7) is guaranteed free, because by state 12 the six are already hidden.
+@     guidance line that is true (ReunionGuidance below).
 # 320 "data/maps/OlivineCity_House1/scripts.pory"
-	@ The frame trigger fires again after this load with VAR_TEMP_1 zeroed, but
+OlivineCity_House1_EventScript_ReunionEligibility::
 # 321 "data/maps/OlivineCity_House1/scripts.pory"
-	@ dies twice over: the player is not at (4,8) AND state 12 matches no
+	checkspecies SPECIES_SOLGALEO
 # 322 "data/maps/OlivineCity_House1/scripts.pory"
-	@ goto_if_eq in its list.
+	copyvar VAR_TEMP_2, VAR_RESULT
 # 323 "data/maps/OlivineCity_House1/scripts.pory"
-	warpsilent MAP_OLIVINE_CITY_HOUSE1, 4, 7
+	checkspecies SPECIES_LUNALA
 # 324 "data/maps/OlivineCity_House1/scripts.pory"
-	waitstate
+	copyvar VAR_TEMP_3, VAR_RESULT
 # 325 "data/maps/OlivineCity_House1/scripts.pory"
-	releaseall
+	goto_if_eq VAR_TEMP_2, FALSE, OlivineCity_House1_EventScript_EligibilityNoSolgaleo
 # 326 "data/maps/OlivineCity_House1/scripts.pory"
-	end
+	goto_if_eq VAR_TEMP_3, FALSE, OlivineCity_House1_EventScript_UseSolgaleo
 # 327 "data/maps/OlivineCity_House1/scripts.pory"
-
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, OlivineCity_House1_Text_ChoiceSolgaleo, OlivineCity_House1_Text_ChoiceLunala, OlivineCity_House1_Text_ChoiceNotNow
 # 328 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_End::
+	goto_if_eq VAR_RESULT, 0, OlivineCity_House1_EventScript_UseSolgaleo
 # 329 "data/maps/OlivineCity_House1/scripts.pory"
-	end
+	goto_if_eq VAR_RESULT, 1, OlivineCity_House1_EventScript_UseLunala
 # 330 "data/maps/OlivineCity_House1/scripts.pory"
-
+	goto OlivineCity_House1_EventScript_ReunionDeferred   @ "Not now" and B alike
 # 331 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Movement_LookerApproach:
-# 332 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_down
-# 333 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_down
-# 334 "data/maps/OlivineCity_House1/scripts.pory"
-	face_down
-# 335 "data/maps/OlivineCity_House1/scripts.pory"
-	step_end
-# 336 "data/maps/OlivineCity_House1/scripts.pory"
 
+# 332 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_EligibilityNoSolgaleo::
+# 333 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_eq VAR_TEMP_3, FALSE, OlivineCity_House1_EventScript_ReunionGuidance
+# 334 "data/maps/OlivineCity_House1/scripts.pory"
+	@ falls through: Lunala is the one present
+# 335 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_UseLunala::
+# 336 "data/maps/OlivineCity_House1/scripts.pory"
+	setvar VAR_TEMP_2, SPECIES_LUNALA
 # 337 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Movement_AnabelApproach:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(LUNALA)
 # 338 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_down
+	goto OlivineCity_House1_EventScript_ReunionTest
 # 339 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_down
+
 # 340 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_left
+OlivineCity_House1_EventScript_UseSolgaleo::
 # 341 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_left
+	setvar VAR_TEMP_2, SPECIES_SOLGALEO
 # 342 "data/maps/OlivineCity_House1/scripts.pory"
-	face_down
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SOLGALEO)
 # 343 "data/maps/OlivineCity_House1/scripts.pory"
-	step_end
+	goto OlivineCity_House1_EventScript_ReunionTest
 # 344 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 345 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Movement_LookerReturn:
+@ V2 section 6: before control returns - for lack of the partner OR by the
 # 346 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_up
+@ player's own deferral - state 11 is registered, so the discussion never
 # 347 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_up
+@ replays; only the test and the pass stay pending. Idempotent from state 11:
 # 348 "data/maps/OlivineCity_House1/scripts.pory"
-	face_down
+@ running it again rewrites 11, and nothing ever goes back to 10.
 # 349 "data/maps/OlivineCity_House1/scripts.pory"
-	step_end
+@ releaseall (not release) because every reunion branch is reached from a
 # 350 "data/maps/OlivineCity_House1/scripts.pory"
-
+@ lockall context AND from a lock context; releaseall is correct in both.
 # 351 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Movement_AnabelReturn:
+OlivineCity_House1_EventScript_ReunionDeferred::
 # 352 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_right
+	msgbox OlivineCity_House1_Text_ReunionDeferred, MSGBOX_DEFAULT
 # 353 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_right
+	setvar VAR_RIFT_MISSIONS_STATE, 11
 # 354 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_up
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
 # 355 "data/maps/OlivineCity_House1/scripts.pory"
-	walk_up
+
 # 356 "data/maps/OlivineCity_House1/scripts.pory"
-	face_down
+@ No eligible partner in the party. V2 section 6: the guidance says only what
 # 357 "data/maps/OlivineCity_House1/scripts.pory"
-	step_end
+@ was VERIFIED, and the consultation never opens the test:
 # 358 "data/maps/OlivineCity_House1/scripts.pory"
-
+@   - Solgaleo or Lunala found in the PC        -> "bring it from the PC"
 # 359 "data/maps/OlivineCity_House1/scripts.pory"
-@ Shared by the arrival scene and by both object scripts in states 2, 4, 6
+@   - Cosmog/Cosmoem confirmed, party or PC     -> "it needs to evolve first"
 # 360 "data/maps/OlivineCity_House1/scripts.pory"
-@ and 8, so a briefing can never be skipped by entering from an odd tile. It is
+@     (party: CheckMysteryEggPokemon, which ignores eggs and only answers
 # 361 "data/maps/OlivineCity_House1/scripts.pory"
-@ the ONE place that moves flag and var, and it moves them together.
+@      after the Violet egg event - verified provenance; PC: the read-only
 # 362 "data/maps/OlivineCity_House1/scripts.pory"
-@ Invariants:
+@      species scan, eggs excluded)
 # 363 "data/maps/OlivineCity_House1/scripts.pory"
-@   FLAG_EVENT_ULTRABEAST_BLACKTHORN  set <=> VAR_RIFT_MISSIONS_STATE == 3
+@   - nothing verifiable                        -> the neutral line, which
 # 364 "data/maps/OlivineCity_House1/scripts.pory"
-@   FLAG_EVENT_ULTRABEAST_MAHOGANY    set <=> VAR_RIFT_MISSIONS_STATE == 5
+@     claims no growth, loss or trade
 # 365 "data/maps/OlivineCity_House1/scripts.pory"
-@   FLAG_EVENT_ULTRABEAST_CHERRYGROVE set <=> VAR_RIFT_MISSIONS_STATE == 7
+@ An unhatched egg proves no species (V2: "ovo generico nao comprova essa
 # 366 "data/maps/OlivineCity_House1/scripts.pory"
-@   FLAG_EVENT_ULTRABEAST_NEWBARK     set <=> VAR_RIFT_MISSIONS_STATE == 9
+@ origem"), so it deliberately lands on the neutral line.
 # 367 "data/maps/OlivineCity_House1/scripts.pory"
-@ The four are mutually exclusive because the var holds one value.
+OlivineCity_House1_EventScript_ReunionGuidance::
 # 368 "data/maps/OlivineCity_House1/scripts.pory"
-@ State 10 is the END of the chain: it opens no mission, it means "four done,
+	setvar VAR_0x8004, SPECIES_SOLGALEO
 # 369 "data/maps/OlivineCity_House1/scripts.pory"
-@ the Olivine reunion pending" (design section 7).
+	specialvar VAR_RESULT, CheckPCHasSpecies
 # 370 "data/maps/OlivineCity_House1/scripts.pory"
-@ A goto inside a script reached by call is safe: call pushes the return
+	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_GuidanceStored
 # 371 "data/maps/OlivineCity_House1/scripts.pory"
-@ address and return pops it, however many gotos happened in between.
+	setvar VAR_0x8004, SPECIES_LUNALA
 # 372 "data/maps/OlivineCity_House1/scripts.pory"
-@ Highest state first, so the block reads newest mission to oldest.
+	specialvar VAR_RESULT, CheckPCHasSpecies
 # 373 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_BriefingTalk::
+	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_GuidanceStored
 # 374 "data/maps/OlivineCity_House1/scripts.pory"
-	clearflag FLAG_RIFT_LOOKER_SUMMONS          @ the invitation has been answered
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
 # 375 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_BriefingTalkM4
+	goto_if_eq VAR_RESULT, SPECIES_COSMOG, OlivineCity_House1_EventScript_GuidanceUnevolved
 # 376 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_BriefingTalkM3
+	goto_if_eq VAR_RESULT, SPECIES_COSMOEM, OlivineCity_House1_EventScript_GuidanceUnevolved
 # 377 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_BriefingTalkM2
+	setvar VAR_0x8004, SPECIES_COSMOG
 # 378 "data/maps/OlivineCity_House1/scripts.pory"
-	@ falls through to M1 (state 2)
+	specialvar VAR_RESULT, CheckPCHasSpecies
 # 379 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_BriefingTalkM1::
+	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_GuidanceUnevolved
 # 380 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingWelcome, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SPECIES_COSMOEM
 # 381 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingAnabel, MSGBOX_DEFAULT
+	specialvar VAR_RESULT, CheckPCHasSpecies
 # 382 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingWormholes, MSGBOX_DEFAULT
+	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_GuidanceUnevolved
 # 383 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingBlackthorn, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_ReunionMissing, MSGBOX_DEFAULT
 # 384 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingRequest, MSGBOX_DEFAULT
+	setvar VAR_RIFT_MISSIONS_STATE, 11
 # 385 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
 # 386 "data/maps/OlivineCity_House1/scripts.pory"
-	setflag FLAG_EVENT_ULTRABEAST_BLACKTHORN
+
 # 387 "data/maps/OlivineCity_House1/scripts.pory"
-	setvar VAR_RIFT_MISSIONS_STATE, 3
+OlivineCity_House1_EventScript_GuidanceStored::
 # 388 "data/maps/OlivineCity_House1/scripts.pory"
-	return
+	msgbox OlivineCity_House1_Text_ReunionStored, MSGBOX_DEFAULT
 # 389 "data/maps/OlivineCity_House1/scripts.pory"
-
+	setvar VAR_RIFT_MISSIONS_STATE, 11
 # 390 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_BriefingTalkM2::
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
 # 391 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingM2Welcome, MSGBOX_DEFAULT
+
 # 392 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
+OlivineCity_House1_EventScript_GuidanceUnevolved::
 # 393 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingM2Link, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_ReunionUnevolved, MSGBOX_DEFAULT
 # 394 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
+	setvar VAR_RIFT_MISSIONS_STATE, 11
 # 395 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingM2Town, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
 # 396 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
+
 # 397 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingM2Meet, MSGBOX_DEFAULT
+@ State 11 retake, V2 section 6: offered by Looker and Anabel in conversation,
 # 398 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
+@ never on entry. Yes repeats only the eligibility and heads to the test;
 # 399 "data/maps/OlivineCity_House1/scripts.pory"
-	setflag FLAG_EVENT_ULTRABEAST_MAHOGANY
+@ Not yet (or B) hands control back. No state changes here: 11 stays 11.
 # 400 "data/maps/OlivineCity_House1/scripts.pory"
-	setvar VAR_RIFT_MISSIONS_STATE, 5
+OlivineCity_House1_EventScript_ReunionResume::
 # 401 "data/maps/OlivineCity_House1/scripts.pory"
-	return
+	msgbox OlivineCity_House1_Text_ReunionResume, MSGBOX_DEFAULT
 # 402 "data/maps/OlivineCity_House1/scripts.pory"
-
+	dynmultichoice 0, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, OlivineCity_House1_Text_ChoiceYes, OlivineCity_House1_Text_ChoiceNotYet
 # 403 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_BriefingTalkM3::
+	closemessage
 # 404 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingM3, MSGBOX_DEFAULT
+	goto_if_eq VAR_RESULT, 0, OlivineCity_House1_EventScript_ReunionEligibility
 # 405 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
 # 406 "data/maps/OlivineCity_House1/scripts.pory"
-	setflag FLAG_EVENT_ULTRABEAST_CHERRYGROVE
+
 # 407 "data/maps/OlivineCity_House1/scripts.pory"
-	setvar VAR_RIFT_MISSIONS_STATE, 7
+OlivineCity_House1_EventScript_ReunionReleaseEnd::
 # 408 "data/maps/OlivineCity_House1/scripts.pory"
-	return
+	closemessage
 # 409 "data/maps/OlivineCity_House1/scripts.pory"
-
+	releaseall
 # 410 "data/maps/OlivineCity_House1/scripts.pory"
-@ TRES msgbox, nao um. msgbox expande o texto inteiro em gStringVar4, que tem
-# 411 "data/maps/OlivineCity_House1/scripts.pory"
-@ 1000 bytes (EWRAM_DATA u8 gStringVar4[0x3E8], src/string_util.c). Este
-# 412 "data/maps/OlivineCity_House1/scripts.pory"
-@ briefing tem ~2000 e travava o jogo ao chegar em Olivine vindo de
-# 413 "data/maps/OlivineCity_House1/scripts.pory"
-@ Cherrygrove: StringExpandPlaceholders nao checa tamanho, entao ele escrevia
-# 414 "data/maps/OlivineCity_House1/scripts.pory"
-@ 1000 bytes por cima da EWRAM seguinte. Cada parte fica abaixo de ~800.
-# 415 "data/maps/OlivineCity_House1/scripts.pory"
-@ Sem closemessage entre elas: sFieldMessageBoxVisible continua TRUE, a caixa
-# 416 "data/maps/OlivineCity_House1/scripts.pory"
-@ nao desce nem sobe de novo, e a cena roda como uma fala so.
-# 417 "data/maps/OlivineCity_House1/scripts.pory"
-@ Cada parte PRECISA comecar com o seu {SPEAKER ...}: TrySetSpeakerFromMessage
-# 418 "data/maps/OlivineCity_House1/scripts.pory"
-@ le so o inicio de cada mensagem, e uma parte sem o codigo perderia a
-# 419 "data/maps/OlivineCity_House1/scripts.pory"
-@ plaquinha no meio da conversa.
-# 420 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_BriefingTalkM4::
-# 421 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingM4, MSGBOX_DEFAULT
-# 422 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingM4Faller, MSGBOX_DEFAULT
-# 423 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_BriefingM4NewBark, MSGBOX_DEFAULT
-# 424 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 425 "data/maps/OlivineCity_House1/scripts.pory"
-	setflag FLAG_EVENT_ULTRABEAST_NEWBARK
-# 426 "data/maps/OlivineCity_House1/scripts.pory"
-	setvar VAR_RIFT_MISSIONS_STATE, 9
-# 427 "data/maps/OlivineCity_House1/scripts.pory"
-	return
-# 428 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 429 "data/maps/OlivineCity_House1/scripts.pory"
-@ Branch order matters: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, then >= 12. NEVER
-# 430 "data/maps/OlivineCity_House1/scripts.pory"
-@ leave a "goto_if_ge VAR_RIFT_MISSIONS_STATE, 4", ", 6", ", 8" or ", 10"
-# 431 "data/maps/OlivineCity_House1/scripts.pory"
-@ here - any one of them would swallow the states above it. This has now
-# 432 "data/maps/OlivineCity_House1/scripts.pory"
-@ happened THREE times: Mission 3 had to delete a "goto_if_ge ..., 6" left
-# 433 "data/maps/OlivineCity_House1/scripts.pory"
-@ behind by Mission 2, Mission 4 had to move a "goto_if_ge ..., 8" left behind
-# 434 "data/maps/OlivineCity_House1/scripts.pory"
-@ by Mission 3, and the pre-Necrozma reunion had to split the
-# 435 "data/maps/OlivineCity_House1/scripts.pory"
-@ "goto_if_ge ..., 10" Mission 4 left behind, which would have replayed the
-# 436 "data/maps/OlivineCity_House1/scripts.pory"
-@ whole cutscene at state 11 and kept saying reunion lines at state 12.
-# 437 "data/maps/OlivineCity_House1/scripts.pory"
-@ Fourth warning, same mistake: a NEW state enters as goto_if_eq, and only the
-# 438 "data/maps/OlivineCity_House1/scripts.pory"
-@ LAST line of the list may be a goto_if_ge.
-# 439 "data/maps/OlivineCity_House1/scripts.pory"
-@ States 0-1 fall through to the holiday line.
-# 440 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_Looker::
-# 441 "data/maps/OlivineCity_House1/scripts.pory"
-	lock
-# 442 "data/maps/OlivineCity_House1/scripts.pory"
-	faceplayer
-# 443 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_LookerBrief
-# 444 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 3, OlivineCity_House1_EventScript_LookerGoAhead
-# 445 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_LookerBriefIfCalled
-# 446 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 5, OlivineCity_House1_EventScript_LookerGoAheadM2
-# 447 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_LookerBriefIfCalled
-# 448 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 7, OlivineCity_House1_EventScript_LookerGoAheadM3
-# 449 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_LookerBriefIfCalled
-# 450 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 9, OlivineCity_House1_EventScript_LookerGoAheadM4
-# 451 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_LookerReunionIfCalled
-# 452 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_LookerRecheck
-# 453 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_ge VAR_RIFT_MISSIONS_STATE, 12, OlivineCity_House1_EventScript_LookerAltar
-# 454 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_LookerHoliday, MSGBOX_DEFAULT
-# 455 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 456 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 457 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerBrief::
-# 458 "data/maps/OlivineCity_House1/scripts.pory"
-	call OlivineCity_House1_EventScript_BriefingTalk
-# 459 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 460 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 461 "data/maps/OlivineCity_House1/scripts.pory"
-@ Waiting for the summons: no briefing, no "go ahead", and nothing about the next
-# 462 "data/maps/OlivineCity_House1/scripts.pory"
-@ town. He says the one true thing - the reports are not finished - and promises
-# 463 "data/maps/OlivineCity_House1/scripts.pory"
-@ the telephone call that is the only way forward.
-# 464 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerBriefIfCalled::
-# 465 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_LookerWaitCall
-# 466 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_LookerBrief
-# 467 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 468 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerWaitCall::
-# 469 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_LookerWaitCallM3
-# 470 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_WaitForMahoganyCall, MSGBOX_DEFAULT
-# 471 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 472 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 473 "data/maps/OlivineCity_House1/scripts.pory"
-@ After Mahogany the wait is not idle: Anabel is matching Lillie's pages to her
-# 474 "data/maps/OlivineCity_House1/scripts.pory"
-@ own recordings, which is the task the street handed them.
-# 475 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerWaitCallM3::
-# 476 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_WaitForCherrygroveCall, MSGBOX_DEFAULT
-# 477 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 478 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 479 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerReunionIfCalled::
-# 480 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_LookerWaitCall
-# 481 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_LookerReunion
-# 482 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 483 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerGoAhead::
-# 484 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_LookerGoAhead, MSGBOX_DEFAULT
-# 485 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 486 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 487 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerGoAheadM2::
-# 488 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_LookerGoAheadM2, MSGBOX_DEFAULT
-# 489 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 490 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 491 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerGoAheadM3::
-# 492 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_LookerGoAheadM3, MSGBOX_DEFAULT
-# 493 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 494 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 495 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerGoAheadM4::
-# 496 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_LookerGoAheadM4, MSGBOX_DEFAULT
-# 497 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 498 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 499 "data/maps/OlivineCity_House1/scripts.pory"
-@ State 10: the alternative way into the reunion, for a player who walks past
-# 500 "data/maps/OlivineCity_House1/scripts.pory"
-@ the frame trigger's tile check. ReunionScene has no applymovement at all -
-# 501 "data/maps/OlivineCity_House1/scripts.pory"
-@ only msgbox and turnobject on actors with fixed tiles, and none of the six
-# 502 "data/maps/OlivineCity_House1/scripts.pory"
-@ visitors wanders (all of them are MOVEMENT_TYPE_FACE_*) - so it plays
-# 503 "data/maps/OlivineCity_House1/scripts.pory"
-@ identically under lock. All that is missing is Looker's step down.
-# 504 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerReunion::
-# 505 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReunionScene
-# 506 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 507 "data/maps/OlivineCity_House1/scripts.pory"
-@ State 11: only the open question, never the cutscene again.
-# 508 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerRecheck::
-# 509 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReunionCheck
-# 510 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 511 "data/maps/OlivineCity_House1/scripts.pory"
-@ SKELETON: last stop of this document. The ship, the voyage and the altar
-# 512 "data/maps/OlivineCity_House1/scripts.pory"
-@ belong to the next one, which starts from FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED
-# 513 "data/maps/OlivineCity_House1/scripts.pory"
-@ and VAR_RIFT_MISSIONS_STATE >= 12. Repeatable on purpose: a player who saved
-# 514 "data/maps/OlivineCity_House1/scripts.pory"
-@ and came back must be able to ask where to go.
-# 515 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_LookerAltar::
-# 516 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_LookerAltar, MSGBOX_DEFAULT
-# 517 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 518 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 519 "data/maps/OlivineCity_House1/scripts.pory"
-@ Same branch order as Looker, and the same warning about goto_if_ge.
-# 520 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_Anabel::
-# 521 "data/maps/OlivineCity_House1/scripts.pory"
-	lock
-# 522 "data/maps/OlivineCity_House1/scripts.pory"
-	faceplayer
-# 523 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_AnabelBrief
-# 524 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 3, OlivineCity_House1_EventScript_AnabelGoAhead
-# 525 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_AnabelBriefIfCalled
-# 526 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 5, OlivineCity_House1_EventScript_AnabelGoAheadM2
-# 527 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_AnabelBriefIfCalled
-# 528 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 7, OlivineCity_House1_EventScript_AnabelGoAheadM3
-# 529 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_AnabelBriefIfCalled
-# 530 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 9, OlivineCity_House1_EventScript_AnabelGoAheadM4
-# 531 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_AnabelReunionIfCalled
-# 532 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_AnabelRecheck
-# 533 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_ge VAR_RIFT_MISSIONS_STATE, 12, OlivineCity_House1_EventScript_AnabelAltar
-# 534 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_AnabelHoliday, MSGBOX_DEFAULT
-# 535 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 536 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 537 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelBrief::
-# 538 "data/maps/OlivineCity_House1/scripts.pory"
-	call OlivineCity_House1_EventScript_BriefingTalk
-# 539 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 540 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 541 "data/maps/OlivineCity_House1/scripts.pory"
-@ Her own waiting line: the plaque follows the message, so Looker's text cannot
-# 542 "data/maps/OlivineCity_House1/scripts.pory"
-@ be reused in her mouth.
-# 543 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelBriefIfCalled::
-# 544 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_AnabelWaitCall
-# 545 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_AnabelBrief
-# 546 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 547 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelWaitCall::
-# 548 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_AnabelWaitForCall, MSGBOX_DEFAULT
-# 549 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 550 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 551 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelReunionIfCalled::
-# 552 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_AnabelWaitCall
-# 553 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_AnabelReunion
-# 554 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 555 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelGoAhead::
-# 556 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_AnabelGoAhead, MSGBOX_DEFAULT
-# 557 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 558 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 559 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelGoAheadM2::
-# 560 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_AnabelGoAheadM2, MSGBOX_DEFAULT
-# 561 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 562 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 563 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelGoAheadM3::
-# 564 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_AnabelGoAheadM3, MSGBOX_DEFAULT
-# 565 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 566 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 567 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelGoAheadM4::
-# 568 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_AnabelGoAheadM4, MSGBOX_DEFAULT
-# 569 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 570 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 571 "data/maps/OlivineCity_House1/scripts.pory"
-@ SKELETON: Anabel sells Beast Balls from state 4 on (design section 5),
-# 572 "data/maps/OlivineCity_House1/scripts.pory"
-@ still pending since Rift Mission 1. This event passes through her script
-# 573 "data/maps/OlivineCity_House1/scripts.pory"
-@ without resolving it.
-# 574 "data/maps/OlivineCity_House1/scripts.pory"
-@ State 10: same entry into the reunion as Looker's, see the note there.
-# 575 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelReunion::
-# 576 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReunionScene
-# 577 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 578 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelRecheck::
-# 579 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReunionCheck
-# 580 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 581 "data/maps/OlivineCity_House1/scripts.pory"
-@ SKELETON: last stop of this document, same as LookerAltar.
-# 582 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_AnabelAltar::
-# 583 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_AnabelAltar, MSGBOX_DEFAULT
-# 584 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 585 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 586 "data/maps/OlivineCity_House1/scripts.pory"
-@ The four visitors. They exist to be talked to in state 11, the only state in
-# 587 "data/maps/OlivineCity_House1/scripts.pory"
-@ which the player walks the room with everyone present - in state 12 they are
-# 588 "data/maps/OlivineCity_House1/scripts.pory"
-@ not here to be talked to, and in state 10 the cutscene runs on arrival. So
-# 589 "data/maps/OlivineCity_House1/scripts.pory"
-@ they need no branch on the var: one box each.
-# 590 "data/maps/OlivineCity_House1/scripts.pory"
-@ Ninetales and Silvally have "script": "NULL" (design 3.2, skill
-# 591 "data/maps/OlivineCity_House1/scripts.pory"
-@ parceiro-pokemon-de-npc): they are their owners' partners out of the ball,
-# 592 "data/maps/OlivineCity_House1/scripts.pory"
-@ share FLAG_TEMP_1 with them, and come and go together.
-# 593 "data/maps/OlivineCity_House1/scripts.pory"
-@ SKELETON: placeholder dialogue, one box each.
-# 594 "data/maps/OlivineCity_House1/scripts.pory"
-@ The three who come back. There is NO battle anywhere in this room in the
-# 595 "data/maps/OlivineCity_House1/scripts.pory"
-@ post-game: this is the place where they are not working.
-# 596 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ReunionLusamine::
-# 597 "data/maps/OlivineCity_House1/scripts.pory"
-	lock
-# 598 "data/maps/OlivineCity_House1/scripts.pory"
-	faceplayer
-# 599 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseLusaminePost
-# 600 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_IdleLusamine, MSGBOX_DEFAULT
-# 601 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 602 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 603 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_HouseLusaminePost::
-# 604 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_HouseLusaminePost, MSGBOX_DEFAULT
-# 605 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 606 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 607 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ReunionLillie::
-# 608 "data/maps/OlivineCity_House1/scripts.pory"
-	lock
-# 609 "data/maps/OlivineCity_House1/scripts.pory"
-	faceplayer
-# 610 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseLilliePost
-# 611 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_IdleLillie, MSGBOX_DEFAULT
-# 612 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 613 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 614 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_HouseLilliePost::
-# 615 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_HouseLilliePost, MSGBOX_DEFAULT
-# 616 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 617 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 618 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ReunionGladion::
-# 619 "data/maps/OlivineCity_House1/scripts.pory"
-	lock
-# 620 "data/maps/OlivineCity_House1/scripts.pory"
-	faceplayer
-# 621 "data/maps/OlivineCity_House1/scripts.pory"
-	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseGladionPost
-# 622 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_IdleGladion, MSGBOX_DEFAULT
-# 623 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 624 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 625 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_HouseGladionPost::
-# 626 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_HouseGladionPost, MSGBOX_DEFAULT
-# 627 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 628 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 629 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ReunionKukui::
-# 630 "data/maps/OlivineCity_House1/scripts.pory"
-	lock
-# 631 "data/maps/OlivineCity_House1/scripts.pory"
-	faceplayer
-# 632 "data/maps/OlivineCity_House1/scripts.pory"
-	msgbox OlivineCity_House1_Text_IdleKukui, MSGBOX_DEFAULT
-# 633 "data/maps/OlivineCity_House1/scripts.pory"
-	goto OlivineCity_House1_EventScript_ReleaseEnd
-# 634 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 635 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_EventScript_ReleaseEnd::
-# 636 "data/maps/OlivineCity_House1/scripts.pory"
-	closemessage
-# 637 "data/maps/OlivineCity_House1/scripts.pory"
-	release
-# 638 "data/maps/OlivineCity_House1/scripts.pory"
 	end
+# 411 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 412 "data/maps/OlivineCity_House1/scripts.pory"
+@ The test, V2 section 7: show before explaining. The partner is a SCENE
+# 413 "data/maps/OlivineCity_House1/scripts.pory"
+@ instance of the chosen species - object 9 at (6,7), OBJ_EVENT_GFX_VAR_0
+# 414 "data/maps/OlivineCity_House1/scripts.pory"
+@ resolved from VAR_OBJ_GFX_ID_0 at spawn - and never the follower: the
+# 415 "data/maps/OlivineCity_House1/scripts.pory"
+@ follower is hidden first, so the same Pokemon is never in the room twice,
+# 416 "data/maps/OlivineCity_House1/scripts.pory"
+@ and its own state is restored by the map load at the end.
+# 417 "data/maps/OlivineCity_House1/scripts.pory"
+@ NO rift opens in this room. The flashes are fadescreenswapbuffers, which
+# 418 "data/maps/OlivineCity_House1/scripts.pory"
+@ does not touch the palette buffers, so the day/night tint survives; no
+# 419 "data/maps/OlivineCity_House1/scripts.pory"
+@ shake, no alarm, no battle theme - the music dips for the pulse and comes
+# 420 "data/maps/OlivineCity_House1/scripts.pory"
+@ back with the result. The result is compatibility, not a proven crossing.
+# 421 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_ReunionTest::
+# 422 "data/maps/OlivineCity_House1/scripts.pory"
+	@ The pass at the end of this script is the ONE thing that could fail (a
+# 423 "data/maps/OlivineCity_House1/scripts.pory"
+	@ full Key Items pocket). Checked BEFORE anything happens, in the same
+# 424 "data/maps/OlivineCity_House1/scripts.pory"
+	@ script run as the giveitem, so the delivery later cannot fail: state 12
+# 425 "data/maps/OlivineCity_House1/scripts.pory"
+	@ is never set with the pass undelivered, and no half-done state exists
+# 426 "data/maps/OlivineCity_House1/scripts.pory"
+	@ (V2 section 8). The reunion itself is never replayed either way.
+# 427 "data/maps/OlivineCity_House1/scripts.pory"
+	checkitemspace ITEM_SUN_MOON_TICKET, 1
+# 428 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_eq VAR_RESULT, FALSE, OlivineCity_House1_EventScript_ReunionNoRoom
+# 429 "data/maps/OlivineCity_House1/scripts.pory"
+	hidefollower                                @ needed on the resume path (lock)
+# 430 "data/maps/OlivineCity_House1/scripts.pory"
+	@ On the trigger path the player is at (4,7), and the partner appears due
+# 431 "data/maps/OlivineCity_House1/scripts.pory"
+	@ east. From the object scripts the player can be anywhere, so the turn is
+# 432 "data/maps/OlivineCity_House1/scripts.pory"
+	@ guarded by a measurement, never derived from a live position.
+# 433 "data/maps/OlivineCity_House1/scripts.pory"
+	getplayerxy VAR_0x8005, VAR_0x8006
+# 434 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_ne VAR_0x8005, 4, OlivineCity_House1_EventScript_ReunionTestRelease
+# 435 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_ne VAR_0x8006, 7, OlivineCity_House1_EventScript_ReunionTestRelease
+# 436 "data/maps/OlivineCity_House1/scripts.pory"
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+# 437 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_ReunionTestRelease::
+# 438 "data/maps/OlivineCity_House1/scripts.pory"
+	fadescreenswapbuffers FADE_TO_WHITE
+# 439 "data/maps/OlivineCity_House1/scripts.pory"
+	clearflag FLAG_TEMP_4
+# 440 "data/maps/OlivineCity_House1/scripts.pory"
+	addobject LOCALID_OLIVINE_HOUSE1_PARTNER
+# 441 "data/maps/OlivineCity_House1/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_WHITE
+# 442 "data/maps/OlivineCity_House1/scripts.pory"
+	playmoncry VAR_TEMP_2, CRY_MODE_ENCOUNTER
+# 443 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmoncry
+# 444 "data/maps/OlivineCity_House1/scripts.pory"
+	delay 20
+# 445 "data/maps/OlivineCity_House1/scripts.pory"
+	@ Anabel arms the calibration mode on the portable unit in her hands.
+# 446 "data/maps/OlivineCity_House1/scripts.pory"
+	turnobject LOCALID_OLIVINE_HOUSE1_ANABEL, DIR_SOUTH
+# 447 "data/maps/OlivineCity_House1/scripts.pory"
+	fadeoutbgm 4
+# 448 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionTestStart, MSGBOX_DEFAULT
+# 449 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 450 "data/maps/OlivineCity_House1/scripts.pory"
+	@ The partner answers the MODULE, not the player: from (6,7) toward Anabel
+# 451 "data/maps/OlivineCity_House1/scripts.pory"
+	@ at (7,5), north is the walkable component. One brief glow; the lights
+# 452 "data/maps/OlivineCity_House1/scripts.pory"
+	@ level for a few moments and go out normally.
+# 453 "data/maps/OlivineCity_House1/scripts.pory"
+	turnobject LOCALID_OLIVINE_HOUSE1_PARTNER, DIR_NORTH
+# 454 "data/maps/OlivineCity_House1/scripts.pory"
+	delay 20
+# 455 "data/maps/OlivineCity_House1/scripts.pory"
+	fadescreenswapbuffers FADE_TO_WHITE
+# 456 "data/maps/OlivineCity_House1/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_WHITE
+# 457 "data/maps/OlivineCity_House1/scripts.pory"
+	delay 30
+# 458 "data/maps/OlivineCity_House1/scripts.pory"
+	fadedefaultbgm
+# 459 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement LOCALID_OLIVINE_HOUSE1_KUKUI, Common_Movement_ExclamationMark
+# 460 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement LOCALID_OLIVINE_HOUSE1_KUKUI
+# 461 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionTestResult, MSGBOX_DEFAULT
+# 462 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 463 "data/maps/OlivineCity_House1/scripts.pory"
+	@ One short reaction, not a round of compliments (V2 section 7). Gladion
+# 464 "data/maps/OlivineCity_House1/scripts.pory"
+	@ and Silvally already face east, straight at the partner; Lillie's
+# 465 "data/maps/OlivineCity_House1/scripts.pory"
+	@ reaction is a gesture, and Ninetales is turned with her by template.
+# 466 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionGladionPartner, MSGBOX_DEFAULT
+# 467 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 468 "data/maps/OlivineCity_House1/scripts.pory"
+	applymovement LOCALID_OLIVINE_HOUSE1_LILLIE, OlivineCity_House1_Movement_LillieHeart
+# 469 "data/maps/OlivineCity_House1/scripts.pory"
+	waitmovement LOCALID_OLIVINE_HOUSE1_LILLIE
+# 470 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionAssignments, MSGBOX_DEFAULT
+# 471 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 472 "data/maps/OlivineCity_House1/scripts.pory"
+	@ Looker was pointing at the table map since the opening; he comes back to
+# 473 "data/maps/OlivineCity_House1/scripts.pory"
+	@ the room to hand over the pass. Fixed direction: south is the door side,
+# 474 "data/maps/OlivineCity_House1/scripts.pory"
+	@ where the player stands on the trigger path.
+# 475 "data/maps/OlivineCity_House1/scripts.pory"
+	turnobject LOCALID_OLIVINE_HOUSE1_LOOKER, DIR_SOUTH
+# 476 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionTicket, MSGBOX_DEFAULT
+# 477 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 478 "data/maps/OlivineCity_House1/scripts.pory"
+	@ Idempotent delivery (V2 section 8): if the pass is somehow already in
+# 479 "data/maps/OlivineCity_House1/scripts.pory"
+	@ the bag, do not duplicate it. Possession is the fact that matters, and
+# 480 "data/maps/OlivineCity_House1/scripts.pory"
+	@ state 12 follows it either way.
+# 481 "data/maps/OlivineCity_House1/scripts.pory"
+	checkitem ITEM_SUN_MOON_TICKET
+# 482 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_ReunionTicketDone
+# 483 "data/maps/OlivineCity_House1/scripts.pory"
+	giveitem ITEM_SUN_MOON_TICKET
+# 484 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_ReunionTicketDone::
+# 485 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionTicketUse, MSGBOX_DEFAULT
+# 486 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 487 "data/maps/OlivineCity_House1/scripts.pory"
+	@ Recall the scene partner - its OWN flag, so removeobject is safe and
+# 488 "data/maps/OlivineCity_House1/scripts.pory"
+	@ touches nobody else's.
+# 489 "data/maps/OlivineCity_House1/scripts.pory"
+	fadescreenswapbuffers FADE_TO_WHITE
+# 490 "data/maps/OlivineCity_House1/scripts.pory"
+	removeobject LOCALID_OLIVINE_HOUSE1_PARTNER
+# 491 "data/maps/OlivineCity_House1/scripts.pory"
+	fadescreenswapbuffers FADE_FROM_WHITE
+# 492 "data/maps/OlivineCity_House1/scripts.pory"
+	delay 10
+# 493 "data/maps/OlivineCity_House1/scripts.pory"
+	fadescreen FADE_TO_BLACK                     @ a warp reloads the map right after
+# 494 "data/maps/OlivineCity_House1/scripts.pory"
+	setflag FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED   @ handoff; NEVER cleared
+# 495 "data/maps/OlivineCity_House1/scripts.pory"
+	setvar VAR_RIFT_MISSIONS_STATE, 12           @ invariant: flag and var together
+# 496 "data/maps/OlivineCity_House1/scripts.pory"
+	@ Reload in place: ON_TRANSITION hides the visitors (they went ahead to
+# 497 "data/maps/OlivineCity_House1/scripts.pory"
+	@ the voyage preparations), Looker and Anabel stay - they remain at the
+# 498 "data/maps/OlivineCity_House1/scripts.pory"
+	@ base until the altar document moves them - and the follower comes back
+# 499 "data/maps/OlivineCity_House1/scripts.pory"
+	@ (undoes hidefollower).
+# 500 "data/maps/OlivineCity_House1/scripts.pory"
+	@ (4,7), not (4,8): do not respawn the player on the room's only warp
+# 501 "data/maps/OlivineCity_House1/scripts.pory"
+	@ tile. (4,7) is guaranteed free, because by state 12 the cast is hidden.
+# 502 "data/maps/OlivineCity_House1/scripts.pory"
+	@ The frame trigger fires again after this load with VAR_TEMP_1 zeroed,
+# 503 "data/maps/OlivineCity_House1/scripts.pory"
+	@ but dies twice over: the player is not at (4,8) AND state 12 matches no
+# 504 "data/maps/OlivineCity_House1/scripts.pory"
+	@ goto_if_eq in its list.
+# 505 "data/maps/OlivineCity_House1/scripts.pory"
+	warpsilent MAP_OLIVINE_CITY_HOUSE1, 4, 7
+# 506 "data/maps/OlivineCity_House1/scripts.pory"
+	waitstate
+# 507 "data/maps/OlivineCity_House1/scripts.pory"
+	releaseall
+# 508 "data/maps/OlivineCity_House1/scripts.pory"
+	end
+# 509 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 510 "data/maps/OlivineCity_House1/scripts.pory"
+@ Key Items pocket full - the only way the delivery could fail, prevented up
+# 511 "data/maps/OlivineCity_House1/scripts.pory"
+@ front. Nothing has happened yet: no partner out, no flag, no state past 11.
+# 512 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_ReunionNoRoom::
+# 513 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_ReunionNoRoom, MSGBOX_DEFAULT
+# 514 "data/maps/OlivineCity_House1/scripts.pory"
+	setvar VAR_RIFT_MISSIONS_STATE, 11
+# 515 "data/maps/OlivineCity_House1/scripts.pory"
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
+# 516 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 517 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_End::
+# 518 "data/maps/OlivineCity_House1/scripts.pory"
+	end
+# 519 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 520 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Movement_LookerApproach:
+# 521 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_down
+# 522 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_down
+# 523 "data/maps/OlivineCity_House1/scripts.pory"
+	face_down
+# 524 "data/maps/OlivineCity_House1/scripts.pory"
+	step_end
+# 525 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 526 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Movement_AnabelApproach:
+# 527 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_down
+# 528 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_down
+# 529 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_left
+# 530 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_left
+# 531 "data/maps/OlivineCity_House1/scripts.pory"
+	face_down
+# 532 "data/maps/OlivineCity_House1/scripts.pory"
+	step_end
+# 533 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 534 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Movement_LookerReturn:
+# 535 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_up
+# 536 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_up
+# 537 "data/maps/OlivineCity_House1/scripts.pory"
+	face_down
+# 538 "data/maps/OlivineCity_House1/scripts.pory"
+	step_end
+# 539 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 540 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Movement_AnabelReturn:
+# 541 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_right
+# 542 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_right
+# 543 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_up
+# 544 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_up
+# 545 "data/maps/OlivineCity_House1/scripts.pory"
+	face_down
+# 546 "data/maps/OlivineCity_House1/scripts.pory"
+	step_end
+# 547 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 548 "data/maps/OlivineCity_House1/scripts.pory"
+@ Reunion V2: the player's one step in, (4,8) -> (4,7). Ends facing up, at
+# 549 "data/maps/OlivineCity_House1/scripts.pory"
+@ Looker by the table. Same tile the ending respawns on.
+# 550 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Movement_PlayerEnter:
+# 551 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_up
+# 552 "data/maps/OlivineCity_House1/scripts.pory"
+	step_end
+# 553 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 554 "data/maps/OlivineCity_House1/scripts.pory"
+@ Lusamine opens the stabilizer case: one step down the east wall,
+# 555 "data/maps/OlivineCity_House1/scripts.pory"
+@ (9,6) -> (9,7), measured free, then she faces the case at Kukui's side.
+# 556 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Movement_LusamineToCase:
+# 557 "data/maps/OlivineCity_House1/scripts.pory"
+	walk_down
+# 558 "data/maps/OlivineCity_House1/scripts.pory"
+	face_left
+# 559 "data/maps/OlivineCity_House1/scripts.pory"
+	step_end
+# 560 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 561 "data/maps/OlivineCity_House1/scripts.pory"
+@ Lillie's reaction to the partner is a gesture, not a speech (V2 section 7).
+# 562 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Movement_LillieHeart:
+# 563 "data/maps/OlivineCity_House1/scripts.pory"
+	emote_heart
+# 564 "data/maps/OlivineCity_House1/scripts.pory"
+	step_end
+# 565 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 566 "data/maps/OlivineCity_House1/scripts.pory"
+@ Shared by the arrival scene and by both object scripts in states 2, 4, 6
+# 567 "data/maps/OlivineCity_House1/scripts.pory"
+@ and 8, so a briefing can never be skipped by entering from an odd tile. It is
+# 568 "data/maps/OlivineCity_House1/scripts.pory"
+@ the ONE place that moves flag and var, and it moves them together.
+# 569 "data/maps/OlivineCity_House1/scripts.pory"
+@ Invariants:
+# 570 "data/maps/OlivineCity_House1/scripts.pory"
+@   FLAG_EVENT_ULTRABEAST_BLACKTHORN  set <=> VAR_RIFT_MISSIONS_STATE == 3
+# 571 "data/maps/OlivineCity_House1/scripts.pory"
+@   FLAG_EVENT_ULTRABEAST_MAHOGANY    set <=> VAR_RIFT_MISSIONS_STATE == 5
+# 572 "data/maps/OlivineCity_House1/scripts.pory"
+@   FLAG_EVENT_ULTRABEAST_CHERRYGROVE set <=> VAR_RIFT_MISSIONS_STATE == 7
+# 573 "data/maps/OlivineCity_House1/scripts.pory"
+@   FLAG_EVENT_ULTRABEAST_NEWBARK     set <=> VAR_RIFT_MISSIONS_STATE == 9
+# 574 "data/maps/OlivineCity_House1/scripts.pory"
+@ The four are mutually exclusive because the var holds one value.
+# 575 "data/maps/OlivineCity_House1/scripts.pory"
+@ State 10 is the END of the chain: it opens no mission, it means "four done,
+# 576 "data/maps/OlivineCity_House1/scripts.pory"
+@ the Olivine reunion pending" (design section 7).
+# 577 "data/maps/OlivineCity_House1/scripts.pory"
+@ A goto inside a script reached by call is safe: call pushes the return
+# 578 "data/maps/OlivineCity_House1/scripts.pory"
+@ address and return pops it, however many gotos happened in between.
+# 579 "data/maps/OlivineCity_House1/scripts.pory"
+@ Highest state first, so the block reads newest mission to oldest.
+# 580 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_BriefingTalk::
+# 581 "data/maps/OlivineCity_House1/scripts.pory"
+	clearflag FLAG_RIFT_LOOKER_SUMMONS          @ the invitation has been answered
+# 582 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_BriefingTalkM4
+# 583 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_BriefingTalkM3
+# 584 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_BriefingTalkM2
+# 585 "data/maps/OlivineCity_House1/scripts.pory"
+	@ falls through to M1 (state 2)
+# 586 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_BriefingTalkM1::
+# 587 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingWelcome, MSGBOX_DEFAULT
+# 588 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingAnabel, MSGBOX_DEFAULT
+# 589 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingWormholes, MSGBOX_DEFAULT
+# 590 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingBlackthorn, MSGBOX_DEFAULT
+# 591 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingRequest, MSGBOX_DEFAULT
+# 592 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 593 "data/maps/OlivineCity_House1/scripts.pory"
+	setflag FLAG_EVENT_ULTRABEAST_BLACKTHORN
+# 594 "data/maps/OlivineCity_House1/scripts.pory"
+	setvar VAR_RIFT_MISSIONS_STATE, 3
+# 595 "data/maps/OlivineCity_House1/scripts.pory"
+	return
+# 596 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 597 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_BriefingTalkM2::
+# 598 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM2Welcome, MSGBOX_DEFAULT
+# 599 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 600 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM2Link, MSGBOX_DEFAULT
+# 601 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 602 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM2Town, MSGBOX_DEFAULT
+# 603 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 604 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM2Meet, MSGBOX_DEFAULT
+# 605 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 606 "data/maps/OlivineCity_House1/scripts.pory"
+	setflag FLAG_EVENT_ULTRABEAST_MAHOGANY
+# 607 "data/maps/OlivineCity_House1/scripts.pory"
+	setvar VAR_RIFT_MISSIONS_STATE, 5
+# 608 "data/maps/OlivineCity_House1/scripts.pory"
+	return
+# 609 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 610 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_BriefingTalkM3::
+# 611 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM3Welcome, MSGBOX_DEFAULT
+# 612 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM3Evidence, MSGBOX_DEFAULT
+# 613 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM3Plan, MSGBOX_DEFAULT
+# 614 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM3Safety, MSGBOX_DEFAULT
+# 615 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 616 "data/maps/OlivineCity_House1/scripts.pory"
+	setflag FLAG_EVENT_ULTRABEAST_CHERRYGROVE
+# 617 "data/maps/OlivineCity_House1/scripts.pory"
+	setvar VAR_RIFT_MISSIONS_STATE, 7
+# 618 "data/maps/OlivineCity_House1/scripts.pory"
+	return
+# 619 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 620 "data/maps/OlivineCity_House1/scripts.pory"
+@ New Bark V2 script, section 4: five boxes, one speaker each, played as
+# 621 "data/maps/OlivineCity_House1/scripts.pory"
+@ consecutive msgbox with no closemessage between them so the box never drops
+# 622 "data/maps/OlivineCity_House1/scripts.pory"
+@ and the plaque changes with the speaker (TrySetSpeakerFromMessage reads only
+# 623 "data/maps/OlivineCity_House1/scripts.pory"
+@ the start of each message). Every part stays far below the 1000-byte
+# 624 "data/maps/OlivineCity_House1/scripts.pory"
+@ gStringVar4 limit that froze the old ~2000-byte version of this briefing.
+# 625 "data/maps/OlivineCity_House1/scripts.pory"
+@ The resource (Aether's containment equipment, Lusamine bringing it herself) is
+# 626 "data/maps/OlivineCity_House1/scripts.pory"
+@ presented HERE, before it is used, and nothing promises it will work. No item
+# 627 "data/maps/OlivineCity_House1/scripts.pory"
+@ is handed out: the old "Take these" is gone. Anabel does not retell her Faller
+# 628 "data/maps/OlivineCity_House1/scripts.pory"
+@ condition - that was Cherrygrove's aftermath.
+# 629 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_BriefingTalkM4::
+# 630 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM4Evidence, MSGBOX_DEFAULT
+# 631 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM4Comparison, MSGBOX_DEFAULT
+# 632 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM4Safety, MSGBOX_DEFAULT
+# 633 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM4Containment, MSGBOX_DEFAULT
+# 634 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_BriefingM4Plan, MSGBOX_DEFAULT
+# 635 "data/maps/OlivineCity_House1/scripts.pory"
+	closemessage
+# 636 "data/maps/OlivineCity_House1/scripts.pory"
+	setflag FLAG_EVENT_ULTRABEAST_NEWBARK
+# 637 "data/maps/OlivineCity_House1/scripts.pory"
+	setvar VAR_RIFT_MISSIONS_STATE, 9
+# 638 "data/maps/OlivineCity_House1/scripts.pory"
+	return
 # 639 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 640 "data/maps/OlivineCity_House1/scripts.pory"
-@ Mission 1 briefing (script revision V2, 25/09/2026). FIVE texts and not one,
+@ Branch order matters: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, then >= 12. NEVER
 # 641 "data/maps/OlivineCity_House1/scripts.pory"
-@ because each block has exactly one speaker and the plaque has to change with
+@ leave a "goto_if_ge VAR_RIFT_MISSIONS_STATE, 4", ", 6", ", 8" or ", 10"
 # 642 "data/maps/OlivineCity_House1/scripts.pory"
-@ it; they are played as consecutive msgbox with no closemessage between them,
+@ here - any one of them would swallow the states above it. This has now
 # 643 "data/maps/OlivineCity_House1/scripts.pory"
-@ so the box never drops and the scene reads as one conversation. Each part
+@ happened THREE times: Mission 3 had to delete a "goto_if_ge ..., 6" left
 # 644 "data/maps/OlivineCity_House1/scripts.pory"
-@ MUST begin with its own {SPEAKER ...}: TrySetSpeakerFromMessage only reads
+@ behind by Mission 2, Mission 4 had to move a "goto_if_ge ..., 8" left behind
 # 645 "data/maps/OlivineCity_House1/scripts.pory"
-@ the start of each message.
+@ by Mission 3, and the pre-Necrozma reunion had to split the
 # 646 "data/maps/OlivineCity_House1/scripts.pory"
-@ It names Clair and the unfamiliar Pokemon in her street and nothing else:
+@ "goto_if_ge ..., 10" Mission 4 left behind, which would have replayed the
 # 647 "data/maps/OlivineCity_House1/scripts.pory"
-@ Gladion, the two Ultra Beasts and the identity of the creature are the
+@ whole cutscene at state 11 and kept saying reunion lines at state 12.
 # 648 "data/maps/OlivineCity_House1/scripts.pory"
-@ surprises of the scene in Blackthorn, so they are never mentioned here. And
+@ Fourth warning, same mistake: a NEW state enters as goto_if_eq, and only the
 # 649 "data/maps/OlivineCity_House1/scripts.pory"
-@ nobody names the creature from a description over the telephone.
+@ LAST line of the list may be a goto_if_ge.
 # 650 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingWelcome:
+@ States 0-1 fall through to the holiday line.
 # 651 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}!\n"
+OlivineCity_House1_EventScript_Looker::
 # 652 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Thank you for coming.\p"
+	lock
 # 653 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "This is Anabel. She's in\n"
+	faceplayer
 # 654 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "charge of our investigation.$"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_LookerBrief
 # 655 "data/maps/OlivineCity_House1/scripts.pory"
-
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 3, OlivineCity_House1_EventScript_LookerGoAhead
 # 656 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingAnabel:
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_LookerBriefIfCalled
 # 657 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}We've been tracking\n"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 5, OlivineCity_House1_EventScript_LookerGoAheadM2
 # 658 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "distortions in Johto.\p"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_LookerBriefIfCalled
 # 659 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "They resemble the Ultra\n"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 7, OlivineCity_House1_EventScript_LookerGoAheadM3
 # 660 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Wormholes we encountered in\l"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_LookerBriefIfCalled
 # 661 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Alola.$"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 9, OlivineCity_House1_EventScript_LookerGoAheadM4
 # 662 "data/maps/OlivineCity_House1/scripts.pory"
-
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_LookerReunionIfCalled
 # 663 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingWormholes:
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_LookerRecheck
 # 664 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Passages to other\n"
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 12, OlivineCity_House1_EventScript_LookerAltar
 # 665 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "worlds.\p"
+	msgbox OlivineCity_House1_Text_LookerHoliday, MSGBOX_DEFAULT
 # 666 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Sometimes Pokémon come\n"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 667 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "through them.\p"
+
 # 668 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We call those Pokémon Ultra\n"
+OlivineCity_House1_EventScript_LookerBrief::
 # 669 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Beasts.\p"
+	call OlivineCity_House1_EventScript_BriefingTalk
 # 670 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "They can be dangerous when\n"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 671 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "displaced.$"
+
 # 672 "data/maps/OlivineCity_House1/scripts.pory"
-
+@ Waiting for the summons: no briefing, no "go ahead", and nothing about the next
 # 673 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingBlackthorn:
+@ town. He says the one true thing - the reports are not finished - and promises
 # 674 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Clair called from\n"
+@ the telephone call that is the only way forward.
 # 675 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Blackthorn.\p"
+OlivineCity_House1_EventScript_LookerBriefIfCalled::
 # 676 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "An unfamiliar Pokémon is in\n"
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_LookerWaitCall
 # 677 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "the street.\p"
+	goto OlivineCity_House1_EventScript_LookerBrief
 # 678 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "She's keeping it away from the\n"
-# 679 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "houses, but the readings are\l"
-# 680 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "rising.$"
-# 681 "data/maps/OlivineCity_House1/scripts.pory"
 
+# 679 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_LookerWaitCall::
+# 680 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_LookerWaitCallM3
+# 681 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_LookerWaitCallM4
 # 682 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingRequest:
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_LookerWaitCallAltar
 # 683 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}We need your help\n"
+	msgbox OlivineCity_House1_Text_WaitForMahoganyCall, MSGBOX_DEFAULT
 # 684 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "protecting the town.\p"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 685 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "And, if we can, the Pokémon\n"
+
 # 686 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "too.\p"
+@ After Mahogany the wait is not idle: Anabel is matching Lillie's pages to her
 # 687 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Meet us by the Pokémon\n"
+@ own recordings, which is the task the street handed them.
 # 688 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Center.\p"
+OlivineCity_House1_EventScript_LookerWaitCallM3::
 # 689 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Bring a team ready for a\n"
+	msgbox OlivineCity_House1_Text_WaitForCherrygroveCall, MSGBOX_DEFAULT
 # 690 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "difficult battle.$"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 691 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 692 "data/maps/OlivineCity_House1/scripts.pory"
-@ Continuity: the Blackthorn hook names no place on purpose ("the moment
+@ After Cherrygrove the wait is for Elm's records, which Kukui asked for on the
 # 693 "data/maps/OlivineCity_House1/scripts.pory"
-@ something opens, you will be the first to know"). This briefing is that
+@ beach (CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md section 16).
 # 694 "data/maps/OlivineCity_House1/scripts.pory"
-@ moment: Mahogany is news to the player here.
+OlivineCity_House1_EventScript_LookerWaitCallM4::
 # 695 "data/maps/OlivineCity_House1/scripts.pory"
-@ Mission 2 briefing: final text (22/09/2026), continuity updated for script
+	msgbox OlivineCity_House1_Text_WaitForNewBarkCall, MSGBOX_DEFAULT
 # 696 "data/maps/OlivineCity_House1/scripts.pory"
-@ revision V2 (25/09/2026). It names Pryce's call and the blackout and nothing
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 697 "data/maps/OlivineCity_House1/scripts.pory"
-@ else: Lillie and the evacuation (Pryce's own line) are what the player finds
-# 698 "data/maps/OlivineCity_House1/scripts.pory"
-@ in Mahogany, so they are never mentioned here.
-# 699 "data/maps/OlivineCity_House1/scripts.pory"
-@ What V2 changed: Necrozma is no longer a secret - Gladion named it in
-# 700 "data/maps/OlivineCity_House1/scripts.pory"
-@ Blackthorn - so Anabel calls it by name, and the thing she is looking for is
-# 701 "data/maps/OlivineCity_House1/scripts.pory"
-@ already stated: the beasts stayed tied to the rift, and the link is what has
-# 702 "data/maps/OlivineCity_House1/scripts.pory"
-@ to be cut. Mahogany's barrier and Lillie's test answer a problem the player
-# 703 "data/maps/OlivineCity_House1/scripts.pory"
-@ has already watched happen.
-# 704 "data/maps/OlivineCity_House1/scripts.pory"
-@ V3: this briefing starts from Blackthorn, not from a fresh mystery. Gladion
-# 705 "data/maps/OlivineCity_House1/scripts.pory"
-@ named Necrozma there, so nobody is coy about it here; what the group does NOT
-# 706 "data/maps/OlivineCity_House1/scripts.pory"
-@ have is any record of that creature collecting Ultra Beasts, and that gap is
-# 707 "data/maps/OlivineCity_House1/scripts.pory"
-@ the reason they go. One speaker per box, and no hour of the day anywhere:
-# 708 "data/maps/OlivineCity_House1/scripts.pory"
-@ the blackout is lamps and machines, not darkness.
-# 709 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingM2Welcome:
-# 710 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Our holiday\n"
-# 711 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "reading has finally proved\l"
-# 712 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "useful.\p"
-# 713 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We've compared Gladion's\n"
-# 714 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "account with the Alola records.\p"
-# 715 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Necrozma absorbs light.\p"
-# 716 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We found nothing about it\n"
-# 717 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "taking Ultra Beasts.$"
-# 718 "data/maps/OlivineCity_House1/scripts.pory"
 
+# 698 "data/maps/OlivineCity_House1/scripts.pory"
+@ After New Bark (state 10) the meeting is NOT started just because the state
+# 699 "data/maps/OlivineCity_House1/scripts.pory"
+@ reached 10: it waits for its own daily call (V2 section 18). Until then the
+# 700 "data/maps/OlivineCity_House1/scripts.pory"
+@ records are being compared and the participants gathered.
+# 701 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_LookerWaitCallAltar::
+# 702 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_WaitForAltarCall, MSGBOX_DEFAULT
+# 703 "data/maps/OlivineCity_House1/scripts.pory"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+# 704 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 705 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_LookerReunionIfCalled::
+# 706 "data/maps/OlivineCity_House1/scripts.pory"
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_LookerWaitCall
+# 707 "data/maps/OlivineCity_House1/scripts.pory"
+	goto OlivineCity_House1_EventScript_LookerReunion
+# 708 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 709 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_LookerGoAhead::
+# 710 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_LookerGoAhead, MSGBOX_DEFAULT
+# 711 "data/maps/OlivineCity_House1/scripts.pory"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+# 712 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 713 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_LookerGoAheadM2::
+# 714 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_LookerGoAheadM2, MSGBOX_DEFAULT
+# 715 "data/maps/OlivineCity_House1/scripts.pory"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+# 716 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 717 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_EventScript_LookerGoAheadM3::
+# 718 "data/maps/OlivineCity_House1/scripts.pory"
+	msgbox OlivineCity_House1_Text_LookerGoAheadM3, MSGBOX_DEFAULT
 # 719 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingM2Link:
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 720 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}The rift kept them\n"
+
 # 721 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "connected in Blackthorn.\p"
+OlivineCity_House1_EventScript_LookerGoAheadM4::
 # 722 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We need a way to cut that\n"
+	msgbox OlivineCity_House1_Text_LookerGoAheadM4, MSGBOX_DEFAULT
 # 723 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "connection.$"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 724 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 725 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingM2Town:
+@ State 10: the alternative way into the reunion, for a player who somehow
 # 726 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}The power is out in\n"
+@ talks to a detective without the frame trigger having staged the scene.
 # 727 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Mahogany.\p"
+@ ReunionScene moves only actors on fixed tiles (Lusamine's one measured
 # 728 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Two Pokémon have been\n"
+@ step); nothing in it reads the player's position unguarded, so it plays
 # 729 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "appearing in the street.\p"
+@ identically under lock. All that is missing is the player's step in.
 # 730 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Pryce is sheltering the\n"
+OlivineCity_House1_EventScript_LookerReunion::
 # 731 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "residents in his Gym.$"
+	goto OlivineCity_House1_EventScript_ReunionScene
 # 732 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 733 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingM2Meet:
+@ State 11: the retake offer (V2 section 6), never the cutscene again.
 # 734 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}The readings match\n"
+OlivineCity_House1_EventScript_LookerRecheck::
 # 735 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "another rupture.\p"
+	goto OlivineCity_House1_EventScript_ReunionResume
 # 736 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We haven't confirmed Necrozma\n"
-# 737 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "there yet.\p"
-# 738 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Meet us by the Pokémon Center.$"
-# 739 "data/maps/OlivineCity_House1/scripts.pory"
 
+# 737 "data/maps/OlivineCity_House1/scripts.pory"
+@ States 12-15: the repeatable orientation to the port (V2 section 10).
+# 738 "data/maps/OlivineCity_House1/scripts.pory"
+@ Releasing the voyage is persistent: storing the partner after the reunion
+# 739 "data/maps/OlivineCity_House1/scripts.pory"
+@ revokes nothing - the altar revalidates the team itself (checkspecies at
 # 740 "data/maps/OlivineCity_House1/scripts.pory"
-@ Continuity: the Mahogany hook names no place on purpose (design section 6,
+@ the rift, altar doc). From 16 on the two are hidden (FLAG_TEMP_2), so no
 # 741 "data/maps/OlivineCity_House1/scripts.pory"
-@ "gancho sem destino"). This briefing is where Cherrygrove is revealed.
+@ upper branch is needed here.
 # 742 "data/maps/OlivineCity_House1/scripts.pory"
-@ V21: the call came from KUKUI, not from a Gym Leader - Cherrygrove has no
+OlivineCity_House1_EventScript_LookerAltar::
 # 743 "data/maps/OlivineCity_House1/scripts.pory"
-@ Gym, and the author asked for the Professor to be the one who raised the
+	msgbox OlivineCity_House1_Text_LookerAltar, MSGBOX_DEFAULT
 # 744 "data/maps/OlivineCity_House1/scripts.pory"
-@ alarm. The scene in the house is also where Looker and Anabel decide,
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 745 "data/maps/OlivineCity_House1/scripts.pory"
-@ out loud and wrongly, that he is a civilian who needs collecting: that
+
 # 746 "data/maps/OlivineCity_House1/scripts.pory"
-@ misjudgement is what the beach pays off. The Ultra Beasts are never named
+@ Same branch order as Looker, and the same warning about goto_if_ge.
 # 747 "data/maps/OlivineCity_House1/scripts.pory"
-@ here, and neither is the creature - those belong to the shore.
+OlivineCity_House1_EventScript_Anabel::
 # 748 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingM3:
+	lock
 # 749 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Come in, come\n"
+	faceplayer
 # 750 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "in. It has opened again.\p"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_AnabelBrief
 # 751 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Cherrygrove City.\p"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 3, OlivineCity_House1_EventScript_AnabelGoAhead
 # 752 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Two signatures.\p"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_AnabelBriefIfCalled
 # 753 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "One of them will not hold\n"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 5, OlivineCity_House1_EventScript_AnabelGoAheadM2
 # 754 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "still.\p"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_AnabelBriefIfCalled
 # 755 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}And here is the part I\n"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 7, OlivineCity_House1_EventScript_AnabelGoAheadM3
 # 756 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "cannot account for.\p"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_AnabelBriefIfCalled
 # 757 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We did not find it.\p"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 9, OlivineCity_House1_EventScript_AnabelGoAheadM4
 # 758 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "It was reported to us. By\n"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_AnabelReunionIfCalled
 # 759 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "telephone. Four days ago.\p"
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_AnabelRecheck
 # 760 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}A researcher from Alola.\p"
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 12, OlivineCity_House1_EventScript_AnabelAltar
 # 761 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "He gave us a time window, a\n"
+	msgbox OlivineCity_House1_Text_AnabelHoliday, MSGBOX_DEFAULT
 # 762 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "bearing, and the tide.\p"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 763 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Then he called back and\n"
+
 # 764 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "corrected the window.\p"
+OlivineCity_House1_EventScript_AnabelBrief::
 # 765 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Twice.\p"
+	call OlivineCity_House1_EventScript_BriefingTalk
 # 766 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "He was right twice.\p"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 767 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Anabel, read me his file\n"
+
 # 768 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "again.\p"
+@ Her own waiting line: the plaque follows the message, so Looker's text cannot
 # 769 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}“Professor Kukui.\n"
+@ be reused in her mouth.
 # 770 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Pokémon move research.”\p"
+OlivineCity_House1_EventScript_AnabelBriefIfCalled::
 # 771 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "No enforcement record. No\n"
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_AnabelWaitCall
 # 772 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "combat authorisation.\p"
+	goto OlivineCity_House1_EventScript_AnabelBrief
 # 773 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "It is two pages long, Looker.\p"
+
 # 774 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Two pages, and he is\n"
+OlivineCity_House1_EventScript_AnabelWaitCall::
 # 775 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "sitting on a beach under an\l"
+	msgbox OlivineCity_House1_Text_AnabelWaitForCall, MSGBOX_DEFAULT
 # 776 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "open sky.\p"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 777 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{PLAYER}, we have evacuated\n"
+
 # 778 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Cherrygrove into the Violet\l"
+OlivineCity_House1_EventScript_AnabelReunionIfCalled::
 # 779 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Gym. Every soul but one.\p"
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_AnabelWaitCall
 # 780 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}He will not leave the\n"
+	goto OlivineCity_House1_EventScript_AnabelReunion
 # 781 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "shore. He says somebody has to\l"
+
 # 782 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "be looking when it opens.\p"
+OlivineCity_House1_EventScript_AnabelGoAhead::
 # 783 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}He is quite right, and\n"
+	msgbox OlivineCity_House1_Text_AnabelGoAhead, MSGBOX_DEFAULT
 # 784 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "that is what frightens me.\p"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 785 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "The northwest beach, {PLAYER}.\p"
+
 # 786 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Prepare for two of them, and\n"
+OlivineCity_House1_EventScript_AnabelGoAheadM2::
 # 787 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "go and stand in front of that\l"
+	msgbox OlivineCity_House1_Text_AnabelGoAheadM2, MSGBOX_DEFAULT
 # 788 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "man.$"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 789 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 790 "data/maps/OlivineCity_House1/scripts.pory"
-@ The longest briefing of the arc on purpose (design section 6.4): it is the
+OlivineCity_House1_EventScript_AnabelGoAheadM3::
 # 791 "data/maps/OlivineCity_House1/scripts.pory"
-@ one that names the town the player grew up in, puts their mother in the
+	msgbox OlivineCity_House1_Text_AnabelGoAheadM3, MSGBOX_DEFAULT
 # 792 "data/maps/OlivineCity_House1/scripts.pory"
-@ half that refused to evacuate, and has Looker ask - once, in four missions
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 793 "data/maps/OlivineCity_House1/scripts.pory"
-@ - whether they actually want to go.
+
 # 794 "data/maps/OlivineCity_House1/scripts.pory"
-@
+OlivineCity_House1_EventScript_AnabelGoAheadM4::
 # 795 "data/maps/OlivineCity_House1/scripts.pory"
-@ IT IS ALSO WHERE THE FALLER CONVERSATION LIVES. Author's note, revision 4:
+	msgbox OlivineCity_House1_Text_AnabelGoAheadM4, MSGBOX_DEFAULT
 # 796 "data/maps/OlivineCity_House1/scripts.pory"
-@ that conversation does not belong in the middle of a fight. Three rifts
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 797 "data/maps/OlivineCity_House1/scripts.pory"
-@ opening at once is the first thing Anabel has ever felt from another city,
+
 # 798 "data/maps/OlivineCity_House1/scripts.pory"
-@ and feeling it from a chair in Olivine is what makes her finally sit the
+@ Anabel does NOT sell Beast Balls, here or anywhere: she asked Kurt to make
 # 799 "data/maps/OlivineCity_House1/scripts.pory"
-@ player down and explain the whole of it - what she is, what she remembers,
+@ them (altar doc, revision 2), and the one she keeps is the scripted capture
 # 800 "data/maps/OlivineCity_House1/scripts.pory"
-@ what she does not, and the promise she made out of it. New Bark only gets
+@ of the altar's Act IV. The old "she sells from state 4 on" pendency is
 # 801 "data/maps/OlivineCity_House1/scripts.pory"
-@ the callback (NewBarkTown_Text_UBAnabelPromise). Do not move this back.
+@ closed - it became Kurt's craft system.
 # 802 "data/maps/OlivineCity_House1/scripts.pory"
-@
+@ State 10: same entry into the reunion as Looker's, see the note there.
 # 803 "data/maps/OlivineCity_House1/scripts.pory"
-@ TWO THINGS THIS BRIEFING DOES NOT SAY, both deliberate:
+OlivineCity_House1_EventScript_AnabelReunion::
 # 804 "data/maps/OlivineCity_House1/scripts.pory"
-@ 1. Kukui is NOT going to New Bark. The chain is Elm -> Kukui -> Looker:
+	goto OlivineCity_House1_EventScript_ReunionScene
 # 805 "data/maps/OlivineCity_House1/scripts.pory"
-@    Elm posted six weeks of a reading he thought was broken to the one man
+
 # 806 "data/maps/OlivineCity_House1/scripts.pory"
-@    who would not laugh at it, and that man telephoned the police. Elm is
+OlivineCity_House1_EventScript_AnabelRecheck::
 # 807 "data/maps/OlivineCity_House1/scripts.pory"
-@    inside the analysis from here on; Kukui is not in the scene.
+	goto OlivineCity_House1_EventScript_ReunionResume
 # 808 "data/maps/OlivineCity_House1/scripts.pory"
-@ 2. Lusamine is not mentioned AT ALL. Nobody sent for her and nobody
+
 # 809 "data/maps/OlivineCity_House1/scripts.pory"
-@    announces her - she is simply standing on the road when the player
+@ States 12-15, same as LookerAltar: her half of the orientation.
 # 810 "data/maps/OlivineCity_House1/scripts.pory"
-@    arrives. Putting her name in here spends the only surprise the mission
+OlivineCity_House1_EventScript_AnabelAltar::
 # 811 "data/maps/OlivineCity_House1/scripts.pory"
-@    has before the creature.
+	msgbox OlivineCity_House1_Text_AnabelAltar, MSGBOX_DEFAULT
 # 812 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingM4:
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 813 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}. Sit down.\p"
+
 # 814 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "No - actually, don't.\p"
+@ The four visitors. They exist to be talked to in state 11, the only state in
 # 815 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "There isn't time, and you would\n"
+@ which the player walks the room with everyone present - in state 12 they are
 # 816 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "not anyway.\p"
+@ not here to be talked to, and in state 10 the cutscene runs on arrival. So
 # 817 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Cherrygrove holds.\p"
+@ they need no branch on the var below 16: one box each, V2 section 9 - short
 # 818 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "And the Professor? Did he eat\n"
+@ preparation notes, none of them carrying information the main scene needs.
 # 819 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "something, at last?\p"
+@ Ninetales and Silvally have "script": "NULL" (design 3.2, skill
 # 820 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}He ate, and then he\n"
+@ parceiro-pokemon-de-npc): they are their owners' partners out of the ball,
 # 821 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "read every log in Johto.\p"
+@ share FLAG_TEMP_1 with them, and come and go together. V2 section 9 keeps
 # 822 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "He telephoned at six this\n"
+@ NULL as complete: the optional cry interaction is a possible evolution.
 # 823 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "morning, from a post office, to\l"
+@ The three who come back. There is NO battle anywhere in this room in the
 # 824 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "read us somebody else's\l"
+@ post-game: this is the place where they are not working.
 # 825 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "notebook.\p"
+OlivineCity_House1_EventScript_ReunionLusamine::
 # 826 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Professor Elm has had the same\n"
+	lock
 # 827 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "reading for six weeks. He wrote\l"
+	faceplayer
 # 828 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "“check the sensor” in the\l"
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseLusaminePost
 # 829 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "margin every time.\p"
+	msgbox OlivineCity_House1_Text_IdleLusamine, MSGBOX_DEFAULT
 # 830 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "And then he posted the whole\n"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 831 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "thing to Alola anyway.\p"
+
 # 832 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}A man who suspects he\n"
+OlivineCity_House1_EventScript_HouseLusaminePost::
 # 833 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "is wrong and files it in\l"
+	msgbox OlivineCity_House1_Text_HouseLusaminePost, MSGBOX_DEFAULT
 # 834 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "writing. There are worse\l"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 835 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "witnesses.\p"
+
 # 836 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Is the Professor going?\p"
+OlivineCity_House1_EventScript_ReunionLillie::
 # 837 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}No. He is going home.\p"
+	lock
 # 838 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "He did the one thing only he\n"
+	faceplayer
 # 839 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "could do, which was recognise\l"
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseLilliePost
 # 840 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "it, and he handed it to us.\p"
+	msgbox OlivineCity_House1_Text_IdleLillie, MSGBOX_DEFAULT
 # 841 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Elm is the one on the ground\n"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 842 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "now. It is his instrument, his\l"
+
 # 843 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "six weeks and his town.$"
+OlivineCity_House1_EventScript_HouseLilliePost::
 # 844 "data/maps/OlivineCity_House1/scripts.pory"
-
+	msgbox OlivineCity_House1_Text_HouseLilliePost, MSGBOX_DEFAULT
 # 845 "data/maps/OlivineCity_House1/scripts.pory"
-@ Parte 2 de 3 (ver o comentario em BriefingTalkM4 sobre gStringVar4).
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 846 "data/maps/OlivineCity_House1/scripts.pory"
-@ Continua na MESMA caixa; comeca no "...Three, Anabel?" do Looker.
+
 # 847 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingM4Faller:
+OlivineCity_House1_EventScript_ReunionGladion::
 # 848 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}…Three, Anabel?\p"
+	lock
 # 849 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Three.\p"
+	faceplayer
 # 850 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Opening together. Closing\n"
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseGladionPost
 # 851 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "together.\p"
+	msgbox OlivineCity_House1_Text_IdleGladion, MSGBOX_DEFAULT
 # 852 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "…Looker, I need the chair.\p"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 853 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Chief-\p"
+
 # 854 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}I'm fine. Sit down,\n"
+OlivineCity_House1_EventScript_HouseGladionPost::
 # 855 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{PLAYER}. This part is for you\l"
+	msgbox OlivineCity_House1_Text_HouseGladionPost, MSGBOX_DEFAULT
 # 856 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "and I would rather say it here\l"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 857 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "than shout it later.\p"
+
 # 858 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "On that beach in Cherrygrove I\n"
+OlivineCity_House1_EventScript_ReunionKukui::
 # 859 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "told you what I am.\p"
+	lock
 # 860 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I did not tell you the rest.\p"
+	faceplayer
 # 861 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "A Faller is someone who came\n"
+	msgbox OlivineCity_House1_Text_IdleKukui, MSGBOX_DEFAULT
 # 862 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "through one of those tears and\l"
+	goto OlivineCity_House1_EventScript_ReleaseEnd
 # 863 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "stayed on this side.\p"
+
 # 864 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I don't remember where I came\n"
+OlivineCity_House1_EventScript_ReleaseEnd::
 # 865 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "from. I've stopped pretending\l"
+	closemessage
 # 866 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "that will come back.\p"
+	release
 # 867 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I remember someone's hand.\p"
+	end
 # 868 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "That is the whole memory.\n"
+
 # 869 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Someone reached down, and I\l"
+@ Mission 1 briefing (script revision V2, 25/09/2026). FIVE texts and not one,
 # 870 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "wasn't alone anymore.\p"
+@ because each block has exactly one speaker and the plaque has to change with
 # 871 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "And I feel them open. Only\n"
+@ it; they are played as consecutive msgbox with no closemessage between them,
 # 872 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "that, and only a few seconds\l"
+@ so the box never drops and the scene reads as one conversation. Each part
 # 873 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "before the meter does.\p"
+@ MUST begin with its own {SPEAKER ...}: TrySetSpeakerFromMessage only reads
 # 874 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Blackthorn I felt from the\n"
+@ the start of each message.
 # 875 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "street. The Lake from the\l"
+@ It names Clair and the unfamiliar Pokemon in her street and nothing else:
 # 876 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "street. The beach from the\l"
+@ Gladion, the two Ultra Beasts and the identity of the creature are the
 # 877 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "sand.$"
+@ surprises of the scene in Blackthorn, so they are never mentioned here. And
 # 878 "data/maps/OlivineCity_House1/scripts.pory"
-
+@ nobody names the creature from a description over the telephone.
 # 879 "data/maps/OlivineCity_House1/scripts.pory"
-@ Parte 3 de 3. A Anabel ainda esta falando, por isso o {SPEAKER NAME_ANABEL}
+OlivineCity_House1_Text_BriefingWelcome:
 # 880 "data/maps/OlivineCity_House1/scripts.pory"
-@ no comeco: sem ele esta parte subiria sem plaquinha nenhuma.
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}!\n"
 # 881 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_BriefingM4NewBark:
+	.string "Thank you for coming.\p"
 # 882 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}{PLAYER} - I felt these three\n"
+	.string "This is Anabel. She's in\n"
 # 883 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "from this chair.\p"
+	.string "charge of our investigation.$"
 # 884 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "From Olivine. Sixty miles of\n"
+
 # 885 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "water and a mountain.\p"
+OlivineCity_House1_Text_BriefingAnabel:
 # 886 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}…You have never once\n"
+	.string "{SPEAKER NAME_ANABEL}We've been tracking\n"
 # 887 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "put that in a report.\p"
+	.string "distortions in Johto.\p"
 # 888 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Put it in this one.\p"
+	.string "They resemble the Ultra\n"
 # 889 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I'll sign it.\p"
+	.string "Wormholes we encountered in\l"
 # 890 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}. New Bark Town\n"
+	.string "Alola.$"
 # 891 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "has no Pokémon Center.\p"
+
 # 892 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "No Gym.\p"
+OlivineCity_House1_Text_BriefingWormholes:
 # 893 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "It has a laboratory and about\n"
+	.string "{SPEAKER NAME_ANABEL}Passages to other\n"
 # 894 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "forty people.\p"
+	.string "worlds.\p"
 # 895 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We told them to leave.\p"
+	.string "Sometimes Pokémon come\n"
 # 896 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Half of them would not.\p"
+	.string "through them.\p"
 # 897 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Your mother is one of the half.\p"
+	.string "We call those Pokémon Ultra\n"
 # 898 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Three missions, {PLAYER}, and I\n"
+	.string "Beasts.\p"
 # 899 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "have never once asked you this.\p"
+	.string "They can be dangerous when\n"
 # 900 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "…Do you want to go?\p"
+	.string "displaced.$"
 # 901 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Heal everything.\p"
+
 # 902 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Take these.\p"
+OlivineCity_House1_Text_BriefingBlackthorn:
 # 903 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "And we are going with you -\n"
+	.string "{SPEAKER NAME_LOOKER}Clair called from\n"
 # 904 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "that part is not a question.$"
-# 905 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 906 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_LookerHoliday:
-# 907 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}A fine place for a\n"
-# 908 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "holiday!\p"
-# 909 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Though I seem to be spending\n"
-# 910 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "rather more time indoors than\l"
-# 911 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "planned.$"
-# 912 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 913 "data/maps/OlivineCity_House1/scripts.pory"
-@ Script V2 section 13.3: between finishing a mission and Looker's summons call,
-# 914 "data/maps/OlivineCity_House1/scripts.pory"
-@ the house offers nothing but this. It does not name the next town, does not
-# 915 "data/maps/OlivineCity_House1/scripts.pory"
-@ send the player back to the town just cleared, and does not hand out the next
-# 916 "data/maps/OlivineCity_House1/scripts.pory"
-@ briefing early. The label is the one the script fixes; it is used for every
-# 917 "data/maps/OlivineCity_House1/scripts.pory"
-@ pending summons, not only Mahogany's.
-# 918 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_WaitForMahoganyCall:
-# 919 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}We're still checking the\n"
-# 920 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "reports.\p"
-# 921 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I'll call when we have a lead.$"
-# 922 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 923 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_WaitForCherrygroveCall:
-# 924 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}We're comparing Lillie's\n"
-# 925 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "notes with Anabel's\l"
-# 926 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "recordings.\p"
-# 927 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I'll call when we have a lead.$"
-# 928 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 929 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_AnabelWaitForCall:
-# 930 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Nothing conclusive yet.\p"
-# 931 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "When there is, Looker will\n"
-# 932 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "telephone you himself.$"
-# 933 "data/maps/OlivineCity_House1/scripts.pory"
-
-# 934 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_LookerGoAhead:
-# 935 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}The Pokémon Center in\n"
-# 936 "data/maps/OlivineCity_House1/scripts.pory"
 	.string "Blackthorn.\p"
+# 905 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "An unfamiliar Pokémon is in\n"
+# 906 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "the street.\p"
+# 907 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "She's keeping it away from the\n"
+# 908 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "houses, but the readings are\l"
+# 909 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "rising.$"
+# 910 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 911 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_BriefingRequest:
+# 912 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}We need your help\n"
+# 913 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "protecting the town.\p"
+# 914 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "And, if we can, the Pokémon\n"
+# 915 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "too.\p"
+# 916 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Meet us by the Pokémon\n"
+# 917 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Center.\p"
+# 918 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Bring a team ready for a\n"
+# 919 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "difficult battle.$"
+# 920 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 921 "data/maps/OlivineCity_House1/scripts.pory"
+@ Continuity: the Blackthorn hook names no place on purpose ("the moment
+# 922 "data/maps/OlivineCity_House1/scripts.pory"
+@ something opens, you will be the first to know"). This briefing is that
+# 923 "data/maps/OlivineCity_House1/scripts.pory"
+@ moment: Mahogany is news to the player here.
+# 924 "data/maps/OlivineCity_House1/scripts.pory"
+@ Mission 2 briefing: final text (22/09/2026), continuity updated for script
+# 925 "data/maps/OlivineCity_House1/scripts.pory"
+@ revision V2 (25/09/2026). It names Pryce's call and the blackout and nothing
+# 926 "data/maps/OlivineCity_House1/scripts.pory"
+@ else: Lillie and the evacuation (Pryce's own line) are what the player finds
+# 927 "data/maps/OlivineCity_House1/scripts.pory"
+@ in Mahogany, so they are never mentioned here.
+# 928 "data/maps/OlivineCity_House1/scripts.pory"
+@ What V2 changed: Necrozma is no longer a secret - Gladion named it in
+# 929 "data/maps/OlivineCity_House1/scripts.pory"
+@ Blackthorn - so Anabel calls it by name, and the thing she is looking for is
+# 930 "data/maps/OlivineCity_House1/scripts.pory"
+@ already stated: the beasts stayed tied to the rift, and the link is what has
+# 931 "data/maps/OlivineCity_House1/scripts.pory"
+@ to be cut. Mahogany's barrier and Lillie's test answer a problem the player
+# 932 "data/maps/OlivineCity_House1/scripts.pory"
+@ has already watched happen.
+# 933 "data/maps/OlivineCity_House1/scripts.pory"
+@ V3: this briefing starts from Blackthorn, not from a fresh mystery. Gladion
+# 934 "data/maps/OlivineCity_House1/scripts.pory"
+@ named Necrozma there, so nobody is coy about it here; what the group does NOT
+# 935 "data/maps/OlivineCity_House1/scripts.pory"
+@ have is any record of that creature collecting Ultra Beasts, and that gap is
+# 936 "data/maps/OlivineCity_House1/scripts.pory"
+@ the reason they go. One speaker per box, and no hour of the day anywhere:
 # 937 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We'll meet you there.$"
+@ the blackout is lamps and machines, not darkness.
 # 938 "data/maps/OlivineCity_House1/scripts.pory"
-
+OlivineCity_House1_Text_BriefingM2Welcome:
 # 939 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_LookerGoAheadM2:
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Our holiday\n"
 # 940 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Mahogany, {PLAYER}!\n"
+	.string "reading has finally proved\l"
 # 941 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We are right behind you.$"
+	.string "useful.\p"
 # 942 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "We've compared Gladion's\n"
 # 943 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_LookerGoAheadM3:
+	.string "account with the Alola records.\p"
 # 944 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}The northwest shore,\n"
+	.string "Necrozma absorbs light.\p"
 # 945 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{PLAYER}.\p"
+	.string "We found nothing about it\n"
 # 946 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "You cannot miss him.\p"
+	.string "taking Ultra Beasts.$"
 # 947 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "He is the only man left in\n"
+
 # 948 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "that town, and he is wearing a\l"
+OlivineCity_House1_Text_BriefingM2Link:
 # 949 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "lab coat on a beach.$"
+	.string "{SPEAKER NAME_ANABEL}The rift kept them\n"
 # 950 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "connected in Blackthorn.\p"
 # 951 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_LookerGoAheadM4:
+	.string "We need a way to cut that\n"
 # 952 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}New Bark Town,\n"
+	.string "connection.$"
 # 953 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{PLAYER}. Your own front door.\p"
+
 # 954 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I am sorry it is this one.$"
+OlivineCity_House1_Text_BriefingM2Town:
 # 955 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "{SPEAKER NAME_LOOKER}The power is out in\n"
 # 956 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "Mahogany.\p"
 # 957 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_AnabelHoliday:
+	.string "Two Pokémon have been\n"
 # 958 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}It's peaceful here.\p"
+	.string "appearing in the street.\p"
 # 959 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Looker keeps finding reasons\n"
+	.string "Pryce is sheltering the\n"
 # 960 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "to check the telephone.$"
+	.string "residents in his Gym.$"
 # 961 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 962 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_AnabelGoAhead:
+OlivineCity_House1_Text_BriefingM2Meet:
 # 963 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Prepare your team\n"
+	.string "{SPEAKER NAME_ANABEL}The readings match\n"
 # 964 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "before you join us.\p"
+	.string "another rupture.\p"
 # 965 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Clair is holding the street.$"
+	.string "We haven't confirmed Necrozma\n"
 # 966 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "there yet.\p"
 # 967 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_AnabelGoAheadM2:
+	.string "Meet us by the Pokémon Center.$"
 # 968 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Go on.\p"
+
 # 969 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Mr. Pryce does not strike me\n"
+@ Mission 3 briefing (CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md section 4). The call
 # 970 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "as a man who calls for help\l"
+@ already named Cherrygrove; this is where the plan is. Kukui is named because
 # 971 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "lightly.$"
+@ he is the one who reported it, and introduced by his profession only - the
 # 972 "data/maps/OlivineCity_House1/scripts.pory"
-
+@ player's earlier meetings with him are not presumed. Necrozma is known since
 # 973 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_AnabelGoAheadM3:
+@ Blackthorn; what is new is Lillie's note of a PAUSE before it reached over the
 # 974 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Go on.\p"
+@ ice in Mahogany, which is a hypothesis, not a promise. Four boxes, one speaker
 # 975 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "And whatever he is doing when\n"
+@ each, played with no closemessage between them.
 # 976 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "you get there, {PLAYER}-\p"
+OlivineCity_House1_Text_BriefingM3Welcome:
 # 977 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "make him sit down for one\n"
+	.string "{SPEAKER NAME_LOOKER}Professor Kukui reported\n"
 # 978 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "minute.$"
+	.string "the disturbance. He studies\l"
 # 979 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "Pokémon moves in Alola.\p"
 # 980 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_AnabelGoAheadM4:
+	.string "Fortunately for us, he was\n"
 # 981 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Go.\p"
+	.string "visiting Johto.\p"
 # 982 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We'll be a step behind you the\n"
+	.string "Unfortunately for his holiday.$"
 # 983 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "whole way.$"
+
 # 984 "data/maps/OlivineCity_House1/scripts.pory"
-
+OlivineCity_House1_Text_BriefingM3Evidence:
 # 985 "data/maps/OlivineCity_House1/scripts.pory"
-@ ============================================================================
+	.string "{SPEAKER NAME_ANABEL}Lillie marked a pause\n"
 # 986 "data/maps/OlivineCity_House1/scripts.pory"
-@ Pre-Necrozma reunion texts.
+	.string "before Necrozma reached over\l"
 # 987 "data/maps/OlivineCity_House1/scripts.pory"
-@ SKELETON: all placeholder, rewrite in the design's voice (section 3.1):
+	.string "the ice.\p"
 # 988 "data/maps/OlivineCity_House1/scripts.pory"
-@ Looker theatrical and warm; Anabel precise; Lusamine formal and blunt;
+	.string "It matches a change in my\n"
 # 989 "data/maps/OlivineCity_House1/scripts.pory"
-@ Lillie direct; Gladion economical; Kukui enthusiastic.
+	.string "recording.\p"
 # 990 "data/maps/OlivineCity_House1/scripts.pory"
-@ No em dash anywhere: U+2014 is not in charmap.txt and breaks the build.
+	.string "If it happens again, we may\n"
 # 991 "data/maps/OlivineCity_House1/scripts.pory"
-@ ============================================================================
+	.string "have time to act before it\l"
 # 992 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "takes them.$"
 # 993 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionOpen:
+
 # 994 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}. Come in.\p"
+OlivineCity_House1_Text_BriefingM3Plan:
 # 995 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Mind the chairs - there are\n"
+	.string "{SPEAKER NAME_ANABEL}We'll weaken the Ultra\n"
 # 996 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "not enough of them, and I\l"
+	.string "Beasts, then try to secure one\l"
 # 997 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "have stopped apologising.\p"
+	.string "before it moves.\p"
 # 998 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "New Bark holds. Four in four,\n"
+	.string "I'll watch Necrozma.\n"
 # 999 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "and I am not certain that is\l"
+	.string "Kukui will help you hold the\l"
 # 1000 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "the word for it.\p"
+	.string "shore.$"
 # 1001 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "The file is closed. What is in\n"
+
 # 1002 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "it is worse than what we\l"
+OlivineCity_House1_Text_BriefingM3Safety:
 # 1003 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "opened it for.\p"
+	.string "{SPEAKER NAME_LOOKER}The residents are sheltered\n"
 # 1004 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Which is why everyone in this\n"
+	.string "at Violet Gym. The Pokémon\l"
 # 1005 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "room came when I asked.\p"
+	.string "Center is still available.\p"
 # 1006 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Look at them. I did not have\n"
+	.string "Meet us on Cherrygrove's\n"
 # 1007 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "to explain twice.$"
+	.string "northwest shore.$"
 # 1008 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 1009 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionKukui:
+@ Mission 4 briefing (NEWBARK_ULTRABEAST_SCRIPT_V2.md section 4).
 # 1010 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Your rifts closed\n"
+@ BRIDGE FROM CHERRYGROVE V2 (section 17 of that script): Kukui asked Elm for
 # 1011 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "toward one bearing.\p"
+@ his readings on the beach -> Elm checked six weeks of his own history and
 # 1012 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Anabel's number, Elm's six\n"
+@ answered -> Anabel and Looker compared -> Looker called. The discovery is
 # 1013 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "weeks of it, my rhythm.\p"
+@ Elm's; he is never treated as someone who ignored three monsters for six
 # 1014 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Three wrong tools, one\n"
+@ weeks. Pair: CherrygroveCity_Text_UBKukuiElm/UBHookKukui and
 # 1015 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "answer.\p"
+@ RiftMissions_Text_LookerCallM4.
 # 1016 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "There's a place out there,\n"
+@ The call does not say Mom is surrounded; this briefing says she is helping
 # 1017 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{PLAYER}. An altar.\p"
+@ prepare the shelter. The three openings have not happened yet.
 # 1018 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We can put a boat on it.$"
+OlivineCity_House1_Text_BriefingM4Evidence:
 # 1019 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "{SPEAKER NAME_LOOKER}Elm sent the records Kukui\n"
 # 1020 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionLusamineCalled:
+	.string "requested. Some go back six\l"
 # 1021 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LUSAMINE}I asked the\n"
+	.string "weeks.\p"
 # 1022 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Inspector to call this\l"
+	.string "He checked the equipment.\n"
 # 1023 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "meeting.\p"
+	.string "The pulses kept coming back.$"
 # 1024 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Not as Aether. Aether would\n"
+
 # 1025 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "have sent a report.\p"
+OlivineCity_House1_Text_BriefingM4Comparison:
 # 1026 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I owe the people in this room\n"
+	.string "{SPEAKER NAME_ANABEL}They match our recordings.\n"
 # 1027 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "an accounting, and two of\l"
+	.string "The latest readings are\l"
 # 1028 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "them are mine.$"
+	.string "stronger, and three points\l"
 # 1029 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "are responding.\p"
 # 1030 "data/maps/OlivineCity_House1/scripts.pory"
-@ Lillie (3,6) and Gladion (3,7) have just turned to face each other.
+	.string "We need to clear the area\n"
 # 1031 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionLillie:
+	.string "before they open fully.$"
 # 1032 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LILLIE}…You asked for us.\n"
+
 # 1033 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Both of us.\p"
+OlivineCity_House1_Text_BriefingM4Safety:
 # 1034 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I'm not going to pretend\n"
+	.string "{SPEAKER NAME_LOOKER}Your mother is helping\n"
 # 1035 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "that's nothing.\p"
+	.string "prepare the lab. There's room\l"
 # 1036 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "It isn't nothing.$"
+	.string "to shelter the residents.\p"
 # 1037 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "We'll meet you outside your\n"
 # 1038 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionGladion:
+	.string "house.$"
 # 1039 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_GLADION}We'll do the\n"
+
 # 1040 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "accounting after.\p"
+@ The resource is named before it is used, and Lusamine's presence is not a
 # 1041 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Whatever is at that altar, it\n"
+@ coincidence: Anabel asked Aether for it.
 # 1042 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "doesn't wait for our family\l"
+OlivineCity_House1_Text_BriefingM4Containment:
 # 1043 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "to sort itself out.$"
+	.string "{SPEAKER NAME_ANABEL}Timing wasn't enough at\n"
 # 1044 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "Cherrygrove. We need to\l"
 # 1045 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionCross:
+	.string "interrupt the connection.\p"
 # 1046 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LUSAMINE}Then let me say the\n"
+	.string "I asked Aether for containment\n"
 # 1047 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "rest of it plainly.\p"
+	.string "equipment. Lusamine is\l"
 # 1048 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I intend to cross.\p"
+	.string "bringing it herself.$"
 # 1049 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I have been on the other side\n"
+
 # 1050 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "of a door like that one.\p"
+OlivineCity_House1_Text_BriefingM4Plan:
 # 1051 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Nobody else in this room has.$"
+	.string "{SPEAKER NAME_ANABEL}We'll hold the three fronts,\n"
 # 1052 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "then isolate the weakened\l"
 # 1053 "data/maps/OlivineCity_House1/scripts.pory"
-@ ONE box of recap and no more (design 3.1): Anabel told them all of this in
+	.string "Pokémon.\p"
 # 1054 "data/maps/OlivineCity_House1/scripts.pory"
-@ New Bark. Here it is an argument, not news.
+	.string "Prepare your team before you\n"
 # 1055 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionCondition:
+	.string "join us.$"
 # 1056 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}You have. I have as\n"
+
 # 1057 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "well, and I came back wrong,\l"
+OlivineCity_House1_Text_LookerHoliday:
 # 1058 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "and I told you all so in New\l"
+	.string "{SPEAKER NAME_LOOKER}A fine place for a\n"
 # 1059 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Bark.\p"
+	.string "holiday!\p"
 # 1060 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "So here is my condition,\n"
+	.string "Though I seem to be spending\n"
 # 1061 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Madame, and it is not\l"
+	.string "rather more time indoors than\l"
 # 1062 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "negotiable:\p"
+	.string "planned.$"
 # 1063 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Nobody crosses without a way\n"
+
 # 1064 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "back.\p"
+@ Script V2 section 13.3: between finishing a mission and Looker's summons call,
 # 1065 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Not you. Not me.\n"
+@ the house offers nothing but this. It does not name the next town, does not
 # 1066 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Not the Champion.$"
+@ send the player back to the town just cleared, and does not hand out the next
 # 1067 "data/maps/OlivineCity_House1/scripts.pory"
-
+@ briefing early. The label is the one the script fixes; it is used for every
 # 1068 "data/maps/OlivineCity_House1/scripts.pory"
-@ Must read standalone: this is also the whole of the state-11 question.
+@ pending summons, not only Mahogany's.
 # 1069 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionAsk:
+OlivineCity_House1_Text_WaitForMahoganyCall:
 # 1070 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}And a way through\n"
+	.string "{SPEAKER NAME_LOOKER}We're still checking the\n"
 # 1071 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "needs something that can open\l"
+	.string "reports.\p"
 # 1072 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "it.\p"
+	.string "I'll call when we have a lead.$"
 # 1073 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Not a machine. We tried\n"
-# 1074 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "machines for six weeks.\p"
-# 1075 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}. Your\n"
-# 1076 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "partner.\p"
-# 1077 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "The one that started as an\n"
-# 1078 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "egg.\p"
-# 1079 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "May we see them?$"
-# 1080 "data/maps/OlivineCity_House1/scripts.pory"
 
+# 1074 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_WaitForCherrygroveCall:
+# 1075 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}We're comparing Lillie's\n"
+# 1076 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "notes with Anabel's\l"
+# 1077 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "recordings.\p"
+# 1078 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "I'll call when we have a lead.$"
+# 1079 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1080 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_WaitForNewBarkCall:
 # 1081 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionNotYet:
+	.string "{SPEAKER NAME_LOOKER}We're waiting for Professor\n"
 # 1082 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}…Ah. Not yet.\p"
+	.string "Elm's records.\p"
 # 1083 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}That's not a no!\n"
+	.string "I'll call when we've compared\n"
 # 1084 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "That's a “give it time”.\p"
+	.string "them.$"
 # 1085 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "It's still growing into what\n"
+
 # 1086 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "it's going to be.\p"
+OlivineCity_House1_Text_WaitForAltarCall:
 # 1087 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Then we prepare, and\n"
+	.string "{SPEAKER NAME_LOOKER}We're comparing the records\n"
 # 1088 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "you raise them.\p"
+	.string "and arranging the meeting.\p"
 # 1089 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Come back when they have\n"
+	.string "I'll call when everyone's\n"
 # 1090 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "finished becoming Solgaleo\l"
+	.string "ready.$"
 # 1091 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "or Lunala.\p"
+
 # 1092 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We are not going anywhere.\p"
+OlivineCity_House1_Text_AnabelWaitForCall:
 # 1093 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Frankly, there is nowhere for\n"
+	.string "{SPEAKER NAME_ANABEL}Nothing conclusive yet.\p"
 # 1094 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "six people to go in this\l"
+	.string "When there is, Looker will\n"
 # 1095 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "room.$"
+	.string "telephone you himself.$"
 # 1096 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 1097 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionSeeIt:
+OlivineCity_House1_Text_LookerGoAhead:
 # 1098 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}…Oh.\p"
+	.string "{SPEAKER NAME_LOOKER}The Pokémon Center in\n"
 # 1099 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}That is it.\p"
+	.string "Blackthorn.\p"
 # 1100 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "That is the reading, standing\n"
+	.string "We'll meet you there.$"
 # 1101 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "in a living room in Olivine.$"
-# 1102 "data/maps/OlivineCity_House1/scripts.pory"
 
+# 1102 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_LookerGoAheadM2:
 # 1103 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionGladionEgg:
+	.string "{SPEAKER NAME_LOOKER}Mahogany, {PLAYER}!\n"
 # 1104 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_GLADION}I handed you that\n"
+	.string "We are right behind you.$"
 # 1105 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "egg in Violet and told you to\l"
+
 # 1106 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "keep it away from people\l"
+OlivineCity_House1_Text_LookerGoAheadM3:
 # 1107 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "like us.\p"
+	.string "{SPEAKER NAME_LOOKER}The northwest shore in\n"
 # 1108 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "You did better than that.\n"
+	.string "Cherrygrove. We'll meet you\l"
 # 1109 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "You raised it.$"
+	.string "there.$"
 # 1110 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 1111 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionLillieProud:
+OlivineCity_House1_Text_LookerGoAheadM4:
 # 1112 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LILLIE}I knew the whole way.\p"
+	.string "{SPEAKER NAME_LOOKER}Outside your house in New\n"
 # 1113 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Every time we met, I knew.\p"
+	.string "Bark. We'll keep the approach\l"
 # 1114 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I just wanted to be here when\n"
+	.string "clear.$"
 # 1115 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "somebody finally said it out\l"
+
 # 1116 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "loud.$"
+OlivineCity_House1_Text_AnabelHoliday:
 # 1117 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "{SPEAKER NAME_ANABEL}It's peaceful here.\p"
 # 1118 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionLusamineKnows:
+	.string "Looker keeps finding reasons\n"
 # 1119 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LUSAMINE}That light is what\n"
+	.string "to check the telephone.$"
 # 1120 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "opens the way.\p"
+
 # 1121 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I am the only person alive\n"
+OlivineCity_House1_Text_AnabelGoAhead:
 # 1122 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "who knows what it looks like\l"
+	.string "{SPEAKER NAME_ANABEL}Prepare your team\n"
 # 1123 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "from the other side.\p"
+	.string "before you join us.\p"
 # 1124 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Thank you for not letting me\n"
+	.string "Clair is holding the street.$"
 # 1125 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "do this alone.\p"
+
 # 1126 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I am told that is the lesson.$"
+OlivineCity_House1_Text_AnabelGoAheadM2:
 # 1127 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "{SPEAKER NAME_ANABEL}Go on.\p"
 # 1128 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionWayBack:
+	.string "Mr. Pryce does not strike me\n"
 # 1129 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}My condition stands.\p"
+	.string "as a man who calls for help\l"
 # 1130 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We go together, and we come\n"
+	.string "lightly.$"
 # 1131 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "back.$"
+
 # 1132 "data/maps/OlivineCity_House1/scripts.pory"
-
+OlivineCity_House1_Text_AnabelGoAheadM3:
 # 1133 "data/maps/OlivineCity_House1/scripts.pory"
-@ The handoff to the altar document. The last box is the one that tells the
+	.string "{SPEAKER NAME_ANABEL}Prepare before you approach\n"
 # 1134 "data/maps/OlivineCity_House1/scripts.pory"
-@ player the game is not taking them anywhere yet.
+	.string "the beach. We need both fronts\l"
 # 1135 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionHook:
+	.string "covered.$"
 # 1136 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Then it is settled.\p"
+
 # 1137 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "There is a ship at the\n"
+OlivineCity_House1_Text_AnabelGoAheadM4:
 # 1138 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Olivine port, and it is ours\l"
+	.string "{SPEAKER NAME_ANABEL}There's no Pokémon Center in\n"
 # 1139 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "for as long as this takes.\p"
+	.string "New Bark. Heal before we\l"
 # 1140 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "We sail for the altar,\n"
+	.string "begin.$"
 # 1141 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{PLAYER}.\p"
+
 # 1142 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "You, your partner, and\n"
+@ ============================================================================
 # 1143 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "everyone in this room who can\l"
+@ Pre-Necrozma reunion texts - script V2 (25/09/2026), final lines.
 # 1144 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "keep up.\p"
+@ One speaker per box; consecutive msgbox keep the box up and swap the plaque.
 # 1145 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Come to the port when you are\n"
+@ No em dash anywhere: U+2014 is not in charmap.txt and breaks the build.
 # 1146 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "ready. Rest first.\p"
+@ Menus and the obtain fanfare carry no plaque: they are system, not speech.
 # 1147 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Whatever is waiting at that\n"
+@ ============================================================================
 # 1148 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "altar has waited a long time.\p"
+
 # 1149 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "It can wait for you to heal.$"
+@ The records compared during the interval point at the region; Lusamine's
 # 1150 "data/maps/OlivineCity_House1/scripts.pory"
-
+@ charts give the physical access. The boat route is to the altar IN JOHTO;
 # 1151 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionTicket:
+@ the passage beyond it is opened and verified THERE. No compass revealed a
 # 1152 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}One more thing.\n"
+@ portal's destination by itself.
 # 1153 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Take this.$"
+OlivineCity_House1_Text_ReunionOpen:
 # 1154 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "{SPEAKER NAME_LOOKER}Good. We're all here.\p"
 # 1155 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_ReunionTicketUse:
+	.string "Elm's readings narrowed the\n"
 # 1156 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Show it to the sailor at the\n"
+	.string "search. Aether's charts gave\l"
 # 1157 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "port. He will take you to the\l"
+	.string "us a landing point.\p"
 # 1158 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "altar, and bring you back.$"
+	.string "The ship can reach this\n"
 # 1159 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "altar.$"
 # 1160 "data/maps/OlivineCity_House1/scripts.pory"
-@ SKELETON: state 12 and up, the repeatable reminder of where to go.
+
 # 1161 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_LookerAltar:
+@ Two moments of the record: the spike after an absorption, the flicker
 # 1162 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}The ship is at the\n"
+@ after it. The indicator gesture is his exclamation; no numbers to read.
 # 1163 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "port whenever you are ready,\l"
+OlivineCity_House1_Text_ReunionKukui:
 # 1164 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{PLAYER}.\p"
+	.string "{SPEAKER NAME_KUKUI}See that spike?\n"
 # 1165 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Madame Lusamine went ahead.\n"
+	.string "More power.\p"
 # 1166 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Of course she did.$"
+	.string "Then it starts flickering\n"
 # 1167 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "again.\p"
 # 1168 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_AnabelAltar:
+	.string "Nine Pokémon, and Necrozma\n"
 # 1169 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}We leave when you do,\n"
+	.string "still can't hold that light\l"
 # 1170 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "not before.\p"
+	.string "steady.$"
 # 1171 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "And we come back.\p"
-# 1172 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "That part is the whole plan.$"
-# 1173 "data/maps/OlivineCity_House1/scripts.pory"
 
+# 1172 "data/maps/OlivineCity_House1/scripts.pory"
+@ Lillie faces her mother, not the floor, and asks for something concrete.
+# 1173 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionLillie:
 # 1174 "data/maps/OlivineCity_House1/scripts.pory"
-@ SKELETON: idle lines for state 11, one box each.
+	.string "{SPEAKER NAME_LILLIE}Elm could still detect\n"
 # 1175 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_IdleLusamine:
+	.string "all nine. We need to get\l"
 # 1176 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LUSAMINE}I will not pace.\p"
+	.string "them out.\p"
 # 1177 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Pacing is for people without\n"
+	.string "Mother, can your equipment\n"
 # 1178 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "instruments.$"
+	.string "do that?$"
 # 1179 "data/maps/OlivineCity_House1/scripts.pory"
 
 # 1180 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_IdleLillie:
+@ She answers with her equipment's LIMIT: no promise the UBs are unharmed,
 # 1181 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LILLIE}Take your time with\n"
+@ no certainty of separation. The altar demonstrates how the release works.
 # 1182 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "them.\p"
+OlivineCity_House1_Text_ReunionLusamineEvidence:
 # 1183 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I mean it - that's not a\n"
+	.string "{SPEAKER NAME_LUSAMINE}Not while Necrozma\n"
 # 1184 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "polite thing to say, it's the\l"
+	.string "keeps drawing them in. We saw\l"
 # 1185 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "actual advice.$"
+	.string "that in New Bark.\p"
 # 1186 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "We'll have to weaken it\n"
 # 1187 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_IdleGladion:
+	.string "first. Then try to separate\l"
 # 1188 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_GLADION}Go and train.\p"
+	.string "them.$"
 # 1189 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "That's not an insult, it's\n"
+
 # 1190 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "what I'd be doing.$"
+OlivineCity_House1_Text_ReunionGladionPlan:
 # 1191 "data/maps/OlivineCity_House1/scripts.pory"
-
+	.string "{SPEAKER NAME_GLADION}And if the passage\n"
 # 1192 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_IdleKukui:
+	.string "closes behind us?$"
 # 1193 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Six weeks of bad data\n"
+
 # 1194 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "and one good afternoon!\p"
+@ The stabilizer: a fictional resource of the hack, continuous operation,
 # 1195 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "Science, {PLAYER}!$"
+@ limited duration. It holds an OPEN passage steady - it opens nothing,
 # 1196 "data/maps/OlivineCity_House1/scripts.pory"
-@ Post-game, state >= 16: the family's two days a week in this room
+@ transports nothing by itself, and guarantees no return under any condition.
 # 1197 "data/maps/OlivineCity_House1/scripts.pory"
-@ (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.6).
+@ No item reaches the inventory.
 # 1198 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_HouseLusaminePost:
+OlivineCity_House1_Text_ReunionStabilizer:
 # 1199 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LUSAMINE}The Inspector left us the key and a\n"
+	.string "{SPEAKER NAME_LUSAMINE}This holds an open\n"
 # 1200 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "note asking us not to reorganise\l"
+	.string "passage steady. One unit on\l"
 # 1201 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "anything.\p"
+	.string "each side.\p"
 # 1202 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I have reorganised three things.\p"
+	.string "It cannot open one. And\n"
 # 1203 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "…Sit down, {PLAYER}. Nobody here is\n"
+	.string "someone must keep both units\l"
 # 1204 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "going anywhere for several hours, which\l"
+	.string "running.$"
 # 1205 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "I understand is what people do.$"
+
 # 1206 "data/maps/OlivineCity_House1/scripts.pory"
-
+OlivineCity_House1_Text_ReunionAnabelReturn:
 # 1207 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_HouseLilliePost:
+	.string "{SPEAKER NAME_ANABEL}I'll take the portable\n"
 # 1208 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_LILLIE}Two days a week. That's what we agreed\n"
+	.string "unit. If its signal drops,\l"
 # 1209 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "on -- two days, here, no instruments, no\l"
+	.string "we withdraw.\p"
 # 1210 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "reports.\p"
+	.string "We test the connection at\n"
 # 1211 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "The first one was terrible. We all sat in\n"
+	.string "the altar before anyone\l"
 # 1212 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "different corners.\p"
+	.string "crosses.$"
 # 1213 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "This is the fourth one. It's getting\n"
-# 1214 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "better. It's allowed to take a while.$"
-# 1215 "data/maps/OlivineCity_House1/scripts.pory"
 
+# 1214 "data/maps/OlivineCity_House1/scripts.pory"
+@ The Beast Ball is shown and STAYS WITH ANABEL until the altar's scripted
+# 1215 "data/maps/OlivineCity_House1/scripts.pory"
+@ capture (Act IV). No crafting, no purchase, no player item. Necrozma is
 # 1216 "data/maps/OlivineCity_House1/scripts.pory"
-OlivineCity_House1_Text_HouseGladionPost:
+@ never called an Ultra Beast, and no canonical Ball bonus is promised: the
 # 1217 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "{SPEAKER NAME_GLADION}I'm not good at this part.\p"
+@ later guaranteed capture is this event's authorial rule.
 # 1218 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "…Silvally likes it. Look at him. He's\n"
+OlivineCity_House1_Text_ReunionCapture:
 # 1219 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "asleep under the table where Looker\l"
+	.string "{SPEAKER NAME_ANABEL}Once the others are\n"
 # 1220 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "used to put his files.\p"
+	.string "free, we capture Necrozma.\p"
 # 1221 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "If he's fine with it, I'm fine with it.\n"
+	.string "I have a Beast Ball from\n"
 # 1222 "data/maps/OlivineCity_House1/scripts.pory"
-	.string "That's the system I'm using.$"
+	.string "Kurt ready.\p"
+# 1223 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Driving it away only moves\n"
+# 1224 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "the danger.$"
+# 1225 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1226 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionLusamineCross:
+# 1227 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LUSAMINE}Then I'll lead the\n"
+# 1228 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "crossing.\p"
+# 1229 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "I know Aether's equipment\n"
+# 1230 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "best.$"
+# 1231 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1232 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionLillieBoundary:
+# 1233 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LILLIE}Then show us how to\n"
+# 1234 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "use it, Mother.\p"
+# 1235 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "We can't all depend on you\n"
+# 1236 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "alone.$"
+# 1237 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1238 "data/maps/OlivineCity_House1/scripts.pory"
+@ Family progress (V2 section 5): she shares the control because Lillie asked
+# 1239 "data/maps/OlivineCity_House1/scripts.pory"
+@ for something concrete. No apology for the whole story, no absolution, no
+# 1240 "data/maps/OlivineCity_House1/scripts.pory"
+@ advance surrender of the crossing - the altar's disagreement stays open,
+# 1241 "data/maps/OlivineCity_House1/scripts.pory"
+@ but it will start from this.
+# 1242 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionLusamineControl:
+# 1243 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LUSAMINE}The lower dial. Keep\n"
+# 1244 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "the two lights level.$"
+# 1245 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1246 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionAnabelLeadership:
+# 1247 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}We'll decide who leads\n"
+# 1248 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "at the altar.\p"
+# 1249 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "First, let's see whether\n"
+# 1250 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "this works.$"
+# 1251 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1252 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionAsk:
+# 1253 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Now we need your\n"
+# 1254 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "partner, {PLAYER}.\p"
+# 1255 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Solgaleo or Lunala can open\n"
+# 1256 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "the way.\p"
+# 1257 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Let's check the equipment's\n"
+# 1258 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "response.$"
+# 1259 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1260 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionDeferred:
+# 1261 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Sure. Speak to Looker\n"
+# 1262 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "when you're ready.$"
+# 1263 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1264 "data/maps/OlivineCity_House1/scripts.pory"
+@ Guidance lines (V2 section 6): each one says only what was verified.
+# 1265 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionStored:
+# 1266 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Bring Solgaleo or\n"
+# 1267 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Lunala from the PC.\p"
+# 1268 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "We need your partner here\n"
+# 1269 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "for the test.$"
+# 1270 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1271 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionUnevolved:
+# 1272 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Your partner needs to\n"
+# 1273 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "evolve first.\p"
+# 1274 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Bring Solgaleo or Lunala\n"
+# 1275 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "when it's ready.$"
+# 1276 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1277 "data/maps/OlivineCity_House1/scripts.pory"
+@ Claims no growth, loss, trade or release without evidence.
+# 1278 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionMissing:
+# 1279 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}We'll need Solgaleo or\n"
+# 1280 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Lunala in your team before\l"
+# 1281 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "we can leave.$"
+# 1282 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1283 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionResume:
+# 1284 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Ready to try the\n"
+# 1285 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "equipment with your partner?$"
+# 1286 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1287 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionTestStart:
+# 1288 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}Ready. Just a short\n"
+# 1289 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "pulse.$"
+# 1290 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1291 "data/maps/OlivineCity_House1/scripts.pory"
+@ Bench-test result in EVERY save: compatibility and a brief response, never
+# 1292 "data/maps/OlivineCity_House1/scripts.pory"
+@ proof of a safe crossing, and no claim about scenes that may not have been
+# 1293 "data/maps/OlivineCity_House1/scripts.pory"
+@ recorded.
+# 1294 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionTestResult:
+# 1295 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}There! Both lights\n"
+# 1296 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "together.\p"
+# 1297 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "The equipment can follow\n"
+# 1298 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "your partner.\p"
+# 1299 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Now we test it on a real\n"
+# 1300 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "passage.$"
+# 1301 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1302 "data/maps/OlivineCity_House1/scripts.pory"
+@ Default version on purpose: the presented Pokemon may be another specimen,
+# 1303 "data/maps/OlivineCity_House1/scripts.pory"
+@ and nothing in the save proves which one hatched from the Violet egg. The
+# 1304 "data/maps/OlivineCity_House1/scripts.pory"
+@ optional "Hard to believe I carried that egg." callback needs verifiable
+# 1305 "data/maps/OlivineCity_House1/scripts.pory"
+@ provenance that no existing data field provides.
+# 1306 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionGladionPartner:
+# 1307 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_GLADION}…You've looked\n"
+# 1308 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "after it.\p"
+# 1309 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Good.$"
+# 1310 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1311 "data/maps/OlivineCity_House1/scripts.pory"
+@ Future roles, V2 section 8: player fights and captures; the partner opens
+# 1312 "data/maps/OlivineCity_House1/scripts.pory"
+@ and holds the route; Anabel operates inside; Gladion/Silvally cover the
+# 1313 "data/maps/OlivineCity_House1/scripts.pory"
+@ exit; Lillie/Ninetales receive the UBs; Kukui reads the measurements;
+# 1314 "data/maps/OlivineCity_House1/scripts.pory"
+@ Looker handles transport and recovery. Lusamine prepares the outside base
+# 1315 "data/maps/OlivineCity_House1/scripts.pory"
+@ with Kukui - accepting to STAY outside is the altar's beat, not this one's.
+# 1316 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionAssignments:
+# 1317 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}Gladion, keep the exit\n"
+# 1318 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "clear. Lillie, help the\l"
+# 1319 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Pokémon we bring back.\p"
+# 1320 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Professor, check the outside\n"
+# 1321 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "unit with Lusamine when we\l"
+# 1322 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "arrive.$"
+# 1323 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1324 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionTicket:
+# 1325 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}The ship is ready at\n"
+# 1326 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Olivine Port.\p"
+# 1327 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Show the sailor this pass.$"
+# 1328 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1329 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionTicketUse:
+# 1330 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}He'll take you to the\n"
+# 1331 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "altar and back.\p"
+# 1332 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Heal your team, and bring\n"
+# 1333 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "your partner.$"
+# 1334 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1335 "data/maps/OlivineCity_House1/scripts.pory"
+@ Not in the V2 text list: the prevention line for the one delivery failure
+# 1336 "data/maps/OlivineCity_House1/scripts.pory"
+@ that exists (Key Items pocket full). Nothing is claimed beyond the fact.
+# 1337 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ReunionNoRoom:
+# 1338 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Your Key Items pocket\n"
+# 1339 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "is full.\p"
+# 1340 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Make room for the pass, then\n"
+# 1341 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "speak to me again.$"
+# 1342 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1343 "data/maps/OlivineCity_House1/scripts.pory"
+@ Menu labels - system text, no plaque.
+# 1344 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ChoiceSolgaleo:
+# 1345 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Solgaleo$"
+# 1346 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1347 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ChoiceLunala:
+# 1348 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Lunala$"
+# 1349 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1350 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ChoiceNotNow:
+# 1351 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Not now$"
+# 1352 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1353 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ChoiceYes:
+# 1354 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Yes$"
+# 1355 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1356 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_ChoiceNotYet:
+# 1357 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Not yet$"
+# 1358 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1359 "data/maps/OlivineCity_House1/scripts.pory"
+@ States 12-15, the repeatable orientation (V2 section 10). Releasing the
+# 1360 "data/maps/OlivineCity_House1/scripts.pory"
+@ voyage is persistent; the altar revalidates the team itself.
+# 1361 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_LookerAltar:
+# 1362 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Show your pass to the\n"
+# 1363 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "sailor at Olivine Port.\p"
+# 1364 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "The ship makes the return\n"
+# 1365 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "trip too.$"
+# 1366 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1367 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_AnabelAltar:
+# 1368 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}Bring Solgaleo or\n"
+# 1369 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Lunala.\p"
+# 1370 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "We'll check the passage at\n"
+# 1371 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "the altar.$"
+# 1372 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1373 "data/maps/OlivineCity_House1/scripts.pory"
+@ State 11 idle lines (V2 section 9): short preparation notes for whoever
+# 1374 "data/maps/OlivineCity_House1/scripts.pory"
+@ explores the room. None of them carries information the main scene needs.
+# 1375 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_IdleLusamine:
+# 1376 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LUSAMINE}Lillie's notes were\n"
+# 1377 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "useful. She recorded when\l"
+# 1378 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "the light changed.\p"
+# 1379 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "I should have asked to see\n"
+# 1380 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "them sooner.$"
+# 1381 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1382 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_IdleLillie:
+# 1383 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LILLIE}Mother asked for my\n"
+# 1384 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "notes. Then she actually\l"
+# 1385 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "read them.\p"
+# 1386 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "I'd like that to happen more\n"
+# 1387 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "often.$"
+# 1388 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1389 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_IdleGladion:
+# 1390 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_GLADION}She showed Anabel the\n"
+# 1391 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "controls. That's a start.\p"
+# 1392 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "I'm still watching the exit.$"
+# 1393 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1394 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_IdleKukui:
+# 1395 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}I had a boat booked\n"
+# 1396 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "for Alola. Looker's going to\l"
+# 1397 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "owe me a new ticket.\p"
+# 1398 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Don't tell him I said that.$"
+# 1399 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1400 "data/maps/OlivineCity_House1/scripts.pory"
+@ Post-game, state >= 16, V2 section 11: the family's two days a week in this
+# 1401 "data/maps/OlivineCity_House1/scripts.pory"
+@ room (Sunday and Friday, the days the altar doc fixed). Small, still
+# 1402 "data/maps/OlivineCity_House1/scripts.pory"
+@ imperfect coexistence - tea, an agenda under the teapot, Gladion staying
+# 1403 "data/maps/OlivineCity_House1/scripts.pory"
+@ for another cup - and no speech about learning to live together. No line
+# 1404 "data/maps/OlivineCity_House1/scripts.pory"
+@ describes Silvally anywhere his sprite is not: he stands at (2,7), by
+# 1405 "data/maps/OlivineCity_House1/scripts.pory"
+@ Gladion, as always. Lusamine's template sits at (5,6) on these loads
+# 1406 "data/maps/OlivineCity_House1/scripts.pory"
+@ (ApplyPostgameSeating): by the table, near her children.
+# 1407 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_HouseLusaminePost:
+# 1408 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LUSAMINE}Lillie chose tea for\n"
+# 1409 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "this afternoon. I had planned\l"
+# 1410 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "something more elaborate.\p"
+# 1411 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "…Tea will do.\n"
+# 1412 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Would you like some?$"
+# 1413 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1414 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_HouseLilliePost:
+# 1415 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_LILLIE}We meet here twice a\n"
+# 1416 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "week. Mother tried to make\l"
+# 1417 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "an agenda.\p"
+# 1418 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "Gladion put it under the\n"
+# 1419 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "teapot.$"
+# 1420 "data/maps/OlivineCity_House1/scripts.pory"
+
+# 1421 "data/maps/OlivineCity_House1/scripts.pory"
+OlivineCity_House1_Text_HouseGladionPost:
+# 1422 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "{SPEAKER NAME_GLADION}It was wobbling.\p"
+# 1423 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "…I'm staying for another\n"
+# 1424 "data/maps/OlivineCity_House1/scripts.pory"
+	.string "cup.$"

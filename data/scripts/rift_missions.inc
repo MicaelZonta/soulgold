@@ -24,8 +24,10 @@
 @ Type: Null Gladion may still be holding (FLAG_BLACKTHORN_TYPE_NULL_PENDING).
 @ Any future mission that can end with a gift pending has to join that check.
 @
-@ Every script that closes a mission ALSO sets FLAG_DAILY_LOOKER_CALL, so
+@ The scripts that close Missions 1-3 ALSO set FLAG_DAILY_LOOKER_CALL, so
 @ finishing Blackthorn on the day he called does not buy a second call that day.
+@ New Bark (Mission 4) does not: its script (V2 section 18) lets the reunion
+@ call ring the same day when the New Bark invitation came on an earlier one.
 @ A retry after a blackout changes no state and therefore rings no telephone.
 @
 @ One text per state. None of them explains what happened: that is the briefing.
@@ -73,30 +75,40 @@ RiftMissions_Text_LookerCallM2:
 	.string "I have been holding her coffee.\p"
 	.string "Meet us at our base in Olivine.$"
 
-@ State 6 -> Cherrygrove.
+@ State 6 -> Cherrygrove (CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md section 3): the
+@ place and the reason for the meeting, nothing else.
 RiftMissions_Text_LookerCallM3:
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}?\n"
-	.string "Looker. It's happened again.\p"
-	.string "Cherrygrove City.\p"
-	.string "And not the way we expected.\p"
-	.string "The house in Olivine, please.\n"
-	.string "We'll show you everything.$"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}, we've had a\n"
+	.string "report from the Cherrygrove\l"
+	.string "coast.\p"
+	.string "Meet us at the Olivine base.\p"
+	.string "Anabel found something in\n"
+	.string "Lillie's notes that may help\l"
+	.string "us this time.$"
 
-@ State 8 -> New Bark.
+@ State 8 -> New Bark. Bridge text fixed by the Cherrygrove V2 script (section
+@ 17): Elm answered the request Kukui made on the beach. Pair with
+@ CherrygroveCity_Text_UBKukuiElm and OlivineCity_House1_Text_BriefingM4Evidence.
 RiftMissions_Text_LookerCallM4:
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}.\n"
-	.string "Looker here.\p"
-	.string "New Bark Town.\p"
-	.string "…I am sorry. Come to the house\n"
-	.string "in Olivine first.\p"
-	.string "Anabel would rather you heard\n"
-	.string "the rest sitting down.$"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}, Professor Elm\n"
+	.string "contacted us. His readings\l"
+	.string "match the rift at Cherrygrove.\p"
+	.string "Come to the Olivine base.\n"
+	.string "We need to plan our approach\l"
+	.string "to New Bark.$"
 
-@ State 10 -> the reunion in Olivine itself.
+@ State 10 -> the reunion in Olivine (NEWBARK_ULTRABEAST_SCRIPT_V2.md section
+@ 18). Only after New Bark is closed and only on a day Looker has not called
+@ yet: if he called for New Bark today, the meeting waits for another date.
+@ The daily flag set by the New Bark call is what makes it wait. Unlike the
+@ other missions, NewBarkTown_EventScript_UBFinish does NOT set
+@ FLAG_DAILY_LOOKER_CALL: if the New Bark invitation was issued on an earlier
+@ day, this call may ring today, once the player is back in free control.
+@ The route to the Altar was found DURING the interval (Elm's record, Aether's
+@ files, Cherrygrove's bearing), so the call can say there is one.
 RiftMissions_Text_LookerCallReunion:
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}?\n"
-	.string "Looker.\p"
-	.string "We have guests at the house\n"
-	.string "in Olivine.\p"
-	.string "People who have seen this\n"
-	.string "before. Come when you can.$"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}, everyone's here\n"
+	.string "in Olivine. We have a route to\l"
+	.string "Necrozma.\p"
+	.string "Meet us at the base.\n"
+	.string "We need you for the plan.$"

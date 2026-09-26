@@ -6,12 +6,12 @@ Aparece no checklist como:
 
 - **Soliera** (Alola · Ultra Recon Squad) — comandante da equipe encontrada principalmente em *Ultra Moon*.
 
-**Pronto para o Nexus:** ❌ não — falta sprite de overworld e battle sprite (os dois são obrigatórios).
+**Pronto para o Nexus:** ✅ sim — tem sprite e battle sprite.
 
 ## Checklist
 
-- [ ] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)*
+- [x] Sprite de overworld *(obrigatório)*
+- [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
 - [ ] Time para as Rift Missions definido
 - [ ] Associado a um lendário
@@ -22,11 +22,17 @@ Aparece no checklist como:
 
 ### Sprite de overworld
 
-Não existe. Criar com a skill `adicionar-npc`.
+| Constante | Arquivo |
+|---|---|
+| `OBJ_EVENT_GFX_SOLIERA` | `graphics/object_events/pics/people/special/soliera.png` |
+
+32x32, doze quadros (`sAnimTable_StandardAsym`, igual à Lusamine). Convertido em 26/09/2026 da arte em `.filetransfer/`.
 
 ### Battle sprite (front pic)
 
-Não existe. Criar com a skill `adicionar-grafico-trainer`.
+| Constante | Arquivo |
+|---|---|
+| `TRAINER_PIC_FRONT_SOLIERA` | `graphics/trainers/front_pics/soliera.png` |
 
 ### Field mugshot
 
@@ -39,6 +45,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se precisar de flag nova).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 26/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_SOLIERA` = **982** (flag de batalha `0x8D6`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo `sNexusTrainerIds` (`src/data/level_scaling_rules.h`, R2). Falas e lutas em `data/scripts/nexus.inc`: `Nexus_EventScript_Soliera_Fight` (genérica) e `Nexus_EventScript_Soliera_ChampionFight` (campeão), sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Soliera.
 
 📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_SOLIERA`, campeão da Naganadel. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -191,6 +199,44 @@ Nexus_Text_Stinger_LookerFile:
 	.string "you could follow.\p"
 	.string "I have moved my desk slightly further\n"
 	.string "from the window. For no reason.$"
+```
+
+</details>
+
+
+**O Poipole da luta** (decisão do autor, 26/09/2026). O Poipole não tem dia
+próprio no Nexus: o jogador **ganha um Poipole na luta do Naganadel**. Depois
+da boss battle, um pequeno que estava escondido atrás do Naganadel desce e
+fica com o jogador. Fecha o arco da Soliera: ela entregou um pequeno assim no
+mundo dela e nunca soube no que ele virou; aqui o jogador vê o grande e leva o
+pequeno.
+
+- **Quando:** logo depois da boss battle, capturando o Naganadel ou não, em
+  todo dia de Naganadel (R7: repete sem limite).
+- **Nível:** 5, como o presente da `Route40_House4` — é o filhote.
+- **Entrega:** `givemon SPECIES_POIPOLE, 5` com a checagem de espaço **antes**
+  da narração (skill `entregar-pokemon-ou-ovo`: só party cheia **e** PC cheio
+  bloqueia).
+- **Estado:** o bit **12** da `VAR_NEXUS_DAILY` (livre no R15) marca "Poipole
+  de hoje já entregue". Liga logo depois do `givemon`. Sem espaço, o bit fica
+  desligado e o Poipole é oferecido de novo quando o jogador voltar ao fim do
+  Nexus naquele dia. O bit 11 continua sendo só o prêmio do R9.
+
+**Poipole**
+
+> Something small had been hiding behind it the whole time.
+>
+> It drifted down, looked at you for a long moment, and then settled on your shoulder as if it had always meant to.
+
+<details><summary><code>.inc</code> do Poipole</summary>
+
+```asm
+Nexus_Text_Stinger_Poipole:
+	.string "Something small had been hiding behind\n"
+	.string "it the whole time.\p"
+	.string "It drifted down, looked at you for a\n"
+	.string "long moment, and then settled on your\l"
+	.string "shoulder as if it had always meant to.$"
 ```
 
 </details>

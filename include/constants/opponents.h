@@ -953,16 +953,16 @@
 #define TRAINER_LUSAMINE_ALTAR            972 // Daily rematch at the Sun and Moon Altar (see .claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5), reclaimed from TRAINER_UNUSED_108
 #define TRAINER_LILLIE_POSTGAME           973 // Daily rematch on the Cherrygrove beach (see .claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5), reclaimed from TRAINER_UNUSED_109
 #define TRAINER_GLADION_POSTGAME          974 // Daily rematch in Cianwood (see .claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5), reclaimed from TRAINER_UNUSED_110
-#define TRAINER_UNUSED_111                975
-#define TRAINER_UNUSED_112                976
-#define TRAINER_UNUSED_113                977
-#define TRAINER_UNUSED_114                978
-#define TRAINER_UNUSED_115                979
-#define TRAINER_UNUSED_116                980
-#define TRAINER_UNUSED_117                981
-#define TRAINER_UNUSED_118                982
-#define TRAINER_UNUSED_119                983
-#define TRAINER_UNUSED_120                984
+#define TRAINER_NEXUS_COLRESS             975 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_111
+#define TRAINER_NEXUS_BRUNO               976 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_112
+#define TRAINER_NEXUS_ELESA               977 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_113
+#define TRAINER_NEXUS_VOLKNER             978 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_114
+#define TRAINER_NEXUS_STEVEN              979 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_115
+#define TRAINER_NEXUS_RAMOS               980 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_116
+#define TRAINER_NEXUS_GUZMA               981 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_117
+#define TRAINER_NEXUS_SOLIERA             982 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_118
+#define TRAINER_NEXUS_BYRON               983 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_119
+#define TRAINER_NEXUS_FANTINA             984 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_120
 #define TRAINER_UNUSED_121                985
 #define TRAINER_UNUSED_122                986
 #define TRAINER_UNUSED_123                987

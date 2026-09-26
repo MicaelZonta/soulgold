@@ -334,8 +334,10 @@
 // 11 = reunion held, Solgaleo/Lunala still missing (set by OlivineCity_House1_EventScript_ReunionNotYet)
 // 12 = reunion complete, altar expedition released (set by OlivineCity_House1_EventScript_ReunionConfirmed)
 // 13 = Act I played, Lusamine's duel pending    (set by SunMoonAltar_EventScript_ArrivalDone)
-// 14 = duel resolved, the ground rift is OPEN   (set by SunMoonAltar_EventScript_DuelResolved)
-// 15 = Necrozma beaten and received, farewell pending (set by UltraSpaceArena_EventScript_NecrozmaCaught)
+// 14 = duel, agreement and passage test done; the opening sleeps as a mark
+//      on the floor until a crossing   (set by SunMoonAltar_EventScript_TestDone)
+// 15 = boss beaten, nine rescued, Necrozma caught (or in Anabel's custody);
+//      return, stabilization and farewell pending (set by UltraSpaceArena_EventScript_CaptureDone)
 // 16 = arc closed. PERMANENT post-game state    (set by SunMoonAltar_EventScript_FarewellDone)
 // 17+ = reserved for the Rift Missions loop
 // The four mission flags are mutually exclusive, because the var holds one value:
@@ -347,9 +349,11 @@
 // Invariant: 13 <= this <= 15 if and only if the altar is unstable - ash weather
 //   AND the seven disc metatiles showing their portal state. Both are recomputed
 //   in SunMoonAltar_OnTransition and NEVER persisted.
-// Invariant: this == 14 or 15 if and only if the rift object at (14,10) is visible
-//   unconditionally; this >= 16 shows it if and only if FLAG_DAILY_ALTAR_RIFT is
-//   clear; this <= 13 hides it.
+// Invariant: at (14,10), this == 14 shows the dormant MARK (the active rift only
+//   during the altar reception cut, VAR_RIFT_ALTAR_STEP == ALTAR_STEP_RESCUE);
+//   this == 15 shows the rift; this >= 16 shows it if and only if
+//   FLAG_DAILY_ALTAR_RIFT is clear; this <= 13 shows neither.
+// Sub-steps of 13..15 live in VAR_RIFT_ALTAR_STEP (below), never in this var.
 // Invariant: this >= 16 if and only if Looker and Anabel are NOT in
 //   OlivineCity_House1 and ARE at MAP_SUN_MOON_ALTAR. The two halves are
 //   recomputed in two different ON_TRANSITIONs from this one var.
@@ -362,6 +366,30 @@
 // when FLAG_DAILY_KURT_NEW_DAY is found clear, which ClearDailyFlags does at the
 // date rollover (.claude/KURT_BALL_CRAFT_DESIGN.md section 2.7).
 #define VAR_KURT_TODAY                                  0x4121
+// Sun and Moon Altar V2 (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md
+// section 21). The sub-steps INSIDE states 13..15 of VAR_RIFT_MISSIONS_STATE:
+// which checkpoint of the altar/arena sequence the player is at. It exists
+// because the V2 scene crosses between MAP_SUN_MOON_ALTAR and
+// MAP_ULTRA_SPACE_ARENA mid-sequence, and VAR_TEMP_* are wiped by every warp.
+// Zeroed when the arc closes (state 16). Values: ALTAR_STEP_* below.
+#define VAR_RIFT_ALTAR_STEP                             0x4122
+// The partner chosen to open the passage: SPECIES_SOLGALEO or SPECIES_LUNALA
+// (the SYSTEM menu when both are in the team). Written at the duel and at every
+// crossing; read by the arena and by Act V so the same Pokemon is shown on
+// both sides of a warp.
+#define VAR_RIFT_ALTAR_PARTNER                          0x4123
+
+#define ALTAR_STEP_NONE           0  // nothing pending inside the current state
+#define ALTAR_STEP_DUEL_DONE      1  // (13) duel resolved; agreement + test pending (never re-fight)
+#define ALTAR_STEP_CROSSING       2  // (14) crossing confirmed; reload in place plays it
+#define ALTAR_STEP_BOSS_SEEN      3  // (14) arena intro seen, boss not beaten (retry lines pending)
+#define ALTAR_STEP_RETRY_READY    4  // (14) retry lines shown / tentative regrouped
+#define ALTAR_STEP_RECROSSING     5  // (14) crossing again after a loss: short arena intro
+#define ALTAR_STEP_RESCUE         6  // (14) boss BEATEN; the altar reception cut is pending
+#define ALTAR_STEP_CAPTURE        7  // (14) all nine through; the capture is pending in the arena
+#define ALTAR_STEP_CUSTODY        8  // (15) Necrozma in Anabel's custody; return scene pending
+#define ALTAR_STEP_CUSTODY_WAIT   9  // (15) return scene played; delivery by Anabel pending
+#define ALTAR_STEP_DELIVERED      10 // (15) delivered after custody; stabilization pending
 
 #define VARS_END                                         0x42FF
 

@@ -318,6 +318,64 @@ Debug_EventScript_Script_8::
 	release
 	end
 
+@ ---------------------------------------------------------------------------
+@ SoulGold: Rift Missions > Looker's call (src/debug.c, "Rift Missions…").
+@ The briefing in OlivineCity_House1 only happens once FLAG_RIFT_LOOKER_SUMMONS
+@ is set, and the call (RiftMissions_EventScript_LookerCall) sets it together
+@ with FLAG_DAILY_LOOKER_CALL. Only states 4/6/8/10 have a call.
+@ ---------------------------------------------------------------------------
+@ The same two flags the call sets, without the call: go to Olivine.
+Debug_EventScript_RiftLookerCalled::
+	lockall
+	call Debug_EventScript_RiftCheckState
+	setflag FLAG_DAILY_LOOKER_CALL
+	setflag FLAG_RIFT_LOOKER_SUMMONS
+	msgbox Debug_Text_RiftLookerCalled, MSGBOX_DEFAULT
+	releaseall
+	end
+
+@ The real call, right now (it sets both flags itself).
+Debug_EventScript_RiftLookerCallNow::
+	lockall
+	call Debug_EventScript_RiftCheckState
+	releaseall
+	goto RiftMissions_EventScript_LookerCall
+
+@ Undo: no call made today and no invitation pending. The next step outside
+@ the house rings again (in states 4/6/8/10).
+Debug_EventScript_RiftLookerReset::
+	lockall
+	clearflag FLAG_DAILY_LOOKER_CALL
+	clearflag FLAG_RIFT_LOOKER_SUMMONS
+	msgbox Debug_Text_RiftLookerReset, MSGBOX_DEFAULT
+	releaseall
+	end
+
+@ Out of 4/6/8/10 there is nothing to call about: say so and stop.
+Debug_EventScript_RiftCheckState::
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, Debug_EventScript_RiftStateOk
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, Debug_EventScript_RiftStateOk
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, Debug_EventScript_RiftStateOk
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, Debug_EventScript_RiftStateOk
+	buffernumberstring STR_VAR_1, VAR_RIFT_MISSIONS_STATE
+	msgbox Debug_Text_RiftNoCall, MSGBOX_DEFAULT
+	releaseall
+	end
+Debug_EventScript_RiftStateOk::
+	return
+
+Debug_Text_RiftLookerCalled:
+	.string "Looker's call marked as made.\n"
+	.string "The briefing in Olivine is open.$"
+
+Debug_Text_RiftLookerReset:
+	.string "Today's call and the invitation\n"
+	.string "were cleared.$"
+
+Debug_Text_RiftNoCall:
+	.string "Rift state is {STR_VAR_1}. Looker only\n"
+	.string "calls in states 4, 6, 8 and 10.$"
+
 Debug_CheckSaveBlock::
 	callnative CheckSaveBlock1Size
 	msgbox Debug_SaveBlock1Size, MSGBOX_DEFAULT
@@ -923,3 +981,139 @@ Debug_EventScript_TellTheTime_Text_0:
 
 DebugEventScript_PrintWeekday_Text_0:
 	.string "Time of day: {STR_VAR_1}$"
+
+@ SoulGold: Rift Missions > Nexus fights (src/debug.c). There is no Nexus map yet;
+@ these run the fights of data/scripts/nexus.inc from anywhere. YES = the champion
+@ version (lines about the legendary), NO = the generic version of the rooms.
+Debug_EventScript_NexusColress::
+	lockall
+	msgbox Debug_Text_NexusChampion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_NexusColressChampion
+	call Nexus_EventScript_Colress_Fight
+	releaseall
+	end
+
+Debug_EventScript_NexusColressChampion::
+	call Nexus_EventScript_Colress_ChampionFight
+	releaseall
+	end
+
+Debug_EventScript_NexusBruno::
+	lockall
+	msgbox Debug_Text_NexusChampion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_NexusBrunoChampion
+	call Nexus_EventScript_Bruno_Fight
+	releaseall
+	end
+
+Debug_EventScript_NexusBrunoChampion::
+	call Nexus_EventScript_Bruno_ChampionFight
+	releaseall
+	end
+
+Debug_EventScript_NexusElesa::
+	lockall
+	msgbox Debug_Text_NexusChampion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_NexusElesaChampion
+	call Nexus_EventScript_Elesa_Fight
+	releaseall
+	end
+
+Debug_EventScript_NexusElesaChampion::
+	call Nexus_EventScript_Elesa_ChampionFight
+	releaseall
+	end
+
+Debug_EventScript_NexusVolkner::
+	lockall
+	msgbox Debug_Text_NexusChampion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_NexusVolknerChampion
+	call Nexus_EventScript_Volkner_Fight
+	releaseall
+	end
+
+Debug_EventScript_NexusVolknerChampion::
+	call Nexus_EventScript_Volkner_ChampionFight
+	releaseall
+	end
+
+Debug_EventScript_NexusSteven::
+	lockall
+	msgbox Debug_Text_NexusChampion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_NexusStevenChampion
+	call Nexus_EventScript_Steven_Fight
+	releaseall
+	end
+
+Debug_EventScript_NexusStevenChampion::
+	call Nexus_EventScript_Steven_ChampionFight
+	releaseall
+	end
+
+Debug_EventScript_NexusRamos::
+	lockall
+	msgbox Debug_Text_NexusChampion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_NexusRamosChampion
+	call Nexus_EventScript_Ramos_Fight
+	releaseall
+	end
+
+Debug_EventScript_NexusRamosChampion::
+	call Nexus_EventScript_Ramos_ChampionFight
+	releaseall
+	end
+
+Debug_EventScript_NexusGuzma::
+	lockall
+	msgbox Debug_Text_NexusChampion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_NexusGuzmaChampion
+	call Nexus_EventScript_Guzma_Fight
+	releaseall
+	end
+
+Debug_EventScript_NexusGuzmaChampion::
+	call Nexus_EventScript_Guzma_ChampionFight
+	releaseall
+	end
+
+Debug_EventScript_NexusSoliera::
+	lockall
+	msgbox Debug_Text_NexusChampion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_NexusSolieraChampion
+	call Nexus_EventScript_Soliera_Fight
+	releaseall
+	end
+
+Debug_EventScript_NexusSolieraChampion::
+	call Nexus_EventScript_Soliera_ChampionFight
+	releaseall
+	end
+
+Debug_EventScript_NexusByron::
+	lockall
+	msgbox Debug_Text_NexusChampion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_NexusByronChampion
+	call Nexus_EventScript_Byron_Fight
+	releaseall
+	end
+
+Debug_EventScript_NexusByronChampion::
+	call Nexus_EventScript_Byron_ChampionFight
+	releaseall
+	end
+
+Debug_EventScript_NexusFantina::
+	lockall
+	msgbox Debug_Text_NexusChampion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Debug_EventScript_NexusFantinaChampion
+	call Nexus_EventScript_Fantina_Fight
+	releaseall
+	end
+
+Debug_EventScript_NexusFantinaChampion::
+	call Nexus_EventScript_Fantina_ChampionFight
+	releaseall
+	end
+
+Debug_Text_NexusChampion:
+	.string "Fight as the legendary's champion?$"

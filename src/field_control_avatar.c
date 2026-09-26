@@ -1170,22 +1170,28 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
 }
 
 // Rift Missions: while a town is evacuated its residents are locked indoors.
-// Every building door of that town refuses the player, except the one that
+// Every building door of that town refuses the player, except the ones that
 // must stay open (the Pokémon Center: healing, and the blackout respawn).
 // One row per mission; the lock lives exactly as long as the event flag.
+// New Bark has no Center, so its two open doors are the lab (the shelter, where
+// Mom heals the party once she is inside) and the player's own house.
+// openDoorMap2 = 0 means "only one door stays open": no map is MAP_GROUP 0 /
+// MAP_NUM 0 in a town row, so it never matches a real warp.
 struct LockedTownDoors
 {
     u16 eventFlag;
     u16 townMap;
     u16 openDoorMap;
+    u16 openDoorMap2;
     const u8 *script;
 };
 
 static const struct LockedTownDoors sLockedTownDoors[] =
 {
-    { FLAG_EVENT_ULTRABEAST_BLACKTHORN, MAP_BLACKTHORN_CITY, MAP_BLACKTHORN_CITY_POKEMON_CENTER, BlackthornCity_EventScript_DoorLocked },
-    { FLAG_EVENT_ULTRABEAST_MAHOGANY,   MAP_MAHOGANYTOWN,    MAP_MAHOGANY_TOWN_POKEMON_CENTER,   Mahoganytown_EventScript_DoorLocked },
-    { FLAG_EVENT_ULTRABEAST_CHERRYGROVE, MAP_CHERRYGROVE_CITY, MAP_CHERRYGROVE_CITY_POKEMON_CENTER, CherrygroveCity_EventScript_DoorLocked },
+    { FLAG_EVENT_ULTRABEAST_BLACKTHORN, MAP_BLACKTHORN_CITY, MAP_BLACKTHORN_CITY_POKEMON_CENTER, 0, BlackthornCity_EventScript_DoorLocked },
+    { FLAG_EVENT_ULTRABEAST_MAHOGANY,   MAP_MAHOGANYTOWN,    MAP_MAHOGANY_TOWN_POKEMON_CENTER,   0, Mahoganytown_EventScript_DoorLocked },
+    { FLAG_EVENT_ULTRABEAST_CHERRYGROVE, MAP_CHERRYGROVE_CITY, MAP_CHERRYGROVE_CITY_POKEMON_CENTER, 0, CherrygroveCity_EventScript_DoorLocked },
+    { FLAG_EVENT_ULTRABEAST_NEWBARK,    MAP_NEW_BARK_TOWN,   MAP_NEW_BARK_TOWN_LAB, MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F, NewBarkTown_EventScript_DoorLocked },
 };
 
 static bool8 TryLockedDoorScript(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)
@@ -1207,6 +1213,9 @@ static bool8 TryLockedDoorScript(struct MapPosition *position, u16 metatileBehav
             return FALSE;
         warp = &gMapHeader.events->warps[warpEventId];
         if (((warp->mapGroup << 8) | warp->mapNum) == sLockedTownDoors[i].openDoorMap)
+            return FALSE;
+        if (sLockedTownDoors[i].openDoorMap2 != 0
+         && ((warp->mapGroup << 8) | warp->mapNum) == sLockedTownDoors[i].openDoorMap2)
             return FALSE;
         ScriptContext_SetupScript(sLockedTownDoors[i].script);
         return TRUE;

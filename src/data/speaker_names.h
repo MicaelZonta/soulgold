@@ -19,4 +19,18 @@ const u8 *const gSpeakerNamesTable[SP_NAME_COUNT] =
     [SP_NAME_KURT]     = COMPOUND_STRING("Kurt"),
     [SP_NAME_HECTOR]   = COMPOUND_STRING("Hector"),
     [SP_NAME_BOY]      = COMPOUND_STRING("Boy"),
+    // Gold or Crystal, the rival next door. Expanded at draw time by
+    // StringExpandPlaceholders (ExpandPlaceholder_Neighbor, src/string_util.c).
+    [SP_NAME_NEIGHBOR] = COMPOUND_STRING("{NEIGHBOR}"),
+    [SP_NAME_SAILOR]   = COMPOUND_STRING("Sailor"),
+    [SP_NAME_COLRESS]  = COMPOUND_STRING("Colress"),
+    [SP_NAME_BRUNO]    = COMPOUND_STRING("Bruno"),
+    [SP_NAME_ELESA]    = COMPOUND_STRING("Elesa"),
+    [SP_NAME_VOLKNER]  = COMPOUND_STRING("Volkner"),
+    [SP_NAME_STEVEN]   = COMPOUND_STRING("Steven"),
+    [SP_NAME_RAMOS]    = COMPOUND_STRING("Ramos"),
+    [SP_NAME_GUZMA]    = COMPOUND_STRING("Guzma"),
+    [SP_NAME_SOLIERA]  = COMPOUND_STRING("Soliera"),
+    [SP_NAME_BYRON]    = COMPOUND_STRING("Byron"),
+    [SP_NAME_FANTINA]  = COMPOUND_STRING("Fantina"),
 };
