@@ -147,9 +147,10 @@ void GBAUnloadROM(struct GBA* gba) {
 			gba->yankedRomSize = 0;
 		}
 #ifndef FIXED_ROM_BUFFER
-		mappedMemoryFree(gba->memory.rom, GBA_SIZE_ROM0);
+		mappedMemoryFree(gba->memory.rom, (size_t) gba->memory.romAddrMask + 1);
 #endif
 	}
+	gba->memory.romAddrMask = GBA_SIZE_ROM0 - 1;
 
 	if (gba->romVf) {
 #ifndef FIXED_ROM_BUFFER
@@ -443,11 +444,31 @@ bool GBALoadROM(struct GBA* gba, struct VFile* vf) {
 #else
 			gba->memory.rom = anonymousMemoryMap(GBA_SIZE_ROM0);
 #endif
+			gba->pristineRomSize = GBA_SIZE_ROM0;
+#ifndef FIXED_ROM_BUFFER
+		} else if (gba->pristineRomSize <= GBA_SIZE_ROM_LINEAR) {
+			// SoulGold linear mapping: the whole file is visible from 0x08000000
+			// up to 0x0DFFFFFF, with no mirroring. Bytes past the end read as 0xFF,
+			// like the padding a flash cart would have.
+			gba->isPristine = false;
+			gba->memory.romAddrMask = GBA_SIZE_ROM_LINEAR_BUFFER - 1;
+			gba->memory.rom = anonymousMemoryMap(GBA_SIZE_ROM_LINEAR_BUFFER);
+			if (gba->memory.rom) {
+				vf->seek(vf, 0, SEEK_SET);
+				if (vf->read(vf, gba->memory.rom, gba->pristineRomSize) != (ssize_t) gba->pristineRomSize) {
+					mappedMemoryFree(gba->memory.rom, GBA_SIZE_ROM_LINEAR_BUFFER);
+					gba->memory.rom = NULL;
+				} else {
+					memset(&((uint8_t*) gba->memory.rom)[gba->pristineRomSize], 0xFF, GBA_SIZE_ROM_LINEAR_BUFFER - gba->pristineRomSize);
+				}
+			}
+			gba->memory.romSize = (gba->pristineRomSize + 3) & ~3;
+#endif
 		} else {
 			gba->memory.rom = vf->map(vf, GBA_SIZE_ROM0, MAP_READ);
 			gba->memory.romSize = GBA_SIZE_ROM0;
+			gba->pristineRomSize = GBA_SIZE_ROM0;
 		}
-		gba->pristineRomSize = GBA_SIZE_ROM0;
 	} else if (gba->pristineRomSize == 0x00100000) {
 		// 1 MiB ROMs (e.g. Classic NES) all appear as 4x mirrored, but not more
 		gba->isPristine = false;
@@ -473,7 +494,7 @@ bool GBALoadROM(struct GBA* gba, struct VFile* vf) {
 	gba->yankedRomSize = 0;
 	gba->memory.romMask = toPow2(gba->memory.romSize) - 1;
 	gba->romCrc32 = doCrc32(gba->memory.rom, gba->pristineRomSize);
-	if (popcount32(gba->memory.romSize) != 1) {
+	if (popcount32(gba->memory.romSize) != 1 && gba->memory.romAddrMask == GBA_SIZE_ROM0 - 1) {
 		// This ROM is either a bad dump or homebrew. Emulate flash cart behavior.
 #ifndef FIXED_ROM_BUFFER
 		void* newRom = anonymousMemoryMap(GBA_SIZE_ROM0);

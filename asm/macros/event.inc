@@ -268,7 +268,7 @@
 	.if \requests_effects == 0
 	.4byte \func
 	.else
-	.4byte \func + ROM_SIZE
+	.4byte \func + SCRIPT_EFFECT_TAG
 	.endif
 	.endm
 
@@ -278,7 +278,7 @@
 	.if \requests_effects == 0
 	.4byte \func
 	.else
-	.4byte \func + ROM_SIZE
+	.4byte \func + SCRIPT_EFFECT_TAG
 	.endif
 	.endm
 

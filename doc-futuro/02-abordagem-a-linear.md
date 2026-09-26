@@ -1,5 +1,10 @@
 # A) mGBA com mapeamento linear 0x08000000–0x0DFFFFFF (96 MB)
 
+> **POC feita (26/09/2026):** funciona, mas faltou um achado — os scripts do
+> expansion chamam funções pelo espelho 0x0A000000 e **todo script trava**
+> sem correção. Números reais em
+> [07-poc-abordagem-a-resultado.md](07-poc-abordagem-a-resultado.md).
+
 **Veredito: é a abordagem recomendada.** É de longe a mais barata das
 quatro, e o achado central abaixo a torna mais barata ainda do que a
 proposta original supõe.

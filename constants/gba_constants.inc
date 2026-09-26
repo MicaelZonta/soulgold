@@ -32,6 +32,11 @@
 	.set ROM,      0x8000000
 	.set ROM_SIZE, 0x2000000
 
+	@ Marca de "requests_effects" em ponteiro de funcao de script (ver include/script.h).
+	@ O upstream somava ROM_SIZE e chamava pelo espelho 0x0A000000; com a ROM linear
+	@ de 96 MB esse espelho e dado de verdade, entao a marca virou o bit 28.
+	.set SCRIPT_EFFECT_TAG, 0x10000000
+
 	.set SOUND_INFO_PTR, 0x3007FF0
 	.set INTR_CHECK,     0x3007FF8
 	.set INTR_VECTOR,    0x3007FFC

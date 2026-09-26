@@ -590,6 +590,17 @@ $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s
 
 $(DATA_ASM_BUILDDIR)/sound_data.o: | check-song-config
 
+# POC do mapeamento linear de 96 MB: `make ROM_FILLER_MB=62` gera ~92 MB de ROM.
+ROM_FILLER_MB ?= 0
+.PHONY: FORCE
+FORCE:
+ROM_FILLER_STAMP := $(OBJ_DIR)/rom_filler_mb.txt
+$(ROM_FILLER_STAMP): FORCE
+	@mkdir -p $(@D)
+	@echo $(ROM_FILLER_MB) | cmp -s - $@ || echo $(ROM_FILLER_MB) > $@
+$(DATA_ASM_BUILDDIR)/rom_filler.o: $(DATA_ASM_SUBDIR)/rom_filler.s $(ROM_FILLER_STAMP)
+	$(AS) $(ASFLAGS) --defsym ROM_FILLER_BYTES=$$(( $(ROM_FILLER_MB) * 1048576 )) -o $@ $<
+
 $(DATA_ASM_BUILDDIR)/%.d: $(DATA_ASM_SUBDIR)/%.s
 	$(SCANINC) -M $@ $(INCLUDE_SCANINC_ARGS) -I "" $<
 
@@ -654,11 +665,11 @@ endif
 # Builds the rom from the elf file
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
-	$(FIX) $@ -p --silent
+	$(FIX) $@ --silent
 
 emerald: all
 firered: all
 leafgreen: all
 # Symbol file (`make syms`)
 $(SYM): $(ELF)
-	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389a-d]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@

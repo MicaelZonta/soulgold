@@ -7,6 +7,14 @@ endereçamento do GBA. Feita sobre o código real deste repositório em
 
 Nada foi alterado fora deste diretório. Nenhum commit foi feito.
 
+## Resultado da POC (26/09/2026)
+
+A abordagem A foi implementada e testada na branch `poc-rom-96mb-linear`:
+ROM de **92 MB rodando**, idêntica pixel a pixel à de 33 MB. Mas o custo no
+jogo não é "~5 linhas": apareceu um achado novo e fatal (os scripts do
+expansion chamam funções pelo espelho 0x0A000000). Ver
+[07-poc-abordagem-a-resultado.md](07-poc-abordagem-a-resultado.md).
+
 ## Recomendação
 
 **Abordagem A — mapeamento linear 0x08000000–0x0DFFFFFF — com uma correção
@@ -54,6 +62,7 @@ As duas descobertas que sustentam isso:
 | [04-abordagem-c-disco-virtual.md](04-abordagem-c-disco-virtual.md) | Disco virtual — elegante, cara, bloqueada no áudio |
 | [05-abordagem-d-port-nativo.md](05-abordagem-d-port-nativo.md) | Port SDL — destino final, decisão errada agora |
 | [06-abordagem-e-hibrida.md](06-abordagem-e-hibrida.md) | Abordagem adicional: linear agora, disco virtual seletivo depois |
+| [07-poc-abordagem-a-resultado.md](07-poc-abordagem-a-resultado.md) | **POC da A: 92 MB rodando, o que custou, o que ganhou, o achado que faltava** |
 
 ## Achados que valem a leitura mesmo se a decisão for outra
 
