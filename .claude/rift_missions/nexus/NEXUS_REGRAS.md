@@ -5,7 +5,8 @@ design §10). **Valem para qualquer trabalho no Nexus**: time de treinador,
 sorteio, pool de lendários, prêmio, mapa, script. Se uma tarefa pedir algo que
 contraria uma regra daqui, pare e pergunte ao autor antes.
 
-Decididas pelo autor em 25/09/2026. As notas "No código" dizem o que já existe
+Decididas pelo autor em 25/09/2026; revisão 2 em 26/09/2026 (formato
+Traditional por categoria, Singles/Doubles, derrota no Daily, IV do boss). As notas "No código" dizem o que já existe
 no repositório para cumprir a regra e onde está a armadilha.
 
 ---
@@ -47,16 +48,19 @@ nível 100 (para se desafiar) ou nível 50 (para upar).
 - O boss lendário também escala; o `setbossbattle` só cuida de barras e
   multiplicador, não de nível.
 
-## R3. Abre uma vez por dia; perder não tranca
+## R3. Abre uma vez por dia; perder não tranca nem custa nada
 
 - O Nexus (modo Daily) **abre 1x por dia**: o conteúdo daquele dia — os
   treinadores de cada teleporte, o lendário e o campeão — é **sorteado uma vez
   por dia** e fica igual até virar o dia.
-- **Perder não tranca**: o jogador pode entrar de novo quantas vezes quiser no
-  mesmo dia.
+- **Perder não custa nada**: sem blackout de verdade, sem perder dinheiro, sem
+  trancar o portal. O jogador sai, pode curar, **entra de novo no portal e
+  refaz o caminho** normalmente, quantas vezes quiser no mesmo dia.
 - **No código:** flags do bloco `DAILY` (`include/constants/flags.h`,
   `DAILY_FLAGS_START`) zeram na virada do dia. A fenda do altar já usa daily
-  flag (V24). Nova flag → skills `alocar-flag` e `catalogar-flags`.
+  flag (V24). Derrota sem penalidade → skill `batalha-sem-blackout`
+  (`B_FLAG_NO_WHITEOUT`). Nova flag → skills `alocar-flag` e
+  `catalogar-flags`.
 
 ## R4. Modos de jogo — só o Daily agora
 
@@ -66,7 +70,7 @@ nem ter estrutura preparada sem pedido do autor.
 
 | Modo | Regra | Status |
 |---|---|---|
-| **Daily** | dungeon reseta todo dia; no mesmo dia pode tentar quantas vezes quiser; **perder não recomeça do primeiro** | **foco atual** |
+| **Daily** | dungeon reseta todo dia; no mesmo dia pode tentar quantas vezes quiser; perder não custa nada e o jogador refaz o caminho | **foco atual** |
 | Gauntlet | perdeu, é expulso e recomeça do começo | ideia futura |
 | Infinito | segue enquanto não perder | ideia futura |
 
@@ -88,12 +92,9 @@ caminho.
 
 ### Vida entre lutas (R5.2)
 
-**Não há cura entre as lutas.** Para recuperar, o jogador **sai** do Nexus.
-
-No Daily, **perder** expulsa o jogador **sem apagar o progresso do dia**: ele
-volta e continua da luta onde parou (R4). A frase do autor "ou você perde e
-começa do começo" descreve o **Gauntlet**, não o Daily — ver "Pontos a
-confirmar".
+**Não há cura entre as lutas.** Dentro de uma tentativa, o HP e o PP que
+sobraram de uma luta vão para a próxima. Para recuperar, o jogador **sai** do
+Nexus — e ao voltar refaz o caminho (R3).
 
 ## R6. Boss final
 
@@ -107,16 +108,12 @@ Lendários e treinadores **podem aparecer N vezes**. Não há filtro de "já
 enfrentado" nem de "já capturado" (a única restrição de pool é a R1). Capturar
 de novo o mesmo lendário é permitido — serve para caçar IV melhor.
 
-## R8. Lendário do Nexus vem com IV alto
+## R8. Lendário do Nexus: 3 IVs perfeitos
 
-Os lendários daqui têm **chance alta de IVs altos** — acima do padrão de
-lendário do jogo.
-
-- **No código:** hoje o padrão é `LEGENDARY_PERFECT_IV_COUNT 3`
-  (`include/constants/pokemon.h`, campo `perfectIVCount` da espécie). O Nexus
-  deve usar um valor próprio maior na criação do boss (por exemplo 4 a 6 IVs
-  perfeitos, ou IVs sorteados com piso alto); o número exato fica para a
-  implementação.
+O lendário do boss vem com **3 IVs perfeitos garantidos** — o padrão do jogo
+(`LEGENDARY_PERFECT_IV_COUNT 3`, `include/constants/pokemon.h`, campo
+`perfectIVCount` da espécie). Como o lendário pode ser recapturado sem limite
+(R7), caçar IV melhor é repetir o Nexus, não aumentar o piso.
 
 ## R9. Prêmio de quem vence tudo
 
@@ -127,7 +124,7 @@ jogador "encontra" no fim. Candidatos (já existem no jogo):
 |---|---|---|
 | **Mints** | `ITEM_LONELY_MINT` … `ITEM_SERIOUS_MINT` (21, `include/constants/items.h`) | trocam a Nature efetiva |
 | **Feathers** (repropostas neste hack) | Health, Muscle, Resist, Genius, Clever, Swift Feather | **+5 IV** permanente no stat (HP, Atk, Def, SpA, SpD, Spe) até 31 — `src/pokemon.c`, `ITEM10_IVS_ALL` |
-| **TMs sorteados** | tabela de TMs | o autor quer TMs mais raros; o Nexus é uma fonte deles |
+| **TMs sorteados** | tabela de TMs | TMs vão ficar raros no jogo (R14); o Nexus é uma das fontes |
 
 - Os **Herbs** (Withered, Grimy, Brittle, Goopy, Dull, Soggy) fazem o
   contrário: **baixam** IV. Não são prêmio de "melhorar", mas podem servir
@@ -137,43 +134,65 @@ jogador "encontra" no fim. Candidatos (já existem no jogo):
 - Prêmio entregue por script → checar espaço na bolsa **antes** (padrão
   `checkitemspace` das skills).
 
-## R10. Formato **Traditional**
+## R10. Formato **Traditional** — jogador **e** treinadores
 
-O Nexus usa o formato **Traditional** (o nome existe porque outros formatos
-podem vir depois):
+O Nexus usa o formato **Traditional** (outros formatos podem vir depois; o
+Nexus segue sempre o formato escolhido). Ele vale para o **time do jogador**,
+conferido na entrada do portal, **e** para **todo treinador** do Nexus:
 
-- **6 Pokémon**, como estão
-- **no máximo 1 Mega**
-- **no máximo 1 Uber**
-- batalhas **Singles ou Doubles**
+| Vaga | Máximo |
+|---|---|
+| Pokémon no time | 6 |
+| **Lendário** | 1 |
+| **Semi-lendário** | 1 |
+| **Mega** | 1 |
 
-**Uber** = espécie com **BST ≥ 600**. O jogo **não tem** lista de tiers (o
-único marcador é `isFrontierBanned`, que pega lendários e míticos). Hoje
-passam de 600, fora os lendários: Dragonite, Tyranitar, Slaking, Salamence,
-Metagross, Garchomp, Hydreigon, Greninja-Ash, Goodra (e Hisui), Wishiwashi
-School, Kommo-o, Archaludon, Dragapult, Palafin Hero e Baxcalibur.
+A regra antiga de "Uber = BST ≥ 600" **foi abandonada**: ela pegava casos como
+Slaking, que não é lendário. Pseudo-lendários (Dragonite, Tyranitar,
+Garchomp, Dragapult…) e Slaking são **Pokémon comuns** aqui.
 
-- Conta o **BST da forma base**, não o da Mega. Um Uber que também é o Mega do
-  time (Mega Metagross, Mega Garchomp…) ocupa **as duas vagas**.
-- **Ponto a confirmar:** vários lendários ficam **abaixo** de 600 (Tapus e UBs
-  570, Paradoxos 570–590, Regis e o trio de Johto 580). Pela regra literal eles
-  **não** são Uber. Ver "Pontos a confirmar".
+**Quem é o quê** (pelas flags da espécie em `src/data/pokemon/species_info/`):
 
-## R11. Todo treinador do Nexus segue o Traditional
+| Categoria | Flag no engine | Exemplos |
+|---|---|---|
+| **Lendário** | `isRestrictedLegendary` | Mewtwo, Lugia, Kyogre, Dialga, Zacian, Koraidon, Cosmog/Solgaleo, Necrozma |
+| **Lendário** (proposta) | `isMythical` | Mew, Celebi, Arceus, Darkrai, Magearna, Zeraora |
+| **Semi-lendário** | `isSubLegendary` | aves, cães, Regis, Lati@s, Heatran, Tapus, Type: Null/Silvally, Urshifu, Ogerpon |
+| **Semi-lendário** (proposta) | `isUltraBeast`, `isParadox` | Buzzwole, Kartana, Poipole, Flutter Mane, Iron Valiant |
 
-- Todo time de treinador tem **1 Mega e 1 Uber**.
-- **Exceção:** se for impossível achar uma Mega que combine com o personagem,
-  troca a Mega por **um segundo Uber** — mas antes **proponha ao autor** uma
-  **Mega custom** que faça sentido (o hack já tem Megas próprias, ex.: a
-  `Steeltite` do Steven).
+- O Mega pode ser de qualquer categoria. Um lendário ou semi-lendário que é o
+  Mega do time (Mega Mewtwo, Mega Latios, Mega Heatran…) ocupa **as duas
+  vagas** — a da categoria e a de Mega.
+- Primal (Kyogre/Groudon) conta como a vaga de **Mega**.
+
+### Singles ou Doubles
+
+É uma **opção do jogo inteiro**: o jogador escolhe se joga a campanha toda em
+Singles ou em Doubles, e o Nexus segue essa escolha. Consequência para os
+times: **todo time do Nexus precisa funcionar nos dois**.
+
+- **No código:** essa opção **ainda não existe**. Hoje só há
+  `Double Battle: Yes/No` fixo por treinador no `trainers.party` e
+  `B_FLAG_FORCE_DOUBLE_WILD` para selvagens. Quando a opção existir, o Nexus
+  lê dela.
+
+## R11. Todo treinador do Nexus usa as três vagas
+
+- Todo time de treinador tem **1 lendário, 1 semi-lendário e 1 Mega** (e mais
+  três Pokémon comuns, ou menos se o lendário/semi-lendário for o Mega).
+- Se não houver uma Mega que combine com o personagem, **proponha ao autor uma
+  Mega custom** que faça sentido (o hack já tem Megas próprias, ex.: a
+  `Steeltite` do Steven). Só sem Mega possível a vaga fica vazia — nunca vira
+  um segundo lendário.
 - Mega em treinador = Pokémon segurando a pedra certa no `trainers.party`.
 
 ## R12. Times com sinergia
 
 Os times precisam ter **sinergia e ser interessantes**: um plano (clima,
 Trick Room, hazards, pivot, dupla que se cobre em Doubles), a cara do
-personagem e um motivo para o Mega e o Uber estarem ali. Não é uma lista de
-seis Pokémon fortes.
+personagem e um motivo para o lendário, o semi-lendário e a Mega estarem ali.
+Não é uma lista de seis Pokémon fortes. Como a batalha pode ser Singles ou
+Doubles (R10), o plano precisa sobreviver aos dois.
 
 ## R13. Times no máximo: 31 IV e 252 EV em tudo
 
@@ -190,14 +209,27 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Nature, item, habilidade e os 4 golpes são sempre escritos à mão (sem golpe
   escrito, o engine põe o set de level-up).
 
----
+## R14. Direção de design do jogo: breeding em primeiro lugar
+
+Decisão **futura** do autor, que já orienta o Nexus: o jogo vai **valorizar o
+breeding**. Para isso serão restringidos, no resto do jogo:
+
+- tudo que dá **EV** e **IV** (vitaminas, Feathers, Bottle Caps…);
+- **Poké Balls**;
+- **TMs** — a ideia é valer mais breedar para o filhote nascer com o golpe do
+  que usar TM.
+
+Para o Nexus isso significa: os prêmios (R9) — **Feathers (+IV), Mints e TMs** —
+ficam **mais valiosos**, porque serão fontes raras. **Não implementar** essas
+restrições sem pedido do autor; é só para não desenhar nada no Nexus que vá
+contra elas (ex.: não dar Poké Ball em quantidade como prêmio).
 
 ## Checklist rápido para um time do Nexus
 
 - [ ] 6 Pokémon
-- [ ] exatamente 1 Mega (pedra certa segurada) — ou 2 Ubers com exceção aprovada
-- [ ] exatamente 1 Uber (BST base ≥ 600)
-- [ ] Singles ou Doubles definido
+- [ ] 1 lendário, 1 semi-lendário e 1 Mega (pedra certa segurada) — Mega custom proposta se nenhuma servir
+- [ ] nenhum Pokémon comum "contando" como lendário (pseudo-lendário e Slaking são comuns)
+- [ ] plano que funciona em Singles **e** em Doubles
 - [ ] 31 IV e 252 EV em todos os stats
 - [ ] Nature, item, habilidade e 4 golpes escritos
 - [ ] plano de jogo claro (R12) e cara do personagem
@@ -206,18 +238,19 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ## Pontos a confirmar com o autor
 
-1. **Lendário abaixo de 600 conta como Uber?** Pela regra literal, não
-   (Tapu Koko, Flutter Mane, Raikou…). Recomendo contar **todo lendário,
-   mítico, Ultra Beast e Paradoxo** como Uber, além do BST ≥ 600 — senão um
-   time pode ter 1 Uber de 600 + vários lendários de 570–590.
-2. **Singles ou Doubles:** quem escolhe — cada treinador, o sorteio, ou o
-   jogador ao entrar?
-3. **O jogador também precisa seguir o Traditional** (checado na entrada), ou
-   só os treinadores?
-4. **Perder no Daily:** confirmado que mantém o progresso do dia e o jogador
-   volta de onde parou? (A frase "ou você perde e começa do começo" foi lida
-   como regra do Gauntlet.)
-5. **TMs como prêmio:** hoje `I_REUSABLE_TMS` é `TRUE` (`include/config/item.h`).
-   O plano de "TMs mais raros" muda isso para uso único, ou só torna os TMs
-   difíceis de achar?
-6. **Quantos IVs perfeitos** no lendário do Nexus (R8)?
+1. **Míticos** contam como **lendário**, e **Ultra Beasts / Paradoxos** como
+   **semi-lendário**? (Marcado como proposta na tabela do R10.)
+2. **Refazer o caminho** depois de perder no Daily recomeça da **primeira
+   sala**, ou o jogador volta para a sala onde perdeu? (R3 hoje diz "refaz o
+   caminho"; o sorteio do dia é o mesmo nos dois casos.)
+
+## Decisões já tomadas (histórico)
+
+- 26/09/2026 — "Uber = BST ≥ 600" substituído por **1 lendário + 1
+  semi-lendário + 1 Mega**, para jogador e treinadores.
+- 26/09/2026 — Singles/Doubles é **opção do jogo inteiro**, escolhida pelo
+  jogador.
+- 26/09/2026 — o **jogador** também segue o Traditional.
+- 26/09/2026 — derrota no Daily **não custa nada**; o jogador refaz o caminho.
+- 26/09/2026 — lendário do boss com **3 IVs perfeitos**.
+- 26/09/2026 — restrição de EV/IV, Poké Balls e TMs é **direção futura** (R14).

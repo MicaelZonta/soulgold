@@ -1,7 +1,7 @@
 # Nexus — fichas dos treinadores das Rift Missions
 
 > **Regras do Nexus:** [`NEXUS_REGRAS.md`](NEXUS_REGRAS.md) — formato Traditional
-> (6 / 1 Mega / 1 Uber), 31 IV e 252 EV, level scaling no maior nível, Daily,
+> (6 / 1 lendário / 1 semi-lendário / 1 Mega), 31 IV e 252 EV, level scaling no maior nível, Daily,
 > pool de lendários. Todo time e toda decisão de sorteio seguem aquele arquivo.
 
 Uma ficha por treinador candidato ao pool do loop pós-Necrozma (design
