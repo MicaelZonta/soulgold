@@ -40,16 +40,61 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_VOLKNER` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party): Zekrom · Raikou · Mega Raichu X + Luxray, Electivire, Ambipom. Segue R10–R13; plano de jogo em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.4.
+📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_VOLKNER` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party). Segue R10–R13 (1 lendário, 1 semi-lendário, 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2). O plano de jogo está em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.4.
+
+| Pokémon | Item | Habilidade | Nature | Golpes |
+|---|---|---|---|---|
+| Zekrom | Life Orb | Teravolt | Adamant | Bolt Strike, Dragon Claw, Stone Edge, Dragon Dance |
+| Raikou | Choice Specs | Pressure | Timid | Thunderbolt, Shadow Ball, Extrasensory, Volt Switch |
+| Raichu | Electrite | Static | Timid | Fake Out, Thunderbolt, Grass Knot, Nasty Plot |
+| Luxray | Choice Band | Intimidate | Adamant | Wild Charge, Crunch, Ice Fang, Play Rough |
+| Electivire | Expert Belt | Motor Drive | Adamant | Wild Charge, Ice Punch, Cross Chop, Earthquake |
+| Ambipom | Silk Scarf | Technician | Jolly | Fake Out, Double Hit, U-turn, Knock Off |
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026:** campeão da **Xurkitree** (UB-03 Lighting) no Nexus. Por quê: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.4.
+📝 **Proposta de 26/09/2026:** campeão da **Xurkitree** (UB-03 Lighting) no Nexus: a quinta luta, logo antes da boss battle. Por quê, e como é o fragmento: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.4.
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+📝 **Proposta de 26/09/2026.** Quando Volkner cai numa das **quatro primeiras salas** (qualquer fragmento, qualquer lendário). Fala dele mesmo, sem citar o lugar nem a criatura do dia. Rótulos `Nexus_Text_Volkner_Intro` e `_Defeat` em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc).
+
+**Antes da luta**
+
+> Huh. A challenger. Out here, of all places.
+>
+> I've been bored so long I stopped noticing where I was.
+>
+> Go on. Give me a reason to pay attention.
+
+**Derrota**
+
+> Ha… That's more like it. Now I'm awake.
+
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026:** `Nexus_Text_Lighting_Intro`, `_Defeat` e `_After` (mais `_Arrival`, `_Boss` e a `_LookerFile` do fragmento) em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc); leitura corrida em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.4.
+📝 **Proposta de 26/09/2026.** Quando Volkner é o **campeão**, a luta logo antes da Xurkitree. Aqui a fala é sobre a criatura: o que Volkner viu nela, pelo olhar de quem é. Ninguém diz o nome da espécie. Rótulos `Nexus_Text_Volkner_ChampionIntro`, `_ChampionDefeat` e `_ChampionAfter`.
+
+**Antes da luta**
+
+> See that light up there? That's it. It's been drinking this city dry, one street at a time.
+>
+> I'd like to say I hate it. I'm the last guy who gets to.
+>
+> Back home I pulled so much power into my Gym that the whole town went dark. Just so I'd have something to do.
+>
+> So. Show me you're the kind of spark worth all that dark.
+
+**Derrota**
+
+> …Yeah. That's the kind. Worth every light in town.
+
+**Depois da luta**
+
+> That thing isn't cruel. It's hungry, and it found a whole city to eat.
+>
+> I get it. That's what scares me.
+>
+> Go pull the plug on it, challenger. I'll be here, learning to be bored in the dark.
+

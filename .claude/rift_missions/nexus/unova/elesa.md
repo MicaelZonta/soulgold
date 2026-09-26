@@ -40,16 +40,61 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_ELESA` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party): Miraidon · Zapdos · Mega Eelektross + Zebstrika, Galvantula, Emolga. Segue R10–R13; plano de jogo em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.3.
+📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_ELESA` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party). Segue R10–R13 (1 lendário, 1 semi-lendário, 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2). O plano de jogo está em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.3.
+
+| Pokémon | Item | Habilidade | Nature | Golpes |
+|---|---|---|---|---|
+| Miraidon | Choice Specs | Hadron Engine | Timid | Electro Drift, Draco Meteor, Volt Switch, Dazzling Gleam |
+| Zapdos | Leftovers | Static | Timid | Tailwind, Thunderbolt, Hurricane, Roost |
+| Eelektross | Electrite | Levitate | Modest | Thunderbolt, Flamethrower, Giga Drain, Knock Off |
+| Zebstrika | Life Orb | Sap Sipper | Jolly | Supercell Slam, High Horsepower, Flame Charge, Volt Switch |
+| Galvantula | Focus Sash | Compound Eyes | Timid | Sticky Web, Thunder, Bug Buzz, Energy Ball |
+| Emolga | Light Clay | Motor Drive | Timid | Nuzzle, Encore, Light Screen, U-turn |
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026:** campeão da **Pheromosa** (UB-02 Beauty) no Nexus. Por quê: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.3.
+📝 **Proposta de 26/09/2026:** campeão da **Pheromosa** (UB-02 Beauty) no Nexus: a quinta luta, logo antes da boss battle. Por quê, e como é o fragmento: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.3.
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+📝 **Proposta de 26/09/2026.** Quando Elesa cai numa das **quatro primeiras salas** (qualquer fragmento, qualquer lendário). Fala dele mesmo, sem citar o lugar nem a criatura do dia. Rótulos `Nexus_Text_Elesa_Intro` e `_Defeat` em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc).
+
+**Antes da luta**
+
+> No stage, no lights, no audience. This is the strangest runway I've ever walked.
+>
+> Well. I never stop in the middle of a show.
+>
+> You'll have to be my audience -- and my opponent. Try to keep up!
+
+**Derrota**
+
+> You made me forget my pose. Nobody does that.
+
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026:** `Nexus_Text_Beauty_Intro`, `_Defeat` e `_After` (mais `_Arrival`, `_Boss` e a `_LookerFile` do fragmento) em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc); leitura corrida em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.3.
+📝 **Proposta de 26/09/2026.** Quando Elesa é o **campeão**, a luta logo antes da Pheromosa. Aqui a fala é sobre a criatura: o que Elesa viu nela, pelo olhar de quem é. Ninguém diz o nome da espécie. Rótulos `Nexus_Text_Elesa_ChampionIntro`, `_ChampionDefeat` e `_ChampionAfter`.
+
+**Antes da luta**
+
+> I've seen it. From a distance -- it won't allow anything closer.
+>
+> It moves like the only clean thing left in the world, and it looks at everything else like a stain.
+>
+> Everyone who sees it stops and stares. I know that look. I've been on the other side of it my whole career.
+>
+> …Enough. Battle me. And don't you dare just stand there staring.
+
+**Derrota**
+
+> You never stared once. You were too busy fighting. …Good.
+
+**Depois da luta**
+
+> People think being admired is the same as being loved. It isn't. It's lonelier.
+>
+> That creature has never been touched by anything in its life, and it thinks that's perfection.
+>
+> Go show it what it's missing. Get your hands dirty.
+

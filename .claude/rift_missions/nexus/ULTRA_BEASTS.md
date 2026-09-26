@@ -10,7 +10,7 @@
 > Arquivos que acompanham este doc:
 > - [`ULTRA_BEASTS.party`](ULTRA_BEASTS.party): os 11 times no formato do
 >   `src/data/trainers.party`, seguindo R10–R13 (conferência em §5.2).
-> - [`ULTRA_BEASTS_TEXTS.inc`](ULTRA_BEASTS_TEXTS.inc): as 66 falas em formato
+> - [`ULTRA_BEASTS_TEXTS.inc`](ULTRA_BEASTS_TEXTS.inc): as 88 falas em formato
 >   `.string`, medidas com `medir_linha.py` (nenhuma passa de 208 px).
 >
 > Cada um dos 11 treinadores tem ficha em `nexus/<região>/`, e a ficha aponta
@@ -38,21 +38,30 @@ que ela lembra. Não é a pessoa de verdade, e o jogo nunca afirma nem nega isso
 em voz alta. É por isso que o treinador pode vir de qualquer região, inclusive
 de uma que o jogador nunca visitou.
 
-**O conceito vaza para dentro do eco.** Esse é o motor de cada cena. O eco não
-é só "o Volkner num cenário elétrico": é o Volkner vivendo o conceito do
-fragmento, e percebendo, ou quase, que alguma coisa está errada. Cada um tem o
-mesmo arco curto de três batidas:
+**Dois registros de fala por treinador.** O mesmo treinador pode aparecer de
+dois jeitos no Daily, e cada jeito tem a sua fala:
+
+| Onde ele aparece | Registro | Sobre o quê | Rótulos |
+|---|---|---|---|
+| Uma das **quatro primeiras salas** (R5), em qualquer fragmento | **Genérico** | **Ele mesmo.** Quem é, o que faz, como reage a acordar num lugar que não conhece. Não cita o lugar nem a criatura do dia, porque serve para qualquer um. | `_Intro`, `_Defeat` |
+| **Campeão**, a luta logo antes do lendário | **Do lendário** | **A criatura.** O que ele viu nela, pelo olhar de quem ele é. É uma reflexão, não um aviso de manual. | `_ChampionIntro`, `_ChampionDefeat`, `_ChampionAfter` |
+
+A fala de campeão tem três batidas:
 
 | Batida | Onde | O que faz |
 |---|---|---|
-| **Estranhamento** | `_Intro` | O eco descreve o fragmento de dentro, na própria voz, e diz o que há de errado com ele. |
-| **Resposta** | `_Defeat` | A vitória do jogador contradiz o conceito (o que não se deixa tocar foi tocado; o que nunca cai ficou no chão). |
-| **Aviso** | `_After` | O eco aponta para o que vem, sem nomear a criatura, e dá ao jogador uma instrução que é a lição do conceito. |
+| **O que ele viu** | `_ChampionIntro` | Descreve a criatura com um detalhe concreto (o que ela faz, não o nome) e diz o que isso mexe nele: o Colress vê o próprio sonho e não gosta; o Volkner reconhece a própria fome; o Steven não sabe se ela foge ou volta para casa. |
+| **A resposta** | `_ChampionDefeat` | A vitória do jogador é o contrário da criatura: força que não foi tomada, um olhar que não foi capturado, algo que cresce de volta. |
+| **O que fica** | `_ChampionAfter` | Uma leitura final da criatura e **uma instrução que só essa pessoa daria** ("olhe as pernas", "seja algo que volta a crescer", "não aplauda"). Termina apontando para ela. |
 
-Depois do aviso, o conceito se condensa na Ultra Beast (`_Boss`). De volta ao
-altar, o Looker arquiva o dia (`_LookerFile`): uma fala curta que junta o eco e a
-criatura na mesma ficha. É a coleção de quem joga o loop: onze fichas, e cada
-uma só aparece depois de a expedição daquela UB ser vencida.
+Depois disso, a Ultra Beast aparece (`_Boss`). De volta ao altar, o Looker
+arquiva o dia (`_LookerFile`) numa fala curta que junta o campeão e a criatura na
+mesma ficha. É a coleção de quem joga o Daily: onze fichas, cada uma liberada
+quando aquela UB é capturada.
+
+As falas de cada treinador (genérica e de campeão) ficam na **ficha dele**, em
+`nexus/<região>/<treinador>.md`. Este documento guarda o que é do fragmento:
+conceito, lugar, time, chegada, boss e ficha do Looker.
 
 ### 1.1. Regras de escrita do Nexus
 
@@ -62,11 +71,14 @@ lendários.
 - **Ninguém provoca o jogador.** O eco não está ali para desafiar nem para
   humilhar. Ele está preso num conceito e fala disso. O tom é de estranheza,
   não de rivalidade.
-- **Ninguém nomeia a criatura.** Nem o eco, nem a narração. "Something below us",
+- **Ninguém nomeia a criatura.** Nem o campeão, nem a narração. "Something below us",
   "that thing", "a little one". O nome só aparece na tela de batalha. O codinome
   só aparece na ficha do Looker, depois.
-- **O eco não sabe que é eco.** Alguns desconfiam (Colress mede, Steven percebe
-  que nada cai, Fantina se pergunta quem paga as luzes). Nenhum conclui.
+- **O eco não sabe que é eco.** Na fala genérica, todos acordaram num lugar que
+  não conhecem e reagem do seu jeito (o Bruno treina, o Steven olha as pedras, a
+  Zossie comemora que não está escuro). Nenhum conclui nada.
+- **A fala genérica serve para qualquer dia.** Nada de areia, cabos, teatro ou
+  criatura: ela toca em qualquer fragmento, inclusive nos de lendários.
 - **O eco não conhece o jogador.** Trata-o como um visitante, sem saber que é o
   Campeão, sem citar a campanha de Johto. A única memória que o eco traz é a
   dele mesmo (Guzma lembra do Kukui; Byron, do filho; Zossie, de um mundo sem
@@ -140,12 +152,12 @@ Leitura visual: laboratório submerso, tons de azul e branco.
 **O treinador.** Colress, o cientista de Black 2/White 2, cujo objetivo declarado
 é descobrir como trazer à tona a força verdadeira dos Pokémon.
 
-**O eco.** Tudo o que o Colress sempre quis está ali de graça: o fragmento dá
-força a todo Pokémon sem que ninguém precise fazer nada. Ele não precisa mais
-pesquisar, só olhar. A vitória do jogador é o dado que ele não consegue
-explicar: os Pokémon do jogador pararam antes do limite, e por escolha. O aviso é
-o mais honesto que ele consegue dar: "eu recusaria, se fosse você. Digo isso como
-alguém que não recusaria".
+**O campeão.** O Colress passou a vida tentando tirar os limites dos Pokémon, e
+encontra uma criatura que faz exatamente isso, de graça, para quem ficar parado.
+Ele vê o próprio sonho realizado e descobre que não gosta de assistir. A vitória
+do jogador é a força que veio dos Pokémon, sem toxina nenhuma. O que fica: foi
+preciso aquela criatura para ele entender para que serve um limite, e o pedido
+final é o mais honesto dele: "recuse. Digo isso como alguém que teria aceitado".
 
 **Time (R11).** Lendário **Genesect**, semi-lendário **Iron Hands**, Mega
 **Golurk** (Groundite: Terra/Fantasma, Unseen Fist), mais Klinklang, Magnezone e
@@ -156,26 +168,12 @@ máquina. *Plano:* Genesect de Scarf e Magnezone de Specs giram com U-turn e Vol
 Switch até o Klinklang ter um turno para o Shift Gear. Em Doubles, o Iron Hands
 abre com Fake Out e a Mega Golurk bate através de Protect.
 
-**Falas.**
-- *Chegada:* The rift let out into deep water that did not drown you. / Pale
-  lights drifted overhead, trailing threads. Wherever one touched the glass
-  floor, the glass glowed brighter, and cracked a little.
-- *Intro:* Ah. A visitor. Good. I was running short of variables. / This place
-  gives strength away. Every Pokémon here is stronger than it ought to be, and
-  not one of them asks what it costs. / I have always wanted to see a Pokémon's
-  full power. Here, I only have to watch. / Let us see how far yours will go.
-- *Derrota:* Fascinating. Every one of your Pokémon stopped short of the edge. /
-  By choice.
-- *Depois:* I measured everything, and I still cannot tell you what held them
-  back. / …Perhaps that is the result. / Something below us has noticed you. It
-  is looking for someone to lend its strength to. / I would decline, if I were
-  you. I say that as a man who would not.
-- *Boss:* The lights in the water drew together into one shape. / It hung in
-  front of you, weightless and patient, as if waiting to be let in.
-- *Ficha do Looker:* File UB-01. Symbiont. / A scientist who would not stop
-  taking notes on your Pokémon, and a creature that offers power to anyone who
-  holds still. / I have filed them together. I suspect they would both find that
-  flattering.
+**Falas do fragmento.**
+- *Chegada:* The rift let out into deep water that did not drown you. / Pale lights drifted overhead, trailing threads. Wherever one touched the glass floor, the glass glowed brighter, and cracked a little.
+- *Boss:* The lights in the water drew together into one shape. / It hung in front of you, weightless and patient, as if waiting to be let in.
+- *Ficha do Looker:* File UB-01. Symbiont. / A scientist who spent his life trying to remove a Pokémon's limits, and a creature that removes them for free. / You tell me he asked you to refuse it. I have underlined that. I did not expect to.
+
+**Falas do campeão** (e as genéricas, de quando Colress cai numa das quatro primeiras salas): na [ficha](unova/colress.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ### 3.2. UB-02 Absorption — Buzzwole — Bruno
 
@@ -189,12 +187,12 @@ exausto. A força do lugar foi tirada de alguém.
 
 **O treinador.** Bruno, o homem que construiu a própria força treinando todo dia.
 
-**O eco.** O fragmento faz o Bruno acordar mais forte do que foi dormir, sem
-treinar, e ele detesta isso: força que ninguém conquistou tem de ter vindo de
-algum lugar. É o único eco que rejeita o conceito de frente. Depois da luta, a
-selva toma de volta o que tinha dado a ele, e ele acha bom. O aviso vira a lição
-contrária à da Buzzwole: ela vai se exibir antes de atacar, e o jogador não deve
-se impressionar.
+**O campeão.** O Bruno observou a criatura por três dias: ela não levanta nada,
+não treina, só posa e bebe a força dos outros, e ainda assim é mais forte que
+qualquer lutador que ele já enfrentou. Ele não a odeia, mas se recusa a chamar
+aquilo de força. A vitória do jogador é "a outra força", a que não se bebe de
+ninguém. O que fica é um conselho de lutador: ela vai se exibir antes de bater,
+então não olhe os músculos, olhe as pernas.
 
 **Time (R11).** Lendário **Marshadow**, semi-lendário **Urshifu** (Single
 Strike), Mega **Heracross** (Bugtite: Skill Link), mais Machamp, Hitmontop e
@@ -206,23 +204,12 @@ Doubles, o Hitmontop abre com Intimidate e Fake Out, e o Urshifu atravessa
 Protect. Marshadow e Urshifu cobrem os pontos fracos do Lutador (Fantasma e
 Psíquico).
 
-**Falas.**
-- *Chegada:* Heat hit you the moment you stepped through. / Under a green canopy,
-  everything had grown too large. Leaves wider than doors, roots as thick as
-  pillars. / And every one of them looked tired.
-- *Intro:* I have trained every day of my life. / Here, I wake up stronger than I
-  was when I went to sleep. Without lifting a finger. / I do not like it.
-  Strength nobody earned has to come from somewhere. / Show me yours. I want to
-  know if it is real!
-- *Derrota:* Hoo hah! …Yes. That was earned.
-- *Depois:* Did you feel it? The jungle took something back just now. From me. /
-  Good. It was never mine. / The one that feeds on all this is close. It will
-  show you its strength before it ever uses it. / Do not be impressed. Hit it.
-- *Boss:* The canopy shook. / Something landed in the clearing, flexed once, and
-  waited to be admired.
-- *Ficha do Looker:* File UB-02. Absorption. / A creature that takes strength from
-  others and shows it off, and a man who built his own and would not accept a
-  gift. / I have underlined the man. Twice.
+**Falas do fragmento.**
+- *Chegada:* Heat hit you the moment you stepped through. / Under a green canopy, everything had grown too large. Leaves wider than doors, roots as thick as pillars. / And every one of them looked tired.
+- *Boss:* The canopy shook. / Something landed in the clearing, flexed once, and waited to be admired.
+- *Ficha do Looker:* File UB-02. Absorption. / A creature that drinks strength from others and then shows it off, and a man who built his own and would not call that strength. / “Look at the legs,” he told you. I have no idea what it means, and I have written it down anyway.
+
+**Falas do campeão** (e as genéricas, de quando Bruno cai numa das quatro primeiras salas): na [ficha](kanto/bruno.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ### 3.3. UB-02 Beauty — Pheromosa — Elesa
 
@@ -236,11 +223,13 @@ sumiram. Leitura visual: passarela de desfile no deserto.
 
 **O treinador.** Elesa, líder de Nimbasa e modelo famosa.
 
-**O eco.** No fragmento, a Elesa é admirada por todos e ninguém nunca chega até
-ela, e ela já não sabe se isso ainda é plateia. O "não dê nem um passo" é o
-conceito falando pela boca dela. A vitória do jogador é o contrário da Pheromosa:
-ele não estava olhando para ela, estava olhando para os próprios Pokémon. O aviso
-é sobre o feromônio: quem ela olha esquece por que veio.
+**O campeão.** A Elesa só viu a criatura de longe, porque ela não deixa nada
+chegar perto: move-se como a última coisa limpa do mundo e olha todo o resto como
+uma mancha. Todo mundo para e encara, e a Elesa conhece esse olhar do outro lado,
+de uma carreira inteira. A vitória do jogador: ele nunca encarou, estava ocupado
+lutando. O que fica: ser admirado não é ser amado, é mais solitário, e a criatura
+acha que nunca ter sido tocada é perfeição. "Vá mostrar o que ela está perdendo.
+Suje as mãos."
 
 **Time (R11).** Lendário **Miraidon**, semi-lendário **Zapdos**, Mega
 **Eelektross** (Electrite: Eelevate), mais Zebstrika, Galvantula e Emolga. O
@@ -249,22 +238,12 @@ golpe elétrico do time sobe. *Plano:* o Zapdos põe Tailwind, a Galvantula arma
 Sticky Web e a Emolga prende com Encore e Light Screen. Zapdos e Emolga voam, e o
 Eelektross flutua, então o time não cai de uma vez para um golpe de Terra.
 
-**Falas.**
-- *Chegada:* White sand, and a straight white path across it, lit from below. /
-  Nothing marked it. When you looked back, your own footprints were already gone.
-- *Intro:* Stop right there. Not one step closer. / Everyone in this place looks at
-  me, and no one ever reaches me. I used to call that an audience. / Battle me
-  from where you're standing. Dazzle me, if you can.
-- *Derrota:* …You weren't looking at me at all. You were looking at your Pokémon. /
-  How rude. How refreshing.
-- *Depois:* The sand takes every footprint away. Yours are still there. I checked. /
-  There's something out there that won't let anything touch it. Everyone it looks
-  at forgets why they came. / Remember why you came.
-- *Boss:* Someone was already standing at the end of the path. Perfectly still.
-  Perfectly clean. / For a moment, you forgot what you were doing there.
-- *Ficha do Looker:* File UB-02. Beauty. / You described the creature, and I wrote
-  down the word "lovely." / I have crossed it out. It is still perfectly legible.
-  That, I think, is the whole report.
+**Falas do fragmento.**
+- *Chegada:* White sand, and a straight white path across it, lit from below. / Nothing marked it. When you looked back, your own footprints were already gone.
+- *Boss:* Someone was already standing at the end of the path. Perfectly still. Perfectly clean. / For a moment, you forgot what you were doing there.
+- *Ficha do Looker:* File UB-02. Beauty. / You described the creature, and I wrote down the word “lovely.” / I have crossed it out. It is still perfectly legible. That, I think, is the whole report.
+
+**Falas do campeão** (e as genéricas, de quando Elesa cai numa das quatro primeiras salas): na [ficha](unova/elesa.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ### 3.4. UB-03 Lighting — Xurkitree — Volkner
 
@@ -279,11 +258,11 @@ correm até ela.
 desafiantes à altura, ele reformou os equipamentos elétricos do ginásio e a
 cidade ficou sem luz.
 
-**O eco.** O Volkner vive a própria história com o volume no máximo: a cidade
-inteira apagou para aquela sala continuar acesa, e ele repete para si que é uma
-troca justa por uma boa batalha. Enquanto os dois lutam, as luzes lá fora voltam
-pela primeira vez. A luta que ele esperava é o que o conceito não consegue
-engolir. O aviso: a coisa descobriu para onde foi a energia.
+**O campeão.** A criatura está secando a cidade rua por rua, e o Volkner queria
+odiá-la, mas é o último com esse direito: ele mesmo apagou a própria cidade para
+ter o que fazer. Ele se reconhece nela. A vitória do jogador é a faísca que vale
+todo aquele escuro. O que fica: ela não é cruel, só está com fome e achou uma
+cidade inteira para comer, e é exatamente isso que o assusta, porque ele entende.
 
 **Time (R11).** Lendário **Zekrom**, semi-lendário **Raikou**, Mega **Raichu**
 (Electrite: Mega Raichu X, com Electric Surge), mais Luxray, Electivire e
@@ -292,22 +271,12 @@ Raikou é o trovão de Johto. *Plano:* um gerador. A Mega Raichu X liga o terren
 ao megaevoluir, o Zekrom sobe com Dragon Dance e o Raikou de Specs gira com Volt
 Switch. Em Doubles, dois Fake Outs (Raichu e Ambipom) e o Intimidate do Luxray.
 
-**Falas.**
-- *Chegada:* A city of towers and cables, under a sky with no stars. / Every window
-  was dark but one, high up, burning white. All the cables ran toward it.
-- *Intro:* Took you long enough. / Every light in this city went out so this one
-  room could stay on. I keep telling myself that's a fair trade for a decent
-  battle. / So. Are you worth the blackout?
-- *Derrota:* Ha! There it is. That's the spark I've been waiting for.
-- *Depois:* Funny. The lights outside came back on while we fought. First time
-  ever. / Something's pulling on the lines again. Harder. It's figured out where
-  all the power went. / Go on. I'll keep the lights on for you.
-- *Boss:* Every cable in the room went taut at once. / The window flickered, and
-  something that was mostly wire stood up in the light.
-- *Ficha do Looker:* File UB-03. Lighting. / A city kept in the dark so that one
-  room could stay lit, and one bored man could have a good fight. / The old file
-  says the creature once emptied a power plant. I find I am not sure which of the
-  two I am filing.
+**Falas do fragmento.**
+- *Chegada:* A city of towers and cables, under a sky with no stars. / Every window was dark but one, high up, burning white. All the cables ran toward it.
+- *Boss:* Every cable in the room went taut at once. / The window flickered, and something that was mostly wire stood up in the light.
+- *Ficha do Looker:* File UB-03. Lighting. / The old file says the creature once emptied a power plant. Your witness says he once emptied a town, for a good battle. / I find I am not sure which of the two I am filing.
+
+**Falas do campeão** (e as genéricas, de quando Volkner cai numa das quatro primeiras salas): na [ficha](sinnoh/volkner.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ### 3.5. UB-04 Blaster — Celesteela — Steven
 
@@ -321,11 +290,12 @@ como bambu, queimados de preto na base, todos apontando para cima.
 **O treinador.** Steven, colecionador de pedras raras, especialista em Aço, e o
 homem do Space Center de Mossdeep e do meteoro do Delta Episode.
 
-**O eco.** O Steven passou a vida juntando pedras que caíram do céu. Num lugar
-onde tudo só sobe, ele não achou nenhuma. É o eco mais melancólico: ele não luta
-por desafio, luta porque alguém enfim "ficou tempo suficiente". A vitória do
-jogador é a resposta que ele procurava: algo com os pés no chão também alcança
-essa altura. O aviso vem da Pokédex: fique longe dos braços.
+**O campeão.** O Steven passou a vida juntando o que o céu deixou cair, e a
+criatura faz o caminho contrário: queima uma floresta para sair do chão e nunca
+volta. Ele não sabe se ela está fugindo ou voltando para casa. A vitória do
+jogador: os Pokémon dele ficaram com os pés no chão o tempo todo. O que fica:
+não persiga algo assim; pare antes que ela parta, ou deixe partir, "as duas são
+respostas". E ele fica esperando que algo lá de cima deixe cair uma pedra.
 
 **Time (R11).** Lendário **Deoxys**, semi-lendário **Jirachi**, Mega
 **Metagross** (Steeltite, a pedra do Steven neste hack), mais Skarmory, Claydol
@@ -334,24 +304,12 @@ o Jirachi acorda com um cometa, o Cradily é fóssil e o Claydol é argila antig
 É a coleção do Steven. *Plano:* Deoxys e Claydol armam Stealth Rock e as telas,
 o Skarmory espalha Spikes e põe Tailwind em Doubles, e a Mega Metagross limpa.
 
-**Falas.**
-- *Chegada:* A crater under a sky crowded with stars. / Tall steel shoots rose
-  from the floor like bamboo, scorched black at the base, all pointing straight
-  up.
-- *Intro:* Look up. Nothing in this place ever falls. / I have walked the whole
-  crater, and I have not found a single stone that came down. / Everything here
-  only leaves. / …Forgive me. A battle, then. I have been hoping someone would
-  stay long enough.
-- *Derrota:* So that's it. Something that keeps its feet on the ground can still
-  reach this high.
-- *Depois:* I'll stay a little longer. I would like to find one stone here that
-  fell. / Something is warming up past the towers. You can feel the heat in the
-  steel. / Stand well away from its arms.
-- *Boss:* The ground shook, and one of the steel shoots began to rise. / It was not
-  a tower. It had arms, and both of them were glowing.
-- *Ficha do Looker:* File UB-04. Blaster. / A crater where nothing falls, and a
-  collector of fallen stones who could not find a single one. / I have closed
-  this file very gently. I cannot tell you why.
+**Falas do fragmento.**
+- *Chegada:* A crater under a sky crowded with stars. / Tall steel shoots rose from the floor like bamboo, scorched black at the base, all pointing straight up.
+- *Boss:* The ground shook, and one of the steel shoots began to rise. / It was not a tower. It had arms, and both of them were glowing.
+- *Ficha do Looker:* File UB-04. Blaster. / A crater where nothing falls, and a collector of fallen stones waiting for one. / I have closed this file very gently. I cannot tell you why.
+
+**Falas do campeão** (e as genéricas, de quando Steven cai numa das quatro primeiras salas): na [ficha](hoenn/steven.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ### 3.6. UB-04 Blade — Kartana — Ramos
 
@@ -365,11 +323,12 @@ em ângulos limpos, folhas cortadas no mesmo formato. Nada cresce: tudo foi poda
 **O treinador.** Ramos, líder de Coumarine, jardineiro que leva a mesma tesoura
 de poda há trinta anos e chama o jogador de "sprout".
 
-**O eco.** Um jardineiro num lugar sem nada para podar, porque tudo já foi
-cortado, e por isso nada cresce. O eco é o mais sábio: ele sabe exatamente o que
-há de errado e pede ao jogador que mostre "algo que cresce". O aviso é a lição
-inteira do jardinagem: nada cresce sem corte, mas nada cresce só de corte, e a
-coisa lá dentro só aprendeu a primeira metade.
+**O campeão.** O segredo de trinta anos de tesoura: você nunca corta para ferir a
+árvore, corta para ela voltar mais forte. A criatura corta melhor do que ele
+jamais cortou, limpo, perfeito, até aço, e nunca deixou nada crescer de volta. A
+vitória do jogador é "algo que cresce". O que fica: não tente ser mais afiado que
+ela; seja algo que volta a crescer, "a única coisa que uma lâmina nunca consegue
+terminar".
 
 **Time (R11).** Lendário **Xerneas**, semi-lendário **Celebi**, Mega
 **Victreebel** (Poisontite: Innards Out), mais Gogoat, Jumpluff e Ferrothorn. O
@@ -379,23 +338,12 @@ de desgaste. Leech Seed (Celebi, Jumpluff, Ferrothorn), Sleep Powder e Spikes; o
 Xerneas usa Geomancy no primeiro turno com Power Herb; a Mega Victreebel pune
 quem a derruba. Em Doubles, o Jumpluff põe Tailwind.
 
-**Falas.**
-- *Chegada:* A forest of white trees, every one of them folded. / Branches creased
-  at clean angles. Leaves cut to the same shape. Nothing was growing. Everything
-  had been trimmed.
-- *Intro:* Hoho! A sprout, all the way out here. / Thirty years I've carried these
-  shears, and I've never been anywhere with nothing left to prune. / Every tree
-  here is cut already. Clean as a folded letter. And not one of them is growing. /
-  Show an old man something that grows!
-- *Derrota:* Hohoho! Now that is a sprout with roots.
-- *Depois:* Nothing grows without a little cutting, sprout. But nothing grows from
-  cutting alone, either. / Mind your step past the trees. Something in there only
-  ever learned the first half.
-- *Boss:* A leaf came loose from the nearest branch and did not fall. / It stood up
-  and unfolded one arm, and the tree behind it slid apart in two clean pieces.
-- *Ficha do Looker:* File UB-04. Blade. / A gardener in a forest where nothing
-  grows, and a creature as thin as paper that once cut down a steel tower. / I
-  have put a paperweight on this file. It seemed only sensible.
+**Falas do fragmento.**
+- *Chegada:* A forest of white trees, every one of them folded. / Branches creased at clean angles. Leaves cut to the same shape. Nothing was growing. Everything had been trimmed.
+- *Boss:* A leaf came loose from the nearest branch and did not fall. / It stood up and unfolded one arm, and the tree behind it slid apart in two clean pieces.
+- *Ficha do Looker:* File UB-04. Blade. / A gardener in a forest where nothing grows, and a creature as thin as paper that once cut down a steel tower. / I have put a paperweight on this file. It seemed only sensible.
+
+**Falas do campeão** (e as genéricas, de quando Ramos cai numa das quatro primeiras salas): na [ficha](kalos/ramos.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ### 3.7. UB-05 Glutton — Guzzlord — Guzma
 
@@ -409,12 +357,13 @@ sumiu, como se tivesse sido mordida. Longe, alguma coisa ainda mastiga.
 Kukui, perdeu para o Kukui, teve negado o posto de Trial Captain e fez da
 destruição a própria identidade.
 
-**O eco.** O Guzma achou um lugar todo destruído e concluiu que só podia ser dele,
-até descobrir que outra coisa chegou antes. É o conceito da fome virado para
-dentro: ele joga tudo o que tem e nunca é suficiente. A lembrança do Kukui ("ganhar
-não é o ponto") é a única ponte com o elenco de SoulGold, e passa como memória,
-não como encontro. O aviso é o que ele nunca soube fazer: "mostra pra ela como é
-ter o bastante".
+**O campeão.** O Guzma viu a boca comer um prédio, e depois o seguinte. Em casa
+diziam que ele era a destruição andando em duas pernas, e ele gostava. Até ver
+aquilo mastigar uma cidade inteira e continuar com fome, e não achar graça
+nenhuma. A derrota é a dele de sempre ("tudo o que eu tenho, e ainda não
+basta"). O que fica é o que ninguém conta: quem destrói tudo não fica satisfeito
+depois, só fica parado numa bagunça maior. O Kukui disse isso uma vez, sobre ele,
+e o Guzma demorou para ouvir.
 
 **Time (R11).** Lendário **Yveltal**, o Pokémon da destruição; semi-lendário
 **Buzzwole**, a outra UB de Inseto, que vive de exibir força, o espelho do
@@ -423,24 +372,12 @@ e Vikavolt, do time dele em Sun/Moon. *Plano:* destruição sem freio. O Ariados
 lança Sticky Web e Toxic Spikes, o Yveltal bate com Dark Aura e Life Orb, Scizor
 e Vikavolt entram de Choice, e o Buzzwole sobe com Bulk Up.
 
-**Falas.**
-- *Chegada:* A city, or what was left of one. / Half the buildings were gone. Not
-  fallen. Missing, as if bitten off. / Somewhere far away, something was still
-  chewing.
-- *Intro:* See this street? Every building, wrecked. Every single one. / Folks
-  always said I break everything I touch. So I figured a place like this had to
-  be mine. / Turns out somethin' else got here first. And it's still hungry. / So
-  what are YOU hungry for, huh?!
-- *Derrota:* …Again. I throw everything I got at it, and it's never enough. Never.
-- *Depois:* Kukui used to say winnin' ain't the point. Used to drive me nuts. /
-  …Tch. Forget it. / That thing's on the next block, eatin' whatever's left. It
-  don't get full. It don't ever get full. / Go on. Go show it what enough looks
-  like.
-- *Boss:* The chewing stopped. / A mouth that was most of a body turned toward you,
-  and the street in front of it was simply not there anymore.
-- *Ficha do Looker:* File UB-05. Glutton. / A city eaten down to the street, and a
-  young man sitting in it, insisting he had done it himself. / He had not. I have
-  written that down for him, in case he ever asks.
+**Falas do fragmento.**
+- *Chegada:* A city, or what was left of one. / Half the buildings were gone. Not fallen. Missing, as if bitten off. / Somewhere far away, something was still chewing.
+- *Boss:* The chewing stopped. / A mouth that was most of a body turned toward you, and the street in front of it was simply not there anymore.
+- *Ficha do Looker:* File UB-05. Glutton. / A city eaten down to the street, and a young man sitting in it who used to think that was what strength looked like. / He does not think so now. I have written that down for him, in case he ever asks.
+
+**Falas do campeão** (e as genéricas, de quando Guzma cai numa das quatro primeiras salas): na [ficha](alola/guzma.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ### 3.8. UB Adhesive — Poipole — Zossie
 
@@ -454,11 +391,12 @@ Quando uma encosta na manga do jogador, fica grudada um instante antes de soltar
 **O treinador.** Zossie, a mais nova e mais entusiasmada da Ultra Recon Squad,
 vinda de Ultra Megalopolis, o mundo que perdeu a luz.
 
-**O eco.** Tudo gruda ali, e a Zossie grudou também. Ela é o conceito sem medo
-nenhum: quer amigos, quer aprovação, inventa uma regra na hora para o jogador não
-ir embora. O depois explica o conceito pela história dela: de onde ela vem não
-havia luz, e quando aparece algo que brilha, dá vontade de grudar. O aviso é um
-pedido: "seja bonzinho com ele".
+**O campeão.** Tem um pequeno escondido nas luzes, seguindo a Zossie o dia todo.
+É venenoso, a cabeça inteira é uma agulha, mas só gruda em quem ele gosta, e ele
+quer ver se gosta do jogador. A vitória: "ele gostou de você!". O que fica é o
+mundo dela: ficou escuro por tanto tempo que esqueceram como é quando uma coisa
+pequena e brilhante só quer ficar perto. Ele vai vir dizer oi, talvez dê uma
+picadinha, e ela pede que o jogador prometa ser gentil.
 
 **Time (R11).** Lendário **Magearna**, feita à mão e com um coração artificial
 (Soul-Heart); semi-lendário **Mew**, curioso e brincalhão como o Poipole; Mega
@@ -468,22 +406,12 @@ ser amado, como ela. *Plano:* apoio em Doubles. A Clefable puxa os golpes com
 Follow Me, o Mew põe Tailwind e queima com Will-O-Wisp, o Ribombee arma a teia,
 e a Magearna fica mais forte a cada Pokémon que cai.
 
-**Falas.**
-- *Chegada:* A small bright room with no corners. / Soft lights floated near the
-  ceiling. When one brushed your sleeve, it stayed there a moment before letting
-  go.
-- *Intro:* Oh! Oh! Someone came! Hi! Hello! / Everything in here sticks together.
-  The lights, the floor, the little ones… And now you! / You're not leaving till we
-  battle. That's the rule. I just made it up!
-- *Derrota:* Aww… But that was fun, right? You had fun? Say you had fun!
-- *Depois:* Can I tell you a secret? Where I'm from, there wasn't any light. None! /
-  So when something bright shows up, you kind of want to stick to it. / There's a
-  little one over there who wants to stick to you. Be nice to it, okay? Promise!
-- *Boss:* One of the lights drifted down from the ceiling and landed in front of
-  you. / It had a face, and it was very, very curious about yours.
-- *Ficha do Looker:* File UB Adhesive. / No harm done. No damage. One very small
-  creature that followed you all the way to the door. / It is the shortest file I
-  have. I have read it four times.
+**Falas do fragmento.**
+- *Chegada:* A small bright room with no corners. / Soft lights floated near the ceiling. When one brushed your sleeve, it stayed there a moment before letting go.
+- *Boss:* One of the lights drifted down from the ceiling and landed in front of you. / It had a face, and it was very, very curious about yours.
+- *Ficha do Looker:* File UB Adhesive. / No harm done. No damage. One very small creature that followed you all the way to the door. / It is the shortest file I have. I have read it four times.
+
+**Falas do campeão** (e as genéricas, de quando Zossie cai numa das quatro primeiras salas): na [ficha](alola/zossie.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ### 3.9. UB Stinger — Naganadel — Soliera
 
@@ -497,11 +425,13 @@ no telhado, todos apontando para o mesmo ponto.
 **O treinador.** Soliera, a integrante da Ultra Recon Squad focada na missão
 acima de tudo, e quem entrega o Poipole ao jogador em Ultra Sun.
 
-**O eco.** O conceito vira ordem: um objetivo, um golpe, e certeiro. Ela trata o
-jogador como obstáculo, não como inimigo. A derrota é anotada ("…Noted."), porque
-é assim que ela recebe um fracasso. O depois é a única vez que ela fala de si: de
-onde ela vem, entregaram um pequeno a alguém que ajudou, e ela nunca soube no que
-ele se tornou. Talvez seja aquilo que circula a torre.
+**O campeão.** A criatura já passou onze vezes sobre a torre, cada vez mais
+baixo, e a Soliera contou. No mundo dela, entregaram um pequeno como aquele a
+quem os ajudou, e foi ela quem entregou. Nunca soube no que ele se tornou, e
+talvez esteja prestes a descobrir. Na derrota, ela não pede segunda chance. O
+que fica: se foi nisso que ele cresceu, alguém o criou bem, ou ninguém criou; de
+perto, o jogador vai saber. E o único aviso que a criatura dá: a agulha aponta
+antes do golpe. (A narração do boss fecha a conta: "the twelfth time".)
 
 **Time (R11).** Lendário **Eternatus**, Veneno/Dragão como o Naganadel e
 chegado do espaço; semi-lendário **Latios**, o jato do céu; Mega **Beedrill**
@@ -511,22 +441,12 @@ e o Dragapult batem antes de tudo. O Fell Stinger do Beedrill é o golpe que
 termina e ainda sobe o ataque. O Drapion arma Toxic Spikes e o Eternatus fecha
 com Dynamax Cannon e Recover.
 
-**Falas.**
-- *Chegada:* The top of a tower, far above a city of lights. / The wind came from
-  every side at once. Long straight scars were cut into the roof, all of them
-  pointing at the same spot.
-- *Intro:* Stop. State your purpose. / …No. It does not matter. / I was given one
-  objective in this place. Strike once, and strike true. / You are standing where
-  my objective is. Prepare yourself.
-- *Derrota:* One strike was not enough. …Noted.
-- *Depois:* Where I come from, we gave a small one away. To someone who helped
-  us. / I never learned what it grew into. / If what is circling this tower is the
-  answer, do not look away from the needle. Not once.
-- *Boss:* Something passed overhead too fast to see. Then again, lower. / The
-  third time, it stopped in the air in front of you, and pointed.
-- *Ficha do Looker:* File UB Stinger. / You tell me it carries enough poison to
-  fill a bathtub, and flies faster than you could follow. / I have moved my desk
-  slightly further from the window. For no reason.
+**Falas do fragmento.**
+- *Chegada:* The top of a tower, far above a city of lights. / The wind came from every side at once. Long straight scars were cut into the roof, all of them pointing at the same spot.
+- *Boss:* Something passed overhead too fast to see. Then again, lower. / The twelfth time, it stopped in the air in front of you, and pointed.
+- *Ficha do Looker:* File UB Stinger. / You tell me it carries enough poison to fill a bathtub, and flies faster than you could follow. / I have moved my desk slightly further from the window. For no reason.
+
+**Falas do campeão** (e as genéricas, de quando Soliera cai numa das quatro primeiras salas): na [ficha](alola/soliera.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ### 3.10. UB Assembly — Stakataka — Byron
 
@@ -540,11 +460,13 @@ jogador tinha certeza de que o caminho atrás dele estava aberto um instante ant
 **O treinador.** Byron, líder de Canalave, minerador, "o homem de corpo de aço",
 pai do Roark, e dono de um Bastiodon, ele mesmo um muro vivo.
 
-**O eco.** O Byron é o único que admira o conceito. Ele entende de pedra e sabe
-que nenhuma pedra ali é pedra: cada tijolo está vivo e escolheu segurar o
-seguinte. Para ele isso é família e ofício. A lembrança do filho é a memória dele.
-O aviso é respeito, não medo: eles se seguram porque escolheram, e não vão
-desmontar só porque o jogador pediu.
+**O campeão.** O Byron corta pedra de montanha a vida inteira e sabe que aquele
+muro não é pedra: cada tijolo está vivo, uns cento e cinquenta, cada um
+segurando o próximo. Ele e o filho não concordam nem em como empilhar uma
+prateleira, e aquelas criaturas levantaram uma fortaleza juntas. A vitória: um
+time que segura, sem rachadura. O que fica: não procure o tijolo fraco, não
+existe; bata no muro inteiro, com tudo, de uma vez. E depois vá ligar para a
+família. Ele vai ligar para a dele.
 
 **Time (R11).** Lendário **Zamazenta** (com o Rusted Shield, a forma Crowned: o
 escudo), semi-lendário **Registeel**, Mega **Steelix** (Steeltite: Aço/Terra,
@@ -555,23 +477,12 @@ areia, Bastiodon e Zamazenta com Iron Defense e Body Press, o Registeel com
 Stealth Rock e o Bastiodon com Wide Guard em Doubles. Em Singles, o mesmo time
 joga como parede.
 
-**Falas.**
-- *Chegada:* A quarry of grey stone, with walls in every direction. / You were sure
-  the way behind you had been open a moment ago.
-- *Intro:* Hah! Another one wandered into the quarry! Mind the walls, youngster.
-  They move. / I dig for a living. I know stone. And not one stone in this place
-  is stone. / Every brick is alive, and every one of them decided to hold up the
-  next. / That's a wall worth respecting! Now let's see about you!
-- *Derrota:* Hah! Good! A wall's only as good as whatever's hitting it!
-- *Depois:* My son would love this place. He'd dig the whole thing up, the fool. /
-  Listen. There's something stacking itself behind that wall. A lot of
-  somethings. / They hold together because they chose to. Don't expect them to
-  fall apart because you asked.
-- *Boss:* The wall ahead shifted, brick by brick, and stood up on four thin legs. /
-  Every stone in it turned to look at you.
-- *Ficha do Looker:* File UB Assembly. / One creature that is really a hundred and
-  fifty, all holding each other up. / I have been told it is a threat. I have
-  filed it under threats. I keep wanting to move it.
+**Falas do fragmento.**
+- *Chegada:* A quarry of grey stone, with walls in every direction. / You were sure the way behind you had been open a moment ago.
+- *Boss:* The wall ahead shifted, brick by brick, and stood up on four thin legs. / Every stone in it turned to look at you.
+- *Ficha do Looker:* File UB Assembly. / One creature that is really a hundred and fifty, all holding each other up. / I have been told it is a threat. I have filed it under threats. I keep wanting to move it.
+
+**Falas do campeão** (e as genéricas, de quando Byron cai numa das quatro primeiras salas): na [ficha](sinnoh/byron.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ### 3.11. UB Burst — Blacephalon — Fantina
 
@@ -586,12 +497,13 @@ fracas.
 **O treinador.** Fantina, líder de Hearthome, "a dançarina sedutora e cheia de
 alma", estrela de concursos, com Pokémon Fantasma.
 
-**O eco.** Todo dia o show é magnífico, e todo dia a plateia está um pouco mais
-fraca. A Fantina começou a se perguntar quem paga pelas luzes, e em seguida se
-proíbe de pensar nisso e chama o jogador para dançar. A vitória dele é o
-contrário do conceito: ele assistiu ao show inteiro e não deu nada em troca. O
-aviso: o último ato não é dela, vai ser encantador, e o jogador não deve se
-inclinar para ver.
+**O campeão.** A Fantina fala da criatura como de uma colega de palco: dança mal
+de propósito para você rir, você ri e se inclina, e aí, *boum*, ela tira a vida
+da plateia e faz uma reverência. A Fantina também tira o fôlego do público, mas
+devolve. A vitória: o jogador assistiu ao show inteiro sem se perder. O que fica:
+um bom artista dá tudo e o público sai com mais do que trouxe; aquela lá só tira
+e chama isso de aplauso. "Quando ela se curvar para você, não aplauda. Não se
+incline. Só termine o show."
 
 **Time (R11).** Lendário **Hoopa**, o gênio travesso que tira coisas dos anéis,
 um mágico de palco; semi-lendário **Meloetta**, a cantora que passa para a forma
@@ -601,23 +513,12 @@ Oricorio-Sensu e Drifblim. *Plano:* o espetáculo. O Drifblim põe Tailwind, o
 Oricorio-Sensu (Dancer) copia toda dança do campo em Doubles, a Meloetta dança,
 e Mismagius e Hoopa atacam. A fraqueza a Sombrio e Fantasma é o risco do número.
 
-**Falas.**
-- *Chegada:* An empty theatre, every seat filled with shadow. / Fireworks burst
-  overhead without a sound. Each time one went off, the shadows in the seats grew
-  fainter.
-- *Intro:* Bonsoir! Ah, enfin! Someone in the seats who is still breathing! / Every
-  night here, the show is magnifique. Fireworks, applause… / And every night, the
-  audience is a little fainter. I have begun to wonder who pays for the lights. /
-  Non, non! No more thinking! Dance with me!
-- *Derrota:* Bravo! Bravo! You took the whole show and gave nothing away!
-- *Depois:* The final act is not mine. It never was. / When the curtain goes up out
-  there, it will be charming. It will make you want to lean in. / Do not lean in,
-  mon ami. Whatever you do.
-- *Boss:* The curtain rose on an empty stage. / Something walked out with a strange,
-  careless step. It bowed deeply, and its head began to glow.
-- *Ficha do Looker:* File UB Burst. / A performer who charms its audience, blows its
-  own head off, and takes their strength while they clap. / I have been to theatre
-  like that. I did not know it was a species.
+**Falas do fragmento.**
+- *Chegada:* An empty theatre, every seat filled with shadow. / Fireworks burst overhead without a sound. Each time one went off, the shadows in the seats grew fainter.
+- *Boss:* The curtain rose on an empty stage. / Something walked out with a strange, careless step. It bowed deeply, and its head began to glow.
+- *Ficha do Looker:* File UB Burst. / A performer who charms its audience, blows its own head off, and takes their strength while they clap. / I have been to theatre like that. I did not know it was a species.
+
+**Falas do campeão** (e as genéricas, de quando Fantina cai numa das quatro primeiras salas): na [ficha](sinnoh/fantina.md) dele, seções "Diálogo associado ao lendário" e "Diálogo genérico".
 
 ---
 
@@ -633,7 +534,9 @@ Isto é o que este documento entrega às regras do Daily; não é o Daily.
 2. **Chegada** (`_Arrival`) ao entrar no fragmento. Uma vez por tentativa; na
    reentrada do mesmo dia (R3) pode ser pulada, porque o jogador já viu.
 3. **Quatro salas de três teleportes** (R5.1), com os treinadores dos pools.
-4. **O campeão:** `_Intro` → batalha → `_Defeat` → `_After`. Na reentrada
+4. **O campeão:** `_ChampionIntro` → batalha → `_ChampionDefeat` →
+   `_ChampionAfter`. Os mesmos onze também podem cair nas salas 1–4 de
+   qualquer dia, com a fala genérica (`_Intro`, `_Defeat`). Na reentrada
    depois de já vencê-lo, nenhuma fala toca (R3: quem já foi vencido não luta de
    novo).
 5. **Boss:** `_Boss` e a boss battle contra a Ultra Beast (R6), capturável, com
@@ -726,17 +629,19 @@ colar no `src/data/trainers.party` quando os IDs existirem. Conferido em
 
 ### 5.4. Textos
 
-As 66 falas estão em [`ULTRA_BEASTS_TEXTS.inc`](ULTRA_BEASTS_TEXTS.inc), com
-rótulos `Nexus_Text_<Codinome>_<Parte>`. Conferido:
+As 88 falas estão em [`ULTRA_BEASTS_TEXTS.inc`](ULTRA_BEASTS_TEXTS.inc), com
+rótulos `Nexus_Text_<Codinome>_<Parte>` (fragmento) e
+`Nexus_Text_<Treinador>_<Parte>` (treinador). O arquivo é a fonte das strings do
+jogo; as fichas trazem as mesmas falas em texto corrido. Conferido:
 
 - `medir_linha.py`: nenhuma linha passa de 208 px.
 - Todos os caracteres estão no `charmap.txt` (`…` e aspas curvas incluídas; sem
   traço longo).
 - O maior texto tem bem menos de 600 bytes, longe do teto de 1000 do
   `gStringVar4`.
-- `_Intro` e `_Defeat` são textos de `trainerbattle` e não levam `{SPEAKER}` (a
-  plaquinha vem do treinador). `_After` e `_LookerFile` levam, e são os que pedem
-  os `SP_NAME_*` novos.
+- `_Intro`, `_Defeat`, `_ChampionIntro` e `_ChampionDefeat` são textos de
+  `trainerbattle` e não levam `{SPEAKER}` (a plaquinha vem do treinador).
+  `_ChampionAfter` e `_LookerFile` levam, e são os que pedem os `SP_NAME_*` novos.
 
 ---
 

@@ -40,16 +40,61 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_FANTINA` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party): Hoopa · Meloetta · Mega Chandelure + Mismagius, Oricorio-Sensu, Drifblim. Segue R10–R13; plano de jogo em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.11.
+📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_FANTINA` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party). Segue R10–R13 (1 lendário, 1 semi-lendário, 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2). O plano de jogo está em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.11.
+
+| Pokémon | Item | Habilidade | Nature | Golpes |
+|---|---|---|---|---|
+| Hoopa | Choice Specs | Magician | Modest | Hyperspace Hole, Shadow Ball, Focus Blast, Trick |
+| Meloetta | Life Orb | Serene Grace | Modest | Relic Song, Psychic, Shadow Ball, Calm Mind |
+| Chandelure | Ghostite | Flash Fire | Modest | Shadow Ball, Flamethrower, Energy Ball, Protect |
+| Mismagius | Life Orb | Levitate | Timid | Nasty Plot, Shadow Ball, Mystical Fire, Dazzling Gleam |
+| Oricorio-Sensu | Leftovers | Dancer | Timid | Revelation Dance, Quiver Dance, Hurricane, Roost |
+| Drifblim | Sitrus Berry | Unburden | Calm | Tailwind, Shadow Ball, Will-O-Wisp, Destiny Bond |
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026:** campeão da **Blacephalon** (UB Burst) no Nexus. Por quê: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.11.
+📝 **Proposta de 26/09/2026:** campeão da **Blacephalon** (UB Burst) no Nexus: a quinta luta, logo antes da boss battle. Por quê, e como é o fragmento: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.11.
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+📝 **Proposta de 26/09/2026.** Quando Fantina cai numa das **quatro primeiras salas** (qualquer fragmento, qualquer lendário). Fala dele mesmo, sem citar o lugar nem a criatura do dia. Rótulos `Nexus_Text_Fantina_Intro` e `_Defeat` em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc).
+
+**Antes da luta**
+
+> Bonjour! Ah, a new stage, a new audience!
+>
+> I do not know this place, but it does not matter. Wherever I am, I dance.
+>
+> Allez! Let us make this battle beautiful!
+
+**Derrota**
+
+> Magnifique! You danced better than me! …Non, I will not say that twice.
+
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026:** `Nexus_Text_Burst_Intro`, `_Defeat` e `_After` (mais `_Arrival`, `_Boss` e a `_LookerFile` do fragmento) em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc); leitura corrida em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.11.
+📝 **Proposta de 26/09/2026.** Quando Fantina é o **campeão**, a luta logo antes da Blacephalon. Aqui a fala é sobre a criatura: o que Fantina viu nela, pelo olhar de quem é. Ninguém diz o nome da espécie. Rótulos `Nexus_Text_Fantina_ChampionIntro`, `_ChampionDefeat` e `_ChampionAfter`.
+
+**Antes da luta**
+
+> Ah, you have met the star of this theatre? Such charm! Such timing!
+>
+> It dances badly on purpose, so you laugh. When you laugh, you lean in. And when you lean in… boum.
+>
+> Then it takes the life right out of its audience, and bows.
+>
+> I also take a crowd's breath away, mon ami. But I give it back! Come -- let me show you how a real show ends!
+
+**Derrota**
+
+> Bravo! You watched the whole show and never lost yourself.
+
+**Depois da luta**
+
+> A good performer gives everything, and the audience goes home with more than it brought.
+>
+> That one takes, and takes, and calls it applause.
+>
+> When it bows to you, do not clap. Do not lean in. Just end the show.
+

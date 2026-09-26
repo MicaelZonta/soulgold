@@ -52,16 +52,61 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 
 ### Time das Rift Missions
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_BRUNO` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party): Marshadow · Urshifu · Mega Heracross + Machamp, Hitmontop, Hitmonlee. Segue R10–R13; plano de jogo em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.2.
+📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_BRUNO` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party). Segue R10–R13 (1 lendário, 1 semi-lendário, 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2). O plano de jogo está em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.2.
+
+| Pokémon | Item | Habilidade | Nature | Golpes |
+|---|---|---|---|---|
+| Marshadow | Life Orb | Technician | Jolly | Spectral Thief, Close Combat, Shadow Sneak, Bulk Up |
+| Urshifu | Choice Band | Unseen Fist | Adamant | Wicked Blow, Close Combat, Sucker Punch, U-turn |
+| Heracross | Bugtite | Guts | Jolly | Pin Missile, Rock Blast, Close Combat, Swords Dance |
+| Machamp | Leftovers | No Guard | Adamant | Dynamic Punch, Stone Edge, Knock Off, Bulk Up |
+| Hitmontop | Assault Vest | Intimidate | Adamant | Fake Out, Close Combat, Sucker Punch, Rapid Spin |
+| Hitmonlee | White Herb | Unburden | Jolly | Close Combat, Knock Off, Poison Jab, Mach Punch |
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026:** campeão da **Buzzwole** (UB-02 Absorption) no Nexus. Por quê: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.2.
+📝 **Proposta de 26/09/2026:** campeão da **Buzzwole** (UB-02 Absorption) no Nexus: a quinta luta, logo antes da boss battle. Por quê, e como é o fragmento: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.2.
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+📝 **Proposta de 26/09/2026.** Quando Bruno cai numa das **quatro primeiras salas** (qualquer fragmento, qualquer lendário). Fala dele mesmo, sem citar o lugar nem a criatura do dia. Rótulos `Nexus_Text_Bruno_Intro` e `_Defeat` em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc).
+
+**Antes da luta**
+
+> I woke in a strange place, so I did what I always do. I trained until the sun came up.
+>
+> There is no sun here. So I am still training.
+>
+> You will make a fine partner. Brace yourself!
+
+**Derrota**
+
+> Hoo hah! A good blow. I will remember it in my training.
+
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026:** `Nexus_Text_Absorption_Intro`, `_Defeat` e `_After` (mais `_Arrival`, `_Boss` e a `_LookerFile` do fragmento) em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc); leitura corrida em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.2.
+📝 **Proposta de 26/09/2026.** Quando Bruno é o **campeão**, a luta logo antes da Buzzwole. Aqui a fala é sobre a criatura: o que Bruno viu nela, pelo olhar de quem é. Ninguém diz o nome da espécie. Rótulos `Nexus_Text_Bruno_ChampionIntro`, `_ChampionDefeat` e `_ChampionAfter`.
+
+**Antes da luta**
+
+> I have watched it for three days. It lifts nothing. It trains nothing. It poses, and it drinks.
+>
+> And it is stronger than any fighter I have ever faced.
+>
+> I do not hate it. It is only doing what it is. But I will not stand beside it and call that strength.
+>
+> Show me the other kind!
+
+**Derrota**
+
+> Hoo hah! Yes. That. It cannot drink that from anyone.
+
+**Depois da luta**
+
+> When it comes, it will flex first. It wants you to fear its size before it ever throws a punch.
+>
+> Do not look at the muscles. Look at the legs. Anything that strong still has to stand somewhere.
+>
+> Go. I will be here. Training.
+

@@ -40,16 +40,61 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_BYRON` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party): Zamazenta · Registeel · Mega Steelix + Bastiodon, Bronzong, Tyranitar. Segue R10–R13; plano de jogo em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.10.
+📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_BYRON` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party). Segue R10–R13 (1 lendário, 1 semi-lendário, 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2). O plano de jogo está em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.10.
+
+| Pokémon | Item | Habilidade | Nature | Golpes |
+|---|---|---|---|---|
+| Zamazenta | Rusted Shield | Dauntless Shield | Impish | Body Press, Iron Defense, Iron Head, Crunch |
+| Registeel | Leftovers | Clear Body | Careful | Iron Head, Body Press, Stealth Rock, Thunder Wave |
+| Steelix | Steeltite | Sturdy | Brave | Earthquake, Heavy Slam, Rock Slide, Curse |
+| Bastiodon | Custap Berry | Sturdy | Relaxed | Body Press, Iron Defense, Metal Burst, Wide Guard |
+| Bronzong | Mental Herb | Levitate | Sassy | Trick Room, Gyro Ball, Hypnosis, Reflect |
+| Tyranitar | Smooth Rock | Sand Stream | Brave | Rock Slide, Crunch, Earthquake, Low Kick |
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026:** campeão da **Stakataka** (UB Assembly) no Nexus. Por quê: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.10.
+📝 **Proposta de 26/09/2026:** campeão da **Stakataka** (UB Assembly) no Nexus: a quinta luta, logo antes da boss battle. Por quê, e como é o fragmento: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.10.
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+📝 **Proposta de 26/09/2026.** Quando Byron cai numa das **quatro primeiras salas** (qualquer fragmento, qualquer lendário). Fala dele mesmo, sem citar o lugar nem a criatura do dia. Rótulos `Nexus_Text_Byron_Intro` e `_Defeat` em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc).
+
+**Antes da luta**
+
+> Hah! No idea how I ended up here, but there's stone under my boots, so I'm not complaining!
+>
+> I'm a miner, youngster. Hard rock, hard steel, hard battles.
+>
+> Let's see what you're made of!
+
+**Derrota**
+
+> Hah! Solid! You'd make a fine miner.
+
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026:** `Nexus_Text_Assembly_Intro`, `_Defeat` e `_After` (mais `_Arrival`, `_Boss` e a `_LookerFile` do fragmento) em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc); leitura corrida em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.10.
+📝 **Proposta de 26/09/2026.** Quando Byron é o **campeão**, a luta logo antes da Stakataka. Aqui a fala é sobre a criatura: o que Byron viu nela, pelo olhar de quem é. Ninguém diz o nome da espécie. Rótulos `Nexus_Text_Byron_ChampionIntro`, `_ChampionDefeat` e `_ChampionAfter`.
+
+**Antes da luta**
+
+> Youngster, I've spent my whole life cutting stone out of mountains. I know rock.
+>
+> That wall over there isn't rock. Every brick of it is alive. A hundred and fifty, near as I can count, each one holding up the next.
+>
+> My son and I can't agree on how to stack a shelf. These things built a fortress together.
+>
+> Hah! Let's see if you and your team hold together half as well!
+
+**Derrota**
+
+> Hah! Now THAT'S a team that holds! Not a crack in it!
+
+**Depois da luta**
+
+> When it comes, don't hunt for the weak brick. There isn't one. They share the load.
+>
+> Hit the whole wall. Hit it with everything you've got, all at once.
+>
+> …Then maybe go home and call your family. I'm going to call mine.
+

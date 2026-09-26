@@ -43,7 +43,7 @@
 - [ ] **Lorelei — Gelo** — primeira integrante da Elite Four de Kanto, com preferência por Pokémon de Água e Gelo.
   - [ficha](rift_missions/nexus/kanto/lorelei.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Bruno — Lutador** — artista marcial que usa Pokémon Lutadores e resistentes.
-  - [ficha](rift_missions/nexus/kanto/bruno.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/kanto/bruno.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Agatha — Fantasma** — veterana ligada ao passado do Professor Oak, famosa por seu Gengar.
   - [ficha](rift_missions/nexus/kanto/agatha.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Lance — Dragão** — mestre de dragões que posteriormente se torna Campeão de Johto.
@@ -101,7 +101,7 @@
 - [x] **Koga — Veneno** — antigo Líder de Fuchsia promovido à Elite Four.
   - [ficha](rift_missions/nexus/kanto/koga.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Bruno — Lutador** — veterano que permanece na Elite Four entre as duas gerações.
-  - [ficha](rift_missions/nexus/kanto/bruno.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/kanto/bruno.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Karen — Noturno** — defensora da ideia de vencer usando os Pokémon de que se gosta.
   - [ficha](rift_missions/nexus/johto/karen.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Lance — Campeão** — mestre de Pokémon Dragão e principal Campeão de Johto.
@@ -170,7 +170,7 @@
 - [x] **Drake — Dragão** — marinheiro veterano que respeita a ligação entre pessoas e Pokémon.
   - [ficha](rift_missions/nexus/hoenn/drake.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Steven Stone — Campeão** — colecionador de pedras raras e especialista em Pokémon de Aço.
-  - [ficha](rift_missions/nexus/hoenn/steven.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/hoenn/steven.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Wallace — Campeão** — assume o título de Hoenn em *Emerald*.
   - [ficha](rift_missions/nexus/hoenn/wallace.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
@@ -234,13 +234,13 @@
 - [ ] **Crasher Wake — Água** — lutador mascarado e celebridade de Pastoria.
   - [ficha](rift_missions/nexus/sinnoh/crasher_wake.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Fantina — Fantasma** — coordenadora e Líder de Hearthome com estilo teatral.
-  - [ficha](rift_missions/nexus/sinnoh/fantina.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/sinnoh/fantina.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Byron — Aço** — Líder de Canalave e pai de Roark.
-  - [ficha](rift_missions/nexus/sinnoh/byron.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/sinnoh/byron.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Candice — Gelo** — enérgica Líder de Snowpoint focada em disciplina.
   - [ficha](rift_missions/nexus/sinnoh/candice.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Volkner — Elétrico** — talentoso Líder de Sunyshore que busca um desafio verdadeiro.
-  - [ficha](rift_missions/nexus/sinnoh/volkner.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/sinnoh/volkner.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Elite Four e Campeã
 
@@ -322,7 +322,7 @@
 - [ ] **Burgh — Inseto** — artista e Líder de Castelia.
   - [ficha](rift_missions/nexus/unova/burgh.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Elesa — Elétrico** — modelo famosa e Líder de Nimbasa.
-  - [ficha](rift_missions/nexus/unova/elesa.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/unova/elesa.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Clay — Terra** — empresário da mineração e Líder de Driftveil.
   - [ficha](rift_missions/nexus/unova/clay.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Skyla — Voador** — piloto que administra o Ginásio de Mistralton.
@@ -369,7 +369,7 @@
 - [ ] **Ghetsis** — manipulador que usa a falsa libertação dos Pokémon para buscar domínio.
   - [ficha](rift_missions/nexus/unova/ghetsis.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Colress** — cientista interessado em descobrir como liberar o potencial máximo dos Pokémon.
-  - [ficha](rift_missions/nexus/unova/colress.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/unova/colress.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Zinzolin** — sábio que permanece leal à facção extremista do Team Plasma.
   - [ficha](rift_missions/nexus/unova/zinzolin.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Shadow Triad** — trio de agentes ninjas totalmente leais a Ghetsis.
@@ -412,7 +412,7 @@
 - [ ] **Korrina — Lutador** — herdeira dos segredos da Mega Evolução.
   - [ficha](rift_missions/nexus/kalos/korrina.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Ramos — Grama** — jardineiro veterano e Líder de Coumarine.
-  - [ficha](rift_missions/nexus/kalos/ramos.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/kalos/ramos.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Clemont — Elétrico** — jovem inventor e Líder de Lumiose.
   - [ficha](rift_missions/nexus/kalos/clemont.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Valerie — Fada** — estilista que deseja compreender o ponto de vista dos Pokémon.
@@ -535,7 +535,7 @@
 ### Team Skull e Aether Foundation
 
 - [ ] **Guzma** — chefe carismático do Team Skull e especialista em Pokémon Inseto.
-  - [ficha](rift_missions/nexus/alola/guzma.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/alola/guzma.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Plumeria** — administradora que age como irmã mais velha dos grunts.
   - [ficha](rift_missions/nexus/alola/plumeria.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Gladion** — enforcer temporário do Team Skull que possui Type: Null.
@@ -552,9 +552,9 @@
 - [ ] **Dulse** — investigador de Ultra Megalopolis encontrado em *Ultra Sun*.
   - [ficha](rift_missions/nexus/alola/dulse.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Zossie** — jovem e curiosa parceira de Dulse.
-  - [ficha](rift_missions/nexus/alola/zossie.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/alola/zossie.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Soliera** — comandante da equipe encontrada principalmente em *Ultra Moon*.
-  - [ficha](rift_missions/nexus/alola/soliera.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico ❌ · Diálogo lendário 📝
+  - [ficha](rift_missions/nexus/alola/soliera.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Phyco** — capitão veterano e parceiro de Soliera.
   - [ficha](rift_missions/nexus/alola/phyco.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
