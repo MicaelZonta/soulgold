@@ -171,10 +171,29 @@ Garchomp, Dragapult…) e Slaking são **Pokémon comuns** aqui.
 Singles ou em Doubles, e o Nexus segue essa escolha. Consequência para os
 times: **todo time do Nexus precisa funcionar nos dois**.
 
-- **No código:** essa opção **ainda não existe**. Hoje só há
-  `Double Battle: Yes/No` fixo por treinador no `trainers.party` e
-  `B_FLAG_FORCE_DOUBLE_WILD` para selvagens. Quando a opção existir, o Nexus
-  lê dela.
+- **No código:** a opção **existe** — **Battle Format** no menu de opções
+  (`src/option_menu.c`) e na tela de opções do New Game, com três valores:
+  **Default** (cada treinador usa o formato com que foi escrito), **Singles** e
+  **Doubles**.
+  - Guardada nas flags `FLAG_REPLAY_BATTLE_FORMAT_DOUBLES` / `_SINGLES`
+    (`0x937`/`0x938`, `include/constants/flags.h`); lida por
+    `GetReplayBattleFormat()` (`src/replay_options.c`).
+  - Aplicada em `src/battle_setup.c` (`ShouldForceReplayTrainerDoubles` e a
+    montagem do tipo de batalha) e em `src/trainer_see.c`.
+  - **Não força Doubles** quando: vários treinadores avistam juntos, há
+    parceiro seguindo o jogador, Battle Pyramid/Trainer Hill, o jogador tem
+    menos de 2 Pokémon utilizáveis, ou o time do treinador tem menos de 2.
+    Batalha selvagem, de facility, com parceiro ou multi mantém o próprio
+    formato.
+- **Consequências para o Nexus:**
+  - As lutas de treinador precisam passar pelo caminho **normal** de
+    `trainerbattle` para herdar a opção. Se o Nexus for montado como
+    "facility" (estilo Frontier), a opção deixa de valer — evitar.
+  - Com a opção em **Default**, vale o `Double Battle:` do `trainers.party`
+    de cada treinador do Nexus; escolha o formato em que o time brilha mais,
+    mas o time continua tendo que funcionar no outro.
+  - O **boss lendário** é batalha selvagem: fica no formato próprio dele
+    (hoje 1 contra 1), independente da opção.
 
 ## R11. Todo treinador do Nexus usa as três vagas
 
@@ -249,7 +268,7 @@ contra elas (ex.: não dar Poké Ball em quantidade como prêmio).
 - 26/09/2026 — "Uber = BST ≥ 600" substituído por **1 lendário + 1
   semi-lendário + 1 Mega**, para jogador e treinadores.
 - 26/09/2026 — Singles/Doubles é **opção do jogo inteiro**, escolhida pelo
-  jogador.
+  jogador — é a opção **Battle Format** que já existe (Default/Singles/Doubles).
 - 26/09/2026 — o **jogador** também segue o Traditional.
 - 26/09/2026 — derrota no Daily **não custa nada**; o jogador refaz o caminho.
 - 26/09/2026 — lendário do boss com **3 IVs perfeitos**.
