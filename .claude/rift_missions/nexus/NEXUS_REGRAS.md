@@ -288,6 +288,42 @@ ficam **mais valiosos**, porque serão fontes raras. **Não implementar** essas
 restrições sem pedido do autor; é só para não desenhar nada no Nexus que vá
 contra elas (ex.: não dar Poké Ball em quantidade como prêmio).
 
+## R15. Estado do Daily: uma variável só, sorteio pela semente do dia
+
+O que o jogador **fez** no dia cabe numa única var de 16 bits (nome sugerido
+`VAR_NEXUS_DAILY`). O que o jogo **sorteou** não é guardado: é recalculado.
+
+| Bits | Guarda | Valores |
+|---|---|---|
+| 0–1 | teleporte escolhido na sala 1 | 0, 1, 2; 3 = ainda não escolheu |
+| 2–3 | sala 2 | idem |
+| 4–5 | sala 3 | idem |
+| 6–7 | sala 4 | idem |
+| 8–10 | progresso | 0–5 = lutas vencidas (4 treinadores + campeão); 6 = lendário capturado |
+| 11 | prêmio do R9 já entregue hoje | 0/1 |
+| 12–15 | livres | — |
+
+- Ao reentrar (R3), o script lê a var: teleporte escolhido ativo, os outros
+  dois desativados, luta pulada enquanto `sala < progresso`. A primeira luta
+  de verdade é a da sala `progresso`.
+- Os campos se escrevem **na hora** em que acontecem (escolha ao entrar no
+  teleporte; progresso logo depois da vitória), nunca só no fim — assim sair
+  ou perder no meio não perde nada.
+- **Sorteio:** treinador de cada teleporte, lendário e campeão saem de
+  `gSaveBlock1Ptr->dailySeed` (`include/global.h`), que o jogo já salva e
+  **troca uma vez por dia** em `UpdatePerDay` (`src/clock.c`; o Buenas
+  Password já sorteia assim). Mesmo dia → mesmo resultado; dia seguinte →
+  resultado novo, sem gastar save. O filtro da R1 (capturado na Pokédex)
+  entra depois do sorteio, então o resultado pode mudar no mesmo dia se o
+  jogador capturar um lendário fora do Nexus — aceitável.
+- **Zerar na virada do dia:** var não zera sozinha. Usar o padrão do Kurt
+  (`VAR_KURT_TODAY`, `include/constants/vars.h`): uma flag do bloco `DAILY`
+  marca "dia novo"; o script do Nexus, ao encontrá-la limpa, zera a var e liga
+  a flag. Tudo no script, sem mexer em C.
+- **Onde alocar:** as vars do hack vão até `0x4121` (`VAR_KURT_TODAY`) e o
+  bloco termina em `VARS_END = 0x42FF`, então há espaço. A flag diária nova
+  segue as skills `alocar-flag` e `catalogar-flags`.
+
 ## Checklist rápido para um time do Nexus
 
 - [ ] 6 Pokémon
@@ -302,9 +338,7 @@ contra elas (ex.: não dar Poké Ball em quantidade como prêmio).
 
 ## Pontos a confirmar com o autor
 
-1. **Estado salvo do Daily:** guardar as escolhas de teleporte e quem já foi
-   vencido precisa de espaço no save (vars ou flags diárias). Definir na
-   implementação, com as skills `alocar-flag` e `catalogar-flags`.
+Nenhum em aberto.
 
 ## Decisões já tomadas (histórico)
 
@@ -324,3 +358,5 @@ contra elas (ex.: não dar Poké Ball em quantidade como prêmio).
   como estava proposto.
 - 26/09/2026 — Mega de lendário/semi-lendário ocupa **as duas vagas**
   (Mewtwo + Mewtwonite X/Y = lendário + Mega; Diancie + Diancite = semi + Mega).
+- 26/09/2026 — estado do Daily numa var só; sorteio pela `dailySeed`; zera
+  pelo padrão do Kurt (R15).
