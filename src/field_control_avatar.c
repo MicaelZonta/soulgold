@@ -80,6 +80,7 @@ static bool8 TryStartCoordEventScript(struct MapPosition *);
 static bool8 TryStartWarpEventScript(struct MapPosition *, u16);
 static bool8 TryStartMiscWalkingScripts(u16);
 static bool8 TryStartStepCountScript(u16);
+static bool8 ShouldDoRiftMissionCall(void);
 static void UpdateFriendshipStepCounter(void);
 static void UpdateFollowerStepCounter(void);
 #if OW_POISON_DAMAGE < GEN_5
@@ -840,6 +841,11 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
             ScriptContext_SetupScript(MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall);
             return TRUE;
         }
+        if (ShouldDoRiftMissionCall() == TRUE)
+        {
+            ScriptContext_SetupScript(RiftMissions_EventScript_LookerCall);
+            return TRUE;
+        }
     }
 
     if (SafariZoneTakeStep() == TRUE)
@@ -852,6 +858,57 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
     if (TryStartMatchCall())
         return TRUE;
     return FALSE;
+}
+
+// Rift Missions: Looker telephones to summon the player to the house in Olivine,
+// and until he does the briefing there is not available at all - the house only
+// offers the waiting line (data/scripts/rift_missions.inc has the full contract).
+//
+// The four states below mean "the last mission is closed and the next briefing is
+// pending": 4 Mahogany, 6 Cherrygrove, 8 New Bark, 10 the reunion. A list and not
+// a range, because the odd values in between are incidents in progress.
+// State 2 is deliberately absent: Blackthorn's summons is the dedicated call
+// scene in New Bark, and that invitation persists until the briefing without ever
+// producing a reminder.
+//
+// Three gates, in cheapest-first order:
+//   FLAG_DAILY_LOOKER_CALL       he has already called today. A daily flag, so
+//                                ClearDailyFlags opens the next attempt at the
+//                                change of date - the game calendar, not 24h.
+//                                Every script that closes a mission sets it, so
+//                                finishing Blackthorn on the day he called does
+//                                not buy a second call that day.
+//   FLAG_RIFT_LOOKER_SUMMONS     an invitation is already pending. One issued is
+//                                never re-issued; it waits across days and saves.
+//   ...TYPE_NULL_PENDING         the previous mission has unfinished business.
+//                                Today that is only Gladion still holding the
+//                                Type: Null; any future mission that can end
+//                                with a gift pending belongs in this check.
+//
+// Never inside his own house: the player is already standing in front of him, and
+// being in there only postpones the call - it does not consume it.
+static bool8 ShouldDoRiftMissionCall(void)
+{
+    if (FlagGet(FLAG_DAILY_LOOKER_CALL) == TRUE)
+        return FALSE;
+    if (FlagGet(FLAG_RIFT_LOOKER_SUMMONS) == TRUE)
+        return FALSE;
+    if (FlagGet(FLAG_BLACKTHORN_TYPE_NULL_PENDING) == TRUE)
+        return FALSE;
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_OLIVINE_CITY_HOUSE1)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_OLIVINE_CITY_HOUSE1))
+        return FALSE;
+
+    switch (VarGet(VAR_RIFT_MISSIONS_STATE))
+    {
+    case 4:
+    case 6:
+    case 8:
+    case 10:
+        return TRUE;
+    default:
+        return FALSE;
+    }
 }
 
 static void UNUSED ClearFriendshipStepCounter(void)

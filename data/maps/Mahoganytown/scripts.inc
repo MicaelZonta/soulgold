@@ -14,39 +14,108 @@ Mahoganytown_OnTransition::
 @ before the first spawn, and ClearTempFieldEventData has just zeroed every
 @ temp, so this must run unconditionally). Also runs when arriving on foot
 @ from Route 42/44 or through the Route 43 gate, not only through a warp.
-@   FLAG_TEMP_1 - the cast (Ninetales, Lillie, Looker, Anabel): shown only
-@                 while the incident is active.
-@   FLAG_TEMP_2 - the Ultra Beasts: always hidden at load; only the scene
-@                 itself brings them in, so a retry after a blackout starts
-@                 from a clean street.
-@   FLAG_TEMP_3 - the last two residents at the Gym door: shown with the
-@                 incident; the scene walks them inside.
-@   FLAG_TEMP_4 - Necrozma: always hidden at load, like the beasts.
-@   FLAG_TEMP_5 - Pryce + Mamoswine: shown with the incident; they walk into
-@                 the Gym at the end of the scene.
+@   FLAG_TEMP_1 - Looker and Anabel: shown only while the incident is active.
+@   FLAG_TEMP_2 - the Ultra Beasts: hidden at load on a first attempt; only
+@                 the scene brings them in. A retry puts them straight back.
+@   FLAG_TEMP_3 - Hector and his grandson at the Gym door: shown with the
+@                 incident, walked inside by the scene, gone on a retry.
+@   FLAG_TEMP_4 - Necrozma, like the beasts.
+@   FLAG_TEMP_5 - Pryce + Mamoswine: shown with the incident.
+@   FLAG_TEMP_6 - the rift on the west flank, like Necrozma.
+@   FLAG_TEMP_7 - the player's own Cosmog-family Pokemon as an actor (four
+@                 templates, one flag, at most one ever added).
+@   FLAG_TEMP_8 - Lillie + Ninetales. Their own flag and not FLAG_TEMP_1,
+@                 because they are the only two who stay on the street after
+@                 the mission is over (see the settling branch below).
+@
+@ Three shapes of street, in the order they are tested:
+@   1. the mission is over and Lillie promised to stay until the residents
+@      were settled: only Lillie and Ninetales, for this one load.
+@   2. incident active + FLAG_MAHOGANY_UB_ENGAGED: a retry after a blackout.
+@      Everything the player already saw is back where it stood.
+@   3. incident active, first attempt: the town as the player finds it.
 Mahoganytown_EventScript_ApplyUBVisibility::
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_6
+	setflag FLAG_TEMP_7
+	goto_if_set FLAG_MAHOGANY_UB_LILLIE_SETTLING, Mahoganytown_EventScript_StageUBSettling
 	goto_if_unset FLAG_EVENT_ULTRABEAST_MAHOGANY, Mahoganytown_EventScript_HideUBCast
 	clearflag FLAG_TEMP_1
 	clearflag FLAG_TEMP_3
 	clearflag FLAG_TEMP_5
+	clearflag FLAG_TEMP_8
+	goto_if_set FLAG_MAHOGANY_UB_ENGAGED, Mahoganytown_EventScript_StageUBRetry
 	return
 
 Mahoganytown_EventScript_HideUBCast::
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_8
 	return
 
+@ The one load after the victory. The flag is CONSUMED here, so leaving town
+@ and coming back finds the street empty: Lillie said she would stay until the
+@ residents were settled, not that she would live here.
+@ Looker, Anabel, Pryce and the residents are not staged: they left in the
+@ scene, and the eight everyday residents of Mahogany come back on their own
+@ now that FLAG_EVENT_ULTRABEAST_MAHOGANY is clear.
+Mahoganytown_EventScript_StageUBSettling::
+	clearflag FLAG_MAHOGANY_UB_LILLIE_SETTLING
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
+	setflag FLAG_TEMP_5
+	clearflag FLAG_TEMP_8
+	setobjectxyperm LOCALID_MAHOGANY_UB_LILLIE, 20, 21
+	setobjectxyperm LOCALID_MAHOGANY_UB_NINETALES, 19, 21
+	return
+
+@ A blackout wiped every FLAG_TEMP_*, so the retry has to rebuild the street
+@ by hand: the residents are already inside (FLAG_TEMP_3 stays set), the rift,
+@ Necrozma and the two beasts are back, and everybody stands on the tile they
+@ held when the battle started - NOT on the map.json tile they were found on.
+@ setobjectxyperm writes the template, so it has to happen here, before the
+@ objects spawn.
+Mahoganytown_EventScript_StageUBRetry::
+	setflag FLAG_TEMP_3
+	clearflag FLAG_TEMP_2
+	clearflag FLAG_TEMP_4
+	clearflag FLAG_TEMP_6
+	setobjectxyperm LOCALID_MAHOGANY_UB_RIFT, 7, 22
+	setobjectxyperm LOCALID_MAHOGANY_UB_NECROZMA, 8, 22
+	setobjectxyperm LOCALID_MAHOGANY_UB_PRYCE, 10, 21
+	setobjectxyperm LOCALID_MAHOGANY_UB_MAMOSWINE, 10, 22
+	setobjectxyperm LOCALID_MAHOGANY_UB_LOOKER, 12, 20
+	setobjectxyperm LOCALID_MAHOGANY_UB_XURKITREE, 15, 20
+	setobjectxyperm LOCALID_MAHOGANY_UB_CELESTEELA, 15, 24
+	setobjectxyperm LOCALID_MAHOGANY_UB_LILLIE, 19, 22
+	setobjectxyperm LOCALID_MAHOGANY_UB_NINETALES, 19, 23
+	setobjectxyperm LOCALID_MAHOGANY_UB_ANABEL, 20, 22
+	return
+
+@ ON_LOAD, not ON_TRANSITION: setmetatile has to land before the map is drawn.
+@ The wall of ice only exists on a retry that already got as far as building
+@ it: the player finds it standing, and the beat that cracks it open opens the
+@ retry scene (Mahoganytown_EventScript_UBSceneRetry).
 Mahoganytown_OnLoad::
 	call_if_ge VAR_MAHOGANY_TOWN_STATE, 13, MahoganyTown_EventScript_FixTree
+	call_if_set FLAG_MAHOGANY_UB_SAW_RECHARGE, MahoganyTown_EventScript_PaintIceWall
 	setrespawn HEAL_LOCATION_MAHOGANYTOWN
 	end
 
 MahoganyTown_EventScript_FixTree::
 	setmetatile 18, 8, 0x4F8, FALSE
 	setmetatile 19, 8, 0x4F9, FALSE
+	end
+
+@ (14,22) (15,22) (16,22): straight across the flow that runs down column 15
+@ between Xurkitree (15,20) and Celesteela (15,24). Impassable, and drawn on
+@ the middle layer, so anything standing next to it is drawn in front of it.
+MahoganyTown_EventScript_PaintIceWall::
+	setmetatile 14, 22, METATILE_MahoganyTown_IceWall_Left, TRUE
+	setmetatile 15, 22, METATILE_MahoganyTown_IceWall_Middle, TRUE
+	setmetatile 16, 22, METATILE_MahoganyTown_IceWall_Right, TRUE
 	end
 
 Mahoganytown_OnFrame::
@@ -377,81 +446,107 @@ ElmPhoneRoute39LegendaryText:
 @ Rift Mission 2 - Necrozma, Xurkitree + Celesteela in Mahogany Town.
 @
 @ Active while FLAG_EVENT_ULTRABEAST_MAHOGANY is set, which by invariant means
-@ VAR_RIFT_MISSIONS_STATE == 5. Set by OlivineCity_House1, cleared here on
-@ victory together with state 6. While it is set, every building door in
-@ town is locked except the Pokemon Center's (sLockedTownDoors in
-@ src/field_control_avatar.c -> Mahoganytown_EventScript_DoorLocked). The
-@ Route 43 gate and Valor Cavern are non-animated doors and stay open.
+@ VAR_RIFT_MISSIONS_STATE == 5. Set by OlivineCity_House1 once Looker has
+@ telephoned (FLAG_RIFT_LOOKER_SUMMONS) and the briefing has been heard;
+@ cleared here on victory together with state 6. While it is set, every
+@ building door in town is locked except the Pokemon Center's
+@ (sLockedTownDoors in src/field_control_avatar.c ->
+@ Mahoganytown_EventScript_DoorLocked). The Route 43 gate and Valor Cavern are
+@ non-animated doors and stay open.
 @
-@ Story: the town has had no power for three nights. Lillie has been here
-@ for two days, alone, with a notebook (the briefing never mentions her: the
-@ player discovers her). Pryce is walking the last two residents into his
-@ Gym when the scene starts. Lillie recognised the beasts from Alola but has
-@ never seen what opens the tear, and she says so: Anabel's instruments keep
-@ the clock, not her. Then Necrozma arrives - which blindsides her - shrugs
-@ off Pryce's Blizzard and lets Xurkitree and Celesteela through. The beasts keep each other alive (one drinks the current, the
-@ other burns it and gives it back). Celesteela charges the player and
-@ Ninetales knocks it away. The player beats the one they picked - and the
-@ other one revives it through the link. Lillie works out why and asks
-@ Pryce for ice: Ninetales and Mamoswine raise a wall between them, Anabel
-@ heals the team, and the second fight is for real. Necrozma absorbs both
-@ beasts and leaves (the pattern of every mission); Lillie recognises its
-@ light from Alola but will not say more. Pryce goes back into his Gym.
+@ Story in three lines. Lillie has been watching two Ultra Beasts from a Gym
+@ window and worked out that a light runs from one to the other; the group
+@ tries to pull them apart, and that is not enough - the far one sends its own
+@ charge down the link and the beaten one gets back up. She corrects her own
+@ idea and asks Pryce for a wall of ice ACROSS the light; it works, and the
+@ second fight is for real. Then Necrozma reaches over the wall by a different
+@ route and collects both beasts anyway - but Anabel still has their two
+@ signatures afterwards, which is the first hard reason to believe the beasts
+@ are alive in there.
 @
-@ Scene floor plan (raw collision, bit 11; '#' = blocked; y grows DOWNWARD):
+@ Scene floor plan (raw collision, bit 11; '#' = blocked; y grows DOWNWARD).
+@ The street was widened by two rows for this mission: y=23 and y=24 used to
+@ be the fence and the rock below it (data/layouts/Mahoganytown/map.bin).
 @
-@        x= 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23
-@   y=19     #  W  #  #  .  .  .  .  .  .  #  #  W  #  #   W (10,19) Gym, (21,19) Center
-@   y=20     .  O  P  X  >  >  .  .  .  .  .  .  f  .  .   f (21,20) Fly landing
-@   y=21     .  B  M  :  >  n  N  L  .  .  .  .  t  .  .   t (21,21) talk to Looker
-@   y=22     .  .  .  C  >  >  *  .  .  n  L  K  A  .  .   * (17,22) player's spot
-@   y=23     #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+@        x= 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+@   y=19     .  .  .  #  W  #  #  .  .  .  .  .  .  #  #  W  #  #  #  #  #
+@   y=20     .  .  .  H  .  P  .  .  .  X  .  .  .  A  K  f  .  .  .  .  .
+@   y=21     .  .  .  B  .  P  .  .  .  .  .  .  .  n  L  t  .  .  .  .  .
+@   y=22     .  R  N  .  .  .  M  .  i  i  i  .  .  .  .  .  .  .  .  .  .
+@   y=23     .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+@   y=24     .  .  .  .  .  .  .  .  .  C  .  .  .  .  .  .  .  .  .  .  .
+@   y=25     #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
 @
-@   Before the scene (map.json):
-@     O Old man (10,20)   B Boy (10,21)   P Pryce (11,20)   M Mamoswine (11,21)
-@     n Ninetales (19,22) L Lillie (20,22) K Looker (21,22) A Anabel (22,22)
-@   During the scene:
-@     Pryce (11,20)->(14,20), Mamoswine (11,21)->(13,21): the front line.
-@     Ninetales (19,22)->(15,21), Lillie (20,22)->(16,21), player ->(17,22),
-@     Looker ->(21,21), Anabel ->(22,21) (the skeleton's approach, unchanged).
-@     Necrozma appears at (11,21) (Mamoswine's old tile, free by then);
-@     Xurkitree X (12,20) and Celesteela C (12,22) flank it, with the gap
-@     (12,21) between them - the wall of ice goes there.
+@     W (10,19) Gym door, (21,19) Pokemon Center door
+@     f (21,20) Fly landing / Center exit; t (21,20) is ALSO the only tile
+@       Looker can be talked to from - see below
+@     H Hector (9,20)   B grandson (9,21)   P Pryce (11,20)  M Mamoswine (12,22)
+@       Mamoswine is on (12,22) and not beside Pryce: it is a 32x32 sprite and
+@       on (11,21) it covered him completely.
+@     A Anabel (19,20)  K Looker (20,20)    n Ninetales (19,21) L Lillie (20,21)
+@     X Xurkitree (15,20)  C Celesteela (15,24)  N Necrozma (8,22)  R rift (7,22)
+@     i the wall of ice, (14,22) (15,22) (16,22), painted with setmetatile
 @
-@ Camera with the player at (17,22): x 10..24, y ~18..27. The Gym door
-@ (10,19) is on screen. Nobody stands south of the player, so the text box
-@ covers no one.
+@ Three areas, which is the whole point of the widened street:
+@   shelter   the Gym door and the last two residents, west, x=9..12
+@   street    Xurkitree north (y=20), Celesteela south (y=24), three clear
+@             rows between them, Necrozma on the west flank behind Pryce
+@   support   the player, Lillie/Ninetales and Anabel east, x=18..20, with the
+@             Pokemon Center door two steps away
 @
-@ Looker sits in a pocket: (21,23) is wall, (20,22) is Lillie and (22,22) is
-@ Anabel. The ONLY tile he can be talked to from is (21,21), facing down.
-@ That is what makes the start of the cutscene deterministic without a
-@ getplayerxy check. HEAL_LOCATION_MAHOGANYTOWN is (21,20), one step north of
-@ it, so a blackout retry lands right next to him.
+@ Camera. The scene spawns a camera object (special SpawnCameraObject) and
+@ uses two framings, because no single one covers the evacuation AND the
+@ fight:
+@   (13,22) shelter, x=6..20  y=18..27 - the Gym door and both detectives
+@   (14,22) street,  x=7..21  y=18..27 - everybody above, all at once
+@ A GBA screen is 15x10 metatiles with the camera tile at column 7, row 4, and
+@ the message box covers the bottom three rows. With the camera on y=22 those
+@ three rows are y=25..27, which is the rock band south of town: NOBODY is
+@ ever hidden behind the box, and the south front at y=24 is still on screen.
+@ That is why both framings sit on row 22 and not on row 21.
+@
+@ Looker sits in a pocket: (20,19) is the Pokemon Center wall, (19,20) is
+@ Anabel and (20,21) is Lillie. The ONLY tile he can be talked to from is
+@ (21,20), facing west. That is what makes the start of the cutscene
+@ deterministic without a getplayerxy check, and it is also
+@ HEAL_LOCATION_MAHOGANYTOWN, so a blackout retry lands on it.
+@
+@ Persistent state (all four in the CUSTOM block, all four cleared by
+@ Mahoganytown_EventScript_UBFinish):
+@   FLAG_MAHOGANY_UB_ENGAGED            the introductions are behind us
+@   FLAG_MAHOGANY_UB_SAW_RECHARGE       the group has seen the link recharge
+@   FLAG_MAHOGANY_UB_PICKED_CELESTEELA  which beast the lost attempt fought
+@   FLAG_MAHOGANY_UB_LILLIE_SETTLING    consumed by the next ON_TRANSITION
 @
 @ Per-map temporaries (all zeroed by ClearTempFieldEventData on every load):
-@   FLAG_TEMP_1..5 - visibility caches (see ApplyUBVisibility above)
+@   FLAG_TEMP_1..8 - visibility (see ApplyUBVisibility at the top of the file)
 @   VAR_TEMP_2  - battle outcome
 @   VAR_TEMP_3  - the player's pick: 0 = Xurkitree, 1 = Celesteela. Survives
-@                 both battles because returning from a battle does not
-@                 reload the map (ClearTempFieldEventData only runs on
-@                 warp/edge loads).
-@   VAR_TEMP_4  - Cosmog-family species Necrozma reacted to (SPECIES_NONE =
-@                 no reaction). Read again by the aftermath dialogue.
+@                 both battles because returning from a battle does not reload
+@                 the map. A blackout DOES, which is why the pick is mirrored
+@                 into FLAG_MAHOGANY_UB_PICKED_CELESTEELA.
+@   VAR_TEMP_4  - Cosmog-family species that came out of its Ball, or
+@                 SPECIES_NONE. Read again by the aftermath dialogue.
+@   VAR_TEMP_6  - Lillie has already shown her notebook on this visit, so a
+@                 second NO only repeats the question.
 @ WARNING: VAR_TEMP_0 and VAR_TEMP_1 belong to the Rage Candy Bar merchant
 @ (getplayerxy, above in this file). This mission starts at VAR_TEMP_2 on
 @ purpose - do NOT "harmonise" it with the Blackthorn mission.
 @
-@ WARNING: the eight residents of this map carry
+@ WARNING: the eight everyday residents of this map carry
 @ FLAG_EVENT_ULTRABEAST_MAHOGANY in their map.json "flag" field. A
 @ removeobject on any of them SETS that flag and empties the town. The two
 @ residents of the scene are separate objects on FLAG_TEMP_3.
-@ WARNING: the old man stands on (10,20), the tile of the vanilla Fat man
-@ (local 4, FLAG_HIDE_MAHOGANY_TOWN_FATMAN). That flag is set for good in
+@ WARNING: Hector stands on (9,20) and the evacuation walks both residents
+@ over (10,20), the tile of the vanilla Fat man (local 4,
+@ FLAG_HIDE_MAHOGANY_TOWN_FATMAN). That flag is set for good in
 @ RocketHideout_B2F, long before the postgame, so the tile is free.
 @
-@ Object budget: player + follower + 11 = 13/16. Palettes on screen: player,
-@ follower, Lillie, Looker, NPC_4 (Anabel, old man, boy), Pryce, Ninetales,
-@ Xurkitree, Celesteela, Necrozma, Mamoswine = 11, as many as Blackthorn.
+@ Object budget at the fullest moment (partner out, before Necrozma leaves):
+@ player + hidden follower + Lillie + Ninetales + Looker + Anabel + Pryce +
+@ Mamoswine + Xurkitree + Celesteela + Necrozma + rift + partner = 13/16.
+@ Hector and his grandson are removed before any of that.
+@ No em dash anywhere: U+2014 is not in charmap.txt and breaks the build.
 @ ============================================================================
 
 Mahoganytown_EventScript_DoorLocked::
@@ -461,59 +556,51 @@ Mahoganytown_EventScript_DoorLocked::
 	releaseall
 	end
 
+@ ---------------------------------------------------------------------------
+@ Act II - the town as the player finds it. Every one of these is optional and
+@ none of them changes state. The reactions to a Cosmog-family Pokemon used to
+@ live here; they were moved to the single moment they belong to, after the
+@ second battle (Mahoganytown_EventScript_UBPartnerReacts).
+@ ---------------------------------------------------------------------------
 Mahoganytown_EventScript_UBAnabel::
 	lock
 	faceplayer
 	msgbox Mahoganytown_Text_UBAnabelIdle, MSGBOX_DEFAULT
-	goto Mahoganytown_EventScript_UBReleaseEnd
-
-@ Lillie and Ninetales watch the street to the north (FACE_UP in map.json),
-@ and must still be facing that way when the scene starts.
-@ The turnobject is a deliberate no-op today: (20,23) is wall, (19,22) is
-@ Ninetales and (21,22) is Looker, so the player can ONLY reach her from
-@ (20,21) and faceplayer already leaves her facing north. It stays as the
-@ guard for any evolution that moves her.
-@ Optional reaction to a Cosmog-family Pokemon in the party: Ninetales
-@ notices first. Lillie remembers Nebby; she never calls the player's
-@ Pokemon Nebby.
-Mahoganytown_EventScript_UBLillie::
-	lock
-	faceplayer
-	msgbox Mahoganytown_Text_UBLillieIdle, MSGBOX_DEFAULT
 	closemessage
-	specialvar VAR_RESULT, CheckMysteryEggPokemon
-	goto_if_eq VAR_RESULT, SPECIES_NONE, Mahoganytown_EventScript_UBLillieFaceNorth
-	bufferspeciesname STR_VAR_1, VAR_RESULT
-	applymovement LOCALID_MAHOGANY_UB_NINETALES, Common_Movement_ExclamationMark
-	waitmovement LOCALID_MAHOGANY_UB_NINETALES
-	goto_if_eq VAR_RESULT, SPECIES_COSMOG, Mahoganytown_EventScript_UBLillieCosmog
-	goto_if_eq VAR_RESULT, SPECIES_COSMOEM, Mahoganytown_EventScript_UBLillieCosmoem
-	msgbox Mahoganytown_Text_UBLillieIdleLegend, MSGBOX_DEFAULT
-	goto Mahoganytown_EventScript_UBLillieFaceNorthClose
-
-Mahoganytown_EventScript_UBLillieCosmog::
-	msgbox Mahoganytown_Text_UBLillieIdleCosmog, MSGBOX_DEFAULT
-	goto Mahoganytown_EventScript_UBLillieFaceNorthClose
-
-Mahoganytown_EventScript_UBLillieCosmoem::
-	msgbox Mahoganytown_Text_UBLillieIdleCosmoem, MSGBOX_DEFAULT
-Mahoganytown_EventScript_UBLillieFaceNorthClose::
-	closemessage
-Mahoganytown_EventScript_UBLillieFaceNorth::
-	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_NORTH
+	turnobject LOCALID_MAHOGANY_UB_ANABEL, DIR_WEST
 	release
 	end
 
-@ Pryce is busy with the old man, so no faceplayer: he talks over his
-@ shoulder. Reachable only from (12,20): (11,19) is wall, (10,20) is the old
-@ man and (11,21) is Mamoswine.
+@ She recognises the player, turns to him and goes straight back to the
+@ street: the reunion is a reunion, not an introduction (they have battled on
+@ Route 30, in Goldenrod and in the Dragon's Den). Reachable from (21,21) and
+@ (20,22), so faceplayer does the work and the turnobject puts her eyes back
+@ on the street either way.
+Mahoganytown_EventScript_UBLillie::
+	lock
+	faceplayer
+	goto_if_unset FLAG_EVENT_ULTRABEAST_MAHOGANY, Mahoganytown_EventScript_UBLillieSettling
+	goto_if_set FLAG_MAHOGANY_UB_ENGAGED, Mahoganytown_EventScript_UBLillieRetry
+	msgbox Mahoganytown_Text_UBLillieIdle, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_WEST
+	release
+	end
+
+@ Ninetales never leaves her side and never stops watching the street, so no
+@ faceplayer: the player gets the ears, not the face.
+Mahoganytown_EventScript_UBNinetales::
+	lock
+	playmoncry SPECIES_NINETALES_ALOLA, CRY_MODE_NORMAL
+	msgbox Mahoganytown_Text_UBNinetalesIdle, MSGBOX_DEFAULT
+	waitmoncry
+	goto Mahoganytown_EventScript_UBReleaseEnd
+
+@ Pryce is walking the last two residents in, so no faceplayer: he talks over
+@ his shoulder, still facing Hector at (9,20).
 Mahoganytown_EventScript_UBPryce::
 	lock
 	msgbox Mahoganytown_Text_UBPryceIdle, MSGBOX_DEFAULT
-	specialvar VAR_RESULT, CheckMysteryEggPokemon
-	goto_if_eq VAR_RESULT, SPECIES_NONE, Mahoganytown_EventScript_UBReleaseEnd
-	bufferspeciesname STR_VAR_1, VAR_RESULT
-	msgbox Mahoganytown_Text_UBPryceIdleCosmog, MSGBOX_DEFAULT
 	goto Mahoganytown_EventScript_UBReleaseEnd
 
 Mahoganytown_EventScript_UBMamoswine::
@@ -523,10 +610,10 @@ Mahoganytown_EventScript_UBMamoswine::
 	waitmoncry
 	goto Mahoganytown_EventScript_UBReleaseEnd
 
-Mahoganytown_EventScript_UBOldMan::
+Mahoganytown_EventScript_UBHector::
 	lock
 	faceplayer
-	msgbox Mahoganytown_Text_UBOldManIdle, MSGBOX_DEFAULT
+	msgbox Mahoganytown_Text_UBHectorIdle, MSGBOX_DEFAULT
 	closemessage
 	turnobject LOCALID_MAHOGANY_UB_OLD_MAN, DIR_EAST     @ back to arguing with Pryce (11,20)
 	release
@@ -537,7 +624,7 @@ Mahoganytown_EventScript_UBBoy::
 	faceplayer
 	msgbox Mahoganytown_Text_UBBoyIdle, MSGBOX_DEFAULT
 	closemessage
-	turnobject LOCALID_MAHOGANY_UB_BOY, DIR_NORTH        @ back to his grandfather (10,20)
+	turnobject LOCALID_MAHOGANY_UB_BOY, DIR_NORTH        @ back to his grandfather (9,20)
 	release
 	end
 
@@ -546,17 +633,46 @@ Mahoganytown_EventScript_UBReleaseEnd::
 	release
 	end
 
-@ Nothing changes state before the YES. The YES is the last exit point: from
-@ there on everything is scripted through to a battle outcome.
-@ Lillie's reading comes BEFORE the YES on purpose: she has to have told the
-@ group what she saw before anyone moves (design section 3.2). What she does
-@ NOT know yet - that keeping them apart is not enough - is what the scene
-@ teaches her.
+@ The mission is over and this is the one load Lillie stays for. Repeatable,
+@ changes nothing.
+Mahoganytown_EventScript_UBLillieSettling::
+	msgbox Mahoganytown_Text_UBLillieSettling, MSGBOX_DEFAULT
+	goto Mahoganytown_EventScript_UBReleaseEnd
+
+@ ---------------------------------------------------------------------------
+@ Act III - what Lillie saw, and the commitment. Nothing changes state before
+@ the YES: from there on everything is scripted through to a battle outcome.
+@ Her reading comes BEFORE the YES on purpose. She offers an observation and
+@ its limit ("I couldn't follow it back any farther"), Anabel turns it into a
+@ test, and what she does NOT know yet - that pulling them apart is not enough
+@ - is what the scene teaches her. She is never made to apologise for helping.
+@ ---------------------------------------------------------------------------
 Mahoganytown_EventScript_UBLooker::
 	lock
 	faceplayer
+	goto_if_set FLAG_MAHOGANY_UB_ENGAGED, Mahoganytown_EventScript_UBLookerRetry
+	goto_if_eq VAR_TEMP_6, 1, Mahoganytown_EventScript_UBLookerAsk
 	msgbox Mahoganytown_Text_UBLookerGreet, MSGBOX_DEFAULT
-	msgbox Mahoganytown_Text_UBLillieTheory, MSGBOX_DEFAULT
+	closemessage
+	@ Lillie and Ninetales come only as close as the conversation needs: she
+	@ is at (20,21), one step south of Looker, and turns to the player at
+	@ (21,20). Ninetales keeps her eyes on the street.
+	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_EAST
+	msgbox Mahoganytown_Text_UBLillieGreet, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_WEST
+	msgbox Mahoganytown_Text_UBLillieObservation, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBAnabelObservation, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBLillieLimit, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBAnabelPlan, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_TEMP_6, 1                         @ the notebook is not read twice this visit
+	goto Mahoganytown_EventScript_UBLookerAsk
+
+Mahoganytown_EventScript_UBLookerAsk::
 	msgbox Mahoganytown_Text_UBReady, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Mahoganytown_EventScript_UBNotReady
 	goto Mahoganytown_EventScript_UBScene
@@ -565,102 +681,126 @@ Mahoganytown_EventScript_UBNotReady::
 	msgbox Mahoganytown_Text_UBNotReady, MSGBOX_DEFAULT
 	goto Mahoganytown_EventScript_UBReleaseEnd
 
-@ SKELETON: the rift, every hit and the wall of ice are camera shakes plus
-@ white flashes; the Pokemon only walk in place. Evolution: the town's
-@ blackout staged with the palette, the lamps coming back at the end, move
-@ animations, Necrozma's own music.
-@
-@ The order of the three approach blocks is LOAD-BEARING:
-@ Lillie/Ninetales -> player -> Looker/Anabel. Ninetales walks through
-@ (17,22), which is the player's final tile; and Looker/Anabel can only step
-@ up once the player has vacated (21,21).
+@ After a blackout Looker is at the shelter (12,20) and is not the commit
+@ point any more: he says the street is held and the Center is ready, and
+@ Lillie, who is standing in the support line, asks the question.
+Mahoganytown_EventScript_UBLookerRetry::
+	msgbox Mahoganytown_Text_UBRetryGreeting, MSGBOX_DEFAULT
+	goto Mahoganytown_EventScript_UBReleaseEnd
+
+@ Lillie is at (19,22). Her free neighbours are exactly (18,22) and (19,21),
+@ so the scene knows where the player is with one comparison.
+Mahoganytown_EventScript_UBLillieRetry::
+	msgbox Mahoganytown_Text_UBRetryLillie, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Mahoganytown_EventScript_UBRetryNotReady
+	goto Mahoganytown_EventScript_UBSceneRetry
+
+Mahoganytown_EventScript_UBRetryNotReady::
+	msgbox Mahoganytown_Text_UBRetryNotReady, MSGBOX_DEFAULT
+	goto Mahoganytown_EventScript_UBReleaseEnd
+
+@ ---------------------------------------------------------------------------
+@ Act IV - finish the evacuation. First framing: the Gym.
+@ The player is not walked to the line until the residents are inside.
+@ ---------------------------------------------------------------------------
 Mahoganytown_EventScript_UBScene::
 	closemessage
 	lockall
 	hidefollower
-	@ Ninetales (19,22)->(18,22)->(17,22)->(16,22)->(15,22)->(15,21), faces west.
-	@ Lillie    (20,22)->(20,21)->(19,21)->(18,21)->(17,21)->(16,21), faces west.
-	@ Different rows the whole way (he on y=22, she on y=21) and no shared
-	@ tile on any step, so they walk together. The partner goes in front.
-	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesAdvance
-	applymovement LOCALID_MAHOGANY_UB_LILLIE, Mahoganytown_Movement_LillieAdvance
-	waitmovement LOCALID_MAHOGANY_UB_NINETALES
-	waitmovement LOCALID_MAHOGANY_UB_LILLIE
-	@ Player (21,21)->(20,21)->(19,21)->(18,21)->(17,21)->(17,22), faces west.
-	@ Only after those two: (17,22) is on Ninetales' path.
-	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerToLine
-	waitmovement OBJ_EVENT_ID_PLAYER
-	@ Looker (21,22)->(21,21) and Anabel (22,22)->(22,21): different columns,
-	@ no contention, so they walk together. (21,21) only frees up when the
-	@ player leaves it, above.
-	applymovement LOCALID_MAHOGANY_UB_LOOKER, Mahoganytown_Movement_StepUpFaceLeft
-	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_StepUpFaceLeft
-	waitmovement LOCALID_MAHOGANY_UB_LOOKER
-	waitmovement LOCALID_MAHOGANY_UB_ANABEL
-	@ The evacuation, finished on screen. Pryce (11,20) faces west at the old
-	@ man (10,20) already.
+	setflag FLAG_MAHOGANY_UB_ENGAGED             @ every blackout from here is a retry
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Mahoganytown_Movement_CameraToShelter
+	waitmovement OBJ_EVENT_ID_CAMERA
 	msgbox Mahoganytown_Text_UBTimeIsClose, MSGBOX_DEFAULT
 	closemessage
-	turnobject LOCALID_MAHOGANY_UB_OLD_MAN, DIR_EAST
 	msgbox Mahoganytown_Text_UBPryceEvacuates, MSGBOX_DEFAULT
 	closemessage
-	@ Old man (10,20)->(10,19) into the door; then the boy (10,21)->(10,20)
-	@ ->(10,19). Sequential: the boy steps onto the tile the old man leaves.
+	msgbox Mahoganytown_Text_UBHectorLamp, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBPryceLamp, MSGBOX_DEFAULT
+	closemessage
+	@ The grandson first, his grandfather behind him. The door has exactly one
+	@ approach, (10,20), so the two walks are SEQUENTIAL: the boy crosses it
+	@ and is gone before Hector steps onto it. Mamoswine (11,21) never stands
+	@ on that path.
 	opendoor 10, 19
 	waitdooranim
-	applymovement LOCALID_MAHOGANY_UB_OLD_MAN, Mahoganytown_Movement_EnterGymFromFront
-	waitmovement LOCALID_MAHOGANY_UB_OLD_MAN
-	removeobject LOCALID_MAHOGANY_UB_OLD_MAN          @ flag FLAG_TEMP_3: harmless
 	applymovement LOCALID_MAHOGANY_UB_BOY, Mahoganytown_Movement_BoyEnterGym
 	waitmovement LOCALID_MAHOGANY_UB_BOY
-	removeobject LOCALID_MAHOGANY_UB_BOY
+	removeobject LOCALID_MAHOGANY_UB_BOY              @ flag FLAG_TEMP_3: harmless
+	applymovement LOCALID_MAHOGANY_UB_OLD_MAN, Mahoganytown_Movement_HectorEnterGym
+	waitmovement LOCALID_MAHOGANY_UB_OLD_MAN
+	removeobject LOCALID_MAHOGANY_UB_OLD_MAN
 	closedoor 10, 19
 	waitdooranim
-	@ Pryce (11,20)->(12,20)->(13,20)->(14,20), Mamoswine (11,21)->(12,21)
-	@ ->(13,21). Different rows the whole way -> together. Both end facing
-	@ west, where the tear opens.
-	applymovement LOCALID_MAHOGANY_UB_PRYCE, Mahoganytown_Movement_PryceToFront
-	applymovement LOCALID_MAHOGANY_UB_MAMOSWINE, Mahoganytown_Movement_MamoswineToFront
-	waitmovement LOCALID_MAHOGANY_UB_PRYCE
-	waitmovement LOCALID_MAHOGANY_UB_MAMOSWINE
-	@ Player (17,22) is east of Pryce (14,20): dx=+3 dominates -> DIR_EAST.
-	turnobject LOCALID_MAHOGANY_UB_PRYCE, DIR_EAST
+	@ Looker walks the length of row 20 to the shelter and stays there: he is
+	@ not part of the combat formation. (12,20) to (19,20) is empty, and
+	@ Xurkitree does not exist yet.
+	applymovement LOCALID_MAHOGANY_UB_LOOKER, Mahoganytown_Movement_LookerToShelter
+	waitmovement LOCALID_MAHOGANY_UB_LOOKER
+	msgbox Mahoganytown_Text_UBLookerEvacuated, MSGBOX_DEFAULT
+	closemessage
 	msgbox Mahoganytown_Text_UBPryceMeets, MSGBOX_DEFAULT
 	closemessage
-	turnobject LOCALID_MAHOGANY_UB_PRYCE, DIR_WEST
-	msgbox Mahoganytown_Text_UBLightComing, MSGBOX_DEFAULT
-	closemessage
-	@ Necrozma arrives in the light, on (11,21), Mamoswine's old tile.
+	goto Mahoganytown_EventScript_UBFormation
+
+@ ---------------------------------------------------------------------------
+@ Act V - the energy crosses the street. Second framing: the whole street.
+@ ---------------------------------------------------------------------------
+@ The order of these four blocks is LOAD-BEARING and every one of them is
+@ sequential, because they share tiles:
+@   Ninetales (19,21)->(19,22)->(19,23)          frees (19,22) for Lillie
+@   Lillie    (20,21)->(20,22)->(19,22)            frees (20,21) for the player
+@   player    (21,20)->(21,21)->(20,21)->(19,21)->(18,21)->(18,22)
+@   Anabel    (19,20)->(20,20)->(20,21)->(20,22)   (20,20) is Looker's old tile
+Mahoganytown_EventScript_UBFormation::
+	applymovement OBJ_EVENT_ID_CAMERA, Mahoganytown_Movement_CameraToStreet
+	waitmovement OBJ_EVENT_ID_CAMERA
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesToLine
+	waitmovement LOCALID_MAHOGANY_UB_NINETALES
+	applymovement LOCALID_MAHOGANY_UB_LILLIE, Mahoganytown_Movement_LillieToLine
+	waitmovement LOCALID_MAHOGANY_UB_LILLIE
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerToLine
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_AnabelToLine
+	waitmovement LOCALID_MAHOGANY_UB_ANABEL
+	@ Beat 2. The town theme goes before anything is seen.
+	fadeoutbgm 4
+	applymovement LOCALID_MAHOGANY_UB_ANABEL, Common_Movement_ExclamationMark
+	waitmovement LOCALID_MAHOGANY_UB_ANABEL
 	call Mahoganytown_EventScript_UBShake
 	fadescreenswapbuffers FADE_TO_WHITE
+	clearflag FLAG_TEMP_6
+	addobject LOCALID_MAHOGANY_UB_RIFT
 	clearflag FLAG_TEMP_4
 	addobject LOCALID_MAHOGANY_UB_NECROZMA
 	fadescreenswapbuffers FADE_FROM_WHITE
+	playse SE_WARP_IN
+	waitse
+	playbgm MUS_DP_LEGEND_APPEARS, TRUE
 	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
-	applymovement LOCALID_MAHOGANY_UB_LILLIE, Common_Movement_ExclamationMark
-	applymovement LOCALID_MAHOGANY_UB_PRYCE, Common_Movement_ExclamationMark
-	applymovement LOCALID_MAHOGANY_UB_LOOKER, Common_Movement_ExclamationMark
-	applymovement LOCALID_MAHOGANY_UB_ANABEL, Common_Movement_ExclamationMark
-	waitmovement LOCALID_MAHOGANY_UB_LILLIE
-	waitmovement LOCALID_MAHOGANY_UB_PRYCE
-	waitmovement LOCALID_MAHOGANY_UB_LOOKER
-	waitmovement LOCALID_MAHOGANY_UB_ANABEL
 	waitmoncry
 	msgbox Mahoganytown_Text_UBNecrozmaArrives, MSGBOX_DEFAULT
 	closemessage
-	@ Pryce tries: Mamoswine (13,21) attacks west along its row at (11,21).
-	applymovement LOCALID_MAHOGANY_UB_MAMOSWINE, Mahoganytown_Movement_AttackInPlaceLeft
-	playmoncry SPECIES_MAMOSWINE, CRY_MODE_ENCOUNTER
+	@ Lillie holds it for one beat and looks at her partner, not at the crowd.
+	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_SOUTH
+	delay 20
+	msgbox Mahoganytown_Text_UBLillieRecognizes, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_WEST
+	msgbox Mahoganytown_Text_UBPryceCover, MSGBOX_DEFAULT
+	closemessage
+	@ Cover, NOT a doomed attack: Pryce puts Mamoswine between Necrozma and
+	@ the Gym door and keeps it there. Row 22 for the Pokemon, column 11 for
+	@ the man: no shared tile, so they go together.
+	applymovement LOCALID_MAHOGANY_UB_MAMOSWINE, Mahoganytown_Movement_MamoswineToCover
+	applymovement LOCALID_MAHOGANY_UB_PRYCE, Mahoganytown_Movement_PryceToCover
 	waitmovement LOCALID_MAHOGANY_UB_MAMOSWINE
-	waitmoncry
-	call Mahoganytown_EventScript_UBFlash
+	waitmovement LOCALID_MAHOGANY_UB_PRYCE
+	@ Beat 3. The opening widens and the two come through, one north, one
+	@ south, with three clear rows between them.
 	applymovement LOCALID_MAHOGANY_UB_NECROZMA, Mahoganytown_Movement_PulseInPlaceRight
 	waitmovement LOCALID_MAHOGANY_UB_NECROZMA
-	msgbox Mahoganytown_Text_UBNoEffect, MSGBOX_DEFAULT
-	closemessage
-	@ The rift: the beasts come through on either side of it.
-	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
-	waitmoncry
 	call Mahoganytown_EventScript_UBShake
 	fadescreenswapbuffers FADE_TO_WHITE
 	clearflag FLAG_TEMP_2
@@ -673,105 +813,109 @@ Mahoganytown_EventScript_UBScene::
 	waitmoncry
 	msgbox Mahoganytown_Text_UBAppear, MSGBOX_DEFAULT
 	closemessage
-	@ The synergy, shown before it is explained: Xurkitree (12,20) drains
-	@ and sends the current down to Celesteela (12,22), which burns it.
+	@ Shown before it is explained: Xurkitree takes the last light out of the
+	@ street lamps, and it runs down column 15 into Celesteela.
 	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_PulseInPlaceRight
 	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
-	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBFeedDown
-	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
-	call Mahoganytown_EventScript_UBFlash
-	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBFeedUp
-	playmoncry SPECIES_CELESTEELA, CRY_MODE_NORMAL
-	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
-	waitmoncry
-	msgbox Mahoganytown_Text_UBSynergy, MSGBOX_DEFAULT
+	call Mahoganytown_EventScript_UBFlow
+	msgbox Mahoganytown_Text_UBSynergyObserved, MSGBOX_DEFAULT
 	closemessage
-	@ Danger to the player: Celesteela (12,22)->(15,22) along row 22, which
-	@ is empty (Mamoswine and Ninetales are on row 21). It stops two tiles
-	@ short of the player (17,22).
-	msgbox Mahoganytown_Text_UBCharge, MSGBOX_DEFAULT
+	msgbox Mahoganytown_Text_UBSynergyRead, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBCharge
+	@ Beat 4. Celesteela comes up the south corridor at the player's line.
+	@ Lillie gives the order BEFORE the move lands.
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_CelesteelaAdvance
 	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
-	@ Ninetales (15,21) is right above it: turns south and hits it.
-	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_AttackInPlaceDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Mahoganytown_Text_UBSavedOrder, MSGBOX_DEFAULT
+	closemessage
+	@ Ninetales (19,23)->(19,24)->(18,24): onto Celesteela's row, between it
+	@ and the player, then the hit.
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesCutsIn
+	waitmovement LOCALID_MAHOGANY_UB_NINETALES
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_AttackInPlaceLeft
 	playmoncry SPECIES_NINETALES_ALOLA, CRY_MODE_ENCOUNTER
 	waitmovement LOCALID_MAHOGANY_UB_NINETALES
 	call Mahoganytown_EventScript_UBShake
 	call Mahoganytown_EventScript_UBFlash
-	@ Blown back to its tile, still facing east: (15,22)->(12,22).
-	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBKnockedBack
-	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
 	waitmoncry
-	turnobject LOCALID_MAHOGANY_UB_NINETALES, DIR_WEST
-	msgbox Mahoganytown_Text_UBSaved, MSGBOX_DEFAULT
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_CelesteelaPushedBack
+	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
+	@ The player gives ground north, off the south corridor, and turns
+	@ straight back to the threat. (18,21) stays his tile until the choice.
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerStepsBack
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Mahoganytown_Text_UBSavedCheck, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	@ She goes straight back beside Lillie and leaves the middle lane clear.
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesBackToLine
+	waitmovement LOCALID_MAHOGANY_UB_NINETALES
 	goto Mahoganytown_EventScript_UBChoose
 
-@ Flash da cena. fadescreenswapbuffers e NAO fadescreen: fadescreen copia
-@ gPlttBufferFaded -> gPlttBufferUnfaded ao escurecer (src/field_weather.c,
-@ FadeScreen) e o FADE_FROM_* seguinte reaplica o tint de horario por cima do
-@ que ja estava tintado. A noite (coeff 10) cada par de flashes multiplicava a
-@ cena por ~0,46 de novo, e depois de tres ou quatro a cidade ficava preta.
-@ fadescreenswapbuffers usa BLDY no hardware e nao encosta nas paletas.
-Mahoganytown_EventScript_UBFlash::
-	fadescreenswapbuffers FADE_TO_WHITE
-	fadescreenswapbuffers FADE_FROM_WHITE
-	return
-
-Mahoganytown_EventScript_UBShake::
-	setvar VAR_0x8004, 1   @ vertical pan
-	setvar VAR_0x8005, 1   @ horizontal pan
-	setvar VAR_0x8006, 12  @ num shakes
-	setvar VAR_0x8007, 4   @ shake delay
-	special ShakeCamera
-	waitstate
-	return
-
+@ ---------------------------------------------------------------------------
+@ Beat 5 and 6 - the choice, and the separation shown on the ground.
 @ Standard Rift Mission structure: the player picks which Ultra Beast to
-@ fight, the mission companion takes the other. No cancel (ignoreBPress
-@ TRUE) - the scene has already started, so VAR_RESULT can only be 0 or 1.
-@ The pick is per attempt: after a blackout the player chooses again, and
-@ it holds for BOTH rounds of this attempt.
-@ Everyone already faces the right way whichever branch is taken: the player
-@ (17,22), Lillie (16,21) and Ninetales (15,21) are east of both beasts at
-@ x=12, and the beasts face east. No turnobject is needed.
+@ fight, the mission companion takes the other. No cancel (ignoreBPress TRUE)
+@ - the scene has already started, so VAR_RESULT can only be 0 or 1.
+@ The pick is per attempt and holds for BOTH rounds of that attempt.
+@   pick Xurkitree  -> player north (18,20), Lillie/Ninetales south
+@   pick Celesteela -> player south (18,24), Lillie/Ninetales north
+@ Two tiles between each front and its trainer in both branches, and the pair
+@ always moves first, through the support column, before the player crosses.
+@ ---------------------------------------------------------------------------
 Mahoganytown_EventScript_UBChoose::
 	msgbox Mahoganytown_Text_UBChoosePrompt, MSGBOX_DEFAULT
 	dynmultichoice 0, 0, TRUE, 2, 0, DYN_MULTICHOICE_CB_NONE, Mahoganytown_Text_ChoiceXurkitree, Mahoganytown_Text_ChoiceCelesteela
 	copyvar VAR_TEMP_3, VAR_RESULT               @ 0 = Xurkitree, 1 = Celesteela
 	closemessage
 	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBPickCelesteela
-	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Common_Movement_ExclamationMark
-	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
+	clearflag FLAG_MAHOGANY_UB_PICKED_CELESTEELA @ mirror that survives a blackout
 	msgbox Mahoganytown_Text_UBPickedXurkitree, MSGBOX_DEFAULT
 	closemessage
+	@ The pair goes south, the player goes north.
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesToSouthFront
+	waitmovement LOCALID_MAHOGANY_UB_NINETALES
+	applymovement LOCALID_MAHOGANY_UB_LILLIE, Mahoganytown_Movement_LillieToSouthFront
+	waitmovement LOCALID_MAHOGANY_UB_LILLIE
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerToNorthFront
+	waitmovement OBJ_EVENT_ID_PLAYER
 	goto Mahoganytown_EventScript_UBBattle1
 
 Mahoganytown_EventScript_UBPickCelesteela::
-	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Common_Movement_ExclamationMark
-	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
+	setflag FLAG_MAHOGANY_UB_PICKED_CELESTEELA
 	msgbox Mahoganytown_Text_UBPickedCelesteela, MSGBOX_DEFAULT
 	closemessage
+	@ Ninetales walks the whole support column to the north front and Lillie
+	@ closes up behind her; the player has column 18 to himself.
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesToNorthFront
+	waitmovement LOCALID_MAHOGANY_UB_NINETALES
+	applymovement LOCALID_MAHOGANY_UB_LILLIE, Mahoganytown_Movement_LillieToNorthFront
+	waitmovement LOCALID_MAHOGANY_UB_LILLIE
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerToSouthFront
+	waitmovement OBJ_EVENT_ID_PLAYER
 	goto Mahoganytown_EventScript_UBBattle1
 
+@ ---------------------------------------------------------------------------
 @ Two boss battles in a row against the SAME beast (the player's pick).
 @ Boss setup only survives a SIMPLE battle, which is the other reason the
 @ mission splits the beasts. B_FLAG_NO_WHITEOUT is deliberately NOT set in
-@ either: this is a threat battle, so losing means a blackout and a retry
-@ of the whole scene (both rounds - nothing between them is saved).
+@ either: this is a threat battle, so losing means a blackout and a retry.
 @
-@ Round 1: 2 bars / Lv80 / x130. Short on purpose: it has to feel like a
-@ win, so the revival lands.
-@ Round 2: 4 bars / Lv80 / x130, the Mission 2 target of the design scale
-@ (section 6). Anabel heals the team between the rounds.
-@ If playtesting says "wall" instead of "threat", turn the screws in this
-@ order, one at a time: round 1 down to 1 bar; x130 -> 120 in both; round 2
-@ 4 bars -> 3; drop the held item; only then the level.
+@ Round 1: 2 bars / Lv80 / x130. Short on purpose: it has to feel like a win,
+@ so the recharge lands.
+@ Round 2: 4 bars / Lv80 / x130, the Mission 2 target of the design scale.
+@ Anabel heals the team between the rounds, under cover of the wall.
+@ These numbers are the ones in MAHOGANY_ULTRABEAST_IMPLEMENTATION.md and the
+@ story revision did not change them.
 @
 @ Macro order is the same as bosslegendaryencounterwithmoves
 @ (asm/macros/event.inc): setbossbattle -> playmoncry -> seteventmon ->
 @ seteventmonmoves -> special. No path leaves the script in between, so no
 @ clearbossbattle is needed.
+@ ---------------------------------------------------------------------------
 Mahoganytown_EventScript_UBBattle1::
 	setflag B_FLAG_NO_CATCHING                   @ cleared by the engine after the battle
 	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBSetupCelesteela1
@@ -789,76 +933,184 @@ Mahoganytown_EventScript_UBSetupCelesteela1::
 	seteventmon SPECIES_CELESTEELA, 80, ITEM_LEFTOVERS
 	seteventmonmoves MOVE_HEAVY_SLAM, MOVE_FLAMETHROWER, MOVE_EARTHQUAKE, MOVE_AIR_SLASH
 
-@ LOST, DREW and FORFEITED never come back here - the engine blacks the
-@ player out to the Mahogany Pokémon Center (Mahoganytown_OnLoad does the
-@ setrespawn). CAUGHT and RAN are unreachable (ball blocked; Run becomes
-@ FORFEITED in a boss) but are handled anyway: anything that is not WON
-@ resets the scene, never wins it. Same for round 2 below.
+@ LOST, DREW and FORFEITED never come back here - the engine blacks the player
+@ out to the Mahogany Pokemon Center (Mahoganytown_OnLoad does the setrespawn)
+@ and FLAG_MAHOGANY_UB_ENGAGED turns the next visit into a retry. CAUGHT and
+@ RAN are unreachable (ball blocked; Run becomes FORFEITED in a boss) but are
+@ handled anyway: anything that is not WON regroups, never wins. Same for
+@ round 2 below.
 Mahoganytown_EventScript_UBStartBattle1::
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	specialvar VAR_RESULT, GetBattleOutcome
 	copyvar VAR_TEMP_2, VAR_RESULT
-	goto_if_eq VAR_TEMP_2, B_OUTCOME_WON, Mahoganytown_EventScript_UBRevived
+	goto_if_eq VAR_TEMP_2, B_OUTCOME_WON, Mahoganytown_EventScript_UBRecharge
 	goto Mahoganytown_EventScript_UBUnresolved
 
-@ The twist: the beast the player just beat is revived by its partner
-@ through the link. The partner sends (pulses toward it), a flash, the
-@ beaten one takes it in. Xurkitree (12,20) is north of Celesteela (12,22).
-Mahoganytown_EventScript_UBRevived::
-	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBXurkitreeRevives
-	msgbox Mahoganytown_Text_UBDownXurkitree, MSGBOX_DEFAULT
+@ ---------------------------------------------------------------------------
+@ Act VI - pulling them apart was not enough. The beaten beast is brought back
+@ by ONE charge sent down the link, and the source pays for it: the far one
+@ dims while it gives. Nobody calls this a cycle and nobody calls it endless.
+@ ---------------------------------------------------------------------------
+Mahoganytown_EventScript_UBRecharge::
+	goto_if_set FLAG_MAHOGANY_UB_SAW_RECHARGE, Mahoganytown_EventScript_UBRechargeAgain
+	setflag FLAG_MAHOGANY_UB_SAW_RECHARGE        @ splits the two kinds of retry
+	msgbox Mahoganytown_Text_UBFirstDown, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBFeedUp
+	call Mahoganytown_EventScript_UBFlowPulse
+	msgbox Mahoganytown_Text_UBCurrentReturns, MSGBOX_DEFAULT
+	closemessage
+	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBRechargeCelesteela
+	@ Celesteela's engines dim; the charge runs north into Xurkitree.
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBSendsUp
 	playmoncry SPECIES_CELESTEELA, CRY_MODE_ENCOUNTER
 	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
 	waitmoncry
 	call Mahoganytown_EventScript_UBFlash
-	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBFeedDown
+	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBRises
 	playmoncry SPECIES_XURKITREE, CRY_MODE_ENCOUNTER
 	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
 	waitmoncry
 	msgbox Mahoganytown_Text_UBRevivedXurkitree, MSGBOX_DEFAULT
-	goto Mahoganytown_EventScript_UBLilliePlan
+	goto Mahoganytown_EventScript_UBPlanCorrection
 
-Mahoganytown_EventScript_UBXurkitreeRevives::
-	msgbox Mahoganytown_Text_UBDownCelesteela, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBFeedDown
+Mahoganytown_EventScript_UBRechargeCelesteela::
+	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBSendsDown
 	playmoncry SPECIES_XURKITREE, CRY_MODE_ENCOUNTER
 	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
 	waitmoncry
 	call Mahoganytown_EventScript_UBFlash
-	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBFeedUp
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBRises
 	playmoncry SPECIES_CELESTEELA, CRY_MODE_ENCOUNTER
 	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
 	waitmoncry
 	msgbox Mahoganytown_Text_UBRevivedCelesteela, MSGBOX_DEFAULT
 
-@ Lillie works out why and turns it into a plan; Pryce supplies the ice.
-@ Anabel (22,21)->(22,22)->(21,22)->(20,22)->(19,22)->(18,22) to heal the
-@ team: row 22 east of the player is empty (the cast left it), and (22,22)
-@ is her own map.json tile. She stays at (18,22) for the rest of the scene.
-@ Then the wall: Ninetales (15,21)->(14,21), next to Mamoswine (13,21), and
-@ both fire west at the gap (12,21) between the beasts.
-Mahoganytown_EventScript_UBLilliePlan::
+@ The attempt after the group has already watched this happen. Same beat on
+@ screen, no discovery: one line, and straight to the wall.
+Mahoganytown_EventScript_UBRechargeAgain::
+	msgbox Mahoganytown_Text_UBFirstDown, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_MAHOGANY_UB_LILLIE, Common_Movement_ExclamationMark
-	applymovement LOCALID_MAHOGANY_UB_PRYCE, Common_Movement_ExclamationMark
-	applymovement LOCALID_MAHOGANY_UB_LOOKER, Common_Movement_ExclamationMark
-	applymovement LOCALID_MAHOGANY_UB_ANABEL, Common_Movement_ExclamationMark
-	waitmovement LOCALID_MAHOGANY_UB_LILLIE
-	waitmovement LOCALID_MAHOGANY_UB_PRYCE
-	waitmovement LOCALID_MAHOGANY_UB_LOOKER
-	waitmovement LOCALID_MAHOGANY_UB_ANABEL
-	msgbox Mahoganytown_Text_UBLilliePlan, MSGBOX_DEFAULT
+	call Mahoganytown_EventScript_UBFlowPulse
+	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBRechargeAgainCelesteela
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBSendsUp
+	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
+	call Mahoganytown_EventScript_UBFlash
+	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBRises
+	playmoncry SPECIES_XURKITREE, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
+	waitmoncry
+	goto Mahoganytown_EventScript_UBRetryRecharge
+
+Mahoganytown_EventScript_UBRechargeAgainCelesteela::
+	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBSendsDown
+	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
+	call Mahoganytown_EventScript_UBFlash
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBRises
+	playmoncry SPECIES_CELESTEELA, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
+	waitmoncry
+
+Mahoganytown_EventScript_UBRetryRecharge::
+	msgbox Mahoganytown_Text_UBRetryRecharge, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_AnabelToPlayer
-	waitmovement LOCALID_MAHOGANY_UB_ANABEL
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-	waitmovement OBJ_EVENT_ID_PLAYER
+	goto Mahoganytown_EventScript_UBWall
+
+@ She follows the whole length of the light, points at the middle of it and
+@ asks for a better wall. No monologue of guilt: the plan was incomplete, and
+@ she says so in one line and moves on.
+Mahoganytown_EventScript_UBPlanCorrection::
+	closemessage
+	msgbox Mahoganytown_Text_UBLilliePlanCorrection, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBPrycePlan, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBAnabelWallPlan, MSGBOX_DEFAULT
+	closemessage
+	goto Mahoganytown_EventScript_UBWall
+
+@ ---------------------------------------------------------------------------
+@ Act VII - the wall, then the heal, then the second round. The ice has to buy
+@ real time, so nothing is left loose while Anabel works: Ninetales holds the
+@ front, Mamoswine builds, and only then does the player fall back.
+@ ---------------------------------------------------------------------------
+Mahoganytown_EventScript_UBWall::
+	msgbox Mahoganytown_Text_UBNinetalesCover, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_AttackInPlaceLeft
+	playmoncry SPECIES_NINETALES_ALOLA, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_MAHOGANY_UB_NINETALES
+	waitmoncry
+	call Mahoganytown_EventScript_UBFlash
+	msgbox Mahoganytown_Text_UBWallOrder, MSGBOX_DEFAULT
+	closemessage
+	@ Mamoswine (10,22)->(12,22) along the empty middle row, faces east and
+	@ throws the wall across (14,22) (15,22) (16,22). It stops one tile short
+	@ of the ice so the left end of the wall is not hidden behind it, and
+	@ Pryce never turns his back on Necrozma.
+	applymovement LOCALID_MAHOGANY_UB_MAMOSWINE, Mahoganytown_Movement_MamoswineToGap
+	waitmovement LOCALID_MAHOGANY_UB_MAMOSWINE
+	applymovement LOCALID_MAHOGANY_UB_MAMOSWINE, Mahoganytown_Movement_AttackInPlaceRight
+	playmoncry SPECIES_MAMOSWINE, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_MAHOGANY_UB_MAMOSWINE
+	waitmoncry
+	call Mahoganytown_EventScript_UBShake
+	fadescreenswapbuffers FADE_TO_WHITE
+	call MahoganyTown_EventScript_PaintIceWall
+	special DrawWholeMapView
+	fadescreenswapbuffers FADE_FROM_WHITE
+	@ The test, shown before anyone concludes anything: the light runs into
+	@ the ice, breaks up and stops, and the beast that was waiting for it
+	@ gutters.
+	call Mahoganytown_EventScript_UBFlowBlocked
+	msgbox Mahoganytown_Text_UBWallHolds, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBLillieWall, MSGBOX_DEFAULT
+	closemessage
+	goto Mahoganytown_EventScript_UBHeal
+
+@ The heal happens under cover and nobody crosses the wall to reach it: Anabel
+@ comes up the support corridor and the player falls back one row to meet her,
+@ on his own side of the ice.
+Mahoganytown_EventScript_UBHeal::
 	msgbox Mahoganytown_Text_UBAnabelHeals, MSGBOX_DEFAULT
 	closemessage
+	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBHealSouth
+	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_AnabelToNorthHeal
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerToNorthHeal
+	waitmovement LOCALID_MAHOGANY_UB_ANABEL
+	waitmovement OBJ_EVENT_ID_PLAYER
+	call Mahoganytown_EventScript_UBHealParty
+	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_AnabelBackFromNorth
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerBackToNorthFront
+	waitmovement LOCALID_MAHOGANY_UB_ANABEL
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto Mahoganytown_EventScript_UBSecondRound
+
+Mahoganytown_EventScript_UBHealSouth::
+	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_AnabelToSouthHeal
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerToSouthHeal
+	waitmovement LOCALID_MAHOGANY_UB_ANABEL
+	waitmovement OBJ_EVENT_ID_PLAYER
+	call Mahoganytown_EventScript_UBHealParty
+	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_AnabelBackFromSouth
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerBackToSouthFront
+	waitmovement LOCALID_MAHOGANY_UB_ANABEL
+	waitmovement OBJ_EVENT_ID_PLAYER
+
+Mahoganytown_EventScript_UBSecondRound::
+	msgbox Mahoganytown_Text_UBSecondRound, MSGBOX_DEFAULT
+	closemessage
+	goto Mahoganytown_EventScript_UBBattle2
+
+@ fadescreenswapbuffers and not fadescreen: the scene comes straight back to
+@ this map, and fadescreen would copy the tinted palettes over the untinted
+@ ones (FadeScreen, src/field_weather.c) and darken the town another notch.
+@ The heal fanfare is short and the threat theme is already back on the way
+@ out: playbgm wrote it into savedMusic, so nothing has to restart it.
+Mahoganytown_EventScript_UBHealParty::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
 	fadescreenswapbuffers FADE_TO_BLACK
 	special HealPlayerParty
 	playfanfare MUS_HEAL
@@ -866,30 +1118,7 @@ Mahoganytown_EventScript_UBLilliePlan::
 	fadescreenswapbuffers FADE_FROM_BLACK
 	msgbox Mahoganytown_Text_UBAnabelHealed, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-	waitmovement OBJ_EVENT_ID_PLAYER
-	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesToWall
-	waitmovement LOCALID_MAHOGANY_UB_NINETALES
-	msgbox Mahoganytown_Text_UBWallOrder, MSGBOX_DEFAULT
-	closemessage
-	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_AttackInPlaceLeft
-	applymovement LOCALID_MAHOGANY_UB_MAMOSWINE, Mahoganytown_Movement_AttackInPlaceLeft
-	playmoncry SPECIES_NINETALES_ALOLA, CRY_MODE_ENCOUNTER
-	waitmovement LOCALID_MAHOGANY_UB_NINETALES
-	waitmovement LOCALID_MAHOGANY_UB_MAMOSWINE
-	waitmoncry
-	playmoncry SPECIES_MAMOSWINE, CRY_MODE_ENCOUNTER
-	call Mahoganytown_EventScript_UBShake
-	call Mahoganytown_EventScript_UBFlash
-	waitmoncry
-	@ The link tries again and dies against the ice.
-	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBFeedDown
-	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBFeedUp
-	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
-	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
-	msgbox Mahoganytown_Text_UBWallHolds, MSGBOX_DEFAULT
-	closemessage
-	goto Mahoganytown_EventScript_UBBattle2
+	return
 
 Mahoganytown_EventScript_UBBattle2::
 	setflag B_FLAG_NO_CATCHING                   @ cleared again after round 1: set again
@@ -916,188 +1145,618 @@ Mahoganytown_EventScript_UBStartBattle2::
 	goto_if_eq VAR_TEMP_2, B_OUTCOME_WON, Mahoganytown_EventScript_UBResolved
 	goto Mahoganytown_EventScript_UBUnresolved
 
-@ Nothing was recorded as done: the event flag is still set, so reloading the
-@ map puts the cast, Pryce and the two residents back on their map.json
-@ spots with the beasts and Necrozma hidden again, and talking to Looker
-@ restarts the whole scene - the pick included.
-@ (21,20) is the Fly landing / Center exit tile, one step from Looker's talk
-@ tile.
+@ Anything that is not a win and is not a blackout (the engine handles those
+@ itself). Nothing was recorded as done, the incident flag is still set and
+@ FLAG_MAHOGANY_UB_ENGAGED is set, so the reload puts the street back as a
+@ retry and Lillie can start the attempt again.
+@ (21,20) is the Fly landing / Center exit tile.
 Mahoganytown_EventScript_UBUnresolved::
-	msgbox Mahoganytown_Text_UBGotAway, MSGBOX_DEFAULT
+	msgbox Mahoganytown_Text_UBUnresolved, MSGBOX_DEFAULT
 	closemessage
+	special RemoveCameraObject
 	fadescreen FADE_TO_BLACK
 	warpsilent MAP_MAHOGANYTOWN, 21, 20
 	waitstate
 	releaseall
 	end
 
-@ Lillie's fight against the other beast is narrative: it resolves with the
-@ player's win and only her line afterwards changes with the pick.
-@ Then Necrozma absorbs BOTH beasts - the pattern of every Rift Mission.
-@ Positions at this point (a battle does not reload the map): Xurkitree
-@ (12,20), Celesteela (12,22), Necrozma (11,21).
+@ ---------------------------------------------------------------------------
+@ Act VIII - they learned, and Necrozma changes its approach.
+@ Both beasts stay on screen: the win stops them, it does not delete them.
+@ ---------------------------------------------------------------------------
 Mahoganytown_EventScript_UBResolved::
 	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBLillieFoughtXurkitree
 	msgbox Mahoganytown_Text_UBLillieFoughtCelesteela, MSGBOX_DEFAULT
-	goto Mahoganytown_EventScript_UBAbsorb
+	goto Mahoganytown_EventScript_UBRegroup
 
 Mahoganytown_EventScript_UBLillieFoughtXurkitree::
 	msgbox Mahoganytown_Text_UBLillieFoughtXurkitree, MSGBOX_DEFAULT
 
-Mahoganytown_EventScript_UBAbsorb::
+@ Both fronts are done, so the two branches close here and everything after
+@ this point is one path: player (18,22), Lillie (19,22), Ninetales (19,23).
+Mahoganytown_EventScript_UBRegroup::
 	closemessage
-	applymovement LOCALID_MAHOGANY_UB_NECROZMA, Mahoganytown_Movement_PulseInPlaceRight
-	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
+	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBRegroupFromSouth
+	@ Player north. Lillie frees (19,23) for Ninetales before she crosses.
+	applymovement LOCALID_MAHOGANY_UB_LILLIE, Mahoganytown_Movement_LillieSouthToLine
+	waitmovement LOCALID_MAHOGANY_UB_LILLIE
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesSouthToLine
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerNorthToLine
+	waitmovement LOCALID_MAHOGANY_UB_NINETALES
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto Mahoganytown_EventScript_UBSecureAttempt
+
+@ Player south. Ninetales walks down column 18 first, because the player has
+@ to come up the same column behind her.
+Mahoganytown_EventScript_UBRegroupFromSouth::
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesNorthToLine
+	waitmovement LOCALID_MAHOGANY_UB_NINETALES
+	applymovement LOCALID_MAHOGANY_UB_LILLIE, Mahoganytown_Movement_LillieNorthToLine
+	waitmovement LOCALID_MAHOGANY_UB_LILLIE
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerSouthToLine
+	waitmovement OBJ_EVENT_ID_PLAYER
+
+@ Beat 2. Anabel moves up to try to secure them, and Necrozma answers by
+@ changing the geometry: blocked on the ground, it reaches OVER the ice.
+@ Pryce is not surprised by it - he has been watching it the whole time.
+Mahoganytown_EventScript_UBSecureAttempt::
+	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_AnabelSteps
+	waitmovement LOCALID_MAHOGANY_UB_ANABEL
+	msgbox Mahoganytown_Text_UBSecure, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MAHOGANY_UB_NECROZMA, Mahoganytown_Movement_NecrozmaLean
 	waitmovement LOCALID_MAHOGANY_UB_NECROZMA
+	applymovement LOCALID_MAHOGANY_UB_NECROZMA, Mahoganytown_Movement_PulseInPlaceRight
+	waitmovement LOCALID_MAHOGANY_UB_NECROZMA
+	applymovement LOCALID_MAHOGANY_UB_PRYCE, Common_Movement_ExclamationMark
+	waitmovement LOCALID_MAHOGANY_UB_PRYCE
+	msgbox Mahoganytown_Text_UBPryceIntercept, MSGBOX_DEFAULT
+	closemessage
+	@ Mamoswine (12,22)->(11,22): straight across Necrozma's line on the
+	@ ground. The wall is untouched; nothing walks through it.
+	applymovement LOCALID_MAHOGANY_UB_MAMOSWINE, Mahoganytown_Movement_MamoswineBlocks
+	waitmovement LOCALID_MAHOGANY_UB_MAMOSWINE
+	playmoncry SPECIES_MAMOSWINE, CRY_MODE_ENCOUNTER
 	waitmoncry
-	@ Dragged backwards, still facing east, to the tiles beside Necrozma:
-	@ (12,20)->(11,20) and (12,22)->(11,22). Same sequence, rows apart.
+	@ It floats out of that line instead of forcing it, and the new link goes
+	@ over the top: shown before anything is dragged anywhere.
+	applymovement LOCALID_MAHOGANY_UB_NECROZMA, Mahoganytown_Movement_NecrozmaSlipsAside
+	waitmovement LOCALID_MAHOGANY_UB_NECROZMA
+	call Mahoganytown_EventScript_UBFlash
+	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_PulseInPlaceRight
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_PulseInPlaceRight
+	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
+	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
+	msgbox Mahoganytown_Text_UBLillieNewLink, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBNinetalesIntercept, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_AttackInPlaceLeft
+	playmoncry SPECIES_NINETALES_ALOLA, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_MAHOGANY_UB_NINETALES
+	waitmoncry
+	call Mahoganytown_EventScript_UBFlash
+	@ Beat 3. Both are pulled two tiles toward Necrozma along their own rows,
+	@ resist, and go. Neither row touches the ice at y=22.
+	call Mahoganytown_EventScript_UBShake
 	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBPulledIn
 	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBPulledIn
 	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
 	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
-	call Mahoganytown_EventScript_UBShake
-	@ Their flag is FLAG_TEMP_2, so removeobject setting it is harmless.
 	fadescreenswapbuffers FADE_TO_WHITE
-	removeobject LOCALID_MAHOGANY_UB_XURKITREE
+	removeobject LOCALID_MAHOGANY_UB_XURKITREE   @ flag FLAG_TEMP_2: harmless
 	removeobject LOCALID_MAHOGANY_UB_CELESTEELA
 	fadescreenswapbuffers FADE_FROM_WHITE
 	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
-	applymovement LOCALID_MAHOGANY_UB_PRYCE, Common_Movement_ExclamationMark
 	applymovement LOCALID_MAHOGANY_UB_LILLIE, Common_Movement_ExclamationMark
-	applymovement LOCALID_MAHOGANY_UB_LOOKER, Common_Movement_ExclamationMark
 	applymovement LOCALID_MAHOGANY_UB_ANABEL, Common_Movement_ExclamationMark
-	waitmovement LOCALID_MAHOGANY_UB_PRYCE
+	applymovement LOCALID_MAHOGANY_UB_PRYCE, Common_Movement_ExclamationMark
 	waitmovement LOCALID_MAHOGANY_UB_LILLIE
-	waitmovement LOCALID_MAHOGANY_UB_LOOKER
 	waitmovement LOCALID_MAHOGANY_UB_ANABEL
+	waitmovement LOCALID_MAHOGANY_UB_PRYCE
 	waitmoncry
-	msgbox Mahoganytown_Text_UBAbsorbed, MSGBOX_DEFAULT
+	@ The glow rises, and then wavers: the same instrument that read the two
+	@ signatures before the absorption reads them again after it. That is the
+	@ discovery, and it does not need the player to be carrying anything.
+	applymovement LOCALID_MAHOGANY_UB_NECROZMA, Mahoganytown_Movement_PulseInPlaceRight
+	waitmovement LOCALID_MAHOGANY_UB_NECROZMA
+	call Mahoganytown_EventScript_UBRiftPulse
+	msgbox Mahoganytown_Text_UBAbsorbedRead, MSGBOX_DEFAULT
 	closemessage
-	call Mahoganytown_EventScript_UBNecrozmaSensesCosmog
-	@ Necrozma leaves the way it came. Own flag (FLAG_TEMP_4): removeobject
-	@ touches nobody else.
-	call Mahoganytown_EventScript_UBShake
-	fadescreenswapbuffers FADE_TO_WHITE
-	removeobject LOCALID_MAHOGANY_UB_NECROZMA
-	fadescreenswapbuffers FADE_FROM_WHITE
-	msgbox Mahoganytown_Text_UBNecrozmaGone, MSGBOX_DEFAULT
+	msgbox Mahoganytown_Text_UBLillieSignals, MSGBOX_DEFAULT
 	closemessage
-	goto Mahoganytown_EventScript_UBAftermath
+	msgbox Mahoganytown_Text_UBAbsorbedConfirm, MSGBOX_DEFAULT
+	closemessage
+	call Mahoganytown_EventScript_UBPartnerReacts
+	goto Mahoganytown_EventScript_UBNecrozmaLeaves
 
-@ Optional reaction to a Cosmog-family Pokemon in the party (non-egg; the
-@ special is the one Elm's Eviolite scene uses). Checked AFTER the battles on
-@ purpose: they can evolve it. Necrozma steps toward the player,
-@ (11,21)->(12,21), the gap where the wall stood (free: nobody is on it).
-Mahoganytown_EventScript_UBNecrozmaSensesCosmog::
+@ ---------------------------------------------------------------------------
+@ Act IX - the player's own partner. Optional, changes nothing, and it is
+@ SHOWN before anything is said about it: one actor per stage, four templates
+@ on (18,23) sharing FLAG_TEMP_7, at most one of them ever added. The follower
+@ is hidden for the whole scene, so nothing is duplicated.
+@ Checked AFTER both battles on purpose: a battle can evolve it.
+@ (17,23) is the player's protected side: diagonally in front of him, just
+@ east of the ice, two columns clear of Ninetales (19,23) and nowhere near
+@ the corridor Anabel used. It is two columns and not one because these
+@ sprites are 32x32: anchors one tile apart still overlap.
+@ ---------------------------------------------------------------------------
+Mahoganytown_EventScript_UBPartnerReacts::
 	specialvar VAR_RESULT, CheckMysteryEggPokemon
 	copyvar VAR_TEMP_4, VAR_RESULT
 	goto_if_eq VAR_TEMP_4, SPECIES_NONE, Mahoganytown_EventScript_UBReturn
 	bufferspeciesname STR_VAR_1, VAR_TEMP_4
-	applymovement LOCALID_MAHOGANY_UB_NECROZMA, Mahoganytown_Movement_NecrozmaLean
-	waitmovement LOCALID_MAHOGANY_UB_NECROZMA
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	playmoncry SPECIES_NECROZMA, CRY_MODE_NORMAL
-	waitmovement OBJ_EVENT_ID_PLAYER
+	clearflag FLAG_TEMP_7
+	playse SE_BALL_OPEN
+	fadescreenswapbuffers FADE_TO_WHITE
+	call Mahoganytown_EventScript_UBAddPartner
+	fadescreenswapbuffers FADE_FROM_WHITE
+	playmoncry VAR_TEMP_4, CRY_MODE_ENCOUNTER
 	waitmoncry
-	goto_if_eq VAR_TEMP_4, SPECIES_SOLGALEO, Mahoganytown_EventScript_UBNecrozmaSensesLegend
-	goto_if_eq VAR_TEMP_4, SPECIES_LUNALA, Mahoganytown_EventScript_UBNecrozmaSensesLegend
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto_if_eq VAR_TEMP_4, SPECIES_SOLGALEO, Mahoganytown_EventScript_UBPartnerLegend
+	goto_if_eq VAR_TEMP_4, SPECIES_LUNALA, Mahoganytown_EventScript_UBPartnerLegend
+	@ Cosmog / Cosmoem: Necrozma turns to it, Ninetales takes the side.
+	turnobject LOCALID_MAHOGANY_UB_NECROZMA, DIR_EAST
+	turnobject LOCALID_MAHOGANY_UB_NINETALES, DIR_SOUTH
 	msgbox Mahoganytown_Text_UBNecrozmaSensesCosmog, MSGBOX_DEFAULT
 	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	turnobject LOCALID_MAHOGANY_UB_NINETALES, DIR_WEST
+	call Mahoganytown_EventScript_UBRiftPulse
 	return
 
-Mahoganytown_EventScript_UBNecrozmaSensesLegend::
+@ Solgaleo / Lunala: the opening steadies while it pulses, Anabel reads the
+@ two signatures more clearly, and they are STILL moving with Necrozma. It
+@ buys observation, not a rescue. The signatures were already recognised
+@ before it came out, so no branch of this scene owns the discovery.
+Mahoganytown_EventScript_UBPartnerLegend::
+	call Mahoganytown_EventScript_UBFlash
 	msgbox Mahoganytown_Text_UBNecrozmaSensesLegend, MSGBOX_DEFAULT
 	closemessage
+	msgbox Mahoganytown_Text_UBPartnerRead, MSGBOX_DEFAULT
+	closemessage
+	call Mahoganytown_EventScript_UBRiftPulse
+	msgbox Mahoganytown_Text_UBLilliePartnerLimit, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+
+@ If both are somehow in the party, CheckMysteryEggPokemon returns the first
+@ one in party order, so the species, the cry and the actor all agree and none
+@ of them changes in the middle of the scene.
+Mahoganytown_EventScript_UBAddPartner::
+	goto_if_eq VAR_TEMP_4, SPECIES_COSMOEM, Mahoganytown_EventScript_UBAddCosmoem
+	goto_if_eq VAR_TEMP_4, SPECIES_SOLGALEO, Mahoganytown_EventScript_UBAddSolgaleo
+	goto_if_eq VAR_TEMP_4, SPECIES_LUNALA, Mahoganytown_EventScript_UBAddLunala
+	addobject LOCALID_MAHOGANY_UB_COSMOG
+	return
+Mahoganytown_EventScript_UBAddCosmoem::
+	addobject LOCALID_MAHOGANY_UB_COSMOEM
+	return
+Mahoganytown_EventScript_UBAddSolgaleo::
+	addobject LOCALID_MAHOGANY_UB_SOLGALEO
+	return
+Mahoganytown_EventScript_UBAddLunala::
+	addobject LOCALID_MAHOGANY_UB_LUNALA
+	return
+
+@ Called back on screen, before anybody walks over the tile it was standing
+@ on. Nothing is said about it afterwards that implies it is still out.
+Mahoganytown_EventScript_UBPartnerRecalled::
+	goto_if_eq VAR_TEMP_4, SPECIES_NONE, Mahoganytown_EventScript_UBReturn
+	playse SE_BALL_OPEN
+	fadescreenswapbuffers FADE_TO_WHITE
+	removeobject LOCALID_MAHOGANY_UB_COSMOG
+	removeobject LOCALID_MAHOGANY_UB_COSMOEM
+	removeobject LOCALID_MAHOGANY_UB_SOLGALEO
+	removeobject LOCALID_MAHOGANY_UB_LUNALA
+	fadescreenswapbuffers FADE_FROM_WHITE
 	return
 
 Mahoganytown_EventScript_UBReturn::
 	return
 
-Mahoganytown_EventScript_UBAftermath::
-	@ Looker (21,21)->(20,21)->(19,21)->(18,21), faces west at the player.
-	@ Anabel is already at (18,22), beside the player, since the heal.
-	applymovement LOCALID_MAHOGANY_UB_LOOKER, Mahoganytown_Movement_LookerToPlayer
-	waitmovement LOCALID_MAHOGANY_UB_LOOKER
-	@ Everyone onto the player (17,22): Pryce (14,20) east (dx=+3 over
-	@ dy=+2), Mamoswine (13,21) and Ninetales (14,21) east, Lillie (16,21)
-	@ south (dx=+1, dy=+1: south keeps her from looking through Ninetales).
-	turnobject LOCALID_MAHOGANY_UB_PRYCE, DIR_EAST
-	turnobject LOCALID_MAHOGANY_UB_MAMOSWINE, DIR_EAST
-	turnobject LOCALID_MAHOGANY_UB_NINETALES, DIR_EAST
+@ ---------------------------------------------------------------------------
+@ Act X - the street breathes again. The opening closes first, THEN the town
+@ comes back: no victory fanfare over an open rift.
+@ ---------------------------------------------------------------------------
+Mahoganytown_EventScript_UBNecrozmaLeaves::
+	call Mahoganytown_EventScript_UBShake
+	fadescreenswapbuffers FADE_TO_WHITE
+	removeobject LOCALID_MAHOGANY_UB_NECROZMA    @ own flags (TEMP_4, TEMP_6):
+	removeobject LOCALID_MAHOGANY_UB_RIFT        @ removeobject touches nobody else
+	fadescreenswapbuffers FADE_FROM_WHITE
+	playse SE_WARP_OUT
+	waitse
+	msgbox Mahoganytown_Text_UBNecrozmaGone, MSGBOX_DEFAULT
+	closemessage
+	@ A beat of nothing: Mamoswine checks the front it was holding, Ninetales
+	@ lets her shoulders down without leaving Lillie.
+	turnobject LOCALID_MAHOGANY_UB_MAMOSWINE, DIR_WEST
+	delay 30
+	turnobject LOCALID_MAHOGANY_UB_NINETALES, DIR_NORTH
+	delay 20
+	msgbox Mahoganytown_Text_UBPowerReturns, MSGBOX_DEFAULT
+	closemessage
+	@ Only now does the threat theme end and the town theme come back.
+	fadedefaultbgm
+	call Mahoganytown_EventScript_UBPartnerRecalled
+	@ Pryce opens the barrier before anybody has to walk through that space.
+	msgbox Mahoganytown_Text_UBPryceClearsIce, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_MAHOGANY_UB_MAMOSWINE, Mahoganytown_Movement_AttackInPlaceRight
+	playmoncry SPECIES_MAMOSWINE, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_MAHOGANY_UB_MAMOSWINE
+	waitmoncry
+	call Mahoganytown_EventScript_UBShake
+	fadescreenswapbuffers FADE_TO_WHITE
+	call Mahoganytown_EventScript_UBClearIceWall
+	special DrawWholeMapView
+	fadescreenswapbuffers FADE_FROM_WHITE
+	@ Pryce comes as far as the middle of the street and no further.
+	applymovement LOCALID_MAHOGANY_UB_PRYCE, Mahoganytown_Movement_PryceToTalk
+	waitmovement LOCALID_MAHOGANY_UB_PRYCE
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Mahoganytown_Text_UBPryceThanks, MSGBOX_DEFAULT
+	closemessage
+	@ Lillie checks her partner first and answers second.
 	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_SOUTH
+	delay 20
+	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_WEST
+	msgbox Mahoganytown_Text_UBLillieThanks, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBPryceAnswer, MSGBOX_DEFAULT
+	closemessage
+	playmoncry SPECIES_MAMOSWINE, CRY_MODE_NORMAL
+	waitmoncry
+	msgbox Mahoganytown_Text_UBPryceGoodbye, MSGBOX_DEFAULT
+	closemessage
+	@ They leave together, west along two different rows, and are removed at
+	@ x=6, one column outside the framing. The ice is gone and nobody is in
+	@ the way. Their flag is FLAG_TEMP_5, so removeobject is harmless.
+	applymovement LOCALID_MAHOGANY_UB_PRYCE, Mahoganytown_Movement_PryceLeaves
+	applymovement LOCALID_MAHOGANY_UB_MAMOSWINE, Mahoganytown_Movement_MamoswineLeaves
+	waitmovement LOCALID_MAHOGANY_UB_PRYCE
+	waitmovement LOCALID_MAHOGANY_UB_MAMOSWINE
+	removeobject LOCALID_MAHOGANY_UB_PRYCE
+	removeobject LOCALID_MAHOGANY_UB_MAMOSWINE
+	goto Mahoganytown_EventScript_UBAftermath
+
+Mahoganytown_EventScript_UBClearIceWall::
+	setmetatile 14, 22, 0xDC, FALSE
+	setmetatile 15, 22, 0xDC, FALSE
+	setmetatile 16, 22, 0xDC, FALSE
+	return
+
+@ ---------------------------------------------------------------------------
+@ Act XI - what can still be saved. An open formation, and the eyes move with
+@ the speaker: Looker west of the player, Lillie and Anabel east of him.
+@ ---------------------------------------------------------------------------
+Mahoganytown_EventScript_UBAftermath::
+	@ Looker comes back from the shelter along row 20 and down to (17,22),
+	@ the tile the left end of the wall was on.
+	applymovement LOCALID_MAHOGANY_UB_LOOKER, Mahoganytown_Movement_LookerToGroup
+	waitmovement LOCALID_MAHOGANY_UB_LOOKER
+	msgbox Mahoganytown_Text_UBAftermathLooker, MSGBOX_DEFAULT
+	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	msgbox Mahoganytown_Text_UBAftermath, MSGBOX_DEFAULT
+	msgbox Mahoganytown_Text_UBAftermathLillie, MSGBOX_DEFAULT
 	closemessage
-	goto_if_eq VAR_TEMP_4, SPECIES_NONE, Mahoganytown_EventScript_UBPryceLeaves
+	@ Anabel comes down beside Lillie so the answer does not come over
+	@ somebody's shoulder.
+	applymovement LOCALID_MAHOGANY_UB_ANABEL, Mahoganytown_Movement_AnabelToGroup
+	waitmovement LOCALID_MAHOGANY_UB_ANABEL
+	msgbox Mahoganytown_Text_UBAftermathAnabel, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Mahoganytown_Text_UBAftermathBlackthorn, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	waitmovement OBJ_EVENT_ID_PLAYER
+	msgbox Mahoganytown_Text_UBAftermathLillieResolve, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBAftermathNextPlan, MSGBOX_DEFAULT
+	closemessage
+	@ The notebook changes hands: two records of different parts of the same
+	@ hour, not one replacing the other.
+	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_NORTH
+	turnobject LOCALID_MAHOGANY_UB_ANABEL, DIR_SOUTH
+	msgbox Mahoganytown_Text_UBAftermathNotes, MSGBOX_DEFAULT
+	closemessage
+	msgbox Mahoganytown_Text_UBAftermathAcceptNotes, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_WEST
+	turnobject LOCALID_MAHOGANY_UB_ANABEL, DIR_WEST
+	@ Only if the partner actually came out. VAR_TEMP_4 survives: no battle
+	@ and no reload happened since it was written.
+	goto_if_eq VAR_TEMP_4, SPECIES_NONE, Mahoganytown_EventScript_UBHook
 	goto_if_eq VAR_TEMP_4, SPECIES_SOLGALEO, Mahoganytown_EventScript_UBAftermathLegend
 	goto_if_eq VAR_TEMP_4, SPECIES_LUNALA, Mahoganytown_EventScript_UBAftermathLegend
 	msgbox Mahoganytown_Text_UBAftermathCosmog, MSGBOX_DEFAULT
 	closemessage
-	goto Mahoganytown_EventScript_UBPryceLeaves
+	goto Mahoganytown_EventScript_UBHook
 
 Mahoganytown_EventScript_UBAftermathLegend::
 	msgbox Mahoganytown_Text_UBAftermathLegend, MSGBOX_DEFAULT
 	closemessage
 
-@ Pryce goes back to his people. Pryce (14,20)->(13,20)->(12,20)->(11,20)
-@ ->(10,20)->(10,19), into the Gym; THEN Mamoswine (13,21)->(12,21)
-@ ->(11,21)->(10,21)->(10,20)->(10,19). Sequential: Mamoswine's last two
-@ tiles are Pryce's. Every tile is free: the beasts and Necrozma are gone.
-@ Their flag is FLAG_TEMP_5, so removeobject is harmless.
-Mahoganytown_EventScript_UBPryceLeaves::
+@ ---------------------------------------------------------------------------
+@ Act XII - goodbye. The hook names no place: the next briefing in Olivine
+@ does that, and only after Looker has telephoned again.
+@ ---------------------------------------------------------------------------
+Mahoganytown_EventScript_UBHook::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement OBJ_EVENT_ID_PLAYER
-	msgbox Mahoganytown_Text_UBPryceGoodbye, MSGBOX_DEFAULT
+	msgbox Mahoganytown_Text_UBHookLooker, MSGBOX_DEFAULT
 	closemessage
-	opendoor 10, 19
-	waitdooranim
-	applymovement LOCALID_MAHOGANY_UB_PRYCE, Mahoganytown_Movement_PryceToGym
-	waitmovement LOCALID_MAHOGANY_UB_PRYCE
-	removeobject LOCALID_MAHOGANY_UB_PRYCE
-	applymovement LOCALID_MAHOGANY_UB_MAMOSWINE, Mahoganytown_Movement_MamoswineToGym
-	waitmovement LOCALID_MAHOGANY_UB_MAMOSWINE
-	removeobject LOCALID_MAHOGANY_UB_MAMOSWINE
-	closedoor 10, 19
-	waitdooranim
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
 	waitmovement OBJ_EVENT_ID_PLAYER
-	msgbox Mahoganytown_Text_UBHook, MSGBOX_DEFAULT
+	msgbox Mahoganytown_Text_UBHookLillieStay, MSGBOX_DEFAULT
 	closemessage
+	msgbox Mahoganytown_Text_UBLillieGoodbye, MSGBOX_DEFAULT
+	closemessage
+	@ Ninetales leans in and Lillie drops a hand to her. One small movement,
+	@ no extra box.
+	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesLeansIn
+	waitmovement LOCALID_MAHOGANY_UB_NINETALES
+	turnobject LOCALID_MAHOGANY_UB_LILLIE, DIR_SOUTH
+	delay 40
+	goto Mahoganytown_EventScript_UBFinish
+
+@ Resolution. The flag and the var move together, and every scratch flag this
+@ mission owns is cleared, so a later visit is an ordinary town.
+@ The silent reload is what repopulates Mahogany: with
+@ FLAG_EVENT_ULTRABEAST_MAHOGANY clear the eight everyday residents would
+@ otherwise pop in one at a time as the camera moved, the doors unlock with
+@ the flag, and the warp is also what gives the follower back after
+@ hidefollower. FLAG_MAHOGANY_UB_LILLIE_SETTLING is set for exactly that one
+@ reload: ApplyUBVisibility consumes it, keeps Lillie and Ninetales by the
+@ Pokemon Center as she promised, and hides everybody else.
+Mahoganytown_EventScript_UBFinish::
+	special RemoveCameraObject
 	fadescreen FADE_TO_BLACK
 	clearflag FLAG_EVENT_ULTRABEAST_MAHOGANY      @ invariant: flag and var together
 	setvar VAR_RIFT_MISSIONS_STATE, 6
-	@ Reload in place under the fade. With the flag cleared the residents
-	@ would otherwise pop in one by one as the camera moved, and the cast
-	@ would linger; ON_TRANSITION repopulates the town and hides the cast in
-	@ one go. Lillie and Ninetales leave together, as they must, the doors
-	@ unlock with the flag, and the warp also undoes the hidefollower.
-	warpsilent MAP_MAHOGANYTOWN, 17, 22
+	clearflag FLAG_MAHOGANY_UB_ENGAGED
+	clearflag FLAG_MAHOGANY_UB_SAW_RECHARGE
+	clearflag FLAG_MAHOGANY_UB_PICKED_CELESTEELA
+	setflag FLAG_MAHOGANY_UB_LILLIE_SETTLING
+	setflag FLAG_DAILY_LOOKER_CALL                @ he just said it in person
+	warpsilent MAP_MAHOGANYTOWN, 18, 22
 	waitstate
 	releaseall
 	end
 
-Mahoganytown_Movement_NinetalesAdvance:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
+@ ---------------------------------------------------------------------------
+@ The retry, after a blackout. ApplyUBVisibility has already put the street
+@ back the way the player left it, so nothing walks into formation here.
+@ Two shapes, and FLAG_MAHOGANY_UB_SAW_RECHARGE is what tells them apart:
+@   before the recharge was ever seen - the group still believes that pulling
+@     them apart is enough, so the attempt runs with the first-run lines and
+@     discovers the recharge the same way it did the first time.
+@   after it - the ice is already on the ground (ON_LOAD painted it), the
+@     beast the player was fighting has spent the whole time since the
+@     blackout hammering a hole in it, and the plan is the short one.
+@ Lillie is at (19,22): her only free neighbours are (18,22) and (19,21), so
+@ one comparison puts the player on the line without a warp.
+@ ---------------------------------------------------------------------------
+Mahoganytown_EventScript_UBSceneRetry::
+	closemessage
+	lockall
+	hidefollower
+	@ The player goes to (18,22) FIRST, so the camera pan below is always the
+	@ same four tiles no matter which side he talked to Lillie from.
+	getplayerxy VAR_TEMP_3, VAR_TEMP_4
+	call_if_eq VAR_TEMP_3, 19, Mahoganytown_EventScript_UBRetryStepIn
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setvar VAR_TEMP_3, 0
+	setvar VAR_TEMP_4, 0
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, Mahoganytown_Movement_CameraRetryToStreet
+	waitmovement OBJ_EVENT_ID_CAMERA
+	goto_if_unset FLAG_MAHOGANY_UB_SAW_RECHARGE, Mahoganytown_EventScript_UBChoose
+	goto Mahoganytown_EventScript_UBWallBreaks
+
+@ The player was on (19,21), north of Lillie: two steps put him on (18,22)
+@ without crossing her.
+Mahoganytown_EventScript_UBRetryStepIn::
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerRetryToLine
+	waitmovement OBJ_EVENT_ID_PLAYER
+	return
+
+@ The consequence of the blackout, completed on screen before the new attempt
+@ starts: the beast that stopped being fought went at the ice with its body,
+@ a section came down, and only THEN does the light cross again. The rest of
+@ the wall stays exactly where it was.
+Mahoganytown_EventScript_UBWallBreaks::
+	goto_if_set FLAG_MAHOGANY_UB_PICKED_CELESTEELA, Mahoganytown_EventScript_UBWallBreaksCelesteela
+	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBStrikesWallDown
+	playmoncry SPECIES_XURKITREE, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
+	waitmoncry
+	goto Mahoganytown_EventScript_UBWallGivesWay
+
+Mahoganytown_EventScript_UBWallBreaksCelesteela::
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBStrikesWallUp
+	playmoncry SPECIES_CELESTEELA, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
+	waitmoncry
+
+Mahoganytown_EventScript_UBWallGivesWay::
+	call Mahoganytown_EventScript_UBShake
+	fadescreenswapbuffers FADE_TO_WHITE
+	setmetatile 15, 22, METATILE_MahoganyTown_IceWall_Broken, FALSE
+	special DrawWholeMapView
+	fadescreenswapbuffers FADE_FROM_WHITE
+	msgbox Mahoganytown_Text_UBRetryWallBroken, MSGBOX_DEFAULT
+	closemessage
+	call Mahoganytown_EventScript_UBFlow
+	@ Mamoswine covered the retreat, so it is back on the west flank: Act VII
+	@ walks it out to the gap again, exactly as it did the first time.
+	msgbox Mahoganytown_Text_UBRetryPlan, MSGBOX_DEFAULT
+	closemessage
+	goto Mahoganytown_EventScript_UBChoose
+
+@ ---------------------------------------------------------------------------
+@ Scene helpers.
+@ ---------------------------------------------------------------------------
+@ Flash of the scene. fadescreenswapbuffers and NOT fadescreen: fadescreen
+@ copies gPlttBufferFaded over gPlttBufferUnfaded on the way down
+@ (src/field_weather.c, FadeScreen) and the FADE_FROM_* that follows reapplies
+@ the time-of-day tint on top of palettes that were already tinted. At night
+@ (coeff 10) every pair of flashes multiplies the scene by ~0.46 again, and
+@ after three or four the town is black. fadescreenswapbuffers does the same
+@ thing with BLDY in hardware and never touches the palettes.
+Mahoganytown_EventScript_UBFlash::
+	fadescreenswapbuffers FADE_TO_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
+	return
+
+Mahoganytown_EventScript_UBShake::
+	setvar VAR_0x8004, 1   @ vertical pan
+	setvar VAR_0x8005, 1   @ horizontal pan
+	setvar VAR_0x8006, 12  @ num shakes
+	setvar VAR_0x8007, 4   @ shake delay
+	special ShakeCamera
+	waitstate
+	return
+
+@ The rift itself wavering, shorter and horizontal only.
+Mahoganytown_EventScript_UBRiftPulse::
+	setvar VAR_0x8004, 0
+	setvar VAR_0x8005, 1
+	setvar VAR_0x8006, 6
+	setvar VAR_0x8007, 3
+	special ShakeCamera
+	waitstate
+	return
+
+@ The light crossing the street: Xurkitree (15,20) reaches for what is left in
+@ the lamps, it runs down column 15, and Celesteela (15,24) burns it.
+Mahoganytown_EventScript_UBFlow::
+	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBSendsDown
+	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
+	call Mahoganytown_EventScript_UBFlash
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBRises
+	playmoncry SPECIES_CELESTEELA, CRY_MODE_NORMAL
+	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
+	waitmoncry
+	return
+
+@ The same light, seen for one beat, right after a beast goes down: the cue
+@ that the fight is not over.
+Mahoganytown_EventScript_UBFlowPulse::
+	call Mahoganytown_EventScript_UBRiftPulse
+	call Mahoganytown_EventScript_UBFlash
+	return
+
+@ The test: both of them reach for the link, it dies in the ice, and the one
+@ that was waiting for the charge gutters. Shown before Anabel says a word.
+Mahoganytown_EventScript_UBFlowBlocked::
+	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBSendsDown
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBSendsUp
+	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
+	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
+	call Mahoganytown_EventScript_UBRiftPulse
+	goto_if_eq VAR_TEMP_3, 1, Mahoganytown_EventScript_UBFlowBlockedCelesteela
+	applymovement LOCALID_MAHOGANY_UB_XURKITREE, Mahoganytown_Movement_UBGutters
+	playmoncry SPECIES_XURKITREE, CRY_MODE_NORMAL
+	waitmovement LOCALID_MAHOGANY_UB_XURKITREE
+	waitmoncry
+	return
+
+Mahoganytown_EventScript_UBFlowBlockedCelesteela::
+	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_UBGutters
+	playmoncry SPECIES_CELESTEELA, CRY_MODE_NORMAL
+	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
+	waitmoncry
+	return
+
+@ ---------------------------------------------------------------------------
+@ Movements. Every tile below was read off data/layouts/Mahoganytown/map.bin
+@ (dump_mapa.py) with the street already widened to y=20..24.
+@ ---------------------------------------------------------------------------
+@ Camera (21,20)->(13,22): the shelter framing.
+Mahoganytown_Movement_CameraToShelter:
+	slide_left
+	slide_left
+	slide_left
+	slide_left
+	slide_left
+	slide_left
+	slide_left
+	slide_left
+	slide_down
+	slide_down
+	step_end
+
+@ (13,22)->(14,22): the street framing. One tile, so the cut is a nudge.
+Mahoganytown_Movement_CameraToStreet:
+	slide_right
+	step_end
+
+@ Retry only: the camera spawns on the player, who has just been put on
+@ (18,22), so it is always these four tiles to (14,22).
+Mahoganytown_Movement_CameraRetryToStreet:
+	slide_left
+	slide_left
+	slide_left
+	slide_left
+	step_end
+
+@ Boy (9,21)->(10,21)->(10,20)->(10,19), into the door.
+Mahoganytown_Movement_BoyEnterGym:
+	walk_right
 	walk_up
+	walk_up
+	set_invisible
+	step_end
+
+@ Hector (9,20)->(10,20)->(10,19), after the boy has cleared the tile.
+Mahoganytown_Movement_HectorEnterGym:
+	walk_right
+	walk_up
+	set_invisible
+	step_end
+
+@ Looker (20,20)->(12,20), the whole length of row 20 to the Gym side.
+Mahoganytown_Movement_LookerToShelter:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	face_left
 	step_end
 
-Mahoganytown_Movement_LillieAdvance:
-	walk_up
-	walk_left
-	walk_left
-	walk_left
+@ Ninetales (19,21)->(19,22)->(19,23).
+Mahoganytown_Movement_NinetalesToLine:
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+@ Lillie (20,21)->(20,22)->(19,22).
+Mahoganytown_Movement_LillieToLine:
+	walk_down
 	walk_left
 	face_left
 	step_end
 
+@ Player (21,20)->(21,21)->(20,21)->(19,21)->(18,21)->(18,22).
 Mahoganytown_Movement_PlayerToLine:
-	walk_left
+	walk_down
 	walk_left
 	walk_left
 	walk_left
@@ -1105,33 +1764,156 @@ Mahoganytown_Movement_PlayerToLine:
 	face_left
 	step_end
 
-Mahoganytown_Movement_StepUpFaceLeft:
+@ Anabel (19,20)->(20,20)->(20,21)->(20,22), through Looker's old tile.
+Mahoganytown_Movement_AnabelToLine:
+	walk_right
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+@ Mamoswine (12,22)->(10,22), between Necrozma and the Gym door. Pryce goes
+@ down his own column at the same time, so the two never share a tile and can
+@ move together.
+Mahoganytown_Movement_MamoswineToCover:
+	walk_left
+	walk_left
+	face_left
+	step_end
+
+@ Pryce (11,20)->(11,21)->(10,21), behind his Pokemon, eyes west.
+Mahoganytown_Movement_PryceToCover:
+	walk_down
+	walk_left
+	face_left
+	step_end
+
+@ Celesteela (15,24)->(17,24), up the south corridor at the player's line.
+Mahoganytown_Movement_CelesteelaAdvance:
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+@ Ninetales (19,23)->(19,24)->(18,24): onto its row, between it and the player.
+Mahoganytown_Movement_NinetalesCutsIn:
+	walk_down
+	walk_left
+	face_left
+	step_end
+
+@ (17,24)->(15,24), still facing the player.
+Mahoganytown_Movement_CelesteelaPushedBack:
+	lock_facing_direction
+	walk_fast_left
+	walk_fast_left
+	unlock_facing_direction
+	step_end
+
+@ Player (18,22)->(18,21), giving ground without turning his back.
+Mahoganytown_Movement_PlayerStepsBack:
+	lock_facing_direction
+	walk_up
+	unlock_facing_direction
+	step_end
+
+@ Ninetales (18,24)->(19,24)->(19,23), back beside Lillie, middle lane clear.
+Mahoganytown_Movement_NinetalesBackToLine:
+	walk_right
 	walk_up
 	face_left
 	step_end
 
-Mahoganytown_Movement_EnterGymFromFront:
-	walk_up
-	set_invisible
+@ Pick Xurkitree: the pair takes the south front.
+@ Ninetales (19,23)->(19,24)->(18,24), two tiles from Celesteela (15,24).
+Mahoganytown_Movement_NinetalesToSouthFront:
+	walk_down
+	walk_left
+	face_left
 	step_end
 
-Mahoganytown_Movement_BoyEnterGym:
-	walk_up
-	walk_up
-	set_invisible
+@ Lillie (19,22)->(19,23), behind her partner.
+Mahoganytown_Movement_LillieToSouthFront:
+	walk_down
+	face_left
 	step_end
 
-Mahoganytown_Movement_PryceToFront:
-	walk_right
-	walk_right
+@ Player (18,21)->(18,20), two tiles from Xurkitree (15,20).
+Mahoganytown_Movement_PlayerToNorthFront:
+	walk_up
+	face_left
+	step_end
+
+@ Pick Celesteela: the pair takes the north front. Ninetales goes round by
+@ column 17, NOT up column 19: Lillie is on (19,22) and the player is still
+@ on (18,21), and this route touches neither.
+@ (19,23)->(18,23)->(17,23)->(17,22)->(17,21)->(17,20)->(18,20).
+Mahoganytown_Movement_NinetalesToNorthFront:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
 	walk_right
 	face_left
 	step_end
 
-Mahoganytown_Movement_MamoswineToFront:
-	walk_right
-	walk_right
+@ Lillie (19,22)->(19,21)->(19,20), behind her partner.
+Mahoganytown_Movement_LillieToNorthFront:
+	walk_up
+	walk_up
 	face_left
+	step_end
+
+@ Player (18,21)->(18,22)->(18,23)->(18,24), two tiles from Celesteela.
+Mahoganytown_Movement_PlayerToSouthFront:
+	walk_down
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+@ The sender pulses toward the other one and dims; the receiver comes back up.
+Mahoganytown_Movement_UBSendsDown:
+	walk_in_place_fast_down
+	walk_in_place_fast_down
+	walk_in_place_fast_down
+	face_right
+	step_end
+
+Mahoganytown_Movement_UBSendsUp:
+	walk_in_place_fast_up
+	walk_in_place_fast_up
+	walk_in_place_fast_up
+	face_right
+	step_end
+
+Mahoganytown_Movement_UBRises:
+	walk_in_place_fast_right
+	walk_in_place_fast_right
+	walk_in_place_fast_right
+	face_right
+	step_end
+
+@ Reaching for a charge that never comes.
+Mahoganytown_Movement_UBGutters:
+	walk_in_place_slow_right
+	walk_in_place_slow_right
+	face_right
+	step_end
+
+@ Nothing to fight any more, so it goes at the ice with its body.
+Mahoganytown_Movement_UBStrikesWallDown:
+	walk_in_place_fast_down
+	walk_in_place_fast_down
+	walk_in_place_fast_down
+	face_right
+	step_end
+
+Mahoganytown_Movement_UBStrikesWallUp:
+	walk_in_place_fast_up
+	walk_in_place_fast_up
+	walk_in_place_fast_up
+	face_right
 	step_end
 
 Mahoganytown_Movement_AttackInPlaceLeft:
@@ -1139,9 +1921,9 @@ Mahoganytown_Movement_AttackInPlaceLeft:
 	walk_in_place_fast_left
 	step_end
 
-Mahoganytown_Movement_AttackInPlaceDown:
-	walk_in_place_fast_down
-	walk_in_place_fast_down
+Mahoganytown_Movement_AttackInPlaceRight:
+	walk_in_place_fast_right
+	walk_in_place_fast_right
 	step_end
 
 Mahoganytown_Movement_PulseInPlaceRight:
@@ -1150,380 +1932,368 @@ Mahoganytown_Movement_PulseInPlaceRight:
 	walk_in_place_fast_right
 	step_end
 
-Mahoganytown_Movement_UBFeedDown:
-	walk_in_place_fast_down
-	walk_in_place_fast_down
-	walk_in_place_fast_down
+@ Mamoswine (10,22)->(12,22), one tile short of the ice it is about to throw,
+@ so the left end of the wall is not hidden behind it.
+Mahoganytown_Movement_MamoswineToGap:
+	walk_right
+	walk_right
 	face_right
 	step_end
 
-Mahoganytown_Movement_UBFeedUp:
-	walk_in_place_fast_up
-	walk_in_place_fast_up
-	walk_in_place_fast_up
-	face_right
-	step_end
-
-Mahoganytown_Movement_UBCharge:
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	step_end
-
-Mahoganytown_Movement_UBKnockedBack:
-	lock_facing_direction
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	unlock_facing_direction
-	step_end
-
-Mahoganytown_Movement_NinetalesToWall:
+@ Mamoswine (12,22)->(11,22), across Necrozma's line on the ground.
+Mahoganytown_Movement_MamoswineBlocks:
 	walk_left
 	face_left
 	step_end
 
-Mahoganytown_Movement_UBPulledIn:
-	lock_facing_direction
-	walk_slow_left
-	unlock_facing_direction
-	step_end
-
+@ Necrozma (8,22)->(9,22), and then out of the line it was blocked on,
+@ (9,22)->(8,22)->(8,21), without ever turning away.
 Mahoganytown_Movement_NecrozmaLean:
 	walk_slow_right
 	step_end
 
-Mahoganytown_Movement_LookerToPlayer:
-	walk_left
-	walk_left
-	walk_left
-	face_left
+Mahoganytown_Movement_NecrozmaSlipsAside:
+	lock_facing_direction
+	walk_slow_left
+	walk_slow_up
+	unlock_facing_direction
 	step_end
 
-Mahoganytown_Movement_AnabelToPlayer:
+@ Dragged two tiles west along their own rows, y=20 and y=24: neither of them
+@ ever touches the ice at y=22.
+Mahoganytown_Movement_UBPulledIn:
+	lock_facing_direction
+	walk_slow_left
+	walk_slow_left
+	unlock_facing_direction
+	step_end
+
+@ North front -> the heal, and back. (18,20)->(18,21)->(19,21).
+Mahoganytown_Movement_PlayerToNorthHeal:
 	walk_down
+	walk_right
+	step_end
+
+Mahoganytown_Movement_PlayerBackToNorthFront:
 	walk_left
+	walk_up
+	face_left
+	step_end
+
+Mahoganytown_Movement_AnabelToNorthHeal:
+	walk_up
+	face_left
+	step_end
+
+Mahoganytown_Movement_AnabelBackFromNorth:
+	walk_down
+	face_left
+	step_end
+
+@ South front -> the heal, and back. (18,24)->(18,23)->(19,23).
+Mahoganytown_Movement_PlayerToSouthHeal:
+	walk_up
+	walk_right
+	step_end
+
+Mahoganytown_Movement_PlayerBackToSouthFront:
 	walk_left
-	walk_left
+	walk_down
+	face_left
+	step_end
+
+Mahoganytown_Movement_AnabelToSouthHeal:
+	walk_down
+	face_left
+	step_end
+
+Mahoganytown_Movement_AnabelBackFromSouth:
+	walk_up
+	face_left
+	step_end
+
+@ Regroup onto the middle line: player (18,22), Lillie (19,22), Ninetales
+@ (19,23), whichever front each of them was holding.
+Mahoganytown_Movement_LillieSouthToLine:
+	walk_up
+	face_left
+	step_end
+
+Mahoganytown_Movement_NinetalesSouthToLine:
+	walk_right
+	walk_up
+	face_left
+	step_end
+
+Mahoganytown_Movement_PlayerNorthToLine:
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+Mahoganytown_Movement_NinetalesNorthToLine:
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	face_left
+	step_end
+
+Mahoganytown_Movement_LillieNorthToLine:
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+Mahoganytown_Movement_PlayerSouthToLine:
+	walk_up
+	walk_up
+	face_left
+	step_end
+
+@ Anabel (20,22)->(20,21) to try to secure them, then (20,21)->(19,21) to
+@ stand beside Lillie for the aftermath.
+Mahoganytown_Movement_AnabelSteps:
+	walk_up
+	face_left
+	step_end
+
+Mahoganytown_Movement_AnabelToGroup:
 	walk_left
 	face_left
 	step_end
 
-Mahoganytown_Movement_PryceToGym:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	set_invisible
+@ Pryce (10,21)->(13,21): as far as the middle of the street, no further.
+Mahoganytown_Movement_PryceToTalk:
+	walk_right
+	walk_right
+	walk_right
+	face_right
 	step_end
 
-Mahoganytown_Movement_MamoswineToGym:
+@ Out west, off the framing (x=6) and away to fetch the lamp. Different rows,
+@ so the two of them walk together.
+Mahoganytown_Movement_PryceLeaves:
 	walk_left
 	walk_left
 	walk_left
-	walk_up
-	walk_up
-	set_invisible
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
-@ Voices (design section 3.1): Looker theatrical and warm, direct in danger,
-@ asks about people first; Anabel precise, separates what she sees from
-@ what she thinks; Lillie polite, specific, holds her ground and changes her
-@ plan when the facts change; Pryce old, dry and patient, speaks in cold
-@ weather.
-@ Lillie NEVER predicts anything. She has experience (she knows an Ultra
-@ Beast on sight and she knows Necrozma's light), but this incident is a
-@ surprise to her: she reports what she wrote down, hedges it, offers one
-@ idea, and is wrong about it. Anything that would make her sound like she
-@ saw this coming belongs to Anabel and her instruments instead. Nobody names Necrozma: Looker and Anabel know it only as the
-@ creature from Blackthorn, Pryce has never seen it, and Lillie recognises
-@ the light from Alola and refuses to say more yet. Nobody says where the
-@ next rift will open.
+Mahoganytown_Movement_MamoswineLeaves:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+@ Looker (12,20)->(17,20)->(17,22), west of the player, facing him.
+Mahoganytown_Movement_LookerToGroup:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	face_right
+	step_end
+
+Mahoganytown_Movement_NinetalesLeansIn:
+	walk_in_place_fast_up
+	walk_in_place_fast_up
+	step_end
+
+@ Retry only: the player talked to Lillie from (19,21) instead of (18,22).
+Mahoganytown_Movement_PlayerRetryToLine:
+	walk_left
+	walk_down
+	step_end
+
+@ ---------------------------------------------------------------------------
+@ Texts. Voices (design 3.1 and the Mahogany revision):
+@   Lillie  polite, attentive, able to decide. She hesitates in front of real
+@           uncertainty and never apologises for contributing. Her plan is
+@           incomplete, not wrong, and she says so in one line and improves it.
+@   Pryce   few words, clear instructions, dry humour. He respects Lillie by
+@           trusting her with a concrete job, not with a speech about it.
+@   Anabel  precise; separates what she sees from what she thinks.
+@   Looker  warm before the danger, direct inside it, asks about people first,
+@           and never talks down to the notebook.
+@ Nobody hides Necrozma's name any more: Gladion identified it in Blackthorn
+@ and Anabel says it out loud the moment it appears.
+@ Nothing here says "tonight": the mission runs at any hour, and the blackout
+@ is shown through lamps and equipment, not through the sky.
+@ One speaker per block. Narration and the note carry no name box at all: a
+@ message that does not open with {SPEAKER ...} has no plate and does NOT
+@ inherit the last one.
 @ No em dash anywhere: U+2014 is not in charmap.txt and breaks the build.
+@ ---------------------------------------------------------------------------
 Mahoganytown_Text_DoorLocked:
 	.string "The door is locked tight.\p"
 	.string "A note is taped to it, stiff\n"
 	.string "with frost:\p"
-	.string "“Everyone is safe. This door\n"
-	.string "stays shut until I say so.\l"
+	.string "“Shelter is available at the\n"
+	.string "Gym. Stay off the street.\l"
 	.string "--Pryce”$"
 
 Mahoganytown_Text_UBAnabelIdle:
-	.string "{SPEAKER NAME_ANABEL}The Pokémon Center\n"
-	.string "runs on its own generator.\p"
-	.string "It is the only light left in\n"
-	.string "this town. Heal there first.\p"
-	.string "Then speak with Looker.$"
+	.string "{SPEAKER NAME_ANABEL}The Center has backup\n"
+	.string "power. You can heal there.\p"
+	.string "Looker is waiting by the road.$"
 
-@ Ela e a DESCOBERTA da missao, mas nao e uma desconhecida: o jogador ja
-@ batalhou com ela na Route 30, em Goldenrod (SquirtBottle) e no Dragon's Den.
-@ A fala e um reencontro, nao uma apresentacao, e ela nao explica ao jogador
-@ que veio para Johto - ele esteve com ela em Johto tres vezes. A Lusamine
-@ nao e citada: a primeira aparicao dela no arco e a M4 (New Bark).
+@ The reunion is a reunion. They have battled on Route 30, in Goldenrod and
+@ in the Dragon's Den, so she does not introduce herself and does not explain
+@ what she is doing in Johto.
 Mahoganytown_Text_UBLillieIdle:
-	.string "{SPEAKER NAME_LILLIE}{PLAYER}! It's really\n"
-	.string "you.\p"
-	.string "The detective kept saying the\n"
-	.string "Champion was on the way.\p"
-	.string "He never said it would be\n"
-	.string "someone I've battled three\l"
-	.string "times.\p"
-	.string "I stopped in Mahogany for one\n"
-	.string "night. Ninetales loves this\l"
-	.string "cold.\p"
-	.string "Then the lights went out, and\n"
-	.string "I saw what was standing in\l"
-	.string "the street.\p"
-	.string "I knew what they were the\n"
-	.string "moment I saw them. I was\l"
-	.string "never supposed to see one\l"
-	.string "again.\p"
-	.string "I've written down everything\n"
-	.string "for two days and I still\l"
-	.string "don't understand any of it.\p"
-	.string "Talk to Looker. I'd rather\n"
-	.string "show it to everyone at once.$"
+	.string "{SPEAKER NAME_LILLIE}{PLAYER}! I'm glad you're\n"
+	.string "here.\p"
+	.string "I was staying nearby when the\n"
+	.string "lights went out.\p"
+	.string "Ninetales noticed something in\n"
+	.string "the street before I did.\p"
+	.string "I've been watching from the Gym\n"
+	.string "window. I think I've found\l"
+	.string "something useful.$"
 
-Mahoganytown_Text_UBLillieIdleCosmog:
-	.string "{SPEAKER NAME_LILLIE}Your {STR_VAR_1} keeps\n"
-	.string "looking up at the sky.\p"
-	.string "Nebby used to do that. Right\n"
-	.string "before something went wrong.\p"
-	.string "…Keep it close tonight.\n"
-	.string "Please.$"
-
-Mahoganytown_Text_UBLillieIdleCosmoem:
-	.string "{SPEAKER NAME_LILLIE}Your {STR_VAR_1} has gone\n"
-	.string "so still.\p"
-	.string "Nebby went still like that,\n"
-	.string "once. It was the hardest\l"
-	.string "night of my life.\p"
-	.string "…I'm sorry. It's only the\n"
-	.string "dark. Keep it close.$"
-
-Mahoganytown_Text_UBLillieIdleLegend:
-	.string "{SPEAKER NAME_LILLIE}Your {STR_VAR_1} hasn't\n"
-	.string "taken its eyes off the west\l"
-	.string "end of town since you came.\p"
-	.string "Whatever comes tonight…\n"
-	.string "I think it already knows.$"
+Mahoganytown_Text_UBNinetalesIdle:
+	.string "Ninetales lifts its ears toward\n"
+	.string "the street.$"
 
 Mahoganytown_Text_UBPryceIdle:
-	.string "{SPEAKER NAME_PRYCE}Hm. The Champion.\p"
-	.string "Every soul in Mahogany is\n"
-	.string "under my Gym tonight.\p"
-	.string "Every soul but this one.\p"
-	.string "{SPEAKER NAME_OLD_MAN}I'm not leaving my\n"
-	.string "lamp, Pryce.\p"
-	.string "{SPEAKER NAME_PRYCE}…The detective is by\n"
-	.string "the Pokémon Center. Go.\p"
-	.string "I've been arguing with this\n"
-	.string "man for forty years. I can\l"
-	.string "manage one more night.$"
+	.string "{SPEAKER NAME_PRYCE}Good. You're here.\p"
+	.string "I'll have the last two inside\n"
+	.string "shortly.\p"
+	.string "Speak to the detectives.$"
 
-Mahoganytown_Text_UBPryceIdleCosmog:
-	.string "{SPEAKER NAME_PRYCE}That {STR_VAR_1} of yours\n"
-	.string "is shivering in its ball.\p"
-	.string "It isn't the cold.\n"
-	.string "I would know.$"
-
-Mahoganytown_Text_UBMamoswineIdle:
-	.string "Mamoswine is standing guard\n"
-	.string "beside Pryce, still as ice.$"
-
-Mahoganytown_Text_UBOldManIdle:
-	.string "Sixty years I've lit the lamp\n"
-	.string "on my porch. Every night.\p"
-	.string "I'm not hiding under a Gym\n"
-	.string "because the power's out!$"
+Mahoganytown_Text_UBHectorIdle:
+	.string "{SPEAKER NAME_HECTOR}My lamp's still on the\n"
+	.string "porch.\p"
+	.string "I don't want to leave it out\n"
+	.string "there.$"
 
 Mahoganytown_Text_UBBoyIdle:
-	.string "Grandpa says the monster only\n"
-	.string "eats electricity.\p"
-	.string "…It doesn't eat Pokémon too,\n"
-	.string "does it?$"
+	.string "{SPEAKER NAME_BOY}Grandpa, we can get it\n"
+	.string "later.\p"
+	.string "Please come inside.$"
 
+Mahoganytown_Text_UBMamoswineIdle:
+	.string "Mamoswine leaves a clear path\n"
+	.string "to the door.$"
+
+@ Looker points at what Lillie has, and does not make her defend it.
 Mahoganytown_Text_UBLookerGreet:
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}! You came.\n"
-	.string "Good. Very good.\p"
-	.string "And yes, before you ask. That\n"
-	.string "is a young lady with a\l"
-	.string "notebook.\p"
-	.string "She was here before any of us.\n"
-	.string "Two days, alone, in a town\l"
-	.string "with no light.\p"
-	.string "Mr. Pryce asked her to leave.\n"
-	.string "Twice. She thanked him very\l"
-	.string "politely, both times.$"
+	.string "{SPEAKER NAME_LOOKER}Lillie has been keeping\n"
+	.string "watch from the Gym.\p"
+	.string "She saw the two Pokémon before\n"
+	.string "we arrived.$"
 
-Mahoganytown_Text_UBLillieTheory:
-	.string "{SPEAKER NAME_LILLIE}I'm sorry. I couldn't\n"
-	.string "go. Not before I understood\l"
-	.string "them.\p"
-	.string "There are two, and they come\n"
-	.string "at about the same hour.\p"
-	.string "I've never seen where they\n"
-	.string "come from. The street is too\l"
-	.string "dark, and I was watching from\l"
-	.string "a window.\p"
-	.string "By the time I find them,\n"
-	.string "they're already there.\p"
-	.string "But I did see this much.\p"
-	.string "One of them pulls the\n"
-	.string "electricity out of\l"
-	.string "everything. The lamps. The\l"
-	.string "lines. The houses.\p"
-	.string "The other takes it, burns it,\n"
-	.string "and gives it right back.\p"
-	.string "{SPEAKER NAME_ANABEL}A closed loop. Each one\n"
-	.string "keeping the other alive.\p"
-	.string "{SPEAKER NAME_LILLIE}…Yes. I think so.\p"
-	.string "I couldn't have said it that\n"
-	.string "cleanly.\p"
-	.string "{SPEAKER NAME_LOOKER}Hm. That is a great\n"
-	.string "deal to conclude from one\l"
-	.string "notebook, mademoiselle.\p"
-	.string "{SPEAKER NAME_LILLIE}It's two nights of\n"
-	.string "notes, and I could still be\l"
-	.string "wrong about all of it.\p"
-	.string "I'd rather be wrong out loud\n"
-	.string "than quiet and right.\p"
-	.string "{SPEAKER NAME_ANABEL}My instruments say\n"
-	.string "what her notebook says. And\l"
-	.string "they say tonight is close.\p"
-	.string "{SPEAKER NAME_LILLIE}Then… if we keep them\n"
-	.string "apart, neither one can feed\l"
-	.string "the other.\p"
-	.string "It's the only idea I have.$"
+Mahoganytown_Text_UBLillieGreet:
+	.string "{SPEAKER NAME_LILLIE}{PLAYER}, could you help us\n"
+	.string "keep them apart?\p"
+	.string "I'll show you what I mean.$"
+
+Mahoganytown_Text_UBLillieObservation:
+	.string "{SPEAKER NAME_LILLIE}Xurkitree touches the\n"
+	.string "street lamps.\p"
+	.string "Then a light runs across the\n"
+	.string "street to Celesteela.\p"
+	.string "Celesteela's engines flare\n"
+	.string "each time.$"
+
+Mahoganytown_Text_UBAnabelObservation:
+	.string "{SPEAKER NAME_ANABEL}Does the light stay\n"
+	.string "between them?$"
+
+Mahoganytown_Text_UBLillieLimit:
+	.string "{SPEAKER NAME_LILLIE}For as long as I could\n"
+	.string "see them.\p"
+	.string "I couldn't follow it back any\n"
+	.string "farther.\p"
+	.string "If we draw them apart, we might\n"
+	.string "break it.$"
+
+Mahoganytown_Text_UBAnabelPlan:
+	.string "{SPEAKER NAME_ANABEL}We'll try that.\p"
+	.string "I'll watch the connection as\n"
+	.string "they move.$"
 
 Mahoganytown_Text_UBReady:
-	.string "{SPEAKER NAME_LOOKER}Then we do it her way.\p"
-	.string "Once it opens, there is no\n"
-	.string "stepping back, {PLAYER}.\p"
-	.string "Are you and your Pokémon\n"
-	.string "ready?$"
+	.string "{SPEAKER NAME_LOOKER}Ready to join them,\n"
+	.string "{PLAYER}?$"
 
 Mahoganytown_Text_UBNotReady:
-	.string "{SPEAKER NAME_LOOKER}Of course. Heal up.\n"
-	.string "Check your team.\p"
-	.string "Miss Anabel says we still have\n"
-	.string "a little time, and I have\l"
-	.string "learned not to argue with her\l"
-	.string "instruments.$"
+	.string "{SPEAKER NAME_LOOKER}Take the time to\n"
+	.string "prepare.\p"
+	.string "We'll keep the road clear.$"
 
 Mahoganytown_Text_UBTimeIsClose:
-	.string "{SPEAKER NAME_ANABEL}The readings are\n"
-	.string "climbing. It is close.\p"
-	.string "{SPEAKER NAME_LILLIE}Mr. Pryce, please!\n"
-	.string "He shouldn't be out here!$"
+	.string "{SPEAKER NAME_ANABEL}The readings are rising.\p"
+	.string "Pryce, we need the street\n"
+	.string "clear.$"
 
 Mahoganytown_Text_UBPryceEvacuates:
-	.string "{SPEAKER NAME_PRYCE}You heard her, Hector.\n"
-	.string "Inside. Now.\p"
-	.string "{SPEAKER NAME_OLD_MAN}Sixty years, Pryce.\n"
-	.string "Not one night without my lamp.\p"
-	.string "{SPEAKER NAME_PRYCE}Then don't make tonight\n"
-	.string "the night I lose you over it.\p"
-	.string "You'll light it tomorrow.\n"
-	.string "Take the boy. In.$"
+	.string "{SPEAKER NAME_PRYCE}Inside, Hector.\n"
+	.string "Both of you.$"
+
+Mahoganytown_Text_UBHectorLamp:
+	.string "{SPEAKER NAME_HECTOR}And my lamp?$"
+
+Mahoganytown_Text_UBPryceLamp:
+	.string "{SPEAKER NAME_PRYCE}I'll fetch it when we're\n"
+	.string "done.\p"
+	.string "Go on. Your grandson is\n"
+	.string "waiting.$"
+
+Mahoganytown_Text_UBLookerEvacuated:
+	.string "{SPEAKER NAME_LOOKER}That's everyone.\p"
+	.string "I'll keep this entrance clear.$"
 
 Mahoganytown_Text_UBPryceMeets:
-	.string "{SPEAKER NAME_PRYCE}That's the last of\n"
-	.string "them. Mahogany is empty.\p"
-	.string "Three nights without light.\n"
-	.string "I moved every family into my\l"
-	.string "Gym myself.\p"
-	.string "So. You're the Champion the\n"
-	.string "detective keeps promising me.\p"
-	.string "I've stood in the cold for\n"
-	.string "fifty years, child. I don't\l"
-	.string "go inside when told.\p"
-	.string "The girl says it comes at\n"
-	.string "this hour. We'll see it\l"
-	.string "together.$"
-
-Mahoganytown_Text_UBLightComing:
-	.string "{SPEAKER NAME_ANABEL}It's starting--\p"
-	.string "…No. That is not the reading\n"
-	.string "I know. That is something\l"
-	.string "else.\p"
-	.string "{SPEAKER NAME_PRYCE}Light. In the middle of\n"
-	.string "my street.$"
+	.string "{SPEAKER NAME_PRYCE}Lillie. Show us where\n"
+	.string "you saw the light.$"
 
 Mahoganytown_Text_UBNecrozmaArrives:
-	.string "{SPEAKER NAME_LOOKER}That… that is the\n"
-	.string "creature from Blackthorn!\p"
-	.string "{SPEAKER NAME_ANABEL}Then it is not only\n"
-	.string "feeding on the rifts.\p"
-	.string "It is the one opening them.\p"
-	.string "{SPEAKER NAME_LILLIE}…No.\p"
-	.string "No. No, not that. Not here.\p"
-	.string "{SPEAKER NAME_ANABEL}Lillie?\p"
-	.string "{SPEAKER NAME_LILLIE}I know that light. I\n"
-	.string "know it.\p"
-	.string "It has no business being\n"
-	.string "anywhere near this town.\p"
-	.string "…Please don't ask me. Not\n"
-	.string "now.\p"
-	.string "{SPEAKER NAME_PRYCE}Whatever it is, it's\n"
-	.string "standing in my town.\p"
-	.string "Mamoswine! Blizzard!$"
+	.string "{SPEAKER NAME_ANABEL}Necrozma.\p"
+	.string "Pryce, watch the west side.$"
 
-Mahoganytown_Text_UBNoEffect:
-	.string "{SPEAKER NAME_PRYCE}…Nothing.\n"
-	.string "Not even frost on it.\p"
-	.string "Fifty years. I've never seen a\n"
-	.string "Pokémon shrug off a Blizzard.\p"
-	.string "{SPEAKER NAME_LOOKER}In Blackthorn it was\n"
-	.string "the same. It does not fight\l"
-	.string "back. It does not even look.$"
+Mahoganytown_Text_UBLillieRecognizes:
+	.string "{SPEAKER NAME_LILLIE}Necrozma…\p"
+	.string "Ninetales, stay close.$"
+
+Mahoganytown_Text_UBPryceCover:
+	.string "{SPEAKER NAME_PRYCE}Mamoswine.\n"
+	.string "Keep it away from the Gym.$"
 
 Mahoganytown_Text_UBAppear:
-	.string "{SPEAKER NAME_ANABEL}Rift opening!\n"
-	.string "Two signatures!\p"
-	.string "…I felt that one before the\n"
-	.string "readings moved.\p"
-	.string "Never mind. Later.\p"
-	.string "{SPEAKER NAME_LOOKER}Xurkitree!\n"
-	.string "And Celesteela!$"
+	.string "{SPEAKER NAME_LILLIE}There.\n"
+	.string "Those are the two I saw.$"
 
-Mahoganytown_Text_UBSynergy:
-	.string "Xurkitree drank the last glow\n"
-	.string "out of the street…\p"
-	.string "…and the current leapt across\n"
-	.string "to Celesteela, which burned\l"
-	.string "it like fuel.\p"
-	.string "{SPEAKER NAME_ANABEL}Energy passing between\n"
-	.string "the two signatures. Both ways.\p"
-	.string "{SPEAKER NAME_LILLIE}That's it. That's what\n"
-	.string "I kept seeing from the\l"
-	.string "window.\p"
-	.string "One drinks, the other burns.\n"
-	.string "Together they never run dry.$"
+Mahoganytown_Text_UBSynergyObserved:
+	.string "{SPEAKER NAME_LILLIE}That's the light.\p"
+	.string "It reaches Celesteela every\n"
+	.string "time.$"
 
-Mahoganytown_Text_UBCharge:
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}! The heavy one!\n"
-	.string "It is coming at you!$"
+Mahoganytown_Text_UBSynergyRead:
+	.string "{SPEAKER NAME_ANABEL}I have it.\n"
+	.string "Keep that path in sight.$"
 
-Mahoganytown_Text_UBSaved:
+Mahoganytown_Text_UBSavedOrder:
 	.string "{SPEAKER NAME_LILLIE}Ninetales, Icy Wind!\n"
-	.string "Keep it away from {PLAYER}!\p"
-	.string "…Are you all right?\n"
-	.string "Good. Good.\p"
-	.string "{SPEAKER NAME_PRYCE}Hmph. That one's got a\n"
-	.string "good cold in her.$"
+	.string "Across the road!$"
+
+Mahoganytown_Text_UBSavedCheck:
+	.string "{SPEAKER NAME_LILLIE}Are you all right,\n"
+	.string "{PLAYER}?$"
 
 Mahoganytown_Text_UBChoosePrompt:
-	.string "{SPEAKER NAME_LILLIE}We keep them apart.\n"
-	.string "Now, before they feed again.\p"
-	.string "Pick one, {PLAYER}. Ninetales and\n"
-	.string "I will hold the other.\p"
-	.string "…I think this works. I'm not\n"
-	.string "certain. I'm sorry.\p"
-	.string "{SPEAKER NAME_PRYCE}And I'll watch the\n"
-	.string "crystal one. For whatever\l"
-	.string "good it does.$"
+	.string "{SPEAKER NAME_LILLIE}Which one will you take?\p"
+	.string "Ninetales and I will draw the\n"
+	.string "other away.$"
 
 Mahoganytown_Text_ChoiceXurkitree:
 	.string "Xurkitree$"
@@ -1532,231 +2302,296 @@ Mahoganytown_Text_ChoiceCelesteela:
 	.string "Celesteela$"
 
 Mahoganytown_Text_UBPickedXurkitree:
-	.string "{SPEAKER NAME_LILLIE}Then the tall one is\n"
-	.string "yours.\p"
-	.string "Ninetales, Snow! Keep the\n"
-	.string "heavy one on the ground!$"
+	.string "{SPEAKER NAME_LILLIE}We'll take Celesteela.\p"
+	.string "Ninetales, lead it down this\n"
+	.string "side.$"
 
 Mahoganytown_Text_UBPickedCelesteela:
-	.string "{SPEAKER NAME_LILLIE}Then the heavy one is\n"
-	.string "yours.\p"
-	.string "Ninetales, get between the\n"
-	.string "tall one and the lines!$"
+	.string "{SPEAKER NAME_LILLIE}We'll take Xurkitree.\p"
+	.string "Ninetales, keep it away from\n"
+	.string "the lines.$"
 
-Mahoganytown_Text_UBGotAway:
-	.string "{SPEAKER NAME_LOOKER}They slipped back\n"
-	.string "through the tear…\p"
-	.string "{SPEAKER NAME_LILLIE}It will open again.\n"
-	.string "It always does.\p"
-	.string "{SPEAKER NAME_LOOKER}Then we regroup,\n"
-	.string "and we are ready for it.$"
+Mahoganytown_Text_UBFirstDown:
+	.string "{SPEAKER NAME_LILLIE}You've stopped it!$"
 
-Mahoganytown_Text_UBDownXurkitree:
-	.string "{SPEAKER NAME_LILLIE}It's down! {PLAYER}, you\n"
-	.string "did it! It's--\p"
-	.string "…Wait. Celesteela!$"
+Mahoganytown_Text_UBCurrentReturns:
+	.string "{SPEAKER NAME_LILLIE}Wait--\n"
+	.string "the light is still reaching it!$"
 
+@ Origin and cost, both on screen: the far one dims while it gives.
 Mahoganytown_Text_UBRevivedXurkitree:
-	.string "Celesteela's engines roared,\n"
-	.string "and the heat poured across\l"
-	.string "the street into Xurkitree.\p"
-	.string "Xurkitree stood up again,\n"
-	.string "crackling, whole.$"
-
-Mahoganytown_Text_UBDownCelesteela:
-	.string "{SPEAKER NAME_LILLIE}It's down! {PLAYER}, you\n"
-	.string "did it! It's--\p"
-	.string "…Wait. Xurkitree!$"
+	.string "{SPEAKER NAME_ANABEL}Celesteela's output\n"
+	.string "dropped.\p"
+	.string "Xurkitree is taking the energy.$"
 
 Mahoganytown_Text_UBRevivedCelesteela:
-	.string "Xurkitree's cables blazed,\n"
-	.string "and the current poured across\l"
-	.string "the street into Celesteela.\p"
-	.string "Celesteela rose again, its\n"
-	.string "engines burning, whole.$"
+	.string "{SPEAKER NAME_ANABEL}Xurkitree sent another\n"
+	.string "charge.\p"
+	.string "Celesteela's engines are\n"
+	.string "restarting.$"
 
-Mahoganytown_Text_UBLilliePlan:
-	.string "{SPEAKER NAME_LOOKER}Impossible!\n"
-	.string "We had it!\p"
-	.string "{SPEAKER NAME_ANABEL}The loop. Whatever\n"
-	.string "one loses, the other gives\l"
-	.string "back.\p"
-	.string "{SPEAKER NAME_PRYCE}Like melting a glacier\n"
-	.string "with a match.\p"
-	.string "{SPEAKER NAME_LILLIE}…I was wrong.\p"
-	.string "Keeping them apart isn't\n"
-	.string "enough. The current still\l"
-	.string "jumps the gap between them.\p"
-	.string "So we close the gap. With\n"
-	.string "something it can't cross.\p"
-	.string "Ice doesn't carry current.\p"
-	.string "Mr. Pryce, can Mamoswine make\n"
-	.string "ice? A lot of it? Right\l"
-	.string "between them?\p"
-	.string "{SPEAKER NAME_PRYCE}Can it make ice.\p"
-	.string "…Girl, you are standing in\n"
-	.string "Mahogany.\p"
-	.string "{SPEAKER NAME_ANABEL}Then do it. But first,\n"
-	.string "{PLAYER}. Your Pokémon.$"
+@ One line for the correction, then the better idea. No self-reproach.
+Mahoganytown_Text_UBLilliePlanCorrection:
+	.string "{SPEAKER NAME_LILLIE}I thought the distance\n"
+	.string "would break it. It didn't.\p"
+	.string "Mr. Pryce, can Mamoswine put a\n"
+	.string "wall right across that light?$"
 
-Mahoganytown_Text_UBAnabelHeals:
-	.string "{SPEAKER NAME_ANABEL}Hold still. Let me see\n"
-	.string "them. All of them.$"
+Mahoganytown_Text_UBPrycePlan:
+	.string "{SPEAKER NAME_PRYCE}A wall?\n"
+	.string "That we can do.\p"
+	.string "Keep them clear of the middle.$"
 
-Mahoganytown_Text_UBAnabelHealed:
-	.string "{SPEAKER NAME_ANABEL}There. Every one of\n"
-	.string "them, ready.\p"
-	.string "Now finish it.$"
+Mahoganytown_Text_UBAnabelWallPlan:
+	.string "{SPEAKER NAME_ANABEL}I'll watch for a change.\p"
+	.string "Looker, keep the way back\n"
+	.string "clear.$"
+
+Mahoganytown_Text_UBNinetalesCover:
+	.string "{SPEAKER NAME_LILLIE}Ninetales, Icy Wind!\p"
+	.string "Keep them back while\n"
+	.string "Mamoswine moves!$"
 
 Mahoganytown_Text_UBWallOrder:
-	.string "{SPEAKER NAME_LILLIE}Ninetales, Aurora Veil!\n"
-	.string "Right between them!\p"
 	.string "{SPEAKER NAME_PRYCE}Mamoswine.\n"
-	.string "Freeze it solid.$"
+	.string "Ice across the gap.$"
 
 Mahoganytown_Text_UBWallHolds:
-	.string "A wall of ice rose across the\n"
-	.string "street, between Xurkitree and\l"
-	.string "Celesteela.\p"
-	.string "The current crackled against\n"
-	.string "it… and died.\p"
-	.string "{SPEAKER NAME_LILLIE}It's holding!\n"
-	.string "They can't reach each other!\p"
-	.string "{PLAYER}, now! This time it\n"
-	.string "stays down!$"
+	.string "{SPEAKER NAME_ANABEL}The transfer stopped.\p"
+	.string "The wall is cutting it off.$"
+
+Mahoganytown_Text_UBLillieWall:
+	.string "{SPEAKER NAME_LILLIE}It's working.\p"
+	.string "Ninetales, stay on this side\n"
+	.string "of it.$"
+
+Mahoganytown_Text_UBAnabelHeals:
+	.string "{SPEAKER NAME_ANABEL}Come back here, {PLAYER}.\p"
+	.string "Let me treat your team.$"
+
+Mahoganytown_Text_UBAnabelHealed:
+	.string "{SPEAKER NAME_ANABEL}They're ready.\p"
+	.string "The connection is still down.$"
+
+Mahoganytown_Text_UBSecondRound:
+	.string "{SPEAKER NAME_LILLIE}I'll keep the other one\n"
+	.string "here.\p"
+	.string "Go ahead, {PLAYER}!$"
 
 Mahoganytown_Text_UBLillieFoughtCelesteela:
-	.string "{SPEAKER NAME_LILLIE}Ninetales! …It's down.\n"
-	.string "Celesteela's down too.\p"
-	.string "It kept reaching for the\n"
-	.string "other one. There was nothing\l"
-	.string "left to reach.$"
+	.string "{SPEAKER NAME_LILLIE}Celesteela's stopped\n"
+	.string "too.\p"
+	.string "Ninetales, hold there.$"
 
 Mahoganytown_Text_UBLillieFoughtXurkitree:
-	.string "{SPEAKER NAME_LILLIE}Ninetales! …It's down.\n"
-	.string "Xurkitree's down too.\p"
-	.string "It kept pulling at the wall.\n"
-	.string "Ice doesn't give anything\l"
-	.string "back.$"
+	.string "{SPEAKER NAME_LILLIE}Xurkitree can't reach\n"
+	.string "the connection.\p"
+	.string "We've stopped it.$"
 
-Mahoganytown_Text_UBAbsorbed:
-	.string "{SPEAKER NAME_PRYCE}It's… swallowing them.\p"
-	.string "{SPEAKER NAME_LOOKER}Again! Just as in\n"
-	.string "Blackthorn. Both of them!\p"
-	.string "{SPEAKER NAME_ANABEL}It opened the tear,\n"
-	.string "let them feed for three\l"
-	.string "nights…\p"
-	.string "…and now it collects them.\p"
-	.string "{SPEAKER NAME_LILLIE}It's feeding.\n"
-	.string "The same way it did before.\p"
-	.string "{SPEAKER NAME_LOOKER}Before? Mademoiselle,\n"
-	.string "before WHEN?\p"
-	.string "{SPEAKER NAME_LILLIE}…Later. I promise.$"
+Mahoganytown_Text_UBSecure:
+	.string "{SPEAKER NAME_ANABEL}Keep the barrier up.\p"
+	.string "We'll try to secure them now.$"
+
+Mahoganytown_Text_UBPryceIntercept:
+	.string "{SPEAKER NAME_PRYCE}Mamoswine, block\n"
+	.string "Necrozma!$"
+
+Mahoganytown_Text_UBLillieNewLink:
+	.string "{SPEAKER NAME_LILLIE}Above the ice!\p"
+	.string "It's reaching them from above!$"
+
+Mahoganytown_Text_UBNinetalesIntercept:
+	.string "{SPEAKER NAME_LILLIE}Ninetales!\n"
+	.string "Break that light!$"
+
+@ The discovery, and it belongs to the instruments: no branch of this scene
+@ owns it and no Pokemon in the party is needed for it.
+Mahoganytown_Text_UBAbsorbedRead:
+	.string "{SPEAKER NAME_ANABEL}I still have both\n"
+	.string "signals.\p"
+	.string "They're moving with Necrozma!$"
+
+Mahoganytown_Text_UBLillieSignals:
+	.string "{SPEAKER NAME_LILLIE}Both of them?$"
+
+Mahoganytown_Text_UBAbsorbedConfirm:
+	.string "{SPEAKER NAME_ANABEL}Yes.\n"
+	.string "The same patterns as before.\p"
+	.string "I'm recording them.$"
 
 Mahoganytown_Text_UBNecrozmaSensesCosmog:
-	.string "The creature is staring past\n"
-	.string "you… at the Poké Ball that\l"
-	.string "holds your {STR_VAR_1}.\p"
-	.string "Your {STR_VAR_1} is trembling.\p"
-	.string "{SPEAKER NAME_LILLIE}No! Not that one!\n"
-	.string "Ninetales, stay by {PLAYER}!$"
+	.string "{SPEAKER NAME_LILLIE}{PLAYER}, keep {STR_VAR_1}\n"
+	.string "beside you.\p"
+	.string "Ninetales, stay with them.$"
 
 Mahoganytown_Text_UBNecrozmaSensesLegend:
-	.string "Light flares between the\n"
-	.string "creature and your\l"
-	.string "{STR_VAR_1}'s Poké Ball!\p"
-	.string "It recoils… then steadies,\n"
-	.string "and stares.\p"
-	.string "Your {STR_VAR_1} doesn't look\n"
-	.string "away.$"
+	.string "{SPEAKER NAME_LILLIE}The opening's steady.\p"
+	.string "Anabel, can you still see the\n"
+	.string "two signals?$"
+
+Mahoganytown_Text_UBPartnerRead:
+	.string "{SPEAKER NAME_ANABEL}More clearly now.\p"
+	.string "But they're still moving with\n"
+	.string "Necrozma.$"
+
+Mahoganytown_Text_UBLilliePartnerLimit:
+	.string "{SPEAKER NAME_LILLIE}They're still in there…\p"
+	.string "Stay beside {PLAYER},\n"
+	.string "{STR_VAR_1}.$"
 
 Mahoganytown_Text_UBNecrozmaGone:
-	.string "{SPEAKER NAME_PRYCE}…Gone.\p"
-	.string "{SPEAKER NAME_LOOKER}And the lamps!\n"
-	.string "{PLAYER}, look! The lamps are\l"
-	.string "coming back on!$"
+	.string "{SPEAKER NAME_ANABEL}The opening has closed.\p"
+	.string "I've lost the signal.$"
 
-Mahoganytown_Text_UBAftermath:
-	.string "{SPEAKER NAME_LOOKER}Is anyone hurt?\n"
-	.string "{PLAYER}? Mademoiselle?\l"
-	.string "Mr. Pryce?\p"
-	.string "…Good. Then the report can\n"
-	.string "wait a moment.\p"
-	.string "{SPEAKER NAME_PRYCE}Hmph. I've seen more\n"
-	.string "winters than the three of you\l"
-	.string "put together, detective.\p"
-	.string "Not one like this, though.\p"
-	.string "{SPEAKER NAME_ANABEL}Two Ultra Beasts that\n"
-	.string "kept each other alive. And\l"
-	.string "something that came back for\l"
-	.string "both of them.\p"
-	.string "Twice now. That is not chance.\n"
-	.string "That is a pattern.\p"
-	.string "{SPEAKER NAME_LOOKER}Mademoiselle. You said\n"
-	.string "you knew that light.\p"
-	.string "{SPEAKER NAME_LILLIE}…I do. I saw it in\n"
-	.string "Alola.\p"
-	.string "I thought that was the end of\n"
-	.string "it. I thought it was over.\p"
-	.string "I'll tell you everything I\n"
-	.string "know. Truly.\p"
-	.string "Just… not in the middle of the\n"
-	.string "street. Not tonight.\p"
-	.string "{SPEAKER NAME_LOOKER}Then we will wait.\n"
-	.string "Waiting is also detective\l"
-	.string "work.$"
+Mahoganytown_Text_UBPowerReturns:
+	.string "{SPEAKER NAME_LOOKER}The power's back.\p"
+	.string "I'll check on everyone inside.$"
 
-Mahoganytown_Text_UBAftermathCosmog:
-	.string "{SPEAKER NAME_LILLIE}{PLAYER}. It looked at\n"
-	.string "your {STR_VAR_1}. Only at it.\p"
-	.string "Promise me you'll keep it\n"
-	.string "close. Always.\p"
-	.string "{SPEAKER NAME_ANABEL}In Blackthorn, and\n"
-	.string "now here. It keeps finding\l"
-	.string "one.\p"
-	.string "I would very much like to know\n"
-	.string "why.$"
+Mahoganytown_Text_UBPryceClearsIce:
+	.string "{SPEAKER NAME_PRYCE}Mamoswine.\n"
+	.string "Open the road again.$"
 
-Mahoganytown_Text_UBAftermathLegend:
-	.string "{SPEAKER NAME_LILLIE}It backed away from\n"
-	.string "your {STR_VAR_1}.\p"
-	.string "I've never seen that light\n"
-	.string "back away from anything.\p"
-	.string "{SPEAKER NAME_ANABEL}Something made of\n"
-	.string "light, afraid of a legend of\l"
-	.string "the sky… That means\l"
-	.string "something.$"
+Mahoganytown_Text_UBPryceThanks:
+	.string "{SPEAKER NAME_PRYCE}That gave us the room we\n"
+	.string "needed.\p"
+	.string "Good work, both of you.$"
+
+Mahoganytown_Text_UBLillieThanks:
+	.string "{SPEAKER NAME_LILLIE}Thank you for trusting\n"
+	.string "us.\p"
+	.string "I didn't know whether the wall\n"
+	.string "would work.$"
+
+Mahoganytown_Text_UBPryceAnswer:
+	.string "{SPEAKER NAME_PRYCE}You saw where to put it.\p"
+	.string "Mamoswine did the rest.$"
 
 Mahoganytown_Text_UBPryceGoodbye:
-	.string "{SPEAKER NAME_PRYCE}Champion. Mahogany owes\n"
-	.string "you a night of light.\p"
-	.string "And you, girl. That was clear\n"
-	.string "thinking with a storm in your\l"
-	.string "face. Winter would approve.\p"
-	.string "I'll tell them they can go\n"
-	.string "home.\p"
-	.string "And Hector can light his\n"
-	.string "blasted lamp.$"
+	.string "{SPEAKER NAME_PRYCE}I'd better fetch that\n"
+	.string "lamp.\p"
+	.string "He'll ask before he asks about\n"
+	.string "the town.$"
 
-Mahoganytown_Text_UBHook:
-	.string "{SPEAKER NAME_ANABEL}Lillie. May I copy your\n"
-	.string "notes? Your reading was better\l"
-	.string "than my instruments.\p"
-	.string "{SPEAKER NAME_LILLIE}You can have all of\n"
-	.string "them.\p"
-	.string "I'd like to stay a few more\n"
-	.string "days. In case it comes back.\p"
-	.string "{SPEAKER NAME_ANABEL}The readings haven't\n"
-	.string "settled. It will open another\l"
-	.string "rift.\p"
-	.string "Where, and when, we don't know\n"
+Mahoganytown_Text_UBAftermathLooker:
+	.string "{SPEAKER NAME_LOOKER}Everyone's all right.\p"
+	.string "The path is clear.\n"
+	.string "They're heading home.$"
+
+Mahoganytown_Text_UBAftermathLillie:
+	.string "{SPEAKER NAME_LILLIE}Those signals you\n"
+	.string "recorded…\p"
+	.string "Could Xurkitree and Celesteela\n"
+	.string "still be alive?$"
+
+Mahoganytown_Text_UBAftermathAnabel:
+	.string "{SPEAKER NAME_ANABEL}They could.\p"
+	.string "The patterns stayed distinct\n"
+	.string "after the two disappeared.\p"
+	.string "We have a reason to keep\n"
+	.string "looking for them.$"
+
+Mahoganytown_Text_UBAftermathBlackthorn:
+	.string "{SPEAKER NAME_LOOKER}And perhaps the two from\n"
+	.string "Blackthorn.\p"
+	.string "I'll compare both recordings.$"
+
+Mahoganytown_Text_UBAftermathLillieResolve:
+	.string "{SPEAKER NAME_LILLIE}Then we should try to\n"
+	.string "get them out.\p"
+	.string "I'll help however I can.$"
+
+Mahoganytown_Text_UBAftermathNextPlan:
+	.string "{SPEAKER NAME_ANABEL}The wall stopped the\n"
+	.string "transfer.\p"
+	.string "Necrozma reached around it.\p"
+	.string "Next time, we need to see that\n"
+	.string "move sooner.$"
+
+Mahoganytown_Text_UBAftermathNotes:
+	.string "{SPEAKER NAME_LILLIE}I marked when each pulse\n"
+	.string "started.\p"
+	.string "You can keep these pages.$"
+
+Mahoganytown_Text_UBAftermathAcceptNotes:
+	.string "{SPEAKER NAME_ANABEL}Thank you.\p"
+	.string "I'll match them to the\n"
+	.string "readings.$"
+
+Mahoganytown_Text_UBAftermathLegend:
+	.string "{SPEAKER NAME_ANABEL}{STR_VAR_1} steadied the\n"
+	.string "opening.\p"
+	.string "The two signals became clearer,\n"
+	.string "but stayed with Necrozma.\p"
+	.string "We still need a way to free\n"
+	.string "them.$"
+
+Mahoganytown_Text_UBAftermathCosmog:
+	.string "{SPEAKER NAME_LILLIE}Is {STR_VAR_1} all right?\p"
+	.string "It can rest with Ninetales\n"
+	.string "while we finish.$"
+
+Mahoganytown_Text_UBHookLooker:
+	.string "{SPEAKER NAME_LOOKER}We'll compare the records\n"
+	.string "in Olivine.\p"
+	.string "I'll call when we have\n"
+	.string "something.\p"
+	.string "Some rest for you.\n"
+	.string "Some paperwork for us.$"
+
+Mahoganytown_Text_UBHookLillieStay:
+	.string "{SPEAKER NAME_LILLIE}I'll stay until the\n"
+	.string "residents are settled.\p"
+	.string "Then I'll send you anything\n"
+	.string "else I find.$"
+
+Mahoganytown_Text_UBLillieGoodbye:
+	.string "{SPEAKER NAME_LILLIE}I'm glad we got to battle\n"
+	.string "on the same side.\p"
+	.string "Next time, I hope it's\n"
+	.string "somewhere quieter.$"
+
+Mahoganytown_Text_UBLillieSettling:
+	.string "{SPEAKER NAME_LILLIE}They're coming out now.\p"
+	.string "We'll make sure the path stays\n"
+	.string "clear.\p"
+	.string "Go and rest, {PLAYER}.$"
+
+@ Anything that is not a win and is not a blackout. It never says the beasts
+@ escaped: they are still standing in the street.
+Mahoganytown_Text_UBUnresolved:
+	.string "{SPEAKER NAME_ANABEL}The street isn't clear\n"
 	.string "yet.\p"
-	.string "{SPEAKER NAME_LOOKER}So we keep watching.\p"
-	.string "Rest, {PLAYER}. Then come back\n"
-	.string "to our house in Olivine.\p"
-	.string "The moment something opens,\n"
-	.string "you will be the first to know.\p"
-	.string "{SPEAKER NAME_LILLIE}{PLAYER}…\n"
-	.string "Thank you for listening.\p"
-	.string "To my plan, I mean. Both of\n"
-	.string "them. Even the wrong one.$"
+	.string "Regroup before we move in\n"
+	.string "again.$"
+
+Mahoganytown_Text_UBRetryGreeting:
+	.string "{SPEAKER NAME_LOOKER}We've kept them away\n"
+	.string "from the Gym.\p"
+	.string "The Center is ready for you.$"
+
+Mahoganytown_Text_UBRetryLillie:
+	.string "{SPEAKER NAME_LILLIE}Ninetales and I can try\n"
+	.string "again.\p"
+	.string "Are your Pokémon ready?$"
+
+Mahoganytown_Text_UBRetryNotReady:
+	.string "{SPEAKER NAME_LILLIE}Take care of them first.\p"
+	.string "We'll stay here.$"
+
+Mahoganytown_Text_UBRetryWallBroken:
+	.string "A section of the wall of ice\n"
+	.string "cracked, and came down.\p"
+	.string "The light crossed the gap\n"
+	.string "again.$"
+
+@ Used only once the group has already watched a recharge happen: they know
+@ the link exists, and the first fight is what opens the window for the ice.
+Mahoganytown_Text_UBRetryPlan:
+	.string "{SPEAKER NAME_ANABEL}We need to slow one down\n"
+	.string "before Mamoswine can reach\l"
+	.string "the gap.\p"
+	.string "Choose your target.$"
+
+Mahoganytown_Text_UBRetryRecharge:
+	.string "{SPEAKER NAME_LILLIE}It's sending the charge.\p"
+	.string "Mr. Pryce, now!$"

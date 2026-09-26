@@ -1,15 +1,16 @@
 # Mahogany — Necrozma, Xurkitree + Celesteela (Rift Mission 2) — implementação
 
-**Status:** **história evoluída (revisão 4)** — 22/09/2026. Build limpo
-(`make -j$(nproc)`). Runtime pendente: checklist em §10. As tabelas *pedido →
-como ficou* estão em §13 (revisão 3) e §14 (revisão 4).
-Revisão 4 — 22/09/2026 (revisão 1: plano; revisão 2: esqueleto + §12;
-revisão 3: a história; revisão 4: a voz da Lillie corrigida e a plaquinha com
-o nome do falante, skills `evoluir-historia-de-evento` e `nomear-falante`).
-**Modo:** a cena deixou de ser esqueleto: falas finais, arco dramático completo,
-Pryce, Necrozma e duas batalhas seguidas. Estado, flags, invariantes, ponto de
-saída e retry continuam os da revisão 2 (§1, sem mudança de valor).
-**Roteiro da cena (falas e movimentos):** [`MAHOGANY_ULTRABEAST_SCRIPT.md`](MAHOGANY_ULTRABEAST_SCRIPT.md)
+**Status:** **roteiro V3 aplicado (revisão 6)** — 25/09/2026. Build limpo
+(`make -j$(nproc)`). Runtime pendente: checklist em §16.10. As tabelas
+*pedido → como ficou* estão em §13 (rev. 3), §14 (rev. 4) e **§16.6 (rev. 6)**.
+Revisão 6 — 25/09/2026 (rev. 1: plano; rev. 2: esqueleto + §12; rev. 3: a
+história; rev. 4: a voz da Lillie e a plaquinha; rev. 5: os clarões; rev. 6: o
+roteiro V3 inteiro, com o mapa alargado e a barreira de gelo de verdade).
+**§16 SUBSTITUI §1.1, §1.3, §3.2, §3.3, §3.4, §4.2–§4.5 e §5.** Onde houver
+conflito, vale §16: a rua tem cinco linhas, o elenco mudou de tile, a parede de
+gelo existe como metatile e há quatro flags persistentes novas.
+**Roteiro da cena (falas e movimentos):** [`MAHOGANY_ULTRABEAST_SCRIPT_V2.md`](MAHOGANY_ULTRABEAST_SCRIPT_V2.md)
+(V3, 25/09/2026; o [`_SCRIPT.md`](MAHOGANY_ULTRABEAST_SCRIPT.md) anterior é histórico)
 **Design de referência:** [`SOULGOLD_RIFT_MISSIONS_DESIGN.md`](../SOULGOLD_RIFT_MISSIONS_DESIGN.md) §6 (regras comuns) e §6.2.
 **Missão anterior:** [`BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md`](../BLACKTHORN_ULTRABEAST/BLACKTHORN_ULTRABEAST_IMPLEMENTATION.md)
 — este doc **continua** a máquina de estados dela; a M1 revisão 3 é o modelo da
@@ -19,22 +20,22 @@ Escopo: do gancho final de Blackthorn (o jogador volta a Olivine) até o fim do
 incidente de Mahogany, terminando com o gancho **sem destino** que manda o
 jogador de volta a Olivine. A Missão 3 (Cherrygrove) é revelada no briefing dela.
 
-**A história em três linhas.** Mahogany está sem luz há três noites; a Lillie
-está lá há dois dias (o jogador descobre isso ao chegar) e o Pryce termina de
-levar os últimos moradores para o Ginásio na frente do jogador. Ela reconhece
-as Ultra Beasts de Alola, mas nunca viu o que abre a fenda e diz isso — quem
-marca a hora é a Anabel. O Necrozma
-aparece, ignora o Blizzard do Pryce e deixa Xurkitree e Celesteela passarem —
-duas UBs que se mantêm vivas uma pela outra; o jogador vence a sua, a outra a
-revive, a Lillie entende o porquê e pede gelo ao Pryce: uma parede de gelo
-separa as duas e a segunda luta é para valer. O Necrozma absorve as duas e some;
-a Lillie reconhece aquela luz de Alola e não diz mais nada. O Pryce volta para
-o Ginásio.
+**A história em três linhas (rev. 6).** Mahogany está sem energia e a Lillie
+vem observando duas Ultra Beasts da janela do Ginásio: ela viu uma luz correr de
+uma até a outra e propõe afastá-las. O plano é testado e **não basta** — a UB
+distante manda a própria carga pelo elo e a que caiu se reergue, perdendo brilho
+quem enviou. Ela corrige a hipótese na hora e pede ao Pryce uma parede de gelo
+atravessada **no trajeto**; funciona, e a segunda luta é para valer. O Necrozma
+então alcança as duas por cima do gelo e as recolhe — mas a Anabel continua com
+as duas assinaturas depois da absorção, e é essa a primeira razão concreta para
+acreditar que as UBs ainda podem ser recuperadas. O Pryce vai buscar a lâmpada
+do Hector; a Lillie fica até os moradores voltarem.
 
 **Decisões desta missão:**
 - Elenco: **Looker, Anabel, Lillie (+ Alolan Ninetales), Pryce (+ Mamoswine)**,
   dois moradores (velho + menino) e o **Necrozma**.
-- Local: `Mahoganytown`, rua sul, entre o Pokémon Center e o Ginásio.
+- Local: `Mahoganytown`, rua sul, entre o Pokémon Center e o Ginásio, **alargada
+  em duas linhas** para esta missão (§16.1): `y=20..24`, `x=6..26`.
 - **Duas batalhas seguidas contra a mesma UB** (a escolhida): rodada 1 curta
   (2 barras), rodada 2 no alvo da escala (4 barras / Lv80 / x130). A Anabel cura
   o time entre as duas.
@@ -1121,3 +1122,212 @@ Nada de estado mudou — é uma caixa de texto. `medir_linha.py` sem linha acima
 jogador ("That is a young lady with a notebook"). Funciona, porque o Looker não
 sabe que os dois se conhecem, mas se o autor quiser fechar o laço, o lugar é uma
 frase da Lillie dizendo isso a ele.
+---
+
+## 16. Revisão 6 — o roteiro V3 aplicado (25/09/2026)
+
+**Fonte:** [`MAHOGANY_ULTRABEAST_SCRIPT_V2.md`](MAHOGANY_ULTRABEAST_SCRIPT_V2.md)
+(roteiro revisado V3, 25/09/2026) e
+[`SOULGOLD_RIFT_ARCO_NARRATIVO.md`](../SOULGOLD_RIFT_ARCO_NARRATIVO.md) §7.
+Esta seção **substitui** §1.1, §1.3, §3.2, §3.3, §3.4, §4.2–§4.5 e §5 acima:
+onde houver conflito, vale o que está aqui.
+
+### 16.0 Três decisões de escopo perguntadas ao autor antes de escrever
+
+| Pergunta | Resposta | Consequência |
+| --- | --- | --- |
+| §3 proíbe a faixa comprimida. Alargar, remanejar ou reencenar? | **Alargar a rua sul em duas linhas** | `map.bin` editado: `y=23` e `y=24` viram rua |
+| §2.3 pede plaquinha `NARRATOR`/`NOTE`/`SYSTEM` | **Sem plaquinha na narração** | o motor já não herda o nome anterior; entraram só `HECTOR` e `BOY` |
+| §9 exige um ponto de alimentação real | **Trocar a fala para as lâmpadas da rua** | zero arte nova; "power lines" virou "street lamps" |
+
+### 16.1 O mapa foi alargado
+
+`data/layouts/Mahoganytown/map.bin`, colunas `x=4..27`: a faixa sul desceu dois
+tiles (`y=23→25`, `y=24→26`, `y=25→27`) e as duas linhas liberadas viraram rua,
+repetindo a linha do meio do canteiro de areia (`0xDB`/`0xDC`/`0xDD`) com a
+borda de baixo (`0xE3`/`0xE4`/`0xE5`) em `y=24`. A cerca e o morro ficaram em
+`y=25`/`y=26`, e a altura 28 do layout comporta isso exatamente.
+
+Resultado: a rua passou de **3 para 5 linhas** (`y=20..24`, `x=6..26`). É a
+dependência que o roteiro cobrava, e sem ela nada do resto cabe: duas UBs de
+32×32, Necrozma, Mamoswine, quatro treinadores e uma parede não entram em três
+linhas sem se encavalar.
+
+Nada mais do mapa mudou: warps, conexões (Route 42/43/44), `HEAL_LOCATION`
+(21,20) e a área leste estão intactos.
+
+### 16.2 A barreira de gelo é de verdade
+
+Quatro metatiles novos no fim do secundário `gTileset_MahoganyTown`
+(tiles livres 281–296, paleta 12, desenho na camada do **meio**, então os
+sprites passam na frente):
+
+| Rótulo | ID |
+| --- | --- |
+| `METATILE_MahoganyTown_IceWall_Left` | `0x53E` |
+| `METATILE_MahoganyTown_IceWall_Middle` | `0x53F` |
+| `METATILE_MahoganyTown_IceWall_Right` | `0x540` |
+| `METATILE_MahoganyTown_IceWall_Broken` | `0x541` |
+
+A parede ocupa `(14,22) (15,22) (16,22)`, atravessada no fluxo que desce a
+coluna 15 entre Xurkitree `(15,20)` e Celesteela `(15,24)`. É pintada com
+`setmetatile ... TRUE` (intransponível para o jogador), rompida no meio no
+retry e apagada para areia lisa (`0xDC`) quando o Pryce manda abrir passagem.
+Nenhum objeto foi gasto nela e nenhum movimento roteirizado a atravessa.
+
+### 16.3 Três áreas, duas câmeras
+
+| Área | Quem | Tiles |
+| --- | --- | --- |
+| Abrigo | Hector, neto, Pryce, Mamoswine, depois Looker | `x=9..12` |
+| Rua | Xurkitree norte `y=20`, Celesteela sul `y=24`, Necrozma e a fenda a oeste | `x=7..16` |
+| Apoio | jogador, Lillie/Ninetales, Anabel, porta do Centro | `x=17..21` |
+
+A cena usa `special SpawnCameraObject` com dois enquadramentos: **(13,22)** na
+evacuação e **(14,22)** no confronto. A conta que decide as duas: a tela tem
+15×10 metatiles com o tile da câmera na coluna 7, linha 4, e a caixa de
+diálogo cobre as **três linhas de baixo**. Com a câmera em `y=22` essas três
+linhas são `y=25..27`, a faixa de rocha ao sul da cidade — ou seja, **ninguém
+fica atrás da caixa** e a frente sul em `y=24` continua visível. É por isso
+que os dois enquadramentos estão na linha 22 e não na 21.
+
+### 16.4 Elenco no `map.json`
+
+| Objeto | Tile | Flag |
+| --- | --- | --- |
+| Hector (`OLD_MAN`) | (9,20) | `FLAG_TEMP_3` |
+| neto (`BOY`) | (9,21) | `FLAG_TEMP_3` |
+| Pryce | (11,20) | `FLAG_TEMP_5` |
+| Mamoswine | (12,22) | `FLAG_TEMP_5` |
+| Anabel | (19,20) | `FLAG_TEMP_1` |
+| Looker | (20,20) | `FLAG_TEMP_1` |
+| Ninetales | (19,21) | `FLAG_TEMP_8` |
+| Lillie | (20,21) | `FLAG_TEMP_8` |
+| Xurkitree | (15,20) | `FLAG_TEMP_2` |
+| Celesteela | (15,24) | `FLAG_TEMP_2` |
+| Necrozma | (8,22) | `FLAG_TEMP_4` |
+| fenda (`OBJ_EVENT_GFX_ALTAR_RIFT`) | (7,22) | `FLAG_TEMP_6` |
+| Cosmog / Cosmoem / Solgaleo / Lunala | (17,23) | `FLAG_TEMP_7` |
+
+Duas medidas que o build não confere e que custaram um reposicionamento cada:
+
+- **Mamoswine saiu de (11,21).** Sprite de 32×32 em cima do Pryce (11,20):
+  ele sumia por completo. Foi para (12,22).
+- **O parceiro saiu de (18,23).** Ali ele, o jogador (18,22), a Lillie (19,22)
+  e a Ninetales (19,23) viravam uma mancha só. Foi para (17,23), duas colunas
+  livres da Ninetales, à frente do gelo.
+
+Âncoras separadas não bastam: **o tamanho do sprite é que decide.**
+
+`FLAG_TEMP_8` é novo e existe por um motivo: a Lillie e a Ninetales são as
+únicas duas que **continuam na rua depois da missão**, então não podem dividir
+a flag do resto do elenco.
+
+Orçamento no momento mais cheio (parceiro fora da Ball, antes de o Necrozma
+sair): jogador + follower escondido + Lillie + Ninetales + Looker + Anabel +
+Pryce + Mamoswine + Xurkitree + Celesteela + Necrozma + fenda + parceiro =
+**13/16**. Hector e o neto já saíram antes disso.
+
+### 16.5 Estado persistente novo (bloco `CUSTOM_FLAGS`)
+
+| Flag | Valor | Significa |
+| --- | --- | --- |
+| `FLAG_MAHOGANY_UB_ENGAGED` | `0x104A` | as apresentações já aconteceram; blackout volta como retry |
+| `FLAG_MAHOGANY_UB_SAW_RECHARGE` | `0x104B` | o grupo já viu a recarga; separa os dois tipos de retry |
+| `FLAG_MAHOGANY_UB_PICKED_CELESTEELA` | `0x104C` | espelho do `VAR_TEMP_3` que sobrevive ao blackout |
+| `FLAG_MAHOGANY_UB_LILLIE_SETTLING` | `0x104D` | consumida pelo `ON_TRANSITION` seguinte |
+
+As quatro são limpas por `Mahoganytown_EventScript_UBFinish`.
+`VAR_TEMP_6` novo: a Lillie não mostra o caderno duas vezes na mesma visita.
+`VAR_TEMP_0`/`VAR_TEMP_1` continuam do vendedor de Rage Candy Bar.
+
+### 16.6 Pedido → como ficou
+
+| Pedido do roteiro V3 | Como ficou |
+| --- | --- |
+| Não reusar a faixa de três tiles | Rua alargada para cinco linhas; §16.1 |
+| Três áreas com corredores independentes | §16.3, com dois enquadramentos de câmera |
+| Distâncias reais entre as frentes | Xurkitree `y=20`, Celesteela `y=24`: três linhas livres, e dois tiles entre cada frente e seu treinador nas duas escolhas |
+| Conferir o tamanho visual dos sprites | Mamoswine e o parceiro remanejados depois de renderizar; §16.4 |
+| Necrozma identificado desde o briefing | A Anabel diz o nome na primeira caixa em que ele aparece; nada de "a criatura" |
+| Sem circuito infinito | Uma recarga, com origem e custo: a fonte **perde brilho** ao enviar (`UBSendsUp`/`UBSendsDown` + `UBRises`) |
+| Sem gelo como lei universal | A parede corta **aquele trajeto**; a Lillie e a Anabel só afirmam o que a tela mostrou |
+| Pryce cobre, não ataca em vão | Ele começa pondo o Mamoswine entre o Necrozma e a porta do Ginásio; o Blizzard inútil saiu |
+| Lillie sem autodepreciação | Uma linha de correção ("I thought the distance would break it. It didn't.") e já o pedido do plano melhor |
+| Vento da Ninetales cobrindo o Mamoswine | `UBNinetalesCover` antes de `UBWallOrder`; a cura só acontece com a parede de pé |
+| Evidência antes da conclusão | `UBFlowBlocked` mostra a corrente morrer no gelo e a UB falhar **antes** da fala da Anabel |
+| Necrozma recolhe por cima do gelo | Mamoswine bloqueia o chão (`UBPryceIntercept`), ele sai da linha (`NecrozmaSlipsAside`) e o elo novo passa por cima; a parede não é removida |
+| Dois sinais persistem após a absorção | `UBAbsorbedRead` / `UBAbsorbedConfirm`, com o instrumento, **sem depender da party** |
+| Parceiro é ator real | Quatro templates em (17,23), um `addobject`; Solgaleo/Lunala estabiliza a borda e a leitura melhora, mas as UBs continuam com o Necrozma |
+| Pryce cumpre a promessa da lâmpada | `UBPryceGoodbye`; ele e o Mamoswine saem **a oeste, para fora do enquadramento**, não para dentro do Ginásio |
+| Lillie fica até os moradores voltarem | `FLAG_MAHOGANY_UB_LILLIE_SETTLING`: ela fica nessa carga de mapa e some na visita seguinte |
+| Retry reconhece o aprendizado | Dois formatos, conforme `FLAG_MAHOGANY_UB_SAW_RECHARGE`; §16.7 |
+| Barreira rompida por impacto físico | `UBWallBreaks`: a UB que o jogador enfrentava bate no gelo, um trecho cai, **e só então** a corrente volta |
+| Convocação diária | Já existia (`FLAG_DAILY_LOOKER_CALL` + `FLAG_RIFT_LOOKER_SUMMONS`); só os textos mudaram |
+| Briefing reconhece Blackthorn V3 | `BriefingM2Welcome/Link/Town/Meet`, quatro caixas, um falante em cada |
+| Espera própria antes de Cherrygrove | `OlivineCity_House1_Text_WaitForCherrygroveCall`, ligada ao estado 6 |
+| Nada de "tonight" | Nenhum texto da missão cita hora; o apagão é lâmpada e equipamento |
+| Plaquinha em todos os diálogos | `HECTOR` e `BOY` acrescentados; narração e bilhete seguem sem plaquinha por decisão do autor |
+
+### 16.7 Os dois retries
+
+`ON_TRANSITION` → `StageUBRetry` devolve a rua por `setobjectxyperm` (as UBs,
+o Necrozma, a fenda, o Pryce em (10,21), o Mamoswine em (10,22), o Looker em
+(12,20) e o trio de apoio na linha), e o `ON_LOAD` pinta a parede se ela já
+tinha sido erguida.
+
+| Situação | O que acontece |
+| --- | --- |
+| Perdeu a rodada 1 na primeira tentativa | A Lillie refaz a pergunta, a escolha volta e a recarga ainda é descoberta com as falas da primeira execução |
+| Perdeu com a parede já de pé | `UBWallBreaks` mostra a UB rompendo um trecho do gelo, a corrente volta, `UBRetryPlan` (Anabel) resume o plano em três linhas e a recarga usa `UBRetryRecharge` |
+
+Quem reinicia é a **Lillie** (ela está na linha de apoio); o Looker, do abrigo,
+só diz que a rua está segura e o Centro pronto. Os vizinhos livres dela são
+exatamente (18,22) e (19,21), então um `getplayerxy` põe o jogador na linha sem
+warp.
+
+### 16.8 Áudio
+
+`fadeoutbgm 4` quando a Anabel vê a leitura subir, `playbgm MUS_DP_LEGEND_APPEARS, TRUE`
+quando o Necrozma aparece (o `TRUE` grava em `savedMusic`, então as duas
+batalhas devolvem a trilha certa), fanfarra curta na cura e `fadedefaultbgm` só
+**depois** de a passagem fechar. Carregar mapa limpa o `savedMusic` sozinho, e
+por isso o retry começa limpo.
+
+Todos os clarões usam `fadescreenswapbuffers` (a regra da revisão 5 continua
+valendo); `fadescreen` só onde um warp recarrega o mapa logo depois.
+
+### 16.9 Conferido
+
+- `make -j$(nproc)` limpo.
+- `medir_linha.py`: nenhuma linha acima de 208 px nos três arquivos de texto.
+- `checar_falantes.py`: 16 falantes em ordem.
+- `flag_audit.py --csv`: as quatro flags novas entram como `EM_USO`,
+  `MAPA_UNICO:Mahoganytown`, com leitura e escrita. Nenhuma órfã.
+- Simulação de todas as 47 travessias contra a colisão real do `map.bin`: toda
+  chegada bate com o tile projetado; os dois únicos "bloqueios" são a porta do
+  Ginásio (10,19), que movimento roteirizado atravessa de propósito, como já
+  fazia a versão anterior.
+- Renders dos quatro enquadramentos (início, abrigo, frente norte, frente sul,
+  parceiro) conferidos um a um — foi assim que os dois sprites encavalados de
+  §16.4 apareceram.
+- Nenhum travessão (U+2014) em nenhum texto.
+
+### 16.10 O que continua pendente
+
+**Runtime.** Nada abaixo foi jogado; o build só prova que compila.
+
+1. Falar com o Looker em (21,20) e conferir que ele é alcançável só dali.
+2. A evacuação inteira: o neto entra antes, o Hector atrás, a porta fecha.
+3. Os dois enquadramentos de câmera, com a caixa de diálogo aberta, para
+   confirmar que a faixa de rocha é mesmo o que ela cobre.
+4. As duas escolhas, as duas rodadas, a cura e a parede.
+5. Perder a rodada 1 e perder a rodada 2: os dois retries são diferentes.
+6. Os três ramos de parceiro (sem Cosmog, Cosmog/Cosmoem, Solgaleo/Lunala).
+7. A resolução: moradores de volta, portas destrancadas, follower de volta,
+   Lillie na rua nessa carga e ausente na visita seguinte.
+8. De dia **e** de noite, por causa do tint e dos clarões.
+
+**Mapa no Porymap.** A rua alargada e os quatro metatiles de gelo ainda não
+foram abertos no Porymap pelo autor. A skill `acabamento-de-mapa` vale aqui: se
+ele retocar a borda sul, o retoque dele é a referência.

@@ -394,6 +394,12 @@
 
 // gTileset_MahoganyTown
 #define METATILE_MahoganyTown_MahoganyDoor  0x422
+// Barreira de gelo da Rift Mission 2 (Mamoswine). Desenhados na paleta 12 do
+// secundario, sobre a areia lisa; ver data/maps/Mahoganytown/scripts.inc.
+#define METATILE_MahoganyTown_IceWall_Left    0x53E
+#define METATILE_MahoganyTown_IceWall_Middle  0x53F
+#define METATILE_MahoganyTown_IceWall_Right   0x540
+#define METATILE_MahoganyTown_IceWall_Broken  0x541
 
 // gTileset_Mauville
 #define METATILE_Mauville_DeepSand_BottomMid  0x259

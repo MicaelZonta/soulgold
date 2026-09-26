@@ -3,7 +3,8 @@
 Levantamento completo do espaço de flags: o que existe, o que o jogo realmente
 usa, o que está morto, quanto sobra e onde dá para otimizar.
 
-- Data: 24/09/2026 · branch `soulgold-rift-missions`
+- Levantamento: 24/09/2026 · revisado 25/09/2026 (higienização dos itens 1–3 da
+  seção 10 aplicada) · branch `soulgold-rift-missions`
 - Fonte de verdade: `include/constants/flags.h` + varredura de todo arquivo versionado
 - Tabela linha a linha das 1735 flags: [`docs/SOULGOLD_FLAGS_AUDIT.csv`](../docs/SOULGOLD_FLAGS_AUDIT.csv)
 - Para refazer o levantamento: `python3 dev_scripts/flag_audit.py --csv`
@@ -16,15 +17,15 @@ usa, o que está morto, quanto sobra e onde dá para otimizar.
 |---|---|
 | Quantas flags existem nomeadas? | **1735** defines (1713 valores distintos — 22 valores têm dois nomes) |
 | Quanto o save reserva? | `FLAGS_COUNT = 5448` (0x1548) = **681 bytes** em `SaveBlock1.flags[]` |
-| Quantas o jogo realmente usa? | **1296** |
-| Quantas nunca são referenciadas em lugar nenhum? | **249** |
-| Quantas só existem para mapas que não entram na ROM (Hoenn)? | **140** |
-| Quantas são escritas e nunca lidas (não fazem nada)? | **40** |
-| Quantas são lidas e nunca escritas (provável bug)? | **9** |
-| Quantos slots do espaço de flags não têm nome nenhum? | **2693** |
-| Quantas flags novas posso criar hoje sem tocar no save? | **~3100** (2693 buracos + ~430 recicláveis) |
-| Dá para aumentar `FLAGS_COUNT`? | Só em **+8**, e isso é *outra* conta: é o quanto o array pode crescer **depois** de esgotar os 2693 slots livres dentro dele. Ver seção 3 |
-| Alguma flag está fora do array? | **Uma**: `FLAG_R39_NORTH_ROCKY_HELMET = 0x2A92` escreve fora de `flags[]` — seção 7.1 |
+| Quantas o jogo realmente usa? | **1300** |
+| Quantas nunca são referenciadas em lugar nenhum? | **250** (246 + 4 citadas só em doc) |
+| Quantas só existem para mapas que não entram na ROM (Hoenn)? | **141** |
+| Quantas são escritas e nunca lidas (não fazem nada)? | **39** |
+| Quantas são lidas e nunca escritas (provável bug)? | **5** |
+| Quantos slots do espaço de flags não têm nome nenhum? | **2692** |
+| Quantas flags novas posso criar hoje sem tocar no save? | **~3100** (2692 buracos + ~430 recicláveis) |
+| Dá para aumentar `FLAGS_COUNT`? | Só em **+8**, e isso é *outra* conta: é o quanto o array pode crescer **depois** de esgotar os 2692 slots livres dentro dele. Ver seção 3 |
+| Alguma flag está fora do array? | **Nenhuma.** Era `FLAG_R39_NORTH_ROCKY_HELMET = 0x2A92`, corrigida para `0x2A9` em 25/09/2026 — seção 7.1 |
 
 O quadro é folgado: não há escassez de flags. O que existe é **bagunça** —
 duas flags para a mesma coisa, flags setadas que ninguém lê, um bloco de
@@ -81,10 +82,9 @@ TESTING                   8      3      5      0      0      0
 0x1047-0x14FF  1209 slots
 0x19A-0x1A9      16 slots   <- dentro do bloco Match Call, ver 8.1
 0x1501-0x1507     7 slots
-0x2A9             1 slot
 ```
 
-Esses 2693 slots **já estão pagos**: os bytes existem no save hoje, zerados.
+Esses 2692 slots **já estão pagos**: os bytes existem no save hoje, zerados.
 Usá-los não muda o tamanho de nada e não quebra save nenhum.
 
 ---
@@ -115,16 +115,16 @@ Testado neste levantamento (compilando `build/emerald/src/save.o` com
 | 7496 (+2048) | 938 | idem, 4 asserts quebrados |
 
 Ou seja: **existem exatamente 8 flags a mais disponíveis por crescimento**, e
-nem um bit além. Isso não se soma nem se confunde com os 2693 slots da seção
+nem um bit além. Isso não se soma nem se confunde com os 2692 slots da seção
 2.1: aqueles já estão *dentro* do array de hoje e não dependem de crescer
 coisa nenhuma — são eles que você vai gastar nos próximos anos. O +8 só
-entraria em cena depois que os 2693 acabassem. `SAVEBLOCK1_FUTURE_RESERVED_BYTES` (1978 bytes, em
+entraria em cena depois que os 2692 acabassem. `SAVEBLOCK1_FUTURE_RESERVED_BYTES` (1978 bytes, em
 `include/config/save.h`) **não ajuda**: ele fica no fim da struct, depois dos
 offsets travados; reduzi-lo não compensa o empurrão que `flags[]` dá.
 
 Se um dia forem necessários milhares de bits a mais, o caminho é um segundo
 array (`flags2[]`) alocado **dentro** de `futureReserved`, com `FlagGet`/`FlagSet`
-roteando por faixa. Não é necessário hoje: sobram 2693 slots no array atual.
+roteando por faixa. Não é necessário hoje: sobram 2692 slots no array atual.
 
 ---
 
@@ -147,6 +147,10 @@ nomeados e em uso. O assert permite crescer até `0x14FF`.
 manda. São **1209 flags** disponíveis nesse bloco, sem tocar em save, sem
 tocar em `FLAGS_COUNT`, sem risco de colisão com treinador, Match Call ou
 bloco diário.
+
+Desde 25/09/2026 isso está escrito no próprio `flags.h`: o cabeçalho do bloco
+documenta a faixa `0x1000–0x14FF` e há um marcador `// PROXIMA FLAG NOVA: 0x1047`
+logo abaixo de `CUSTOM_FLAGS_END`.
 
 A segunda reserva (`0xA4C–0xFFF`, 1460 slots) fica logo depois de
 `SYSTEM_FLAGS`. Vale deixá-la para expansão de `SYSTEM_FLAGS`/conteúdo novo e
@@ -214,7 +218,7 @@ automática.
 
 ---
 
-## 6. 249 flags que nunca são referenciadas
+## 6. 250 flags que nunca são referenciadas
 
 Nenhuma ocorrência em script, em `map.json`, em `src/`, em `test/`. Divisão:
 
@@ -246,7 +250,11 @@ Destaques do primeiro grupo:
 
 ## 7. Problemas encontrados (isto é o que vale corrigir)
 
-### 7.1 `FLAG_R39_NORTH_ROCKY_HELMET` escreve fora do array de flags
+### 7.1 `FLAG_R39_NORTH_ROCKY_HELMET` escrevia fora do array de flags — RESOLVIDO 25/09/2026
+
+> **Corrigido.** `flags.h` agora traz `0x2A9`, e `flag_audit.py` não acusa mais
+> flag fora de `flags[]`. O buraco de um slot da seção 2.1 sumiu com isso.
+> Efeito em save antigo: quem já pegou o Rocky Helmet pega de novo uma vez.
 
 ```c
 #define FLAG_R39_NORTH_TRADE         0x2A8
@@ -271,11 +279,18 @@ qualquer — o `goto_if_set` da linha 23 lê o mesmo lugar e funciona. O problem
 Rocky Helmet passa a somar 4 nessa var, e mexer nela passa a "desfazer" o
 presente.
 
-Correção: trocar `0x2A92` por `0x2A9` no `.pory`/`flags.h`. Custo para quem já
-jogou: o bit muda de lugar, então quem já pegou o Rocky Helmet consegue pegar
-de novo uma vez. Nada além disso.
+Foi trocado `0x2A92` por `0x2A9` em `flags.h` (o `.pory` usa o nome, não o
+número, e não precisou mudar). Custo para quem já jogou: o bit muda de lugar,
+então quem já pegou o Rocky Helmet consegue pegar de novo uma vez. Nada além
+disso.
 
-### 7.2 `FLAG_SYS_NO_CATCHING` não desliga captura nenhuma
+### 7.2 `FLAG_SYS_NO_CATCHING` não desligava captura nenhuma — RESOLVIDO 25/09/2026
+
+> **Corrigido.** Route41 (`scripts.pory`) e SaffronCity_FightingDojo
+> (`scripts.inc`, 6 pares) agora usam `B_FLAG_NO_CATCHING`. O define de
+> `FLAG_SYS_NO_CATCHING` ganhou um `// NAO USE` no `flags.h`; as ocorrências que
+> sobraram estão só em MagmaHideout/NewMauville/ShoalCave, fora da ROM, e por
+> isso a flag passou de `SO_ESCRITA` para `SO_MAPAS_FORA_DA_ROM` no catálogo.
 
 A engine lê `B_FLAG_NO_CATCHING`, e `include/config/battle.h` define:
 
@@ -290,9 +305,9 @@ flag **errada**, `FLAG_SYS_NO_CATCHING` (`0x24`), que nada lê:
 - `data/maps/Route41/scripts.pory:202` e `:207`
 - `data/maps/SaffronCity_FightingDojo/scripts.inc` — 6 pares set/clear
 
-Efeito no jogo: nessas batalhas o jogador **ainda consegue capturar**.
-Correção: trocar por `B_FLAG_NO_CATCHING` (e, no Dojo, conferir se o `.pory`
-correspondente existe antes de editar o `.inc`).
+Efeito no jogo: nessas batalhas o jogador **ainda conseguia capturar**. Os dois
+passaram a usar `B_FLAG_NO_CATCHING`. O Dojo não tem `.pory`, então a edição foi
+direto no `.inc`; Route41 tem, e só o `.pory` foi tocado.
 
 ### 7.3 Duas flags de EXP Share, só uma funciona
 
@@ -328,7 +343,7 @@ são inofensivos (`FLAG_CAMERON_PHOTO2..4`), outros indicam feature pela metade:
 
 Lista completa: anexo D.
 
-### 7.6 9 flags lidas que ninguém escreve
+### 7.6 5 flags lidas que ninguém escreve
 
 Estas são as mais perigosas — o `goto_if_set` nunca dá verdadeiro:
 
@@ -337,18 +352,43 @@ Estas são as mais perigosas — o `goto_if_set` nunca dá verdadeiro:
 0x0F7  FLAG_DEFEATED_SS_TIDAL_TRAINERS               SSTidalCorridor
 0x128  FLAG_PETALBURG_MART_EXPANDED_ITEMS          
 0xA1C  FLAG_SYS_LAKE_OF_RAGE_TIDE                    LakeOfRage
-0xA46  FLAG_ICEPATH_BOULDER1                         IcePath_B1F
-0xA47  FLAG_ICEPATH_BOULDER2                         IcePath_B1F
-0xA48  FLAG_ICEPATH_BOULDER3                         IcePath_B1F
-0xA49  FLAG_ICEPATH_BOULDER4                         IcePath_B1F
-0x150B  FLAG_DAILY_BUG_CONTEST_COMPLETED              Gate_NationalPark
+0x150B FLAG_DAILY_BUG_CONTEST_COMPLETED              Gate_NationalPark
 ```
 
-- `FLAG_ICEPATH_BOULDER1..4` — o quebra-cabeça de pedras do Ice Path testa
-  quatro flags que nada seta. Vale conferir se as pedras estão travadas ou se
-  o estado migrou para `VAR_*`
 - `FLAG_SYS_LAKE_OF_RAGE_TIDE`, `FLAG_DAILY_BUG_CONTEST_COMPLETED` (o concurso
   vivo usa `FLAG_DAILY_BUG_DONE`), `FLAG_NO_WT_BECAUSE_CHALLENGE`
+
+#### `FLAG_ICEPATH_BOULDER1..4` era alarme falso — verificado 25/09/2026
+
+A lista original trazia `0xA46–0xA49`. **O quebra-cabeça funciona**: quem liga
+essas flags é a engine, não script nenhum, e por isso a varredura não via a
+escrita.
+
+As quatro são o campo `"flag"` dos quatro `OBJ_EVENT_GFX_PUSHABLE_BOULDER` de
+`IcePath_B1F`. Ao empurrar uma pedra para um buraco (`MB_MT_PYRE_HOLE`, medido
+em `data/layouts/IcePath_B1F/map.bin` nas posições 17,7 · 10,12 · 11,17 ·
+18,18), `PushBoulder_End` chama `HandleBoulderFallThroughHole`
+(`src/field_control_avatar.c:1461`), que chama
+`RemoveObjectEventByLocalIdAndMap` — e esta faz
+`FlagSet(flagId do template)` (`src/event_object_movement.c:1593`). O bit fica
+gravado no save. `IcePath_B2F` lê as quatro no `ON_TRANSITION` (`SetBoulders`)
+e usa `FLAG_TEMP_1..4` para esconder a pedra correspondente lá embaixo.
+
+Dois detalhes que sobraram, nenhum deles quebra o jogo:
+
+- O `FlagClear(trainerType)` da mesma função é no-op aqui: os quatro objetos têm
+  `trainer_type: TRAINER_TYPE_NONE`, e `GetFlagPointer(0)` devolve `NULL`. Não
+  faz falta, porque `FLAG_TEMP_*` zera ao carregar o mapa e quem decide a
+  visibilidade em B2F é o `ON_TRANSITION`
+- `IcePath_B1F/scripts.inc` abre com quatro `.set LOCALID_ICEPATH2_BOULDER*` que
+  não batem com a ordem dos objetos no `map.json` e que nenhum script usa
+
+**Isso era um defeito do `flag_audit.py`, corrigido junto:** `SO_ESCRITA` já
+descartava flags citadas em `map.json`, `SO_LEITURA` não. Qualquer flag no campo
+`"flag"` de um `object_event` pode ser escrita pela engine sem aparecer por nome
+em script nenhum — `removeobject` (`ScrCmd_removeobject`) e o item ball comum
+passam pelo mesmo `RemoveObjectEventByLocalIdAndMap`. A regra ficou simétrica, e
+as quatro voltaram para `EM_USO`.
 
 ### 7.7 Flag de ocultação usada em `map.json` e nunca escrita
 
@@ -497,19 +537,29 @@ Isso é diagnóstico, não problema. O que vale observar:
 
 Em ordem de retorno sobre esforço:
 
-**1. Barato e sem risco — desbloquear espaço para o que vem por aí**
-- Estender `CUSTOM_FLAGS` para `0x1047+` e mover `CUSTOM_FLAGS_END` a cada nova
-  alocação (1209 slots). Zero risco de save.
+**1. Barato e sem risco — desbloquear espaço para o que vem por aí** — ✅ FEITO
+em 25/09/2026. O cabeçalho do bloco em `flags.h` agora diz que `CUSTOM_FLAGS` vai
+até `0x14FF`, e logo abaixo de `CUSTOM_FLAGS_END` há um marcador
+`// PROXIMA FLAG NOVA: 0x1047`. Nenhum número foi alocado ainda: os 1209 slots
+continuam livres e o `STATIC_ASSERT(CUSTOM_FLAGS_END < FLAG_0x1500)` continua
+sendo o teto.
 
-**2. Corrigir os bugs da seção 7** — nesta ordem: o `0x2A92` (7.1, é o único
-que escreve fora do array), o `FLAG_SYS_NO_CATCHING` de Route41 e Saffron Dojo
-(7.2, é o mais visível para o jogador), depois `FLAG_ICEPATH_BOULDER1..4` (7.6).
+**2. Corrigir os bugs da seção 7** — ✅ FEITO em 25/09/2026 para os três que
+estavam na fila. O `0x2A92` virou `0x2A9` (7.1); Route41 e Saffron Dojo passaram
+a usar `B_FLAG_NO_CATCHING` (7.2); e `FLAG_ICEPATH_BOULDER1..4` (7.6) era alarme
+falso — o quebra-cabeça funciona, quem escreve as quatro é a engine, e o que foi
+corrigido ali foi o `flag_audit.py`. Continuam abertos, sem dono: 7.3 (EXP
+Share), 7.4 (level scaling), 7.5 (40 → 39 flags só escritas), o resto do 7.6 e o
+7.7.
 
-**3. Limpeza declarativa (não muda save)** — marcar no `flags.h` as 140 flags
-de mapas fora da ROM e as 151 nunca usadas com um comentário
-`// fora da ROM` / `// livre desde 24/09/2026`, para que a próxima pessoa saiba
-que pode pegar. **Não renumerar nada**: os bits estão em saves antigos, e
-renomear é grátis enquanto renumerar não é.
+**3. Limpeza declarativa (não muda save)** — ✅ FEITO em 25/09/2026. `flags.h`
+ganhou 141 marcadores `// fora da ROM` e 136 `// livre desde 24/09/2026`, mais
+uma legenda no topo do arquivo explicando os dois e um aviso em bloco nos 16
+`FLAG_UNUSED_1xx` do Match Call (8.1). Foram 136 e não 151 porque as que o nome
+(`FLAG_UNUSED_*`, `FLAG_GARBAGE*`, `FLAG_REGISTERED_*`, `TESTING_FLAG_UNUSED_*`)
+ou o comentário (`// Unused Flag`) já denunciavam ficaram como estavam. Nada foi
+renumerado: os bits estão em saves antigos, e renomear é grátis enquanto
+renumerar não é.
 
 **4. Só se um dia faltar espaço** — reciclar as faixas contíguas do anexo E
 (230 flags em 21 faixas, a maior com 57 slots seguidos em `0x15C–0x194`).
@@ -522,12 +572,13 @@ setado**. Uma flag de Hoenn que o jogador nunca pôde setar é segura; uma
 
 ---
 
-## Anexo A — 140 flags só em mapas fora da ROM
+## Anexo A — 141 flags só em mapas fora da ROM
 
 ```
 0x011  FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE          Route130
 0x01D  FLAG_TEMP_1D                                     Route130, ShoalCave_LowTideIceRoom_Suicune +1
 0x01F  FLAG_TEMP_1F                                     Route130, ShoalCave_LowTideIceRoom_Suicune +1
+0x024  FLAG_SYS_NO_CATCHING                             MagmaHideout_3F_1R_Entei, NewMauville_Inside_Raikou +1
 0x02B  FLAG_SYS_SET_BATTLE_BGM                          MagmaHideout_3F_1R_Entei, NewMauville_Inside_Raikou +1
 0x02F  FLAG_DOME_FOSSIL_ALTERING_CAVE                   CeruleanCave2
 0x045  FLAG_DEFEATED_ARTICUNO                           MeteorFalls_Articuno
@@ -870,10 +921,9 @@ setado**. Uma flag de Hoenn que o jogador nunca pôde setar é segura; uma
 0x5007  TESTING_FLAG_UNUSED_7
 ```
 
-## Anexo D — 40 flags escritas e nunca lidas
+## Anexo D — 39 flags escritas e nunca lidas
 
 ```
-0x024  FLAG_SYS_NO_CATCHING                          Route41
 0x057  FLAG_MET_RIVAL_MOM                            LittlerootTown_BrendansHouse_1F
 0x0A5  FLAG_RECEIVED_TM_ROCK_TOMB                    RustboroCity_Gym
 0x0A7  FLAG_RECEIVED_TM_SHOCK_WAVE                   MauvilleCity_Gym

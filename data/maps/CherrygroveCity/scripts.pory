@@ -1428,6 +1428,7 @@ CherrygroveCity_EventScript_UBHook::
 	fadescreen FADE_TO_BLACK
 	clearflag FLAG_EVENT_ULTRABEAST_CHERRYGROVE   @ invariant: flag and var together
 	setvar VAR_RIFT_MISSIONS_STATE, 8
+	setflag FLAG_DAILY_LOOKER_CALL            @ he just said it in person
 	@ Reload in place under the fade. With the flag cleared the fourteen
 	@ residents - and the trader's gift Pokemon, whose visibility is also
 	@ recomputed on load - would otherwise pop in one by one as the camera

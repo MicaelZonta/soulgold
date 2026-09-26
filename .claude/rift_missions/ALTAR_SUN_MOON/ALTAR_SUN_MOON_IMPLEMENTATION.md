@@ -1,9 +1,12 @@
 # Altar do Sol e da Lua — Ultra Necrozma — plano de implementação
 
-**Status:** **IMPLEMENTADO — revisão 3** (24/09/2026). O plano inteiro está no
-código e a `make` fecha limpa; o que falta é **teste em runtime** (§16). A
-revisão 3 é o retorno da implementação: nove correções ao plano, todas em
-**§17**, e sete delas são coisas que compilariam limpo e quebrariam no jogo.
+**Status:** **IMPLEMENTADO E TESTADO — revisão 4** (25/09/2026). O autor jogou o
+evento inteiro e voltou com **cinco itens**; os cinco estão corrigidos e estão em
+**§18**. Dois deles eram travamento de jogo, e o do mapa do Pokégear era um
+**estouro de buffer em cima de um ponteiro de função** — build limpo, crash
+garantido. A revisão 3 é o retorno da implementação: nove correções ao plano,
+todas em **§17**, e sete delas são coisas que compilariam limpo e quebrariam no
+jogo.
 A revisão 2 (23/09) tinha aplicado o retorno do autor: a Anabel **não** é loja
 (ela aponta para o Kurt), Fly para o altar **entra** no escopo, a Nihilego está
 aprovada, o Looker cura desde o estado 13, e o motivo de a Anabel não lutar
@@ -12,10 +15,12 @@ passou a ser **diegético**. O sistema de bolas do Kurt que esse retorno abriu �
 implementado na mesma passada — e o §10.3 aqui só depende dele por uma caixa de
 texto.
 
-> **Se você vai mexer neste evento, leia o §17 antes do §14.** O §14 é a
-> auditoria de antes de escrever; o §17 é o que a escrita descobriu, e inclui
-> **duas correções de tile/flag que o plano errava** e a colisão de daily flags
-> entre este documento e o do Kurt.
+> **Se você vai mexer neste evento, leia o §18 e o §17, nessa ordem, antes do
+> §14.** O §14 é a auditoria de antes de escrever; o §17 é o que a escrita
+> descobriu (inclui **duas correções de tile/flag que o plano errava** e a
+> colisão de daily flags entre este documento e o do Kurt); o §18 é o que o
+> **jogo rodando** descobriu, e é o único dos três que fala de coisas que
+> travam o console.
 **Modo:** **história completa desde a primeira passada**, não esqueleto. O
 autor pediu "uma história épica" e o terreno já está pronto (mapa, tileset com
 estado de portal, navio, arena, sprites), então não existe motivo para gastar
@@ -1438,6 +1443,11 @@ mesmo motivo do altar: só um de cada par existe por vez, e flags separadas são
 que garante isso. Os gráficos dos quatro Pokémon existem
 (`graphics/pokemon/{necrozma,necrozma/ultra,solgaleo,lunala}/overworld.png`) e
 `OBJ_EVENT_GFX_SPECIES(NECROZMA_ULTRA)` já está em uso em `NewBarkTown`.
+
+> **Atenção (revisão 5).** O PNG existir e o `OBJ_EVENT_GFX_SPECIES` estar em
+> uso em outro mapa **não** provam que o sprite aparece: até a revisão 5 os dois
+> mapas desenhavam o boneco do Substitute, porque a ligação de overworld do
+> `SPECIES_NECROZMA_ULTRA` estava desligada por config. Ver **§19**.
 
 Os três `coord_event` que já existem em (9..11, 20) **não mudam**: continuam
 sendo a saída, e continuam apontando para `UltraSpaceArena_EventScript_SouthRift`
@@ -3183,3 +3193,456 @@ O §16 vale inteiro e nada dele foi executado. Os itens que a implementação to
       com o dia da semana (correção 4).
 - [ ] **As duas pedras quebráveis de Cianwood no pós-game** (correção 5).
 - [ ] Os **sete dias** da tabela do §10.1, com controle de tempo.
+
+---
+
+## 18. Retorno do autor em runtime (revisão 4, 25/09/2026)
+
+O autor jogou o evento inteiro, do cais de Olivine à fenda diária do pós-game, e
+voltou com cinco itens. Os cinco estão corrigidos e a `make` fecha limpa.
+
+| # | O que ele disse | Natureza | Onde está a correção |
+|---|---|---|---|
+| 1 | "Jogo crasha quando eu vejo o mapa lá dentro" (Town Map / Pokégear **dentro do Altar**) | **Crash certo** | §18.1 |
+| 2 | "O rift podia ser mais bonito" | Arte | §18.2 |
+| 3 | "Não acho que o Looker e a Anabel precisam ficar parados olhando pro Rift pós-jogo" | Encenação | §18.3 |
+| 4 | "WTF ela deu um Solgaleo ao derrotar o Necrozma, era pra dar o Necrozma e ter uma animação capturando ele" | **Bug de texto + cena faltando** | §18.4 |
+| 5 | "Quando eu entro no Rift logo após a luta do Necrozma a tela fica branca e o jogo trava" (fenda **diária**, evento já encerrado) | **Travamento — causa não provada** | §18.5 |
+
+### 18.1 O mapa do Pokégear no Altar: 21 caracteres em cima de um ponteiro
+
+Nome do `MAPSEC_ABANDONED_LAB` na revisão 3: **"Altar of Sun and Moon"** — 21
+caracteres, **o único nome acima de 19 nos 312 do `gRegionMapEntries`**.
+
+```c
+// include/region_map.h, antes
+struct RegionMap {
+    /*0x000*/ mapsec_u16_t mapSecId;
+    /*0x002*/ u8 mapSecType;
+    /*0x003*/ u8 posWithinMapSec;
+    /*0x004*/ u8 mapSecName[20];        // <- 20 bytes
+    /*0x018*/ u8 (*inputCallback)(void); // <- e logo em seguida um PONTEIRO DE FUNCAO
+```
+
+`GetMapName()` faz um `StringCopy` **sem limite** de
+`gRegionMapEntries[id].name`. 21 caracteres + `EOS` = 22 bytes num campo de 20:
+os dois bytes que sobram caem nos dois primeiros bytes de `inputCallback`. O
+mapa então chama `DoRegionMapInputCallback()` todo frame, ou seja, **salta para
+um endereço lixo no primeiro frame depois de abrir**. Não é intermitente: é todo
+Town Map aberto dentro do Altar, e só lá, porque só esse nome passa de 19.
+
+O mesmo nome estourava, por 1 byte, o `mapDisplayHeader[27]` do popup de nome de
+mapa (`src/map_name_popup.c`), que o Altar dispara toda vez que o jogador entra
+(`show_map_name: true`) — ali o estouro é na **pilha**.
+
+Três correções, porque uma só não fecha a classe do bug:
+
+1. **O nome cabe agora.** `"Sun & Moon Altar"` — 16 caracteres, na mesma faixa
+   dos outros nomes longos do jogo ("Snowtop Mountain", "Cherrygrove City"). O
+   antigo não cabia nem na tela: medido com as larguras de glifo de
+   `src/fonts.c`, ele dava **111 px** numa janela de **96 px** no mapa de região
+   e **96 px** numa de **80 px** no popup. O novo dá 85 px e 74 px.
+   Trocado **só no `src/data/region_map/region_map_sections.json`**, que é a
+   fonte de verdade: o `region_map_entries.h` é **gerado** dele pelo
+   `json_data_rules.mk` e está no `.gitignore`. Editar o `.h` à mão não
+   sobrevive ao próximo `make` (foi testado: sobreviveu o nome, que vem do
+   JSON, e sumiu o comentário que eu tinha posto lá).
+2. **Os buffers passaram a ter folga.** `MAP_NAME_LENGTH_MAX = 24` novo em
+   `include/region_map.h`; `mapSecName[MAP_NAME_LENGTH_MAX]` e
+   `mapDisplayHeader[MAP_NAME_POPUP_PREFIX_SIZE + MAP_NAME_LENGTH_MAX]`. Com
+   isso, um nome comprido volta a ser um defeito visual (texto cortado) em vez
+   de um salto para endereço inválido.
+3. **O porquê está escrito onde alguém vai tropeçar nele:** comentário no
+   `include/region_map.h`, ao lado da definição de `MAP_NAME_LENGTH_MAX`,
+   explicando que `MAP_NAME_LENGTH` (16) é o **preenchimento**, não o limite,
+   que `GetMapName()` copia sem limite nenhum e o que exatamente quebra quando
+   o nome passa do buffer. O JSON não aceita comentário, então esse é o único
+   lugar de código onde o aviso cabe — por isso ele também está aqui e na
+   revisão V25 do design.
+
+> **Regra que sai daqui:** nome de `MAPSEC` novo tem no máximo **16 caracteres**.
+> Acima disso ele não cabe nas janelas; acima de 23 ele volta a corromper
+> memória.
+
+### 18.2 A fenda: `OBJ_EVENT_GFX_ALTAR_RIFT`
+
+O que estava lá era o `OBJ_EVENT_GFX_PORTAL`: um anel de **16x16 parado**, de
+quadro único (`inanimate = TRUE`, `sAnimTable_Inanimate`), emprestado do
+`SpearPillarTop`.
+
+O que existe agora é um objeto próprio, **32x32 e com quatro quadros em loop**:
+
+- `graphics/object_events/pics/misc/altar_rift.png` — 128x32 (quatro quadros de
+  32x32), indexado, 9 cores, índice 0 transparente. Desenhado por código
+  (`math`+`zlib`, sem PIL) como uma lente vertical: halo roxo por fora, anel
+  magenta, violeta, ciano, o **vazio quase preto** no meio e um fio de luz
+  branco no eixo. Os quadros respiram (a lente abre e fecha ~9%) e a ondulação
+  desce um quarto de fenda por quadro.
+- A paleta é a **mesma rampa do metatile de portal do `gTileset_AltarSunMoon`**
+  (`palettes/11.gbapal`): o rasgo no chão e o disco na parede são visivelmente a
+  mesma coisa. `OBJ_EVENT_PAL_TAG_ALTAR_RIFT = 0x116C`.
+- `SHADOW_SIZE_NONE`: um rasgo no ar não faz sombra.
+- `sAnimTable_AltarRift` aponta todas as 20 entradas para o mesmo loop, que é o
+  padrão do `sAnimTable_TowerBeam` — o objeto é `inanimate` e nunca vira para
+  lado nenhum.
+
+**O `OBJ_EVENT_GFX_PORTAL` não foi tocado**: o `SpearPillarTop` continua com os
+quatro portais dele exatamente como estavam. A regra em `spritesheet_rules.mk`
+é `-mwidth 4 -mheight 4` (32x32), e não a do portal antigo.
+
+### 18.3 Looker e Anabel moram lá, então se mexem
+
+Os dois ficavam com `MOVEMENT_TYPE_FACE_UP` para sempre, encarando a fenda em
+posição de sentido. A partir do estado **16** eles passam a
+`MOVEMENT_TYPE_WANDER_AROUND`.
+
+A troca é feita com `setobjectmovementtype` no **`ON_TRANSITION`**, e o lugar não
+é escolha de estilo: `setobjectmovementtype` escreve no **template**
+(`gSaveBlock1Ptr->objectEventTemplates`), não no objeto vivo, então só vale a
+partir do próximo spawn — e o `ON_TRANSITION` é justamente o script que roda
+**depois** de `LoadObjEventTemplatesFromHeader` ter reposto os templates e
+**antes** de os objetos nascerem. Do `ON_LOAD` ou de um script de objeto não
+mudaria nada.
+
+Estados **12..15 ficam intocados de propósito**: os Atos I e V posicionam os dois
+por coordenada e os viram com `turnobject`, e um NPC andando quebraria a
+marcação de duas cenas com build limpo.
+
+O alcance é 1 nos dois eixos (`map.json`), medido contra a colisão real:
+
+| NPC | Tile | Alcança | Não alcança |
+|---|---|---|---|
+| Looker | (13,13) | x 13..14, y 12..14 | (14,10) a fenda, (14,11) o tile de volta da arena |
+| Anabel | (15,13) | x 14..15, y 12..14 | idem |
+
+O gargalo em `y=12` tem três tiles (x=13..15) e eles são dois: **nunca conseguem
+fechar a passagem**.
+
+### 18.4 O presente dizia "SOLGALEO", e a captura não acontecia na tela
+
+**Dois defeitos no mesmo trecho.**
+
+**O nome errado.** O Pokémon entregue sempre foi `SPECIES_NECROZMA` — a party
+recebia o certo. O que estava errado era a **caixa**:
+`Common_Text_ReceivedMon` é `"{PLAYER} received {STR_VAR_1}!"` e **nada no
+caminho do `givemon` escreve `STR_VAR_1`** (`ScrCmd_createmon` →
+`ScriptGiveMon` → `GiveScriptedMonToPlayer`: nenhum toca no buffer). Três caixas
+antes, `UltraSpaceArena_EventScript_PartnerHarmonise` fazia
+`bufferspeciesname STR_VAR_1, VAR_TEMP_4` para o `Text_VictoryHarmony` — e
+`VAR_TEMP_4` guarda a espécie do **parceiro**. Resultado: "received SOLGALEO".
+
+A convenção do repositório para presente de Pokémon (`BlackthornCave`,
+`CianwoodPokecenter`, `BattleCafe`, `RuinsOfAlph_Lab`) é sempre este par, e ele
+faltava aqui:
+
+```asm
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_NECROZMA
+	bufferspeciesname STR_VAR_1, SPECIES_NECROZMA
+	givemon SPECIES_NECROZMA, 75, ITEM_NONE
+```
+
+`VAR_TEMP_TRANSFERRED_SPECIES` é o que `Common_EventScript_TransferredToPC` lê
+para a caixa do PC (sem ele, "Bulbasaur foi para o PC"), e **é o mesmo var que
+`VAR_TEMP_1`** (`include/constants/vars.h`), que esta arena usa como trava de
+uma-vez-por-visita do `ON_FRAME`. `SPECIES_NECROZMA` é diferente de zero, então
+a trava continua fechada. **Nunca escrever 0 nele aqui.**
+
+**A captura na tela.** Está em §18.4 do roteiro
+([`ALTAR_SUN_MOON_SCRIPT.md`](ALTAR_SUN_MOON_SCRIPT.md), "A captura"), passo a
+passo. Resumo: `SE_BALL_THROW` → `enter_pokeball` no objeto do Necrozma (a
+animação do próprio motor: pisca branco, encolhe dentro de uma Ball, termina
+invisível) → a **Beast Ball** aparece como objeto próprio no tile dele → três
+chacoalhadas e o clique só em som → `MUS_HG_CAUGHT` → a narração → só então o
+`givemon`.
+
+Objetos e gráficos novos:
+
+| Coisa | Onde |
+|---|---|
+| `OBJ_EVENT_GFX_BEAST_BALL` (336) | `event_objects.h`, `object_event_graphics_info.h`, `..._pointers.h` |
+| `sPicTable_BeastBall` | `object_event_pic_tables.h`, **fora** do `#if OW_FOLLOWERS_POKEBALLS` — o do follower está dentro dele, e um objeto de mapa não pode depender dessa config |
+| `LOCALID_ULTRA_SPACE_ARENA_BEAST_BALL` (6) | `UltraSpaceArena/map.json`, (10,8), `FLAG_TEMP_6` |
+| `setflag FLAG_TEMP_6` | `UltraSpaceArena_OnTransition` — a Ball entra na mesma regra de "tudo escondido em toda carga" dos outros cinco |
+
+A arte é a que `gPokeballGraphics[BALL_BEAST]` já usava; ela só ganhou um
+`OBJ_EVENT_GFX_*` para poder entrar num `map.json`. **Nenhum PNG novo.**
+
+A checagem de espaço **mudou de lugar**: era depois do `givemon` (guarda
+`MON_CANT_GIVE`), agora também acontece **antes** da Ball sair da mão da Anabel,
+com o mesmo teste da fenda. A guarda velha continua onde estava, como rede; o
+teste novo existe porque a partir daquela linha a cena **afirma** que a criatura
+está dentro da Ball, e o ramo `NoRoom` não pode disparar depois disso.
+
+### 18.5 A tela branca na fenda diária — o que se sabe, o que não se sabe
+
+**Sintoma:** evento encerrado (estado 16, Looker e Anabel morando no altar), o
+jogador fala com a fenda, responde SIM, e a tela fica **branca** com o jogo
+travado. O mesmo caminho no estado 14 (a ida para a boss battle) funciona — o
+autor jogou a luta inteira.
+
+**O que foi verificado e descartado:** o par `fadescreen`/`warpsilent` é
+idêntico nos dois estados (só muda o `setflag FLAG_DAILY_ALTAR_RIFT`);
+`Task_WarpAndLoadMap`, `TryFadeOutOldMapMusic`, `BGMusicStopped`,
+`DoEnterCaveTransition` e toda a cadeia `Task_EnterCaveTransition1..4` terminam e
+entregam para `gMain.savedCallback`; as flags da arena estão todas dentro do
+array de save; os textos não têm código de controle quebrado; o `map.bin` e as
+colisões dos dois mapas estão corretos.
+
+**O achado duro, e é o único lugar de onde pode sair branco nesse warp:**
+
+```c
+// src/fldeff_flash.c
+{MAP_TYPE_ROUTE, MAP_TYPE_UNDERGROUND, TRUE, FALSE, DoEnterCaveTransition},
+```
+
+O Altar é `MAP_TYPE_ROUTE` e a arena é `MAP_TYPE_UNDERGROUND`, então o motor
+trata essa passagem como **entrar numa caverna**: `WarpFadeOutScreen()` consulta
+`GetMapPairFadeToType(ROUTE, UNDERGROUND)`, recebe `isEnter = TRUE` e faz
+**`FadeScreen(FADE_TO_WHITE)`**, e depois roda a íris branca de entrada de
+caverna antes de o mapa aparecer. E:
+
+> `MAP_ULTRA_SPACE_ARENA` é o **único** dos **243** mapas `MAP_TYPE_UNDERGROUND`
+> do jogo alcançado por `warpsilent` em vez de um warp event. Todos os outros
+> 242 são cavernas em que se entra andando pela boca.
+
+Ou seja, o caminho existe, é branco por construção e nunca foi exercitado assim
+em nenhum outro lugar do projeto.
+
+**O que foi feito (sem afirmar que resolve):** o `EventScript_EmptyRift` passou a
+abrir exatamente como a cena do Ato IV, que é o caminho que comprovadamente
+funciona — `lockall` / `hidefollower` / `delay 20` antes de qualquer caixa —, e
+ganhou um `applymovement` que vira o jogador para o norte. Esse `applymovement`
+conserta de passagem um defeito real e independente: o `warpsilent` larga o
+jogador em (10,19) **de frente para o sul**, a um passo da fileira de
+`coord_event` em `y=20` que o joga de volta para o altar — ele chegava apontando
+para a saída.
+
+**Se ainda travar**, o próximo passo é trocar o `map_type` da arena de
+`MAP_TYPE_UNDERGROUND` para `MAP_TYPE_UNKNOWN`: o par `ROUTE → UNKNOWN` **não**
+está em `sTransitionTypes`, então a transição de caverna deixa de existir e o
+warp vira preto simples nos dois sentidos. Não foi feito agora porque muda
+quatro coisas de tabela (`CurrentMapHasShadows`, o `BATTLE_ENVIRONMENT_CAVE`
+padrão, o `TRANSITION_TYPE_CAVE` da batalha e o "conta como noite" do
+`battle_script_commands.c`) e não se troca comportamento de motor por palpite. A
+íris branca de entrada de caverna, aliás, é **errada de qualquer jeito** para um
+rasgo no Ultra Space.
+
+### 18.6 Arquivos tocados na revisão 4
+
+| Arquivo | O quê |
+|---|---|
+| `include/region_map.h` | `MAP_NAME_LENGTH_MAX`, `mapSecName[]` maior, o comentário do porquê |
+| `src/map_name_popup.c` | `mapDisplayHeader[]` maior, `MAP_NAME_POPUP_PREFIX_SIZE` |
+| `src/data/region_map/region_map_sections.json` | nome do `MAPSEC_ABANDONED_LAB`. É a **fonte de verdade**: o `region_map_entries.h` é gerado dele e é gitignored — não edite o `.h` |
+| `graphics/object_events/pics/misc/altar_rift.png` | **novo** — 128x32, quatro quadros |
+| `graphics/object_events/palettes/altar_rift.pal` | **novo** |
+| `spritesheet_rules.mk` | regra `-mwidth 4 -mheight 4` da fenda |
+| `include/constants/event_objects.h` | `OBJ_EVENT_GFX_ALTAR_RIFT`, `OBJ_EVENT_GFX_BEAST_BALL`, `NUM_OBJ_EVENT_GFX` 335→337, `OBJ_EVENT_PAL_TAG_ALTAR_RIFT` |
+| `src/data/object_events/object_event_graphics.h` | os dois `INCBIN` da fenda |
+| `src/data/object_events/object_event_pic_tables.h` | `sPicTable_AltarRift`, `sPicTable_BeastBall` |
+| `src/data/object_events/object_event_anims.h` | `sAnim_AltarRiftLoop`, `sAnimTable_AltarRift` |
+| `src/data/object_events/object_event_graphics_info.h` | os dois `ObjectEventGraphicsInfo` |
+| `src/data/object_events/object_event_graphics_info_pointers.h` | os dois ponteiros + `extern` |
+| `src/event_object_movement.c` | paleta da fenda em `sObjectEventSpritePalettes` |
+| `data/maps/SunMoonAltar/map.json` | fenda usa o gráfico novo; alcance 1 para Looker e Anabel |
+| `data/maps/SunMoonAltar/scripts.inc` | `ApplyResidents` no `ON_TRANSITION` |
+| `data/maps/UltraSpaceArena/map.json` | objeto da Beast Ball |
+| `data/maps/UltraSpaceArena/scripts.inc` | `FLAG_TEMP_6`, cena de captura, correção do `STR_VAR_1`, checagem de espaço adiantada, `EmptyRift` endurecido |
+| `docs/SOULGOLD_FLAGS_AUDIT.csv` | regerado: única mudança é `FLAG_TEMP_6` ganhando mais um mapa |
+
+Nenhuma flag persistente nova — a revisão 4 mantém a propriedade do §3.1.
+
+### 18.7 O que ainda precisa de runtime
+
+- [ ] **Item 5.** Entrar na fenda diária no estado 16 e confirmar se a tela
+      branca acabou. Se não, aplicar a troca de `map_type` do §18.5.
+- [ ] **Item 1.** Abrir o Town Map dentro do Altar e ver "Sun & Moon Altar"
+      inteiro na caixa, sem crash. Conferir também o popup ao entrar no mapa.
+- [ ] **Item 2.** Ver a fenda animada em (14,10) nos estados 14, 15 e 16, e
+      conferir que os portais do `SpearPillarTop` continuam iguais.
+- [ ] **Item 3.** Estado 16: Looker e Anabel andando, e o gargalo em `y=12`
+      nunca fechado.
+- [ ] **Item 4.** Ganhar o boss e ver a Ball voar, chacoalhar três vezes e a
+      caixa dizer **"received NECROZMA"**. Com a party cheia e o PC cheio, ver o
+      `NoRoom` disparar **antes** da animação.
+- [ ] **Item 6 (revisão 5).** Na arena, ver o **sprite dourado de verdade** em
+      (10,8) — não o boneco do Substitute — e o Necrozma pequeno depois da
+      batalha. Sobre *quando* cada forma aparece, ver o item 7 do §20.5: desde a
+      revisão 6 ela já chega Ultra, não há transformação no meio da cena.
+
+---
+
+## 19. Retorno do autor em runtime (revisão 5, 25/09/2026) — o sprite do Ultra Necrozma
+
+> *"Coloca o Ultra Necrozma como exception porque a gente usa o sprite dele na
+> história."* — e, em seguida: *"aplica corretamente o sprite do Ultra Necrozma
+> no Altar, dentro do rift também."*
+
+Sexto item do mesmo teste em runtime. **Nada em `data/maps/` estava errado.** A
+arena já tinha o objeto certo, no tile certo, com a flag certa, e a troca já
+estava encenada desde a revisão 3. O que faltava era engine: o
+`SPECIES_NECROZMA_ULTRA` não tinha dado de overworld nenhum, e a cena desenhava
+o boneco do Substitute no lugar da criatura.
+
+### 19.1 A causa
+
+`include/config/overworld.h` traz `OW_BATTLE_ONLY_FORMS FALSE` — a config que
+corta o sprite de overworld de **todas** as formas só-de-batalha (megas, ultra
+burst) para economizar ROM. Em `gen_7_families.h`, o bloco `OVERWORLD(...)` do
+`SPECIES_NECROZMA_ULTRA` estava inteiro sob `#if OW_BATTLE_ONLY_FORMS`, e a
+`sPicTable_NecrozmaUltra` também.
+
+Com o bloco fora, `gSpeciesInfo[SPECIES_NECROZMA_ULTRA].overworldData.tileTag`
+fica **0**, e aí:
+
+```c
+// src/event_object_movement.c, GetObjectEventGraphicsInfo
+if ((graphicsInfo->tileTag == 0 && species < NUM_SPECIES) || ...)
+{
+    if (OW_SUBSTITUTE_PLACEHOLDER)
+        return &gSpeciesInfo[SPECIES_NONE].overworldData;   // o boneco
+    return NULL;
+}
+```
+
+`OW_SUBSTITUTE_PLACEHOLDER` é `TRUE` no projeto. **Por isso o build sempre
+fechou limpo e a cena sempre rodou** — ela só desenhava a coisa errada. É o tipo
+de armadilha que o `CLAUDE.md` descreve: compila, roda, e quebra na tela.
+
+O §17 do [`SOULGOLD_RIFT_ARCO_NARRATIVO.md`](../SOULGOLD_RIFT_ARCO_NARRATIVO.md)
+já tinha apontado o `#if OW_BATTLE_ONLY_FORMS` como "ponto concreto de
+investigação", sem conseguir provar o fallback. Era esse.
+
+### 19.2 A correção — uma feature flag só do Ultra Necrozma
+
+O mesmo §17 recomendava **não** ligar `OW_BATTLE_ONLY_FORMS` inteiro
+("não recomendar ligar todas as formas de batalha indiscriminadamente: avaliar
+um ator específico de cena ou habilitação seletiva, com medição de memória").
+Foi o que se fez — uma exceção por espécie, ao lado da config original:
+
+```c
+#define OW_BATTLE_ONLY_FORMS           FALSE
+#define OW_BATTLE_ONLY_FORMS_NECROZMA_ULTRA TRUE  // SoulGold: per-species exception...
+```
+
+Três portões passaram a aceitar as duas condições
+(`OW_BATTLE_ONLY_FORMS || OW_BATTLE_ONLY_FORMS_NECROZMA_ULTRA`):
+
+| Arquivo | O quê |
+|---|---|
+| `include/config/overworld.h` | a config nova, logo abaixo de `OW_BATTLE_ONLY_FORMS` |
+| `src/data/object_events/object_event_pic_tables_followers.h` | a `sPicTable_NecrozmaUltra` |
+| `src/data/pokemon/species_info/gen_7_families.h` | o `OVERWORLD(...)` do `SPECIES_NECROZMA_ULTRA` |
+| `include/event_object_movement.h` | `#error` novo, espelhando o de `OW_BATTLE_ONLY_FORMS`: a exceção também exige `OW_POKEMON_OBJECT_EVENTS` |
+
+As megas continuam cortadas. Nenhum `.json`, `.inc` ou `.pory` mudou.
+
+### 19.3 A medição de memória que o §17 pediu
+
+Duas `make` completas, só trocando a config nova:
+
+| `OW_BATTLE_ONLY_FORMS_NECROZMA_ULTRA` | ROM | EWRAM | IWRAM |
+|---|---|---|---|
+| `FALSE` | 31 149 932 B | 247 140 B | 24 172 B |
+| `TRUE` | 31 149 940 B | 247 140 B | 24 172 B |
+
+**+8 bytes de ROM. Zero de RAM.** O motivo: em `src/data/graphics/pokemon.h` os
+`INCBIN` de `gObjectEventPic_NecrozmaUltra` e das duas paletas de overworld
+estão sob `P_ULTRA_BURST_FORMS` e `OW_POKEMON_OBJECT_EVENTS`, **não** sob
+`OW_BATTLE_ONLY_FORMS`. A folha e as paletas já estavam na ROM nos dois builds
+(confirmado no `Soulgold.map`: `gObjectEventPic_NecrozmaUltra` aparece com a
+config desligada). Ou seja: o projeto já pagava pelo sprite e não o usava. Os
+8 bytes são a tabela de quadros.
+
+### 19.4 O que isso muda na tela
+
+Dois lugares, e os dois já estavam escritos:
+
+| Mapa | Objeto | Cena |
+|---|---|---|
+| `UltraSpaceArena` | `LOCALID_ULTRA_SPACE_ARENA_ULTRA` (10,8), `FLAG_TEMP_3` | `UltraSpaceArena_EventScript_Confront`: `FADE_TO_WHITE` → `removeobject` Necrozma → `addobject` Ultra → `playmoncry SPECIES_NECROZMA_ULTRA`. E o caminho de volta, depois da batalha |
+| `NewBarkTown` | `LOCALID_NEWBARK_UB_ULTRA_NECROZMA` | a aparição do evento pré-altar |
+
+O `dump_mapa.py` confirma a premissa do **risco 5**: os três objetos que dividem
+(10,8) na arena — `NECROZMA` (`FLAG_TEMP_2`), `ULTRA` (`FLAG_TEMP_3`) e
+`BEAST_BALL` (`FLAG_TEMP_6`) — continuam com flags separadas, então só um existe
+por vez. A folha é 256x32 (oito quadros de 32x32), igual à do Necrozma comum que
+ocupa o mesmo tile, então a coreografia não muda de tamanho na tela.
+
+### 19.5 Limite
+
+`SIZE_32x32`, com o `//TODO: 64x64 overworld sprite!` que veio do upstream. Se o
+clímax pedir um Ultra Necrozma **grande** na arena, isso é arte nova mais
+`SIZE_64x64` mais `OW_LARGE_OW_SUPPORT` (já `TRUE`) — trabalho separado, fora
+desta revisão.
+
+---
+
+## 20. Retorno do autor em runtime (revisão 6, 25/09/2026) — a criatura chega dourada
+
+> *"O Necrozma fica dourado em New Bark, quando ele absorve as últimas 2 beasts.
+> Na fenda ele deveria ser sempre Ultra Necrozma até ser derrotado e virar
+> Necrozma novamente."*
+
+Continuidade, e ele tem razão. O `NewBarkTown_EventScript_UBUltra` transforma a
+criatura **e ela vai embora dourada** — `NewBarkTown_EventScript_UBUltraLeaves`
+remove o objeto Ultra, não o pequeno. Ninguém nunca tirou aquela luz dela. A
+arena estava contando a transformação **uma segunda vez**, como se o jogador não
+tivesse visto a primeira.
+
+### 20.1 A regra, agora escrita
+
+**Durante o Ato IV só existe a forma Ultra nesta sala.** O
+`LOCALID_ULTRA_SPACE_ARENA_NECROZMA` não é spawnado em lugar nenhum da
+confrontação; o `FLAG_TEMP_2` dele fica setado desde o `ON_TRANSITION` até o fim
+da batalha. O **único** script que põe a forma pequena no chão é o
+`UltraSpaceArena_EventScript_Victory` — a forma pequena passou a significar uma
+coisa só: **perder a luz**. É o que o §18.4 já tinha montado do outro lado
+(`Text_VictoryArmourOff` → `addobject ..._NECROZMA` → captura → `givemon
+SPECIES_NECROZMA, 75`), e agora os dois lados combinam.
+
+### 20.2 O que mudou na cena
+
+| Antes | Agora |
+|---|---|
+| `addobject` Necrozma, `playmoncry SPECIES_NECROZMA` | `addobject` **Ultra**, `playmoncry SPECIES_NECROZMA_ULTRA` |
+| leitura da Anabel → parceiro se põe na frente → **shake + troca de objeto** → `Text_ArenaUltra` | `Text_ArenaUltra` **na revelação** → leitura da Anabel → parceiro se põe na frente → **flare + grito + shake** → `Text_ArenaAnswers` |
+| a criatura mudava | a criatura **repara** |
+
+O compasso do parceiro não foi perdido — foi o que herdou o lugar da
+transformação. `UltraSpaceArena_Movement_UltraFlare` (quatro
+`walk_in_place_fast_down`, a mesma forma do `NewBarkTown_Movement_UltraFlare`)
+mais o grito e o `ShakeCamera` que já existiam. **`_down` e não `_right`:** ela
+está em (10,8) olhando para o sul, para o jogador em (10,11) e para o parceiro em
+(9,9) — `y` cresce para baixo.
+
+E isso faz a fala seguinte funcionar melhor do que antes: a Anabel abre com
+*"Behind me. Now. …Right. It looked at you"* logo depois de a narração dizer que
+ela não tinha olhado para nada naquele chão até alguém se pôr entre a luz e o
+jogador.
+
+### 20.3 Texto
+
+- `UltraSpaceArena_Text_ArenaUltra` — reescrito. Era a narração **da** transformação ("The armour came back on in pieces"); virou a narração **da chegada** ("It is already burning. Whatever it put on in New Bark it has not put down"). As duas imagens boas do original — o ladrão e o afogado — ficaram.
+- `UltraSpaceArena_Text_ArenaAnswers` — **novo**, a narração do momento em que ela repara no parceiro.
+- Nada mais mudou: `ArenaLook`, `ArenaAnabelReads`, `ArenaStarving`, `ArenaAnabelFront` e todo o bloco da vitória estão intactos.
+
+`medir_linha.py`: nenhuma linha do mapa passa de 208 px. `checar_falantes.py`:
+14 falantes em ordem. As duas narrações são `msgbox` próprios entre
+`closemessage`, então não herdam a plaquinha da Anabel.
+
+### 20.4 Arquivos tocados na revisão 6
+
+| Arquivo | O quê |
+|---|---|
+| `data/maps/UltraSpaceArena/scripts.inc` | abertura do `Confront`, `Movement_UltraFlare`, `Text_ArenaUltra` reescrito, `Text_ArenaAnswers` novo |
+
+Só isso. Nenhum `map.json`, nenhuma flag, nenhum `local_id` novo — os dois
+objetos já existiam e continuam existindo, com as mesmas flags.
+
+### 20.5 Runtime
+
+- [ ] **Item 7.** Entrar na fenda no estado 14 e ver a criatura **já dourada** no
+      primeiro flash, sem transformação nenhuma no meio da cena; o parceiro se
+      pôr na frente e ela dar o flare no lugar; e, ao ganhar, a armadura sair e
+      sobrar o Necrozma pequeno para a captura.

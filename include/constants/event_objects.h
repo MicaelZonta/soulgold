@@ -339,11 +339,17 @@
 #define OBJ_EVENT_GFX_KUKUI                      332
 #define OBJ_EVENT_GFX_GLADION                    333
 #define OBJ_EVENT_GFX_LOOKER                     334
+// A fenda do Altar do Sol e da Lua: 32x32, quatro quadros em loop. NAO e o
+// OBJ_EVENT_GFX_PORTAL, que e o anel 16x16 parado do SpearPillarTop.
+#define OBJ_EVENT_GFX_ALTAR_RIFT                 335
+// A Beast Ball da Anabel na cena de captura do Necrozma. Reaproveita inteiro o
+// grafico que gPokeballGraphics[BALL_BEAST] ja usa para follower.
+#define OBJ_EVENT_GFX_BEAST_BALL                 336
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        335
+#define NUM_OBJ_EVENT_GFX                        337
 
 
 // These are dynamic object gfx ids.
@@ -553,6 +559,7 @@
 #define OBJ_EVENT_PAL_TAG_BALL_STRANGE            0x116A
 #endif //OW_FOLLOWERS_POKEBALLS
 #define OBJ_EVENT_PAL_TAG_LOOKER                  0x116B
+#define OBJ_EVENT_PAL_TAG_ALTAR_RIFT              0x116C
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

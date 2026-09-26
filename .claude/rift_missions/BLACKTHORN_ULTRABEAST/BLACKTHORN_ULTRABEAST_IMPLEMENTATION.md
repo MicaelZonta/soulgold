@@ -1,12 +1,46 @@
 # Blackthorn — Necrozma, Buzzwole + Pheromosa (Rift Mission 1) — implementação
 
-**Status:** **história evoluída (revisão 3, 22/09/2026) e validada em runtime pelo autor (22/09/2026: "testei tudo, ficou perfeito")**, incluindo as reações pré-Liga à família Cosmog. `make -j$(nproc)` limpo. Receita reutilizável: skill `evoluir-historia-de-evento`.
-Revisão 3 — 22/09/2026 (feedback do autor, §13). Revisão 2 — 19/09/2026.
-**Modo:** esqueleto (skill `evento-esqueleto`). Diálogo curto, coreografia mínima,
-mas estado, visibilidade, gatilhos, batalha e retry **completos e corretos**.
-**Roteiro da cena (falas e movimentos):** [`BLACKTHORN_ULTRABEAST_SCRIPT.md`](BLACKTHORN_ULTRABEAST_SCRIPT.md)
-**Design de referência:** [`SOULGOLD_RIFT_MISSIONS_DESIGN.md`](../SOULGOLD_RIFT_MISSIONS_DESIGN.md) §5, §6 regras comuns (V19), §23.
-**Missão seguinte:** [`MAHOGANY_ULTRABEAST_IMPLEMENTATION.md`](../MAHOGANY_ULTRABEAST/MAHOGANY_ULTRABEAST_IMPLEMENTATION.md) — continua a var nos estados 4→5→6 e substitui o stub da Missão 2 deixado em `OlivineCity_House1` (§4.4).
+**Status:** **roteiro V2 (auditoria V3) implementado — 25/09/2026, revisão 5.** `make -j$(nproc)` limpo; **runtime pendente, e a cena mudou o suficiente para NÃO herdar o "testei tudo, ficou perfeito" de 22/09/2026** (lista nova no §11). Receita reutilizável: skill `evoluir-historia-de-evento`.
+Revisão 5 — 25/09/2026 (§15 e §16). Revisão 4 — 23/09/2026 (§14). Revisão 3 — 22/09/2026 (§13). Revisão 2 — 19/09/2026.
+**Modo:** história final. O esqueleto foi superado nas revisões 3 e 5; o que resta de placeholder está no §9.
+**Roteiro da cena (falas e movimentos):** [`BLACKTHORN_ULTRABEAST_SCRIPT_V2.md`](BLACKTHORN_ULTRABEAST_SCRIPT_V2.md) — **é ele que vale**. O [`BLACKTHORN_ULTRABEAST_SCRIPT.md`](BLACKTHORN_ULTRABEAST_SCRIPT.md) é o roteiro da revisão 3 e fica como histórico.
+**Design de referência:** [`SOULGOLD_RIFT_MISSIONS_DESIGN.md`](../SOULGOLD_RIFT_MISSIONS_DESIGN.md) §5, §6 regras comuns (V26), §23, §29.
+**Missão seguinte:** [`MAHOGANY_ULTRABEAST_IMPLEMENTATION.md`](../MAHOGANY_ULTRABEAST/MAHOGANY_ULTRABEAST_IMPLEMENTATION.md) — continua a var nos estados 4→5→6. **Atenção:** o estado 4 deixou de abrir o briefing sozinho (§15.3).
+
+**Mudanças da revisão 5 (25/09/2026)** — detalhe em §15, reflexão em §16:
+- Todas as falas da ligação, do briefing de Olivine e da cena inteira substituídas pelo roteiro V2.
+- Uma caixa, um falante. O briefing da M1 virou cinco `msgbox` seguidos.
+- O ataque da Clair tem efeito visível: o Necrozma recua um tile e volta.
+- A ruptura ganhou **objeto próprio** (`OBJ_EVENT_GFX_ALTAR_RIFT` em (14,51)).
+- As duas UBs avançam com ritmos e linhas diferentes; o Silvally intercepta frente e depois lateral.
+- O Gladion **nomeia o Necrozma** em cena. A regra "ninguém o nomeia" morreu no design.
+- A Anabel **tenta conter** a UB derrotada; a ligação repele a Ball.
+- A oscilação da ruptura depois da absorção é obrigatória em todos os ramos.
+- O parceiro da família Cosmog é um **ator de verdade** em (19,51) — quatro templates, um é adicionado.
+- O Type: Null do presente é objeto próprio em (19,49), visível ao lado do Silvally; origem revisada (veio de Alola com o Gladion).
+- **Retry com checkpoint persistente** (`FLAG_BLACKTHORN_UB_ENGAGED`) e texto próprio.
+- **Falha de entrega não repete a batalha** (`FLAG_BLACKTHORN_TYPE_NULL_PENDING`).
+- Trilha de ameaça (`fadeoutbgm` / `playbgm MUS_DP_LEGEND_APPEARS, TRUE` / `fadedefaultbgm`).
+- **Convocação por telefone, uma por dia** (`FLAG_DAILY_LOOKER_CALL` + `FLAG_RIFT_LOOKER_SUMMONS`), e o estado 4 passa a **esperar a ligação** antes de oferecer o briefing.
+
+**Mudanças da revisão 4 (23/09/2026):** flashes com `fadescreenswapbuffers` (§14).
+
+**Mudanças da revisão 3 (22/09/2026)** — detalhe em §13:
+- História: Clair (+ Kingdra) já luta contra o Necrozma na chegada; o Necrozma abre a fenda; Buzzwole e Pheromosa atacam o jogador; Gladion + Silvally chegam de surpresa; depois da luta o Necrozma absorve as duas UBs; o Gladion dá um Type: Null.
+- Gladion não é mencionado antes da cena e fica escondido até o resgate.
+- Portas da cidade trancadas (menos o Centro) durante o incidente — mecanismo em C.
+- Checagem de equipe **e** PC cheios antes do SIM do Looker (presente do Type: Null).
+- Boss mais difícil: 3 barras / Lv75 / x120 / moveset curado + item.
+- Reação opcional à família Cosmog (Necrozma e elenco).
+- Gancho sem destino; falas finais na ligação, no briefing e em toda a cena.
+
+**Mudanças da revisão 2:**
+- Looker sai da Route 29. Looker e Anabel moram em `OlivineCity_House1` **desde o começo do jogo, sem flag**; `VAR_RIFT_MISSIONS_STATE` só troca o diálogo e dispara a cena.
+- Ligação do Elm e do Looker uma após a outra: aprovado.
+- Batalha: o jogador **escolhe** Buzzwole ou Pheromosa; Gladion + Silvally enfrentam a outra. Estrutura padrão de todas as missões.
+- A luta do jogador usa o **sistema de boss** do projeto (`setbossbattle`).
+
+---
 
 Escopo: da ligação do Looker após o Hall of Fame até o fim do incidente de
 Blackthorn, terminando com o gancho que manda o jogador de volta a Olivine **sem dizer
@@ -68,6 +102,15 @@ Hall of Fame (1ª vez)                  VAR_RIFT_MISSIONS_STATE = 1
 | `FLAG_NO_CATCHING` | `include/constants/flags.h` | `0x1041` | Para `B_FLAG_NO_CATCHING`. |
 | `B_FLAG_NO_CATCHING` | `include/config/battle.h:259` | `0` → `FLAG_NO_CATCHING` | Mesmo padrão de `B_FLAG_NO_WHITEOUT FLAG_NO_WHITEOUT` (linha 266). |
 
+**Constantes da revisão 5 (25/09/2026):**
+
+| Constante | Arquivo | Valor | O que é |
+|---|---|---|---|
+| `FLAG_BLACKTHORN_UB_ENGAGED` | `include/constants/flags.h` | `0x1047` | Checkpoint de retry: a fenda já foi aberta e o Gladion já se apresentou. Setada no último beat antes da escolha, limpa no fim da missão. **É o único estado da cena que sobrevive a um blackout**, porque o blackout recarrega o mapa e mata todo `FLAG_TEMP_*`. |
+| `FLAG_BLACKTHORN_TYPE_NULL_PENDING` | `include/constants/flags.h` | `0x1048` | Cidade salva, presente pendente. Mantém só Gladion + Silvally na rua e um diálogo que conclui **só** a entrega. |
+| `FLAG_RIFT_LOOKER_SUMMONS` | `include/constants/flags.h` | `0x1049` | Convite emitido: o Looker ligou e o briefing em Olivine está disponível. Persiste entre dias e saves; enquanto está setada, **não** há nova ligação; enquanto está limpa, a casa só dá a fala de espera. Gate dos estados 4, 6, 8 e 10 — **não** do 2. |
+| `FLAG_DAILY_LOOKER_CALL` | `include/constants/flags.h` | `DAILY_FLAGS_START + 0x2F` | O Looker já ligou hoje. Daily flag: o `ClearDailyFlags` a limpa na virada da data (calendário do jogo, não 24 h). Setada também por **todo** script que fecha uma missão. |
+
 `FLAG_NO_CATCHING` é **flag de batalha**: a engine a limpa sozinha ao fim de toda
 batalha (`Overworld_ResetBattleFlagsAndVars`, `src/overworld.c:425-441`). Setar
 imediatamente antes da batalha. Reaproveitada por todas as Rift Missions.
@@ -88,7 +131,7 @@ Comentário obrigatório acima de cada `#define` novo (padrão de
 | 1 | Liga vencida; ligação do Looker pendente | `PokemonLeague_HallOfFame_EventScript_SetFirstGameClearFlags` | `NewBarkTown_OnFrame`; Olivine House1 (mesmo diálogo do 0) |
 | 2 | Ligação recebida; ir a Olivine | `NewBarkTown_EventScript_LookerCall` | Olivine House1 (cena de chegada + briefing) |
 | 3 | Briefing feito; incidente de Blackthorn **ativo** | `OlivineCity_House1_EventScript_Briefing` | Olivine House1 ("vá na frente") |
-| 4 | Blackthorn resolvido; briefing da Missão 2 pendente | `BlackthornCity_EventScript_UBResolved` | Olivine House1 (stub da Missão 2) |
+| 4 | Blackthorn resolvido; **convocação da Missão 2 pendente** | `BlackthornCity_EventScript_UBHook` | `ShouldDoRiftMissionCall`; Olivine House1 (espera **ou** briefing, conforme `FLAG_RIFT_LOOKER_SUMMONS`) |
 | 5+ | Reservado para as próximas missões | próximos docs | — |
 
 **Invariante:** `FLAG_EVENT_ULTRABEAST_BLACKTHORN` setada ⇔ `VAR_RIFT_MISSIONS_STATE == 3`.
@@ -96,8 +139,15 @@ As duas mudam **juntas, no mesmo script** (Olivine seta, Blackthorn limpa). A fl
 existe só porque o campo `flag` do `map.json` não lê var — é ela que esconde a
 cidade. A var é a autoridade da história.
 
-Nenhuma outra flag/var persistente. A escolha do jogador (qual UB enfrentar) é
-temporária: numa nova tentativa ele escolhe de novo.
+**Invariante nova da revisão 5:** um estado par ≥ 4 significa *missão anterior
+fechada, próxima convocação pendente* — **não** "briefing disponível". O briefing
+só existe com `FLAG_RIFT_LOOKER_SUMMONS` setada, e é a ligação do Looker que a
+seta. O estado 2 é a exceção deliberada: a convocação dele é a cena de ligação em
+New Bark, aquele convite não expira nem se repete, e submetê-lo à flag travaria
+qualquer save feito antes de a flag existir.
+
+A escolha do jogador (qual UB enfrentar) continua temporária: numa nova tentativa
+ele escolhe de novo. As outras três flags persistentes da missão estão no §1.1.
 
 ### 1.3 Temporários por mapa
 
@@ -111,6 +161,12 @@ temporária: numa nova tentativa ele escolhe de novo.
 | `BlackthornCity` | `VAR_TEMP_2` | Resultado da batalha |
 | `BlackthornCity` | `VAR_TEMP_3` | Escolha do jogador: 0 = Buzzwole, 1 = Pheromosa. Sobrevive à batalha (voltar da batalha não recarrega o mapa, mesmo padrão de `ReceptionGate`). |
 | `BlackthornCity` | `VAR_TEMP_4` | Espécie da família Cosmog a que o Necrozma reagiu (`SPECIES_NONE` = sem reação). Lida de novo na conversa final — rev. 3 |
+| `BlackthornCity` | `FLAG_TEMP_5` | Cache do ator do parceiro do jogador — **quatro** templates (Cosmog, Cosmoem, Solgaleo, Lunala) no mesmo tile (19,51) partilhando uma flag. No máximo um é adicionado, e o `removeobject` esconde os quatro — rev. 5 |
+| `BlackthornCity` | `FLAG_TEMP_6` | Cache da ruptura (14,51). Aberta quando o Necrozma rasga, fechada atrás dele; num retry o load a devolve aberta — rev. 5 |
+| `BlackthornCity` | `FLAG_TEMP_7` | Cache do Type: Null do presente (19,49) — rev. 5 |
+
+Conferido em 25/09/2026: `FLAG_TEMP_5/6/7` não aparecem em nenhum script comum
+(`data/scripts/`) nem em `src/`, só em mapas distintos deste.
 
 Conferido em 22/09/2026: nenhum `FLAG_TEMP_1..4` nem `VAR_TEMP_1..4` em
 `BlackthornCity/scripts.inc` além destes, nem em script comum alcançável do mapa.
@@ -647,26 +703,59 @@ pelo Necrozma, o Necrozma sem nome, o gancho sem destino e o Centro como única 
 
 ## 11. Teste em runtime
 
-- [ ] Route 29 sem Looker; troca do Voltorb em House3 (inalterados da rev. 2).
-- [ ] HoF → sair de casa: ligação do Elm, depois do Looker (texto novo, sem spoiler).
-- [ ] Estado 2 → briefing em Olivine: cita Clair e "um Pokémon feito de luz"; **não** cita Gladion.
-- [ ] Estado 3 em Blackthorn: rua vazia; Looker, Anabel, Clair, Kingdra e Necrozma presentes; **Gladion e Silvally ausentes**.
-- [ ] Portas: Ginásio, Mart e as três casas mostram a fala da Clair e não entram; o Centro entra. Dragon's Den e Ice Path continuam acessíveis.
-- [ ] Chegar por Fly, Route 45, Route 44 e Ice Path: mesmo elenco, UBs/Gladion ausentes.
-- [ ] Falar com Anabel, Clair, Kingdra e Necrozma com e sem Cosmog na equipe.
-- [ ] Equipe 6 + PC cheio: Looker dá a "regra da Anabel" e não pergunta SIM/NÃO. Liberar espaço → pergunta normal.
-- [ ] SIM: a Clair olha para o jogador e volta; ataque do Kingdra; ruptura; carga das UBs **sem atravessar a Clair**; o Silvally salta e cai em (19,50); o Gladion chega em (20,49); ninguém sobreposto.
-- [ ] Escolha Buzzwole e Pheromosa: boss com 3 barras, moveset e item certos. Ver se a luta é ameaça ou parede.
-- [ ] Bola bloqueada; "Run" → blackout; perder → Centro; cidade vazia; Gladion escondido de novo; nova escolha.
-- [ ] Vencer: absorção das duas UBs, "!" em quatro personagens, Necrozma some.
-- [ ] Com Cosmog, Cosmoem, Solgaleo e Lunala (um por vez): Necrozma dá o passo, falas certas, bloco extra na conversa. Sem nenhum: nada.
-- [ ] Type: Null com vaga na equipe (fanfarra + apelido) e com equipe cheia (vai para o PC com aviso). Cena continua depois do apelido.
-- [ ] Anabel em (22,51) visível acima da caixa de texto (risco herdado, §12.5).
-- [ ] Gancho sem destino; fade; cidade repovoada; portas abertas; follower de volta.
-- [ ] Estado 4 em Olivine: briefing da M2 revela Mahogany.
-- [ ] Salvar/recarregar nos estados 2, 3 e 4.
+**Nada aqui foi testado depois da revisão 5.** O "testei tudo, ficou perfeito" de
+22/09/2026 vale para a revisão 3; a cena mudou em quase todos os beats, e a
+sequência de convocação é inteiramente nova.
 
----
+### 11.1. Convocação por telefone (novo)
+
+- [ ] HoF → sair de casa: ligação do Elm, **depois** a do Looker, uma por frame, sem sobreposição.
+- [ ] Estado 2: o Looker **não** liga de novo nos dias seguintes, e o briefing em Olivine está disponível na hora (sem esperar ligação).
+- [ ] Terminar Blackthorn **no mesmo dia** da ligação de New Bark: nenhuma segunda ligação naquele dia.
+- [ ] Estado 4 antes da ligação: falar com Looker e com Anabel dá a fala de espera, cada um com a **própria plaquinha**; entrar na casa não encena nada.
+- [ ] Dormir/avançar a data → andar fora de Olivine House1: a ligação toca **uma vez**, nomeia Mahogany, e não toca mais nesse dia.
+- [ ] Depois da ligação: o briefing da M2 aparece (pelo gatilho de frame **e** falando com qualquer um dos dois) e a fala de espera desaparece.
+- [ ] Estar **dentro** da casa não consome a chamada: ela toca ao sair.
+- [ ] Recarregar o save com o convite emitido: o convite continua; sem ele, a espera continua.
+- [ ] Presente pendente (equipe 6 + PC cheio forçado): **nenhuma** ligação até a entrega ser concluída.
+- [ ] Retry depois de blackout: nenhum telefone.
+
+### 11.2. Cena de Blackthorn (revista)
+
+- [ ] Estado 3 em Blackthorn: rua vazia; Looker, Anabel, Clair, Kingdra e Necrozma presentes; **Gladion, Silvally, UBs e ruptura ausentes**.
+- [ ] Portas: Ginásio, Mart e as três casas mostram só o bilhete curto e não entram; o Centro entra.
+- [ ] Chegar por Fly, Route 45, Route 44 e Ice Path: mesmo elenco.
+- [ ] Falar com Anabel, Clair, Kingdra e Necrozma: uma caixa cada, plaquinha certa, **nenhuma** extensão de Cosmog antes da cena.
+- [ ] Equipe 6 + PC cheio: o Looker dá a mensagem curta de espaço e **não** pergunta SIM/NÃO. Com espaço, nada é dito.
+- [ ] SIM: Clair olha e volta; `Kingdra! Dragon Pulse!` é caixa própria; o Necrozma **recua até (13,50), pulsa e volta a (14,50)** sem virar de lado.
+- [ ] A ruptura aparece em (14,51) com sprite visível, e o tema de ameaça entra **antes** de as UBs aparecerem.
+- [ ] Carga: o Buzzwole em linha reta e a Pheromosa com pausa + amago + corrida mais rápida. **Não** parecem uma formação.
+- [ ] O jogador vira sul no aviso do Looker; o Silvally cai em (19,50), bate para oeste (Buzzwole a (17,50)), vira sul e bate (Pheromosa a (17,51)); ninguém sobreposto.
+- [ ] O Gladion para em (20,49); o jogador confirma com o gesto e volta a oeste; `Necrozma. What's it doing here?` com plaquinha GLADION.
+- [ ] A plaquinha **em cima do menu Buzzwole/Pheromosa é GLADION**.
+- [ ] Boss com 3 barras, moveset e item certos; bola bloqueada.
+- [ ] Vitória: a Anabel sobe para (26,51), arremessa, a Ball é repelida — **a UP alvo é a que o jogador derrotou**, nas duas escolhas.
+- [ ] Absorção: Kingdra e Silvally atacam antes; as UBs dão o passo contra o arrasto; **só as UBs somem**; o Necrozma continua visível, pulsa mais claro e a **ruptura oscila** — inclusive sem família Cosmog na equipe.
+- [ ] Com Cosmog, Cosmoem, Solgaleo e Lunala (um por vez): o Pokémon **aparece em (19,51) antes da fala**, com o cry certo; o Cosmoem não anda; o Necrozma dá o passo até (15,50); o parceiro é **recolhido na tela** antes do reagrupamento.
+- [ ] Com Solgaleo **e** Lunala na equipe: um só aparece, e é o primeiro da ordem da equipe; não troca de espécie no meio.
+- [ ] Rescaldo: o Looker chega a (21,50) e a Anabel a (22,51) **partindo de (26,51)**; ninguém cruza tile ocupado; a Anabel fica visível acima da caixa.
+- [ ] Presente: o Silvally abre (19,50) indo a (18,50); o Type: Null **aparece em (19,49) e os dois ficam na tela juntos**; ele desce sozinho e olha o jogador.
+- [ ] A fala da origem diz **Alola** e Route 45 como treino.
+- [ ] Type: Null com vaga na equipe (fanfarra + apelido) e com equipe cheia (vai para o PC com aviso). O ator só é recolhido **depois** de a entrega ser aceita.
+- [ ] Gancho: o Looker pede para **esperar a ligação** e não manda ninguém a Olivine agora.
+- [ ] Fim: fade, cidade repovoada, portas abertas, follower de volta, elenco sumido.
+- [ ] À noite: entrar na cena e conferir que o **quarto flash** está tão claro quanto o primeiro, e que a trilha de ameaça volta certa depois do boss.
+
+### 11.3. Retry e presente pendente (novo)
+
+- [ ] Perder o boss → blackout → voltar à rua: **UBs em (17,50)/(17,51), Silvally em (19,50), Gladion em (20,49), ruptura aberta**, Necrozma no lugar.
+- [ ] Falar com o Gladion nesse estado: a fala curta de retry, **sem** ele virar para o jogador.
+- [ ] Falar com o Looker: texto de retry ("Clair and Gladion are holding them back"), pergunta da Anabel, e o SIM cai **direto na escolha** — sem telefonema, sem reconhecimento da Clair, sem reapresentação do Gladion.
+- [ ] O tema de ameaça toca de novo na retomada (o `savedMusic` foi zerado pelo load).
+- [ ] Desistir (Run) e perder: os dois passam pelo mesmo caminho.
+- [ ] Forçar equipe 6 + PC cheio **depois** do SIM (debug): a cidade é salva, o estado vai a 4, a cidade repovoa e **só** Gladion + Silvally ficam na rua; falar com ele conclui a entrega e os dois saem a pé pelo norte.
+- [ ] Salvar/recarregar com o presente pendente: os dois continuam lá.
+- [ ] Salvar/recarregar nos estados 2, 3 e 4.
 
 ## 12. Feedback da implementação da revisão 2 (19/09/2026) — histórico
 
@@ -858,3 +947,179 @@ O padrão já era o recomendado em `.claude/skills/visibilidade-e-gatilhos`
 **Conferido:** `make -j$(nproc)` limpo. **Runtime pendente** — o teste é entrar
 na cena **à noite** e conferir que a quarta ruptura está tão clara quanto a
 primeira.
+
+## 15. Revisão 5 — o roteiro V2 e a convocação diária (25/09/2026)
+
+Duas entregas: o autor entregou `BLACKTHORN_ULTRABEAST_SCRIPT_V2.md` (com a
+auditoria V3 dentro, §18 dele) para ser implementado, e pediu numa frase que o
+Looker passasse a **ligar** para chamar o jogador a Olivine, uma vez por dia,
+"e esse pattern daqui em diante".
+
+### 15.1. Pedido → como ficou
+
+| Pedido | Como ficou |
+|---|---|
+| Uma caixa, um falante | Os textos com três e quatro plaquinhas dentro foram quebrados. O briefing da M1 virou **cinco** `msgbox` seguidos sem `closemessage`, cada um começando com o seu `{SPEAKER ...}` — `TrySetSpeakerFromMessage` só lê o começo de cada mensagem. |
+| Ligação inicial curta, sem a cobertura das férias | `NewBarkTown_Text_LookerCall` reescrito. |
+| O ataque da Clair tem de ter efeito | `UBClairAttack` em caixa própria + `Movement_NecrozmaPushedBack` (14,50)→(13,50) com `lock_facing_direction`, pulso, `Movement_NecrozmaReturns`. |
+| Ruptura com borda visível | `LOCALID_BLACKTHORN_UB_RIFT`, `OBJ_EVENT_GFX_ALTAR_RIFT` (o mesmo sprite 32x32 do altar), (14,51), `FLAG_TEMP_6`. Não precisou de gráfico novo. |
+| UBs com ritmos diferentes | `Movement_BuzzwoleCharge` (3× `walk_fast_right`) e `Movement_PheromosaCharge` (`delay_16` + amago + 3× `walk_faster_right`). |
+| Resgate: frente e depois lateral | `Movement_SilvallyStrikeLeft` → recuo do Buzzwole → `Movement_SilvallyStrikeDown` → recuo da Pheromosa. Sequencial. |
+| Gladion nomeia o Necrozma | `UBNecrozmaNamed`. A regra "ninguém o nomeia" foi **reescrita** no design §6, não duplicada. |
+| Tentativa de contenção | `UBContain`: (26,52)→(26,51), arremesso, `SE_M_REFLECT`, `UBRiftPulse`, `SE_BALL_BOUNCE_1`. Alvo escolhido por `VAR_TEMP_3`. |
+| Absorção tentada, não assistida | Kingdra e Silvally atacam a ligação antes; `Movement_UBPulledIn` ganhou um `walk_in_place_fast_right` de resistência antes do arrasto. |
+| Só as UBs somem | O flash da absorção remove **apenas** as duas; o Necrozma e a ruptura saem num flash próprio, depois. |
+| Oscilação obrigatória | `UBFlash` (ganho de luz) → pulso → `UBRiftPulse` + `SE_WARP_IN`, fora de qualquer `goto_if`. |
+| Parceiro visível antes da fala | Quatro templates em (19,51) com `FLAG_TEMP_5`; `UBAddPartner` adiciona um; `playmoncry VAR_TEMP_4` (o comando passa por `VarGet`); `UBPartnerShrinks` não sai do tile, porque o Cosmoem flutua. |
+| Type: Null distinto do Silvally | Objeto próprio em (19,49); o Silvally libera (19,50) indo a (18,50); os dois na tela juntos. |
+| Origem do Type: Null (auditoria V3) | `UBGladionGiftFound` reescrito: veio de Alola com o Gladion; a Route 45 é onde treinam. |
+| Confiança vinda da campanha (V3) | `UBGladionGiftOffer`: "I've seen how you treat your Pokémon." |
+| Retry sem reapresentar ninguém | `FLAG_BLACKTHORN_UB_ENGAGED` + `StageUBRetry` (`setobjectxyperm`) + `UBSceneRetry` + quatro textos próprios. |
+| Falha de entrega não repete a batalha | `FLAG_BLACKTHORN_TYPE_NULL_PENDING` + `StageGiftPending` + `UBGiftRetry` no script de objeto do Gladion. |
+| Resultado sem vitória não diz que fugiram | `UBUnresolved`. |
+| Trilha | `fadeoutbgm 4` no aviso, `playbgm MUS_DP_LEGEND_APPEARS, TRUE` na ruptura, `fadedefaultbgm` depois de a rua ser declarada limpa. O `playbgm` é repetido no retry. |
+| Bilhete da porta curto | `UBDoorLocked` sem a narração anterior. |
+| Briefing da M2 coerente | Chama o Necrozma pelo nome e já diz o que a Anabel procura: cortar a ligação. |
+| Balanceamento | **Intocado.** |
+| Ligação do Looker, uma por dia, e o pattern do arco | §15.3. |
+
+### 15.2. Como o retry foi resolvido, e por que precisou de flag persistente
+
+O blackout **recarrega o mapa**, e é isso que mata o retry barato: `FLAG_TEMP_*`
+e `VAR_TEMP_*` são zerados por `ClearTempFieldEventData`, então na volta não
+existe nenhum vestígio de que a fenda foi aberta. Sem um bit persistente, a
+segunda tentativa reapresenta o resgate de surpresa, o reconhecimento da Clair e
+a identificação do Necrozma — que é exatamente o que o roteiro proíbe.
+
+`FLAG_BLACKTHORN_UB_ENGAGED` é setada no **último** beat antes da escolha, o que
+dá a linha de corte certa: tudo que é apresentação fica acima dela, e nada abaixo
+dela é apresentação. O `ON_TRANSITION` lê a flag e reconstrói a rua com
+`setobjectxyperm` — e não com `setobjectxy`, porque os templates são recarregados
+do header do mapa a cada load, então a mudança vale para esta sessão de mapa e
+some sozinha (é o mesmo motivo pelo qual `BlackThornCity_EventScript_MoveGymBoy`
+vive no `ON_LOAD`).
+
+`MOVEMENT_TYPE_FACE_DOWN` do Gladion e do Silvally virou `MOVEMENT_TYPE_FACE_LEFT`
+no `map.json`: no primeiro encontro eles nascem fora da câmera e o `applymovement`
+manda em tudo, mas num retry eles estão **parados** na rua desde o load, e olhar
+para o sul enquanto duas Ultra Beasts estão a oeste é errado de graça.
+
+### 15.3. A convocação por telefone
+
+O pedido era "o Looker te liga para te chamar a Olivine, uma vez por dia". A
+auditoria V3 do roteiro (§13.3 dele) foi mais longe e transformou isso em **gate
+do briefing**: até a ligação acontecer, a casa em Olivine não encena nada e só dá
+uma fala de espera.
+
+Implementação:
+
+| Peça | Onde |
+|---|---|
+| Quando ligar | `ShouldDoRiftMissionCall`, `src/field_control_avatar.c`, dentro de `TryStartStepCountScript` — ao lado das ligações do Wally e do Scott. É o único lugar que só roda em controle livre. |
+| O que a ligação diz | `RiftMissions_EventScript_LookerCall`, `data/scripts/rift_missions.inc` (arquivo novo, incluído em `data/event_scripts.s`, `extern` em `include/event_scripts.h`). Um texto por estado; a ligação **nomeia a próxima cidade**, e o briefing dá o plano. |
+| Uma por dia | `FLAG_DAILY_LOOKER_CALL`, daily flag. `ClearDailyFlags` a limpa na virada da data — calendário do jogo, não 24 h. |
+| Convite pendente | `FLAG_RIFT_LOOKER_SUMMONS`, persistente. Enquanto setada, nenhuma ligação nova; enquanto limpa, a casa só espera. Limpa por `BriefingTalk` e pela cena de reunião. |
+| Nada de ligação com pendência | A predicate recusa com `FLAG_BLACKTHORN_TYPE_NULL_PENDING` setada. **Toda missão futura que possa terminar com presente pendente precisa entrar nessa condição.** |
+| Fim de missão conta como a ligação do dia | `setflag FLAG_DAILY_LOOKER_CALL` nos cinco scripts que fecham uma missão (New Bark ×2, Blackthorn, Mahogany, Cherrygrove). |
+| Estados | 4, 6, 8, 10. **O 2 está fora**: a convocação de Blackthorn é a cena de ligação em New Bark, e o roteiro §4 diz que aquele convite "persiste até o briefing, sem expirar nem produzir lembretes nos dias seguintes". |
+
+**Por que o estado 2 não é gated pela flag do convite.** Duas razões, e a segunda
+é a que decide: o convite dele já foi entregue por uma cena dedicada, e um save
+feito antes desta revisão está no estado 2 **sem** a flag. Gating o 2 travaria
+esse save para sempre, porque o 2 também não está na lista de ligações.
+
+**Por que a ligação toca depois, e não no passo seguinte ao fim da missão.** O
+Looker acabou de pedir em pessoa, na rua, que o jogador espere a ligação. Ligar um
+passo depois seria ridículo. Por isso o script que fecha a missão **gasta** a
+ligação do dia. Quem espera um dia recebe o telefone; quem não espera nada, não
+recebe ligação nenhuma — e continua sem briefing, que é o ponto.
+
+### 15.4. Arquivos tocados na revisão 5
+
+| Arquivo | O quê |
+|---|---|
+| `include/constants/flags.h` | `FLAG_BLACKTHORN_UB_ENGAGED` 0x1047, `FLAG_BLACKTHORN_TYPE_NULL_PENDING` 0x1048, `FLAG_RIFT_LOOKER_SUMMONS` 0x1049, `CUSTOM_FLAGS_END`; `FLAG_DAILY_LOOKER_CALL` reclamada de `FLAG_UNUSED_0x94F` |
+| `src/field_control_avatar.c` | `ShouldDoRiftMissionCall` + o gancho no `TryStartStepCountScript` |
+| `data/scripts/rift_missions.inc` | **novo** — a ligação e os quatro textos |
+| `data/event_scripts.s`, `include/event_scripts.h` | ligação do arquivo novo |
+| `data/maps/BlackthornCity/map.json` | 6 objetos novos (ruptura, 4 parceiros, Type: Null); Gladion e Silvally olhando oeste; script no Gladion |
+| `data/maps/BlackthornCity/scripts.inc` | seção da M1 reescrita inteira: visibilidade em três formas, cena, retry, contenção, parceiro-ator, presente, pendência, textos |
+| `data/maps/NewBarkTown/scripts.pory` | texto da ligação; daily flag na ligação e no fim da M4 |
+| `data/maps/OlivineCity_House1/scripts.pory` | briefing M1 em cinco textos; falas de férias e de "vá na frente"; gate do convite nos estados 4/6/8/10; duas falas de espera; continuidade do briefing M2 |
+| `data/maps/Mahoganytown/scripts.inc`, `data/maps/CherrygroveCity/scripts.pory` | daily flag no fim da missão |
+| `docs/SOULGOLD_FLAGS_AUDIT.csv` | regenerado |
+| `.claude/rift_missions/SOULGOLD_RIFT_MISSIONS_DESIGN.md` | regras comuns novas e reescritas + §29 |
+
+## 16. Reflexão — o que esta revisão ensina para as próximas missões
+
+Escrito depois de implementar, olhando o código e não o plano.
+
+### 16.1. O que o roteiro V2 fez de certo, e vale copiar
+
+- **Ele separa contrato de fala.** As seções 2, 14, 15 e 17 dele são contratos
+  ("a oscilação é obrigatória em todos os ramos", "o parceiro aparece antes de a
+  fala descrevê-lo", "não fazer substituição cega por nome de label"), e é isso
+  que torna o roteiro implementável sem adivinhação. Roteiro que é só diálogo
+  obriga quem implementa a inventar a encenação, e aí a cena fica com a cara de
+  quem digitou, não de quem escreveu.
+- **Ele diz o que NÃO fazer, por beat.** "Não afirmar que um único golpe derrubou
+  as duas", "não dizer que Cosmoem anda se o asset apenas flutua", "não declarar
+  imunidade universal a Poké Balls". Cada uma dessas frases economizou um erro
+  que compilaria limpo.
+- **Ele avisa onde não tem certeza.** "Não pressupor slot livre para um objeto
+  adicional", "este roteiro não inventa um ID de flag disponível". Isso é melhor
+  do que um número errado com cara de decisão.
+
+### 16.2. O que ficou frágil, e onde vai doer
+
+- **Uma caixa por falante multiplica o número de labels.** A seção da M1 passou de
+  ~30 para ~50 textos. O ganho (plaquinha sempre certa) é real, mas o custo é que
+  qualquer reordenação de beat agora move cinco `msgbox` em vez de um. A M2, a M3
+  e a M4 ainda têm caixas com três falantes dentro; quando forem convertidas,
+  converta **junto com a ordem dos beats**, não depois.
+- **`FLAG_TEMP_5` partilhada por quatro templates é econômica e silenciosa.** Se
+  alguém acrescentar um quinto parceiro e esquecer de dar `addobject` só a um
+  deles, aparecem dois Pokémon no mesmo tile e o build fica limpo. O comentário
+  no `ApplyUBVisibility` é a única proteção.
+- **O retry depende de o `ON_TRANSITION` rodar antes do primeiro spawn.** É
+  verdade hoje e é a base de todo `ApplyUBVisibility` do arco, mas é uma
+  propriedade do motor que nenhum teste cobre. Se um dia o retry voltar com o
+  elenco nos tiles de template, este é o primeiro lugar a olhar.
+- **A predicate da ligação conhece uma flag de Blackthorn.**
+  `ShouldDoRiftMissionCall` cita `FLAG_BLACKTHORN_TYPE_NULL_PENDING` por nome.
+  Funciona, e é honesto, mas é acoplamento: a segunda missão que puder terminar
+  com presente pendente vai ter de acrescentar outra linha ali, e ninguém vai
+  lembrar. Se chegar a três, vale uma flag genérica "pendência de missão".
+- **`OlivineCity_House1_Text_WaitForMahoganyCall` tem nome errado de propósito.**
+  É o nome que o roteiro fixou, e é usado nos quatro estados de espera, não só no
+  de Mahogany. Mantido para o roteiro e o código concordarem no `grep`.
+
+### 16.3. O que o arco herda daqui, e ainda não cumpre
+
+1. **Checkpoint de retry** — M2, M3 e M4 reapresentam a cena inteira depois de um
+   blackout. A M2 é a pior: ela tem duas rodadas de batalha.
+2. **Passe de diálogo pela identidade do Necrozma.** Ele é nomeado em Blackthorn.
+   As falas de cena das outras três ainda tratam o nome como segredo em alguns
+   pontos. O briefing da M2 já foi corrigido; o resto é diálogo, não contrato.
+3. **Trilha da ruptura** na M2 e na M4.
+4. **Convocação por telefone** já vale para as quatro, porque o mecanismo é
+   global — mas cada missão precisa conferir que o **fim** dela seta
+   `FLAG_DAILY_LOOKER_CALL` (as cinco já setam) e que a despedida dela pede para
+   esperar a ligação em vez de mandar o jogador a Olivine. **Só a M1 pede.**
+5. **Tentativa de contenção** — a M1 planta "essa ainda está ligada à fenda". A
+   M2 responde com a barreira de gelo, o que já estava escrito; a M3 e a M4 não
+   têm nada equivalente e deviam ganhar, porque a pista agora existe.
+
+### 16.4. O que só o runtime decide
+
+- Se o sprite da ruptura em (14,51) **lê** como uma fenda ao lado do Necrozma ou
+  como um enfeite no chão embaixo dele. Ele é `inanimate`, então não tem
+  animação própria: quem faz a fenda "oscilar" é o tremor de câmera.
+- Se a diferença de ritmo entre Buzzwole e Pheromosa é visível de verdade ou se o
+  `delay_16` só parece lag.
+- Se o arremesso da Anabel sem sprite de Ball lê como um arremesso.
+- Se cinco caixas seguidas de briefing, sem a caixa descer entre elas, ficam
+  confortáveis de ler.
+- Se a ligação do Looker tocando em qualquer mapa incomoda (dentro de caverna,
+  no meio de uma dungeon). O filtro pronto é o `MapAllowsMatchCall` do Match
+  Call, e é uma linha.

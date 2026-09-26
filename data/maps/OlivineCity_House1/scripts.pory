@@ -127,12 +127,27 @@ OlivineCity_House1_EventScript_BriefingTrigger::
 	goto_if_ne VAR_0x8004, 4, OlivineCity_House1_EventScript_End
 	goto_if_ne VAR_0x8005, 8, OlivineCity_House1_EventScript_End
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_StageBriefing
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_StageBriefing
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_StageBriefing
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_StageBriefing
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_StageReunion
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_StageBriefingIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_StageBriefingIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_StageBriefingIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_StageReunionIfCalled
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_StageRecheck
 	end
+
+@ States 4, 6, 8 and 10 are only ready once Looker has telephoned
+@ (FLAG_RIFT_LOOKER_SUMMONS, set by RiftMissions_EventScript_LookerCall). Before
+@ that the house has nothing staged: walking in gets the player nothing but the
+@ waiting line from whichever detective they talk to.
+@ State 2 is NOT gated. Its summons is the call scene in New Bark, that
+@ invitation never expires and never repeats, and gating it would strand a save
+@ made before this flag existed.
+OlivineCity_House1_EventScript_StageBriefingIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_End
+	goto OlivineCity_House1_EventScript_StageBriefing
+
+OlivineCity_House1_EventScript_StageReunionIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_End
+	goto OlivineCity_House1_EventScript_StageReunion
 
 @ The choreography itself, shared by both briefings. Unchanged since Rift
 @ Mission 1: only which text BriefingTalk picks differs.
@@ -213,6 +228,7 @@ OlivineCity_House1_EventScript_StageRecheck::
 @ closemessage before EVERY turnobject: without it the turn happens behind the
 @ open text box.
 OlivineCity_House1_EventScript_ReunionScene::
+	clearflag FLAG_RIFT_LOOKER_SUMMONS          @ the invitation has been answered
 	msgbox OlivineCity_House1_Text_ReunionOpen, MSGBOX_DEFAULT
 	closemessage
 	msgbox OlivineCity_House1_Text_ReunionKukui, MSGBOX_DEFAULT
@@ -355,19 +371,30 @@ OlivineCity_House1_Movement_AnabelReturn:
 @ address and return pops it, however many gotos happened in between.
 @ Highest state first, so the block reads newest mission to oldest.
 OlivineCity_House1_EventScript_BriefingTalk::
+	clearflag FLAG_RIFT_LOOKER_SUMMONS          @ the invitation has been answered
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_BriefingTalkM4
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_BriefingTalkM3
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_BriefingTalkM2
 	@ falls through to M1 (state 2)
 OlivineCity_House1_EventScript_BriefingTalkM1::
-	msgbox OlivineCity_House1_Text_Briefing, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingWelcome, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingAnabel, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingWormholes, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingBlackthorn, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingRequest, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_EVENT_ULTRABEAST_BLACKTHORN
 	setvar VAR_RIFT_MISSIONS_STATE, 3
 	return
 
 OlivineCity_House1_EventScript_BriefingTalkM2::
-	msgbox OlivineCity_House1_Text_BriefingM2, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingM2Welcome, MSGBOX_DEFAULT
+	closemessage
+	msgbox OlivineCity_House1_Text_BriefingM2Link, MSGBOX_DEFAULT
+	closemessage
+	msgbox OlivineCity_House1_Text_BriefingM2Town, MSGBOX_DEFAULT
+	closemessage
+	msgbox OlivineCity_House1_Text_BriefingM2Meet, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_EVENT_ULTRABEAST_MAHOGANY
 	setvar VAR_RIFT_MISSIONS_STATE, 5
@@ -415,13 +442,13 @@ OlivineCity_House1_EventScript_Looker::
 	faceplayer
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_LookerBrief
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 3, OlivineCity_House1_EventScript_LookerGoAhead
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_LookerBrief
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_LookerBriefIfCalled
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 5, OlivineCity_House1_EventScript_LookerGoAheadM2
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_LookerBrief
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_LookerBriefIfCalled
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 7, OlivineCity_House1_EventScript_LookerGoAheadM3
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_LookerBrief
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_LookerBriefIfCalled
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 9, OlivineCity_House1_EventScript_LookerGoAheadM4
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_LookerReunion
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_LookerReunionIfCalled
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_LookerRecheck
 	goto_if_ge VAR_RIFT_MISSIONS_STATE, 12, OlivineCity_House1_EventScript_LookerAltar
 	msgbox OlivineCity_House1_Text_LookerHoliday, MSGBOX_DEFAULT
@@ -430,6 +457,28 @@ OlivineCity_House1_EventScript_Looker::
 OlivineCity_House1_EventScript_LookerBrief::
 	call OlivineCity_House1_EventScript_BriefingTalk
 	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ Waiting for the summons: no briefing, no "go ahead", and nothing about the next
+@ town. He says the one true thing - the reports are not finished - and promises
+@ the telephone call that is the only way forward.
+OlivineCity_House1_EventScript_LookerBriefIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_LookerWaitCall
+	goto OlivineCity_House1_EventScript_LookerBrief
+
+OlivineCity_House1_EventScript_LookerWaitCall::
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_LookerWaitCallM3
+	msgbox OlivineCity_House1_Text_WaitForMahoganyCall, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ After Mahogany the wait is not idle: Anabel is matching Lillie's pages to her
+@ own recordings, which is the task the street handed them.
+OlivineCity_House1_EventScript_LookerWaitCallM3::
+	msgbox OlivineCity_House1_Text_WaitForCherrygroveCall, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_LookerReunionIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_LookerWaitCall
+	goto OlivineCity_House1_EventScript_LookerReunion
 
 OlivineCity_House1_EventScript_LookerGoAhead::
 	msgbox OlivineCity_House1_Text_LookerGoAhead, MSGBOX_DEFAULT
@@ -473,13 +522,13 @@ OlivineCity_House1_EventScript_Anabel::
 	faceplayer
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_AnabelBrief
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 3, OlivineCity_House1_EventScript_AnabelGoAhead
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_AnabelBrief
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_AnabelBriefIfCalled
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 5, OlivineCity_House1_EventScript_AnabelGoAheadM2
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_AnabelBrief
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_AnabelBriefIfCalled
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 7, OlivineCity_House1_EventScript_AnabelGoAheadM3
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_AnabelBrief
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_AnabelBriefIfCalled
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 9, OlivineCity_House1_EventScript_AnabelGoAheadM4
-	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_AnabelReunion
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_AnabelReunionIfCalled
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_AnabelRecheck
 	goto_if_ge VAR_RIFT_MISSIONS_STATE, 12, OlivineCity_House1_EventScript_AnabelAltar
 	msgbox OlivineCity_House1_Text_AnabelHoliday, MSGBOX_DEFAULT
@@ -488,6 +537,20 @@ OlivineCity_House1_EventScript_Anabel::
 OlivineCity_House1_EventScript_AnabelBrief::
 	call OlivineCity_House1_EventScript_BriefingTalk
 	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ Her own waiting line: the plaque follows the message, so Looker's text cannot
+@ be reused in her mouth.
+OlivineCity_House1_EventScript_AnabelBriefIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_AnabelWaitCall
+	goto OlivineCity_House1_EventScript_AnabelBrief
+
+OlivineCity_House1_EventScript_AnabelWaitCall::
+	msgbox OlivineCity_House1_Text_AnabelWaitForCall, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_AnabelReunionIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_AnabelWaitCall
+	goto OlivineCity_House1_EventScript_AnabelReunion
 
 OlivineCity_House1_EventScript_AnabelGoAhead::
 	msgbox OlivineCity_House1_Text_AnabelGoAhead, MSGBOX_DEFAULT
@@ -574,77 +637,105 @@ OlivineCity_House1_EventScript_ReleaseEnd::
 	release
 	end
 
-@ Mission 1 briefing: final text (22/09/2026). It names Clair and "a Pokemon
-@ made of light" and nothing else: Gladion and the two Ultra Beasts are the
-@ surprises of the scene in Blackthorn, so they are never mentioned here.
-OlivineCity_House1_Text_Briefing:
-	.string "{SPEAKER NAME_LOOKER}Ah, {PLAYER}! You came.\n"
-	.string "Please, come in.\p"
-	.string "First, the truth. Looker,\n"
-	.string "International Police.\p"
-	.string "And this is my Chief, Anabel.\p"
-	.string "{SPEAKER NAME_ANABEL}Thank you for coming,\n"
-	.string "Champion. We owe you an\l"
-	.string "explanation for the holiday.\p"
-	.string "{SPEAKER NAME_LOOKER}We came to Johto\n"
-	.string "following readings.\l"
-	.string "Distortions in space.\p"
-	.string "In Alola, readings like these\n"
-	.string "came before Ultra Wormholes.\p"
-	.string "{SPEAKER NAME_ANABEL}Openings to other\n"
-	.string "worlds. What comes through,\l"
-	.string "we call Ultra Beasts.\p"
-	.string "They are not villains. Most\n"
-	.string "are lost, and frightened,\l"
-	.string "and very strong.\p"
-	.string "{SPEAKER NAME_LOOKER}This morning the Gym\n"
-	.string "Leader of Blackthorn called us.\p"
-	.string "She described a Pokémon\n"
-	.string "standing in the middle of her\l"
-	.string "town. A Pokémon… made of light.\p"
-	.string "{SPEAKER NAME_ANABEL}Clair has ordered\n"
-	.string "everyone indoors and is\l"
-	.string "holding it off herself.\p"
-	.string "We need to be there.\n"
-	.string "And we would like you with us.\p"
-	.string "{SPEAKER NAME_LOOKER}Meet us by the Pokémon\n"
-	.string "Center in Blackthorn.\p"
-	.string "Prepare as you would for the\n"
-	.string "League, {PLAYER}. Perhaps more.$"
+@ Mission 1 briefing (script revision V2, 25/09/2026). FIVE texts and not one,
+@ because each block has exactly one speaker and the plaque has to change with
+@ it; they are played as consecutive msgbox with no closemessage between them,
+@ so the box never drops and the scene reads as one conversation. Each part
+@ MUST begin with its own {SPEAKER ...}: TrySetSpeakerFromMessage only reads
+@ the start of each message.
+@ It names Clair and the unfamiliar Pokemon in her street and nothing else:
+@ Gladion, the two Ultra Beasts and the identity of the creature are the
+@ surprises of the scene in Blackthorn, so they are never mentioned here. And
+@ nobody names the creature from a description over the telephone.
+OlivineCity_House1_Text_BriefingWelcome:
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}!\n"
+	.string "Thank you for coming.\p"
+	.string "This is Anabel. She's in\n"
+	.string "charge of our investigation.$"
+
+OlivineCity_House1_Text_BriefingAnabel:
+	.string "{SPEAKER NAME_ANABEL}We've been tracking\n"
+	.string "distortions in Johto.\p"
+	.string "They resemble the Ultra\n"
+	.string "Wormholes we encountered in\l"
+	.string "Alola.$"
+
+OlivineCity_House1_Text_BriefingWormholes:
+	.string "{SPEAKER NAME_ANABEL}Passages to other\n"
+	.string "worlds.\p"
+	.string "Sometimes Pokémon come\n"
+	.string "through them.\p"
+	.string "We call those Pokémon Ultra\n"
+	.string "Beasts.\p"
+	.string "They can be dangerous when\n"
+	.string "displaced.$"
+
+OlivineCity_House1_Text_BriefingBlackthorn:
+	.string "{SPEAKER NAME_LOOKER}Clair called from\n"
+	.string "Blackthorn.\p"
+	.string "An unfamiliar Pokémon is in\n"
+	.string "the street.\p"
+	.string "She's keeping it away from the\n"
+	.string "houses, but the readings are\l"
+	.string "rising.$"
+
+OlivineCity_House1_Text_BriefingRequest:
+	.string "{SPEAKER NAME_ANABEL}We need your help\n"
+	.string "protecting the town.\p"
+	.string "And, if we can, the Pokémon\n"
+	.string "too.\p"
+	.string "Meet us by the Pokémon\n"
+	.string "Center.\p"
+	.string "Bring a team ready for a\n"
+	.string "difficult battle.$"
 
 @ Continuity: the Blackthorn hook names no place on purpose ("the moment
 @ something opens, you will be the first to know"). This briefing is that
 @ moment: Mahogany is news to the player here.
-@ Mission 2 briefing: final text (22/09/2026). It names Pryce's call and the
-@ blackout and nothing else: Lillie, the evacuation (Pryce's own line) and
-@ the creature from Blackthorn are what the player finds in Mahogany, so
-@ they are never mentioned here.
-OlivineCity_House1_Text_BriefingM2:
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Your timing\n"
-	.string "is uncanny. It has started\l"
-	.string "again. Mahogany Town.\p"
-	.string "{SPEAKER NAME_ANABEL}Two signatures again.\n"
-	.string "One electrical. One… heavy.\p"
-	.string "{SPEAKER NAME_LOOKER}The town lost its power\n"
-	.string "three nights ago.\p"
-	.string "Every lamp, every machine.\n"
-	.string "Only the Pokémon Center still\l"
-	.string "has light.\p"
-	.string "{SPEAKER NAME_ANABEL}The readings come from\n"
-	.string "the town itself. Every night,\l"
-	.string "at the same hour.\p"
-	.string "No sign of the light from\n"
-	.string "Blackthorn. Not yet.\p"
-	.string "{SPEAKER NAME_LOOKER}The Gym Leader, Pryce,\n"
-	.string "telephoned us himself.\p"
-	.string "He said four words.\n"
-	.string "“Lights out. Come now.”\p"
-	.string "…I have decided to find that\n"
-	.string "reassuring.\p"
-	.string "{SPEAKER NAME_ANABEL}Meet us by the Pokémon\n"
-	.string "Center, {PLAYER}.\p"
-	.string "Prepare for two of them.\n"
-	.string "Not one.$"
+@ Mission 2 briefing: final text (22/09/2026), continuity updated for script
+@ revision V2 (25/09/2026). It names Pryce's call and the blackout and nothing
+@ else: Lillie and the evacuation (Pryce's own line) are what the player finds
+@ in Mahogany, so they are never mentioned here.
+@ What V2 changed: Necrozma is no longer a secret - Gladion named it in
+@ Blackthorn - so Anabel calls it by name, and the thing she is looking for is
+@ already stated: the beasts stayed tied to the rift, and the link is what has
+@ to be cut. Mahogany's barrier and Lillie's test answer a problem the player
+@ has already watched happen.
+@ V3: this briefing starts from Blackthorn, not from a fresh mystery. Gladion
+@ named Necrozma there, so nobody is coy about it here; what the group does NOT
+@ have is any record of that creature collecting Ultra Beasts, and that gap is
+@ the reason they go. One speaker per box, and no hour of the day anywhere:
+@ the blackout is lamps and machines, not darkness.
+OlivineCity_House1_Text_BriefingM2Welcome:
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Our holiday\n"
+	.string "reading has finally proved\l"
+	.string "useful.\p"
+	.string "We've compared Gladion's\n"
+	.string "account with the Alola records.\p"
+	.string "Necrozma absorbs light.\p"
+	.string "We found nothing about it\n"
+	.string "taking Ultra Beasts.$"
+
+OlivineCity_House1_Text_BriefingM2Link:
+	.string "{SPEAKER NAME_ANABEL}The rift kept them\n"
+	.string "connected in Blackthorn.\p"
+	.string "We need a way to cut that\n"
+	.string "connection.$"
+
+OlivineCity_House1_Text_BriefingM2Town:
+	.string "{SPEAKER NAME_LOOKER}The power is out in\n"
+	.string "Mahogany.\p"
+	.string "Two Pokémon have been\n"
+	.string "appearing in the street.\p"
+	.string "Pryce is sheltering the\n"
+	.string "residents in his Gym.$"
+
+OlivineCity_House1_Text_BriefingM2Meet:
+	.string "{SPEAKER NAME_ANABEL}The readings match\n"
+	.string "another rupture.\p"
+	.string "We haven't confirmed Necrozma\n"
+	.string "there yet.\p"
+	.string "Meet us by the Pokémon Center.$"
 
 @ Continuity: the Mahogany hook names no place on purpose (design section 6,
 @ "gancho sem destino"). This briefing is where Cherrygrove is revealed.
@@ -813,16 +904,37 @@ OlivineCity_House1_Text_BriefingM4NewBark:
 	.string "that part is not a question.$"
 
 OlivineCity_House1_Text_LookerHoliday:
-	.string "{SPEAKER NAME_LOOKER}Hm? Oh, pay no\n"
-	.string "attention to moi.\p"
-	.string "I am simply… on holiday.\n"
-	.string "Yes. A holiday by the sea.$"
+	.string "{SPEAKER NAME_LOOKER}A fine place for a\n"
+	.string "holiday!\p"
+	.string "Though I seem to be spending\n"
+	.string "rather more time indoors than\l"
+	.string "planned.$"
+
+@ Script V2 section 13.3: between finishing a mission and Looker's summons call,
+@ the house offers nothing but this. It does not name the next town, does not
+@ send the player back to the town just cleared, and does not hand out the next
+@ briefing early. The label is the one the script fixes; it is used for every
+@ pending summons, not only Mahogany's.
+OlivineCity_House1_Text_WaitForMahoganyCall:
+	.string "{SPEAKER NAME_LOOKER}We're still checking the\n"
+	.string "reports.\p"
+	.string "I'll call when we have a lead.$"
+
+OlivineCity_House1_Text_WaitForCherrygroveCall:
+	.string "{SPEAKER NAME_LOOKER}We're comparing Lillie's\n"
+	.string "notes with Anabel's\l"
+	.string "recordings.\p"
+	.string "I'll call when we have a lead.$"
+
+OlivineCity_House1_Text_AnabelWaitForCall:
+	.string "{SPEAKER NAME_ANABEL}Nothing conclusive yet.\p"
+	.string "When there is, Looker will\n"
+	.string "telephone you himself.$"
 
 OlivineCity_House1_Text_LookerGoAhead:
-	.string "{SPEAKER NAME_LOOKER}Blackthorn, {PLAYER}!\n"
-	.string "Clair cannot hold it forever.\p"
-	.string "We are leaving right behind\n"
-	.string "you!$"
+	.string "{SPEAKER NAME_LOOKER}The Pokémon Center in\n"
+	.string "Blackthorn.\p"
+	.string "We'll meet you there.$"
 
 OlivineCity_House1_Text_LookerGoAheadM2:
 	.string "{SPEAKER NAME_LOOKER}Mahogany, {PLAYER}!\n"
@@ -843,15 +955,14 @@ OlivineCity_House1_Text_LookerGoAheadM4:
 
 
 OlivineCity_House1_Text_AnabelHoliday:
-	.string "{SPEAKER NAME_ANABEL}Looker insists we are\n"
-	.string "on vacation.\p"
-	.string "He has been reading the same\n"
-	.string "newspaper for three days.$"
+	.string "{SPEAKER NAME_ANABEL}It's peaceful here.\p"
+	.string "Looker keeps finding reasons\n"
+	.string "to check the telephone.$"
 
 OlivineCity_House1_Text_AnabelGoAhead:
-	.string "{SPEAKER NAME_ANABEL}Go on ahead.\p"
-	.string "We'll be there before you\n"
-	.string "reach the Pokémon Center.$"
+	.string "{SPEAKER NAME_ANABEL}Prepare your team\n"
+	.string "before you join us.\p"
+	.string "Clair is holding the street.$"
 
 OlivineCity_House1_Text_AnabelGoAheadM2:
 	.string "{SPEAKER NAME_ANABEL}Go on.\p"

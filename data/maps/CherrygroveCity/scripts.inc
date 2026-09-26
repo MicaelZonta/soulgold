@@ -2678,1358 +2678,1360 @@ CherrygroveCity_EventScript_UBHook::
 # 1430 "data/maps/CherrygroveCity/scripts.pory"
 	setvar VAR_RIFT_MISSIONS_STATE, 8
 # 1431 "data/maps/CherrygroveCity/scripts.pory"
-	@ Reload in place under the fade. With the flag cleared the fourteen
+	setflag FLAG_DAILY_LOOKER_CALL            @ he just said it in person
 # 1432 "data/maps/CherrygroveCity/scripts.pory"
-	@ residents - and the trader's gift Pokemon, whose visibility is also
+	@ Reload in place under the fade. With the flag cleared the fourteen
 # 1433 "data/maps/CherrygroveCity/scripts.pory"
-	@ recomputed on load - would otherwise pop in one by one as the camera
+	@ residents - and the trader's gift Pokemon, whose visibility is also
 # 1434 "data/maps/CherrygroveCity/scripts.pory"
-	@ moved, and the cast would linger. ON_TRANSITION repopulates the city
+	@ recomputed on load - would otherwise pop in one by one as the camera
 # 1435 "data/maps/CherrygroveCity/scripts.pory"
-	@ and hides the cast in one go, the doors unlock with the flag, and the
+	@ moved, and the cast would linger. ON_TRANSITION repopulates the city
 # 1436 "data/maps/CherrygroveCity/scripts.pory"
-	@ warp undoes the hidefollower.
+	@ and hides the cast in one go, the doors unlock with the flag, and the
 # 1437 "data/maps/CherrygroveCity/scripts.pory"
-	warpsilent MAP_CHERRYGROVE_CITY, 28, 10
+	@ warp undoes the hidefollower.
 # 1438 "data/maps/CherrygroveCity/scripts.pory"
-	waitstate
+	warpsilent MAP_CHERRYGROVE_CITY, 28, 10
 # 1439 "data/maps/CherrygroveCity/scripts.pory"
-	releaseall
+	waitstate
 # 1440 "data/maps/CherrygroveCity/scripts.pory"
-	end
+	releaseall
 # 1441 "data/maps/CherrygroveCity/scripts.pory"
-
+	end
 # 1442 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_StepDownFaceLeft:
-# 1443 "data/maps/CherrygroveCity/scripts.pory"
-	walk_down
-# 1444 "data/maps/CherrygroveCity/scripts.pory"
-	face_left
-# 1445 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
-# 1446 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1447 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_PlayerToLine:
-# 1448 "data/maps/CherrygroveCity/scripts.pory"
+# 1443 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Movement_StepDownFaceLeft:
+# 1444 "data/maps/CherrygroveCity/scripts.pory"
 	walk_down
+# 1445 "data/maps/CherrygroveCity/scripts.pory"
+	face_left
+# 1446 "data/maps/CherrygroveCity/scripts.pory"
+	step_end
+# 1447 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1448 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Movement_PlayerToLine:
 # 1449 "data/maps/CherrygroveCity/scripts.pory"
 	walk_down
 # 1450 "data/maps/CherrygroveCity/scripts.pory"
-	face_left
-# 1451 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
-# 1452 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1453 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_AnabelToLine:
-# 1454 "data/maps/CherrygroveCity/scripts.pory"
 	walk_down
+# 1451 "data/maps/CherrygroveCity/scripts.pory"
+	face_left
+# 1452 "data/maps/CherrygroveCity/scripts.pory"
+	step_end
+# 1453 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1454 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Movement_AnabelToLine:
 # 1455 "data/maps/CherrygroveCity/scripts.pory"
 	walk_down
 # 1456 "data/maps/CherrygroveCity/scripts.pory"
-	face_left
+	walk_down
 # 1457 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
+	face_left
 # 1458 "data/maps/CherrygroveCity/scripts.pory"
-
+	step_end
 # 1459 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_PulseInPlaceRight:
+
 # 1460 "data/maps/CherrygroveCity/scripts.pory"
-	walk_in_place_fast_right
+CherrygroveCity_Movement_PulseInPlaceRight:
 # 1461 "data/maps/CherrygroveCity/scripts.pory"
 	walk_in_place_fast_right
 # 1462 "data/maps/CherrygroveCity/scripts.pory"
 	walk_in_place_fast_right
 # 1463 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
+	walk_in_place_fast_right
 # 1464 "data/maps/CherrygroveCity/scripts.pory"
-
+	step_end
 # 1465 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_AttackInPlaceDown:
+
 # 1466 "data/maps/CherrygroveCity/scripts.pory"
-	walk_in_place_fast_down
+CherrygroveCity_Movement_AttackInPlaceDown:
 # 1467 "data/maps/CherrygroveCity/scripts.pory"
 	walk_in_place_fast_down
 # 1468 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
+	walk_in_place_fast_down
 # 1469 "data/maps/CherrygroveCity/scripts.pory"
-
+	step_end
 # 1470 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_AttackInPlaceLeft:
+
 # 1471 "data/maps/CherrygroveCity/scripts.pory"
-	walk_in_place_fast_left
+CherrygroveCity_Movement_AttackInPlaceLeft:
 # 1472 "data/maps/CherrygroveCity/scripts.pory"
 	walk_in_place_fast_left
 # 1473 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
+	walk_in_place_fast_left
 # 1474 "data/maps/CherrygroveCity/scripts.pory"
-
+	step_end
 # 1475 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_UBKnockedBack:
+
 # 1476 "data/maps/CherrygroveCity/scripts.pory"
-	lock_facing_direction
+CherrygroveCity_Movement_UBKnockedBack:
 # 1477 "data/maps/CherrygroveCity/scripts.pory"
-	walk_fast_left
+	lock_facing_direction
 # 1478 "data/maps/CherrygroveCity/scripts.pory"
 	walk_fast_left
 # 1479 "data/maps/CherrygroveCity/scripts.pory"
-	unlock_facing_direction
-# 1480 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
-# 1481 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1482 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_UBPulledIn:
-# 1483 "data/maps/CherrygroveCity/scripts.pory"
-	lock_facing_direction
-# 1484 "data/maps/CherrygroveCity/scripts.pory"
-	walk_slow_left
-# 1485 "data/maps/CherrygroveCity/scripts.pory"
-	unlock_facing_direction
-# 1486 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
-# 1487 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1488 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_NecrozmaLean:
-# 1489 "data/maps/CherrygroveCity/scripts.pory"
-	walk_slow_right
-# 1490 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
-# 1491 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1492 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_AnabelStepWest:
-# 1493 "data/maps/CherrygroveCity/scripts.pory"
 	walk_fast_left
-# 1494 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
-# 1495 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1496 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_PlayerPulledAside:
-# 1497 "data/maps/CherrygroveCity/scripts.pory"
-	lock_facing_direction
-# 1498 "data/maps/CherrygroveCity/scripts.pory"
-	walk_fast_right
-# 1499 "data/maps/CherrygroveCity/scripts.pory"
+# 1480 "data/maps/CherrygroveCity/scripts.pory"
 	unlock_facing_direction
+# 1481 "data/maps/CherrygroveCity/scripts.pory"
+	step_end
+# 1482 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1483 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Movement_UBPulledIn:
+# 1484 "data/maps/CherrygroveCity/scripts.pory"
+	lock_facing_direction
+# 1485 "data/maps/CherrygroveCity/scripts.pory"
+	walk_slow_left
+# 1486 "data/maps/CherrygroveCity/scripts.pory"
+	unlock_facing_direction
+# 1487 "data/maps/CherrygroveCity/scripts.pory"
+	step_end
+# 1488 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1489 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Movement_NecrozmaLean:
+# 1490 "data/maps/CherrygroveCity/scripts.pory"
+	walk_slow_right
+# 1491 "data/maps/CherrygroveCity/scripts.pory"
+	step_end
+# 1492 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1493 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Movement_AnabelStepWest:
+# 1494 "data/maps/CherrygroveCity/scripts.pory"
+	walk_fast_left
+# 1495 "data/maps/CherrygroveCity/scripts.pory"
+	step_end
+# 1496 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1497 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Movement_PlayerPulledAside:
+# 1498 "data/maps/CherrygroveCity/scripts.pory"
+	lock_facing_direction
+# 1499 "data/maps/CherrygroveCity/scripts.pory"
+	walk_fast_right
 # 1500 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
+	unlock_facing_direction
 # 1501 "data/maps/CherrygroveCity/scripts.pory"
-
+	step_end
 # 1502 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_AnabelTakesTheFront:
+
 # 1503 "data/maps/CherrygroveCity/scripts.pory"
-	walk_fast_down
+CherrygroveCity_Movement_AnabelTakesTheFront:
 # 1504 "data/maps/CherrygroveCity/scripts.pory"
-	face_left
-# 1505 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
-# 1506 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1507 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_LookerToAnabel:
-# 1508 "data/maps/CherrygroveCity/scripts.pory"
 	walk_fast_down
+# 1505 "data/maps/CherrygroveCity/scripts.pory"
+	face_left
+# 1506 "data/maps/CherrygroveCity/scripts.pory"
+	step_end
+# 1507 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1508 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Movement_LookerToAnabel:
 # 1509 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
+	walk_fast_down
 # 1510 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1511 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_LookerToPlayerSide:
-# 1512 "data/maps/CherrygroveCity/scripts.pory"
-	walk_right
-# 1513 "data/maps/CherrygroveCity/scripts.pory"
-	face_down
-# 1514 "data/maps/CherrygroveCity/scripts.pory"
 	step_end
-# 1515 "data/maps/CherrygroveCity/scripts.pory"
+# 1511 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1516 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Movement_KukuiToPlayer:
-# 1517 "data/maps/CherrygroveCity/scripts.pory"
+# 1512 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Movement_LookerToPlayerSide:
+# 1513 "data/maps/CherrygroveCity/scripts.pory"
 	walk_right
+# 1514 "data/maps/CherrygroveCity/scripts.pory"
+	face_down
+# 1515 "data/maps/CherrygroveCity/scripts.pory"
+	step_end
+# 1516 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1517 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Movement_KukuiToPlayer:
 # 1518 "data/maps/CherrygroveCity/scripts.pory"
 	walk_right
 # 1519 "data/maps/CherrygroveCity/scripts.pory"
 	walk_right
 # 1520 "data/maps/CherrygroveCity/scripts.pory"
-	walk_down
+	walk_right
 # 1521 "data/maps/CherrygroveCity/scripts.pory"
 	walk_down
 # 1522 "data/maps/CherrygroveCity/scripts.pory"
-	face_left
+	walk_down
 # 1523 "data/maps/CherrygroveCity/scripts.pory"
-	step_end
+	face_left
 # 1524 "data/maps/CherrygroveCity/scripts.pory"
-
+	step_end
 # 1525 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_DoorLocked:
+
 # 1526 "data/maps/CherrygroveCity/scripts.pory"
-	.string "The door is locked tight.\p"
+CherrygroveCity_Text_DoorLocked:
 # 1527 "data/maps/CherrygroveCity/scripts.pory"
-	.string "A note is taped to it:\n"
+	.string "The door is locked tight.\p"
 # 1528 "data/maps/CherrygroveCity/scripts.pory"
-	.string "“Closed until further notice.\l"
+	.string "A note is taped to it:\n"
 # 1529 "data/maps/CherrygroveCity/scripts.pory"
-	.string "The town is at the Violet Gym.”$"
+	.string "“Closed until further notice.\l"
 # 1530 "data/maps/CherrygroveCity/scripts.pory"
-
+	.string "The town is at the Violet Gym.”$"
 # 1531 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBAnabelIdle:
+
 # 1532 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Cherrygrove is in the\n"
+CherrygroveCity_Text_UBAnabelIdle:
 # 1533 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Violet Gym.\p"
+	.string "{SPEAKER NAME_ANABEL}Cherrygrove is in the\n"
 # 1534 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Two buses and one argument,\n"
+	.string "Violet Gym.\p"
 # 1535 "data/maps/CherrygroveCity/scripts.pory"
-	.string "which I won.\p"
+	.string "Two buses and one argument,\n"
 # 1536 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Talk to Looker when you're\n"
+	.string "which I won.\p"
 # 1537 "data/maps/CherrygroveCity/scripts.pory"
-	.string "ready. Not a moment before.$"
+	.string "Talk to Looker when you're\n"
 # 1538 "data/maps/CherrygroveCity/scripts.pory"
-
+	.string "ready. Not a moment before.$"
 # 1539 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBAnabelIdleCosmog:
+
 # 1540 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}…A child of the stars.\p"
+CherrygroveCity_Text_UBAnabelIdleCosmog:
 # 1541 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Keep that one close today,\n"
+	.string "{SPEAKER NAME_ANABEL}…A child of the stars.\p"
 # 1542 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{PLAYER}.\p"
+	.string "Keep that one close today,\n"
 # 1543 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Closer than you usually do.$"
+	.string "{PLAYER}.\p"
 # 1544 "data/maps/CherrygroveCity/scripts.pory"
-
+	.string "Closer than you usually do.$"
 # 1545 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBKukuiIdle:
+
 # 1546 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}{PLAYER}! Four days on\n"
+CherrygroveCity_Text_UBKukuiIdle:
 # 1547 "data/maps/CherrygroveCity/scripts.pory"
-	.string "this beach, cousin.\p"
+	.string "{SPEAKER NAME_KUKUI}{PLAYER}! Four days on\n"
 # 1548 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I'm tired. I'm not bored.\n"
+	.string "this beach, cousin.\p"
 # 1549 "data/maps/CherrygroveCity/scripts.pory"
-	.string "There's a difference.\p"
+	.string "I'm tired. I'm not bored.\n"
 # 1550 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Don't make me tell it twice,\n"
+	.string "There's a difference.\p"
 # 1551 "data/maps/CherrygroveCity/scripts.pory"
-	.string "though. Go on, talk to Looker.\p"
+	.string "Don't make me tell it twice,\n"
 # 1552 "data/maps/CherrygroveCity/scripts.pory"
-	.string "You'll get the whole thing at\n"
+	.string "though. Go on, talk to Looker.\p"
 # 1553 "data/maps/CherrygroveCity/scripts.pory"
-	.string "once.$"
+	.string "You'll get the whole thing at\n"
 # 1554 "data/maps/CherrygroveCity/scripts.pory"
-
+	.string "once.$"
 # 1555 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBKukuiIdleCosmog:
+
 # 1556 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}…Hold on.\p"
+CherrygroveCity_Text_UBKukuiIdleCosmog:
 # 1557 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Hold on, that's a {STR_VAR_1}.\p"
+	.string "{SPEAKER NAME_KUKUI}…Hold on.\p"
 # 1558 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I've met exactly one of those.\p"
+	.string "Hold on, that's a {STR_VAR_1}.\p"
 # 1559 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It cost me a roof, a boat and\n"
+	.string "I've met exactly one of those.\p"
 # 1560 "data/maps/CherrygroveCity/scripts.pory"
-	.string "eleven weeks of paperwork.\p"
+	.string "It cost me a roof, a boat and\n"
 # 1561 "data/maps/CherrygroveCity/scripts.pory"
-	.string "You and I are having a very\n"
+	.string "eleven weeks of paperwork.\p"
 # 1562 "data/maps/CherrygroveCity/scripts.pory"
-	.string "long talk. After.$"
+	.string "You and I are having a very\n"
 # 1563 "data/maps/CherrygroveCity/scripts.pory"
-
+	.string "long talk. After.$"
 # 1564 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBLookerGreet:
+
 # 1565 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Over here.\p"
+CherrygroveCity_Text_UBLookerGreet:
 # 1566 "data/maps/CherrygroveCity/scripts.pory"
-	.string "And mind your footing. That\n"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Over here.\p"
 # 1567 "data/maps/CherrygroveCity/scripts.pory"
-	.string "water is not behaving.\p"
+	.string "And mind your footing. That\n"
 # 1568 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It has opened twice since dawn.\p"
+	.string "water is not behaving.\p"
 # 1569 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Twice we ran. Twice it closed\n"
+	.string "It has opened twice since dawn.\p"
 # 1570 "data/maps/CherrygroveCity/scripts.pory"
-	.string "before we arrived.\p"
+	.string "Twice we ran. Twice it closed\n"
 # 1571 "data/maps/CherrygroveCity/scripts.pory"
-	.string "The Professor, meanwhile, has\n"
+	.string "before we arrived.\p"
 # 1572 "data/maps/CherrygroveCity/scripts.pory"
-	.string "not run anywhere.\p"
+	.string "The Professor, meanwhile, has\n"
 # 1573 "data/maps/CherrygroveCity/scripts.pory"
-	.string "He has been sitting in it.$"
+	.string "not run anywhere.\p"
 # 1574 "data/maps/CherrygroveCity/scripts.pory"
-
+	.string "He has been sitting in it.$"
 # 1575 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBKukuiTheory:
+
 # 1576 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}{PLAYER}! Man, am I glad\n"
+CherrygroveCity_Text_UBKukuiTheory:
 # 1577 "data/maps/CherrygroveCity/scripts.pory"
-	.string "it's you.\p"
+	.string "{SPEAKER NAME_KUKUI}{PLAYER}! Man, am I glad\n"
 # 1578 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Okay. Four days, three\n"
+	.string "it's you.\p"
 # 1579 "data/maps/CherrygroveCity/scripts.pory"
-	.string "openings, one notebook.\p"
+	.string "Okay. Four days, three\n"
 # 1580 "data/maps/CherrygroveCity/scripts.pory"
-	.string "There are two of them, and\n"
+	.string "openings, one notebook.\p"
 # 1581 "data/maps/CherrygroveCity/scripts.pory"
-	.string "they never come through\l"
+	.string "There are two of them, and\n"
 # 1582 "data/maps/CherrygroveCity/scripts.pory"
-	.string "together.\p"
+	.string "they never come through\l"
 # 1583 "data/maps/CherrygroveCity/scripts.pory"
-	.string "The bright one shows first. It\n"
+	.string "together.\p"
 # 1584 "data/maps/CherrygroveCity/scripts.pory"
-	.string "lights up the whole bay and\l"
+	.string "The bright one shows first. It\n"
 # 1585 "data/maps/CherrygroveCity/scripts.pory"
-	.string "everybody looks.\p"
+	.string "lights up the whole bay and\l"
 # 1586 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Everybody. You can't help it.\p"
+	.string "everybody looks.\p"
 # 1587 "data/maps/CherrygroveCity/scripts.pory"
-	.string "And by the time you can see\n"
+	.string "Everybody. You can't help it.\p"
 # 1588 "data/maps/CherrygroveCity/scripts.pory"
-	.string "again, the big one is closer\l"
+	.string "And by the time you can see\n"
 # 1589 "data/maps/CherrygroveCity/scripts.pory"
-	.string "than it was.\p"
+	.string "again, the big one is closer\l"
 # 1590 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Professor. Four days.\n"
+	.string "than it was.\p"
 # 1591 "data/maps/CherrygroveCity/scripts.pory"
-	.string "On a beach.\p"
+	.string "{SPEAKER NAME_LOOKER}Professor. Four days.\n"
 # 1592 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Under a hole in the sky.\p"
+	.string "On a beach.\p"
 # 1593 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Yeah. And if it opened\n"
+	.string "Under a hole in the sky.\p"
 # 1594 "data/maps/CherrygroveCity/scripts.pory"
-	.string "with nobody watching, who tells\l"
+	.string "{SPEAKER NAME_KUKUI}Yeah. And if it opened\n"
 # 1595 "data/maps/CherrygroveCity/scripts.pory"
-	.string "this town when to run?\p"
+	.string "with nobody watching, who tells\l"
 # 1596 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I stayed so somebody would\n"
+	.string "this town when to run?\p"
 # 1597 "data/maps/CherrygroveCity/scripts.pory"
-	.string "know.\p"
+	.string "I stayed so somebody would\n"
 # 1598 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}He called the second\n"
-# 1599 "data/maps/CherrygroveCity/scripts.pory"
-	.string "opening eleven minutes early.\p"
-# 1600 "data/maps/CherrygroveCity/scripts.pory"
-	.string "He has earned the sand.\p"
-# 1601 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}So here's the play.\p"
-# 1602 "data/maps/CherrygroveCity/scripts.pory"
-	.string "One of us takes the bright\n"
-# 1603 "data/maps/CherrygroveCity/scripts.pory"
-	.string "one's eyes. The other takes\l"
-# 1604 "data/maps/CherrygroveCity/scripts.pory"
-	.string "the wall.\p"
-# 1605 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Nobody gets to hide if somebody\n"
-# 1606 "data/maps/CherrygroveCity/scripts.pory"
-	.string "is always looking.$"
-# 1607 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1608 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBReady:
-# 1609 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}One warning, {PLAYER}.\p"
-# 1610 "data/maps/CherrygroveCity/scripts.pory"
-	.string "These two are worse than\n"
-# 1611 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Mahogany.\p"
-# 1612 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Bring everything you\n"
-# 1613 "data/maps/CherrygroveCity/scripts.pory"
-	.string "have.\p"
-# 1614 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Are you ready?$"
-# 1615 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1616 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBNotReady:
-# 1617 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Wise.\p"
-# 1618 "data/maps/CherrygroveCity/scripts.pory"
-	.string "The Center is open, and I am\n"
-# 1619 "data/maps/CherrygroveCity/scripts.pory"
-	.string "not moving from this sand.$"
-# 1620 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1621 "data/maps/CherrygroveCity/scripts.pory"
-@ She stops mid-instruction. Nothing is explained here - the explanation is
-# 1622 "data/maps/CherrygroveCity/scripts.pory"
-@ the price of the rescue, later in this same scene.
-# 1623 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBAnabelSenses:
-# 1624 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Professor, stay east of\n"
-# 1625 "data/maps/CherrygroveCity/scripts.pory"
-	.string "the tide line, and if anything\l"
-# 1626 "data/maps/CherrygroveCity/scripts.pory"
-	.string "comes through you will-\p"
-# 1627 "data/maps/CherrygroveCity/scripts.pory"
-	.string "…\p"
-# 1628 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Chief?\p"
-# 1629 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}It's here.\p"
-# 1630 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}There is nothing on the\n"
-# 1631 "data/maps/CherrygroveCity/scripts.pory"
-	.string "meter.\p"
-# 1632 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}I know.\p"
-# 1633 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Whoa-look at the water!\p"
-# 1634 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It's going flat. That's the\n"
-# 1635 "data/maps/CherrygroveCity/scripts.pory"
-	.string "tell! Everybody back!$"
-# 1636 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1637 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBNecrozmaArrives:
-# 1638 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Something stands up out of the\n"
-# 1639 "data/maps/CherrygroveCity/scripts.pory"
-	.string "flat water.\p"
-# 1640 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It is made of light, and it is\n"
-# 1641 "data/maps/CherrygroveCity/scripts.pory"
-	.string "looking at the beach.\p"
-# 1642 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}…That is the thing from\n"
-# 1643 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Blackthorn.\p"
-# 1644 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}That is not a Pokémon I\n"
-# 1645 "data/maps/CherrygroveCity/scripts.pory"
 	.string "know.\p"
-# 1646 "data/maps/CherrygroveCity/scripts.pory"
-	.string "And, cousin, I know a lot of\n"
-# 1647 "data/maps/CherrygroveCity/scripts.pory"
-	.string "them.\p"
-# 1648 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}It was standing there\n"
-# 1649 "data/maps/CherrygroveCity/scripts.pory"
-	.string "before my instruments said so.\p"
-# 1650 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It always is.$"
-# 1651 "data/maps/CherrygroveCity/scripts.pory"
+# 1599 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}He called the second\n"
+# 1600 "data/maps/CherrygroveCity/scripts.pory"
+	.string "opening eleven minutes early.\p"
+# 1601 "data/maps/CherrygroveCity/scripts.pory"
+	.string "He has earned the sand.\p"
+# 1602 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}So here's the play.\p"
+# 1603 "data/maps/CherrygroveCity/scripts.pory"
+	.string "One of us takes the bright\n"
+# 1604 "data/maps/CherrygroveCity/scripts.pory"
+	.string "one's eyes. The other takes\l"
+# 1605 "data/maps/CherrygroveCity/scripts.pory"
+	.string "the wall.\p"
+# 1606 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Nobody gets to hide if somebody\n"
+# 1607 "data/maps/CherrygroveCity/scripts.pory"
+	.string "is always looking.$"
+# 1608 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1652 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBRift:
-# 1653 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}It's- wait. Wait!\p"
-# 1654 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It isn't coming through the\n"
-# 1655 "data/maps/CherrygroveCity/scripts.pory"
-	.string "tear.\p"
-# 1656 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It's making it!\p"
-# 1657 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Behind me, Professor.\n"
-# 1658 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Behind me, please.\p"
-# 1659 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Nah.$"
-# 1660 "data/maps/CherrygroveCity/scripts.pory"
+# 1609 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBReady:
+# 1610 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}One warning, {PLAYER}.\p"
+# 1611 "data/maps/CherrygroveCity/scripts.pory"
+	.string "These two are worse than\n"
+# 1612 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Mahogany.\p"
+# 1613 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}Bring everything you\n"
+# 1614 "data/maps/CherrygroveCity/scripts.pory"
+	.string "have.\p"
+# 1615 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Are you ready?$"
+# 1616 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1661 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBAppear:
-# 1662 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Blacephalon! And that\n"
-# 1663 "data/maps/CherrygroveCity/scripts.pory"
-	.string "is- what is that?\p"
-# 1664 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Stakataka! Whoa.\p"
-# 1665 "data/maps/CherrygroveCity/scripts.pory"
-	.string "That's not one Pokémon,\n"
-# 1666 "data/maps/CherrygroveCity/scripts.pory"
-	.string "cousin.\p"
-# 1667 "data/maps/CherrygroveCity/scripts.pory"
-	.string "That's a whole crowd of them,\n"
-# 1668 "data/maps/CherrygroveCity/scripts.pory"
-	.string "stacked up.$"
-# 1669 "data/maps/CherrygroveCity/scripts.pory"
+# 1617 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBNotReady:
+# 1618 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Wise.\p"
+# 1619 "data/maps/CherrygroveCity/scripts.pory"
+	.string "The Center is open, and I am\n"
+# 1620 "data/maps/CherrygroveCity/scripts.pory"
+	.string "not moving from this sand.$"
+# 1621 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1670 "data/maps/CherrygroveCity/scripts.pory"
-@ The synergy, corrected on camera: he had the mechanism wrong, and being
-# 1671 "data/maps/CherrygroveCity/scripts.pory"
-@ wrong out loud is how he earns the next line.
-# 1672 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBSynergy:
-# 1673 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Here it comes-don't look\n"
-# 1674 "data/maps/CherrygroveCity/scripts.pory"
-	.string "at the ligh-\p"
-# 1675 "data/maps/CherrygroveCity/scripts.pory"
+# 1622 "data/maps/CherrygroveCity/scripts.pory"
+@ She stops mid-instruction. Nothing is explained here - the explanation is
+# 1623 "data/maps/CherrygroveCity/scripts.pory"
+@ the price of the rescue, later in this same scene.
+# 1624 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBAnabelSenses:
+# 1625 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}Professor, stay east of\n"
+# 1626 "data/maps/CherrygroveCity/scripts.pory"
+	.string "the tide line, and if anything\l"
+# 1627 "data/maps/CherrygroveCity/scripts.pory"
+	.string "comes through you will-\p"
+# 1628 "data/maps/CherrygroveCity/scripts.pory"
 	.string "…\p"
-# 1676 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Okay. Okay, I had it\n"
-# 1677 "data/maps/CherrygroveCity/scripts.pory"
-	.string "wrong.\p"
-# 1678 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It isn't walking in behind the\n"
-# 1679 "data/maps/CherrygroveCity/scripts.pory"
-	.string "lights.\p"
-# 1680 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It isn't walking at all.\p"
-# 1681 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}It crossed four lengths\n"
-# 1682 "data/maps/CherrygroveCity/scripts.pory"
-	.string "while the bay was white.\p"
-# 1683 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Then we simply do not\n"
-# 1684 "data/maps/CherrygroveCity/scripts.pory"
-	.string "blink.\p"
-# 1685 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}That's the problem,\n"
-# 1686 "data/maps/CherrygroveCity/scripts.pory"
-	.string "cousin.\p"
-# 1687 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Nobody can not blink.$"
-# 1688 "data/maps/CherrygroveCity/scripts.pory"
+# 1629 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Chief?\p"
+# 1630 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}It's here.\p"
+# 1631 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}There is nothing on the\n"
+# 1632 "data/maps/CherrygroveCity/scripts.pory"
+	.string "meter.\p"
+# 1633 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}I know.\p"
+# 1634 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Whoa-look at the water!\p"
+# 1635 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It's going flat. That's the\n"
+# 1636 "data/maps/CherrygroveCity/scripts.pory"
+	.string "tell! Everybody back!$"
+# 1637 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1689 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBSynergyClose:
-# 1690 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}! It is on top\n"
-# 1691 "data/maps/CherrygroveCity/scripts.pory"
-	.string "of you-!$"
-# 1692 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1693 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBKukuiSendsOut:
-# 1694 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Not on my beach.\p"
-# 1695 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Incineroar-BETWEEN them!$"
-# 1696 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1697 "data/maps/CherrygroveCity/scripts.pory"
-@ The surprise. Four days of lab coat, and nobody thought to ask.
-# 1698 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBKukuiRevealed:
-# 1699 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}…Professor.\p"
-# 1700 "data/maps/CherrygroveCity/scripts.pory"
-	.string "You are a civilian.\p"
-# 1701 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Your file is two pages long.\p"
-# 1702 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Yeah, it would be.\p"
-# 1703 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Nobody back home writes reports\n"
-# 1704 "data/maps/CherrygroveCity/scripts.pory"
-	.string "on the guy who built the\l"
-# 1705 "data/maps/CherrygroveCity/scripts.pory"
-	.string "League.\p"
-# 1706 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Alola didn't have one. I made\n"
-# 1707 "data/maps/CherrygroveCity/scripts.pory"
-	.string "it.\p"
-# 1708 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Then somebody had to stand at\n"
-# 1709 "data/maps/CherrygroveCity/scripts.pory"
-	.string "the end of it, and that was me\l"
-# 1710 "data/maps/CherrygroveCity/scripts.pory"
-	.string "too. For a while.\p"
-# 1711 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}…Sir. I apologise for\n"
-# 1712 "data/maps/CherrygroveCity/scripts.pory"
-	.string "the file.\p"
-# 1713 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Keep it! It's restful.\p"
-# 1714 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Now quit looking at me. That\n"
-# 1715 "data/maps/CherrygroveCity/scripts.pory"
-	.string "thing in the water isn't done.$"
-# 1716 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1717 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBNecrozmaTargets:
-# 1718 "data/maps/CherrygroveCity/scripts.pory"
-	.string "The creature turns.\p"
-# 1719 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Not toward the Professor.\n"
-# 1720 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Not toward the Ultra Beasts.\p"
-# 1721 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Toward you.\p"
-# 1722 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}-MOVE!$"
-# 1723 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1724 "data/maps/CherrygroveCity/scripts.pory"
-@ The payoff of the seeds planted in Mahogany and here. She says it standing
-# 1725 "data/maps/CherrygroveCity/scripts.pory"
-@ up, in five boxes, in the middle of an incident, and then goes back to
-# 1726 "data/maps/CherrygroveCity/scripts.pory"
-@ work - that is the characterisation, not the biography.
-# 1727 "data/maps/CherrygroveCity/scripts.pory"
-@ CONTINUITY: New Bark (Mission 4) is now the REST of it, not the news.
-# 1728 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBAnabelFaller:
-# 1729 "data/maps/CherrygroveCity/scripts.pory"
-	.string "She is in front of you before\n"
-# 1730 "data/maps/CherrygroveCity/scripts.pory"
-	.string "you have finished turning your\l"
-# 1731 "data/maps/CherrygroveCity/scripts.pory"
-	.string "head.\p"
-# 1732 "data/maps/CherrygroveCity/scripts.pory"
-	.string "The bay goes white.\p"
-# 1733 "data/maps/CherrygroveCity/scripts.pory"
-	.string "When it comes back, Anabel is\n"
-# 1734 "data/maps/CherrygroveCity/scripts.pory"
-	.string "on one knee in the wet sand.\p"
-# 1735 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}CHIEF-\p"
-# 1736 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}I'm here. I'm here.\p"
-# 1737 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Let go, Looker. I can stand.\p"
-# 1738 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{PLAYER}. You should hear this\n"
-# 1739 "data/maps/CherrygroveCity/scripts.pory"
-	.string "from me, and not from a file.\p"
-# 1740 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I knew it was coming because I\n"
-# 1741 "data/maps/CherrygroveCity/scripts.pory"
-	.string "have been on the other side of\l"
-# 1742 "data/maps/CherrygroveCity/scripts.pory"
-	.string "one.\p"
-# 1743 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I'm a Faller. I came through a\n"
-# 1744 "data/maps/CherrygroveCity/scripts.pory"
-	.string "tear like that one.\p"
-# 1745 "data/maps/CherrygroveCity/scripts.pory"
-	.string "There are years of me I have\n"
-# 1746 "data/maps/CherrygroveCity/scripts.pory"
-	.string "not got back.\p"
-# 1747 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}…Chief.\p"
-# 1748 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}The rest of it later.\p"
-# 1749 "data/maps/CherrygroveCity/scripts.pory"
-	.string "There are two of them in the\n"
-# 1750 "data/maps/CherrygroveCity/scripts.pory"
-	.string "water and one of you.\p"
-# 1751 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Professor. Your plan. Now.$"
-# 1752 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1753 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBChoosePrompt:
-# 1754 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Right. Call it,\n"
-# 1755 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{PLAYER}! Which one do you\l"
-# 1756 "data/maps/CherrygroveCity/scripts.pory"
-	.string "want?\p"
-# 1757 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I'll take whatever's left, and\n"
-# 1758 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I will keep it looking at me.\p"
-# 1759 "data/maps/CherrygroveCity/scripts.pory"
-	.string "That's the whole trick.\p"
-# 1760 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Nobody gets to hide.$"
-# 1761 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1762 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_ChoiceBlacephalon:
-# 1763 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Blacephalon$"
-# 1764 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1765 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_ChoiceStakataka:
-# 1766 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Stakataka$"
-# 1767 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1768 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBPickedBlacephalon:
-# 1769 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}The bright one's yours!\p"
-# 1770 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Don't watch the lights. Watch\n"
-# 1771 "data/maps/CherrygroveCity/scripts.pory"
-	.string "the water under it.\p"
-# 1772 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I've got the wall.\n"
-# 1773 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Incineroar, eyes on the big\l"
-# 1774 "data/maps/CherrygroveCity/scripts.pory"
-	.string "guy-don't lose it!$"
-# 1775 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1776 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBPickedStakataka:
-# 1777 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}The wall is yours!\p"
-# 1778 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Get under it before it\n"
-# 1779 "data/maps/CherrygroveCity/scripts.pory"
-	.string "settles!\p"
-# 1780 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I'll take the fireworks.\n"
-# 1781 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Incineroar, close your eyes-\l"
-# 1782 "data/maps/CherrygroveCity/scripts.pory"
-	.string "you won't need them!$"
-# 1783 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1784 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBGotAway:
-# 1785 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}The light closed over\n"
-# 1786 "data/maps/CherrygroveCity/scripts.pory"
+# 1638 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBNecrozmaArrives:
+# 1639 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Something stands up out of the\n"
+# 1640 "data/maps/CherrygroveCity/scripts.pory"
+	.string "flat water.\p"
+# 1641 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It is made of light, and it is\n"
+# 1642 "data/maps/CherrygroveCity/scripts.pory"
+	.string "looking at the beach.\p"
+# 1643 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}…That is the thing from\n"
+# 1644 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Blackthorn.\p"
+# 1645 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}That is not a Pokémon I\n"
+# 1646 "data/maps/CherrygroveCity/scripts.pory"
+	.string "know.\p"
+# 1647 "data/maps/CherrygroveCity/scripts.pory"
+	.string "And, cousin, I know a lot of\n"
+# 1648 "data/maps/CherrygroveCity/scripts.pory"
 	.string "them.\p"
-# 1787 "data/maps/CherrygroveCity/scripts.pory"
-	.string "We are back where we started.\p"
-# 1788 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Then we go again.\p"
-# 1789 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I'm not leaving this beach\n"
-# 1790 "data/maps/CherrygroveCity/scripts.pory"
-	.string "either.\p"
-# 1791 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Heal, and come back.\n"
-# 1792 "data/maps/CherrygroveCity/scripts.pory"
-	.string "We hold here.$"
-# 1793 "data/maps/CherrygroveCity/scripts.pory"
+# 1649 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}It was standing there\n"
+# 1650 "data/maps/CherrygroveCity/scripts.pory"
+	.string "before my instruments said so.\p"
+# 1651 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It always is.$"
+# 1652 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1794 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBKukuiFoughtStakataka:
-# 1795 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Incineroar-through the\n"
-# 1796 "data/maps/CherrygroveCity/scripts.pory"
-	.string "middle! Don't let it set!\p"
-# 1797 "data/maps/CherrygroveCity/scripts.pory"
-	.string "…Down.\p"
-# 1798 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It never got to settle once.\p"
-# 1799 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Thing weighs as much as a\n"
-# 1800 "data/maps/CherrygroveCity/scripts.pory"
-	.string "house, cousin.\p"
-# 1801 "data/maps/CherrygroveCity/scripts.pory"
-	.string "But a house still has to decide\n"
-# 1802 "data/maps/CherrygroveCity/scripts.pory"
-	.string "where to stand.$"
-# 1803 "data/maps/CherrygroveCity/scripts.pory"
+# 1653 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBRift:
+# 1654 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}It's- wait. Wait!\p"
+# 1655 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It isn't coming through the\n"
+# 1656 "data/maps/CherrygroveCity/scripts.pory"
+	.string "tear.\p"
+# 1657 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It's making it!\p"
+# 1658 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Behind me, Professor.\n"
+# 1659 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Behind me, please.\p"
+# 1660 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Nah.$"
+# 1661 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1804 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBKukuiFoughtBlacephalon:
-# 1805 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Eyes shut, Incineroar!\n"
-# 1806 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Swing where it was!\p"
-# 1807 "data/maps/CherrygroveCity/scripts.pory"
-	.string "…Yeah. That's it.\p"
-# 1808 "data/maps/CherrygroveCity/scripts.pory"
-	.string "That's the one thing all those\n"
-# 1809 "data/maps/CherrygroveCity/scripts.pory"
-	.string "lights can't beat.\p"
-# 1810 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Somebody who isn't looking.$"
-# 1811 "data/maps/CherrygroveCity/scripts.pory"
+# 1662 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBAppear:
+# 1663 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Blacephalon! And that\n"
+# 1664 "data/maps/CherrygroveCity/scripts.pory"
+	.string "is- what is that?\p"
+# 1665 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Stakataka! Whoa.\p"
+# 1666 "data/maps/CherrygroveCity/scripts.pory"
+	.string "That's not one Pokémon,\n"
+# 1667 "data/maps/CherrygroveCity/scripts.pory"
+	.string "cousin.\p"
+# 1668 "data/maps/CherrygroveCity/scripts.pory"
+	.string "That's a whole crowd of them,\n"
+# 1669 "data/maps/CherrygroveCity/scripts.pory"
+	.string "stacked up.$"
+# 1670 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1812 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBAbsorbed:
-# 1813 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Hey-hey!\n"
-# 1814 "data/maps/CherrygroveCity/scripts.pory"
-	.string "What is it doing?\p"
-# 1815 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}It took them.\n"
-# 1816 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Both of them.\p"
-# 1817 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It did not fight them.\p"
-# 1818 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}That's feeding.\p"
-# 1819 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I have watched a lot of things\n"
-# 1820 "data/maps/CherrygroveCity/scripts.pory"
-	.string "eat. That's feeding.\p"
-# 1821 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}And nothing that comes\n"
-# 1822 "data/maps/CherrygroveCity/scripts.pory"
-	.string "through a tear behaves like\l"
-# 1823 "data/maps/CherrygroveCity/scripts.pory"
-	.string "that.\p"
-# 1824 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It doesn't come through them.\p"
-# 1825 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It opens them.$"
-# 1826 "data/maps/CherrygroveCity/scripts.pory"
+# 1671 "data/maps/CherrygroveCity/scripts.pory"
+@ The synergy, corrected on camera: he had the mechanism wrong, and being
+# 1672 "data/maps/CherrygroveCity/scripts.pory"
+@ wrong out loud is how he earns the next line.
+# 1673 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBSynergy:
+# 1674 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Here it comes-don't look\n"
+# 1675 "data/maps/CherrygroveCity/scripts.pory"
+	.string "at the ligh-\p"
+# 1676 "data/maps/CherrygroveCity/scripts.pory"
+	.string "…\p"
+# 1677 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Okay. Okay, I had it\n"
+# 1678 "data/maps/CherrygroveCity/scripts.pory"
+	.string "wrong.\p"
+# 1679 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It isn't walking in behind the\n"
+# 1680 "data/maps/CherrygroveCity/scripts.pory"
+	.string "lights.\p"
+# 1681 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It isn't walking at all.\p"
+# 1682 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}It crossed four lengths\n"
+# 1683 "data/maps/CherrygroveCity/scripts.pory"
+	.string "while the bay was white.\p"
+# 1684 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Then we simply do not\n"
+# 1685 "data/maps/CherrygroveCity/scripts.pory"
+	.string "blink.\p"
+# 1686 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}That's the problem,\n"
+# 1687 "data/maps/CherrygroveCity/scripts.pory"
+	.string "cousin.\p"
+# 1688 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Nobody can not blink.$"
+# 1689 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1827 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBNecrozmaSensesCosmog:
-# 1828 "data/maps/CherrygroveCity/scripts.pory"
-	.string "The creature is staring past\n"
-# 1829 "data/maps/CherrygroveCity/scripts.pory"
-	.string "you… at the Poké Ball that\l"
-# 1830 "data/maps/CherrygroveCity/scripts.pory"
-	.string "holds your {STR_VAR_1}.\p"
-# 1831 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Your {STR_VAR_1} is trembling.\p"
-# 1832 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Incineroar! In front!\n"
-# 1833 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Don't let it any closer!$"
-# 1834 "data/maps/CherrygroveCity/scripts.pory"
+# 1690 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBSynergyClose:
+# 1691 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}! It is on top\n"
+# 1692 "data/maps/CherrygroveCity/scripts.pory"
+	.string "of you-!$"
+# 1693 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1835 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBNecrozmaSensesLegend:
-# 1836 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Light flares between the\n"
-# 1837 "data/maps/CherrygroveCity/scripts.pory"
-	.string "creature and your\l"
-# 1838 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{STR_VAR_1}'s Poké Ball!\p"
-# 1839 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It pulls back… then steadies,\n"
-# 1840 "data/maps/CherrygroveCity/scripts.pory"
-	.string "and stares.\p"
-# 1841 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}…It flinched.\n"
-# 1842 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Cousin, that thing flinched.$"
-# 1843 "data/maps/CherrygroveCity/scripts.pory"
+# 1694 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBKukuiSendsOut:
+# 1695 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Not on my beach.\p"
+# 1696 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Incineroar-BETWEEN them!$"
+# 1697 "data/maps/CherrygroveCity/scripts.pory"
 
-# 1844 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBNecrozmaGone:
-# 1845 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}…And it's gone.\p"
-# 1846 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Back through a hole it made\n"
-# 1847 "data/maps/CherrygroveCity/scripts.pory"
-	.string "itself.\p"
-# 1848 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}It opened the sky over a\n"
-# 1849 "data/maps/CherrygroveCity/scripts.pory"
-	.string "town, ate what came out of it,\l"
-# 1850 "data/maps/CherrygroveCity/scripts.pory"
-	.string "and left.\p"
-# 1851 "data/maps/CherrygroveCity/scripts.pory"
-	.string "That is the third time.$"
-# 1852 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1853 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBAftermath:
-# 1854 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Is anyone hurt?\n"
-# 1855 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{PLAYER}? Your Pokémon?\p"
-# 1856 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Chief?\p"
-# 1857 "data/maps/CherrygroveCity/scripts.pory"
-	.string "…Good. Good.\p"
-# 1858 "data/maps/CherrygroveCity/scripts.pory"
-	.string "The report can wait a moment.\p"
-# 1859 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}I am standing, Looker.\p"
-# 1860 "data/maps/CherrygroveCity/scripts.pory"
-	.string "And you may put all of it in\n"
-# 1861 "data/maps/CherrygroveCity/scripts.pory"
-	.string "the file this time.\p"
-# 1862 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I'll sign it myself.$"
-# 1863 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1864 "data/maps/CherrygroveCity/scripts.pory"
-@ The gift of this mission is not an item. It is the founder of a League
-# 1865 "data/maps/CherrygroveCity/scripts.pory"
-@ telling a Champion he wants them at the end of it.
-# 1866 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBKukuiRecognition:
-# 1867 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}{PLAYER}.\p"
-# 1868 "data/maps/CherrygroveCity/scripts.pory"
-	.string "That thing about not blinking?\n"
-# 1869 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Write it down.\p"
-# 1870 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Somebody out there is going to\n"
-# 1871 "data/maps/CherrygroveCity/scripts.pory"
-	.string "need it.\p"
-# 1872 "data/maps/CherrygroveCity/scripts.pory"
-	.string "And listen-when this is\n"
-# 1873 "data/maps/CherrygroveCity/scripts.pory"
-	.string "finished.\p"
-# 1874 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Alola has a League now. I put\n"
-# 1875 "data/maps/CherrygroveCity/scripts.pory"
-	.string "it together myself.\p"
-# 1876 "data/maps/CherrygroveCity/scripts.pory"
-	.string "It's still missing the one\n"
-# 1877 "data/maps/CherrygroveCity/scripts.pory"
-	.string "thing you can't build.\p"
-# 1878 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Somebody worth standing at the\n"
-# 1879 "data/maps/CherrygroveCity/scripts.pory"
-	.string "end of it.\p"
-# 1880 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Come take a swing at it,\n"
-# 1881 "data/maps/CherrygroveCity/scripts.pory"
-	.string "cousin. I mean that.$"
-# 1882 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1883 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBAftermathCosmog:
-# 1884 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}It looked at your\n"
-# 1885 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{STR_VAR_1}.\p"
-# 1886 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Not at me. Not at the Ultra\n"
-# 1887 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Beasts. At that.\p"
-# 1888 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}A child of the stars,\n"
-# 1889 "data/maps/CherrygroveCity/scripts.pory"
-	.string "and a thing made of light.\p"
-# 1890 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Keep it where you can reach it,\n"
-# 1891 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{PLAYER}.$"
-# 1892 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1893 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBAftermathLegend:
-# 1894 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}It pulled back from\n"
-# 1895 "data/maps/CherrygroveCity/scripts.pory"
-	.string "your {STR_VAR_1}. I saw it.\p"
-# 1896 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Back home, {STR_VAR_1} is the\n"
-# 1897 "data/maps/CherrygroveCity/scripts.pory"
-	.string "sky itself, cousin.\p"
-# 1898 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Whatever that creature\n"
-# 1899 "data/maps/CherrygroveCity/scripts.pory"
-	.string "is made of, it knew exactly\l"
-# 1900 "data/maps/CherrygroveCity/scripts.pory"
-	.string "what it was looking at.\p"
-# 1901 "data/maps/CherrygroveCity/scripts.pory"
-	.string "That is worth more than my\n"
-# 1902 "data/maps/CherrygroveCity/scripts.pory"
-	.string "instruments gave me all week.$"
-# 1903 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1904 "data/maps/CherrygroveCity/scripts.pory"
-@ Hook: NO destination. Olivine reveals Mission 4.
-# 1905 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_UBHook:
-# 1906 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}Professor, you will now\n"
-# 1907 "data/maps/CherrygroveCity/scripts.pory"
-	.string "come off this beach and eat\l"
-# 1908 "data/maps/CherrygroveCity/scripts.pory"
-	.string "something.\p"
-# 1909 "data/maps/CherrygroveCity/scripts.pory"
-	.string "That is not a request.\p"
-# 1910 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Yeah, yeah.\p"
-# 1911 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}The readings haven't\n"
-# 1912 "data/maps/CherrygroveCity/scripts.pory"
-	.string "settled. It will open another\l"
-# 1913 "data/maps/CherrygroveCity/scripts.pory"
-	.string "one.\p"
-# 1914 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Where, and when, we don't know\n"
-# 1915 "data/maps/CherrygroveCity/scripts.pory"
-	.string "yet.\p"
-# 1916 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}So we keep watching.\p"
-# 1917 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Rest, {PLAYER}. Then come back\n"
-# 1918 "data/maps/CherrygroveCity/scripts.pory"
-	.string "to our house in Olivine.\p"
-# 1919 "data/maps/CherrygroveCity/scripts.pory"
-	.string "The moment something opens, you\n"
-# 1920 "data/maps/CherrygroveCity/scripts.pory"
-	.string "will be the first to know.\p"
-# 1921 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}I'm going home,\n"
-# 1922 "data/maps/CherrygroveCity/scripts.pory"
-	.string "cousin. But not tonight.\p"
-# 1923 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Tonight I'm going to sit in\n"
-# 1924 "data/maps/CherrygroveCity/scripts.pory"
-	.string "every library in this region\l"
-# 1925 "data/maps/CherrygroveCity/scripts.pory"
-	.string "and read every log nobody\l"
-# 1926 "data/maps/CherrygroveCity/scripts.pory"
-	.string "thought was worth sending.\p"
-# 1927 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Somebody out there has been\n"
-# 1928 "data/maps/CherrygroveCity/scripts.pory"
-	.string "writing this down for weeks and\l"
-# 1929 "data/maps/CherrygroveCity/scripts.pory"
-	.string "calling it a broken sensor.\p"
-# 1930 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I'd bet the League on it.$"
-# 1931 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1932 "data/maps/CherrygroveCity/scripts.pory"
-@ ============================================================================
-# 1933 "data/maps/CherrygroveCity/scripts.pory"
-@ Post-game beach (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.7).
-# 1934 "data/maps/CherrygroveCity/scripts.pory"
-@ Two separate rotas: Kukui on Mon/Tue/Thu/Sat, Lillie on Tue/Thu/Sat. Kukui is
-# 1935 "data/maps/CherrygroveCity/scripts.pory"
-@ here on Monday on his own, which is the point - he is the one who cannot leave
-# 1936 "data/maps/CherrygroveCity/scripts.pory"
-@ the readings alone.
-# 1937 "data/maps/CherrygroveCity/scripts.pory"
-@ Both windows are closed below state 16, so nothing of this exists until the
-# 1938 "data/maps/CherrygroveCity/scripts.pory"
-@ farewell at the altar has played.
-# 1939 "data/maps/CherrygroveCity/scripts.pory"
-@ ============================================================================
-# 1940 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_ApplyPostKukui::
-# 1941 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, CherrygroveCity_EventScript_HidePostKukui
-# 1942 "data/maps/CherrygroveCity/scripts.pory"
-	specialvar VAR_RESULT, GetDayOfWeek
-# 1943 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_eq VAR_RESULT, WEEKDAY_MON, CherrygroveCity_EventScript_ShowPostKukui
-# 1944 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_eq VAR_RESULT, WEEKDAY_TUE, CherrygroveCity_EventScript_ShowPostKukui
-# 1945 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_eq VAR_RESULT, WEEKDAY_THU, CherrygroveCity_EventScript_ShowPostKukui
-# 1946 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_eq VAR_RESULT, WEEKDAY_SAT, CherrygroveCity_EventScript_ShowPostKukui
-# 1947 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_HidePostKukui::
-# 1948 "data/maps/CherrygroveCity/scripts.pory"
-	setflag FLAG_TEMP_7
-# 1949 "data/maps/CherrygroveCity/scripts.pory"
-	return
-# 1950 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_ShowPostKukui::
-# 1951 "data/maps/CherrygroveCity/scripts.pory"
-	clearflag FLAG_TEMP_7
-# 1952 "data/maps/CherrygroveCity/scripts.pory"
-	return
-# 1953 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1954 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_ApplyPostLillie::
-# 1955 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, CherrygroveCity_EventScript_HidePostLillie
-# 1956 "data/maps/CherrygroveCity/scripts.pory"
-	specialvar VAR_RESULT, GetDayOfWeek
-# 1957 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_eq VAR_RESULT, WEEKDAY_TUE, CherrygroveCity_EventScript_ShowPostLillie
-# 1958 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_eq VAR_RESULT, WEEKDAY_THU, CherrygroveCity_EventScript_ShowPostLillie
-# 1959 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_eq VAR_RESULT, WEEKDAY_SAT, CherrygroveCity_EventScript_ShowPostLillie
-# 1960 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_HidePostLillie::
-# 1961 "data/maps/CherrygroveCity/scripts.pory"
-	setflag FLAG_TEMP_8
-# 1962 "data/maps/CherrygroveCity/scripts.pory"
-	return
-# 1963 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_ShowPostLillie::
-# 1964 "data/maps/CherrygroveCity/scripts.pory"
-	clearflag FLAG_TEMP_8
-# 1965 "data/maps/CherrygroveCity/scripts.pory"
-	return
-# 1966 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1967 "data/maps/CherrygroveCity/scripts.pory"
-@ One box of character, then the rematch if today's daily flag is still clear.
-# 1968 "data/maps/CherrygroveCity/scripts.pory"
-@ A normal trainer battle: no B_FLAG_NO_WHITEOUT, because losing to a post-game
-# 1969 "data/maps/CherrygroveCity/scripts.pory"
-@ trainer is a normal blackout. The narrative duel of this arc was Act II at the
-# 1970 "data/maps/CherrygroveCity/scripts.pory"
-@ altar and it is over.
-# 1971 "data/maps/CherrygroveCity/scripts.pory"
-@ The daily flag is set BEFORE the battle: after is unreachable on a loss,
-# 1972 "data/maps/CherrygroveCity/scripts.pory"
-@ because the blackout never comes back here. Losing spends the day, which is
-# 1973 "data/maps/CherrygroveCity/scripts.pory"
-@ the right behaviour for a rematch.
-# 1974 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_PostKukui::
-# 1975 "data/maps/CherrygroveCity/scripts.pory"
-	lock
-# 1976 "data/maps/CherrygroveCity/scripts.pory"
-	faceplayer
-# 1977 "data/maps/CherrygroveCity/scripts.pory"
-	msgbox CherrygroveCity_Text_BeachKukui, MSGBOX_DEFAULT
-# 1978 "data/maps/CherrygroveCity/scripts.pory"
-	closemessage
-# 1979 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_set FLAG_DAILY_REMATCH_KUKUI, CherrygroveCity_EventScript_PostKukuiDone
-# 1980 "data/maps/CherrygroveCity/scripts.pory"
-	msgbox CherrygroveCity_Text_BeachKukuiRematchAsk, MSGBOX_YESNO
-# 1981 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, CherrygroveCity_EventScript_PostKukuiNo
-# 1982 "data/maps/CherrygroveCity/scripts.pory"
-	setflag FLAG_DAILY_REMATCH_KUKUI
-# 1983 "data/maps/CherrygroveCity/scripts.pory"
-	trainerbattle_no_intro TRAINER_KUKUI, CherrygroveCity_Text_BeachKukuiBeaten
-# 1984 "data/maps/CherrygroveCity/scripts.pory"
-	msgbox CherrygroveCity_Text_BeachKukuiAfter, MSGBOX_DEFAULT
-# 1985 "data/maps/CherrygroveCity/scripts.pory"
-	release
-# 1986 "data/maps/CherrygroveCity/scripts.pory"
-	end
-# 1987 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1988 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_PostKukuiNo::
-# 1989 "data/maps/CherrygroveCity/scripts.pory"
-	msgbox CherrygroveCity_Text_BeachKukuiRematchNo, MSGBOX_DEFAULT
-# 1990 "data/maps/CherrygroveCity/scripts.pory"
-	release
-# 1991 "data/maps/CherrygroveCity/scripts.pory"
-	end
-# 1992 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1993 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_PostKukuiDone::
-# 1994 "data/maps/CherrygroveCity/scripts.pory"
-	msgbox CherrygroveCity_Text_BeachKukuiDoneToday, MSGBOX_DEFAULT
-# 1995 "data/maps/CherrygroveCity/scripts.pory"
-	release
-# 1996 "data/maps/CherrygroveCity/scripts.pory"
-	end
-# 1997 "data/maps/CherrygroveCity/scripts.pory"
-
-# 1998 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_PostLillie::
-# 1999 "data/maps/CherrygroveCity/scripts.pory"
-	lock
-# 2000 "data/maps/CherrygroveCity/scripts.pory"
-	faceplayer
-# 2001 "data/maps/CherrygroveCity/scripts.pory"
-	msgbox CherrygroveCity_Text_BeachLillie, MSGBOX_DEFAULT
-# 2002 "data/maps/CherrygroveCity/scripts.pory"
-	closemessage
-# 2003 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_set FLAG_DAILY_REMATCH_LILLIE, CherrygroveCity_EventScript_PostLillieDone
-# 2004 "data/maps/CherrygroveCity/scripts.pory"
-	msgbox CherrygroveCity_Text_BeachLillieRematchAsk, MSGBOX_YESNO
-# 2005 "data/maps/CherrygroveCity/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, CherrygroveCity_EventScript_PostLillieNo
-# 2006 "data/maps/CherrygroveCity/scripts.pory"
-	setflag FLAG_DAILY_REMATCH_LILLIE
-# 2007 "data/maps/CherrygroveCity/scripts.pory"
-	trainerbattle_no_intro TRAINER_LILLIE_POSTGAME, CherrygroveCity_Text_BeachLillieBeaten
-# 2008 "data/maps/CherrygroveCity/scripts.pory"
-	msgbox CherrygroveCity_Text_BeachLillieAfter, MSGBOX_DEFAULT
-# 2009 "data/maps/CherrygroveCity/scripts.pory"
-	release
-# 2010 "data/maps/CherrygroveCity/scripts.pory"
-	end
-# 2011 "data/maps/CherrygroveCity/scripts.pory"
-
-# 2012 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_PostLillieNo::
-# 2013 "data/maps/CherrygroveCity/scripts.pory"
-	msgbox CherrygroveCity_Text_BeachLillieRematchNo, MSGBOX_DEFAULT
-# 2014 "data/maps/CherrygroveCity/scripts.pory"
-	release
-# 2015 "data/maps/CherrygroveCity/scripts.pory"
-	end
-# 2016 "data/maps/CherrygroveCity/scripts.pory"
-
-# 2017 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_EventScript_PostLillieDone::
-# 2018 "data/maps/CherrygroveCity/scripts.pory"
-	msgbox CherrygroveCity_Text_BeachLillieDoneToday, MSGBOX_DEFAULT
-# 2019 "data/maps/CherrygroveCity/scripts.pory"
-	release
-# 2020 "data/maps/CherrygroveCity/scripts.pory"
-	end
-# 2021 "data/maps/CherrygroveCity/scripts.pory"
-
-# 2022 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachKukui:
-# 2023 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}{PLAYER}! Hey! Look who the boat\n"
-# 2024 "data/maps/CherrygroveCity/scripts.pory"
-	.string "brought!\p"
-# 2025 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I flew back to Alola, I walked into my\n"
-# 2026 "data/maps/CherrygroveCity/scripts.pory"
-	.string "own lab, I looked at my own desk for\l"
-# 2027 "data/maps/CherrygroveCity/scripts.pory"
-	.string "about four minutes, and then I got back\l"
-# 2028 "data/maps/CherrygroveCity/scripts.pory"
-	.string "on a boat. Burnet says hello and also\l"
-# 2029 "data/maps/CherrygroveCity/scripts.pory"
-	.string "that she is not surprised.\p"
-# 2030 "data/maps/CherrygroveCity/scripts.pory"
-	.string "This beach, {PLAYER}. Something\n"
-# 2031 "data/maps/CherrygroveCity/scripts.pory"
-	.string "happened on this beach and the sand\l"
-# 2032 "data/maps/CherrygroveCity/scripts.pory"
-	.string "still knows about it. I've got readings\l"
-# 2033 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I can't explain and I have never been\l"
-# 2034 "data/maps/CherrygroveCity/scripts.pory"
-	.string "happier.$"
-# 2035 "data/maps/CherrygroveCity/scripts.pory"
-
-# 2036 "data/maps/CherrygroveCity/scripts.pory"
-@ the YES/NO
-# 2037 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachKukuiRematchAsk:
-# 2038 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Hold on, hold on. Before the science.\p"
-# 2039 "data/maps/CherrygroveCity/scripts.pory"
-	.string "You're the Champion of Johto, you've\n"
-# 2040 "data/maps/CherrygroveCity/scripts.pory"
-	.string "got a Necrozma in that team, and you\l"
-# 2041 "data/maps/CherrygroveCity/scripts.pory"
-	.string "have never once had to fight me for\l"
-# 2042 "data/maps/CherrygroveCity/scripts.pory"
-	.string "anything.\p"
-# 2043 "data/maps/CherrygroveCity/scripts.pory"
-	.string "That's been bothering me for weeks.\n"
-# 2044 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Let's fix it. Right here, feet in the\l"
-# 2045 "data/maps/CherrygroveCity/scripts.pory"
-	.string "water. What do you say?$"
-# 2046 "data/maps/CherrygroveCity/scripts.pory"
-
-# 2047 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachKukuiRematchNo:
-# 2048 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Ha! Fine, fine. I'll be here measuring\n"
-# 2049 "data/maps/CherrygroveCity/scripts.pory"
-	.string "sand.\p"
-# 2050 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Come back when you feel like it.$"
-# 2051 "data/maps/CherrygroveCity/scripts.pory"
-
-# 2052 "data/maps/CherrygroveCity/scripts.pory"
-@ trainer defeat text
-# 2053 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachKukuiBeaten:
-# 2054 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}WOO! Yeah! That's the Champion!$"
-# 2055 "data/maps/CherrygroveCity/scripts.pory"
-
-# 2056 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachKukuiAfter:
-# 2057 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}Okay. OKAY. Now I've got data on you\n"
-# 2058 "data/maps/CherrygroveCity/scripts.pory"
-	.string "too.\p"
-# 2059 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Same time tomorrow? …No, don't answer\n"
-# 2060 "data/maps/CherrygroveCity/scripts.pory"
-	.string "that. Just turn up.$"
-# 2061 "data/maps/CherrygroveCity/scripts.pory"
-
-# 2062 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachKukuiDoneToday:
-# 2063 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_KUKUI}One a day, {PLAYER}! My Incineroar has a\n"
-# 2064 "data/maps/CherrygroveCity/scripts.pory"
-	.string "schedule and I am not the one who set\l"
-# 2065 "data/maps/CherrygroveCity/scripts.pory"
-	.string "it.$"
-# 2066 "data/maps/CherrygroveCity/scripts.pory"
-
-# 2067 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachLillie:
-# 2068 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LILLIE}Hello. I hoped you'd come by.\p"
-# 2069 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I'm not helping the professor, before\n"
-# 2070 "data/maps/CherrygroveCity/scripts.pory"
-	.string "you ask. I have my own notebook now,\l"
-# 2071 "data/maps/CherrygroveCity/scripts.pory"
-	.string "and it is about something completely\l"
-# 2072 "data/maps/CherrygroveCity/scripts.pory"
-	.string "different, and he is not allowed to read\l"
-# 2073 "data/maps/CherrygroveCity/scripts.pory"
+# 1698 "data/maps/CherrygroveCity/scripts.pory"
+@ The surprise. Four days of lab coat, and nobody thought to ask.
+# 1699 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBKukuiRevealed:
+# 1700 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}…Professor.\p"
+# 1701 "data/maps/CherrygroveCity/scripts.pory"
+	.string "You are a civilian.\p"
+# 1702 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Your file is two pages long.\p"
+# 1703 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Yeah, it would be.\p"
+# 1704 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Nobody back home writes reports\n"
+# 1705 "data/maps/CherrygroveCity/scripts.pory"
+	.string "on the guy who built the\l"
+# 1706 "data/maps/CherrygroveCity/scripts.pory"
+	.string "League.\p"
+# 1707 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Alola didn't have one. I made\n"
+# 1708 "data/maps/CherrygroveCity/scripts.pory"
 	.string "it.\p"
-# 2074 "data/maps/CherrygroveCity/scripts.pory"
-	.string "…It's about the nine of them. Where\n"
-# 2075 "data/maps/CherrygroveCity/scripts.pory"
-	.string "they came from. Somebody should be\l"
-# 2076 "data/maps/CherrygroveCity/scripts.pory"
-	.string "writing that down from the side of the\l"
-# 2077 "data/maps/CherrygroveCity/scripts.pory"
-	.string "ones who got eaten.$"
-# 2078 "data/maps/CherrygroveCity/scripts.pory"
+# 1709 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Then somebody had to stand at\n"
+# 1710 "data/maps/CherrygroveCity/scripts.pory"
+	.string "the end of it, and that was me\l"
+# 1711 "data/maps/CherrygroveCity/scripts.pory"
+	.string "too. For a while.\p"
+# 1712 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}…Sir. I apologise for\n"
+# 1713 "data/maps/CherrygroveCity/scripts.pory"
+	.string "the file.\p"
+# 1714 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Keep it! It's restful.\p"
+# 1715 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Now quit looking at me. That\n"
+# 1716 "data/maps/CherrygroveCity/scripts.pory"
+	.string "thing in the water isn't done.$"
+# 1717 "data/maps/CherrygroveCity/scripts.pory"
 
-# 2079 "data/maps/CherrygroveCity/scripts.pory"
+# 1718 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBNecrozmaTargets:
+# 1719 "data/maps/CherrygroveCity/scripts.pory"
+	.string "The creature turns.\p"
+# 1720 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Not toward the Professor.\n"
+# 1721 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Not toward the Ultra Beasts.\p"
+# 1722 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Toward you.\p"
+# 1723 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}-MOVE!$"
+# 1724 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1725 "data/maps/CherrygroveCity/scripts.pory"
+@ The payoff of the seeds planted in Mahogany and here. She says it standing
+# 1726 "data/maps/CherrygroveCity/scripts.pory"
+@ up, in five boxes, in the middle of an incident, and then goes back to
+# 1727 "data/maps/CherrygroveCity/scripts.pory"
+@ work - that is the characterisation, not the biography.
+# 1728 "data/maps/CherrygroveCity/scripts.pory"
+@ CONTINUITY: New Bark (Mission 4) is now the REST of it, not the news.
+# 1729 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBAnabelFaller:
+# 1730 "data/maps/CherrygroveCity/scripts.pory"
+	.string "She is in front of you before\n"
+# 1731 "data/maps/CherrygroveCity/scripts.pory"
+	.string "you have finished turning your\l"
+# 1732 "data/maps/CherrygroveCity/scripts.pory"
+	.string "head.\p"
+# 1733 "data/maps/CherrygroveCity/scripts.pory"
+	.string "The bay goes white.\p"
+# 1734 "data/maps/CherrygroveCity/scripts.pory"
+	.string "When it comes back, Anabel is\n"
+# 1735 "data/maps/CherrygroveCity/scripts.pory"
+	.string "on one knee in the wet sand.\p"
+# 1736 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}CHIEF-\p"
+# 1737 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}I'm here. I'm here.\p"
+# 1738 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Let go, Looker. I can stand.\p"
+# 1739 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{PLAYER}. You should hear this\n"
+# 1740 "data/maps/CherrygroveCity/scripts.pory"
+	.string "from me, and not from a file.\p"
+# 1741 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I knew it was coming because I\n"
+# 1742 "data/maps/CherrygroveCity/scripts.pory"
+	.string "have been on the other side of\l"
+# 1743 "data/maps/CherrygroveCity/scripts.pory"
+	.string "one.\p"
+# 1744 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I'm a Faller. I came through a\n"
+# 1745 "data/maps/CherrygroveCity/scripts.pory"
+	.string "tear like that one.\p"
+# 1746 "data/maps/CherrygroveCity/scripts.pory"
+	.string "There are years of me I have\n"
+# 1747 "data/maps/CherrygroveCity/scripts.pory"
+	.string "not got back.\p"
+# 1748 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}…Chief.\p"
+# 1749 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}The rest of it later.\p"
+# 1750 "data/maps/CherrygroveCity/scripts.pory"
+	.string "There are two of them in the\n"
+# 1751 "data/maps/CherrygroveCity/scripts.pory"
+	.string "water and one of you.\p"
+# 1752 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Professor. Your plan. Now.$"
+# 1753 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1754 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBChoosePrompt:
+# 1755 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Right. Call it,\n"
+# 1756 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{PLAYER}! Which one do you\l"
+# 1757 "data/maps/CherrygroveCity/scripts.pory"
+	.string "want?\p"
+# 1758 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I'll take whatever's left, and\n"
+# 1759 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I will keep it looking at me.\p"
+# 1760 "data/maps/CherrygroveCity/scripts.pory"
+	.string "That's the whole trick.\p"
+# 1761 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Nobody gets to hide.$"
+# 1762 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1763 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_ChoiceBlacephalon:
+# 1764 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Blacephalon$"
+# 1765 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1766 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_ChoiceStakataka:
+# 1767 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Stakataka$"
+# 1768 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1769 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBPickedBlacephalon:
+# 1770 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}The bright one's yours!\p"
+# 1771 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Don't watch the lights. Watch\n"
+# 1772 "data/maps/CherrygroveCity/scripts.pory"
+	.string "the water under it.\p"
+# 1773 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I've got the wall.\n"
+# 1774 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Incineroar, eyes on the big\l"
+# 1775 "data/maps/CherrygroveCity/scripts.pory"
+	.string "guy-don't lose it!$"
+# 1776 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1777 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBPickedStakataka:
+# 1778 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}The wall is yours!\p"
+# 1779 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Get under it before it\n"
+# 1780 "data/maps/CherrygroveCity/scripts.pory"
+	.string "settles!\p"
+# 1781 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I'll take the fireworks.\n"
+# 1782 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Incineroar, close your eyes-\l"
+# 1783 "data/maps/CherrygroveCity/scripts.pory"
+	.string "you won't need them!$"
+# 1784 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1785 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBGotAway:
+# 1786 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}The light closed over\n"
+# 1787 "data/maps/CherrygroveCity/scripts.pory"
+	.string "them.\p"
+# 1788 "data/maps/CherrygroveCity/scripts.pory"
+	.string "We are back where we started.\p"
+# 1789 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Then we go again.\p"
+# 1790 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I'm not leaving this beach\n"
+# 1791 "data/maps/CherrygroveCity/scripts.pory"
+	.string "either.\p"
+# 1792 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}Heal, and come back.\n"
+# 1793 "data/maps/CherrygroveCity/scripts.pory"
+	.string "We hold here.$"
+# 1794 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1795 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBKukuiFoughtStakataka:
+# 1796 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Incineroar-through the\n"
+# 1797 "data/maps/CherrygroveCity/scripts.pory"
+	.string "middle! Don't let it set!\p"
+# 1798 "data/maps/CherrygroveCity/scripts.pory"
+	.string "…Down.\p"
+# 1799 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It never got to settle once.\p"
+# 1800 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Thing weighs as much as a\n"
+# 1801 "data/maps/CherrygroveCity/scripts.pory"
+	.string "house, cousin.\p"
+# 1802 "data/maps/CherrygroveCity/scripts.pory"
+	.string "But a house still has to decide\n"
+# 1803 "data/maps/CherrygroveCity/scripts.pory"
+	.string "where to stand.$"
+# 1804 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1805 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBKukuiFoughtBlacephalon:
+# 1806 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Eyes shut, Incineroar!\n"
+# 1807 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Swing where it was!\p"
+# 1808 "data/maps/CherrygroveCity/scripts.pory"
+	.string "…Yeah. That's it.\p"
+# 1809 "data/maps/CherrygroveCity/scripts.pory"
+	.string "That's the one thing all those\n"
+# 1810 "data/maps/CherrygroveCity/scripts.pory"
+	.string "lights can't beat.\p"
+# 1811 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Somebody who isn't looking.$"
+# 1812 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1813 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBAbsorbed:
+# 1814 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Hey-hey!\n"
+# 1815 "data/maps/CherrygroveCity/scripts.pory"
+	.string "What is it doing?\p"
+# 1816 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}It took them.\n"
+# 1817 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Both of them.\p"
+# 1818 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It did not fight them.\p"
+# 1819 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}That's feeding.\p"
+# 1820 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I have watched a lot of things\n"
+# 1821 "data/maps/CherrygroveCity/scripts.pory"
+	.string "eat. That's feeding.\p"
+# 1822 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}And nothing that comes\n"
+# 1823 "data/maps/CherrygroveCity/scripts.pory"
+	.string "through a tear behaves like\l"
+# 1824 "data/maps/CherrygroveCity/scripts.pory"
+	.string "that.\p"
+# 1825 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It doesn't come through them.\p"
+# 1826 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It opens them.$"
+# 1827 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1828 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBNecrozmaSensesCosmog:
+# 1829 "data/maps/CherrygroveCity/scripts.pory"
+	.string "The creature is staring past\n"
+# 1830 "data/maps/CherrygroveCity/scripts.pory"
+	.string "you… at the Poké Ball that\l"
+# 1831 "data/maps/CherrygroveCity/scripts.pory"
+	.string "holds your {STR_VAR_1}.\p"
+# 1832 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Your {STR_VAR_1} is trembling.\p"
+# 1833 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Incineroar! In front!\n"
+# 1834 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Don't let it any closer!$"
+# 1835 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1836 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBNecrozmaSensesLegend:
+# 1837 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Light flares between the\n"
+# 1838 "data/maps/CherrygroveCity/scripts.pory"
+	.string "creature and your\l"
+# 1839 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{STR_VAR_1}'s Poké Ball!\p"
+# 1840 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It pulls back… then steadies,\n"
+# 1841 "data/maps/CherrygroveCity/scripts.pory"
+	.string "and stares.\p"
+# 1842 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}…It flinched.\n"
+# 1843 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Cousin, that thing flinched.$"
+# 1844 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1845 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBNecrozmaGone:
+# 1846 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}…And it's gone.\p"
+# 1847 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Back through a hole it made\n"
+# 1848 "data/maps/CherrygroveCity/scripts.pory"
+	.string "itself.\p"
+# 1849 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}It opened the sky over a\n"
+# 1850 "data/maps/CherrygroveCity/scripts.pory"
+	.string "town, ate what came out of it,\l"
+# 1851 "data/maps/CherrygroveCity/scripts.pory"
+	.string "and left.\p"
+# 1852 "data/maps/CherrygroveCity/scripts.pory"
+	.string "That is the third time.$"
+# 1853 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1854 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBAftermath:
+# 1855 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Is anyone hurt?\n"
+# 1856 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{PLAYER}? Your Pokémon?\p"
+# 1857 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Chief?\p"
+# 1858 "data/maps/CherrygroveCity/scripts.pory"
+	.string "…Good. Good.\p"
+# 1859 "data/maps/CherrygroveCity/scripts.pory"
+	.string "The report can wait a moment.\p"
+# 1860 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}I am standing, Looker.\p"
+# 1861 "data/maps/CherrygroveCity/scripts.pory"
+	.string "And you may put all of it in\n"
+# 1862 "data/maps/CherrygroveCity/scripts.pory"
+	.string "the file this time.\p"
+# 1863 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I'll sign it myself.$"
+# 1864 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1865 "data/maps/CherrygroveCity/scripts.pory"
+@ The gift of this mission is not an item. It is the founder of a League
+# 1866 "data/maps/CherrygroveCity/scripts.pory"
+@ telling a Champion he wants them at the end of it.
+# 1867 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBKukuiRecognition:
+# 1868 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}{PLAYER}.\p"
+# 1869 "data/maps/CherrygroveCity/scripts.pory"
+	.string "That thing about not blinking?\n"
+# 1870 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Write it down.\p"
+# 1871 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Somebody out there is going to\n"
+# 1872 "data/maps/CherrygroveCity/scripts.pory"
+	.string "need it.\p"
+# 1873 "data/maps/CherrygroveCity/scripts.pory"
+	.string "And listen-when this is\n"
+# 1874 "data/maps/CherrygroveCity/scripts.pory"
+	.string "finished.\p"
+# 1875 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Alola has a League now. I put\n"
+# 1876 "data/maps/CherrygroveCity/scripts.pory"
+	.string "it together myself.\p"
+# 1877 "data/maps/CherrygroveCity/scripts.pory"
+	.string "It's still missing the one\n"
+# 1878 "data/maps/CherrygroveCity/scripts.pory"
+	.string "thing you can't build.\p"
+# 1879 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Somebody worth standing at the\n"
+# 1880 "data/maps/CherrygroveCity/scripts.pory"
+	.string "end of it.\p"
+# 1881 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Come take a swing at it,\n"
+# 1882 "data/maps/CherrygroveCity/scripts.pory"
+	.string "cousin. I mean that.$"
+# 1883 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1884 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBAftermathCosmog:
+# 1885 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}It looked at your\n"
+# 1886 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{STR_VAR_1}.\p"
+# 1887 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Not at me. Not at the Ultra\n"
+# 1888 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Beasts. At that.\p"
+# 1889 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}A child of the stars,\n"
+# 1890 "data/maps/CherrygroveCity/scripts.pory"
+	.string "and a thing made of light.\p"
+# 1891 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Keep it where you can reach it,\n"
+# 1892 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{PLAYER}.$"
+# 1893 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1894 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBAftermathLegend:
+# 1895 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}It pulled back from\n"
+# 1896 "data/maps/CherrygroveCity/scripts.pory"
+	.string "your {STR_VAR_1}. I saw it.\p"
+# 1897 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Back home, {STR_VAR_1} is the\n"
+# 1898 "data/maps/CherrygroveCity/scripts.pory"
+	.string "sky itself, cousin.\p"
+# 1899 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}Whatever that creature\n"
+# 1900 "data/maps/CherrygroveCity/scripts.pory"
+	.string "is made of, it knew exactly\l"
+# 1901 "data/maps/CherrygroveCity/scripts.pory"
+	.string "what it was looking at.\p"
+# 1902 "data/maps/CherrygroveCity/scripts.pory"
+	.string "That is worth more than my\n"
+# 1903 "data/maps/CherrygroveCity/scripts.pory"
+	.string "instruments gave me all week.$"
+# 1904 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1905 "data/maps/CherrygroveCity/scripts.pory"
+@ Hook: NO destination. Olivine reveals Mission 4.
+# 1906 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_UBHook:
+# 1907 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}Professor, you will now\n"
+# 1908 "data/maps/CherrygroveCity/scripts.pory"
+	.string "come off this beach and eat\l"
+# 1909 "data/maps/CherrygroveCity/scripts.pory"
+	.string "something.\p"
+# 1910 "data/maps/CherrygroveCity/scripts.pory"
+	.string "That is not a request.\p"
+# 1911 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Yeah, yeah.\p"
+# 1912 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}The readings haven't\n"
+# 1913 "data/maps/CherrygroveCity/scripts.pory"
+	.string "settled. It will open another\l"
+# 1914 "data/maps/CherrygroveCity/scripts.pory"
+	.string "one.\p"
+# 1915 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Where, and when, we don't know\n"
+# 1916 "data/maps/CherrygroveCity/scripts.pory"
+	.string "yet.\p"
+# 1917 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LOOKER}So we keep watching.\p"
+# 1918 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Rest, {PLAYER}. Then come back\n"
+# 1919 "data/maps/CherrygroveCity/scripts.pory"
+	.string "to our house in Olivine.\p"
+# 1920 "data/maps/CherrygroveCity/scripts.pory"
+	.string "The moment something opens, you\n"
+# 1921 "data/maps/CherrygroveCity/scripts.pory"
+	.string "will be the first to know.\p"
+# 1922 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}I'm going home,\n"
+# 1923 "data/maps/CherrygroveCity/scripts.pory"
+	.string "cousin. But not tonight.\p"
+# 1924 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Tonight I'm going to sit in\n"
+# 1925 "data/maps/CherrygroveCity/scripts.pory"
+	.string "every library in this region\l"
+# 1926 "data/maps/CherrygroveCity/scripts.pory"
+	.string "and read every log nobody\l"
+# 1927 "data/maps/CherrygroveCity/scripts.pory"
+	.string "thought was worth sending.\p"
+# 1928 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Somebody out there has been\n"
+# 1929 "data/maps/CherrygroveCity/scripts.pory"
+	.string "writing this down for weeks and\l"
+# 1930 "data/maps/CherrygroveCity/scripts.pory"
+	.string "calling it a broken sensor.\p"
+# 1931 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I'd bet the League on it.$"
+# 1932 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1933 "data/maps/CherrygroveCity/scripts.pory"
+@ ============================================================================
+# 1934 "data/maps/CherrygroveCity/scripts.pory"
+@ Post-game beach (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.7).
+# 1935 "data/maps/CherrygroveCity/scripts.pory"
+@ Two separate rotas: Kukui on Mon/Tue/Thu/Sat, Lillie on Tue/Thu/Sat. Kukui is
+# 1936 "data/maps/CherrygroveCity/scripts.pory"
+@ here on Monday on his own, which is the point - he is the one who cannot leave
+# 1937 "data/maps/CherrygroveCity/scripts.pory"
+@ the readings alone.
+# 1938 "data/maps/CherrygroveCity/scripts.pory"
+@ Both windows are closed below state 16, so nothing of this exists until the
+# 1939 "data/maps/CherrygroveCity/scripts.pory"
+@ farewell at the altar has played.
+# 1940 "data/maps/CherrygroveCity/scripts.pory"
+@ ============================================================================
+# 1941 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_ApplyPostKukui::
+# 1942 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, CherrygroveCity_EventScript_HidePostKukui
+# 1943 "data/maps/CherrygroveCity/scripts.pory"
+	specialvar VAR_RESULT, GetDayOfWeek
+# 1944 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_eq VAR_RESULT, WEEKDAY_MON, CherrygroveCity_EventScript_ShowPostKukui
+# 1945 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_eq VAR_RESULT, WEEKDAY_TUE, CherrygroveCity_EventScript_ShowPostKukui
+# 1946 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_eq VAR_RESULT, WEEKDAY_THU, CherrygroveCity_EventScript_ShowPostKukui
+# 1947 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_eq VAR_RESULT, WEEKDAY_SAT, CherrygroveCity_EventScript_ShowPostKukui
+# 1948 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_HidePostKukui::
+# 1949 "data/maps/CherrygroveCity/scripts.pory"
+	setflag FLAG_TEMP_7
+# 1950 "data/maps/CherrygroveCity/scripts.pory"
+	return
+# 1951 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_ShowPostKukui::
+# 1952 "data/maps/CherrygroveCity/scripts.pory"
+	clearflag FLAG_TEMP_7
+# 1953 "data/maps/CherrygroveCity/scripts.pory"
+	return
+# 1954 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1955 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_ApplyPostLillie::
+# 1956 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, CherrygroveCity_EventScript_HidePostLillie
+# 1957 "data/maps/CherrygroveCity/scripts.pory"
+	specialvar VAR_RESULT, GetDayOfWeek
+# 1958 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_eq VAR_RESULT, WEEKDAY_TUE, CherrygroveCity_EventScript_ShowPostLillie
+# 1959 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_eq VAR_RESULT, WEEKDAY_THU, CherrygroveCity_EventScript_ShowPostLillie
+# 1960 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_eq VAR_RESULT, WEEKDAY_SAT, CherrygroveCity_EventScript_ShowPostLillie
+# 1961 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_HidePostLillie::
+# 1962 "data/maps/CherrygroveCity/scripts.pory"
+	setflag FLAG_TEMP_8
+# 1963 "data/maps/CherrygroveCity/scripts.pory"
+	return
+# 1964 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_ShowPostLillie::
+# 1965 "data/maps/CherrygroveCity/scripts.pory"
+	clearflag FLAG_TEMP_8
+# 1966 "data/maps/CherrygroveCity/scripts.pory"
+	return
+# 1967 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1968 "data/maps/CherrygroveCity/scripts.pory"
+@ One box of character, then the rematch if today's daily flag is still clear.
+# 1969 "data/maps/CherrygroveCity/scripts.pory"
+@ A normal trainer battle: no B_FLAG_NO_WHITEOUT, because losing to a post-game
+# 1970 "data/maps/CherrygroveCity/scripts.pory"
+@ trainer is a normal blackout. The narrative duel of this arc was Act II at the
+# 1971 "data/maps/CherrygroveCity/scripts.pory"
+@ altar and it is over.
+# 1972 "data/maps/CherrygroveCity/scripts.pory"
+@ The daily flag is set BEFORE the battle: after is unreachable on a loss,
+# 1973 "data/maps/CherrygroveCity/scripts.pory"
+@ because the blackout never comes back here. Losing spends the day, which is
+# 1974 "data/maps/CherrygroveCity/scripts.pory"
+@ the right behaviour for a rematch.
+# 1975 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_PostKukui::
+# 1976 "data/maps/CherrygroveCity/scripts.pory"
+	lock
+# 1977 "data/maps/CherrygroveCity/scripts.pory"
+	faceplayer
+# 1978 "data/maps/CherrygroveCity/scripts.pory"
+	msgbox CherrygroveCity_Text_BeachKukui, MSGBOX_DEFAULT
+# 1979 "data/maps/CherrygroveCity/scripts.pory"
+	closemessage
+# 1980 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_set FLAG_DAILY_REMATCH_KUKUI, CherrygroveCity_EventScript_PostKukuiDone
+# 1981 "data/maps/CherrygroveCity/scripts.pory"
+	msgbox CherrygroveCity_Text_BeachKukuiRematchAsk, MSGBOX_YESNO
+# 1982 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, CherrygroveCity_EventScript_PostKukuiNo
+# 1983 "data/maps/CherrygroveCity/scripts.pory"
+	setflag FLAG_DAILY_REMATCH_KUKUI
+# 1984 "data/maps/CherrygroveCity/scripts.pory"
+	trainerbattle_no_intro TRAINER_KUKUI, CherrygroveCity_Text_BeachKukuiBeaten
+# 1985 "data/maps/CherrygroveCity/scripts.pory"
+	msgbox CherrygroveCity_Text_BeachKukuiAfter, MSGBOX_DEFAULT
+# 1986 "data/maps/CherrygroveCity/scripts.pory"
+	release
+# 1987 "data/maps/CherrygroveCity/scripts.pory"
+	end
+# 1988 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1989 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_PostKukuiNo::
+# 1990 "data/maps/CherrygroveCity/scripts.pory"
+	msgbox CherrygroveCity_Text_BeachKukuiRematchNo, MSGBOX_DEFAULT
+# 1991 "data/maps/CherrygroveCity/scripts.pory"
+	release
+# 1992 "data/maps/CherrygroveCity/scripts.pory"
+	end
+# 1993 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1994 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_PostKukuiDone::
+# 1995 "data/maps/CherrygroveCity/scripts.pory"
+	msgbox CherrygroveCity_Text_BeachKukuiDoneToday, MSGBOX_DEFAULT
+# 1996 "data/maps/CherrygroveCity/scripts.pory"
+	release
+# 1997 "data/maps/CherrygroveCity/scripts.pory"
+	end
+# 1998 "data/maps/CherrygroveCity/scripts.pory"
+
+# 1999 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_PostLillie::
+# 2000 "data/maps/CherrygroveCity/scripts.pory"
+	lock
+# 2001 "data/maps/CherrygroveCity/scripts.pory"
+	faceplayer
+# 2002 "data/maps/CherrygroveCity/scripts.pory"
+	msgbox CherrygroveCity_Text_BeachLillie, MSGBOX_DEFAULT
+# 2003 "data/maps/CherrygroveCity/scripts.pory"
+	closemessage
+# 2004 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_set FLAG_DAILY_REMATCH_LILLIE, CherrygroveCity_EventScript_PostLillieDone
+# 2005 "data/maps/CherrygroveCity/scripts.pory"
+	msgbox CherrygroveCity_Text_BeachLillieRematchAsk, MSGBOX_YESNO
+# 2006 "data/maps/CherrygroveCity/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, CherrygroveCity_EventScript_PostLillieNo
+# 2007 "data/maps/CherrygroveCity/scripts.pory"
+	setflag FLAG_DAILY_REMATCH_LILLIE
+# 2008 "data/maps/CherrygroveCity/scripts.pory"
+	trainerbattle_no_intro TRAINER_LILLIE_POSTGAME, CherrygroveCity_Text_BeachLillieBeaten
+# 2009 "data/maps/CherrygroveCity/scripts.pory"
+	msgbox CherrygroveCity_Text_BeachLillieAfter, MSGBOX_DEFAULT
+# 2010 "data/maps/CherrygroveCity/scripts.pory"
+	release
+# 2011 "data/maps/CherrygroveCity/scripts.pory"
+	end
+# 2012 "data/maps/CherrygroveCity/scripts.pory"
+
+# 2013 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_PostLillieNo::
+# 2014 "data/maps/CherrygroveCity/scripts.pory"
+	msgbox CherrygroveCity_Text_BeachLillieRematchNo, MSGBOX_DEFAULT
+# 2015 "data/maps/CherrygroveCity/scripts.pory"
+	release
+# 2016 "data/maps/CherrygroveCity/scripts.pory"
+	end
+# 2017 "data/maps/CherrygroveCity/scripts.pory"
+
+# 2018 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_EventScript_PostLillieDone::
+# 2019 "data/maps/CherrygroveCity/scripts.pory"
+	msgbox CherrygroveCity_Text_BeachLillieDoneToday, MSGBOX_DEFAULT
+# 2020 "data/maps/CherrygroveCity/scripts.pory"
+	release
+# 2021 "data/maps/CherrygroveCity/scripts.pory"
+	end
+# 2022 "data/maps/CherrygroveCity/scripts.pory"
+
+# 2023 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_BeachKukui:
+# 2024 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}{PLAYER}! Hey! Look who the boat\n"
+# 2025 "data/maps/CherrygroveCity/scripts.pory"
+	.string "brought!\p"
+# 2026 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I flew back to Alola, I walked into my\n"
+# 2027 "data/maps/CherrygroveCity/scripts.pory"
+	.string "own lab, I looked at my own desk for\l"
+# 2028 "data/maps/CherrygroveCity/scripts.pory"
+	.string "about four minutes, and then I got back\l"
+# 2029 "data/maps/CherrygroveCity/scripts.pory"
+	.string "on a boat. Burnet says hello and also\l"
+# 2030 "data/maps/CherrygroveCity/scripts.pory"
+	.string "that she is not surprised.\p"
+# 2031 "data/maps/CherrygroveCity/scripts.pory"
+	.string "This beach, {PLAYER}. Something\n"
+# 2032 "data/maps/CherrygroveCity/scripts.pory"
+	.string "happened on this beach and the sand\l"
+# 2033 "data/maps/CherrygroveCity/scripts.pory"
+	.string "still knows about it. I've got readings\l"
+# 2034 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I can't explain and I have never been\l"
+# 2035 "data/maps/CherrygroveCity/scripts.pory"
+	.string "happier.$"
+# 2036 "data/maps/CherrygroveCity/scripts.pory"
+
+# 2037 "data/maps/CherrygroveCity/scripts.pory"
 @ the YES/NO
-# 2080 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachLillieRematchAsk:
-# 2081 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LILLIE}Before you go. Would you battle me?\p"
-# 2082 "data/maps/CherrygroveCity/scripts.pory"
-	.string "I know. You've beaten me in a flower\n"
-# 2083 "data/maps/CherrygroveCity/scripts.pory"
-	.string "shop, in a shrine and on a road. That's\l"
-# 2084 "data/maps/CherrygroveCity/scripts.pory"
-	.string "rather the point -- you have a very\l"
-# 2085 "data/maps/CherrygroveCity/scripts.pory"
-	.string "good record and I would like to ruin it.\p"
-# 2086 "data/maps/CherrygroveCity/scripts.pory"
-	.string "She's not a Vulpix any more, {PLAYER}.\n"
-# 2087 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Look at her properly this time.$"
-# 2088 "data/maps/CherrygroveCity/scripts.pory"
+# 2038 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_BeachKukuiRematchAsk:
+# 2039 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Hold on, hold on. Before the science.\p"
+# 2040 "data/maps/CherrygroveCity/scripts.pory"
+	.string "You're the Champion of Johto, you've\n"
+# 2041 "data/maps/CherrygroveCity/scripts.pory"
+	.string "got a Necrozma in that team, and you\l"
+# 2042 "data/maps/CherrygroveCity/scripts.pory"
+	.string "have never once had to fight me for\l"
+# 2043 "data/maps/CherrygroveCity/scripts.pory"
+	.string "anything.\p"
+# 2044 "data/maps/CherrygroveCity/scripts.pory"
+	.string "That's been bothering me for weeks.\n"
+# 2045 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Let's fix it. Right here, feet in the\l"
+# 2046 "data/maps/CherrygroveCity/scripts.pory"
+	.string "water. What do you say?$"
+# 2047 "data/maps/CherrygroveCity/scripts.pory"
 
-# 2089 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachLillieRematchNo:
-# 2090 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LILLIE}Of course. Another day.\p"
-# 2091 "data/maps/CherrygroveCity/scripts.pory"
-	.string "She'll be disappointed. She has been\n"
-# 2092 "data/maps/CherrygroveCity/scripts.pory"
-	.string "practising in front of the sea.$"
-# 2093 "data/maps/CherrygroveCity/scripts.pory"
+# 2048 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_BeachKukuiRematchNo:
+# 2049 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Ha! Fine, fine. I'll be here measuring\n"
+# 2050 "data/maps/CherrygroveCity/scripts.pory"
+	.string "sand.\p"
+# 2051 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Come back when you feel like it.$"
+# 2052 "data/maps/CherrygroveCity/scripts.pory"
 
-# 2094 "data/maps/CherrygroveCity/scripts.pory"
+# 2053 "data/maps/CherrygroveCity/scripts.pory"
 @ trainer defeat text
+# 2054 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_BeachKukuiBeaten:
+# 2055 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}WOO! Yeah! That's the Champion!$"
+# 2056 "data/maps/CherrygroveCity/scripts.pory"
+
+# 2057 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_BeachKukuiAfter:
+# 2058 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Okay. OKAY. Now I've got data on you\n"
+# 2059 "data/maps/CherrygroveCity/scripts.pory"
+	.string "too.\p"
+# 2060 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Same time tomorrow? …No, don't answer\n"
+# 2061 "data/maps/CherrygroveCity/scripts.pory"
+	.string "that. Just turn up.$"
+# 2062 "data/maps/CherrygroveCity/scripts.pory"
+
+# 2063 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_BeachKukuiDoneToday:
+# 2064 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}One a day, {PLAYER}! My Incineroar has a\n"
+# 2065 "data/maps/CherrygroveCity/scripts.pory"
+	.string "schedule and I am not the one who set\l"
+# 2066 "data/maps/CherrygroveCity/scripts.pory"
+	.string "it.$"
+# 2067 "data/maps/CherrygroveCity/scripts.pory"
+
+# 2068 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_BeachLillie:
+# 2069 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LILLIE}Hello. I hoped you'd come by.\p"
+# 2070 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I'm not helping the professor, before\n"
+# 2071 "data/maps/CherrygroveCity/scripts.pory"
+	.string "you ask. I have my own notebook now,\l"
+# 2072 "data/maps/CherrygroveCity/scripts.pory"
+	.string "and it is about something completely\l"
+# 2073 "data/maps/CherrygroveCity/scripts.pory"
+	.string "different, and he is not allowed to read\l"
+# 2074 "data/maps/CherrygroveCity/scripts.pory"
+	.string "it.\p"
+# 2075 "data/maps/CherrygroveCity/scripts.pory"
+	.string "…It's about the nine of them. Where\n"
+# 2076 "data/maps/CherrygroveCity/scripts.pory"
+	.string "they came from. Somebody should be\l"
+# 2077 "data/maps/CherrygroveCity/scripts.pory"
+	.string "writing that down from the side of the\l"
+# 2078 "data/maps/CherrygroveCity/scripts.pory"
+	.string "ones who got eaten.$"
+# 2079 "data/maps/CherrygroveCity/scripts.pory"
+
+# 2080 "data/maps/CherrygroveCity/scripts.pory"
+@ the YES/NO
+# 2081 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_BeachLillieRematchAsk:
+# 2082 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LILLIE}Before you go. Would you battle me?\p"
+# 2083 "data/maps/CherrygroveCity/scripts.pory"
+	.string "I know. You've beaten me in a flower\n"
+# 2084 "data/maps/CherrygroveCity/scripts.pory"
+	.string "shop, in a shrine and on a road. That's\l"
+# 2085 "data/maps/CherrygroveCity/scripts.pory"
+	.string "rather the point -- you have a very\l"
+# 2086 "data/maps/CherrygroveCity/scripts.pory"
+	.string "good record and I would like to ruin it.\p"
+# 2087 "data/maps/CherrygroveCity/scripts.pory"
+	.string "She's not a Vulpix any more, {PLAYER}.\n"
+# 2088 "data/maps/CherrygroveCity/scripts.pory"
+	.string "Look at her properly this time.$"
+# 2089 "data/maps/CherrygroveCity/scripts.pory"
+
+# 2090 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_BeachLillieRematchNo:
+# 2091 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LILLIE}Of course. Another day.\p"
+# 2092 "data/maps/CherrygroveCity/scripts.pory"
+	.string "She'll be disappointed. She has been\n"
+# 2093 "data/maps/CherrygroveCity/scripts.pory"
+	.string "practising in front of the sea.$"
+# 2094 "data/maps/CherrygroveCity/scripts.pory"
+
 # 2095 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachLillieBeaten:
+@ trainer defeat text
 # 2096 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LILLIE}…There it is again.\p"
+CherrygroveCity_Text_BeachLillieBeaten:
 # 2097 "data/maps/CherrygroveCity/scripts.pory"
-	.string "Thank you. I mean that.$"
+	.string "{SPEAKER NAME_LILLIE}…There it is again.\p"
 # 2098 "data/maps/CherrygroveCity/scripts.pory"
-
+	.string "Thank you. I mean that.$"
 # 2099 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachLillieAfter:
-# 2100 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LILLIE}Your record survives. I'm writing that\n"
-# 2101 "data/maps/CherrygroveCity/scripts.pory"
-	.string "down too, and I'm writing it down\l"
-# 2102 "data/maps/CherrygroveCity/scripts.pory"
-	.string "crossly.$"
-# 2103 "data/maps/CherrygroveCity/scripts.pory"
 
+# 2100 "data/maps/CherrygroveCity/scripts.pory"
+CherrygroveCity_Text_BeachLillieAfter:
+# 2101 "data/maps/CherrygroveCity/scripts.pory"
+	.string "{SPEAKER NAME_LILLIE}Your record survives. I'm writing that\n"
+# 2102 "data/maps/CherrygroveCity/scripts.pory"
+	.string "down too, and I'm writing it down\l"
+# 2103 "data/maps/CherrygroveCity/scripts.pory"
+	.string "crossly.$"
 # 2104 "data/maps/CherrygroveCity/scripts.pory"
-CherrygroveCity_Text_BeachLillieDoneToday:
+
 # 2105 "data/maps/CherrygroveCity/scripts.pory"
-	.string "{SPEAKER NAME_LILLIE}Once a day is plenty. She sulks, and\n"
+CherrygroveCity_Text_BeachLillieDoneToday:
 # 2106 "data/maps/CherrygroveCity/scripts.pory"
-	.string "then she sleeps in the sun, and then\l"
+	.string "{SPEAKER NAME_LILLIE}Once a day is plenty. She sulks, and\n"
 # 2107 "data/maps/CherrygroveCity/scripts.pory"
+	.string "then she sleeps in the sun, and then\l"
+# 2108 "data/maps/CherrygroveCity/scripts.pory"
 	.string "she forgives me.$"
 
 Cherrygrove_FadedSign_Text_0:

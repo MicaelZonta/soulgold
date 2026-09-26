@@ -37,6 +37,7 @@ NewBarkTown_EventScript_ElmCallAfterLeague::
 @ and this one on the following frame - one call after the other.
 NewBarkTown_EventScript_LookerCall::
 	setvar VAR_RIFT_MISSIONS_STATE, 2          @ first instruction: stops re-firing
+	setflag FLAG_DAILY_LOOKER_CALL             @ today's call has been made
 	lock
 	pokenavcall NewBarkTown_Text_LookerCall
 	waitmessage
@@ -312,31 +313,27 @@ NewBarkTown_Text_PlayersHouse:
 NewBarkTown_Text_ElmsHouse:
 	.string "Prof. Elm's House$"
 
-@ Looker's first call (final text, 22/09/2026). Theatrical opening, corrected
-@ at once; says only that he needs the Champion in person. No creature, no
-@ town and no name is given away on the phone.
+@ Looker's first call (script revision V2, 25/09/2026). Cordial and
+@ professional, and short: it congratulates, introduces, asks and names the
+@ house. It does NOT retell the holiday cover over the phone and it does not
+@ hide the request behind three attempts at an introduction. No creature, no
+@ town and no name is given away.
+@ It also sets FLAG_DAILY_LOOKER_CALL: from here on Looker rings once a day
+@ while a briefing is pending in Olivine (ShouldDoRiftMissionCall,
+@ src/field_control_avatar.c), and the day he calls in person counts.
 NewBarkTown_Text_LookerCall:
-	.string "{SPEAKER NAME_LOOKER}Hello? Is this {PLAYER}?\n"
-	.string "The Champion of Johto?\p"
-	.string "…Forgive me. Allow me to begin\n"
-	.string "again.\p"
+	.string "{SPEAKER NAME_LOOKER}Hello, {PLAYER}?\n"
+	.string "Congratulations on becoming\l"
+	.string "Champion!\p"
 	.string "My name is Looker.\n"
 	.string "International Police.\p"
-	.string "We have not been introduced,\n"
-	.string "but you may have passed me in\l"
-	.string "Olivine. The man on holiday.\p"
-	.string "Yes. That was me.\p"
-	.string "I am afraid the holiday was\n"
-	.string "not entirely a holiday.\p"
-	.string "Something is happening in\n"
-	.string "Johto, and I would rather\l"
-	.string "explain it in person.\p"
-	.string "Our house is on the north\n"
-	.string "side of Olivine, closest to\l"
+	.string "My colleague and I need your\n"
+	.string "help with an investigation in\l"
+	.string "Johto.\p"
+	.string "Please meet us in Olivine.\p"
+	.string "Our house is the one nearest\n"
 	.string "the Gym.\p"
-	.string "Please come when you can.\p"
-	.string "And, {PLAYER}… congratulations.\n"
-	.string "Truly.$"
+	.string "I'll explain when you arrive.$"
 `
 
 script NewBarkTown_EventScript_RivalIntro {
@@ -1298,6 +1295,7 @@ NewBarkTown_EventScript_UBAftermath::
 	fadescreen FADE_TO_BLACK
 	clearflag FLAG_EVENT_ULTRABEAST_NEWBARK   @ invariant: flag and var together
 	setvar VAR_RIFT_MISSIONS_STATE, 10
+	setflag FLAG_DAILY_LOOKER_CALL            @ he just said it in person
 	@ Reload in place under the fade. The seven residents come back, the lamps
 	@ go back to depending on the clock alone, the cast disappears, Elm and
 	@ Lusamine return to their template tiles, and the follower comes back

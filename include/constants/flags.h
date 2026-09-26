@@ -4,6 +4,26 @@
 #include "constants/opponents.h"
 #include "constants/rematches.h"
 
+// Marcadores de auditoria (gerados por dev_scripts/flag_audit.py, leitura em
+// .claude/SOULGOLD_FLAGS_AUDIT.md). Eles NAO mudam nada no jogo - servem para a
+// proxima pessoa saber o que da para pegar:
+//
+//   // fora da ROM            so aparece em mapa de rom_excluded_groups (Hoenn).
+//                             O jogador nunca consegue ligar esse bit.
+//   // livre desde 24/09/2026 nenhuma ocorrencia em script, map.json, src ou
+//                             test na data da auditoria.
+//
+// Reciclar um numero marcado assim MUDA O SIGNIFICADO de um bit que saves
+// antigos ja podem ter ligado: "fora da ROM" e seguro, "livre" so e seguro se a
+// flag nunca foi usada em versao anterior do hack. Renomear e de graca;
+// renumerar flag existente, nunca. Para flag NOVA nao recicle nada: va para
+// CUSTOM_FLAGS (0x1047 em diante).
+//
+// Sem marcador e sem uso nao quer dizer livre: FLAG_UNUSED_165 e companhia caem
+// dentro do bloco do Match Call (0x15C-0x198), que o codigo escreve por
+// aritmetica, e FLAG_GARBAGEFLAG (0x53) e a flag-lixo que 224 mapas usam no
+// campo "flag" de objetos sempre visiveis.
+
 // Temporary Flags
 // These temporary flags are are cleared every time a map is loaded. They are used
 // for things like shortening an NPCs introduction text if the player already spoke
@@ -37,9 +57,9 @@
 #define FLAG_TEMP_1A     (TEMP_FLAGS_START + 0x1A)
 #define FLAG_TEMP_1B     (TEMP_FLAGS_START + 0x1B)
 #define FLAG_TEMP_1C     (TEMP_FLAGS_START + 0x1C)
-#define FLAG_TEMP_1D     (TEMP_FLAGS_START + 0x1D)
+#define FLAG_TEMP_1D     (TEMP_FLAGS_START + 0x1D)  // fora da ROM
 #define FLAG_TEMP_1E     (TEMP_FLAGS_START + 0x1E)
-#define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
+#define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)  // fora da ROM
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
@@ -47,18 +67,18 @@
 #define FLAG_SYS_NO_ENCOUNTER                   0x21 // Unused Flag //DEBUG
 #define FLAG_SYS_NO_TRAINER_SEE                 0x22 // Unused Flag //DEBUG
 #define FLAG_SYS_NO_BAG_USE                     0x23 // Unused Flag //DEBUG
-#define FLAG_SYS_NO_CATCHING                    0x24 // Unused Flag //DEBUG
+#define FLAG_SYS_NO_CATCHING                    0x24 // NAO USE: nada le esta flag. Para desligar captura use B_FLAG_NO_CATCHING (include/config/battle.h). Auditoria 7.2
 #define FLAG_SYS_PC_FROM_DEBUG_MENU             0x25 // Unused Flag //DEBUG
 #define FLAG_ARCEUS_EGG_GIVE                    0x26
 #define FLAG_SYS_NO_BATTLE_DMG                  0x27 // Unused Flag //DEBUG
 #define FLAG_ONETIME_GROUDON                    0x28 
 #define FLAG_ONETIME_KYOGRE                     0x29
 #define FLAG_SNOWTOP_ABILITY_PATCH              0x2A
-#define FLAG_SYS_SET_BATTLE_BGM                 0x2B // Changes BGM
-#define FLAG_WONDERTRADE_FIRSTIME               0x2C 
+#define FLAG_SYS_SET_BATTLE_BGM                 0x2B // Changes BGM - fora da ROM
+#define FLAG_WONDERTRADE_FIRSTIME               0x2C  // livre desde 24/09/2026
 #define FLAG_NO_WT_BECAUSE_CHALLENGE            0x2D 
 #define FLAG_CIANWOOD_GOLDEN_BOTTLECAP          0x2E
-#define FLAG_DOME_FOSSIL_ALTERING_CAVE          0x2F 
+#define FLAG_DOME_FOSSIL_ALTERING_CAVE          0x2F  // fora da ROM
 #define FLAG_GOT_REDORB                         0x30 
 #define FLAG_GOT_BLUEORB                        0x31 
 #define FLAG_HIDE_POSTGAME_OAK                  0x32
@@ -70,27 +90,27 @@
 #define FLAG_GOT_LUSTROUS_ORB                   0x38
 #define FLAG_TM_TORMENT                         0x39
 #define FLAG_PENDING_DAYCARE_EGG_SHINY          0x3A
-#define FLAG_DEFEATED_REGIELEKI                 0x3B 
+#define FLAG_DEFEATED_REGIELEKI                 0x3B  // livre desde 24/09/2026
 #define FLAG_ROUTE42_ROOMSERVICE                0x3C 
-#define FLAG_HIDE_REGIDRAGO                     0x3D
-#define FLAG_SAPPHIRE_KECLEON                   0x3E 
-#define FLAG_SYS_BRAILLE_REGIDRAGO_COMPLETED    0x3F
-#define FLAG_DEFEATED_REGIDRAGO                 0x40 
-#define FLAG_DEFEATED_DUSKNOIR                  0x41 
-#define FLAG_SYS_BRAILLE_REGIGIGAS_COMPLETED    0x42
-#define FLAG_DEFEATED_REGIGIGAS                 0x43
+#define FLAG_HIDE_REGIDRAGO                     0x3D  // livre desde 24/09/2026
+#define FLAG_SAPPHIRE_KECLEON                   0x3E  // livre desde 24/09/2026
+#define FLAG_SYS_BRAILLE_REGIDRAGO_COMPLETED    0x3F  // livre desde 24/09/2026
+#define FLAG_DEFEATED_REGIDRAGO                 0x40  // livre desde 24/09/2026
+#define FLAG_DEFEATED_DUSKNOIR                  0x41  // livre desde 24/09/2026
+#define FLAG_SYS_BRAILLE_REGIGIGAS_COMPLETED    0x42  // livre desde 24/09/2026
+#define FLAG_DEFEATED_REGIGIGAS                 0x43  // livre desde 24/09/2026
 #define FLAG_HIDE_REGIGIGAS                     0x44 
-#define FLAG_DEFEATED_ARTICUNO                  0x45 
-#define FLAG_DEFEATED_ZAPDOS                    0x46
-#define FLAG_DEFEATED_MOLTRES                   0x47 
+#define FLAG_DEFEATED_ARTICUNO                  0x45  // fora da ROM
+#define FLAG_DEFEATED_ZAPDOS                    0x46  // fora da ROM
+#define FLAG_DEFEATED_MOLTRES                   0x47  // fora da ROM
 #define FLAG_HIDE_ARTICUNO                      0x48
 #define FLAG_HIDE_ZAPDOS                        0x49
 #define FLAG_HIDE_MOLTRES                       0x4A
-#define FLAG_DEFEATED_MEWTWO                    0x4B
+#define FLAG_DEFEATED_MEWTWO                    0x4B  // fora da ROM
 #define FLAG_HIDE_MEWTWO                        0x4C
-#define FLAG_UNLOCK_BIRDS                       0x4D
+#define FLAG_UNLOCK_BIRDS                       0x4D  // fora da ROM
 #define FLAG_UNLOCK_MEWTWO                      0x4E
-#define FLAG_RASH_MINT_METEOR_FALLS             0x4F
+#define FLAG_RASH_MINT_METEOR_FALLS             0x4F  // livre desde 24/09/2026
 
 // Scripts
 #define FLAG_GARBAGEFLAG_STILL  0x50
@@ -98,16 +118,16 @@
 #define FLAG_RESCUED_BIRCH                       0x52
 #define FLAG_GARBAGEFLAG           0x53 //used to store calls of removed flags
 
-#define FLAG_LIMIT_TO_50                     0x54
-#define FLAG_UNLOCK_DOGS                     0x55
+#define FLAG_LIMIT_TO_50                     0x54  // livre desde 24/09/2026
+#define FLAG_UNLOCK_DOGS                     0x55  // livre desde 24/09/2026
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56  // Always set after new game, object it hides is added directly
 #define FLAG_MET_RIVAL_MOM                   0x57
 #define FLAG_BIRCH_AIDE_MET                  0x58
-#define FLAG_DECLINED_BIKE                   0x59 
+#define FLAG_DECLINED_BIKE                   0x59  // fora da ROM
 #define FLAG_RECEIVED_BIKE                   0x5A //HnS used
 #define FLAG_WATTSON_REMATCH_AVAILABLE       0x5B
-#define FLAG_COLLECTED_ALL_SILVER_SYMBOLS    0x5C
+#define FLAG_COLLECTED_ALL_SILVER_SYMBOLS    0x5C  // fora da ROM
 #define FLAG_GOOD_LUCK_SAFARI_ZONE           0x5D // Set after talking to NPC blocking Safari Zone entrance/exit once.
 #define FLAG_GARBAGEFLAG2           0x5E 
 #define FLAG_RECEIVED_POKEBLOCK_CASE         0x5F
@@ -116,11 +136,11 @@
 #define FLAG_TV_EXPLAINED                    0x62
 #define FLAG_MAUVILLE_GYM_BARRIERS_STATE     0x63
 #define FLAG_HIDE_NEWBARK_RIVAL              0x64 // Until postgame
-#define FLAG_MOSSDEEP_GYM_SWITCH_2           0x65 //
-#define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 //
-#define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
+#define FLAG_MOSSDEEP_GYM_SWITCH_2           0x65 // - fora da ROM
+#define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 // - fora da ROM
+#define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 // - fora da ROM
 
-#define FLAG_OLD_AMBER_ALTERING_CAVE         0x68 
+#define FLAG_OLD_AMBER_ALTERING_CAVE         0x68  // fora da ROM
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_HM_STRENGTH            0x6A
@@ -132,21 +152,21 @@
 #define FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE  0x70
 #define FLAG_GOT_FRESH_WATER                 0x71
 #define FLAG_SCOTT_CALL_BATTLE_FRONTIER      0x72 // Used in order to activate a phone call from Scott, inviting the player to the SS Tidal.
-#define FLAG_RECEIVED_METEORITE              0x73
+#define FLAG_RECEIVED_METEORITE              0x73  // fora da ROM
 #define FLAG_ADVENTURE_STARTED               0x74 // elivered egg to professor ELM
 #define FLAG_DEFEATED_MAGMA_SPACE_CENTER     0x75 // Set when Team Magma is defeated at Mossdeep's Space Center.
-#define FLAG_MET_HIDDEN_POWER_GIVER          0x76
+#define FLAG_MET_HIDDEN_POWER_GIVER          0x76  // fora da ROM
 
 #define FLAG_CANCEL_BATTLE_ROOM_CHALLENGE    0x77
 
 #define FLAG_LANDMARK_MIRAGE_TOWER           0x78
-#define FLAG_RECEIVED_TM_BRICK_BREAK         0x79
+#define FLAG_RECEIVED_TM_BRICK_BREAK         0x79  // fora da ROM
 #define FLAG_RECEIVED_HM_SURF                0x7A
-#define FLAG_RECEIVED_HM_DIVE                0x7B
+#define FLAG_RECEIVED_HM_DIVE                0x7B  // fora da ROM
 #define FLAG_REGISTER_RIVAL_POKENAV          0x7C
-#define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D
+#define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D  // fora da ROM
 #define FLAG_DEFEATED_WALLY_VICTORY_ROAD     0x7E
-#define FLAG_MET_PRETTY_PETAL_SHOP_OWNER     0x7F
+#define FLAG_MET_PRETTY_PETAL_SHOP_OWNER     0x7F  // fora da ROM
 #define FLAG_ENABLE_ROXANNE_FIRST_CALL       0x80 // Set after defeating Brawly. This will activate a call with Roxanne in order to register her.
 #define FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN  0x81
 #define FLAG_DEFEATED_RIVAL_ROUTE103         0x82
@@ -154,43 +174,43 @@
 #define FLAG_RECEIVED_POTION_OLDALE          0x84
 #define FLAG_RECEIVED_AMULET_COIN            0x85
 #define FLAG_PENDING_DAYCARE_EGG             0x86
-#define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87
+#define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87  // fora da ROM
 #define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // Set after defeating Wally outside Mauville Gym. Will activate a call later to register Wally.
 #define FLAG_RECEIVED_HM_CUT                 0x89
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // Triggers call from Scott after defeating Winona
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
-#define FLAG_RECEIVED_6_SODA_POP             0x8C
-#define FLAG_DEFEATED_SEASHORE_HOUSE         0x8D
-#define FLAG_DEVON_GOODS_STOLEN              0x8E
-#define FLAG_RECOVERED_DEVON_GOODS           0x8F
-#define FLAG_RETURNED_DEVON_GOODS            0x90
+#define FLAG_RECEIVED_6_SODA_POP             0x8C  // fora da ROM
+#define FLAG_DEFEATED_SEASHORE_HOUSE         0x8D  // fora da ROM
+#define FLAG_DEVON_GOODS_STOLEN              0x8E  // fora da ROM
+#define FLAG_RECOVERED_DEVON_GOODS           0x8F  // fora da ROM
+#define FLAG_RETURNED_DEVON_GOODS            0x90  // fora da ROM
 #define FLAG_CAUGHT_LUGIA                    0x91
 #define FLAG_CAUGHT_HO_OH                    0x92
-#define FLAG_MR_BRINEY_SAILING_INTRO         0x93
-#define FLAG_DOCK_REJECTED_DEVON_GOODS       0x94
+#define FLAG_MR_BRINEY_SAILING_INTRO         0x93  // fora da ROM
+#define FLAG_DOCK_REJECTED_DEVON_GOODS       0x94  // fora da ROM
 #define FLAG_DELIVERED_DEVON_GOODS           0x95
 #define FLAG_HIDE_ALPH_PUZZLE_NPCS           0x96
 #define FLAG_RECEIVED_CASTFORM               0x97
-#define FLAG_RECEIVED_SUPER_ROD              0x98
-#define FLAG_RUSTBORO_NPC_TRADE_COMPLETED    0x99
-#define FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED  0x9A
-#define FLAG_FORTREE_NPC_TRADE_COMPLETED     0x9B
-#define FLAG_BATTLE_FRONTIER_TRADE_DONE      0x9C
+#define FLAG_RECEIVED_SUPER_ROD              0x98  // fora da ROM
+#define FLAG_RUSTBORO_NPC_TRADE_COMPLETED    0x99  // fora da ROM
+#define FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED  0x9A  // fora da ROM
+#define FLAG_FORTREE_NPC_TRADE_COMPLETED     0x9B  // fora da ROM
+#define FLAG_BATTLE_FRONTIER_TRADE_DONE      0x9C  // fora da ROM
 #define FLAG_FORCE_MIRAGE_TOWER_VISIBLE      0x9D
 #define FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE   0x9E
-#define FLAG_INTERACTED_WITH_DEVON_EMPLOYEE_GOODS_STOLEN 0x9F
+#define FLAG_INTERACTED_WITH_DEVON_EMPLOYEE_GOODS_STOLEN 0x9F  // fora da ROM
 #define FLAG_COOL_PAINTING_MADE              0xA0
 #define FLAG_BEAUTY_PAINTING_MADE            0xA1
 #define FLAG_CUTE_PAINTING_MADE              0xA2
 #define FLAG_SMART_PAINTING_MADE             0xA3
 #define FLAG_TOUGH_PAINTING_MADE             0xA4
 #define FLAG_RECEIVED_TM_ROCK_TOMB           0xA5
-#define FLAG_RECEIVED_TM_BULK_UP             0xA6
+#define FLAG_RECEIVED_TM_BULK_UP             0xA6  // fora da ROM
 #define FLAG_RECEIVED_TM_SHOCK_WAVE          0xA7
 #define FLAG_RECEIVED_TM_OVERHEAT            0xA8
-#define FLAG_RECEIVED_TM_FACADE              0xA9
+#define FLAG_RECEIVED_TM_FACADE              0xA9  // fora da ROM
 #define FLAG_RECEIVED_TM_AERIAL_ACE          0xAA
-#define FLAG_RECEIVED_TM_CALM_MIND           0xAB
+#define FLAG_RECEIVED_TM_CALM_MIND           0xAB  // livre desde 24/09/2026
 #define FLAG_RECEIVED_TM_WATER_PULSE         0xAC
 #define FLAG_HIDE_SECRET_BASE_TRAINER        0xAD
 #define FLAG_DECORATION_1                    0xAE
@@ -210,8 +230,8 @@
 #define FLAG_RECEIVED_POKENAV                0xBC
 #define FLAG_DELIVERED_STEVEN_LETTER         0xBD
 #define FLAG_DEFEATED_WALLY_MAUVILLE         0xBE
-#define FLAG_DEFEATED_GRUNT_SPACE_CENTER_1F  0xBF
-#define FLAG_RECEIVED_SUN_STONE_MOSSDEEP     0xC0
+#define FLAG_DEFEATED_GRUNT_SPACE_CENTER_1F  0xBF  // fora da ROM
+#define FLAG_RECEIVED_SUN_STONE_MOSSDEEP     0xC0  // fora da ROM
 #define FLAG_HIDE_VICTORYROAD_RIVAL          0xC1
 #define FLAG_RAILWAY_CELLBATTERY             0xC2
 #define FLAG_HIDE_ECRUTEAK_RIVAL             0xC3
@@ -221,111 +241,111 @@
 #define FLAG_RUSTURF_TUNNEL_OPENED           0xC7
 #define FLAG_HIDE_GENESECT                   0xC8
 #define FLAG_CAUGHT_GENESECT                 0xC9
-#define FLAG_RECEIVED_PINK_SCARF             0xCA
-#define FLAG_RECEIVED_GREEN_SCARF            0xCB
-#define FLAG_RECEIVED_YELLOW_SCARF           0xCC
+#define FLAG_RECEIVED_PINK_SCARF             0xCA  // fora da ROM
+#define FLAG_RECEIVED_GREEN_SCARF            0xCB  // fora da ROM
+#define FLAG_RECEIVED_YELLOW_SCARF           0xCC  // fora da ROM
 #define FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER    0xCD
-#define FLAG_ENCOUNTERED_LATIAS_OR_LATIOS    0xCE
+#define FLAG_ENCOUNTERED_LATIAS_OR_LATIOS    0xCE  // fora da ROM
 #define FLAG_MET_ARCHIE_METEOR_FALLS         0xCF
 #define FLAG_GOT_BASEMENT_KEY_FROM_WATTSON   0xD0
 #define FLAG_RAILWAY_THUNDERBOLT             0xD1
-#define FLAG_FAN_CLUB_STRENGTH_SHARED        0xD2 // Set when you rate the strength of another trainer in Lilycove's Trainer Fan Club.
-#define FLAG_DEFEATED_RIVAL_RUSTBORO         0xD3
+#define FLAG_FAN_CLUB_STRENGTH_SHARED        0xD2 // Set when you rate the strength of another trainer in Lilycove's Trainer Fan Club. - fora da ROM
+#define FLAG_DEFEATED_RIVAL_RUSTBORO         0xD3  // fora da ROM
 #define FLAG_RECEIVED_RED_OR_BLUE_ORB        0xD4
-#define FLAG_RECEIVED_PREMIER_BALL_RUSTBORO  0xD5
+#define FLAG_RECEIVED_PREMIER_BALL_RUSTBORO  0xD5  // fora da ROM
 #define FLAG_ENABLE_WALLY_MATCH_CALL         0xD6
 #define FLAG_ENABLE_SCOTT_MATCH_CALL         0xD7
 #define FLAG_ENABLE_MOM_MATCH_CALL           0xD8
 #define FLAG_MET_DIVING_TREASURE_HUNTER      0xD9
-#define FLAG_MET_WAILMER_TRAINER             0xDA
-#define FLAG_EVIL_LEADER_PLEASE_STOP         0xDB
+#define FLAG_MET_WAILMER_TRAINER             0xDA  // fora da ROM
+#define FLAG_EVIL_LEADER_PLEASE_STOP         0xDB  // fora da ROM
 
-#define FLAG_NEVER_SET_0x0DC                 0xDC // This flag is read, but never written to
+#define FLAG_NEVER_SET_0x0DC                 0xDC // This flag is read, but never written to - livre desde 24/09/2026
 
 #define FLAG_RECEIVED_GO_GOGGLES             0xDD
-#define FLAG_WINGULL_SENT_ON_ERRAND          0xDE
-#define FLAG_RECEIVED_MENTAL_HERB            0xDF
+#define FLAG_WINGULL_SENT_ON_ERRAND          0xDE  // fora da ROM
+#define FLAG_RECEIVED_MENTAL_HERB            0xDF  // fora da ROM
 #define FLAG_CAUGHT_HOOPA                    0xE0
 #define FLAG_RECEIVED_20_COINS               0xE1
 #define FLAG_RECEIVED_STARTER_DOLL           0xE2
-#define FLAG_RECEIVED_GOOD_ROD               0xE3
+#define FLAG_RECEIVED_GOOD_ROD               0xE3  // fora da ROM
 #define FLAG_REGI_DOORS_OPENED               0xE4
-#define FLAG_RECEIVED_TM_RETURN              0xE5
+#define FLAG_RECEIVED_TM_RETURN              0xE5  // fora da ROM
 #define FLAG_RECEIVED_TM_SLUDGE_BOMB         0xE6
-#define FLAG_RECEIVED_TM_ROAR                0xE7
-#define FLAG_RECEIVED_TM_GIGA_DRAIN          0xE8
+#define FLAG_RECEIVED_TM_ROAR                0xE7  // livre desde 24/09/2026
+#define FLAG_RECEIVED_TM_GIGA_DRAIN          0xE8  // fora da ROM
 
 #define FLAG_DOWNSING_ORAS                   0xE9
 
-#define FLAG_RECEIVED_TM_REST                0xEA
-#define FLAG_RECEIVED_TM_ATTRACT             0xEB
-#define FLAG_RECEIVED_GLASS_ORNAMENT         0xEC
-#define FLAG_RECEIVED_SILVER_SHIELD          0xED
-#define FLAG_RECEIVED_GOLD_SHIELD            0xEE
-#define FLAG_USED_STORAGE_KEY                0xEF
-#define FLAG_USED_ROOM_1_KEY                 0xF0
-#define FLAG_USED_ROOM_2_KEY                 0xF1
-#define FLAG_USED_ROOM_4_KEY                 0xF2
-#define FLAG_USED_ROOM_6_KEY                 0xF3
+#define FLAG_RECEIVED_TM_REST                0xEA  // fora da ROM
+#define FLAG_RECEIVED_TM_ATTRACT             0xEB  // fora da ROM
+#define FLAG_RECEIVED_GLASS_ORNAMENT         0xEC  // fora da ROM
+#define FLAG_RECEIVED_SILVER_SHIELD          0xED  // fora da ROM
+#define FLAG_RECEIVED_GOLD_SHIELD            0xEE  // fora da ROM
+#define FLAG_USED_STORAGE_KEY                0xEF  // fora da ROM
+#define FLAG_USED_ROOM_1_KEY                 0xF0  // fora da ROM
+#define FLAG_USED_ROOM_2_KEY                 0xF1  // fora da ROM
+#define FLAG_USED_ROOM_4_KEY                 0xF2  // fora da ROM
+#define FLAG_USED_ROOM_6_KEY                 0xF3  // fora da ROM
 #define FLAG_FLOOR4_URN1LOOT                 0xF4
 #define FLAG_HIDE_PYRAMIDOUT_SCIENTIST       0xF5
-#define FLAG_RECEIVED_CHESTO_BERRY_ROUTE_104 0xF6
+#define FLAG_RECEIVED_CHESTO_BERRY_ROUTE_104 0xF6  // fora da ROM
 #define FLAG_DEFEATED_SS_TIDAL_TRAINERS      0xF7
-#define FLAG_RECEIVED_SPELON_BERRY           0xF8
-#define FLAG_RECEIVED_PAMTRE_BERRY           0xF9
-#define FLAG_RECEIVED_WATMEL_BERRY           0xFA
-#define FLAG_RECEIVED_DURIN_BERRY            0xFB
-#define FLAG_RECEIVED_BELUE_BERRY            0xFC
+#define FLAG_RECEIVED_SPELON_BERRY           0xF8  // fora da ROM
+#define FLAG_RECEIVED_PAMTRE_BERRY           0xF9  // fora da ROM
+#define FLAG_RECEIVED_WATMEL_BERRY           0xFA  // fora da ROM
+#define FLAG_RECEIVED_DURIN_BERRY            0xFB  // fora da ROM
+#define FLAG_RECEIVED_BELUE_BERRY            0xFC  // fora da ROM
 #define FLAG_ENABLE_RIVAL_MATCH_CALL         0xFD
 #define FLAG_GARBAGEFLAG4               0xFE
 #define FLAG_LATIOS_OR_LATIAS_ROAMING        0xFF
 #define FLAG_FLOOR4_URN2LOOT                 0x100
-#define FLAG_RECEIVED_OLD_ROD                0x101
-#define FLAG_RECEIVED_COIN_CASE              0x102
-#define FLAG_RETURNED_RED_OR_BLUE_ORB        0x103
+#define FLAG_RECEIVED_OLD_ROD                0x101  // fora da ROM
+#define FLAG_RECEIVED_COIN_CASE              0x102  // fora da ROM
+#define FLAG_RETURNED_RED_OR_BLUE_ORB        0x103  // fora da ROM
 #define FLAG_RECEIVED_TM_SNATCH              0x104
-#define FLAG_RECEIVED_TM_DIG                 0x105
-#define FLAG_RECEIVED_TM_BULLET_SEED         0x106
-#define FLAG_ENTERED_ELITE_FOUR              0x107
-#define FLAG_RECEIVED_TM_HIDDEN_POWER        0x108
+#define FLAG_RECEIVED_TM_DIG                 0x105  // fora da ROM
+#define FLAG_RECEIVED_TM_BULLET_SEED         0x106  // fora da ROM
+#define FLAG_ENTERED_ELITE_FOUR              0x107  // fora da ROM
+#define FLAG_RECEIVED_TM_HIDDEN_POWER        0x108  // fora da ROM
 #define FLAG_HIDE_BLAINE_OLIVINEPORT         0x109
-#define FLAG_RECEIVED_LAVARIDGE_EGG          0x10A
+#define FLAG_RECEIVED_LAVARIDGE_EGG          0x10A  // livre desde 24/09/2026
 #define FLAG_RECEIVED_REVIVED_FOSSIL_MON     0x10B
 #define FLAG_SECRET_BASE_REGISTRY_ENABLED    0x10C
 #define FLAG_HIDE_BM_URSALUNA               0x10D
 #define FLAG_CONTEST_SKETCH_CREATED          0x10E  // Set but never read
-#define FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE   0x10F
+#define FLAG_EVIL_TEAM_ESCAPED_STERN_SPOKE   0x10F  // fora da ROM
 #define FLAG_RECEIVED_EXP_SHARE              0x110
 #define FLAG_POKERUS_EXPLAINED               0x111
 #define FLAG_RECEIVED_RUNNING_SHOES          0x112
-#define FLAG_RECEIVED_QUICK_CLAW             0x113
-#define FLAG_RECEIVED_KINGS_ROCK             0x114
-#define FLAG_RECEIVED_MACHO_BRACE            0x115
-#define FLAG_RECEIVED_SOOTHE_BELL            0x116
+#define FLAG_RECEIVED_QUICK_CLAW             0x113  // fora da ROM
+#define FLAG_RECEIVED_KINGS_ROCK             0x114  // fora da ROM
+#define FLAG_RECEIVED_MACHO_BRACE            0x115  // fora da ROM
+#define FLAG_RECEIVED_SOOTHE_BELL            0x116  // fora da ROM
 #define FLAG_EGG_MOVES_UNLOCKED              0x117
 #define FLAG_TUTOR_MOVES_UNLOCKED            0x118
 #define FLAG_ENABLE_PROF_BIRCH_MATCH_CALL    0x119
-#define FLAG_RECEIVED_CLEANSE_TAG            0x11A
-#define FLAG_HIDE_BLAINE                     0x11B
+#define FLAG_RECEIVED_CLEANSE_TAG            0x11A  // fora da ROM
+#define FLAG_HIDE_BLAINE                     0x11B  // livre desde 24/09/2026
 #define FLAG_DECLINED_WALLY_BATTLE_MAUVILLE  0x11C
 #define FLAG_RECEIVED_DEVON_SCOPE            0x11D
-#define FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE  0x11E
+#define FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE  0x11E  // fora da ROM
 #define FLAG_MET_DEVON_EMPLOYEE              0x11F
-#define FLAG_MET_RIVAL_RUSTBORO              0x120
+#define FLAG_MET_RIVAL_RUSTBORO              0x120  // fora da ROM
 #define FLAG_ITEM_CATCHING_CHARM             0x121
 #define FLAG_CANSAIL_FARAWAYISLAND           0x122
 #define FLAG_RECEIVED_SS_TICKET              0x123
 #define FLAG_MET_RIVAL_LILYCOVE              0x124
 #define FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE 0x125
-#define FLAG_EXCHANGED_SCANNER               0x126
+#define FLAG_EXCHANGED_SCANNER               0x126  // fora da ROM
 #define FLAG_VAJRAPYRAMID3_RELICGOLD2        0x127
 #define FLAG_PETALBURG_MART_EXPANDED_ITEMS   0x128
-#define FLAG_RECEIVED_MIRACLE_SEED           0x129
-#define FLAG_RECEIVED_BELDUM                 0x12A
-#define FLAG_RECEIVED_FANCLUB_TM_THIS_WEEK   0x12B
-#define FLAG_MET_FANCLUB_YOUNGER_BROTHER     0x12C
-#define FLAG_RIVAL_LEFT_FOR_ROUTE103         0x12D
-#define FLAG_OMIT_DIVE_FROM_STEVEN_LETTER    0x12E
+#define FLAG_RECEIVED_MIRACLE_SEED           0x129  // fora da ROM
+#define FLAG_RECEIVED_BELDUM                 0x12A  // fora da ROM
+#define FLAG_RECEIVED_FANCLUB_TM_THIS_WEEK   0x12B  // fora da ROM
+#define FLAG_MET_FANCLUB_YOUNGER_BROTHER     0x12C  // fora da ROM
+#define FLAG_RIVAL_LEFT_FOR_ROUTE103         0x12D  // fora da ROM
+#define FLAG_OMIT_DIVE_FROM_STEVEN_LETTER    0x12E  // fora da ROM
 #define FLAG_HAS_MATCH_CALL                  0x12F
 #define FLAG_ADDED_MATCH_CALL_TO_POKENAV     0x130
 #define FLAG_REGISTERED_STEVEN_POKENAV       0x131
@@ -333,10 +353,10 @@
 #define FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN 0x133 // Set after you follow Steven to the entrance of the Cave of Origin.
 #define FLAG_MET_ARCHIE_SOOTOPOLIS           0x134
 #define FLAG_MET_MAXIE_SOOTOPOLIS            0x135
-#define FLAG_MET_SCOTT_RUSTBORO              0x136
+#define FLAG_MET_SCOTT_RUSTBORO              0x136  // fora da ROM
 #define FLAG_WALLACE_GOES_TO_SKY_PILLAR      0x137 // Set after speaking to Wallace within the Cave of Origin.
 #define FLAG_RECEIVED_HM_WATERFALL           0x138
-#define FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS    0x139
+#define FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS    0x139  // fora da ROM
 #define FLAG_RECEIVED_AURORA_TICKET          0x13A
 #define FLAG_RECEIVED_MYSTIC_TICKET          0x13B
 #define FLAG_RECEIVED_OLD_SEA_MAP            0x13C
@@ -362,14 +382,14 @@
 #define FLAG_MIRAGE_TOWER_VISIBLE            0x14E
 #define FLAG_TM_GRASS_KNOT                   0x14F
 #define FLAG_HIDE_GRASSTITE                  0x150
-#define FLAG_RECEIVED_POWDER_JAR             0x151
+#define FLAG_RECEIVED_POWDER_JAR             0x151  // fora da ROM
 
 #define FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER 0x152
 
-#define FLAG_MET_BATTLE_FRONTIER_BREEDER     0x153
+#define FLAG_MET_BATTLE_FRONTIER_BREEDER     0x153  // fora da ROM
 #define FLAG_MET_BATTLE_FRONTIER_MANIAC      0x154
 #define FLAG_ENTERED_CONTEST                 0x155
-#define FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN  0x156
+#define FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN  0x156  // fora da ROM
 #define FLAG_MET_BATTLE_FRONTIER_GAMBLER     0x157
 #define FLAG_ENABLE_MR_STONE_POKENAV         0x158
 #define FLAG_NURSE_MENTIONS_GOLD_CARD        0x159
@@ -384,6 +404,11 @@
 
 // Reclaimed former Match Call registration flags. These raw positions are
 // intentionally stable so future features can reuse them without collisions.
+// ATENCAO: estes 16 "UNUSED" caem dentro do bloco do Match Call (0x15C-0x198), que
+// src/pokenav_match_call_data.c:1173 escreve por aritmetica
+// (FlagSet(TRAINER_REGISTERED_FLAGS_START + index)). O nome diz unused, a posicao
+// nao esta livre: nao reaproveite nenhuma. Flag nova vai em CUSTOM_FLAGS (0x1047+).
+// Auditoria secao 8.1.
 #define FLAG_UNUSED_165                      0x165 // Former FLAG_REGISTERED_VALERIE
 #define FLAG_UNUSED_167                      0x167 // Former FLAG_REGISTERED_THALIA
 #define FLAG_UNUSED_169                      0x169 // Former FLAG_REGISTERED_WINSTON
@@ -472,40 +497,40 @@
 #define FLAG_SHOWN_EON_TICKET                0x1AE
 #define FLAG_SHOWN_AURORA_TICKET             0x1AF
 #define FLAG_SHOWN_OLD_SEA_MAP               0x1B0
-#define FLAG_MOVE_TUTOR_TAUGHT_SWAGGER       0x1B1
-#define FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT       0x1B2
-#define FLAG_MOVE_TUTOR_TAUGHT_FURY_CUTTER   0x1B3
-#define FLAG_MOVE_TUTOR_TAUGHT_MIMIC         0x1B4
-#define FLAG_MOVE_TUTOR_TAUGHT_METRONOME     0x1B5
-#define FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK    0x1B6
-#define FLAG_MOVE_TUTOR_TAUGHT_SUBSTITUTE    0x1B7
-#define FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH  0x1B8
-#define FLAG_MOVE_TUTOR_TAUGHT_DOUBLE_EDGE   0x1B9
-#define FLAG_MOVE_TUTOR_TAUGHT_EXPLOSION     0x1BA
-#define FLAG_DEFEATED_REGIROCK               0x1BB
+#define FLAG_MOVE_TUTOR_TAUGHT_SWAGGER       0x1B1  // livre desde 24/09/2026
+#define FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT       0x1B2  // livre desde 24/09/2026
+#define FLAG_MOVE_TUTOR_TAUGHT_FURY_CUTTER   0x1B3  // livre desde 24/09/2026
+#define FLAG_MOVE_TUTOR_TAUGHT_MIMIC         0x1B4  // livre desde 24/09/2026
+#define FLAG_MOVE_TUTOR_TAUGHT_METRONOME     0x1B5  // livre desde 24/09/2026
+#define FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK    0x1B6  // livre desde 24/09/2026
+#define FLAG_MOVE_TUTOR_TAUGHT_SUBSTITUTE    0x1B7  // livre desde 24/09/2026
+#define FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH  0x1B8  // livre desde 24/09/2026
+#define FLAG_MOVE_TUTOR_TAUGHT_DOUBLE_EDGE   0x1B9  // livre desde 24/09/2026
+#define FLAG_MOVE_TUTOR_TAUGHT_EXPLOSION     0x1BA  // livre desde 24/09/2026
+#define FLAG_DEFEATED_REGIROCK               0x1BB  // fora da ROM
 #define FLAG_DEFEATED_REGICE                 0x1BC
-#define FLAG_DEFEATED_REGISTEEL              0x1BD
+#define FLAG_DEFEATED_REGISTEEL              0x1BD  // fora da ROM
 #define FLAG_DEFEATED_KYOGRE                 0x1BE
 #define FLAG_DEFEATED_GROUDON                0x1BF
-#define FLAG_DEFEATED_RAYQUAZA               0x1C0
-#define FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE 0x1C1
-#define FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE 0x1C2
-#define FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE 0x1C3
-#define FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT 0x1C4
-#define FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT 0x1C5
+#define FLAG_DEFEATED_RAYQUAZA               0x1C0  // fora da ROM
+#define FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE 0x1C1  // fora da ROM
+#define FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE 0x1C2  // fora da ROM
+#define FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE 0x1C3  // fora da ROM
+#define FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT 0x1C4  // fora da ROM
+#define FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT 0x1C5  // fora da ROM
 #define FLAG_DEFEATED_SUDOWOODO              0x1C6
 #define FLAG_DEFEATED_MEW                    0x1C7 //HnS
-#define FLAG_DEFEATED_LATIAS_OR_LATIOS       0x1C8
-#define FLAG_CAUGHT_LATIAS_OR_LATIOS         0x1C9
+#define FLAG_DEFEATED_LATIAS_OR_LATIOS       0x1C8  // fora da ROM
+#define FLAG_CAUGHT_LATIAS_OR_LATIOS         0x1C9  // fora da ROM
 #define FLAG_CAUGHT_MEW                      0x1CA
-#define FLAG_MET_SCOTT_AFTER_OBTAINING_STONE_BADGE 0x1CB
-#define FLAG_MET_SCOTT_IN_VERDANTURF         0x1CC
-#define FLAG_MET_SCOTT_IN_FALLARBOR          0x1CD
+#define FLAG_MET_SCOTT_AFTER_OBTAINING_STONE_BADGE 0x1CB  // fora da ROM
+#define FLAG_MET_SCOTT_IN_VERDANTURF         0x1CC  // fora da ROM
+#define FLAG_MET_SCOTT_IN_FALLARBOR          0x1CD  // fora da ROM
 #define FLAG_MET_SCOTT_IN_LILYCOVE           0x1CE
-#define FLAG_MET_SCOTT_IN_EVERGRANDE         0x1CF
+#define FLAG_MET_SCOTT_IN_EVERGRANDE         0x1CF  // fora da ROM
 #define FLAG_MET_SCOTT_ON_SS_TIDAL           0x1D0
-#define FLAG_SCOTT_GIVES_BATTLE_POINTS       0x1D1
-#define FLAG_COLLECTED_ALL_GOLD_SYMBOLS      0x1D2
+#define FLAG_SCOTT_GIVES_BATTLE_POINTS       0x1D1  // fora da ROM
+#define FLAG_COLLECTED_ALL_GOLD_SYMBOLS      0x1D2  // fora da ROM
 #define FLAG_ENABLE_ROXANNE_MATCH_CALL       0x1D3
 #define FLAG_ENABLE_BRAWLY_MATCH_CALL        0x1D4
 #define FLAG_ENABLE_WATTSON_MATCH_CALL       0x1D5
@@ -514,14 +539,14 @@
 #define FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL 0x1D8
 #define FLAG_ENABLE_JUAN_MATCH_CALL          0x1D9
 
-#define FLAG_WT_ENABLED                      0x1DA
+#define FLAG_WT_ENABLED                      0x1DA  // livre desde 24/09/2026
 
 #define FLAG_SHOWN_MYSTIC_TICKET             0x1DB
 #define FLAG_DEFEATED_HO_OH                  0x1DC
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
-#define FLAG_INFINITE_STUFF                  0x1DE
-#define FLAG_INFINITE_STUFF_GIRL             0x1DF
+#define FLAG_INFINITE_STUFF                  0x1DE  // livre desde 24/09/2026
+#define FLAG_INFINITE_STUFF_GIRL             0x1DF  // livre desde 24/09/2026
 #define FLAG_KITAKAMIBORDER_MAX_ETHER        0x1E0
 #define FLAG_KITAKAMIBORDER_PROTBANDS        0x1E1
 #define FLAG_TM_WILD_CHARGE                  0x1E2
@@ -582,8 +607,8 @@
 #define FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_2_KEY             (FLAG_HIDDEN_ITEMS_START + 0x20)
 #define FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_4_KEY             (FLAG_HIDDEN_ITEMS_START + 0x21)
 #define FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_6_KEY             (FLAG_HIDDEN_ITEMS_START + 0x22)
-#define FLAG_HIDDEN_ITEM_SS_TIDAL_LOWER_DECK_LEFTOVERS       (FLAG_HIDDEN_ITEMS_START + 0x23)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_124_CALCIUM              (FLAG_HIDDEN_ITEMS_START + 0x24)
+#define FLAG_HIDDEN_ITEM_SS_TIDAL_LOWER_DECK_LEFTOVERS       (FLAG_HIDDEN_ITEMS_START + 0x23)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_UNDERWATER_124_CALCIUM              (FLAG_HIDDEN_ITEMS_START + 0x24)  // livre desde 24/09/2026
 #define FLAG_HIDDEN_ITEM_ROUTE46_RAREBONE                    (FLAG_HIDDEN_ITEMS_START + 0x25)
 #define FLAG_HIDDEN_ITEM_ROUTE47_PP_UP                       (FLAG_HIDDEN_ITEMS_START + 0x26)
 #define FLAG_HIDDEN_ITEM_ROUTE47_MAX_REPEL                   (FLAG_HIDDEN_ITEMS_START + 0x27)
@@ -606,64 +631,64 @@
 #define FLAG_HIDDEN_ITEM_ROUTE26_RARE_CANDY                  (FLAG_HIDDEN_ITEMS_START + 0x38)
 #define FLAG_HIDDEN_ITEM_ROUTE26_ULTRA_BALL                  (FLAG_HIDDEN_ITEMS_START + 0x39)
 #define FLAG_HIDDEN_ITEM_ROUTE50_BIG_NUGGET                  (FLAG_HIDDEN_ITEMS_START + 0x3A)
-#define FLAG_HIDDEN_ITEM_PETALBURG_WOODS_TINY_MUSHROOM_1     (FLAG_HIDDEN_ITEMS_START + 0x3B)
-#define FLAG_HIDDEN_ITEM_PETALBURG_WOODS_TINY_MUSHROOM_2     (FLAG_HIDDEN_ITEMS_START + 0x3C)
-#define FLAG_HIDDEN_ITEM_PETALBURG_WOODS_POKE_BALL           (FLAG_HIDDEN_ITEMS_START + 0x3D)
-#define FLAG_HIDDEN_ITEM_ROUTE_104_POKE_BALL                 (FLAG_HIDDEN_ITEMS_START + 0x3E)
-#define FLAG_HIDDEN_ITEM_ROUTE_106_POKE_BALL                 (FLAG_HIDDEN_ITEMS_START + 0x3F)
-#define FLAG_HIDDEN_ITEM_ROUTE_109_ETHER                     (FLAG_HIDDEN_ITEMS_START + 0x40)
-#define FLAG_HIDDEN_ITEM_ROUTE_110_POKE_BALL                 (FLAG_HIDDEN_ITEMS_START + 0x41)
-#define FLAG_HIDDEN_ITEM_ROUTE_118_HEART_SCALE               (FLAG_HIDDEN_ITEMS_START + 0x42)
+#define FLAG_HIDDEN_ITEM_PETALBURG_WOODS_TINY_MUSHROOM_1     (FLAG_HIDDEN_ITEMS_START + 0x3B)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_PETALBURG_WOODS_TINY_MUSHROOM_2     (FLAG_HIDDEN_ITEMS_START + 0x3C)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_PETALBURG_WOODS_POKE_BALL           (FLAG_HIDDEN_ITEMS_START + 0x3D)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_104_POKE_BALL                 (FLAG_HIDDEN_ITEMS_START + 0x3E)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_106_POKE_BALL                 (FLAG_HIDDEN_ITEMS_START + 0x3F)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_109_ETHER                     (FLAG_HIDDEN_ITEMS_START + 0x40)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_110_POKE_BALL                 (FLAG_HIDDEN_ITEMS_START + 0x41)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_118_HEART_SCALE               (FLAG_HIDDEN_ITEMS_START + 0x42)  // livre desde 24/09/2026
 #define FLAG_HIDDEN_ITEM_VAJRA_EAST_PP_MAX                   (FLAG_HIDDEN_ITEMS_START + 0x43)
 #define FLAG_HIDDEN_ITEM_VAJRA_EAST_STARPIECE                (FLAG_HIDDEN_ITEMS_START + 0x44)
 #define FLAG_HIDDEN_ITEM_VAJRA_EAST_BEAST_BALL               (FLAG_HIDDEN_ITEMS_START + 0x45)
-#define FLAG_HIDDEN_ITEM_ROUTE_120_ZINC                      (FLAG_HIDDEN_ITEMS_START + 0x46)
-#define FLAG_HIDDEN_ITEM_ROUTE_120_RARE_CANDY_1              (FLAG_HIDDEN_ITEMS_START + 0x47)
-#define FLAG_HIDDEN_ITEM_ROUTE_117_REPEL                     (FLAG_HIDDEN_ITEMS_START + 0x48)
-#define FLAG_HIDDEN_ITEM_ROUTE_121_FULL_HEAL                 (FLAG_HIDDEN_ITEMS_START + 0x49)
-#define FLAG_HIDDEN_ITEM_ROUTE_123_HYPER_POTION              (FLAG_HIDDEN_ITEMS_START + 0x4A)
-#define FLAG_HIDDEN_ITEM_LILYCOVE_CITY_POKE_BALL             (FLAG_HIDDEN_ITEMS_START + 0x4B)
-#define FLAG_HIDDEN_ITEM_JAGGED_PASS_GREAT_BALL              (FLAG_HIDDEN_ITEMS_START + 0x4C)
-#define FLAG_HIDDEN_ITEM_JAGGED_PASS_FULL_HEAL               (FLAG_HIDDEN_ITEMS_START + 0x4D)
-#define FLAG_HIDDEN_ITEM_MT_PYRE_EXTERIOR_MAX_ETHER          (FLAG_HIDDEN_ITEMS_START + 0x4E)
-#define FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_ZINC                 (FLAG_HIDDEN_ITEMS_START + 0x4F)
-#define FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_RARE_CANDY           (FLAG_HIDDEN_ITEMS_START + 0x50)
-#define FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_ULTRA_BALL          (FLAG_HIDDEN_ITEMS_START + 0x51)
-#define FLAG_HIDDEN_ITEM_VICTORY_ROAD_B2F_ELIXIR             (FLAG_HIDDEN_ITEMS_START + 0x52)
-#define FLAG_HIDDEN_ITEM_VICTORY_ROAD_B2F_MAX_REPEL          (FLAG_HIDDEN_ITEMS_START + 0x53)
-#define FLAG_HIDDEN_ITEM_ROUTE_120_REVIVE                    (FLAG_HIDDEN_ITEMS_START + 0x54)
-#define FLAG_HIDDEN_ITEM_ROUTE_104_ANTIDOTE                  (FLAG_HIDDEN_ITEMS_START + 0x55)
-#define FLAG_HIDDEN_ITEM_ROUTE_108_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x56)
-#define FLAG_HIDDEN_ITEM_ROUTE_119_MAX_ETHER                 (FLAG_HIDDEN_ITEMS_START + 0x57)
-#define FLAG_HIDDEN_ITEM_ROUTE_104_HEART_SCALE               (FLAG_HIDDEN_ITEMS_START + 0x58)
-#define FLAG_HIDDEN_ITEM_ROUTE_105_HEART_SCALE               (FLAG_HIDDEN_ITEMS_START + 0x59)
-#define FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_2             (FLAG_HIDDEN_ITEMS_START + 0x5A)
-#define FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_3             (FLAG_HIDDEN_ITEMS_START + 0x5B)
-#define FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_1             (FLAG_HIDDEN_ITEMS_START + 0x5C)
-#define FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_2             (FLAG_HIDDEN_ITEMS_START + 0x5D)
-#define FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_3             (FLAG_HIDDEN_ITEMS_START + 0x5E)
-#define FLAG_HIDDEN_ITEM_PETALBURG_CITY_RARE_CANDY           (FLAG_HIDDEN_ITEMS_START + 0x5F)
+#define FLAG_HIDDEN_ITEM_ROUTE_120_ZINC                      (FLAG_HIDDEN_ITEMS_START + 0x46)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_120_RARE_CANDY_1              (FLAG_HIDDEN_ITEMS_START + 0x47)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_117_REPEL                     (FLAG_HIDDEN_ITEMS_START + 0x48)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_121_FULL_HEAL                 (FLAG_HIDDEN_ITEMS_START + 0x49)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_123_HYPER_POTION              (FLAG_HIDDEN_ITEMS_START + 0x4A)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_LILYCOVE_CITY_POKE_BALL             (FLAG_HIDDEN_ITEMS_START + 0x4B)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_JAGGED_PASS_GREAT_BALL              (FLAG_HIDDEN_ITEMS_START + 0x4C)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_JAGGED_PASS_FULL_HEAL               (FLAG_HIDDEN_ITEMS_START + 0x4D)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_MT_PYRE_EXTERIOR_MAX_ETHER          (FLAG_HIDDEN_ITEMS_START + 0x4E)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_ZINC                 (FLAG_HIDDEN_ITEMS_START + 0x4F)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_RARE_CANDY           (FLAG_HIDDEN_ITEMS_START + 0x50)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_ULTRA_BALL          (FLAG_HIDDEN_ITEMS_START + 0x51)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_VICTORY_ROAD_B2F_ELIXIR             (FLAG_HIDDEN_ITEMS_START + 0x52)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_VICTORY_ROAD_B2F_MAX_REPEL          (FLAG_HIDDEN_ITEMS_START + 0x53)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_120_REVIVE                    (FLAG_HIDDEN_ITEMS_START + 0x54)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_104_ANTIDOTE                  (FLAG_HIDDEN_ITEMS_START + 0x55)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_108_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x56)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_119_MAX_ETHER                 (FLAG_HIDDEN_ITEMS_START + 0x57)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_104_HEART_SCALE               (FLAG_HIDDEN_ITEMS_START + 0x58)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_105_HEART_SCALE               (FLAG_HIDDEN_ITEMS_START + 0x59)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_2             (FLAG_HIDDEN_ITEMS_START + 0x5A)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_3             (FLAG_HIDDEN_ITEMS_START + 0x5B)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_1             (FLAG_HIDDEN_ITEMS_START + 0x5C)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_2             (FLAG_HIDDEN_ITEMS_START + 0x5D)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_3             (FLAG_HIDDEN_ITEMS_START + 0x5E)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_PETALBURG_CITY_RARE_CANDY           (FLAG_HIDDEN_ITEMS_START + 0x5F)  // livre desde 24/09/2026
 #define FLAG_HIDDEN_ITEM_ROUTE_116_BLACK_GLASSES             (FLAG_HIDDEN_ITEMS_START + 0x60)
-#define FLAG_HIDDEN_ITEM_ROUTE_115_HEART_SCALE               (FLAG_HIDDEN_ITEMS_START + 0x61)
-#define FLAG_HIDDEN_ITEM_ROUTE_113_NUGGET                    (FLAG_HIDDEN_ITEMS_START + 0x62)
-#define FLAG_HIDDEN_ITEM_ROUTE_123_PP_UP                     (FLAG_HIDDEN_ITEMS_START + 0x63)
-#define FLAG_HIDDEN_ITEM_ROUTE_121_MAX_REVIVE                (FLAG_HIDDEN_ITEMS_START + 0x64)
-#define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_CALCIUM            (FLAG_HIDDEN_ITEMS_START + 0x65)
-#define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_ZINC               (FLAG_HIDDEN_ITEMS_START + 0x66)
-#define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_PROTEIN            (FLAG_HIDDEN_ITEMS_START + 0x67)
-#define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_IRON               (FLAG_HIDDEN_ITEMS_START + 0x68)
-#define FLAG_HIDDEN_ITEM_SAFARI_ZONE_SOUTH_EAST_FULL_RESTORE (FLAG_HIDDEN_ITEMS_START + 0x69)
-#define FLAG_HIDDEN_ITEM_SAFARI_ZONE_NORTH_EAST_RARE_CANDY   (FLAG_HIDDEN_ITEMS_START + 0x6A)
-#define FLAG_HIDDEN_ITEM_SAFARI_ZONE_NORTH_EAST_ZINC         (FLAG_HIDDEN_ITEMS_START + 0x6B)
-#define FLAG_HIDDEN_ITEM_SAFARI_ZONE_SOUTH_EAST_PP_UP        (FLAG_HIDDEN_ITEMS_START + 0x6C)
-#define FLAG_HIDDEN_ITEM_NAVEL_ROCK_TOP_SACRED_ASH           (FLAG_HIDDEN_ITEMS_START + 0x6D)
-#define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
-#define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
+#define FLAG_HIDDEN_ITEM_ROUTE_115_HEART_SCALE               (FLAG_HIDDEN_ITEMS_START + 0x61)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_113_NUGGET                    (FLAG_HIDDEN_ITEMS_START + 0x62)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_123_PP_UP                     (FLAG_HIDDEN_ITEMS_START + 0x63)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_121_MAX_REVIVE                (FLAG_HIDDEN_ITEMS_START + 0x64)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_CALCIUM            (FLAG_HIDDEN_ITEMS_START + 0x65)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_ZINC               (FLAG_HIDDEN_ITEMS_START + 0x66)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_PROTEIN            (FLAG_HIDDEN_ITEMS_START + 0x67)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_IRON               (FLAG_HIDDEN_ITEMS_START + 0x68)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_SAFARI_ZONE_SOUTH_EAST_FULL_RESTORE (FLAG_HIDDEN_ITEMS_START + 0x69)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_SAFARI_ZONE_NORTH_EAST_RARE_CANDY   (FLAG_HIDDEN_ITEMS_START + 0x6A)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_SAFARI_ZONE_NORTH_EAST_ZINC         (FLAG_HIDDEN_ITEMS_START + 0x6B)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_SAFARI_ZONE_SOUTH_EAST_PP_UP        (FLAG_HIDDEN_ITEMS_START + 0x6C)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_NAVEL_ROCK_TOP_SACRED_ASH           (FLAG_HIDDEN_ITEMS_START + 0x6D)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)  // livre desde 24/09/2026
+#define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)  // livre desde 24/09/2026
 
-#define FLAG_MINTS_CLERK   0x264
-#define FLAG_EXTRA_LEGENDARIES  0x265
-#define FLAG_OLD_MAN_AND_DUSCLOPS  0x266
-#define FLAG_CERULEAN_CAVE_LUCKY_EGG  0x267
+#define FLAG_MINTS_CLERK   0x264  // livre desde 24/09/2026
+#define FLAG_EXTRA_LEGENDARIES  0x265  // livre desde 24/09/2026
+#define FLAG_OLD_MAN_AND_DUSCLOPS  0x266  // livre desde 24/09/2026
+#define FLAG_CERULEAN_CAVE_LUCKY_EGG  0x267  // livre desde 24/09/2026
 #define FLAG_MET_FRONTIER_ELEMENTAL_MOVE_TUTOR  0x268 //HnSFLAGS SPILLOVER
 #define FLAG_HIDE_WHIRL_ISLANDS_KIMONO_GIRLS  0x269 // Set after compelted legendary event
 #define FLAG_HIDE_TIN_TOWER_KIMONO_GIRLS  0x26A // Set after completing legendary event
@@ -714,7 +739,7 @@
 #define FLAG_WONDERTRADE1  0x297 // Unused Flag
 #define FLAG_WONDERTRADE2  0x298 // Unused Flag
 #define FLAG_WONDERTRADE3  0x299 // Unused Flag
-#define FLAG_VISITED_BATTLE_FRONTIER  0x29A // Unused Flag
+#define FLAG_VISITED_BATTLE_FRONTIER  0x29A // Unused Flag - fora da ROM
 #define FLAG_FRONTIER_SECOND_CLERK  0x29B // Unused Flag
 #define FLAG_ALLOW_SOUTH_JOHTO_PASS  0x29C
 #define FLAG_SYS_BUG_CONTEST_MODE  0x29D
@@ -729,9 +754,7 @@
 #define FLAG_DN_HIDDEN_MODE  0x2A6
 #define FLAG_GOLDENRODSHORE_EXPERT  0x2A7
 #define FLAG_R39_NORTH_TRADE  0x2A8
-#define FLAG_R39_NORTH_ROCKY_HELMET  0x2A9 // Era 0x2A92 (digito a mais): 10898 fica fora de
-                                           // flags[] e escrevia no byte baixo de VAR 0x4154.
-                                           // Corrigido 25/09/2026 (auditoria secao 7.1)
+#define FLAG_R39_NORTH_ROCKY_HELMET  0x2A9 // Era 0x2A92 (digito a mais), fora de flags[]: escrevia no byte baixo de VAR 0x4154. Corrigido 25/09/2026, auditoria 7.1
 #define FLAG_COLLISION  0x2AA // Debug
 #define FLAG_HIDE_RADIOTOWER_OAK    0x2AB
 #define FLAG_ICEPATH_DEPTHS_FROSLASSITE  0x2AC
@@ -743,7 +766,7 @@
 #define FLAG_ABILITY_PATCH_R27  0x2B2
 #define FLAG_HIDE_MANAPHY  0x2B3
 #define FLAG_HIDE_SHAYMIN  0x2B4
-#define FLAG_HIDE_VICITNI  0x2B5
+#define FLAG_HIDE_VICITNI  0x2B5  // livre desde 24/09/2026
 #define FLAG_HIDE_CHI_YU  0x2B6
 #define FLAG_HIDE_MELOETTA  0x2B7
 #define FLAG_HIDE_DIANCIE  0x2B8
@@ -752,7 +775,7 @@
 #define FLAG_HIDE_FEZANDIPITI  0x2BB
 
 // Event Flags
-#define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
+#define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC  // livre desde 24/09/2026
 #define FLAG_HIDE_APPRENTICE                                        0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
@@ -769,17 +792,17 @@
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_4               0x2CA
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_5               0x2CB
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_6               0x2CC
-#define FLAG_HIDE_SAFARI_ZONE_SOUTH_CONSTRUCTION_WORKERS            0x2CD
+#define FLAG_HIDE_SAFARI_ZONE_SOUTH_CONSTRUCTION_WORKERS            0x2CD  // fora da ROM
 #define FLAG_HIDE_MEW                                               0x2CE
-#define FLAG_HIDE_ROUTE_104_RIVAL                                   0x2CF
-#define FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE                  0x2D0
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH                  0x2D1
+#define FLAG_HIDE_ROUTE_104_RIVAL                                   0x2CF  // fora da ROM
+#define FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE                  0x2D0  // livre desde 24/09/2026
+#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH                  0x2D1  // livre desde 24/09/2026
 #define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM          0x2D2
-#define FLAG_HIDE_ROUTE_103_RIVAL                                   0x2D3
-#define FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE                    0x2D4
-#define FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT                        0x2D5
-#define FLAG_HIDE_PETALBURG_CITY_WALLY                              0x2D6
-#define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY   0x2D7
+#define FLAG_HIDE_ROUTE_103_RIVAL                                   0x2D3  // livre desde 24/09/2026
+#define FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE                    0x2D4  // fora da ROM
+#define FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT                        0x2D5  // fora da ROM
+#define FLAG_HIDE_PETALBURG_CITY_WALLY                              0x2D6  // fora da ROM
+#define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY   0x2D7  // fora da ROM
 #define FLAG_HIDE_KITAKAMI_OGERPON                                  0x2D8
 
 #define FLAG_HIDE_DARKTITE                                          0x2D9
@@ -802,7 +825,7 @@
 #define FLAG_HIDE_CELEBI                                            0x2E9
 #define FLAG_HIDE_ILEX_FOREST_KURT                                  0x2EA
 #define FLAG_MOVE_TUTOR_TAUGHT_HEADBUTT                             0x2EB
-#define FLAG_GOLDENROD_CITY_AIDE_VISITED                            0x2EC
+#define FLAG_GOLDENROD_CITY_AIDE_VISITED                            0x2EC  // livre desde 24/09/2026
 #define FLAG_SHOWN_ELM_COSMOG                                       0x2ED // Formerly FLAG_SHOWN_ELM_TOGEPI; ID preserved for existing saves
 #define FLAG_HIDE_AZALEA_ARIADOS_LEFT                               0x2EE
 #define FLAG_HIDE_AZALEA_ARIADOS_MID                                0x2EF
@@ -811,16 +834,16 @@
 #define FLAG_GOT_FRUSTRATION                                        0x2F2
 #define FLAG_HIDE_GOLDENROD_BILL                                    0x2F3
 #define FLAG_GOT_BILL_GIFTMON                                       0x2F4
-#define FLAG_FIXED_TRAIN                                            0x2F5//unused
+#define FLAG_FIXED_TRAIN                                            0x2F5//unused - livre desde 24/09/2026
 #define FLAG_GOLDENROD_MACHOKE_1                                    0x2F6
 #define FLAG_GOLDENROD_MACHOKE_2                                    0x2F7
 #define FLAG_GOLDENROD_MACHOKE_3                                    0x2F8
 #define FLAG_GOLDENROD_NPC_TRADE_COMPLETED                          0x2F9 // Honedge trade
 #define FLAG_GOT_SKILL_SWAP                                         0x2FA
 #define FLAG_HIDE_DEOXYS                                            0x2FB 
-#define FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE                      0x2FC
+#define FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE                      0x2FC  // fora da ROM
 #define FLAG_GOT_MARY_BRIGHT_POWDER                                 0x2FD
-#define FLAG_HIDE_BUG_CONTEST_BUGS                                  0x2FE
+#define FLAG_HIDE_BUG_CONTEST_BUGS                                  0x2FE  // livre desde 24/09/2026
 #define FLAG_HIDE_BUG_CONTEST_ATTENDANT_SIDE                        0x2FF
 #define FLAG_GOT_QUICK_CLAW                                         0x300
 #define FLAG_GOT_MAGNET                                             0x301
@@ -921,7 +944,7 @@
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_1           0x360
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_2           0x361
 #define FLAG_ROUTE42_PSYCHITE                                       0x362
-#define FLAG_HIDE_LAKEOFRAGE_POLICE                                 0x363 
+#define FLAG_HIDE_LAKEOFRAGE_POLICE                                 0x363  // livre desde 24/09/2026
 #define FLAG_HIDE_MOMS_FRIEND                                       0x364 //HnS NormalFlags Block 1
 #define FLAG_MOM_VISITED                                            0x365 //mom gives good luck speech
 #define FLAG_HIDE_SILVER_NEWBARKTOWN                                0x366 //for beginning
@@ -951,13 +974,13 @@
 #define FLAG_HIDE_AZALEA_TOWN_SLOWPOKE                              0x37E
 #define FLAG_HIDE_AZALEA_TOWN_SILVER                                0x37F
 #define FLAG_HIDE_AZALEA_TOWN_FARFETCHD                             0x380
-#define FLAG_HIDE_ILEX_FOREST_FARFETCHD                             0x381
+#define FLAG_HIDE_ILEX_FOREST_FARFETCHD                             0x381  // livre desde 24/09/2026
 #define FLAG_HIDE_KURT_1                                            0x382
 #define FLAG_HIDE_KURT_2                                            0x383
 #define FLAG_HIDE_AZALEA_TOWN_WELL_ROCKET                           0x384
 #define FLAG_HIDE_VIOLET_CITY_KIMONO_GIRL                           0x385
 #define FLAG_HIDE_CHERRYGROVE_GUIDE_GENT_HOUSE                      0x386
-#define FLAG_UNLOCKED_KURT_BALLS                                    0x387
+#define FLAG_UNLOCKED_KURT_BALLS                                    0x387  // livre desde 24/09/2026
 #define FLAG_HIDE_AZALEA_TOWN_KURT                                  0x388
 #define FLAG_HIDE_SLOWPOKE_WELL_KURT                                0x389
 #define FLAG_HIDE_ILEX_FOREST_FARFETCHD_1                           0x38A
@@ -1032,9 +1055,9 @@
 #define FLAG_HIDE_ROCKETHIDEOUT2_MURKROWGATE                        0x3CF
 #define FLAG_HIDE_ROCKETHIDEOUT3_MURKROWSTAIRS                      0x3D0
 #define FLAG_HIDE_ROCKETHIDEOUT2_ARIANA_AND_GRUNT                   0x3D1
-#define FLAG_HIDE_ROCKETHIDEOUT2_ELECTRODE_1                        0x3D2 
-#define FLAG_HIDE_ROCKETHIDEOUT2_ELECTRODE_2                        0x3D3 
-#define FLAG_HIDE_ROCKETHIDEOUT2_ELECTRODE_3                        0x3D4
+#define FLAG_HIDE_ROCKETHIDEOUT2_ELECTRODE_1                        0x3D2  // livre desde 24/09/2026
+#define FLAG_HIDE_ROCKETHIDEOUT2_ELECTRODE_2                        0x3D3  // livre desde 24/09/2026
+#define FLAG_HIDE_ROCKETHIDEOUT2_ELECTRODE_3                        0x3D4  // livre desde 24/09/2026
 #define FLAG_HIDE_ICE_PATH_KIMONO                                   0x3D5
 #define FLAG_BLACKTHORN_NPC_TRADE_COMPLETED                         0x3D6
 #define FLAG_HIDE_TOHJO_GIOVANNI                                    0x3D7
@@ -1042,7 +1065,7 @@
 #define FLAG_HIDE_ECRUTEAK_CITY_THEATER_NPCS                        0x3D9
 #define FLAG_HIDE_ECRUTEAK_CITY_THEATER_ZUKI                        0x3DA
 #define FLAG_HIDE_TINTOWER_GUARD                                    0x3DB
-#define FLAG_HIDE_WHIRLISLANDS_GUARD                                0x3DC
+#define FLAG_HIDE_WHIRLISLANDS_GUARD                                0x3DC  // livre desde 24/09/2026
 #define FLAG_HIDE_VICTORY_ROAD_SILVER                               0x3DD
 #define FLAG_HIDE_INDIGO_PLATEAU_SILVER                             0x3DE
 #define FLAG_HIDE_INDIGO_PLATEAU_MARY_OAK                           0x3DF
@@ -1056,11 +1079,11 @@
 #define FLAG_HIDE_INSIDE_ALPH_NPCS                                  0x3E7
 
 // Item Ball Flags 
-#define FLAG_ITEM_GARBAGEFLAG                                       0x3E8    //HnS ItemFlags Block 2
+#define FLAG_ITEM_GARBAGEFLAG                                       0x3E8    //HnS ItemFlags Block 2 - livre desde 24/09/2026
 #define FLAG_ITEM_ROUTE39_NUGGET                                    0x3E9
 #define FLAG_ITEM_ROUTE42_ULTRA_BALL                                0x3EA
 #define FLAG_ITEM_ROUTE42_SHADOW_CLAW                              0x3EB
-#define FLAG_ITEM_UNUSED0EC                                        0x3EC // Unused
+#define FLAG_ITEM_UNUSED0EC                                        0x3EC // Unused - livre desde 24/09/2026
 #define FLAG_ITEM_MTMORTAR1_REVIVE                                  0x3ED
 #define FLAG_ITEM_MTMORTAR1_ELIXIR                                  0x3EE
 #define FLAG_ITEM_MTMORTAR2_MAX_REPEL                               0x3EF
@@ -1073,7 +1096,7 @@
 #define FLAG_ITEM_MTMORTAR3_IRON                                    0x3F6
 #define FLAG_ITEM_MTMORTAR3_MAX_REVIVE                              0x3F7
 #define FLAG_ITEM_MTMORTAR3_ETHER                                   0x3F8
-#define FLAG_ITEM_MTMORTAR3_RARE_CANDY                              0x3F9
+#define FLAG_ITEM_MTMORTAR3_RARE_CANDY                              0x3F9  // livre desde 24/09/2026
 #define FLAG_ITEM_MTMORTAR3_DRAGON_SCALE                            0x3FA
 #define FLAG_ITEM_MTMORTAR3_ELIXIR                                  0x3FB
 #define FLAG_ITEM_MTMORTAR4_HYPER_POTION                            0x3FC
@@ -1134,7 +1157,7 @@
 #define FLAG_ITEM_ROCKETHIDEOUT3_PROTEIN                            0x432
 #define FLAG_ITEM_ROCKETHIDEOUT3_FULL_HEAL                          0x433
 #define FLAG_ITEM_ROCKETHIDEOUT3_GUARD_SPEC                         0x434
-#define FLAG_ITEM_ROCKETHIDEOUT3_HYPER_POTION                       0x435
+#define FLAG_ITEM_ROCKETHIDEOUT3_HYPER_POTION                       0x435  // livre desde 24/09/2026
 
 #define FLAG_ITEM_ICEPATH1_HM_WATERFALL                             0x436
 #define FLAG_ITEM_ICEPATH1_PP_UP                                    0x437
@@ -1175,20 +1198,20 @@
 #define FLAG_ITEM_VICTORYROAD3_MAX_ETHER                            0x45A
 #define FLAG_ITEM_VICTORYROAD3_ULTRA_BALL                           0x45B
 #define FLAG_ITEM_ICEPATH4_TM_BLIZZARD                              0x45C
-#define FLAG_ITEM_ROCKTUNNEL1_TM_FACADE                             0x45D
+#define FLAG_ITEM_ROCKTUNNEL1_TM_FACADE                             0x45D  // livre desde 24/09/2026
 #define FLAG_ITEM_ROCKTUNNEL1_ELIXIR                                0x45E
 #define FLAG_ITEM_ROCKTUNNEL2_IRON                                  0x45F
 #define FLAG_ITEM_ROCKTUNNEL2_PP_UP                                 0x460
 #define FLAG_ITEM_ROUTE10_ULTRABALL                                 0x461
 #define FLAG_ITEM_VERMILION_OLD_SEA_MAP                             0x462
-#define FLAG_ITEM_CELADON_LEFTOVERS                                 0x463
+#define FLAG_ITEM_CELADON_LEFTOVERS                                 0x463  // livre desde 24/09/2026
 #define FLAG_ITEM_ROUTE12_ELIXIR                                    0x464
-#define FLAG_DEFEATED_ENTEI                                         0x465
-#define FLAG_DEFEATED_RAIKOU                                        0x466
-#define FLAG_DEFEATED_SUICUNE                                       0x467
-#define FLAG_DEFEATEDCELEBI                                         0x468
+#define FLAG_DEFEATED_ENTEI                                         0x465  // fora da ROM
+#define FLAG_DEFEATED_RAIKOU                                        0x466  // fora da ROM
+#define FLAG_DEFEATED_SUICUNE                                       0x467  // fora da ROM
+#define FLAG_DEFEATEDCELEBI                                         0x468  // livre desde 24/09/2026
 #define FLAG_ITEM_ROUTE12_CALCIUM                                   0x469
-#define FLAG_ITEM_ROUTE13_CALCIUM                                   0x46A
+#define FLAG_ITEM_ROUTE13_CALCIUM                                   0x46A  // livre desde 24/09/2026
 #define FLAG_ITEM_ROUTE15_PP_UP                                     0x46B
 #define FLAG_ITEM_ROUTE2_CARBOS                                     0x46C
 #define FLAG_ITEM_ROUTE2_NUGGET                                     0x46D // Unused Flag, leftover from R/S. HM08 is given to the player directly in Emerald
@@ -1202,8 +1225,8 @@
 #define FLAG_HIDE_MTSILVER_GUARD                                    0x475
 #define FLAG_ITEM_ROUTE4_ULTRABALL                                  0x476
 #define FLAG_ITEM_ROUTE4_HPUP                                       0x477
-#define FLAG_ITEM_MTMOON_MOONSTONE                                  0x478
-#define FLAG_EVEN_FASTER_JOY                                        0x479
+#define FLAG_ITEM_MTMOON_MOONSTONE                                  0x478  // livre desde 24/09/2026
+#define FLAG_EVEN_FASTER_JOY                                        0x479  // livre desde 24/09/2026
 #define FLAG_ITEM_MTSILVER_FULLRESTORE                              0x47A
 #define FLAG_ITEM_MTSILVER_DIREHIT                                  0x47B
 #define FLAG_ITEM_MTSILVER_ULTRABALL                                0x47C
@@ -1219,30 +1242,30 @@
 #define FLAG_ITEM_CERULEANCAVE2_BIG_PEARL                           0x486
 #define FLAG_ITEM_CERULEANCAVE3_MAX_REVIVE                          0x487
 #define FLAG_ITEM_CERULEANCAVE3_ULTRA_BALL                          0x488
-#define FLAG_ITEM_ROUTE20_SHELL_BELL                                   0x489
-#define FLAG_ITEM_ARTISAN_CAVE_B1F_HP_UP                            0x48A
-#define FLAG_ITEM_ARTISAN_CAVE_1F_CARBOS                            0x48B
-#define FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_MAX_ELIXIR                    0x48C
-#define FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_FULL_RESTORE                  0x48D
-#define FLAG_ITEM_MAGMA_HIDEOUT_3F_1R_NUGGET                        0x48E
-#define FLAG_ITEM_MAGMA_HIDEOUT_3F_2R_PP_MAX                        0x48F
-#define FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE                       0x490
-#define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
-#define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
+#define FLAG_ITEM_ROUTE20_SHELL_BELL                                   0x489  // livre desde 24/09/2026
+#define FLAG_ITEM_ARTISAN_CAVE_B1F_HP_UP                            0x48A  // fora da ROM
+#define FLAG_ITEM_ARTISAN_CAVE_1F_CARBOS                            0x48B  // fora da ROM
+#define FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_MAX_ELIXIR                    0x48C  // fora da ROM
+#define FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_FULL_RESTORE                  0x48D  // fora da ROM
+#define FLAG_ITEM_MAGMA_HIDEOUT_3F_1R_NUGGET                        0x48E  // fora da ROM
+#define FLAG_ITEM_MAGMA_HIDEOUT_3F_2R_PP_MAX                        0x48F  // fora da ROM
+#define FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE                       0x490  // fora da ROM
+#define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491  // fora da ROM
+#define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492  // fora da ROM
 
-#define FLAG_JIRACHI                                                0x493
-#define FLAG_ROBERTO1                                               0x494
-#define FLAG_ENTEI_BATTLE_1                                         0x495
-#define FLAG_ENTEI_BATTLE_2                                         0x496
-#define FLAG_ENTEI_BATTLE_3                                         0x497
-#define FLAG_INCREASE_DIFFICULTY                                    0x498
+#define FLAG_JIRACHI                                                0x493  // livre desde 24/09/2026
+#define FLAG_ROBERTO1                                               0x494  // livre desde 24/09/2026
+#define FLAG_ENTEI_BATTLE_1                                         0x495  // fora da ROM
+#define FLAG_ENTEI_BATTLE_2                                         0x496  // fora da ROM
+#define FLAG_ENTEI_BATTLE_3                                         0x497  // fora da ROM
+#define FLAG_INCREASE_DIFFICULTY                                    0x498  // livre desde 24/09/2026
 #define FLAG_ROCKETHIDEOUT2_BATTLE                                  0x499
-#define FLAG_RAIKOU_BATTLE_1                                        0x49A
-#define FLAG_LANDMARK_DRACO_CHAMBER                                 0x49B
-#define FLAG_RAIKOU_BATTLE_2                                        0x49C
-#define FLAG_SUICUNE_BATTLE_1                                       0x49D
-#define FLAG_SUICUNE_BATTLE_2                                       0x49E
-#define FLAG_NO_SLOW_STAIR_MOVEMENT                                 0x49F // Used to temporaly remove slow stair movement, as it glitches things 
+#define FLAG_RAIKOU_BATTLE_1                                        0x49A  // fora da ROM
+#define FLAG_LANDMARK_DRACO_CHAMBER                                 0x49B  // livre desde 24/09/2026
+#define FLAG_RAIKOU_BATTLE_2                                        0x49C  // fora da ROM
+#define FLAG_SUICUNE_BATTLE_1                                       0x49D  // fora da ROM
+#define FLAG_SUICUNE_BATTLE_2                                       0x49E  // fora da ROM
+#define FLAG_NO_SLOW_STAIR_MOVEMENT                                 0x49F // Used to temporaly remove slow stair movement, as it glitches things - livre desde 24/09/2026
                                                                           // like Steven in Sootopolis leading to Origin Cave.
 #define FLAG_ITEM_ROUTE_29_POTION                                   0x4A0
 #define FLAG_ITEM_ROUTE_31_ANTIDOE                                  0x4A1 
@@ -1306,7 +1329,7 @@
 #define FLAG_ITEM_NATIONAL_PARK_SOOTHE_BELL                         0x4DB 
 #define FLAG_ITEM_NATIONAL_PARK_TM_DIG                              0x4DC 
 #define FLAG_ITEM_ECRUTEAK_RARE_CANDY                               0x4DD 
-#define FLAG_ITEM_BELLCHIME_BIG_MUSHROOM                            0x4DE 
+#define FLAG_ITEM_BELLCHIME_BIG_MUSHROOM                            0x4DE  // livre desde 24/09/2026
 #define FLAG_ITEM_TIN_TOWER_3F_FULL_HEAL                            0x4DF 
 #define FLAG_ITEM_TIN_TOWER_4F_ULTRA_BALL                           0x4E0 
 #define FLAG_ITEM_TIN_TOWER_4F_ESCAPE_ROPE                          0x4E1 
@@ -1335,7 +1358,7 @@
 #define FLAG_DEFEATED_BLACKTHORN_GYM                                0x4F7
 #define FLAG_DEFEATED_MTSILVER_RIVAL                                0x4F8
 
-#define FLAG_NO_SHINY                                           0x4F9
+#define FLAG_NO_SHINY                                           0x4F9  // livre desde 24/09/2026
 #define FLAG_UNUSED_4FA                                                0x4FA // Reserved legacy difficulty flag; do not reuse in existing saves.
 
 #define FLAG_DEFEATED_ELITE_4_WILL                                  0x4FB
@@ -1439,7 +1462,7 @@
 #define FLAG_LANDMARK_POKEMON_DAYCARE               (SYSTEM_FLAGS + 0x46)
 #define FLAG_LANDMARK_SEAFLOOR_CAVERN               (SYSTEM_FLAGS + 0x47)
 #define FLAG_LANDMARK_BATTLE_FRONTIER               (SYSTEM_FLAGS + 0x48)
-#define FLAG_LANDMARK_SOUTHERN_ISLAND               (SYSTEM_FLAGS + 0x49)
+#define FLAG_LANDMARK_SOUTHERN_ISLAND               (SYSTEM_FLAGS + 0x49)  // livre desde 24/09/2026
 #define FLAG_LANDMARK_FIERY_PATH                    (SYSTEM_FLAGS + 0x4A)
 
 #define FLAG_SYS_PC_LANETTE                         (SYSTEM_FLAGS + 0x4B)
@@ -1489,7 +1512,7 @@
 #define FLAG_SYS_PYRAMID_GOLD                       (SYSTEM_FLAGS + 0x71)
 #define FLAG_SYS_FRONTIER_PASS                      (SYSTEM_FLAGS + 0x72)
 
-#define FLAG_MAP_SCRIPT_CHECKED_DEOXYS              (SYSTEM_FLAGS + 0x73)
+#define FLAG_MAP_SCRIPT_CHECKED_DEOXYS              (SYSTEM_FLAGS + 0x73)  // livre desde 24/09/2026
 #define FLAG_DEOXYS_ROCK_COMPLETE                   (SYSTEM_FLAGS + 0x74)
 #define FLAG_ENABLE_SHIP_BIRTH_ISLAND               (SYSTEM_FLAGS + 0x75)
 #define FLAG_ENABLE_SHIP_FARAWAY_ISLAND             (SYSTEM_FLAGS + 0x76)
@@ -1497,17 +1520,17 @@
 #define FLAG_SHOWN_BOX_WAS_FULL_MESSAGE             (SYSTEM_FLAGS + 0x77)
 
 #define FLAG_ARRIVED_ON_FARAWAY_ISLAND              (SYSTEM_FLAGS + 0x78)
-#define FLAG_ARRIVED_AT_MARINE_CAVE_EMERGE_SPOT     (SYSTEM_FLAGS + 0x79)
-#define FLAG_ARRIVED_AT_TERRA_CAVE_ENTRANCE         (SYSTEM_FLAGS + 0x7A)
+#define FLAG_ARRIVED_AT_MARINE_CAVE_EMERGE_SPOT     (SYSTEM_FLAGS + 0x79)  // livre desde 24/09/2026
+#define FLAG_ARRIVED_AT_TERRA_CAVE_ENTRANCE         (SYSTEM_FLAGS + 0x7A)  // livre desde 24/09/2026
 
 #define FLAG_SYS_MYSTERY_GIFT_ENABLE                (SYSTEM_FLAGS + 0x7B)
 
-#define FLAG_ENTERED_MIRAGE_TOWER                   (SYSTEM_FLAGS + 0x7C)
+#define FLAG_ENTERED_MIRAGE_TOWER                   (SYSTEM_FLAGS + 0x7C)  // livre desde 24/09/2026
 #define FLAG_LANDMARK_ALTERING_CAVE                 (SYSTEM_FLAGS + 0x7D)
 #define FLAG_LANDMARK_DESERT_UNDERPASS              (SYSTEM_FLAGS + 0x7E)
 #define FLAG_LANDMARK_ARTISAN_CAVE                  (SYSTEM_FLAGS + 0x7F)
 #define FLAG_ENABLE_SHIP_NAVEL_ROCK                 (SYSTEM_FLAGS + 0x80)
-#define FLAG_ARRIVED_AT_NAVEL_ROCK                  (SYSTEM_FLAGS + 0x81)
+#define FLAG_ARRIVED_AT_NAVEL_ROCK                  (SYSTEM_FLAGS + 0x81)  // livre desde 24/09/2026
 #define FLAG_LANDMARK_TRAINER_HILL                  (SYSTEM_FLAGS + 0x82)
 
 #define FLAG_ALL_INNATES_UNLOCKED                   (SYSTEM_FLAGS + 0x83)
@@ -1529,8 +1552,8 @@
 #define FLAG_RECEIVED_BADGE_5                       (SYSTEM_FLAGS + 0x91)
 #define FLAG_RECEIVED_BADGE_6                       (SYSTEM_FLAGS + 0x92)
 #define FLAG_RECEIVED_BADGE_7                       (SYSTEM_FLAGS + 0x93)
-#define FLAG_GOLDEN_COLOSSEUM                       (SYSTEM_FLAGS + 0x94) // Permission to enter goldenrod underground colosseum
-#define FLAG_NEVER_TURNED_OFF_HARD                  (SYSTEM_FLAGS + 0x95) // If player never chose normal mode during important battles
+#define FLAG_GOLDEN_COLOSSEUM                       (SYSTEM_FLAGS + 0x94) // Permission to enter goldenrod underground colosseum - livre desde 24/09/2026
+#define FLAG_NEVER_TURNED_OFF_HARD                  (SYSTEM_FLAGS + 0x95) // If player never chose normal mode during important battles - livre desde 24/09/2026
 #define FLAG_TRAINER_LEVELSCALING                   (SYSTEM_FLAGS + 0x96)
 #define FLAG_WILD_LEVELSCALING                      (SYSTEM_FLAGS + 0x97)
 #define FLAG_BEAT_STEVEN_KITAKAMI                   (SYSTEM_FLAGS + 0x98)
@@ -1567,6 +1590,13 @@
 #define FLAG_TM_SAFETY_GOGGLES                      (SYSTEM_FLAGS + 0xB7)
 #define FLAG_HYPERPOTION_DESERT                     (SYSTEM_FLAGS + 0xB8)
 #define FLAG_SUS_DESERT_DOOR                        (SYSTEM_FLAGS + 0xB9)
+// Pedras do quebra-cabeca do Ice Path. Nenhum script da setflag nelas: sao o
+// campo "flag" dos 4 object_events de IcePath_B1F, e quem liga o bit e a ENGINE
+// quando a pedra cai no buraco (HandleBoulderFallThroughHole ->
+// RemoveObjectEventByLocalIdAndMap -> FlagSet do flagId do template,
+// src/event_object_movement.c:1593). IcePath_B2F le as quatro no ON_TRANSITION
+// para esconder a pedra correspondente la embaixo. Funciona - a auditoria 7.6 as
+// listava como "lidas que ninguem escreve" por nao enxergar a escrita da engine.
 #define FLAG_ICEPATH_BOULDER1                       (SYSTEM_FLAGS + 0xBA)
 #define FLAG_ICEPATH_BOULDER2                       (SYSTEM_FLAGS + 0xBB)
 #define FLAG_ICEPATH_BOULDER3                       (SYSTEM_FLAGS + 0xBC)
@@ -1583,7 +1613,7 @@
 #define FLAG_SNOWTOP_ICE_STONE                      0x921
 #define FLAG_SNOWTOP_ICY_ROCK                       0x922
 #define FLAG_SNOWTOP_FLING                          0x923
-#define FLAG_SNOWTOP_CALCIUM_EX                     0x924
+#define FLAG_SNOWTOP_CALCIUM_EX                     0x924  // livre desde 24/09/2026
 #define FLAG_SNOWTOP_REGICE_DOOR                    0x925
 #define FLAG_MTMORTAR_DEPTHS_FIRETITE               0x926
 #define FLAG_MTMORTAR_DEPTHS_FIRE_BLAST_TM          0x927
@@ -1599,9 +1629,9 @@
 #define FLAG_ILEX_BECKONING_BELL                    0x931
 #define FLAG_TM_FALSE_SWIPE                         0x932
 #define FLAG_POSTGAME_CAP1                          0x933
-#define FLAG_POSTGAME_CAP2                          0x934
-#define FLAG_POSTGAME_CAP3                          0x935
-#define FLAG_POSTGAME_CAP4                          0x936
+#define FLAG_POSTGAME_CAP2                          0x934  // livre desde 24/09/2026
+#define FLAG_POSTGAME_CAP3                          0x935  // livre desde 24/09/2026
+#define FLAG_POSTGAME_CAP4                          0x936  // livre desde 24/09/2026
 #define FLAG_REPLAY_BATTLE_FORMAT_DOUBLES           0x937
 #define FLAG_REPLAY_BATTLE_FORMAT_SINGLES           0x938
 #define FLAG_REPLAY_TRAINER_PERFECT_IVS             0x939
@@ -1646,7 +1676,7 @@
 #define FLAG_ROUTE41_RAZOR_CLAW                     0x960
 #define FLAG_ROUTE47_RAZOR_FANG                     0x961
 #define FLAG_HIDE_LEAF_NAMELESS                     0x962
-#define FLAG_HIDE_M_WAREHOUSE                       0x963
+#define FLAG_HIDE_M_WAREHOUSE                       0x963  // livre desde 24/09/2026
 #define FLAG_ARH_PUZZLE1                            0x964
 #define FLAG_ARH_PUZZLE2                            0x965
 #define FLAG_ARH_PUZZLE3                            0x966
@@ -1689,6 +1719,16 @@
 #define FLAG_CAUGHT_LATIOS                          0x98B
 
 // Standalone persistent flags. Keep CUSTOM_FLAGS_END on the final allocation.
+//
+// O bloco vai de 0x1000 ate 0x14FF - 1280 posicoes, das quais 0x1000-0x1046 ja
+// estao gastas. A proxima flag nova continua em 0x1047; sobram 1209 slots ate o
+// limite que STATIC_ASSERT(CUSTOM_FLAGS_END < FLAG_0x1500) protege. Esses bits ja
+// existem no save (FLAGS_COUNT nao muda), entao usa-los nao quebra save nenhum.
+//
+// Nao alargue para 0x1500+: dali em diante e FLAG_0x1500 e o bloco DAILY, que
+// zera na virada do dia. FLAGS_COUNT esta congelado (so aceita +8 antes de
+// derrubar os STATIC_ASSERT de src/save.c) - detalhes em
+// .claude/SOULGOLD_FLAGS_AUDIT.md secoes 2 a 4.
 #define CUSTOM_FLAGS_START                          0x1000
 
 #define FLAG_OBTAINED_SOULDEW  CUSTOM_FLAGS_START
@@ -1811,7 +1851,69 @@
 // FLAG_VISITED_RECEPTION_GATE and + 0x28 is already FLAG_SYS_USE_FLASH, which is
 // why FLAG_VISITED_BATTLE_FACTORY and FLAG_VISITED_ROUTE50 also live out here.
 #define FLAG_VISITED_SUN_MOON_ALTAR                 0x1046
-#define CUSTOM_FLAGS_END                            FLAG_VISITED_SUN_MOON_ALTAR
+// Rift Mission 1 checkpoint: the rift in Blackthorn has already been torn open
+// and the player has already met Gladion. Set by BlackthornCity_EventScript_UBScene
+// right before the target choice; cleared by BlackthornCity_EventScript_UBFinish
+// (and by the Type: Null retry, which is the other way out of the mission).
+// What it buys: a blackout reloads the map, so every FLAG_TEMP_* is gone. This is
+// the only thing that survives it, and it is what tells ApplyUBVisibility to put
+// the beasts, Gladion and Silvally back on the street in their combat tiles and
+// tells Looker to use the retry lines instead of greeting the player again.
+#define FLAG_BLACKTHORN_UB_ENGAGED                  0x1047
+// Rift Mission 1: the city is saved but Gladion is still holding the Type: Null,
+// because the party AND the PC were full when he offered it. Set by
+// BlackthornCity_EventScript_UBGiftNoRoom; cleared by
+// BlackthornCity_EventScript_UBGladionGiftDone. While it is set, Gladion and
+// Silvally are the only cast left on the street and talking to him finishes the
+// delivery - the battle is never replayed and the victory is never erased.
+#define FLAG_BLACKTHORN_TYPE_NULL_PENDING           0x1048
+// Rift Missions: Looker has telephoned to summon the player to Olivine and the
+// briefing is now available there. Set by RiftMissions_EventScript_LookerCall
+// (data/scripts/rift_missions.inc); cleared by
+// OlivineCity_House1_EventScript_BriefingTalk and by the reunion scene - the two
+// places that consume a summons.
+// It is the invitation itself, so it PERSISTS across days and saves: until the
+// player turns up, ShouldDoRiftMissionCall refuses to ring again (an invitation
+// already issued is not re-issued), and until it is set, the house only offers
+// the waiting line. States 4, 6, 8 and 10 are gated by it. State 2 is NOT: its
+// summons is the dedicated call scene in New Bark, and gating it would strand
+// saves made before this flag existed.
+#define FLAG_RIFT_LOOKER_SUMMONS                    0x1049
+// Rift Mission 2: the incident in Mahogany has already been staged once - the
+// evacuation, Necrozma and the two beasts are behind the player. Set by
+// Mahoganytown_EventScript_UBScene at the moment it takes control; cleared by
+// Mahoganytown_EventScript_UBFinish.
+// Same job as FLAG_BLACKTHORN_UB_ENGAGED: a blackout reloads the map and wipes
+// every FLAG_TEMP_*, so this is what tells ApplyUBVisibility to put the street
+// back the way the player left it and tells Looker and Lillie to use the retry
+// lines instead of introducing the mission again.
+#define FLAG_MAHOGANY_UB_ENGAGED                    0x104A
+// Rift Mission 2: the group has SEEN one beast recharge the other through the
+// link. Set by Mahoganytown_EventScript_UBRecharge; cleared by
+// Mahoganytown_EventScript_UBFinish.
+// It splits the two kinds of retry: before it, the retry still discovers the
+// recharge with the first-run lines; after it, the plan is the short one and
+// the ice wall is already on the ground when the map loads, so the beat that
+// cracks it open can play (Mahoganytown_EventScript_UBWallBreaks).
+#define FLAG_MAHOGANY_UB_SAW_RECHARGE               0x104B
+// Rift Mission 2: on the attempt that was lost, the player had picked
+// Celesteela (clear = Xurkitree). Written together with VAR_TEMP_3 by the
+// choice; cleared by Mahoganytown_EventScript_UBFinish.
+// The pick itself lives in VAR_TEMP_3 and dies with the blackout. This is the
+// only reason it is duplicated here: the beat that shows the wall being broken
+// has to know WHICH beast broke it, and it runs after the reload.
+#define FLAG_MAHOGANY_UB_PICKED_CELESTEELA          0x104C
+// Rift Mission 2: the mission is over and Lillie said she would stay until the
+// residents were settled. Set by Mahoganytown_EventScript_UBFinish, and
+// CONSUMED by Mahoganytown_EventScript_ApplyUBVisibility on the very next map
+// load - the silent warp that ends the scene. That one load keeps Lillie and
+// Ninetales on the street; leaving town and coming back finds them gone, which
+// is exactly what her line promises.
+#define FLAG_MAHOGANY_UB_LILLIE_SETTLING            0x104D
+#define CUSTOM_FLAGS_END                            FLAG_MAHOGANY_UB_LILLIE_SETTLING
+// PROXIMA FLAG NOVA: 0x104E (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
+// ela. Skill: .claude/skills/alocar-flag/SKILL.md
 
 
 #define FLAG_0x1500                                 0x1500
@@ -1830,14 +1932,14 @@
 #define FLAG_ROUTE33_GROTTO                         (DAILY_FLAGS_START + 0x8)
 #define FLAG_ROUTE44_GROTTO                         (DAILY_FLAGS_START + 0x9)
 #define FLAG_DAILY_PICKED_LOTO_TICKET               (DAILY_FLAGS_START + 0xA)
-#define FLAG_DAILY_ROUTE_114_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xB)
-#define FLAG_DAILY_ROUTE_111_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xC)
+#define FLAG_DAILY_ROUTE_114_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xB)  // livre desde 24/09/2026
+#define FLAG_DAILY_ROUTE_111_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xC)  // livre desde 24/09/2026
 #define FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY      (DAILY_FLAGS_START + 0xD)
-#define FLAG_DAILY_ROUTE_120_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xE)
-#define FLAG_DAILY_LILYCOVE_RECEIVED_BERRY          (DAILY_FLAGS_START + 0xF)
+#define FLAG_DAILY_ROUTE_120_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xE)  // livre desde 24/09/2026
+#define FLAG_DAILY_LILYCOVE_RECEIVED_BERRY          (DAILY_FLAGS_START + 0xF)  // livre desde 24/09/2026
 #define FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY       (DAILY_FLAGS_START + 0x10)
 #define FLAG_DAILY_BERRY_MASTERS_WIFE               (DAILY_FLAGS_START + 0x11) // Route 30 Berry Master's wife: one rare Berry a day, post-Hall of Fame (.claude/KURT_BALL_CRAFT_DESIGN.md section 5.4). Was allocated and never used by anything
-#define FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY        (DAILY_FLAGS_START + 0x12)
+#define FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY        (DAILY_FLAGS_START + 0x12)  // livre desde 24/09/2026
 #define FLAG_LAKEOFRAGE_GROTTO                      (DAILY_FLAGS_START + 0x13)
 #define FLAG_DAILY_APPRENTICE_LEAVES                (DAILY_FLAGS_START + 0x14)
 
@@ -1874,7 +1976,13 @@
 // free draw", this one is "today's quota has been zeroed". Sharing one would
 // make the draw eat the quota.
 #define FLAG_DAILY_KURT_NEW_DAY                     (DAILY_FLAGS_START + 0x2E) // VAR_KURT_TODAY has been reset for today
-#define FLAG_UNUSED_0x94F                           (DAILY_FLAGS_START + 0x2F) // Unused Flag
+// Rift Missions: Looker already telephoned today to call the player to Olivine
+// (ShouldDoRiftMissionCall, src/field_control_avatar.c). Set by
+// RiftMissions_EventScript_LookerCall and by every script that opens a state in
+// which a briefing is pending, so the day the player is told in person is also
+// counted as today's call. Cleared with the rest of the daily flags at the date
+// change (ClearDailyFlags, src/event_data.c).
+#define FLAG_DAILY_LOOKER_CALL                      (DAILY_FLAGS_START + 0x2F)
 #define FLAG_UNUSED_0x950                           (DAILY_FLAGS_START + 0x30) // Unused Flag
 #define FLAG_UNUSED_0x951                           (DAILY_FLAGS_START + 0x31) // Unused Flag
 #define FLAG_UNUSED_0x952                           (DAILY_FLAGS_START + 0x32) // Unused Flag
@@ -1915,7 +2023,7 @@
 #define FLAG_TEMP_REGICE_PUZZLE_STARTED         FLAG_TEMP_2
 #define FLAG_TEMP_REGICE_PUZZLE_FAILED          FLAG_TEMP_3
 #define FLAG_TEMP_HIDE_FOLLOWER                 FLAG_TEMP_E
-#define FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE FLAG_TEMP_11
+#define FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE FLAG_TEMP_11  // fora da ROM
 
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000

@@ -23,6 +23,7 @@ UltraSpaceArena_OnTransition::
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_4
 	setflag FLAG_TEMP_5
+	setflag FLAG_TEMP_6
 	end
 
 @ A frame trigger and not a coord_event, because the choreography of this act has
@@ -55,8 +56,25 @@ UltraSpaceArena_EventScript_End::
 @ lock on state, no objects. THIS IS THE HANDOFF TO THE LOOP DOCUMENT -
 @ replacing this script is the first thing that document does. The expedition
 @ itself (five trainers plus a legendary) is deliberately out of scope here.
+@
+@ The opening (lockall / hidefollower / delay 20) is the same as the Act IV
+@ confrontation's on purpose, and the delay is not cosmetic: this script runs off
+@ MAP_SCRIPT_ON_FRAME_TABLE on the first frame after a warp that is unique in the
+@ whole game. MAP_ULTRA_SPACE_ARENA is the ONLY one of the 243 MAP_TYPE_UNDERGROUND
+@ maps that is entered with warpsilent instead of a warp event, and the pair
+@ MAP_TYPE_ROUTE -> MAP_TYPE_UNDERGROUND is in sTransitionTypes
+@ (src/fldeff_flash.c), so the engine plays the enter-cave transition: the screen
+@ is faded TO WHITE on the way out and the cave iris runs before the map appears.
+@ Anything that runs before that has finished runs against a white screen.
 UltraSpaceArena_EventScript_EmptyRift::
 	lockall
+	hidefollower
+	delay 20
+	@ The warp lands the player on (10,19) facing SOUTH, which is one step from
+	@ the coord_event row at y=20 that throws him straight back out - arriving
+	@ already pointing at the exit. Turn him to face the arena before releasing.
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox UltraSpaceArena_Text_EmptyRift, MSGBOX_DEFAULT
 	closemessage
 	releaseall
@@ -89,26 +107,39 @@ UltraSpaceArena_EventScript_Confront::
 	call UltraSpaceArena_EventScript_WaitPartner
 	msgbox UltraSpaceArena_Text_ArenaLook, MSGBOX_DEFAULT
 	closemessage
-	@ --- it is already here, and it is not what New Bark left --------------
+	@ --- it is already here, and it is exactly what New Bark left ---------
+	@ It burst on the ninth beast in New Bark (NewBarkTown_EventScript_UBUltra)
+	@ and it LEFT golden - nobody ever took that light back off it. So the only
+	@ form that exists on this floor during Act IV is the Ultra one, and there
+	@ is no second transformation to play here.
+	@ LOCALID_ULTRA_SPACE_ARENA_NECROZMA is NOT spawned during this act at all:
+	@ the small form is what LOSING the light looks like, and the only script
+	@ that adds it is UltraSpaceArena_EventScript_Victory. Its FLAG_TEMP_2 stays
+	@ set from ON_TRANSITION right through the battle.
 	fadescreenswapbuffers FADE_TO_WHITE
-	addobject LOCALID_ULTRA_SPACE_ARENA_NECROZMA
-	fadescreenswapbuffers FADE_FROM_WHITE
-	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
-	waitmoncry
-	msgbox UltraSpaceArena_Text_ArenaAnabelReads, MSGBOX_DEFAULT
-	closemessage
-	msgbox UltraSpaceArena_Text_ArenaStarving, MSGBOX_DEFAULT
-	closemessage
-	@ --- the partner steps in front, and it takes the light ---------------
-	call UltraSpaceArena_EventScript_PartnerSteps
-	call UltraSpaceArena_EventScript_Shake
-	fadescreenswapbuffers FADE_TO_WHITE
-	removeobject LOCALID_ULTRA_SPACE_ARENA_NECROZMA
 	addobject LOCALID_ULTRA_SPACE_ARENA_ULTRA
 	fadescreenswapbuffers FADE_FROM_WHITE
 	playmoncry SPECIES_NECROZMA_ULTRA, CRY_MODE_ENCOUNTER
 	waitmoncry
 	msgbox UltraSpaceArena_Text_ArenaUltra, MSGBOX_DEFAULT
+	closemessage
+	msgbox UltraSpaceArena_Text_ArenaAnabelReads, MSGBOX_DEFAULT
+	closemessage
+	msgbox UltraSpaceArena_Text_ArenaStarving, MSGBOX_DEFAULT
+	closemessage
+	@ --- the partner steps in front, and it answers -----------------------
+	@ The beat that used to be the transformation. The creature does not change;
+	@ it NOTICES. Flare, cry, shake, in that order, and then Anabel moves - so
+	@ her "Behind me. Now." is a reaction to something the player just saw.
+	@ walk_in_place_fast_down and not _right: it stands on (10,8) facing SOUTH,
+	@ at the player on (10,11) and the partner on (9,9). y grows DOWN.
+	call UltraSpaceArena_EventScript_PartnerSteps
+	applymovement LOCALID_ULTRA_SPACE_ARENA_ULTRA, UltraSpaceArena_Movement_UltraFlare
+	waitmovement LOCALID_ULTRA_SPACE_ARENA_ULTRA
+	playmoncry SPECIES_NECROZMA_ULTRA, CRY_MODE_NORMAL
+	waitmoncry
+	call UltraSpaceArena_EventScript_Shake
+	msgbox UltraSpaceArena_Text_ArenaAnswers, MSGBOX_DEFAULT
 	closemessage
 	@ --- Anabel gets in front of him, once, the way she always does --------
 	@ (11,11) -> (11,10): one row up, beside the player's column, NOT on it.
@@ -219,6 +250,16 @@ UltraSpaceArena_Movement_PartnerForward:
 	face_right
 	step_end
 
+@ Four fast steps in place, facing SOUTH, the same shape as
+@ NewBarkTown_Movement_UltraFlare. It does not move off (10,8) and it does not
+@ change the direction it is looking - it just burns harder for a second.
+UltraSpaceArena_Movement_UltraFlare:
+	walk_in_place_fast_down
+	walk_in_place_fast_down
+	walk_in_place_fast_down
+	walk_in_place_fast_down
+	step_end
+
 @ Same four vars as the altar and as the four mission maps: pan, pan, count,
 @ delay. Passing only two gives the shake a random duration.
 UltraSpaceArena_EventScript_Shake::
@@ -302,27 +343,95 @@ UltraSpaceArena_EventScript_Victory::
 	closemessage
 	msgbox UltraSpaceArena_Text_VictoryBall, MSGBOX_DEFAULT
 	closemessage
-	@ --- the capture -------------------------------------------------------
+	@ --- the capture, on screen -------------------------------------------
+	@ The space check is repeated here, one box before the Ball leaves her hand,
+	@ and not after the gift like it used to be: from this line on the scene says
+	@ out loud that the creature is IN the Ball, and the defensive NoRoom branch
+	@ has to fire before that is true, not after. Same test as the rift's
+	@ (SunMoonAltar_EventScript_Rift): only party full AND PC full blocks.
+	getpartysize
+	goto_if_ne VAR_RESULT, PARTY_SIZE, UltraSpaceArena_EventScript_CaptureGo
+	specialvar VAR_RESULT, ScriptCheckFreePokemonStorageSpace
+	goto_if_ne VAR_RESULT, TRUE, UltraSpaceArena_EventScript_NoRoom
+UltraSpaceArena_EventScript_CaptureGo::
+	call UltraSpaceArena_EventScript_Capture
+	@ --- the gift ----------------------------------------------------------
 	@ SPECIES_NECROZMA and not SPECIES_NECROZMA_ULTRA: the Ultra/Dusk Mane/Dawn
 	@ Wings forms are battle forms. Level 75 and not 90 because what the player
 	@ receives is the creature AFTER it lost the light - giving level 90 would be
 	@ handing over the boss instead of what was left of it.
+	@
+	@ THE TWO LINES ABOVE givemon ARE NOT DECORATION. Nothing in the givemon path
+	@ writes STR_VAR_1: Common_Text_ReceivedMon is literally "{PLAYER} received
+	@ {STR_VAR_1}!" and prints whatever was in the buffer. Without them the box
+	@ said "received SOLGALEO", because UltraSpaceArena_EventScript_PartnerHarmonise
+	@ had just buffered the partner's name for Text_VictoryHarmony - a clean build
+	@ announcing the wrong Pokemon. VAR_TEMP_TRANSFERRED_SPECIES is what
+	@ Common_EventScript_TransferredToPC reads for the box message, and it is the
+	@ same var as VAR_TEMP_1 (include/constants/vars.h), which this map uses as the
+	@ once-per-visit latch of UltraSpaceArena_OnFrame: writing SPECIES_NECROZMA
+	@ into it keeps it non-zero, so the latch stays closed. Do not write 0 here.
 	@ The MON_CANT_GIVE guard comes BEFORE the call, not after:
 	@ Common_EventScript_GiftMon swallows MON_CANT_GIVE in silence. Comparing does
 	@ not dirty VAR_RESULT, so the call still sees the givemon result.
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_NECROZMA
+	bufferspeciesname STR_VAR_1, SPECIES_NECROZMA
 	givemon SPECIES_NECROZMA, 75, ITEM_NONE
 	goto_if_eq VAR_RESULT, MON_CANT_GIVE, UltraSpaceArena_EventScript_NoRoom
 	call Common_EventScript_GiftMon
-	playfanfare MUS_HG_CAUGHT
-	waitfanfare
-	msgbox UltraSpaceArena_Text_VictoryCaught, MSGBOX_DEFAULT
-	closemessage
+	@ the Ball goes with the player
 	fadescreenswapbuffers FADE_TO_WHITE
-	removeobject LOCALID_ULTRA_SPACE_ARENA_NECROZMA
+	removeobject LOCALID_ULTRA_SPACE_ARENA_BEAST_BALL
 	fadescreenswapbuffers FADE_FROM_WHITE
 	msgbox UltraSpaceArena_Text_VictoryLeave, MSGBOX_DEFAULT
 	closemessage
 	goto UltraSpaceArena_EventScript_NecrozmaCaught
+
+@ ---------------------------------------------------------------------------
+@ THE CAPTURE. It is a scene and not a message, which is the whole reason
+@ B_FLAG_NO_CATCHING is set during the fight: the player cannot fail this and
+@ cannot miss it either.
+@ enter_pokeball is the engine's own "goes into the Ball" movement action
+@ (MOVEMENT_ACTION_ENTER_POKEBALL): the sprite flashes white, shrinks into a ball
+@ and ends invisible. It is what a follower does going back in, and it works on
+@ any object whose graphics are OBJ_EVENT_GFX_SPECIES(...) - FollowerSetGraphics
+@ reads the species out of the graphicsId and assumes nothing about followers.
+@ The Ball that stays on the floor afterwards is a SEPARATE object, because the
+@ engine's animation leaves nothing behind to rock: it is
+@ LOCALID_ULTRA_SPACE_ARENA_BEAST_BALL, standing on (10,8), the creature's own
+@ tile, so the Ball lands exactly where it was.
+@ The three shakes and the click are sound only (SE_BALL x3, then SE_BALL_OPEN),
+@ which is what the battle capture sounds like and costs no animation that could
+@ desync. MUS_HG_CAUGHT comes after the click, not after the gift box, so the
+@ fanfare lands on the moment the Ball stops moving.
+@ ---------------------------------------------------------------------------
+UltraSpaceArena_EventScript_Capture::
+	playse SE_BALL_THROW
+	delay 16
+	applymovement LOCALID_ULTRA_SPACE_ARENA_NECROZMA, UltraSpaceArena_Movement_EnterBall
+	waitmovement LOCALID_ULTRA_SPACE_ARENA_NECROZMA
+	removeobject LOCALID_ULTRA_SPACE_ARENA_NECROZMA
+	addobject LOCALID_ULTRA_SPACE_ARENA_BEAST_BALL
+	delay 20
+	call UltraSpaceArena_EventScript_BallShake
+	call UltraSpaceArena_EventScript_BallShake
+	call UltraSpaceArena_EventScript_BallShake
+	playse SE_BALL_OPEN
+	delay 30
+	playfanfare MUS_HG_CAUGHT
+	waitfanfare
+	msgbox UltraSpaceArena_Text_VictoryCaught, MSGBOX_DEFAULT
+	closemessage
+	return
+
+UltraSpaceArena_EventScript_BallShake::
+	playse SE_BALL
+	delay 40
+	return
+
+UltraSpaceArena_Movement_EnterBall:
+	enter_pokeball
+	step_end
 
 @ Should be unreachable: the rift refused to let a full player through. It is here
 @ because a gift that fails silently is the worst bug this project knows how to
@@ -435,15 +544,26 @@ UltraSpaceArena_Text_ArenaStarving:
 	.string "in my life wanted to be wrong about it\l"
 	.string "more than right now.$"
 
-@ narration, after the partner steps in and it takes the light
+@ narration, on the reveal. It is already burning when they get here: this is
+@ the same shape that walked out of New Bark, and it never put the light down.
 UltraSpaceArena_Text_ArenaUltra:
+	.string "It is already burning.\p"
+	.string "Whatever it put on in New Bark it has\n"
+	.string "not put down, and every piece of that\l"
+	.string "armour is something it swallowed in\l"
+	.string "Johto.\p"
 	.string "It did not take the light the way a\n"
-	.string "thief takes something.\p"
-	.string "It took it the way a drowning thing\n"
-	.string "takes air.\p"
-	.string "The armour came back on in pieces, and\n"
-	.string "every piece of it was something it had\l"
-	.string "swallowed in Johto.$"
+	.string "thief takes something. It took it the\l"
+	.string "way a drowning thing takes air.$"
+
+@ narration, after the partner steps in and the creature answers it
+UltraSpaceArena_Text_ArenaAnswers:
+	.string "The light on it moved once, all of it at\n"
+	.string "the same time, the way a held breath\l"
+	.string "moves.\p"
+	.string "It had not looked at anything on this\n"
+	.string "floor until something stepped between\l"
+	.string "it and {PLAYER}.$"
 
 UltraSpaceArena_Text_ArenaAnabelFront:
 	.string "{SPEAKER NAME_ANABEL}Behind me. Now.\p"

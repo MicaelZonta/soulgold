@@ -33,6 +33,10 @@ EXT = ('.c', '.h', '.inc', '.pory', '.json', '.s', '.txt', '.md', '.py', '.mk',
        '.party', '.cfg', '.sh')
 SKIP_DIRS = ('build/', 'graphics/', 'sound/')
 FLAGS_H = "include/constants/flags.h"
+# Saidas desta propria auditoria: os anexos citam TODA flag pelo nome, entao
+# varre-las faria cada flag orfa parecer "citada em doc" (SO_EM_DOC) em vez de
+# NUNCA_REFERENCIADA, e o status perderia o sentido.
+SELF_DOCS = ("docs/SOULGOLD_FLAGS_AUDIT.csv", ".claude/SOULGOLD_FLAGS_AUDIT.md")
 
 # Comandos de script que ESCREVEM a flag. As macros *legendaryencounter passam
 # a flag em VAR_0x8007 e o special BattleSetup_Finish* faz o FlagSet.
@@ -98,7 +102,7 @@ def scan(root, names):
         files=collections.Counter(), maps=collections.Counter(),
         mapjson=collections.Counter(), reads=0, writes=0, other=0, src=0))
     for f in files:
-        if not f.endswith(EXT) or f.startswith(SKIP_DIRS) or f == FLAGS_H:
+        if not f.endswith(EXT) or f.startswith(SKIP_DIRS) or f == FLAGS_H or f in SELF_DOCS:
             continue
         try:
             txt = open(os.path.join(root, f), encoding='utf-8', errors='replace').read()
@@ -160,7 +164,14 @@ def classify(flag, rec, dead):
         st = "SO_MAPAS_FORA_DA_ROM"
     elif u['writes'] and not u['reads'] and not u['mapjson'] and not u['src']:
         st = "SO_ESCRITA"
-    elif u['reads'] and not u['writes'] and not u['src']:
+    elif u['reads'] and not u['writes'] and not u['mapjson'] and not u['src']:
+        # 'not mapjson' pelo mesmo motivo de SO_ESCRITA: flag usada no campo
+        # "flag" de um object_event e escrita pela ENGINE, sem aparecer por nome
+        # em script nenhum - removeobject (ScrCmd_removeobject) e o item ball
+        # comum chamam RemoveObjectEventByLocalIdAndMap, que faz
+        # FlagSet(flagId do template) (src/event_object_movement.c:1593).
+        # Sem isso, FLAG_ICEPATH_BOULDER1..4 saiam como SO_LEITURA sendo que o
+        # quebra-cabeca funciona (auditoria secao 7.6).
         st = "SO_LEITURA"
     else:
         st = "EM_USO"

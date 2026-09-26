@@ -1314,6 +1314,40 @@ static const union AnimCmd sAnim_TowerBeamLoop[] =
     ANIMCMD_JUMP(0),
 };
 
+// A fenda do altar: quatro quadros em loop, seis frames cada, sem direcao - ela
+// e inanimate e nunca vira para lado nenhum, entao todas as entradas da tabela
+// apontam para o mesmo loop (mesmo padrao de sAnimTable_TowerBeam logo abaixo).
+static const union AnimCmd sAnim_AltarRiftLoop[] = {
+    ANIMCMD_FRAME(0, 6),
+    ANIMCMD_FRAME(1, 6),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_AltarRift[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_FACE_NORTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_FACE_WEST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_FACE_EAST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_SOUTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_NORTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_WEST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_EAST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_AltarRiftLoop,
+};
+
 static const union AnimCmd *const sAnimTable_TowerBeam[] = {
     [ANIM_STD_FACE_SOUTH] = sAnim_TowerBeamLoop,
     [ANIM_STD_FACE_NORTH] = sAnim_TowerBeamLoop,

@@ -627,6 +627,8 @@ $(OBJEVENTGFXDIR)/misc/case.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/misc/portal.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
+$(OBJEVENTGFXDIR)/misc/altar_rift.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
 $(OBJEVENTGFXDIR)/misc/timegear.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 

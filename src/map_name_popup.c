@@ -556,9 +556,16 @@ static void UpdateSecondaryPopUpWindow(u8 secondaryPopUpWindowId)
     CopyWindowToVram(secondaryPopUpWindowId, COPYWIN_FULL);
 }
 
+// The first MAP_NAME_POPUP_PREFIX_SIZE bytes are the two colour control codes
+// written further down; the name itself starts after them. The buffer has to
+// hold that prefix plus the longest name in gRegionMapEntries plus the EOS,
+// because GetMapName() copies the whole name with no bound - a short buffer
+// here smashes the stack instead of failing the build.
+#define MAP_NAME_POPUP_PREFIX_SIZE 6
+
 static void ShowMapNamePopUpWindow(void)
 {
-    u8 mapDisplayHeader[27];
+    u8 mapDisplayHeader[MAP_NAME_POPUP_PREFIX_SIZE + MAP_NAME_LENGTH_MAX];
     u8 *withoutPrefixPtr;
     u8 x;
     const u8 *mapDisplayHeaderSource;
@@ -568,19 +575,19 @@ static void ShowMapNamePopUpWindow(void)
     {
         if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_TOP)
         {
-            withoutPrefixPtr = &(mapDisplayHeader[6]);
+            withoutPrefixPtr = &(mapDisplayHeader[MAP_NAME_POPUP_PREFIX_SIZE]);
             mapDisplayHeaderSource = sBattlePyramid_MapHeaderStrings[FRONTIER_STAGES_PER_CHALLENGE];
         }
         else
         {
-            withoutPrefixPtr = &(mapDisplayHeader[6]);
+            withoutPrefixPtr = &(mapDisplayHeader[MAP_NAME_POPUP_PREFIX_SIZE]);
             mapDisplayHeaderSource = sBattlePyramid_MapHeaderStrings[gSaveBlock2Ptr->frontier.curChallengeBattleNum];
         }
         StringCopy(withoutPrefixPtr, mapDisplayHeaderSource);
     }
     else
     {
-        withoutPrefixPtr = &(mapDisplayHeader[6]);
+        withoutPrefixPtr = &(mapDisplayHeader[MAP_NAME_POPUP_PREFIX_SIZE]);
         GetMapName(withoutPrefixPtr, gMapHeader.regionMapSectionId, 0);
     }
 

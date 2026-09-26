@@ -1002,11 +1002,55 @@ ANABEL
   one anywhere.
 ```
 
-### A captura
+### A captura — **é cena, não caixa de texto** (revisão 4, 25/09/2026)
+
+A fala da Anabel acima entrega a Ball e a narração abaixo diz que a criatura
+entrou nela. Na revisão 3 nada disso acontecia na tela: o jogo dava
+`givemon` e seguia. O autor pediu a animação, e ela existe agora, **sem nenhum
+gráfico novo de captura** — é a própria animação do motor:
+
+1. Última checagem de espaço (`getpartysize` + `ScriptCheckFreePokemonStorageSpace`),
+   **antes** de a Ball sair da mão dela. É o mesmo teste da fenda: só party cheia
+   **E** PC cheio bloqueia. Ficou aqui, e não depois do `givemon`, porque a partir
+   da linha seguinte a cena afirma que a criatura está dentro da Ball.
+2. `playse SE_BALL_THROW` + `delay 16`.
+3. `applymovement LOCALID_ULTRA_SPACE_ARENA_NECROZMA, enter_pokeball` — a
+   `MOVEMENT_ACTION_ENTER_POKEBALL` do motor: o sprite pisca branco, encolhe
+   dentro de uma Ball e termina invisível. É o que um follower faz ao voltar, e
+   funciona em qualquer objeto `OBJ_EVENT_GFX_SPECIES(...)`, porque
+   `FollowerSetGraphics` tira a espécie do próprio `graphicsId` e não presume
+   follower nenhum.
+4. `removeobject` do Necrozma + `addobject` da **Beast Ball**, que é um objeto
+   próprio (`LOCALID_ULTRA_SPACE_ARENA_BEAST_BALL`, `OBJ_EVENT_GFX_BEAST_BALL`,
+   `FLAG_TEMP_6`) parado em (10,8), o tile da criatura — a Ball cai exatamente
+   onde ela estava. Objeto separado porque a animação do motor não deixa nada
+   para trás: ela termina com o objeto invisível, e não há Ball para balançar.
+   O gráfico é o mesmo que `gPokeballGraphics[BALL_BEAST]` usa no follower; só
+   ganhou um `OBJ_EVENT_GFX_*` para poder entrar num `map.json`. É a Beast Ball
+   e não uma Poké Ball porque é **a fala dela** que diz qual Ball é.
+5. Três chacoalhadas e o clique, **só em som** (`SE_BALL` ×3 com `delay 40`,
+   depois `SE_BALL_OPEN`): é o que a captura em batalha soa, e não há animação
+   que possa dessincronizar.
+6. `playfanfare MUS_HG_CAUGHT` **depois do clique**, não depois da caixa de
+   presente, para a fanfarra cair no instante em que a Ball para.
+
+Só então o presente:
 
 `givemon SPECIES_NECROZMA, 75` — **`SPECIES_NECROZMA` e não `NECROZMA_ULTRA`**
 (as formas Ultra / Dusk Mane / Dawn Wings são formas de batalha), e **nível 75 e
 não 90**, porque o que o jogador recebe é a criatura **depois** de perder a luz.
+
+> **As duas linhas obrigatórias antes do `givemon`.** Nada no caminho do
+> `givemon` escreve `STR_VAR_1`, e `Common_Text_ReceivedMon` é literalmente
+> `"{PLAYER} received {STR_VAR_1}!"`. Sem
+> `setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_NECROZMA` +
+> `bufferspeciesname STR_VAR_1, SPECIES_NECROZMA` a caixa dizia
+> **"received SOLGALEO"** — porque `PartnerHarmonise`, três caixas antes, tinha
+> acabado de bufferizar o nome do parceiro para o `Text_VictoryHarmony`. Build
+> limpo anunciando o Pokémon errado; foi o item 4 do retorno do autor.
+> `VAR_TEMP_TRANSFERRED_SPECIES` **é** `VAR_TEMP_1`, que esta arena usa como
+> trava de uma-vez-por-visita do `ON_FRAME`: escrever `SPECIES_NECROZMA` nela
+> mantém o valor diferente de zero e a trava fechada. Nunca escreva 0 aqui.
 
 ```text
 # UltraSpaceArena_Text_VictoryCaught
@@ -1017,7 +1061,7 @@ não 90**, porque o que o jogador recebe é a criatura **depois** de perder a lu
   for a very long time.
 ```
 
-`FADE_TO_WHITE` → `removeobject` → `FADE_FROM_WHITE`.
+`FADE_TO_WHITE` → `removeobject` da Beast Ball → `FADE_FROM_WHITE`.
 
 ```text
 # UltraSpaceArena_Text_VictoryLeave

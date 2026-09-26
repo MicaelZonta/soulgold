@@ -579,6 +579,10 @@ extern const u8 EventScript_FallDownHole[];
 extern const u8 EventScript_FieldPoison[];
 extern const u8 EventScript_EggHatch[];
 extern const u8 AbnormalWeather_EventScript_EndEventAndCleanup_1[];
+
+// Rift Missions - Looker's once-a-day reminder call (data/scripts/rift_missions.inc),
+// fired by ShouldDoRiftMissionCall in src/field_control_avatar.c.
+extern const u8 RiftMissions_EventScript_LookerCall[];
 extern const u8 IslandCave_EventScript_OpenRegiEntrance[];
 extern const u8 MauvilleCity_EventScript_RegisterWallyCall[];
 extern const u8 Route119_EventScript_ScottWonAtFortreeGymCall[];

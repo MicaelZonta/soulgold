@@ -401,7 +401,7 @@ Route41_EventScript_TentacruelAttack1::
 # 201 "data/maps/Route41/scripts.pory"
 	waitmessage
 # 202 "data/maps/Route41/scripts.pory"
-	setflag FLAG_SYS_NO_CATCHING
+	setflag B_FLAG_NO_CATCHING
 # 203 "data/maps/Route41/scripts.pory"
 	setflag FLAG_GARBAGEFLAG
 # 204 "data/maps/Route41/scripts.pory"
@@ -411,7 +411,7 @@ Route41_EventScript_TentacruelAttack1::
 # 206 "data/maps/Route41/scripts.pory"
 	closemessage
 # 207 "data/maps/Route41/scripts.pory"
-	clearflag FLAG_SYS_NO_CATCHING
+	clearflag B_FLAG_NO_CATCHING
 # 208 "data/maps/Route41/scripts.pory"
 	clearflag FLAG_GARBAGEFLAG
 # 209 "data/maps/Route41/scripts.pory"

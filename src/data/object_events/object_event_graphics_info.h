@@ -4595,6 +4595,49 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Portal = {
     .images = sPicTable_Portal,
 };
 
+// A fenda do Altar do Sol e da Lua. 32x32 e nao 16x16: ela tem de ser uma coisa
+// que se atravessa, e nao um enfeite no chao. size = 32*32/2 = 512 bytes por
+// quadro. SHADOW_SIZE_NONE porque um rasgo no ar nao faz sombra.
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AltarRift = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_ALTAR_RIFT,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 512,
+    .width = 32,
+    .height = 32,
+    .paletteSlot = PALSLOT_NPC_3,
+    .shadowSize = SHADOW_SIZE_NONE,
+    .inanimate = TRUE,
+    .compressed = FALSE,
+    .tracks = TRACKS_NONE,
+    .oam = &gObjectEventBaseOam_32x32,
+    .subspriteTables = sOamTables_32x32,
+    .anims = sAnimTable_AltarRift,
+    .images = sPicTable_AltarRift,
+};
+
+// A Beast Ball como objeto de mapa, para a captura do Necrozma ser uma cena e
+// nao uma caixa de texto. Os graficos sao os mesmos que gPokeballGraphics[BALL_BEAST]
+// usa no follower (src/data/object_events/object_event_graphics_info_followers.h);
+// aqui eles so ganham um OBJ_EVENT_GFX_* para poder entrar num map.json.
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BeastBall = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_BALL_BEAST,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 256,
+    .width = 16,
+    .height = 32,
+    .paletteSlot = PALSLOT_NPC_3,
+    .shadowSize = SHADOW_SIZE_NONE,
+    .inanimate = TRUE,
+    .compressed = FALSE,
+    .tracks = TRACKS_NONE,
+    .oam = &gObjectEventBaseOam_16x32,
+    .subspriteTables = sOamTables_16x32,
+    .anims = sAnimTable_Following,
+    .images = sPicTable_BeastBall,
+};
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Timegear = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_TIMEGEAR,

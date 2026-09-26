@@ -31,6 +31,8 @@ enum SpeakerNames {
     SP_NAME_ELM,
     SP_NAME_LUSAMINE,
     SP_NAME_KURT,
+    SP_NAME_HECTOR,
+    SP_NAME_BOY,
     SP_NAME_COUNT
 };
 

@@ -1124,6 +1124,18 @@ static const struct SpriteFrameImage sPicTable_Brandon[] = {
     overworld_ascending_frames(gObjectEventPic_Brandon, 2, 4),
 };
 
+// A Beast Ball fora do sistema de follower: as mesmas cinco poses do
+// gObjectEventPic_BeastBall, mas numa tabela que existe mesmo com
+// OW_FOLLOWERS_POKEBALLS desligado, porque um object event de mapa usa esta.
+static const struct SpriteFrameImage sPicTable_BeastBall[] = {
+    overworld_frame(gObjectEventPic_BeastBall, 2, 4, 0),
+    overworld_frame(gObjectEventPic_BeastBall, 2, 4, 1),
+    overworld_frame(gObjectEventPic_BeastBall, 2, 4, 2),
+    overworld_frame(gObjectEventPic_BeastBall, 2, 4, 3),
+    overworld_frame(gObjectEventPic_BeastBall, 2, 4, 4),
+    overworld_frame(gObjectEventPic_BeastBall, 2, 4, 0),
+};
+
 static const struct SpriteFrameImage sPicTable_PokeBall[] = {
     overworld_frame(gObjectEventPic_PokeBall, 2, 4, 0),
     overworld_frame(gObjectEventPic_PokeBall, 2, 4, 1),
@@ -2268,6 +2280,14 @@ static const struct SpriteFrameImage sPicTable_Case[] = {
 
 static const struct SpriteFrameImage sPicTable_Portal[] = {
     overworld_frame(gObjectEventPic_Portal, 2, 2, 0),
+};
+
+// 32x32 = 4x4 tiles por quadro; quatro quadros na folha (128x32).
+static const struct SpriteFrameImage sPicTable_AltarRift[] = {
+    overworld_frame(gObjectEventPic_AltarRift, 4, 4, 0),
+    overworld_frame(gObjectEventPic_AltarRift, 4, 4, 1),
+    overworld_frame(gObjectEventPic_AltarRift, 4, 4, 2),
+    overworld_frame(gObjectEventPic_AltarRift, 4, 4, 3),
 };
 
 static const struct SpriteFrameImage sPicTable_Timegear[] = {

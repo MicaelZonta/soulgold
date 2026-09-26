@@ -5549,13 +5549,13 @@ static const struct SpriteFrameImage sPicTable_NecrozmaDuskMane[] = {
 static const struct SpriteFrameImage sPicTable_NecrozmaDawnWings[] = {
     overworld_ascending_frames(gObjectEventPic_NecrozmaDawnWings, 4, 4),
 };
-#if OW_BATTLE_ONLY_FORMS
+#if OW_BATTLE_ONLY_FORMS || OW_BATTLE_ONLY_FORMS_NECROZMA_ULTRA
 #if P_ULTRA_BURST_FORMS
 static const struct SpriteFrameImage sPicTable_NecrozmaUltra[] = {
     overworld_ascending_frames(gObjectEventPic_NecrozmaUltra, 4, 4),
 };
 #endif // P_ULTRA_BURST_FORMS
-#endif // OW_BATTLE_ONLY_FORMS
+#endif // OW_BATTLE_ONLY_FORMS || OW_BATTLE_ONLY_FORMS_NECROZMA_ULTRA
 #endif //P_FUSION_FORMS
 #endif //P_FAMILY_NECROZMA
 

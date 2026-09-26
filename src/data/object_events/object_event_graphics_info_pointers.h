@@ -1,3 +1,5 @@
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AltarRift;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BeastBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RuinManiac;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanMachBike;
@@ -666,6 +668,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_APRICORN_TREE] =            &gObjectEventGraphicsInfo_ApricornTree,
     [OBJ_EVENT_GFX_CASE] =                    &gObjectEventGraphicsInfo_Case,
     [OBJ_EVENT_GFX_PORTAL] =                    &gObjectEventGraphicsInfo_Portal,
+    [OBJ_EVENT_GFX_ALTAR_RIFT] =                &gObjectEventGraphicsInfo_AltarRift,
+    [OBJ_EVENT_GFX_BEAST_BALL] =                &gObjectEventGraphicsInfo_BeastBall,
     [OBJ_EVENT_GFX_TIMEGEAR] =                    &gObjectEventGraphicsInfo_Timegear,
     [OBJ_EVENT_GFX_LUSAMINE] =                    &gObjectEventGraphicsInfo_Lusamine,
     [OBJ_EVENT_GFX_LILLIE] =                    &gObjectEventGraphicsInfo_Lillie,

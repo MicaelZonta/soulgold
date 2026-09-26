@@ -41,6 +41,7 @@ SunMoonAltar_OnTransition::
 	call SunMoonAltar_EventScript_ApplyLusamineVisibility
 	call SunMoonAltar_EventScript_ApplyRiftVisibility
 	call SunMoonAltar_EventScript_ApplyWeather
+	call SunMoonAltar_EventScript_ApplyResidents
 	end
 
 @ The disc art is ON_LOAD and not ON_TRANSITION, and that is not a style choice:
@@ -97,6 +98,29 @@ SunMoonAltar_EventScript_ShowRift::
 	return
 SunMoonAltar_EventScript_HideRift::
 	setflag FLAG_TEMP_2
+	return
+
+@ Looker and Anabel LIVE here from state 16 on, and standing to attention facing
+@ a hole in the air for ever is not living there. From 16 they wander instead.
+@ setobjectmovementtype writes the TEMPLATE (gSaveBlock1Ptr->objectEventTemplates),
+@ not the live object, so it only takes effect on the next spawn - which is why it
+@ belongs in ON_TRANSITION, the one script that runs after
+@ LoadObjEventTemplatesFromHeader has reset the templates and before the objects
+@ spawn. Doing it from ON_LOAD or from an object script would change nothing.
+@ States 12..15 are left alone deliberately: Acts I and V place both of them by
+@ coordinate and turn them with turnobject, and a wandering NPC would break the
+@ blocking of two scenes with a clean build.
+@ The range is 1 in both axes (map.json), measured against the collision:
+@   Looker (13,13) can reach x 13..14, y 12..14   (12 and 15+ are wall)
+@   Anabel (15,13) can reach x 14..15, y 12..14
+@ Neither reaches (14,10), which is the rift, nor (14,11), which is the tile the
+@ player lands on coming back out of it; and the neck at y=12 is three tiles wide
+@ (x=13..15), so the two of them can never close it.
+SunMoonAltar_EventScript_ApplyResidents::
+	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, SunMoonAltar_EventScript_ResidentsOnDuty
+	setobjectmovementtype LOCALID_SUN_MOON_ALTAR_LOOKER, MOVEMENT_TYPE_WANDER_AROUND
+	setobjectmovementtype LOCALID_SUN_MOON_ALTAR_ANABEL, MOVEMENT_TYPE_WANDER_AROUND
+SunMoonAltar_EventScript_ResidentsOnDuty::
 	return
 
 @ 13..15 is the unstable chapter; everything else is a clear altar. setweather
