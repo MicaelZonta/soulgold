@@ -58,6 +58,7 @@ $(OBJEVENTGFXDIR)/people/special/<nome>.4bpp: %.4bpp: %.png
 O `.gbapal` **não** precisa de regra — a regra genérica do `Makefile` já serve.
 
 Para sprites maiores use o metatile correspondente (`-mwidth 4 -mheight 4` para 32x32, etc.).
+Ver a seção [Variante 32x32](#variante-32x32) — metatile, pic table, `size` e OAM mudam juntos.
 
 ### 3. `include/constants/event_objects.h`
 
@@ -169,6 +170,56 @@ NewBarkTown_PlayersHouse_2F_EventScript_Lusamine::
 
 ---
 
+## Variante 32x32
+
+Para boneco **mais largo que 16 px** (o overworld de comunidade do Guzma tem
+17 px). Precedente no jogo: `QuintyPlump`. Restrições e custo medidos em
+[`sprites-restricoes-e-custos.md`](sprites-restricoes-e-custos.md) §3.3 e §4.
+
+Folha **288x32** (9 quadros de 32x32, mesma ordem). Mudam quatro lugares, que
+têm que concordar entre si:
+
+```make
+# 2. spritesheet_rules.mk
+$(OBJEVENTGFXDIR)/people/special/<nome>.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+```
+
+```c
+// 5. pic table: 4x4 tiles por quadro
+    overworld_frame(gObjectEventPic_<Nome>, 4, 4, 0),   // ... até 8
+
+// 6. graphics info: size 512, 32x32, OAM de 32x32
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_<Nome> = {
+    TAG_NONE, OBJ_EVENT_PAL_TAG_<NOME>, OBJ_EVENT_PAL_TAG_NONE,
+    512, 32, 32, 4, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT,
+    &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard,
+    sPicTable_<Nome>, gDummySpriteAffineAnimTable};
+```
+
+Na arte: boneco centralizado na largura, pés na linha 30 (igual ao 16x32). O
+quadro é centralizado no tile, então um boneco de 17 px no meio de 32 fica no
+lugar certo.
+
+## Variante de um quadro só
+
+Para NPC que só fica parado de frente e nunca anda nem vira (proposta para os
+treinadores do Nexus). A folha tem 1 quadro (16x32 ou 32x32); a pic table
+repete o quadro 0 nove vezes, para `sAnimTable_Standard` continuar válida:
+
+```c
+static const struct SpriteFrameImage sPicTable_<Nome>[] = {
+    overworld_frame(gObjectEventPic_<Nome>, 2, 4, 0),   // 9 linhas iguais
+    ...
+};
+```
+
+`faceplayer` não vira; se ele andar, desliza. Treinador desse tipo não deve
+usar a visão de treinador (caminhar até o jogador): a luta começa por script.
+Ainda não validado no jogo — confira em runtime no primeiro uso.
+
+---
+
 ## A armadilha: `spritesheet_rules.mk`
 
 **Sintoma:** o NPC existe, dá para conversar com ele, colide — mas o
@@ -249,5 +300,7 @@ Build normal do projeto: `make release USE_LTO_ON_RELEASE=1 -j32`.
 | Sprite embaralhado / picotado | `-mwidth`/`-mheight` não batem com `overworld_frame(..., w, h, i)` |
 | Cores erradas | Falta a entrada em `sObjectEventSpritePalettes[]`, ou tag de paleta duplicada |
 | Só metade do sprite | `size`, `width` ou `height` errados no `GraphicsInfo` |
+| 32x32 picotado ou com pedaço de outro quadro | um dos quatro (metatile, `overworld_frame(..., 4, 4, i)`, `size 512`, OAM 32x32) ficou no valor de 16x32 |
+| Parte do desenho some (ex.: contorno) | cor igual à do índice 0 na paleta — reconverta com `sprite_gba.py` |
 | NPC não aparece de jeito nenhum | `flag` do `map.json` está setada, ou `NUM_OBJ_EVENT_GFX` não foi incrementado |
 | Sprite de outro NPC | Entrada no array de `_pointers.h` com índice errado |

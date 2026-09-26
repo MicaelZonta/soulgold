@@ -27,6 +27,7 @@ Ambos geram `Soulgold.gba`. O build regenera sozinho tudo que é derivado
 | **Terminei de mexer em flag** — sempre, antes de fechar | `catalogar-flags` |
 | Cena/NPC/presente controlado por flag que não funciona no jogo | `diagnosticar-flag` |
 | Front pic / back pic / field mugshot | `adicionar-grafico-trainer` |
+| Arte de personagem vinda de fora (Showdown, folha de comunidade); 16x32 × 32x32 × 1 quadro; custo de ROM | `converter-sprite` |
 | Tileset novo ou portado; mapa com desenho deslocado | `adicionar-tileset` |
 | Criar a arte/paletas de um tileset por código; peças do primário em outra cor; troca dia/noite | `montar-tileset` |
 | Protótipo de mapa (map.bin gerado, renders, NPCs) e a página de proposta | `prototipo-de-mapa` |

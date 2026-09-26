@@ -1,6 +1,6 @@
 ---
 name: adicionar-npc
-description: Use ao criar um object event novo com sprite proprio (NPC humano, Pokemon de overworld, qualquer boneco novo andando no mapa) - envolve PNG em graphics/object_events/pics, OBJ_EVENT_GFX_*, pic tables, graphics info e paleta. Use tambem ao diagnosticar NPC que aparece invisivel, embaralhado ou com paleta errada. Nao use se o NPC reaproveita um sprite que ja existe: nesse caso so o map.json basta.
+description: Use ao criar um object event novo com sprite proprio (NPC humano, Pokemon de overworld, qualquer boneco novo andando no mapa) - envolve PNG em graphics/object_events/pics, OBJ_EVENT_GFX_*, pic tables, graphics info e paleta. Cobre o padrao 16x32, a variante 32x32 (boneco mais largo que 16 px) e o NPC de um quadro so (parado de frente). Use tambem ao diagnosticar NPC que aparece invisivel, embaralhado ou com paleta errada. Nao use se o NPC reaproveita um sprite que ja existe: nesse caso so o map.json basta.
 ---
 
 # Adicionar NPC (object event) com sprite novo
@@ -59,11 +59,31 @@ transparentes, e o NPC parado virado para baixo não desenha nada.
 > É o passo que ninguém lembra. Confira que a regra existe **antes** de
 > dizer que terminou.
 
+## Qual formato?
+
+Restrições medidas e custo de memória de cada um:
+**[`.claude/sprites-restricoes-e-custos.md`](../../sprites-restricoes-e-custos.md)**.
+Arte vinda de fora (Showdown, folha em grade): converta antes com a skill
+`converter-sprite`.
+
+| Formato | Folha | Metatile / pic table | `size, width, height` | OAM |
+|---|---|---|---|---|
+| **16x32** (padrão) | 144x32 | `-mwidth 2 -mheight 4` / `overworld_frame(pic, 2, 4, i)` | `256, 16, 32` | `gObjectEventBaseOam_16x32`, `sOamTables_16x32` |
+| **32x32** (boneco > 16 px de largura) | 288x32 | `-mwidth 4 -mheight 4` / `overworld_frame(pic, 4, 4, i)` | `512, 32, 32` | `gObjectEventBaseOam_32x32`, `sOamTables_32x32` |
+| **1 quadro** (nunca anda nem vira) | 16x32 ou 32x32 | as 9 entradas da pic table apontam para o quadro 0 | igual ao tamanho escolhido | idem |
+
+As quatro colunas têm que concordar. Precedente de humano a pé em 32x32:
+`QuintyPlump` (`object_event_graphics_info.h`). O NPC de 1 quadro ainda não
+foi validado no jogo — confira em runtime no primeiro uso.
+
+No 16x32 o boneco tem **no máximo 16 px de largura** e, no elenco atual,
+18–22 px de altura com os pés na linha 30.
+
 ## Os 9 lugares
 
 | # | Arquivo |
 |---|---------|
-| 1 | `graphics/object_events/pics/people/<cat>/<nome>.png` — 144x32, indexado, ≤16 cores |
+| 1 | `graphics/object_events/pics/people/<cat>/<nome>.png` — 144x32 (ou 288x32), indexado, ≤16 cores |
 | 2 | **`spritesheet_rules.mk`** ← a armadilha |
 | 3 | `include/constants/event_objects.h` — `OBJ_EVENT_GFX_*`, `NUM_OBJ_EVENT_GFX++`, `OBJ_EVENT_PAL_TAG_*` |
 | 4 | `src/data/object_events/object_event_graphics.h` — `INCBIN` |
@@ -88,8 +108,9 @@ rm -f graphics/object_events/pics/people/<cat>/<nome>.4bpp* \
 ## Checklist
 
 - [ ] Confirmei que o sprite realmente não existe ainda
-- [ ] **Regra em `spritesheet_rules.mk` com `-mwidth 2 -mheight 4`**
-- [ ] PNG indexado, ≤16 cores, índice 0 transparente, 144x32
+- [ ] **Regra em `spritesheet_rules.mk`** (`-mwidth 2 -mheight 4`; 32x32: `-mwidth 4 -mheight 4`)
+- [ ] PNG indexado, ≤16 cores, índice 0 transparente, 144x32 (32x32: 288x32)
+- [ ] `python3 dev_scripts/sprites/sprite_gba.py conferir <png>` sem erro
 - [ ] Os 9 lugares preenchidos (o guia tem o diff de cada um)
 - [ ] Rodei no jogo e **vi o sprite parado virado para baixo** — é o frame
       que a armadilha apaga, e o único que prova que deu certo

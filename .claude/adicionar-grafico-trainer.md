@@ -11,6 +11,11 @@ São **quatro** gráficos diferentes, em lugares diferentes, e é fácil confund
 
 Para ligar o treinador ao gráfico, ver [`adicionar-batalha-npc.md`](adicionar-batalha-npc.md).
 
+Arte vinda de fora (Showdown 80x80, imagem ampliada, fundo colorido): converta
+com `python3 dev_scripts/sprites/sprite_gba.py front <entrada> <saida>` (skill
+`converter-sprite`). Restrições de todos os formatos e custo de ROM medido:
+[`sprites-restricoes-e-custos.md`](sprites-restricoes-e-custos.md).
+
 Referência upstream (em inglês, sem as particularidades do SoulGold):
 [`docs/tutorials/how_to_trainer_front_pic.md`](../docs/tutorials/how_to_trainer_front_pic.md) e
 [`how_to_trainer_back_pic.md`](../docs/tutorials/how_to_trainer_back_pic.md).

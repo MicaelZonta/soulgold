@@ -20,10 +20,18 @@ Passo a passo completo dos três:
 Confundir front pic com overworld sprite é o erro de partida mais comum.
 Para ligar o treinador ao gráfico, ver skill `adicionar-batalha-npc`.
 
+Arte de fora (Showdown 80x80, imagem ampliada, fundo colorido, mais de 16
+cores)? Converta antes com a skill `converter-sprite`
+(`python3 dev_scripts/sprites/sprite_gba.py front <entrada> <saida>`).
+Restrições e custo de ROM medidos: [`.claude/sprites-restricoes-e-custos.md`](../../sprites-restricoes-e-custos.md).
+
 ## Regras dos três
 
 - **64x64 px**, PNG **indexado**, **≤16 cores contando a transparência**
-  (índice 0 = transparente).
+  (índice 0 = transparente). 64x64 é fixo: arte 80x80 precisa encolher.
+- Nenhuma cor do desenho igual à cor do índice 0 — senão ela some junto
+  com o fundo (o contorno preto do Guzma sumiu assim).
+- Custo na ROM (comprimido): front pic ≈ 670 B, mugshot ≈ 400 B.
 - `.4bpp`, `.4bpp.smol` e `.gbapal` são **gerados e gitignored** — commite só o `.png`.
 - **Front pic e mugshot não precisam de regra em `spritesheet_rules.mk`.**
   Aquilo é só para object events (que usam metatile). Não confunda com a
@@ -50,6 +58,7 @@ Para ligar o treinador ao gráfico, ver skill `adicionar-batalha-npc`.
 
 - [ ] É mesmo o gráfico certo dos quatro
 - [ ] PNG 64x64 indexado, ≤16 cores, índice 0 transparente
+      (`python3 dev_scripts/sprites/sprite_gba.py conferir <png>`)
 - [ ] Front pic: `u32` + `.4bpp.smol`; back pic: `u8` + `.4bpp`
 - [ ] Entrada em `gTrainerSprites[]` (senão é crash, não sprite errado)
 - [ ] Front pic novo inserido **antes** de `TRAINER_PIC_FRONT_COUNT`
