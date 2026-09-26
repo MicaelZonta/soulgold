@@ -169,8 +169,8 @@ Garchomp, Dragapult…) e Slaking são **Pokémon comuns** aqui.
 
 ### Míticos: lendário ou semi-lendário
 
-Decisão do autor: **depende do peso do Pokémon** — Mew é semi-lendário,
-Darkrai e Arceus são lendários. O BST **não** serve de régua aqui: quase todo
+Decisão do autor: **depende do peso do Pokémon**. A tabela abaixo está
+**fechada** (26/09/2026). O BST **não** serve de régua aqui: quase todo
 mítico tem BST 600 (Mew e Darkrai inclusive). A régua usada é o **nível de
 poder competitivo** (quem historicamente é "Uber" nos jogos oficiais conta
 como lendário).
@@ -180,31 +180,34 @@ como lendário).
 | Arceus | 720 | **Lendário** | decidido |
 | Darkrai | 600 | **Lendário** | decidido |
 | Mew | 600 | Semi-lendário | decidido |
-| Deoxys (todas as formas) | 600 | Lendário | proposta |
-| Hoopa (Unbound 680) | 600/680 | Lendário | proposta |
-| Shaymin (Sky) | 600 | Lendário | proposta — a forma Land também ocupa a vaga, porque vira Sky |
-| Genesect | 600 | Lendário | proposta |
-| Magearna (e Original) | 600 | Lendário | proposta |
-| Marshadow | 600 | Lendário | proposta |
-| Celebi | 600 | Semi-lendário | proposta |
-| Jirachi | 600 | Semi-lendário | proposta |
-| Manaphy | 600 | Semi-lendário | proposta |
-| Phione | 480 | Semi-lendário | proposta |
-| Victini | 600 | Semi-lendário | proposta |
-| Keldeo | 580 | Semi-lendário | proposta |
-| Meloetta | 600 | Semi-lendário | proposta |
-| Diancie | 600 | Semi-lendário | proposta |
-| Volcanion | 600 | Semi-lendário | proposta |
-| Zeraora | 600 | Semi-lendário | proposta |
-| Meltan / Melmetal | 300/600 | Semi-lendário | proposta |
-| Zarude | 600 | Semi-lendário | proposta |
-| Pecharunt | 600 | Semi-lendário | proposta |
+| Deoxys (todas as formas) | 600 | Lendário | decidido |
+| Hoopa (Unbound 680) | 600/680 | Lendário | decidido |
+| Genesect | 600 | Lendário | decidido |
+| Magearna (e Original) | 600 | Lendário | decidido |
+| Marshadow | 600 | Lendário | decidido |
+| Shaymin (Land e Sky) | 600 | Semi-lendário | decidido |
+| Celebi | 600 | Semi-lendário | decidido |
+| Jirachi | 600 | Semi-lendário | decidido |
+| Manaphy | 600 | Semi-lendário | decidido |
+| Phione | 480 | Semi-lendário | decidido |
+| Victini | 600 | Semi-lendário | decidido |
+| Keldeo | 580 | Semi-lendário | decidido |
+| Meloetta | 600 | Semi-lendário | decidido |
+| Diancie | 600 | Semi-lendário | decidido |
+| Volcanion | 600 | Semi-lendário | decidido |
+| Zeraora | 600 | Semi-lendário | decidido |
+| Meltan / Melmetal | 300/600 | Semi-lendário | decidido |
+| Zarude | 600 | Semi-lendário | decidido |
+| Pecharunt | 600 | Semi-lendário | decidido |
 
 Mítico novo no jogo → entra nesta tabela antes de aparecer num time.
 
-- O Mega pode ser de qualquer categoria. Um lendário ou semi-lendário que é o
-  Mega do time (Mega Mewtwo, Mega Latios, Mega Heatran…) ocupa **as duas
-  vagas** — a da categoria e a de Mega.
+- **A Mega de um lendário ou semi-lendário ocupa as duas vagas**: a da
+  categoria **e** a de Mega. Exemplos do autor: **Mewtwo com Mewtwonite X ou Y** =
+  vaga de lendário + vaga de Mega; **Diancie com Diancite** = vaga de
+  semi-lendário + vaga de Mega. O mesmo vale para Mega Rayquaza, Mega Latios,
+  Mega Heatran, Mega Darkrai, Mega Zeraora, Mega Magearna e qualquer outra.
+  Nesse time não cabe outra Mega nem outro Pokémon da mesma categoria.
 - Primal (Kyogre/Groudon) conta como a vaga de **Mega**.
 
 ### Singles ou Doubles
@@ -299,8 +302,7 @@ contra elas (ex.: não dar Poké Ball em quantidade como prêmio).
 
 ## Pontos a confirmar com o autor
 
-1. A classificação dos **míticos marcados "proposta"** no R10.
-2. **Estado salvo do Daily:** guardar as escolhas de teleporte e quem já foi
+1. **Estado salvo do Daily:** guardar as escolhas de teleporte e quem já foi
    vencido precisa de espaço no save (vars ou flags diárias). Definir na
    implementação, com as skills `alocar-flag` e `catalogar-flags`.
 
@@ -318,3 +320,7 @@ contra elas (ex.: não dar Poké Ball em quantidade como prêmio).
 - 26/09/2026 — depois de perder no Daily o jogador anda desde a primeira sala,
   mas **não luta** com quem já venceu.
 - 26/09/2026 — restrição de EV/IV, Poké Balls e TMs é **direção futura** (R14).
+- 26/09/2026 — tabela dos míticos **fechada**: Shaymin semi-lendário; o resto
+  como estava proposto.
+- 26/09/2026 — Mega de lendário/semi-lendário ocupa **as duas vagas**
+  (Mewtwo + Mewtwonite X/Y = lendário + Mega; Diancie + Diancite = semi + Mega).
