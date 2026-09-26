@@ -5,7 +5,7 @@
 <!-- nexus-legenda -->
 > **Checklist do Nexus (Rift Missions).** O `[x]` de cada treinador agora significa **pronto para uso**: tem **sprite de overworld** e **battle sprite** (os dois obrigatórios). Embaixo de cada nome, a linha de status mostra o resto — mugshot, time das Rift Missions, lendário associado, diálogo genérico e diálogo do lendário — e leva à **ficha** do treinador em `.claude/rift_missions/nexus/<região>/`, com as constantes, os arquivos, os IDs de batalha e as flags. Cada treinador tem **uma** ficha, mesmo aparecendo em várias seções. Hoje: **60 de 260** fichas prontas. Estado conferido no código em 25/09/2026.
 >
-> `📝` = proposta escrita, aguardando o autor. Os campeões das 11 Ultra Beasts estão em [`nexus/ULTRA_BEASTS.md`](rift_missions/nexus/ULTRA_BEASTS.md) (26/09/2026).
+> `📝` = proposta escrita, aguardando o autor. Qual treinador é o campeão de cada lendário: [`POOL_LENDARIOS.md`](rift_missions/nexus/POOL_LENDARIOS.md).
 <!-- /nexus-legenda -->
 
 ## Geração I — Kanto

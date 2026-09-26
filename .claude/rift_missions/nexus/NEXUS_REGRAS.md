@@ -324,6 +324,25 @@ O que o jogador **fez** no dia cabe numa única var de 16 bits (nome sugerido
   bloco termina em `VARS_END = 0x42FF`, então há espaço. A flag diária nova
   segue as skills `alocar-flag` e `catalogar-flags`.
 
+## R16. Falas dos treinadores: genérica e de campeão
+
+Decidido pelo autor em 26/09/2026. Todo treinador do Nexus tem **dois
+registros** de fala, na própria ficha:
+
+| Onde aparece | Registro | Sobre o quê |
+|---|---|---|
+| Uma das **4 primeiras salas** (R5) | **Genérico** (`_Intro`, `_Defeat`) | **Ele mesmo.** Não cita o lugar nem o lendário do dia: serve para qualquer dia. |
+| **Campeão**, logo antes do lendário | **Do lendário** (`_ChampionIntro`, `_ChampionDefeat`, `_ChampionAfter`) | **O lendário:** o que o treinador vê nele, pelo olhar de quem é. |
+
+- O nome da espécie não aparece na fala; ela aparece na batalha.
+- A relação lendário → campeão fica em [`POOL_LENDARIOS.md`](POOL_LENDARIOS.md).
+- **No código:** cada luta do Nexus é um `TRAINER_NEXUS_*` próprio (flag de
+  treinador exclusiva). O jogo está no teto de treinadores (`MAX_TRAINERS_COUNT`
+  = 1164), os IDs 1056–1163 não servem (`RECLAIMED_TRAINER_FLAGS`) e subir o
+  teto desloca o bloco `SYSTEM_FLAGS`; reaproveitar IDs aposentados abaixo de
+  1056 é o caminho mais barato. `_ChampionAfter` usa a plaquinha de fala
+  (skill `nomear-falante`), que pede um `SP_NAME_*` por treinador.
+
 ## Checklist rápido para um time do Nexus
 
 - [ ] 6 Pokémon
@@ -334,6 +353,7 @@ O que o jogador **fez** no dia cabe numa única var de 16 bits (nome sugerido
 - [ ] Nature, item, habilidade e 4 golpes escritos
 - [ ] plano de jogo claro (R12) e cara do personagem
 - [ ] scaling `PARTY_HIGHEST` (R2)
+- [ ] falas genérica e de campeão na ficha (R16)
 - [ ] ficha do treinador atualizada (`nexus/<região>/<treinador>.md`)
 
 ## Pontos a confirmar com o autor
@@ -360,3 +380,5 @@ Nenhum em aberto.
   (Mewtwo + Mewtwonite X/Y = lendário + Mega; Diancie + Diancite = semi + Mega).
 - 26/09/2026 — estado do Daily numa var só; sorteio pela `dailySeed`; zera
   pelo padrão do Kurt (R15).
+- 26/09/2026 — dois registros de fala: genérico nas 4 salas, sobre o lendário
+  no campeão (R16).

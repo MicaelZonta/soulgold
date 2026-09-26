@@ -31,6 +31,29 @@ Conferido no código em 25/09/2026.
 | Ultra Beast | 11 | 2 | 9 |
 | Paradoxo | 20 | 20 | 0 |
 
+## Campeão de cada lendário
+
+O campeão é a quinta luta do Daily, logo antes da boss battle (R5 em
+[`NEXUS_REGRAS.md`](NEXUS_REGRAS.md)). A ficha do treinador traz o time, o
+fragmento e as falas. Lendário fora desta tabela ainda não tem campeão.
+
+| Lendário | Categoria | Campeão | Situação |
+|---|---|---|---|
+| Kyogre | Lendário restrito | [Misty](kanto/misty.md) | aprovado (design §10) |
+| Mewtwo | Lendário restrito | [Giovanni](kanto/giovanni.md) | aprovado (design §10) |
+| Genesect | Mítico | [Giovanni](kanto/giovanni.md) | aprovado (design §10) |
+| Nihilego | Ultra Beast | [Colress](unova/colress.md) | 📝 proposta, 26/09 |
+| Buzzwole | Ultra Beast | [Bruno](kanto/bruno.md) | 📝 proposta, 26/09 |
+| Pheromosa | Ultra Beast | [Elesa](unova/elesa.md) | 📝 proposta, 26/09 |
+| Xurkitree | Ultra Beast | [Volkner](sinnoh/volkner.md) | 📝 proposta, 26/09 |
+| Celesteela | Ultra Beast | [Steven](hoenn/steven.md) | 📝 proposta, 26/09 |
+| Kartana | Ultra Beast | [Ramos](kalos/ramos.md) | 📝 proposta, 26/09 |
+| Guzzlord | Ultra Beast | [Guzma](alola/guzma.md) | 📝 proposta, 26/09 |
+| Poipole | Ultra Beast | [Zossie](alola/zossie.md) | 📝 proposta, 26/09 · só depois de capturado (R1) |
+| Naganadel | Ultra Beast | [Soliera](alola/soliera.md) | 📝 proposta, 26/09 · só depois de capturado (R1) |
+| Stakataka | Ultra Beast | [Byron](sinnoh/byron.md) | 📝 proposta, 26/09 |
+| Blacephalon | Ultra Beast | [Fantina](sinnoh/fantina.md) | 📝 proposta, 26/09 |
+
 ## Sem método de obtenção
 
 Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogador não tem como pegar.

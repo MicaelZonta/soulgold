@@ -40,7 +40,9 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_ELESA` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party). Segue R10–R13 (1 lendário, 1 semi-lendário, 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2). O plano de jogo está em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.3.
+📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_ELESA`, campeão da Pheromosa. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
+
+Lendário **Miraidon**, semi-lendário **Zapdos**, Mega **Eelektross** (Electrite: Eelevate), mais Zebstrika, Galvantula e Emolga. O Miraidon é o palco: acende o Electric Terrain ao entrar (Hadron Engine), e todo golpe elétrico do time sobe. *Plano:* o Zapdos põe Tailwind, a Galvantula arma Sticky Web e a Emolga prende com Encore e Light Screen. Zapdos e Emolga voam, e o Eelektross flutua, então o time não cai de uma vez para um golpe de Terra.
 
 | Pokémon | Item | Habilidade | Nature | Golpes |
 |---|---|---|---|---|
@@ -51,13 +53,152 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 | Galvantula | Focus Sash | Compound Eyes | Timid | Sticky Web, Thunder, Bug Buzz, Energy Ball |
 | Emolga | Light Clay | Motor Drive | Timid | Nuzzle, Encore, Light Screen, U-turn |
 
+<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>trainerproc</code>, constantes, learnsets e categorias)</summary>
+
+```
+=== TRAINER_NEXUS_ELESA ===
+Name: Elesa
+Class: Leader
+Pic: Elesa
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Smart Trainer
+
+Miraidon @ Choice Specs
+Timid Nature
+Level: 100
+Ability: Hadron Engine
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Electro Drift
+- Draco Meteor
+- Volt Switch
+- Dazzling Gleam
+
+Zapdos @ Leftovers
+Timid Nature
+Level: 100
+Ability: Static
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Tailwind
+- Thunderbolt
+- Hurricane
+- Roost
+
+Eelektross @ Electrite
+Modest Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunderbolt
+- Flamethrower
+- Giga Drain
+- Knock Off
+
+Zebstrika @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Sap Sipper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Supercell Slam
+- High Horsepower
+- Flame Charge
+- Volt Switch
+
+Galvantula @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Compound Eyes
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sticky Web
+- Thunder
+- Bug Buzz
+- Energy Ball
+
+Emolga @ Light Clay
+Timid Nature
+Level: 100
+Ability: Motor Drive
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Nuzzle
+- Encore
+- Light Screen
+- U-turn
+```
+
+</details>
+
+
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026:** campeão da **Pheromosa** (UB-02 Beauty) no Nexus: a quinta luta, logo antes da boss battle. Por quê, e como é o fragmento: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.3.
+📝 **Proposta de 26/09/2026, aguardando o autor.** **Pheromosa** (UB-02 Beauty). Elesa é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
+
+**Quem é.** Elesa, líder de Nimbasa e modelo famosa.
+
+**A criatura.** Pheromosa se recusa a tocar em qualquer coisa, talvez por sentir alguma impureza neste mundo. Emite um feromônio que deixa quem a encara confuso, como se atingido pela beleza dela. Mundo em USUM: Ultra Desert.
+
+**O fragmento.** Areia branca e uma passarela reta, branca, iluminada por baixo. Nada deixa marca: quando o jogador olha para trás, as próprias pegadas já sumiram. Leitura visual: passarela de desfile no deserto.
+
+**Falas do fragmento** (narração e Looker; tocam só nos dias desta UB):
+
+**Chegada**
+
+> White sand, and a straight white path across it, lit from below.
+>
+> Nothing marked it. When you looked back, your own footprints were already gone.
+
+**Boss**
+
+> Someone was already standing at the end of the path. Perfectly still. Perfectly clean.
+>
+> For a moment, you forgot what you were doing there.
+
+**Ficha do Looker, no altar, no dia em que a UB é capturada**
+
+> File UB-02. Beauty.
+>
+> You described the creature, and I wrote down the word “lovely.”
+>
+> I have crossed it out. It is still perfectly legible. That, I think, is the whole report.
+
+<details><summary><code>.inc</code> do fragmento</summary>
+
+```asm
+Nexus_Text_Beauty_Arrival:
+	.string "White sand, and a straight white path\n"
+	.string "across it, lit from below.\p"
+	.string "Nothing marked it. When you looked\n"
+	.string "back, your own footprints were already\l"
+	.string "gone.$"
+
+Nexus_Text_Beauty_Boss:
+	.string "Someone was already standing at the\n"
+	.string "end of the path. Perfectly still.\l"
+	.string "Perfectly clean.\p"
+	.string "For a moment, you forgot what you were\n"
+	.string "doing there.$"
+
+Nexus_Text_Beauty_LookerFile:
+	.string "{SPEAKER NAME_LOOKER}File UB-02. Beauty.\p"
+	.string "You described the creature, and I wrote\n"
+	.string "down the word “lovely.”\p"
+	.string "I have crossed it out. It is still\n"
+	.string "perfectly legible. That, I think, is the\l"
+	.string "whole report.$"
+```
+
+</details>
+
 
 ### Diálogo genérico
 
-📝 **Proposta de 26/09/2026.** Quando Elesa cai numa das **quatro primeiras salas** (qualquer fragmento, qualquer lendário). Fala dele mesmo, sem citar o lugar nem a criatura do dia. Rótulos `Nexus_Text_Elesa_Intro` e `_Defeat` em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc).
+📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Elesa cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
 
@@ -71,10 +212,30 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 > You made me forget my pose. Nobody does that.
 
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Elesa_Intro:
+	.string "No stage, no lights, no audience. This is\n"
+	.string "the strangest runway I've ever walked.\p"
+	.string "Well. I never stop in the middle of a\n"
+	.string "show.\p"
+	.string "You'll have to be my audience -- and my\n"
+	.string "opponent. Try to keep up!$"
+
+Nexus_Text_Elesa_Defeat:
+	.string "You made me forget my pose. Nobody\n"
+	.string "does that.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026.** Quando Elesa é o **campeão**, a luta logo antes da Pheromosa. Aqui a fala é sobre a criatura: o que Elesa viu nela, pelo olhar de quem é. Ninguém diz o nome da espécie. Rótulos `Nexus_Text_Elesa_ChampionIntro`, `_ChampionDefeat` e `_ChampionAfter`.
+📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Elesa é o **campeão**, a luta logo antes da Pheromosa. A fala é sobre a criatura, sem dizer o nome dela.
+
+A Elesa só viu a criatura de longe, porque ela não deixa nada chegar perto: move-se como a última coisa limpa do mundo e olha todo o resto como uma mancha. Todo mundo para e encara, e a Elesa conhece esse olhar do outro lado, de uma carreira inteira. A vitória do jogador: ele nunca encarou, estava ocupado lutando. O que fica: ser admirado não é ser amado, é mais solitário, e a criatura acha que nunca ter sido tocada é perfeição. "Vá mostrar o que ela está perdendo. Suje as mãos."
 
 **Antes da luta**
 
@@ -97,4 +258,35 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 > That creature has never been touched by anything in its life, and it thinks that's perfection.
 >
 > Go show it what it's missing. Get your hands dirty.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Elesa_ChampionIntro:
+	.string "I've seen it. From a distance -- it\n"
+	.string "won't allow anything closer.\p"
+	.string "It moves like the only clean thing left\n"
+	.string "in the world, and it looks at everything\l"
+	.string "else like a stain.\p"
+	.string "Everyone who sees it stops and stares.\n"
+	.string "I know that look. I've been on the\l"
+	.string "other side of it my whole career.\p"
+	.string "…Enough. Battle me. And don't you dare\n"
+	.string "just stand there staring.$"
+
+Nexus_Text_Elesa_ChampionDefeat:
+	.string "You never stared once. You were too\n"
+	.string "busy fighting. …Good.$"
+
+Nexus_Text_Elesa_ChampionAfter:
+	.string "{SPEAKER NAME_ELESA}People think being admired is the same\n"
+	.string "as being loved. It isn't. It's lonelier.\p"
+	.string "That creature has never been touched\n"
+	.string "by anything in its life, and it thinks\l"
+	.string "that's perfection.\p"
+	.string "Go show it what it's missing. Get your\n"
+	.string "hands dirty.$"
+```
+
+</details>
 
