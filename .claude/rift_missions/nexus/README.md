@@ -12,6 +12,10 @@ de lá aponta para a ficha daqui. O lado dos lendários — quais existem no
 jogo e quais já têm método de obtenção — está em
 [`POOL_LENDARIOS.md`](POOL_LENDARIOS.md).
 
+**Campeões das Ultra Beasts:** [`ULTRA_BEASTS.md`](ULTRA_BEASTS.md) — o quinto
+treinador de cada uma das 11 UBs (conceito do fragmento, time R10–R13, falas).
+Proposta de 26/09/2026, aguardando o autor.
+
 ## Estrutura
 
 ```

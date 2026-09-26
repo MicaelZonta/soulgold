@@ -52,11 +52,11 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 
 ### Time das Rift Missions
 
-_Não definido._ Ponto de partida mais forte já escrito: `TRAINER_STEVEN` (até Lv86).
+📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_STEVEN` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party): Deoxys · Jirachi · Mega Metagross + Skarmory, Claydol, Cradily. Segue R10–R13; plano de jogo em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.5.
 
 ### Lendário associado
 
-_Nenhum ainda._
+📝 **Proposta de 26/09/2026:** campeão da **Celesteela** (UB-04 Blaster) no Nexus. Por quê: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.5.
 
 ### Diálogo genérico
 
@@ -64,4 +64,4 @@ _Não escrito._ (texto do jogo em inglês)
 
 ### Diálogo associado ao lendário
 
-_Não escrito._ (texto do jogo em inglês)
+📝 **Proposta de 26/09/2026:** `Nexus_Text_Blaster_Intro`, `_Defeat` e `_After` (mais `_Arrival`, `_Boss` e a `_LookerFile` do fragmento) em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc); leitura corrida em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.5.

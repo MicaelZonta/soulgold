@@ -1984,6 +1984,16 @@ End of Time e Legendary Nexus foram nomes de trabalho usados para esse conteúdo
 
 A relação entre treinador e lendário não precisa ser exclusiva nem individual. Os exemplos definidos são Misty associada a Kyogre e Giovanni podendo anteceder Mewtwo ou Genesect. Cada batalha deve ter uma frase contextual; o texto e os pools serão desenvolvidos depois.
 
+> **Proposta de 26/09/2026 — as Ultra Beasts do Nexus.** O quinto treinador e as
+> falas das 11 Ultra Beasts estão em
+> [`nexus/ULTRA_BEASTS.md`](nexus/ULTRA_BEASTS.md), com os
+> times e os textos em arquivos ao lado. Propõe uma regra para o Nexus inteiro:
+> cada fragmento é o **codinome** da criatura (UB-01 Symbiont…), e o quinto
+> treinador é um **eco**, montado pelo fragmento a partir de alguém cuja essência
+> ressoa com o conceito, de qualquer região. Cada luta do Nexus é um
+> `TRAINER_NEXUS_*` próprio, com a sua flag de treinador. Aguarda aprovação do
+> autor.
+
 Lendários já capturados continuam elegíveis. O loop é infinito e permite capturar novas cópias, inclusive para procurar IVs melhores. Não aplicar um filtro que limite encontros a espécies ainda não capturadas.
 
 O objetivo anterior de ampla disponibilidade de lendários permanece como direção para o pool, mas a lista exata de espécies, formas, míticos e Ultra Beasts elegíveis exige uma tabela própria. Não presumir que todas as formas temporárias são capturas independentes.

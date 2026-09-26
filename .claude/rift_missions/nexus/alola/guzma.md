@@ -40,11 +40,11 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-_Não definido._
+📝 **Proposta de 26/09/2026, aguardando o autor.** `TRAINER_NEXUS_GUZMA` em [`ULTRA_BEASTS.party`](../ULTRA_BEASTS.party): Yveltal · Buzzwole · Mega Golisopod + Ariados, Scizor, Vikavolt. Segue R10–R13; plano de jogo em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.7.
 
 ### Lendário associado
 
-_Nenhum ainda._
+📝 **Proposta de 26/09/2026:** campeão da **Guzzlord** (UB-05 Glutton) no Nexus. Por quê: [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.7.
 
 ### Diálogo genérico
 
@@ -52,4 +52,4 @@ _Não escrito._ (texto do jogo em inglês)
 
 ### Diálogo associado ao lendário
 
-_Não escrito._ (texto do jogo em inglês)
+📝 **Proposta de 26/09/2026:** `Nexus_Text_Glutton_Intro`, `_Defeat` e `_After` (mais `_Arrival`, `_Boss` e a `_LookerFile` do fragmento) em [`ULTRA_BEASTS_TEXTS.inc`](../ULTRA_BEASTS_TEXTS.inc); leitura corrida em [`ULTRA_BEASTS.md`](../ULTRA_BEASTS.md) §3.7.
