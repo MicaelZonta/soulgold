@@ -30,6 +30,7 @@ Ambos geram `Soulgold.gba`. O build regenera sozinho tudo que é derivado
 | Tileset novo ou portado; mapa com desenho deslocado | `adicionar-tileset` |
 | Criar a arte/paletas de um tileset por código; peças do primário em outra cor; troca dia/noite | `montar-tileset` |
 | Protótipo de mapa (map.bin gerado, renders, NPCs) e a página de proposta | `prototipo-de-mapa` |
+| O que tem numa cidade/rota (casas, ginásio…), por onde se entra, se um mapa está ligado ao mundo | `mapa-de-ligacoes` |
 | Bordas, árvores, montanha; revisar mapa; aprender com retoque do autor no Porymap | `acabamento-de-mapa` |
 | Treinador batalhável (ID, time, raio de visão) | `adicionar-batalha-npc` |
 | Batalha que continua mesmo se o jogador perder | `batalha-sem-blackout` |
@@ -37,6 +38,7 @@ Ambos geram `Soulgold.gba`. O build regenera sozinho tudo que é derivado
 | Script que entrega Pokémon ou ovo (`givemon`, `giveegg`) | `entregar-pokemon-ou-ovo` |
 | Nome de quem fala numa plaquinha acima da caixa de diálogo | `nomear-falante` |
 | Evento em modo esqueleto (Rift Missions) e seu doc de implementação | `evento-esqueleto` |
+| **Qualquer coisa do Nexus** (loop pós-Necrozma: times, sorteio, pool de lendários, prêmio) — ler antes, sempre | `.claude/rift_missions/nexus/NEXUS_REGRAS.md` |
 | Transformar esqueleto em história: falas, arco da cena, surpresa, feedback do autor | `evoluir-historia-de-evento` |
 
 Todas cobrem armadilhas que **não dão erro de build** — compilam limpo e

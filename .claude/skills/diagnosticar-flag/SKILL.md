@@ -126,6 +126,11 @@ se um mapa vivo chamar aquela label:
 git grep -n "<Label_Do_Script>" -- data/maps
 ```
 
+O mesmo vale para mapa que **está** na ROM mas que ninguém alcança (SS Aqua,
+Safari Zone, Battle Frontier de Johto...): a flag compila e nunca muda.
+`python3 dev_scripts/map_graph.py info <Mapa>` diz se o mapa é `alcancavel`,
+`INALCANCAVEL` ou `fora da ROM` — skill `mapa-de-ligacoes`.
+
 ## 7. O estado zerou sozinho
 
 - `FLAG_TEMP_*` (`0x00–0x1F`): zeram a cada carregamento de mapa

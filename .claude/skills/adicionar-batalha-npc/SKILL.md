@@ -77,6 +77,7 @@ Renomeie o `TRAINER_UNUSED_*` daquele ID, **mantendo o número**.
 | Editou `src/data/trainers.h` e sumiu | É **gerado** e gitignored — a fonte é `trainers.party` |
 | Texto pós-batalha nunca aparece | Ele só roda ao **falar** com o treinador já derrotado — correto |
 | Treinador invisível | É sprite, não batalha → skill `adicionar-npc` |
+| Treinador certo, mas ninguém nunca enfrenta | Mapa `INALCANCAVEL` ou `fora da ROM` (ex.: SS Aqua). Confira com `python3 dev_scripts/map_graph.py info <Mapa>` → skill `mapa-de-ligacoes` |
 | **Build limpo, batalha estoura ao começar** | `Ability:` que a espécie não tem. O trainerproc aceita qualquer ability; quem valida é `CreateNPCTrainerPartyFromTrainer`, em runtime (`assertf(... "illegal ability %S for %S")`, `src/battle_main.c:2131`) |
 
 ## Ability: conferir contra a espécie

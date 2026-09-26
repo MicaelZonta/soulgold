@@ -1985,6 +1985,12 @@ End of Time e Legendary Nexus foram nomes de trabalho usados para esse conteúdo
 >   expedição quiser mapa próprio, quem escolhe o destino é o script da fenda, e
 >   a decisão é do doc do loop.
 
+> **Regras do Nexus (25/09/2026):** o loop tem regras próprias do autor em
+> [`nexus/NEXUS_REGRAS.md`](nexus/NEXUS_REGRAS.md) — modo Daily (4 treinadores
+> escolhidos por teleporte + o campeão do lendário + boss), formato
+> Traditional, level scaling no maior nível da equipe, pool condicionado à
+> captura. Onde esta seção e aquele arquivo divergirem, **vale o arquivo**.
+
 ### Estrutura do loop
 
 1. Iniciar uma expedição com Looker e Anabel no altar.
@@ -1994,6 +2000,11 @@ End of Time e Legendary Nexus foram nomes de trabalho usados para esse conteúdo
 5. Retornar à base e iniciar outra expedição quando desejar.
 
 A relação entre treinador e lendário não precisa ser exclusiva nem individual. Os exemplos definidos são Misty associada a Kyogre e Giovanni podendo anteceder Mewtwo ou Genesect. Cada batalha deve ter uma frase contextual; o texto e os pools serão desenvolvidos depois.
+
+> **Proposta de 26/09/2026 — as Ultra Beasts do Nexus.** Cada uma das 11 UBs
+> tem um treinador campeão proposto; a relação lendário → treinador está em
+> [`nexus/POOL_LENDARIOS.md`](nexus/POOL_LENDARIOS.md), e o time, o fragmento e
+> as falas ficam na ficha de cada treinador. Aguarda aprovação do autor.
 
 Lendários já capturados continuam elegíveis. O loop é infinito e permite capturar novas cópias, inclusive para procurar IVs melhores. Não aplicar um filtro que limite encontros a espécies ainda não capturadas.
 
