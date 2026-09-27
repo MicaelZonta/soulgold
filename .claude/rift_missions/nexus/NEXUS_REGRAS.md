@@ -84,7 +84,8 @@ nem ter estrutura preparada sem pedido do autor.
 1. **4 treinadores sorteados**
 2. **1 "Campeão" do lendário** sorteado — o treinador associado ao lendário da
    vez (fichas do Nexus, seção "Lendário associado")
-3. **Boss battle contra o lendário** sorteado, com captura possível
+3. **Boss battle contra o lendário** sorteado; na vitória o jogador leva um
+   fragmento dele, no nível 1 e na primeira forma (R17)
 
 "As 5 lutas" = os 4 treinadores + o campeão. O boss vem depois.
 
@@ -106,7 +107,8 @@ portanto, a forma de curar sem perder progresso.
 
 A luta com o lendário é **boss battle** (`setbossbattle` / macros
 `bosslegendaryencounter*`, barras + multiplicador + perfil de fase). O boss
-segue o R2 de nível.
+segue o R2 de nível. O que o jogador leva no fim segue o R17 (nível 1, primeira
+forma).
 
 ## R7. Loop infinito, com repetição
 
@@ -344,6 +346,41 @@ registros** de fala, na própria ficha:
   1056 é o caminho mais barato. `_ChampionAfter` usa a plaquinha de fala
   (skill `nomear-falante`), que pede um `SP_NAME_*` por treinador.
 
+## R17. O lendário que o jogador leva vem no nível 1 — e na primeira forma
+
+Decidido pelo autor em 27/09/2026. A **luta** é contra o lendário completo (a
+forma final, no nível do R2). O que o jogador **leva** no fim é outra coisa: um
+**fragmento** dele, que sobra quando a criatura cai. Por isso:
+
+- **Todo** lendário recebido no Nexus vem **no nível 1**, sem exceção
+  (lendário, semi-lendário, mítico, Ultra Beast ou Paradoxo), qualquer que seja
+  o nível da luta.
+- Se a família tem **pré-evolução**, o jogador recebe a **primeira forma**, não
+  a que ele enfrentou:
+
+| Boss (enfrentado) | Recebido (nível 1) |
+|---|---|
+| Solgaleo, Lunala | Cosmog |
+| Silvally | Type: Null |
+| Urshifu (as duas formas) | Kubfu |
+| Melmetal | Meltan |
+| Manaphy | Phione (neste hack Manaphy evolui de Phione) |
+| Naganadel | Poipole (já era o presente da luta, bit 12 do R15) |
+
+- As pré-evoluções **não são boss** do Nexus; elas só existem como o que se
+  recebe.
+- Continua valendo o R8 (3 IVs perfeitos no que é recebido) e o R7 (pode
+  receber de novo, para caçar IV). O R1 olha a **espécie enfrentada**: Solgaleo
+  só entra no sorteio depois de o jogador ter capturado um Solgaleo.
+- **No código:** não sai de uma captura com Poké Ball (a bola daria o nível e a
+  forma da luta). O caminho pronto é o do Necrozma no clímax: boss com
+  `B_FLAG_NO_CATCHING` e, na vitória, `givemon <espécie da primeira forma>, 1`
+  com checagem de espaço **antes** da luta (skill `entregar-pokemon-ou-ovo`).
+  O R9 (prêmio de quem "vence tudo e captura") passa a ler "vence tudo e o
+  boss".
+- **Na fala:** a ficha do Looker e a narração podem tratar o que fica como o
+  fragmento que sobrou da criatura; nunca como a criatura inteira domada.
+
 ## Checklist rápido para um time do Nexus
 
 - [ ] 6 Pokémon
@@ -359,7 +396,10 @@ registros** de fala, na própria ficha:
 
 ## Pontos a confirmar com o autor
 
-Nenhum em aberto.
+- **R17 — bola ou entrega direta?** A regra foi escrita como entrega na
+  vitória (sem Poké Ball), porque capturar com bola daria o nível e a forma da
+  luta. Se o autor quiser manter o gesto de jogar a bola, o jogo precisa trocar
+  o Pokémon capturado pelo fragmento nível 1 depois da captura (código novo).
 
 ## Decisões já tomadas (histórico)
 
@@ -385,3 +425,6 @@ Nenhum em aberto.
   um Poipole na luta do Naganadel (bit 12 do R15).
 - 26/09/2026 — dois registros de fala: genérico nas 4 salas, sobre o lendário
   no campeão (R16).
+- 27/09/2026 — o lendário que o jogador leva vem **no nível 1** e, se a família
+  tem pré-evolução, **na primeira forma** (Cosmog, Type: Null, Kubfu, Meltan,
+  Phione, Poipole): é um fragmento da criatura enfrentada (R17).
