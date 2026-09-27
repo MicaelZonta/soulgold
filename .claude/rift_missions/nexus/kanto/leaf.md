@@ -56,7 +56,7 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 
 Lendário **Deoxys na forma Defense**: em FireRed/LeafGreen o Deoxys da Birth Island aparece na forma Attack no FireRed e na forma **Defense no LeafGreen**, e a Leaf é a protagonista do LeafGreen. Semi-lendário **Mew** (ela é campeã dele; Iron Leaves, o outro, fica fora porque só cabe um semi). Mega **Venusaur** (Grasstite), o inicial de quem joga LeafGreen, que também fecha o time dela na Cerulean Cave. Mais Volcarona, Dragapult e Chansey, do `TRAINER_NAMELESS_LEAF` da campanha (o Thundurus e a Tapu Fini saem: são semi-lendários). Ela é uma colecionadora de Pokédex, e o time é de quem joga a longa.
 
-Observação para o autor: no hack a Leaf batalha como **"Green"** (o `Name:` segue o `TRAINER_NAMELESS_LEAF`). A plaquinha de fala (`SP_NAME_LEAF`) pode mostrar Leaf ou Green; as falas de campeão usam essa confusão de nome de propósito.
+Observação para o autor: no hack a Leaf batalha como **"Green"** (o `Name:` segue o `TRAINER_NAMELESS_LEAF`). A plaquinha de fala mostra **Green** (decisão do autor, 27/09/2026: `SP_NAME_GREEN`); as falas de campeão usam essa confusão de nome de propósito.
 
 *Plano (Singles):* desgaste. O Deoxys-D põe Stealth Rock, dá Taunt em quem tenta armar e tira dano fixo com Night Shade; a Chansey (Eviolite) segura o especial e limpa status com Heal Bell; a Mega Venusaur (Thick Fat) aguenta Fogo e Gelo e drena com Leech Seed e Giga Drain; o Mew queima os físicos com Will-O-Wisp; a Volcarona sobe Quiver Dance no fim e o Dragapult entra e sai com U-turn.
 
@@ -370,7 +370,7 @@ Nexus_Text_Leaf_Mew_ChampionDefeat:
 	.string "battle.$"
 
 Nexus_Text_Leaf_Mew_ChampionAfter:
-	.string "{SPEAKER NAME_LEAF}People call me by a different name\n"
+	.string "{SPEAKER NAME_GREEN}People call me by a different name\n"
 	.string "here. I didn't pick it, but I answer to\l"
 	.string "it.\p"
 	.string "That little one is every Pokémon at\n"
@@ -426,7 +426,7 @@ Nexus_Text_Leaf_IronLeaves_ChampionDefeat:
 	.string "Ah! I fell. …That's fine. I grow back.$"
 
 Nexus_Text_Leaf_IronLeaves_ChampionAfter:
-	.string "{SPEAKER NAME_LEAF}Something like a knight came out of\n"
+	.string "{SPEAKER NAME_GREEN}Something like a knight came out of\n"
 	.string "those trees. Sharp, green, and very\l"
 	.string "polite about it.\p"
 	.string "It's from a time that hasn't happened\n"
@@ -439,4 +439,4 @@ Nexus_Text_Leaf_IronLeaves_ChampionAfter:
 
 </details>
 
-Falante novo: `SP_NAME_LEAF` (ainda não existe em `include/constants/speaker_names.h`); o nome na plaquinha (Leaf ou Green) é decisão do autor.
+Falante novo: `SP_NAME_GREEN` (ainda não existe em `include/constants/speaker_names.h`); a plaquinha mostra "Green", decisão do autor de 27/09/2026.
