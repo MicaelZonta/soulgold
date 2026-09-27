@@ -1145,9 +1145,18 @@ size_t _GBACoreListMemoryBlocks(const struct mCore* core, const struct mCoreMemo
 		}
 
 		size_t i;
+		bool linearRom = gba->memory.romAddrMask != GBA_SIZE_ROM0 - 1;
 		for (i = 0; i < gbacore->nMemoryBlocks; ++i) {
-			if (gbacore->memoryBlocks[i].id == GBA_REGION_ROM0 || gbacore->memoryBlocks[i].id == GBA_REGION_ROM1 || gbacore->memoryBlocks[i].id == GBA_REGION_ROM2) {
+			if (gbacore->memoryBlocks[i].id == GBA_REGION_ROM0) {
 				gbacore->memoryBlocks[i].size = gba->memory.romSize;
+				if (linearRom) {
+					// SoulGold linear ROM: cart0 spans 0x08000000..0x0DFFFFFF, no mirrors.
+					gbacore->memoryBlocks[i].end = GBA_BASE_ROM0 + gba->memory.romSize;
+					gbacore->memoryBlocks[i].longName = "Game Pak (linear, 96MiB window)";
+				}
+			} else if (gbacore->memoryBlocks[i].id == GBA_REGION_ROM1 || gbacore->memoryBlocks[i].id == GBA_REGION_ROM2) {
+				// Mirrors of cart0 on a normal cartridge; not memory at all on a linear ROM.
+				gbacore->memoryBlocks[i].size = linearRom ? 0 : gba->memory.romSize;
 			}
 		}
 		gbacore->memoryBlockType = gba->memory.savedata.type;
@@ -1183,8 +1192,15 @@ void* _GBACoreGetMemoryBlock(struct mCore* core, size_t id, size_t* sizeOut) {
 		*sizeOut = GBA_SIZE_OAM;
 		return gba->video.oam.raw;
 	case GBA_REGION_ROM0:
+		*sizeOut = gba->memory.romSize;
+		return gba->memory.rom;
 	case GBA_REGION_ROM1:
 	case GBA_REGION_ROM2:
+		if (gba->memory.romAddrMask != GBA_SIZE_ROM0 - 1) {
+			// SoulGold linear ROM: 0x0A/0x0C are part of cart0, not mirrors of it.
+			*sizeOut = 0;
+			return NULL;
+		}
 		*sizeOut = gba->memory.romSize;
 		return gba->memory.rom;
 	case GBA_REGION_SRAM:

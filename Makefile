@@ -417,6 +417,16 @@ check check-all: $(TEST_SHARD_ELFS)
 check-song-config:
 	@python3 tools/check_song_config.py
 
+# SCRIPT_EFFECT_TAG vive em constants/gba_constants.inc (asm) e include/script.h (C).
+# Se divergirem, compila limpo e todo script do jogo trava: conferir antes do link.
+check-script-effect-tag:
+	@a=$$(grep -oE '\.set SCRIPT_EFFECT_TAG, *0x[0-9A-Fa-f]+' constants/gba_constants.inc | grep -oE '0x[0-9A-Fa-f]+$$'); \
+	b=$$(grep -oE '#define SCRIPT_EFFECT_TAG +0x[0-9A-Fa-f]+' include/script.h | grep -oE '0x[0-9A-Fa-f]+$$'); \
+	if [ -z "$$a" ] || [ -z "$$b" ] || [ $$((a)) -ne $$((b)) ]; then \
+		echo "SCRIPT_EFFECT_TAG diverge: gba_constants.inc='$$a' script.h='$$b'"; exit 1; \
+	fi
+$(ELF): | check-script-effect-tag
+
 rom: $(ROM)
 ifeq ($(COMPARE),1)
 	@$(SHA1) rom.sha1
@@ -670,6 +680,8 @@ $(ROM): $(ELF)
 emerald: all
 firered: all
 leafgreen: all
-# Symbol file (`make syms`)
-$(SYM): $(ELF)
+# Symbol file (`make syms`). Depende da ROM (e nao so do ELF) para que
+# `make syms` sem ROM_FILLER_MB nao deixe um .gba de 92 MB ao lado de um
+# .elf/.sym relinkados sem filler.
+$(SYM): $(ELF) $(ROM)
 	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389a-d]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@

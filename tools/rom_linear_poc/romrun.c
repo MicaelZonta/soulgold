@@ -15,6 +15,9 @@
 //   LS                load the savestate saved by SS
 //   V <file>          write the in-game save (Flash) to <outdir>/<file>
 //
+// With ROMRUN_PATCH=1 in the environment, a <rom>.bps/.ups/.ips next to the ROM
+// is applied before reset (tests the emulator's soft-patch path).
+//
 // Usage: romrun <rom> <outdir> <script>
 
 #include <mgba/core/core.h>
@@ -120,6 +123,10 @@ int main(int argc, char** argv) {
 	if (!mCoreLoadFile(core, argv[1])) {
 		fprintf(stderr, "load failed\n");
 		return 1;
+	}
+	if (getenv("ROMRUN_PATCH")) {
+		// Soft-patch <rom>.bps/.ups/.ips next to the ROM, like the GUI does.
+		printf("autoload patch: %s\n", mCoreAutoloadPatch(core) ? "ok" : "none/FAILED");
 	}
 	core->reset(core);
 

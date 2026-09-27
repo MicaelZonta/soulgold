@@ -151,7 +151,18 @@ bool GBADeserialize(struct GBA* gba, const struct GBASerializedState* state) {
 	}
 	LOAD_32(check, ARM_PC * sizeof(state->cpu.gprs[0]), state->cpu.gprs);
 	int region = (check >> BASE_OFFSET);
-	if ((region == GBA_REGION_ROM0 || region == GBA_REGION_ROM1 || region == GBA_REGION_ROM2) && ((check - WORD_SIZE_ARM) & gba->memory.romAddrMask) >= gba->memory.romSize - WORD_SIZE_ARM) {
+	bool pcInRom;
+	uint32_t pcOffset;
+	if (gba->memory.romAddrMask == GBA_SIZE_ROM0 - 1) {
+		// Upstream check, unchanged for mirrored (<= 32 MiB) ROMs.
+		pcInRom = region == GBA_REGION_ROM0 || region == GBA_REGION_ROM1 || region == GBA_REGION_ROM2;
+		pcOffset = (check - WORD_SIZE_ARM) & GBA_SIZE_ROM0;
+	} else {
+		// SoulGold linear ROM: every cart region is distinct data.
+		pcInRom = region >= GBA_REGION_ROM0 && region <= GBA_REGION_ROM2_EX;
+		pcOffset = (check - WORD_SIZE_ARM) & gba->memory.romAddrMask;
+	}
+	if (pcInRom && pcOffset >= gba->memory.romSize - WORD_SIZE_ARM) {
 		mLOG(GBA_STATE, WARN, "Savestate created using a differently sized version of the ROM");
 		error = true;
 	}

@@ -196,13 +196,23 @@ achado 5 continua em aberto: quando os testes voltarem a compilar, o
 
 ## O que falta para virar produção
 
+> Auditoria independente da POC e correções aplicadas em 27/09/2026:
+> [08-auditoria-poc.md](08-auditoria-poc.md).
+
 1. Decidir a distribuição: executável próprio do mGBA patchado (Win/Mac/Linux).
    É isso ou não fazer — não há meio-termo.
 2. Recompilar o `mgba-rom-test` com o patch (depois de consertar o `make check`).
+   O `ld_script_test.ld` já foi levado a 96 MiB (ver doc 08): o ROM de teste
+   passa a ter ~62 MiB por shard, porque o slot DACS do BIOS é fixo em
+   0x09FFC000 e o `.rodata` vai depois dele.
 3. Tirar o `rom_filler` do linker e do Makefile (ou manter como ferramenta
    de teste — com `ROM_FILLER_MB=0` ele não ocupa nada).
-4. BPS: o `make bps` passa a gerar patch para uma ROM > 32 MB; conferir que o
-   Flips e o fluxo de distribuição aceitam.
+4. BPS: o `make bps` gera patch para uma ROM > 32 MB; o Flips cria e aplica
+   sem problema, e o soft-patch dentro do mGBA patchado (`.bps` ao lado da
+   ROM) também funciona depois da correção de `GBAApplyPatch` (doc 08).
 5. Reencenar um trecho maior do jogo (batalha, troca de mapa por conexão,
    evento com plaquinha de falante por ponteiro) no runner. A POC cobriu
    ~12.000 frames do começo do jogo.
+6. Decidir se os três toggles (`OW_SURF_UNIQUE_SPRITES`, `OW_BATTLE_ONLY_FORMS`,
+   `P_MODIFIED_MEGA_CRIES`) ficam ligados: enquanto estiverem, a ROM padrão da
+   branch só roda no mGBA patchado.
