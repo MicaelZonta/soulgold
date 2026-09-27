@@ -54,15 +54,15 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_MORTY`, campeão do Ho-Oh e do Spectrier. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
-Lendário **Ho-Oh**: o Morty treinou a vida inteira para ser digno de vê-lo, como manda a tradição de Ecruteak. Semi-lendário **Spectrier**, o cavalo fantasma que caça sem usar a visão, o avesso de um homem que treinou os olhos para ver o que não está lá (ele é campeão dele e do Ho-Oh). Mega **Chandelure** (Ghostite): o fantasma que arde, para o homem da cidade da Torre Queimada. Mais Dragapult, Aegislash e Mismagius (a linha do Misdreavus dele), da revanche e da Title Defense.
+Lendário **Ho-Oh**: o Morty treinou a vida inteira para ser digno de vê-lo, como manda a tradição de Ecruteak. Semi-lendário **Spectrier**, o cavalo fantasma que caça sem usar a visão, o avesso de um homem que treinou os olhos para ver o que não está lá (ele é campeão dele e do Ho-Oh). Mega **Gengar** (Ghostite): o Gengar clássico dele, ás desde Gold/Silver. Mais Dragapult, Aegislash e Mismagius (a linha do Misdreavus dele), da revanche e da Title Defense.
 
-*Plano (Singles):* a Mismagius (Focus Sash) usa Taunt e Will-O-Wisp, o Ho-Oh entra e sai com Regenerator queimando com Sacred Fire, o Spectrier sobe Nasty Plot e ganha Grim Neigh a cada nocaute, o Dragapult de Choice Band limpa e o Aegislash fecha com King's Shield e Shadow Sneak. *Plano (Doubles):* Tailwind do Ho-Oh, Heat Wave da Mega Chandelure (Flash Fire) nos dois alvos, Dragon Darts divididos, e Protect/King's Shield para ganhar turnos. O risco é Sombrio; o Aegislash e o Ho-Oh seguram.
+*Plano (Singles):* a Mismagius (Focus Sash) usa Taunt e Will-O-Wisp, o Ho-Oh entra e sai com Regenerator queimando com Sacred Fire, o Spectrier sobe Nasty Plot e ganha Grim Neigh a cada nocaute, o Dragapult de Choice Band limpa o Aegislash fecha com King's Shield e Shadow Sneak, e a Mega Gengar (Shadow Tag) prende quem não pode fugir e derruba com Shadow Ball e Focus Blast. *Plano (Doubles):* Tailwind do Ho-Oh, e com ele Mega Gengar e Spectrier batem primeiro nos dois lados (Shadow Tag prende os dois adversários), Dragon Darts divididos, e Protect/King's Shield para ganhar turnos. O risco é Sombrio; o Aegislash e o Ho-Oh seguram.
 
 | Pokémon | Item | Habilidade | Nature | Golpes |
 |---|---|---|---|---|
 | Ho-Oh | Heavy-Duty Boots | Regenerator | Adamant | Sacred Fire, Brave Bird, Recover, Tailwind |
 | Spectrier | Life Orb | Grim Neigh | Timid | Shadow Ball, Dark Pulse, Nasty Plot, Protect |
-| Chandelure | Ghostite | Flash Fire | Modest | Shadow Ball, Heat Wave, Energy Ball, Protect |
+| Gengar | Ghostite | Cursed Body | Timid | Shadow Ball, Sludge Bomb, Focus Blast, Protect |
 | Dragapult | Choice Band | Clear Body | Jolly | Dragon Darts, Phantom Force, U-turn, Sucker Punch |
 | Aegislash | Leftovers | Stance Change | Quiet | Shadow Ball, Flash Cannon, Shadow Sneak, King's Shield |
 | Mismagius | Focus Sash | Levitate | Timid | Shadow Ball, Mystical Fire, Will-O-Wisp, Taunt |
@@ -101,15 +101,15 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Nasty Plot
 - Protect
 
-Chandelure @ Ghostite
-Modest Nature
+Gengar @ Ghostite
+Timid Nature
 Level: 100
-Ability: Flash Fire
+Ability: Cursed Body
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Shadow Ball
-- Heat Wave
-- Energy Ball
+- Sludge Bomb
+- Focus Blast
 - Protect
 
 Dragapult @ Choice Band

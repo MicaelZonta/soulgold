@@ -104,6 +104,8 @@ def parse_form_changes():
     out = {}
     for m in re.finditer(r'static const struct FormChange (\w+)\[\] =\s*\{(.*?)\n\};', text, re.S):
         megas = []
+        for e in re.finditer(r'FORM_CHANGE_MOVE\s*,\s*(SPECIES_\w+)\s*,\s*(MOVE_\w+)\s*,\s*WHEN_LEARNED', m.group(2)):
+            megas.append(('FORM_MOVE', e.group(1), e.group(2)))
         for e in re.finditer(r'FORM_CHANGE_BATTLE_(MEGA_EVOLUTION_ITEM|PRIMAL_REVERSION|MEGA_EVOLUTION_MOVE)\s*,\s*(SPECIES_\w+)\s*(?:,\s*(\w+))?', m.group(2)):
             megas.append((e.group(1), e.group(2), e.group(3)))
         out[m.group(1)] = megas
@@ -222,6 +224,10 @@ def main():
             learn |= teach.get(d['teachableLearnset'], set())
             for other in families.get(d['family'], []):
                 learn |= egg.get(species[other]['eggMoveLearnset'], set())
+            # golpe que a forma ganha ao trocar (Rotom-Wash -> Hydro Pump)
+            for kind, target, trig in forms.get(d['formChangeTable'], []):
+                if kind == 'FORM_MOVE' and target == sp:
+                    learn.add(trig)
             for m in mv:
                 if m not in moves_h:
                     errs.append(f'{name}: golpe {m} nao existe')

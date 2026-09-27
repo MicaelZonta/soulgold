@@ -52,17 +52,17 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_EUSINE`, campeão do Suicune, do Raikou e do Entei. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
-Lendário **Ho-Oh**, o pássaro que ressuscitou as três feras depois do incêndio da Brass Tower: a lenda por trás de tudo o que o Eusine estuda. Semi-lendário **Suicune**, a obsessão dele há dez anos (e um dos três de que é campeão). Mega **Chandelure** (Ghostite), a chama-fantasma do Burned Tower, onde três Pokémon morreram queimados, e eco do Haunter do time dele em Crystal/HGSS. Mais **Hypno** e **Electrode**, do mesmo time de Crystal/HGSS, e **Magnezone**, da luta dele na campanha.
+Lendário **Ho-Oh**, o pássaro que ressuscitou as três feras depois do incêndio da Brass Tower: a lenda por trás de tudo o que o Eusine estuda. Semi-lendário **Suicune**, a obsessão dele há dez anos (e um dos três de que é campeão). Mega **Gengar** (Ghostite), o Haunter do time dele em Crystal/HGSS já evoluído, e o fantasma de um pesquisador que passa a vida atrás de espíritos e lendas. Mais **Hypno** e **Electrode**, do mesmo time de Crystal/HGSS, e **Magnezone**, da luta dele na campanha.
 
-*Plano:* o pesquisador que controla o ritmo. Electrode e Hypno preparam o campo, Suicune e Ho-Oh aguentam e desgastam, Chandelure e Magnezone batem.
-*Plano (Singles):* Electrode (Focus Sash) dá Taunt e Thunder Wave e sai com Volt Switch; Hypno de Light Clay arma as telas; Suicune sobe Calm Mind com Pressure e Scald; Ho-Oh (Regenerator, Heavy-Duty Boots) entra e sai queimando com Sacred Fire; Magnezone (Magnet Pull) prende os Aço que seguram o time.
-*Plano (Doubles):* Suicune põe Tailwind e usa Snarl nos dois oponentes; Chandelure solta Heat Wave e passa por Substitute e telas (Infiltrator); Electrode dá Thunder Wave e Foul Play; Ho-Oh usa Protect enquanto o parceiro trabalha.
+*Plano:* o pesquisador que controla o ritmo. Electrode e Hypno preparam o campo, Suicune e Ho-Oh aguentam e desgastam, a Mega Gengar e o Magnezone batem.
+*Plano (Singles):* Electrode (Focus Sash) dá Taunt e Thunder Wave e sai com Volt Switch; Hypno de Light Clay arma as telas; Suicune sobe Calm Mind com Pressure e Scald; Ho-Oh (Regenerator, Heavy-Duty Boots) entra e sai queimando com Sacred Fire; a Mega Gengar (Shadow Tag) prende o alvo que quiser e o derruba com Shadow Ball, Sludge Bomb ou Focus Blast; Magnezone (Magnet Pull) prende os Aço que seguram o time.
+*Plano (Doubles):* Suicune põe Tailwind e usa Snarl nos dois oponentes; a Mega Gengar bate com Shadow Ball e Sludge Bomb e usa Protect no turno em que o parceiro atrai o golpe; Electrode dá Thunder Wave e Foul Play; Ho-Oh usa Protect enquanto o parceiro trabalha.
 
 | Pokémon | Item | Habilidade | Nature | Golpes |
 |---|---|---|---|---|
 | Ho-Oh | Heavy-Duty Boots | Regenerator | Adamant | Sacred Fire, Brave Bird, Recover, Protect |
 | Suicune | Leftovers | Pressure | Bold | Scald, Snarl, Calm Mind, Tailwind |
-| Chandelure | Ghostite | Flash Fire | Timid | Shadow Ball, Heat Wave, Energy Ball, Protect |
+| Gengar | Ghostite | Cursed Body | Timid | Shadow Ball, Sludge Bomb, Focus Blast, Protect |
 | Hypno | Light Clay | Insomnia | Calm | Reflect, Light Screen, Psychic, Thunder Wave |
 | Electrode | Focus Sash | Aftermath | Timid | Taunt, Volt Switch, Foul Play, Thunder Wave |
 | Magnezone | Choice Specs | Magnet Pull | Modest | Thunderbolt, Flash Cannon, Volt Switch, Body Press |
@@ -101,15 +101,15 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Calm Mind
 - Tailwind
 
-Chandelure @ Ghostite
+Gengar @ Ghostite
 Timid Nature
 Level: 100
-Ability: Flash Fire
+Ability: Cursed Body
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Shadow Ball
-- Heat Wave
-- Energy Ball
+- Sludge Bomb
+- Focus Blast
 - Protect
 
 Hypno @ Light Clay
