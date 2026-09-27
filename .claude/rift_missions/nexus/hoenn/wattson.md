@@ -51,11 +51,11 @@ IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): `
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_WATTSON`, campeão de Magearna e Zeraora. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
-Lendário **Magearna**, o Pokémon artificial construído há 500 anos: a obra-prima de um inventor, no time de outro inventor; semi-lendário **Zeraora**, eletricidade com pernas; Mega **Manectric** (Electrite), o ás dele. Mais **Magnezone** e **Electrode** (o Magneton e o Voltorb dos times dele, evoluídos) e **Rotom**, o fantasma que mora nos aparelhos, bem-vindo numa cidade feita de fios como Mauville.
+Lendário **Magearna**, o Pokémon artificial construído há 500 anos: a obra-prima de um inventor, no time de outro inventor; semi-lendário **Zeraora**, eletricidade com pernas; Mega **Manectric** (Electrite), o ás dele. Mais **Magnezone** e **Electrode** (o Magneton e o Voltorb dos times dele, evoluídos) e **Rotom-Wash**, o fantasma que mora nos aparelhos (aqui, na máquina de lavar), bem-vindo numa cidade feita de fios como Mauville.
 
-*Plano (Singles):* corrente contínua. O Electrode, rápido, abre com Taunt e as duas telas; daí em diante tudo pivota com Volt Switch (Magnezone de Choice Specs, Manectric, Zeraora, Rotom) até achar a troca boa. O Magnezone com Magnet Pull prende e derruba o Aço do adversário; a Magearna de Assault Vest e Soul-Heart é a âncora especial; o Rotom de Levitate segura os golpes de Terra que o resto do time teme.
+*Plano (Singles):* corrente contínua. O Electrode, rápido, abre com Taunt e as duas telas; daí em diante tudo pivota com Volt Switch (Magnezone de Choice Specs, Manectric, Zeraora, Rotom) até achar a troca boa. O Magnezone com Magnet Pull prende e derruba o Aço do adversário; a Magearna de Assault Vest e Soul-Heart é a âncora especial; o Rotom-Wash de Levitate segura os golpes de Terra que o resto do time teme, e o Hydro Pump dele pune Terra e Fogo.
 
-*Plano (Doubles):* a Mega Manectric com Lightning Rod puxa os golpes Elétricos do adversário e ganha Sp. Atk; Snarl e Electroweb (alvo duplo, só nos adversários) controlam o campo; o Zeraora de Volt Absorb e o Rotom de Levitate cobrem as fraquezas. Nada de Discharge nem Earthquake: nenhum golpe acerta o parceiro.
+*Plano (Doubles):* a Mega Manectric com Lightning Rod puxa os golpes Elétricos do adversário e ganha Sp. Atk; Snarl e Electroweb (alvo duplo, só nos adversários) controlam o campo; o Zeraora de Volt Absorb e o Rotom-Wash de Levitate cobrem as fraquezas (o Rotom-Wash, Água/Elétrico, tira o Fogo e a Terra de cima do resto do time). Nada de Discharge nem Earthquake: nenhum golpe acerta o parceiro.
 
 | Pokémon | Item | Habilidade | Nature | Golpes |
 |---|---|---|---|---|
@@ -64,7 +64,7 @@ Lendário **Magearna**, o Pokémon artificial construído há 500 anos: a obra-p
 | Manectric | Electrite | Lightning Rod | Timid | Thunderbolt, Overheat, Volt Switch, Snarl |
 | Magnezone | Choice Specs | Magnet Pull | Modest | Thunderbolt, Flash Cannon, Volt Switch, Electroweb |
 | Electrode | Light Clay | Static | Timid | Taunt, Reflect, Light Screen, Volt Switch |
-| Rotom | Leftovers | Levitate | Timid | Shadow Ball, Thunderbolt, Will-O-Wisp, Volt Switch |
+| Rotom-Wash | Leftovers | Levitate | Bold | Hydro Pump, Volt Switch, Will-O-Wisp, Thunderbolt |
 
 <details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: espécie, item, habilidade, golpes e vagas)</summary>
 
@@ -133,16 +133,16 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Light Screen
 - Volt Switch
 
-Rotom @ Leftovers
-Timid Nature
+Rotom-Wash @ Leftovers
+Bold Nature
 Level: 100
 Ability: Levitate
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
-- Shadow Ball
-- Thunderbolt
-- Will-O-Wisp
+- Hydro Pump
 - Volt Switch
+- Will-O-Wisp
+- Thunderbolt
 ```
 
 </details>
