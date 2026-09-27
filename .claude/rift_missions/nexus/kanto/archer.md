@@ -56,11 +56,11 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_ARCHER`, campeão de Marshadow e Wo-Chien. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
-Lendário **Mewtwo**: poder fabricado num laboratório, o tipo de arma que o Team Rocket sempre quis ter nas mãos. Semi-lendário **Wo-Chien**, de que ele é campeão: tábuas de madeira e rancor, e o Archer é quem guarda os registros da organização. Mega **Houndoom** (Darktite), o ás dele desde Johto. Mais **Weezing** (o Koffing de HGSS), **Slowking-Galar** e **Porygon-Z**, do time dele neste hack. A sinergia é o Tablets of Ruin: ele corta o Ataque físico de **todo mundo** em campo, menos do Wo-Chien, e o time do Archer é todo especial, então o corte só dói do lado do jogador.
+Lendário **Mewtwo**: poder fabricado num laboratório, o tipo de arma que o Team Rocket sempre quis ter nas mãos. Semi-lendário **Wo-Chien**, de que ele é campeão: tábuas de madeira e rancor, e o Archer é quem guarda os registros da organização. Mega **Houndoom** (Darktite), o ás dele desde Johto. Mais **Weezing** (o Koffing de HGSS), **Slowking-Galar** e **Rotom-Wash** (Levitate, cobre o ponto fraco a Terra do Houndoom), do time dele neste hack. A sinergia é o Tablets of Ruin: ele corta o Ataque físico de **todo mundo** em campo, menos do Wo-Chien, e o time do Archer é todo especial, então o corte só dói do lado do jogador.
 
-*Plano (Singles):* Weezing espalha Toxic Spikes e queima com Will-O-Wisp; Slowking-Galar pivota com Chilly Reception e volta pelo Regenerator; Wo-Chien segura com Leech Seed e Protect; a Mega Houndoom sobe com Nasty Plot e o Mewtwo limpa. Porygon-Z de Scarf é o revide.
+*Plano (Singles):* Weezing espalha Toxic Spikes e queima com Will-O-Wisp; Slowking-Galar pivota com Chilly Reception e volta pelo Regenerator; Wo-Chien segura com Leech Seed e Protect; a Mega Houndoom sobe com Nasty Plot e o Mewtwo limpa. Rotom-Wash pivota com Volt Switch e segura Fogo e Água que ameaçam o Houndoom.
 
-*Plano (Doubles):* Wo-Chien no campo desde o começo, Weezing com Levitate e Will-O-Wisp no atacante físico que sobrou; Mega Houndoom de Heat Wave nos dois; Mewtwo com Psystrike e Recover; Wo-Chien e Weezing se cobrem com Protect e Taunt.
+*Plano (Doubles):* Wo-Chien no campo desde o começo, Weezing com Levitate e Will-O-Wisp no atacante físico que sobrou; Mega Houndoom de Heat Wave nos dois; Mewtwo com Psystrike e Recover; Rotom-Wash com Levitate e Protect ao lado do Weezing deixa o jogador sem alvo para Earthquake; Wo-Chien e Weezing se cobrem com Protect e Taunt.
 
 | Pokémon | Item | Habilidade | Nature | Golpes |
 |---|---|---|---|---|
@@ -69,7 +69,7 @@ Lendário **Mewtwo**: poder fabricado num laboratório, o tipo de arma que o Tea
 | Houndoom | Darktite | Flash Fire | Timid | Heat Wave, Dark Pulse, Nasty Plot, Sludge Bomb |
 | Weezing | Black Sludge | Levitate | Bold | Will-O-Wisp, Toxic Spikes, Sludge Bomb, Taunt |
 | Slowking-Galar | Colbur Berry | Regenerator | Calm | Sludge Bomb, Psyshock, Slack Off, Chilly Reception |
-| Porygon-Z | Choice Scarf | Adaptability | Modest | Tri Attack, Thunderbolt, Ice Beam, Dark Pulse |
+| Rotom-Wash | Sitrus Berry | Levitate | Modest | Hydro Pump, Thunderbolt, Volt Switch, Protect |
 
 <details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>)</summary>
 
@@ -138,16 +138,16 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Slack Off
 - Chilly Reception
 
-Porygon-Z @ Choice Scarf
+Rotom-Wash @ Sitrus Berry
 Modest Nature
 Level: 100
-Ability: Adaptability
+Ability: Levitate
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
-- Tri Attack
+- Hydro Pump
 - Thunderbolt
-- Ice Beam
-- Dark Pulse
+- Volt Switch
+- Protect
 ```
 
 </details>

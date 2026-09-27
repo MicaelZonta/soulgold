@@ -48,16 +48,16 @@ Homônimos genéricos, **não** são este personagem: `TRAINER_NOLAND` ("Noland"
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_NOLAND`, campeão de Miraidon e Iron Treads. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
-Lendário **Miraidon**, semi-lendário **Iron Treads** (os dois vindos do futuro), Mega **Manectric** (Electrite). O Noland é o cérebro da Battle Factory: vive de conhecer Pokémon que não criou, e aqui o time inteiro é **coisa fabricada ou máquina**: o Porygon2 foi programado, o Vikavolt é uma bateria viva, a Tinkaton forja o próprio martelo, e o Miraidon e o Iron Treads parecem saídos de uma linha de montagem que ainda não existe. *Plano:* **uma fábrica movida a Electric Terrain.** O Hadron Engine do Miraidon liga o terreno ao entrar, o terreno acende o Quark Drive do Iron Treads, e o time todo bate com Electric reforçado. O Iron Treads (Ground) cobre a fraqueza a Ground dos elétricos e absorve Electric de graça.
+Lendário **Miraidon**, semi-lendário **Iron Treads** (os dois vindos do futuro), Mega **Manectric** (Electrite). O Noland é o cérebro da Battle Factory: vive de conhecer Pokémon que não criou, e aqui o time inteiro é **coisa fabricada ou máquina**: o Porygon2 foi programado, o Rotom-Wash mora dentro de uma máquina de lavar, a Tinkaton forja o próprio martelo, e o Miraidon e o Iron Treads parecem saídos de uma linha de montagem que ainda não existe. *Plano:* **uma fábrica movida a Electric Terrain.** O Hadron Engine do Miraidon liga o terreno ao entrar, o terreno acende o Quark Drive do Iron Treads, e o time todo bate com Electric reforçado. O Iron Treads (Ground) absorve Electric de graça, e o Rotom-Wash (Levitate, Water) cobre a fraqueza a Ground dos elétricos.
 
-*Plano (Singles):* Tinkaton arma Stealth Rock, Iron Treads limpa hazards com Rapid Spin, Manectric e Vikavolt fazem pivô de Volt Switch para trazer o Miraidon de Choice Specs com o terreno no lugar; Porygon2 segura com Recover e Thunder Wave. *Plano (Doubles):* o Miraidon entra com o terreno e Dazzling Gleam acerta os dois; a Mega Manectric abre com Snarl e o Vikavolt com Electroweb (controle de velocidade nos dois alvos); o Iron Treads não sofre nada dos golpes elétricos do parceiro. Nada no time tem Earthquake ou golpe que acerte o aliado.
+*Plano (Singles):* Tinkaton arma Stealth Rock, Iron Treads limpa hazards com Rapid Spin, Manectric e Rotom-Wash fazem pivô de Volt Switch (o Rotom queima físicos com Will-O-Wisp) para trazer o Miraidon de Choice Specs com o terreno no lugar; Porygon2 segura com Recover e Thunder Wave. *Plano (Doubles):* o Miraidon entra com o terreno e Dazzling Gleam acerta os dois; a Mega Manectric abre com Snarl nos dois alvos; o Rotom-Wash usa Protect e Will-O-Wisp para cobrir o parceiro e recebe Ground no lugar dele; o Iron Treads não sofre nada dos golpes elétricos do parceiro. Nada no time tem Earthquake ou golpe que acerte o aliado.
 
 | Pokémon | Item | Habilidade | Nature | Golpes |
 |---|---|---|---|---|
 | Miraidon | Choice Specs | Hadron Engine | Timid | Electro Drift, Draco Meteor, Dazzling Gleam, Volt Switch |
 | Iron Treads | Assault Vest | Quark Drive | Jolly | High Horsepower, Iron Head, Knock Off, Rapid Spin |
 | Manectric | Electrite | Static | Timid | Thunderbolt, Overheat, Snarl, Volt Switch |
-| Vikavolt | Sitrus Berry | Levitate | Modest | Thunderbolt, Bug Buzz, Electroweb, Energy Ball |
+| Rotom-Wash | Sitrus Berry | Levitate | Bold | Hydro Pump, Volt Switch, Will-O-Wisp, Protect |
 | Porygon2 | Eviolite | Download | Calm | Tri Attack, Ice Beam, Recover, Thunder Wave |
 | Tinkaton | Leftovers | Mold Breaker | Jolly | Gigaton Hammer, Play Rough, Knock Off, Stealth Rock |
 
@@ -106,16 +106,16 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Snarl
 - Volt Switch
 
-Vikavolt @ Sitrus Berry
-Modest Nature
+Rotom-Wash @ Sitrus Berry
+Bold Nature
 Level: 100
 Ability: Levitate
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
-- Thunderbolt
-- Bug Buzz
-- Electroweb
-- Energy Ball
+- Hydro Pump
+- Volt Switch
+- Will-O-Wisp
+- Protect
 
 Porygon2 @ Eviolite
 Calm Nature
