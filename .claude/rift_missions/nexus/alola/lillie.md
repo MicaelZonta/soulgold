@@ -53,7 +53,7 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_LILLIE`, campeã de Lunala e Tapu Lele. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
-Lendário **Lunala**: a Lillie carregou um Cosmog na bolsa em Alola, e em Moon ele virou a lua. **Não é o Nebby** (design §3: ninguém dá esse nome a Pokémon nenhum); é o Lunala do fragmento de onde esta Lillie veio, e ela nunca explica. Semi-lendário **Tapu Lele**, a guardiã que cura, a outra luta de campeã dela. Mega **Primarina** (Bondstone), do time de pós-game dela: a pedra de laço combina com quem só aprendeu a lutar junto de alguém. Mais **Ninetales de Alola** (a parceira, presença permanente, design §3; o mesmo Vulpix da Route 30), Ribombee e Clefable, todos do `TRAINER_LILLIE_POSTGAME`. Time de Fada e Psíquico, que observa antes de bater.
+Lendário **Lunala**: pode ser o **Nebby**. O Nexus é outro universo, tempo ou dimensão; esta Lillie vem de um lugar onde o Cosmog que ela carregou na bolsa cresceu ao lado dela e virou a lua. Pode ser que nada do que o jogador viveu tenha acontecido lá, ou tudo; o texto não decide. Ela chama o **dela** de Nebby, nunca o do jogador (design §3). Semi-lendário **Tapu Lele**, a guardiã que cura, a outra luta de campeã dela. Mega **Primarina** (Bondstone), do time de pós-game dela: a pedra de laço combina com quem só aprendeu a lutar junto de alguém. Mais **Ninetales de Alola** (a parceira, presença permanente, design §3; o mesmo Vulpix da Route 30), Ribombee e Clefable, todos do `TRAINER_LILLIE_POSTGAME`. Time de Fada e Psíquico, que observa antes de bater.
 
 *Plano (Singles):* a Ribombee (Focus Sash) arma Sticky Web e Tailwind, a Ninetales põe Aurora Veil na neve, e atrás do véu o Lunala (Shadow Shield) e a Clefable (Cosmic Power + Stored Power) sobem. A Tapu Lele de Choice Specs pune quem entra para parar o setup.
 
@@ -179,9 +179,9 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 > File L-792. Moone.
 >
-> A night that swallowed its own moon, and a young lady writing down every star it left behind.
+> A night that swallowed its own moon, and a young lady whose moon once fit inside her bag.
 >
-> What came back with you is a little cloud of stars. She would know how to carry it. I suggest a bag.
+> What came back with you is a little cloud of stars. She asked me whose it was. I said: whoever carries it.
 
 <details><summary><code>.inc</code> do fragmento</summary>
 
@@ -202,11 +202,11 @@ Nexus_Text_Lunala_Boss:
 Nexus_Text_Lunala_LookerFile:
 	.string "{SPEAKER NAME_LOOKER}File L-792. Moone.\p"
 	.string "A night that swallowed its own moon,\n"
-	.string "and a young lady writing down every\l"
-	.string "star it left behind.\p"
+	.string "and a young lady whose moon once fit\l"
+	.string "inside her bag.\p"
 	.string "What came back with you is a little\n"
-	.string "cloud of stars. She would know how to\l"
-	.string "carry it. I suggest a bag.$"
+	.string "cloud of stars. She asked me whose it\l"
+	.string "was. I said: whoever carries it.$"
 ```
 
 </details>
@@ -314,29 +314,29 @@ Nexus_Text_Lillie_Defeat:
 
 #### Lunala
 
-A Lillie viu a criatura atravessar o céu e anotou que, onde as asas passam, a luz some. Mas anotou uma coisa estranha: onde escurece, aparecem mais estrelas, estrelas que não estavam lá. Ela carregou um Pokémon bem pequeno na bolsa e ele cresceu em algo parecido; ela não viu isso chegando (não prevê, observa). A virada, no depois: ela tinha medo da noite; hoje acha que a noite é só quando se enxerga mais longe. O fragmento do R17 é um Cosmog, e a ficha do Looker brinca com a bolsa.
+A Lillie viu a criatura atravessar o céu apagando a luz, e o Lunala dela ficou olhando também. Esta Lillie vem de um lugar onde o Cosmog da bolsa cresceu com ela: o Lunala do time é o Nebby dela, e ela diz isso sem cerimônia. Ela nota que o parceiro do jogador também começou pequeno (a família Cosmog que ele carrega) e pergunta, sem afirmar, se os dois carregaram o mesmo, em algum lugar. A virada, no depois: talvez no mundo do jogador o Nebby tenha crescido ao lado dele, ou nunca; ela acha que não importa qual, porque alguém o carregou até ele poder voar. Ela observa e pergunta, não prevê (design §3). O fragmento do R17 é um Cosmog, e a ficha do Looker devolve a pergunta: de quem é? De quem carrega.
 
 **Antes da luta**
 
 > I watched it cross the sky before you came. Wherever its wings passed, the light went out.
 >
-> But I wrote down something odd. Where it went dark, more stars came out. Stars that weren't there before.
+> My Lunala watched it too. It used to be small enough to fit in my bag. I called it Nebby.
 >
-> I once carried a very small Pokémon in my bag. It grew into something like that. I didn't see it coming.
+> Yours started out small too, didn't it? I wonder if we carried the same one... somewhere.
 >
-> ...Ninetales, are you ready? Let's go!
+> ...Ninetales, Nebby, are you ready? Let's go!
 
 **Derrota**
 
-> You didn't look away. Not once. I noticed.
+> You didn't look away. Not once. Nebby noticed, too.
 
 **Depois da luta**
 
 > Its wings drink the light. That's why it's so dark around it.
 >
-> But the dark isn't empty. It's where it keeps the stars. I didn't know that when I was little.
+> Where I come from, Nebby grew up by my side. Maybe where you come from, it grew up by yours. Or never at all.
 >
-> I used to be afraid of the night. Now I think it's just when you can see the farthest.
+> I don't think it matters which. Someone carried it until it could fly.
 >
 > Please be careful. And... look up, while you're there.
 
@@ -347,27 +347,27 @@ Nexus_Text_Lillie_Lunala_ChampionIntro:
 	.string "I watched it cross the sky before you\n"
 	.string "came. Wherever its wings passed, the\l"
 	.string "light went out.\p"
-	.string "But I wrote down something odd. Where\n"
-	.string "it went dark, more stars came out.\l"
-	.string "Stars that weren't there before.\p"
-	.string "I once carried a very small Pokémon\n"
-	.string "in my bag. It grew into something like\l"
-	.string "that. I didn't see it coming.\p"
-	.string "...Ninetales, are you ready? Let's go!$"
+	.string "My Lunala watched it too. It used to\n"
+	.string "be small enough to fit in my bag. I\l"
+	.string "called it Nebby.\p"
+	.string "Yours started out small too, didn't\n"
+	.string "it? I wonder if we carried the same\l"
+	.string "one... somewhere.\p"
+	.string "...Ninetales, Nebby, are you ready?\n"
+	.string "Let's go!$"
 
 Nexus_Text_Lillie_Lunala_ChampionDefeat:
 	.string "You didn't look away. Not once.\n"
-	.string "I noticed.$"
+	.string "Nebby noticed, too.$"
 
 Nexus_Text_Lillie_Lunala_ChampionAfter:
 	.string "{SPEAKER NAME_LILLIE}Its wings drink the light. That's why\n"
 	.string "it's so dark around it.\p"
-	.string "But the dark isn't empty. It's where\n"
-	.string "it keeps the stars. I didn't know that\l"
-	.string "when I was little.\p"
-	.string "I used to be afraid of the night. Now\n"
-	.string "I think it's just when you can see the\l"
-	.string "farthest.\p"
+	.string "Where I come from, Nebby grew up by\n"
+	.string "my side. Maybe where you come from, it\l"
+	.string "grew up by yours. Or never at all.\p"
+	.string "I don't think it matters which.\n"
+	.string "Someone carried it until it could fly.\p"
 	.string "Please be careful. And... look up,\n"
 	.string "while you're there.$"
 ```
