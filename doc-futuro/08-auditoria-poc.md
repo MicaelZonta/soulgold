@@ -43,7 +43,7 @@ O que sustenta o veredito no código:
 |---|---|---|---|
 | 1 | Os três toggles foram ligados no mesmo commit da infraestrutura; a ROM padrão da branch só roda no mGBA patchado | decisão | **não alterado** — é escolha do autor (item 6 do doc 07) |
 | 2 | `ld_script_test.ld` continuava com `LENGTH = 32M`; o ROM de teste linka os mesmos objetos e estouraria a região | alta | 96M, seção `rom_filler`, e `.rodata` movido para depois do slot DACS (abaixo) |
-| 3 | `GBAApplyPatch` do mGBA recusava em silêncio saída > 32 MiB: soft-patch de BPS não funcionava | alta | aceita até 96 MiB com buffer linear; testado (abaixo) |
+| 3 | `GBAApplyPatch` do mGBA recusava em silêncio saída > 32 MiB, e o `TargetCopy` do BPS checava limites contra a base em vez da saída (bug do upstream): soft-patch de BPS não funcionava | alta | aceita até 96 MiB com buffer linear; limites do `TargetCopy` corrigidos; aviso quando o patch falha; testado (abaixo) |
 | 4 | `make syms` sem `ROM_FILLER_MB` relinkava o ELF com filler 0 e deixava o `.gba` de 92 MiB ao lado | média | `$(SYM)` depende também de `$(ROM)`; os três artefatos ficam consistentes |
 | 5 | Memory viewer/debugger: `cart1`/`cart2` devolviam o início da ROM em vez de 0x0A/0x0C | média (dev) | em ROM linear, `cart0` cobre a janela toda e `cart1`/`cart2` ficam vazios |
 | 6 | `serialize.c` mudou a checagem do PC também para ROMs ≤ 32 MiB | baixa | expressão do upstream mantida para ROM espelhada; a linear checa as seis regiões |
@@ -73,10 +73,45 @@ ROM de teste passa a ter ~28 MiB de padding entre o código e o slot.
 ### 3 — soft-patch de BPS
 
 Criado um `.bps` da ROM de 33 MiB para a de 92 MiB com o Flips (500 KB).
-Com `ROMRUN_PATCH=1`, o `romrun` chama `mCoreAutoloadPatch` antes do reset:
-o mGBA carrega a base de 33 MiB, aplica o patch e a saída de 92 MiB roda com
-**7/7 screenshots idênticos** aos da ROM de 92 MiB carregada direto. Antes
-da correção o patch era ignorado sem mensagem.
+Com `ROMRUN_PATCH=1`, o `romrun` chama `mCoreAutoloadPatch` antes do reset
+e imprime `memory.romSize` do core, que é a única prova de que o patch foi
+aplicado (o "ok" do autoload só diz que o arquivo foi parseado, e as ROMs
+de 33 e 92 MiB renderizam igual).
+
+Dois defeitos independentes impediam o soft-patch:
+
+1. `GBAApplyPatch` recusava saída acima de 32 MiB (limite do buffer antigo).
+2. Em `src/util/patch-ups.c`, o comando `TargetCopy` do BPS checava
+   `readTargetLocation` contra `inSize` (a base) em vez de `outSize` (a
+   saída). Qualquer patch cuja saída seja maior que a base e que copie do
+   próprio alvo além do tamanho da base era recusado, sem log. **É bug do
+   upstream e vale também para o mGBA de estoque**: um BPS de Emerald limpo
+   (16 MiB) para SoulGold (33 MiB) pode cair nele, porque o Flips usa
+   `TargetCopy` para trechos repetidos.
+
+Depois das duas correções: `memory.romSize` = 96.620.428 bytes após o
+patch, 7/7 screenshots idênticos à ROM de 92 MiB carregada direto, 0
+acessos inválidos. `GBAApplyPatch` agora emite `mLOG` quando o patch é
+recusado ou falha, em vez de rodar a base em silêncio.
+
+### Memória residente
+
+As leituras de dado são barradas por `romSize` e o fetch de código usa
+`romMask` (potência de 2 acima do tamanho), então só a faixa entre
+`romSize` e `toPow2(romSize)` precisa do preenchimento com `0xFF`. O
+`memset` foi limitado a essa faixa e o resto do mapeamento de 128 MiB fica
+sem tocar (páginas não comprometidas com `mmap`).
+
+| ROM | RSS antes | RSS depois |
+|---|---:|---:|
+| 33 MiB | 133 MB | 68 MB |
+| 92 MiB | 133 MB | 132 MB |
+| 33 MiB + BPS para 92 MiB | — | 194 MB (base + saída durante a aplicação) |
+
+Isso importa para o port de Switch em modo applet, que tem uma fração da
+RAM. O port de Switch compila o caminho linear (não define
+`FIXED_ROM_BUFFER`; só 3DS e Wii definem) e usa o `mmap` do libnx via
+`src/platform/posix/memory.c`. Não foi testado em hardware.
 
 ### Regressão depois das correções
 

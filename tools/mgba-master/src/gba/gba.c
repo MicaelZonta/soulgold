@@ -471,7 +471,12 @@ bool GBALoadROM(struct GBA* gba, struct VFile* vf) {
 					mappedMemoryFree(gba->memory.rom, GBA_SIZE_ROM_LINEAR_BUFFER);
 					gba->memory.rom = NULL;
 				} else {
-					memset(&((uint8_t*) gba->memory.rom)[gba->pristineRomSize], 0xFF, GBA_SIZE_ROM_LINEAR_BUFFER - gba->pristineRomSize);
+					// Only the tail up to the next power of two can ever be read: data
+					// loads are bounded by romSize and instruction fetches by romMask
+					// (toPow2(romSize) - 1). Leaving the rest of the mapping untouched
+					// keeps it uncommitted, which matters on the Switch in applet mode.
+					size_t fillEnd = toPow2(gba->pristineRomSize);
+					memset(&((uint8_t*) gba->memory.rom)[gba->pristineRomSize], 0xFF, fillEnd - gba->pristineRomSize);
 				}
 			}
 			if (!gba->memory.rom) {
@@ -603,10 +608,12 @@ void GBAApplyPatch(struct GBA* gba, struct Patch* patch) {
 		return;
 	}
 	if (!patch->applyPatch(patch, gba->memory.rom, gba->pristineRomSize, newRom, patchedSize)) {
+		mLOG(GBA, WARN, "Patch failed to apply (bad checksum or malformed patch); running the unpatched ROM");
 		mappedMemoryFree(newRom, bufferSize);
 		return;
 	}
-	memset(&((uint8_t*) newRom)[patchedSize], 0xFF, bufferSize - patchedSize);
+	// Same as GBALoadROM: only the tail up to toPow2(patchedSize) is reachable.
+	memset(&((uint8_t*) newRom)[patchedSize], 0xFF, toPow2(patchedSize) - patchedSize);
 	if (gba->memory.rom) {
 #ifndef FIXED_ROM_BUFFER
 		if (!gba->isPristine) {

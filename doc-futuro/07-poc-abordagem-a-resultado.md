@@ -209,7 +209,9 @@ achado 5 continua em aberto: quando os testes voltarem a compilar, o
    de teste — com `ROM_FILLER_MB=0` ele não ocupa nada).
 4. BPS: o `make bps` gera patch para uma ROM > 32 MB; o Flips cria e aplica
    sem problema, e o soft-patch dentro do mGBA patchado (`.bps` ao lado da
-   ROM) também funciona depois da correção de `GBAApplyPatch` (doc 08).
+   ROM) funciona depois das correções de `GBAApplyPatch` e do `TargetCopy`
+   do BPS (doc 08). Testar o BPS real (Emerald limpo → SoulGold) no
+   emulador antes de distribuir.
 5. Reencenar um trecho maior do jogo (batalha, troca de mapa por conexão,
    evento com plaquinha de falante por ponteiro) no runner. A POC cobriu
    ~12.000 frames do começo do jogo.

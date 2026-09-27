@@ -21,6 +21,7 @@
 // Usage: romrun <rom> <outdir> <script>
 
 #include <mgba/core/core.h>
+#include <mgba/internal/gba/gba.h>
 #include <mgba/core/log.h>
 #include <mgba-util/audio-buffer.h>
 #include <mgba-util/image/png-io.h>
@@ -48,7 +49,7 @@ static void _log(struct mLogger* logger, int category, enum mLogLevel level, con
 			fprintf(stderr, "[oob] %s\n", buf);
 		}
 	}
-	if ((level & (mLOG_FATAL | mLOG_ERROR | mLOG_GAME_ERROR)) && sPrinted < 10) {
+	if ((level & (mLOG_FATAL | mLOG_ERROR | mLOG_GAME_ERROR | mLOG_WARN)) && sPrinted < 10) {
 		++sPrinted;
 		fprintf(stderr, "[mgba %s] %s\n", mLogCategoryName(category), buf);
 	}
@@ -126,7 +127,9 @@ int main(int argc, char** argv) {
 	}
 	if (getenv("ROMRUN_PATCH")) {
 		// Soft-patch <rom>.bps/.ups/.ips next to the ROM, like the GUI does.
-		printf("autoload patch: %s\n", mCoreAutoloadPatch(core) ? "ok" : "none/FAILED");
+		bool loaded = mCoreAutoloadPatch(core);
+		struct GBA* gba = core->board;
+		printf("autoload patch: %s (memory.romSize %zu bytes, romAddrMask 0x%08X)\n", loaded ? "ok" : "none/FAILED", gba->memory.romSize, gba->memory.romAddrMask);
 	}
 	core->reset(core);
 
