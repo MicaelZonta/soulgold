@@ -3,7 +3,7 @@
 > Lista baseada principalmente nos jogos da série principal. Cada item possui uma descrição curta e pode ser marcado com `[x]` conforme você usar, enfrentar, desenhar ou adicionar o personagem ao seu projeto.
 
 <!-- nexus-legenda -->
-> **Checklist do Nexus (Rift Missions).** O `[x]` de cada treinador agora significa **pronto para uso**: tem **sprite de overworld** e **battle sprite** (os dois obrigatórios). Embaixo de cada nome, a linha de status mostra o resto — mugshot, time das Rift Missions, lendário associado, diálogo genérico e diálogo do lendário — e leva à **ficha** do treinador em `.claude/rift_missions/nexus/<região>/`, com as constantes, os arquivos, os IDs de batalha e as flags. Cada treinador tem **uma** ficha, mesmo aparecendo em várias seções. Hoje: **68 de 260** fichas prontas e **10 treinadores jogáveis no Nexus** (time, fala genérica e fala de campeão no código): Bruno, Steven, Fantina, Byron, Volkner, Elesa, Colress, Ramos, Guzma e Soliera. Estado conferido no código em 27/09/2026.
+> **Checklist do Nexus (Rift Missions).** O `[x]` de cada treinador agora significa **pronto para uso**: tem **sprite de overworld** e **battle sprite** (os dois obrigatórios). Embaixo de cada nome, a linha de status mostra o resto — mugshot, time das Rift Missions, lendário associado, diálogo genérico e diálogo do lendário — e leva à **ficha** do treinador em `.claude/rift_missions/nexus/<região>/`, com as constantes, os arquivos, os IDs de batalha e as flags. Cada treinador tem **uma** ficha, mesmo aparecendo em várias seções. Hoje: **68 de 260** fichas prontas e **10 treinadores jogáveis no Nexus** (time, fala genérica e fala de campeão no código): Bruno, Steven, Fantina, Byron, Volkner, Elesa, Colress, Ramos, Guzma e Soliera. Estado conferido no código em 27/09/2026. **Os outros 58 prontos têm proposta completa** (📝, 27/09/2026: time Traditional validado com `dev_scripts/nexus_validar_time.py`, lendário(s) de que são campeões com fragmento e ficha do Looker, falas genérica e de campeão), e todo lendário do pool tem campeão: [`POOL_LENDARIOS.md`](rift_missions/nexus/POOL_LENDARIOS.md).
 >
 > `✅` em Time Rift / Lendário / diálogos = implementado: `TRAINER_NEXUS_*` em `src/data/trainers.party` e `Nexus_EventScript_<Nome>_Fight` / `_ChampionFight` em `data/scripts/nexus.inc` (o lendário é o da fala de campeão; o sorteio do Daily que usa essa ligação ainda não existe). `📝` = proposta escrita, aguardando o autor. Qual treinador é o campeão de cada lendário: [`POOL_LENDARIOS.md`](rift_missions/nexus/POOL_LENDARIOS.md).
 <!-- /nexus-legenda -->
@@ -13,30 +13,30 @@
 ### Rivais e protagonistas
 
 - [x] **Red** — protagonista original de Kanto e um dos treinadores mais fortes da franquia.
-  - [ficha](rift_missions/nexus/kanto/red.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/red.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Blue/Green** — rival de Red, primeiro Campeão enfrentado pelo jogador e futuro Líder de Viridian.
-  - [ficha](rift_missions/nexus/kanto/blue.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/blue.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Trace** — rival amigável do protagonista em *Let's Go, Pikachu!* e *Let's Go, Eevee!*.
   - [ficha](rift_missions/nexus/kanto/trace.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ### Líderes de Ginásio
 
 - [x] **Brock — Pedra** — Líder de Pewter, conhecido por sua resistência e pelo Onix.
-  - [ficha](rift_missions/nexus/kanto/brock.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/brock.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Misty — Água** — Líder de Cerulean, treinadora veloz associada a Starmie.
-  - [ficha](rift_missions/nexus/kanto/misty.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ✅ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/misty.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário ✅ · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Lt. Surge — Elétrico** — veterano militar e Líder de Vermilion.
-  - [ficha](rift_missions/nexus/kanto/lt_surge.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/lt_surge.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Erika — Grama** — elegante Líder de Celadon e especialista em plantas.
-  - [ficha](rift_missions/nexus/kanto/erika.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/erika.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Koga — Veneno** — ninja de Fuchsia que posteriormente entra para a Elite Four.
-  - [ficha](rift_missions/nexus/kanto/koga.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/koga.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Sabrina — Psíquico** — poderosa médium e Líder de Saffron.
-  - [ficha](rift_missions/nexus/kanto/sabrina.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/sabrina.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Blaine — Fogo** — cientista excêntrico e Líder de Cinnabar.
-  - [ficha](rift_missions/nexus/kanto/blaine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/blaine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Giovanni — Terra** — Líder de Viridian e chefe do Team Rocket.
-  - [ficha](rift_missions/nexus/kanto/giovanni.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ✅ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/giovanni.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário ✅ · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Elite Four e Campeões
 
@@ -47,24 +47,24 @@
 - [ ] **Agatha — Fantasma** — veterana ligada ao passado do Professor Oak, famosa por seu Gengar.
   - [ficha](rift_missions/nexus/kanto/agatha.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Lance — Dragão** — mestre de dragões que posteriormente se torna Campeão de Johto.
-  - [ficha](rift_missions/nexus/kanto/lance.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/lance.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Blue — Campeão** — conquista o título pouco antes da chegada de Red.
-  - [ficha](rift_missions/nexus/kanto/blue.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/blue.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Team Rocket
 
 - [x] **Giovanni** — líder do sindicato criminoso que explora Pokémon em busca de poder e lucro.
-  - [ficha](rift_missions/nexus/kanto/giovanni.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ✅ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/giovanni.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário ✅ · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Jessie e James** — dupla recorrente do Team Rocket presente em versões especiais e nos jogos *Let's Go*.
   - [ficha](rift_missions/nexus/kanto/jessie_e_james.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Archer** — executivo de alto escalão que tenta restaurar o Team Rocket.
-  - [ficha](rift_missions/nexus/kanto/archer.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/archer.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Ariana** — executiva habilidosa e uma das figuras centrais da organização após Giovanni.
-  - [ficha](rift_missions/nexus/kanto/ariana.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/ariana.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Proton** — executivo conhecido por sua crueldade e pelas operações no Slowpoke Well.
-  - [ficha](rift_missions/nexus/kanto/proton.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/proton.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Petrel** — mestre dos disfarces responsável por imitar o Diretor da Radio Tower.
-  - [ficha](rift_missions/nexus/kanto/petrel.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/petrel.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ---
 
@@ -73,57 +73,57 @@
 ### Rival
 
 - [x] **Silver** — filho de Giovanni; começa cruel e aprende gradualmente a respeitar seus Pokémon.
-  - [ficha](rift_missions/nexus/johto/silver.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/silver.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Líderes de Ginásio
 
 - [x] **Falkner — Voador** — jovem Líder de Violet que herdou os Pokémon de seu pai.
-  - [ficha](rift_missions/nexus/johto/falkner.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/falkner.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Bugsy — Inseto** — pesquisador de Pokémon Inseto e Líder de Azalea.
-  - [ficha](rift_missions/nexus/johto/bugsy.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/bugsy.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Whitney — Normal** — Líder de Goldenrod, famosa pelo poderoso Miltank.
-  - [ficha](rift_missions/nexus/johto/whitney.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/whitney.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Morty — Fantasma** — místico de Ecruteak que busca encontrar Pokémon lendários.
-  - [ficha](rift_missions/nexus/johto/morty.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/morty.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Chuck — Lutador** — Líder de Cianwood dedicado ao treinamento físico.
-  - [ficha](rift_missions/nexus/johto/chuck.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/chuck.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Jasmine — Aço** — gentil Líder de Olivine e cuidadora do Ampharos do farol.
-  - [ficha](rift_missions/nexus/johto/jasmine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/jasmine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Pryce — Gelo** — treinador veterano e experiente de Mahogany.
-  - [ficha](rift_missions/nexus/johto/pryce.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/pryce.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Clair — Dragão** — orgulhosa Líder de Blackthorn e prima de Lance.
-  - [ficha](rift_missions/nexus/johto/clair.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/clair.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Elite Four e Campeão
 
 - [x] **Will — Psíquico** — ilusionista viajante que aperfeiçoou suas habilidades pelo mundo.
-  - [ficha](rift_missions/nexus/johto/will.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/will.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Koga — Veneno** — antigo Líder de Fuchsia promovido à Elite Four.
-  - [ficha](rift_missions/nexus/kanto/koga.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/koga.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Bruno — Lutador** — veterano que permanece na Elite Four entre as duas gerações.
   - [ficha](rift_missions/nexus/kanto/bruno.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 - [x] **Karen — Noturno** — defensora da ideia de vencer usando os Pokémon de que se gosta.
-  - [ficha](rift_missions/nexus/johto/karen.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/karen.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Lance — Campeão** — mestre de Pokémon Dragão e principal Campeão de Johto.
-  - [ficha](rift_missions/nexus/kanto/lance.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/lance.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Team Rocket
 
 - [x] **Archer** — comanda a tentativa de trazer Giovanni de volta.
-  - [ficha](rift_missions/nexus/kanto/archer.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/archer.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Ariana** — supervisiona operações importantes, incluindo a base de Mahogany.
-  - [ficha](rift_missions/nexus/kanto/ariana.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/ariana.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Proton** — lidera ataques contra Slowpoke e outras ações violentas.
-  - [ficha](rift_missions/nexus/kanto/proton.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/proton.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Petrel** — infiltra-se na Radio Tower usando disfarces.
-  - [ficha](rift_missions/nexus/kanto/petrel.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/petrel.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Outros notáveis
 
 - [x] **Eusine** — pesquisador e treinador obcecado em encontrar Suicune.
-  - [ficha](rift_missions/nexus/johto/eusine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/johto/eusine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Red** — superchefe silencioso encontrado no topo do Mt. Silver.
-  - [ficha](rift_missions/nexus/kanto/red.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/red.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ---
 
@@ -132,69 +132,69 @@
 ### Rivais
 
 - [x] **Brendan** — protagonista ou rival, filho do Professor Birch.
-  - [ficha](rift_missions/nexus/hoenn/brendan.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/brendan.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **May** — protagonista ou rival, filha do Professor Birch.
-  - [ficha](rift_missions/nexus/hoenn/may.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/may.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Wally** — jovem inicialmente frágil que se torna um treinador habilidoso com Gallade ou Gardevoir.
-  - [ficha](rift_missions/nexus/hoenn/wally.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/wally.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Líderes de Ginásio
 
 - [x] **Roxanne — Pedra** — professora e Líder de Rustboro que valoriza o estudo.
-  - [ficha](rift_missions/nexus/hoenn/roxanne.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/roxanne.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Brawly — Lutador** — surfista e Líder de Dewford.
-  - [ficha](rift_missions/nexus/hoenn/brawly.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/brawly.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Wattson — Elétrico** — inventor alegre responsável pelo Ginásio de Mauville.
-  - [ficha](rift_missions/nexus/hoenn/wattson.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/wattson.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Flannery — Fogo** — nova Líder de Lavaridge que tenta parecer mais experiente.
-  - [ficha](rift_missions/nexus/hoenn/flannery.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/flannery.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Norman — Normal** — pai do protagonista e respeitado Líder de Petalburg.
-  - [ficha](rift_missions/nexus/hoenn/norman.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/norman.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Winona — Voador** — graciosa Líder de Fortree.
-  - [ficha](rift_missions/nexus/hoenn/winona.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/winona.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Tate e Liza — Psíquico** — irmãos gêmeos que lutam em perfeita sincronia.
-  - [ficha](rift_missions/nexus/hoenn/tate_e_liza.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/tate_e_liza.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Wallace — Água** — artista elegante, Líder de Sootopolis e Campeão em *Emerald*.
-  - [ficha](rift_missions/nexus/hoenn/wallace.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/wallace.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Juan — Água** — mentor de Wallace e Líder de Sootopolis em *Emerald*.
-  - [ficha](rift_missions/nexus/hoenn/juan.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/juan.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Elite Four e Campeões
 
 - [x] **Sidney — Noturno** — treinador descontraído que aprecia batalhas intensas.
-  - [ficha](rift_missions/nexus/hoenn/sidney.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/sidney.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Phoebe — Fantasma** — treinadora espiritual ligada ao Mt. Pyre.
-  - [ficha](rift_missions/nexus/hoenn/phoebe.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/phoebe.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Glacia — Gelo** — treinadora que escolheu Hoenn para fortalecer seus Pokémon.
-  - [ficha](rift_missions/nexus/hoenn/glacia.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/glacia.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Drake — Dragão** — marinheiro veterano que respeita a ligação entre pessoas e Pokémon.
-  - [ficha](rift_missions/nexus/hoenn/drake.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/drake.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Steven Stone — Campeão** — colecionador de pedras raras e especialista em Pokémon de Aço.
   - [ficha](rift_missions/nexus/hoenn/steven.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 - [x] **Wallace — Campeão** — assume o título de Hoenn em *Emerald*.
-  - [ficha](rift_missions/nexus/hoenn/wallace.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/wallace.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Battle Frontier — Frontier Brains
 
 - [x] **Noland — Battle Factory** — testa a capacidade de batalhar com Pokémon alugados.
-  - [ficha](rift_missions/nexus/hoenn/noland.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/noland.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Greta — Battle Arena** — avalia mente, habilidade e corpo em combates curtos.
-  - [ficha](rift_missions/nexus/hoenn/greta.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/greta.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Tucker — Battle Dome** — estrela extravagante de torneios eliminatórios.
-  - [ficha](rift_missions/nexus/hoenn/tucker.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/tucker.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Lucy — Battle Pike** — misteriosa chefe de um desafio baseado em escolhas e sorte.
-  - [ficha](rift_missions/nexus/hoenn/lucy.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/lucy.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Spenser — Battle Palace** — sábio que testa a autonomia e a natureza dos Pokémon.
-  - [ficha](rift_missions/nexus/hoenn/spenser.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/spenser.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Brandon — Battle Pyramid** — explorador que utiliza os três Regis.
-  - [ficha](rift_missions/nexus/hoenn/brandon.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/brandon.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Anabel — Battle Tower** — jovem prodígio conhecida como Salon Maiden.
-  - [ficha](rift_missions/nexus/hoenn/anabel.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/anabel.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Team Magma
 
 - [x] **Maxie** — líder que pretende expandir as massas de terra usando Groudon.
-  - [ficha](rift_missions/nexus/hoenn/maxie.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/maxie.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Tabitha** — administrador leal e impulsivo do Team Magma.
   - [ficha](rift_missions/nexus/hoenn/tabitha.md) · Sprite ❌ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Courtney** — administradora analítica que desenvolve grande interesse pelo protagonista.
@@ -203,7 +203,7 @@
 ### Team Aqua
 
 - [x] **Archie** — líder que deseja expandir os oceanos usando Kyogre.
-  - [ficha](rift_missions/nexus/hoenn/archie.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/archie.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Matt** — administrador forte e extremamente leal a Archie.
   - [ficha](rift_missions/nexus/hoenn/matt.md) · Sprite ❌ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Shelly** — administradora inteligente envolvida nas operações científicas da equipe.
@@ -483,7 +483,7 @@
 - [ ] **Hau** — rival otimista e neto do Kahuna Hala.
   - [ficha](rift_missions/nexus/alola/hau.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Gladion** — rival sério que foge da Aether Foundation com Type: Null.
-  - [ficha](rift_missions/nexus/alola/gladion.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/alola/gladion.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ### Trial Captains
 
@@ -526,7 +526,7 @@
 - [ ] **Kahili — Voador** — golfista profissional e integrante da Elite Four.
   - [ficha](rift_missions/nexus/alola/kahili.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Professor Kukui** — professor que testa o jogador na primeira defesa do título em *Sun/Moon*.
-  - [ficha](rift_missions/nexus/alola/kukui.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/alola/kukui.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Hau** — desafiante final da Liga em *Ultra Sun/Ultra Moon*.
   - [ficha](rift_missions/nexus/alola/hau.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Protagonista** — torna-se o primeiro Campeão oficial da recém-criada Liga de Alola.
@@ -539,9 +539,9 @@
 - [ ] **Plumeria** — administradora que age como irmã mais velha dos grunts.
   - [ficha](rift_missions/nexus/alola/plumeria.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Gladion** — enforcer temporário do Team Skull que possui Type: Null.
-  - [ficha](rift_missions/nexus/alola/gladion.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/alola/gladion.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Lusamine** — presidente da Aether Foundation obcecada pelas Ultra Beasts.
-  - [ficha](rift_missions/nexus/alola/lusamine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/alola/lusamine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Faba** — chefe de filial arrogante que trai a fundação.
   - [ficha](rift_missions/nexus/alola/faba.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Wicke** — vice-chefe gentil que ajuda Lillie e o protagonista.
@@ -563,11 +563,11 @@
 - [ ] **Ryuki — Dragão** — músico viajante que deseja comandar um Ginásio.
   - [ficha](rift_missions/nexus/alola/ryuki.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Red** — veterano e chefe da Battle Tree.
-  - [ficha](rift_missions/nexus/kanto/red.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/red.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Blue** — veterano, chefe da Battle Tree e antigo Campeão.
-  - [ficha](rift_missions/nexus/kanto/blue.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/blue.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Anabel** — antiga Frontier Brain que agora trabalha para a International Police.
-  - [ficha](rift_missions/nexus/hoenn/anabel.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/anabel.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [ ] **Ultra Necrozma** — não é treinador, mas funciona como a batalha-chefe central de *Ultra Sun/Ultra Moon*.
   - ➖ não é treinador — é a batalha-chefe do clímax (evento ALTAR_SUN_MOON).
 
@@ -817,11 +817,11 @@
 > Já têm sprite e battle sprite no hack, mas não estavam na lista.
 
 - [x] **Janine — Veneno** — filha de Koga que assume o Ginásio de Fuchsia em *Gold/Silver/Crystal* e *HGSS*.
-  - [ficha](rift_missions/nexus/kanto/janine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/janine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Leaf** — protagonista feminina de *FireRed/LeafGreen*; no hack batalha como "Green" (pós-jogo).
-  - [ficha](rift_missions/nexus/kanto/leaf.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/leaf.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 - [x] **Lillie** — filha de Lusamine e protagonista do arco de Alola do hack.
-  - [ficha](rift_missions/nexus/alola/lillie.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/alola/lillie.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝
 
 ---
 

@@ -67,6 +67,19 @@ o sorteio do Daily que usa essa ligação ainda não existe. Mugshot, dos dez, s
 Bruno e Steven têm. Fora do código: Misty → Kyogre e Giovanni → Mewtwo ou
 Genesect (os dois exemplos do design) e a proposta 📝 da Zossie.
 
+**Propostas de 27/09/2026 (📝):** os outros 58 prontos ganharam time
+Traditional, os lendários de que são campeões (fragmento, narração e ficha do
+Looker) e as falas genérica e de campeão. Com isso **todo lendário do pool tem
+campeão** ([`POOL_LENDARIOS.md`](POOL_LENDARIOS.md)): 121 lendários para 68
+treinadores, todos usados. O que o jogador leva no fim segue o
+[R17](NEXUS_REGRAS.md) (nível 1, primeira forma).
+
+**Validar um time:** `python3 dev_scripts/nexus_validar_time.py [fichas]` passa
+cada bloco `=== TRAINER_NEXUS_` pelo `trainerproc` e confere espécie, item,
+habilidade, golpes aprendíveis, 31 IV/252 EV e as três vagas. Precisa do
+`teachable_learnsets.h` gerado. **Medir as falas:**
+`python3 .claude/skills/nomear-falante/medir_linha.py <ficha.md>`.
+
 ## Armadilhas encontradas ao levantar
 
 - **Brendan e May não são o que parecem.** `OBJ_EVENT_GFX_BRENDAN_*`,
