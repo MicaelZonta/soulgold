@@ -51,16 +51,397 @@ IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): `
 
 ### Time das Rift Missions
 
-_Não definido._
+📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_ROXANNE`, campeã de Terapagos e Uxie. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
+
+Lendário **Terapagos**, a origem do fenômeno Terastal: uma pedra viva que transforma a pedra comum em cristal, o objeto de estudo perfeito para a professora da Trainer's School; semi-lendário **Uxie**, o Ser do Conhecimento, que apaga a memória de quem o olha nos olhos (o medo de uma professora); Mega **Aerodactyl** (Rocktite), o fóssil revivido, como os que a Devon revive em Rustboro. Mais **Probopass** (o Nosepass dela, evoluído), **Omastar** e **Kabutops**: a coleção de fósseis de quem aprende Pedra pelos livros.
+
+*Plano (Singles):* aula em etapas. O Uxie arma Stealth Rock e as duas telas e sai de U-turn; atrás das telas o Terapagos acumula Calm Mind e o Omastar usa Shell Smash (a White Herb devolve as defesas). O Probopass de Sturdy com Assault Vest segura qualquer golpe especial e pivota com Volt Switch; o Kabutops remove o Rapid Spin da equação com Knock Off.
+
+*Plano (Doubles):* a Mega Aerodactyl põe Tailwind no turno 1 e entra de Rock Slide junto do Kabutops (dois Rock Slides com flinch sob Tailwind); o Uxie de Levitate põe as telas nos dois; o Terapagos e o Omastar entram depois que o campo está seguro. Nenhum golpe do time acerta o parceiro.
+
+| Pokémon | Item | Habilidade | Nature | Golpes |
+|---|---|---|---|---|
+| Terapagos | Leftovers | Tera Shift | Modest | Tera Starstorm, Earth Power, Calm Mind, Rapid Spin |
+| Uxie | Light Clay | Levitate | Bold | Stealth Rock, Reflect, Light Screen, U-turn |
+| Aerodactyl | Rocktite | Unnerve | Jolly | Rock Slide, Dual Wingbeat, Ice Fang, Tailwind |
+| Probopass | Assault Vest | Sturdy | Modest | Power Gem, Flash Cannon, Earth Power, Volt Switch |
+| Omastar | White Herb | Swift Swim | Modest | Shell Smash, Hydro Pump, Ice Beam, Ancient Power |
+| Kabutops | Life Orb | Battle Armor | Adamant | Liquidation, Rock Slide, Aqua Jet, Knock Off |
+
+<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: espécie, item, habilidade, golpes e vagas)</summary>
+
+```
+=== TRAINER_NEXUS_ROXANNE ===
+Name: Roxanne
+Class: Leader
+Pic: Leader Roxanne
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Terapagos @ Leftovers
+Modest Nature
+Level: 100
+Ability: Tera Shift
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Tera Starstorm
+- Earth Power
+- Calm Mind
+- Rapid Spin
+
+Uxie @ Light Clay
+Bold Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Stealth Rock
+- Reflect
+- Light Screen
+- U-turn
+
+Aerodactyl @ Rocktite
+Jolly Nature
+Level: 100
+Ability: Unnerve
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Rock Slide
+- Dual Wingbeat
+- Ice Fang
+- Tailwind
+
+Probopass @ Assault Vest
+Modest Nature
+Level: 100
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Power Gem
+- Flash Cannon
+- Earth Power
+- Volt Switch
+
+Omastar @ White Herb
+Modest Nature
+Level: 100
+Ability: Swift Swim
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shell Smash
+- Hydro Pump
+- Ice Beam
+- Ancient Power
+
+Kabutops @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Battle Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Liquidation
+- Rock Slide
+- Aqua Jet
+- Knock Off
+```
+
+</details>
+
 
 ### Lendário associado
 
-_Nenhum ainda._
+#### Terapagos
+
+📝 **Proposta de 27/09/2026, aguardando o autor.** **Terapagos**. Roxanne é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
+
+**Quem é.** Roxanne, Líder de Rustboro e professora da Trainer's School, especialista em Pedra. Estuda tudo pelos livros e aprendeu na própria derrota que a batalha também se aprende fora deles.
+
+**A criatura.** Terapagos (Normal) vive no fundo da Area Zero, em Paldea, e é tido como a origem do fenômeno Terastal. Guarda essa energia num casco de cristais e, ao liberá-la, muda para a Forma Terastal.
+
+**O fragmento.** Uma cratera em que toda pedra criou cristal. Granito e basalto comuns brotando facetas como dentes novos, cada faceta com uma cor que não existe em lugar nenhum da cratera.
+
+**Falas do fragmento** (narração e Looker; tocam só nos dias deste lendário):
+
+**Chegada**
+
+> A crater, and every stone in it had grown a crystal.
+>
+> Plain gray rocks, sprouting facets like new teeth. Each facet held a color that was nowhere else in the crater.
+
+**Boss**
+
+> In the deepest part of the crater, the crystals all turned at once, toward a single point.
+>
+> Something lifted a shell that was more jewel than stone, and the light in every facet went out.
+
+**Ficha do Looker, no altar, no dia em que o jogador traz o fragmento** (o que volta é o fragmento no nível 1, [R17](../NEXUS_REGRAS.md))
+
+> File L-1024. Crystal Heart.
+>
+> A crater where every stone was trying to become a jewel, and a teacher who only ever asked stones to be stones.
+>
+> What came back with you is small, and its shell has no crystals yet. I have left room in this file for them to grow.
+
+<details><summary><code>.inc</code> do fragmento</summary>
+
+```asm
+Nexus_Text_Terapagos_Arrival:
+	.string "A crater, and every stone in it had\n"
+	.string "grown a crystal.\p"
+	.string "Plain gray rocks, sprouting facets like\n"
+	.string "new teeth. Each facet held a color\l"
+	.string "that was nowhere else in the crater.$"
+
+Nexus_Text_Terapagos_Boss:
+	.string "In the deepest part of the crater, the\n"
+	.string "crystals all turned at once, toward a\l"
+	.string "single point.\p"
+	.string "Something lifted a shell that was more\n"
+	.string "jewel than stone, and the light in\l"
+	.string "every facet went out.$"
+
+Nexus_Text_Terapagos_LookerFile:
+	.string "{SPEAKER NAME_LOOKER}File L-1024. Crystal Heart.\p"
+	.string "A crater where every stone was trying\n"
+	.string "to become a jewel, and a teacher who\l"
+	.string "only ever asked stones to be stones.\p"
+	.string "What came back with you is small, and\n"
+	.string "its shell has no crystals yet. I have\l"
+	.string "left room in this file for them to grow.$"
+```
+
+</details>
+
+#### Uxie
+
+📝 **Proposta de 27/09/2026, aguardando o autor.** **Uxie**. Roxanne é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
+
+**Quem é.** Roxanne, Líder de Rustboro e professora da Trainer's School. Anota tudo, sempre, num caderno.
+
+**A criatura.** Uxie, o Ser do Conhecimento, dorme no fundo do Lago Acuity, em Sinnoh. Dizem que apaga a memória de quem o olha nos olhos; por isso anda de olhos fechados.
+
+**O fragmento.** Um lago parado coberto de folhas soltas, centenas delas, todas em branco. A tinta acabou de sair delas e ainda se espalha em fios finos pela água.
+
+**Falas do fragmento** (narração e Looker; tocam só nos dias deste lendário):
+
+**Chegada**
+
+> A still lake, and on its surface floated hundreds of loose pages.
+>
+> Every page was blank. The ink had only just left them. It was still spreading through the water in thin gray threads.
+
+**Boss**
+
+> The pages stopped drifting.
+>
+> Something rose from the middle of the lake with its eyes shut tight. It felt, somehow, like it was being polite.
+
+**Ficha do Looker, no altar, no dia em que o jogador traz o fragmento** (o que volta é o fragmento no nível 1, [R17](../NEXUS_REGRAS.md))
+
+> File L-480. Keeper of Memory.
+>
+> A lake of blank pages, and a teacher who writes everything down so she never has to trust her memory.
+>
+> What came back with you is very small, and it keeps its eyes closed. I did not check what I still remember. I would rather not know.
+
+<details><summary><code>.inc</code> do fragmento</summary>
+
+```asm
+Nexus_Text_Uxie_Arrival:
+	.string "A still lake, and on its surface floated\n"
+	.string "hundreds of loose pages.\p"
+	.string "Every page was blank. The ink had only\n"
+	.string "just left them. It was still spreading\l"
+	.string "through the water in thin gray\l"
+	.string "threads.$"
+
+Nexus_Text_Uxie_Boss:
+	.string "The pages stopped drifting.\p"
+	.string "Something rose from the middle of the\n"
+	.string "lake with its eyes shut tight. It felt,\l"
+	.string "somehow, like it was being polite.$"
+
+Nexus_Text_Uxie_LookerFile:
+	.string "{SPEAKER NAME_LOOKER}File L-480. Keeper of Memory.\p"
+	.string "A lake of blank pages, and a teacher\n"
+	.string "who writes everything down so she\l"
+	.string "never has to trust her memory.\p"
+	.string "What came back with you is very small,\n"
+	.string "and it keeps its eyes closed. I did not\l"
+	.string "check what I still remember. I would\l"
+	.string "rather not know.$"
+```
+
+</details>
+
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Roxanne cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dela mesma, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+
+**Antes da luta**
+
+> Good day! Please don't mind the notebook. I write down every battle, even the ones I lose.
+>
+> Especially those, actually. A loss teaches you more, but only if you remember it properly.
+>
+> I'm Roxanne, Gym Leader of Rustboro City. Now then -- shall we begin the lesson?
+
+**Derrota**
+
+> I see. I'll need a fresh page for this.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Roxanne_Intro:
+	.string "Good day! Please don't mind the\n"
+	.string "notebook. I write down every battle,\l"
+	.string "even the ones I lose.\p"
+	.string "Especially those, actually. A loss\n"
+	.string "teaches you more, but only if you\l"
+	.string "remember it properly.\p"
+	.string "I'm Roxanne, Gym Leader of Rustboro\n"
+	.string "City. Now then -- shall we begin the\l"
+	.string "lesson?$"
+
+Nexus_Text_Roxanne_Defeat:
+	.string "I see. I'll need a fresh page for this.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
-_Não escrito._ (texto do jogo em inglês)
+#### Terapagos
+
+📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Roxanne é a **campeã**, a luta logo antes do Terapagos. A fala é sobre a criatura, sem dizer o nome dela.
+
+A Roxanne escolheu Pedra porque pedra não muda: é por isso que confia nela. A criatura faz o contrário: toca uma pedra comum e a obriga a virar joia agora. A professora encheu seis páginas tentando classificar os cristais e as anotações não fecham. A derrota: as anotações dela acertaram tudo, menos o resultado. O que fica é a conclusão de cientista: pedra muda, sim, só que devagar o bastante para chamarmos de permanência; e ela pede um cristal de volta, porque quer estar errada por escrito.
+
+**Antes da luta**
+
+> I've filled six pages trying to classify the crystals down there. Every single one is a different color.
+>
+> Those rocks were ordinary this morning. Granite, basalt. I checked. Now they're growing facets.
+>
+> I chose Rock types because stones don't change on you. I'm starting to think I was wrong about that, too.
+>
+> …Let me test one thing I'm still sure of. My team!
+
+**Derrota**
+
+> My notes were right about everything except the outcome.
+
+**Depois da luta**
+
+> Here is my conclusion, for what it's worth.
+>
+> Stones do change. They just do it slowly enough that we call it permanence.
+>
+> That creature doesn't wait. It touches a rock and asks it to become what it could be, right now.
+>
+> Go on ahead. And if you can, bring me back one crystal. I'd like to be wrong in writing.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Roxanne_Terapagos_ChampionIntro:
+	.string "I've filled six pages trying to\n"
+	.string "classify the crystals down there.\l"
+	.string "Every single one is a different color.\p"
+	.string "Those rocks were ordinary this\n"
+	.string "morning. Granite, basalt. I checked.\l"
+	.string "Now they're growing facets.\p"
+	.string "I chose Rock types because stones\n"
+	.string "don't change on you. I'm starting to\l"
+	.string "think I was wrong about that, too.\p"
+	.string "…Let me test one thing I'm still sure\n"
+	.string "of. My team!$"
+
+Nexus_Text_Roxanne_Terapagos_ChampionDefeat:
+	.string "My notes were right about everything\n"
+	.string "except the outcome.$"
+
+Nexus_Text_Roxanne_Terapagos_ChampionAfter:
+	.string "{SPEAKER NAME_ROXANNE}Here is my conclusion, for what it's\n"
+	.string "worth.\p"
+	.string "Stones do change. They just do it\n"
+	.string "slowly enough that we call it\l"
+	.string "permanence.\p"
+	.string "That creature doesn't wait. It\n"
+	.string "touches a rock and asks it to become\l"
+	.string "what it could be, right now.\p"
+	.string "Go on ahead. And if you can, bring me\n"
+	.string "back one crystal. I'd like to be wrong\l"
+	.string "in writing.$"
+```
+
+</details>
+
+#### Uxie
+
+📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Roxanne é a **campeã**, a luta logo antes do Uxie. A fala é sobre a criatura, sem dizer o nome dela.
+
+Para uma professora, o pior não é perder: é o aluno que esquece tudo o que ela ensinou. Por isso a Roxanne escreve tudo. A criatura do lago apaga a memória de quem a encara, e mesmo assim passa o tempo inteiro de olhos fechados. A virada: aquilo que podia tomar todas as lembranças escolhe não olhar, e a Roxanne chama isso de boas maneiras. E admite, como professora, que às vezes o aluno precisa esquecer uma coisa para aprendê-la direito.
+
+**Antes da luta**
+
+> Don't look at it. The creature on the lake. If it opens its eyes, you forget. That's what the old texts say.
+>
+> I've taught for years. What I fear most isn't losing. It's a student who forgets everything I said.
+>
+> So I write it all down. Everything. Just in case.
+>
+> …Now, let's make a memory worth writing!
+
+**Derrota**
+
+> Noted. Underlined twice.
+
+**Depois da luta**
+
+> Did you notice? It keeps its eyes closed. The whole time.
+>
+> It could take every memory we have, and it chooses not to look. I think that is a kind of manners.
+>
+> A good teacher does the same, now and then. Some things a student has to forget, to learn them properly.
+>
+> …That goes in the notebook, too. Go on.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Roxanne_Uxie_ChampionIntro:
+	.string "Don't look at it. The creature on the\n"
+	.string "lake. If it opens its eyes, you forget.\l"
+	.string "That's what the old texts say.\p"
+	.string "I've taught for years. What I fear\n"
+	.string "most isn't losing. It's a student who\l"
+	.string "forgets everything I said.\p"
+	.string "So I write it all down. Everything. Just\n"
+	.string "in case.\p"
+	.string "…Now, let's make a memory worth\n"
+	.string "writing!$"
+
+Nexus_Text_Roxanne_Uxie_ChampionDefeat:
+	.string "Noted. Underlined twice.$"
+
+Nexus_Text_Roxanne_Uxie_ChampionAfter:
+	.string "{SPEAKER NAME_ROXANNE}Did you notice? It keeps its eyes\n"
+	.string "closed. The whole time.\p"
+	.string "It could take every memory we have,\n"
+	.string "and it chooses not to look. I think\l"
+	.string "that is a kind of manners.\p"
+	.string "A good teacher does the same, now and\n"
+	.string "then. Some things a student has to\l"
+	.string "forget, to learn them properly.\p"
+	.string "…That goes in the notebook, too. Go on.$"
+```
+
+</details>
+
+Falante novo: `SP_NAME_ROXANNE` (não existe ainda em `include/constants/speaker_names.h`).
