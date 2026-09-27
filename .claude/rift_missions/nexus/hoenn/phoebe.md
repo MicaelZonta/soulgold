@@ -48,16 +48,273 @@ IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): `
 
 ### Time das Rift Missions
 
-_Não definido._
+📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_PHOEBE`, campeão de Flutter Mane. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
+
+Lendário **Giratina** (Fantasma/Dragão, o senhor do Mundo Distorcido, o outro lado que a Phoebe escuta desde o Mt. Pyre); semi-lendário **Flutter Mane** (Fantasma/Fada, o fantasma antigo de quem ela é campeã); Mega **Banette** (Ghostite; Prankster, a boneca abandonada que ela tem desde Emerald). Mais **Dusclops** (o ás dela em Emerald), **Sableye** e **Dusknoir** (do time dela em ORAS).
+
+*Plano (Singles):* queimar e drenar. Sableye (Prankster) e Dusclops espalham Will-O-Wisp; o Giratina bate de Hex, que dobra contra alvo com status; a Mega Banette ameaça Destiny Bond com prioridade; a Flutter Mane limpa rápido. Contra time muito rápido, o Dusclops tem Trick Room: aí Giratina, Dusknoir e Banette passam na frente.
+
+*Plano (Doubles):* Sableye abre com Fake Out e Will-O-Wisp com prioridade; a Flutter Mane varre com Dazzling Gleam nos dois; o Giratina segue com Hex no queimado; o Dusknoir cobre com Ice Punch e Protect.
+
+| Pokémon | Item | Habilidade | Nature | Golpes |
+|---|---|---|---|---|
+| Giratina | Leftovers | Pressure | Bold | Hex, Will-O-Wisp, Dragon Pulse, Rest |
+| Flutter Mane | Booster Energy | Protosynthesis | Timid | Moonblast, Shadow Ball, Dazzling Gleam, Protect |
+| Banette | Ghostite | Frisk | Adamant | Poltergeist, Shadow Sneak, Knock Off, Destiny Bond |
+| Dusclops | Eviolite | Frisk | Relaxed | Trick Room, Night Shade, Will-O-Wisp, Pain Split |
+| Sableye | Leftovers | Prankster | Careful | Fake Out, Will-O-Wisp, Recover, Foul Play |
+| Dusknoir | Sitrus Berry | Frisk | Brave | Poltergeist, Ice Punch, Shadow Sneak, Protect |
+
+<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>)</summary>
+
+```
+=== TRAINER_NEXUS_PHOEBE ===
+Name: Phoebe
+Class: Elite Four
+Pic: Elite Four Phoebe
+Gender: Female
+Music: Elite Four
+Double Battle: No
+AI: Smart Trainer
+
+Giratina @ Leftovers
+Bold Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hex
+- Will-O-Wisp
+- Dragon Pulse
+- Rest
+
+Flutter Mane @ Booster Energy
+Timid Nature
+Level: 100
+Ability: Protosynthesis
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Moonblast
+- Shadow Ball
+- Dazzling Gleam
+- Protect
+
+Banette @ Ghostite
+Adamant Nature
+Level: 100
+Ability: Frisk
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Poltergeist
+- Shadow Sneak
+- Knock Off
+- Destiny Bond
+
+Dusclops @ Eviolite
+Relaxed Nature
+Level: 100
+Ability: Frisk
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Trick Room
+- Night Shade
+- Will-O-Wisp
+- Pain Split
+
+Sableye @ Leftovers
+Careful Nature
+Level: 100
+Ability: Prankster
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Will-O-Wisp
+- Recover
+- Foul Play
+
+Dusknoir @ Sitrus Berry
+Brave Nature
+Level: 100
+Ability: Frisk
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Poltergeist
+- Ice Punch
+- Shadow Sneak
+- Protect
+```
+
+</details>
+
 
 ### Lendário associado
 
-_Nenhum ainda._
+#### Flutter Mane
+
+📝 **Proposta de 27/09/2026, aguardando o autor.** **Flutter Mane**. Phoebe é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
+
+**Quem é.** Phoebe, da Elite Four de Hoenn, especialista em Fantasma. Treinou no Mt. Pyre, o monte dos túmulos, e diz conversar com os Pokémon Fantasma.
+
+**A criatura.** Flutter Mane, Pokémon Paradoxo antigo (Fantasma/Fada), parente pré-histórico de um fantasma travesso que se alimenta de sustos. Tem uma juba de penas e vive nas profundezas da Area Zero.
+
+**O fragmento.** Uma caverna sem fundo onde plumas cor de ferrugem flutuam sem vento. Lá embaixo alguém ri, como uma criança escondida há tempo demais.
+
+**Falas do fragmento** (narração e Looker; tocam só nos dias deste lendário):
+
+**Chegada**
+
+> A cave with no bottom.
+>
+> Rust-colored plumes drifted in the air, though there was no wind.
+>
+> Somewhere below, someone was laughing. It sounded like a child who had been hiding for a very long time.
+
+**Boss**
+
+> The laughing stopped, right behind you.
+>
+> A mane of feathers unfolded in the dark, and every one of them was looking at you.
+
+**Ficha do Looker, no altar, no dia em que o jogador traz o fragmento** ([R17](../NEXUS_REGRAS.md))
+
+> File L-987. The Laugh in the Dark.
+>
+> A cave full of very old laughter, and a girl from the mountain of graves who laughed right back.
+>
+> What came home with you is small, and it giggles when I turn off the light. She says ghosts are only lonely. I have decided to believe her.
+
+<details><summary><code>.inc</code> do fragmento</summary>
+
+```asm
+Nexus_Text_FlutterMane_Arrival:
+	.string "A cave with no bottom.\p"
+	.string "Rust-colored plumes drifted in the air,\n"
+	.string "though there was no wind.\p"
+	.string "Somewhere below, someone was laughing.\n"
+	.string "It sounded like a child who had been\l"
+	.string "hiding for a very long time.$"
+
+Nexus_Text_FlutterMane_Boss:
+	.string "The laughing stopped, right behind you.\p"
+	.string "A mane of feathers unfolded in the\n"
+	.string "dark, and every one of them was looking\l"
+	.string "at you.$"
+
+Nexus_Text_FlutterMane_LookerFile:
+	.string "{SPEAKER NAME_LOOKER}File L-987. The Laugh in the Dark.\p"
+	.string "A cave full of very old laughter, and a\n"
+	.string "girl from the mountain of graves who\l"
+	.string "laughed right back.\p"
+	.string "What came home with you is small, and it\n"
+	.string "giggles when I turn off the light. She\l"
+	.string "says ghosts are only lonely. I have\l"
+	.string "decided to believe her.$"
+```
+
+</details>
+
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Phoebe cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dela mesma, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+
+**Antes da luta**
+
+> Ahahaha! I'm Phoebe. I trained on Mt. Pyre, way up where the graves are.
+>
+> Everyone thinks the dead are scary, but mostly they're just lonely!
+>
+> Up there I learned to hear them. My Dusclops hears them best of all.
+>
+> So let's play! They love it when someone plays!
+
+**Derrota**
+
+> Oh, you win! Ahaha, the ghosts are cheering for you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Phoebe_Intro:
+	.string "Ahahaha! I'm Phoebe. I trained on Mt.\n"
+	.string "Pyre, way up where the graves are.\p"
+	.string "Everyone thinks the dead are scary,\n"
+	.string "but mostly they're just lonely!\p"
+	.string "Up there I learned to hear them. My\n"
+	.string "Dusclops hears them best of all.\p"
+	.string "So let's play! They love it when\n"
+	.string "someone plays!$"
+
+Nexus_Text_Phoebe_Defeat:
+	.string "Oh, you win! Ahaha, the ghosts are\n"
+	.string "cheering for you.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
-_Não escrito._ (texto do jogo em inglês)
+#### Flutter Mane
+
+📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Phoebe é o **campeão**, a luta logo antes da Flutter Mane. A fala é sobre a criatura, sem dizer o nome dela.
+
+A Phoebe acha que os fantasmas não são assustadores, só solitários. Aqui ela encontra um fantasma que come susto e tentou assustar de volta; não deu certo. A criatura é tão antiga que ninguém grita perto dela há milhares de anos: está faminta. A virada: o conselho da Phoebe é não ser corajoso diante dela, e sim se surpreender, porque é só isso que ela quer.
+
+**Antes da luta**
+
+> Did you hear it laughing? I tried to scare it back! It didn't work.
+>
+> I think it's a ghost that eats fear. It hides and giggles and waits for you to scream.
+>
+> But it's so old… Nobody has screamed for it in thousands of years.
+>
+> Ahaha! It's starving! Let's play first!
+
+**Derrota**
+
+> Ahaha! I lost! Should I scream? Would that help it?
+
+**Depois da luta**
+
+> Ghosts on Mt. Pyre want to be remembered. That's all.
+>
+> This one is older than remembering. It just wants someone to react.
+>
+> So when you meet it, don't be brave, okay? Be surprised.
+>
+> It's been waiting so long for someone to be surprised.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Phoebe_ChampionIntro:
+	.string "Did you hear it laughing? I tried to\n"
+	.string "scare it back! It didn't work.\p"
+	.string "I think it's a ghost that eats fear. It\n"
+	.string "hides and giggles and waits for you to\l"
+	.string "scream.\p"
+	.string "But it's so old… Nobody has screamed\n"
+	.string "for it in thousands of years.\p"
+	.string "Ahaha! It's starving! Let's play\n"
+	.string "first!$"
+
+Nexus_Text_Phoebe_ChampionDefeat:
+	.string "Ahaha! I lost! Should I scream? Would\n"
+	.string "that help it?$"
+
+Nexus_Text_Phoebe_ChampionAfter:
+	.string "{SPEAKER NAME_PHOEBE}Ghosts on Mt. Pyre want to be\n"
+	.string "remembered. That's all.\p"
+	.string "This one is older than remembering. It\n"
+	.string "just wants someone to react.\p"
+	.string "So when you meet it, don't be brave,\n"
+	.string "okay? Be surprised.\p"
+	.string "It's been waiting so long for someone\n"
+	.string "to be surprised.$"
+```
+
+</details>
+
+
+Falante novo: `SP_NAME_PHOEBE` (ainda não existe em `include/constants/speaker_names.h`).

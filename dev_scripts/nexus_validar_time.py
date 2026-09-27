@@ -48,6 +48,11 @@ def parse_species():
     family_of = {}
     for path in sorted(glob.glob('src/data/pokemon/species_info/gen_*_families.h')):
         text = read(path)
+        # habilidades por macro (#if P_UPDATED_ABILITIES >= GEN_x / #else): vale a
+        # primeira definicao, porque P_UPDATED_ABILITIES e GEN_LATEST
+        ability_macros = {}
+        for mm in re.finditer(r'#define (\w+_ABILITIES)\s*\{([^}]*)\}', text):
+            ability_macros.setdefault(mm.group(1), re.findall(r'ABILITY_\w+', mm.group(2)))
         # especies escritas por macro (GENESECT_SPECIES_INFO(form) etc.)
         macros = {}
         for mm in re.finditer(r'#define (\w+_SPECIES_INFO)\([^)]*\)((?:.*\\\n)*.*)', text):
@@ -65,7 +70,11 @@ def parse_species():
                     chunk = macros[mac.group(1)] + chunk
                 d = {'family': fname}
                 a = re.search(r'\.abilities\s*=\s*\{([^}]*)\}', chunk)
-                d['abilities'] = re.findall(r'ABILITY_\w+', a.group(1)) if a else []
+                am = re.search(r'\.abilities\s*=\s*(\w+_ABILITIES)\b', chunk)
+                if am and am.group(1) in ability_macros:
+                    d['abilities'] = ability_macros[am.group(1)]
+                else:
+                    d['abilities'] = re.findall(r'ABILITY_\w+', a.group(1)) if a else []
                 for flag in ('isRestrictedLegendary', 'isSubLegendary', 'isMythical',
                              'isUltraBeast', 'isParadox', 'isMegaEvolution', 'isPrimalReversion'):
                     d[flag] = bool(re.search(r'\.' + flag + r'\s*=\s*TRUE', chunk))
