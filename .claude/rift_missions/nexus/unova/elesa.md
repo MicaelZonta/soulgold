@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -145,7 +145,9 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** **Pheromosa** (UB-02 Beauty). Elesa é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
+✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Elesa_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
+
+**Proposta de 26/09/2026:** **Pheromosa** (UB-02 Beauty). Elesa é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Elesa, líder de Nimbasa e modelo famosa.
 
@@ -206,7 +208,9 @@ Nexus_Text_Beauty_LookerFile:
 
 ### Diálogo genérico
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Elesa cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Elesa_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Elesa cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
 
@@ -241,7 +245,9 @@ Nexus_Text_Elesa_Defeat:
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Elesa é o **campeão**, a luta logo antes da Pheromosa. A fala é sobre a criatura, sem dizer o nome dela.
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Elesa_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Elesa é o **campeão**, a luta logo antes da Pheromosa. A fala é sobre a criatura, sem dizer o nome dela.
 
 A Elesa só viu a criatura de longe, porque ela não deixa nada chegar perto: move-se como a última coisa limpa do mundo e olha todo o resto como uma mancha. Todo mundo para e encara, e a Elesa conhece esse olhar do outro lado, de uma carreira inteira. A vitória do jogador: ele nunca encarou, estava ocupado lutando. O que fica: ser admirado não é ser amado, é mais solitário, e a criatura acha que nunca ter sido tocada é perfeição. "Vá mostrar o que ela está perdendo. Suje as mãos."
 

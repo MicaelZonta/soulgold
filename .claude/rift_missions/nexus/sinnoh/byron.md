@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -145,7 +145,9 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** **Stakataka** (UB Assembly). Byron é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
+✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Byron_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
+
+**Proposta de 26/09/2026:** **Stakataka** (UB Assembly). Byron é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Byron, líder de Canalave, minerador, "o homem de corpo de aço", pai do Roark, e dono de um Bastiodon, ele mesmo um muro vivo.
 
@@ -203,7 +205,9 @@ Nexus_Text_Assembly_LookerFile:
 
 ### Diálogo genérico
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Byron cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Byron_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Byron cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
 
@@ -237,7 +241,9 @@ Nexus_Text_Byron_Defeat:
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Byron é o **campeão**, a luta logo antes da Stakataka. A fala é sobre a criatura, sem dizer o nome dela.
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Byron_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Byron é o **campeão**, a luta logo antes da Stakataka. A fala é sobre a criatura, sem dizer o nome dela.
 
 O Byron corta pedra de montanha a vida inteira e sabe que aquele muro não é pedra: cada tijolo está vivo, uns cento e cinquenta, cada um segurando o próximo. Ele e o filho não concordam nem em como empilhar uma prateleira, e aquelas criaturas levantaram uma fortaleza juntas. A vitória: um time que segura, sem rachadura. O que fica: não procure o tijolo fraco, não existe; bata no muro inteiro, com tudo, de uma vez. E depois vá ligar para a família. Ele vai ligar para a dele.
 

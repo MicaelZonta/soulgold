@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -145,7 +145,9 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** **Xurkitree** (UB-03 Lighting). Volkner é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
+✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Volkner_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
+
+**Proposta de 26/09/2026:** **Xurkitree** (UB-03 Lighting). Volkner é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Volkner, líder de Sunyshore. Em Platinum, entediado e sem desafiantes à altura, ele reformou os equipamentos elétricos do ginásio e a cidade ficou sem luz.
 
@@ -207,7 +209,9 @@ Nexus_Text_Lighting_LookerFile:
 
 ### Diálogo genérico
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Volkner cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Volkner_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Volkner cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
 
@@ -241,7 +245,9 @@ Nexus_Text_Volkner_Defeat:
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Volkner é o **campeão**, a luta logo antes da Xurkitree. A fala é sobre a criatura, sem dizer o nome dela.
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Volkner_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Volkner é o **campeão**, a luta logo antes da Xurkitree. A fala é sobre a criatura, sem dizer o nome dela.
 
 A criatura está secando a cidade rua por rua, e o Volkner queria odiá-la, mas é o último com esse direito: ele mesmo apagou a própria cidade para ter o que fazer. Ele se reconhece nela. A vitória do jogador é a faísca que vale todo aquele escuro. O que fica: ela não é cruel, só está com fome e achou uma cidade inteira para comer, e é exatamente isso que o assusta, porque ele entende.
 

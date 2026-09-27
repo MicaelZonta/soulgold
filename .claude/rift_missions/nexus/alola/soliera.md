@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -145,7 +145,9 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** **Naganadel** (UB Stinger). Soliera é o campeão dela: a quinta luta do Daily, logo antes da boss battle. **R1:** o Naganadel evolui do Poipole, que é presente em `Route40_House4`; este fragmento só entra no sorteio depois de o jogador capturar um Naganadel.
+✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Soliera_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
+
+**Proposta de 26/09/2026:** **Naganadel** (UB Stinger). Soliera é o campeão dela: a quinta luta do Daily, logo antes da boss battle. **R1:** o Naganadel evolui do Poipole, que é presente em `Route40_House4`; este fragmento só entra no sorteio depois de o jogador capturar um Naganadel.
 
 **Quem é.** Soliera, a integrante da Ultra Recon Squad focada na missão acima de tudo, e quem entrega o Poipole ao jogador em Ultra Sun.
 
@@ -244,7 +246,9 @@ Nexus_Text_Stinger_Poipole:
 
 ### Diálogo genérico
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Soliera cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Soliera_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Soliera cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
 
@@ -278,7 +282,9 @@ Nexus_Text_Soliera_Defeat:
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Soliera é o **campeão**, a luta logo antes da Naganadel. A fala é sobre a criatura, sem dizer o nome dela.
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Soliera_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Soliera é o **campeão**, a luta logo antes da Naganadel. A fala é sobre a criatura, sem dizer o nome dela.
 
 A criatura já passou onze vezes sobre a torre, cada vez mais baixo, e a Soliera contou. No mundo dela, entregaram um pequeno como aquele a quem os ajudou, e foi ela quem entregou. Nunca soube no que ele se tornou, e talvez esteja prestes a descobrir. Na derrota, ela não pede segunda chance. O que fica: se foi nisso que ele cresceu, alguém o criou bem, ou ninguém criou; de perto, o jogador vai saber. E o único aviso que a criatura dá: a agulha aponta antes do golpe. (A narração do boss fecha a conta: "the twelfth time".)
 

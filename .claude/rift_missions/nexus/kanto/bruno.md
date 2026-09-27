@@ -14,10 +14,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -153,7 +153,9 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** **Buzzwole** (UB-02 Absorption). Bruno é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
+✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Bruno_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
+
+**Proposta de 26/09/2026:** **Buzzwole** (UB-02 Absorption). Bruno é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Bruno, o homem que construiu a própria força treinando todo dia.
 
@@ -217,7 +219,9 @@ Nexus_Text_Absorption_LookerFile:
 
 ### Diálogo genérico
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Bruno cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Bruno_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Bruno cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
 
@@ -253,7 +257,9 @@ Nexus_Text_Bruno_Defeat:
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Bruno é o **campeão**, a luta logo antes da Buzzwole. A fala é sobre a criatura, sem dizer o nome dela.
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Bruno_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Bruno é o **campeão**, a luta logo antes da Buzzwole. A fala é sobre a criatura, sem dizer o nome dela.
 
 O Bruno observou a criatura por três dias: ela não levanta nada, não treina, só posa e bebe a força dos outros, e ainda assim é mais forte que qualquer lutador que ele já enfrentou. Ele não a odeia, mas se recusa a chamar aquilo de força. A vitória do jogador é "a outra força", a que não se bebe de ninguém. O que fica é um conselho de lutador: ela vai se exibir antes de bater, então não olhe os músculos, olhe as pernas.
 

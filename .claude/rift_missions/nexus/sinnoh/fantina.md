@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -145,7 +145,9 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** **Blacephalon** (UB Burst). Fantina é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
+✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Fantina_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
+
+**Proposta de 26/09/2026:** **Blacephalon** (UB Burst). Fantina é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Fantina, líder de Hearthome, "a dançarina sedutora e cheia de alma", estrela de concursos, com Pokémon Fantasma.
 
@@ -205,7 +207,9 @@ Nexus_Text_Burst_LookerFile:
 
 ### Diálogo genérico
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Fantina cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Fantina_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Fantina cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
 
@@ -240,7 +244,9 @@ Nexus_Text_Fantina_Defeat:
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Fantina é o **campeão**, a luta logo antes da Blacephalon. A fala é sobre a criatura, sem dizer o nome dela.
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Fantina_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Fantina é o **campeão**, a luta logo antes da Blacephalon. A fala é sobre a criatura, sem dizer o nome dela.
 
 A Fantina fala da criatura como de uma colega de palco: dança mal de propósito para você rir, você ri e se inclina, e aí, *boum*, ela tira a vida da plateia e faz uma reverência. A Fantina também tira o fôlego do público, mas devolve. A vitória: o jogador assistiu ao show inteiro sem se perder. O que fica: um bom artista dá tudo e o público sai com mais do que trouxe; aquela lá só tira e chama isso de aplauso. "Quando ela se curvar para você, não aplauda. Não se incline. Só termine o show."
 

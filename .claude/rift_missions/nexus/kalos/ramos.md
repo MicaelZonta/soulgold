@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -147,7 +147,9 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** **Kartana** (UB-04 Blade). Ramos é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
+✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Ramos_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
+
+**Proposta de 26/09/2026:** **Kartana** (UB-04 Blade). Ramos é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Ramos, líder de Coumarine, jardineiro que leva a mesma tesoura de poda há trinta anos e chama o jogador de "sprout".
 
@@ -209,7 +211,9 @@ Nexus_Text_Blade_LookerFile:
 
 ### Diálogo genérico
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Ramos cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Ramos_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Ramos cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
 
@@ -244,7 +248,9 @@ Nexus_Text_Ramos_Defeat:
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Ramos é o **campeão**, a luta logo antes da Kartana. A fala é sobre a criatura, sem dizer o nome dela.
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Ramos_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Ramos é o **campeão**, a luta logo antes da Kartana. A fala é sobre a criatura, sem dizer o nome dela.
 
 O segredo de trinta anos de tesoura: você nunca corta para ferir a árvore, corta para ela voltar mais forte. A criatura corta melhor do que ele jamais cortou, limpo, perfeito, até aço, e nunca deixou nada crescer de volta. A vitória do jogador é "algo que cresce". O que fica: não tente ser mais afiado que ela; seja algo que volta a crescer, "a única coisa que uma lâmina nunca consegue terminar".
 

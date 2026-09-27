@@ -42,20 +42,30 @@ constante, ID, **flag de batalha** (`0x500 + ID`), time resumido e em que
 mapa/arquivo a constante é usada — mais os IDs aposentados na limpeza e os
 homônimos genéricos que não são o personagem.
 
-## Estado em 25/09/2026
+## Estado em 27/09/2026
 
-**60 de 260 prontas.** Todas de Kanto, Johto, Hoenn e o elenco de Alola do
-hack; de Sinnoh em diante não há arte nenhuma.
+**68 de 260 prontas** (sprite + battle sprite), e **10 jogáveis no Nexus**:
+time `TRAINER_NEXUS_*` (IDs 975–984) em `src/data/trainers.party`, fala
+genérica e fala de campeão em `data/scripts/nexus.inc`. Testáveis pelo menu de
+debug → Rift Missions… → Nexus fights….
 
 | Região | Prontas | Quais |
 |---|---|---|
-| Kanto | 18/22 | Red, Blue, Brock, Misty, Lt. Surge, Erika, Koga, Sabrina, Blaine, Giovanni, Janine, Leaf, Bruno, Lance, Archer, Ariana, Proton, Petrel |
+| Kanto | 18/22 | Red, Blue, Brock, Misty, Lt. Surge, Erika, Koga, Sabrina, Blaine, Giovanni, Janine, Leaf, **Bruno**, Lance, Archer, Ariana, Proton, Petrel |
 | Johto | 12/12 | Silver, Falkner, Bugsy, Whitney, Morty, Chuck, Jasmine, Pryce, Clair, Will, Karen, Eusine |
-| Hoenn | 26/31 | Brendan, May, Wally, os 8 líderes + Juan, Tate e Liza, a Elite Four, Steven, Wallace, os 7 Frontier Brains, Maxie, Archie |
-| Alola | 4/27 | Gladion, Lusamine, Kukui, Lillie |
+| Hoenn | 26/31 | Brendan, May, Wally, os 8 líderes + Juan, Tate e Liza, a Elite Four, **Steven**, Wallace, os 7 Frontier Brains, Maxie, Archie |
+| Sinnoh | 3/30 | **Fantina**, **Byron**, **Volkner** |
+| Unova | 2/31 | **Elesa**, **Colress** |
+| Kalos | 1/30 | **Ramos** |
+| Alola | 6/27 | Gladion, Lusamine, Kukui, Lillie, **Guzma**, **Soliera** |
 
-Lendário associado: só **Misty → Kyogre** e **Giovanni → Mewtwo ou Genesect**
-(os dois exemplos do design). Time das Rift Missions e diálogos: nenhum ainda.
+Em **negrito**, os 10 jogáveis no Nexus, cada um campeão de uma Ultra Beast:
+Colress → Nihilego, Bruno → Buzzwole, Elesa → Pheromosa, Volkner → Xurkitree,
+Steven → Celesteela, Ramos → Kartana, Guzma → Guzzlord, Soliera → Naganadel,
+Byron → Stakataka, Fantina → Blacephalon. O lendário vale pela fala de campeão;
+o sorteio do Daily que usa essa ligação ainda não existe. Mugshot, dos dez, só
+Bruno e Steven têm. Fora do código: Misty → Kyogre e Giovanni → Mewtwo ou
+Genesect (os dois exemplos do design) e a proposta 📝 da Zossie.
 
 ## Armadilhas encontradas ao levantar
 

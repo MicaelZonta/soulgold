@@ -46,16 +46,16 @@ na ficha da [Soliera](alola/soliera.md).
 | Kyogre | Lendário restrito | [Misty](kanto/misty.md) | aprovado (design §10) |
 | Mewtwo | Lendário restrito | [Giovanni](kanto/giovanni.md) | aprovado (design §10) |
 | Genesect | Mítico | [Giovanni](kanto/giovanni.md) | aprovado (design §10) |
-| Nihilego | Ultra Beast | [Colress](unova/colress.md) | 📝 proposta, 26/09 |
-| Buzzwole | Ultra Beast | [Bruno](kanto/bruno.md) | 📝 proposta, 26/09 |
-| Pheromosa | Ultra Beast | [Elesa](unova/elesa.md) | 📝 proposta, 26/09 |
-| Xurkitree | Ultra Beast | [Volkner](sinnoh/volkner.md) | 📝 proposta, 26/09 |
-| Celesteela | Ultra Beast | [Steven](hoenn/steven.md) | 📝 proposta, 26/09 |
-| Kartana | Ultra Beast | [Ramos](kalos/ramos.md) | 📝 proposta, 26/09 |
-| Guzzlord | Ultra Beast | [Guzma](alola/guzma.md) | 📝 proposta, 26/09 |
-| Naganadel | Ultra Beast | [Soliera](alola/soliera.md) | 📝 proposta, 26/09 · só depois de capturado (R1) · a luta dá um **Poipole** |
-| Stakataka | Ultra Beast | [Byron](sinnoh/byron.md) | 📝 proposta, 26/09 |
-| Blacephalon | Ultra Beast | [Fantina](sinnoh/fantina.md) | 📝 proposta, 26/09 |
+| Nihilego | Ultra Beast | [Colress](unova/colress.md) | campeão no código (fala em `nexus.inc`), 26/09 |
+| Buzzwole | Ultra Beast | [Bruno](kanto/bruno.md) | campeão no código (fala em `nexus.inc`), 26/09 |
+| Pheromosa | Ultra Beast | [Elesa](unova/elesa.md) | campeão no código (fala em `nexus.inc`), 26/09 |
+| Xurkitree | Ultra Beast | [Volkner](sinnoh/volkner.md) | campeão no código (fala em `nexus.inc`), 26/09 |
+| Celesteela | Ultra Beast | [Steven](hoenn/steven.md) | campeão no código (fala em `nexus.inc`), 26/09 |
+| Kartana | Ultra Beast | [Ramos](kalos/ramos.md) | campeão no código (fala em `nexus.inc`), 26/09 |
+| Guzzlord | Ultra Beast | [Guzma](alola/guzma.md) | campeão no código (fala em `nexus.inc`), 26/09 |
+| Naganadel | Ultra Beast | [Soliera](alola/soliera.md) | campeão no código (fala em `nexus.inc`), 26/09 · só depois de capturado (R1) · a luta dá um **Poipole** |
+| Stakataka | Ultra Beast | [Byron](sinnoh/byron.md) | campeão no código (fala em `nexus.inc`), 26/09 |
+| Blacephalon | Ultra Beast | [Fantina](sinnoh/fantina.md) | campeão no código (fala em `nexus.inc`), 26/09 |
 
 ## Sem método de obtenção
 

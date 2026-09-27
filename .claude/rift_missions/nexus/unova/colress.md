@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -145,7 +145,9 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** **Nihilego** (UB-01 Symbiont). Colress é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
+✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Colress_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
+
+**Proposta de 26/09/2026:** **Nihilego** (UB-01 Symbiont). Colress é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Colress, o cientista de Black 2/White 2, cujo objetivo declarado é descobrir como trazer à tona a força verdadeira dos Pokémon.
 
@@ -207,7 +209,9 @@ Nexus_Text_Symbiont_LookerFile:
 
 ### Diálogo genérico
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Colress cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Colress_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Colress cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
 
@@ -245,7 +249,9 @@ Nexus_Text_Colress_Defeat:
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Colress é o **campeão**, a luta logo antes da Nihilego. A fala é sobre a criatura, sem dizer o nome dela.
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Colress_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Colress é o **campeão**, a luta logo antes da Nihilego. A fala é sobre a criatura, sem dizer o nome dela.
 
 O Colress passou a vida tentando tirar os limites dos Pokémon, e encontra uma criatura que faz exatamente isso, de graça, para quem ficar parado. Ele vê o próprio sonho realizado e descobre que não gosta de assistir. A vitória do jogador é a força que veio dos Pokémon, sem toxina nenhuma. O que fica: foi preciso aquela criatura para ele entender para que serve um limite, e o pedido final é o mais honesto dele: "recuse. Digo isso como alguém que teria aceitado".
 

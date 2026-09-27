@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -153,7 +153,9 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** **Celesteela** (UB-04 Blaster). Steven é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
+✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Steven_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
+
+**Proposta de 26/09/2026:** **Celesteela** (UB-04 Blaster). Steven é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Steven, colecionador de pedras raras, especialista em Aço, e o homem do Space Center de Mossdeep e do meteoro do Delta Episode.
 
@@ -213,7 +215,9 @@ Nexus_Text_Blaster_LookerFile:
 
 ### Diálogo genérico
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Steven cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Steven_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Steven cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
 
@@ -248,7 +252,9 @@ Nexus_Text_Steven_Defeat:
 
 ### Diálogo associado ao lendário
 
-📝 **Proposta de 26/09/2026, aguardando o autor.** Quando Steven é o **campeão**, a luta logo antes da Celesteela. A fala é sobre a criatura, sem dizer o nome dela.
+✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Steven_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
+**Proposta de 26/09/2026:** Quando Steven é o **campeão**, a luta logo antes da Celesteela. A fala é sobre a criatura, sem dizer o nome dela.
 
 O Steven passou a vida juntando o que o céu deixou cair, e a criatura faz o caminho contrário: queima uma floresta para sair do chão e nunca volta. Ele não sabe se ela está fugindo ou voltando para casa. A vitória do jogador: os Pokémon dele ficaram com os pés no chão o tempo todo. O que fica: não persiga algo assim; pare antes que ela parta, ou deixe partir, "as duas são respostas". E ele fica esperando que algo lá de cima deixe cair uma pedra.
 
