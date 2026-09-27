@@ -48,13 +48,13 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_JANINE`, campeã de Okidogi e Munkidori. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). `Double Battle: Yes` é o formato em que o time brilha mais; o plano vale nos dois.
 
-Lendário **Marshadow**, o Pokémon que mora nas sombras e imita os movimentos de quem segue: um ninja de verdade, e a arte da Janine é justamente o disfarce e a imitação. Semi-lendário **Munkidori**, de quem ela é campeã, o macaco que confunde a cabeça dos outros. Mega **Beedrill** (Bugtite), Inseto/Veneno como o Ariados e o Venomoth que ela usa desde GSC, rápido como um ninja. Mais **Crobat** (o ás dela em GSC/HGSS), **Ariados** (GSC/HGSS) e **Weezing de Galar**, o Weezing dela *disfarçado*. *Plano (Singles):* o Ariados arma Sticky Web e Toxic Spikes, o Crobat dá Taunt e sai de U-turn, o Marshadow rouba os boosts do adversário com Spectral Thief e a Mega Beedrill limpa com o time lento. *Plano (Doubles):* Fake Out do Munkidori, Rage Powder do Ariados puxando os golpes, Tailwind do Crobat, e o Weezing de Galar queima e apaga boosts com Clear Smog.
+Lendário **Marshadow**, o Pokémon que mora nas sombras e imita os movimentos de quem segue: um ninja de verdade, e a arte da Janine é justamente o disfarce e a imitação. Semi-lendário **Munkidori**, de quem ela é campeã, o macaco que confunde a cabeça dos outros. Mega **Gengar** (Ghostite), o Veneno/Fantasma que vive na sombra dos outros; com Shadow Tag, ninguém foge dele, como ninguém foge de um ninja. Mais **Crobat** (o ás dela em GSC/HGSS), **Ariados** (GSC/HGSS) e **Weezing de Galar**, o Weezing dela *disfarçado*. *Plano (Singles):* o Ariados arma Sticky Web e Toxic Spikes, o Crobat dá Taunt e sai de U-turn, o Marshadow rouba os boosts do adversário com Spectral Thief, e a Mega Gengar (Shadow Tag) prende e derruba o que ficou, com Destiny Bond como último truque. *Plano (Doubles):* Fake Out do Munkidori, Rage Powder do Ariados puxando os golpes, Tailwind do Crobat, e o Weezing de Galar queima e apaga boosts com Clear Smog.
 
 | Pokémon | Item | Habilidade | Nature | Golpes |
 |---|---|---|---|---|
 | Marshadow | Life Orb | Technician | Jolly | Spectral Thief, Close Combat, Shadow Sneak, Ice Punch |
 | Munkidori | Focus Sash | Toxic Chain | Timid | Fake Out, Sludge Bomb, Psychic, U-turn |
-| Beedrill | Bugtite | Sniper | Jolly | Poison Jab, X-Scissor, Drill Run, Protect |
+| Gengar | Ghostite | Cursed Body | Timid | Shadow Ball, Sludge Bomb, Focus Blast, Destiny Bond |
 | Crobat | Sitrus Berry | Infiltrator | Jolly | Brave Bird, Tailwind, Taunt, U-turn |
 | Ariados | Mental Herb | Insomnia | Careful | Sticky Web, Toxic Spikes, Rage Powder, Sucker Punch |
 | Weezing-Galar | Rocky Helmet | Levitate | Bold | Strange Steam, Will-O-Wisp, Clear Smog, Pain Split |
@@ -93,16 +93,16 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Psychic
 - U-turn
 
-Beedrill @ Bugtite
-Jolly Nature
+Gengar @ Ghostite
+Timid Nature
 Level: 100
-Ability: Sniper
+Ability: Cursed Body
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
-- Poison Jab
-- X-Scissor
-- Drill Run
-- Protect
+- Shadow Ball
+- Sludge Bomb
+- Focus Blast
+- Destiny Bond
 
 Crobat @ Sitrus Berry
 Jolly Nature

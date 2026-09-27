@@ -55,8 +55,9 @@ def parse_species():
             ability_macros.setdefault(mm.group(1), re.findall(r'ABILITY_\w+', mm.group(2)))
         # especies escritas por macro (GENESECT_SPECIES_INFO(form) etc.)
         macros = {}
-        for mm in re.finditer(r'#define (\w+_SPECIES_INFO)\([^)]*\)((?:.*\\\n)*.*)', text):
-            macros[mm.group(1)] = mm.group(2)
+        for mm in re.finditer(r'#define (\w+_SPECIES_INFO)\(([^)]*)\)((?:.*\\\n)*.*)', text):
+            params = [x.strip() for x in mm.group(2).split(',') if x.strip()]
+            macros[mm.group(1)] = (params, mm.group(3))
         # entries
         for fam in re.finditer(r'#if P_FAMILY_(\w+)\n(.*?)#endif //P_FAMILY_\1', text, re.S):
             fname, body = fam.groups()
@@ -65,9 +66,13 @@ def parse_species():
                 end = starts[i + 1].start() if i + 1 < len(starts) else len(body)
                 chunk = body[m.end():end]
                 sp = m.group(1)
-                mac = re.match(r'\s*(\w+_SPECIES_INFO)\(', chunk)
+                mac = re.match(r'\s*(\w+_SPECIES_INFO)\(([^)]*)\)', chunk)
                 if mac and mac.group(1) in macros:
-                    chunk = macros[mac.group(1)] + chunk
+                    params, mbody = macros[mac.group(1)]
+                    args = [x.strip() for x in mac.group(2).split(',')]
+                    for prm, arg in zip(params, args):
+                        mbody = re.sub(r'\b' + re.escape(prm) + r'\b', arg, mbody)
+                    chunk = mbody.replace("##", "") + chunk
                 d = {'family': fname}
                 a = re.search(r'\.abilities\s*=\s*\{([^}]*)\}', chunk)
                 am = re.search(r'\.abilities\s*=\s*(\w+_ABILITIES)\b', chunk)
