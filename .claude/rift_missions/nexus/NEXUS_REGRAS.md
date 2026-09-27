@@ -381,6 +381,23 @@ forma final, no nível do R2). O que o jogador **leva** no fim é outra coisa: u
 - **Na fala:** a ficha do Looker e a narração podem tratar o que fica como o
   fragmento que sobrou da criatura; nunca como a criatura inteira domada.
 
+## R18. Ninguém no Nexus é da realidade do jogador
+
+Decidido pelo autor em 27/09/2026. Todo treinador que aparece nas salas ou como
+campeão vem de **outro fragmento**: outro universo, outro tempo, outra
+dimensão. **Nunca** é a pessoa que o jogador conhece da campanha, nem o elenco
+que mora no altar (Looker, Anabel, Lusamine, Kukui, Lillie, Gladion).
+
+- Pode ter acontecido **nada** ou **tudo** do que o jogador viveu com aquela
+  pessoa. A fala pode brincar com isso (uma Lillie cujo Cosmog virou o Lunala
+  dela; uma Anabel que jogou a Beast Ball no Necrozma), mas não pode depender
+  de o jogador ser lembrado.
+- É isso que explica time e lendário "impossíveis" na campanha (Gladion com
+  Necrozma, Anabel com Necrozma, Lillie com Lunala): naquele fragmento a
+  história foi outra.
+- O Looker e a Anabel **do altar** continuam sendo os da campanha; eles não
+  lutam no Nexus.
+
 ## Checklist rápido para um time do Nexus
 
 - [ ] 6 Pokémon
@@ -428,3 +445,5 @@ forma final, no nível do R2). O que o jogador **leva** no fim é outra coisa: u
 - 27/09/2026 — o lendário que o jogador leva vem **no nível 1** e, se a família
   tem pré-evolução, **na primeira forma** (Cosmog, Type: Null, Kubfu, Meltan,
   Phione, Poipole): é um fragmento da criatura enfrentada (R17).
+- 27/09/2026 — os treinadores do Nexus **nunca** são os da realidade do jogador
+  nem o elenco do altar: vêm de outros fragmentos (R18).
