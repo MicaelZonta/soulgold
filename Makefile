@@ -282,7 +282,7 @@ MAKEFLAGS += --no-print-directory
 .DELETE_ON_ERROR:
 
 RULES_NO_SCAN += map-graph-check libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated clean-teachables clean-teachables_intermediates
-.PHONY: all rom map-graph-check check-song-config bps nightly-bps agbcc modern compare check check-all debug release
+.PHONY: all rom map-graph-check check-song-config bps nightly-bps agbcc modern compare check check-all debug release standalone standalone-pc standalone-switch
 .PHONY: $(RULES_NO_SCAN)
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
@@ -443,6 +443,18 @@ rom: $(ROM) $(MAP_GRAPH_STAMP)
 ifeq ($(COMPARE),1)
 	@$(SHA1) rom.sha1
 endif
+
+# Jogaveis standalone: mGBA patchado (tools/mgba-master) com a ROM embutida,
+# bootando direto no jogo. Soulgold.exe (Windows) e Soulgold.nro (Switch/CFW).
+# Detalhes e pre-requisitos (mingw-w64, devkitPro): tools/standalone/build.sh.
+standalone: rom
+	@tools/standalone/build.sh
+
+standalone-pc: rom
+	@tools/standalone/build.sh --pc
+
+standalone-switch: rom
+	@tools/standalone/build.sh --switch
 
 bps nightly-bps: $(BPS_PATCH)
 

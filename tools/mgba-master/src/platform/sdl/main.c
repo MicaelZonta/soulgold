@@ -38,6 +38,113 @@ static int mSDLRun(struct mSDLRenderer* renderer, struct mArguments* args);
 
 static struct mStandardLogger _logger;
 
+#ifdef SOULGOLD_STANDALONE
+/* SoulGold standalone: a ROM vem embutida no executavel (objeto gerado com
+ * `ld -r -b binary soulgold_rom.bin`, ver tools/standalone/build.sh). No
+ * primeiro uso ela e extraida para ao lado do executavel (fallback: pasta de
+ * dados do usuario, se a pasta do executavel nao aceitar escrita) e o fluxo
+ * segue como `mgba <rom>` - o .sav nasce ao lado da ROM extraida. */
+#ifdef _WIN32
+#include <windows.h>
+#include <direct.h>
+#else
+#include <unistd.h>
+#endif
+#include <sys/stat.h>
+
+extern const unsigned char _binary_soulgold_rom_bin_start[];
+extern const unsigned char _binary_soulgold_rom_bin_end[];
+
+static bool _soulgoldSameFile(const char* path, const unsigned char* data, size_t size) {
+	FILE* f = fopen(path, "rb");
+	if (!f) {
+		return false;
+	}
+	bool same = false;
+	if (fseek(f, 0, SEEK_END) == 0 && (size_t) ftell(f) == size) {
+		fseek(f, 0, SEEK_SET);
+		unsigned char buf[65536];
+		size_t off = 0;
+		same = true;
+		while (off < size) {
+			size_t chunk = fread(buf, 1, sizeof(buf), f);
+			if (!chunk || memcmp(buf, data + off, chunk) != 0) {
+				same = false;
+				break;
+			}
+			off += chunk;
+		}
+		if (off != size) {
+			same = false;
+		}
+	}
+	fclose(f);
+	return same;
+}
+
+static bool _soulgoldWriteRom(const char* path, const unsigned char* data, size_t size) {
+	FILE* f = fopen(path, "wb");
+	if (!f) {
+		return false;
+	}
+	bool ok = fwrite(data, 1, size, f) == size;
+	fclose(f);
+	if (!ok) {
+		remove(path);
+	}
+	return ok;
+}
+
+static const char* _soulgoldRomPath(void) {
+	/* maior que dir para o sufixo "/Soulgold.gba" caber sem -Wformat-truncation */
+	static char path[4352];
+	const unsigned char* data = _binary_soulgold_rom_bin_start;
+	size_t size = (size_t) (_binary_soulgold_rom_bin_end - _binary_soulgold_rom_bin_start);
+	char dir[4096] = {0};
+#ifdef _WIN32
+	DWORD len = GetModuleFileNameA(NULL, dir, sizeof(dir) - 1);
+	while (len > 0 && dir[len - 1] != '\\' && dir[len - 1] != '/') {
+		--len;
+	}
+	dir[len] = '\0';
+#else
+	ssize_t len = readlink("/proc/self/exe", dir, sizeof(dir) - 1);
+	while (len > 0 && dir[len - 1] != '/') {
+		--len;
+	}
+	if (len < 0) {
+		len = 0;
+	}
+	dir[len] = '\0';
+#endif
+	snprintf(path, sizeof(path), "%sSoulgold.gba", dir);
+	if (_soulgoldSameFile(path, data, size) || _soulgoldWriteRom(path, data, size)) {
+		return path;
+	}
+#ifdef _WIN32
+	const char* base = getenv("LOCALAPPDATA");
+	if (!base) {
+		return NULL;
+	}
+	snprintf(dir, sizeof(dir), "%s\\SoulGold", base);
+	_mkdir(dir);
+	snprintf(path, sizeof(path), "%s\\Soulgold.gba", dir);
+#else
+	const char* base = getenv("HOME");
+	if (!base) {
+		return NULL;
+	}
+	snprintf(dir, sizeof(dir), "%s/.local/share/SoulGold", base);
+	mkdir(dir, 0755);
+	snprintf(path, sizeof(path), "%s/Soulgold.gba", dir);
+#endif
+	if (_soulgoldSameFile(path, data, size) || _soulgoldWriteRom(path, data, size)) {
+		return path;
+	}
+	return NULL;
+}
+#endif
+
 static struct VFile* _state = NULL;
 
 static void _loadState(struct mCoreThread* thread) {
@@ -48,6 +155,20 @@ int main(int argc, char** argv) {
 #ifdef _WIN32
 	AttachConsole(ATTACH_PARENT_PROCESS);
 	freopen("CONOUT$", "w", stdout);
+#endif
+#ifdef SOULGOLD_STANDALONE
+	char* soulgoldArgv[2];
+	if (argc < 2) {
+		const char* soulgoldRom = _soulgoldRomPath();
+		if (soulgoldRom) {
+			soulgoldArgv[0] = argv[0];
+			soulgoldArgv[1] = (char*) soulgoldRom;
+			argv = soulgoldArgv;
+			argc = 2;
+		} else {
+			printf("SoulGold: could not extract the embedded ROM to disk\n");
+		}
+	}
 #endif
 	struct mSDLRenderer renderer = {0};
 
@@ -104,6 +225,12 @@ int main(int argc, char** argv) {
 
 	renderer.core->baseVideoSize(renderer.core, &renderer.width, &renderer.height);
 	renderer.ratio = graphicsOpts.multiplier;
+#ifdef SOULGOLD_STANDALONE
+	/* Sem argumento de escala, 240x160 e minusculo num monitor moderno. */
+	if (renderer.ratio == 0) {
+		renderer.ratio = 4;
+	}
+#endif
 	if (renderer.ratio == 0) {
 		renderer.ratio = 1;
 	}

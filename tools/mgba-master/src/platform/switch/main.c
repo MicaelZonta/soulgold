@@ -4,6 +4,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 #include "feature/gui/gui-runner.h"
+#include <mgba/core/config.h>
 #include <mgba/core/core.h>
 #include <mgba/internal/gb/video.h>
 #include <mgba/internal/gba/audio.h>
@@ -1098,7 +1099,29 @@ int main(int argc, char* argv[]) {
 		mGUILoadInputMaps(&runner);
 		mGUIRun(&runner, argv[1]);
 	} else {
+#ifdef SOULGOLD_STANDALONE
+		/* SoulGold standalone: a ROM vem embutida no RomFS do .nro (somente
+		 * leitura), entao save/estado/screenshot vao para uma pasta gravavel
+		 * no SD - mesmo padrao do mGUIGetRom dos forwarders de 3DS/Vita. */
+		struct VFile* soulgoldRom = VFileOpen("romfs:/Soulgold.gba", O_RDONLY);
+		if (soulgoldRom) {
+			soulgoldRom->close(soulgoldRom);
+			char soulgoldDir[64];
+			mCoreConfigDirectory(soulgoldDir, sizeof(soulgoldDir));
+			strncat(soulgoldDir, "/soulgold", sizeof(soulgoldDir) - strlen(soulgoldDir) - 1);
+			mkdir(soulgoldDir, 0755);
+			mCoreConfigSetValue(&runner.config, "savegamePath", soulgoldDir);
+			mCoreConfigSetValue(&runner.config, "savestatePath", soulgoldDir);
+			mCoreConfigSetValue(&runner.config, "screenshotPath", soulgoldDir);
+			mCoreConfigSetValue(&runner.config, "cheatsPath", soulgoldDir);
+			mGUILoadInputMaps(&runner);
+			mGUIRun(&runner, "romfs:/Soulgold.gba");
+		} else {
+			mGUIRunloop(&runner);
+		}
+#else
 		mGUIRunloop(&runner);
+#endif
 	}
 
 	mGUIDeinit(&runner);
