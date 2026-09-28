@@ -429,6 +429,16 @@ $(MAP_GRAPH_STAMP): $(wildcard data/maps/*/map.json) data/maps/map_groups.json $
 map-graph-check:
 	@python3 dev_scripts/map_graph.py check --strict
 
+# SCRIPT_EFFECT_TAG vive em constants/gba_constants.inc (asm) e include/script.h (C).
+# Se divergirem, compila limpo e todo script do jogo trava: conferir antes do link.
+check-script-effect-tag:
+	@a=$$(grep -oE '\.set SCRIPT_EFFECT_TAG, *0x[0-9A-Fa-f]+' constants/gba_constants.inc | grep -oE '0x[0-9A-Fa-f]+$$'); \
+	b=$$(grep -oE '#define SCRIPT_EFFECT_TAG +0x[0-9A-Fa-f]+' include/script.h | grep -oE '0x[0-9A-Fa-f]+$$'); \
+	if [ -z "$$a" ] || [ -z "$$b" ] || [ $$((a)) -ne $$((b)) ]; then \
+		echo "SCRIPT_EFFECT_TAG diverge: gba_constants.inc='$$a' script.h='$$b'"; exit 1; \
+	fi
+$(ELF): | check-script-effect-tag
+
 rom: $(ROM) $(MAP_GRAPH_STAMP)
 ifeq ($(COMPARE),1)
 	@$(SHA1) rom.sha1
@@ -602,6 +612,17 @@ $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s
 
 $(DATA_ASM_BUILDDIR)/sound_data.o: | check-song-config
 
+# POC do mapeamento linear de 96 MB: `make ROM_FILLER_MB=62` gera ~92 MB de ROM.
+ROM_FILLER_MB ?= 0
+.PHONY: FORCE
+FORCE:
+ROM_FILLER_STAMP := $(OBJ_DIR)/rom_filler_mb.txt
+$(ROM_FILLER_STAMP): FORCE
+	@mkdir -p $(@D)
+	@echo $(ROM_FILLER_MB) | cmp -s - $@ || echo $(ROM_FILLER_MB) > $@
+$(DATA_ASM_BUILDDIR)/rom_filler.o: $(DATA_ASM_SUBDIR)/rom_filler.s $(ROM_FILLER_STAMP)
+	$(AS) $(ASFLAGS) --defsym ROM_FILLER_BYTES=$$(( $(ROM_FILLER_MB) * 1048576 )) -o $@ $<
+
 $(DATA_ASM_BUILDDIR)/%.d: $(DATA_ASM_SUBDIR)/%.s
 	$(SCANINC) -M $@ $(INCLUDE_SCANINC_ARGS) -I "" $<
 
@@ -666,11 +687,13 @@ endif
 # Builds the rom from the elf file
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
-	$(FIX) $@ -p --silent
+	$(FIX) $@ --silent
 
 emerald: all
 firered: all
 leafgreen: all
-# Symbol file (`make syms`)
-$(SYM): $(ELF)
-	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+# Symbol file (`make syms`). Depende da ROM (e nao so do ELF) para que
+# `make syms` sem ROM_FILLER_MB nao deixe um .gba de 92 MB ao lado de um
+# .elf/.sym relinkados sem filler.
+$(SYM): $(ELF) $(ROM)
+	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389a-d]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@

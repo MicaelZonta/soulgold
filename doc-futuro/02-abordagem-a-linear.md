@@ -1,5 +1,10 @@
 # A) mGBA com mapeamento linear 0x08000000–0x0DFFFFFF (96 MB)
 
+> **POC feita (26/09/2026):** funciona, mas faltou um achado — os scripts do
+> expansion chamam funções pelo espelho 0x0A000000 e **todo script trava**
+> sem correção. Números reais em
+> [07-poc-abordagem-a-resultado.md](07-poc-abordagem-a-resultado.md).
+
 **Veredito: é a abordagem recomendada.** É de longe a mais barata das
 quatro, e o achado central abaixo a torna mais barata ainda do que a
 proposta original supõe.
@@ -178,12 +183,15 @@ de constante. Mais o build para três plataformas.
    recompilar o `mgba-rom-test`.
 2. **Timing de áudio.** O mixer de som roda por DMA com timer; samples
    acima de 32 MB passam a ter waitstate de WS1/WS2. Se o jogo configurar
-   `WAITCNT` só pensando em WS0, o custo de leitura sobe. Mitigação: manter
-   `data/sound_data.o` abaixo de 32 MB na ordem do linker, o que é fácil —
-   é o primeiro objeto de `.rodata` hoje.
-3. **Savestates.** `GBASerialize` grava `romSize`/`romMask`. Savestates
-   feitos antes e depois do patch não serão compatíveis. Irrelevante em
-   desenvolvimento, relevante se houver savestates distribuídos.
+   `WAITCNT` só pensando em WS0, o custo de leitura sobe. A POC resolveu
+   configurando WS1 e WS2 iguais a WS0 em `src/main.c`. (A mitigação
+   pensada aqui, manter `sound_data.o` abaixo de 32 MB, já não vale: na ROM
+   de 33 MiB da branch todo o `mus_*` fica acima de 0x0A000000.)
+3. **Savestates.** `GBASerialize` não grava `romSize`/`romMask`; o que
+   existe é uma checagem do PC contra o tamanho da ROM em `GBADeserialize`,
+   que o patch ajusta para a máscara linear. Savestates da mesma ROM
+   continuam carregando (verificado na POC); savestates de uma ROM de outro
+   tamanho são recusados, como no upstream.
 4. **Divergência do upstream.** O fork do mGBA passa a carregar um patch
    permanente em `memory.c`, o arquivo mais movimentado do core. Cada
    rebase em cima do mGBA vai ter conflito ali. É o custo recorrente real

@@ -147,9 +147,10 @@ void GBAUnloadROM(struct GBA* gba) {
 			gba->yankedRomSize = 0;
 		}
 #ifndef FIXED_ROM_BUFFER
-		mappedMemoryFree(gba->memory.rom, GBA_SIZE_ROM0);
+		mappedMemoryFree(gba->memory.rom, (size_t) gba->memory.romAddrMask + 1);
 #endif
 	}
+	gba->memory.romAddrMask = GBA_SIZE_ROM0 - 1;
 
 	if (gba->romVf) {
 #ifndef FIXED_ROM_BUFFER
@@ -443,11 +444,52 @@ bool GBALoadROM(struct GBA* gba, struct VFile* vf) {
 #else
 			gba->memory.rom = anonymousMemoryMap(GBA_SIZE_ROM0);
 #endif
+			gba->pristineRomSize = GBA_SIZE_ROM0;
+#ifndef FIXED_ROM_BUFFER
+		} else if (gba->pristineRomSize <= GBA_SIZE_ROM_LINEAR) {
+			// SoulGold linear mapping: the whole file is visible from 0x08000000
+			// up to 0x0DFFFFFF, with no mirroring. Bytes past the end read as 0xFF,
+			// like the padding a flash cart would have.
+			gba->isPristine = false;
+			gba->memory.romAddrMask = GBA_SIZE_ROM_LINEAR_BUFFER - 1;
+			gba->memory.rom = anonymousMemoryMap(GBA_SIZE_ROM_LINEAR_BUFFER);
+			if (!gba->memory.rom) {
+				mLOG(GBA, WARN, "Couldn't allocate the 128 MiB buffer for a %zu byte linear ROM", gba->pristineRomSize);
+			} else {
+				vf->seek(vf, 0, SEEK_SET);
+				// Read in a loop: a VFile backend may return short reads.
+				size_t done = 0;
+				while (done < gba->pristineRomSize) {
+					ssize_t got = vf->read(vf, &((uint8_t*) gba->memory.rom)[done], gba->pristineRomSize - done);
+					if (got <= 0) {
+						break;
+					}
+					done += got;
+				}
+				if (done != gba->pristineRomSize) {
+					mLOG(GBA, WARN, "Short read of linear ROM: %zu of %zu bytes", done, gba->pristineRomSize);
+					mappedMemoryFree(gba->memory.rom, GBA_SIZE_ROM_LINEAR_BUFFER);
+					gba->memory.rom = NULL;
+				} else {
+					// Only the tail up to the next power of two can ever be read: data
+					// loads are bounded by romSize and instruction fetches by romMask
+					// (toPow2(romSize) - 1). Leaving the rest of the mapping untouched
+					// keeps it uncommitted, which matters on the Switch in applet mode.
+					size_t fillEnd = toPow2(gba->pristineRomSize);
+					memset(&((uint8_t*) gba->memory.rom)[gba->pristineRomSize], 0xFF, fillEnd - gba->pristineRomSize);
+				}
+			}
+			if (!gba->memory.rom) {
+				gba->memory.romAddrMask = GBA_SIZE_ROM0 - 1;
+			}
+			gba->memory.romSize = (gba->pristineRomSize + 3) & ~3;
+#endif
 		} else {
+			mLOG(GBA, WARN, "ROM is %zu bytes, larger than the 96 MiB linear window: truncating to 32 MiB", gba->pristineRomSize);
 			gba->memory.rom = vf->map(vf, GBA_SIZE_ROM0, MAP_READ);
 			gba->memory.romSize = GBA_SIZE_ROM0;
+			gba->pristineRomSize = GBA_SIZE_ROM0;
 		}
-		gba->pristineRomSize = GBA_SIZE_ROM0;
 	} else if (gba->pristineRomSize == 0x00100000) {
 		// 1 MiB ROMs (e.g. Classic NES) all appear as 4x mirrored, but not more
 		gba->isPristine = false;
@@ -473,7 +515,7 @@ bool GBALoadROM(struct GBA* gba, struct VFile* vf) {
 	gba->yankedRomSize = 0;
 	gba->memory.romMask = toPow2(gba->memory.romSize) - 1;
 	gba->romCrc32 = doCrc32(gba->memory.rom, gba->pristineRomSize);
-	if (popcount32(gba->memory.romSize) != 1) {
+	if (popcount32(gba->memory.romSize) != 1 && gba->memory.romAddrMask == GBA_SIZE_ROM0 - 1) {
 		// This ROM is either a bad dump or homebrew. Emulate flash cart behavior.
 #ifndef FIXED_ROM_BUFFER
 		void* newRom = anonymousMemoryMap(GBA_SIZE_ROM0);
@@ -553,18 +595,29 @@ void GBALoadBIOS(struct GBA* gba, struct VFile* vf) {
 
 void GBAApplyPatch(struct GBA* gba, struct Patch* patch) {
 	size_t patchedSize = patch->outputSize(patch, gba->memory.romSize);
-	if (!patchedSize || patchedSize > GBA_SIZE_ROM0) {
+	if (!patchedSize || patchedSize > GBA_SIZE_ROM_LINEAR) {
+		mLOG(GBA, WARN, "Patch output of %zu bytes is empty or larger than the 96 MiB linear window; not applied", patchedSize);
 		return;
 	}
-	void* newRom = anonymousMemoryMap(GBA_SIZE_ROM0);
+	// SoulGold: a patched ROM larger than 32 MiB gets the linear mapping, so
+	// soft-patching a BPS/UPS/IPS onto a clean base works the same as loading
+	// the patched file directly.
+	size_t bufferSize = patchedSize > GBA_SIZE_ROM0 ? GBA_SIZE_ROM_LINEAR_BUFFER : GBA_SIZE_ROM0;
+	void* newRom = anonymousMemoryMap(bufferSize);
+	if (!newRom) {
+		return;
+	}
 	if (!patch->applyPatch(patch, gba->memory.rom, gba->pristineRomSize, newRom, patchedSize)) {
-		mappedMemoryFree(newRom, GBA_SIZE_ROM0);
+		mLOG(GBA, WARN, "Patch failed to apply (bad checksum or malformed patch); running the unpatched ROM");
+		mappedMemoryFree(newRom, bufferSize);
 		return;
 	}
+	// Same as GBALoadROM: only the tail up to toPow2(patchedSize) is reachable.
+	memset(&((uint8_t*) newRom)[patchedSize], 0xFF, toPow2(patchedSize) - patchedSize);
 	if (gba->memory.rom) {
 #ifndef FIXED_ROM_BUFFER
 		if (!gba->isPristine) {
-			mappedMemoryFree(gba->memory.rom, gba->memory.romSize);
+			mappedMemoryFree(gba->memory.rom, (size_t) gba->memory.romAddrMask + 1);
 		} else {
 			gba->romVf->unmap(gba->romVf, gba->memory.rom, gba->pristineRomSize);
 		}
@@ -572,10 +625,14 @@ void GBAApplyPatch(struct GBA* gba, struct Patch* patch) {
 	}
 	gba->isPristine = false;
 	gba->memory.rom = newRom;
+	gba->memory.romAddrMask = bufferSize - 1;
 	gba->memory.hw.gpioBase = &((uint16_t*) gba->memory.rom)[GPIO_REG_DATA >> 1];
 	gba->memory.romSize = patchedSize;
 	gba->memory.romMask = toPow2(patchedSize) - 1;
 	gba->romCrc32 = doCrc32(gba->memory.rom, gba->memory.romSize);
+	if (gba->cpu && gba->memory.activeRegion >= GBA_REGION_ROM0) {
+		gba->cpu->memory.setActiveRegion(gba->cpu, gba->cpu->gprs[ARM_PC]);
+	}
 }
 
 void GBARaiseIRQ(struct GBA* gba, enum GBAIRQ irq, uint32_t cyclesLate) {

@@ -8,7 +8,9 @@ MEMORY
 {
     EWRAM (rwx) : ORIGIN = 0x2000000, LENGTH = 256K
     IWRAM (rwx) : ORIGIN = 0x3000000, LENGTH = 32K
-    ROM    (rx) : ORIGIN = 0x8000000, LENGTH = 32M
+    /* 96 MiB: 0x08000000-0x0DFFFFFF mapeados linearmente (mGBA patchado, ver
+       doc-futuro/02-abordagem-a-linear.md). A save continua em 0x0E000000. */
+    ROM    (rx) : ORIGIN = 0x8000000, LENGTH = 96M
 }
 
 SECTIONS {
@@ -71,6 +73,15 @@ SECTIONS {
     ALIGN(4)
     {
 		data/*.o(script_data);
+    } > ROM =0
+
+    /* POC do mapeamento linear: `make ROM_FILLER_MB=N` enche N MB aqui para
+       empurrar todo o .rodata (som, graficos, mapas) para cima de 32 MB.
+       Com ROM_FILLER_MB=0 (padrao) a secao fica vazia e some. */
+    rom_filler :
+    ALIGN(4)
+    {
+        KEEP(data/rom_filler.o(rom_filler));
     } > ROM =0
 
     .rodata :

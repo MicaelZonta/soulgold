@@ -8,7 +8,7 @@
 	.if \requests_effects == 0
 	.4byte \ptr
 	.else
-	.4byte \ptr + ROM_SIZE
+	.4byte \ptr + SCRIPT_EFFECT_TAG
 	.endif
 .endm
 

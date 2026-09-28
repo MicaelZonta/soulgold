@@ -17,10 +17,8 @@ struct MemBlock
     // Whether this block is currently allocated.
     u16 allocated:1;
 
-    u16 unused_00:4;
-
-    // High 11 bits of location pointer.
-    u16 locationHi:11;
+    // High 15 bits of location pointer (bits 14-28: covers the 96 MiB linear ROM).
+    u16 locationHi:15;
 
     // Magic number used for error checking. Should equal MALLOC_SYSTEM_ID.
     u16 magic;

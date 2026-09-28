@@ -74,7 +74,14 @@ enum {
 	GBA_SIZE_EEPROM = 0x00002000,
 	GBA_SIZE_EEPROM512 = 0x00000200,
 
-	GBA_SIZE_AGB_PRINT = 0x10000
+	GBA_SIZE_AGB_PRINT = 0x10000,
+
+	// SoulGold: linear cartridge mapping. ROMs larger than 32 MiB are mapped
+	// linearly over 0x08000000-0x0DFFFFFF (96 MiB) instead of being truncated
+	// and mirrored three times. The buffer is 128 MiB so that the address mask
+	// (0x07FFFFFF) and romMask/activeMask never index past it.
+	GBA_SIZE_ROM_LINEAR = 0x06000000,
+	GBA_SIZE_ROM_LINEAR_BUFFER = 0x08000000,
 };
 
 enum {
@@ -113,6 +120,7 @@ struct GBAMemory {
 	struct GBACartEReader ereader;
 	size_t romSize;
 	uint32_t romMask;
+	uint32_t romAddrMask; // GBA_SIZE_ROM0 - 1 normally, GBA_SIZE_ROM_LINEAR_BUFFER - 1 for linear ROMs
 	uint16_t romID;
 	int fullBios;
 

@@ -228,10 +228,14 @@ bool _BPSApplyPatch(struct Patch* patch, const void* restrict in, size_t inSize,
 			if (readTargetLocation < 0) {
 				return false;
 			}
-			if (readTargetLocation > (ssize_t) inSize) {
+			// TargetCopy reads from the output, so bound it by outSize, not inSize.
+			// Upstream compared against inSize, which rejects any patch whose target
+			// is larger than its source and copies from the target past that size
+			// (e.g. a 16 MiB base patched to a 33 MiB ROM).
+			if (readTargetLocation > (ssize_t) outSize) {
 				return false;
 			}
-			if (readTargetLocation + length > inSize) {
+			if (readTargetLocation + length > outSize) {
 				return false;
 			}
 			for (i = 0; i < length; ++i) {

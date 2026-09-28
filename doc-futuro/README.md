@@ -5,7 +5,17 @@ endereçamento do GBA. Feita sobre o código real deste repositório em
 22/09/2026 (commit `179a1196f9`, branch `soulgold-rift-missions`) e sobre a
 árvore do mGBA 0.11.0 em `tools/mgba-master/`.
 
-Nada foi alterado fora deste diretório. Nenhum commit foi feito.
+A auditoria original não alterou nada fora deste diretório. Depois dela, a
+POC da abordagem A foi implementada e commitada na branch
+`poc-rom-96mb-linear` (ver o resultado e a auditoria da POC abaixo).
+
+## Resultado da POC (26/09/2026)
+
+A abordagem A foi implementada e testada na branch `poc-rom-96mb-linear`:
+ROM de **92 MB rodando**, idêntica pixel a pixel à de 33 MB. Mas o custo no
+jogo não é "~5 linhas": apareceu um achado novo e fatal (os scripts do
+expansion chamam funções pelo espelho 0x0A000000). Ver
+[07-poc-abordagem-a-resultado.md](07-poc-abordagem-a-resultado.md).
 
 ## Recomendação
 
@@ -54,6 +64,8 @@ As duas descobertas que sustentam isso:
 | [04-abordagem-c-disco-virtual.md](04-abordagem-c-disco-virtual.md) | Disco virtual — elegante, cara, bloqueada no áudio |
 | [05-abordagem-d-port-nativo.md](05-abordagem-d-port-nativo.md) | Port SDL — destino final, decisão errada agora |
 | [06-abordagem-e-hibrida.md](06-abordagem-e-hibrida.md) | Abordagem adicional: linear agora, disco virtual seletivo depois |
+| [07-poc-abordagem-a-resultado.md](07-poc-abordagem-a-resultado.md) | **POC da A: 92 MB rodando, o que custou, o que ganhou, o achado que faltava** |
+| [08-auditoria-poc.md](08-auditoria-poc.md) | Auditoria independente da POC: o que foi reproduzido, o que faltava, e as correções aplicadas |
 
 ## Achados que valem a leitura mesmo se a decisão for outra
 
