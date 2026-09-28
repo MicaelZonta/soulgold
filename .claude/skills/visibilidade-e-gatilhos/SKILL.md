@@ -55,6 +55,16 @@ Mesmo padrão já usado neste repo por Suicune/Eusine em CianwoodCity.
 `RemoveObjectEventByLocalIdAndMap` (`src/event_object_movement.c:1588`)
 faz `FlagSet(GetObjectEventFlagIdByObjectEventId(...))` antes de remover.
 
+> ⚠ **Só se o objeto estiver SPAWNADO.** `TryGetObjectEventIdByLocalIdAndMap`
+> falha para objeto fora do retângulo da câmera (despawnado por
+> `RemoveObjectEventsOutsideView`), e aí o `removeobject` é **no-op
+> silencioso: nem remove, nem seta a flag**. Num mapa grande (o Nexus em
+> cruz), "fechar" um objeto no braço oposto só com `removeobject` não faz
+> nada — o jogador anda até lá e o objeto está de pé (bug da Elesa,
+> 27/09/2026). Regra prática: **`setflag` explícito da flag do template
+> primeiro** (vale spawnado ou não), `removeobject` depois só para tirar da
+> cena quem está visível.
+
 Então `removeobject` num objeto cuja flag **significa outra coisa**
 corrompe esse estado em silêncio. Exemplos reais em CianwoodCity:
 

@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -51,6 +51,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_TITLE_DEFENSE_LEAF` | 950 | 0x8B6 | Chansey Lv85, Volcarona Lv86, Thundurus-Therian Lv85, Tapu Fini Lv86, Dragapult Lv86, Venusaur Lv87 · VS: Purple | `src/title_defense.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_LEAF` = **1041** (flag de batalha `0x911`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Leaf_Fight`; campeão: `Nexus_EventScript_Leaf_Mew_ChampionFight` (para Mew), `Nexus_EventScript_Leaf_IronLeaves_ChampionFight` (para Iron Leaves). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Green.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_LEAF`, campeão de Mew e Iron Leaves. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -156,6 +158,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Mew
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Mew_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Mew**. Leaf é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Leaf, a protagonista de FireRed/LeafGreen: completou a Pokédex de Kanto e das Sevii Islands para o Professor Oak. No hack é a treinadora sem nome que espera no fundo da Cerulean Cave, e batalha com o nome "Green".
@@ -223,6 +227,8 @@ Nexus_Text_Mew_LookerFile:
 
 #### Iron Leaves
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_IronLeaves_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Iron Leaves**. Leaf é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** A mesma Leaf, colecionadora: o que a move é ver cada Pokémon de perto e anotar. O nome dela é uma folha.
@@ -289,6 +295,8 @@ Nexus_Text_IronLeaves_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Leaf_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Leaf cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -326,6 +334,8 @@ Nexus_Text_Leaf_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Leaf é a **campeã**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
 
 #### Mew
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Leaf_Mew_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A Leaf passou anos enchendo uma Pokédex, uma página por vez. Aqui ela descobre que todas as páginas eram uma só: as pegadas de todos os Pokémon voltam para aquela criaturinha. Ela não fica triste; quer ver com os próprios olhos. Depois, a virada: no hack ela é chamada por um nome que não escolheu (Green), e a criatura é todos os Pokémon ao mesmo tempo e atende por todos. Talvez um nome seja só onde alguém te encontrou.
 
@@ -384,6 +394,8 @@ Nexus_Text_Leaf_Mew_ChampionAfter:
 </details>
 
 #### Iron Leaves
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Leaf_IronLeaves_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O nome dela é uma folha, e folha de verdade cai todo outono e volta na primavera. As desta floresta não caem nunca: vieram de um tempo tão à frente que até as folhas esqueceram. A Leaf prefere ser do tipo que cai; a derrota dela é exatamente isso ("eu caí; tudo bem, eu volto"). No fim ela fala do cavaleiro verde com carinho, torcendo para ele ver um outono, uma vez que seja.
 

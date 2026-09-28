@@ -26,6 +26,7 @@
 @   1 the visitors (Lillie, Ninetales, Gladion, Silvally, Kukui)   5 Lusamine
 @   2 rift   3 partner (VAR_2 gfx)   4 dormant mark   6 Anabel
 @   7 Necrozma   8/9 the two UB slots (VAR_0/VAR_1 gfx)   A/B the two helpers
+@   C Kukui's emitter (11,9)   F Lusamine's emitter (17,9)
 @   D Lusamine's long approach already heard this visit
 @   E = FLAG_TEMP_HIDE_FOLLOWER (engine), set only for the reception cut
 @ NEVER removeobject any object on FLAG_TEMP_1: removeobject SETS the flag and
@@ -49,11 +50,13 @@ SunMoonAltar_OnTransition::
 	setflag FLAG_TEMP_B
 	call SunMoonAltar_EventScript_ApplyCastVisibility
 	call SunMoonAltar_EventScript_ApplyLusamineVisibility
+	call SunMoonAltar_EventScript_ApplyEmitters
 	call SunMoonAltar_EventScript_ApplyRiftVisibility
 	call SunMoonAltar_EventScript_ApplyWeather
 	call SunMoonAltar_EventScript_ApplyResidents
 	call SunMoonAltar_EventScript_ApplyPartnerGfx
 	call_if_eq VAR_RIFT_MISSIONS_STATE, 12, SunMoonAltar_EventScript_ShowHelpers
+	call_if_ge VAR_RIFT_MISSIONS_STATE, 16, SunMoonAltar_EventScript_ShowHelpers
 	call_if_eq VAR_RIFT_MISSIONS_STATE, 15, SunMoonAltar_EventScript_ApplyReturnStage
 	goto_if_ne VAR_RIFT_MISSIONS_STATE, 14, SunMoonAltar_EventScript_End
 	goto_if_eq VAR_RIFT_ALTAR_STEP, ALTAR_STEP_RESCUE, SunMoonAltar_EventScript_ApplyRescueStage
@@ -110,12 +113,36 @@ SunMoonAltar_EventScript_ShowLusamine::
 	clearflag FLAG_TEMP_5
 	return
 
+@ The two emitters of the outside unit: Kukui's on the west side of the
+@ opening (11,9), Lusamine's on the east side (17,9). Own flags, so they can be
+@ switched independently of the people:
+@   12..14     both - the operation is running
+@   15         neither - Act V is the fullest moment of the map (Necrozma and
+@              the partner join 12 objects) and the sprite palettes are at the
+@              limit: two more palette tags would recolour somebody. By the
+@              return the units have already been powered down.
+@   >= 16      Lusamine's alone, on her days (after ApplyLusamineVisibility)
+SunMoonAltar_EventScript_ApplyEmitters::
+	setflag FLAG_TEMP_C
+	setflag FLAG_TEMP_F
+	goto_if_lt VAR_RIFT_MISSIONS_STATE, 12, SunMoonAltar_EventScript_Return
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 15, SunMoonAltar_EventScript_Return
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, SunMoonAltar_EventScript_LusamineEmitter
+	clearflag FLAG_TEMP_C
+	clearflag FLAG_TEMP_F
+	return
+SunMoonAltar_EventScript_LusamineEmitter::
+	goto_if_set FLAG_TEMP_5, SunMoonAltar_EventScript_Return
+	clearflag FLAG_TEMP_F
+	return
+
 @ (14,10) has two objects and at most one of them is ever visible:
 @   14         the dormant MARK - the test is over and nobody holds anything
 @              open while the player prepares (V2 section 10). Except during
 @              the reception cut, when the partner holds it open from inside.
 @   15         the RIFT, still oscillating until Act V steadies it
-@   >= 16      the RIFT, once a day (FLAG_DAILY_ALTAR_RIFT, cleared at rollover)
+@   >= 16      the RIFT, always: the way into the Nexus, which can be entered
+@              any number of times a day (NEXUS_REGRAS R3)
 @   <= 13      neither
 SunMoonAltar_EventScript_ApplyRiftVisibility::
 	setflag FLAG_TEMP_2
@@ -127,7 +154,6 @@ SunMoonAltar_EventScript_ApplyRiftVisibility::
 	clearflag FLAG_TEMP_4
 	return
 SunMoonAltar_EventScript_DailyRift::
-	goto_if_set FLAG_DAILY_ALTAR_RIFT, SunMoonAltar_EventScript_Return
 SunMoonAltar_EventScript_ShowRift::
 	clearflag FLAG_TEMP_2
 SunMoonAltar_EventScript_Return::
@@ -192,12 +218,73 @@ SunMoonAltar_EventScript_DiscToCalm::
 	special DrawWholeMapView
 	return
 
-@ Act I only: the two Aether/police helpers stand by the supplies at the stair
-@ base. They carry no lines and no biography (V2 section 7).
+@ The two Aether/police helpers at the stair base, (15,17) and (13,17). Act I
+@ (state 12) and the reception cut; then they STAY for good from 16 on - the
+@ island keeps a small crew, and the Aether staff is where the player heals
+@ (Looker's heal is 13..15 only, so he and Anabel can be moved to other
+@ stories without taking the island's heal with them). No biography.
 SunMoonAltar_EventScript_ShowHelpers::
 	clearflag FLAG_TEMP_A
 	clearflag FLAG_TEMP_B
 	return
+
+SunMoonAltar_EventScript_Officer::
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, SunMoonAltar_EventScript_OfficerPost
+	msgbox SunMoonAltar_Text_Officer, MSGBOX_NPC
+	end
+SunMoonAltar_EventScript_OfficerPost::
+	msgbox SunMoonAltar_Text_OfficerPost, MSGBOX_NPC
+	end
+
+SunMoonAltar_EventScript_AetherStaff::
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, SunMoonAltar_EventScript_AetherStaffHeal
+	msgbox SunMoonAltar_Text_AetherStaff, MSGBOX_NPC
+	end
+
+SunMoonAltar_EventScript_AetherStaffHeal::
+	lock
+	faceplayer
+	msgbox SunMoonAltar_Text_AetherHealAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, SunMoonAltar_EventScript_AetherNoHeal
+	closemessage
+	call Common_EventScript_OutOfCenterPartyHeal
+	msgbox SunMoonAltar_Text_AetherHealDone, MSGBOX_DEFAULT
+	release
+	end
+
+SunMoonAltar_EventScript_AetherNoHeal::
+	msgbox SunMoonAltar_Text_AetherHealNo, MSGBOX_DEFAULT
+	release
+	end
+
+@ Camera pans. The courtyard is deep: from the stair row (y=14) the outside
+@ unit at y=9 is off the top of the screen. Three tiles up puts rows 7..13
+@ above the text box - Lusamine, Kukui, Lillie, Gladion, Anabel and Looker all
+@ in frame. Always paired: the camera object is removed only after it has slid
+@ back onto the player, or the view would snap.
+SunMoonAltar_EventScript_CameraToBase::
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SunMoonAltar_Movement_CameraUp3
+	waitmovement OBJ_EVENT_ID_CAMERA
+	return
+
+SunMoonAltar_EventScript_CameraToPlayer::
+	applymovement OBJ_EVENT_ID_CAMERA, SunMoonAltar_Movement_CameraDown3
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	return
+
+SunMoonAltar_Movement_CameraUp3:
+	slide_up
+	slide_up
+	slide_up
+	step_end
+
+SunMoonAltar_Movement_CameraDown3:
+	slide_down
+	slide_down
+	slide_down
+	step_end
 
 @ State 15: Anabel came out of the rift with the player and stands at the neck,
 @ (15,12), clear of the tear and of the player's tile (14,11). Nihilego - the
@@ -220,7 +307,7 @@ SunMoonAltar_EventScript_ApplyReturnStage::
 @   Lillie  (13,15) and Ninetales (12,15), on the stair beside the path
 @   Looker  (16,15), on the stair, with the register
 @   helpers (15,17) police and (13,17) Aether, flanking the path below the stair
-@   Lusamine (16,9) and Kukui (17,9) at the outside unit; Gladion (16,11) and
+@   Lusamine (16,9) east and Kukui (12,9) west of the opening, each at an emitter; Gladion (16,11) and
 @   Silvally (17,11) on the people's side of the corridor - their templates.
 @ Anabel and the partner are in the arena: Anabel is hidden (FLAG_TEMP_6, her
 @ own flag), the partner is never shown on load. The follower is suppressed
@@ -402,7 +489,7 @@ SunMoonAltar_EventScript_RoomYes::
 @ ACT I - arrival and impasse. State 12 -> 13. From the stair coord_events at
 @ (12..16, 15): the player steps up to (x,14), any x in 12..16 being free.
 @ Measured positions (templates): Looker (13,13), Anabel (15,13), Lusamine
-@ (16,9) and Kukui (17,9) at the outside unit, Lillie (12,11) and Ninetales
+@ (16,9) east and Kukui (12,9) west of the opening, emitters (17,9)/(11,9), Lillie (12,11) and Ninetales
 @ (11,11), Gladion (16,11) and Silvally (17,11), helpers (13,17) and (15,17).
 @ Nobody stands on (14,10), the future opening, or on column 14 below it.
 @ No faceplayer in an automatic scene; every look is a turnobject derived from
@@ -440,6 +527,9 @@ SunMoonAltar_EventScript_Arrival::
 	applymovement LOCALID_SUN_MOON_ALTAR_AETHER, SunMoonAltar_Movement_HelperLeave
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
+	@ the camera leaves the player and frames the outside unit (y=9) for the
+	@ whole impasse; it comes back down only for Looker's release line
+	call SunMoonAltar_EventScript_CameraToBase
 	@ the outside unit: Lusamine adjusts controls, Kukui watches the indicator
 	applymovement LOCALID_SUN_MOON_ALTAR_LUSAMINE, SunMoonAltar_Movement_Adjust
 	waitmovement LOCALID_SUN_MOON_ALTAR_LUSAMINE
@@ -463,7 +553,8 @@ SunMoonAltar_EventScript_Arrival::
 	turnobject LOCALID_SUN_MOON_ALTAR_LUSAMINE, DIR_SOUTH
 	msgbox SunMoonAltar_Text_ArrivalLusamine, MSGBOX_DEFAULT
 	closemessage
-	turnobject LOCALID_SUN_MOON_ALTAR_KUKUI, DIR_WEST
+	@ Kukui (12,9) to Lusamine (16,9): east, across the opening
+	turnobject LOCALID_SUN_MOON_ALTAR_KUKUI, DIR_EAST
 	msgbox SunMoonAltar_Text_ArrivalKukuiLimit, MSGBOX_DEFAULT
 	closemessage
 	@ she looks at the module Anabel carries: (15,10) is WEST-SOUTH of (16,9)
@@ -505,6 +596,7 @@ SunMoonAltar_EventScript_Arrival::
 	applymovement LOCALID_SUN_MOON_ALTAR_ANABEL, SunMoonAltar_Movement_AnabelFromBase
 	waitmovement LOCALID_SUN_MOON_ALTAR_LILLIE
 	waitmovement LOCALID_SUN_MOON_ALTAR_ANABEL
+	call SunMoonAltar_EventScript_CameraToPlayer
 	msgbox SunMoonAltar_Text_ArrivalLookerRelease, MSGBOX_DEFAULT
 	closemessage
 	turnobject LOCALID_SUN_MOON_ALTAR_LOOKER, DIR_NORTH
@@ -767,7 +859,8 @@ SunMoonAltar_EventScript_Agreement::
 	playbgm MUS_DP_LEGEND_APPEARS, TRUE
 	applymovement LOCALID_SUN_MOON_ALTAR_LUSAMINE, SunMoonAltar_Movement_Adjust
 	waitmovement LOCALID_SUN_MOON_ALTAR_LUSAMINE
-	turnobject LOCALID_SUN_MOON_ALTAR_KUKUI, DIR_WEST
+	@ the opening (14,10) is east of Kukui (12,9)
+	turnobject LOCALID_SUN_MOON_ALTAR_KUKUI, DIR_EAST
 	msgbox SunMoonAltar_Text_OpeningKukui, MSGBOX_DEFAULT
 	closemessage
 	turnobject LOCALID_SUN_MOON_ALTAR_KUKUI, DIR_NORTH
@@ -788,12 +881,15 @@ SunMoonAltar_EventScript_Agreement::
 	applymovement LOCALID_SUN_MOON_ALTAR_LUSAMINE, SunMoonAltar_Movement_Adjust
 	waitmovement LOCALID_SUN_MOON_ALTAR_LUSAMINE
 	turnobject LOCALID_SUN_MOON_ALTAR_PARTNER, DIR_SOUTH
-	fadeoutbgm 4
 	fadescreenswapbuffers FADE_TO_WHITE
 	removeobject LOCALID_SUN_MOON_ALTAR_RIFT
 	addobject LOCALID_SUN_MOON_ALTAR_MARK
 	fadescreenswapbuffers FADE_FROM_WHITE
 	playse SE_WARP_OUT
+	@ NO fadeoutbgm before this: fadeoutbgm PAUSES the track, a paused track
+	@ never runs its fade-out (MPlayMain skips FadeOutBody), and the map music
+	@ state waits for it forever - the warpsilent of TestDone then hangs on a
+	@ black screen. fadedefaultbgm fades the playing track out by itself.
 	fadedefaultbgm
 	call SunMoonAltar_EventScript_PartnerBack
 	turnobject LOCALID_SUN_MOON_ALTAR_LOOKER, DIR_NORTH
@@ -962,6 +1058,7 @@ SunMoonAltar_EventScript_RetryRegroup::
 	lockall
 	applymovement OBJ_EVENT_ID_PLAYER, SunMoonAltar_Movement_PlayerStepUp
 	waitmovement OBJ_EVENT_ID_PLAYER
+	call SunMoonAltar_EventScript_CameraToBase
 	turnobject LOCALID_SUN_MOON_ALTAR_ANABEL, DIR_SOUTH
 	msgbox SunMoonAltar_Text_RetryAnabel, MSGBOX_DEFAULT
 	closemessage
@@ -976,6 +1073,7 @@ SunMoonAltar_EventScript_RetryRegroup::
 	turnobject LOCALID_SUN_MOON_ALTAR_LUSAMINE, DIR_NORTH
 	turnobject LOCALID_SUN_MOON_ALTAR_GLADION, DIR_NORTH
 	turnobject LOCALID_SUN_MOON_ALTAR_ANABEL, DIR_WEST
+	call SunMoonAltar_EventScript_CameraToPlayer
 	setvar VAR_RIFT_ALTAR_STEP, ALTAR_STEP_RETRY_READY
 	releaseall
 	end
@@ -1017,7 +1115,7 @@ SunMoonAltar_EventScript_Rescue::
 	closemessage
 	@ Kukui moves a support out of the middle without leaving the base, and
 	@ Looker steers the helpers along the prepared path
-	applymovement LOCALID_SUN_MOON_ALTAR_KUKUI, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_SUN_MOON_ALTAR_KUKUI, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_SUN_MOON_ALTAR_LOOKER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement LOCALID_SUN_MOON_ALTAR_KUKUI
 	waitmovement LOCALID_SUN_MOON_ALTAR_LOOKER
@@ -1332,9 +1430,10 @@ SunMoonAltar_EventScript_StabilizeInScene::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement OBJ_EVENT_ID_PLAYER
 	@ --- Lusamine's part --------------------------------------------------------
-	@ Lillie goes to her mother without hurry: (12,11) up the free west side to
-	@ row 9 and along it to (15,9), beside her. (12,10) (12,9) (13,9) (14,9)
-	@ are free (the partner is back in its Ball).
+	@ Lillie goes to her mother without hurry: (12,11) -> (12,10) -> (13,10)
+	@ -> (13,9) -> (14,9) -> (15,9), beside her. (12,9) is Kukui, so she turns
+	@ in one row earlier; (13,10) is free because the partner is back in its
+	@ Ball, and the player stands on (14,11).
 	applymovement LOCALID_SUN_MOON_ALTAR_LILLIE, SunMoonAltar_Movement_LillieToMother
 	waitmovement LOCALID_SUN_MOON_ALTAR_LILLIE
 	turnobject LOCALID_SUN_MOON_ALTAR_LUSAMINE, DIR_SOUTH
@@ -1433,8 +1532,8 @@ SunMoonAltar_Movement_NecrozmaDraw:
 
 SunMoonAltar_Movement_LillieToMother:
 	walk_up
-	walk_up
 	walk_right
+	walk_up
 	walk_right
 	walk_right
 	face_right
@@ -1461,13 +1560,15 @@ SunMoonAltar_Movement_NihilegoAway:
 @ Object scripts of the people standing around.
 @ ---------------------------------------------------------------------------
 
-@ Looker heals from state 13 on (V2 section 18): one short question.
+@ Looker heals in 13..15 (V2 section 18): one short question. From 16 on the
+@ heal belongs to the Aether staff at the stair base, and he only talks.
 SunMoonAltar_EventScript_Looker::
 	lock
 	faceplayer
 	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, SunMoonAltar_EventScript_LookerHealAsk
 	msgbox SunMoonAltar_Text_LookerPost, MSGBOX_DEFAULT
-	closemessage
+	release
+	end
 SunMoonAltar_EventScript_LookerHealAsk::
 	msgbox SunMoonAltar_Text_LookerHealAsk, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, SunMoonAltar_EventScript_LookerNoHeal
@@ -1496,7 +1597,8 @@ SunMoonAltar_EventScript_Anabel::
 	end
 
 SunMoonAltar_EventScript_AnabelPost::
-	goto_if_set FLAG_DAILY_ALTAR_RIFT, SunMoonAltar_EventScript_AnabelSurveyDone
+	specialvar VAR_RESULT, Nexus_IsDoneToday
+	goto_if_eq VAR_RESULT, TRUE, SunMoonAltar_EventScript_AnabelSurveyDone
 	msgbox SunMoonAltar_Text_AnabelPost, MSGBOX_DEFAULT
 	closemessage
 	msgbox SunMoonAltar_Text_AnabelKurt, MSGBOX_DEFAULT
@@ -1611,23 +1713,45 @@ SunMoonAltar_EventScript_KukuiReady::
 
 @ ---------------------------------------------------------------------------
 @ THE RIFT object. 14: never visible (the mark is). 15: Anabel's delivery.
-@ >= 16: the daily survey - one entry a day, any hour. The day is spent when
-@ the entry commits to the warp; NO/B and a cancelled menu spend nothing.
+@ >= 16: the way into the Nexus (.claude/rift_missions/nexus/NEXUS_REGRAS.md).
+@ Any hour, any number of times a day (R3): nothing is spent here; the day's
+@ state lives in VAR_NEXUS_DAILY. R10: the party is checked BEFORE the
+@ question - at most one legendary, one sub-legendary and one Mega.
 @ No Solgaleo/Lunala or Necrozma required after 16.
 @ ---------------------------------------------------------------------------
 SunMoonAltar_EventScript_Rift::
 	lock
 	goto_if_eq VAR_RIFT_MISSIONS_STATE, 15, SunMoonAltar_EventScript_AnabelCustody
 	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, SunMoonAltar_EventScript_ReleaseQuiet
+	specialvar VAR_RESULT, Nexus_CheckTraditional
+	goto_if_ne VAR_RESULT, NEXUS_TRADITIONAL_OK, SunMoonAltar_EventScript_RiftNotTraditional
 	msgbox SunMoonAltar_Text_RiftDailyAsk, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, SunMoonAltar_EventScript_RiftDailyNo
 	closemessage
-	setflag FLAG_DAILY_ALTAR_RIFT
+	special Nexus_EnterFromAltar
 	fadescreen FADE_TO_BLACK
-	warpsilent MAP_ULTRA_SPACE_ARENA, 10, 19
+	warpsilent MAP_NEXUS, 10, 19
 	waitstate
 	release
 	end
+
+SunMoonAltar_EventScript_RiftNotTraditional::
+	call_if_eq VAR_RESULT, NEXUS_TRADITIONAL_LEGENDARY, SunMoonAltar_EventScript_RiftTooManyLegendaries
+	call_if_eq VAR_RESULT, NEXUS_TRADITIONAL_SUB, SunMoonAltar_EventScript_RiftTooManySubs
+	call_if_eq VAR_RESULT, NEXUS_TRADITIONAL_MEGA, SunMoonAltar_EventScript_RiftTooManyMegas
+	msgbox SunMoonAltar_Text_RiftTraditionalRule, MSGBOX_DEFAULT
+	release
+	end
+
+SunMoonAltar_EventScript_RiftTooManyLegendaries::
+	msgbox SunMoonAltar_Text_RiftTooManyLegendaries, MSGBOX_DEFAULT
+	return
+SunMoonAltar_EventScript_RiftTooManySubs::
+	msgbox SunMoonAltar_Text_RiftTooManySubs, MSGBOX_DEFAULT
+	return
+SunMoonAltar_EventScript_RiftTooManyMegas::
+	msgbox SunMoonAltar_Text_RiftTooManyMegas, MSGBOX_DEFAULT
+	return
 
 SunMoonAltar_EventScript_RiftDailyNo::
 	msgbox SunMoonAltar_Text_RiftDailyNo, MSGBOX_DEFAULT
@@ -2110,13 +2234,60 @@ SunMoonAltar_Text_SailorStay:
 	.string "{SPEAKER NAME_SAILOR}I'll be here at the pier.$"
 
 SunMoonAltar_Text_RiftDailyAsk:
-	.string "{SPEAKER NAME_ANABEL}The passage is ready\n"
-	.string "for today's survey.\l"
-	.string "Would you like to go through?$"
+	.string "{SPEAKER NAME_ANABEL}The passage to the Nexus is\n"
+	.string "steady. Would you like to go through?$"
 
 SunMoonAltar_Text_RiftDailyNo:
 	.string "{SPEAKER NAME_ANABEL}All right. Come back when you're ready.$"
 
 SunMoonAltar_Text_RiftDailyUsed:
-	.string "{SPEAKER NAME_ANABEL}We've finished today's survey.\n"
-	.string "Come back tomorrow.$"
+	.string "{SPEAKER NAME_ANABEL}The Nexus has gone quiet for today.\n"
+	.string "It will shift again tomorrow.$"
+
+@ SKELETON: R10 refusal, placeholder voice.
+SunMoonAltar_Text_RiftTooManyLegendaries:
+	.string "{SPEAKER NAME_ANABEL}Wait. You're carrying more than one\n"
+	.string "legendary Pokémon.$"
+
+SunMoonAltar_Text_RiftTooManySubs:
+	.string "{SPEAKER NAME_ANABEL}Wait. You're carrying more than one\n"
+	.string "rare Pokémon of that kind - the ones\l"
+	.string "like the Ultra Beasts.$"
+
+SunMoonAltar_Text_RiftTooManyMegas:
+	.string "{SPEAKER NAME_ANABEL}Wait. More than one of your Pokémon\n"
+	.string "is ready to Mega Evolve.$"
+
+SunMoonAltar_Text_RiftTraditionalRule:
+	.string "{SPEAKER NAME_ANABEL}The passage only holds one legendary,\n"
+	.string "one of the rarer kind and one Mega\l"
+	.string "Evolution at a time. Everyone inside\l"
+	.string "follows the same rule.$"
+
+SunMoonAltar_Text_Officer:
+	.string "{SPEAKER NAME_OFFICER}Looker's orders. Nobody goes up\n"
+	.string "that stair without a reason.\p"
+	.string "You're the reason, I hear.\n"
+	.string "Go on up. They're waiting.$"
+
+SunMoonAltar_Text_AetherStaff:
+	.string "{SPEAKER NAME_AETHER}Blankets, food, transport cases...\n"
+	.string "All of it is for the Pokémon.\p"
+	.string "Whatever comes through up there,\n"
+	.string "we look after it down here.$"
+
+SunMoonAltar_Text_OfficerPost:
+	.string "{SPEAKER NAME_OFFICER}The nine went out on the transport.\n"
+	.string "We stayed for whatever comes next.\p"
+	.string "Quiet island, most days.\n"
+	.string "I'd like to keep it that way.$"
+
+SunMoonAltar_Text_AetherHealAsk:
+	.string "{SPEAKER NAME_AETHER}Back from the passage?\n"
+	.string "Let me look after your Pokémon.$"
+
+SunMoonAltar_Text_AetherHealDone:
+	.string "{SPEAKER NAME_AETHER}All done. They're in good shape.$"
+
+SunMoonAltar_Text_AetherHealNo:
+	.string "{SPEAKER NAME_AETHER}We're right here if you need us.$"

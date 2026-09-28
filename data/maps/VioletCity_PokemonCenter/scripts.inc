@@ -333,7 +333,7 @@ VioletCity_PokemonCenter_EventScript_Man::
 # 167 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionNoRoom:
 # 168 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "There's no room for the Egg in\n"
+	.string "{SPEAKER NAME_GLADION}There's no room for the Egg in\n"
 # 169 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "your party or your PC.\p"
 # 170 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -345,7 +345,7 @@ VioletCity_PokeCenter_Text_GladionNoRoom:
 # 173 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionEggSentToPC:
 # 174 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Your party is full, so the Egg\n"
+	.string "{SPEAKER NAME_GLADION}Your party is full, so the Egg\n"
 # 175 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "was sent to your PC.\p"
 # 176 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -355,7 +355,7 @@ VioletCity_PokeCenter_Text_GladionEggSentToPC:
 # 178 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionRecognizes:
 # 179 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "You're {PLAYER}?\p"
+	.string "{SPEAKER NAME_GLADION}You're {PLAYER}?\p"
 # 180 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "Lillie mentioned you.\n"
 # 181 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -365,7 +365,7 @@ VioletCity_PokeCenter_Text_GladionRecognizes:
 # 183 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionPartner1:
 # 184 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "I found this Type: Null in Alola.\n"
+	.string "{SPEAKER NAME_GLADION}I found this Type: Null in Alola.\n"
 # 185 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "Someone had left it behind.\p"
 # 186 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -375,7 +375,7 @@ VioletCity_PokeCenter_Text_GladionPartner1:
 # 188 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionPartner2:
 # 189 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "We're training. That doesn't\n"
+	.string "{SPEAKER NAME_GLADION}We're training. That doesn't\n"
 # 190 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "mean we'll hold back.\p"
 # 191 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -393,7 +393,7 @@ VioletCity_PokeCenter_Text_GladionVictory:
 # 197 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionWon:
 # 198 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "I see why Lillie wants\n"
+	.string "{SPEAKER NAME_GLADION}I see why Lillie wants\n"
 # 199 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "another match.$"
 # 200 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -443,7 +443,7 @@ VioletCity_PokeCenter_Text_GladionUnexpectedOutcome:
 # 222 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionGiveEgg:
 # 223 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "Here's the Egg. Elm asked me\n"
+	.string "{SPEAKER NAME_GLADION}Here's the Egg. Elm asked me\n"
 # 224 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "to bring it to you.\p"
 # 225 "data/maps/VioletCity_PokemonCenter/scripts.pory"
@@ -453,7 +453,7 @@ VioletCity_PokeCenter_Text_GladionGiveEgg:
 # 227 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 VioletCity_PokeCenter_Text_GladionParting:
 # 228 "data/maps/VioletCity_PokemonCenter/scripts.pory"
-	.string "And when Lillie challenges you\n"
+	.string "{SPEAKER NAME_GLADION}And when Lillie challenges you\n"
 # 229 "data/maps/VioletCity_PokemonCenter/scripts.pory"
 	.string "again… give her a proper battle.$"
 # 230 "data/maps/VioletCity_PokemonCenter/scripts.pory"

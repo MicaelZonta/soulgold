@@ -85,7 +85,7 @@ que 16 px** e cortar estraga a arte.
 
 Precedentes no jogo: **Quinty Plump** (único humano que só anda a pé em
 32x32), Biker, ciclistas, o jogador de bike/surf/pesca e os lendários de cena.
-Nenhum personagem que o SoulGold adicionou usa 32x32 ainda.
+Desde 27/09/2026 o elenco especial (Lusamine, Blue, Cynthia, Brendan de Hoenn e o Nexus) usa 32x32, com o boneco em 18 px de largura (Lusamine 24). Looker, Gladion, Kukui e Lillie ficaram no 16x32 antigo e a Anabel usa a arte nova em 16x32 (boneco 16x22, 12 quadros): a cena da Missão 4 em New Bark está no limite da VRAM de sprite.
 
 Diferenças em relação ao 16x32 (o resto do `adicionar-npc` é igual):
 

@@ -651,3 +651,30 @@ gSpecials::
 	def_special EnableAutorun
 	def_special BattleSetup_StartDexNavBattle
 	def_special MigrateLegacyRadioShortcut
+	def_special Nexus_EnterFromAltar
+	def_special Nexus_BeginMapLoad
+	def_special Nexus_GetRoom
+	def_special Nexus_GetProgress
+	def_special Nexus_GetDoorState
+	def_special Nexus_BufferDoorTrainerName
+	def_special Nexus_IsRoomChosen
+	def_special Nexus_ChooseDoor
+	def_special Nexus_RecordFightWon
+	def_special Nexus_AdvanceRoom
+	def_special Nexus_LeaveToAltar
+	def_special Nexus_GetBossRoomState
+	def_special Nexus_SetupBoss
+	def_special Nexus_RecordCapture
+	def_special Nexus_RecordBossBeaten
+	def_special Nexus_BufferFragmentNames
+	def_special Nexus_FragmentNeedsBeastBall
+	def_special Nexus_HasAnyBall
+	def_special Nexus_GiveFragment
+	def_special Nexus_HasLookerFile
+	def_special Nexus_IsGiftTaken
+	def_special Nexus_MarkGiftTaken
+	def_special Nexus_GetPrize
+	def_special Nexus_MarkPrizeTaken
+	def_special Nexus_CheckTraditional
+	def_special Nexus_IsDoneToday
+	def_special Nexus_DebugNewDay

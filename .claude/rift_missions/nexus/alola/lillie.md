@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -50,6 +50,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_LILLIE_POSTGAME` | 973 | 0x8CD | Clefable Lv76, Comfey Lv76, Ribombee Lv77, Primarina Lv77, Togekiss Lv78, Ninetales Alola Lv78 | `CherrygroveCity` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_LILLIE` = **1042** (flag de batalha `0x912`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Lillie_Fight`; campeão: `Nexus_EventScript_Lillie_Lunala_ChampionFight` (para Lunala), `Nexus_EventScript_Lillie_TapuLele_ChampionFight` (para Tapu Lele). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Lillie.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_LILLIE`, campeã de Lunala e Tapu Lele. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -153,6 +155,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Lunala
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Lunala_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Lunala**. Lillie é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Lillie, filha da Lusamine. Em Alola protegeu o Cosmog na bolsa; neste hack cruza a campanha com o Vulpix (hoje Ninetales), ergueu a parede de gelo da M2 e, no Altar, estava ao lado da mãe no resgate.
@@ -214,6 +218,8 @@ Nexus_Text_Lunala_LookerFile:
 
 #### Tapu Lele
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_TapuLele_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Tapu Lele**. Lillie é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Lillie, a menina que aprendeu a lutar e a dizer o que viu; no pós-game toma chá com a mãe e o irmão em Olivine (design §8).
@@ -273,6 +279,8 @@ Nexus_Text_TapuLele_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Lillie_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lillie cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 A Lillie observa e anota (design §3); ela lembra de quando não lutava e escondia um Pokémon na bolsa. A virada: agora é a Ninetales que não deixa ela esconder nada.
@@ -313,6 +321,8 @@ Nexus_Text_Lillie_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lillie é a **campeã**, a luta logo antes do lendário do dia. Uma fala por lendário; o nome da espécie não aparece ([R16](../NEXUS_REGRAS.md)). Rótulos com a espécie porque Lillie é campeã de dois.
 
 #### Lunala
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Lillie_Lunala_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A Lillie viu a criatura atravessar o céu apagando a luz, e o Lunala dela ficou olhando também. Esta Lillie vem de um lugar onde o Cosmog da bolsa cresceu com ela: o Lunala do time é o Nebby dela, e ela diz isso sem cerimônia. Ela nota que o parceiro do jogador também começou pequeno (a família Cosmog que ele carrega) e pergunta, sem afirmar, se os dois carregaram o mesmo, em algum lugar. A virada, no depois: talvez no mundo do jogador o Nebby tenha crescido ao lado dele, ou nunca; ela acha que não importa qual, porque alguém o carregou até ele poder voar. Ela observa e pergunta, não prevê (design §3). O fragmento do R17 é um Cosmog, e a ficha do Looker devolve a pergunta: de quem é? De quem carrega.
 
@@ -376,6 +386,8 @@ Nexus_Text_Lillie_Lunala_ChampionAfter:
 
 
 #### Tapu Lele
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Lillie_TapuLele_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A Lillie testou as escamas na própria mão (ela confere antes de afirmar): funcionam. Depois olhou os Pokémon dormindo entre as flores, curados de novo e de novo. A criatura não quer fazer mal; só não sabe parar. "Acho que conheço alguém assim." A virada, no depois: alguém que ela ama segurava tudo o que amava, e também com boa intenção; hoje elas tomam chá e a Lillie diz quando basta, e a mãe escuta. Sem dizer que a família está consertada (roteiro do Altar).
 

@@ -15,10 +15,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -49,6 +49,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): `TRAINER_UNUSED_386` (ex-`TRAINER_BLUE_2`, 282).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_BLUE` = **986** (flag de batalha `0x8DA`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Blue_Fight`; campeão: `Nexus_EventScript_Blue_Victini_ChampionFight` (para Victini), `Nexus_EventScript_Blue_Zacian_ChampionFight` (para Zacian). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Blue.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_BLUE`, campeão de Zacian e Victini. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -152,6 +154,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Zacian
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Zacian_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Zacian**. Blue é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Blue, o rival de Red, neto do Professor Oak. Chegou ao topo da Liga de Kanto antes de Red e foi Campeão só até Red subir a escada. Anos depois virou Líder de Viridian.
@@ -220,6 +224,8 @@ Nexus_Text_Zacian_LookerFile:
 
 #### Victini
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Victini_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Victini**. Blue é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** O mesmo Blue: quer vencer mais do que qualquer coisa, e é o único treinador de Kanto que conhece o gosto de chegar em segundo lugar ao Red.
@@ -285,6 +291,8 @@ Nexus_Text_Victini_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Blue_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Blue cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -323,6 +331,8 @@ Nexus_Text_Blue_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Blue é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
 
 #### Zacian
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Blue_Zacian_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Blue fala de crédito, que é a ferida dele: foi Campeão pelo tempo que o Red levou para subir a escada, e ninguém lembra. A criatura é o herói de verdade cuja glória ficou com os reis, e mesmo assim continuou guardando. O Blue teria feito escândalo e mandado consertar a placa. A virada é ele perceber que talvez seja por isso que ela é a lenda e ele não.
 
@@ -383,6 +393,8 @@ Nexus_Text_Blue_Zacian_ChampionAfter:
 </details>
 
 #### Victini
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Blue_Victini_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Blue carrega um desses no próprio time (o Victini dele entra em todo dia do Nexus), e a lenda diz que quem o tem não perde. Ele perdeu mesmo assim, para o Red. Então ou não funciona, ou a criatura nunca gostou dele. A virada: ele fica aliviado. Se um dia vencer o Red, quer que seja ele, não um amuleto de orelhas compridas. E pede para ninguém contar ao avô que ele disse algo sensato.
 

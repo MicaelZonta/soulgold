@@ -76,6 +76,16 @@ As quatro colunas têm que concordar. Precedente de humano a pé em 32x32:
 `QuintyPlump` (`object_event_graphics_info.h`). O NPC de 1 quadro ainda não
 foi validado no jogo — confira em runtime no primeiro uso.
 
+> **Tabela de animação nova ⇒ entrada em `sStepAnimTables`.** Folha de 12
+> quadros (leste desenhado à parte, `sAnimTable_StandardAsym`) ou qualquer
+> `sAnimTable_*` novo precisa de uma linha em `sStepAnimTables`
+> (`object_event_anims.h`). Sem ela, `SetStepAnim` troca o número da animação
+> e **nunca** o quadro: `faceplayer` e `MOVEMENT_TYPE_FACE_*` deixam o boneco
+> congelado na direção do spawn, enquanto `turnobject` (que chama
+> `StartSpriteAnim`) funciona — por isso a cutscene parece certa e só a
+> conversa denuncia. Foi o bug da Lusamine "sempre olhando para a direita"
+> (27/09/2026).
+
 No 16x32 o boneco tem **no máximo 16 px de largura** e, no elenco atual,
 18–22 px de altura com os pés na linha 30.
 

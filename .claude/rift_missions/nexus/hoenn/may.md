@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -49,6 +49,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): `TRAINER_UNUSED_409` (ex-`TRAINER_MAY_ROUTE_103_MUDKIP`, 529), `TRAINER_UNUSED_398` (ex-`TRAINER_MAY_ROUTE_110_MUDKIP`, 530), `TRAINER_UNUSED_404` (ex-`TRAINER_MAY_ROUTE_119_MUDKIP`, 531), `TRAINER_UNUSED_410` (ex-`TRAINER_MAY_ROUTE_103_TREECKO`, 532), `TRAINER_UNUSED_399` (ex-`TRAINER_MAY_ROUTE_110_TREECKO`, 533), `TRAINER_UNUSED_405` (ex-`TRAINER_MAY_ROUTE_119_TREECKO`, 534), `TRAINER_UNUSED_411` (ex-`TRAINER_MAY_ROUTE_103_TORCHIC`, 535), `TRAINER_UNUSED_400` (ex-`TRAINER_MAY_ROUTE_110_TORCHIC`, 536), `TRAINER_UNUSED_406` (ex-`TRAINER_MAY_ROUTE_119_TORCHIC`, 537), `TRAINER_UNUSED_415` (ex-`TRAINER_MAY_RUSTBORO_MUDKIP`, 600), `TRAINER_UNUSED_421` (ex-`TRAINER_MAY_LILYCOVE_MUDKIP`, 664), `TRAINER_UNUSED_422` (ex-`TRAINER_MAY_LILYCOVE_TREECKO`, 665), `TRAINER_UNUSED_423` (ex-`TRAINER_MAY_LILYCOVE_TORCHIC`, 666), `TRAINER_UNUSED_416` (ex-`TRAINER_MAY_RUSTBORO_TREECKO`, 768), `TRAINER_UNUSED_417` (ex-`TRAINER_MAY_RUSTBORO_TORCHIC`, 769).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_MAY` = **1013** (flag de batalha `0x8F5`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_May_Fight`; campeão: `Nexus_EventScript_May_Mesprit_ChampionFight` (para Mesprit), `Nexus_EventScript_May_Zekrom_ChampionFight` (para Zekrom). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → May.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_MAY`, campeã do Zekrom e do Mesprit. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -152,6 +154,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Zekrom
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Zekrom_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Zekrom**. May é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** May, filha do Professor Birch, de Littleroot. Rival em Ruby/Sapphire/Emerald, alegre, faz pesquisa de campo para o pai e quer ver todos os Pokémon.
@@ -210,6 +214,8 @@ Nexus_Text_Zekrom_LookerFile:
 </details>
 
 #### Mesprit
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Mesprit_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Mesprit**. May é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -273,6 +279,8 @@ Nexus_Text_Mesprit_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_May_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando May cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dela mesma, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -309,6 +317,8 @@ Nexus_Text_May_Defeat:
 ### Diálogo associado ao lendário
 
 #### Zekrom
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_May_Zekrom_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando May é a **campeã**, a luta logo antes do Zekrom. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -370,6 +380,8 @@ Nexus_Text_May_Zekrom_ChampionAfter:
 </details>
 
 #### Mesprit
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_May_Mesprit_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando May é a **campeã**, a luta logo antes do Mesprit. A fala é sobre a criatura, sem dizer o nome dela.
 

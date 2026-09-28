@@ -15,10 +15,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -50,6 +50,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_RED` | 851 | 0x853 | **sem time** (ID reservado, sem bloco no `.party`) | `src/battle_dome.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_RED` = **985** (flag de batalha `0x8D9`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Red_Fight`; campeão: `Nexus_EventScript_Red_ChampionFight` (para Arceus). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Red.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_RED`, campeão de Arceus. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -153,6 +155,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Arceus
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Arceus_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Arceus**. Red é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Red, o protagonista de Red/Green/Blue. Venceu a Liga de Kanto, derrubou a Team Rocket, e três anos depois é o superchefe silencioso no topo do Mt. Silver, sozinho na neve. Nos jogos ele não diz nada além de "…".
@@ -219,6 +223,8 @@ Nexus_Text_Arceus_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Red_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Red cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 O Red nos jogos só diz "…" e "…!". A proposta mantém isso e deixa escapar uma frase curta por luta: é o detalhe que o leitor não espera dele.
@@ -260,6 +266,8 @@ Nexus_Text_Red_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Red é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
 
 #### Arceus
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Red_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Red não fala; a fala dele são reticências, e o que ele diz em palavras vale por dez. Ele subiu uma montanha para ficar sozinho e ficou anos lá. A criatura também estava sozinha, antes de tudo, e o que ela fez com isso foi criar um mundo inteiro. A virada é que o Red, que nunca fala, fala sobre isso: ele entendeu a criatura porque fez o contrário, e agora desceu da montanha. O "Heh" da derrota é o sorriso que ninguém vê.
 

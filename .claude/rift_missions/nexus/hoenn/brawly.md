@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -43,6 +43,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se precisar de flag nova).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_BRAWLY` = **1016** (flag de batalha `0x8F8`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Brawly_Fight`; campeão: `Nexus_EventScript_Brawly_IronHands_ChampionFight` (para Iron Hands), `Nexus_EventScript_Brawly_Keldeo_ChampionFight` (para Keldeo). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Brawly.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_BRAWLY`, campeão de Keldeo e Iron Hands. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -147,6 +149,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Keldeo
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Keldeo_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Keldeo**. Brawly é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Brawly, Líder de Dewford, surfista e lutador, que treina nas ondas e na caverna escura da ilha.
@@ -208,6 +212,8 @@ Nexus_Text_Keldeo_LookerFile:
 </details>
 
 #### Iron Hands
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_IronHands_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Iron Hands**. Brawly é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -273,6 +279,8 @@ Nexus_Text_IronHands_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brawly_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brawly cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -311,6 +319,8 @@ Nexus_Text_Brawly_Defeat:
 ### Diálogo associado ao lendário
 
 #### Keldeo
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brawly_Keldeo_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brawly é o **campeão**, a luta logo antes do Keldeo. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -369,6 +379,8 @@ Nexus_Text_Brawly_Keldeo_ChampionAfter:
 </details>
 
 #### Iron Hands
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brawly_IronHands_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brawly é o **campeão**, a luta logo antes do Iron Hands. A fala é sobre a criatura, sem dizer o nome dela.
 

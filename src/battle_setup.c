@@ -693,10 +693,13 @@ static void CB2_EndScriptedWildBattle(void)
 
     if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
-        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE) 
+        // B_FLAG_NO_WHITEOUT: the battle script already skipped the money loss
+        // (jumpifnowhiteout); the field must not white out either. Used by the
+        // Nexus boss (NEXUS_REGRAS R3), which hands the result back to its script.
+        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(B_FLAG_NO_WHITEOUT))
         {
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
-        } 
+        }
         else if (GetBugContestFlag()) 
         {
             SetMainCallback2(CB2_BugContestWhiteOut);

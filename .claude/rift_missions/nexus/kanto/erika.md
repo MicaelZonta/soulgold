@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -45,6 +45,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_ERIKA` | 303 | 0x62F | Jumpluff Lv61, Roserade Lv60, Tangrowth Lv60, Venusaur Lv61, Victreebel Lv62, Bellossom Lv62 | `CeladonCity_Gym`, `SaffronCity_FightingDojoVIP`, `src/battle_dome.c`, `src/battle_setup.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_ERIKA` = **990** (flag de batalha `0x8DE`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Erika_Fight`; campeão: `Nexus_EventScript_Erika_Virizion_ChampionFight` (para Virizion), `Nexus_EventScript_Erika_Shaymin_ChampionFight` (para Shaymin). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Erika.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_ERIKA`, campeã de Shaymin e Virizion. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). `Double Battle: Yes` é o formato em que o time brilha mais; o plano vale nos dois.
 
@@ -145,6 +147,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Shaymin
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Shaymin_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Shaymin**. Erika é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Erika, Líder de Celadon, especialista em Grama. Educada, cochila no meio da conversa, vende perfume e ensina arranjo de flores; o ginásio dela tem uma árvore na porta que só quem tem Cut atravessa.
@@ -209,6 +213,8 @@ Nexus_Text_Shaymin_LookerFile:
 
 
 #### Virizion
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Virizion_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Virizion**. Erika é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -277,6 +283,8 @@ Nexus_Text_Virizion_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Erika_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Erika cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dela mesma, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -314,6 +322,8 @@ Nexus_Text_Erika_Defeat:
 ### Diálogo associado ao lendário
 
 #### Shaymin
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Erika_Shaymin_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Erika é a **campeã**, a luta logo antes do Shaymin. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -377,6 +387,8 @@ Nexus_Text_Erika_Shaymin_ChampionAfter:
 
 
 #### Virizion
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Erika_Virizion_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Erika é a **campeã**, a luta logo antes do Virizion. A fala é sobre a criatura, sem dizer o nome dela.
 

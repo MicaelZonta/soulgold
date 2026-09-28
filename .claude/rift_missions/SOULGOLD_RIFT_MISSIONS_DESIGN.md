@@ -33,7 +33,7 @@ implementação valem sobre este arquivo; nas regras do arco, vale este arquivo.
 | **M4 — New Bark** (Kartana + Guzzlord + Nihilego, Lusamine) | Roteiro V2 aplicado (26/09): três frentes, campo de contenção da Aether, Ultra Necrozma instável; cerca e barricada em metatile | Pendente | [`NEWBARK_ULTRABEAST/`](NEWBARK_ULTRABEAST/NEWBARK_ULTRABEAST_IMPLEMENTATION.md) |
 | **PRÉ-NECROZMA** — reunião em Olivine | Roteiro V2 aplicado (26/09): teste do parceiro em cena, passe idempotente, chá no pós-game | Pendente | [`PRE_NECROZMA_ULTRABEAST/`](PRE_NECROZMA_ULTRABEAST/PRE_NECROZMA_ULTRABEAST_IMPLEMENTATION.md) |
 | **ALTAR DO SOL E DA LUA** — Lusamine, Ultra Necrozma, resgate das nove, despedida | Roteiro V2 aplicado (26/09, rev. 7): duelo, acordo e teste da passagem, resgate das nove na tela, captura em Beast Ball, custódia, estabilização | Pendente para o V2 (a rev. 4, V1, foi testada pelo autor); tela branca na fenda diária em aberto | [`ALTAR_SUN_MOON/`](ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md) §21 |
-| Loop pós-Necrozma (Nexus) | Regras do autor e propostas de treinadores; nada no código além da fenda e da arena vazia | — | [`nexus/`](nexus/NEXUS_REGRAS.md) |
+| Loop pós-Necrozma (Nexus) | **Esqueleto implementado** (27/09): modo Daily completo no mapa `Nexus` — 4 salas × 3 portas, campeão, boss capturável, prêmio, Poipole; 10 treinadores, 10 UBs no pool | Pendente | [`nexus/NEXUS_IMPLEMENTATION.md`](nexus/NEXUS_IMPLEMENTATION.md) |
 
 ---
 
@@ -481,7 +481,7 @@ Lillie** — e dá certo.
 | II | 13 | Duelo com a Lusamine: exige Solgaleo/Lunala na equipe (menu SYSTEM com os dois), cura antes e depois, sem blackout, quatro resultados com fala própria. Resultado inesperado não conclui nada |
 | III | 13 → 14 | Acordo (a Lusamine fica na base externa) e **teste da passagem**: o parceiro sai da Ball e abre; a Anabel vai até a borda interna e volta; a abertura se contrai numa **marca** (`OBJ_EVENT_GFX_PORTAL`). Estado 14 não tem passagem ativa |
 | IV | 14 → 15 | Travessia pela Anabel ou pela marca (espaço → parceiro → qual → pronto). Arena: Ultra Necrozma **já Ultra**; a Anabel segura o módulo interno (por isso não luta). Boss 5/90/x160 inalterado; derrota = blackout, reagrupamento na escada e intro curta. Vitória: o parceiro é tratado, as **nove saem em cinco grupos** e um corte mostra as chegadas no Altar; volta para a **captura** (Beast Ball da reunião, `givemon` Lv75 `ball=BALL_BEAST`). Sem espaço: a Anabel guarda o Necrozma e entrega no Altar |
-| V | 15 → 16 | Retorno; Necrozma e o parceiro estabilizam a passagem **em cena** e os aparelhos desligam; Lillie ao lado da mãe, convite para o chá, Gladion fica; despedida. A fenda fica **uma vez por dia** (`FLAG_DAILY_ALTAR_RIFT`) |
+| V | 15 → 16 | Retorno; Necrozma e o parceiro estabilizam a passagem **em cena** e os aparelhos desligam; Lillie ao lado da mãe, convite para o chá, Gladion fica; despedida. A fenda fica, aberta o dia todo: é a entrada do Nexus (27/09; antes, uma vez por dia com `FLAG_DAILY_ALTAR_RIFT`, hoje livre) |
 
 **Depois do estado 16:** Looker e Anabel moram no altar (andam, `WANDER_AROUND`
 trocado no `ON_TRANSITION`); a Anabel manda o jogador ao Kurt para Beast Balls.
@@ -513,10 +513,10 @@ Regras do autor em [`nexus/NEXUS_REGRAS.md`](nexus/NEXUS_REGRAS.md) (modo Daily,
 formato, level scaling, pool condicionado à captura) e pool de lendários em
 [`nexus/POOL_LENDARIOS.md`](nexus/POOL_LENDARIOS.md); fichas por treinador nas
 pastas por região, incluindo a proposta de campeão para cada uma das 11 Ultra
-Beasts (aguarda aprovação). O que já existe no código: a fenda diária do altar e
-a arena, hoje com uma caixa de narração (`UltraSpaceArena_EventScript_EmptyRift`,
-o único `@ SKELETON:` do arco) e a volta pelo sul. Substituí-la é o primeiro
-passo do loop. Lendários já capturados continuam elegíveis; o horário não
+Beasts (aguarda aprovação). Implementado em modo esqueleto (27/09/2026): a fenda do
+altar, aberta o dia todo, leva ao mapa `Nexus`; detalhes, receitas para
+acrescentar conteúdo e checklist de runtime em
+[`nexus/NEXUS_IMPLEMENTATION.md`](nexus/NEXUS_IMPLEMENTATION.md). Lendários já capturados continuam elegíveis; o horário não
 restringe o loop.
 
 Reserva de treinadores de Hoenn para os pools: uma luta de cada Líder, da Elite
@@ -555,7 +555,8 @@ Four, de Archie e Maxie, a última de May e Brendan, Wally e Steven.
   ainda não passaram pelo retoque do autor no Porymap. As barreiras de New Bark
   não mudam o `map.bin`: são `setmetatile` no `ON_LOAD` enquanto o evento está
   ativo.
-- Documento do loop (Nexus): sorteio, pools, arena única ou destino por tema.
+- Nexus: runtime inteiro (checklist §9 do doc do Nexus) e as três confirmações
+  do §8 dele.
 
 ---
 

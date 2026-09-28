@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -45,6 +45,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_SPENSER` | 807 | 0x827 | **sem time** (ID reservado, sem bloco no `.party`) | — (nenhum script chama) |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_SPENSER` = **1032** (flag de batalha `0x908`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Spenser_Fight`; campeão: `Nexus_EventScript_Spenser_Dialga_ChampionFight` (para Dialga), `Nexus_EventScript_Spenser_Celebi_ChampionFight` (para Celebi). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Spenser.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_SPENSER`, campeão de Celebi e Dialga. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -147,6 +149,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Celebi
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Celebi_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Celebi**. Spenser é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Spenser, Palace Maven da Battle Frontier de Hoenn, um velho sábio que acredita que o Pokémon luta melhor seguindo a própria natureza.
@@ -215,6 +219,8 @@ Nexus_Text_Celebi_LookerFile:
 
 #### Dialga
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Dialga_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Dialga**. Spenser é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Spenser, o velho da Palace, que deixa cada Pokémon agir no próprio ritmo.
@@ -282,6 +288,8 @@ Nexus_Text_Dialga_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Spenser_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Spenser cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -324,6 +332,8 @@ Nexus_Text_Spenser_Defeat:
 
 #### Celebi
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Spenser_Celebi_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 O Spenser, velho, vê a criatura da floresta andar entre as idades das árvores e sente a tentação que qualquer velho sente: voltar. Ela passa e uma árvore morta brota de novo. A virada: o Spenser não quer. Ele diz que a Palace ensina a deixar o Pokémon ser o que é, e que isso vale para árvore, para gente, para ele: a idade dele é a natureza dele. E conta que a criatura só aparece onde a floresta é saudável, então a presença dela não é milagre: é elogio.
 
 **Antes da luta**
@@ -359,8 +369,8 @@ Nexus_Text_Spenser_Celebi_ChampionIntro:
 	.string "trees?\p"
 	.string "Wherever it passes, the dead wood\n"
 	.string "sprouts again. An old man watches a\l"
-	.string "thing like that and thinks, "Ah. Me\l"
-	.string "next?"\p"
+	.string "thing like that and thinks, “Ah. Me\l"
+	.string "next?”\p"
 	.string "But no. I have been exactly this old\n"
 	.string "for a while now, and I have grown fond\l"
 	.string "of it.\p"
@@ -387,6 +397,8 @@ Nexus_Text_Spenser_Celebi_ChampionAfter:
 
 
 #### Dialga
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Spenser_Dialga_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Spenser encontra a criatura cujo coração faz o tempo passar. Um velho diante disso poderia pedir mais tempo. Ele percebe outra coisa: o bicho não controla o tempo por vontade, só bate, e o tempo segue. A virada é que o Spenser se vê na criatura: os dois não mandam em nada, só seguem a própria natureza, e o mundo se ajusta. Ele não pede um minuto a mais; pede que o jogador use bem o dele.
 

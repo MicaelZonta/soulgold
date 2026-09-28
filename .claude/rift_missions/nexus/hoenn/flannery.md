@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -43,6 +43,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se precisar de flag nova).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_FLANNERY` = **1018** (flag de batalha `0x8FA`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Flannery_Fight`; campeão: `Nexus_EventScript_Flannery_Heatran_ChampionFight` (para Heatran), `Nexus_EventScript_Flannery_ChiYu_ChampionFight` (para Chi-Yu). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Flannery.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_FLANNERY`, campeã de Heatran e Chi-Yu. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -147,6 +149,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Heatran
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Heatran_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Heatran**. Flannery é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Flannery, a Líder nova de Lavaridge, que herdou o ginásio do avô e passa o tempo tentando parecer mais experiente do que é.
@@ -209,6 +213,8 @@ Nexus_Text_Heatran_LookerFile:
 </details>
 
 #### Chi-Yu
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_ChiYu_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Chi-Yu**. Flannery é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -274,6 +280,8 @@ Nexus_Text_ChiYu_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Flannery_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Flannery cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dela mesma, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -312,6 +320,8 @@ Nexus_Text_Flannery_Defeat:
 ### Diálogo associado ao lendário
 
 #### Heatran
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Flannery_Heatran_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Flannery é a **campeã**, a luta logo antes do Heatran. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -374,6 +384,8 @@ Nexus_Text_Flannery_Heatran_ChampionAfter:
 </details>
 
 #### Chi-Yu
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Flannery_ChiYu_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Flannery é a **campeã**, a luta logo antes do Chi-Yu. A fala é sobre a criatura, sem dizer o nome dela.
 

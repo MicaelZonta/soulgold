@@ -361,11 +361,23 @@
 #define OBJ_EVENT_GFX_SOLIERA                     343
 #define OBJ_EVENT_GFX_BYRON                       344
 #define OBJ_EVENT_GFX_FANTINA                     345
+// Cynthia: 32x32, nine frames (the source sheet has no east row).
+#define OBJ_EVENT_GFX_CYNTHIA                     346
+// Hoenn's Brendan (hyo-oppa art). OBJ_EVENT_GFX_BRENDAN_* is the player (Gold).
+#define OBJ_EVENT_GFX_BRENDAN_HOENN               347
+// O portal do Nexus: 32x32, quatro quadros em loop (vortice violeta com aro
+// dourado, feito para o lugar). NAO e o OBJ_EVENT_GFX_PORTAL (anel branco
+// 16x16 do SpearPillarTop) nem a fenda do Altar - o autor pediu um portal
+// proprio e epico para o Nexus (27/09/2026).
+#define OBJ_EVENT_GFX_NEXUS_PORTAL                348
+// O Looker File do Nexus (NEXUS_REGRAS R18): caderno aberto no chao, 16x16,
+// um quadro. So aparece na sala do campeao, no dia do lendario dele.
+#define OBJ_EVENT_GFX_NEXUS_LOOKER_FILE           349
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        346
+#define NUM_OBJ_EVENT_GFX                        350
 
 
 // These are dynamic object gfx ids.
@@ -587,6 +599,12 @@
 #define OBJ_EVENT_PAL_TAG_FANTINA                 0x1175
 #define OBJ_EVENT_PAL_TAG_BRUNO                   0x1176
 #define OBJ_EVENT_PAL_TAG_STEVEN                  0x1177
+#define OBJ_EVENT_PAL_TAG_ANABEL                  0x1178
+#define OBJ_EVENT_PAL_TAG_BLUE                    0x1179
+#define OBJ_EVENT_PAL_TAG_CYNTHIA                 0x117A
+#define OBJ_EVENT_PAL_TAG_BRENDAN_HOENN           0x117B
+#define OBJ_EVENT_PAL_TAG_NEXUS_PORTAL            0x117C
+#define OBJ_EVENT_PAL_TAG_NEXUS_LOOKER_FILE       0x117D
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

@@ -351,8 +351,8 @@
 //   in SunMoonAltar_OnTransition and NEVER persisted.
 // Invariant: at (14,10), this == 14 shows the dormant MARK (the active rift only
 //   during the altar reception cut, VAR_RIFT_ALTAR_STEP == ALTAR_STEP_RESCUE);
-//   this == 15 shows the rift; this >= 16 shows it if and only if
-//   FLAG_DAILY_ALTAR_RIFT is clear; this <= 13 shows neither.
+//   this == 15 shows the rift; this >= 16 always shows it (the way into the
+//   Nexus, NEXUS_REGRAS R3); this <= 13 shows neither.
 // Sub-steps of 13..15 live in VAR_RIFT_ALTAR_STEP (below), never in this var.
 // Invariant: this >= 16 if and only if Looker and Anabel are NOT in
 //   OlivineCity_House1 and ARE at MAP_SUN_MOON_ALTAR. The two halves are
@@ -378,6 +378,11 @@
 // crossing; read by the arena and by Act V so the same Pokemon is shown on
 // both sides of a warp.
 #define VAR_RIFT_ALTAR_PARTNER                          0x4123
+// Nexus Daily (.claude/rift_missions/nexus/NEXUS_REGRAS.md R15): what the
+// player did today in the Nexus - door chosen per room, fights won, prize and
+// gift taken, room standing in. Bit layout and every writer in src/nexus.c.
+// Reset to its fresh value when FLAG_DAILY_NEXUS_NEW_DAY is found clear.
+#define VAR_NEXUS_DAILY                                 0x4124
 
 #define ALTAR_STEP_NONE           0  // nothing pending inside the current state
 #define ALTAR_STEP_DUEL_DONE      1  // (13) duel resolved; agreement + test pending (never re-fight)

@@ -50,9 +50,9 @@ na ficha da [Soliera](alola/soliera.md).
 
 | Lendário | Categoria | Campeão | Situação |
 |---|---|---|---|
-| Kyogre | Lendário restrito | [Misty](kanto/misty.md), [Archie](hoenn/archie.md) | aprovado (design §10) · time e falas 📝 proposta, 27/09 |
-| Mewtwo | Lendário restrito | [Giovanni](kanto/giovanni.md) | aprovado (design §10) · time e falas 📝 proposta, 27/09 |
-| Genesect | Mítico | [Giovanni](kanto/giovanni.md) | aprovado (design §10) · time e falas 📝 proposta, 27/09 |
+| Kyogre | Lendário restrito | [Misty](kanto/misty.md), [Archie](hoenn/archie.md) | aprovado (design §10) · campeão no código (fala em `nexus.inc`), 27/09 |
+| Mewtwo | Lendário restrito | [Giovanni](kanto/giovanni.md) | aprovado (design §10) · campeão no código (fala em `nexus.inc`), 27/09 |
+| Genesect | Mítico | [Giovanni](kanto/giovanni.md) | aprovado (design §10) · campeão no código (fala em `nexus.inc`), 27/09 |
 | Nihilego | Ultra Beast | [Colress](unova/colress.md) | campeão no código (fala em `nexus.inc`), 26/09 |
 | Buzzwole | Ultra Beast | [Bruno](kanto/bruno.md) | campeão no código (fala em `nexus.inc`), 26/09 |
 | Pheromosa | Ultra Beast | [Elesa](unova/elesa.md) | campeão no código (fala em `nexus.inc`), 26/09 |
@@ -63,114 +63,114 @@ na ficha da [Soliera](alola/soliera.md).
 | Naganadel | Ultra Beast | [Soliera](alola/soliera.md) | campeão no código (fala em `nexus.inc`), 26/09 · só depois de capturado (R1) · a luta dá um **Poipole** |
 | Stakataka | Ultra Beast | [Byron](sinnoh/byron.md) | campeão no código (fala em `nexus.inc`), 26/09 |
 | Blacephalon | Ultra Beast | [Fantina](sinnoh/fantina.md) | campeão no código (fala em `nexus.inc`), 26/09 |
-| Lugia | Lendário restrito | [Jasmine](johto/jasmine.md) | 📝 proposta, 27/09 |
-| Ho-Oh | Lendário restrito | [Morty](johto/morty.md) | 📝 proposta, 27/09 |
-| Groudon | Lendário restrito | [Maxie](hoenn/maxie.md) | 📝 proposta, 27/09 |
-| Rayquaza | Lendário restrito | [Lance](kanto/lance.md) | 📝 proposta, 27/09 |
-| Dialga | Lendário restrito | [Spenser](hoenn/spenser.md) | 📝 proposta, 27/09 |
-| Palkia | Lendário restrito | [Sabrina](kanto/sabrina.md) | 📝 proposta, 27/09 |
-| Giratina | Lendário restrito | [Silver](johto/silver.md) | 📝 proposta, 27/09 |
-| Solgaleo | Lendário restrito | [Professor Kukui](alola/kukui.md) | 📝 proposta, 27/09 |
-| Lunala | Lendário restrito | [Lillie](alola/lillie.md) | 📝 proposta, 27/09 |
-| Necrozma | Lendário restrito | [Anabel](hoenn/anabel.md) | 📝 proposta, 27/09 |
-| Koraidon | Lendário restrito | [Greta](hoenn/greta.md) | 📝 proposta, 27/09 |
-| Miraidon | Lendário restrito | [Noland](hoenn/noland.md) | 📝 proposta, 27/09 |
-| Silvally | Sub-lendário | [Gladion](alola/gladion.md) | 📝 proposta, 27/09 |
-| Ogerpon | Sub-lendário | [Petrel](kanto/petrel.md) | 📝 proposta, 27/09 |
-| Articuno | Sub-lendário | [Pryce](johto/pryce.md) | 📝 proposta, 27/09 |
-| Galarian Articuno | Sub-lendário | [Sabrina](kanto/sabrina.md) | 📝 proposta, 27/09 |
-| Zapdos | Sub-lendário | [Lt. Surge](kanto/lt_surge.md) | 📝 proposta, 27/09 |
-| Galarian Zapdos | Sub-lendário | [Winona](hoenn/winona.md) | 📝 proposta, 27/09 |
-| Moltres | Sub-lendário | [Blaine](kanto/blaine.md) | 📝 proposta, 27/09 |
-| Galarian Moltres | Sub-lendário | [Karen](johto/karen.md) | 📝 proposta, 27/09 |
-| Raikou | Sub-lendário | [Eusine](johto/eusine.md) | 📝 proposta, 27/09 |
-| Entei | Sub-lendário | [Eusine](johto/eusine.md) | 📝 proposta, 27/09 |
-| Suicune | Sub-lendário | [Eusine](johto/eusine.md) | 📝 proposta, 27/09 |
-| Regirock | Sub-lendário | [Brandon](hoenn/brandon.md) | 📝 proposta, 27/09 |
-| Regice | Sub-lendário | [Brandon](hoenn/brandon.md) | 📝 proposta, 27/09 |
-| Registeel | Sub-lendário | [Brandon](hoenn/brandon.md) | 📝 proposta, 27/09 |
-| Latias | Sub-lendário | [Tate e Liza](hoenn/tate_e_liza.md) | 📝 proposta, 27/09 |
-| Latios | Sub-lendário | [Tate e Liza](hoenn/tate_e_liza.md) | 📝 proposta, 27/09 |
-| Uxie | Sub-lendário | [Roxanne](hoenn/roxanne.md) | 📝 proposta, 27/09 |
-| Mesprit | Sub-lendário | [May](hoenn/may.md) | 📝 proposta, 27/09 |
-| Azelf | Sub-lendário | [Wally](hoenn/wally.md) | 📝 proposta, 27/09 |
-| Heatran | Sub-lendário | [Flannery](hoenn/flannery.md) | 📝 proposta, 27/09 |
-| Regigigas | Sub-lendário | [Whitney](johto/whitney.md) | 📝 proposta, 27/09 |
-| Cresselia | Sub-lendário | [Ariana](kanto/ariana.md) | 📝 proposta, 27/09 |
-| Cobalion | Sub-lendário | [Chuck](johto/chuck.md) | 📝 proposta, 27/09 |
-| Terrakion | Sub-lendário | [Brock](kanto/brock.md) | 📝 proposta, 27/09 |
-| Virizion | Sub-lendário | [Erika](kanto/erika.md) | 📝 proposta, 27/09 |
-| Tornadus | Sub-lendário | [Falkner](johto/falkner.md) | 📝 proposta, 27/09 |
-| Thundurus | Sub-lendário | [Winona](hoenn/winona.md) | 📝 proposta, 27/09 |
-| Landorus | Sub-lendário | [Maxie](hoenn/maxie.md) | 📝 proposta, 27/09 |
-| Tapu Koko | Sub-lendário | [Professor Kukui](alola/kukui.md) | 📝 proposta, 27/09 |
-| Tapu Lele | Sub-lendário | [Lillie](alola/lillie.md) | 📝 proposta, 27/09 |
-| Tapu Bulu | Sub-lendário | [Gladion](alola/gladion.md) | 📝 proposta, 27/09 |
-| Tapu Fini | Sub-lendário | [Juan](hoenn/juan.md) | 📝 proposta, 27/09 |
-| Urshifu | Sub-lendário | [Chuck](johto/chuck.md) | 📝 proposta, 27/09 |
-| Enamorus | Sub-lendário | [Lusamine](alola/lusamine.md) | 📝 proposta, 27/09 |
-| Chien-Pao | Sub-lendário | [Glacia](hoenn/glacia.md) | 📝 proposta, 27/09 |
-| Chi-Yu | Sub-lendário | [Flannery](hoenn/flannery.md) | 📝 proposta, 27/09 |
-| Fezandipiti | Sub-lendário | [Lusamine](alola/lusamine.md) | 📝 proposta, 27/09 |
-| Arceus | Mítico | [Red](kanto/red.md) | 📝 proposta, 27/09 |
-| Mew | Mítico | [Leaf](kanto/leaf.md) | 📝 proposta, 27/09 |
-| Celebi | Mítico | [Spenser](hoenn/spenser.md) | 📝 proposta, 27/09 |
-| Jirachi | Mítico | [Brendan](hoenn/brendan.md) | 📝 proposta, 27/09 |
-| Manaphy | Mítico | [Misty](kanto/misty.md) | 📝 proposta, 27/09 |
-| Darkrai | Mítico | [Karen](johto/karen.md) | 📝 proposta, 27/09 |
-| Shaymin | Mítico | [Erika](kanto/erika.md) | 📝 proposta, 27/09 |
-| Victini | Mítico | [Blue/Green](kanto/blue.md) | 📝 proposta, 27/09 |
-| Meloetta | Mítico | [Petrel](kanto/petrel.md) | 📝 proposta, 27/09 |
-| Diancie | Mítico | [Wallace](hoenn/wallace.md) | 📝 proposta, 27/09 |
-| Hoopa | Mítico | [Tucker](hoenn/tucker.md) | 📝 proposta, 27/09 |
-| Magearna | Mítico | [Wattson](hoenn/wattson.md) | 📝 proposta, 27/09 |
-| Marshadow | Mítico | [Archer](kanto/archer.md) | 📝 proposta, 27/09 |
-| Zeraora | Mítico | [Wattson](hoenn/wattson.md) | 📝 proposta, 27/09 |
-| Melmetal | Mítico | [Jasmine](johto/jasmine.md) | 📝 proposta, 27/09 |
-| Zarude | Mítico | [Norman](hoenn/norman.md) | 📝 proposta, 27/09 |
-| Great Tusk | Paradoxo | [Greta](hoenn/greta.md) | 📝 proposta, 27/09 |
-| Scream Tail | Paradoxo | [Whitney](johto/whitney.md) | 📝 proposta, 27/09 |
-| Brute Bonnet | Paradoxo | [Sidney](hoenn/sidney.md) | 📝 proposta, 27/09 |
-| Flutter Mane | Paradoxo | [Phoebe](hoenn/phoebe.md) | 📝 proposta, 27/09 |
-| Slither Wing | Paradoxo | [Bugsy](johto/bugsy.md) | 📝 proposta, 27/09 |
-| Sandy Shocks | Paradoxo | [Lt. Surge](kanto/lt_surge.md) | 📝 proposta, 27/09 |
-| Iron Treads | Paradoxo | [Noland](hoenn/noland.md) | 📝 proposta, 27/09 |
-| Iron Bundle | Paradoxo | [Glacia](hoenn/glacia.md) | 📝 proposta, 27/09 |
-| Iron Hands | Paradoxo | [Brawly](hoenn/brawly.md) | 📝 proposta, 27/09 |
-| Iron Jugulis | Paradoxo | [Lucy](hoenn/lucy.md) | 📝 proposta, 27/09 |
-| Iron Moth | Paradoxo | [Bugsy](johto/bugsy.md) | 📝 proposta, 27/09 |
-| Iron Thorns | Paradoxo | [Brock](kanto/brock.md) | 📝 proposta, 27/09 |
-| Roaring Moon | Paradoxo | [Proton](kanto/proton.md) | 📝 proposta, 27/09 |
-| Iron Valiant | Paradoxo | [Wally](hoenn/wally.md) | 📝 proposta, 27/09 |
-| Walking Wake | Paradoxo | [Juan](hoenn/juan.md) | 📝 proposta, 27/09 |
-| Iron Leaves | Paradoxo | [Leaf](kanto/leaf.md) | 📝 proposta, 27/09 |
-| Gouging Fire | Paradoxo | [Lance](kanto/lance.md) | 📝 proposta, 27/09 |
-| Raging Bolt | Paradoxo | [Drake](hoenn/drake.md) | 📝 proposta, 27/09 |
-| Iron Boulder | Paradoxo | [Tate e Liza](hoenn/tate_e_liza.md) | 📝 proposta, 27/09 |
-| Iron Crown | Paradoxo | [Will](johto/will.md) | 📝 proposta, 27/09 |
-| Deoxys | Mítico | [Anabel](hoenn/anabel.md) | 📝 proposta, 27/09 |
-| Reshiram | Lendário restrito | [Brendan](hoenn/brendan.md) | 📝 proposta, 27/09 |
-| Zekrom | Lendário restrito | [May](hoenn/may.md) | 📝 proposta, 27/09 |
-| Kyurem | Lendário restrito | [Clair](johto/clair.md) | 📝 proposta, 27/09 |
-| Keldeo | Mítico | [Brawly](hoenn/brawly.md) | 📝 proposta, 27/09 |
-| Xerneas | Lendário restrito | [Wallace](hoenn/wallace.md) | 📝 proposta, 27/09 |
-| Yveltal | Lendário restrito | [Sidney](hoenn/sidney.md) | 📝 proposta, 27/09 |
-| Zygarde | Lendário restrito | [Lucy](hoenn/lucy.md) | 📝 proposta, 27/09 |
-| Volcanion | Mítico | [Blaine](kanto/blaine.md) | 📝 proposta, 27/09 |
-| Zacian | Lendário restrito | [Blue/Green](kanto/blue.md) | 📝 proposta, 27/09 |
-| Zamazenta | Lendário restrito | [Norman](hoenn/norman.md) | 📝 proposta, 27/09 |
-| Eternatus | Lendário restrito | [Tucker](hoenn/tucker.md) | 📝 proposta, 27/09 |
-| Regieleki | Sub-lendário | [Lt. Surge](kanto/lt_surge.md) | 📝 proposta, 27/09 |
-| Regidrago | Sub-lendário | [Drake](hoenn/drake.md) | 📝 proposta, 27/09 |
-| Glastrier | Sub-lendário | [Pryce](johto/pryce.md) | 📝 proposta, 27/09 |
-| Spectrier | Sub-lendário | [Morty](johto/morty.md) | 📝 proposta, 27/09 |
-| Calyrex | Lendário restrito | [Will](johto/will.md) | 📝 proposta, 27/09 |
-| Wo-Chien | Sub-lendário | [Archer](kanto/archer.md) | 📝 proposta, 27/09 |
-| Ting-Lu | Sub-lendário | [Proton](kanto/proton.md) | 📝 proposta, 27/09 |
-| Okidogi | Sub-lendário | [Janine](kanto/janine.md) | 📝 proposta, 27/09 |
-| Munkidori | Sub-lendário | [Janine](kanto/janine.md) | 📝 proposta, 27/09 |
-| Terapagos | Lendário restrito | [Roxanne](hoenn/roxanne.md) | 📝 proposta, 27/09 |
-| Pecharunt | Mítico | [Koga](kanto/koga.md) | 📝 proposta, 27/09 |
+| Lugia | Lendário restrito | [Jasmine](johto/jasmine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Ho-Oh | Lendário restrito | [Morty](johto/morty.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Groudon | Lendário restrito | [Maxie](hoenn/maxie.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Rayquaza | Lendário restrito | [Lance](kanto/lance.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Dialga | Lendário restrito | [Spenser](hoenn/spenser.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Palkia | Lendário restrito | [Sabrina](kanto/sabrina.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Giratina | Lendário restrito | [Silver](johto/silver.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Solgaleo | Lendário restrito | [Professor Kukui](alola/kukui.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Lunala | Lendário restrito | [Lillie](alola/lillie.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Necrozma | Lendário restrito | [Anabel](hoenn/anabel.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Koraidon | Lendário restrito | [Greta](hoenn/greta.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Miraidon | Lendário restrito | [Noland](hoenn/noland.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Silvally | Sub-lendário | [Gladion](alola/gladion.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Ogerpon | Sub-lendário | [Petrel](kanto/petrel.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Articuno | Sub-lendário | [Pryce](johto/pryce.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Galarian Articuno | Sub-lendário | [Sabrina](kanto/sabrina.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Zapdos | Sub-lendário | [Lt. Surge](kanto/lt_surge.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Galarian Zapdos | Sub-lendário | [Winona](hoenn/winona.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Moltres | Sub-lendário | [Blaine](kanto/blaine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Galarian Moltres | Sub-lendário | [Karen](johto/karen.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Raikou | Sub-lendário | [Eusine](johto/eusine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Entei | Sub-lendário | [Eusine](johto/eusine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Suicune | Sub-lendário | [Eusine](johto/eusine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Regirock | Sub-lendário | [Brandon](hoenn/brandon.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Regice | Sub-lendário | [Brandon](hoenn/brandon.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Registeel | Sub-lendário | [Brandon](hoenn/brandon.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Latias | Sub-lendário | [Tate e Liza](hoenn/tate_e_liza.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Latios | Sub-lendário | [Tate e Liza](hoenn/tate_e_liza.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Uxie | Sub-lendário | [Roxanne](hoenn/roxanne.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Mesprit | Sub-lendário | [May](hoenn/may.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Azelf | Sub-lendário | [Wally](hoenn/wally.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Heatran | Sub-lendário | [Flannery](hoenn/flannery.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Regigigas | Sub-lendário | [Whitney](johto/whitney.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Cresselia | Sub-lendário | [Ariana](kanto/ariana.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Cobalion | Sub-lendário | [Chuck](johto/chuck.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Terrakion | Sub-lendário | [Brock](kanto/brock.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Virizion | Sub-lendário | [Erika](kanto/erika.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Tornadus | Sub-lendário | [Falkner](johto/falkner.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Thundurus | Sub-lendário | [Winona](hoenn/winona.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Landorus | Sub-lendário | [Maxie](hoenn/maxie.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Tapu Koko | Sub-lendário | [Professor Kukui](alola/kukui.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Tapu Lele | Sub-lendário | [Lillie](alola/lillie.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Tapu Bulu | Sub-lendário | [Gladion](alola/gladion.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Tapu Fini | Sub-lendário | [Juan](hoenn/juan.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Urshifu | Sub-lendário | [Chuck](johto/chuck.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Enamorus | Sub-lendário | [Lusamine](alola/lusamine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Chien-Pao | Sub-lendário | [Glacia](hoenn/glacia.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Chi-Yu | Sub-lendário | [Flannery](hoenn/flannery.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Fezandipiti | Sub-lendário | [Lusamine](alola/lusamine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Arceus | Mítico | [Red](kanto/red.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Mew | Mítico | [Leaf](kanto/leaf.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Celebi | Mítico | [Spenser](hoenn/spenser.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Jirachi | Mítico | [Brendan](hoenn/brendan.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Manaphy | Mítico | [Misty](kanto/misty.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Darkrai | Mítico | [Karen](johto/karen.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Shaymin | Mítico | [Erika](kanto/erika.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Victini | Mítico | [Blue/Green](kanto/blue.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Meloetta | Mítico | [Petrel](kanto/petrel.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Diancie | Mítico | [Wallace](hoenn/wallace.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Hoopa | Mítico | [Tucker](hoenn/tucker.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Magearna | Mítico | [Wattson](hoenn/wattson.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Marshadow | Mítico | [Archer](kanto/archer.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Zeraora | Mítico | [Wattson](hoenn/wattson.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Melmetal | Mítico | [Jasmine](johto/jasmine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Zarude | Mítico | [Norman](hoenn/norman.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Great Tusk | Paradoxo | [Greta](hoenn/greta.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Scream Tail | Paradoxo | [Whitney](johto/whitney.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Brute Bonnet | Paradoxo | [Sidney](hoenn/sidney.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Flutter Mane | Paradoxo | [Phoebe](hoenn/phoebe.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Slither Wing | Paradoxo | [Bugsy](johto/bugsy.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Sandy Shocks | Paradoxo | [Lt. Surge](kanto/lt_surge.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Iron Treads | Paradoxo | [Noland](hoenn/noland.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Iron Bundle | Paradoxo | [Glacia](hoenn/glacia.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Iron Hands | Paradoxo | [Brawly](hoenn/brawly.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Iron Jugulis | Paradoxo | [Lucy](hoenn/lucy.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Iron Moth | Paradoxo | [Bugsy](johto/bugsy.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Iron Thorns | Paradoxo | [Brock](kanto/brock.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Roaring Moon | Paradoxo | [Proton](kanto/proton.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Iron Valiant | Paradoxo | [Wally](hoenn/wally.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Walking Wake | Paradoxo | [Juan](hoenn/juan.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Iron Leaves | Paradoxo | [Leaf](kanto/leaf.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Gouging Fire | Paradoxo | [Lance](kanto/lance.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Raging Bolt | Paradoxo | [Drake](hoenn/drake.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Iron Boulder | Paradoxo | [Tate e Liza](hoenn/tate_e_liza.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Iron Crown | Paradoxo | [Will](johto/will.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Deoxys | Mítico | [Anabel](hoenn/anabel.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Reshiram | Lendário restrito | [Brendan](hoenn/brendan.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Zekrom | Lendário restrito | [May](hoenn/may.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Kyurem | Lendário restrito | [Clair](johto/clair.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Keldeo | Mítico | [Brawly](hoenn/brawly.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Xerneas | Lendário restrito | [Wallace](hoenn/wallace.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Yveltal | Lendário restrito | [Sidney](hoenn/sidney.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Zygarde | Lendário restrito | [Lucy](hoenn/lucy.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Volcanion | Mítico | [Blaine](kanto/blaine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Zacian | Lendário restrito | [Blue/Green](kanto/blue.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Zamazenta | Lendário restrito | [Norman](hoenn/norman.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Eternatus | Lendário restrito | [Tucker](hoenn/tucker.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Regieleki | Sub-lendário | [Lt. Surge](kanto/lt_surge.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Regidrago | Sub-lendário | [Drake](hoenn/drake.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Glastrier | Sub-lendário | [Pryce](johto/pryce.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Spectrier | Sub-lendário | [Morty](johto/morty.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Calyrex | Lendário restrito | [Will](johto/will.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Wo-Chien | Sub-lendário | [Archer](kanto/archer.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Ting-Lu | Sub-lendário | [Proton](kanto/proton.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Okidogi | Sub-lendário | [Janine](kanto/janine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Munkidori | Sub-lendário | [Janine](kanto/janine.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Terapagos | Lendário restrito | [Roxanne](hoenn/roxanne.md) | campeão no código (fala em `nexus.inc`), 27/09 |
+| Pecharunt | Mítico | [Koga](kanto/koga.md) | campeão no código (fala em `nexus.inc`), 27/09 |
 
 ## Sem método de obtenção
 

@@ -364,7 +364,7 @@ BlackthornCity_Text_DragonDenSign:
 @ Necrozma out loud - what he cannot explain is what it does next. After the
 @ battle Anabel's containment Ball is thrown back by the rift, and Necrozma
 @ takes BOTH beasts into itself and leaves. Gladion then gives the player a
-@ second Type: Null, one he found alone past Route 45.
+@ second Type: Null - one that came with him from Alola (script V3).
 @
 @ Scene floor plan (raw collision, bit 11; '#' = blocked; y grows DOWNWARD):
 @
@@ -801,12 +801,29 @@ BlackthornCity_EventScript_UBUnresolved::
 @ Positions at this point (a battle does not reload the map): Buzzwole
 @ (17,50), Pheromosa (17,51), Necrozma (14,50), the rift (14,51).
 @ ---------------------------------------------------------------------------
+@ V2 Act VI beat 1: one short strike of Silvally ends Gladion's front BEFORE
+@ his line. The beast stays on its tile (no fallen pose exists): it recoils in
+@ place and goes still. Same strikes as the rescue - west at Buzzwole (17,50),
+@ down-and-in at Pheromosa (17,51) - and Silvally ends facing west again.
 BlackthornCity_EventScript_UBResolved::
 	goto_if_eq VAR_TEMP_3, 1, BlackthornCity_EventScript_UBGladionFoughtBuzzwole
+	applymovement LOCALID_BLACKTHORN_UB_SILVALLY, BlackthornCity_Movement_SilvallyStrikeDown
+	playmoncry SPECIES_SILVALLY, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_BLACKTHORN_UB_SILVALLY
+	applymovement LOCALID_BLACKTHORN_UB_PHEROMOSA, BlackthornCity_Movement_UBRecoilsInPlace
+	waitmovement LOCALID_BLACKTHORN_UB_PHEROMOSA
+	waitmoncry
+	turnobject LOCALID_BLACKTHORN_UB_SILVALLY, DIR_WEST
 	msgbox BlackthornCity_Text_UBGladionFoughtPheromosa, MSGBOX_DEFAULT
 	goto BlackthornCity_EventScript_UBContain
 
 BlackthornCity_EventScript_UBGladionFoughtBuzzwole::
+	applymovement LOCALID_BLACKTHORN_UB_SILVALLY, BlackthornCity_Movement_SilvallyStrikeLeft
+	playmoncry SPECIES_SILVALLY, CRY_MODE_ENCOUNTER
+	waitmovement LOCALID_BLACKTHORN_UB_SILVALLY
+	applymovement LOCALID_BLACKTHORN_UB_BUZZWOLE, BlackthornCity_Movement_UBRecoilsInPlace
+	waitmovement LOCALID_BLACKTHORN_UB_BUZZWOLE
+	waitmoncry
 	msgbox BlackthornCity_Text_UBGladionFoughtBuzzwole, MSGBOX_DEFAULT
 
 @ Anabel steps up to (26,51) and throws a containment Ball of her own at the
@@ -1089,7 +1106,10 @@ BlackthornCity_EventScript_UBAftermathLegend::
 @ beasts were taken.
 @ ---------------------------------------------------------------------------
 BlackthornCity_EventScript_UBGift::
+	@ V2 Act VIII beat 1: the player looks north at Gladion (20,49), and he
+	@ looks south at the player (20,50) - he was facing east for Anabel.
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject LOCALID_BLACKTHORN_UB_GLADION, DIR_SOUTH
 	msgbox BlackthornCity_Text_UBGladionGiftIntro, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_BLACKTHORN_UB_SILVALLY, BlackthornCity_Movement_SilvallyStepsAside
@@ -1189,16 +1209,21 @@ BlackthornCity_EventScript_UBHook::
 @ FLAG_BLACKTHORN_TYPE_NULL_PENDING is set. It finishes the delivery and
 @ nothing else: no rift, no battle, no report.
 @ ---------------------------------------------------------------------------
+@ V2 section 11: the question only appears with the space ALREADY verified
+@ (skill entregar-pokemon-ou-ovo: check before any offer). Still no room ->
+@ only the no-room line, and the gift stays pending.
 BlackthornCity_EventScript_UBGiftRetry::
 	faceplayer
-	msgbox BlackthornCity_Text_UBGiftRetry, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, BlackthornCity_EventScript_UBReleaseEnd
 	getpartysize
-	goto_if_ne VAR_RESULT, PARTY_SIZE, BlackthornCity_EventScript_UBGiftRetryGive
+	goto_if_ne VAR_RESULT, PARTY_SIZE, BlackthornCity_EventScript_UBGiftRetryAsk
 	specialvar VAR_RESULT, ScriptCheckFreePokemonStorageSpace
-	goto_if_eq VAR_RESULT, TRUE, BlackthornCity_EventScript_UBGiftRetryGive
+	goto_if_eq VAR_RESULT, TRUE, BlackthornCity_EventScript_UBGiftRetryAsk
 	msgbox BlackthornCity_Text_UBGiftNoRoom, MSGBOX_DEFAULT
 	goto BlackthornCity_EventScript_UBReleaseEnd
+
+BlackthornCity_EventScript_UBGiftRetryAsk::
+	msgbox BlackthornCity_Text_UBGiftRetry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BlackthornCity_EventScript_UBReleaseEnd
 
 BlackthornCity_EventScript_UBGiftRetryGive::
 	bufferspeciesname STR_VAR_1, SPECIES_TYPE_NULL
@@ -1315,6 +1340,13 @@ BlackthornCity_Movement_SilvallyStrikeDown:
 	face_down
 	walk_in_place_fast_down
 	walk_in_place_fast_down
+	step_end
+
+@ Stopped, not thrown: a flinch that never leaves the tile, eyes kept east.
+BlackthornCity_Movement_UBRecoilsInPlace:
+	lock_facing_direction
+	walk_in_place_slow_left
+	unlock_facing_direction
 	step_end
 
 BlackthornCity_Movement_UBKnockedBack:

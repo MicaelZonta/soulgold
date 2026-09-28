@@ -476,7 +476,7 @@ ReceptionGate_Text_GladionReady:
 	.string "{SPEAKER NAME_GLADION}Ready?$"
 
 ReceptionGate_Text_GladionTakeFirstStep:
-	.string "Then take the first step.$"
+	.string "{SPEAKER NAME_GLADION}Then take the first step.$"
 
 ReceptionGate_Text_GladionDefeated:
 	.string "…You got us.\n"
@@ -487,21 +487,21 @@ ReceptionGate_Text_GladionYouGaveUsAnAnswer:
 	.string "we'd come. You gave us an answer.$"
 
 ReceptionGate_Text_GladionStillWorkToDo:
-	.string "We still have work to do.$"
+	.string "{SPEAKER NAME_GLADION}We still have work to do.$"
 
 ReceptionGate_Text_GladionNotTheSameBattle:
-	.string "Next time, don't expect\n"
+	.string "{SPEAKER NAME_GLADION}Next time, don't expect\n"
 	.string "the same battle.$"
 
 ReceptionGate_Text_GladionReadyThisTime:
 	.string "{SPEAKER NAME_GLADION}We were ready this time.$"
 
 ReceptionGate_Text_GladionYouTrustedMe:
-	.string "You trusted me out there.\n"
+	.string "{SPEAKER NAME_GLADION}You trusted me out there.\n"
 	.string "I felt it.$"
 
 ReceptionGate_Text_GladionMakeUsPay:
-	.string "You know our team better now.\n"
+	.string "{SPEAKER NAME_GLADION}You know our team better now.\n"
 	.string "Next time, make us pay for it.$"
 
 ReceptionGate_Text_GladionDraw:

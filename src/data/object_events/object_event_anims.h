@@ -1416,6 +1416,38 @@ static const union AnimCmd *const sAnimTable_AltarRift[] = {
     [ANIM_STD_GO_FASTEST_EAST] = sAnim_AltarRiftLoop,
 };
 
+// O portal do Nexus gira no mesmo ritmo da fenda do Altar.
+static const union AnimCmd sAnim_NexusPortalLoop[] = {
+    ANIMCMD_FRAME(0, 6),
+    ANIMCMD_FRAME(1, 6),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_NexusPortal[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_FACE_NORTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_FACE_WEST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_FACE_EAST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_SOUTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_NORTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_WEST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_EAST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_NexusPortalLoop,
+};
+
 // Emissor da Aether: apagado -> aceso -> pico (faisca) -> aceso com a outra
 // luz do poste. Inanimate, sem direcao: todas as entradas no mesmo loop.
 static const union AnimCmd sAnim_AetherEmitterLoop[] = {
@@ -1679,6 +1711,13 @@ static const struct StepAnimTable sStepAnimTables[] = {
     },
     {
         .anims = sAnimTable_Following,
+        .animPos = {1, 3, 0, 2},
+    },
+    // Without an entry here SetStepAnim never seeks the new anim, so
+    // faceplayer and MOVEMENT_TYPE_FACE_* leave the sprite on its old frame
+    // (only turnobject, which calls StartSpriteAnim, would turn it).
+    {
+        .anims = sAnimTable_StandardAsym,
         .animPos = {1, 3, 0, 2},
     },
     {

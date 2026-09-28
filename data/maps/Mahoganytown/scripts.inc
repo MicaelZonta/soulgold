@@ -107,7 +107,7 @@ Mahoganytown_OnLoad::
 MahoganyTown_EventScript_FixTree::
 	setmetatile 18, 8, 0x4F8, FALSE
 	setmetatile 19, 8, 0x4F9, FALSE
-	end
+	return
 
 @ (14,22) (15,22) (16,22): straight across the flow that runs down column 15
 @ between Xurkitree (15,20) and Celesteela (15,24). Impassable, and drawn on
@@ -116,7 +116,7 @@ MahoganyTown_EventScript_PaintIceWall::
 	setmetatile 14, 22, METATILE_MahoganyTown_IceWall_Left, TRUE
 	setmetatile 15, 22, METATILE_MahoganyTown_IceWall_Middle, TRUE
 	setmetatile 16, 22, METATILE_MahoganyTown_IceWall_Right, TRUE
-	end
+	return
 
 Mahoganytown_OnFrame::
 	map_script_2 VAR_MAHOGANY_TOWN_STATE, 15, Mahoganytown_EventScript_RocketTrigger
@@ -822,7 +822,8 @@ Mahoganytown_EventScript_UBFormation::
 	closemessage
 	msgbox Mahoganytown_Text_UBSynergyRead, MSGBOX_DEFAULT
 	closemessage
-	@ Beat 4. Celesteela comes up the south corridor at the player's line.
+	@ Beat 4. Celesteela leaves the south corridor and comes along the
+	@ player's row (y=22) straight at him.
 	@ Lillie gives the order BEFORE the move lands.
 	applymovement LOCALID_MAHOGANY_UB_CELESTEELA, Mahoganytown_Movement_CelesteelaAdvance
 	waitmovement LOCALID_MAHOGANY_UB_CELESTEELA
@@ -830,8 +831,8 @@ Mahoganytown_EventScript_UBFormation::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox Mahoganytown_Text_UBSavedOrder, MSGBOX_DEFAULT
 	closemessage
-	@ Ninetales (19,23)->(19,24)->(18,24): onto Celesteela's row, between it
-	@ and the player, then the hit.
+	@ Ninetales (19,23)->(18,23)->(17,23)->(17,22): onto the player's row,
+	@ between Celesteela (16,22) and him (18,22), then the hit.
 	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_NinetalesCutsIn
 	waitmovement LOCALID_MAHOGANY_UB_NINETALES
 	applymovement LOCALID_MAHOGANY_UB_NINETALES, Mahoganytown_Movement_AttackInPlaceLeft
@@ -1380,6 +1381,19 @@ Mahoganytown_EventScript_UBNecrozmaLeaves::
 	delay 30
 	turnobject LOCALID_MAHOGANY_UB_NINETALES, DIR_NORTH
 	delay 20
+	@ The power comes back ON SCREEN before anyone says so (V2 section 14,
+	@ beat 2): first the Pokemon Center (21,19), the one building that kept
+	@ backup power, then the Gym (10,19) across the street. No new art - the
+	@ author's default - so it is the machine-on sound and a glint at each door.
+	playse SE_PC_ON
+	dofieldeffectsparkle 21, 19, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	waitse
+	delay 12
+	playse SE_PC_ON
+	dofieldeffectsparkle 10, 19, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	waitse
 	msgbox Mahoganytown_Text_UBPowerReturns, MSGBOX_DEFAULT
 	closemessage
 	@ Only now does the threat theme end and the town theme come back.
@@ -1562,6 +1576,13 @@ Mahoganytown_EventScript_UBSceneRetry::
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, Mahoganytown_Movement_CameraRetryToStreet
 	waitmovement OBJ_EVENT_ID_CAMERA
+	@ (18,22) -> (18,21): the tile the first attempt reaches the choice from
+	@ (after PlayerStepsBack). Every movement from UBChoose on is measured from
+	@ (18,21); from (18,22) the south front would walk the player into the rock
+	@ row at y=25 and the north front would stop one row short. The camera was
+	@ spawned and panned first, so it stays on (14,22).
+	applymovement OBJ_EVENT_ID_PLAYER, Mahoganytown_Movement_PlayerStepsBack
+	waitmovement OBJ_EVENT_ID_PLAYER
 	goto_if_unset FLAG_MAHOGANY_UB_SAW_RECHARGE, Mahoganytown_EventScript_UBChoose
 	goto Mahoganytown_EventScript_UBWallBreaks
 
@@ -1788,24 +1809,31 @@ Mahoganytown_Movement_PryceToCover:
 	face_left
 	step_end
 
-@ Celesteela (15,24)->(17,24), up the south corridor at the player's line.
+@ Celesteela (15,24)->(15,23)->(15,22)->(16,22): out of the south corridor and
+@ onto the player's own row, ending face to face with him at (18,22). It used
+@ to run east along y=24, two rows below him, and never looked his way.
 Mahoganytown_Movement_CelesteelaAdvance:
-	walk_fast_right
+	walk_fast_up
+	walk_fast_up
 	walk_fast_right
 	step_end
 
-@ Ninetales (19,23)->(19,24)->(18,24): onto its row, between it and the player.
+@ Ninetales (19,23)->(18,23)->(17,23)->(17,22): into the one tile between
+@ Celesteela (16,22) and the player (18,22), facing the beast.
 Mahoganytown_Movement_NinetalesCutsIn:
-	walk_down
 	walk_left
+	walk_left
+	walk_up
 	face_left
 	step_end
 
-@ (17,24)->(15,24), still facing the player.
+@ (16,22)->(15,22) without turning, then back down its corridor to (15,24):
+@ every movement from UBChoose on starts from (15,24).
 Mahoganytown_Movement_CelesteelaPushedBack:
 	lock_facing_direction
 	walk_fast_left
-	walk_fast_left
+	walk_fast_down
+	walk_fast_down
 	unlock_facing_direction
 	step_end
 
@@ -1816,10 +1844,12 @@ Mahoganytown_Movement_PlayerStepsBack:
 	unlock_facing_direction
 	step_end
 
-@ Ninetales (18,24)->(19,24)->(19,23), back beside Lillie, middle lane clear.
+@ Ninetales (17,22)->(17,23)->(18,23)->(19,23), back beside Lillie, middle
+@ lane clear. The player is already on (18,21), so (18,23) is free.
 Mahoganytown_Movement_NinetalesBackToLine:
+	walk_down
 	walk_right
-	walk_up
+	walk_right
 	face_left
 	step_end
 
@@ -2134,12 +2164,9 @@ Mahoganytown_Movement_PlayerRetryToLine:
 @ No em dash anywhere: U+2014 is not in charmap.txt and breaks the build.
 @ ---------------------------------------------------------------------------
 Mahoganytown_Text_DoorLocked:
-	.string "The door is locked tight.\p"
-	.string "A note is taped to it, stiff\n"
-	.string "with frost:\p"
-	.string "“Shelter is available at the\n"
-	.string "Gym. Stay off the street.\l"
-	.string "--Pryce”$"
+	.string "Shelter is available at the\n"
+	.string "Gym. Stay off the street.\p"
+	.string "--Pryce$"
 
 Mahoganytown_Text_UBAnabelIdle:
 	.string "{SPEAKER NAME_ANABEL}The Center has backup\n"

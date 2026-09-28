@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -47,6 +47,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_KUKUI` | 966 | 0x8C6 | Lycanroc Midday Lv78, Braviary Lv78, Ninetales Alola Lv79, Magnezone Lv79, Snorlax Lv79, Incineroar Lv80 | `CherrygroveCity` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_KUKUI` = **1038** (flag de batalha `0x90E`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Kukui_Fight`; campeão: `Nexus_EventScript_Kukui_Solgaleo_ChampionFight` (para Solgaleo), `Nexus_EventScript_Kukui_TapuKoko_ChampionFight` (para Tapu Koko). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Kukui.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_KUKUI`, campeão de Solgaleo e Tapu Koko. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -150,6 +152,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Solgaleo
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Solgaleo_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Solgaleo**. Kukui é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Professor Kukui, pesquisador de golpes, "cousin". Reportou os sinais de Cherrygrove na M3, soltou o Incineroar no banco de areia e pediu ao Elm as leituras que levaram a New Bark; no Altar se despediu querendo uma batalha numa praia "sem nada saindo dela".
@@ -209,6 +213,8 @@ Nexus_Text_Solgaleo_LookerFile:
 
 
 #### Tapu Koko
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_TapuKoko_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Tapu Koko**. Kukui é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -271,6 +277,8 @@ Nexus_Text_TapuKoko_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Kukui_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Kukui cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 O Kukui de Sun/Moon pesquisa golpes deixando que o Rockruff os use nele mesmo. A virada: "a melhor forma de estudar um golpe é levar um", e o Lycanroc de hoje já o acertou cem vezes.
@@ -310,6 +318,8 @@ Nexus_Text_Kukui_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Kukui é o **campeão**, a luta logo antes do lendário do dia. Uma fala por lendário; o nome da espécie não aparece ([R16](../NEXUS_REGRAS.md)). Rótulos com a espécie porque Kukui é campeão de dois.
 
 #### Solgaleo
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Kukui_Solgaleo_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Kukui fala como pesquisador: viu a criatura andar e iluminar a noite, e anotou que ela brilha mais forte logo antes de investir, um meteoro em que o meteoro é o Pokémon. Ele lembra que o parceiro do jogador começou como uma nuvenzinha (vale para Solgaleo e Lunala, e o fragmento do R17 é exatamente isso). A virada, no depois: com tanta luz, ela nunca queima o que está em volta; escolhe para onde vai o calor. "Esse é o golpe mais forte que existe."
 
@@ -370,6 +380,8 @@ Nexus_Text_Kukui_Solgaleo_ChampionAfter:
 
 
 #### Tapu Koko
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Kukui_TapuKoko_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Kukui reconhece o trovão: mora debaixo dele, em Melemele. O guardião tem mais curiosidade do que juízo, entra em qualquer batalha só para ver; já salvou duas crianças numa ponte quebrada e foi embora antes de alguém agradecer. A virada, no depois: ele não quer vencer, quer conhecer quem luta, e o Kukui admite que batalha pelo mesmo motivo.
 

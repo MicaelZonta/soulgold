@@ -165,28 +165,28 @@ VioletCity_PokemonCenter_EventScript_Man::
 	end
 
 VioletCity_PokeCenter_Text_GladionNoRoom:
-	.string "There's no room for the Egg in\n"
+	.string "{SPEAKER NAME_GLADION}There's no room for the Egg in\n"
 	.string "your party or your PC.\p"
 	.string "Make some space first. I'll wait\n"
 	.string "here.$"
 
 VioletCity_PokeCenter_Text_GladionEggSentToPC:
-	.string "Your party is full, so the Egg\n"
+	.string "{SPEAKER NAME_GLADION}Your party is full, so the Egg\n"
 	.string "was sent to your PC.\p"
 	.string "Don't forget to check on it.$"
 
 VioletCity_PokeCenter_Text_GladionRecognizes:
-	.string "You're {PLAYER}?\p"
+	.string "{SPEAKER NAME_GLADION}You're {PLAYER}?\p"
 	.string "Lillie mentioned you.\n"
 	.string "She's planning your next battle.$"
 
 VioletCity_PokeCenter_Text_GladionPartner1:
-	.string "I found this Type: Null in Alola.\n"
+	.string "{SPEAKER NAME_GLADION}I found this Type: Null in Alola.\n"
 	.string "Someone had left it behind.\p"
 	.string "It's traveling with me now.$"
 
 VioletCity_PokeCenter_Text_GladionPartner2:
-	.string "We're training. That doesn't\n"
+	.string "{SPEAKER NAME_GLADION}We're training. That doesn't\n"
 	.string "mean we'll hold back.\p"
 	.string "Let me see how you fight.$"
 
@@ -195,7 +195,7 @@ VioletCity_PokeCenter_Text_GladionVictory:
 	.string "Null. That was a good battle.$"
 
 VioletCity_PokeCenter_Text_GladionWon:
-	.string "I see why Lillie wants\n"
+	.string "{SPEAKER NAME_GLADION}I see why Lillie wants\n"
 	.string "another match.$"
 
 VioletCity_PokeCenter_Text_GladionLost:
@@ -220,12 +220,12 @@ VioletCity_PokeCenter_Text_GladionUnexpectedOutcome:
 	.string "Let's check on everyone.$"
 
 VioletCity_PokeCenter_Text_GladionGiveEgg:
-	.string "Here's the Egg. Elm asked me\n"
+	.string "{SPEAKER NAME_GLADION}Here's the Egg. Elm asked me\n"
 	.string "to bring it to you.\p"
 	.string "Take care of it.$"
 
 VioletCity_PokeCenter_Text_GladionParting:
-	.string "And when Lillie challenges you\n"
+	.string "{SPEAKER NAME_GLADION}And when Lillie challenges you\n"
 	.string "again… give her a proper battle.$"
 
 VioletCity_PokeCenter_Text_GladionAfterDelivery:

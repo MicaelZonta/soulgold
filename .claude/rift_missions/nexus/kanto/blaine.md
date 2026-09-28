@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -50,6 +50,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_BLAINE` | 306 | 0x632 | Rapidash Lv66, Magmortar Lv65, Houndoom Lv66, Torkoal Lv67, Camerupt Lv67 | `SaffronCity_FightingDojoVIP`, `SeafoamIslands_Gym`, `src/battle_dome.c`, `src/battle_setup.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_BLAINE` = **993** (flag de batalha `0x8E1`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Blaine_Fight`; campeão: `Nexus_EventScript_Blaine_Moltres_ChampionFight` (para Moltres), `Nexus_EventScript_Blaine_Volcanion_ChampionFight` (para Volcanion). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Blaine.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_BLAINE`, campeão de Moltres e Volcanion. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). `Double Battle: Yes` é o formato em que o time brilha mais; o plano vale nos dois.
 
@@ -150,6 +152,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Moltres
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Moltres_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Moltres**. Blaine é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Blaine, Líder de Cinnabar, especialista em Fogo e amante de charadas. O vulcão da ilha entrou em erupção e destruiu o ginásio; desde então ele luta numa caverna das Seafoam Islands.
@@ -211,6 +215,8 @@ Nexus_Text_Moltres_LookerFile:
 
 
 #### Volcanion
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Volcanion_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Volcanion**. Blaine é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -275,6 +281,8 @@ Nexus_Text_Volcanion_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Blaine_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Blaine cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -313,6 +321,8 @@ Nexus_Text_Blaine_Defeat:
 ### Diálogo associado ao lendário
 
 #### Moltres
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Blaine_Moltres_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Blaine é o **campeão**, a luta logo antes do Moltres. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -377,6 +387,8 @@ Nexus_Text_Blaine_Moltres_ChampionAfter:
 
 
 #### Volcanion
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Blaine_Volcanion_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Blaine é o **campeão**, a luta logo antes do Volcanion. A fala é sobre a criatura, sem dizer o nome dela.
 

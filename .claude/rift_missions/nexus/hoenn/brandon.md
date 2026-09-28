@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -45,6 +45,8 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 Homônimos genéricos, **não** são este personagem: `TRAINER_BRANDON` ("Brandon", pic Pokefan M).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_BRANDON` = **1033** (flag de batalha `0x909`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Brandon_Fight`; campeão: `Nexus_EventScript_Brandon_Regirock_ChampionFight` (para Regirock), `Nexus_EventScript_Brandon_Regice_ChampionFight` (para Regice), `Nexus_EventScript_Brandon_Registeel_ChampionFight` (para Registeel). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Brandon.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_BRANDON`, campeão de Regirock, Regice e Registeel. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -147,6 +149,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Regirock
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Regirock_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Regirock**. Brandon é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Brandon, Pyramid King da Battle Frontier de Hoenn, explorador barulhento e corajoso que usa os três Regis.
@@ -212,6 +216,8 @@ Nexus_Text_Regirock_LookerFile:
 
 
 #### Regice
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Regice_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Regice**. Brandon é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -279,6 +285,8 @@ Nexus_Text_Regice_LookerFile:
 
 #### Registeel
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Registeel_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Registeel**. Brandon é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Brandon, que já escavou de tudo, e ainda se espanta com o que é oco por dentro.
@@ -342,6 +350,8 @@ Nexus_Text_Registeel_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brandon_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brandon cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -381,6 +391,8 @@ Nexus_Text_Brandon_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brandon é o campeão, a luta logo antes do lendário do dia. Um registro por lendário; a fala é sobre a criatura, sem dizer o nome dela.
 
 #### Regirock
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brandon_Regirock_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Brandon é o homem que já passou três dias perdido numa pirâmide e chamou isso de férias. Na câmara ele lê o que os antigos escreveram nas paredes e vê a criatura se consertar com pedras de todo lugar. A virada: aquele corpo é o mapa de tudo o que ela atravessou. O Brandon, que só fala de coragem, admite que o que ele admira não é a força: é continuar inteiro juntando pedaços de onde passou. E ele diz que é o que ele faz também.
 
@@ -444,6 +456,8 @@ Nexus_Text_Brandon_Regirock_ChampionAfter:
 
 #### Regice
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brandon_Regice_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 O Brandon, que sempre acha que coragem resolve, chega à caverna e vê as pegadas presas no gelo: alguém entrou antes e não saiu. A criatura foi feita numa era do gelo e nem magma a derrete. A virada: o Brandon admite que coragem não derrete tudo; às vezes coragem é saber a hora de voltar. E diz isso rindo, porque aprendeu na própria pirâmide.
 
 **Antes da luta**
@@ -504,6 +518,8 @@ Nexus_Text_Brandon_Regice_ChampionAfter:
 
 
 #### Registeel
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brandon_Registeel_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Brandon bate na parede da tumba e o eco não acaba: é oco. A criatura mais dura do mundo é vazia por dentro, e ninguém sabe do que é feita. A virada: o explorador que sempre quer abrir tudo descobre que tem coisa que não é para abrir. Ele fica feliz com um mistério que não se resolve, e diz que a melhor ruína é a que ainda guarda um segredo quando você vai embora.
 

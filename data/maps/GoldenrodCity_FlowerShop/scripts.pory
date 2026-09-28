@@ -218,7 +218,7 @@ GoldenrodCity_FlowerShop_Text_Owner1:
 .string "might be okay.$"
 
 GoldenrodCity_FlowerShop_Text_OwnerLillieWillHandleIt:
-.string "Apparently, there is an odd tree\n"
+.string "{SPEAKER NAME_FLORIST}Apparently, there is an odd tree\n"
 .string "on Route 36.\p"
 .string "They say it dances when you water\n"
 .string "it...\p"
@@ -505,7 +505,7 @@ GoldenrodCity_FlowerShop_Text_LillieBeforeBadge:
 .string "tree on Route 36.$"
 
 GoldenrodCity_FlowerShop_Text_LillieSceneFloristTree:
-.string "Florist: It stops people on\n"
+.string "{SPEAKER NAME_FLORIST}It stops people on\n"
 .string "their way to Ecruteak.\p"
 .string "A little water makes it\n"
 .string "wriggle, but nobody wants to\l"
@@ -519,7 +519,7 @@ GoldenrodCity_FlowerShop_Text_LillieSuggestsPersuading:
 .string "its own.$"
 
 GoldenrodCity_FlowerShop_Text_FloristOffersBottle:
-.string "Florist: You can take this\n"
+.string "{SPEAKER NAME_FLORIST}You can take this\n"
 .string "SquirtBottle.\p"
 .string "Just be careful, dear.$"
 
@@ -575,7 +575,7 @@ GoldenrodCity_FlowerShop_Text_LillieAsksFlorist:
 .string "same roads.$"
 
 GoldenrodCity_FlowerShop_Text_FloristAgrees:
-.string "Florist: Of course. You may\n"
+.string "{SPEAKER NAME_FLORIST}Of course. You may\n"
 .string "keep it.\p"
 .string "I'd just like that path\n"
 .string "clear again!$"
@@ -680,7 +680,7 @@ GoldenrodCity_FlowerShop_Text_LillieThanksFlorist:
 .string "little room!$"
 
 GoldenrodCity_FlowerShop_Text_FloristDontBattleHere:
-.string "Florist: Just don't make a\n"
+.string "{SPEAKER NAME_FLORIST}Just don't make a\n"
 .string "habit of battling beside my\l"
 .string "flowers!$"
 

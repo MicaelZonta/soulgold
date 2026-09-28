@@ -206,39 +206,39 @@ CianwoodCity_EventScript_ChucksWifeLateDeliveryFailed::
 	end
 
 CianwoodCity_Text_ChucksWifeEasierToFly:
-	.string "You crossed the sea to get here?\p"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}You crossed the sea to get here?\p"
 	.string "That must have been hard.\p"
 	.string "It would be much easier if your\n"
 	.string "Pokémon knew how to Fly...$"
 
 CianwoodCity_Text_ChucksWifeBeatChuck:
-	.string "But you can't use Fly without this\n"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}But you can't use Fly without this\n"
 	.string "city's Gym Badge.\p"
 	.string "If you beat the Gym Leader here,\n"
 	.string "come see me.\p"
 	.string "I'll have a nice gift for you.$"
 
 CianwoodCity_Text_ChucksWifeGiveHM:
-	.string "That's Cianwood's Gym Badge!\p"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}That's Cianwood's Gym Badge!\p"
 	.string "Then you should take this HM.$"
 
 CianwoodCity_Text_ChucksWifeFlySpeech:
-	.string "Teach Fly to your Pokémon.\p"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}Teach Fly to your Pokémon.\p"
 	.string "You will be able to Fly instantly\n"
 	.string "to anywhere you have visited.$"
 
 CianwoodCity_Text_ChucksWifeChubby:
-	.string "My husband lost to you, so he needs\n"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}My husband lost to you, so he needs\n"
 	.string "to train harder.\p"
 	.string "That's good, since he was getting\n"
 	.string "a little chubby.$"
 
 CianwoodCity_Text_ChucksWifePointToGladion:
-	.string "Gladion has something for you.\n"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}Gladion has something for you.\n"
 	.string "Go and speak to him.$"
 
 CianwoodCity_Text_ChucksWifeLateDeliveryFailed:
-	.string "Give me a moment.\n"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}Give me a moment.\n"
 	.string "Come back in a little while.$"
 
 @ ---------------------------------------------------------------------------
@@ -578,12 +578,12 @@ CianwoodCity_Movement_GladionFollow:
 	step_end
 
 CianwoodCity_Text_WifeAllThisWay:
-	.string "Chuck's wife: You came all this\n"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}You came all this\n"
 	.string "way, and you're going back by\l"
 	.string "sea?$"
 
 CianwoodCity_Text_WifeTakeFly:
-	.string "Take Fly. Even someone who\n"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}Take Fly. Even someone who\n"
 	.string "enjoys walking needs a rest.$"
 
 CianwoodCity_Text_GladionNotInHurry:
@@ -593,16 +593,16 @@ CianwoodCity_Text_GladionLookWhoItIs:
 	.string "{SPEAKER NAME_GLADION}Look who it is.$"
 
 CianwoodCity_Text_GladionBeatChuck:
-	.string "You beat Chuck? He doesn't\n"
+	.string "{SPEAKER NAME_GLADION}You beat Chuck? He doesn't\n"
 	.string "usually cut a training session\l"
 	.string "short.$"
 
 CianwoodCity_Text_WifeLostTrackOfTime:
-	.string "Chuck's wife: And then he says\n"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}And then he says\n"
 	.string "he lost track of time!$"
 
 CianwoodCity_Text_WifeBroughtHM:
-	.string "I brought an HM for you, too.\n"
+	.string "{SPEAKER NAME_CHUCKS_WIFE}I brought an HM for you, too.\n"
 	.string "Gladion, would you pass it\l"
 	.string "along? I'll see if my husband\l"
 	.string "will finally take a break.$"
@@ -612,67 +612,67 @@ CianwoodCity_Text_GladionLillieGoldenrod:
 	.string "Goldenrod.$"
 
 CianwoodCity_Text_GladionFlowersBattle:
-	.string "First the battle. Then the\n"
+	.string "{SPEAKER NAME_GLADION}First the battle. Then the\n"
 	.string "flowers. Then back to the\l"
 	.string "battle.$"
 
 CianwoodCity_Text_GladionEnjoyingHere:
-	.string "She's enjoying it here.$"
+	.string "{SPEAKER NAME_GLADION}She's enjoying it here.$"
 
 CianwoodCity_Text_GladionSoAmI:
 	.string "{SPEAKER NAME_GLADION}So am I.$"
 
 CianwoodCity_Text_GladionLookingForTrainers:
-	.string "I thought I'd spend my time in\n"
+	.string "{SPEAKER NAME_GLADION}I thought I'd spend my time in\n"
 	.string "Johto looking for the strongest\l"
 	.string "Trainers.$"
 
 CianwoodCity_Text_GladionWholeMorning:
-	.string "Instead, we spent a whole\n"
+	.string "{SPEAKER NAME_GLADION}Instead, we spent a whole\n"
 	.string "morning on this beach. He was\l"
 	.string "still getting used to the\l"
 	.string "waves.$"
 
 CianwoodCity_Text_GladionEveryTimeWater:
-	.string "Every time the water came near\n"
+	.string "{SPEAKER NAME_GLADION}Every time the water came near\n"
 	.string "him, he backed away.$"
 
 CianwoodCity_Text_GladionThenFollowing:
-	.string "Then he started following it\n"
+	.string "{SPEAKER NAME_GLADION}Then he started following it\n"
 	.string "back.$"
 
 CianwoodCity_Text_GladionStayedLonger:
-	.string "We stayed longer than I\n"
+	.string "{SPEAKER NAME_GLADION}We stayed longer than I\n"
 	.string "planned.$"
 
 CianwoodCity_Text_GladionGoodMorning:
-	.string "It was a good morning.$"
+	.string "{SPEAKER NAME_GLADION}It was a good morning.$"
 
 CianwoodCity_Text_GladionRememberTrainer:
 	.string "{SPEAKER NAME_GLADION}You remember this\n"
 	.string "Trainer?$"
 
 CianwoodCity_Text_GladionWantToFindOut:
-	.string "Yeah. I want to find out, too.$"
+	.string "{SPEAKER NAME_GLADION}Yeah. I want to find out, too.$"
 
 CianwoodCity_Text_GladionRematchBeforeLeave:
-	.string "A rematch before you leave?$"
+	.string "{SPEAKER NAME_GLADION}A rematch before you leave?$"
 
 CianwoodCity_Text_GladionFlyEitherWay:
-	.string "Fly is yours either way. The\n"
+	.string "{SPEAKER NAME_GLADION}Fly is yours either way. The\n"
 	.string "battle is something I'm asking\l"
 	.string "for.$"
 
 CianwoodCity_Text_GladionBattleQuestion:
-	.string "Let's battle.$"
+	.string "{SPEAKER NAME_GLADION}Let's battle.$"
 
 CianwoodCity_Text_GladionFirstHeal:
-	.string "First, let's take care of your\n"
+	.string "{SPEAKER NAME_GLADION}First, let's take care of your\n"
 	.string "Pokémon. I want you at your\l"
 	.string "best.$"
 
 CianwoodCity_Text_GladionReadyDontHoldBack:
-	.string "Ready. Don't hold back.$"
+	.string "{SPEAKER NAME_GLADION}Ready. Don't hold back.$"
 
 CianwoodCity_Text_GladionDefeatedByPlayer:
 	.string "You've changed since Violet.\p"
@@ -680,34 +680,34 @@ CianwoodCity_Text_GladionDefeatedByPlayer:
 	.string "They weren't there anymore.$"
 
 CianwoodCity_Text_GladionNeedAnotherPlan:
-	.string "We'll need another plan.$"
+	.string "{SPEAKER NAME_GLADION}We'll need another plan.$"
 
 CianwoodCity_Text_GladionYouNoticedToo:
-	.string "You noticed it too, didn't you?$"
+	.string "{SPEAKER NAME_GLADION}You noticed it too, didn't you?$"
 
 CianwoodCity_Text_GladionThatOneWasOurs:
-	.string "That one was ours.$"
+	.string "{SPEAKER NAME_GLADION}That one was ours.$"
 
 CianwoodCity_Text_GladionMadeUsWorkForIt:
-	.string "But you made us work for it.$"
+	.string "{SPEAKER NAME_GLADION}But you made us work for it.$"
 
 CianwoodCity_Text_GladionStayedFocused:
-	.string "You stayed focused. Let's keep\n"
+	.string "{SPEAKER NAME_GLADION}You stayed focused. Let's keep\n"
 	.string "working on that.$"
 
 CianwoodCity_Text_GladionGoodWork:
-	.string "Good work.$"
+	.string "{SPEAKER NAME_GLADION}Good work.$"
 
 CianwoodCity_Text_GladionDraw:
-	.string "That was close for both of us.\n"
+	.string "{SPEAKER NAME_GLADION}That was close for both of us.\n"
 	.string "Let's look after our Pokémon.$"
 
 CianwoodCity_Text_GladionForfeit:
-	.string "All right. We can stop. I'll\n"
+	.string "{SPEAKER NAME_GLADION}All right. We can stop. I'll\n"
 	.string "take care of your Pokémon.$"
 
 CianwoodCity_Text_GladionUnexpectedOutcome:
-	.string "That didn't end cleanly. Let me\n"
+	.string "{SPEAKER NAME_GLADION}That didn't end cleanly. Let me\n"
 	.string "take care of your Pokémon.$"
 
 CianwoodCity_Text_GladionHereHMFromWife:
@@ -715,28 +715,28 @@ CianwoodCity_Text_GladionHereHMFromWife:
 	.string "for you.$"
 
 CianwoodCity_Text_GladionFlyMakesTripEasier:
-	.string "Fly. It'll make the trip back\n"
+	.string "{SPEAKER NAME_GLADION}Fly. It'll make the trip back\n"
 	.string "easier.$"
 
 CianwoodCity_Text_GladionTellLillie:
-	.string "If you see Lillie, tell her\n"
+	.string "{SPEAKER NAME_GLADION}If you see Lillie, tell her\n"
 	.string "we're doing fine.$"
 
 CianwoodCity_Text_GladionHeardWholeStory:
-	.string "And that I heard the whole\n"
+	.string "{SPEAKER NAME_GLADION}And that I heard the whole\n"
 	.string "story about the battle.$"
 
 CianwoodCity_Text_GladionMadeUpYourMind:
-	.string "Made up your mind?$"
+	.string "{SPEAKER NAME_GLADION}Made up your mind?$"
 
 CianwoodCity_Text_GladionImComing:
-	.string "I'm coming.$"
+	.string "{SPEAKER NAME_GLADION}I'm coming.$"
 
 CianwoodCity_Text_GladionSeeYouAround:
-	.string "See you around, {PLAYER}.$"
+	.string "{SPEAKER NAME_GLADION}See you around, {PLAYER}.$"
 
 CianwoodCity_Text_GladionDeliveryFailed:
-	.string "Give me a moment.\n"
+	.string "{SPEAKER NAME_GLADION}Give me a moment.\n"
 	.string "Come back in a little while.$"
 
 CianwoodCity_EventScript_Youngster::

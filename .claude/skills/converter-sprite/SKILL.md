@@ -27,6 +27,33 @@ Como a arte chega:
   **bloqueados** pela rede da nuvem. Peça o arquivo no chat ou em
   `.filetransfer/` (commit + push na branch).
 
+## Regra do autor: várias opções de tamanho, com comparação, antes de registrar
+
+Overworld novo **não vai direto** para o jogo (pedido do autor, 27/09/2026).
+Gere uma proposta por largura do boneco (16, 17, 18… px, até onde a arte
+permite sem ampliar e sem passar de 31 px de altura) e uma folha de
+comparação ampliada com o jogador e o sprite atual ao lado; o autor escolhe;
+só então grave o PNG do jogo:
+
+```bash
+PY=/mnt/c/Users/User/AppData/Local/Programs/Python/Python310/python.exe   # tem PIL
+T=$(wslpath -w dev_scripts/sprites/propostas_overworld.py)
+$PY "$T" propostas <Nome>            # .filetransfer/<Nome>/<Nome> - overworld WxH (quadro 32x32).png
+                                     #   + "<Nome> - overworld propostas comparadas.png"
+$PY "$T" final <Nome> <largura> "$(wslpath -w graphics/object_events/pics/people/special/<nome>.png)"
+```
+
+Cada personagem é uma entrada em `CHARS` no script (arquivo, grade, células
+na ordem do jogo, crédito). Se a folha tem o lado direito desenhado, sai com
+12 quadros (`sAnimTable_StandardAsym`); senão 9. Arte que vem também em 2x dá
+tamanhos acima do nativo sem ampliar. Escolhas de 27/09: Lusamine 24 px, o
+resto 18 px (todos em quadro 32x32). Exceções: Looker, Gladion, Kukui e Lillie voltaram
+ao 16x32 antigo, sem retoque, e a Anabel usa a arte nova em 16x32; a Elesa segue com o 18 px atual (a folha BW da RHcks, 16x19, foi recusada) (`final Anabel 16 <png> --quadro 16`,
+12 quadros), porque a cena da Missão 4 em New Bark (7 Pokémon na tela) está no
+limite da VRAM de sprite; antes de aumentar um NPC dessas cenas, meça. A mesma ideia vale para o front pic:
+arte de treinador maior que 64 px vai para o 80x80 (`TRAINER_SPRITE_LARGE`,
+skill `adicionar-grafico-trainer`).
+
 ## Receita
 
 ```bash

@@ -414,6 +414,8 @@ extern const u8 Debug_EventScript_NexusGuzma[];
 extern const u8 Debug_EventScript_NexusSoliera[];
 extern const u8 Debug_EventScript_NexusByron[];
 extern const u8 Debug_EventScript_NexusFantina[];
+extern const u8 Debug_EventScript_NexusEnter[];
+extern const u8 Debug_EventScript_NexusNewDay[];
 extern const u8 DebugScript_DaycareMonsNotCompatible[];
 extern const u8 DebugScript_OneDaycareMons[];
 extern const u8 DebugScript_ZeroDaycareMons[];
@@ -794,6 +796,8 @@ static const struct DebugMenuOption sDebugMenu_Actions_RiftMissions[] =
     { COMPOUND_STRING("Looker call now"),       DebugAction_ExecuteScript, Debug_EventScript_RiftLookerCallNow },
     { COMPOUND_STRING("Reset today's call"),    DebugAction_ExecuteScript, Debug_EventScript_RiftLookerReset },
     { COMPOUND_STRING("Nexus fights…"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_RiftNexus },
+    { COMPOUND_STRING("Nexus: enter"),          DebugAction_ExecuteScript, Debug_EventScript_NexusEnter },
+    { COMPOUND_STRING("Nexus: new day"),        DebugAction_ExecuteScript, Debug_EventScript_NexusNewDay },
     { NULL }
 };
 

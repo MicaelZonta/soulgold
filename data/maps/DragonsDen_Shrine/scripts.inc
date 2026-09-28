@@ -468,7 +468,7 @@ DragonsDen_Shrine_Text_LillieArrival:
 	.string "for myself.$"
 
 DragonsDen_Shrine_Text_ElderLillieObserves:
-	.string "The young lady asked to\n"
+	.string "{SPEAKER NAME_ELDER}The young lady asked to\n"
 	.string "observe your trial.\p"
 	.string "But an answer teaches us about\n"
 	.string "the one who gives it…\p"
@@ -598,7 +598,7 @@ DragonsDen_Shrine_Text_Lillie_Q5_Both:
 @ Holds for every answer combination, including a player whose accepted
 @ answers match Lillie's own (Friend, Training, Anybody, Love, Both).
 DragonsDen_Shrine_Text_ElderSameQuestions:
-	.string "Interesting.\p"
+	.string "{SPEAKER NAME_ELDER}Interesting.\p"
 	.string "You listened to the same\n"
 	.string "questions.\p"
 	.string "Yet each answer still had\n"
@@ -608,7 +608,7 @@ DragonsDen_Shrine_Text_ElderSameQuestions:
 	.string "your own judgment.$"
 
 DragonsDen_Shrine_Text_ElderToLillie:
-	.string "You listened before answering,\n"
+	.string "{SPEAKER NAME_ELDER}You listened before answering,\n"
 	.string "yet you did not surrender your\l"
 	.string "own judgment.$"
 
@@ -619,7 +619,7 @@ DragonsDen_Shrine_Text_LillieAlmostDid:
 	.string "have been my answers.$"
 
 DragonsDen_Shrine_Text_ElderShowMe:
-	.string "Words reveal conviction.\p"
+	.string "{SPEAKER NAME_ELDER}Words reveal conviction.\p"
 	.string "But a Trainer cannot prepare\n"
 	.string "every moment of a battle.\p"
 	.string "When circumstances change,\n"
@@ -686,7 +686,7 @@ DragonsDen_Shrine_Text_LillieAfterForfeit:
 	.string "something from that.$"
 
 DragonsDen_Shrine_Text_ElderNeitherResult:
-	.string "Good.\p"
+	.string "{SPEAKER NAME_ELDER}Good.\p"
 	.string "Neither result changes what I\n"
 	.string "wished to see.\p"
 	.string "You watched your Pokémon.\n"
@@ -711,7 +711,7 @@ DragonsDen_Shrine_Text_LillieFarewell:
 	.string "Come along, Ninetales!$"
 
 DragonsDen_Shrine_Text_ElderGreeting:
-    .string "Hm… Good to see you here.\p"
+    .string "{SPEAKER NAME_ELDER}Hm… Good to see you here.\p"
     .string "No need to explain why you came.\n"
     .string "Clair sent you here, didn't she?\p"
     .string "That girl is a handful…\n"
@@ -721,34 +721,34 @@ DragonsDen_Shrine_Text_ElderGreeting:
     .string "Ready?$"
 
 DragonsDen_Shrine_Text_Question1:
-    .string "What are Pokémon to you?$"
+    .string "{SPEAKER NAME_ELDER}What are Pokémon to you?$"
 
 DragonsDen_Shrine_Text_Question2:
-    .string "What helps you to win battles?$"
+    .string "{SPEAKER NAME_ELDER}What helps you to win battles?$"
 
 DragonsDen_Shrine_Text_Question3:
-    .string "What kind of trainer do you wish\n"
+    .string "{SPEAKER NAME_ELDER}What kind of trainer do you wish\n"
     .string "to battle?$"
 
 DragonsDen_Shrine_Text_Question4:
-    .string "What is most important for\n"
+    .string "{SPEAKER NAME_ELDER}What is most important for\n"
     .string "raising Pokémon?$"
 
 DragonsDen_Shrine_Text_Question5:
-    .string "Strong Pokémon. Weak Pokémon.\n"
+    .string "{SPEAKER NAME_ELDER}Strong Pokémon. Weak Pokémon.\n"
     .string "Which is more important?$"
 
 DragonsDen_Shrine_Text_WrongAnswer1:
-    .string "Hah? I didn't quite catch that…$"
+    .string "{SPEAKER NAME_ELDER}Hah? I didn't quite catch that…$"
 
 DragonsDen_Shrine_Text_WrongAnswer2:
-    .string "What was it you said?$"
+    .string "{SPEAKER NAME_ELDER}What was it you said?$"
 
 DragonsDen_Shrine_Text_RightAnswer:
-    .string "Oh, I understand…$"
+    .string "{SPEAKER NAME_ELDER}Oh, I understand…$"
 
 DragonsDen_Shrine_Text_PassedTest:
-    .string "Hm… I see…\p"
+    .string "{SPEAKER NAME_ELDER}Hm… I see…\p"
     .string "You care deeply for Pokémon.\p"
     .string "Very commendable.\p"
     .string "That conviction is what is\n"
@@ -881,21 +881,21 @@ DragonsDen_Shrine_Movement_ClairLeave:
 	step_end
 
 DragonsDen_Shrine_Text_ClairYouPassed:
-    .string "So how did it go?\p"
+    .string "{SPEAKER NAME_CLAIR}So how did it go?\p"
     .string "I guess there's no point\n"
 	.string "in asking. You did fail?\p"
     .string "..................................\p"
     .string "…What? You passed?$"
 
 DragonsDen_Shrine_Text_ClairThatCantBe:
-    .string "That can't be!$"
+    .string "{SPEAKER NAME_CLAIR}That can't be!$"
 
 DragonsDen_Shrine_Text_ClairYoureLying:
-    .string "You're lying!\p"
+    .string "{SPEAKER NAME_CLAIR}You're lying!\p"
     .string "Even I haven't been approved!$"
 
 DragonsDen_Shrine_Text_MustIInformLance:
-    .string "Clair!\p"
+    .string "{SPEAKER NAME_ELDER}Clair!\p"
     .string "This child is impeccable,\n"
     .string "in skill and spirit!\p"
     .string "Admit defeat and confer the\n"
@@ -903,17 +903,17 @@ DragonsDen_Shrine_Text_MustIInformLance:
     .string "…Or must I inform Lance of this?$"
 
 DragonsDen_Shrine_Text_IUnderstand:
-    .string "I-I understand…$"
+    .string "{SPEAKER NAME_CLAIR}I-I understand…$"
 
 DragonsDen_Shrine_Text_HereRisingBadge:
-    .string "Here, this is the Risingbadge…\p"
+    .string "{SPEAKER NAME_CLAIR}Here, this is the Risingbadge…\p"
     .string "Hurry up! Take it!$"
 
 DragonsDen_Shrine_Text_PlayerReceivedRisingBadge:
     .string "{PLAYER} received Risingbadge.$"
 
 DragonsDen_Shrine_Text_RisingBadgeExplanation:
-    .string "Risingbadge will enable your\n"
+    .string "{SPEAKER NAME_CLAIR}Risingbadge will enable your\n"
     .string "Pokémon to use the move for\l"
     .string "climbing waterfalls.\p"
     .string "Also, all Pokémon will recognize\n"
@@ -921,15 +921,15 @@ DragonsDen_Shrine_Text_RisingBadgeExplanation:
     .string "every command without question.$"
 
 DragonsDen_Shrine_Text_ElderScoldsClair:
-    .string "Clair…\p"
+    .string "{SPEAKER NAME_ELDER}Clair…\p"
     .string "Reflect upon what it is that you\n"
     .string "lack and this child has.$"
 
 DragonsDen_Shrine_Text_Speechless:
-    .string "..................................$"
+    .string "{SPEAKER NAME_CLAIR}..................................$"
 
 DragonsDen_Shrine_Text_ComeAgain:
-    .string "Come again, if you so desire.$"
+    .string "{SPEAKER NAME_ELDER}Come again, if you so desire.$"
 
 DragonsDen_Shrine_Text_SilverIsInTraining:
     .string "A boy close to your age is in\n"
@@ -1024,20 +1024,20 @@ DragonsDen_Shrine_EventScript_ElderAlreadyGotDratini::
 	end
 
 DragonsDen_Shrine_Text_TakeThisDratini:
-    .string "Hm… Good to see you here.\p"
+    .string "{SPEAKER NAME_ELDER}Hm… Good to see you here.\p"
     .string "Your arrival is most fortunate.\p"
     .string "I have something for you.\p"
     .string "Take this Dratini as proof that I\n"
     .string "have recognized your worth.$"
 
 DragonsDen_Shrine_Text_SymbolicDragon:
-    .string "Dragon Pokémon are symbolic of our\n"
+    .string "{SPEAKER NAME_ELDER}Dragon Pokémon are symbolic of our\n"
     .string "clan.\p"
     .string "You have shown that you can be\n"
     .string "entrusted with one.$"
 
 DragonsDen_Shrine_Text_ClairsGrandfather:
-    .string "Clair appears to have learned an\n"
+    .string "{SPEAKER NAME_ELDER}Clair appears to have learned an\n"
     .string "invaluable lesson from you.\p"
     .string "I thank you as her grandfather.$"
 

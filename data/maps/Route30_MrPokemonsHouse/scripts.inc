@@ -691,7 +691,7 @@ MrPokemonHouse_Text_Intro2:
 # 346 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_OakGreeting:
 # 347 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Oak: Ah, you must be {PLAYER}!\n"
+	.string "{SPEAKER NAME_OAK}Ah, you must be {PLAYER}!\n"
 # 348 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "Elm told us you were coming.$"
 # 349 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -771,7 +771,7 @@ MrPokemonHouse_Text_LillieVulpix:
 # 386 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_OakBeforeBattle:
 # 387 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Oak: A battle? An excellent chance\n"
+	.string "{SPEAKER NAME_OAK}A battle? An excellent chance\n"
 # 388 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "to see how you work together!$"
 # 389 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -909,7 +909,7 @@ MrPokemonHouse_Text_KukuiGiveEgg:
 # 455 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_OakIntro:
 # 456 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Oak: That was worth staying for!\p"
+	.string "{SPEAKER NAME_OAK}That was worth staying for!\p"
 # 457 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "I came to hear Kukui's findings,\n"
 # 458 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
@@ -947,7 +947,7 @@ MrPokemonHouse_Text_GetDex:
 # 474 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_OakParting:
 # 475 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Oak: Take your time to observe\n"
+	.string "{SPEAKER NAME_OAK}Take your time to observe\n"
 # 476 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.string "the Pokémon you meet, {PLAYER}.\p"
 # 477 "data/maps/Route30_MrPokemonsHouse/scripts.pory"

@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -49,6 +49,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_EUSINE` | 560 | 0x730 | Golisopod Lv38, Wobbuffet Lv38, Magnezone Lv39 | `CianwoodCity` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_EUSINE` = **1011** (flag de batalha `0x8F3`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Eusine_Fight`; campeão: `Nexus_EventScript_Eusine_Raikou_ChampionFight` (para Raikou), `Nexus_EventScript_Eusine_Entei_ChampionFight` (para Entei), `Nexus_EventScript_Eusine_Suicune_ChampionFight` (para Suicune). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Eusine.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_EUSINE`, campeão do Suicune, do Raikou e do Entei. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -152,6 +154,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Suicune
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Suicune_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Suicune**. Eusine é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Eusine, o místico pesquisador que persegue o Suicune há dez anos, amigo do Morty de Ecruteak. Em Crystal/HGSS o Suicune escolhe o jogador, não ele.
@@ -211,6 +215,8 @@ Nexus_Text_Suicune_LookerFile:
 </details>
 
 #### Raikou
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Raikou_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Raikou**. Eusine é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -273,6 +279,8 @@ Nexus_Text_Raikou_LookerFile:
 
 #### Entei
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Entei_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Entei**. Eusine é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Eusine, o místico pesquisador que persegue o Suicune há dez anos, amigo do Morty de Ecruteak. Em Crystal/HGSS o Suicune escolhe o jogador, não ele.
@@ -334,6 +342,8 @@ Nexus_Text_Entei_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Eusine_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Eusine cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -371,6 +381,8 @@ Nexus_Text_Eusine_Defeat:
 ### Diálogo associado ao lendário
 
 #### Suicune
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Eusine_Suicune_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Eusine é o **campeão**, a luta logo antes do Suicune. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -429,6 +441,8 @@ Nexus_Text_Eusine_Suicune_ChampionAfter:
 </details>
 
 #### Raikou
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Eusine_Raikou_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Eusine é o **campeão**, a luta logo antes do Raikou. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -490,6 +504,8 @@ Nexus_Text_Eusine_Raikou_ChampionAfter:
 </details>
 
 #### Entei
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Eusine_Entei_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Eusine é o **campeão**, a luta logo antes do Entei. A fala é sobre a criatura, sem dizer o nome dela.
 

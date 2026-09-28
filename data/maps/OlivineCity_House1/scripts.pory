@@ -56,8 +56,8 @@ OlivineCity_House1_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, OlivineCity_House1_OnFrame
 	.byte 0
 
-@ NEW with the pre-Necrozma reunion. Looker and Anabel still have "flag": "0"
-@ and are never touched here. The six reunion objects DO need this: their hide
+@ NEW with the pre-Necrozma reunion. Looker and Anabel are on FLAG_TEMP_2 (see
+@ the header). The six reunion objects need this too: their hide
 @ flag is FLAG_TEMP_1, and ClearTempFieldEventData zeroes every temp on every
 @ load - so the DEFAULT IS VISIBLE, and this block is the only thing that keeps
 @ Lusamine and the others out of the room for the whole game before state 10.
@@ -324,7 +324,11 @@ OlivineCity_House1_EventScript_ReunionEligibility::
 	copyvar VAR_TEMP_3, VAR_RESULT
 	goto_if_eq VAR_TEMP_2, FALSE, OlivineCity_House1_EventScript_EligibilityNoSolgaleo
 	goto_if_eq VAR_TEMP_3, FALSE, OlivineCity_House1_EventScript_UseSolgaleo
+	@ both in the team: the SYSTEM question (no plate), then the menu under it
+	message OlivineCity_House1_Text_PartnerSelect
+	waitmessage
 	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, OlivineCity_House1_Text_ChoiceSolgaleo, OlivineCity_House1_Text_ChoiceLunala, OlivineCity_House1_Text_ChoiceNotNow
+	closemessage
 	goto_if_eq VAR_RESULT, 0, OlivineCity_House1_EventScript_UseSolgaleo
 	goto_if_eq VAR_RESULT, 1, OlivineCity_House1_EventScript_UseLunala
 	goto OlivineCity_House1_EventScript_ReunionDeferred   @ "Not now" and B alike
@@ -455,7 +459,10 @@ OlivineCity_House1_EventScript_ReunionTestRelease::
 	fadescreenswapbuffers FADE_TO_WHITE
 	fadescreenswapbuffers FADE_FROM_WHITE
 	delay 30
-	fadedefaultbgm
+	@ fadeinbgm, not fadedefaultbgm: fadeoutbgm PAUSED the house music, and
+	@ fadedefaultbgm is a no-op when the track is already the map's - the
+	@ music would stay paused, and the next warp that fades it would hang.
+	fadeinbgm 4
 	applymovement LOCALID_OLIVINE_HOUSE1_KUKUI, Common_Movement_ExclamationMark
 	waitmovement LOCALID_OLIVINE_HOUSE1_KUKUI
 	msgbox OlivineCity_House1_Text_ReunionTestResult, MSGBOX_DEFAULT
@@ -465,8 +472,15 @@ OlivineCity_House1_EventScript_ReunionTestRelease::
 	@ reaction is a gesture, and Ninetales is turned with her by template.
 	msgbox OlivineCity_House1_Text_ReunionGladionPartner, MSGBOX_DEFAULT
 	closemessage
+	@ Ninetales already faces east, at the partner: a small step in place is
+	@ its turn toward it. Then Lusamine packs the base - only now, after
+	@ Anabel switched the module off (V2 section 7).
 	applymovement LOCALID_OLIVINE_HOUSE1_LILLIE, OlivineCity_House1_Movement_LillieHeart
+	applymovement LOCALID_OLIVINE_HOUSE1_NINETALES, OlivineCity_House1_Movement_NinetalesLooks
 	waitmovement LOCALID_OLIVINE_HOUSE1_LILLIE
+	waitmovement LOCALID_OLIVINE_HOUSE1_NINETALES
+	applymovement LOCALID_OLIVINE_HOUSE1_LUSAMINE, OlivineCity_House1_Movement_LusaminePacks
+	waitmovement LOCALID_OLIVINE_HOUSE1_LUSAMINE
 	msgbox OlivineCity_House1_Text_ReunionAssignments, MSGBOX_DEFAULT
 	closemessage
 	@ Looker was pointing at the table map since the opening; he comes back to
@@ -561,6 +575,17 @@ OlivineCity_House1_Movement_LusamineToCase:
 @ Lillie's reaction to the partner is a gesture, not a speech (V2 section 7).
 OlivineCity_House1_Movement_LillieHeart:
 	emote_heart
+	step_end
+
+OlivineCity_House1_Movement_NinetalesLooks:
+	face_right
+	walk_in_place_slow_right
+	step_end
+
+@ Lusamine at (9,7), facing the case at Kukui's side (west): closing it.
+OlivineCity_House1_Movement_LusaminePacks:
+	walk_in_place_slow_left
+	walk_in_place_slow_left
 	step_end
 
 @ Shared by the arrival scene and by both object scripts in states 2, 4, 6
@@ -1100,8 +1125,10 @@ OlivineCity_House1_Text_LookerGoAhead:
 	.string "We'll meet you there.$"
 
 OlivineCity_House1_Text_LookerGoAheadM2:
-	.string "{SPEAKER NAME_LOOKER}Mahogany, {PLAYER}!\n"
-	.string "We are right behind you.$"
+	.string "{SPEAKER NAME_LOOKER}Mahogany's Pokémon\n"
+	.string "Center.\p"
+	.string "Pryce has kept the road to it\n"
+	.string "clear.$"
 
 OlivineCity_House1_Text_LookerGoAheadM3:
 	.string "{SPEAKER NAME_LOOKER}The northwest shore in\n"
@@ -1123,11 +1150,13 @@ OlivineCity_House1_Text_AnabelGoAhead:
 	.string "before you join us.\p"
 	.string "Clair is holding the street.$"
 
+@ Mahogany V2 section 5. No character predicts the two rounds: "a longer
+@ fight" and "change our approach" are preparation, not foresight.
 OlivineCity_House1_Text_AnabelGoAheadM2:
-	.string "{SPEAKER NAME_ANABEL}Go on.\p"
-	.string "Mr. Pryce does not strike me\n"
-	.string "as a man who calls for help\l"
-	.string "lightly.$"
+	.string "{SPEAKER NAME_ANABEL}Prepare for a longer\n"
+	.string "fight.\p"
+	.string "We may need to change our\n"
+	.string "approach.$"
 
 OlivineCity_House1_Text_AnabelGoAheadM3:
 	.string "{SPEAKER NAME_ANABEL}Prepare before you approach\n"
@@ -1341,6 +1370,10 @@ OlivineCity_House1_Text_ReunionNoRoom:
 	.string "speak to me again.$"
 
 @ Menu labels - system text, no plaque.
+OlivineCity_House1_Text_PartnerSelect:
+	.string "Which Pokémon will you bring\n"
+	.string "forward?$"
+
 OlivineCity_House1_Text_ChoiceSolgaleo:
 	.string "Solgaleo$"
 

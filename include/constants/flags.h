@@ -1931,8 +1931,14 @@
 // the staged street, Mom in the lab) and by Looker (short retry, straight to the
 // choice). Cleared by NewBarkTown_EventScript_UBFinish.
 #define FLAG_NEWBARK_UB_ENGAGED                     0x1050
-#define CUSTOM_FLAGS_END                            FLAG_NEWBARK_UB_ENGAGED
-// PROXIMA FLAG NOVA: 0x1051 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Nexus (Daily): the rules of the place have been explained once, on the
+// player's very first arrival in room 1. Set by Nexus_EventScript_ExplainRules
+// (data/maps/Nexus/scripts.inc); never cleared - the walkthrough narration
+// plays exactly once per save, and every later arrival is silent (author,
+// 27/09/2026).
+#define FLAG_NEXUS_RULES_EXPLAINED                  0x1051
+#define CUSTOM_FLAGS_END                            FLAG_NEXUS_RULES_EXPLAINED
+// PROXIMA FLAG NOVA: 0x1052 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 
@@ -1987,7 +1993,7 @@
 // Sun and Moon Altar post-game (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 3.1).
 // Reclaimed from FLAG_UNUSED_0x949..0x94D, in place: DAILY_FLAGS_END and
 // FLAGS_COUNT are untouched (the block runs to + 0x3F).
-#define FLAG_DAILY_ALTAR_RIFT                       (DAILY_FLAGS_START + 0x29) // Today's rift at the altar has been used
+#define FLAG_UNUSED_0x949                           (DAILY_FLAGS_START + 0x29) // Unused Flag. Era FLAG_DAILY_ALTAR_RIFT; livre desde 27/09/2026: a fenda virou a entrada do Nexus, aberta o dia todo (NEXUS_REGRAS R3)
 #define FLAG_DAILY_REMATCH_LUSAMINE                 (DAILY_FLAGS_START + 0x2A) // Lusamine rematch at the altar, once a day
 #define FLAG_DAILY_REMATCH_KUKUI                    (DAILY_FLAGS_START + 0x2B) // Kukui rematch on the Cherrygrove beach
 #define FLAG_DAILY_REMATCH_LILLIE                   (DAILY_FLAGS_START + 0x2C) // Lillie rematch on the Cherrygrove beach
@@ -2009,7 +2015,10 @@
 // uses her duel team (no Nihilego yet - she was rescued hours ago); after the
 // date change the post-game team with Nihilego applies. Cleared by ClearDailyFlags.
 #define FLAG_DAILY_ALTAR_RESOLVED                   (DAILY_FLAGS_START + 0x30) // Altar arc closed today: Lusamine rematch without Nihilego
-#define FLAG_UNUSED_0x951                           (DAILY_FLAGS_START + 0x31) // Unused Flag
+// Nexus (.claude/rift_missions/nexus/NEXUS_REGRAS.md R15): VAR_NEXUS_DAILY has
+// been reset for today. Set by RollOverIfNewDay (src/nexus.c) the first time
+// the Nexus is touched on a day; cleared by ClearDailyFlags at the date change.
+#define FLAG_DAILY_NEXUS_NEW_DAY                    (DAILY_FLAGS_START + 0x31) // VAR_NEXUS_DAILY already reset today (src/nexus.c RollOverIfNewDay)
 #define FLAG_UNUSED_0x952                           (DAILY_FLAGS_START + 0x32) // Unused Flag
 #define FLAG_UNUSED_0x953                           (DAILY_FLAGS_START + 0x33) // Unused Flag
 #define FLAG_UNUSED_0x954                           (DAILY_FLAGS_START + 0x34) // Unused Flag

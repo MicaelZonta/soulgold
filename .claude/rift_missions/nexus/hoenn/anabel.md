@@ -14,10 +14,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -47,11 +47,13 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_ANABEL` = **1034** (flag de batalha `0x90A`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Anabel_Fight`; campeão: `Nexus_EventScript_Anabel_Necrozma_ChampionFight` (para Necrozma), `Nexus_EventScript_Anabel_Deoxys_ChampionFight` (para Deoxys). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Anabel.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_ANABEL`, campeão de Necrozma e Deoxys. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
 Lendário **Necrozma** (forma base: sem Solgaleo/Lunala para fundir e a Ultra é só de batalha), semi-lendário e Mega **Latios** (Dragotite: Latios Mega ocupa as duas vagas, R10), do time Gold Symbol da Anabel em Emerald, com Alakazam e Snorlax, também dos times dela em Emerald (e o Snorlax é o que ela solta em New Bark na M4). Metagross e Bronzong completam o "time de investigação": um que calcula, um que protege. A Deoxys, de que ela também é campeã, não entra porque o Deoxys também ocupa a vaga de lendário (R10).
 
-**Quem é esta Anabel.** Aprovado pelo autor em 27/09/2026 (e vira regra, [R18](../NEXUS_REGRAS.md)): a Anabel do altar não sai de lá (ela ajuda quem chega pelas fendas). A Anabel das salas é **outra**, arrancada de um fragmento em que a história terminou diferente: **foi ela quem jogou a Beast Ball** no Necrozma, e ele ficou com ela. Por isso ela tem um Necrozma no time sem contradizer a campanha (o do jogador continua sendo do jogador). Ela sabe que tem lacunas de memória (é Faller) e trata a dúvida como trata tudo: separa o que mediu do que sente.
+**Quem é esta Anabel.** Aprovado pelo autor em 27/09/2026 (e vira regra, [R21](../NEXUS_REGRAS.md)): a Anabel do altar não sai de lá (ela ajuda quem chega pelas fendas). A Anabel das salas é **outra**, arrancada de um fragmento em que a história terminou diferente: **foi ela quem jogou a Beast Ball** no Necrozma, e ele ficou com ela. Por isso ela tem um Necrozma no time sem contradizer a campanha (o do jogador continua sendo do jogador). Ela sabe que tem lacunas de memória (é Faller) e trata a dúvida como trata tudo: separa o que mediu do que sente.
 
 *Plano:* **ler e proteger.** O Bronzong põe Reflect e Light Screen (Light Clay), o Necrozma (Prism Armor) sobe com Calm Mind atrás das telas, e a Mega Latios e o Alakazam batem especial rápido. *Plano (Singles):* Bronzong arma Stealth Rock e telas; Snorlax com Curse e Rest segura físicos; o Necrozma sobe com Calm Mind (o Weakness Policy pune quem acertar super efetivo) e varre com Photon Geyser. *Plano (Doubles):* telas protegem os dois lados; Heat Wave e Dazzling Gleam (spread) do Necrozma e do Alakazam; Metagross de Assault Vest com Bullet Punch contra Fairy; Levitate do Latios e do Bronzong deixa o High Horsepower do Snorlax livre (alvo único, de qualquer jeito).
 
@@ -150,6 +152,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Necrozma
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Necrozma_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Necrozma**. Anabel é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Anabel, ex-Salon Maiden da Battle Tower, agente da International Police e chefe da investigação das Rift Missions. Faller: veio por uma Ultra Wormhole, lembra pouco de antes e sente uma abertura um instante antes do instrumento.
@@ -219,6 +223,8 @@ Nexus_Text_Necrozma_LookerFile:
 
 #### Deoxys
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Deoxys_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Deoxys**. Anabel é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Anabel, a Faller que caiu de algum lugar e chegou mudada.
@@ -284,6 +290,8 @@ Nexus_Text_Deoxys_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Anabel_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Anabel cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dela mesma, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 A Anabel das salas é a do fragmento (ver o time acima): ela reconhece o jogador, lembra da captura com ela mesma jogando a Ball, e não finge ter certeza de quem é. A voz é a do design (§3): frases curtas, pergunta objetiva, cuidado sem condescendência; a percepção de Faller aparece do tamanho certo (um instante antes, sem radar).
@@ -333,6 +341,8 @@ Nexus_Text_Anabel_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Anabel é a campeã, a luta logo antes do lendário do dia. Um registro por lendário; a fala é sobre a criatura, sem dizer o nome dela.
 
 #### Necrozma
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Anabel_Necrozma_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A Anabel conhece a criatura melhor que ninguém: correu atrás dela por Johto inteira. Aqui ela não fala do perigo; fala do que mediu. O bicho não é cruel: perdeu a própria luz e continua procurando. A virada é pessoal e curta, do jeito dela: ela, Faller com lacunas de memória, sabe como é ficar faltando um pedaço e continuar estendendo a mão. Ela não sente pena; sente reconhecimento. E pede ao jogador o que pediria de qualquer operação: que traga de volta o que sobrar, e que volte.
 
@@ -396,6 +406,8 @@ Nexus_Text_Anabel_Necrozma_ChampionAfter:
 
 
 #### Deoxys
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Anabel_Deoxys_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A criatura caiu do céu e se reescreveu para sobreviver à chegada: muda de forma quando precisa. A Anabel também caiu de outro lugar e chegou diferente, sem boa parte do que era antes. A virada: a Anabel não trata isso como perda. Ela diz, com a precisão de sempre, que o que mudou nela na queda foi o preço de estar aqui, e que a criatura pagou o mesmo. E que as duas decidiram ficar.
 

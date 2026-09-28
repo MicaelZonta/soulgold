@@ -1,6 +1,7 @@
 #include "global.h"
 #include "bug_contest.h"
 #include "level_scaling.h"
+#include "nexus.h"
 #include "pokemon.h"
 #include "data.h"
 #include "caps.h"
@@ -445,15 +446,7 @@ static bool8 IsOptionalScalingTrainer(u16 trainerId)
 
 static bool8 IsNexusTrainer(u16 trainerId)
 {
-    u32 i;
-
-    for (i = 0; sNexusTrainerIds[i] != TRAINERS_COUNT; i++)
-    {
-        if (sNexusTrainerIds[i] == trainerId)
-            return TRUE;
-    }
-
-    return FALSE;
+    return Nexus_IsNexusTrainer(trainerId);
 }
 
 const struct LevelScalingConfig *GetTrainerLevelScalingConfig(u16 trainerId, u8 intendedAverageLevel)

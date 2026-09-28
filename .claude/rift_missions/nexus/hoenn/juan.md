@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -50,6 +50,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): `TRAINER_UNUSED_457` (ex-`TRAINER_JUAN_1`, 272).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_JUAN` = **1023** (flag de batalha `0x8FF`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Juan_Fight`; campeão: `Nexus_EventScript_Juan_TapuFini_ChampionFight` (para Tapu Fini), `Nexus_EventScript_Juan_WalkingWake_ChampionFight` (para Walking Wake). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Juan.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_JUAN`, campeão de Tapu Fini e Walking Wake. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -154,6 +156,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Tapu Fini
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_TapuFini_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Tapu Fini**. Juan é o campeão dela: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Juan, Líder de Sootopolis antes do Wallace e mestre dele. Dândi, dançarino, trata a batalha como espetáculo de água; voltou ao ginásio em Emerald quando o Wallace virou Campeão.
@@ -213,6 +217,8 @@ Nexus_Text_TapuFini_LookerFile:
 
 
 #### Walking Wake
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_WalkingWake_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Walking Wake**. Juan é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -275,6 +281,8 @@ Nexus_Text_WalkingWake_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Juan_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Juan cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -316,6 +324,8 @@ Nexus_Text_Juan_Defeat:
 ### Diálogo associado ao lendário
 
 #### Tapu Fini
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Juan_TapuFini_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Juan é o **campeão**, a luta logo antes da Tapu Fini. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -379,6 +389,8 @@ Nexus_Text_Juan_TapuFini_ChampionAfter:
 
 
 #### Walking Wake
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Juan_WalkingWake_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Juan é o **campeão**, a luta logo antes do Walking Wake. A fala é sobre a criatura, sem dizer o nome dele.
 

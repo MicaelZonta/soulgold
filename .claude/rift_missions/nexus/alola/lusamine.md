@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -48,6 +48,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_LUSAMINE_ALTAR` | 972 | 0x8CC | Clefable Lv78, Lilligant Lv78, Mismagius Lv79, Bewear Lv79, Milotic Lv79, Nihilego Lv80 | `SunMoonAltar` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_LUSAMINE` = **1039** (flag de batalha `0x90F`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Lusamine_Fight`; campeão: `Nexus_EventScript_Lusamine_Enamorus_ChampionFight` (para Enamorus), `Nexus_EventScript_Lusamine_Fezandipiti_ChampionFight` (para Fezandipiti). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Lusamine.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_LUSAMINE`, campeã de Enamorus e Fezandipiti. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -151,6 +153,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Enamorus
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Enamorus_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Enamorus**. Lusamine é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Lusamine, presidente da Aether Foundation e mãe da Lillie e do Gladion. Neste hack trouxe o campo de contenção à M4, aceitou ficar na base no Altar e seguiu uma instrução da filha no resgate; no pós-game, chá com os filhos em Olivine.
@@ -218,6 +222,8 @@ Nexus_Text_Enamorus_LookerFile:
 
 #### Fezandipiti
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Fezandipiti_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Fezandipiti**. Lusamine é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Lusamine, que teve um paraíso (Aether Paradise) e aplausos por ele, enquanto por dentro colecionava e congelava. Neste hack, a reparação é perguntar e escutar.
@@ -284,6 +290,8 @@ Nexus_Text_Fezandipiti_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Lusamine_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lusamine cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 A Lusamine é formal e habituada a decidir; a reparação aparece quando ela pergunta e escuta (design §3). O detalhe concreto é a coleção congelada de Sun/Moon; a virada é que agora ela pede antes.
@@ -324,6 +332,8 @@ Nexus_Text_Lusamine_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lusamine é a **campeã**, a luta logo antes do lendário do dia. Uma fala por lendário; o nome da espécie não aparece ([R16](../NEXUS_REGRAS.md)). Rótulos com a espécie porque Lusamine é campeã de dois.
 
 #### Enamorus
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Lusamine_Enamorus_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A Lusamine passou pela primavera que a criatura trouxe e conhece a lenda: o amor dela faz tudo florescer, e ela cai das nuvens sobre quem trata a vida sem respeito. Antes, ela a quereria na coleção; hoje acha que a criatura teria vindo atrás dela. A virada, no depois: esse amor não fica, traz a primavera e segue. Ela achava que amar era guardar; os filhos ensinaram outra coisa, e "ainda estão ensinando". Sem declarar a família consertada.
 
@@ -387,6 +397,8 @@ Nexus_Text_Lusamine_Enamorus_ChampionAfter:
 
 
 #### Fezandipiti
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Lusamine_Fezandipiti_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A Lusamine olha a estátua e as flores ("todo mundo ama um herói") e depois as penas, e a corrente cheia de veneno que faz as pessoas adorarem a criatura. Ela teve um paraíso e foi aplaudida; conhece aquela corrente por dentro. A virada, no depois: ninguém perguntou o que a estátua fez para merecer, e ninguém perguntou a ela também, porque ela garantiu que não perguntassem. Conselho: olhe a corrente, não as penas; e se sobrar dela algo pequeno (R17), deixe ser comum por um tempo.
 

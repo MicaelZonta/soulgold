@@ -439,7 +439,7 @@ GoldenrodCity_FlowerShop_Text_Owner1:
 # 220 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_OwnerLillieWillHandleIt:
 # 221 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Apparently, there is an odd tree\n"
+.string "{SPEAKER NAME_FLORIST}Apparently, there is an odd tree\n"
 # 222 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "on Route 36.\p"
 # 223 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1013,7 +1013,7 @@ GoldenrodCity_FlowerShop_Text_LillieBeforeBadge:
 # 507 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_LillieSceneFloristTree:
 # 508 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Florist: It stops people on\n"
+.string "{SPEAKER NAME_FLORIST}It stops people on\n"
 # 509 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "their way to Ecruteak.\p"
 # 510 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1041,7 +1041,7 @@ GoldenrodCity_FlowerShop_Text_LillieSuggestsPersuading:
 # 521 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_FloristOffersBottle:
 # 522 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Florist: You can take this\n"
+.string "{SPEAKER NAME_FLORIST}You can take this\n"
 # 523 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "SquirtBottle.\p"
 # 524 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1153,7 +1153,7 @@ GoldenrodCity_FlowerShop_Text_LillieAsksFlorist:
 # 577 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_FloristAgrees:
 # 578 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Florist: Of course. You may\n"
+.string "{SPEAKER NAME_FLORIST}Of course. You may\n"
 # 579 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "keep it.\p"
 # 580 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
@@ -1363,7 +1363,7 @@ GoldenrodCity_FlowerShop_Text_LillieThanksFlorist:
 # 682 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 GoldenrodCity_FlowerShop_Text_FloristDontBattleHere:
 # 683 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
-.string "Florist: Just don't make a\n"
+.string "{SPEAKER NAME_FLORIST}Just don't make a\n"
 # 684 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"
 .string "habit of battling beside my\l"
 # 685 "data/maps/GoldenrodCity_FlowerShop/scripts.pory"

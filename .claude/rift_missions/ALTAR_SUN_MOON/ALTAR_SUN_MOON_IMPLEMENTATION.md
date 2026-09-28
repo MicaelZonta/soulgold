@@ -3883,3 +3883,61 @@ limpo (fora o legado `Elm:` de `NewBarkTown_Lab`).
 10. Ato V completo de dia e de noite; disco volta ao sol/lua; estado 16.
 11. Pós-game: revanche no dia da conclusão sem Nihilego; no dia seguinte com;
     fenda diária (recusa não gasta; o uso sim); "Come back tomorrow".
+
+## 22. Retorno do autor em runtime (revisão 8, 27/09/2026)
+
+Cinco itens do primeiro teste da revisão 7:
+
+| Relato | Causa | Correção |
+|---|---|---|
+| Dois NPCs parados no caminho da escada, sem fala | `OFFICER`/`AETHER` (15,17)/(13,17) tinham `script: 0x0` por decisão do V2 ("sem falas") | Uma fala cada (`SunMoonAltar_Text_Officer` / `_AetherStaff`), `MSGBOX_NPC`. Falantes novos `NAME_OFFICER` ("Officer") e `NAME_AETHER` ("Aether Staff") no fim dos três arquivos |
+| Ato I: longe demais para ver a Lusamine | jogador em y=14, base externa em y=9: fora da tela | `CameraToBase` / `CameraToPlayer` (câmera sobe 3 tiles com `SpawnCameraObject` + `slide_up`, desce antes de remover). Ato I: sobe depois da saída dos auxiliares, desce antes da fala de liberação do Looker. Mesmo par no `RetryRegroup` (também em y=14) |
+| A abertura dormente virou "a coisa branca" | `MARK` usava `OBJ_EVENT_GFX_PORTAL` | `MARK` agora é `OBJ_EVENT_GFX_ALTAR_RIFT`, a fenda roxa. A contração do teste fica no clarão + `SE_WARP_OUT` |
+| Tela preta travada depois do teste (Solgaleo, fenda→marca) | `fadeoutbgm 4` **pausa** a trilha; `fadedefaultbgm` pede fade-out de uma trilha pausada, e `MPlayMain` pula `FadeOutBody` quando pausado. `sMapMusicState` fica em 6 para sempre, `BGMusicStopped()` nunca é verdadeiro e o `warpsilent` do `TestDone` espera eternamente | `fadeoutbgm` removido; `fadedefaultbgm` faz o fade sozinho. O mesmo par existia em `OlivineCity_House1` (teste da reunião): lá virou `fadeinbgm 4` |
+| Lusamine não vira ao conversar (New Bark, Olivine) | `sAnimTable_StandardAsym` (sprite 32x32 de 12 quadros) não estava em `sStepAnimTables`; `SetStepAnim` não troca o quadro sem essa entrada | Entrada `{1, 3, 0, 2}` acrescentada. Vale para os 10 NPCs com essa tabela (Lusamine, Bruno e os oito do Nexus) |
+
+**Regra que fica:** `fadeoutbgm` só se desfaz com `fadeinbgm` ou `playbgm`.
+Nunca seguido de `fadedefaultbgm`/`fadenewbgm` nem de warp.
+
+Folha rotulada da Lusamine para conferência:
+`.filetransfer/Lusamine/Lusamine - overworld quadros rotulados.png`.
+
+### 22.1 Revisão 9 (27/09/2026) — tripulação fixa e estações de controle
+
+Pedido do autor: manter a Aether na ilha depois do evento com a cura, deixar
+Looker e Anabel livres para outras histórias, dar um aparelho visível à base e
+separar Kukui (esquerda) e Lusamine (direita).
+
+| Mudança | Detalhe |
+|---|---|
+| `OFFICER`/`AETHER` ficam no pós-jogo | Visíveis em 12 **e em ≥ 16** (`ShowHelpers`), em (15,17)/(13,17). Falas próprias de pós-jogo |
+| Cura passa para a Aether em ≥ 16 | `SunMoonAltar_EventScript_AetherStaffHeal` (Yes/No + `Common_EventScript_OutOfCenterPartyHeal`). O Looker só cura em 13–15; em ≥ 16 ele só fala. **Tirar Looker/Anabel do Altar não tira a cura da ilha.** Atenção: a fenda diária ainda passa pela Anabel (`RiftDaily*`) |
+| Kukui na esquerda | Template (17,9) → **(12,9)**. Viradas refeitas: `ArrivalKukuiLimit` e `OpeningKukui` passam a `DIR_EAST`; o "abrir o meio" do resgate vira `WalkInPlaceFasterRight`. `LillieToMother` desvia por (13,10) porque (12,9) agora é o Kukui |
+| Dois emissores | `OBJ_EVENT_GFX_AETHER_EMITTER` (arte de New Bark, custo zero): `EMITTER_KUKUI` (11,9) `FLAG_TEMP_C`, `EMITTER_LUSAMINE` (17,9) `FLAG_TEMP_F`. Visíveis em 12–14; **escondidos em 15**; em ≥ 16 só o da Lusamine, nos dias dela (`ApplyEmitters`) |
+
+**Por que nenhum emissor no estado 15.** O Ato V é o momento mais cheio do
+mapa: 12 objetos no load + Necrozma + parceiro = 14, e umas 14 paletas de
+sprite com a cinza do clima. Dois emissores levariam a 16 objetos (o teto) e
+passariam do limite de 16 paletas — alguém ficaria com a cor errada, sem erro
+de build. Narrativamente as unidades já foram desligadas na volta.
+
+Orçamento revisto (≤ 16): Ato I 13 (+ câmera 14); Ato III 14; corte de
+acolhimento 15; Ato V 14; pós-jogo 9.
+
+## 22. 27/09/2026 — a fenda do estado ≥ 16 vira a entrada do Nexus
+
+Esta seção vence as anteriores sobre a fenda diária.
+
+- A fenda fica **sempre visível** no estado ≥ 16 (NEXUS_REGRAS R3: entrar
+  quantas vezes quiser no dia). `FLAG_DAILY_ALTAR_RIFT` saiu do código e foi
+  renomeada `FLAG_UNUSED_0x949` (livre).
+- `SunMoonAltar_EventScript_Rift` no ≥ 16: checagem Traditional (R10,
+  `Nexus_CheckTraditional`) **antes** da pergunta → `Nexus_EnterFromAltar` →
+  `warpsilent MAP_NEXUS, 10, 19`. Não passa mais pela `UltraSpaceArena`; o
+  esqueleto `UltraSpaceArena_EventScript_EmptyRift` foi removido.
+- A Anabel diz "o Nexus está quieto hoje" quando `Nexus_IsDoneToday` (lendário
+  capturado hoje), não mais quando a fenda foi usada.
+- O mapa `Nexus` é `MAP_TYPE_INDOOR`: o warp `ROUTE → INDOOR` não passa pela
+  transição de caverna do §18.5.
+- Tudo do loop: [`../nexus/NEXUS_IMPLEMENTATION.md`](../nexus/NEXUS_IMPLEMENTATION.md).
+

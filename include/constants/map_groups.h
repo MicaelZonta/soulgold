@@ -1187,6 +1187,7 @@ enum
     // gMapGroup_RiftMissions
     MAP_SUN_MOON_ALTAR    = (0 | (35 << 8)),
     MAP_ULTRA_SPACE_ARENA = (1 | (35 << 8)),
+    MAP_NEXUS             = (2 | (35 << 8)),
 
 };
 

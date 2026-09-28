@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -43,6 +43,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se precisar de flag nova).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_DRAKE` = **1027** (flag de batalha `0x903`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Drake_Fight`; campeão: `Nexus_EventScript_Drake_RagingBolt_ChampionFight` (para Raging Bolt), `Nexus_EventScript_Drake_Regidrago_ChampionFight` (para Regidrago). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Drake.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_DRAKE`, campeão de Raging Bolt e Regidrago. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -147,6 +149,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Raging Bolt
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_RagingBolt_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Raging Bolt**. Drake é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Drake, o último da Elite Four de Hoenn, mestre dos Dragões. Velho de ar de marinheiro, sempre pergunta o que é preciso para lutar com um Pokémon como parceiro.
@@ -208,6 +212,8 @@ Nexus_Text_RagingBolt_LookerFile:
 
 
 #### Regidrago
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Regidrago_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Regidrago**. Drake é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -274,6 +280,8 @@ Nexus_Text_Regidrago_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Drake_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Drake cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -314,6 +322,8 @@ Nexus_Text_Drake_Defeat:
 ### Diálogo associado ao lendário
 
 #### Raging Bolt
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Drake_RagingBolt_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Drake é o **campeão**, a luta logo antes do Raging Bolt. A fala é sobre a criatura, sem dizer o nome dele.
 
@@ -375,6 +385,8 @@ Nexus_Text_Drake_RagingBolt_ChampionAfter:
 
 
 #### Regidrago
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Drake_Regidrago_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Drake é o **campeão**, a luta logo antes do Regidrago. A fala é sobre a criatura, sem dizer o nome dele.
 

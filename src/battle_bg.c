@@ -700,6 +700,12 @@ static u8 GetBattleEnvironmentOverride(void)
           && (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES) == SPECIES_GROUDON
            || GetMonData(&gEnemyParty[0], MON_DATA_SPECIES) == SPECIES_GROUDON_PRIMAL))
         return BATTLE_ENVIRONMENT_VOLCANO;
+    // SoulGold: inside an Ultra Space map (UltraSpaceArena, Nexus) EVERY
+    // battle happens on the Ultra Space stage. Checked before the legendary
+    // and trainer-class branches: a Leader like Elesa or the wild boss would
+    // otherwise pull the Leader/Building background into the rift.
+    else if (battleScene == MAP_BATTLE_SCENE_ULTRA_SPACE)
+        return BATTLE_ENVIRONMENT_ULTRA_SPACE;
     else if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
     {
         switch (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES))

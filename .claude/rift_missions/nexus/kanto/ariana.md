@@ -14,10 +14,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -51,6 +51,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_ARIANA_2` | 132 | 0x584 | Arbok Lv52, Toxapex Lv53, Vileplume Lv54, Roserade Lv54, Trevenant Lv53, Dragalge Lv54 | `GoldenrodCity_RadioTower_5F`, `src/battle_setup.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_ARIANA` = **997** (flag de batalha `0x8E5`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Ariana_Fight`; campeão: `Nexus_EventScript_Ariana_ChampionFight` (para Cresselia). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Ariana.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_ARIANA`, campeã de Cresselia. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -155,6 +157,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Cresselia
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Cresselia_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Cresselia**. Ariana é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Ariana, executiva do Team Rocket, a que comandava a base de Mahogany, de onde saía o sinal de rádio que forçou os Magikarp do Lake of Rage a evoluir.
@@ -217,6 +221,8 @@ Nexus_Text_Cresselia_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Ariana_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Ariana cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dela mesma, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -257,6 +263,8 @@ Nexus_Text_Ariana_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Ariana é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela.
 
 #### Cresselia
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Ariana_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A Ariana não sonha há anos: dorme, acorda, trabalha. Na noite anterior, na beira deste lago, sonhou: um lago sem sinal nenhum, com peixes que eram só peixes. Não sabe de quem era o sonho. A virada: o sinal dela fez o outro lago gritar por uma semana, e este dá descanso a qualquer um que deite ao lado, sem perguntar quem é. Ela trouxe o Pokémon dos pesadelos como guarda, e ele também dormiu. Ela não gosta de presente que não pode pagar.
 

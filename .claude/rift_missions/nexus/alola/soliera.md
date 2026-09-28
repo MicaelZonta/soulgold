@@ -169,7 +169,7 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 >
 > The twelfth time, it stopped in the air in front of you, and pointed.
 
-**Ficha do Looker, no altar, no dia em que a UB é capturada**
+**Looker File** — ✅ implementado em 27/09/2026 como **caderno no chão da sala do campeão** ([R18](../NEXUS_REGRAS.md)), descrevendo o universo do fragmento. O texto do jogo foi reescrito e está em `data/scripts/nexus.inc` (`Nexus_Text_<Conceito>_LookerFile`) — ele vence o rascunho abaixo, que era a versão antiga "no altar, no dia da captura".
 
 > File UB Stinger.
 >
@@ -205,6 +205,12 @@ Nexus_Text_Stinger_LookerFile:
 
 </details>
 
+
+> ⚠️ **Substituído em 27/09/2026 ([R17](../NEXUS_REGRAS.md)).** O boss nunca
+> é capturado; nocauteado, deixa um fragmento na **primeira forma** — e a
+> primeira forma do Naganadel **é** o Poipole (nível 1, em Beast Ball). O
+> presente separado saiu do código para não dar dois Poipoles. O arco abaixo
+> (ver o grande, levar o pequeno) continua valendo, agora pelo fragmento.
 
 **O Poipole da luta** (decisão do autor, 26/09/2026). O Poipole não tem dia
 próprio no Nexus: o jogador **ganha um Poipole na luta do Naganadel**. Depois

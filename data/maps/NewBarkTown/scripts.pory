@@ -2712,12 +2712,13 @@ NewBarkTown_Text_UBHook:
 	.string "Olivine.$"
 
 @ Narration, no plaque: the explicit time transition (section 18) that takes
-@ the barriers and the equipment away before the reload.
+@ the barriers and the equipment away before the reload. It names no hour of
+@ the day (design 5.3): the scene can end at any time, night included.
 NewBarkTown_Text_UBRepairs:
-	.string "By evening the markers were\n"
-	.string "packed away, the barriers were\l"
-	.string "cleared, and the residents were\l"
-	.string "back in their homes.$"
+	.string "Later, the markers were packed\n"
+	.string "away, the barriers were cleared,\l"
+	.string "and the residents were back in\l"
+	.string "their homes.$"
 
 @ --- Retry (section 19) ------------------------------------------------------
 

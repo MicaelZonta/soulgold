@@ -8,7 +8,7 @@
 @   14/CROSSING   at (10,19)  full arrival: Ultra Necrozma already there
 @   14/RECROSSING at (10,19)  short arrival after a lost boss
 @   14/CAPTURE    at (9,11)   back from the altar reception cut: the capture
-@   >= 16         at (10,19)  the empty daily survey (the loop's hook)
+@   >= 16         nothing: the altar's rift leads to MAP_NEXUS instead
 @ Temp flags: 1 Anabel  2 Necrozma  3 Ultra Necrozma  4 partner (VAR_2 gfx)
 @   5/7 the two UB slots (VAR_0/VAR_1 gfx)  6 Beast Ball
 @ ===========================================================================
@@ -67,7 +67,6 @@ UltraSpaceArena_OnFrame::
 UltraSpaceArena_EventScript_ArrivalTrigger::
 	setvar VAR_TEMP_1, 1
 	getplayerxy VAR_0x8004, VAR_0x8005
-	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, UltraSpaceArena_EventScript_TryEmpty
 	goto_if_ne VAR_RIFT_MISSIONS_STATE, 14, UltraSpaceArena_EventScript_End
 	goto_if_eq VAR_RIFT_ALTAR_STEP, ALTAR_STEP_CAPTURE, UltraSpaceArena_EventScript_TryCapture
 	goto_if_ne VAR_0x8004, 10, UltraSpaceArena_EventScript_End
@@ -81,27 +80,6 @@ UltraSpaceArena_EventScript_TryCapture::
 	goto_if_ne VAR_0x8004, 9, UltraSpaceArena_EventScript_End
 	goto_if_ne VAR_0x8005, 11, UltraSpaceArena_EventScript_End
 	goto UltraSpaceArena_EventScript_Capture
-
-UltraSpaceArena_EventScript_TryEmpty::
-	goto_if_ne VAR_0x8004, 10, UltraSpaceArena_EventScript_End
-	goto_if_ne VAR_0x8005, 19, UltraSpaceArena_EventScript_End
-	goto UltraSpaceArena_EventScript_EmptyRift
-
-@ SKELETON: state >= 16, the daily survey, nothing in it yet. THE HANDOFF TO
-@ THE LOOP DOCUMENT. The delay is not cosmetic: this is the only
-@ MAP_TYPE_UNDERGROUND map entered by warpsilent, and the enter-cave transition
-@ runs first (src/fldeff_flash.c). The white-screen freeze reported on this
-@ entry is still an open technical item (plan section 18.5).
-UltraSpaceArena_EventScript_EmptyRift::
-	lockall
-	hidefollower
-	delay 20
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
-	waitmovement OBJ_EVENT_ID_PLAYER
-	msgbox UltraSpaceArena_Text_EmptySurvey, MSGBOX_DEFAULT
-	closemessage
-	releaseall
-	end
 
 @ ---------------------------------------------------------------------------
 @ ACT IV. Measured on dump_mapa.py UltraSpaceArena. The corridor is x=9..11
@@ -663,7 +641,3 @@ UltraSpaceArena_Text_CapturePending:
 	.string "Make room, then speak to me\n"
 	.string "at the altar.$"
 
-@ NARRATOR: no plate. The loop document replaces the script that shows it.
-UltraSpaceArena_Text_EmptySurvey:
-	.string "The chamber is quiet.\n"
-	.string "The passage behind you remains open.$"

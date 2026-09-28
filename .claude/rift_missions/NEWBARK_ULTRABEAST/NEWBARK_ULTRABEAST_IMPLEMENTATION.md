@@ -251,7 +251,7 @@ aren't clear yet") recarrega em (20,12).
 | Parceiro | `UBPartner` | `CheckMysteryEggPokemon` depois da batalha; sai da Ball em (17,13) antes de qualquer fala; Ultra olha e continua oscilando. Cosmog/Cosmoem: Lusamine "Keep {STR_VAR_1} beside you"; Solgaleo/Lunala: faixa de luz até a retaguarda, "The edge is steady", rival "Bring {STR_VAR_1} back"; recolhido na tela. Em todos os ramos (inclusive sem família) o Azumarill dá o último passo atrás |
 | Recuo | `UBRetreat` | pulso que falha; a abertura principal abre em (17,9); Ultra entra de costas; as três pequenas fecham depois; **nove bipes em grupos 2-2-2-3** e o diálogo dos nove; "All three openings are closed"; só então `fadedefaultbgm`; Milotic e Snorlax recolhidos; Looker confere a barricada |
 | Rescaldo | `UBAftermath` | jogador a (16,12); Looker a (17,12); porta abre e a mãe sai a (10,10); rival vai ver o Azumarill (13,13), o jogador acena; rival e Azumarill vão conferir a cerca cortada (14,11)/(14,12); falas na ordem do V2 §16–§17 |
-| Fim | `UBFinish` | narração sem plaquinha da transição ("By evening..."); `fadescreen`; limpa as duas flags; estado 10; `warpsilent` (20,12). **Sem** `FLAG_DAILY_LOOKER_CALL` |
+| Fim | `UBFinish` | narração sem plaquinha da transição ("Later, the markers were packed away...", sem hora do dia); `fadescreen`; limpa as duas flags; estado 10; `warpsilent` (20,12). **Sem** `FLAG_DAILY_LOOKER_CALL` |
 
 ---
 

@@ -187,6 +187,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .frontPic = gMonFrontPic_Egg,
         .frontPicSize = MON_COORDS_SIZE(24, 24),
         .frontPicYOffset = 20,
+        // One frame only. Without it the Hall of Fame built the Egg's sprite
+        // with a NULL anim table and froze right after the first Pokemon.
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .backPic = gMonFrontPic_Egg,
         .backPicSize = MON_COORDS_SIZE(24, 24),
         .backPicYOffset = 20,

@@ -171,7 +171,7 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 >
 > A mouth that was most of a body turned toward you, and the street in front of it was simply not there anymore.
 
-**Ficha do Looker, no altar, no dia em que a UB é capturada**
+**Looker File** — ✅ implementado em 27/09/2026 como **caderno no chão da sala do campeão** ([R18](../NEXUS_REGRAS.md)), descrevendo o universo do fragmento. O texto do jogo foi reescrito e está em `data/scripts/nexus.inc` (`Nexus_Text_<Conceito>_LookerFile`) — ele vence o rascunho abaixo, que era a versão antiga "no altar, no dia da captura".
 
 > File UB-05. Glutton.
 >

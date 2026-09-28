@@ -14,10 +14,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -51,6 +51,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_GLADION_POSTGAME` | 974 | 0x8CE | Lucario Lv78, Crobat Lv78, Weavile Lv79, Zoroark Lv79, Umbreon Lv79, Silvally Lv80 | `CianwoodCity` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_GLADION` = **1037** (flag de batalha `0x90D`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Gladion_Fight`; campeão: `Nexus_EventScript_Gladion_Silvally_ChampionFight` (para Silvally), `Nexus_EventScript_Gladion_TapuBulu_ChampionFight` (para Tapu Bulu). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Gladion.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_GLADION`, campeão de Silvally e Tapu Bulu. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -154,6 +156,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Silvally
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Silvally_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Silvally**. Gladion é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Gladion, irmão da Lillie e filho da Lusamine. Fugiu da Aether com o Type: Null, lutou pelo Team Skull, e neste hack deu ao jogador o Mystery Egg em Violet e, na M1, **outro** Type: Null.
@@ -215,6 +219,8 @@ Nexus_Text_Silvally_LookerFile:
 
 
 #### Tapu Bulu
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_TapuBulu_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Tapu Bulu**. Gladion é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -279,6 +285,8 @@ Nexus_Text_TapuBulu_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Gladion_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Gladion cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 O Gladion fala do que sabe de si: o parceiro dele usou uma máscara de controle e só a quebrou quando confiou nele. A virada é que ele também não aceita máscara nenhuma, nem aqui.
@@ -317,6 +325,8 @@ Nexus_Text_Gladion_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Gladion é o **campeão**, a luta logo antes do lendário do dia. Uma fala por lendário; o nome da espécie não aparece ([R16](../NEXUS_REGRAS.md)). Rótulos com a espécie porque Gladion é campeão de dois.
 
 #### Silvally
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Gladion_Silvally_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Gladion vê lá fora outro Silvally, igual ao dele, com a máscara partida no chão ao lado. A Aether fez esses Pokémon para matar o tipo de criatura que o jogador vem enfrentando, e depois os trancou porque funcionaram. O dele quebrou a máscara por confiar nele; aquele quebrou sozinho, e o Gladion não sabe o que é pior. A virada vem no depois: não tente controlar, foi o que fizeram; e se sobrar alguma coisa dele (o fragmento do R17 é um Type: Null), dê um nome, porque ninguém nunca deu nada a ele. Ecoa o Type: Null que o Gladion deu ao jogador na M1.
 
@@ -379,6 +389,8 @@ Nexus_Text_Gladion_Silvally_ChampionAfter:
 
 
 #### Tapu Bulu
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Gladion_TapuBulu_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Gladion reconhece o sino: ouviu em Ula'ula, quando andava com o Team Skull e guardava uma cidade atrás de um muro. O guardião nunca veio salvar aquela cidade; deixou o mato crescer por cima. Todos diziam que era preguiça; ele acha que era espera. A virada, no depois: irritado, o guardião deixa de proteger e vira um muro com chifres. "Eu já estive do lado errado de um muro. Ele fez bem em não me ajudar."
 

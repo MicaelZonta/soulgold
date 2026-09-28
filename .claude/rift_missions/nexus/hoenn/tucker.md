@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -45,6 +45,8 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 Homônimos genéricos, **não** são este personagem: `TRAINER_TUCKER` ("Tucker", pic Swimmer M).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_TUCKER` = **1030** (flag de batalha `0x906`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Tucker_Fight`; campeão: `Nexus_EventScript_Tucker_Hoopa_ChampionFight` (para Hoopa), `Nexus_EventScript_Tucker_Eternatus_ChampionFight` (para Eternatus). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Tucker.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_TUCKER`, campeão de Eternatus e Hoopa. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -147,6 +149,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Eternatus
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Eternatus_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Eternatus**. Tucker é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Tucker, Dome Ace da Battle Frontier de Hoenn, extravagante e apaixonado pela plateia do torneio do Battle Dome.
@@ -211,6 +215,8 @@ Nexus_Text_Eternatus_LookerFile:
 
 
 #### Hoopa
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Hoopa_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Hoopa**. Tucker é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -278,6 +284,8 @@ Nexus_Text_Hoopa_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Tucker_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Tucker cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -318,6 +326,8 @@ Nexus_Text_Tucker_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Tucker é o campeão, a luta logo antes do lendário do dia. Um registro por lendário; a fala é sobre a criatura, sem dizer o nome dela.
 
 #### Eternatus
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Tucker_Eternatus_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Tucker entende de palco e reconhece a criatura como uma colega: ela tem os refletores, tem o estádio, tem o céu tingido para a entrada dela. Mas a luz dos estádios de Galar era energia tirada dela, e ela vem cobrar. A virada: o Tucker, que vive do aplauso, percebe que aquela criatura faz o que ele tem medo de fazer, que é tirar mais do público do que dá. E admite, meio rindo, que já pensou em fazer igual.
 
@@ -380,6 +390,8 @@ Nexus_Text_Tucker_Eternatus_ChampionAfter:
 
 
 #### Hoopa
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Tucker_Hoopa_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Tucker chega ao fragmento e encontra o sonho dele: um estádio lotado. Só que a plateia foi puxada pelos anéis da criatura, arrancada de algum lugar, e ninguém ali quer estar ali. A virada: o Tucker descobre que uma arquibancada cheia não vale nada se ninguém escolheu vir. E, pela primeira vez, ele luta para uma plateia de uma pessoa só: o jogador, que escolheu entrar.
 

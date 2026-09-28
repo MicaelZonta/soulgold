@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -50,6 +50,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_WILL_1` | 736 | 0x7E0 | Farigiraf Lv68, Reuniclus Lv69, Espeon Lv68, Slowbro Lv68, Braviary-Hisui Lv68, Alakazam Lv69 · *dupla* · VS: Purple | `PokemonLeague_WillsRoom` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_WILL` = **1009** (flag de batalha `0x8F1`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Will_Fight`; campeão: `Nexus_EventScript_Will_IronCrown_ChampionFight` (para Iron Crown), `Nexus_EventScript_Will_Calyrex_ChampionFight` (para Calyrex). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Will.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_WILL`, campeão do Calyrex e do Iron Crown. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -153,6 +155,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Calyrex
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Calyrex_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Calyrex**. Will é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Will, o Psíquico da Elite Four de Johto, mascarado, que "treinou pelo mundo inteiro" até ser aceito na Liga. Um ilusionista: a máscara é parte do número.
@@ -216,6 +220,8 @@ Nexus_Text_Calyrex_LookerFile:
 
 #### Iron Crown
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_IronCrown_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Iron Crown**. Will é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Will, o Psíquico da Elite Four de Johto, mascarado, que "treinou pelo mundo inteiro" até ser aceito na Liga. Um ilusionista: a máscara é parte do número.
@@ -277,6 +283,8 @@ Nexus_Text_IronCrown_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Will_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Will cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -314,6 +322,8 @@ Nexus_Text_Will_Defeat:
 ### Diálogo associado ao lendário
 
 #### Calyrex
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Will_Calyrex_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Will é o **campeão**, a luta logo antes do Calyrex. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -379,6 +389,8 @@ Nexus_Text_Will_Calyrex_ChampionAfter:
 </details>
 
 #### Iron Crown
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Will_IronCrown_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Will é o **campeão**, a luta logo antes do Iron Crown. A fala é sobre a criatura, sem dizer o nome dela.
 

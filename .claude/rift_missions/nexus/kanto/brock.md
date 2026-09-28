@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -45,6 +45,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_BROCK` | 543 | 0x71F | Golem Lv66, Aerodactyl Lv66, Kabutops Lv66, Archeops Lv66, Garganacl Lv66, Kleavor Lv66 | `PewterCity_Gym`, `SaffronCity_FightingDojoVIP`, `src/battle_dome.c`, `src/battle_setup.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_BROCK` = **987** (flag de batalha `0x8DB`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Brock_Fight`; campeão: `Nexus_EventScript_Brock_Terrakion_ChampionFight` (para Terrakion), `Nexus_EventScript_Brock_IronThorns_ChampionFight` (para Iron Thorns). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Brock.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_BROCK`, campeão de Terrakion e Iron Thorns. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -148,6 +150,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Terrakion
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Terrakion_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Terrakion**. Brock é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Brock, Líder de Pewter, especialista em Pedra, "rock-hard willpower". Pewter tem o Museu de Ciência com os fósseis de Kanto. O Onix é o parceiro de sempre.
@@ -214,6 +218,8 @@ Nexus_Text_Terrakion_LookerFile:
 </details>
 
 #### Iron Thorns
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_IronThorns_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Iron Thorns**. Brock é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -282,6 +288,8 @@ Nexus_Text_IronThorns_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brock_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brock cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -320,6 +328,8 @@ Nexus_Text_Brock_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brock é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
 
 #### Terrakion
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brock_Terrakion_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Brock é o muro: o líder que aguenta o primeiro golpe de todo novato, o mais velho de casa atrás de quem os pequenos se escondem. Ele reconhece na criatura alguém do mesmo tipo, mas a virada é que ela não é muro: ela correu contra a muralha, porque às vezes ser sólido é ser quem arrebenta a parede. E ela só sai da frente dos que dormem quando você prova que não é ameaça.
 
@@ -379,6 +389,8 @@ Nexus_Text_Brock_Terrakion_ChampionAfter:
 </details>
 
 #### Iron Thorns
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brock_IronThorns_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Brock lê fósseis desde criança; o trato da pedra é contar o que já viveu. Este está quente, zumbe e vem do futuro: quebra o trato. Ele pede uma luta "que faça sentido" para se acalmar. Depois conta que mediu as placas escondido: o padrão de um velho tirano de armadura, só que construído, não crescido. A virada: ele pensa que um dia alguém vai desenterrar o time dele e perguntar o que eles foram, e torce para acertarem.
 

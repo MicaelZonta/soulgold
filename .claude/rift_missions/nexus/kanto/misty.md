@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
+- [x] Time para as Rift Missions definido
 - [x] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -45,6 +45,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_MISTY` | 544 | 0x720 | Quagsire Lv62, Vaporeon Lv61, Milotic Lv61, Lapras Lv62, Starmie Lv63 | `CeruleanCity_Gym`, `SaffronCity_FightingDojoVIP`, `src/battle_dome.c`, `src/battle_setup.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_MISTY` = **988** (flag de batalha `0x8DC`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Misty_Fight`; campeão: `Nexus_EventScript_Misty_Kyogre_ChampionFight` (para Kyogre), `Nexus_EventScript_Misty_Manaphy_ChampionFight` (para Manaphy). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Misty.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_MISTY`, campeão de Kyogre e Manaphy. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -150,6 +152,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Kyogre
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Kyogre_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Kyogre**. Misty é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Misty, Líder de Cerulean, especialista em Água, "the tomboyish mermaid". O ginásio dela é uma piscina. A Starmie é o ás de sempre.
@@ -216,6 +220,8 @@ Nexus_Text_Kyogre_LookerFile:
 
 #### Manaphy
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Manaphy_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Manaphy**. Misty é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** A mesma Misty, que vive dizendo que vai ser a maior mestra de Pokémon de Água do mundo, e continua em Cerulean.
@@ -281,6 +287,8 @@ Nexus_Text_Manaphy_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Misty_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Misty cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -319,6 +327,8 @@ Nexus_Text_Misty_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Misty é a **campeã**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
 
 #### Kyogre
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Misty_Kyogre_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 Todo mundo acha que a Misty amaria um mundo só de água. Ela viu a coisa chegando e não é bonita: não faz onda, não brilha, só vem. A virada é a piscina do ginásio dela: uma piscina é só água que alguém amou o bastante para dar bordas. A criatura não tem borda nenhuma e quer o mapa inteiro azul. A Misty entende o sentimento e discorda. "Mostra pra ela onde fica a praia."
 
@@ -376,6 +386,8 @@ Nexus_Text_Misty_Kyogre_ChampionAfter:
 </details>
 
 #### Manaphy
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Misty_Manaphy_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A criaturinha pode nadar para qualquer lugar do mundo e sempre volta para casa. A Misty vive prometendo viajar o mundo e nunca vai. Primeiro ela se defende; depois, a virada: a criatura não volta por medo de sair, volta porque tem alguém esperando. Casa, para ela, não é lugar, é quem espera. E é por isso que a Misty nunca fica longe de Cerulean por muito tempo.
 

@@ -1,4 +1,6 @@
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AltarRift;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NexusPortal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NexusLookerFile;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AetherEmitter;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BeastBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanNormal;
@@ -321,6 +323,8 @@ extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Guzma;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Soliera;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Byron;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Fantina;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Cynthia;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_BrendanHoenn;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_NurseChansey;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LegendaryShadow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SlowpokeNoTail;
@@ -694,6 +698,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SOLIERA] =                     &gObjectEventGraphicsInfo_Soliera,
     [OBJ_EVENT_GFX_BYRON] =                       &gObjectEventGraphicsInfo_Byron,
     [OBJ_EVENT_GFX_FANTINA] =                     &gObjectEventGraphicsInfo_Fantina,
+    [OBJ_EVENT_GFX_CYNTHIA] =                     &gObjectEventGraphicsInfo_Cynthia,
+    [OBJ_EVENT_GFX_BRENDAN_HOENN] =               &gObjectEventGraphicsInfo_BrendanHoenn,
+    [OBJ_EVENT_GFX_NEXUS_PORTAL] =             &gObjectEventGraphicsInfo_NexusPortal,
+    [OBJ_EVENT_GFX_NEXUS_LOOKER_FILE] =        &gObjectEventGraphicsInfo_NexusLookerFile,
     [OBJ_EVENT_GFX_TMBALL] =                  &gObjectEventGraphicsInfo_TMBall,
     [OBJ_EVENT_GFX_MEGASTONE] =                  &gObjectEventGraphicsInfo_Megastone,
     [OBJ_EVENT_GFX_RUIN_MANIAC] =                &gObjectEventGraphicsInfo_RuinManiac,

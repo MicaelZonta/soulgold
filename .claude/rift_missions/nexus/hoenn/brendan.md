@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -24,13 +24,14 @@ Aparece no checklist como:
 
 | Constante | Arquivo |
 |---|---|
-| `OBJ_EVENT_GFX_LINK_RS_BRENDAN` | `graphics/object_events/pics/people/ruby_sapphire_brendan/walking.png` |
+| `OBJ_EVENT_GFX_BRENDAN_HOENN` | `graphics/object_events/pics/people/special/brendan_hoenn.png` (arte hyo-oppa, 32x32, 12 quadros) — usar este no Nexus |
+| `OBJ_EVENT_GFX_LINK_RS_BRENDAN` | `graphics/object_events/pics/people/ruby_sapphire_brendan/walking.png` (antigo, RS) |
 
 ### Battle sprite (front pic)
 
 | Constante | Arquivo |
 |---|---|
-| `TRAINER_PIC_FRONT_RS_BRENDAN` | `graphics/trainers/front_pics/brendan_rs.png` |
+| `TRAINER_PIC_FRONT_RS_BRENDAN` | `graphics/trainers/front_pics/brendan_rs.png` (64x64) + `brendan_rs_large.png` (80x80 hyo-oppa, só na batalha) |
 
 ### Field mugshot
 
@@ -49,6 +50,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): `TRAINER_UNUSED_401` (ex-`TRAINER_BRENDAN_ROUTE_119_MUDKIP`, 522), `TRAINER_UNUSED_407` (ex-`TRAINER_BRENDAN_ROUTE_103_TREECKO`, 523), `TRAINER_UNUSED_396` (ex-`TRAINER_BRENDAN_ROUTE_110_TREECKO`, 524), `TRAINER_UNUSED_402` (ex-`TRAINER_BRENDAN_ROUTE_119_TREECKO`, 525), `TRAINER_UNUSED_408` (ex-`TRAINER_BRENDAN_ROUTE_103_TORCHIC`, 526), `TRAINER_UNUSED_397` (ex-`TRAINER_BRENDAN_ROUTE_110_TORCHIC`, 527), `TRAINER_UNUSED_403` (ex-`TRAINER_BRENDAN_ROUTE_119_TORCHIC`, 528), `TRAINER_UNUSED_412` (ex-`TRAINER_BRENDAN_RUSTBORO_TREECKO`, 592), `TRAINER_UNUSED_413` (ex-`TRAINER_BRENDAN_RUSTBORO_MUDKIP`, 593), `TRAINER_UNUSED_414` (ex-`TRAINER_BRENDAN_RUSTBORO_TORCHIC`, 599), `TRAINER_UNUSED_418` (ex-`TRAINER_BRENDAN_LILYCOVE_MUDKIP`, 661), `TRAINER_UNUSED_419` (ex-`TRAINER_BRENDAN_LILYCOVE_TREECKO`, 662), `TRAINER_UNUSED_420` (ex-`TRAINER_BRENDAN_LILYCOVE_TORCHIC`, 663).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_BRENDAN` = **1012** (flag de batalha `0x8F4`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Brendan_Fight`; campeão: `Nexus_EventScript_Brendan_Jirachi_ChampionFight` (para Jirachi), `Nexus_EventScript_Brendan_Reshiram_ChampionFight` (para Reshiram). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Brendan.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_BRENDAN`, campeão do Reshiram e do Jirachi. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -152,6 +155,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Reshiram
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Reshiram_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Reshiram**. Brendan é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Brendan, filho do Professor Birch, de Littleroot. Rival em Ruby/Sapphire/Emerald, faz pesquisa de campo para o pai, e depois de perder para o jogador volta a ajudar na pesquisa.
@@ -212,6 +217,8 @@ Nexus_Text_Reshiram_LookerFile:
 </details>
 
 #### Jirachi
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Jirachi_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Jirachi**. Brendan é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -275,6 +282,8 @@ Nexus_Text_Jirachi_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brendan_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brendan cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -312,6 +321,8 @@ Nexus_Text_Brendan_Defeat:
 ### Diálogo associado ao lendário
 
 #### Reshiram
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brendan_Reshiram_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brendan é o **campeão**, a luta logo antes do Reshiram. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -371,6 +382,8 @@ Nexus_Text_Brendan_Reshiram_ChampionAfter:
 </details>
 
 #### Jirachi
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brendan_Jirachi_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brendan é o **campeão**, a luta logo antes do Jirachi. A fala é sobre a criatura, sem dizer o nome dela.
 

@@ -1286,6 +1286,13 @@ só diz que a rua está segura e o Centro pronto. Os vizinhos livres dela são
 exatamente (18,22) e (19,21), então um `getplayerxy` põe o jogador na linha sem
 warp.
 
+**Corrigido em 26/09/2026 (auditoria):** o retry deixava o jogador em (18,22),
+mas todo movimento a partir de `UBChoose` é medido de **(18,21)** — o tile em
+que a primeira tentativa chega à escolha, depois do `PlayerStepsBack`. Com a
+Celesteela ele descia até (18,25), dentro da faixa de rocha; com o Xurkitree
+parava uma linha antes. Agora `UBSceneRetry` sobe o jogador para (18,21) depois
+de a câmera ser criada e ir para (14,22), nos dois tipos de retry.
+
 ### 16.8 Áudio
 
 `fadeoutbgm 4` quando a Anabel vê a leitura subir, `playbgm MUS_DP_LEGEND_APPEARS, TRUE`

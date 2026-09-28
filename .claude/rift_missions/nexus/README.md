@@ -44,35 +44,40 @@ homônimos genéricos que não são o personagem.
 
 ## Estado em 27/09/2026
 
-**68 de 260 prontas** (sprite + battle sprite), e **10 jogáveis no Nexus**:
-time `TRAINER_NEXUS_*` (IDs 975–984) em `src/data/trainers.party`, fala
-genérica e fala de campeão em `data/scripts/nexus.inc`. Testáveis pelo menu de
-debug → Rift Missions… → Nexus fights….
+**68 de 260 prontas** (sprite + battle sprite), e **68 jogáveis no Nexus** —
+todos os prontos: time `TRAINER_NEXUS_*` (IDs 975–1042) em
+`src/data/trainers.party`, fala genérica e fala de campeão (uma por lendário,
+quando o treinador campeia mais de um, R16) em `data/scripts/nexus.inc`.
+Testáveis pelo menu de debug → Rift Missions… → Nexus fights….
 
 | Região | Prontas | Quais |
 |---|---|---|
-| Kanto | 18/22 | Red, Blue, Brock, Misty, Lt. Surge, Erika, Koga, Sabrina, Blaine, Giovanni, Janine, Leaf, **Bruno**, Lance, Archer, Ariana, Proton, Petrel |
+| Kanto | 18/22 | Red, Blue, Brock, Misty, Lt. Surge, Erika, Koga, Sabrina, Blaine, Giovanni, Janine, Leaf, Bruno, Lance, Archer, Ariana, Proton, Petrel |
 | Johto | 12/12 | Silver, Falkner, Bugsy, Whitney, Morty, Chuck, Jasmine, Pryce, Clair, Will, Karen, Eusine |
-| Hoenn | 26/31 | Brendan, May, Wally, os 8 líderes + Juan, Tate e Liza, a Elite Four, **Steven**, Wallace, os 7 Frontier Brains, Maxie, Archie |
-| Sinnoh | 3/30 | **Fantina**, **Byron**, **Volkner** |
-| Unova | 2/31 | **Elesa**, **Colress** |
-| Kalos | 1/30 | **Ramos** |
-| Alola | 6/27 | Gladion, Lusamine, Kukui, Lillie, **Guzma**, **Soliera** |
+| Hoenn | 26/31 | Brendan, May, Wally, os 8 líderes + Juan, Tate e Liza, a Elite Four, Steven, Wallace, os 7 Frontier Brains, Maxie, Archie |
+| Sinnoh | 3/30 | Fantina, Byron, Volkner |
+| Unova | 2/31 | Elesa, Colress |
+| Kalos | 1/30 | Ramos |
+| Alola | 6/27 | Gladion, Lusamine, Kukui, Lillie, Guzma, Soliera |
 
-Em **negrito**, os 10 jogáveis no Nexus, cada um campeão de uma Ultra Beast:
-Colress → Nihilego, Bruno → Buzzwole, Elesa → Pheromosa, Volkner → Xurkitree,
-Steven → Celesteela, Ramos → Kartana, Guzma → Guzzlord, Soliera → Naganadel,
-Byron → Stakataka, Fantina → Blacephalon. O lendário vale pela fala de campeão;
-o sorteio do Daily que usa essa ligação ainda não existe. Mugshot, dos dez, só
-Bruno e Steven têm. Fora do código: Misty → Kyogre e Giovanni → Mewtwo ou
-Genesect (os dois exemplos do design) e a proposta 📝 da Zossie.
+Todos os 68 são jogáveis, cada um campeão de ao menos um lendário do pool de
+[`POOL_LENDARIOS.md`](POOL_LENDARIOS.md) (121 lendários para 68 treinadores,
+todos usados; **Kyogre** tem dois campeões, Misty e Archie — o sorteio do
+Daily que escolhe entre os dois ainda não existe). O que o jogador leva no fim
+segue o [R17](NEXUS_REGRAS.md) (nível 1, primeira forma). Mugshot, só Bruno e
+Steven têm; os outros ficam sem retrato na caixa de diálogo por ora. A
+**Zossie** fica de fora do Nexus (falta sprite de overworld e battle sprite,
+os dois obrigatórios) — o Poipole que seria dela saiu do pool em 26/09 (vem
+com a luta do Naganadel, ficha da [Soliera](alola/soliera.md)).
 
-**Propostas de 27/09/2026 (📝):** os outros 58 prontos ganharam time
-Traditional, os lendários de que são campeões (fragmento, narração e ficha do
-Looker) e as falas genérica e de campeão. Com isso **todo lendário do pool tem
-campeão** ([`POOL_LENDARIOS.md`](POOL_LENDARIOS.md)): 121 lendários para 68
-treinadores, todos usados. O que o jogador leva no fim segue o
-[R17](NEXUS_REGRAS.md) (nível 1, primeira forma).
+**Implementação em lote de 27/09/2026:** os 58 que só tinham proposta (📝)
+ganharam código a partir das fichas — `championScript` saiu do
+`struct NexusTrainer` e foi para o `struct NexusLegendary`
+(`include/nexus.h`, `src/nexus.c`), porque um treinador pode campeiar mais de
+um lendário (Wattson → Magearna e Zeraora, por exemplo) e cada lendário
+precisa da própria fala de campeão. Build limpo, `nexus_validar_time.py` sem
+erro novo (os dois que sobram — Zossie sem front pic, Ramos com um golpe que o
+Victreebel não aprende — já existiam antes).
 
 **Validar um time:** `python3 dev_scripts/nexus_validar_time.py [fichas]` passa
 cada bloco `=== TRAINER_NEXUS_` pelo `trainerproc` e confere espécie, item,
@@ -95,8 +100,8 @@ habilidade, golpes aprendíveis, 31 IV/252 EV e as três vagas. Precisa do
   Pokéfan, `TRAINER_NOLAND` um Hiker, `TRAINER_TUCKER` um Swimmer,
   `TRAINER_ROXANNE` uma Expert, `TRAINER_NORMAN` um Psychic. O nome da constante
   não prova nada; a ficha só conta a batalha se a `Pic:` for a do personagem.
-- **Cynthia tem PNG solto.** `graphics/trainers/front_pics/cynthia_front_pic.png`
-  existe, mas não há `TRAINER_PIC_FRONT_CYNTHIA` — não está no jogo.
+- **Cynthia** entrou em 27/09/2026: `OBJ_EVENT_GFX_CYNTHIA` e
+  `TRAINER_PIC_FRONT_CYNTHIA` (64x64 `cynthia_front_pic.png` + 80x80).
 - **Quase lá:** Looker (tem overworld, falta front pic); Tabitha, Matt e Shelly
   (têm front pic de admin, falta overworld próprio).
 - **Flags de batalha.** Os IDs 1056–1163 têm a faixa de flag reaproveitada por

@@ -963,64 +963,64 @@
 #define TRAINER_NEXUS_SOLIERA             982 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_118
 #define TRAINER_NEXUS_BYRON               983 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_119
 #define TRAINER_NEXUS_FANTINA             984 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_120
-#define TRAINER_UNUSED_121                985
-#define TRAINER_UNUSED_122                986
-#define TRAINER_UNUSED_123                987
-#define TRAINER_UNUSED_124                988
-#define TRAINER_UNUSED_125                989
-#define TRAINER_UNUSED_126                990
-#define TRAINER_UNUSED_127                991
-#define TRAINER_UNUSED_128                992
-#define TRAINER_UNUSED_129                993
-#define TRAINER_UNUSED_130                994
-#define TRAINER_UNUSED_131                995
-#define TRAINER_UNUSED_132                996
-#define TRAINER_UNUSED_133                997
-#define TRAINER_UNUSED_134                998
-#define TRAINER_UNUSED_135                999
-#define TRAINER_UNUSED_136                1000
-#define TRAINER_UNUSED_137                1001
-#define TRAINER_UNUSED_138                1002
-#define TRAINER_UNUSED_139                1003
-#define TRAINER_UNUSED_140                1004
-#define TRAINER_UNUSED_141                1005
-#define TRAINER_UNUSED_142                1006
-#define TRAINER_UNUSED_143                1007
-#define TRAINER_UNUSED_144                1008
-#define TRAINER_UNUSED_145                1009
-#define TRAINER_UNUSED_146                1010
-#define TRAINER_UNUSED_147                1011
-#define TRAINER_UNUSED_148                1012
-#define TRAINER_UNUSED_149                1013
-#define TRAINER_UNUSED_150                1014
-#define TRAINER_UNUSED_151                1015
-#define TRAINER_UNUSED_152                1016
-#define TRAINER_UNUSED_153                1017
-#define TRAINER_UNUSED_154                1018
-#define TRAINER_UNUSED_155                1019
-#define TRAINER_UNUSED_156                1020
-#define TRAINER_UNUSED_157                1021
-#define TRAINER_UNUSED_158                1022
-#define TRAINER_UNUSED_159                1023
-#define TRAINER_UNUSED_160                1024
-#define TRAINER_UNUSED_161                1025
-#define TRAINER_UNUSED_162                1026
-#define TRAINER_UNUSED_163                1027
-#define TRAINER_UNUSED_164                1028
-#define TRAINER_UNUSED_165                1029
-#define TRAINER_UNUSED_166                1030
-#define TRAINER_UNUSED_167                1031
-#define TRAINER_UNUSED_168                1032
-#define TRAINER_UNUSED_169                1033
-#define TRAINER_UNUSED_170                1034
-#define TRAINER_UNUSED_171                1035
-#define TRAINER_UNUSED_172                1036
-#define TRAINER_UNUSED_173                1037
-#define TRAINER_UNUSED_174                1038
-#define TRAINER_UNUSED_175                1039
-#define TRAINER_UNUSED_176                1040
-#define TRAINER_UNUSED_177                1041
-#define TRAINER_UNUSED_178                1042
+#define TRAINER_NEXUS_RED            985 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_121
+#define TRAINER_NEXUS_BLUE           986 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_122
+#define TRAINER_NEXUS_BROCK          987 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_123
+#define TRAINER_NEXUS_MISTY          988 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_124
+#define TRAINER_NEXUS_LT_SURGE       989 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_125
+#define TRAINER_NEXUS_ERIKA          990 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_126
+#define TRAINER_NEXUS_KOGA           991 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_127
+#define TRAINER_NEXUS_SABRINA        992 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_128
+#define TRAINER_NEXUS_BLAINE         993 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_129
+#define TRAINER_NEXUS_GIOVANNI       994 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_130
+#define TRAINER_NEXUS_LANCE          995 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_131
+#define TRAINER_NEXUS_ARCHER         996 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_132
+#define TRAINER_NEXUS_ARIANA         997 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_133
+#define TRAINER_NEXUS_PROTON         998 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_134
+#define TRAINER_NEXUS_PETREL         999 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_135
+#define TRAINER_NEXUS_SILVER         1000 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_136
+#define TRAINER_NEXUS_FALKNER        1001 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_137
+#define TRAINER_NEXUS_BUGSY          1002 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_138
+#define TRAINER_NEXUS_WHITNEY        1003 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_139
+#define TRAINER_NEXUS_MORTY          1004 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_140
+#define TRAINER_NEXUS_CHUCK          1005 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_141
+#define TRAINER_NEXUS_JASMINE        1006 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_142
+#define TRAINER_NEXUS_PRYCE          1007 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_143
+#define TRAINER_NEXUS_CLAIR          1008 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_144
+#define TRAINER_NEXUS_WILL           1009 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_145
+#define TRAINER_NEXUS_KAREN          1010 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_146
+#define TRAINER_NEXUS_EUSINE         1011 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_147
+#define TRAINER_NEXUS_BRENDAN        1012 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_148
+#define TRAINER_NEXUS_MAY            1013 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_149
+#define TRAINER_NEXUS_WALLY          1014 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_150
+#define TRAINER_NEXUS_ROXANNE        1015 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_151
+#define TRAINER_NEXUS_BRAWLY         1016 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_152
+#define TRAINER_NEXUS_WATTSON        1017 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_153
+#define TRAINER_NEXUS_FLANNERY       1018 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_154
+#define TRAINER_NEXUS_NORMAN         1019 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_155
+#define TRAINER_NEXUS_WINONA         1020 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_156
+#define TRAINER_NEXUS_TATE_AND_LIZA  1021 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_157
+#define TRAINER_NEXUS_WALLACE        1022 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_158
+#define TRAINER_NEXUS_JUAN           1023 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_159
+#define TRAINER_NEXUS_SIDNEY         1024 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_160
+#define TRAINER_NEXUS_PHOEBE         1025 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_161
+#define TRAINER_NEXUS_GLACIA         1026 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_162
+#define TRAINER_NEXUS_DRAKE          1027 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_163
+#define TRAINER_NEXUS_NOLAND         1028 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_164
+#define TRAINER_NEXUS_GRETA          1029 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_165
+#define TRAINER_NEXUS_TUCKER         1030 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_166
+#define TRAINER_NEXUS_LUCY           1031 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_167
+#define TRAINER_NEXUS_SPENSER        1032 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_168
+#define TRAINER_NEXUS_BRANDON        1033 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_169
+#define TRAINER_NEXUS_ANABEL         1034 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_170
+#define TRAINER_NEXUS_MAXIE          1035 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_171
+#define TRAINER_NEXUS_ARCHIE         1036 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_172
+#define TRAINER_NEXUS_GLADION        1037 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_173
+#define TRAINER_NEXUS_KUKUI          1038 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_174
+#define TRAINER_NEXUS_LUSAMINE       1039 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_175
+#define TRAINER_NEXUS_JANINE         1040 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_176
+#define TRAINER_NEXUS_LEAF           1041 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_177
+#define TRAINER_NEXUS_LILLIE         1042 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_178
 #define TRAINER_UNUSED_179                1043
 #define TRAINER_UNUSED_180                1044
 #define TRAINER_UNUSED_181                1045

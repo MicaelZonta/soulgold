@@ -1115,5 +1115,24 @@ Debug_EventScript_NexusFantinaChampion::
 	releaseall
 	end
 
+@ Nexus loop (data/maps/Nexus): straight into room 1 from anywhere, skipping
+@ the altar and its R10 check; and a new day - fresh state and a new draw.
+Debug_EventScript_NexusEnter::
+	special Nexus_EnterFromAltar
+	fadescreen FADE_TO_BLACK
+	warpsilent MAP_NEXUS, 10, 19
+	waitstate
+	end
+
+Debug_EventScript_NexusNewDay::
+	lockall
+	special Nexus_DebugNewDay
+	msgbox Debug_Text_NexusNewDay, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Debug_Text_NexusNewDay:
+	.string "Nexus: new day, new draw.$"
+
 Debug_Text_NexusChampion:
 	.string "Fight as the legendary's champion?$"

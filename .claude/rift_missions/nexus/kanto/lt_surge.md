@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -45,6 +45,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_LTSURGE` | 302 | 0x62E | Electrode Lv57, Magnezone Lv59, Lanturn Lv58, Manectric Lv58, Electivire Lv59, Raichu Lv60 | `SaffronCity_FightingDojoVIP`, `VermilionCity_Gym`, `src/battle_dome.c`, `src/battle_setup.c`, `src/match_call.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_LT_SURGE` = **989** (flag de batalha `0x8DD`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_LtSurge_Fight`; campeão: `Nexus_EventScript_LtSurge_Zapdos_ChampionFight` (para Zapdos), `Nexus_EventScript_LtSurge_SandyShocks_ChampionFight` (para Sandy Shocks), `Nexus_EventScript_LtSurge_Regieleki_ChampionFight` (para Regieleki). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Lt. Surge.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_LT_SURGE`, campeão de Zapdos, Regieleki e Sandy Shocks. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -148,6 +150,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Zapdos
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Zapdos_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Zapdos**. Lt. Surge é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Lt. Surge, Líder de Vermilion, veterano de guerra, "the Lightning American". Em Red/Blue: "Electric Pokémon saved me during the war!" O ginásio dele esconde a porta atrás de interruptores em latas de lixo.
@@ -212,6 +216,8 @@ Nexus_Text_Zapdos_LookerFile:
 
 #### Regieleki
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Regieleki_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Regieleki**. Lt. Surge é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** O mesmo Lt. Surge: o soldado barulhento que acredita em disciplina.
@@ -275,6 +281,8 @@ Nexus_Text_Regieleki_LookerFile:
 </details>
 
 #### Sandy Shocks
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_SandyShocks_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Sandy Shocks**. Lt. Surge é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -342,6 +350,8 @@ Nexus_Text_SandyShocks_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_LtSurge_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lt. Surge cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -379,6 +389,8 @@ Nexus_Text_LtSurge_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lt. Surge é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
 
 #### Zapdos
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_LtSurge_Zapdos_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Surge fala da criatura como fala de guerra: tempestade era cobertura, barulho e clarão para ninguém ver você chegando. A virada: a ave não se esconde na tempestade, ela é a tempestade, e disso não se toma cobertura. No fim ele liga a criatura à usina fechada perto de casa (a Power Plant de Kanto, que dizem ainda zumbir à noite) e dá um conselho de soldado: nunca enfrentar a tempestade de frente; esperar o clarão, contar, e mexer-se.
 
@@ -436,6 +448,8 @@ Nexus_Text_LtSurge_Zapdos_ChampionAfter:
 
 #### Regieleki
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_LtSurge_Regieleki_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 O Surge vê nos anéis uma gaiola, não uma armadura: alguém construiu aquilo para segurar tanta força. A cada anel que quebra, a criatura fica mais rápida; ele já viu soldados assim, que sem regra não param. A virada é sobre ele mesmo: o barulho do Surge é o anel dele, deixa a carga sair aos poucos para nunca explodir de uma vez. A criatura nunca aprendeu a gritar.
 
 **Antes da luta**
@@ -492,6 +506,8 @@ Nexus_Text_LtSurge_Regieleki_ChampionAfter:
 </details>
 
 #### Sandy Shocks
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_LtSurge_SandyShocks_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 Deserto é terreno conhecido para o Surge, e deserto esconde coisa. A criatura é munição velha: enterrada há tanto tempo que parece chão, e ainda viva. A virada é a regra de veterano: tudo que fica enterrado tempo bastante começa a parecer o chão, e ela vai puxar as Poké Balls antes de puxar você. "Pise onde eu pisei."
 

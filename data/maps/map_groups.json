@@ -1211,7 +1211,8 @@
   ],
   "gMapGroup_RiftMissions": [
     "SunMoonAltar",
-    "UltraSpaceArena"
+    "UltraSpaceArena",
+    "Nexus"
   ],
   "rom_excluded_groups": [
     "gMapGroup_Emerald1",

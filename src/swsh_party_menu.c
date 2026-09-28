@@ -10300,9 +10300,21 @@ static void UnselectLastBattleEntry(void)
 {
     u8 i;
     u8 maxBattlers = GetMaxBattleEntries();
-    u8 slot = gSelectedOrderFromParty[maxBattlers - 1] - 1;
+    u8 last = maxBattlers;
+    u8 slot;
 
-    gSelectedOrderFromParty[maxBattlers - 1] = 0;
+    // The selection can close with fewer picks than slots (1 mon + an Egg in a
+    // multi battle), so the last pick is not always in the last slot. Reading
+    // the empty slot gave slot 255 and wrote outside sPartyMenuBoxes.
+    while (last > 0 && gSelectedOrderFromParty[last - 1] == 0)
+        last--;
+    if (last == 0)
+    {
+        RefreshSelectedMonInfoAndPrompt();
+        return;
+    }
+    slot = gSelectedOrderFromParty[last - 1] - 1;
+    gSelectedOrderFromParty[last - 1] = 0;
     DisplayPartyPokemonDescriptionText(PARTYBOX_DESC_ABLE_3, &sPartyMenuBoxes[slot], 1);
     for (i = 0; i < maxBattlers - 1; i++)
     {

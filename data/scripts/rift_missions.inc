@@ -61,19 +61,17 @@ RiftMissions_EventScript_LookerCallEnd::
 	releaseall
 	end
 
-@ State 4 -> Mahogany. The one piece of humour allowed is here, outside the
-@ emergency: he is warm on the telephone and short in danger.
-@ It says who raised the alarm (Pryce) and what has already been done with
-@ Blackthorn's data, so the briefing has somewhere to start from.
+@ State 4 -> Mahogany (MAHOGANY_ULTRABEAST_SCRIPT_V2.md section 5,
+@ Phone_Text_LookerMahoganyInvite, verbatim). It says who raised the alarm
+@ (Pryce) and that Blackthorn's data is already being used, so the briefing has
+@ somewhere to start from. No hour of the day (design 5.3).
 RiftMissions_Text_LookerCallM2:
-	.string "{SPEAKER NAME_LOOKER}{PLAYER}? It's Looker.\p"
-	.string "Pryce has reported unusual\n"
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}, it's Looker.\p"
+	.string "Pryce reported unusual\n"
 	.string "Pokémon in Mahogany.\p"
-	.string "Anabel has been comparing the\n"
-	.string "readings with Blackthorn's\l"
-	.string "since breakfast.\p"
-	.string "I have been holding her coffee.\p"
-	.string "Meet us at our base in Olivine.$"
+	.string "Meet us at our base in Olivine.\p"
+	.string "Anabel has compared the\n"
+	.string "readings with Blackthorn's.$"
 
 @ State 6 -> Cherrygrove (CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md section 3): the
 @ place and the reason for the meeting, nothing else.

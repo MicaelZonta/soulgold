@@ -7,12 +7,12 @@ Aparece no checklist como:
 - **Cynthia — Campeã** (Sinnoh · Elite Four e Campeã) — arqueóloga, pesquisadora de mitos e uma das Campeãs mais poderosas.
 - **Cynthia** (Unova · Outros notáveis) — Campeã visitante que pode ser desafiada em Undella Town.
 
-**Pronto para o Nexus:** ❌ não — falta sprite de overworld e battle sprite (os dois são obrigatórios).
+**Pronto para o Nexus:** ✅ sim — tem sprite e battle sprite.
 
 ## Checklist
 
-- [ ] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)*
+- [x] Sprite de overworld *(obrigatório)*
+- [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
 - [ ] Time para as Rift Missions definido
 - [ ] Associado a um lendário
@@ -23,17 +23,20 @@ Aparece no checklist como:
 
 ### Sprite de overworld
 
-Não existe. Criar com a skill `adicionar-npc`.
+| Constante | Arquivo |
+|---|---|
+| `OBJ_EVENT_GFX_CYNTHIA` | `graphics/object_events/pics/people/special/cynthia.png` (32x32, 9 quadros; a folha de origem não tem o lado direito). Arte oficial (Pokémon Platinum) |
 
 ### Battle sprite (front pic)
 
-Não existe. Criar com a skill `adicionar-grafico-trainer`.
+| Constante | Arquivo |
+|---|---|
+| `TRAINER_PIC_FRONT_CYNTHIA` | `graphics/trainers/front_pics/cynthia_front_pic.png` (64x64) + `cynthia_large.png` (80x80, só na batalha). Arte oficial (Pokémon Platinum) |
 
 ### Field mugshot
 
 Não existe. Opcional; criar com a skill `adicionar-grafico-trainer` (precisa do `case` em `GetFieldMugshotIdByObjectGraphicsId`).
 
-> **Atenção:** **Existe o arquivo** `graphics/trainers/front_pics/cynthia_front_pic.png`, mas ele **não está integrado**: não há `TRAINER_PIC_FRONT_CYNTHIA` nem entrada em `gTrainerSprites[]`. Para usar, seguir a skill `adicionar-grafico-trainer`.
 
 ### Batalhas que já existem (campanha)
 

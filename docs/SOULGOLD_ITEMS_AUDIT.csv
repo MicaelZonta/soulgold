@@ -1,0 +1,934 @@
+id,name,section,pocket,status,how,description,example_source
+0,ITEM_NONE,?,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador, var computado)",?????,data/maps/MtMoon_Shop/scripts.inc (MtMoon_Shop)
+1,ITEM_POKE_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Item escondido (hidden_item); Loja / pokemart; Script (additem); Script (dado ao jogador); Script (dado ao jogador, var computado)",A tool used for catching wild Pokémon.,data/maps/NewBarkTown_Lab/scripts.inc:1134
+2,ITEM_GREAT_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador, var computado)",A good Ball with a higher catch rate than a Poké Ball.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1036
+3,ITEM_ULTRA_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador, var computado)",A better Ball with a higher catch rate than a Great Ball.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1052
+4,ITEM_MASTER_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,Script (dado ao jogador),The best Ball that catches them all.,data/maps/NewBarkTown_Lab/scripts.inc:998
+5,ITEM_PREMIER_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador, var computado)",A rare Ball made in commemoration of some event.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1174
+6,ITEM_HEAL_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador, var computado)",A remedial Ball that restores caught Pokémon.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1044
+7,ITEM_NET_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador, var computado)",A Ball that works well on Water- and Bug-type Pokémon.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1124
+8,ITEM_NEST_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador, var computado)",A Ball that works better on weaker Pokémon.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1116
+9,ITEM_DIVE_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador, var computado)",A Ball that works better on Pokémon on the ocean floor.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1158
+10,ITEM_DUSK_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador, var computado)",Works well if used in a dark place.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1166
+11,ITEM_TIMER_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A Ball that gains power in battles taking many turns.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1140
+12,ITEM_QUICK_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador, var computado)",Works well if used on the first turn.,data/maps/GoldenrodCity_RadioTower_2F/scripts.inc:396
+13,ITEM_REPEAT_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador, var computado)",A Ball that works better on Pokémon caught before.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1148
+14,ITEM_LUXURY_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A cozy Ball that makes Pokémon more friendly.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1480
+15,ITEM_LEVEL_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A Ball that works well on lower level Pokémon.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1486
+16,ITEM_LURE_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A Ball that works well on fished up Pokémon.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1492
+17,ITEM_MOON_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A Ball that works well on Moon Stone users.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1498
+18,ITEM_FRIEND_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A Ball that makes a Pokémon friendly when caught.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1504
+19,ITEM_LOVE_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",Works well on Pokémon of the opposite gender.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1510
+20,ITEM_FAST_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",Works well on very fast Pokémon.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:240
+21,ITEM_HEAVY_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",Works well on very heavy Pokémon.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1522
+22,ITEM_DREAM_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A Ball that works well on sleeping Pokémon. A Poké Ball used in the Entree Forest.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1528
+23,ITEM_SAFARI_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A special Ball that is used only in the Safari Zone.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1534
+24,ITEM_SPORT_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A special Ball used in the Bug- Catching Contest.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1540
+25,ITEM_PARK_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A special Ball for the Pal Park.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1546
+26,ITEM_BEAST_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A Ball designed to catch Ultra Beasts.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1558
+27,ITEM_CHERISH_BALL,Poké Balls,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",A rare Ball made in commemoration of some event.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1564
+28,ITEM_POTION,Medicine,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade); Script (dado ao jogador),Restores the HP of a Pokémon by 20 points.,data/maps/OldaleTown/scripts.inc:74
+29,ITEM_SUPER_POTION,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart; Pickup (habilidade),Restores the HP of a Pokémon by 60 points. 50 points.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+30,ITEM_HYPER_POTION,Medicine,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade),Restores the HP of a Pokémon by 120 points. 200 points.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+31,ITEM_MAX_POTION,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart; Pickup (habilidade),Fully restores the HP of a Pokémon.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+32,ITEM_FULL_RESTORE,Medicine,POCKET_MEDICINE,OBTIVEL,"Item escondido (hidden_item); Loja / pokemart; Script (dado ao jogador, var computado)",Fully restores the HP and status of a Pokémon.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+33,ITEM_REVIVE,Medicine,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade),Revives a fainted Pokémon with half its HP.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+34,ITEM_MAX_REVIVE,Medicine,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade),Revives a fainted Pokémon with all its HP.,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+35,ITEM_FRESH_WATER,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,A mineral water that restores HP by 30 points. by 50 points.,data/maps/MtMoon_Shop/scripts.inc (MtMoon_Shop)
+36,ITEM_SODA_POP,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,A fizzy soda drink that restores HP by 50 points. by 60 points.,data/maps/MtMoon_Shop/scripts.inc (MtMoon_Shop)
+37,ITEM_LEMONADE,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,A very sweet drink that restores HP by 70 points. by 80 points.,data/maps/MtMoon_Shop/scripts.inc (MtMoon_Shop)
+38,ITEM_MOOMOO_MILK,Medicine,POCKET_MEDICINE,OBTIVEL,Script (additem),A nutritious milk that restores HP by 100 points.,data/maps/Route39_FarmHouse/scripts.inc:45
+39,ITEM_ENERGY_POWDER,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,A bitter powder that restores HP by 60 points. by 50 points.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+40,ITEM_ENERGY_ROOT,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,A bitter root that restores HP by 120 points. by 200 points.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+41,ITEM_HEAL_POWDER,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,A bitter powder that heals all status problems.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+42,ITEM_REVIVAL_HERB,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,A very bitter herb that revives a fainted Pokémon.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+43,ITEM_ANTIDOTE,Medicine,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,Heals a poisoned Pokémon.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+44,ITEM_PARALYZE_HEAL,Medicine,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,Heals a paralyzed Pokémon.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+45,ITEM_BURN_HEAL,Medicine,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,Heals Pokémon of a burn.,data/maps/LilycoveCity_DepartmentStore_2F/scripts.inc (LilycoveCity_DepartmentStore_2F)
+46,ITEM_ICE_HEAL,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,Defrosts a frozen Pokémon.,data/maps/LilycoveCity_DepartmentStore_2F/scripts.inc (LilycoveCity_DepartmentStore_2F)
+47,ITEM_AWAKENING,Medicine,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,Awakens a sleeping Pokémon.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+48,ITEM_FULL_HEAL,Medicine,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade),Heals all the status problems of one Pokémon.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+49,ITEM_ETHER,Medicine,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade),Restores the PP of a selected move by 10.,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+50,ITEM_MAX_ETHER,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart; Pickup (habilidade),Fully restores the PP of a selected move.,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+51,ITEM_ELIXIR,Medicine,POCKET_MEDICINE,OBTIVEL,"Item escondido (hidden_item); Loja / pokemart; Script (dado ao jogador, var computado)",Restores the PP of all moves by 10.,data/maps/GoldenrodCity_RadioTower_2F/scripts.inc:416
+52,ITEM_MAX_ELIXIR,Medicine,POCKET_MEDICINE,OBTIVEL,"Loja / pokemart; Script (dado ao jogador, var computado)",Fully restores the PP of a Pokémon's moves.,data/maps/GoldenrodCity_RadioTower_2F/scripts.inc:426
+53,ITEM_BERRY_JUICE,Medicine,POCKET_MEDICINE,OBTIVEL,Script (dado ao jogador),A 100% pure juice that restores HP by 20 points.,data/maps/MauvilleCity_GameCorner/scripts.inc:2544
+54,ITEM_SACRED_ASH,Medicine,POCKET_MEDICINE,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Fully revives and restores all fainted Pokémon.,gen_2_families.h
+55,ITEM_SWEET_HEART,Medicine,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,A sweet chocolate that restores HP by 20 points.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+56,ITEM_MAX_HONEY,Medicine,POCKET_MEDICINE,SEM FONTE,,Revives a fainted Pokémon with all its HP.,
+57,ITEM_PEWTER_CRUNCHIES,Regional Specialties,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,Heals all the status problems of one Pokémon.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+58,ITEM_RAGE_CANDY_BAR,Regional Specialties,POCKET_MEDICINE,OBTIVEL,Script (dado ao jogador),Heals all the status problems of one Pokémon.,data/maps/Mahoganytown/scripts.inc:219
+59,ITEM_LAVA_COOKIE,Regional Specialties,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,A local specialty that heals all status problems.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+60,ITEM_OLD_GATEAU,Regional Specialties,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,Heals all the status problems of one Pokémon.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+61,ITEM_CASTELIACONE,Regional Specialties,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,Heals all the status problems of one Pokémon.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+62,ITEM_LUMIOSE_GALETTE,Regional Specialties,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,Heals all the status problems of one Pokémon.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+63,ITEM_SHALOUR_SABLE,Regional Specialties,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,Heals all the status problems of one Pokémon.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+64,ITEM_BIG_MALASADA,Regional Specialties,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,Heals all the status problems of one Pokémon.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+65,ITEM_HP_UP,Vitamins,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Script (dado ao jogador),Raises the base HP of one Pokémon.,data/maps/VermilionCity/scripts.inc:191
+66,ITEM_PROTEIN,Vitamins,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,Raises the base Attack stat of one Pokémon.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+67,ITEM_IRON,Vitamins,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,Raises the base Defense stat of one Pokémon.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+68,ITEM_CALCIUM,Vitamins,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,Raises the base Sp. Atk stat of one Pokémon.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+69,ITEM_ZINC,Vitamins,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,Raises the base Sp. Def stat of one Pokémon.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+70,ITEM_CARBOS,Vitamins,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,Raises the base Speed stat of one Pokémon.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+71,ITEM_PP_UP,Vitamins,POCKET_MEDICINE,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade),Raises the maximum PP of a selected move.,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+72,ITEM_PP_MAX,Vitamins,POCKET_MEDICINE,OBTIVEL,"Item escondido (hidden_item); Loja / pokemart; Script (dado ao jogador); Script (dado ao jogador, var computado)",Raises the PP of a move to its maximum points.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+73,ITEM_HEALTH_FEATHER,EV Feathers,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,An item that raises the Innate HP value of a Pokémon.,data/maps/BattleFrontier_BattleFactoryLobby/scripts.inc (BattleFrontier_BattleFactoryLobby)
+74,ITEM_MUSCLE_FEATHER,EV Feathers,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,An item that raises the Innate Attack value of a Pokémon.,data/maps/BattleFrontier_BattleFactoryLobby/scripts.inc (BattleFrontier_BattleFactoryLobby)
+75,ITEM_RESIST_FEATHER,EV Feathers,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,An item that raises the Innate Defense value of a Pokémon.,data/maps/BattleFrontier_BattleFactoryLobby/scripts.inc (BattleFrontier_BattleFactoryLobby)
+76,ITEM_GENIUS_FEATHER,EV Feathers,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,An item that raises the Innate Sp. Atk value of a Pokémon.,data/maps/BattleFrontier_BattleFactoryLobby/scripts.inc (BattleFrontier_BattleFactoryLobby)
+77,ITEM_CLEVER_FEATHER,EV Feathers,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,An item that raises the Innate Sp. Def value of a Pokémon.,data/maps/BattleFrontier_BattleFactoryLobby/scripts.inc (BattleFrontier_BattleFactoryLobby)
+78,ITEM_SWIFT_FEATHER,EV Feathers,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,An item that raises the Innate Speed value of a Pokémon.,data/maps/BattleFrontier_BattleFactoryLobby/scripts.inc (BattleFrontier_BattleFactoryLobby)
+79,ITEM_ABILITY_CAPSULE,Ability Modifiers,POCKET_ITEMS,OBTIVEL,Loja / pokemart; Pickup (habilidade),Switches a Pokémon's ability.,data/maps/BattleFrontier_BattleFactoryLobby/scripts.inc (BattleFrontier_BattleFactoryLobby)
+80,ITEM_ABILITY_PATCH,Ability Modifiers,POCKET_ITEMS,OBTIVEL,"Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade); Script (dado ao jogador, var computado)",Turns the ability of a Pokémon into a rare ability.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+81,ITEM_LONELY_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Attack, but reduces Defense.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+82,ITEM_ADAMANT_MINT,Mints,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,"Can be smelled. It ups Attack, but reduces Sp. Atk.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+83,ITEM_NAUGHTY_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Attack, but reduces Sp. Def.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+84,ITEM_BRAVE_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Attack, but reduces Speed.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+85,ITEM_BOLD_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Defense, but reduces Attack.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+86,ITEM_IMPISH_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Defense, but reduces Sp. Atk.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+87,ITEM_LAX_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Defense, but reduces Sp. Def.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+88,ITEM_RELAXED_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Defense, but reduces Speed.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+89,ITEM_MODEST_MINT,Mints,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,"Can be smelled. It ups Sp. Atk, but reduces Attack.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+90,ITEM_MILD_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Sp. Atk, but reduces Defense.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+91,ITEM_RASH_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Sp. Atk, but reduces Sp. Def.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+92,ITEM_QUIET_MINT,Mints,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item); Loja / pokemart,"Can be smelled. It ups Sp. Atk, but reduces Speed.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+93,ITEM_CALM_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Sp. Def, but reduces Attack.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+94,ITEM_GENTLE_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Sp. Def, but reduces Defense.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+95,ITEM_CAREFUL_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Sp. Def, but reduces Sp. Atk.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+96,ITEM_SASSY_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Sp. Def, but reduces Speed.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+97,ITEM_TIMID_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Speed, but reduces Attack.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+98,ITEM_HASTY_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Speed, but reduces Defense.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+99,ITEM_JOLLY_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Speed, but reduces Sp. Atk.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+100,ITEM_NAIVE_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"Can be smelled. It ups Speed, but reduces Sp. Def.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+101,ITEM_SERIOUS_MINT,Mints,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Can be smelled. It makes each stat grow equally.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+102,ITEM_RARE_CANDY,Candy,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item); Pickup (habilidade); Script (dado ao jogador),Raises the level of a Pokémon by one.,data/maps/VermilionCity_FanClub/scripts.inc:14
+103,ITEM_EXP_CANDY_XS,Candy,POCKET_ITEMS,SEM FONTE,,Gives a very small amount of Exp. to a single Pokémon.,
+104,ITEM_EXP_CANDY_S,Candy,POCKET_ITEMS,SEM FONTE,,Gives a small amount of Exp. to a single Pokémon.,
+105,ITEM_EXP_CANDY_M,Candy,POCKET_ITEMS,OBTIVEL,Script (dado ao jogador),Gives a moderate amount of Exp. to a single Pokémon.,data/maps/Kitakami_Houses/scripts.inc:42
+106,ITEM_EXP_CANDY_L,Candy,POCKET_ITEMS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",Gives a large amount of Exp. to a single Pokémon.,data/maps/GoldenrodCity_RadioTower_2F/scripts.inc:446
+107,ITEM_EXP_CANDY_XL,Candy,POCKET_ITEMS,OBTIVEL,Loja / pokemart; Script (dado ao jogador),Gives a very large amount of Exp. to a single Pokémon.,data/maps/BattleCafe/scripts.inc:2137
+108,ITEM_DYNAMAX_CANDY,Candy,POCKET_ITEMS,SEM FONTE,,Raises the Dynamax Level of a single Pokémon by one.,
+109,ITEM_BLUE_FLUTE,Medicinal Flutes,POCKET_MEDICINE,SO EM MAPA FORA DA CAMPANHA,"Mencionado em script (verificar); Script (dado ao jogador, var computado)",A glass flute that awakens sleeping Pokémon.,"data/maps/Route113_GlassWorkshop/scripts.inc:75: setvar VAR_0x8008, ITEM_BLUE_FLUTE"
+110,ITEM_YELLOW_FLUTE,Medicinal Flutes,POCKET_MEDICINE,SO EM MAPA FORA DA CAMPANHA,"Mencionado em script (verificar); Script (dado ao jogador, var computado)",A glass flute that snaps Pokémon out of confusion.,"data/maps/Route113_GlassWorkshop/scripts.inc:87: setvar VAR_0x8008, ITEM_YELLOW_FLUTE"
+111,ITEM_RED_FLUTE,Medicinal Flutes,POCKET_MEDICINE,SO EM MAPA FORA DA CAMPANHA,"Mencionado em script (verificar); Script (dado ao jogador, var computado)",A glass flute that snaps Pokémon out of attraction.,"data/maps/Route113_GlassWorkshop/scripts.inc:99: setvar VAR_0x8008, ITEM_RED_FLUTE"
+112,ITEM_BLACK_FLUTE,Encounter-modifying Flutes,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,"Mencionado em script (verificar); Script (dado ao jogador, var computado)",A glass flute that keeps away wild Pokémon.,"data/maps/Route113_GlassWorkshop/scripts.inc:123: setvar VAR_0x8008, ITEM_BLACK_FLUTE"
+113,ITEM_WHITE_FLUTE,Encounter-modifying Flutes,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,"Mencionado em script (verificar); Script (dado ao jogador, var computado)",A glass flute that lures wild Pokémon.,"data/maps/Route113_GlassWorkshop/scripts.inc:111: setvar VAR_0x8008, ITEM_WHITE_FLUTE"
+114,ITEM_REPEL,Encounter Modifiers,POCKET_ITEMS,OBTIVEL,Loja / pokemart; Pickup (habilidade),Repels weak wild Pokémon for 100 steps.,data/maps/MtMoon_Shop/scripts.inc (MtMoon_Shop)
+115,ITEM_SUPER_REPEL,Encounter Modifiers,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade),Repels weak wild Pokémon for 200 steps.,data/maps/FallarborTown_Mart/scripts.inc (FallarborTown_Mart)
+116,ITEM_MAX_REPEL,Encounter Modifiers,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade),Repels weak wild Pokémon for 250 steps.,data/maps/LilycoveCity_DepartmentStore_2F/scripts.inc (LilycoveCity_DepartmentStore_2F)
+117,ITEM_LURE,Encounter Modifiers,POCKET_ITEMS,SO MENCIONADO,ver script,Makes Pokémon more likely to appear for 100 steps.,"data/scripts/repel.inc:14: bufferitemname STR_VAR_1, ITEM_LURE"
+118,ITEM_SUPER_LURE,Encounter Modifiers,POCKET_ITEMS,SEM FONTE,,Makes Pokémon more likely to appear for 200 steps.,
+119,ITEM_MAX_LURE,Encounter Modifiers,POCKET_ITEMS,SEM FONTE,,Makes Pokémon more likely to appear for 250 steps.,
+120,ITEM_ESCAPE_ROPE,Encounter Modifiers,POCKET_KEY_ITEMS,OBTIVEL,Loja / pokemart,Use to escape instantly from a cave or a dungeon.,data/maps/FallarborTown_Mart/scripts.inc (FallarborTown_Mart)
+121,ITEM_X_ATTACK,X Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Sharply raises stat Attack during one battle. Raises the stat Attack during one battle.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+122,ITEM_X_DEFENSE,X Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Sharply raises stat Defense during one battle. Raises the stat Defense during one battle.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+123,ITEM_X_SP_ATK,X Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Sharply raises stat Sp. Atk during one battle. Raises the stat Sp. Atk during one battle.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+124,ITEM_X_SP_DEF,X Items,POCKET_ITEMS,SEM FONTE,,Sharply raises stat Sp. Def during one battle. Raises the stat Sp. Def during one battle.,
+125,ITEM_X_SPEED,X Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Sharply raises stat Speed during one battle. Raises the stat Speed during one battle.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+126,ITEM_X_ACCURACY,X Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Sharply raises move accuracy during one battle. Raises accuracy of attack moves during one battle.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+127,ITEM_DIRE_HIT,X Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Raises the critical-hit ratio during one battle.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+128,ITEM_GUARD_SPEC,X Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Prevents stat reduction when used in battle.,data/maps/TrainerHill_Entrance/scripts.inc (TrainerHill_Entrance)
+129,ITEM_POKE_DOLL,Escape Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart; Pickup (habilidade),Use to flee from any battle with a wild Pokémon.,data/maps/MtMoon_Shop/scripts.inc (MtMoon_Shop)
+130,ITEM_FLUFFY_TAIL,Escape Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Use to flee from any battle with a wild Pokémon.,data/maps/LilycoveCity_DepartmentStore_2F/scripts.inc (LilycoveCity_DepartmentStore_2F)
+131,ITEM_POKE_TOY,Escape Items,POCKET_ITEMS,SEM FONTE,,Use to flee from any battle with a wild Pokémon.,
+132,ITEM_MAX_MUSHROOMS,Escape Items,POCKET_ITEMS,SEM FONTE,,Raises every stat during one battle by one stage.,
+133,ITEM_BOTTLE_CAP,Treasures,POCKET_ITEMS,OBTIVEL,Loja / pokemart; Pickup (habilidade),A beautiful bottle cap that gives off a silver gleam.,data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+134,ITEM_GOLD_BOTTLE_CAP,Treasures,POCKET_ITEMS,OBTIVEL,Loja / pokemart; Script (dado ao jogador),A beautiful bottle cap that gives off a golden gleam.,data/maps/BattleCafe/scripts.inc:1845
+135,ITEM_NUGGET,Treasures,POCKET_ITEMS,OBTIVEL,"Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade); Script (dado ao jogador); Script (dado ao jogador, var computado)",A nugget of pure gold. Can be sold at a high price.,data/maps/Route2_House/scripts.inc:9
+136,ITEM_BIG_NUGGET,Treasures,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item); Loja / pokemart; Pickup (habilidade); Script (dado ao jogador),"A big nugget made of gold, sellable at a high price.",data/maps/Route25/scripts.inc:82
+137,ITEM_TINY_MUSHROOM,Treasures,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item); Pickup (habilidade),A plain mushroom that would sell at a cheap price.,IlexForest
+138,ITEM_BIG_MUSHROOM,Treasures,POCKET_ITEMS,OBTIVEL,Pickup (habilidade),A rare mushroom that would sell at a high price.,battle_script_commands.c sPickupTable
+139,ITEM_BALM_MUSHROOM,Treasures,POCKET_ITEMS,OBTIVEL,Pickup (habilidade),A rare mushroom that would sell at a high price.,battle_script_commands.c sPickupTable
+140,ITEM_PEARL,Treasures,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A pretty pearl that would sell at a cheap price.,gen_3_families.h
+141,ITEM_BIG_PEARL,Treasures,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item),A lovely large pearl that would sell at a high price.,DarkCave_NorthSide
+142,ITEM_PEARL_STRING,Treasures,POCKET_ITEMS,SEM FONTE,,Very large pearls that would sell at a high price.,
+143,ITEM_STARDUST,Treasures,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item),Beautiful red sand. Can be sold at a high price.,CherrygroveCity
+144,ITEM_STAR_PIECE,Treasures,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item),A red gem shard. It would sell for a very high price.,VajraDesertEast
+145,ITEM_COMET_SHARD,Treasures,POCKET_ITEMS,SEM FONTE,,A comet's shard. It would sell for a high price.,
+146,ITEM_SHOAL_SALT,Treasures,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),Salt obtained from deep inside the Shoal Cave.,data/maps/ShoalCave_LowTideStairsRoom/scripts.inc:20
+147,ITEM_SHOAL_SHELL,Treasures,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A seashell found deep inside the Shoal Cave.,data/maps/ShoalCave_LowTideInnerRoom/scripts.inc:65
+148,ITEM_RED_SHARD,Treasures,POCKET_ITEMS,SO MENCIONADO,ver script,A shard from an ancient item. Can be sold cheaply.,data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc:31: checkitem ITEM_RED_SHARD
+149,ITEM_BLUE_SHARD,Treasures,POCKET_ITEMS,SO MENCIONADO,ver script,A shard from an ancient item. Can be sold cheaply.,data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc:35: checkitem ITEM_BLUE_SHARD
+150,ITEM_YELLOW_SHARD,Treasures,POCKET_ITEMS,SO MENCIONADO,ver script,A shard from an ancient item. Can be sold cheaply.,data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc:33: checkitem ITEM_YELLOW_SHARD
+151,ITEM_GREEN_SHARD,Treasures,POCKET_ITEMS,SO MENCIONADO,ver script,A shard from an ancient item. Can be sold cheaply.,data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc:37: checkitem ITEM_GREEN_SHARD
+152,ITEM_HEART_SCALE,Treasures,POCKET_ITEMS,OBTIVEL,Script (dado ao jogador),A lovely scale. It can be sold at a high price.,data/scripts/field_move_scripts.inc:586
+153,ITEM_HONEY,Treasures,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Sweet honey that attracts wild Pokémon when used.,gen_3_families.h
+154,ITEM_RARE_BONE,Treasures,POCKET_ITEMS,OBTIVEL,Item escondido (hidden_item),A very rare bone. It can be sold at a high price.,Route46
+155,ITEM_ODD_KEYSTONE,Treasures,POCKET_ITEMS,SEM FONTE,,Voices can be heard from this odd stone occasionally.,
+156,ITEM_PRETTY_FEATHER,Treasures,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A beautiful yet plain feather that does nothing.,gen_3_families.h
+157,ITEM_RELIC_COPPER,Treasures,POCKET_ITEMS,SEM FONTE,,A copper coin used long ago. It sells at a high price.,
+158,ITEM_RELIC_SILVER,Treasures,POCKET_ITEMS,SEM FONTE,,A silver coin used long ago. It sells at a high price.,
+159,ITEM_RELIC_GOLD,Treasures,POCKET_ITEMS,SO MENCIONADO,ver script,A gold coin used long ago. It sells at a high price.,data/maps/VajraPyramidFloor4/scripts.inc:35: finditem ITEM_RELIC_GOLD
+160,ITEM_RELIC_VASE,Treasures,POCKET_ITEMS,SEM FONTE,,A vase made long ago. It sells at a high price.,
+161,ITEM_RELIC_BAND,Treasures,POCKET_ITEMS,SEM FONTE,,An old bracelet. It sells at a high price.,
+162,ITEM_RELIC_STATUE,Treasures,POCKET_ITEMS,SEM FONTE,,An old statue. It sells at a high price.,
+163,ITEM_RELIC_CROWN,Treasures,POCKET_ITEMS,SEM FONTE,,An old crown. It sells at a high price.,
+164,ITEM_STRANGE_SOUVENIR,Treasures,POCKET_ITEMS,OBTIVEL,Loja / pokemart,An ornament that depicts a Pokémon from another region.,data/maps/OlivineCity/scripts.inc (OlivineCity)
+165,ITEM_HELIX_FOSSIL,Fossils,POCKET_ITEMS,SO MENCIONADO,ver script,A piece of an ancient marine Pokémon's seashell.,"data/maps/RuinsOfAlph_Lab/scripts.inc:136: bufferitemname STR_VAR_1, ITEM_HELIX_FOSSIL"
+166,ITEM_DOME_FOSSIL,Fossils,POCKET_ITEMS,SO MENCIONADO,ver script,A piece of an ancient marine Pokémon's shell.,"data/maps/RuinsOfAlph_Lab/scripts.inc:148: bufferitemname STR_VAR_1, ITEM_DOME_FOSSIL"
+167,ITEM_OLD_AMBER,Fossils,POCKET_ITEMS,OBTIVEL,Script (dado ao jogador),A stone containing the genes of an ancient Pokémon.,data/maps/MauvilleCity_GameCorner/scripts.inc:1674
+168,ITEM_ROOT_FOSSIL,Fossils,POCKET_ITEMS,SO MENCIONADO,ver script,"A fossil of an ancient, seafloor- dwelling Pokémon.",data/maps/PewterCity_Museum_1F/scripts.inc:9: finditem ITEM_ROOT_FOSSIL
+169,ITEM_CLAW_FOSSIL,Fossils,POCKET_ITEMS,SO MENCIONADO,ver script,"A fossil of an ancient, seafloor- dwelling Pokémon.",data/maps/PewterCity_Museum_1F/scripts.inc:15: finditem ITEM_CLAW_FOSSIL
+170,ITEM_ARMOR_FOSSIL,Fossils,POCKET_ITEMS,SEM FONTE,,A piece of a prehistoric Poké- mon's head.,
+171,ITEM_SKULL_FOSSIL,Fossils,POCKET_ITEMS,SEM FONTE,,A piece of a prehistoric Poké- mon's collar.,
+172,ITEM_COVER_FOSSIL,Fossils,POCKET_ITEMS,SO MENCIONADO,ver script,A piece of a prehistoric Poké- mon's back.,"data/maps/RuinsOfAlph_Lab/scripts.inc:208: bufferitemname STR_VAR_1, ITEM_COVER_FOSSIL"
+173,ITEM_PLUME_FOSSIL,Fossils,POCKET_ITEMS,SO MENCIONADO,ver script,A piece of a prehistoric Poké- mon's wing.,"data/maps/RuinsOfAlph_Lab/scripts.inc:172: bufferitemname STR_VAR_1, ITEM_PLUME_FOSSIL"
+174,ITEM_JAW_FOSSIL,Fossils,POCKET_ITEMS,SO MENCIONADO,ver script,A piece of a prehistoric Poké- mon's large jaw.,"data/maps/RuinsOfAlph_Lab/scripts.inc:184: bufferitemname STR_VAR_1, ITEM_JAW_FOSSIL"
+175,ITEM_SAIL_FOSSIL,Fossils,POCKET_ITEMS,SO MENCIONADO,ver script,A piece of a prehistoric Poké- mon's skin sail.,"data/maps/RuinsOfAlph_Lab/scripts.inc:196: bufferitemname STR_VAR_1, ITEM_SAIL_FOSSIL"
+176,ITEM_FOSSILIZED_BIRD,Fossils,POCKET_ITEMS,SEM FONTE,,"A fossil of an ancient, sky- soaring Pokémon.",
+177,ITEM_FOSSILIZED_FISH,Fossils,POCKET_ITEMS,SEM FONTE,,"A fossil of an ancient, sea- dwelling Pokémon.",
+178,ITEM_FOSSILIZED_DRAKE,Fossils,POCKET_ITEMS,SEM FONTE,,"A fossil of an ancient, land- roaming Pokémon.",
+179,ITEM_FOSSILIZED_DINO,Fossils,POCKET_ITEMS,SEM FONTE,,"A fossil of an ancient, sea- dwelling Pokémon.",
+180,ITEM_GROWTH_MULCH,Mulch,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A fertilizer that accelerates the growth of Berries.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+181,ITEM_DAMP_MULCH,Mulch,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A fertilizer that decelerates the growth of Berries.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+182,ITEM_STABLE_MULCH,Mulch,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A fertilizer that ups the life time of Berry trees.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+183,ITEM_GOOEY_MULCH,Mulch,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A fertilizer that makes more Berries regrow after fall.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+184,ITEM_RICH_MULCH,Mulch,POCKET_ITEMS,SEM FONTE,,A fertilizer that ups the number of Berries harvested.,
+185,ITEM_SURPRISE_MULCH,Mulch,POCKET_ITEMS,SEM FONTE,,A fertilizer that ups the chance of Berry mutations.,
+186,ITEM_BOOST_MULCH,Mulch,POCKET_ITEMS,SEM FONTE,,A fertilizer that ups the dry speed of soft soil.,
+187,ITEM_AMAZE_MULCH,Mulch,POCKET_ITEMS,SEM FONTE,,A fertilizer Rich Surprising and Boosting as well.,
+188,ITEM_RED_APRICORN,Apricorns,POCKET_ITEMS,SEM FONTE,,A red apricorn. It assails your nostrils.,
+189,ITEM_BLUE_APRICORN,Apricorns,POCKET_ITEMS,SEM FONTE,,A blue apricorn. It smells a bit like grass.,
+190,ITEM_YELLOW_APRICORN,Apricorns,POCKET_ITEMS,SEM FONTE,,A yellow apricorn. It has an invigor- ating scent.,
+191,ITEM_GREEN_APRICORN,Apricorns,POCKET_ITEMS,SEM FONTE,,"A green apricorn. It has a strange, aromatic scent.",
+192,ITEM_PINK_APRICORN,Apricorns,POCKET_ITEMS,SEM FONTE,,"A pink apricorn. It has a nice, sweet scent.",
+193,ITEM_WHITE_APRICORN,Apricorns,POCKET_ITEMS,SEM FONTE,,A white apricorn. It doesn't smell like anything.,
+194,ITEM_BLACK_APRICORN,Apricorns,POCKET_ITEMS,SEM FONTE,,A black apricorn. It has an inde- scribable scent.,
+195,ITEM_WISHING_PIECE,Apricorns,POCKET_ITEMS,SEM FONTE,,Throw into a {PKMN} Den to attract Dynamax Pokémon.,
+196,ITEM_GALARICA_TWIG,Apricorns,POCKET_ITEMS,SEM FONTE,,A twig from a tree in Galar called Galarica.,
+197,ITEM_ARMORITE_ORE,Apricorns,POCKET_ITEMS,SEM FONTE,,A rare ore. Can be found in the Isle of Armor at Galar.,
+198,ITEM_DYNITE_ORE,Apricorns,POCKET_ITEMS,SEM FONTE,,A mysterious ore. It can be found in Galar's Max Lair.,
+200,ITEM_HARBOR_MAIL,Mail,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,Loja / pokemart; Mencionado em script (verificar),A Wingull-print Mail to be held by a Pokémon.,data/maps/MauvilleCity_House2/scripts.inc:9: checkitem ITEM_HARBOR_MAIL
+201,ITEM_GLITTER_MAIL,Mail,POCKET_ITEMS,SEM FONTE,,A Pikachu-print Mail to be held by a Pokémon.,
+202,ITEM_MECH_MAIL,Mail,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A Magnemite-print Mail to be held by a Pokémon.,data/maps/AzaleaTown_Mart/scripts.inc (AzaleaTown_Mart)
+203,ITEM_WOOD_MAIL,Mail,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A Slakoth-print Mail to be held by a Pokémon.,data/maps/VioletCity_Mart/scripts.inc (VioletCity_Mart)
+204,ITEM_WAVE_MAIL,Mail,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A Wailmer-print Mail to be held by a Pokémon.,data/maps/LilycoveCity_DepartmentStore_2F/scripts.inc (LilycoveCity_DepartmentStore_2F)
+205,ITEM_BEAD_MAIL,Mail,POCKET_ITEMS,SEM FONTE,,Mail featuring a sketch of the holding Pokémon.,
+206,ITEM_SHADOW_MAIL,Mail,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,Loja / pokemart,A Duskull-print Mail to be held by a Pokémon.,data/maps/SootopolisCity_Mart/scripts.inc (SootopolisCity_Mart)
+207,ITEM_TROPIC_MAIL,Mail,POCKET_ITEMS,SEM FONTE,,A Bellossom-print Mail to be held by a Pokémon.,
+208,ITEM_DREAM_MAIL,Mail,POCKET_ITEMS,SEM FONTE,,Mail featuring a sketch of the holding Pokémon.,
+209,ITEM_FAB_MAIL,Mail,POCKET_ITEMS,SEM FONTE,,A gorgeous-print Mail to be held by a Pokémon.,
+210,ITEM_RETRO_MAIL,Mail,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Mail featuring the drawings of three Pokémon.,data/maps/BlackthornCity_Mart/scripts.inc (BlackthornCity_Mart)
+211,ITEM_FIRE_STONE,Evolution Items,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador); Script (dado ao jogador, var computado)",Makes certain species of Pokémon evolve.,data/maps/MauvilleCity_GameCorner/scripts.inc:1752
+212,ITEM_WATER_STONE,Evolution Items,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador); Script (dado ao jogador, var computado)",Makes certain species of Pokémon evolve.,data/maps/MauvilleCity_GameCorner/scripts.inc:1804
+213,ITEM_THUNDER_STONE,Evolution Items,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador); Script (dado ao jogador, var computado)",Makes certain species of Pokémon evolve.,data/maps/MauvilleCity_GameCorner/scripts.inc:1778
+214,ITEM_LEAF_STONE,Evolution Items,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador); Script (dado ao jogador, var computado)",Makes certain species of Pokémon evolve.,data/maps/MauvilleCity_GameCorner/scripts.inc:1830
+215,ITEM_ICE_STONE,Evolution Items,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador, var computado)",Makes certain species of Pokémon evolve.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+216,ITEM_SUN_STONE,Evolution Items,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Pickup (habilidade); Script (dado ao jogador); Script (dado ao jogador, var computado)",Makes certain species of Pokémon evolve.,data/maps/MauvilleCity_GameCorner/scripts.inc:1700
+217,ITEM_MOON_STONE,Evolution Items,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Pickup (habilidade); Script (dado ao jogador); Script (dado ao jogador, var computado)",Makes certain species of Pokémon evolve.,data/maps/MauvilleCity_GameCorner/scripts.inc:1726
+218,ITEM_SHINY_STONE,Evolution Items,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador, var computado)",Makes certain species of Pokémon evolve.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+219,ITEM_DUSK_STONE,Evolution Items,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador, var computado)",Makes certain species of Pokémon evolve.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+220,ITEM_DAWN_STONE,Evolution Items,POCKET_ITEMS,OBTIVEL,"Loja / pokemart; Script (dado ao jogador, var computado)",Makes certain species of Pokémon evolve.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+221,ITEM_SWEET_APPLE,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A very sweet apple that makes certain Pokémon evolve.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+222,ITEM_TART_APPLE,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A very tart apple that makes certain Pokémon evolve.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+223,ITEM_CRACKED_POT,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A cracked teapot that makes certain Pokémon evolve.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+224,ITEM_CHIPPED_POT,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A chipped teapot that makes certain Pokémon evolve.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+225,ITEM_GALARICA_CUFF,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A cuff from Galar that makes certain Pokémon evolve.,data/maps/AzaleaTown_Mart/scripts.inc (AzaleaTown_Mart)
+226,ITEM_GALARICA_WREATH,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A wreath made in Galar. Makes some Pokémon evolve.,data/maps/AzaleaTown_Mart/scripts.inc (AzaleaTown_Mart)
+227,ITEM_DRAGON_SCALE,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A strange scale held by Dragon- type Pokémon.,data/maps/MahoganyTown_Shop/scripts.inc (MahoganyTown_Shop)
+228,ITEM_UPGRADE,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A peculiar box made by Silph Co.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+229,ITEM_PROTECTOR,Evolution Items,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Loved by a certain Pokémon. It's stiff and heavy.,gen_1_families.h
+230,ITEM_ELECTIRIZER,Evolution Items,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Loved by a certain Pokémon. It's full of electric energy.,gen_1_families.h
+231,ITEM_MAGMARIZER,Evolution Items,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Loved by a certain Pokémon. It's full of magma energy.,gen_1_families.h
+232,ITEM_DUBIOUS_DISC,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A clear device overflowing with dubious data.,data/maps/MahoganyTown_Shop/scripts.inc (MahoganyTown_Shop)
+233,ITEM_REAPER_CLOTH,Evolution Items,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Loved by a certain Pokémon. Imbued with spirit energy.,gen_3_families.h
+234,ITEM_PRISM_SCALE,Evolution Items,POCKET_ITEMS,OBTIVEL,Script (dado ao jogador),A mysterious scale that evolves a certain Pokémon.,data/maps/MauvilleCity_GameCorner/scripts.inc:1620
+235,ITEM_WHIPPED_DREAM,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A soft and sweet treat loved by a certain Pokémon.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+236,ITEM_SACHET,Evolution Items,POCKET_ITEMS,OBTIVEL,Loja / pokemart,"A sachet of strong perfumes, loved by a certain Pokémon.",data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+237,ITEM_OVAL_STONE,Evolution Items,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Peculiar stone that evolves a certain Pokémon.,gen_1_families.h
+238,ITEM_STRAWBERRY_SWEET,Evolution Items,POCKET_ITEMS,SEM FONTE,,Strawberry-shaped sweet loved by Milcery.,
+239,ITEM_LOVE_SWEET,Evolution Items,POCKET_ITEMS,SEM FONTE,,A heart-shaped sweet loved by Milcery.,
+240,ITEM_BERRY_SWEET,Evolution Items,POCKET_ITEMS,SEM FONTE,,A berry-shaped sweet loved by Milcery.,
+241,ITEM_CLOVER_SWEET,Evolution Items,POCKET_ITEMS,SEM FONTE,,A clover-shaped sweet loved by Milcery.,
+242,ITEM_FLOWER_SWEET,Evolution Items,POCKET_ITEMS,SEM FONTE,,A flower-shaped sweet loved by Milcery.,
+243,ITEM_STAR_SWEET,Evolution Items,POCKET_ITEMS,SEM FONTE,,A star-shaped sweet loved by Milcery.,
+244,ITEM_RIBBON_SWEET,Evolution Items,POCKET_ITEMS,SEM FONTE,,A ribbon-shaped sweet loved by Milcery.,
+245,ITEM_EVERSTONE,Evolution Items,POCKET_BATTLE_ITEMS,OBTIVEL,"Script (dado ao jogador, var computado)",A wondrous hold item that prevents evolution.,data/maps/Route25_BillsHouse/scripts.inc:49
+246,ITEM_RED_NECTAR,Nectars,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Flower nectar that changes the form of certain Pokémon.,data/maps/OlivineCity/scripts.inc (OlivineCity)
+247,ITEM_YELLOW_NECTAR,Nectars,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Flower nectar that changes the form of certain Pokémon.,data/maps/OlivineCity/scripts.inc (OlivineCity)
+248,ITEM_PINK_NECTAR,Nectars,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Flower nectar that changes the form of certain Pokémon.,data/maps/OlivineCity/scripts.inc (OlivineCity)
+249,ITEM_PURPLE_NECTAR,Nectars,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Flower nectar that changes the form of certain Pokémon.,data/maps/OlivineCity/scripts.inc (OlivineCity)
+250,ITEM_FLAME_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Fire-type moves.,
+251,ITEM_SPLASH_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Water-type moves.,
+252,ITEM_ZAP_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Elec- tric-type moves.,
+253,ITEM_MEADOW_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Grass-type moves.,
+254,ITEM_ICICLE_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Ice-type moves.,
+255,ITEM_FIST_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Fight- ing-type moves.,
+256,ITEM_TOXIC_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Poison-type moves.,
+257,ITEM_EARTH_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Ground-type moves.,
+258,ITEM_SKY_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Flying-type moves.,
+259,ITEM_MIND_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Psy chic-type moves.,
+260,ITEM_INSECT_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Bug-type moves.,
+261,ITEM_STONE_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Rock-type moves.,
+262,ITEM_SPOOKY_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Ghost-type moves.,
+263,ITEM_DRACO_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Dragon-type moves.,
+264,ITEM_DREAD_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Dark-type moves.,
+265,ITEM_IRON_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Steel-type moves.,
+266,ITEM_PIXIE_PLATE,Plates,POCKET_BATTLE_ITEMS,SEM FONTE,,A tablet that ups the power of Fairy-type moves.,
+267,ITEM_DOUSE_DRIVE,Drives,POCKET_BATTLE_ITEMS,SEM FONTE,,Changes Genesect's Techno Blast to Water-type.,
+268,ITEM_SHOCK_DRIVE,Drives,POCKET_BATTLE_ITEMS,SEM FONTE,,Changes Genesect's Techno Blast to Electric-type.,
+269,ITEM_BURN_DRIVE,Drives,POCKET_BATTLE_ITEMS,SEM FONTE,,Changes Genesect's Techno Blast to Fire-type.,
+270,ITEM_CHILL_DRIVE,Drives,POCKET_BATTLE_ITEMS,SEM FONTE,,Changes Genesect's Techno Blast to Ice-type.,
+271,ITEM_FIRE_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Fire type data. It swaps Silvally's type.,
+272,ITEM_WATER_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Water type data. It swaps Silvally's type.,
+273,ITEM_ELECTRIC_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Electric type data. It swaps Silvally's type.,
+274,ITEM_GRASS_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Grass type data. It swaps Silvally's type.,
+275,ITEM_ICE_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Ice type data. It swaps Silvally's type.,
+276,ITEM_FIGHTING_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,Disc with Fighting type data. It swaps Silvally's type.,
+277,ITEM_POISON_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Poison type data. It swaps Silvally's type.,
+278,ITEM_GROUND_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Ground type data. It swaps Silvally's type.,
+279,ITEM_FLYING_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Flying type data. It swaps Silvally's type.,
+280,ITEM_PSYCHIC_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Psychic type data. It swaps Silvally's type.,
+281,ITEM_BUG_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Bug type data. It swaps Silvally's type.,
+282,ITEM_ROCK_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Rock type data. It swaps Silvally's type.,
+283,ITEM_GHOST_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Ghost type data. It swaps Silvally's type.,
+284,ITEM_DRAGON_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Dragon type data. It swaps Silvally's type.,
+285,ITEM_DARK_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Dark type data. It swaps Silvally's type.,
+286,ITEM_STEEL_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Steel type data. It swaps Silvally's type.,
+287,ITEM_FAIRY_MEMORY,Memories,POCKET_BATTLE_ITEMS,SEM FONTE,,A disc with Fairy type data. It swaps Silvally's type.,
+288,ITEM_RUSTED_SWORD,Memories,POCKET_ITEMS,SEM FONTE,,A rusty sword. A hero used it to halt a disaster.,
+289,ITEM_RUSTED_SHIELD,Memories,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),A rusty shield. A hero used it to halt a disaster.,trainers.party:12087
+290,ITEM_RED_ORB,Colored Orbs,POCKET_BATTLE_ITEMS,SO MENCIONADO,ver script,"A red, glowing orb said to contain an ancient power.",data/maps/Route50UnderwaterCave2/scripts.inc:30: finditem ITEM_RED_ORB
+291,ITEM_BLUE_ORB,Colored Orbs,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),"A blue, glowing orb said to contain an ancient power.",trainers.party:13721
+292,ITEM_VENUSAURITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Venusaur to Mega Evolve in battle.,
+293,ITEM_CHARIZARDITE_X,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Charizard to Mega Evolve in battle.,
+294,ITEM_CHARIZARDITE_Y,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Charizard to Mega Evolve in battle.,
+295,ITEM_BLASTOISINITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Blastoise to Mega Evolve in battle.,
+296,ITEM_BEEDRILLITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Beedrill to Mega Evolve in battle.,
+297,ITEM_PIDGEOTITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Pidgeot to Mega Evolve in battle.,
+298,ITEM_ALAKAZITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Alakazam to Mega Evolve in battle.,
+299,ITEM_SLOWBRONITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Slowbro to Mega Evolve in battle.,
+300,ITEM_GENGARITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Gengar to Mega Evolve in battle.,
+301,ITEM_KANGASKHANITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Kangaskhan to Mega Evolve in battle.,
+302,ITEM_PINSIRITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Pinsir to Mega Evolve in battle.,
+303,ITEM_GYARADOSITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Gyarados to Mega Evolve in battle.,
+304,ITEM_AERODACTYLITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Aerodactyl to Mega Evolve in battle.,
+305,ITEM_MEWTWONITE_X,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Mewtwo to Mega Evolve in battle.,
+306,ITEM_MEWTWONITE_Y,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Mewtwo to Mega Evolve in battle.,
+307,ITEM_AMPHAROSITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Ampharos to Mega Evolve in battle.,
+308,ITEM_STEELIXITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Steelix to Mega Evolve in battle.,
+309,ITEM_SCIZORITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Scizor to Mega Evolve in battle.,
+310,ITEM_HERACRONITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Heracross to Mega Evolve in battle.,
+311,ITEM_HOUNDOOMINITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Houndoom to Mega Evolve in battle.,
+312,ITEM_TYRANITARITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Tyranitar to Mega Evolve in battle.,
+313,ITEM_SCEPTILITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Sceptile to Mega Evolve in battle.,
+314,ITEM_BLAZIKENITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Blaziken to Mega Evolve in battle.,
+315,ITEM_SWAMPERTITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Swampert to Mega Evolve in battle.,
+316,ITEM_GARDEVOIRITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Gardevoir to Mega Evolve in battle.,
+317,ITEM_SABLENITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Sableye to Mega Evolve in battle.,
+318,ITEM_MAWILITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Mawile to Mega Evolve in battle.,
+319,ITEM_AGGRONITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Aggron to Mega Evolve in battle.,
+320,ITEM_MEDICHAMITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Medicham to Mega Evolve in battle.,
+321,ITEM_MANECTITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Manectric to Mega Evolve in battle.,
+322,ITEM_SHARPEDONITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Sharpedo to Mega Evolve in battle.,
+323,ITEM_CAMERUPTITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Camerupt to Mega Evolve in battle.,
+324,ITEM_ALTARIANITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Altaria to Mega Evolve in battle.,
+325,ITEM_BANETTITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Banette to Mega Evolve in battle.,
+326,ITEM_ABSOLITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Absol to Mega Evolve in battle.,
+327,ITEM_GLALITITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Glalie to Mega Evolve in battle.,
+328,ITEM_SALAMENCITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Salamence to Mega Evolve in battle.,
+329,ITEM_METAGROSSITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Metagross to Mega Evolve in battle.,
+330,ITEM_LATIASITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Latias to Mega Evolve in battle.,
+331,ITEM_LATIOSITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Latios to Mega Evolve in battle.,
+332,ITEM_LOPUNNITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Lopunny to Mega Evolve in battle.,
+333,ITEM_GARCHOMPITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Garchomp to Mega Evolve in battle.,
+334,ITEM_LUCARIONITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Lucario to Mega Evolve in battle.,
+335,ITEM_ABOMASITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Abomasnow to Mega Evolve in battle.,
+336,ITEM_GALLADITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Gallade to Mega Evolve in battle.,
+337,ITEM_AUDINITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Audino to Mega Evolve in battle.,
+338,ITEM_DIANCITE,Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Diancie to Mega Evolve in battle.,
+339,ITEM_NORMAL_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Normal Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+340,ITEM_FIRE_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Fire Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+341,ITEM_WATER_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Water Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+342,ITEM_ELECTRIC_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Electric Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+343,ITEM_GRASS_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Grass Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+344,ITEM_ICE_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Ice Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+345,ITEM_FIGHTING_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Fighting Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+346,ITEM_POISON_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Poison Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+347,ITEM_GROUND_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Ground Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+348,ITEM_FLYING_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Flying Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+349,ITEM_PSYCHIC_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Psychic Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+350,ITEM_BUG_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Bug Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+351,ITEM_ROCK_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Rock Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+352,ITEM_GHOST_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Ghost Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+353,ITEM_DRAGON_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Dragon Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+354,ITEM_DARK_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Dark Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+355,ITEM_STEEL_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Steel Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+356,ITEM_FAIRY_GEM,Gems,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of Fairy Type moves.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+357,ITEM_NORMALIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Normal- type moves into Z-Moves.,
+358,ITEM_FIRIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Fire- type moves into Z-Moves.,
+359,ITEM_WATERIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Water- type moves into Z-Moves.,
+360,ITEM_ELECTRIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Electric- type moves into Z-Moves.,
+361,ITEM_GRASSIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Grass- type moves into Z-Moves.,
+362,ITEM_ICIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Ice- type moves into Z-Moves.,
+363,ITEM_FIGHTINIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Fighting- type moves into Z-Moves.,
+364,ITEM_POISONIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Poison- type moves into Z-Moves.,
+365,ITEM_GROUNDIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Ground- type moves into Z-Moves.,
+366,ITEM_FLYINIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Flying- type moves into Z-Moves.,
+367,ITEM_PSYCHIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Psychic- type moves into Z-Moves.,
+368,ITEM_BUGINIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Bug- type moves into Z-Moves.,
+369,ITEM_ROCKIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Rock- type moves into Z-Moves.,
+370,ITEM_GHOSTIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Ghost- type moves into Z-Moves.,
+371,ITEM_DRAGONIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Dragon- type moves into Z-Moves.,
+372,ITEM_DARKINIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Dark- type moves into Z-Moves.,
+373,ITEM_STEELIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Steel- type moves into Z-Moves.,
+374,ITEM_FAIRIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Fairy- type moves into Z-Moves.,
+375,ITEM_PIKANIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Pikachu's Volt Tackle into a Z-Move.,
+376,ITEM_EEVIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Eevee's Last Resort into a Z-Move.,
+377,ITEM_SNORLIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Snorlax's Giga Impact into a Z-Move.,
+378,ITEM_MEWNIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Mew's Psychic into a Z-Move.,
+379,ITEM_DECIDIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Decidu- eye's Spirit Sha- ckle into a Z-Move.,
+380,ITEM_INCINIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Incine- roar's Darkest La- riat into a Z-Move.,
+381,ITEM_PRIMARIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Primarina's Sparkling Aria into a Z-Move.,
+382,ITEM_LYCANIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Lycanroc's Stone Edge into a Z-Move.,
+383,ITEM_MIMIKIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Mimikyu's Play Rough into a Z-Move.,
+384,ITEM_KOMMONIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Kommo-o's Clanging Scales into a Z-Move.,
+385,ITEM_TAPUNIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade the tapus' Nature's Madness into a Z-Move.,
+386,ITEM_SOLGANIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Solgaleo's Sunsteel Strike into a Z-Move.,
+387,ITEM_LUNALIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Lunala's Moongeist Beam into a Z-Move.,
+388,ITEM_MARSHADIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Marsha- dow's Spectral Thi- ef into a Z-Move.,
+389,ITEM_ALORAICHIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Alolan Raichu's Thunder- bolt into a Z-Move.,
+390,ITEM_PIKASHUNIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,Upgrade Pikachu w/ a cap's Thunderbolt into a Z-Move.,
+391,ITEM_ULTRANECROZIUM_Z,Z-Crystals,POCKET_BATTLE_ITEMS,SEM FONTE,,A crystal to turn fused Necrozma into a new form.,
+392,ITEM_LIGHT_BALL,Species-specific Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo); Held item selvagem (Roubo/Golpe do Dia),A hold item that raises the Atk and Sp. Atk of Pikachu.,gen_1_families.h
+393,ITEM_LEEK,Species-specific Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo); Held item selvagem (Roubo/Golpe do Dia),A hold item that raises Farfetch'd's critical-hit ratio.,gen_1_families.h
+394,ITEM_THICK_CLUB,Species-specific Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A hold item that raises Cubone or Marowak's Attack.,gen_1_families.h
+395,ITEM_LUCKY_PUNCH,Species-specific Held Items,POCKET_BATTLE_ITEMS,SEM FONTE,,A hold item that raises Chansey's critical-hit rate.,
+396,ITEM_METAL_POWDER,Species-specific Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A hold item that raises Ditto's Defense.,gen_1_families.h
+397,ITEM_QUICK_POWDER,Species-specific Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A hold item that raises the Speed of Ditto.,gen_1_families.h
+398,ITEM_DEEP_SEA_SCALE,Species-specific Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,"Script (dado ao jogador, var computado)",A hold item that raises the Sp. Def of Clamperl.,data/maps/Route25_BillsHouse/scripts.inc:117
+399,ITEM_DEEP_SEA_TOOTH,Species-specific Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,"Script (dado ao jogador, var computado)",A hold item that raises the Sp. Atk of Clamperl.,data/maps/Route25_BillsHouse/scripts.inc:83
+400,ITEM_SOUL_DEW,Species-specific Held Items,POCKET_BATTLE_ITEMS,SO MENCIONADO,ver script,Powers up Latios' & Latias' Psychic and Dragon-type moves. Hold item: raises Sp. Atk & Sp. Def of Latios & Latias.,data/maps/LatiTempleSouldewRoom/scripts.inc:11: finditem ITEM_SOUL_DEW
+401,ITEM_ADAMANT_ORB,Species-specific Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),Boosts Dialga's Dragon/Steel moves and changes form.,trainers.party:12138
+402,ITEM_LUSTROUS_ORB,Species-specific Held Items,POCKET_BATTLE_ITEMS,SO MENCIONADO,ver script,Boosts Palkia's Dragon/Water moves and changes form.,data/maps/SpearPillarTop/scripts.inc:87: finditem ITEM_LUSTROUS_ORB
+403,ITEM_GRISEOUS_ORB,Species-specific Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),Boosts Giratina's Dragon/Ghost moves and changes form.,trainers.party:12017
+404,ITEM_SEA_INCENSE,Incenses,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A hold item that slightly boosts Water-type moves.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+405,ITEM_LAX_INCENSE,Incenses,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A hold item that lowers the foe's accuracy.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+406,ITEM_ODD_INCENSE,Incenses,POCKET_BATTLE_ITEMS,SEM FONTE,,A hold item that boosts Psychic- type moves.,
+407,ITEM_ROCK_INCENSE,Incenses,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A hold item that raises the power of Rock-type moves.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+408,ITEM_FULL_INCENSE,Incenses,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A held item that makes the holder move slower.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+409,ITEM_WAVE_INCENSE,Incenses,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A hold item that slightly boosts Water-type moves.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+410,ITEM_ROSE_INCENSE,Incenses,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A hold item that raises the power of Grass-type moves.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+411,ITEM_LUCK_INCENSE,Incenses,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Doubles money in battle if the holder takes part.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+412,ITEM_PURE_INCENSE,Incenses,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A hold item that helps repel wild Pokémon.,data/maps/SafariZoneGate/scripts.inc (SafariZoneGate)
+413,ITEM_RED_SCARF,Contest Scarves,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A hold item that raises Cool in Contests.,data/maps/SlateportCity_PokemonFanClub/scripts.inc:73: checkitemspace ITEM_RED_SCARF
+414,ITEM_BLUE_SCARF,Contest Scarves,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A hold item that raises Beauty in Contests.,data/maps/SlateportCity_PokemonFanClub/scripts.inc:83: checkitemspace ITEM_BLUE_SCARF
+415,ITEM_PINK_SCARF,Contest Scarves,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A hold item that raises Cute in Contests.,data/maps/SlateportCity_PokemonFanClub/scripts.inc:93: checkitemspace ITEM_PINK_SCARF
+416,ITEM_GREEN_SCARF,Contest Scarves,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A hold item that raises Smart in Contests.,data/maps/SlateportCity_PokemonFanClub/scripts.inc:103: checkitemspace ITEM_GREEN_SCARF
+417,ITEM_YELLOW_SCARF,Contest Scarves,POCKET_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A hold item that raises Tough in Contests.,data/maps/SlateportCity_PokemonFanClub/scripts.inc:113: checkitemspace ITEM_YELLOW_SCARF
+418,ITEM_MACHO_BRACE,EV Gain Modifiers,POCKET_BATTLE_ITEMS,SO MENCIONADO,ver script,"A hold item that promotes growth, but reduces Speed.","data/maps/BattleFrontier_ExchangeServiceCorner/scripts.inc:271: setitemandprice ITEM_MACHO_BRACE, 4"
+419,ITEM_POWER_WEIGHT,EV Gain Modifiers,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"A hold item that promotes HP gain, but reduces Speed.",data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+420,ITEM_POWER_BRACER,EV Gain Modifiers,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"A hold item that promotes Atk gain, but reduces Speed.",data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+421,ITEM_POWER_BELT,EV Gain Modifiers,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"A hold item that promotes Def gain, but reduces Speed.",data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+422,ITEM_POWER_LENS,EV Gain Modifiers,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"Hold item that pro- motes Sp. Atk gain, but reduces Speed.",data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+423,ITEM_POWER_BAND,EV Gain Modifiers,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"Hold item that pro- motes Sp. Def gain, but reduces Speed.",data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+424,ITEM_POWER_ANKLET,EV Gain Modifiers,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"A hold item that promotes Spd gain, but reduces Speed.",data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+425,ITEM_SILK_SCARF,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that raises the power of Normal-type moves.,data/maps/Route29/scripts.inc:206
+426,ITEM_CHARCOAL,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that raises the power of Fire-type moves.,data/maps/AzaleaTown_House1/scripts.inc:53
+427,ITEM_MYSTIC_WATER,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that raises the power of Water-type moves.,data/maps/CherrygroveCity/scripts.inc:298
+428,ITEM_MAGNET,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that boosts Electric- type moves.,data/maps/Route37/scripts.inc:110
+429,ITEM_MIRACLE_SEED,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that raises the power of Grass-type moves.,data/maps/Route32/scripts.inc:444
+430,ITEM_NEVER_MELT_ICE,Type-boosting Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo); Held item selvagem (Roubo/Golpe do Dia),A hold item that raises the power of Ice-type moves.,gen_4_families.h
+431,ITEM_BLACK_BELT,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that boosts Fighting- type moves.,data/maps/LakeOfRage/scripts.inc:758
+432,ITEM_POISON_BARB,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that raises the power of Poison-type moves.,data/maps/Route32/scripts.inc:320
+433,ITEM_SOFT_SAND,Type-boosting Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A hold item that raises the power of Ground-type moves.,gen_3_families.h
+434,ITEM_SHARP_BEAK,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that raises the power of Flying-type moves.,data/maps/Route40/scripts.inc:360
+435,ITEM_TWISTED_SPOON,Type-boosting Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo); Held item selvagem (Roubo/Golpe do Dia),A hold item that boosts Psychic- type moves.,gen_1_families.h
+436,ITEM_SILVER_POWDER,Type-boosting Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A hold item that raises the power of Bug-type moves.,gen_3_families.h
+437,ITEM_HARD_STONE,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that raises the power of Rock-type moves.,data/maps/Route36/scripts.inc:140
+438,ITEM_SPELL_TAG,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that raises the power of Ghost-type moves.,data/maps/BlackthornCity/scripts.inc:246
+439,ITEM_DRAGON_FANG,Type-boosting Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A hold item that raises the power of Dragon-type moves.,gen_3_families.h
+440,ITEM_BLACK_GLASSES,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that raises the power of Dark-type moves.,data/maps/DarkCave_NorthSide/scripts.inc:14
+441,ITEM_METAL_COAT,Type-boosting Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A hold item that raises the power of Steel-type moves.,data/maps/MahoganyTown_Shop/scripts.inc (MahoganyTown_Shop)
+442,ITEM_CHOICE_BAND,Choice Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart; Script (dado ao jogador),"Boosts Attack, but allows the use of only one move.",data/maps/Route27/scripts.inc:386
+443,ITEM_CHOICE_SPECS,Choice Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"Boosts Sp. Atk, but allows the use of only one move.",data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+444,ITEM_CHOICE_SCARF,Choice Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"Boosts Speed, but allows the use of only one move.",data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+445,ITEM_FLAME_ORB,Status Orbs,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart; Script (dado ao jogador),A bizarre orb that inflicts a burn on holder in battle.,data/maps/Route47/scripts.inc:390
+446,ITEM_TOXIC_ORB,Status Orbs,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart; Script (dado ao jogador),A bizarre orb that badly poisons the holder in battle.,data/maps/Route47/scripts.inc:392
+447,ITEM_DAMP_ROCK,Weather Rocks,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Extends the length of Rain Dance if used by the holder.,data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+448,ITEM_HEAT_ROCK,Weather Rocks,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Extends the length of Sunny Day if used by the holder.,data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+449,ITEM_SMOOTH_ROCK,Weather Rocks,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Extends the length of Sandstorm if used by the holder.,data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+450,ITEM_ICY_ROCK,Weather Rocks,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Extends the length of the move Hail used by the holder.,data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+451,ITEM_ELECTRIC_SEED,Terrain Seeds,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"Boosts Defense on Electric Terrain, but only one time.",data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+452,ITEM_PSYCHIC_SEED,Terrain Seeds,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"Boosts Sp. Def. on Psychic Terrain, but only one time.",data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+453,ITEM_MISTY_SEED,Terrain Seeds,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"Boosts Sp. Def. on Misty Terrain, but only one time.",data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+454,ITEM_GRASSY_SEED,Terrain Seeds,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"Boosts Defense on Grassy Terrain, but only one time.",data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+455,ITEM_ABSORB_BULB,Type-activated Stat Modifiers,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo); Held item selvagem (Roubo/Golpe do Dia),Raises Sp. Atk if the holder is hit by a Water-type move.,gen_1_families.h
+456,ITEM_CELL_BATTERY,Type-activated Stat Modifiers,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Raises Attack if the holder is hit by an Electric move.,gen_3_families.h
+457,ITEM_LUMINOUS_MOSS,Type-activated Stat Modifiers,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Raises Sp. Def if the holder is hit by a Water-type move.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+458,ITEM_SNOWBALL,Type-activated Stat Modifiers,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Raises Atk if its holder is hit by an Ice-type move.,gen_3_families.h
+459,ITEM_BRIGHT_POWDER,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that casts a glare to reduce accuracy.,data/maps/GoldenrodCity_RadioTower_4F/scripts.inc:362
+460,ITEM_WHITE_HERB,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart; Pickup (habilidade); Script (dado ao jogador),A hold item that restores any lowered stat.,data/maps/BattleFrontier_BattlePyramidLobby/scripts.inc (BattleFrontier_BattlePyramidLobby)
+461,ITEM_EXP_SHARE,Misc. Held Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),This device gives exp. to other party members.,data/maps/Gate_Route31_VioletCity/scripts.inc:94
+462,ITEM_QUICK_CLAW,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that occasionally allows the first strike.,data/maps/NationalPark_Normal/scripts.inc:98
+463,ITEM_SOOTHE_BELL,Misc. Held Items,POCKET_BATTLE_ITEMS,SEM FONTE,,A hold item that calms spirits and fosters friendship.,
+464,ITEM_MENTAL_HERB,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Pickup (habilidade),Snaps Pokémon out of move-binding effects. A hold item that snaps Pokémon out of infatuation.,battle_script_commands.c sPickupTable
+465,ITEM_KINGS_ROCK,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A hold item that may cause flinching when the foe is hit.,data/maps/MahoganyTown_Shop/scripts.inc (MahoganyTown_Shop)
+466,ITEM_AMULET_COIN,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),Doubles money in battle if the holder takes part.,data/scripts/players_house.inc:373
+467,ITEM_CLEANSE_TAG,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A hold item that helps repel wild Pokémon.,gen_3_families.h
+468,ITEM_SMOKE_BALL,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A hold item that assures fleeing from wild Pokémon.,gen_1_families.h
+469,ITEM_FOCUS_BAND,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo); Held item selvagem (Roubo/Golpe do Dia),A hold item that occasionally prevents fainting.,gen_1_families.h
+470,ITEM_LUCKY_EGG,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A hold item that boosts Exp. points earned in battle.,data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+471,ITEM_SCOPE_LENS,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),A hold item that improves the critical-hit rate.,data/maps/Route39_Barn/scripts.inc:111
+472,ITEM_LEFTOVERS,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Pickup (habilidade),A hold item that gradually restores HP in battle.,battle_script_commands.c sPickupTable
+473,ITEM_SHELL_BELL,Misc. Held Items,POCKET_BATTLE_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar),A hold item that restores HP upon striking the foe.,data/maps/ShoalCave_LowTideEntranceRoom/scripts.inc:29: checkitemspace ITEM_SHELL_BELL
+474,ITEM_WIDE_LENS,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A magnifying lens that boosts the accuracy of moves.,data/maps/RintoVillage/scripts.inc (RintoVillage)
+475,ITEM_MUSCLE_BAND,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo); Held item selvagem (Roubo/Golpe do Dia),A headband that boosts the power of physical moves.,gen_5_families.h
+476,ITEM_WISE_GLASSES,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A pair of glasses that ups the power of special moves.,data/maps/RintoVillage/scripts.inc (RintoVillage)
+477,ITEM_EXPERT_BELT,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,A belt that boosts the power of super effective moves.,data/maps/RintoVillage/scripts.inc (RintoVillage)
+478,ITEM_LIGHT_CLAY,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo); Held item selvagem (Roubo/Golpe do Dia),Extends the length of barrier moves used by the holder.,gen_3_families.h
+479,ITEM_LIFE_ORB,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Boosts move power but holder loses HP with each attack.,data/maps/BattleFrontier_BattlePyramidLobby/scripts.inc (BattleFrontier_BattlePyramidLobby)
+480,ITEM_POWER_HERB,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart; Pickup (habilidade); Script (dado ao jogador),Allows immediate use of a move that charges first.,data/maps/BattleFrontier_BattlePyramidLobby/scripts.inc (BattleFrontier_BattlePyramidLobby)
+481,ITEM_FOCUS_SASH,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart; Script (dado ao jogador),"If the holder has full HP, it endures KO hits with 1 HP.",data/maps/BattleFrontier_BattlePyramidLobby/scripts.inc (BattleFrontier_BattlePyramidLobby)
+482,ITEM_ZOOM_LENS,Misc. Held Items,POCKET_BATTLE_ITEMS,SEM FONTE,,"If the holder moves after the foe, it'll boost accuracy.",
+483,ITEM_METRONOME,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A held item that boosts a move used consecutively.,gen_4_families.h
+484,ITEM_IRON_BALL,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Cuts Speed and becomes vulnerable to Ground moves.,gen_3_families.h
+485,ITEM_LAGGING_TAIL,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A held item that makes the holder move slower.,gen_8_families.h
+486,ITEM_DESTINY_KNOT,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Pickup (habilidade); Script (dado ao jogador),"If the holder falls in love, the foe does too.",data/maps/Route34_DayCare/scripts.inc:1242
+487,ITEM_BLACK_SLUDGE,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Restores HP for Poison-types. Damages all others.,data/maps/BattleFrontier_BattlePyramidLobby/scripts.inc (BattleFrontier_BattlePyramidLobby)
+488,ITEM_GRIP_CLAW,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A held item that extends binding moves like Wrap.,gen_1_families.h
+489,ITEM_STICKY_BARB,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Damages the holder each turn. May latch on to foes.,gen_3_families.h
+490,ITEM_SHED_SHELL,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Allows the holder to switch out without fail.,gen_3_families.h
+491,ITEM_BIG_ROOT,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo); Held item selvagem (Roubo/Golpe do Dia),A held item that ups the power of HP-stealing moves.,gen_3_families.h
+492,ITEM_RAZOR_CLAW,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A hooked claw that ups the holder's critical-hit ratio.,gen_7_families.h
+493,ITEM_RAZOR_FANG,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A hold item that may cause flinching when the foe is hit.,gen_7_families.h
+494,ITEM_EVIOLITE,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",Raises the Def and Sp. Def of Pokémon that can evolve.,data/maps/GoldenrodCity_RadioTower_2F/scripts.inc:456
+495,ITEM_FLOAT_STONE,Misc. Held Items,POCKET_BATTLE_ITEMS,SEM FONTE,,"It's so light that when held, it halves a Pokémon's weight.",
+496,ITEM_ROCKY_HELMET,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),Hurts the foe if they touch its holder.,data/maps/Gate_Route39North/scripts.inc:27
+497,ITEM_AIR_BALLOON,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart; Script (dado ao jogador),Makes the holder float but bursts if hit by an attack.,data/maps/Route31/scripts.inc:396
+498,ITEM_RED_CARD,Misc. Held Items,POCKET_BATTLE_ITEMS,SEM FONTE,,Switches out the foe if they hit the holder.,
+499,ITEM_RING_TARGET,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Moves that usually have no effect will hit the holder.,data/maps/RintoVillage/scripts.inc (RintoVillage)
+500,ITEM_BINDING_BAND,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Increases the power of binding moves when held.,data/maps/RintoVillage/scripts.inc (RintoVillage)
+501,ITEM_EJECT_BUTTON,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Switches out the user if they're hit by the foe.,data/maps/RintoVillage/scripts.inc (RintoVillage)
+502,ITEM_WEAKNESS_POLICY,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,"If hit by a super- effective move, ups Atk and Sp. Atk.",data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+503,ITEM_ASSAULT_VEST,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Raises Sp. Def but prevents the use of status moves.,data/maps/BattleFrontier_BattlePyramidLobby/scripts.inc (BattleFrontier_BattlePyramidLobby)
+504,ITEM_SAFETY_GOGGLES,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),Protect from weather damage and powder moves.,trainers.party:3939
+505,ITEM_ADRENALINE_ORB,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),This orb boosts Speed if the holder is intimidated.,trainers.party:2316
+506,ITEM_TERRAIN_EXTENDER,Misc. Held Items,POCKET_BATTLE_ITEMS,SEM FONTE,,Extends the length of the active battle terrain.,
+507,ITEM_PROTECTIVE_PADS,Misc. Held Items,POCKET_BATTLE_ITEMS,SEM FONTE,,Guard the holder from contact move effects.,
+508,ITEM_THROAT_SPRAY,Misc. Held Items,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),Raises Sp. Atk. if the holder uses a sound-based move.,gen_8_families.h
+509,ITEM_EJECT_PACK,Misc. Held Items,POCKET_BATTLE_ITEMS,SEM FONTE,,Forces the user to switch if its stats are lowered.,
+510,ITEM_HEAVY_DUTY_BOOTS,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Boots that prevent effects of traps set in the field.,data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+511,ITEM_BLUNDER_POLICY,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Raises Speed if the user misses due to Accuracy.,data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+512,ITEM_ROOM_SERVICE,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Lowers Speed if Trick Room is active.,data/maps/BattleFrontier_BattleTowerLobby/scripts.inc (BattleFrontier_BattleTowerLobby)
+513,ITEM_UTILITY_UMBRELLA,Misc. Held Items,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,An umbrella that protects from weather effects.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+514,ITEM_CHERI_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Sorteio de pool (Route30 Berry Master, comum)",A hold item that heals paralysis in battle.,data/maps/Route30_House/scripts.inc:57
+515,ITEM_CHESTO_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Sorteio de pool (Route30 Berry Master, comum)",A hold item that awakens Pokémon in battle.,data/maps/VioletCity/scripts.inc:1094
+516,ITEM_PECHA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Sorteio de pool (Route30 Berry Master, comum)",A hold item that heals poisoning in battle.,data/maps/VioletCity/scripts.inc:1077
+517,ITEM_RAWST_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Sorteio de pool (Route30 Berry Master, comum)",A hold item that heals a burn in battle.,data/maps/VioletCity/scripts.inc:1128
+518,ITEM_ASPEAR_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Sorteio de pool (Route30 Berry Master, comum)",A hold item that defrosts Pokémon in battle.,data/maps/VioletCity/scripts.inc:1109
+519,ITEM_LEPPA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Item escondido (hidden_item); Script (dado ao jogador); Sorteio de pool (Route30 Berry Master, comum)",A hold item that restores 10 PP in battle.,data/maps/VioletCity/scripts.inc:1079
+520,ITEM_ORAN_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Sorteio de pool (Route30 Berry Master, comum)",A hold item that restores 10 HP in battle.,data/maps/VioletCity/scripts.inc:1092
+521,ITEM_PERSIM_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Sorteio de pool (Route30 Berry Master, comum)",A hold item that heals confusion in battle.,data/maps/VioletCity/scripts.inc:1115
+522,ITEM_LUM_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Sorteio de pool (Route30 Berry Master, comum)",A hold item that heals any status problem in battle.,data/maps/VioletCity/scripts.inc:1130
+523,ITEM_SITRUS_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Item escondido (hidden_item); Script (dado ao jogador); Sorteio de pool (Route30 Berry Master, comum)",A hold item that restores the user's HP a little.,data/maps/VioletCity/scripts.inc:1111
+524,ITEM_FIGY_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado); Sorteio de pool (Route30 Berry Master, comum)",A hold item that restores HP but may confuse.,data/maps/Route120/scripts.inc:109
+525,ITEM_WIKI_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado); Sorteio de pool (Route30 Berry Master, comum)",A hold item that restores HP but may confuse.,data/maps/Route120/scripts.inc:114
+526,ITEM_MAGO_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador, var computado); Sorteio de pool (Route30 Berry Master, comum)",A hold item that restores HP but may confuse.,data/maps/Route120/scripts.inc:119
+527,ITEM_AGUAV_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado); Sorteio de pool (Route30 Berry Master, comum)",A hold item that restores HP but may confuse.,data/maps/Route120/scripts.inc:124
+528,ITEM_IAPAPA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado); Sorteio de pool (Route30 Berry Master, comum)",A hold item that restores HP but may confuse.,data/maps/Route120/scripts.inc:129
+529,ITEM_RAZZ_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Razz.,data/maps/Route30_House/scripts.inc (Route30_House)
+530,ITEM_BLUK_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Bluk.,data/maps/Route30_House/scripts.inc (Route30_House)
+531,ITEM_NANAB_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Nanab.,data/maps/Route30_House/scripts.inc (Route30_House)
+532,ITEM_WEPEAR_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Wepear.,data/maps/Route30_House/scripts.inc (Route30_House)
+533,ITEM_PINAP_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Pinap.,data/maps/Route30_House/scripts.inc (Route30_House)
+534,ITEM_POMEG_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",Makes a Pokémon friendly but lowers base HP.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+535,ITEM_KELPSY_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",Makes a Pokémon friendly but lowers base Attack.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+536,ITEM_QUALOT_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",Makes a Pokémon friendly but lowers base Defense.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+537,ITEM_HONDEW_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",Makes a Pokémon friendly but lowers base Sp. Atk.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+538,ITEM_GREPA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",Makes a Pokémon friendly but lowers base Sp. Def.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+539,ITEM_TAMATO_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",Makes a Pokémon friendly but lowers base Speed.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+540,ITEM_CORNN_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Cornn.,data/maps/Route30_House/scripts.inc (Route30_House)
+541,ITEM_MAGOST_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Magost.,data/maps/Route30_House/scripts.inc (Route30_House)
+542,ITEM_RABUTA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Rabuta.,data/maps/Route30_House/scripts.inc (Route30_House)
+543,ITEM_NOMEL_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Nomel.,data/maps/Route30_House/scripts.inc (Route30_House)
+544,ITEM_SPELON_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Spelon.,data/maps/Route30_House/scripts.inc (Route30_House)
+545,ITEM_PAMTRE_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Pamtre.,data/maps/Route30_House/scripts.inc (Route30_House)
+546,ITEM_WATMEL_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Watmel.,data/maps/Route30_House/scripts.inc (Route30_House)
+547,ITEM_DURIN_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Durin.,data/maps/Route30_House/scripts.inc (Route30_House)
+548,ITEM_BELUE_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, comum)",{POKEBLOCK} ingredient. Plant in loamy soil to grow Belue.,data/maps/Route30_House/scripts.inc (Route30_House)
+549,ITEM_CHILAN_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Normal move.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+550,ITEM_OCCA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Fire move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+551,ITEM_PASSHO_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Water move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+552,ITEM_WACAN_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Electric move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+553,ITEM_RINDO_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Grass move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+554,ITEM_YACHE_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Ice move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+555,ITEM_CHOPLE_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Fighting move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+556,ITEM_KEBIA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Poison move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+557,ITEM_SHUCA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Ground move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+558,ITEM_COBA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Flying move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+559,ITEM_PAYAPA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Psychic move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+560,ITEM_TANGA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Bug move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+561,ITEM_CHARTI_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Rock move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+562,ITEM_KASIB_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Ghost move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+563,ITEM_HABAN_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Dragon move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+564,ITEM_COLBUR_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Dark move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+565,ITEM_BABIRI_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Steel move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+566,ITEM_ROSELI_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Loja / pokemart; Sorteio de pool (Route30 Berry Master, comum)",A hold item that weakens a Fairy move if weak to it.,data/maps/GoldenrodCity_FlowerShop/scripts.inc (GoldenrodCity_FlowerShop)
+567,ITEM_LIECHI_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)",A hold item that raises Attack in a pinch.,data/maps/Route30_House/scripts.inc (Route30_House)
+568,ITEM_GANLON_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)",A hold item that raises Defense in a pinch.,data/maps/Route30_House/scripts.inc (Route30_House)
+569,ITEM_SALAC_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)",A hold item that raises Speed in a pinch.,data/maps/Route30_House/scripts.inc (Route30_House)
+570,ITEM_PETAYA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)",A hold item that raises Sp. Atk in a pinch.,data/maps/Route30_House/scripts.inc (Route30_House)
+571,ITEM_APICOT_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)",A hold item that raises Sp. Def in a pinch.,data/maps/Route30_House/scripts.inc (Route30_House)
+572,ITEM_LANSAT_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)",A hold item that ups the critical- hit rate in a pinch.,data/maps/Route30_House/scripts.inc (Route30_House)
+573,ITEM_STARF_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)",A hold item that sharply boosts a stat in a pinch.,data/maps/Route30_House/scripts.inc (Route30_House)
+574,ITEM_ENIGMA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)",A hold item that heals from super effective moves.,data/maps/Route30_House/scripts.inc (Route30_House)
+575,ITEM_MICLE_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)","When held, it ups the Accuracy of a move in a pinch.",data/maps/Route30_House/scripts.inc (Route30_House)
+576,ITEM_CUSTAP_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)",It allows a Pokémon in a pinch to move first just once.,data/maps/Route30_House/scripts.inc (Route30_House)
+577,ITEM_JABOCA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)","If hit by a physical move, it will hurt the attacker a bit.",data/maps/Route30_House/scripts.inc (Route30_House)
+578,ITEM_ROWAP_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)","If hit by a special move, it will hurt the attacker a bit.",data/maps/Route30_House/scripts.inc (Route30_House)
+579,ITEM_KEE_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)","If hit by a physical move, it raises the Defense a bit.",data/maps/Route30_House/scripts.inc (Route30_House)
+580,ITEM_MARANGA_BERRY,Berries,POCKET_BERRIES,OBTIVEL,"Sorteio de pool (Route30 Berry Master, raro pos-Liga)","If hit by a special move, it raises the Sp. Def. a bit.",data/maps/Route30_House/scripts.inc (Route30_House)
+581,ITEM_ENIGMA_BERRY_E_READER,Berries,POCKET_BERRIES,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),{POKEBLOCK} ingredient. Plant in loamy soil to grow a mystery.,data/maps/PetalburgCity_Gym/scripts.inc:305: checkitem ITEM_ENIGMA_BERRY_E_READER
+582,ITEM_TM01,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+583,ITEM_TM02,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+584,ITEM_TM03,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+585,ITEM_TM04,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+586,ITEM_TM05,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+587,ITEM_TM06,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+588,ITEM_TM07,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+589,ITEM_TM08,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+590,ITEM_TM09,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+591,ITEM_TM10,TMs/HMs,,SEM FONTE,,,
+592,ITEM_TM11,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+593,ITEM_TM12,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+594,ITEM_TM13,TMs/HMs,,SEM FONTE,,,
+595,ITEM_TM14,TMs/HMs,,SEM FONTE,,,
+596,ITEM_TM15,TMs/HMs,,SEM FONTE,,,
+597,ITEM_TM16,TMs/HMs,,SEM FONTE,,,
+598,ITEM_TM17,TMs/HMs,,SEM FONTE,,,
+599,ITEM_TM18,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+600,ITEM_TM19,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+601,ITEM_TM20,TMs/HMs,,SEM FONTE,,,
+602,ITEM_TM21,TMs/HMs,,SEM FONTE,,,
+603,ITEM_TM22,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+604,ITEM_TM23,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+605,ITEM_TM24,TMs/HMs,,SEM FONTE,,,
+606,ITEM_TM25,TMs/HMs,,SEM FONTE,,,
+607,ITEM_TM26,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+608,ITEM_TM27,TMs/HMs,,SEM FONTE,,,
+609,ITEM_TM28,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+610,ITEM_TM29,TMs/HMs,,SEM FONTE,,,
+611,ITEM_TM30,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+612,ITEM_TM31,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+613,ITEM_TM32,TMs/HMs,,SEM FONTE,,,
+614,ITEM_TM33,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+615,ITEM_TM34,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+616,ITEM_TM35,TMs/HMs,,SEM FONTE,,,
+617,ITEM_TM36,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+618,ITEM_TM37,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+619,ITEM_TM38,TMs/HMs,,SEM FONTE,,,
+620,ITEM_TM39,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+621,ITEM_TM40,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+622,ITEM_TM41,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+623,ITEM_TM42,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+624,ITEM_TM43,TMs/HMs,,SEM FONTE,,,
+625,ITEM_TM44,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+626,ITEM_TM45,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+627,ITEM_TM46,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+628,ITEM_TM47,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+629,ITEM_TM48,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+630,ITEM_TM49,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+631,ITEM_TM50,TMs/HMs,,OBTIVEL,Loja / pokemart,,data/maps/BattleFrontier_Mart/scripts.inc (BattleFrontier_Mart)
+632,ITEM_TM51,TMs/HMs,,SEM FONTE,,,
+633,ITEM_TM52,TMs/HMs,,SEM FONTE,,,
+634,ITEM_TM53,TMs/HMs,,SEM FONTE,,,
+635,ITEM_TM54,TMs/HMs,,SEM FONTE,,,
+636,ITEM_TM55,TMs/HMs,,SEM FONTE,,,
+637,ITEM_TM56,TMs/HMs,,SEM FONTE,,,
+638,ITEM_TM57,TMs/HMs,,SEM FONTE,,,
+639,ITEM_TM58,TMs/HMs,,SEM FONTE,,,
+640,ITEM_TM59,TMs/HMs,,SEM FONTE,,,
+641,ITEM_TM60,TMs/HMs,,SEM FONTE,,,
+642,ITEM_TM61,TMs/HMs,,SEM FONTE,,,
+643,ITEM_TM62,TMs/HMs,,SEM FONTE,,,
+644,ITEM_TM63,TMs/HMs,,SEM FONTE,,,
+645,ITEM_TM64,TMs/HMs,,SEM FONTE,,,
+646,ITEM_TM65,TMs/HMs,,SEM FONTE,,,
+647,ITEM_TM66,TMs/HMs,,SEM FONTE,,,
+648,ITEM_TM67,TMs/HMs,,SEM FONTE,,,
+649,ITEM_TM68,TMs/HMs,,SEM FONTE,,,
+650,ITEM_TM69,TMs/HMs,,SEM FONTE,,,
+651,ITEM_TM70,TMs/HMs,,SEM FONTE,,,
+652,ITEM_TM71,TMs/HMs,,SEM FONTE,,,
+653,ITEM_TM72,TMs/HMs,,SEM FONTE,,,
+654,ITEM_TM73,TMs/HMs,,SEM FONTE,,,
+655,ITEM_TM74,TMs/HMs,,SEM FONTE,,,
+656,ITEM_TM75,TMs/HMs,,SEM FONTE,,,
+657,ITEM_TM76,TMs/HMs,,SEM FONTE,,,
+658,ITEM_TM77,TMs/HMs,,SEM FONTE,,,
+659,ITEM_TM78,TMs/HMs,,SEM FONTE,,,
+660,ITEM_TM79,TMs/HMs,,SEM FONTE,,,
+661,ITEM_TM80,TMs/HMs,,SEM FONTE,,,
+662,ITEM_TM81,TMs/HMs,,SEM FONTE,,,
+663,ITEM_TM82,TMs/HMs,,SEM FONTE,,,
+664,ITEM_TM83,TMs/HMs,,SEM FONTE,,,
+665,ITEM_TM84,TMs/HMs,,SEM FONTE,,,
+666,ITEM_TM85,TMs/HMs,,SEM FONTE,,,
+667,ITEM_TM86,TMs/HMs,,SEM FONTE,,,
+668,ITEM_TM87,TMs/HMs,,SEM FONTE,,,
+669,ITEM_TM88,TMs/HMs,,SEM FONTE,,,
+670,ITEM_TM89,TMs/HMs,,SEM FONTE,,,
+671,ITEM_TM90,TMs/HMs,,SEM FONTE,,,
+672,ITEM_TM91,TMs/HMs,,SEM FONTE,,,
+673,ITEM_TM92,TMs/HMs,,SEM FONTE,,,
+674,ITEM_TM93,TMs/HMs,,SEM FONTE,,,
+675,ITEM_TM94,TMs/HMs,,SEM FONTE,,,
+676,ITEM_TM95,TMs/HMs,,SEM FONTE,,,
+677,ITEM_TM96,TMs/HMs,,SEM FONTE,,,
+678,ITEM_TM97,TMs/HMs,,SEM FONTE,,,
+679,ITEM_TM98,TMs/HMs,,SEM FONTE,,,
+680,ITEM_TM99,TMs/HMs,,SEM FONTE,,,
+681,ITEM_TM100,TMs/HMs,,SEM FONTE,,,
+682,ITEM_HM01,TMs/HMs,,SEM FONTE,,,
+683,ITEM_HM02,TMs/HMs,,SEM FONTE,,,
+684,ITEM_HM03,TMs/HMs,,SEM FONTE,,,
+685,ITEM_HM04,TMs/HMs,,SEM FONTE,,,
+686,ITEM_HM05,TMs/HMs,,SEM FONTE,,,
+687,ITEM_HM06,TMs/HMs,,SEM FONTE,,,
+688,ITEM_HM07,TMs/HMs,,SEM FONTE,,,
+689,ITEM_HM08,TMs/HMs,,SEM FONTE,,,
+690,ITEM_HM09,TMs/HMs,,SEM FONTE,,,
+691,ITEM_HM10,TMs/HMs,,SEM FONTE,,,
+692,ITEM_OVAL_CHARM,Charms,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),Raises the chance of finding eggs at the daycare.,data/maps/NewBarkTown_House3/scripts.inc:231
+693,ITEM_SHINY_CHARM,Charms,POCKET_KEY_ITEMS,SEM FONTE,,A charm that will raise the chance of Shiny Pokémon.,
+694,ITEM_CATCHING_CHARM,Charms,POCKET_KEY_ITEMS,SEM FONTE,,A charm that raises the chance of Critical Captures.,
+695,ITEM_EXP_CHARM,Charms,POCKET_KEY_ITEMS,SEM FONTE,,A charm that raises the amount of Exp. earned in battle.,
+696,ITEM_ROTOM_CATALOG,Form-changing Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A catalog full of devices liked by Rotom.,
+697,ITEM_GRACIDEA,Form-changing Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),Bouquets made with it are offered as a token of gratitude.,data/maps/GoldenrodCity_FlowerShop/scripts.inc:1631
+698,ITEM_REVEAL_GLASS,Form-changing Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),This glass returns a Pokémon back to its original form.,data/maps/BattleCafe/scripts.inc:1663
+699,ITEM_DNA_SPLICERS,Form-changing Key Items,POCKET_KEY_ITEMS,SEM FONTE,,Splicer that fuses Kyurem and a certain Pokémon.,
+700,ITEM_ZYGARDE_CUBE,Form-changing Key Items,POCKET_KEY_ITEMS,SEM FONTE,,An item to store Zygarde Cores and Cells.,
+701,ITEM_PRISON_BOTTLE,Form-changing Key Items,POCKET_KEY_ITEMS,SO MENCIONADO,ver script,A bottle used to seal a certain Pokémon long ago.,data/maps/VajraPyramidFinalChamber/scripts.inc:46: finditem ITEM_PRISON_BOTTLE
+702,ITEM_N_SOLARIZER,Form-changing Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A device to fuse and split Necrozma using a Solgaleo.,
+703,ITEM_N_LUNARIZER,Form-changing Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A device to fuse and split Necrozma using a Lunala.,
+704,ITEM_REINS_OF_UNITY,Form-changing Key Items,POCKET_KEY_ITEMS,SEM FONTE,,Reins that unite Calyrex with its beloved steed.,
+705,ITEM_MEGA_RING,Battle Mechanic Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),Enables {PKMN} holding their Mega Stone to Mega Evolve.,data/maps/GoldenrodCity_RadioTower_5F/scripts.inc:834
+706,ITEM_Z_POWER_RING,Battle Mechanic Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A strange ring that enables Z-Move usage.,
+707,ITEM_DYNAMAX_BAND,Battle Mechanic Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A band carrying a Wishing Star that allows Dynamaxing.,
+708,ITEM_BICYCLE,Misc. Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A folding bicycle that is faster than the Running Shoes.,
+709,ITEM_MACH_BIKE,Misc. Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A folding bicycle that doubles your speed or better.,data/maps/GoldenrodCity_BikeShop/scripts.inc:36
+710,ITEM_ACRO_BIKE,Misc. Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (additem),A folding bicycle capable of jumps and wheelies.,data/scripts/debug.inc:52
+711,ITEM_OLD_ROD,Misc. Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),Use by any body of water to fish for wild Pokémon.,data/maps/Route32_PokemonCenter/scripts.inc:32
+712,ITEM_GOOD_ROD,Misc. Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A decent fishing rod for catching wild Pokémon.,data/maps/OlivineCity_House3/scripts.inc:12
+713,ITEM_SUPER_ROD,Misc. Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),The best fishing rod for catching wild Pokémon.,data/maps/BlackthornCity/scripts.inc:216
+714,ITEM_DOWSING_MACHINE,Misc. Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A device that signals an invisible item by sound.,data/maps/EcruteakCity_House4/scripts.inc:35
+715,ITEM_TOWN_MAP,Misc. Key Items,POCKET_KEY_ITEMS,SEM FONTE,,Can be viewed anytime. Shows your present location.,
+716,ITEM_VS_SEEKER,Misc. Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A rechargeable unit that resets the route Trainers.,data/maps/GoldenrodCity_RadioTower_1F/scripts.inc:162
+717,ITEM_TM_CASE,Misc. Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A convenient case that holds TMs and HMs.,
+718,ITEM_BERRY_POUCH,Misc. Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A convenient container that holds Berries.,
+719,ITEM_POKEMON_BOX_LINK,Misc. Key Items,POCKET_KEY_ITEMS,SEM FONTE,,This device grants access to the {PKMN} Storage System.,
+720,ITEM_COIN_CASE,Misc. Key Items,POCKET_KEY_ITEMS,SO MENCIONADO,ver script,"A case that holds up to 9,999 Coins.",data/maps/MauvilleCity_GameCorner/scripts.inc:134: checkitem ITEM_COIN_CASE
+721,ITEM_POWDER_JAR,Misc. Key Items,POCKET_KEY_ITEMS,SO MENCIONADO,ver script,Stores Berry Powder made using a Berry Crusher.,data/scripts/cable_club.inc:970: checkitem ITEM_POWDER_JAR
+722,ITEM_SQUIRTBOTTLE,Misc. Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A tool used for watering Berries and plants.,data/maps/GoldenrodCity_FlowerShop/scripts.inc:854
+723,ITEM_POKE_RADAR,Misc. Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A tool used to search out Pokémon hiding in grass.,
+724,ITEM_POKEBLOCK_CASE,Misc. Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A case for holding {POKEBLOCK}s made with a Berry Blender.,data/maps/FuchsiaCity_SafariZoneEntrance/scripts.inc:68
+725,ITEM_SOOT_SACK,Misc. Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A sack used to gather and hold volcanic ash.,data/maps/Route113_GlassWorkshop/scripts.inc:30
+726,ITEM_POKE_FLUTE,Misc. Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A sweet-sounding flute that awakens Pokémon.,
+727,ITEM_FAME_CHECKER,Misc. Key Items,POCKET_KEY_ITEMS,SEM FONTE,,Stores information on famous people for instant recall.,
+728,ITEM_TEACHY_TV,Misc. Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A TV set tuned to an advice program for Trainers.,
+729,ITEM_SS_TICKET,Story Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),The ticket required for sailing on a ferry.,data/maps/NewBarkTown_Lab/scripts.inc:1102
+730,ITEM_EON_TICKET,Story Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),The ticket for a ferry to a distant southern island.,data/maps/FuchsiaCity_SafariZoneEntrance/scripts.inc:87
+731,ITEM_MYSTIC_TICKET,Story Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A ticket required to board the ship to Navel Rock.,data/scripts/gift_mystic_ticket.inc:15
+732,ITEM_AURORA_TICKET,Story Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A ticket required to board the ship to Birth Island.,data/maps/OlivineCity/scripts.inc:614
+733,ITEM_OLD_SEA_MAP,Story Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A faded sea chart that shows the way to a certain island.,data/scripts/gift_old_sea_map.inc:14
+734,ITEM_LETTER,Story Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A letter to Steven from the President of the Devon Corp.,"data/maps/GraniteCave_StevensRoom/scripts.inc:8: setvar VAR_0x8004, ITEM_LETTER"
+735,ITEM_DEVON_PARTS,Story Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A package that contains Devon's machine parts.,"data/maps/SlateportCity_OceanicMuseum_2F/scripts.inc:69: setvar VAR_0x8004, ITEM_DEVON_PARTS"
+736,ITEM_GO_GOGGLES,Story Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),Nifty goggles that protect eyes from desert sandstorms.,data/maps/LavaridgeTown/scripts.inc:62
+737,ITEM_DEVON_SCOPE,Story Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A device by Devon that signals any unseeable Pokémon.,data/maps/Route120/scripts.inc:218
+738,ITEM_BASEMENT_KEY,Story Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),The key for the Tunnels beneath the Goldenrod City.,data/maps/GoldenrodCity_RadioTower_5F/scripts.inc:90
+739,ITEM_SCANNER,Story Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar),A device found inside the Abandoned Ship.,data/maps/AbandonedShip_CaptainsOffice/scripts.inc:8: checkitem ITEM_SCANNER
+740,ITEM_STORAGE_KEY,Story Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar),The key to the storage inside the Abandoned Ship.,data/maps/AbandonedShip_Corridors_B1F/scripts.inc:30: checkitem ITEM_STORAGE_KEY
+741,ITEM_KEY_TO_ROOM_1,Story Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar),A key that opens a door inside the Abandoned Ship.,data/maps/AbandonedShip_HiddenFloorCorridors/scripts.inc:56: checkitem ITEM_KEY_TO_ROOM_1
+742,ITEM_KEY_TO_ROOM_2,Story Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar),A key that opens a door inside the Abandoned Ship.,data/maps/AbandonedShip_HiddenFloorCorridors/scripts.inc:70: checkitem ITEM_KEY_TO_ROOM_2
+743,ITEM_KEY_TO_ROOM_4,Story Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar),A key that opens a door inside the Abandoned Ship.,data/maps/AbandonedShip_HiddenFloorCorridors/scripts.inc:84: checkitem ITEM_KEY_TO_ROOM_4
+744,ITEM_KEY_TO_ROOM_6,Story Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar),A key that opens a door inside the Abandoned Ship.,data/maps/AbandonedShip_HiddenFloorCorridors/scripts.inc:98: checkitem ITEM_KEY_TO_ROOM_6
+745,ITEM_METEORITE,Story Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A meteorite found at Meteor Falls.,data/maps/MtChimney/scripts.inc:410
+746,ITEM_MAGMA_EMBLEM,Story Key Items,POCKET_KEY_ITEMS,SO EM MAPA FORA DA CAMPANHA,Mencionado em script (verificar); Script (dado ao jogador),A medal-like item in the same shape as Team Magma's mark.,data/maps/JaggedPass/scripts.inc:13: checkitem ITEM_MAGMA_EMBLEM
+747,ITEM_CONTEST_PASS,Story Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (additem),The pass required for entering Pokémon Contests.,data/maps/LilycoveCity_ContestLobby/scripts.inc:353
+748,ITEM_PARCEL,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A parcel for Prof. Oak from a Pokémon Mart's clerk.,
+749,ITEM_SECRET_KEY,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,The key to the Cinnabar Island Gym's entrance.,
+750,ITEM_BIKE_VOUCHER,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A voucher for obtaining a bicycle from the Bike Shop.,
+751,ITEM_GOLD_TEETH,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,Gold dentures lost by the Safari Zone's Warden.,
+752,ITEM_CARD_KEY,Story Key Items,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A card-type door key used in the Radio Tower.,data/maps/GoldenrodCity_UndergroundStorage/scripts.inc:11
+753,ITEM_LIFT_KEY,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,An elevator key used in Team Rocket's Hideout.,
+754,ITEM_SILPH_SCOPE,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,Silph Co's scope makes unseeable POKéMON visible.,
+755,ITEM_TRI_PASS,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,"A pass for ferries between One, Two, and Three Island.",
+756,ITEM_RAINBOW_PASS,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,For ferries serving Vermilion and the Sevii Islands.,
+757,ITEM_TEA,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A thirst-quenching tea prepared by an old lady.,
+758,ITEM_RUBY,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,"An exquisite, red- glowing gem that symbolizes passion.",
+759,ITEM_SAPPHIRE,Story Key Items,POCKET_KEY_ITEMS,SEM FONTE,,A brilliant blue gem that symbolizes honesty.,
+760,ITEM_ABILITY_SHIELD,GEN IX ITEMS,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Ability changes are prevented for this items's holder.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+761,ITEM_CLEAR_AMULET,GEN IX ITEMS,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Stat lowering is prevented for this items's holder.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+762,ITEM_PUNCHING_GLOVE,GEN IX ITEMS,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),Powers up punching moves and removes their contact.,trainers.party:675
+763,ITEM_COVERT_CLOAK,GEN IX ITEMS,POCKET_BATTLE_ITEMS,OBTIVEL,Loja / pokemart,Protects holder from additional effects of moves.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+764,ITEM_LOADED_DICE,GEN IX ITEMS,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),Rolls high numbers. Multihit strikes hit more times.,data/maps/GoldenrodShore/scripts.inc:49
+765,ITEM_AUSPICIOUS_ARMOR,GEN IX ITEMS,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Armor inhabited by auspicious wishes. Causes evolution.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+766,ITEM_BOOSTER_ENERGY,GEN IX ITEMS,POCKET_BATTLE_ITEMS,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo); Held item selvagem (Roubo/Golpe do Dia),Encapsuled energy ups Pokémon with certain Abilities.,gen_9_families.h
+767,ITEM_BIG_BAMBOO_SHOOT,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,A large and rare bamboo shoot. Best sold to gourmands.,
+768,ITEM_GIMMIGHOUL_COIN,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,Gimmighoul hoard and treasure these curious coins.,
+769,ITEM_LEADERS_CREST,GEN IX ITEMS,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A shard of an old blade of some sort. Held by Bisharp.,gen_5_families.h
+770,ITEM_MALICIOUS_ARMOR,GEN IX ITEMS,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Armor inhabited by malicious will. Causes evolution.,data/maps/IndigoPlateau_PokemonCenter/scripts.inc (IndigoPlateau_PokemonCenter)
+771,ITEM_MIRROR_HERB,GEN IX ITEMS,POCKET_BATTLE_ITEMS,SEM FONTE,,Mirrors an enemy's stat increases but only once.,
+772,ITEM_SCROLL_OF_DARKNESS,GEN IX ITEMS,POCKET_KEY_ITEMS,OBTIVEL,Loja / pokemart,A peculiar scroll with secrets of the dark path.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+773,ITEM_SCROLL_OF_WATERS,GEN IX ITEMS,POCKET_KEY_ITEMS,OBTIVEL,Loja / pokemart,A peculiar scroll with secrets of the water path.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+774,ITEM_TERA_ORB,GEN IX ITEMS,POCKET_KEY_ITEMS,SEM FONTE,,Energy charges can be used to cause Terastallization.,
+775,ITEM_TINY_BAMBOO_SHOOT,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,A small and rare bamboo shoot. Best sold to gourmands.,
+776,ITEM_BUG_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+777,ITEM_DARK_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+778,ITEM_DRAGON_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+779,ITEM_ELECTRIC_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+780,ITEM_FAIRY_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+781,ITEM_FIGHTING_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+782,ITEM_FIRE_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+783,ITEM_FLYING_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+784,ITEM_GHOST_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+785,ITEM_GRASS_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+786,ITEM_GROUND_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+787,ITEM_ICE_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+788,ITEM_NORMAL_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+789,ITEM_POISON_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+790,ITEM_PSYCHIC_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+791,ITEM_ROCK_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+792,ITEM_STEEL_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+793,ITEM_WATER_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+794,ITEM_ADAMANT_CRYSTAL,GEN IX ITEMS,POCKET_BATTLE_ITEMS,SEM FONTE,,"A large, glowing gem that lets Dialga change form.",
+795,ITEM_GRISEOUS_CORE,GEN IX ITEMS,POCKET_BATTLE_ITEMS,SEM FONTE,,"A large, glowing gem that lets Giratina change form.",
+796,ITEM_LUSTROUS_GLOBE,GEN IX ITEMS,POCKET_BATTLE_ITEMS,SEM FONTE,,"A large, glowing gem that lets Palkia change form.",
+797,ITEM_BLACK_AUGURITE,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,A black stone that makes some Pokémon evolve.,
+798,ITEM_LINKING_CORD,GEN IX ITEMS,POCKET_ITEMS,OBTIVEL,Loja / pokemart; Script (dado ao jogador),A mysterious string that makes some Pokémon evolve.,data/maps/MauvilleCity_GameCorner/scripts.inc:1648
+799,ITEM_PEAT_BLOCK,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,A block of material that makes some Pokémon evolve.,
+800,ITEM_BERSERK_GENE,GEN IX ITEMS,POCKET_BATTLE_ITEMS,SEM FONTE,,"Sharply boosts Attack, but causes lasting confusion.",
+801,ITEM_FAIRY_FEATHER,GEN IX ITEMS,POCKET_BATTLE_ITEMS,SEM FONTE,,A hold item that raises the power of Fairy-type moves.,
+802,ITEM_SYRUPY_APPLE,GEN IX ITEMS,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A very syrupy apple that makes certain Pokémon evolve.,data/maps/Route40_House5/scripts.inc (Route40_House5)
+803,ITEM_UNREMARKABLE_TEACUP,GEN IX ITEMS,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A cracked teacup that makes certain Pokémon evolve.,data/maps/OlivineCity/scripts.inc (OlivineCity)
+804,ITEM_MASTERPIECE_TEACUP,GEN IX ITEMS,POCKET_ITEMS,OBTIVEL,Loja / pokemart,A chipped teacup that makes certain Pokémon evolve.,data/maps/OlivineCity/scripts.inc (OlivineCity)
+805,ITEM_CORNERSTONE_MASK,GEN IX ITEMS,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),Allows Ogerpon to wield the Rock- type in battle.,data/maps/Kitakami_Temple_Storage/scripts.inc:62
+806,ITEM_WELLSPRING_MASK,GEN IX ITEMS,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),Allows Ogerpon to wield the Water- type in battle.,data/maps/Kitakami_Temple_Storage/scripts.inc:64
+807,ITEM_HEARTHFLAME_MASK,GEN IX ITEMS,POCKET_BATTLE_ITEMS,OBTIVEL,Script (dado ao jogador),Allows Ogerpon to wield the Fire- type in battle.,data/maps/Kitakami_Temple_Storage/scripts.inc:66
+808,ITEM_HEALTH_MOCHI,GEN IX ITEMS,POCKET_MEDICINE,SEM FONTE,,An item that raises the base HP of a Pokémon.,
+809,ITEM_MUSCLE_MOCHI,GEN IX ITEMS,POCKET_MEDICINE,SEM FONTE,,An item that raises the base Attack of a Pokémon.,
+810,ITEM_RESIST_MOCHI,GEN IX ITEMS,POCKET_MEDICINE,SEM FONTE,,An item that raises the base Defense of a Pokémon.,
+811,ITEM_GENIUS_MOCHI,GEN IX ITEMS,POCKET_MEDICINE,SEM FONTE,,An item that raises the base Sp. Atk. of a Pokémon.,
+812,ITEM_CLEVER_MOCHI,GEN IX ITEMS,POCKET_MEDICINE,SEM FONTE,,An item that raises the base Sp. Def. of a Pokémon.,
+813,ITEM_SWIFT_MOCHI,GEN IX ITEMS,POCKET_MEDICINE,SEM FONTE,,An item that raises the base Speed of a Pokémon.,
+814,ITEM_FRESH_START_MOCHI,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,An item that resets all base points of a Pokémon.,
+815,ITEM_GLIMMERING_CHARM,GEN IX ITEMS,POCKET_KEY_ITEMS,SEM FONTE,,A charm that will raise the shards from Tera Raids.,
+816,ITEM_METAL_ALLOY,GEN IX ITEMS,POCKET_ITEMS,SO VIA ROUBO/GOLPE,Held item selvagem (Roubo/Golpe do Dia),A peculiar metal that makes certain Pokémon evolve.,gen_8_families.h
+817,ITEM_STELLAR_TERA_SHARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,These shards may form when a Tera Pokémon faints.,
+818,ITEM_JUBILIFE_MUFFIN,GEN IX ITEMS,POCKET_MEDICINE,SEM FONTE,,Heals all the status problems of one Pokémon.,
+819,ITEM_REMEDY,GEN IX ITEMS,POCKET_MEDICINE,SEM FONTE,,A bitter powder that restores HP by 20 points.,
+820,ITEM_FINE_REMEDY,GEN IX ITEMS,POCKET_MEDICINE,SEM FONTE,,A bitter powder that restores HP by 60 points. by 50 points.,
+821,ITEM_SUPERB_REMEDY,GEN IX ITEMS,POCKET_MEDICINE,SEM FONTE,,A bitter powder that restores HP by 120 points. by 200 points.,
+822,ITEM_AUX_EVASION,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,Sharply raises evasiveness during one battle. Raises evasiveness during one battle.,
+823,ITEM_AUX_GUARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,Sharply raises defenses during one battle. Raises defenses during one battle.,
+824,ITEM_AUX_POWER,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,Sharply raises offenses during one battle. Raises offenses during one battle.,
+825,ITEM_AUX_POWERGUARD,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,Sharply raises offense & defense during one battle. Raises offense and defense during one battle.,
+826,ITEM_CHOICE_DUMPLING,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,?????,
+827,ITEM_SWAP_SNACK,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,?????,
+828,ITEM_TWICE_SPICED_RADISH,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,?????,
+829,ITEM_POKESHI_DOLL,GEN IX ITEMS,POCKET_ITEMS,SEM FONTE,,A wooden toy resembling a Poké- mon. Can be sold.,
+830,ITEM_STRANGE_BALL,GEN IX ITEMS,POCKET_POKE_BALLS,OBTIVEL,"Script (dado ao jogador); Script (dado ao jogador, var computado)",An unusual Ball warped through space and time.,data/maps/AzaleaTown_KurtsHouse/scripts.inc:1570
+831,ITEM_CLEFABLITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Clefable to Mega Evolve in battle.,
+832,ITEM_VICTREEBELITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Victreebel to Mega Evolve in battle.,
+833,ITEM_STARMINITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Starmie to Mega Evolve in battle.,
+834,ITEM_DRAGONINITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Dragonite to Mega Evolve in battle.,
+835,ITEM_MEGANIUMITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Meganium to Mega Evolve in battle.,
+836,ITEM_FERALIGITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Feraligatr to Mega Evolve in battle.,
+837,ITEM_SKARMORITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Skarmory to Mega Evolve in battle.,
+838,ITEM_FROSLASSITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Froslass to Mega Evolve in battle.,
+839,ITEM_EMBOARITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Emboar to Mega Evolve in battle.,
+840,ITEM_EXCADRITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Excadrill to Mega Evolve in battle.,
+841,ITEM_SCOLIPITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Scolipede to Mega Evolve in battle.,
+842,ITEM_SCRAFTINITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Scrafty to Mega Evolve in battle.,
+843,ITEM_EELEKTROSSITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Eelektross to Mega Evolve in battle.,
+844,ITEM_CHANDELURITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Chandelure to Mega Evolve in battle.,
+845,ITEM_CHESNAUGHTITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Chesnaught to Mega Evolve in battle.,
+846,ITEM_DELPHOXITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Delphox to Mega Evolve in battle.,
+847,ITEM_GRENINJITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Greninja to Mega Evolve in battle.,
+848,ITEM_PYROARITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Pyroar to Mega Evolve in battle.,
+849,ITEM_FLOETTITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Floette to Mega Evolve in battle.,
+850,ITEM_MALAMARITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Malamar to Mega Evolve in battle.,
+851,ITEM_BARBARACITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Barbaracle to Mega Evolve in battle.,
+852,ITEM_DRAGALGITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Dragalge to Mega Evolve in battle.,
+853,ITEM_HAWLUCHANITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Hawlucha to Mega Evolve in battle.,
+854,ITEM_ZYGARDITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Zygarde to Mega Evolve in battle.,
+855,ITEM_DRAMPANITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Drampa to Mega Evolve in battle.,
+856,ITEM_FALINKSITE,Legends Z-A Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Falinks to Mega Evolve in battle.,
+857,ITEM_HEATRANITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Heatran to Mega Evolve in battle.,
+858,ITEM_DARKRANITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Darkrai to Mega Evolve in battle.,
+859,ITEM_ZERAORITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Zeraora to Mega Evolve in battle.,
+860,ITEM_RAICHUNITE_X,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Raichu to Mega Evolve in battle.,
+861,ITEM_RAICHUNITE_Y,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Raichu to Mega Evolve in battle.,
+862,ITEM_CHIMECHITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Chimecho to Mega Evolve in battle.,
+863,ITEM_ABSOLITE_Z,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Absol to Mega Evolve in battle.,
+864,ITEM_STARAPTITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Staraptor to Mega Evolve in battle.,
+865,ITEM_GARCHOMPITE_Z,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Garchomp to Mega Evolve in battle.,
+866,ITEM_LUCARIONITE_Z,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Lucario to Mega Evolve in battle.,
+867,ITEM_GOLURKITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Golurk to Mega Evolve in battle.,
+868,ITEM_MEOWSTICITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Meowstic to Mega Evolve in battle.,
+869,ITEM_CRABOMINITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Crabominable to Mega in battle.,
+870,ITEM_GOLISOPITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Golisopod to Mega Evolve in battle.,
+871,ITEM_MAGEARNITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Magearna to Mega Evolve in battle.,
+872,ITEM_SCOVILLAINITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Scovillain to Mega Evolve in battle.,
+873,ITEM_BAXCALIBRITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Baxcalibur to Mega Evolve in battle.,
+874,ITEM_TATSUGIRINITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Tatsugiri to Mega Evolve in battle.,
+875,ITEM_GLIMMORANITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_MEGASTONES,SEM FONTE,,This stone enables Glimmora to Mega Evolve in battle.,
+876,ITEM_LOST_ITEM,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),The POKéDOLL lost by the copycat.,data/maps/VermilionCity_FanClub/scripts.inc:59
+877,ITEM_MACHINE_PART,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,SO MENCIONADO,ver script,Important machine part stolen from the POWER PLANT.,data/maps/CeruleanCity_Gym/scripts.inc:69: finditem ITEM_MACHINE_PART
+878,ITEM_MYSTERY_EGG,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),Obtained from Mr. Pokémon. Who knows what's inside?,data/maps/Route30_MrPokemonsHouse/scripts.inc:308
+879,ITEM_PASS,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A ticket for riding the Magnet Train.,data/maps/SaffronCity_CopyCatsHouse_2F/scripts.inc:154
+880,ITEM_RAINBOW_WING,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A mystical rainbow feather that sparkles.,data/maps/PewterCity/scripts.inc:34
+881,ITEM_RED_SCALE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A scale from the red Gyarados. It glows red.,data/maps/LakeOfRage/scripts.inc:224
+882,ITEM_SECRET_POTION,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A fantastic medicine from the Cianwood pharmacy.,data/maps/CianwoodShop/scripts.inc:14
+883,ITEM_SILVER_WING,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A strange silvery feather that sparkles.,data/maps/PewterCity/scripts.inc:45
+884,ITEM_CLEAR_BELL,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),Old fashioned bell that makes a gentle ringing.,data/maps/EcruteakCity_Theater/scripts.inc:896
+885,ITEM_TIDAL_BELL,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),"Old-fashioned bell with a gentle, soothing sound.",data/maps/EcruteakCity_Theater/scripts.inc:849
+886,ITEM_RADIO,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_KEY_ITEMS,SO MENCIONADO,ver script,A legacy receiver. The Radio Tower will exchange it.,data/maps/GoldenrodCity_RadioTower_1F/scripts.inc:136: checkitem ITEM_RADIO
+887,ITEM_UNUSED_887,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_ITEMS,SEM FONTE,,?????,
+888,ITEM_TYPHLOSIONITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_ITEMS,SEM FONTE,,This stone enables Typhlosion to Mega Evolve in battle.,
+889,ITEM_PRIMARINITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_ITEMS,SEM FONTE,,This stone enables Primarina to Mega Evolve in battle.,
+890,ITEM_MEOWSCARADITE,Legends Z-A: Mega Dimension DLC Mega Stones,POCKET_ITEMS,SEM FONTE,,Lets Meowscarada Mega Evolve in battle.,
+891,ITEM_HP_UP_EX,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Maximizes the effort value of a Pokémon's HP.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+892,ITEM_PROTEIN_EX,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Maximizes the effort value of a Pokémon's Attack.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+893,ITEM_IRON_EX,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Maximizes the effort value of a Pokémon's Defense.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+894,ITEM_CALCIUM_EX,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Maximizes the effort value of a Pokémon's Sp. Atk.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+895,ITEM_ZINC_EX,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Maximizes the effort value of a Pokémon's Sp. Def.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+896,ITEM_CARBOS_EX,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Maximizes the effort value of a Pokémon's Speed.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+897,ITEM_GRIMY_HERB,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,An herb that lowers one Pokémon's Attack IV by one.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+898,ITEM_GOOPY_HERB,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,An herb that lowers one Pokémon's Speed IV by one.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+899,ITEM_JADE_ORB,Super vitamins,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),"A Green, glowing orb said to contain an ancient power.",data/maps/Kitakami_Houses/scripts.inc:158
+900,ITEM_BECKONING_BELL,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart; Script (dado ao jogador),An ornate bell that renews hidden grottos once.,data/maps/BattleFrontier_BattleFactoryLobby/scripts.inc (BattleFrontier_BattleFactoryLobby)
+901,ITEM_NORMALITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:3961
+902,ITEM_FIRETITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:1255
+903,ITEM_WATERTITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:2214
+904,ITEM_ELECTRITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:2539
+905,ITEM_GRASSTITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:5761
+906,ITEM_ICETITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:7023
+907,ITEM_FIGHTITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:2355
+908,ITEM_POISONTITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:1556
+909,ITEM_GROUNDITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:14670
+910,ITEM_FLYINGITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:1816
+911,ITEM_PSYCHITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:4181
+912,ITEM_BUGTITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:3258
+913,ITEM_ROCKTITE,Super vitamins,,SEM FONTE,,,
+914,ITEM_GHOSTITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:752
+915,ITEM_DRAGOTITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:2640
+916,ITEM_DARKTITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:702
+917,ITEM_STEELTITE,Super vitamins,,SO VIA ROUBO/GOLPE,Held item de treinador (so via Roubo),,trainers.party:7716
+918,ITEM_FAIRYTITE,Super vitamins,,OBTIVEL,Script (dado ao jogador),,data/maps/Route30_MrPokemonsHouse/scripts.inc:486
+919,ITEM_BONDSTONE,Super vitamins,POCKET_MEGASTONES,OBTIVEL,Script (dado ao jogador),A stone that lets your partner Mega Evolve.,data/maps/NewBarkTown_Lab/scripts.inc:2372
+920,ITEM_SHIN_GENOME,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart; Script (dado ao jogador),A genome capable of turning Pokémon shiny.,data/maps/GoldenrodBattleAracdeLobby/scripts.inc (GoldenrodBattleAracdeLobby)
+921,ITEM_BLACK_MIRROR,Super vitamins,POCKET_KEY_ITEMS,SO MENCIONADO,ver script,An eerie mirror that does not show your own reflection.,data/maps/SouthShoreHouse/scripts.inc:15: checkitem ITEM_BLACK_MIRROR
+922,ITEM_GS_BALL,Super vitamins,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A strange ball with ornaments.,data/maps/AzaleaTown/scripts.inc:500
+923,ITEM_DARK_CRYSTAL,Super vitamins,POCKET_KEY_ITEMS,SO MENCIONADO,ver script,An ominous crystal radianting an aura of wrath.,data/maps/WhirlIslands_LugiaChamber/scripts.inc:203: checkitem ITEM_DARK_CRYSTAL
+924,ITEM_REVERSE_CANDY,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,Lowers the level of a Pokémon by one.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+925,ITEM_ZEROMIN,Super vitamins,POCKET_MEDICINE,OBTIVEL,Loja / pokemart,Resets all effort values of one Pokémon to zero.,data/maps/GoldenrodCity_DepartmentStore_3F/scripts.inc (GoldenrodCity_DepartmentStore_3F)
+926,ITEM_WITHERED_HERB,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,An herb that lowers one Pokémon's HP IV by one.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+927,ITEM_BRITTLE_HERB,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,An herb that lowers one Pokémon's Defense IV by one.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+928,ITEM_DULL_HERB,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,An herb that lowers one Pokémon's Sp. Atk IV by one.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+929,ITEM_SOGGY_HERB,Super vitamins,POCKET_ITEMS,OBTIVEL,Loja / pokemart,An herb that lowers one Pokémon's Sp. Def IV by one.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc (GoldenrodCity_UndergroundTunnel)
+930,ITEM_GROOMING_KIT,Super vitamins,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A set of brushes and tools for grooming Pokémon.,data/maps/GoldenrodCity_UndergroundTunnel/scripts.inc:340
+931,ITEM_SEASONAL_PERFUME,Super vitamins,POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A perfume with scents inspired by the seasons.,data/maps/GoldenrodCity_FlowerShop/scripts.inc:132
+932,ITEM_GIGANTATITE,Super vitamins,POCKET_MEGASTONES,SEM FONTE,,A stone that lets former Gigantamax {PKMN} Mega Evolve.,
+933,ITEM_SUN_MOON_TICKET,SoulGold: ferry pass Olivine <-> Sun and Moon Altar (Rift Missions),POCKET_KEY_ITEMS,OBTIVEL,Script (dado ao jogador),A ferry ticket from Olivine to the Sun and Moon Altar.,data/maps/OlivineCity_House1/scripts.inc:994

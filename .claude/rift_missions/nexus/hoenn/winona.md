@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -50,6 +50,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): `TRAINER_UNUSED_455` (ex-`TRAINER_WINONA_1`, 270).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_WINONA` = **1020** (flag de batalha `0x8FC`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Winona_Fight`; campeão: `Nexus_EventScript_Winona_GalarianZapdos_ChampionFight` (para Galarian Zapdos), `Nexus_EventScript_Winona_Thundurus_ChampionFight` (para Thundurus). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Winona.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_WINONA`, campeã de Thundurus e Galarian Zapdos. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -154,6 +156,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Thundurus
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Thundurus_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Thundurus**. Winona é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Winona, Líder de Fortree, a cidade construída nas copas das árvores, especialista em Voador.
@@ -215,6 +219,8 @@ Nexus_Text_Thundurus_LookerFile:
 </details>
 
 #### Galarian Zapdos
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_GalarianZapdos_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Galarian Zapdos**. Winona é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -278,6 +284,8 @@ Nexus_Text_GalarianZapdos_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Winona_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Winona cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dela mesma, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -314,6 +322,8 @@ Nexus_Text_Winona_Defeat:
 ### Diálogo associado ao lendário
 
 #### Thundurus
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Winona_Thundurus_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Winona é a **campeã**, a luta logo antes do Thundurus. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -377,6 +387,8 @@ Nexus_Text_Winona_Thundurus_ChampionAfter:
 </details>
 
 #### Galarian Zapdos
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Winona_GalarianZapdos_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Winona é a **campeã**, a luta logo antes do Zapdos de Galar. A fala é sobre a criatura, sem dizer o nome dela.
 

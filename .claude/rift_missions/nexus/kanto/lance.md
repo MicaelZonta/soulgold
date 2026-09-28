@@ -14,10 +14,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -52,6 +52,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_TITLE_DEFENSE_LANCE` | 877 | 0x86D | Baxcalibur Lv85, Dragonite Lv86, Exeggutor-Alola Lv86, Hydrapple Lv86, Dragapult Lv86, Archaludon Lv86 · *dupla* · VS: Purple | `src/title_defense.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_LANCE` = **995** (flag de batalha `0x8E3`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Lance_Fight`; campeão: `Nexus_EventScript_Lance_Rayquaza_ChampionFight` (para Rayquaza), `Nexus_EventScript_Lance_GougingFire_ChampionFight` (para Gouging Fire). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Lance.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_LANCE`, campeão de Rayquaza e Gouging Fire. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -156,6 +158,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Rayquaza
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Rayquaza_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Rayquaza**. Lance é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Lance, mestre dos dragões do clã de Blackthorn, Campeão da Liga e primo da Clair. Voa no Dragonite e usa capa.
@@ -219,6 +223,8 @@ Nexus_Text_Rayquaza_LookerFile:
 
 #### Gouging Fire
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_GougingFire_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Gouging Fire**. Lance é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Lance, mestre dos dragões do clã de Blackthorn, que conhece a linhagem de cada dragão que treina.
@@ -280,6 +286,8 @@ Nexus_Text_GougingFire_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Lance_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lance cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -322,6 +330,8 @@ Nexus_Text_Lance_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lance é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela.
 
 #### Rayquaza
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Lance_Rayquaza_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Lance passou a vida acreditando que os dragões dele eram os que voavam mais alto. Viu o Dragonite subir até faltar ar, e a criatura continuava acima, comendo pedras que caíam do céu. Lá em cima ele é só um homem de capa. O que ela revela: ela só desce quando dois gigantes brigam pelo mundo, apaga a briga e vai embora sem esperar agradecimento, e o Lance admite que é isso que um Campeão devia ser, e que às vezes ele esquece. Termina com o aviso de que ninguém doma o céu (casa com o R17: o jogador leva um fragmento, não a criatura).
 
@@ -379,6 +389,8 @@ Nexus_Text_Lance_Rayquaza_ChampionAfter:
 </details>
 
 #### Gouging Fire
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Lance_GougingFire_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Lance sabe de cor a linhagem de todo dragão: Dratini até Dragonite, Bagon até Salamence, até onde vão os registros do clã. Esta criatura não está em nenhum: sem pais, sem filhotes, parece um palpite de alguém sobre o passado. E luta como dragão mesmo assim. A virada: ele cresceu achando que a linhagem fazia o dragão, e a criatura derrubou todos os pilares do vale sem ter nenhuma. A prima dele ia odiar. Ele gosta.
 

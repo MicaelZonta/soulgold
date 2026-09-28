@@ -5361,54 +5361,56 @@ NewBarkTown_Text_UBHook:
 # 2714 "data/maps/NewBarkTown/scripts.pory"
 @ Narration, no plaque: the explicit time transition (section 18) that takes
 # 2715 "data/maps/NewBarkTown/scripts.pory"
-@ the barriers and the equipment away before the reload.
+@ the barriers and the equipment away before the reload. It names no hour of
 # 2716 "data/maps/NewBarkTown/scripts.pory"
-NewBarkTown_Text_UBRepairs:
+@ the day (design 5.3): the scene can end at any time, night included.
 # 2717 "data/maps/NewBarkTown/scripts.pory"
-	.string "By evening the markers were\n"
+NewBarkTown_Text_UBRepairs:
 # 2718 "data/maps/NewBarkTown/scripts.pory"
-	.string "packed away, the barriers were\l"
+	.string "Later, the markers were packed\n"
 # 2719 "data/maps/NewBarkTown/scripts.pory"
-	.string "cleared, and the residents were\l"
+	.string "away, the barriers were cleared,\l"
 # 2720 "data/maps/NewBarkTown/scripts.pory"
-	.string "back in their homes.$"
+	.string "and the residents were back in\l"
 # 2721 "data/maps/NewBarkTown/scripts.pory"
-
+	.string "their homes.$"
 # 2722 "data/maps/NewBarkTown/scripts.pory"
-@ --- Retry (section 19) ------------------------------------------------------
+
 # 2723 "data/maps/NewBarkTown/scripts.pory"
-
+@ --- Retry (section 19) ------------------------------------------------------
 # 2724 "data/maps/NewBarkTown/scripts.pory"
-NewBarkTown_Text_UBRetryLooker:
+
 # 2725 "data/maps/NewBarkTown/scripts.pory"
-	.string "{SPEAKER NAME_LOOKER}The lab is safe.\n"
+NewBarkTown_Text_UBRetryLooker:
 # 2726 "data/maps/NewBarkTown/scripts.pory"
-	.string "We've kept the way back clear.$"
+	.string "{SPEAKER NAME_LOOKER}The lab is safe.\n"
 # 2727 "data/maps/NewBarkTown/scripts.pory"
-
+	.string "We've kept the way back clear.$"
 # 2728 "data/maps/NewBarkTown/scripts.pory"
-NewBarkTown_Text_UBRetryAnabel:
+
 # 2729 "data/maps/NewBarkTown/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}The field is ready.\n"
+NewBarkTown_Text_UBRetryAnabel:
 # 2730 "data/maps/NewBarkTown/scripts.pory"
-	.string "Are your Pokémon ready to try\l"
+	.string "{SPEAKER NAME_ANABEL}The field is ready.\n"
 # 2731 "data/maps/NewBarkTown/scripts.pory"
-	.string "again?$"
+	.string "Are your Pokémon ready to try\l"
 # 2732 "data/maps/NewBarkTown/scripts.pory"
-
+	.string "again?$"
 # 2733 "data/maps/NewBarkTown/scripts.pory"
-NewBarkTown_Text_UBRetryNotReady:
-# 2734 "data/maps/NewBarkTown/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}Take care of them first.\n"
-# 2735 "data/maps/NewBarkTown/scripts.pory"
-	.string "We'll hold the fronts.$"
-# 2736 "data/maps/NewBarkTown/scripts.pory"
 
+# 2734 "data/maps/NewBarkTown/scripts.pory"
+NewBarkTown_Text_UBRetryNotReady:
+# 2735 "data/maps/NewBarkTown/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}Take care of them first.\n"
+# 2736 "data/maps/NewBarkTown/scripts.pory"
+	.string "We'll hold the fronts.$"
 # 2737 "data/maps/NewBarkTown/scripts.pory"
-NewBarkTown_Text_UBUnresolved:
+
 # 2738 "data/maps/NewBarkTown/scripts.pory"
-	.string "{SPEAKER NAME_ANABEL}The fronts aren't clear yet.\n"
+NewBarkTown_Text_UBUnresolved:
 # 2739 "data/maps/NewBarkTown/scripts.pory"
+	.string "{SPEAKER NAME_ANABEL}The fronts aren't clear yet.\n"
+# 2740 "data/maps/NewBarkTown/scripts.pory"
 	.string "Regroup before we try again.$"
 
 # 342 "data/maps/NewBarkTown/scripts.pory"

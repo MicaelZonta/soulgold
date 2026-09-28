@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -43,6 +43,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se precisar de flag nova).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_GRETA` = **1029** (flag de batalha `0x905`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Greta_Fight`; campeão: `Nexus_EventScript_Greta_Koraidon_ChampionFight` (para Koraidon), `Nexus_EventScript_Greta_GreatTusk_ChampionFight` (para Great Tusk). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Greta.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_GRETA`, campeão de Koraidon e Great Tusk. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -145,6 +147,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Koraidon
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Koraidon_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Koraidon**. Greta é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Greta, Arena Tycoon da Battle Frontier de Hoenn, alegre e direta, que julga batalhas em três turnos: Mind, Skill e Body.
@@ -211,6 +215,8 @@ Nexus_Text_Koraidon_LookerFile:
 
 #### Great Tusk
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_GreatTusk_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Great Tusk**. Greta é a campeã dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Greta, a juíza da Arena, para quem Body é um terço da nota e nunca a nota inteira.
@@ -276,6 +282,8 @@ Nexus_Text_GreatTusk_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Greta_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Greta cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dela mesma, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -317,6 +325,8 @@ Nexus_Text_Greta_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Greta é a campeã, a luta logo antes do lendário do dia. Um registro por lendário; a fala é sobre a criatura, sem dizer o nome dela.
 
 #### Koraidon
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Greta_Koraidon_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A Greta julga todo mundo em três turnos: Mind, Skill, Body. Ela tenta julgar a criatura do vale e o placar sai estranho: Body fora da escala, Skill bruto, e Mind… ela só queria correr e comer. A virada é que a Greta, que passou a vida medindo, descobre que o que mais gostou nele não entra na tabela: ele não luta para vencer, luta porque é divertido. E ela lembra que a Arena começou assim para ela também.
 
@@ -379,6 +389,8 @@ Nexus_Text_Greta_Koraidon_ChampionAfter:
 
 
 #### Great Tusk
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Greta_GreatTusk_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A Greta foi ver a criatura da arena e deu a nota que ela nunca tinha dado: Body perfeito, e nada mais. Ela bate, ela rola, ela bate de novo. A virada: a Greta sempre disse que o Body sozinho perde na Arena, porque o julgamento pede os três. Ali, sem juiz nenhum, o Body sozinho venceu tudo o que havia, e sobrou uma arena vazia de estacas quebradas. Ela entende por que a Arena julga três coisas: não é para premiar o forte, é para que sobre alguém depois.
 

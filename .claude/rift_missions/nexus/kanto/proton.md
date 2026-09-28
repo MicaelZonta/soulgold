@@ -14,10 +14,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -51,6 +51,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_PROTON_1` | 862 | 0x85E | Nosepass Lv17, Houndour Lv17, Porygon Lv18 | `SlowpokeWell_B1F`, `src/battle_setup.c`, `src/match_call.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_PROTON` = **998** (flag de batalha `0x8E6`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Proton_Fight`; campeão: `Nexus_EventScript_Proton_RoaringMoon_ChampionFight` (para Roaring Moon), `Nexus_EventScript_Proton_TingLu_ChampionFight` (para Ting-Lu). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Proton.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_PROTON`, campeão de Ting-Lu e Roaring Moon. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -155,6 +157,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Ting-Lu
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_TingLu_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Ting-Lu**. Proton é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Proton, executivo do Team Rocket que se gaba de ser o mais cruel da organização; foi ele quem comandou o corte das caudas de Slowpoke no Slowpoke Well.
@@ -216,6 +220,8 @@ Nexus_Text_TingLu_LookerFile:
 </details>
 
 #### Roaring Moon
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_RoaringMoon_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Roaring Moon**. Proton é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -279,6 +285,8 @@ Nexus_Text_RoaringMoon_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Proton_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Proton cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -318,6 +326,8 @@ Nexus_Text_Proton_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Proton é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela.
 
 #### Ting-Lu
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Proton_TingLu_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Proton fez carreira assustando os outros, e ao lado da criatura ele também sente medo. Dizem que ela é feita de medo, o de outras pessoas, derramado num vaso e deixado ali. A virada: se o medo dela é emprestado, o dele também é. Ninguém tinha medo do Proton; tinham medo do R no peito dele. E ele pede para o jogador não contar.
 
@@ -373,6 +383,8 @@ Nexus_Text_Proton_TingLu_ChampionAfter:
 </details>
 
 #### Roaring Moon
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Proton_RoaringMoon_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 A criatura saiu de um diário de expedição em que ninguém acreditou: selvagem demais, má demais. Para o Proton é o sonho: ser a história em que ninguém acredita até ser tarde. Mas ele passou uma hora olhando para ela, e a virada é o que viu: ela não é cruel. É velha e faminta, e ninguém nunca lhe deu nada além de medo. E ele não quer que o jogador olhe para ele daquele jeito.
 

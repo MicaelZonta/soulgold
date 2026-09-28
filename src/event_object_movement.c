@@ -567,6 +567,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Blaine,                OBJ_EVENT_PAL_TAG_BLAINE},
     {gObjectEventPal_Portal,                OBJ_EVENT_PAL_TAG_PORTAL},
     {gObjectEventPal_AltarRift,             OBJ_EVENT_PAL_TAG_ALTAR_RIFT},
+    {gObjectEventPal_NexusPortal,           OBJ_EVENT_PAL_TAG_NEXUS_PORTAL},
+    {gObjectEventPal_NexusLookerFile,       OBJ_EVENT_PAL_TAG_NEXUS_LOOKER_FILE},
     {gObjectEventPal_AetherEmitter,         OBJ_EVENT_PAL_TAG_AETHER_EMITTER},
     {gObjectEventPal_Timegear,                OBJ_EVENT_PAL_TAG_TIMEGEAR},
     {gObjectEventPal_Lusamine,                OBJ_EVENT_PAL_TAG_LUSAMINE},
@@ -584,6 +586,10 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Fantina,                OBJ_EVENT_PAL_TAG_FANTINA},
     {gObjectEventPal_Bruno,                  OBJ_EVENT_PAL_TAG_BRUNO},
     {gObjectEventPal_Steven,                 OBJ_EVENT_PAL_TAG_STEVEN},
+    {gObjectEventPal_Anabel,                 OBJ_EVENT_PAL_TAG_ANABEL},
+    {gObjectEventPal_LeaderBlue,             OBJ_EVENT_PAL_TAG_BLUE},
+    {gObjectEventPal_Cynthia,                OBJ_EVENT_PAL_TAG_CYNTHIA},
+    {gObjectEventPal_BrendanHoenn,           OBJ_EVENT_PAL_TAG_BRENDAN_HOENN},
 
 
 

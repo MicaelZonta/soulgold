@@ -344,7 +344,7 @@ MrPokemonHouse_Text_Intro2:
 	.string "I've been working from this house.$"
 
 MrPokemonHouse_Text_OakGreeting:
-	.string "Oak: Ah, you must be {PLAYER}!\n"
+	.string "{SPEAKER NAME_OAK}Ah, you must be {PLAYER}!\n"
 	.string "Elm told us you were coming.$"
 
 MrPokemonHouse_Text_Intro3:
@@ -384,7 +384,7 @@ MrPokemonHouse_Text_LillieVulpix:
 	.string "She seems quite pleased!$"
 
 MrPokemonHouse_Text_OakBeforeBattle:
-	.string "Oak: A battle? An excellent chance\n"
+	.string "{SPEAKER NAME_OAK}A battle? An excellent chance\n"
 	.string "to see how you work together!$"
 
 MrPokemonHouse_Text_KukuiBeforeBattle:
@@ -453,7 +453,7 @@ MrPokemonHouse_Text_KukuiGiveEgg:
 	.string "I'd like to hear what he thinks.$"
 
 MrPokemonHouse_Text_OakIntro:
-	.string "Oak: That was worth staying for!\p"
+	.string "{SPEAKER NAME_OAK}That was worth staying for!\p"
 	.string "I came to hear Kukui's findings,\n"
 	.string "but you've given me another idea.\p"
 	.string "You paid close attention to\n"
@@ -472,7 +472,7 @@ MrPokemonHouse_Text_GetDex:
 	.string "{PLAYER} received the Pokédex!$"
 
 MrPokemonHouse_Text_OakParting:
-	.string "Oak: Take your time to observe\n"
+	.string "{SPEAKER NAME_OAK}Take your time to observe\n"
 	.string "the Pokémon you meet, {PLAYER}.\p"
 	.string "Even a familiar species may\n"
 	.string "have something new to teach you!\p"

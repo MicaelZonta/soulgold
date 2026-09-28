@@ -14,10 +14,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -51,6 +51,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_PETREL_1` | 467 | 0x6D3 | Scrafty Lv48, Persian Alola Lv48, Pyroar Lv49, Weezing Galar Lv48, Rotom-Wash Lv48 | `RocketHideout_B3F`, `src/battle_setup.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_PETREL` = **999** (flag de batalha `0x8E7`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Petrel_Fight`; campeão: `Nexus_EventScript_Petrel_Ogerpon_ChampionFight` (para Ogerpon), `Nexus_EventScript_Petrel_Meloetta_ChampionFight` (para Meloetta). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Petrel.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_PETREL`, campeão de Meloetta e Ogerpon. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -155,6 +157,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Meloetta
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Meloetta_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Meloetta**. Petrel é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Petrel, executivo do Team Rocket e mestre dos disfarces, que se passou pelo Diretor da Radio Tower de Goldenrod.
@@ -215,6 +219,8 @@ Nexus_Text_Meloetta_LookerFile:
 </details>
 
 #### Ogerpon
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Ogerpon_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Ogerpon**. Petrel é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -280,6 +286,8 @@ Nexus_Text_Ogerpon_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Petrel_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Petrel cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -320,6 +328,8 @@ Nexus_Text_Petrel_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Petrel é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela.
 
 #### Meloetta
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Petrel_Meloetta_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Petrel já fez cem vozes: a do Diretor, a de um recruta, uma que nem a mãe dele reconheceria. Mas quando a criatura muda de forma, as duas formas são de verdade, e ele tem inveja. A virada: na noite anterior ele cantou na frente de um espelho procurando a própria voz, a de antes de todas as outras, e não achou.
 
@@ -378,6 +388,8 @@ Nexus_Text_Petrel_Meloetta_ChampionAfter:
 </details>
 
 #### Ogerpon
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Petrel_Ogerpon_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Petrel mente por profissão, mas as mentiras dele acabam no jantar. Esta vila conta a mesma mentira há gerações, e ela machucou uma criatura o tempo todo. A virada: a criatura ainda usa a única máscara que não levaram, para ter atrás do que se esconder. Ele conhece o truque, inventou metade dele. E pede ao jogador que, quando ela tirar a máscara, não diga nada.
 

@@ -1,12 +1,17 @@
 # Nexus — regras
 
+> **Implementação:** [`NEXUS_IMPLEMENTATION.md`](NEXUS_IMPLEMENTATION.md) —
+> onde cada regra está no código e como acrescentar treinador, lendário ou prêmio.
+
 Regras do autor para o **Nexus** (o loop pós-Necrozma das Rift Missions,
 design §10). **Valem para qualquer trabalho no Nexus**: time de treinador,
 sorteio, pool de lendários, prêmio, mapa, script. Se uma tarefa pedir algo que
 contraria uma regra daqui, pare e pergunte ao autor antes.
 
 Decididas pelo autor em 25/09/2026; revisão 2 em 26/09/2026 (formato
-Traditional por categoria, Singles/Doubles, derrota no Daily, IV do boss). As notas "No código" dizem o que já existe
+Traditional por categoria, Singles/Doubles, derrota no Daily, IV do boss);
+revisão 3 em 27/09/2026 (fragmento, Looker Files, forma superior do boss, tom
+do lugar — R17 a R20). As notas "No código" dizem o que já existe
 no repositório para cumprir a regra e onde está a armadilha.
 
 ---
@@ -62,8 +67,8 @@ nível 100 (para se desafiar) ou nível 50 (para upar).
   primeira luta de verdade é a do treinador que o derrotou (ou o próximo, se
   ele saiu por conta própria).
 - **No código:** flags do bloco `DAILY` (`include/constants/flags.h`,
-  `DAILY_FLAGS_START`) zeram na virada do dia. A fenda do altar já usa daily
-  flag (V24). Derrota sem penalidade → skill `batalha-sem-blackout`
+  `DAILY_FLAGS_START`) zeram na virada do dia. A fenda do altar deixou de
+  ser "uma vez por dia" (27/09/2026): fica aberta e é a entrada do Nexus. Derrota sem penalidade → skill `batalha-sem-blackout`
   (`B_FLAG_NO_WHITEOUT`). Nova flag → skills `alocar-flag` e
   `catalogar-flags`.
 
@@ -113,20 +118,30 @@ forma).
 ## R7. Loop infinito, com repetição
 
 Lendários e treinadores **podem aparecer N vezes**. Não há filtro de "já
-enfrentado" nem de "já capturado" (a única restrição de pool é a R1). Capturar
-de novo o mesmo lendário é permitido — serve para caçar IV melhor.
+enfrentado" nem de "já capturado" (a única restrição de pool é a R1). Levar de novo o
+fragmento do mesmo lendário (R17) é permitido — serve para caçar IV melhor.
 
 ## R8. Lendário do Nexus: 3 IVs perfeitos
 
-O lendário do boss vem com **3 IVs perfeitos garantidos** — o padrão do jogo
+O fragmento que o jogador leva (R17) vem com **3 IVs perfeitos garantidos** — o padrão do jogo
 (`LEGENDARY_PERFECT_IV_COUNT 3`, `include/constants/pokemon.h`, campo
-`perfectIVCount` da espécie). Como o lendário pode ser recapturado sem limite
+`perfectIVCount` da espécie). O número vem do **boss**, não da primeira forma:
+um fragmento de Naganadel (Poipole) tem os mesmos 3 IVs garantidos. Como o lendário pode ser recapturado sem limite
 (R7), caçar IV melhor é repetir o Nexus, não aumentar o piso.
 
 ## R9. Prêmio de quem vence tudo
 
-Vencer as 5 lutas **e** capturar o lendário dá **um item prêmio**, que o
-jogador "encontra" no fim. Candidatos (já existem no jogo):
+Vencer as 5 lutas e **levar o fragmento** do lendário (R17) dá **um item
+prêmio**, que o jogador encontra no fim. O lendário em si **nunca** é
+capturado: nocauteá-lo deixa o fragmento, e é o fragmento preso numa bola que
+conclui o dia (revisão de 27/09/2026 — substitui "capturar na batalha" e
+"nocautear e ele se rende").
+
+Logo depois do prêmio, **a dimensão desmorona e expulsa o jogador** de volta
+ao Altar — é o final do dia. Bolsa cheia deixa a Poké Ball do prêmio no chão:
+voltando no mesmo dia, a sala final quieta ainda a oferece.
+
+Candidatos (já existem no jogo):
 
 | Categoria | Itens | O que faz aqui |
 |---|---|---|
@@ -301,10 +316,10 @@ O que o jogador **fez** no dia cabe numa única var de 16 bits (nome sugerido
 | 2–3 | sala 2 | idem |
 | 4–5 | sala 3 | idem |
 | 6–7 | sala 4 | idem |
-| 8–10 | progresso | 0–5 = lutas vencidas (4 treinadores + campeão); 6 = lendário capturado |
+| 8–10 | progresso | 0–5 = lutas vencidas (4 treinadores + campeão); 6 = lendário nocauteado, fragmento esperando; 7 = fragmento levado (R17) |
 | 11 | prêmio do R9 já entregue hoje | 0/1 |
-| 12 | Poipole da luta do Naganadel já entregue hoje (ficha da [Soliera](alola/soliera.md)) | 0/1 |
-| 13–15 | livres | — |
+| 12 | presente extra pós-boss já entregue hoje (`afterBossScript`; nenhum lendário usa desde 27/09) | 0/1 |
+| 13–15 | sala onde o jogador está (0–5), para o load e a volta (acrescentado na implementação, 27/09/2026) | — |
 
 - Ao reentrar (R3), o script lê a var: teleporte escolhido ativo, os outros
   dois desativados, luta pulada enquanto `sala < progresso`. A primeira luta
@@ -346,17 +361,19 @@ registros** de fala, na própria ficha:
   1056 é o caminho mais barato. `_ChampionAfter` usa a plaquinha de fala
   (skill `nomear-falante`), que pede um `SP_NAME_*` por treinador.
 
-## R17. O lendário que o jogador leva vem no nível 1 — e na primeira forma
+## R17. O fim da run: só um fragmento
 
-Decidido pelo autor em 27/09/2026. A **luta** é contra o lendário completo (a
-forma final, no nível do R2). O que o jogador **leva** no fim é outra coisa: um
-**fragmento** dele, que sobra quando a criatura cai. Por isso:
+Decidido pelo autor em 27/09/2026. O Nexus é uma realidade quebrada (R20): o
+que se enfrenta no fim é um **conceito**, e conceito não se captura. O jogo
+tem que deixar isso **claro** para o jogador.
 
-- **Todo** lendário recebido no Nexus vem **no nível 1**, sem exceção
-  (lendário, semi-lendário, mítico, Ultra Beast ou Paradoxo), qualquer que seja
-  o nível da luta.
-- Se a família tem **pré-evolução**, o jogador recebe a **primeira forma**, não
-  a que ele enfrentou:
+- **Na batalha o boss não pode ser capturado** (`B_FLAG_NO_CATCHING`; a bola
+  diz "Poké Balls cannot be used right now!").
+- **Nocauteado, ele se desfaz** e sobra **um fragmento** no lugar dele.
+- O fragmento é sempre a **primeira forma** da espécie: Silvally → **Type:
+  Null**, Naganadel → **Poipole**, forma de batalha → forma base.
+- **Sempre nível 1** — é o começo de algo, não o fim.
+- Famílias com pré-evolução (o fragmento é a primeira forma):
 
 | Boss (enfrentado) | Recebido (nível 1) |
 |---|---|
@@ -365,23 +382,60 @@ forma final, no nível do R2). O que o jogador **leva** no fim é outra coisa: u
 | Urshifu (as duas formas) | Kubfu |
 | Melmetal | Meltan |
 | Manaphy | Phione (neste hack Manaphy evolui de Phione) |
-| Naganadel | Poipole (já era o presente da luta, bit 12 do R15) |
+| Naganadel | Poipole (o presente antigo da luta saiu, ver acima) |
 
-- As pré-evoluções **não são boss** do Nexus; elas só existem como o que se
-  recebe.
-- Continua valendo o R8 (3 IVs perfeitos no que é recebido) e o R7 (pode
-  receber de novo, para caçar IV). O R1 olha a **espécie enfrentada**: Solgaleo
-  só entra no sorteio depois de o jogador ter capturado um Solgaleo.
-- **No código:** não sai de uma captura com Poké Ball (a bola daria o nível e a
-  forma da luta). O caminho pronto é o do Necrozma no clímax: boss com
-  `B_FLAG_NO_CATCHING` e, na vitória, `givemon <espécie da primeira forma>, 1`
-  com checagem de espaço **antes** da luta (skill `entregar-pokemon-ou-ovo`).
-  O R9 (prêmio de quem "vence tudo e captura") passa a ler "vence tudo e o
-  boss".
-- **Na fala:** a ficha do Looker e a narração podem tratar o que fica como o
-  fragmento que sobrou da criatura; nunca como a criatura inteira domada.
+  As pré-evoluções **não são boss** do Nexus; só existem como fragmento.
+- Para levar o fragmento o jogador usa **uma bola da própria bolsa**, que é
+  gasta:
+  - **Ultra Beast** → **só Beast Ball**; sem Beast Ball, não leva;
+  - **qualquer outro** → **qualquer Poké Ball** da bolsa, escolhida pelo
+    jogador (abre o bolso de Poké Balls).
+  - O fragmento sai **na bola usada**.
+- Sem bola que sirva, ou com equipe **e** PC cheios, o fragmento **fica
+  esperando** no mesmo dia (nada é gravado nem gasto). Espaço é conferido
+  antes da oferta (skill `entregar-pokemon-ou-ovo`).
+- Consequência: o Poipole "de presente" na luta do Naganadel (decisão de
+  26/09) saiu — o fragmento do Naganadel **já é** um Poipole.
 
-## R18. Ninguém no Nexus é da realidade do jogador
+## R18. Looker Files: o caderno do campeão
+
+Decidido pelo autor em 27/09/2026. Cada lendário tem um **Looker File**: um
+**caderno no chão** que só aparece **na sala do campeão**, no dia em que
+aquele personagem é o campeão. Ele **descreve o universo** de onde o lendário
+vem (a seção "O fragmento" da ficha do campeão).
+
+- O Looker nunca esteve no Nexus, mas a letra é dele, a tinta está molhada e a
+  página tem a data de um dia que ainda não chegou (R20).
+- É texto escrito: narração, **sem plaquinha**.
+- Lendário sem Looker File = sem caderno naquele dia.
+
+## R19. Boss sempre na forma superior
+
+Decidido pelo autor em 27/09/2026. Se o lendário tem **forma superior**, o
+boss é **sempre** ela: nunca Mewtwo, sempre **Mega Mewtwo** — e **qual** das
+formas (X ou Y) é **sorteado** no dia.
+
+- Conta como superior: **Mega** (pedra ou golpe), **Primal**, **Ultra
+  Burst** e **fusões** (autor, 27/09/2026), seguidas até dois passos.
+- Fusão só vale para quem funde: Kyurem → Black/White, Necrozma → Dusk
+  Mane/Dawn Wings, Calyrex → Ice/Shadow Rider. Os parceiros (Reshiram,
+  Zekrom, Solgaleo, Lunala, Glastrier, Spectrier) não têm forma superior.
+- Dois passos: Necrozma → Dusk Mane ou Dawn Wings (sorteado) → **Ultra
+  Necrozma**.
+- O fragmento (R17) continua sendo a primeira forma: Mega Mewtwo X → Mewtwo,
+  Kyurem White → Kyurem, Ultra Necrozma → Necrozma.
+- O sprite no mapa é a forma superior só se ela tiver sprite de overworld;
+  senão, a forma base.
+
+## R20. O tom do Nexus
+
+Decidido pelo autor em 27/09/2026. O Nexus é uma **realidade meio quebrada**,
+**solta no tempo, no espaço e na dimensão** — algo **conceitual e estranho**.
+Todo texto, cena e ideia nova do Nexus parte daí: coisas fora de ordem,
+datas que não batem, lugares lembrados em vez de visitados, o lendário como
+ideia e não como bicho. Não é uma dungeon comum com cara de sci-fi.
+
+## R21. Ninguém no Nexus é da realidade do jogador
 
 Decidido pelo autor em 27/09/2026. Todo treinador que aparece nas salas ou como
 campeão vem de **outro fragmento**: outro universo, outro tempo, outra
@@ -413,12 +467,15 @@ que mora no altar (Looker, Anabel, Lusamine, Kukui, Lillie, Gladion).
 
 ## Pontos a confirmar com o autor
 
-- **R17 — bola ou entrega direta?** A regra foi escrita como entrega na
-  vitória (sem Poké Ball), porque capturar com bola daria o nível e a forma da
-  luta. Se o autor quiser manter o gesto de jogar a bola, o jogo precisa trocar
-  o Pokémon capturado pelo fragmento nível 1 depois da captura (código novo).
+Nenhum em aberto.
 
 ## Decisões já tomadas (histórico)
+
+- 27/09/2026 (revisão 3) — o lendário **nunca** é capturado: nocauteado,
+  deixa um **fragmento** (primeira forma, nível 1) que se leva com uma bola da
+  bolsa, Beast Ball obrigatória para UB (R17); o Poipole de presente saiu;
+  **Looker Files** como caderno na sala do campeão (R18); boss sempre na
+  **forma superior**, com sorteio entre elas (R19); o **tom** do lugar (R20).
 
 - 26/09/2026 — "Uber = BST ≥ 600" substituído por **1 lendário + 1
   semi-lendário + 1 Mega**, para jogador e treinadores.
@@ -442,8 +499,27 @@ que mora no altar (Looker, Anabel, Lusamine, Kukui, Lillie, Gladion).
   um Poipole na luta do Naganadel (bit 12 do R15).
 - 26/09/2026 — dois registros de fala: genérico nas 4 salas, sobre o lendário
   no campeão (R16).
+- 27/09/2026 (feedback do primeiro teste em runtime) —
+  - **nocautear o boss também ganha o lendário** (ele se rende, Beast Ball,
+    nível do boss); só fugir/perder deixa o dia em aberto (R9);
+  - o dia termina com **a dimensão desmoronando e expulsando o jogador**
+    (tremor + flashes + warp para o Altar), logo depois do prêmio (R9);
+  - **narração de sala removida**: as regras do Nexus são explicadas **uma
+    única vez por save**, na primeira chegada (`FLAG_NEXUS_RULES_EXPLAINED`);
+    depois, chegada silenciosa (só a sala do boss ainda fala);
+  - **todas as batalhas do Nexus** (treinador, campeão e boss) acontecem no
+    **campo Ultra Space** (`MAP_BATTLE_SCENE_ULTRA_SPACE` vence classe de
+    treinador e branch de lendário em `src/battle_bg.c`);
+  - **portal próprio do Nexus** (`OBJ_EVENT_GFX_NEXUS_PORTAL`, 32x32, 4
+    quadros, vórtice violeta com aro dourado) — o anel branco 16x16
+    (`OBJ_EVENT_GFX_PORTAL`) não aparece mais lá;
+  - **sorteio por sala**: cada sala embaralha o pool sem o campeão e sem o
+    trio da sala anterior — sala nunca repete pessoa, salas vizinhas nunca
+    repetem ninguém, e o "wrap" que devolvia o trio da sala 1 na sala 4
+    acabou. R7 continua: com pool pequeno, alguém pode voltar em sala
+    não adjacente.
 - 27/09/2026 — o lendário que o jogador leva vem **no nível 1** e, se a família
   tem pré-evolução, **na primeira forma** (Cosmog, Type: Null, Kubfu, Meltan,
-  Phione, Poipole): é um fragmento da criatura enfrentada (R17).
+  Phione, Poipole): é um fragmento da criatura enfrentada (R17; detalhado na revisão 3).
 - 27/09/2026 — os treinadores do Nexus **nunca** são os da realidade do jogador
-  nem o elenco do altar: vêm de outros fragmentos (R18).
+  nem o elenco do altar: vêm de outros fragmentos (R21).

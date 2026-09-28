@@ -14,10 +14,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
+- [x] Time para as Rift Missions definido
 - [x] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -46,6 +46,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_GIOVANNI` | 95 | 0x55F | Kangaskhan Lv60, Honchkrow Lv61, Nidoqueen Lv61, Persian Lv61, Ursaluna Lv60, Nidoking Lv62 | `src/battle_dome.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_GIOVANNI` = **994** (flag de batalha `0x8E2`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Giovanni_Fight`; campeão: `Nexus_EventScript_Giovanni_Mewtwo_ChampionFight` (para Mewtwo), `Nexus_EventScript_Giovanni_Genesect_ChampionFight` (para Genesect). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Giovanni.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_GIOVANNI`, campeão de Mewtwo e Genesect. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). `Double Battle: No` é o formato em que o time brilha mais; o plano vale nos dois.
 
@@ -148,6 +150,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Mewtwo
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Mewtwo_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Mewtwo**. Giovanni é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Giovanni, chefe da Team Rocket e Líder de Viridian. Perdeu para uma criança, desfez a Team Rocket e sumiu; os homens dele passaram anos esperando que voltasse.
@@ -211,6 +215,8 @@ Nexus_Text_Mewtwo_LookerFile:
 
 
 #### Genesect
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Genesect_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Genesect**. Giovanni é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -278,6 +284,8 @@ Nexus_Text_Genesect_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Giovanni_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Giovanni cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -315,6 +323,8 @@ Nexus_Text_Giovanni_Defeat:
 ### Diálogo associado ao lendário
 
 #### Mewtwo
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Giovanni_Mewtwo_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Giovanni é o **campeão**, a luta logo antes do Mewtwo. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -379,6 +389,8 @@ Nexus_Text_Giovanni_Mewtwo_ChampionAfter:
 
 
 #### Genesect
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Giovanni_Genesect_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Giovanni é o **campeão**, a luta logo antes do Genesect. A fala é sobre a criatura, sem dizer o nome dela.
 

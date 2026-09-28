@@ -721,6 +721,7 @@ EcruteakCity_Theater_EventScript_HoohBuffer::
 	bufferspeciesname STR_VAR_1, SPECIES_HO_OH
 	return
 EcruteakCity_Theater_EventScript_LegendaryCutscene::
+	call EcruteakCity_Theater_EventScript_ResolveLugiaOrHooh
 	call_if_eq VAR_LUGIA_OR_HOOH, 1, EcruteakCity_Theater_EventScript_LugiaBuffer
 	call_if_eq VAR_LUGIA_OR_HOOH, 2, EcruteakCity_Theater_EventScript_HoohBuffer 
 	createfieldmugshot MUGSHOT_KIMONO_GIRL
@@ -732,6 +733,7 @@ EcruteakCity_Theater_EventScript_LegendaryCutscene::
 	waitmovement 0
 	setvar VAR_ECRUTEAK_CITY_THEATER, 6
 EcruteakCity_Theater_EventScript_ZukiBattle::
+	call EcruteakCity_Theater_EventScript_ResolveLugiaOrHooh
 	createfieldmugshot MUGSHOT_KIMONO_GIRL
 	msgbox EcruteakCity_Theater_Text_ZukiSeenAgain, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, EcruteakCity_Theater_EventScript_LegendaryDenied
@@ -790,8 +792,27 @@ EcruteakCity_Theater_EventScript_BeatGauntlet::
 	waitmovement 0
 	createfieldmugshot MUGSHOT_KIMONO_GIRL
 	msgbox EcruteakCity_Theater_Text_ZukiDone, MSGBOX_DEFAULT
-	goto_if_eq VAR_LUGIA_OR_HOOH, 1, EcruteakCity_Theater_EventScript_Lugia
+	@ Any value other than 2 gives the Tidal Bell. Two plain gotos used to fall
+	@ through into the correction blocks below when the var was 0, hit their
+	@ 'return' with nothing on the call stack and kill the script with the
+	@ "Please take it." box still open and the player free to walk.
 	goto_if_eq VAR_LUGIA_OR_HOOH, 2, EcruteakCity_Theater_EventScript_Hooh
+	goto EcruteakCity_Theater_EventScript_Lugia
+
+@ VAR_LUGIA_OR_HOOH is only set when the Radio Tower director hands over a
+@ wing. A save that reaches the theater without it (0) is resolved from the
+@ wing in the bag; with no wing at all it falls back to Lugia (1).
+EcruteakCity_Theater_EventScript_ResolveLugiaOrHooh::
+	goto_if_eq VAR_LUGIA_OR_HOOH, 1, EcruteakCity_Theater_EventScript_ResolveLugiaOrHoohEnd
+	goto_if_eq VAR_LUGIA_OR_HOOH, 2, EcruteakCity_Theater_EventScript_ResolveLugiaOrHoohEnd
+	setvar VAR_LUGIA_OR_HOOH, 1
+	checkitem ITEM_RAINBOW_WING
+	goto_if_eq VAR_RESULT, FALSE, EcruteakCity_Theater_EventScript_ResolveLugiaOrHoohEnd
+	checkitem ITEM_SILVER_WING
+	goto_if_eq VAR_RESULT, TRUE, EcruteakCity_Theater_EventScript_ResolveLugiaOrHoohEnd
+	setvar VAR_LUGIA_OR_HOOH, 2
+EcruteakCity_Theater_EventScript_ResolveLugiaOrHoohEnd::
+	return
 
 	EcruteakCity_Theater_Movement_SouthCorrection::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1

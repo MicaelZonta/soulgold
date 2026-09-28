@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -45,6 +45,8 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 Homônimos genéricos, **não** são este personagem: `TRAINER_NOLAND` ("Noland", pic Hiker).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_NOLAND` = **1028** (flag de batalha `0x904`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Noland_Fight`; campeão: `Nexus_EventScript_Noland_Miraidon_ChampionFight` (para Miraidon), `Nexus_EventScript_Noland_IronTreads_ChampionFight` (para Iron Treads). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Noland.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_NOLAND`, campeão de Miraidon e Iron Treads. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -147,6 +149,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Miraidon
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Miraidon_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Miraidon**. Noland é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Noland, Factory Head da Battle Frontier de Hoenn. Na Battle Factory o desafiante luta com Pokémon alugados: o que vale é conhecimento, não laço.
@@ -213,6 +217,8 @@ Nexus_Text_Miraidon_LookerFile:
 
 #### Iron Treads
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_IronTreads_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Iron Treads**. Noland é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Noland, o homem que conhece todo Pokémon de aluguel da Factory, Donphan inclusive.
@@ -277,6 +283,8 @@ Nexus_Text_IronTreads_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Noland_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Noland cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -319,6 +327,8 @@ Nexus_Text_Noland_Defeat:
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Noland é o campeão, a luta logo antes do lendário do dia. Um registro por lendário; a fala é sobre a criatura, sem dizer o nome dela.
 
 #### Miraidon
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Noland_Miraidon_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 O Noland se orgulha de ler um Pokémon em segundos: ficha, golpes, pronto. Ele tenta ler a criatura da estrada e não acha ficha nenhuma: nenhum livro fala de um bicho de um futuro que ainda não aconteceu. A virada é que ele gostou. Quem vive de saber tudo descobre que a melhor parte da Factory sempre foi o primeiro minuto, quando ainda não sabia. E ele nota o detalhe que o incomoda: a máquina que trouxe aquilo foi feita por alguém, e esse alguém não voltou para buscar.
 
@@ -382,6 +392,8 @@ Nexus_Text_Noland_Miraidon_ChampionAfter:
 
 
 #### Iron Treads
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Noland_IronTreads_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 Na Factory o Noland já emprestou mais Donphan do que consegue contar; é o Pokémon que ele conhece de olhos fechados. A criatura da planície tem a forma de um Donphan e nada mais dele: é aço, trilha reta, função. A virada: o Noland percebe que é isso que acontece quando alguém só conhece a ficha de um Pokémon. Com tempo suficiente, sobra a ficha e some o bicho. E ele, que sempre disse que conhecimento vence laço, fica em dúvida pela primeira vez.
 

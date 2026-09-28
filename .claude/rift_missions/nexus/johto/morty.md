@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [x] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -51,6 +51,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 | `TRAINER_TITLE_DEFENSE_MORTY` | 894 | 0x87E | Aegislash Lv85, Dragapult Lv85, Gengar Lv85, Mismagius Lv85, Basculegion Lv85, Giratina Lv85 | `src/title_defense.c` |
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_MORTY` = **1004** (flag de batalha `0x8EC`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Morty_Fight`; campeão: `Nexus_EventScript_Morty_HoOh_ChampionFight` (para Ho-Oh), `Nexus_EventScript_Morty_Spectrier_ChampionFight` (para Spectrier). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Morty.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_MORTY`, campeão do Ho-Oh e do Spectrier. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -152,6 +154,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Ho-Oh
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_HoOh_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Ho-Oh**. Morty é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Morty, Líder de Ecruteak, místico que treina desde criança para ver o pássaro do arco-íris.
@@ -215,6 +219,8 @@ Nexus_Text_HoOh_LookerFile:
 </details>
 
 #### Spectrier
+
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Spectrier_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Spectrier**. Morty é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
@@ -280,6 +286,8 @@ Nexus_Text_Spectrier_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Morty_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Morty cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -315,6 +323,8 @@ Nexus_Text_Morty_Defeat:
 ### Diálogo associado ao lendário
 
 #### Ho-Oh
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Morty_HoOh_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Morty é o **campeão**, a luta logo antes do Ho-Oh. A fala é sobre a criatura, sem dizer o nome dela.
 
@@ -374,6 +384,8 @@ Nexus_Text_Morty_HoOh_ChampionAfter:
 </details>
 
 #### Spectrier
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Morty_Spectrier_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Morty é o **campeão**, a luta logo antes do Spectrier. A fala é sobre a criatura, sem dizer o nome dela.
 

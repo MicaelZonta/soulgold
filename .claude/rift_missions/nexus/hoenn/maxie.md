@@ -13,10 +13,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -47,6 +47,8 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): `TRAINER_UNUSED_477` (ex-`TRAINER_MAXIE_MAGMA_HIDEOUT`, 601), `TRAINER_UNUSED_478` (ex-`TRAINER_MAXIE_MT_CHIMNEY`, 602).
 
 ### Time das Rift Missions
+
+✅ **Implementado em 27/09/2026** (a proposta abaixo virou código): `TRAINER_NEXUS_MAXIE` = **1035** (flag de batalha `0x90B`, limpa antes e depois de cada luta), bloco em `src/data/trainers.party`, nível pelo R2 (tabela em `src/data/nexus/trainers.h`). Fala genérica `Nexus_EventScript_Maxie_Fight`; campeão: `Nexus_EventScript_Maxie_Groudon_ChampionFight` (para Groudon), `Nexus_EventScript_Maxie_Landorus_ChampionFight` (para Landorus). Tudo em `data/scripts/nexus.inc`, sem blackout, resultado em `VAR_TEMP_3`. Para testar: menu de debug → Rift Missions… → Nexus fights… → Maxie.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** `TRAINER_NEXUS_MAXIE`, campeão de Groudon e Landorus. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega (pedra de tipo, como o hack exige); 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
 
@@ -151,6 +153,8 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 #### Groudon
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Groudon_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Groudon**. Maxie é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Maxie, líder da Team Magma. Cientista frio, quis expandir a terra para a humanidade prosperar e despertou o Groudon para isso; na crise de Sootopolis viu, junto com o Archie, o que tinha feito.
@@ -216,6 +220,8 @@ Nexus_Text_Groudon_LookerFile:
 
 #### Landorus
 
+✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Landorus_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** **Landorus**. Maxie é o campeão dele: a quinta luta do Daily, logo antes da boss battle.
 
 **Quem é.** Maxie, o ex-líder da Team Magma que prometia terra para a humanidade.
@@ -280,6 +286,8 @@ Nexus_Text_Landorus_LookerFile:
 
 ### Diálogo genérico
 
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Maxie_Fight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
+
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Maxie cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala dele mesmo, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
 
 **Antes da luta**
@@ -322,6 +330,8 @@ Nexus_Text_Maxie_Defeat:
 ### Diálogo associado ao lendário
 
 #### Groudon
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Maxie_Groudon_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Maxie é o **campeão**, a luta logo antes do Groudon. A fala é sobre a criatura, sem dizer o nome dele.
 
@@ -384,6 +394,8 @@ Nexus_Text_Maxie_Groudon_ChampionAfter:
 
 
 #### Landorus
+
+✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Maxie_Landorus_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Maxie é o **campeão**, a luta logo antes do Landorus. A fala é sobre a criatura, sem dizer o nome dele.
 
