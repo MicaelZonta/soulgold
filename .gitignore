@@ -74,7 +74,3 @@ porytiles/
 *.srm
 *.bps
 porydaw/
-# Jogaveis standalone (make standalone) e deps baixados do build deles
-/Soulgold.exe
-/Soulgold.nro
-/tools/standalone/deps/

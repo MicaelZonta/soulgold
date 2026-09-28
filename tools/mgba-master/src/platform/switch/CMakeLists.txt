@@ -34,32 +34,16 @@ add_executable(${BINARY_NAME}.elf ${GUI_SRC} ${PLATFORM_SRC} main.c)
 set_target_properties(${BINARY_NAME}.elf PROPERTIES COMPILE_DEFINITIONS "${OS_DEFINES};${FEATURE_DEFINES};${FUNCTION_DEFINES}")
 target_link_libraries(${BINARY_NAME}.elf ${BINARY_NAME} ${M_LIBRARY} ${EGL_LIBRARY} ${OPENGLES3_LIBRARY} ${GLAPI_LIBRARY} ${NOUVEAU_LIBRARY} stdc++ ${OS_LIB})
 
-# SoulGold standalone: -DSOULGOLD_ROM=<caminho da .gba> embute a ROM no RomFS
-# do .nro (main.c a carrega direto quando compilado com SOULGOLD_STANDALONE) e
-# troca o titulo do NACP. Sem a variavel, o build fica identico ao de estoque.
-if(SOULGOLD_ROM)
-	set(NACP_TITLE "SoulGold")
-	set(NACP_AUTHOR "SoulGold (mGBA)")
-	set(SOULGOLD_ROMFS_ROM COMMAND ${CMAKE_COMMAND} -E copy "${SOULGOLD_ROM}" romfs/Soulgold.gba)
-	set(SOULGOLD_ROMFS_ROM_DEP "${SOULGOLD_ROM}")
-else()
-	set(NACP_TITLE "${PROJECT_NAME}")
-	set(NACP_AUTHOR "endrift")
-	set(SOULGOLD_ROMFS_ROM)
-	set(SOULGOLD_ROMFS_ROM_DEP)
-endif()
-
 add_custom_command(OUTPUT control.nacp
-                   COMMAND ${NACPTOOL} --create "${NACP_TITLE}" "${NACP_AUTHOR}" "${VERSION_STRING}" control.nacp)
+                   COMMAND ${NACPTOOL} --create "${PROJECT_NAME}" "endrift" "${VERSION_STRING}" control.nacp)
 
 add_custom_command(OUTPUT romfs.bin
                    COMMAND ${CMAKE_COMMAND} -E make_directory romfs
                    COMMAND ${CMAKE_COMMAND} -E copy "${PROJECT_SOURCE_DIR}/res/font-new.png" romfs/
                    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/fileassoc.cfg.in" romfs/
-                   ${SOULGOLD_ROMFS_ROM}
                    COMMAND ${BUILD_ROMFS} romfs romfs.bin
                    COMMAND ${CMAKE_COMMAND} -E remove_directory romfs
-               DEPENDS "${PROJECT_SOURCE_DIR}/res/font-new.png" "${CMAKE_CURRENT_SOURCE_DIR}/fileassoc.cfg.in" ${SOULGOLD_ROMFS_ROM_DEP})
+               DEPENDS "${PROJECT_SOURCE_DIR}/res/font-new.png" "${CMAKE_CURRENT_SOURCE_DIR}/fileassoc.cfg.in")
 
 add_custom_target(${BINARY_NAME}.nro ALL
                   ${ELF2NRO} ${BINARY_NAME}.elf ${BINARY_NAME}.nro --romfs=romfs.bin --nacp=control.nacp --icon="${CMAKE_CURRENT_SOURCE_DIR}/icon.jpg"
