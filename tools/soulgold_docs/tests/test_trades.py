@@ -66,7 +66,7 @@ class JohtoTradeLocationTests(unittest.TestCase):
                 "Clefairy",
             ),
             "SPECIES_VOLTORB_HISUI": (
-                "MAP_OLIVINE_CITY_HOUSE1",
+                "MAP_OLIVINE_CITY_HOUSE3",
                 "Olivine City",
                 "Mareanie",
             ),

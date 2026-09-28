@@ -42,7 +42,7 @@ IMPORTANT_ITEM_LOCATION_OVERRIDES: dict[str, list[ItemLocation]] = {
         {"map": "Azalea Town Mart", "source": "after 4 badges"},
     ],
     "ITEM_GRACIDEA": [
-        {"map": "Goldenrod Flower Shop by showing Shaymin", "source": ""},
+        {"map": "Goldenrod Flower Shop after showing Shaymin", "source": ""},
     ],
 }
 

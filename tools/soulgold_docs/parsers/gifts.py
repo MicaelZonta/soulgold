@@ -10,7 +10,7 @@ from typing import Mapping
 from ..c_parser import parse_define_aliases, read, strip_c_comments
 from ..map_names import is_docs_excluded_map, map_display_name
 from ..models import SpeciesLocation, SpeciesRow
-from ..paths import GACHA_C, MAP_GROUPS_JSON, ODD_EGG_C, REPO_ROOT, SPECIES_H
+from ..paths import GACHA_C, MAP_GROUPS_JSON, NEXUS_LEGENDARIES_H, ODD_EGG_C, REPO_ROOT, SPECIES_H
 
 
 SCRIPT_LABEL_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*)(?:::|:)\s*$", re.MULTILINE)
@@ -249,6 +249,48 @@ def add_scripted_legendary_species_locations(
         for location in scripted_locations:
             if location not in locations[species]:
                 locations[species].append(location)
+
+
+NEXUS_POOL_SPECIES_RE = re.compile(r"\{\s*\.species\s*=\s*(SPECIES_[A-Z0-9_]+)")
+NEXUS_MAP_CONSTANT = "MAP_NEXUS"
+
+
+def add_nexus_fragment_species_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    """Beating a Nexus boss leaves its FIRST FORM at Lv 1 (src/nexus.c, R17)."""
+    try:
+        text = strip_c_comments(read(NEXUS_LEGENDARIES_H))
+    except FileNotFoundError:
+        return
+
+    aliases = species_aliases()
+    prevo = {
+        evolution["target"]: row.constant
+        for row in by_species.values()
+        for evolution in row.evolutions
+    }
+    for raw_species in NEXUS_POOL_SPECIES_RE.findall(text):
+        species = aliases.get(raw_species, raw_species)
+        for _ in range(3):  # a line has at most three stages
+            if species not in prevo:
+                break
+            species = prevo[species]
+        if species not in by_species:
+            continue
+        location: SpeciesLocation = {
+            "map": NEXUS_MAP_CONSTANT,
+            "name": "Nexus (post-Necrozma daily, boss fragment)",
+            "time": "",
+            "method": "Nexus fragment",
+            "minLevel": 1,
+            "maxLevel": 1,
+            "rate": None,
+        }
+        locations.setdefault(species, [])
+        if location not in locations[species]:
+            locations[species].append(location)
 
 
 def add_master_gachapon_species_locations(
