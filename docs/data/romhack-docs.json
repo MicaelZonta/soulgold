@@ -33912,6 +33912,15 @@
           "minLevel": 35,
           "maxLevel": 45,
           "rate": 5
+        },
+        {
+          "map": "MAP_OLIVINE_CITY_HOUSE3",
+          "name": "Olivine City",
+          "time": "",
+          "method": "In-game trade (requires Mareanie)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -79203,8 +79212,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -79212,8 +79221,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -372333,11 +372342,11 @@
       "itemIcon": "sprites/items/gracidea.png",
       "locations": [
         {
-          "map": "Goldenrod Flower Shop by showing Shaymin",
+          "map": "Goldenrod Flower Shop after showing Shaymin",
           "source": ""
         }
       ],
-      "location": "Goldenrod Flower Shop by showing Shaymin",
+      "location": "Goldenrod Flower Shop after showing Shaymin",
       "slug": "gracidea"
     },
     {
