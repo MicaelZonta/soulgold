@@ -49481,6 +49481,15 @@
           "minLevel": 50,
           "maxLevel": 50,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -49646,7 +49655,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "articuno-galar"
     },
@@ -49832,6 +49851,15 @@
           "minLevel": 50,
           "maxLevel": 50,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -50000,7 +50028,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "zapdos-galar"
     },
@@ -50198,6 +50236,15 @@
           "minLevel": 60,
           "maxLevel": 60,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -50360,7 +50407,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "moltres-galar"
     },
@@ -51669,6 +51726,15 @@
           "minLevel": 80,
           "maxLevel": 80,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -52562,6 +52628,15 @@
           "method": "Legendary encounter",
           "minLevel": 55,
           "maxLevel": 55,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -77230,7 +77305,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "raikou"
     },
@@ -77427,7 +77512,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "entei"
     },
@@ -77628,7 +77723,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "suicune"
     },
@@ -78846,8 +78951,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -78855,8 +78960,17 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -79318,6 +79432,15 @@
           "minLevel": 65,
           "maxLevel": 65,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -79512,7 +79635,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [
         {
           "constant": "ITEM_LUM_BERRY",
@@ -112630,6 +112763,15 @@
           "minLevel": 50,
           "maxLevel": 50,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -112820,6 +112962,15 @@
           "method": "Legendary encounter",
           "minLevel": 50,
           "maxLevel": 50,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -113024,6 +113175,15 @@
           "method": "Legendary encounter",
           "minLevel": 50,
           "maxLevel": 50,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -113254,6 +113414,15 @@
           "method": "Legendary encounter",
           "minLevel": 80,
           "maxLevel": 80,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -113719,6 +113888,15 @@
           "minLevel": 80,
           "maxLevel": 80,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -114128,6 +114306,15 @@
           "minLevel": 80,
           "maxLevel": 80,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -114501,6 +114688,15 @@
           "method": "Legendary encounter",
           "minLevel": 80,
           "maxLevel": 80,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -114913,6 +115109,15 @@
           "method": "Legendary encounter",
           "minLevel": 70,
           "maxLevel": 70,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -115337,6 +115542,15 @@
           "minLevel": null,
           "maxLevel": null,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -115554,7 +115768,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "deoxys-normal"
     },
@@ -141890,6 +142114,15 @@
           "minLevel": 50,
           "maxLevel": 50,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -142133,6 +142366,15 @@
           "method": "Legendary encounter",
           "minLevel": 50,
           "maxLevel": 50,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -142389,6 +142631,15 @@
           "minLevel": 50,
           "maxLevel": 50,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -142580,6 +142831,15 @@
           "method": "Legendary encounter",
           "minLevel": 85,
           "maxLevel": 85,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -143152,6 +143412,15 @@
           "minLevel": 85,
           "maxLevel": 85,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -143527,7 +143796,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "heatran"
     },
@@ -143925,6 +144204,15 @@
           "minLevel": 70,
           "maxLevel": 70,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -144124,6 +144412,15 @@
           "method": "Legendary encounter",
           "minLevel": 85,
           "maxLevel": 85,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -144499,6 +144796,15 @@
           "minLevel": 60,
           "maxLevel": 60,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -144689,6 +144995,15 @@
           "minLevel": 40,
           "maxLevel": 45,
           "rate": 1
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -145060,6 +145375,15 @@
           "minLevel": 70,
           "maxLevel": 70,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -145413,6 +145737,15 @@
           "method": "Legendary encounter",
           "minLevel": 50,
           "maxLevel": 50,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -145834,6 +146167,15 @@
           "minLevel": null,
           "maxLevel": null,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -146041,6 +146383,15 @@
           "method": "Gift",
           "minLevel": 50,
           "maxLevel": 50,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -181418,6 +181769,15 @@
           "minLevel": 80,
           "maxLevel": 80,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -181596,6 +181956,15 @@
           "method": "Legendary encounter",
           "minLevel": 80,
           "maxLevel": 80,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -181785,6 +182154,15 @@
           "method": "Legendary encounter",
           "minLevel": 80,
           "maxLevel": 80,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -181978,7 +182356,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "tornadus-incarnate"
     },
@@ -182381,7 +182769,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "thundurus-incarnate"
     },
@@ -182783,7 +183181,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "reshiram"
     },
@@ -182980,7 +183388,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "zekrom"
     },
@@ -183182,7 +183600,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "landorus-incarnate"
     },
@@ -183572,7 +184000,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "kyurem"
     },
@@ -184136,7 +184574,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "keldeo-ordinary"
     },
@@ -184526,6 +184974,15 @@
           "method": "Legendary encounter",
           "minLevel": 65,
           "maxLevel": 65,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -184937,6 +185394,15 @@
           "method": "Legendary encounter",
           "minLevel": 70,
           "maxLevel": 70,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -212295,7 +212761,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "xerneas-neutral"
     },
@@ -212667,7 +213143,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "yveltal"
     },
@@ -212851,7 +213337,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "zygarde-50"
     },
@@ -213982,6 +214478,15 @@
           "minLevel": 70,
           "maxLevel": 70,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -214394,6 +214899,15 @@
           "minLevel": 80,
           "maxLevel": 80,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -214780,7 +215294,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "volcanion"
     },
@@ -226991,6 +227515,15 @@
           "minLevel": 50,
           "maxLevel": 50,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -235961,7 +236494,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "tapu-koko"
     },
@@ -236137,7 +236680,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "tapu-lele"
     },
@@ -236332,7 +236885,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "tapu-bulu"
     },
@@ -236522,7 +237085,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "tapu-fini"
     },
@@ -236596,6 +237169,15 @@
           "method": "Gift Egg",
           "minLevel": null,
           "maxLevel": null,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -237242,7 +237824,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "nihilego"
     },
@@ -237429,7 +238021,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "buzzwole"
     },
@@ -237606,7 +238208,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "pheromosa"
     },
@@ -237775,7 +238387,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "xurkitree"
     },
@@ -237953,7 +238575,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "celesteela"
     },
@@ -238112,7 +238744,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "kartana"
     },
@@ -238309,7 +238951,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "guzzlord"
     },
@@ -238524,6 +239176,15 @@
           "method": "Gift",
           "minLevel": 75,
           "maxLevel": 75,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -239358,6 +240019,15 @@
           "method": "Legendary encounter",
           "minLevel": 75,
           "maxLevel": 75,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -240279,6 +240949,15 @@
           "minLevel": 50,
           "maxLevel": 50,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -240429,6 +241108,15 @@
           "method": "Gift",
           "minLevel": 5,
           "maxLevel": 5,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -240780,7 +241468,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "stakataka"
     },
@@ -240954,7 +241652,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "blacephalon"
     },
@@ -241151,6 +241859,15 @@
           "method": "Legendary encounter",
           "minLevel": 80,
           "maxLevel": 80,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -241457,6 +242174,15 @@
         }
       ],
       "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        },
         {
           "map": "MAP_RINTO_HOUSE3",
           "name": "Rinto Village",
@@ -269860,7 +270586,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "zacian-hero"
     },
@@ -270174,7 +270910,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "zamazenta-hero"
     },
@@ -270492,7 +271238,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "eternatus"
     },
@@ -270831,6 +271587,15 @@
           "method": "Gift",
           "minLevel": 5,
           "maxLevel": 5,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -271772,6 +272537,15 @@
           "minLevel": 50,
           "maxLevel": 50,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -272107,7 +272881,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "regieleki"
     },
@@ -272253,7 +273037,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "regidrago"
     },
@@ -272406,7 +273200,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "glastrier"
     },
@@ -272553,7 +273357,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "spectrier"
     },
@@ -272724,7 +273538,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "calyrex"
     },
@@ -275149,7 +275973,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "enamorus-incarnate"
     },
@@ -279461,6 +280295,15 @@
           "minLevel": 55,
           "maxLevel": 55,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -280847,7 +281690,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "terapagos-normal"
     },
@@ -294587,6 +295440,15 @@
           "minLevel": 56,
           "maxLevel": 59,
           "rate": 30
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -294790,6 +295652,15 @@
           "minLevel": 56,
           "maxLevel": 59,
           "rate": 30
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -294962,6 +295833,15 @@
           "minLevel": 56,
           "maxLevel": 59,
           "rate": 15
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -295136,6 +296016,15 @@
           "method": "Legendary encounter",
           "minLevel": 70,
           "maxLevel": 70,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -295327,6 +296216,15 @@
           "minLevel": 57,
           "maxLevel": 60,
           "rate": 5
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -295513,6 +296411,15 @@
           "minLevel": 56,
           "maxLevel": 59,
           "rate": 15
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -295694,6 +296601,15 @@
           "minLevel": 56,
           "maxLevel": 59,
           "rate": 30
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -295857,6 +296773,15 @@
           "minLevel": 56,
           "maxLevel": 59,
           "rate": 30
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -296044,6 +296969,15 @@
           "minLevel": 56,
           "maxLevel": 59,
           "rate": 15
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -296231,6 +297165,15 @@
           "minLevel": 56,
           "maxLevel": 59,
           "rate": 15
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -296412,6 +297355,15 @@
           "minLevel": 57,
           "maxLevel": 60,
           "rate": 5
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -296624,6 +297576,15 @@
           "minLevel": 57,
           "maxLevel": 60,
           "rate": 5
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -297612,7 +298573,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "wo-chien"
     },
@@ -297783,6 +298754,15 @@
           "minLevel": 70,
           "maxLevel": 70,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -297948,7 +298928,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "ting-lu"
     },
@@ -298110,7 +299100,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "chi-yu"
     },
@@ -298313,6 +299313,15 @@
           "minLevel": 57,
           "maxLevel": 60,
           "rate": 5
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -298524,6 +299533,15 @@
           "minLevel": 70,
           "maxLevel": 70,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -298713,7 +299731,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "koraidon"
     },
@@ -298877,7 +299905,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "miraidon"
     },
@@ -299048,6 +300086,15 @@
           "method": "Legendary encounter",
           "minLevel": 75,
           "maxLevel": 75,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -299238,6 +300285,15 @@
           "method": "Legendary encounter",
           "minLevel": 75,
           "maxLevel": 75,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -299579,7 +300635,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "okidogi"
     },
@@ -299735,7 +300801,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "munkidori"
     },
@@ -299904,6 +300980,15 @@
           "method": "Legendary encounter",
           "minLevel": 55,
           "maxLevel": 55,
+          "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
           "rate": null
         }
       ],
@@ -300445,6 +301530,15 @@
           "minLevel": 75,
           "maxLevel": 75,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -300630,6 +301724,15 @@
           "minLevel": 75,
           "maxLevel": 75,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -300814,6 +301917,15 @@
           "minLevel": 75,
           "maxLevel": 75,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -300989,6 +302101,15 @@
           "minLevel": 75,
           "maxLevel": 75,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -301136,7 +302257,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "pecharunt"
     }
