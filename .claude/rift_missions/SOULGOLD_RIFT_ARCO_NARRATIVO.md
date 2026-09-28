@@ -328,7 +328,7 @@ Ao final, o grupo rompe essa ligação e retira Necrozma da fonte de instabilida
 2. Ao chegar, Clair e Kingdra já estão protegendo a cidade. Ela reconhece o protagonista: “Champion now? Good. I could use the help.” Não precisa fingir surpresa com suas habilidades.
 3. Um ataque de Kingdra obriga Necrozma a mudar de posição, mas não rompe sua proteção. Clair continua útil; não repetir “nenhum golpe funciona” em todas as cidades.
 4. Necrozma abre a ruptura. A música muda antes de as UBs avançarem. Buzzwole pressiona a linha de frente; Pheromosa tenta passar pela lateral. Comportamentos diferentes, não dois sprites fazendo o mesmo movimento.
-5. Silvally intercepta a aproximação. Gladion chega e distribui a defesa com o jogador. O resgate é rápido, sem rodada de apresentações.
+5. Silvally intercepta a aproximação. Gladion chega e divide a defesa com o jogador. O resgate é rápido, sem rodada de apresentações.
 6. Escolha do alvo e boss. Clair mantém Necrozma afastado das casas; Looker protege a saída; Anabel acompanha a ruptura.
 7. Necrozma aproveita a abertura após a luta e absorve as duas UBs. É a primeira ocorrência: surpresa completa é apropriada aqui.
 8. Se Solgaleo/Lunala estiver na equipe, sai da Ball e encara a ruptura. A borda fica estável por um instante. Necrozma reage ao parceiro e recua; ninguém conclui “ele tem medo” como certeza.

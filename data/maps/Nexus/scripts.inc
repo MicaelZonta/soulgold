@@ -444,6 +444,9 @@ Nexus_EventScript_FragmentBeastBall::
 Nexus_EventScript_FragmentThrow::
 	special Nexus_GiveFragment
 	goto_if_eq VAR_RESULT, MON_CANT_GIVE, Nexus_EventScript_FragmentNoRoomAfterAll
+	@ the PC notice (Common_EventScript_GiftMon) reads the species from here;
+	@ it is also the arrival latch VAR_TEMP_1 - a species keeps it closed
+	copyvar VAR_TEMP_TRANSFERRED_SPECIES, VAR_0x8004
 	removeitem VAR_0x8005
 	special Nexus_RecordCapture
 	playse SE_BALL_THROW

@@ -1280,7 +1280,7 @@ Preservar a orientação herdada de `fadescreenswapbuffers` nos flashes, evitand
 | --- | --- |
 | Convocação | Ligação diária compartilhada, convite persistente e briefing obrigatório antes da missão |
 | Continuidade | Necrozma já identificado; registros de Blackthorn e hipótese da ligação conhecidos |
-| Espaço | Formação distribuída, três áreas e enquadramentos; ampliar área útil quando necessário |
+| Espaço | Formação espalhada, três áreas e enquadramentos; ampliar área útil quando necessário |
 | Surpresa de Lillie | Reencontro no mapa, sem anúncio no briefing e sem tratá-la como desconhecida |
 | Energia | Transferência visível com origem/custo; retirar explicações de ciclo infinito |
 | Primeira rodada | Vitória seguida de uma recarga narrativa, preservando a escolha |

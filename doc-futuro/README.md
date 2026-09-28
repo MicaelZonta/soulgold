@@ -24,7 +24,7 @@ importante na proposta original.**
 
 Custo total: **~5 linhas** no repositório do jogo, **~40 linhas** no
 emulador, nenhum sistema de jogo afetado, nenhum conteúdo reautorado, e o
-`.gba` distribuído **não muda de tamanho**.
+`.gba` gerado **não muda de tamanho**.
 
 As duas descobertas que sustentam isso:
 

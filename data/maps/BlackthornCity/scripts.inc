@@ -1143,6 +1143,7 @@ BlackthornCity_EventScript_UBGift::
 	@ blocks catching), so MON_CANT_GIVE is unreachable - and it is still
 	@ guarded, because a gift that silently disappears is the worst outcome
 	@ there is.
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TYPE_NULL
 	bufferspeciesname STR_VAR_1, SPECIES_TYPE_NULL
 	givemon SPECIES_TYPE_NULL, 50
 	goto_if_eq VAR_RESULT, MON_CANT_GIVE, BlackthornCity_EventScript_UBGiftNoRoom
@@ -1226,6 +1227,7 @@ BlackthornCity_EventScript_UBGiftRetryAsk::
 	goto_if_eq VAR_RESULT, NO, BlackthornCity_EventScript_UBReleaseEnd
 
 BlackthornCity_EventScript_UBGiftRetryGive::
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TYPE_NULL
 	bufferspeciesname STR_VAR_1, SPECIES_TYPE_NULL
 	givemon SPECIES_TYPE_NULL, 50
 	goto_if_eq VAR_RESULT, MON_CANT_GIVE, BlackthornCity_EventScript_UBGiftRetryFailed

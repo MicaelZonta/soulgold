@@ -204,7 +204,7 @@ de constante. Mais o build para três plataformas.
 ## Por que é a recomendada
 
 Cinco linhas no jogo, ~40 no emulador, nenhum sistema de jogo tocado,
-nenhum conteúdo reautorado, e o arquivo distribuído **não cresce**. As
+nenhum conteúdo reautorado, e o `.gba` gerado **não cresce**. As
 outras três abordagens custam uma ou duas ordens de grandeza mais para
 resolver um problema que, pelos números do diagnóstico, é de 2,34 MB de
 margem e não de arquitetura.

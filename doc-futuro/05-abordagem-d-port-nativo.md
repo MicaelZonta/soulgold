@@ -118,17 +118,11 @@ há savestate de emulador para manter compatível.
    janelas. Diferenças sutis aparecem como "a cena está um pouco errada",
    que é a categoria mais cara de diagnosticar.
 3. **Fim do ferramental do ecossistema.** Porymap, `mgba-rom-test`,
-   savestates, ferramentas de romhacking, patches distribuídos como BPS —
+   savestates, ferramentas de romhacking, patches BPS —
    tudo assume um `.gba`. O repo tem `porymap.project.cfg` e um fluxo de
    trabalho inteiro construído em cima disso; as skills do projeto
    (`prototipo-de-mapa`, `acabamento-de-mapa`) dependem dele.
-4. **Distribuição muda de natureza.** O modelo atual — patch sobre a ROM
-   do Emerald do usuário, sem embutir a ROM original — é o que mantém o
-   projeto em terreno defensável. Um executável nativo contendo todos os
-   assets não tem esse mesmo enquadramento. **Isso é uma consideração
-   legal, não técnica, e é provavelmente a mais importante de D** —
-   convém resolvê-la antes de qualquer linha de código.
-5. **Custo de oportunidade.** Durante a migração, o desenvolvimento de
+4. **Custo de oportunidade.** Durante a migração, o desenvolvimento de
    conteúdo para. Num projeto cujo trabalho corrente é adicionar mapas,
    cenas e eventos, isso é o custo dominante.
 

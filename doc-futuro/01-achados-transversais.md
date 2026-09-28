@@ -121,7 +121,7 @@ dele `0xFF`.
 
 **Correção:** trocar `-p` por alinhamento de 4 bytes no passo de
 `objcopy`. O padding para potência de 2 existe por causa de cartuchos
-físicos; como a distribuição aqui é um executável próprio, ele perdeu a
+físicos; como aqui a ROM só roda no mGBA patchado, ele perdeu a
 função.
 
 ## 5. `make check` quebra inteiro até o `mgba-rom-test` ser recompilado

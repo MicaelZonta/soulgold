@@ -281,7 +281,7 @@ MAKEFLAGS += --no-print-directory
 # Delete files that weren't built properly
 .DELETE_ON_ERROR:
 
-RULES_NO_SCAN += map-graph-check libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated clean-teachables clean-teachables_intermediates
+RULES_NO_SCAN += map-graph-check mgba-windows libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated clean-teachables clean-teachables_intermediates
 .PHONY: all rom map-graph-check check-song-config bps nightly-bps agbcc modern compare check check-all debug release
 .PHONY: $(RULES_NO_SCAN)
 
@@ -697,3 +697,9 @@ leafgreen: all
 # .elf/.sym relinkados sem filler.
 $(SYM): $(ELF) $(ROM)
 	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389a-d]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+
+# mGBA patchado (tools/mgba-master) como emulador de Windows com menu, direto
+# na pasta de emuladores do autor. Rodar sempre que tools/mgba-master mudar.
+# Detalhes e pre-requisitos (MSYS2): tools/mgba-windows/build.sh.
+mgba-windows:
+	@tools/mgba-windows/build.sh

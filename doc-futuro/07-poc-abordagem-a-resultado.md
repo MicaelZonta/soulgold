@@ -45,7 +45,7 @@ roda no mGBA patchado**.
 
 ## O que custa (o preço real)
 
-O custo de código é pequeno. O custo de verdade é de distribuição:
+O custo de código é pequeno. O custo de verdade é de compatibilidade:
 
 1. **A ROM deixa de rodar em qualquer outro lugar.** Testado: o mGBA 0.11
    sem patch mostra **tela branca** com a ROM de 33 MB — basta 1 MB acima do
@@ -199,7 +199,7 @@ achado 5 continua em aberto: quando os testes voltarem a compilar, o
 > Auditoria independente da POC e correções aplicadas em 27/09/2026:
 > [08-auditoria-poc.md](08-auditoria-poc.md).
 
-1. Decidir a distribuição: executável próprio do mGBA patchado (Win/Mac/Linux).
+1. Rodar só no mGBA patchado (Win/Mac/Linux).
    É isso ou não fazer — não há meio-termo.
 2. Recompilar o `mgba-rom-test` com o patch (depois de consertar o `make check`).
    O `ld_script_test.ld` já foi levado a 96 MiB (ver doc 08): o ROM de teste
@@ -211,7 +211,7 @@ achado 5 continua em aberto: quando os testes voltarem a compilar, o
    sem problema, e o soft-patch dentro do mGBA patchado (`.bps` ao lado da
    ROM) funciona depois das correções de `GBAApplyPatch` e do `TargetCopy`
    do BPS (doc 08). Testar o BPS real (Emerald limpo → SoulGold) no
-   emulador antes de distribuir.
+   emulador.
 5. Reencenar um trecho maior do jogo (batalha, troca de mapa por conexão,
    evento com plaquinha de falante por ponteiro) no runner. A POC cobriu
    ~12.000 frames do começo do jogo.

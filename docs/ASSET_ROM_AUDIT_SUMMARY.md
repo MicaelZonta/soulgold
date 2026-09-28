@@ -142,7 +142,7 @@ mesma commit por uma sessão anterior — os números de espécie/obtenibilidade
 | Achado | Bytes medidos | Evidência |
 |---|---:|---|
 | **24 lendários/míticos** habilitados (`P_FAMILY_*=TRUE`) sem nenhuma fonte no jogo (Deoxys, Reshiram, Zekrom, Kyurem, Keldeo, Xerneas, Yveltal, Zygarde, Volcanion, linha Cosmog, Necrozma, Zacian, Zamazenta, Eternatus, Regieleki, Regidrago, Glastrier, Spectrier, Calyrex, Terapagos, Pecharunt) | **716.399** | `nm` (por espécie, ver CSV) + `POKEMON_AVAILABILITY_SPECIES.csv` (Habilitada=Sim, Obtível=Não) |
-| 14 de 17 formas Gigantamax travadas (`B_FLAG_DYNAMAX_BATTLE=0`, item não distribuído) | ~77.000 (calculado, ver nota) | Total G-Max medido = 94.219 B / 17 formas; proporção 14/17 aplicada |
+| 14 de 17 formas Gigantamax travadas (`B_FLAG_DYNAMAX_BATTLE=0`, item não obtenível) | ~77.000 (calculado, ver nota) | Total G-Max medido = 94.219 B / 17 formas; proporção 14/17 aplicada |
 | Blacephalon (família desligada) — sobra de asset de animação de golpe | 408 | `nm`, achado incidental |
 
 **Isso não é um bug técnico** — é conteúdo que existe no binário porque a *espécie* está ligada
@@ -164,7 +164,7 @@ hipótese (não validada) de cries por linha evolutiva.
 | GameCube Multiboot — E-Reader | 12.512 | Mesmo mecanismo |
 | GameCube Multiboot — correção de bug de Berry (hardware real RS) | 15.348 | Mesmo mecanismo |
 | **Subtotal Multiboot/link legado** | **191.700** | Conectividade GBA↔GameCube real, quase certamente irrelevante para um romhack de emulador/flashcart |
-| Mystery Gift / Mystery Event / Wonder Card (RAM já liberada, sobra ROM) | 24.800 | Precisa confirmar se há alguma rota de distribuição real no hack |
+| Mystery Gift / Mystery Event / Wonder Card (RAM já liberada, sobra ROM) | 24.800 | Precisa confirmar se há algum uso real no hack |
 | Union Room | 20.505 | `OW_UNION_DISABLE_CHECK` só acelera a Pokémon Center, não desliga a feature |
 | Contest (concursos de beleza) | 126.562 | **Alcançabilidade não confirmada** — não há flag de liga/desliga; precisa checar se existe Contest Hall conectado nos mapas |
 | Battle Frontier | ~535.000 (fora do total acima, ver CSV) | **Provavelmente alcançável** — 47 pastas de mapa e 53 conexões de mapa referenciando `MAP_BATTLE_FRONTIER*` encontradas; não confirmado percorrendo scripts do início ao fim |

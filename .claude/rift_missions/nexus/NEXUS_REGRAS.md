@@ -388,6 +388,9 @@ tem que deixar isso **claro** para o jogador.
 - Para levar o fragmento o jogador usa **uma bola da própria bolsa**, que é
   gasta:
   - **Ultra Beast** → **só Beast Ball**; sem Beast Ball, não leva;
+  - **Necrozma** (qualquer forma) também → **só Beast Ball** (autor,
+    28/09/2026). No engine ele não é `isUltraBeast`; a exceção vive só em
+    `FragmentNeedsBeastBall` e ele continua **Lendário** no sorteio;
   - **qualquer outro** → **qualquer Poké Ball** da bolsa, escolhida pelo
     jogador (abre o bolso de Poké Balls).
   - O fragmento sai **na bola usada**.

@@ -376,9 +376,14 @@ static u16 GetFragmentSpecies(u16 species)
     return species;
 }
 
+// Necrozma is not isUltraBeast in the engine, but here it came out of Ultra
+// Space like one (author, 28/09/2026): Beast Ball only, every form. Only this
+// rule - it stays a legendary in the pool.
 static bool32 FragmentNeedsBeastBall(u16 bossSpecies)
 {
-    return gSpeciesInfo[SanitizeSpeciesId(bossSpecies)].isUltraBeast;
+    bossSpecies = SanitizeSpeciesId(bossSpecies);
+    return gSpeciesInfo[bossSpecies].isUltraBeast
+        || GET_BASE_SPECIES_ID(bossSpecies) == SPECIES_NECROZMA;
 }
 
 // R8 carried over: a first form may have fewer guaranteed perfect IVs than

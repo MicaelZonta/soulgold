@@ -93,11 +93,10 @@ no jogo e parecido no emulador.
 3. **Sincronia com savestates.** Savestate no meio de um carregamento
    precisa capturar a operação em curso. Um savestate que restaura
    "carregando" sem o conteúdo deixa o jogo com lixo em VRAM.
-4. **Dois artefatos distribuídos.** Deixa de haver um `.gba` e passa a haver
+4. **Dois artefatos gerados.** Deixa de haver um `.gba` e passa a haver
    ROM + arquivo de recursos, que precisam casar em versão. Um patch que
    atualize um e não o outro corrompe o jogo de formas difíceis de
-   diagnosticar. A distribuição hoje já prevê patch sobre a ROM do Emerald
-   do usuário; isso acrescenta um segundo eixo de versionamento.
+   diagnosticar. Isso acrescenta um segundo eixo de versionamento.
 5. **Perda de ferramental.** Os dados deixam de ter endereço, então somem
    de `make syms`, do visualizador de memória do mGBA e de qualquer
    inspeção por endereço. Depurar gráfico errado fica bem mais difícil.

@@ -121,7 +121,9 @@ tamanhos, 0 acessos inválidos.
 
 ## O que continua em aberto
 
-1. Distribuição do mGBA patchado para três plataformas, e recompilar o
+1. Builds do mGBA patchado (Windows resolvido: `make mgba-windows`
+   compila o frontend Qt com menu; jogável com ROM embutida foi descartado
+   pelo autor), e recompilar o
    `mgba-rom-test` de `tools/mgba/` (o `build.yml` roda `make check` com o
    hydra e o binário de estoque).
 2. Os testes (`make check`) precisam voltar a compilar antes de o item 2

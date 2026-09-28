@@ -35,7 +35,7 @@ Conferido no código em 25/09/2026.
 
 O campeão é a quinta luta do Daily, logo antes da boss battle (R5 em
 [`NEXUS_REGRAS.md`](NEXUS_REGRAS.md)). A ficha do treinador traz o time, o
-fragmento e as falas. Todo lendário do jogo tem campeão (distribuição de 27/09/2026: 121 lendários
+fragmento e as falas. Todo lendário do jogo tem campeão (repartição de 27/09/2026: 121 lendários
 para os 68 treinadores prontos, todos usados pelo menos uma vez). **Kyogre**
 tem dois campeões: nos dias dele o sorteio escolhe entre Misty e Archie. As
 pré-evoluções **não são boss**: Cosmog, Cosmoem, Type: Null, Kubfu, Meltan,

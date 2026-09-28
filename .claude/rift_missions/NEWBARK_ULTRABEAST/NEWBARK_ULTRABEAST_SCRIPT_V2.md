@@ -163,7 +163,7 @@ O mapa original oferece como referências a porta do laboratório `(10,9)`, a po
 | Aparição de Necrozma | Área livre entre as frentes | Distância suficiente para sua forma Ultra e a retirada |
 | Parceiro do jogador | Ao lado protegido do protagonista | Sem sobreposição com Azumarill, Snorlax ou Milotic |
 
-**Mapa:** se as distâncias não couberem, ampliar localmente a área útil ou redistribuir frentes. Não inventar coordenadas “validadas”. Verificar colisão, comportamento, elevação, largura visual dos sprites, rotas de câmera e limite de objetos. Não assumir que ausência de água torna qualquer tile apropriado para todos os movimentos.
+**Mapa:** se as distâncias não couberem, ampliar localmente a área útil ou reposicionar frentes. Não inventar coordenadas “validadas”. Verificar colisão, comportamento, elevação, largura visual dos sprites, rotas de câmera e limite de objetos. Não assumir que ausência de água torna qualquer tile apropriado para todos os movimentos.
 
 Equipamento pode usar metatiles/efeitos; não precisa consumir dois slots de NPC. Abrigados saem da população visível antes da fase com três UBs e três parceiros. Recolher parceiros que terminaram sua função antes de outros entrarem, com ação visível. Não esconder um Pokémon que ainda está supostamente contendo uma ameaça.
 

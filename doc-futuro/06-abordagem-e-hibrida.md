@@ -69,8 +69,8 @@ O que **não** entra nesse estágio, e o motivo:
 
 ### Estágio 3 — se o objetivo mudar: D
 
-Quando a meta deixar de ser "caber" e virar resolução maior, 60fps ou
-distribuição em loja. Aí o limite de ROM é a menor das mudanças, e nada
+Quando a meta deixar de ser "caber" e virar resolução maior ou
+60fps. Aí o limite de ROM é a menor das mudanças, e nada
 feito nos estágios 1 e 2 atrapalha — a camada de plataforma substitui o
 emulador inteiro de qualquer forma.
 

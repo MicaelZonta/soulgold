@@ -326,7 +326,7 @@ Good.
 
 Lillie sorri/usa reação breve, Ninetales se volta para o parceiro. Sem uma rodada de elogios de cada personagem. Lusamine observa o instrumento e recolhe a base apenas depois de Anabel desligar o módulo.
 
-## 8. Fechamento — trabalho distribuído e passe
+## 8. Fechamento — trabalho dividido e passe
 
 ### `OlivineCity_House1_Text_ReunionAssignments`
 

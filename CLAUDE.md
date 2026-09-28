@@ -12,7 +12,11 @@ make -j$(nproc)                            # testar / iterar — use este no dia
 make release USE_LTO_ON_RELEASE=1 -j32     # release
 ```
 
-Ambos geram `Soulgold.gba`. O build regenera sozinho tudo que é derivado
+Ambos geram `Soulgold.gba`. A ROM só roda no **mGBA patchado** do repo
+(`tools/mgba-master`). Sempre que ele mudar, recompile o emulador de Windows
+com `make mgba-windows` (com o mGBA fechado): ele é instalado com menu em
+`C:\Users\User\Documents\Emulators\mGBA SoulGold`. Não existe (nem deve
+voltar) exe/nro com a ROM embutida. O build regenera sozinho tudo que é derivado
 (`mapjson`, `poryscript`, learnsets). Um build limpo prova só que compila —
 **não** prova que a cena funciona no jogo.
 

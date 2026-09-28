@@ -789,7 +789,7 @@ Constantes novas em `include/constants/items.h`, ao lado das que já existem
    ela fosse setada depois das duas, uma bolsa cheia na segunda deixaria o jogador
    pegar as duas de novo no mesmo dia.
 
-### 5.3 A distribuição que isso produz
+### 5.3 O resultado por faixa
 
 | Faixa | Quantas | Fonte | Quando |
 |---|---|---|---|
