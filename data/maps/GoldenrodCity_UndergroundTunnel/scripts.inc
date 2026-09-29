@@ -162,9 +162,9 @@ GoldenrodUnderground_EventScript_Brother_Haircut1::
 	end
 
 GoldenrodUnderground_EventScript_BuyGroomingKit::
-	checkmoney 500000, 0
+	checkmoney 200000, 0
 	goto_if_eq VAR_RESULT, FALSE, GoldenrodUnderground_EventScript_NotEnoughForGroomingKit
-	removemoney 500000
+	removemoney 200000
 	updatemoneybox 0
 	playse SE_SHOP
 	giveitem ITEM_GROOMING_KIT
@@ -347,7 +347,7 @@ GoldenrodUnderground_Text_OlderBrotherGroomingKitOffer:
     .string "Would you like to try grooming them\n"
     .string "at home?\p"
     .string "This Grooming Kit has everything\n"
-    .string "a beginner needs. It's ¥500,000.$"
+    .string "a beginner needs. It's ¥200,000.$"
 
 GoldenrodUnderground_Text_OlderBrotherGroomingKitAfterBuy:
     .string "Start gently and be patient.\n"

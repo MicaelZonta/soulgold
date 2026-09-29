@@ -58,9 +58,9 @@ GoldenrodCity_FlowerShop_EventScript_SeasonalPerfumeCheck::
 	showmoneybox 0, 0
 	msgbox GoldenrodCity_FlowerShop_Text_SeasonalPerfumeOffer, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_DeclineSeasonalPerfume
-	checkmoney 1000000, 0
+	checkmoney 100000, 0
 	goto_if_eq VAR_RESULT, FALSE, GoldenrodCity_FlowerShop_EventScript_NotEnoughForSeasonalPerfume
-	removemoney 1000000
+	removemoney 100000
 	updatemoneybox 0
 	playse SE_SHOP
 	giveitem ITEM_SEASONAL_PERFUME
@@ -247,7 +247,7 @@ GoldenrodCity_FlowerShop_Text_SeasonalPerfumeOffer:
     .string "Seasonal Perfume?\p"
     .string "It blends scents inspired by\n"
     .string "spring, summer, autumn and winter.\l"
-    .string "It's ¥1,000,000. Would you like it?$"
+    .string "It's ¥100,000. Would you like it?$"
 
 GoldenrodCity_FlowerShop_Text_SeasonalPerfumeAfterBuy:
     .string "Thank you! Each scent brings out\n"
