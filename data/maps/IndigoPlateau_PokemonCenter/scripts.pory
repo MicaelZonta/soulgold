@@ -165,6 +165,8 @@ mart IndigoPlateau_StoneMerchantMart {
     ITEM_MALICIOUS_ARMOR
     ITEM_SACHET
     ITEM_WHIPPED_DREAM
+    ITEM_PEAT_BLOCK
+    ITEM_BLACK_AUGURITE
 }
 
 mart IndigoPlateau_GemMerchantMart {

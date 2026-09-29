@@ -13424,9 +13424,8 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM Hidden Power"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "The attack power\n"
-            "varies among\n"
-            "different Pokémon."),
+            "The type varies\n"
+            "with the user."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .heldSlot = 0,
@@ -14245,7 +14244,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Steals the foe's HP\n"
             "with a kiss, healing\n"
-            "over half the damage."),
+            "half the damage."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .heldSlot = 0,

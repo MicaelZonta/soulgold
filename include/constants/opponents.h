@@ -14,7 +14,7 @@
 #define TRAINER_UNUSED_440       8  // Former TRAINER_TYLER; orphaned party removed.
 #define TRAINER_ROD                   9
 #define TRAINER_UNUSED_383        10  // Former TRAINER_TONY; orphaned party removed.
-#define TRAINER_UNUSED_028                   11  // Former TRAINER_MARCEL; reserved after legacy-map removal.
+#define TRAINER_WILL_REMATCH_ALT             11
 #define TRAINER_ARNOLD                      12
 #define TRAINER_ED                           13
 #define TRAINER_VALERIE      14
@@ -33,12 +33,12 @@
 #define TRAINER_SID         27
 #define TRAINER_STANLY         28
 #define TRAINER_REBECCA                     29
-#define TRAINER_UNUSED_060                         30  // Former TRAINER_MATT; reserved after legacy-map removal.
-#define TRAINER_UNUSED_015                   31  // Former TRAINER_ZANDER; reserved after legacy-map removal.
+#define TRAINER_KOGA_REMATCH_ALT             30
+#define TRAINER_BRUNO_REMATCH_ALT            31
 #define TRAINER_DEVIN     32
 #define TRAINER_GRANT       33
 #define TRAINER_CASSIE                       34
-#define TRAINER_UNUSED_016                   35  // Former TRAINER_LEAH; reserved after legacy-map removal.
+#define TRAINER_KAREN_REMATCH_ALT            35
 #define TRAINER_JEFFREY                        36
 #define TRAINER_GRUNT_33                       37
 #define TRAINER_NORMAN                        38

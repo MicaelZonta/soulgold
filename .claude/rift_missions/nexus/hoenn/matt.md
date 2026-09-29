@@ -42,7 +42,7 @@ Flag de batalha = `TRAINER_FLAGS_START (0x500) + ID` — é o "já venceu" que `
 
 Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se precisar de flag nova).
 
-IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): `TRAINER_UNUSED_060` (ex-`TRAINER_MATT`, 30).
+IDs aposentados na limpeza de treinadores (não reaproveitar sem necessidade): o antigo `TRAINER_MATT` (30) virou `TRAINER_KOGA_REMATCH_ALT` no merge do upstream de 28/09/2026.
 
 ### Time das Rift Missions
 

@@ -728,7 +728,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Shed Skin"),
         .description = COMPOUND_STRING("Heals the body by shedding."),
-        .longDescription = COMPOUND_STRING("Pokemon may cure it's  \n"
+        .longDescription = COMPOUND_STRING("Pokemon may cure its  \n"
                                            "status problems by shedding\n"
                                            "its skin.                  \n"
                                            "               "),
@@ -1225,7 +1225,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Senses dangerous moves."),
         .longDescription = COMPOUND_STRING("On entry, shudders if a\n"
                                            "foe has a supereffective\n"
-                                           "or OHKO move."),
+                                           "move."),
         .aiRating = 2,
     },
 
@@ -3915,7 +3915,9 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Attacks may seed foes."),
         .longDescription = COMPOUND_STRING("Damaging moves have a\n"
                                            "30% chance to seed the\n"
-                                           "target if it is not Grass."),
+                                           "target if it is not Grass.\n"
+                                           "Does not trigger from False\n"
+                                           "Swipe."),
         .aiRating = 5,
     },
 
@@ -5691,6 +5693,16 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .breakable = B_UPDATED_ABILITY_DATA < GEN_8,
     },
 
+    [ABILITY_TRUESHOT_AURA] =
+    {
+        .name = _("Trueshot Aura"),
+        .description = COMPOUND_STRING("Raises team's critical hits."),
+        .longDescription = COMPOUND_STRING("Raises own and ally's\n"
+                                           "critical-hit ratio by two\n"
+                                           "stages."),
+        .aiRating = 10,
+    },
+
     [ABILITY_OGRE_FORCE] =
     {
         .name = _("Ogre Force"),
@@ -5698,5 +5710,83 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .longDescription = COMPOUND_STRING("Moves with added effects\n"
                                            "deal 15% more damage."),
         .aiRating = 7,
+    },
+
+    [ABILITY_RESONANCE] =
+    {
+        .name = _("Resonance"),
+        .description = COMPOUND_STRING("Ups and resists sound."),
+        .longDescription = COMPOUND_STRING("Boosts sound moves by\n"
+                                           "30% and halves the\n"
+                                           "damage taken from\n"
+                                           "sound-based moves."),
+        .aiRating = 2,
+        .breakable = TRUE,
+    },
+
+    [ABILITY_TEMPO] =
+    {
+        .name = _("Tempo"),
+        .description = COMPOUND_STRING("Sound hits raise Speed."),
+        .longDescription = COMPOUND_STRING("After dealing damage with\n"
+                                           "a sound move, raises\n"
+                                           "Speed by 1 stage."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_CONTROLLED_BURN] =
+    {
+        .name = _("Controlled Burn"),
+        .description = COMPOUND_STRING("Boosts Fire recoil attacks."),
+        .longDescription = COMPOUND_STRING("Fire recoil attacks deal\n"
+                                           "20% more damage and have\n"
+                                           "their recoil or HP costs\n"
+                                           "halved."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_CROSSFIRE] =
+    {
+        .name = _("Crossfire"),
+        .description = COMPOUND_STRING("Alternating types hit harder."),
+        .longDescription = COMPOUND_STRING("Attacks deal 25% more if\n"
+                                           "their type differs from\n"
+                                           "its previous attack.\n"
+                                           "Resets on switching."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_HOT_TAG] =
+    {
+        .name = _("Hot Tag"),
+        .description = COMPOUND_STRING("Shields replacement."),
+        .longDescription = COMPOUND_STRING("After pivoting with a\n"
+                                           "move, its replacement\n"
+                                           "takes 40% less damage\n"
+                                           "from its next direct hit."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_BULL_RUSH] =
+    {
+        .name = _("Bull Rush"),
+        .description = COMPOUND_STRING("Powers up its first attack."),
+        .longDescription = COMPOUND_STRING("Its first damaging move\n"
+                                           "after entering battle\n"
+                                           "deals 20% more damage."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_MIND_FLOAT] =
+    {
+        .name = _("Mind Float"),
+        .description = COMPOUND_STRING("Levitates with Psychic Terrain."),
+        .longDescription = COMPOUND_STRING("The Pokemon is immune\n"
+                                           "to Ground-type moves and\n"
+                                           "grounded entry hazards,\n"
+                                           "but benefits from effects\n"
+                                           "of Psychic Terrain."),
+        .aiRating = 7,
+        .breakable = TRUE,
     },
 };

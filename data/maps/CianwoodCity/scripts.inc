@@ -24,9 +24,11 @@ CianwoodCity_RemoveEusine::
 @ fire at most once per visit.
 CianwoodCity_OnFrame::
 	map_script_2 VAR_TEMP_1, 0, CianwoodCity_EventScript_GladionAutoTrigger
+	map_script_2 VAR_TEMP_F, 1, Mahoganytown_EventScript_RocketTrigger
 	.2byte 0
 
 CianwoodCity_EventScript_CityEnter::
+	call Common_EventScript_CheckElmRocketCall
 	setflag FLAG_VISITED_CIANWOOD_CITY
 	callnative SetTimeBasedEncounters
 	setvar VAR_TEMP_1, 0

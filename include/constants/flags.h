@@ -90,7 +90,7 @@
 #define FLAG_GOT_LUSTROUS_ORB                   0x38
 #define FLAG_TM_TORMENT                         0x39
 #define FLAG_PENDING_DAYCARE_EGG_SHINY          0x3A
-#define FLAG_DEFEATED_REGIELEKI                 0x3B  // livre desde 24/09/2026
+#define FLAG_ROCKETWARNING_SET                  0x3B  // upstream (Eemeliri), ex-FLAG_DEFEATED_REGIELEKI
 #define FLAG_ROUTE42_ROOMSERVICE                0x3C 
 #define FLAG_HIDE_REGIDRAGO                     0x3D  // livre desde 24/09/2026
 #define FLAG_SAPPHIRE_KECLEON                   0x3E  // livre desde 24/09/2026
@@ -118,8 +118,8 @@
 #define FLAG_RESCUED_BIRCH                       0x52
 #define FLAG_GARBAGEFLAG           0x53 //used to store calls of removed flags
 
-#define FLAG_LIMIT_TO_50                     0x54  // livre desde 24/09/2026
-#define FLAG_UNLOCK_DOGS                     0x55  // livre desde 24/09/2026
+#define FLAG_OW_LIGHTING                     0x54  // true = disable ow dns effects (upstream, ex-FLAG_LIMIT_TO_50)
+#define FLAG_BATTLE_LIGHTING                 0x55  // true = disable battle dns effects (upstream, ex-FLAG_UNLOCK_DOGS)
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56  // Always set after new game, object it hides is added directly
 #define FLAG_MET_RIVAL_MOM                   0x57
@@ -1937,8 +1937,12 @@
 // plays exactly once per save, and every later arrival is silent (author,
 // 27/09/2026).
 #define FLAG_NEXUS_RULES_EXPLAINED                  0x1051
-#define CUSTOM_FLAGS_END                            FLAG_NEXUS_RULES_EXPLAINED
-// PROXIMA FLAG NOVA: 0x1052 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Upstream (Eemeliri/soulgold): one-shot save migration of the Battle Pyramid
+// achievements. Upstream numbers it 0x1041, which here is FLAG_NO_CATCHING;
+// moved to the next free slot when upstream was merged (28/09/2026).
+#define FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE 0x1052
+#define CUSTOM_FLAGS_END                            FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE
+// PROXIMA FLAG NOVA: 0x1053 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

@@ -237,8 +237,7 @@ Destaques do primeiro grupo:
   ocultação de NPC de Johto que ficou pelo caminho
 - `FLAG_UNLOCKED_KURT_BALLS`, `FLAG_POSTGAME_CAP2..4`, `FLAG_JIRACHI`,
   `FLAG_INCREASE_DIFFICULTY`, `FLAG_NO_SHINY`, `FLAG_EVEN_FASTER_JOY`,
-  `FLAG_LIMIT_TO_50`, `FLAG_UNLOCK_DOGS` — features alocadas e não implementadas
-  (ou implementadas por outro mecanismo)
+  — features alocadas e não implementadas (ou implementadas por outro mecanismo)
 - `FLAG_ITEM_*` diversas (`0x3F9`, `0x435`, `0x45D`, `0x463`, `0x46A`, `0x478`,
   `0x489`, `0x4DE`) — item ball que não existe no mapa
 
@@ -731,7 +730,6 @@ setado**. Uma flag de Hoenn que o jogador nunca pôde setar é segura; uma
 0x025  FLAG_SYS_PC_FROM_DEBUG_MENU                 
 0x027  FLAG_SYS_NO_BATTLE_DMG                      
 0x02C  FLAG_WONDERTRADE_FIRSTIME                   
-0x03B  FLAG_DEFEATED_REGIELEKI                     
 0x03D  FLAG_HIDE_REGIDRAGO                         
 0x03E  FLAG_SAPPHIRE_KECLEON                       
 0x03F  FLAG_SYS_BRAILLE_REGIDRAGO_COMPLETED        
@@ -741,8 +739,6 @@ setado**. Uma flag de Hoenn que o jogador nunca pôde setar é segura; uma
 0x043  FLAG_DEFEATED_REGIGIGAS                     
 0x04F  FLAG_RASH_MINT_METEOR_FALLS                 
 0x050  FLAG_GARBAGEFLAG_STILL                      
-0x054  FLAG_LIMIT_TO_50                            
-0x055  FLAG_UNLOCK_DOGS                            
 0x05E  FLAG_GARBAGEFLAG2                           
 0x0AB  FLAG_RECEIVED_TM_CALM_MIND                  
 0x0DC  FLAG_NEVER_SET_0x0DC                        
@@ -1015,3 +1011,21 @@ automaticamente — os casos conhecidos são `TRAINER_FLAGS_START + id`,
 `TRAINER_REGISTERED_FLAGS_START + i`, `FLAG_DECORATION_1 + i`,
 `FLAG_SYS_TOWER_SILVER/GOLD + facility*2`, `FLAG_HIDE_UNION_ROOM_PLAYER_1 + idx`
 e `FLAG_BADGE01_GET + i` (só as oito de Johto), e todos estão tratados no texto.
+
+## Números renumerados no merge do upstream (28/09/2026)
+
+O merge de `Eemeliri/soulgold:master` (branch `rift-mission-v1-complete`)
+trouxe números que o upstream alocou em cima dos nossos. Os nossos ficaram; os
+dele foram para o próximo livre. **Todo pull futuro do Eemeliri reabre esse
+conflito** em `flags.h`/`vars.h`: manter a tabela abaixo.
+
+| Constante do upstream | Número lá | Número aqui | Por quê |
+|---|---|---|---|
+| `FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE` | `0x1041` | `0x1052` | `0x1041` é `FLAG_NO_CATCHING` |
+| `VAR_FOLLOWER_MEGA_OFF` | `0x411F` | `0x4125` | `0x411F` é `VAR_MOM_FURFROU_EXP` |
+| `VAR_SHINY_RATE` | `0x4120` | `0x4126` | `0x4120` é `VAR_RIFT_MISSIONS_STATE` |
+
+E os números que estavam "livres desde 24/09/2026" e o upstream ocupou no mesmo
+valor (sem renumerar): `0x3B` → `FLAG_ROCKETWARNING_SET`, `0x54` →
+`FLAG_OW_LIGHTING`, `0x55` → `FLAG_BATTLE_LIGHTING`. Save antigo que tinha a
+flag velha setada liga a nova: inofensivo nos três casos.

@@ -98,7 +98,7 @@ endif
 
 ROM_NAME := $(FILE_NAME).gba
 BPS_BASE ?= clean.gba
-BPS_PATCH ?= soulgold_16boxes_legacy.bps
+BPS_PATCH ?= soulgold.bps
 BPS_TOOL ?= tools/flips/flips$(EXE)
 OBJ_DIR_NAME := $(BUILD_DIR)/$(BUILD_NAME)
 OBJ_DIR_NAME_TEST := $(BUILD_DIR)/$(BUILD_NAME)-test
@@ -256,6 +256,11 @@ LEGACY_LEVEL_UP_HEADER := $(DATA_SRC_SUBDIR)/pokemon/level_up_learnsets/generate
 WILD_ENCOUNTERS_TOOL_DIR := $(TOOLS_DIR)/wild_encounters
 AUTO_GEN_TARGETS += $(DATA_SRC_SUBDIR)/wild_encounters.h
 AUTO_GEN_TARGETS += $(LEGACY_LEVEL_UP_HEADER)
+DOCS_QR_HEADER := $(DATA_SRC_SUBDIR)/docs_qr.h
+AUTO_GEN_TARGETS += $(DOCS_QR_HEADER)
+
+$(DOCS_QR_HEADER): $(INCLUDE_DIRS)/config/version.h $(TOOLS_DIR)/docs_qr/generate.py $(TOOLS_DIR)/docs_qr/qrcodegen.py
+	python3 $(TOOLS_DIR)/docs_qr/generate.py --output $@
 
 MISC_TOOL_DIR := $(TOOLS_DIR)/misc
 AUTO_GEN_TARGETS +=  $(INCLUDE_DIRS)/constants/script_commands.h
@@ -521,7 +526,7 @@ generated: $(AUTO_GEN_TARGETS)
 %.fastSmol: %      ; $(SMOL) -w $< $@ false false false
 %.smol:     %      ; $(SMOL) -w $< $@
 %.rl:       %      ; $(GFX) $< $@
-data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -fc tools/poryscript/font_config.json -cc tools/poryscript/command_config.json
+data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -fc tools/poryscript/font_config.json -cc tools/poryscript/command_config.json -lm=false
 
 clean-teachables_intermediates:
 	rm -f $(DATA_SRC_SUBDIR)/tutor_moves.h

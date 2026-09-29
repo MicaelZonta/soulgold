@@ -2219,8 +2219,8 @@ static u32 LoadDynamicFollowerPalette(u32 species, bool32 shiny, bool32 female)
     u32 paletteNum;
     // Use standalone palette, unless entry is OOB or NULL (fallback to front-sprite-based)
 #if OW_POKEMON_OBJECT_EVENTS == TRUE && OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
-    if ((shiny && gSpeciesInfo[species].overworldPalette)
-    || (!shiny && gSpeciesInfo[species].overworldShinyPalette))
+    if ((shiny && gSpeciesInfo[species].overworldShinyPalette)
+    || (!shiny && gSpeciesInfo[species].overworldPalette))
     {
         struct SpritePalette spritePalette;
         u16 palTag = species + OBJ_EVENT_MON + (shiny ? OBJ_EVENT_MON_SHINY : 0);
@@ -2357,6 +2357,11 @@ u16 GetOverworldWeatherSpecies(u16 species)
     return species;
 }
 
+bool32 IsFollowerMegaEnabled(void)
+{
+    return VarGet(VAR_FOLLOWER_MEGA_OFF) != 1;
+}
+
 static bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32 *female)
 {
     if (!mon)
@@ -2370,7 +2375,7 @@ static bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32
     *shiny = IsMonShiny(mon) ? OBJ_EVENT_MON_SHINY : 0;
     *female = GetMonGender(mon) == MON_FEMALE ? OBJ_EVENT_MON_FEMALE : 0;
 #if OW_BATTLE_ONLY_FORMS
-    if (CheckBagHasItem(ITEM_MEGA_RING, 1))
+    if (IsFollowerMegaEnabled() && CheckBagHasItem(ITEM_MEGA_RING, 1))
     {
         u32 megaSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM);
 

@@ -10,12 +10,14 @@ from typing import Mapping
 
 from ..constants import (
     ADDITIONAL_IMPORTANT_ITEMS,
+    EV_FEATHER_ITEMS,
     GENERIC_MEGA_STONE_ITEMS,
     IMPORTANT_ITEM_POCKETS,
     IMPORTANT_ITEM_SORT_TYPES,
     ITEMS_HIDDEN_CONSTANTS,
     ITEMS_HIDDEN_SORT_TYPES,
     ITEMS_HIDDEN_SUFFIXES,
+    TYPE_RESIST_BERRY_ITEMS,
 )
 from ..c_parser import clean_constant_name, collect_strings, extract_field, parse_enum_constants, parse_shared_strings, preprocess, read, split_designated_entries
 from ..image_utils import copy_item_icon
@@ -43,6 +45,23 @@ IMPORTANT_ITEM_LOCATION_OVERRIDES: dict[str, list[ItemLocation]] = {
     ],
     "ITEM_GRACIDEA": [
         {"map": "Goldenrod Flower Shop after showing Shaymin", "source": ""},
+    ],
+    "ITEM_EXP_SHARE": [
+        {"map": "Obtained from Rival before arriving in Violet City", "source": ""},
+    ],
+    "ITEM_OVAL_CHARM": [
+        {"map": "Obtained after finishing rival's postgame legendary story", "source": ""},
+    ],
+    "ITEM_SQUIRTBOTTLE": [
+        {"map": "Goldenrod Flower Shop", "source": "After beating Whitney"},
+    ],
+    "ITEM_SHIN_GENOME": [
+        {"map": "Route 40", "source": "15-trophy achievement reward"},
+        {"map": "Rocket Arcade", "source": "Postgame"},
+        {"map": "Battle Cafe", "source": "Postgame"},
+    ],
+    "ITEM_GS_BALL": [
+        {"map": "Ruins of Alph Secret Room", "source": "After completing all 8 puzzles"},
     ],
 }
 
@@ -258,6 +277,28 @@ def add_hidden_grotto_item_locations(
             add_location(locations, item, grotto["name"], "Hidden Grotto rare item")
 
 
+def add_fishing_feather_locations(
+    locations: dict[str, list[ItemLocation]],
+    item_constants: set[str],
+) -> None:
+    """Add the feather pool shared by all three fishing rods."""
+    source_path = REPO_ROOT / "src/wild_encounter.c"
+    try:
+        source_text = read(source_path)
+    except FileNotFoundError:
+        return
+    match = re.search(
+        r"sFishingItems_Feathers\[\]\s*=\s*\{(.*?)\n\};",
+        source_text,
+        re.DOTALL,
+    )
+    if not match:
+        return
+    for item in re.findall(r"\{\s*(ITEM_[A-Z0-9_]+)\s*,", match.group(1)):
+        if item in item_constants:
+            add_location(locations, item, "Fishing", "Any rod")
+
+
 def add_super_rod_item_locations(
     locations: dict[str, list[ItemLocation]],
     item_constants: set[str],
@@ -276,7 +317,7 @@ def add_super_rod_item_locations(
     if not match:
         return
     for item in re.findall(r"\{\s*(ITEM_[A-Z0-9_]+)\s*,", match.group(1)):
-        if item in item_constants:
+        if item in item_constants and item not in EV_FEATHER_ITEMS:
             add_location(locations, item, "Any fishing spot", "Super Rod rare find")
 
 
@@ -327,6 +368,7 @@ def build_important_items(
     locations = parse_item_locations(selected)
     add_wild_held_item_locations(locations, selected, species)
     add_hidden_grotto_item_locations(locations, selected, grottos)
+    add_fishing_feather_locations(locations, selected)
     add_super_rod_item_locations(locations, selected)
     add_bug_contest_reward_locations(locations, selected)
     rows = []
@@ -344,6 +386,7 @@ def build_important_items(
             "pocket": item.get("pocket", ""),
             "sortType": item.get("sortType", ""),
             "itemIcon": copy_item_icon(item, item_icon_dir),
+            "itemIcons": [],
             "locations": item_locations,
             "location": "; ".join(
                 (
@@ -354,7 +397,34 @@ def build_important_items(
                 for entry in item_locations
             ),
         })
-    return rows
+
+    berry_icons = []
+    for constant in TYPE_RESIST_BERRY_ITEMS:
+        berry = item_records.get(constant)
+        icon = copy_item_icon(berry, item_icon_dir)
+        if berry and icon:
+            berry_icons.append({
+                "name": berry.get("name") or clean_constant_name(constant, "ITEM_"),
+                "src": icon,
+            })
+    if berry_icons:
+        first_berry = item_records.get(TYPE_RESIST_BERRY_ITEMS[0], {})
+        rows.append({
+            "id": first_berry.get("id", 0),
+            "constant": "ITEM_TYPE_RESIST_BERRIES",
+            "name": "Type-effectiveness Berries",
+            "description": "Held Berries that weaken one super-effective attack of their corresponding type.",
+            "pocket": "POCKET_BERRIES",
+            "sortType": "ITEM_TYPE_BERRY",
+            "itemIcon": None,
+            "itemIcons": berry_icons,
+            "locations": [
+                {"map": "Goldenrod Flower Shop", "source": "After Jasmine's Badge"},
+            ],
+            "location": "Goldenrod Flower Shop (After Jasmine's Badge)",
+        })
+
+    return sorted(rows, key=lambda row: row["id"])
 
 
 def build_tms(

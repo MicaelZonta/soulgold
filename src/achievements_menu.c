@@ -98,7 +98,6 @@ EWRAM_DATA static u8 sScrollIndicatorArrowPairId = 0;
 EWRAM_DATA static u16 *sDetailTilemapBuffer = NULL;
 EWRAM_DATA static u16 *sTextTilemapBuffer = NULL;
 EWRAM_DATA static u16 *sMenuTilemapBuffer = NULL;
-EWRAM_DATA static u16 *sBackgroundTilemapBuffer = NULL;
 EWRAM_DATA static MainCallback sExitCallback = NULL;
 
 static const u32 sBlankBgTile[8] = {};
@@ -108,6 +107,8 @@ static const u16 sAchievementsBgPal[] = INCBIN_U16("graphics/pokegear/tiles.gbap
 static const u32 sAchievementsMenuTiles[] = INCBIN_U32("graphics/achievements/menu.4bpp");
 static const u16 sAchievementsMenuTilemap[] = INCBIN_U16("graphics/achievements/menu.bin");
 static const u16 sAchievementsMenuPal[] = INCBIN_U16("graphics/achievements/menu.gbapal");
+
+STATIC_ASSERT(ARRAY_COUNT(sAchievementsBgTilemap) == DISPLAY_TILE_WIDTH * DISPLAY_TILE_HEIGHT, AchievementsBgTilemapSize);
 
 static const u8 sColor_DarkGray[3] = { TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_LIGHT_GRAY };
 static const u8 sColor_Blue[3] = { TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_LIGHT_BLUE };
@@ -278,15 +279,12 @@ void CB2_InitAchievementsMenuWithCallback(MainCallback callback)
     sDetailTilemapBuffer = Alloc(BG_SCREEN_SIZE);
     sTextTilemapBuffer = Alloc(BG_SCREEN_SIZE);
     sMenuTilemapBuffer = Alloc(BG_SCREEN_SIZE);
-    sBackgroundTilemapBuffer = Alloc(BG_SCREEN_SIZE);
     CpuFill16(0, sDetailTilemapBuffer, BG_SCREEN_SIZE);
     CpuFill16(0, sTextTilemapBuffer, BG_SCREEN_SIZE);
     CpuFill16(0, sMenuTilemapBuffer, BG_SCREEN_SIZE);
-    CpuFill16(0, sBackgroundTilemapBuffer, BG_SCREEN_SIZE);
     SetBgTilemapBuffer(BG_DETAIL, sDetailTilemapBuffer);
     SetBgTilemapBuffer(BG_TEXT, sTextTilemapBuffer);
     SetBgTilemapBuffer(BG_MENU, sMenuTilemapBuffer);
-    SetBgTilemapBuffer(BG_BACKGROUND, sBackgroundTilemapBuffer);
     ResetAllBgsCoordinates();
     ResetPaletteFade();
     ResetSpriteData();
@@ -309,8 +307,13 @@ void CB2_InitAchievementsMenuWithCallback(MainCallback callback)
     FillBgTilemapBufferRect_Palette0(BG_DETAIL, ACHIEVEMENTS_BLANK_TILE, 0, 0, DISPLAY_TILE_WIDTH, DISPLAY_TILE_HEIGHT);
     FillBgTilemapBufferRect_Palette0(BG_TEXT, ACHIEVEMENTS_BLANK_TILE, 0, 0, DISPLAY_TILE_WIDTH, DISPLAY_TILE_HEIGHT);
     LoadMenuTilemap();
-    CopyToBgTilemapBufferRect(BG_BACKGROUND, sAchievementsBgTilemap, 0, 0, DISPLAY_TILE_WIDTH, DISPLAY_TILE_HEIGHT);
-    CopyBgTilemapBufferToVram(BG_BACKGROUND);
+    for (i = 0; i < DISPLAY_TILE_HEIGHT; i++)
+    {
+        LoadBgTilemap(BG_BACKGROUND,
+                      &sAchievementsBgTilemap[i * DISPLAY_TILE_WIDTH],
+                      DISPLAY_TILE_WIDTH * sizeof(sAchievementsBgTilemap[0]),
+                      i * 32);
+    }
     CopyBgTilemapBufferToVram(BG_DETAIL);
     CopyBgTilemapBufferToVram(BG_TEXT);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP | DISPCNT_BG0_ON | DISPCNT_BG1_ON | DISPCNT_BG2_ON | DISPCNT_BG3_ON);
@@ -796,7 +799,6 @@ static void ExitAchievementsMenu(u8 taskId)
         Free(sDetailTilemapBuffer);
         Free(sTextTilemapBuffer);
         Free(sMenuTilemapBuffer);
-        Free(sBackgroundTilemapBuffer);
         SetMainCallback2(sExitCallback);
     }
 }

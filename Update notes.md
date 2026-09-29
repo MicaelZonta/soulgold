@@ -1,4 +1,58 @@
 Update notes:
+1.1.4
+- Some new innates: Resonance and Tempo (Meloetta), Controlled Burn (Flareon), Crossfire (Iron Moth), Hot Tag (Incineroar), Bull Rush (Paldean Tauros Blaze, Talonflame) and Mind Float (Chimecho).
+- Updated innates for Charizard, Cinccino, Cyclizar, Ho-Oh, Mega Steelix, Galarian Articuno, Yanma, Blaziken, Cradily, Runegrigus, Corviknight, Flapple, Armarouge, Ceruledge, and Gouging Fire. 
+- Added options to disable night-lighting in overworld and battle.
+- Baoba calls to unlock Safari Zone expansions are now *slightly* earlier (Before Ice Cave and After exiting Tohjo Falls to right side)
+- Cursola can be found in Rinto Village waters.
+- Small fixes.
+
+Recap from 1.1.3 and 1.1.2 which did not get a newspost:
+- Docs button in start menu with QR code to docs and for checking if there's an update to the hack (Notifies you via toast notification).
+- New Champions season move and ability changes
+- OHKO moves reworked to 150 pow/90% acc with recharge.
+- Smoothed Normal mode Jasmine, Chuck and Pryce difficulty. 
+- Rocket Hideout warns you before entering if you have not beaten Chuck/Jasmine.
+- Improved dark mode bag text readability.
+- Shiny odds settings: 1/256 (default), 1/512 and 1/1024.
+- Option to toggle Mega followers off.
+- Rocket Arcade has TV to check your winstreaks.
+- DexNav shows how many you have caught on the route.
+- Goldenrod Rocket event call now happens after seven badges regardless of order.
+- Lowered Battle Pyramid trophy requirements to 3/6/10.
+- Plasma Fists for Electivire, Stone Axe for Barbaracle.
+
+
+
+
+
+1.1
+- PC Box count increased to 19. Existing saves are compatible assuming you have not done some truly heinous things to it that would corrupt the storage data. (This has been tested on MGBA, Hardware and Pizza Boy, non-compatible emulator status unknown.) **Once you save on this version, you cannot go back to old 16 box versions! Forward compatible only!**
+- Added option to mass release Pokémon or Eggs from PC box by clicking on the box number.
+- Added Dark Mode battle UI settings option.
+- Innates are now independent from Classic and Chaos modes and can be toggled in the facility settings. Chaos mode is specifically for legendaries now.
+- Added Mega Lucario Z's new Champions ability: Aura Guard, and Sharpness for Absol Z and Levitate for Garchomp Z.
+- New level 95 innate for Serperior: Like a Dragon. Serperior can also learn Draco Meteor now.
+- Revised Ampharos innates.
+- Added follower and surf sprites for Mega Rayquaza.
+- Fixed dexnav star and item graphic colors.
+- Sinistea and Poltchageist evolve into either form depending on the item used.
+- Adjusted Battle frontier sets and trainer generation logic to include auto trick room and tailwind setters.
+- Optional areas no longer enforce trainer scaling.
+- Rock Climb requires 8th badge to use.
+- Removed vanilla Emerald protection against releasing your only Surf mon.
+- L=A Mode disables quick swap in custom party menu.
+- Removed deprecated Arceus plates, if they return in future, it will be as a all-in-one key item plate.
+- Removed Emerald Sketch protection in Battle Pyramid.
+- Fixed defiant bug after form change bug.
+
+
+
+
+
+
+
+
 - Goldenrod Underground herb shop sells IV reducing herbs.
 - Added new ability: Acidic (Poison is supereffective against Steel) and distributed it to several Pokémon.
 - Added follower sprites for following ZA Megas: Clefable, Dragonite, Hawlucha, Raichu X, Y and Starmie. Others will still default to base form follower sprites until there are publicly available sprites for them.

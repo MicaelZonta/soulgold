@@ -9,6 +9,7 @@
 #include "coins.h"
 #include "comfy_anim.h"
 #include "debug.h"
+#include "docs_menu.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_object_lock.h"
@@ -75,6 +76,7 @@ enum
     MENU_ACTION_PYRAMID_BAG,
     MENU_ACTION_DEBUG,
     MENU_ACTION_DEXNAV,
+    MENU_ACTION_DOCS,
 };
 
 // Save status
@@ -110,6 +112,7 @@ static bool8 StartMenuPokegearCallback(void);
 static bool8 StartMenuPlayerNameCallback(void);
 static bool8 StartMenuSaveCallback(void);
 static bool8 StartMenuOptionCallback(void);
+static bool8 StartMenuDocsCallback(void);
 static bool8 StartMenuExitCallback(void);
 static bool8 StartMenuSafariZoneRetireCallback(void);
 static bool8 StartMenuLinkModePlayerNameCallback(void);
@@ -199,6 +202,7 @@ static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
 
 static const u8 sText_MenuDebug[] = _("Debug");
 static const u8 sText_MenuPokegear[] = _("Pokégear");
+static const u8 sText_MenuDocs[] = _("Docs");
 
 static const u8 sText_NewMenu[] = _("My Menu");
 static const struct MenuAction sStartMenuItems[] =
@@ -218,6 +222,7 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_PYRAMID_BAG]     = {gText_MenuBag,     {.u8_void = StartMenuBattlePyramidBagCallback}},
     [MENU_ACTION_DEBUG]           = {sText_MenuDebug,   {.u8_void = StartMenuDebugCallback}},
     [MENU_ACTION_DEXNAV]          = {gText_MenuDexNav,  {.u8_void = StartMenuDexNavCallback}},
+    [MENU_ACTION_DOCS]            = {sText_MenuDocs,    {.u8_void = StartMenuDocsCallback}},
 };
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
@@ -338,6 +343,8 @@ static void BuildStartMenuActions(void)
         else
             BuildNormalStartMenu();
     }
+
+    AddStartMenuAction(MENU_ACTION_DOCS);
 }
 
 static void AddStartMenuAction(u8 action)
@@ -509,17 +516,18 @@ static void RemoveExtraStartMenuWindows(void)
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 {
     s8 index = *pIndex;
+    u8 lineHeight = sNumStartMenuActions > 8 ? 14 : 16;
 
     do
     {
         if (sStartMenuItems[sCurrentStartMenuActions[index]].func.u8_void == StartMenuPlayerNameCallback)
         {
-            PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuItems[sCurrentStartMenuActions[index]].text, 8, (index << 4) + 9);
+            PrintPlayerNameOnWindow(GetStartMenuWindowId(), sStartMenuItems[sCurrentStartMenuActions[index]].text, 8, index * lineHeight + 9);
         }
         else
         {
             StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
-            AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
+            AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, index * lineHeight + 9, TEXT_SKIP_DRAW, NULL);
         }
 
         index++;
@@ -568,7 +576,7 @@ static bool32 InitStartMenuStep(void)
             sInitStartMenuData[0]++;
         break;
     case 5:
-        sStartMenuCursorPos = InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
+        sStartMenuCursorPos = InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 9, sNumStartMenuActions > 8 ? 14 : 16, sNumStartMenuActions, sStartMenuCursorPos);
         CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_MAP);
         return TRUE;
     }
@@ -991,6 +999,20 @@ static bool8 StartMenuOptionCallback(void)
         SetMainCallback2(CB2_InitOptionMenu); // Display option menu
         gMain.savedCallback = CB2_ReturnToFieldWithOpenMenu;
 
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 StartMenuDocsCallback(void)
+{
+    if (!gPaletteFade.active)
+    {
+        PlayRainStoppingSoundEffect();
+        RemoveExtraStartMenuWindows();
+        CleanupOverworldWindowsAndTilemaps();
+        SetMainCallback2(CB2_InitDocsMenu);
         return TRUE;
     }
 
@@ -1605,8 +1627,36 @@ static void Task_SaveAfterLinkBattle(u8 taskId)
         case 6:
             if (!FuncIsActiveTask(Task_LinkFullSave))
             {
-                *state = 3;
+                switch (GetLinkFullSaveResult())
+                {
+                case LINK_FULL_SAVE_RESULT_SUCCESS:
+                    *state = 3;
+                    break;
+                case LINK_FULL_SAVE_RESULT_FLASH_ERROR:
+                    DestroyTask(taskId);
+                    break;
+                case LINK_FULL_SAVE_RESULT_FAILED:
+                case LINK_FULL_SAVE_RESULT_PENDING:
+                    FillWindowPixelBuffer(0, PIXEL_FILL(1));
+                    AddTextPrinterParameterized2(0,
+                                                FONT_NORMAL,
+                                                gText_SaveError,
+                                                0,
+                                                NULL,
+                                                TEXT_COLOR_DARK_GRAY,
+                                                TEXT_COLOR_WHITE,
+                                                TEXT_COLOR_LIGHT_GRAY);
+                    CopyWindowToVram(0, COPYWIN_FULL);
+                    PlaySE(SE_BOO);
+                    SaveStartTimer();
+                    *state = 7;
+                    break;
+                }
             }
+            break;
+        case 7:
+            if (!IsTextPrinterActiveOnWindow(0) && SaveSuccesTimer())
+                *state = 3;
             break;
         }
     }
@@ -1683,10 +1733,30 @@ static void Task_WaitForBattleTowerLinkSave(u8 taskId)
 {
     if (!FuncIsActiveTask(Task_LinkFullSave))
     {
+        if (GetLinkFullSaveResult() == LINK_FULL_SAVE_RESULT_FLASH_ERROR)
+        {
+            DestroyTask(taskId);
+            return;
+        }
+
+        gSpecialVar_Result = GetLinkFullSaveResult() == LINK_FULL_SAVE_RESULT_SUCCESS;
         DestroyTask(taskId);
         ScriptContext_Enable();
     }
 }
+
+#if TESTING
+bool8 StartMenu_TestRunBattleTowerLinkSaveWaiter(void)
+{
+    u8 taskId = FindTaskIdByFunc(Task_WaitForBattleTowerLinkSave);
+
+    if (taskId == TASK_NONE)
+        return FALSE;
+
+    Task_WaitForBattleTowerLinkSave(taskId);
+    return FindTaskIdByFunc(Task_WaitForBattleTowerLinkSave) == TASK_NONE;
+}
+#endif
 
 #define tInBattleTower data[2]
 

@@ -238,7 +238,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_BULLETPROOF },
+        .abilities = { ABILITY_BULLETPROOF, ABILITY_BULLETPROOF, ABILITY_BULLETPROOF },
         .innates = { ABILITY_STURDY, ABILITY_IRON_BARBS, ABILITY_BATTLE_FERVOR },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Chesnaught"),
@@ -554,6 +554,17 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Delphox)
         SHADOW(-1, 18, SHADOW_SIZE_L)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_DelphoxMega,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_DelphoxMega,
+            gShinyOverworldPalette_DelphoxMega
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sDelphoxLevelUpLearnset,
         .teachableLearnset = sDelphoxTeachableLearnset,
@@ -1205,7 +1216,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
         .abilities = { ABILITY_FLAME_BODY, ABILITY_NONE, ABILITY_GALE_WINGS },
-        .innates = { ABILITY_EARLY_BIRD, ABILITY_RECKLESS },
+        .innates = { ABILITY_BULL_RUSH, ABILITY_RECKLESS },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Fletchinder"),
         .cryId = CRY_FLETCHINDER,
@@ -1281,7 +1292,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
         .abilities = { ABILITY_FLAME_BODY, ABILITY_NONE, ABILITY_GALE_WINGS },
-        .innates = { ABILITY_EARLY_BIRD, ABILITY_RECKLESS, ABILITY_WINDCALLER },
+        .innates = { ABILITY_BULL_RUSH, ABILITY_RECKLESS, ABILITY_WINDCALLER },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Talonflame"),
         .cryId = CRY_TALONFLAME,
@@ -7672,7 +7683,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
         .abilities = { ABILITY_WATER_ABSORB, ABILITY_NONE, ABILITY_NONE },
-        .innates = { ABILITY_WHITE_SMOKE, ABILITY_DAMP, ABILITY_SMOULDERING },
+        .innates = { ABILITY_WHITE_SMOKE, ABILITY_DAMP, ABILITY_SOLIDIFY },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Volcanion"),
         .cryId = CRY_VOLCANION,

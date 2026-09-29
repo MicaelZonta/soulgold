@@ -7,18 +7,25 @@
 #include "replay_options.h"
 #include "test/test.h"
 #include "constants/flags.h"
+#include "constants/game_stat.h"
 #include "constants/party_menu.h"
 #include "constants/pokemon.h"
 #include "constants/vars.h"
 
 TEST("A fresh new game defaults to 2x battle speed")
 {
+    FlagClear(FLAG_OW_LIGHTING);
+    FlagClear(FLAG_BATTLE_LIGHTING);
     Sav2_ClearSetDefault();
 
     NewGameInitData();
 
     EXPECT_EQ(VarGet(VAR_BATTLE_SPEED), OPTIONS_BATTLE_SCENE_2X);
     EXPECT_EQ((u8)gSaveBlock2Ptr->optionsBattleSpeed, OPTIONS_BATTLE_SCENE_2X);
+    EXPECT(IsOverworldLightingEnabled());
+    EXPECT(IsBattleLightingEnabled());
+    EXPECT(FlagGet(FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE));
+    EXPECT_EQ(GetGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS), 0);
 }
 
 TEST("Starting a new game preserves settings selected from the main menu")
@@ -30,6 +37,8 @@ TEST("Starting a new game preserves settings selected from the main menu")
     gSaveBlock1Ptr->optionsPartyMenuStyle = PARTY_MENU_OPTION_HGSS;
     gSaveBlock1Ptr->optionsPartyMenuStyleMagic = PARTY_MENU_OPTION_SAVE_MAGIC;
     SetReplayBattleFormat(REPLAY_BATTLE_FORMAT_DOUBLES);
+    FlagSet(FLAG_OW_LIGHTING);
+    FlagClear(FLAG_BATTLE_LIGHTING);
 
     NewGameInitData();
 
@@ -40,6 +49,8 @@ TEST("Starting a new game preserves settings selected from the main menu")
     EXPECT_EQ(gSaveBlock1Ptr->optionsPartyMenuStyle, PARTY_MENU_OPTION_HGSS);
     EXPECT_EQ(gSaveBlock1Ptr->optionsPartyMenuStyleMagic, PARTY_MENU_OPTION_SAVE_MAGIC);
     EXPECT_EQ(GetReplayBattleFormat(), REPLAY_BATTLE_FORMAT_DOUBLES);
+    EXPECT(!IsOverworldLightingEnabled());
+    EXPECT(IsBattleLightingEnabled());
 }
 
 TEST("Shiny RNG audit: a fresh new game sets exactly 1-in-256 base odds")

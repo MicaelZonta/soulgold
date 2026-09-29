@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Orchestrate the SoulGold docs generation pipeline."""
+"""Build the SoulGold docs generation pipeline."""
 
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -18,6 +19,7 @@ from tools.soulgold_docs.image_utils import (
     parse_trainer_front_pic_sources,
 )
 from tools.soulgold_docs.parsers.abilities import build_ability_usage, parse_abilities
+from tools.soulgold_docs.parsers.acquisition import attach_acquisition_paths
 from tools.soulgold_docs.parsers.encounters import add_hidden_grotto_species_locations, build_species_locations, parse_wild_encounters
 from tools.soulgold_docs.parsers.forms import add_rotom_form_change_locations
 from tools.soulgold_docs.parsers.gifts import (
@@ -59,7 +61,7 @@ from tools.soulgold_docs.parsers.trainers import (
     trainer_constants_for_docs_maps,
     trainer_locations_for_docs_maps,
 )
-from tools.soulgold_docs.site import build_docs_payload, prepare_output_tree, write_docs_payload
+from tools.soulgold_docs.site import build_docs_payload, prepare_output_tree, refresh_static_site, write_docs_payload
 
 
 def build() -> None:
@@ -107,6 +109,7 @@ def build() -> None:
     add_johto_trade_species_locations(species_locations, species_data.by_constant)
     add_rotom_form_change_locations(species_locations, species_data.by_constant)
     located_species = attach_species_locations(enriched_species, species_locations)
+    attach_acquisition_paths(located_species, item_records)
     visible_species = visible_species_rows(located_species)
     species_lookup = build_species_lookup(located_species)
     trainer_locations = trainer_locations_for_docs_maps()
@@ -146,4 +149,10 @@ def build() -> None:
 
 
 if __name__ == "__main__":
-    build()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--static-only", action="store_true", help="Refresh website UI and existing routes without rebuilding game data")
+    args = parser.parse_args()
+    if args.static_only:
+        refresh_static_site()
+    else:
+        build()

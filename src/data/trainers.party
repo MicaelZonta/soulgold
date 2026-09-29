@@ -131,7 +131,7 @@ Name: Andrew
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
-Music: Male
+Music: Hg Suspicious 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -342,7 +342,7 @@ Name: Kuni
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Hg Kimono Girl
 Double Battle: Yes
 AI: Smart Trainer
 
@@ -460,7 +460,7 @@ Name: Sayo
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Hg Kimono Girl
 Double Battle: Yes
 AI: Smart Trainer
 
@@ -561,7 +561,7 @@ Name: Jose
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Smart Trainer
 
@@ -734,76 +734,83 @@ Name: Karen
 Class: Elite Four
 Pic: Elite Four Karen
 Gender: Female
-Music: Elite Four
-Double Battle: No
+Music: Dp Elite Four
+Double Battle: Yes
 AI: Smart Trainer
 Mugshot: Blue
 
 Grimmsnarl @ Light Clay
-Level: 85
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 252 Atk
 Ability: Prankster
+Level: 85
+EVs: 252 HP / 4 Def / 252 SpD
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Careful Nature
 - Reflect
 - Light Screen
-- Parting Shot
-- Play Rough
+- Spirit Break
+- Thunder Wave
 
-Absol @ Ghostite
+Scrafty @ Sitrus Berry
+Ability: Intimidate
 Level: 85
-EVs: 252 Atk / 252 Spe
+EVs: 252 HP / 252 Atk / 4 SpD
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Shadow Claw
-- Night Slash
-- Swords Dance
-- Play Rough
+Adamant Nature
+- Fake Out
+- Drain Punch
+- Knock Off
+- Rock Tomb
 
-Umbreon @ Sitrus Berry
+Hydreigon @ Life Orb
+Ability: Levitate
 Level: 85
-Ability: Synchronize
-EVs: 252 HP / 252 Def
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Dark Pulse
+- Draco Meteor
+- Heat Wave
+- Protect
+
+Umbreon @ Leftovers
+Ability: Inner Focus
+Level: 85
+EVs: 252 HP / 252 Def / 4 SpD
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Wish
+Bold Nature
 - Foul Play
-- Baton Pass
+- Snarl
+- Helping Hand
 - Moonlight
 
-Kingambit @ Blackglasses
+Absol @ Darktite
+Ability: Super Luck
 Level: 85
-EVs: 252 Atk / 252 SpD
-Ability: Supreme Overlord
+EVs: 4 HP / 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Jolly Nature
+- Night Slash
+- Play Rough
+- Sucker Punch
+- Close Combat
+
+Kingambit @ Blackglasses
+Ability: Supreme Overlord
+Level: 85
+EVs: 252 HP / 252 Atk / 4 SpD
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
 - Kowtow Cleave
 - Iron Head
 - Sucker Punch
-- Brick Break
-
-Scrafty @ Leftovers
-Level: 85
-Ability: Intimidate
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Spe
-- Hi Jump Kick
-- Crunch
-- Parting Shot
-- Head Smash
-
-Honchkrow @ Life Orb
-Level: 85
-Ability: Moxie
-EVs: 252 Atk / 252 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Superpower
-- Sucker Punch
-- Steel Wing
-- Brave Bird
+- Swords Dance
 
 === TRAINER_GIOVANNI ===
 Name: Giovanni
 Class: RocketA
 Pic: Giovanni
 Gender: Male
-Music: Male
+Music: Rocket
 Items: Full Restore / Full Restore
 Double Battle: No
 AI: Basic Trainer
@@ -902,7 +909,7 @@ Name: Toby
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: Yes
 AI: Basic Trainer
 
@@ -1161,7 +1168,7 @@ Name: Clyde
 Class: Guitarist
 Pic: Guitarist
 Gender: Male
-Music: Male
+Music: Hg Suspicious 2
 Double Battle: No
 AI: Basic Trainer
 
@@ -1204,7 +1211,7 @@ Name: Bryan
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -1397,7 +1404,7 @@ Name: Peter
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -1414,7 +1421,7 @@ Name: Shane
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
-Music: Male
+Music: Hg Suspicious 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -1798,7 +1805,7 @@ Name: Bruno
 Class: Elite Four
 Pic: Elite Four Bruno
 Gender: Male
-Music: Elite Four
+Music: Dp Elite Four
 Double Battle: Yes
 AI: Smart Trainer
 Mugshot: Yellow
@@ -1868,69 +1875,76 @@ Name: Bruno
 Class: Elite Four
 Pic: Elite Four Bruno
 Gender: Male
-Music: Elite Four
-Double Battle: No
+Music: Dp Elite Four
+Double Battle: Yes
 AI: Smart Trainer
+Mugshot: Yellow
 
-Hitmontop @ White Herb
+Hitmontop @ Sitrus Berry
 Ability: Intimidate
 Level: 85
-EVs: 252 HP / 252 Atk
+EVs: 252 HP / 252 Atk / 4 SpD
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rapid Spin
+Adamant Nature
+- Fake Out
 - Close Combat
-- Ice Spinner
-- Thunder Punch
+- Wide Guard
+- Helping Hand
 
 Staraptor @ Flyingite
-Level: 85
-EVs: 252 Atk / 252 Spe
 Ability: Intimidate
+Level: 85
+EVs: 4 HP / 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Brave Bird
+Jolly Nature
+- Fly
 - Close Combat
-- Knock Off
-- Blaze Kick
+- Tailwind
+- Double-Edge
 
 Gallade @ Choice Scarf
-Level: 85
-EVs: 252 Atk / 252 Spe
 Ability: Sharpness
+Level: 85
+EVs: 4 HP / 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Shadow Claw
-- Leaf Blade
-- Close Combat
+Jolly Nature
+- Sacred Sword
 - Psycho Cut
+- Leaf Blade
+- Knock Off
+
+Lucario @ Life Orb
+Ability: Inner Focus
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Aura Sphere
+- Flash Cannon
+- Vacuum Wave
+- Dark Pulse
+
+Kommo-o @ Throat Spray
+Ability: Soundproof
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Modest Nature
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Clangorous Soul
 
 Annihilape @ Leftovers
+Ability: Defiant
 Level: 85
-EVs: 252 Atk / 252 HP
-Ability: Inner Focus
+EVs: 252 HP / 252 Atk / 4 SpD
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
 - Rage Fist
-- Bulk Up
 - Drain Punch
-- Outrage
-
-Kommo O @ Dragon Gem
-Level: 85
-EVs: 252 Atk / 252 HP
-Ability: Soundproof
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Dragon Dance
-- Dragon Claw
-- Close Combat
-- Clanging Scales
-
-Machamp @ Expert Belt
-Level: 85
-Ability: No Guard
-EVs: 252 Atk / 252 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rock Slide
-- Ice Punch
-- Dynamic Punch
-- Thunder Punch
+- Bulk Up
+- Protect
 
 === TRAINER_MARTHA ===
 Name: Martha
@@ -2116,7 +2130,7 @@ Name: Cody
 Class: Dragon Tamer
 Pic: Dragon Tamer
 Gender: Male
-Music: Male
+Music: Dp Ace Trainer
 Double Battle: No
 AI: Basic Trainer
 
@@ -2278,7 +2292,7 @@ Name: Abe
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -2474,7 +2488,7 @@ Name: Miller
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
-Music: Male
+Music: Hg Suspicious 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -2546,7 +2560,7 @@ Name: Miki
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Hg Kimono Girl
 Double Battle: Yes
 AI: Smart Trainer
 
@@ -2571,7 +2585,7 @@ Name: Mike
 Class: Dragon Tamer
 Pic: Dragon Tamer
 Gender: Male
-Music: Male
+Music: Dp Ace Trainer
 Double Battle: No
 AI: Basic Trainer
 
@@ -2722,7 +2736,7 @@ Name: Jed
 Class: Scientist
 Pic: Scientist
 Gender: Male
-Music: Male
+Music: Rocket
 Double Battle: No
 AI: Basic Trainer
 
@@ -3140,7 +3154,7 @@ Name: Alfred
 Class: Expert
 Pic: Expert M
 Gender: Male
-Music: Male
+Music: Dp Ace Trainer
 Double Battle: No
 AI: Basic Trainer
 
@@ -3341,7 +3355,7 @@ Name: Denis
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -3384,7 +3398,7 @@ Name: Darin
 Class: Dragon Tamer
 Pic: Dragon Tamer
 Gender: Male
-Music: Male
+Music: Dp Ace Trainer
 Double Battle: No
 AI: Basic Trainer
 
@@ -3447,7 +3461,7 @@ Name: Naoko
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Hg Kimono Girl
 Double Battle: Yes
 AI: Smart Trainer
 
@@ -3806,7 +3820,7 @@ Name: Karen
 Class: Elite Four
 Pic: Elite Four Karen
 Gender: Male
-Music: Elite Four
+Music: Dp Elite Four
 Double Battle: Yes
 AI: Smart Trainer
 Mugshot: Blue
@@ -4127,7 +4141,7 @@ Name: Will
 Class: Elite Four
 Pic: Elite Four Will
 Gender: Male
-Music: Elite Four
+Music: Dp Elite Four
 Double Battle: Yes
 AI: Smart Trainer
 Mugshot: Purple
@@ -4249,65 +4263,76 @@ Name: Will
 Class: Elite Four
 Pic: Elite Four Will
 Gender: Male
-Music: Elite Four
-Double Battle: No
+Music: Dp Elite Four
+Double Battle: Yes
 AI: Smart Trainer
 Mugshot: Purple
 
 Farigiraf @ Safety Goggles
 Ability: Armor Tail
 Level: 85
-EVs: 252 HP / 252 SpD
+EVs: 252 HP / 4 Def / 252 SpD
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
 Sassy Nature
-- Trick Room
-- Dazzling Gleam
 - Psychic
-- Hyper Voice
+- Dazzling Gleam
+- Helping Hand
+- Trick Room
 
-Reuniclus @ Rocky Helmet
+Reuniclus @ Life Orb
 Ability: Magic Guard
 Level: 85
-EVs: 252 Def / 252 SpA
-- Psychic
-- Calm Mind
-- Shadow Ball
-- Mystical Fire
-
-Espeon @ Choice Specs
-Ability: Magic Bounce
-Level: 85
-EVs: 252 SpA / 252 HP
-- Draining Kiss
+EVs: 252 HP / 252 SpA / 4 SpD
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+Quiet Nature
 - Expanding Force
-- Power Gem
-- Psychic
+- Shadow Ball
+- Energy Ball
+- Focus Blast
 
-Slowbro @ Leftovers
+Exeggutor @ Sitrus Berry
+Ability: Harvest
+Level: 85
+EVs: 252 HP / 252 SpA / 4 SpD
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+Quiet Nature
+- Giga Drain
+- Psychic
+- Trick Room
+- Protect
+
+Metagross @ Assault Vest
+Ability: Clear Body
+Level: 85
+EVs: 252 HP / 252 Atk / 4 SpD
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+Brave Nature
+- Iron Head
+- Zen Headbutt
+- Hammer Arm
+- Ice Punch
+
+Armarouge @ Charcoal
+Ability: Flash Fire
+Level: 85
+EVs: 252 HP / 252 SpA / 4 SpD
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+Quiet Nature
+- Armor Cannon
+- Expanding Force
+- Wide Guard
+- Aura Sphere
+
+Slowbro @ Watertite
 Ability: Regenerator
 Level: 85
-EVs: 192 HP / 64 SpA / 252 SpD
-- Blizzard
+EVs: 252 HP / 252 SpA / 4 SpD
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+Quiet Nature
 - Scald
+- Psychic
+- Ice Beam
 - Slack Off
-- Psychic
-
-Braviary-Hisui @ Twisted Spoon
-Ability: Tinted Lens
-Level: 85
-EVs: 252 SpA / 252 SpD
-- Air Slash
-- Esper Wing
-- U-turn
-- Psychic Terrain
-
-Alakazam @ Psychite
-Ability: Magic Guard
-Level: 85
-EVs: 252 SpA / 252 HP
-- Shadow Ball
-- Psychic
-- Recover
-- Expanding Force
 
 === TRAINER_PRESTON ===
 Name: Preston
@@ -4533,74 +4558,83 @@ Name: Koga
 Class: Elite Four
 Pic: Elite Four Koga
 Gender: Male
-Music: Elite Four
-Double Battle: No
+Music: Dp Elite Four
+Double Battle: Yes
 AI: Smart Trainer
 Mugshot: Pink
 
-Toxapex @ Payapa Berry
+Crobat @ Focus Sash
+Ability: Inner Focus
 Level: 85
+EVs: 4 HP / 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP
-- Scald
-- Sludge Bomb
-- Baneful Bunker
-- Toxic
+Jolly Nature
+- Tailwind
+- Fly
+- Cross Poison
+- Taunt
 
-Overqwil @ Sitrus Berry
-Level: 85
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Spe
+Overqwil @ Black Sludge
 Ability: Intimidate
-- Barb Barrage
-- Crunch
-- Destiny Bond
-- Fell Stinger
-
-Roserade @ Grass Gem
 Level: 85
+EVs: 252 HP / 252 Atk / 4 SpD
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
+- Barb Barrage
+- Throat Chop
+- Aqua Jet
+- Liquidation
+
+Weezing @ Sitrus Berry
+Ability: Levitate
+Level: 85
+EVs: 252 HP / 252 Def / 4 SpD
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Bold Nature
+- Sludge Bomb
+- Flamethrower
+- Will-O-Wisp
+- Clear Smog
+
+Roserade @ Life Orb
 Ability: Technician
-EVs: 252 SpA / 252 Spe
-- Weather Ball
-- Toxic
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
 - Magical Leaf
 - Sludge Bomb
+- Sleep Powder
+- Dazzling Gleam
 
-Muk Alola @ Leftovers
+Muk Alola @ Assault Vest
+Ability: Poison Touch
 Level: 85
+EVs: 252 HP / 252 Atk / 4 SpD
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 252 Atk
-- Gunk Shot
-- Shadow Punch
+Adamant Nature
 - Knock Off
-- Pain Split
+- Poison Jab
+- Drain Punch
+- Ice Punch
 
 Scolipede @ Poisontite
-Level: 85
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Ability: Speed Boost
-EVs: 252 Atk / 252 HP
+Level: 85
+EVs: 4 HP / 252 Atk / 252 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
 - Megahorn
 - Poison Jab
-- Swords Dance
-- Earthquake
-
-Crobat @ Charti Berry
-Level: 85
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 SpA / 252 Spe
-- Sludge Bomb
-- Air Cutter
-- Roost
-- Giga Drain
+- Stomping Tantrum
+- Protect
 
 === TRAINER_KOGA_1 ===
 Name: Koga
 Class: Elite Four
 Pic: Elite Four Koga
 Gender: Male
-Music: Elite Four
+Music: Dp Elite Four
 Double Battle: Yes
 AI: Smart Trainer
 Mugshot: Pink
@@ -4614,7 +4648,7 @@ EVs: 252 HP
 - Baneful Bunker
 - Toxic
 
-Overqwil @ Sitrus Berry
+Overqwil @ Sitrus Berry 
 Level: 69
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 252 Spe
@@ -4819,7 +4853,7 @@ Name: Calvin
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
-Music: Male
+Music: Hg Suspicious 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -5260,7 +5294,7 @@ Name: Duff & Eda
 Class: Young Couple
 Pic: Young Couple
 Gender: Male
-Music: Girl
+Music: Hg Girl 1
 Double Battle: Yes
 AI: Basic Trainer
 
@@ -5579,7 +5613,7 @@ Name: Ethan
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
-Music: Male
+Music: Hg Suspicious 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -5686,7 +5720,7 @@ Name: Brent
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
-Music: Male
+Music: Hg Suspicious 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -6225,7 +6259,7 @@ Name: Ronald
 Class: Expert
 Pic: Expert M
 Gender: Male
-Music: Male
+Music: Dp Ace Trainer
 Double Battle: No
 AI: Basic Trainer
 
@@ -6424,7 +6458,7 @@ Name: Perry
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -6764,7 +6798,7 @@ Name: Boris
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -6775,7 +6809,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Murkrow
 Level: 58
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 
 === TRAINER_GRACE ===
 Name: Grace
@@ -7154,7 +7187,7 @@ Name: Larry
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
-Music: Male
+Music: Hg Suspicious 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -7796,7 +7829,7 @@ Name: Hank
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -8009,7 +8042,7 @@ Name: Thom & Kae
 Class: Young Couple
 Pic: Young Couple
 Gender: Male
-Music: Girl
+Music: Hg Girl 1
 Double Battle: Yes
 AI: Basic Trainer
 
@@ -8026,7 +8059,7 @@ Name: Theo
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -8141,7 +8174,7 @@ Name: Ron
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
-Music: Male
+Music: Hg Suspicious 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -8196,7 +8229,7 @@ Name: Rod
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -8748,7 +8781,7 @@ Name: Bob
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -8778,7 +8811,7 @@ Name: Vance
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
-Music: Male
+Music: Hg Boy 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -9090,7 +9123,7 @@ Name: Paul
 Class: Dragon Tamer
 Pic: Dragon Tamer
 Gender: Male
-Music: Male
+Music: Dp Ace Trainer
 Double Battle: No
 AI: Basic Trainer
 
@@ -9129,7 +9162,7 @@ Name: Zuki
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Hg Kimono Girl
 Double Battle: Yes
 AI: Smart Trainer
 
@@ -9655,7 +9688,7 @@ Name: Zach
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
-Music: Male
+Music: Hg Suspicious 1
 Double Battle: No
 AI: Basic Trainer
 
@@ -9883,7 +9916,7 @@ Name: Doris
 Class: Psychic
 Pic: Psychic F
 Gender: Female
-Music: Female
+Music: Dp Intense
 Double Battle: No
 AI: Basic Trainer
 
@@ -10284,7 +10317,7 @@ Name: Brad
 Class: Expert
 Pic: Expert M
 Gender: Male
-Music: Male
+Music: Dp Ace Trainer
 Double Battle: No
 AI: Basic Trainer
 
@@ -10295,7 +10328,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Piloswine
 Level: 46
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 
 === TRAINER_SAM ===
 Name: Sam
@@ -10625,7 +10657,7 @@ Name: Douglas
 Class: Expert
 Pic: Expert M
 Gender: Male
-Music: Male
+Music: Dp Ace Trainer
 Double Battle: No
 AI: Basic Trainer
 
@@ -11247,7 +11279,7 @@ IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 Name: Kennedy
 Pic: Expert M
 Gender: Male
-Music: Male
+Music: Dp Ace Trainer
 Double Battle: No
 AI: Smart Trainer
 
@@ -11258,7 +11290,6 @@ IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 Hippowdon
 Level: 39
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
-
 
 === TRAINER_BEARNESE ===
 Name: Bearnese
@@ -11400,7 +11431,7 @@ Adamant Nature
 - Glaive Rush
 - High Horsepower
 - Icicle Crash
-- Substitute
+- Protect
 
 Dragonite @ Dragotite
 Ability: Multiscale
@@ -11410,8 +11441,8 @@ EVs: 252 SpA / 252 Spe
 Modest Nature
 - Draco Meteor
 - Hurricane
+- Tailwind
 - Flamethrower
-- Ice Beam
 
 Exeggutor-Alola @ Sitrus Berry
 Ability: Harvest
@@ -11419,18 +11450,19 @@ Level: 86
 EVs: 252 HP / 252 Atk / 4 SpD
 Adamant Nature
 - Dragon Hammer
-- Earthquake
+- Stomping Tantrum
 - Seed Bomb
 - Zen Headbutt
 
 Hydrapple @ Yache Berry
 Ability: Sticky Hold
 Level: 86
-EVs: 252 Atk / 252 SpA
-- Draco Meteor
-- Leaf Storm
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+- Fickle Beam
 - Giga Drain
-- Outrage
+- Earth Power
+- Protect
 
 Dragapult @ Choice Scarf
 Ability: Infiltrator
@@ -11439,14 +11471,15 @@ EVs: 252 Atk / 4 SpD / 252 Spe
 Jolly Nature
 - Dragon Darts
 - Phantom Force
-- Body Slam
-- Trick
+- U-turn
+- Psychic Fangs
 
 Archaludon @ Choice Specs
 Level: 86
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 SpA / 252 Spe
 Modest Nature
+Ability: Stamina
 - Thunderbolt
 - Dragon Pulse
 - Flash Cannon
@@ -11472,49 +11505,54 @@ Nature: Modest
 - Protect
 - Nasty Plot
 
-Aggron @ Air Balloon
-Ability: Rock Head
-EVs: 252 HP / 252 Atk
-Level: 85
-- Head Smash
-- Avalanche
-- Earthquake
-- Heavy Slam
-
-Cradily @ Expert Belt
-Ability: Suction Cups
-EVs: 252 HP / 252 SpD
-Level: 85
-- Stone Edge
-- Seed Bomb
-- Sandstorm
-- Earthquake
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-EVs: 252 Atk / 252 Spe
-Level: 85
-- X-scissor
-- Earthquake
-- Stone Edge
-- Iron Head
-
 Archeops @ Sitrus Berry
 Ability: Defeatist
 EVs: 252 Atk / 252 Spe
 Level: 85
+Jolly Nature
 - Head Smash
 - Dual Wingbeat
+- Tailwind
+- Protect
+
+Aggron @ Air Balloon
+Ability: Rock Head
+Level: 85
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Head Smash
+- High Horsepower
+- Heavy Slam
 - Earthquake
-- Quick Attack
+
+Cradily @ Leftovers
+Level: 85
+Ability: Storm Drain
+EVs: 252 HP / 4 SpA / 252 SpD
+Calm Nature
+- Giga Drain
+- Ancient Power
+- Recover
+- Sappy Seed
+
+Excadrill @ Focus Sash
+EVs: 252 Atk / 252 Spe
+Level: 85
+Ability: Mold Breaker
+Jolly Nature
+- High Horsepower
+- Rock Slide
+- Iron Head
+- Earthquake
 
 Metagross @ Steeltite
 Ability: Clear Body
 Level: 86
 EVs: 252 Atk / 252 Spe
+Adamant Nature
 - Bullet Punch
 - Meteor Mash
-- Earthquake
+- Stomping Tantrum
 - Zen Headbutt
 
 === TRAINER_DOJO_AUDINO ===
@@ -11747,34 +11785,38 @@ Class: Leader
 Pic: Leader Falkner
 Gender: Male
 Music: Male
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer
 
-Salamence @ Dragotite
+Pidgeot @ Flyingite
 Level: 85
-Ability: Intimidate
+Ability: Keen Eye
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Spe
-- Zen Headbutt
-- Double-Edge
-- Dragon Claw
-- Dual Wingbeat
+EVs: 252 SpA / 252 Spe
+Jolly Nature
+- Hurricane
+- Heat Wave
+- Roost
+- Protect
 
 Flamigo @ Choice Band
 Level: 85
 Ability: Scrappy
 EVs: 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Jolly Nature
 - Brave Bird
 - Throat Chop
-- Hi Jump Kick
-- U-Turn
+- Close Combat
+- U-turn
 
 Landorus Therian @ Life Orb
 Level: 85
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 252 Spe
-- Outrage
+Ability: Intimidate
+Jolly Nature
+- Rock Slide
 - Earthquake
 - Knock Off
 - Hammer Arm
@@ -11784,9 +11826,10 @@ Level: 85
 Ability: Mirror Armor
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Def / 252 HP
+Impish Nature
 - Body Press
 - Iron Defense
-- Drill Peck
+- Tailwind
 - Roost
 
 Honchkrow @ Life Orb
@@ -11794,10 +11837,11 @@ Level: 85
 Ability: Moxie
 EVs: 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
 - Sucker Punch
 - Night Slash
 - Brave Bird
-- U-Turn
+- Heat Wave
 
 Gliscor @ Toxic Orb
 Level: 85
@@ -11815,28 +11859,30 @@ Class: Leader
 Pic: Leader Bugsy
 Gender: Male
 Music: Male
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer
+
+Ribombee @ Sitrus Berry
+Level: 85
+Ability: Shield Dust
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 4 SpA / 252 Spe
+Timid Nature
+- Tailwind
+- Pollen Puff
+- Moonblast
+- Sticky Web
 
 Kleavor @ Focus Sash
 Level: 85
 Ability: Sharpness
 EVs: 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Jolly Nature
 - Stone Axe
-- Stone Edge
+- Rock Slide
 - X-Scissor
 - Aerial Ace
-
-Ribombee @ Sitrus Berry
-Level: 85
-Ability: Shield Dust
-EVs: 252 SpA / 252 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Sticky Web
-- Pollen Puff
-- Bug Buzz
-- Quiver Dance
 
 Centiskorch @ Choice Band
 Level: 85
@@ -11853,20 +11899,22 @@ Level: 85
 Ability: Technician
 EVs: 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
 - Bullet Punch
 - Swords Dance
-- U-Turn
-- Roost
+- Bug Bite
+- Night Slash
 
 Volcarona @ Charti Berry
 Level: 85
 Ability: Flame Body
 EVs: 252 SpA / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
 - Quiver Dance
 - Bug Buzz
-- Hurricane
-- Fiery Dance
+- Heat Wave
+- Giga Drain
 
 Genesect @ Choice Scarf
 Level: 85
@@ -11885,63 +11933,20 @@ Class: Leader
 Pic: Leader Whitney
 Gender: Male
 Music: Male
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer
 
-Ursaluna @ Flame Orb
+Maushold @ Sitrus Berry
 Level: 85
-Ability: Guts
-EVs: 252 HP / 252 Atk
-Happiness: 255
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
-- Protect
-- Earthquake
-- Headlong Rush
-- Facade
-
-Regigigas @ Leftovers
-Level: 85
-Ability: Slow Start
-EVs: 252 HP / 252 Atk
 Happiness: 255
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-Adamant Nature
-- Crush Grip
-- Knock Off
-- Earthquake
-- Protect
-
-Zoroark Hisui @ Life Orb
-Level: 85
-Ability: Illusion
-EVs: 252 SpA / 252 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Bitter Malice
-- Nasty Plot
-- Flamethrower
-- Focus Blast
-
-Drampa @ Normalite
-Level: 85
-Ability: Berserk
-EVs: 252 HP / 252 SpA
-Happiness: 255
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hyper Voice
-- Icy Wind
-- Draco Meteor
-- Dragon Pulse
-
-Maushold @ Wide Lens
-Level: 85
-Ability: Technician
-EVs: 252 Spe / 252 Atk
-Happiness: 255
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ability: Friend Guard
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
 - Population Bomb
-- Bullet Seed
-- Tidy Up
-- Low Kick
+- Follow Me
+- Helping Hand
+- Bite
 
 Porygon-Z @ Life Orb
 Level: 85
@@ -11955,24 +11960,83 @@ Quiet Nature
 - Tri-Attack
 - Shadow Ball
 
+Ursaluna @ Flame Orb
+Level: 85
+Ability: Guts
+EVs: 252 HP / 252 Atk
+Happiness: 255
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+Brave Nature
+- Protect
+- Crunch
+- Headlong Rush
+- Facade
+
+Regigigas @ Leftovers
+Level: 85
+Ability: Slow Start
+EVs: 252 HP / 252 Atk
+Happiness: 255
+Brave Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+- Crush Grip
+- Knock Off
+- High Horsepower
+- Protect
+
+Zoroark Hisui @ Life Orb
+Level: 85
+Ability: Illusion
+EVs: 252 SpA / 252 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Bitter Malice
+- Nasty Plot
+- Flamethrower
+- Focus Blast
+
+Drampa @ Normalite
+Level: 85
+Ability: Berserk
+EVs: 252 HP / 252 SpA
+Happiness: 255
+Quiet Nature
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+- Hyper Voice
+- Thunder
+- Draco Meteor
+- Energy Ball
+
 === TRAINER_TITLE_DEFENSE_MORTY ===
 Name: Morty
 Class: Leader
 Pic: Leader Morty
 Gender: Male
 Music: Male
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer
 
 Aegislash @ Sitrus Berry
 Level: 85
 Ability: Stance Change
 EVs: 252 Atk / 252 HP
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Brave Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
 - Shadow Claw
 - King's Shield
 - Sacred Sword
-- Swords Dance
+- Wide Guard
+
+Gengar @ Ghostite
+Level: 85
+Ability: Cursed Body
+EVs: 252 SpA / 252 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Shadow Ball
+- Icy Wind
+- Sludge Bomb
+- Protect
 
 Dragapult @ Choice Scarf
 Level: 85
@@ -11983,16 +12047,6 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Shadow Ball
 - Scald
 - Dragon Pulse
-
-Gengar @ Ghostite
-Level: 85
-Ability: Cursed Body
-EVs: 252 SpA / 252 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Shadow Ball
-- Destiny Bond
-- Sludge Bomb
-- Nasty Plot
 
 Mismagius @ Assault Vest
 Level: 85
@@ -12009,10 +12063,11 @@ Level: 85
 Ability: Adaptability
 EVs: 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
 - Wave Crash
-- Double-Edge
-- Head Smash
-- Phantom Force
+- Crunch
+- Aqua Jet
+- Last Respects
 
 Giratina @ Griseous Orb
 Level: 85
@@ -12020,9 +12075,9 @@ Ability: Pressure
 EVs: 252 HP / 252 Atk / 4 SpD
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Adamant Nature
-- Shadow Force
+- Poltergeist
 - Dragon Claw
-- Earthquake
+- Skitter Smack
 - Shadow Sneak
 
 === TRAINER_TITLE_DEFENSE_CHUCK ===
@@ -12031,17 +12086,18 @@ Class: Leader
 Pic: Leader Chuck
 Gender: Male
 Music: Male
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer
 
-Mienshao @ Choice Band
+Mienshao @ Sitrus Berry
 Level: 85
 Ability: Inner Focus
 EVs: 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hi Jump Kick
-- U-Turn
-- Meteor Mash
+Jolly Nature
+- Fake Out
+- Close Combat
+- Wide Guard
 - Triple Axel
 
 Annihilape @ Leftovers
@@ -12059,10 +12115,11 @@ Level: 85
 Ability: Hustle
 EVs: 252 Atk / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Jolly Nature
 - Victory Dance
 - Close Combat
 - Leaf Blade
-- Ice Spinner
+- Drain Punch
 
 Pawmot @ Choice Scarf
 Level: 85
@@ -12079,20 +12136,19 @@ Level: 85
 Ability: Mold Breaker
 EVs: 72 HP / 252 Atk / 60 SpD / 124 Spe
 Nature: Adamant
-- Swords Dance
+- Tailwind
 - Flying Press
 - Close Combat
 - Fire Punch
 
-Zamazenta @ Rusted Shield
+Zapdos Galar @ Leftovers
 Level: 85
-Ability: Dauntless Shield
-EVs: 252 Atk / 4 SpD / 252 Spe
-Jolly Nature
+EVs: 252 HP / 252 Def / 4 Spe
+Impish Nature
 - Close Combat
-- Iron Head
-- Crunch
-- Play Rough
+- Thunderous Kick
+- Drill Peck
+- U-Turn
 
 === TRAINER_TITLE_DEFENSE_JASMINE ===
 Name: Jasmine
@@ -12100,7 +12156,7 @@ Class: Leader
 Pic: Leader Jasmine
 Gender: Male
 Music: Male
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer
 
 Skarmory @ Rocky Helmet
@@ -12109,9 +12165,9 @@ EVs: 248 HP / 16 Def / 180 SpD / 64 Spe
 IVs: 0 Atk
 Level: 85
 Impish Nature
-- Spikes
+- Tailwind
 - Body Press
-- Whirlwind
+- Iron Defense
 - Roost
 
 Magnezone @ Assault Vest
@@ -12120,7 +12176,7 @@ EVs: 116 HP / 252 SpA / 56 SpD / 84 Spe
 IVs: 0 Atk
 Level: 85
 Modest Nature
-- Discharge
+- Thunderbolt
 - Flash Cannon
 - Volt Switch
 - Body Press
@@ -12131,7 +12187,7 @@ EVs: 252 Atk / 4 SpD / 252 Spe
 Level: 85
 Adamant Nature
 - Heavy Slam
-- Earthquake
+- Stomping Tantrum
 - Knock Off
 - Bullet Punch
 
@@ -12165,7 +12221,7 @@ Timid Nature
 - Aura Sphere
 - Dragon Pulse
 - Flash Cannon
-- Nasty Plot
+- Quick Guard
 
 === TRAINER_TITLE_DEFENSE_PRYCE ===
 Name: Pryce
@@ -12173,10 +12229,10 @@ Class: Leader
 Pic: Leader Pryce
 Gender: Male
 Music: Male
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer
 
-Ninetales-Alola @ Icy Rock
+Ninetales-Alola @ Light Clay
 Ability: Snow Warning
 EVs: 252 HP / 4 SpD / 252 Spe
 Level: 85
@@ -12186,6 +12242,17 @@ Timid Nature
 - Moonblast
 - Encore
 
+Articuno @ Sitrus Berry
+Level: 85
+Ability: Snow Cloak
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Freeze-Dry
+- Blizzard
+- Tailwind
+- Hurricane
+
 Lapras @ Icetite
 Ability: Water Absorb
 EVs: 196 Def / 252 SpA / 60 Spe
@@ -12194,8 +12261,8 @@ Level: 85
 Modest Nature
 - Freeze-Dry
 - Hydro Pump
+- Blizzard
 - Alluring Voice
-- Ice Beam
 
 Cloyster @ White Herb
 Ability: Skill Link
@@ -12205,18 +12272,7 @@ Adamant Nature
 - Shell Smash
 - Icicle Spear
 - Drill Run
-- Waterfall
-
-Kyurem @ Life Orb
-Level: 85
-Ability: Pressure
-EVs: 252 SpA / 4 SpD / 252 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-Timid Nature
-- Ice Beam
-- Draco Meteor
-- Earth Power
-- Flash Cannon
+- Protect
 
 Darmanitan-Galar @ Choice Scarf
 Ability: Gorilla Tactics
@@ -12235,7 +12291,7 @@ Level: 85
 Adamant Nature
 - Icicle Spear
 - Glaive Rush
-- Earthquake
+- High Horsepower
 - Dragon Dance
 
 === TRAINER_TITLE_DEFENSE_CLAIR ===
@@ -12244,7 +12300,7 @@ Class: Leader
 Pic: Leader Clair
 Gender: Male
 Music: Male
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer
 
 Goodra @ Choice Specs
@@ -12253,11 +12309,11 @@ EVs: 252 SpA / 4 SpD / 252 Spe
 Level: 85
 Timid Nature
 - Draco Meteor
-- Fire Blast
-- Sludge Wave
+- Thunder
+- Sludge Bomb
 - Hydro Pump
 
-Kingdra @ Choice Specs
+Kingdra @ Life Orb
 Ability: Swift Swim
 EVs: 252 SpA / 4 SpD / 252 Spe
 IVs: 0 Atk
@@ -12273,9 +12329,9 @@ Ability: Mold Breaker
 EVs: 252 Atk / 4 SpD / 252 Spe
 Level: 85
 Jolly Nature
-- First Impression
+- Close Combat
 - Outrage
-- Earthquake
+- Stomping Tantrum
 - Poison Jab
 
 Rayquaza @ Life Orb
@@ -12285,19 +12341,19 @@ EVs: 252 Atk / 4 SpD / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Jolly Nature
 - Dragon Ascent
-- Dragon Dance
+- Tailwind
 - Extreme Speed
-- Outrage
+- Dragon Claw
 
-Kommo-o @ Leftovers
+Kommo-o @ Throat Spray
 Ability: Soundproof
-EVs: 248 HP / 8 Atk / 252 Spe
 Level: 85
-Jolly Nature
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
 - Clangorous Soul
-- Drain Punch
-- Shadow Claw
-- Substitute
+- Clanging Scales
+- Aura Sphere
+- Protect
 
 Charizard @ Dragotite
 Ability: Blaze
@@ -12306,8 +12362,8 @@ Level: 85
 Jolly Nature
 - Dragon Claw
 - Flare Blitz
+- Thunder Punch
 - Brick Break
-- Shadow Claw
 
 === TRAINER_TITLE_DEFENSE_ELDER_LI ===
 Name: Elder Li
@@ -12315,7 +12371,7 @@ Class: Sage
 Pic: Elder
 Gender: Male
 Music: Hg Sage
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer
 Mugshot: Purple
 
@@ -12327,26 +12383,27 @@ Timid Nature
 - Reflect
 - Light Screen
 - Psychic
-- Dazzling Gleam
+- Tailwind
+
+Clefable @ Sitrus Berry
+Ability: Magic Guard
+Level: 85
+EVs: 252 HP / 252 Def / 4 SpD
+Bold Nature
+- Moonblast
+- Follow Me
+- Helping Hand
+- Cosmic Power
 
 Noctowl @ Choice Scarf
 Level: 85
 EVs: 4 Def / 252 SpA / 252 Spe
 Timid Nature
+Ability: Tinted Lens
 - Moonblast
 - Extrasensory
 - Hurricane
-- Boomburst
-
-Clefable @ Sitrus Berry
-Ability: Magic Guard
-Level: 85
-EVs: 252 HP / 4 Def / 252 SpA
-Modest Nature
-- Moonblast
-- Cosmic Power
-- Ice Beam
-- Focus Blast
+- Hyper Voice
 
 Snorlax @ Leftovers
 Ability: Thick Fat
@@ -12356,7 +12413,7 @@ Brave Nature
 - High Horsepower
 - Body Slam
 - Thunder Punch
-- Earthquake
+- Grav Apple
 
 Lilligant-Hisui @ Life Orb
 Ability: Hustle
@@ -12364,9 +12421,9 @@ Level: 85
 EVs: 252 Atk / 4 SpD / 252 Spe
 Adamant Nature
 - Victory Dance
-- Axe Kick
+- Close Combat
 - Leaf Blade
-- Triple Axel
+- Drain Punch
 
 Victreebel @ Poisontite
 Level: 86
@@ -12383,9 +12440,19 @@ Class: Gentleman
 Pic: Gentleman
 Gender: Male
 Music: Hg Boy 2
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer / Prediction
 Mugshot: Purple
+
+Tornadus-Therian @ Leftovers
+Ability: Regenerator
+Level: 85
+EVs: 88 HP / 164 Def / 32 SpA / 8 SpD / 216 Spe
+Timid Nature
+- Bleakwind Storm
+- Knock Off
+- Tailwind
+- Taunt
 
 Rotom-Wash @ Wiki Berry
 Ability: Levitate
@@ -12393,7 +12460,7 @@ Level: 84
 EVs: 252 HP / 196 Def / 60 Spe
 Bold Nature
 - Hydro Pump
-- Volt Switch
+- Thunderbolt
 - Will-O-Wisp
 - Pain Split
 
@@ -12402,10 +12469,10 @@ Ability: Rough Skin
 Level: 85
 EVs: 252 Atk / 4 SpD / 252 Spe
 Jolly Nature
+- Dragon Claw
 - Stealth Rock
-- Swords Dance
-- Earthquake
-- Stone Edge
+- Stomping Tantrum
+- Rock Slide
 
 Ditto @ Choice Scarf
 Ability: Imposter
@@ -12415,35 +12482,26 @@ Relaxed Nature
 IVs: 0 Spe
 - Transform
 
-Tornadus-Therian @ Leftovers
-Ability: Regenerator
-Level: 85
-EVs: 88 HP / 164 Def / 32 SpA / 8 SpD / 216 Spe
-Timid Nature
-- Hurricane
-- Knock Off
-- Defog
-- Taunt
-
 Ferrothorn @ Leftovers
 Ability: Iron Barbs
 Level: 85
 EVs: 252 HP / 48 Def / 208 SpD
 Careful Nature
+IVs: 0 Spe
 - Leech Seed
-- Spikes
+- Gyro Ball
 - Power Whip
 - Protect
 
 Scizor @ Bugtite
-Ability: Light Metal
 Level: 86
 EVs: 248 HP / 44 Def / 216 SpD
 Impish Nature
+Ability: Technician
 - Bullet Punch
 - Swords Dance
-- Roost
-- U-turn
+- Dual Wingbeat
+- Bug Bite
 
 === TRAINER_TITLE_DEFENSE_LEAF ===
 Name: Leaf
@@ -12451,9 +12509,31 @@ Class: Pkmn Trainer 1
 Pic: Leaf
 Gender: Female
 Music: Female
-Double Battle: No
+Double Battle: Yes
 AI: Smart Trainer
 Mugshot: Purple
+
+Thundurus-Therian @ Sitrus Berry
+Ability: Volt Absorb
+Level: 85
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Wildbolt Storm
+- Electroweb
+- Grass Knot
+- Focus Blast
+
+Tapu Fini @ Leftovers
+Level: 86
+EVs: 248 HP / 8 Def / 252 SpD
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Ball: Master
+Ability: Telepathy
+Calm Nature
+- Calm Mind
+- Muddy Water
+- Moonblast
+- Ice Beam
 
 Chansey @ Eviolite
 Ability: Natural Cure
@@ -12462,43 +12542,21 @@ EVs: 244 HP / 252 Def / 12 SpA
 Bold Nature
 IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Ball: Cherish
-- Stealth Rock
+- Helping Hand
 - Seismic Toss
-- Protect
-- Wish
+- Icy Wind
+- Soft-Boiled
 
-Volcarona @ Heavy-Duty Boots
+Volcarona @ Charti Berry
 Ability: Flame Body
 Level: 86
 EVs: 248 HP / 104 Def / 68 SpA / 88 Spe
 Timid Nature
 IVs: 0 Atk
-- Quiver Dance
-- Flamethrower
+- Rage Powder
+- Heat Wave
 - Roost
-- Giga Drain
-
-Thundurus-Therian @ Heavy-Duty Boots
-Ability: Volt Absorb
-Level: 85
-EVs: 4 Def / 252 SpA / 252 Spe
-Timid Nature
-- Volt Switch
-- Psychic
-- Grass Knot
-- Focus Blast
-
-Tapu Fini @ Leftovers
-Ability: Misty Surge
-Level: 86
-EVs: 248 HP / 8 Def / 252 SpD
-Timid Nature
-IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-Ball: Master
-- Ice Beam
-- Scald
-- Moonblast
-- Defog
+- Bug Buzz
 
 Dragapult @ Choice Specs
 Ability: Infiltrator
@@ -12518,8 +12576,8 @@ EVs: 252 HP / 180 Def / 76 SpA
 Bold Nature
 Ball: Poke
 - Leech Seed
-- Chloroblast
-- Synthesis
+- Giga Drain
+- Weather Ball
 - Earth Power
 
 === TRAINER_NAMELESS_LEAF ===
@@ -12605,7 +12663,7 @@ Name: Maddie
 Class: Scientist
 Pic: Scientist
 Gender: Male
-Music: Male
+Music: Hg Suspicious 1
 Double Battle: No
 AI: Smart Trainer
 
@@ -13641,55 +13699,63 @@ Music: Hg Boy 1
 Double Battle: Yes
 AI: Smart Trainer
 
-Dragonite @ Yache Berry
-Level: 100
-EVs: 252 Atk / 4 SpD / 252 Spe
-- Ice Punch
-- Fire Punch
-- Earthquake
-- Dragon Dance
-
-Blaziken @ Life Orb
-Ability: Speed Boost
-Level: 100
-EVs: 252 Atk / 4 SpD / 252 Spe
-- Earthquake
-- Flare Blitz
-- Protect
-- Close Combat
-
-Ampharos @ Light Clay
-Level: 100
+Dragonite @ Dragotite
+Ability: Multiscale
+Shiny: Yes
 EVs: 252 HP / 252 SpA / 4 SpD
-- Volt Switch
-- Focus Blast
-- Dragon Pulse
-- Reflect
+Modest Nature
+IVs: 0 Atk
+- Hurricane 
+- Thunder 
+- Draco Meteor 
+- Ice Beam 
 
-Scizor @ Occa Berry
+Clodsire (M) @ Leftovers
+Ability: Water Absorb
+EVs: 252 HP / 4 Atk / 252 SpD
+Careful Nature
+- Rain Dance 
+- Recover 
+- Poison Jab 
+- Earthquake 
+
+Tinkaton @ Air Balloon
+Ability: Mold Breaker
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Gigaton Hammer 
+- Swords Dance 
+- Rock Slide 
+- Play Rough 
+
+Scizor @ Life Orb
 Ability: Technician
-Level: 100
 EVs: 248 HP / 252 Atk / 8 SpD
-- Swords Dance
-- U-Turn
-- Bullet Punch
-- Knock Off
+Adamant Nature
+- Bullet Punch 
+- Swords Dance 
+- Lunge 
+- Knock Off 
 
-Gallade @ Psychite
-Level: 100
-EVs: 252 HP / 252 Atk / 4 SpD
-- Rock Slide
-- Leaf Blade
-- Psycho Cut
-- Trick Room
+Dialga Primal @ Choice Specs
+Ability: Telepathy
+Shiny: Yes
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Roar of Time 
+- Flash Cannon 
+- Thunder 
+- Hyper Beam
 
-Dialga @ Adamant Orb
-Level: 100
-EVs: 252 HP / 252 Atk / 4 SpA
-- Draco Meteor
-- Toxic
-- Earthquake
-- Iron Head
+Blaziken @ Assault Vest
+Ability: Speed Boost
+EVs: 252 HP / 252 Atk / 4 Spe
+Adamant Nature
+- Power-Up Punch 
+- Drain Punch 
+- Flare Blitz 
+- Earthquake 
 
 === TRAINER_CAFE_JUNA ===
 Name: Simpli
@@ -13918,6 +13984,7 @@ Nothing here is an Ultra Beast on purpose - she runs a conservation foundation
 and the whole argument of the scene is that she stopped collecting what she
 should not have.
 */
+
 === TRAINER_LUSAMINE ===
 Name: Lusamine
 Class: Beauty
@@ -14000,6 +14067,7 @@ Daily rematch on the Cherrygrove beach, post-game
 (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.5). The Incineroar is the
 one from Mission 3 on this same beach: the surprise of that scene closes here.
 */
+
 === TRAINER_KUKUI ===
 Name: Kukui
 Class: Expert
@@ -14392,6 +14460,7 @@ the game. It is NOT the Sun/Moon fusion: it is one of the nine the group
 recovered, and SunMoonAltar_Text_LusamineRematchAsk says so out loud so that
 nobody can read it as the fusion the design forbids importing.
 */
+
 === TRAINER_LUSAMINE_ALTAR ===
 Name: Lusamine
 Class: Beauty
@@ -14473,6 +14542,7 @@ Daily rematch on the Cherrygrove beach, post-game
 is the same Vulpix from the Route 30 battle, five encounters and sixty-odd
 levels ago, which is the cheapest and best thing a post-game rematch can do.
 */
+
 === TRAINER_LILLIE_POSTGAME ===
 Name: Lillie
 Class: Lass
@@ -14554,6 +14624,7 @@ Daily rematch in Cianwood, post-game
 TRAINER_GLADION_VICTORY_ROAD and is LAST here: it stopped being the
 demonstration and became the answer.
 */
+
 === TRAINER_GLADION_POSTGAME ===
 Name: Gladion
 Class: Rival
@@ -19735,3 +19806,307 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Soft-Boiled
 - Cosmic Power
 - Stored Power
+
+=== TRAINER_WILL_REMATCH_ALT ===
+Name: Will
+Class: Elite Four
+Pic: Elite Four Will
+Gender: Male
+Music: Dp Elite Four
+Double Battle: Yes
+AI: Smart Trainer
+Mugshot: Purple
+
+Indeedee @ Focus Sash
+Ability: Psychic Surge
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Expanding Force
+- Dazzling Gleam
+- Helping Hand
+- Encore
+
+Delphox @ Life Orb
+Ability: Blaze
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Expanding Force
+- Heat Wave
+- Grass Knot
+- Will-O-Wisp
+
+Espeon @ Choice Specs
+Ability: Magic Bounce
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Expanding Force
+- Dazzling Gleam
+- Shadow Ball
+- Power Gem
+
+Starmie @ Expert Belt
+Ability: Natural Cure
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Scald
+- Ice Beam
+- Thunderbolt
+- Psychic
+
+Gallade @ Scope Lens
+Ability: Sharpness
+Level: 85
+EVs: 4 HP / 252 Atk / 252 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Jolly Nature
+- Sacred Sword
+- Psycho Cut
+- Leaf Blade
+- Night Slash
+
+Alakazam @ Psychite
+Ability: Magic Guard
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Expanding Force
+- Shadow Ball
+- Focus Blast
+- Protect
+
+=== TRAINER_KOGA_REMATCH_ALT ===
+Name: Koga
+Class: Elite Four
+Pic: Elite Four Koga
+Gender: Male
+Music: Dp Elite Four
+Double Battle: Yes
+AI: Smart Trainer
+Mugshot: Pink
+
+Ribombee @ Focus Sash
+Ability: Shield Dust
+Level: 85
+EVs: 252 HP / 4 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Tailwind
+- Pollen Puff
+- Moonblast
+- Struggle Bug
+
+Scizor @ Bugtite
+Ability: Technician
+Level: 85
+EVs: 252 HP / 252 Atk / 4 SpD
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
+- Bullet Punch
+- Bug Bite
+- Close Combat
+- Knock Off
+
+Yanmega @ Life Orb
+Ability: Tinted Lens
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Modest Nature
+- Air Slash
+- Bug Buzz
+- Giga Drain
+- Ancient Power
+
+Volcarona @ Sitrus Berry
+Ability: Flame Body
+Level: 85
+EVs: 252 HP / 252 SpA / 4 SpD
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Modest Nature
+- Heat Wave
+- Bug Buzz
+- Rage Powder
+- Protect
+
+Golisopod @ Mystic Water
+Ability: Emergency Exit
+Level: 85
+EVs: 252 HP / 252 Atk / 4 SpD
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
+- First Impression
+- Liquidation
+- Wide Guard
+- Aqua Jet
+
+Crobat @ Sharp Beak
+Ability: Inner Focus
+Level: 85
+EVs: 4 HP / 252 Atk / 252 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Jolly Nature
+- Tailwind
+- Fly
+- Cross Poison
+- Super Fang
+
+=== TRAINER_BRUNO_REMATCH_ALT ===
+Name: Bruno
+Class: Elite Four
+Pic: Elite Four Bruno
+Gender: Male
+Music: Dp Elite Four
+Double Battle: Yes
+AI: Smart Trainer
+Mugshot: Yellow
+
+Tyranitar @ Sitrus Berry
+Ability: Sand Stream
+Level: 85
+EVs: 252 HP / 252 Atk / 4 SpD
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
+- Rock Slide
+- Crunch
+- Low Kick
+- Protect
+
+Skarmory @ Leftovers
+Ability: Sturdy
+Level: 85
+EVs: 252 HP / 252 Def / 4 SpD
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Impish Nature
+- Tailwind
+- Body Press
+- Iron Defense
+- Roost
+
+Excadrill @ Life Orb
+Ability: Sand Rush
+Level: 85
+EVs: 4 HP / 252 Atk / 252 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Jolly Nature
+- High Horsepower
+- Iron Head
+- Rock Slide
+- Swords Dance
+
+Aggron @ Assault Vest
+Ability: Sturdy
+Level: 85
+EVs: 252 HP / 252 Def / 4 SpD
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Impish Nature
+- Heavy Slam
+- Rock Slide
+- Body Press
+- Fire Punch
+
+Lucario @ Choice Specs
+Ability: Inner Focus
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Modest Nature
+- Aura Sphere
+- Flash Cannon
+- Dark Pulse
+- Vacuum Wave
+
+Steelix @ Steeltite
+Ability: Sturdy
+Level: 85
+EVs: 252 HP / 252 Def / 4 SpD
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Impish Nature
+- Heavy Slam
+- Dig
+- Rock Slide
+- Body Press
+
+=== TRAINER_KAREN_REMATCH_ALT ===
+Name: Karen
+Class: Elite Four
+Pic: Elite Four Karen
+Gender: Female
+Music: Dp Elite Four
+Double Battle: Yes
+AI: Smart Trainer
+Mugshot: Blue
+
+Sableye @ Sitrus Berry
+Ability: Prankster
+Level: 85
+EVs: 252 HP / 4 Def / 252 SpD
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Careful Nature
+- Fake Out
+- Will-O-Wisp
+- Quash
+- Foul Play
+
+Gengar @ Ghostite
+Ability: Cursed Body
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Shadow Ball
+- Sludge Bomb
+- Icy Wind
+- Taunt
+
+Chandelure @ Charcoal
+Ability: Flash Fire
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Modest Nature
+- Heat Wave
+- Hex
+- Energy Ball
+- Protect
+
+Mimikyu @ Life Orb
+Ability: Disguise
+Level: 85
+EVs: 4 HP / 252 Atk / 252 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Jolly Nature
+- Play Rough
+- Shadow Claw
+- Swords Dance
+- Shadow Sneak
+
+Aegislash @ Leftovers
+Ability: Stance Change
+Level: 85
+EVs: 252 HP / 252 SpA / 4 SpD
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+Quiet Nature
+- Shadow Ball
+- Flash Cannon
+- Wide Guard
+- King's Shield
+
+Dragapult @ Choice Specs
+Ability: Infiltrator
+Level: 85
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Dragon Pulse
+- Shadow Ball
+- Flamethrower
+- Thunderbolt

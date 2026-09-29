@@ -17,8 +17,14 @@ order: 1
 
 ## Basics
 
+### Where to download the hack?
+- Hackdex, and it is only available from there, other sources are unofficial and may be out of date.
+
 ### Saves compatible between versions?
 - Always
+
+### Are there any cheats?
+- No, cheats are not supported and they are likely to corrupt your save, don't trust 3rd party sites offering them.
 
 ### Hard mode differences?
 - Gym battles are double battles unless enforced into singles by another setting
@@ -74,6 +80,9 @@ order: 1
 ### Cameron locations?
 - Ruins of Alph, Route 34, Cianwood City, Kitakami Border and Route 28.
 
+### When do the second and third safari zone expansion unlock?
+- The second area unlocks before entering Ice Path, and the third one after exiting Tohjo Falls.
+
 ## Pokémon availability and encounters
 
 ### How do I get the other starters?
@@ -95,7 +104,7 @@ order: 1
 - Pokémon from Hidden Grottos have atleast two perfect IVs and their Hidden Ability. They have 60% chance of containing a Pokémon, 30% of having a generic item and 10% of having a grotto specific item
 
 ### Fossils?
-- Smash rocks in Ruins of Alph.
+- Smash rocks in Ruins of Alph. You can awaken them in the lab nearby.
 
 ### Baby forms?
 - Breed with incenses, see https://bulbapedia.bulbagarden.net/wiki/Baby_Pok%C3%A9mon#List_of_baby_Pok%C3%A9mon for more information.
@@ -154,8 +163,14 @@ order: 1
 ### Raising EVs?
 - EV items such as Power Weight have been greatly buffed, and they are buyable in Goldenrod. Additionally vitamins like Protein are not capped at 100 EVs anymore, and there are EX versions of the items that raise the stats instantly to max.
 
+### Trainer card stars?
+- Hall of Fame entry
+- 80 trophies
+- Dex completion
+- 50 Battle Tower/Factory winstreak
+
 ### Lowering EVs?
-- Goldenrod Dept. Store sells EV reducing berries?
+- Goldenrod Dept. Store sells EV reducing berries
 
 ## Items, money, and Pickup
 

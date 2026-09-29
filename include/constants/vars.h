@@ -383,6 +383,11 @@
 // gift taken, room standing in. Bit layout and every writer in src/nexus.c.
 // Reset to its fresh value when FLAG_DAILY_NEXUS_NEW_DAY is found clear.
 #define VAR_NEXUS_DAILY                                 0x4124
+// Upstream (Eemeliri/soulgold) numbers these 0x411F and 0x4120, which here are
+// VAR_MOM_FURFROU_EXP and VAR_RIFT_MISSIONS_STATE; moved to the next free slots
+// when upstream was merged (28/09/2026).
+#define VAR_FOLLOWER_MEGA_OFF                           0x4125
+#define VAR_SHINY_RATE                                  0x4126
 
 #define ALTAR_STEP_NONE           0  // nothing pending inside the current state
 #define ALTAR_STEP_DUEL_DONE      1  // (13) duel resolved; agreement + test pending (never re-fight)
