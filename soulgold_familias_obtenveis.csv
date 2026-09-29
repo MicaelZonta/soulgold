@@ -6,7 +6,7 @@ Caterpie,1,Sim,Caterpie,Route 30,Land Mons (Lv 3-4)
 Weedle,1,Sim,Weedle,Route 30,Land Mons (Lv 3-4)
 Pidgey,1,Sim,Pidgey,Route 29,Land Mons (Lv 2-3)
 Rattata,1,Sim,Rattata,Route 29,Land Mons (Lv 2-3)
-Spearow,1,Sim,Spearow,Gate Goldenrod City Route35,Named gift (Kenya)
+Spearow,1,Nao,,,Nenhuma fonte: o presente Kenya (givenamedmon 1) nao tem NPC em Gate_GoldenrodCity_Route35
 Ekans,1,Sim,Ekans,Route 32,Land Mons (Lv 7-11)
 Pikachu,1,Sim,Pikachu,Railway Cave,Land Mons (Lv 26-29)
 Sandshrew,1,Sim,Sandshrew,Union Cave 1 F,Land Mons (Lv 9-12)
@@ -104,7 +104,7 @@ Dunsparce,2,Sim,Dunsparce,Dark Cave South Side,Land Mons (Lv 3-6)
 Gligar,2,Sim,Gligar,Route 45,Land Mons (Lv 40-46)
 Snubbull,2,Sim,Snubbull,Route 33,Land Mons (Lv 10-13)
 Qwilfish,2,Sim,Qwilfish,Route 32,Fishing Mons (Lv 20)
-Shuckle,2,Sim,Shuckle,Cianwood House3,Named gift (Shuckie)
+Shuckle,2,Nao,,,Nenhuma fonte: o presente Shuckie (givenamedmon 2) nao tem NPC; CianwoodHouse3 da Gimmighoul
 Heracross,2,Sim,Heracross,Route 48,Land Mons (Lv 30-33)
 Sneasel,2,Sim,Sneasel,Ice Path 1 F,Land Mons (Lv 32-41) [Day]
 Teddiursa,2,Sim,Teddiursa,Dark Cave South Side,Land Mons (Lv 3-6)
@@ -161,7 +161,7 @@ Wailmer,3,Sim,Wailmer,South Johto Sea,Water Mons (Lv 30-35)
 Numel,3,Sim,Numel,Burned Tower 1 F,Land Mons (Lv 18-22)
 Torkoal,3,Sim,Torkoal,Mt Mortar Depths 1,Land Mons (Lv 45-50)
 Spoink,3,Sim,Spoink,Sprout Tower 3 F,Land Mons (Lv 3-6)
-Spinda,3,Sim,Spinda,Route25 Bills House,Gift
+Spinda,3,Nao,,,"Nenhuma fonte: givemon so em Route25_BillsHouse_Test, que nenhum evento chama"
 Trapinch,3,Sim,Trapinch,Vajra Desert West,Land Mons (Lv 26-28)
 Cacnea,3,Sim,Cacnea,Vajra Desert West,Land Mons (Lv 26-29)
 Swablu,3,Sim,Swablu,Route 38,Land Mons (Lv 21-24)

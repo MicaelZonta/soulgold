@@ -23,10 +23,27 @@ LEGENDARY_ENCOUNTER_RE = re.compile(
     r"\s+(SPECIES_[A-Z0-9_]+)\s*,\s*(\d+)\b",
     re.IGNORECASE,
 )
-MASTER_GACHA_ARRAY_RE = re.compile(
-    r"static\s+const\s+u16\s+sGachaMasterSpecies(?:Common|Uncommon|Rare|UltraRare)\[\]\s*=\s*\{(.*?)\};",
+NAMED_GIFT_COMMAND_RE = re.compile(r"\bgivenamedmon\s+(\d+)\b", re.IGNORECASE)
+NAMED_GIFT_CASE_RE = re.compile(
+    r"\bcase\s+(\d+)\s*:[^\n]*\n\s*species\s*=\s*(SPECIES_[A-Z0-9_]+)\s*;\s*\n\s*level\s*=\s*(\d+)\s*;"
+)
+STATIC_ENCOUNTER_RE = re.compile(
+    r"\bsetwildbattle\s+(SPECIES_[A-Z0-9_]+)\s*,\s*(\d+)\b",
+    re.IGNORECASE,
+)
+# A block that sets any of these before its battle is a boss fight, not a source.
+NO_CATCHING_RE = re.compile(r"\bsetflag\s+\w*NO_CATCHING\b")
+GACHA_ARRAY_RE = re.compile(
+    r"static\s+const\s+u16\s+sGacha(Basic|Great|Ultra|Master)Species(Common|Uncommon|Rare|UltraRare)\[\]"
+    r"\s*=\s*\{(.*?)\};",
     re.DOTALL,
 )
+GACHA_RARITY_NAMES = {
+    "Common": "Common",
+    "Uncommon": "Uncommon",
+    "Rare": "Rare",
+    "UltraRare": "Ultra Rare",
+}
 ODD_EGG_ARRAY_RE = re.compile(
     r"static\s+const\s+u16\s+sOddEggSpecies(?:\[[^\]]*\])?\s*=\s*\{(.*?)\};",
     re.DOTALL,
@@ -52,6 +69,7 @@ FOSSIL_REVIVAL_ITEMS = {
     "SPECIES_ARCHEN": "ITEM_PLUME_FOSSIL",
     "SPECIES_TYRUNT": "ITEM_JAW_FOSSIL",
     "SPECIES_AMAURA": "ITEM_SAIL_FOSSIL",
+    "SPECIES_TIRTOUGA": "ITEM_COVER_FOSSIL",
 }
 FOSSIL_REVIVAL_LEVELS = {
     "SPECIES_KABUTO": ((5, "before 4th badge"), (20, "after 4th badge")),
@@ -60,6 +78,22 @@ FOSSIL_LAB_MAP = "MAP_RUINS_OF_ALPH_LAB"
 GAME_CORNER_MAP_NAME = "GoldenrodCity_GameCorner"
 GAME_CORNER_PRIZE_MENU_LABEL = "GoldenrodCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon"
 GAME_CORNER_PRIZE_LEVEL = 15
+
+
+def named_gift_table() -> dict[str, tuple[str, int]]:
+    """givenamedmon N -> (species, level), from ScrCmd_givenamedmon in src/scrcmd.c."""
+    try:
+        text = strip_c_comments(read(REPO_ROOT / "src/scrcmd.c"))
+    except FileNotFoundError:
+        return {}
+    start = text.find("ScrCmd_givenamedmon")
+    if start < 0:
+        return {}
+    body = text[start:text.find("\nbool8 ", start + 1)]
+    return {
+        number: (species, int(level))
+        for number, species, level in NAMED_GIFT_CASE_RE.findall(body)
+    }
 
 
 def species_aliases() -> dict[str, str]:
@@ -233,6 +267,7 @@ def add_gift_species_locations(
         return
 
     aliases = species_aliases()
+    named_gifts = named_gift_table()
     gifts: dict[str, list[SpeciesLocation]] = defaultdict(list)
     for group_name in map_groups.get("group_order") or []:
         for map_name in map_groups.get(group_name) or []:
@@ -266,6 +301,26 @@ def add_gift_species_locations(
                         "name": location_name,
                         "time": "",
                         "method": "Gift Egg" if method.lower() == "giveegg" else "Gift",
+                        "minLevel": level,
+                        "maxLevel": level,
+                        "rate": None,
+                    }
+                    if location not in gifts[species]:
+                        gifts[species].append(location)
+                # Nicknamed gifts (Kenya, Shuckie...): the species and level live
+                # in C, the script only says which one. Both can be kept for good.
+                for command in NAMED_GIFT_COMMAND_RE.finditer(blocks[label]):
+                    if command.group(1) not in named_gifts:
+                        continue
+                    raw_species, level = named_gifts[command.group(1)]
+                    species = aliases.get(raw_species, raw_species)
+                    if species not in by_species:
+                        continue
+                    location = {
+                        "map": map_constant,
+                        "name": display_name,
+                        "time": "",
+                        "method": "Gift (nicknamed)",
                         "minLevel": level,
                         "maxLevel": level,
                         "rate": None,
@@ -330,6 +385,27 @@ def add_scripted_legendary_species_locations(
                     }
                     if location not in legendary_locations[species]:
                         legendary_locations[species].append(location)
+                # setwildbattle is a source only when the block leaves catching on
+                # (boss fights set B_FLAG_NO_CATCHING / FLAG_SYS_NO_CATCHING first).
+                if NO_CATCHING_RE.search(blocks[label]):
+                    continue
+                for command in STATIC_ENCOUNTER_RE.finditer(blocks[label]):
+                    raw_species, raw_level = command.groups()
+                    species = aliases.get(raw_species, raw_species)
+                    if species not in by_species:
+                        continue
+                    level = int(raw_level)
+                    location = {
+                        "map": map_constant,
+                        "name": display_name,
+                        "time": "",
+                        "method": "Static encounter",
+                        "minLevel": level,
+                        "maxLevel": level,
+                        "rate": None,
+                    }
+                    if location not in legendary_locations[species]:
+                        legendary_locations[species].append(location)
 
     for species, scripted_locations in legendary_locations.items():
         locations.setdefault(species, [])
@@ -380,26 +456,27 @@ def add_nexus_fragment_species_locations(
             locations[species].append(location)
 
 
-def add_master_gachapon_species_locations(
+def add_gachapon_species_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
+    """Every species in the four Goldenrod Gachapon machines, by machine and rarity."""
     try:
         text = strip_c_comments(read(GACHA_C))
     except FileNotFoundError:
         return
 
     aliases = species_aliases()
-    for pool in MASTER_GACHA_ARRAY_RE.findall(text):
+    for machine, rarity, pool in GACHA_ARRAY_RE.findall(text):
         for raw_species in re.findall(r"\bSPECIES_[A-Z0-9_]+\b", pool):
             species = aliases.get(raw_species, raw_species)
             if species not in by_species:
                 continue
             location: SpeciesLocation = {
                 "map": "MAP_MAUVILLE_CITY_GAME_CORNER",
-                "name": "Goldenrod Gachapon",
+                "name": f"Goldenrod Gachapon ({machine} machine)",
                 "time": "",
-                "method": "Gachapon",
+                "method": f"Gachapon ({GACHA_RARITY_NAMES[rarity]})",
                 "minLevel": None,
                 "maxLevel": None,
                 "rate": None,
