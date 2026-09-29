@@ -24,16 +24,21 @@ Hoje muita coisa só vem dessas fontes. A lista viva sai de:
 python3 dev_scripts/fontes_legitimas.py
 ```
 
+Contam como legítimos, além do óbvio: **ser Pokémon inicial** (todas as
+gerações — a fonte deles é serem iniciais) e **roamer** (Raikou, Entei e
+Suicune vagam por Johto desde a Burned Tower, nível 40; os covis de Hoenn deles
+estão fora da ROM).
+
 Retrato de 29/09/2026 (famílias, pela forma de nome mais curto):
 
 | Só vem de | Quantas | Quem |
 |---|---|---|
-| Nexus | 52 | UBs (Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Stakataka, Blacephalon), Raikou/Entei/Suicune (os encontros deles estão em mapas fora da ROM), Celebi, Heatran, Regieleki, Regidrago, Reshiram, Zekrom, Kyurem, Keldeo, Xerneas, Yveltal, Zygarde, Volcanion, Zacian, Zamazenta, Eternatus, Calyrex/Glastrier/Spectrier, Deoxys, Chi-Yu, Ting-Lu e Wo-Chien, Okidogi e Munkidori (Loyal Three), Pecharunt, Terapagos — e as formas por item que só o Nexus dá (Drives do Genesect, DNA Splicers, Reins of Unity, Zygarde Cube) |
-| Gachapon | 35 | iniciais de todas as gerações (os de Johto: um vem do Elm — o parser não vê), Togepi, Cleffa, Sentret, Lotad, Seedot, Remoraid, Spinda, Castform, Relicanth, Clamperl/Huntail, Pichu Spiky-eared, Gimmighoul Roaming |
+| Nexus | 49 | UBs (Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Stakataka, Blacephalon), Celebi, Heatran, Regieleki, Regidrago, Reshiram, Zekrom, Kyurem, Keldeo, Xerneas, Yveltal, Zygarde, Volcanion, Zacian, Zamazenta, Eternatus, Calyrex/Glastrier/Spectrier, Deoxys, Chi-Yu, Ting-Lu e Wo-Chien, Okidogi e Munkidori (Loyal Three), Pecharunt, Terapagos — e as formas por item que só o Nexus dá (Drives do Genesect, DNA Splicers, Reins of Unity, Zygarde Cube) |
+| Gachapon | 12 | Togepi, Cleffa, Sentret, Lotad, Seedot, Remoraid, Spinda, Castform, Relicanth, Clamperl/Huntail, Pichu Spiky-eared, Gimmighoul Roaming |
 | Battle Cafe (e Nexus) | 18 | Tapus, aves de Galar, Koraidon, Miraidon, o quarteto das Forças da Natureza (Incarnate e Therian), Diancie |
 | Troféus (Route 40) | 5 | Floette Eternal, Greninja (Battle Bond), Magearna Original, Poipole, Zarude |
 | Game Corner + Gachapon | 1 | Porygon |
-| **Nada** | — | **Necrozma Dusk Mane / Dawn Wings** (N-Solarizer/N-Lunarizer não existem no jogo), **Keldeo Resolute** (depende de aprender Secret Sword) — o resto da lista "nada" são formas só de batalha |
+| **Nada** | — | **Keldeo Resolute** (depende de aprender Secret Sword) — o resto da lista "nada" são formas só de batalha |
 
 Ao criar evento, rota ou NPC novo, olhe esta tabela: é o estoque de espécies
 esperando um lugar.
@@ -56,6 +61,7 @@ esperando um lugar.
 | Drives (4) | Genesect Douse/Shock/Burn/Chill | Nexus, boss Genesect: um Drive que falta, 1 por dia | `Nexus_EventScript_Genesect_AfterBoss` |
 | DNA Splicers | Kyurem Black/White | Nexus, boss Kyurem (**provisório**) | `Nexus_EventScript_Kyurem_AfterBoss` |
 | Zygarde Cube | Zygarde 10% / Power Construct | Nexus, boss Zygarde, uma vez | `Nexus_EventScript_Zygarde_AfterBoss` |
+| N-Solarizer / N-Lunarizer | Necrozma Dusk Mane / Dawn Wings | revanche diária da Lusamine no Altar (seg/qua/sáb): 1ª vitória dá o Solarizer, a seguinte o Lunarizer, cada um com fala própria | `SunMoonAltar_EventScript_LusamineFusionItem` |
 | Reins of Unity | Calyrex Ice/Shadow Rider (fundindo com Glastrier/Spectrier, que também vêm do Nexus) | Nexus, boss Calyrex, enquanto não tiver | `Nexus_EventScript_Calyrex_AfterBoss` |
 | Meteorite | Deoxys Attack/Defense/Speed | **fora da ROM** (Mt. Chimney). As Formes vêm do fragmento do Nexus, sorteadas | `sDeoxysFragmentForms`, `src/nexus.c` |
 | Nectars (4) | Oricorio Baile/Pom-Pom/Pa'u/Sensu | loja de Olivine City | `OlivineCity/scripts.inc` |

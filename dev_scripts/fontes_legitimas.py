@@ -11,9 +11,16 @@ Regenere o site antes para a lista refletir o jogo atual:
     ~/.venvs/soulgold-docs/bin/python tools/soulgold_docs/build_docs.py
     python3 dev_scripts/fontes_legitimas.py
 
-Limitacao conhecida: o parser do site nao le a escolha do inicial no Elm, entao
-os iniciais de Johto aparecem como "so Gachapon" (um deles tem fonte real).
+Iniciais de todas as geracoes contam como legitimos: ser Pokemon inicial E a
+fonte deles (decisao do autor, 29/09/2026). Ficam fora da lista.
 """
+STARTERS = {
+    "bulbasaur", "charmander", "squirtle", "chikorita", "cyndaquil", "totodile",
+    "treecko", "torchic", "mudkip", "turtwig", "chimchar", "piplup",
+    "snivy", "tepig", "oshawott", "chespin", "fennekin", "froakie",
+    "rowlet", "litten", "popplio", "grookey", "scorbunny", "sobble",
+    "sprigatito", "fuecoco", "quaxly",
+}
 import json,glob,os,collections,re
 det={}; const2slug={}
 sp=json.load(open('docs/data/species.json'))
@@ -51,7 +58,7 @@ for root,members in fam.items():
     for m in members:
         for l in det[m]['locations']:
             c=cat(l); cats[c].add(l['name'].split(' (')[0] if c=='meta' else l['method'])
-    if cats['legit']: continue
+    if cats['legit'] or STARTERS & set(members): continue
     name=sorted(members,key=len)[0]
     if cats['meta']: res[' + '.join(sorted(cats['meta']))].append(name)
     elif not cats['form']: res['NENHUMA'].append(name)

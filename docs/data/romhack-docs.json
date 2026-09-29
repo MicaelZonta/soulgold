@@ -84050,6 +84050,15 @@
           "minLevel": 1,
           "maxLevel": 1,
           "rate": null
+        },
+        {
+          "map": "",
+          "name": "Roaming (after Burned Tower B1F)",
+          "time": "",
+          "method": "Roaming",
+          "minLevel": 40,
+          "maxLevel": 40,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -84257,6 +84266,15 @@
           "method": "Nexus fragment",
           "minLevel": 1,
           "maxLevel": 1,
+          "rate": null
+        },
+        {
+          "map": "",
+          "name": "Roaming (after Burned Tower B1F)",
+          "time": "",
+          "method": "Roaming",
+          "minLevel": 40,
+          "maxLevel": 40,
           "rate": null
         }
       ],
@@ -84469,6 +84487,15 @@
           "method": "Nexus fragment",
           "minLevel": 1,
           "maxLevel": 1,
+          "rate": null
+        },
+        {
+          "map": "",
+          "name": "Roaming (after Burned Tower B1F)",
+          "time": "",
+          "method": "Roaming",
+          "minLevel": 40,
+          "maxLevel": 40,
           "rate": null
         }
       ],
@@ -85730,8 +85757,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -85739,8 +85766,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -257191,7 +257218,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_SUN_MOON_ALTAR",
+          "name": "Sun & Moon Altar",
+          "time": "",
+          "method": "Fuse with N-Solarizer",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "necrozma-dusk-mane"
@@ -257390,7 +257427,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_SUN_MOON_ALTAR",
+          "name": "Sun & Moon Altar",
+          "time": "",
+          "method": "Fuse with N-Lunarizer",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "necrozma-dawn-wings"

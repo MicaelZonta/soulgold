@@ -1777,9 +1777,38 @@ SunMoonAltar_EventScript_LusaminePost::
 SunMoonAltar_EventScript_LusamineRematchToday::
 	trainerbattle_no_intro TRAINER_LUSAMINE, SunMoonAltar_Text_LusamineRematchBeaten
 SunMoonAltar_EventScript_LusamineRematchAfter::
+	call SunMoonAltar_EventScript_LusamineFusionItem
 	msgbox SunMoonAltar_Text_LusamineRematchAfter, MSGBOX_DEFAULT
 	release
 	end
+
+@ Endgame gifts, one per win: the N-Solarizer first, then the N-Lunarizer -
+@ the only source of Necrozma's Dusk Mane / Dawn Wings fusions
+@ (.claude/evolucoes.md). The Bag is the whole state: a full pocket skips the
+@ gift and the next win offers it again.
+SunMoonAltar_EventScript_LusamineFusionItem::
+	checkitem ITEM_N_SOLARIZER
+	goto_if_eq VAR_RESULT, FALSE, SunMoonAltar_EventScript_LusamineSolarizer
+	checkitem ITEM_N_LUNARIZER
+	goto_if_eq VAR_RESULT, FALSE, SunMoonAltar_EventScript_LusamineLunarizer
+	return
+
+SunMoonAltar_EventScript_LusamineSolarizer::
+	checkitemspace ITEM_N_SOLARIZER, 1
+	goto_if_eq VAR_RESULT, FALSE, SunMoonAltar_EventScript_LusamineFusionItemEnd
+	msgbox SunMoonAltar_Text_LusamineSolarizer, MSGBOX_DEFAULT
+	giveitem ITEM_N_SOLARIZER
+	msgbox SunMoonAltar_Text_LusamineSolarizerAfter, MSGBOX_DEFAULT
+	return
+
+SunMoonAltar_EventScript_LusamineLunarizer::
+	checkitemspace ITEM_N_LUNARIZER, 1
+	goto_if_eq VAR_RESULT, FALSE, SunMoonAltar_EventScript_LusamineFusionItemEnd
+	msgbox SunMoonAltar_Text_LusamineLunarizer, MSGBOX_DEFAULT
+	giveitem ITEM_N_LUNARIZER
+	msgbox SunMoonAltar_Text_LusamineLunarizerAfter, MSGBOX_DEFAULT
+SunMoonAltar_EventScript_LusamineFusionItemEnd::
+	return
 
 SunMoonAltar_EventScript_LusamineRematchNo::
 	msgbox SunMoonAltar_Text_LusamineRematchNo, MSGBOX_DEFAULT
@@ -2219,6 +2248,30 @@ SunMoonAltar_Text_LusamineRematchBeaten:
 SunMoonAltar_Text_LusamineRematchAfter:
 	.string "{SPEAKER NAME_LUSAMINE}Thank you for the battle.\n"
 	.string "We'll be ready for the next one.$"
+
+SunMoonAltar_Text_LusamineSolarizer:
+	.string "{SPEAKER NAME_LUSAMINE}Before you go. The Foundation built\n"
+	.string "this to hold Necrozma to the sun.\p"
+	.string "I kept it under glass for years, the\n"
+	.string "way I kept everything beautiful.\p"
+	.string "Glass is not care. Take it.$"
+
+SunMoonAltar_Text_LusamineSolarizerAfter:
+	.string "{SPEAKER NAME_LUSAMINE}If Necrozma ever wants to wear the\n"
+	.string "sun again, let it be its choice.\p"
+	.string "And yours. Not mine.$"
+
+SunMoonAltar_Text_LusamineLunarizer:
+	.string "{SPEAKER NAME_LUSAMINE}Its twin. The moon half.\p"
+	.string "I had a whole speech about why I\n"
+	.string "had earned the right to keep one.\p"
+	.string "It was a very good speech. I don't\n"
+	.string "believe a word of it anymore.$"
+
+SunMoonAltar_Text_LusamineLunarizerAfter:
+	.string "{SPEAKER NAME_LUSAMINE}There. Sun and moon, both out of my\n"
+	.string "hands.\p"
+	.string "It feels lighter than I expected.$"
 
 SunMoonAltar_Text_LusamineDoneToday:
 	.string "{SPEAKER NAME_LUSAMINE}That's enough for today.\n"

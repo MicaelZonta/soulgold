@@ -353,3 +353,56 @@ def add_nexus_random_fragment_form_locations(
                 "maxLevel": 1,
                 "rate": None,
             })
+
+
+# ---------------------------------------------------------------------------
+# Roaming Pokemon: InitRoamer (src/roamer.c) lets loose every species of
+# sLegendaryBeastSpecies at the level of its TryAddRoamer call. Shown only when
+# a reachable script calls it (Burned Tower B1F, Hall of Fame).
+# ---------------------------------------------------------------------------
+ROAMER_POOL_RE = re.compile(r"sLegendaryBeastSpecies\[\]\s*=\s*\{(.*?)\};", re.DOTALL)
+ROAMER_LEVEL_RE = re.compile(r"TryAddRoamer\(\s*sLegendaryBeastSpecies\[i\]\s*,\s*(\d+)\s*\)")
+
+
+def add_roamer_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    try:
+        text = strip_c_comments(read(REPO_ROOT / "src/roamer.c"))
+        map_groups = json.loads(read(MAP_GROUPS_JSON))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return
+    pool = ROAMER_POOL_RE.search(text)
+    level = ROAMER_LEVEL_RE.search(text)
+    if not pool:
+        return
+    starters: list[str] = []
+    for group_name in map_groups.get("group_order") or []:
+        for map_name in map_groups.get(group_name) or []:
+            if is_docs_excluded_map(map_name, group_name):
+                continue
+            map_dir = REPO_ROOT / "data" / "maps" / map_name
+            try:
+                map_data = json.loads(read(map_dir / "map.json"))
+                blocks = script_blocks(read(map_dir / "scripts.inc"))
+            except (FileNotFoundError, json.JSONDecodeError):
+                continue
+            if any(re.search(r"\bspecial\s+InitRoamer\b", blocks[label])
+                   for label in reachable_script_labels(map_data, blocks)):
+                starters.append(map_display_name(map_data, map_name))
+    if not starters:
+        return
+    lvl = int(level.group(1)) if level else None
+    for species in re.findall(r"\bSPECIES_[A-Z0-9_]+\b", pool.group(1)):
+        if species not in by_species:
+            continue
+        _add_location(locations, species, {
+            "map": "",
+            "name": "Roaming (after " + starters[0] + ")",
+            "time": "",
+            "method": "Roaming",
+            "minLevel": lvl,
+            "maxLevel": lvl,
+            "rate": None,
+        })
