@@ -17,7 +17,7 @@ confira que a forma não voltou a aparecer "sem fonte".
 | **Gimmighoul Roaming** | Gachapon Great, Rare | "for now" — pode ganhar fonte própria |
 | **Pichu Spiky-eared** | Gachapon Basic, Ultra Rare | — |
 | **Reins of Unity** (Calyrex Ice/Shadow Rider) | **nenhuma** — as duas Riders não são obteníveis | decidir |
-| **Gigantatite** (a "Mega" das Gmax de 21 espécies: Venusaur, Charizard, Blastoise, Pikachu, Meowth, Gengar, Kingler, Eevee, Garbodor, Melmetal, Orbeetle, Drednaw, Coalossal, Flapple, Appletun, Hatterene, Grimmsnarl, Alcremie, Copperajah, Duraludon, Urshifu Single Strike) | Elm entrega junto com a Bondstone (`NewBarkTown_Lab_GiveStarterMega`, depois do Mega Ring). Save que já passou dessa cena não recebe | **repensar no futuro** |
+| **Gigantatite** (a "Mega" das Gmax de 21 espécies: Venusaur, Charizard, Blastoise, Pikachu, Meowth, Gengar, Kingler, Eevee, Garbodor, Melmetal, Orbeetle, Drednaw, Coalossal, Flapple, Appletun, Hatterene, Grimmsnarl, Alcremie, Copperajah, Duraludon, Urshifu Single Strike) | Elm entrega junto com a Bondstone (`NewBarkTown_Lab_GiveStarterMega`, depois do Mega Ring). Save que já passou dessa cena não recebe | **repensar no futuro**: ideia do autor (29/09/2026) é uma **GMAX Adventure com o Leon**, provavelmente a fonte definitiva da Gigantatite |
 
 ## Itens de forma
 
