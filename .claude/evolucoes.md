@@ -8,6 +8,36 @@ Atualizado em 28/09/2026. Ao mudar uma fonte, mude aqui, rode o site
 (`~/.venvs/soulgold-docs/bin/python tools/soulgold_docs/build_docs.py`) e
 confira que a forma não voltou a aparecer "sem fonte".
 
+## Princípio: toda espécie precisa de uma fonte legítima no mundo
+
+Decisão do autor (29/09/2026): **todo Pokémon — e toda forma — deve ter uma
+fonte "de verdade"** no mundo do jogo: encontro selvagem, evento de história,
+presente de NPC, troca, fóssil, loja comum. Fontes de **sistema** não bastam
+sozinhas: **Nexus**, **Gachapon**, **troféus** (Route 40), **Battle Cafe**,
+**Game Corner**, **Odd Egg** e afins. Elas podem continuar existindo, mas
+como fonte extra, nunca a única.
+
+Hoje muita coisa só vem dessas fontes. A lista viva sai de:
+
+```bash
+~/.venvs/soulgold-docs/bin/python tools/soulgold_docs/build_docs.py
+python3 dev_scripts/fontes_legitimas.py
+```
+
+Retrato de 29/09/2026 (famílias, pela forma de nome mais curto):
+
+| Só vem de | Quantas | Quem |
+|---|---|---|
+| Nexus | 52 | UBs (Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Stakataka, Blacephalon), Raikou/Entei/Suicune (os encontros deles estão em mapas fora da ROM), Celebi, Heatran, Regieleki, Regidrago, Reshiram, Zekrom, Kyurem, Keldeo, Xerneas, Yveltal, Zygarde, Volcanion, Zacian, Zamazenta, Eternatus, Calyrex/Glastrier/Spectrier, Deoxys, os Tesouros da Ruína, Ogerpon-trio (Okidogi/Munkidori), Pecharunt, Terapagos — e as formas por item que só o Nexus dá (Drives do Genesect, DNA Splicers, Reins of Unity, Zygarde Cube) |
+| Gachapon | 35 | iniciais de todas as gerações (os de Johto: um vem do Elm — o parser não vê), Togepi, Cleffa, Sentret, Lotad, Seedot, Remoraid, Spinda, Castform, Relicanth, Clamperl/Huntail, Pichu Spiky-eared, Gimmighoul Roaming |
+| Battle Cafe (e Nexus) | 18 | Tapus, aves de Galar, Koraidon, Miraidon, o quarteto das Forças da Natureza (Incarnate e Therian), Diancie |
+| Troféus (Route 40) | 5 | Floette Eternal, Greninja (Battle Bond), Magearna Original, Poipole, Zarude |
+| Game Corner + Gachapon | 1 | Porygon |
+| **Nada** | — | **Necrozma Dusk Mane / Dawn Wings** (N-Solarizer/N-Lunarizer não existem no jogo), **Keldeo Resolute** (depende de aprender Secret Sword) — o resto da lista "nada" são formas só de batalha |
+
+Ao criar evento, rota ou NPC novo, olhe esta tabela: é o estoque de espécies
+esperando um lugar.
+
 ## Pendências do autor (fonte provisória)
 
 | O quê | Fonte hoje | O que o autor quer |
