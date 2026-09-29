@@ -25,7 +25,8 @@ Como a arte chega:
   `[Image: source: ...]`) e dá para converter direto.
 - **Link:** DeviantArt (`images-wixmp-*.wixmp.com`), Showdown e Bulbapedia são
   **bloqueados** pela rede da nuvem. Peça o arquivo no chat ou em
-  `.filetransfer/` (commit + push na branch).
+  `.filetransfer/` (commit + push na branch); arte de treinador vai para
+  `.filetransfer/.trainers/<Nome>/` (formato abaixo).
 
 ## Regra do autor: várias opções de tamanho, com comparação, antes de registrar
 
@@ -37,11 +38,30 @@ só então grave o PNG do jogo:
 
 ```bash
 PY=/mnt/c/Users/User/AppData/Local/Programs/Python/Python310/python.exe   # tem PIL
-T=$(wslpath -w dev_scripts/sprites/propostas_overworld.py)
-$PY "$T" propostas <Nome>            # .filetransfer/<Nome>/<Nome> - overworld WxH (quadro 32x32).png
-                                     #   + "<Nome> - overworld propostas comparadas.png"
-$PY "$T" final <Nome> <largura> "$(wslpath -w graphics/object_events/pics/people/special/<nome>.png)"
+$PY dev_scripts/sprites/propostas_overworld.py propostas <Nome>   # -> Sprite - comparacao no jogo.png
+$PY dev_scripts/sprites/trainer_na_batalha.py <Nome>              # -> Trainer - comparacao no jogo.png
+$PY dev_scripts/sprites/propostas_overworld.py final <Nome> <largura> "$(wslpath -w graphics/object_events/pics/people/special/<nome>.png)"
 ```
+
+### Pasta de cada personagem: `.filetransfer/.trainers/<Nome>/`
+
+Toda arte de treinador fica neste formato (a Anabel foi o modelo):
+
+| Arquivo | O que é |
+|---|---|
+| `Sprite - AUTOR.png` | folha de overworld de origem (recortada se vinha junto com o trainer) |
+| `Trainer - AUTOR.png` | arte de batalha de origem |
+| `Sprite - comparacao no jogo.png` | uma linha por largura do boneco, com o sprite de hoje e o jogador ao lado |
+| `Trainer - comparacao no jogo.png` | tela de batalha com o trainer de hoje, o 64x64 e o 80x80 |
+| `outras/` | folha completa, versões antigas, alternativas recusadas |
+
+O crédito vai **sempre** no nome (`Sprite - AUTOR`, `Trainer - AUTOR`); autor
+não sabido fica `desconhecido` até o autor do hack dizer. Personagem novo:
+crie a pasta nesse formato, some uma entrada em `CHARS`
+(`propostas_overworld.py`) e em `TRAINERS` (`trainer_na_batalha.py`) e rode os
+dois. Folha com bonecos encostados ou com linhas de grade: `grade=True`
+(recorta pela célula); grade irregular: `xs`/`ys`; folha FRLG de 7 quadros:
+`FRLG7` (espelha o passo de baixo/cima).
 
 Cada personagem é uma entrada em `CHARS` no script (arquivo, grade, células
 na ordem do jogo, crédito). Se a folha tem o lado direito desenhado, sai com
@@ -104,8 +124,9 @@ ROM. Remeça com `python3 $S rom --log <log do make>`.
 
 ## Crédito
 
-Registre o autor da arte (como `Beliot419`, `Derlo`, `Wolfang62` nos nomes
-dos arquivos em `.filetransfer/`). Se não souber, pergunte antes de fechar.
+Registre o autor da arte no nome do arquivo, sempre como `Sprite - AUTOR` e
+`Trainer - AUTOR` em `.filetransfer/.trainers/<Nome>/` (regra do autor,
+28/09/2026). Se não souber, use `desconhecido` e pergunte antes de fechar.
 
 ## Checklist
 

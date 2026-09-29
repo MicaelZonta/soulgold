@@ -8,8 +8,8 @@ px de largura, ate o maximo que a arte permite sem ampliar e sem passar de
 do sprite atual; o autor escolhe o tamanho; so entao `final` grava o PNG.
 
     propostas_overworld.py propostas [Nome ...]
-        -> .filetransfer/<Nome>/<Nome> - overworld WxH (quadro 32x32).png
-        -> .filetransfer/<Nome>/<Nome> - overworld propostas comparadas.png
+        -> .filetransfer/.trainers/<Nome>/Sprite - comparacao no jogo.png
+           (uma linha por largura; a esquerda o sprite de hoje e o jogador)
     propostas_overworld.py final <Nome> <largura> <saida.png> [--quadro 16]
         -> folha do jogo 32x32 (ou 16x32 com --quadro 16; 9 quadros, ou 12 se
            a arte tem o lado direito)
@@ -29,38 +29,99 @@ sys.path.insert(0, AQUI)
 import sprite_gba as G  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(AQUI))
-FT = os.path.join(ROOT, '.filetransfer')
+FT = os.path.join(ROOT, '.filetransfer', '.trainers')
 
 # Ordem do jogo: parado baixo, parado cima, parado esq, 2x baixo, 2x cima, 2x esq
 # e, se a arte tiver, parado dir + 2x dir (sAnimTable_StandardAsym, 12 quadros).
 # Celulas sao (linha, coluna) da grade da folha de origem.
 RPG = [(0, 0), (3, 0), (1, 0), (0, 1), (0, 3), (3, 1), (3, 3), (1, 1), (1, 3), (2, 0), (2, 1), (2, 3)]
 L3 = [(1, 0), (0, 0), (2, 0), (1, 1), (1, 2), (0, 1), (0, 2), (2, 1), (2, 2), (3, 0), (3, 1), (3, 2)]
+PLAT = [(0, 0), (1, 0), (2, 0), (5, 0), (6, 0), (3, 0), (4, 0), (7, 0), (8, 0)]  # tira vertical Platinum/HGSS
+# linhas = direcao (baixo, cima, esq, dir), colunas = parado, passo, parado, passo
+BCED = [(0, 0), (1, 0), (2, 0), (0, 1), (0, 3), (1, 1), (1, 3), (2, 1), (2, 3), (3, 0), (3, 1), (3, 3)]
+FILA = [(0, i) for i in range(12)]  # ja na ordem do jogo, numa linha so
+# 7 quadros (FRLG): passo de baixo e de cima espelhado ('m') para fazer o segundo passo
+FRLG7 = [(0, 0), (0, 1), (0, 2), (0, 3), (0, 3, 'm'), (0, 4), (0, 4, 'm'), (0, 5), (0, 6)]
 OW = 'graphics/object_events/pics/people/'
+SP = OW + 'special/'
+# Cada personagem: f = 'Pasta/Sprite - AUTOR.*' em .filetransfer/.trainers; grade em pixels nativos
+# (depois de desfazer k); frames = celulas (linha, coluna) na ordem do jogo.
 CHARS = {
-    'Looker': dict(f='Looker/Sprite - Vergolophus.png', k=1, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
-                   cred='Vergolophus', atual=OW + 'special/looker.png'),
-    'Anabel': dict(f='Anabel/Trainer- Vergolophus.png', k=1, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
+    'Agatha': dict(f='Agatha/Sprite - RegentOfRaios.jpg', k=2, jpg=True, cell=(34, 36), x0=0, y0=0, px=34, py=36, frames=RPG,
+                   cred='RegentOfRaios'),
+    'Alder': dict(f='Alder/Sprite - aveontrainer.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, cred='aveontrainer'),
+    'Anabel': dict(f='Anabel/Sprite - Vergolophus.png', k=1, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
                    cred='Vergolophus', atual=OW + 'frontier_brains/anabel.png'),
-    'Kukui': dict(f='Kukui/Sprite - Wolfgang62.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
-                  cred='Wolfgang62', atual=OW + 'special/kukui.png'),
-    'Lusamine': dict(f='Lusamine/Lusamine Sprite Diego WT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
-                     cred='DiegoWT', atual=OW + 'special/lusamine.png'),
-    'Lillie': dict(f='Lillie/Sprite.png', k=2, crop=(89, 1, 251, 249), cell=(26, 30), x0=0, y0=0, px=27, py=31,
-                   frames=L3, bgs=[(153, 87, 53)], cred='Zender1752', atual=OW + 'special/lillie.png'),
-    'Gladion': dict(f='Gladion/Gladion - Sprite e Trainer - Derlo.png', k=1, crop=(0, 0, 100, 200), cell=(33, 50), x0=0,
-                    ys=[14, 80, 144], px=33, frames=[(0, 0), (1, 0), (2, 0), (0, 1), (0, 2), (1, 1), (1, 2), (2, 1), (2, 2)],
-                    cred='Derlo', atual=OW + 'special/gladion.png'),
-    'Cynthia': dict(f='Cynthia/Sprite.png', k=1, cell=(27, 32), x0=0, y0=0, px=27, py=32,
-                    frames=[(0, 0), (1, 0), (2, 0), (5, 0), (6, 0), (3, 0), (4, 0), (7, 0), (8, 0)], cred='oficial (Platinum)'),
-    'Brendan': dict(f='Brendan/hyo-oppa  - Sprite e Trainer.png', k=1, cell=(25, 33), x0=7, ys=[0, 33, 64, 97], px=25,
-                    frames=[(0, 1), (1, 1), (2, 1), (0, 0), (0, 2), (1, 0), (1, 2), (2, 0), (2, 2), (3, 1), (3, 0), (3, 2)],
-                    cred='hyo-oppa'),
-    'Elesa': dict(f='Elesa/Elesa - Sprite - RHcks.png', k=1, crop=(1, 159, 145, 183), cell=(16, 24), x0=0, y0=0, px=16,
-                  py=24, grade=True, frames=[(0, i) for i in range(9)], cred='RHcks', atual=OW + 'special/elesa.png'),
-    'Blue': dict(f='Blue/Sprite e Trainer chrisx698.jpg', k=1, jpg=True, cell=(24, 35), x0=0, ys=[0, 35, 70, 104], px=24.5,
+    'Ash': dict(f='Ash/Sprite - RichardPT e PKMNTrainerSpriterC.png', k=2, cell=(15, 22), x0=0, y0=1, px=15.2, py=22.9, grade=True,
+                frames=RPG, cred='RichardPT e PKMNTrainerSpriterC'),
+    'Barry': dict(f='Barry/Sprite - redblueyellow (rip).png', k=1, cell=(34, 34), x0=0, y0=0, px=34, py=34, frames=BCED,
+                  cred='redblueyellow (rip)'),
+    'Blue': dict(f='Blue/Sprite - chrisx698.png', k=1, jpg=True, cell=(24, 35), x0=0, ys=[0, 35, 70, 104], px=24.5,
                  frames=[(0, 0), (1, 0), (3, 0), (0, 1), (0, 2), (1, 1), (1, 2), (3, 1), (3, 2), (2, 0), (2, 1), (2, 2)],
                  cred='chrisx698', atual=OW + 'gym_leaders/blue.png'),
+    'Brendan': dict(f='Brendan/Sprite - hyo-oppa.png', k=1, cell=(25, 33), x0=7, ys=[0, 33, 64, 97], px=25,
+                    frames=[(0, 1), (1, 1), (2, 1), (0, 0), (0, 2), (1, 0), (1, 2), (2, 0), (2, 2), (3, 1), (3, 0), (3, 2)],
+                    cred='hyo-oppa', atual=SP + 'brendan_hoenn.png'),
+    'Bruno': dict(f='Bruno/Sprite - desconhecido.png', k=1, cell=(30, 31), x0=0, y0=1, px=30, py=32,
+                  frames=[(1, 2), (0, 0), (1, 0), (2, 2), (3, 2), (0, 2), (3, 1), (2, 0), (3, 0), (0, 1), (1, 1), (2, 1)],
+                  cred='desconhecido', atual=OW + 'elite_four/bruno.png'),
+    'Byron': dict(f='Byron/Sprite - oficial Platinum.png', k=1, cell=(27, 32), x0=0, y0=0, px=27, py=32, frames=PLAT,
+                  cred='oficial (Platinum)', atual=SP + 'byron.png'),
+    'Cheren': dict(f='Cheren/Sprite - aveontrainer.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, cred='aveontrainer'),
+    'Colress': dict(f='Colress/Sprite - Pizza Sun.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
+                    cred='Pizza Sun', atual=SP + 'colress.png'),
+    'Cynthia': dict(f='Cynthia/Sprite - oficial Platinum.png', k=1, cell=(27, 32), x0=0, y0=0, px=27, py=32, frames=PLAT,
+                    cred='oficial (Platinum)', atual=SP + 'cynthia.png'),
+    'Cyrus': dict(f='Cyrus/Sprite - RHcks.png', k=1, jpg=True, cell=(16, 34), x0=2, y0=1, px=16.2, py=34, frames=FILA[:9],
+                  cred='RHcks'),
+    'Diantha': dict(f='Diantha/Sprite - Lolw3e932.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, cred='Lolw3e932'),
+    'Elesa': dict(f='Elesa/Sprite - desconhecido.png', k=1, cell=(30, 31), x0=0, y0=0, px=32, py=32, frames=L3,
+                  cred='desconhecido', atual=SP + 'elesa.png'),
+    'Fantina': dict(f='Fantina/Sprite - oficial Platinum.png', k=1, cell=(27, 32), x0=0, y0=0, px=27, py=32, frames=PLAT,
+                    cred='oficial (Platinum)', atual=SP + 'fantina.png'),
+    'Gardenia': dict(f='Gardenia/Sprite - oficial Platinum.png', k=1, cell=(27, 32), x0=0, y0=0, px=27, py=32, frames=PLAT,
+                     cred='oficial (Platinum)'),
+    'Gladion': dict(f='Gladion/Sprite - Derlo.png', k=1, crop=(0, 0, 100, 200), cell=(33, 50), x0=0,
+                    ys=[14, 80, 144], px=33, frames=[(0, 0), (1, 0), (2, 0), (0, 1), (0, 2), (1, 1), (1, 2), (2, 1), (2, 2)],
+                    cred='Derlo', atual=SP + 'gladion.png'),
+    'Guzma': dict(f='Guzma/Sprite - PurpleZafree.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
+                  cred='PurpleZafree', atual=SP + 'guzma.png'),
+    'Hau': dict(f='Hau/Sprite - Wergan.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='Wergan'),
+    'Hilda': dict(f='Hilda/Sprite - Redboy265.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='Redboy265'),
+    'Jessie': dict(pasta='Jessie e James', f='Jessie e James/Sprite - FallenSoldier.png', k=1, cell=(17, 24), x0=1, y0=2,
+                   px=17.3, py=24, frames=FRLG7, cred='FallenSoldier'),
+    'James': dict(pasta='Jessie e James', f='Jessie e James/Sprite - FallenSoldier.png', k=1, cell=(15, 24), x0=7, y0=36,
+                  px=15.3, py=24, frames=FRLG7, cred='FallenSoldier'),
+    'Kukui': dict(f='Kukui/Sprite - Wolfgang62.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
+                  cred='Wolfgang62', atual=SP + 'kukui.png'),
+    'Leon': dict(f='Leon/Sprite - Wolfang62.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='Wolfang62'),
+    'Lillie': dict(f='Lillie/Sprite - Zender1752.png', k=2, crop=(89, 1, 251, 249), cell=(26, 30), x0=0, y0=0, px=27, py=31,
+                   frames=L3, bgs=[(153, 87, 53)], cred='Zender1752', atual=SP + 'lillie.png'),
+    'Looker': dict(f='Looker/Sprite - Vergolophus.png', k=1, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
+                   cred='Vergolophus', atual=SP + 'looker.png'),
+    'Lorelei': dict(f='Lorelei/Sprite - Purple Zaffre.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
+                    cred='Purple Zaffre'),
+    'Lusamine': dict(f='Lusamine/Sprite - DiegoWT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
+                     cred='DiegoWT', atual=SP + 'lusamine.png'),
+    'Misty': dict(f='Misty/Sprite - Lime029.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
+                  cred='Lime029', atual=OW + 'gym_leaders/misty.png'),
+    'N': dict(f='N/Sprite - Boyaloxer e outros.png', k=2, jpg=True, cell=(16, 20), x0=0, y0=76, px=16, py=20, grade=True, frames=FILA[:9],
+              cred='Boyaloxer e outros'),
+    'Olivia': dict(f='Olivia/Sprite - zender1752.jpg', k=2, jpg=True, crop=(89, 1, 248, 265), cell=(23, 30), xs=[1, 26, 52],
+                   ys=[1, 34, 67, 100], grade=True, frames=L3, bgs=[(95, 150, 95)], cred='zender1752'),
+    'Ramos': dict(f='Ramos/Sprite - desconhecido.jpg', k=2, jpg=True, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
+                  cred='desconhecido', atual=SP + 'ramos.png'),
+    'Shelly': dict(f='Shelly/Sprite - Swizzler121.png', k=1, cell=(28, 28), x0=0, y0=0, px=30, py=30,
+                   frames=[(0, 0), (0, 2), (0, 1), (1, 0), (2, 0), (1, 2), (2, 2), (1, 1), (2, 1), (0, 3), (1, 3), (2, 3)],
+                   cred='Swizzler121'),
+    'Soliera': dict(f='Soliera/Sprite - Mid117.png', k=1, cell=(22, 33), x0=4, y0=4, px=22.7, py=33.3,
+                    frames=[(0, 1), (3, 1), (1, 1), (0, 0), (0, 2), (3, 0), (3, 2), (1, 0), (1, 2), (2, 1), (2, 0), (2, 2)],
+                    cred='Mid117', atual=SP + 'soliera.png'),
+    'Steven': dict(f='Steven/Sprite - Klein.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
+                   cred='Klein', atual=OW + 'steven.png'),
+    'Volkner': dict(f='Volkner/Sprite - desconhecido.png', k=1, cell=(23, 32), x0=0, y0=0, px=23, py=32, frames=PLAT,
+                    cred='desconhecido', atual=SP + 'volkner.png'),
+    'Zinnia': dict(f='Zinnia/Sprite - Aveontrainer.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, cred='Aveontrainer'),
 }
 GRUPOS = [0, 1, 2, 0, 0, 1, 1, 2, 2, 3, 3, 3]
 
@@ -156,24 +217,27 @@ def frames_nativos(c, big=False):
     comps = componentes(im)
     M = 10 * e
     out = []
-    for (r, col) in c['frames']:
-        x = round((c['x0'] + col * c['px']) * e)
-        y = (c['ys'][r] if 'ys' in c else c['y0'] + r * c['py']) * e
+    for fr in c['frames']:
+        r, col = fr[:2]
+        x = round((c['xs'][col] if 'xs' in c else c['x0'] + col * c['px']) * e)
+        y = round((c['ys'][r] if 'ys' in c else c['y0'] + r * c['py']) * e)
         q = Image.new('RGBA', (cw + 2 * M, ch + 2 * M), (0, 0, 0, 0))
         if c.get('grade'):  # quadros encostados: recorta o retangulo da celula
             r = im.crop((x, y, x + cw, y + ch))
             q.paste(r, (M, M), r)
-            out.append(q)
+            out.append(q.transpose(Image.FLIP_LEFT_RIGHT) if 'm' in fr[2:] else q)
             continue
         for pts in comps:
             if len(pts) < 3:
                 continue
             xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
+            if max(xs) - min(xs) > 1.5 * cw or max(ys) - min(ys) > 1.5 * ch:
+                continue  # linhas da grade da folha, nao boneco
             cx = (min(xs) + max(xs)) / 2; cy = (min(ys) + max(ys)) / 2
             if x <= cx < x + cw and y <= cy < y + ch:
                 for p in pts:
                     q.putpixel((p[0] - x + M, p[1] - y + M), im.getpixel(p))
-        out.append(q)
+        out.append(q.transpose(Image.FLIP_LEFT_RIGHT) if 'm' in fr[2:] else q)
     grupos = GRUPOS[:len(out)]
     ref = {}
     for i, g in enumerate(grupos):
@@ -308,8 +372,6 @@ def cmd_propostas(nomes):
             if not g:
                 break
             H, fw, res, origem = g
-            fn = os.path.join(FT, nome, f'{nome} - overworld {W}x{H} (quadro {fw}x32).png')
-            res.save(fn)
             feitos.append((W, H, fw, res, origem))
             print(f'  {W}x{H} {origem}')
         comparar(nome, feitos, p['c'])
@@ -379,7 +441,9 @@ def comparar(nome, feitos, c, z=4):
             d.rectangle((x, y0 + 14, x + 32 * z - 1, y0 + 14 + 32 * z - 1), outline=(30, 30, 30))
             if qfw == 16:
                 d.rectangle((x + 8 * z, y0 + 14, x + 24 * z - 1, y0 + 14 + 32 * z - 1), outline=(200, 60, 60))
-    img.save(os.path.join(FT, nome, f'{nome} - overworld propostas comparadas.png'))
+    pasta = c.get('pasta', nome)
+    sufixo = f' ({nome})' if pasta != nome else ''
+    img.save(os.path.join(FT, pasta, f'Sprite - comparacao no jogo{sufixo}.png'))
 
 
 if __name__ == '__main__':
