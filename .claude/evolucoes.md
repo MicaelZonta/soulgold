@@ -28,7 +28,7 @@ Retrato de 29/09/2026 (famílias, pela forma de nome mais curto):
 
 | Só vem de | Quantas | Quem |
 |---|---|---|
-| Nexus | 52 | UBs (Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Stakataka, Blacephalon), Raikou/Entei/Suicune (os encontros deles estão em mapas fora da ROM), Celebi, Heatran, Regieleki, Regidrago, Reshiram, Zekrom, Kyurem, Keldeo, Xerneas, Yveltal, Zygarde, Volcanion, Zacian, Zamazenta, Eternatus, Calyrex/Glastrier/Spectrier, Deoxys, os Tesouros da Ruína, Ogerpon-trio (Okidogi/Munkidori), Pecharunt, Terapagos — e as formas por item que só o Nexus dá (Drives do Genesect, DNA Splicers, Reins of Unity, Zygarde Cube) |
+| Nexus | 52 | UBs (Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Stakataka, Blacephalon), Raikou/Entei/Suicune (os encontros deles estão em mapas fora da ROM), Celebi, Heatran, Regieleki, Regidrago, Reshiram, Zekrom, Kyurem, Keldeo, Xerneas, Yveltal, Zygarde, Volcanion, Zacian, Zamazenta, Eternatus, Calyrex/Glastrier/Spectrier, Deoxys, Chi-Yu, Ting-Lu e Wo-Chien, Okidogi e Munkidori (Loyal Three), Pecharunt, Terapagos — e as formas por item que só o Nexus dá (Drives do Genesect, DNA Splicers, Reins of Unity, Zygarde Cube) |
 | Gachapon | 35 | iniciais de todas as gerações (os de Johto: um vem do Elm — o parser não vê), Togepi, Cleffa, Sentret, Lotad, Seedot, Remoraid, Spinda, Castform, Relicanth, Clamperl/Huntail, Pichu Spiky-eared, Gimmighoul Roaming |
 | Battle Cafe (e Nexus) | 18 | Tapus, aves de Galar, Koraidon, Miraidon, o quarteto das Forças da Natureza (Incarnate e Therian), Diancie |
 | Troféus (Route 40) | 5 | Floette Eternal, Greninja (Battle Bond), Magearna Original, Poipole, Zarude |
