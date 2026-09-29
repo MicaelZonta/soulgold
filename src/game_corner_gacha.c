@@ -1677,6 +1677,7 @@ static const u16 sGachaBasicSpeciesUncommon[] = {
     SPECIES_VOLTORB,
     SPECIES_NATU,
     SPECIES_NINCADA,
+    SPECIES_SPINDA,
 };
 
 static const u16 sGachaBasicSpeciesRare[] = {

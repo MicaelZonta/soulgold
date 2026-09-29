@@ -6727,7 +6727,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_GATE_GOLDENROD_CITY_ROUTE35",
+          "name": "Gate Goldenrod City Route 35",
+          "time": "",
+          "method": "Gift (nicknamed)",
+          "minLevel": 20,
+          "maxLevel": 20,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -6918,7 +6928,38 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SPEAROW",
+          "locations": [
+            {
+              "map": "MAP_GATE_GOLDENROD_CITY_ROUTE35",
+              "name": "Gate Goldenrod City Route 35",
+              "time": "",
+              "method": "Gift (nicknamed)",
+              "minLevel": 20,
+              "maxLevel": 20,
+              "rate": null
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEAROW",
+              "target": "SPECIES_FEAROW",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "20",
+                "target": "SPECIES_FEAROW",
+                "conditions": [],
+                "label": "Level 20",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [
         {
           "constant": "ITEM_SHARP_BEAK",
@@ -72515,7 +72556,17 @@
         "MOVE_FINAL_GAMBIT"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Rock Smash Mons",
+          "minLevel": 20,
+          "maxLevel": 22,
+          "rate": 30
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -82662,8 +82713,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -82671,8 +82722,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -82880,8 +82931,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -82889,8 +82940,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -104233,7 +104284,17 @@
         "MOVE_SPOTLIGHT"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_MAUVILLE_CITY_GAME_CORNER",
+          "name": "Goldenrod Gachapon (Basic machine)",
+          "time": "",
+          "method": "Gachapon (Uncommon)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "spinda"
@@ -230337,7 +230398,7 @@
           "method": "Rock Smash Mons",
           "minLevel": 20,
           "maxLevel": 22,
-          "rate": 35
+          "rate": 5
         }
       ],
       "acquisitionPaths": [],
@@ -404272,13 +404333,22 @@
                   "rate": 60
                 },
                 {
+                  "species": "SPECIES_SHUCKLE",
+                  "hasSpecies": true,
+                  "name": "Shuckle",
+                  "sprite": "sprites/pokemon/shuckle.png",
+                  "minLevel": 20,
+                  "maxLevel": 22,
+                  "rate": 30
+                },
+                {
                   "species": "SPECIES_CRABRAWLER",
                   "hasSpecies": true,
                   "name": "Crabrawler",
                   "sprite": "sprites/pokemon/crabrawler.png",
                   "minLevel": 20,
                   "maxLevel": 22,
-                  "rate": 35
+                  "rate": 5
                 },
                 {
                   "species": "SPECIES_SANDILE",

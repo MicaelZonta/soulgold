@@ -15,19 +15,32 @@ class ScriptedSourceTests(unittest.TestCase):
         self.assertEqual(named_gift_table()["1"], ("SPECIES_SPEAROW", 20))
         self.assertEqual(named_gift_table()["2"], ("SPECIES_SHUCKLE", 20))
 
-    def test_nicknamed_gift_with_no_npc_is_not_a_source(self) -> None:
-        # Kenya's and Shuckie's scripts still exist, but no object runs them
-        # (Kirk's house gives Gimmighoul now, the gate has no Randy).
+    def test_kenya_is_a_nicknamed_gift_from_randy(self) -> None:
         locations = {}
 
         add_gift_species_locations(  # type: ignore[arg-type]
             locations,
-            {"SPECIES_SPEAROW": object(), "SPECIES_SHUCKLE": object()},
+            {"SPECIES_SPEAROW": object()},
         )
 
-        for species in ("SPECIES_SPEAROW", "SPECIES_SHUCKLE"):
-            nicknamed = [l for l in locations.get(species, []) if l["method"] == "Gift (nicknamed)"]
-            self.assertEqual(nicknamed, [])
+        kenya = [l for l in locations["SPECIES_SPEAROW"] if l["method"] == "Gift (nicknamed)"]
+        self.assertEqual([(l["map"], l["minLevel"]) for l in kenya], [("MAP_GATE_GOLDENROD_CITY_ROUTE35", 20)])
+
+    def test_nicknamed_gift_with_no_npc_is_not_a_source(self) -> None:
+        # Shuckie's script still exists, but no object runs it: Kirk's house
+        # gives Gimmighoul now.
+        locations = {}
+
+        add_gift_species_locations(  # type: ignore[arg-type]
+            locations,
+            {"SPECIES_SHUCKLE": object()},
+        )
+
+        nicknamed = [
+            l for l in locations.get("SPECIES_SHUCKLE", [])
+            if l["method"] == "Gift (nicknamed)"
+        ]
+        self.assertEqual(nicknamed, [])
 
     def test_unreachable_test_script_is_not_a_gift(self) -> None:
         # Route25_BillsHouse_Test gives Spinda, but no event ever runs it.
