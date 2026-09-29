@@ -615,6 +615,21 @@ static const u16 sWildScatterbugPatternForms[] =
     SPECIES_SCATTERBUG_POKEBALL,
 };
 
+static const u16 sWildSquawkabillyPlumageForms[] =
+{
+    SPECIES_SQUAWKABILLY_GREEN,
+    SPECIES_SQUAWKABILLY_BLUE,
+    SPECIES_SQUAWKABILLY_YELLOW,
+    SPECIES_SQUAWKABILLY_WHITE,
+};
+
+static const u16 sWildTatsugiriForms[] =
+{
+    SPECIES_TATSUGIRI_CURLY,
+    SPECIES_TATSUGIRI_DROOPY,
+    SPECIES_TATSUGIRI_STRETCHY,
+};
+
 static u16 GetWildFormVariantSpecies(u16 species)
 {
     if (species == SPECIES_MINIOR_METEOR_RED)
@@ -623,6 +638,10 @@ static u16 GetWildFormVariantSpecies(u16 species)
         return sWildPumpkabooSizeForms[Random() % ARRAY_COUNT(sWildPumpkabooSizeForms)];
     if (species == SPECIES_SCATTERBUG_FANCY)
         return sWildScatterbugPatternForms[Random() % ARRAY_COUNT(sWildScatterbugPatternForms)];
+    if (species == SPECIES_SQUAWKABILLY_GREEN)
+        return sWildSquawkabillyPlumageForms[Random() % ARRAY_COUNT(sWildSquawkabillyPlumageForms)];
+    if (species == SPECIES_TATSUGIRI_CURLY)
+        return sWildTatsugiriForms[Random() % ARRAY_COUNT(sWildTatsugiriForms)];
     return species;
 }
 

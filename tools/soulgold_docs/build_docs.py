@@ -21,7 +21,11 @@ from tools.soulgold_docs.image_utils import (
 from tools.soulgold_docs.parsers.abilities import build_ability_usage, parse_abilities
 from tools.soulgold_docs.parsers.acquisition import attach_acquisition_paths
 from tools.soulgold_docs.parsers.encounters import add_hidden_grotto_species_locations, build_species_locations, parse_wild_encounters
-from tools.soulgold_docs.parsers.forms import add_rotom_form_change_locations
+from tools.soulgold_docs.parsers.forms import (
+    add_mom_grooming_form_locations,
+    add_rotom_form_change_locations,
+    add_wild_random_form_locations,
+)
 from tools.soulgold_docs.parsers.gifts import (
     add_gift_species_locations,
     add_gachapon_species_locations,
@@ -108,6 +112,8 @@ def build() -> None:
     add_odd_egg_species_locations(species_locations, species_data.by_constant)
     add_johto_trade_species_locations(species_locations, species_data.by_constant)
     add_rotom_form_change_locations(species_locations, species_data.by_constant)
+    add_wild_random_form_locations(species_locations, species_data.by_constant)
+    add_mom_grooming_form_locations(species_locations, species_data.by_constant)
     located_species = attach_species_locations(enriched_species, species_locations)
     attach_acquisition_paths(located_species, item_records)
     visible_species = visible_species_rows(located_species)

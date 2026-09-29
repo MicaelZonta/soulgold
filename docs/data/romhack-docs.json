@@ -82460,8 +82460,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -82469,8 +82469,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -177530,7 +177530,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Seasonal Perfume)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "deerling-spring"
@@ -177721,7 +177731,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Seasonal Perfume)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "deerling-summer"
@@ -177921,6 +177941,15 @@
           "minLevel": 8,
           "maxLevel": 8,
           "rate": 1
+        },
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Seasonal Perfume)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -178113,7 +178142,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Seasonal Perfume)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "deerling-winter"
@@ -178317,7 +178356,17 @@
         "MOVE_HEADBUTT"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Seasonal Perfume)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "sawsbuck-spring"
@@ -178521,7 +178570,17 @@
         "MOVE_HEADBUTT"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Seasonal Perfume)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "sawsbuck-summer"
@@ -178725,39 +178784,18 @@
         "MOVE_HEADBUTT"
       ],
       "evolutions": [],
-      "locations": [],
-      "acquisitionPaths": [
+      "locations": [
         {
-          "source": "SPECIES_DEERLING_AUTUMN",
-          "locations": [
-            {
-              "map": "MAP_ROUTE36",
-              "name": "Route 36",
-              "time": "Day",
-              "method": "Land Mons",
-              "minLevel": 8,
-              "maxLevel": 8,
-              "rate": 1
-            }
-          ],
-          "steps": [
-            {
-              "kind": "evolve",
-              "source": "SPECIES_DEERLING_AUTUMN",
-              "target": "SPECIES_SAWSBUCK_AUTUMN",
-              "requirement": "",
-              "evolution": {
-                "method": "EVO_LEVEL",
-                "param": "34",
-                "target": "SPECIES_SAWSBUCK_AUTUMN",
-                "conditions": [],
-                "label": "Level 34",
-                "itemName": ""
-              }
-            }
-          ]
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Seasonal Perfume)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
+      "acquisitionPaths": [],
       "heldItems": [],
       "slug": "sawsbuck-autumn"
     },
@@ -178960,7 +178998,17 @@
         "MOVE_HEADBUTT"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Seasonal Perfume)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "sawsbuck-winter"
@@ -200429,7 +200477,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-icy-snow"
@@ -200515,7 +200573,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-polar"
@@ -200601,7 +200669,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-tundra"
@@ -200687,7 +200765,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-continental"
@@ -200773,7 +200861,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-garden"
@@ -200859,7 +200957,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-elegant"
@@ -200945,7 +201053,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-meadow"
@@ -201031,7 +201149,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-modern"
@@ -201117,7 +201245,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-marine"
@@ -201203,7 +201341,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-archipelago"
@@ -201289,7 +201437,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-high-plains"
@@ -201375,7 +201533,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-sandstorm"
@@ -201461,7 +201629,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-river"
@@ -201547,7 +201725,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-monsoon"
@@ -201633,7 +201821,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-savanna"
@@ -201719,7 +201917,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-sun"
@@ -201805,7 +202013,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-ocean"
@@ -201891,7 +202109,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-jungle"
@@ -202073,7 +202301,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NATIONAL_PARK_NORMAL",
+          "name": "National Park Normal",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 14,
+          "maxLevel": 17,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "scatterbug-pokeball"
@@ -202153,7 +202391,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_ICY_SNOW",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_ICY_SNOW",
+              "target": "SPECIES_SPEWPA_ICY_SNOW",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_ICY_SNOW",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-icy-snow"
     },
@@ -202232,7 +202501,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_POLAR",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_POLAR",
+              "target": "SPECIES_SPEWPA_POLAR",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_POLAR",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-polar"
     },
@@ -202311,7 +202611,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_TUNDRA",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_TUNDRA",
+              "target": "SPECIES_SPEWPA_TUNDRA",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_TUNDRA",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-tundra"
     },
@@ -202390,7 +202721,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_CONTINENTAL",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_CONTINENTAL",
+              "target": "SPECIES_SPEWPA_CONTINENTAL",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_CONTINENTAL",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-continental"
     },
@@ -202469,7 +202831,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_GARDEN",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_GARDEN",
+              "target": "SPECIES_SPEWPA_GARDEN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_GARDEN",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-garden"
     },
@@ -202548,7 +202941,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_ELEGANT",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_ELEGANT",
+              "target": "SPECIES_SPEWPA_ELEGANT",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_ELEGANT",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-elegant"
     },
@@ -202627,7 +203051,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_MEADOW",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_MEADOW",
+              "target": "SPECIES_SPEWPA_MEADOW",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_MEADOW",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-meadow"
     },
@@ -202706,7 +203161,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_MODERN",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_MODERN",
+              "target": "SPECIES_SPEWPA_MODERN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_MODERN",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-modern"
     },
@@ -202785,7 +203271,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_MARINE",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_MARINE",
+              "target": "SPECIES_SPEWPA_MARINE",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_MARINE",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-marine"
     },
@@ -202864,7 +203381,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_ARCHIPELAGO",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_ARCHIPELAGO",
+              "target": "SPECIES_SPEWPA_ARCHIPELAGO",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_ARCHIPELAGO",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-archipelago"
     },
@@ -202943,7 +203491,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_HIGH_PLAINS",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_HIGH_PLAINS",
+              "target": "SPECIES_SPEWPA_HIGH_PLAINS",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_HIGH_PLAINS",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-high-plains"
     },
@@ -203022,7 +203601,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_SANDSTORM",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_SANDSTORM",
+              "target": "SPECIES_SPEWPA_SANDSTORM",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_SANDSTORM",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-sandstorm"
     },
@@ -203101,7 +203711,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_RIVER",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_RIVER",
+              "target": "SPECIES_SPEWPA_RIVER",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_RIVER",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-river"
     },
@@ -203180,7 +203821,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_MONSOON",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_MONSOON",
+              "target": "SPECIES_SPEWPA_MONSOON",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_MONSOON",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-monsoon"
     },
@@ -203259,7 +203931,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_SAVANNA",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_SAVANNA",
+              "target": "SPECIES_SPEWPA_SAVANNA",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_SAVANNA",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-savanna"
     },
@@ -203338,7 +204041,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_SUN",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_SUN",
+              "target": "SPECIES_SPEWPA_SUN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_SUN",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-sun"
     },
@@ -203417,7 +204151,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_OCEAN",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_OCEAN",
+              "target": "SPECIES_SPEWPA_OCEAN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_OCEAN",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-ocean"
     },
@@ -203496,7 +204261,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_JUNGLE",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_JUNGLE",
+              "target": "SPECIES_SPEWPA_JUNGLE",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_JUNGLE",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-jungle"
     },
@@ -203685,7 +204481,38 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_POKEBALL",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_POKEBALL",
+              "target": "SPECIES_SPEWPA_POKEBALL",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_POKEBALL",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "spewpa-pokeball"
     },
@@ -203862,7 +204689,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_ICY_SNOW",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_ICY_SNOW",
+              "target": "SPECIES_SPEWPA_ICY_SNOW",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_ICY_SNOW",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_ICY_SNOW",
+              "target": "SPECIES_VIVILLON_ICY_SNOW",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_ICY_SNOW",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-icy-snow"
     },
@@ -204039,7 +204911,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_POLAR",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_POLAR",
+              "target": "SPECIES_SPEWPA_POLAR",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_POLAR",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_POLAR",
+              "target": "SPECIES_VIVILLON_POLAR",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_POLAR",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-polar"
     },
@@ -204216,7 +205133,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_TUNDRA",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_TUNDRA",
+              "target": "SPECIES_SPEWPA_TUNDRA",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_TUNDRA",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_TUNDRA",
+              "target": "SPECIES_VIVILLON_TUNDRA",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_TUNDRA",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-tundra"
     },
@@ -204393,7 +205355,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_CONTINENTAL",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_CONTINENTAL",
+              "target": "SPECIES_SPEWPA_CONTINENTAL",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_CONTINENTAL",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_CONTINENTAL",
+              "target": "SPECIES_VIVILLON_CONTINENTAL",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_CONTINENTAL",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-continental"
     },
@@ -204570,7 +205577,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_GARDEN",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_GARDEN",
+              "target": "SPECIES_SPEWPA_GARDEN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_GARDEN",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_GARDEN",
+              "target": "SPECIES_VIVILLON_GARDEN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_GARDEN",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-garden"
     },
@@ -204747,7 +205799,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_ELEGANT",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_ELEGANT",
+              "target": "SPECIES_SPEWPA_ELEGANT",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_ELEGANT",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_ELEGANT",
+              "target": "SPECIES_VIVILLON_ELEGANT",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_ELEGANT",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-elegant"
     },
@@ -204924,7 +206021,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_MEADOW",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_MEADOW",
+              "target": "SPECIES_SPEWPA_MEADOW",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_MEADOW",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_MEADOW",
+              "target": "SPECIES_VIVILLON_MEADOW",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_MEADOW",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-meadow"
     },
@@ -205101,7 +206243,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_MODERN",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_MODERN",
+              "target": "SPECIES_SPEWPA_MODERN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_MODERN",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_MODERN",
+              "target": "SPECIES_VIVILLON_MODERN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_MODERN",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-modern"
     },
@@ -205278,7 +206465,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_MARINE",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_MARINE",
+              "target": "SPECIES_SPEWPA_MARINE",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_MARINE",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_MARINE",
+              "target": "SPECIES_VIVILLON_MARINE",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_MARINE",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-marine"
     },
@@ -205455,7 +206687,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_ARCHIPELAGO",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_ARCHIPELAGO",
+              "target": "SPECIES_SPEWPA_ARCHIPELAGO",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_ARCHIPELAGO",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_ARCHIPELAGO",
+              "target": "SPECIES_VIVILLON_ARCHIPELAGO",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_ARCHIPELAGO",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-archipelago"
     },
@@ -205632,7 +206909,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_HIGH_PLAINS",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_HIGH_PLAINS",
+              "target": "SPECIES_SPEWPA_HIGH_PLAINS",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_HIGH_PLAINS",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_HIGH_PLAINS",
+              "target": "SPECIES_VIVILLON_HIGH_PLAINS",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_HIGH_PLAINS",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-high-plains"
     },
@@ -205809,7 +207131,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_SANDSTORM",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_SANDSTORM",
+              "target": "SPECIES_SPEWPA_SANDSTORM",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_SANDSTORM",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_SANDSTORM",
+              "target": "SPECIES_VIVILLON_SANDSTORM",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_SANDSTORM",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-sandstorm"
     },
@@ -205986,7 +207353,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_RIVER",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_RIVER",
+              "target": "SPECIES_SPEWPA_RIVER",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_RIVER",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_RIVER",
+              "target": "SPECIES_VIVILLON_RIVER",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_RIVER",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-river"
     },
@@ -206163,7 +207575,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_MONSOON",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_MONSOON",
+              "target": "SPECIES_SPEWPA_MONSOON",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_MONSOON",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_MONSOON",
+              "target": "SPECIES_VIVILLON_MONSOON",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_MONSOON",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-monsoon"
     },
@@ -206340,7 +207797,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_SAVANNA",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_SAVANNA",
+              "target": "SPECIES_SPEWPA_SAVANNA",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_SAVANNA",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_SAVANNA",
+              "target": "SPECIES_VIVILLON_SAVANNA",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_SAVANNA",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-savanna"
     },
@@ -206517,7 +208019,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_SUN",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_SUN",
+              "target": "SPECIES_SPEWPA_SUN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_SUN",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_SUN",
+              "target": "SPECIES_VIVILLON_SUN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_SUN",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-sun"
     },
@@ -206694,7 +208241,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_OCEAN",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_OCEAN",
+              "target": "SPECIES_SPEWPA_OCEAN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_OCEAN",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_OCEAN",
+              "target": "SPECIES_VIVILLON_OCEAN",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_OCEAN",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-ocean"
     },
@@ -206871,7 +208463,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_JUNGLE",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_JUNGLE",
+              "target": "SPECIES_SPEWPA_JUNGLE",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_JUNGLE",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_JUNGLE",
+              "target": "SPECIES_VIVILLON_JUNGLE",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_JUNGLE",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-jungle"
     },
@@ -207270,7 +208907,52 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SCATTERBUG_POKEBALL",
+          "locations": [
+            {
+              "map": "MAP_NATIONAL_PARK_NORMAL",
+              "name": "National Park Normal",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 14,
+              "maxLevel": 17,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SCATTERBUG_POKEBALL",
+              "target": "SPECIES_SPEWPA_POKEBALL",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "9",
+                "target": "SPECIES_SPEWPA_POKEBALL",
+                "conditions": [],
+                "label": "Level 9",
+                "itemName": ""
+              }
+            },
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SPEWPA_POKEBALL",
+              "target": "SPECIES_VIVILLON_POKEBALL",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "12",
+                "target": "SPECIES_VIVILLON_POKEBALL",
+                "conditions": [],
+                "label": "Level 12",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "vivillon-pokeball"
     },
@@ -209947,6 +211629,15 @@
           "minLevel": 15,
           "maxLevel": 17,
           "rate": 5
+        },
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Furfrou trim)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -210103,7 +211794,17 @@
         "MOVE_REFRESH"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Furfrou trim)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "furfrou-heart"
@@ -210258,7 +211959,17 @@
         "MOVE_REFRESH"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Furfrou trim)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "furfrou-star"
@@ -210413,7 +212124,17 @@
         "MOVE_REFRESH"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Furfrou trim)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "furfrou-diamond"
@@ -210568,7 +212289,17 @@
         "MOVE_REFRESH"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Furfrou trim)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "furfrou-debutante"
@@ -210723,7 +212454,17 @@
         "MOVE_REFRESH"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Furfrou trim)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "furfrou-matron"
@@ -210878,7 +212619,17 @@
         "MOVE_REFRESH"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Furfrou trim)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "furfrou-dandy"
@@ -211033,7 +212784,17 @@
         "MOVE_REFRESH"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Furfrou trim)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "furfrou-la-reine"
@@ -211188,7 +212949,17 @@
         "MOVE_REFRESH"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Furfrou trim)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "furfrou-kabuki"
@@ -211343,7 +213114,17 @@
         "MOVE_REFRESH"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Furfrou trim)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "furfrou-pharaoh"
@@ -221069,7 +222850,17 @@
           "itemName": "Linking Cord"
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BURNED_TOWER_B1F",
+          "name": "Burned Tower B1F",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 19,
+          "maxLevel": 23,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "pumpkaboo-small"
@@ -221250,7 +223041,17 @@
           "itemName": "Linking Cord"
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BURNED_TOWER_B1F",
+          "name": "Burned Tower B1F",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 19,
+          "maxLevel": 23,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "pumpkaboo-large"
@@ -221431,7 +223232,17 @@
           "itemName": "Linking Cord"
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BURNED_TOWER_B1F",
+          "name": "Burned Tower B1F",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 19,
+          "maxLevel": 23,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -221851,7 +223662,38 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_PUMPKABOO_SMALL",
+          "locations": [
+            {
+              "map": "MAP_BURNED_TOWER_B1F",
+              "name": "Burned Tower B1F",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 19,
+              "maxLevel": 23,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_PUMPKABOO_SMALL",
+              "target": "SPECIES_GOURGEIST_SMALL",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_ITEM",
+                "param": "ITEM_LINKING_CORD",
+                "target": "SPECIES_GOURGEIST_SMALL",
+                "conditions": [],
+                "label": "By Using Specific Item (Linking Cord)",
+                "itemName": "Linking Cord"
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "gourgeist-small"
     },
@@ -222042,7 +223884,38 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_PUMPKABOO_LARGE",
+          "locations": [
+            {
+              "map": "MAP_BURNED_TOWER_B1F",
+              "name": "Burned Tower B1F",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 19,
+              "maxLevel": 23,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_PUMPKABOO_LARGE",
+              "target": "SPECIES_GOURGEIST_LARGE",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_ITEM",
+                "param": "ITEM_LINKING_CORD",
+                "target": "SPECIES_GOURGEIST_LARGE",
+                "conditions": [],
+                "label": "By Using Specific Item (Linking Cord)",
+                "itemName": "Linking Cord"
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "gourgeist-large"
     },
@@ -222233,7 +224106,38 @@
       ],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_PUMPKABOO_SUPER",
+          "locations": [
+            {
+              "map": "MAP_BURNED_TOWER_B1F",
+              "name": "Burned Tower B1F",
+              "time": "",
+              "method": "Land Mons (random form)",
+              "minLevel": 19,
+              "maxLevel": 23,
+              "rate": 4
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_PUMPKABOO_SUPER",
+              "target": "SPECIES_GOURGEIST_SUPER",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_ITEM",
+                "param": "ITEM_LINKING_CORD",
+                "target": "SPECIES_GOURGEIST_SUPER",
+                "conditions": [],
+                "label": "By Using Specific Item (Linking Cord)",
+                "itemName": "Linking Cord"
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [
         {
           "constant": "ITEM_MIRACLE_SEED",
@@ -243550,7 +245454,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_MT_MORTAR_DEPTHS_1",
+          "name": "Mt Mortar Depths 1",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 45,
+          "maxLevel": 50,
+          "rate": 1
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -243726,7 +245640,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_MT_MORTAR_DEPTHS_1",
+          "name": "Mt Mortar Depths 1",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 45,
+          "maxLevel": 50,
+          "rate": 1
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -243902,7 +245826,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_MT_MORTAR_DEPTHS_1",
+          "name": "Mt Mortar Depths 1",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 45,
+          "maxLevel": 50,
+          "rate": 1
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -244078,7 +246012,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_MT_MORTAR_DEPTHS_1",
+          "name": "Mt Mortar Depths 1",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 45,
+          "maxLevel": 50,
+          "rate": 1
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -244254,7 +246198,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_MT_MORTAR_DEPTHS_1",
+          "name": "Mt Mortar Depths 1",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 45,
+          "maxLevel": 50,
+          "rate": 1
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -244430,7 +246384,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_MT_MORTAR_DEPTHS_1",
+          "name": "Mt Mortar Depths 1",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 45,
+          "maxLevel": 50,
+          "rate": 1
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -293344,7 +295308,17 @@
         "MOVE_PARTING_SHOT"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_ROUTE33",
+          "name": "Route 33",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 11,
+          "maxLevel": 14,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "squawkabilly-blue"
@@ -293504,7 +295478,17 @@
         "MOVE_PARTING_SHOT"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_ROUTE33",
+          "name": "Route 33",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 11,
+          "maxLevel": 14,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "squawkabilly-yellow"
@@ -293664,7 +295648,17 @@
         "MOVE_PARTING_SHOT"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_ROUTE33",
+          "name": "Route 33",
+          "time": "",
+          "method": "Land Mons (random form)",
+          "minLevel": 11,
+          "maxLevel": 14,
+          "rate": 4
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "squawkabilly-white"
@@ -294489,7 +296483,89 @@
         "MOVE_RAPID_SPIN"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_ROUTE35",
+          "name": "Route 35",
+          "time": "",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 10,
+          "maxLevel": 10,
+          "rate": 4
+        },
+        {
+          "map": "MAP_ROUTE35",
+          "name": "Route 35",
+          "time": "",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 40,
+          "maxLevel": 40,
+          "rate": 1
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Day",
+          "method": "Water Mons (random form)",
+          "minLevel": 30,
+          "maxLevel": 40,
+          "rate": 1
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Day",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 20,
+          "maxLevel": 20,
+          "rate": 20
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Day",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 30,
+          "maxLevel": 40,
+          "rate": 40
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Day",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 50,
+          "maxLevel": 55,
+          "rate": 1
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Night",
+          "method": "Water Mons (random form)",
+          "minLevel": 30,
+          "maxLevel": 40,
+          "rate": 1
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Night",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 20,
+          "maxLevel": 20,
+          "rate": 20
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Night",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 30,
+          "maxLevel": 40,
+          "rate": 40
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "tatsugiri-droopy"
@@ -294630,7 +296706,89 @@
         "MOVE_RAPID_SPIN"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_ROUTE35",
+          "name": "Route 35",
+          "time": "",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 10,
+          "maxLevel": 10,
+          "rate": 4
+        },
+        {
+          "map": "MAP_ROUTE35",
+          "name": "Route 35",
+          "time": "",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 40,
+          "maxLevel": 40,
+          "rate": 1
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Day",
+          "method": "Water Mons (random form)",
+          "minLevel": 30,
+          "maxLevel": 40,
+          "rate": 1
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Day",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 20,
+          "maxLevel": 20,
+          "rate": 20
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Day",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 30,
+          "maxLevel": 40,
+          "rate": 40
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Day",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 50,
+          "maxLevel": 55,
+          "rate": 1
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Night",
+          "method": "Water Mons (random form)",
+          "minLevel": 30,
+          "maxLevel": 40,
+          "rate": 1
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Night",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 20,
+          "maxLevel": 20,
+          "rate": 20
+        },
+        {
+          "map": "MAP_DRAGONS_DEN_CAVERN",
+          "name": "Dragon's Den Cavern",
+          "time": "Night",
+          "method": "Fishing Mons (random form)",
+          "minLevel": 30,
+          "maxLevel": 40,
+          "rate": 40
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "tatsugiri-stretchy"

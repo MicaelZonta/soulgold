@@ -61,3 +61,94 @@ def add_rotom_form_change_locations(
         locations.setdefault(species, [])
         if location not in locations[species]:
             locations[species].append(location)
+
+
+WILD_FORM_ARRAY_RE = re.compile(
+    r"static\s+const\s+u16\s+(sWild\w+)\[\]\s*=\s*\{(.*?)\};",
+    re.DOTALL,
+)
+WILD_FORM_RULE_RE = re.compile(
+    r"if\s*\(\s*species\s*==\s*(SPECIES_[A-Z0-9_]+)\s*\)\s*return\s+(sWild\w+)\["
+)
+MOM_HOUSE_MAP = "NewBarkTown_PlayersHouse_1F"
+MOM_GROOMING_ARRAY_RE = re.compile(
+    r"static\s+const\s+u16\s+(sMomFurfrouTrimOrder|sMomDeerlingSeasonalForms)\b[^=]*=\s*\{(.*?)\n\};",
+    re.DOTALL,
+)
+MOM_GROOMING_SPECIALS = {
+    "sMomFurfrouTrimOrder": ("ApplyFurfrouTrim", "Mom's grooming (Furfrou trim)"),
+    "sMomDeerlingSeasonalForms": ("ApplySeasonalForm", "Mom's grooming (Seasonal Perfume)"),
+}
+
+
+def _add_location(
+    locations: dict[str, list[SpeciesLocation]],
+    species: str,
+    location: SpeciesLocation,
+) -> None:
+    locations.setdefault(species, [])
+    if location not in locations[species]:
+        locations[species].append(location)
+
+
+def add_wild_random_form_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    """A wild slot of Minior, Pumpkaboo, Scatterbug... rolls one of the cosmetic
+    forms at encounter time (GetWildFormVariantSpecies, src/wild_encounter.c):
+    every form in the pool gets the wild locations of the slot's species."""
+    try:
+        text = strip_c_comments(read(REPO_ROOT / "src/wild_encounter.c"))
+    except FileNotFoundError:
+        return
+
+    pools = {
+        name: re.findall(r"\bSPECIES_[A-Z0-9_]+\b", body)
+        for name, body in WILD_FORM_ARRAY_RE.findall(text)
+    }
+    for slot_species, pool_name in WILD_FORM_RULE_RE.findall(text):
+        wild = [
+            location for location in locations.get(slot_species, [])
+            if str(location.get("method", "")).endswith(" Mons")
+        ]
+        for species in pools.get(pool_name, []):
+            if species == slot_species or species not in by_species:
+                continue
+            for location in wild:
+                _add_location(locations, species, {
+                    **location,
+                    "method": f"{location['method']} (random form)",
+                })
+
+
+def add_mom_grooming_form_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    """Mom (New Bark Town) re-trims Furfrou and changes Deerling/Sawsbuck season."""
+    map_dir = REPO_ROOT / "data" / "maps" / MOM_HOUSE_MAP
+    try:
+        map_data = json.loads(read(map_dir / "map.json"))
+        blocks = script_blocks(read(map_dir / "scripts.inc"))
+        text = strip_c_comments(read(REPO_ROOT / "src/field_specials.c"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return
+
+    reachable_text = "\n".join(blocks[label] for label in reachable_script_labels(map_data, blocks))
+    for array_name, body in MOM_GROOMING_ARRAY_RE.findall(text):
+        special, method = MOM_GROOMING_SPECIALS[array_name]
+        if not re.search(rf"\bspecial\s+{special}\b", reachable_text):
+            continue
+        for species in re.findall(r"\bSPECIES_[A-Z0-9_]+\b", body):
+            if species not in by_species:
+                continue
+            _add_location(locations, species, {
+                "map": str(map_data.get("id") or ""),
+                "name": "New Bark Town (Mom)",
+                "time": "",
+                "method": method,
+                "minLevel": None,
+                "maxLevel": None,
+                "rate": None,
+            })
