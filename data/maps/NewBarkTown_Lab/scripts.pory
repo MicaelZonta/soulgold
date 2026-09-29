@@ -1192,6 +1192,13 @@ script NewBarkTown_Lab_GiveStarterMega {
 	msgbox("It's a special Mega Stone, specifically
 			for your starter Pokémon. I expect 
 			great things from you, {PLAYER}!")
+	// Gigantatite rides along with the Bondstone for now - the author wants to
+	// rethink its source later (.claude/evolucoes.md).
+	giveitem(ITEM_GIGANTATITE, 1)
+	msgbox("That one came in the same package.
+			It doesn't match any Mega Stone I
+			know, but certain Pokémon grow huge
+			when they hold it!")
 	return
 }
 

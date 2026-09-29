@@ -1186,6 +1186,8 @@ NewBarkTown_Lab_GiveStarterMega::
 	msgbox NewBarkTown_Lab_GiveStarterMega_Text_0
 	giveitem ITEM_BONDSTONE, 1
 	msgbox NewBarkTown_Lab_GiveStarterMega_Text_1
+	giveitem ITEM_GIGANTATITE, 1
+	msgbox NewBarkTown_Lab_GiveStarterMega_Text_2
 	return
 
 
@@ -1282,6 +1284,12 @@ NewBarkTown_Lab_GiveStarterMega_Text_1:
 	.string "It's a special Mega Stone, specifically\n"
 	.string "for your starter Pokémon. I expect \l"
 	.string "great things from you, {PLAYER}!$"
+
+NewBarkTown_Lab_GiveStarterMega_Text_2:
+	.string "That one came in the same package.\n"
+	.string "It doesn't match any Mega Stone I\l"
+	.string "know, but certain Pokémon grow huge\l"
+	.string "when they hold it!$"
 
 NewBarkTown_Lab_EventScript_ElmPostgameHint_Text_0:
 	.string "Elm: {PLAYER}! There you are!\n"
