@@ -106,6 +106,7 @@ NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomingStart::
 	specialvar VAR_RESULT, GetGroomTargetCategory
 	goto_if_eq VAR_RESULT, GROOM_CATEGORY_FURFROU, NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomFurfrou
 	goto_if_eq VAR_RESULT, GROOM_CATEGORY_DEERLING, NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomDeerling
+	goto_if_eq VAR_RESULT, GROOM_CATEGORY_PIKACHU, NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomPikachu
 	goto NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomNormal
 	end
 
@@ -322,6 +323,54 @@ NewBarkTown_PlayersHouse_1F_EventScript_Mom_DeerlingSeasonMenu::
 	call NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomingAnimationEnd
 	special BufferMonNickname
 	msgbox NewBarkTown_PlayersHouse_1F_Text_MomDeerlingSeasonApplied, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+@ ---------------------------------------------------------------------------
+@ Pikachu grooming. Without the Pikachu Cosplay Kit, Mom grooms it and points
+@ the player to the Rocker on the Goldenrod Dept. Store 3F, who sells the kit.
+@ With it, she dresses Pikachu up (ApplyPikachuCostume). No flag: the kit in
+@ the Bag is the whole state, and the Rocker sells it at any time.
+@ ---------------------------------------------------------------------------
+
+NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomPikachu::
+	checkitem ITEM_PIKACHU_COSPLAY_KIT, 1
+	goto_if_eq VAR_RESULT, TRUE, NewBarkTown_PlayersHouse_1F_EventScript_Mom_PikachuCostumeMenu
+	call NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomingAnimationStart
+	special GroomPokemon
+	call NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomingAnimationEnd
+	msgbox NewBarkTown_PlayersHouse_1F_Text_MomPikachuCosplayHint, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_Mom_PikachuCostumeMenu::
+	msgbox NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumePrompt, MSGBOX_DEFAULT
+	dynmultichoice 0, 0, FALSE, 6, 0, DYN_MULTICHOICE_CB_NONE, NewBarkTown_PlayersHouse_1F_Text_CostumeNone, NewBarkTown_PlayersHouse_1F_Text_CostumeRockStar, NewBarkTown_PlayersHouse_1F_Text_CostumeBelle, NewBarkTown_PlayersHouse_1F_Text_CostumePopStar, NewBarkTown_PlayersHouse_1F_Text_CostumePhD, NewBarkTown_PlayersHouse_1F_Text_CostumeLibre, NewBarkTown_PlayersHouse_1F_Text_CostumeCosplay, NewBarkTown_PlayersHouse_1F_Text_CapOriginal, NewBarkTown_PlayersHouse_1F_Text_CapHoenn, NewBarkTown_PlayersHouse_1F_Text_CapSinnoh, NewBarkTown_PlayersHouse_1F_Text_CapUnova, NewBarkTown_PlayersHouse_1F_Text_CapKalos, NewBarkTown_PlayersHouse_1F_Text_CapAlola, NewBarkTown_PlayersHouse_1F_Text_CapPartner, NewBarkTown_PlayersHouse_1F_Text_CapWorld, NewBarkTown_PlayersHouse_1F_Text_MomMenuCancel
+	@ Cancel (15) and B keep today's grooming unspent.
+	goto_if_ge VAR_RESULT, 15, NewBarkTown_PlayersHouse_1F_EventScript_Mom_PikachuCostumeCancelled
+	copyvar VAR_0x8005, VAR_RESULT
+	call NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomingAnimationStart
+	special ApplyPikachuCostume
+	special GroomPokemon
+	call NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomingAnimationEnd
+	special BufferMonNickname
+	goto_if_eq VAR_0x8005, 0, NewBarkTown_PlayersHouse_1F_EventScript_Mom_PikachuCostumeOff
+	msgbox NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumeOn, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_Mom_PikachuCostumeOff::
+	msgbox NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumeOff, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_Mom_PikachuCostumeCancelled::
+	clearflag FLAG_GOT_GROOMED
+	msgbox NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumeCancelled, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -628,6 +677,80 @@ NewBarkTown_PlayersHouse_1F_Text_SeasonAutumn:
 
 NewBarkTown_PlayersHouse_1F_Text_SeasonWinter:
 	.string "Winter$"
+
+NewBarkTown_PlayersHouse_1F_Text_MomPikachuCosplayHint:
+	.string "Mom: Oh, look at those cheeks!\n"
+	.string "It's just too cute!\p"
+	.string "You know, there's a young man at\n"
+	.string "the Goldenrod Dept. Store, on the\l"
+	.string "third floor, who's crazy about\l"
+	.string "Pikachu.\p"
+	.string "He sells a kit of little outfits\n"
+	.string "and caps made just for Pikachu.\p"
+	.string "If you ever bring me one, I'd love\n"
+	.string "to dress this little one up!$"
+
+NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumePrompt:
+	.string "Mom: The Cosplay Kit! Oh, this is\n"
+	.string "going to be fun. What should it\l"
+	.string "wear today?$"
+
+NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumeOn:
+	.string "Mom: Ta-da! {STR_VAR_1} looks\n"
+	.string "absolutely adorable!$"
+
+NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumeOff:
+	.string "Mom: There we go, back to its\n"
+	.string "everyday look. Still cute!$"
+
+NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumeCancelled:
+	.string "Mom: Can't decide? That's all\n"
+	.string "right. Come back when you do!$"
+
+NewBarkTown_PlayersHouse_1F_Text_CostumeNone:
+	.string "No costume$"
+
+NewBarkTown_PlayersHouse_1F_Text_CostumeRockStar:
+	.string "Rock Star$"
+
+NewBarkTown_PlayersHouse_1F_Text_CostumeBelle:
+	.string "Belle$"
+
+NewBarkTown_PlayersHouse_1F_Text_CostumePopStar:
+	.string "Pop Star$"
+
+NewBarkTown_PlayersHouse_1F_Text_CostumePhD:
+	.string "Ph. D.$"
+
+NewBarkTown_PlayersHouse_1F_Text_CostumeLibre:
+	.string "Libre$"
+
+NewBarkTown_PlayersHouse_1F_Text_CostumeCosplay:
+	.string "Cosplay$"
+
+NewBarkTown_PlayersHouse_1F_Text_CapOriginal:
+	.string "Original Cap$"
+
+NewBarkTown_PlayersHouse_1F_Text_CapHoenn:
+	.string "Hoenn Cap$"
+
+NewBarkTown_PlayersHouse_1F_Text_CapSinnoh:
+	.string "Sinnoh Cap$"
+
+NewBarkTown_PlayersHouse_1F_Text_CapUnova:
+	.string "Unova Cap$"
+
+NewBarkTown_PlayersHouse_1F_Text_CapKalos:
+	.string "Kalos Cap$"
+
+NewBarkTown_PlayersHouse_1F_Text_CapAlola:
+	.string "Alola Cap$"
+
+NewBarkTown_PlayersHouse_1F_Text_CapPartner:
+	.string "Partner Cap$"
+
+NewBarkTown_PlayersHouse_1F_Text_CapWorld:
+	.string "World Cap$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomDeerlingSeasonApplied:
 	.string "Mom: The seasonal scent gently\n"

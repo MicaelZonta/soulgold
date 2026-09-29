@@ -73,12 +73,13 @@ WILD_FORM_RULE_RE = re.compile(
 )
 MOM_HOUSE_MAP = "NewBarkTown_PlayersHouse_1F"
 MOM_GROOMING_ARRAY_RE = re.compile(
-    r"static\s+const\s+u16\s+(sMomFurfrouTrimOrder|sMomDeerlingSeasonalForms)\b[^=]*=\s*\{(.*?)\n\};",
+    r"static\s+const\s+u16\s+(sMomFurfrouTrimOrder|sMomDeerlingSeasonalForms|sMomPikachuCostumes)\b[^=]*=\s*\{(.*?)\n\};",
     re.DOTALL,
 )
 MOM_GROOMING_SPECIALS = {
     "sMomFurfrouTrimOrder": ("ApplyFurfrouTrim", "Mom's grooming (Furfrou trim)"),
     "sMomDeerlingSeasonalForms": ("ApplySeasonalForm", "Mom's grooming (Seasonal Perfume)"),
+    "sMomPikachuCostumes": ("ApplyPikachuCostume", "Mom's grooming (Pikachu Cosplay Kit)"),
 }
 
 

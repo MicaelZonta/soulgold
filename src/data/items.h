@@ -17657,6 +17657,22 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_AuxBottle,
         .iconPalette = gItemIconPalette_AuxEvasion,
     },
+    [ITEM_PIKACHU_COSPLAY_KIT] =
+    {
+        .name = ITEM_NAME("Pikachu Cosplay Kit"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Outfits and caps\n"
+            "sized for Pikachu.\n"
+            "Mom can dress it up."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_Scarf,
+        .iconPalette = gItemIconPalette_YellowScarf,
+    },
 };
 
 #undef ITEM_NAME

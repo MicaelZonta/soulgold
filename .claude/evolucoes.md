@@ -17,6 +17,7 @@ confira que a forma não voltou a aparecer "sem fonte".
 | **Gimmighoul Roaming** | Gachapon Great, Rare | "for now" — pode ganhar fonte própria |
 | **Pichu Spiky-eared** | Gachapon Basic, Ultra Rare | — |
 | **Reins of Unity** (Calyrex Ice/Shadow Rider) | **nenhuma** — as duas Riders não são obteníveis | decidir |
+| **Gigantatite** (a "Mega" das Gmax de 21 espécies: Venusaur, Charizard, Blastoise, Pikachu, Meowth, Gengar, Kingler, Eevee, Garbodor, Melmetal, Orbeetle, Drednaw, Coalossal, Flapple, Appletun, Hatterene, Grimmsnarl, Alcremie, Copperajah, Duraludon, Urshifu Single Strike) | **nenhuma** — as outras Gmax usam as pedras por tipo (Firetite, Watertite…), que existem | decidir |
 
 ## Itens de forma
 
@@ -60,6 +61,7 @@ selvagem guarda **uma** forma e o encontro sorteia qualquer uma do grupo.
 | Forma | Como |
 |---|---|
 | Furfrou (cortes) | tosa da Mom, New Bark Town (`sMomFurfrouTrimOrder`, destrava com `VAR_MOM_FURFROU_EXP`) |
+| Pikachu (6 Cosplay + 8 bonés) | tosa da Mom com o **Pikachu Cosplay Kit** (`sMomPikachuCostumes`, `ApplyPikachuCostume`). Sem o kit, a Mom tosa e manda o jogador ao Rocker do 3º andar da Goldenrod Dept. Store, que vende o kit (¥100.000) a qualquer hora. "No costume" volta a Pikachu normal. A Pikachu Starter fica de fora. Como follower, a fantasia aparece com o sprite da Pikachu normal (não tem sprite de overworld próprio) |
 | Deerling/Sawsbuck (estações) | perfume da Mom, depois da missão do Seasonal Perfume (`sMomDeerlingSeasonalForms`) |
 | Burmy Sandy/Trash | depois de batalhar em caverna/areia ou em construção (Wormadam segue o manto) |
 | Rotom (aparelhos) | porão do Goldenrod Apartment |

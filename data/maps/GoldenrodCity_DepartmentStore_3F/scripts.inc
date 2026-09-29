@@ -18,10 +18,41 @@ GoldenrodDeptStore3_EventScript_Sign::
 	release
 	end
 
+@ Sells the Pikachu Cosplay Kit (Mom dresses Pikachu up with it). Always on
+@ sale, with or without Mom's hint: the kit in the Bag is the only state.
 GoldenrodDeptStore3_EventScript_Rocker::
 	lock
 	faceplayer
+	checkitem ITEM_PIKACHU_COSPLAY_KIT, 1
+	goto_if_eq VAR_RESULT, TRUE, GoldenrodDeptStore3_EventScript_RockerHasKit
 	msgbox GoldenrodDeptStore_Text_3FRocker, MSGBOX_DEFAULT
+	showmoneybox 0, 0
+	msgbox GoldenrodDeptStore_Text_3FRockerKitOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodDeptStore3_EventScript_RockerDecline
+	checkmoney 100000, 0
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodDeptStore3_EventScript_RockerNoMoney
+	checkitemspace ITEM_PIKACHU_COSPLAY_KIT, 1
+	goto_if_eq VAR_RESULT, FALSE, GoldenrodDeptStore3_EventScript_RockerDecline
+	removemoney 100000, 0
+	updatemoneybox 0
+	playse SE_SHOP
+	hidemoneybox
+	giveitem ITEM_PIKACHU_COSPLAY_KIT
+	msgbox GoldenrodDeptStore_Text_3FRockerKitBought, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+GoldenrodDeptStore3_EventScript_RockerNoMoney::
+	msgbox GoldenrodDeptStore_Text_3FRockerKitNoMoney, MSGBOX_DEFAULT
+GoldenrodDeptStore3_EventScript_RockerDecline::
+	hidemoneybox
+	closemessage
+	release
+	end
+
+GoldenrodDeptStore3_EventScript_RockerHasKit::
+	msgbox GoldenrodDeptStore_Text_3FRockerHasKit, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -36,6 +67,28 @@ GoldenrodDeptStore_Text_3FRocker:
     .string "Special?\p"
     .string "It's awesome. It really jacks up\n"
     .string "Special Attack!$"
+
+GoldenrodDeptStore_Text_3FRockerKitOffer:
+    .string "…But you know what REALLY jacks\n"
+    .string "things up? Pikachu in costume!\p"
+    .string "Rock Star, Belle, Pop Star, all\n"
+    .string "the caps… I've got a whole kit.\p"
+    .string "¥100,000 and it's yours. Your\n"
+    .string "Pikachu is gonna be a legend!$"
+
+GoldenrodDeptStore_Text_3FRockerKitBought:
+    .string "Rock on! Just take it to someone\n"
+    .string "who's good with Pokémon and let\l"
+    .string "them dress your Pikachu up!$"
+
+GoldenrodDeptStore_Text_3FRockerKitNoMoney:
+    .string "Aw, man. You're short on cash.\n"
+    .string "The kit's not going anywhere!$"
+
+GoldenrodDeptStore_Text_3FRockerHasKit:
+    .string "How's that Pikachu of yours?\n"
+    .string "Rocking the Rock Star outfit, I\l"
+    .string "hope!$"
 
 GoldenrodDeptStore_Text_3FDirectory:
     .string "For Victory Seekers\p"

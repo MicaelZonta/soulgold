@@ -1118,6 +1118,9 @@ enum __attribute__((packed)) Item
     // SoulGold: ferry pass Olivine <-> Sun and Moon Altar (Rift Missions)
     ITEM_SUN_MOON_TICKET = 933,
 
+    // SoulGold: lets Mom dress Pikachu in its cosplay outfits and caps
+    ITEM_PIKACHU_COSPLAY_KIT = 934,
+
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,
 };

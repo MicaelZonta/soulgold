@@ -7742,6 +7742,15 @@
           "minLevel": null,
           "maxLevel": null,
           "rate": null
+        },
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -7753,6 +7762,3248 @@
         }
       ],
       "slug": "pikachu"
+    },
+    {
+      "id": 1009,
+      "constant": "SPECIES_PIKACHU_COSPLAY",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY"
+      ],
+      "sprite": "sprites/pokemon/pikachu_cosplay.png",
+      "shinySprite": "sprites/pokemon/pikachu_cosplay_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-cosplay"
+    },
+    {
+      "id": 1010,
+      "constant": "SPECIES_PIKACHU_ROCK_STAR",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY"
+      ],
+      "sprite": "sprites/pokemon/pikachu_rock_star.png",
+      "shinySprite": "sprites/pokemon/pikachu_rock_star_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-rock-star"
+    },
+    {
+      "id": 1011,
+      "constant": "SPECIES_PIKACHU_BELLE",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY"
+      ],
+      "sprite": "sprites/pokemon/pikachu_belle.png",
+      "shinySprite": "sprites/pokemon/pikachu_belle_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-belle"
+    },
+    {
+      "id": 1012,
+      "constant": "SPECIES_PIKACHU_POP_STAR",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY"
+      ],
+      "sprite": "sprites/pokemon/pikachu_pop_star.png",
+      "shinySprite": "sprites/pokemon/pikachu_pop_star_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-pop-star"
+    },
+    {
+      "id": 1013,
+      "constant": "SPECIES_PIKACHU_PHD",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY"
+      ],
+      "sprite": "sprites/pokemon/pikachu_phd.png",
+      "shinySprite": "sprites/pokemon/pikachu_phd_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-phd"
+    },
+    {
+      "id": 1014,
+      "constant": "SPECIES_PIKACHU_LIBRE",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY"
+      ],
+      "sprite": "sprites/pokemon/pikachu_libre.png",
+      "shinySprite": "sprites/pokemon/pikachu_libre_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-libre"
+    },
+    {
+      "id": 1015,
+      "constant": "SPECIES_PIKACHU_ORIGINAL",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY",
+        "ABILITY_BATTLE_BOND"
+      ],
+      "sprite": "sprites/pokemon/pikachu_original.png",
+      "shinySprite": "sprites/pokemon/pikachu_original_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-original"
+    },
+    {
+      "id": 1016,
+      "constant": "SPECIES_PIKACHU_HOENN",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY",
+        "ABILITY_BATTLE_BOND"
+      ],
+      "sprite": "sprites/pokemon/pikachu_hoenn.png",
+      "shinySprite": "sprites/pokemon/pikachu_hoenn_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-hoenn"
+    },
+    {
+      "id": 1017,
+      "constant": "SPECIES_PIKACHU_SINNOH",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY",
+        "ABILITY_BATTLE_BOND"
+      ],
+      "sprite": "sprites/pokemon/pikachu_sinnoh.png",
+      "shinySprite": "sprites/pokemon/pikachu_sinnoh_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-sinnoh"
+    },
+    {
+      "id": 1018,
+      "constant": "SPECIES_PIKACHU_UNOVA",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY",
+        "ABILITY_BATTLE_BOND"
+      ],
+      "sprite": "sprites/pokemon/pikachu_unova.png",
+      "shinySprite": "sprites/pokemon/pikachu_unova_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-unova"
+    },
+    {
+      "id": 1019,
+      "constant": "SPECIES_PIKACHU_KALOS",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY",
+        "ABILITY_BATTLE_BOND"
+      ],
+      "sprite": "sprites/pokemon/pikachu_kalos.png",
+      "shinySprite": "sprites/pokemon/pikachu_kalos_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-kalos"
+    },
+    {
+      "id": 1020,
+      "constant": "SPECIES_PIKACHU_ALOLA",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY",
+        "ABILITY_BATTLE_BOND"
+      ],
+      "sprite": "sprites/pokemon/pikachu_alola.png",
+      "shinySprite": "sprites/pokemon/pikachu_alola_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-alola"
+    },
+    {
+      "id": 1021,
+      "constant": "SPECIES_PIKACHU_PARTNER",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY",
+        "ABILITY_BATTLE_BOND"
+      ],
+      "sprite": "sprites/pokemon/pikachu_partner.png",
+      "shinySprite": "sprites/pokemon/pikachu_partner_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-partner"
+    },
+    {
+      "id": 1022,
+      "constant": "SPECIES_PIKACHU_WORLD",
+      "dex": 25,
+      "name": "Pikachu",
+      "types": [
+        "TYPE_ELECTRIC",
+        "TYPE_ELECTRIC"
+      ],
+      "stats": {
+        "hp": 35,
+        "atk": 55,
+        "def": 40,
+        "spa": 50,
+        "spd": 50,
+        "spe": 90
+      },
+      "evYield": {
+        "spe": 2
+      },
+      "eggGroups": [
+        "EGG_GROUP_NO_EGGS_DISCOVERED"
+      ],
+      "categories": [],
+      "bst": 320,
+      "abilities": [
+        "ABILITY_STATIC",
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "regularAbilities": [
+        "ABILITY_STATIC"
+      ],
+      "hiddenAbilities": [
+        "ABILITY_LIGHTNING_ROD"
+      ],
+      "innates": [
+        "ABILITY_PLUS",
+        "ABILITY_BATTERY",
+        "ABILITY_BATTLE_BOND"
+      ],
+      "sprite": "sprites/pokemon/pikachu_world.png",
+      "shinySprite": "sprites/pokemon/pikachu_world_shiny.png",
+      "levelUp": [
+        {
+          "level": 1,
+          "move": "MOVE_NUZZLE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_NASTY_PLOT"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_CHARM"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_SWEET_KISS"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_PLAY_NICE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TAIL_WHIP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GROWL"
+        },
+        {
+          "level": 4,
+          "move": "MOVE_THUNDER_WAVE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_DOUBLE_TEAM"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_ELECTRO_BALL"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 20,
+          "move": "MOVE_SPARK"
+        },
+        {
+          "level": 24,
+          "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 28,
+          "move": "MOVE_IRON_TAIL"
+        },
+        {
+          "level": 32,
+          "move": "MOVE_DISCHARGE"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "level": 37,
+          "move": "MOVE_SLAM"
+        },
+        {
+          "level": 40,
+          "move": "MOVE_LIGHT_SCREEN"
+        },
+        {
+          "level": 44,
+          "move": "MOVE_THUNDER"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_VOLT_TACKLE"
+        }
+      ],
+      "tmhm": [
+        "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_FRUSTRATION",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER",
+        "MOVE_RETURN",
+        "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_REFLECT",
+        "MOVE_FACADE",
+        "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
+        "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_TRAILBLAZE",
+        "MOVE_THUNDER_PUNCH",
+        "MOVE_DRAINING_KISS",
+        "MOVE_VOLT_SWITCH",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_DIG",
+        "MOVE_GRASS_KNOT",
+        "MOVE_SUBSTITUTE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SURF",
+        "MOVE_STRENGTH",
+        "MOVE_FLASH",
+        "MOVE_ROCK_SMASH"
+      ],
+      "tutors": [
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_COUNTER",
+        "MOVE_COVET",
+        "MOVE_CURSE",
+        "MOVE_DEFENSE_CURL",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DYNAMIC_PUNCH",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_HEADBUTT",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MEGA_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MIMIC",
+        "MOVE_MUD_SLAP",
+        "MOVE_NASTY_PLOT",
+        "MOVE_ROLLOUT",
+        "MOVE_SEISMIC_TOSS",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
+        "MOVE_SWAGGER",
+        "MOVE_SWIFT",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VOLT_TACKLE"
+      ],
+      "eggMoves": [],
+      "evolutions": [],
+      "locations": [
+        {
+          "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+          "name": "New Bark Town (Mom)",
+          "time": "",
+          "method": "Mom's grooming (Pikachu Cosplay Kit)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
+      "acquisitionPaths": [],
+      "heldItems": [
+        {
+          "constant": "ITEM_LIGHT_BALL",
+          "rarity": "rare",
+          "name": "Light Ball"
+        }
+      ],
+      "slug": "pikachu-world"
     },
     {
       "id": 1487,
@@ -8761,6 +12012,15 @@
               "name": "Goldenrod Gachapon (Great machine)",
               "time": "",
               "method": "Gachapon (Common)",
+              "minLevel": null,
+              "maxLevel": null,
+              "rate": null
+            },
+            {
+              "map": "MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F",
+              "name": "New Bark Town (Mom)",
+              "time": "",
+              "method": "Mom's grooming (Pikachu Cosplay Kit)",
               "minLevel": null,
               "maxLevel": null,
               "rate": null
@@ -82470,8 +85730,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -82479,8 +85739,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -82723,8 +85983,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -82732,8 +85992,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -337520,6 +340780,90 @@
             "sprite": "sprites/pokemon/pikachu.png"
           },
           {
+            "species": "SPECIES_PIKACHU_COSPLAY",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_cosplay.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ROCK_STAR",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_rock_star.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_BELLE",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_belle.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_POP_STAR",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_pop_star.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_PHD",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_phd.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_LIBRE",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_libre.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ORIGINAL",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_original.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_HOENN",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_hoenn.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_SINNOH",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_sinnoh.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_UNOVA",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_unova.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_KALOS",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_kalos.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ALOLA",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_alola.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_PARTNER",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_partner.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_WORLD",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_world.png"
+          },
+          {
             "species": "SPECIES_PIKACHU_STARTER",
             "name": "Pikachu",
             "dex": 25,
@@ -342400,6 +345744,90 @@
             "name": "Pikachu",
             "dex": 25,
             "sprite": "sprites/pokemon/pikachu.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_COSPLAY",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_cosplay.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ROCK_STAR",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_rock_star.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_BELLE",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_belle.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_POP_STAR",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_pop_star.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_PHD",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_phd.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_LIBRE",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_libre.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ORIGINAL",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_original.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_HOENN",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_hoenn.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_SINNOH",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_sinnoh.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_UNOVA",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_unova.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_KALOS",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_kalos.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ALOLA",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_alola.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_PARTNER",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_partner.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_WORLD",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_world.png"
           },
           {
             "species": "SPECIES_PIKACHU_STARTER",
@@ -348033,6 +351461,90 @@
             "name": "Pikachu",
             "dex": 25,
             "sprite": "sprites/pokemon/pikachu.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_COSPLAY",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_cosplay.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ROCK_STAR",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_rock_star.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_BELLE",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_belle.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_POP_STAR",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_pop_star.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_PHD",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_phd.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_LIBRE",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_libre.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ORIGINAL",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_original.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_HOENN",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_hoenn.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_SINNOH",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_sinnoh.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_UNOVA",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_unova.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_KALOS",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_kalos.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ALOLA",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_alola.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_PARTNER",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_partner.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_WORLD",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_world.png"
           },
           {
             "species": "SPECIES_PIKACHU_STARTER",
@@ -371523,7 +375035,56 @@
             "sprite": "sprites/pokemon/greninja_ash.png"
           }
         ],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_PIKACHU_ORIGINAL",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_original.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_HOENN",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_hoenn.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_SINNOH",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_sinnoh.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_UNOVA",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_unova.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_KALOS",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_kalos.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ALOLA",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_alola.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_PARTNER",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_partner.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_WORLD",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_world.png"
+          }
+        ]
       }
     },
     "ABILITY_POWER_CONSTRUCT": {
@@ -371934,6 +375495,90 @@
             "name": "Pikachu",
             "dex": 25,
             "sprite": "sprites/pokemon/pikachu.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_COSPLAY",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_cosplay.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ROCK_STAR",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_rock_star.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_BELLE",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_belle.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_POP_STAR",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_pop_star.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_PHD",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_phd.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_LIBRE",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_libre.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ORIGINAL",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_original.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_HOENN",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_hoenn.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_SINNOH",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_sinnoh.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_UNOVA",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_unova.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_KALOS",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_kalos.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_ALOLA",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_alola.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_PARTNER",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_partner.png"
+          },
+          {
+            "species": "SPECIES_PIKACHU_WORLD",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_world.png"
           },
           {
             "species": "SPECIES_PIKACHU_STARTER",

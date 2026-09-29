@@ -39,7 +39,7 @@ class FormSourceTests(unittest.TestCase):
         self.assertNotIn("SPECIES_SQUAWKABILLY_BLUE", locations)
 
     def test_mom_grooms_furfrou_and_deerling_forms(self) -> None:
-        species = ["SPECIES_FURFROU_KABUKI", "SPECIES_DEERLING_WINTER", "SPECIES_SAWSBUCK_SPRING"]
+        species = ["SPECIES_FURFROU_KABUKI", "SPECIES_DEERLING_WINTER", "SPECIES_SAWSBUCK_SPRING", "SPECIES_PIKACHU_LIBRE", "SPECIES_PIKACHU_WORLD"]
         locations = {}
 
         add_mom_grooming_form_locations(locations, {s: object() for s in species})  # type: ignore[arg-type]

@@ -4754,6 +4754,23 @@ u16 GetGroomTargetCategory(void)
     case SPECIES_SAWSBUCK_AUTUMN:
     case SPECIES_SAWSBUCK_WINTER:
         return GROOM_CATEGORY_DEERLING;
+    // Pikachu Starter is left out on purpose: it has its own stats.
+    case SPECIES_PIKACHU:
+    case SPECIES_PIKACHU_COSPLAY:
+    case SPECIES_PIKACHU_ROCK_STAR:
+    case SPECIES_PIKACHU_BELLE:
+    case SPECIES_PIKACHU_POP_STAR:
+    case SPECIES_PIKACHU_PHD:
+    case SPECIES_PIKACHU_LIBRE:
+    case SPECIES_PIKACHU_ORIGINAL:
+    case SPECIES_PIKACHU_HOENN:
+    case SPECIES_PIKACHU_SINNOH:
+    case SPECIES_PIKACHU_UNOVA:
+    case SPECIES_PIKACHU_KALOS:
+    case SPECIES_PIKACHU_ALOLA:
+    case SPECIES_PIKACHU_PARTNER:
+    case SPECIES_PIKACHU_WORLD:
+        return GROOM_CATEGORY_PIKACHU;
     default:
         return GROOM_CATEGORY_NORMAL;
     }
@@ -4785,6 +4802,42 @@ void ApplySeasonalForm(void)
         stage = 1;
 
     species = sMomDeerlingSeasonalForms[season][stage];
+    SetMonData(mon, MON_DATA_SPECIES, &species);
+    CalculateMonStats(mon);
+}
+
+// Mom's Pikachu Cosplay Kit menu, in menu order (index in gSpecialVar_0x8005).
+// Index 0 takes the costume off. Cosplay and cap Pikachu cannot evolve, so the
+// player can always come back to a plain Pikachu here.
+static const u16 sMomPikachuCostumes[] =
+{
+    SPECIES_PIKACHU,
+    SPECIES_PIKACHU_ROCK_STAR,
+    SPECIES_PIKACHU_BELLE,
+    SPECIES_PIKACHU_POP_STAR,
+    SPECIES_PIKACHU_PHD,
+    SPECIES_PIKACHU_LIBRE,
+    SPECIES_PIKACHU_COSPLAY,
+    SPECIES_PIKACHU_ORIGINAL,
+    SPECIES_PIKACHU_HOENN,
+    SPECIES_PIKACHU_SINNOH,
+    SPECIES_PIKACHU_UNOVA,
+    SPECIES_PIKACHU_KALOS,
+    SPECIES_PIKACHU_ALOLA,
+    SPECIES_PIKACHU_PARTNER,
+    SPECIES_PIKACHU_WORLD,
+};
+
+// Applies the costume chosen from Mom's menu to the mon in gSpecialVar_0x8004.
+// Only the species changes (nickname, OT, IVs, EVs, moves, shininess stay).
+void ApplyPikachuCostume(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
+    u16 species;
+
+    if (gSpecialVar_0x8005 >= ARRAY_COUNT(sMomPikachuCostumes))
+        return;
+    species = sMomPikachuCostumes[gSpecialVar_0x8005];
     SetMonData(mon, MON_DATA_SPECIES, &species);
     CalculateMonStats(mon);
 }

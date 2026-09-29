@@ -2387,6 +2387,13 @@ static bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32
             *species = megaSpecies;
     }
 #endif
+    // A cosmetic form without its own overworld sprite (Pikachu in a costume
+    // from Mom's Cosplay Kit) follows as its base form instead of the
+    // substitute placeholder.
+    // Limited to Pikachu so no other species' follower changes.
+    if (*species < NUM_SPECIES && gSpeciesInfo[*species].overworldData.tileTag == 0
+     && GET_BASE_SPECIES_ID(*species) == SPECIES_PIKACHU)
+        *species = SPECIES_PIKACHU;
     switch (*species)
     {
     case SPECIES_UNOWN:

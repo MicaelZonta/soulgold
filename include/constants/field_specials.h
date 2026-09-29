@@ -63,6 +63,7 @@ enum GroomTargetCategory
     GROOM_CATEGORY_NORMAL,
     GROOM_CATEGORY_FURFROU,
     GROOM_CATEGORY_DEERLING,
+    GROOM_CATEGORY_PIKACHU,
 };
 
 #define FURFROU_TRIM_COUNT 10 // Natural + 9 unlockable trims, one per point of VAR_MOM_FURFROU_EXP
