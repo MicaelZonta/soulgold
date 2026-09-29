@@ -470,6 +470,7 @@ entrega (inventário em [`../../evolucoes.md`](../../evolucoes.md)):
 | Kyurem | DNA Splicers | enquanto o jogador não tiver |
 | Genesect | um Drive que o jogador ainda não tem (sorteado) | 1 por dia; nada quando tiver os 4 |
 | Zygarde | Zygarde Cube | uma vez |
+| Calyrex | Reins of Unity | enquanto o jogador não tiver |
 
 - É o `afterBossScript` (bit 12 do R15): roda depois do fragmento e de novo
   na volta ao dia concluído. Bolsa cheia não grava nada — volta no mesmo dia.
@@ -497,7 +498,7 @@ Nenhum em aberto.
 ## Decisões já tomadas (histórico)
 
 - 28/09/2026 — **drops de item de forma** (R22: DNA Splicers do Kyurem, Drives
-  do Genesect, Zygarde Cube do Zygarde) e **fragmento do Deoxys em Forme
+  do Genesect, Zygarde Cube do Zygarde; Reins of Unity do Calyrex em 29/09) e **fragmento do Deoxys em Forme
   sorteada** (exceção do R17).
 
 - 27/09/2026 (revisão 3) — o lendário **nunca** é capturado: nocauteado,

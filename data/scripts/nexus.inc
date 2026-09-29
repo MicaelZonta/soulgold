@@ -8477,6 +8477,14 @@ Nexus_EventScript_Kyurem_AfterBoss::
 	msgbox Nexus_Text_Kyurem_AfterBoss, MSGBOX_DEFAULT
 	goto Nexus_EventScript_AfterBossGive
 
+@ Calyrex: the Reins of Unity, until the player has them.
+Nexus_EventScript_Calyrex_AfterBoss::
+	checkitem ITEM_REINS_OF_UNITY
+	goto_if_eq VAR_RESULT, TRUE, Nexus_EventScript_AfterBossEnd
+	setvar VAR_0x8006, ITEM_REINS_OF_UNITY
+	msgbox Nexus_Text_Calyrex_AfterBoss, MSGBOX_DEFAULT
+	goto Nexus_EventScript_AfterBossGive
+
 @ Zygarde: the Zygarde Cube, once.
 Nexus_EventScript_Zygarde_AfterBoss::
 	checkitem ITEM_ZYGARDE_CUBE
@@ -8514,6 +8522,11 @@ Nexus_Text_Kyurem_AfterBoss:
 	.string "Where the fragment was, two halves of\n"
 	.string "something are left lying on the floor.\p"
 	.string "They are trying to be one thing.$"
+
+Nexus_Text_Calyrex_AfterBoss:
+	.string "A braided rein lies where the king\n"
+	.string "stood, still waiting for a steed\l"
+	.string "that hasn't arrived yet.$"
 
 Nexus_Text_Zygarde_AfterBoss:
 	.string "The ground where it stood keeps a\n"

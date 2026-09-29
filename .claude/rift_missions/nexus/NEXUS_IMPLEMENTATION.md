@@ -73,7 +73,7 @@ comuns, no script do mapa.
 + `NEXUS_AFTER_BOSS_EXTERN(<Conceito>)` em `legendaries.h`. Em uso desde
 28/09/2026 pelos **drops de item de forma** (R22): Kyurem (DNA Splicers),
 Genesect (um Drive que falta, via `GetRandomMissingItemInRange`) e Zygarde
-(Zygarde Cube). O script roda depois do fragmento **e** de novo na chegada ao
+(Zygarde Cube); Calyrex (Reins of Unity) desde 29/09. O script roda depois do fragmento **e** de novo na chegada ao
 dia já concluído, então bolsa cheia não perde o drop no mesmo dia.
 
 **Prêmio** — editar `sNexusPrizeGroups` (grupo = faixa contínua de IDs + peso).

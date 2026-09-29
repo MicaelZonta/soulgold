@@ -34,6 +34,7 @@
 NEXUS_AFTER_BOSS_EXTERN(Kyurem)
 NEXUS_AFTER_BOSS_EXTERN(Genesect)
 NEXUS_AFTER_BOSS_EXTERN(Zygarde)
+NEXUS_AFTER_BOSS_EXTERN(Calyrex)
 
 #define NEXUS_CHAMPION(Name)  .championScript = Nexus_EventScript_##Name##_ChampionFight
 #define NEXUS_CHAMPION_EXTERN(Name)  extern const u8 Nexus_EventScript_##Name##_ChampionFight[];
@@ -407,7 +408,7 @@ const struct NexusLegendary gNexusLegendaries[] =
     { .species = SPECIES_REGIDRAGO, .champion = NEXUS_TRAINER_DRAKE, NEXUS_CHAMPION(Drake_Regidrago), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Regidrago) },
     { .species = SPECIES_GLASTRIER, .champion = NEXUS_TRAINER_PRYCE, NEXUS_CHAMPION(Pryce_Glastrier), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Glastrier) },
     { .species = SPECIES_SPECTRIER, .champion = NEXUS_TRAINER_MORTY, NEXUS_CHAMPION(Morty_Spectrier), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Spectrier) },
-    { .species = SPECIES_CALYREX, .champion = NEXUS_TRAINER_WILL, NEXUS_CHAMPION(Will_Calyrex), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Calyrex) },
+    { .species = SPECIES_CALYREX, .champion = NEXUS_TRAINER_WILL, NEXUS_CHAMPION(Will_Calyrex), NEXUS_BOSS_DEFAULT, NEXUS_AFTER_BOSS(Calyrex), NEXUS_LOOKER_FILE(Calyrex) },
     { .species = SPECIES_WO_CHIEN, .champion = NEXUS_TRAINER_ARCHER, NEXUS_CHAMPION(Archer_WoChien), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(WoChien) },
     { .species = SPECIES_TING_LU, .champion = NEXUS_TRAINER_PROTON, NEXUS_CHAMPION(Proton_TingLu), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(TingLu) },
     { .species = SPECIES_OKIDOGI, .champion = NEXUS_TRAINER_JANINE, NEXUS_CHAMPION(Janine_Okidogi), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Okidogi) },

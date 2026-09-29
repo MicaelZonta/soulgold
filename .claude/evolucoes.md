@@ -16,7 +16,6 @@ confira que a forma não voltou a aparecer "sem fonte".
 | **Sinistea Antique / Poltchageist Artisan** | colecionadora de chá, casa 3 de Kitakami (¥20.000 cada, Lv 30) | um **evento** no lugar da loja |
 | **Gimmighoul Roaming** | Gachapon Great, Rare | "for now" — pode ganhar fonte própria |
 | **Pichu Spiky-eared** | Gachapon Basic, Ultra Rare | — |
-| **Reins of Unity** (Calyrex Ice/Shadow Rider) | **nenhuma** — as duas Riders não são obteníveis | decidir |
 | **Gigantatite** (a "Mega" das Gmax de 21 espécies: Venusaur, Charizard, Blastoise, Pikachu, Meowth, Gengar, Kingler, Eevee, Garbodor, Melmetal, Orbeetle, Drednaw, Coalossal, Flapple, Appletun, Hatterene, Grimmsnarl, Alcremie, Copperajah, Duraludon, Urshifu Single Strike) | Elm entrega junto com a Bondstone (`NewBarkTown_Lab_GiveStarterMega`, depois do Mega Ring). Save que já passou dessa cena não recebe | **repensar no futuro**: ideia do autor (29/09/2026) é uma **GMAX Adventure com o Leon**, provavelmente a fonte definitiva da Gigantatite |
 
 ## Itens de forma
@@ -27,6 +26,7 @@ confira que a forma não voltou a aparecer "sem fonte".
 | Drives (4) | Genesect Douse/Shock/Burn/Chill | Nexus, boss Genesect: um Drive que falta, 1 por dia | `Nexus_EventScript_Genesect_AfterBoss` |
 | DNA Splicers | Kyurem Black/White | Nexus, boss Kyurem (**provisório**) | `Nexus_EventScript_Kyurem_AfterBoss` |
 | Zygarde Cube | Zygarde 10% / Power Construct | Nexus, boss Zygarde, uma vez | `Nexus_EventScript_Zygarde_AfterBoss` |
+| Reins of Unity | Calyrex Ice/Shadow Rider (fundindo com Glastrier/Spectrier, que também vêm do Nexus) | Nexus, boss Calyrex, enquanto não tiver | `Nexus_EventScript_Calyrex_AfterBoss` |
 | Meteorite | Deoxys Attack/Defense/Speed | **fora da ROM** (Mt. Chimney). As Formes vêm do fragmento do Nexus, sorteadas | `sDeoxysFragmentForms`, `src/nexus.c` |
 | Nectars (4) | Oricorio Baile/Pom-Pom/Pa'u/Sensu | loja de Olivine City | `OlivineCity/scripts.inc` |
 | Máscaras (3) | Ogerpon Wellspring/Hearthflame/Cornerstone | Kitakami Temple Storage | `Kitakami_Temple_Storage` |

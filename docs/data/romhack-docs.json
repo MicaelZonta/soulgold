@@ -86201,8 +86201,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -86210,8 +86210,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -295473,7 +295473,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Calyrex boss drop)",
+          "time": "",
+          "method": "Fuse with Reins of Unity",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "calyrex-ice"
@@ -295722,7 +295732,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Calyrex boss drop)",
+          "time": "",
+          "method": "Fuse with Reins of Unity",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "calyrex-shadow"
