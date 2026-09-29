@@ -406,3 +406,34 @@ def add_roamer_locations(
             "maxLevel": lvl,
             "rate": None,
         })
+
+
+# ---------------------------------------------------------------------------
+# Forms reached by knowing a move (Keldeo Resolute: Secret Sword). Only shown
+# for forms with no other source (Rotom's appliances already have theirs).
+# ---------------------------------------------------------------------------
+MOVE_FORM_RE = re.compile(
+    r"\{FORM_CHANGE_MOVE\s*,\s*(SPECIES_[A-Z0-9_]+)\s*,\s*MOVE_([A-Z0-9_]+)\s*,\s*WHEN_LEARNED"
+)
+
+
+def add_move_form_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    try:
+        text = strip_c_comments(read(FORM_CHANGE_TABLES_H))
+    except FileNotFoundError:
+        return
+    for target, move in MOVE_FORM_RE.findall(text):
+        if target not in by_species or locations.get(target):
+            continue
+        _add_location(locations, target, {
+            "map": "",
+            "name": "Any Move Reminder",
+            "time": "",
+            "method": "Form change: learn " + move.replace("_", " ").title(),
+            "minLevel": None,
+            "maxLevel": None,
+            "rate": None,
+        })

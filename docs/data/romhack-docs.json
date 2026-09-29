@@ -86228,8 +86228,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -86237,8 +86237,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -198270,7 +198270,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "",
+          "name": "Any Move Reminder",
+          "time": "",
+          "method": "Form change: learn Secret Sword",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "keldeo-resolute"

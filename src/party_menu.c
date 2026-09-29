@@ -6160,6 +6160,11 @@ static void Task_LearnedMove(u8 taskId)
     s16 *move = &gPartyMenu.data1;
     enum Item item = gSpecialVar_ItemId;
 
+    // Keldeo becomes Resolute once it knows Secret Sword (FORM_CHANGE_MOVE).
+    // Keldeo only: Rotom's move rows must not fire from a TM.
+    if (GET_BASE_SPECIES_ID(GetMonData(mon, MON_DATA_SPECIES)) == SPECIES_KELDEO)
+        TryFormChange(mon, FORM_CHANGE_MOVE);
+
     if (move[1] == 0)
     {
         AdjustFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM);
@@ -9339,6 +9344,8 @@ void MoveDeleterForgetMove(void)
     SetBoxMonData(boxmon, MON_DATA_PP_BONUSES, &ppBonuses);
     for (u32 i = gSpecialVar_0x8005; i < MAX_MON_MOVES - 1; i++)
         ShiftMoveSlot(boxmon, i, i + 1);
+    // Forgetting Secret Sword turns Keldeo back to Ordinary (FORM_CHANGE_MOVE).
+    TrySelectedMonMoveFormChange();
 }
 
 static void ShiftMoveSlot(struct BoxPokemon *mon, u8 slotTo, u8 slotFrom)

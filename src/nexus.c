@@ -783,6 +783,10 @@ void Nexus_GiveFragment(void)
     if (species == SPECIES_DEOXYS_NORMAL)
         species = sDeoxysFragmentForms[Random() % ARRAY_COUNT(sDeoxysFragmentForms)];
     CreateRandomMon(&mon, species, 1);
+    // A Keldeo that already knows Secret Sword is born Resolute, the same rule
+    // the relearner and the move deleter apply (FORM_CHANGE_MOVE).
+    if (species == SPECIES_KELDEO_ORDINARY)
+        TryFormChange(&mon, FORM_CHANGE_MOVE);
     GiveFragmentBossPerfectIVs(&mon, bossSpecies);
     SetMonData(&mon, MON_DATA_POKEBALL, &ball);
     gSpecialVar_0x8004 = species;

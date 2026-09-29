@@ -38,7 +38,7 @@ Retrato de 29/09/2026 (famílias, pela forma de nome mais curto):
 | Battle Cafe (e Nexus) | 18 | Tapus, aves de Galar, Koraidon, Miraidon, o quarteto das Forças da Natureza (Incarnate e Therian), Diancie |
 | Troféus (Route 40) | 5 | Floette Eternal, Greninja (Battle Bond), Magearna Original, Poipole, Zarude |
 | Game Corner + Gachapon | 1 | Porygon |
-| **Nada** | — | **Keldeo Resolute** (depende de aprender Secret Sword) — o resto da lista "nada" são formas só de batalha |
+| **Nada** | — | só formas de batalha (Castform, Cherrim, Cramorant, Minior Core, Palafin Hero, Xerneas Active, Greninja Ash) |
 
 Ao criar evento, rota ou NPC novo, olhe esta tabela: é o estoque de espécies
 esperando um lugar.
@@ -101,4 +101,5 @@ selvagem guarda **uma** forma e o encontro sorteia qualquer uma do grupo.
 | Deerling/Sawsbuck (estações) | perfume da Mom, depois da missão do Seasonal Perfume (`sMomDeerlingSeasonalForms`) |
 | Burmy Sandy/Trash | depois de batalhar em caverna/areia ou em construção (Wormadam segue o manto) |
 | Rotom (aparelhos) | porão do Goldenrod Apartment |
+| Keldeo Resolute | aprender Secret Sword (relearner; o fragmento do Nexus já nasce Resolute se vier sabendo). Esquecer no Move Deleter de Blackthorn volta a Ordinary. A troca por golpe (`FORM_CHANGE_MOVE`) só é aplicada ao Keldeo: a do Rotom continua desligada, porque as formas dele são dos aparelhos |
 | Castform, Cherrim, Cramorant, Palafin Hero, Minior Core, Xerneas Active | só em batalha — não são buraco |

@@ -891,6 +891,7 @@ void RestoreFacilitySketchedMoves(struct Pokemon *savedMon, struct Pokemon *faci
 bool32 IsSpeciesOfType(u32 species, enum Type type);
 u16 GetSpeciesRandomSeeded(u16 species, u8 type, u16 additionalOffset);
 struct BoxPokemon *GetSelectedBoxMonFromPcOrParty(void);
+bool32 TrySelectedMonMoveFormChange(void);
 u32 GiveScriptedMonToPlayer(struct Pokemon *mon, u8 slot);
 void ChangePokemonNicknameWithCallback(void (*callback)(void));
 // Multi Items

@@ -24,6 +24,7 @@ from tools.soulgold_docs.parsers.encounters import add_hidden_grotto_species_loc
 from tools.soulgold_docs.parsers.forms import (
     add_environment_form_locations,
     add_item_form_change_locations,
+    add_move_form_locations,
     add_nexus_random_fragment_form_locations,
     add_roamer_locations,
     add_mom_grooming_form_locations,
@@ -122,6 +123,7 @@ def build() -> None:
     add_nexus_random_fragment_form_locations(species_locations, species_data.by_constant)
     add_environment_form_locations(species_locations, species_data.by_constant)
     add_roamer_locations(species_locations, species_data.by_constant)
+    add_move_form_locations(species_locations, species_data.by_constant)
     located_species = attach_species_locations(enriched_species, species_locations)
     attach_acquisition_paths(located_species, item_records)
     visible_species = visible_species_rows(located_species)

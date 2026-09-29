@@ -6801,6 +6801,23 @@ bool32 TryFormChange(struct Pokemon *mon, enum FormChanges method)
     return FALSE;
 }
 
+// Keldeo (Secret Sword): FORM_CHANGE_MOVE re-checked
+// after a move is learned or forgotten outside battle on the Pokemon picked
+// by the script (gSpecialVar_0x8004: party slot or PC_MON_CHOSEN).
+bool32 TrySelectedMonMoveFormChange(void)
+{
+    // Keldeo only: Rotom's FORM_CHANGE_MOVE rows would otherwise turn a Rotom
+    // into another appliance just by learning a TM (its forms belong to the
+    // Goldenrod Apartment appliances).
+    if (GET_BASE_SPECIES_ID(GetBoxMonData(GetSelectedBoxMonFromPcOrParty(), MON_DATA_SPECIES)) != SPECIES_KELDEO)
+        return FALSE;
+    if (gSpecialVar_0x8004 == PC_MON_CHOSEN)
+        return TryBoxMonFormChange(GetSelectedBoxMonFromPcOrParty(), FORM_CHANGE_MOVE);
+    if (gSpecialVar_0x8004 < PARTY_SIZE)
+        return TryFormChange(&gPlayerParty[gSpecialVar_0x8004], FORM_CHANGE_MOVE);
+    return FALSE;
+}
+
 bool32 TrySelectedMonNicknameFormChange(void)
 {
     if (gSpecialVar_0x8004 == PC_MON_CHOSEN)
