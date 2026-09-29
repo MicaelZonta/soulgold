@@ -762,6 +762,17 @@ u16 Nexus_HasAnyBall(void)
 // party AND box space before offering, and removes the ball only on success).
 // VAR_RESULT = MON_GIVEN_TO_PARTY / MON_GIVEN_TO_PC / MON_CANT_GIVE;
 // VAR_0x8004 = the fragment's species, for bufferspeciesname.
+// R17 exception (author, 28/09/2026): a Deoxys fragment comes in a random
+// Forme. It is the only source of Attack/Defense/Speed - the Meteorite lives in
+// Mt. Chimney, outside the ROM (.claude/evolucoes.md).
+static const u16 sDeoxysFragmentForms[] =
+{
+    SPECIES_DEOXYS_NORMAL,
+    SPECIES_DEOXYS_ATTACK,
+    SPECIES_DEOXYS_DEFENSE,
+    SPECIES_DEOXYS_SPEED,
+};
+
 void Nexus_GiveFragment(void)
 {
     u16 bossSpecies = GetTodaysLegendary()->species;
@@ -769,6 +780,8 @@ void Nexus_GiveFragment(void)
     struct Pokemon mon;
     u8 ball = ItemIdToBallId(gSpecialVar_0x8005);
 
+    if (species == SPECIES_DEOXYS_NORMAL)
+        species = sDeoxysFragmentForms[Random() % ARRAY_COUNT(sDeoxysFragmentForms)];
     CreateRandomMon(&mon, species, 1);
     GiveFragmentBossPerfectIVs(&mon, bossSpecies);
     SetMonData(&mon, MON_DATA_POKEBALL, &ball);

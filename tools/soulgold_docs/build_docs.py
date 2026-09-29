@@ -22,6 +22,9 @@ from tools.soulgold_docs.parsers.abilities import build_ability_usage, parse_abi
 from tools.soulgold_docs.parsers.acquisition import attach_acquisition_paths
 from tools.soulgold_docs.parsers.encounters import add_hidden_grotto_species_locations, build_species_locations, parse_wild_encounters
 from tools.soulgold_docs.parsers.forms import (
+    add_environment_form_locations,
+    add_item_form_change_locations,
+    add_nexus_random_fragment_form_locations,
     add_mom_grooming_form_locations,
     add_rotom_form_change_locations,
     add_wild_random_form_locations,
@@ -114,6 +117,9 @@ def build() -> None:
     add_rotom_form_change_locations(species_locations, species_data.by_constant)
     add_wild_random_form_locations(species_locations, species_data.by_constant)
     add_mom_grooming_form_locations(species_locations, species_data.by_constant)
+    add_item_form_change_locations(species_locations, species_data.by_constant)
+    add_nexus_random_fragment_form_locations(species_locations, species_data.by_constant)
+    add_environment_form_locations(species_locations, species_data.by_constant)
     located_species = attach_species_locations(enriched_species, species_locations)
     attach_acquisition_paths(located_species, item_records)
     visible_species = visible_species_rows(located_species)

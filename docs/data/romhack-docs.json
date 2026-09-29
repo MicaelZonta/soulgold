@@ -61044,7 +61044,17 @@
         "MOVE_ELECTRIC_TERRAIN"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_MAUVILLE_CITY_GAME_CORNER",
+          "name": "Goldenrod Gachapon (Basic machine)",
+          "time": "",
+          "method": "Gachapon (Ultra Rare)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "pichu-spiky-eared"
@@ -82460,8 +82470,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -82469,8 +82479,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -82713,8 +82723,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -82722,8 +82732,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -82931,8 +82941,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -82940,8 +82950,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -117136,6 +117146,15 @@
           "minLevel": 15,
           "maxLevel": 15,
           "rate": null
+        },
+        {
+          "map": "MAP_KITAKAMI_HOUSES",
+          "name": "Kitakami Houses",
+          "time": "",
+          "method": "Gift",
+          "minLevel": 30,
+          "maxLevel": 30,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -121038,6 +121057,15 @@
           "minLevel": 1,
           "maxLevel": 1,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment (random form)",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -121249,7 +121277,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment (random form)",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "deoxys-attack"
@@ -121466,7 +121504,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment (random form)",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "deoxys-defense"
@@ -121674,7 +121722,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (post-Necrozma daily, boss fragment)",
+          "time": "",
+          "method": "Nexus fragment (random form)",
+          "minLevel": 1,
+          "maxLevel": 1,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "deoxys-speed"
@@ -127442,7 +127500,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "",
+          "name": "After a battle",
+          "time": "",
+          "method": "Form change: battle in cave / sand",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "burmy-sandy"
@@ -127541,7 +127609,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "",
+          "name": "After a battle",
+          "time": "",
+          "method": "Form change: battle in building",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "burmy-trash"
@@ -127951,7 +128029,40 @@
       "eggMoves": [],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_BURMY_SANDY",
+          "locations": [
+            {
+              "map": "",
+              "name": "After a battle",
+              "time": "",
+              "method": "Form change: battle in cave / sand",
+              "minLevel": null,
+              "maxLevel": null,
+              "rate": null
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_BURMY_SANDY",
+              "target": "SPECIES_WORMADAM_SANDY",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "20",
+                "target": "SPECIES_WORMADAM_SANDY",
+                "conditions": [
+                  "Female"
+                ],
+                "label": "Level 20 (Female)",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [
         {
           "constant": "ITEM_SILVER_POWDER",
@@ -128151,7 +128262,40 @@
       "eggMoves": [],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_BURMY_TRASH",
+          "locations": [
+            {
+              "map": "",
+              "name": "After a battle",
+              "time": "",
+              "method": "Form change: battle in building",
+              "minLevel": null,
+              "maxLevel": null,
+              "rate": null
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_BURMY_TRASH",
+              "target": "SPECIES_WORMADAM_TRASH",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "20",
+                "target": "SPECIES_WORMADAM_TRASH",
+                "conditions": [
+                  "Female"
+                ],
+                "label": "Level 20 (Female)",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [
         {
           "constant": "ITEM_SILVER_POWDER",
@@ -128566,7 +128710,40 @@
       "eggMoves": [],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_BURMY_SANDY",
+          "locations": [
+            {
+              "map": "",
+              "name": "After a battle",
+              "time": "",
+              "method": "Form change: battle in cave / sand",
+              "minLevel": null,
+              "maxLevel": null,
+              "rate": null
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_BURMY_SANDY",
+              "target": "SPECIES_MOTHIM_SANDY",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "20",
+                "target": "SPECIES_MOTHIM_SANDY",
+                "conditions": [
+                  "Male"
+                ],
+                "label": "Level 20 (Male)",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [
         {
           "constant": "ITEM_SILVER_POWDER",
@@ -128757,7 +128934,40 @@
       "eggMoves": [],
       "evolutions": [],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_BURMY_TRASH",
+          "locations": [
+            {
+              "map": "",
+              "name": "After a battle",
+              "time": "",
+              "method": "Form change: battle in building",
+              "minLevel": null,
+              "maxLevel": null,
+              "rate": null
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_BURMY_TRASH",
+              "target": "SPECIES_MOTHIM_TRASH",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "20",
+                "target": "SPECIES_MOTHIM_TRASH",
+                "conditions": [
+                  "Male"
+                ],
+                "label": "Level 20 (Male)",
+                "itemName": ""
+              }
+            }
+          ]
+        }
+      ],
       "heldItems": [
         {
           "constant": "ITEM_SILVER_POWDER",
@@ -150203,7 +150413,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_SPEAR_PILLAR_TOP",
+          "name": "Spear Pillar Top",
+          "time": "",
+          "method": "Hold Adamant Orb",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "dialga-origin"
@@ -150791,7 +151011,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_SPEAR_PILLAR_TOP",
+          "name": "Spear Pillar Top",
+          "time": "",
+          "method": "Hold Lustrous Orb",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "palkia-origin"
@@ -151798,7 +152028,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_SPEAR_PILLAR_TOP",
+          "name": "Spear Pillar Top",
+          "time": "",
+          "method": "Hold Griseous Orb",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "giratina-origin"
@@ -152991,6 +153231,15 @@
           "minLevel": 1,
           "maxLevel": 1,
           "rate": null
+        },
+        {
+          "map": "MAP_GOLDENROD_CITY_FLOWER_SHOP",
+          "name": "Goldenrod City Flower Shop",
+          "time": "",
+          "method": "Use Gracidea",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -153152,7 +153401,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_GOLDENROD_CITY_FLOWER_SHOP",
+          "name": "Goldenrod City Flower Shop",
+          "time": "",
+          "method": "Use Gracidea",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -192228,6 +192487,15 @@
           "minLevel": 1,
           "maxLevel": 1,
           "rate": null
+        },
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe",
+          "time": "",
+          "method": "Use Reveal Glass",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -192421,7 +192689,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe",
+          "time": "",
+          "method": "Use Reveal Glass",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "tornadus-therian"
@@ -192652,6 +192930,15 @@
           "minLevel": 1,
           "maxLevel": 1,
           "rate": null
+        },
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe",
+          "time": "",
+          "method": "Use Reveal Glass",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -192866,7 +193153,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe",
+          "time": "",
+          "method": "Use Reveal Glass",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "thundurus-therian"
@@ -193497,6 +193794,15 @@
           "minLevel": 1,
           "maxLevel": 1,
           "rate": null
+        },
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe",
+          "time": "",
+          "method": "Use Reveal Glass",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -193699,7 +194005,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe",
+          "time": "",
+          "method": "Use Reveal Glass",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "landorus-therian"
@@ -194091,7 +194407,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Kyurem boss drop)",
+          "time": "",
+          "method": "Fuse with DNA Splicers",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "kyurem-white"
@@ -194281,7 +194607,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Kyurem boss drop)",
+          "time": "",
+          "method": "Fuse with DNA Splicers",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "kyurem-black"
@@ -195475,7 +195811,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Genesect boss drop)",
+          "time": "",
+          "method": "Hold Douse Drive",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "genesect-douse"
@@ -195668,7 +196014,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Genesect boss drop)",
+          "time": "",
+          "method": "Hold Shock Drive",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "genesect-shock"
@@ -195861,7 +196217,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Genesect boss drop)",
+          "time": "",
+          "method": "Hold Burn Drive",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "genesect-burn"
@@ -196054,7 +196420,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Genesect boss drop)",
+          "time": "",
+          "method": "Hold Chill Drive",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "genesect-chill"
@@ -226030,6 +226406,15 @@
           "minLevel": 1,
           "maxLevel": 1,
           "rate": null
+        },
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Zygarde boss drop)",
+          "time": "",
+          "method": "Use Zygarde Cube",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -226215,7 +226600,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Zygarde boss drop)",
+          "time": "",
+          "method": "Use Zygarde Cube",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "zygarde-10-aura-break"
@@ -226399,7 +226794,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Zygarde boss drop)",
+          "time": "",
+          "method": "Use Zygarde Cube",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "zygarde-10-power-construct"
@@ -226583,7 +226988,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_NEXUS",
+          "name": "Nexus (Zygarde boss drop)",
+          "time": "",
+          "method": "Use Zygarde Cube",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "zygarde-50-power-construct"
@@ -227599,6 +228014,15 @@
           "minLevel": 1,
           "maxLevel": 1,
           "rate": null
+        },
+        {
+          "map": "MAP_VAJRA_PYRAMID_FINAL_CHAMBER",
+          "name": "Vajra Pyramid Final Chamber",
+          "time": "",
+          "method": "Use Prison Bottle",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -227790,7 +228214,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_VAJRA_PYRAMID_FINAL_CHAMBER",
+          "name": "Vajra Pyramid Final Chamber",
+          "time": "",
+          "method": "Use Prison Bottle",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "hoopa-unbound"
@@ -232929,7 +233363,17 @@
         "MOVE_CAPTIVATE"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_OLIVINE_CITY",
+          "name": "Olivine City",
+          "time": "",
+          "method": "Use Red Nectar",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -233111,7 +233555,17 @@
         "MOVE_CAPTIVATE"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_OLIVINE_CITY",
+          "name": "Olivine City",
+          "time": "",
+          "method": "Use Yellow Nectar",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -233293,7 +233747,17 @@
         "MOVE_CAPTIVATE"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_OLIVINE_CITY",
+          "name": "Olivine City",
+          "time": "",
+          "method": "Use Pink Nectar",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -233493,6 +233957,15 @@
           "minLevel": 35,
           "maxLevel": 35,
           "rate": 25
+        },
+        {
+          "map": "MAP_OLIVINE_CITY",
+          "name": "Olivine City",
+          "time": "",
+          "method": "Use Purple Nectar",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -241498,7 +241971,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Fighting Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-fighting"
@@ -241723,7 +242206,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Flying Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-flying"
@@ -241948,7 +242441,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Poison Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-poison"
@@ -242173,7 +242676,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Ground Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-ground"
@@ -242398,7 +242911,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Rock Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-rock"
@@ -242623,7 +243146,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Bug Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-bug"
@@ -242848,7 +243381,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Ghost Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-ghost"
@@ -243073,7 +243616,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Steel Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-steel"
@@ -243298,7 +243851,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Fire Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-fire"
@@ -243523,7 +244086,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Water Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-water"
@@ -243748,7 +244321,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Grass Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-grass"
@@ -243973,7 +244556,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Electric Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-electric"
@@ -244198,7 +244791,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Psychic Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-psychic"
@@ -244423,7 +245026,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Ice Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-ice"
@@ -244648,7 +245261,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Dragon Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-dragon"
@@ -244873,7 +245496,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Dark Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-dark"
@@ -245098,7 +245731,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CIANWOOD_CITY",
+          "name": "Cianwood City",
+          "time": "",
+          "method": "Hold Fairy Memory",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "silvally-fairy"
@@ -267680,7 +268323,17 @@
           "itemName": "Chipped Pot"
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_KITAKAMI_HOUSES",
+          "name": "Kitakami tea-set collector",
+          "time": "",
+          "method": "Purchase (20,000)",
+          "minLevel": 30,
+          "maxLevel": 30,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "sinistea-antique"
@@ -268064,6 +268717,36 @@
             {
               "kind": "evolve",
               "source": "SPECIES_SINISTEA_PHONY",
+              "target": "SPECIES_POLTEAGEIST_ANTIQUE",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_ITEM",
+                "param": "ITEM_CHIPPED_POT",
+                "target": "SPECIES_POLTEAGEIST_ANTIQUE",
+                "conditions": [],
+                "label": "By Using Specific Item (Chipped Pot)",
+                "itemName": "Chipped Pot"
+              }
+            }
+          ]
+        },
+        {
+          "source": "SPECIES_SINISTEA_ANTIQUE",
+          "locations": [
+            {
+              "map": "MAP_KITAKAMI_HOUSES",
+              "name": "Kitakami tea-set collector",
+              "time": "",
+              "method": "Purchase (20,000)",
+              "minLevel": 30,
+              "maxLevel": 30,
+              "rate": null
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_SINISTEA_ANTIQUE",
               "target": "SPECIES_POLTEAGEIST_ANTIQUE",
               "requirement": "",
               "evolution": {
@@ -293991,6 +294674,15 @@
           "minLevel": 1,
           "maxLevel": 1,
           "rate": null
+        },
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe",
+          "time": "",
+          "method": "Use Reveal Glass",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -294168,7 +294860,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe",
+          "time": "",
+          "method": "Use Reveal Glass",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "enamorus-therian"
@@ -298032,7 +298734,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_MAUVILLE_CITY_GAME_CORNER",
+          "name": "Goldenrod Gachapon (Great machine)",
+          "time": "",
+          "method": "Gachapon (Rare)",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "gimmighoul-roaming"
@@ -298338,7 +299050,17 @@
           "itemName": "Masterpiece Teacup"
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_KITAKAMI_HOUSES",
+          "name": "Kitakami tea-set collector",
+          "time": "",
+          "method": "Purchase (20,000)",
+          "minLevel": 30,
+          "maxLevel": 30,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "poltchageist-artisan"
@@ -298672,6 +299394,36 @@
             {
               "kind": "evolve",
               "source": "SPECIES_POLTCHAGEIST_COUNTERFEIT",
+              "target": "SPECIES_SINISTCHA_MASTERPIECE",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_ITEM",
+                "param": "ITEM_MASTERPIECE_TEACUP",
+                "target": "SPECIES_SINISTCHA_MASTERPIECE",
+                "conditions": [],
+                "label": "By Using Specific Item (Masterpiece Teacup)",
+                "itemName": "Masterpiece Teacup"
+              }
+            }
+          ]
+        },
+        {
+          "source": "SPECIES_POLTCHAGEIST_ARTISAN",
+          "locations": [
+            {
+              "map": "MAP_KITAKAMI_HOUSES",
+              "name": "Kitakami tea-set collector",
+              "time": "",
+              "method": "Purchase (20,000)",
+              "minLevel": 30,
+              "maxLevel": 30,
+              "rate": null
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_POLTCHAGEIST_ARTISAN",
               "target": "SPECIES_SINISTCHA_MASTERPIECE",
               "requirement": "",
               "evolution": {
@@ -299055,7 +299807,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_KITAKAMI_TEMPLE_STORAGE",
+          "name": "Kitakami Temple Storage",
+          "time": "",
+          "method": "Hold Wellspring Mask",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "ogerpon-wellspring"
@@ -299231,7 +299993,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_KITAKAMI_TEMPLE_STORAGE",
+          "name": "Kitakami Temple Storage",
+          "time": "",
+          "method": "Hold Hearthflame Mask",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "ogerpon-hearthflame"
@@ -299407,7 +300179,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_KITAKAMI_TEMPLE_STORAGE",
+          "name": "Kitakami Temple Storage",
+          "time": "",
+          "method": "Hold Cornerstone Mask",
+          "minLevel": null,
+          "maxLevel": null,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "ogerpon-cornerstone"

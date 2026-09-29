@@ -613,6 +613,7 @@ gSpecials::
 	def_special GetGroomTargetCategory
 	def_special ApplyFurfrouTrim
 	def_special ApplySeasonalForm
+	def_special GetRandomMissingItemInRange
 	def_special SetHpStat
 	def_special SetAtkStat
 	def_special SetDefStat

@@ -1705,6 +1705,7 @@ static const u16 sGachaBasicSpeciesUltraRare[] = {
     SPECIES_TOTODILE,
     SPECIES_BULBASAUR,
     SPECIES_CHIKORITA,
+    SPECIES_PICHU_SPIKY_EARED,
 };
 
 static const u16 sGachaGreatSpeciesCommon[] = {
@@ -1836,6 +1837,7 @@ static const u16 sGachaGreatSpeciesRare[] = {
     SPECIES_MILTANK,
     SPECIES_SCYTHER,
     SPECIES_PINSIR,
+    SPECIES_GIMMIGHOUL_ROAMING,
 };
 
 static const u16 sGachaGreatSpeciesUltraRare[] = {

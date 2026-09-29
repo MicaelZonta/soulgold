@@ -172,9 +172,71 @@ script PorygonPC {
 	goto(EventScript_PCMainMenu)
 }
 
+// Tea-set collector: sells the rare Formes nothing else in the game gives
+// (Antique Sinistea, Artisan Poltchageist), so Antique Polteageist and
+// Masterpiece Sinistcha can be reached with the Chipped Pot / Masterpiece
+// Teacup. Temporary home until a proper event (.claude/evolucoes.md).
+// Room is checked BEFORE the offer (skill entregar-pokemon-ou-ovo).
 script KitakamiHouses_3_Lady {
-    msgbox("Life is peaceful here with my family,
-            I couldn't ask for much else.", MSGBOX_NPC)
+    lock
+    faceplayer
+    getpartysize
+    if (var(VAR_RESULT) == PARTY_SIZE) {
+        specialvar(VAR_RESULT, ScriptCheckFreePokemonStorageSpace)
+        if (var(VAR_RESULT) == FALSE) {
+            msgbox("I'd show you my collection, but your
+                    team is full and so are your boxes.
+
+                    Make some room and come back!")
+            release
+            end
+        }
+    }
+    showmoneybox(0, 0)
+    msgbox("I collect old tea sets. Every so often
+            a cup or a pot comes with someone
+            still living in it.
+
+            I can't keep them all. ¥20,000 and
+            one of them goes home with you.")
+    dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Antique Sinistea", "Artisan Poltchageist", "No thanks")
+    switch (var(VAR_RESULT)) {
+        case 0:
+            setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_SINISTEA_ANTIQUE)
+        case 1:
+            setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_POLTCHAGEIST_ARTISAN)
+        default:
+            hidemoneybox
+            msgbox("Oh well. They're good company anyway.")
+            release
+            end
+    }
+    checkmoney(20000)
+    if (var(VAR_RESULT) == FALSE) {
+        hidemoneybox
+        msgbox("Oh dear, you're a little short.
+                They'll still be here!")
+        release
+        end
+    }
+    bufferspeciesname(STR_VAR_1, VAR_TEMP_TRANSFERRED_SPECIES)
+    givemon(VAR_TEMP_TRANSFERRED_SPECIES, 30)
+    // Defensive: the check before the offer already guarantees room.
+    if (var(VAR_RESULT) == MON_CANT_GIVE) {
+        hidemoneybox
+        msgbox("Hm, there's nowhere for it to go.
+                Make some room and come back!")
+        release
+        end
+    }
+    removemoney(20000)
+    updatemoneybox
+    call(Common_EventScript_GiftMon)
+    hidemoneybox
+    msgbox("Treat it gently. A chipped pot or a
+            masterpiece teacup will help it grow.")
+    release
+    end
 }
 
 script KitakamiHouses_3_Man {

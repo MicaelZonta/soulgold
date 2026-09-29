@@ -4910,3 +4910,22 @@ void SetAbility(void)
     u32 ability = gSpecialVar_Result;
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM, &ability);
 }
+
+// VAR_RESULT = a random item of the consecutive run VAR_0x8004 .. VAR_0x8004 +
+// VAR_0x8005 - 1 that the player has none of (Bag or PC), or ITEM_NONE when
+// every one of them is already owned. Used for the drops that complete a set:
+// Silvally's Memories (Gladion's rematch) and Genesect's Drives (Nexus).
+void GetRandomMissingItemInRange(void)
+{
+    u16 missing[32];
+    u32 count = 0;
+    u32 i;
+
+    for (i = 0; i < gSpecialVar_0x8005 && count < ARRAY_COUNT(missing); i++)
+    {
+        u16 item = gSpecialVar_0x8004 + i;
+        if (!CheckBagHasItem(item, 1) && !CheckPCHasItem(item, 1))
+            missing[count++] = item;
+    }
+    gSpecialVar_Result = count == 0 ? ITEM_NONE : missing[Random() % count];
+}

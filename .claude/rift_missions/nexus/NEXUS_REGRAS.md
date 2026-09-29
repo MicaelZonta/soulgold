@@ -318,7 +318,7 @@ O que o jogador **fez** no dia cabe numa única var de 16 bits (nome sugerido
 | 6–7 | sala 4 | idem |
 | 8–10 | progresso | 0–5 = lutas vencidas (4 treinadores + campeão); 6 = lendário nocauteado, fragmento esperando; 7 = fragmento levado (R17) |
 | 11 | prêmio do R9 já entregue hoje | 0/1 |
-| 12 | presente extra pós-boss já entregue hoje (`afterBossScript`; nenhum lendário usa desde 27/09) | 0/1 |
+| 12 | presente extra pós-boss já entregue hoje (`afterBossScript`; drops do R22 desde 28/09) | 0/1 |
 | 13–15 | sala onde o jogador está (0–5), para o load e a volta (acrescentado na implementação, 27/09/2026) | — |
 
 - Ao reentrar (R3), o script lê a var: teleporte escolhido ativo, os outros
@@ -372,6 +372,10 @@ tem que deixar isso **claro** para o jogador.
 - **Nocauteado, ele se desfaz** e sobra **um fragmento** no lugar dele.
 - O fragmento é sempre a **primeira forma** da espécie: Silvally → **Type:
   Null**, Naganadel → **Poipole**, forma de batalha → forma base.
+  - **Exceção — Deoxys** (autor, 28/09/2026): o fragmento sai numa **Forme
+    sorteada** (Normal, Attack, Defense ou Speed). O Meteorite só existe no
+    Mt. Chimney, fora da ROM, então o Nexus é a única fonte das outras Formes.
+    Código: `sDeoxysFragmentForms` em `src/nexus.c`.
 - **Sempre nível 1** — é o começo de algo, não o fim.
 - Famílias com pré-evolução (o fragmento é a primeira forma):
 
@@ -455,6 +459,24 @@ que mora no altar (Looker, Anabel, Lusamine, Kukui, Lillie, Gladion).
 - O Looker e a Anabel **do altar** continuam sendo os da campanha; eles não
   lutam no Nexus.
 
+## R22. Drops de item de forma
+
+Decidido pelo autor em 28/09/2026. Alguns lendários do Nexus deixam, além do
+fragmento, o **item que troca a forma** deles — itens que nada mais no jogo
+entrega (inventário em [`../../evolucoes.md`](../../evolucoes.md)):
+
+| Boss | Drop | Quando |
+|---|---|---|
+| Kyurem | DNA Splicers | enquanto o jogador não tiver |
+| Genesect | um Drive que o jogador ainda não tem (sorteado) | 1 por dia; nada quando tiver os 4 |
+| Zygarde | Zygarde Cube | uma vez |
+
+- É o `afterBossScript` (bit 12 do R15): roda depois do fragmento e de novo
+  na volta ao dia concluído. Bolsa cheia não grava nada — volta no mesmo dia.
+- Narração, sem plaquinha (R20). O DNA Splicers está aqui **provisoriamente**:
+  o autor quer um lugar certo para ele no futuro.
+- Não é o prêmio do R9: o prêmio continua sendo um só, sorteado.
+
 ## Checklist rápido para um time do Nexus
 
 - [ ] 6 Pokémon
@@ -473,6 +495,10 @@ que mora no altar (Looker, Anabel, Lusamine, Kukui, Lillie, Gladion).
 Nenhum em aberto.
 
 ## Decisões já tomadas (histórico)
+
+- 28/09/2026 — **drops de item de forma** (R22: DNA Splicers do Kyurem, Drives
+  do Genesect, Zygarde Cube do Zygarde) e **fragmento do Deoxys em Forme
+  sorteada** (exceção do R17).
 
 - 27/09/2026 (revisão 3) — o lendário **nunca** é capturado: nocauteado,
   deixa um **fragmento** (primeira forma, nível 1) que se leva com uma bola da

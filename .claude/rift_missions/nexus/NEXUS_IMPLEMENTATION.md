@@ -69,8 +69,12 @@ comuns, no script do mapa.
 **Algo especial depois do fragmento** — script em
 `data/scripts/nexus.inc` terminando em `return`, apontado em
 `.afterBossScript` da linha do lendário. Estado "já entregue hoje": bit 12
-(`Nexus_IsGiftTaken`/`Nexus_MarkGiftTaken`). Nenhum lendário usa hoje (o
-Poipole saiu: o fragmento do Naganadel já é um Poipole).
+(`Nexus_IsGiftTaken`/`Nexus_MarkGiftTaken`). Use `NEXUS_AFTER_BOSS(<Conceito>)`
++ `NEXUS_AFTER_BOSS_EXTERN(<Conceito>)` em `legendaries.h`. Em uso desde
+28/09/2026 pelos **drops de item de forma** (R22): Kyurem (DNA Splicers),
+Genesect (um Drive que falta, via `GetRandomMissingItemInRange`) e Zygarde
+(Zygarde Cube). O script roda depois do fragmento **e** de novo na chegada ao
+dia já concluído, então bolsa cheia não perde o drop no mesmo dia.
 
 **Prêmio** — editar `sNexusPrizeGroups` (grupo = faixa contínua de IDs + peso).
 
@@ -99,7 +103,7 @@ isolada).
 | 0–7 | porta escolhida nas salas 1–4 (2 bits; 3 = nenhuma) | `Nexus_ChooseDoor`, no SIM | `GetDoorState`, `Nexus_IsRoomChosen` |
 | 8–10 | progresso: 0–5 lutas vencidas, 6 = boss nocauteado (fragmento esperando), 7 = fragmento levado | `Nexus_RecordFightWon` logo após a vitória; `Nexus_RecordBossBeaten`; `Nexus_RecordCapture` | tudo |
 | 11 | prêmio R9 pego hoje | `Nexus_MarkPrizeTaken` | `Nexus_GetPrize` |
-| 12 | presente pós-boss pego hoje (`afterBossScript`, sem uso hoje) | `Nexus_MarkGiftTaken` | `Nexus_IsGiftTaken` |
+| 12 | presente pós-boss pego hoje (`afterBossScript`: drops do R22) | `Nexus_MarkGiftTaken` | `Nexus_IsGiftTaken` |
 | 13–15 | **sala onde o jogador está** (0–5) | `Nexus_EnterFromAltar`, `Nexus_AdvanceRoom`, `Nexus_LeaveToAltar` | `Nexus_BeginMapLoad`, specials de porta |
 
 Valor inicial do dia: `0x00FF` (portas "nenhuma", resto zero).

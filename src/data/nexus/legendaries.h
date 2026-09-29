@@ -27,6 +27,14 @@
 // script; a trainer who champions more than one (NEXUS_REGRAS R16) gets one
 // <Name>_<Legendary>_ChampionFight per legendary - never share one script
 // between two legendaries just because the trainer is the same.
+// Form items nothing else in the game hands out (.claude/evolucoes.md).
+#define NEXUS_AFTER_BOSS(Concept)  .afterBossScript = Nexus_EventScript_##Concept##_AfterBoss
+#define NEXUS_AFTER_BOSS_EXTERN(Concept)  extern const u8 Nexus_EventScript_##Concept##_AfterBoss[];
+
+NEXUS_AFTER_BOSS_EXTERN(Kyurem)
+NEXUS_AFTER_BOSS_EXTERN(Genesect)
+NEXUS_AFTER_BOSS_EXTERN(Zygarde)
+
 #define NEXUS_CHAMPION(Name)  .championScript = Nexus_EventScript_##Name##_ChampionFight
 #define NEXUS_CHAMPION_EXTERN(Name)  extern const u8 Nexus_EventScript_##Name##_ChampionFight[];
 
@@ -297,7 +305,7 @@ const struct NexusLegendary gNexusLegendaries[] =
     { .species = SPECIES_KYOGRE, .champion = NEXUS_TRAINER_MISTY, NEXUS_CHAMPION(Misty_Kyogre), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Kyogre) },
     { .species = SPECIES_KYOGRE, .champion = NEXUS_TRAINER_ARCHIE, NEXUS_CHAMPION(Archie), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Kyogre) },
     { .species = SPECIES_MEWTWO, .champion = NEXUS_TRAINER_GIOVANNI, NEXUS_CHAMPION(Giovanni_Mewtwo), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Mewtwo) },
-    { .species = SPECIES_GENESECT, .champion = NEXUS_TRAINER_GIOVANNI, NEXUS_CHAMPION(Giovanni_Genesect), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Genesect) },
+    { .species = SPECIES_GENESECT, .champion = NEXUS_TRAINER_GIOVANNI, NEXUS_CHAMPION(Giovanni_Genesect), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_AFTER_BOSS(Genesect), NEXUS_LOOKER_FILE(Genesect) },
     { .species = SPECIES_LUGIA, .champion = NEXUS_TRAINER_JASMINE, NEXUS_CHAMPION(Jasmine_Lugia), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Lugia) },
     { .species = SPECIES_HO_OH, .champion = NEXUS_TRAINER_MORTY, NEXUS_CHAMPION(Morty_HoOh), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(HoOh) },
     { .species = SPECIES_GROUDON, .champion = NEXUS_TRAINER_MAXIE, NEXUS_CHAMPION(Maxie_Groudon), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Groudon) },
@@ -386,11 +394,11 @@ const struct NexusLegendary gNexusLegendaries[] =
     { .species = SPECIES_DEOXYS, .champion = NEXUS_TRAINER_ANABEL, NEXUS_CHAMPION(Anabel_Deoxys), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Deoxys) },
     { .species = SPECIES_RESHIRAM, .champion = NEXUS_TRAINER_BRENDAN, NEXUS_CHAMPION(Brendan_Reshiram), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Reshiram) },
     { .species = SPECIES_ZEKROM, .champion = NEXUS_TRAINER_MAY, NEXUS_CHAMPION(May_Zekrom), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Zekrom) },
-    { .species = SPECIES_KYUREM, .champion = NEXUS_TRAINER_CLAIR, NEXUS_CHAMPION(Clair), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Kyurem) },
+    { .species = SPECIES_KYUREM, .champion = NEXUS_TRAINER_CLAIR, NEXUS_CHAMPION(Clair), NEXUS_BOSS_DEFAULT, NEXUS_AFTER_BOSS(Kyurem), NEXUS_LOOKER_FILE(Kyurem) },
     { .species = SPECIES_KELDEO, .champion = NEXUS_TRAINER_BRAWLY, NEXUS_CHAMPION(Brawly_Keldeo), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Keldeo) },
     { .species = SPECIES_XERNEAS, .champion = NEXUS_TRAINER_WALLACE, NEXUS_CHAMPION(Wallace_Xerneas), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Xerneas) },
     { .species = SPECIES_YVELTAL, .champion = NEXUS_TRAINER_SIDNEY, NEXUS_CHAMPION(Sidney_Yveltal), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Yveltal) },
-    { .species = SPECIES_ZYGARDE, .champion = NEXUS_TRAINER_LUCY, NEXUS_CHAMPION(Lucy_Zygarde), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Zygarde) },
+    { .species = SPECIES_ZYGARDE, .champion = NEXUS_TRAINER_LUCY, NEXUS_CHAMPION(Lucy_Zygarde), NEXUS_BOSS_DEFAULT, NEXUS_AFTER_BOSS(Zygarde), NEXUS_LOOKER_FILE(Zygarde) },
     { .species = SPECIES_VOLCANION, .champion = NEXUS_TRAINER_BLAINE, NEXUS_CHAMPION(Blaine_Volcanion), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Volcanion) },
     { .species = SPECIES_ZACIAN, .champion = NEXUS_TRAINER_BLUE, NEXUS_CHAMPION(Blue_Zacian), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Zacian) },
     { .species = SPECIES_ZAMAZENTA, .champion = NEXUS_TRAINER_NORMAN, NEXUS_CHAMPION(Norman_Zamazenta), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Zamazenta) },

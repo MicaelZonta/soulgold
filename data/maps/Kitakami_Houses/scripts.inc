@@ -120,8 +120,69 @@ PorygonPC::
 
 
 KitakamiHouses_3_Lady::
-	msgbox KitakamiHouses_3_Lady_Text_0, MSGBOX_NPC
-	return
+	lock
+	faceplayer
+	getpartysize
+	compare VAR_RESULT, PARTY_SIZE
+	goto_if_eq KitakamiHouses_3_Lady_2
+KitakamiHouses_3_Lady_1:
+	showmoneybox 0, 0
+	msgbox KitakamiHouses_3_Lady_Text_1
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, KitakamiHouses_3_Lady_Text_2, KitakamiHouses_3_Lady_Text_3, KitakamiHouses_3_Lady_Text_4
+	switch VAR_RESULT
+	case 0, KitakamiHouses_3_Lady_6
+	case 1, KitakamiHouses_3_Lady_7
+	hidemoneybox
+	msgbox KitakamiHouses_3_Lady_Text_5
+	release
+	end
+
+KitakamiHouses_3_Lady_2:
+	specialvar VAR_RESULT, ScriptCheckFreePokemonStorageSpace
+	compare VAR_RESULT, FALSE
+	goto_if_eq KitakamiHouses_3_Lady_9
+	goto KitakamiHouses_3_Lady_1
+
+KitakamiHouses_3_Lady_4:
+	checkmoney 20000
+	compare VAR_RESULT, FALSE
+	goto_if_eq KitakamiHouses_3_Lady_12
+	bufferspeciesname STR_VAR_1, VAR_TEMP_TRANSFERRED_SPECIES
+	givemon VAR_TEMP_TRANSFERRED_SPECIES, 30
+	compare VAR_RESULT, MON_CANT_GIVE
+	goto_if_eq KitakamiHouses_3_Lady_15
+	removemoney 20000
+	updatemoneybox
+	call Common_EventScript_GiftMon
+	hidemoneybox
+	msgbox KitakamiHouses_3_Lady_Text_8
+	release
+	end
+
+KitakamiHouses_3_Lady_6:
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_SINISTEA_ANTIQUE
+	goto KitakamiHouses_3_Lady_4
+
+KitakamiHouses_3_Lady_7:
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_POLTCHAGEIST_ARTISAN
+	goto KitakamiHouses_3_Lady_4
+
+KitakamiHouses_3_Lady_9:
+	msgbox KitakamiHouses_3_Lady_Text_0
+	release
+	end
+
+KitakamiHouses_3_Lady_12:
+	hidemoneybox
+	msgbox KitakamiHouses_3_Lady_Text_6
+	release
+	end
+
+KitakamiHouses_3_Lady_15:
+	hidemoneybox
+	msgbox KitakamiHouses_3_Lady_Text_7
+	release
+	end
 
 
 KitakamiHouses_3_Man::
@@ -219,8 +280,40 @@ PorygonPC_Text_0:
 	.string "remote PC.$"
 
 KitakamiHouses_3_Lady_Text_0:
-	.string "Life is peaceful here with my family,\n"
-	.string "I couldn't ask for much else.$"
+	.string "I'd show you my collection, but your\n"
+	.string "team is full and so are your boxes.\p"
+	.string "Make some room and come back!$"
+
+KitakamiHouses_3_Lady_Text_1:
+	.string "I collect old tea sets. Every so often\n"
+	.string "a cup or a pot comes with someone\l"
+	.string "still living in it.\p"
+	.string "I can't keep them all. ¥20,000 and\n"
+	.string "one of them goes home with you.$"
+
+KitakamiHouses_3_Lady_Text_2:
+	.string "Antique Sinistea$"
+
+KitakamiHouses_3_Lady_Text_3:
+	.string "Artisan Poltchageist$"
+
+KitakamiHouses_3_Lady_Text_4:
+	.string "No thanks$"
+
+KitakamiHouses_3_Lady_Text_5:
+	.string "Oh well. They're good company anyway.$"
+
+KitakamiHouses_3_Lady_Text_6:
+	.string "Oh dear, you're a little short.\n"
+	.string "They'll still be here!$"
+
+KitakamiHouses_3_Lady_Text_7:
+	.string "Hm, there's nowhere for it to go.\n"
+	.string "Make some room and come back!$"
+
+KitakamiHouses_3_Lady_Text_8:
+	.string "Treat it gently. A chipped pot or a\n"
+	.string "masterpiece teacup will help it grow.$"
 
 KitakamiHouses_3_Man_Text_0:
 	.string "This town is protected by Ogerpon, who\n"

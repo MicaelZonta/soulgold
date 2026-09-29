@@ -1075,9 +1075,30 @@ CianwoodCity_EventScript_PostGladion::
 	goto_if_eq VAR_RESULT, NO, CianwoodCity_EventScript_PostGladionNo
 	setflag FLAG_DAILY_REMATCH_GLADION
 	trainerbattle_no_intro TRAINER_GLADION_POSTGAME, CianwoodCity_Text_PostGladionBeaten
+	call CianwoodCity_EventScript_PostGladionMemory
 	msgbox CianwoodCity_Text_PostGladionAfter, MSGBOX_DEFAULT
 	release
 	end
+
+@ Every win hands over one of Silvally's Memories the player does not own yet
+@ (Bag or PC), drawn at random; nothing once all seventeen are owned. A full
+@ Bag loses nothing: the next win draws again from what is still missing.
+CianwoodCity_EventScript_PostGladionMemory::
+	setvar VAR_0x8004, ITEM_FIRE_MEMORY
+	setvar VAR_0x8005, ITEM_FAIRY_MEMORY - ITEM_FIRE_MEMORY + 1
+	specialvar VAR_RESULT, GetRandomMissingItemInRange
+	goto_if_eq VAR_RESULT, ITEM_NONE, CianwoodCity_EventScript_PostGladionMemoryEnd
+	copyvar VAR_0x8006, VAR_RESULT
+	checkitemspace VAR_0x8006, 1
+	goto_if_eq VAR_RESULT, FALSE, CianwoodCity_EventScript_PostGladionMemoryNoRoom
+	msgbox CianwoodCity_Text_PostGladionMemory, MSGBOX_DEFAULT
+	giveitem VAR_0x8006
+	return
+
+CianwoodCity_EventScript_PostGladionMemoryNoRoom::
+	msgbox CianwoodCity_Text_PostGladionMemoryNoRoom, MSGBOX_DEFAULT
+CianwoodCity_EventScript_PostGladionMemoryEnd::
+	return
 
 CianwoodCity_EventScript_PostGladionNo::
 	msgbox CianwoodCity_Text_PostGladionRematchNo, MSGBOX_DEFAULT
@@ -1121,6 +1142,17 @@ CianwoodCity_Text_PostGladionRematchNo:
 CianwoodCity_Text_PostGladionBeaten:
 	.string "{SPEAKER NAME_GLADION}…Good.\p"
 	.string "Do it again tomorrow.$"
+
+CianwoodCity_Text_PostGladionMemory:
+	.string "{SPEAKER NAME_GLADION}Here. A Memory. I've got a drawer\n"
+	.string "full of them and one Silvally.\p"
+	.string "Yours should get to choose what it\n"
+	.string "is. Mine did.$"
+
+CianwoodCity_Text_PostGladionMemoryNoRoom:
+	.string "{SPEAKER NAME_GLADION}I brought you a Memory, but your Bag\n"
+	.string "is full.\p"
+	.string "Win again and I'll have another one.$"
 
 CianwoodCity_Text_PostGladionAfter:
 	.string "{SPEAKER NAME_GLADION}Silvally wants another one. Silvally is\n"

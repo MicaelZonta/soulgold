@@ -8460,3 +8460,72 @@ Nexus_Text_Pecharunt_LookerFile:
 	.string "except a trap.\p"
 	.string "What came back with you is a tiny shell\n"
 	.string "with no sweets in it. Keep it that way.$"
+
+@ ===========================================================================
+@ After-boss drops (afterBossScript, run after the fragment is caught and
+@ again on a later visit to the finished day). Items that change a form and
+@ that nothing else in the game hands out (.claude/evolucoes.md). Narration,
+@ no plate (R20). A full Bag gives nothing and writes nothing: coming back to
+@ the finished day the same day offers it again.
+@ ===========================================================================
+
+@ Kyurem: the DNA Splicers, until the player has them.
+Nexus_EventScript_Kyurem_AfterBoss::
+	checkitem ITEM_DNA_SPLICERS
+	goto_if_eq VAR_RESULT, TRUE, Nexus_EventScript_AfterBossEnd
+	setvar VAR_0x8006, ITEM_DNA_SPLICERS
+	msgbox Nexus_Text_Kyurem_AfterBoss, MSGBOX_DEFAULT
+	goto Nexus_EventScript_AfterBossGive
+
+@ Zygarde: the Zygarde Cube, once.
+Nexus_EventScript_Zygarde_AfterBoss::
+	checkitem ITEM_ZYGARDE_CUBE
+	goto_if_eq VAR_RESULT, TRUE, Nexus_EventScript_AfterBossEnd
+	setvar VAR_0x8006, ITEM_ZYGARDE_CUBE
+	msgbox Nexus_Text_Zygarde_AfterBoss, MSGBOX_DEFAULT
+	goto Nexus_EventScript_AfterBossGive
+
+@ Genesect: one Drive the player does not own yet, once per day (gift bit),
+@ nothing once all four are owned.
+Nexus_EventScript_Genesect_AfterBoss::
+	specialvar VAR_RESULT, Nexus_IsGiftTaken
+	goto_if_eq VAR_RESULT, TRUE, Nexus_EventScript_AfterBossEnd
+	setvar VAR_0x8004, ITEM_DOUSE_DRIVE
+	setvar VAR_0x8005, ITEM_CHILL_DRIVE - ITEM_DOUSE_DRIVE + 1
+	specialvar VAR_RESULT, GetRandomMissingItemInRange
+	goto_if_eq VAR_RESULT, ITEM_NONE, Nexus_EventScript_AfterBossEnd
+	copyvar VAR_0x8006, VAR_RESULT
+	msgbox Nexus_Text_Genesect_AfterBoss, MSGBOX_DEFAULT
+Nexus_EventScript_AfterBossGive::
+	checkitemspace VAR_0x8006, 1
+	goto_if_eq VAR_RESULT, FALSE, Nexus_EventScript_AfterBossNoRoom
+	special Nexus_MarkGiftTaken
+	giveitem VAR_0x8006
+	closemessage
+Nexus_EventScript_AfterBossEnd::
+	return
+
+Nexus_EventScript_AfterBossNoRoom::
+	msgbox Nexus_Text_AfterBossNoRoom, MSGBOX_DEFAULT
+	closemessage
+	return
+
+Nexus_Text_Kyurem_AfterBoss:
+	.string "Where the fragment was, two halves of\n"
+	.string "something are left lying on the floor.\p"
+	.string "They are trying to be one thing.$"
+
+Nexus_Text_Zygarde_AfterBoss:
+	.string "The ground where it stood keeps a\n"
+	.string "shape: a small green cube, humming,\l"
+	.string "counting cells that aren't there.$"
+
+Nexus_Text_Genesect_AfterBoss:
+	.string "Something falls out of the air where\n"
+	.string "the cannon was. It is still warm.$"
+
+Nexus_Text_AfterBossNoRoom:
+	.string "Something is left behind, but there\n"
+	.string "is no room for it in your Bag.\p"
+	.string "It will wait here until the day is\n"
+	.string "over.$"

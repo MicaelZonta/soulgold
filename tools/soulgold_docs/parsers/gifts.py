@@ -57,6 +57,13 @@ GIFT_LOCATION_NAME_OVERRIDES = {
     ("SPECIES_ZARUDE", "MAP_ROUTE40_HOUSE4"): "Route 40 Achievement reward (75 trophies)",
     ("SPECIES_MAGEARNA_ORIGINAL", "MAP_ROUTE40_HOUSE4"): "Route 40 Achievement reward (100 trophies)",
 }
+# (species, map) -> (location name, method) for gifts that are really sales.
+PURCHASE_LOCATIONS = {
+    ("SPECIES_SINISTEA_ANTIQUE", "MAP_KITAKAMI_HOUSES"): ("Kitakami tea-set collector", "Purchase (20,000)"),
+    ("SPECIES_POLTCHAGEIST_ARTISAN", "MAP_KITAKAMI_HOUSES"): ("Kitakami tea-set collector", "Purchase (20,000)"),
+}
+TRANSFERRED_GIFT_RE = re.compile(r"\bgivemon\s+VAR_TEMP_TRANSFERRED_SPECIES\s*,\s*(\d+)")
+TRANSFERRED_SPECIES_RE = re.compile(r"\bsetvar\s+VAR_TEMP_TRANSFERRED_SPECIES\s*,\s*(SPECIES_[A-Z0-9_]+)")
 LEGENDARY_LOCATION_NAME_OVERRIDES = {
     "MAP_CERULEAN_CAVE_B2F": "Nameless Cave",
 }
@@ -321,6 +328,30 @@ def add_gift_species_locations(
                         "name": display_name,
                         "time": "",
                         "method": "Gift (nicknamed)",
+                        "minLevel": level,
+                        "maxLevel": level,
+                        "rate": None,
+                    }
+                    if location not in gifts[species]:
+                        gifts[species].append(location)
+
+            # A menu picks the species into VAR_TEMP_TRANSFERRED_SPECIES and one
+            # givemon hands it over (the Kitakami tea-set collector). The fossil
+            # lab and the Battle Cafe use the same var and have their own parsers.
+            if map_constant != FOSSIL_LAB_MAP and map_name != "BattleCafe":
+                reachable_text = "\n".join(blocks[label] for label in reachable_script_labels(map_data, blocks))
+                gift = TRANSFERRED_GIFT_RE.search(reachable_text)
+                for raw_species in (TRANSFERRED_SPECIES_RE.findall(reachable_text) if gift else []):
+                    species = aliases.get(raw_species, raw_species)
+                    if species not in by_species:
+                        continue
+                    level = int(gift.group(1))
+                    name, method = PURCHASE_LOCATIONS.get((species, map_constant), (display_name, "Gift"))
+                    location = {
+                        "map": map_constant,
+                        "name": name,
+                        "time": "",
+                        "method": method,
                         "minLevel": level,
                         "maxLevel": level,
                         "rate": None,
