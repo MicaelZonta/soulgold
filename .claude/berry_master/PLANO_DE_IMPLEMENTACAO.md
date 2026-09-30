@@ -32,7 +32,7 @@
 | 2 | A horta física 🧪 30/09 (código feito, falta teste no jogo) | 10 canteiros + canteiro da Laurel na Route 30; plantar, regar, colher | 1 |
 | 3 | Livro de Berries 🧪 30/09 (código feito, falta teste no jogo) | colher registra; o Bram só dá berries do Livro; marcos | 1, 2 |
 | 4 | Cruzamento completo 🧪 30/09 (código feito, falta teste no jogo) | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
-| 5 | Estado diário | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
+| 5 | Estado diário 🧪 30/09 (código feito, falta teste no jogo) | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
 | 6 | Níveis da horta | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
 | 7 | Pedidos do dia | comum e descoberta, dica da Laurel | 3, 4, 5, 6 |
 | 8 | Elenco e rotina | Bram, Laurel, Tilly, Sunflora por horário e dia da semana | 2, 5 |
@@ -334,7 +334,10 @@ só do Livro. Base de tudo o que vem depois.
    de ler em script).
 7. Fala do Bram quando não tem a berry: “I don't hand out what I don't grow, sprout…”.
 8. O marco 66 **não** toca a cena do nome ainda: deixa um gancho para a Parte 16
-   (`LaurelSaysName`, §14.1 item 4).
+   (`LaurelSaysName`, §14.1 item 4). *Para a Parte 16:* o `BerryLedger_Count`
+   **conta a Enigma**, então “66 no Livro” não é “todas menos a Enigma” (quem tem a
+   Enigma e falta uma outra também chega a 66). A condição tem que ser “todas as 66
+   que não são a Enigma”.
 
 **Teste no jogo:** colher uma Sitrus de rota → no dia seguinte o Bram pode dá-la;
 nunca dá uma que não foi colhida; debug com 12 flags ligadas → prêmio do marco 12 uma
@@ -498,6 +501,57 @@ dia”, como o Kurt (`VAR_KURT_TODAY` + `FLAG_DAILY_KURT_NEW_DAY`) e o Nexus.
 **Teste no jogo:** mudar o relógio para o dia seguinte → a var zera uma vez só; sair e
 entrar no mesmo dia não zera.
 
+### Parte 5 — feita no código (30/09/2026), falta o teste no jogo
+
+**O que entrou**
+
+| O quê | Onde |
+|---|---|
+| Os 16 bits `GARDEN_TODAY_*`, cada um com a parte que o usa pela primeira vez, e `GARDEN_TODAY_BIT_COUNT` | `include/constants/berry_garden.h` (novo), incluído em `data/event_scripts.s` e em `include/berry_garden.h` |
+| `GardenRollDay`, `GardenToday_Check`, `GardenToday_Set` (specials, `VAR_0x8004` = bit) e `GardenToday_Has` / `GardenToday_Mark` para o C | `src/berry_garden.c`, `data/specials.inc` |
+| `GardenRollDay` no `ON_TRANSITION` da `Route30` e da `Route30_House` (a casa ganhou `ON_TRANSITION`) | os dois `scripts.inc` |
+| `GardenRollDay` também no começo da conversa do Bram e da Laurel, depois do `dotimebasedevents` | `Route30_House/scripts.inc` |
+| 2 testes (o dia recomeça uma vez; bits independentes, nada além do 15) | `test/berry_garden.c` |
+
+**Onde divergiu do plano, e por quê**
+
+1. **`GardenRollDay` também nas conversas**, não só no `ON_TRANSITION`. Medido no
+   motor: a flag diária é limpa pelo `DoTimeBasedEvents`, que roda **antes** do
+   `ON_TRANSITION` em toda troca de mapa (`overworld.c`) — então o `ON_TRANSITION`
+   sempre vê o dia certo. Mas o `DoTimeBasedEvents` também roda por uma tarefa
+   periódica enquanto o jogador anda (`field_tasks.c`): se a meia-noite passar com o
+   jogador parado na Route 30 ou dentro da casa, não há troca de mapa, e só uma
+   conversa depois do `dotimebasedevents` percebe o dia novo. É o mesmo cuidado do Kurt.
+   **Regra para as próximas partes:** todo NPC da horta que lê `VAR_GARDEN_TODAY` chama
+   `dotimebasedevents` + `special GardenRollDay` antes.
+2. **Sem macros de script** (`garden_today_check`…): uma macro teria que existir antes
+   de todo mapa no `event_scripts.s`, e o repo não tem esse lugar para macros de
+   conteúdo. Os scripts usam `setvar VAR_0x8004, GARDEN_TODAY_X` + `specialvar`/`special`,
+   como o resto do repo.
+3. **Os sorteios do dia não existem ainda** (Klara, Mustard): o `GardenRollDay` tem o
+   ponto marcado onde entram, com a condição de cada um. Escrever agora seria código
+   que ninguém lê.
+
+**Revisão do que já existia, feita junto** (achados que só apareceram com a Parte 5):
+- Comentários de `flags.h`/`vars.h` que diziam “not written yet” para o
+  `GardenRollDay` foram atualizados.
+- **Armadilha para a Parte 6** (escrita no passo 1 dela): o “nível + 10” que o plano
+  sugeria para “reforma paga” abriria o canteiro B na hora, porque a Parte 2 compara
+  a var com `< 2`.
+- **Armadilha para a Parte 16** (escrita no passo 2 dela e no C): o
+  `BerryLedger_Count` conta a Enigma, então “66 no Livro” não é “todas menos a Enigma”.
+- **`FLAG_TEMP` já ocupadas** listadas no começo da Parte 8.
+
+**Catálogo:** `FLAG_DAILY_GARDEN_NEW_DAY` agora aparece lida e escrita pelo código
+(2/2), não só “limpa pelo bloco diário”.
+
+**Teste no jogo (falta, o autor faz):** nada visível muda nesta parte; o teste é o
+debug de var.
+- Ver `VAR_GARDEN_TODAY` (0x4127) = 0 ao entrar na Route 30; marcar um bit no debug;
+  sair e entrar no mesmo dia → o bit continua.
+- Mudar o relógio para o dia seguinte e entrar → volta a 0.
+- Ficar parado na casa virando a meia-noite e falar com o Bram → volta a 0.
+
 ---
 
 ## Parte 6 — Níveis da horta
@@ -512,6 +566,13 @@ seguinte.
 1. Menu de reforma com o Bram (em casa, de dia): mostra o próximo nível, o que pede
    (Livro N + ₽) e cobra. Grava “pago, pronto amanhã” sem flag nova (ex.: nível + 10
    em `VAR_BERRY_GARDEN_LEVEL` até a manhã seguinte; o `ON_TRANSITION` da manhã conclui).
+   **Cuidado (revisão da Parte 5):** o “nível + 10” quebra quem já compara essa var.
+   `Route30_EventScript_GardenVisibility` e `Route30_OnLoad` trancam o canteiro B com
+   `< 2`, e a migração de save antigo testa `== 0`: com 1 pago para 2, a var vira 11 e
+   o B **abre na hora**, antes da cena. O “pago” tem que morar fora do nível. O
+   `VAR_GARDEN_TODAY` não serve: zera à meia-noite e a obra conclui só “na manhã
+   seguinte”. Recomendação: var própria `VAR_BERRY_GARDEN_WORK` (nível encomendado,
+   0 = nenhum), concluída no primeiro `GardenRollDay` de um dia **depois** do pagamento.
 2. **Cenas de reforma** (§5), ao entrar na Route 30 na manhã seguinte ao pagamento:
    nível 2 (Bram), 3 (Bram + Laurel), 4 (Bugsy + Bram).
 3. **Nível 2**: canteiro B abre (a trava da Parte 2 passa a ler o nível), presente vira
@@ -564,6 +625,10 @@ a Sunflora fica dentro de casa, sozinha).
 
 **Passos**
 
+0. **`FLAG_TEMP` já ocupadas** (revisão da Parte 5): na `Route30`, `FLAG_TEMP_1` (árvore
+   de Cut em (30,10)), `FLAG_TEMP_5` (canteiro B) e `FLAG_TEMP_6` (canteiro da Laurel);
+   na `Route30_House`, `FLAG_TEMP_1` (fala do dia do tutorial). A Parte 8 escolhe das
+   livres (conferir com `grep` antes) e dá apelido em `flags.h`, como as da Parte 2.
 1. Objetos na `Route30`: Bram (fora, manhã, (31,45)), Laurel (fora, dia, (27,43)),
    Tilly (banquinha, (24,41), fim de semana de dia), Bugsy ((31,43), ter/qui de dia,
    estado ≥ 3). Cada um com a sua `FLAG_TEMP`.
@@ -809,6 +874,8 @@ por cada lado da escada).
    avança; Reins of Unity da Laurel (`checkitemspace` antes).
 2. **Epílogo** (→ 15): manhã seguinte; cena `LaurelSaysName` única (a primeira entre
    marco 66 e epílogo toca a principal; a outra toca a alternativa); carta da Honey.
+   **Atenção:** “marco 66” = todas as berries **menos a Enigma** registradas, e não
+   `BerryLedger_Count() >= 66` (a contagem inclui a Enigma; ver Parte 3, passo 8).
 3. **Nível 5 — King's Garden**: canteiro da Laurel com colheita dobrada; a Enigma
    renasce sozinha quando o canteiro fica vazio (tratar o ID como natural de Enigma com
    `StartNaturalBerryTreeRegeneration`).

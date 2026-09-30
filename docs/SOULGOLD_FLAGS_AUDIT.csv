@@ -1722,7 +1722,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1537,5431,FLAG_DAILY_LOOKER_CALL,DAILY,EM_USO,1,9,13,BlackthornCity;CherrygroveCity;Mahoganytown;NewBarkTown,GLOBAL(codigo),
 0x1538,5432,FLAG_DAILY_ALTAR_RESOLVED,DAILY,EM_USO,1,1,3,SunMoonAltar,MAPA_UNICO:SunMoonAltar,Altar arc closed today: Lusamine rematch without Nihilego
 0x1539,5433,FLAG_DAILY_NEXUS_NEW_DAY,DAILY,EM_USO,2,2,3,,GLOBAL(codigo),VAR_NEXUS_DAILY already reset today (src/nexus.c RollOverIfNewDay)
-0x153A,5434,FLAG_DAILY_GARDEN_NEW_DAY,DAILY,EM_USO,0,0,3,,GLOBAL(codigo),VAR_GARDEN_TODAY already reset today (GardenRollDay)
+0x153A,5434,FLAG_DAILY_GARDEN_NEW_DAY,DAILY,EM_USO,2,2,5,,GLOBAL(codigo),VAR_GARDEN_TODAY already reset today (GardenRollDay)
 0x153B,5435,FLAG_UNUSED_0x953,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
 0x153C,5436,FLAG_UNUSED_0x954,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
 0x153D,5437,FLAG_UNUSED_0x955,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag

@@ -9,6 +9,7 @@ Route30_MapScripts::
 
 Route30_OnTransition: 
 	callnative SetTimeBasedEncounters
+	special GardenRollDay
 	call Route30_EventScript_GardenVisibility
 	end
 

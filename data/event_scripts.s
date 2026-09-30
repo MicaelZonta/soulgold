@@ -18,6 +18,7 @@
 #include "constants/battle_tower.h"
 #include "constants/battle_arcade.h" // battle_arcade
 #include "constants/berry.h"
+#include "constants/berry_garden.h"
 #include "constants/cable_club.h"
 #include "constants/coins.h"
 #include "constants/contest.h"

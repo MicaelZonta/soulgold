@@ -686,3 +686,6 @@ gSpecials::
 	def_special BerryLedger_RandomRegistered
 	def_special BerryLedger_RandomRegisteredRare
 	def_special BerryLedger_PendingMilestone
+	def_special GardenRollDay
+	def_special GardenToday_Check
+	def_special GardenToday_Set

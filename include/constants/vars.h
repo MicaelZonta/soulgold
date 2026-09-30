@@ -391,9 +391,10 @@
 // Berry Master's garden on Route 30 and the "Harvest King" sidequest
 // (.claude/berry_master/REI_DA_COLHEITA.md; work order in
 // .claude/berry_master/PLANO_DE_IMPLEMENTACAO.md).
-// What happened in the garden today: 16 one-day bits (section 14.6), reset
-// by GardenRollDay (plan part 5, not written yet) when
-// FLAG_DAILY_GARDEN_NEW_DAY is found clear.
+// What happened in the garden today: 16 one-day bits (section 14.6; the
+// GARDEN_TODAY_* list is include/constants/berry_garden.h), zeroed by
+// GardenRollDay (src/berry_garden.c) when FLAG_DAILY_GARDEN_NEW_DAY is found
+// clear.
 #define VAR_GARDEN_TODAY                                0x4127
 // Hearts (days the player talked to them), 4 bits each: Bram, Laurel, Tilly,
 // Peony from the low nibble up (section 14.3). Written by

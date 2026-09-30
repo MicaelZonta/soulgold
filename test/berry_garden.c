@@ -11,7 +11,7 @@
 #include "constants/items.h"
 
 // Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md,
-// parts 2 and 3).
+// parts 2 to 5).
 
 static void ClearLedger(void)
 {
@@ -276,4 +276,40 @@ TEST("Micle next to Custap only crosses into a Lansat after the League")
     FlagSet(FLAG_SYS_GAME_CLEAR);
     EXPECT_EQ(HarvestMutationAfterPlanting(ITEM_MICLE_BERRY, ITEM_CUSTAP_BERRY, ITEM_NONE), ITEM_LANSAT_BERRY);
     FlagClear(FLAG_SYS_GAME_CLEAR);
+}
+
+// Daily state (part 5).
+TEST("The garden's day starts over once, when the daily flag was cleared")
+{
+    FlagClear(FLAG_DAILY_GARDEN_NEW_DAY);
+    VarSet(VAR_GARDEN_TODAY, 0xFFFF);
+
+    GardenRollDay();
+    EXPECT_EQ(VarGet(VAR_GARDEN_TODAY), 0);
+    EXPECT(FlagGet(FLAG_DAILY_GARDEN_NEW_DAY));
+
+    // Same day: a second roll (another map load, another conversation) keeps it.
+    GardenToday_Mark(GARDEN_TODAY_ORDER_ROLLED);
+    GardenRollDay();
+    EXPECT(GardenToday_Has(GARDEN_TODAY_ORDER_ROLLED));
+
+    // Date change: ClearDailyFlags clears the flag, the next roll starts over.
+    ClearDailyFlags();
+    GardenRollDay();
+    EXPECT(!GardenToday_Has(GARDEN_TODAY_ORDER_ROLLED));
+}
+
+TEST("Garden day bits are independent and nothing past bit 15 exists")
+{
+    VarSet(VAR_GARDEN_TODAY, 0);
+
+    GardenToday_Mark(GARDEN_TODAY_ORDER_ROLLED);
+    GardenToday_Mark(GARDEN_TODAY_TALKED_PEONY);
+    GardenToday_Mark(GARDEN_TODAY_BIT_COUNT);
+
+    EXPECT(GardenToday_Has(GARDEN_TODAY_ORDER_ROLLED));
+    EXPECT(GardenToday_Has(GARDEN_TODAY_TALKED_PEONY));
+    EXPECT(!GardenToday_Has(GARDEN_TODAY_ORDER_DONE));
+    EXPECT(!GardenToday_Has(GARDEN_TODAY_BIT_COUNT));
+    EXPECT_EQ(VarGet(VAR_GARDEN_TODAY), (1 << GARDEN_TODAY_ORDER_ROLLED) | (1 << GARDEN_TODAY_TALKED_PEONY));
 }

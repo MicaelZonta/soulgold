@@ -1,6 +1,8 @@
 #ifndef GUARD_BERRY_GARDEN_H
 #define GUARD_BERRY_GARDEN_H
 
+#include "constants/berry_garden.h"
+
 // Berry Master's garden on Route 30 (.claude/berry_master/REI_DA_COLHEITA.md).
 
 // Book of Berries: TRUE when the player has ever harvested this Berry.
@@ -16,5 +18,14 @@ u16 BerryLedger_Count(void);
 u16 BerryLedger_RandomRegistered(void);
 u16 BerryLedger_RandomRegisteredRare(void);
 u16 BerryLedger_PendingMilestone(void);
+
+// Daily state (VAR_GARDEN_TODAY, one GARDEN_TODAY_* bit each).
+bool32 GardenToday_Has(u32 bit);
+void GardenToday_Mark(u32 bit);
+
+// Specials (data/specials.inc)
+void GardenRollDay(void);
+u16 GardenToday_Check(void);
+void GardenToday_Set(void);
 
 #endif // GUARD_BERRY_GARDEN_H

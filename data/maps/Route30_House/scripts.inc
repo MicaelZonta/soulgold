@@ -22,7 +22,13 @@
 @ ===========================================================================
 
 Route30_House_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route30_House_OnTransition
 	.byte 0
+
+@ The garden's day starts wherever the player first shows up (src/berry_garden.c).
+Route30_House_OnTransition::
+	special GardenRollDay
+	end
 
 @ He keeps the one-off Cheri Berry - it is the tutorial and it explains the whole
 @ system - and gains a daily gift on top of it.
@@ -36,6 +42,9 @@ Route30_House_EventScript_BaldMan::
 	lock
 	faceplayer
 	dotimebasedevents
+	@ Midnight may have passed with the player in here: no map load, so the
+	@ garden's day has to be checked again after the clock (src/berry_garden.c).
+	special GardenRollDay
 	call_if_unset FLAG_GOT_BERRY_ROUTE_30_HOUSE, Route30_House_EventScript_Tutorial
 	@ Idempotent: also fills the Book of a save that did the tutorial before
 	@ the Book existed, so the daily draw below is never empty.
@@ -175,6 +184,7 @@ Route30_House_EventScript_BerryWife::
 	lock
 	faceplayer
 	dotimebasedevents
+	special GardenRollDay
 	goto_if_unset FLAG_SYS_GAME_CLEAR, Route30_House_EventScript_WifeChat
 	goto_if_set FLAG_DAILY_BERRY_MASTERS_WIFE, Route30_House_EventScript_WifeDoneToday
 	@ Only a rare the player has harvested (the Book), never the Enigma.

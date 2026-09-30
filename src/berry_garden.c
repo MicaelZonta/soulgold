@@ -43,7 +43,9 @@ static const u16 sStarterBerries[] =
 
 // Book size -> prize, paid once each by Bram (section 3.4). 66 (every Berry
 // but the Enigma) is the title, not an item: it belongs to the epilogue scene
-// (part 16) and is deliberately not in this list.
+// (part 16) and is deliberately not in this list. Careful there: the Enigma
+// DOES count in BerryLedger_Count, so "66 in the Book" is not "complete but
+// the Enigma" - part 16 has to check every Berry except the Enigma instead.
 static const u8 sMilestones[] = {12, 20, 30, 40, 50, 60};
 
 static bool32 IsInLedger(u16 itemId)
@@ -157,4 +159,58 @@ u16 BerryLedger_PendingMilestone(void)
             return sMilestones[i];
     }
     return 0;
+}
+
+// ---------------------------------------------------------------------------
+// Daily state (section 14.6)
+//
+// One daily flag and one var of bits, like Kurt (VAR_KURT_TODAY) and the
+// Nexus (VAR_NEXUS_DAILY). ClearDailyFlags clears FLAG_DAILY_GARDEN_NEW_DAY at
+// the date change; the first GardenRollDay of the new day finds it clear and
+// starts the day over. Nothing stores a date and nothing polls the clock.
+//
+// Who calls GardenRollDay: the ON_TRANSITION of Route30 and Route30_House
+// (the date check runs before it on every map load), AND the start of every
+// garden conversation, after dotimebasedevents - midnight can pass while the
+// player stands on Route 30, and then no map load happens.
+// ---------------------------------------------------------------------------
+
+STATIC_ASSERT(GARDEN_TODAY_BIT_COUNT <= 16, GardenTodayFitsInAVar);
+
+bool32 GardenToday_Has(u32 bit)
+{
+    if (bit >= GARDEN_TODAY_BIT_COUNT)
+        return FALSE;
+    return (VarGet(VAR_GARDEN_TODAY) >> bit) & 1;
+}
+
+void GardenToday_Mark(u32 bit)
+{
+    if (bit < GARDEN_TODAY_BIT_COUNT)
+        VarSet(VAR_GARDEN_TODAY, VarGet(VAR_GARDEN_TODAY) | (1 << bit));
+}
+
+void GardenRollDay(void)
+{
+    if (FlagGet(FLAG_DAILY_GARDEN_NEW_DAY))
+        return;
+
+    VarSet(VAR_GARDEN_TODAY, 0);
+    FlagSet(FLAG_DAILY_GARDEN_NEW_DAY);
+
+    // The day's draws go here, once each, when their part exists:
+    //   Klara's raid, 1 morning in 7, garden level 2+ (part 11) -> GARDEN_TODAY_KLARA_COMES
+    //   Mustard, 1 Sunday in 4, story state 15 (part 16)          -> GARDEN_TODAY_MUSTARD_COMES
+}
+
+// VAR_0x8004 = GARDEN_TODAY_* bit
+u16 GardenToday_Check(void)
+{
+    return GardenToday_Has(gSpecialVar_0x8004);
+}
+
+// VAR_0x8004 = GARDEN_TODAY_* bit
+void GardenToday_Set(void)
+{
+    GardenToday_Mark(gSpecialVar_0x8004);
 }
