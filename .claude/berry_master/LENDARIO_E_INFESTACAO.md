@@ -1,5 +1,7 @@
 # Horta do Berry Master — lendário e infestações
 
+> **Superado em parte por [`REI_DA_COLHEITA.md`](REI_DA_COLHEITA.md) (30/09/2026).** Onde os dois discordam, vale aquele.
+
 > **Análise rev1 — 30/09/2026.** Continuação de
 > [`BERRY_MASTER_DESIGN.md`](BERRY_MASTER_DESIGN.md). Duas perguntas do autor:
 > 1. Tem lendário **sem fonte** que dá para ligar à horta numa sidequest?
