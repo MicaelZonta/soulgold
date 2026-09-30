@@ -10,6 +10,10 @@
 | `prototipo_corceis/` | Protótipo dos 4 mapas das dungeons (`gera.py`, `map.bin`, objetos, renders) — ver `REI_DA_COLHEITA.md` §15.5c | aprovado 30/09/2026 |
 | `horta_*.png` | Renders da Route 30 com a horta | — |
 
+**Testar no jogo:** menu de debug **L + START → Berry Master…** (relógio, Livro, nível,
+canteiros, teleporte, reset). Tabela e roteiro por parte: `PLANO_DE_IMPLEMENTACAO.md`,
+seção “Como testar”.
+
 Páginas (artifacts), só apresentação — tudo o que dizem está nos `.md`:
 
 - [Horta do Berry Master](https://claude.ai/artifact/L7mDjKKS2aq63SUgY323nD) — o sistema.

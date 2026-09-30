@@ -10,17 +10,22 @@
 #include "global.h"
 #include "berry.h"
 #include "berry_garden.h"
+#include "clock.h"
 #include "event_data.h"
+#include "field_screen_effect.h"
 #include "item.h"
 #include "list_menu.h"
 #include "malloc.h"
 #include "money.h"
+#include "overworld.h"
 #include "random.h"
+#include "rtc.h"
 #include "script_menu.h"
 #include "string_util.h"
 #include "constants/berry.h"
 #include "constants/flags.h"
 #include "constants/items.h"
+#include "constants/maps.h"
 #include "constants/vars.h"
 
 // ---------------------------------------------------------------------------
@@ -358,4 +363,158 @@ void BerryLedger_BuildSeedMenu(void)
         row.id = itemId;
         MultichoiceDynamic_PushElement(row);
     }
+}
+
+// ---------------------------------------------------------------------------
+// Debug menu (Berry Master..., src/debug.c; scripts in data/scripts/debug.inc)
+//
+// Only the debug scripts call these. They change the save the same way the
+// game would, so what they set up is what a player could reach.
+// ---------------------------------------------------------------------------
+
+// VAR_0x8004 = hours to move the clock FORWARD (the game's clock never goes
+// back: VAR_DAYS would stop matching). Works on the real RTC: it rewrites the
+// save's local time offset, like setting the wall clock. Crossing midnight
+// clears the daily flags, and the Berry trees grow for the hours skipped, on
+// the next map load (BerryDebug_ReloadMap).
+void BerryDebug_AdvanceHours(void)
+{
+    s32 days, hours;
+
+    RtcCalcLocalTime();
+    hours = gLocalTime.hours + gSpecialVar_0x8004;
+    days = gLocalTime.days + hours / 24;
+    hours %= 24;
+    RtcCalcLocalTimeOffset(days, hours, gLocalTime.minutes, gLocalTime.seconds);
+    RtcCalcLocalTime();
+}
+
+// Forward to the next 07:00 (morning in the garden): today's if it is still
+// before 7, else tomorrow's.
+void BerryDebug_AdvanceToMorning(void)
+{
+    s32 days;
+
+    RtcCalcLocalTime();
+    days = gLocalTime.days;
+    if (gLocalTime.hours >= 7)
+        days++;
+    RtcCalcLocalTimeOffset(days, 7, 0, 0);
+    RtcCalcLocalTime();
+}
+
+// Warps to where the player stands, so the map scripts run again (time of
+// day, GardenRollDay, the garden's visibility). The script must `waitstate`.
+void BerryDebug_ReloadMap(void)
+{
+    SetWarpDestination(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum,
+                       WARP_ID_NONE, gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y);
+    DoWarp();
+    ResetInitialPlayerAvatarState();
+}
+
+// VAR_0x8004 = Book size: Bram's eight first, then the others in item order,
+// the Enigma only when the size asks for every Berry (67).
+void BerryDebug_SetBook(void)
+{
+    u32 itemId, want = gSpecialVar_0x8004;
+
+    for (itemId = LEDGER_FIRST_ITEM; itemId <= LEDGER_LAST_ITEM; itemId++)
+        FlagClear(FLAG_BERRY_LEDGER_START + (itemId - LEDGER_FIRST_ITEM));
+    if (want == 0)
+        return;
+    BerryLedger_RegisterStarters();
+    for (itemId = LEDGER_FIRST_ITEM; itemId <= LEDGER_LAST_ITEM && BerryLedger_Count() < want; itemId++)
+    {
+        if (itemId == ITEM_ENIGMA_BERRY && want < LEDGER_SIZE)
+            continue;
+        BerryLedger_RegisterItem(itemId);
+    }
+}
+
+// VAR_0x8004 = level; any work in progress is dropped.
+void BerryDebug_SetLevel(void)
+{
+    VarSet(VAR_BERRY_GARDEN_LEVEL, gSpecialVar_0x8004);
+    VarSet(VAR_BERRY_GARDEN_WORK, GARDEN_WORK_NONE);
+}
+
+// The 10 garden plots (not Laurel's): every planted one jumps to ripe.
+void BerryDebug_RipenGarden(void)
+{
+    u32 id;
+
+    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_GARDEN_LAST; id++)
+    {
+        struct BerryTree *tree = GetBerryTreeInfo(id);
+        if (tree->stage != BERRY_STAGE_NO_BERRY && tree->stage != BERRY_STAGE_BERRIES)
+        {
+            tree->stage = BERRY_STAGE_BERRIES - 1;
+            BerryTreeGrow(tree);
+        }
+    }
+}
+
+void BerryDebug_GrowGarden(void)
+{
+    u32 id;
+
+    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_GARDEN_LAST; id++)
+    {
+        struct BerryTree *tree = GetBerryTreeInfo(id);
+        if (tree->stage != BERRY_STAGE_NO_BERRY && tree->stage != BERRY_STAGE_BERRIES)
+            BerryTreeGrow(tree);
+    }
+}
+
+void BerryDebug_EmptyGarden(void)
+{
+    u32 id;
+
+    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_KINGS_PLOT; id++)
+        RemoveBerryTree(id);
+}
+
+// Today's gifts and the garden's day again, without touching the clock.
+void BerryDebug_ResetToday(void)
+{
+    FlagClear(FLAG_DAILY_GARDEN_NEW_DAY);
+    FlagClear(FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY);
+    FlagClear(FLAG_DAILY_BERRY_MASTERS_WIFE);
+    GardenRollDay();
+}
+
+// Back to a save that never met Bram: no tutorial, empty Book and garden.
+void BerryDebug_ResetAll(void)
+{
+    gSpecialVar_0x8004 = 0;
+    BerryDebug_SetBook();
+    BerryDebug_EmptyGarden();
+    FlagClear(FLAG_GOT_BERRY_ROUTE_30_HOUSE);
+    VarSet(VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_NONE);
+    VarSet(VAR_BERRY_GARDEN_WORK, GARDEN_WORK_NONE);
+    VarSet(VAR_BERRY_LEDGER_MILESTONE, 0);
+    VarSet(VAR_GARDEN_HEARTS, 0);
+    VarSet(VAR_GARDEN_RIVALS, 0);
+    VarSet(VAR_BERRY_ORDER, 0);
+    VarSet(VAR_HARVEST_KING, 0);
+    BerryDebug_ResetToday();
+}
+
+// For the status screen: VAR_0x8004 = the Book, VAR_0x8005 = pending milestone,
+// VAR_0x8006 = the local hour, VAR_0x8007 = how many garden plots are planted.
+void BerryDebug_Status(void)
+{
+    u32 id, planted = 0;
+
+    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_GARDEN_LAST; id++)
+    {
+        if (GetBerryTreeInfo(id)->stage != BERRY_STAGE_NO_BERRY)
+            planted++;
+    }
+    RtcCalcLocalTime();
+    gSpecialVar_0x8004 = BerryLedger_Count();
+    gSpecialVar_0x8005 = BerryLedger_PendingMilestone();
+    gSpecialVar_0x8006 = gLocalTime.hours;
+    gSpecialVar_0x8007 = planted;
 }

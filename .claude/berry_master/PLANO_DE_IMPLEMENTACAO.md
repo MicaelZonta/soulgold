@@ -80,6 +80,46 @@ bytes; nenhum script cita `local_id` da Route 30 acima de 6; `FLAG_TEMP_5/6` nã
 em script comum; build limpo, `map_graph` ok, `checar_falantes.py` “241, tudo em ordem”,
 `medir_linha.py` sem estouro nos dois mapas.
 
+### Como testar: menu de debug “Berry Master…” (30/09/2026)
+
+No jogo de desenvolvimento (`make -j$(nproc)`; o release não tem debug): **L + START** no
+campo → **Berry Master…**. Tudo nele muda o save do jeito que o jogo mudaria e diz o que
+fez. Código: `sDebugMenu_Actions_BerryMaster*` em `src/debug.c`, scripts
+`Debug_EventScript_Berry*` em `data/scripts/debug.inc`, regras `BerryDebug_*` em
+`src/berry_garden.c`.
+
+| Item | Faz |
+|---|---|
+| Status | nível, obra, canteiros plantados, Livro, marco pago e devido, hora, bits do dia, estado da sidequest, presente do Bram |
+| Go: the garden / Go: Bram's house | teleporte para (27,45) na Route 30 / porta da casa |
+| Clock… | +1 h, +6 h, +24 h, próxima 7:00 — **move o relógio de verdade** (o deslocamento do RTC, como o relógio de parede), só para a frente, e recarrega o mapa: as árvores crescem as horas puladas e a virada de dia limpa as flags diárias pelo caminho normal |
+| Clock… → New day, keep clock | dia novo **da horta** sem mexer no relógio: presente do Bram e rara da Laurel de volta, obra paga concluída |
+| Book of Berries… | Livro com 8, 11, 12, 22, 32, 60, 66 (sem Enigma) ou 67; “Milestones unpaid” zera os marcos pagos |
+| Garden level… | nível 1–4 (descarta obra em andamento) e recarrega |
+| Ripen / Grow 1 stage / Empty | os 10 canteiros: tudo maduro, um estágio, ou terra vazia (vazio inclui o da Laurel) |
+| Act 1 done: toggle | `VAR_HARVEST_KING` 0 ↔ 4 (libera as ofertas dos níveis 3 e 4) |
+| League clear: toggle | `FLAG_SYS_GAME_CLEAR` (rara da Laurel; Lansat e Starf cruzam) |
+| Give ¥10,000 / 5 of each Mulch | dinheiro para as reformas; os 8 adubos |
+| Reset Berry Master | save que nunca viu o Bram: tutorial de novo, Livro, horta, níveis, marcos e história zerados |
+
+Berries para plantar: **PC/Bag… → Fill Pocket Berries** (já existia).
+
+**Roteiros por parte**
+- **Parte 2:** Reset Berry Master → Go: Bram's house → tutorial → Go: the garden → plantar
+  no A; B é grama; placa em (23,38). Garden level… → 2 → o B vira terra com 4 canteiros.
+- **Parte 3:** Book… → 11, falar com o Bram (nada); Book… → 12, falar → 5 Growth Mulch
+  (e, junto, a oferta da reforma do nível 2, que é da Parte 6).
+  Colher de uma árvore de rota fora das 8 → Status mostra o Livro +1.
+- **Parte 4:** a mutação é sorteada **no plantio** (25%, contra o vizinho já plantado) e
+  só aparece **na colheita**. Ciclo: Fill Pocket Berries → plantar Chesto em A1 →
+  plantar Cheri em A2 → Ripen → falar com A2: “…and 1 Lum Berry!” (se não veio, Empty e
+  repetir; ~4 tentativas em média). Micle ao lado de Custap: sem League clear nunca dá
+  Lansat; com League clear, dá.
+- **Parte 5:** Status (bits do dia); Clock… → +24 h → bits zerados.
+- **Parte 6:** Book 12, ¥10,000, falar com o Bram → pagar → Clock… → Next morning →
+  “Four more beds!” e o B aberto; o presente vira 3 / semente à escolha. Book 22 + Act 1
+  → oferta do canal → pagar → dia seguinte → plantar → +24 h → ao entrar, já regado.
+
 **Pendências do autor** (nenhuma bloqueia as partes 1–12; ver §18):
 sprites de Peony, Peonia, Klara, Avery, Mustard e Molly adulta; prêmios grandes (Peony,
 Mustard); falas novas dos moradores de Greenfield no estado 12.
@@ -374,6 +414,7 @@ vez só; bolsa cheia → o Bram avisa e não perde o prêmio.
    agora.** O primeiro só tem uso na Parte 6 (semente encomendada, `dynmultichoice`) e
    o segundo depende da tabela de 58 receitas da Parte 4 (a de hoje é `static` em
    `berry.c`). Escritos agora, seriam código sem teste possível. Entram nas Partes 6 e 7.
+   *(`BuildSeedMenu`: feito na Parte 6. `NextDiscovery`: Parte 7.)*
 4. **Save antigo:** `BerryLedger_RegisterStarters` roda em **toda** conversa com o
    Bram (não custa nada, e é idempotente). Quem fez o tutorial antes desta parte ganha
    as 8 iniciais no Livro na próxima conversa, e o sorteio nunca fica vazio.

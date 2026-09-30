@@ -695,3 +695,14 @@ gSpecials::
 	def_special GardenIrrigate
 	def_special GardenGift_Count
 	def_special BerryLedger_BuildSeedMenu
+	def_special BerryDebug_AdvanceHours
+	def_special BerryDebug_AdvanceToMorning
+	def_special BerryDebug_ReloadMap
+	def_special BerryDebug_SetBook
+	def_special BerryDebug_SetLevel
+	def_special BerryDebug_RipenGarden
+	def_special BerryDebug_GrowGarden
+	def_special BerryDebug_EmptyGarden
+	def_special BerryDebug_ResetToday
+	def_special BerryDebug_ResetAll
+	def_special BerryDebug_Status

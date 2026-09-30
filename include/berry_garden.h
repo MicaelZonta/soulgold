@@ -34,4 +34,17 @@ void GardenIrrigate(void);
 u16 GardenGift_Count(void);
 void BerryLedger_BuildSeedMenu(void);
 
+// Debug menu (Berry Master...)
+void BerryDebug_AdvanceHours(void);
+void BerryDebug_AdvanceToMorning(void);
+void BerryDebug_ReloadMap(void);
+void BerryDebug_SetBook(void);
+void BerryDebug_SetLevel(void);
+void BerryDebug_RipenGarden(void);
+void BerryDebug_GrowGarden(void);
+void BerryDebug_EmptyGarden(void);
+void BerryDebug_ResetToday(void);
+void BerryDebug_ResetAll(void);
+void BerryDebug_Status(void);
+
 #endif // GUARD_BERRY_GARDEN_H

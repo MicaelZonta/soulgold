@@ -425,3 +425,20 @@ TEST("The seed order lists every Berry in the Book but the Enigma, in item order
         Free((void *)MultichoiceDynamic_PopElement()->name);
     MultichoiceDynamic_DestroyStack();
 }
+
+// Debug menu (Berry Master...).
+TEST("The debug Book sizes are exact, and only 67 includes the Enigma")
+{
+    static const u16 sizes[] = {0, 8, 11, 12, 22, 32, 60, 66, 67};
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sizes); i++)
+    {
+        gSpecialVar_0x8004 = sizes[i];
+        BerryDebug_SetBook();
+        EXPECT_EQ(BerryLedger_Count(), sizes[i]);
+        if (sizes[i] >= 8)
+            EXPECT(BerryLedger_Has(ITEM_PERSIM_BERRY));
+        EXPECT_EQ(BerryLedger_Has(ITEM_ENIGMA_BERRY), sizes[i] == 67);
+    }
+}

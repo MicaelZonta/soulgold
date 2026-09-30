@@ -416,6 +416,35 @@ extern const u8 Debug_EventScript_NexusByron[];
 extern const u8 Debug_EventScript_NexusFantina[];
 extern const u8 Debug_EventScript_NexusEnter[];
 extern const u8 Debug_EventScript_NexusNewDay[];
+extern const u8 Debug_EventScript_BerryGoGarden[];
+extern const u8 Debug_EventScript_BerryGoHouse[];
+extern const u8 Debug_EventScript_BerryPlus1Hour[];
+extern const u8 Debug_EventScript_BerryPlus6Hours[];
+extern const u8 Debug_EventScript_BerryPlus24Hours[];
+extern const u8 Debug_EventScript_BerryNextMorning[];
+extern const u8 Debug_EventScript_BerryNewGardenDay[];
+extern const u8 Debug_EventScript_BerryBook8[];
+extern const u8 Debug_EventScript_BerryBook11[];
+extern const u8 Debug_EventScript_BerryBook12[];
+extern const u8 Debug_EventScript_BerryBook22[];
+extern const u8 Debug_EventScript_BerryBook32[];
+extern const u8 Debug_EventScript_BerryBook60[];
+extern const u8 Debug_EventScript_BerryBook66[];
+extern const u8 Debug_EventScript_BerryBook67[];
+extern const u8 Debug_EventScript_BerryMilestonesUnpaid[];
+extern const u8 Debug_EventScript_BerryLevel1[];
+extern const u8 Debug_EventScript_BerryLevel2[];
+extern const u8 Debug_EventScript_BerryLevel3[];
+extern const u8 Debug_EventScript_BerryLevel4[];
+extern const u8 Debug_EventScript_BerryRipen[];
+extern const u8 Debug_EventScript_BerryGrow[];
+extern const u8 Debug_EventScript_BerryEmpty[];
+extern const u8 Debug_EventScript_BerryToggleAct1[];
+extern const u8 Debug_EventScript_BerryToggleLeague[];
+extern const u8 Debug_EventScript_BerryMoney[];
+extern const u8 Debug_EventScript_BerryMulch[];
+extern const u8 Debug_EventScript_BerryResetAll[];
+extern const u8 Debug_EventScript_BerryStatus[];
 extern const u8 DebugScript_DaycareMonsNotCompatible[];
 extern const u8 DebugScript_OneDaycareMons[];
 extern const u8 DebugScript_ZeroDaycareMons[];
@@ -801,6 +830,61 @@ static const struct DebugMenuOption sDebugMenu_Actions_RiftMissions[] =
     { NULL }
 };
 
+// SoulGold: Berry Master's garden on Route 30. Scripts in data/scripts/debug.inc,
+// rules in src/berry_garden.c (BerryDebug_*). The clock options move the real
+// clock's offset forward (this game has no fake RTC), then reload the map.
+static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster_Time[] =
+{
+    { COMPOUND_STRING("+1 hour"),                   DebugAction_ExecuteScript, Debug_EventScript_BerryPlus1Hour },
+    { COMPOUND_STRING("+6 hours"),                  DebugAction_ExecuteScript, Debug_EventScript_BerryPlus6Hours },
+    { COMPOUND_STRING("+24 hours (next day)"),      DebugAction_ExecuteScript, Debug_EventScript_BerryPlus24Hours },
+    { COMPOUND_STRING("Next morning, 7:00"),        DebugAction_ExecuteScript, Debug_EventScript_BerryNextMorning },
+    { COMPOUND_STRING("New day, keep clock"),  DebugAction_ExecuteScript, Debug_EventScript_BerryNewGardenDay },
+    { NULL }
+};
+
+static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster_Book[] =
+{
+    { COMPOUND_STRING("Bram's 8 only"),             DebugAction_ExecuteScript, Debug_EventScript_BerryBook8 },
+    { COMPOUND_STRING("11 (one short of 12)"),      DebugAction_ExecuteScript, Debug_EventScript_BerryBook11 },
+    { COMPOUND_STRING("12 (level 2)"),   DebugAction_ExecuteScript, Debug_EventScript_BerryBook12 },
+    { COMPOUND_STRING("22 (level 3)"),              DebugAction_ExecuteScript, Debug_EventScript_BerryBook22 },
+    { COMPOUND_STRING("32 (level 4)"),              DebugAction_ExecuteScript, Debug_EventScript_BerryBook32 },
+    { COMPOUND_STRING("60 (last milestone)"),       DebugAction_ExecuteScript, Debug_EventScript_BerryBook60 },
+    { COMPOUND_STRING("66 (all but Enigma)"),       DebugAction_ExecuteScript, Debug_EventScript_BerryBook66 },
+    { COMPOUND_STRING("67 (every Berry)"),          DebugAction_ExecuteScript, Debug_EventScript_BerryBook67 },
+    { COMPOUND_STRING("Milestones unpaid"),         DebugAction_ExecuteScript, Debug_EventScript_BerryMilestonesUnpaid },
+    { NULL }
+};
+
+static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster_Level[] =
+{
+    { COMPOUND_STRING("1 Backyard Plot"),           DebugAction_ExecuteScript, Debug_EventScript_BerryLevel1 },
+    { COMPOUND_STRING("2 Proper Garden"),           DebugAction_ExecuteScript, Debug_EventScript_BerryLevel2 },
+    { COMPOUND_STRING("3 Water Channel"),           DebugAction_ExecuteScript, Debug_EventScript_BerryLevel3 },
+    { COMPOUND_STRING("4 Bug Hotel"),               DebugAction_ExecuteScript, Debug_EventScript_BerryLevel4 },
+    { NULL }
+};
+
+static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster[] =
+{
+    { COMPOUND_STRING("Status"),                    DebugAction_ExecuteScript, Debug_EventScript_BerryStatus },
+    { COMPOUND_STRING("Go: the garden"),            DebugAction_ExecuteScript, Debug_EventScript_BerryGoGarden },
+    { COMPOUND_STRING("Go: Bram's house"),          DebugAction_ExecuteScript, Debug_EventScript_BerryGoHouse },
+    { COMPOUND_STRING("Clock…"),                    DebugAction_OpenSubMenu, sDebugMenu_Actions_BerryMaster_Time },
+    { COMPOUND_STRING("Book of Berries…"),          DebugAction_OpenSubMenu, sDebugMenu_Actions_BerryMaster_Book },
+    { COMPOUND_STRING("Garden level…"),             DebugAction_OpenSubMenu, sDebugMenu_Actions_BerryMaster_Level },
+    { COMPOUND_STRING("Ripen the garden"),          DebugAction_ExecuteScript, Debug_EventScript_BerryRipen },
+    { COMPOUND_STRING("Grow garden 1 stage"),   DebugAction_ExecuteScript, Debug_EventScript_BerryGrow },
+    { COMPOUND_STRING("Empty the garden"),          DebugAction_ExecuteScript, Debug_EventScript_BerryEmpty },
+    { COMPOUND_STRING("Act 1 done: toggle"),        DebugAction_ExecuteScript, Debug_EventScript_BerryToggleAct1 },
+    { COMPOUND_STRING("League clear: toggle"),    DebugAction_ExecuteScript, Debug_EventScript_BerryToggleLeague },
+    { COMPOUND_STRING("Give ¥10,000"),              DebugAction_ExecuteScript, Debug_EventScript_BerryMoney },
+    { COMPOUND_STRING("Give 5 of each Mulch"),      DebugAction_ExecuteScript, Debug_EventScript_BerryMulch },
+    { COMPOUND_STRING("Reset Berry Master"),        DebugAction_ExecuteScript, Debug_EventScript_BerryResetAll },
+    { NULL }
+};
+
 static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
 {
     { COMPOUND_STRING("Utilities…"),    DebugAction_OpenSubMenu, sDebugMenu_Actions_Utilities, },
@@ -812,6 +896,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
     { COMPOUND_STRING("Trainers…"),     DebugAction_OpenSubMenuTrainers, sDebugMenu_Actions_Trainers, },
     { COMPOUND_STRING("Flags & Vars…"), DebugAction_OpenSubMenuFlagsVars, sDebugMenu_Actions_Flags, },
     { COMPOUND_STRING("Rift Missions…"), DebugAction_OpenSubMenu, sDebugMenu_Actions_RiftMissions, },
+    { COMPOUND_STRING("Berry Master…"), DebugAction_OpenSubMenu, sDebugMenu_Actions_BerryMaster, },
     { COMPOUND_STRING("Sound…"),        DebugAction_OpenSubMenu, sDebugMenu_Actions_Sound, },
     { COMPOUND_STRING("ROM Info…"),     DebugAction_OpenSubMenu, sDebugMenu_Actions_ROMInfo2, },
     { COMPOUND_STRING("Cancel"),        DebugAction_Cancel, },
