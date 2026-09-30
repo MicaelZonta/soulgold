@@ -74,9 +74,17 @@ Folha **144x32**. Medido nos overworlds do projeto:
 - **Altura de referência: 18–22 px.** Boneco de 26 px (o Guzma que chegou)
   cabe, mas fica visivelmente mais alto que todo o elenco.
 - Centralizado na largura: o eixo do tile é entre as colunas 7 e 8.
+- **Olho: 1 px de largura por 2 de altura** (Gladion, Kukui, Looker, Lillie).
+  Olho de 2 px de largura destoa do elenco; olhos desiguais (4 px e 2 px)
+  aparecem quando a redução não é espelhada.
 - Nos quadros de passo o corpo costuma subir 1 px; os pés ficam na base.
 - Boneco com 17 px de largura **não cabe**: corte 1 coluna (mão ou ponta de
   cabelo) ou vá para 32x32.
+- **Reduzir arte maior para 16-18 px** (`propostas_overworld.py`, método da
+  auditoria de 29/09/2026 em `.filetransfer/.trainers/_auditoria resize 16px/`):
+  colunas por costura reta de menor energia com rosto protegido e penalidade
+  de vizinhança forte, linhas apagadas em faixas com prioridade de contorno,
+  JPG quantizado antes, altura escolhida à parte (18-22 px). Detalhes e o que foi descartado na skill `converter-sprite`.
 
 ### 3.3 32x32 — a exceção
 
