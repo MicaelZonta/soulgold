@@ -261,6 +261,72 @@ Nexus_Text_Red_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. O Red continua falando por reticências, com uma frase curta por luta. A variação 2 é o Pikachu que quer lutar mais do que ele (humor, e o time antes de tudo); a variação 3 brinca com o R21: ele acha que conhece o jogador, e percebe que é de outra montanha.
+
+**Variação 2 — antes da luta**
+
+> ……
+>
+> …
+>
+> …It wants to battle. Not me.
+>
+> …Okay. Me too.
+>
+> …!
+
+**Variação 2 — derrota**
+
+> ……
+>
+> …Good.
+
+**Variação 3 — antes da luta**
+
+> ……
+>
+> …Have we met?
+>
+> ……No. Different mountain.
+>
+> …!
+
+**Variação 3 — derrota**
+
+> ……
+>
+> …You'd like the summit. …Cold, though.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Red_Intro2:
+	.string "……\p"
+	.string "…\p"
+	.string "…It wants to battle. Not me.\p"
+	.string "…Okay. Me too.\p"
+	.string "…!$"
+
+Nexus_Text_Red_Defeat2:
+	.string "……\p"
+	.string "…Good.$"
+
+Nexus_Text_Red_Intro3:
+	.string "……\p"
+	.string "…Have we met?\p"
+	.string "……No. Different mountain.\p"
+	.string "…!$"
+
+Nexus_Text_Red_Defeat3:
+	.string "……\p"
+	.string "…You'd like the summit. …Cold, though.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Red é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
@@ -319,5 +385,112 @@ Nexus_Text_Red_ChampionAfter:
 ```
 
 </details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: as placas que zumbem, cada uma numa nota, e o Red pensando no próprio time — seis diferentes, ele carrega todos; a criatura carrega todos os tipos num corpo só, e sozinha. Variação 3: a criatura também não falava antes; aí disse uma palavra e ela virou tudo. O Red no Mt. Silver viu a primeira pegada em neve nova — é o que ele pede ao jogador: andar atrás dela.
+
+**Variação 2 — antes da luta**
+
+> ……
+>
+> …Hear that? Every stone. A different note.
+>
+> …Like a team.
+>
+> …!
+
+**Variação 2 — derrota**
+
+> ……
+>
+> …Out of tune. …Me.
+
+**Variação 2 — depois da luta**
+
+> ……
+>
+> …I carry six. All different.
+>
+> …It carries every kind. In one body.
+>
+> …Heavy. …Lonely, maybe.
+>
+> …Go. Lighten it.
+
+**Variação 3 — antes da luta**
+
+> ……
+>
+> …It didn't talk either. Before.
+>
+> …Then it said one word.
+>
+> …Everything.
+>
+> …!
+
+**Variação 3 — derrota**
+
+> ……Heh. …Two words, today.
+
+**Variação 3 — depois da luta**
+
+> ……
+>
+> …Nobody climbed my mountain. …For years.
+>
+> …Then someone did.
+>
+> …First footprint. In fresh snow.
+>
+> …Out there, the floor isn't real. …Until it steps.
+>
+> …Walk behind it. …Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Red_ChampionIntro2:
+	.string "……\p"
+	.string "…Hear that? Every stone. A different\n"
+	.string "note.\p"
+	.string "…Like a team.\p"
+	.string "…!$"
+
+Nexus_Text_Red_ChampionDefeat2:
+	.string "……\p"
+	.string "…Out of tune. …Me.$"
+
+Nexus_Text_Red_ChampionAfter2:
+	.string "{SPEAKER NAME_RED}……\p"
+	.string "…I carry six. All different.\p"
+	.string "…It carries every kind. In one body.\p"
+	.string "…Heavy. …Lonely, maybe.\p"
+	.string "…Go. Lighten it.$"
+
+Nexus_Text_Red_ChampionIntro3:
+	.string "……\p"
+	.string "…It didn't talk either. Before.\p"
+	.string "…Then it said one word.\p"
+	.string "…Everything.\p"
+	.string "…!$"
+
+Nexus_Text_Red_ChampionDefeat3:
+	.string "……Heh. …Two words, today.$"
+
+Nexus_Text_Red_ChampionAfter3:
+	.string "{SPEAKER NAME_RED}……\p"
+	.string "…Nobody climbed my mountain. …For\n"
+	.string "years.\p"
+	.string "…Then someone did.\p"
+	.string "…First footprint. In fresh snow.\p"
+	.string "…Out there, the floor isn't real. …Until\n"
+	.string "it steps.\p"
+	.string "…Walk behind it. …Go.$"
+```
+
+</details>
+
 
 Falante novo: `SP_NAME_RED` (ainda não existe em `include/constants/speaker_names.h`).

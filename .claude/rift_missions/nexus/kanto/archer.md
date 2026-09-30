@@ -324,6 +324,70 @@ Nexus_Text_Archer_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é a espera pelo rádio. A 2 é o executivo frio, que reduz o jogador a um relatório de uma linha. A 3 é a gravata endireitada toda noite para um homem que não entra, e um boato de que, em outro lugar, ele voltou (R21).
+
+**Variação 2 — o relatório**
+
+**Antes da luta**
+
+> You're a child. I have reports on children like you. They are all very short.
+>
+> They begin with ‘an unknown Trainer interfered’ and end with ‘the operation failed.’
+>
+> Let us see how short yours will be.
+
+**Derrota**
+
+> …Another short report. Unknown Trainer interfered. Filed.
+
+**Variação 3 — a gravata**
+
+**Antes da luta**
+
+> Every night, at the same hour, I straighten my tie. In case he walks in.
+>
+> Three years. The tie has never been crooked, and he has never walked in.
+>
+> I have heard that somewhere, he did come back. I refuse to be jealous of a rumor. Begin.
+
+**Derrota**
+
+> My tie is still straight. That will have to be enough.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Archer_Intro2:
+	.string "You're a child. I have reports on\n"
+	.string "children like you. They are all very\l"
+	.string "short.\p"
+	.string "They begin with ‘an unknown Trainer\n"
+	.string "interfered’ and end with ‘the operation\l"
+	.string "failed.’\p"
+	.string "Let us see how short yours will be.$"
+
+Nexus_Text_Archer_Defeat2:
+	.string "…Another short report. Unknown Trainer\n"
+	.string "interfered. Filed.$"
+
+Nexus_Text_Archer_Intro3:
+	.string "Every night, at the same hour, I\n"
+	.string "straighten my tie. In case he walks in.\p"
+	.string "Three years. The tie has never been\n"
+	.string "crooked, and he has never walked in.\p"
+	.string "I have heard that somewhere, he did\n"
+	.string "come back. I refuse to be jealous of a\l"
+	.string "rumor. Begin.$"
+
+Nexus_Text_Archer_Defeat3:
+	.string "My tie is still straight. That will have\n"
+	.string "to be enough.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Archer é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela.
@@ -387,6 +451,107 @@ Nexus_Text_Archer_Marshadow_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é a sombra que aprendeu a pose do chefe. A 2 é a sombra do homem de sobretudo no muro (fio do casaco): o Archer achou que era do chefe, e a criatura, dentro dela, fica de pé como um detetive. A 3 é o Spectral Thief visto de fora, e a primeira vez em três anos que a sombra do Archer fica de pé como ele mesmo.
+
+**Variação 2 — a sombra no muro**
+
+**Antes da luta**
+
+> There is a shadow on a wall in this city. A man in a long coat. Nobody stands in front of it.
+>
+> At first I thought it was his. The boss wore a long coat the night he left, in the rain.
+>
+> It isn't. His shadow would never wait so patiently. Battle me.
+
+**Derrota**
+
+> Patient. Like that shadow. I dislike the comparison.
+
+**Depois da luta**
+
+> The little one lives in that shadow sometimes. It likes the coat. It stands inside it like a child in a doorway.
+>
+> Once it stepped out and stood like the coat's owner. Hands in pockets. Head tilted, listening.
+>
+> Not a boss's stance. A detective's. …Go. I don't want to know whose it is.
+
+**Variação 3 — o que ela rouba**
+
+**Antes da luta**
+
+> Earlier, my Houndoom powered up. The shadow reached across and took it. All of it.
+>
+> It steals whatever you build. I have spent three years building. Imagine what it could take from me.
+>
+> …Don't imagine. Fight.
+
+**Derrota**
+
+> You built nothing it could take. Clever. Or lucky.
+
+**Depois da luta**
+
+> It doesn't cast a shadow. It is one. Stand under a lamp beside it and there is only yours.
+>
+> Tonight I stood under a lamp and watched my own for a long time. It stood like me. Not like him. Like me.
+>
+> I hadn't seen that in three years. …Go, before I say something sentimental.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Archer_Marshadow_ChampionIntro2:
+	.string "There is a shadow on a wall in this city.\n"
+	.string "A man in a long coat. Nobody stands in\l"
+	.string "front of it.\p"
+	.string "At first I thought it was his. The boss\n"
+	.string "wore a long coat the night he left, in\l"
+	.string "the rain.\p"
+	.string "It isn't. His shadow would never wait so\n"
+	.string "patiently. Battle me.$"
+
+Nexus_Text_Archer_Marshadow_ChampionDefeat2:
+	.string "Patient. Like that shadow. I dislike the\n"
+	.string "comparison.$"
+
+Nexus_Text_Archer_Marshadow_ChampionAfter2:
+	.string "{SPEAKER NAME_ARCHER}The little one lives in that shadow\n"
+	.string "sometimes. It likes the coat. It stands\l"
+	.string "inside it like a child in a doorway.\p"
+	.string "Once it stepped out and stood like the\n"
+	.string "coat's owner. Hands in pockets. Head\l"
+	.string "tilted, listening.\p"
+	.string "Not a boss's stance. A detective's.\n"
+	.string "…Go. I don't want to know whose it is.$"
+
+Nexus_Text_Archer_Marshadow_ChampionIntro3:
+	.string "Earlier, my Houndoom powered up. The\n"
+	.string "shadow reached across and took it. All\l"
+	.string "of it.\p"
+	.string "It steals whatever you build. I have\n"
+	.string "spent three years building. Imagine\l"
+	.string "what it could take from me.\p"
+	.string "…Don't imagine. Fight.$"
+
+Nexus_Text_Archer_Marshadow_ChampionDefeat3:
+	.string "You built nothing it could take. Clever.\n"
+	.string "Or lucky.$"
+
+Nexus_Text_Archer_Marshadow_ChampionAfter3:
+	.string "{SPEAKER NAME_ARCHER}It doesn't cast a shadow. It is one.\n"
+	.string "Stand under a lamp beside it and there\l"
+	.string "is only yours.\p"
+	.string "Tonight I stood under a lamp and\n"
+	.string "watched my own for a long time. It stood\l"
+	.string "like me. Not like him. Like me.\p"
+	.string "I hadn't seen that in three years. …Go,\n"
+	.string "before I say something sentimental.$"
+```
+
+</details>
+
 #### Wo-Chien
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Archer_WoChien_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -444,6 +609,107 @@ Nexus_Text_Archer_WoChien_ChampionAfter:
 	.string "confession.\p"
 	.string "Go. It won't forgive you for anything.\n"
 	.string "It doesn't know how.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é o livro-caixa que vira confissão. A 2 é humor de organização: o Proton cobra por estaca arrancada (os Tesouros da Ruína eram lacrados por estacas) e o Archer quer as notas fiscais — liga com o caderno do Proton. A 3 é a única linha ainda não riscada numa tábua, e a criatura que a risca por ele.
+
+**Variação 2 — as notas do Proton**
+
+**Antes da luta**
+
+> Four of these creatures were sealed with stakes. Someone has been pulling them out, one by one.
+>
+> I know who. He sends me an invoice for each. Proton charges by the stake.
+>
+> …Team Rocket is an organization. Even here. Let's get this over with.
+
+**Derrota**
+
+> This goes in the ledger under ‘losses.’ It is a long column.
+
+**Depois da luta**
+
+> It hides under the leaves because the leaves are all that's left of its forest. It wears them like a uniform.
+>
+> I understand. I've worn this one for three years with nobody left to wear it for.
+>
+> Go. Its presence weakens everyone around it. Mine only weakens me.
+
+**Variação 3 — a linha não riscada**
+
+**Antes da luta**
+
+> I found one tablet here that hadn't been scratched out. One line. ‘The servant who keeps the king's books is guiltier than the king.’
+>
+> An old saying, surely. From someone else's kingdom.
+>
+> Surely. …Battle me.
+
+**Derrota**
+
+> Guiltier than the king. We'll see who writes the last line.
+
+**Depois da luta**
+
+> The creature came up while I was reading. It didn't attack. It waited for me to finish.
+>
+> Then it scratched that line out. For me, I think. Or against me. I can't tell which.
+>
+> Go. If it offers to scratch something out for you, refuse. Some things you should have to read.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Archer_WoChien_ChampionIntro2:
+	.string "Four of these creatures were sealed\n"
+	.string "with stakes. Someone has been pulling\l"
+	.string "them out, one by one.\p"
+	.string "I know who. He sends me an invoice for\n"
+	.string "each. Proton charges by the stake.\p"
+	.string "…Team Rocket is an organization. Even\n"
+	.string "here. Let's get this over with.$"
+
+Nexus_Text_Archer_WoChien_ChampionDefeat2:
+	.string "This goes in the ledger under ‘losses.’\n"
+	.string "It is a long column.$"
+
+Nexus_Text_Archer_WoChien_ChampionAfter2:
+	.string "{SPEAKER NAME_ARCHER}It hides under the leaves because the\n"
+	.string "leaves are all that's left of its\l"
+	.string "forest. It wears them like a uniform.\p"
+	.string "I understand. I've worn this one for\n"
+	.string "three years with nobody left to wear it\l"
+	.string "for.\p"
+	.string "Go. Its presence weakens everyone\n"
+	.string "around it. Mine only weakens me.$"
+
+Nexus_Text_Archer_WoChien_ChampionIntro3:
+	.string "I found one tablet here that hadn't\n"
+	.string "been scratched out. One line. ‘The\l"
+	.string "servant who keeps the king's books is\l"
+	.string "guiltier than the king.’\p"
+	.string "An old saying, surely. From someone\n"
+	.string "else's kingdom.\p"
+	.string "Surely. …Battle me.$"
+
+Nexus_Text_Archer_WoChien_ChampionDefeat3:
+	.string "Guiltier than the king. We'll see who\n"
+	.string "writes the last line.$"
+
+Nexus_Text_Archer_WoChien_ChampionAfter3:
+	.string "{SPEAKER NAME_ARCHER}The creature came up while I was\n"
+	.string "reading. It didn't attack. It waited for\l"
+	.string "me to finish.\p"
+	.string "Then it scratched that line out. For me,\n"
+	.string "I think. Or against me. I can't tell\l"
+	.string "which.\p"
+	.string "Go. If it offers to scratch something\n"
+	.string "out for you, refuse. Some things you\l"
+	.string "should have to read.$"
 ```
 
 </details>

@@ -321,6 +321,74 @@ Nexus_Text_Bugsy_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Ainda não estão no código.
+
+**Variação 2 — mania de pesquisador.** Humor: ele conta as pernas dos Pokémon do jogador antes de lutar.
+
+**Antes da luta**
+
+> Oh! Sorry, I wasn't staring. I was counting your Pokémon's legs.
+>
+> Old habit. You can learn a lot about a Trainer from how many legs they bring.
+>
+> Mine bring a lot of legs. Let's battle!
+
+**Derrota**
+
+> Fewer legs, more wins. That's going in my notes.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Bugsy_Intro2:
+	.string "Oh! Sorry, I wasn't staring. I was\n"
+	.string "counting your Pokémon's legs.\p"
+	.string "Old habit. You can learn a lot about a\n"
+	.string "Trainer from how many legs they bring.\p"
+	.string "Mine bring a lot of legs. Let's battle!$"
+
+Nexus_Text_Bugsy_Defeat2:
+	.string "Fewer legs, more wins. That's going in\n"
+	.string "my notes.$"
+```
+
+</details>
+
+**Variação 3 — o caderno que ele não lembra de ter escrito.** Aceno ao fio da **mão que muda** (DIARIO_LOOKER.md) e à página 2 do caderno dele: a letra é dele, a memória não.
+
+**Antes da luta**
+
+> I've been writing in my notebook since I got here. Every page is full.
+>
+> The strange part is, I don't remember writing half of it. It's my handwriting, though.
+>
+> …Let's battle. I'll read what I wrote about you afterward.
+
+**Derrota**
+
+> Huh. It says right here that I lose. I should've read ahead.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Bugsy_Intro3:
+	.string "I've been writing in my notebook since\n"
+	.string "I got here. Every page is full.\p"
+	.string "The strange part is, I don't remember\n"
+	.string "writing half of it. It's my handwriting,\l"
+	.string "though.\p"
+	.string "…Let's battle. I'll read what I wrote\n"
+	.string "about you afterward.$"
+
+Nexus_Text_Bugsy_Defeat3:
+	.string "Huh. It says right here that I lose. I\n"
+	.string "should've read ahead.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Slither Wing
@@ -383,6 +451,111 @@ Nexus_Text_Bugsy_SlitherWing_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1: a criatura pelo olhar do campeão, sem o nome da espécie. Ainda não estão no código.
+
+**Variação 2 — o sol dos pequenos.** Lore da Volcarona (Pokédex): quando as cinzas cobriram o céu, o fogo dela fez as vezes do sol. Esta anda, então o fogo dela fica embaixo, com os pequenos.
+
+**Antes da luta**
+
+> There's an old story about moths like this. When ash covered the sky, their fire took the sun's place.
+>
+> But this one walks. Its fire stays down here, on the ground, with everyone else.
+>
+> I think it was the sun for the small things under the ferns. …Battle me, I'm getting emotional!
+
+**Derrota**
+
+> Warm loss. Very warm. Is my sleeve on fire?
+
+**Depois da luta**
+
+> I found a scale it dropped. Still hot. I burned three pages trying to sketch it.
+>
+> The old expedition book says someone saw one of these long ago, and nobody believed them.
+>
+> I believe them. Go on. Bring back proof, so nobody ever has to just believe again.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Bugsy_SlitherWing_ChampionIntro2:
+	.string "There's an old story about moths like\n"
+	.string "this. When ash covered the sky, their\l"
+	.string "fire took the sun's place.\p"
+	.string "But this one walks. Its fire stays down\n"
+	.string "here, on the ground, with everyone else.\p"
+	.string "I think it was the sun for the small\n"
+	.string "things under the ferns. …Battle me, I'm\l"
+	.string "getting emotional!$"
+
+Nexus_Text_Bugsy_SlitherWing_ChampionDefeat2:
+	.string "Warm loss. Very warm. Is my sleeve on\n"
+	.string "fire?$"
+
+Nexus_Text_Bugsy_SlitherWing_ChampionAfter2:
+	.string "{SPEAKER NAME_BUGSY}I found a scale it dropped. Still hot. I\n"
+	.string "burned three pages trying to sketch it.\p"
+	.string "The old expedition book says someone\n"
+	.string "saw one of these long ago, and nobody\l"
+	.string "believed them.\p"
+	.string "I believe them. Go on. Bring back proof,\n"
+	.string "so nobody ever has to just believe\l"
+	.string "again.$"
+```
+
+</details>
+
+**Variação 3 — ninguém desenterra inseto.** A rivalidade de pesquisador com os caçadores de fóssil: inseto é pequeno, mole, não fica para trás. Este ficou. A pergunta que ele quer fazer: quando a espécie decidiu que voar valia a pena.
+
+**Antes da luta**
+
+> Fossil people always get the big bones. Dragons, sails, teeth.
+>
+> Nobody digs up a bug. We're too small, too soft. We don't get left behind.
+>
+> But that one did! It walked right out of the past! …And I have to beat you before I can say hello.
+
+**Derrota**
+
+> No hello for me today.
+
+**Depois da luta**
+
+> Do you know what I'd give to set it next to a modern one?
+>
+> Same fire. Same pattern on the wings. Only one of them decided flying was worth it.
+>
+> I want to know when. Go ask it for me. It won't answer. Ask anyway.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Bugsy_SlitherWing_ChampionIntro3:
+	.string "Fossil people always get the big bones.\n"
+	.string "Dragons, sails, teeth.\p"
+	.string "Nobody digs up a bug. We're too small,\n"
+	.string "too soft. We don't get left behind.\p"
+	.string "But that one did! It walked right out of\n"
+	.string "the past! …And I have to beat you\l"
+	.string "before I can say hello.$"
+
+Nexus_Text_Bugsy_SlitherWing_ChampionDefeat3:
+	.string "No hello for me today.$"
+
+Nexus_Text_Bugsy_SlitherWing_ChampionAfter3:
+	.string "{SPEAKER NAME_BUGSY}Do you know what I'd give to set it\n"
+	.string "next to a modern one?\p"
+	.string "Same fire. Same pattern on the wings.\n"
+	.string "Only one of them decided flying was\l"
+	.string "worth it.\p"
+	.string "I want to know when. Go ask it for me. It\n"
+	.string "won't answer. Ask anyway.$"
+```
+
+</details>
+
 #### Iron Moth
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Bugsy_IronMoth_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -439,6 +612,108 @@ Nexus_Text_Bugsy_IronMoth_ChampionAfter:
 	.string "So somebody forgot to write that part\n"
 	.string "of the manual. Go and read the rest\l"
 	.string "of it for me.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1: a criatura pelo olhar do campeão, sem o nome da espécie. Ainda não estão no código.
+
+**Variação 2 — o futuro sem insetos.** Nenhum pulgão, nenhuma abelha, nenhum ovo no jardim: se aquilo é o futuro, os insetos não chegaram lá. Ele se recusa. Depois duvida: talvez seja só um futuro.
+
+**Antes da luta**
+
+> Did you notice? Nothing's alive in that garden. No aphids. No bees. Not one egg under the leaves.
+>
+> If that's the future, the bugs didn't make it. Only that one did, and it isn't a bug anymore.
+>
+> I refuse. I absolutely refuse. Battle!
+
+**Derrota**
+
+> Refusing didn't work. Noted.
+
+**Depois da luta**
+
+> Maybe it isn't the future. Maybe it's just one future.
+>
+> My old expedition book has a page torn out right before the drawing of that thing. I keep wondering what was on it.
+>
+> Go on. If you see a real bug in there, anything at all, tell me. I'll stop worrying.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Bugsy_IronMoth_ChampionIntro2:
+	.string "Did you notice? Nothing's alive in that\n"
+	.string "garden. No aphids. No bees. Not one egg\l"
+	.string "under the leaves.\p"
+	.string "If that's the future, the bugs didn't\n"
+	.string "make it. Only that one did, and it isn't\l"
+	.string "a bug anymore.\p"
+	.string "I refuse. I absolutely refuse. Battle!$"
+
+Nexus_Text_Bugsy_IronMoth_ChampionDefeat2:
+	.string "Refusing didn't work. Noted.$"
+
+Nexus_Text_Bugsy_IronMoth_ChampionAfter2:
+	.string "{SPEAKER NAME_BUGSY}Maybe it isn't the future. Maybe it's\n"
+	.string "just one future.\p"
+	.string "My old expedition book has a page torn\n"
+	.string "out right before the drawing of that\l"
+	.string "thing. I keep wondering what was on it.\p"
+	.string "Go on. If you see a real bug in there,\n"
+	.string "anything at all, tell me. I'll stop\l"
+	.string "worrying.$"
+```
+
+</details>
+
+**Variação 3 — quem copia com cuidado sente falta.** O zumbido é a mesma nota das asas de uma Volcarona, só que mais firme. Ninguém copia algo com tanto cuidado a não ser que sinta falta dele. A virada é terna.
+
+**Antes da luta**
+
+> It hums. Did you hear? The same note as a real moth's wings, only steadier.
+>
+> Whoever built it listened to the real thing for a very long time.
+>
+> You don't copy something that carefully unless you miss it. …Okay. Battle!
+
+**Derrota**
+
+> You were steadier than me. Like it is.
+
+**Depois da luta**
+
+> Somebody, someday, missed moths so much they built one out of metal.
+>
+> That's sad. It's also kind of the nicest thing I've ever heard.
+>
+> Go on. Be gentle with it. Someone made it because they missed us.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Bugsy_IronMoth_ChampionIntro3:
+	.string "It hums. Did you hear? The same note as\n"
+	.string "a real moth's wings, only steadier.\p"
+	.string "Whoever built it listened to the real\n"
+	.string "thing for a very long time.\p"
+	.string "You don't copy something that\n"
+	.string "carefully unless you miss it. …Okay.\l"
+	.string "Battle!$"
+
+Nexus_Text_Bugsy_IronMoth_ChampionDefeat3:
+	.string "You were steadier than me. Like it is.$"
+
+Nexus_Text_Bugsy_IronMoth_ChampionAfter3:
+	.string "{SPEAKER NAME_BUGSY}Somebody, someday, missed moths so\n"
+	.string "much they built one out of metal.\p"
+	.string "That's sad. It's also kind of the\n"
+	.string "nicest thing I've ever heard.\p"
+	.string "Go on. Be gentle with it. Someone made it\n"
+	.string "because they missed us.$"
 ```
 
 </details>

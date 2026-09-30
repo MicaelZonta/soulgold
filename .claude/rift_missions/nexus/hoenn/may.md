@@ -313,6 +313,73 @@ Nexus_Text_May_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para as quatro primeiras salas, com ângulos diferentes da variação 1 (que está no jogo). Seguem o [R16](../NEXUS_REGRAS.md): falam dela mesma, sem o lugar nem a criatura do dia.
+
+**Variação 2** — a lista de Pokémon vistos (o sonho dela, pelo lado alegre).
+
+**Antes da luta**
+
+> Ooh, is that a new Pokémon? No? Aww.
+>
+> I've seen a lot of them. Like, a lot. My list is longer than I am tall.
+>
+> But I've never seen yours battle! Come on, that counts too!
+
+**Derrota**
+
+> That definitely counts. Adding it to the list!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_May_Intro2:
+	.string "Ooh, is that a new Pokémon? No? Aww.\p"
+	.string "I've seen a lot of them. Like, a lot. My\n"
+	.string "list is longer than I am tall.\p"
+	.string "But I've never seen yours battle! Come\n"
+	.string "on, that counts too!$"
+
+Nexus_Text_May_Defeat2:
+	.string "That definitely counts. Adding it to\n"
+	.string "the list!$"
+```
+
+</details>
+
+**Variação 3** — humor: o pai perseguido por um Zigzagoon (a Route 101 de RSE).
+
+**Antes da luta**
+
+> Want to hear something embarrassing? My dad once got chased in circles by a Zigzagoon.
+>
+> He's a professor! He studies them! He still yelled for help.
+>
+> So I promised myself I'd get strong enough that nobody has to yell. Watch!
+
+**Derrota**
+
+> Okay, I might yell a little. Just a little.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_May_Intro3:
+	.string "Want to hear something embarrassing?\n"
+	.string "My dad once got chased in circles by a\l"
+	.string "Zigzagoon.\p"
+	.string "He's a professor! He studies them! He\n"
+	.string "still yelled for help.\p"
+	.string "So I promised myself I'd get strong\n"
+	.string "enough that nobody has to yell. Watch!$"
+
+Nexus_Text_May_Defeat3:
+	.string "Okay, I might yell a little. Just a little.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -379,6 +446,111 @@ Nexus_Text_May_Zekrom_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)); a variação 1 é a que está no jogo.
+
+**Variação 2** — as janelas da cidade de torres (humor, e a cidade vazia como imagem do ideal).
+
+**Antes da luta**
+
+> Every window in those black towers lights up when the thunder hits. I've been counting them.
+>
+> I got to four hundred, and then the cloud moved and I lost my place!
+>
+> That's a big city for just one Pokémon. It must have really big dreams. Mine are big too! Let's go!
+
+**Derrota**
+
+> Ahaha… I lost count again.
+
+**Depois da luta**
+
+> Know what I figured out? Nobody lives in those towers. They're just lit up.
+>
+> Like someone built a city for an ideal before anyone could move in.
+>
+> I think that's what big dreams are. You build them first and hope people come. Go on. It's waiting.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_May_Zekrom_ChampionIntro2:
+	.string "Every window in those black towers\n"
+	.string "lights up when the thunder hits. I've\l"
+	.string "been counting them.\p"
+	.string "I got to four hundred, and then the\n"
+	.string "cloud moved and I lost my place!\p"
+	.string "That's a big city for just one Pokémon.\n"
+	.string "It must have really big dreams. Mine are\l"
+	.string "big too! Let's go!$"
+
+Nexus_Text_May_Zekrom_ChampionDefeat2:
+	.string "Ahaha… I lost count again.$"
+
+Nexus_Text_May_Zekrom_ChampionAfter2:
+	.string "{SPEAKER NAME_MAY}Know what I figured out? Nobody lives\n"
+	.string "in those towers. They're just lit up.\p"
+	.string "Like someone built a city for an ideal\n"
+	.string "before anyone could move in.\p"
+	.string "I think that's what big dreams are. You\n"
+	.string "build them first and hope people come.\l"
+	.string "Go on. It's waiting.$"
+```
+
+</details>
+
+**Variação 3** — o gêmeo branco (espelho da variação 3 do Brendan/Reshiram; fio Unova).
+
+**Antes da luta**
+
+> The books say that dragon had a twin once. A white one. They split up because two brothers couldn't agree.
+>
+> I wonder if the white one ever came back to visit. I bet it wanted to.
+>
+> Okay! Enough sad stuff. Battle!
+
+**Derrota**
+
+> …Can I be sad now? Just for a second?
+
+**Depois da luta**
+
+> I kind of feel like I've got a white twin somewhere, too.
+>
+> Someone who writes everything down and never says what they want.
+>
+> We'd argue a lot, I bet. And then share snacks.
+>
+> If you win, tell the black one it can go visit. Somebody should.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_May_Zekrom_ChampionIntro3:
+	.string "The books say that dragon had a twin\n"
+	.string "once. A white one. They split up because\l"
+	.string "two brothers couldn't agree.\p"
+	.string "I wonder if the white one ever came\n"
+	.string "back to visit. I bet it wanted to.\p"
+	.string "Okay! Enough sad stuff. Battle!$"
+
+Nexus_Text_May_Zekrom_ChampionDefeat3:
+	.string "…Can I be sad now? Just for a second?$"
+
+Nexus_Text_May_Zekrom_ChampionAfter3:
+	.string "{SPEAKER NAME_MAY}I kind of feel like I've got a white twin\n"
+	.string "somewhere, too.\p"
+	.string "Someone who writes everything down and\n"
+	.string "never says what they want.\p"
+	.string "We'd argue a lot, I bet. And then share\n"
+	.string "snacks.\p"
+	.string "If you win, tell the black one it can go\n"
+	.string "visit. Somebody should.$"
+```
+
+</details>
+
 #### Mesprit
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_May_Mesprit_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -435,6 +607,108 @@ Nexus_Text_May_Mesprit_ChampionAfter:
 	.string "you that the sad part counts too.\p"
 	.string "Go on. And if you cry, that's okay. It's\n"
 	.string "supposed to happen here.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)); a variação 1 é a que está no jogo.
+
+**Variação 2** — as cartas do pai que ela só lê pela metade (lembrança).
+
+**Antes da luta**
+
+> The faces on the lake keep switching. Happy, sad, happy. Kind of like me reading my dad's letters.
+>
+> He writes every week. I've got a whole bag of them. I only read the funny parts.
+>
+> Let's battle! I'm in a funny-parts mood!
+
+**Derrota**
+
+> Aww. Okay. Sad-parts mood, then.
+
+**Depois da luta**
+
+> I skip the end of every letter. The part where he says he misses me.
+>
+> If I read it, I'd go home. And I'm not done seeing everything yet.
+>
+> …I'll read one tonight. Maybe. Go on. It won't mind if your face switches too.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_May_Mesprit_ChampionIntro2:
+	.string "The faces on the lake keep switching.\n"
+	.string "Happy, sad, happy. Kind of like me\l"
+	.string "reading my dad's letters.\p"
+	.string "He writes every week. I've got a whole\n"
+	.string "bag of them. I only read the funny\l"
+	.string "parts.\p"
+	.string "Let's battle! I'm in a funny-parts\n"
+	.string "mood!$"
+
+Nexus_Text_May_Mesprit_ChampionDefeat2:
+	.string "Aww. Okay. Sad-parts mood, then.$"
+
+Nexus_Text_May_Mesprit_ChampionAfter2:
+	.string "{SPEAKER NAME_MAY}I skip the end of every letter. The part\n"
+	.string "where he says he misses me.\p"
+	.string "If I read it, I'd go home. And I'm not\n"
+	.string "done seeing everything yet.\p"
+	.string "…I'll read one tonight. Maybe. Go on. It\n"
+	.string "won't mind if your face switches too.$"
+```
+
+</details>
+
+**Variação 3** — o garoto loiro que chega atrasado (fio Lagos: o Barry, nunca nomeado).
+
+**Antes da luta**
+
+> A blond boy ran up to the lake a minute ago, yelled 'Did I miss it?!' and ran off again.
+>
+> He did miss it. I didn't have the heart to tell him.
+>
+> Everyone's so worried about missing things. Not me! I'm right here. Let's battle!
+
+**Derrota**
+
+> Ahaha… okay, I missed that one.
+
+**Depois da luta**
+
+> I don't think the one over the lake cares if you're late. It just wants you to feel something when you get there.
+>
+> Happy, sad, anything. The only wrong answer is nothing.
+>
+> So feel something, okay? Win or lose.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_May_Mesprit_ChampionIntro3:
+	.string "A blond boy ran up to the lake a minute\n"
+	.string "ago, yelled 'Did I miss it?!' and ran off\l"
+	.string "again.\p"
+	.string "He did miss it. I didn't have the heart\n"
+	.string "to tell him.\p"
+	.string "Everyone's so worried about missing\n"
+	.string "things. Not me! I'm right here. Let's\l"
+	.string "battle!$"
+
+Nexus_Text_May_Mesprit_ChampionDefeat3:
+	.string "Ahaha… okay, I missed that one.$"
+
+Nexus_Text_May_Mesprit_ChampionAfter3:
+	.string "{SPEAKER NAME_MAY}I don't think the one over the lake\n"
+	.string "cares if you're late. It just wants you\l"
+	.string "to feel something when you get there.\p"
+	.string "Happy, sad, anything. The only wrong\n"
+	.string "answer is nothing.\p"
+	.string "So feel something, okay? Win or lose.$"
 ```
 
 </details>

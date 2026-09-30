@@ -323,6 +323,68 @@ Nexus_Text_Petrel_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é o homem de mil rostos. A 2 é lore de HGSS: no esconderijo de Mahogany ele se disfarçou do próprio chefe (e aqui o chefe nunca voltou para pedir o terno de volta). A 3 é humor e dúvida: ele confere a carteira para saber quem é hoje.
+
+**Variação 2 — o terno do chefe**
+
+**Antes da luta**
+
+> Ahahaha! Once I dressed up as the boss himself. Suit, voice, the cat on the lap. The grunts saluted me for a week.
+>
+> Then the real one never came back, and I kept the suit on a little longer.
+>
+> Too long? Nah. Let's go!
+
+**Derrota**
+
+> Lost as the boss, lost as myself. At least I'm consistent.
+
+**Variação 3 — a carteira**
+
+**Antes da luta**
+
+> Quick question. Do I look like a Petrel to you? Be honest.
+>
+> I woke up today and couldn't remember which face I went to sleep in. Had to check my wallet.
+>
+> The wallet said Petrel. The wallet's been wrong before. Let's go!
+
+**Derrota**
+
+> Well, whoever I am, he lost. Ahaha!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Petrel_Intro2:
+	.string "Ahahaha! Once I dressed up as the boss\n"
+	.string "himself. Suit, voice, the cat on the lap.\l"
+	.string "The grunts saluted me for a week.\p"
+	.string "Then the real one never came back, and\n"
+	.string "I kept the suit on a little longer.\p"
+	.string "Too long? Nah. Let's go!$"
+
+Nexus_Text_Petrel_Defeat2:
+	.string "Lost as the boss, lost as myself. At\n"
+	.string "least I'm consistent.$"
+
+Nexus_Text_Petrel_Intro3:
+	.string "Quick question. Do I look like a Petrel\n"
+	.string "to you? Be honest.\p"
+	.string "I woke up today and couldn't remember\n"
+	.string "which face I went to sleep in. Had to\l"
+	.string "check my wallet.\p"
+	.string "The wallet said Petrel. The wallet's\n"
+	.string "been wrong before. Let's go!$"
+
+Nexus_Text_Petrel_Defeat3:
+	.string "Well, whoever I am, he lost. Ahaha!$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Petrel é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela.
@@ -387,6 +449,104 @@ Nexus_Text_Petrel_Meloetta_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é a inveja de quem tem dois rostos verdadeiros. A 2 são os dois figurinos da primeira fila que não são dele (uniforme branco, cabelo vermelho comprido): fio de Jessie e James, a quem a proposta de campeões novos dá esta criatura; a canção fala de dois tolos que sempre perdem e voltam. A 3 é o imitador que é pego imitando.
+
+**Variação 2 — a primeira fila**
+
+**Antes da luta**
+
+> Front row, center. Two costumes sitting together. White uniforms, big red R, long red hair pinned into one of the hats.
+>
+> They're not mine. I checked. I've never worn them in my life.
+>
+> Somebody out there is doing my act without me. Let's go!
+
+**Derrota**
+
+> Bravo. Nobody in the front row clapped, though.
+
+**Depois da luta**
+
+> The song comes from the stage every night. Tonight I sat in those two seats and listened.
+>
+> It sang about two fools who kept losing and kept coming back, and it sounded happy about it.
+>
+> I'd give a lot to know who they are. Go on. Ask it for an encore.
+
+**Variação 3 — pego imitando**
+
+**Antes da luta**
+
+> I tried to sing along with it. Figured I could copy anything. Perfect pitch, perfect imitation.
+>
+> It changed key in the middle of a note, just to lose me. And then it laughed.
+>
+> First time anyone ever caught me copying. Let's go!
+
+**Derrota**
+
+> Caught twice in one day. I'm slipping.
+
+**Depois da luta**
+
+> Here's my theory. It changes shape so nobody can hold onto just one of it.
+>
+> Smart. I did the same, for years. Difference is, it always comes back to the first one.
+>
+> I lost track of my first one around the third wig. Go. Don't try to sing along.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Petrel_Meloetta_ChampionIntro2:
+	.string "Front row, center. Two costumes sitting\n"
+	.string "together. White uniforms, big red R, long\l"
+	.string "red hair pinned into one of the hats.\p"
+	.string "They're not mine. I checked. I've never\n"
+	.string "worn them in my life.\p"
+	.string "Somebody out there is doing my act\n"
+	.string "without me. Let's go!$"
+
+Nexus_Text_Petrel_Meloetta_ChampionDefeat2:
+	.string "Bravo. Nobody in the front row clapped,\n"
+	.string "though.$"
+
+Nexus_Text_Petrel_Meloetta_ChampionAfter2:
+	.string "{SPEAKER NAME_PETREL}The song comes from the stage every\n"
+	.string "night. Tonight I sat in those two seats\l"
+	.string "and listened.\p"
+	.string "It sang about two fools who kept losing\n"
+	.string "and kept coming back, and it sounded\l"
+	.string "happy about it.\p"
+	.string "I'd give a lot to know who they are. Go\n"
+	.string "on. Ask it for an encore.$"
+
+Nexus_Text_Petrel_Meloetta_ChampionIntro3:
+	.string "I tried to sing along with it. Figured I\n"
+	.string "could copy anything. Perfect pitch,\l"
+	.string "perfect imitation.\p"
+	.string "It changed key in the middle of a note,\n"
+	.string "just to lose me. And then it laughed.\p"
+	.string "First time anyone ever caught me\n"
+	.string "copying. Let's go!$"
+
+Nexus_Text_Petrel_Meloetta_ChampionDefeat3:
+	.string "Caught twice in one day. I'm slipping.$"
+
+Nexus_Text_Petrel_Meloetta_ChampionAfter3:
+	.string "{SPEAKER NAME_PETREL}Here's my theory. It changes shape so\n"
+	.string "nobody can hold onto just one of it.\p"
+	.string "Smart. I did the same, for years.\n"
+	.string "Difference is, it always comes back to\l"
+	.string "the first one.\p"
+	.string "I lost track of my first one around the\n"
+	.string "third wig. Go. Don't try to sing along.$"
+```
+
+</details>
+
 #### Ogerpon
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Petrel_Ogerpon_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -438,6 +598,106 @@ Nexus_Text_Petrel_Ogerpon_ChampionAfter:
 	.string "Go on. When it takes the mask off,\n"
 	.string "don't say anything. Just let it be\l"
 	.string "seen.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é a mentira do festival. A 2 é lore de Kitakami: as três estátuas dos "heróis" (cão, macaco e ave) e a máscara nas garras da ave, que o escultor nem escondeu. A 3 é o disfarce perfeito comprado na barraca, e a única criatura que o tira do rosto dele no meio de mil.
+
+**Variação 2 — as três estátuas**
+
+**Antes da luta**
+
+> Up at the shrine there are three statues. Big heroes, the town says. A dog, a monkey, a bird.
+>
+> I looked close. The bird has a mask in its claws. The sculptor didn't even hide it.
+>
+> Everybody walks right past. Best con I've ever seen. Let's go!
+
+**Derrota**
+
+> Ahaha! Loyal to the end, huh? Not me. I'm loyal till dinner.
+
+**Depois da luta**
+
+> Every stall at the festival sells ogre masks. Kids wear them and run around roaring.
+>
+> The little one watches from the hill. It's the only real face at the whole party, and it's the one hiding.
+>
+> Go on up. Take a lantern. It likes the light.
+
+**Variação 3 — desmascarado**
+
+**Antes da luta**
+
+> I bought a mask at the festival. Blended right in. Best disguise I ever had, and it cost me three hundred.
+>
+> The little one came down the hill and pulled it off my face. Mine. Out of a thousand.
+>
+> It knew I was the one lying. Let's go!
+
+**Derrota**
+
+> Unmasked twice. That's a record.
+
+**Depois da luta**
+
+> It didn't keep my mask. It handed it back. Held it out, like, ‘you'll want this.’
+>
+> It thought I needed it. …It was right. That's the worst part.
+>
+> I left it on the hill anyway. Go on. It doesn't hate liars. It feels sorry for us.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Petrel_Ogerpon_ChampionIntro2:
+	.string "Up at the shrine there are three\n"
+	.string "statues. Big heroes, the town says. A\l"
+	.string "dog, a monkey, a bird.\p"
+	.string "I looked close. The bird has a mask in\n"
+	.string "its claws. The sculptor didn't even hide\l"
+	.string "it.\p"
+	.string "Everybody walks right past. Best con\n"
+	.string "I've ever seen. Let's go!$"
+
+Nexus_Text_Petrel_Ogerpon_ChampionDefeat2:
+	.string "Ahaha! Loyal to the end, huh? Not me.\n"
+	.string "I'm loyal till dinner.$"
+
+Nexus_Text_Petrel_Ogerpon_ChampionAfter2:
+	.string "{SPEAKER NAME_PETREL}Every stall at the festival sells ogre\n"
+	.string "masks. Kids wear them and run around\l"
+	.string "roaring.\p"
+	.string "The little one watches from the hill.\n"
+	.string "It's the only real face at the whole\l"
+	.string "party, and it's the one hiding.\p"
+	.string "Go on up. Take a lantern. It likes the\n"
+	.string "light.$"
+
+Nexus_Text_Petrel_Ogerpon_ChampionIntro3:
+	.string "I bought a mask at the festival.\n"
+	.string "Blended right in. Best disguise I ever\l"
+	.string "had, and it cost me three hundred.\p"
+	.string "The little one came down the hill and\n"
+	.string "pulled it off my face. Mine. Out of a\l"
+	.string "thousand.\p"
+	.string "It knew I was the one lying. Let's go!$"
+
+Nexus_Text_Petrel_Ogerpon_ChampionDefeat3:
+	.string "Unmasked twice. That's a record.$"
+
+Nexus_Text_Petrel_Ogerpon_ChampionAfter3:
+	.string "{SPEAKER NAME_PETREL}It didn't keep my mask. It handed it\n"
+	.string "back. Held it out, like, ‘you'll want\l"
+	.string "this.’\p"
+	.string "It thought I needed it. …It was right.\n"
+	.string "That's the worst part.\p"
+	.string "I left it on the hill anyway. Go on. It\n"
+	.string "doesn't hate liars. It feels sorry for\l"
+	.string "us.$"
 ```
 
 </details>

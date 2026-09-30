@@ -308,6 +308,78 @@ Nexus_Text_Janine_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para Janine, com a variação 1 (acima, já no jogo) formam as três do sorteio. Mesmo registro do [R16](../NEXUS_REGRAS.md): fala de si, sem citar o lugar nem a criatura do dia.
+
+**Variação 2 — a bomba de fumaça.** Humor: a bomba de fumaça que era para ela sumir e só faz ela tossir. As do pai nunca fazem ele tossir. Desiste e vai ganhar do jeito normal.
+
+**Antes da luta**
+
+> Hyah! Smoke bomb! …Hang on. …Hang on, it's still going. Cough!
+>
+> Okay. That's supposed to make me vanish. Father's bombs never make him cough.
+>
+> Forget it! I'll just win the normal way. Let's go!
+
+**Derrota**
+
+> Hyah… cough. Okay. Next time, a smaller bomb.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Janine_Intro2:
+	.string "Hyah! Smoke bomb! …Hang on. …Hang on,\n"
+	.string "it's still going. Cough!\p"
+	.string "Okay. That's supposed to make me\n"
+	.string "vanish. Father's bombs never make him\l"
+	.string "cough.\p"
+	.string "Forget it! I'll just win the normal way.\n"
+	.string "Let's go!$"
+
+Nexus_Text_Janine_Defeat2:
+	.string "Hyah… cough. Okay. Next time, a smaller\n"
+	.string "bomb.$"
+```
+
+</details>
+
+**Variação 3 — as cartas que pararam.** O que ela perdeu no fragmento (R21): o pai foi numa missão para o norte; ninja não manda carta, mas ele sempre mandava. As cartas pararam. Ela deixou uma aluna vestida de Janine no ginásio e foi procurar — e ninguém percebeu, de tão bem treinados. Prepara o diário.
+
+**Antes da luta**
+
+> My father went on a mission up north. A ninja never sends letters. He always sent me letters anyway.
+>
+> Then they stopped. So I left a student dressed as me at my Gym, and came looking.
+>
+> Nobody's noticed I'm gone! I trained them too well. Hyah!
+
+**Derrota**
+
+> Aw… At least the fake me is winning back home.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Janine_Intro3:
+	.string "My father went on a mission up north. A\n"
+	.string "ninja never sends letters. He always\l"
+	.string "sent me letters anyway.\p"
+	.string "Then they stopped. So I left a student\n"
+	.string "dressed as me at my Gym, and came\l"
+	.string "looking.\p"
+	.string "Nobody's noticed I'm gone! I trained\n"
+	.string "them too well. Hyah!$"
+
+Nexus_Text_Janine_Defeat3:
+	.string "Aw… At least the fake me is winning back\n"
+	.string "home.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 #### Okidogi
@@ -377,6 +449,130 @@ Nexus_Text_Janine_Okidogi_ChampionAfter:
 </details>
 
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — a queda de braço.** Humor e provocação: ela desafiou o brutamontes para uma queda de braço (faz parte do treino ninja, provavelmente); ele ganhou com um braço, segurando um lanche com o outro. Depois, a lenda de Kitakami pelo avesso: os velhos contam dos três heróis; as crianças contam que o ogro era o herói. Criança costuma acertar sobre monstro.
+
+**Antes da luta**
+
+> Guess what? I challenged the big one to an arm-wrestle. That's part of ninja training. Probably.
+>
+> It won with one arm. The other arm was holding a snack. A snack!
+>
+> That chain around its neck makes it stronger. Without it, I'd have had a real chance!
+>
+> …Maybe. Hyah!
+
+**Derrota**
+
+> Okay, okay! You win the arm-wrestle too!
+
+**Depois da luta**
+
+> The old folks here tell a story. Three heroes beat an ogre and saved the village.
+>
+> The kids tell it different. In theirs, the ogre was the hero, and it cried alone up on the mountain.
+>
+> Kids are usually right about monsters. I was a kid not long ago.
+>
+> Go on. And if you meet anyone in a mask, be nice to them.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Janine_Okidogi_ChampionIntro2:
+	.string "Guess what? I challenged the big one to\n"
+	.string "an arm-wrestle. That's part of ninja\l"
+	.string "training. Probably.\p"
+	.string "It won with one arm. The other arm was\n"
+	.string "holding a snack. A snack!\p"
+	.string "That chain around its neck makes it\n"
+	.string "stronger. Without it, I'd have had a\l"
+	.string "real chance!\p"
+	.string "…Maybe. Hyah!$"
+
+Nexus_Text_Janine_Okidogi_ChampionDefeat2:
+	.string "Okay, okay! You win the arm-wrestle\n"
+	.string "too!$"
+
+Nexus_Text_Janine_Okidogi_ChampionAfter2:
+	.string "{SPEAKER NAME_JANINE}The old folks here tell a story. Three\n"
+	.string "heroes beat an ogre and saved the\l"
+	.string "village.\p"
+	.string "The kids tell it different. In theirs,\n"
+	.string "the ogre was the hero, and it cried\l"
+	.string "alone up on the mountain.\p"
+	.string "Kids are usually right about monsters. I\n"
+	.string "was a kid not long ago.\p"
+	.string "Go on. And if you meet anyone in a mask,\n"
+	.string "be nice to them.$"
+```
+
+</details>
+
+**Variação 3 — a faixa do pai.** Dúvida e medo: amarrada no pulso da estátua está a faixa de cabeça do pai dela, que nunca a deixaria para trás — a não ser que algo o fizesse esquecer. A faixa cheira a pêssego podre, o cheiro que o pai ensinou a temer (fio com o caderno do Koga). Ela não corre, é Líder; mas pede ao jogador que corra.
+
+**Antes da luta**
+
+> There's something tied around the big statue's wrist. A headband. It's my father's.
+>
+> He'd never leave that behind. Not for anything. Not unless something made him forget.
+>
+> The brute out there knows what happened. I can tell by the way it grins at me.
+>
+> So I'm getting stronger. Right now. Hyah!
+
+**Derrota**
+
+> …Stronger tomorrow, then. Definitely tomorrow.
+
+**Depois da luta**
+
+> I untied the headband. It still smells of peaches. Sweet, rotten peaches.
+>
+> Father taught me that smell. He said, 'If you ever smell that, run.'
+>
+> I didn't run. I'm a Gym Leader now. Leaders don't run.
+>
+> …But you should. If it smiles at you, just go. Please.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Janine_Okidogi_ChampionIntro3:
+	.string "There's something tied around the big\n"
+	.string "statue's wrist. A headband. It's my\l"
+	.string "father's.\p"
+	.string "He'd never leave that behind. Not for\n"
+	.string "anything. Not unless something made him\l"
+	.string "forget.\p"
+	.string "The brute out there knows what\n"
+	.string "happened. I can tell by the way it grins\l"
+	.string "at me.\p"
+	.string "So I'm getting stronger. Right now.\n"
+	.string "Hyah!$"
+
+Nexus_Text_Janine_Okidogi_ChampionDefeat3:
+	.string "…Stronger tomorrow, then. Definitely\n"
+	.string "tomorrow.$"
+
+Nexus_Text_Janine_Okidogi_ChampionAfter3:
+	.string "{SPEAKER NAME_JANINE}I untied the headband. It still smells\n"
+	.string "of peaches. Sweet, rotten peaches.\p"
+	.string "Father taught me that smell. He said,\n"
+	.string "'If you ever smell that, run.'\p"
+	.string "I didn't run. I'm a Gym Leader now.\n"
+	.string "Leaders don't run.\p"
+	.string "…But you should. If it smiles at you,\n"
+	.string "just go. Please.$"
+```
+
+</details>
+
+
+
 #### Munkidori
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Janine_Munkidori_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -441,6 +637,120 @@ Nexus_Text_Janine_Munkidori_ChampionAfter:
 ```
 
 </details>
+
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — duas Janines, dois macacos.** Humor: o macaquinho se disfarça de Janine (e bem!), então ela se disfarçou de macaco. Agora ninguém sabe quem é quem, nem ela. Depois: a mente dele foi fortalecida pelo veneno, o coração não; truque sem coração é armadilha. Se ele te enganar, ria — ele odeia, não sabe para que serve rir.
+
+**Antes da luta**
+
+> The little monkey keeps disguising itself as me. Not badly, either!
+>
+> So I disguised myself as it. Now there are two monkeys and two Janines, and nobody knows who's who.
+>
+> Including me, a little. Are you real? Are you sure? Hyah!
+
+**Derrota**
+
+> You're real. Definitely. Real hits hurt more.
+
+**Depois da luta**
+
+> Poison made its mind strong. Nothing made its heart anything. That's the problem.
+>
+> A trick with no heart is just a trap. My tricks always have a heart, even the silly ones.
+>
+> If it fools you, laugh. It hates that. It doesn't know what laughing is for.
+>
+> Trust me. I tried it. It ran off.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Janine_Munkidori_ChampionIntro2:
+	.string "The little monkey keeps disguising\n"
+	.string "itself as me. Not badly, either!\p"
+	.string "So I disguised myself as it. Now there\n"
+	.string "are two monkeys and two Janines, and\l"
+	.string "nobody knows who's who.\p"
+	.string "Including me, a little. Are you real? Are\n"
+	.string "you sure? Hyah!$"
+
+Nexus_Text_Janine_Munkidori_ChampionDefeat2:
+	.string "You're real. Definitely. Real hits hurt\n"
+	.string "more.$"
+
+Nexus_Text_Janine_Munkidori_ChampionAfter2:
+	.string "{SPEAKER NAME_JANINE}Poison made its mind strong. Nothing\n"
+	.string "made its heart anything. That's the\l"
+	.string "problem.\p"
+	.string "A trick with no heart is just a trap. My\n"
+	.string "tricks always have a heart, even the\l"
+	.string "silly ones.\p"
+	.string "If it fools you, laugh. It hates that. It\n"
+	.string "doesn't know what laughing is for.\p"
+	.string "Trust me. I tried it. It ran off.$"
+```
+
+</details>
+
+**Variação 3 — o pai sorrindo.** O que ela perdeu, de novo pelo olhar da criatura: desta vez ela viu o pai sorrindo, mastigando algo doce, sem olhar para ela — o que o diário confirma. O pior: a criatura não inventa, só pega o que já está na cabeça e torce. Então parte dela já acha que aconteceu.
+
+**Antes da luta**
+
+> It showed me my father again. This time he was smiling. Chewing something sweet. Not looking at me.
+>
+> Father never smiled like that. It wasn't him. …It wasn't, was it?
+>
+> Ninja rule: when you're not sure, stop thinking and move. Hyah!
+
+**Derrota**
+
+> …Okay. Moving helped. Thanks.
+
+**Depois da luta**
+
+> It doesn't make things up. That's the worst part. It finds what's already in your head and twists it.
+>
+> So if it showed me that, part of me already thinks it happened.
+>
+> If it shows you something awful, remember. It can only borrow. It can't create.
+>
+> Whatever you see in there, you brought. So bring good things. Please.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Janine_Munkidori_ChampionIntro3:
+	.string "It showed me my father again. This time\n"
+	.string "he was smiling. Chewing something\l"
+	.string "sweet. Not looking at me.\p"
+	.string "Father never smiled like that. It\n"
+	.string "wasn't him. …It wasn't, was it?\p"
+	.string "Ninja rule: when you're not sure, stop\n"
+	.string "thinking and move. Hyah!$"
+
+Nexus_Text_Janine_Munkidori_ChampionDefeat3:
+	.string "…Okay. Moving helped. Thanks.$"
+
+Nexus_Text_Janine_Munkidori_ChampionAfter3:
+	.string "{SPEAKER NAME_JANINE}It doesn't make things up. That's the\n"
+	.string "worst part. It finds what's already in\l"
+	.string "your head and twists it.\p"
+	.string "So if it showed me that, part of me\n"
+	.string "already thinks it happened.\p"
+	.string "If it shows you something awful,\n"
+	.string "remember. It can only borrow. It can't\l"
+	.string "create.\p"
+	.string "Whatever you see in there, you brought.\n"
+	.string "So bring good things. Please.$"
+```
+
+</details>
+
 
 
 Falante novo: `SP_NAME_JANINE` (ainda não existe em `include/constants/speaker_names.h`).

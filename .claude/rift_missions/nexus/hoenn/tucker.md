@@ -320,6 +320,82 @@ Nexus_Text_Tucker_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)), além da que já está no jogo (variação 1). O sorteio de qual variação toca ainda não existe no código.
+
+**Variação 2** — humor e vaidade: o figurino bordado a ouro, feito para uma final que nunca aconteceu.
+
+**Antes da luta**
+
+> Ha ha ha! Like the outfit? Hand-stitched! Gold thread! I had it made for a final that never happened.
+>
+> Every champion needs a costume for the big night. I've been wearing mine for… a while.
+>
+> No matter! Every match is the final if you play it right. Let's go, fan!
+
+**Derrota**
+
+> Ha! You won without a costume. That's just rude.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Tucker_Intro2:
+	.string "Ha ha ha! Like the outfit?\n"
+	.string "Hand-stitched! Gold thread! I had it\l"
+	.string "made for a final that never happened.\p"
+	.string "Every champion needs a costume for the\n"
+	.string "big night. I've been wearing mine for… a\l"
+	.string "while.\p"
+	.string "No matter! Every match is the final if\n"
+	.string "you play it right. Let's go, fan!$"
+
+Nexus_Text_Tucker_Defeat2:
+	.string "Ha! You won without a costume. That's\n"
+	.string "just rude.$"
+```
+
+</details>
+
+**Variação 3** — confissão e R21: ele cantarola o barulho da plateia; o homem de sobretudo na primeira fila que não aplaudiu.
+
+**Antes da luta**
+
+> Before we start, a confession. Sometimes I hum the crowd noise myself. Under my breath.
+>
+> Once, a man in a long coat sat in the front row for a whole match. Took notes. Didn't clap once.
+>
+> Worst review of my life! I think about it every day. Ha ha ha!
+>
+> So! Make some noise, fan! Give me something to top that!
+
+**Derrota**
+
+> Bravo… Write that in your notes. Five stars.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Tucker_Intro3:
+	.string "Before we start, a confession.\n"
+	.string "Sometimes I hum the crowd noise myself.\l"
+	.string "Under my breath.\p"
+	.string "Once, a man in a long coat sat in the\n"
+	.string "front row for a whole match. Took notes.\l"
+	.string "Didn't clap once.\p"
+	.string "Worst review of my life! I think about it\n"
+	.string "every day. Ha ha ha!\p"
+	.string "So! Make some noise, fan! Give me\n"
+	.string "something to top that!$"
+
+Nexus_Text_Tucker_Defeat3:
+	.string "Bravo… Write that in your notes. Five\n"
+	.string "stars.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -388,6 +464,127 @@ Nexus_Text_Tucker_Eternatus_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário, além da variação 1 que já está no jogo. Sem o nome da espécie ([R16](../NEXUS_REGRAS.md)).
+
+**Variação 2** — culpa: o Dome dele também era aceso por essa energia; ele se curvou a vida toda na luz dela.
+
+**Antes da luta**
+
+> Ha! Look up, fan. Every light in this place is drinking. Drinking from that thing down there.
+>
+> Want to hear something funny? My Dome ran on the same power. Every spotlight I ever stood in.
+>
+> Every bow I took, I took in its light. Never even sent a thank-you note.
+>
+> Let's put on a show worth the electric bill!
+
+**Derrota**
+
+> Ha… Lights out. For me, anyway.
+
+**Depois da luta**
+
+> The man who owned the lights told me it was clean energy. Enough for the next thousand years, he said.
+>
+> He never said where it came from. I never asked. I was busy bowing.
+>
+> A performer ought to know who's paying for the stage.
+>
+> Go on, fan. Give it back its light. I'll find a candle.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Tucker_Eternatus_ChampionIntro2:
+	.string "Ha! Look up, fan. Every light in this\n"
+	.string "place is drinking. Drinking from that\l"
+	.string "thing down there.\p"
+	.string "Want to hear something funny? My Dome\n"
+	.string "ran on the same power. Every spotlight\l"
+	.string "I ever stood in.\p"
+	.string "Every bow I took, I took in its light.\n"
+	.string "Never even sent a thank-you note.\p"
+	.string "Let's put on a show worth the electric\n"
+	.string "bill!$"
+
+Nexus_Text_Tucker_Eternatus_ChampionDefeat2:
+	.string "Ha… Lights out. For me, anyway.$"
+
+Nexus_Text_Tucker_Eternatus_ChampionAfter2:
+	.string "{SPEAKER NAME_TUCKER}The man who owned the lights told me it\n"
+	.string "was clean energy. Enough for the next\l"
+	.string "thousand years, he said.\p"
+	.string "He never said where it came from. I\n"
+	.string "never asked. I was busy bowing.\p"
+	.string "A performer ought to know who's paying\n"
+	.string "for the stage.\p"
+	.string "Go on, fan. Give it back its light. I'll\n"
+	.string "find a candle.$"
+```
+
+</details>
+
+**Variação 3** — o que ele perdeu no fragmento: a espada e o escudo viraram adereço de palco, e os heróis nunca vieram.
+
+**Antes da luta**
+
+> Ha ha! You know what tonight's show is missing? The heroes!
+>
+> There's supposed to be a big finish. Two kids, an old sword, an old shield. The crowd goes wild.
+>
+> Well, the sword and shield are backstage. I use them as props. They look fabulous under the lights.
+>
+> …No kids came. So it's you and me, fan. Places, everyone!
+
+**Derrota**
+
+> Ha! Now THAT'S a hero's entrance. A little late, but I'll allow it.
+
+**Depois da luta**
+
+> Between us? I don't think those props were props.
+>
+> Rusty old things. Nobody wanted them. They glowed a little whenever that red sky got close.
+>
+> If the right hands had picked them up, maybe the lights would still be ours.
+>
+> Go on. Be the right hands. I'll hold the curtain.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Tucker_Eternatus_ChampionIntro3:
+	.string "Ha ha! You know what tonight's show is\n"
+	.string "missing? The heroes!\p"
+	.string "There's supposed to be a big finish.\n"
+	.string "Two kids, an old sword, an old shield. The\l"
+	.string "crowd goes wild.\p"
+	.string "Well, the sword and shield are\n"
+	.string "backstage. I use them as props. They\l"
+	.string "look fabulous under the lights.\p"
+	.string "…No kids came. So it's you and me, fan.\n"
+	.string "Places, everyone!$"
+
+Nexus_Text_Tucker_Eternatus_ChampionDefeat3:
+	.string "Ha! Now THAT'S a hero's entrance. A\n"
+	.string "little late, but I'll allow it.$"
+
+Nexus_Text_Tucker_Eternatus_ChampionAfter3:
+	.string "{SPEAKER NAME_TUCKER}Between us? I don't think those props\n"
+	.string "were props.\p"
+	.string "Rusty old things. Nobody wanted them.\n"
+	.string "They glowed a little whenever that red\l"
+	.string "sky got close.\p"
+	.string "If the right hands had picked them up,\n"
+	.string "maybe the lights would still be ours.\p"
+	.string "Go on. Be the right hands. I'll hold the\n"
+	.string "curtain.$"
+```
+
+</details>
+
 
 #### Hoopa
 
@@ -446,6 +643,124 @@ Nexus_Text_Tucker_Hoopa_ChampionAfter:
 	.string "something if they chose to come.\p"
 	.string "Go send those people home, fan. The\n"
 	.string "show's over.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário, além da variação 1 que já está no jogo. Sem o nome da espécie ([R16](../NEXUS_REGRAS.md)).
+
+**Variação 2** — humor: a criatura rouba a cena dele, e ele admite que ela é melhor showman porque não precisa de plateia.
+
+**Antes da luta**
+
+> Ha ha! You've met our little prankster? It pulled a marching band out of a ring for my entrance!
+>
+> Then it pulled out the band's bus. Then the road the bus was on.
+>
+> I've been upstaged before, fan, but never by something that fits in a hat!
+>
+> Well, the show must go on! Let's go!
+
+**Derrota**
+
+> Ha! Upstaged twice in one day. A personal record.
+
+**Depois da luta**
+
+> Truth is, that little one's a better showman than me. It never needs a crowd.
+>
+> It laughs at its own tricks. Every single time. Nobody has to clap.
+>
+> I used to think that was sad. Now I think it's the whole secret.
+>
+> Go on, fan. Laugh at something on your way out. Just for you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Tucker_Hoopa_ChampionIntro2:
+	.string "Ha ha! You've met our little prankster?\n"
+	.string "It pulled a marching band out of a ring\l"
+	.string "for my entrance!\p"
+	.string "Then it pulled out the band's bus. Then\n"
+	.string "the road the bus was on.\p"
+	.string "I've been upstaged before, fan, but\n"
+	.string "never by something that fits in a hat!\p"
+	.string "Well, the show must go on! Let's go!$"
+
+Nexus_Text_Tucker_Hoopa_ChampionDefeat2:
+	.string "Ha! Upstaged twice in one day. A\n"
+	.string "personal record.$"
+
+Nexus_Text_Tucker_Hoopa_ChampionAfter2:
+	.string "{SPEAKER NAME_TUCKER}Truth is, that little one's a better\n"
+	.string "showman than me. It never needs a\l"
+	.string "crowd.\p"
+	.string "It laughs at its own tricks. Every\n"
+	.string "single time. Nobody has to clap.\p"
+	.string "I used to think that was sad. Now I\n"
+	.string "think it's the whole secret.\p"
+	.string "Go on, fan. Laugh at something on your\n"
+	.string "way out. Just for you.$"
+```
+
+</details>
+
+**Variação 3** — espelho: solta, a criatura vira uma coisa enorme e faminta; o ego dele sob o holofote é igual; o vaso é a tampa.
+
+**Antes da luta**
+
+> See that little pot at the edge of the stage? Keep an eye on it.
+>
+> The prankster's cute now. But let it all the way out and it grows. Huge. Hungry. Loud.
+>
+> Believe me, fan, I know the feeling. I'm the same when the spotlight hits.
+>
+> Ha ha ha! Let's see which one of us gets out of hand first!
+
+**Derrota**
+
+> Ha… Back in the pot for me.
+
+**Depois da luta**
+
+> Everyone's got a big, loud version of themselves locked up somewhere.
+>
+> Mine comes out when the crowd roars. Its comes out when somebody opens the lid.
+>
+> The trick isn't smashing the pot. It's knowing when to put the lid back on.
+>
+> Go on, fan. And if you find the lid, hand it to me.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Tucker_Hoopa_ChampionIntro3:
+	.string "See that little pot at the edge of the\n"
+	.string "stage? Keep an eye on it.\p"
+	.string "The prankster's cute now. But let it all\n"
+	.string "the way out and it grows. Huge. Hungry.\l"
+	.string "Loud.\p"
+	.string "Believe me, fan, I know the feeling. I'm\n"
+	.string "the same when the spotlight hits.\p"
+	.string "Ha ha ha! Let's see which one of us\n"
+	.string "gets out of hand first!$"
+
+Nexus_Text_Tucker_Hoopa_ChampionDefeat3:
+	.string "Ha… Back in the pot for me.$"
+
+Nexus_Text_Tucker_Hoopa_ChampionAfter3:
+	.string "{SPEAKER NAME_TUCKER}Everyone's got a big, loud version of\n"
+	.string "themselves locked up somewhere.\p"
+	.string "Mine comes out when the crowd roars.\n"
+	.string "Its comes out when somebody opens the\l"
+	.string "lid.\p"
+	.string "The trick isn't smashing the pot. It's\n"
+	.string "knowing when to put the lid back on.\p"
+	.string "Go on, fan. And if you find the lid, hand\n"
+	.string "it to me.$"
 ```
 
 </details>

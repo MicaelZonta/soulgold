@@ -324,6 +324,72 @@ Nexus_Text_Chuck_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Ainda não estão no código.
+
+**Variação 2 — a marmita da esposa.** Humor: a esposa (que nos jogos reclama do treino dele no Ginásio) mandou almoço com uma regra, e ele quebra a regra comendo rápido demais.
+
+**Antes da luta**
+
+> My wife sent me off with a lunch box. She said, 'Don't punch anything before you eat.'
+>
+> So I ate it in one bite! Now I can punch! WAHAHAH!
+>
+> Er. Not you. I mean battle. Let's go!
+
+**Derrota**
+
+> Should've chewed. WAHAHAH… ow.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Chuck_Intro2:
+	.string "My wife sent me off with a lunch box.\n"
+	.string "She said, 'Don't punch anything before\l"
+	.string "you eat.'\p"
+	.string "So I ate it in one bite! Now I can punch!\n"
+	.string "WAHAHAH!\p"
+	.string "Er. Not you. I mean battle. Let's go!$"
+
+Nexus_Text_Chuck_Defeat2:
+	.string "Should've chewed. WAHAHAH… ow.$"
+```
+
+</details>
+
+**Variação 3 — o Poliwrath de sempre.** A dúvida pequena do homem que não para: trinta anos de cachoeira com o mesmo parceiro, e se ele quisesse um dia de folga?
+
+**Antes da luta**
+
+> My Poliwrath has trained with me since we were both small.
+>
+> Every morning, same waterfall, same stance. Thirty years! Not one day off!
+>
+> Sometimes I wonder if it wants a day off. …It says no! Let's go!
+
+**Derrota**
+
+> WAHAHAH! Okay, okay. Maybe one day off.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Chuck_Intro3:
+	.string "My Poliwrath has trained with me since\n"
+	.string "we were both small.\p"
+	.string "Every morning, same waterfall, same\n"
+	.string "stance. Thirty years! Not one day off!\p"
+	.string "Sometimes I wonder if it wants a day\n"
+	.string "off. …It says no! Let's go!$"
+
+Nexus_Text_Chuck_Defeat3:
+	.string "WAHAHAH! Okay, okay. Maybe one day off.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Urshifu
@@ -387,6 +453,110 @@ Nexus_Text_Chuck_Urshifu_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1: a criatura pelo olhar do campeão, sem o nome da espécie. Ainda não estão no código.
+
+**Variação 2 — as duas torres.** A escolha que ele nunca teve: torre escura (um golpe perfeito) ou torre da água (cem golpes que não param). Ele se imagina na escura; o Poliwrath escolheu a água por ele há muito tempo.
+
+**Antes da luta**
+
+> Two towers. One dark, one wet. You climb one, and it makes you who you are forever.
+>
+> I never got to choose. I just found a waterfall near home and stood under it.
+>
+> Would I have picked the dark one? Let's find out with our fists! WAHAHAH!
+
+**Derrota**
+
+> Hah! Neither tower saved me there!
+
+**Depois da luta**
+
+> The dark tower teaches one perfect blow. The water tower teaches a hundred that never stop.
+>
+> I think I'd have gone dark. One punch. Done. Home for dinner.
+>
+> But my Poliwrath chose water long before I did. So, water it is. Go on. Choose well.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Chuck_Urshifu_ChampionIntro2:
+	.string "Two towers. One dark, one wet. You climb\n"
+	.string "one, and it makes you who you are\l"
+	.string "forever.\p"
+	.string "I never got to choose. I just found a\n"
+	.string "waterfall near home and stood under it.\p"
+	.string "Would I have picked the dark one? Let's\n"
+	.string "find out with our fists! WAHAHAH!$"
+
+Nexus_Text_Chuck_Urshifu_ChampionDefeat2:
+	.string "Hah! Neither tower saved me there!$"
+
+Nexus_Text_Chuck_Urshifu_ChampionAfter2:
+	.string "{SPEAKER NAME_CHUCK}The dark tower teaches one perfect\n"
+	.string "blow. The water tower teaches a hundred\l"
+	.string "that never stop.\p"
+	.string "I think I'd have gone dark. One punch.\n"
+	.string "Done. Home for dinner.\p"
+	.string "But my Poliwrath chose water long\n"
+	.string "before I did. So, water it is. Go on.\l"
+	.string "Choose well.$"
+```
+
+</details>
+
+**Variação 3 — a reverência.** A criatura se curvou antes de erguer os punhos (Boss do fragmento). O Chuck, que só grita, lembra de uma aluna que se curvava "para lembrar que não é raiva" e de quem ele riu.
+
+**Antes da luta**
+
+> It bowed. Did you see? Before it raised its fists, it bowed!
+>
+> I've never bowed before a fight in my life. I just yell!
+>
+> Maybe that's why I lose to my wife. …Let's go! And I bow! Like this! WAHAHAH!
+
+**Derrota**
+
+> Bowing didn't help. Next time, a deeper bow!
+
+**Depois da luta**
+
+> I asked a student once why she bowed before sparring. She said, 'So I remember it isn't anger.'
+>
+> I laughed at her. Thirty years ago. I'd like to take that laugh back.
+>
+> Go on. Bow first. Then give it everything you've got.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Chuck_Urshifu_ChampionIntro3:
+	.string "It bowed. Did you see? Before it raised\n"
+	.string "its fists, it bowed!\p"
+	.string "I've never bowed before a fight in my\n"
+	.string "life. I just yell!\p"
+	.string "Maybe that's why I lose to my wife.\n"
+	.string "…Let's go! And I bow! Like this!\l"
+	.string "WAHAHAH!$"
+
+Nexus_Text_Chuck_Urshifu_ChampionDefeat3:
+	.string "Bowing didn't help. Next time, a deeper\n"
+	.string "bow!$"
+
+Nexus_Text_Chuck_Urshifu_ChampionAfter3:
+	.string "{SPEAKER NAME_CHUCK}I asked a student once why she bowed\n"
+	.string "before sparring. She said, 'So I\l"
+	.string "remember it isn't anger.'\p"
+	.string "I laughed at her. Thirty years ago. I'd\n"
+	.string "like to take that laugh back.\p"
+	.string "Go on. Bow first. Then give it\n"
+	.string "everything you've got.$"
+```
+
+</details>
+
 #### Cobalion
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Chuck_Cobalion_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -444,6 +614,112 @@ Nexus_Text_Chuck_Cobalion_ChampionAfter:
 	.string "Go on. And don't just win. Leave those\n"
 	.string "little ones something to stand\l"
 	.string "behind.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1: a criatura pelo olhar do campeão, sem o nome da espécie. Ainda não estão no código.
+
+**Variação 2 — a guerra antiga.** Lore de Unova: numa guerra dos humanos, quando as florestas queimaram, ele tirou os Pokémon do fogo, com dois companheiros (o grande e bruto, o rápido e verde). Liderar não é ser o mais forte. Termina no escudo enferrujado do caderno.
+
+**Antes da luta**
+
+> Every sword out there belonged to somebody. Somebody who fought and didn't come back.
+>
+> Long ago, when the forests burned in a war, that creature led the small ones out of the fire.
+>
+> No fists. No swords. Just in front. …I want to understand that. Battle!
+
+**Derrota**
+
+> You went through me like I wasn't even there!
+
+**Depois da luta**
+
+> It has two friends, they say. One big and rough, one quick and green. It leads them.
+>
+> Leading isn't being the strongest. It's being the one who stays when the others go.
+>
+> I found a rusted shield out there. Nobody's. I think I'll stand behind it a while. Go on.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Chuck_Cobalion_ChampionIntro2:
+	.string "Every sword out there belonged to\n"
+	.string "somebody. Somebody who fought and\l"
+	.string "didn't come back.\p"
+	.string "Long ago, when the forests burned in a\n"
+	.string "war, that creature led the small ones\l"
+	.string "out of the fire.\p"
+	.string "No fists. No swords. Just in front. …I\n"
+	.string "want to understand that. Battle!$"
+
+Nexus_Text_Chuck_Cobalion_ChampionDefeat2:
+	.string "You went through me like I wasn't even\n"
+	.string "there!$"
+
+Nexus_Text_Chuck_Cobalion_ChampionAfter2:
+	.string "{SPEAKER NAME_CHUCK}It has two friends, they say. One big\n"
+	.string "and rough, one quick and green. It leads\l"
+	.string "them.\p"
+	.string "Leading isn't being the strongest.\n"
+	.string "It's being the one who stays when the\l"
+	.string "others go.\p"
+	.string "I found a rusted shield out there.\n"
+	.string "Nobody's. I think I'll stand behind it a\l"
+	.string "while. Go on.$"
+```
+
+</details>
+
+**Variação 3 — o pequeno atrás da perna.** Humor e ternura: um dos pequenos se escondeu atrás da perna do Chuck, o homem de quem todo mundo corre. Ele ficou uma hora sem se mexer, e as pernas dormiram.
+
+**Antes da luta**
+
+> One of those little ones hid behind my leg earlier. Behind ME! Can you believe it?
+>
+> Nobody hides behind me. They run from me! I'm very loud!
+>
+> …I didn't move for an hour. My legs are asleep. Let's battle anyway!
+
+**Derrota**
+
+> My legs woke up too late! WAHAHAH!
+
+**Depois da luta**
+
+> I think that creature taught it that. Hide behind something big that doesn't move.
+>
+> And I was the biggest thing around, so it picked me.
+>
+> Nobody ever picked me for that before. Go on. I'm not moving till it's done.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Chuck_Cobalion_ChampionIntro3:
+	.string "One of those little ones hid behind my\n"
+	.string "leg earlier. Behind ME! Can you believe\l"
+	.string "it?\p"
+	.string "Nobody hides behind me. They run from\n"
+	.string "me! I'm very loud!\p"
+	.string "…I didn't move for an hour. My legs are\n"
+	.string "asleep. Let's battle anyway!$"
+
+Nexus_Text_Chuck_Cobalion_ChampionDefeat3:
+	.string "My legs woke up too late! WAHAHAH!$"
+
+Nexus_Text_Chuck_Cobalion_ChampionAfter3:
+	.string "{SPEAKER NAME_CHUCK}I think that creature taught it that.\n"
+	.string "Hide behind something big that doesn't\l"
+	.string "move.\p"
+	.string "And I was the biggest thing around, so\n"
+	.string "it picked me.\p"
+	.string "Nobody ever picked me for that before.\n"
+	.string "Go on. I'm not moving till it's done.$"
 ```
 
 </details>

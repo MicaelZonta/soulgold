@@ -323,6 +323,69 @@ Nexus_Text_Brock_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Variação 2: o Brock cozinheiro e irmão mais velho de nove (anime), com humor de R20: a cesta de bolinhos ficou em outro mundo. Variação 3: a dúvida — criador, médico? — e o novato de sorriso largo que o faz ficar no ginásio.
+
+**Variação 2 — antes da luta**
+
+> Hey there! You look like you haven't eaten since you got here. Wherever here is.
+>
+> I've got nine brothers and sisters back home, so trust me, I can tell.
+>
+> Battle first, then rice balls. That's the Pewter way!
+
+**Variação 2 — derrota**
+
+> Good battle! Here, take one for the road. …Oh. I left the basket in another world.
+
+**Variação 3 — antes da luta**
+
+> Some days I wonder what I'd be if I weren't a Gym Leader. A breeder, maybe. A doctor, even.
+>
+> Then a rookie walks in with a nervous Pokémon and a big grin, and I remember why I stay.
+>
+> You don't look nervous. Let's see that grin!
+
+**Variação 3 — derrota**
+
+> There it is. Now go grin at somebody tougher than me.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brock_Intro2:
+	.string "Hey there! You look like you haven't\n"
+	.string "eaten since you got here. Wherever here\l"
+	.string "is.\p"
+	.string "I've got nine brothers and sisters\n"
+	.string "back home, so trust me, I can tell.\p"
+	.string "Battle first, then rice balls. That's\n"
+	.string "the Pewter way!$"
+
+Nexus_Text_Brock_Defeat2:
+	.string "Good battle! Here, take one for the\n"
+	.string "road. …Oh. I left the basket in another\l"
+	.string "world.$"
+
+Nexus_Text_Brock_Intro3:
+	.string "Some days I wonder what I'd be if I\n"
+	.string "weren't a Gym Leader. A breeder, maybe.\l"
+	.string "A doctor, even.\p"
+	.string "Then a rookie walks in with a nervous\n"
+	.string "Pokémon and a big grin, and I remember\l"
+	.string "why I stay.\p"
+	.string "You don't look nervous. Let's see that\n"
+	.string "grin!$"
+
+Nexus_Text_Brock_Defeat3:
+	.string "There it is. Now go grin at somebody\n"
+	.string "tougher than me.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Brock é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
@@ -388,6 +451,100 @@ Nexus_Text_Brock_Terrakion_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: a lembrança do pai que saiu para ser treinador e dos muros de pedra no quintal que os irmãos pulavam; a lição é que os pequenos não precisavam de muro, precisavam de alguém ao lado. Variação 3: os Swords of Justice como um ginásio com menos papelada; a criatura é a forte do grupo, a que bate no muro para os outros não precisarem.
+
+**Variação 2 — antes da luta**
+
+> My dad left Pewter to be a trainer when I was a kid. I built walls out of rocks in the yard, so the little ones felt safe.
+>
+> They weren't very good walls. My brothers climbed over them every day.
+>
+> The one out there breaks real walls. Let's see if I've gotten any better!
+
+**Variação 2 — derrota**
+
+> Climbed right over me. …Just like old times.
+
+**Variação 2 — depois da luta**
+
+> Here's something I figured out late. The little ones didn't need walls. They needed somebody standing next to them.
+>
+> That big guy out there gets it. It knocked down a castle, then lay down in the rubble so they could sleep.
+>
+> Be gentle out there. Go on.
+
+**Variação 3 — antes da luta**
+
+> I hear it has friends. One green and quick, one blue and in charge. They all look out for the little guys.
+>
+> Sounds like a Gym to me. We just have more paperwork.
+>
+> Alright! Let's see how you handle a real defense!
+
+**Variação 3 — derrota**
+
+> Ha! Good. You'd make a fine Sword yourself.
+
+**Variação 3 — depois da luta**
+
+> The one out there is the strong one of its group. It hits the walls so the others don't have to.
+>
+> That's a lonely job. Trust me, I know.
+>
+> If it charges you, don't run. Stand still and let it see you. Go on.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brock_Terrakion_ChampionIntro2:
+	.string "My dad left Pewter to be a trainer when\n"
+	.string "I was a kid. I built walls out of rocks in\l"
+	.string "the yard, so the little ones felt safe.\p"
+	.string "They weren't very good walls. My\n"
+	.string "brothers climbed over them every day.\p"
+	.string "The one out there breaks real walls.\n"
+	.string "Let's see if I've gotten any better!$"
+
+Nexus_Text_Brock_Terrakion_ChampionDefeat2:
+	.string "Climbed right over me. …Just like old\n"
+	.string "times.$"
+
+Nexus_Text_Brock_Terrakion_ChampionAfter2:
+	.string "{SPEAKER NAME_BROCK}Here's something I figured out late.\n"
+	.string "The little ones didn't need walls. They\l"
+	.string "needed somebody standing next to them.\p"
+	.string "That big guy out there gets it. It\n"
+	.string "knocked down a castle, then lay down in\l"
+	.string "the rubble so they could sleep.\p"
+	.string "Be gentle out there. Go on.$"
+
+Nexus_Text_Brock_Terrakion_ChampionIntro3:
+	.string "I hear it has friends. One green and\n"
+	.string "quick, one blue and in charge. They all\l"
+	.string "look out for the little guys.\p"
+	.string "Sounds like a Gym to me. We just have\n"
+	.string "more paperwork.\p"
+	.string "Alright! Let's see how you handle a real\n"
+	.string "defense!$"
+
+Nexus_Text_Brock_Terrakion_ChampionDefeat3:
+	.string "Ha! Good. You'd make a fine Sword\n"
+	.string "yourself.$"
+
+Nexus_Text_Brock_Terrakion_ChampionAfter3:
+	.string "{SPEAKER NAME_BROCK}The one out there is the strong one of\n"
+	.string "its group. It hits the walls so the\l"
+	.string "others don't have to.\p"
+	.string "That's a lonely job. Trust me, I know.\p"
+	.string "If it charges you, don't run. Stand\n"
+	.string "still and let it see you. Go on.$"
+```
+
+</details>
+
+
 #### Iron Thorns
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brock_IronThorns_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -447,5 +604,98 @@ Nexus_Text_Brock_IronThorns_ChampionAfter:
 ```
 
 </details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: humor de museu — todo fóssil tem etiqueta, e não dá para etiquetar algo que ainda está ligando; depois, pedra é tempo empilhado, e esse aí não tem camada nenhuma: tudo ainda está pela frente. Variação 3: as duas alas do Museu de Pewter (fósseis e o ônibus espacial), ele corria para os fósseis e a irmã para o foguete.
+
+**Variação 2 — antes da luta**
+
+> Every fossil I've ever dug up got a little label. Old Amber. Dome. Helix. 'Probably ancient.'
+>
+> I tried to label the one out there. It kept switching on while I wrote.
+>
+> You can't label something that's still booting up! Let's battle!
+
+**Variação 2 — derrota**
+
+> Ha! Label that one 'Beaten, recently.'
+
+**Variação 2 — depois da luta**
+
+> Rock is just time, stacked. You read the layers and you know what happened.
+>
+> That one out there has no layers. Nothing has happened to it yet. Everything is still ahead of it.
+>
+> Kind of jealous, honestly. Go on.
+
+**Variação 3 — antes da luta**
+
+> Pewter Museum has two wings. One for fossils, one for a space shuttle. Old things and new things, under one roof.
+>
+> As a kid I always ran to the fossils. My little sister always ran to the rocket.
+>
+> That one out there would've made us both happy. Let's battle!
+
+**Variação 3 — derrota**
+
+> You'd have liked the rocket wing too. I can tell.
+
+**Variação 3 — depois da luta**
+
+> My sister used to say the future is just a fossil nobody has dug up yet.
+>
+> I told her that didn't make sense. Now I'm standing next to one, and it's humming.
+>
+> I owe her an apology. Go on, before it finishes booting up.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brock_IronThorns_ChampionIntro2:
+	.string "Every fossil I've ever dug up got a\n"
+	.string "little label. Old Amber. Dome. Helix.\l"
+	.string "'Probably ancient.'\p"
+	.string "I tried to label the one out there. It\n"
+	.string "kept switching on while I wrote.\p"
+	.string "You can't label something that's still\n"
+	.string "booting up! Let's battle!$"
+
+Nexus_Text_Brock_IronThorns_ChampionDefeat2:
+	.string "Ha! Label that one 'Beaten, recently.'$"
+
+Nexus_Text_Brock_IronThorns_ChampionAfter2:
+	.string "{SPEAKER NAME_BROCK}Rock is just time, stacked. You read the\n"
+	.string "layers and you know what happened.\p"
+	.string "That one out there has no layers.\n"
+	.string "Nothing has happened to it yet.\l"
+	.string "Everything is still ahead of it.\p"
+	.string "Kind of jealous, honestly. Go on.$"
+
+Nexus_Text_Brock_IronThorns_ChampionIntro3:
+	.string "Pewter Museum has two wings. One for\n"
+	.string "fossils, one for a space shuttle. Old\l"
+	.string "things and new things, under one roof.\p"
+	.string "As a kid I always ran to the fossils. My\n"
+	.string "little sister always ran to the rocket.\p"
+	.string "That one out there would've made us\n"
+	.string "both happy. Let's battle!$"
+
+Nexus_Text_Brock_IronThorns_ChampionDefeat3:
+	.string "You'd have liked the rocket wing too. I\n"
+	.string "can tell.$"
+
+Nexus_Text_Brock_IronThorns_ChampionAfter3:
+	.string "{SPEAKER NAME_BROCK}My sister used to say the future is\n"
+	.string "just a fossil nobody has dug up yet.\p"
+	.string "I told her that didn't make sense. Now\n"
+	.string "I'm standing next to one, and it's\l"
+	.string "humming.\p"
+	.string "I owe her an apology. Go on, before it\n"
+	.string "finishes booting up.$"
+```
+
+</details>
+
 
 Falante novo: `SP_NAME_BROCK` (ainda não existe em `include/constants/speaker_names.h`).

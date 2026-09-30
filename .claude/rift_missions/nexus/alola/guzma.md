@@ -241,6 +241,75 @@ Nexus_Text_Guzma_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Estas duas também servem para qualquer sala e qualquer dia ([R16](../NEXUS_REGRAS.md)): falam só de Guzma. Nada disto está no código.
+
+**Variação 2 — capitão.** A ferida de origem: o velho (o Hala, sem nome) disse na cara dele que ele não tinha estofo de Trial Captain. Então ele fez o próprio time, as próprias regras e muita bagunça. Na derrota, o eco amargo.
+
+**Antes da luta**
+
+> Big bad Guzma, kid. You heard of me? No? Figures.
+>
+> Old man back home said I wasn't Captain material. Said it right to my face.
+>
+> So I made my own team. My own rules. A whole lotta mess. Let's add you to it!
+
+**Derrota**
+
+> ...Captain material, huh. Guess not.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Guzma_Intro2:
+	.string "Big bad Guzma, kid. You heard of me? No?\n"
+	.string "Figures.\p"
+	.string "Old man back home said I wasn't\n"
+	.string "Captain material. Said it right to my\l"
+	.string "face.\p"
+	.string "So I made my own team. My own rules. A\n"
+	.string "whole lotta mess. Let's add you to it!$"
+
+Nexus_Text_Guzma_Defeat2:
+	.string "...Captain material, huh. Guess not.$"
+```
+
+</details>
+
+**Variação 3 — saber a hora de correr.** Humor com o Golisopod (Emergency Exit): quando a coisa aperta, ele corre de volta para a bola. O pessoal ri; o Guzma não, porque saber a hora de cair fora é talento. Mas ele não vai fugir do jogador. Na derrota, o Golisopod já está no meio do caminho de volta.
+
+**Antes da luta**
+
+> You know what my Golisopod does when things go bad? Runs. Straight back to the ball.
+>
+> Folks laugh. I don't. Knowin' when to bail is a skill, kid.
+>
+> ...Not that I'm bailin' on you! Get over here!
+
+**Derrota**
+
+> Yeah, yeah. Golisopod's already halfway back to the ball.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Guzma_Intro3:
+	.string "You know what my Golisopod does when\n"
+	.string "things go bad? Runs. Straight back to\l"
+	.string "the ball.\p"
+	.string "Folks laugh. I don't. Knowin' when to\n"
+	.string "bail is a skill, kid.\p"
+	.string "...Not that I'm bailin' on you! Get over\n"
+	.string "here!$"
+
+Nexus_Text_Guzma_Defeat3:
+	.string "Yeah, yeah. Golisopod's already\n"
+	.string "halfway back to the ball.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -306,3 +375,107 @@ Nexus_Text_Guzma_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Sobre a criatura, pelo olhar de Guzma, sem o nome da espécie ([R16](../NEXUS_REGRAS.md)). Nada disto está no código.
+
+**Variação 2 — o espelho.** Três dias olhando a boca mastigar, e o Guzma notou que ela não parece feliz, nem sente gosto de nada: come porque é a única coisa que sabe fazer. "Que espelho." No depois: todo mundo tem medo dela e ninguém pergunta do que ela tem tanta fome; ninguém perguntou para ele também.
+
+**Antes da luta**
+
+> Watched it chew for three days straight, kid. Know what I noticed?
+>
+> It don't look happy. Not once. It don't even look like it's tastin' anything.
+>
+> It just eats 'cause it's the only thing it knows how to do. ...Heh. Some mirror. Let's go!
+
+**Derrota**
+
+> ...Yeah. That's about how it feels. Every time.
+
+**Depois da luta**
+
+> Everybody's scared of it. Nobody ever asks what it's so hungry for.
+>
+> Nobody asked me, neither. I'd've said somethin' dumb, but still.
+>
+> Go on. Ask it the only way it understands. Hit it hard.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Guzma_ChampionIntro2:
+	.string "Watched it chew for three days\n"
+	.string "straight, kid. Know what I noticed?\p"
+	.string "It don't look happy. Not once. It don't\n"
+	.string "even look like it's tastin' anything.\p"
+	.string "It just eats 'cause it's the only thing\n"
+	.string "it knows how to do. ...Heh. Some mirror.\l"
+	.string "Let's go!$"
+
+Nexus_Text_Guzma_ChampionDefeat2:
+	.string "...Yeah. That's about how it feels.\n"
+	.string "Every time.$"
+
+Nexus_Text_Guzma_ChampionAfter2:
+	.string "{SPEAKER NAME_GUZMA}Everybody's scared of it. Nobody ever\n"
+	.string "asks what it's so hungry for.\p"
+	.string "Nobody asked me, neither. I'd've said\n"
+	.string "somethin' dumb, but still.\p"
+	.string "Go on. Ask it the only way it\n"
+	.string "understands. Hit it hard.$"
+```
+
+</details>
+
+**Variação 3 — os meninos.** A cidade comida era parecida com a dele: muro, chuva, um monte de moleque que ninguém queria. O Guzma procurou os garotos dele no entulho e não achou nenhum; ótimo, quer dizer que saíram. No depois: pior do que uma coisa que come tudo é ser o último em pé no que sobrou. Vá, acabe com isso, saia e não volte por ele. Ecoa a página 2 do diário.
+
+**Antes da luta**
+
+> This place used to be a town like mine. Walls, rain, a bunch of kids nobody wanted.
+>
+> Now it's a street and half a street and a whole lotta nothin'. The mouth took the rest.
+>
+> I kept lookin' for my guys in the rubble. ...Didn't find 'em. Good. Means they got out. Let's go.
+
+**Derrota**
+
+> ...Big bad Guzma. Lost again. Somebody tell the guys.
+
+**Depois da luta**
+
+> Know what's worse than a thing that eats everything? Bein' the last guy standin' in what's left.
+>
+> Nobody to boss. Nobody to lose to. Just you and the chewin'.
+>
+> Go on, kid. Get it done. Then get out, and don't come back for me.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Guzma_ChampionIntro3:
+	.string "This place used to be a town like mine.\n"
+	.string "Walls, rain, a bunch of kids nobody\l"
+	.string "wanted.\p"
+	.string "Now it's a street and half a street and\n"
+	.string "a whole lotta nothin'. The mouth took\l"
+	.string "the rest.\p"
+	.string "I kept lookin' for my guys in the\n"
+	.string "rubble. ...Didn't find 'em. Good. Means\l"
+	.string "they got out. Let's go.$"
+
+Nexus_Text_Guzma_ChampionDefeat3:
+	.string "...Big bad Guzma. Lost again. Somebody\n"
+	.string "tell the guys.$"
+
+Nexus_Text_Guzma_ChampionAfter3:
+	.string "{SPEAKER NAME_GUZMA}Know what's worse than a thing that\n"
+	.string "eats everything? Bein' the last guy\l"
+	.string "standin' in what's left.\p"
+	.string "Nobody to boss. Nobody to lose to. Just\n"
+	.string "you and the chewin'.\p"
+	.string "Go on, kid. Get it done. Then get out,\n"
+	.string "and don't come back for me.$"
+```
+
+</details>

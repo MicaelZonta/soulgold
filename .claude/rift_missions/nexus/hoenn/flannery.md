@@ -317,6 +317,75 @@ Nexus_Text_Flannery_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): falam só dela mesma, sem o lugar nem a criatura do dia. A variação 1 é a de cima, que está no jogo; as novas não a repetem. Nada disto está no código.
+
+**Variação 2** — o ensaio que dá errado: ela tenta três aberturas de Líder, desiste das quarenta do caderno e vai direto para a luta.
+
+**Antes da luta**
+
+> Okay. Deep breath. 'Welcome, challenger! My flames will…' No. 'Behold my…' NO!
+>
+> Grandpa never needed lines. He'd just smile, and the whole room got warmer.
+>
+> I wrote forty openings in my notebook. You get none of them. Let's go!
+
+**Derrota**
+
+> …I should've used opening number twelve.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Flannery_Intro2:
+	.string "Okay. Deep breath. 'Welcome,\n"
+	.string "challenger! My flames will…' No. 'Behold\l"
+	.string "my…' NO!\p"
+	.string "Grandpa never needed lines. He'd just\n"
+	.string "smile, and the whole room got warmer.\p"
+	.string "I wrote forty openings in my notebook.\n"
+	.string "You get none of them. Let's go!$"
+
+Nexus_Text_Flannery_Defeat2:
+	.string "…I should've used opening number\n"
+	.string "twelve.$"
+```
+
+</details>
+
+**Variação 3** — R21, com humor: no fragmento dela, as fontes termais de Lavaridge esfriaram de uma hora para outra e todo mundo olhou para ela.
+
+**Antes da luta**
+
+> Back home, the hot springs went cold one morning. Just like that. Everyone looked at me, like I should fix it.
+>
+> I'm a Fire Trainer! Not a plumber! …But I did try. For weeks.
+>
+> They're still cold. So I'm extra fired up today. Sorry in advance!
+
+**Derrota**
+
+> Cooled off. Like the springs. Great.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Flannery_Intro3:
+	.string "Back home, the hot springs went cold\n"
+	.string "one morning. Just like that. Everyone\l"
+	.string "looked at me, like I should fix it.\p"
+	.string "I'm a Fire Trainer! Not a plumber! …But I\n"
+	.string "did try. For weeks.\p"
+	.string "They're still cold. So I'm extra fired\n"
+	.string "up today. Sorry in advance!$"
+
+Nexus_Text_Flannery_Defeat3:
+	.string "Cooled off. Like the springs. Great.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Heatran
@@ -379,6 +448,113 @@ Nexus_Text_Flannery_Heatran_ChampionAfter:
 	.string "should've been finding my own fire.\p"
 	.string "Go on ahead! And if it melts your shoes,\n"
 	.string "walk on the ceiling! Ha!$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Heatran: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — humor e medo: ela tentou subir a parede para ver melhor e ele ficou olhando, divertido, do teto. Depois percebe que ele se agarra à rocha com força, com medo de cair: tanto fogo e medo de cair.
+
+**Antes da luta**
+
+> Okay, confession. I tried climbing the wall to get a better look at it. I got about this high.
+>
+> It just watched me from the ceiling. Upside down. I swear it looked amused.
+>
+> Well, I'm not upside down now! Let's battle, right side up!
+
+**Derrota**
+
+> Flipped over. Totally flipped.
+
+**Depois da luta**
+
+> You know how it stays up there? Its feet grip the rock. Tight, like it's afraid to fall.
+>
+> All that fire, and it's scared of falling. That made me like it a lot more.
+>
+> I'm scared too. Of letting Lavaridge down. Doesn't mean I stop climbing. Go on!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Flannery_Heatran_ChampionIntro2:
+	.string "Okay, confession. I tried climbing the\n"
+	.string "wall to get a better look at it. I got\l"
+	.string "about this high.\p"
+	.string "It just watched me from the ceiling.\n"
+	.string "Upside down. I swear it looked amused.\p"
+	.string "Well, I'm not upside down now! Let's\n"
+	.string "battle, right side up!$"
+
+Nexus_Text_Flannery_Heatran_ChampionDefeat2:
+	.string "Flipped over. Totally flipped.$"
+
+Nexus_Text_Flannery_Heatran_ChampionAfter2:
+	.string "{SPEAKER NAME_FLANNERY}You know how it stays up there? Its\n"
+	.string "feet grip the rock. Tight, like it's\l"
+	.string "afraid to fall.\p"
+	.string "All that fire, and it's scared of\n"
+	.string "falling. That made me like it a lot more.\p"
+	.string "I'm scared too. Of letting Lavaridge\n"
+	.string "down. Doesn't mean I stop climbing. Go\l"
+	.string "on!$"
+```
+
+</details>
+
+**Variação 3** — a lore de Platinum: a Magma Stone, que alguém tentou roubar do Stark Mountain, e o homem de sobretudo que impediu e foi embora sem agradecimento (o Looker de Platinum, que o Nexus nunca nomeia; fio do casaco). A pedra dela é o ginásio que herdou.
+
+**Antes da luta**
+
+> There's a stone deep in this mountain. Red and warm, like a heart. The creature sleeps near it.
+>
+> Somebody tried to steal it once. A man in a long coat stopped them, I heard. Then he just left.
+>
+> Didn't even stay to be thanked. That's so cool. …I mean -- let's battle!
+
+**Derrota**
+
+> Ugh. You'd leave without being thanked too, wouldn't you?
+
+**Depois da luta**
+
+> Without that stone the mountain goes cold, and so does the creature. The stone is what keeps it warm.
+>
+> Grandpa gave me the Gym. That's my stone, I guess. Sometimes it feels heavy.
+>
+> But I checked. It's still warm. Go on, now. And don't take anything from this mountain!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Flannery_Heatran_ChampionIntro3:
+	.string "There's a stone deep in this mountain.\n"
+	.string "Red and warm, like a heart. The creature\l"
+	.string "sleeps near it.\p"
+	.string "Somebody tried to steal it once. A man\n"
+	.string "in a long coat stopped them, I heard.\l"
+	.string "Then he just left.\p"
+	.string "Didn't even stay to be thanked. That's\n"
+	.string "so cool. …I mean -- let's battle!$"
+
+Nexus_Text_Flannery_Heatran_ChampionDefeat3:
+	.string "Ugh. You'd leave without being thanked\n"
+	.string "too, wouldn't you?$"
+
+Nexus_Text_Flannery_Heatran_ChampionAfter3:
+	.string "{SPEAKER NAME_FLANNERY}Without that stone the mountain goes\n"
+	.string "cold, and so does the creature. The\l"
+	.string "stone is what keeps it warm.\p"
+	.string "Grandpa gave me the Gym. That's my\n"
+	.string "stone, I guess. Sometimes it feels\l"
+	.string "heavy.\p"
+	.string "But I checked. It's still warm. Go on,\n"
+	.string "now. And don't take anything from this\l"
+	.string "mountain!$"
 ```
 
 </details>
@@ -446,6 +622,112 @@ Nexus_Text_Flannery_ChiYu_ChampionAfter:
 	.string "they can keep going.\p"
 	.string "That's what fire is for. Go and remind\n"
 	.string "it!$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Chi-Yu: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — a lore dos Tesouros da Ruína: as contas eram de alguém que sempre quis ser o mais brilhante da sala, e o querer entrou nelas. Ela pegou uma conta, sentiu todo mundo ficar mais apagado e gostou, e isso a assusta.
+
+**Antes da luta**
+
+> Those beads on the shore? Somebody wore them once. Somebody who always wanted to be the brightest one in the room.
+>
+> The wanting soaked into the beads. And then the beads… woke up.
+>
+> Yikes. Note to self: stop wanting so loud. Let's battle!
+
+**Derrota**
+
+> I wanted to win… quietly. It didn't work.
+
+**Depois da luta**
+
+> I picked up one of the beads. It was warm, and for a second everyone else got a little dimmer.
+>
+> It felt great. That's the scary part.
+>
+> I put it back. Took me three tries. Go, before I change my mind about that bead.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Flannery_ChiYu_ChampionIntro2:
+	.string "Those beads on the shore? Somebody\n"
+	.string "wore them once. Somebody who always\l"
+	.string "wanted to be the brightest one in the\l"
+	.string "room.\p"
+	.string "The wanting soaked into the beads. And\n"
+	.string "then the beads… woke up.\p"
+	.string "Yikes. Note to self: stop wanting so\n"
+	.string "loud. Let's battle!$"
+
+Nexus_Text_Flannery_ChiYu_ChampionDefeat2:
+	.string "I wanted to win… quietly. It didn't\n"
+	.string "work.$"
+
+Nexus_Text_Flannery_ChiYu_ChampionAfter2:
+	.string "{SPEAKER NAME_FLANNERY}I picked up one of the beads. It was\n"
+	.string "warm, and for a second everyone else\l"
+	.string "got a little dimmer.\p"
+	.string "It felt great. That's the scary part.\p"
+	.string "I put it back. Took me three tries. Go,\n"
+	.string "before I change my mind about that\l"
+	.string "bead.$"
+```
+
+</details>
+
+**Variação 3** — a lembrança, puxando o fio da variação 1: o peixinho dourado da infância se chamava Ember e viveu nove anos. A criatura nada igual; derreteu o chão porque queria um aquário maior.
+
+**Antes da luta**
+
+> I had a goldfish as a kid. Named it Ember. Ember lived nine years. Nine! Nobody believes me.
+>
+> That thing swims in the lava the exact same way. Little circles. Tail wiggle. I nearly cried.
+>
+> …Don't laugh! Or do. Just battle me after!
+
+**Derrota**
+
+> Okay. Now you can laugh.
+
+**Depois da luta**
+
+> Ember was never scary. Ember was just small and orange and very sure about its bowl.
+>
+> That creature's the same, I think. It melted the ground because it wanted a bigger bowl.
+>
+> You can't blame a fish for that. But you can give it a better one. Go on!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Flannery_ChiYu_ChampionIntro3:
+	.string "I had a goldfish as a kid. Named it\n"
+	.string "Ember. Ember lived nine years. Nine!\l"
+	.string "Nobody believes me.\p"
+	.string "That thing swims in the lava the exact\n"
+	.string "same way. Little circles. Tail wiggle. I\l"
+	.string "nearly cried.\p"
+	.string "…Don't laugh! Or do. Just battle me\n"
+	.string "after!$"
+
+Nexus_Text_Flannery_ChiYu_ChampionDefeat3:
+	.string "Okay. Now you can laugh.$"
+
+Nexus_Text_Flannery_ChiYu_ChampionAfter3:
+	.string "{SPEAKER NAME_FLANNERY}Ember was never scary. Ember was just\n"
+	.string "small and orange and very sure about\l"
+	.string "its bowl.\p"
+	.string "That creature's the same, I think. It\n"
+	.string "melted the ground because it wanted a\l"
+	.string "bigger bowl.\p"
+	.string "You can't blame a fish for that. But you\n"
+	.string "can give it a better one. Go on!$"
 ```
 
 </details>

@@ -310,6 +310,78 @@ Nexus_Text_Sabrina_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para Sabrina, com a variação 1 (acima, já no jogo) formam as três do sorteio. Mesmo registro do [R16](../NEXUS_REGRAS.md): fala de si, sem citar o lugar nem a criatura do dia.
+
+**Variação 2 — as colheres e o riso.** Lembrança: as colheres da infância (a casa tomou sopa com a mão por um ano) e o riso que ela nunca aprendeu — até um fantasma ensinar (aceno leve ao Haunter do anime). Na derrota, o riso escapa.
+
+**Antes da luta**
+
+> As a child, I bent every spoon in the house. We ate soup with our hands for a year.
+>
+> Everyone laughed about it later. Everyone except me. I never learned how.
+>
+> …A ghost taught me, eventually. Perhaps you will teach me something else.
+
+**Derrota**
+
+> Hm. …Ha. Was that a laugh? I believe it was.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sabrina_Intro2:
+	.string "As a child, I bent every spoon in the\n"
+	.string "house. We ate soup with our hands for a\l"
+	.string "year.\p"
+	.string "Everyone laughed about it later.\n"
+	.string "Everyone except me. I never learned\l"
+	.string "how.\p"
+	.string "…A ghost taught me, eventually. Perhaps\n"
+	.string "you will teach me something else.$"
+
+Nexus_Text_Sabrina_Defeat2:
+	.string "Hm. …Ha. Was that a laugh? I believe it\n"
+	.string "was.$"
+```
+
+</details>
+
+**Variação 3 — as visões fora de ordem.** Dúvida: longe de casa, as visões dela chegam na ordem errada (R20). Ela decide parar de prever e só lutar — pela primeira vez na vida, e isso dá medo.
+
+**Antes da luta**
+
+> Lately my visions arrive in the wrong order. I saw you lose. Then I saw you win. Then I saw you arrive.
+>
+> So I have decided to stop watching, and simply fight.
+>
+> It is the first time I have ever done that. It is… frightening. Begin.
+
+**Derrota**
+
+> So that was the true one. I'll remember it tomorrow. Or yesterday.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sabrina_Intro3:
+	.string "Lately my visions arrive in the wrong\n"
+	.string "order. I saw you lose. Then I saw you\l"
+	.string "win. Then I saw you arrive.\p"
+	.string "So I have decided to stop watching, and\n"
+	.string "simply fight.\p"
+	.string "It is the first time I have ever done\n"
+	.string "that. It is… frightening. Begin.$"
+
+Nexus_Text_Sabrina_Defeat3:
+	.string "So that was the true one. I'll remember\n"
+	.string "it tomorrow. Or yesterday.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 #### Palkia
@@ -379,6 +451,132 @@ Nexus_Text_Sabrina_Palkia_ChampionAfter:
 </details>
 
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — a Silph e as portas.** Saffron é a cidade da Silph, que vende as máquinas de mandar gente para outro lugar (os teleportes do prédio). A criatura faz de graça: decide que aqui é outro lugar. Depois, o conselho prático: quando a pérola do ombro brilhar, olhe para o chão — é a única coisa que ela não se dá ao trabalho de mover.
+
+**Antes da luta**
+
+> My city is full of machines that send you somewhere else. The company in the tower sells them. People pay dearly.
+>
+> The creature here does it for free. It simply decides that here is somewhere else.
+>
+> I tried to foresee where it would put me next. I saw a hundred rooms, and all of them were this one.
+>
+> Let us see which one you are standing in.
+
+**Derrota**
+
+> …You were in the right room all along.
+
+**Depois da luta**
+
+> There is a pearl in its shoulder. When it glows, stop looking at the horizon. Look at your feet.
+>
+> The ground is the only thing it doesn't bother to move. It thinks we are too small to need it.
+>
+> Stand firm. Small is not the same as lost.
+>
+> …I told myself that as a child. I did not believe it then either.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sabrina_Palkia_ChampionIntro2:
+	.string "My city is full of machines that send\n"
+	.string "you somewhere else. The company in the\l"
+	.string "tower sells them. People pay dearly.\p"
+	.string "The creature here does it for free. It\n"
+	.string "simply decides that here is somewhere\l"
+	.string "else.\p"
+	.string "I tried to foresee where it would put me\n"
+	.string "next. I saw a hundred rooms, and all of\l"
+	.string "them were this one.\p"
+	.string "Let us see which one you are standing\n"
+	.string "in.$"
+
+Nexus_Text_Sabrina_Palkia_ChampionDefeat2:
+	.string "…You were in the right room all along.$"
+
+Nexus_Text_Sabrina_Palkia_ChampionAfter2:
+	.string "{SPEAKER NAME_SABRINA}There is a pearl in its shoulder. When it\n"
+	.string "glows, stop looking at the horizon. Look\l"
+	.string "at your feet.\p"
+	.string "The ground is the only thing it doesn't\n"
+	.string "bother to move. It thinks we are too\l"
+	.string "small to need it.\p"
+	.string "Stand firm. Small is not the same as\n"
+	.string "lost.\p"
+	.string "…I told myself that as a child. I did not\n"
+	.string "believe it then either.$"
+```
+
+</details>
+
+**Variação 3 — a metade que falta.** A criatura fica olhando por cima do ombro: nas histórias antigas são dois, um do espaço e um do tempo, e só um veio. A Sabrina se reconhece: ela vê o tempo e nunca entendeu o espaço. Depois, a visão do outro (azul, com um diamante no peito) e o conselho: não a faça esperar.
+
+**Antes da luta**
+
+> It keeps looking over its shoulder, as if someone ought to be standing beside it.
+>
+> In the old stories there are two. One for space, one for time. Only one came here.
+>
+> I understand it. I can see time. I have never understood space. We are each half of something.
+>
+> Perhaps together we'll make one whole battle. Come.
+
+**Derrota**
+
+> Half and half. And still not enough.
+
+**Depois da luta**
+
+> I saw the other one once, in a vision. Steel-blue, with a diamond in its chest where a heart should be.
+>
+> It was far away, in a time that has not happened yet. This one is waiting for it.
+>
+> Waiting is a strange thing for a creature that can bring anything closer.
+>
+> Don't make it wait for you, too. When the space opens, step through at once.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sabrina_Palkia_ChampionIntro3:
+	.string "It keeps looking over its shoulder, as\n"
+	.string "if someone ought to be standing beside\l"
+	.string "it.\p"
+	.string "In the old stories there are two. One\n"
+	.string "for space, one for time. Only one came\l"
+	.string "here.\p"
+	.string "I understand it. I can see time. I have\n"
+	.string "never understood space. We are each\l"
+	.string "half of something.\p"
+	.string "Perhaps together we'll make one whole\n"
+	.string "battle. Come.$"
+
+Nexus_Text_Sabrina_Palkia_ChampionDefeat3:
+	.string "Half and half. And still not enough.$"
+
+Nexus_Text_Sabrina_Palkia_ChampionAfter3:
+	.string "{SPEAKER NAME_SABRINA}I saw the other one once, in a vision.\n"
+	.string "Steel-blue, with a diamond in its chest\l"
+	.string "where a heart should be.\p"
+	.string "It was far away, in a time that has not\n"
+	.string "happened yet. This one is waiting for it.\p"
+	.string "Waiting is a strange thing for a\n"
+	.string "creature that can bring anything\l"
+	.string "closer.\p"
+	.string "Don't make it wait for you, too. When\n"
+	.string "the space opens, step through at once.$"
+```
+
+</details>
+
+
+
 #### Galarian Articuno
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Sabrina_GalarianArticuno_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -442,6 +640,123 @@ Nexus_Text_Sabrina_GalarianArticuno_ChampionAfter:
 ```
 
 </details>
+
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — o concurso de encarada.** Humor seco: uma hora de encarada com o pássaro, a neve parou para assistir, e ela desviou primeiro — por tédio. A diferença entre os dois é que ele não sabe se entediar. Depois: não é crueldade, é hábito; e o truque que ela testou por muito tempo.
+
+**Antes da luta**
+
+> I held a staring contest with the bird over the lake. It lasted an hour.
+>
+> Neither of us blinked. The snow stopped falling to watch.
+>
+> In the end I looked away first. Not because I lost. Because I was bored.
+>
+> That is the difference between us. It cannot be bored. Come.
+
+**Derrota**
+
+> You never even tried to stare. Clever.
+
+**Depois da luta**
+
+> It isn't cruel, whatever they call it. Cruelty needs a reason. It has only habit.
+>
+> Everyone on that lake looked up at it once. They are still looking.
+>
+> When it rises, look at your Pokémon instead. It cannot hold two gazes at once.
+>
+> …I checked. I had a long time to check.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sabrina_GalarianArticuno_ChampionIntro2:
+	.string "I held a staring contest with the bird\n"
+	.string "over the lake. It lasted an hour.\p"
+	.string "Neither of us blinked. The snow stopped\n"
+	.string "falling to watch.\p"
+	.string "In the end I looked away first. Not\n"
+	.string "because I lost. Because I was bored.\p"
+	.string "That is the difference between us. It\n"
+	.string "cannot be bored. Come.$"
+
+Nexus_Text_Sabrina_GalarianArticuno_ChampionDefeat2:
+	.string "You never even tried to stare. Clever.$"
+
+Nexus_Text_Sabrina_GalarianArticuno_ChampionAfter2:
+	.string "{SPEAKER NAME_SABRINA}It isn't cruel, whatever they call it.\n"
+	.string "Cruelty needs a reason. It has only\l"
+	.string "habit.\p"
+	.string "Everyone on that lake looked up at it\n"
+	.string "once. They are still looking.\p"
+	.string "When it rises, look at your Pokémon\n"
+	.string "instead. It cannot hold two gazes at\l"
+	.string "once.\p"
+	.string "…I checked. I had a long time to check.$"
+```
+
+</details>
+
+**Variação 3 — as bonecas.** Lembrança (as bonecas da Sabrina no anime): ela fazia as bonecas andarem com a mente porque nenhuma criança brincava com ela. As figuras no gelo parecem as bonecas. "Eu não congelei ninguém" — ela precisa repetir, até aqui. Depois, o segredo do diário dito pela metade: o pássaro foi o primeiro a vê-la como ela era.
+
+**Antes da luta**
+
+> As a girl I kept dolls. I made them walk with my mind, because no child would play with me.
+>
+> The people on the ice look like my dolls. Still. Perfect. Waiting to be moved.
+>
+> I did not freeze them. …I have to keep saying that. Even here.
+>
+> Please. Help me move something.
+
+**Derrota**
+
+> There. Something moved. Thank you.
+
+**Depois da luta**
+
+> That bird was the first to see me as I was. Cold, and alone, and much too strong.
+>
+> It stayed that way. I did not.
+>
+> If you win, it will not thank you. Nothing that cold knows how.
+>
+> But the people on the ice might blink. Watch for it. I will.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sabrina_GalarianArticuno_ChampionIntro3:
+	.string "As a girl I kept dolls. I made them walk\n"
+	.string "with my mind, because no child would\l"
+	.string "play with me.\p"
+	.string "The people on the ice look like my dolls.\n"
+	.string "Still. Perfect. Waiting to be moved.\p"
+	.string "I did not freeze them. …I have to keep\n"
+	.string "saying that. Even here.\p"
+	.string "Please. Help me move something.$"
+
+Nexus_Text_Sabrina_GalarianArticuno_ChampionDefeat3:
+	.string "There. Something moved. Thank you.$"
+
+Nexus_Text_Sabrina_GalarianArticuno_ChampionAfter3:
+	.string "{SPEAKER NAME_SABRINA}That bird was the first to see me as I\n"
+	.string "was. Cold, and alone, and much too\l"
+	.string "strong.\p"
+	.string "It stayed that way. I did not.\p"
+	.string "If you win, it will not thank you.\n"
+	.string "Nothing that cold knows how.\p"
+	.string "But the people on the ice might blink.\n"
+	.string "Watch for it. I will.$"
+```
+
+</details>
+
 
 
 Falante novo: `SP_NAME_SABRINA` (ainda não existe em `include/constants/speaker_names.h`).

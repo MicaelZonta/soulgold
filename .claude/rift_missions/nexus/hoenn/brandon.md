@@ -385,6 +385,80 @@ Nexus_Text_Brandon_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)), além da que já está no jogo (variação 1). O sorteio de qual variação toca ainda não existe no código.
+
+**Variação 2** — provocação alegre: ele nunca leva mapa, e por isso se perdeu três dias.
+
+**Antes da luta**
+
+> Hahahah! Want to know my secret? I never carry a map!
+>
+> A map tells you where things are. I want to find out for myself!
+>
+> Of course, that's how I got lost for three days. Totally worth it!
+>
+> Now! Where's your courage? Show me!
+
+**Derrota**
+
+> Hahahah! You found the exit! Where was it? No, don't tell me!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brandon_Intro2:
+	.string "Hahahah! Want to know my secret? I\n"
+	.string "never carry a map!\p"
+	.string "A map tells you where things are. I want\n"
+	.string "to find out for myself!\p"
+	.string "Of course, that's how I got lost for\n"
+	.string "three days. Totally worth it!\p"
+	.string "Now! Where's your courage? Show me!$"
+
+Nexus_Text_Brandon_Defeat2:
+	.string "Hahahah! You found the exit! Where was\n"
+	.string "it? No, don't tell me!$"
+```
+
+</details>
+
+**Variação 3** — R21 e dúvida: no fragmento dele é sempre o terceiro dia; ele ri, mas percebeu.
+
+**Antes da luta**
+
+> Hahahah! Quick question, friend. What day is it? I make it day three.
+>
+> I've made it day three for a good while now. Funny thing, that.
+>
+> Doesn't matter! An explorer who counts the days isn't looking at the walls!
+>
+> Come on! Courage!
+
+**Derrota**
+
+> Hahahah! Still day three, and I still learned something!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brandon_Intro3:
+	.string "Hahahah! Quick question, friend. What\n"
+	.string "day is it? I make it day three.\p"
+	.string "I've made it day three for a good while\n"
+	.string "now. Funny thing, that.\p"
+	.string "Doesn't matter! An explorer who counts\n"
+	.string "the days isn't looking at the walls!\p"
+	.string "Come on! Courage!$"
+
+Nexus_Text_Brandon_Defeat3:
+	.string "Hahahah! Still day three, and I still\n"
+	.string "learned something!$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -453,6 +527,122 @@ Nexus_Text_Brandon_Regirock_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário, além da variação 1 que já está no jogo. Sem o nome da espécie ([R16](../NEXUS_REGRAS.md)).
+
+**Variação 2** — orgulho de explorador: ele deu uma pedrinha da Pirâmide, e ela virou parte do corpo da criatura; as paredes dizem “We wait”.
+
+**Antes da luta**
+
+> Hahahah! I tossed that golem a pebble from my pocket. From the Pyramid! It stuck it right on its shoulder!
+>
+> A piece of my Pyramid is walking around on it now. Best thing you ever heard?
+>
+> Every explorer wants to leave a mark. I left a pebble!
+>
+> Come on! Let's see if it remembers me! Courage!
+
+**Derrota**
+
+> Hahahah! Crumbled! Somebody pass me a stone!
+
+**Depois da luta**
+
+> The walls in there are covered in dots. Old writing, for fingers instead of eyes.
+>
+> I ran my hand along one row for hours. All it said was, “We wait.”
+>
+> That golem has been mending itself for ages, waiting for whoever wrote that.
+>
+> Go on! If you meet them first, say hello from me!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brandon_Regirock_ChampionIntro2:
+	.string "Hahahah! I tossed that golem a pebble\n"
+	.string "from my pocket. From the Pyramid! It\l"
+	.string "stuck it right on its shoulder!\p"
+	.string "A piece of my Pyramid is walking around\n"
+	.string "on it now. Best thing you ever heard?\p"
+	.string "Every explorer wants to leave a mark. I\n"
+	.string "left a pebble!\p"
+	.string "Come on! Let's see if it remembers me!\n"
+	.string "Courage!$"
+
+Nexus_Text_Brandon_Regirock_ChampionDefeat2:
+	.string "Hahahah! Crumbled! Somebody pass me a\n"
+	.string "stone!$"
+
+Nexus_Text_Brandon_Regirock_ChampionAfter2:
+	.string "{SPEAKER NAME_BRANDON}The walls in there are covered in dots.\n"
+	.string "Old writing, for fingers instead of\l"
+	.string "eyes.\p"
+	.string "I ran my hand along one row for hours.\n"
+	.string "All it said was, “We wait.”\p"
+	.string "That golem has been mending itself for\n"
+	.string "ages, waiting for whoever wrote that.\p"
+	.string "Go on! If you meet them first, say hello\n"
+	.string "from me!$"
+```
+
+</details>
+
+**Variação 3** — humor e tentação: a criatura confundiu o Brandon com uma pedra e quis grudá-lo no braço.
+
+**Antes da luta**
+
+> Hahahah! Funny story. I sat down in there to rest. Very still, for a long while.
+>
+> Next thing I know, that golem is trying to pick me up and stick me on its arm!
+>
+> I must've looked like a good sturdy rock. Best compliment I ever got!
+>
+> Let's go! Solid as a rock, you and me!
+
+**Derrota**
+
+> Hahahah! Rolled right over! Good one!
+
+**Depois da luta**
+
+> You know, part of me wanted to let it. Just ride on that arm forever.
+>
+> See every road it ever walked. Every desert, every cave.
+>
+> But a stone on a golem doesn't choose where it goes. An explorer does.
+>
+> Go on! Choose your road!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brandon_Regirock_ChampionIntro3:
+	.string "Hahahah! Funny story. I sat down in\n"
+	.string "there to rest. Very still, for a long\l"
+	.string "while.\p"
+	.string "Next thing I know, that golem is trying\n"
+	.string "to pick me up and stick me on its arm!\p"
+	.string "I must've looked like a good sturdy\n"
+	.string "rock. Best compliment I ever got!\p"
+	.string "Let's go! Solid as a rock, you and me!$"
+
+Nexus_Text_Brandon_Regirock_ChampionDefeat3:
+	.string "Hahahah! Rolled right over! Good one!$"
+
+Nexus_Text_Brandon_Regirock_ChampionAfter3:
+	.string "{SPEAKER NAME_BRANDON}You know, part of me wanted to let it.\n"
+	.string "Just ride on that arm forever.\p"
+	.string "See every road it ever walked. Every\n"
+	.string "desert, every cave.\p"
+	.string "But a stone on a golem doesn't choose\n"
+	.string "where it goes. An explorer does.\p"
+	.string "Go on! Choose your road!$"
+```
+
+</details>
+
 
 #### Regice
 
@@ -516,6 +706,125 @@ Nexus_Text_Brandon_Regice_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário, além da variação 1 que já está no jogo. Sem o nome da espécie ([R16](../NEXUS_REGRAS.md)).
+
+**Variação 2** — o que ele perdeu: o frio calou o Brandon; a confissão de que ele é barulhento porque o silêncio dá medo.
+
+**Antes da luta**
+
+> …Hahah. Sorry. Hard to laugh in there. The cold gets into your voice.
+>
+> Two hundred below, they say. Your breath freezes before it leaves your mouth.
+>
+> I stood in that cave until I went quiet. First time in my life I heard my own heartbeat.
+>
+> …Right! That's enough quiet! Let's go!
+
+**Derrota**
+
+> Hahahah! There! Warmed right up!
+
+**Depois da luta**
+
+> People think I'm loud because I'm brave. Truth is, I'm loud because silence scares me.
+>
+> That golem lives in perfect silence. Nothing melts. Nothing moves. Nothing talks.
+>
+> In there, I found out I could be quiet too. And nothing bad happened.
+>
+> Go on. Listen to the ice a bit before you fight it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brandon_Regice_ChampionIntro2:
+	.string "…Hahah. Sorry. Hard to laugh in there.\n"
+	.string "The cold gets into your voice.\p"
+	.string "Two hundred below, they say. Your\n"
+	.string "breath freezes before it leaves your\l"
+	.string "mouth.\p"
+	.string "I stood in that cave until I went quiet.\n"
+	.string "First time in my life I heard my own\l"
+	.string "heartbeat.\p"
+	.string "…Right! That's enough quiet! Let's go!$"
+
+Nexus_Text_Brandon_Regice_ChampionDefeat2:
+	.string "Hahahah! There! Warmed right up!$"
+
+Nexus_Text_Brandon_Regice_ChampionAfter2:
+	.string "{SPEAKER NAME_BRANDON}People think I'm loud because I'm\n"
+	.string "brave. Truth is, I'm loud because\l"
+	.string "silence scares me.\p"
+	.string "That golem lives in perfect silence.\n"
+	.string "Nothing melts. Nothing moves. Nothing\l"
+	.string "talks.\p"
+	.string "In there, I found out I could be quiet\n"
+	.string "too. And nothing bad happened.\p"
+	.string "Go on. Listen to the ice a bit before\n"
+	.string "you fight it.$"
+```
+
+</details>
+
+**Variação 3** — lore: a lava congelada, um empate eterno, e quem fez o golem, que arrastou continentes com cordas.
+
+**Antes da luta**
+
+> Hahahah! Did you touch the lava in there? Frozen solid! You can knock on it like a door!
+>
+> Fire and ice, stuck in the same wall. Neither one winning.
+>
+> First time I ever saw a fight end in a draw that lasts forever!
+>
+> We won't draw, though! Courage!
+
+**Derrota**
+
+> Hahahah! No draw! Clean win! For you!
+
+**Depois da luta**
+
+> Somebody made that golem in an ice age. Somebody older than any ruin I've found.
+>
+> The walls say its maker towed the land around with ropes. Whole continents!
+>
+> Imagine that fellow. And imagine what he'd think of us, stomping around his cellar.
+>
+> Go on! And tread lightly. It's his cellar.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brandon_Regice_ChampionIntro3:
+	.string "Hahahah! Did you touch the lava in\n"
+	.string "there? Frozen solid! You can knock on\l"
+	.string "it like a door!\p"
+	.string "Fire and ice, stuck in the same wall.\n"
+	.string "Neither one winning.\p"
+	.string "First time I ever saw a fight end in a\n"
+	.string "draw that lasts forever!\p"
+	.string "We won't draw, though! Courage!$"
+
+Nexus_Text_Brandon_Regice_ChampionDefeat3:
+	.string "Hahahah! No draw! Clean win! For you!$"
+
+Nexus_Text_Brandon_Regice_ChampionAfter3:
+	.string "{SPEAKER NAME_BRANDON}Somebody made that golem in an ice age.\n"
+	.string "Somebody older than any ruin I've\l"
+	.string "found.\p"
+	.string "The walls say its maker towed the land\n"
+	.string "around with ropes. Whole continents!\p"
+	.string "Imagine that fellow. And imagine what\n"
+	.string "he'd think of us, stomping around his\l"
+	.string "cellar.\p"
+	.string "Go on! And tread lightly. It's his\n"
+	.string "cellar.$"
+```
+
+</details>
+
 
 #### Registeel
 
@@ -574,6 +883,121 @@ Nexus_Text_Brandon_Registeel_ChampionAfter:
 	.string "nobody knows why. That's perfect.\l"
 	.string "That's a treasure.\p"
 	.string "Go on! Just don't open it!$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário, além da variação 1 que já está no jogo. Sem o nome da espécie ([R16](../NEXUS_REGRAS.md)).
+
+**Variação 2** — humor: ele cantou uma nota na tumba e a criatura respondeu; teoria de que ela é feita dos sons que entraram ali.
+
+**Antes da luta**
+
+> Hahahah! I sang in that tomb! One note! It's still echoing!
+>
+> And the golem hummed it back. Same note. Perfect pitch!
+>
+> Something hollow and hard, singing back at a loud man in the dark. Now that's a duet!
+>
+> Let's make some noise!
+
+**Derrota**
+
+> Hahahah! You hit a higher note than me!
+
+**Depois da luta**
+
+> They say nobody knows what that golem's made of. I have a theory.
+>
+> I think it's made of every sound that ever went into that tomb and never came out.
+>
+> Knocks, footsteps, a laugh or two. Mine, now.
+>
+> Go on! Say something nice when you pass it. It keeps everything.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brandon_Registeel_ChampionIntro2:
+	.string "Hahahah! I sang in that tomb! One note!\n"
+	.string "It's still echoing!\p"
+	.string "And the golem hummed it back. Same\n"
+	.string "note. Perfect pitch!\p"
+	.string "Something hollow and hard, singing back\n"
+	.string "at a loud man in the dark. Now that's a\l"
+	.string "duet!\p"
+	.string "Let's make some noise!$"
+
+Nexus_Text_Brandon_Registeel_ChampionDefeat2:
+	.string "Hahahah! You hit a higher note than me!$"
+
+Nexus_Text_Brandon_Registeel_ChampionAfter2:
+	.string "{SPEAKER NAME_BRANDON}They say nobody knows what that\n"
+	.string "golem's made of. I have a theory.\p"
+	.string "I think it's made of every sound that\n"
+	.string "ever went into that tomb and never\l"
+	.string "came out.\p"
+	.string "Knocks, footsteps, a laugh or two. Mine,\n"
+	.string "now.\p"
+	.string "Go on! Say something nice when you pass\n"
+	.string "it. It keeps everything.$"
+```
+
+</details>
+
+**Variação 3** — R21 e fio do sobretudo: o homem de sobretudo pediu um martelo; o oco foi feito para carregar alguma coisa.
+
+**Antes da luta**
+
+> Hahahah! A man in a long coat was in that tomb before me. Tapping the walls. Listening.
+>
+> He asked if I had a hammer. I did! I always do!
+>
+> I didn't give it to him. Some things you don't break open.
+>
+> Now, no hammers! Just courage!
+
+**Derrota**
+
+> Hahahah! Hard as steel, you are!
+
+**Depois da luta**
+
+> Want to know what I think? Nobody makes something hollow by accident.
+>
+> It was built to carry something. A message. A spark. Maybe the voice of whoever made it.
+>
+> Whatever it was, it's still in there. That hum is it, saying so.
+>
+> Go on! And leave the hammers at home!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brandon_Registeel_ChampionIntro3:
+	.string "Hahahah! A man in a long coat was in\n"
+	.string "that tomb before me. Tapping the walls.\l"
+	.string "Listening.\p"
+	.string "He asked if I had a hammer. I did! I\n"
+	.string "always do!\p"
+	.string "I didn't give it to him. Some things you\n"
+	.string "don't break open.\p"
+	.string "Now, no hammers! Just courage!$"
+
+Nexus_Text_Brandon_Registeel_ChampionDefeat3:
+	.string "Hahahah! Hard as steel, you are!$"
+
+Nexus_Text_Brandon_Registeel_ChampionAfter3:
+	.string "{SPEAKER NAME_BRANDON}Want to know what I think? Nobody\n"
+	.string "makes something hollow by accident.\p"
+	.string "It was built to carry something. A\n"
+	.string "message. A spark. Maybe the voice of\l"
+	.string "whoever made it.\p"
+	.string "Whatever it was, it's still in there.\n"
+	.string "That hum is it, saying so.\p"
+	.string "Go on! And leave the hammers at home!$"
 ```
 
 </details>

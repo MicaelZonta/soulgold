@@ -4,7 +4,9 @@
 
 Aparece no checklist como:
 
-- **Hilbert** (Unova · Outros notáveis) — protagonista masculino de *Black/White* ligado à derrota inicial do Team Plasma.
+- **Hilbert** (Unova · Outros notáveis) — protagonista masculino de *Black/White*, dupla da [Hilda](hilda.md), ligado à derrota inicial do Team Plasma.
+
+Ficha separada da da **Hilda** desde 30/09/2026: ela ganhou overworld sprite e uma proposta completa de ficha (time, lendário Reshiram, diálogos, Diário do Looker); o Hilbert **não tem nenhuma arte** — nem overworld nem front pic em `.filetransfer/.trainers/` — e fica fora do Nexus até que isso mude.
 
 **Pronto para o Nexus:** ❌ não — falta sprite de overworld e battle sprite (os dois são obrigatórios).
 

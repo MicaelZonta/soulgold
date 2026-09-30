@@ -322,6 +322,86 @@ Nexus_Text_Noland_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é o "conhecimento vence laço" e o time sem recibo. Na 2, um quiz com a resposta que o entrega: ele nunca criou um Pokémon do zero, tudo é emprestado (eficiente, "quase sempre"). Na 3, o fio **Tempo** em leveza: alguém deixou um relógio de bolso parado no balcão de aluguel dele, e nem o manual nem o Porygon2 fazem ele andar (é o relógio do diário, página 1).
+
+**Variação 2 — o quiz**
+
+**Antes da luta**
+
+> Hey, hey! Noland! Quick quiz before we start: how many Pokémon have I raised from scratch?
+>
+> Zero! Never hatched an egg, never picked a nickname. Everything I use is borrowed.
+>
+> People think that's sad. I think it's efficient. Mostly.
+>
+> Anyway! Let's see what you've got!
+
+**Derrota**
+
+> Ha! OK, OK. Maybe raising your own has something going for it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Noland_Intro2:
+	.string "Hey, hey! Noland! Quick quiz before we\n"
+	.string "start: how many Pokémon have I raised\l"
+	.string "from scratch?\p"
+	.string "Zero! Never hatched an egg, never\n"
+	.string "picked a nickname. Everything I use is\l"
+	.string "borrowed.\p"
+	.string "People think that's sad. I think it's\n"
+	.string "efficient. Mostly.\p"
+	.string "Anyway! Let's see what you've got!$"
+
+Nexus_Text_Noland_Defeat2:
+	.string "Ha! OK, OK. Maybe raising your own has\n"
+	.string "something going for it.$"
+```
+
+</details>
+
+**Variação 3 — o relógio parado**
+
+**Antes da luta**
+
+> Hey, hey. Weird question. You didn't lose a pocket watch, did you?
+>
+> Somebody left one on my rental counter. Stopped at twelve minutes to four. Won't start.
+>
+> I read the manual, I opened the back, I asked my Porygon2. Nothing. Drives me nuts.
+>
+> You know what? Battle first. Maybe it'll start out of spite.
+
+**Derrota**
+
+> Nope. Still stopped. You, on the other hand, were right on time.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Noland_Intro3:
+	.string "Hey, hey. Weird question. You didn't\n"
+	.string "lose a pocket watch, did you?\p"
+	.string "Somebody left one on my rental counter.\n"
+	.string "Stopped at twelve minutes to four.\l"
+	.string "Won't start.\p"
+	.string "I read the manual, I opened the back, I\n"
+	.string "asked my Porygon2. Nothing. Drives me\l"
+	.string "nuts.\p"
+	.string "You know what? Battle first. Maybe it'll\n"
+	.string "start out of spite.$"
+
+Nexus_Text_Noland_Defeat3:
+	.string "Nope. Still stopped. You, on the other\n"
+	.string "hand, were right on time.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Noland é o campeão, a luta logo antes do lendário do dia. Um registro por lendário; a fala é sobre a criatura, sem dizer o nome dela.
@@ -390,6 +470,126 @@ Nexus_Text_Noland_Miraidon_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Na variação 1 ele não acha ficha nenhuma e adora isso. Na 2, o humor do formulário de aluguel: travou no campo "dono"; a criatura se dobra em moto esperando alguém subir, e ele não subiu. É um aluguel que ninguém escolheu. Na 3, o homem de jaleco (o Turo, nunca nomeado): voz calma, nunca pisca, garantiu que o futuro seria perfeito e sumiu no laboratório; a máquina continua puxando o amanhã para hoje, e o Noland leu as especificações: o homem estava errado.
+
+**Variação 2 — o formulário de aluguel**
+
+**Antes da luta**
+
+> Hey, hey! Confession. I tried to rent that thing out. Force of habit.
+>
+> Filled out the form. Name, type, owner. Got stuck on “owner.” No name fits there.
+>
+> Then it folded itself up like a bike and waited for me to climb on. I didn't. Should I have?
+>
+> Tell you what. Beat me, and you decide for both of us!
+
+**Derrota**
+
+> Guess that settles it. The form's all yours.
+
+**Depois da luta**
+
+> Here's what got me. It folds up for a rider. That's in its design.
+>
+> Something built to carry somebody. And nobody to carry.
+>
+> You know what we call that at the Factory? A rental nobody ever picked.
+>
+> Go on. Maybe it's been waiting for you to climb on.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Noland_Miraidon_ChampionIntro2:
+	.string "Hey, hey! Confession. I tried to rent\n"
+	.string "that thing out. Force of habit.\p"
+	.string "Filled out the form. Name, type, owner.\n"
+	.string "Got stuck on “owner.” No name fits\l"
+	.string "there.\p"
+	.string "Then it folded itself up like a bike and\n"
+	.string "waited for me to climb on. I didn't.\l"
+	.string "Should I have?\p"
+	.string "Tell you what. Beat me, and you decide\n"
+	.string "for both of us!$"
+
+Nexus_Text_Noland_Miraidon_ChampionDefeat2:
+	.string "Guess that settles it. The form's all\n"
+	.string "yours.$"
+
+Nexus_Text_Noland_Miraidon_ChampionAfter2:
+	.string "{SPEAKER NAME_NOLAND}Here's what got me. It folds up for a\n"
+	.string "rider. That's in its design.\p"
+	.string "Something built to carry somebody. And\n"
+	.string "nobody to carry.\p"
+	.string "You know what we call that at the\n"
+	.string "Factory? A rental nobody ever picked.\p"
+	.string "Go on. Maybe it's been waiting for you\n"
+	.string "to climb on.$"
+```
+
+</details>
+
+**Variação 3 — o homem que nunca piscava**
+
+**Antes da luta**
+
+> Hey, hey. You ever meet a guy who's too sure of everything? Lab coat, calm voice, never blinks?
+>
+> There was one of those where I'm from. Built a machine, pulled something out of tomorrow.
+>
+> Said the future would be perfect. Then he stopped coming out of the lab.
+>
+> Anyway! I'm sure of exactly one thing. Let's battle!
+
+**Derrota**
+
+> Yeah, OK. Now I'm sure of zero things.
+
+**Depois da luta**
+
+> That machine's still running. I can hear it humming, even from here.
+>
+> It keeps pulling tomorrow into today, a little at a time. That road out there is part of it.
+>
+> The guy who built it said everything in the future is better. I read the specs. He's wrong.
+>
+> Go on. Tell it today's not so bad.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Noland_Miraidon_ChampionIntro3:
+	.string "Hey, hey. You ever meet a guy who's too\n"
+	.string "sure of everything? Lab coat, calm\l"
+	.string "voice, never blinks?\p"
+	.string "There was one of those where I'm from.\n"
+	.string "Built a machine, pulled something out of\l"
+	.string "tomorrow.\p"
+	.string "Said the future would be perfect. Then\n"
+	.string "he stopped coming out of the lab.\p"
+	.string "Anyway! I'm sure of exactly one thing.\n"
+	.string "Let's battle!$"
+
+Nexus_Text_Noland_Miraidon_ChampionDefeat3:
+	.string "Yeah, OK. Now I'm sure of zero things.$"
+
+Nexus_Text_Noland_Miraidon_ChampionAfter3:
+	.string "{SPEAKER NAME_NOLAND}That machine's still running. I can hear\n"
+	.string "it humming, even from here.\p"
+	.string "It keeps pulling tomorrow into today, a\n"
+	.string "little at a time. That road out there is\l"
+	.string "part of it.\p"
+	.string "The guy who built it said everything in\n"
+	.string "the future is better. I read the specs.\l"
+	.string "He's wrong.\p"
+	.string "Go on. Tell it today's not so bad.$"
+```
+
+</details>
+
 
 #### Iron Treads
 
@@ -449,6 +649,124 @@ Nexus_Text_Noland_IronTreads_ChampionAfter:
 	.string "Maybe I'll let the next challenger\n"
 	.string "keep their rental a little longer.\p"
 	.string "Go on. Roll that thing over for me.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Na variação 1 sobra a ficha e some o bicho. Na 2, as trilhas retas: a criatura nunca vira nem para; Donphan de verdade ziguezagueia, se distrai, persegue coisas; o Noland lembra de um Donphan de aluguel que só rolava para a esquerda e ganhou três seguidas, e manda o jogador ser a distração. Na 3, o medo engraçado de ficar sem emprego (a Factory do futuro não precisa de Factory Head) e o olhar curioso da criatura, que pergunta a todo mundo para que eles servem.
+
+**Variação 2 — as trilhas retas**
+
+**Antes da luta**
+
+> Hey, hey! You see the tracks out there? Dead straight. Every one of them.
+>
+> That thing can go a hundred miles without a curve. Never turns. Never stops.
+>
+> I once rented out a Donphan that only rolled left. People hated it. It won three in a row anyway.
+>
+> Point is, quirks win! Let's see yours!
+
+**Derrota**
+
+> Ha! Your quirks beat my quirks.
+
+**Depois da luta**
+
+> Here's what bugs me about those tracks. Real Donphan zigzag. They chase things. They get distracted.
+>
+> That thing goes straight because there's nothing out there to distract it.
+>
+> Nothing to chase. Nobody to play with. Just the horizon, forever.
+>
+> Go on. Be a distraction. It'll thank you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Noland_IronTreads_ChampionIntro2:
+	.string "Hey, hey! You see the tracks out there?\n"
+	.string "Dead straight. Every one of them.\p"
+	.string "That thing can go a hundred miles\n"
+	.string "without a curve. Never turns. Never\l"
+	.string "stops.\p"
+	.string "I once rented out a Donphan that only\n"
+	.string "rolled left. People hated it. It won\l"
+	.string "three in a row anyway.\p"
+	.string "Point is, quirks win! Let's see yours!$"
+
+Nexus_Text_Noland_IronTreads_ChampionDefeat2:
+	.string "Ha! Your quirks beat my quirks.$"
+
+Nexus_Text_Noland_IronTreads_ChampionAfter2:
+	.string "{SPEAKER NAME_NOLAND}Here's what bugs me about those\n"
+	.string "tracks. Real Donphan zigzag. They chase\l"
+	.string "things. They get distracted.\p"
+	.string "That thing goes straight because\n"
+	.string "there's nothing out there to distract\l"
+	.string "it.\p"
+	.string "Nothing to chase. Nobody to play with.\n"
+	.string "Just the horizon, forever.\p"
+	.string "Go on. Be a distraction. It'll thank you.$"
+```
+
+</details>
+
+**Variação 3 — para que você serve**
+
+**Antes da luta**
+
+> Hey, hey. Here's a thought that keeps me up. What does a Factory look like, later on?
+>
+> Probably that. Steel Pokémon, built to spec. A machine hands you a machine. No Factory Head needed.
+>
+> I'd be out of a job! Ha! …Ha.
+>
+> OK, let's battle before I think about that any more.
+
+**Derrota**
+
+> Still got a job. For now!
+
+**Depois da luta**
+
+> You know what, though? I looked it in the eye. Or the light where an eye goes.
+>
+> It looked back. Curious. Like it wanted to know what I was for.
+>
+> So I told it. “I'm the guy who knows every Pokémon.” It didn't get it. Right then, neither did I.
+>
+> Go on. Tell it what you're for. It's asking everybody.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Noland_IronTreads_ChampionIntro3:
+	.string "Hey, hey. Here's a thought that keeps\n"
+	.string "me up. What does a Factory look like,\l"
+	.string "later on?\p"
+	.string "Probably that. Steel Pokémon, built to\n"
+	.string "spec. A machine hands you a machine. No\l"
+	.string "Factory Head needed.\p"
+	.string "I'd be out of a job! Ha! …Ha.\p"
+	.string "OK, let's battle before I think about\n"
+	.string "that any more.$"
+
+Nexus_Text_Noland_IronTreads_ChampionDefeat3:
+	.string "Still got a job. For now!$"
+
+Nexus_Text_Noland_IronTreads_ChampionAfter3:
+	.string "{SPEAKER NAME_NOLAND}You know what, though? I looked it in\n"
+	.string "the eye. Or the light where an eye goes.\p"
+	.string "It looked back. Curious. Like it wanted\n"
+	.string "to know what I was for.\p"
+	.string "So I told it. “I'm the guy who knows\n"
+	.string "every Pokémon.” It didn't get it. Right\l"
+	.string "then, neither did I.\p"
+	.string "Go on. Tell it what you're for. It's\n"
+	.string "asking everybody.$"
 ```
 
 </details>

@@ -254,6 +254,75 @@ Nexus_Text_Falkner_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Ainda não estão no código.
+
+**Variação 2 — orgulho e provocação.** O Falkner de sempre, defendendo o tipo Voador, com uma farpa para quem usa Pedra.
+
+**Antes da luta**
+
+> Flying types are weak? You heard wrong. Or you heard it from someone who uses Rock types.
+>
+> My birds trained on Violet's winds, and Violet's winds don't stop for anybody.
+>
+> Let's see how you handle a headwind!
+
+**Derrota**
+
+> Blown off course… I'll correct on the next gust.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Falkner_Intro2:
+	.string "Flying types are weak? You heard wrong.\n"
+	.string "Or you heard it from someone who uses\l"
+	.string "Rock types.\p"
+	.string "My birds trained on Violet's winds, and\n"
+	.string "Violet's winds don't stop for anybody.\p"
+	.string "Let's see how you handle a headwind!$"
+
+Nexus_Text_Falkner_Defeat2:
+	.string "Blown off course… I'll correct on the\n"
+	.string "next gust.$"
+```
+
+</details>
+
+**Variação 3 — a luva do pai.** O que ele herdou sem explicação: a luva de couro arranhada de garras. A derrota vira a imagem ao contrário.
+
+**Antes da luta**
+
+> This glove was my father's. The leather's all scratched up from talons.
+>
+> He wore it every day he was Leader. Then one morning he handed it to me and didn't say why.
+>
+> I still don't know why. But I know how to use it. Battle!
+
+**Derrota**
+
+> …The glove's fine. I'm the one who got scratched.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Falkner_Intro3:
+	.string "This glove was my father's. The\n"
+	.string "leather's all scratched up from talons.\p"
+	.string "He wore it every day he was Leader. Then\n"
+	.string "one morning he handed it to me and\l"
+	.string "didn't say why.\p"
+	.string "I still don't know why. But I know how\n"
+	.string "to use it. Battle!$"
+
+Nexus_Text_Falkner_Defeat3:
+	.string "…The glove's fine. I'm the one who got\n"
+	.string "scratched.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Tornadus
@@ -317,6 +386,110 @@ Nexus_Text_Falkner_ChampionAfter:
 	.string "free. Now I think it makes them mine.\p"
 	.string "Go on. Knock it out of the sky. Then\n"
 	.string "give it somewhere to land.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1: a criatura pelo olhar do campeão, sem o nome da espécie. Ainda não estão no código.
+
+**Variação 2 — o riso e o irmão do raio.** A lenda de Unova: ele e o irmão do raio brigaram por um país inteiro por diversão. Vento e raio são justamente as duas coisas que derrubam um pássaro; claro que o Falkner tinha de encontrá-lo.
+
+**Antes da luta**
+
+> You heard it laughing, didn't you? Up there, on its cloud.
+>
+> The old stories say it has a brother who throws lightning. The two of them wrecked a whole country, just for fun.
+>
+> Wind and lightning. The two things that ground a bird. Of course I had to meet it. Let's go!
+
+**Derrota**
+
+> Grounded by a Trainer, not by lightning. I'll take it.
+
+**Depois da luta**
+
+> My father said a real bird doesn't fight the wind. It reads it.
+>
+> I read that one all day. It never blows the same way twice. It doesn't know where it's going.
+>
+> So don't guess where it's going. Just be where it lands… if it ever does.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Falkner_ChampionIntro2:
+	.string "You heard it laughing, didn't you? Up\n"
+	.string "there, on its cloud.\p"
+	.string "The old stories say it has a brother who\n"
+	.string "throws lightning. The two of them\l"
+	.string "wrecked a whole country, just for fun.\p"
+	.string "Wind and lightning. The two things that\n"
+	.string "ground a bird. Of course I had to meet\l"
+	.string "it. Let's go!$"
+
+Nexus_Text_Falkner_ChampionDefeat2:
+	.string "Grounded by a Trainer, not by lightning.\n"
+	.string "I'll take it.$"
+
+Nexus_Text_Falkner_ChampionAfter2:
+	.string "{SPEAKER NAME_FALKNER}My father said a real bird doesn't fight\n"
+	.string "the wind. It reads it.\p"
+	.string "I read that one all day. It never blows\n"
+	.string "the same way twice. It doesn't know\l"
+	.string "where it's going.\p"
+	.string "So don't guess where it's going. Just\n"
+	.string "be where it lands… if it ever does.$"
+```
+
+</details>
+
+**Variação 3 — o telhado que sobrou.** A Sprout Tower de Violet, com o pilar que balança, é o único telhado que o vento não levou. O Falkner achava aquilo covardia; hoje acha inteligência.
+
+**Antes da luta**
+
+> Every roof in the sky, and it missed one. Did you notice?
+>
+> Violet's old tower. The one with the pillar that sways. It bends with the wind instead of fighting it.
+>
+> I used to call that cowardly. Today I'd call it clever. Let's see which one I am!
+
+**Derrota**
+
+> I bent. I didn't break. …Mostly.
+
+**Depois da luta**
+
+> It isn't cruel. It just never thinks about what it knocks over.
+>
+> Something that fast never looks down. And if you never look down, you never see the houses.
+>
+> Go on. When you beat it, make it look. Just once.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Falkner_ChampionIntro3:
+	.string "Every roof in the sky, and it missed one.\n"
+	.string "Did you notice?\p"
+	.string "Violet's old tower. The one with the\n"
+	.string "pillar that sways. It bends with the\l"
+	.string "wind instead of fighting it.\p"
+	.string "I used to call that cowardly. Today I'd\n"
+	.string "call it clever. Let's see which one I am!$"
+
+Nexus_Text_Falkner_ChampionDefeat3:
+	.string "I bent. I didn't break. …Mostly.$"
+
+Nexus_Text_Falkner_ChampionAfter3:
+	.string "{SPEAKER NAME_FALKNER}It isn't cruel. It just never thinks\n"
+	.string "about what it knocks over.\p"
+	.string "Something that fast never looks down.\n"
+	.string "And if you never look down, you never\l"
+	.string "see the houses.\p"
+	.string "Go on. When you beat it, make it look.\n"
+	.string "Just once.$"
 ```
 
 </details>

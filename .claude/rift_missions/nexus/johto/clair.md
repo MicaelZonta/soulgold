@@ -255,6 +255,73 @@ Nexus_Text_Clair_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas para as **quatro primeiras salas** ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. A variação 1 é a de cima, que já está no jogo; o sorteio de qual variação toca ainda não existe no código.
+
+**Variação 2** — humor e orgulho: a capa. Sim, o primo também usa uma. A dela veio primeiro.
+
+**Antes da luta**
+
+> Yes, it's a cape. Yes, my cousin wears one too. Mine came first.
+>
+> The Dragon Tamers of Blackthorn have always worn capes. I don't care what anyone says.
+>
+> Now stop staring at it and battle me!
+
+**Derrota**
+
+> …Fine. You win. The cape stays, though.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Clair_Intro2:
+	.string "Yes, it's a cape. Yes, my cousin wears\n"
+	.string "one too. Mine came first.\p"
+	.string "The Dragon Tamers of Blackthorn have\n"
+	.string "always worn capes. I don't care what\l"
+	.string "anyone says.\p"
+	.string "Now stop staring at it and battle me!$"
+
+Nexus_Text_Clair_Defeat2:
+	.string "…Fine. You win. The cape stays, though.$"
+```
+
+</details>
+
+**Variação 3** — o que ela perdeu no fragmento dela: ninguém a venceu, e o Ancião parou de vir assistir. Pior que perder é vencer sem ninguém olhando.
+
+**Antes da luta**
+
+> Do you know what's worse than losing? Winning with nobody watching.
+>
+> In Blackthorn I beat everyone who came. Every single one. The Elder stopped coming to watch.
+>
+> …So you'd better make this worth watching!
+
+**Derrota**
+
+> …There. Someone was watching. I suppose that's something.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Clair_Intro3:
+	.string "Do you know what's worse than losing?\n"
+	.string "Winning with nobody watching.\p"
+	.string "In Blackthorn I beat everyone who\n"
+	.string "came. Every single one. The Elder\l"
+	.string "stopped coming to watch.\p"
+	.string "…So you'd better make this worth\n"
+	.string "watching!$"
+
+Nexus_Text_Clair_Defeat3:
+	.string "…There. Someone was watching. I\n"
+	.string "suppose that's something.$"
+```
+
+</details>
 
 ### Diálogo associado ao lendário
 
@@ -319,6 +386,115 @@ Nexus_Text_Clair_ChampionAfter:
 	.string "Nobody ever does.\p"
 	.string "You fill the hollow yourself, or you\n"
 	.string "freeze in it. Go on. Show it how.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário ([R16](../NEXUS_REGRAS.md)), sem dizer o nome da espécie. A variação 1 é a de cima, que já está no jogo.
+
+**Variação 2** — a pergunta do Ancião (o teste do Dragon's Den), aplicada ao jogador: o que você daria a um dragão que perdeu metade de si? A resposta dela: nada. Todo mundo trouxe alguma coisa (fogo, raio, máquina); ele quer alguém que se sente com o buraco.
+
+**Antes da luta**
+
+> The Elder of my clan asks questions before he lets anyone near a dragon. Let me try one on you.
+>
+> What would you give a dragon that is missing half of itself? …Don't answer. You'll get it wrong.
+>
+> The one in the ice has been asked that for longer than anyone remembers. Dragons, go!
+
+**Derrota**
+
+> …Wrong answer. And you still won. Annoying.
+
+**Depois da luta**
+
+> The answer, by the way, is nothing. You don't give it anything.
+>
+> Everyone who came to the chasm brought something. Fire. Lightning. A machine. A speech.
+>
+> It doesn't want to be filled. It wants someone to sit with the hole. …Go. I'm bad at sitting.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Clair_ChampionIntro2:
+	.string "The Elder of my clan asks questions\n"
+	.string "before he lets anyone near a dragon.\l"
+	.string "Let me try one on you.\p"
+	.string "What would you give a dragon that is\n"
+	.string "missing half of itself? …Don't answer.\l"
+	.string "You'll get it wrong.\p"
+	.string "The one in the ice has been asked that\n"
+	.string "for longer than anyone remembers.\l"
+	.string "Dragons, go!$"
+
+Nexus_Text_Clair_ChampionDefeat2:
+	.string "…Wrong answer. And you still won.\n"
+	.string "Annoying.$"
+
+Nexus_Text_Clair_ChampionAfter2:
+	.string "{SPEAKER NAME_CLAIR}The answer, by the way, is nothing. You\n"
+	.string "don't give it anything.\p"
+	.string "Everyone who came to the chasm brought\n"
+	.string "something. Fire. Lightning. A machine. A\l"
+	.string "speech.\p"
+	.string "It doesn't want to be filled. It wants\n"
+	.string "someone to sit with the hole. …Go. I'm\l"
+	.string "bad at sitting.$"
+```
+
+</details>
+
+**Variação 3** — a provocação: o que vence dragão é gelo, e aquela criatura é as duas coisas, um dragão que é a própria fraqueza. Dizem que ela é igual. Lembrança do primo e da semana em que ela congelou no Den.
+
+**Antes da luta**
+
+> You know what beats a dragon? Ice. Every child in Blackthorn learns that first.
+>
+> And that thing down there is both. A dragon that is its own weakness.
+>
+> …I've been told I'm the same. We'll see about that. Dragons, go!
+
+**Derrota**
+
+> Don't say it. I know what you're thinking. Don't say it.
+
+**Depois da luta**
+
+> My cousin used to tease me that I'd freeze solid if anyone ever told me I was wrong.
+>
+> He was right. I froze for a whole week once. In the Den, with the Elder watching.
+>
+> That thing never got its week to thaw. Be quick with it. It's colder than it looks.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Clair_ChampionIntro3:
+	.string "You know what beats a dragon? Ice.\n"
+	.string "Every child in Blackthorn learns that\l"
+	.string "first.\p"
+	.string "And that thing down there is both. A\n"
+	.string "dragon that is its own weakness.\p"
+	.string "…I've been told I'm the same. We'll see\n"
+	.string "about that. Dragons, go!$"
+
+Nexus_Text_Clair_ChampionDefeat3:
+	.string "Don't say it. I know what you're\n"
+	.string "thinking. Don't say it.$"
+
+Nexus_Text_Clair_ChampionAfter3:
+	.string "{SPEAKER NAME_CLAIR}My cousin used to tease me that I'd\n"
+	.string "freeze solid if anyone ever told me I\l"
+	.string "was wrong.\p"
+	.string "He was right. I froze for a whole week\n"
+	.string "once. In the Den, with the Elder\l"
+	.string "watching.\p"
+	.string "That thing never got its week to thaw.\n"
+	.string "Be quick with it. It's colder than it\l"
+	.string "looks.$"
 ```
 
 </details>

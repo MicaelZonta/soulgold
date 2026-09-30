@@ -313,6 +313,79 @@ Nexus_Text_Lucy_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é a porta da Pike e viver com o que há atrás. Na 2, a birra do Seviper com Zangoose (a rivalidade clássica) e a dela com quem fala durante a luta: a Lucy elogia o silêncio do jogador. Na 3, o R21: no fragmento dela a última sala da Pike tem quatro portas, e ninguém abriu a quarta; ela diz que não tem curiosidade, e admite que é mentira (a quarta porta é o miolo do diário).
+
+**Variação 2 — o que ela odeia**
+
+**Antes da luta**
+
+> …
+>
+> My Seviper hates one thing. The white ones with claws.
+>
+> I used to hate one thing too. People who talk during battle.
+>
+> …You're not talking. Good. Start.
+
+**Derrota**
+
+> …You didn't say a word. I like that.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lucy_Intro2:
+	.string "…\p"
+	.string "My Seviper hates one thing. The white\n"
+	.string "ones with claws.\p"
+	.string "I used to hate one thing too. People\n"
+	.string "who talk during battle.\p"
+	.string "…You're not talking. Good. Start.$"
+
+Nexus_Text_Lucy_Defeat2:
+	.string "…You didn't say a word. I like that.$"
+```
+
+</details>
+
+**Variação 3 — a quarta porta**
+
+**Antes da luta**
+
+> …Lucy.
+>
+> Where I'm from, the Pike has four doors at the end. Not three. Nobody's opened the fourth.
+>
+> People ask what's behind it. I tell them the truth. …I don't know. I'm not curious.
+>
+> …That's a lie. Go.
+
+**Derrota**
+
+> …Hmph. Two things I don't know now.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lucy_Intro3:
+	.string "…Lucy.\p"
+	.string "Where I'm from, the Pike has four doors\n"
+	.string "at the end. Not three. Nobody's opened\l"
+	.string "the fourth.\p"
+	.string "People ask what's behind it. I tell them\n"
+	.string "the truth. …I don't know. I'm not\l"
+	.string "curious.\p"
+	.string "…That's a lie. Go.$"
+
+Nexus_Text_Lucy_Defeat3:
+	.string "…Hmph. Two things I don't know now.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lucy é a campeã, a luta logo antes do lendário do dia. Um registro por lendário; a fala é sobre a criatura, sem dizer o nome dela.
@@ -373,6 +446,116 @@ Nexus_Text_Lucy_Zygarde_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Na variação 1 a Lucy se reconhece na criatura que fica quieta porque está contando. Na 2, humor seco: uma célula verde entrou no quarto dela e as duas estão numa disputa de quem pisca primeiro (a célula pisca: ela perde); o fecho é sobre time: sozinha a célula não é nada, juntas elas ficam de pé. Na 3, a dúvida: a criatura só se junta quando algo está errado; no fragmento dela foi a quarta porta, e ela ficou ao lado das células sem ninguém pedir.
+
+**Variação 2 — quem pisca primeiro**
+
+**Antes da luta**
+
+> …There's a green cell in my room. Small. It blinks.
+>
+> I didn't bring it in. It came in. Sat on the table. Hasn't moved in days.
+>
+> …It's watching me. I'm watching it. Neither of us blinks first.
+>
+> …Well. It does. Go.
+
+**Derrota**
+
+> …It blinked. Hmph.
+
+**Depois da luta**
+
+> …Every one of those cells watches one small piece of the world.
+>
+> Alone, they're nothing. Put enough together and they stand up.
+>
+> …At the Pike, nobody gets through alone either. Three doors. You need a team.
+>
+> …Go. It has a team. Millions.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lucy_Zygarde_ChampionIntro2:
+	.string "…There's a green cell in my room. Small.\n"
+	.string "It blinks.\p"
+	.string "I didn't bring it in. It came in. Sat on\n"
+	.string "the table. Hasn't moved in days.\p"
+	.string "…It's watching me. I'm watching it.\n"
+	.string "Neither of us blinks first.\p"
+	.string "…Well. It does. Go.$"
+
+Nexus_Text_Lucy_Zygarde_ChampionDefeat2:
+	.string "…It blinked. Hmph.$"
+
+Nexus_Text_Lucy_Zygarde_ChampionAfter2:
+	.string "{SPEAKER NAME_LUCY}…Every one of those cells watches one\n"
+	.string "small piece of the world.\p"
+	.string "Alone, they're nothing. Put enough\n"
+	.string "together and they stand up.\p"
+	.string "…At the Pike, nobody gets through alone\n"
+	.string "either. Three doors. You need a team.\p"
+	.string "…Go. It has a team. Millions.$"
+```
+
+</details>
+
+**Variação 3 — algo está errado**
+
+**Antes da luta**
+
+> …It only gathers when something's wrong. Everyone knows that.
+>
+> It's gathered here. …So, something's wrong.
+>
+> I checked. It's not you. …Probably.
+>
+> Let's make sure. Go.
+
+**Derrota**
+
+> …Not you. Confirmed.
+
+**Depois da luta**
+
+> …Where I'm from, a door opened that shouldn't have.
+>
+> The cells came from everywhere. Leaves, rocks, water. They stood in front of it.
+>
+> …I stood next to them. Nobody asked me. Seemed right.
+>
+> …Go. If it gets in your way, it's not personal. It's order.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lucy_Zygarde_ChampionIntro3:
+	.string "…It only gathers when something's\n"
+	.string "wrong. Everyone knows that.\p"
+	.string "It's gathered here. …So, something's\n"
+	.string "wrong.\p"
+	.string "I checked. It's not you. …Probably.\p"
+	.string "Let's make sure. Go.$"
+
+Nexus_Text_Lucy_Zygarde_ChampionDefeat3:
+	.string "…Not you. Confirmed.$"
+
+Nexus_Text_Lucy_Zygarde_ChampionAfter3:
+	.string "{SPEAKER NAME_LUCY}…Where I'm from, a door opened that\n"
+	.string "shouldn't have.\p"
+	.string "The cells came from everywhere. Leaves,\n"
+	.string "rocks, water. They stood in front of it.\p"
+	.string "…I stood next to them. Nobody asked me.\n"
+	.string "Seemed right.\p"
+	.string "…Go. If it gets in your way, it's not\n"
+	.string "personal. It's order.$"
+```
+
+</details>
+
 
 #### Iron Jugulis
 
@@ -427,6 +610,118 @@ Nexus_Text_Lucy_IronJugulis_ChampionAfter:
 	.string "That thing never misses in the dark. It\n"
 	.string "isn't looking. It's trusting.\p"
 	.string "…Go on. Door's open.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Na variação 1 escolher às cegas é confiança. Na 2, uma provocação ("feche os olhos" — brincadeira) e o ângulo do futuro: alguém construiu aquilo a partir da ideia de um dragão; o Deino morde tudo o que não vê, e este não morde: aprendeu alguma coisa. Na 3, a lembrança do dia em que ela abriu a quarta porta: céu sem chão, três luzes, e a do meio chegando perto como quem escuta o coração; ela nunca contou a ninguém.
+
+**Variação 2 — feche os olhos**
+
+**Antes da luta**
+
+> …Close your eyes.
+>
+> …Kidding. But that thing out there flies with its eyes shut. Always.
+>
+> It doesn't need to see where it's going. It listens to the other two.
+>
+> …You need your eyes. I'll allow it. Go.
+
+**Derrota**
+
+> …You kept your eyes open. Smart.
+
+**Depois da luta**
+
+> …It's from later. A day nobody's lived yet.
+>
+> Somebody built it from the idea of a dragon. Three heads. One brain. No eyes in the middle.
+>
+> …The one it copies bites everything it can't see. This one doesn't. It learned something.
+>
+> …Go. Somebody from later is waiting to meet you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lucy_IronJugulis_ChampionIntro2:
+	.string "…Close your eyes.\p"
+	.string "…Kidding. But that thing out there flies\n"
+	.string "with its eyes shut. Always.\p"
+	.string "It doesn't need to see where it's\n"
+	.string "going. It listens to the other two.\p"
+	.string "…You need your eyes. I'll allow it. Go.$"
+
+Nexus_Text_Lucy_IronJugulis_ChampionDefeat2:
+	.string "…You kept your eyes open. Smart.$"
+
+Nexus_Text_Lucy_IronJugulis_ChampionAfter2:
+	.string "{SPEAKER NAME_LUCY}…It's from later. A day nobody's lived\n"
+	.string "yet.\p"
+	.string "Somebody built it from the idea of a\n"
+	.string "dragon. Three heads. One brain. No eyes\l"
+	.string "in the middle.\p"
+	.string "…The one it copies bites everything it\n"
+	.string "can't see. This one doesn't. It learned\l"
+	.string "something.\p"
+	.string "…Go. Somebody from later is waiting to\n"
+	.string "meet you.$"
+```
+
+</details>
+
+**Variação 3 — o dia da quarta porta**
+
+**Antes da luta**
+
+> …I opened a door once without looking. You know that.
+>
+> …Behind it was sky. No floor. Three lights, coming.
+>
+> I didn't step back. …Don't know why. Pike Queen thing.
+>
+> …Your turn not to step back. Go.
+
+**Derrota**
+
+> …Didn't step back. Good.
+
+**Depois da luta**
+
+> …It stopped a meter from my face. Just hung there. Three lights.
+>
+> The middle one leaned in. Close. Like it was listening for my heartbeat.
+>
+> …Then it left. I shut the door. Never told anyone. …Until now.
+>
+> …Go. It'll listen for yours too.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lucy_IronJugulis_ChampionIntro3:
+	.string "…I opened a door once without looking.\n"
+	.string "You know that.\p"
+	.string "…Behind it was sky. No floor. Three\n"
+	.string "lights, coming.\p"
+	.string "I didn't step back. …Don't know why.\n"
+	.string "Pike Queen thing.\p"
+	.string "…Your turn not to step back. Go.$"
+
+Nexus_Text_Lucy_IronJugulis_ChampionDefeat3:
+	.string "…Didn't step back. Good.$"
+
+Nexus_Text_Lucy_IronJugulis_ChampionAfter3:
+	.string "{SPEAKER NAME_LUCY}…It stopped a meter from my face. Just\n"
+	.string "hung there. Three lights.\p"
+	.string "The middle one leaned in. Close. Like it\n"
+	.string "was listening for my heartbeat.\p"
+	.string "…Then it left. I shut the door. Never\n"
+	.string "told anyone. …Until now.\p"
+	.string "…Go. It'll listen for yours too.$"
 ```
 
 </details>

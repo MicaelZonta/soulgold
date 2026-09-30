@@ -319,6 +319,79 @@ Nexus_Text_Erika_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para Erika, com a variação 1 (acima, já no jogo) formam as três do sorteio. Mesmo registro do [R16](../NEXUS_REGRAS.md): fala de si, sem citar o lugar nem a criatura do dia.
+
+**Variação 2 — o cochilo como talento.** Humor: a fama de dormir no meio da luta, virada do avesso. Ela acorda exatamente quando importa.
+
+**Antes da luta**
+
+> Mm… Is it morning? I was dreaming of my Gym. All my trainers were asleep too, and no one noticed.
+>
+> People say I nap through battles and still win. That is only half true.
+>
+> The other half is that I wake up exactly when it matters. …Right about now, I think.
+
+**Derrota**
+
+> Oh dear. I woke up a moment too late.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Erika_Intro2:
+	.string "Mm… Is it morning? I was dreaming of my\n"
+	.string "Gym. All my trainers were asleep too, and\l"
+	.string "no one noticed.\p"
+	.string "People say I nap through battles and\n"
+	.string "still win. That is only half true.\p"
+	.string "The other half is that I wake up\n"
+	.string "exactly when it matters. …Right about\l"
+	.string "now, I think.$"
+
+Nexus_Text_Erika_Defeat2:
+	.string "Oh dear. I woke up a moment too late.$"
+```
+
+</details>
+
+**Variação 3 — o cheiro de fumaça.** O que ela perdeu no fragmento dela (R21): uma cidade que ficou cinza enquanto ela regava um jardim de telhado. Não cita lugar do Nexus nem lendário; é a vida dela. Prepara o diário.
+
+**Antes da luta**
+
+> Excuse me. Do I smell of smoke? I washed and washed, but it followed me here.
+>
+> Where I'm from, I kept a garden on a rooftop. I watered it every morning while the city below went grey.
+>
+> A garden that small can't save anything. It can only remind you. …Let me remind you, then.
+
+**Derrota**
+
+> Then I shall go and water something. It always helps.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Erika_Intro3:
+	.string "Excuse me. Do I smell of smoke? I\n"
+	.string "washed and washed, but it followed me\l"
+	.string "here.\p"
+	.string "Where I'm from, I kept a garden on a\n"
+	.string "rooftop. I watered it every morning\l"
+	.string "while the city below went grey.\p"
+	.string "A garden that small can't save\n"
+	.string "anything. It can only remind you. …Let\l"
+	.string "me remind you, then.$"
+
+Nexus_Text_Erika_Defeat3:
+	.string "Then I shall go and water something. It\n"
+	.string "always helps.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 #### Shaymin
@@ -386,6 +459,126 @@ Nexus_Text_Erika_Shaymin_ChampionAfter:
 </details>
 
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — a flor da gratidão.** Lembrança de arranjadora de flores: ela ofereceu à criatura a flor rosa que se dá para agradecer, e viu a criatura mudar de forma e voar. Guardou uma semente dessa flor na manga (liga com a semente da fala genérica 1).
+
+**Antes da luta**
+
+> I brought it a flower. A pink one, the kind people give to say thank you.
+>
+> It sniffed the petals, and all at once its shape changed, lighter, winged, and it was gone into the grey sky.
+>
+> I have arranged flowers my whole life. I never once saw one make something fly.
+>
+> …I would like to try again. After you, of course.
+
+**Derrota**
+
+> You arranged that better than I ever could.
+
+**Depois da luta**
+
+> That flower only blooms where someone is grateful. Where I'm from, it stopped blooming for years.
+>
+> I kept one seed. I kept it in my sleeve and told no one.
+>
+> If the little one flies from you, don't chase it. Look up and say thank you. It always comes down for that.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Erika_Shaymin_ChampionIntro2:
+	.string "I brought it a flower. A pink one, the\n"
+	.string "kind people give to say thank you.\p"
+	.string "It sniffed the petals, and all at once\n"
+	.string "its shape changed, lighter, winged, and\l"
+	.string "it was gone into the grey sky.\p"
+	.string "I have arranged flowers my whole life. I\n"
+	.string "never once saw one make something fly.\p"
+	.string "…I would like to try again. After you, of\n"
+	.string "course.$"
+
+Nexus_Text_Erika_Shaymin_ChampionDefeat2:
+	.string "You arranged that better than I ever\n"
+	.string "could.$"
+
+Nexus_Text_Erika_Shaymin_ChampionAfter2:
+	.string "{SPEAKER NAME_ERIKA}That flower only blooms where someone\n"
+	.string "is grateful. Where I'm from, it stopped\l"
+	.string "blooming for years.\p"
+	.string "I kept one seed. I kept it in my sleeve\n"
+	.string "and told no one.\p"
+	.string "If the little one flies from you, don't\n"
+	.string "chase it. Look up and say thank you. It\l"
+	.string "always comes down for that.$"
+```
+
+</details>
+
+**Variação 3 — a soneca e a culpa.** Humor que vira confissão: as duas cochilaram juntas, e só a criatura fez algo útil dormindo. Depois a Erika admite que deixou construírem por cima da campina de Celadon ("eu estava dormindo, em mais de um sentido") — o segredo do diário, dito pela metade.
+
+**Antes da luta**
+
+> I found it asleep in a flower bed, so I lay down beside it. We napped together for, oh, an hour.
+>
+> When I woke, the dead grass under me was green. So was the whole field.
+>
+> I have never done anything useful in my sleep. It does everything useful in its sleep.
+>
+> Forgive me. I am a little jealous. Shall we?
+
+**Derrota**
+
+> Mm… Wake me when it blooms again.
+
+**Depois da luta**
+
+> Before the grey came, there was a meadow behind my city. I picked flowers there for my Gym.
+>
+> I let them build over it. I was asleep, I suppose. In more ways than one.
+>
+> That little one walks over what we ruined and never asks who did it. It simply mends it.
+>
+> Be kind to it. It has been kinder to us than we deserve.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Erika_Shaymin_ChampionIntro3:
+	.string "I found it asleep in a flower bed, so I\n"
+	.string "lay down beside it. We napped together\l"
+	.string "for, oh, an hour.\p"
+	.string "When I woke, the dead grass under me\n"
+	.string "was green. So was the whole field.\p"
+	.string "I have never done anything useful in my\n"
+	.string "sleep. It does everything useful in its\l"
+	.string "sleep.\p"
+	.string "Forgive me. I am a little jealous. Shall\n"
+	.string "we?$"
+
+Nexus_Text_Erika_Shaymin_ChampionDefeat3:
+	.string "Mm… Wake me when it blooms again.$"
+
+Nexus_Text_Erika_Shaymin_ChampionAfter3:
+	.string "{SPEAKER NAME_ERIKA}Before the grey came, there was a\n"
+	.string "meadow behind my city. I picked flowers\l"
+	.string "there for my Gym.\p"
+	.string "I let them build over it. I was asleep, I\n"
+	.string "suppose. In more ways than one.\p"
+	.string "That little one walks over what we\n"
+	.string "ruined and never asks who did it. It\l"
+	.string "simply mends it.\p"
+	.string "Be kind to it. It has been kinder to us\n"
+	.string "than we deserve.$"
+```
+
+</details>
+
+
+
 #### Virizion
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Erika_Virizion_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -451,6 +644,131 @@ Nexus_Text_Erika_Virizion_ChampionAfter:
 ```
 
 </details>
+
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — a raiva.** A Erika brava, uma vez: homens de preto puseram fogo atrás do ginásio (a Rocket do Game Corner de Celadon). Ela ficou uma semana com raiva e achou cansativo; a criatura está com raiva há séculos e não cansa. Depois, a lenda das três espadas: ela é a rápida, a última a chegar e a primeira a ir.
+
+**Antes da luta**
+
+> I do not often get angry. Once, men in black set a fire behind my Gym.
+>
+> I was angry for a whole week. I found it terribly tiring.
+>
+> The one in the grass has been angry for longer than any city has stood, and it is not tired at all.
+>
+> …Let me borrow a little of that. Just for this battle.
+
+**Derrota**
+
+> Oh. You were angrier. Or perhaps only braver.
+
+**Depois da luta**
+
+> Long ago it fought beside two others, one of steel and one of stone. It was the swift one.
+>
+> The swift one is always the last to arrive and the first to be gone. I understand. I am usually late.
+>
+> When it rushes you, don't flinch. To that creature, flinching looks like guilt.
+>
+> …And forgive it if it cuts your hat. It is never on purpose.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Erika_Virizion_ChampionIntro2:
+	.string "I do not often get angry. Once, men in\n"
+	.string "black set a fire behind my Gym.\p"
+	.string "I was angry for a whole week. I found it\n"
+	.string "terribly tiring.\p"
+	.string "The one in the grass has been angry for\n"
+	.string "longer than any city has stood, and it\l"
+	.string "is not tired at all.\p"
+	.string "…Let me borrow a little of that. Just\n"
+	.string "for this battle.$"
+
+Nexus_Text_Erika_Virizion_ChampionDefeat2:
+	.string "Oh. You were angrier. Or perhaps only\n"
+	.string "braver.$"
+
+Nexus_Text_Erika_Virizion_ChampionAfter2:
+	.string "{SPEAKER NAME_ERIKA}Long ago it fought beside two others,\n"
+	.string "one of steel and one of stone. It was\l"
+	.string "the swift one.\p"
+	.string "The swift one is always the last to\n"
+	.string "arrive and the first to be gone. I\l"
+	.string "understand. I am usually late.\p"
+	.string "When it rushes you, don't flinch. To\n"
+	.string "that creature, flinching looks like\l"
+	.string "guilt.\p"
+	.string "…And forgive it if it cuts your hat. It\n"
+	.string "is never on purpose.$"
+```
+
+</details>
+
+**Variação 3 — o arranjo de espadas.** O ofício dela diante do fragmento: as espadas enferrujadas com flores nascendo delas viram um ikebana. A criatura observou para ver o que ela guardaria. No ikebana o espaço vazio importa tanto quanto as flores — e a criatura é espaço vazio que protege.
+
+**Antes da luta**
+
+> There are old swords in the grass here, rusted through. Flowers grow out of every one.
+>
+> I have been arranging them. A blade here, a bloom there. It is what I do when I don't know what else to do.
+>
+> The green one watched me the whole time. I think it wanted to see which I would keep.
+>
+> I kept both. Let us see if that was right.
+
+**Derrota**
+
+> Both, then. I shall keep both.
+
+**Depois da luta**
+
+> In flower arranging, the empty space matters as much as the flowers.
+>
+> That creature is all empty space. It doesn't stay. It doesn't hold. It stands only where it is needed.
+>
+> When it is gone, the space it leaves is what protects the little ones.
+>
+> Please leave that space empty for it. Don't fill it with anything of yours.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Erika_Virizion_ChampionIntro3:
+	.string "There are old swords in the grass here,\n"
+	.string "rusted through. Flowers grow out of\l"
+	.string "every one.\p"
+	.string "I have been arranging them. A blade\n"
+	.string "here, a bloom there. It is what I do when\l"
+	.string "I don't know what else to do.\p"
+	.string "The green one watched me the whole\n"
+	.string "time. I think it wanted to see which I\l"
+	.string "would keep.\p"
+	.string "I kept both. Let us see if that was\n"
+	.string "right.$"
+
+Nexus_Text_Erika_Virizion_ChampionDefeat3:
+	.string "Both, then. I shall keep both.$"
+
+Nexus_Text_Erika_Virizion_ChampionAfter3:
+	.string "{SPEAKER NAME_ERIKA}In flower arranging, the empty space\n"
+	.string "matters as much as the flowers.\p"
+	.string "That creature is all empty space. It\n"
+	.string "doesn't stay. It doesn't hold. It\l"
+	.string "stands only where it is needed.\p"
+	.string "When it is gone, the space it leaves is\n"
+	.string "what protects the little ones.\p"
+	.string "Please leave that space empty for it.\n"
+	.string "Don't fill it with anything of yours.$"
+```
+
+</details>
+
 
 
 Falante novo: `SP_NAME_ERIKA` (ainda não existe em `include/constants/speaker_names.h`).

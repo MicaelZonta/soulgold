@@ -274,6 +274,74 @@ Nexus_Text_Silver_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Ainda não estão no código.
+
+**Variação 2 — "você acha que me conhece".** R21 dito por ele: o jogador pode ter conhecido outro Silver, melhor ou pior. A única coisa que ele garante é o Weavile.
+
+**Antes da luta**
+
+> Don't look at me like that. Like you know me.
+>
+> Wherever you're from, maybe I was worse. Maybe I was better. I don't care which.
+>
+> My Weavile's the same everywhere, though. Mean. Loyal. Let's go.
+
+**Derrota**
+
+> …Don't sulk, Weavile. That one was on me.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Silver_Intro2:
+	.string "Don't look at me like that. Like you\n"
+	.string "know me.\p"
+	.string "Wherever you're from, maybe I was\n"
+	.string "worse. Maybe I was better. I don't care\l"
+	.string "which.\p"
+	.string "My Weavile's the same everywhere,\n"
+	.string "though. Mean. Loyal. Let's go.$"
+
+Nexus_Text_Silver_Defeat2:
+	.string "…Don't sulk, Weavile. That one was on\n"
+	.string "me.$"
+```
+
+</details>
+
+**Variação 3 — o nome do pai.** Ele nega o pai e se corrige na mesma fala; a derrota responde ao pai, não ao jogador.
+
+**Antes da luta**
+
+> Some guy in a long coat asked me if I'm Giovanni's kid.
+>
+> I said I don't know anyone by that name.
+>
+> …That was a lie. You'd have figured it out anyway. Battle.
+
+**Derrota**
+
+> …Tch. He'd call me weak for losing. He'd be wrong about that too.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Silver_Intro3:
+	.string "Some guy in a long coat asked me if I'm\n"
+	.string "Giovanni's kid.\p"
+	.string "I said I don't know anyone by that\n"
+	.string "name.\p"
+	.string "…That was a lie. You'd have figured it\n"
+	.string "out anyway. Battle.$"
+
+Nexus_Text_Silver_Defeat3:
+	.string "…Tch. He'd call me weak for losing. He'd\n"
+	.string "be wrong about that too.$"
+```
+
+</details>
 
 ### Diálogo associado ao lendário
 
@@ -330,6 +398,109 @@ Nexus_Text_Silver_ChampionAfter:
 	.string "Go. If you bring something back from in\n"
 	.string "there, don't lock it up. And don't tell\l"
 	.string "it it's useless. I'd know.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1: a criatura pelo olhar do campeão, sem o nome da espécie. Ainda não estão no código.
+
+**Variação 2 — olhar do lado errado.** A criatura observa o mundo do avesso; o Silver passou a infância olhando os capangas do pai de trás de uma esquina. O que ela quer não é sair: é que alguém do lado certo olhe de volta.
+
+**Antes da luta**
+
+> Your shadow's been falling up since you got here. Mine hasn't. It knows me, I think.
+>
+> That thing watches the world from the wrong side. Never says a word.
+>
+> I did that too. Watched my father's men from behind a corner, for years. …Battle.
+
+**Derrota**
+
+> …Beaten from the right side, for once.
+
+**Depois da luta**
+
+> It doesn't want out, you know. Everybody thinks it wants out.
+>
+> It wants somebody on this side to look back at it. Just once.
+>
+> Nobody did that for me until you kept showing up. …Don't make it weird. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Silver_ChampionIntro2:
+	.string "Your shadow's been falling up since you\n"
+	.string "got here. Mine hasn't. It knows me, I\l"
+	.string "think.\p"
+	.string "That thing watches the world from the\n"
+	.string "wrong side. Never says a word.\p"
+	.string "I did that too. Watched my father's men\n"
+	.string "from behind a corner, for years.\l"
+	.string "…Battle.$"
+
+Nexus_Text_Silver_ChampionDefeat2:
+	.string "…Beaten from the right side, for once.$"
+
+Nexus_Text_Silver_ChampionAfter2:
+	.string "{SPEAKER NAME_SILVER}It doesn't want out, you know.\n"
+	.string "Everybody thinks it wants out.\p"
+	.string "It wants somebody on this side to look\n"
+	.string "back at it. Just once.\p"
+	.string "Nobody did that for me until you kept\n"
+	.string "showing up. …Don't make it weird. Go.$"
+```
+
+</details>
+
+**Variação 3 — a mulher de preto e a corrente.** Aceno leve à Cynthia, co-campeã do Giratina (tabela de campeões novos do DIARIO_LOOKER.md), sem nomeá-la. O Silver chega sozinho à diferença entre fazer o mal e sofrer o exílio.
+
+**Antes da luta**
+
+> A woman in black came through here before you. Said she'd met that thing already.
+>
+> She broke a red chain in front of it. Said that helped. I don't believe her.
+>
+> Chains don't help anything. Neither does yelling. …I'm still going to try. Let's go.
+
+**Derrota**
+
+> …Fine. That one's yours.
+
+**Depois da luta**
+
+> She said it isn't evil. Just exiled. Like there's a difference.
+>
+> …There is. Evil is something you do. Exile is something done to you.
+>
+> I did the first one. It got the second. Go on, before I say something else stupid.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Silver_ChampionIntro3:
+	.string "A woman in black came through here\n"
+	.string "before you. Said she'd met that thing\l"
+	.string "already.\p"
+	.string "She broke a red chain in front of it.\n"
+	.string "Said that helped. I don't believe her.\p"
+	.string "Chains don't help anything. Neither\n"
+	.string "does yelling. …I'm still going to try.\l"
+	.string "Let's go.$"
+
+Nexus_Text_Silver_ChampionDefeat3:
+	.string "…Fine. That one's yours.$"
+
+Nexus_Text_Silver_ChampionAfter3:
+	.string "{SPEAKER NAME_SILVER}She said it isn't evil. Just exiled. Like\n"
+	.string "there's a difference.\p"
+	.string "…There is. Evil is something you do.\n"
+	.string "Exile is something done to you.\p"
+	.string "I did the first one. It got the second.\n"
+	.string "Go on, before I say something else\l"
+	.string "stupid.$"
 ```
 
 </details>

@@ -85,6 +85,56 @@ habilidade, golpes aprendíveis, 31 IV/252 EV e as três vagas. Precisa do
 `teachable_learnsets.h` gerado. **Medir as falas:**
 `python3 .claude/skills/nomear-falante/medir_linha.py <ficha.md>`.
 
+## Atualização de 30/09/2026 (📝 proposta, nada no código)
+
+- **17 treinadores novos com arte** em `.filetransfer/.trainers/<Nome>/`:
+  Agatha, Lorelei, Jessie e James, Leon,
+  Cynthia, Cyrus, Barry, Gardenia, Shelly, Zinnia, Diantha, Olivia, Hau, Hilda
+  (`unova/hilda.md` — ficha separada do Hilbert, que não tem arte nenhuma:
+  `unova/hilbert.md`), N, Cheren, Alder. Só a **Cynthia** está
+  registrada no código com sprite e front pic; os outros já têm o overworld
+  registrado e a front pic pronta em `.filetransfer`, falta
+  registrar (no checklist: 📦). Cada ficha ganhou time validado
+  (`nexus_validar_time.py`, pic provisória onde falta a arte), lendário
+  (redistribuição em [`POOL_LENDARIOS.md`](POOL_LENDARIOS.md)), 3 falas
+  genéricas e 3 de campeão.
+- **Todos os 68 jogáveis** ganharam as **variações 2 e 3** da fala genérica e
+  da fala de campeão de cada lendário (a variação 1 é a que está em
+  `data/scripts/nexus.inc`). Labels `…_Intro2/3`, `…_ChampionIntro2/3` etc.
+  O sorteio da variação ainda não existe no código (proposta: pela
+  `dailySeed`).
+- **Diário do Looker:** 3 páginas (começo, meio, fim) por campeão, em
+  `<região>/diario_looker/<treinador>/`. Formato, voz, mecânica proposta e os
+  fios que ligam os cadernos: [`DIARIO_LOOKER.md`](DIARIO_LOOKER.md).
+
+### Pendências para o autor (levantadas pelos agentes em 30/09)
+
+- **Plaquinha na abertura.** No `nexus.inc`, alguns treinadores têm
+  `{SPEAKER NAME_X}` já no `_Intro`/`_ChampionIntro` (os campeões de UB, Bruno,
+  Guzma, Soliera, Steven); as variações novas seguem o padrão "só o `After` tem
+  plaquinha". Ao levar para o código, **copiar o que a variação 1 do mesmo
+  treinador faz.**
+- **Looker Files falam do campeão atual.** Se a redistribuição for aprovada,
+  precisam de ajuste os de Spectrier, Glastrier, Uxie, Shaymin, Reshiram,
+  Zekrom, Cobalion, Slither Wing, Manaphy, Rayquaza, Xerneas, Tapu Lele e Tapu
+  Koko (cada ficha nova tem um ⚠️; Uxie e Shaymin já trazem texto alternativo).
+  Dialga (lido como o avô do Cyrus) e Giratina (co-campeã) servem como estão.
+- **Lendário campeado que é semi-lendário** (Spectrier, Glastrier, Meloetta,
+  Uxie, Shaymin, Manaphy, Tapus, Cobalion, Slither Wing) vai na vaga de semi;
+  o time leva outro lendário (ver cada ficha).
+- **R21:** `Nexus_Text_Clair_ChampionAfter` ("When I lost my badge to you…")
+  supõe que o jogador é lembrado.
+- **R18:** os Looker Files no jogo usam `{SPEAKER NAME_LOOKER}`, mas a regra
+  diz narração sem plaquinha.
+- Numeração dos Files de UB repetida (Beauty/Absorption = UB-02,
+  Blaster/Blade = UB-04) ou ausente (Assembly, Burst, Stinger).
+- Uma fala nova do Giovanni aconselha deixar o Drive vazio (a R22 dá Drives
+  como drop) — opinião do personagem, fácil de trocar.
+- A "pedra de Mega sem dono" passa por vários caminhos em cadernos diferentes;
+  como cada caderno é outro fragmento, não é contradição, mas dá para escolher
+  uma rota só. O cabeçalho das páginas de diário varia um pouco entre regiões
+  ("Data no topo" / "Topo da página").
+
 ## Armadilhas encontradas ao levantar
 
 - **Brendan e May não são o que parecem.** `OBJ_EVENT_GFX_BRENDAN_*`,

@@ -285,6 +285,74 @@ Nexus_Text_Soliera_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Estas duas também servem para qualquer sala e qualquer dia ([R16](../NEXUS_REGRAS.md)): falam só de Soliera. Nada disto está no código.
+
+**Variação 2 — diversão agendada.** Humor pela rigidez. A Zossie diz que a Soliera devia aprender a se divertir; ela agendou isso para depois. Obstáculos vêm antes da diversão. Na derrota ela vai relatar que foi quase divertido.
+
+**Antes da luta**
+
+> Zossie tells me I should learn to have fun. I have scheduled it for later.
+>
+> For now, you are an obstacle. Obstacles come before fun.
+>
+> Prepare yourself.
+
+**Derrota**
+
+> That was... Hm. I will report that it was almost fun.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Soliera_Intro2:
+	.string "Zossie tells me I should learn to have\n"
+	.string "fun. I have scheduled it for later.\p"
+	.string "For now, you are an obstacle. Obstacles\n"
+	.string "come before fun.\p"
+	.string "Prepare yourself.$"
+
+Nexus_Text_Soliera_Defeat2:
+	.string "That was... Hm. I will report that it was\n"
+	.string "almost fun.$"
+```
+
+</details>
+
+**Variação 3 — a luz no rosto.** O mundo dela é escuro e a luz é guardada como água no deserto. O jogador carrega um pouco no rosto, e isso distrai. Ela não vai se distrair duas vezes; na derrota, distraída duas vezes, e vai anotar uma só.
+
+**Antes da luta**
+
+> In my world, the sky is dark. We hoard every scrap of light, like water in a desert.
+>
+> You carry some with you. I can see it on your face. It is... distracting.
+>
+> Stand still. I will not be distracted twice.
+
+**Derrota**
+
+> Distracted twice. I will note it in my report. Once.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Soliera_Intro3:
+	.string "In my world, the sky is dark. We hoard\n"
+	.string "every scrap of light, like water in a\l"
+	.string "desert.\p"
+	.string "You carry some with you. I can see it on\n"
+	.string "your face. It is... distracting.\p"
+	.string "Stand still. I will not be distracted\n"
+	.string "twice.$"
+
+Nexus_Text_Soliera_Defeat3:
+	.string "Distracted twice. I will note it in my\n"
+	.string "report. Once.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -348,3 +416,106 @@ Nexus_Text_Soliera_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Sobre a criatura, pelo olhar de Soliera, sem o nome da espécie ([R16](../NEXUS_REGRAS.md)). Nada disto está no código.
+
+**Variação 2 — velocidade: não medida.** Os registros da Ultra Recon Squad dizem "não medida" na velocidade dela, e a Soliera tenta corrigir o verbete: falhou quarenta vezes, porque a cada passada ela fica mais rápida, como se soubesse. No depois: o veneno não é para caçar, é combustível; tudo o que ela tem, gasta em velocidade. Ataque antes de ela apontar.
+
+**Antes da luta**
+
+> Our records list its speed as 'unmeasured.' I have been trying to correct that entry.
+>
+> I have failed forty times. Every pass, it is faster than the last. As if it knows I am measuring.
+>
+> ...I am beginning to believe it enjoys this. Prepare yourself.
+
+**Derrota**
+
+> Measurement failed. Again.
+
+**Depois da luta**
+
+> The venom it carries is not for hunting. It is for flying. It burns it to go faster.
+>
+> Everything it has, it spends on speed. Nothing is saved for later.
+>
+> Strike before it points. After that, there is no after.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Soliera_ChampionIntro2:
+	.string "Our records list its speed as\n"
+	.string "'unmeasured.' I have been trying to\l"
+	.string "correct that entry.\p"
+	.string "I have failed forty times. Every pass,\n"
+	.string "it is faster than the last. As if it\l"
+	.string "knows I am measuring.\p"
+	.string "...I am beginning to believe it enjoys\n"
+	.string "this. Prepare yourself.$"
+
+Nexus_Text_Soliera_ChampionDefeat2:
+	.string "Measurement failed. Again.$"
+
+Nexus_Text_Soliera_ChampionAfter2:
+	.string "{SPEAKER NAME_SOLIERA}The venom it carries is not for hunting.\n"
+	.string "It is for flying. It burns it to go\l"
+	.string "faster.\p"
+	.string "Everything it has, it spends on speed.\n"
+	.string "Nothing is saved for later.\p"
+	.string "Strike before it points. After that,\n"
+	.string "there is no after.$"
+```
+
+</details>
+
+**Variação 3 — o que se diz.** Quando entregou o pequeno, ela disse só: "Isto é um presente. Trate bem." O esquadrão disse que ela devia ter dito mais, e ela não sabia o que mais se diz. Agora a criatura olha para ela como quem espera mais. No depois: se o jogador trouxer algo pequeno de lá (o Poipole do R17), que diga mais do que ela: para onde vai, por quê, e que pode voltar.
+
+**Antes da luta**
+
+> When I handed the small one over, I said, 'This is a gift. Treat it well.' That was all.
+>
+> My squad said I should have said more. I did not know what else one says.
+>
+> ...It is looking at me. I believe it expects more now. I still do not know what. Prepare yourself.
+
+**Derrota**
+
+> Understood. Some things are said with a battle.
+
+**Depois da luta**
+
+> If you bring back something small from up there, say more than I did.
+>
+> Tell it where it is going. Tell it why. Tell it that it may come back.
+>
+> I did not. I have had eleven passes to regret it. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Soliera_ChampionIntro3:
+	.string "When I handed the small one over, I\n"
+	.string "said, 'This is a gift. Treat it well.'\l"
+	.string "That was all.\p"
+	.string "My squad said I should have said more. I\n"
+	.string "did not know what else one says.\p"
+	.string "...It is looking at me. I believe it\n"
+	.string "expects more now. I still do not know\l"
+	.string "what. Prepare yourself.$"
+
+Nexus_Text_Soliera_ChampionDefeat3:
+	.string "Understood. Some things are said with a\n"
+	.string "battle.$"
+
+Nexus_Text_Soliera_ChampionAfter3:
+	.string "{SPEAKER NAME_SOLIERA}If you bring back something small from\n"
+	.string "up there, say more than I did.\p"
+	.string "Tell it where it is going. Tell it why.\n"
+	.string "Tell it that it may come back.\p"
+	.string "I did not. I have had eleven passes to\n"
+	.string "regret it. Go.$"
+```
+
+</details>

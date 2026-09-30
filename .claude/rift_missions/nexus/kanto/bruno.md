@@ -255,6 +255,70 @@ Nexus_Text_Bruno_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Três ângulos do mesmo homem. A variação 1 é o treino que não para. A 2 é humor de dojo: sem tábuas para quebrar, ele quebra o silêncio. A 3 brinca com o fragmento dele (R21): uma Liga em que ninguém nunca passou da porta do Bruno (fio da Liga de Kanto), e ele está feliz de finalmente perder.
+
+**Variação 2 — humor de dojo**
+
+**Antes da luta**
+
+> Every morning I break a board with my bare hand. Here, I found no boards.
+>
+> So I have been breaking the silence instead. It does not break as easily.
+>
+> Hm. You look sturdier than silence. Hoo hah!
+
+**Derrota**
+
+> My hand is fine. My pride has a small crack in it. Good. Cracks heal stronger.
+
+**Variação 3 — o que faltou no fragmento dele**
+
+**Antes da luta**
+
+> Where I come from, no challenger ever got past my door. Not one, in all my years.
+>
+> People called that strength. I called it lonely.
+>
+> So forgive me if I am glad to see you. Do not hold back!
+
+**Derrota**
+
+> …There. Someone finally got past my door. I have waited a long time to lose to somebody.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Bruno_Intro2:
+	.string "Every morning I break a board with my\n"
+	.string "bare hand. Here, I found no boards.\p"
+	.string "So I have been breaking the silence\n"
+	.string "instead. It does not break as easily.\p"
+	.string "Hm. You look sturdier than silence. Hoo\n"
+	.string "hah!$"
+
+Nexus_Text_Bruno_Defeat2:
+	.string "My hand is fine. My pride has a small\n"
+	.string "crack in it. Good. Cracks heal stronger.$"
+
+Nexus_Text_Bruno_Intro3:
+	.string "Where I come from, no challenger ever\n"
+	.string "got past my door. Not one, in all my\l"
+	.string "years.\p"
+	.string "People called that strength. I called it\n"
+	.string "lonely.\p"
+	.string "So forgive me if I am glad to see you. Do\n"
+	.string "not hold back!$"
+
+Nexus_Text_Bruno_Defeat3:
+	.string "…There. Someone finally got past my\n"
+	.string "door. I have waited a long time to lose\l"
+	.string "to somebody.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 ✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Bruno_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -311,6 +375,106 @@ Nexus_Text_Bruno_ChampionAfter:
 	.string "legs. Anything that strong still has to\l"
 	.string "stand somewhere.\p"
 	.string "Go. I will be here. Training.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é o julgamento (aquilo não é força). A 2 é o espelho cômico: os dois posando um para o outro até escurecer, e a lição que o diário explica (ela bebe do que para). A 3 é o que ele viu acontecer com a própria Liga e a Beast Ball rachada que guarda no cinto (fio Ultra; ver o diário dele).
+
+**Variação 2 — o espelho**
+
+**Antes da luta**
+
+> This morning it posed for me. I posed back. We stood like that until the jungle got dark.
+>
+> Neither of us blinked. I think it believes we are the same.
+>
+> We are not. I sweat for mine. Come! Show it the difference!
+
+**Derrota**
+
+> Hoo hah! Your muscles do not show, and still they hit. It will hate that.
+
+**Depois da luta**
+
+> Look at the trees. Every one grew too big and too tired. It drank from them, and they grew for nothing.
+>
+> Strength you did not earn does not stay. It only sits on you, heavy.
+>
+> When you face it, keep moving. It drinks from things that stand still. Go!
+
+**Variação 3 — a Liga cansada**
+
+**Antes da luta**
+
+> The other three of my League walked into this jungle. They came back quiet. They sit down a great deal now.
+>
+> I asked what it took from them. None of them could remember.
+>
+> It will not take you too. First, let me see if you are worth guarding!
+
+**Derrota**
+
+> Worth guarding? No. You can guard yourself. Hoo!
+
+**Depois da luta**
+
+> Long ago a quiet woman came through here holding a strange ball, striped, cracked down the middle.
+>
+> She threw it at the creature. It laughed, if it can laugh. She left the ball behind.
+>
+> I keep it on my belt. Some things are not meant to be caught. Go and learn that for yourself.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Bruno_ChampionIntro2:
+	.string "This morning it posed for me. I posed\n"
+	.string "back. We stood like that until the\l"
+	.string "jungle got dark.\p"
+	.string "Neither of us blinked. I think it\n"
+	.string "believes we are the same.\p"
+	.string "We are not. I sweat for mine. Come! Show\n"
+	.string "it the difference!$"
+
+Nexus_Text_Bruno_ChampionDefeat2:
+	.string "Hoo hah! Your muscles do not show, and\n"
+	.string "still they hit. It will hate that.$"
+
+Nexus_Text_Bruno_ChampionAfter2:
+	.string "{SPEAKER NAME_BRUNO}Look at the trees. Every one grew too\n"
+	.string "big and too tired. It drank from them,\l"
+	.string "and they grew for nothing.\p"
+	.string "Strength you did not earn does not\n"
+	.string "stay. It only sits on you, heavy.\p"
+	.string "When you face it, keep moving. It drinks\n"
+	.string "from things that stand still. Go!$"
+
+Nexus_Text_Bruno_ChampionIntro3:
+	.string "The other three of my League walked\n"
+	.string "into this jungle. They came back quiet.\l"
+	.string "They sit down a great deal now.\p"
+	.string "I asked what it took from them. None of\n"
+	.string "them could remember.\p"
+	.string "It will not take you too. First, let me\n"
+	.string "see if you are worth guarding!$"
+
+Nexus_Text_Bruno_ChampionDefeat3:
+	.string "Worth guarding? No. You can guard\n"
+	.string "yourself. Hoo!$"
+
+Nexus_Text_Bruno_ChampionAfter3:
+	.string "{SPEAKER NAME_BRUNO}Long ago a quiet woman came through\n"
+	.string "here holding a strange ball, striped,\l"
+	.string "cracked down the middle.\p"
+	.string "She threw it at the creature. It\n"
+	.string "laughed, if it can laugh. She left the\l"
+	.string "ball behind.\p"
+	.string "I keep it on my belt. Some things are\n"
+	.string "not meant to be caught. Go and learn\l"
+	.string "that for yourself.$"
 ```
 
 </details>

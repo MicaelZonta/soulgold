@@ -321,6 +321,68 @@ Nexus_Text_Proton_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é o homem que nunca fica para ver. A 2 é a técnica do medo (sorrir, não fazer careta), com Azalea como vítima. A 3 é a dúvida: um Slowpoke que ele teve antes do uniforme, e em que pensa mais do que gostaria.
+
+**Variação 2 — o sorriso**
+
+**Antes da luta**
+
+> Want to know the trick to being scary? Smile. People expect a scowl. A smile, they can't read.
+>
+> I smiled at a whole town once. Azalea. They locked their doors for a week.
+>
+> So… smile! Let's go!
+
+**Derrota**
+
+> You smiled back. That's cheating.
+
+**Variação 3 — o Slowpoke dele**
+
+**Antes da luta**
+
+> I had a Slowpoke once. Before the uniform. Kept it by a well.
+>
+> It never did anything. Sat there. Yawned. I thought it was the stupidest animal alive.
+>
+> Now I think about it more than I'd like. Why am I talking? Let's go!
+
+**Derrota**
+
+> Beat me and made me talk about a Slowpoke. What a day.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Proton_Intro2:
+	.string "Want to know the trick to being scary?\n"
+	.string "Smile. People expect a scowl. A smile,\l"
+	.string "they can't read.\p"
+	.string "I smiled at a whole town once. Azalea.\n"
+	.string "They locked their doors for a week.\p"
+	.string "So… smile! Let's go!$"
+
+Nexus_Text_Proton_Defeat2:
+	.string "You smiled back. That's cheating.$"
+
+Nexus_Text_Proton_Intro3:
+	.string "I had a Slowpoke once. Before the\n"
+	.string "uniform. Kept it by a well.\p"
+	.string "It never did anything. Sat there.\n"
+	.string "Yawned. I thought it was the stupidest\l"
+	.string "animal alive.\p"
+	.string "Now I think about it more than I'd like.\n"
+	.string "Why am I talking? Let's go!$"
+
+Nexus_Text_Proton_Defeat3:
+	.string "Beat me and made me talk about a\n"
+	.string "Slowpoke. What a day.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Proton é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela.
@@ -382,6 +444,105 @@ Nexus_Text_Proton_TingLu_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é o medo emprestado. A 2 é a confissão de que foi ele quem arrancou as estacas do santuário (e o Archer cobra as notas: liga com o caderno do Archer), e o pior insulto da carreira: a criatura acordou e não fez nada com ele. A 3 é humor: ele tentou assustar o vaso e as pernas dele sentaram sozinhas.
+
+**Variação 2 — as estacas**
+
+**Antes da luta**
+
+> Want a secret? I pulled the stakes around that bowl. Every one. A buyer said they were worth a fortune.
+>
+> Archer keeps asking for the invoices. I keep saying ‘later.’
+>
+> Nobody told me what the stakes were holding down. Guess I found out. Let's go!
+
+**Derrota**
+
+> Well. That's one more thing I let loose today.
+
+**Depois da luta**
+
+> Every stake I pulled, the air got heavier. By the last one I could barely lift my arm to toss it in the sack.
+>
+> The bowl woke up, looked at me, and did nothing. Like I wasn't worth the effort.
+>
+> Worst insult of my career. …Go on. See if it thinks you're worth it.
+
+**Variação 3 — as pernas**
+
+**Antes da luta**
+
+> I tried to scare it. Walked right up to the bowl. The voice, the grin, the whole act.
+>
+> It just… breathed. And I sat down. My legs decided that on their own.
+>
+> Nobody saw that. Nobody! Let's go!
+
+**Derrota**
+
+> Sitting down again. Different reason.
+
+**Depois da luta**
+
+> Here's the thing about fear. It's heavy. Pour it into something and it doesn't go away. It just sits.
+>
+> That bowl's been full for a thousand years. Nobody ever emptied it. They just kept making more.
+>
+> …I made a lot. Go on. Tell it I'm sorry. No, don't. Just go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Proton_TingLu_ChampionIntro2:
+	.string "Want a secret? I pulled the stakes\n"
+	.string "around that bowl. Every one. A buyer\l"
+	.string "said they were worth a fortune.\p"
+	.string "Archer keeps asking for the invoices. I\n"
+	.string "keep saying ‘later.’\p"
+	.string "Nobody told me what the stakes were\n"
+	.string "holding down. Guess I found out. Let's\l"
+	.string "go!$"
+
+Nexus_Text_Proton_TingLu_ChampionDefeat2:
+	.string "Well. That's one more thing I let loose\n"
+	.string "today.$"
+
+Nexus_Text_Proton_TingLu_ChampionAfter2:
+	.string "{SPEAKER NAME_PROTON}Every stake I pulled, the air got\n"
+	.string "heavier. By the last one I could barely\l"
+	.string "lift my arm to toss it in the sack.\p"
+	.string "The bowl woke up, looked at me, and did\n"
+	.string "nothing. Like I wasn't worth the\l"
+	.string "effort.\p"
+	.string "Worst insult of my career. …Go on. See if\n"
+	.string "it thinks you're worth it.$"
+
+Nexus_Text_Proton_TingLu_ChampionIntro3:
+	.string "I tried to scare it. Walked right up to\n"
+	.string "the bowl. The voice, the grin, the whole\l"
+	.string "act.\p"
+	.string "It just… breathed. And I sat down. My\n"
+	.string "legs decided that on their own.\p"
+	.string "Nobody saw that. Nobody! Let's go!$"
+
+Nexus_Text_Proton_TingLu_ChampionDefeat3:
+	.string "Sitting down again. Different reason.$"
+
+Nexus_Text_Proton_TingLu_ChampionAfter3:
+	.string "{SPEAKER NAME_PROTON}Here's the thing about fear. It's\n"
+	.string "heavy. Pour it into something and it\l"
+	.string "doesn't go away. It just sits.\p"
+	.string "That bowl's been full for a thousand\n"
+	.string "years. Nobody ever emptied it. They\l"
+	.string "just kept making more.\p"
+	.string "…I made a lot. Go on. Tell it I'm sorry.\n"
+	.string "No, don't. Just go.$"
+```
+
+</details>
+
 #### Roaring Moon
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Proton_RoaringMoon_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -433,6 +594,100 @@ Nexus_Text_Proton_RoaringMoon_ChampionAfter:
 	.string "…Don't look at me like that. Go on. Wake\n"
 	.string "it up. And don't write any of this down.\l"
 	.string "Nobody would believe you.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é a história em que ninguém acredita. A 2 é o rabo de Slowpoke atirado para o monstro, o primeiro freguês que não pechinchou, e ele deitando para dormir aos pés do Proton (a imagem da página 3 do diário). A 3 é o fim do diário de expedição ("the moon is closer tonight") e as marcas de garra que só descem.
+
+**Variação 2 — o freguês**
+
+**Antes da luta**
+
+> I tossed it a Slowpoke tail. Top quality. Worth more than your bike.
+>
+> It ate it in one bite, then stared at me like I owed it another.
+>
+> First customer I ever had who didn't haggle. Let's go!
+
+**Derrota**
+
+> Tch. And I'm out of tails.
+
+**Depois da luta**
+
+> You know what it did after? Lay down. Right at my feet. Put its head on the rocks and went to sleep.
+>
+> Nobody ever fell asleep next to me before. They're usually running.
+>
+> …Wake it up gently. I mean it. Go.
+
+**Variação 3 — a última página**
+
+**Antes da luta**
+
+> I found the rest of that expedition journal. The last page just says ‘the moon is closer tonight.’ Then nothing.
+>
+> Look up. Count the craters. It was right.
+>
+> Whoever wrote it never came back. Great story. I'm not ending up in it. Let's go!
+
+**Derrota**
+
+> Not ending up in it… yet.
+
+**Depois da luta**
+
+> Every claw mark on these walls goes down. Not one goes up. It never tried to climb out.
+>
+> Something that strong, and it just stayed in its hole, under its moon.
+>
+> Kind of like a guy who never quits a job he hates. …Forget it. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Proton_RoaringMoon_ChampionIntro2:
+	.string "I tossed it a Slowpoke tail. Top quality.\n"
+	.string "Worth more than your bike.\p"
+	.string "It ate it in one bite, then stared at me\n"
+	.string "like I owed it another.\p"
+	.string "First customer I ever had who didn't\n"
+	.string "haggle. Let's go!$"
+
+Nexus_Text_Proton_RoaringMoon_ChampionDefeat2:
+	.string "Tch. And I'm out of tails.$"
+
+Nexus_Text_Proton_RoaringMoon_ChampionAfter2:
+	.string "{SPEAKER NAME_PROTON}You know what it did after? Lay down.\n"
+	.string "Right at my feet. Put its head on the\l"
+	.string "rocks and went to sleep.\p"
+	.string "Nobody ever fell asleep next to me\n"
+	.string "before. They're usually running.\p"
+	.string "…Wake it up gently. I mean it. Go.$"
+
+Nexus_Text_Proton_RoaringMoon_ChampionIntro3:
+	.string "I found the rest of that expedition\n"
+	.string "journal. The last page just says ‘the\l"
+	.string "moon is closer tonight.’ Then nothing.\p"
+	.string "Look up. Count the craters. It was\n"
+	.string "right.\p"
+	.string "Whoever wrote it never came back. Great\n"
+	.string "story. I'm not ending up in it. Let's go!$"
+
+Nexus_Text_Proton_RoaringMoon_ChampionDefeat3:
+	.string "Not ending up in it… yet.$"
+
+Nexus_Text_Proton_RoaringMoon_ChampionAfter3:
+	.string "{SPEAKER NAME_PROTON}Every claw mark on these walls goes\n"
+	.string "down. Not one goes up. It never tried to\l"
+	.string "climb out.\p"
+	.string "Something that strong, and it just\n"
+	.string "stayed in its hole, under its moon.\p"
+	.string "Kind of like a guy who never quits a job\n"
+	.string "he hates. …Forget it. Go.$"
 ```
 
 </details>

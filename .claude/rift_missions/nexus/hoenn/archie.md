@@ -200,6 +200,84 @@ Nexus_Text_Archie_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)), além da que já está no jogo (variação 1). O sorteio de qual variação toca ainda não existe no código.
+
+**Variação 2** — o que ele perdeu: a tripulação; a Shelly foi a primeira a sair (fio Hoenn).
+
+**Antes da luta**
+
+> Fwahahaha! Welcome aboard! Well, there's no board. Welcome anyway!
+>
+> Used to have a whole crew. Matt, all muscle. Shelly, all brains. Grunts by the dozen.
+>
+> Shelly left first. Said she was tired of sailing toward the end of the world. Can't say she was wrong.
+>
+> Ah, enough of that! Let's brawl!
+
+**Derrota**
+
+> Fwahaha! Shelly would've seen that coming. She always did.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Archie_Intro2:
+	.string "Fwahahaha! Welcome aboard! Well,\n"
+	.string "there's no board. Welcome anyway!\p"
+	.string "Used to have a whole crew. Matt, all\n"
+	.string "muscle. Shelly, all brains. Grunts by the\l"
+	.string "dozen.\p"
+	.string "Shelly left first. Said she was tired of\n"
+	.string "sailing toward the end of the world.\l"
+	.string "Can't say she was wrong.\p"
+	.string "Ah, enough of that! Let's brawl!$"
+
+Nexus_Text_Archie_Defeat2:
+	.string "Fwahaha! Shelly would've seen that\n"
+	.string "coming. She always did.$"
+```
+
+</details>
+
+**Variação 3** — humor: terra firme deixa o marinheiro enjoado; passou anos procurando uma praia.
+
+**Antes da luta**
+
+> Whoa, steady! Fwahaha! Sorry, friend. Solid ground makes me seasick.
+>
+> Spent so long on deck, my legs don't trust anything that doesn't roll.
+>
+> Funny thing. I used to say a sailor's home is the sea. Then I spent years looking for a shore.
+>
+> Let's fight! At least in a battle, everything moves!
+
+**Derrota**
+
+> Fwahaha! Knocked flat! At least the floor stopped moving!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Archie_Intro3:
+	.string "Whoa, steady! Fwahaha! Sorry, friend.\n"
+	.string "Solid ground makes me seasick.\p"
+	.string "Spent so long on deck, my legs don't\n"
+	.string "trust anything that doesn't roll.\p"
+	.string "Funny thing. I used to say a sailor's\n"
+	.string "home is the sea. Then I spent years\l"
+	.string "looking for a shore.\p"
+	.string "Let's fight! At least in a battle,\n"
+	.string "everything moves!$"
+
+Nexus_Text_Archie_Defeat3:
+	.string "Fwahaha! Knocked flat! At least the\n"
+	.string "floor stopped moving!$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -260,6 +338,127 @@ Nexus_Text_Archie_ChampionAfter:
 	.string "That great beast doesn't forget\n"
 	.string "anything. It just rains.\p"
 	.string "Go on, then. Show it where the shore is.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário, além da variação 1 que já está no jogo. Sem o nome da espécie ([R16](../NEXUS_REGRAS.md)).
+
+**Variação 2** — ternura: o último Wingull dorme na cabine dele; um dia vai sair e não voltar, e ele vai torcer para isso.
+
+**Antes da luta**
+
+> Keep your voice down. There's a Wingull asleep in my cabin. The last one I've seen.
+>
+> Found it floating on a plank, soaked through. Nowhere to land for a thousand miles.
+>
+> That great beast out there made this sea. My sea. The one I asked for.
+>
+> …Fwahaha. Let's fight, and keep it quiet!
+
+**Derrota**
+
+> Fwahaha… Quiet enough, that one.
+
+**Depois da luta**
+
+> Every morning that Wingull flies out looking for land. Every night it comes back to my cabin.
+>
+> One day it won't come back. And I'll hope, with everything I've got, that it found a shore.
+>
+> That beast can't give it one. The sea can't make a shore. It can only stop making sea.
+>
+> Go on. Tell it to stop, just for a bit.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Archie_ChampionIntro2:
+	.string "Keep your voice down. There's a Wingull\n"
+	.string "asleep in my cabin. The last one I've\l"
+	.string "seen.\p"
+	.string "Found it floating on a plank, soaked\n"
+	.string "through. Nowhere to land for a thousand\l"
+	.string "miles.\p"
+	.string "That great beast out there made this\n"
+	.string "sea. My sea. The one I asked for.\p"
+	.string "…Fwahaha. Let's fight, and keep it\n"
+	.string "quiet!$"
+
+Nexus_Text_Archie_ChampionDefeat2:
+	.string "Fwahaha… Quiet enough, that one.$"
+
+Nexus_Text_Archie_ChampionAfter2:
+	.string "{SPEAKER NAME_ARCHIE}Every morning that Wingull flies out\n"
+	.string "looking for land. Every night it comes\l"
+	.string "back to my cabin.\p"
+	.string "One day it won't come back. And I'll\n"
+	.string "hope, with everything I've got, that it\l"
+	.string "found a shore.\p"
+	.string "That beast can't give it one. The sea\n"
+	.string "can't make a shore. It can only stop\l"
+	.string "making sea.\p"
+	.string "Go on. Tell it to stop, just for a bit.$"
+```
+
+</details>
+
+**Variação 3** — lembrança da Blue Orb e R21: os óculos secos que ele pescou na chuva, de um mundo onde a terra venceu.
+
+**Antes da luta**
+
+> Fwahaha! Look at those lines of light on its sides! Like a map of every current in the world!
+>
+> I woke it with a little blue orb. Felt like king of the sea for a whole minute.
+>
+> Then it looked at me, and I felt like a puddle.
+>
+> Right! Let's go before it looks at me again!
+
+**Derrota**
+
+> Fwahaha… A puddle. Told you.
+
+**Depois da luta**
+
+> Fished something out of the rain the other day. A pair of glasses.
+>
+> In all that rain, the lenses were dry. Bone dry. Like they came from somewhere the sea never reached.
+>
+> Maybe somewhere out there the other one won. And a fool in glasses is standing in it.
+>
+> Go on. If that's where you're headed, tell him the rain says hello.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Archie_ChampionIntro3:
+	.string "Fwahaha! Look at those lines of light\n"
+	.string "on its sides! Like a map of every\l"
+	.string "current in the world!\p"
+	.string "I woke it with a little blue orb. Felt\n"
+	.string "like king of the sea for a whole minute.\p"
+	.string "Then it looked at me, and I felt like a\n"
+	.string "puddle.\p"
+	.string "Right! Let's go before it looks at me\n"
+	.string "again!$"
+
+Nexus_Text_Archie_ChampionDefeat3:
+	.string "Fwahaha… A puddle. Told you.$"
+
+Nexus_Text_Archie_ChampionAfter3:
+	.string "{SPEAKER NAME_ARCHIE}Fished something out of the rain the\n"
+	.string "other day. A pair of glasses.\p"
+	.string "In all that rain, the lenses were dry.\n"
+	.string "Bone dry. Like they came from somewhere\l"
+	.string "the sea never reached.\p"
+	.string "Maybe somewhere out there the other\n"
+	.string "one won. And a fool in glasses is\l"
+	.string "standing in it.\p"
+	.string "Go on. If that's where you're headed,\n"
+	.string "tell him the rain says hello.$"
 ```
 
 </details>

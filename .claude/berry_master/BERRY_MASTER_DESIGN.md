@@ -1,5 +1,7 @@
 # Berry Master e esposa — a Horta da Route 30
 
+> **Superado em parte por [`REI_DA_COLHEITA.md`](REI_DA_COLHEITA.md) (30/09/2026).** Onde os dois discordam, vale aquele.
+
 > **Proposta rev1 — 29/09/2026.** Nada disto está implementado. O que existe hoje
 > é o que o `.claude/KURT_BALL_CRAFT_DESIGN.md` §5 fez (e que está no ar):
 > ele dá 2 berries comuns por dia, ela dá 1 rara por dia depois da Liga.

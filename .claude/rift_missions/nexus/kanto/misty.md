@@ -322,6 +322,64 @@ Nexus_Text_Misty_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Variação 2: as três irmãs (Daisy, Lily e Violet, nunca nomeadas) que foram fazer cruzeiro enquanto ela ficou com o ginásio; humor e orgulho. Variação 3: o que ela ama nos Pokémon de Água — nunca ficam parados, nem dormindo (a Starmie gira, o Psyduck só boia).
+
+**Variação 2 — antes da luta**
+
+> Let me guess. You thought the Cerulean Gym Leader would be one of my sisters. Everybody does.
+>
+> Well, they're off on a cruise, and I'm the one who stayed. The strong one.
+>
+> That's me! Let's battle!
+
+**Variação 2 — derrota**
+
+> …Okay, don't tell my sisters about this one. Ever.
+
+**Variação 3 — antes da luta**
+
+> Know what I like best about Water-types? They never stand still. Not even when they're asleep.
+>
+> My Starmie spins in its sleep. My Psyduck… well, Psyduck just floats.
+>
+> Let's make some waves!
+
+**Variação 3 — derrota**
+
+> You made the bigger wave. …This time!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Misty_Intro2:
+	.string "Let me guess. You thought the Cerulean\n"
+	.string "Gym Leader would be one of my sisters.\l"
+	.string "Everybody does.\p"
+	.string "Well, they're off on a cruise, and I'm\n"
+	.string "the one who stayed. The strong one.\p"
+	.string "That's me! Let's battle!$"
+
+Nexus_Text_Misty_Defeat2:
+	.string "…Okay, don't tell my sisters about this\n"
+	.string "one. Ever.$"
+
+Nexus_Text_Misty_Intro3:
+	.string "Know what I like best about\n"
+	.string "Water-types? They never stand still.\l"
+	.string "Not even when they're asleep.\p"
+	.string "My Starmie spins in its sleep. My\n"
+	.string "Psyduck… well, Psyduck just floats.\p"
+	.string "Let's make some waves!$"
+
+Nexus_Text_Misty_Defeat3:
+	.string "You made the bigger wave. …This time!$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Misty é a **campeã**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
@@ -385,6 +443,100 @@ Nexus_Text_Misty_Kyogre_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: a dúvida — as irmãs estão num cruzeiro e o último cartão-postal só dizia 'So much water!!'; depois, a leitura dela: água com medo sobe; a criatura não está com raiva, tem medo de ser pequena. Variação 3: humor de 'sereia' que precisa de pedra para sentar, e a confissão de que ela, criança, desejou chuva para sempre.
+
+**Variação 2 — antes da luta**
+
+> My sisters are on a cruise somewhere out there. They send postcards. The last one just said 'So much water!!'
+>
+> I laughed. Then I saw that thing out there, and I stopped laughing.
+>
+> I'm sure they're fine! Totally sure! Let's battle!
+
+**Variação 2 — derrota**
+
+> Okay. I'm… a little less sure. But okay.
+
+**Variação 2 — depois da luta**
+
+> Know what water does when it's scared? It rises. It fills every corner, so nothing can sneak up on it.
+>
+> That thing isn't angry. I think it's scared of being small again.
+>
+> Don't make it feel small. Just… give it a shore. Go on.
+
+**Variação 3 — antes da luta**
+
+> People call me a mermaid. The tomboyish mermaid, fine. But a mermaid still needs rocks to sit on!
+>
+> That thing out there took all the rocks. Every single one.
+>
+> I'm taking them back, starting with you! Let's go!
+
+**Variação 3 — derrota**
+
+> You're a really stubborn rock. I'll give you that.
+
+**Variação 3 — depois da luta**
+
+> Here's a secret. When I was little, I wished it would rain forever, so I could swim everywhere.
+>
+> Looks like somebody's wish came true. Just not mine.
+>
+> Be careful what you wish for. And bring an umbrella. Go!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Misty_Kyogre_ChampionIntro2:
+	.string "My sisters are on a cruise somewhere\n"
+	.string "out there. They send postcards. The\l"
+	.string "last one just said 'So much water!!'\p"
+	.string "I laughed. Then I saw that thing out\n"
+	.string "there, and I stopped laughing.\p"
+	.string "I'm sure they're fine! Totally sure!\n"
+	.string "Let's battle!$"
+
+Nexus_Text_Misty_Kyogre_ChampionDefeat2:
+	.string "Okay. I'm… a little less sure. But okay.$"
+
+Nexus_Text_Misty_Kyogre_ChampionAfter2:
+	.string "{SPEAKER NAME_MISTY}Know what water does when it's scared?\n"
+	.string "It rises. It fills every corner, so\l"
+	.string "nothing can sneak up on it.\p"
+	.string "That thing isn't angry. I think it's\n"
+	.string "scared of being small again.\p"
+	.string "Don't make it feel small. Just… give it a\n"
+	.string "shore. Go on.$"
+
+Nexus_Text_Misty_Kyogre_ChampionIntro3:
+	.string "People call me a mermaid. The tomboyish\n"
+	.string "mermaid, fine. But a mermaid still needs\l"
+	.string "rocks to sit on!\p"
+	.string "That thing out there took all the rocks.\n"
+	.string "Every single one.\p"
+	.string "I'm taking them back, starting with\n"
+	.string "you! Let's go!$"
+
+Nexus_Text_Misty_Kyogre_ChampionDefeat3:
+	.string "You're a really stubborn rock. I'll give\n"
+	.string "you that.$"
+
+Nexus_Text_Misty_Kyogre_ChampionAfter3:
+	.string "{SPEAKER NAME_MISTY}Here's a secret. When I was little, I\n"
+	.string "wished it would rain forever, so I could\l"
+	.string "swim everywhere.\p"
+	.string "Looks like somebody's wish came true.\n"
+	.string "Just not mine.\p"
+	.string "Be careful what you wish for. And bring\n"
+	.string "an umbrella. Go!$"
+```
+
+</details>
+
+
 #### Manaphy
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Misty_Manaphy_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -442,5 +594,98 @@ Nexus_Text_Misty_Manaphy_ChampionAfter:
 ```
 
 </details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: a lembrança (R21: no anime quem cuidou do ovo foi a May; no fragmento dela, foi a Misty) — o bichinho achou que ela era a mãe; depois, o Heart Swap: ele deixa qualquer um sentir o que ele sente, até estranhos. Variação 3: humor — o Príncipe do Mar mimado, com coroa num templo no fundo do mar, contra a piscina dela; voltar é a parte corajosa.
+
+**Variação 2 — antes da luta**
+
+> I babysat an egg once. It hatched into a little blue thing that thought I was its mom.
+>
+> I had a gym to run! I was not ready!
+>
+> …I cried when it went home. Let's battle before I cry again!
+
+**Variação 2 — derrota**
+
+> Aww… That's fine. I'm not crying. It's the water.
+
+**Variação 2 — depois da luta**
+
+> It can make anyone feel what it feels, just by touching them. Swapping hearts, some people say.
+>
+> I'd be scared of that. Letting someone feel everything I feel?
+>
+> It does it with strangers. …Go say hi. Let it swap a little.
+
+**Variação 3 — antes da luta**
+
+> The sea has a prince. Did you know that? A tiny, blue, very spoiled prince.
+>
+> It has a crown somewhere, too. At the bottom of the ocean, in a temple nobody can find.
+>
+> I have a gym and a pool. Let's see whose kingdom is better!
+
+**Variação 3 — derrota**
+
+> Fine! Its kingdom wins. Mine has better lighting, though.
+
+**Variação 3 — depois da luta**
+
+> A prince who only knows how to go home. That's all it does. Swim away, swim back.
+>
+> Sounds boring, right? It isn't. Going back is the brave part. Anyone can leave.
+>
+> Go on. It's waiting at the door.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Misty_Manaphy_ChampionIntro2:
+	.string "I babysat an egg once. It hatched into\n"
+	.string "a little blue thing that thought I was\l"
+	.string "its mom.\p"
+	.string "I had a gym to run! I was not ready!\p"
+	.string "…I cried when it went home. Let's\n"
+	.string "battle before I cry again!$"
+
+Nexus_Text_Misty_Manaphy_ChampionDefeat2:
+	.string "Aww… That's fine. I'm not crying. It's\n"
+	.string "the water.$"
+
+Nexus_Text_Misty_Manaphy_ChampionAfter2:
+	.string "{SPEAKER NAME_MISTY}It can make anyone feel what it feels,\n"
+	.string "just by touching them. Swapping hearts,\l"
+	.string "some people say.\p"
+	.string "I'd be scared of that. Letting someone\n"
+	.string "feel everything I feel?\p"
+	.string "It does it with strangers. …Go say hi.\n"
+	.string "Let it swap a little.$"
+
+Nexus_Text_Misty_Manaphy_ChampionIntro3:
+	.string "The sea has a prince. Did you know that?\n"
+	.string "A tiny, blue, very spoiled prince.\p"
+	.string "It has a crown somewhere, too. At the\n"
+	.string "bottom of the ocean, in a temple nobody\l"
+	.string "can find.\p"
+	.string "I have a gym and a pool. Let's see whose\n"
+	.string "kingdom is better!$"
+
+Nexus_Text_Misty_Manaphy_ChampionDefeat3:
+	.string "Fine! Its kingdom wins. Mine has better\n"
+	.string "lighting, though.$"
+
+Nexus_Text_Misty_Manaphy_ChampionAfter3:
+	.string "{SPEAKER NAME_MISTY}A prince who only knows how to go home.\n"
+	.string "That's all it does. Swim away, swim back.\p"
+	.string "Sounds boring, right? It isn't. Going\n"
+	.string "back is the brave part. Anyone can\l"
+	.string "leave.\p"
+	.string "Go on. It's waiting at the door.$"
+```
+
+</details>
+
 
 Falante novo: `SP_NAME_MISTY` (ainda não existe em `include/constants/speaker_names.h`).

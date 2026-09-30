@@ -336,6 +336,85 @@ Nexus_Text_Anabel_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A Anabel das salas é a do fragmento em que ela jogou a Beast Ball (R21). A variação 1 fala dessa memória. Na 2, a lembrança de antes da polícia: a Salon Maiden que lia os desafiantes na escada da Battle Tower e não consegue ler o jogador. Na 3, um aceno leve aos fios do diário: o homem de sobretudo e um caderno com anotações na margem na letra dela, que ela não lembra de ter escrito (nunca confirmar de quem é a segunda mão).
+
+**Variação 2 — a Salon Maiden que lia a escada**
+
+**Antes da luta**
+
+> Anabel. Before the police, I kept the top floor of a tower. Challengers climbed seven battles to reach me.
+>
+> I used to read them on the stairs. Breathing. Footsteps. By the time they reached the door, I knew who would win.
+>
+> I can't read you. Not yet. That's either your talent or my problem.
+>
+> Let's find out which.
+
+**Derrota**
+
+> Your talent. Logged.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Anabel_Intro2:
+	.string "Anabel. Before the police, I kept the\n"
+	.string "top floor of a tower. Challengers\l"
+	.string "climbed seven battles to reach me.\p"
+	.string "I used to read them on the stairs.\n"
+	.string "Breathing. Footsteps. By the time they\l"
+	.string "reached the door, I knew who would win.\p"
+	.string "I can't read you. Not yet. That's\n"
+	.string "either your talent or my problem.\p"
+	.string "Let's find out which.$"
+
+Nexus_Text_Anabel_Defeat2:
+	.string "Your talent. Logged.$"
+```
+
+</details>
+
+**Variação 3 — o sobretudo e a letra na margem**
+
+**Antes da luta**
+
+> Before we start. Have you seen a man in a long coat? He asks questions and writes the answers down.
+>
+> He left a notebook behind. Some of the notes in the margins are in my handwriting. I don't remember writing them.
+>
+> I've filed that under “later.” The file is getting thick.
+>
+> Right now, you're the case. Begin.
+
+**Derrota**
+
+> Case closed. For now. I'll reopen it if the evidence changes.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Anabel_Intro3:
+	.string "Before we start. Have you seen a man in\n"
+	.string "a long coat? He asks questions and\l"
+	.string "writes the answers down.\p"
+	.string "He left a notebook behind. Some of the\n"
+	.string "notes in the margins are in my\l"
+	.string "handwriting. I don't remember writing\l"
+	.string "them.\p"
+	.string "I've filed that under “later.” The file\n"
+	.string "is getting thick.\p"
+	.string "Right now, you're the case. Begin.$"
+
+Nexus_Text_Anabel_Defeat3:
+	.string "Case closed. For now. I'll reopen it if\n"
+	.string "the evidence changes.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Anabel é a campeã, a luta logo antes do lendário do dia. Um registro por lendário; a fala é sobre a criatura, sem dizer o nome dela.
@@ -404,6 +483,125 @@ Nexus_Text_Anabel_Necrozma_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Na variação 1 ela reconhece a criatura (falta um pedaço, e continua estendendo a mão). Na 2, a lembrança do arremesso, contada como relatório: pulso, ângulo, três balançadas, e a bola quente desde então; à noite ela brilha com luz que não é dele. Na 3, o fio **Ultra**: a cidade do outro lado que perdeu o céu, a dúvida sobre o que fizeram com ele, e a **Beast Ball rachada** (a rachadura cresce menos de um milímetro por dia).
+
+**Variação 2 — o arremesso**
+
+**Antes da luta**
+
+> I remember the throw. Wrist, angle, distance. I've replayed it more times than I can count.
+>
+> The ball shook three times. On the third, the light around us came back. All of it at once.
+>
+> People cheered. I didn't. I was watching the ball. It was still warm.
+>
+> It's been warm ever since. Ready?
+
+**Derrota**
+
+> Confirmed. You would have made the throw too.
+
+**Depois da luta**
+
+> It's in a ball on my belt. It doesn't struggle. It doesn't sleep either.
+>
+> At night the ball gives off light. Not its own. Pieces it took, still trying to find their way home.
+>
+> I kept it because someone had to. I'm not sure that's the same as a reason.
+>
+> Go. What's out there is the part that never went into the ball. And come back.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Anabel_Necrozma_ChampionIntro2:
+	.string "I remember the throw. Wrist, angle,\n"
+	.string "distance. I've replayed it more times\l"
+	.string "than I can count.\p"
+	.string "The ball shook three times. On the\n"
+	.string "third, the light around us came back. All\l"
+	.string "of it at once.\p"
+	.string "People cheered. I didn't. I was\n"
+	.string "watching the ball. It was still warm.\p"
+	.string "It's been warm ever since. Ready?$"
+
+Nexus_Text_Anabel_Necrozma_ChampionDefeat2:
+	.string "Confirmed. You would have made the\n"
+	.string "throw too.$"
+
+Nexus_Text_Anabel_Necrozma_ChampionAfter2:
+	.string "{SPEAKER NAME_ANABEL}It's in a ball on my belt. It doesn't\n"
+	.string "struggle. It doesn't sleep either.\p"
+	.string "At night the ball gives off light. Not\n"
+	.string "its own. Pieces it took, still trying to\l"
+	.string "find their way home.\p"
+	.string "I kept it because someone had to. I'm\n"
+	.string "not sure that's the same as a reason.\p"
+	.string "Go. What's out there is the part that\n"
+	.string "never went into the ball. And come back.$"
+```
+
+</details>
+
+**Variação 3 — a cidade sem céu, e a rachadura**
+
+**Antes da luta**
+
+> There's a city on the other side of the wormholes. Its people lost their sky to this creature.
+>
+> They built a tower to feed it light, so it would stop taking. It kept taking.
+>
+> In my version, I gave them their sky back. I have no idea what they did with it.
+>
+> That bothers me more than it should. Let's go.
+
+**Derrota**
+
+> Good. One less thing to wonder about.
+
+**Depois da luta**
+
+> My Beast Ball has a crack in it now. Hairline. It wasn't there last week.
+>
+> I measured it. It grows by less than a millimeter a day. Very patient.
+>
+> My feeling: it isn't trying to escape. It's trying to see out.
+>
+> Bring back whatever you find. And come back. I'll be here, checking the crack.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Anabel_Necrozma_ChampionIntro3:
+	.string "There's a city on the other side of the\n"
+	.string "wormholes. Its people lost their sky to\l"
+	.string "this creature.\p"
+	.string "They built a tower to feed it light, so\n"
+	.string "it would stop taking. It kept taking.\p"
+	.string "In my version, I gave them their sky\n"
+	.string "back. I have no idea what they did with\l"
+	.string "it.\p"
+	.string "That bothers me more than it should.\n"
+	.string "Let's go.$"
+
+Nexus_Text_Anabel_Necrozma_ChampionDefeat3:
+	.string "Good. One less thing to wonder about.$"
+
+Nexus_Text_Anabel_Necrozma_ChampionAfter3:
+	.string "{SPEAKER NAME_ANABEL}My Beast Ball has a crack in it now.\n"
+	.string "Hairline. It wasn't there last week.\p"
+	.string "I measured it. It grows by less than a\n"
+	.string "millimeter a day. Very patient.\p"
+	.string "My feeling: it isn't trying to escape.\n"
+	.string "It's trying to see out.\p"
+	.string "Bring back whatever you find. And come\n"
+	.string "back. I'll be here, checking the crack.$"
+```
+
+</details>
+
 
 #### Deoxys
 
@@ -465,3 +663,124 @@ Nexus_Text_Anabel_Deoxys_ChampionAfter:
 ```
 
 </details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Na variação 1 a queda e a mudança são o mesmo preço. Na 2 ela lê a ficha oficial (vírus do espaço + laser = acidente) e compara com a própria: as quatro formas da criatura são o que ela faz devagar, escolhendo voz, postura, quanto fala. Na 3 a surpresa: é a primeira coisa que chega sem ela sentir antes; e o segredo que ela nunca pôs em relatório: o clarão da Beast Ball fechando subiu reto para o céu, e semanas depois algo caiu de volta procurando aquela luz. Liga os dois lendários dela (e é a página 2 do diário).
+
+**Variação 2 — a ficha oficial**
+
+**Antes da luta**
+
+> A virus from space. Hit by a laser. Changed into something that thinks with a crystal.
+>
+> That's the official file. I read it twice. It reads like an accident.
+>
+> Mine reads like one too. Fell through a hole in the sky. Woke up with half a memory.
+>
+> Accidents can still turn out well. Show me one.
+
+**Derrota**
+
+> Noted. Some accidents go right.
+
+**Depois da luta**
+
+> It has four shapes. It picks one for every situation, and it never apologizes for the choice.
+>
+> I have one shape. I choose everything else. Voice, posture, how much I say.
+>
+> Maybe that's the same thing, done more slowly.
+>
+> Go. Watch which shape it picks for you. That's its opinion of you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Anabel_Deoxys_ChampionIntro2:
+	.string "A virus from space. Hit by a laser.\n"
+	.string "Changed into something that thinks\l"
+	.string "with a crystal.\p"
+	.string "That's the official file. I read it\n"
+	.string "twice. It reads like an accident.\p"
+	.string "Mine reads like one too. Fell through a\n"
+	.string "hole in the sky. Woke up with half a\l"
+	.string "memory.\p"
+	.string "Accidents can still turn out well. Show\n"
+	.string "me one.$"
+
+Nexus_Text_Anabel_Deoxys_ChampionDefeat2:
+	.string "Noted. Some accidents go right.$"
+
+Nexus_Text_Anabel_Deoxys_ChampionAfter2:
+	.string "{SPEAKER NAME_ANABEL}It has four shapes. It picks one for\n"
+	.string "every situation, and it never\l"
+	.string "apologizes for the choice.\p"
+	.string "I have one shape. I choose everything\n"
+	.string "else. Voice, posture, how much I say.\p"
+	.string "Maybe that's the same thing, done more\n"
+	.string "slowly.\p"
+	.string "Go. Watch which shape it picks for you.\n"
+	.string "That's its opinion of you.$"
+```
+
+</details>
+
+**Variação 3 — o que ela não pôs no relatório**
+
+**Antes da luta**
+
+> I feel openings a second before they happen. Every wormhole. Every rift.
+>
+> When that meteor came down, I felt nothing. No warning. It simply arrived.
+>
+> First time in years something surprised me. I didn't enjoy it. I'm told I smiled.
+>
+> Don't tell anyone. Begin.
+
+**Derrota**
+
+> Surprised twice in one day. Unacceptable. Well done.
+
+**Depois da luta**
+
+> Here's something I haven't put in any report.
+>
+> The night I made my catch, there was a flash when the ball closed. Straight up, into the sky.
+>
+> Weeks later, something came back down. Changed. Looking for the light that sent it.
+>
+> I don't know if I made it. I'd rather know. Go and find out for me.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Anabel_Deoxys_ChampionIntro3:
+	.string "I feel openings a second before they\n"
+	.string "happen. Every wormhole. Every rift.\p"
+	.string "When that meteor came down, I felt\n"
+	.string "nothing. No warning. It simply arrived.\p"
+	.string "First time in years something surprised\n"
+	.string "me. I didn't enjoy it. I'm told I smiled.\p"
+	.string "Don't tell anyone. Begin.$"
+
+Nexus_Text_Anabel_Deoxys_ChampionDefeat3:
+	.string "Surprised twice in one day.\n"
+	.string "Unacceptable. Well done.$"
+
+Nexus_Text_Anabel_Deoxys_ChampionAfter3:
+	.string "{SPEAKER NAME_ANABEL}Here's something I haven't put in any\n"
+	.string "report.\p"
+	.string "The night I made my catch, there was a\n"
+	.string "flash when the ball closed. Straight up,\l"
+	.string "into the sky.\p"
+	.string "Weeks later, something came back down.\n"
+	.string "Changed. Looking for the light that\l"
+	.string "sent it.\p"
+	.string "I don't know if I made it. I'd rather\n"
+	.string "know. Go and find out for me.$"
+```
+
+</details>
+
+

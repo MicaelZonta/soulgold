@@ -249,6 +249,83 @@ Nexus_Text_Steven_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código). Nenhuma cita o lugar nem a criatura do dia.
+
+**Variação 2** — lembrança e humor: cascalho em todos os bolsos, hábito antigo. O pai (dono de uma empresa) queria o filho atrás de uma mesa; ele levou o peso de papel da mesa — que era um fóssil. Nunca olhou para trás.
+
+**Antes da luta**
+
+> Please excuse me. I have gravel in every pocket. An old habit.
+>
+> My father runs a company, and hoped I would sit behind a desk. I took the desk's paperweight instead.
+>
+> It turned out to be a fossil. I never looked back.
+>
+> Now then. Let's see what you're made of.
+
+**Derrota**
+
+> Remarkable. You're made of something harder than I thought.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Steven_Intro2:
+	.string "Please excuse me. I have gravel in\n"
+	.string "every pocket. An old habit.\p"
+	.string "My father runs a company, and hoped I\n"
+	.string "would sit behind a desk. I took the\l"
+	.string "desk's paperweight instead.\p"
+	.string "It turned out to be a fossil. I never\n"
+	.string "looked back.\p"
+	.string "Now then. Let's see what you're made\n"
+	.string "of.$"
+
+Nexus_Text_Steven_Defeat2:
+	.string "Remarkable. You're made of something\n"
+	.string "harder than I thought.$"
+```
+
+</details>
+
+**Variação 3** — [R21](../NEXUS_REGRAS.md) e dúvida: alguém disse a ele que em algum lugar ele é Campeão; espera que o outro Steven esteja bem. Aqui é um homem que olha pedras, e prefere assim: título pesa, pedra também, mas é honesta sobre isso.
+
+**Antes da luta**
+
+> Someone told me I'm a Champion somewhere. I hope that other me is doing well.
+>
+> Here, I'm a man who looks at rocks. I think I prefer it.
+>
+> A title is heavy. A stone is heavy too, but at least it's honest about it.
+>
+> Shall we?
+
+**Derrota**
+
+> Well fought. I think that other me would have lost too.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Steven_Intro3:
+	.string "Someone told me I'm a Champion\n"
+	.string "somewhere. I hope that other me is\l"
+	.string "doing well.\p"
+	.string "Here, I'm a man who looks at rocks. I\n"
+	.string "think I prefer it.\p"
+	.string "A title is heavy. A stone is heavy too,\n"
+	.string "but at least it's honest about it.\p"
+	.string "Shall we?$"
+
+Nexus_Text_Steven_Defeat3:
+	.string "Well fought. I think that other me\n"
+	.string "would have lost too.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -309,6 +386,123 @@ Nexus_Text_Steven_ChampionAfter:
 	.string "I'll stay a while. Something that high\n"
 	.string "up might drop a stone for me, sooner or\l"
 	.string "later.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela; para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código).
+
+**Variação 2** — lembrança: o Steven menino via os foguetes do Space Center de Mossdeep até virarem estrelas. A criatura parece um daqueles foguetes, só que cresceu do chão. Depois: os foguetes levavam satélites, instrumentos, esperança; ele não sabe o que ela carrega — talvez tudo o que já foi. “Se ela partir, acene.”
+
+**Antes da luta**
+
+> As a boy, I'd visit the Space Center in Mossdeep and watch the rockets until they became stars.
+>
+> The creature here looks a great deal like those rockets. Except it grew out of the ground.
+>
+> Something that grows toward the sky, instead of being built for it. Let's battle.
+
+**Derrota**
+
+> You stayed grounded again. It's a rare quality.
+
+**Depois da luta**
+
+> The rockets I watched all carried something up. Satellites. Instruments. Hope, mostly.
+>
+> I can't tell what that creature is carrying.
+>
+> Maybe that's why it burns so hot. It's carrying everything it's ever been.
+>
+> Be careful. And if it leaves, wave. Someone should.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Steven_ChampionIntro2:
+	.string "As a boy, I'd visit the Space Center in\n"
+	.string "Mossdeep and watch the rockets until\l"
+	.string "they became stars.\p"
+	.string "The creature here looks a great deal\n"
+	.string "like those rockets. Except it grew out\l"
+	.string "of the ground.\p"
+	.string "Something that grows toward the sky,\n"
+	.string "instead of being built for it. Let's\l"
+	.string "battle.$"
+
+Nexus_Text_Steven_ChampionDefeat2:
+	.string "You stayed grounded again. It's a rare\n"
+	.string "quality.$"
+
+Nexus_Text_Steven_ChampionAfter2:
+	.string "{SPEAKER NAME_STEVEN}The rockets I watched all carried\n"
+	.string "something up. Satellites. Instruments.\l"
+	.string "Hope, mostly.\p"
+	.string "I can't tell what that creature is\n"
+	.string "carrying.\p"
+	.string "Maybe that's why it burns so hot. It's\n"
+	.string "carrying everything it's ever been.\p"
+	.string "Be careful. And if it leaves, wave.\n"
+	.string "Someone should.$"
+```
+
+</details>
+
+**Variação 3** — ciência e melancolia: bambu cresce um metro por dia, e a criatura é bambu de aço crescendo para as estrelas na mesma velocidade. Ele senta ao lado para medir e é sempre lento demais. Depois: a lista dos brotos e das alturas — todos mais altos, todos partindo devagar. Um dia a cratera vazia e uma lista de coisas que foram embora.
+
+**Antes da luta**
+
+> Have you ever watched bamboo grow? It can grow a whole meter in a single day.
+>
+> The creature here is like bamboo made of steel, growing toward the stars at the same terrible speed.
+>
+> I keep sitting down beside it to measure. I'm always too slow.
+>
+> Perhaps you're faster. Let's find out.
+
+**Derrota**
+
+> Faster, and much steadier. I'll write that down.
+
+**Depois da luta**
+
+> I've been keeping a list. Every steel shoot here, and how tall it was when I found it.
+>
+> They're all taller now. Every one of them is leaving, very slowly.
+>
+> One day this crater will be empty, and I'll have a list of things that went away.
+>
+> Go on. Make it stay a little longer.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Steven_ChampionIntro3:
+	.string "Have you ever watched bamboo grow? It\n"
+	.string "can grow a whole meter in a single day.\p"
+	.string "The creature here is like bamboo made\n"
+	.string "of steel, growing toward the stars at\l"
+	.string "the same terrible speed.\p"
+	.string "I keep sitting down beside it to\n"
+	.string "measure. I'm always too slow.\p"
+	.string "Perhaps you're faster. Let's find out.$"
+
+Nexus_Text_Steven_ChampionDefeat3:
+	.string "Faster, and much steadier. I'll write\n"
+	.string "that down.$"
+
+Nexus_Text_Steven_ChampionAfter3:
+	.string "{SPEAKER NAME_STEVEN}I've been keeping a list. Every steel\n"
+	.string "shoot here, and how tall it was when I\l"
+	.string "found it.\p"
+	.string "They're all taller now. Every one of\n"
+	.string "them is leaving, very slowly.\p"
+	.string "One day this crater will be empty, and\n"
+	.string "I'll have a list of things that went\l"
+	.string "away.\p"
+	.string "Go on. Make it stay a little longer.$"
 ```
 
 </details>

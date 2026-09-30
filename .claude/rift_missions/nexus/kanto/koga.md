@@ -257,6 +257,77 @@ Nexus_Text_Koga_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para Koga, com a variação 1 (acima, já no jogo) formam as três do sorteio. Mesmo registro do [R16](../NEXUS_REGRAS.md): fala de si, sem citar o lugar nem a criatura do dia.
+
+**Variação 2 — a provocação do ninja.** Humor e provocação: ele está atrás do jogador há três salas… e agora, obviamente, na frente. A lição dupla do Koga: ninja nunca está onde se olha, veneno nunca tem o gosto que parece.
+
+**Antes da luta**
+
+> Fwahahaha! I have been standing behind you for three rooms. You did not notice.
+>
+> No, do not turn around. I am in front of you now. Obviously.
+>
+> A ninja is never where you look. A poison is never what you taste. Learn both lessons today!
+
+**Derrota**
+
+> Fwahaha… You looked in the right place. How very rude.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Koga_Intro2:
+	.string "Fwahahaha! I have been standing behind\n"
+	.string "you for three rooms. You did not notice.\p"
+	.string "No, do not turn around. I am in front of\n"
+	.string "you now. Obviously.\p"
+	.string "A ninja is never where you look. A poison\n"
+	.string "is never what you taste. Learn both\l"
+	.string "lessons today!$"
+
+Nexus_Text_Koga_Defeat2:
+	.string "Fwahaha… You looked in the right place.\n"
+	.string "How very rude.$"
+```
+
+</details>
+
+**Variação 3 — a Liga que nunca perdeu.** O que o fragmento dele tem de diferente (R21): uma Elite Four que nenhum desafiante jamais passou. Para o Koga isso não é força, é porta trancada. Prepara o diário (Liga de Kanto).
+
+**Antes da luta**
+
+> Hm. You have the look of one who wins. I have not faced that look in a long time.
+>
+> Where I come from, I sat among the Elite Four. No challenger ever passed us. Not one, in all those years.
+>
+> That is not strength. It is a locked door. Show me whether you are the key!
+
+**Derrota**
+
+> …So. The door was never locked. Only unopened.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Koga_Intro3:
+	.string "Hm. You have the look of one who wins. I\n"
+	.string "have not faced that look in a long time.\p"
+	.string "Where I come from, I sat among the Elite\n"
+	.string "Four. No challenger ever passed us. Not\l"
+	.string "one, in all those years.\p"
+	.string "That is not strength. It is a locked\n"
+	.string "door. Show me whether you are the key!$"
+
+Nexus_Text_Koga_Defeat3:
+	.string "…So. The door was never locked. Only\n"
+	.string "unopened.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 #### Pecharunt
@@ -324,6 +395,128 @@ Nexus_Text_Koga_ChampionAfter:
 ```
 
 </details>
+
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — o veneno sem gosto.** O profissional do veneno: provou cem venenos e deu nome a todos; este não tem gosto, é doce e a pessoa simplesmente concorda. Ele o batizou de "Yes". Depois, a lenda dos três vassalos de Kitakami, que comeram primeiro e ganharam estátuas de herói — mestre que precisa de doce para ser servido é mestre fraco.
+
+**Antes da luta**
+
+> Fwahahaha! Poison is my craft. I have tasted a hundred kinds and lived to name each one.
+>
+> The little shell's poison has no taste at all. It is sweet, and then you simply agree.
+>
+> A ninja who cannot name a poison cannot fight it. So I have named it. 'Yes.'
+>
+> Now, let us see how you say no!
+
+**Derrota**
+
+> Fwahaha! A firm no. Excellent!
+
+**Depois da luta**
+
+> The old tales of the north speak of three retainers who served a small master. They ate first.
+>
+> Then they fought for it, and lied for it, and let a village raise statues to them as heroes.
+>
+> All for a sweet. A master who needs a sweet to be served is a weak master.
+>
+> If it hides behind the others, strike the shell. Only the shell.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Koga_ChampionIntro2:
+	.string "Fwahahaha! Poison is my craft. I have\n"
+	.string "tasted a hundred kinds and lived to\l"
+	.string "name each one.\p"
+	.string "The little shell's poison has no taste\n"
+	.string "at all. It is sweet, and then you simply\l"
+	.string "agree.\p"
+	.string "A ninja who cannot name a poison cannot\n"
+	.string "fight it. So I have named it. 'Yes.'\p"
+	.string "Now, let us see how you say no!$"
+
+Nexus_Text_Koga_ChampionDefeat2:
+	.string "Fwahaha! A firm no. Excellent!$"
+
+Nexus_Text_Koga_ChampionAfter2:
+	.string "{SPEAKER NAME_KOGA}The old tales of the north speak of\n"
+	.string "three retainers who served a small\l"
+	.string "master. They ate first.\p"
+	.string "Then they fought for it, and lied for it,\n"
+	.string "and let a village raise statues to them\l"
+	.string "as heroes.\p"
+	.string "All for a sweet. A master who needs a\n"
+	.string "sweet to be served is a weak master.\p"
+	.string "If it hides behind the others, strike\n"
+	.string "the shell. Only the shell.$"
+```
+
+</details>
+
+**Variação 3 — os colegas que comeram.** O que ele perdeu (R21 + fio da Liga): entre os que sorriem em fila estão dois colegas da Elite Four; o terceiro, "o mascarado", saiu antes dos doces (aceno ao Will, que no fio da Liga leva o rei). O pior veneno é o que deixa a gente feliz. Termina pedindo que o jogador lembre um nome — o dele.
+
+**Antes da luta**
+
+> Hm. You walked between the smiling ones without looking at them. Good. Do not look.
+>
+> Two of them I once called colleagues. The third, the one in the mask, left before the sweets came.
+>
+> They were hungry for something. I never knew what. The little shell knew.
+>
+> It will not take one more. Face me!
+
+**Derrota**
+
+> Your will was sharper than any blade I own.
+
+**Depois da luta**
+
+> The worst poison is not the one that kills. It is the one that makes you glad.
+>
+> My old colleagues are glad now. Glad and quiet. I bring them tea, and they do not remember my name.
+>
+> If it offers you anything, remember a name first. Yours, or mine. Hold it in your teeth.
+>
+> …Koga. Remember that one.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Koga_ChampionIntro3:
+	.string "Hm. You walked between the smiling ones\n"
+	.string "without looking at them. Good. Do not\l"
+	.string "look.\p"
+	.string "Two of them I once called colleagues.\n"
+	.string "The third, the one in the mask, left\l"
+	.string "before the sweets came.\p"
+	.string "They were hungry for something. I never\n"
+	.string "knew what. The little shell knew.\p"
+	.string "It will not take one more. Face me!$"
+
+Nexus_Text_Koga_ChampionDefeat3:
+	.string "Your will was sharper than any blade I\n"
+	.string "own.$"
+
+Nexus_Text_Koga_ChampionAfter3:
+	.string "{SPEAKER NAME_KOGA}The worst poison is not the one that\n"
+	.string "kills. It is the one that makes you glad.\p"
+	.string "My old colleagues are glad now. Glad and\n"
+	.string "quiet. I bring them tea, and they do not\l"
+	.string "remember my name.\p"
+	.string "If it offers you anything, remember a\n"
+	.string "name first. Yours, or mine. Hold it in\l"
+	.string "your teeth.\p"
+	.string "…Koga. Remember that one.$"
+```
+
+</details>
+
 
 
 Falante novo: `SP_NAME_KOGA` (ainda não existe em `include/constants/speaker_names.h`).

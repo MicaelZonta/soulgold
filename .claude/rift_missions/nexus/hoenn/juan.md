@@ -320,6 +320,84 @@ Nexus_Text_Juan_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código). Nenhuma cita o lugar nem a criatura do dia.
+
+**Variação 2** — provocação e ofício: o Juan entrega o segredo da capa (ela chega meio tempo depois do dançarino, e a plateia olha para ela e esquece as mãos). Humor de mágico que ensina o truque e desafia o jogador a não cair nele.
+
+**Antes da luta**
+
+> Ah! Do not mind the cape. It is not for warmth. It is for the turn.
+>
+> A cape arrives half a beat after the dancer. The audience watches it, and forgets to watch my hands.
+>
+> That is the whole secret of an illusion. Keep it, please. I have plenty.
+>
+> Now! Watch my hands, if you can!
+
+**Derrota**
+
+> Aahahaha! You watched my hands. How very rude, and how very right.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Juan_Intro2:
+	.string "Ah! Do not mind the cape. It is not for\n"
+	.string "warmth. It is for the turn.\p"
+	.string "A cape arrives half a beat after the\n"
+	.string "dancer. The audience watches it, and\l"
+	.string "forgets to watch my hands.\p"
+	.string "That is the whole secret of an illusion.\n"
+	.string "Keep it, please. I have plenty.\p"
+	.string "Now! Watch my hands, if you can!$"
+
+Nexus_Text_Juan_Defeat2:
+	.string "Aahahaha! You watched my hands. How\n"
+	.string "very rude, and how very right.$"
+```
+
+</details>
+
+**Variação 3** — o que ele perdeu ([R21](../NEXUS_REGRAS.md)): o Juan pergunta se o jogador é aluno dele. No fragmento dele todos os alunos o superaram e foram ser Campeões em outro lugar; ser superado é lindo e deixa um silêncio. Serve com ou sem o jogador conhecer o Wallace.
+
+**Antes da luta**
+
+> Forgive an old man a question. Are you, perhaps, one of my students?
+>
+> No? A pity. I had so many once. Where I come from, they all left to become Champions somewhere else.
+>
+> It is a lovely thing, to be surpassed. It is also rather quiet afterward.
+>
+> Aahaha! Enough! Come and fill the quiet with me!
+
+**Derrota**
+
+> Aahahaha! Splendid. You would have been my finest student, and the quickest to leave.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Juan_Intro3:
+	.string "Forgive an old man a question. Are you,\n"
+	.string "perhaps, one of my students?\p"
+	.string "No? A pity. I had so many once. Where I\n"
+	.string "come from, they all left to become\l"
+	.string "Champions somewhere else.\p"
+	.string "It is a lovely thing, to be surpassed.\n"
+	.string "It is also rather quiet afterward.\p"
+	.string "Aahaha! Enough! Come and fill the quiet\n"
+	.string "with me!$"
+
+Nexus_Text_Juan_Defeat3:
+	.string "Aahahaha! Splendid. You would have\n"
+	.string "been my finest student, and the\l"
+	.string "quickest to leave.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -387,6 +465,124 @@ Nexus_Text_Juan_TapuFini_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela; para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código).
+
+**Variação 2** — humor: o Juan tentou se apresentar para a névoa, com número completo. Ela não aplaudiu; lavou o ruge do rosto dele e foi embora. A plateia mais honesta em cinquenta anos. O conselho: entrar sem nada pintado.
+
+**Antes da luta**
+
+> I confess I tried to perform for the mist. A full routine: the spiral, the bow, the cape.
+>
+> It did not applaud. It simply washed the rouge off my cheeks and drifted away.
+>
+> In fifty years, no audience has ever been so honest with me.
+>
+> Aahaha! Let us see if you are kinder!
+
+**Derrota**
+
+> Aahahaha… no. No kinder at all.
+
+**Depois da luta**
+
+> The guardian of that island is not cruel, you know. It is only exact.
+>
+> It heals what is calm. It does not heal what is pretending to be calm.
+>
+> I learned that with my cheeks bare and my cape soaked through.
+>
+> Go in with nothing painted on. It is far less tiring.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Juan_TapuFini_ChampionIntro2:
+	.string "I confess I tried to perform for the\n"
+	.string "mist. A full routine: the spiral, the\l"
+	.string "bow, the cape.\p"
+	.string "It did not applaud. It simply washed\n"
+	.string "the rouge off my cheeks and drifted\l"
+	.string "away.\p"
+	.string "In fifty years, no audience has ever\n"
+	.string "been so honest with me.\p"
+	.string "Aahaha! Let us see if you are kinder!$"
+
+Nexus_Text_Juan_TapuFini_ChampionDefeat2:
+	.string "Aahahaha… no. No kinder at all.$"
+
+Nexus_Text_Juan_TapuFini_ChampionAfter2:
+	.string "{SPEAKER NAME_JUAN}The guardian of that island is not\n"
+	.string "cruel, you know. It is only exact.\p"
+	.string "It heals what is calm. It does not heal\n"
+	.string "what is pretending to be calm.\p"
+	.string "I learned that with my cheeks bare and\n"
+	.string "my cape soaked through.\p"
+	.string "Go in with nothing painted on. It is far\n"
+	.string "less tiring.$"
+```
+
+</details>
+
+**Variação 3** — dúvida e espelho: quando se assusta, a guardiã se fecha numa concha de pedra e deixa a névoa falar. O Juan reconhece o truque (capa, risada, chapéu). A virada: a concha não é armadura, é cortina; não se bate, espera-se o bis.
+
+**Antes da luta**
+
+> When it is frightened, it shuts itself in a shell of stone and lets the fog do the talking.
+>
+> I know that trick. I have a cape, a laugh, and a very large hat for the same purpose.
+>
+> We are two old performers, it and I, hiding in plain sight.
+>
+> Aahaha! Come, find me in the fog!
+
+**Derrota**
+
+> Aahahaha! Found. How very embarrassing.
+
+**Depois da luta**
+
+> A secret between performers. That shell is not armor. It is a curtain.
+>
+> It closes when it cannot bear to be looked at any longer.
+>
+> If it shuts itself away when you arrive, do not knock. Wait, be quiet, and let it choose the encore.
+>
+> Aahaha… I waited once. It was the best seat in the house.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Juan_TapuFini_ChampionIntro3:
+	.string "When it is frightened, it shuts itself\n"
+	.string "in a shell of stone and lets the fog do\l"
+	.string "the talking.\p"
+	.string "I know that trick. I have a cape, a\n"
+	.string "laugh, and a very large hat for the\l"
+	.string "same purpose.\p"
+	.string "We are two old performers, it and I,\n"
+	.string "hiding in plain sight.\p"
+	.string "Aahaha! Come, find me in the fog!$"
+
+Nexus_Text_Juan_TapuFini_ChampionDefeat3:
+	.string "Aahahaha! Found. How very\n"
+	.string "embarrassing.$"
+
+Nexus_Text_Juan_TapuFini_ChampionAfter3:
+	.string "{SPEAKER NAME_JUAN}A secret between performers. That\n"
+	.string "shell is not armor. It is a curtain.\p"
+	.string "It closes when it cannot bear to be\n"
+	.string "looked at any longer.\p"
+	.string "If it shuts itself away when you\n"
+	.string "arrive, do not knock. Wait, be quiet,\l"
+	.string "and let it choose the encore.\p"
+	.string "Aahaha… I waited once. It was the best\n"
+	.string "seat in the house.$"
+```
+
+</details>
+
 
 #### Walking Wake
 
@@ -447,6 +643,127 @@ Nexus_Text_Juan_WalkingWake_ChampionAfter:
 	.string "I have never told him so.\p"
 	.string "Go on. It is waiting in the rain, and it\n"
 	.string "does not like to wait.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela; para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código).
+
+**Variação 2** — lembrança engraçada: o Juan pôs o pé numa pegada e o sapato coube num dedo só; riu tanto que caiu no lago, e a criatura parou para olhar. Depois da luta, o elo com a lenda da fera do vento norte que purifica a água (sem nome): toda lenda foi bicho selvagem um dia.
+
+**Antes da luta**
+
+> Its footprints in the mud were still filling with water. I put my own foot in one.
+>
+> My whole shoe fit inside a single toe. I laughed so hard I fell into the lake.
+>
+> It stopped running to look at me. I believe it had never seen anything so ridiculous.
+>
+> Aahaha! My finest performance! Come!
+
+**Derrota**
+
+> Aahahaha! Into the lake again, it seems.
+
+**Depois da luta**
+
+> There is an old story of a beast that runs on the north wind and makes dirty water clean.
+>
+> I think that creature is the story before anyone told it. Rough, and wild, and in no hurry to be pure.
+>
+> Every legend was a wild thing once. Even the elegant ones.
+>
+> Go. Laugh if you fall in. It likes that.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Juan_WalkingWake_ChampionIntro2:
+	.string "Its footprints in the mud were still\n"
+	.string "filling with water. I put my own foot in\l"
+	.string "one.\p"
+	.string "My whole shoe fit inside a single toe. I\n"
+	.string "laughed so hard I fell into the lake.\p"
+	.string "It stopped running to look at me. I\n"
+	.string "believe it had never seen anything so\l"
+	.string "ridiculous.\p"
+	.string "Aahaha! My finest performance! Come!$"
+
+Nexus_Text_Juan_WalkingWake_ChampionDefeat2:
+	.string "Aahahaha! Into the lake again, it\n"
+	.string "seems.$"
+
+Nexus_Text_Juan_WalkingWake_ChampionAfter2:
+	.string "{SPEAKER NAME_JUAN}There is an old story of a beast that\n"
+	.string "runs on the north wind and makes dirty\l"
+	.string "water clean.\p"
+	.string "I think that creature is the story\n"
+	.string "before anyone told it. Rough, and wild,\l"
+	.string "and in no hurry to be pure.\p"
+	.string "Every legend was a wild thing once.\n"
+	.string "Even the elegant ones.\p"
+	.string "Go. Laugh if you fall in. It likes that.$"
+```
+
+</details>
+
+**Variação 3** — ofício e pecado de professor: o Juan tenta marcar o compasso da criatura (ela corre em três, uma valsa mais velha que qualquer salão) e erra sempre, porque insiste num quarto tempo que não existe. Professor quer explicar cada passo; a criatura nunca explicou nada.
+
+**Antes da luta**
+
+> I have been trying to keep time with it. It runs in the rain, and the rain runs in threes.
+>
+> One, two, three. One, two, three. A waltz older than any ballroom!
+>
+> I miss the fourth beat every time. There is no fourth beat. I keep adding one.
+>
+> Aahaha! Perhaps you hear it better. Shall we dance?
+
+**Derrota**
+
+> Aahahaha! Ah, you heard it. One, two, three.
+
+**Depois da luta**
+
+> A teacher adds beats. That is the sin of teachers. We want every step explained.
+>
+> That creature has never explained a thing. It simply runs, and the lake follows.
+>
+> Do not count when you face it. Counting is how I fell behind.
+>
+> Listen for the three, and go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Juan_WalkingWake_ChampionIntro3:
+	.string "I have been trying to keep time with it.\n"
+	.string "It runs in the rain, and the rain runs in\l"
+	.string "threes.\p"
+	.string "One, two, three. One, two, three. A waltz\n"
+	.string "older than any ballroom!\p"
+	.string "I miss the fourth beat every time.\n"
+	.string "There is no fourth beat. I keep adding\l"
+	.string "one.\p"
+	.string "Aahaha! Perhaps you hear it better.\n"
+	.string "Shall we dance?$"
+
+Nexus_Text_Juan_WalkingWake_ChampionDefeat3:
+	.string "Aahahaha! Ah, you heard it. One, two,\n"
+	.string "three.$"
+
+Nexus_Text_Juan_WalkingWake_ChampionAfter3:
+	.string "{SPEAKER NAME_JUAN}A teacher adds beats. That is the sin\n"
+	.string "of teachers. We want every step\l"
+	.string "explained.\p"
+	.string "That creature has never explained a\n"
+	.string "thing. It simply runs, and the lake\l"
+	.string "follows.\p"
+	.string "Do not count when you face it.\n"
+	.string "Counting is how I fell behind.\p"
+	.string "Listen for the three, and go.$"
 ```
 
 </details>

@@ -323,6 +323,83 @@ Nexus_Text_Sidney_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código). Nenhuma cita o lugar nem a criatura do dia.
+
+**Variação 2** — lembrança: o primeiro Pokémon dele, um Poochyena que o mordeu no dia em que se conheceram. A cicatriz é o melhor aperto de mão da vida dele: quer dizer “não vou fingir com você”. Convite para o jogador morder também.
+
+**Antes da luta**
+
+> Heh. Know what my first Pokémon was? A little Poochyena that bit me the day we met.
+>
+> Right here, on the hand. Still got the mark.
+>
+> Best handshake I ever had. It meant, 'I'm not gonna pretend with you.'
+>
+> So go ahead. Bite. Let's go!
+
+**Derrota**
+
+> Ha! That one left a mark too. I'm keeping it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sidney_Intro2:
+	.string "Heh. Know what my first Pokémon was? A\n"
+	.string "little Poochyena that bit me the day\l"
+	.string "we met.\p"
+	.string "Right here, on the hand. Still got the\n"
+	.string "mark.\p"
+	.string "Best handshake I ever had. It meant,\n"
+	.string "'I'm not gonna pretend with you.'\p"
+	.string "So go ahead. Bite. Let's go!$"
+
+Nexus_Text_Sidney_Defeat2:
+	.string "Ha! That one left a mark too. I'm\n"
+	.string "keeping it.$"
+```
+
+</details>
+
+**Variação 3** — humor e ofício: “primeira sala? Claro.” Em casa ele é o primeiro da Elite Four, o que “aquece” o desafiante. Todo mundo acha o posto fácil; ele é quem descobre se o jogador fala sério.
+
+**Antes da luta**
+
+> First room, huh? Figures. I always get the first room.
+>
+> Back home they made me the first of the Elite Four. The guy who warms you up.
+>
+> Folks think that's the easy spot. Nah. I'm the one who finds out if you're serious.
+>
+> So? You serious? Let's go!
+
+**Derrota**
+
+> Ha! Yeah, you're serious. Go on. The next one's worse.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sidney_Intro3:
+	.string "First room, huh? Figures. I always get\n"
+	.string "the first room.\p"
+	.string "Back home they made me the first of\n"
+	.string "the Elite Four. The guy who warms you\l"
+	.string "up.\p"
+	.string "Folks think that's the easy spot. Nah.\n"
+	.string "I'm the one who finds out if you're\l"
+	.string "serious.\p"
+	.string "So? You serious? Let's go!$"
+
+Nexus_Text_Sidney_Defeat3:
+	.string "Ha! Yeah, you're serious. Go on. The\n"
+	.string "next one's worse.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -389,6 +466,122 @@ Nexus_Text_Sidney_Yveltal_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela; para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código).
+
+**Variação 2** — dúvida: o cinza levou árvores, pássaros, capim, e não levou o Sidney. Por quê? A virada, descoberta durante a luta: a criatura não escolhe, só leva o que está perto; o Absol dele passou o caminho inteiro puxando-o para longe. O “mau agouro” era o único que o protegia.
+
+**Antes da luta**
+
+> Funny thing about the grey out there. It took the trees, the birds, the grass. Didn't take me.
+>
+> I keep asking myself why. Maybe it's not hungry for guys who grin.
+>
+> Or maybe it's saving me for last. Heh. That'd be a compliment, right?
+>
+> Let's find out which! Let's go!
+
+**Derrota**
+
+> Ha… guess I'm still not on the menu.
+
+**Depois da luta**
+
+> Figured it out while we were fighting. It doesn't pick. It just takes whatever's close.
+>
+> My Absol kept me far away the whole time. Always walking ahead. Always pulling.
+>
+> Folks call Absol a bad omen. Mine was the only one keeping me off the menu.
+>
+> Go on. Walk in close. Just don't stand still.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sidney_Yveltal_ChampionIntro2:
+	.string "Funny thing about the grey out there.\n"
+	.string "It took the trees, the birds, the\l"
+	.string "grass. Didn't take me.\p"
+	.string "I keep asking myself why. Maybe it's\n"
+	.string "not hungry for guys who grin.\p"
+	.string "Or maybe it's saving me for last. Heh.\n"
+	.string "That'd be a compliment, right?\p"
+	.string "Let's find out which! Let's go!$"
+
+Nexus_Text_Sidney_Yveltal_ChampionDefeat2:
+	.string "Ha… guess I'm still not on the menu.$"
+
+Nexus_Text_Sidney_Yveltal_ChampionAfter2:
+	.string "{SPEAKER NAME_SIDNEY}Figured it out while we were fighting.\n"
+	.string "It doesn't pick. It just takes\l"
+	.string "whatever's close.\p"
+	.string "My Absol kept me far away the whole\n"
+	.string "time. Always walking ahead. Always\l"
+	.string "pulling.\p"
+	.string "Folks call Absol a bad omen. Mine was\n"
+	.string "the only one keeping me off the menu.\p"
+	.string "Go on. Walk in close. Just don't stand\n"
+	.string "still.$"
+```
+
+</details>
+
+**Variação 3** — humor e reverência: ele bateu no casulo como numa porta (“toc toc”); ninguém atendeu, e a floresta ficou um pouco mais cinza. Depois da luta, a pergunta: a criatura dorme sobre toda a vida que tomou, como quem só a guarda para alguém. Talvez devolva ao acordar.
+
+**Antes da luta**
+
+> Real talk? I tried knocking on the cocoon. Like a door. Knock knock.
+>
+> Nobody answered. The whole forest got a little greyer, though.
+>
+> Lesson learned. Some folks you don't wake up before they're ready.
+>
+> You, on the other hand? You're wide awake. Let's go!
+
+**Derrota**
+
+> Ha! Okay, okay. I'll stop knocking.
+
+**Depois da luta**
+
+> Here's what gets me. It takes all that life, and then it just sleeps on it.
+>
+> Like it doesn't even want it. Like it's only holding it for somebody.
+>
+> Maybe when it wakes up, it gives some back. Maybe that's the part nobody sticks around for.
+>
+> Stick around, kid. Tell me later.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sidney_Yveltal_ChampionIntro3:
+	.string "Real talk? I tried knocking on the\n"
+	.string "cocoon. Like a door. Knock knock.\p"
+	.string "Nobody answered. The whole forest got\n"
+	.string "a little greyer, though.\p"
+	.string "Lesson learned. Some folks you don't\n"
+	.string "wake up before they're ready.\p"
+	.string "You, on the other hand? You're wide\n"
+	.string "awake. Let's go!$"
+
+Nexus_Text_Sidney_Yveltal_ChampionDefeat3:
+	.string "Ha! Okay, okay. I'll stop knocking.$"
+
+Nexus_Text_Sidney_Yveltal_ChampionAfter3:
+	.string "{SPEAKER NAME_SIDNEY}Here's what gets me. It takes all that\n"
+	.string "life, and then it just sleeps on it.\p"
+	.string "Like it doesn't even want it. Like it's\n"
+	.string "only holding it for somebody.\p"
+	.string "Maybe when it wakes up, it gives some\n"
+	.string "back. Maybe that's the part nobody\l"
+	.string "sticks around for.\p"
+	.string "Stick around, kid. Tell me later.$"
+```
+
+</details>
+
 
 #### Brute Bonnet
 
@@ -446,6 +639,121 @@ Nexus_Text_Sidney_BruteBonnet_ChampionAfter:
 	.string "nobody's ever awake to fight it.\p"
 	.string "So stay loud. Stay angry if you gotta.\p"
 	.string "Just don't close your eyes in there.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela; para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código).
+
+**Variação 2** — provocação e recorde: três dias acordado lá dentro. O Mightyena apagou no segundo dia e ele o carregou. A proibição da palavra “yawn”. O truque que ele ensina: cantarolar alto e desafinado, porque tudo que foi comido ali ficou quieto primeiro.
+
+**Antes da luta**
+
+> Three days. That's how long I've been awake in there. New record!
+>
+> My Mightyena conked out on day two. I carried him the rest of the way. Heavy guy.
+>
+> Every mushroom out there's been watching me, waiting for me to yawn.
+>
+> …Don't. Say. Yawn. Let's go!
+
+**Derrota**
+
+> Ha… that battle woke me right up. Thanks.
+
+**Depois da luta**
+
+> Here's a trick. Hum something. Loud and off-key.
+>
+> Everything that ever got eaten in there went quiet first.
+>
+> I've been humming since I got here. Same song. I don't even know the words.
+>
+> Go. Make a racket for me.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sidney_BruteBonnet_ChampionIntro2:
+	.string "Three days. That's how long I've been\n"
+	.string "awake in there. New record!\p"
+	.string "My Mightyena conked out on day two. I\n"
+	.string "carried him the rest of the way. Heavy\l"
+	.string "guy.\p"
+	.string "Every mushroom out there's been\n"
+	.string "watching me, waiting for me to yawn.\p"
+	.string "…Don't. Say. Yawn. Let's go!$"
+
+Nexus_Text_Sidney_BruteBonnet_ChampionDefeat2:
+	.string "Ha… that battle woke me right up.\n"
+	.string "Thanks.$"
+
+Nexus_Text_Sidney_BruteBonnet_ChampionAfter2:
+	.string "{SPEAKER NAME_SIDNEY}Here's a trick. Hum something. Loud and\n"
+	.string "off-key.\p"
+	.string "Everything that ever got eaten in\n"
+	.string "there went quiet first.\p"
+	.string "I've been humming since I got here.\n"
+	.string "Same song. I don't even know the\l"
+	.string "words.\p"
+	.string "Go. Make a racket for me.$"
+```
+
+</details>
+
+**Variação 3** — dúvida e contraste: o que incomoda o Sidney é a paciência da criatura, parada no mesmo lugar há mais tempo que existe gente. Paciência é vencer sem lutar (o Cacturne e o Shiftry dele sabem); ele prefere perder alto. Mas admite: ninguém fica tão velho sendo barulhento.
+
+**Antes da luta**
+
+> Know what bugs me about that big mushroom? It's patient.
+>
+> Real patient. Stood in one spot longer than there's been people.
+>
+> Me, I can't sit still for five minutes. We're gonna get along terribly.
+>
+> Let's go before I lose my nerve!
+
+**Derrota**
+
+> Ha! Lost it anyway. Worth it.
+
+**Depois da luta**
+
+> Patience is just a way to win without fighting. My Cacturne knows it. So does my Shiftry.
+>
+> Me? I'd rather lose loud than win like that.
+>
+> But I gotta admit, it's old. You don't get that old by being loud.
+>
+> So be loud anyway. Be the first thing it's ever met that won't wait.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Sidney_BruteBonnet_ChampionIntro3:
+	.string "Know what bugs me about that big\n"
+	.string "mushroom? It's patient.\p"
+	.string "Real patient. Stood in one spot longer\n"
+	.string "than there's been people.\p"
+	.string "Me, I can't sit still for five minutes.\n"
+	.string "We're gonna get along terribly.\p"
+	.string "Let's go before I lose my nerve!$"
+
+Nexus_Text_Sidney_BruteBonnet_ChampionDefeat3:
+	.string "Ha! Lost it anyway. Worth it.$"
+
+Nexus_Text_Sidney_BruteBonnet_ChampionAfter3:
+	.string "{SPEAKER NAME_SIDNEY}Patience is just a way to win without\n"
+	.string "fighting. My Cacturne knows it. So does\l"
+	.string "my Shiftry.\p"
+	.string "Me? I'd rather lose loud than win like\n"
+	.string "that.\p"
+	.string "But I gotta admit, it's old. You don't\n"
+	.string "get that old by being loud.\p"
+	.string "So be loud anyway. Be the first thing\n"
+	.string "it's ever met that won't wait.$"
 ```
 
 </details>

@@ -258,6 +258,82 @@ Nexus_Text_Phoebe_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código). Nenhuma cita o lugar nem a criatura do dia.
+
+**Variação 2** — lembrança: a avó guarda duas esferas, vermelha e azul, no topo do Mt. Pyre; se alguém as levar, a montanha fica triste. A Phoebe não sabe como é uma montanha triste. ([R21](../NEXUS_REGRAS.md): no fragmento dela alguém levou — ver o diário.)
+
+**Antes da luta**
+
+> My grandma keeps two orbs at the top of Mt. Pyre. Red and blue, and very, very old.
+>
+> She says if anyone ever takes them, the mountain gets sad.
+>
+> I don't know what a sad mountain looks like! Ahaha, I hope I never find out.
+>
+> Come on, let's play! My Pokémon are bored!
+
+**Derrota**
+
+> Ahaha! You're good! Grandma would like you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Phoebe_Intro2:
+	.string "My grandma keeps two orbs at the top\n"
+	.string "of Mt. Pyre. Red and blue, and very,\l"
+	.string "very old.\p"
+	.string "She says if anyone ever takes them,\n"
+	.string "the mountain gets sad.\p"
+	.string "I don't know what a sad mountain looks\n"
+	.string "like! Ahaha, I hope I never find out.\p"
+	.string "Come on, let's play! My Pokémon are\n"
+	.string "bored!$"
+
+Nexus_Text_Phoebe_Defeat2:
+	.string "Ahaha! You're good! Grandma would like\n"
+	.string "you.$"
+```
+
+</details>
+
+**Variação 3** — humor e pegadinha: “fique parado, tem alguém atrás de você” — e ri da cara do jogador. Quase ninguém: eles só queriam ver o susto.
+
+**Antes da luta**
+
+> Shh! Hold still. Someone's standing right behind you.
+>
+> …Ahahaha! Your face! There's nobody there.
+>
+> Well. Almost nobody. They just wanted to see you jump.
+>
+> Now they've seen it, so let's battle!
+
+**Derrota**
+
+> Ahaha, they jumped that time. I told them you were good.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Phoebe_Intro3:
+	.string "Shh! Hold still. Someone's standing\n"
+	.string "right behind you.\p"
+	.string "…Ahahaha! Your face! There's nobody\n"
+	.string "there.\p"
+	.string "Well. Almost nobody. They just wanted\n"
+	.string "to see you jump.\p"
+	.string "Now they've seen it, so let's battle!$"
+
+Nexus_Text_Phoebe_Defeat3:
+	.string "Ahaha, they jumped that time. I told\n"
+	.string "them you were good.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -320,6 +396,115 @@ Nexus_Text_Phoebe_ChampionAfter:
 	.string "okay? Be surprised.\p"
 	.string "It's been waiting so long for someone\n"
 	.string "to be surprised.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela; para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código).
+
+**Variação 2** — brincadeira que revela: a criatura quis brincar de esconde-esconde; a Phoebe se escondeu e esperou, até perceber que ela nunca ia procurar. Só sabe se esconder, ninguém a ensinou a procurar. O conselho: não espere, vá procurar e diga “achei!”.
+
+**Antes da luta**
+
+> It wanted to play hide-and-seek! So I hid. I'm really good at hiding.
+>
+> I waited so long… Then I realized it was never going to look.
+>
+> It only knows how to hide. Nobody ever taught it to seek.
+>
+> Ahaha! You seek me, then!
+
+**Derrota**
+
+> Found me! Ahaha, that's how it's done.
+
+**Depois da luta**
+
+> Things that hide for a very long time forget how to come out.
+>
+> Some ghosts on Mt. Pyre are like that. You have to go and find them.
+>
+> So when you get in there, don't wait for it. Go looking.
+>
+> Then say, 'Found you!' It's never heard that before.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Phoebe_ChampionIntro2:
+	.string "It wanted to play hide-and-seek! So I\n"
+	.string "hid. I'm really good at hiding.\p"
+	.string "I waited so long… Then I realized it\n"
+	.string "was never going to look.\p"
+	.string "It only knows how to hide. Nobody ever\n"
+	.string "taught it to seek.\p"
+	.string "Ahaha! You seek me, then!$"
+
+Nexus_Text_Phoebe_ChampionDefeat2:
+	.string "Found me! Ahaha, that's how it's done.$"
+
+Nexus_Text_Phoebe_ChampionAfter2:
+	.string "{SPEAKER NAME_PHOEBE}Things that hide for a very long time\n"
+	.string "forget how to come out.\p"
+	.string "Some ghosts on Mt. Pyre are like that.\n"
+	.string "You have to go and find them.\p"
+	.string "So when you get in there, don't wait\n"
+	.string "for it. Go looking.\p"
+	.string "Then say, 'Found you!' It's never\n"
+	.string "heard that before.$"
+```
+
+</details>
+
+**Variação 3** — o que ela perdeu: a risada da criatura parece a da Phoebe pequena, antes de aprender a rir de propósito. Ela não gosta de pensar nisso. A virada: a coisa não ri para assustar; ri para não ter medo, pelo mesmo motivo que ela.
+
+**Antes da luta**
+
+> Can I tell you something strange? Its laugh sounds a little like mine.
+>
+> Not now. When I was small. Before I learned to laugh on purpose.
+>
+> I don't like thinking about that. So, ahaha! Let's play instead!
+
+**Derrota**
+
+> Oh… you won. I'm laughing on purpose again, aren't I?
+
+**Depois da luta**
+
+> I learned to laugh on Mt. Pyre so the graves wouldn't feel so quiet.
+>
+> I think it's been laughing down there forever, for the same reason.
+>
+> It's not trying to scare anyone. It's trying not to be scared.
+>
+> Be gentle, okay? You'd be laughing too.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Phoebe_ChampionIntro3:
+	.string "Can I tell you something strange? Its\n"
+	.string "laugh sounds a little like mine.\p"
+	.string "Not now. When I was small. Before I\n"
+	.string "learned to laugh on purpose.\p"
+	.string "I don't like thinking about that. So,\n"
+	.string "ahaha! Let's play instead!$"
+
+Nexus_Text_Phoebe_ChampionDefeat3:
+	.string "Oh… you won. I'm laughing on purpose\n"
+	.string "again, aren't I?$"
+
+Nexus_Text_Phoebe_ChampionAfter3:
+	.string "{SPEAKER NAME_PHOEBE}I learned to laugh on Mt. Pyre so the\n"
+	.string "graves wouldn't feel so quiet.\p"
+	.string "I think it's been laughing down there\n"
+	.string "forever, for the same reason.\p"
+	.string "It's not trying to scare anyone. It's\n"
+	.string "trying not to be scared.\p"
+	.string "Be gentle, okay? You'd be laughing too.$"
 ```
 
 </details>
