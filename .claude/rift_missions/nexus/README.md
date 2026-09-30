@@ -92,7 +92,7 @@ habilidade, golpes aprendíveis, 31 IV/252 EV e as três vagas. Precisa do
   Cynthia, Cyrus, Barry, Gardenia, Shelly, Zinnia, Diantha, Olivia, Hau, Hilda
   (`unova/hilbert_e_hilda.md`), N, Cheren, Alder. Só a **Cynthia** está
   registrada no código com sprite e front pic; os outros já têm o overworld
-  registrado (menos a Hilda) e a front pic pronta em `.filetransfer`, falta
+  registrado e a front pic pronta em `.filetransfer`, falta
   registrar (no checklist: 📦). Cada ficha ganhou time validado
   (`nexus_validar_time.py`, pic provisória onde falta a arte), lendário
   (redistribuição em [`POOL_LENDARIOS.md`](POOL_LENDARIOS.md)), 3 falas
