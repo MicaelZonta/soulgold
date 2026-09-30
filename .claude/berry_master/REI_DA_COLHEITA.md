@@ -1008,7 +1008,7 @@ sprites genéricos como substitutos, marcados na legenda.
 | **Avery** | Rival psíquico do Isle of Armor, dramático | O Calyrex é Psychic: depois da história, toda sexta ele vem “conversar telepaticamente” com o canteiro da Laurel | `PSYCHIC_M` | overworld + front pic |
 | **Honey** (e Mustard) | A “esposa do mestre” do Dojo, como a Laurel é a esposa do Berry Master. Amigas por carta há 45 anos | **Cartas** que a Laurel lê de manhã; o Mustard sempre põe um P.S. | só cartas | nenhum (opcional depois) |
 | **Sonia** | Pesquisadora das lendas de Galar | Uma carta depois do Ato 5: o Rei está no livro dela | só carta | nenhum |
-| Pryce e Morty | Já são os campeões de Glastrier e Spectrier no Nexus | Mantidos no Ato 6 — a história agora concorda com o Nexus | existem | — |
+| Pryce e Morty | Líderes de gelo e de espíritos | Mandam o jogador às dungeons do Ato 6 (§15) | existem | — |
 
 ### 13.2 Ligações com os lendários
 
@@ -1252,8 +1252,8 @@ quatro coisas para a história da Laurel.
 | 8 → 9 | **Ato 5** — O Rei (versão §13.3) + **as sementes** (abaixo) | Enigma madura + noite | `Route30` |
 | 9 → 10 / 11 | **Ato 5b** — A semente do corcel | plantar uma das sementes no canteiro da Laurel | `Route30` |
 | 10 / 11 | *(sub-estado: tem a cenoura?)* | na noite seguinte, o canteiro dá a cenoura (item-chave) | `Route30` |
-| 10 → 12 | **Ato 6 branco** | Glastrier capturado, com a Iceroot Carrot na bolsa | `IcePath_Depths` |
-| 11 → 13 | **Ato 6 escuro** | Spectrier capturado, com a Shaderoot Carrot na bolsa, de noite | `BurnedTower_B1F` |
+| 10 → 12 | **Ato 6 branco** | Glastrier capturado, com a Iceroot Carrot na bolsa | Greenfield, mansão Hale (§15) |
+| 11 → 13 | **Ato 6 escuro** | Spectrier capturado, com a Shaderoot Carrot na bolsa | Torre de Bronze, memória (§15) |
 | 12 / 13 → 14 | **Ato 7** — A prova do Rei + Colheita Farta | noite, corcel na party | `Route30` |
 | 14 → 15 | **Epílogo** | manhã seguinte | `Route30` / `Route30_House` |
 
@@ -1944,6 +1944,11 @@ ou sem cenoura, cada um diz uma linha de gancho e nada mais.
 > Come to the Dance Theater after dark. Bring your carrot. Bring your courage.
 
 ### 15.3 Versão enxuta (pedido do autor: “a vibe é ok, mas muito complicado”)
+
+**Aprovada pelo autor em 30/09/2026**, com o protótipo dos 4 mapas em
+[`prototipo_corceis/`](prototipo_corceis/) (página: https://claude.ai/artifact/R65MTm61Y7NGT8doiocyRY).
+Bases: Greenfield ← `NewBarkTown`; mansão Hale ← recorte do `DarkraiInn1` com salão;
+Torre de Bronze 1F ← `BurnedTower_1F` sem buracos; telhado ← `TinTower_RoofDay`.
 
 Cada dungeon tem **2 mapas, 1 treinador, 1 chefe e nenhum puzzle**. A história vem
 das cenas, não de mecânica. Nada de var nova: o estado da sidequest (§14.2) já basta.
