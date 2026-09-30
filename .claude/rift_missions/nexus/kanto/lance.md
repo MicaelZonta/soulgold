@@ -325,6 +325,69 @@ Nexus_Text_Lance_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é a pergunta do Ancião. A 2 é a capa, herança do clã remendada tantas vezes que talvez não sobre nada da original. A 3 é humor com lore de HGSS: no esconderijo de Mahogany o Lance mandou o Dragonite dar Hyper Beam num grunt.
+
+**Variação 2 — a capa**
+
+**Antes da luta**
+
+> People always ask about the cape. Every single time.
+>
+> It was handed down in my clan. It's been patched so often I'm not sure any of the original is left.
+>
+> Still the same cape, though. Dragonite, let's show them what it's for!
+
+**Derrota**
+
+> Ha! Somewhere a very old man is laughing at me. Well fought.
+
+**Variação 3 — uma confissão (HGSS)**
+
+**Antes da luta**
+
+> Let me confess something. In a hideout up north, I once told Dragonite to use Hyper Beam on a person.
+>
+> A grunt. He was fine. Mostly.
+>
+> I've tried to be more careful since. Today I'll aim at your Pokémon. Promise!
+
+**Derrota**
+
+> You didn't even flinch. I suppose you've met worse than me.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lance_Intro2:
+	.string "People always ask about the cape. Every\n"
+	.string "single time.\p"
+	.string "It was handed down in my clan. It's\n"
+	.string "been patched so often I'm not sure any\l"
+	.string "of the original is left.\p"
+	.string "Still the same cape, though. Dragonite,\n"
+	.string "let's show them what it's for!$"
+
+Nexus_Text_Lance_Defeat2:
+	.string "Ha! Somewhere a very old man is laughing\n"
+	.string "at me. Well fought.$"
+
+Nexus_Text_Lance_Intro3:
+	.string "Let me confess something. In a hideout\n"
+	.string "up north, I once told Dragonite to use\l"
+	.string "Hyper Beam on a person.\p"
+	.string "A grunt. He was fine. Mostly.\p"
+	.string "I've tried to be more careful since.\n"
+	.string "Today I'll aim at your Pokémon. Promise!$"
+
+Nexus_Text_Lance_Defeat3:
+	.string "You didn't even flinch. I suppose\n"
+	.string "you've met worse than me.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lance é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela.
@@ -388,6 +451,107 @@ Nexus_Text_Lance_Rayquaza_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é a humildade diante do céu. A 2 traz a lore de ORAS (o meteoro, o povo que esperou mil anos por ela) por uma moça de cachecol comprido que o Lance não levou a sério: aceno leve ao fio de Hoenn (Zinnia, nunca nomeada). A 3 é o Dragonite que pousou no parapeito e se recusou a subir mais.
+
+**Variação 2 — a moça do cachecol**
+
+**Antes da luta**
+
+> Taste the air. Iron. It's dust from falling stars, and that creature eats it like bread.
+>
+> A girl in a long scarf told me it once flew into a meteor the size of a mountain, and broke it apart.
+>
+> I laughed. Then I watched it eat. Let's go!
+
+**Derrota**
+
+> I laughed at her, too. I owe her an apology.
+
+**Depois da luta**
+
+> She said her people waited a thousand years for it to come down. She said it listens.
+>
+> I've never waited that long for anything. I'm usually the one people wait for.
+>
+> Maybe that's the problem. Go on up. If it comes down for you, you'll understand why she waited.
+
+**Variação 3 — o Dragonite no parapeito**
+
+**Antes da luta**
+
+> My Dragonite has carried me through storms, over oceans, around the world in a day.
+>
+> Up here, it landed on the rail and refused to go any higher. First time in its life.
+>
+> I didn't push it. Dragons know things. Let's see what you know!
+
+**Derrota**
+
+> Dragonite is laughing at me. I can tell.
+
+**Depois da luta**
+
+> Everything with wings looks up. Pidgey, Dragonite. Me too, in my own way.
+>
+> That creature has nothing above it. Nowhere to look but down, at the rest of us.
+>
+> I wonder if that's lonely. …Go and ask it. I'll wait by the rail with Dragonite.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lance_Rayquaza_ChampionIntro2:
+	.string "Taste the air. Iron. It's dust from\n"
+	.string "falling stars, and that creature eats it\l"
+	.string "like bread.\p"
+	.string "A girl in a long scarf told me it once\n"
+	.string "flew into a meteor the size of a\l"
+	.string "mountain, and broke it apart.\p"
+	.string "I laughed. Then I watched it eat. Let's\n"
+	.string "go!$"
+
+Nexus_Text_Lance_Rayquaza_ChampionDefeat2:
+	.string "I laughed at her, too. I owe her an\n"
+	.string "apology.$"
+
+Nexus_Text_Lance_Rayquaza_ChampionAfter2:
+	.string "{SPEAKER NAME_LANCE}She said her people waited a thousand\n"
+	.string "years for it to come down. She said it\l"
+	.string "listens.\p"
+	.string "I've never waited that long for\n"
+	.string "anything. I'm usually the one people\l"
+	.string "wait for.\p"
+	.string "Maybe that's the problem. Go on up. If\n"
+	.string "it comes down for you, you'll\l"
+	.string "understand why she waited.$"
+
+Nexus_Text_Lance_Rayquaza_ChampionIntro3:
+	.string "My Dragonite has carried me through\n"
+	.string "storms, over oceans, around the world in\l"
+	.string "a day.\p"
+	.string "Up here, it landed on the rail and\n"
+	.string "refused to go any higher. First time in\l"
+	.string "its life.\p"
+	.string "I didn't push it. Dragons know things.\n"
+	.string "Let's see what you know!$"
+
+Nexus_Text_Lance_Rayquaza_ChampionDefeat3:
+	.string "Dragonite is laughing at me. I can tell.$"
+
+Nexus_Text_Lance_Rayquaza_ChampionAfter3:
+	.string "{SPEAKER NAME_LANCE}Everything with wings looks up. Pidgey,\n"
+	.string "Dragonite. Me too, in my own way.\p"
+	.string "That creature has nothing above it.\n"
+	.string "Nowhere to look but down, at the rest\l"
+	.string "of us.\p"
+	.string "I wonder if that's lonely. …Go and ask\n"
+	.string "it. I'll wait by the rail with Dragonite.$"
+```
+
+</details>
+
 #### Gouging Fire
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Lance_GougingFire_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -445,6 +609,105 @@ Nexus_Text_Lance_GougingFire_ChampionAfter:
 	.string "it.\p"
 	.string "Go. It won't care who your teacher was,\n"
 	.string "either.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é a linhagem que não importa. A 2 planta o segredo do diário: a primeira página do pergaminho do clã foi arrancada, e a borda está chamuscada. A 3 é humor de clã: a velha briga sobre o Charizard contar como dragão.
+
+**Variação 2 — a primeira página**
+
+**Antes da luta**
+
+> The Elder keeps a scroll of every dragon our clan ever raised. I read it cover to cover as a boy.
+>
+> The first page is torn out. The Elder says there never was a first page.
+>
+> The edge of the paper says otherwise. And the edge is scorched. Let's battle!
+
+**Derrota**
+
+> Scorched. Like my team. Well fought.
+
+**Depois da luta**
+
+> Look at the pillars. Every one broken at the same height. Horn height.
+>
+> There's a stone at the shrine in the Dragon's Den with the same gash. We were told an old Dragonite did it.
+>
+> I don't believe that anymore. Go on. If it has a page, it isn't in our scroll. Give it one.
+
+**Variação 3 — a briga do Charizard**
+
+**Antes da luta**
+
+> My clan has argued for three generations about whether Charizard counts as a dragon.
+>
+> On paper, no. Everyone who's ever been breathed on says yes.
+>
+> The creature in this valley is the same argument, with horns. Let's settle it!
+
+**Derrota**
+
+> Settled. You count. Whatever the paper says.
+
+**Depois da luta**
+
+> It charges the last pillar standing. Every time. Even when there's nothing left behind it to protect.
+>
+> I understand that better than I'd like. The last one standing doesn't get to choose.
+>
+> Go. When it charges you, don't step aside. It'll respect that.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lance_GougingFire_ChampionIntro2:
+	.string "The Elder keeps a scroll of every\n"
+	.string "dragon our clan ever raised. I read it\l"
+	.string "cover to cover as a boy.\p"
+	.string "The first page is torn out. The Elder\n"
+	.string "says there never was a first page.\p"
+	.string "The edge of the paper says otherwise.\n"
+	.string "And the edge is scorched. Let's battle!$"
+
+Nexus_Text_Lance_GougingFire_ChampionDefeat2:
+	.string "Scorched. Like my team. Well fought.$"
+
+Nexus_Text_Lance_GougingFire_ChampionAfter2:
+	.string "{SPEAKER NAME_LANCE}Look at the pillars. Every one broken at\n"
+	.string "the same height. Horn height.\p"
+	.string "There's a stone at the shrine in the\n"
+	.string "Dragon's Den with the same gash. We\l"
+	.string "were told an old Dragonite did it.\p"
+	.string "I don't believe that anymore. Go on. If\n"
+	.string "it has a page, it isn't in our scroll.\l"
+	.string "Give it one.$"
+
+Nexus_Text_Lance_GougingFire_ChampionIntro3:
+	.string "My clan has argued for three\n"
+	.string "generations about whether Charizard\l"
+	.string "counts as a dragon.\p"
+	.string "On paper, no. Everyone who's ever been\n"
+	.string "breathed on says yes.\p"
+	.string "The creature in this valley is the same\n"
+	.string "argument, with horns. Let's settle it!$"
+
+Nexus_Text_Lance_GougingFire_ChampionDefeat3:
+	.string "Settled. You count. Whatever the paper\n"
+	.string "says.$"
+
+Nexus_Text_Lance_GougingFire_ChampionAfter3:
+	.string "{SPEAKER NAME_LANCE}It charges the last pillar standing.\n"
+	.string "Every time. Even when there's nothing\l"
+	.string "left behind it to protect.\p"
+	.string "I understand that better than I'd like.\n"
+	.string "The last one standing doesn't get to\l"
+	.string "choose.\p"
+	.string "Go. When it charges you, don't step\n"
+	.string "aside. It'll respect that.$"
 ```
 
 </details>

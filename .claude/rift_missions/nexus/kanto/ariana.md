@@ -258,6 +258,68 @@ Nexus_Text_Ariana_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é o sinal que funcionou. A 2 é a executiva que manda baixando a voz, e que resume os outros três executivos numa frase cada (fio Rocket). A 3 é a Arbok, primeira Pokémon dela, roubada, que nunca tentou ir embora.
+
+**Variação 2 — os outros três**
+
+**Antes da luta**
+
+> The others shout. I don't need to. When I lower my voice, grunts stop breathing.
+>
+> Proton wants to be feared. Petrel wants to be someone else. Archer wants a man who isn't coming back.
+>
+> I only want things to work. Let's see if you do.
+
+**Derrota**
+
+> You work. Irritatingly well.
+
+**Variação 3 — a Arbok**
+
+**Antes da luta**
+
+> My Arbok was the first Pokémon I ever had. I stole it, of course. From a pet shop in Celadon.
+>
+> It has never once tried to leave. I don't know what that says about either of us.
+>
+> …Why am I telling you this? Fight.
+
+**Derrota**
+
+> Arbok is still here. It stayed. …Go away.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Ariana_Intro2:
+	.string "The others shout. I don't need to. When\n"
+	.string "I lower my voice, grunts stop breathing.\p"
+	.string "Proton wants to be feared. Petrel wants\n"
+	.string "to be someone else. Archer wants a man\l"
+	.string "who isn't coming back.\p"
+	.string "I only want things to work. Let's see if\n"
+	.string "you do.$"
+
+Nexus_Text_Ariana_Defeat2:
+	.string "You work. Irritatingly well.$"
+
+Nexus_Text_Ariana_Intro3:
+	.string "My Arbok was the first Pokémon I ever\n"
+	.string "had. I stole it, of course. From a pet\l"
+	.string "shop in Celadon.\p"
+	.string "It has never once tried to leave. I\n"
+	.string "don't know what that says about either\l"
+	.string "of us.\p"
+	.string "…Why am I telling you this? Fight.$"
+
+Nexus_Text_Ariana_Defeat3:
+	.string "Arbok is still here. It stayed. …Go away.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Ariana é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela.
@@ -314,6 +376,108 @@ Nexus_Text_Ariana_ChampionAfter:
 	.string "It's been sleeping too.\p"
 	.string "I don't like gifts I can't pay for. Go.\n"
 	.string "Give it a reason to wake up.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é o sonho que não era dela. A 2 é a lore de DPPt (o filho do marinheiro de Canalave, curado com a pena da lua crescente) virada do avesso: ninguém pergunta quem deu o pesadelo, e ele está no time dela. A 3 é humor seco: ela tenta ficar acordada porque sonhar a faz sorrir, e sorrir é ruim para a disciplina.
+
+**Variação 2 — o menino do porto**
+
+**Antes da luta**
+
+> There's a story from a harbor town. A sailor's son had nightmares and couldn't wake. Someone flew to an island and brought back one pale feather.
+>
+> The boy woke up smiling. Everyone calls it a happy ending.
+>
+> Nobody asks who gave him the nightmares. I know. He's in my party. …Begin.
+
+**Derrota**
+
+> Fine. That was a real loss. I'll feel it in the morning.
+
+**Depois da luta**
+
+> It sheds feathers when it passes. There's one by the water. I haven't touched it.
+>
+> If I sleep with it, I'll dream. If I dream, I'll see what I did to that lake up north, and I'll be sorry.
+>
+> …Take it, if you want it. I'm not ready. Go.
+
+**Variação 3 — acordada**
+
+**Antes da luta**
+
+> I've been awake for two days. Every time I close my eyes by this water, I start smiling.
+>
+> I do not smile. It's bad for discipline.
+>
+> So I'll stay awake, and you'll help. Nothing wakes a person up like losing. Yours, I mean!
+
+**Derrota**
+
+> …Well. I'm awake now.
+
+**Depois da luta**
+
+> Everyone sleeping on this shore smiles. Even the grunts I brought. Even the ones I shout at.
+>
+> I watched one of them dream for an hour. He looked about twelve. I had never noticed he was that young.
+>
+> I'll be kinder to him tomorrow. Don't tell anyone. It will pass. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Ariana_ChampionIntro2:
+	.string "There's a story from a harbor town. A\n"
+	.string "sailor's son had nightmares and\l"
+	.string "couldn't wake. Someone flew to an\l"
+	.string "island and brought back one pale\l"
+	.string "feather.\p"
+	.string "The boy woke up smiling. Everyone calls\n"
+	.string "it a happy ending.\p"
+	.string "Nobody asks who gave him the\n"
+	.string "nightmares. I know. He's in my party.\l"
+	.string "…Begin.$"
+
+Nexus_Text_Ariana_ChampionDefeat2:
+	.string "Fine. That was a real loss. I'll feel it in\n"
+	.string "the morning.$"
+
+Nexus_Text_Ariana_ChampionAfter2:
+	.string "{SPEAKER NAME_ARIANA}It sheds feathers when it passes.\n"
+	.string "There's one by the water. I haven't\l"
+	.string "touched it.\p"
+	.string "If I sleep with it, I'll dream. If I\n"
+	.string "dream, I'll see what I did to that lake\l"
+	.string "up north, and I'll be sorry.\p"
+	.string "…Take it, if you want it. I'm not ready.\n"
+	.string "Go.$"
+
+Nexus_Text_Ariana_ChampionIntro3:
+	.string "I've been awake for two days. Every\n"
+	.string "time I close my eyes by this water, I\l"
+	.string "start smiling.\p"
+	.string "I do not smile. It's bad for discipline.\p"
+	.string "So I'll stay awake, and you'll help.\n"
+	.string "Nothing wakes a person up like losing.\l"
+	.string "Yours, I mean!$"
+
+Nexus_Text_Ariana_ChampionDefeat3:
+	.string "…Well. I'm awake now.$"
+
+Nexus_Text_Ariana_ChampionAfter3:
+	.string "{SPEAKER NAME_ARIANA}Everyone sleeping on this shore smiles.\n"
+	.string "Even the grunts I brought. Even the\l"
+	.string "ones I shout at.\p"
+	.string "I watched one of them dream for an\n"
+	.string "hour. He looked about twelve. I had\l"
+	.string "never noticed he was that young.\p"
+	.string "I'll be kinder to him tomorrow. Don't\n"
+	.string "tell anyone. It will pass. Go.$"
 ```
 
 </details>
