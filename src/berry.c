@@ -2473,8 +2473,74 @@ static const u8 sBerryMutations[][3] = {
     {ITEM_TO_BERRY(ITEM_KELPSY_BERRY), ITEM_TO_BERRY(ITEM_WACAN_BERRY),  ITEM_TO_BERRY(ITEM_APICOT_BERRY)},
     {ITEM_TO_BERRY(ITEM_GANLON_BERRY), ITEM_TO_BERRY(ITEM_LIECHI_BERRY), ITEM_TO_BERRY(ITEM_KEE_BERRY)},
     {ITEM_TO_BERRY(ITEM_SALAC_BERRY),  ITEM_TO_BERRY(ITEM_PETAYA_BERRY), ITEM_TO_BERRY(ITEM_MARANGA_BERRY)},
-    // Up to one more Mutation can be added here for a total of 15 (only 4 bits are allocated)
+    // SoulGold (.claude/berry_master/REI_DA_COLHEITA.md section 4.2): the other
+    // 45, so that every Berry but the Enigma grows out of Bram's eight. The 13
+    // above keep their positions (the save stores index + 1).
+    // Generation 1
+    {ITEM_TO_BERRY(ITEM_CHERI_BERRY), ITEM_TO_BERRY(ITEM_CHESTO_BERRY), ITEM_TO_BERRY(ITEM_LUM_BERRY)},
+    {ITEM_TO_BERRY(ITEM_ORAN_BERRY), ITEM_TO_BERRY(ITEM_LEPPA_BERRY), ITEM_TO_BERRY(ITEM_SITRUS_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CHERI_BERRY), ITEM_TO_BERRY(ITEM_RAWST_BERRY), ITEM_TO_BERRY(ITEM_FIGY_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CHESTO_BERRY), ITEM_TO_BERRY(ITEM_ASPEAR_BERRY), ITEM_TO_BERRY(ITEM_WIKI_BERRY)},
+    {ITEM_TO_BERRY(ITEM_PECHA_BERRY), ITEM_TO_BERRY(ITEM_PERSIM_BERRY), ITEM_TO_BERRY(ITEM_MAGO_BERRY)},
+    {ITEM_TO_BERRY(ITEM_RAWST_BERRY), ITEM_TO_BERRY(ITEM_LEPPA_BERRY), ITEM_TO_BERRY(ITEM_AGUAV_BERRY)},
+    {ITEM_TO_BERRY(ITEM_ASPEAR_BERRY), ITEM_TO_BERRY(ITEM_ORAN_BERRY), ITEM_TO_BERRY(ITEM_IAPAPA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CHERI_BERRY), ITEM_TO_BERRY(ITEM_PECHA_BERRY), ITEM_TO_BERRY(ITEM_RAZZ_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CHESTO_BERRY), ITEM_TO_BERRY(ITEM_ORAN_BERRY), ITEM_TO_BERRY(ITEM_BLUK_BERRY)},
+    {ITEM_TO_BERRY(ITEM_PECHA_BERRY), ITEM_TO_BERRY(ITEM_ASPEAR_BERRY), ITEM_TO_BERRY(ITEM_NANAB_BERRY)},
+    {ITEM_TO_BERRY(ITEM_RAWST_BERRY), ITEM_TO_BERRY(ITEM_PERSIM_BERRY), ITEM_TO_BERRY(ITEM_WEPEAR_BERRY)},
+    {ITEM_TO_BERRY(ITEM_ASPEAR_BERRY), ITEM_TO_BERRY(ITEM_CHERI_BERRY), ITEM_TO_BERRY(ITEM_PINAP_BERRY)},
+    // Generation 2
+    {ITEM_TO_BERRY(ITEM_BLUK_BERRY), ITEM_TO_BERRY(ITEM_WIKI_BERRY), ITEM_TO_BERRY(ITEM_CORNN_BERRY)},
+    {ITEM_TO_BERRY(ITEM_NANAB_BERRY), ITEM_TO_BERRY(ITEM_MAGO_BERRY), ITEM_TO_BERRY(ITEM_MAGOST_BERRY)},
+    {ITEM_TO_BERRY(ITEM_AGUAV_BERRY), ITEM_TO_BERRY(ITEM_WEPEAR_BERRY), ITEM_TO_BERRY(ITEM_RABUTA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_PINAP_BERRY), ITEM_TO_BERRY(ITEM_IAPAPA_BERRY), ITEM_TO_BERRY(ITEM_NOMEL_BERRY)},
+    {ITEM_TO_BERRY(ITEM_RAZZ_BERRY), ITEM_TO_BERRY(ITEM_FIGY_BERRY), ITEM_TO_BERRY(ITEM_SPELON_BERRY)},
+    {ITEM_TO_BERRY(ITEM_BLUK_BERRY), ITEM_TO_BERRY(ITEM_KELPSY_BERRY), ITEM_TO_BERRY(ITEM_PAMTRE_BERRY)},
+    {ITEM_TO_BERRY(ITEM_NANAB_BERRY), ITEM_TO_BERRY(ITEM_RAZZ_BERRY), ITEM_TO_BERRY(ITEM_CHILAN_BERRY)},
+    {ITEM_TO_BERRY(ITEM_KELPSY_BERRY), ITEM_TO_BERRY(ITEM_ORAN_BERRY), ITEM_TO_BERRY(ITEM_PASSHO_BERRY)},
+    {ITEM_TO_BERRY(ITEM_WEPEAR_BERRY), ITEM_TO_BERRY(ITEM_HONDEW_BERRY), ITEM_TO_BERRY(ITEM_RINDO_BERRY)},
+    {ITEM_TO_BERRY(ITEM_LUM_BERRY), ITEM_TO_BERRY(ITEM_WEPEAR_BERRY), ITEM_TO_BERRY(ITEM_TANGA_BERRY)},
+    // Generation 3
+    {ITEM_TO_BERRY(ITEM_MAGOST_BERRY), ITEM_TO_BERRY(ITEM_POMEG_BERRY), ITEM_TO_BERRY(ITEM_WATMEL_BERRY)},
+    {ITEM_TO_BERRY(ITEM_RABUTA_BERRY), ITEM_TO_BERRY(ITEM_HONDEW_BERRY), ITEM_TO_BERRY(ITEM_DURIN_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CORNN_BERRY), ITEM_TO_BERRY(ITEM_PAMTRE_BERRY), ITEM_TO_BERRY(ITEM_BELUE_BERRY)},
+    {ITEM_TO_BERRY(ITEM_SPELON_BERRY), ITEM_TO_BERRY(ITEM_TAMATO_BERRY), ITEM_TO_BERRY(ITEM_OCCA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_PINAP_BERRY), ITEM_TO_BERRY(ITEM_NOMEL_BERRY), ITEM_TO_BERRY(ITEM_WACAN_BERRY)},
+    {ITEM_TO_BERRY(ITEM_WIKI_BERRY), ITEM_TO_BERRY(ITEM_CORNN_BERRY), ITEM_TO_BERRY(ITEM_YACHE_BERRY)},
+    {ITEM_TO_BERRY(ITEM_POMEG_BERRY), ITEM_TO_BERRY(ITEM_RAZZ_BERRY), ITEM_TO_BERRY(ITEM_CHOPLE_BERRY)},
+    {ITEM_TO_BERRY(ITEM_RABUTA_BERRY), ITEM_TO_BERRY(ITEM_POMEG_BERRY), ITEM_TO_BERRY(ITEM_KEBIA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_GREPA_BERRY), ITEM_TO_BERRY(ITEM_NOMEL_BERRY), ITEM_TO_BERRY(ITEM_SHUCA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_MAGOST_BERRY), ITEM_TO_BERRY(ITEM_SPELON_BERRY), ITEM_TO_BERRY(ITEM_PAYAPA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_NOMEL_BERRY), ITEM_TO_BERRY(ITEM_QUALOT_BERRY), ITEM_TO_BERRY(ITEM_CHARTI_BERRY)},
+    {ITEM_TO_BERRY(ITEM_NANAB_BERRY), ITEM_TO_BERRY(ITEM_MAGOST_BERRY), ITEM_TO_BERRY(ITEM_ROSELI_BERRY)},
+    // Generation 4
+    {ITEM_TO_BERRY(ITEM_BELUE_BERRY), ITEM_TO_BERRY(ITEM_PAMTRE_BERRY), ITEM_TO_BERRY(ITEM_COBA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_MAGOST_BERRY), ITEM_TO_BERRY(ITEM_BELUE_BERRY), ITEM_TO_BERRY(ITEM_KASIB_BERRY)},
+    {ITEM_TO_BERRY(ITEM_DURIN_BERRY), ITEM_TO_BERRY(ITEM_TAMATO_BERRY), ITEM_TO_BERRY(ITEM_HABAN_BERRY)},
+    {ITEM_TO_BERRY(ITEM_KEBIA_BERRY), ITEM_TO_BERRY(ITEM_MAGOST_BERRY), ITEM_TO_BERRY(ITEM_COLBUR_BERRY)},
+    {ITEM_TO_BERRY(ITEM_DURIN_BERRY), ITEM_TO_BERRY(ITEM_QUALOT_BERRY), ITEM_TO_BERRY(ITEM_BABIRI_BERRY)},
+    // Generation 5
+    {ITEM_TO_BERRY(ITEM_GANLON_BERRY), ITEM_TO_BERRY(ITEM_APICOT_BERRY), ITEM_TO_BERRY(ITEM_CUSTAP_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CHOPLE_BERRY), ITEM_TO_BERRY(ITEM_BABIRI_BERRY), ITEM_TO_BERRY(ITEM_JABOCA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_PAYAPA_BERRY), ITEM_TO_BERRY(ITEM_COLBUR_BERRY), ITEM_TO_BERRY(ITEM_ROWAP_BERRY)},
+    // Generation 6
+    {ITEM_TO_BERRY(ITEM_LIECHI_BERRY), ITEM_TO_BERRY(ITEM_PETAYA_BERRY), ITEM_TO_BERRY(ITEM_MICLE_BERRY)},
+    // Generation 7: only after the League (see IsMutationUnlocked)
+    {ITEM_TO_BERRY(ITEM_MICLE_BERRY), ITEM_TO_BERRY(ITEM_CUSTAP_BERRY), ITEM_TO_BERRY(ITEM_LANSAT_BERRY)},
+    {ITEM_TO_BERRY(ITEM_KEE_BERRY), ITEM_TO_BERRY(ITEM_MARANGA_BERRY), ITEM_TO_BERRY(ITEM_STARF_BERRY)},
 };
+
+// The index + 1 is stored in 6 bits of the tree (mutationC:B:A).
+STATIC_ASSERT(ARRAY_COUNT(sBerryMutations) <= 63, BerryMutationsFitIn6Bits);
+
+// Lansat and Starf are Kurt's level-20 recipes: they only cross after the
+// League (.claude/KURT_BALL_CRAFT_DESIGN.md). Replanting one is always free.
+static bool32 IsMutationUnlocked(u8 result)
+{
+    if (result == ITEM_TO_BERRY(ITEM_LANSAT_BERRY) || result == ITEM_TO_BERRY(ITEM_STARF_BERRY))
+        return FlagGet(FLAG_SYS_GAME_CLEAR);
+    return TRUE;
+}
 
 static u8 GetMutationOutcome(u8 berry1, u8 berry2)
 {
@@ -2483,7 +2549,7 @@ static u8 GetMutationOutcome(u8 berry1, u8 berry2)
     {
         if ((sBerryMutations[i][0] == berry1 && sBerryMutations[i][1] == berry2)
           ||(sBerryMutations[i][0] == berry2 && sBerryMutations[i][1] == berry1))
-            return (i + 1);
+            return IsMutationUnlocked(sBerryMutations[i][2]) ? (i + 1) : 0;
     }
     return 0;
 }
@@ -2507,24 +2573,35 @@ static u8 TryForMutation(u8 berryTreeId, u8 berry)
 
     mulch = GetMulchByBerryTreeId(GetObjectEventBerryTreeId(i));
 
-    // Try mutation for each adjacent tree
+    // Try mutation for each adjacent tree.
+    // SoulGold: only a neighbour that forms a recipe gets a roll. Upstream
+    // rolled for every tree and returned on the first adjacent success even
+    // when that pair had no recipe, so in a full garden a neighbour with no
+    // recipe could take the chance away from the one that had it.
     for (j = 0; j < OBJECT_EVENTS_COUNT; j++)
     {
         if (gObjectEvents[j].active && gObjectEvents[j].movementType == MOVEMENT_TYPE_BERRY_TREE_GROWTH && GetStageByBerryTreeId(GetObjectEventBerryTreeId(j)) != BERRY_STAGE_NO_BERRY && j != i)
         {
+            u8 outcome;
+            u32 rate = OW_BERRY_MUTATION_CHANCE;
+
             x2 = gObjectEvents[j].currentCoords.x;
             y2 = gObjectEvents[j].currentCoords.y;
-            u32 rate = OW_BERRY_MUTATION_CHANCE;
+            if (!((x1 == x2 && y1 == y2 - 1) ||
+                  (x1 == x2 && y1 == y2 + 1) ||
+                  (x1 == x2 - 1 && y1 == y2) ||
+                  (x1 == x2 + 1 && y1 == y2)))
+                continue;
+
+            outcome = GetMutationOutcome(berry, gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(j)].berry);
+            if (outcome == 0)
+                continue;
 
             if (mulch == ITEM_TO_MULCH(ITEM_SURPRISE_MULCH) || mulch == ITEM_TO_MULCH(ITEM_AMAZE_MULCH))
                 rate *= 2;
 
-            if (Random() % 100 < rate && (
-                (x1 == x2 && y1 == y2 - 1) ||
-                (x1 == x2 && y1 == y2 + 1) ||
-                (x1 == x2 - 1 && y1 == y2) ||
-                (x1 == x2 + 1 && y1 == y2)))
-                return GetMutationOutcome(berry, gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(j)].berry);
+            if (Random() % 100 < rate)
+                return outcome;
         }
     }
     return 0;
@@ -2534,7 +2611,8 @@ static u8 TryForMutation(u8 berryTreeId, u8 berry)
 struct TreeMutationBitfield {
   u8 a: 2;
   u8 b: 2;
-  u8 unused: 4;
+  u8 c: 2;
+  u8 unused: 2;
 };
 
 union TreeMutation {
@@ -2551,6 +2629,7 @@ static u8 GetTreeMutationValue(u8 id)
         return 0;
     myMutation.asField.a = tree->mutationA;
     myMutation.asField.b = tree->mutationB;
+    myMutation.asField.c = tree->mutationC;
     myMutation.asField.unused = 0;
     if (myMutation.value == 0) // no mutation
         return 0;
@@ -2569,6 +2648,7 @@ static void SetTreeMutations(u8 id, u8 berry)
     myMutation.value = TryForMutation(id, berry);
     tree->mutationA = myMutation.asField.a;
     tree->mutationB = myMutation.asField.b;
+    tree->mutationC = myMutation.asField.c;
 #endif
 }
 

@@ -6,6 +6,8 @@
 #include "item.h"
 #include "test/test.h"
 #include "constants/berry.h"
+#include "constants/event_object_movement.h"
+#include "constants/flags.h"
 #include "constants/items.h"
 
 // Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md,
@@ -202,4 +204,76 @@ TEST("Harvesting a garden plot puts the Berry in the bag and in the Book")
     EXPECT(gSpecialVar_0x8004);
     EXPECT(CheckBagHasItem(ITEM_SITRUS_BERRY, 3));
     EXPECT(BerryLedger_Has(ITEM_SITRUS_BERRY));
+}
+
+// ObjectEventInteractionPickBerryTree's result, named only in
+// data/scripts/berry_tree.inc (.set BERRY_MUTATION_SPACE_IN_BAG, 3).
+#define PICKED_WITH_MUTATION 3
+
+// Mutations (part 4). Two garden plots side by side as live objects: the
+// neighbour already planted, then the plot planted again and again until the
+// 25% roll hits (or 200 tries, which a working recipe never needs).
+static void PlaceTreeObject(u32 slot, u32 treeId, s16 x, s16 y)
+{
+    memset(&gObjectEvents[slot], 0, sizeof(gObjectEvents[slot]));
+    gObjectEvents[slot].active = TRUE;
+    gObjectEvents[slot].movementType = MOVEMENT_TYPE_BERRY_TREE_GROWTH;
+    gObjectEvents[slot].trainerRange_berryTreeId = treeId;
+    gObjectEvents[slot].currentCoords.x = x;
+    gObjectEvents[slot].currentCoords.y = y;
+}
+
+static u16 HarvestMutationAfterPlanting(u16 planted, u16 neighbour, u16 thirdNeighbour)
+{
+    u32 tries;
+
+    ClearBag();
+    ClearBerryTrees();
+    PlaceTreeObject(0, BERRY_TREE_GARDEN_A1, 10, 10);
+    PlaceTreeObject(1, BERRY_TREE_GARDEN_A2, 11, 10);
+    PlaceTreeObject(2, BERRY_TREE_GARDEN_A4, 10, 11);
+    PlantBerryTree(BERRY_TREE_GARDEN_A2, ITEM_TO_BERRY(neighbour), BERRY_STAGE_BERRIES, TRUE);
+    if (thirdNeighbour != ITEM_NONE)
+        PlantBerryTree(BERRY_TREE_GARDEN_A4, ITEM_TO_BERRY(thirdNeighbour), BERRY_STAGE_BERRIES, TRUE);
+
+    for (tries = 0; tries < 200; tries++)
+    {
+        PlantBerryTree(BERRY_TREE_GARDEN_A1, ITEM_TO_BERRY(planted), BERRY_STAGE_BERRIES, TRUE);
+        GetBerryTreeInfo(BERRY_TREE_GARDEN_A1)->berryYield = 1;
+        gSelectedObjectEvent = 0;
+        ObjectEventInteractionPickBerryTree();
+        if (gSpecialVar_0x8004 == PICKED_WITH_MUTATION)
+        {
+            u32 item;
+            for (item = FIRST_BERRY_INDEX; item <= ITEM_MARANGA_BERRY; item++)
+            {
+                if (item != planted && CheckBagHasItem(item, 1))
+                    return item;
+            }
+        }
+        RemoveBerryTree(BERRY_TREE_GARDEN_A1);
+    }
+    return ITEM_NONE;
+}
+
+TEST("Cheri planted next to Chesto crosses into a Lum, and the Lum goes in the Book")
+{
+    ClearLedger();
+    EXPECT_EQ(HarvestMutationAfterPlanting(ITEM_CHERI_BERRY, ITEM_CHESTO_BERRY, ITEM_NONE), ITEM_LUM_BERRY);
+    EXPECT(BerryLedger_Has(ITEM_LUM_BERRY));
+}
+
+TEST("A neighbour with no recipe does not take the chance away from one that has it")
+{
+    // Cheri + Oran has no recipe; Cheri + Chesto does.
+    EXPECT_EQ(HarvestMutationAfterPlanting(ITEM_CHERI_BERRY, ITEM_CHESTO_BERRY, ITEM_ORAN_BERRY), ITEM_LUM_BERRY);
+}
+
+TEST("Micle next to Custap only crosses into a Lansat after the League")
+{
+    FlagClear(FLAG_SYS_GAME_CLEAR);
+    EXPECT_EQ(HarvestMutationAfterPlanting(ITEM_MICLE_BERRY, ITEM_CUSTAP_BERRY, ITEM_NONE), ITEM_NONE);
+    FlagSet(FLAG_SYS_GAME_CLEAR);
+    EXPECT_EQ(HarvestMutationAfterPlanting(ITEM_MICLE_BERRY, ITEM_CUSTAP_BERRY, ITEM_NONE), ITEM_LANSAT_BERRY);
+    FlagClear(FLAG_SYS_GAME_CLEAR);
 }

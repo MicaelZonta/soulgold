@@ -31,7 +31,7 @@
 | 1 | Alocação e fundação ✅ 30/09 | constantes, vars, flags, plaquinhas, itens; nada visível | — |
 | 2 | A horta física 🧪 30/09 (código feito, falta teste no jogo) | 10 canteiros + canteiro da Laurel na Route 30; plantar, regar, colher | 1 |
 | 3 | Livro de Berries 🧪 30/09 (código feito, falta teste no jogo) | colher registra; o Bram só dá berries do Livro; marcos | 1, 2 |
-| 4 | Cruzamento completo | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
+| 4 | Cruzamento completo 🧪 30/09 (código feito, falta teste no jogo) | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
 | 5 | Estado diário | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
 | 6 | Níveis da horta | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
 | 7 | Pedidos do dia | comum e descoberta, dica da Laurel | 3, 4, 5, 6 |
@@ -426,6 +426,56 @@ na colheita e Kelpsy no Livro; três gerações seguidas; Micle + Custap antes d
 não dá Lansat; depois da Liga dá.
 
 **Pronto quando:** o script passa e as três gerações foram vistas no jogo.
+
+### Parte 4 — feita no código (30/09/2026), falta o teste no jogo
+
+**O que entrou**
+
+| O quê | Onde |
+|---|---|
+| `OW_BERRY_MUTATIONS` = TRUE | `include/config/overworld.h` |
+| `padding:2` → `mutationC:2`; índice da receita em 6 bits (C:B:A), `union TreeMutation` com o campo `c` | `include/global.berry.h`, `src/berry.c` |
+| `STATIC_ASSERT(sizeof(struct BerryTree) == 8)` (o save não cresce sem alguém ver) e `ARRAY_COUNT(sBerryMutations) <= 63` | idem |
+| `sBerryMutations`: as 13 do jogo **nas mesmas posições** + 45 novas, por geração = 58 | `src/berry.c` |
+| Trava pós-Liga: `IsMutationUnlocked` (Lansat, Starf só com `FLAG_SYS_GAME_CLEAR`) dentro de `GetMutationOutcome` | idem |
+| `dev_scripts/berry_mutations_check.py`: 6 regras (6 bits, par repetido, duas receitas, sem receita, alcançável, receita e geração iguais às do §4.2) | novo |
+| CI `.github/workflows/berry-mutations.yml`, no molde do `map-graph.yml` | novo |
+| 3 testes de cruzamento em `test/berry_garden.c` | idem |
+
+**Onde divergiu do plano, e por quê**
+
+1. **Consertado um defeito do motor (upstream) que o plano não previa.** O
+   `TryForMutation` sorteava a chance para **cada** árvore e, no primeiro vizinho
+   adjacente sorteado, devolvia o resultado **mesmo quando o par não tinha receita**.
+   Numa horta cheia, um vizinho sem receita roubava a chance do vizinho que tinha:
+   com 4 vizinhos, a chance real de uma receita caía bem abaixo dos 25% do design.
+   Agora só vizinho que forma receita (e está liberada) ganha sorteio, cada um com os
+   25% (50% com Surprise/Amaze Mulch). Com dois vizinhos com receita, a chance de
+   cruzar fica maior que 25%, e é isso que faz o canteiro cheio valer a pena (§4.2).
+2. **A trava pós-Liga vale no plantio**, que é quando o motor decide a mutação. Plantar
+   Micle ao lado de Custap antes da Liga e colher depois não dá Lansat; replantar
+   depois da Liga dá.
+3. **Verificador no CI** e não no `make`: o `map_graph` roda no `make` só como aviso,
+   e uma tabela errada tem que **barrar**, não avisar.
+
+**Medido**
+- `berry_mutations_check.py`: “ok - 58 receitas, 66 berries alcançáveis (geração
+  0: 8, 1: 15, 2: 13, 3: 13, 4: 8, 5: 5, 6: 2, 7: 2)” — igual ao ritmo do §4.2.
+- O verificador **pega** erro: testado com 5 tabelas quebradas de propósito (par
+  repetido, berry sem receita, geração errada, Enigma com receita, inicial com
+  receita), todas reprovadas com a mensagem certa.
+- Save: `struct BerryTree` continua com 8 bytes (o assert passa no build).
+- Falas de colheita com mutação (do motor, agora alcançáveis): pior caso real
+  (nome de 7 letras + “15 Maranga Berries”) = 200 px, dentro dos 208.
+
+**Teste no jogo (falta, o autor faz; debug ajuda):**
+- Cheri no canteiro, Chesto plantada ao lado **antes**, replantar a Cheri até cruzar →
+  na colheita, “and 1 Lum Berry”; a Lum entra no Livro.
+- Três gerações seguidas (ex.: Cheri+Chesto → Lum; Oran+Leppa → Sitrus; Lum+Sitrus →
+  Tamato).
+- Micle ao lado de Custap antes da Liga nunca dá Lansat; depois da Liga dá.
+- Árvore de rota natural ao lado de um plantio: pode ser o vizinho que cruza, mas ela
+  mesma nunca dá mutação (`stopGrowth`, regra do motor).
 
 ---
 
