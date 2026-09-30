@@ -167,6 +167,7 @@ Contíguas porque o C calcula a flag por soma, e porque o `flag_audit.py` e a sk
 | `BerryLedger_Register` | liga a flag da berry em `VAR_0x8004` | `BerryTree_EventScript_PickBerry` (e a versão com mutação), logo depois da colheita |
 | `BerryLedger_Count` | quantas estão no Livro | Bram (marcos, reformas) |
 | `BerryLedger_RandomRegistered` | sorteia uma berry do Livro (sem Lansat, Starf e Enigma) | presente diário, pedido comum |
+| `BerryLedger_BuildSeedMenu` | monta a lista com rolagem das berries do Livro | semente encomendada (§3.5) |
 | `BerryLedger_NextDiscovery` | sorteia uma berry **fora** do Livro cujos **dois pais estão no Livro**, e põe os pais em `VAR_0x8005/8006` | pedido de descoberta (§6), dica da Laurel |
 
 A dica da Laurel é **um texto só** com os nomes dos pais nos buffers
@@ -183,6 +184,48 @@ A dica da Laurel é **um texto só** com os nomes dos pais nos buffers
 | 50 | Berry Pouch *(item-chave sem fonte hoje; cosmético)* |
 | 60 | 5 Boost Mulch *(sem fonte hoje)* |
 | **66** (todas menos a Enigma) | Título: ele passa a te chamar de **“Berry Master”**, e a Laurel diz o seu nome pela primeira vez |
+
+### 3.5 Repetível para sempre (estado final)
+
+Toda berry tem que poder ser obtida **de novo, sem limite**, depois que a história
+acaba. Conferido berry a berry. O que o motor faz hoje (`src/berry.c`):
+
+- **Colher esvazia o canteiro** (`ObjectEventInteractionRemoveBerryTree`): tem que
+  replantar. Árvore madura que ninguém colhe dá fruto de novo até 10 vezes (15 com
+  Gooey Mulch) e depois morre (`BerryTreeGrow`, `:1911`).
+- Rendimento com `OW_BERRY_YIELD_RATE = GEN_6_XY`: comuns dão de 4 a 15 por pé; as
+  raras, **de 1 a 5**. Uma berry plantada **nunca devolve menos que 1**, e com rega
+  devolve mais. Replantar sozinho já mantém qualquer berry para sempre, desde que o
+  jogador não gaste a última.
+
+A rede de segurança, para o jogador que gastou a última:
+
+| Fonte diária | Cobre | Quando |
+|---|---|---|
+| Presente do Bram (2–3, sorteado do Livro) | as 64 do Livro menos Lansat, Starf e Enigma | desde o tutorial |
+| **Semente encomendada** (nova, abaixo) | **qualquer uma do Livro**, à escolha, 1 por dia | nível 2 da horta |
+| Rara diária da Laurel (sorteada do Livro, raras) | Lansat, Starf e as outras raras | pós-Liga |
+| **Canteiro da Laurel** no nível 5 | a **Enigma**, que nenhuma fonte diária dava | depois do epílogo |
+
+**Semente encomendada.** Uma vez por dia, em vez do presente sorteado, o jogador pode
+pedir ao Bram **uma berry específica do Livro**. Lista com rolagem, montada em C com
+as berries registradas (`dynmultichoice` já existe no repo e é usado em
+`BlackthornCity`, `BattleCafe`). Sem isso, pegar uma berry certa entre 64 pelo
+sorteio levaria semanas.
+
+> **Berry Master:** Got one in mind? Name it. If it's in the Book, I've got seed for it.
+
+**A Enigma.** No estado 13, o canteiro da Laurel vira fonte fixa: se estiver vazio
+de manhã, ele **se replanta sozinho com uma Enigma** (o C trata esse ID como árvore
+natural de Enigma, com a regeneração que já existe para as árvores de rota,
+`StartNaturalBerryTreeRegeneration`). O jogador pode plantar outra coisa lá; quando
+colher e deixar vazio, a Enigma volta. A Laurel explica uma vez:
+
+> **Laurel:** Leave it empty and it grows his Berry back on its own. It remembers
+> now. Don't ask me how. I stopped asking questions too.
+
+**Lansat e Starf** só **cruzam** depois da Liga (§4.1), mas replantar é livre: quem
+já tem uma mantém para sempre.
 
 ---
 
@@ -899,7 +942,7 @@ Sem estado novo; conferem algo do jogo e falam por cima da fala do dia.
 |---|---|---|
 | Var | 3 | `VAR_BERRY_GARDEN_LEVEL` (1..5), `VAR_BERRY_ORDER`, `VAR_HARVEST_KING` (0..13) — reciclar `VAR_GIFT_UNUSED_5/6/7` (conferir antes que ninguém escreve) |
 | Flag persistente | **67** | Livro de Berries, `0x1053..0x1095`, contíguas |
-| Daily flag | 3 | `ORDER_ROLLED`, `ORDER_DONE`, `GARDEN_WATERED` em `FLAG_UNUSED_0x952..0x954` |
+| Daily flag | 3 | `ORDER_ROLLED`, `ORDER_DONE`, `GARDEN_WATERED` em `FLAG_UNUSED_0x952..0x954`; o presente e a semente encomendada dividem a flag diária que o Bram já usa |
 | `FLAG_TEMP` | ~6 | ocultação por horário (Bram fora/dentro, Laurel fora/dentro, Tilly, Bugsy), canteiro da Laurel, lendários |
 | Vaga de árvore | 11 | 10 canteiros + o canteiro da Laurel, apelidos de IDs de Hoenn |
 | Objetos `Route30` | +14 | 10 canteiros, Bram (fora), Laurel (fora), Tilly, Bugsy; **−1** Weedle; Calyrex e Spectrier (cena) |
