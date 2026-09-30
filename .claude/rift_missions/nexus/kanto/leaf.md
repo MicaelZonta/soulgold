@@ -329,6 +329,66 @@ Nexus_Text_Leaf_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Variação 2: humor com a confusão do nome (R21; a plaquinha diz Green) — ela promete contar a história e a história é curta. Variação 3: a lembrança de colecionadora que conta passos entre cidades e para por tudo; foi assim que montou o time.
+
+**Variação 2 — antes da luta**
+
+> Hi! Before you ask: yes, it says 'Green' on my Pokédex. No, that's not my name. Yes, I answer to it.
+>
+> It's a long story. I'll tell you if you win. …Actually, I'll tell you if you lose, too.
+>
+> Let's battle!
+
+**Variação 2 — derrota**
+
+> You won! So… it was a typo. The end. Short story, really.
+
+**Variação 3 — antes da luta**
+
+> I used to count steps between towns. Pallet to Viridian is about four hundred, if you don't stop.
+>
+> I always stop. That's how I found most of my team.
+>
+> Show me yours. I'll stop for them too!
+
+**Variação 3 — derrota**
+
+> Hmm. I'll need a lot more steps to catch up to you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Leaf_Intro2:
+	.string "Hi! Before you ask: yes, it says 'Green'\n"
+	.string "on my Pokédex. No, that's not my name.\l"
+	.string "Yes, I answer to it.\p"
+	.string "It's a long story. I'll tell you if you\n"
+	.string "win. …Actually, I'll tell you if you lose,\l"
+	.string "too.\p"
+	.string "Let's battle!$"
+
+Nexus_Text_Leaf_Defeat2:
+	.string "You won! So… it was a typo. The end.\n"
+	.string "Short story, really.$"
+
+Nexus_Text_Leaf_Intro3:
+	.string "I used to count steps between towns.\n"
+	.string "Pallet to Viridian is about four\l"
+	.string "hundred, if you don't stop.\p"
+	.string "I always stop. That's how I found most\n"
+	.string "of my team.\p"
+	.string "Show me yours. I'll stop for them too!$"
+
+Nexus_Text_Leaf_Defeat3:
+	.string "Hmm. I'll need a lot more steps to catch\n"
+	.string "up to you.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Leaf é a **campeã**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
@@ -393,6 +453,101 @@ Nexus_Text_Leaf_Mew_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: a dúvida — se a criatura guarda todos os Pokémon dentro, guarda ela também? Depois, humor com o Transform: ela vira um Pidgey, um Magikarp, um Snorlax muito ruim; se virar cópia do jogador, é carinho. Variação 3: o diário da mansão de Cinnabar ('Mew gave birth', sem o nome) — em algum mundo o que veio depois foi triste; ela torce para este não ser um deles, e termina lembrando que a criatura foi mãe.
+
+**Variação 2 — antes da luta**
+
+> If one little Pokémon holds every other Pokémon inside it… does it hold me too?
+>
+> I know, I know. People aren't Pokémon. But I've followed it so long, I've started to wonder.
+>
+> Let's battle! Maybe you'll knock the question out of me!
+
+**Variação 2 — derrota**
+
+> Nope. Still wondering. Thanks, though!
+
+**Variação 2 — depois da luta**
+
+> I think it likes being chased more than being caught. Every time I got close, it giggled and turned into something else.
+>
+> A Pidgey. A Magikarp. Once, a very bad Snorlax.
+>
+> If it turns into a copy of you, don't be offended. It means it likes you. Go on!
+
+**Variação 3 — antes da luta**
+
+> There's an old journal in a burned mansion. Someone found a new Pokémon in a jungle and wrote down the date.
+>
+> In some worlds, what happened next was very sad.
+>
+> I'm hoping this is one where it wasn't. Let's battle! I'll tell you which world after.
+
+**Variação 3 — derrota**
+
+> …This one's a good one, I think.
+
+**Variação 3 — depois da luta**
+
+> Later in that journal, it says the little one gave birth. Then the pages are burned.
+>
+> I used to read that and feel scared. Now I keep thinking… it was a mother, once.
+>
+> Somewhere, it probably still is. Be kind to it. Go on.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Leaf_Mew_ChampionIntro2:
+	.string "If one little Pokémon holds every other\n"
+	.string "Pokémon inside it… does it hold me too?\p"
+	.string "I know, I know. People aren't Pokémon.\n"
+	.string "But I've followed it so long, I've\l"
+	.string "started to wonder.\p"
+	.string "Let's battle! Maybe you'll knock the\n"
+	.string "question out of me!$"
+
+Nexus_Text_Leaf_Mew_ChampionDefeat2:
+	.string "Nope. Still wondering. Thanks, though!$"
+
+Nexus_Text_Leaf_Mew_ChampionAfter2:
+	.string "{SPEAKER NAME_GREEN}I think it likes being chased more than\n"
+	.string "being caught. Every time I got close, it\l"
+	.string "giggled and turned into something else.\p"
+	.string "A Pidgey. A Magikarp. Once, a very bad\n"
+	.string "Snorlax.\p"
+	.string "If it turns into a copy of you, don't be\n"
+	.string "offended. It means it likes you. Go on!$"
+
+Nexus_Text_Leaf_Mew_ChampionIntro3:
+	.string "There's an old journal in a burned\n"
+	.string "mansion. Someone found a new Pokémon\l"
+	.string "in a jungle and wrote down the date.\p"
+	.string "In some worlds, what happened next was\n"
+	.string "very sad.\p"
+	.string "I'm hoping this is one where it wasn't.\n"
+	.string "Let's battle! I'll tell you which world\l"
+	.string "after.$"
+
+Nexus_Text_Leaf_Mew_ChampionDefeat3:
+	.string "…This one's a good one, I think.$"
+
+Nexus_Text_Leaf_Mew_ChampionAfter3:
+	.string "{SPEAKER NAME_GREEN}Later in that journal, it says the little\n"
+	.string "one gave birth. Then the pages are\l"
+	.string "burned.\p"
+	.string "I used to read that and feel scared.\n"
+	.string "Now I keep thinking… it was a mother,\l"
+	.string "once.\p"
+	.string "Somewhere, it probably still is. Be kind\n"
+	.string "to it. Go on.$"
+```
+
+</details>
+
+
 #### Iron Leaves
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Leaf_IronLeaves_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -450,5 +605,99 @@ Nexus_Text_Leaf_IronLeaves_ChampionAfter:
 ```
 
 </details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: humor de colecionadora — ela tentou escrever o verbete do cavaleiro e ele se curvou para o caderno; depois, a ideia de que ele lê o passado, e a dúvida se o caderno dela chegou tão longe. Variação 3: a lembrança das folhas prensadas em cada cidade, que nunca ficaram verdes; ela prefere uma folha torta que caiu na cabeça.
+
+**Variação 2 — antes da luta**
+
+> I tried to write an entry for the knight in those trees. I got as far as 'Height,' and it bowed at me.
+>
+> Nobody has ever bowed at my notebook before!
+>
+> I got a little flustered. Let's battle so I can calm down!
+
+**Variação 2 — derrota**
+
+> Okay… I'm calm. I'm writing 'polite' under 'Height.'
+
+**Variação 2 — depois da luta**
+
+> Its edges hum when it's thinking. Like it's reading a page far away that only it can see.
+>
+> I think it's reading about us. The past, from where it's standing.
+>
+> I wonder if my notebook made it that far. …Go on! Show it what we were like.
+
+**Variação 3 — antes da luta**
+
+> Back home, I pressed a leaf in every town I visited. Maple from Viridian. Oak from Pallet, obviously.
+>
+> None of them stayed green. That's okay. That's the point of pressing them.
+>
+> The leaves out there will never need pressing. …Let's battle!
+
+**Variação 3 — derrota**
+
+> Ah. I'll press this moment instead.
+
+**Variação 3 — depois da luta**
+
+> Someone built that forest to last forever. You can tell. Every leaf is perfect, and none is anyone's favorite.
+>
+> I'd take one crooked leaf that fell on my head over all of them.
+>
+> Go on. Maybe it'll fall a little, for you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Leaf_IronLeaves_ChampionIntro2:
+	.string "I tried to write an entry for the knight\n"
+	.string "in those trees. I got as far as\l"
+	.string "'Height,' and it bowed at me.\p"
+	.string "Nobody has ever bowed at my notebook\n"
+	.string "before!\p"
+	.string "I got a little flustered. Let's battle\n"
+	.string "so I can calm down!$"
+
+Nexus_Text_Leaf_IronLeaves_ChampionDefeat2:
+	.string "Okay… I'm calm. I'm writing 'polite'\n"
+	.string "under 'Height.'$"
+
+Nexus_Text_Leaf_IronLeaves_ChampionAfter2:
+	.string "{SPEAKER NAME_GREEN}Its edges hum when it's thinking. Like\n"
+	.string "it's reading a page far away that only\l"
+	.string "it can see.\p"
+	.string "I think it's reading about us. The past,\n"
+	.string "from where it's standing.\p"
+	.string "I wonder if my notebook made it that\n"
+	.string "far. …Go on! Show it what we were like.$"
+
+Nexus_Text_Leaf_IronLeaves_ChampionIntro3:
+	.string "Back home, I pressed a leaf in every\n"
+	.string "town I visited. Maple from Viridian. Oak\l"
+	.string "from Pallet, obviously.\p"
+	.string "None of them stayed green. That's\n"
+	.string "okay. That's the point of pressing\l"
+	.string "them.\p"
+	.string "The leaves out there will never need\n"
+	.string "pressing. …Let's battle!$"
+
+Nexus_Text_Leaf_IronLeaves_ChampionDefeat3:
+	.string "Ah. I'll press this moment instead.$"
+
+Nexus_Text_Leaf_IronLeaves_ChampionAfter3:
+	.string "{SPEAKER NAME_GREEN}Someone built that forest to last\n"
+	.string "forever. You can tell. Every leaf is\l"
+	.string "perfect, and none is anyone's favorite.\p"
+	.string "I'd take one crooked leaf that fell on\n"
+	.string "my head over all of them.\p"
+	.string "Go on. Maybe it'll fall a little, for you.$"
+```
+
+</details>
+
 
 Falante novo: `SP_NAME_GREEN` (ainda não existe em `include/constants/speaker_names.h`); a plaquinha mostra "Green", decisão do autor de 27/09/2026.

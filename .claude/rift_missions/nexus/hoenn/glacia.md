@@ -327,6 +327,80 @@ Nexus_Text_Glacia_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código). Nenhuma cita o lugar nem a criatura do dia.
+
+**Variação 2** — provocação seca e humor: o jogador está suando, “que coisa mais Hoenn”. Dois anos naquele calor; o Walrein se recusou a sair do chafariz; ela se recusou a reclamar (quase sempre).
+
+**Antes da luta**
+
+> You are sweating. How very Hoenn of you.
+>
+> I lived two years in that heat. My Walrein refused to leave the fountain.
+>
+> I refused to complain. Mostly.
+>
+> Come. Let us bring the temperature down.
+
+**Derrota**
+
+> Hmph. It is warmer than before. I will pretend I did not notice.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Glacia_Intro2:
+	.string "You are sweating. How very Hoenn of\n"
+	.string "you.\p"
+	.string "I lived two years in that heat. My\n"
+	.string "Walrein refused to leave the fountain.\p"
+	.string "I refused to complain. Mostly.\p"
+	.string "Come. Let us bring the temperature\n"
+	.string "down.$"
+
+Nexus_Text_Glacia_Defeat2:
+	.string "Hmph. It is warmer than before. I will\n"
+	.string "pretend I did not notice.$"
+```
+
+</details>
+
+**Variação 3** — lembrança e o que perdeu: onde ela nasceu, a neve canta quando se pisa, um som seco e pequeno. Em Hoenn a neve nem cai. Saiu de casa para ficar mais forte e ninguém avisou que ia sentir falta de um som.
+
+**Antes da luta**
+
+> Where I was born, the snow sings when you walk on it. A small, dry sound.
+>
+> In Hoenn, the snow does not sing. It does not even fall.
+>
+> I left home to grow stronger. No one warned me I would miss a sound.
+>
+> …That will do. Show me what you came to show me.
+
+**Derrota**
+
+> Well. That was a sound worth hearing.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Glacia_Intro3:
+	.string "Where I was born, the snow sings when\n"
+	.string "you walk on it. A small, dry sound.\p"
+	.string "In Hoenn, the snow does not sing. It\n"
+	.string "does not even fall.\p"
+	.string "I left home to grow stronger. No one\n"
+	.string "warned me I would miss a sound.\p"
+	.string "…That will do. Show me what you came to\n"
+	.string "show me.$"
+
+Nexus_Text_Glacia_Defeat3:
+	.string "Well. That was a sound worth hearing.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -394,6 +468,124 @@ Nexus_Text_Glacia_IronBundle_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela; para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código).
+
+**Variação 2** — humor: a maquininha entregou algo à Glacia — um saco de gelo, dentro mais gelo, dentro um bilhete numa língua que ninguém vivo lê. Ela acha que era um cartão de aniversário, séculos atrasado. “Não ria.” Depois: ela guardou o cartão; alguém quis dizer algo gentil há muito tempo.
+
+**Antes da luta**
+
+> That little machine delivered something to me. A sack of ice.
+>
+> Inside the ice was more ice. Inside that, a note in a language no one alive can read.
+>
+> I believe it was a birthday card. A few centuries late.
+>
+> …Do not laugh. Come, let us battle.
+
+**Derrota**
+
+> You laughed. I could tell. It does not matter.
+
+**Depois da luta**
+
+> I kept the card. I cannot read it, and it is melting a little in my pocket.
+>
+> Someone, a very long time ago, wanted to say something kind.
+>
+> That machine has carried it across the centuries without once asking why.
+>
+> Go. Sign for your delivery. It has waited long enough.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Glacia_IronBundle_ChampionIntro2:
+	.string "That little machine delivered\n"
+	.string "something to me. A sack of ice.\p"
+	.string "Inside the ice was more ice. Inside\n"
+	.string "that, a note in a language no one alive\l"
+	.string "can read.\p"
+	.string "I believe it was a birthday card. A few\n"
+	.string "centuries late.\p"
+	.string "…Do not laugh. Come, let us battle.$"
+
+Nexus_Text_Glacia_IronBundle_ChampionDefeat2:
+	.string "You laughed. I could tell. It does not\n"
+	.string "matter.$"
+
+Nexus_Text_Glacia_IronBundle_ChampionAfter2:
+	.string "{SPEAKER NAME_GLACIA}I kept the card. I cannot read it, and\n"
+	.string "it is melting a little in my pocket.\p"
+	.string "Someone, a very long time ago, wanted\n"
+	.string "to say something kind.\p"
+	.string "That machine has carried it across the\n"
+	.string "centuries without once asking why.\p"
+	.string "Go. Sign for your delivery. It has\n"
+	.string "waited long enough.$"
+```
+
+</details>
+
+**Variação 3** — dúvida e tentação: ela passou horas vendo a criatura patinar; ela vai durar mais que todos, rivais, Campeões, ondas de calor. A Glacia confessa que pensou em ficar ali para sempre, no frio perfeito — e lembrou que ainda não venceu o jogador. A virada: coisas feitas para o frio não envelhecem, só esperam.
+
+**Antes da luta**
+
+> It skates so fast the snow never touches it. I have watched it for hours.
+>
+> It will outlast every one of us. Every rival, every Champion, every heat wave.
+>
+> I confess I considered staying with it. Forever, in the perfect cold.
+>
+> Then I remembered I have not beaten you yet. Come.
+
+**Derrota**
+
+> It seems I will have to stay a while longer, then.
+
+**Depois da luta**
+
+> Things built for the cold do not age. They only wait.
+>
+> It is waiting for its makers to come home. They are not coming.
+>
+> I will not be something that only waits. I would rather melt a little, and lose to you.
+>
+> Go on. Be the someone it has been waiting for.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Glacia_IronBundle_ChampionIntro3:
+	.string "It skates so fast the snow never\n"
+	.string "touches it. I have watched it for\l"
+	.string "hours.\p"
+	.string "It will outlast every one of us. Every\n"
+	.string "rival, every Champion, every heat wave.\p"
+	.string "I confess I considered staying with it.\n"
+	.string "Forever, in the perfect cold.\p"
+	.string "Then I remembered I have not beaten\n"
+	.string "you yet. Come.$"
+
+Nexus_Text_Glacia_IronBundle_ChampionDefeat3:
+	.string "It seems I will have to stay a while\n"
+	.string "longer, then.$"
+
+Nexus_Text_Glacia_IronBundle_ChampionAfter3:
+	.string "{SPEAKER NAME_GLACIA}Things built for the cold do not age.\n"
+	.string "They only wait.\p"
+	.string "It is waiting for its makers to come\n"
+	.string "home. They are not coming.\p"
+	.string "I will not be something that only waits.\n"
+	.string "I would rather melt a little, and lose\l"
+	.string "to you.\p"
+	.string "Go on. Be the someone it has been\n"
+	.string "waiting for.$"
+```
+
+</details>
+
 
 #### Chien-Pao
 
@@ -453,6 +645,121 @@ Nexus_Text_Glacia_ChienPao_ChampionAfter:
 	.string "everyone builds walls against.\p"
 	.string "Go. Walk in without armor. It will have\n"
 	.string "nothing to break.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela; para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código).
+
+**Variação 2** — lembrança ([R21](../NEXUS_REGRAS.md)): quando menina, havia perto de casa um santuário com uma estaca de gelo e uma corda. Proibido tocar; ela tocou. Foi o primeiro frio mais frio que ela. Depois, a lenda da espada de quem queria tudo — e a Glacia, que atravessou o mundo querendo um rival. (O diário conta o resto.)
+
+**Antes da luta**
+
+> When I was a girl, there was a shrine near my home. A stake of ice in the ground, and a rope around it.
+>
+> We were told never to touch it. Of course I touched it.
+>
+> It was the first cold I ever felt that was colder than me.
+>
+> …Enough of that. Come.
+
+**Derrota**
+
+> Cracked again. At least it is a familiar feeling.
+
+**Depois da luta**
+
+> They say it was a sword once, held by someone who wanted everything.
+>
+> The wanting stayed in the blade, and the blade grew fangs.
+>
+> I know a little about wanting. I crossed the world wanting a worthy rival.
+>
+> Be careful what you want near it. It hears.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Glacia_ChienPao_ChampionIntro2:
+	.string "When I was a girl, there was a shrine\n"
+	.string "near my home. A stake of ice in the\l"
+	.string "ground, and a rope around it.\p"
+	.string "We were told never to touch it. Of\n"
+	.string "course I touched it.\p"
+	.string "It was the first cold I ever felt that\n"
+	.string "was colder than me.\p"
+	.string "…Enough of that. Come.$"
+
+Nexus_Text_Glacia_ChienPao_ChampionDefeat2:
+	.string "Cracked again. At least it is a familiar\n"
+	.string "feeling.$"
+
+Nexus_Text_Glacia_ChienPao_ChampionAfter2:
+	.string "{SPEAKER NAME_GLACIA}They say it was a sword once, held by\n"
+	.string "someone who wanted everything.\p"
+	.string "The wanting stayed in the blade, and\n"
+	.string "the blade grew fangs.\p"
+	.string "I know a little about wanting. I\n"
+	.string "crossed the world wanting a worthy\l"
+	.string "rival.\p"
+	.string "Be careful what you want near it. It\n"
+	.string "hears.$"
+```
+
+</details>
+
+**Variação 3** — provocação e elegância: o gelo dos Pokémon dela está mais fino que de manhã. A criatura não ataca o corpo, ataca a ideia de estar seguro. “Esperto. Grosseiro, mas esperto.” O conselho: só não recua quem nunca fingiu estar inteiro.
+
+**Antes da luta**
+
+> Look at my Pokémon. Their ice is thinner than it was this morning.
+>
+> The creature here does not attack the body. It attacks the idea that you are safe.
+>
+> Clever. Rude, but clever.
+>
+> Shall we find out how safe you feel?
+
+**Derrota**
+
+> Not safe at all, and still you won. Remarkable.
+
+**Depois da luta**
+
+> I have trained for years to be untouchable. Elegant. Cold.
+>
+> In front of that thing, untouchable means nothing. Everything cracks.
+>
+> The only ones who do not flinch are those who never pretended to be whole.
+>
+> Go in cracked. It suits you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Glacia_ChienPao_ChampionIntro3:
+	.string "Look at my Pokémon. Their ice is\n"
+	.string "thinner than it was this morning.\p"
+	.string "The creature here does not attack the\n"
+	.string "body. It attacks the idea that you are\l"
+	.string "safe.\p"
+	.string "Clever. Rude, but clever.\p"
+	.string "Shall we find out how safe you feel?$"
+
+Nexus_Text_Glacia_ChienPao_ChampionDefeat3:
+	.string "Not safe at all, and still you won.\n"
+	.string "Remarkable.$"
+
+Nexus_Text_Glacia_ChienPao_ChampionAfter3:
+	.string "{SPEAKER NAME_GLACIA}I have trained for years to be\n"
+	.string "untouchable. Elegant. Cold.\p"
+	.string "In front of that thing, untouchable\n"
+	.string "means nothing. Everything cracks.\p"
+	.string "The only ones who do not flinch are\n"
+	.string "those who never pretended to be whole.\p"
+	.string "Go in cracked. It suits you.$"
 ```
 
 </details>

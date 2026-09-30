@@ -319,6 +319,76 @@ Nexus_Text_Winona_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): falam só dela mesma, sem o lugar nem a criatura do dia. A variação 1 é a de cima, que está no jogo; as novas não a repetem. Nada disto está no código.
+
+**Variação 2** — uma lembrança de infância: caiu de uma ponte de corda em Fortree e um Swablu pequeno demais a segurou pela gola e desceu com ela devagar.
+
+**Antes da luta**
+
+> When I was a girl, I fell from a rope bridge in Fortree. My Swablu caught me by the collar.
+>
+> It was far too small to carry me. It carried me anyway, all the way down, very slowly.
+>
+> Every battle since, I have tried to be worthy of that. Shall we?
+
+**Derrota**
+
+> Gently down. As always. Thank you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Winona_Intro2:
+	.string "When I was a girl, I fell from a rope\n"
+	.string "bridge in Fortree. My Swablu caught me\l"
+	.string "by the collar.\p"
+	.string "It was far too small to carry me. It\n"
+	.string "carried me anyway, all the way down,\l"
+	.string "very slowly.\p"
+	.string "Every battle since, I have tried to be\n"
+	.string "worthy of that. Shall we?$"
+
+Nexus_Text_Winona_Defeat2:
+	.string "Gently down. As always. Thank you.$"
+```
+
+</details>
+
+**Variação 3** — R21 e o fio Hoenn: no fragmento dela, uma faixa verde subiu além das nuvens e nunca desceu, e desde então o céu está um pouco mais baixo (o céu que caiu, da Zinnia). Ela fala do céu quando fica nervosa.
+
+**Antes da luta**
+
+> Where I come from, one night a streak of green went up past the clouds. Straight up. It never came down.
+>
+> The next morning, the sky was a little lower. Only a little. I measure these things.
+>
+> Forgive me. I talk about the sky when I am nervous. Let us fly.
+
+**Derrota**
+
+> You kept your feet on the ground. Wise.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Winona_Intro3:
+	.string "Where I come from, one night a streak of\n"
+	.string "green went up past the clouds. Straight\l"
+	.string "up. It never came down.\p"
+	.string "The next morning, the sky was a little\n"
+	.string "lower. Only a little. I measure these\l"
+	.string "things.\p"
+	.string "Forgive me. I talk about the sky when I\n"
+	.string "am nervous. Let us fly.$"
+
+Nexus_Text_Winona_Defeat3:
+	.string "You kept your feet on the ground. Wise.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Thundurus
@@ -386,6 +456,111 @@ Nexus_Text_Winona_Thundurus_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Thundurus: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — a lenda das Forces of Nature: na história, alguém desceu da terra e ralhou com ele, e ele parou. Aqui ninguém ralhou; ela vai tentar. Depois: quem o acalmou não gritou, fez os campos crescerem.
+
+**Antes da luta**
+
+> It laughs when it throws lightning. Did you hear it? Like a child throwing stones into a pond.
+>
+> In the old tales, someone came down from the land and scolded it, and it stopped.
+>
+> No one has scolded it here. Perhaps I shall. Help me practice!
+
+**Derrota**
+
+> It seems I am the one being scolded.
+
+**Depois da luta**
+
+> The tales say the one who calmed it did not shout. It only made the fields grow, and waited.
+>
+> It is hard to throw lightning at something that is feeding you.
+>
+> I have no fields. But I have birds who will fly beside it, if it lets them. Go. Be the calm one.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Winona_Thundurus_ChampionIntro2:
+	.string "It laughs when it throws lightning. Did\n"
+	.string "you hear it? Like a child throwing\l"
+	.string "stones into a pond.\p"
+	.string "In the old tales, someone came down\n"
+	.string "from the land and scolded it, and it\l"
+	.string "stopped.\p"
+	.string "No one has scolded it here. Perhaps I\n"
+	.string "shall. Help me practice!$"
+
+Nexus_Text_Winona_Thundurus_ChampionDefeat2:
+	.string "It seems I am the one being scolded.$"
+
+Nexus_Text_Winona_Thundurus_ChampionAfter2:
+	.string "{SPEAKER NAME_WINONA}The tales say the one who calmed it did\n"
+	.string "not shout. It only made the fields grow,\l"
+	.string "and waited.\p"
+	.string "It is hard to throw lightning at\n"
+	.string "something that is feeding you.\p"
+	.string "I have no fields. But I have birds who\n"
+	.string "will fly beside it, if it lets them. Go. Be\l"
+	.string "the calm one.$"
+```
+
+</details>
+
+**Variação 3** — o que ela perdeu: no Fortree dela, o raio acertou a árvore mais velha, a do ginásio. Reconstruíram; a madeira nova tem outro cheiro. Ela não odeia a tempestade: o raio acha o mais alto, é só honestidade.
+
+**Antes da luta**
+
+> In my Fortree, lightning struck the oldest tree in town, three summers ago. The one with the Gym in its branches.
+>
+> We rebuilt. We always rebuild. But the new wood smells different, and my birds still circle it twice before they land.
+>
+> …I did not come to speak of that. Let us battle.
+
+**Derrota**
+
+> Struck again. It happens.
+
+**Depois da luta**
+
+> I do not hate the storm. Lightning finds the tallest thing. That is not cruelty. It is only honesty.
+>
+> If I build high, I must accept that the sky will notice me.
+>
+> So I will keep building high. Go on. And if it thunders, laugh back at it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Winona_Thundurus_ChampionIntro3:
+	.string "In my Fortree, lightning struck the\n"
+	.string "oldest tree in town, three summers ago.\l"
+	.string "The one with the Gym in its branches.\p"
+	.string "We rebuilt. We always rebuild. But the\n"
+	.string "new wood smells different, and my birds\l"
+	.string "still circle it twice before they land.\p"
+	.string "…I did not come to speak of that. Let us\n"
+	.string "battle.$"
+
+Nexus_Text_Winona_Thundurus_ChampionDefeat3:
+	.string "Struck again. It happens.$"
+
+Nexus_Text_Winona_Thundurus_ChampionAfter3:
+	.string "{SPEAKER NAME_WINONA}I do not hate the storm. Lightning\n"
+	.string "finds the tallest thing. That is not\l"
+	.string "cruelty. It is only honesty.\p"
+	.string "If I build high, I must accept that the\n"
+	.string "sky will notice me.\p"
+	.string "So I will keep building high. Go on. And\n"
+	.string "if it thunders, laugh back at it.$"
+```
+
+</details>
+
 #### Galarian Zapdos
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Winona_GalarianZapdos_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -444,6 +619,115 @@ Nexus_Text_Winona_GalarianZapdos_ChampionAfter:
 	.string "is choosing where your own feet go.\p"
 	.string "…I will need a new speech for my Gym. Go\n"
 	.string "on. The plain is waiting.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Galarian Zapdos: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — humor: ela tentou ensiná-lo a voar batendo os braços, os pássaros dela morreram de vergonha, e ele saiu correndo tão rápido que o chapéu dela foi parar no outro vale. Depois, as penas que estalam como conversa.
+
+**Antes da luta**
+
+> I confess I tried to teach it to fly. I spread my arms and flapped. My birds were mortified.
+>
+> It watched me politely, then ran off so fast it knocked my hat into the next valley.
+>
+> I have not found the hat. Let us battle while I recover my dignity.
+
+**Derrota**
+
+> Dignity: not recovered. Hat: still missing.
+
+**Depois da luta**
+
+> Its feathers crackle when they touch. That is how it talks, I think. Little sparks.
+>
+> While it ran, the sparks never stopped. Chattering. I have never heard a bird so happy.
+>
+> Mine are happy in the air. That one is happy on the ground. Neither is wrong. Go and hear it chatter.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Winona_GalarianZapdos_ChampionIntro2:
+	.string "I confess I tried to teach it to fly. I\n"
+	.string "spread my arms and flapped. My birds\l"
+	.string "were mortified.\p"
+	.string "It watched me politely, then ran off so\n"
+	.string "fast it knocked my hat into the next\l"
+	.string "valley.\p"
+	.string "I have not found the hat. Let us battle\n"
+	.string "while I recover my dignity.$"
+
+Nexus_Text_Winona_GalarianZapdos_ChampionDefeat2:
+	.string "Dignity: not recovered. Hat: still\n"
+	.string "missing.$"
+
+Nexus_Text_Winona_GalarianZapdos_ChampionAfter2:
+	.string "{SPEAKER NAME_WINONA}Its feathers crackle when they touch.\n"
+	.string "That is how it talks, I think. Little\l"
+	.string "sparks.\p"
+	.string "While it ran, the sparks never stopped.\n"
+	.string "Chattering. I have never heard a bird so\l"
+	.string "happy.\p"
+	.string "Mine are happy in the air. That one is\n"
+	.string "happy on the ground. Neither is wrong.\l"
+	.string "Go and hear it chatter.$"
+```
+
+</details>
+
+**Variação 3** — a lore do engano: pelo estalo das penas, foi confundido com o pássaro do trovão antigo. Ser tomada por outra coisa ela conhece: esperam que ela seja graciosa, e ela tropeça em pontes.
+
+**Antes da luta**
+
+> Long ago, people heard its feathers crackle and took it for the great thunder bird of old. The one that flies in storms.
+>
+> It isn't. It never was. It spent years being mistaken for someone else.
+>
+> I know a little about that. People expect me to be graceful. I trip on bridges. Often. Let us battle!
+
+**Derrota**
+
+> Graceful to the end. Almost.
+
+**Depois da luta**
+
+> When they finally saw it clearly, they were disappointed. A bird that runs. How ordinary, they said.
+>
+> It kept running anyway. It was never running for them.
+>
+> …I think I shall trip on a few more bridges. On purpose. Go on. The ground is waiting for you, too.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Winona_GalarianZapdos_ChampionIntro3:
+	.string "Long ago, people heard its feathers\n"
+	.string "crackle and took it for the great\l"
+	.string "thunder bird of old. The one that flies\l"
+	.string "in storms.\p"
+	.string "It isn't. It never was. It spent years\n"
+	.string "being mistaken for someone else.\p"
+	.string "I know a little about that. People\n"
+	.string "expect me to be graceful. I trip on\l"
+	.string "bridges. Often. Let us battle!$"
+
+Nexus_Text_Winona_GalarianZapdos_ChampionDefeat3:
+	.string "Graceful to the end. Almost.$"
+
+Nexus_Text_Winona_GalarianZapdos_ChampionAfter3:
+	.string "{SPEAKER NAME_WINONA}When they finally saw it clearly, they\n"
+	.string "were disappointed. A bird that runs. How\l"
+	.string "ordinary, they said.\p"
+	.string "It kept running anyway. It was never\n"
+	.string "running for them.\p"
+	.string "…I think I shall trip on a few more\n"
+	.string "bridges. On purpose. Go on. The ground\l"
+	.string "is waiting for you, too.$"
 ```
 
 </details>

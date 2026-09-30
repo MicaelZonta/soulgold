@@ -323,6 +323,77 @@ Nexus_Text_Pryce_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas para as **quatro primeiras salas** ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. A variação 1 é a de cima, que já está no jogo; o sorteio de qual variação toca ainda não existe no código.
+
+**Variação 2** — humor de velho: os joelhos avisaram que o jogador vinha. Na idade dele toda luta pode ser a última boa, então ele não gasta tempo com cortesia.
+
+**Antes da luta**
+
+> Hm. My knees told me you were coming. They are rarely wrong about the weather, either.
+>
+> At my age, every battle might be the last good one. So I do not waste them on being polite.
+>
+> Come. Make it a good one.
+
+**Derrota**
+
+> Hmph. It was a good one. My knees will complain about it tomorrow.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Pryce_Intro2:
+	.string "Hm. My knees told me you were coming.\n"
+	.string "They are rarely wrong about the\l"
+	.string "weather, either.\p"
+	.string "At my age, every battle might be the\n"
+	.string "last good one. So I do not waste them on\l"
+	.string "being polite.\p"
+	.string "Come. Make it a good one.$"
+
+Nexus_Text_Pryce_Defeat2:
+	.string "Hmph. It was a good one. My knees will\n"
+	.string "complain about it tomorrow.$"
+```
+
+</details>
+
+**Variação 3** — a máscara de gelo. Em outro inverno ele usou uma (o Homem Mascarado de Pokémon Adventures) para não ver o que tinha perdido. R21: o jogador pode ou não conhecer essa história.
+
+**Antes da luta**
+
+> You are looking at my face as if you expected a mask. Hm. You would not be the first.
+>
+> In another winter I wore one, made of ice. I told myself it was to hide from the world.
+>
+> It was to hide from what I had lost. …Enough of that. Begin.
+
+**Derrota**
+
+> Hm. Some ice does not crack. It only waits for spring. Well done.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Pryce_Intro3:
+	.string "You are looking at my face as if you\n"
+	.string "expected a mask. Hm. You would not be\l"
+	.string "the first.\p"
+	.string "In another winter I wore one, made of\n"
+	.string "ice. I told myself it was to hide from\l"
+	.string "the world.\p"
+	.string "It was to hide from what I had lost.\n"
+	.string "…Enough of that. Begin.$"
+
+Nexus_Text_Pryce_Defeat3:
+	.string "Hm. Some ice does not crack. It only\n"
+	.string "waits for spring. Well done.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Articuno
@@ -386,6 +457,109 @@ Nexus_Text_Pryce_Articuno_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário ([R16](../NEXUS_REGRAS.md)), sem dizer o nome da espécie. A variação 1 é a de cima, que já está no jogo.
+
+**Variação 2** — a lembrança de menino: perdido numa nevasca acima de Mahogany, gritou com a ave e ela voou de volta pelo caminho de onde ele veio. Ele seguiu. Sessenta anos pensando se foi de propósito.
+
+**Antes da luta**
+
+> I saw that bird once before. I was younger than you, and lost in a snowstorm above Mahogany.
+>
+> I thought it had come to take me. So I shouted at it. A small boy, shouting at a legend.
+>
+> It turned and flew back the way I had come. I followed. Hm. Your turn to follow.
+
+**Derrota**
+
+> Hm. You follow well.
+
+**Depois da luta**
+
+> For sixty years I have wondered if it led me home on purpose, or simply went home itself.
+>
+> I have decided it does not matter. I got home.
+>
+> When you face it, watch which way it flies. Then do not be too proud to follow.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Pryce_Articuno_ChampionIntro2:
+	.string "I saw that bird once before. I was\n"
+	.string "younger than you, and lost in a\l"
+	.string "snowstorm above Mahogany.\p"
+	.string "I thought it had come to take me. So I\n"
+	.string "shouted at it. A small boy, shouting at a\l"
+	.string "legend.\p"
+	.string "It turned and flew back the way I had\n"
+	.string "come. I followed. Hm. Your turn to\l"
+	.string "follow.$"
+
+Nexus_Text_Pryce_Articuno_ChampionDefeat2:
+	.string "Hm. You follow well.$"
+
+Nexus_Text_Pryce_Articuno_ChampionAfter2:
+	.string "{SPEAKER NAME_PRYCE}For sixty years I have wondered if it\n"
+	.string "led me home on purpose, or simply went\l"
+	.string "home itself.\p"
+	.string "I have decided it does not matter. I got\n"
+	.string "home.\p"
+	.string "When you face it, watch which way it\n"
+	.string "flies. Then do not be too proud to\l"
+	.string "follow.$"
+```
+
+</details>
+
+**Variação 3** — o medo de velho: a ave não olhou para ele hoje nenhuma vez. Ou ele não está mais perdido, ou está perdido demais para ser achado. A derrota responde.
+
+**Antes da luta**
+
+> Let me tell you what frightens an old man. Not the cold. Not losing.
+>
+> It is that the bird of this pass has not looked at me once today. Not once.
+>
+> Either I am no longer lost… or I am too lost to find. Help me work out which.
+
+**Derrota**
+
+> Hm. Not lost, then. Only beaten.
+
+**Depois da luta**
+
+> When you go, it will look at you. Everyone gets looked at once.
+>
+> Do not look away. I did, the first time, and I have regretted it for a long while.
+>
+> …Go. And close the door behind you. There is a draft.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Pryce_Articuno_ChampionIntro3:
+	.string "Let me tell you what frightens an old\n"
+	.string "man. Not the cold. Not losing.\p"
+	.string "It is that the bird of this pass has not\n"
+	.string "looked at me once today. Not once.\p"
+	.string "Either I am no longer lost… or I am too\n"
+	.string "lost to find. Help me work out which.$"
+
+Nexus_Text_Pryce_Articuno_ChampionDefeat3:
+	.string "Hm. Not lost, then. Only beaten.$"
+
+Nexus_Text_Pryce_Articuno_ChampionAfter3:
+	.string "{SPEAKER NAME_PRYCE}When you go, it will look at you.\n"
+	.string "Everyone gets looked at once.\p"
+	.string "Do not look away. I did, the first time,\n"
+	.string "and I have regretted it for a long while.\p"
+	.string "…Go. And close the door behind you.\n"
+	.string "There is a draft.$"
+```
+
+</details>
+
 #### Glastrier
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Pryce_Glastrier_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -438,6 +612,113 @@ Nexus_Text_Pryce_Glastrier_ChampionAfter:
 	.string "I know something of waiting for\n"
 	.string "someone who does not come back.\l"
 	.string "...Go on. Be gentle with it.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário ([R16](../NEXUS_REGRAS.md)), sem dizer o nome da espécie. A variação 1 é a de cima, que já está no jogo.
+
+**Variação 2** — humor: o Piloswine dele e o cavalo se encaram desde o amanhecer, dois teimosos que não se mexem primeiro. O Pryce é o terceiro teimoso.
+
+**Antes da luta**
+
+> My Piloswine and that horse have been staring at each other since dawn.
+>
+> Two stubborn creatures, neither willing to move first. I have seen marriages like that.
+>
+> …I am the third stubborn creature here. Let us see who blinks.
+
+**Derrota**
+
+> Hm. The child blinked last. Remarkable.
+
+**Depois da luta**
+
+> The horse stamped. My Piloswine stamped back. Neither has moved an inch since.
+>
+> Force does not listen. Patience does not talk. Somebody has to say something first.
+>
+> …You say it. You are young. You still believe it helps.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Pryce_Glastrier_ChampionIntro2:
+	.string "My Piloswine and that horse have been\n"
+	.string "staring at each other since dawn.\p"
+	.string "Two stubborn creatures, neither willing\n"
+	.string "to move first. I have seen marriages\l"
+	.string "like that.\p"
+	.string "…I am the third stubborn creature here.\n"
+	.string "Let us see who blinks.$"
+
+Nexus_Text_Pryce_Glastrier_ChampionDefeat2:
+	.string "Hm. The child blinked last. Remarkable.$"
+
+Nexus_Text_Pryce_Glastrier_ChampionAfter2:
+	.string "{SPEAKER NAME_PRYCE}The horse stamped. My Piloswine\n"
+	.string "stamped back. Neither has moved an inch\l"
+	.string "since.\p"
+	.string "Force does not listen. Patience does\n"
+	.string "not talk. Somebody has to say\l"
+	.string "something first.\p"
+	.string "…You say it. You are young. You still\n"
+	.string "believe it helps.$"
+```
+
+</details>
+
+**Variação 3** — o cavaleiro: o Pryce ouviu que o dono do cavalo era um rei pequeno que faz os campos crescerem. Disse ao cavalo que o rei está em outra história, com um homem de máscara (o **Will**). Fio do diário.
+
+**Antes da luta**
+
+> I have heard the rider of that horse was a king. A small king, who made things grow.
+>
+> A beast that freezes every field it crosses, carrying a king who makes fields grow.
+>
+> …They must have argued constantly. I understand horses better than kings. Begin.
+
+**Derrota**
+
+> Hm. Beaten by someone half the size of the argument.
+
+**Depois da luta**
+
+> I told the horse its king is somewhere else. In another story, with a man in a mask.
+>
+> It stamped so hard the whole field rang. I believe that meant 'where.'
+>
+> I do not know where. Neither will you. But go and tell it someone is still looking.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Pryce_Glastrier_ChampionIntro3:
+	.string "I have heard the rider of that horse\n"
+	.string "was a king. A small king, who made things\l"
+	.string "grow.\p"
+	.string "A beast that freezes every field it\n"
+	.string "crosses, carrying a king who makes\l"
+	.string "fields grow.\p"
+	.string "…They must have argued constantly. I\n"
+	.string "understand horses better than kings.\l"
+	.string "Begin.$"
+
+Nexus_Text_Pryce_Glastrier_ChampionDefeat3:
+	.string "Hm. Beaten by someone half the size of\n"
+	.string "the argument.$"
+
+Nexus_Text_Pryce_Glastrier_ChampionAfter3:
+	.string "{SPEAKER NAME_PRYCE}I told the horse its king is somewhere\n"
+	.string "else. In another story, with a man in a\l"
+	.string "mask.\p"
+	.string "It stamped so hard the whole field rang.\n"
+	.string "I believe that meant 'where.'\p"
+	.string "I do not know where. Neither will you.\n"
+	.string "But go and tell it someone is still\l"
+	.string "looking.$"
 ```
 
 </details>

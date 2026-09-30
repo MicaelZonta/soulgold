@@ -320,6 +320,83 @@ Nexus_Text_Gladion_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Estas duas também servem para qualquer sala e qualquer dia ([R16](../NEXUS_REGRAS.md)): falam só de Gladion. Nada disto está no código.
+
+**Variação 2 — o portão.** O Gladion lembra do tempo em que guardava portão para gente de quem não gostava, porque era o único lugar onde deixavam ele ficar. A virada: agora ele escolhe com quem luta, e escolhe o jogador.
+
+**Antes da luta**
+
+> ...Another one. Figures.
+>
+> I used to stand at a gate for people I didn't even like. It was the only place anyone let me stand.
+>
+> I don't guard anyone's gate now. I pick who I fight.
+>
+> ...I pick you. Let's go.
+
+**Derrota**
+
+> ...Tch. I'll remember that one. Don't let it go to your head.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Gladion_Intro2:
+	.string "...Another one. Figures.\p"
+	.string "I used to stand at a gate for people I\n"
+	.string "didn't even like. It was the only place\l"
+	.string "anyone let me stand.\p"
+	.string "I don't guard anyone's gate now. I\n"
+	.string "pick who I fight.\p"
+	.string "...I pick you. Let's go.$"
+
+Nexus_Text_Gladion_Defeat2:
+	.string "...Tch. I'll remember that one. Don't let\n"
+	.string "it go to your head.$"
+```
+
+</details>
+
+**Variação 3 — a irmã.** Humor seco. A irmã anota tudo para não se perder; ele só anda até as paredes acabarem. E pede para ninguém contar a ela, senão ela anota. Não depende de o jogador conhecer a Lillie (R21).
+
+**Antes da luta**
+
+> You look like somebody who got lost on purpose.
+>
+> My sister writes everything down so she won't get lost. I just keep walking until the walls stop.
+>
+> ...Don't tell her I said that. She'd write it down.
+>
+> Come on. Show me something worth remembering.
+
+**Derrota**
+
+> ...Fine. She'd want to hear about this one. I'm not telling her.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Gladion_Intro3:
+	.string "You look like somebody who got lost on\n"
+	.string "purpose.\p"
+	.string "My sister writes everything down so\n"
+	.string "she won't get lost. I just keep walking\l"
+	.string "until the walls stop.\p"
+	.string "...Don't tell her I said that. She'd\n"
+	.string "write it down.\p"
+	.string "Come on. Show me something worth\n"
+	.string "remembering.$"
+
+Nexus_Text_Gladion_Defeat3:
+	.string "...Fine. She'd want to hear about this\n"
+	.string "one. I'm not telling her.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Gladion é o **campeão**, a luta logo antes do lendário do dia. Uma fala por lendário; o nome da espécie não aparece ([R16](../NEXUS_REGRAS.md)). Rótulos com a espécie porque Gladion é campeão de dois.
@@ -387,6 +464,124 @@ Nexus_Text_Gladion_Silvally_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Sobre a criatura, pelo olhar de Gladion, sem o nome da espécie ([R16](../NEXUS_REGRAS.md)). Nada disto está no código.
+
+**Variação 2 — a resposta.** A criatura muda de cor a cada coisa nova que vê: vira o que vence aquilo. Foi feita para isso, e ninguém perguntou o que ela queria ser. O parceiro do Gladion escolheu um tipo e ficou nele, e ele demorou para entender que isso foi escolha. No depois: dê a ela uma pergunta que ela não consiga responder virando outra coisa, como uma mão estendida.
+
+**Antes da luta**
+
+> It keeps changing color. Every time it looks at something new, it turns into whatever beats it.
+>
+> That's what they made it for. See a threat, become the answer. Nobody asked what it wanted to be.
+>
+> ...Mine picked one type and kept it. Took me a while to understand that was a choice.
+>
+> Come on. Let's see what you are.
+
+**Derrota**
+
+> ...Whatever you are, it works.
+
+**Depois da luta**
+
+> They called it a killer before it ever met the things it was supposed to kill.
+>
+> It never got to be anything else. Not a partner. Not a pet. Just an answer to a question.
+>
+> So give it a question it can't answer. Something it can't turn into.
+>
+> ...Like a hand held out. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Gladion_Silvally_ChampionIntro2:
+	.string "It keeps changing color. Every time it\n"
+	.string "looks at something new, it turns into\l"
+	.string "whatever beats it.\p"
+	.string "That's what they made it for. See a\n"
+	.string "threat, become the answer. Nobody\l"
+	.string "asked what it wanted to be.\p"
+	.string "...Mine picked one type and kept it.\n"
+	.string "Took me a while to understand that was\l"
+	.string "a choice.\p"
+	.string "Come on. Let's see what you are.$"
+
+Nexus_Text_Gladion_Silvally_ChampionDefeat2:
+	.string "...Whatever you are, it works.$"
+
+Nexus_Text_Gladion_Silvally_ChampionAfter2:
+	.string "{SPEAKER NAME_GLADION}They called it a killer before it ever\n"
+	.string "met the things it was supposed to kill.\p"
+	.string "It never got to be anything else. Not a\n"
+	.string "partner. Not a pet. Just an answer to a\l"
+	.string "question.\p"
+	.string "So give it a question it can't answer.\n"
+	.string "Something it can't turn into.\p"
+	.string "...Like a hand held out. Go.$"
+```
+
+</details>
+
+**Variação 3 — os três.** A culpa do Gladion. Onde ele vem, fizeram três; ele só conseguiu carregar um, e disse a si mesmo por anos que voltaria pelos outros. O de lá tem um arranhão na perna igual ao do dele: mesmo tanque, talvez, outro mundo. Na derrota ele reconhece que o jogador teria levado os três. Ecoa a página 2 do diário.
+
+**Antes da luta**
+
+> There were three, where I come from. I could only carry one out.
+>
+> I told myself I'd go back for the other two. I kept telling myself that for years.
+>
+> ...That one out there has a scratch on its leg. Mine has the same scratch. Same tank, maybe. Different world.
+>
+> Doesn't matter. Battle me.
+
+**Derrota**
+
+> ...You'd have carried all three. Wouldn't you.
+
+**Depois da luta**
+
+> I was a kid. I ran out with a weapon under my arm and called it a rescue.
+>
+> It was. And it wasn't. The ones I left behind learned to stop waiting.
+>
+> That one stopped waiting a long time ago. It won't come to you. Don't expect it to.
+>
+> ...Go anyway. Somebody should.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Gladion_Silvally_ChampionIntro3:
+	.string "There were three, where I come from. I\n"
+	.string "could only carry one out.\p"
+	.string "I told myself I'd go back for the other\n"
+	.string "two. I kept telling myself that for\l"
+	.string "years.\p"
+	.string "...That one out there has a scratch on\n"
+	.string "its leg. Mine has the same scratch. Same\l"
+	.string "tank, maybe. Different world.\p"
+	.string "Doesn't matter. Battle me.$"
+
+Nexus_Text_Gladion_Silvally_ChampionDefeat3:
+	.string "...You'd have carried all three.\n"
+	.string "Wouldn't you.$"
+
+Nexus_Text_Gladion_Silvally_ChampionAfter3:
+	.string "{SPEAKER NAME_GLADION}I was a kid. I ran out with a weapon\n"
+	.string "under my arm and called it a rescue.\p"
+	.string "It was. And it wasn't. The ones I left\n"
+	.string "behind learned to stop waiting.\p"
+	.string "That one stopped waiting a long time\n"
+	.string "ago. It won't come to you. Don't\l"
+	.string "expect it to.\p"
+	.string "...Go anyway. Somebody should.$"
+```
+
+</details>
+
 
 #### Tapu Bulu
 
@@ -443,6 +638,117 @@ Nexus_Text_Gladion_TapuBulu_ChampionAfter:
 	.string "It was right not to help me.\p"
 	.string "...Don't make it angry. Or do. Just\n"
 	.string "win.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Sobre a criatura, pelo olhar de Gladion, sem o nome da espécie ([R16](../NEXUS_REGRAS.md)). Nada disto está no código.
+
+**Variação 2 — ninguém deve nada.** O guardião não liga para ninguém, e as pessoas odeiam isso: querem um guardião que venha quando chamam. O Gladion prefere assim. No depois: as oferendas nas ruínas ficam intocadas, porque ele tira força do crescer, não do dar. Quer respeito dele? Não leve nada; fique e cresça.
+
+**Antes da luta**
+
+> It doesn't care about you. Or me. Or anyone on that island.
+>
+> People hate that. They want a guardian that shows up when they call.
+>
+> ...I like it better this way. Nobody owes anybody anything. Let's fight.
+
+**Derrota**
+
+> ...Hmph. You didn't need anyone to show up either.
+
+**Depois da luta**
+
+> People still leave offerings at its ruins. It never touches them.
+>
+> It takes its strength from the growing. Not from the giving.
+>
+> Want it to respect you? Don't bring it anything. Just stand there and grow.
+>
+> ...That's what I did. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Gladion_TapuBulu_ChampionIntro2:
+	.string "It doesn't care about you. Or me. Or\n"
+	.string "anyone on that island.\p"
+	.string "People hate that. They want a guardian\n"
+	.string "that shows up when they call.\p"
+	.string "...I like it better this way. Nobody owes\n"
+	.string "anybody anything. Let's fight.$"
+
+Nexus_Text_Gladion_TapuBulu_ChampionDefeat2:
+	.string "...Hmph. You didn't need anyone to show\n"
+	.string "up either.$"
+
+Nexus_Text_Gladion_TapuBulu_ChampionAfter2:
+	.string "{SPEAKER NAME_GLADION}People still leave offerings at its\n"
+	.string "ruins. It never touches them.\p"
+	.string "It takes its strength from the growing.\n"
+	.string "Not from the giving.\p"
+	.string "Want it to respect you? Don't bring it\n"
+	.string "anything. Just stand there and grow.\p"
+	.string "...That's what I did. Go.$"
+```
+
+</details>
+
+**Variação 3 — o chefe que saiu.** Po Town por dentro. O chefe dizia que a cidade era deles porque ninguém mais queria; depois o mato passou o muro e ele disse que aquilo também era deles. Uma noite saiu andando e não voltou, e o sino tocou logo depois. Neste fragmento o Guzma entrou num buraco no céu (par com o caderno do Guzma, que não sabe disso). No depois: a floresta cresce por cima do que as pessoas deixam para trás, e é o único perdão que ela conhece.
+
+**Antes da luta**
+
+> The boss used to say the town was ours because nobody else wanted it.
+>
+> Then the vines came over the wall, and he said those were ours too. He said a lot of things.
+>
+> ...He walked off one night and never came back. The bell rang right after. Coincidence. Probably.
+>
+> Enough. Come on.
+
+**Derrota**
+
+> ...He'd have hated losing to you. I don't mind.
+
+**Depois da luta**
+
+> It grows a forest over whatever people leave behind. Houses. Walls. Grudges.
+>
+> It'll grow over this place too, once we're all gone.
+>
+> That's not a threat. It's the only kind of forgiveness it knows.
+>
+> ...Don't make it wait. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Gladion_TapuBulu_ChampionIntro3:
+	.string "The boss used to say the town was ours\n"
+	.string "because nobody else wanted it.\p"
+	.string "Then the vines came over the wall, and\n"
+	.string "he said those were ours too. He said a\l"
+	.string "lot of things.\p"
+	.string "...He walked off one night and never\n"
+	.string "came back. The bell rang right after.\l"
+	.string "Coincidence. Probably.\p"
+	.string "Enough. Come on.$"
+
+Nexus_Text_Gladion_TapuBulu_ChampionDefeat3:
+	.string "...He'd have hated losing to you. I\n"
+	.string "don't mind.$"
+
+Nexus_Text_Gladion_TapuBulu_ChampionAfter3:
+	.string "{SPEAKER NAME_GLADION}It grows a forest over whatever people\n"
+	.string "leave behind. Houses. Walls. Grudges.\p"
+	.string "It'll grow over this place too, once\n"
+	.string "we're all gone.\p"
+	.string "That's not a threat. It's the only kind\n"
+	.string "of forgiveness it knows.\p"
+	.string "...Don't make it wait. Go.$"
 ```
 
 </details>

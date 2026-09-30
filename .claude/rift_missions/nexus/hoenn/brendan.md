@@ -317,6 +317,78 @@ Nexus_Text_Brendan_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para as quatro primeiras salas, com ângulos diferentes da variação 1 (que está no jogo). Seguem o [R16](../NEXUS_REGRAS.md): falam dele mesmo, sem o lugar nem a criatura do dia.
+
+**Variação 2** — a casa vazia ao lado (R21: o vizinho que nunca chegou pode ser o jogador, sem depender disso).
+
+**Antes da luta**
+
+> Oh, hey. Sorry, you looked like someone for a second.
+>
+> There's a house next to mine that's been empty my whole life. Moving truck and everything. Nobody ever got out.
+>
+> I always figured whoever it was would be a Trainer. A good one. …Let's see if I guessed right!
+
+**Derrota**
+
+> Yep. Guessed right. I'm keeping that page.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brendan_Intro2:
+	.string "Oh, hey. Sorry, you looked like someone\n"
+	.string "for a second.\p"
+	.string "There's a house next to mine that's\n"
+	.string "been empty my whole life. Moving truck\l"
+	.string "and everything. Nobody ever got out.\p"
+	.string "I always figured whoever it was would\n"
+	.string "be a Trainer. A good one. …Let's see if I\l"
+	.string "guessed right!$"
+
+Nexus_Text_Brendan_Defeat2:
+	.string "Yep. Guessed right. I'm keeping that\n"
+	.string "page.$"
+```
+
+</details>
+
+**Variação 3** — humor: o rival que sempre perde e ainda ajuda o vencedor.
+
+**Antes da luta**
+
+> You know what I'm tired of? Losing to people and then helping them with their Pokédex.
+>
+> Don't laugh. It happens a lot. They beat me, I say 'nice job,' I show them where the good grass is.
+>
+> Not today. Today I'm keeping the good grass to myself!
+
+**Derrota**
+
+> …Nice job. See? I said it again. I can't help it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brendan_Intro3:
+	.string "You know what I'm tired of? Losing to\n"
+	.string "people and then helping them with their\l"
+	.string "Pokédex.\p"
+	.string "Don't laugh. It happens a lot. They\n"
+	.string "beat me, I say 'nice job,' I show them\l"
+	.string "where the good grass is.\p"
+	.string "Not today. Today I'm keeping the good\n"
+	.string "grass to myself!$"
+
+Nexus_Text_Brendan_Defeat3:
+	.string "…Nice job. See? I said it again. I can't\n"
+	.string "help it.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -381,6 +453,108 @@ Nexus_Text_Brendan_Reshiram_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)); a variação 1 é a que está no jogo.
+
+**Variação 2** — a mentira de teste: o deserto esquenta quando alguém mente.
+
+**Antes da luta**
+
+> Tried an experiment out there. I told the white dragon one tiny lie. Just to see.
+>
+> I said I'd never lost a battle. The whole desert went hot, like standing in front of an oven.
+>
+> So, for the record: I lose a lot. Probably about to lose again. Let's go!
+
+**Derrota**
+
+> See? Totally true. Still hot, though.
+
+**Depois da luta**
+
+> Funny thing. Out there, there's no shade anywhere. Nothing gets to hide.
+>
+> I kept waiting for my shadow to show up. It never did. I don't think it's allowed.
+>
+> When you go in, don't try to look tougher than you are. It can tell. Trust me.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brendan_Reshiram_ChampionIntro2:
+	.string "Tried an experiment out there. I told\n"
+	.string "the white dragon one tiny lie. Just to\l"
+	.string "see.\p"
+	.string "I said I'd never lost a battle. The\n"
+	.string "whole desert went hot, like standing in\l"
+	.string "front of an oven.\p"
+	.string "So, for the record: I lose a lot.\n"
+	.string "Probably about to lose again. Let's go!$"
+
+Nexus_Text_Brendan_Reshiram_ChampionDefeat2:
+	.string "See? Totally true. Still hot, though.$"
+
+Nexus_Text_Brendan_Reshiram_ChampionAfter2:
+	.string "{SPEAKER NAME_BRENDAN}Funny thing. Out there, there's no\n"
+	.string "shade anywhere. Nothing gets to hide.\p"
+	.string "I kept waiting for my shadow to show up.\n"
+	.string "It never did. I don't think it's allowed.\p"
+	.string "When you go in, don't try to look\n"
+	.string "tougher than you are. It can tell. Trust\l"
+	.string "me.$"
+```
+
+</details>
+
+**Variação 3** — o gêmeo: verdade e ideal separados em duas pessoas (aceno à May sem nomeá-la; fio Unova).
+
+**Antes da luta**
+
+> The books say that dragon had a twin. A black one, for people with big dreams.
+>
+> I only got the white one. The one for people who just… tell it how it is.
+>
+> Kind of a boring hero, right? Let's make it interesting!
+
+**Derrota**
+
+> Not boring. I'll give you that.
+
+**Depois da luta**
+
+> Sometimes I think the black one ended up with someone I'd have liked. Someone who dreams big and laughs a lot.
+>
+> Truth and ideals, split up. Two people who never meet.
+>
+> Weird thing to be sad about. Go on. Tell it I said hi. Truthfully.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brendan_Reshiram_ChampionIntro3:
+	.string "The books say that dragon had a twin. A\n"
+	.string "black one, for people with big dreams.\p"
+	.string "I only got the white one. The one for\n"
+	.string "people who just… tell it how it is.\p"
+	.string "Kind of a boring hero, right? Let's make\n"
+	.string "it interesting!$"
+
+Nexus_Text_Brendan_Reshiram_ChampionDefeat3:
+	.string "Not boring. I'll give you that.$"
+
+Nexus_Text_Brendan_Reshiram_ChampionAfter3:
+	.string "{SPEAKER NAME_BRENDAN}Sometimes I think the black one ended\n"
+	.string "up with someone I'd have liked. Someone\l"
+	.string "who dreams big and laughs a lot.\p"
+	.string "Truth and ideals, split up. Two people\n"
+	.string "who never meet.\p"
+	.string "Weird thing to be sad about. Go on. Tell\n"
+	.string "it I said hi. Truthfully.$"
+```
+
+</details>
+
 #### Jirachi
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Brendan_Jirachi_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -433,6 +607,109 @@ Nexus_Text_Brendan_Jirachi_ChampionAfter:
 	.string "It only wakes up for a week every\n"
 	.string "thousand years, so hurry. And if you\l"
 	.string "find my tag, leave it where it is.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)); a variação 1 é a que está no jogo.
+
+**Variação 2** — o pesquisador cataloga os desejos (humor).
+
+**Antes da luta**
+
+> I've been cataloging the wishes on the hill. Research habit. Can't stop.
+>
+> Twelve want money. Forty want to go home. One just says 'more berries.' I respect that one.
+>
+> My dad would call this great data. Let's add a battle to it!
+
+**Derrota**
+
+> Data point: you're strong. Very consistent result.
+
+**Depois da luta**
+
+> The one that grants them is asleep almost all the time. Seven days awake, then a thousand years of sleep.
+>
+> Imagine waking up to a hill full of people asking for stuff. I'd go back to sleep too.
+>
+> So when you meet it, maybe don't ask for anything. Just say good morning.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brendan_Jirachi_ChampionIntro2:
+	.string "I've been cataloging the wishes on the\n"
+	.string "hill. Research habit. Can't stop.\p"
+	.string "Twelve want money. Forty want to go\n"
+	.string "home. One just says 'more berries.' I\l"
+	.string "respect that one.\p"
+	.string "My dad would call this great data. Let's\n"
+	.string "add a battle to it!$"
+
+Nexus_Text_Brendan_Jirachi_ChampionDefeat2:
+	.string "Data point: you're strong. Very\n"
+	.string "consistent result.$"
+
+Nexus_Text_Brendan_Jirachi_ChampionAfter2:
+	.string "{SPEAKER NAME_BRENDAN}The one that grants them is asleep\n"
+	.string "almost all the time. Seven days awake,\l"
+	.string "then a thousand years of sleep.\p"
+	.string "Imagine waking up to a hill full of\n"
+	.string "people asking for stuff. I'd go back to\l"
+	.string "sleep too.\p"
+	.string "So when you meet it, maybe don't ask\n"
+	.string "for anything. Just say good morning.$"
+```
+
+</details>
+
+**Variação 3** — os desejos que ele rasgou antes do pequeno (dúvida; liga à casa vazia da variação 2 genérica).
+
+**Antes da luta**
+
+> The comet up there hasn't moved since I got here. Seven days are supposed to go by. They won't start.
+>
+> I think it's waiting for someone to finish their wish. I keep rewriting mine.
+>
+> Maybe a battle will help me decide!
+
+**Derrota**
+
+> Okay. Decided. …Not telling you.
+
+**Depois da luta**
+
+> My first wish was 'let me be the hero of something.' I tore it up.
+>
+> The second was 'let someone move in next door.' Tore that up too. Not fair, asking someone to live somewhere.
+>
+> The one up there now is small. Small ones come true, I think. Go on. It's awake.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brendan_Jirachi_ChampionIntro3:
+	.string "The comet up there hasn't moved since\n"
+	.string "I got here. Seven days are supposed to\l"
+	.string "go by. They won't start.\p"
+	.string "I think it's waiting for someone to\n"
+	.string "finish their wish. I keep rewriting mine.\p"
+	.string "Maybe a battle will help me decide!$"
+
+Nexus_Text_Brendan_Jirachi_ChampionDefeat3:
+	.string "Okay. Decided. …Not telling you.$"
+
+Nexus_Text_Brendan_Jirachi_ChampionAfter3:
+	.string "{SPEAKER NAME_BRENDAN}My first wish was 'let me be the hero of\n"
+	.string "something.' I tore it up.\p"
+	.string "The second was 'let someone move in\n"
+	.string "next door.' Tore that up too. Not fair,\l"
+	.string "asking someone to live somewhere.\p"
+	.string "The one up there now is small. Small ones\n"
+	.string "come true, I think. Go on. It's awake.$"
 ```
 
 </details>

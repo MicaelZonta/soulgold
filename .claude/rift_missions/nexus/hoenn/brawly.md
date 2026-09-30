@@ -315,6 +315,75 @@ Nexus_Text_Brawly_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para as quatro primeiras salas, com ângulos diferentes da variação 1 (que está no jogo). Seguem o [R16](../NEXUS_REGRAS.md): falam dele mesmo, sem o lugar nem a criatura do dia.
+
+**Variação 2** — a caverna escura de Dewford (lembrança de treino).
+
+**Antes da luta**
+
+> Ever trained in total darkness? Like, can't-see-your-own-hands dark?
+>
+> That's the cave on my island. You learn to feel a punch coming before you see it.
+>
+> So close your eyes if you want. Mine are open. Let's go!
+
+**Derrota**
+
+> Didn't see that coming. Literally.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brawly_Intro2:
+	.string "Ever trained in total darkness? Like,\n"
+	.string "can't-see-your-own-hands dark?\p"
+	.string "That's the cave on my island. You learn\n"
+	.string "to feel a punch coming before you see\l"
+	.string "it.\p"
+	.string "So close your eyes if you want. Mine are\n"
+	.string "open. Let's go!$"
+
+Nexus_Text_Brawly_Defeat2:
+	.string "Didn't see that coming. Literally.$"
+```
+
+</details>
+
+**Variação 3** — a ilha que sumiu (R21: o que aconteceu diferente no fragmento dele, dito com humor de surfista).
+
+**Antes da luta**
+
+> Hey, have you seen an island? Small. Palm trees. One Gym, one Poké Mart, big cave?
+>
+> I paddled out one morning, and when I turned around it wasn't there.
+>
+> No worries! Waves bring everything back eventually. Meanwhile, battle!
+
+**Derrota**
+
+> Wiped out. Still no island. Still no worries.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brawly_Intro3:
+	.string "Hey, have you seen an island? Small.\n"
+	.string "Palm trees. One Gym, one Poké Mart, big\l"
+	.string "cave?\p"
+	.string "I paddled out one morning, and when I\n"
+	.string "turned around it wasn't there.\p"
+	.string "No worries! Waves bring everything back\n"
+	.string "eventually. Meanwhile, battle!$"
+
+Nexus_Text_Brawly_Defeat3:
+	.string "Wiped out. Still no island. Still no\n"
+	.string "worries.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -374,6 +443,109 @@ Nexus_Text_Brawly_Keldeo_ChampionAfter:
 	.string "big one to fall off of. It'll come back\l"
 	.string "better. That's how it works for all of\l"
 	.string "us.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)); a variação 1 é a que está no jogo.
+
+**Variação 2** — os três mestres de espada contra o único mestre dele, o mar.
+
+**Antes da luta**
+
+> Word is that colt had three teachers. Big, serious ones. Swords, all of 'em.
+>
+> I had one teacher: the ocean. Never said a word. Just knocked me down till I got it.
+>
+> Let's see whose training holds up! Let's go!
+
+**Derrota**
+
+> Your teachers did good, dude.
+
+**Depois da luta**
+
+> The old story says the three found it after a flood took its herd.
+>
+> They taught it to stand on the thing that took everything.
+>
+> I get that more than I'd like. My island's under that water somewhere.
+>
+> Go on. Ride with it, not against it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brawly_Keldeo_ChampionIntro2:
+	.string "Word is that colt had three teachers.\n"
+	.string "Big, serious ones. Swords, all of 'em.\p"
+	.string "I had one teacher: the ocean. Never\n"
+	.string "said a word. Just knocked me down till I\l"
+	.string "got it.\p"
+	.string "Let's see whose training holds up!\n"
+	.string "Let's go!$"
+
+Nexus_Text_Brawly_Keldeo_ChampionDefeat2:
+	.string "Your teachers did good, dude.$"
+
+Nexus_Text_Brawly_Keldeo_ChampionAfter2:
+	.string "{SPEAKER NAME_BRAWLY}The old story says the three found it\n"
+	.string "after a flood took its herd.\p"
+	.string "They taught it to stand on the thing\n"
+	.string "that took everything.\p"
+	.string "I get that more than I'd like. My\n"
+	.string "island's under that water somewhere.\p"
+	.string "Go on. Ride with it, not against it.$"
+```
+
+</details>
+
+**Variação 3** — humor: a corrida perdida, e o potro que voltava por ele.
+
+**Antes da luta**
+
+> I tried racing it. Paddled as hard as I've ever paddled.
+>
+> It went past me, turned around, came back, and went past me again. Just to be nice.
+>
+> My arms are noodles now. Doesn't matter! Fists still work!
+
+**Derrota**
+
+> Noodle arms. Knew it.
+
+**Depois da luta**
+
+> Thing is, it came back for me. Every time. Didn't have to.
+>
+> That's a good heart, dude. Fast feet are nothing without it.
+>
+> If it falls today, help it up. It'll remember.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brawly_Keldeo_ChampionIntro3:
+	.string "I tried racing it. Paddled as hard as\n"
+	.string "I've ever paddled.\p"
+	.string "It went past me, turned around, came\n"
+	.string "back, and went past me again. Just to be\l"
+	.string "nice.\p"
+	.string "My arms are noodles now. Doesn't\n"
+	.string "matter! Fists still work!$"
+
+Nexus_Text_Brawly_Keldeo_ChampionDefeat3:
+	.string "Noodle arms. Knew it.$"
+
+Nexus_Text_Brawly_Keldeo_ChampionAfter3:
+	.string "{SPEAKER NAME_BRAWLY}Thing is, it came back for me. Every\n"
+	.string "time. Didn't have to.\p"
+	.string "That's a good heart, dude. Fast feet\n"
+	.string "are nothing without it.\p"
+	.string "If it falls today, help it up. It'll\n"
+	.string "remember.$"
 ```
 
 </details>
@@ -440,6 +612,110 @@ Nexus_Text_Brawly_IronHands_ChampionAfter:
 	.string "it keeps getting better.\p"
 	.string "Something that can't get tired can't\n"
 	.string "get any stronger. Go show it that.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)); a variação 1 é a que está no jogo.
+
+**Variação 2** — as marcas nos pilares: a mesma palma, todo dia (liga ao aplauso do Looker File).
+
+**Antes da luta**
+
+> Count the dents in those steel pillars. Go on. I got to three hundred before I quit.
+>
+> Every one's the same palm, same spot, a little deeper. That's how my Hariyama trains too.
+>
+> Somebody taught it that. I wanna know if it was me. Let's go!
+
+**Derrota**
+
+> Okay. Big hands. Bigger heart. Good match.
+
+**Depois da luta**
+
+> A Hariyama's slap isn't about power. It's about showing up to the same pillar every morning.
+>
+> That iron one's been showing up for who knows how long. With nobody watching.
+>
+> Clap for it when you win. I bet nobody ever has.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brawly_IronHands_ChampionIntro2:
+	.string "Count the dents in those steel pillars.\n"
+	.string "Go on. I got to three hundred before I\l"
+	.string "quit.\p"
+	.string "Every one's the same palm, same spot, a\n"
+	.string "little deeper. That's how my Hariyama\l"
+	.string "trains too.\p"
+	.string "Somebody taught it that. I wanna know\n"
+	.string "if it was me. Let's go!$"
+
+Nexus_Text_Brawly_IronHands_ChampionDefeat2:
+	.string "Okay. Big hands. Bigger heart. Good\n"
+	.string "match.$"
+
+Nexus_Text_Brawly_IronHands_ChampionAfter2:
+	.string "{SPEAKER NAME_BRAWLY}A Hariyama's slap isn't about power.\n"
+	.string "It's about showing up to the same\l"
+	.string "pillar every morning.\p"
+	.string "That iron one's been showing up for who\n"
+	.string "knows how long. With nobody watching.\p"
+	.string "Clap for it when you win. I bet nobody\n"
+	.string "ever has.$"
+```
+
+</details>
+
+**Variação 3** — o medo: e se for isso que o Hariyama vira depois dele?.
+
+**Antes da luta**
+
+> What if that's what my Hariyama turns into? After me, I mean. After a long, long time.
+>
+> Iron, and sparks, and nobody to train with.
+>
+> Nah. Can't think like that. Can't punch like that either. Let's go!
+
+**Derrota**
+
+> Still punching. Good sign.
+
+**Depois da luta**
+
+> Made up my mind. If that's the future, I'm leaving it a message.
+>
+> Something like: 'You were good before you were iron. Somebody loved your stance.'
+>
+> Take that in there with you, okay? Say it loud. Iron's got good ears.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Brawly_IronHands_ChampionIntro3:
+	.string "What if that's what my Hariyama turns\n"
+	.string "into? After me, I mean. After a long,\l"
+	.string "long time.\p"
+	.string "Iron, and sparks, and nobody to train\n"
+	.string "with.\p"
+	.string "Nah. Can't think like that. Can't punch\n"
+	.string "like that either. Let's go!$"
+
+Nexus_Text_Brawly_IronHands_ChampionDefeat3:
+	.string "Still punching. Good sign.$"
+
+Nexus_Text_Brawly_IronHands_ChampionAfter3:
+	.string "{SPEAKER NAME_BRAWLY}Made up my mind. If that's the future,\n"
+	.string "I'm leaving it a message.\p"
+	.string "Something like: 'You were good before\n"
+	.string "you were iron. Somebody loved your\l"
+	.string "stance.'\p"
+	.string "Take that in there with you, okay? Say\n"
+	.string "it loud. Iron's got good ears.$"
 ```
 
 </details>

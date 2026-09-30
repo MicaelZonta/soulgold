@@ -321,6 +321,75 @@ Nexus_Text_Roxanne_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para as quatro primeiras salas, com ângulos diferentes da variação 1 (que está no jogo). Seguem o [R16](../NEXUS_REGRAS.md): falam dela mesma, sem o lugar nem a criatura do dia.
+
+**Variação 2** — humor: o Nosepass que perdeu o norte.
+
+**Antes da luta**
+
+> Excuse me, have you seen a Nosepass? Mine always faces north, and I seem to have lost north.
+>
+> Nothing here points anywhere. It's quite upsetting for a Rock type.
+>
+> Well. A battle has a clear direction, at least. Shall we?
+
+**Derrota**
+
+> Your lesson, not mine. I'll take notes.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Roxanne_Intro2:
+	.string "Excuse me, have you seen a Nosepass?\n"
+	.string "Mine always faces north, and I seem to\l"
+	.string "have lost north.\p"
+	.string "Nothing here points anywhere. It's\n"
+	.string "quite upsetting for a Rock type.\p"
+	.string "Well. A battle has a clear direction, at\n"
+	.string "least. Shall we?$"
+
+Nexus_Text_Roxanne_Defeat2:
+	.string "Your lesson, not mine. I'll take notes.$"
+```
+
+</details>
+
+**Variação 3** — a regra da Trainer's School que nem ela seguiu (lembrança de uma derrota).
+
+**Antes da luta**
+
+> The Trainer's School in Rustboro has a rule I wrote myself: check your notes before every battle.
+>
+> Nobody follows it. Including me, once. I lost rather badly.
+>
+> So now I check twice. …Right. Checked. Let us begin!
+
+**Derrota**
+
+> Checked twice, lost once. The data is humbling.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Roxanne_Intro3:
+	.string "The Trainer's School in Rustboro has a\n"
+	.string "rule I wrote myself: check your notes\l"
+	.string "before every battle.\p"
+	.string "Nobody follows it. Including me, once. I\n"
+	.string "lost rather badly.\p"
+	.string "So now I check twice. …Right. Checked.\n"
+	.string "Let us begin!$"
+
+Nexus_Text_Roxanne_Defeat3:
+	.string "Checked twice, lost once. The data is\n"
+	.string "humbling.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -392,6 +461,111 @@ Nexus_Text_Roxanne_Terapagos_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)); a variação 1 é a que está no jogo.
+
+**Variação 2** — humor: inventar nomes de cor para cristais.
+
+**Antes da luta**
+
+> I've invented eleven new words for colors today. The crystals down there keep needing more.
+>
+> 'Grenite.' 'Basaltine.' 'Rustboro dusk.' I'm rather proud of that one.
+>
+> Now, let's see what color a battle turns. My team!
+
+**Derrota**
+
+> That color, I shall call 'humbling.'
+
+**Depois da luta**
+
+> Every crystal changes when the light touches it. Every one becomes something different.
+>
+> Students are like that. Teach twenty the same lesson and you get twenty different people.
+>
+> The one down there is the teacher of them all, I think. Go on. It's a hard class.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Roxanne_Terapagos_ChampionIntro2:
+	.string "I've invented eleven new words for\n"
+	.string "colors today. The crystals down there\l"
+	.string "keep needing more.\p"
+	.string "'Grenite.' 'Basaltine.' 'Rustboro\n"
+	.string "dusk.' I'm rather proud of that one.\p"
+	.string "Now, let's see what color a battle\n"
+	.string "turns. My team!$"
+
+Nexus_Text_Roxanne_Terapagos_ChampionDefeat2:
+	.string "That color, I shall call 'humbling.'$"
+
+Nexus_Text_Roxanne_Terapagos_ChampionAfter2:
+	.string "{SPEAKER NAME_ROXANNE}Every crystal changes when the light\n"
+	.string "touches it. Every one becomes\l"
+	.string "something different.\p"
+	.string "Students are like that. Teach twenty\n"
+	.string "the same lesson and you get twenty\l"
+	.string "different people.\p"
+	.string "The one down there is the teacher of\n"
+	.string "them all, I think. Go on. It's a hard\l"
+	.string "class.$"
+```
+
+</details>
+
+**Variação 3** — o chão do Ginásio de Rustboro florescendo em cristal (o que ela perdeu, ou ganhou).
+
+**Antes da luta**
+
+> Rustboro is a city of stone. I grew up thinking that meant it would never change.
+>
+> This morning the floor of my Gym began to grow crystals too. I watched it bloom.
+>
+> I can't tell if I'm frightened or delighted. Let a battle decide!
+
+**Derrota**
+
+> Delighted, I think. Mostly.
+
+**Depois da luta**
+
+> The old builders of Rustboro used to say that stone is patient.
+>
+> They were right. It was patient for a very long time. It was only waiting to be asked.
+>
+> Go on. Whatever it asks you to become, take a moment before you answer.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Roxanne_Terapagos_ChampionIntro3:
+	.string "Rustboro is a city of stone. I grew up\n"
+	.string "thinking that meant it would never\l"
+	.string "change.\p"
+	.string "This morning the floor of my Gym began\n"
+	.string "to grow crystals too. I watched it\l"
+	.string "bloom.\p"
+	.string "I can't tell if I'm frightened or\n"
+	.string "delighted. Let a battle decide!$"
+
+Nexus_Text_Roxanne_Terapagos_ChampionDefeat3:
+	.string "Delighted, I think. Mostly.$"
+
+Nexus_Text_Roxanne_Terapagos_ChampionAfter3:
+	.string "{SPEAKER NAME_ROXANNE}The old builders of Rustboro used to\n"
+	.string "say that stone is patient.\p"
+	.string "They were right. It was patient for a\n"
+	.string "very long time. It was only waiting to be\l"
+	.string "asked.\p"
+	.string "Go on. Whatever it asks you to become,\n"
+	.string "take a moment before you answer.$"
+```
+
+</details>
+
 #### Uxie
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Roxanne_Uxie_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -452,6 +626,111 @@ Nexus_Text_Roxanne_Uxie_ChampionAfter:
 	.string "then. Some things a student has to\l"
 	.string "forget, to learn them properly.\p"
 	.string "…That goes in the notebook, too. Go on.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)); a variação 1 é a que está no jogo.
+
+**Variação 2** — a folha que voltou em branco do lago.
+
+**Antes da luta**
+
+> I dropped a page of my notes into the lake. When I pulled it out, it was blank.
+>
+> Not wet. Not smudged. Blank. As if I had never written it.
+>
+> I can't remember what was on it. That frightens me more than any battle. …Let us begin.
+
+**Derrota**
+
+> I'll write this one on the inside cover. Away from the water.
+
+**Depois da luta**
+
+> I've been thinking. Perhaps the page wasn't taken. Perhaps it was returned.
+>
+> Things I learned wrongly, handed back so I can learn them again. A good teacher does that with a red pen.
+>
+> Go on. If you forget anything in there, I'll lend you my notes.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Roxanne_Uxie_ChampionIntro2:
+	.string "I dropped a page of my notes into the\n"
+	.string "lake. When I pulled it out, it was blank.\p"
+	.string "Not wet. Not smudged. Blank. As if I had\n"
+	.string "never written it.\p"
+	.string "I can't remember what was on it. That\n"
+	.string "frightens me more than any battle. …Let\l"
+	.string "us begin.$"
+
+Nexus_Text_Roxanne_Uxie_ChampionDefeat2:
+	.string "I'll write this one on the inside cover.\n"
+	.string "Away from the water.$"
+
+Nexus_Text_Roxanne_Uxie_ChampionAfter2:
+	.string "{SPEAKER NAME_ROXANNE}I've been thinking. Perhaps the page\n"
+	.string "wasn't taken. Perhaps it was returned.\p"
+	.string "Things I learned wrongly, handed back\n"
+	.string "so I can learn them again. A good\l"
+	.string "teacher does that with a red pen.\p"
+	.string "Go on. If you forget anything in there,\n"
+	.string "I'll lend you my notes.$"
+```
+
+</details>
+
+**Variação 3** — a letra que ela não reconhece no próprio caderno (aceno leve ao fio da mão que muda).
+
+**Antes da luta**
+
+> Some pages in my notebook are in handwriting I don't recognize. Neat, but hurried.
+>
+> They describe battles I don't remember. Very good battles. Very careful notes.
+>
+> Either I've forgotten, or someone else has been writing in my book. Let's settle one question today!
+
+**Derrota**
+
+> Settled. This one I'll remember myself.
+
+**Depois da luta**
+
+> The one on the lake keeps what people forget. I asked it to give my missing days back.
+>
+> It didn't open its eyes. I think that was an answer.
+>
+> Perhaps some things are better kept by someone else. …I'll still check. Go on.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Roxanne_Uxie_ChampionIntro3:
+	.string "Some pages in my notebook are in\n"
+	.string "handwriting I don't recognize. Neat,\l"
+	.string "but hurried.\p"
+	.string "They describe battles I don't\n"
+	.string "remember. Very good battles. Very\l"
+	.string "careful notes.\p"
+	.string "Either I've forgotten, or someone else\n"
+	.string "has been writing in my book. Let's\l"
+	.string "settle one question today!$"
+
+Nexus_Text_Roxanne_Uxie_ChampionDefeat3:
+	.string "Settled. This one I'll remember myself.$"
+
+Nexus_Text_Roxanne_Uxie_ChampionAfter3:
+	.string "{SPEAKER NAME_ROXANNE}The one on the lake keeps what people\n"
+	.string "forget. I asked it to give my missing\l"
+	.string "days back.\p"
+	.string "It didn't open its eyes. I think that\n"
+	.string "was an answer.\p"
+	.string "Perhaps some things are better kept by\n"
+	.string "someone else. …I'll still check. Go on.$"
 ```
 
 </details>

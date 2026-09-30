@@ -318,6 +318,74 @@ Nexus_Text_Will_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas para as **quatro primeiras salas** ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. A variação 1 é a de cima, que já está no jogo; o sorteio de qual variação toca ainda não existe no código.
+
+**Variação 2** — humor de ilusionista: o truque da Poké Ball escolhida. No fim ele revela qual era, e continua "nunca errado, só derrotado".
+
+**Antes da luta**
+
+> Pick a card. …Ah, you have no cards. Pick a Poké Ball, then. Any one of mine.
+>
+> Remember it. Now keep your eye on it while we battle.
+>
+> At the end, I'll tell you which one it was. I am never wrong. Begin!
+
+**Derrota**
+
+> It was the third one. …You see? Never wrong. Only defeated.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Will_Intro2:
+	.string "Pick a card. …Ah, you have no cards. Pick\n"
+	.string "a Poké Ball, then. Any one of mine.\p"
+	.string "Remember it. Now keep your eye on it\n"
+	.string "while we battle.\p"
+	.string "At the end, I'll tell you which one it\n"
+	.string "was. I am never wrong. Begin!$"
+
+Nexus_Text_Will_Defeat2:
+	.string "It was the third one. …You see? Never\n"
+	.string "wrong. Only defeated.$"
+```
+
+</details>
+
+**Variação 3** — a lembrança da máscara: ganhou de um velho cuja máscara era de gelo (o **Pryce** de outro fragmento; as crianças mascaradas de Pokémon Adventures). R21 com leveza.
+
+**Antes da luta**
+
+> I was given this mask when I was very small. By an old man whose own mask was made of ice.
+>
+> He said a mask lets you become someone who doesn't lose. He was wrong about that.
+>
+> …But it does let you pretend, which is nearly as good. Shall we?
+
+**Derrota**
+
+> …Nearly as good. Not quite.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Will_Intro3:
+	.string "I was given this mask when I was very\n"
+	.string "small. By an old man whose own mask was\l"
+	.string "made of ice.\p"
+	.string "He said a mask lets you become someone\n"
+	.string "who doesn't lose. He was wrong about\l"
+	.string "that.\p"
+	.string "…But it does let you pretend, which is\n"
+	.string "nearly as good. Shall we?$"
+
+Nexus_Text_Will_Defeat3:
+	.string "…Nearly as good. Not quite.$"
+```
+
+</details>
 
 ### Diálogo associado ao lendário
 
@@ -388,6 +456,112 @@ Nexus_Text_Will_Calyrex_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário ([R16](../NEXUS_REGRAS.md)), sem dizer o nome da espécie. A variação 1 é a de cima, que já está no jogo.
+
+**Variação 2** — a reverência: o Will se curvou ao rei pequeno até a neve, e o rei ficou surpreso. Reis e artistas precisam disso. Depois: o rei perdeu os corcéis e escuta cascos; o Will imitou o som e foi a primeira plateia que ele não enganou.
+
+**Antes da luta**
+
+> I bowed to the little king when I arrived. Properly. All the way down to the snow.
+>
+> It looked very surprised. I don't think anyone has bowed to it in a long, long time.
+>
+> Kings need that, you know. So do performers. …You may bow to me after I win!
+
+**Derrota**
+
+> Well. I suppose I'll be the one bowing.
+
+**Depois da luta**
+
+> It lost its steeds, did you know? One of frost, one of shadow. It sits there listening for hooves.
+>
+> I tried to imitate the sound. Snow, two coconut shells, a very good ear.
+>
+> It wasn't fooled. The first audience I have never fooled. Go, and bow first.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Will_Calyrex_ChampionIntro2:
+	.string "I bowed to the little king when I\n"
+	.string "arrived. Properly. All the way down to\l"
+	.string "the snow.\p"
+	.string "It looked very surprised. I don't think\n"
+	.string "anyone has bowed to it in a long, long\l"
+	.string "time.\p"
+	.string "Kings need that, you know. So do\n"
+	.string "performers. …You may bow to me after I\l"
+	.string "win!$"
+
+Nexus_Text_Will_Calyrex_ChampionDefeat2:
+	.string "Well. I suppose I'll be the one bowing.$"
+
+Nexus_Text_Will_Calyrex_ChampionAfter2:
+	.string "{SPEAKER NAME_WILL}It lost its steeds, did you know? One of\n"
+	.string "frost, one of shadow. It sits there\l"
+	.string "listening for hooves.\p"
+	.string "I tried to imitate the sound. Snow, two\n"
+	.string "coconut shells, a very good ear.\p"
+	.string "It wasn't fooled. The first audience I\n"
+	.string "have never fooled. Go, and bow first.$"
+```
+
+</details>
+
+**Variação 3** — a cenoura: a aldeia deixava cenouras para o rei (as Shaderoot/Iceroot Carrots da Crown Tundra). O Will comprou um saco e não teve coragem de deixar. Depois deixou: o rei plantou.
+
+**Antes da luta**
+
+> In the village below the throne, people used to leave carrots for their king. Only the finest.
+>
+> Nobody leaves them anymore. I bought a whole sack at a market three worlds ago.
+>
+> …I haven't had the nerve to leave one. What if it doesn't want me? Battle first.
+
+**Derrota**
+
+> …Fine. I'll leave the carrot.
+
+**Depois da luta**
+
+> I left the carrot. It didn't eat it. It planted it.
+>
+> There is a very small green thing growing in the snow now, next to the stump.
+>
+> I suppose that is what believing in something looks like. Go. Take your time.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Will_Calyrex_ChampionIntro3:
+	.string "In the village below the throne, people\n"
+	.string "used to leave carrots for their king.\l"
+	.string "Only the finest.\p"
+	.string "Nobody leaves them anymore. I bought a\n"
+	.string "whole sack at a market three worlds\l"
+	.string "ago.\p"
+	.string "…I haven't had the nerve to leave one.\n"
+	.string "What if it doesn't want me? Battle\l"
+	.string "first.$"
+
+Nexus_Text_Will_Calyrex_ChampionDefeat3:
+	.string "…Fine. I'll leave the carrot.$"
+
+Nexus_Text_Will_Calyrex_ChampionAfter3:
+	.string "{SPEAKER NAME_WILL}I left the carrot. It didn't eat it. It\n"
+	.string "planted it.\p"
+	.string "There is a very small green thing\n"
+	.string "growing in the snow now, next to the\l"
+	.string "stump.\p"
+	.string "I suppose that is what believing in\n"
+	.string "something looks like. Go. Take your time.$"
+```
+
+</details>
+
 #### Iron Crown
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Will_IronCrown_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -447,6 +621,109 @@ Nexus_Text_Will_IronCrown_ChampionAfter:
 	.string "is behind it. That thing is all mask.\p"
 	.string "Be careful. It will look like whatever\n"
 	.string "you expect. So expect nothing.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário ([R16](../NEXUS_REGRAS.md)), sem dizer o nome da espécie. A variação 1 é a de cima, que já está no jogo.
+
+**Variação 2** — o reflexo nas lâminas: o Will olhou, claro, e se viu daqui a dez anos, sem máscara, se apresentando para cadeiras vazias. A criatura mostra *um* futuro, do qual foi feita, não o seu.
+
+**Antes da luta**
+
+> Every blade out there shows you a little later. I looked, of course. Who wouldn't?
+>
+> I saw myself in ten years. No mask. Still performing. Nobody in the seats.
+>
+> …Perhaps the blades lie. Help me find out.
+
+**Derrota**
+
+> You were in the seats. That's something.
+
+**Depois da luta**
+
+> The metal one doesn't show your future. It shows a future. It was built from one.
+>
+> Somewhere, someone made a crown with nobody under it and called it a king.
+>
+> Don't let it tell you who you'll become. That's my job, and I'm off duty.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Will_IronCrown_ChampionIntro2:
+	.string "Every blade out there shows you a\n"
+	.string "little later. I looked, of course. Who\l"
+	.string "wouldn't?\p"
+	.string "I saw myself in ten years. No mask. Still\n"
+	.string "performing. Nobody in the seats.\p"
+	.string "…Perhaps the blades lie. Help me find\n"
+	.string "out.$"
+
+Nexus_Text_Will_IronCrown_ChampionDefeat2:
+	.string "You were in the seats. That's\n"
+	.string "something.$"
+
+Nexus_Text_Will_IronCrown_ChampionAfter2:
+	.string "{SPEAKER NAME_WILL}The metal one doesn't show your\n"
+	.string "future. It shows a future. It was built\l"
+	.string "from one.\p"
+	.string "Somewhere, someone made a crown with\n"
+	.string "nobody under it and called it a king.\p"
+	.string "Don't let it tell you who you'll become.\n"
+	.string "That's my job, and I'm off duty.$"
+```
+
+</details>
+
+**Variação 3** — humor e ciúme de ofício: a criatura copiou a reverência, o floreio da capa e a entrada que ele levou vinte anos para aperfeiçoar. O que ela não copia: o nervosismo.
+
+**Antes da luta**
+
+> It copied my bow. Perfectly. Then my cape flourish. Then my entrance.
+>
+> I have spent twenty years perfecting that entrance. It learned it in a minute.
+>
+> …I am not jealous. I am professionally concerned. Let's battle.
+
+**Derrota**
+
+> It will probably copy how I lost, too. Wonderful.
+
+**Depois da luta**
+
+> Here's what it couldn't copy. When I bow, I'm nervous. Every single time.
+>
+> It bowed with nothing behind it. No nerves, no hope, no one.
+>
+> Go and face it. If it copies you, be nervous. It can't do that part.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Will_IronCrown_ChampionIntro3:
+	.string "It copied my bow. Perfectly. Then my\n"
+	.string "cape flourish. Then my entrance.\p"
+	.string "I have spent twenty years perfecting\n"
+	.string "that entrance. It learned it in a\l"
+	.string "minute.\p"
+	.string "…I am not jealous. I am professionally\n"
+	.string "concerned. Let's battle.$"
+
+Nexus_Text_Will_IronCrown_ChampionDefeat3:
+	.string "It will probably copy how I lost, too.\n"
+	.string "Wonderful.$"
+
+Nexus_Text_Will_IronCrown_ChampionAfter3:
+	.string "{SPEAKER NAME_WILL}Here's what it couldn't copy. When I\n"
+	.string "bow, I'm nervous. Every single time.\p"
+	.string "It bowed with nothing behind it. No\n"
+	.string "nerves, no hope, no one.\p"
+	.string "Go and face it. If it copies you, be\n"
+	.string "nervous. It can't do that part.$"
 ```
 
 </details>

@@ -323,6 +323,78 @@ Nexus_Text_Norman_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): falam só dele mesmo, sem o lugar nem a criatura do dia. A variação 1 é a de cima, que está no jogo; as novas não a repetem. Nada disto está no código.
+
+**Variação 2** — o pai: o jogador lembra alguém, o filho que ele não vê há muito tempo (R21: pode ser outro filho, de outro fragmento).
+
+**Antes da luta**
+
+> You remind me of someone. The way you stand, maybe. Or the way you look at a door before you walk through it.
+>
+> My child used to do that. I haven't seen my child in a long time. Longer than I can explain.
+>
+> …Enough. Here, I'm a Gym Leader first. Let's begin.
+
+**Derrota**
+
+> You'd have made any parent proud. Remember that.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Norman_Intro2:
+	.string "You remind me of someone. The way you\n"
+	.string "stand, maybe. Or the way you look at a\l"
+	.string "door before you walk through it.\p"
+	.string "My child used to do that. I haven't\n"
+	.string "seen my child in a long time. Longer than\l"
+	.string "I can explain.\p"
+	.string "…Enough. Here, I'm a Gym Leader first.\n"
+	.string "Let's begin.$"
+
+Nexus_Text_Norman_Defeat2:
+	.string "You'd have made any parent proud.\n"
+	.string "Remember that.$"
+```
+
+</details>
+
+**Variação 3** — a regra dos quatro Badges de Petalburg e o Slaking que levou três anos para treinar, metade deitado: paciência como força, com humor seco.
+
+**Antes da luta**
+
+> In Petalburg, I don't battle anyone who hasn't earned four Badges. That's my rule.
+>
+> Here, no one checks. I suppose I'll have to trust you.
+>
+> My Slaking took three years to train. It spent half of them lying down. Patience is a strength too. Let me show you.
+
+**Derrota**
+
+> I lost. My Slaking is still lying down about it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Norman_Intro3:
+	.string "In Petalburg, I don't battle anyone who\n"
+	.string "hasn't earned four Badges. That's my\l"
+	.string "rule.\p"
+	.string "Here, no one checks. I suppose I'll have\n"
+	.string "to trust you.\p"
+	.string "My Slaking took three years to train. It\n"
+	.string "spent half of them lying down. Patience\l"
+	.string "is a strength too. Let me show you.$"
+
+Nexus_Text_Norman_Defeat3:
+	.string "I lost. My Slaking is still lying down\n"
+	.string "about it.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Zamazenta
@@ -388,6 +460,116 @@ Nexus_Text_Norman_Zamazenta_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Zamazenta: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — a provocação: ele está sozinho. Na lenda havia a espada ao lado do escudo; aqui a espada sumiu, e o lobo segura a linha pelos dois. Acena para o fio Galar (a espada em mãos erradas).
+
+**Antes da luta**
+
+> It stands alone out there. That's what bothers me.
+>
+> In the stories it never fought by itself. There was another beside it, with a blade. The shield and the sword.
+>
+> Wherever the sword went, it isn't here. So that wolf has been holding the line for two.
+>
+> I know how that feels. Come on!
+
+**Derrota**
+
+> Held for two. Broke for one. Fair.
+
+**Depois da luta**
+
+> I asked it, in my way, where the other one went. It turned and looked at the horizon.
+>
+> Someone else is carrying that sword now, I think. Someone who shouldn't be.
+>
+> If you meet a young man with a blade that isn't his, tell him the shield is still waiting. And tell him to come home.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Norman_Zamazenta_ChampionIntro2:
+	.string "It stands alone out there. That's what\n"
+	.string "bothers me.\p"
+	.string "In the stories it never fought by\n"
+	.string "itself. There was another beside it,\l"
+	.string "with a blade. The shield and the sword.\p"
+	.string "Wherever the sword went, it isn't here.\n"
+	.string "So that wolf has been holding the line\l"
+	.string "for two.\p"
+	.string "I know how that feels. Come on!$"
+
+Nexus_Text_Norman_Zamazenta_ChampionDefeat2:
+	.string "Held for two. Broke for one. Fair.$"
+
+Nexus_Text_Norman_Zamazenta_ChampionAfter2:
+	.string "{SPEAKER NAME_NORMAN}I asked it, in my way, where the other\n"
+	.string "one went. It turned and looked at the\l"
+	.string "horizon.\p"
+	.string "Someone else is carrying that sword\n"
+	.string "now, I think. Someone who shouldn't be.\p"
+	.string "If you meet a young man with a blade\n"
+	.string "that isn't his, tell him the shield is\l"
+	.string "still waiting. And tell him to come home.$"
+```
+
+</details>
+
+**Variação 3** — a lembrança com humor: a grama cresceu em volta das patas; a esposa dele disse que o piso do ginásio tinha a marca das botas dele. A parte difícil nunca foi ficar parado, foi sair da frente.
+
+**Antes da luta**
+
+> The grass has grown around its paws. That's how long it's been standing there.
+>
+> My wife once said the floor of my Gym had a dent in the shape of my boots. I laughed. Then I looked.
+>
+> There was a dent. …Let's see if I can still move!
+
+**Derrota**
+
+> Moved at last. Too late, but I moved.
+
+**Depois da luta**
+
+> Here's the funny part. It isn't tired. It could stand there another hundred years.
+>
+> Standing still was never the hard part for me, either. The hard part was stepping aside when I wasn't needed anymore.
+>
+> When you've beaten it, let it rest. Someone should tell it the war is over.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Norman_Zamazenta_ChampionIntro3:
+	.string "The grass has grown around its paws.\n"
+	.string "That's how long it's been standing\l"
+	.string "there.\p"
+	.string "My wife once said the floor of my Gym\n"
+	.string "had a dent in the shape of my boots. I\l"
+	.string "laughed. Then I looked.\p"
+	.string "There was a dent. …Let's see if I can\n"
+	.string "still move!$"
+
+Nexus_Text_Norman_Zamazenta_ChampionDefeat3:
+	.string "Moved at last. Too late, but I moved.$"
+
+Nexus_Text_Norman_Zamazenta_ChampionAfter3:
+	.string "{SPEAKER NAME_NORMAN}Here's the funny part. It isn't tired.\n"
+	.string "It could stand there another hundred\l"
+	.string "years.\p"
+	.string "Standing still was never the hard part\n"
+	.string "for me, either. The hard part was\l"
+	.string "stepping aside when I wasn't needed\l"
+	.string "anymore.\p"
+	.string "When you've beaten it, let it rest.\n"
+	.string "Someone should tell it the war is over.$"
+```
+
+</details>
+
 #### Zarude
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Norman_Zarude_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -448,6 +630,114 @@ Nexus_Text_Norman_Zarude_ChampionAfter:
 	.string "I've won a great many battles. That\n"
 	.string "moment is the one I'm proudest of.\p"
 	.string "That creature would understand. Go on.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Zarude: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — o teste: os cipós se estendem e recuam, ele é o estranho sendo avaliado, como os desafiantes no ginásio dele. Depois, a postura de braços cruzados, que é a de um pai.
+
+**Antes da luta**
+
+> The vines keep reaching for me and pulling back. I think I'm being tested.
+>
+> In this jungle, you're family or you're gone. There's no middle.
+>
+> My Gym is the same. You earn your place, one Badge at a time. So. Earn yours.
+
+**Derrota**
+
+> You've earned it. The vines agree.
+
+**Depois da luta**
+
+> I've been watching the one that stands with its arms crossed. It never lets them hang at its sides.
+>
+> That's a parent's posture. Ready to grab, ready to push. Never sure which.
+>
+> I stood that way at every one of my child's battles. They thought I was stern. I was only holding still.
+>
+> Go. And no sudden moves near the little ones.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Norman_Zarude_ChampionIntro2:
+	.string "The vines keep reaching for me and\n"
+	.string "pulling back. I think I'm being tested.\p"
+	.string "In this jungle, you're family or you're\n"
+	.string "gone. There's no middle.\p"
+	.string "My Gym is the same. You earn your place,\n"
+	.string "one Badge at a time. So. Earn yours.$"
+
+Nexus_Text_Norman_Zarude_ChampionDefeat2:
+	.string "You've earned it. The vines agree.$"
+
+Nexus_Text_Norman_Zarude_ChampionAfter2:
+	.string "{SPEAKER NAME_NORMAN}I've been watching the one that stands\n"
+	.string "with its arms crossed. It never lets\l"
+	.string "them hang at its sides.\p"
+	.string "That's a parent's posture. Ready to\n"
+	.string "grab, ready to push. Never sure which.\p"
+	.string "I stood that way at every one of my\n"
+	.string "child's battles. They thought I was\l"
+	.string "stern. I was only holding still.\p"
+	.string "Go. And no sudden moves near the little\n"
+	.string "ones.$"
+```
+
+</details>
+
+**Variação 3** — a dúvida: no filme, o menino criado pelo bando sai da selva para achar os seus, e a criatura fica na beira das árvores sem seguir. Norman já ficou na beira de uma cidade assim.
+
+**Antes da luta**
+
+> In the story, the child it raised grew up and walked out of the jungle to find his own kind.
+>
+> The creature let him go. It stood at the edge of the trees and didn't follow.
+>
+> I've stood at the edge of a town like that. …Let's not talk about it. Let's battle.
+
+**Derrota**
+
+> Good. You don't hold back either.
+
+**Depois da luta**
+
+> The child came back, you know. In the story. Not to stay. Just to say he was fine.
+>
+> That was enough for it. I've been trying to decide if it would be enough for me.
+>
+> …It would. Go on. If you see my child out there, tell them I said so.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Norman_Zarude_ChampionIntro3:
+	.string "In the story, the child it raised grew up\n"
+	.string "and walked out of the jungle to find his\l"
+	.string "own kind.\p"
+	.string "The creature let him go. It stood at the\n"
+	.string "edge of the trees and didn't follow.\p"
+	.string "I've stood at the edge of a town like\n"
+	.string "that. …Let's not talk about it. Let's\l"
+	.string "battle.$"
+
+Nexus_Text_Norman_Zarude_ChampionDefeat3:
+	.string "Good. You don't hold back either.$"
+
+Nexus_Text_Norman_Zarude_ChampionAfter3:
+	.string "{SPEAKER NAME_NORMAN}The child came back, you know. In the\n"
+	.string "story. Not to stay. Just to say he was\l"
+	.string "fine.\p"
+	.string "That was enough for it. I've been\n"
+	.string "trying to decide if it would be enough\l"
+	.string "for me.\p"
+	.string "…It would. Go on. If you see my child out\n"
+	.string "there, tell them I said so.$"
 ```
 
 </details>

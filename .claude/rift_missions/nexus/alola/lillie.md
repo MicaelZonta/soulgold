@@ -316,6 +316,75 @@ Nexus_Text_Lillie_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Estas duas também servem para qualquer sala e qualquer dia ([R16](../NEXUS_REGRAS.md)): falam só de Lillie. Nada disto está no código.
+
+**Variação 2 — a Ninetales vai primeiro.** Humor leve com a parceira. A Ninetales sempre sai primeiro agora, porque a Lillie demora demais para decidir, e ela tem razão. A Lillie decide ali mesmo. Na derrota, a Ninetales fica emburrada; a Lillie não.
+
+**Antes da luta**
+
+> Oh! Excuse me. Ninetales, you can come out. It's only a Trainer.
+>
+> She always goes first now. She says I take too long to decide. She's right.
+>
+> ...I've decided! Let's battle!
+
+**Derrota**
+
+> Ninetales is sulking. I'm not. That was wonderful.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lillie_Intro2:
+	.string "Oh! Excuse me. Ninetales, you can come\n"
+	.string "out. It's only a Trainer.\p"
+	.string "She always goes first now. She says I\n"
+	.string "take too long to decide. She's right.\p"
+	.string "...I've decided! Let's battle!$"
+
+Nexus_Text_Lillie_Defeat2:
+	.string "Ninetales is sulking. I'm not. That was\n"
+	.string "wonderful.$"
+```
+
+</details>
+
+**Variação 3 — escolher a roupa.** A virada de visual da Lillie (o rabo de cavalo de Sun/Moon). A mãe escolhia tudo o que ela vestia, sempre branco, como uma boneca na vitrine. Um dia ela prendeu o cabelo e escolheu sozinha: a coisa mais corajosa que tinha feito. Esta luta talvez seja a mais corajosa.
+
+**Antes da luta**
+
+> My mother used to choose everything I wore. White, always white. Like a doll in a glass case.
+>
+> One day I tied up my hair and chose for myself. It was the bravest thing I had ever done.
+>
+> ...Well, the second bravest. This might be the bravest! Let's battle!
+
+**Derrota**
+
+> I'm still glad I chose this. Even now.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lillie_Intro3:
+	.string "My mother used to choose everything I\n"
+	.string "wore. White, always white. Like a doll in\l"
+	.string "a glass case.\p"
+	.string "One day I tied up my hair and chose for\n"
+	.string "myself. It was the bravest thing I had\l"
+	.string "ever done.\p"
+	.string "...Well, the second bravest. This might\n"
+	.string "be the bravest! Let's battle!$"
+
+Nexus_Text_Lillie_Defeat3:
+	.string "I'm still glad I chose this. Even now.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lillie é a **campeã**, a luta logo antes do lendário do dia. Uma fala por lendário; o nome da espécie não aparece ([R16](../NEXUS_REGRAS.md)). Rótulos com a espécie porque Lillie é campeã de dois.
@@ -384,6 +453,113 @@ Nexus_Text_Lillie_Lunala_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Sobre a criatura, pelo olhar de Lillie, sem o nome da espécie ([R16](../NEXUS_REGRAS.md)). Nada disto está no código.
+
+**Variação 2 — o escuro com nome.** A Lillie tinha medo do escuro, e a mãe deixava todas as luzes acesas. Quando o Nebby cresceu e as asas beberam a luz, ela perdeu o medo: sabia o que fazia o escuro. No depois: o escuro em volta dela não é vazio, é a luz guardada; o terceiro olho abre caminho para longe, e se abrir um para o jogador, que ele procure quem ainda espera do outro lado (o irmão, neste fragmento; página 2 do diário).
+
+**Antes da luta**
+
+> When I was small, I was afraid of the dark. My mother kept every light in the house on.
+>
+> Then Nebby grew up, and its wings drank all the light around us. And I wasn't afraid at all.
+>
+> Because I knew what was making the dark. ...That's the difference, I think. Let's battle!
+
+**Derrota**
+
+> You weren't afraid either. I could tell.
+
+**Depois da luta**
+
+> The dark around it isn't empty. It's the light, kept safe inside its wings.
+>
+> When its third eye opens, it can take you somewhere else. Somewhere very far.
+>
+> If it opens one for you, please... look for anyone who is still waiting on the other side.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lillie_Lunala_ChampionIntro2:
+	.string "When I was small, I was afraid of the\n"
+	.string "dark. My mother kept every light in the\l"
+	.string "house on.\p"
+	.string "Then Nebby grew up, and its wings drank\n"
+	.string "all the light around us. And I wasn't\l"
+	.string "afraid at all.\p"
+	.string "Because I knew what was making the\n"
+	.string "dark. ...That's the difference, I think.\l"
+	.string "Let's battle!$"
+
+Nexus_Text_Lillie_Lunala_ChampionDefeat2:
+	.string "You weren't afraid either. I could tell.$"
+
+Nexus_Text_Lillie_Lunala_ChampionAfter2:
+	.string "{SPEAKER NAME_LILLIE}The dark around it isn't empty. It's\n"
+	.string "the light, kept safe inside its wings.\p"
+	.string "When its third eye opens, it can take\n"
+	.string "you somewhere else. Somewhere very\l"
+	.string "far.\p"
+	.string "If it opens one for you, please... look\n"
+	.string "for anyone who is still waiting on the\l"
+	.string "other side.$"
+```
+
+</details>
+
+**Variação 3 — a bolsa.** Antes ela carregava a criatura numa bolsa; agora a criatura a carrega. O Nebby ainda tenta entrar na bolsa às vezes, não cabe e não liga. A de lá não tem bolsa onde entrar, e por isso parece tão sozinha. No depois: tudo o que é grande começa pequeno o bastante para se esconder; se o jogador trouxer algo pequeno de lá (o Cosmog do R17), não o deixe na bolsa por muito tempo.
+
+**Antes da luta**
+
+> It's so strange. I used to carry it in a bag, and now it carries me.
+>
+> Nebby still tries to climb into my bag sometimes. It doesn't fit. It doesn't care.
+>
+> ...The one out there has no bag to climb into. I think that's why it looks so lonely. Let's battle.
+
+**Derrota**
+
+> Oh... Nebby is trying to hide in my bag again.
+
+**Depois da luta**
+
+> Everything big starts out small enough to hide.
+>
+> If you bring something small back from in there, please don't keep it in a bag. Not for too long.
+>
+> Let it see the sky. That's how it learns to become one.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lillie_Lunala_ChampionIntro3:
+	.string "It's so strange. I used to carry it in a\n"
+	.string "bag, and now it carries me.\p"
+	.string "Nebby still tries to climb into my bag\n"
+	.string "sometimes. It doesn't fit. It doesn't\l"
+	.string "care.\p"
+	.string "...The one out there has no bag to climb\n"
+	.string "into. I think that's why it looks so\l"
+	.string "lonely. Let's battle.$"
+
+Nexus_Text_Lillie_Lunala_ChampionDefeat3:
+	.string "Oh... Nebby is trying to hide in my bag\n"
+	.string "again.$"
+
+Nexus_Text_Lillie_Lunala_ChampionAfter3:
+	.string "{SPEAKER NAME_LILLIE}Everything big starts out small enough\n"
+	.string "to hide.\p"
+	.string "If you bring something small back from\n"
+	.string "in there, please don't keep it in a bag.\l"
+	.string "Not for too long.\p"
+	.string "Let it see the sky. That's how it learns\n"
+	.string "to become one.$"
+```
+
+</details>
+
 
 #### Tapu Lele
 
@@ -444,6 +620,109 @@ Nexus_Text_Lillie_TapuLele_ChampionAfter:
 	.string "when it's enough, and she listens.\p"
 	.string "Go gently with it. It's only trying\n"
 	.string "to help.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Sobre a criatura, pelo olhar de Lillie, sem o nome da espécie ([R16](../NEXUS_REGRAS.md)). Nada disto está no código.
+
+**Variação 2 — inocente.** A guardiã voou até a Lillie e jogou escamas na cabeça dela, como uma bênção; depois foi até os Pokémon adormecidos e fez de novo e de novo, rindo. É a inocência que assusta. No depois: dizem que ela não se importa com quem cura; a Lillie acha que ela só nunca aprendeu que as pessoas podem estar satisfeitas. Se ela tentar curar você, diga obrigado, e depois diga não.
+
+**Antes da luta**
+
+> It flew right up to me and sprinkled its scales on my head. Like a blessing.
+>
+> Then it flew off to the Pokémon asleep in the flowers and did it again. And again. It was giggling.
+>
+> It's so innocent. That's what frightens me. Let's battle, please!
+
+**Derrota**
+
+> You knew when to stop. It doesn't.
+
+**Depois da luta**
+
+> The old stories say it doesn't care what happens to the ones it heals.
+>
+> I don't think that's cruelty. I think it just never learned that people can be full.
+>
+> If it tries to heal you, say thank you. And then say no.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lillie_TapuLele_ChampionIntro2:
+	.string "It flew right up to me and sprinkled its\n"
+	.string "scales on my head. Like a blessing.\p"
+	.string "Then it flew off to the Pokémon asleep\n"
+	.string "in the flowers and did it again. And\l"
+	.string "again. It was giggling.\p"
+	.string "It's so innocent. That's what\n"
+	.string "frightens me. Let's battle, please!$"
+
+Nexus_Text_Lillie_TapuLele_ChampionDefeat2:
+	.string "You knew when to stop. It doesn't.$"
+
+Nexus_Text_Lillie_TapuLele_ChampionAfter2:
+	.string "{SPEAKER NAME_LILLIE}The old stories say it doesn't care\n"
+	.string "what happens to the ones it heals.\p"
+	.string "I don't think that's cruelty. I think\n"
+	.string "it just never learned that people can\l"
+	.string "be full.\p"
+	.string "If it tries to heal you, say thank you.\n"
+	.string "And then say no.$"
+```
+
+</details>
+
+**Variação 3 — eu também.** A autocrítica: a Lillie segurava o amiguinho dela tão apertado que não o deixava sair da bolsa; achava que o protegia, e o mantinha pequeno. Ela e a guardiã têm mais em comum do que gostaria. No depois: os Pokémon entre as flores não querem mais acordar, porque nada dói; deixe as coisas doerem um pouco, se precisarem.
+
+**Antes da luta**
+
+> I used to hold my little friend so tightly. I wouldn't let it out of my bag for anything.
+>
+> I thought I was keeping it safe. I was keeping it small.
+>
+> ...That guardian and I have more in common than I'd like. Let's battle!
+
+**Derrota**
+
+> Oh... I held on too tightly there, didn't I?
+
+**Depois da luta**
+
+> Its scales heal almost anything. Scrapes, fevers, bad dreams.
+>
+> But the Pokémon in those flowers don't want to wake up anymore. Why would they? Nothing hurts.
+>
+> Please be gentle. And let things hurt a little, if they need to.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lillie_TapuLele_ChampionIntro3:
+	.string "I used to hold my little friend so\n"
+	.string "tightly. I wouldn't let it out of my bag\l"
+	.string "for anything.\p"
+	.string "I thought I was keeping it safe. I was\n"
+	.string "keeping it small.\p"
+	.string "...That guardian and I have more in\n"
+	.string "common than I'd like. Let's battle!$"
+
+Nexus_Text_Lillie_TapuLele_ChampionDefeat3:
+	.string "Oh... I held on too tightly there, didn't\n"
+	.string "I?$"
+
+Nexus_Text_Lillie_TapuLele_ChampionAfter3:
+	.string "{SPEAKER NAME_LILLIE}Its scales heal almost anything.\n"
+	.string "Scrapes, fevers, bad dreams.\p"
+	.string "But the Pokémon in those flowers don't\n"
+	.string "want to wake up anymore. Why would\l"
+	.string "they? Nothing hurts.\p"
+	.string "Please be gentle. And let things hurt a\n"
+	.string "little, if they need to.$"
 ```
 
 </details>

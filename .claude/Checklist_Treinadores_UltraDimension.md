@@ -385,7 +385,7 @@
 - [ ] **Cynthia** — Campeã visitante que pode ser desafiada em Undella Town.
   - [ficha](rift_missions/nexus/sinnoh/cynthia.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝 · Diário 📝
 - [ ] **Hilbert e Hilda** — protagonistas de *Black/White* ligados à derrota inicial do Team Plasma.
-  - [ficha](rift_missions/nexus/unova/hilbert_e_hilda.md) · Sprite 📦 · Battle sprite 📦 · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝 · Diário 📝
+  - [ficha](rift_missions/nexus/unova/hilbert_e_hilda.md) · Sprite ✅ · Battle sprite 📦 · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝 · Diário 📝
 
 ---
 

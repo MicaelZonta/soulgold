@@ -326,6 +326,64 @@ Nexus_Text_Blue_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Variação 2: a dúvida escondida na bravata — chegar ao topo e achar mais escada (o Blue que foi Campeão por uma tarde). Variação 3: o Blue Líder de Viridian, a última insígnia de Kanto, orgulhoso de ser o que todo mundo deixa para o fim.
+
+**Variação 2 — antes da luta**
+
+> You ever get to the top of something and find out the view is just… more stairs?
+>
+> Yeah, me neither. I'm Blue. I'm always at the top. Just ask anybody.
+>
+> Let's battle! I'll show you the view!
+
+**Variação 2 — derrota**
+
+> …More stairs. Great. Smell ya later!
+
+**Variação 3 — antes da luta**
+
+> I run the Viridian Gym now. Last badge in Kanto. Everybody saves me for the end.
+>
+> I like that. Means I'm the one they're scared of.
+>
+> Well? Are you scared? Let's go!
+
+**Variação 3 — derrota**
+
+> Not scared at all, huh? …Figures. Smell ya later!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Blue_Intro2:
+	.string "You ever get to the top of something\n"
+	.string "and find out the view is just… more\l"
+	.string "stairs?\p"
+	.string "Yeah, me neither. I'm Blue. I'm always\n"
+	.string "at the top. Just ask anybody.\p"
+	.string "Let's battle! I'll show you the view!$"
+
+Nexus_Text_Blue_Defeat2:
+	.string "…More stairs. Great. Smell ya later!$"
+
+Nexus_Text_Blue_Intro3:
+	.string "I run the Viridian Gym now. Last badge\n"
+	.string "in Kanto. Everybody saves me for the\l"
+	.string "end.\p"
+	.string "I like that. Means I'm the one they're\n"
+	.string "scared of.\p"
+	.string "Well? Are you scared? Let's go!$"
+
+Nexus_Text_Blue_Defeat3:
+	.string "Not scared at all, huh? …Figures. Smell\n"
+	.string "ya later!$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Blue é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
@@ -392,6 +450,104 @@ Nexus_Text_Blue_Zacian_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: as espadas enferrujadas do campo não têm nome; o Blue andou o campo inteiro conferindo. A lembrança do avô (a Pokédex era para lembrar, não para pegar) vira o motivo de ele lembrar o que ninguém escreveu. Variação 3: humor — a estátua de doze metros que ele imagina para si, e o nome dele em letra pequena embaixo do do Red.
+
+**Variação 2 — antes da luta**
+
+> Those swords out there? Every one belonged to somebody who fought. Not one has a name on it.
+>
+> I checked. Walked the whole field. …Took a while.
+>
+> The only sword with a name is the king's. Clean. Never swung once, I bet.
+>
+> Alright. Let's swing ours!
+
+**Variação 2 — derrota**
+
+> Nice swing. …Don't expect a statue for it.
+
+**Variação 2 — depois da luta**
+
+> Gramps told me once the Pokédex was never about catching them all. It was about remembering them.
+>
+> That wolf out there remembers every one of those swords. Every name nobody wrote down.
+>
+> Guess somebody has to. …Go on. I'll remember this one.
+
+**Variação 3 — antes da luta**
+
+> Picture it: me, in stone, forty feet tall. Arms crossed. 'Blue, Champion of Kanto. Forever-ish.'
+>
+> That thing out there never wanted one. Doesn't even want a thank-you. Weird, right?
+>
+> Well, I want both! Let's go!
+
+**Variação 3 — derrota**
+
+> …Okay. Twenty feet tall. Smell ya later.
+
+**Variação 3 — depois da luta**
+
+> Real talk. When Red took the title, the first thing I did was check if they put my name up anywhere.
+>
+> They had. Small letters. Under his.
+>
+> That wolf would've been happy with small letters. I'm working on it. …Go. It's waiting.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Blue_Zacian_ChampionIntro2:
+	.string "Those swords out there? Every one\n"
+	.string "belonged to somebody who fought. Not\l"
+	.string "one has a name on it.\p"
+	.string "I checked. Walked the whole field. …Took\n"
+	.string "a while.\p"
+	.string "The only sword with a name is the\n"
+	.string "king's. Clean. Never swung once, I bet.\p"
+	.string "Alright. Let's swing ours!$"
+
+Nexus_Text_Blue_Zacian_ChampionDefeat2:
+	.string "Nice swing. …Don't expect a statue for\n"
+	.string "it.$"
+
+Nexus_Text_Blue_Zacian_ChampionAfter2:
+	.string "{SPEAKER NAME_BLUE}Gramps told me once the Pokédex was\n"
+	.string "never about catching them all. It was\l"
+	.string "about remembering them.\p"
+	.string "That wolf out there remembers every\n"
+	.string "one of those swords. Every name nobody\l"
+	.string "wrote down.\p"
+	.string "Guess somebody has to. …Go on. I'll\n"
+	.string "remember this one.$"
+
+Nexus_Text_Blue_Zacian_ChampionIntro3:
+	.string "Picture it: me, in stone, forty feet tall.\n"
+	.string "Arms crossed. 'Blue, Champion of Kanto.\l"
+	.string "Forever-ish.'\p"
+	.string "That thing out there never wanted one.\n"
+	.string "Doesn't even want a thank-you. Weird,\l"
+	.string "right?\p"
+	.string "Well, I want both! Let's go!$"
+
+Nexus_Text_Blue_Zacian_ChampionDefeat3:
+	.string "…Okay. Twenty feet tall. Smell ya later.$"
+
+Nexus_Text_Blue_Zacian_ChampionAfter3:
+	.string "{SPEAKER NAME_BLUE}Real talk. When Red took the title, the\n"
+	.string "first thing I did was check if they put\l"
+	.string "my name up anywhere.\p"
+	.string "They had. Small letters. Under his.\p"
+	.string "That wolf would've been happy with\n"
+	.string "small letters. I'm working on it. …Go.\l"
+	.string "It's waiting.$"
+```
+
+</details>
+
+
 #### Victini
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Blue_Victini_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -452,5 +608,98 @@ Nexus_Text_Blue_Victini_ChampionAfter:
 ```
 
 </details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: a lembrança — o avô deu a Poké Ball 'para dar sorte' no dia em que ele saiu de Pallet, e uma semana de vitórias fáceis na Route 22 pareceu falsa; ele pôs a criatura no banco. Variação 3: humor com lore do filme (a criatura adora macarons): ele trouxe uma caixa inteira e mesmo assim o Red venceu.
+
+**Variação 2 — antes da luta**
+
+> Gramps handed me a Poké Ball the day I left Pallet. 'For luck,' he said. Didn't say what was in it.
+>
+> I figured it out on Route 22. Won every battle for a week. Felt great. Felt… fake.
+>
+> So I made it sit out. Let's battle, just us!
+
+**Variação 2 — derrota**
+
+> Yeah, yeah. At least that one was real.
+
+**Variação 2 — depois da luta**
+
+> Funny thing about luck. The little guy was sad when I benched it. Ears all droopy.
+>
+> I told it, 'Pick somebody else, then.' It didn't. It just stayed in my bag, cheering.
+>
+> Maybe it was never about winning. …Don't tell anybody I said that. Go!
+
+**Variação 3 — antes da luta**
+
+> My theory? That thing hands out wins to whoever brings the best macarons.
+>
+> I brought a whole box. It ate every single one and still let Red win.
+>
+> Ungrateful little… Whatever! Let's battle!
+
+**Variação 3 — derrota**
+
+> …Should've brought two boxes.
+
+**Variação 3 — depois da luta**
+
+> If it ever picks you, don't get used to it. Winning is fun until you can't tell whose win it was.
+>
+> I'd rather lose a hundred times and know every one was mine.
+>
+> …Okay, ninety. Go on. Smell ya later!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Blue_Victini_ChampionIntro2:
+	.string "Gramps handed me a Poké Ball the day I\n"
+	.string "left Pallet. 'For luck,' he said. Didn't\l"
+	.string "say what was in it.\p"
+	.string "I figured it out on Route 22. Won every\n"
+	.string "battle for a week. Felt great. Felt…\l"
+	.string "fake.\p"
+	.string "So I made it sit out. Let's battle, just\n"
+	.string "us!$"
+
+Nexus_Text_Blue_Victini_ChampionDefeat2:
+	.string "Yeah, yeah. At least that one was real.$"
+
+Nexus_Text_Blue_Victini_ChampionAfter2:
+	.string "{SPEAKER NAME_BLUE}Funny thing about luck. The little guy\n"
+	.string "was sad when I benched it. Ears all\l"
+	.string "droopy.\p"
+	.string "I told it, 'Pick somebody else, then.' It\n"
+	.string "didn't. It just stayed in my bag,\l"
+	.string "cheering.\p"
+	.string "Maybe it was never about winning.\n"
+	.string "…Don't tell anybody I said that. Go!$"
+
+Nexus_Text_Blue_Victini_ChampionIntro3:
+	.string "My theory? That thing hands out wins to\n"
+	.string "whoever brings the best macarons.\p"
+	.string "I brought a whole box. It ate every\n"
+	.string "single one and still let Red win.\p"
+	.string "Ungrateful little… Whatever! Let's\n"
+	.string "battle!$"
+
+Nexus_Text_Blue_Victini_ChampionDefeat3:
+	.string "…Should've brought two boxes.$"
+
+Nexus_Text_Blue_Victini_ChampionAfter3:
+	.string "{SPEAKER NAME_BLUE}If it ever picks you, don't get used to\n"
+	.string "it. Winning is fun until you can't tell\l"
+	.string "whose win it was.\p"
+	.string "I'd rather lose a hundred times and\n"
+	.string "know every one was mine.\p"
+	.string "…Okay, ninety. Go on. Smell ya later!$"
+```
+
+</details>
+
 
 Falante novo: `SP_NAME_BLUE` (ainda não existe em `include/constants/speaker_names.h`).
