@@ -394,6 +394,84 @@ Nexus_Text_TateAndLiza_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): falam só deles mesmos, sem o lugar nem a criatura do dia. A variação 1 é a de cima, que está no jogo; as novas não a repetem. Nada disto está no código.
+
+**Variação 2** — humor e a estranheza de ser gêmeo: o jogo do número em Mossdeep, os dois sempre escolhem sete e pararam de jogar.
+
+**Antes da luta**
+
+> We played a game once, in Mossdeep.  
+> We each thought of a number.
+>
+> We both picked seven.  
+> We tried again. Seven.
+>
+> We stopped playing.  
+> Hehehe… Fufufu… Pick a number, and let's battle!
+
+**Derrota**
+
+> We picked seven…  
+> …and you picked something else.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_TateAndLiza_Intro2:
+	.string "We played a game once, in Mossdeep.\n"
+	.string "We each thought of a number.\p"
+	.string "We both picked seven.\n"
+	.string "We tried again. Seven.\p"
+	.string "We stopped playing.\n"
+	.string "Hehehe… Fufufu… Pick a number, and\l"
+	.string "let's battle!$"
+
+Nexus_Text_TateAndLiza_Defeat2:
+	.string "We picked seven…\n"
+	.string "…and you picked something else.$"
+```
+
+</details>
+
+**Variação 3** — o fio da mão que muda, com leveza: os dois sentem que alguém está escrevendo sobre eles agora, duas mãos, uma caneta, uma firme e uma menor e rápida. Não confirmam nada.
+
+**Antes da luta**
+
+> Someone is writing about us.  
+> Right now. We can feel it.
+>
+> Two hands, one pen.  
+> One steady. One smaller, and quick.
+>
+> Funny. That's how we'd write, too.  
+> Hehehe… Fufufu… Let's give them something to write!
+
+**Derrota**
+
+> Write that down…  
+> …both of you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_TateAndLiza_Intro3:
+	.string "Someone is writing about us.\n"
+	.string "Right now. We can feel it.\p"
+	.string "Two hands, one pen.\n"
+	.string "One steady. One smaller, and quick.\p"
+	.string "Funny. That's how we'd write, too.\n"
+	.string "Hehehe… Fufufu… Let's give them\l"
+	.string "something to write!$"
+
+Nexus_Text_TateAndLiza_Defeat3:
+	.string "Write that down…\n"
+	.string "…both of you.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Latias
@@ -462,6 +540,132 @@ Nexus_Text_TateAndLiza_Latias_ChampionAfter:
 	.string "loves. Its brother is always close by.\p"
 	.string "Hehehe…\n"
 	.string "Fufufu… Go on. It's listening already.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Latias: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — humor e provocação: eles tentaram ler a mente dela e ela leu a deles primeiro, e riu. Depois contam o que ela achou: os dois querem, em segredo, um dia de folga um do outro, e os dois sentiriam falta antes do almoço.
+
+**Antes da luta**
+
+> We tried to read its mind.  
+> We always can.
+>
+> It read ours first.  
+> And then it giggled.
+>
+> Nobody's ever done that.  
+> Hehehe… Fufufu… We're a little offended. Battle!
+
+**Derrota**
+
+> Read like a book…  
+> …a very short one.
+
+**Depois da luta**
+
+> Want to know what it found in our heads?  
+> It was very rude to look.
+>
+> We'd both, secretly, like a day off from each other.  
+> Just one.
+>
+> And we'd both miss the other by lunchtime.  
+> Hehehe… Fufufu… Go on. It already knows you, too.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_TateAndLiza_Latias_ChampionIntro2:
+	.string "We tried to read its mind.\n"
+	.string "We always can.\p"
+	.string "It read ours first.\n"
+	.string "And then it giggled.\p"
+	.string "Nobody's ever done that.\n"
+	.string "Hehehe… Fufufu… We're a little\l"
+	.string "offended. Battle!$"
+
+Nexus_Text_TateAndLiza_Latias_ChampionDefeat2:
+	.string "Read like a book…\n"
+	.string "…a very short one.$"
+
+Nexus_Text_TateAndLiza_Latias_ChampionAfter2:
+	.string "{SPEAKER NAME_TATE_AND_LIZA}Want to know what it found in our\n"
+	.string "heads?\l"
+	.string "It was very rude to look.\p"
+	.string "We'd both, secretly, like a day off from\n"
+	.string "each other.\l"
+	.string "Just one.\p"
+	.string "And we'd both miss the other by\n"
+	.string "lunchtime.\l"
+	.string "Hehehe… Fufufu… Go on. It already\l"
+	.string "knows you, too.$"
+```
+
+</details>
+
+**Variação 3** — a lore de Alto Mare (o filme Heroes): o irmão que virou a joia azul para salvar a cidade, e a irmã que ficou e ainda visita a joia. O que ela faz para sobreviver a perder metade de si: continua brincando, se disfarça de menina e se perde de propósito.
+
+**Antes da luta**
+
+> There's an old story from a city of canals.  
+> A brother and a sister who guarded it.
+>
+> The brother gave himself to save the city.  
+> He became a jewel. A blue one.
+>
+> The sister stayed. She still visits the jewel.  
+> We don't like that story. Let's battle.
+
+**Derrota**
+
+> We lost…  
+> …but we're both still here.
+
+**Depois da luta**
+
+> Liza cried the first time she heard it.  
+> Tate cried the second time.
+>
+> But that creature isn't sad all the time.  
+> It plays tricks. It dresses up as a girl and gets lost on purpose.
+>
+> That's how you survive losing half of yourself.  
+> You keep playing. Hehehe… Fufufu… Go and play with it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_TateAndLiza_Latias_ChampionIntro3:
+	.string "There's an old story from a city of\n"
+	.string "canals.\l"
+	.string "A brother and a sister who guarded it.\p"
+	.string "The brother gave himself to save the\n"
+	.string "city.\l"
+	.string "He became a jewel. A blue one.\p"
+	.string "The sister stayed. She still visits the\n"
+	.string "jewel.\l"
+	.string "We don't like that story. Let's battle.$"
+
+Nexus_Text_TateAndLiza_Latias_ChampionDefeat3:
+	.string "We lost…\n"
+	.string "…but we're both still here.$"
+
+Nexus_Text_TateAndLiza_Latias_ChampionAfter3:
+	.string "{SPEAKER NAME_TATE_AND_LIZA}Liza cried the first time she heard it.\n"
+	.string "Tate cried the second time.\p"
+	.string "But that creature isn't sad all the\n"
+	.string "time.\l"
+	.string "It plays tricks. It dresses up as a girl\l"
+	.string "and gets lost on purpose.\p"
+	.string "That's how you survive losing half of\n"
+	.string "yourself.\l"
+	.string "You keep playing. Hehehe… Fufufu… Go\l"
+	.string "and play with it.$"
 ```
 
 </details>
@@ -538,6 +742,128 @@ Nexus_Text_TateAndLiza_Latios_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Latios: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — provocação e humor: ele mandou para os gêmeos uma imagem do jogador entrando, visto de cima, nervoso. Depois: o que ele manda para a irmã (ventos, barcos perigosos) e o que o Tate manda para a Liza (comida).
+
+**Antes da luta**
+
+> It sent us a picture just now.  
+> Of you.
+>
+> You, from above, walking in.  
+> You looked nervous.
+>
+> We didn't say anything.  
+> Hehehe… Fufufu… Until now. Let's battle!
+
+**Derrota**
+
+> It didn't send us that part…  
+> …the part where you win.
+
+**Depois da luta**
+
+> Mostly it sends pictures to its sister.  
+> Where the good winds are. Which boats are dangerous.
+>
+> Tate sends me pictures too.  
+> Mostly of food he wants me to share.
+>
+> Fufufu… That's a lie. Go on.  
+> Hehehe… It isn't.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_TateAndLiza_Latios_ChampionIntro2:
+	.string "It sent us a picture just now.\n"
+	.string "Of you.\p"
+	.string "You, from above, walking in.\n"
+	.string "You looked nervous.\p"
+	.string "We didn't say anything.\n"
+	.string "Hehehe… Fufufu… Until now. Let's\l"
+	.string "battle!$"
+
+Nexus_Text_TateAndLiza_Latios_ChampionDefeat2:
+	.string "It didn't send us that part…\n"
+	.string "…the part where you win.$"
+
+Nexus_Text_TateAndLiza_Latios_ChampionAfter2:
+	.string "{SPEAKER NAME_TATE_AND_LIZA}Mostly it sends pictures to its sister.\n"
+	.string "Where the good winds are. Which boats\l"
+	.string "are dangerous.\p"
+	.string "Tate sends me pictures too.\n"
+	.string "Mostly of food he wants me to share.\p"
+	.string "Fufufu… That's a lie. Go on.\n"
+	.string "Hehehe… It isn't.$"
+```
+
+</details>
+
+**Variação 3** — a dúvida e o fio Hoenn: ele mandou uma imagem que não entendem, o céu de Mossdeep em fogo e algo enorme descendo sobre o Space Center, e depois uma moça de capa longa olhando para cima (a Zinnia, nunca nomeada).
+
+**Antes da luta**
+
+> Last night it sent us a picture we didn't understand.  
+> The sky over Mossdeep, full of fire.
+>
+> The Space Center, all lit up.  
+> And something enormous, coming down.
+>
+> It hasn't happened.  
+> We think. Let's battle before we think about it more.
+
+**Derrota**
+
+> We lost…  
+> …and the sky is still up. Good.
+
+**Depois da luta**
+
+> We asked it where that picture came from.  
+> It showed us a girl in a long cape, looking up.
+>
+> She looked like she'd waited a long time for the sky to fall.  
+> We don't know her.
+>
+> If you meet her, be kind.  
+> Hehehe… Fufufu… And look up now and then.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_TateAndLiza_Latios_ChampionIntro3:
+	.string "Last night it sent us a picture we\n"
+	.string "didn't understand.\l"
+	.string "The sky over Mossdeep, full of fire.\p"
+	.string "The Space Center, all lit up.\n"
+	.string "And something enormous, coming down.\p"
+	.string "It hasn't happened.\n"
+	.string "We think. Let's battle before we think\l"
+	.string "about it more.$"
+
+Nexus_Text_TateAndLiza_Latios_ChampionDefeat3:
+	.string "We lost…\n"
+	.string "…and the sky is still up. Good.$"
+
+Nexus_Text_TateAndLiza_Latios_ChampionAfter3:
+	.string "{SPEAKER NAME_TATE_AND_LIZA}We asked it where that picture came\n"
+	.string "from.\l"
+	.string "It showed us a girl in a long cape,\l"
+	.string "looking up.\p"
+	.string "She looked like she'd waited a long time\n"
+	.string "for the sky to fall.\l"
+	.string "We don't know her.\p"
+	.string "If you meet her, be kind.\n"
+	.string "Hehehe… Fufufu… And look up now and\l"
+	.string "then.$"
+```
+
+</details>
+
 #### Iron Boulder
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_TateAndLiza_IronBoulder_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -606,6 +932,131 @@ Nexus_Text_TateAndLiza_IronBoulder_ChampionAfter:
 	.string "Hehehe… Fufufu…\p"
 	.string "That thing cuts everything in two. Go\n"
 	.string "show it something that stays whole.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Iron Boulder: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — a provocação psíquica: eles costumam ver um pouco do que vem, e daquela criatura não veem nada, porque vem de um futuro em que eles não estão. Grosseria. Depois escolhem a explicação menos triste.
+
+**Antes da luta**
+
+> We can usually see a little of what's coming.  
+> A flicker. A feeling.
+>
+> With that thing, nothing.  
+> It comes from a future that doesn't have us in it.
+>
+> Rude.  
+> Very rude. Let's battle!
+
+**Derrota**
+
+> We didn't see that coming…  
+> …for once, really.
+
+**Depois da luta**
+
+> Maybe that future just forgot about us.  
+> Maybe we moved away.
+>
+> Or maybe, in that future, there's only one of us.  
+> We don't like that maybe.
+>
+> So we decided it's the first one. We moved away.  
+> Hehehe… Fufufu… Somewhere with better weather. Go on.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_TateAndLiza_IronBoulder_ChampionIntro2:
+	.string "We can usually see a little of what's\n"
+	.string "coming.\l"
+	.string "A flicker. A feeling.\p"
+	.string "With that thing, nothing.\n"
+	.string "It comes from a future that doesn't\l"
+	.string "have us in it.\p"
+	.string "Rude.\n"
+	.string "Very rude. Let's battle!$"
+
+Nexus_Text_TateAndLiza_IronBoulder_ChampionDefeat2:
+	.string "We didn't see that coming…\n"
+	.string "…for once, really.$"
+
+Nexus_Text_TateAndLiza_IronBoulder_ChampionAfter2:
+	.string "{SPEAKER NAME_TATE_AND_LIZA}Maybe that future just forgot about\n"
+	.string "us.\l"
+	.string "Maybe we moved away.\p"
+	.string "Or maybe, in that future, there's only\n"
+	.string "one of us.\l"
+	.string "We don't like that maybe.\p"
+	.string "So we decided it's the first one. We\n"
+	.string "moved away.\l"
+	.string "Hehehe… Fufufu… Somewhere with better\l"
+	.string "weather. Go on.$"
+```
+
+</details>
+
+**Variação 3** — a lembrança: a escola de Mossdeep os pôs em turmas separadas "para o bem deles" e aguentou uma manhã. A criatura corta tudo em dois; o chifre zumbiu para eles e parou, porque não achou a linha.
+
+**Antes da luta**
+
+> When we were small, the school in Mossdeep put us in different classes.  
+> For our own good, they said.
+>
+> We lasted one morning.  
+> The teachers had headaches by lunch.
+>
+> That creature splits things for a living.  
+> Hehehe… Fufufu… It won't split us. Battle!
+
+**Derrota**
+
+> Still in one piece…  
+> …two pieces. The usual.
+
+**Depois da luta**
+
+> Its horn hums when it's about to cut.  
+> We heard it hum at us. Then it stopped.
+>
+> We think it couldn't find the line between us.  
+> There isn't one. Not a clean one.
+>
+> Go. It'll find the line between you and your team easily.  
+> Unless you stand very close.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_TateAndLiza_IronBoulder_ChampionIntro3:
+	.string "When we were small, the school in\n"
+	.string "Mossdeep put us in different classes.\l"
+	.string "For our own good, they said.\p"
+	.string "We lasted one morning.\n"
+	.string "The teachers had headaches by lunch.\p"
+	.string "That creature splits things for a\n"
+	.string "living.\l"
+	.string "Hehehe… Fufufu… It won't split us.\l"
+	.string "Battle!$"
+
+Nexus_Text_TateAndLiza_IronBoulder_ChampionDefeat3:
+	.string "Still in one piece…\n"
+	.string "…two pieces. The usual.$"
+
+Nexus_Text_TateAndLiza_IronBoulder_ChampionAfter3:
+	.string "{SPEAKER NAME_TATE_AND_LIZA}Its horn hums when it's about to cut.\n"
+	.string "We heard it hum at us. Then it stopped.\p"
+	.string "We think it couldn't find the line\n"
+	.string "between us.\l"
+	.string "There isn't one. Not a clean one.\p"
+	.string "Go. It'll find the line between you and\n"
+	.string "your team easily.\l"
+	.string "Unless you stand very close.$"
 ```
 
 </details>

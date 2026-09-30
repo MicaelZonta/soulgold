@@ -325,6 +325,78 @@ Nexus_Text_Wattson_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): falam só dele mesmo, sem o lugar nem a criatura do dia. A variação 1 é a de cima, que está no jogo; as novas não a repetem. Nada disto está no código.
+
+**Variação 2** — a lembrança de New Mauville: tudo que ele constrói explode pelo menos uma vez, e ele se orgulha disso.
+
+**Antes da luta**
+
+> Wahahaha! Stand back, young one! Last time I pressed a button like this, a whole city underground lit up and nearly went up in smoke!
+>
+> They called it New Mauville. I called it a learning experience! Wahahaha!
+>
+> Everything I build blows up at least once. That's how you know it works. Now let's see if YOU work!
+
+**Derrota**
+
+> Wahahaha! Kaboom! Right on schedule!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wattson_Intro2:
+	.string "Wahahaha! Stand back, young one! Last\n"
+	.string "time I pressed a button like this, a\l"
+	.string "whole city underground lit up and\l"
+	.string "nearly went up in smoke!\p"
+	.string "They called it New Mauville. I called it a\n"
+	.string "learning experience! Wahahaha!\p"
+	.string "Everything I build blows up at least\n"
+	.string "once. That's how you know it works. Now\l"
+	.string "let's see if YOU work!$"
+
+Nexus_Text_Wattson_Defeat2:
+	.string "Wahahaha! Kaboom! Right on schedule!$"
+```
+
+</details>
+
+**Variação 3** — a dúvida: um homem de sobretudo pediu as horas, e o relógio dos dois tinha parado no mesmo minuto (fio do casaco e do relógio parado, com leveza).
+
+**Antes da luta**
+
+> Wahahaha! Say, you don't happen to know what time it is?
+>
+> A fellow in a long coat asked me that a while ago. I checked my watch. Stopped! Checked his. Stopped too!
+>
+> Two stopped watches, same minute! Now that's a circuit worth studying. But first -- a battle! Wahahaha!
+
+**Derrota**
+
+> Wahahaha! Well, THAT was quick. Did anyone time it?
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wattson_Intro3:
+	.string "Wahahaha! Say, you don't happen to\n"
+	.string "know what time it is?\p"
+	.string "A fellow in a long coat asked me that a\n"
+	.string "while ago. I checked my watch. Stopped!\l"
+	.string "Checked his. Stopped too!\p"
+	.string "Two stopped watches, same minute! Now\n"
+	.string "that's a circuit worth studying. But\l"
+	.string "first -- a battle! Wahahaha!$"
+
+Nexus_Text_Wattson_Defeat3:
+	.string "Wahahaha! Well, THAT was quick. Did\n"
+	.string "anyone time it?$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Magearna
@@ -395,6 +467,121 @@ Nexus_Text_Wattson_Magearna_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Magearna: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — o olho de inventor: ele espiou as engrenagens e viu que quem a fez nunca jogou nada fora; ele tem um ferro-velho maior que o ginásio. Depois, o que ele teria posto nela (uma risada) e o que ela já tem (um zumbido de chaleira).
+
+**Antes da luta**
+
+> Wahahaha! I peeked at its gears while it curtsied. Couldn't help myself! An old inventor never can.
+>
+> Every tooth cut by hand. Not one spare part. Whoever made it never threw anything away.
+>
+> Me, I've got a scrap heap taller than my Gym! Let's see if my junk can beat a masterpiece!
+
+**Derrota**
+
+> Wahahaha! Outclassed by quality craftsmanship!
+
+**Depois da luta**
+
+> You know what I'd have added, if I'd built it? A laugh. A good loud one, right in the chest.
+>
+> But I listened close, and it doesn't need one. It hums. Soft, like a kettle just before it boils.
+>
+> That's the sound of something happy to be switched on. Wahahaha! Go on, go hear it hum.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wattson_Magearna_ChampionIntro2:
+	.string "Wahahaha! I peeked at its gears while it\n"
+	.string "curtsied. Couldn't help myself! An old\l"
+	.string "inventor never can.\p"
+	.string "Every tooth cut by hand. Not one spare\n"
+	.string "part. Whoever made it never threw\l"
+	.string "anything away.\p"
+	.string "Me, I've got a scrap heap taller than my\n"
+	.string "Gym! Let's see if my junk can beat a\l"
+	.string "masterpiece!$"
+
+Nexus_Text_Wattson_Magearna_ChampionDefeat2:
+	.string "Wahahaha! Outclassed by quality\n"
+	.string "craftsmanship!$"
+
+Nexus_Text_Wattson_Magearna_ChampionAfter2:
+	.string "{SPEAKER NAME_WATTSON}You know what I'd have added, if I'd\n"
+	.string "built it? A laugh. A good loud one, right\l"
+	.string "in the chest.\p"
+	.string "But I listened close, and it doesn't\n"
+	.string "need one. It hums. Soft, like a kettle\l"
+	.string "just before it boils.\p"
+	.string "That's the sound of something happy to\n"
+	.string "be switched on. Wahahaha! Go on, go hear\l"
+	.string "it hum.$"
+```
+
+</details>
+
+**Variação 3** — o que ele perdeu: pela lenda, ela foi feita de presente para uma menina (a princesa de Azoth). O Wattson lembra da criança que lhe passava parafusos na oficina e foi embora sem se despedir.
+
+**Antes da luta**
+
+> I read the markings on its base. Old writing, but I made out a word or two. It was made as a present. For a little girl.
+>
+> Five hundred years of work, and the whole point was to make one child smile. Wahahaha… best reason I ever heard!
+>
+> Come on! Show me what you'd build for someone you love!
+
+**Derrota**
+
+> Wahahaha… Built with love, that team. I can tell.
+
+**Depois da luta**
+
+> There was a kid in Mauville who used to sit in my workshop and hand me screws. Never said much.
+>
+> I built that kid a little tin Voltorb once. It rolled. It sparked. It blew up. We laughed for an hour!
+>
+> The kid grew up and went off somewhere. I never did build a better one.
+>
+> …Go on, young one. Somebody made that little marvel a promise. Let's see it kept.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wattson_Magearna_ChampionIntro3:
+	.string "I read the markings on its base. Old\n"
+	.string "writing, but I made out a word or two. It\l"
+	.string "was made as a present. For a little girl.\p"
+	.string "Five hundred years of work, and the\n"
+	.string "whole point was to make one child smile.\l"
+	.string "Wahahaha… best reason I ever heard!\p"
+	.string "Come on! Show me what you'd build for\n"
+	.string "someone you love!$"
+
+Nexus_Text_Wattson_Magearna_ChampionDefeat3:
+	.string "Wahahaha… Built with love, that team. I\n"
+	.string "can tell.$"
+
+Nexus_Text_Wattson_Magearna_ChampionAfter3:
+	.string "{SPEAKER NAME_WATTSON}There was a kid in Mauville who used to\n"
+	.string "sit in my workshop and hand me screws.\l"
+	.string "Never said much.\p"
+	.string "I built that kid a little tin Voltorb\n"
+	.string "once. It rolled. It sparked. It blew up.\l"
+	.string "We laughed for an hour!\p"
+	.string "The kid grew up and went off somewhere.\n"
+	.string "I never did build a better one.\p"
+	.string "…Go on, young one. Somebody made that\n"
+	.string "little marvel a promise. Let's see it\l"
+	.string "kept.$"
+```
+
+</details>
+
 #### Zeraora
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Wattson_Zeraora_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -459,6 +646,116 @@ Nexus_Text_Wattson_Zeraora_ChampionAfter:
 	.string "rush.\p"
 	.string "Stand still, young one. Let it come to\n"
 	.string "you. Wahahaha!$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para Zeraora: sobre a criatura, sem o nome da espécie. A variação 1 é a de cima, que está no jogo. Nada disto está no código.
+
+**Variação 2** — humor: o velho tentou correr atrás dele pela rua e os joelhos reclamaram; tentou medir a velocidade e o ponteiro caiu. O conselho muda de "fique parado" (variação 1) para "chegue antes".
+
+**Antes da luta**
+
+> Wahahaha! I tried to follow it down the street. Made it three lampposts before my knees filed a complaint!
+>
+> It's gone before the spark even lands. I've clocked lightning in my lab slower than that!
+>
+> Well, I may be slow, but I'm stubborn! Let's see how fast YOU are!
+
+**Derrota**
+
+> Wahahaha! Left in the dust! Or the static!
+
+**Depois da luta**
+
+> I tried to measure its speed. The needle on my meter spun around twice and fell off!
+>
+> So I counted lampposts instead. Four hundred lamps, gone dark in one breath.
+>
+> Don't try to catch up to it, young one. Get where it's going first! Wahahaha!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wattson_Zeraora_ChampionIntro2:
+	.string "Wahahaha! I tried to follow it down the\n"
+	.string "street. Made it three lampposts before\l"
+	.string "my knees filed a complaint!\p"
+	.string "It's gone before the spark even lands.\n"
+	.string "I've clocked lightning in my lab slower\l"
+	.string "than that!\p"
+	.string "Well, I may be slow, but I'm stubborn!\n"
+	.string "Let's see how fast YOU are!$"
+
+Nexus_Text_Wattson_Zeraora_ChampionDefeat2:
+	.string "Wahahaha! Left in the dust! Or the\n"
+	.string "static!$"
+
+Nexus_Text_Wattson_Zeraora_ChampionAfter2:
+	.string "{SPEAKER NAME_WATTSON}I tried to measure its speed. The needle\n"
+	.string "on my meter spun around twice and fell\l"
+	.string "off!\p"
+	.string "So I counted lampposts instead. Four\n"
+	.string "hundred lamps, gone dark in one breath.\p"
+	.string "Don't try to catch up to it, young one.\n"
+	.string "Get where it's going first! Wahahaha!$"
+```
+
+</details>
+
+**Variação 3** — a culpa: no filme, ele vivia numa floresta que virou cidade cheia de fios. O Wattson também construiu uma cidade de fios e nunca perguntou o que havia ali antes.
+
+**Antes da luta**
+
+> I heard a story about it. Once it lived in a forest. Then people came, cut the trees, and built a city full of wires.
+>
+> Now it runs through those wires and turns every light off behind it.
+>
+> Wahahaha… I built a city of wires too, you know. Makes an old man wonder whose trees were there first.
+>
+> Battle me! I think better after a good shock!
+
+**Derrota**
+
+> Wahahaha… Short-circuited. Fair enough.
+
+**Depois da luta**
+
+> When they built Mauville, I cut the ribbon myself. Big scissors! Big crowd! I never asked what was there before.
+>
+> That creature isn't angry at the light. It's angry that nobody asked.
+>
+> So when you meet it… ask. Wahahaha! Worst it can do is zap you!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wattson_Zeraora_ChampionIntro3:
+	.string "I heard a story about it. Once it lived\n"
+	.string "in a forest. Then people came, cut the\l"
+	.string "trees, and built a city full of wires.\p"
+	.string "Now it runs through those wires and\n"
+	.string "turns every light off behind it.\p"
+	.string "Wahahaha… I built a city of wires too,\n"
+	.string "you know. Makes an old man wonder whose\l"
+	.string "trees were there first.\p"
+	.string "Battle me! I think better after a good\n"
+	.string "shock!$"
+
+Nexus_Text_Wattson_Zeraora_ChampionDefeat3:
+	.string "Wahahaha… Short-circuited. Fair\n"
+	.string "enough.$"
+
+Nexus_Text_Wattson_Zeraora_ChampionAfter3:
+	.string "{SPEAKER NAME_WATTSON}When they built Mauville, I cut the\n"
+	.string "ribbon myself. Big scissors! Big crowd! I\l"
+	.string "never asked what was there before.\p"
+	.string "That creature isn't angry at the light.\n"
+	.string "It's angry that nobody asked.\p"
+	.string "So when you meet it… ask. Wahahaha!\n"
+	.string "Worst it can do is zap you!$"
 ```
 
 </details>
