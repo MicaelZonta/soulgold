@@ -45,6 +45,7 @@ void BerryDebug_GrowGarden(void);
 void BerryDebug_EmptyGarden(void);
 void BerryDebug_ResetToday(void);
 void BerryDebug_ResetAll(void);
+void BerryDebug_ClearMoney(void);
 void BerryDebug_Status(void);
 
 #endif // GUARD_BERRY_GARDEN_H

@@ -11,8 +11,8 @@
 | `horta_*.png` | Renders da Route 30 com a horta | — |
 
 **Testar no jogo:** menu de debug **L + START → Berry Master…** (relógio, Livro, nível,
-canteiros, teleporte, reset). Tabela e roteiro por parte: `PLANO_DE_IMPLEMENTACAO.md`,
-seção “Como testar”.
+canteiros, teleporte, reset). **Roteiro completo, em ordem: [`TESTES_NO_JOGO.md`](TESTES_NO_JOGO.md)**
+(40 testes, T01–T40). Resumo por parte: `PLANO_DE_IMPLEMENTACAO.md`, seção “Como testar”.
 
 Páginas (artifacts), só apresentação — tudo o que dizem está nos `.md`:
 

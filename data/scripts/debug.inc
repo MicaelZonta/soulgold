@@ -1325,6 +1325,13 @@ Debug_EventScript_BerryMoney::
 	releaseall
 	end
 
+Debug_EventScript_BerryNoMoney::
+	lockall
+	special BerryDebug_ClearMoney
+	msgbox Debug_Text_BerryNoMoney, MSGBOX_DEFAULT
+	releaseall
+	end
+
 Debug_EventScript_BerryMulch::
 	lockall
 	additem ITEM_GROWTH_MULCH, 5
@@ -1429,6 +1436,9 @@ Debug_Text_BerryLeagueOff:
 
 Debug_Text_BerryMoney:
 	.string "Got ¥10,000.$"
+
+Debug_Text_BerryNoMoney:
+	.string "Money set to ¥0.$"
 
 Debug_Text_BerryMulch:
 	.string "Got 5 of each of the 8 Mulches.$"

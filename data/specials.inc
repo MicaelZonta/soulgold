@@ -706,3 +706,4 @@ gSpecials::
 	def_special BerryDebug_ResetToday
 	def_special BerryDebug_ResetAll
 	def_special BerryDebug_Status
+	def_special BerryDebug_ClearMoney

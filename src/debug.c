@@ -443,6 +443,7 @@ extern const u8 Debug_EventScript_BerryToggleAct1[];
 extern const u8 Debug_EventScript_BerryToggleLeague[];
 extern const u8 Debug_EventScript_BerryMoney[];
 extern const u8 Debug_EventScript_BerryMulch[];
+extern const u8 Debug_EventScript_BerryNoMoney[];
 extern const u8 Debug_EventScript_BerryResetAll[];
 extern const u8 Debug_EventScript_BerryStatus[];
 extern const u8 DebugScript_DaycareMonsNotCompatible[];
@@ -880,6 +881,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster[] =
     { COMPOUND_STRING("Act 1 done: toggle"),        DebugAction_ExecuteScript, Debug_EventScript_BerryToggleAct1 },
     { COMPOUND_STRING("League clear: toggle"),    DebugAction_ExecuteScript, Debug_EventScript_BerryToggleLeague },
     { COMPOUND_STRING("Give ¥10,000"),              DebugAction_ExecuteScript, Debug_EventScript_BerryMoney },
+    { COMPOUND_STRING("Money: set to ¥0"),          DebugAction_ExecuteScript, Debug_EventScript_BerryNoMoney },
     { COMPOUND_STRING("Give 5 of each Mulch"),      DebugAction_ExecuteScript, Debug_EventScript_BerryMulch },
     { COMPOUND_STRING("Reset Berry Master"),        DebugAction_ExecuteScript, Debug_EventScript_BerryResetAll },
     { NULL }

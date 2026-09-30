@@ -484,6 +484,12 @@ void BerryDebug_ResetToday(void)
     GardenRollDay();
 }
 
+// So "not enough money" can be tested on demand.
+void BerryDebug_ClearMoney(void)
+{
+    SetMoney(&gSaveBlock1Ptr->money, 0);
+}
+
 // Back to a save that never met Bram: no tutorial, empty Book and garden.
 void BerryDebug_ResetAll(void)
 {

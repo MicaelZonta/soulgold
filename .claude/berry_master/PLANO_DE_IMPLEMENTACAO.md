@@ -92,14 +92,14 @@ fez. Código: `sDebugMenu_Actions_BerryMaster*` em `src/debug.c`, scripts
 |---|---|
 | Status | nível, obra, canteiros plantados, Livro, marco pago e devido, hora, bits do dia, estado da sidequest, presente do Bram |
 | Go: the garden / Go: Bram's house | teleporte para (27,45) na Route 30 / porta da casa |
-| Clock… | +1 h, +6 h, +24 h, próxima 7:00 — **move o relógio de verdade** (o deslocamento do RTC, como o relógio de parede), só para a frente, e recarrega o mapa: as árvores crescem as horas puladas e a virada de dia limpa as flags diárias pelo caminho normal |
+| Clock… | +1 h, +6 h, +24 h, próxima 7:00 (que pode ser a de **hoje**: para virar o dia, use +24 h) — **move o relógio de verdade** (o deslocamento do RTC, como o relógio de parede), só para a frente, e recarrega o mapa: as árvores crescem as horas puladas e a virada de dia limpa as flags diárias pelo caminho normal |
 | Clock… → New day, keep clock | dia novo **da horta** sem mexer no relógio: presente do Bram e rara da Laurel de volta, obra paga concluída |
 | Book of Berries… | Livro com 8, 11, 12, 22, 32, 60, 66 (sem Enigma) ou 67; “Milestones unpaid” zera os marcos pagos |
 | Garden level… | nível 1–4 (descarta obra em andamento) e recarrega |
 | Ripen / Grow 1 stage / Empty | os 10 canteiros: tudo maduro, um estágio, ou terra vazia (vazio inclui o da Laurel) |
 | Act 1 done: toggle | `VAR_HARVEST_KING` 0 ↔ 4 (libera as ofertas dos níveis 3 e 4) |
 | League clear: toggle | `FLAG_SYS_GAME_CLEAR` (rara da Laurel; Lansat e Starf cruzam) |
-| Give ¥10,000 / 5 of each Mulch | dinheiro para as reformas; os 8 adubos |
+| Give ¥10,000 / Money: set to ¥0 / 5 of each Mulch | dinheiro para as reformas (ou nenhum, para testar a recusa); os 8 adubos |
 | Reset Berry Master | save que nunca viu o Bram: tutorial de novo, Livro, horta, níveis, marcos e história zerados |
 
 Berries para plantar: **PC/Bag… → Fill Pocket Berries** (já existia).
@@ -116,7 +116,7 @@ Berries para plantar: **PC/Bag… → Fill Pocket Berries** (já existia).
   repetir; ~4 tentativas em média). Micle ao lado de Custap: sem League clear nunca dá
   Lansat; com League clear, dá.
 - **Parte 5:** Status (bits do dia); Clock… → +24 h → bits zerados.
-- **Parte 6:** Book 12, ¥10,000, falar com o Bram → pagar → Clock… → Next morning →
+- **Parte 6:** Book 12, ¥10,000, falar com o Bram → pagar → Clock… → +24 hours →
   “Four more beds!” e o B aberto; o presente vira 3 / semente à escolha. Book 22 + Act 1
   → oferta do canal → pagar → dia seguinte → plantar → +24 h → ao entrar, já regado.
 
