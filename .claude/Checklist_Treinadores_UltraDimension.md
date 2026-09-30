@@ -41,11 +41,11 @@
 ### Elite Four e Campeões
 
 - [ ] **Lorelei — Gelo** — primeira integrante da Elite Four de Kanto, com preferência por Pokémon de Água e Gelo.
-  - [ficha](rift_missions/nexus/kanto/lorelei.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/lorelei.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Bruno — Lutador** — artista marcial que usa Pokémon Lutadores e resistentes.
   - [ficha](rift_missions/nexus/kanto/bruno.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 - [ ] **Agatha — Fantasma** — veterana ligada ao passado do Professor Oak, famosa por seu Gengar.
-  - [ficha](rift_missions/nexus/kanto/agatha.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/agatha.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Lance — Dragão** — mestre de dragões que posteriormente se torna Campeão de Johto.
   - [ficha](rift_missions/nexus/kanto/lance.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 - [x] **Blue — Campeão** — conquista o título pouco antes da chegada de Red.
@@ -56,7 +56,7 @@
 - [x] **Giovanni** — líder do sindicato criminoso que explora Pokémon em busca de poder e lucro.
   - [ficha](rift_missions/nexus/kanto/giovanni.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 - [ ] **Jessie e James** — dupla recorrente do Team Rocket presente em versões especiais e nos jogos *Let's Go*.
-  - [ficha](rift_missions/nexus/kanto/jessie_e_james.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kanto/jessie_e_james.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Archer** — executivo de alto escalão que tenta restaurar o Team Rocket.
   - [ficha](rift_missions/nexus/kanto/archer.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 - [x] **Ariana** — executiva habilidosa e uma das figuras centrais da organização após Giovanni.
@@ -207,12 +207,12 @@
 - [ ] **Matt** — administrador forte e extremamente leal a Archie.
   - [ficha](rift_missions/nexus/hoenn/matt.md) · Sprite ❌ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Shelly** — administradora inteligente envolvida nas operações científicas da equipe.
-  - [ficha](rift_missions/nexus/hoenn/shelly.md) · Sprite ❌ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/shelly.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ### Outros notáveis
 
 - [ ] **Zinnia** — Lorekeeper do povo Draconid que conduz os eventos do Delta Episode.
-  - [ficha](rift_missions/nexus/hoenn/zinnia.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/hoenn/zinnia.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ---
 
@@ -221,14 +221,14 @@
 ### Rival
 
 - [ ] **Barry** — rival hiperativo, competitivo e filho do Frontier Brain Palmer.
-  - [ficha](rift_missions/nexus/sinnoh/barry.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/sinnoh/barry.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ### Líderes de Ginásio
 
 - [ ] **Roark — Pedra** — minerador e jovem Líder de Oreburgh.
   - [ficha](rift_missions/nexus/sinnoh/roark.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Gardenia — Grama** — Líder de Eterna que tem medo de fantasmas.
-  - [ficha](rift_missions/nexus/sinnoh/gardenia.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/sinnoh/gardenia.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Maylene — Lutador** — jovem artista marcial de Veilstone.
   - [ficha](rift_missions/nexus/sinnoh/maylene.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Crasher Wake — Água** — lutador mascarado e celebridade de Pastoria.
@@ -253,7 +253,7 @@
 - [ ] **Lucian — Psíquico** — estudioso que lê enquanto aguarda desafiantes.
   - [ficha](rift_missions/nexus/sinnoh/lucian.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Cynthia — Campeã** — arqueóloga, pesquisadora de mitos e uma das Campeãs mais poderosas.
-  - [ficha](rift_missions/nexus/sinnoh/cynthia.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/sinnoh/cynthia.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ### Battle Frontier — Frontier Brains
 
@@ -271,7 +271,7 @@
 ### Team Galactic
 
 - [ ] **Cyrus** — líder que pretende destruir o universo e criar um mundo sem emoções.
-  - [ficha](rift_missions/nexus/sinnoh/cyrus.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/sinnoh/cyrus.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Mars** — comandante agressiva e devotada aos planos de Cyrus.
   - [ficha](rift_missions/nexus/sinnoh/mars.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Jupiter** — comandante fria envolvida nos ataques aos lagos de Sinnoh.
@@ -303,7 +303,7 @@
 ### Rivais
 
 - [ ] **Cheren** — rival estudioso que busca força e posteriormente vira Líder de Ginásio.
-  - [ficha](rift_missions/nexus/unova/cheren.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/unova/cheren.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Bianca** — rival gentil que descobre seu próprio caminho como assistente de pesquisa.
   - [ficha](rift_missions/nexus/unova/bianca.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Hugh** — rival de *Black 2/White 2* que busca recuperar o Purrloin roubado de sua irmã.
@@ -334,7 +334,7 @@
 - [ ] **Iris — Dragão** — prodígio que se torna Campeã em *Black 2/White 2*.
   - [ficha](rift_missions/nexus/unova/iris.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Cheren — Normal** — novo Líder de Aspertia em *Black 2/White 2*.
-  - [ficha](rift_missions/nexus/unova/cheren.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/unova/cheren.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Roxie — Veneno** — baixista de uma banda e Líder de Virbank.
   - [ficha](rift_missions/nexus/unova/roxie.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Marlon — Água** — descontraído Líder de Humilau.
@@ -351,7 +351,7 @@
 - [ ] **Caitlin — Psíquico** — antiga dona do Battle Castle que dominou seus poderes.
   - [ficha](rift_missions/nexus/unova/caitlin.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Alder — Campeão** — viajante experiente que ensina sobre os vínculos com Pokémon.
-  - [ficha](rift_missions/nexus/unova/alder.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/unova/alder.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Iris — Campeã** — jovem mestre de dragões e Campeã na sequência de Unova.
   - [ficha](rift_missions/nexus/unova/iris.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
@@ -365,7 +365,7 @@
 ### Team Plasma
 
 - [ ] **N** — jovem capaz de ouvir Pokémon, criado para ser o rei do Team Plasma.
-  - [ficha](rift_missions/nexus/unova/n.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/unova/n.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Ghetsis** — manipulador que usa a falsa libertação dos Pokémon para buscar domínio.
   - [ficha](rift_missions/nexus/unova/ghetsis.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Colress** — cientista interessado em descobrir como liberar o potencial máximo dos Pokémon.
@@ -382,7 +382,7 @@
 - [ ] **Benga** — neto de Alder e chefe final de Black Tower ou White Treehollow.
   - [ficha](rift_missions/nexus/unova/benga.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Cynthia** — Campeã visitante que pode ser desafiada em Undella Town.
-  - [ficha](rift_missions/nexus/sinnoh/cynthia.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/sinnoh/cynthia.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Hilbert e Hilda** — protagonistas de *Black/White* ligados à derrota inicial do Team Plasma.
   - [ficha](rift_missions/nexus/unova/hilbert_e_hilda.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
@@ -433,7 +433,7 @@
 - [ ] **Drasna — Dragão** — treinadora gentil inspirada pelas lendas de seus avós.
   - [ficha](rift_missions/nexus/kalos/drasna.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Diantha — Campeã** — famosa atriz e poderosa treinadora de Kalos.
-  - [ficha](rift_missions/nexus/kalos/diantha.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/kalos/diantha.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ### Battle Maison
 
@@ -481,7 +481,7 @@
 ### Rivais
 
 - [ ] **Hau** — rival otimista e neto do Kahuna Hala.
-  - [ficha](rift_missions/nexus/alola/hau.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/alola/hau.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Gladion** — rival sério que foge da Aether Foundation com Type: Null.
   - [ficha](rift_missions/nexus/alola/gladion.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 
@@ -507,7 +507,7 @@
 - [ ] **Hala — Lutador** — Kahuna de Melemele e avô de Hau.
   - [ficha](rift_missions/nexus/alola/hala.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Olivia — Pedra** — Kahuna de Akala e joalheira.
-  - [ficha](rift_missions/nexus/alola/olivia.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/alola/olivia.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Nanu — Noturno** — Kahuna de Ula'ula e antigo policial internacional.
   - [ficha](rift_missions/nexus/alola/nanu.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Hapu — Terra** — jovem escolhida por Tapu Fini como Kahuna de Poni.
@@ -520,7 +520,7 @@
 - [ ] **Molayne — Aço** — gerente do observatório que substitui Hala em *Ultra Sun/Ultra Moon*.
   - [ficha](rift_missions/nexus/alola/molayne.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Olivia — Pedra** — representa Akala na Elite Four.
-  - [ficha](rift_missions/nexus/alola/olivia.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/alola/olivia.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Acerola — Fantasma** — ocupa a vaga destinada ao indisponível Nanu.
   - [ficha](rift_missions/nexus/alola/acerola.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Kahili — Voador** — golfista profissional e integrante da Elite Four.
@@ -528,7 +528,7 @@
 - [x] **Professor Kukui** — professor que testa o jogador na primeira defesa do título em *Sun/Moon*.
   - [ficha](rift_missions/nexus/alola/kukui.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 - [ ] **Hau** — desafiante final da Liga em *Ultra Sun/Ultra Moon*.
-  - [ficha](rift_missions/nexus/alola/hau.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/alola/hau.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Protagonista** — torna-se o primeiro Campeão oficial da recém-criada Liga de Alola.
   - ➖ é o próprio jogador, não entra no pool.
 
@@ -618,7 +618,7 @@
 ### Campeão e Champion Cup
 
 - [ ] **Leon — Campeão** — Campeão invicto de Galar, famoso por seu Charizard e péssimo senso de direção.
-  - [ficha](rift_missions/nexus/galar/leon.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+  - [ficha](rift_missions/nexus/galar/leon.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Hop** — compete na Champion Cup para tentar superar o irmão.
   - [ficha](rift_missions/nexus/galar/hop.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Bede** — retorna como sucessor de Opal e desafia o protagonista.
