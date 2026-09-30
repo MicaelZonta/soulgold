@@ -320,6 +320,84 @@ Nexus_Text_Greta_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+A variação 1 é a Greta julgando a si mesma porque ninguém veio julgá-la. Na 2, uma lembrança engraçada: a primeira luta dela na Arena, perdida nos pontos, e o choro que virou carreira de juíza. Na 3, o R21: no fragmento dela a Arena nunca foi construída (a ilha ficou vazia; ver o diário), então ela carrega as regras na cabeça e o Umbreon, ás dela em Emerald, marca os pontos.
+
+**Variação 2 — a primeira derrota nos pontos**
+
+**Antes da luta**
+
+> Hiya! Greta! Quick question: you ever lose a battle on points?
+>
+> It's the worst! Nobody fainted, you're still standing, and three judges go, “Sorry, champ, not today.”
+>
+> I lost my first ever Arena match like that. Cried for an hour. Then I went and became the judge!
+>
+> So no crying today, OK? Let's go!
+
+**Derrota**
+
+> Aaand that's a points loss. …I'm fine! Totally fine! Great battle!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Greta_Intro2:
+	.string "Hiya! Greta! Quick question: you ever\n"
+	.string "lose a battle on points?\p"
+	.string "It's the worst! Nobody fainted, you're\n"
+	.string "still standing, and three judges go,\l"
+	.string "“Sorry, champ, not today.”\p"
+	.string "I lost my first ever Arena match like\n"
+	.string "that. Cried for an hour. Then I went and\l"
+	.string "became the judge!\p"
+	.string "So no crying today, OK? Let's go!$"
+
+Nexus_Text_Greta_Defeat2:
+	.string "Aaand that's a points loss. …I'm fine!\n"
+	.string "Totally fine! Great battle!$"
+```
+
+</details>
+
+**Variação 3 — a Arena que nunca existiu**
+
+**Antes da luta**
+
+> OK, heads up, champ. My Umbreon keeps score now. Somebody has to.
+>
+> Where I'm from, the Arena never got built. The island just stayed empty. No judges, no scoreboard.
+>
+> So I carry the rules around in my head. Mind, Skill, Body. Works anywhere!
+>
+> Umbreon, you ready? Three turns!
+
+**Derrota**
+
+> Umbreon says you win. I'd argue, but it's got a very serious face.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Greta_Intro3:
+	.string "OK, heads up, champ. My Umbreon keeps\n"
+	.string "score now. Somebody has to.\p"
+	.string "Where I'm from, the Arena never got\n"
+	.string "built. The island just stayed empty. No\l"
+	.string "judges, no scoreboard.\p"
+	.string "So I carry the rules around in my head.\n"
+	.string "Mind, Skill, Body. Works anywhere!\p"
+	.string "Umbreon, you ready? Three turns!$"
+
+Nexus_Text_Greta_Defeat3:
+	.string "Umbreon says you win. I'd argue, but\n"
+	.string "it's got a very serious face.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Greta é a campeã, a luta logo antes do lendário do dia. Um registro por lendário; a fala é sobre a criatura, sem dizer o nome dela.
@@ -387,6 +465,128 @@ Nexus_Text_Greta_Koraidon_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Na variação 1 a Greta descobre que a criatura luta porque é divertido. Na 2, o humor do sanduíche (ele comia sanduíche em Paldea): comeu o prato e a ficha de nota, e o sol esquenta quando ele está feliz; é clima com pernas. Na 3, a perda: uma mulher de jaleco, cabelo solto e colar de dentes (a Sada, nunca nomeada) abriu uma porta para o mundo antigo, passou e não voltou; ele espera na porta todo dia.
+
+**Variação 2 — o sanduíche**
+
+**Antes da luta**
+
+> OK, true story. I made that big guy a sandwich. Ham, tomato, a lot of mustard.
+>
+> It ate the sandwich, the plate, and most of my scorecard.
+>
+> Then it lay down in the sun and purred like an engine. Body: ten. Manners: we're working on it.
+>
+> Your turn, champ! I'm hungry for a good battle!
+
+**Derrota**
+
+> Ha! Well fed on that one. Thanks, champ!
+
+**Depois da luta**
+
+> You know what I noticed? When it's full and happy, the sun gets warmer.
+>
+> When it's sad, the whole valley goes gray. It's not a creature, it's weather with legs.
+>
+> Somebody left it here all alone. You shouldn't leave weather alone. It gets moody.
+>
+> Go on! And bring a snack. Trust me on this one.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Greta_Koraidon_ChampionIntro2:
+	.string "OK, true story. I made that big guy a\n"
+	.string "sandwich. Ham, tomato, a lot of mustard.\p"
+	.string "It ate the sandwich, the plate, and\n"
+	.string "most of my scorecard.\p"
+	.string "Then it lay down in the sun and purred\n"
+	.string "like an engine. Body: ten. Manners: we're\l"
+	.string "working on it.\p"
+	.string "Your turn, champ! I'm hungry for a good\n"
+	.string "battle!$"
+
+Nexus_Text_Greta_Koraidon_ChampionDefeat2:
+	.string "Ha! Well fed on that one. Thanks, champ!$"
+
+Nexus_Text_Greta_Koraidon_ChampionAfter2:
+	.string "{SPEAKER NAME_GRETA}You know what I noticed? When it's full\n"
+	.string "and happy, the sun gets warmer.\p"
+	.string "When it's sad, the whole valley goes\n"
+	.string "gray. It's not a creature, it's weather\l"
+	.string "with legs.\p"
+	.string "Somebody left it here all alone. You\n"
+	.string "shouldn't leave weather alone. It gets\l"
+	.string "moody.\p"
+	.string "Go on! And bring a snack. Trust me on\n"
+	.string "this one.$"
+```
+
+</details>
+
+**Variação 3 — a porta que ficou aberta**
+
+**Antes da luta**
+
+> Champ, can I ask you something? You think something from way back can ever really belong in now?
+>
+> That big guy is from before anybody. Before people, before rules, before scoring.
+>
+> Someone reached back and pulled it forward. Then they just… stopped reaching.
+>
+> OK! Too gloomy! Three turns, cheer me up!
+
+**Derrota**
+
+> There we go. Cheered up. Full marks.
+
+**Depois da luta**
+
+> There's a woman in a lab coat I keep almost remembering. Wild hair. A necklace made of teeth.
+>
+> She built a door to the old world and walked through it. The door's still open. She's not back.
+>
+> That big guy waits by it every day. Just in case.
+>
+> Go on. If it races you, let it win the first time. It's been waiting a while.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Greta_Koraidon_ChampionIntro3:
+	.string "Champ, can I ask you something? You\n"
+	.string "think something from way back can ever\l"
+	.string "really belong in now?\p"
+	.string "That big guy is from before anybody.\n"
+	.string "Before people, before rules, before\l"
+	.string "scoring.\p"
+	.string "Someone reached back and pulled it\n"
+	.string "forward. Then they just… stopped\l"
+	.string "reaching.\p"
+	.string "OK! Too gloomy! Three turns, cheer me\n"
+	.string "up!$"
+
+Nexus_Text_Greta_Koraidon_ChampionDefeat3:
+	.string "There we go. Cheered up. Full marks.$"
+
+Nexus_Text_Greta_Koraidon_ChampionAfter3:
+	.string "{SPEAKER NAME_GRETA}There's a woman in a lab coat I keep\n"
+	.string "almost remembering. Wild hair. A\l"
+	.string "necklace made of teeth.\p"
+	.string "She built a door to the old world and\n"
+	.string "walked through it. The door's still\l"
+	.string "open. She's not back.\p"
+	.string "That big guy waits by it every day. Just\n"
+	.string "in case.\p"
+	.string "Go on. If it races you, let it win the\n"
+	.string "first time. It's been waiting a while.$"
+```
+
+</details>
+
 
 #### Great Tusk
 
@@ -450,6 +650,126 @@ Nexus_Text_Greta_GreatTusk_ChampionAfter:
 	.string "alone in a ring full of broken fence\l"
 	.string "posts.\p"
 	.string "Go on. Be the judge it never had.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Na variação 1 o Body sozinho venceu tudo e sobrou uma arena vazia. Na 2 a Greta muda a nota: a criatura olha para trás esperando o bando (o Scarlet Book diz que andavam em bando), e lembrar é Mind; e quando ela perdeu, ele parou e não terminou o serviço, então ganhou o primeiro ponto de Skill, escrito numa presa quebrada. Na 3, a confissão: a Greta também é toda Body (o Heracross que o diga), achou aquilo divertido e ficou com vergonha; ela teve juízes que diziam "chega", a criatura não.
+
+**Variação 2 — o bando, e o primeiro ponto**
+
+**Antes da luta**
+
+> Straight talk again, champ. I found out those big shaggy things used to travel in herds.
+>
+> Now there's only one. It keeps turning around, like it's waiting for the others to catch up.
+>
+> That's not Body. That's Mind. It remembers. I had to change its score!
+>
+> Let's see if you can make me change yours!
+
+**Derrota**
+
+> Changed! Upgraded! You earned it!
+
+**Depois da luta**
+
+> Know what that thing did when I lost to it? It walked away. It didn't finish me.
+>
+> All Body would've kept going. It stopped. Looked back at me. And then it just… stopped.
+>
+> So I gave it a point for Skill. First one ever. I wrote it on one of those broken tusks.
+>
+> Go on. Maybe you can get it all the way to three.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Greta_GreatTusk_ChampionIntro2:
+	.string "Straight talk again, champ. I found out\n"
+	.string "those big shaggy things used to travel\l"
+	.string "in herds.\p"
+	.string "Now there's only one. It keeps turning\n"
+	.string "around, like it's waiting for the others\l"
+	.string "to catch up.\p"
+	.string "That's not Body. That's Mind. It\n"
+	.string "remembers. I had to change its score!\p"
+	.string "Let's see if you can make me change\n"
+	.string "yours!$"
+
+Nexus_Text_Greta_GreatTusk_ChampionDefeat2:
+	.string "Changed! Upgraded! You earned it!$"
+
+Nexus_Text_Greta_GreatTusk_ChampionAfter2:
+	.string "{SPEAKER NAME_GRETA}Know what that thing did when I lost to\n"
+	.string "it? It walked away. It didn't finish me.\p"
+	.string "All Body would've kept going. It\n"
+	.string "stopped. Looked back at me. And then it\l"
+	.string "just… stopped.\p"
+	.string "So I gave it a point for Skill. First one\n"
+	.string "ever. I wrote it on one of those broken\l"
+	.string "tusks.\p"
+	.string "Go on. Maybe you can get it all the way\n"
+	.string "to three.$"
+```
+
+</details>
+
+**Variação 3 — a juíza que também é só Body**
+
+**Antes da luta**
+
+> Confession time, champ. I'm a judge, but I'm all Body. Always have been. Just ask my Heracross.
+>
+> When I saw that thing out there smashing tusk after tusk, I didn't think, “What a brute.”
+>
+> I thought, “That looks fun!” Then I felt bad about it!
+>
+> So keep me honest, OK? Three turns!
+
+**Derrota**
+
+> Honest! Kept! You're a good influence, champ.
+
+**Depois da luta**
+
+> Here's the thing about hitting hard. It feels great. Every time. That's the problem.
+>
+> That shaggy guy never had anybody tell it when to stop. So it never did.
+>
+> I had judges. A whole Arena going, “OK, Greta, that's three turns.” Lucky me.
+>
+> Go on. Tell it when to stop. Nicely.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Greta_GreatTusk_ChampionIntro3:
+	.string "Confession time, champ. I'm a judge, but\n"
+	.string "I'm all Body. Always have been. Just ask\l"
+	.string "my Heracross.\p"
+	.string "When I saw that thing out there\n"
+	.string "smashing tusk after tusk, I didn't\l"
+	.string "think, “What a brute.”\p"
+	.string "I thought, “That looks fun!” Then I\n"
+	.string "felt bad about it!\p"
+	.string "So keep me honest, OK? Three turns!$"
+
+Nexus_Text_Greta_GreatTusk_ChampionDefeat3:
+	.string "Honest! Kept! You're a good influence,\n"
+	.string "champ.$"
+
+Nexus_Text_Greta_GreatTusk_ChampionAfter3:
+	.string "{SPEAKER NAME_GRETA}Here's the thing about hitting hard. It\n"
+	.string "feels great. Every time. That's the\l"
+	.string "problem.\p"
+	.string "That shaggy guy never had anybody tell\n"
+	.string "it when to stop. So it never did.\p"
+	.string "I had judges. A whole Arena going, “OK,\n"
+	.string "Greta, that's three turns.” Lucky me.\p"
+	.string "Go on. Tell it when to stop. Nicely.$"
 ```
 
 </details>

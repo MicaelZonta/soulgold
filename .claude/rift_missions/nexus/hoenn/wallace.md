@@ -327,6 +327,87 @@ Nexus_Text_Wallace_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Três ângulos diferentes da variação 1 (a repetição que ninguém vê): na 2, uma lembrança do mestre que o ensinou a se curvar; na 3, humor com a capa, e um aceno ao fragmento dele, onde o título foi de um amigo que colecionava pedras e saiu andando por aí.
+
+**Variação 2 — a reverência que o mestre ensinou**
+
+**Antes da luta**
+
+> Ah, a challenger. Forgive me, I was practicing my bow.
+>
+> My mentor taught me that one. He said a trainer who cannot bow cannot lose, and a trainer who cannot lose cannot learn.
+>
+> He was a dancer long before he was a Gym Leader. I was a boy who could not stand still.
+>
+> Let us see if I have learned anything. Shall we?
+
+**Derrota**
+
+> Bravo. I lost, and I bowed. He would be pleased with both.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wallace_Intro2:
+	.string "Ah, a challenger. Forgive me, I was\n"
+	.string "practicing my bow.\p"
+	.string "My mentor taught me that one. He said a\n"
+	.string "trainer who cannot bow cannot lose, and\l"
+	.string "a trainer who cannot lose cannot learn.\p"
+	.string "He was a dancer long before he was a\n"
+	.string "Gym Leader. I was a boy who could not\l"
+	.string "stand still.\p"
+	.string "Let us see if I have learned anything.\n"
+	.string "Shall we?$"
+
+Nexus_Text_Wallace_Defeat2:
+	.string "Bravo. I lost, and I bowed. He would be\n"
+	.string "pleased with both.$"
+```
+
+</details>
+
+**Variação 3 — a capa, e o título que era de outro**
+
+**Antes da luta**
+
+> Tell me honestly. Is the cape too much?
+>
+> Where I come from, the title belonged to a friend. Same gray suit every day. He collected stones.
+>
+> When he wandered off to find more, I held the title for him. Everyone said the cape was too much. So I made it longer.
+>
+> Now, do not look at the cape. Look at the battle!
+
+**Derrota**
+
+> Hmm. You were not looking at the cape at all. How refreshing.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wallace_Intro3:
+	.string "Tell me honestly. Is the cape too much?\p"
+	.string "Where I come from, the title belonged to\n"
+	.string "a friend. Same gray suit every day. He\l"
+	.string "collected stones.\p"
+	.string "When he wandered off to find more, I\n"
+	.string "held the title for him. Everyone said\l"
+	.string "the cape was too much. So I made it\l"
+	.string "longer.\p"
+	.string "Now, do not look at the cape. Look at\n"
+	.string "the battle!$"
+
+Nexus_Text_Wallace_Defeat3:
+	.string "Hmm. You were not looking at the cape at\n"
+	.string "all. How refreshing.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 #### Xerneas
@@ -392,6 +473,131 @@ Nexus_Text_Wallace_Xerneas_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Na variação 1 o Wallace recusa a beleza que nunca acaba. Na 2 ele tenta se apresentar debaixo da árvore e descobre que uma plateia que nunca cansa não se comove; o consolo vem da lenda (a criatura vira árvore e dorme mil anos: até ela se curva, só que devagar). Na 3 o medo é dele: a flor na lapela não murcha e ele parou de trocar de roupa; e um homem muito alto (AZ, nunca nomeado, fio Kalos) passou pela floresta esperando um fim.
+
+**Variação 2 — a plateia que nunca cansa**
+
+**Antes da luta**
+
+> Tell me, did you walk under that tree? Its branches shine in seven colors. I counted twice.
+>
+> I tried to perform beneath it. A little routine, Milotic and I. A spin, a spray of water, a bow.
+>
+> The flowers did not applaud. They only kept blooming. You cannot move an audience that never tires.
+>
+> So, you shall be my audience. Try to look tired!
+
+**Derrota**
+
+> Bravo. Now that is an audience that answers back.
+
+**Depois da luta**
+
+> There is an old story about that creature. When its life runs out, it becomes a tree.
+>
+> It sleeps a thousand years. Then it wakes, and gives life to everything around it again.
+>
+> So even it takes a bow, eventually. It simply takes a very long time to reach the edge of the stage.
+>
+> Go on. Be kind to it. It has been performing longer than any of us.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wallace_Xerneas_ChampionIntro2:
+	.string "Tell me, did you walk under that tree?\n"
+	.string "Its branches shine in seven colors. I\l"
+	.string "counted twice.\p"
+	.string "I tried to perform beneath it. A little\n"
+	.string "routine, Milotic and I. A spin, a spray of\l"
+	.string "water, a bow.\p"
+	.string "The flowers did not applaud. They only\n"
+	.string "kept blooming. You cannot move an\l"
+	.string "audience that never tires.\p"
+	.string "So, you shall be my audience. Try to look\n"
+	.string "tired!$"
+
+Nexus_Text_Wallace_Xerneas_ChampionDefeat2:
+	.string "Bravo. Now that is an audience that\n"
+	.string "answers back.$"
+
+Nexus_Text_Wallace_Xerneas_ChampionAfter2:
+	.string "{SPEAKER NAME_WALLACE}There is an old story about that\n"
+	.string "creature. When its life runs out, it\l"
+	.string "becomes a tree.\p"
+	.string "It sleeps a thousand years. Then it\n"
+	.string "wakes, and gives life to everything\l"
+	.string "around it again.\p"
+	.string "So even it takes a bow, eventually. It\n"
+	.string "simply takes a very long time to reach\l"
+	.string "the edge of the stage.\p"
+	.string "Go on. Be kind to it. It has been\n"
+	.string "performing longer than any of us.$"
+```
+
+</details>
+
+**Variação 3 — a flor que não murcha, e o homem alto**
+
+**Antes da luta**
+
+> I wore a flower from that forest on my lapel. That was weeks ago, I think. It has not wilted.
+>
+> At first I was delighted. Then I noticed I had stopped changing my outfit. I had not needed to.
+>
+> Nothing here asks you to be new. That is the danger.
+>
+> Come! Ruin my plans!
+
+**Derrota**
+
+> There. My plans are ruined. I feel wonderful.
+
+**Depois da luta**
+
+> A very tall man walked through that forest once. He did not give his name.
+>
+> He looked at my flower and said he had a flower like that, long ago. It never wilted either.
+>
+> He did not sound happy about it. He sounded like someone who had waited a very long time for an ending.
+>
+> Go on. If you see him, tell him… No. Just go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wallace_Xerneas_ChampionIntro3:
+	.string "I wore a flower from that forest on my\n"
+	.string "lapel. That was weeks ago, I think. It\l"
+	.string "has not wilted.\p"
+	.string "At first I was delighted. Then I noticed\n"
+	.string "I had stopped changing my outfit. I had\l"
+	.string "not needed to.\p"
+	.string "Nothing here asks you to be new. That is\n"
+	.string "the danger.\p"
+	.string "Come! Ruin my plans!$"
+
+Nexus_Text_Wallace_Xerneas_ChampionDefeat3:
+	.string "There. My plans are ruined. I feel\n"
+	.string "wonderful.$"
+
+Nexus_Text_Wallace_Xerneas_ChampionAfter3:
+	.string "{SPEAKER NAME_WALLACE}A very tall man walked through that\n"
+	.string "forest once. He did not give his name.\p"
+	.string "He looked at my flower and said he had a\n"
+	.string "flower like that, long ago. It never\l"
+	.string "wilted either.\p"
+	.string "He did not sound happy about it. He\n"
+	.string "sounded like someone who had waited a\l"
+	.string "very long time for an ending.\p"
+	.string "Go on. If you see him, tell him… No. Just\n"
+	.string "go.$"
+```
+
+</details>
+
 
 #### Diancie
 
@@ -452,6 +658,128 @@ Nexus_Text_Wallace_Diancie_ChampionAfter:
 	.string "boy from Sootopolis, once.\p"
 	.string "Go and meet it. Be gentle. It is harder\n"
 	.string "than it looks, and softer.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Na variação 1 o diamante é carvão que não quebrou. Na 2 o Wallace pede um diamante para um broche, ganha, e a criatura devolve a pergunta: e você, o que fez com as mãos? Na 3 ele conta o segredo do fragmento dele, puxado do filme da Diancie: o coração de pedra dela está falhando e ela procura uma vida forte o bastante para fazer outro. Ele sabe onde está: na floresta do outro lendário dele. Ele fica entre as duas.
+
+**Variação 2 — o broche, e a pergunta de volta**
+
+**Antes da luta**
+
+> I asked it for a diamond. Only a small one, for a brooch. I was very polite.
+>
+> It pressed its hands together, the air went tight, and there it was. Flawless.
+>
+> Then it looked at me as if to say: your turn. What have you made with your hands?
+>
+> A fair question. Allow me to answer it!
+
+**Derrota**
+
+> Bravo. You answered better than I did.
+
+**Depois da luta**
+
+> People think a jewel is found. It is not. It is made, slowly, in the dark, by pressure no one watches.
+>
+> That little princess does the work in an instant. I am almost jealous.
+>
+> Almost. The slow way is where I learned everything I know.
+>
+> Go. If it offers you a diamond, say thank you. Then make something of your own.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wallace_Diancie_ChampionIntro2:
+	.string "I asked it for a diamond. Only a small\n"
+	.string "one, for a brooch. I was very polite.\p"
+	.string "It pressed its hands together, the air\n"
+	.string "went tight, and there it was. Flawless.\p"
+	.string "Then it looked at me as if to say: your\n"
+	.string "turn. What have you made with your\l"
+	.string "hands?\p"
+	.string "A fair question. Allow me to answer it!$"
+
+Nexus_Text_Wallace_Diancie_ChampionDefeat2:
+	.string "Bravo. You answered better than I did.$"
+
+Nexus_Text_Wallace_Diancie_ChampionAfter2:
+	.string "{SPEAKER NAME_WALLACE}People think a jewel is found. It is not.\n"
+	.string "It is made, slowly, in the dark, by\l"
+	.string "pressure no one watches.\p"
+	.string "That little princess does the work in an\n"
+	.string "instant. I am almost jealous.\p"
+	.string "Almost. The slow way is where I learned\n"
+	.string "everything I know.\p"
+	.string "Go. If it offers you a diamond, say\n"
+	.string "thank you. Then make something of your\l"
+	.string "own.$"
+```
+
+</details>
+
+**Variação 3 — porta ou muro**
+
+**Antes da luta**
+
+> Did you notice? Every diamond in that cave points the same way. Toward the forest.
+>
+> I am told the little princess is searching for a life so bright it can make her a new heart of stone.
+>
+> I know exactly where that is. I have been standing between the two of them for a long time.
+>
+> Whether I am a door or a wall depends on you. Show me!
+
+**Derrota**
+
+> Bravo. A door, then. How elegant of you.
+
+**Depois da luta**
+
+> Its home is crumbling. Its heart is failing, and it cannot make a new one alone.
+>
+> The forest could help it. The forest helps everything. It simply never stops helping.
+>
+> I was afraid the princess would go in and never come out, blooming forever like everything else.
+>
+> You will decide for me, I think. Go gently.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wallace_Diancie_ChampionIntro3:
+	.string "Did you notice? Every diamond in that\n"
+	.string "cave points the same way. Toward the\l"
+	.string "forest.\p"
+	.string "I am told the little princess is\n"
+	.string "searching for a life so bright it can\l"
+	.string "make her a new heart of stone.\p"
+	.string "I know exactly where that is. I have\n"
+	.string "been standing between the two of them\l"
+	.string "for a long time.\p"
+	.string "Whether I am a door or a wall depends on\n"
+	.string "you. Show me!$"
+
+Nexus_Text_Wallace_Diancie_ChampionDefeat3:
+	.string "Bravo. A door, then. How elegant of you.$"
+
+Nexus_Text_Wallace_Diancie_ChampionAfter3:
+	.string "{SPEAKER NAME_WALLACE}Its home is crumbling. Its heart is\n"
+	.string "failing, and it cannot make a new one\l"
+	.string "alone.\p"
+	.string "The forest could help it. The forest\n"
+	.string "helps everything. It simply never stops\l"
+	.string "helping.\p"
+	.string "I was afraid the princess would go in\n"
+	.string "and never come out, blooming forever\l"
+	.string "like everything else.\p"
+	.string "You will decide for me, I think. Go\n"
+	.string "gently.$"
 ```
 
 </details>
