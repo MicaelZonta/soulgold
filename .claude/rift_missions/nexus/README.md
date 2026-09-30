@@ -106,6 +106,34 @@ habilidade, golpes aprendíveis, 31 IV/252 EV e as três vagas. Precisa do
   `<região>/diario_looker/<treinador>/`. Formato, voz, mecânica proposta e os
   fios que ligam os cadernos: [`DIARIO_LOOKER.md`](DIARIO_LOOKER.md).
 
+### Pendências para o autor (levantadas pelos agentes em 30/09)
+
+- **Plaquinha na abertura.** No `nexus.inc`, alguns treinadores têm
+  `{SPEAKER NAME_X}` já no `_Intro`/`_ChampionIntro` (os campeões de UB, Bruno,
+  Guzma, Soliera, Steven); as variações novas seguem o padrão "só o `After` tem
+  plaquinha". Ao levar para o código, **copiar o que a variação 1 do mesmo
+  treinador faz.**
+- **Looker Files falam do campeão atual.** Se a redistribuição for aprovada,
+  precisam de ajuste os de Spectrier, Glastrier, Uxie, Shaymin, Reshiram,
+  Zekrom, Cobalion, Slither Wing, Manaphy, Rayquaza, Xerneas, Tapu Lele e Tapu
+  Koko (cada ficha nova tem um ⚠️; Uxie e Shaymin já trazem texto alternativo).
+  Dialga (lido como o avô do Cyrus) e Giratina (co-campeã) servem como estão.
+- **Lendário campeado que é semi-lendário** (Spectrier, Glastrier, Meloetta,
+  Uxie, Shaymin, Manaphy, Tapus, Cobalion, Slither Wing) vai na vaga de semi;
+  o time leva outro lendário (ver cada ficha).
+- **R21:** `Nexus_Text_Clair_ChampionAfter` ("When I lost my badge to you…")
+  supõe que o jogador é lembrado.
+- **R18:** os Looker Files no jogo usam `{SPEAKER NAME_LOOKER}`, mas a regra
+  diz narração sem plaquinha.
+- Numeração dos Files de UB repetida (Beauty/Absorption = UB-02,
+  Blaster/Blade = UB-04) ou ausente (Assembly, Burst, Stinger).
+- Uma fala nova do Giovanni aconselha deixar o Drive vazio (a R22 dá Drives
+  como drop) — opinião do personagem, fácil de trocar.
+- A "pedra de Mega sem dono" passa por vários caminhos em cadernos diferentes;
+  como cada caderno é outro fragmento, não é contradição, mas dá para escolher
+  uma rota só. O cabeçalho das páginas de diário varia um pouco entre regiões
+  ("Data no topo" / "Topo da página").
+
 ## Armadilhas encontradas ao levantar
 
 - **Brendan e May não são o que parecem.** `OBJ_EVENT_GFX_BRENDAN_*`,
