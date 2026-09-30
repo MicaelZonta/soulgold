@@ -988,3 +988,221 @@ Cada passo compila e se testa **no jogo** sozinho (um build limpo não prova a c
 | 6 | Pryce ter conhecido a Laurel jovem (Ato 6) | Sim, uma linha só, sem explicar |
 | 7 | Tirar o Weedle decorativo de (19,42) | Sim, para caber o Bugsy |
 | 8 | 67 flags para o Livro | Aceitável: o bloco `CUSTOM_FLAGS` tem mais de mil livres |
+
+---
+
+## 13. Rev 2 — Galar na horta (30/09/2026)
+
+Pedido do autor: encaixar treinadores de Sword/Shield ligados ao Calyrex, também
+no dia a dia, e pensar em notáveis com ligação com a Laurel, com o Calyrex e com
+os lendários. **Sprites não são bloqueio** (o autor providencia): os renders usam
+sprites genéricos como substitutos, marcados na legenda.
+
+### 13.1 Quem entra
+
+| Personagem | Ligação | Papel | Substituto no render | Sprite a providenciar |
+|---|---|---|---|---|
+| **Peony** | Em Crown Tundra, o Calyrex fala **pelo corpo dele**. Aqui, a Laurel foi babá dele em Freezington, antes de vir para Johto: ele a chama de “Auntie Laurel” | Chega no Ato 5 por causa da carta dela; o Calyrex fala por ele. Depois da história, acampa no lago nas noites de fim de semana | `HIKER` | overworld + front pic |
+| **Peonia** | Filha do Peony; séria, cuida do pai | Chega correndo atrás dele no Ato 5; acompanha o jogador no Ato 6, no caminho escolhido; faz dupla com a Tilly na banquinha | `PICNICKER` | overworld + front pic |
+| **Klara** | Rival de veneno do Isle of Armor, influenciadora | **Vilã do dia a dia:** algumas manhãs aparece colhendo a horta “para o canal”. Gancho do arco do Pecharunt (veneno + mochi) | `LASS` | overworld + front pic |
+| **Avery** | Rival psíquico do Isle of Armor, dramático | O Calyrex é Psychic: depois da história, toda sexta ele vem “conversar telepaticamente” com o canteiro da Laurel | `PSYCHIC_M` | overworld + front pic |
+| **Honey** (e Mustard) | A “esposa do mestre” do Dojo, como a Laurel é a esposa do Berry Master. Amigas por carta há 45 anos | **Cartas** que a Laurel lê de manhã; o Mustard sempre põe um P.S. | só cartas | nenhum (opcional depois) |
+| **Sonia** | Pesquisadora das lendas de Galar | Uma carta depois do Ato 5: o Rei está no livro dela | só carta | nenhum |
+| **Will** | Já é o campeão do Calyrex no Nexus (`POOL_LENDARIOS.md`); psíquico | Uma linha depois da captura: sentiu a voz do rei até Indigo | sprite existe (`WILL`) | — |
+| Pryce e Morty | Já são os campeões de Glastrier e Spectrier no Nexus | Mantidos no Ato 6 — a história agora concorda com o Nexus | existem | — |
+
+### 13.2 Ligações com os lendários
+
+| Lendário | Quem | Como | Status |
+|---|---|---|---|
+| Calyrex | **Peony** (voz), Will (Nexus), Laurel (semente) | Telepatia pelo Peony, como em Crown Tundra | nesta sidequest |
+| Glastrier | Pryce (Nexus), Peonia | Caminho branco, Ice Path | nesta sidequest |
+| Spectrier | Morty (Nexus), Peonia | Caminho escuro, Burned Tower; é o visitante noturno | nesta sidequest |
+| **Regieleki / Regidrago** (sem fonte) | **Peony** | As Split-Decision Ruins de Crown Tundra têm uma escolha entre os dois. O Peony acha a mesma escolha em Johto: **Expedição do Peony**, pós-história | gancho (§13.5) |
+| **Pecharunt, Okidogi, Munkidori** (sem fonte) | **Klara** | Veneno, mochi feito com as Pecha que ela rouba da horta, Kitakami | gancho (§13.5) |
+| Aves de Galar | Peonia (fã das Dynamax Adventures) | Hoje só no Battle Café, que não conta como fonte | ideia solta, sem proposta |
+
+### 13.3 O que muda nos atos
+
+**Ato 4 — A primeira folha.** Na noite seguinte, a Laurel, lendo:
+
+> **Laurel:** I wrote to Freezington. First letter in forty years.
+> Someone there used to follow me around like a Yamper. He'll come. He never could
+> leave a thing alone.
+
+**Ato 5 — O Rei (substitui o §8.10).** *Enigma madura + noite. `hidefollower`. O
+Peony já está ajoelhado junto ao canteiro da Laurel (chegou no barco da tarde); o
+Calyrex ao lado. O Peony é quem fala pelo rei.*
+
+> **Peony:** Auntie Laurel! Peony here! Got your letter, came on the first boat, and—
+> ...hold on. Something's... tickling the back of me head...
+> *(flash com `fadescreenswapbuffers`; exclamação no Peony; a plaquinha vira “???”)*
+> **???:** ...You can hear me. Good. Forgive me for borrowing this one. He is loud,
+> but his heart is open, and I have not the strength to speak on my own.
+> **???:** This Berry... it was grown with care. By someone who remembered.
+> *(o Calyrex come; `walk_in_place` duas vezes)*
+> **Calyrex:** I am Calyrex. Once, they called me the King of Bountiful Harvest.
+> I was a king with no field, and no one to carry me. My steeds left when the
+> people forgot.
+> One still wanders this land at night, looking for food. You have met him, I think.
+> The other sleeps under ice that never melts.
+> Bring one of them home to me, and I will show you what this garden can become.
+> *(flash; o Calyrex some — `removeobject`, libera a vaga)*
+> **Peony:** ...Wh— what was I on about? Why am I kneeling? Why was a turnip looking
+> at me?
+> *(a Laurel sai de casa e para ao lado dele)*
+> **Laurel:** Hello, Peony. You got tall.
+> **Peony:** AUNTIE! Ha! You haven't changed one bit! ...Did I just say something daft?
+> **Laurel:** You said something true. For once.
+> *(a Peonia chega correndo pela trilha — `addobject` fora da câmera)*
+> **Peonia:** DAD! You can't just jump off a ship before it docks!
+> ...Is that soil glowing? Is that — Grandma's story? The king?
+> **Laurel:** The white one sleeps where the ice never thaws. The black one walks where
+> the fire took the bells.
+> Ice Path, past Mahogany. The old tower in Ecruteak. One horse. Choose.
+> **Peonia:** I'm going with {PLAYER}. Someone in this family has to be sensible.
+
+**Orçamento do Ato 5:** 11 canteiros + Calyrex + Peony + Laurel + jogador = 15, com o
+follower escondido. A Peonia só entra **depois** do `removeobject` do Calyrex.
+
+**Ato 6 — A escolha.** A Peonia espera na entrada do mapa escolhido (objeto com
+`FLAG_TEMP`, estado 9):
+
+> *Ice Path*
+> **Peonia:** Peonia here! Dad's keeping the king company. They're talking about
+> vegetables. I don't want to know.
+> This cold is nothing. Freezington's colder. ...Okay, it's close.
+>
+> *Burned Tower*
+> **Peonia:** I don't like ghosts. I'm fine. I'm totally fine. You go first.
+
+Depois da captura, dos dois lados:
+
+> **Peonia:** Wait till Dad sees! He'll say he knew all along. He didn't.
+
+**Ato 7 — Colheita Farta.** O Peony está com o Calyrex; a Laurel **só sai de casa
+depois da captura** (orçamento: 11 + Calyrex + corcel + Peony + jogador = 16 com o
+follower escondido). Antes da batalha:
+
+> **Peony:** Chum, that's a KING. I've met a king before. Well, a Chairman. My big
+> brother. Not the same. Go easy on him! No — don't go easy. He'd hate that.
+
+Depois:
+
+> **Peony:** Grand! Absolutely grand!
+> You know, back home there's ruins with a choice in 'em too. Two doors, one pick.
+> Johto's got ruins. I've got a feeling. Come find me when you're ready for an
+> expedition.
+
+**Epílogo.** Linha nova da Laurel, com uma carta:
+
+> **Laurel:** Honey wrote. Mustard cried when he read about the king.
+> He says it was hay fever. He's lived on an island with no hay for fifty years.
+
+E o Will, na Indigo Plateau, depois da captura (uma vez):
+
+> **Will:** A voice reached me here last night. Old, and very tired, and then
+> suddenly not tired at all. ...That was your doing, wasn't it?
+
+### 13.4 Vida na horta: os visitantes de Galar
+
+| Quem | Quando | Onde | Condição |
+|---|---|---|---|
+| **Klara** | 1 manhã em 7 (sorteio da primeira entrada do dia) | na frente de um canteiro maduro | horta nível 2+ e algum canteiro com fruto |
+| **Avery** | sextas, de dia | diante do canteiro da Laurel | estado 13 |
+| **Peony + Peonia** | sábado e domingo, de noite | acampados no lago | estado 13 |
+| **Cartas** | todo dia, de manhã, lidas pela Laurel à mesa | casa | a partir do Ato 4 |
+
+Orçamento: Klara de manhã (Bram fora, Laurel em casa) = 11 + 2 + 2 = 15; Avery na
+sexta (sem Bugsy nem Tilly) = 15; Peony e Peonia à noite (Laurel em casa) = 15.
+
+**A Klara — assalto da manhã.** Se o jogador fala com ela: batalha de veneno com
+escala de nível, **sem blackout** (skill `batalha-sem-blackout`).
+
+- **Vitória:** ela vai embora e o canteiro fica.
+- **Derrota, ou o jogador sai do mapa sem falar com ela:** ela leva a colheita. Um
+  special em C (`EmptyRandomRipeGardenTree`) esvazia um canteiro maduro.
+- 2 daily flags: `KLARA_RAID` (sorteada e acontecendo hoje) e `KLARA_BEATEN`.
+
+> **Klara:** Oopsie! Didn't see you there, hun~
+> These are for my channel. “Top 10 Johto Snacks — Number 7 Will SHOCK You.”
+> *(vitória)* Ugh, FINE. Keep your dumb Berries. ...Can I at least keep one Pecha?
+> No? Rude. So rude.
+> *(derrota)* Thanks for the content, hun! Like and subscribe~
+> **Berry Master (depois):** That girl again. Laurel says she's got a Slowbro greener
+> than my Wepear.
+
+Depois de 5 vitórias contra ela (contador em `VAR_BERRY_ORDER`, byte alto livre, ou
+var própria):
+
+> **Klara:** You know what? Berries are SO last season. Mochi is the new thing.
+> There's this cute little shop in Kitakami... Toodles~
+
+*(gancho do arco do Pecharunt; nada muda no jogo agora)*
+
+**O Avery — sextas.**
+
+> **Avery:** Ahem. O King of Bountiful Harvest. It is I, Avery, psychic prodigy.
+> ...He is not answering. The patch is not answering me.
+> **Laurel:** It's a patch of dirt, dear. The king's in {PLAYER}'s bag.
+> **Avery:** I KNEW that.
+
+Uma fala por sexta, em rodízio pelo número de dias (`VAR_DAYS` mod 4):
+
+- *Perhaps the king prefers a quieter mind. I shall be quieter. ...Starting tomorrow.*
+- *My Slowpoke understands me. Why can't a vegetable monarch?*
+- *I have brought an offering. It is a scone. Mother made it.*
+- *Klara says I'm talking to a garden. I am communing. There is a difference.*
+
+**Peony e Peonia — noites de fim de semana.**
+
+> **Peony:** Peony here! Johto's grand, chum. The stars are the same as back home,
+> just a bit to the left.
+> **Peonia:** Dad, that's not how stars work.
+> **Peony:** It's how MY stars work.
+
+Rodízio de causos do Peony (`random 4`): a vez em que caiu num lago congelado
+procurando o Glastrier; a vez em que o irmão dele, Rose, tentou comprar Freezington;
+a vez em que a Laurel o tirou de cima de uma árvore; e “a vez em que eu era o
+Chairman… não, espera, esse era o meu irmão”.
+
+**Cartas da manhã** (a Laurel lê em voz alta, uma por dia da semana, depois do Ato 4):
+
+| Dia | De | Carta |
+|---|---|---|
+| Seg | Honey | “The students ate every Berry you sent in one sitting. Mustard says his knees are fine. They are not.” |
+| Qua | Freezington | “The whole village read your letter. The Mayor wants to know if Johto sells carrots.” |
+| Sex | Honey | “Mustard asks if your husband can arm wrestle. Please say no. He will fly over.” |
+| Dom | Sonia *(depois do Ato 5)* | “The King of Bountiful Harvest is chapter nine of my book! May I visit? I'll bring Yamper. He's very polite. He is not polite.” |
+
+Nos outros dias, a fala normal dela de manhã.
+
+### 13.5 Ganchos (propostas futuras, não fazem parte desta sidequest)
+
+- **Expedição do Peony (Regieleki ou Regidrago).** O Peony acha nas Ruins of Alph
+  uma câmara com duas portas e uma só chance, como as Split-Decision Ruins. O jogador
+  escolhe **um** Regi; o outro fica no Nexus. Mesmo padrão do Ato 6 e da R1 do Nexus.
+- **Klara e o mochi (Pecharunt, Okidogi, Munkidori).** A loja de mochi em Kitakami,
+  as Pecha roubadas da horta e a Klara como a primeira vítima. Fecha os Loyal Three,
+  como proposto em `LENDARIO_E_INFESTACAO.md` §1.2.
+
+### 13.6 Custos a mais
+
+| Recurso | Qtd |
+|---|---|
+| Daily flag | +2 (`KLARA_RAID`, `KLARA_BEATEN`) em `FLAG_UNUSED_0x955..0x956` |
+| Plaquinhas | +4: `NAME_PEONY`, `NAME_PEONIA`, `NAME_KLARA`, `NAME_AVERY` |
+| Sprites (o autor providencia) | Peony, Peonia, Klara, Avery: overworld + front pic |
+| Treinadores | Klara (time de veneno, escala de nível); Avery e Peony opcionais como revanche |
+| C | `EmptyRandomRipeGardenTree` |
+
+### 13.7 Decisões do autor
+
+| # | Pergunta | Recomendação |
+|---|---|---|
+| 1 | O Calyrex falar pelo Peony (como em Crown Tundra) | Sim |
+| 2 | A Laurel ter sido babá do Peony em Freezington | Sim: explica por que ele vem na hora |
+| 3 | Klara como vilã do dia a dia, sem blackout | Sim, e ela vira o gancho do Pecharunt |
+| 4 | Avery nas sextas | Sim, cômico e barato |
+| 5 | Honey só por carta, ou visita depois | Só carta na primeira versão |
+| 6 | Expedição do Peony (Regieleki/Regidrago) | Proposta própria, depois desta |
