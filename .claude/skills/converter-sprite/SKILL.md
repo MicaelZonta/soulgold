@@ -40,8 +40,14 @@ só então grave o PNG do jogo:
 PY=/mnt/c/Users/User/AppData/Local/Programs/Python/Python310/python.exe   # tem PIL
 $PY dev_scripts/sprites/propostas_overworld.py propostas <Nome>   # -> Sprite - comparacao no jogo.png
 $PY dev_scripts/sprites/trainer_na_batalha.py <Nome>              # -> Trainer - comparacao no jogo.png
-$PY dev_scripts/sprites/propostas_overworld.py final <Nome> <largura> "$(wslpath -w graphics/object_events/pics/people/special/<nome>.png)"
+$PY dev_scripts/sprites/propostas_overworld.py final <Nome> <largura> "$(wslpath -w graphics/object_events/pics/people/special/<nome>.png)" [--quadro 16] [--altura H]
+# registra (ou ajusta 16x32 <-> 32x32, 9 <-> 12 quadros) nos 8 lugares do jogo:
+$PY dev_scripts/sprites/registrar_overworld.py <NomeC> graphics/object_events/pics/people/special/<nome>.png --quadro 16|32 [--const X]
 ```
+
+O registrador cria tudo ao lado da Brendan Hoenn; nome C que já existe em
+outro lugar quebra o build (o Ash virou `AshKetchum`: `sPicTable_Ash` é o
+efeito de cinzas).
 
 ### Pasta de cada personagem: `.filetransfer/.trainers/<Nome>/`
 
@@ -63,14 +69,76 @@ dois. Folha com bonecos encostados ou com linhas de grade: `grade=True`
 (recorta pela célula); grade irregular: `xs`/`ys`; folha FRLG de 7 quadros:
 `FRLG7` (espelha o passo de baixo/cima).
 
+Qualidade (medido em 28/09 contra os aprovados do jogo): o 80x80 usa a
+fusão de cores do `--merge` (custo = pixels × distância) e sai idêntico ao
+jogo; o 64x64 reduz **apagando linhas/colunas** (voto de área sujou rostos
+de Kukui e Elesa).
+
+**Overworld de 16-18 px** (auditoria de 29/09, aprovada pelo autor; folhas em
+`.filetransfer/.trainers/_auditoria resize 16px/`): o `propostas_overworld.py`
+reduz as **colunas por costura reta de menor energia** (gradiente + contorno +
+máscara de olho/boca, com penalidade forte nas vizinhas da última coluna
+removida; a mesma coluna em todos os quadros da mesma direção) e as
+**linhas apagando em faixas** com custo que protege traço escuro de 1 px. É o
+que mantém o rosto quando o cabelo disputa espaço (Lusamine 27→16 px). O que
+já foi tentado e descartado, não volte: costura **diagonal** serra cabelo e
+silhueta (Gladion, Steven, Diantha); seam carving nas **linhas** achata
+capacete e topo de cabeça (Ramos, Steven); penalidade fraca deixa os cortes
+se concentrarem no corpo e alarga o chapéu (Hilda); média de área, voto
+ponderado e Lanczos borram; fundir a 15 cores **antes** de reduzir apaga os
+olhos (Agatha), por isso o JPG só passa por median cut a 24 antes e a fusão
+final fica para depois; só conteúdo em arte que encolhe pela **metade**
+(chibi de 32 px: Zinnia, Diantha) mantém os olhos na largura nativa e come a
+pele em volta, por isso a parte apagada em faixas uniformes cresce com a
+redução (`parte_por_conteudo`: 100% conteúdo até r=0,8, 25% em r=0,5).
+Folha JPG com **linha de borda** de cor escura (Cyrus): a cor do canto só
+vale como fundo se cobrir ≥5% da imagem, senão é só porta de entrada do
+preenchimento e é apagada apenas nas linhas/colunas de grade. Arte JPG
+borrada na origem (Olivia zender1752) continua borrada: o caminho é arte nova.
+Folha **ampliada por IA** (sem grade fixa, o pixel varia de 5 a 8 px; Olivia
+de 30/09): `reamostrar=(celula, N)` reduz cada célula ao medoide do miolo de
+cada bloco antes de tudo. Roupa clara de poucos pixels (top rosa) some no
+median cut a 40 cores quando o cabelo domina: `pre_cores=96` na entrada. Nos
+quadros de **frente e costas** as colunas saem aos pares espelhados no eixo
+do boneco, senão um olho fica com 4 px e o outro com 2 (Zinnia). **Olho no
+16x32 tem 1 px de largura por 2 de altura** (regra do autor, 30/09; é o que
+Gladion, Kukui, Looker e Lillie têm): para boneco de até 16 px, `afinar_olhos`
+detecta cada olho no quadro parado (pixel escuro cercado de claro) e tira as
+colunas de fora dele, em par espelhado, antes do resto da redução; olho com
+mais de 4 colunas não é olho (franja) e fica; o espelho nunca apaga a coluna
+que ficou de outro olho (o eixo vem da silhueta, e o Blue e o Looker perdiam
+um olho inteiro a 16). **O olho nunca perde o
+pixel preto**: olho de 4 px pode (2 branco + 2 preto), olho de 4 px pretos ou
+sem preto não (autor, 30/09). Os pixels de olho levam alfa 254 (`OLHO`) do
+começo ao fim da redução, e linha ou coluna com eles custa 100000; sem isso a
+linha da pupila saía inteira (Misty, Lorelei, Looker, Leon, Hilda, Guzma).
+Quem o autor prefere com o método de 29/09, de antes dos tratamentos, leva
+`metodo='simples'` em `CHARS` (Gladion, Cynthia). Arte que traz **sombra
+desenhada sob os pés** (Steven, Klein): o jogo já desenha a sombra, então a
+cor dela entra em `bgs` na entrada de `CHARS` e some. Fonte **JPG é quantizada a 15 cores antes** de reduzir (senão o
+contorno dobra). A **altura é escolhida à parte da largura**: os 16 px
+aprovados do jogo têm 18-22 px de altura, então quando a proporcional cai fora
+disso a folha traz também a linha "altura do elenco" (Lusamine a 16 px:
+proporcional 15, elenco 20), e `final ... --altura H` grava a escolhida. Se a arte já tem front pic no jogo, as cores vão para a
+paleta dele, mas só quando é a mesma arte (distância média ≤ 10; a Lillie e
+a Cynthia de hoje são outra arte). Em PNG a cor de fundo sai na imagem
+toda, não só a partir da borda (o verde entre braço e cabelo da Elesa). Cor
+muito usada só vira fundo se for área lisa (o roxo do cabelo do Byron não).
+No JPG a cor do canto e a do fundo contam junto o ruído (tolerância 8): o
+branco do Blue é 1,4% exato e 35% com ruído, e contado exato virava "linha de
+borda" e deixava borrão branco no boneco. A cor de canto que é linha de grade
+também sai em PNG (a linha branca no topo da folha do Byron).
+
 Cada personagem é uma entrada em `CHARS` no script (arquivo, grade, células
 na ordem do jogo, crédito). Se a folha tem o lado direito desenhado, sai com
 12 quadros (`sAnimTable_StandardAsym`); senão 9. Arte que vem também em 2x dá
-tamanhos acima do nativo sem ampliar. Escolhas de 27/09: Lusamine 24 px, o
-resto 18 px (todos em quadro 32x32). Exceções: Looker, Gladion, Kukui e Lillie voltaram
-ao 16x32 antigo, sem retoque, e a Anabel usa a arte nova em 16x32; a Elesa segue com o 18 px atual (a folha BW da RHcks, 16x19, foi recusada) (`final Anabel 16 <png> --quadro 16`,
-12 quadros), porque a cena da Missão 4 em New Bark (7 Pokémon na tela) está no
-limite da VRAM de sprite; antes de aumentar um NPC dessas cenas, meça. A mesma ideia vale para o front pic:
+tamanhos acima do nativo sem ampliar. O tamanho de cada personagem está em
+`.filetransfer/.trainers/TAMANHOS.md`. **Escolha do autor = forma pronta**
+(30/09): o PNG do jogo desse personagem não é regravado nem retratado, nem
+quando o script de redução melhora, a não ser que o autor peça explicitamente
+(ajuste de método já regrediu sprites aprovados). A cena da Missão 4 em New
+Bark (7 Pokémon na tela) está no limite da VRAM de sprite e a Anabel passou a
+32x32 (17x22) em 30/09; antes de aumentar outro NPC dessas cenas, meça. A mesma ideia vale para o front pic:
 arte de treinador maior que 64 px vai para o 80x80 (`TRAINER_SPRITE_LARGE`,
 skill `adicionar-grafico-trainer`).
 
@@ -133,6 +201,8 @@ Registre o autor da arte no nome do arquivo, sempre como `Sprite - AUTOR` e
 - [ ] Arte de comunidade, não desenhada por código
 - [ ] Convertida com `sprite_gba.py` e vista ampliada ao lado do original
 - [ ] `conferir`: ≤16 índices, nenhum quadro vazio, boneco no lugar certo
+- [ ] Folha de comparação vista **ampliada** (8x): olhos iguais dos dois lados,
+      1 px de largura no 16x32, contorno sem serra, sem sombra desenhada sob os pés
 - [ ] Formato do overworld escolhido (16x32 / 32x32 / 1 quadro) e justificado
 - [ ] Autor da arte registrado
 - [ ] Registrado no jogo pelas skills `adicionar-npc` / `adicionar-grafico-trainer`
