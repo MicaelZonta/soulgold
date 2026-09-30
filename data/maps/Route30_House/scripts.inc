@@ -58,6 +58,8 @@ Route30_House_EventScript_Tutorial::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	closemessage
 	setflag FLAG_GOT_BERRY_ROUTE_30_HOUSE
+	@ The garden outside opens with the tutorial: bed A is level 1.
+	setvar VAR_BERRY_GARDEN_LEVEL, 1
 	return
 
 @ The common pool is a CONTIGUOUS range of the item enum, so a draw is three

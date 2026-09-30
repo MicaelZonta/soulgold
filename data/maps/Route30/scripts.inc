@@ -2,12 +2,18 @@
 
 Route30_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route30_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Route30_OnLoad
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route30_OnFrame
 	.byte 0
 
 Route30_OnTransition: 
 	callnative SetTimeBasedEncounters
+	call Route30_EventScript_GardenVisibility
+	end
+
+Route30_OnLoad::
+	call_if_lt VAR_BERRY_GARDEN_LEVEL, 2, Route30_EventScript_LockGardenBSoil
 	end
 
 Route30_OnFrame::
@@ -105,6 +111,59 @@ Route30_EventScript_Poliwag::
 Route30_EventScript_Mailbox::
 	msgbox Route30_Text_Mailbox, MSGBOX_SIGN
 	end
+
+@ ===========================================================================
+@ Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md, part 2).
+@ y grows DOWNWARD. The house door is (26,39).
+@   bed A  (28..30, 43..44)  6 plots  BERRY_TREE_GARDEN_A1..A6, always open
+@   bed B  (30..31, 41..42)  4 plots  BERRY_TREE_GARDEN_B1..B4, garden level 2
+@   Laurel's plot (23,38)             BERRY_TREE_KINGS_PLOT, locked by the story
+@ map.bin holds every plot as berry soil (46, blocked), so Porymap shows the
+@ whole garden. A locked plot needs BOTH halves: its object hidden (an empty
+@ tree is invisible but still asks "plant?") and, for bed B, its soil turned
+@ back into grass (otherwise four blocked tiles of bare dirt sit by the path).
+@ Laurel's plot keeps its soil: it was already a tree spot, and the sign on
+@ the same tile answers while the object is hidden.
+@ ===========================================================================
+
+@ ON_TRANSITION, before anything spawns: FLAG_TEMP_* start clear on every map
+@ load, so this only ever sets.
+Route30_EventScript_GardenVisibility::
+	@ Saves that finished Bram's tutorial before the garden existed.
+	call_if_set FLAG_GOT_BERRY_ROUTE_30_HOUSE, Route30_EventScript_GardenLevelAtLeastOne
+	call_if_lt VAR_BERRY_GARDEN_LEVEL, 2, Route30_EventScript_HideGardenB
+	@ Laurel's plot opens in Act 3 of the sidequest (part 12).
+	setflag FLAG_TEMP_HIDE_KINGS_PLOT
+	return
+
+Route30_EventScript_GardenLevelAtLeastOne::
+	call_if_eq VAR_BERRY_GARDEN_LEVEL, 0, Route30_EventScript_SetGardenLevelOne
+	return
+
+Route30_EventScript_SetGardenLevelOne::
+	setvar VAR_BERRY_GARDEN_LEVEL, 1
+	return
+
+Route30_EventScript_HideGardenB::
+	setflag FLAG_TEMP_HIDE_GARDEN_B
+	return
+
+@ ON_LOAD: the grass that was there before (0 and 1 of the primary tileset),
+@ walkable. setmetatile keeps the tile's elevation.
+Route30_EventScript_LockGardenBSoil::
+	setmetatile 30, 41, 0, FALSE
+	setmetatile 31, 41, 0, FALSE
+	setmetatile 30, 42, 1, FALSE
+	setmetatile 31, 42, 0, FALSE
+	return
+
+Route30_EventScript_ColdSoil::
+	msgbox Route30_Text_ColdSoil, MSGBOX_SIGN
+	end
+
+Route30_Text_ColdSoil:
+	.string "The soil here is hard and cold.\n"
+	.string "Nothing's grown in it for a long time.$"
 
 Route30_Text_Mailbox:
 	.string "Mr.Pokémon's House$"

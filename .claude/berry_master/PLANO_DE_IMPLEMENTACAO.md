@@ -29,7 +29,7 @@
 | # | Parte | Entrega jogável | Depende de |
 |---|---|---|---|
 | 1 | Alocação e fundação ✅ 30/09 | constantes, vars, flags, plaquinhas, itens; nada visível | — |
-| 2 | A horta física | 10 canteiros + canteiro da Laurel na Route 30; plantar, regar, colher | 1 |
+| 2 | A horta física 🧪 30/09 (código feito, falta teste no jogo) | 10 canteiros + canteiro da Laurel na Route 30; plantar, regar, colher | 1 |
 | 3 | Livro de Berries | colher registra; o Bram só dá berries do Livro; marcos | 1, 2 |
 | 4 | Cruzamento completo | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
 | 5 | Estado diário | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
@@ -213,6 +213,59 @@ contar objetos na pior posição (jogador em (27,40)) com o render.
 
 **Pronto quando:** render da Route 30 (dia e noite) mostra a horta; nenhum canteiro
 invisível; nenhuma árvore de rota perdeu a berry.
+
+### Parte 2 — feita no código (30/09/2026), falta o teste no jogo
+
+**O que entrou**
+
+| O quê | Onde |
+|---|---|
+| 10 células de solo: metatile 46, colisão 1, **elevação 3** (a mesma da grama em volta) | `data/layouts/Route30/map.bin`, A (28..30, 43..44) e B (30..31, 41..42) |
+| 10 objetos `BERRY_TREE_GARDEN_A1..A6` / `_B1..B4`, local ids 24..33 | `data/maps/Route30/map.json` (no fim, para não mexer nos ids antigos) |
+| Árvore de (23,38) → `BERRY_TREE_KINGS_PLOT`, flag `FLAG_TEMP_HIDE_KINGS_PLOT` | idem |
+| `bg_event` em (23,38) → `Route30_EventScript_ColdSoil` (“The soil here is hard and cold. / Nothing's grown in it for a long time.”) | idem, `scripts.inc` |
+| Weedle decorativo de (19,42) removido; ids 12..24 desceram um (nenhum script os citava) | idem |
+| `ON_TRANSITION` → `Route30_EventScript_GardenVisibility`: esconde o B com nível < 2 e sempre o canteiro da Laurel | `data/maps/Route30/scripts.inc` |
+| `ON_LOAD` novo → `LockGardenBSoil`: B volta a grama (0, 0, 1, 0) com nível < 2 | idem |
+| `FLAG_TEMP_HIDE_GARDEN_B` = `FLAG_TEMP_5`, `FLAG_TEMP_HIDE_KINGS_PLOT` = `FLAG_TEMP_6` (apelidos) | `include/constants/flags.h` |
+| Fim do tutorial do Bram: `setvar VAR_BERRY_GARDEN_LEVEL, 1` | `data/maps/Route30_House/scripts.inc` |
+
+**Onde divergiu do plano, e por quê**
+
+1. **O passo 3 não foi feito, e não deve ser.** `BERRY_TREE_ORAN_2` **não** é só da
+   Route 30: o `WorldHub` (alcançável, pela casa do jogador em New Bark) tem uma horta
+   de árvores naturais e usa o mesmo ID em (4,31). As duas árvores dividiam o estado
+   até agora. Trocar o objeto da Route 30 para `KINGS_PLOT` já basta: a Route 30 deixa
+   de ter Oran natural, e o WorldHub continua com a dele.
+2. **Save antigo.** Quem já tinha feito o tutorial antes desta parte fica com
+   `VAR_BERRY_GARDEN_LEVEL` = 0. O `ON_TRANSITION` da Route 30 corrige: com
+   `FLAG_GOT_BERRY_ROUTE_30_HOUSE` e nível 0, grava 1. A Parte 6 não precisa pensar nisso.
+3. **Canteiro A não tem trava.** Ele fica aberto desde o começo, até antes do tutorial,
+   porque o nível só importa para o B. Se o autor quiser o A fechado até o tutorial, é
+   o mesmo par de travas do B (flag temp + `setmetatile`).
+4. **Elevação 3 no solo novo**, e não 0 como no solo de (23,38) e na maioria das
+   árvores de Johto. Com 3, o `setmetatile` que devolve a grama no B (ele preserva a
+   elevação) deixa a mesma elevação do resto do chão.
+
+**Orçamento de objetos (medido com a janela real do spawn, `TrySpawnObjectEvents`)**
+
+Hoje, na pior posição ((27,40) ou (31,40)), com o nível 2: 10 canteiros + o
+**Caterpie decorativo de (36,34)** = 11, mais jogador e follower = **13**. O design
+(§2.3) não contava esse Caterpie. Quando a Parte 8 puser Laurel e Bugsy (e o Ato 3
+mostrar o canteiro da Laurel), a conta vai a **16**, acima do limite. **A Parte 8
+tem que tirar o Caterpie de (36,34)** (ou movê-lo para fora da janela), como foi
+feito com o Weedle.
+
+**Renders** (nível 1 de dia, nível 1 à noite, nível 2): o B vira grama no nível 1, o
+A aparece, e (23,38) mostra só a terra. Os três ficaram no scratchpad da sessão;
+não são versionados.
+
+**Teste no jogo (falta, o autor faz):**
+- Save novo: tutorial do Bram, sair, plantar nas 6 células do A, regar, esperar, colher.
+- As 4 células do B: grama, dá para andar em cima, ninguém pergunta “plantar?”.
+- (23,38): a placa responde, não pergunta “plantar?”.
+- Save antigo com o tutorial já feito: entrar na Route 30 e conferir que o A funciona.
+- Árvore Oran do WorldHub continua dando Oran.
 
 ---
 

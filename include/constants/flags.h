@@ -2076,6 +2076,11 @@
 #define FLAG_TEMP_REGICE_PUZZLE_FAILED          FLAG_TEMP_3
 #define FLAG_TEMP_HIDE_FOLLOWER                 FLAG_TEMP_E
 #define FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE FLAG_TEMP_11  // fora da ROM
+// Route 30, Berry Master's garden (set in Route30_OnTransition, which decides
+// again on every map load): bed B while the garden is below level 2, and
+// Laurel's plot until the sidequest opens it (.claude/berry_master).
+#define FLAG_TEMP_HIDE_GARDEN_B                 FLAG_TEMP_5
+#define FLAG_TEMP_HIDE_KINGS_PLOT               FLAG_TEMP_6
 
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000
