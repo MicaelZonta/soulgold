@@ -1,6 +1,6 @@
 # O Rei da Colheita — a horta do Berry Master, completa
 
-> **Proposta rev1 — 30/09/2026; rev2 (Galar) §13; rev3 (revisão, Crown Tundra, 10 falas por evento, batalhas de sempre) §14.** Nada implementado. Junta num sistema só a
+> **Proposta rev1 — 30/09/2026; rev2 (Galar) §13; rev3 (revisão, Crown Tundra, 10 falas por evento, batalhas de sempre) §14; rev4 (as dungeons dos corcéis; sem o Will) §15.** Nada implementado. Junta num sistema só a
 > horta ([`BERRY_MASTER_DESIGN.md`](BERRY_MASTER_DESIGN.md)), as infestações e o
 > lendário ([`LENDARIO_E_INFESTACAO.md`](LENDARIO_E_INFESTACAO.md)). **Onde este
 > documento e os dois anteriores discordam, vale este.**
@@ -1008,16 +1008,15 @@ sprites genéricos como substitutos, marcados na legenda.
 | **Avery** | Rival psíquico do Isle of Armor, dramático | O Calyrex é Psychic: depois da história, toda sexta ele vem “conversar telepaticamente” com o canteiro da Laurel | `PSYCHIC_M` | overworld + front pic |
 | **Honey** (e Mustard) | A “esposa do mestre” do Dojo, como a Laurel é a esposa do Berry Master. Amigas por carta há 45 anos | **Cartas** que a Laurel lê de manhã; o Mustard sempre põe um P.S. | só cartas | nenhum (opcional depois) |
 | **Sonia** | Pesquisadora das lendas de Galar | Uma carta depois do Ato 5: o Rei está no livro dela | só carta | nenhum |
-| **Will** | Já é o campeão do Calyrex no Nexus (`POOL_LENDARIOS.md`); psíquico | Uma linha depois da captura: sentiu a voz do rei até Indigo | sprite existe (`WILL`) | — |
 | Pryce e Morty | Já são os campeões de Glastrier e Spectrier no Nexus | Mantidos no Ato 6 — a história agora concorda com o Nexus | existem | — |
 
 ### 13.2 Ligações com os lendários
 
 | Lendário | Quem | Como | Status |
 |---|---|---|---|
-| Calyrex | **Peony** (voz), Will (Nexus), Laurel (semente) | Telepatia pelo Peony, como em Crown Tundra | nesta sidequest |
-| Glastrier | Pryce (Nexus), Peonia | Caminho branco, Ice Path | nesta sidequest |
-| Spectrier | Morty (Nexus), Peonia | Caminho escuro, Burned Tower; é o visitante noturno | nesta sidequest |
+| Calyrex | **Peony** (voz), Laurel (semente) | Telepatia pelo Peony, como em Crown Tundra | nesta sidequest |
+| Glastrier | Pryce, Molly Hale, Peonia | Caminho branco: **Greenfield**, o prado de cristal (§15) | nesta sidequest |
+| Spectrier | Morty, Eusine, Kimono Girls, Peonia | Caminho escuro: **a Torre de Bronze na noite do incêndio** (§15); é o visitante noturno | nesta sidequest |
 | **Regieleki / Regidrago** (sem fonte) | **Peony** | As Split-Decision Ruins de Crown Tundra têm uma escolha entre os dois. O Peony acha a mesma escolha em Johto: **Expedição do Peony**, pós-história | gancho (§13.5) |
 | **Pecharunt, Okidogi, Munkidori** (sem fonte) | **Klara** | Veneno, mochi feito com as Pecha que ela rouba da horta, Kitakami | gancho (§13.5) |
 | Aves de Galar | Peonia (fã das Dynamax Adventures) | Hoje só no Battle Café, que não conta como fonte | ideia solta, sem proposta |
@@ -1098,11 +1097,6 @@ Depois:
 
 > **Laurel:** Honey wrote. Mustard cried when he read about the king.
 > He says it was hay fever. He's lived on an island with no hay for fifty years.
-
-E o Will, na Indigo Plateau, depois da captura (uma vez):
-
-> **Will:** A voice reached me here last night. Old, and very tired, and then
-> suddenly not tired at all. ...That was your doing, wasn't it?
 
 ### 13.4 Vida na horta: os visitantes de Galar
 
@@ -1879,3 +1873,346 @@ existem na horta (§7.1), então ela é o primeiro lugar onde o jogador **vê** 
 | 5 | Laurel em casa no fim de semana (dia de forno) | Sim: resolve o orçamento e varia a rotina |
 | 6 | Mustard em pessoa, raro, e sem Urshifu | Sim |
 | 7 | Prêmios das batalhas | Leves (adubo, berries do Livro); o autor fecha os itens grandes |
+
+---
+
+## 15. Rev 4 — As dungeons dos corcéis (30/09/2026)
+
+Pedido do autor: **tirar o Will** (a ligação dele com o Calyrex é só do Nexus, não da
+lore) e, com liberdade, **propor uma dungeon para o Glastrier e outra para o
+Spectrier** em lugares de Johto que existem na lore e **nunca foram representados**
+num jogo, ligando a história a eles. **Onde a §15 e as anteriores discordam, vale a
+§15.**
+
+**O Will saiu** de tudo: elenco da rev2 (§13.1), tabela de lendários (§13.2) e a fala
+dele no epílogo (§13.3). Pryce e Morty ficam porque têm motivo **na história**
+(gelo e espíritos), não por causa do Nexus.
+
+### 15.1 A ideia: a canção da Laurel estava certa, a leitura dela não
+
+> *“The white one sleeps where the ice never thaws.
+> The black one walks where the fire took the bells.”*
+
+A Laurel sempre achou que era o Ice Path e a Burned Tower. São as pistas
+**erradas** — e quem corrige são os dois líderes que entendem de gelo e de espíritos:
+
+| Verso | O que a Laurel acha | O que é de verdade | Lugar da lore, nunca jogável |
+|---|---|---|---|
+| *where the ice never thaws* | O Ice Path | O Ice Path **derrete toda primavera** (Pryce). O gelo que nunca derrete **não é gelo**: é o **cristal dos Unown** | **Greenfield**, a cidade de Johto coberta de cristal pelos Unown (filme *Spell of the Unown*, 2000) |
+| *where the fire took the bells* | A Burned Tower de hoje | O cavalo não anda na ruína: anda **na noite do incêndio**, há 150 anos, quando o fogo derreteu os sinos da **Torre de Bronze** | **A Torre de Bronze intacta, na noite em que queimou** — a lenda de Ecruteak (os três Pokémon que morreram e o Ho-Oh reviveu) que os jogos só contam, nunca mostram |
+
+Cada dungeon responde por que o corcel é do jeito que é:
+
+- **Glastrier é orgulhoso e frio.** Esquecido pelo rei, quis **nunca mais ser
+  esquecido**. Os Unown fazem o que se deseja com força (o filme inteiro é isso): deram
+  a ele um castelo de cristal onde **nada muda nem se perde**. Greenfield parou no
+  tempo junto.
+- **Spectrier é solitário e é Fantasma.** Fugiu de uma Galar que esqueceu o rei,
+  atravessou o mar e foi acolhido nos estábulos da Torre de Bronze por um sábio que o
+  alimentava toda noite. No incêndio, o Ho-Oh reviveu os três Pokémon **desta terra**
+  e passou por cima do cavalo estrangeiro. Ele sobreviveu, mas **ficou naquela noite**
+  — por isso é Fantasma, e por isso volta a ela toda madrugada, procurando quem o
+  alimentava.
+
+### 15.2 Como o jogador chega (substitui o §8.11 e o Ato 6 do §14.2)
+
+O fim do Ato 5 continua igual, com uma linha a mais da Laurel:
+
+> **Laurel:** Ice that never thaws. I always took that for the Ice Path. Ask the old
+> man in Mahogany. He knows ice better than I know Berries.
+> Where the fire took the bells. The tower in Ecruteak. Ask the boy who sees things.
+
+O Pryce **no ginásio de Mahogany** (Iceroot na bolsa) e o Morty **no ginásio de
+Ecruteak** (Shaderoot na bolsa) viram o gatilho da dungeon. Com a cenoura errada,
+ou sem cenoura, cada um diz uma linha de gancho e nada mais.
+
+> **Pryce:** Iceroot. My mother fed it to the Mamoswine in the worst winters.
+> ...The Ice Path? Child, the Ice Path thaws every spring. I've watched it for fifty
+> years.
+> Ice that never thaws isn't ice. There's a town west of the Ruins of Alph. Greenfield.
+> The Unown covered it in crystal, once, when I was younger. It went away.
+> Last winter, it came back.
+> I went there, the first time. A little girl asked me to stay for dinner. I didn't.
+> I have regretted few things in my life. That is one of them.
+> Go. And if she's still there, tell her the old man from Mahogany says good evening.
+
+> **Morty:** Shaderoot. The spirits in my tower like the smell. So does he.
+> You won't find him in the ruin. He doesn't walk in what the tower is. He walks in
+> what it was, on the night it burned.
+> There's only one way into a memory that old. The Kimono Girls dance it every year,
+> on the anniversary. Tonight, they'll dance it for you.
+> Come to the Dance Theater after dark. Bring your carrot. Bring your courage.
+
+### 15.3 Caminho branco — Greenfield, o prado de cristal
+
+**Lugar.** Greenfield, cidade de flores a oeste das Ruins of Alph. No filme, os Unown
+cobriram a casa do Professor **Spencer Hale** (que estudava os Unown e sumiu na
+dimensão deles) e a cidade em cristal, a pedido da filha, **Molly**. O cristal se
+desfez. **Voltou no inverno passado** — quando o Glastrier chegou.
+
+**Entrada.** Um portão novo na borda oeste de `RuinsOfAlph_Outside` (medir com
+`mapa-de-ligacoes` e `dump_mapa.py`). Abre no estado 10 (Iceroot plantada); antes,
+um cientista do laboratório de Alph bloqueia: *“The crystal's spreading. Nobody goes
+west until we know why.”* Os cientistas do `RuinsOfAlph_Lab` ganham falas sobre o
+Professor Hale (eles o conheciam: Alph + Unown).
+
+**Quem está lá.**
+
+| Personagem | Quem é | Sprite |
+|---|---|---|
+| **Molly Hale** | A menina do filme, agora adulta (uns 20 anos depois). Mora sozinha na mansão, cuidando da cidade parada. Gentil, cansada, um pouco culpada: acha que o cristal voltou por causa dela | novo (o autor providencia); substituto `WOMAN_2` |
+| **Pryce** | Chega depois do chefe, se o jogador levou o recado (abaixo) | `PRYCE` |
+| **Peonia** | Acompanha (§13.3) | substituto `PICNICKER` |
+| **As notas do Professor Hale** | 5 páginas espalhadas pela dungeon (`bg_event`), contam a lore em pedaços | — |
+
+**Os mapas** (5 novos):
+
+| # | Mapa | O que tem | Mecânica | Tileset |
+|---|---|---|---|---|
+| G1 | **Greenfield** (fora) | A cidade de flores sob cristal: casas, fonte, a mansão ao fundo. 3 moradores “parados” (falam, mas repetem a mesma frase: estão presos no mesmo dia) | Nenhuma; é o choque visual | `johto_general` + secundário novo `Greenfield` (flores + cristal; `montar-tileset`) |
+| G2 | **Mansão Hale — saguão** | Molly; o piano; a nota 1 | Cena | interior + paleta de cristal |
+| G3 | **Jardim de Cristal** | Flores presas no cristal; a nota 2 | **Deslizar no cristal** (a mecânica do Ice Path, `MB_SLIDE_*`), com as flores de cristal como paradas | `cave_ice` com paleta nova |
+| G4 | **Biblioteca das Letras** | Estantes, Unown nas paredes; as notas 3 e 4 | **Palavra dos Unown**: pisar nas letras do chão na ordem da palavra certa (a pista está nas notas). Errou, o chão reseta | `ruins_of_alph_writing` + cristal |
+| G5 | **O Trono de Gelo** | O salão onde o Glastrier dorme; a nota 5 | Chefe | cristal |
+
+**A palavra do G4 é `REMEMBER`.** A nota 4 do Hale: *“The Unown answer the strongest
+wish in the room. This one isn't a child's. It's older, and prouder. It wishes to be
+REMEMBERED.”* Soletrar `REMEMBER` abre o salão: o jogador “lembra” o Glastrier, e o
+cristal deixa passar.
+
+**Encontros selvagens** (G3–G4): Unown, Snorunt, Bergmite, Cryogonal, Snom, Glimmet,
+Sneasel. Nenhum lendário, nenhum exclusivo da horta.
+
+**Treinadores** (uma vez cada): 2 Scientists do laboratório de Alph (vieram estudar e
+ficaram presos no “mesmo dia”), 1 Psychic que ouve os Unown, 1 Skier/Ruin Maniac de
+Mahogany que veio atrás de rumores. Times de gelo/psíquico, nível da região.
+
+**As notas do Professor Hale** (narração, sem plaquinha; `bg_event`, lidas quantas
+vezes quiser):
+
+1. *“Day 1. The Unown are back. Not angry. Waiting. For what, I can't tell.”*
+2. *“The flowers stopped growing and never died. Nothing here ages. Molly says it's
+   pretty. It is. That's what frightens me.”*
+3. *“Something large sleeps at the heart of the crystal. Its breath frosts the pages as
+   I write. It dreams of a rider.”*
+4. *“The Unown answer the strongest wish in the room. This one isn't a child's. It's
+   older, and prouder. It wishes to be REMEMBERED.”*
+5. *“If you are reading this, you came for it. Be kind. Everyone who ever loved it
+   left.”*
+
+**Cenas.**
+
+*Entrada em G1, primeira vez:*
+
+> **Peonia:** It's... it's all glass. The flowers are glass. The FOUNTAIN is glass.
+> Freezington's colder, though. ...Okay, it isn't.
+
+*G2, Molly ao piano (ela para de tocar ao ouvir o jogador):*
+
+> **Molly:** Oh. A visitor. We don't get visitors. We don't get anything. That's the
+> point, I think.
+> When I was little, I wished for a family, and the Unown made one out of crystal.
+> I thought I'd done it again. I didn't. I checked. I'm not wishing for anything.
+> Something else is. Something in the heart of the house.
+> It isn't cruel. It's just... afraid of being forgotten. I know that feeling.
+> My father's notes are all over the house. He'd know what to do. He always did, and
+> then he got lost.
+
+*Se o jogador tem o recado do Pryce:*
+
+> **Molly:** The old man from Mahogany? ...He never came to dinner.
+> Tell him the invitation stands.
+
+*G5, o chefe.* O Glastrier dorme sobre um estrado de cristal. Ao se aproximar, os
+Unown do salão se juntam (flash com `fadescreenswapbuffers`) numa **aparição de
+cristal do Calyrex montado no Glastrier** — o que o corcel sonha.
+
+> **???:** ...Do you remember me? No one remembers me. Then no one will pass.
+
+*Batalha 1 — **Phantom Rider*** (treinador `TRAINER_CRYSTAL_RIDER`, plaquinha “???”, sem
+blackout): Unown ×2, Glalie, Cryogonal e um Avalugg com o apelido “Glastrier?”, o
+corcel falso que os Unown montaram. Vitória: a aparição se desfaz em letras.
+
+> *(narração)* The Unown scatter like snow. The great horse opens one eye.
+> *(o jogador oferece a Iceroot Carrot; `playmoncry SPECIES_GLASTRIER`)*
+> *(narração)* It knows the smell. It knew it before it knew you.
+
+*Batalha 2 — Glastrier* (encontro fixo; `seteventmon`; retry do §8.1). **Capturado:**
+`removeitem` da cenoura, estado 12.
+
+*Depois* (fade): o cristal racha. Ao sair, **Greenfield volta a ter cor** (layout
+alternativo ou paleta por estado ≥ 12 no `ON_LOAD`; os 3 moradores “parados” ganham
+falas novas: o dia deles andou).
+
+> **Molly:** It's melting. Everything's melting. The flowers are — they're growing.
+> ...I'd forgotten flowers do that.
+> Here. Papa kept this on his desk. He said it was ice that never melted, and that
+> it was the only thing in the house that never changed. It should go with the horse.
+
+*Dá **Never-Melt Ice** (`checkitemspace` antes).* Se o jogador passar em Mahogany
+depois, o Pryce ganha uma linha:
+
+> **Pryce:** ...She said the invitation stands? Hm. I'll need a better coat.
+
+E, dali em diante, o Pryce **aparece na mansão** aos domingos à noite (objeto por dia da
+semana, como a rotina da horta): jantando com a Molly. Nenhuma fala longa; é a
+recompensa emocional.
+
+**Gancho (não faz parte desta proposta):** a nota escondida do Hale, no fundo do G4,
+*“The Unown's world has doors. I found one. I'm going through.”* — o Professor Hale
+perdido na dimensão dos Unown pode virar um evento das Rift Missions depois.
+
+### 15.4 Caminho escuro — a Torre de Bronze, na noite do incêndio
+
+**Lugar.** A lenda de Ecruteak (GSC/HGSS): há 150 anos a **Torre de Bronze** pegou fogo
+com um raio e queimou por três dias; três Pokémon sem nome morreram e o Ho-Oh os
+reviveu como Raikou, Entei e Suicune; os sinos da torre derreteram. Os jogos só
+mostram a ruína. Aqui o jogador **entra na noite em que ela queimou** — uma memória,
+não uma viagem no tempo.
+
+**Entrada.** O Morty e as Kimono Girls fazem a **Dança da Torre de Bronze** no
+`EcruteakCity_Theater`, à noite, com a Shaderoot na bolsa (estado 11). Cada uma das
+cinco dança com uma fita de cor; a ordem das cores **é a pista do puzzle dos sinos**
+(S3). Tela em sépia (paleta cinza por `fadescreenswapbuffers` + `setweather` de
+cinzas, ou paleta fixa nos mapas da memória) e warp para S1.
+
+**Quem está lá.**
+
+| Personagem | Quem é | Sprite |
+|---|---|---|
+| **Morty** | Guia a dança; no fim, puxa o jogador de volta | `MORTY` |
+| **Eusine** | Já existe no `BurnedTower_1F` (caçador do Suicune). Convencido de que o cavalo negro é “**a quarta fera**” da torre. Entra na memória junto, atrapalha, e sai humilde | `EUSINE` |
+| **Kimono Girls** | As cinco do teatro (`EcruteakCity_Theater`); a dança | `KIMONO_GIRL` |
+| **Os Sábios de 150 anos atrás** | Memórias; tratam o jogador como noviço. São os antepassados dos Sábios do `EcruteakCity_SageOffice` | `SAGE` (paleta cinza) |
+| **Sábio Tomo** | O sábio que alimentava o cavalo toda noite. Chefe do meio. Em Ecruteak de hoje, uma lápide com o nome dele no quintal do Sage Office (`bg_event` novo) | `SAGE` |
+| **Peonia** | Entra junto, com medo (§13.3) | substituto |
+
+**Os mapas** (4 novos, todos “memória”; a saída é sempre o `BurnedTower_B1F` de hoje):
+
+| # | Mapa | O que tem | Mecânica | Tileset |
+|---|---|---|---|---|
+| S1 | **Torre de Bronze — 1F, entardecer** | A torre **intacta**, Sábios fazendo a ronda, lanternas. Nota: o estábulo lá fora | Nenhuma; conversar. O jogador vê o que a Burned Tower **era** | secundário novo `BrassTower` a partir de `burned_tower` (as peças queimadas repintadas inteiras; `montar-tileset`) |
+| S2 | **2F — o raio** | Trovão ao entrar (flash + `playse`), o fogo começa | **Fogo que avança**: a cada N passos um special troca metatiles de chão por fogo (`setmetatile` + `special DrawWholeMapView`) atrás do jogador. Encurralado → *“The memory folds back.”* e volta ao começo do andar, sem perda | `BrassTower` + metatiles de fogo |
+| S3 | **3F — os sinos** | Cinco sinos pendurados | **Tocar os sinos na ordem das fitas da dança.** Cada sino tocado **derrete** (setmetatile) — “o fogo levou os sinos”. Ordem errada: os que sobraram tocam sozinhos, e reseta | `BrassTower` |
+| S4 | **Telhado e estábulo** | O céu em chamas; o Sábio Tomo guardando o cavalo; a sombra do Ho-Oh | Chefe do meio + chefe | `BrassTower` + noite |
+
+**Encontros selvagens** (S1–S3, “memórias de Pokémon”): Gastly, Misdreavus, Litwick,
+Sinistea, Phantump, Houndour (Ecruteak antiga). Nada que não exista hoje na região.
+
+**Treinadores** (uma vez cada): 3 Sábios-memória (classe `SAGE`, times de Bellsprout/
+fantasma, como na Sprout Tower) e 1 Kimono Girl-memória no S3 — a avó de uma das
+dançarinas de hoje. Ao vencer, eles “somem em fumaça” (`removeobject` + `FLAG_TEMP`).
+
+**Cenas.**
+
+*Teatro, antes da dança:*
+
+> **Morty:** Stand in the middle. Don't move until the last ribbon falls.
+> When you're inside, remember: nothing there can hurt you. But it can keep you.
+>
+> **Eusine:** Wait! Morty! I heard everything through the door!
+> A black beast, in the Brass Tower, on the night of the fire? A FOURTH beast?!
+> I'm coming. Don't argue. I've waited my whole life for a fourth beast.
+
+*S1, um Sábio-memória (rodízio de 5 falas entre os Sábios):*
+
+> **Sage:** New novice? Sweep the third floor, then feed the black horse in the stable.
+> Brother Tomo spoils it. It came from over the sea, they say. It won't eat anything
+> but what Tomo gives it.
+
+*S2, o raio:*
+
+> *(narração)* Thunder. Then light. Then the smell of smoke.
+> **Eusine:** It's happening! Exactly like the scrolls! ...Why is it so HOT? The scrolls
+> didn't say it was hot!
+
+*S3, depois do último sino derreter:*
+
+> *(narração)* The last bell melts before it finishes ringing. Somewhere below, three
+> great voices cry out, and then fall silent.
+
+*S4, o Sábio Tomo diante do estábulo em chamas (batalha 1, `TRAINER_SAGE_TOMO`, sem
+blackout; Gengar, Houndoom, Mismagius, Chandelure, Bellossom):*
+
+> **Tomo:** Stay back! No one takes him. He came to us with nothing, from a land that
+> forgot his name. I won't let this one forget him too.
+>
+> *(vitória)* **Tomo:** ...You carry a Shaderoot. That's his food. From his home.
+> Then you came from his king.
+> I fed him every night for eleven years. Tell him... tell him the old monk says he
+> can stop waiting.
+> *(o Tomo some em fumaça)*
+
+*A sombra do Ho-Oh passa (objeto grande, `walk_fast` pela tela, ou só o flash
+arco-íris com `setflashlevel`) — e não para no estábulo.*
+
+> **Morty:** *(voz, sem objeto: é a visão dele)* There. You see? It revived the three
+> of this land. It passed him by. He's been standing in that night ever since.
+>
+> **Eusine:** ...Not a fourth beast. Just a horse nobody came back for.
+> I think I'll stop calling him a beast.
+
+*Batalha 2 — Spectrier* (encontro fixo; retry do §8.1). **Capturado:** `removeitem`
+da cenoura, estado 13, fade para o `BurnedTower_B1F` de hoje.
+
+> **Morty:** Welcome back. You were gone for three minutes. It felt longer, didn't it?
+> The tower's quieter now. For the first time since I was a boy, it's quiet.
+
+*Dá **Spell Tag** (`checkitemspace` antes).* E, no quintal do `EcruteakCity_SageOffice1`,
+a lápide nova:
+
+> *(bg_event)* “Brother Tomo. He fed the ones who had nowhere else to go.”
+> *(com o Spectrier na party, uma linha a mais)* Your Spectrier lowers its head.
+
+**O Eusine depois:** passa a ter uma fala nova no `BurnedTower_1F` — *“I've been
+reading the scrolls again. They never mention the horse. I'm going to write it in
+myself.”* — e o gancho dele com o Suicune continua como está.
+
+### 15.5 O que muda no resto
+
+| Onde | Muda |
+|---|---|
+| §8.11 e §14.2 (Ato 6) | `IcePath_Depths` e `BurnedTower_B1F` deixam de ter corcel. O Pryce e o Morty saem desses mapas e ficam nos **ginásios** (gatilho da dungeon) |
+| §13.3 (Peonia no Ato 6) | Ela espera na **entrada de Greenfield** ou **no teatro**, com as falas que já tem |
+| §14.2, tabela de estados | Estados 10 → 12 e 11 → 13 passam por Greenfield e pela Torre de Bronze |
+| Retry | Mesmo do §8.1. Sair da memória (Spectrier) ou de Greenfield no meio **não** perde o progresso dos puzzles: `VAR_HARVEST_DUNGEON` guarda até onde o jogador chegou (só uma dungeon por jogo, então uma var serve às duas) |
+| O corcel não escolhido | Greenfield (com Spectrier escolhido): a cidade existe, a mansão está trancada pelo cristal — *“Something inside is waiting for someone else.”* O teatro (com Glastrier escolhido): as Kimono Girls não dançam a Torre de Bronze. O outro corcel continua só no Nexus |
+| `IcePath_Depths2` | Nada: o Chien-Pao continua lá |
+
+### 15.6 Outros lugares de Johto que a lore tem e o jogo não (para depois)
+
+Não entram nesta proposta; ficam anotados porque combinam com o mesmo jeito de
+contar (um lugar da lore, um lendário sem fonte, um personagem que já existe):
+
+| Lugar | De onde | Combina com |
+|---|---|---|
+| **Arborville** e a floresta do tempo | filme *Celebi: Voice of the Forest* (Johto) | Ilex Forest, o Celebi que já existe no Ilex |
+| **Alto Mare**, a cidade dos canais | filme *Pokémon Heroes* (Johto) | Latias/Latios, se não tiverem fonte |
+| **Charicific Valley**, o santuário dos Charizard | anime, Johto | Blackthorn/Dragon's Den |
+| **Sinjoh Ruins** | HGSS (evento do Arceus) | Ruins of Alph, Mt. Silver |
+| **A dimensão dos Unown** e o Professor Hale | filme *Spell of the Unown* | Rift Missions (gancho da nota escondida do §15.3) |
+
+### 15.7 Custos (a mais)
+
+| Recurso | Qtd |
+|---|---|
+| Mapas novos | **9**: Greenfield + mansão + 3 salas (G1–G5); Torre de Bronze 1F, 2F, 3F, telhado (S1–S4) |
+| Tilesets | 3 secundários: `Greenfield` (flores + cristal), cristal interior (paleta do `cave_ice`), `BrassTower` (a partir do `burned_tower`) — `montar-tileset` e `adicionar-tileset` |
+| Ligação | 1 portão novo em `RuinsOfAlph_Outside`; os mapas da memória só se ligam pelo teatro e pelo `BurnedTower_B1F` (conferir com `mapa-de-ligacoes`) |
+| Var | +1: `VAR_HARVEST_DUNGEON` (progresso da dungeon escolhida) |
+| Treinadores | 10: 4 em Greenfield + `TRAINER_CRYSTAL_RIDER`; 4 na torre + `TRAINER_SAGE_TOMO` |
+| Sprite (o autor providencia) | Molly Hale adulta (overworld); o resto reaproveita (`PRYCE`, `MORTY`, `EUSINE`, `KIMONO_GIRL`, `SAGE`) |
+| Plaquinhas | +3: `NAME_MOLLY`, `NAME_EUSINE` (conferir se já existe), `NAME_TOMO` |
+| C | special de fogo que avança (S2), puzzle das letras (G4) e dos sinos (S3) por script com `VAR_TEMP` |
+| Itens | nenhum novo (Never-Melt Ice e Spell Tag existem) |
+
+### 15.8 Decisões do autor (rev 4)
+
+| # | Pergunta | Recomendação |
+|---|---|---|
+| 1 | Greenfield e a Molly (do filme) como o lugar do Glastrier | Sim: é Johto, tem “gelo” que nunca derrete, e os Unown já existem no jogo |
+| 2 | A noite do incêndio da Torre de Bronze como o lugar do Spectrier | Sim: explica por que ele é Fantasma e por que é solitário |
+| 3 | Entrar na memória pela dança das Kimono Girls, sem viagem no tempo | Sim: não depende do Celebi nem abre paradoxo |
+| 4 | Pryce jantando com a Molly aos domingos depois | Sim, pequeno e bonito |
+| 5 | O Professor Hale perdido na dimensão dos Unown como gancho | Só anotado, para as Rift Missions |
+| 6 | Tamanho: 9 mapas e 3 tilesets | É o maior custo da sidequest; dá para cortar G3 e S2 (as salas de mecânica) e manter a história inteira |
