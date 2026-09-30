@@ -243,6 +243,77 @@ Nexus_Text_Elesa_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Cada variação pega um ângulo diferente do personagem.
+
+**Variação 2 — o Musical.** Os Pokémon Musicals de Nimbasa: ela achava que a batalha devia parecer um Musical, depois entendeu que devia ser sentida como um. O “electric” da derrota é autoironia.
+
+**Antes da luta**
+
+> Have you ever seen a Pokémon Musical? Costumes, lights, Pokémon dancing on a real stage.
+>
+> I used to think my battles should look like that. Then I learned they should feel like that.
+>
+> Show me how yours feel!
+
+**Derrota**
+
+> That felt electric. …Yes, I say that a lot. It's still true.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Elesa_Intro2:
+	.string "Have you ever seen a Pokémon Musical?\n"
+	.string "Costumes, lights, Pokémon dancing on a\l"
+	.string "real stage.\p"
+	.string "I used to think my battles should look\n"
+	.string "like that. Then I learned they should\l"
+	.string "feel like that.\p"
+	.string "Show me how yours feel!$"
+
+Nexus_Text_Elesa_Defeat2:
+	.string "That felt electric. …Yes, I say that a\n"
+	.string "lot. It's still true.$"
+```
+
+</details>
+
+**Variação 3 — o visual de uma estação.** A Elesa muda de visual toda estação (BW → BW2). Aqui não há estações, e ela está há tempo demais com o mesmo. Um momento de insegurança que a batalha resolve.
+
+**Antes da luta**
+
+> I change my look every season. People expect it.
+>
+> There are no seasons here, so I've kept this one far too long. Be honest -- is it working?
+>
+> …Never mind. Your battle will tell me.
+
+**Derrota**
+
+> So it's the battle that shines, not the outfit. Noted.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Elesa_Intro3:
+	.string "I change my look every season. People\n"
+	.string "expect it.\p"
+	.string "There are no seasons here, so I've kept\n"
+	.string "this one far too long. Be honest -- is it\l"
+	.string "working?\p"
+	.string "…Never mind. Your battle will tell me.$"
+
+Nexus_Text_Elesa_Defeat3:
+	.string "So it's the battle that shines, not the\n"
+	.string "outfit. Noted.$"
+```
+
+</details>
+
+
+
 ### Diálogo associado ao lendário
 
 ✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Elesa_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -300,6 +371,114 @@ Nexus_Text_Elesa_ChampionAfter:
 	.string "that's perfection.\p"
 	.string "Go show it what it's missing. Get your\n"
 	.string "hands dirty.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1: sobre a criatura, pelo olhar dele, sem dizer o nome da espécie. Labels no padrão `Nexus_Text_Elesa_Champion*` + sufixo.
+
+**Variação 2 — um dia andando como ela.** A Elesa tentou andar como a criatura por um dia inteiro: linha reta, sem erro, sem tocar em nada. À noite não lembrava a última vez que tinha rido. A dica: a criatura hesita antes do contato.
+
+**Antes da luta**
+
+> I tried to walk like it. For a whole day. Straight lines, no mistakes, never touching anything.
+>
+> By evening, I couldn't remember the last time I'd laughed.
+>
+> It must never laugh. Laughing is messy.
+>
+> So let's be messy. Battle me!
+
+**Derrota**
+
+> Ha! That was a disaster. I loved it.
+
+**Depois da luta**
+
+> It's faster than anything I've ever seen, but it hates to be touched. It hesitates, right before contact.
+>
+> That's where you catch it. The moment it decides whether you're worth getting dirty for.
+>
+> Be worth it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Elesa_ChampionIntro2:
+	.string "I tried to walk like it. For a whole day.\n"
+	.string "Straight lines, no mistakes, never\l"
+	.string "touching anything.\p"
+	.string "By evening, I couldn't remember the\n"
+	.string "last time I'd laughed.\p"
+	.string "It must never laugh. Laughing is messy.\p"
+	.string "So let's be messy. Battle me!$"
+
+Nexus_Text_Elesa_ChampionDefeat2:
+	.string "Ha! That was a disaster. I loved it.$"
+
+Nexus_Text_Elesa_ChampionAfter2:
+	.string "{SPEAKER NAME_ELESA}It's faster than anything I've ever\n"
+	.string "seen, but it hates to be touched. It\l"
+	.string "hesitates, right before contact.\p"
+	.string "That's where you catch it. The moment\n"
+	.string "it decides whether you're worth\l"
+	.string "getting dirty for.\p"
+	.string "Be worth it.$"
+```
+
+</details>
+
+**Variação 3 — a primeira fila.** A noite em que a criatura foi a um desfile dela: primeira fila, ninguém sentou ao lado, e na metade do show toda a plateia virou para olhá-la. A Elesa terminou a passarela sem ninguém olhando. O que fica: deixar marca, das grandes.
+
+**Antes da luta**
+
+> It came to one of my shows once. Front row. The only seat nobody would sit beside.
+>
+> Halfway through, every head in the house had turned around to look at it instead of me.
+>
+> I kept walking. I finished the runway. Nobody was watching.
+>
+> …Watch me now. That's all I ask.
+
+**Derrota**
+
+> You watched until the end. Thank you. Really.
+
+**Depois da luta**
+
+> After the show, it left without a sound. Not a single footprint.
+>
+> I'd give a lot to leave no marks. And I'd hate every second of it.
+>
+> When you face it, leave a mark. A big, messy, wonderful one.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Elesa_ChampionIntro3:
+	.string "It came to one of my shows once. Front\n"
+	.string "row. The only seat nobody would sit\l"
+	.string "beside.\p"
+	.string "Halfway through, every head in the\n"
+	.string "house had turned around to look at it\l"
+	.string "instead of me.\p"
+	.string "I kept walking. I finished the runway.\n"
+	.string "Nobody was watching.\p"
+	.string "…Watch me now. That's all I ask.$"
+
+Nexus_Text_Elesa_ChampionDefeat3:
+	.string "You watched until the end. Thank you.\n"
+	.string "Really.$"
+
+Nexus_Text_Elesa_ChampionAfter3:
+	.string "{SPEAKER NAME_ELESA}After the show, it left without a sound.\n"
+	.string "Not a single footprint.\p"
+	.string "I'd give a lot to leave no marks. And\n"
+	.string "I'd hate every second of it.\p"
+	.string "When you face it, leave a mark. A big,\n"
+	.string "messy, wonderful one.$"
 ```
 
 </details>

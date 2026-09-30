@@ -242,6 +242,76 @@ Nexus_Text_Fantina_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Cada variação pega um ângulo diferente do personagem.
+
+**Variação 2 — a cidade quente.** Hearthome (sem nome), a cidade onde estranhos se abraçam na rua. Aqui não tem rua, então ela aquece o jogador do jeito dela.
+
+**Antes da luta**
+
+> Ah, mon ami, you look cold! Where I come from, the whole city is warm. Strangers hug in the street!
+>
+> Here there is no street. So I will warm you up another way!
+>
+> Allez, allez! On with the show!
+
+**Derrota**
+
+> Ooh! You have warmed me up instead. C'est pas juste!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Fantina_Intro2:
+	.string "Ah, mon ami, you look cold! Where I come\n"
+	.string "from, the whole city is warm. Strangers\l"
+	.string "hug in the street!\p"
+	.string "Here there is no street. So I will warm\n"
+	.string "you up another way!\p"
+	.string "Allez, allez! On with the show!$"
+
+Nexus_Text_Fantina_Defeat2:
+	.string "Ooh! You have warmed me up instead.\n"
+	.string "C'est pas juste!$"
+```
+
+</details>
+
+**Variação 3 — o homem de sobretudo.** Aceno leve ao fio do sobretudo (DIARIO_LOOKER): um homem de casaco comprido disse que ela dança como um fantasma. Ela tomou como elogio.
+
+**Antes da luta**
+
+> Hmm! A strange man in a long coat told me I dance like a ghost.
+>
+> I think he meant it as a warning. I took it as a compliment! My Pokémon are ghosts, after all.
+>
+> Now! Let us see if you can catch one!
+
+**Derrota**
+
+> Oh là là! You caught me. Nobody catches me!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Fantina_Intro3:
+	.string "Hmm! A strange man in a long coat told\n"
+	.string "me I dance like a ghost.\p"
+	.string "I think he meant it as a warning. I took\n"
+	.string "it as a compliment! My Pokémon are\l"
+	.string "ghosts, after all.\p"
+	.string "Now! Let us see if you can catch one!$"
+
+Nexus_Text_Fantina_Defeat3:
+	.string "Oh là là! You caught me. Nobody catches\n"
+	.string "me!$"
+```
+
+</details>
+
+
+
 ### Diálogo associado ao lendário
 
 ✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Fantina_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -299,6 +369,116 @@ Nexus_Text_Fantina_ChampionAfter:
 	.string "applause.\p"
 	.string "When it bows to you, do not clap. Do not\n"
 	.string "lean in. Just end the show.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1: sobre a criatura, pelo olhar dele, sem dizer o nome da espécie. Labels no padrão `Nexus_Text_Fantina_Champion*` + sufixo.
+
+**Variação 2 — ciúme de palco.** A Fantina admite ciúme: a criatura lota todas as poltronas, toda noite, e ela precisou de vinte anos e um figurino muito bom. O conselho vem dos bastidores: todo truque tem o instante em que o mágico olha para o outro lado.
+
+**Antes da luta**
+
+> I will be honest with you, mon ami. I am jealous.
+>
+> That one fills every seat. Every night! The crowd cannot look away, even when it knows what is coming.
+>
+> Me, I needed twenty years, a hundred Contests, and a very good costume.
+>
+> Hmph! Jealousy is bad for the skin. Let us battle instead!
+
+**Derrota**
+
+> Ahh… Now I am not jealous. I am inspired!
+
+**Depois da luta**
+
+> A little secret from backstage: every trick has a moment where the magician must look away.
+>
+> When it lights its head, it cannot see you. Just for one breath.
+>
+> That is your moment. Do not waste it on applause.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Fantina_ChampionIntro2:
+	.string "I will be honest with you, mon ami. I am\n"
+	.string "jealous.\p"
+	.string "That one fills every seat. Every night!\n"
+	.string "The crowd cannot look away, even when\l"
+	.string "it knows what is coming.\p"
+	.string "Me, I needed twenty years, a hundred\n"
+	.string "Contests, and a very good costume.\p"
+	.string "Hmph! Jealousy is bad for the skin. Let\n"
+	.string "us battle instead!$"
+
+Nexus_Text_Fantina_ChampionDefeat2:
+	.string "Ahh… Now I am not jealous. I am\n"
+	.string "inspired!$"
+
+Nexus_Text_Fantina_ChampionAfter2:
+	.string "{SPEAKER NAME_FANTINA}A little secret from backstage: every\n"
+	.string "trick has a moment where the magician\l"
+	.string "must look away.\p"
+	.string "When it lights its head, it cannot see\n"
+	.string "you. Just for one breath.\p"
+	.string "That is your moment. Do not waste it on\n"
+	.string "applause.$"
+```
+
+</details>
+
+**Variação 3 — fileira quatro, poltrona doze.** A perda: um senhor que ia a todos os shows e ria primeiro. Na noite da criatura ele riu primeiro de novo, e se inclinou primeiro. Hoje a poltrona dele tem só uma sombra, que ainda se inclina. Ela dança para as sombras para que não sumam de vez.
+
+**Antes da luta**
+
+> Row four, seat twelve. An old man came to every one of my shows. He always laughed first.
+>
+> The night it came, he laughed first again. He was the first to lean in.
+>
+> Tonight his seat holds only a shadow. It still leans forward.
+>
+> …Pardon. The show must go on. Allez!
+
+**Derrota**
+
+> Bravo… He would have laughed at that. The good kind.
+
+**Depois da luta**
+
+> I dance for the shadows every night. It keeps them from fading all the way.
+>
+> I do not know if they can see me. I think they can. They lean in.
+>
+> End its show, mon ami. Maybe then the house lights come up at last.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Fantina_ChampionIntro3:
+	.string "Row four, seat twelve. An old man came\n"
+	.string "to every one of my shows. He always\l"
+	.string "laughed first.\p"
+	.string "The night it came, he laughed first\n"
+	.string "again. He was the first to lean in.\p"
+	.string "Tonight his seat holds only a shadow. It\n"
+	.string "still leans forward.\p"
+	.string "…Pardon. The show must go on. Allez!$"
+
+Nexus_Text_Fantina_ChampionDefeat3:
+	.string "Bravo… He would have laughed at that.\n"
+	.string "The good kind.$"
+
+Nexus_Text_Fantina_ChampionAfter3:
+	.string "{SPEAKER NAME_FANTINA}I dance for the shadows every night. It\n"
+	.string "keeps them from fading all the way.\p"
+	.string "I do not know if they can see me. I\n"
+	.string "think they can. They lean in.\p"
+	.string "End its show, mon ami. Maybe then the\n"
+	.string "house lights come up at last.$"
 ```
 
 </details>

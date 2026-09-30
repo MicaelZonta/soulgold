@@ -243,6 +243,76 @@ Nexus_Text_Volkner_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Cada variação pega um ângulo diferente do personagem.
+
+**Variação 2 — o amigo que tem razão.** O Flint (sem nome), o melhor amigo, que diz que o Volkner acharia um jeito de se entediar dentro de um vulcão. Ele nunca admite que o amigo tem razão.
+
+**Antes da luta**
+
+> You know what my friend says? That I'd find a way to be bored inside a volcano.
+>
+> He's probably right. He usually is. I never tell him.
+>
+> Go on. Prove him wrong, for once.
+
+**Derrota**
+
+> Heh. Okay. That was worth staying awake for.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Volkner_Intro2:
+	.string "You know what my friend says? That I'd\n"
+	.string "find a way to be bored inside a volcano.\p"
+	.string "He's probably right. He usually is. I\n"
+	.string "never tell him.\p"
+	.string "Go on. Prove him wrong, for once.$"
+
+Nexus_Text_Volkner_Defeat2:
+	.string "Heh. Okay. That was worth staying awake\n"
+	.string "for.$"
+```
+
+</details>
+
+**Variação 3 — consertando coisas.** Mania de mexer em fiação quando nada acontece (foi assim que ele apagou Sunyshore em Platinum). Humor seco: agora ele quer ver se o jogador ainda funciona.
+
+**Antes da luta**
+
+> Sorry. One second. I'm rewiring something.
+>
+> Old habit. When nothing's happening, I take things apart to see if they still work.
+>
+> …Right. Done. Let's see if you still work.
+
+**Derrota**
+
+> Everything works. Great. Now I've got nothing to fix.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Volkner_Intro3:
+	.string "Sorry. One second. I'm rewiring\n"
+	.string "something.\p"
+	.string "Old habit. When nothing's happening, I\n"
+	.string "take things apart to see if they still\l"
+	.string "work.\p"
+	.string "…Right. Done. Let's see if you still\n"
+	.string "work.$"
+
+Nexus_Text_Volkner_Defeat3:
+	.string "Everything works. Great. Now I've got\n"
+	.string "nothing to fix.$"
+```
+
+</details>
+
+
+
 ### Diálogo associado ao lendário
 
 ✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Volkner_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -299,6 +369,116 @@ Nexus_Text_Volkner_ChampionAfter:
 	.string "Go pull the plug on it, challenger. I'll\n"
 	.string "be here, learning to be bored in the\l"
 	.string "dark.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1: sobre a criatura, pelo olhar dele, sem dizer o nome da espécie. Labels no padrão `Nexus_Text_Volkner_Champion*` + sufixo.
+
+**Variação 2 — medo da melhor luta.** Ele conta as ruas que ainda têm luz. A dúvida: por que não luta com ela? Medo de que seja a melhor luta da vida dele, e depois nada. O conselho é técnico e autoirônico: ela acha você pela corrente.
+
+**Antes da luta**
+
+> The lights go out one street at a time. I've been counting. Forty-two left.
+>
+> Someone asked why I don't just fight it. Fair question. I'm a Gym Leader. That's the whole job.
+>
+> I think I'm scared it'd be the best battle of my life. And then what?
+>
+> …Forget it. You first.
+
+**Derrota**
+
+> Ha. Okay. That one I'll remember in the dark.
+
+**Depois da luta**
+
+> It has no eyes. It finds you by current. Anything carrying a charge, it leans toward.
+>
+> So maybe don't lead with an Electric type. Take it from a guy who only brings Electric types.
+>
+> Forty-one streets now. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Volkner_ChampionIntro2:
+	.string "The lights go out one street at a time.\n"
+	.string "I've been counting. Forty-two left.\p"
+	.string "Someone asked why I don't just fight\n"
+	.string "it. Fair question. I'm a Gym Leader.\l"
+	.string "That's the whole job.\p"
+	.string "I think I'm scared it'd be the best\n"
+	.string "battle of my life. And then what?\p"
+	.string "…Forget it. You first.$"
+
+Nexus_Text_Volkner_ChampionDefeat2:
+	.string "Ha. Okay. That one I'll remember in the\n"
+	.string "dark.$"
+
+Nexus_Text_Volkner_ChampionAfter2:
+	.string "{SPEAKER NAME_VOLKNER}It has no eyes. It finds you by current.\n"
+	.string "Anything carrying a charge, it leans\l"
+	.string "toward.\p"
+	.string "So maybe don't lead with an Electric\n"
+	.string "type. Take it from a guy who only brings\l"
+	.string "Electric types.\p"
+	.string "Forty-one streets now. Go.$"
+```
+
+</details>
+
+**Variação 3 — o farol.** O farol de Sunyshore (Vista Lighthouse, sem nome), onde ele se sentava quando ninguém o desafiava. A criatura subiu na torre mais alta na primeira noite: os dois gostam da mesma vista. Ele fica mantendo uma luz acesa para alguém achar o caminho de volta.
+
+**Antes da luta**
+
+> There's a lighthouse back home. Best view in the region. I'd sit up there when nobody came to challenge me.
+>
+> That thing climbed the tallest tower in town the first night. Guess it likes the view too.
+>
+> We'd probably get along. That's the problem.
+>
+> Come on. Remind me which side I'm on.
+
+**Derrota**
+
+> Right. Your side. Got it.
+
+**Depois da luta**
+
+> When it plugs into something, it stops moving. It won't let go of a good source.
+>
+> Cut the line, and it has to come looking for you. That's when it's slow.
+>
+> Me? I'm keeping one light on. Someone has to find their way back.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Volkner_ChampionIntro3:
+	.string "There's a lighthouse back home. Best\n"
+	.string "view in the region. I'd sit up there\l"
+	.string "when nobody came to challenge me.\p"
+	.string "That thing climbed the tallest tower in\n"
+	.string "town the first night. Guess it likes the\l"
+	.string "view too.\p"
+	.string "We'd probably get along. That's the\n"
+	.string "problem.\p"
+	.string "Come on. Remind me which side I'm on.$"
+
+Nexus_Text_Volkner_ChampionDefeat3:
+	.string "Right. Your side. Got it.$"
+
+Nexus_Text_Volkner_ChampionAfter3:
+	.string "{SPEAKER NAME_VOLKNER}When it plugs into something, it stops\n"
+	.string "moving. It won't let go of a good\l"
+	.string "source.\p"
+	.string "Cut the line, and it has to come looking\n"
+	.string "for you. That's when it's slow.\p"
+	.string "Me? I'm keeping one light on. Someone\n"
+	.string "has to find their way back.$"
 ```
 
 </details>
