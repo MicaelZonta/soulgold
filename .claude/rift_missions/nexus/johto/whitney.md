@@ -321,6 +321,73 @@ Nexus_Text_Whitney_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Ainda não estão no código.
+
+**Variação 2 — a loja de departamentos.** Goldenrod, compras e choro: ela já chorou em todos os andares da loja, e não foi por batalha.
+
+**Antes da luta**
+
+> Do you know how many floors the Goldenrod Department Store has? I do. I've cried on every single one!
+>
+> Not because of battles. Because of sales! They end so fast!
+>
+> Battles end fast too. Mostly yours! Let's go!
+
+**Derrota**
+
+> Waaah! Sold out AND beaten! Worst. Day. Ever!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Whitney_Intro2:
+	.string "Do you know how many floors the\n"
+	.string "Goldenrod Department Store has? I do.\l"
+	.string "I've cried on every single one!\p"
+	.string "Not because of battles. Because of\n"
+	.string "sales! They end so fast!\p"
+	.string "Battles end fast too. Mostly yours!\n"
+	.string "Let's go!$"
+
+Nexus_Text_Whitney_Defeat2:
+	.string "Waaah! Sold out AND beaten! Worst. Day.\n"
+	.string "Ever!$"
+```
+
+</details>
+
+**Variação 3 — "ela não dura uma semana".** O lado teimoso: disseram que ela não duraria como Líder, por ser emotiva e barulhenta. Continua ali, e continua barulhenta.
+
+**Antes da luta**
+
+> When I became a Gym Leader, people said I wouldn't last a week.
+>
+> 'Too emotional,' they said. 'Too loud.'
+>
+> That was years ago. I'm still loud! Let's battle!
+
+**Derrota**
+
+> Waaah! …Still here, though. Still loud!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Whitney_Intro3:
+	.string "When I became a Gym Leader, people said\n"
+	.string "I wouldn't last a week.\p"
+	.string "'Too emotional,' they said. 'Too loud.'\p"
+	.string "That was years ago. I'm still loud!\n"
+	.string "Let's battle!$"
+
+Nexus_Text_Whitney_Defeat3:
+	.string "Waaah! …Still here, though. Still loud!$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Regigigas
@@ -387,6 +454,108 @@ Nexus_Text_Whitney_Regigigas_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1: a criatura pelo olhar do campeão, sem o nome da espécie. Ainda não estão no código.
+
+**Variação 2 — o trem que não vai a lugar nenhum.** Puxa o fragmento do caderno dela: o Magnet Train para Saffron termina sobre a água. Ela fica brava, e depois entende que o gigante não está roubando a terra: está arrumando.
+
+**Antes da luta**
+
+> The train to Saffron doesn't go anywhere anymore. The tracks just stop over the water.
+>
+> That big guy at the end of the ropes is taking us somewhere. Nobody asked me!
+>
+> I had plans! Shopping plans! Let's battle, I'm so mad!
+
+**Derrota**
+
+> Waaah! Now I'm mad AND I lost!
+
+**Depois da luta**
+
+> Okay, fine, I thought about it. He isn't stealing us. He's putting things back.
+>
+> Like tidying up after a party. Everything back where it was before anybody moved it.
+>
+> I don't like it. But I'd do it too, if I were that big. Go on. Tell him I said hi. Loudly.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Whitney_Regigigas_ChampionIntro2:
+	.string "The train to Saffron doesn't go\n"
+	.string "anywhere anymore. The tracks just stop\l"
+	.string "over the water.\p"
+	.string "That big guy at the end of the ropes is\n"
+	.string "taking us somewhere. Nobody asked me!\p"
+	.string "I had plans! Shopping plans! Let's\n"
+	.string "battle, I'm so mad!$"
+
+Nexus_Text_Whitney_Regigigas_ChampionDefeat2:
+	.string "Waaah! Now I'm mad AND I lost!$"
+
+Nexus_Text_Whitney_Regigigas_ChampionAfter2:
+	.string "{SPEAKER NAME_WHITNEY}Okay, fine, I thought about it. He isn't\n"
+	.string "stealing us. He's putting things back.\p"
+	.string "Like tidying up after a party.\n"
+	.string "Everything back where it was before\l"
+	.string "anybody moved it.\p"
+	.string "I don't like it. But I'd do it too, if I\n"
+	.string "were that big. Go on. Tell him I said hi.\l"
+	.string "Loudly.$"
+```
+
+</details>
+
+**Variação 3 — os três que ele fez.** A lenda: ele moldou os outros Regis de argila, gelo e magma, e eles dormem longe, cada um na sua caverna. Ela imagina que ele fica sozinho, e compara com a Miltank que a vigia enquanto ela cochila.
+
+**Antes da luta**
+
+> They say the big one made three friends. Out of clay, and ice, and fire rock.
+>
+> Then he fell asleep, and they had to guard him for ages and ages!
+>
+> Like me and my Miltank. I nap, she guards. Let's battle!
+
+**Derrota**
+
+> Waaah! Miltank, where were you?!
+
+**Depois da luta**
+
+> If he made three friends out of nothing, I bet he gets lonely.
+>
+> Nobody stays awake with him. They're all asleep in their own caves, far away.
+>
+> Be nice to him, okay? Beat him, but be nice. You're allowed to do both.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Whitney_Regigigas_ChampionIntro3:
+	.string "They say the big one made three\n"
+	.string "friends. Out of clay, and ice, and fire\l"
+	.string "rock.\p"
+	.string "Then he fell asleep, and they had to\n"
+	.string "guard him for ages and ages!\p"
+	.string "Like me and my Miltank. I nap, she\n"
+	.string "guards. Let's battle!$"
+
+Nexus_Text_Whitney_Regigigas_ChampionDefeat3:
+	.string "Waaah! Miltank, where were you?!$"
+
+Nexus_Text_Whitney_Regigigas_ChampionAfter3:
+	.string "{SPEAKER NAME_WHITNEY}If he made three friends out of\n"
+	.string "nothing, I bet he gets lonely.\p"
+	.string "Nobody stays awake with him. They're\n"
+	.string "all asleep in their own caves, far away.\p"
+	.string "Be nice to him, okay? Beat him, but be\n"
+	.string "nice. You're allowed to do both.$"
+```
+
+</details>
+
 #### Scream Tail
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Whitney_ScreamTail_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -438,6 +607,106 @@ Nexus_Text_Whitney_ScreamTail_ChampionAfter:
 	.string "I want to win so bad it hurts.\p"
 	.string "Neither of us is gonna stop. Go sing it\n"
 	.string "something nice. Then beat it!$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1: a criatura pelo olhar do campeão, sem o nome da espécie. Ainda não estão no código.
+
+**Variação 2 — a canção que termina.** Lore da linhagem da Jigglypuff: canta até todos dormirem. Ela acha que a criatura grita porque não quer que a canção acabe, como ela chora quando a festa acaba.
+
+**Antes da luta**
+
+> Its song starts so pretty. I almost fell asleep standing up!
+>
+> Then it gets louder, and louder, and then… AAAAH! Just like that!
+>
+> I sing like that too. Ask my Miltank. …Actually, don't. Let's battle!
+
+**Derrota**
+
+> Waaah! Encore! No, wait, not an encore!
+
+**Depois da luta**
+
+> I think it screams when the song ends. Like it doesn't want the song to be over.
+>
+> I get that. I cry when parties end. Every single time.
+>
+> So go on. Just… don't be the one who ends its song too fast, okay?
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Whitney_ScreamTail_ChampionIntro2:
+	.string "Its song starts so pretty. I almost fell\n"
+	.string "asleep standing up!\p"
+	.string "Then it gets louder, and louder, and\n"
+	.string "then… AAAAH! Just like that!\p"
+	.string "I sing like that too. Ask my Miltank.\n"
+	.string "…Actually, don't. Let's battle!$"
+
+Nexus_Text_Whitney_ScreamTail_ChampionDefeat2:
+	.string "Waaah! Encore! No, wait, not an encore!$"
+
+Nexus_Text_Whitney_ScreamTail_ChampionAfter2:
+	.string "{SPEAKER NAME_WHITNEY}I think it screams when the song ends.\n"
+	.string "Like it doesn't want the song to be\l"
+	.string "over.\p"
+	.string "I get that. I cry when parties end.\n"
+	.string "Every single time.\p"
+	.string "So go on. Just… don't be the one who\n"
+	.string "ends its song too fast, okay?$"
+```
+
+</details>
+
+**Variação 3 — fofo sempre foi assustador.** O homem de sobretudo (fio 3 do diário) contou a ela que aquilo é como as coisas fofas eram há muito tempo. Ela se sente vingada.
+
+**Antes da luta**
+
+> A man in a long coat told me that little pink thing is what cute things looked like, a really long time ago.
+>
+> Fluffy. Pink. Scary teeth. So cute was always a little bit scary!
+>
+> I KNEW it! I've been saying that for years! Battle!
+
+**Derrota**
+
+> Waaah! Proven right, and I still lost!
+
+**Depois da luta**
+
+> Everybody back home thinks cute means soft. Easy. Harmless.
+>
+> That thing's been cute forever, and nobody's pushed it around once.
+>
+> I want that. I'm getting that. Go on, go learn from it. I'll be right behind you!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Whitney_ScreamTail_ChampionIntro3:
+	.string "A man in a long coat told me that little\n"
+	.string "pink thing is what cute things looked\l"
+	.string "like, a really long time ago.\p"
+	.string "Fluffy. Pink. Scary teeth. So cute was\n"
+	.string "always a little bit scary!\p"
+	.string "I KNEW it! I've been saying that for\n"
+	.string "years! Battle!$"
+
+Nexus_Text_Whitney_ScreamTail_ChampionDefeat3:
+	.string "Waaah! Proven right, and I still lost!$"
+
+Nexus_Text_Whitney_ScreamTail_ChampionAfter3:
+	.string "{SPEAKER NAME_WHITNEY}Everybody back home thinks cute means\n"
+	.string "soft. Easy. Harmless.\p"
+	.string "That thing's been cute forever, and\n"
+	.string "nobody's pushed it around once.\p"
+	.string "I want that. I'm getting that. Go on, go\n"
+	.string "learn from it. I'll be right behind you!$"
 ```
 
 </details>

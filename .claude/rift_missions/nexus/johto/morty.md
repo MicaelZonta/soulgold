@@ -320,6 +320,75 @@ Nexus_Text_Morty_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Ainda não estão no código.
+
+**Variação 2 — o amigo que corre.** O Eusine, sem nome: corre atrás de um Pokémon pela região inteira; o Morty espera. Esperar funciona há vinte anos, "a qualquer momento".
+
+**Antes da luta**
+
+> A friend of mine chases one Pokémon across the whole region. He never catches up.
+>
+> I told him to stop running and wait. It works for me.
+>
+> Well. It has worked for twenty years. Any day now. …Shall we?
+
+**Derrota**
+
+> Waiting would have been wiser. I'll remember that.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Morty_Intro2:
+	.string "A friend of mine chases one Pokémon\n"
+	.string "across the whole region. He never\l"
+	.string "catches up.\p"
+	.string "I told him to stop running and wait. It\n"
+	.string "works for me.\p"
+	.string "Well. It has worked for twenty years.\n"
+	.string "Any day now. …Shall we?$"
+
+Nexus_Text_Morty_Defeat2:
+	.string "Waiting would have been wiser. I'll\n"
+	.string "remember that.$"
+```
+
+</details>
+
+**Variação 3 — o Gengar atrás de você.** Humor de fantasma: o ponto frio atrás do jogador é o Gengar dele, e gostar de alguém raramente é boa notícia.
+
+**Antes da luta**
+
+> Don't be alarmed. That cold spot behind you is my Gengar. He's been there since you walked in.
+>
+> He likes you. That's rarely good news.
+>
+> Let's battle before he decides to keep you.
+
+**Derrota**
+
+> Now he's sulking. You'll have to visit him sometime.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Morty_Intro3:
+	.string "Don't be alarmed. That cold spot behind\n"
+	.string "you is my Gengar. He's been there since\l"
+	.string "you walked in.\p"
+	.string "He likes you. That's rarely good news.\p"
+	.string "Let's battle before he decides to keep\n"
+	.string "you.$"
+
+Nexus_Text_Morty_Defeat3:
+	.string "Now he's sulking. You'll have to visit\n"
+	.string "him sometime.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Ho-Oh
@@ -383,6 +452,109 @@ Nexus_Text_Morty_HoOh_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1: a criatura pelo olhar do campeão, sem o nome da espécie. Ainda não estão no código.
+
+**Variação 2 — a outra torre.** Ecruteak tem a Bell Tower de nove andares, feita para o arco-íris pousar, e ele nunca pousa lá: pousa na queimada. O Morty conclui que a criatura prefere o lugar onde fez mais bem.
+
+**Antes da luta**
+
+> There's a second tower in Ecruteak. Nine floors, never touched by fire. It was built for the rainbow to land on.
+>
+> It never lands there. It lands on the burned one. Every time.
+>
+> I've always wondered why. Maybe you know. Let's find out.
+
+**Derrota**
+
+> The answer was you. Of course it was.
+
+**Depois da luta**
+
+> I think it prefers the burned one. The place where it did the most good.
+>
+> The new tower is beautiful. Nothing ever happened in it.
+>
+> Go. Walk into the fire. It will like you better for it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Morty_HoOh_ChampionIntro2:
+	.string "There's a second tower in Ecruteak.\n"
+	.string "Nine floors, never touched by fire. It\l"
+	.string "was built for the rainbow to land on.\p"
+	.string "It never lands there. It lands on the\n"
+	.string "burned one. Every time.\p"
+	.string "I've always wondered why. Maybe you\n"
+	.string "know. Let's find out.$"
+
+Nexus_Text_Morty_HoOh_ChampionDefeat2:
+	.string "The answer was you. Of course it was.$"
+
+Nexus_Text_Morty_HoOh_ChampionAfter2:
+	.string "{SPEAKER NAME_MORTY}I think it prefers the burned one. The\n"
+	.string "place where it did the most good.\p"
+	.string "The new tower is beautiful. Nothing\n"
+	.string "ever happened in it.\p"
+	.string "Go. Walk into the fire. It will like you\n"
+	.string "better for it.$"
+```
+
+</details>
+
+**Variação 3 — três gerações esperando.** O avô e o pai esperaram a vida toda e não viram. Ele é o primeiro da família a ver as cores, e gasta o momento lutando. A cor de perto é o detalhe que ninguém escreveu.
+
+**Antes da luta**
+
+> My grandfather waited his whole life to see it. My father too. Neither of them did.
+>
+> I'm the first in my family to see its colors, and I'm spending the moment battling you.
+>
+> …They would have laughed at that. Come on.
+
+**Derrota**
+
+> Grandfather, I'm sorry. That was embarrassing.
+
+**Depois da luta**
+
+> Do you know what the colors look like up close? I thought they'd be bright.
+>
+> They're soft. Like light through a paper screen at dusk.
+>
+> Nobody in my family ever wrote that down. I'll do it tonight. Go on, see for yourself.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Morty_HoOh_ChampionIntro3:
+	.string "My grandfather waited his whole life to\n"
+	.string "see it. My father too. Neither of them\l"
+	.string "did.\p"
+	.string "I'm the first in my family to see its\n"
+	.string "colors, and I'm spending the moment\l"
+	.string "battling you.\p"
+	.string "…They would have laughed at that. Come\n"
+	.string "on.$"
+
+Nexus_Text_Morty_HoOh_ChampionDefeat3:
+	.string "Grandfather, I'm sorry. That was\n"
+	.string "embarrassing.$"
+
+Nexus_Text_Morty_HoOh_ChampionAfter3:
+	.string "{SPEAKER NAME_MORTY}Do you know what the colors look like up\n"
+	.string "close? I thought they'd be bright.\p"
+	.string "They're soft. Like light through a\n"
+	.string "paper screen at dusk.\p"
+	.string "Nobody in my family ever wrote that\n"
+	.string "down. I'll do it tonight. Go on, see for\l"
+	.string "yourself.$"
+```
+
+</details>
+
 #### Spectrier
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Morty_Spectrier_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -433,6 +605,109 @@ Nexus_Text_Morty_Spectrier_ChampionAfter:
 	.string "Maybe I was just looking too hard.\n"
 	.string "Close your eyes when you face it. It\l"
 	.string "will anyway.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1: a criatura pelo olhar do campeão, sem o nome da espécie. Ainda não estão no código.
+
+**Variação 2 — o cavalo sem cavaleiro.** Lore de Galar: é a montaria do rei da coroa. Ele circula como montaria sem cavaleiro. Aceno ao fio **Liga de Kanto** (os corcéis procuram o **Will**, que tem o rei) — o homem mascarado que fala com reis, sem nome.
+
+**Antes da luta**
+
+> It isn't wild. Listen to how it circles. Tight. Careful. That's a steed without its rider.
+>
+> It's looking for someone. A king, I think. Someone with a crown and a mind stronger than its own.
+>
+> It certainly isn't looking for me. Let's battle.
+
+**Derrota**
+
+> Not me. Not you either, I suspect.
+
+**Depois da luta**
+
+> I tried to call it. Ghost to ghost. It didn't even slow down.
+>
+> Whoever rides it doesn't need to shout. It can hear a thought from across a field.
+>
+> If you ever meet a masked man who talks to kings, tell him his horse is waiting.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Morty_Spectrier_ChampionIntro2:
+	.string "It isn't wild. Listen to how it circles.\n"
+	.string "Tight. Careful. That's a steed without\l"
+	.string "its rider.\p"
+	.string "It's looking for someone. A king, I\n"
+	.string "think. Someone with a crown and a mind\l"
+	.string "stronger than its own.\p"
+	.string "It certainly isn't looking for me. Let's\n"
+	.string "battle.$"
+
+Nexus_Text_Morty_Spectrier_ChampionDefeat2:
+	.string "Not me. Not you either, I suspect.$"
+
+Nexus_Text_Morty_Spectrier_ChampionAfter2:
+	.string "{SPEAKER NAME_MORTY}I tried to call it. Ghost to ghost. It\n"
+	.string "didn't even slow down.\p"
+	.string "Whoever rides it doesn't need to shout.\n"
+	.string "It can hear a thought from across a\l"
+	.string "field.\p"
+	.string "If you ever meet a masked man who talks\n"
+	.string "to kings, tell him his horse is waiting.$"
+```
+
+</details>
+
+**Variação 3 — o medo do lado de cá.** Fantasma não assusta o Morty. Algo que sabe onde você está sem olhar, sim: é o que ele é para os outros, e ele nunca gostou de estar deste lado. Grim Neigh vira imagem: cada medo que ela acha é uma rédea.
+
+**Antes da luta**
+
+> I'll confess something. I'm afraid of it.
+>
+> Ghosts don't scare me. Graveyards don't scare me. But something that knows where you are without looking…
+>
+> That's what I am to other people. I never liked being on this side. Let's battle.
+
+**Derrota**
+
+> So that's how my opponents feel.
+
+**Depois da luta**
+
+> It found my fear and pulled on it, like a rein.
+>
+> That's how it grows stronger. Every fear it finds. Every foe it drops.
+>
+> So don't be afraid of it. …Easy for me to say. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Morty_Spectrier_ChampionIntro3:
+	.string "I'll confess something. I'm afraid of\n"
+	.string "it.\p"
+	.string "Ghosts don't scare me. Graveyards\n"
+	.string "don't scare me. But something that\l"
+	.string "knows where you are without looking…\p"
+	.string "That's what I am to other people. I\n"
+	.string "never liked being on this side. Let's\l"
+	.string "battle.$"
+
+Nexus_Text_Morty_Spectrier_ChampionDefeat3:
+	.string "So that's how my opponents feel.$"
+
+Nexus_Text_Morty_Spectrier_ChampionAfter3:
+	.string "{SPEAKER NAME_MORTY}It found my fear and pulled on it, like a\n"
+	.string "rein.\p"
+	.string "That's how it grows stronger. Every\n"
+	.string "fear it finds. Every foe it drops.\p"
+	.string "So don't be afraid of it. …Easy for me\n"
+	.string "to say. Go.$"
 ```
 
 </details>
