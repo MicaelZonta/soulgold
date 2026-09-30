@@ -383,8 +383,10 @@
   - [ficha](rift_missions/nexus/unova/benga.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Cynthia** — Campeã visitante que pode ser desafiada em Undella Town.
   - [ficha](rift_missions/nexus/sinnoh/cynthia.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Hilbert e Hilda** — protagonistas de *Black/White* ligados à derrota inicial do Team Plasma.
-  - [ficha](rift_missions/nexus/unova/hilbert_e_hilda.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [ ] **Hilda** — protagonista feminina de *Black/White* ligada à derrota inicial do Team Plasma.
+  - [ficha](rift_missions/nexus/unova/hilda.md) · Sprite ✅ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [ ] **Hilbert** — protagonista masculino de *Black/White* ligado à derrota inicial do Team Plasma.
+  - [ficha](rift_missions/nexus/unova/hilbert.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ---
 

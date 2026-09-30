@@ -1,10 +1,10 @@
-# Hilbert e Hilda
+# Hilbert
 
 **Região da ficha:** Unova
 
 Aparece no checklist como:
 
-- **Hilbert e Hilda** (Unova · Outros notáveis) — protagonistas de *Black/White* ligados à derrota inicial do Team Plasma.
+- **Hilbert** (Unova · Outros notáveis) — protagonista masculino de *Black/White* ligado à derrota inicial do Team Plasma.
 
 **Pronto para o Nexus:** ❌ não — falta sprite de overworld e battle sprite (os dois são obrigatórios).
 
