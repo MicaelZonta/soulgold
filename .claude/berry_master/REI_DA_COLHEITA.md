@@ -1,6 +1,6 @@
 # O Rei da Colheita — a horta do Berry Master, completa
 
-> **Proposta rev1 — 30/09/2026.** Nada implementado. Junta num sistema só a
+> **Proposta rev1 — 30/09/2026; rev2 (Galar) §13; rev3 (revisão, Crown Tundra, 10 falas por evento, batalhas de sempre) §14.** Nada implementado. Junta num sistema só a
 > horta ([`BERRY_MASTER_DESIGN.md`](BERRY_MASTER_DESIGN.md)), as infestações e o
 > lendário ([`LENDARIO_E_INFESTACAO.md`](LENDARIO_E_INFESTACAO.md)). **Onde este
 > documento e os dois anteriores discordam, vale este.**
@@ -1206,3 +1206,676 @@ Nos outros dias, a fala normal dela de manhã.
 | 4 | Avery nas sextas | Sim, cômico e barato |
 | 5 | Honey só por carta, ou visita depois | Só carta na primeira versão |
 | 6 | Expedição do Peony (Regieleki/Regidrago) | Proposta própria, depois desta |
+
+---
+
+## 14. Rev 3 — revisão, Crown Tundra de verdade, a horta viva e as batalhas de sempre (30/09/2026)
+
+Pedido do autor: mais uma revisão; integrar mais os NPCs de Sword/Shield
+importantes para o Calyrex na história; **10 variações de fala** para cada evento
+repetitivo (“pensa em Harvest Moon”); e chance de **lutar de novo** com os NPCs
+novos. **Onde a §14 e as seções anteriores discordam, vale a §14.**
+
+| Pedido | Onde |
+|---|---|
+| Revisão | §14.1 (problemas achados e a correção de cada um) |
+| NPCs de SWSH do Calyrex mais dentro da história | §14.2 (Peony hóspede e voz do Rei, sementes de cenoura, prova pelo corpo do Peony, estátua de Freezington) |
+| 10 falas por evento repetitivo | §14.3 (como funciona) e §14.4 (as falas) |
+| Batalhas repetíveis com os NPCs novos | §14.5 |
+| Custo | §14.6 |
+
+### 14.1 Revisão: o que estava errado ou frágil
+
+| # | Onde | Problema | Correção |
+|---|---|---|---|
+| 1 | §9.5 | A dica da Laurel usa `{STR_VAR_4}` (“Page {STR_VAR_4}”). O `charmap.txt` só tem `STR_VAR_1..3`: **não compila**. | As 10 falas novas da dica (§14.4 F) usam só 3 buffers: berry, pai 1, pai 2. |
+| 2 | §9.1 e §9.4 | Falas presas ao dia da semana citam o Bugsy (“Bugsy's coming today”, “The Azalea boy's coming”) **antes do Ato 1b**, quando ele nem foi chamado, e continuam dizendo isso se o jogador nunca fizer o censo. | Tudo que depende de progresso sai do rodízio e vira **reação de contexto com condição** (§14.3). O rodízio só tem fala que vale em qualquer estado. |
+| 3 | §9 inteiro | Uma fala por dia da semana: no fim do primeiro mês o jogador decorou os 7. | Rodízio de **10**, com **corações** liberando as falas mais íntimas (§14.3). |
+| 4 | §3.4 × §8.13 | Duas “primeiras vezes” que a Laurel diz o nome do jogador: no marco 66 do Livro **e** no epílogo. Quem chegar primeiro rouba a fala do outro. | Uma cena só, `LaurelSaysName`, na primeira das duas; a outra toca a fala alternativa (§14.4 D, reações). |
+| 5 | §10 e §13.6 | 5 flags diárias soltas (`ORDER_ROLLED`, `ORDER_DONE`, `GARDEN_WATERED`, `KLARA_RAID`, `KLARA_BEATEN`), e a rev3 precisaria de mais 11. Cuidado extra: no bloco diário os nomes `FLAG_UNUSED_0x952..` repetem números que **fora** dele são flags vivas (`0x952` = `FLAG_TM_SLEEP_TALK`). | **1 flag diária + 1 var de bits** (`VAR_GARDEN_TODAY`), igual ao Kurt (`VAR_KURT_TODAY` + `FLAG_DAILY_KURT_NEW_DAY`) e ao Nexus. Layout em §14.6. |
+| 6 | §13.4 | Contador de vitórias da Klara no “byte alto de `VAR_BERRY_ORDER`”. Script não faz conta de bits; ia virar bug. | Var própria `VAR_GARDEN_RIVALS` (vars livres a partir de `0x4127`). |
+| 7 | §13.4 | “Peonia faz dupla com a Tilly na banquinha” no sábado de dia: 11 canteiros + Laurel + Tilly + Peonia + jogador + follower = **16**, no limite. | No fim de semana a Laurel fica **em casa** (dia de forno, §14.3). Fica 15, e a Laurel ganha um lugar novo na rotina. |
+| 8 | §8.11 | As duas feras disponíveis ao mesmo tempo: o jogador descobre que “escolheu” só depois de capturar, e a tela de escolha nunca existe. | A escolha vira a **semente de cenoura**, como em Crown Tundra (§14.2): escolhe, planta, colhe, e só aparece o corcel da cenoura que você tem. |
+| 9 | §13.3 | O Peony aparece no Ato 5 e some da história até o Ato 7. É a pessoa mais importante do Calyrex em SWSH e fica sem nada para fazer. | Peony e Peonia viram **hóspedes** da casa do Bram durante a busca (estados 9–13): rotina, falas, a voz do Rei de noite e a prova do Ato 7 (§14.2). |
+
+Conferido e **ok**: orçamento de objetos dos atos (§13.3), regra da surpresa (nenhuma
+fala do rodízio antes do estado 7 cita rei, corcel ou Calyrex — as falas com
+isso só existem em NPCs que só aparecem depois), ordem `checkitemspace` antes de
+todo presente, e o retry de todas as batalhas de história.
+
+### 14.2 Crown Tundra na horta
+
+Em Crown Tundra o Calyrex **fala pelo corpo do Peony**, pede o campo de volta, dá
+ao jogador a escolha entre **Iceroot Carrot** (Glastrier) e **Shaderoot Carrot**
+(Spectrier), e o povo de **Freezington** refaz a **estátua** do rei. A rev3 traz as
+quatro coisas para a história da Laurel.
+
+#### Estados novos (substitui a tabela do §8.1 a partir do estado 9)
+
+| Estado | Ato | Gatilho | Onde |
+|---|---|---|---|
+| 0–8 | como no §8.1 | — | — |
+| 8 → 9 | **Ato 5** — O Rei (versão §13.3) + **as sementes** (abaixo) | Enigma madura + noite | `Route30` |
+| 9 → 10 / 11 | **Ato 5b** — A semente do corcel | plantar uma das sementes no canteiro da Laurel | `Route30` |
+| 10 / 11 | *(sub-estado: tem a cenoura?)* | na noite seguinte, o canteiro dá a cenoura (item-chave) | `Route30` |
+| 10 → 12 | **Ato 6 branco** | Glastrier capturado, com a Iceroot Carrot na bolsa | `IcePath_Depths` |
+| 11 → 13 | **Ato 6 escuro** | Spectrier capturado, com a Shaderoot Carrot na bolsa, de noite | `BurnedTower_B1F` |
+| 12 / 13 → 14 | **Ato 7** — A prova do Rei + Colheita Farta | noite, corcel na party | `Route30` |
+| 14 → 15 | **Epílogo** | manhã seguinte | `Route30` / `Route30_House` |
+
+**Estado final: 15.** Onde a rev1/rev2 dizem “estado 13”, leia 15; onde dizem
+“10 = Glastrier, 11 = Spectrier”, leia 12 e 13.
+
+#### Fim do Ato 5: as sementes
+
+Depois do “One horse. Choose.” da Laurel (§13.3):
+
+> **Peony:** Oi — why've I got seeds in me pocket? I haven't got pockets in this
+> coat. I checked. Twice.
+>
+> **Laurel:** ...Iceroot. And Shaderoot. My grandmother grew both. Never at once.
+> The white one won't go near the dark one's food. The dark one won't touch the
+> white one's.
+> One seed, in my patch. The horse comes for the carrot. Not for you. Remember that.
+>
+> **Peonia:** Carrots. A legendary horse. For CARROTS.
+>
+> **Peony:** Everyone likes a carrot, love.
+
+*O Calyrex comeu a Enigma: o canteiro da Laurel fica vazio (special
+`EmptyKingsPlot`). A escolha é feita **no canteiro**, não numa fala: ao interagir com
+ele em estado 9, `multichoice` com as duas sementes e “Not yet”. Nada muda até o
+jogador plantar.*
+
+> *(ao plantar)* You planted the {STR_VAR_1}. The cold soil seems to hold its breath.
+
+*Estado 10 (Iceroot) ou 11 (Shaderoot). As sementes **não** são itens: a escolha fica
+no estado. Na **noite seguinte**, o canteiro mostra a folha da cenoura; interagir
+dá o item-chave `ITEM_ICEROOT_CARROT` ou `ITEM_SHADEROOT_CARROT` (2 itens novos,
+`checkitemspace` não se aplica a item-chave). Sem a cenoura na bolsa, o corcel
+não aparece no mapa dele (`checkitem` no `ON_TRANSITION`, junto da `FLAG_TEMP`).*
+
+> **Laurel (manhã seguinte ao plantio):** You picked. Good. Don't tell me which. I'll
+> know when I see the leaves.
+
+**No Ato 6**, Pryce e Morty reconhecem a cenoura (substituem a primeira linha deles
+no §8.11):
+
+> **Pryce:** ...That smell. Iceroot. My mother fed it to the Mamoswine in the worst
+> winters. It calms the proud ones.
+>
+> **Morty:** Shaderoot. The spirits in this tower like the smell. So will he.
+
+*Captura: `removeitem` da cenoura, estado 12 ou 13. Fugiu, perdeu ou derrotou sem
+capturar: a cenoura fica, o corcel volta na próxima visita (retry do §8.1).*
+
+#### Peony e Peonia hóspedes (estados 9–14)
+
+Chegaram no Ato 5 e **ficam na casa do Bram** até o epílogo. Entram na rotina:
+
+| Período | Peony | Peonia |
+|---|---|---|
+| Manhã | **Horta**, “ajudando” o Bram (derruba o regador; §14.4 K) | Casa, na mesa, com a Laurel |
+| Dia | Casa, **dormindo no sofá** (fuso de Galar) | Na entrada do mapa escolhido (§13.3, Ato 6), se a cenoura já saiu; senão na horta com a Laurel |
+| Noite | Casa, sofá: **o Calyrex fala por ele dormindo** (§14.4 M) | Casa, arrumando a mochila |
+
+Orçamento da manhã: 11 + Bram + Peony + jogador + follower = **15**. O Calyrex
+**não** fica mais no canteiro de noite nos estados 9–13 (a rev1 o deixava lá, com uma
+fala fixa): ele está “dentro” do Peony. Libera a vaga e cabe a Peonia nas cenas.
+
+Casa (`Route30_House`): +2 objetos (Peony, Peonia), com `FLAG_TEMP` pelo estado.
+
+#### Ato 7 — A prova do Rei (substitui a batalha do §8.12)
+
+Em Crown Tundra, o Rei testa o jogador pelo corpo do Peony. Aqui, **duas batalhas**:
+
+1. **A prova.** O Calyrex toma o Peony (flash, exclamação, plaquinha “Calyrex”) e
+   luta com o **time do Peony** (`TRAINER_HARVEST_KING_TRIAL`, classe e nome
+   “Calyrex”; front pic do Peony). **Sem blackout** (skill `batalha-sem-blackout`):
+   perdeu, tenta de novo na próxima noite; ganhou, segue.
+2. **O Rei.** Encontro fixo com o Calyrex (nível do §12, decisão 5). Só a captura
+   avança para o estado 14.
+
+> **Calyrex (pelo Peony):** You found him. Good. Now a king must know who carries
+> his harvest.
+> This one's Pokémon are strong, and very fond of him. They will fight for me
+> tonight. Forgive us both.
+>
+> *(vitória)* **Calyrex:** Yes. You are the one the field remembers.
+> *(flash; o Peony cai sentado)*
+> **Peony:** ...Did I win? I feel like I lost. Me Copperajah's looking at me funny.
+
+Depois da captura seguem as falas do §13.3 (“Grand! Absolutely grand!”) e o
+presente das Reins of Unity da Laurel (§8.12).
+
+#### A estátua de Freezington
+
+Em Crown Tundra o povo refaz a estátua do rei e ele volta a ter força. Aqui é a
+**carta do Freezington** que chega depois do epílogo (§14.4 O, carta 8), e o
+Calyrex sente de longe (§14.4 N, fala 6). Não custa nada e fecha o paralelo: a
+Laurel lembrou em Johto, e a vila dela lembrou em Galar.
+
+#### Quem é quem, agora
+
+| Personagem | SWSH | Rev 3 |
+|---|---|---|
+| **Peony** | Voz do Calyrex; dá as sementes; ex-Líder de Aço, irmão do Rose | Hóspede; o Rei fala por ele dormindo; a **prova do Ato 7** é com o time dele; batalha semanal depois (§14.5) |
+| **Peonia** | Filha do Peony, Max Lair | Hóspede; acompanha o Ato 6; ajudante da banquinha da Tilly; batalha e **dupla com a Tilly** (§14.5) |
+| **Freezington** | Vila que refaz a estátua | Terra da Laurel; cartas; a estátua refeita no pós-história |
+| **Honey e Mustard** | Mestres do Dojo | Cartas; o **Mustard aparece em pessoa**, raramente, e luta (§14.5) |
+| **Klara e Avery** | Rivais do Isle of Armor | Visitantes do dia a dia; batalha repetível (§14.5) |
+| **Sonia** | Lendas de Galar | Cartas |
+
+### 14.3 Como a horta fica viva
+
+**Rodízio de 10.** Cada evento repetitivo tem um banco de 10 falas. O índice é
+`VAR_DAYS % N`: a mesma fala o dia todo (como um aldeão de Harvest Moon), e nenhuma
+se repete antes de N dias. Um special genérico escolhe:
+
+```c
+// GardenLine_Pick: VAR_0x8004 = pool (GARDEN_POOL_*), VAR_0x8005 = hearts tier
+// returns in VAR_RESULT the line index 0..N-1 (N = 4, 7 or 10 by tier)
+```
+
+O script faz `switch VAR_RESULT` para os 10 `msgbox`. Nada de flag.
+
+**Corações (Harvest Moon).** Quatro personagens têm corações: **Bram, Laurel, Tilly e
+Peony**. Sobe 1 por **dia em que o jogador fala com ele** (uma vez por dia, bit em
+`VAR_GARDEN_TODAY`), até 15. As falas 1–4 valem sempre; 5–7 com **5 dias**; 8–10 com
+**12 dias** (as mais íntimas). O jogador sente o personagem se abrindo sem ver
+número nenhum. Os outros (Bugsy, Klara, Avery, Peonia, Calyrex, cartas, pragas,
+pedidos) rodam os 10 direto.
+
+```c
+// VAR_GARDEN_HEARTS: 4 bits por personagem (0..15)
+//   bits 0-3 Bram, 4-7 Laurel, 8-11 Tilly, 12-15 Peony
+// GardenHearts_Talk: VAR_0x8004 = personagem; soma 1 se ainda não falou hoje;
+//   devolve o tier (0, 1, 2) em VAR_RESULT
+```
+
+**Ordem de cada conversa** (a primeira que casar, ganha):
+
+1. Cena de história pendente (atos).
+2. **Reação de contexto** (tabelas “reações” em cada banco do §14.4 e §9.8): algo
+   aconteceu (cruzamento novo, marco do Livro, Klara levou um canteiro, Calyrex na
+   party…). Só na **primeira** conversa do dia com aquele personagem.
+3. Fala do rodízio.
+
+**A semana, com a rev3:**
+
+| Período | Seg–Sex | Sáb e Dom |
+|---|---|---|
+| Manhã | Bram na horta; Laurel em casa (café, cartas) | igual; Tilly em casa |
+| Dia | Laurel na horta; Bram em casa; Bugsy ter/qui; Avery sex (pós-história) | **Laurel em casa, dia de forno**; Tilly (+ Peonia, pós-história) na banquinha |
+| Noite | Bram dormindo; Laurel lendo | igual; Peony e Peonia acampados no lago (pós-história) |
+
+Eventos que **sorteiam** o dia (primeira entrada do dia na Route 30, special
+`GardenRollDay`, grava em `VAR_GARDEN_TODAY`):
+
+| Evento | Chance | Exclui |
+|---|---|---|
+| Assalto da Klara | 1 manhã em 7 (horta nível 2+ e algum canteiro maduro) | Mustard |
+| Visita do Mustard | 1 domingo em 4 (estado 15) | Klara |
+
+### 14.4 O banco de falas
+
+Tudo em inglês, em prosa (quebrar linha com `nomear-falante/medir_linha.py` ao
+escrever o `.inc`). Coluna ♥: **0** sempre, **1** com 5 dias de conversa, **2** com 12.
+
+#### A. Bram — manhã, na horta, depois do presente
+
+| # | ♥ | Fala |
+|---|---|---|
+| 1 | 0 | Water before the sun's up and the leaves won't burn. My father told me that. Then he watered at noon every day of his life. |
+| 2 | 0 | You know how you tell a ripe Berry? You don't. The Berry tells you. |
+| 3 | 0 | I talk to the trees. Laurel says it doesn't help. The trees haven't complained. |
+| 4 | 0 | Dew on the leaves, sprout. That's the garden saying good morning. Say it back. ...Out loud. There you go. |
+| 5 | 1 | My knees know the weather before the radio does. Today they say "sunny, with a chance of Bram sitting down." |
+| 6 | 1 | First tree I ever planted was an Oran. I was six. Watered it so much it drowned. Planted another right on top. That one's still out back. |
+| 7 | 1 | Kurt wants Berries again. I asked what for. He said "Balls." Then he hung up on me. |
+| 8 | 2 | You're here every morning now. Tilly asked if you live here. I said, "Near enough." |
+| 9 | 2 | When the garden was just me, I talked to the trees. Now I talk to you. The trees were better listeners. Don't tell them I said that. |
+| 10 | 2 | Laurel set out a third cup this morning. Didn't say a word about it. That one's yours, sprout. That's how she says it. |
+
+Reações (primeira conversa do dia; além das do §9.8):
+
+| Condição | Fala |
+|---|---|
+| terça ou quinta, estado ≥ 3 | Bugsy's coming today. He brought a notebook last time. The time before, two. |
+| domingo | Sunday! Tilly's selling out front. Buy something, or she'll follow you to Violet. |
+| a Klara levou um canteiro ontem | *(uma das 5 falas “Bram depois da Klara”, em I)* |
+| hóspedes em casa (estados 9–14) | Peony's "helping." He's knocked over the watering can three times. I've started filling it with less water. |
+
+#### B. Bram — de dia, em casa, separando sementes
+
+| # | ♥ | Fala |
+|---|---|---|
+| 1 | 0 | Seed day. Sit down. No — not on those. Those are Persim. |
+| 2 | 0 | I've got a seed here I can't name. Could be a Wiki. Could be a pebble. We'll find out. |
+| 3 | 0 | Every seed in this jar is a tree someday. Every one. That's what gets me up in the morning. That and Laurel. |
+| 4 | 0 | You sort seeds by size, then by shape, then by smell. Then Laurel comes in and sorts them all again. |
+| 5 | 1 | Forty years married. The trick is, she's always right, and I'm always hungry. |
+| 6 | 1 | When I was your age I wanted to be a Pokémon Trainer. Then I grew a tomato. That was that. |
+| 7 | 1 | Tilly asked why the sky is blue. I said, "Because the Oran Berries are." She believed me for a whole year. |
+| 8 | 2 | I wrote your name on the seed jar. Laurel crossed it out and wrote it again, neater. That's a compliment, sprout. From her, that's a medal. |
+| 9 | 2 | My old man said a farmer's rich if he's got more seed than worry. Most days I'm rich now. You helped. |
+| 10 | 2 | Want to know a secret? I don't know half the Berries in that Book. I just nod when Laurel says them. |
+
+#### C. Bram — de noite, dormindo
+
+Sem corações (sonho não tem intimidade): `random 10`.
+
+| # | Fala |
+|---|---|
+| 1 | Zzz... No, no, the Sitrus goes by the fence... |
+| 2 | Zzz... Laurel... there's a Combee in my hat... |
+| 3 | Zzz... Forty-one... forty-two... forty-three Pecha... |
+| 4 | Zzz... Kurt, you owe me for the Leppa... |
+| 5 | Zzz... Hm? The Book? ...Six more... zzz... |
+| 6 | Zzz... Tilly... that's not a Rellor... that's my breakfast... |
+| 7 | Zzz... biggest Oran in Johto... the judges are weeping... |
+| 8 | Zzz... sprout... water the... the... zzz... |
+| 9 | Zzz... Bugsy... put it down... that's the salt... |
+| 10 | *estado < 8:* Zzz... just one more row... · *8–14:* Zzz... it came up... it finally came up... · *15:* Zzz... Laurel... you're singing... |
+
+#### D. Laurel — de manhã, em casa (dias sem carta)
+
+| # | ♥ | Fala |
+|---|---|---|
+| 1 | 0 | Sit. Eat. The Berries can wait ten minutes. He can't, but they can. |
+| 2 | 0 | Toast. No, you don't want jam. That's Tilly's jam. Nobody wants Tilly's jam. |
+| 3 | 0 | He left at four. He always leaves at four. I stopped setting an alarm years ago. |
+| 4 | 0 | Wipe your feet. ...The other one too. |
+| 5 | 1 | The kettle's older than you. It whistles off-key. I won't replace it. |
+| 6 | 1 | He talks to the trees. I talk to the kettle. Everyone needs someone who doesn't answer back. |
+| 7 | 1 | Where I grew up, breakfast was fish and bread and more bread. This is better. Don't tell anyone I said so. |
+| 8 | 2 | You've got soil under your nails. Good. Hands that are too clean don't grow anything. |
+| 9 | 2 | Frost on the window. Not real frost. Johto frost. ...I miss real frost. That's all. Eat. |
+| 10 | 2 | I made too much. I always make too much now. ...Take it with you. |
+
+Reações:
+
+| Condição | Fala |
+|---|---|
+| a primeira das duas: Livro 66 **ou** estado 15 (`LaurelSaysName`) | Good morning, {PLAYER}. ...What? I know your name. I've always known your name. |
+| a segunda das duas | {PLAYER}. There. I'll say it twice now. Don't get used to it. |
+| sábado ou domingo, de dia (dia de forno) | Bread day. Don't open the oven. Don't look at the oven. The oven can feel you looking. |
+| hóspedes em casa (estados 9–14) | Peony ate four breakfasts. Peonia ate one and apologized for him four times. |
+
+*(sábado e domingo de dia a Laurel está em casa: usa o banco E, com a reação do forno
+na primeira conversa.)*
+
+#### E. Laurel — de dia (horta; em casa no fim de semana)
+
+| # | ♥ | Fala |
+|---|---|---|
+| 1 | 0 | Too much water. Not you. Him. |
+| 2 | 0 | Weeds are just plants in the wrong place. I'm not sentimental about it. |
+| 3 | 0 | You're standing on a sprout. ...No. The other foot. |
+| 4 | 0 | Tilly counts the money. I count the Berries. Neither of us trusts the other one. |
+| 5 | 1 | Freezington had one road and one shop. I liked it. Don't tell him. |
+| 6 | 1 | Plant the sour ones by the pond. They like wet feet. Like him. |
+| 7 | 1 | Forty years I've knelt in this dirt. My knees are Johto now. The rest of me hasn't decided. |
+| 8 | 2 | My grandmother kept a field. Harder soil than this. She'd have liked you. She didn't like anyone. |
+| 9 | 2 | You come every day. I noticed. I don't say things I notice. I'm saying this one. |
+| 10 | 2 | When I'm gone, this garden... No. Never mind. Pull that weed. |
+
+#### F. Laurel — de noite, a dica do caderno
+
+Buffers: `STR_VAR_1` = berry nova, `STR_VAR_2` e `STR_VAR_3` = pais
+(`BerryLedger_NextDiscovery` + `bufferitemname`). Sem corações: todo mundo recebe a
+dica, só o jeito muda.
+
+| # | Fala |
+|---|---|
+| 1 | {STR_VAR_1}. {STR_VAR_2} beside {STR_VAR_3}. Touching, side by side. Not corner to corner. People always do corner to corner. |
+| 2 | The page with the coffee stain. {STR_VAR_1}. You'll want {STR_VAR_2} next to {STR_VAR_3}. I'm not telling you twice. |
+| 3 | My grandmother's hand. Hard to read. ...{STR_VAR_2} and {STR_VAR_3}, side by side, and you get {STR_VAR_1}. Probably. |
+| 4 | You want something. Fine. {STR_VAR_1}. Plant {STR_VAR_2} by {STR_VAR_3}. Now let me read. |
+| 5 | Here. {STR_VAR_1}. {STR_VAR_2}, then {STR_VAR_3} right beside it. Don't crowd them. They sulk. |
+| 6 | He'd tell you this with a song and a dance. I'll just tell you. {STR_VAR_2} next to {STR_VAR_3}. That's {STR_VAR_1}. |
+| 7 | {STR_VAR_1}. I grew one once, in a teacup, on a windowsill in Freezington. {STR_VAR_2} and {STR_VAR_3}. Side by side. |
+| 8 | It says here: "{STR_VAR_2} and {STR_VAR_3}, touching, make {STR_VAR_1}." Somebody underlined it three times. It was me. |
+| 9 | Sit. No, closer, the lamp's bad. {STR_VAR_1}. {STR_VAR_2} beside {STR_VAR_3}. There. Go to bed. |
+| 10 | You're still up. So am I. {STR_VAR_1}: {STR_VAR_2} with {STR_VAR_3}. ...I'll tell you tomorrow, if you forget. |
+
+Sem descoberta possível (Livro completo, ou nenhum par pronto):
+
+| Condição | Fala |
+|---|---|
+| Livro completo | Nothing left in here you haven't grown. I don't know whether to be proud or bored. |
+| nenhum par com os dois pais no Livro | Nothing for you tonight. Grow what you've got. The book isn't going anywhere. |
+
+#### G. Tilly — fim de semana, de dia, na banquinha (antes da loja)
+
+| # | ♥ | Fala |
+|---|---|---|
+| 1 | 0 | Welcome to Tilly's Mulch Emporium! It's mulch. It's the best mulch. Grandpa made it but I named it. |
+| 2 | 0 | Do you know what Rellor do with mulch? They ROLL it. I'm going to have ten Rellor. Grandma said one. |
+| 3 | 0 | Today's special is mulch! Yesterday's special was ALSO mulch. It's a very special shop. |
+| 4 | 0 | I named a Combee Buzzbelle. She stung Grandpa. Now she's Buzzbelle the Brave. |
+| 5 | 1 | Grandma says a good shopkeeper doesn't talk too much. Grandma's wrong about that. Grandma's wrong about ONE thing. |
+| 6 | 1 | Buy three mulch and you get a sticker! I'm out of stickers. You get a high five. Up top! |
+| 7 | 1 | I'm going to be a Bug Catcher. The best one. Better than Bugsy. Don't tell Bugsy. Actually, tell him. He'll laugh. |
+| 8 | 2 | Grandpa lets me water the Pecha. Grandma watches me water the Pecha. I think she thinks I'll drown it. |
+| 9 | 2 | You come every weekend! That makes you a regular. Regulars get the good mulch. It's the same mulch. But I SAY it's good. |
+| 10 | 2 | When I grow up I'll have a garden next to Grandpa's. And you can have one next to mine. And we'll share the bugs. |
+
+Reações (substituem as situações do §9.6): inseto na party (“Is that a {STR_VAR_1}?!
+Can I hold it? I'm holding it.”), depois do Ato 2, depois do Ato 7 e Livro completo,
+como estão lá.
+
+#### H. Bugsy — terça e quinta, na horta (estado ≥ 3)
+
+| # | Fala |
+|---|---|
+| 1 | Every color of Berry calls a different bug. I've got a chart. It's twelve pages. |
+| 2 | Try Stable Mulch on one bed. Watch what moves in. You'll love him. |
+| 3 | Don't swat anything! Everything here is somebody's data. |
+| 4 | A Volbeat's tail blinks in patterns. I think this one's saying "more Berries." Or it's broken. |
+| 5 | I've started lying down in the dirt. Bugs are less shy at eye level. Laurel hates it. |
+| 6 | The Scatterbug here have a wing pattern I've never seen. Your garden is making its own Vivillon! |
+| 7 | My Gym Trainers keep asking where I go on Tuesdays. I say "fieldwork." They think it's a date. |
+| 8 | Combee visit one flower at a time. Your red beds get the morning shift. The yellow beds get the afternoon. |
+| 9 | Kurt says bugs are a waste of good Berries. Then he asks me what bait catches a Heracross. Every time. |
+| 10 | When I was little I had a garden like this. Well, a flowerpot. Well, a flowerpot with one Caterpie in it. This is better. |
+
+Reações: as do §9.7 (hotel pronto, os 8 exclusivos, depois do Ato 7).
+
+#### I. Klara — o assalto da manhã
+
+Abertura (10):
+
+| # | Fala |
+|---|---|
+| 1 | Oopsie! Didn't see you there, hun~ These are for my channel. "Top 10 Johto Snacks — Number 7 Will SHOCK You." |
+| 2 | Shh! I'm live! ...Hi, besties! Today we're foraging! Foraging means taking. Don't tell anyone~ |
+| 3 | Oh, it's YOU. The Berry police. Ugh, fine. Arrest me. In battle. Cutely. |
+| 4 | These Pecha are, like, SO pink. My followers need them. It's basically charity. |
+| 5 | I'm not stealing, hun. I'm "sourcing locally." It's a whole trend. |
+| 6 | Don't look at me like that! I left a thank-you note! ...It says "thx." It counts! |
+| 7 | My Slowbro's hungry. And when she's hungry she's mean. Like me! Hehe~ |
+| 8 | You again?! Do you, like, LIVE in this garden? Get a hobby. Oh wait. This is your hobby. Cringe. |
+| 9 | New video idea: "I Battled a Farmer for Snacks!" You're the farmer. Smile! |
+| 10 | Okay, okay. Final offer: I take ONE bed, you get a shout-out. ...No? Fine. Battle me, hun~ |
+
+Ela perde (5) · ela ganha e leva um canteiro (5) · o Bram na conversa seguinte (5):
+
+| # | Klara perde | Klara ganha | Bram depois |
+|---|---|---|---|
+| 1 | Ugh, FINE. Keep your dumb Berries. ...Can I at least keep one Pecha? No? Rude. So rude. | Thanks for the content, hun! Like and subscribe~ | That girl again. Laurel says she's got a Slowbro greener than my Wepear. |
+| 2 | That footage is SO getting deleted. | Ooh, this one's heavy! Must be the good stuff. Byeee~ | She took the WHOLE bed? ...Well. It'll grow back. Everything grows back. That's the nice thing about Berries. |
+| 3 | My ring light was in my eyes. That's why. Obviously. | Tell the old man I said hi! Actually, don't. | She left a note. "thx." With a heart. Laurel's framing it. Out of spite, I think. |
+| 4 | Whatever! Berries have, like, carbs anyway. | Harvest complete! Klara out~ | When I was a boy we had a word for her kind. The word was "Tuesday." Don't ask. |
+| 5 | You're lucky I'm nice. I'm not nice. You're just lucky. | Don't cry, hun. You can grow more. That's, like, what plants DO. | You chased her off? Ha! Sprout, you're a real farmer now. Farmers have enemies. |
+
+*(a coluna “Bram depois” toca a do mesmo número da última fala da Klara; a 5ª só se o
+jogador venceu)*
+
+#### J. Avery — sextas, de dia, no canteiro da Laurel (estado 15)
+
+| # | Fala |
+|---|---|
+| 1 | Ahem. O King of Bountiful Harvest. It is I, Avery, psychic prodigy. ...He is not answering. The patch is not answering me. |
+| 2 | Perhaps the king prefers a quieter mind. I shall be quieter. ...Starting tomorrow. |
+| 3 | My Slowpoke understands me. Why can't a vegetable monarch? |
+| 4 | I have brought an offering. It is a scone. Mother made it. |
+| 5 | Klara says I'm talking to a garden. I am COMMUNING. There is a difference. |
+| 6 | I sense... great power. Oh. It's you. Hello. You may go. |
+| 7 | I bent a spoon for the king. As tribute. Laurel took it for the kitchen. |
+| 8 | The Master says the strongest mind is an empty one. I've been practicing. It's very hard for someone as gifted as I am. |
+| 9 | The king spoke to ME once. Well. It was a sneeze. But a very meaningful sneeze. |
+| 10 | I came to Johto to train. Also because Klara came. Not BECAUSE of Klara. Coincidence. ...Psychics don't believe in coincidence. Forget I said that. |
+
+Reação (Calyrex na party): **Laurel:** It's a patch of dirt, dear. The king's in
+{PLAYER}'s bag. · **Avery:** I KNEW that. *(a cena do §13.4, agora só quando é
+verdade)*
+
+#### K. Peony — manhã na horta (hóspede) e noites de fim de semana no lago (pós-história)
+
+| # | ♥ | Fala |
+|---|---|---|
+| 1 | 0 | Peony here! Johto's grand, chum. The stars are the same as back home, just a bit to the left. |
+| 2 | 0 | Did I ever tell you about the time I fell in a frozen lake looking for the white horse? Came out a Peony-sicle! Worth it! |
+| 3 | 0 | Me Copperajah's asleep by the pond. Snores like a steam train. Tilly thinks it's a monster. It IS a monster! A lovely one! |
+| 4 | 0 | You know what they call me in Freezington? "That loud one." Ha! Fair! |
+| 5 | 1 | My big brother Rose tried to buy Freezington once. The whole village. The Mayor sold him a hat and sent him home. |
+| 6 | 1 | I was a Gym Leader once, y'know! Steel types! ...Then I quit. Rose was ever so cross. Best day of me life. |
+| 7 | 1 | The king still talks through me sometimes. In me sleep. Peonia says I say "carrots" a lot. |
+| 8 | 2 | Auntie Laurel pulled me out of a tree once. I was eight. Up there three hours. She never asked why. Brought me a sandwich. |
+| 9 | 2 | When I was a lad, Auntie told us the king would come back if someone grew a garden for him. We thought it was a bedtime story. Shows what we knew! |
+| 10 | 2 | Chum... thanks. For Auntie. She hasn't smiled this much since... well. Since ever, honestly. Ha! |
+
+Hóspede de manhã (estados 9–14), antes do rodízio, na primeira conversa do dia:
+*“Peony here! Bram's put me on watering duty. I've watered the path, the fence, and
+Bram. The Berries are next!”* A fala 7 só vale no estado 15.
+
+#### L. Peonia — hóspede de manhã em casa; banquinha no fim de semana (pós-história)
+
+| # | Fala |
+|---|---|
+| 1 | Peonia here! ...Why is everyone in Johto so calm? It's suspicious. |
+| 2 | Dad got lost going to the Pokémon Center. It's across the road. He went the long way. Through the pond. |
+| 3 | Tilly's hired me. I'm "Assistant Mulch Manager." I get paid in Berries. Mostly Pecha. Mostly bitten. |
+| 4 | Back home I do Dynamax Adventures. Here I carry mulch. Honestly? Mulch is harder. |
+| 5 | Don't tell Dad, but I think Johto's prettier than Galar. Don't tell Galar either. |
+| 6 | Grandpa Bram — he said I could call him that — taught me how to tell a ripe Berry. You don't. The Berry tells you. I think he made that up. |
+| 7 | Dad cries at everything. He cried at a sunset on the boat. It was a normal sunset. |
+| 8 | Auntie Laurel's the only one who can tell Dad "no" and make it stick. I'm studying her technique. |
+| 9 | I'm training for a real expedition someday. Not Dad's kind. The kind with maps. |
+| 10 | Thanks for taking me along, back then. I was scared. I'm telling you that once. Only once. |
+
+*(nos estados 9–13, só 1, 2, 4, 5 e 7: as outras dependem da história acabada)*
+
+#### M. O Calyrex pelo Peony dormindo (estados 9–13, noite, sofá)
+
+Plaquinha `NAME_CALYREX`; antes da fala, `Common_Movement_ExclamationMark` no Peony.
+
+| # | Fala |
+|---|---|
+| 1 | ...Peony is sleeping. I am not. Do not be alarmed. I will return him by morning. |
+| 2 | The Berry your Laurel grew... I can still taste it. Forty years of patience, in one fruit. |
+| 3 | The white one was proud. The black one was lonely. Either will do. Neither will come easily. |
+| 4 | In the old days, whole villages brought me their harvest. Now one old woman, one old man, and you. It is enough. It is more than enough. |
+| 5 | This one's dreams are very loud. He is dreaming of a sandwich. It is an enormous sandwich. |
+| 6 | The land here is young. It remembers little. But it remembers you — every morning you came, every seed. That is how a field learns. |
+| 7 | Laurel sings in her sleep. She does not know. I will not tell her. Neither will you. |
+| 8 | When I was strong, I did not need to borrow. Now I borrow. Thank this one for me. He will not remember. |
+| 9 | A king is only what his people remember. Your Book... it is a kind of remembering. |
+| 10 | Go and sleep. Farmers wake early. Even kings know that. |
+
+#### N. O Calyrex na party, no canteiro da Laurel (estado 15, noite)
+
+Interagir com o canteiro de noite com o Calyrex na party, antes do menu de berry:
+
+| # | Fala |
+|---|---|
+| 1 | This field has grown fond of you. So have I. |
+| 2 | Leave the Enigma here. I like to know where it is. |
+| 3 | The steed wants to run. Let him, sometime. |
+| 4 | Bram talks to the trees. They do listen. I would know. |
+| 5 | Tilly asked me if I am a turnip. I said yes. It seemed kind. |
+| 6 | In Freezington they have mended my statue. I felt it, all the way here. It tickled. |
+| 7 | When you are old, grow something. It does not matter what. |
+| 8 | I have eaten three Pecha tonight. A king may do as he likes. |
+| 9 | The bugs of this garden are very well fed. Your Bugsy is a good steward. |
+| 10 | Thank you. I do not say it enough. Kings rarely do. |
+
+*(a 6 só depois da carta 8 do banco O ter sido lida — ou sempre no estado 15, se não
+quiser amarrar)*
+
+#### O. As cartas da manhã (a Laurel lê à mesa; a partir do Ato 4)
+
+Segunda, quarta, sexta e domingo, no lugar da fala do banco D. Carta = `VAR_DAYS % 10`;
+se a carta sorteada ainda não pode (coluna “Desde”), vale a fala do banco D.
+
+| # | De | Desde | Carta |
+|---|---|---|---|
+| 1 | Honey | Ato 4 | "The students ate every Berry you sent in one sitting. Mustard says his knees are fine. They are not." |
+| 2 | Freezington | Ato 4 | "The whole village read your letter. The Mayor wants to know if Johto sells carrots." |
+| 3 | Honey | Ato 4 | "Mustard asks if your husband can arm wrestle. Please say no. He will fly over." P.S., in different handwriting: "I would win." |
+| 4 | Sonia | Ato 5 | "The King of Bountiful Harvest is chapter nine of my book! May I visit? I'll bring Yamper. He's very polite. He is not polite." |
+| 5 | Honey | Ato 4 | "I tried your Pecha jam. It exploded. Mustard ate it off the ceiling." |
+| 6 | Freezington | Ato 4 | "Snow's up to the windows. The children built a snow Laurel. It's frowning. It's very accurate." |
+| 7 | Kurt | Ato 4 | "Berries arrived. Some bruised. Send more. — K." **Laurel:** From Kurt, that's a love letter. |
+| 8 | Freezington | estado 15 | "We mended the old statue in the square. Nobody remembers who suggested it. The Mayor cried. So did the statue, a bit, when the ice melted." |
+| 9 | Honey | estado 15 | "Mustard has taken up gardening. He planted one seed and named it. He talks to it. I hear you know the type." |
+| 10 | Sonia | Ato 5 | "Leon says hello. Well — Leon got lost on the way to the post office, so I'm saying it for him." |
+
+#### P. A praga aparece (só nos canteiros da horta)
+
+Troca o “A Pokémon appeared!” de `BerryTree_EventScript_EncounterPests`
+(`data/scripts/berry_tree.inc:458`) por um sorteio de 10 — só em `IsBerryGardenTree`;
+fora da horta fica o texto do motor. Narração, sem plaquinha.
+
+| # | Fala |
+|---|---|
+| 1 | Something is nibbling at the leaves! |
+| 2 | The branches are shaking... there's a bug in this tree! |
+| 3 | A tiny face peeks out from between the Berries! |
+| 4 | Crunch. Crunch. Crunch. Somebody's having breakfast! |
+| 5 | A trail of bitten leaves leads straight into the tree! |
+| 6 | The whole tree is buzzing! |
+| 7 | Something drops out of the branches, hugging a Berry! |
+| 8 | Two little eyes are glowing between the leaves! |
+| 9 | Someone got here before you — and they're still here! |
+| 10 | The Berries are moving. Berries shouldn't move. |
+
+#### Q. O pedido do dia — quem pede
+
+`STR_VAR_1` = berry no plural (`bufferitemnameplural`), `STR_VAR_2` = quantidade
+(`buffernumberstring`). O cliente é o índice do rodízio; o pedido em si continua
+sorteado do Livro (§6).
+
+| # | Cliente | Fala |
+|---|---|---|
+| 1 | Kurt | Kurt called. Wants {STR_VAR_2} {STR_VAR_1}. Said "by tomorrow." Kurt thinks everything's by tomorrow. |
+| 2 | Floricultura de Goldenrod | The girls at the Goldenrod flower shop want {STR_VAR_2} {STR_VAR_1} for the window. Pretty ones, they said. As if I grow ugly ones. |
+| 3 | Nurse de Cherrygrove | Nurse in Cherrygrove's running low. {STR_VAR_2} {STR_VAR_1}. For the patients, she says. For her tea, I say. |
+| 4 | Moomoo Farm | Moomoo Farm's Miltank have gone off their feed. {STR_VAR_2} {STR_VAR_1} ought to fix that. |
+| 5 | Day Care | The Day Care couple want {STR_VAR_2} {STR_VAR_1}. The babies love them. The old man loves them more. |
+| 6 | Bugsy *(estado ≥ 3; senão cai no 1)* | Bugsy wants {STR_VAR_2} {STR_VAR_1}. "For bait," he says. The bait always gets eaten by Bugsy. |
+| 7 | Teatro de Ecruteak | Letter from Ecruteak. The dance theater wants {STR_VAR_2} {STR_VAR_1}. Those Kimono Girls eat like Snorlax, I'm told. |
+| 8 | Farol de Olivine | The lighthouse in Olivine. {STR_VAR_2} {STR_VAR_1}, for the Ampharos. That Ampharos eats better than I do. |
+| 9 | Escola de Violet | The teacher at the Violet school wants {STR_VAR_2} {STR_VAR_1} for a lesson. Kids learn more from a Berry than a book, I say. |
+| 10 | Laurel | Laurel wants {STR_VAR_2} {STR_VAR_1}. She won't say why. She never says why. Just bring them. |
+
+Entrega (rodízio de 5, mesmo índice % 5):
+
+| # | Fala |
+|---|---|
+| 1 | That's the lot! Here's your pay. Don't spend it all on mulch. Spend some of it on mulch. |
+| 2 | Look at the size of these! They'll think I grew them. I'll let them. |
+| 3 | Perfect. You pick 'em better than I do now. Don't tell anyone. |
+| 4 | Right on time. Kurt'll be furious. He likes being disappointed. |
+| 5 | Good work, sprout. That's a farmer's money. Earned in dirt. |
+
+#### R. O presente da manhã (o Bram dá as berries do Livro)
+
+| # | Fala |
+|---|---|
+| 1 | Morning, sprout! Picked these at dawn. Still cold. That's how you know they're good. |
+| 2 | Here. From the Book. Grow 'em well. |
+| 3 | Hold out your hands. No — both hands. There. |
+| 4 | These practically jumped into the basket. Take 'em before they jump out. |
+| 5 | Laurel said give you the good ones. These are the good ones. The bad ones I ate. |
+| 6 | Fresh as the morning! Which it is. Morning, I mean. |
+| 7 | Something for your beds, and something for your pocket, in case you get hungry. |
+| 8 | Wrote these down in the Book twice. Big day for these ones. |
+| 9 | Eh? Oh! Almost forgot. Here. Don't tell Tilly, she'll want a cut. |
+| 10 | For you. Same as every day. Tomorrow too. That's a promise, sprout. |
+
+#### S. Mustard — a visita rara (domingo de manhã, 1 em 4, estado 15)
+
+Ele aparece na horta ao lado do Bram, sem avisar. Rodízio de 5 (visitas raras).
+
+| # | Fala |
+|---|---|
+| 1 | Hmhm! So YOU'RE the one Honey keeps writing about! The berries are real! I thought she was making it up to get me to exercise! |
+| 2 | Bram! Arm wrestle! ...No? Then I'll arm wrestle your student. With Pokémon. It's the same thing. |
+| 3 | My knees? Perfect! Never better! ...Could I sit down for a moment? Just a small moment. |
+| 4 | I told my students, "Go to Johto and learn humility from a garden." None of them went. So I came myself! |
+| 5 | Laurel! Honey sends her love, and a jar of jam. It hasn't exploded yet. Stand back, just in case. |
+
+### 14.5 As batalhas de sempre
+
+Todas seguem o padrão do Nexus (`data/scripts/nexus.inc`, macro `nexus_fight`):
+`cleartrainerflag` antes e depois, `B_FLAG_NO_WHITEOUT` só durante a batalha,
+resultado em `GetBattleOutcome`. **Perder não custa nada** (exceto o assalto da
+Klara, que leva o canteiro). **Uma por dia por NPC** (bit em `VAR_GARDEN_TODAY`);
+prêmio só na vitória. Nível pela escala do repo (`src/level_scaling.c`, como a Klara
+da rev2). Proposta: macro `garden_fight` em `data/scripts/berry_garden.inc`, cópia da
+`nexus_fight`.
+
+| NPC | Quando | Onde | Desde | Time (rodízio `VAR_DAYS % 3`) | Prêmio |
+|---|---|---|---|---|---|
+| **Tilly** | sáb e dom, dia | banquinha | estado 1 | Os insetos que ela batizou (abaixo). Tamanho pelo **nível da horta**, não pelo rodízio | 2 adubos da loja dela |
+| **Tilly + Peonia** (dupla, `trainerbattle_two_trainers`) | sáb e dom, dia | banquinha | estado 15 | 2 da Tilly + 2 da Peonia | 1 Surprise Mulch |
+| **Bugsy** | ter e qui, dia | horta | Ato 1c (estado 4) | Vermelho: Ledian, Heracross, Beautifly · Azul: Orbeetle, Volbeat, Galvantula · Rosa/verde: Ribombee, Vivillon, Leavanny — sempre com o Scizor | 3 berries do Livro |
+| **Klara** | manhã sorteada (§14.3) | horta | nível 2 da horta | Galarian Slowbro sempre + (Skuntank, Galarian Weezing) · (Salazzle, Toxapex) · (Toxicroak, Glimmora) | salva o canteiro; na 5ª vitória, o gancho do mochi (§13.4) |
+| **Avery** | sex, dia | canteiro da Laurel | estado 15 | Galarian Slowking sempre + (Alakazam, Swoobat) · (Espathra, Gardevoir) · (Bronzong, Hatterene) | 1 berry rara do Livro |
+| **Peony** | estados 9–14: manhã, horta · 15: sáb e dom, noite, lago | horta / lago | Ato 5 | Copperajah sempre + (Aggron, Bronzong) · (Excadrill, Perrserker) · (Corviknight, Duraludon) | 1 Exp. Candy M *(conferir no `SOULGOLD_ITEMS_AUDIT.md`)* |
+| **Peonia** | estado 15: sáb e dom, noite, lago (escolhe “Dad” ou “Me”) | lago | estado 15 | Gelo de Freezington: Mr. Rime sempre + (Frosmoth, Eiscue) · (Galarian Darmanitan, Arctozolt) · (Cetitan, Glalie) | 2 adubos |
+| **Mustard** | domingo sorteado, manhã | horta | estado 15 | Luxray, Corviknight, Cloyster, Kommo-o, Sirfetch'd, Galarian Rapidash — **sem Urshifu** (lendário: regra R1 do `NEXUS_REGRAS.md`) | 1 item grande *(o autor escolhe)* |
+
+**O time da Tilly** (Bug Catcher; apelidos no `trainers.party`). São os insetos que só
+existem na horta (§7.1), então ela é o primeiro lugar onde o jogador **vê** um deles:
+
+| Nível da horta | Time |
+|---|---|
+| 1–2 | Rellor “Mr. Roly”, Combee “Buzzbelle” |
+| 3–4 | + Dwebble “Pebbles”, Wurmple “Squiggles” |
+| 5 | Rabsca “Mr. Roly”, Vespiquen “Buzzbelle”, Crustle “Pebbles”, Beautifly “Squiggles”, Vivillon “Sprinkles”, Illumise “Twinkle” |
+
+**Falas das batalhas** (abertura · derrota do NPC · depois, se falar de novo no dia):
+
+| NPC | Abertura | Derrota | Já lutou hoje |
+|---|---|---|---|
+| Tilly | Battle time! My bugs have names, so they're stronger. That's science. | NOOO! Mr. Roly! ...He's fine. He's rolling. He's fine. | Mr. Roly needs a nap. Come back tomorrow! He'll be ready. I'll be READIER. |
+| Tilly + Peonia | **Tilly:** Team Mulch! **Peonia:** We are NOT calling it that. **Tilly:** Team Mulch!! | **Peonia:** Okay. We can call it Team Mulch. | **Tilly:** Team Mulch is resting. **Peonia:** Team Mulch is eating all the Pecha. |
+| Bugsy | Field test! I want to see how garden-raised bugs do against a real trainer. For science! | Fascinating! They lost, but they lost in a very well-documented way. | I'm still writing up the last one. Twelve pages so far. |
+| Avery | The king ignores me. You will not. Behold — a psychic prodigy! | Hmph. I was holding back. Out of courtesy. To the vegetables. | My mind is exhausted. I am resting it. By talking. Leave. |
+| Peony | Peony here! Fancy a scrap, chum? Me and Copperajah haven't had a proper one since Galar! | Ha! GRAND! Knocked me flat and I loved every second! | Once a day, chum. Me back's not what it was. Me front neither. |
+| Peonia | Dad talks. I battle. Let's go! | ...Okay. You're good. Don't tell Dad I said that. | Rematch tomorrow. I'm writing down everything you did. |
+| Mustard | Hmhm! Let's see what the garden taught you! Master Mustard, ready! | Wonderful! Wonderful! My knees hurt, but WONDERFUL! | I've had my fun! Now I'll have my nap. Bram said I can use his chair. |
+
+### 14.6 Estado diário e custos (substitui o daily do §10 e do §13.6)
+
+```c
+// FLAG_DAILY_GARDEN_NEW_DAY: 1 flag diaria (DAILY_FLAGS_START + 0x32, hoje FLAG_UNUSED_0x952 do bloco DAILY)
+// VAR_GARDEN_TODAY (0x4127): zerada por GardenRollDay quando a flag acima esta limpa
+//   bit 0  pedido sorteado          bit 8  lutou com Peony
+//   bit 1  pedido entregue          bit 9  lutou com Peonia / dupla
+//   bit 2  horta regada (nivel 3)   bit 10 Mustard vem hoje
+//   bit 3  Klara vem hoje           bit 11 lutou com Mustard
+//   bit 4  Klara resolvida          bit 12 falou com Bram   (coracao)
+//   bit 5  lutou com Tilly          bit 13 falou com Laurel (coracao)
+//   bit 6  lutou com Bugsy          bit 14 falou com Tilly  (coracao)
+//   bit 7  lutou com Avery          bit 15 falou com Peony  (coracao)
+// Specials: GardenRollDay, GardenToday_Check / GardenToday_Set (VAR_0x8004 = bit)
+```
+
+| Recurso | Qtd | O quê |
+|---|---|---|
+| Flag diária | **1** (era 5) | `FLAG_DAILY_GARDEN_NEW_DAY` |
+| Var | +3 | `VAR_GARDEN_TODAY`, `VAR_GARDEN_HEARTS`, `VAR_GARDEN_RIVALS` (vitórias da Klara; o resto livre) em `0x4127..0x4129` — conferir com a skill `alocar-flag` antes |
+| `VAR_HARVEST_KING` | 0..15 | era 0..13 (§14.2) |
+| Itens novos | 2 | `ITEM_ICEROOT_CARROT`, `ITEM_SHADEROOT_CARROT` (item-chave) |
+| Treinadores | 20 | Tilly ×3, Peonia ×3 (+1 da dupla), Bugsy ×3, Klara ×3, Avery ×3, Peony ×3, Mustard ×1, `TRAINER_HARVEST_KING_TRIAL` ×1 |
+| Plaquinhas | +1 | `NAME_MUSTARD` (as outras já estão no §10 e no §13.6) |
+| Sprites (o autor providencia) | +1 | Mustard (overworld + front pic); os de Peony, Peonia, Klara e Avery servem também às fichas do Nexus (`.claude/rift_missions/nexus/galar/`) |
+| Objetos `Route30_House` | +2 | Peony e Peonia (estados 9–14) |
+| C | pequeno | `GardenLine_Pick`, `GardenHearts_Talk`, `GardenRollDay`, `GardenToday_Check/Set`, `EmptyKingsPlot` |
+| Texto | ~230 falas | §14.4 + §14.5; `nomear-falante` para medir |
+
+### 14.7 Decisões do autor (rev 3)
+
+| # | Pergunta | Recomendação |
+|---|---|---|
+| 1 | A escolha pelo **tipo de cenoura** (Crown Tundra) em vez de ir a um dos dois mapas | Sim: a escolha fica explícita e irreversível, e casa com SWSH |
+| 2 | Peony e Peonia **hóspedes** até o epílogo, e o Rei falando pelo Peony dormindo | Sim |
+| 3 | Prova do Ato 7 com o **time do Peony** tomado pelo Rei, antes do Calyrex | Sim, sem blackout |
+| 4 | Corações (5 e 12 dias) liberando as falas mais íntimas | Sim; invisível para o jogador |
+| 5 | Laurel em casa no fim de semana (dia de forno) | Sim: resolve o orçamento e varia a rotina |
+| 6 | Mustard em pessoa, raro, e sem Urshifu | Sim |
+| 7 | Prêmios das batalhas | Leves (adubo, berries do Livro); o autor fecha os itens grandes |
