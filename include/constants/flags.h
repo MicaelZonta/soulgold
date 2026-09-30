@@ -1941,8 +1941,18 @@
 // achievements. Upstream numbers it 0x1041, which here is FLAG_NO_CATCHING;
 // moved to the next free slot when upstream was merged (28/09/2026).
 #define FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE 0x1052
-#define CUSTOM_FLAGS_END                            FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE
-// PROXIMA FLAG NOVA: 0x1053 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Berry Master's Book of Berries (.claude/berry_master/REI_DA_COLHEITA.md
+// section 3): one flag per Berry, in item order, set when the player HARVESTS
+// that Berry from any tree (garden or route); buying one never registers it.
+// The flag of a Berry is FLAG_BERRY_LEDGER_START + (item - FIRST_BERRY_INDEX),
+// so the block must stay contiguous: 67 flags, ITEM_CHERI_BERRY (514) ..
+// ITEM_MARANGA_BERRY (580); the e-Reader Enigma (581) has no entry. Written by
+// BerryLedger_Register (src/berry.c) and by the end of Bram's tutorial (the 8
+// starting Berries); read by the other BerryLedger_* specials.
+#define FLAG_BERRY_LEDGER_START                     0x1053 // Cheri Berry
+#define FLAG_BERRY_LEDGER_END                       0x1095 // Maranga Berry (67 flags)
+#define CUSTOM_FLAGS_END                            FLAG_BERRY_LEDGER_END
+// PROXIMA FLAG NOVA: 0x1096 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 
@@ -2023,7 +2033,11 @@
 // been reset for today. Set by RollOverIfNewDay (src/nexus.c) the first time
 // the Nexus is touched on a day; cleared by ClearDailyFlags at the date change.
 #define FLAG_DAILY_NEXUS_NEW_DAY                    (DAILY_FLAGS_START + 0x31) // VAR_NEXUS_DAILY already reset today (src/nexus.c RollOverIfNewDay)
-#define FLAG_UNUSED_0x952                           (DAILY_FLAGS_START + 0x32) // Unused Flag
+// Berry Master's garden (.claude/berry_master/REI_DA_COLHEITA.md section 14.6):
+// VAR_GARDEN_TODAY has been reset for today. Set by GardenRollDay the first
+// time Route 30 or the Berry Master's house is entered on a day; cleared by
+// ClearDailyFlags at the date change. Same pattern as FLAG_DAILY_KURT_NEW_DAY.
+#define FLAG_DAILY_GARDEN_NEW_DAY                   (DAILY_FLAGS_START + 0x32) // VAR_GARDEN_TODAY already reset today (GardenRollDay)
 #define FLAG_UNUSED_0x953                           (DAILY_FLAGS_START + 0x33) // Unused Flag
 #define FLAG_UNUSED_0x954                           (DAILY_FLAGS_START + 0x34) // Unused Flag
 #define FLAG_UNUSED_0x955                           (DAILY_FLAGS_START + 0x35) // Unused Flag

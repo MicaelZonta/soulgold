@@ -388,6 +388,26 @@
 // when upstream was merged (28/09/2026).
 #define VAR_FOLLOWER_MEGA_OFF                           0x4125
 #define VAR_SHINY_RATE                                  0x4126
+// Berry Master's garden on Route 30 and the "Harvest King" sidequest
+// (.claude/berry_master/REI_DA_COLHEITA.md; work order in
+// .claude/berry_master/PLANO_DE_IMPLEMENTACAO.md).
+// What happened in the garden today: 16 one-day bits (section 14.6), reset
+// by GardenRollDay when FLAG_DAILY_GARDEN_NEW_DAY is found clear.
+#define VAR_GARDEN_TODAY                                0x4127
+// Hearts (days the player talked to them), 4 bits each: Bram, Laurel, Tilly,
+// Peony from the low nibble up (section 14.3). Written by GardenHearts_Talk.
+#define VAR_GARDEN_HEARTS                               0x4128
+// Wins against Klara in the morning raids (section 14.5).
+#define VAR_GARDEN_RIVALS                               0x4129
+// Garden level 1..5 (section 5); 0 until Bram's tutorial is done.
+#define VAR_BERRY_GARDEN_LEVEL                          0x412A
+// Today's order from Bram: which Berry and how many (section 6).
+#define VAR_BERRY_ORDER                                 0x412B
+// "Harvest King" sidequest state 0..15 (sections 8.1 and 14.2).
+#define VAR_HARVEST_KING                                0x412C
+// Last Book of Berries milestone Bram already paid: 0, 12, 20, 30, 40, 50, 60
+// or 66 (section 3.4). Keeps a prize from being given twice.
+#define VAR_BERRY_LEDGER_MILESTONE                      0x412D
 
 #define ALTAR_STEP_NONE           0  // nothing pending inside the current state
 #define ALTAR_STEP_DUEL_DONE      1  // (13) duel resolved; agreement + test pending (never re-fight)

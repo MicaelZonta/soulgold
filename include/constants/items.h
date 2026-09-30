@@ -1121,6 +1121,10 @@ enum __attribute__((packed)) Item
     // SoulGold: lets Mom dress Pikachu in its cosplay outfits and caps
     ITEM_PIKACHU_COSPLAY_KIT = 934,
 
+    // SoulGold: steed carrots grown in Laurel's plot (berry_master/REI_DA_COLHEITA.md 14.2)
+    ITEM_ICEROOT_CARROT = 935,
+    ITEM_SHADEROOT_CARROT = 936,
+
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,
 };

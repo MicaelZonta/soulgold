@@ -28,7 +28,7 @@
 
 | # | Parte | Entrega jogável | Depende de |
 |---|---|---|---|
-| 1 | Alocação e fundação | constantes, vars, flags, plaquinhas, itens; nada visível | — |
+| 1 | Alocação e fundação ✅ 30/09 | constantes, vars, flags, plaquinhas, itens; nada visível | — |
 | 2 | A horta física | 10 canteiros + canteiro da Laurel na Route 30; plantar, regar, colher | 1 |
 | 3 | Livro de Berries | colher registra; o Bram só dá berries do Livro; marcos | 1, 2 |
 | 4 | Cruzamento completo | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
@@ -112,6 +112,68 @@ qualquer script. Nada muda no jogo.
 
 **Pronto quando:** build limpo; `checar_falantes.py` ok; o diff do CSV só mostra o
 bloco novo.
+
+### Parte 1 — feita (30/09/2026)
+
+**O que entrou**
+
+| O quê | Onde | Valor |
+|---|---|---|
+| Livro de Berries | `include/constants/flags.h` | `FLAG_BERRY_LEDGER_START 0x1053` (Cheri, item 514) .. `FLAG_BERRY_LEDGER_END 0x1095` (Maranga, 580); `CUSTOM_FLAGS_END` aponta para o END; próxima flag nova `0x1096` |
+| Flag diária | `flags.h`, bloco DAILY | `FLAG_DAILY_GARDEN_NEW_DAY` = `DAILY_FLAGS_START + 0x32` (`0x153A`), no lugar do `FLAG_UNUSED_0x952` do bloco diário |
+| Vars | `include/constants/vars.h` | `VAR_GARDEN_TODAY 0x4127`, `VAR_GARDEN_HEARTS 0x4128`, `VAR_GARDEN_RIVALS 0x4129`, `VAR_BERRY_GARDEN_LEVEL 0x412A`, `VAR_BERRY_ORDER 0x412B`, `VAR_HARVEST_KING 0x412C`, `VAR_BERRY_LEDGER_MILESTONE 0x412D`; próxima var livre `0x412E` |
+| IDs de árvore | `include/constants/berry.h` | `BERRY_TREE_GARDEN_A1..A6` = 5..10, `_B1..B4` = 11..14, `BERRY_TREE_KINGS_PLOT` = 15; `GARDEN_FIRST` = A1, `GARDEN_LAST` = **B4** |
+| Plaquinhas | os 3 arquivos, índices `00 55`..`00 60` (2 bytes) | `NAME_BERRY_MASTER`, `_LAUREL`, `_TILLY`, `_CALYREX`, `_PEONY`, `_PEONIA`, `_KLARA`, `_AVERY`, `_MUSTARD`, `_MOLLY`, `_TOMO`, **`_UNKNOWN` (“???”)** |
+| Itens-chave | `include/constants/items.h`, `src/data/items.h` | `ITEM_ICEROOT_CARROT 935`, `ITEM_SHADEROOT_CARROT 936`; ícone e paleta do Big Root nas duas (provisório) |
+| Catálogos | `docs/` | `SOULGOLD_FLAGS_AUDIT.csv`, `SOULGOLD_ITEMS_AUDIT.csv/.md` regenerados |
+
+**Onde a Parte 1 divergiu do plano, e por quê**
+
+1. **`VAR_BERRY_LEDGER_MILESTONE` já alocada** (pendência 7 do §18, na recomendação
+   “var própria”). Custa uma var e deixa a Parte 3 sem decisão pendente. Guarda o
+   último marco **pago** (0, 12, 20 … 66), não um índice.
+2. **Pendência 6 fechada:** vars novas em `0x4127..`, nenhum `VAR_GIFT_UNUSED` reciclado.
+3. **O canteiro da Laurel fica fora de `GARDEN_FIRST..LAST`.** A faixa cobre só os 10
+   canteiros (5..14); `KINGS_PLOT` é o 15, logo depois. Motivo: praga, erva e a rega
+   automática do nível 3 seguem a horta, e o canteiro da Laurel segue a história (uma
+   praga em cima da Enigma no Ato 4 quebraria a cena). Se o autor quiser o contrário,
+   é trocar `GARDEN_LAST` para `BERRY_TREE_KINGS_PLOT`, uma linha.
+4. **Plaquinha “???” genérica** (`SP_NAME_UNKNOWN`), e não uma “Calyrex ???”: a skill
+   não tinha o padrão, e qualquer personagem que ainda não se apresentou pode usar.
+   Na troca de nome no meio da cena, `{SPEAKER NAME_UNKNOWN}` → `{SPEAKER NAME_CALYREX}`.
+5. **Descrição das cenouras** (texto provisório, o autor pode trocar):
+   “A carrot grown from / a seed of the Crown / Tundra. Icy cold.” e “… Pitch black.”
+   Medidas contra as descrições que já existem (a maior tem ~108 px; a nossa, 103 px).
+
+**O que as próximas partes precisam saber**
+
+- **O `flag_audit` não enxerga as 65 flags do meio do Livro.** Elas não têm nome
+  próprio (o C calcula `START + (item − FIRST_BERRY_INDEX)`), então o catálogo só lista
+  `FLAG_BERRY_LEDGER_START` e `_END`, hoje como `SO_EM_DOC`. O “pronto quando” da
+  Parte 3 (“as 67 como lidas e escritas pelo C”) **não vai aparecer no CSV**: a
+  prova lá é o teste no jogo e um `STATIC_ASSERT(FLAG_BERRY_LEDGER_END -
+  FLAG_BERRY_LEDGER_START + 1 == ITEM_MARANGA_BERRY - FIRST_BERRY_INDEX + 1)` em
+  `src/berry.c`, que a Parte 3 deve pôr junto do `BerryLedger_Register`.
+- **`FLAG_DAILY_GARDEN_NEW_DAY` já sai `EM_USO` no catálogo** (0 leituras, 0 escritas)
+  porque o `ClearDailyFlags` limpa o bloco inteiro. Não é sinal de que alguém a usa.
+- **As cenouras estão `SEM FONTE`** no catálogo de itens até a Parte 13.
+- **Os dois catálogos estavam atrasados** antes desta parte. O de flags tinha 10
+  linhas com contagem de docs velha (`FLAG_SYS_NO_CATCHING` passou de
+  `SO_MAPAS_FORA_DA_ROM` para `SO_ESCRITA` só por isso). O de itens tinha sido gerado
+  por uma versão antiga do `item_audit.py` (sem as colunas `display_name`,
+  `out_camp_detail`, `trainer_held_only`), então o diff dele é o arquivo inteiro; foi
+  regravado com CRLF, como estava. Por isso os catálogos foram para um commit separado.
+- **Plaquinhas em 2 bytes.** No mesmo dia o índice de `{SPEAKER ...}` passou a 2 bytes
+  e o jogo inteiro foi convertido para plaquinha (commit dos falantes, logo antes
+  deste). As 12 da horta ficaram em `00 55`..`00 60`; `checar_falantes.py` dá
+  “241 falantes, tudo em ordem”. Falante novo agora entra por
+  `.claude/skills/nomear-falante/adicionar_falante.py`, não à mão.
+- Os IDs 5..15 só aparecem em `Route103/104/123`, todos `fora da ROM`
+  (`map_graph.py info`), e nenhum está em `sNaturalBerriesByTreeId` nem em
+  `EventScript_ResetAllBerries`. Um save antigo não tem nada gravado neles.
+
+**Teste no jogo:** nada muda no jogo nesta parte. O build limpo prova os asserts do
+save (`global.h`, `save.c`). A primeira coisa visível é a Parte 2.
 
 ---
 
@@ -601,5 +663,7 @@ relógio contando objetos.
 | 3 | Falas novas dos 3 moradores de Greenfield no estado 12 | Parte 14 | o agente propõe, o autor aprova |
 | 4 | Time do Sábio Tomo | Parte 15 | o agente propõe |
 | 5 | Greenfield com outro desenho (mais flores, fonte no meio)? | Parte 14 | o protótipo aprovado |
-| 6 | Vars novas em `0x4127..` ou reciclar `VAR_GIFT_UNUSED_5..7` | Parte 1 | vars novas |
-| 7 | Onde guardar o “último marco do Livro pago” | Parte 3 | var própria |
+| 6 | ~~Vars novas em `0x4127..` ou reciclar `VAR_GIFT_UNUSED_5..7`~~ | — | **fechada na Parte 1:** vars novas `0x4127..0x412D` |
+| 7 | ~~Onde guardar o “último marco do Livro pago”~~ | — | **fechada na Parte 1:** `VAR_BERRY_LEDGER_MILESTONE` (`0x412D`) |
+| 8 | Canteiro da Laurel fora das regras da horta (sem praga, erva nem rega automática)? | Parte 10 | fora (`GARDEN_LAST` = B4); ver “Parte 1 — feita” |
+| 9 | Descrição e ícone das cenouras | nada | texto provisório + ícone do Big Root |

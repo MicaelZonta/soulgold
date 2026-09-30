@@ -17673,6 +17673,39 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_Scarf,
         .iconPalette = gItemIconPalette_YellowScarf,
     },
+    // Icons borrowed from the Big Root until the carrots get their own art.
+    [ITEM_ICEROOT_CARROT] =
+    {
+        .name = ITEM_NAME("Iceroot Carrot"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A carrot grown from\n"
+            "a seed of the Crown\n"
+            "Tundra. Icy cold."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BigRoot,
+        .iconPalette = gItemIconPalette_BigRoot,
+    },
+    [ITEM_SHADEROOT_CARROT] =
+    {
+        .name = ITEM_NAME("Shaderoot Carrot"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A carrot grown from\n"
+            "a seed of the Crown\n"
+            "Tundra. Pitch black."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BigRoot,
+        .iconPalette = gItemIconPalette_BigRoot,
+    },
 };
 
 #undef ITEM_NAME
