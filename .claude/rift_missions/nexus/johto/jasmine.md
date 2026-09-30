@@ -326,6 +326,78 @@ Nexus_Text_Jasmine_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas para as **quatro primeiras salas** ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. A variação 1 é a de cima, que já está no jogo; o sorteio de qual variação toca ainda não existe no código.
+
+**Variação 2** — o remédio que ninguém trouxe. No fragmento dela, a criança que devia atravessar o mar com o remédio da Ampharos nunca veio, e ela aprendeu a remar (R21: brinca com o jogador sem depender dele).
+
+**Antes da luta**
+
+> …Um. Hello. Do you ever feel like someone was supposed to come, and didn't?
+>
+> Once, my Ampharos fell ill. I waited by the window for someone to cross the sea with medicine.
+>
+> Nobody came. So I learned to row. …I'm stronger than I look. Please, let's battle.
+
+**Derrota**
+
+> …You would have come. I can tell. Thank you anyway.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Jasmine_Intro2:
+	.string "…Um. Hello. Do you ever feel like someone\n"
+	.string "was supposed to come, and didn't?\p"
+	.string "Once, my Ampharos fell ill. I waited by\n"
+	.string "the window for someone to cross the\l"
+	.string "sea with medicine.\p"
+	.string "Nobody came. So I learned to row. …I'm\n"
+	.string "stronger than I look. Please, let's\l"
+	.string "battle.$"
+
+Nexus_Text_Jasmine_Defeat2:
+	.string "…You would have come. I can tell. Thank\n"
+	.string "you anyway.$"
+```
+
+</details>
+
+**Variação 3** — o aço quente. Humor tímido: ela explica como faz amigos do mesmo jeito que o aço esquenta na mão.
+
+**Antes da luta**
+
+> Um… may I tell you something? People think Steel Pokémon are cold to the touch.
+>
+> They're not. If you hold one long enough, it becomes exactly as warm as your hand.
+>
+> …That's how I make friends, too. Slowly. Shall we begin?
+
+**Derrota**
+
+> …Your hands must be very warm. My Pokémon liked you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Jasmine_Intro3:
+	.string "Um… may I tell you something? People\n"
+	.string "think Steel Pokémon are cold to the\l"
+	.string "touch.\p"
+	.string "They're not. If you hold one long\n"
+	.string "enough, it becomes exactly as warm as\l"
+	.string "your hand.\p"
+	.string "…That's how I make friends, too. Slowly.\n"
+	.string "Shall we begin?$"
+
+Nexus_Text_Jasmine_Defeat3:
+	.string "…Your hands must be very warm. My\n"
+	.string "Pokémon liked you.$"
+```
+
+</details>
+
 ### Diálogo associado ao lendário
 
 #### Lugia
@@ -385,6 +457,109 @@ Nexus_Text_Jasmine_Lugia_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário ([R16](../NEXUS_REGRAS.md)), sem dizer o nome da espécie. A variação 1 é a de cima, que já está no jogo.
+
+**Variação 2** — a pena prateada que subiu do redemoinho até a galeria do farol. Ela não sabe se é obrigado ou adeus; na derrota, decide. A pena some (fio do diário).
+
+**Antes da luta**
+
+> I found a feather on the gallery of the lighthouse. Silver, and cold, like a spoon left out at night.
+>
+> It must have come from the one below. It never comes up. But it left this, for the light.
+>
+> …Maybe it's saying thank you. Or maybe goodbye. Let's battle, and I'll decide.
+
+**Derrota**
+
+> …I think it was thank you.
+
+**Depois da luta**
+
+> I keep the feather in my pocket. It hums when the sea gets rough.
+>
+> If it hums while you're down there, please don't be afraid. It means the sea is listening.
+>
+> …Oh. And if the feather goes missing, it wasn't me. It does that.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Jasmine_Lugia_ChampionIntro2:
+	.string "I found a feather on the gallery of the\n"
+	.string "lighthouse. Silver, and cold, like a\l"
+	.string "spoon left out at night.\p"
+	.string "It must have come from the one below.\n"
+	.string "It never comes up. But it left this, for\l"
+	.string "the light.\p"
+	.string "…Maybe it's saying thank you. Or maybe\n"
+	.string "goodbye. Let's battle, and I'll decide.$"
+
+Nexus_Text_Jasmine_Lugia_ChampionDefeat2:
+	.string "…I think it was thank you.$"
+
+Nexus_Text_Jasmine_Lugia_ChampionAfter2:
+	.string "{SPEAKER NAME_JASMINE}I keep the feather in my pocket. It\n"
+	.string "hums when the sea gets rough.\p"
+	.string "If it hums while you're down there,\n"
+	.string "please don't be afraid. It means the\l"
+	.string "sea is listening.\p"
+	.string "…Oh. And if the feather goes missing, it\n"
+	.string "wasn't me. It does that.$"
+```
+
+</details>
+
+**Variação 3** — a dúvida: acordar a criatura é certo? A Jasmine faz um trato tímido: se ganhar, deixam dormir. Perde, e pede que o jogador bata como numa porta.
+
+**Antes da luta**
+
+> …Can I ask you something first? Do you have to wake it?
+>
+> It has slept down there so long that the whirlpool turns around it like a music box.
+>
+> I'll battle you. But if I win, you let it sleep. Is that fair?
+
+**Derrota**
+
+> …That's fair. You won. You may wake it.
+
+**Depois da luta**
+
+> Then please wake it gently. Knock, like on a door. Don't shout.
+>
+> When it opens its eyes, the first thing it will see is my light. I made sure of that.
+>
+> …That way it'll know someone was here. Someone kept watch.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Jasmine_Lugia_ChampionIntro3:
+	.string "…Can I ask you something first? Do you\n"
+	.string "have to wake it?\p"
+	.string "It has slept down there so long that\n"
+	.string "the whirlpool turns around it like a\l"
+	.string "music box.\p"
+	.string "I'll battle you. But if I win, you let it\n"
+	.string "sleep. Is that fair?$"
+
+Nexus_Text_Jasmine_Lugia_ChampionDefeat3:
+	.string "…That's fair. You won. You may wake it.$"
+
+Nexus_Text_Jasmine_Lugia_ChampionAfter3:
+	.string "{SPEAKER NAME_JASMINE}Then please wake it gently. Knock, like\n"
+	.string "on a door. Don't shout.\p"
+	.string "When it opens its eyes, the first thing\n"
+	.string "it will see is my light. I made sure of\l"
+	.string "that.\p"
+	.string "…That way it'll know someone was here.\n"
+	.string "Someone kept watch.$"
+```
+
+</details>
+
 #### Melmetal
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Jasmine_Melmetal_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -438,6 +613,108 @@ Nexus_Text_Jasmine_Melmetal_ChampionAfter:
 	.string "I think that creature knows. Things\n"
 	.string "break. Things come back. Please go\l"
 	.string "and meet it.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário ([R16](../NEXUS_REGRAS.md)), sem dizer o nome da espécie. A variação 1 é a de cima, que já está no jogo.
+
+**Variação 2** — as porquinhas que seguem a Jasmine pela forja. Humor: elas esperavam que ela fosse de ferro. A virada: a criatura é milhares de pedacinhos decidindo ser uma coisa só, como um Ginásio.
+
+**Antes da luta**
+
+> When I came in, three little hex nuts followed me. They rolled right behind my shoes.
+>
+> I think they were hoping I was made of iron. I'm sorry. I'm only a Gym Leader.
+>
+> …They're still behind me. Please be careful where you step. Let's begin.
+
+**Derrota**
+
+> …Oh. They've rolled over to you now.
+
+**Depois da luta**
+
+> They go wherever something strong is standing. I think that's how the big one is made.
+>
+> Thousands of little pieces, deciding to be one thing together.
+>
+> …My Gym is a bit like that. Please go. They're waiting to see what you're made of.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Jasmine_Melmetal_ChampionIntro2:
+	.string "When I came in, three little hex nuts\n"
+	.string "followed me. They rolled right behind my\l"
+	.string "shoes.\p"
+	.string "I think they were hoping I was made of\n"
+	.string "iron. I'm sorry. I'm only a Gym Leader.\p"
+	.string "…They're still behind me. Please be\n"
+	.string "careful where you step. Let's begin.$"
+
+Nexus_Text_Jasmine_Melmetal_ChampionDefeat2:
+	.string "…Oh. They've rolled over to you now.$"
+
+Nexus_Text_Jasmine_Melmetal_ChampionAfter2:
+	.string "{SPEAKER NAME_JASMINE}They go wherever something strong is\n"
+	.string "standing. I think that's how the big\l"
+	.string "one is made.\p"
+	.string "Thousands of little pieces, deciding to\n"
+	.string "be one thing together.\p"
+	.string "…My Gym is a bit like that. Please go.\n"
+	.string "They're waiting to see what you're\l"
+	.string "made of.$"
+```
+
+</details>
+
+**Variação 3** — a grade do farol que enferruja todo inverno e ela lixa e pinta toda primavera. A criatura não se conserta: se desfaz e confia nos pedaços. A Jasmine acha isso coragem que ela não tem.
+
+**Antes da luta**
+
+> The railing of my lighthouse rusts every winter. Every spring I sand it and paint it again.
+>
+> People say that's wasted work. I think it's the whole point.
+>
+> …I'd like to know what the one in the forge would say. Please, let's battle.
+
+**Derrota**
+
+> …I'll need a new coat of paint.
+
+**Depois da luta**
+
+> The one in the forge doesn't sand itself or paint itself. It just falls apart, and trusts the pieces.
+>
+> I'm not that brave. I paint the railing.
+>
+> …Please tell it I think it's brave. It probably won't care. Tell it anyway.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Jasmine_Melmetal_ChampionIntro3:
+	.string "The railing of my lighthouse rusts\n"
+	.string "every winter. Every spring I sand it and\l"
+	.string "paint it again.\p"
+	.string "People say that's wasted work. I think\n"
+	.string "it's the whole point.\p"
+	.string "…I'd like to know what the one in the\n"
+	.string "forge would say. Please, let's battle.$"
+
+Nexus_Text_Jasmine_Melmetal_ChampionDefeat3:
+	.string "…I'll need a new coat of paint.$"
+
+Nexus_Text_Jasmine_Melmetal_ChampionAfter3:
+	.string "{SPEAKER NAME_JASMINE}The one in the forge doesn't sand\n"
+	.string "itself or paint itself. It just falls\l"
+	.string "apart, and trusts the pieces.\p"
+	.string "I'm not that brave. I paint the railing.\p"
+	.string "…Please tell it I think it's brave. It\n"
+	.string "probably won't care. Tell it anyway.$"
 ```
 
 </details>

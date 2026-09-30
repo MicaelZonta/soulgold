@@ -322,6 +322,73 @@ Nexus_Text_Karen_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas para as **quatro primeiras salas** ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. A variação 1 é a de cima, que já está no jogo; o sorteio de qual variação toca ainda não existe no código.
+
+**Variação 2** — a lembrança do primeiro Pokémon dela: o que ninguém queria na Day-Care e mordia todo mundo. Lealdade é escolher parar de morder.
+
+**Antes da luta**
+
+> My first Pokémon was the one nobody wanted at the Day-Care. It bit everyone.
+>
+> It bit me too. Then it stopped. That's all loyalty is, really. Choosing to stop biting.
+>
+> …Mine won't stop for you, though. Come.
+
+**Derrota**
+
+> Hm. They stopped biting for you. Interesting.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Karen_Intro2:
+	.string "My first Pokémon was the one nobody\n"
+	.string "wanted at the Day-Care. It bit\l"
+	.string "everyone.\p"
+	.string "It bit me too. Then it stopped. That's\n"
+	.string "all loyalty is, really. Choosing to stop\l"
+	.string "biting.\p"
+	.string "…Mine won't stop for you, though. Come.$"
+
+Nexus_Text_Karen_Defeat2:
+	.string "Hm. They stopped biting for you.\n"
+	.string "Interesting.$"
+```
+
+</details>
+
+**Variação 3** — a máscara que ela jogou no mar. Alguém disse que ela a faria forte (as crianças mascaradas; o **Pryce** de outro fragmento). R21 com leveza.
+
+**Antes da luta**
+
+> I stay up late. Always have. The night doesn't ask you to be anything.
+>
+> Someone once gave me a mask and said it would make me strong. I threw it in the sea.
+>
+> I didn't need it. Let me show you why.
+
+**Derrota**
+
+> …Still didn't need it. Even losing.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Karen_Intro3:
+	.string "I stay up late. Always have. The night\n"
+	.string "doesn't ask you to be anything.\p"
+	.string "Someone once gave me a mask and said it\n"
+	.string "would make me strong. I threw it in the\l"
+	.string "sea.\p"
+	.string "I didn't need it. Let me show you why.$"
+
+Nexus_Text_Karen_Defeat3:
+	.string "…Still didn't need it. Even losing.$"
+```
+
+</details>
 
 ### Diálogo associado ao lendário
 
@@ -386,6 +453,111 @@ Nexus_Text_Karen_Darkrai_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário ([R16](../NEXUS_REGRAS.md)), sem dizer o nome da espécie. A variação 1 é a de cima, que já está no jogo.
+
+**Variação 2** — a pena da ilha da lua cheia (a Lunar Wing) que devia acordar a cidade e ninguém trouxe. Talvez ninguém deva: quem dorme perto da criatura não envelhece. Ela protege de algo pior que sonho (a Moltres de Galar, fio do diário).
+
+**Antes da luta**
+
+> Everyone here is asleep except me. I'm told that's rude. I'm told a lot of things.
+>
+> There's supposed to be a feather, from an island where the moon is always full. It wakes people.
+>
+> Nobody brought it. Maybe nobody should. Battle first.
+
+**Derrota**
+
+> …You're awake, at least. That makes two of us.
+
+**Depois da luta**
+
+> I asked it once why it won't let them wake. It didn't answer. It never does.
+>
+> But the ones who sleep near it don't grow any older. I checked. Every night.
+>
+> …Maybe it's protecting them from something worse than dreams. Go and ask it for me.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Karen_Darkrai_ChampionIntro2:
+	.string "Everyone here is asleep except me. I'm\n"
+	.string "told that's rude. I'm told a lot of\l"
+	.string "things.\p"
+	.string "There's supposed to be a feather, from\n"
+	.string "an island where the moon is always full.\l"
+	.string "It wakes people.\p"
+	.string "Nobody brought it. Maybe nobody should.\n"
+	.string "Battle first.$"
+
+Nexus_Text_Karen_Darkrai_ChampionDefeat2:
+	.string "…You're awake, at least. That makes two\n"
+	.string "of us.$"
+
+Nexus_Text_Karen_Darkrai_ChampionAfter2:
+	.string "{SPEAKER NAME_KAREN}I asked it once why it won't let them\n"
+	.string "wake. It didn't answer. It never does.\p"
+	.string "But the ones who sleep near it don't\n"
+	.string "grow any older. I checked. Every night.\p"
+	.string "…Maybe it's protecting them from\n"
+	.string "something worse than dreams. Go and\l"
+	.string "ask it for me.$"
+```
+
+</details>
+
+**Variação 3** — o Umbreon: os anéis brilham na lua, e aqui não há lua, então brilham sozinhos, como se ele fosse a lua de todo mundo. O escuro não é inimigo da luz; é onde a luz serve.
+
+**Antes da luta**
+
+> My Umbreon's rings glow under the moon. Here there's no moon, so they glow on their own.
+>
+> Faintly. Like it's trying to be the moon for everyone asleep in this town.
+>
+> That one out there does the opposite. It turns everything off. Let's see who's brighter.
+
+**Derrota**
+
+> …You. Tonight, anyway.
+
+**Depois da luta**
+
+> Dark isn't the enemy of light. It's where light gets to be useful.
+>
+> That one knows it. It's why it stays. Something has to be dark here.
+>
+> Go on. Take a little light with you. Not too much. It doesn't like being stared at.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Karen_Darkrai_ChampionIntro3:
+	.string "My Umbreon's rings glow under the moon.\n"
+	.string "Here there's no moon, so they glow on\l"
+	.string "their own.\p"
+	.string "Faintly. Like it's trying to be the moon\n"
+	.string "for everyone asleep in this town.\p"
+	.string "That one out there does the opposite.\n"
+	.string "It turns everything off. Let's see\l"
+	.string "who's brighter.$"
+
+Nexus_Text_Karen_Darkrai_ChampionDefeat3:
+	.string "…You. Tonight, anyway.$"
+
+Nexus_Text_Karen_Darkrai_ChampionAfter3:
+	.string "{SPEAKER NAME_KAREN}Dark isn't the enemy of light. It's\n"
+	.string "where light gets to be useful.\p"
+	.string "That one knows it. It's why it stays.\n"
+	.string "Something has to be dark here.\p"
+	.string "Go on. Take a little light with you. Not\n"
+	.string "too much. It doesn't like being stared\l"
+	.string "at.$"
+```
+
+</details>
+
 #### Galarian Moltres
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Karen_GalarianMoltres_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -442,6 +614,110 @@ Nexus_Text_Karen_GalarianMoltres_ChampionAfter:
 	.string "for its colour. It burned instead.\p"
 	.string "Be careful. Its fire takes the spirit,\n"
 	.string "not the body. Keep yours.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário ([R16](../NEXUS_REGRAS.md)), sem dizer o nome da espécie. A variação 1 é a de cima, que já está no jogo.
+
+**Variação 2** — o Houndoom: as pessoas recuam do fogo e fogem quando veem que é preto. A ave recebe o mesmo tratamento, pior. Depois: as árvores queimadas ficam de pé — o único fogo que não derruba nada. Mas ficar de pé não é viver.
+
+**Antes da luta**
+
+> My Houndoom breathes fire, and people back away. Then they see it's black, and they run.
+>
+> That bird gets the same treatment. Worse. In its own land, mothers use it to scare children.
+>
+> …I'd like a word with those mothers. You'll do for now.
+
+**Derrota**
+
+> Hm. You didn't run. My Houndoom noticed.
+
+**Depois da luta**
+
+> Look at the trees it burned. Still standing. Grey inside, but standing.
+>
+> People call that cruel. I think it's the only fire in the world that doesn't knock anything down.
+>
+> …Just don't stand in it too long. Standing isn't the same as living.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Karen_GalarianMoltres_ChampionIntro2:
+	.string "My Houndoom breathes fire, and people\n"
+	.string "back away. Then they see it's black,\l"
+	.string "and they run.\p"
+	.string "That bird gets the same treatment.\n"
+	.string "Worse. In its own land, mothers use it to\l"
+	.string "scare children.\p"
+	.string "…I'd like a word with those mothers.\n"
+	.string "You'll do for now.$"
+
+Nexus_Text_Karen_GalarianMoltres_ChampionDefeat2:
+	.string "Hm. You didn't run. My Houndoom noticed.$"
+
+Nexus_Text_Karen_GalarianMoltres_ChampionAfter2:
+	.string "{SPEAKER NAME_KAREN}Look at the trees it burned. Still\n"
+	.string "standing. Grey inside, but standing.\p"
+	.string "People call that cruel. I think it's the\n"
+	.string "only fire in the world that doesn't\l"
+	.string "knock anything down.\p"
+	.string "…Just don't stand in it too long.\n"
+	.string "Standing isn't the same as living.$"
+```
+
+</details>
+
+**Variação 3** — a confissão: a ave assusta a Karen, não por ser escura, mas porque olha como quem já sabe quanto você vale. Ela encarou de volta, e a ave desviou primeiro.
+
+**Antes da luta**
+
+> I'll admit something, since only the trees are listening. That bird scares me.
+>
+> Not because it's dark. Because it looks at you like it already knows what you're worth.
+>
+> …I don't like being measured. Let me measure you instead.
+
+**Derrota**
+
+> …You're worth plenty. There. Now you know.
+
+**Depois da luta**
+
+> It measured me when I arrived. It stared. I stared back, for a long time.
+>
+> Then it looked away. First time anything has ever looked away from me first.
+>
+> Go and stare it down. Don't blink. It respects that. So do I.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Karen_GalarianMoltres_ChampionIntro3:
+	.string "I'll admit something, since only the\n"
+	.string "trees are listening. That bird scares\l"
+	.string "me.\p"
+	.string "Not because it's dark. Because it looks\n"
+	.string "at you like it already knows what\l"
+	.string "you're worth.\p"
+	.string "…I don't like being measured. Let me\n"
+	.string "measure you instead.$"
+
+Nexus_Text_Karen_GalarianMoltres_ChampionDefeat3:
+	.string "…You're worth plenty. There. Now you\n"
+	.string "know.$"
+
+Nexus_Text_Karen_GalarianMoltres_ChampionAfter3:
+	.string "{SPEAKER NAME_KAREN}It measured me when I arrived. It\n"
+	.string "stared. I stared back, for a long time.\p"
+	.string "Then it looked away. First time anything\n"
+	.string "has ever looked away from me first.\p"
+	.string "Go and stare it down. Don't blink. It\n"
+	.string "respects that. So do I.$"
 ```
 
 </details>
