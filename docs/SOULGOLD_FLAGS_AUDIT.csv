@@ -39,7 +39,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x21,33,FLAG_SYS_NO_ENCOUNTER,SCRIPT/EVENT,EM_USO,0,0,2,,GLOBAL(codigo),Unused Flag //DEBUG
 0x22,34,FLAG_SYS_NO_TRAINER_SEE,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag //DEBUG
 0x23,35,FLAG_SYS_NO_BAG_USE,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag //DEBUG
-0x24,36,FLAG_SYS_NO_CATCHING,SCRIPT/EVENT,SO_MAPAS_FORA_DA_ROM,0,20,4,,,NAO USE: nada le esta flag. Para desligar captura use B_FLAG_NO_CATCHING (include/config/battle.h). Auditoria 7.2
+0x24,36,FLAG_SYS_NO_CATCHING,SCRIPT/EVENT,SO_ESCRITA,0,20,6,,GLOBAL(codigo),NAO USE: nada le esta flag. Para desligar captura use B_FLAG_NO_CATCHING (include/config/battle.h). Auditoria 7.2
 0x25,37,FLAG_SYS_PC_FROM_DEBUG_MENU,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag //DEBUG
 0x26,38,FLAG_ARCEUS_EGG_GIVE,SCRIPT/EVENT,EM_USO,2,2,3,GoldenrodCity_RadioTower_2F,MAPA_UNICO:GoldenrodCity_RadioTower_2F,
 0x27,39,FLAG_SYS_NO_BATTLE_DMG,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag //DEBUG
@@ -623,8 +623,8 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x268,616,FLAG_MET_FRONTIER_ELEMENTAL_MOVE_TUTOR,SCRIPT/EVENT,EM_USO,3,3,3,SaffronCity_FightingDojoVIP;TrainerHill_Courtyard,MULTI_MAPA(2),HnSFLAGS SPILLOVER
 0x269,617,FLAG_HIDE_WHIRL_ISLANDS_KIMONO_GIRLS,SCRIPT/EVENT,EM_USO,0,6,5,EcruteakCity;EcruteakCity_Theater;WhirlIslands_LugiaChamber,MULTI_MAPA(3),Set after compelted legendary event
 0x26A,618,FLAG_HIDE_TIN_TOWER_KIMONO_GIRLS,SCRIPT/EVENT,EM_USO,0,6,6,EcruteakCity;EcruteakCity_Theater;TinTower_RoofDay;TinTower_RoofNight,MULTI_MAPA(4),Set after completing legendary event
-0x26B,619,FLAG_NIGHT_POKEMON,SCRIPT/EVENT,EM_USO,4,6,73,AzaleaTown;BattleFactoryGrounds;BellchimeTrail;BlackthornCity,GLOBAL(codigo),Set at day to hide nighttime overworld pokemon
-0x26C,620,FLAG_DAY_POKEMON,SCRIPT/EVENT,EM_USO,19,6,51,BellchimeTrail;CeladonCity_Apartments_RoofDay;CeladonCity_DepartmentStore_RoofDay;CinnabarIsland,GLOBAL(codigo),Set at night to hide daytime overworld pokemon
+0x26B,619,FLAG_NIGHT_POKEMON,SCRIPT/EVENT,EM_USO,4,6,74,AzaleaTown;BattleFactoryGrounds;BellchimeTrail;BlackthornCity,GLOBAL(codigo),Set at day to hide nighttime overworld pokemon
+0x26C,620,FLAG_DAY_POKEMON,SCRIPT/EVENT,EM_USO,19,6,52,BellchimeTrail;CeladonCity_Apartments_RoofDay;CeladonCity_DepartmentStore_RoofDay;CinnabarIsland,GLOBAL(codigo),Set at night to hide daytime overworld pokemon
 0x26D,621,FLAG_DEFEATED_PEWTER_GYM,SCRIPT/EVENT,EM_USO,2,1,2,PewterCity_Gym,GLOBAL(codigo),KANTO GYM LEADER FLAGS
 0x26E,622,FLAG_DEFEATED_CERULEAN_GYM,SCRIPT/EVENT,EM_USO,2,1,2,CeruleanCity_Gym,GLOBAL(codigo),
 0x26F,623,FLAG_DEFEATED_VERMILION_GYM,SCRIPT/EVENT,EM_USO,2,1,2,VermilionCity_Gym,GLOBAL(codigo),
@@ -1334,7 +1334,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x94F,2383,FLAG_KITAKAMIMOUNTAIN_ITEM5,RECLAIMED_TRAINER,EM_USO,0,0,1,KitakamiMountain4F,MAPA_UNICO:KitakamiMountain4F,
 0x950,2384,FLAG_KITAKAMIMOUNTAIN_ITEM6,RECLAIMED_TRAINER,EM_USO,0,0,2,KitakamiMountain4F,MAPA_UNICO:KitakamiMountain4F,
 0x951,2385,FLAG_RECEIVED_FOCUS_SASH,RECLAIMED_TRAINER,EM_USO,2,2,2,Kitakami_Temple_TrainingRoom,MAPA_UNICO:Kitakami_Temple_TrainingRoom,
-0x952,2386,FLAG_TM_SLEEP_TALK,RECLAIMED_TRAINER,EM_USO,0,0,1,Kitakami_Temple_Bedroom,MAPA_UNICO:Kitakami_Temple_Bedroom,
+0x952,2386,FLAG_TM_SLEEP_TALK,RECLAIMED_TRAINER,EM_USO,0,0,3,Kitakami_Temple_Bedroom,MAPA_UNICO:Kitakami_Temple_Bedroom,
 0x953,2387,FLAG_OBTAINED_OGERPON_MASKS,RECLAIMED_TRAINER,EM_USO,2,2,2,Kitakami_Temple_Storage,MAPA_UNICO:Kitakami_Temple_Storage,
 0x954,2388,FLAG_ITEM_PROTECTOR,RECLAIMED_TRAINER,EM_USO,0,0,1,Kitakami_Temple_Storage,MAPA_UNICO:Kitakami_Temple_Storage,
 0x955,2389,FLAG_ITEM_CHOICESPECS,RECLAIMED_TRAINER,EM_USO,0,0,1,FoggyShore2,MAPA_UNICO:FoggyShore2,
@@ -1396,11 +1396,11 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x98D,2445,FLAG_SYS_POKEDEX_GET,SYSTEM,EM_USO,19,5,13,CherrygroveCity;Route30_MrPokemonsHouse,GLOBAL(codigo),
 0x98E,2446,FLAG_SYS_POKENAV_GET,SYSTEM,EM_USO,6,3,3,NewBarkTown_PlayersHouse_1F,GLOBAL(codigo),
 0x98F,2447,FLAG_STARTED_SEASONAL_PERFUME_QUEST,SYSTEM,EM_USO,3,1,3,GoldenrodCity_FlowerShop;NewBarkTown_PlayersHouse_1F,MULTI_MAPA(2),Mom noticed Deerling/Sawsbuck's coat and mentioned the Flower Shop's perfume
-0x990,2448,FLAG_SYS_GAME_CLEAR,SYSTEM,EM_USO,36,2,23,BattleFrontier_ExchangeServiceCorner;CianwoodCity;GoldenrodCity_BikeShop;Route30_House,GLOBAL(codigo),
+0x990,2448,FLAG_SYS_GAME_CLEAR,SYSTEM,EM_USO,36,2,26,BattleFrontier_ExchangeServiceCorner;CianwoodCity;GoldenrodCity_BikeShop;Route30_House,GLOBAL(codigo),
 0x991,2449,FLAG_SYS_CHAT_USED,SYSTEM,EM_USO,1,1,2,,GLOBAL(codigo),
 0x992,2450,FLAG_UNLOCKED_TRENDY_SAYINGS,SYSTEM,EM_USO,2,1,2,,GLOBAL(codigo),
 0x993,2451,FLAG_BADGE01_GET,SYSTEM,EM_USO,2,8,19,VioletCity_Gym,GLOBAL(codigo),
-0x994,2452,FLAG_BADGE02_GET,SYSTEM,EM_USO,3,4,9,AzaleaTown_Gym,GLOBAL(codigo),
+0x994,2452,FLAG_BADGE02_GET,SYSTEM,EM_USO,3,4,10,AzaleaTown_Gym,GLOBAL(codigo),
 0x995,2453,FLAG_BADGE03_GET,SYSTEM,EM_USO,13,4,14,GoldenrodCity_FlowerShop;GoldenrodCity_Gym;Route36,GLOBAL(codigo),
 0x996,2454,FLAG_BADGE04_GET,SYSTEM,EM_USO,12,4,16,AzaleaTown_Mart;EcruteakCity_Gym;GoldenrodCity_FlowerShop;RuinsOfAlph_Lab,GLOBAL(codigo),
 0x997,2455,FLAG_BADGE05_GET,SYSTEM,EM_USO,8,2,13,BattleFrontier_ExchangeServiceCorner;BlackthornCity;CianwoodCity;CianwoodGym,GLOBAL(codigo),
@@ -1666,7 +1666,9 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x104F,4175,FLAG_CHERRYGROVE_UB_ENGAGED,CUSTOM,EM_USO,6,4,4,CherrygroveCity,MAPA_UNICO:CherrygroveCity,
 0x1050,4176,FLAG_NEWBARK_UB_ENGAGED,CUSTOM,EM_USO,16,4,6,NewBarkTown;NewBarkTown_Lab,MULTI_MAPA(2),
 0x1051,4177,FLAG_NEXUS_RULES_EXPLAINED,CUSTOM,EM_USO,1,1,3,Nexus,MAPA_UNICO:Nexus,
-0x1052,4178,FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE,CUSTOM,EM_USO,3,4,5,,GLOBAL(codigo),
+0x1052,4178,FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE,CUSTOM,EM_USO,3,4,6,,GLOBAL(codigo),
+0x1053,4179,FLAG_BERRY_LEDGER_START,CUSTOM,SO_EM_DOC,0,0,2,,,Cheri Berry
+0x1095,4245,FLAG_BERRY_LEDGER_END,CUSTOM,SO_EM_DOC,0,0,2,,,Maranga Berry (67 flags)
 0x1500,5376,FLAG_0x1500,LIVRE,NUNCA_REFERENCIADA,0,0,0,,,
 0x1508,5384,FLAG_ROUTE32_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route32,MAPA_UNICO:HiddenGrotto_Route32,
 0x1509,5385,FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY,DAILY,EM_USO,2,2,1,,GLOBAL(codigo),
@@ -1681,7 +1683,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1512,5394,FLAG_DAILY_PICKED_LOTO_TICKET,DAILY,EM_USO,2,2,2,GoldenrodCity_RadioTower_1F,MAPA_UNICO:GoldenrodCity_RadioTower_1F,
 0x1513,5395,FLAG_DAILY_ROUTE_114_RECEIVED_BERRY,DAILY,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
 0x1514,5396,FLAG_DAILY_ROUTE_111_RECEIVED_BERRY,DAILY,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
-0x1515,5397,FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY,DAILY,EM_USO,1,1,2,Route30_House,MAPA_UNICO:Route30_House,
+0x1515,5397,FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY,DAILY,EM_USO,1,1,4,Route30_House,MAPA_UNICO:Route30_House,
 0x1516,5398,FLAG_DAILY_ROUTE_120_RECEIVED_BERRY,DAILY,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
 0x1517,5399,FLAG_DAILY_LILYCOVE_RECEIVED_BERRY,DAILY,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
 0x1518,5400,FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY,DAILY,EM_USO,2,2,2,GoldenrodCity_FlowerShop,MAPA_UNICO:GoldenrodCity_FlowerShop,
@@ -1708,17 +1710,17 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x152D,5421,FLAG_DAILY_BATTLE_CAFE_RUSH_WON,DAILY,EM_USO,2,2,2,BattleCafe,MAPA_UNICO:BattleCafe,
 0x152E,5422,FLAG_DAILY_BATTLE_CAFE_SUPER_RUSH_WON,DAILY,EM_USO,4,2,2,BattleCafe,MAPA_UNICO:BattleCafe,
 0x152F,5423,FLAG_DAILY_BATTLE_CAFE_SUPER_CHALLENGE_WON,DAILY,EM_USO,4,2,2,BattleCafe,MAPA_UNICO:BattleCafe,
-0x1530,5424,FLAG_GOT_GROOMED,DAILY,EM_USO,1,2,2,NewBarkTown_PlayersHouse_1F,GLOBAL(codigo),"Mom's Grooming service, once per day"
+0x1530,5424,FLAG_GOT_GROOMED,DAILY,EM_USO,1,3,2,NewBarkTown_PlayersHouse_1F,GLOBAL(codigo),"Mom's Grooming service, once per day"
 0x1531,5425,FLAG_UNUSED_0x949,DAILY,NUNCA_REFERENCIADA,0,0,0,,,"Unused Flag. Era FLAG_DAILY_ALTAR_RIFT; livre desde 27/09/2026: a fenda virou a entrada do Nexus, aberta o dia todo (NEXUS_REGRAS R3)"
 0x1532,5426,FLAG_DAILY_REMATCH_LUSAMINE,DAILY,EM_USO,1,1,2,SunMoonAltar,MAPA_UNICO:SunMoonAltar,"Lusamine rematch at the altar, once a day"
 0x1533,5427,FLAG_DAILY_REMATCH_KUKUI,DAILY,EM_USO,2,2,3,CherrygroveCity,MAPA_UNICO:CherrygroveCity,Kukui rematch on the Cherrygrove beach
 0x1534,5428,FLAG_DAILY_REMATCH_LILLIE,DAILY,EM_USO,2,2,3,CherrygroveCity,MAPA_UNICO:CherrygroveCity,Lillie rematch on the Cherrygrove beach
 0x1535,5429,FLAG_DAILY_REMATCH_GLADION,DAILY,EM_USO,1,1,2,CianwoodCity,MAPA_UNICO:CianwoodCity,Gladion rematch in Cianwood
-0x1536,5430,FLAG_DAILY_KURT_NEW_DAY,DAILY,EM_USO,2,2,5,AzaleaTown_KurtsHouse,GLOBAL(codigo),VAR_KURT_TODAY has been reset for today
+0x1536,5430,FLAG_DAILY_KURT_NEW_DAY,DAILY,EM_USO,2,2,8,AzaleaTown_KurtsHouse,GLOBAL(codigo),VAR_KURT_TODAY has been reset for today
 0x1537,5431,FLAG_DAILY_LOOKER_CALL,DAILY,EM_USO,1,9,13,BlackthornCity;CherrygroveCity;Mahoganytown;NewBarkTown,GLOBAL(codigo),
 0x1538,5432,FLAG_DAILY_ALTAR_RESOLVED,DAILY,EM_USO,1,1,3,SunMoonAltar,MAPA_UNICO:SunMoonAltar,Altar arc closed today: Lusamine rematch without Nihilego
 0x1539,5433,FLAG_DAILY_NEXUS_NEW_DAY,DAILY,EM_USO,2,2,3,,GLOBAL(codigo),VAR_NEXUS_DAILY already reset today (src/nexus.c RollOverIfNewDay)
-0x153A,5434,FLAG_UNUSED_0x952,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
+0x153A,5434,FLAG_DAILY_GARDEN_NEW_DAY,DAILY,EM_USO,0,0,3,,GLOBAL(codigo),VAR_GARDEN_TODAY already reset today (GardenRollDay)
 0x153B,5435,FLAG_UNUSED_0x953,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
 0x153C,5436,FLAG_UNUSED_0x954,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
 0x153D,5437,FLAG_UNUSED_0x955,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
