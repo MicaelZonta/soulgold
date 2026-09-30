@@ -82,7 +82,7 @@ Route37_EventScript_Sign::
 	end
 
 Route37_Text_TwinsAnnAndAnne1_Seen:
-	.string "Ann: Anne and I are in this\n"
+	.string "{SPEAKER NAME_ANN}Anne and I are in this\n"
 	.string "together!$"
 
 Route37_Text_TwinsAnnAndAnne1_Beaten:
@@ -90,11 +90,11 @@ Route37_Text_TwinsAnnAndAnne1_Beaten:
 	.string "strong.$"
 
 Route37_Text_TwinsAnnAndAnne1_After:
-	.string "Ann: I can tell what my sister and\n"
+	.string "{SPEAKER NAME_ANN}I can tell what my sister and\n"
 	.string "my Pokémon are thinking.$"
 
 Route37_Text_TwinsAnnAndAnne2_Seen:
-	.string "Anne: Ann and I are in this\n"
+	.string "{SPEAKER NAME_ANNE}Ann and I are in this\n"
 	.string "together!$"
 
 Route37_Text_TwinsAnnAndAnne2_Beaten:
@@ -102,7 +102,7 @@ Route37_Text_TwinsAnnAndAnne2_Beaten:
 	.string "strong.$"
 
 Route37_Text_TwinsAnnAndAnne2_After:
-	.string "Anne: We share the same feelings as\n"
+	.string "{SPEAKER NAME_ANNE}We share the same feelings as\n"
 	.string "our Pokémon.$"
 
 Route37_Text_PsychicGreg_Seen:
@@ -118,7 +118,7 @@ Route37_Text_PsychicGreg_After:
 	.string "ing them are good battle techniques.$"
 
 Route37_Text_Sunny_Meet:
-	.string "Sunny: Hi!\p"
+	.string "{SPEAKER NAME_SUNNY}Hi!\p"
 	.string "I'm Sunny of the Weekday family!\p"
 	.string "If you can guess my favorite day,\n"
 	.string "I'll give you a reward.$"
@@ -132,7 +132,7 @@ Route37_Text_Sunny_GiveGift2:
 	.string "you!$"
 
 Route37_Text_Sunny_GaveGift:
-	.string "Sunny: That thing…\p"
+	.string "{SPEAKER NAME_SUNNY}That thing…\p"
 	.string "Um…\p"
 	.string "… What was it now…\p"
 	.string "…\p"
@@ -143,13 +143,13 @@ Route37_Text_Sunny_GaveGift:
 	.string "electric moves!$"
 
 Route37_Text_Sunny_Sunday:
-	.string "Sunny: My sisters and brothers are\n"
+	.string "{SPEAKER NAME_SUNNY}My sisters and brothers are\n"
 	.string "Monica, Tuscany, Wesley, Arthur,\l"
 	.string "Frieda and Santos.\p"
 	.string "They're all older than me!$"
 
 Route37_Text_Sunny_NotSunday:
-	.string "Sunny: Isn't today Sunday?\n"
+	.string "{SPEAKER NAME_SUNNY}Isn't today Sunday?\n"
 	.string "Um… I forgot!$"
 
 Route37_Text_Sign:

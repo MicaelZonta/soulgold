@@ -2208,69 +2208,69 @@ BattleCafe_TrainerAthena_Text_3:
 	.string "Did you have fun?$"
 
 BattleCafe_TrainerDoves_Text_0:
-	.string "Doves: Let's fight again tomorrow when \n"
+	.string "{SPEAKER NAME_DOVES}Let's fight again tomorrow when \n"
 	.string "my Genesect is allowed on the \l"
 	.string "battlefield.$"
 
 BattleCafe_TrainerDoves_Text_1:
-	.string "Doves: Let me show you the power of \n"
+	.string "{SPEAKER NAME_DOVES}Let me show you the power of \n"
 	.string "Genesect!$"
 
 BattleCafe_TrainerDoves_Text_2:
 	.string "Banned again from Overused...$"
 
 BattleCafe_TrainerDoves_Text_3:
-	.string "Doves: Let's fight again tomorrow when\n"
+	.string "{SPEAKER NAME_DOVES}Let's fight again tomorrow when\n"
 	.string "my Genesect is allowed on the \l"
 	.string "battlefield.$"
 
 BattleCafe_TrainerElton_Text_0:
-	.string "Elton: Rematch tomorrow! Be there!$"
+	.string "{SPEAKER NAME_ELTON}Rematch tomorrow! Be there!$"
 
 BattleCafe_TrainerElton_Text_1:
-	.string "Elton: Let's have a battle with our\n"
+	.string "{SPEAKER NAME_ELTON}Let's have a battle with our\n"
 	.string "favourite Pokémon!$"
 
 BattleCafe_TrainerElton_Text_2:
 	.string "You handled every trick I had!$"
 
 BattleCafe_TrainerElton_Text_3:
-	.string "Elton: Even Gengar's impressed, and it\n"
+	.string "{SPEAKER NAME_ELTON}Even Gengar's impressed, and it\n"
 	.string "rarely takes a loss seriously.$"
 
 BattleCafe_TrainerNem_Text_0:
-	.string "Nem: Come back tomorrow.$"
+	.string "{SPEAKER NAME_NEM}Come back tomorrow.$"
 
 BattleCafe_TrainerNem_Text_1:
-	.string "Nem: Think fast!$"
+	.string "{SPEAKER NAME_NEM}Think fast!$"
 
 BattleCafe_TrainerNem_Text_2:
 	.string "I'll be watching.$"
 
 BattleCafe_TrainerNem_Text_3:
-	.string "Nem: We can fight again tomorrow.$"
+	.string "{SPEAKER NAME_NEM}We can fight again tomorrow.$"
 
 BattleCafe_TrainerBai_Text_0:
-	.string "Bai: That was a good match!\n"
+	.string "{SPEAKER NAME_BAI}That was a good match!\n"
 	.string "Let's fight again tomorrow!$"
 
 BattleCafe_TrainerBai_Text_1:
-	.string "Bai: Let's see what you bring to \n"
+	.string "{SPEAKER NAME_BAI}Let's see what you bring to \n"
 	.string "the table!$"
 
 BattleCafe_TrainerBai_Text_2:
 	.string "Guess I'm cooked this time...$"
 
 BattleCafe_TrainerBai_Text_3:
-	.string "Bai: Good match! Let's try this again \n"
+	.string "{SPEAKER NAME_BAI}Good match! Let's try this again \n"
 	.string "tomorrow!$"
 
 BattleCafe_TrainerDrac_Text_0:
-	.string "Drac: You're really tough! Let's fight\n"
+	.string "{SPEAKER NAME_DRAC}You're really tough! Let's fight\n"
 	.string "again tomorrow!$"
 
 BattleCafe_TrainerDrac_Text_1:
-	.string "Drac: Care for a double battle?$"
+	.string "{SPEAKER NAME_DRAC}Care for a double battle?$"
 
 BattleCafe_TrainerDrac_Text_2:
 	.string "Soothed.$"
@@ -2292,14 +2292,14 @@ BattleCafe_TrainerTylarie_Text_0:
 	.string "lunch. We'll be ready tomorrow!$"
 
 BattleCafe_TrainerTylarie_Text_1:
-	.string "Tylarie: Let me show you how sturdy my\n"
+	.string "{SPEAKER NAME_TYLARIE}Let me show you how sturdy my\n"
 	.string "team is!$"
 
 BattleCafe_TrainerTylarie_Text_2:
 	.string "Ouch.$"
 
 BattleCafe_TrainerTylarie_Text_3:
-	.string "Tylarie: Not bad. We can go at it again\n"
+	.string "{SPEAKER NAME_TYLARIE}Not bad. We can go at it again\n"
 	.string "another day.$"
 
 BattleCafe_FreshWaterFountain_Text_0:

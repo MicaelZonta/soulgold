@@ -76,7 +76,7 @@ RadioTowerBasement_Text_GruntM15After:
     .string "I'll remember you!$"
 
 RadioTowerBasement_Text_DirectorIntro:
-    .string "Director: Who? What? You came to\n"
+    .string "{SPEAKER NAME_DIRECTOR}Who? What? You came to\n"
     .string "rescue me?\p"
     .string "Thank you!\p"
     .string "The Radio Tower!\p"
@@ -85,7 +85,7 @@ RadioTowerBasement_Text_DirectorIntro:
     .string "Here. Take this Card Key.$"
 
 RadioTowerBasement_Text_DirectorCardKey:
-    .string "Director: Use that to open the\n"
+    .string "{SPEAKER NAME_DIRECTOR}Use that to open the\n"
     .string "shutters on 3F.$"
 
 RadioTowerBasement_Text_DirectorAfter:

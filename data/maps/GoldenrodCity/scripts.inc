@@ -298,13 +298,13 @@ GoldenrodCity_Text_HikerNight:
 	.string "in there?!$"
 
 GoldenrodCity_Text_Snubbull:
-	.string "Audino: Audiiinii!$"
+	.string "{SPEAKER NAME_AUDINO}Audiiinii!$"
 
 GoldenrodCity_Text_MrMime:
 	.string "............................$"
 
 GoldenrodCity_Text_ElmCall:
-	.string "Elm: Hello, {PLAYER}?\n"
+	.string "{SPEAKER NAME_ELM}Hello, {PLAYER}?\n"
 	.string "Has that egg hatched yet?\p"
 	.string "Once it hatches, don't forget to\n"
 	.string "bring it by the lab! I need to\l"

@@ -20,5 +20,5 @@ MtMoon_Outside_Text_DontLitterSign:
 	.string "Don'T Litter$"
 
 MtMoon_Outside_Text_Clefairy:
-    .string "Clefairy: Pi pippippi!$"
+    .string "{SPEAKER NAME_CLEFAIRY}Pi pippippi!$"
 

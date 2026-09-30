@@ -15,7 +15,7 @@ LavenderTownSoulHouse_EventScript_Granny::
 	end
 
 MrFuji_Text_Main:
-	.string "Mr.Fuji: Welcome.\p"
+	.string "{SPEAKER NAME_MR_FUJI}Welcome.\p"
 	.string "Hmm… You appear to be raising\n"
 	.string "your Pokémon in a kind and\l"
 	.string "loving manner.\p"

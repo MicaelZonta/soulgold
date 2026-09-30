@@ -32,7 +32,7 @@ Route25_EventScript_MistyRematch::
     end
 
 Route25_Text_Misty:
-    .string "Misty: I love the sunset here!\n"
+    .string "{SPEAKER NAME_MISTY}I love the sunset here!\n"
 	.string "It gives me the courage to go on,\l"
 	.string "you know?\p"
 	.string "Right!\p"
@@ -184,7 +184,7 @@ Route25_EventScript_SuicuneMerge::
 	end
 	
 Route25_Text_Eusine1:
-	.string "Eusine: Puff, puff...\n"
+	.string "{SPEAKER NAME_EUSINE}Puff, puff...\n"
 	.string "I am... no match for you.\p"
 	.string "...As I predicted.\n"
 	.string "..........................\l"
@@ -372,7 +372,7 @@ Route25_Movement_MistyWalkToPlayerLeft:
 	step_end
 
 Route25_Text_MistyDate:
-	.string "Misty: Aww! Why did you have to\n"
+	.string "{SPEAKER NAME_MISTY}Aww! Why did you have to\n"
 	.string "show up and bug us now?\p"
 	.string "Do you know what they call\n"
 	.string "people like you?\p"

@@ -51,10 +51,10 @@ Route47_EventScript_Kae::
 	end
 
 Route47_Text_Couple1Seen::
-	.string "Thom: One plus one is two. But the\n"
+	.string "{SPEAKER NAME_THOM}One plus one is two. But the\n"
 	.string "two of us together is much\l"
 	.string "stronger!\p"
-	.string "Kae: The two of us aren't just some\n"
+	.string "{SPEAKER NAME_KAE}The two of us aren't just some\n"
 	.string "boring pair!$"
 
 Route47_Text_Couple1Beaten::
@@ -62,11 +62,11 @@ Route47_Text_Couple1Beaten::
 	.string "Kae: You're unusual too!$"
 
 Route47_Text_Couple1After1::
-	.string "Thom: It seems your power is\n"
+	.string "{SPEAKER NAME_THOM}It seems your power is\n"
 	.string "impossible to predict!$"
 
 Route47_Text_Couple1After2::
-	.string "Kae: I figured you were an ordinary\n"
+	.string "{SPEAKER NAME_KAE}I figured you were an ordinary\n"
 	.string "lone trainer. Boy was I wrong!$"
 
 Route47_EventScript_Duff::
@@ -81,9 +81,9 @@ Route47_EventScript_Eda::
 	end
 
 Route47_Text_Couple2Seen::
-	.string "Duff: Watching over my girlfriend\n"
+	.string "{SPEAKER NAME_DUFF}Watching over my girlfriend\n"
 	.string "makes my heart soar!\p"
-	.string "Eda: My heart's feelings for my\n"
+	.string "{SPEAKER NAME_EDA}My heart's feelings for my\n"
 	.string "boyfriend are as wide and deep\l"
 	.string "the ocean!$"
 
@@ -92,11 +92,11 @@ Route47_Text_Couple2Beaten::
 	.string "Eda: You are really something...$"
 
 Route47_Text_Couple2After1::
-	.string "Duff: Thank you for the awe-\n"
+	.string "{SPEAKER NAME_DUFF}Thank you for the awe-\n"
 	.string "inspiring battle! Bye!$"
 
 Route47_Text_Couple2After2::
-	.string "Eda: You should really find a\n"
+	.string "{SPEAKER NAME_EDA}You should really find a\n"
 	.string "wonderful partner, too!$"
 
 Route47_EventScript_Sage::
@@ -139,7 +139,7 @@ Route47_EventScript_Chinchou::
 	end
 
 Route47_Text_Chinchou:
-	.string "Chinchou: Chou!$"
+	.string "{SPEAKER NAME_CHINCHOU}Chou!$"
 
 Route47_HiddenGrotto::
 	msgbox Route47_HiddenGrotto_Text_0, MSGBOX_YESNO

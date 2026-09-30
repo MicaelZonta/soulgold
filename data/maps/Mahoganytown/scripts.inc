@@ -423,7 +423,7 @@ MahoganyTown_Text_GymSign:
     .string "The Teacher of Winter's Harshness$"
 
 ElmPhoneRadioTowerRocketTakeoverText:
-	.string "Prof. Elm: {PLAYER}, how are\n"
+	.string "{SPEAKER NAME_ELM}{PLAYER}, how are\n"
 	.string "things going?\p"
 	.string "I called because something weird\n"
 	.string "is happening with the radio\l"
@@ -438,7 +438,7 @@ ElmPhoneRadioTowerRocketTakeoverText:
 	.string "Take care!$"
 
 ElmPhoneRoute39LegendaryText:
-	.string "Prof. Elm: Woah!\n"
+	.string "{SPEAKER NAME_ELM}Woah!\n"
 	.string "{PLAYER}, did you see that?!\p"
 	.string "A massive Pokémon just flew over\n"
 	.string "Ecruteak City!\l"

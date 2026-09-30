@@ -104,7 +104,7 @@ TinTower_1F_EusineHoOh_Text:
 	.string "to become a famous Pokémaniac!$"
 
 TinTower_1F_EusineSuicune_Text:
-	.string "Eusine: Awesome! Too awesome, even!\n"
+	.string "{SPEAKER NAME_EUSINE}Awesome! Too awesome, even!\n"
 	.string "I've never seen a battle that great.\p"
 	.string "That was truly inspiring to see.\n"
 	.string "Suicune was tough, but you were even\p"

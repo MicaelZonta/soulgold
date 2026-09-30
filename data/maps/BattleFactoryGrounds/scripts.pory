@@ -46,7 +46,7 @@ script FactoryGrounds_Espurr {
     lock
     faceplayer
     playmoncry(SPECIES_ESPURR, CRY_MODE_NORMAL)
-    msgbox("Espurr: Essss!")
+    msgbox("{SPEAKER NAME_ESPURR}Essss!")
     waitmoncry
     release
     end

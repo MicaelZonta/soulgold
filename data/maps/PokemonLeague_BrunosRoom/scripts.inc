@@ -58,7 +58,7 @@ PokemonLeague_BrunosRoom_EventScript_BrunoDefeated::
 	end
 
 PokemonLeague_BrunosRoom_Text_RematchBefore:
-    .string "Bruno: Welcome back, young\n"
+    .string "{SPEAKER NAME_BRUNO}Welcome back, young\n"
     .string "warrior.\p"
     .string "Through rigorous training, we have\n"
     .string "grown stronger.\p"

@@ -546,18 +546,18 @@ TinTower_RoofDay_Movement_Kimono_Dance_Shift_Right2:
 	step_end
 
 TinTower_RoofDay_Text_Zuki_Before::
-	.string "Zuki: Go, face Ho-Oh. $"
+	.string "{SPEAKER NAME_ZUKI}Go, face Ho-Oh. $"
 TinTower_RoofDay_Text_Naoko_Before::
-	.string "Naoko: Go, face Ho-Oh. $"
+	.string "{SPEAKER NAME_NAOKO}Go, face Ho-Oh. $"
 TinTower_RoofDay_Text_Miki_Before::
-	.string "Miki: Go, face Ho-Oh. $"
+	.string "{SPEAKER NAME_MIKI}Go, face Ho-Oh. $"
 TinTower_RoofDay_Text_Sayo_Before::
-	.string "Sayo: Go, face Ho-Oh. $"
+	.string "{SPEAKER NAME_SAYO}Go, face Ho-Oh. $"
 TinTower_RoofDay_Text_Kuni_Before::
-	.string "Kuni: Go, face Ho-Oh. $"
+	.string "{SPEAKER NAME_KUNI}Go, face Ho-Oh. $"
 
 TinTower_RoofDay_Text_Kimono_Opening::
-	.string "Kimono Girl: That's right.\n"
+	.string "{SPEAKER NAME_KIMONO_GIRL}That's right.\n"
 	.string "This is where we welcome Ho-Oh.\p"
 	.string "When the dance we practiced many\n"
 	.string "days becomes one with the sound of the\p"

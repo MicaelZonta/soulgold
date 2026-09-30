@@ -37,7 +37,7 @@ PewterCity_Gym_EventScript_Brock_Defeated::
 
 
 PewterCity_Gym_Text_Brock_Intro:
-	.string "Brock: Wow, it's not often that we get a\n"
+	.string "{SPEAKER NAME_BROCK}Wow, it's not often that we get a\n"
 	.string "challenger from Johto.\p"
 	.string "I'm Brock, the Pewter Gym Leader.\p"
 	.string "I'm an expert on rock-type Pokémon.\p"
@@ -56,7 +56,7 @@ PewterCity_Gym_Text_ReceivedBoulderBadge:
 	.string "{PLAYER} received Boulderbadge.$"
 
 PewterCity_Gym_Text_Brock_BoulderBadge:
-	.string "Brock: {PLAYER}, thanks. I enjoyed\n"
+	.string "{SPEAKER NAME_BROCK}{PLAYER}, thanks. I enjoyed\n"
 	.string "battling you, even though I am a bit\l"
 	.string "upset.\p"
 	.string "That Boulderbadge will make your\n"
@@ -70,7 +70,7 @@ PewterCity_Gym_Text_EarthquakeSpeech:
     .string "undermine your own Pokémon!$"
 
 PewterCity_Gym_Text_Brock_FightDone:
-	.string "Brock: The world is huge. There are\n"
+	.string "{SPEAKER NAME_BROCK}The world is huge. There are\n"
 	.string "still many strong trainers like you.\p"
 	.string "Just wait and see. I'm going to become\n"
 	.string "a lot stronger too.$"

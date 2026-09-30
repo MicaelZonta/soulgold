@@ -9,7 +9,7 @@ script SnowtopMountainOutside_Snover {
     lock
     faceplayer
     playmoncry(SPECIES_SNOVER, CRY_MODE_NORMAL)
-    msgbox("Snover: Snoo!")
+    msgbox("{SPEAKER NAME_SNOVER}Snoo!")
     waitmoncry
     release
     end

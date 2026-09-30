@@ -266,7 +266,7 @@ script NewBarkTownRivalHouseAzumarill {
 	lock
     faceplayer
     playmoncry(SPECIES_AZUMARILL, CRY_MODE_NORMAL)
-    msgbox("Azumarill: Azuu!")
+    msgbox("{SPEAKER NAME_AZUMARILL}Azuu!")
     waitmoncry
     release
     end

@@ -28,7 +28,7 @@ script RintoHouse3_Excadrill {
     lock
     faceplayer
     playmoncry(SPECIES_EXCADRILL, CRY_MODE_NORMAL)
-    msgbox("Excadrill: Caaaaaaaa!")
+    msgbox("{SPEAKER NAME_EXCADRILL}Caaaaaaaa!")
     waitmoncry
     release
     end

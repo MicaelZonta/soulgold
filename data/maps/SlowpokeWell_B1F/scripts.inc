@@ -69,7 +69,7 @@ SlowpokeWell_B1F_Movement_Kurt:
 	step_end
 
 SlowpokeWell_B1F_Text_KurtIntro:
-	.string "Kurt: Hey there, {PLAYER}!\p"
+	.string "{SPEAKER NAME_KURT}Hey there, {PLAYER}!\p"
 	.string "The guard up top took off when\n"
 	.string "I shouted at him.\p"
 	.string "But then I took a tumble down\n"
@@ -83,7 +83,7 @@ SlowpokeWell_B1F_Text_KurtIntro:
 	.string "you are in my place!$"
 
 SlowpokeWell_B1F_Text_KurtAfter:
-	.string "Kurt: Way to go, {PLAYER}!\p"
+	.string "{SPEAKER NAME_KURT}Way to go, {PLAYER}!\p"
 	.string "Team Rocket has taken off.\p"
 	.string "My back's better too.\n"
 	.string "Let's get out of here.$"

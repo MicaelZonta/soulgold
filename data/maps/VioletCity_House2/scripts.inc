@@ -37,4 +37,4 @@ VioletCity_NicknameHouse_Text_Lass:
 	.string "I call my Pidgey Strawberry!$"
 
 VioletCity_NicknameHouse_Text_Bird:
-	.string "Strawberry: Pijji!$"
+	.string "{SPEAKER NAME_STRAWBERRY}Pijji!$"

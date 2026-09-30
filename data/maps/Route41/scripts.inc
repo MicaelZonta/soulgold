@@ -286,10 +286,10 @@ Route41_EventScript_TentacruelAttack4::
 	end
 
 Route41_Text_Tentacruel:
-	.string "Tentacruel: Cruooo...$"
+	.string "{SPEAKER NAME_TENTACRUEL}Cruooo...$"
 
 Route41_Text_TentacruelAttack:
-	.string "Tentacruel: Cruoooooo!$"
+	.string "{SPEAKER NAME_TENTACRUEL}Cruoooooo!$"
 
 Route41_Text_TentacruelHeal:
 	.string "The Tentacruel used Recover!\n"
@@ -320,7 +320,7 @@ GuardingDewgong_4:
 
 
 GuardingDewgong_Text_0:
-	.string "Dewgong: Gong gong!$"
+	.string "{SPEAKER NAME_DEWGONG}Gong gong!$"
 
 GuardingDewgong_Text_1:
 	.string "You recall the Radio Tower\n"

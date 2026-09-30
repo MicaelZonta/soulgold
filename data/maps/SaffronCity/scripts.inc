@@ -24,7 +24,7 @@ SaffronCity_EventScript_BaobaCall::
 	end
 
 SaffronCity_Text_Baoba:
-	.string "Warden Baoba: {PLAYER}!\p"
+	.string "{SPEAKER NAME_WARDEN_BAOBA}{PLAYER}!\p"
 	.string "This is Warden Baoba.\p"
 	.string "I'm calling to tell you that the\n"
 	.string "Safari Zone has expanded again!\p"

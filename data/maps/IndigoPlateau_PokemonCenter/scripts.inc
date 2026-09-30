@@ -124,7 +124,7 @@ IndigoPlateau_Text_TeleportGuyNo:
     .string "Ok, Ok. The best of luck to you!$"
 
 IndigoPlateau_Text_Abra:
-    .string "Abra: Aabra…$"
+    .string "{SPEAKER NAME_ABRA}Aabra…$"
 
 IndigoPlateau_StoneMerchant::
 	lock

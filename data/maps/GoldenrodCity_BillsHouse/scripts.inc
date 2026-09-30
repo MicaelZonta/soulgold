@@ -26,7 +26,7 @@ GoldenrodCity_BillsHouse_EventScript_Mom2::
 	end
 
 BillHouse_Text_EeveeMayEvolve:
-    .string "Bill: Prof. Elm claims Eevee may\n"
+    .string "{SPEAKER NAME_BILL}Prof. Elm claims Eevee may\n"
     .string "evolve in new and unknown ways.$"
 
 BillHouse_Text_PartyFull:
@@ -37,7 +37,7 @@ BillHouse_Text_NoEevee:
     .string "Oh… Now what to do?$"
 
 BillHouse_Text_PopWontWork:
-    .string "Bill: My pop, he won't work. All he\n"
+    .string "{SPEAKER NAME_BILL}My pop, he won't work. All he\n"
     .string "does is goof off all day long.\p"
     .string "He's getting to be a real headache…$"
 
@@ -122,7 +122,7 @@ GoldenrodCity_Bill_GiveEeveeOrPikachu_6:
 
 
 GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_0:
-	.string "Bill: Hi, {PLAYER}! Do us a favor and\n"
+	.string "{SPEAKER NAME_BILL}Hi, {PLAYER}! Do us a favor and\n"
 	.string "take one of these two Pokémon. \p"
 	.string "Both of them came over when I \n"
 	.string "was adjusting the Time Capsule.\p"
@@ -143,7 +143,7 @@ GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_3:
 	.string "No thanks$"
 
 GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_4:
-	.string "Bill: I knew you'd come through!\n"
+	.string "{SPEAKER NAME_BILL}I knew you'd come through!\n"
 	.string "Way to go! I'm counting on you\l"
 	.string "to take good care of it!$"
 

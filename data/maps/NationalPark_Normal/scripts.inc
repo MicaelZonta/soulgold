@@ -105,7 +105,7 @@ NationalPark_Normal_Text_Teacher2:
 	.string "Let me heal your Pokémon for you.$"
 
 NationalPark_Normal_Text_Persian:
-	.string "Persian: Fufushaa!$"
+	.string "{SPEAKER NAME_PERSIAN}Fufushaa!$"
 
 NationalPark_Normal_EventScript_Jack::
 	trainerbattle_single TRAINER_JACK NationalPark_Normal_Text_SchoolboyJack1_Seen, NationalPark_Normal_Text_SchoolboyJack1_Beaten

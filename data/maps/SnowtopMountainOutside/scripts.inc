@@ -31,7 +31,7 @@ SnowtopMountainOutside_Sign::
 
 
 SnowtopMountainOutside_Snover_Text_0:
-	.string "Snover: Snoo!$"
+	.string "{SPEAKER NAME_SNOVER}Snoo!$"
 
 SnowtopMountainOutside_Sign_Text_0:
 	.string "Snowtop Mountain\n"

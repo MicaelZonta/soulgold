@@ -93,7 +93,7 @@ PokemonLeague_KarensRoom_EventScript_KarenDefeatedPostgame::
 	end
 
 PokemonLeague_KarensRoom_Text_RematchBefore:
-    .string "Karen: Ah, it's you again.\p"
+    .string "{SPEAKER NAME_KAREN}Ah, it's you again.\p"
     .string "I trust you haven't forgotten\n"
     .string "my belief:\p"
     .string "True strength arises from trust\n"

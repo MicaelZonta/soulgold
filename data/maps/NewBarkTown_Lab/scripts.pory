@@ -825,27 +825,27 @@ NewBarkTown_Lab_Text_ElmChooseAPokemon:
 	.string "Go on. Pick one!$"
 
 NewBarkTown_Lab_Text_ElmWhereGoing:
-	.string "Elm: Wait! Where are you\n"
+	.string "{SPEAKER NAME_ELM}Wait! Where are you\n"
 	.string "going?$"
 
 NewBarkTown_Lab_Text_ChooseCyndaquil:
-	.string "Elm: You'll take Cyndaquil,\n"
+	.string "{SPEAKER NAME_ELM}You'll take Cyndaquil,\n"
 	.string "the fire Pokémon?$"
 
 NewBarkTown_Lab_Text_ChooseTotodile:
-	.string "Elm: Do you want Totodile,\n"
+	.string "{SPEAKER NAME_ELM}Do you want Totodile,\n"
 	.string "the water Pokémon?$"
 
 NewBarkTown_Lab_Text_ChooseChikorita:
-	.string "Elm: So, you like Chikorita,\n"
+	.string "{SPEAKER NAME_ELM}So, you like Chikorita,\n"
 	.string "the grass Pokémon?$"
 
 NewBarkTown_Lab_Text_DidntChooseStarter:
-	.string "Elm: Think it over carefully.\p"
+	.string "{SPEAKER NAME_ELM}Think it over carefully.\p"
 	.string "Your partner is important.$"
 
 NewBarkTown_Lab_Text_ChoseStarter:
-	.string "Elm: I think that's a great\n"
+	.string "{SPEAKER NAME_ELM}I think that's a great\n"
 	.string "Pokémon too!$"
 
 NewBarkTown_Lab_Text_ReceivedStarter:
@@ -894,7 +894,7 @@ NewBarkTown_Lab_Text_ElmPokeBall:
 @THEFT================================================================================
 
 NewBarkTown_Lab_Text_ElmAfterTheft1:
-	.string "Elm: {PLAYER}, this is terrible…\p"
+	.string "{SPEAKER NAME_ELM}{PLAYER}, this is terrible…\p"
 	.string "Oh, yes, what was Kukui's\n"
 	.string "big discovery?$"
 
@@ -903,13 +903,13 @@ NewBarkTown_Lab_Text_ElmAfterTheft2:
 	.string "to Prof. Elm.$"
 
 NewBarkTown_Lab_Text_ElmAfterTheft3:
-	.string "Elm: This?$"
+	.string "{SPEAKER NAME_ELM}This?$"
 
 NewBarkTown_Lab_Text_ElmAfterTheft4:
 	.string "But… Is it a Pokémon Egg?\p"
 	.string "If it is, it is a great\n"
 	.string "discovery!\p"
-	.string "Elm: What?!?\p"
+	.string "{SPEAKER NAME_ELM}What?!?\p"
 	.string "Prof. Oak gave you a Pokédex?\p"
 	.string "{PLAYER}, is that true?\n"
 	.string "Th-that's incredible!\p"
@@ -929,12 +929,12 @@ NewBarkTown_Lab_Text_ElmAfterTheft4:
 	.string "that you talk to your mom.$"
 
 NewBarkTown_Lab_Text_ElmStudyingEgg:
-	.string "Elm: Don't give up!\n"
+	.string "{SPEAKER NAME_ELM}Don't give up!\n"
 	.string "I'll call if I learn anything\l"
 	.string "about that Egg!$"
 
 NewBarkTown_Lab_Text_ElmAideHasEgg:
-	.string "Elm: {PLAYER}? Didn't you meet\n"
+	.string "{SPEAKER NAME_ELM}{PLAYER}? Didn't you meet\n"
 	.string "my assistant?\p"
 	.string "He should have met you with\n"
 	.string "the Egg at Violet City's\p"
@@ -943,7 +943,7 @@ NewBarkTown_Lab_Text_ElmAideHasEgg:
 	.string "Try to catch him there.$"
 
 NewBarkTown_Lab_Text_ElmWaitingEggHatch:
-	.string "Elm: Hey, has that Egg changed\n"
+	.string "{SPEAKER NAME_ELM}Hey, has that Egg changed\n"
 	.string "any?$"
 
 NewBarkTown_Lab_Text_ElmThoughtEggHatched:
@@ -952,7 +952,7 @@ NewBarkTown_Lab_Text_ElmThoughtEggHatched:
 	.string "Where is the Pokémon?$"
 
 NewBarkTown_Lab_Text_CosmogVisitIntro:
-	.string "Elm: {PLAYER}! You came back!\p"
+	.string "{SPEAKER NAME_ELM}{PLAYER}! You came back!\p"
 	.string "And you brought the Pokémon\n"
 	.string "from Kukui's Egg?\p"
 	.string "Let me put these notes aside.\n"
@@ -1022,7 +1022,7 @@ NewBarkTown_Lab_Text_CosmogFarewell:
 	.string "Both of you!$"
 
 NewBarkTown_Lab_Text_ElmCallYou:
-	.string "Elm: {PLAYER}, I'll call you if\n"
+	.string "{SPEAKER NAME_ELM}{PLAYER}, I'll call you if\n"
 	.string "anything comes up.$"
 
 NewBarkTown_Lab_Text_AideAfterTheft:
@@ -1032,7 +1032,7 @@ NewBarkTown_Lab_Text_AideAfterTheft:
 	.string "bad person turns bad itself.$"
 
 NewBarkTown_Lab_Text_ElmGiveMasterBall1:
-	.string "Elm: Hi, {PLAYER}!\p"
+	.string "{SPEAKER NAME_ELM}Hi, {PLAYER}!\p"
 	.string "Thanks to you, my research is\n"
 	.string "going great!\p"
 	.string "Take this as a token of my\n"
@@ -1060,17 +1060,17 @@ NewBarkTown_Lab_Text_KimonoGirls:
 	.string "I hope you'll carry through it.$"
 
 NewBarkTown_Lab_Text_ElmMissedSurf:
-	.string "Prof. Elm: Oh, and a gentleman\n"
+	.string "{SPEAKER NAME_ELM}Oh, and a gentleman\n"
 	.string "from the Dance Theater left this\l"
 	.string "here for you.$"
 
 NewBarkTown_Lab_Text_KimonoWaiting:
-	.string "Prof. Elm: The Kimono\n"
+	.string "{SPEAKER NAME_ELM}The Kimono\n"
 	.string "Girls are waiting for you at\l"
 	.string "the Ecruteak Dance Theater.$"
 
 NewBarkTown_Lab_Text_League:
-	.string "Prof. Elm: Hahaha...\n"
+	.string "{SPEAKER NAME_ELM}Hahaha...\n"
 	.string "Good job!\p"
 	.string "That rare Egg has brought you\n"
 	.string "a lot of trouble, huh?\p"
@@ -1089,7 +1089,7 @@ NewBarkTown_Lab_Text_League:
 
 
 NewBarkTown_Lab_Text_ElmGiveTicket1:
-	.string "Elm: {PLAYER}! There you are!\p"
+	.string "{SPEAKER NAME_ELM}{PLAYER}! There you are!\p"
 	.string "I called because I have\n"
 	.string "something for you.\p"
 	.string "See? It's an S.S.Ticket.\p"
@@ -1203,7 +1203,7 @@ script NewBarkTown_Lab_GiveStarterMega {
 }
 
 script NewBarkTown_Lab_EventScript_ElmPostgameHint {
-	msgbox("Elm: {PLAYER}! There you are!
+	msgbox("{SPEAKER NAME_ELM}{PLAYER}! There you are!
 			I called because I heard that the 
 			Battle Tower is open! 
 			
@@ -1259,7 +1259,7 @@ script NewBarkTown_Lab_EventScript_ElmPostgameHint {
 }
 
 script ElmIntro {
-	msgbox("Elm: {PLAYER}! There you are!
+	msgbox("{SPEAKER NAME_ELM}{PLAYER}! There you are!
 
 			I needed to ask you a favor.
 

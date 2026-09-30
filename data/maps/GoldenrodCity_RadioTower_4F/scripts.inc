@@ -77,7 +77,7 @@ GoldenrodCity_RadioTower_4F4_EventScript_Meowth::
 
 
 GoldenrodCity_RadioTower_4F4_Text_Proton_Seen:
-	.string "Proton: Now wait just one second!\p"
+	.string "{SPEAKER NAME_PROTON}Now wait just one second!\p"
 	.string "Aren't you the one who got in our\n"
 	.string "way at Slowpoke Well?\p"
 	.string "I see... You're doing all this\n"
@@ -91,7 +91,7 @@ GoldenrodCity_RadioTower_4F4_Text_Proton_Beaten:
 	.string "Phew...$"
 
 GoldenrodCity_RadioTower_4F4_Text_Proton_After:
-	.string "Proton: You may have won this\n"
+	.string "{SPEAKER NAME_PROTON}You may have won this\n"
 	.string "time... But all you did was make\p"
 	.string "Team Rocket's wrath grow.$"
 
@@ -101,24 +101,24 @@ GoldenrodCity_RadioTower_4F4_Text_Fisher:
 	.string "I heard a strange broadcast there.$"
 
 GoldenrodCity_RadioTower_4F4_Text_DJMary:
-	.string "Mary: Why? Why do I have to suffer\n"
+	.string "{SPEAKER NAME_MARY}Why? Why do I have to suffer\n"
 	.string "through this?\p"
 	.string "Meowth, help me!$"
 
 GoldenrodCity_RadioTower_4F4_Text_DJMaryCleared:
-	.string "Mary: Oh! You're my little savior!\p"
+	.string "{SPEAKER NAME_MARY}Oh! You're my little savior!\p"
 	.string "Will you take this as my thanks?$"
 
 GoldenrodCity_RadioTower_4F4_Text_DJMaryPinkBow:
-	.string "Mary: It's good for dodging the\p"
+	.string "{SPEAKER NAME_MARY}It's good for dodging the\p"
 	.string "enemy's attacks.$"
 
 GoldenrodCity_RadioTower_4F4_Text_DJMaryAfter:
-	.string "Mary: Please tune into me on Prof.\n"
+	.string "{SPEAKER NAME_MARY}Please tune into me on Prof.\n"
 	.string "Oak's Pokémon Talk show!$"
 
 GoldenrodCity_RadioTower_4F4_Text_Meowth:
-	.string "Meowth: Meowth…$"
+	.string "{SPEAKER NAME_MEOWTH}Meowth…$"
 
 GoldenrodCity_RadioTower_4F4_Text_GruntM10Seen:
 	.string "You plan to rescue the Director?\p"
@@ -190,7 +190,7 @@ RadioF4_Mary3::
 
 
 RadioF4_Mary3_Text_0:
-	.string "Mary: Oh my little savior!\n"
+	.string "{SPEAKER NAME_MARY}Oh my little savior!\n"
 	.string "Won't you take this as my thanks?$"
 
 RadioF4_Mary3_Text_1:

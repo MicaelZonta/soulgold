@@ -147,7 +147,7 @@ IcePath_B3F_Movement_StuckSwinubJump:
 	step_end
 
 IcePath_B3F_Text_Swinub:
-	.string "Swinub: Swiiiiii!$"
+	.string "{SPEAKER NAME_SWINUB}Swiiiiii!$"
 IcePath_B3F_Text_SwinubBerry:
 	.string "Give the Swinub a Berry?$"
 IcePath_B3F_Text_SwinubAteBerry:
@@ -156,7 +156,7 @@ IcePath_B3F_Text_SwinubTurnedAway:
 	.string "Swinub doesn't like it!$"
 
 IcePath_B3F_Text_Delibird:
-	.string "Delibird: Skwaaaaa!$"
+	.string "{SPEAKER NAME_DELIBIRD}Skwaaaaa!$"
 IcePath_B3F_Text_DelibirdBerry:
 	.string "Give the Delibird a Berry?$"
 IcePath_B3F_Text_DelibirdAteBerry:

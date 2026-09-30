@@ -54,7 +54,7 @@ SaffronCity_FightingDojo_EventScript_BattleLickilicky_EV_HP::
 	end
 	
 SaffronCity_FightingDojo_Text_Lickilicky:
-	.string "Lickilicky: Liiiiick!$"
+	.string "{SPEAKER NAME_LICKILICKY}Liiiiick!$"
 
 SaffronCity_FightingDojo_EventScript_Machamp_EV_Attack::
 	lock
@@ -82,7 +82,7 @@ SaffronCity_FightingDojo_EventScript_BattleMachamp_EV_Attack::
 	end
 
 SaffronCity_FightingDojo_Text_Machamp:
-	.string "Machamp: Champ!$"
+	.string "{SPEAKER NAME_MACHAMP}Champ!$"
 
 SaffronCity_FightingDojo_EventScript_Steelix_EV_Defense::
 	lock
@@ -110,7 +110,7 @@ SaffronCity_FightingDojo_EventScript_BattleSteelix_EV_Defense::
 	end
 
 SaffronCity_FightingDojo_Text_Steelix:
-	.string "Steelix: Grrrind!$"
+	.string "{SPEAKER NAME_STEELIX}Grrrind!$"
 
 SaffronCity_FightingDojo_EventScript_Alakazam_EV_SpecialAttack::
 	lock
@@ -138,7 +138,7 @@ SaffronCity_FightingDojo_EventScript_BattleAlakazam_EV_SpecialAttack::
 	end
 
 SaffronCity_FightingDojo_Text_Alakazam:
-	.string "Alakazam: Zam!$"
+	.string "{SPEAKER NAME_ALAKAZAM}Zam!$"
 
 SaffronCity_FightingDojo_EventScript_Slowking_EV_SpecialDefense::
 	lock
@@ -166,7 +166,7 @@ SaffronCity_FightingDojo_EventScript_BattleSlowking_EV_SpecialDefense::
 	end
 
 SaffronCity_FightingDojo_Text_Slowking:
-	.string "Slowking: HMMM...$"
+	.string "{SPEAKER NAME_SLOWKING}HMMM...$"
 
 SaffronCity_FightingDojo_EventScript_Raichu_EV_Speed::
 	lock
@@ -194,7 +194,7 @@ SaffronCity_FightingDojo_EventScript_BattleRaichu_EV_Speed::
 	end
 
 SaffronCity_FightingDojo_Text_Raichu:
-	.string "Raichu: Chuuu!$"
+	.string "{SPEAKER NAME_RAICHU}Chuuu!$"
 
 SaffronCity_FightingDojo_Text_HP:
 	.string "Hp$"

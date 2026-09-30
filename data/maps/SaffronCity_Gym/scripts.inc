@@ -57,7 +57,7 @@ SaffronCity_Gym_EventScript_Sabrina_Defeated::
 	end
 
 SaffronCity_Gym_Text_SabrinaIntro:
-	.string "Sabrina: I knew you were coming…\p"
+	.string "{SPEAKER NAME_SABRINA}I knew you were coming…\p"
 	.string "Three years ago I had a vision\n"
 	.string "of your arrival.\p"
 	.string "You're after my Badge.\p"
@@ -80,7 +80,7 @@ SaffronCity_Gym_Text_ReceivedMarshBadge:
 	.string "{PLAYER} received Marshbadge.$"
 
 SaffronCity_Gym_Text_MarshBadgeInfo:
-	.string "Sabrina: Marshbadge draws out\n"
+	.string "{SPEAKER NAME_SABRINA}Marshbadge draws out\n"
 	.string "your subliminal powers…\p"
 	.string "Although I failed to accurately\n"
 	.string "predict your power, this much I\l"
@@ -89,21 +89,21 @@ SaffronCity_Gym_Text_MarshBadgeInfo:
 	.string "beloved Champion!$"
 
 SaffronCity_Gym_Text_SabrinaPostBattle:
-	.string "Sabrina: Your love for your\n"
+	.string "{SPEAKER NAME_SABRINA}Your love for your\n"
 	.string "Pokémon overwhelmed my psychic\l"
 	.string "power…\p"
 	.string "The power of love, I think, is\n"
 	.string "also a kind of psychic power…$"
 
 SaffronCity_Gym_Text_SabrinaRematch:
-	.string "Sabrina: Ah, the Kanto Champion.\p"
+	.string "{SPEAKER NAME_SABRINA}Ah, the Kanto Champion.\p"
 	.string "I sensed your return.\p"
 	.string "Your power has grown immensely.\p"
 	.string "Even now, I feel your aura.\p"
 	.string "Want to have a rematch with me?$"
 
 SaffronCity_Gym_Text_SabrinaRematchDefeat:
-	.string "Sabrina: Your love for your\n"
+	.string "{SPEAKER NAME_SABRINA}Your love for your\n"
 	.string "Pokémon again overwhelmed my\l"
 	.string "psychic power…$"
 

@@ -8,7 +8,7 @@ script TohjoPassGuard {
     lock
     faceplayer
     playmoncry(SPECIES_RHYPERIOR, CRY_MODE_NORMAL)
-    msgbox("Rhyperior: Grr...")
+    msgbox("{SPEAKER NAME_RHYPERIOR}Grr...")
     waitmoncry
     msgbox("The Rhyperior is guarding the entrance
             with a menacing presence.

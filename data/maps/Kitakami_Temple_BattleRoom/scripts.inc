@@ -107,13 +107,13 @@ BattleRoom_BlackBelt_Movement_0:
 	step_end
 
 BattleRoom_Audino_Text_0:
-	.string "Audino: Audiini!$"
+	.string "{SPEAKER NAME_AUDINO}Audiini!$"
 
 BattleRoom_Machamp_Text_0:
-	.string "Machamp: Mach!$"
+	.string "{SPEAKER NAME_MACHAMP}Mach!$"
 
 BattleRoom_Mienshao_Text_0:
-	.string "Mienshao: Mii!$"
+	.string "{SPEAKER NAME_MIENSHAO}Mii!$"
 
 BattleRoom_BattleGirl_Text_0:
 	.string "Now Mienshao, use Hi Jump Kick!$"

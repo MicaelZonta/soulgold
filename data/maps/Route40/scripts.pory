@@ -126,7 +126,7 @@ Route40_Text_StandingYoungster:
 	.string "at all.$"
 
 Route40_Text_Monica:
-	.string "Monica: Glad to meet you.\n"
+	.string "{SPEAKER NAME_MONICA}Glad to meet you.\n"
 	.string "I'm Monica of the Weekday Family.\p"
 	.string "I bet you can't guess my favorite\n"
 	.string "day of the week!$"
@@ -137,19 +137,19 @@ Route40_Text_MonicaGivesGift:
 	.string "I have a gift for you!$"
 
 Route40_Text_MonicaGaveGift:
-	.string "Monica: It's an item that raises\n"
+	.string "{SPEAKER NAME_MONICA}It's an item that raises\n"
 	.string "the power of Flying-Type moves.\p"
 	.string "You should equip a bird\n"
 	.string "Pokémon with that item.$"
 
 Route40_Text_MonicaMonday:
-	.string "Monica: My brothers and\n"
+	.string "{SPEAKER NAME_MONICA}My brothers and\n"
 	.string "sisters are all over the place.\p"
 	.string "See if you could find\n"
 	.string "them all!$"
 
 Route40_Text_MonicaNotMonday:
-	.string "Monica: I don't think today\n"
+	.string "{SPEAKER NAME_MONICA}I don't think today\n"
 	.string "is Monday. How sad…$"
 
 Route40_Text_MonicaNope:

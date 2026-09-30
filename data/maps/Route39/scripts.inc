@@ -32,7 +32,7 @@ Route39_EventScript_Miltank::
 	end
 
 Route39_Text_Miltank:
-	.string "Miltank: Mooo!$"
+	.string "{SPEAKER NAME_MILTANK}Mooo!$"
 
 Route39_EventScript_Eugene::
 	trainerbattle_single TRAINER_EUGENE, Route39_Text_SailorEugeneSeen, Route39_Text_SailorEugeneBeaten
@@ -227,7 +227,7 @@ Route39_NorthSign_Text_0:
 	.string "{UP_ARROW} Snowtop Mountain trail$"
 
 Route39_BaobaTrigger_Text_0:
-	.string "Baoba: ...Ohh! \n"
+	.string "{SPEAKER NAME_WARDEN_BAOBA}...Ohh! \n"
 	.string "What you are holding is...\l"
 	.string "what they call... a Pokédex!\l"
 	.string "Haven't seen one of those in ages.\p"

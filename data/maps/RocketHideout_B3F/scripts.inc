@@ -89,7 +89,7 @@ RocketHideout_B3F_Movement_DragoniteLeave:
 	step_end
 
 RocketHideout_B3F_Text_LanceGetPassword:
-    .string "Lance: It takes two passwords\n"
+    .string "{SPEAKER NAME_LANCE}It takes two passwords\n"
     .string "to get into the boss's quarters.\p"
     .string "Those passwords are known only\n"
     .string "to a few Rockets.\p"
@@ -566,7 +566,7 @@ RocketHideout_B3F_Text_PetrelDisbelief:
     .string "to mimic him!$"
 
 RocketHideout_B3F_Text_PetrelReveal:
-    .string "Petrel: I am a Team Rocket\n"
+    .string "{SPEAKER NAME_PETREL}I am a Team Rocket\n"
     .string "Executive!\p"
     .string "You must be trying to sneak into\n"
     .string "the radio-transmitter room.\p"
@@ -586,7 +586,7 @@ RocketHideout_B3F_Text_PetrelBeaten:
     .string "Giovanni, please forgive me…$"
 
 RocketHideout_B3F_Text_PetrelAfterBattle:
-    .string "Petrel: Since disbanding Team\n"
+    .string "{SPEAKER NAME_PETREL}Since disbanding Team\n"
     .string "Rocket three years ago, our\l"
     .string "Giovanni has been missing.\p"
     .string "But we're certain he's been\n"
@@ -608,7 +608,7 @@ RocketHideout_B3F_EventScript_Murkrow::
 	end
 
 RocketHideout_B3F_Text_MurkrowSpeak1:
-    .string "Murkrow: Hail Giovanni.$"
+    .string "{SPEAKER NAME_MURKROW}Hail Giovanni.$"
 
 RocketHideout_B3F_Text_MurkrowMimic:
     .string "Murkrow is mimicking\n"
@@ -616,7 +616,7 @@ RocketHideout_B3F_Text_MurkrowMimic:
     .string "You may be able to...!?$"
 
 RocketHideout_B3F_Text_Murkrow:
-    .string "Murkrow: The password is…\p"
+    .string "{SPEAKER NAME_MURKROW}The password is…\p"
     .string "Hail Giovanni.$"
 
 RocketHideout_B3F_Text_GruntF5Seen:

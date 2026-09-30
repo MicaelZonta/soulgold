@@ -194,7 +194,7 @@ BurnedTower_B1F_Movement_EusineLeave:
 	step_end
 
 BurnedTowerB1FEusineText:
-	.string "Eusine: I'm shocked!\p"
+	.string "{SPEAKER NAME_EUSINE}I'm shocked!\p"
 	.string "Suicune raced by like a blur,\n"
 	.string "right in front of my eyes!\p"
 	.string "For ten years I chased\n"

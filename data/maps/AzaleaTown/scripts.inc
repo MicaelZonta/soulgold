@@ -482,4 +482,4 @@ AzaleaTownKid_Text_0:
 	.string "there... If only I could use Rock Climb.$"
 
 AzaleaTownVulpix_Text_0:
-	.string "Vulpix: Vul!$"
+	.string "{SPEAKER NAME_VULPIX}Vul!$"

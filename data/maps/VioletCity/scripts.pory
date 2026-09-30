@@ -457,16 +457,16 @@ VioletCity_Text_EarlsAcademySign:
 	.string "Earl's Pokémon Academy$"
 
 VioletCity_Text_Pichu:
-	.string "Pichu: Chuuuu!$"
+	.string "{SPEAKER NAME_PICHU}Chuuuu!$"
 
 VioletCity_Text_Bellsprout:
-	.string "Bellsprout: Sprouuuut.$"
+	.string "{SPEAKER NAME_BELLSPROUT}Sprouuuut.$"
 
 VioletCity_Text_Rattata:
-	.string "Rattata: Rattataratta!$"
+	.string "{SPEAKER NAME_RATTATA}Rattataratta!$"
 
 VioletCity_Text_Elm_Call:
-	.string "Elm: Hello, {PLAYER}? I've asked\n"
+	.string "{SPEAKER NAME_ELM}Hello, {PLAYER}? I've asked\n"
 	.string "a Trainer named Gladion to bring\p"
 	.string "you the Egg. He was heading to\n"
 	.string "Violet City.\p"

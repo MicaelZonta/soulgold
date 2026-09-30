@@ -131,36 +131,36 @@ OneIsland_KindleRoad_Text_ClairePostBattle::
 	.string "I feel famished again.$"
 
 OneIsland_KindleRoad_Text_KiaIntro::
-	.string "KIA: My big brother and I make\n"
+	.string "{SPEAKER NAME_KIA}My big brother and I make\n"
 	.string "an awesome combination!$"
 
 OneIsland_KindleRoad_Text_KiaDefeat::
-	.string "KIA: Huh?!\n"
+	.string "{SPEAKER NAME_KIA}Huh?!\n"
 	.string "I can't believe it!$"
 
 OneIsland_KindleRoad_Text_KiaPostBattle::
-	.string "KIA: How could there be anyone\n"
+	.string "{SPEAKER NAME_KIA}How could there be anyone\n"
 	.string "better than my big brother?$"
 
 OneIsland_KindleRoad_Text_KiaNotEnoughMons::
-	.string "KIA: If you want to battle with\n"
+	.string "{SPEAKER NAME_KIA}If you want to battle with\n"
 	.string "us, you have to bring at least two\l"
 	.string "Pokémon with you.$"
 
 OneIsland_KindleRoad_Text_MikIntro::
-	.string "MIK: Together with KIA, I'm afraid\n"
+	.string "{SPEAKER NAME_MIK}Together with KIA, I'm afraid\n"
 	.string "of nothing!$"
 
 OneIsland_KindleRoad_Text_MikDefeat::
-	.string "MIK: Whoa!\n"
+	.string "{SPEAKER NAME_MIK}Whoa!\n"
 	.string "That's too much!$"
 
 OneIsland_KindleRoad_Text_MikPostBattle::
-	.string "MIK: How could my combination\n"
+	.string "{SPEAKER NAME_MIK}How could my combination\n"
 	.string "with KIA fail?$"
 
 OneIsland_KindleRoad_Text_MikNotEnoughMons::
-	.string "MIK: Hey, do you want to battle\n"
+	.string "{SPEAKER NAME_MIK}Hey, do you want to battle\n"
 	.string "with us two?\p"
 	.string "Bring two or more Pokémon with\n"
 	.string "you, then.$"

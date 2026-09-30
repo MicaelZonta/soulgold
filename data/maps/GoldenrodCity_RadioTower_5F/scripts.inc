@@ -287,14 +287,14 @@ GoldenrodCity_RadioTower_5F_Text_RocketBossAfter:
 	.string "Farewell.$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorThanks:
-	.string "Director: {PLAYER}, thank you!\p"
+	.string "{SPEAKER NAME_DIRECTOR}{PLAYER}, thank you!\p"
 	.string "Your courageous actions have saved\n"
 	.string "Pokémon nationwide.\p"
 	.string "I know it's not much, but please\n"
 	.string "take this.$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorThanksAgain:
-	.string "Director: {PLAYER}, once again, thank you!\p"
+	.string "{SPEAKER NAME_DIRECTOR}{PLAYER}, once again, thank you!\p"
 	.string "The large winged Pokémon that flew past\n"
 	.string "reminded me, I have a reward for your\l"
 	.string "courageous actions.\p"
@@ -381,7 +381,7 @@ GoldenrodCity_RadioTower_5F_Text_DirectorFakeout:
 	.string "this time. See ya!$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorIntro:
-	.string "Director: Hello, {PLAYER}!\p"
+	.string "{SPEAKER NAME_DIRECTOR}Hello, {PLAYER}!\p"
 	.string "You know, I love Pokémon.\p"
 	.string "I built this Radio Tower so I could\n"
 	.string "express my love of Pokémon.\p"
@@ -390,7 +390,7 @@ GoldenrodCity_RadioTower_5F_Text_DirectorIntro:
 
 @ 1.2.1 Sequence Break - Directs player toward Baoba
 GoldenrodCity_RadioTower_5F_Text_DirectorWest:
-	.string "Director: Hello, {PLAYER}!\p"
+	.string "{SPEAKER NAME_DIRECTOR}Hello, {PLAYER}!\p"
 	.string "Did you see the large winged Pokémon\n"
 	.string "that flew past earlier?\p"
 	.string "It's the talk of the town!\n"
@@ -399,7 +399,7 @@ GoldenrodCity_RadioTower_5F_Text_DirectorWest:
 	.string "direction of Route 39.$"
 
 GoldenrodCity_RadioTower_5F_Text_Ben:
-	.string "Ben: Do you listen to our music?$"
+	.string "{SPEAKER NAME_BEN}Do you listen to our music?$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorOfficeSign:
 	.string "5F Director's   Office$"
@@ -596,7 +596,7 @@ OakRadioTowerF5_Text_3:
 	.string "Prof. Elm.$"
 
 RadioTower_5F_Archer_Text_0:
-	.string "Archer: Oh? You managed to get\n"
+	.string "{SPEAKER NAME_ARCHER}Oh? You managed to get\n"
 	.string "this far...?\p"
 	.string "You must be quite the Trainer.\p"
 	.string "We intend to take over this\n"
@@ -613,7 +613,7 @@ RadioTower_5F_Archer_Text_1:
 	.string "No! Forgive me, Giovanni!$"
 
 RadioTower_5F_Archer_Text_2:
-	.string "Archer: How could this be...?\p"
+	.string "{SPEAKER NAME_ARCHER}How could this be...?\p"
 	.string "It seems I was not up to the task... \n"
 	.string "Yet.\p"
 	.string "We shall retreat for now, but know \n"
@@ -623,7 +623,7 @@ RadioTower_5F_Archer_Text_2:
 	.string "Farewell...$"
 
 RadioTower_5F_Archer_Text_3:
-	.string "Director: Oh...\p"
+	.string "{SPEAKER NAME_DIRECTOR}Oh...\p"
 	.string "You have already defeated them?\n"
 	.string "Thank you!\p"
 	.string "Your courageous actions have saved\n"

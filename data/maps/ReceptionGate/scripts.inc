@@ -29,7 +29,7 @@ ReceptionGate_EventScript_Janine::
     end
 
 ReceptionGate_Text_Janine:
-    .string "Jaine: I'm on the way to my dad's\n"
+    .string "{SPEAKER NAME_JAINE}I'm on the way to my dad's\n"
     .string "house to give him his lunch.\p"
     .string "The Elite Four has no time to rest\n"
     .string "day or night. It's such hard work,\l"

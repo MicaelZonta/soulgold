@@ -143,16 +143,16 @@ EcruteakCity_Theater_Movement_KimonoGirlMoveBack:
 	step_end
 
 EcruteakCity_Theater_Text_Rocket1:
-	.string "Rocket: Stop dancing such a serious\n"
+	.string "{SPEAKER NAME_ROCKET}Stop dancing such a serious\n"
 	.string "dance! Show me something like\l"
 	.string "a hula dance!$"
 
 EcruteakCity_Theater_Text_KimonoRocket1:
-	.string "Kimono Girl: ...You mustn't push\n"
+	.string "{SPEAKER NAME_KIMONO_GIRL}...You mustn't push\n"
 	.string "such a request on me.$"
 
 EcruteakCity_Theater_Text_Rocket2:
-	.string "Rocket: Huh?\p"
+	.string "{SPEAKER NAME_ROCKET}Huh?\p"
 	.string "Are you telling me you don't\n"
 	.string "respect what the customer\l"
 	.string "wants?$"
@@ -468,7 +468,7 @@ EcruteakCity_Theater_Text_SurfGuyAfter:
 	.string "them if they showed their skill...$"
 
 EcruteakCity_Theater_Text_Lotad:
-	.string "Pachirisu: Pachi pach!$"
+	.string "{SPEAKER NAME_PACHIRISU}Pachi pach!$"
 
 EcruteakCity_Theater_Text_BoyBefore:
 	.string "Eeeeek!$"
@@ -1134,12 +1134,12 @@ EcruteakCity_Theater_Text_GirlLugia:
 	.string "It could be...$"
 
 EcruteakCity_Theater_Text_ZukiHooh:
-	.string "Zuki: {PLAYER}!\n"
+	.string "{SPEAKER NAME_ZUKI}{PLAYER}!\n"
 	.string "We'll be at the Tin Tower.\n"
 	.string "See you there!$"
 
 EcruteakCity_Theater_Text_ZukiLugia:
-	.string "Zuki: {PLAYER}!\n"
+	.string "{SPEAKER NAME_ZUKI}{PLAYER}!\n"
 	.string "We'll be at the Whirl Islands.\l"
 	.string "See you there!$"
 

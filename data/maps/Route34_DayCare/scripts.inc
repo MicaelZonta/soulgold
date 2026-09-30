@@ -207,7 +207,7 @@ Route34_DayCare_EventScript_Ditto::
 	end
 
 Route34_DayCare_Text_Ditto:
-	.string "Ditto: Tto!$"
+	.string "{SPEAKER NAME_DITTO}Tto!$"
 
 Route34_EventScript_DaycareMan::
 	lock

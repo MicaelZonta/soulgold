@@ -75,7 +75,7 @@ Route49_Girl_Text_0:
 	.string "while Papa is fishing.$"
 
 Route49_Stantler_Text_0:
-	.string "Stantler: Staaaaa!$"
+	.string "{SPEAKER NAME_STANTLER}Staaaaa!$"
 
 Route49_CooltrainerEma_Text_0:
 	.string "I will check if you are prepared for\n"

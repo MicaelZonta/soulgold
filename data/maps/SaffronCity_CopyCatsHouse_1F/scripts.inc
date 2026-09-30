@@ -41,4 +41,4 @@ CopycatsHouse1F_Text_PokefanF_ReturnedPart:
 	.string "better at mimicry…$"
 
 CopycatsHouse1F_Text_Blissey:
-	.string "Blissey: Bliisii!$"
+	.string "{SPEAKER NAME_BLISSEY}Bliisii!$"

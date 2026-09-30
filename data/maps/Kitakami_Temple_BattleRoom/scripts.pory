@@ -4,7 +4,7 @@ script BattleRoom_Audino {
     lock
     faceplayer
     playmoncry(SPECIES_AUDINO, CRY_MODE_NORMAL)
-    msgbox("Audino: Audiini!")
+    msgbox("{SPEAKER NAME_AUDINO}Audiini!")
     waitmoncry
     release
     end
@@ -13,7 +13,7 @@ script BattleRoom_Audino {
 script BattleRoom_Machamp {
     lock
     playmoncry(SPECIES_MACHAMP, CRY_MODE_NORMAL)
-    msgbox("Machamp: Mach!")
+    msgbox("{SPEAKER NAME_MACHAMP}Mach!")
     waitmoncry
     release
     end
@@ -22,7 +22,7 @@ script BattleRoom_Machamp {
 script BattleRoom_Mienshao {
     lock
     playmoncry(SPECIES_MIENSHAO, CRY_MODE_NORMAL)
-    msgbox("Mienshao: Mii!")
+    msgbox("{SPEAKER NAME_MIENSHAO}Mii!")
     waitmoncry
     release
     end

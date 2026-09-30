@@ -84,7 +84,7 @@ FactoryGrounds_Boy_Text_2:
 	.string "Cool, right?$"
 
 FactoryGrounds_Espurr_Text_0:
-	.string "Espurr: Essss!$"
+	.string "{SPEAKER NAME_ESPURR}Essss!$"
 
 FactoryGrounds_OldLady_Text_0:
 	.string "I'm not fond of these modern\n"

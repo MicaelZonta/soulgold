@@ -166,7 +166,7 @@ SproutTower_3F_Movement_EscapeRope:
 	step_end
 
 SproutTower_Text_ElderLecturesRival:
-	.string "Elder: You are indeed skilled\n"
+	.string "{SPEAKER NAME_ELDER}You are indeed skilled\n"
 	.string "as a trainer.\p"
 	.string "As promised, here is your HM.\p"
 	.string "But let me say this: You should\n"

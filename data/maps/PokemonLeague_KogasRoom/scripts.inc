@@ -58,7 +58,7 @@ PokemonLeague_KogasRoom_EventScript_KogaDefeated::
 	end
 
 PokemonLeague_KogasRoom_Text_RematchBefore:
-    .string "Koga: Fwahahahaha!\p"
+    .string "{SPEAKER NAME_KOGA}Fwahahahaha!\p"
     .string "You return, brave challenger.\p"
     .string "My ninja skills have sharpened.\p"
     .string "New sinister traps await you.\p"

@@ -29,7 +29,7 @@ CeladonCity_Gym_EventScript_Erika_Defeated::
 	end
 
 CeladonCity_Gym_Text_ErikaBeforeBattle:
-	.string "Erika: Hello… Lovely weather,\n"
+	.string "{SPEAKER NAME_ERIKA}Hello… Lovely weather,\n"
 	.string "isn't it? It's so pleasant…\p"
 	.string "…I'm afraid I may doze off…\p"
 	.string "My name is Erika. I am the Leader\n"
@@ -49,7 +49,7 @@ CeladonCity_Gym_Text_PlayerReceivedRainbowBadge:
 	.string "{PLAYER} received Rainbowbadge.$"
 
 CeladonCity_Gym_Text_ErikaExplainTM:
-	.string "Erika: That was a delightful\n"
+	.string "{SPEAKER NAME_ERIKA}That was a delightful\n"
 	.string "match.\p"
 	.string "I felt inspired. Please, I wish\n"
 	.string "you to have this TM.\p"
@@ -60,13 +60,13 @@ CeladonCity_Gym_Text_ErikaExplainTM:
 	.string "Please use it if it pleases you…$"
 
 CeladonCity_Gym_Text_ErikaAfterBattle:
-	.string "Erika: Losing leaves a bitter\n"
+	.string "{SPEAKER NAME_ERIKA}Losing leaves a bitter\n"
 	.string "aftertaste…\p"
 	.string "But knowing that there are strong\n"
 	.string "trainers spurs me to do better…$"
 
 CeladonCity_Gym_Text_ErikaRematch:
-	.string "Erika: Oh, hello.\p"
+	.string "{SPEAKER NAME_ERIKA}Oh, hello.\p"
 	.string "What a surprise, Kanto Champion!\p"
 	.string "It's so lovely to see you again.\p"
 	.string "Your journey must have been so\n"
@@ -75,7 +75,7 @@ CeladonCity_Gym_Text_ErikaRematch:
 	.string "Want to have a rematch with me?$"
 
 CeladonCity_Gym_Text_ErikaRematchDefeat:
-	.string "Erika: Losing still leaves a\n"
+	.string "{SPEAKER NAME_ERIKA}Losing still leaves a\n"
 	.string "bitter aftertaste…\p"
 	.string "But knowing that there are strong\n"
 	.string "trainers spurs me to do better…$"

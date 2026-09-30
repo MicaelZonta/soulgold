@@ -76,7 +76,7 @@ SafariZone_Text_SilentNPC:
 	.string "(I am not a talker.)$"
 
 SafariZone_Text_Kangaskhan:
-	.string "Kangaskhan: ..................$"
+	.string "{SPEAKER NAME_KANGASKHAN}..................$"
 
 SafariZone_Text_JigglypuffTrainer:
 	.string "This Safari Zone is great!\n"

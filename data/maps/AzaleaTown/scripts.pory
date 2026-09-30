@@ -472,7 +472,7 @@ script AzaleaTownVulpix {
 	lock
 	faceplayer
 	playmoncry(SPECIES_VULPIX, CRY_MODE_NORMAL)
-	msgbox("Vulpix: Vul!")
+	msgbox("{SPEAKER NAME_VULPIX}Vul!")
 	waitmessage
 	release
 	end

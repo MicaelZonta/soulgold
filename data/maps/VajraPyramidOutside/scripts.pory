@@ -44,7 +44,7 @@ script VajraPyramidOutside_ScientistsTinkaton {
     lock
     faceplayer
     playmoncry(SPECIES_TINKATON, 0)
-    msgbox("Tinkaton: Tinktii!")
+    msgbox("{SPEAKER NAME_TINKATON}Tinktii!")
     waitmoncry
     msgbox("Your old Tinkaton seems to be having
             fun here!")

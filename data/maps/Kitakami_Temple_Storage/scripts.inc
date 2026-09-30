@@ -47,7 +47,7 @@ StorageKeeper_5:
 
 
 StorageMienfoo_Text_0:
-	.string "Mienfoo: Foo!$"
+	.string "{SPEAKER NAME_MIENFOO}Foo!$"
 
 StorageKeeper_Text_0:
 	.string "These masks allow Ogerpon to wield\n"

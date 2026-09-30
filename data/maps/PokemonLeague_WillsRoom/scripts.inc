@@ -131,7 +131,7 @@ PokemonLeague_WillsRoom_Text_Defeat:
     .string "the Elite Four.$"
 
 PokemonLeague_WillsRoom_Text_RematchBefore:
-    .string "Will: Ah, welcome back.\p"
+    .string "{SPEAKER NAME_WILL}Ah, welcome back.\p"
     .string "I have foreseen this encounter.\p"
     .string "My psychic Pokémon and I have\n"
     .string "evolved,\l"

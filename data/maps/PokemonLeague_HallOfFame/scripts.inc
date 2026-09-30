@@ -186,7 +186,7 @@ PokemonLeague_HallOfFame_Movement_PlayerEnter:
 	step_end
 
 PokemonLeague_HallOfFame_LanceText:
-    .string "Lance: It's been a long time since I\n"
+    .string "{SPEAKER NAME_LANCE}It's been a long time since I\n"
     .string "last came here.\p"
     .string "This is where we honor the League\n"
     .string "Champions for all eternity.\p"
@@ -204,7 +204,7 @@ PokemonLeague_HallOfFame_LanceText:
     .string "and your partners as Champions!$"
 
 PokemonLeague_HallOfFame_Rematch_LanceText:
-    .string "Lance: I remember, it wasn't long ago\n"
+    .string "{SPEAKER NAME_LANCE}I remember, it wasn't long ago\n"
     .string "I stood here, welcoming you as\p"
     .string "the Champion of Johto.\p"
     .string "And now, here we are again, in this\n"

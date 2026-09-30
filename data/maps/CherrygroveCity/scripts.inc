@@ -396,13 +396,13 @@ CherrygroveCity_Text_GuideGentsHouseSign:
 	.string "Guide Gent's House$"
 
 CherryGroveCity_Text_Staryu:
-	.string "Staryu: Yuuuuuuuu.$"
+	.string "{SPEAKER NAME_STARYU}Yuuuuuuuu.$"
 
 CherryGroveCity_Text_Corsola:
-	.string "Corsola: Corsola! La!$"
+	.string "{SPEAKER NAME_CORSOLA}Corsola! La!$"
 
 CherryGroveCity_Text_Krabby:
-	.string "Krabby: Kooookeee!$"
+	.string "{SPEAKER NAME_KRABBY}Kooookeee!$"
 
 CherryGroveCity_Movement_Trigger_Gent:
 	walk_down

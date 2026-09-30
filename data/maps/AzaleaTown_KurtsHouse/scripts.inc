@@ -1071,7 +1071,7 @@ KurtsHouse_Text_Forest:
 	.string "It sounds very restless.$"
 
 KurtsHouse_Text_Slowpoke:
-	.string "Slowpoke: … Yawn?$"
+	.string "{SPEAKER NAME_SLOWPOKE}… Yawn?$"
 
 KurtsHouse_Text_OakPhoto:
 	.string "…A young Prof. Oak?$"

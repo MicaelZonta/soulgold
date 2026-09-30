@@ -98,7 +98,7 @@ RintoHouse3_Researcher_Text_0:
 	.string "repel even our Excadrill's attacks.$"
 
 RintoHouse3_Excadrill_Text_0:
-	.string "Excadrill: Caaaaaaaa!$"
+	.string "{SPEAKER NAME_EXCADRILL}Caaaaaaaa!$"
 
 RintoHouse3_TraderResearcher_Text_0:
 	.string "Thanks to your Tinkaton, we may\n"

@@ -99,7 +99,7 @@ SaffronCity_SilphCo_Text_Steven1:
 	.string "I see...\n"
 	.string "I'll be on my way. See you soon.$"
 SaffronCity_SilphCo_Text_Steven2:
-	.string "Steven: You are... I remember your\n"
+	.string "{SPEAKER NAME_STEVEN}You are... I remember your\n"
 	.string "eyes.\p"
 	.string "When I see a trainer whose eyes\n"
 	.string "twinkle, I always remember.\p"

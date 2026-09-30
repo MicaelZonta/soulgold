@@ -79,7 +79,7 @@ CeladonCity_Text_Fisher:
 	.string "into a frog Pokémon.$"
 
 CeladonCity_Text_Poliwrath:
-	.string "Poliwrath: Croak!$"
+	.string "{SPEAKER NAME_POLIWRATH}Croak!$"
 
 CeladonCity_Text_Teacher1:
 	.string "I lost at the slot machines again…\p"

@@ -117,4 +117,4 @@ CharcoalKiln_Text_Apprentice4:
 	.string "You're the coolest, man!$"
 
 CharcoalKiln_Text_Farfetchd:
-	.string "Farfetch'D: Kwaa!$"
+	.string "{SPEAKER NAME_FARFETCHD}Kwaa!$"

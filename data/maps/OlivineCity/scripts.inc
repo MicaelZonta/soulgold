@@ -392,7 +392,7 @@ OlivineCity_Text_BattleTowerSign:
 	.string "Opening Now!$"
 
 OlivineCity_Text_Machoke:
-	.string "Machoke: Cho!$"
+	.string "{SPEAKER NAME_MACHOKE}Cho!$"
 
 OlivineCity_Littlegirl_Warf::
 	lock

@@ -280,7 +280,7 @@ Route36_Text_SchoolboyAlanAfter:
 	.string "reading books.$"
 
 Route36_Text_MeetArthur:
-	.string "Arthur: Who are you?\n"
+	.string "{SPEAKER NAME_ARTHUR}Who are you?\n"
 	.string "I'm Arthur of the Weekday Family.\p"
 	.string "If you can guess my favorite day,\n"
 	.string "I'll give you a reward.$"
@@ -292,12 +292,12 @@ Route36_Text_ArthurGivesGift:
 	.string "Here. You can have this.$"
 
 Route36_Text_ArthurGaveGift:
-	.string "Arthur: A Pokémon that uses rock-\n"
+	.string "{SPEAKER NAME_ARTHUR}A Pokémon that uses rock-\n"
 	.string "type moves should hold on to that.\p"
 	.string "It pumps up rock-type attacks.$"
 
 Route36_Text_ArthurThursday:
-	.string "Arthur: I'm Arthur of Thursday.\n"
+	.string "{SPEAKER NAME_ARTHUR}I'm Arthur of Thursday.\n"
 	.string "I'm the fifth son out of seven.$"
 
 Route36_Text_Sign:

@@ -245,7 +245,7 @@ CeruleanGym_Text_Note1:
 	.string "too. Gym Trainers$"
 
 CeruleanGym_Text_MistyIntro:
-	.string "Misty: I was expecting you, you\n"
+	.string "{SPEAKER NAME_MISTY}I was expecting you, you\n"
 	.string "pest!\p"
 	.string "You may have a lot of Johto Gym\n"
 	.string "Badges, but you'd better not\l"
@@ -262,7 +262,7 @@ CeruleanGym_Text_ReceivedBadge:
 	.string "{PLAYER} received Cascadebadge.$"
 
 CeruleanGym_Text_MistyFightDone:
-	.string "Misty: Are there many strong\n"
+	.string "{SPEAKER NAME_MISTY}Are there many strong\n"
 	.string "trainers in Johto? Like you, I\l"
 	.string "mean.\p"
 	.string "I'm going to travel one day, so\n"
@@ -270,7 +270,7 @@ CeruleanGym_Text_MistyFightDone:
 	.string "trainers.$"
 
 CeruleanGym_Text_MistyRematch:
-	.string "Misty: Wow, you're the Kanto\n"
+	.string "{SPEAKER NAME_MISTY}Wow, you're the Kanto\n"
 	.string "Champion now!\p"
 	.string "That's amazing! You've come a\n"
 	.string "long way, {PLAYER}.\p"
@@ -278,7 +278,7 @@ CeruleanGym_Text_MistyRematch:
 	.string "Want to have a rematch with me?$"
 
 CeruleanGym_Text_MistyRematchDefeat:
-	.string "Misty: You really are good…$"
+	.string "{SPEAKER NAME_MISTY}You really are good…$"
 
 CeruleanGym_Text_SwimmerfDianaSeen:
 	.string "Sorry about being away. Let's get\n"

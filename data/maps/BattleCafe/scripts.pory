@@ -1171,17 +1171,17 @@ script BattleCafe_TrainerDoves {
     faceplayer
     
     if (flag(FLAG_DAILY_BATTLE_CAFE_DOVES)) {
-        msgbox("Doves: Let's fight again tomorrow when 
+        msgbox("{SPEAKER NAME_DOVES}Let's fight again tomorrow when 
                 my Genesect is allowed on the 
                 battlefield.")
         release
         end
     }
-    msgbox("Doves: Let me show you the power of 
+    msgbox("{SPEAKER NAME_DOVES}Let me show you the power of 
             Genesect!")
     trainerbattle_no_intro(TRAINER_CAFE_DOVES, "Banned again from Overused...")
     setflag(FLAG_DAILY_BATTLE_CAFE_DOVES)
-    msgbox("Doves: Let's fight again tomorrow when
+    msgbox("{SPEAKER NAME_DOVES}Let's fight again tomorrow when
             my Genesect is allowed on the 
             battlefield.")
     call(BattleCafe_GiveDailyCandyReward)
@@ -1194,15 +1194,15 @@ script BattleCafe_TrainerElton {
     faceplayer
     
     if (flag(FLAG_DAILY_BATTLE_CAFE_ELTON)) {
-        msgbox("Elton: Rematch tomorrow! Be there!")
+        msgbox("{SPEAKER NAME_ELTON}Rematch tomorrow! Be there!")
         release
         end
     }
-    msgbox("Elton: Let's have a battle with our
+    msgbox("{SPEAKER NAME_ELTON}Let's have a battle with our
             favourite Pokémon!")
     trainerbattle_no_intro(TRAINER_CAFE_ELTON, "You handled every trick I had!")
     setflag(FLAG_DAILY_BATTLE_CAFE_ELTON)
-    msgbox("Elton: Even Gengar's impressed, and it
+    msgbox("{SPEAKER NAME_ELTON}Even Gengar's impressed, and it
             rarely takes a loss seriously.")
     call(BattleCafe_GiveDailyCandyReward)
     release
@@ -1214,14 +1214,14 @@ script BattleCafe_TrainerNem {
     faceplayer
     
     if (flag(FLAG_DAILY_BATTLE_CAFE_NEM)) {
-        msgbox("Nem: Come back tomorrow.")
+        msgbox("{SPEAKER NAME_NEM}Come back tomorrow.")
         release
         end
     }
-    msgbox("Nem: Think fast!")
+    msgbox("{SPEAKER NAME_NEM}Think fast!")
     trainerbattle_no_intro(TRAINER_CAFE_NEM, "I'll be watching.")
     setflag(FLAG_DAILY_BATTLE_CAFE_NEM)
-    msgbox("Nem: We can fight again tomorrow.")
+    msgbox("{SPEAKER NAME_NEM}We can fight again tomorrow.")
     call(BattleCafe_GiveDailyCandyReward)
     release
     end
@@ -1232,16 +1232,16 @@ script BattleCafe_TrainerBai {
     faceplayer
     
     if (flag(FLAG_DAILY_BATTLE_CAFE_BAI)) {
-        msgbox("Bai: That was a good match!
+        msgbox("{SPEAKER NAME_BAI}That was a good match!
                 Let's fight again tomorrow!")
         release
         end
     }
-    msgbox("Bai: Let's see what you bring to 
+    msgbox("{SPEAKER NAME_BAI}Let's see what you bring to 
             the table!")
     trainerbattle_no_intro(TRAINER_CAFE_BAI, "Guess I'm cooked this time...")
     setflag(FLAG_DAILY_BATTLE_CAFE_BAI)
-    msgbox("Bai: Good match! Let's try this again 
+    msgbox("{SPEAKER NAME_BAI}Good match! Let's try this again 
             tomorrow!")
     call(BattleCafe_GiveDailyCandyReward)
     release
@@ -1253,15 +1253,15 @@ script BattleCafe_TrainerDrac {
     faceplayer
     
     if (flag(FLAG_DAILY_BATTLE_CAFE_DRAC)) {
-        msgbox("Drac: You're really tough! Let's fight
+        msgbox("{SPEAKER NAME_DRAC}You're really tough! Let's fight
                 again tomorrow!")
         release
         end
     }
-    msgbox("Drac: Care for a double battle?")
+    msgbox("{SPEAKER NAME_DRAC}Care for a double battle?")
     trainerbattle_no_intro(TRAINER_CAFE_DRAC, "Soothed.")
     setflag(FLAG_DAILY_BATTLE_CAFE_DRAC)
-    msgbox("Drac: You're really tough! Let's fight
+    msgbox("{SPEAKER NAME_DRAC}You're really tough! Let's fight
             again tomorrow!")
     call(BattleCafe_GiveDailyCandyReward)
     release
@@ -1296,11 +1296,11 @@ script BattleCafe_TrainerTylarie {
         release
         end
     }
-    msgbox("Tylarie: Let me show you how sturdy my
+    msgbox("{SPEAKER NAME_TYLARIE}Let me show you how sturdy my
             team is!")
     trainerbattle_no_intro(TRAINER_CAFE_TYLARIE, "Ouch.")
     setflag(FLAG_DAILY_BATTLE_CAFE_TYLARIE)
-    msgbox("Tylarie: Not bad. We can go at it again
+    msgbox("{SPEAKER NAME_TYLARIE}Not bad. We can go at it again
             another day.")
     call(BattleCafe_GiveDailyCandyReward)
     release

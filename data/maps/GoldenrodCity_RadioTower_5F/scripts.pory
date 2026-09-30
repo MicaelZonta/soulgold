@@ -287,14 +287,14 @@ GoldenrodCity_RadioTower_5F_Text_RocketBossAfter:
 	.string "Farewell.$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorThanks:
-	.string "Director: {PLAYER}, thank you!\p"
+	.string "{SPEAKER NAME_DIRECTOR}{PLAYER}, thank you!\p"
 	.string "Your courageous actions have saved\n"
 	.string "Pokémon nationwide.\p"
 	.string "I know it's not much, but please\n"
 	.string "take this.$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorThanksAgain:
-	.string "Director: {PLAYER}, once again, thank you!\p"
+	.string "{SPEAKER NAME_DIRECTOR}{PLAYER}, once again, thank you!\p"
 	.string "The large winged Pokémon that flew past\n"
 	.string "reminded me, I have a reward for your\l"
 	.string "courageous actions.\p"
@@ -381,7 +381,7 @@ GoldenrodCity_RadioTower_5F_Text_DirectorFakeout:
 	.string "this time. See ya!$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorIntro:
-	.string "Director: Hello, {PLAYER}!\p"
+	.string "{SPEAKER NAME_DIRECTOR}Hello, {PLAYER}!\p"
 	.string "You know, I love Pokémon.\p"
 	.string "I built this Radio Tower so I could\n"
 	.string "express my love of Pokémon.\p"
@@ -390,7 +390,7 @@ GoldenrodCity_RadioTower_5F_Text_DirectorIntro:
 
 @ 1.2.1 Sequence Break - Directs player toward Baoba
 GoldenrodCity_RadioTower_5F_Text_DirectorWest:
-	.string "Director: Hello, {PLAYER}!\p"
+	.string "{SPEAKER NAME_DIRECTOR}Hello, {PLAYER}!\p"
 	.string "Did you see the large winged Pokémon\n"
 	.string "that flew past earlier?\p"
 	.string "It's the talk of the town!\n"
@@ -399,7 +399,7 @@ GoldenrodCity_RadioTower_5F_Text_DirectorWest:
 	.string "direction of Route 39.$"
 
 GoldenrodCity_RadioTower_5F_Text_Ben:
-	.string "Ben: Do you listen to our music?$"
+	.string "{SPEAKER NAME_BEN}Do you listen to our music?$"
 
 GoldenrodCity_RadioTower_5F_Text_DirectorOfficeSign:
 	.string "5F Director's   Office$"
@@ -432,7 +432,7 @@ script OakRadioTowerF5 {
 script RadioTower_5F_Archer {
 	lock
 	faceplayer
-	msgbox("Archer: Oh? You managed to get
+	msgbox("{SPEAKER NAME_ARCHER}Oh? You managed to get
 			this far...?
 			
 			You must be quite the Trainer.
@@ -451,7 +451,7 @@ script RadioTower_5F_Archer {
 			our meticulous plans!")
 	trainerbattle_no_intro(TRAINER_ARCHER, "No! Forgive me, Giovanni!")
 	createfieldmugshot(MUGSHOT_ARCHER)
-	msgbox("Archer: How could this be...?
+	msgbox("{SPEAKER NAME_ARCHER}How could this be...?
 	
 			It seems I was not up to the task... 
 			Yet.
@@ -482,7 +482,7 @@ script RadioTower_5F_Archer {
 	waitmovement(0)
 	turnobject(LOCALID_PLAYER, DIR_EAST)
 	createfieldmugshot(MUGSHOT_GENTLEMAN)
-	msgbox("Director: Oh...
+	msgbox("{SPEAKER NAME_DIRECTOR}Oh...
 			
 			You have already defeated them?
 			Thank you!

@@ -768,7 +768,7 @@ AzaleaTown_Gym_Text_BugCatcherJoshAfter:
 	.string "better moves…$"
 
 AzaleaTown_Gym_Text_TwinsAmyMay1Seen:
-	.string "Amy: Hi! Are you challenging\n"
+	.string "{SPEAKER NAME_AMY}Hi! Are you challenging\n"
 	.string "the Leader? No way!$"
 
 AzaleaTown_Gym_Text_TwinsAmyMay1Beaten:
@@ -776,13 +776,13 @@ AzaleaTown_Gym_Text_TwinsAmyMay1Beaten:
 	.string "goodness!$"
 
 AzaleaTown_Gym_Text_TwinsAmyMay1After:
-	.string "Amy: You're really strong!\p"
+	.string "{SPEAKER NAME_AMY}You're really strong!\p"
 	.string "But Bugsy's even stronger!\n"
 	.string "His Scyther's U-Turn almost\l"
 	.string "always makes turns the tide!$"
 
 AzaleaTown_Gym_Text_TwinsAmyMay2Seen:
-	.string "May: You want to see the\n"
+	.string "{SPEAKER NAME_MAY}You want to see the\n"
 	.string "Leader? Good luck!\p"
 	.string "Bugsy is so strong!\n"
 	.string "His Scyther's U-turn always\l"
@@ -793,7 +793,7 @@ AzaleaTown_Gym_Text_TwinsAmyMay2Beaten:
 	.string "goodness!$"
 
 AzaleaTown_Gym_Text_TwinsAmyMay2After:
-	.string "May: Our bug Pokémon lost!\n"
+	.string "{SPEAKER NAME_MAY}Our bug Pokémon lost!\n"
 	.string "Oh, what a shame.\p"
 	.string "Bugsy's won't lose though!\p"
 	.string "His Scyther makes short work\n"

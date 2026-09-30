@@ -1,5 +1,5 @@
 gBirchDexRatingText_AreYouCurious::
-	.string "PROF. BIRCH: Ah, {PLAYER}{KUN}!\p"
+	.string "{SPEAKER NAME_BIRCH}Ah, {PLAYER}{KUN}!\p"
 	.string "Are you curious about how your\n"
 	.string "POKéDEX is coming along?$"
 
@@ -117,7 +117,7 @@ gBirchDexRatingText_OnANationwideBasis::
 @ FRLG
 
 PokedexRating_Text_HowIsPokedexComingAlong::
-	.string "OAK: Good to see you!\n"
+	.string "{SPEAKER NAME_OAK}Good to see you!\n"
 	.string "How is your POKéDEX coming along?\p"
 	.string "Here, let me take a look.$"
 
@@ -229,7 +229,7 @@ PokedexRating_Text_ThankYouMadeDreamReality::
 	.string "You've made my dream a reality!$"
 
 PokedexRating_Text_LoveSeeingYourPokedex::
-	.string "OAK: Ah, welcome!\p"
+	.string "{SPEAKER NAME_OAK}Ah, welcome!\p"
 	.string "Tell me, how is your POKéDEX\n"
 	.string "coming along?\p"
 	.string "Wahaha!\p"

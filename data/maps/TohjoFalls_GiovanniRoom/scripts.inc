@@ -14,7 +14,7 @@ TohjoPassGuard::
 
 
 TohjoPassGuard_Text_0:
-	.string "Rhyperior: Grr...$"
+	.string "{SPEAKER NAME_RHYPERIOR}Grr...$"
 
 TohjoPassGuard_Text_1:
 	.string "The Rhyperior is guarding the entrance\n"

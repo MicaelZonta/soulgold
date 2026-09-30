@@ -23,7 +23,7 @@ OlivineCity_PortInside_Movement_OakLeave:
 	step_end
 
 OlivineCity_PortInside_Text_Nationaldex1:
-	.string "Prof.Oak: Hello!\n"
+	.string "{SPEAKER NAME_OAK}Hello!\n"
 	.string "You are starting to have the\l"
 	.string "attitude of a Champion, {PLAYER}!\p"
 	.string "It's time for your Pokédex to\n"
@@ -36,7 +36,7 @@ OlivineCity_PortInside_Text_Nationaldex2:
 	.string "{PLAYER}'s Pokédex was upgraded\n"
 	.string "with the National Mode!$"
 OlivineCity_PortInside_Text_Nationaldex3:
-	.string "Prof.Oak: It won't be easy to\n"
+	.string "{SPEAKER NAME_OAK}It won't be easy to\n"
 	.string "complete the National Pokédex...\p"
 	.string "However, I'm sure you will make\n"
 	.string "honest attempt on our behalf!$"
@@ -386,11 +386,11 @@ OlivinePort_EventScript_SailFaraway_Text_0:
 	.string "to the unknown!$"
 
 OlivinePortBlaine_Text_0:
-	.string "Blaine: I let the sailor know about the\n"
+	.string "{SPEAKER NAME_BLAINE}I let the sailor know about the\n"
 	.string "island.$"
 
 OlivinePortBlaine_Text_1:
-	.string "???: Ahh... Nothing quite like \n"
+	.string "{SPEAKER NAME_UNKNOWN}Ahh... Nothing quite like \n"
 	.string "a refreshing Soda Pop!$"
 
 OlivinePortBlaine_Text_2:
@@ -399,23 +399,23 @@ OlivinePortBlaine_Text_2:
 	.string "achieved such a feat!\p"
 	.string "My name is Blaine. I am a Gym Leader in\n"
 	.string "another region.\p"
-	.string "Blaine: Ooh! I have an idea!\p"
+	.string "{SPEAKER NAME_BLAINE}Ooh! I have an idea!\p"
 	.string "Quiz time!$"
 
 OlivinePortBlaine_Text_3:
-	.string "Blaine: Are you afraid of the unknown?$"
+	.string "{SPEAKER NAME_BLAINE}Are you afraid of the unknown?$"
 
 OlivinePortBlaine_Text_4:
 	.string "Oh... Wrong Answer!$"
 
 OlivinePortBlaine_Text_5:
-	.string "Blaine: Good!\p"
+	.string "{SPEAKER NAME_BLAINE}Good!\p"
 	.string "Next question!\p"
 	.string "Do you think you could beat me in\n"
 	.string "a Pokémon battle?$"
 
 OlivinePortBlaine_Text_6:
-	.string "Blaine: I respect the honesty, but you\n"
+	.string "{SPEAKER NAME_BLAINE}I respect the honesty, but you\n"
 	.string "should have a bit more confidence\l"
 	.string "in yourself!$"
 
@@ -426,13 +426,13 @@ OlivinePortBlaine_Text_7:
 	.string "a Pokémon battle?$"
 
 OlivinePortBlaine_Text_8:
-	.string "Blaine: Still not confident enough?\n"
+	.string "{SPEAKER NAME_BLAINE}Still not confident enough?\n"
 	.string "Well I can't blame you. \p"
 	.string "After all, I am quite the fiery soul!\n"
 	.string "Ho ho ho!$"
 
 OlivinePortBlaine_Text_9:
-	.string "Blaine: Such a bold statement! \n"
+	.string "{SPEAKER NAME_BLAINE}Such a bold statement! \n"
 	.string "I shall put that to the test right here!$"
 
 OlivinePortBlaine_Text_10:
@@ -442,7 +442,7 @@ OlivinePortBlaine_Text_11:
 	.string "Wowzers! You scorched me!$"
 
 OlivinePortBlaine_Text_12:
-	.string "Blaine: Yowch! I got burned!\n"
+	.string "{SPEAKER NAME_BLAINE}Yowch! I got burned!\n"
 	.string "You're the real deal!\p"
 	.string "Here's the thing. I was visiting\n"
 	.string "Johto to check up on my old friend\l"

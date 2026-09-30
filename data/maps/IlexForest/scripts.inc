@@ -677,7 +677,7 @@ IlexForest_Text_ItsTheMissingPokemon:
 	.string "It's the missing Pokémon!$"
 
 IlexForest_Text_Kwaaaa:
-	.string "Farfetch'D: Kwaa!$"
+	.string "{SPEAKER NAME_FARFETCHD}Kwaa!$"
 
 IlexForest_Text_CharcoalMasterIntro:
 	.string "Ah! My Farfetch'D!\p"

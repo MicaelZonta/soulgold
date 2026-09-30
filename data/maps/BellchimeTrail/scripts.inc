@@ -18,7 +18,7 @@ BellchimeTrail_EventScript_Morty::
 	end
 
 BellchimeTrail_Text_Morty:
-	.string "Morty: The legendary Pokémon\n"
+	.string "{SPEAKER NAME_MORTY}The legendary Pokémon\n"
 	.string "did not choose me...\p"
 	.string "But that does not mean that I\n"
 	.string "have lost out on my future.\p"
@@ -74,7 +74,7 @@ BellchimeTrail_MortyRematch_2:
 
 
 BellchimeTrail_MortyRematch_Text_0:
-	.string "Morty: In the end, the Legendary\n"
+	.string "{SPEAKER NAME_MORTY}In the end, the Legendary\n"
 	.string "Pokémon did not choose me.\p"
 	.string "I wonder the reason often when I walk\n"
 	.string "this trail.\p"

@@ -897,7 +897,7 @@ CianwoodCity_Movement_Eusine3:
 	step_end
 
 CianwoodCity_Text_EusineSuicune:
-	.string "Eusine: Yo, {PLAYER}.\p"
+	.string "{SPEAKER NAME_EUSINE}Yo, {PLAYER}.\p"
 	.string "Wasn't that Suicune just now?\p"
 	.string "I only caught a quick glimpse, but\n"
 	.string "I thought I saw Suicune running on\l"

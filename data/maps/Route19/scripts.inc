@@ -117,7 +117,7 @@ Route19_Text_Fisher1:
 	.string "Town.$"
 
 Route19_Text_Kingler:
-	.string "Kingler: Keeeeeeeeeeee$"
+	.string "{SPEAKER NAME_KINGLER}Keeeeeeeeeeee$"
 
 Route19_Text_Fisher1_RocksCleared:
 	.string "I'm all sweaty. Time for a swim!$"

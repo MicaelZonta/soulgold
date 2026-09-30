@@ -298,11 +298,11 @@ GoldenrodCity_RadioTower_2F_EventScript_Jigglypuff::
 	end
 
 RadioTower2FBuenaPasswordIsHelpText:
-	.string "Buena: Today's password?\n"
+	.string "{SPEAKER NAME_BUENA}Today's password?\n"
 	.string "Help, of course!$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaGreeting:
-	.string "Buena: Hi! This is the studio\n"
+	.string "{SPEAKER NAME_BUENA}Hi! This is the studio\n"
 	.string "for Buena's Password.\p"
 	.string "What can I do for you?$"
 
@@ -316,30 +316,30 @@ GoldenrodCity_RadioTower_2F_Text_BuenaMenuCancel:
 	.string "Cancel$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaAskPassword:
-	.string "Buena: Thank you for listening\n"
+	.string "{SPEAKER NAME_BUENA}Thank you for listening\n"
 	.string "in every day!\p"
 	.string "Do you remember today's\n"
 	.string "password?$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaForgotPassword:
-	.string "Buena: Come back after you\n"
+	.string "{SPEAKER NAME_BUENA}Come back after you\n"
 	.string "listen to my show, OK?\p"
 	.string "Catch ya later!$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaJoinShow:
-	.string "Buena: Oh, wow! Thank you!\p"
+	.string "{SPEAKER NAME_BUENA}Oh, wow! Thank you!\p"
 	.string "What was your name again?\n"
 	.string "...{PLAYER}!\p"
 	.string "Come on, {PLAYER}.\n"
 	.string "Join the show.$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaEveryoneReady:
-	.string "Buena: Everyone ready?\p"
+	.string "{SPEAKER NAME_BUENA}Everyone ready?\p"
 	.string "I want to hear you shout out\n"
 	.string "today's password for {PLAYER}!$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaCorrect:
-	.string "Buena: Yippee! That's right!\n"
+	.string "{SPEAKER NAME_BUENA}Yippee! That's right!\n"
 	.string "You did tune in!\p"
 	.string "I'm so happy! You earned one\n"
 	.string "point! Congratulations!\p"
@@ -347,11 +347,11 @@ GoldenrodCity_RadioTower_2F_Text_BuenaCorrect:
 	.string "tomorrow!$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaWrong:
-	.string "Buena: Aww... That's not it...\n"
+	.string "{SPEAKER NAME_BUENA}Aww... That's not it...\n"
 	.string "Did you forget the password?$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaOffAir:
-	.string "Buena: My password show airs\nevery night, 6 PM to midnight!\p"
+	.string "{SPEAKER NAME_BUENA}My password show airs\nevery night, 6 PM to midnight!\p"
 	.string "Use your Radio to hear the password,\n"
 	.string "then come see me here!$"
 
@@ -362,24 +362,24 @@ GoldenrodCity_RadioTower_2F_Text_BuenaAlreadyPlayed:
 	.string "another try!$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaPrizeIntro:
-	.string "Buena: You have {STR_VAR_1}P.\n"
+	.string "{SPEAKER NAME_BUENA}You have {STR_VAR_1}P.\n"
 	.string "Which prize do you want?$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaConfirmPrize:
-	.string "Buena: Trade {STR_VAR_2}P for\n"
+	.string "{SPEAKER NAME_BUENA}Trade {STR_VAR_2}P for\n"
 	.string "{STR_VAR_1}?$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaPrizeGiven:
-	.string "Buena: Here you go!\p"
+	.string "{SPEAKER NAME_BUENA}Here you go!\p"
 	.string "You have {STR_VAR_1}P left.\p"
 	.string "Want another prize?$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaNotEnoughPoints:
-	.string "Buena: You need more points for\n"
+	.string "{SPEAKER NAME_BUENA}You need more points for\n"
 	.string "that prize.$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaBagFull:
-	.string "Buena: Your Bag is full.\p"
+	.string "{SPEAKER NAME_BUENA}Your Bag is full.\p"
 	.string "Make some room and come back!$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaAnswerCyndaquil:
@@ -516,7 +516,7 @@ GoldenrodCity_RadioTower_2F_Text_TeacherRockets:
 	.string "the Radio Tower?$"
 
 GoldenrodCity_RadioTower_2F_Text_Jigglypuff:
-	.string "Jigglypuff: Jiggly…$"
+	.string "{SPEAKER NAME_JIGGLYPUFF}Jiggly…$"
 
 GoldenrodCity_RadioTower_2F_Text_BlackBelt1:
 	.string "Sorry. Authorized personnel only\n"
@@ -580,7 +580,7 @@ GoldenrodCity_RadioTower_2F_Text_GruntF2After:
 	.string "it!$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaShowPromo:
-	.string "Buena: My password show airs\nevery night, 6 PM to midnight!\p"
+	.string "{SPEAKER NAME_BUENA}My password show airs\nevery night, 6 PM to midnight!\p"
 	.string "Tune in with your Pokégear,\n"
 	.string "then come see me here!$"
 
@@ -661,7 +661,7 @@ GoldenrodCity_RadioTower_2F_EventScript_Oak_11:
 
 
 GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_0:
-	.string "Oak: Good to see you, {PLAYER}!\p"
+	.string "{SPEAKER NAME_OAK}Good to see you, {PLAYER}!\p"
 	.string "How is your Pokédex coming along?\n"
 	.string "Here, let me take a look.$"
 
@@ -671,19 +671,19 @@ GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_1:
 	.string "Here is my Johto Pokédex rating:$"
 
 GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_2:
-	.string "Oak: Your completed Johto Pokédex\n"
+	.string "{SPEAKER NAME_OAK}Your completed Johto Pokédex\n"
 	.string "fills me with pride.\p"
 	.string "Take good care of that Egg!$"
 
 GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_3:
-	.string "Oak: Ah! You've completed the\n"
+	.string "{SPEAKER NAME_OAK}Ah! You've completed the\n"
 	.string "Johto Pokédex!\p"
 	.string "This is a magnificent feat!\p"
 	.string "I want you to have this very\n"
 	.string "special Pokémon Egg.$"
 
 GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_4:
-	.string "Oak: Oh! There isn't any room in\n"
+	.string "{SPEAKER NAME_OAK}Oh! There isn't any room in\n"
 	.string "your party or PC.\p"
 	.string "Come back after making some space,\n"
 	.string "and I'll give you the Egg.$"
@@ -697,5 +697,5 @@ GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_6:
 	.string "sent to your PC.$"
 
 GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_7:
-	.string "Oak: I can't wait to see what you\n"
+	.string "{SPEAKER NAME_OAK}I can't wait to see what you\n"
 	.string "discover. Take good care of it!$"

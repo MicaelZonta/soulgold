@@ -64,10 +64,10 @@ Route20_Text_Headlocker:
 	.string "I've been fishing here for hours!$"
 
 Route20_Text_Seel:
-	.string "Seel: Seel seel!$"
+	.string "{SPEAKER NAME_SEEL}Seel seel!$"
 
 Route20_Text_Dewgong:
-	.string "Dewgong: Goooong!$"
+	.string "{SPEAKER NAME_DEWGONG}Goooong!$"
 
 Route20_Text_SeafoamSign:
 	.string "Seafoam Islands$"

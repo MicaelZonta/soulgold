@@ -233,7 +233,7 @@ LakeOfRage_Movement_DragoniteLeave:
 	step_end
 
 LakeOfRage_Text_Dragonite:
-	.string "Dragonite: Gyafooha!$"
+	.string "{SPEAKER NAME_DRAGONITE}Gyafooha!$"
 
 LakeOfRage_Text_LanceForcedToEvolve:
     .string "This lake is full of Gyarados\n"
@@ -261,7 +261,7 @@ LakeOfRage_Text_LanceIntro3:
     .string "us investigate?$"
 
 LakeOfRage_Text_LanceRadioSignal:
-    .string "Lance: Excellent!\p"
+    .string "{SPEAKER NAME_LANCE}Excellent!\p"
     .string "It seems that the Lake's Magikarp\n"
     .string "are being forced to evolve.\p"
     .string "A mysterious radio broadcast\n"
@@ -274,11 +274,11 @@ LakeOfRage_Text_LanceRefused:
     .string "please help us.$"
 
 LakeOfRage_Text_LanceAskHelp:
-    .string "Lance: Hm? Are you going to help\n"
+    .string "{SPEAKER NAME_LANCE}Hm? Are you going to help\n"
     .string "us?$"
 
 LakeOfRage_Text_GyaradosCry:
-    .string "Gyarados: Gyashaa!$"
+    .string "{SPEAKER NAME_GYARADOS}Gyashaa!$"
 
 LakeOfRage_Text_Gramps:
     .string "The Gyarados are angry!\p"
@@ -399,7 +399,7 @@ LakeOfRage_EventScript_WesleyCompleted::
 	end
 
 LakeOfRage_Text_MeetWesley:
-    .string "Wesley: Well, how do you do?\p"
+    .string "{SPEAKER NAME_WESLEY}Well, how do you do?\p"
     .string "I'm a member of the Weekday family!\n"
 	.string "Can you guess my favorite day?$"
 
@@ -408,17 +408,17 @@ LakeOfRage_Text_WesleyGivesGift:
     .string "souvenir.$"
 
 LakeOfRage_Text_WesleyGaveGift:
-    .string "Wesley: Blackbelt beefs up the\n"
+    .string "{SPEAKER NAME_WESLEY}Blackbelt beefs up the\n"
     .string "power of fighting moves.$"
 
 LakeOfRage_Text_WesleyWednesday:
-    .string "Wesley: Since you found me, you\n"
+    .string "{SPEAKER NAME_WESLEY}Since you found me, you\n"
     .string "must have met my brothers and\l"
     .string "sisters.\p"
     .string "Or did you just get lucky?$"
 
 LakeOfRage_Text_WesleyNotWednesday:
-    .string "Wesley: Not exactly...$"
+    .string "{SPEAKER NAME_WESLEY}Not exactly...$"
 
 LakeOfRage_EventScript_Sign1::
 	msgbox LakeOfRage_Text_Sign, MSGBOX_SIGN

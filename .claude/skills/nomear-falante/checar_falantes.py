@@ -39,10 +39,19 @@ def da_tabela():
 
 def do_charmap():
     pares = []
-    for linha in ler("charmap.txt").split("\n"):
-        m = re.match(r"^NAME_(\w+) = ([0-9A-Fa-f]+)\s*(@.*)?$", linha.strip())
+    # so o bloco NAME_NONE..NAME_COUNT (NAME_END = FC 00 e outra coisa)
+    texto = ler("charmap.txt")
+    texto = texto[texto.index("\nNAME_NONE = "):]
+    for linha in texto.split("\n"):
+        # NAME_X = alto baixo: indice = alto * 255 + baixo (FF e fim de texto)
+        m = re.match(r"^NAME_(\w+) = ([0-9A-Fa-f]{2}) ([0-9A-Fa-f]{2})\s*(@.*)?$", linha.strip())
         if m:
-            pares.append((m.group(1), int(m.group(2), 16)))
+            alto, baixo = int(m.group(2), 16), int(m.group(3), 16)
+            if alto == 0xFF or baixo == 0xFF:
+                baixo = -1  # vira erro de valor abaixo
+            pares.append((m.group(1), alto * 255 + baixo))
+        elif re.match(r"^NAME_\w+ = ", linha.strip()):
+            pares.append((linha.split()[0][5:], -1))
     return pares
 
 
@@ -83,7 +92,7 @@ def bytes_do_texto(linhas):
     for corpo in linhas:
         corpo = re.sub(r"\\[nlpz]", ".", corpo)
         corpo = corpo.replace("$", "")
-        corpo = re.sub(r"\{SPEAKER [A-Z_0-9]+\}", "..", corpo)
+        corpo = re.sub(r"\{SPEAKER [A-Z_0-9]+\}", "...", corpo)
         # nome de jogador/rival e STR_VAR_* ocupam o buffer inteiro deles
         corpo = re.sub(r"\{(PLAYER|RIVAL|STR_VAR_[1-3])\}", "." * 10, corpo)
         corpo = re.sub(r"\{[A-Z_0-9 ]+\}", ".", corpo)
@@ -161,13 +170,14 @@ def main():
     for i, (nome, valor) in enumerate([p for p in charmap if p[0] != "COUNT"]):
         if valor != i:
             erros.append(
-                "charmap.txt: NAME_%s deveria valer %02X e vale %02X"
-                % (nome, i, valor)
+                "charmap.txt: NAME_%s deveria valer %02X %02X (indice %d) e vale "
+                "outra coisa. Rode adicionar_falante.py --sincronizar"
+                % ((nome,) + divmod(i, 255) + (i,))
             )
     conta = dict(charmap).get("COUNT")
     if conta is not None and conta != len(enum):
         erros.append(
-            "charmap.txt: NAME_COUNT deveria valer %02X e vale %02X"
+            "charmap.txt: NAME_COUNT deveria ser o indice %d e e %d"
             % (len(enum), conta)
         )
 
@@ -180,7 +190,12 @@ def main():
                 % (nome, ", ".join(sorted(arquivos)))
             )
 
-    # 5: prefixo "Nome: " sobrando num bloco que ja usa plaquinha
+    # 5: prefixo "Nome: " sobrando num bloco que ja usa plaquinha. Texto que
+    # aparece dentro da batalha (fala de derrota) fica com "Nome: " de
+    # proposito: na batalha nao ha plaquinha.
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from aplicar_falante import TEXTOS_DE_BATALHA
+
     legiveis = {n.replace("_", " ").title() for n in enum}
     for raiz, _, arquivos in os.walk(os.path.join(RAIZ, "data", "maps")):
         for nome in arquivos:
@@ -190,9 +205,13 @@ def main():
             texto = open(caminho, encoding="utf-8").read()
             if "{SPEAKER" not in texto:
                 continue
+            rotulo = None
             for n, linha in enumerate(texto.split("\n"), 1):
+                r = re.match(r"^\s*(\w+):+\s*$", linha)
+                if r:
+                    rotulo = r.group(1)
                 m = re.search(r'\.string "([A-Z][A-Za-z. ]{1,14}): ', linha)
-                if m and m.group(1) in legiveis:
+                if m and m.group(1) in legiveis and rotulo not in TEXTOS_DE_BATALHA:
                     erros.append(
                         "%s:%d ainda comeca com %r em vez da plaquinha"
                         % (os.path.relpath(caminho, RAIZ), n, m.group(1) + ": ")

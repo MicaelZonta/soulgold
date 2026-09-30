@@ -181,7 +181,7 @@ Route14_EventScript_Trevor::
 
 
 Route14_Text_Eusine:
-	.string "Eusine: {PLAYER}! Not again!\n"
+	.string "{SPEAKER NAME_EUSINE}{PLAYER}! Not again!\n"
 	.string "I'll be there first next time!\p"
 	.string "Having followed it here, I'm\n"
 	.string "starting to understand what Suicune\l"
@@ -324,7 +324,7 @@ Route14_Movement_StuckPidgeottoJump:
 	step_end
 
 Route14_Text_Pidgeotto:
-	.string "Pidgeotto: Kaaaaa!$"
+	.string "{SPEAKER NAME_PIDGEOTTO}Kaaaaa!$"
 Route14_Text_PidgeottoBerry:
 	.string "Give the Pidgeotto a Berry?$"
 Route14_Text_PidgeottoAteBerry:

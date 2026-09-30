@@ -19,4 +19,4 @@ PewterCity_House1_Text_SuperNerd:
 	.string "Nidoran, shake!$"
 
 PewterCity_House1_Text_Nidoran:
-	.string "Nidoran: Gau gau!$"
+	.string "{SPEAKER NAME_NIDORAN}Gau gau!$"

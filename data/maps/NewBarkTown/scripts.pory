@@ -256,7 +256,7 @@ NewBarkTown_Text_Door:
 	.string "The door is locked.$"
 
 NewBarkTown_Text_Wooper:
-	.string "Wooper: Woooooop.$"
+	.string "{SPEAKER NAME_WOOPER}Woooooop.$"
 
 NewBarkTown_Text_FatManState2:
 	.string "Wow, your Pokégear is impressive!\n"
@@ -460,11 +460,11 @@ script RivalsMailbox {
 
 script NewBarkTown_EventScript_ArcherArcadeCall {
 	lock
-	pokenavcall("???: Greetings, {PLAYER}.
+	pokenavcall("{SPEAKER NAME_UNKNOWN}Greetings, {PLAYER}.
 				 
 				 This is Archer speaking.
 	
-			     Archer: I've heard of your victory
+			     {SPEAKER NAME_ARCHER}I've heard of your victory
 				 in the League and would like to 
 				 offer you an invitation to our 
 				 newly opened Rocket Arcade.
