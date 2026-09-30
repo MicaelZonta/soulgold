@@ -320,6 +320,77 @@ Nexus_Text_Giovanni_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para Giovanni, com a variação 1 (acima, já no jogo) formam as três do sorteio. Mesmo registro do [R16](../NEXUS_REGRAS.md): fala de si, sem citar o lugar nem a criatura do dia.
+
+**Variação 2 — quem não quer nada.** Provocação de chefe: quem chega até ele sempre quer dinheiro, poder ou emprego. Os perigosos são os que não querem nada — e o jogador não quer nada. Na derrota, a constatação irritada.
+
+**Antes da luta**
+
+> Most people who come this far want something from me. Money. Power. A job.
+>
+> I used to give all three. Then I learned that the ones who want nothing are the dangerous ones.
+>
+> You want nothing. I can see it. Very well. Then I will take something from you.
+
+**Derrota**
+
+> …Nothing. You want nothing, and still you won.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Giovanni_Intro2:
+	.string "Most people who come this far want\n"
+	.string "something from me. Money. Power. A job.\p"
+	.string "I used to give all three. Then I learned\n"
+	.string "that the ones who want nothing are the\l"
+	.string "dangerous ones.\p"
+	.string "You want nothing. I can see it. Very\n"
+	.string "well. Then I will take something from\l"
+	.string "you.$"
+
+Nexus_Text_Giovanni_Defeat2:
+	.string "…Nothing. You want nothing, and still\n"
+	.string "you won.$"
+```
+
+</details>
+
+**Variação 3 — o filho.** O que ele perdeu (R21 + fio Rocket, o lado do pai): um filho de cabelo vermelho e o temperamento dele, que odiava tudo o que ele construiu. O Giovanni esperava que o menino viesse tomar tudo; quem veio foi outra criança (coerente com a variação 1). Não depende de o jogador conhecer o Silver.
+
+**Antes da luta**
+
+> I had a son. Red hair. My temper. He hated everything I built.
+>
+> I thought one day he would come and take it all from me. I was almost looking forward to it.
+>
+> He never came. Someone else did. …You'll do. Come!
+
+**Derrota**
+
+> You have his eyes. …No. You don't. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Giovanni_Intro3:
+	.string "I had a son. Red hair. My temper. He\n"
+	.string "hated everything I built.\p"
+	.string "I thought one day he would come and\n"
+	.string "take it all from me. I was almost looking\l"
+	.string "forward to it.\p"
+	.string "He never came. Someone else did. …You'll\n"
+	.string "do. Come!$"
+
+Nexus_Text_Giovanni_Defeat3:
+	.string "You have his eyes. …No. You don't. Go.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 #### Mewtwo
@@ -388,6 +459,129 @@ Nexus_Text_Giovanni_Mewtwo_ChampionAfter:
 </details>
 
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — a armadura vazia.** Lore do anime (primeiro filme): o Giovanni mandou fazer uma armadura para a criatura, e ela o chamou de mestre por um tempo. Depois saiu do ginásio e deixou a armadura em pé no corredor, vazia — imagem que o diário retoma. Depois da luta: mediram a força dela e esqueceram de medir a paciência.
+
+**Antes da luta**
+
+> I once commissioned armor for it. Plates of steel, a helmet full of wires. The finest engineers in Kanto.
+>
+> It wore the armor for a time. It called me master. I believed it.
+>
+> Then it walked out of my Gym and left the armor standing in the hall, empty. It stands there still.
+>
+> Let us see if you are harder to keep. Come!
+
+**Derrota**
+
+> …You shed my strategy the way it shed that armor.
+
+**Depois da luta**
+
+> The scientists called it the strongest. They measured its power and forgot to measure its patience.
+>
+> It waited years inside that armor, deciding what it was. Then it decided.
+>
+> Don't cage it and don't command it. Ask it a question. It has been waiting for someone to ask.
+>
+> No one ever did. Certainly not me.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Giovanni_Mewtwo_ChampionIntro2:
+	.string "I once commissioned armor for it. Plates\n"
+	.string "of steel, a helmet full of wires. The\l"
+	.string "finest engineers in Kanto.\p"
+	.string "It wore the armor for a time. It called\n"
+	.string "me master. I believed it.\p"
+	.string "Then it walked out of my Gym and left\n"
+	.string "the armor standing in the hall, empty.\l"
+	.string "It stands there still.\p"
+	.string "Let us see if you are harder to keep.\n"
+	.string "Come!$"
+
+Nexus_Text_Giovanni_Mewtwo_ChampionDefeat2:
+	.string "…You shed my strategy the way it shed\n"
+	.string "that armor.$"
+
+Nexus_Text_Giovanni_Mewtwo_ChampionAfter2:
+	.string "{SPEAKER NAME_GIOVANNI}The scientists called it the strongest.\n"
+	.string "They measured its power and forgot to\l"
+	.string "measure its patience.\p"
+	.string "It waited years inside that armor,\n"
+	.string "deciding what it was. Then it decided.\p"
+	.string "Don't cage it and don't command it. Ask\n"
+	.string "it a question. It has been waiting for\l"
+	.string "someone to ask.\p"
+	.string "No one ever did. Certainly not me.$"
+```
+
+</details>
+
+**Variação 3 — o riso que tiraram.** Dúvida: a criatura foi feita de algo pequeno e rosa que brinca nas nuvens e ri; tiraram o riso e o resto virou o mais forte. O Giovanni se pergunta o que sobraria se fizessem o mesmo com ele. Depois, a confissão que liga ao caderno do Blaine: ele pagou pela ilha e nunca leu os diários dos cientistas.
+
+**Antes da luta**
+
+> Do you know what it was made from? Something small and pink that plays in the clouds and laughs.
+>
+> They took that laugh out. Everything left over became the strongest Pokémon alive.
+>
+> I have always wondered what they would get if they did the same to me.
+>
+> …Something like this. Come!
+
+**Derrota**
+
+> Hm. Laughter would have served me better.
+
+**Depois da luta**
+
+> On that island, the scientists wrote in their journals every day. The last entries are all questions.
+>
+> 'Why was it born? Who asked for it?' Not one of them wrote an answer.
+>
+> I paid for that island. I never read the journals until it was far too late.
+>
+> Read them for me. Then decide if it deserves an answer from you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Giovanni_Mewtwo_ChampionIntro3:
+	.string "Do you know what it was made from?\n"
+	.string "Something small and pink that plays in\l"
+	.string "the clouds and laughs.\p"
+	.string "They took that laugh out. Everything\n"
+	.string "left over became the strongest\l"
+	.string "Pokémon alive.\p"
+	.string "I have always wondered what they would\n"
+	.string "get if they did the same to me.\p"
+	.string "…Something like this. Come!$"
+
+Nexus_Text_Giovanni_Mewtwo_ChampionDefeat3:
+	.string "Hm. Laughter would have served me\n"
+	.string "better.$"
+
+Nexus_Text_Giovanni_Mewtwo_ChampionAfter3:
+	.string "{SPEAKER NAME_GIOVANNI}On that island, the scientists wrote in\n"
+	.string "their journals every day. The last\l"
+	.string "entries are all questions.\p"
+	.string "'Why was it born? Who asked for it?'\n"
+	.string "Not one of them wrote an answer.\p"
+	.string "I paid for that island. I never read the\n"
+	.string "journals until it was far too late.\p"
+	.string "Read them for me. Then decide if it\n"
+	.string "deserves an answer from you.$"
+```
+
+</details>
+
+
+
 #### Genesect
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Giovanni_Genesect_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -451,6 +645,127 @@ Nexus_Text_Giovanni_Genesect_ChampionAfter:
 ```
 
 </details>
+
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — fóssil com canhão.** Negócio e melancolia: os homens dele já cavaram fósseis numa caverna de montanha e venderam (o Mt. Moon da Rocket). Alguém cavou este e deu a ele um canhão — negócio melhor. Mas fóssil armado ainda é fóssil, de um mundo que acabou; ele também, alguns dias. Depois: os Drives, uma arma para cada estação, e o caçador que nunca precisou delas.
+
+**Antes da luta**
+
+> My men once dug fossils out of a mountain cave. We sold them. Good business.
+>
+> Someone else dug up this one and gave it a cannon. Better business, I suppose.
+>
+> But a fossil with a gun is still a fossil. It belongs to a world that ended long ago.
+>
+> So do I, some days. Come!
+
+**Derrota**
+
+> Hm. Obsolete. The two of us.
+
+**Depois da luta**
+
+> It has a slot on its back for a drive. Each one changes what the cannon fires.
+>
+> Fire, ice, water, lightning. Its makers wanted a weapon for every season.
+>
+> They forgot it was a hunter first. It never needed their seasons.
+>
+> Leave the slot empty, if you can. Let it remember what it hunted for itself.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Giovanni_Genesect_ChampionIntro2:
+	.string "My men once dug fossils out of a\n"
+	.string "mountain cave. We sold them. Good\l"
+	.string "business.\p"
+	.string "Someone else dug up this one and gave\n"
+	.string "it a cannon. Better business, I suppose.\p"
+	.string "But a fossil with a gun is still a fossil.\n"
+	.string "It belongs to a world that ended long\l"
+	.string "ago.\p"
+	.string "So do I, some days. Come!$"
+
+Nexus_Text_Giovanni_Genesect_ChampionDefeat2:
+	.string "Hm. Obsolete. The two of us.$"
+
+Nexus_Text_Giovanni_Genesect_ChampionAfter2:
+	.string "{SPEAKER NAME_GIOVANNI}It has a slot on its back for a drive.\n"
+	.string "Each one changes what the cannon\l"
+	.string "fires.\p"
+	.string "Fire, ice, water, lightning. Its makers\n"
+	.string "wanted a weapon for every season.\p"
+	.string "They forgot it was a hunter first. It\n"
+	.string "never needed their seasons.\p"
+	.string "Leave the slot empty, if you can. Let it\n"
+	.string "remember what it hunted for itself.$"
+```
+
+</details>
+
+**Variação 3 — o alvo.** Dúvida: a criatura mirou nele, o canhão brilhando, e parou para olhá-lo — o olhar dos soldados esperando para saber se ele era quem dava as ordens. Ela baixou o canhão; misericórdia ou decepção? Depois: ela reconheceu a espécie dele, a de quem aponta e diz "aquele". É a primeira vez que ele é o apontado. Educativo.
+
+**Antes da luta**
+
+> It aimed at me. The cannon was glowing. Then it stopped, and looked at me for a long time.
+>
+> I have been looked at like that before. By soldiers, waiting to hear if I was the one giving orders.
+>
+> I said nothing. It lowered the cannon. …I still don't know if that was mercy or disappointment.
+>
+> Let us find out what it thinks of you.
+
+**Derrota**
+
+> …It would have lowered the cannon for you too.
+
+**Depois da luta**
+
+> I think it recognized me. Not my face. My kind. The kind that points at things and says, 'That one.'
+>
+> I've pointed at a great many things. People. Pokémon. Whole towns.
+>
+> It is the first time I have been the thing pointed at. It's educational.
+>
+> Go on. And don't point. Walk up to it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Giovanni_Genesect_ChampionIntro3:
+	.string "It aimed at me. The cannon was glowing.\n"
+	.string "Then it stopped, and looked at me for a\l"
+	.string "long time.\p"
+	.string "I have been looked at like that before.\n"
+	.string "By soldiers, waiting to hear if I was the\l"
+	.string "one giving orders.\p"
+	.string "I said nothing. It lowered the cannon.\n"
+	.string "…I still don't know if that was mercy or\l"
+	.string "disappointment.\p"
+	.string "Let us find out what it thinks of you.$"
+
+Nexus_Text_Giovanni_Genesect_ChampionDefeat3:
+	.string "…It would have lowered the cannon for\n"
+	.string "you too.$"
+
+Nexus_Text_Giovanni_Genesect_ChampionAfter3:
+	.string "{SPEAKER NAME_GIOVANNI}I think it recognized me. Not my face.\n"
+	.string "My kind. The kind that points at things\l"
+	.string "and says, 'That one.'\p"
+	.string "I've pointed at a great many things.\n"
+	.string "People. Pokémon. Whole towns.\p"
+	.string "It is the first time I have been the\n"
+	.string "thing pointed at. It's educational.\p"
+	.string "Go on. And don't point. Walk up to it.$"
+```
+
+</details>
+
 
 
 Falante novo: `SP_NAME_GIOVANNI` (ainda não existe em `include/constants/speaker_names.h`).

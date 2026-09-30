@@ -318,6 +318,75 @@ Nexus_Text_Blaine_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para Blaine, com a variação 1 (acima, já no jogo) formam as três do sorteio. Mesmo registro do [R16](../NEXUS_REGRAS.md): fala de si, sem citar o lugar nem a criatura do dia.
+
+**Variação 2 — o cientista.** O Blaine cientista (a mansão, o laboratório): a pior frase de laboratório não é "funcionou", é "hm, que estranho…". E o jogador é muito estranho. Na derrota, a mesma frase vira anotação.
+
+**Antes da luta**
+
+> Hah! Quiz! What's the one thing a scientist should never, ever say?
+>
+> 'It worked!' Wrong! It's 'Hm, that's odd…' Every disaster I ever caused started with that one!
+>
+> And you, youngster, are very odd. Let's run the experiment!
+
+**Derrota**
+
+> Hm, that's odd… Hah! Write it down!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Blaine_Intro2:
+	.string "Hah! Quiz! What's the one thing a\n"
+	.string "scientist should never, ever say?\p"
+	.string "'It worked!' Wrong! It's 'Hm, that's\n"
+	.string "odd…' Every disaster I ever caused\l"
+	.string "started with that one!\p"
+	.string "And you, youngster, are very odd. Let's\n"
+	.string "run the experiment!$"
+
+Nexus_Text_Blaine_Defeat2:
+	.string "Hm, that's odd… Hah! Write it down!$"
+```
+
+</details>
+
+**Variação 3 — a charada sem resposta.** O que ele perdeu (coerente com a variação 1: a ilha foi para o vulcão): dez mil charadas na vida, e a única que ninguém respondeu é para onde vai um ginásio quando a ilha acaba. Ele não sabe; carrega. Fogo é portátil.
+
+**Antes da luta**
+
+> Hah! Quiz! How many quizzes have I asked in my life? Wrong! I lost count at ten thousand.
+>
+> Here's one nobody ever answered. Where does a Gym go when its island is gone?
+>
+> I still don't know. So I carry it with me. Fire is portable! Let's go!
+
+**Derrota**
+
+> Hah! Answer accepted! Full marks!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Blaine_Intro3:
+	.string "Hah! Quiz! How many quizzes have I\n"
+	.string "asked in my life? Wrong! I lost count at\l"
+	.string "ten thousand.\p"
+	.string "Here's one nobody ever answered. Where\n"
+	.string "does a Gym go when its island is gone?\p"
+	.string "I still don't know. So I carry it with me.\n"
+	.string "Fire is portable! Let's go!$"
+
+Nexus_Text_Blaine_Defeat3:
+	.string "Hah! Answer accepted! Full marks!$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 #### Moltres
@@ -386,6 +455,119 @@ Nexus_Text_Blaine_Moltres_ChampionAfter:
 </details>
 
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — o inverno vulcânico.** Ciência de verdade: vulcão não solta só fogo, solta cinza; cinza no céu tapa o sol e faz um inverno de anos. O pássaro é a única coisa ali que lembra o que é calor. Depois, a culpa pela metade ("dizem que o inverno é culpa minha; não estão de todo errados") — o segredo do diário.
+
+**Antes da luta**
+
+> Hah! Science quiz! A volcano erupts. Then what? Fire? Lava? Wrong! Ash!
+>
+> Ash in the sky blocks the sun. No sun, no spring. One eruption can make a winter that lasts for years.
+>
+> I know, because I've been counting. That bird is the only thing around here that remembers warm!
+>
+> So let's warm up!
+
+**Derrota**
+
+> Hah! You're hotter than the bird! Almost.
+
+**Depois da luta**
+
+> Some folks say that winter is my fault. They're not entirely wrong.
+>
+> Every morning I check the sky, and every morning it's grey. Then that bird flies over, and for a minute it isn't.
+>
+> A minute of spring is still spring. Go and get your minute!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Blaine_Moltres_ChampionIntro2:
+	.string "Hah! Science quiz! A volcano erupts.\n"
+	.string "Then what? Fire? Lava? Wrong! Ash!\p"
+	.string "Ash in the sky blocks the sun. No sun,\n"
+	.string "no spring. One eruption can make a\l"
+	.string "winter that lasts for years.\p"
+	.string "I know, because I've been counting.\n"
+	.string "That bird is the only thing around here\l"
+	.string "that remembers warm!\p"
+	.string "So let's warm up!$"
+
+Nexus_Text_Blaine_Moltres_ChampionDefeat2:
+	.string "Hah! You're hotter than the bird!\n"
+	.string "Almost.$"
+
+Nexus_Text_Blaine_Moltres_ChampionAfter2:
+	.string "{SPEAKER NAME_BLAINE}Some folks say that winter is my fault.\n"
+	.string "They're not entirely wrong.\p"
+	.string "Every morning I check the sky, and\n"
+	.string "every morning it's grey. Then that bird\l"
+	.string "flies over, and for a minute it isn't.\p"
+	.string "A minute of spring is still spring. Go\n"
+	.string "and get your minute!$"
+```
+
+</details>
+
+**Variação 3 — o doutor contra as penas.** Humor e rivalidade: ele tem doutorado, o pássaro tem penas. Desafiou o bicho para uma charada e ele respondeu tudo pondo fogo na pergunta — as melhores respostas que já recebeu. Depois, a humildade: quarenta anos de ginásio e nunca pensou em usar fogo para fazer coisa pequena crescer.
+
+**Antes da luta**
+
+> Hah! Everyone thinks that bird is the fire expert around here. I've got a doctorate! It's got feathers!
+>
+> I challenged it to a quiz. It answered every question by setting the question on fire.
+>
+> …Honestly? Best answers I ever got. Now let's hear yours!
+
+**Derrota**
+
+> Hah! Correct, and not one thing on fire!
+
+**Depois da luta**
+
+> When I was young, fire was for burning. Then for research. Then for battles.
+>
+> That bird uses it for something else. It melts the snow so small things can grow.
+>
+> Forty years with a Gym, and I never once thought of that. Hah! Humbling!
+>
+> Go on. If you win, ask it to teach me. I'll bring the quiz sheet.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Blaine_Moltres_ChampionIntro3:
+	.string "Hah! Everyone thinks that bird is the\n"
+	.string "fire expert around here. I've got a\l"
+	.string "doctorate! It's got feathers!\p"
+	.string "I challenged it to a quiz. It answered\n"
+	.string "every question by setting the question\l"
+	.string "on fire.\p"
+	.string "…Honestly? Best answers I ever got.\n"
+	.string "Now let's hear yours!$"
+
+Nexus_Text_Blaine_Moltres_ChampionDefeat3:
+	.string "Hah! Correct, and not one thing on fire!$"
+
+Nexus_Text_Blaine_Moltres_ChampionAfter3:
+	.string "{SPEAKER NAME_BLAINE}When I was young, fire was for burning.\n"
+	.string "Then for research. Then for battles.\p"
+	.string "That bird uses it for something else. It\n"
+	.string "melts the snow so small things can grow.\p"
+	.string "Forty years with a Gym, and I never once\n"
+	.string "thought of that. Hah! Humbling!\p"
+	.string "Go on. If you win, ask it to teach me.\n"
+	.string "I'll bring the quiz sheet.$"
+```
+
+</details>
+
+
+
 #### Volcanion
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Blaine_Volcanion_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -450,6 +632,125 @@ Nexus_Text_Blaine_Volcanion_ChampionAfter:
 ```
 
 </details>
+
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário; com a variação 1 (acima, já no jogo) formam as três. Sobre a criatura, sem dizer o nome dela; só o `ChampionAfter` leva plaquinha.
+
+**Variação 2 — quem odeia humanos.** Lore do filme: a criatura não gosta de gente e esconde Pokémon na névoa longe de quem os prenderia; fizeram máquinas para pegá-la. O Blaine também fez máquinas (quase todas explodiram). Depois, o laboratório de tanques e fios em que ele trabalhou — ela teria arrancado o teto, e com razão.
+
+**Antes da luta**
+
+> Hah! Quiz! Who dislikes humans more than anyone? That creature! And, some mornings, me!
+>
+> It hides Pokémon in its fog, away from people who'd cage them. Folks built machines to catch it once.
+>
+> Bad idea! I've built machines too. Most of them blew up. Let's see if you do!
+
+**Derrota**
+
+> Hah! Didn't blow up at all! Remarkable specimen!
+
+**Depois da luta**
+
+> I used to work in a lab full of tanks and wires. We thought we were learning something.
+>
+> That creature would have blown the roof off, and it would have been right to.
+>
+> If it comes at you angry, don't defend yourself. Defend your Pokémon. That's the answer it's looking for.
+>
+> …Took me thirty years to get that one right.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Blaine_Volcanion_ChampionIntro2:
+	.string "Hah! Quiz! Who dislikes humans more\n"
+	.string "than anyone? That creature! And, some\l"
+	.string "mornings, me!\p"
+	.string "It hides Pokémon in its fog, away from\n"
+	.string "people who'd cage them. Folks built\l"
+	.string "machines to catch it once.\p"
+	.string "Bad idea! I've built machines too. Most\n"
+	.string "of them blew up. Let's see if you do!$"
+
+Nexus_Text_Blaine_Volcanion_ChampionDefeat2:
+	.string "Hah! Didn't blow up at all! Remarkable\n"
+	.string "specimen!$"
+
+Nexus_Text_Blaine_Volcanion_ChampionAfter2:
+	.string "{SPEAKER NAME_BLAINE}I used to work in a lab full of tanks and\n"
+	.string "wires. We thought we were learning\l"
+	.string "something.\p"
+	.string "That creature would have blown the\n"
+	.string "roof off, and it would have been right\l"
+	.string "to.\p"
+	.string "If it comes at you angry, don't defend\n"
+	.string "yourself. Defend your Pokémon. That's\l"
+	.string "the answer it's looking for.\p"
+	.string "…Took me thirty years to get that one\n"
+	.string "right.$"
+```
+
+</details>
+
+**Variação 3 — o banho de fonte quente.** Humor puro: ele tomou o melhor banho de fonte quente da vida, e a fonte levantou e foi embora — era a névoa da criatura. Depois, o Blaine do anime que se disfarçava de dono de estalagem nas fontes quentes (de peruca!), e a criatura que faz o mesmo: se esconde na névoa e espera para ver quem vale a pena.
+
+**Antes da luta**
+
+> Hah! Know what I did the moment I got here? Took a hot spring bath! Best one of my life!
+>
+> Then the spring stood up and walked off. Turns out I'd been soaking in that creature's fog.
+>
+> It gave me a look. I gave it a look. We're even. Your turn!
+
+**Derrota**
+
+> Hah! Steamed! Completely steamed!
+
+**Depois da luta**
+
+> Back home I once ran an inn by the hot springs, in disguise. Wig and all! Challengers never guessed.
+>
+> That creature does the same. It hides in plain fog and waits to see who's worth meeting.
+>
+> I'd say you're worth meeting. It may not agree yet.
+>
+> Keep your head when it vanishes. It'll come from where the fog is thinnest. Hah!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Blaine_Volcanion_ChampionIntro3:
+	.string "Hah! Know what I did the moment I got\n"
+	.string "here? Took a hot spring bath! Best one\l"
+	.string "of my life!\p"
+	.string "Then the spring stood up and walked\n"
+	.string "off. Turns out I'd been soaking in that\l"
+	.string "creature's fog.\p"
+	.string "It gave me a look. I gave it a look.\n"
+	.string "We're even. Your turn!$"
+
+Nexus_Text_Blaine_Volcanion_ChampionDefeat3:
+	.string "Hah! Steamed! Completely steamed!$"
+
+Nexus_Text_Blaine_Volcanion_ChampionAfter3:
+	.string "{SPEAKER NAME_BLAINE}Back home I once ran an inn by the hot\n"
+	.string "springs, in disguise. Wig and all!\l"
+	.string "Challengers never guessed.\p"
+	.string "That creature does the same. It hides\n"
+	.string "in plain fog and waits to see who's\l"
+	.string "worth meeting.\p"
+	.string "I'd say you're worth meeting. It may\n"
+	.string "not agree yet.\p"
+	.string "Keep your head when it vanishes. It'll\n"
+	.string "come from where the fog is thinnest.\l"
+	.string "Hah!$"
+```
+
+</details>
+
 
 
 Falante novo: `SP_NAME_BLAINE` (ainda não existe em `include/constants/speaker_names.h`).
