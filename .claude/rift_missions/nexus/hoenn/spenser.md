@@ -325,6 +325,81 @@ Nexus_Text_Spenser_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)), além da que já está no jogo (variação 1). O sorteio de qual variação toca ainda não existe no código.
+
+**Variação 2** — lembrança: o Spenser jovem, que mandava nos Pokémon como capitão de navio e perdia.
+
+**Antes da luta**
+
+> Hohoho. When I was young, I ordered my Pokémon about like a ship's captain. Left! Right! Now!
+>
+> They obeyed. And they lost. Every single time.
+>
+> It took me forty years to learn to be quiet. Let us see whether you learned it faster.
+
+**Derrota**
+
+> Hohoho! Faster indeed. Much faster than I did.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Spenser_Intro2:
+	.string "Hohoho. When I was young, I ordered my\n"
+	.string "Pokémon about like a ship's captain.\l"
+	.string "Left! Right! Now!\p"
+	.string "They obeyed. And they lost. Every\n"
+	.string "single time.\p"
+	.string "It took me forty years to learn to be\n"
+	.string "quiet. Let us see whether you learned it\l"
+	.string "faster.$"
+
+Nexus_Text_Spenser_Defeat2:
+	.string "Hohoho! Faster indeed. Much faster\n"
+	.string "than I did.$"
+```
+
+</details>
+
+**Variação 3** — humor e R21: os aniversários dele chegam fora de ordem; o homem de sobretudo que perguntou as horas.
+
+**Antes da luta**
+
+> Ah, a visitor. Tell me, young one, what year is it where you come from?
+>
+> No, no, don't answer. I stopped counting birthdays when they stopped arriving in order.
+>
+> A gentleman in a long coat asked me the time once. I said, “Which one?” He wrote that down.
+>
+> Hohoho! Come. Let your Pokémon be themselves.
+
+**Derrota**
+
+> Hohoho. Whatever year it is, it is yours.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Spenser_Intro3:
+	.string "Ah, a visitor. Tell me, young one, what\n"
+	.string "year is it where you come from?\p"
+	.string "No, no, don't answer. I stopped\n"
+	.string "counting birthdays when they stopped\l"
+	.string "arriving in order.\p"
+	.string "A gentleman in a long coat asked me the\n"
+	.string "time once. I said, “Which one?” He wrote\l"
+	.string "that down.\p"
+	.string "Hohoho! Come. Let your Pokémon be\n"
+	.string "themselves.$"
+
+Nexus_Text_Spenser_Defeat3:
+	.string "Hohoho. Whatever year it is, it is yours.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -395,6 +470,124 @@ Nexus_Text_Spenser_Celebi_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário, além da variação 1 que já está no jogo. Sem o nome da espécie ([R16](../NEXUS_REGRAS.md)).
+
+**Variação 2** — lembrança: a luz verde mostrou a ele o menino que ele foi, e ele não quer voltar para corrigir o menino.
+
+**Antes da luta**
+
+> Hohoho. That little light showed me a boy just now. Skinny knees, loud voice, shouting orders at his Pokémon.
+>
+> It was me, of course. Sixty years ago, in a forest much like this one.
+>
+> I wanted to tell him to hush and let them fight. He would not have listened. I never did.
+>
+> Come. Let us show him how it is done.
+
+**Derrota**
+
+> Hohoho! The boy would have hated losing. I rather enjoyed it.
+
+**Depois da luta**
+
+> That little one could take me back, you know. It has offered.
+>
+> I would only make the same mistakes more slowly. That boy needs his mistakes. They are how he becomes me.
+>
+> A forest does not skip its young trees to reach the old ones sooner.
+>
+> Go on. And leave that boy where he is.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Spenser_Celebi_ChampionIntro2:
+	.string "Hohoho. That little light showed me a\n"
+	.string "boy just now. Skinny knees, loud voice,\l"
+	.string "shouting orders at his Pokémon.\p"
+	.string "It was me, of course. Sixty years ago, in\n"
+	.string "a forest much like this one.\p"
+	.string "I wanted to tell him to hush and let\n"
+	.string "them fight. He would not have listened.\l"
+	.string "I never did.\p"
+	.string "Come. Let us show him how it is done.$"
+
+Nexus_Text_Spenser_Celebi_ChampionDefeat2:
+	.string "Hohoho! The boy would have hated\n"
+	.string "losing. I rather enjoyed it.$"
+
+Nexus_Text_Spenser_Celebi_ChampionAfter2:
+	.string "{SPEAKER NAME_SPENSER}That little one could take me back, you\n"
+	.string "know. It has offered.\p"
+	.string "I would only make the same mistakes\n"
+	.string "more slowly. That boy needs his\l"
+	.string "mistakes. They are how he becomes me.\p"
+	.string "A forest does not skip its young trees\n"
+	.string "to reach the old ones sooner.\p"
+	.string "Go on. And leave that boy where he is.$"
+```
+
+</details>
+
+**Variação 3** — humor: a criatura está sempre atrasada, um “momento” dela é um século; o tronco morto também é vida.
+
+**Antes da luta**
+
+> Late again, that little green one. It says it will come “in a moment,” and its moments can last a century.
+>
+> I have waited on this stump so long, the stump has turned back into a sapling.
+>
+> Hohoho! Do not look so worried. Waiting is the Palace way.
+>
+> Now. While we wait, a battle!
+
+**Derrota**
+
+> Splendid. The moment passed, and you used it.
+
+**Depois da luta**
+
+> Do you know why it keeps the forest at every age? Because every age is needed.
+>
+> Seedlings for tomorrow. Old trunks for the beetles, and the moss, and the shade.
+>
+> An old man is a dead trunk, if you like. Plenty of life still living on him.
+>
+> Go. Mind the moss on your way out.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Spenser_Celebi_ChampionIntro3:
+	.string "Late again, that little green one. It\n"
+	.string "says it will come “in a moment,” and its\l"
+	.string "moments can last a century.\p"
+	.string "I have waited on this stump so long, the\n"
+	.string "stump has turned back into a sapling.\p"
+	.string "Hohoho! Do not look so worried. Waiting\n"
+	.string "is the Palace way.\p"
+	.string "Now. While we wait, a battle!$"
+
+Nexus_Text_Spenser_Celebi_ChampionDefeat3:
+	.string "Splendid. The moment passed, and you\n"
+	.string "used it.$"
+
+Nexus_Text_Spenser_Celebi_ChampionAfter3:
+	.string "{SPEAKER NAME_SPENSER}Do you know why it keeps the forest at\n"
+	.string "every age? Because every age is\l"
+	.string "needed.\p"
+	.string "Seedlings for tomorrow. Old trunks for\n"
+	.string "the beetles, and the moss, and the\l"
+	.string "shade.\p"
+	.string "An old man is a dead trunk, if you like.\n"
+	.string "Plenty of life still living on him.\p"
+	.string "Go. Mind the moss on your way out.$"
+```
+
+</details>
+
 
 #### Dialga
 
@@ -455,6 +648,128 @@ Nexus_Text_Spenser_Dialga_ChampionAfter:
 	.string "It still keeps its own time.\p"
 	.string "Go. Do not ask it for more minutes. Just\n"
 	.string "use yours well.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário, além da variação 1 que já está no jogo. Sem o nome da espécie ([R16](../NEXUS_REGRAS.md)).
+
+**Variação 2** — dúvida: o coração dele falha uma batida à noite, e ele se pergunta se o coração do tempo falha junto.
+
+**Antes da luta**
+
+> Listen. Boom… boom… I have been counting. Sixty beats a minute, near enough.
+>
+> That is no accident, young one. We made the minute to match that heart, without ever knowing it.
+>
+> Every clock in the world is a copy of it. Mine included.
+>
+> Hohoho! Come, let us fight in time with it.
+
+**Derrota**
+
+> Hohoho. You kept the rhythm better than I did.
+
+**Depois da luta**
+
+> I will tell you a secret. Some nights, my heart skips a beat.
+>
+> And I wonder, when it does, whether that great heart skips one too. Whether the world loses a second.
+>
+> It does not, of course. It only feels that way to an old man in the dark.
+>
+> Go. Its beat is steady. Yours will be, too.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Spenser_Dialga_ChampionIntro2:
+	.string "Listen. Boom… boom… I have been\n"
+	.string "counting. Sixty beats a minute, near\l"
+	.string "enough.\p"
+	.string "That is no accident, young one. We made\n"
+	.string "the minute to match that heart, without\l"
+	.string "ever knowing it.\p"
+	.string "Every clock in the world is a copy of it.\n"
+	.string "Mine included.\p"
+	.string "Hohoho! Come, let us fight in time with\n"
+	.string "it.$"
+
+Nexus_Text_Spenser_Dialga_ChampionDefeat2:
+	.string "Hohoho. You kept the rhythm better\n"
+	.string "than I did.$"
+
+Nexus_Text_Spenser_Dialga_ChampionAfter2:
+	.string "{SPEAKER NAME_SPENSER}I will tell you a secret. Some nights, my\n"
+	.string "heart skips a beat.\p"
+	.string "And I wonder, when it does, whether\n"
+	.string "that great heart skips one too. Whether\l"
+	.string "the world loses a second.\p"
+	.string "It does not, of course. It only feels\n"
+	.string "that way to an old man in the dark.\p"
+	.string "Go. Its beat is steady. Yours will be,\n"
+	.string "too.$"
+```
+
+</details>
+
+**Variação 3** — R21 e fio Tempo: alguém pôs uma corrente vermelha nesse coração; as horas apagadas caíram na floresta dele.
+
+**Antes da luta**
+
+> Hohoho. Did you see the marks on it? Old ones. Someone put a chain on that heart once.
+>
+> A red chain, from a man who wanted time to stop and never start again.
+>
+> Imagine it. Holding the whole world still, just to stop being hurt by it.
+>
+> I understand him a little. That is why we must fight. Come!
+
+**Derrota**
+
+> Hohoho. The chain did not hold. Neither did I.
+
+**Depois da luta**
+
+> The hours that man erased had to fall somewhere. They fell into my forest, like leaves.
+>
+> A small green friend of mine gathers them. That is why the trees there are every age at once.
+>
+> Nothing is lost, you see. Only put somewhere else, to wait.
+>
+> Go. That heart has room for every hour. Even the ones we threw away.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Spenser_Dialga_ChampionIntro3:
+	.string "Hohoho. Did you see the marks on it? Old\n"
+	.string "ones. Someone put a chain on that heart\l"
+	.string "once.\p"
+	.string "A red chain, from a man who wanted time\n"
+	.string "to stop and never start again.\p"
+	.string "Imagine it. Holding the whole world\n"
+	.string "still, just to stop being hurt by it.\p"
+	.string "I understand him a little. That is why we\n"
+	.string "must fight. Come!$"
+
+Nexus_Text_Spenser_Dialga_ChampionDefeat3:
+	.string "Hohoho. The chain did not hold. Neither\n"
+	.string "did I.$"
+
+Nexus_Text_Spenser_Dialga_ChampionAfter3:
+	.string "{SPEAKER NAME_SPENSER}The hours that man erased had to fall\n"
+	.string "somewhere. They fell into my forest,\l"
+	.string "like leaves.\p"
+	.string "A small green friend of mine gathers\n"
+	.string "them. That is why the trees there are\l"
+	.string "every age at once.\p"
+	.string "Nothing is lost, you see. Only put\n"
+	.string "somewhere else, to wait.\p"
+	.string "Go. That heart has room for every hour.\n"
+	.string "Even the ones we threw away.$"
 ```
 
 </details>

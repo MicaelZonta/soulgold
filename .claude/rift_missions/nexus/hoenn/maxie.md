@@ -326,6 +326,84 @@ Nexus_Text_Maxie_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)), além da que já está no jogo (variação 1). O sorteio de qual variação toca ainda não existe no código.
+
+**Variação 2** — o cientista: ele mede tudo, inclusive o jogador, e prevê a própria derrota.
+
+**Antes da luta**
+
+> Maxie. Formerly of Team Magma. I measure things. Temperatures, depths, ratios. It calms me.
+>
+> I measured you as you walked in. Heart rate elevated. Stride confident.
+>
+> My prediction is that I lose. My predictions about young Trainers are, historically, correct.
+>
+> Let us test the hypothesis.
+
+**Derrota**
+
+> Hm. Hypothesis confirmed. How very unsatisfying.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Maxie_Intro2:
+	.string "Maxie. Formerly of Team Magma. I\n"
+	.string "measure things. Temperatures, depths,\l"
+	.string "ratios. It calms me.\p"
+	.string "I measured you as you walked in. Heart\n"
+	.string "rate elevated. Stride confident.\p"
+	.string "My prediction is that I lose. My\n"
+	.string "predictions about young Trainers are,\l"
+	.string "historically, correct.\p"
+	.string "Let us test the hypothesis.$"
+
+Nexus_Text_Maxie_Defeat2:
+	.string "Hm. Hypothesis confirmed. How very\n"
+	.string "unsatisfying.$"
+```
+
+</details>
+
+**Variação 3** — o que ele perdeu: o rival que discordava dele; sem o Archie ele erra mais e percebe menos.
+
+**Antes da luta**
+
+> Have you ever lost the one person who disagreed with you?
+>
+> I had a rival once. Loud, wet, impossible. We fought over the whole world, as if it were ours to divide.
+>
+> Without him, no one argues with me. I am wrong more often, and I notice it less.
+>
+> So. Argue with me. With Pokémon, if you please.
+
+**Derrota**
+
+> Hm. A convincing argument. He would have made it louder.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Maxie_Intro3:
+	.string "Have you ever lost the one person who\n"
+	.string "disagreed with you?\p"
+	.string "I had a rival once. Loud, wet, impossible.\n"
+	.string "We fought over the whole world, as if it\l"
+	.string "were ours to divide.\p"
+	.string "Without him, no one argues with me. I am\n"
+	.string "wrong more often, and I notice it less.\p"
+	.string "So. Argue with me. With Pokémon, if you\n"
+	.string "please.$"
+
+Nexus_Text_Maxie_Defeat3:
+	.string "Hm. A convincing argument. He would\n"
+	.string "have made it louder.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -392,6 +470,126 @@ Nexus_Text_Maxie_Groudon_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário, além da variação 1 que já está no jogo. Sem o nome da espécie ([R16](../NEXUS_REGRAS.md)).
+
+**Variação 2** — dúvida: o mundo sem sombra que ele desenhou; a criatura deu exatamente o que ele pediu.
+
+**Antes da luta**
+
+> Feel that sun? There is no shade anywhere. Not a single shadow for a hundred kilometers.
+>
+> I once wrote that the ideal world would waste no space. No water where land could be.
+>
+> It seems I also designed a world with nowhere to rest.
+>
+> Come. Let us see which of us wilts first.
+
+**Derrota**
+
+> Hm. I wilted. The data is clear.
+
+**Depois da luta**
+
+> The ancient people of Hoenn prayed to that creature for sunlight. Just enough to ripen a harvest.
+>
+> I asked for all of it. Every ray, every hectare. I never asked what “enough” was.
+>
+> It gave me exactly what I asked for. That is the cruelest thing a god can do.
+>
+> Go. And when you pray for something, specify a quantity.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Maxie_Groudon_ChampionIntro2:
+	.string "Feel that sun? There is no shade\n"
+	.string "anywhere. Not a single shadow for a\l"
+	.string "hundred kilometers.\p"
+	.string "I once wrote that the ideal world would\n"
+	.string "waste no space. No water where land\l"
+	.string "could be.\p"
+	.string "It seems I also designed a world with\n"
+	.string "nowhere to rest.\p"
+	.string "Come. Let us see which of us wilts first.$"
+
+Nexus_Text_Maxie_Groudon_ChampionDefeat2:
+	.string "Hm. I wilted. The data is clear.$"
+
+Nexus_Text_Maxie_Groudon_ChampionAfter2:
+	.string "{SPEAKER NAME_MAXIE}The ancient people of Hoenn prayed to\n"
+	.string "that creature for sunlight. Just\l"
+	.string "enough to ripen a harvest.\p"
+	.string "I asked for all of it. Every ray, every\n"
+	.string "hectare. I never asked what “enough”\l"
+	.string "was.\p"
+	.string "It gave me exactly what I asked for.\n"
+	.string "That is the cruelest thing a god can do.\p"
+	.string "Go. And when you pray for something,\n"
+	.string "specify a quantity.$"
+```
+
+</details>
+
+**Variação 3** — lembrança da Red Orb (a marca na palma) e R21: o navio da Aqua encalhado que ele visita todo dia.
+
+**Antes da luta**
+
+> I held the orb that woke it. Red, warm, singing. It left a mark on my palm. You see?
+>
+> I thought the orb gave me control. It did not. It only made me the first thing the creature looked at.
+>
+> Being looked at by the land itself is… instructive.
+>
+> Come. Let me show you what I learned.
+
+**Derrota**
+
+> Hm. You learned faster.
+
+**Depois da luta**
+
+> One of those stranded ships belongs to Team Aqua. It dried where it stood when that creature took the sea.
+>
+> It is empty. Dry as bone. I walk out to it every day and check anyway.
+>
+> I call it scientific curiosity. It is not. I miss having someone to blame.
+>
+> Go. If you meet a loud man who smells of the sea, tell him the land won. And that I am sorry.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Maxie_Groudon_ChampionIntro3:
+	.string "I held the orb that woke it. Red, warm,\n"
+	.string "singing. It left a mark on my palm. You\l"
+	.string "see?\p"
+	.string "I thought the orb gave me control. It\n"
+	.string "did not. It only made me the first thing\l"
+	.string "the creature looked at.\p"
+	.string "Being looked at by the land itself is…\n"
+	.string "instructive.\p"
+	.string "Come. Let me show you what I learned.$"
+
+Nexus_Text_Maxie_Groudon_ChampionDefeat3:
+	.string "Hm. You learned faster.$"
+
+Nexus_Text_Maxie_Groudon_ChampionAfter3:
+	.string "{SPEAKER NAME_MAXIE}One of those stranded ships belongs to\n"
+	.string "Team Aqua. It dried where it stood when\l"
+	.string "that creature took the sea.\p"
+	.string "It is empty. Dry as bone. I walk out to\n"
+	.string "it every day and check anyway.\p"
+	.string "I call it scientific curiosity. It is not.\n"
+	.string "I miss having someone to blame.\p"
+	.string "Go. If you meet a loud man who smells of\n"
+	.string "the sea, tell him the land won. And that\l"
+	.string "I am sorry.$"
+```
+
+</details>
+
 
 #### Landorus
 
@@ -451,6 +649,123 @@ Nexus_Text_Maxie_Landorus_ChampionAfter:
 	.string "only a larger silence.\p"
 	.string "Go on. Let it bless one field that\n"
 	.string "someone will actually harvest.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para este lendário, além da variação 1 que já está no jogo. Sem o nome da espécie ([R16](../NEXUS_REGRAS.md)).
+
+**Variação 2** — lore de Unova: a criatura castiga os dois irmãos da tempestade; o Maxie e o Archie eram esses irmãos.
+
+**Antes da luta**
+
+> Did you hear it laughing, up on its cloud? Like thunder rolling over the hills.
+>
+> In Unova they say it punishes two brothers who wreck the fields with wind and lightning.
+>
+> Two brothers making a mess of the world, until something bigger steps in. The story is uncomfortably familiar.
+>
+> Come.
+
+**Derrota**
+
+> Hm. Punished. I suppose I had it coming.
+
+**Depois da luta**
+
+> Archie and I were those brothers. Sea and land, and a whole world caught in between.
+>
+> No one stepped in for us. We had to stop ourselves, and very nearly did not.
+>
+> That one on the cloud keeps the fields safe from fools like us.
+>
+> Go. And be kind to whoever keeps your fields.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Maxie_Landorus_ChampionIntro2:
+	.string "Did you hear it laughing, up on its\n"
+	.string "cloud? Like thunder rolling over the\l"
+	.string "hills.\p"
+	.string "In Unova they say it punishes two\n"
+	.string "brothers who wreck the fields with wind\l"
+	.string "and lightning.\p"
+	.string "Two brothers making a mess of the\n"
+	.string "world, until something bigger steps in.\l"
+	.string "The story is uncomfortably familiar.\p"
+	.string "Come.$"
+
+Nexus_Text_Maxie_Landorus_ChampionDefeat2:
+	.string "Hm. Punished. I suppose I had it coming.$"
+
+Nexus_Text_Maxie_Landorus_ChampionAfter2:
+	.string "{SPEAKER NAME_MAXIE}Archie and I were those brothers. Sea\n"
+	.string "and land, and a whole world caught in\l"
+	.string "between.\p"
+	.string "No one stepped in for us. We had to stop\n"
+	.string "ourselves, and very nearly did not.\p"
+	.string "That one on the cloud keeps the fields\n"
+	.string "safe from fools like us.\p"
+	.string "Go. And be kind to whoever keeps your\n"
+	.string "fields.$"
+```
+
+</details>
+
+**Variação 3** — humor e mudança: o cientista pegou uma foice; uma fileira de trigo, mãos em bolha, o primeiro trabalho honesto.
+
+**Antes da luta**
+
+> You will not believe this. Yesterday I picked up a scythe.
+>
+> One man, one field. I calculated it would take me four hundred years to bring it all in.
+>
+> I did one row. My hands have never hurt so much in my life.
+>
+> It was, I think, the first honest work I have ever done. Come.
+
+**Derrota**
+
+> Hm. My hands are too sore to argue.
+
+**Depois da luta**
+
+> That creature gives, and gives, and never asks who will do the gathering.
+>
+> I used to think abundance was the answer. It is only the question.
+>
+> The answer is people. Tired, blistered, arguing people, bringing it in together.
+>
+> Go. I have another row to do.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Maxie_Landorus_ChampionIntro3:
+	.string "You will not believe this. Yesterday I\n"
+	.string "picked up a scythe.\p"
+	.string "One man, one field. I calculated it would\n"
+	.string "take me four hundred years to bring it\l"
+	.string "all in.\p"
+	.string "I did one row. My hands have never hurt\n"
+	.string "so much in my life.\p"
+	.string "It was, I think, the first honest work I\n"
+	.string "have ever done. Come.$"
+
+Nexus_Text_Maxie_Landorus_ChampionDefeat3:
+	.string "Hm. My hands are too sore to argue.$"
+
+Nexus_Text_Maxie_Landorus_ChampionAfter3:
+	.string "{SPEAKER NAME_MAXIE}That creature gives, and gives, and\n"
+	.string "never asks who will do the gathering.\p"
+	.string "I used to think abundance was the\n"
+	.string "answer. It is only the question.\p"
+	.string "The answer is people. Tired, blistered,\n"
+	.string "arguing people, bringing it in together.\p"
+	.string "Go. I have another row to do.$"
 ```
 
 </details>
