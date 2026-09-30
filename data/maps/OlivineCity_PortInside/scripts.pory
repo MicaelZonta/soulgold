@@ -156,29 +156,98 @@ mapscripts OlivineCity_PortInside_MapScripts {
     }
 }
 
+// Ferry desk. Two destinations, each unlocked separately:
+//   Sun and Moon Altar  - carrying ITEM_SUN_MOON_TICKET (Looker hands it over at
+//                         the end of the pre-Necrozma meeting, OlivineCity_House1)
+//   Faraway Island      - FLAG_CANSAIL_FARAWAYISLAND (Blaine, below)
+// Both unlocked: a menu. One: a yes/no. None: the old "not leaving" line.
+// The way back from the altar is the sailor on the altar pier (SunMoonAltar).
 script OlivinePort_Sailor {
-	if (!flag(FLAG_CANSAIL_FARAWAYISLAND)) {
-		msgbox("Sorry, but the ship is not going to
-				leave anywhere anytime soon.", MSGBOX_NPC)
-	} else { 
-		msgbox("I was told to sail you to this
-				oddly specific location. Do you
-				want to go now?", MSGBOX_YESNO)
-		if (var(VAR_RESULT) == NO) {
-			msgbox("Oh, alright...")
+	lock
+	faceplayer
+	// Save made after the meeting but before the ticket existed: hand it over here,
+	// so the altar can never be locked out by an old save. Only for saves where
+	// the reunion really released the altar (the flag is set together with state
+	// 12) - reaching state 11 is NOT enough (Altar V2 section 6). giveitem reports
+	// failure in VAR_RESULT; nothing sails on a failed hand-over, and checkitem
+	// first means it is never given twice.
+	if (flag(FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED)) {
+		checkitem(ITEM_SUN_MOON_TICKET)
+		if (var(VAR_RESULT) == FALSE) {
+			msgbox("{SPEAKER NAME_SAILOR}Looker left your pass with me.
+					Here you are.")
+			giveitem(ITEM_SUN_MOON_TICKET)
+			if (var(VAR_RESULT) == FALSE) {
+				release
+				end
+			}
+		}
+	}
+	checkitem(ITEM_SUN_MOON_TICKET)
+	if (var(VAR_RESULT) == TRUE) {
+		if (flag(FLAG_CANSAIL_FARAWAYISLAND)) {
+			msgbox("{SPEAKER NAME_SAILOR}Where would you like to sail?")
+			dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Sun & Moon Altar", "Faraway Island", "Cancel")
+			switch (var(VAR_RESULT)) {
+				case 0:
+					goto(OlivinePort_EventScript_SailAltar)
+				case 1:
+					goto(OlivinePort_EventScript_SailFaraway)
+			}
+			msgbox("{SPEAKER NAME_SAILOR}I'll be here when you're ready.")
 			release
 			end
 		}
-		msgbox("Then let's do it!
-		
-				Anchors aweigh! We're setting sail
-				to the unknown!")
-		closemessage
-		warp(MAP_FARAWAY_ISLAND_OUTSIDE, 13, 38)
-		waitstate
+		msgbox("{SPEAKER NAME_SAILOR}The ship for the Sun and Moon Altar
+				is ready. Shall we set sail?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == NO) {
+			msgbox("{SPEAKER NAME_SAILOR}I'll be here when you're ready.")
+			release
+			end
+		}
+		goto(OlivinePort_EventScript_SailAltar)
+	}
+	if (!flag(FLAG_CANSAIL_FARAWAYISLAND)) {
+		msgbox("Sorry, but the ship is not going to
+				leave anywhere anytime soon.")
 		release
 		end
-	}	
+	}
+	msgbox("I was told to sail you to this
+			oddly specific location. Do you
+			want to go now?", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		msgbox("Oh, alright...")
+		release
+		end
+	}
+	goto(OlivinePort_EventScript_SailFaraway)
+}
+
+// Altar V2 section 6. The ticket line is a system notice (no name plate, the
+// author's rule for SYSTEM lines); the sailor's own line carries his plate.
+script OlivinePort_EventScript_SailAltar {
+	msgbox("{PLAYER} showed the Sun & Moon Ticket.")
+	msgbox("{SPEAKER NAME_SAILOR}All aboard!")
+	closemessage
+	// (14,27): the altar pier, next to the sailor who brings you back. Not a warp
+	// tile, and the path north to the stair is open.
+	warp(MAP_SUN_MOON_ALTAR, 14, 27)
+	waitstate
+	release
+	end
+}
+
+script OlivinePort_EventScript_SailFaraway {
+	msgbox("Then let's do it!
+
+			Anchors aweigh! We're setting sail
+			to the unknown!")
+	closemessage
+	warp(MAP_FARAWAY_ISLAND_OUTSIDE, 13, 38)
+	waitstate
+	release
+	end
 }
 
 script OlivinePortBlaine {

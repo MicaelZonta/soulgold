@@ -389,6 +389,11 @@ static const u8 sMapHealLocations[][3] =
     [MAPSEC_BATTLE_FACTORY] = {MAP_GROUP(MAP_BATTLE_FACTORY_GROUNDS), MAP_NUM(MAP_BATTLE_FACTORY_GROUNDS), HEAL_LOCATION_BATTLE_FACTORY_GROUNDS},
     [MAPSEC_METEOR_ISLAND] = {MAP_GROUP(MAP_METEOR_ISLAND), MAP_NUM(MAP_METEOR_ISLAND), HEAL_LOCATION_METEOR_ISLAND},
     [MAPSEC_ROUTE50] = {MAP_GROUP(MAP_ROUTE50), MAP_NUM(MAP_ROUTE50), HEAL_LOCATION_ROUTE50},
+    // Three maps share MAPSEC_ABANDONED_LAB (SunMoonAltar, UltraSpaceArena,
+    // SouthPassageEnd) and this table is indexed by MAPSEC, so Fly always lands
+    // on the altar, which is the one the player can be sent to
+    // (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 4.7).
+    [MAPSEC_ABANDONED_LAB] = {MAP_GROUP(MAP_SUN_MOON_ALTAR), MAP_NUM(MAP_SUN_MOON_ALTAR), HEAL_LOCATION_SUN_MOON_ALTAR},
 };
 
 static const u8 *const sEverGrandeCityNames[] =
@@ -498,6 +503,10 @@ static const mapsec_u16_t sFlyDestinations[][2] =
     {MAPSEC_SAFFRON_CITY,     FLAG_VISITED_SAFFRON_CITY},
     {MAPSEC_KITAKAMI_VILLAGE, FLAG_VISITED_KITAKAMI},
     {MAPSEC_ROUTE50,          FLAG_VISITED_ROUTE50},
+    // "Altar of Sun and Moon", on the same region map page as the Meteor Island
+    // and one row from it - which is the precedent that proves a destination on
+    // a secondary page is selectable.
+    {MAPSEC_ABANDONED_LAB,    FLAG_VISITED_SUN_MOON_ALTAR},
     {MAPSEC_BATTLE_FRONTIER,  FLAG_LANDMARK_BATTLE_FRONTIER},
 };
 
@@ -1693,6 +1702,8 @@ static u8 GetMapsecType(u16 mapSecId)
         return FlagGet(FLAG_VISITED_METEOR_CAVE) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_ROUTE50:
         return FlagGet(FLAG_VISITED_ROUTE50) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_ABANDONED_LAB:
+        return FlagGet(FLAG_VISITED_SUN_MOON_ALTAR) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     default:
         return MAPSECTYPE_ROUTE;
     }

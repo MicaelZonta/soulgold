@@ -34,18 +34,7 @@ Route129_EventScript_Allison::
 	msgbox Route129_Text_AllisonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route129_EventScript_Reed::
-	trainerbattle_single TRAINER_REED, Route129_Text_ReedIntro, Route129_Text_ReedDefeat
-	msgbox Route129_Text_ReedPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route129_EventScript_Tisha::
-	trainerbattle_single TRAINER_TISHA, Route129_Text_TishaIntro, Route129_Text_TishaDefeat
-	msgbox Route129_Text_TishaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route129_EventScript_Clarence::
 	trainerbattle_single TRAINER_NONE, Route129_Text_ClarenceIntro, Route129_Text_ClarenceDefeat
 	msgbox Route129_Text_ClarencePostBattle, MSGBOX_AUTOCLOSE
 	end
-

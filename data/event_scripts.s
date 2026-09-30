@@ -45,6 +45,7 @@
 #include "constants/map_scripts.h"
 #include "constants/maps.h"
 #include "constants/mauville_old_man.h"
+#include "constants/nexus.h"
 #include "constants/metatile_labels.h"
 #include "constants/move_relearner.h"
 #include "constants/moves.h"
@@ -1202,6 +1203,8 @@ Common_Text_ReceivedMon:
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"
+	.include "data/scripts/rift_missions.inc"
+	.include "data/scripts/nexus.inc"
 	.include "data/scripts/trainer_script.inc"
 	.include "data/scripts/berry_tree.inc"
 	.include "data/scripts/secret_base.inc"
@@ -2413,3 +2416,8 @@ Common_Text_ReceivedMon:
 	.include "data/maps/Route50UnderwaterCave2/scripts.inc"
 
 	.include "data/maps/BattleCafe/scripts.inc"
+
+	.include "data/maps/SunMoonAltar/scripts.inc"
+
+	.include "data/maps/UltraSpaceArena/scripts.inc"
+	.include "data/maps/Nexus/scripts.inc"

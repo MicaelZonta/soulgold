@@ -24,8 +24,10 @@ extern const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[];
 extern void SynchronizeSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite);
 extern void SynchronizeSurfPosition(struct ObjectEvent *playerObj, struct Sprite *sprite);
 
+#if OW_SURF_UNIQUE_SPRITES
 static void CreateOverlaySprite(void);
 static void UpdateSurfMonOverlay(struct Sprite *sprite);
+#endif // OW_SURF_UNIQUE_SPRITES
 
 struct RideablePokemon
 {
@@ -37,6 +39,7 @@ struct RideablePokemon
 #define SURFABLE_POKEMON_DEFAULT_FRAME_COUNT 6
 #define SURFABLE_POKEMON_MAX_FRAME_COUNT     8
 
+#if OW_SURF_UNIQUE_SPRITES
 #include "data/object_events/surfable/surfable_pokemon_graphics.h"
 #include "data/object_events/surfable/surfable_pokemon.h"
 #include "data/object_events/surfable/surfable_pokemon_pic_tables.h"
@@ -46,8 +49,10 @@ STATIC_ASSERT(ARRAY_COUNT(gSurfablePokemon) == ARRAY_COUNT(sSurfablePokemonPalet
 STATIC_ASSERT(ARRAY_COUNT(gSurfablePokemon) == ARRAY_COUNT(sSurfablePokemonShinyPalettes), SurfSpeciesAndShinyPalettesCountMismatch);
 STATIC_ASSERT(ARRAY_COUNT(gSurfablePokemon) == ARRAY_COUNT(gSurfablePokemonOverworldSprites), SurfSpeciesAndSpritesCountMismatch);
 STATIC_ASSERT(ARRAY_COUNT(gSurfablePokemon) == ARRAY_COUNT(gSurfablePokemonOverlaySprites), SurfSpeciesAndOverlaysCountMismatch);
+#endif // OW_SURF_UNIQUE_SPRITES
 
 static EWRAM_DATA u16 sCurrentSurfMon = {0};
+#if OW_SURF_UNIQUE_SPRITES
 static EWRAM_DATA u8 sCurrentSurfMonPartySlot = {0};
 static EWRAM_DATA bool8 sUseShinySurfSheet = FALSE;
 static EWRAM_DATA struct SpriteFrameImage sShinySurfFrames[SURFABLE_POKEMON_MAX_FRAME_COUNT] = {0};
@@ -86,9 +91,11 @@ static u16 GetSurfablePokemonIndexForMon(struct Pokemon *mon)
 
     return GetSurfablePokemonIndex(species);
 }
+#endif // OW_SURF_UNIQUE_SPRITES
 
 u8 GetSurfablePokemonPartySlot(void)
 {
+#if OW_SURF_UNIQUE_SPRITES
     for (u32 partySlot = 0; partySlot < PARTY_SIZE; partySlot++)
     {
         if (GetMonData(&gPlayerParty[partySlot], MON_DATA_IS_EGG))
@@ -97,10 +104,12 @@ u8 GetSurfablePokemonPartySlot(void)
         if (GetSurfablePokemonIndexForMon(&gPlayerParty[partySlot]) != 0xFFFF)
             return partySlot;
     }
+#endif // OW_SURF_UNIQUE_SPRITES
 
     return PARTY_SIZE;
 }
 
+#if OW_SURF_UNIQUE_SPRITES
 static u16 GetSurfablePokemonSprite(void)
 {
     sCurrentSurfMonPartySlot = GetSurfablePokemonPartySlot();
@@ -156,6 +165,7 @@ static bool8 SetupShinySurfFrames(void)
 
     return TRUE;
 }
+#endif // OW_SURF_UNIQUE_SPRITES
 
 u32 CreateSurfablePokemonSprite(void)
 {
@@ -164,10 +174,14 @@ u32 CreateSurfablePokemonSprite(void)
 
     SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
 
+    sCurrentSurfMon = 0xFFFF;
+#if OW_SURF_UNIQUE_SPRITES
     sCurrentSurfMon = GetSurfablePokemonSprite();
     sUseShinySurfSheet = FALSE;
+#endif // OW_SURF_UNIQUE_SPRITES
     if (sCurrentSurfMon != 0xFFFF)
     {
+#if OW_SURF_UNIQUE_SPRITES
         sUseShinySurfSheet = SetupShinySurfFrames();
         LoadSurfOverworldPalette();
         if (gSurfablePokemonOverlaySprites[sCurrentSurfMon].tileTag == TAG_NONE)
@@ -176,6 +190,7 @@ u32 CreateSurfablePokemonSprite(void)
         spriteId = CreateSpriteAtEnd(&gSurfablePokemonOverworldSprites[sCurrentSurfMon], gFieldEffectArguments[0], gFieldEffectArguments[1], 0x96);
         if (sUseShinySurfSheet && spriteId != MAX_SPRITES)
             gSprites[spriteId].images = sShinySurfFrames;
+#endif // OW_SURF_UNIQUE_SPRITES
     }
     else
     {
@@ -199,6 +214,7 @@ u32 CreateSurfablePokemonSprite(void)
     return spriteId;
 }
 
+#if OW_SURF_UNIQUE_SPRITES
 static void CreateOverlaySprite(void)
 {
     u8 overlaySprite;
@@ -249,3 +265,4 @@ static void UpdateSurfMonOverlay(struct Sprite *sprite)
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))
         DestroySprite(sprite);
 }
+#endif // OW_SURF_UNIQUE_SPRITES

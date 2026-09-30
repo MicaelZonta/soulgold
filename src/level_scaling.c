@@ -1,6 +1,7 @@
 #include "global.h"
 #include "bug_contest.h"
 #include "level_scaling.h"
+#include "nexus.h"
 #include "pokemon.h"
 #include "data.h"
 #include "caps.h"
@@ -443,10 +444,29 @@ static bool8 IsOptionalScalingTrainer(u16 trainerId)
     return FALSE;
 }
 
+static bool8 IsNexusTrainer(u16 trainerId)
+{
+    return Nexus_IsNexusTrainer(trainerId);
+}
+
 const struct LevelScalingConfig *GetTrainerLevelScalingConfig(u16 trainerId, u8 intendedAverageLevel)
 {
     bool8 isOptionalTrainer = IsOptionalScalingTrainer(trainerId);
     bool8 forceScaling = FALSE;
+
+    if (IsNexusTrainer(trainerId))
+    {
+        sTrainerOptionConfig.mode = LEVEL_SCALING_PARTY_HIGHEST;
+        sTrainerOptionConfig.levelAugmentAdd = 0;
+        sTrainerOptionConfig.levelVariation = 0;
+        sTrainerOptionConfig.minLevel = 0;
+        sTrainerOptionConfig.maxLevel = 0;
+        sTrainerOptionConfig.manageEvolutions = FALSE;
+        sTrainerOptionConfig.excludeFainted = FALSE;
+        sTrainerOptionConfig.useAuthoredLevelFloor = FALSE;
+        sTrainerOptionConfig.evolveAboveLevel = FALSE;
+        return &sTrainerOptionConfig;
+    }
 
     if (isOptionalTrainer
      && CalculatePlayerPartyBaseLevel(LEVEL_SCALING_PARTY_AVG, FALSE)

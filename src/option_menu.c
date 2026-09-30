@@ -1,7 +1,8 @@
 #include "global.h"
+#include "event_object_movement.h"
+#include "pokemon.h"
 #include "option_menu.h"
 #include "bg.h"
-#include "difficulty.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"
 #include "level_scaling.h"
@@ -20,6 +21,7 @@
 #include "text_window.h"
 #include "window.h"
 #include "gba/m4a_internal.h"
+#include "constants/flags.h"
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/vars.h"
@@ -38,7 +40,6 @@
 #define tAutorun data[9]
 #define tTrainerLevelScaling data[10]
 #define tWildLevelScaling data[11]
-#define tDifficulty data[12]
 #define tOverworldSpeedup data[13]
 #define tBattleSpeed data[14]
 #define tFastIntroNoSlide data[15]
@@ -66,7 +67,6 @@ enum
     MENUITEM_BATTLE_SPEED,
     MENUITEM_TRAINER_LEVEL_SCALING,
     MENUITEM_WILD_LEVEL_SCALING,
-    MENUITEM_DIFFICULTY,
     MENUITEM_COUNT_PG2,
 };
 
@@ -76,11 +76,15 @@ enum
     MENUITEM_INTRO_SLIDE,
     MENUITEM_UI_ANIMATIONS,
     MENUITEM_DARK_BATTLE_UI,
+    MENUITEM_OW_LIGHTING,
+    MENUITEM_BATTLE_LIGHTING,
     MENUITEM_FAST_MEGAS,
     MENUITEM_FAST_WEATHER,
     MENUITEM_SURF_MUSIC,
     MENUITEM_PARTY_MENU,
     MENUITEM_BATTLE_FORMAT,
+    MENUITEM_FOLLOWER_MEGA,
+    MENUITEM_SHINY_RATE,
     MENUITEM_COUNT_PG3,
 };
 
@@ -112,7 +116,6 @@ enum
 #define YPOS_BATTLE_SPEED          sOptionDrawY
 #define YPOS_TRAINER_LEVEL_SCALING sOptionDrawY
 #define YPOS_WILD_LEVEL_SCALING    sOptionDrawY
-#define YPOS_DIFFICULTY            sOptionDrawY
 #define YPOS_INTRO_SLIDE           sOptionDrawY
 #define YPOS_UI_ANIMATIONS         sOptionDrawY
 #define YPOS_DARK_BATTLE_UI        sOptionDrawY
@@ -161,8 +164,6 @@ static void LevelCaps_DrawChoices(u8 selection);
 static u8 LevelScaling_ProcessInput(u8 selection);
 static void TrainerLevelScaling_DrawChoices(u8 selection);
 static void WildLevelScaling_DrawChoices(u8 selection);
-static u8 Difficulty_ProcessInput(u8 selection);
-static void Difficulty_DrawChoices(u8 selection);
 static u8   Autorun_ProcessInput(u8 selection);
 static void Autorun_DrawChoices(u8 selection);
 static u8 OverworldSpeedup_ProcessInput(u8 selection);
@@ -175,8 +176,11 @@ static u8 UiAnimations_ProcessInput(u8 selection);
 static void UiAnimations_DrawChoices(u8 selection);
 static u8 DarkBattleUi_ProcessInput(u8 selection);
 static void DarkBattleUi_DrawChoices(u8 selection);
+static u8 Lighting_ProcessInput(u8 selection);
+static void Lighting_DrawChoices(u8 selection);
 static u8 FastMegas_ProcessInput(u8 selection);
 static void FastMegas_DrawChoices(u8 selection);
+static void ShinyRate_DrawChoices(u8 selection);
 static u8 FastWeather_ProcessInput(u8 selection);
 static void FastWeather_DrawChoices(u8 selection);
 static u8 SurfMusic_ProcessInput(u8 selection);
@@ -194,7 +198,11 @@ static void DrawBgWindowFrames(void);
 EWRAM_DATA static bool8 sArrowPressed = FALSE;
 EWRAM_DATA static bool8 sUiAnimationsOff = FALSE;
 EWRAM_DATA static bool8 sDarkBattleUi = FALSE;
+EWRAM_DATA static bool8 sOverworldLighting = FALSE;
+EWRAM_DATA static bool8 sBattleLighting = FALSE;
 EWRAM_DATA static bool8 sFastMegas = FALSE;
+EWRAM_DATA static bool8 sFollowerMega = FALSE;
+EWRAM_DATA static u8 sShinyRate = 0;
 EWRAM_DATA static bool8 sFastWeather = FALSE;
 EWRAM_DATA static bool8 sSurfMusic = FALSE;
 EWRAM_DATA static u8 sPartyMenuStyle = PARTY_MENU_DEFAULT_OPTION;
@@ -226,8 +234,6 @@ static const u8 gText_SoftCaps[]             = _("{COLOR GREEN}{SHADOW LIGHT_GRE
 static const u8 gText_HardCaps[]             = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Hard");
 static const u8 gText_ScalingOff[]         = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 static const u8 gText_ScalingOn[]          = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
-static const u8 gText_DifficultyNormal[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Normal");
-static const u8 gText_DifficultyHard[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Hard");
 static const u8 gText_OverworldSpeed1x[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}1x");
 static const u8 gText_OverworldSpeed2x[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}2x");
 static const u8 gText_OverworldSpeed3x[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}3x");
@@ -239,6 +245,12 @@ static const u8 gText_IntroSlideOn[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_IntroSlideOff[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 static const u8 gText_BattleUiLight[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Light");
 static const u8 gText_BattleUiDark[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dark");
+static const u8 *const sShinyRateLabels[SHINY_RATE_COUNT] = {
+        [SHINY_RATE_256] = COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}<1/256>"),
+        [SHINY_RATE_512] = COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}<1/512>"),
+        [SHINY_RATE_1024] = COMPOUND_STRING("{COLOR GREEN}{SHADOW LIGHT_GREEN}<1/1024>"),
+    };
+
 static const u8 gText_FastMegasOn[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
 static const u8 gText_FastMegasOff[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 static const u8 gText_FastWeatherOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
@@ -295,7 +307,6 @@ static const u8 *const sOptionMenuItemsNames_Pg2[MENUITEM_COUNT_PG2] =
     [MENUITEM_BATTLE_SPEED] = COMPOUND_STRING("Battle speed"),
     [MENUITEM_TRAINER_LEVEL_SCALING] = COMPOUND_STRING("Trainer scaling"),
     [MENUITEM_WILD_LEVEL_SCALING] = COMPOUND_STRING("Wild scaling"),
-    [MENUITEM_DIFFICULTY] = COMPOUND_STRING("Difficulty"),
 };
 
 static const u8 *const sOptionMenuItemsNames_Pg3[MENUITEM_COUNT_PG3] =
@@ -303,6 +314,10 @@ static const u8 *const sOptionMenuItemsNames_Pg3[MENUITEM_COUNT_PG3] =
     [MENUITEM_INTRO_SLIDE] = COMPOUND_STRING("Battle intro"),
     [MENUITEM_UI_ANIMATIONS] = COMPOUND_STRING("UI animations"),
     [MENUITEM_DARK_BATTLE_UI] = COMPOUND_STRING("Battle/Bag UI"),
+    [MENUITEM_OW_LIGHTING] = COMPOUND_STRING("OW lighting"),
+    [MENUITEM_BATTLE_LIGHTING] = COMPOUND_STRING("Battle lighting"),
+    [MENUITEM_FOLLOWER_MEGA] = COMPOUND_STRING("Follower Mega"),
+    [MENUITEM_SHINY_RATE] = COMPOUND_STRING("Shiny odds"),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING("Fast megas"),
     [MENUITEM_FAST_WEATHER] = COMPOUND_STRING("Fast weather"),
     [MENUITEM_SURF_MUSIC] = COMPOUND_STRING("Surf music"),
@@ -376,11 +391,6 @@ static const u8 *const sOptionMenuHelpTexts_Pg2[MENUITEM_COUNT_PG2] =
         "trail 8-10 levels behind your party.\n"
         "Never scales below the nonscaled\n"
         "wild encounter levels."),
-    [MENUITEM_DIFFICULTY] = COMPOUND_STRING(
-        "Normal uses standard trainer teams.\n"
-        "Hard uses tougher teams for Gym\n"
-        "battles, the Elite Four and\n"
-        "makes them Doubles.\n"),
 };
 
 static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
@@ -398,10 +408,28 @@ static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
         "uses dark healthboxes, battle\n"
         "menus, and Bag screens.\n"
         "Shiny healthboxes are unchanged."),
+    [MENUITEM_OW_LIGHTING] = COMPOUND_STRING(
+        "On applies day/night visuals in\n"
+        "the overworld. Off keeps daytime\n"
+        "colors. Time-based encounters and\n"
+        "events are unaffected by this."),
+    [MENUITEM_BATTLE_LIGHTING] = COMPOUND_STRING(
+        "On applies day/night effects to\n"
+        "battle backgrounds, Pokémon,\n"
+        "Trainers, and other sprites.\n"
+        "Off keeps their normal colors."),
+    [MENUITEM_FOLLOWER_MEGA] = COMPOUND_STRING(
+        "Show Mega forms on follower\n"
+        "instead of base form when equipped\n"
+        "with Mega Stone. Some newer Megas\n"
+        "lack overworld sprites currently."),
+    [MENUITEM_SHINY_RATE] = COMPOUND_STRING(
+        "Odds of running into shiny Pokémon.\n"
+        "Does not change existing shinyness."),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING(
         "On uses a near-instant Mega\n"
         "Evolution animation. Off plays\n"
-        "the complete sequence."),
+        "the complete animation."),
     [MENUITEM_FAST_WEATHER] = COMPOUND_STRING(
         "On skips repeated weather text\n"
         "and animations after it begins.\n"
@@ -412,8 +440,7 @@ static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
     [MENUITEM_PARTY_MENU] = COMPOUND_STRING(
         "Custom uses the redesigned screen.\n"
         "HGSS and BW use their respective\n"
-        "DS-style layouts. This applies\n"
-        "wherever the party menu is opened."),
+        "DS-style layouts."),
     [MENUITEM_BATTLE_FORMAT] = COMPOUND_STRING(
         "Default uses intended formats.\n"
         "Singles/Doubles override eligible\n"
@@ -498,7 +525,6 @@ static void ReadAllCurrentSettings(u8 taskId)
         gTasks[taskId].tAutorun = gSaveBlock2Ptr->optionsAutorun;
         gTasks[taskId].tTrainerLevelScaling = gSaveBlock2Ptr->optionsTrainerLevelScaling;
         gTasks[taskId].tWildLevelScaling = gSaveBlock2Ptr->optionsWildLevelScaling;
-        gTasks[taskId].tDifficulty = GetCurrentDifficultyLevel() == DIFFICULTY_HARD;
         gTasks[taskId].tOverworldSpeedup = VarGet(VAR_OVERWORLD_SPEEDUP);
         if (gTasks[taskId].tOverworldSpeedup > OPTIONS_OVERWORLD_SPEED_4X)
             gTasks[taskId].tOverworldSpeedup = OPTIONS_OVERWORLD_SPEED_1X;
@@ -508,7 +534,11 @@ static void ReadAllCurrentSettings(u8 taskId)
         gTasks[taskId].tFastIntroNoSlide = gSaveBlock2Ptr->optionsFastIntroNoSlide;
         sUiAnimationsOff = gSaveBlock2Ptr->optionsUiAnimationsOff;
         sDarkBattleUi = gSaveBlock2Ptr->optionsDarkBattleUi;
+        sOverworldLighting = !FlagGet(FLAG_OW_LIGHTING);
+        sBattleLighting = !FlagGet(FLAG_BATTLE_LIGHTING);
         sFastMegas = gSaveBlock2Ptr->optionsFastMegas;
+        sFollowerMega = IsFollowerMegaEnabled();
+        sShinyRate = GetShinyRateOption();
         sFastWeather = gSaveBlock2Ptr->optionsFastWeather;
         sSurfMusic = gSaveBlock2Ptr->optionsSurfMusic;
         sPartyMenuStyle = GetSavedPartyMenuStyle();
@@ -685,9 +715,6 @@ static void DrawOptionChoices(u8 taskId, u8 option)
     case OPTION_MENU_PG2_START + MENUITEM_WILD_LEVEL_SCALING:
         WildLevelScaling_DrawChoices(gTasks[taskId].tWildLevelScaling);
         break;
-    case OPTION_MENU_PG2_START + MENUITEM_DIFFICULTY:
-        Difficulty_DrawChoices(gTasks[taskId].tDifficulty);
-        break;
     case OPTION_MENU_PG3_START + MENUITEM_INTRO_SLIDE:
         IntroSlide_DrawChoices(gTasks[taskId].tFastIntroNoSlide);
         break;
@@ -696,6 +723,18 @@ static void DrawOptionChoices(u8 taskId, u8 option)
         break;
     case OPTION_MENU_PG3_START + MENUITEM_DARK_BATTLE_UI:
         DarkBattleUi_DrawChoices(sDarkBattleUi);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_OW_LIGHTING:
+        Lighting_DrawChoices(sOverworldLighting);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_BATTLE_LIGHTING:
+        Lighting_DrawChoices(sBattleLighting);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_FOLLOWER_MEGA:
+        FastMegas_DrawChoices(sFollowerMega);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_SHINY_RATE:
+        ShinyRate_DrawChoices(sShinyRate);
         break;
     case OPTION_MENU_PG3_START + MENUITEM_FAST_MEGAS:
         FastMegas_DrawChoices(sFastMegas);
@@ -801,12 +840,6 @@ static void ProcessOptionInput(u8 taskId)
         if (previousOption != gTasks[taskId].tWildLevelScaling)
             WildLevelScaling_DrawChoices(gTasks[taskId].tWildLevelScaling);
         break;
-    case OPTION_MENU_PG2_START + MENUITEM_DIFFICULTY:
-        previousOption = gTasks[taskId].tDifficulty;
-        gTasks[taskId].tDifficulty = Difficulty_ProcessInput(gTasks[taskId].tDifficulty);
-        if (previousOption != gTasks[taskId].tDifficulty)
-            Difficulty_DrawChoices(gTasks[taskId].tDifficulty);
-        break;
     case OPTION_MENU_PG3_START + MENUITEM_INTRO_SLIDE:
         previousOption = gTasks[taskId].tFastIntroNoSlide;
         gTasks[taskId].tFastIntroNoSlide = IntroSlide_ProcessInput(gTasks[taskId].tFastIntroNoSlide);
@@ -824,6 +857,35 @@ static void ProcessOptionInput(u8 taskId)
         sDarkBattleUi = DarkBattleUi_ProcessInput(sDarkBattleUi);
         if (previousOption != sDarkBattleUi)
             DarkBattleUi_DrawChoices(sDarkBattleUi);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_OW_LIGHTING:
+        previousOption = sOverworldLighting;
+        sOverworldLighting = Lighting_ProcessInput(sOverworldLighting);
+        if (previousOption != sOverworldLighting)
+            Lighting_DrawChoices(sOverworldLighting);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_BATTLE_LIGHTING:
+        previousOption = sBattleLighting;
+        sBattleLighting = Lighting_ProcessInput(sBattleLighting);
+        if (previousOption != sBattleLighting)
+            Lighting_DrawChoices(sBattleLighting);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_FOLLOWER_MEGA:
+        sFollowerMega = FastMegas_ProcessInput(sFollowerMega);
+        FastMegas_DrawChoices(sFollowerMega);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_SHINY_RATE:
+        if (JOY_NEW(DPAD_RIGHT))
+        {
+            sShinyRate = sShinyRate == SHINY_RATE_1024 ? SHINY_RATE_256 : sShinyRate + 1;
+            sArrowPressed = TRUE;
+        }
+        else if (JOY_NEW(DPAD_LEFT))
+        {
+            sShinyRate = sShinyRate == SHINY_RATE_256 ? SHINY_RATE_1024 : sShinyRate - 1;
+            sArrowPressed = TRUE;
+        }
+        ShinyRate_DrawChoices(sShinyRate);
         break;
     case OPTION_MENU_PG3_START + MENUITEM_FAST_MEGAS:
         previousOption = sFastMegas;
@@ -985,14 +1047,23 @@ static void SaveCurrentSettings(u8 taskId)
     gSaveBlock2Ptr->optionsAutorun = gTasks[taskId].tAutorun;
     gSaveBlock2Ptr->optionsTrainerLevelScaling = gTasks[taskId].tTrainerLevelScaling;
     gSaveBlock2Ptr->optionsWildLevelScaling = gTasks[taskId].tWildLevelScaling;
-    SetCurrentDifficultyLevel(gTasks[taskId].tDifficulty ? DIFFICULTY_HARD : DIFFICULTY_NORMAL);
     VarSet(VAR_OVERWORLD_SPEEDUP, gTasks[taskId].tOverworldSpeedup);
     gSaveBlock2Ptr->optionsBattleSpeed = gTasks[taskId].tBattleSpeed;
     VarSet(VAR_BATTLE_SPEED, gTasks[taskId].tBattleSpeed);
     gSaveBlock2Ptr->optionsFastIntroNoSlide = gTasks[taskId].tFastIntroNoSlide;
     gSaveBlock2Ptr->optionsUiAnimationsOff = sUiAnimationsOff;
     gSaveBlock2Ptr->optionsDarkBattleUi = sDarkBattleUi;
+    if (sOverworldLighting)
+        FlagClear(FLAG_OW_LIGHTING);
+    else
+        FlagSet(FLAG_OW_LIGHTING);
+    if (sBattleLighting)
+        FlagClear(FLAG_BATTLE_LIGHTING);
+    else
+        FlagSet(FLAG_BATTLE_LIGHTING);
     gSaveBlock2Ptr->optionsFastMegas = sFastMegas;
+    VarSet(VAR_FOLLOWER_MEGA_OFF, !sFollowerMega);
+    VarSet(VAR_SHINY_RATE, sShinyRate);
     gSaveBlock2Ptr->optionsFastWeather = sFastWeather;
     gSaveBlock2Ptr->optionsSurfMusic = sSurfMusic;
     SetSavedPartyMenuStyle(sPartyMenuStyle);
@@ -1566,6 +1637,26 @@ static void DarkBattleUi_DrawChoices(u8 selection)
     DrawOptionMenuChoice(gText_BattleUiDark, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleUiDark, 198), YPOS_DARK_BATTLE_UI, styles[TRUE]);
 }
 
+static u8 Lighting_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+
+    return selection;
+}
+
+static void Lighting_DrawChoices(u8 selection)
+{
+    u8 styles[2] = {0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(gText_BattleSceneOn, 104, sOptionDrawY, styles[TRUE]);
+    DrawOptionMenuChoice(gText_BattleSceneOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleSceneOff, 198), sOptionDrawY, styles[FALSE]);
+}
+
 static u8 FastMegas_ProcessInput(u8 selection)
 {
     if (selection > TRUE)
@@ -1897,29 +1988,6 @@ static void WildLevelScaling_DrawChoices(u8 selection)
     LevelScaling_DrawChoices(selection, YPOS_WILD_LEVEL_SCALING);
 }
 
-static u8 Difficulty_ProcessInput(u8 selection)
-{
-    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
-    {
-        selection ^= 1;
-        sArrowPressed = TRUE;
-    }
-
-    return selection;
-}
-
-static void Difficulty_DrawChoices(u8 selection)
-{
-    u8 styles[2];
-
-    styles[0] = 0;
-    styles[1] = 0;
-    styles[selection] = 1;
-
-    DrawOptionMenuChoice(gText_DifficultyNormal, 104, YPOS_DIFFICULTY, styles[0]);
-    DrawOptionMenuChoice(gText_DifficultyHard, GetStringRightAlignXOffset(FONT_NORMAL, gText_DifficultyHard, 198), YPOS_DIFFICULTY, styles[1]);
-}
-
 static void DrawHeaderText(void)
 {
     FillWindowPixelBuffer(WIN_HEADER, PIXEL_FILL(1));
@@ -1960,4 +2028,10 @@ static void DrawBgWindowFrames(void)
     FillBgTilemapBufferRect(1, TILE_BOT_CORNER_R, 28, 19,  1,  1,  7);
 
     CopyBgTilemapBufferToVram(1);
+}
+
+static void ShinyRate_DrawChoices(u8 selection)
+{
+    FillWindowPixelRect(WIN_OPTIONS, PIXEL_FILL(1), 130, sOptionDrawY, 78, 16);
+    DrawOptionMenuChoice(sShinyRateLabels[selection], 130, sOptionDrawY, 1);
 }

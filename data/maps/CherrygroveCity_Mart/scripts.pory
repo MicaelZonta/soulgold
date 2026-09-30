@@ -86,6 +86,8 @@ script Cherrygrove_Mart2 {
 
 mart Cherrygrove2 {
 	ITEM_TM_SAFEGUARD
-    ITEM_HEAL_BALL
+    // No Balls on this counter: every Poke Mart in the campaign sells
+    // ITEM_POKE_BALL and nothing else, and Kurt makes the rest by recipe
+    // (.claude/KURT_BALL_CRAFT_DESIGN.md section 2.1).
     ITEM_ORANGE_MAIL
 }

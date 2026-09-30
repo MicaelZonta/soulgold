@@ -392,19 +392,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CAMPER",
-      "x": 11,
-      "y": 71,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
-      "script": "Route111_EventScript_Travis",
-      "flag": "0"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
       "x": 32,
       "y": 29,
@@ -428,19 +415,6 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "Route111_EventScript_Brooke",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-      "x": 9,
-      "y": 27,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
-      "script": "Route111_EventScript_Wilton",
       "flag": "0"
     },
     {
@@ -470,19 +444,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CAMPER",
-      "x": 26,
-      "y": 132,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "5",
-      "script": "Route111_EventScript_Tyron",
-      "flag": "0"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
       "x": 20,
       "y": 132,
@@ -493,19 +454,6 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "5",
       "script": "Route111_EventScript_Celina",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
-      "x": 19,
-      "y": 121,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
-      "script": "Route111_EventScript_Bianca",
       "flag": "0"
     },
     {
@@ -545,19 +493,6 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "6",
       "script": "Route111_EventScript_Celia",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_CAMPER",
-      "x": 37,
-      "y": 77,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "7",
-      "script": "Route111_EventScript_Branden",
       "flag": "0"
     },
     {

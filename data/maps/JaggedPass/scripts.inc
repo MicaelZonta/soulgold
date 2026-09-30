@@ -135,11 +135,6 @@ JaggedPass_EventScript_EthanRematch::
 	msgbox JaggedPass_Text_EthanPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-JaggedPass_EventScript_Julio::
-	trainerbattle_single TRAINER_JULIO, JaggedPass_Text_JulioIntro, JaggedPass_Text_JulioDefeat
-	msgbox JaggedPass_Text_JulioPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 JaggedPass_EventScript_Autumn::
 	trainerbattle_single TRAINER_NONE, JaggedPass_Text_AutumnIntro, JaggedPass_Text_AutumnDefeat
 	msgbox JaggedPass_Text_AutumnPostBattle, MSGBOX_AUTOCLOSE
@@ -261,4 +256,3 @@ JaggedPass_Text_AutumnDefeat:
 JaggedPass_Text_AutumnPostBattle:
 	.string "What is that odd rock protrusion\n"
 	.string "a little up the hill from here?$"
-

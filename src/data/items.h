@@ -8064,6 +8064,26 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Audinite,
     },
 
+    [ITEM_GIGANTATITE] =
+    {
+        .name = ITEM_NAME("Gigantatite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "A stone that lets\n"
+            "former Gigantamax\n"
+            "{PKMN} Mega Evolve."),
+        .pocket = POCKET_MEGASTONES,
+        .notConsumed = TRUE,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .heldSlot = 0,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_GiveHeldItem,
+        .flingPower = 0,
+        .iconPic = gItemIcon_DynamaxBand,
+        .iconPalette = gItemIconPalette_DynamaxBand,
+    },
+
 // Gems
     #if I_PRICE >= GEN_9
         #define GEM_PRICE 15000
@@ -13404,9 +13424,8 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM Hidden Power"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "The attack power\n"
-            "varies among\n"
-            "different Pokémon."),
+            "The type varies\n"
+            "with the user."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .heldSlot = 0,
@@ -15456,20 +15475,18 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_PowderJar,
     },
 
-    [ITEM_CANDY_JAR] =
+    [ITEM_UNUSED_887] =
     {
-        .name = ITEM_NAME("Candy Jar"),
+        .name = gQuestionMarksItemName,
         .price = 0,
-        .description = COMPOUND_STRING(
-            "Stores extra Exp\n"
-            "and turns it into\n"
-            "candy."),
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
+        .description = sQuestionMarksDesc,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_UNCATEGORIZED,
+        .heldSlot = 0,
         .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CandyJar,
-        .iconPic = gItemIcon_PowderJar,
-        .iconPalette = gItemIconPalette_PowderJar,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
     },
 
     [ITEM_SQUIRTBOTTLE] =
@@ -15661,6 +15678,23 @@ const struct ItemInfo gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_AuroraTicket,
         .iconPalette = gItemIconPalette_AuroraTicket,
+    },
+
+    [ITEM_SUN_MOON_TICKET] =
+    {
+        .name = ITEM_NAME("Sun&Moon Ticket"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A ferry ticket from\n"
+            "Olivine to the Sun\n"
+            "and Moon Altar."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SunMoonTicket,
+        .iconPalette = gItemIconPalette_SunMoonTicket,
     },
 
     [ITEM_OLD_SEA_MAP] =
@@ -17588,6 +17622,56 @@ const struct ItemInfo gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_ReverseCandy,
         .iconPalette = gItemIconPalette_ReverseCandy,
+    },
+
+    [ITEM_GROOMING_KIT] =
+    {
+        .name = ITEM_NAME("Grooming Kit"),
+        .price = 100000,
+        .description = COMPOUND_STRING(
+            "A set of brushes\n"
+            "and tools for\n"
+            "grooming Pokémon."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_PokeblockCase,
+        .iconPalette = gItemIconPalette_PokeblockCase,
+    },
+
+    [ITEM_SEASONAL_PERFUME] =
+    {
+        .name = ITEM_NAME("Seasonal Perfume"),
+        .price = 100000,
+        .description = COMPOUND_STRING(
+            "A perfume with\n"
+            "scents inspired\n"
+            "by the seasons."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_AuxBottle,
+        .iconPalette = gItemIconPalette_AuxEvasion,
+    },
+    [ITEM_PIKACHU_COSPLAY_KIT] =
+    {
+        .name = ITEM_NAME("Pikachu Cosplay Kit"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Outfits and caps\n"
+            "sized for Pikachu.\n"
+            "Mom can dress it up."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_Scarf,
+        .iconPalette = gItemIconPalette_YellowScarf,
     },
 };
 

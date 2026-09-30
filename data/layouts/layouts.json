@@ -10336,6 +10336,26 @@
       "secondary_tileset": "gTileset_SaffronCity_FightingDojoVIP",
       "border_filepath": "data/layouts/BattleCafe/border.bin",
       "blockdata_filepath": "data/layouts/BattleCafe/map.bin"
+    },
+    {
+      "id": "LAYOUT_SUN_MOON_ALTAR",
+      "name": "SunMoonAltar_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_Johto_General",
+      "secondary_tileset": "gTileset_AltarSunMoon",
+      "border_filepath": "data/layouts/SunMoonAltar/border.bin",
+      "blockdata_filepath": "data/layouts/SunMoonAltar/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULTRA_SPACE_ARENA",
+      "name": "UltraSpaceArena_Layout",
+      "width": 21,
+      "height": 21,
+      "primary_tileset": "gTileset_Johto_General",
+      "secondary_tileset": "gTileset_UltraSpaceArena",
+      "border_filepath": "data/layouts/UltraSpaceArena/border.bin",
+      "blockdata_filepath": "data/layouts/UltraSpaceArena/map.bin"
     }
   ]
 }

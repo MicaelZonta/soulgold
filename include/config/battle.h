@@ -13,7 +13,7 @@
 // Experience settings
 #define B_EXP_CATCH                 GEN_LATEST // In Gen6+, Pokémon get experience from catching.
 #define B_TRAINER_EXP_MULTIPLIER    GEN_LATEST // Through Gen7, trainer battles give 1.5x EXP. Later generations use B_MODERN_TRAINER_EXP_PERCENT.
-#define B_MODERN_TRAINER_EXP_PERCENT 110       // Percentage of regular EXP awarded in modern trainer battles.
+#define B_MODERN_TRAINER_EXP_PERCENT 100       // Percentage of regular EXP awarded in modern trainer battles.
 #define B_SPLIT_EXP                 GEN_LATEST // In Gen6+, all participating mon get full experience.
 #define B_SCALED_EXP                GEN_LATEST // In Gen5 and Gen7+, experience is weighted by level difference.
 #define B_UNEVOLVED_EXP_MULTIPLIER  GEN_LATEST // In Gen6+, if the Pokémon is at or past the level where it would be able to evolve, but it has not, it gets a ~1.2 multiplier to EXP gain. Only applies to Pokémon with EVO_LEVEL method.
@@ -21,7 +21,7 @@
 
 // Stat settings
 #define B_BADGE_BOOST               GEN_LATEST // In Gen4+, Gym Badges no longer boost a Pokémon's stats. (Gen2 does not include the additional boost to the type matching the gym the badge is from)
-#define B_FRIENDSHIP_BOOST          FALSE      // In LGPE only, all stats except HP are boosted up to 10% based on Friendship. Unlike B_BADGE_BOOST, these boosts are accounted when calculating base stats.
+#define B_FRIENDSHIP_BOOST          TRUE      // In LGPE only, all stats except HP are boosted up to 10% based on Friendship. Unlike B_BADGE_BOOST, these boosts are accounted when calculating base stats.
 #define B_MAX_LEVEL_EV_GAINS        GEN_LATEST // In Gen5+, Lv100 Pokémon can obtain Effort Values normally.
 #define B_RECALCULATE_STATS         GEN_LATEST // In Gen5+, the stats of the Pokémon who participate in battle are recalculated at the end of each battle.
 
@@ -256,7 +256,7 @@
 #define B_FLAG_INVERSE_BATTLE       0     // If this flag is set, the battle's type effectiveness are inversed. For example, fire is super effective against water.
 #define B_FLAG_FORCE_DOUBLE_WILD    0     // If this flag is set, all land and surfing wild battles will be double battles.
 #define B_SMART_WILD_AI_FLAG        0     // If this flag is set, wild Pokémon will become smart, with all AI flags enabled.
-#define B_FLAG_NO_CATCHING          0     // If this flag is set, the ability to catch wild Pokémon is disabled.
+#define B_FLAG_NO_CATCHING          FLAG_NO_CATCHING     // If this flag is set, the ability to catch wild Pokémon is disabled.
 #define B_FLAG_NO_RUNNING           0     // If this flag is set, the ability to escape from wild battles is disabled. Also makes Roar/Whirlwind and Teleport (under Gen8) fail.
 #define B_FLAG_AI_VS_AI_BATTLE      0     // If this flag is set, the player's mons will be controlled by the ai next battles.
 #define B_FLAG_DYNAMAX_BATTLE       0     // If this flag is set, the ability to Dynamax in battle is enabled for all trainers.
@@ -272,7 +272,7 @@
                                           // This var should never remain non-zero long enough for the player to save.
                                           // For better wild AI handling, edit GetWildAiFlags() in src/battle_ai_main.c
 
-#define B_VAR_DIFFICULTY            VAR_DIFFICULTY     // If not 0, you can use this var to control which difficulty version of a Trainer is loaded. This should be manually set by the developer using Script_SetDifficulty AFTER NewGameInitData has run.
+#define B_VAR_DIFFICULTY            0                  // Difficulty selection was removed; VAR_DIFFICULTY is reserved.
 
 // No bag settings
 #define NO_BAG_RESTRICTION       0
@@ -302,7 +302,7 @@
 #define B_ICE_WEATHER_HAIL              1
 #define B_ICE_WEATHER_SNOW              2
 
-#define B_ABILITY_WEATHER               GEN_LATEST // In Gen6+, ability-induced weather lasts 5 turns. Before, it lasted until the battle ended or until it was changed by a move or a different weather-affecting ability.
+#define B_ABILITY_WEATHER               GEN_3 // In Gen6+, ability-induced weather lasts 5 turns. Before, it lasted until the battle ended or until it was changed by a move or a different weather-affecting ability.
 #define B_SANDSTORM_SPDEF_BOOST         GEN_LATEST // In Gen4+, Sandstorm weather multiplies the Sp. Defense of Rock-type Pokémon by x1.5.
 #define B_SANDSTORM_SOLAR_BEAM          GEN_LATEST // In Gen3+, Sandstorm decreases the power of Solar Beam, when it didn't before.
 #define B_OVERWORLD_FOG                 FALSE // In Gen8+, overworld Fog summons Misty Terrain in battle. In Gen4 only, overworld Fog summons the unique fog weather condition in battle.

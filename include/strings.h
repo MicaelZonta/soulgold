@@ -2402,6 +2402,8 @@ extern const u8 gText_HardOption[];
 extern const u8 gText_HnSHardcore[];
 extern const u8 gText_HnS[];
 extern const u8 gText_ExpandedPlaceholder_Silver[];
+extern const u8 gText_ExpandedPlaceholder_Gold[];
+extern const u8 gText_ExpandedPlaceholder_Crystal[];
 extern const u8 gText_Gen4Plus[];
 extern const u8 gText_Gen3andLower[];
 //New Summary Pages

@@ -209,7 +209,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
     {
         .baseHP        = 76,
         .baseAttack    = 140,
-        .baseDefense   = 90,
+        .baseDefense   = 93,
         .baseSpeed     = 140,
         .baseSpAttack  = 91,
         .baseSpDefense = 90,
@@ -2430,7 +2430,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_HUMAN_LIKE),
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_WEAK_ARMOR },
-        .innates = { ABILITY_FLAME_BODY, ABILITY_MEGA_LAUNCHER, ABILITY_SMOULDERING },
+        .innates = { ABILITY_SHARDPLATE, ABILITY_MEGA_LAUNCHER, ABILITY_SMOULDERING },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Armarouge"),
         .cryId = CRY_ARMAROUGE,
@@ -2495,7 +2495,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_HUMAN_LIKE),
         .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_WEAK_ARMOR },
-        .innates = { ABILITY_FLAME_BODY, ABILITY_SHARPNESS, ABILITY_SMOULDERING },
+        .innates = { ABILITY_HAUNTING, ABILITY_SHARPNESS, ABILITY_SMOULDERING },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Ceruledge"),
         .cryId = CRY_CERULEDGE,
@@ -4638,7 +4638,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
         .abilities = { ABILITY_SHED_SKIN, ABILITY_NONE, ABILITY_REGENERATOR },
-        .innates = { ABILITY_INNER_FOCUS, ABILITY_MARVEL_SCALE, ABILITY_PRESSURE },
+        .innates = { ABILITY_INNER_FOCUS, ABILITY_NATURAL_CURE, ABILITY_BACKDRAFT },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Cyclizar"),
         .cryId = CRY_CYCLIZAR,
@@ -6524,7 +6524,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
         .abilities = { ABILITY_QUARK_DRIVE, ABILITY_NONE, ABILITY_NONE },
-        .innates = { ABILITY_FLASH_FIRE, ABILITY_FLAME_BODY, ABILITY_SMOULDERING },
+        .innates = { ABILITY_FLASH_FIRE, ABILITY_CROSSFIRE, ABILITY_SMOULDERING },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Iron Moth"),
         .cryId = CRY_IRON_MOTH,
@@ -6862,7 +6862,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_DRAGON, EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_THERMAL_EXCHANGE, ABILITY_NONE, ABILITY_ICE_BODY },
+        .abilities = { ABILITY_THERMAL_EXCHANGE, ABILITY_THERMAL_EXCHANGE, ABILITY_THERMAL_EXCHANGE },
         .innates = { ABILITY_STRONG_JAW, ABILITY_PERMAFROST, ABILITY_THICK_FAT },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Baxcalibur"),
@@ -7028,7 +7028,6 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .levelUpLearnset = sGimmighoulLevelUpLearnset,
         .teachableLearnset = sGimmighoulTeachableLearnset,
         .formSpeciesIdTable = sGimmighoulFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_GHOLDENGO, CONDITIONS({IF_BAG_ITEM_COUNT, ITEM_GIMMIGHOUL_COIN, 999})}),
     },
 
     [SPECIES_GHOLDENGO] =
@@ -7716,6 +7715,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
             gShinyOverworldPalette_WalkingWake
         )
         .isParadox = TRUE,
+        .isSubLegendary = TRUE,
         .levelUpLearnset = sWalkingWakeLevelUpLearnset,
         .teachableLearnset = sWalkingWakeTeachableLearnset,
     },
@@ -7784,6 +7784,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
             gShinyOverworldPalette_IronLeaves
         )
         .isParadox = TRUE,
+        .isSubLegendary = TRUE,
         .levelUpLearnset = sIronLeavesLevelUpLearnset,
         .teachableLearnset = sIronLeavesTeachableLearnset,
     },
@@ -8373,7 +8374,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
         .abilities = { ABILITY_PROTOSYNTHESIS, ABILITY_NONE, ABILITY_NONE },
-        .innates = { ABILITY_FLASH_FIRE, ABILITY_FLAME_BODY, ABILITY_SMOULDERING },
+        .innates = { ABILITY_FLASH_FIRE, ABILITY_SUNHARDENED, ABILITY_SMOULDERING },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Gouging Fire"),
         .cryId = CRY_GOUGING_FIRE,
@@ -8417,6 +8418,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
             gShinyOverworldPalette_GougingFire
         )
         .isParadox = TRUE,
+        .isSubLegendary = TRUE,
         .levelUpLearnset = sGougingFireLevelUpLearnset,
         .teachableLearnset = sGougingFireTeachableLearnset,
     },
@@ -8486,6 +8488,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
             gShinyOverworldPalette_RagingBolt
         )
         .isParadox = TRUE,
+        .isSubLegendary = TRUE,
         .levelUpLearnset = sRagingBoltLevelUpLearnset,
         .teachableLearnset = sRagingBoltTeachableLearnset,
     },
@@ -8554,6 +8557,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
             gShinyOverworldPalette_IronBoulder
         )
         .isParadox = TRUE,
+        .isSubLegendary = TRUE,
         .levelUpLearnset = sIronBoulderLevelUpLearnset,
         .teachableLearnset = sIronBoulderTeachableLearnset,
     },
@@ -8623,6 +8627,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
             gShinyOverworldPalette_IronCrown
         )
         .isParadox = TRUE,
+        .isSubLegendary = TRUE,
         .levelUpLearnset = sIronCrownLevelUpLearnset,
         .teachableLearnset = sIronCrownTeachableLearnset,
     },

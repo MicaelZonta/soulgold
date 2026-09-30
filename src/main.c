@@ -97,7 +97,8 @@ void AgbMain(void)
     InitGpuRegManager();
     REG_WAITCNT = WAITCNT_PREFETCH_ENABLE
             | WAITCNT_WS0_S_1 | WAITCNT_WS0_N_3
-            | WAITCNT_WS1_S_1 | WAITCNT_WS1_N_3;
+            | WAITCNT_WS1_S_1 | WAITCNT_WS1_N_3
+            | WAITCNT_WS2_S_1 | WAITCNT_WS2_N_3; // ROM linear: dados em 0x0C000000+ usam WS2
     InitKeys();
     InitIntrHandlers();
     m4aSoundInit();

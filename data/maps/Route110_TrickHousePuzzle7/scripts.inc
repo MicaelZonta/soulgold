@@ -289,19 +289,9 @@ Route110_TrickHousePuzzle7_EventScript_Joshua::
 	msgbox Route110_TrickHousePuzzle7_Text_JoshuaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_TrickHousePuzzle7_EventScript_Patricia::
-	trainerbattle_single TRAINER_PATRICIA, Route110_TrickHousePuzzle7_Text_PatriciaIntro, Route110_TrickHousePuzzle7_Text_PatriciaDefeat
-	msgbox Route110_TrickHousePuzzle7_Text_PatriciaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_TrickHousePuzzle7_EventScript_Alexis::
 	trainerbattle_single TRAINER_NONE, Route110_TrickHousePuzzle7_Text_AlexisIntro, Route110_TrickHousePuzzle7_Text_AlexisDefeat
 	msgbox Route110_TrickHousePuzzle7_Text_AlexisPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route110_TrickHousePuzzle7_EventScript_Mariela::
-	trainerbattle_single TRAINER_MARIELA, Route110_TrickHousePuzzle7_Text_MarielaIntro, Route110_TrickHousePuzzle7_Text_MarielaDefeat
-	msgbox Route110_TrickHousePuzzle7_Text_MarielaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_TrickHousePuzzle7_EventScript_Alvaro::
@@ -389,4 +379,3 @@ Route110_TrickHousePuzzle7_Text_EverettDefeat:
 Route110_TrickHousePuzzle7_Text_EverettPostBattle:
 	.string "I was hoping to switch places with you\n"
 	.string "when I beat you, but…$"
-

@@ -22,12 +22,6 @@ AquaHideout_B2F_EventScript_MattNoticePlayer::
 	releaseall
 	end
 
-AquaHideout_B2F_EventScript_Matt::
-	trainerbattle_single TRAINER_MATT, AquaHideout_B2F_Text_MattIntro, AquaHideout_B2F_Text_MattDefeat, AquaHideout_B2F_EventScript_SubmarineEscape
-	msgbox AquaHideout_B2F_Text_MattPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 AquaHideout_B2F_EventScript_SubmarineEscape::
 	setvar VAR_0x8008, LOCALID_AQUA_HIDEOUT_MATT
 	setvar VAR_0x8009, LOCALID_AQUA_HIDEOUT_SUBMARINE

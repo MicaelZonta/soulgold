@@ -566,9 +566,50 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_RuinManiac,            OBJ_EVENT_PAL_TAG_RUIN_MANIAC},
     {gObjectEventPal_Blaine,                OBJ_EVENT_PAL_TAG_BLAINE},
     {gObjectEventPal_Portal,                OBJ_EVENT_PAL_TAG_PORTAL},
+    {gObjectEventPal_AltarRift,             OBJ_EVENT_PAL_TAG_ALTAR_RIFT},
+    {gObjectEventPal_NexusPortal,           OBJ_EVENT_PAL_TAG_NEXUS_PORTAL},
+    {gObjectEventPal_NexusLookerFile,       OBJ_EVENT_PAL_TAG_NEXUS_LOOKER_FILE},
+    {gObjectEventPal_AetherEmitter,         OBJ_EVENT_PAL_TAG_AETHER_EMITTER},
     {gObjectEventPal_Timegear,                OBJ_EVENT_PAL_TAG_TIMEGEAR},
-    
-    
+    {gObjectEventPal_Lusamine,                OBJ_EVENT_PAL_TAG_LUSAMINE},
+    {gObjectEventPal_Lillie,                OBJ_EVENT_PAL_TAG_LILLIE},
+    {gObjectEventPal_Kukui,                OBJ_EVENT_PAL_TAG_KUKUI},
+    {gObjectEventPal_Gladion,                OBJ_EVENT_PAL_TAG_GLADION},
+    {gObjectEventPal_Looker,                OBJ_EVENT_PAL_TAG_LOOKER},
+    {gObjectEventPal_Colress,                OBJ_EVENT_PAL_TAG_COLRESS},
+    {gObjectEventPal_Elesa,                  OBJ_EVENT_PAL_TAG_ELESA},
+    {gObjectEventPal_Volkner,                OBJ_EVENT_PAL_TAG_VOLKNER},
+    {gObjectEventPal_Ramos,                  OBJ_EVENT_PAL_TAG_RAMOS},
+    {gObjectEventPal_Guzma,                  OBJ_EVENT_PAL_TAG_GUZMA},
+    {gObjectEventPal_Soliera,                OBJ_EVENT_PAL_TAG_SOLIERA},
+    {gObjectEventPal_Byron,                  OBJ_EVENT_PAL_TAG_BYRON},
+    {gObjectEventPal_Fantina,                OBJ_EVENT_PAL_TAG_FANTINA},
+    {gObjectEventPal_Bruno,                  OBJ_EVENT_PAL_TAG_BRUNO},
+    {gObjectEventPal_Steven,                 OBJ_EVENT_PAL_TAG_STEVEN},
+    {gObjectEventPal_Anabel,                 OBJ_EVENT_PAL_TAG_ANABEL},
+    {gObjectEventPal_LeaderBlue,             OBJ_EVENT_PAL_TAG_BLUE},
+    {gObjectEventPal_Cynthia,                OBJ_EVENT_PAL_TAG_CYNTHIA},
+    {gObjectEventPal_BrendanHoenn,           OBJ_EVENT_PAL_TAG_BRENDAN_HOENN},
+    {gObjectEventPal_Zinnia,                  OBJ_EVENT_PAL_TAG_ZINNIA},
+    {gObjectEventPal_Shelly,                  OBJ_EVENT_PAL_TAG_SHELLY},
+    {gObjectEventPal_Olivia,                  OBJ_EVENT_PAL_TAG_OLIVIA},
+    {gObjectEventPal_N,                       OBJ_EVENT_PAL_TAG_N},
+    {gObjectEventPal_Lorelei,                 OBJ_EVENT_PAL_TAG_LORELEI},
+    {gObjectEventPal_Leon,                    OBJ_EVENT_PAL_TAG_LEON},
+    {gObjectEventPal_James,                   OBJ_EVENT_PAL_TAG_JAMES},
+    {gObjectEventPal_Jessie,                  OBJ_EVENT_PAL_TAG_JESSIE},
+    {gObjectEventPal_Hilda,                   OBJ_EVENT_PAL_TAG_HILDA},
+    {gObjectEventPal_Hau,                     OBJ_EVENT_PAL_TAG_HAU},
+    {gObjectEventPal_Gardenia,                OBJ_EVENT_PAL_TAG_GARDENIA},
+    {gObjectEventPal_Diantha,                 OBJ_EVENT_PAL_TAG_DIANTHA},
+    {gObjectEventPal_Cyrus,                   OBJ_EVENT_PAL_TAG_CYRUS},
+    {gObjectEventPal_Cheren,                  OBJ_EVENT_PAL_TAG_CHEREN},
+    {gObjectEventPal_Barry,                   OBJ_EVENT_PAL_TAG_BARRY},
+    {gObjectEventPal_Alder,                   OBJ_EVENT_PAL_TAG_ALDER},
+    {gObjectEventPal_Agatha,                  OBJ_EVENT_PAL_TAG_AGATHA},
+    {gObjectEventPal_Misty,                   OBJ_EVENT_PAL_TAG_MISTY},
+
+
 
 #if OW_FOLLOWERS_POKEBALLS
     {gObjectEventPal_MasterBall,            OBJ_EVENT_PAL_TAG_BALL_MASTER},
@@ -2196,8 +2237,8 @@ static u32 LoadDynamicFollowerPalette(u32 species, bool32 shiny, bool32 female)
     u32 paletteNum;
     // Use standalone palette, unless entry is OOB or NULL (fallback to front-sprite-based)
 #if OW_POKEMON_OBJECT_EVENTS == TRUE && OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
-    if ((shiny && gSpeciesInfo[species].overworldPalette)
-    || (!shiny && gSpeciesInfo[species].overworldShinyPalette))
+    if ((shiny && gSpeciesInfo[species].overworldShinyPalette)
+    || (!shiny && gSpeciesInfo[species].overworldPalette))
     {
         struct SpritePalette spritePalette;
         u16 palTag = species + OBJ_EVENT_MON + (shiny ? OBJ_EVENT_MON_SHINY : 0);
@@ -2334,6 +2375,11 @@ u16 GetOverworldWeatherSpecies(u16 species)
     return species;
 }
 
+bool32 IsFollowerMegaEnabled(void)
+{
+    return VarGet(VAR_FOLLOWER_MEGA_OFF) != 1;
+}
+
 static bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32 *female)
 {
     if (!mon)
@@ -2347,7 +2393,7 @@ static bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32
     *shiny = IsMonShiny(mon) ? OBJ_EVENT_MON_SHINY : 0;
     *female = GetMonGender(mon) == MON_FEMALE ? OBJ_EVENT_MON_FEMALE : 0;
 #if OW_BATTLE_ONLY_FORMS
-    if (CheckBagHasItem(ITEM_MEGA_RING, 1))
+    if (IsFollowerMegaEnabled() && CheckBagHasItem(ITEM_MEGA_RING, 1))
     {
         u32 megaSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM);
 
@@ -2359,6 +2405,13 @@ static bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32
             *species = megaSpecies;
     }
 #endif
+    // A cosmetic form without its own overworld sprite (Pikachu in a costume
+    // from Mom's Cosplay Kit) follows as its base form instead of the
+    // substitute placeholder.
+    // Limited to Pikachu so no other species' follower changes.
+    if (*species < NUM_SPECIES && gSpeciesInfo[*species].overworldData.tileTag == 0
+     && GET_BASE_SPECIES_ID(*species) == SPECIES_PIKACHU)
+        *species = SPECIES_PIKACHU;
     switch (*species)
     {
     case SPECIES_UNOWN:

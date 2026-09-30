@@ -588,6 +588,12 @@
       "map": "MAP_ROUTE50",
       "x": 51,
       "y": 7
+    },
+    {
+      "id": "HEAL_LOCATION_SUN_MOON_ALTAR",
+      "map": "MAP_SUN_MOON_ALTAR",
+      "x": 14,
+      "y": 16
     }
   ]
 }

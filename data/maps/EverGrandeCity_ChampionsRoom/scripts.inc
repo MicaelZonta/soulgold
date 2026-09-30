@@ -37,13 +37,6 @@ EverGrandeCity_ChampionsRoom_Movement_PlayerApproachWallace:
 	walk_up
 	step_end
 
-EverGrandeCity_ChampionsRoom_EventScript_Wallace::
-	playbgm MUS_ENCOUNTER_CHAMPION, FALSE
-	msgbox EverGrandeCity_ChampionsRoom_Text_IntroSpeech, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WALLACE, EverGrandeCity_ChampionsRoom_Text_Defeat
-	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
-	end
-
 EverGrandeCity_ChampionsRoom_EventScript_Defeated::
 	playse SE_DOOR
 	setmetatile 6, 1, METATILE_EliteFour_OpenDoorChampion_Frame, FALSE
@@ -337,4 +330,3 @@ EverGrandeCity_ChampionsRoom_Text_BrendanCongratulations:
 	.string "It can't be helped if that's the rule.\p"
 	.string "{PLAYER}, way to go!\n"
 	.string "Congratulations!$"
-

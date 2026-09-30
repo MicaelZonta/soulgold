@@ -1,0 +1,23 @@
+# Boot -> copyright -> intro -> title -> new game -> fala do Oak (audio por janela).
+F 120
+S 01_copyright
+A boot
+F 600
+S 02_intro
+A intro
+F 900
+S 03_title
+A title
+T START 1
+F 120
+S 04_menu
+T A 1
+F 240
+S 05_newgame
+A newgame
+T A 40
+S 06_speech
+A speech
+T A 60
+S 07_later
+A later

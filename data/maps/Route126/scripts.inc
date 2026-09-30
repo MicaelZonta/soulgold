@@ -21,32 +21,9 @@ Route126_EventScript_Nikki::
 	msgbox Route126_Text_NikkiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route126_EventScript_Brenda::
-	trainerbattle_single TRAINER_BRENDA, Route126_Text_BrendaIntro, Route126_Text_BrendaDefeat
-	msgbox Route126_Text_BrendaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route126_EventScript_Leonardo::
-	trainerbattle_single TRAINER_LEONARDO, Route126_Text_LeonardoIntro, Route126_Text_LeonardoDefeat
-	msgbox Route126_Text_LeonardoPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route126_EventScript_Isobel::
 	trainerbattle_single TRAINER_NONE, Route126_Text_IsobelIntro, Route126_Text_IsobelDefeat
 	msgbox Route126_Text_IsobelPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route126_EventScript_Sienna::
-	trainerbattle_single TRAINER_SIENNA, Route126_Text_SiennaIntro, Route126_Text_SiennaDefeat
-	msgbox Route126_Text_SiennaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route126_EventScript_Pablo::
-	trainerbattle_single TRAINER_PABLO_1, Route126_Text_PabloIntro, Route126_Text_PabloDefeat, Route126_EventScript_RegisterPablo
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route126_EventScript_RematchPablo
-	msgbox Route126_Text_PabloPostBattle, MSGBOX_DEFAULT
-	release
 	end
 
 Route126_EventScript_RegisterPablo::
@@ -55,9 +32,3 @@ Route126_EventScript_RegisterPablo::
 	msgbox Route126_Text_PabloRegister, MSGBOX_DEFAULT
 	release
 	end
-
-Route126_EventScript_RematchPablo::
-	trainerbattle_rematch TRAINER_PABLO_1, Route126_Text_PabloRematchIntro, Route126_Text_PabloRematchDefeat
-	msgbox Route126_Text_PabloPostRematch, MSGBOX_AUTOCLOSE
-	end
-

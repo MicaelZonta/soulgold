@@ -9,7 +9,9 @@ MEMORY
     EWRAM            (rwx) : ORIGIN = 0x2000000, LENGTH = 256K
     IWRAM            (rwx) : ORIGIN = 0x3000000, LENGTH = 0x7F00
     IWRAM_PERSISTENT (rwx) : ORIGIN = 0x3007F00, LENGTH = 0x100
-    ROM               (rx) : ORIGIN = 0x8000000, LENGTH = 32M
+    /* 96 MiB lineares, como em ld_script_modern.ld (mGBA patchado). A ROM de
+       teste linka os mesmos objetos da ROM do jogo, entao precisa do mesmo teto. */
+    ROM               (rx) : ORIGIN = 0x8000000, LENGTH = 96M
 }
 
 SECTIONS {
@@ -96,6 +98,24 @@ SECTIONS {
         *libnosys.a:*.o(.text*);
     } > ROM =0
 
+    /* O BIOS salta para 0x09FFC000 em instrucao indefinida (DACS). O slot e
+       fixo, entao todo o codigo fica antes dele e os dados (que passam de
+       32 MiB) ficam depois, em 0x0A000000+. */
+    ASSERT(. <= 0x9FFC000, "test ROM code overlaps the DACS slot")
+
+    dacs 0x9FFC000 :
+    ALIGN(4)
+    {
+        test/*.o(.dacs);
+    } > ROM =0
+
+    /* Mesmo filler da ROM do jogo (make ROM_FILLER_MB=N); vazio por padrao. */
+    rom_filler :
+    ALIGN(4)
+    {
+        KEEP(data/rom_filler.o(rom_filler));
+    } > ROM =0
+
     .rodata :
     ALIGN(4)
     {
@@ -144,13 +164,7 @@ SECTIONS {
     } > ROM =0
 
     __rom_end = .;
-    ASSERT(__rom_end <= 0x9FFC000, "test ROM data overlaps the DACS slot; increase TEST_SHARDS")
-
-    dacs 0x9FFC000 :
-    ALIGN(4)
-    {
-        test/*.o(.dacs);
-    } > ROM =0
+    ASSERT(__rom_end <= 0xE000000, "test ROM exceeds the 96 MiB linear window; increase TEST_SHARDS")
 
     /* DWARF debug sections.
        Symbols in the DWARF debugging sections are relative to the beginning

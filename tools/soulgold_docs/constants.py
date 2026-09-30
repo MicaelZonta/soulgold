@@ -202,6 +202,15 @@ IMPORTANT_ITEM_POCKETS = {
     "POCKET_BATTLE_ITEMS",
 }
 
+EV_FEATHER_ITEMS = (
+    "ITEM_HEALTH_FEATHER",
+    "ITEM_MUSCLE_FEATHER",
+    "ITEM_RESIST_FEATHER",
+    "ITEM_GENIUS_FEATHER",
+    "ITEM_CLEVER_FEATHER",
+    "ITEM_SWIFT_FEATHER",
+)
+
 # Useful training consumables and player-facing key items live outside the
 # pockets and sort types used by the evolution-item index, so opt them into the
 # Items page explicitly.
@@ -211,6 +220,7 @@ ADDITIONAL_IMPORTANT_ITEMS = {
     "ITEM_BOTTLE_CAP",
     "ITEM_GOLD_BOTTLE_CAP",
     "ITEM_HP_UP",
+    "ITEM_PP_UP",
     "ITEM_PROTEIN",
     "ITEM_IRON",
     "ITEM_CALCIUM",
@@ -235,7 +245,42 @@ ADDITIONAL_IMPORTANT_ITEMS = {
     "ITEM_VS_SEEKER",
     "ITEM_COIN_CASE",
     "ITEM_GRACIDEA",
+    "ITEM_BECKONING_BELL",
+    "ITEM_TIMER_BALL",
+    "ITEM_DUSK_BALL",
+    "ITEM_QUICK_BALL",
+    "ITEM_EXP_SHARE",
+    "ITEM_OVAL_CHARM",
+    "ITEM_SQUIRTBOTTLE",
+    "ITEM_SHIN_GENOME",
+    "ITEM_ZEROMIN",
+    "ITEM_BLACK_MIRROR",
+    "ITEM_REVERSE_CANDY",
+    "ITEM_GS_BALL",
+    *EV_FEATHER_ITEMS,
 }
+
+# Held berries that weaken a super-effective attack of the matching type.
+# Chilan Berry is deliberately omitted because Normal cannot be super effective.
+TYPE_RESIST_BERRY_ITEMS = (
+    "ITEM_OCCA_BERRY",
+    "ITEM_PASSHO_BERRY",
+    "ITEM_WACAN_BERRY",
+    "ITEM_RINDO_BERRY",
+    "ITEM_YACHE_BERRY",
+    "ITEM_CHOPLE_BERRY",
+    "ITEM_KEBIA_BERRY",
+    "ITEM_SHUCA_BERRY",
+    "ITEM_COBA_BERRY",
+    "ITEM_PAYAPA_BERRY",
+    "ITEM_TANGA_BERRY",
+    "ITEM_CHARTI_BERRY",
+    "ITEM_KASIB_BERRY",
+    "ITEM_HABAN_BERRY",
+    "ITEM_COLBUR_BERRY",
+    "ITEM_BABIRI_BERRY",
+    "ITEM_ROSELI_BERRY",
+)
 
 EXCLUDED_TRAINER_MAP_GROUPS = {
     "gMapGroup_IndoorPallet",
@@ -294,7 +339,6 @@ EXCLUDED_TRAINER_MAP_NAMES = {
     "Route23",
     "Route24",
     "Route25",
-    "Route28",
     "OneIsland",
     "OneIsland_KindleRoad_Frlg",
     "OneIsland_TreasureBeach_Frlg",
@@ -316,12 +360,16 @@ EXCLUDED_TRAINER_MAP_PREFIXES = (
 ALWAYS_INCLUDED_TRAINER_CONSTANTS = {
     "TRAINER_WILL_1",
     "TRAINER_WILL_2",
+    "TRAINER_WILL_REMATCH_ALT",
     "TRAINER_KOGA_1",
     "TRAINER_KOGA_2",
+    "TRAINER_KOGA_REMATCH_ALT",
     "TRAINER_BRUNO_1",
     "TRAINER_BRUNO_2",
+    "TRAINER_BRUNO_REMATCH_ALT",
     "TRAINER_KAREN_1",
     "TRAINER_KAREN_2",
+    "TRAINER_KAREN_REMATCH_ALT",
     "TRAINER_LANCE_1",
     "TRAINER_LANCE_2",
 }

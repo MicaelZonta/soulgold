@@ -156,26 +156,33 @@ static inline bool32 Script_IsAnalyzingEffects(void)
             Script_RequestWriteVar_Internal(varId); \
     })
 
+// Funcoes de script "instrumentadas" (requests_effects=1) sao marcadas no
+// ponteiro. O upstream usava o espelho 0x0A000000 da ROM (ponteiro + 32 MB),
+// chamando a funcao pelo espelho. Com o mapeamento linear de 96 MB nao existe
+// espelho: 0x0A000000 e dado. A marca agora e o bit 28, que nunca e endereco
+// valido -- esquecer de tirar a marca trava na hora em vez de executar dado.
+// Mantenha em sincronia com SCRIPT_EFFECT_TAG em constants/gba_constants.inc.
+#define SCRIPT_EFFECT_TAG 0x10000000
+#define Script_IsEffectTagged(func) ((((uintptr_t)(func)) & SCRIPT_EFFECT_TAG) != 0)
+#define Script_UntagFunc(func) ((typeof(func))(((uintptr_t)(func)) & ~SCRIPT_EFFECT_TAG))
+
 static inline void Script_CheckEffectInstrumentedSpecial(u32 specialId)
 {
     typedef u16 (*SpecialFunc)(void);
     extern const SpecialFunc gSpecials[];
-    // In ROM mirror 1.
-    if (Script_IsAnalyzingEffects() && (((uintptr_t)gSpecials[specialId]) & 0xE000000) != 0xA000000)
+    if (Script_IsAnalyzingEffects() && !Script_IsEffectTagged(gSpecials[specialId]))
         Script_GotoBreak_Internal();
 }
 
 static inline void Script_CheckEffectInstrumentedGotoNative(bool8 (*func)(void))
 {
-    // In ROM mirror 1.
-    if (Script_IsAnalyzingEffects() && (((uintptr_t)func) & 0xE000000) != 0xA000000)
+    if (Script_IsAnalyzingEffects() && !Script_IsEffectTagged(func))
         Script_GotoBreak_Internal();
 }
 
 static inline void Script_CheckEffectInstrumentedCallNative(void (*func)(struct ScriptContext *))
 {
-    // In ROM mirror 1.
-    if (Script_IsAnalyzingEffects() && (((uintptr_t)func) & 0xE000000) != 0xA000000)
+    if (Script_IsAnalyzingEffects() && !Script_IsEffectTagged(func))
         Script_GotoBreak_Internal();
 }
 

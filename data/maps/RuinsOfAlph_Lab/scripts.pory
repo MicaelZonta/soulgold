@@ -100,6 +100,12 @@ RuinsOfAlph_Lab_EventScript_GiveSailFossil::
 	removeitem ITEM_SAIL_FOSSIL
 	goto RuinsOfAlph_Lab_EventScript_AmauraReady
 
+RuinsOfAlph_Lab_EventScript_GiveCoverFossil::
+	bufferitemname STR_VAR_1, ITEM_COVER_FOSSIL
+	msgbox RuinsOfAlph_Lab_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
+	removeitem ITEM_COVER_FOSSIL
+	goto RuinsOfAlph_Lab_EventScript_TirtougaReady
+
 RuinsOfAlph_Lab_EventScript_DeclineGiveFossil::
 	msgbox RuinsOfAlph_Lab_Text_OhIsThatSo, MSGBOX_DEFAULT
 	release
@@ -124,6 +130,7 @@ RuinsOfAlph_Lab_EventScript_FossilMonReady::
 	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 6, RuinsOfAlph_Lab_EventScript_ArchenReady
 	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 7, RuinsOfAlph_Lab_EventScript_TyruntReady
 	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 8, RuinsOfAlph_Lab_EventScript_AmauraReady
+	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 9, RuinsOfAlph_Lab_EventScript_TirtougaReady
 	end
 
 RuinsOfAlph_Lab_EventScript_LileepReady::
@@ -166,6 +173,10 @@ RuinsOfAlph_Lab_EventScript_TyruntReady::
 
 RuinsOfAlph_Lab_EventScript_AmauraReady::
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_AMAURA
+	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
+
+RuinsOfAlph_Lab_EventScript_TirtougaReady::
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TIRTOUGA
 	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
 
 RuinsOfAlph_Lab_EventScript_NewFossilReady::
@@ -465,6 +476,7 @@ RuinsOfAlph_Lab_EventScript_ChooseFossil::
 	case ITEM_JAW_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveJawFossil
 	case ITEM_SAIL_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveSailFossil
 	case ITEM_OLD_AMBER, RuinsOfAlph_Lab_EventScript_GiveOldAmber
+	case ITEM_COVER_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveCoverFossil
 	msgbox RuinsOfAlph_Lab_Text_ThatsNotAFossil, MSGBOX_DEFAULT
 	goto RuinsOfAlph_Lab_EventScript_ChooseFossil
 	end

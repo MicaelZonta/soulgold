@@ -35,7 +35,7 @@
 #define INTR_VECTOR    (*(void **)0x3007FFC)
 
 #define ROM_START 0x8000000
-#define ROM_END 0xA000000
+#define ROM_END 0xE000000 // mapeamento linear de 96 MiB (0x08000000-0x0DFFFFFF)
 
 #define EWRAM_START 0x02000000
 #define EWRAM_END   (EWRAM_START + 0x40000)

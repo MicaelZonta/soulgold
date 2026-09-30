@@ -528,6 +528,23 @@ static void RemoveRelearnerTMFromBag(enum Move move)
 }
 
 // See the state machine doc at the top of the file.
+// Keldeo becomes Resolute once it knows Secret Sword (FORM_CHANGE_MOVE). Party
+// Pokemon also get their stats recalculated; PC Pokemon only change species.
+// Keldeo only: Rotom's move rows must not fire from relearning a move.
+static void TryRelearnerMoveFormChange(void)
+{
+    struct BoxPokemon *boxmon = sMoveRelearnerStruct->partyMon == PC_MON_CHOSEN
+                              ? GetBoxedMonPtr(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos)
+                              : &gPlayerParty[sMoveRelearnerStruct->partyMon].box;
+
+    if (GET_BASE_SPECIES_ID(GetBoxMonData(boxmon, MON_DATA_SPECIES)) != SPECIES_KELDEO)
+        return;
+    if (sMoveRelearnerStruct->partyMon == PC_MON_CHOSEN)
+        TryBoxMonFormChange(boxmon, FORM_CHANGE_MOVE);
+    else
+        TryFormChange(&gPlayerParty[sMoveRelearnerStruct->partyMon], FORM_CHANGE_MOVE);
+}
+
 static void DoMoveRelearnerMain(void)
 {
     switch (sMoveRelearnerStruct->state)
@@ -587,6 +604,7 @@ static void DoMoveRelearnerMain(void)
                     boxmon = &(gPlayerParty[sMoveRelearnerStruct->partyMon].box);
                 if (GiveMoveToBoxMon(boxmon, GetCurrentSelectedMove()) != MON_HAS_MAX_MOVES)
                 {
+                    TryRelearnerMoveFormChange();
                     PrintMessageWithPlaceholders(gText_MoveRelearnerPkmnLearnedMove);
                     gSpecialVar_0x8004 = TRUE;
                     sMoveRelearnerStruct->state = MENU_STATE_PRINT_TEXT_THEN_FANFARE;
@@ -827,6 +845,7 @@ static void DoMoveRelearnerMain(void)
 
                 RemoveBoxMonPPBonus(boxmon, sMoveRelearnerStruct->moveSlot);
                 SetBoxMonMoveSlot(boxmon, GetCurrentSelectedMove(), sMoveRelearnerStruct->moveSlot);
+                TryRelearnerMoveFormChange();
                 u8 newPP = GetBoxMonData(boxmon, MON_DATA_PP1 + sMoveRelearnerStruct->moveSlot);
                 if (!P_SUMMARY_MOVE_RELEARNER_FULL_PP
                  && (gRelearnMode == RELEARN_MODE_PSS_PAGE_BATTLE_MOVES || gRelearnMode == RELEARN_MODE_PSS_PAGE_CONTEST_MOVES) && originalPP < newPP)

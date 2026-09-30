@@ -1,4 +1,5 @@
 #include "global.h"
+#include "event_object_movement.h"
 #include "new_game.h"
 #include "derby.h"
 #include "random.h"
@@ -48,7 +49,6 @@
 #include "player_pc.h"
 #include "field_specials.h"
 #include "berry_powder.h"
-#include "candy_jar.h"
 #include "mystery_gift.h"
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
@@ -79,6 +79,10 @@ struct NewGameOptions
     u8 battleSpeed;
     u8 partyMenuStyle;
     enum ReplayBattleFormat battleFormat;
+    u16 followerMegaOff;
+    enum ShinyRateOption shinyRate;
+    bool8 overworldLighting;
+    bool8 battleLighting;
 };
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
@@ -140,6 +144,8 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsDarkBattleUi = FALSE;
     gSaveBlock2Ptr->optionsBattleSpeed = OPTIONS_BATTLE_SCENE_2X;
     VarSet(VAR_BATTLE_SPEED, OPTIONS_BATTLE_SCENE_2X);
+    VarSet(VAR_FOLLOWER_MEGA_OFF, 0);
+    VarSet(VAR_SHINY_RATE, SHINY_RATE_256);
     SetDefaultPartyMenuStyle();
                
 }
@@ -220,6 +226,10 @@ void NewGameInitData(void)
         .battleSpeed = VarGet(VAR_BATTLE_SPEED),
         .partyMenuStyle = GetCurrentPartyMenuStyle(),
         .battleFormat = GetReplayBattleFormat(),
+        .followerMegaOff = !IsFollowerMegaEnabled(),
+        .shinyRate = GetShinyRateOption(),
+        .overworldLighting = !FlagGet(FLAG_OW_LIGHTING),
+        .battleLighting = !FlagGet(FLAG_BATTLE_LIGHTING),
     };
 
     if (options.overworldSpeed > OPTIONS_OVERWORLD_SPEED_4X)
@@ -303,6 +313,12 @@ void NewGameInitData(void)
     gSaveBlock1Ptr->optionsPartyMenuStyle = options.partyMenuStyle;
     gSaveBlock1Ptr->optionsPartyMenuStyleMagic = PARTY_MENU_OPTION_SAVE_MAGIC;
     SetReplayBattleFormat(options.battleFormat);
+    VarSet(VAR_FOLLOWER_MEGA_OFF, options.followerMegaOff);
+    VarSet(VAR_SHINY_RATE, options.shinyRate);
+    if (!options.overworldLighting)
+        FlagSet(FLAG_OW_LIGHTING);
+    if (!options.battleLighting)
+        FlagSet(FLAG_BATTLE_LIGHTING);
     VarSet(VAR_BATTLE_FACILITY_BGM, 0);
     ResetItemFlags();
     ResetDexNav();
@@ -325,7 +341,6 @@ static void ResetMiniGamesRecords(void)
 {
     CpuFill16(0, &gSaveBlock2Ptr->berryCrush, sizeof(struct BerryCrush));
     SetBerryPowder(&gSaveBlock2Ptr->berryCrush.berryPowderAmount, 0);
-    SetCandyJarExp(&gSaveBlock3Ptr->candyJarExp, 0);
     ResetPokemonJumpRecords();
     CpuFill16(0, &gSaveBlock2Ptr->berryPick, sizeof(struct BerryPickingResults));
 }

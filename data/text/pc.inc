@@ -5,7 +5,7 @@ gText_WhichPCShouldBeAccessed::
 	.string "Which PC should be accessed?$"
 
 gText_AccessedSomeonesPC::
-	.string "Accessed Someone'S PC.$"
+	.string "Accessed someone's PC.$"
 
 gText_StorageSystemOpened::
 	.string "Pokémon Storage System opened.$"

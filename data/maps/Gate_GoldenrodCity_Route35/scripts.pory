@@ -8,6 +8,11 @@ Gate_GoldenrodCity_Route35_EventScript_Randy::
 	goto_if_eq VAR_KENYA, 3, Gate_GoldenrodCity_Route35_EventScript_RandyPostKenya
 	goto_if_eq VAR_KENYA, 2, Gate_GoldenrodCity_Route35_EventScript_RandyDeliveredKenya
 	goto_if_eq VAR_KENYA, 1, Gate_GoldenrodCity_Route35_EventScript_RandyHaveKenya
+	@ Room is checked BEFORE the favor is asked. Kenya is a delivery: givenamedmon
+	@ only ever puts it in the party (never the PC), so a full party is enough to
+	@ block - and nothing is set, so the player can come back.
+	getpartysize
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Gate_GoldenrodCity_Route35_EventScript_RandyNoRoom
 	msgbox Route35GoldenrodGate_Text_RandyAskFavor, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, Gate_GoldenrodCity_Route35_EventScript_RandyCancel
 	closemessage
@@ -21,6 +26,12 @@ Gate_GoldenrodCity_Route35_EventScript_Randy::
 	call Common_EventScript_GiftMonNamed
 
 	setvar VAR_KENYA, 1
+	release
+	end
+
+Gate_GoldenrodCity_Route35_EventScript_RandyNoRoom::
+	msgbox Route35GoldenrodGate_Text_RandyNoRoom, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 
@@ -102,6 +113,14 @@ Route35GoldenrodGate_Text_RandyWeirdTree:
 
 Route35GoldenrodGate_Text_CantCarryMoreMon:
 	.string "You can't carry another Pokémon…$"
+
+Route35GoldenrodGate_Text_RandyNoRoom:
+	.string "Excuse me, kid! I need someone to\n"
+	.string "carry my Pokémon to a friend…\p"
+	.string "But your team is full. It has to\n"
+	.string "travel with you, not sit in a box.\p"
+	.string "Make some room and come back.\n"
+	.string "I'll be right here!$"
 
 Route35GoldenrodGate_Text_RandyNeverMind:
 	.string "Oh… Never mind, then…$"

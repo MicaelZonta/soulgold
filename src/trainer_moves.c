@@ -873,13 +873,7 @@ void BuildTrainerMonMoves(enum Move outMoves[MAX_MON_MOVES],
         return;
     }
 
-    if (activeDifficulty != DIFFICULTY_HARD)
-    {
-        BuildLatestLevelUpTrainerMoves(outMoves, actualSpecies, actualLevel,
-                                       battleType == TRAINER_BATTLE_TYPE_SINGLES);
-        return;
-    }
-
+    (void)activeDifficulty;
     ctx.partyEntry = partyEntry;
     ctx.species = actualSpecies;
     ctx.level = actualLevel;
@@ -899,14 +893,6 @@ void AssignTrainerMonMoves(struct Pokemon *mon,
     u32 i;
 
     SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
-
-    if (!TrainerMonHasExplicitMoves(partyEntry)
-     && activeDifficulty != DIFFICULTY_HARD
-     && battleType == TRAINER_BATTLE_TYPE_DOUBLES)
-    {
-        GiveMonInitialMoveset(mon);
-        return;
-    }
 
     BuildTrainerMonMoves(moves, partyEntry, species, level, battleType, activeDifficulty);
     for (i = 0; i < MAX_MON_MOVES; i++)

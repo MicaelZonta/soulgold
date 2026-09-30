@@ -146,21 +146,29 @@ bool8 CheckOmanyte(void)
     return FALSE;
 }
 
-bool8 CheckTogepi(void)
+u16 CheckMysteryEggPokemon(void)
 {
- 
-    // Elm doesn't check Togepi until the egg has been received.
-    // After that, even if it's not hatched, if you somehow got a Togepi or its evolutions, Elm's script will trigger
-    if (FlagGet(FLAG_RECEIVED_TOGEPI_EGG) == TRUE)
+    u32 i;
+
+    // Elm doesn't check the Mystery Egg's Pokémon until the egg has been received.
+    // After that, even if it's not hatched, if the party already has a Cosmog (or
+    // one of its evolutions) in any slot, Elm's script will trigger. Eggs are
+    // excluded automatically since MON_DATA_SPECIES_OR_EGG reports SPECIES_EGG for them.
+    if (FlagGet(FLAG_RECEIVED_MYSTERY_EGG) == TRUE)
     {
-        if (   GetMonData(&gPlayerParty[0], MON_DATA_SPECIES_OR_EGG, 0) == SPECIES_TOGEPI
-            || GetMonData(&gPlayerParty[0], MON_DATA_SPECIES_OR_EGG, 0) == SPECIES_TOGETIC
-            || GetMonData(&gPlayerParty[0], MON_DATA_SPECIES_OR_EGG, 0) == SPECIES_TOGEKISS)
+        CalculatePlayerPartyCount();
+        for (i = 0; i < gPlayerPartyCount; i++)
         {
-            return TRUE;
+            u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, 0);
+
+            if (   species == SPECIES_COSMOG
+                || species == SPECIES_COSMOEM
+                || species == SPECIES_SOLGALEO
+                || species == SPECIES_LUNALA)
+                return species;
         }
     }
-    return FALSE;
+    return SPECIES_NONE;
 }
 
 bool8 CheckCelebi(void)

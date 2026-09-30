@@ -57,7 +57,12 @@ script GoldenrodArcadeLobby_Shop {
 }
 
 mart GoldenrodArcade_Shop {
-	ITEM_MASTER_BALL
+	// The Master Ball prize is gone: Kurt never learns to make one and the only
+	// other way to get one is the sixteenth face of his daily draw, once every
+	// sixteen mornings or so (.claude/KURT_BALL_CRAFT_DESIGN.md section 2.6).
+	// A BP counter selling them outright would make it a shopping-list item.
+	// The Ability Patch replaces it as the headline prize of this counter.
+	ITEM_ABILITY_PATCH
 	ITEM_SHIN_GENOME
 	ITEM_SCROLL_OF_WATERS
 	ITEM_SCROLL_OF_DARKNESS

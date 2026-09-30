@@ -1,0 +1,29 @@
+name: Mapa de ligacoes
+
+# Falha quando um mapa da ROM fica sem ligacao com o mundo e nao esta na
+# lista de referencia (docs/MAPAS_INALCANCAVEIS.txt). So precisa de python.
+on:
+  push:
+    paths:
+      - 'data/maps/**'
+      - 'data/scripts/**'
+      - 'data/layouts/layouts.json'
+      - 'docs/MAPAS_INALCANCAVEIS.txt'
+      - 'dev_scripts/map_graph.py'
+      - 'src/hidden_grotto.c'
+  pull_request:
+    paths:
+      - 'data/maps/**'
+      - 'data/scripts/**'
+      - 'data/layouts/layouts.json'
+      - 'docs/MAPAS_INALCANCAVEIS.txt'
+      - 'dev_scripts/map_graph.py'
+      - 'src/hidden_grotto.c'
+
+jobs:
+  map-graph:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mapas ligados ao mundo
+        run: python3 dev_scripts/map_graph.py check --strict

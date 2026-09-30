@@ -7,7 +7,8 @@ import re
 
 from ..c_parser import read, strip_c_comments
 from ..models import SpeciesLocation, SpeciesRow
-from ..paths import FORM_CHANGE_TABLES_H, REPO_ROOT
+from ..map_names import is_docs_excluded_map, map_display_name
+from ..paths import FORM_CHANGE_TABLES_H, MAP_GROUPS_JSON, REPO_ROOT
 from .gifts import reachable_script_labels, script_blocks
 
 
@@ -61,3 +62,378 @@ def add_rotom_form_change_locations(
         locations.setdefault(species, [])
         if location not in locations[species]:
             locations[species].append(location)
+
+
+WILD_FORM_ARRAY_RE = re.compile(
+    r"static\s+const\s+u16\s+(sWild\w+)\[\]\s*=\s*\{(.*?)\};",
+    re.DOTALL,
+)
+WILD_FORM_RULE_RE = re.compile(
+    r"if\s*\(\s*species\s*==\s*(SPECIES_[A-Z0-9_]+)\s*\)\s*return\s+(sWild\w+)\["
+)
+MOM_HOUSE_MAP = "NewBarkTown_PlayersHouse_1F"
+MOM_GROOMING_ARRAY_RE = re.compile(
+    r"static\s+const\s+u16\s+(sMomFurfrouTrimOrder|sMomDeerlingSeasonalForms|sMomPikachuCostumes)\b[^=]*=\s*\{(.*?)\n\};",
+    re.DOTALL,
+)
+MOM_GROOMING_SPECIALS = {
+    "sMomFurfrouTrimOrder": ("ApplyFurfrouTrim", "Mom's grooming (Furfrou trim)"),
+    "sMomDeerlingSeasonalForms": ("ApplySeasonalForm", "Mom's grooming (Seasonal Perfume)"),
+    "sMomPikachuCostumes": ("ApplyPikachuCostume", "Mom's grooming (Pikachu Cosplay Kit)"),
+}
+
+
+def _add_location(
+    locations: dict[str, list[SpeciesLocation]],
+    species: str,
+    location: SpeciesLocation,
+) -> None:
+    locations.setdefault(species, [])
+    if location not in locations[species]:
+        locations[species].append(location)
+
+
+def add_wild_random_form_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    """A wild slot of Minior, Pumpkaboo, Scatterbug... rolls one of the cosmetic
+    forms at encounter time (GetWildFormVariantSpecies, src/wild_encounter.c):
+    every form in the pool gets the wild locations of the slot's species."""
+    try:
+        text = strip_c_comments(read(REPO_ROOT / "src/wild_encounter.c"))
+    except FileNotFoundError:
+        return
+
+    pools = {
+        name: re.findall(r"\bSPECIES_[A-Z0-9_]+\b", body)
+        for name, body in WILD_FORM_ARRAY_RE.findall(text)
+    }
+    for slot_species, pool_name in WILD_FORM_RULE_RE.findall(text):
+        wild = [
+            location for location in locations.get(slot_species, [])
+            if str(location.get("method", "")).endswith(" Mons")
+        ]
+        for species in pools.get(pool_name, []):
+            if species == slot_species or species not in by_species:
+                continue
+            for location in wild:
+                _add_location(locations, species, {
+                    **location,
+                    "method": f"{location['method']} (random form)",
+                })
+
+
+def add_mom_grooming_form_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    """Mom (New Bark Town) re-trims Furfrou and changes Deerling/Sawsbuck season."""
+    map_dir = REPO_ROOT / "data" / "maps" / MOM_HOUSE_MAP
+    try:
+        map_data = json.loads(read(map_dir / "map.json"))
+        blocks = script_blocks(read(map_dir / "scripts.inc"))
+        text = strip_c_comments(read(REPO_ROOT / "src/field_specials.c"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return
+
+    reachable_text = "\n".join(blocks[label] for label in reachable_script_labels(map_data, blocks))
+    for array_name, body in MOM_GROOMING_ARRAY_RE.findall(text):
+        special, method = MOM_GROOMING_SPECIALS[array_name]
+        if not re.search(rf"\bspecial\s+{special}\b", reachable_text):
+            continue
+        for species in re.findall(r"\bSPECIES_[A-Z0-9_]+\b", body):
+            if species not in by_species:
+                continue
+            _add_location(locations, species, {
+                "map": str(map_data.get("id") or ""),
+                "name": "New Bark Town (Mom)",
+                "time": "",
+                "method": method,
+                "minLevel": None,
+                "maxLevel": None,
+                "rate": None,
+            })
+
+
+# ---------------------------------------------------------------------------
+# Forms reached with an item (Hold / Use / Zygarde Cube / fusion), shown where
+# the item can actually be obtained. An item "can be obtained" when a script
+# the player can reach names it - a Mart list, a giveitem, or a run of
+# consecutive items drawn by GetRandomMissingItemInRange (Memories, Drives).
+# ---------------------------------------------------------------------------
+ITEM_FORM_CHANGE_RE = re.compile(
+    r"\{FORM_CHANGE_(ITEM_HOLD|ITEM_USE|ITEM_USE_MULTICHOICE)\s*,\s*(SPECIES_[A-Z0-9_]+)\s*,\s*(ITEM_[A-Z0-9_]+)"
+)
+FUSION_RE = re.compile(
+    r"\{\s*\d+\s*,\s*(ITEM_[A-Z0-9_]+)\s*,\s*SPECIES_[A-Z0-9_]+\s*,\s*SPECIES_[A-Z0-9_]+\s*,\s*(SPECIES_[A-Z0-9_]+)"
+)
+ITEM_RANGE_RE = re.compile(
+    r"setvar\s+VAR_0x8004\s*,\s*(ITEM_[A-Z0-9_]+)\s*\n\s*setvar\s+VAR_0x8005\s*,\s*(ITEM_[A-Z0-9_]+)\s*-\s*\1\s*\+\s*1"
+)
+NEXUS_AFTER_BOSS_RE = re.compile(
+    r"\.species\s*=\s*(SPECIES_[A-Z0-9_]+)[^\n]*NEXUS_AFTER_BOSS\((\w+)\)"
+)
+FORM_ITEM_VERBS = {
+    "ITEM_HOLD": "Hold",
+    "ITEM_USE": "Use",
+    "ITEM_USE_MULTICHOICE": "Use",
+}
+
+
+def _item_values() -> dict[str, int]:
+    text = strip_c_comments(read(REPO_ROOT / "include/constants/items.h"))
+    return {name: int(value) for name, value in re.findall(r"\b(ITEM_[A-Z0-9_]+)\s*=\s*(\d+)\s*,", text)}
+
+
+def _items_named(text: str, values: dict[str, int]) -> set[str]:
+    found = set(re.findall(r"\bITEM_[A-Z0-9_]+\b", text))
+    by_value = {value: name for name, value in values.items()}
+    for first, last in ITEM_RANGE_RE.findall(text):
+        if first in values and last in values:
+            found.update(by_value[v] for v in range(values[first], values[last] + 1) if v in by_value)
+    return found
+
+
+_ITEM_NAMES: dict[str, str] = {}
+
+
+def _item_display(item: str) -> str:
+    if not _ITEM_NAMES:
+        text = read(REPO_ROOT / "src/data/items.h")
+        _ITEM_NAMES.update(re.findall(r"\[(ITEM_[A-Z0-9_]+)\]\s*=\s*\{\s*\.name\s*=\s*ITEM_NAME\(\"([^\"]*)\"\)", text))
+    return _ITEM_NAMES.get(item) or item.removeprefix("ITEM_").replace("_", " ").title()
+
+
+def _reachable_from(blocks: dict[str, str], root: str) -> set[str]:
+    seen: set[str] = set()
+    pending = [root]
+    while pending:
+        label = pending.pop()
+        if label in seen or label not in blocks:
+            continue
+        seen.add(label)
+        pending.extend(set(re.findall(r"\b[A-Za-z_][A-Za-z0-9_]*\b", blocks[label])) & set(blocks))
+    return seen
+
+
+def form_item_sources(wanted: set[str]) -> dict[str, list[tuple[str, str]]]:
+    """item -> [(map constant, where)] for the items in `wanted`."""
+    values = _item_values()
+    sources: dict[str, list[tuple[str, str]]] = {}
+
+    def add(item: str, where: tuple[str, str]) -> None:
+        if item in wanted and where not in sources.setdefault(item, []):
+            sources[item].append(where)
+
+    map_groups = json.loads(read(MAP_GROUPS_JSON))
+    for group_name in map_groups.get("group_order") or []:
+        for map_name in map_groups.get(group_name) or []:
+            if is_docs_excluded_map(map_name, group_name):
+                continue
+            map_dir = REPO_ROOT / "data" / "maps" / map_name
+            try:
+                map_data = json.loads(read(map_dir / "map.json"))
+                blocks = script_blocks(read(map_dir / "scripts.inc"))
+            except (FileNotFoundError, json.JSONDecodeError):
+                continue
+            where = (str(map_data.get("id") or ""), map_display_name(map_data, map_name))
+            text = "\n".join(blocks[label] for label in reachable_script_labels(map_data, blocks))
+            for item in _items_named(text, values):
+                add(item, where)
+
+    # Nexus after-boss drops: data/scripts/nexus.inc, one script per legendary.
+    try:
+        legendaries = strip_c_comments(read(REPO_ROOT / "src/data/nexus/legendaries.h"))
+        blocks = script_blocks(read(REPO_ROOT / "data/scripts/nexus.inc"))
+    except FileNotFoundError:
+        return sources
+    for species, concept in NEXUS_AFTER_BOSS_RE.findall(legendaries):
+        labels = _reachable_from(blocks, f"Nexus_EventScript_{concept}_AfterBoss")
+        text = "\n".join(blocks[label] for label in labels)
+        name = species.removeprefix("SPECIES_").replace("_", " ").title()
+        for item in _items_named(text, values):
+            add(item, ("MAP_NEXUS", f"Nexus ({name} boss drop)"))
+    return sources
+
+
+def add_item_form_change_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    try:
+        text = strip_c_comments(read(FORM_CHANGE_TABLES_H))
+    except FileNotFoundError:
+        return
+
+    changes = [
+        (target, item, FORM_ITEM_VERBS[method])
+        for method, target, item in ITEM_FORM_CHANGE_RE.findall(text)
+        if item != "ITEM_NONE"
+    ]
+    changes += [(target, item, "Fuse with") for item, target in FUSION_RE.findall(text)]
+    sources = form_item_sources({item for _, item, _ in changes})
+    for target, item, verb in changes:
+        if target not in by_species:
+            continue
+        for map_constant, where in sources.get(item, []):
+            _add_location(locations, target, {
+                "map": map_constant,
+                "name": where,
+                "time": "",
+                "method": f"{verb} {_item_display(item)}",
+                "minLevel": None,
+                "maxLevel": None,
+                "rate": None,
+            })
+
+
+# ---------------------------------------------------------------------------
+# Burmy changes its cloak after a battle fought in a given environment.
+# ---------------------------------------------------------------------------
+ENVIRONMENT_FORM_RE = re.compile(
+    r"\{FORM_CHANGE_END_BATTLE_ENVIRONMENT\s*,\s*(SPECIES_[A-Z0-9_]+)\s*,\s*BATTLE_ENVIRONMENT_([A-Z_]+)"
+)
+
+
+def add_environment_form_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    try:
+        text = strip_c_comments(read(FORM_CHANGE_TABLES_H))
+    except FileNotFoundError:
+        return
+    environments: dict[str, list[str]] = {}
+    for target, environment in ENVIRONMENT_FORM_RE.findall(text):
+        name = environment.replace("_", " ").lower()
+        if name not in environments.setdefault(target, []):
+            environments[target].append(name)
+    for target, names in environments.items():
+        if target not in by_species or locations.get(target):
+            continue
+        _add_location(locations, target, {
+            "map": "",
+            "name": "After a battle",
+            "time": "",
+            "method": "Form change: battle in " + " / ".join(names),
+            "minLevel": None,
+            "maxLevel": None,
+            "rate": None,
+        })
+
+
+# ---------------------------------------------------------------------------
+# Nexus fragments that roll a random form (src/nexus.c, s*FragmentForms).
+# ---------------------------------------------------------------------------
+FRAGMENT_FORMS_RE = re.compile(
+    r"static\s+const\s+u16\s+s\w*FragmentForms\[\]\s*=\s*\{(.*?)\};",
+    re.DOTALL,
+)
+
+
+def add_nexus_random_fragment_form_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    try:
+        text = strip_c_comments(read(REPO_ROOT / "src/nexus.c"))
+    except FileNotFoundError:
+        return
+    for body in FRAGMENT_FORMS_RE.findall(text):
+        for species in re.findall(r"\bSPECIES_[A-Z0-9_]+\b", body):
+            if species not in by_species:
+                continue
+            _add_location(locations, species, {
+                "map": "MAP_NEXUS",
+                "name": "Nexus (post-Necrozma daily, boss fragment)",
+                "time": "",
+                "method": "Nexus fragment (random form)",
+                "minLevel": 1,
+                "maxLevel": 1,
+                "rate": None,
+            })
+
+
+# ---------------------------------------------------------------------------
+# Roaming Pokemon: InitRoamer (src/roamer.c) lets loose every species of
+# sLegendaryBeastSpecies at the level of its TryAddRoamer call. Shown only when
+# a reachable script calls it (Burned Tower B1F, Hall of Fame).
+# ---------------------------------------------------------------------------
+ROAMER_POOL_RE = re.compile(r"sLegendaryBeastSpecies\[\]\s*=\s*\{(.*?)\};", re.DOTALL)
+ROAMER_LEVEL_RE = re.compile(r"TryAddRoamer\(\s*sLegendaryBeastSpecies\[i\]\s*,\s*(\d+)\s*\)")
+
+
+def add_roamer_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    try:
+        text = strip_c_comments(read(REPO_ROOT / "src/roamer.c"))
+        map_groups = json.loads(read(MAP_GROUPS_JSON))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return
+    pool = ROAMER_POOL_RE.search(text)
+    level = ROAMER_LEVEL_RE.search(text)
+    if not pool:
+        return
+    starters: list[str] = []
+    for group_name in map_groups.get("group_order") or []:
+        for map_name in map_groups.get(group_name) or []:
+            if is_docs_excluded_map(map_name, group_name):
+                continue
+            map_dir = REPO_ROOT / "data" / "maps" / map_name
+            try:
+                map_data = json.loads(read(map_dir / "map.json"))
+                blocks = script_blocks(read(map_dir / "scripts.inc"))
+            except (FileNotFoundError, json.JSONDecodeError):
+                continue
+            if any(re.search(r"\bspecial\s+InitRoamer\b", blocks[label])
+                   for label in reachable_script_labels(map_data, blocks)):
+                starters.append(map_display_name(map_data, map_name))
+    if not starters:
+        return
+    lvl = int(level.group(1)) if level else None
+    for species in re.findall(r"\bSPECIES_[A-Z0-9_]+\b", pool.group(1)):
+        if species not in by_species:
+            continue
+        _add_location(locations, species, {
+            "map": "",
+            "name": "Roaming (after " + starters[0] + ")",
+            "time": "",
+            "method": "Roaming",
+            "minLevel": lvl,
+            "maxLevel": lvl,
+            "rate": None,
+        })
+
+
+# ---------------------------------------------------------------------------
+# Forms reached by knowing a move (Keldeo Resolute: Secret Sword). Only shown
+# for forms with no other source (Rotom's appliances already have theirs).
+# ---------------------------------------------------------------------------
+MOVE_FORM_RE = re.compile(
+    r"\{FORM_CHANGE_MOVE\s*,\s*(SPECIES_[A-Z0-9_]+)\s*,\s*MOVE_([A-Z0-9_]+)\s*,\s*WHEN_LEARNED"
+)
+
+
+def add_move_form_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    try:
+        text = strip_c_comments(read(FORM_CHANGE_TABLES_H))
+    except FileNotFoundError:
+        return
+    for target, move in MOVE_FORM_RE.findall(text):
+        if target not in by_species or locations.get(target):
+            continue
+        _add_location(locations, target, {
+            "map": "",
+            "name": "Any Move Reminder",
+            "time": "",
+            "method": "Form change: learn " + move.replace("_", " ").title(),
+            "minLevel": None,
+            "maxLevel": None,
+            "rate": None,
+        })

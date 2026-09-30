@@ -26,7 +26,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewBarkTown_EventScript_Aide1",
-      "flag": "FLAG_HIDE_NEWBARKTOWN_LAB_AIDE"
+      "flag": "0"
     },
     {
       "local_id": "LOCALID_ELM",
@@ -40,7 +40,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewBarkTown_Lab_EventScript_Elm",
-      "flag": "0"
+      "flag": "FLAG_TEMP_1"
     },
     {
       "local_id": "LOCALID_AIDE2",
@@ -82,6 +82,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewBarkTown_Lab_EventScript_StarterCase",
       "flag": "FLAG_HIDE_STARTER_CASE"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_LAB_MOM",
+      "graphics_id": "OBJ_EVENT_GFX_MOM",
+      "x": 5,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_Lab_EventScript_ShelterMom",
+      "flag": "FLAG_TEMP_2"
     }
   ],
   "warp_events": [

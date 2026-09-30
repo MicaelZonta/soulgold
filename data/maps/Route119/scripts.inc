@@ -68,27 +68,7 @@ Route119_EventScript_PlayBrendanMusic::
 	return
 
 Route119_EventScript_BattleMay::
-	msgbox Route119_Text_MayIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route119_EventScript_BattleMayTreecko
-	case 1, Route119_EventScript_BattleMayTorchic
-	case 2, Route119_EventScript_BattleMayMudkip
-	end
-
-Route119_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TREECKO, Route119_Text_MayDefeat
 	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TORCHIC, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_MUDKIP, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
 
 Route119_EventScript_DefeatedMay::
 	msgbox Route119_Text_MayPresentForYou, MSGBOX_DEFAULT
@@ -98,27 +78,7 @@ Route119_EventScript_DefeatedMay::
 	end
 
 Route119_EventScript_BattleBrendan::
-	msgbox Route119_Text_BrendanIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route119_EventScript_BattleBrendanTreecko
-	case 1, Route119_EventScript_BattleBrendanTorchic
-	case 2, Route119_EventScript_BattleBrendanMudkip
-	end
-
-Route119_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TREECKO, Route119_Text_BrendanDefeat
 	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TORCHIC, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_MUDKIP, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
 
 Route119_EventScript_DefeatedBrendan::
 	msgbox Route119_Text_BrendanIllGiveYouThis, MSGBOX_DEFAULT
@@ -326,11 +286,6 @@ Route119_EventScript_Donald::
 	msgbox Route119_Text_DonaldPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route119_EventScript_Taylor::
-	trainerbattle_single TRAINER_TAYLOR, Route119_Text_TaylorIntro, Route119_Text_TaylorDefeat
-	msgbox Route119_Text_TaylorPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route119_EventScript_Doug::
 	trainerbattle_single TRAINER_DOUG, Route119_Text_DougIntro, Route119_Text_DougDefeat
 	msgbox Route119_Text_DougPostBattle, MSGBOX_AUTOCLOSE
@@ -396,16 +351,6 @@ Route119_EventScript_Phil::
 	msgbox Route119_Text_PhilPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route119_EventScript_Yasu::
-	trainerbattle_single TRAINER_YASU, Route119_Text_YasuIntro, Route119_Text_YasuDefeat
-	msgbox Route119_Text_YasuPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route119_EventScript_Takashi::
-	trainerbattle_single TRAINER_TAKASHI, Route119_Text_TakashiIntro, Route119_Text_TakashiDefeat
-	msgbox Route119_Text_TakashiPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route119_EventScript_Hideo::
 	trainerbattle_single TRAINER_NONE, Route119_Text_HideoIntro, Route119_Text_HideoDefeat
 	msgbox Route119_Text_HideoPostBattle, MSGBOX_AUTOCLOSE
@@ -424,11 +369,6 @@ Route119_EventScript_Fabian::
 Route119_EventScript_Dayton::
 	trainerbattle_single TRAINER_NONE, Route119_Text_DaytonIntro, Route119_Text_DaytonDefeat
 	msgbox Route119_Text_DaytonPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route119_EventScript_Rachel::
-	trainerbattle_single TRAINER_RACHEL, Route119_Text_RachelIntro, Route119_Text_RachelDefeat
-	msgbox Route119_Text_RachelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route119_EventScript_BridgeAquaGrunt1::

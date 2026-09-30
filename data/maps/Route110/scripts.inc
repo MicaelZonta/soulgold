@@ -165,11 +165,6 @@ Route110_EventScript_Edward::
 	msgbox Route110_Text_EdwardPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_EventScript_Jaclyn::
-	trainerbattle_single TRAINER_JACLYN, Route110_Text_JaclynIntro, Route110_Text_JaclynDefeated
-	msgbox Route110_Text_JaclynPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_EventScript_Edwin::
 	trainerbattle_single TRAINER_NONE, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated, Route110_EventScript_EdwinRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
@@ -190,11 +185,6 @@ Route110_EventScript_EdwinRematch::
 	msgbox Route110_Text_EdwinRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_EventScript_Dale::
-	trainerbattle_single TRAINER_DALE, Route110_Text_DaleIntro, Route110_Text_DaleDefeated
-	msgbox Route110_Text_DalePostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_EventScript_Jacob::
 	trainerbattle_single TRAINER_NONE, Route110_Text_JacobIntro, Route110_Text_JacobDefeated
 	msgbox Route110_Text_JacobPostBattle, MSGBOX_AUTOCLOSE
@@ -205,29 +195,11 @@ Route110_EventScript_Anthony::
 	msgbox Route110_Text_AnthonyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_EventScript_Benjamin::
-	trainerbattle_single TRAINER_BENJAMIN_1, Route110_Text_BenjaminIntro, Route110_Text_BenjaminDefeated, Route110_EventScript_BenjaminRegisterMatchCallAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_BenjaminRematch
-	msgbox Route110_Text_BenjaminPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 Route110_EventScript_BenjaminRegisterMatchCallAfterBattle::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route110_Text_BenjaminRegister, MSGBOX_DEFAULT
 	release
-	end
-
-Route110_EventScript_BenjaminRematch::
-	trainerbattle_rematch TRAINER_BENJAMIN_1, Route110_Text_BenjaminRematchIntro, Route110_Text_BenjaminRematchDefeated
-	msgbox Route110_Text_BenjaminRematchPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route110_EventScript_Jasmine::
-	trainerbattle_single TRAINER_JASMINE, Route110_Text_JasmineIntro, Route110_Text_JasmineDefeated
-	msgbox Route110_Text_JasminePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_EventScript_Abigail::
@@ -270,22 +242,7 @@ Route110_EventScript_IsabelRematch::
 	msgbox Route110_Text_IsabelRematchPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_EventScript_Timmy::
-	trainerbattle_single TRAINER_TIMMY, Route110_Text_TimmyIntro, Route110_Text_TimmyDefeated
-	msgbox Route110_Text_TimmyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_EventScript_Unused::
-	end
-
-Route110_EventScript_Kaleb::
-	trainerbattle_single TRAINER_KALEB, Route110_Text_KalebIntro, Route110_Text_KalebDefeated
-	msgbox Route110_Text_KalebPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route110_EventScript_Joseph::
-	trainerbattle_single TRAINER_JOSEPH, Route110_Text_JosephIntro, Route110_Text_JosephDefeated
-	msgbox Route110_Text_JosephPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route110_EventScript_Alyssa::
@@ -401,21 +358,6 @@ Route110_EventScript_MayBattle::
 	case 2, Route110_EventScript_MayBattleMudkip
 	end
 
-Route110_EventScript_MayBattleTreecko::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TREECKO, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
-Route110_EventScript_MayBattleTorchic::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TORCHIC, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
-Route110_EventScript_MayBattleMudkip::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_MUDKIP, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
 Route110_EventScript_MayDefeated::
 	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
 	call Route110_EventScript_GiveItemfinder
@@ -429,16 +371,6 @@ Route110_EventScript_BrendanBattle::
 	case 0, Route110_EventScript_BrendanBattleTreecko
 	case 1, Route110_EventScript_BrendanBattleTorchic
 	case 2, Route110_EventScript_BrendanBattleMudkip
-	end
-
-Route110_EventScript_BrendanBattleTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TREECKO, Route110_Text_BrendanDefeated
-	goto Route110_EventScript_BrendanDefeated
-	end
-
-Route110_EventScript_BrendanBattleTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TORCHIC, Route110_Text_BrendanDefeated
-	goto Route110_EventScript_BrendanDefeated
 	end
 
 Route110_EventScript_BrendanBattleMudkip::
@@ -982,4 +914,3 @@ Route110_Text_KeepAnEyeOutForRival:
 	.string "… … … … … …\p"
 	.string "Well, I had better get going.\n"
 	.string "See you again, {PLAYER}{KUN}!$"
-

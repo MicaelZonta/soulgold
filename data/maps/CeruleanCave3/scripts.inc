@@ -35,7 +35,7 @@ CeruleanCave3_EventScript_Mewtwo::
 	waitmoncry
 	setwildbattle SPECIES_MEWTWO, 70
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
-	call_if_set FLAG_DIFFICULTY_HARD, CeruleanCave3_EventScript_Mewtwo_Hard_Stats
+	call CeruleanCave3_EventScript_Mewtwo_Hard_Stats
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE

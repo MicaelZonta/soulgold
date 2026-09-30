@@ -149,7 +149,6 @@ static const u8 sMovementScript_Wait48[] =
 static void ValidateVsSeekerChargeState(void);
 static bool32 AreExpertPrerequisitesComplete(const struct VsSeekerExpertQualification *qualification);
 static bool32 IsAllowedFirstBattleMode(u8 mode);
-static bool32 IsExplicitlyExcludedTrainer(u16 trainerId);
 static u32 CollectDefeatedTrainerIds(const struct ObjectEventTemplate *objects, u32 objectCount, enum MapType mapType, u16 *trainerIds);
 static void SuppressSightForResetTrainers(struct ObjectEventTemplate *objects, u32 objectCount);
 static u32 TryActivateVsSeekerOnCurrentMap(void);
@@ -228,13 +227,6 @@ static bool32 IsAllowedFirstBattleMode(u8 mode)
     }
 }
 
-static bool32 IsExplicitlyExcludedTrainer(u16 trainerId)
-{
-    // This story battle is the sole audited route object that otherwise has
-    // the exact object type and leading script shape of a regular Trainer.
-    return trainerId == TRAINER_TABITHA_MT_CHIMNEY;
-}
-
 bool32 VsSeekerGetEligibleTrainerId(const struct ObjectEventTemplate *object, u16 *trainerId)
 {
     u16 id;
@@ -252,7 +244,7 @@ bool32 VsSeekerGetEligibleTrainerId(const struct ObjectEventTemplate *object, u1
         return FALSE;
 
     id = T1_READ_16(object->script + 3);
-    if (id == TRAINER_NONE || id >= MAX_TRAINERS_COUNT || IsExplicitlyExcludedTrainer(id))
+    if (id == TRAINER_NONE || id >= MAX_TRAINERS_COUNT)
         return FALSE;
 
     if (trainerId != NULL)

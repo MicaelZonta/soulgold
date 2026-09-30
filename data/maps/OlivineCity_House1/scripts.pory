@@ -1,39 +1,1458 @@
 raw `
+@ ============================================================================
+@ Rift Missions - Looker and Anabel's house in Olivine.
+@
+@ CHANGED by the Sun and Moon Altar event
+@ (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.6): Looker and Anabel no
+@ longer have "flag": "0". They are on FLAG_TEMP_2, because from state 16 on they
+@ live at the altar and this room is empty of them for good.
+@ NEVER removeobject them even so - removeobject SETS the object's flag and the
+@ camera respawns anything whose flag is clear on the player's next step. Scene
+@ exits are still done by walking back to their spots; what takes them out of the
+@ room permanently is ApplyInvestigatorVisibility below.
+@
+@ With a temporary flag THE DEFAULT IS VISIBLE, because ClearTempFieldEventData
+@ zeroes every FLAG_TEMP_* on every load. If somebody ever deletes
+@ ApplyInvestigatorVisibility "because it looked redundant", Looker and Anabel are
+@ back in Olivine AND still at the altar, at the same time, for ever, and nothing
+@ in the build says so.
+@
+@ Four independent visibility decisions now, not one:
+@   FLAG_TEMP_1  the family: the reunion visitors in 10 (once summoned) and 11,
+@                and the five of them again from 16 on, by the weekday rota
+@   FLAG_TEMP_2  Looker and Anabel: present below 16, gone from 16 on
+@   FLAG_TEMP_3  Kukui: 10 (once summoned) and 11 only. He never comes back to
+@                this room - from 16 on he is in Alola, and on some days on a
+@                Cherrygrove beach
+@   FLAG_TEMP_4  the player's partner, a SCENE instance (reunion V2 section 7):
+@                object 9, OBJ_EVENT_GFX_VAR_0 resolved from VAR_OBJ_GFX_ID_0.
+@                Hidden on EVERY load; only the test clears it, and only the
+@                test removes it. Its own flag, so removeobject is safe on it.
+@
+@ Floor plan (dump_mapa.py OlivineCity_House1; y grows DOWNWARD).
+@ x=11 and x=12 are wall on every row and are left out.
+@
+@       x= 0 1 2 3 4 5 6 7 8 9 10
+@   y=2    . . . . . . . . . . .     off camera when the player is at (4,8)
+@   y=3    . . . . . . . . . . .     off camera
+@   y=4    . . . . . # # . . . .     table (5-6,4-5) is solid
+@   y=5    . . . . L # # A . . .     L = Looker (4,5)      A = Anabel (7,5)
+@   y=6    . . N I . . . . . U .     N = Ninetales (2,6)   I = Lillie (3,6)   U = Lusamine (9,6)
+@   y=7    . . S G . . P . K . .     S = Silvally (2,7)    G = Gladion (3,7)  K = Kukui (8,7)
+@   y=8    # . . . W . . . . . #     P = partner (6,7), scene instance only
+@   y=9    # # # # # # # # # # #     W = door (4,8): the only warp
+@
+@ Nobody stands south of the player, so the text box covers no actor. The
+@ partner tile (6,7) is measured free; a 64x64 species sprite reaches into
+@ row 6, columns 5-7, all floor, and never overlaps the solid table (rows
+@ 4-5). In the V2 reunion nobody but the player walks to the door: Looker and
+@ Anabel stay by the table, and the room centre stays open for the test.
+@ Post-game (state >= 16) Lusamine's template is moved to (5,6) by
+@ ApplyPostgameSeating below - by the table, near her children - measured
+@ free, facing left at Lillie in (3,6).
+@ ============================================================================
 OlivineCity_House1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, OlivineCity_House1_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, OlivineCity_House1_OnFrame
 	.byte 0
 
+@ NEW with the pre-Necrozma reunion. Looker and Anabel are on FLAG_TEMP_2 (see
+@ the header). The six reunion objects need this too: their hide
+@ flag is FLAG_TEMP_1, and ClearTempFieldEventData zeroes every temp on every
+@ load - so the DEFAULT IS VISIBLE, and this block is the only thing that keeps
+@ Lusamine and the others out of the room for the whole game before state 10.
+@ It runs before the first spawn, on every load of this map.
+OlivineCity_House1_OnTransition::
+	call OlivineCity_House1_EventScript_ApplyReunionVisibility
+	call OlivineCity_House1_EventScript_ApplyInvestigatorVisibility
+	call OlivineCity_House1_EventScript_ApplyKukuiVisibility
+	@ The partner is a scene instance: it exists only between the release and
+	@ the recall inside the test script, so on every load it is hidden. This
+	@ line is unconditional for the same reason the others are - temps come
+	@ back zeroed, and a zeroed temp means VISIBLE.
+	setflag FLAG_TEMP_4
+	call OlivineCity_House1_EventScript_ApplyPostgameSeating
+	end
 
+@ FLAG_TEMP_1 - the four visitors and the two partners. Shown in state 10 only
+@ once Looker's invitation went out (reunion V2 section 2: before the call the
+@ base is open but the cast is NOT gathered yet), in state 11 always (the
+@ meeting happened; they wait for the partner), and from 16 on by the weekday
+@ rota. From 12 to 15 they are gone: they went ahead to the voyage.
+@ Runs UNCONDITIONALLY - an "optimised" version that only ran in state 10 would
+@ leave the house full of visitors from New Game on.
+@ goto_if_eq on listed values, NEVER goto_if_ge: that is the mistake this file
+@ has already made three times (see the Looker branch block below).
+OlivineCity_House1_EventScript_ApplyReunionVisibility::
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_ShowReunionCastIfSummoned
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_ShowReunionCast
+	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HideReunionCast
+	@ Post-game: Sunday and Friday are the family's days. The whole arc was about
+	@ a family that could not be in the same place; two days a week where the only
+	@ thing they do is be together is the reward, and it needs no line of dialogue
+	@ explaining itself. Kukui is NOT part of this - he is on FLAG_TEMP_3.
+	specialvar VAR_RESULT, GetDayOfWeek
+	goto_if_eq VAR_RESULT, WEEKDAY_SUN, OlivineCity_House1_EventScript_ShowReunionCast
+	goto_if_eq VAR_RESULT, WEEKDAY_FRI, OlivineCity_House1_EventScript_ShowReunionCast
+OlivineCity_House1_EventScript_HideReunionCast::
+	setflag FLAG_TEMP_1
+	return
+
+@ State 10 before the invitation: the meeting does not exist yet, so neither
+@ does the gathering. FLAG_RIFT_LOOKER_SUMMONS is cleared by the scene itself
+@ (the invitation has been answered), but by then the state moves to 11 or 12
+@ in the same script, so no load ever sees 10-with-cast-and-no-summons.
+OlivineCity_House1_EventScript_ShowReunionCastIfSummoned::
+	goto_if_set FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_ShowReunionCast
+	setflag FLAG_TEMP_1
+	return
+
+OlivineCity_House1_EventScript_ShowReunionCast::
+	clearflag FLAG_TEMP_1
+	return
+
+@ Looker and Anabel: the whole game up to the farewell, and then never again.
+@ Runs unconditionally on every load, and it is the ONLY thing that ever removes
+@ them (see the header block for what happens if it is deleted).
+OlivineCity_House1_EventScript_ApplyInvestigatorVisibility::
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HideInvestigators
+	clearflag FLAG_TEMP_2
+	return
+OlivineCity_House1_EventScript_HideInvestigators::
+	setflag FLAG_TEMP_2
+	return
+
+@ Kukui: states 10 (once summoned) and 11 only, and a closed window on purpose
+@ - goto_if_ge here would put him in this room for the rest of the game. Same
+@ summons gate as the family: he arrives with the meeting, not before it.
+OlivineCity_House1_EventScript_ApplyKukuiVisibility::
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_ShowKukuiIfSummoned
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_ShowKukui
+	setflag FLAG_TEMP_3
+	return
+OlivineCity_House1_EventScript_ShowKukuiIfSummoned::
+	goto_if_set FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_ShowKukui
+	setflag FLAG_TEMP_3
+	return
+OlivineCity_House1_EventScript_ShowKukui::
+	clearflag FLAG_TEMP_3
+	return
+
+@ Reunion V2 section 11: in the post-game the room is the family's, so
+@ Lusamine does not keep her reunion spot against the east wall. She sits by
+@ the table, near her children: (5,6), measured free, facing left at Lillie
+@ in (3,6). setobjectxyperm edits the RAM copy of the template that this very
+@ load spawns from; below 16 the ROM position (9,6) is untouched, and every
+@ load recomputes this, so it never leaks into the reunion states.
+OlivineCity_House1_EventScript_ApplyPostgameSeating::
+	goto_if_lt VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_SeatingDone
+	setobjectxyperm LOCALID_OLIVINE_HOUSE1_LUSAMINE, 5, 6
+OlivineCity_House1_EventScript_SeatingDone::
+	return
+
+@ VAR_TEMP_1 is a once-per-visit latch (temps are zeroed by
+@ ClearTempFieldEventData on every map load), so the frame trigger can never
+@ re-fire and livelock the controls.
+OlivineCity_House1_OnFrame::
+	map_script_2 VAR_TEMP_1, 0, OlivineCity_House1_EventScript_BriefingTrigger
+	.2byte 0
+
+@ Only stages a scene in a briefing state (2 = Blackthorn, 4 = Mahogany,
+@ 6 = Cherrygrove, 8 = New Bark) or in the reunion state 10 AND only if the
+@ player just came through the door at (4,8). Outside that, every one of those
+@ still runs - through the Looker/Anabel object scripts, just without the
+@ choreography.
+@ (4,8) is the ONLY warp of this house and there is no Fly or Dig indoors, so
+@ in state 10 the player is necessarily standing there when this fires.
+@ State 11 matches nothing here ON PURPOSE (reunion V2 section 6): entering
+@ the house in state 11 starts no dialogue. The retake is OFFERED by Looker
+@ and Anabel in conversation, and nowhere else.
+@ State 12 matches nothing here on purpose: the reunion is over.
+OlivineCity_House1_EventScript_BriefingTrigger::
+	setvar VAR_TEMP_1, 1                        @ first instruction: stops re-firing
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_ne VAR_0x8004, 4, OlivineCity_House1_EventScript_End
+	goto_if_ne VAR_0x8005, 8, OlivineCity_House1_EventScript_End
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_StageBriefing
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_StageBriefingIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_StageBriefingIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_StageBriefingIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_StageReunionIfCalled
+	end
+
+@ States 4, 6, 8 and 10 are only ready once Looker has telephoned
+@ (FLAG_RIFT_LOOKER_SUMMONS, set by RiftMissions_EventScript_LookerCall). Before
+@ that the house has nothing staged: walking in gets the player nothing but the
+@ waiting line from whichever detective they talk to.
+@ State 2 is NOT gated. Its summons is the call scene in New Bark, that
+@ invitation never expires and never repeats, and gating it would strand a save
+@ made before this flag existed.
+OlivineCity_House1_EventScript_StageBriefingIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_End
+	goto OlivineCity_House1_EventScript_StageBriefing
+
+OlivineCity_House1_EventScript_StageReunionIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_End
+	goto OlivineCity_House1_EventScript_StageReunion
+
+@ The choreography itself, shared by both briefings. Unchanged since Rift
+@ Mission 1: only which text BriefingTalk picks differs.
+OlivineCity_House1_EventScript_StageBriefing::
+	lockall
+	hidefollower
+	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, Common_Movement_ExclamationMark
+	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+	@ Looker  (4,5)->(4,6)->(4,7), faces down at the player in (4,8).
+	@ Anabel  (7,5)->(7,6)->(7,7)->(6,7)->(5,7), faces down.
+	@ The two paths share no tile on any step, so they can walk together.
+	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, OlivineCity_House1_Movement_LookerApproach
+	applymovement LOCALID_OLIVINE_HOUSE1_ANABEL, OlivineCity_House1_Movement_AnabelApproach
+	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+	waitmovement LOCALID_OLIVINE_HOUSE1_ANABEL
+	call OlivineCity_House1_EventScript_BriefingTalk
+	@ Back home: the reverse paths, also disjoint step by step.
+	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, OlivineCity_House1_Movement_LookerReturn
+	applymovement LOCALID_OLIVINE_HOUSE1_ANABEL, OlivineCity_House1_Movement_AnabelReturn
+	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+	waitmovement LOCALID_OLIVINE_HOUSE1_ANABEL
+	releaseall
+	end
+
+@ The reunion cutscene (script V2, 25/09/2026). Reached from the frame trigger
+@ at state 10 and from the Looker/Anabel object scripts at state 10. It plays
+@ ONCE: it always ends in state 11 or 12, and neither re-enters it.
+@
+@ V2 choreography change: Looker and Anabel STAY by the table. The two old
+@ walks to the door are gone - the scene organises itself around the plan on
+@ the table, and the room centre stays free for the partner's test. The only
+@ approach is the player's: one step in, (4,8) -> (4,7), which keeps the warp
+@ tile free and matches the respawn tile of the ending.
+OlivineCity_House1_EventScript_StageReunion::
+	lockall
+	hidefollower
+	applymovement LOCALID_OLIVINE_HOUSE1_LOOKER, Common_Movement_ExclamationMark
+	waitmovement LOCALID_OLIVINE_HOUSE1_LOOKER
+	applymovement OBJ_EVENT_ID_PLAYER, OlivineCity_House1_Movement_PlayerEnter
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto OlivineCity_House1_EventScript_ReunionScene
+
+@ The reunion, script V2 section 4-5: the destination and the problem, then a
+@ real way out. Beats in V2's order:
+@   1. Looker opens and points the landing site out on the table map: from
+@      (4,5) the table at (5-6,4-5) is due east.
+@   2. Kukui walks the record - spike, then flicker. He already faces west,
+@      into the room; the exclamation is him catching the spike.
+@   3. Lillie turns to her MOTHER, not the floor: (3,6) -> (9,6), due east.
+@      Lusamine answers with her equipment's limit, facing west at her
+@      daughter (template direction, untouched).
+@   4. Gladion asks how they come back. The case sits by Kukui at (8,7), due
+@      east of him - his template already faces it.
+@   5. Lusamine opens the case: one step down the east wall, (9,6) -> (9,7),
+@      measured free, then she faces it (west). Anabel turns east to take the
+@      portable unit and names the withdrawal criterion and the Beast Ball
+@      (Kurt's, hers to keep - the altar's scripted capture uses it).
+@   6. The leadership beat: Lusamine turns to the map (north), Lillie asks for
+@      the controls, the pause, Lusamine faces her (west) and teaches ONE
+@      concrete thing. Anabel closes: decided at the altar.
+@ NO direction here is derived from the player's live position: every
+@ turnobject aims at another actor on a fixed tile. That is what makes the
+@ block correct both from the frame trigger (player at (4,7)) and from an
+@ object script (player anywhere in the room).
+@ Consecutive msgbox with no closemessage between them keep the box up and
+@ swap the plaque per speaker; closemessage before EVERY movement, or the
+@ movement happens behind the open box.
+OlivineCity_House1_EventScript_ReunionScene::
+	clearflag FLAG_RIFT_LOOKER_SUMMONS          @ the invitation has been answered
+	msgbox OlivineCity_House1_Text_ReunionOpen, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_OLIVINE_HOUSE1_LOOKER, DIR_EAST
+	delay 20
+	applymovement LOCALID_OLIVINE_HOUSE1_KUKUI, Common_Movement_ExclamationMark
+	waitmovement LOCALID_OLIVINE_HOUSE1_KUKUI
+	msgbox OlivineCity_House1_Text_ReunionKukui, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_OLIVINE_HOUSE1_LILLIE, DIR_EAST
+	msgbox OlivineCity_House1_Text_ReunionLillie, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_ReunionLusamineEvidence, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_ReunionGladionPlan, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_OLIVINE_HOUSE1_LUSAMINE, OlivineCity_House1_Movement_LusamineToCase
+	waitmovement LOCALID_OLIVINE_HOUSE1_LUSAMINE
+	msgbox OlivineCity_House1_Text_ReunionStabilizer, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_OLIVINE_HOUSE1_ANABEL, DIR_EAST
+	msgbox OlivineCity_House1_Text_ReunionAnabelReturn, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_ReunionCapture, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_OLIVINE_HOUSE1_LUSAMINE, DIR_NORTH
+	msgbox OlivineCity_House1_Text_ReunionLusamineCross, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_ReunionLillieBoundary, MSGBOX_DEFAULT
+	closemessage
+	delay 40
+	turnobject LOCALID_OLIVINE_HOUSE1_LUSAMINE, DIR_WEST
+	delay 20
+	msgbox OlivineCity_House1_Text_ReunionLusamineControl, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_ReunionAnabelLeadership, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_OLIVINE_HOUSE1_ANABEL, DIR_SOUTH
+	@ falls through to the partner question
+
+@ Kukui asks for the partner. Reached ONCE, from the long scene above: the
+@ state-11 resume (Looker/Anabel) skips this box and re-enters at the
+@ eligibility below (V2 section 6: "Yes repeats only the eligibility").
+OlivineCity_House1_EventScript_ReunionAskPartner::
+	msgbox OlivineCity_House1_Text_ReunionAsk, MSGBOX_DEFAULT
+	closemessage
+	@ falls through to the eligibility
+
+@ The one gate of the arc, unchanged in V2: Solgaleo OR Lunala, in the PARTY.
+@ checkspecies compiles to Scrcmd_checkspecies (src/scrcmd.c), which calls
+@ CheckPartyHasSpecies (src/field_specials.c): it walks gPlayerParty only and
+@ returns into VAR_RESULT. Consequences, all of them wanted by the design:
+@   - one in the PC does not count for the gate; a Pokedex entry does not
+@     count; Cosmog and Cosmoem do not pass, and no evolution happens here;
+@   - EITHER species satisfies it, and having both is never required.
+@ What V2 ADDS is on both edges of the gate, never in it:
+@   - both present -> an explicit SYSTEM menu; backing out (B) defers exactly
+@     like "Not now" (menu exit hands control back, V2 checklist);
+@   - neither present -> the PC is consulted READ-ONLY to pick the one
+@     guidance line that is true (ReunionGuidance below).
+OlivineCity_House1_EventScript_ReunionEligibility::
+	checkspecies SPECIES_SOLGALEO
+	copyvar VAR_TEMP_2, VAR_RESULT
+	checkspecies SPECIES_LUNALA
+	copyvar VAR_TEMP_3, VAR_RESULT
+	goto_if_eq VAR_TEMP_2, FALSE, OlivineCity_House1_EventScript_EligibilityNoSolgaleo
+	goto_if_eq VAR_TEMP_3, FALSE, OlivineCity_House1_EventScript_UseSolgaleo
+	@ both in the team: the SYSTEM question (no plate), then the menu under it
+	message OlivineCity_House1_Text_PartnerSelect
+	waitmessage
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, OlivineCity_House1_Text_ChoiceSolgaleo, OlivineCity_House1_Text_ChoiceLunala, OlivineCity_House1_Text_ChoiceNotNow
+	closemessage
+	goto_if_eq VAR_RESULT, 0, OlivineCity_House1_EventScript_UseSolgaleo
+	goto_if_eq VAR_RESULT, 1, OlivineCity_House1_EventScript_UseLunala
+	goto OlivineCity_House1_EventScript_ReunionDeferred   @ "Not now" and B alike
+
+OlivineCity_House1_EventScript_EligibilityNoSolgaleo::
+	goto_if_eq VAR_TEMP_3, FALSE, OlivineCity_House1_EventScript_ReunionGuidance
+	@ falls through: Lunala is the one present
+OlivineCity_House1_EventScript_UseLunala::
+	setvar VAR_TEMP_2, SPECIES_LUNALA
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(LUNALA)
+	goto OlivineCity_House1_EventScript_ReunionTest
+
+OlivineCity_House1_EventScript_UseSolgaleo::
+	setvar VAR_TEMP_2, SPECIES_SOLGALEO
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SOLGALEO)
+	goto OlivineCity_House1_EventScript_ReunionTest
+
+@ V2 section 6: before control returns - for lack of the partner OR by the
+@ player's own deferral - state 11 is registered, so the discussion never
+@ replays; only the test and the pass stay pending. Idempotent from state 11:
+@ running it again rewrites 11, and nothing ever goes back to 10.
+@ releaseall (not release) because every reunion branch is reached from a
+@ lockall context AND from a lock context; releaseall is correct in both.
+OlivineCity_House1_EventScript_ReunionDeferred::
+	msgbox OlivineCity_House1_Text_ReunionDeferred, MSGBOX_DEFAULT
+	setvar VAR_RIFT_MISSIONS_STATE, 11
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
+
+@ No eligible partner in the party. V2 section 6: the guidance says only what
+@ was VERIFIED, and the consultation never opens the test:
+@   - Solgaleo or Lunala found in the PC        -> "bring it from the PC"
+@   - Cosmog/Cosmoem confirmed, party or PC     -> "it needs to evolve first"
+@     (party: CheckMysteryEggPokemon, which ignores eggs and only answers
+@      after the Violet egg event - verified provenance; PC: the read-only
+@      species scan, eggs excluded)
+@   - nothing verifiable                        -> the neutral line, which
+@     claims no growth, loss or trade
+@ An unhatched egg proves no species (V2: "ovo generico nao comprova essa
+@ origem"), so it deliberately lands on the neutral line.
+OlivineCity_House1_EventScript_ReunionGuidance::
+	setvar VAR_0x8004, SPECIES_SOLGALEO
+	specialvar VAR_RESULT, CheckPCHasSpecies
+	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_GuidanceStored
+	setvar VAR_0x8004, SPECIES_LUNALA
+	specialvar VAR_RESULT, CheckPCHasSpecies
+	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_GuidanceStored
+	specialvar VAR_RESULT, CheckMysteryEggPokemon
+	goto_if_eq VAR_RESULT, SPECIES_COSMOG, OlivineCity_House1_EventScript_GuidanceUnevolved
+	goto_if_eq VAR_RESULT, SPECIES_COSMOEM, OlivineCity_House1_EventScript_GuidanceUnevolved
+	setvar VAR_0x8004, SPECIES_COSMOG
+	specialvar VAR_RESULT, CheckPCHasSpecies
+	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_GuidanceUnevolved
+	setvar VAR_0x8004, SPECIES_COSMOEM
+	specialvar VAR_RESULT, CheckPCHasSpecies
+	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_GuidanceUnevolved
+	msgbox OlivineCity_House1_Text_ReunionMissing, MSGBOX_DEFAULT
+	setvar VAR_RIFT_MISSIONS_STATE, 11
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
+
+OlivineCity_House1_EventScript_GuidanceStored::
+	msgbox OlivineCity_House1_Text_ReunionStored, MSGBOX_DEFAULT
+	setvar VAR_RIFT_MISSIONS_STATE, 11
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
+
+OlivineCity_House1_EventScript_GuidanceUnevolved::
+	msgbox OlivineCity_House1_Text_ReunionUnevolved, MSGBOX_DEFAULT
+	setvar VAR_RIFT_MISSIONS_STATE, 11
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
+
+@ State 11 retake, V2 section 6: offered by Looker and Anabel in conversation,
+@ never on entry. Yes repeats only the eligibility and heads to the test;
+@ Not yet (or B) hands control back. No state changes here: 11 stays 11.
+OlivineCity_House1_EventScript_ReunionResume::
+	msgbox OlivineCity_House1_Text_ReunionResume, MSGBOX_DEFAULT
+	dynmultichoice 0, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, OlivineCity_House1_Text_ChoiceYes, OlivineCity_House1_Text_ChoiceNotYet
+	closemessage
+	goto_if_eq VAR_RESULT, 0, OlivineCity_House1_EventScript_ReunionEligibility
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
+
+OlivineCity_House1_EventScript_ReunionReleaseEnd::
+	closemessage
+	releaseall
+	end
+
+@ The test, V2 section 7: show before explaining. The partner is a SCENE
+@ instance of the chosen species - object 9 at (6,7), OBJ_EVENT_GFX_VAR_0
+@ resolved from VAR_OBJ_GFX_ID_0 at spawn - and never the follower: the
+@ follower is hidden first, so the same Pokemon is never in the room twice,
+@ and its own state is restored by the map load at the end.
+@ NO rift opens in this room. The flashes are fadescreenswapbuffers, which
+@ does not touch the palette buffers, so the day/night tint survives; no
+@ shake, no alarm, no battle theme - the music dips for the pulse and comes
+@ back with the result. The result is compatibility, not a proven crossing.
+OlivineCity_House1_EventScript_ReunionTest::
+	@ The pass at the end of this script is the ONE thing that could fail (a
+	@ full Key Items pocket). Checked BEFORE anything happens, in the same
+	@ script run as the giveitem, so the delivery later cannot fail: state 12
+	@ is never set with the pass undelivered, and no half-done state exists
+	@ (V2 section 8). The reunion itself is never replayed either way.
+	checkitemspace ITEM_SUN_MOON_TICKET, 1
+	goto_if_eq VAR_RESULT, FALSE, OlivineCity_House1_EventScript_ReunionNoRoom
+	hidefollower                                @ needed on the resume path (lock)
+	@ On the trigger path the player is at (4,7), and the partner appears due
+	@ east. From the object scripts the player can be anywhere, so the turn is
+	@ guarded by a measurement, never derived from a live position.
+	getplayerxy VAR_0x8005, VAR_0x8006
+	goto_if_ne VAR_0x8005, 4, OlivineCity_House1_EventScript_ReunionTestRelease
+	goto_if_ne VAR_0x8006, 7, OlivineCity_House1_EventScript_ReunionTestRelease
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+OlivineCity_House1_EventScript_ReunionTestRelease::
+	fadescreenswapbuffers FADE_TO_WHITE
+	clearflag FLAG_TEMP_4
+	addobject LOCALID_OLIVINE_HOUSE1_PARTNER
+	fadescreenswapbuffers FADE_FROM_WHITE
+	playmoncry VAR_TEMP_2, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 20
+	@ Anabel arms the calibration mode on the portable unit in her hands.
+	turnobject LOCALID_OLIVINE_HOUSE1_ANABEL, DIR_SOUTH
+	fadeoutbgm 4
+	msgbox OlivineCity_House1_Text_ReunionTestStart, MSGBOX_DEFAULT
+	closemessage
+	@ The partner answers the MODULE, not the player: from (6,7) toward Anabel
+	@ at (7,5), north is the walkable component. One brief glow; the lights
+	@ level for a few moments and go out normally.
+	turnobject LOCALID_OLIVINE_HOUSE1_PARTNER, DIR_NORTH
+	delay 20
+	fadescreenswapbuffers FADE_TO_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
+	delay 30
+	@ fadeinbgm, not fadedefaultbgm: fadeoutbgm PAUSED the house music, and
+	@ fadedefaultbgm is a no-op when the track is already the map's - the
+	@ music would stay paused, and the next warp that fades it would hang.
+	fadeinbgm 4
+	applymovement LOCALID_OLIVINE_HOUSE1_KUKUI, Common_Movement_ExclamationMark
+	waitmovement LOCALID_OLIVINE_HOUSE1_KUKUI
+	msgbox OlivineCity_House1_Text_ReunionTestResult, MSGBOX_DEFAULT
+	closemessage
+	@ One short reaction, not a round of compliments (V2 section 7). Gladion
+	@ and Silvally already face east, straight at the partner; Lillie's
+	@ reaction is a gesture, and Ninetales is turned with her by template.
+	msgbox OlivineCity_House1_Text_ReunionGladionPartner, MSGBOX_DEFAULT
+	closemessage
+	@ Ninetales already faces east, at the partner: a small step in place is
+	@ its turn toward it. Then Lusamine packs the base - only now, after
+	@ Anabel switched the module off (V2 section 7).
+	applymovement LOCALID_OLIVINE_HOUSE1_LILLIE, OlivineCity_House1_Movement_LillieHeart
+	applymovement LOCALID_OLIVINE_HOUSE1_NINETALES, OlivineCity_House1_Movement_NinetalesLooks
+	waitmovement LOCALID_OLIVINE_HOUSE1_LILLIE
+	waitmovement LOCALID_OLIVINE_HOUSE1_NINETALES
+	applymovement LOCALID_OLIVINE_HOUSE1_LUSAMINE, OlivineCity_House1_Movement_LusaminePacks
+	waitmovement LOCALID_OLIVINE_HOUSE1_LUSAMINE
+	msgbox OlivineCity_House1_Text_ReunionAssignments, MSGBOX_DEFAULT
+	closemessage
+	@ Looker was pointing at the table map since the opening; he comes back to
+	@ the room to hand over the pass. Fixed direction: south is the door side,
+	@ where the player stands on the trigger path.
+	turnobject LOCALID_OLIVINE_HOUSE1_LOOKER, DIR_SOUTH
+	msgbox OlivineCity_House1_Text_ReunionTicket, MSGBOX_DEFAULT
+	closemessage
+	@ Idempotent delivery (V2 section 8): if the pass is somehow already in
+	@ the bag, do not duplicate it. Possession is the fact that matters, and
+	@ state 12 follows it either way.
+	checkitem ITEM_SUN_MOON_TICKET
+	goto_if_eq VAR_RESULT, TRUE, OlivineCity_House1_EventScript_ReunionTicketDone
+	giveitem ITEM_SUN_MOON_TICKET
+OlivineCity_House1_EventScript_ReunionTicketDone::
+	msgbox OlivineCity_House1_Text_ReunionTicketUse, MSGBOX_DEFAULT
+	closemessage
+	@ Recall the scene partner - its OWN flag, so removeobject is safe and
+	@ touches nobody else's.
+	fadescreenswapbuffers FADE_TO_WHITE
+	removeobject LOCALID_OLIVINE_HOUSE1_PARTNER
+	fadescreenswapbuffers FADE_FROM_WHITE
+	delay 10
+	fadescreen FADE_TO_BLACK                     @ a warp reloads the map right after
+	setflag FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED   @ handoff; NEVER cleared
+	setvar VAR_RIFT_MISSIONS_STATE, 12           @ invariant: flag and var together
+	@ Reload in place: ON_TRANSITION hides the visitors (they went ahead to
+	@ the voyage preparations), Looker and Anabel stay - they remain at the
+	@ base until the altar document moves them - and the follower comes back
+	@ (undoes hidefollower).
+	@ (4,7), not (4,8): do not respawn the player on the room's only warp
+	@ tile. (4,7) is guaranteed free, because by state 12 the cast is hidden.
+	@ The frame trigger fires again after this load with VAR_TEMP_1 zeroed,
+	@ but dies twice over: the player is not at (4,8) AND state 12 matches no
+	@ goto_if_eq in its list.
+	warpsilent MAP_OLIVINE_CITY_HOUSE1, 4, 7
+	waitstate
+	releaseall
+	end
+
+@ Key Items pocket full - the only way the delivery could fail, prevented up
+@ front. Nothing has happened yet: no partner out, no flag, no state past 11.
+OlivineCity_House1_EventScript_ReunionNoRoom::
+	msgbox OlivineCity_House1_Text_ReunionNoRoom, MSGBOX_DEFAULT
+	setvar VAR_RIFT_MISSIONS_STATE, 11
+	goto OlivineCity_House1_EventScript_ReunionReleaseEnd
+
+OlivineCity_House1_EventScript_End::
+	end
+
+OlivineCity_House1_Movement_LookerApproach:
+	walk_down
+	walk_down
+	face_down
+	step_end
+
+OlivineCity_House1_Movement_AnabelApproach:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+OlivineCity_House1_Movement_LookerReturn:
+	walk_up
+	walk_up
+	face_down
+	step_end
+
+OlivineCity_House1_Movement_AnabelReturn:
+	walk_right
+	walk_right
+	walk_up
+	walk_up
+	face_down
+	step_end
+
+@ Reunion V2: the player's one step in, (4,8) -> (4,7). Ends facing up, at
+@ Looker by the table. Same tile the ending respawns on.
+OlivineCity_House1_Movement_PlayerEnter:
+	walk_up
+	step_end
+
+@ Lusamine opens the stabilizer case: one step down the east wall,
+@ (9,6) -> (9,7), measured free, then she faces the case at Kukui's side.
+OlivineCity_House1_Movement_LusamineToCase:
+	walk_down
+	face_left
+	step_end
+
+@ Lillie's reaction to the partner is a gesture, not a speech (V2 section 7).
+OlivineCity_House1_Movement_LillieHeart:
+	emote_heart
+	step_end
+
+OlivineCity_House1_Movement_NinetalesLooks:
+	face_right
+	walk_in_place_slow_right
+	step_end
+
+@ Lusamine at (9,7), facing the case at Kukui's side (west): closing it.
+OlivineCity_House1_Movement_LusaminePacks:
+	walk_in_place_slow_left
+	walk_in_place_slow_left
+	step_end
+
+@ Shared by the arrival scene and by both object scripts in states 2, 4, 6
+@ and 8, so a briefing can never be skipped by entering from an odd tile. It is
+@ the ONE place that moves flag and var, and it moves them together.
+@ Invariants:
+@   FLAG_EVENT_ULTRABEAST_BLACKTHORN  set <=> VAR_RIFT_MISSIONS_STATE == 3
+@   FLAG_EVENT_ULTRABEAST_MAHOGANY    set <=> VAR_RIFT_MISSIONS_STATE == 5
+@   FLAG_EVENT_ULTRABEAST_CHERRYGROVE set <=> VAR_RIFT_MISSIONS_STATE == 7
+@   FLAG_EVENT_ULTRABEAST_NEWBARK     set <=> VAR_RIFT_MISSIONS_STATE == 9
+@ The four are mutually exclusive because the var holds one value.
+@ State 10 is the END of the chain: it opens no mission, it means "four done,
+@ the Olivine reunion pending" (design section 7).
+@ A goto inside a script reached by call is safe: call pushes the return
+@ address and return pops it, however many gotos happened in between.
+@ Highest state first, so the block reads newest mission to oldest.
+OlivineCity_House1_EventScript_BriefingTalk::
+	clearflag FLAG_RIFT_LOOKER_SUMMONS          @ the invitation has been answered
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_BriefingTalkM4
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_BriefingTalkM3
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_BriefingTalkM2
+	@ falls through to M1 (state 2)
+OlivineCity_House1_EventScript_BriefingTalkM1::
+	msgbox OlivineCity_House1_Text_BriefingWelcome, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingAnabel, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingWormholes, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingBlackthorn, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingRequest, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_EVENT_ULTRABEAST_BLACKTHORN
+	setvar VAR_RIFT_MISSIONS_STATE, 3
+	return
+
+OlivineCity_House1_EventScript_BriefingTalkM2::
+	msgbox OlivineCity_House1_Text_BriefingM2Welcome, MSGBOX_DEFAULT
+	closemessage
+	msgbox OlivineCity_House1_Text_BriefingM2Link, MSGBOX_DEFAULT
+	closemessage
+	msgbox OlivineCity_House1_Text_BriefingM2Town, MSGBOX_DEFAULT
+	closemessage
+	msgbox OlivineCity_House1_Text_BriefingM2Meet, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_EVENT_ULTRABEAST_MAHOGANY
+	setvar VAR_RIFT_MISSIONS_STATE, 5
+	return
+
+OlivineCity_House1_EventScript_BriefingTalkM3::
+	msgbox OlivineCity_House1_Text_BriefingM3Welcome, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingM3Evidence, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingM3Plan, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingM3Safety, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_EVENT_ULTRABEAST_CHERRYGROVE
+	setvar VAR_RIFT_MISSIONS_STATE, 7
+	return
+
+@ New Bark V2 script, section 4: five boxes, one speaker each, played as
+@ consecutive msgbox with no closemessage between them so the box never drops
+@ and the plaque changes with the speaker (TrySetSpeakerFromMessage reads only
+@ the start of each message). Every part stays far below the 1000-byte
+@ gStringVar4 limit that froze the old ~2000-byte version of this briefing.
+@ The resource (Aether's containment equipment, Lusamine bringing it herself) is
+@ presented HERE, before it is used, and nothing promises it will work. No item
+@ is handed out: the old "Take these" is gone. Anabel does not retell her Faller
+@ condition - that was Cherrygrove's aftermath.
+OlivineCity_House1_EventScript_BriefingTalkM4::
+	msgbox OlivineCity_House1_Text_BriefingM4Evidence, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingM4Comparison, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingM4Safety, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingM4Containment, MSGBOX_DEFAULT
+	msgbox OlivineCity_House1_Text_BriefingM4Plan, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_EVENT_ULTRABEAST_NEWBARK
+	setvar VAR_RIFT_MISSIONS_STATE, 9
+	return
+
+@ Branch order matters: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, then >= 12. NEVER
+@ leave a "goto_if_ge VAR_RIFT_MISSIONS_STATE, 4", ", 6", ", 8" or ", 10"
+@ here - any one of them would swallow the states above it. This has now
+@ happened THREE times: Mission 3 had to delete a "goto_if_ge ..., 6" left
+@ behind by Mission 2, Mission 4 had to move a "goto_if_ge ..., 8" left behind
+@ by Mission 3, and the pre-Necrozma reunion had to split the
+@ "goto_if_ge ..., 10" Mission 4 left behind, which would have replayed the
+@ whole cutscene at state 11 and kept saying reunion lines at state 12.
+@ Fourth warning, same mistake: a NEW state enters as goto_if_eq, and only the
+@ LAST line of the list may be a goto_if_ge.
+@ States 0-1 fall through to the holiday line.
+OlivineCity_House1_EventScript_Looker::
+	lock
+	faceplayer
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_LookerBrief
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 3, OlivineCity_House1_EventScript_LookerGoAhead
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_LookerBriefIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 5, OlivineCity_House1_EventScript_LookerGoAheadM2
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_LookerBriefIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 7, OlivineCity_House1_EventScript_LookerGoAheadM3
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_LookerBriefIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 9, OlivineCity_House1_EventScript_LookerGoAheadM4
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_LookerReunionIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_LookerRecheck
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 12, OlivineCity_House1_EventScript_LookerAltar
+	msgbox OlivineCity_House1_Text_LookerHoliday, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_LookerBrief::
+	call OlivineCity_House1_EventScript_BriefingTalk
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ Waiting for the summons: no briefing, no "go ahead", and nothing about the next
+@ town. He says the one true thing - the reports are not finished - and promises
+@ the telephone call that is the only way forward.
+OlivineCity_House1_EventScript_LookerBriefIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_LookerWaitCall
+	goto OlivineCity_House1_EventScript_LookerBrief
+
+OlivineCity_House1_EventScript_LookerWaitCall::
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_LookerWaitCallM3
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_LookerWaitCallM4
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_LookerWaitCallAltar
+	msgbox OlivineCity_House1_Text_WaitForMahoganyCall, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ After Mahogany the wait is not idle: Anabel is matching Lillie's pages to her
+@ own recordings, which is the task the street handed them.
+OlivineCity_House1_EventScript_LookerWaitCallM3::
+	msgbox OlivineCity_House1_Text_WaitForCherrygroveCall, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ After Cherrygrove the wait is for Elm's records, which Kukui asked for on the
+@ beach (CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md section 16).
+OlivineCity_House1_EventScript_LookerWaitCallM4::
+	msgbox OlivineCity_House1_Text_WaitForNewBarkCall, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ After New Bark (state 10) the meeting is NOT started just because the state
+@ reached 10: it waits for its own daily call (V2 section 18). Until then the
+@ records are being compared and the participants gathered.
+OlivineCity_House1_EventScript_LookerWaitCallAltar::
+	msgbox OlivineCity_House1_Text_WaitForAltarCall, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_LookerReunionIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_LookerWaitCall
+	goto OlivineCity_House1_EventScript_LookerReunion
+
+OlivineCity_House1_EventScript_LookerGoAhead::
+	msgbox OlivineCity_House1_Text_LookerGoAhead, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_LookerGoAheadM2::
+	msgbox OlivineCity_House1_Text_LookerGoAheadM2, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_LookerGoAheadM3::
+	msgbox OlivineCity_House1_Text_LookerGoAheadM3, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_LookerGoAheadM4::
+	msgbox OlivineCity_House1_Text_LookerGoAheadM4, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ State 10: the alternative way into the reunion, for a player who somehow
+@ talks to a detective without the frame trigger having staged the scene.
+@ ReunionScene moves only actors on fixed tiles (Lusamine's one measured
+@ step); nothing in it reads the player's position unguarded, so it plays
+@ identically under lock. All that is missing is the player's step in.
+OlivineCity_House1_EventScript_LookerReunion::
+	goto OlivineCity_House1_EventScript_ReunionScene
+
+@ State 11: the retake offer (V2 section 6), never the cutscene again.
+OlivineCity_House1_EventScript_LookerRecheck::
+	goto OlivineCity_House1_EventScript_ReunionResume
+
+@ States 12-15: the repeatable orientation to the port (V2 section 10).
+@ Releasing the voyage is persistent: storing the partner after the reunion
+@ revokes nothing - the altar revalidates the team itself (checkspecies at
+@ the rift, altar doc). From 16 on the two are hidden (FLAG_TEMP_2), so no
+@ upper branch is needed here.
+OlivineCity_House1_EventScript_LookerAltar::
+	msgbox OlivineCity_House1_Text_LookerAltar, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ Same branch order as Looker, and the same warning about goto_if_ge.
+OlivineCity_House1_EventScript_Anabel::
+	lock
+	faceplayer
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 2, OlivineCity_House1_EventScript_AnabelBrief
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 3, OlivineCity_House1_EventScript_AnabelGoAhead
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 4, OlivineCity_House1_EventScript_AnabelBriefIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 5, OlivineCity_House1_EventScript_AnabelGoAheadM2
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 6, OlivineCity_House1_EventScript_AnabelBriefIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 7, OlivineCity_House1_EventScript_AnabelGoAheadM3
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 8, OlivineCity_House1_EventScript_AnabelBriefIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 9, OlivineCity_House1_EventScript_AnabelGoAheadM4
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 10, OlivineCity_House1_EventScript_AnabelReunionIfCalled
+	goto_if_eq VAR_RIFT_MISSIONS_STATE, 11, OlivineCity_House1_EventScript_AnabelRecheck
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 12, OlivineCity_House1_EventScript_AnabelAltar
+	msgbox OlivineCity_House1_Text_AnabelHoliday, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_AnabelBrief::
+	call OlivineCity_House1_EventScript_BriefingTalk
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ Her own waiting line: the plaque follows the message, so Looker's text cannot
+@ be reused in her mouth.
+OlivineCity_House1_EventScript_AnabelBriefIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_AnabelWaitCall
+	goto OlivineCity_House1_EventScript_AnabelBrief
+
+OlivineCity_House1_EventScript_AnabelWaitCall::
+	msgbox OlivineCity_House1_Text_AnabelWaitForCall, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_AnabelReunionIfCalled::
+	goto_if_unset FLAG_RIFT_LOOKER_SUMMONS, OlivineCity_House1_EventScript_AnabelWaitCall
+	goto OlivineCity_House1_EventScript_AnabelReunion
+
+OlivineCity_House1_EventScript_AnabelGoAhead::
+	msgbox OlivineCity_House1_Text_AnabelGoAhead, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_AnabelGoAheadM2::
+	msgbox OlivineCity_House1_Text_AnabelGoAheadM2, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_AnabelGoAheadM3::
+	msgbox OlivineCity_House1_Text_AnabelGoAheadM3, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_AnabelGoAheadM4::
+	msgbox OlivineCity_House1_Text_AnabelGoAheadM4, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ Anabel does NOT sell Beast Balls, here or anywhere: she asked Kurt to make
+@ them (altar doc, revision 2), and the one she keeps is the scripted capture
+@ of the altar's Act IV. The old "she sells from state 4 on" pendency is
+@ closed - it became Kurt's craft system.
+@ State 10: same entry into the reunion as Looker's, see the note there.
+OlivineCity_House1_EventScript_AnabelReunion::
+	goto OlivineCity_House1_EventScript_ReunionScene
+
+OlivineCity_House1_EventScript_AnabelRecheck::
+	goto OlivineCity_House1_EventScript_ReunionResume
+
+@ States 12-15, same as LookerAltar: her half of the orientation.
+OlivineCity_House1_EventScript_AnabelAltar::
+	msgbox OlivineCity_House1_Text_AnabelAltar, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+@ The four visitors. They exist to be talked to in state 11, the only state in
+@ which the player walks the room with everyone present - in state 12 they are
+@ not here to be talked to, and in state 10 the cutscene runs on arrival. So
+@ they need no branch on the var below 16: one box each, V2 section 9 - short
+@ preparation notes, none of them carrying information the main scene needs.
+@ Ninetales and Silvally have "script": "NULL" (design 3.2, skill
+@ parceiro-pokemon-de-npc): they are their owners' partners out of the ball,
+@ share FLAG_TEMP_1 with them, and come and go together. V2 section 9 keeps
+@ NULL as complete: the optional cry interaction is a possible evolution.
+@ The three who come back. There is NO battle anywhere in this room in the
+@ post-game: this is the place where they are not working.
+OlivineCity_House1_EventScript_ReunionLusamine::
+	lock
+	faceplayer
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseLusaminePost
+	msgbox OlivineCity_House1_Text_IdleLusamine, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_HouseLusaminePost::
+	msgbox OlivineCity_House1_Text_HouseLusaminePost, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_ReunionLillie::
+	lock
+	faceplayer
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseLilliePost
+	msgbox OlivineCity_House1_Text_IdleLillie, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_HouseLilliePost::
+	msgbox OlivineCity_House1_Text_HouseLilliePost, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_ReunionGladion::
+	lock
+	faceplayer
+	goto_if_ge VAR_RIFT_MISSIONS_STATE, 16, OlivineCity_House1_EventScript_HouseGladionPost
+	msgbox OlivineCity_House1_Text_IdleGladion, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_HouseGladionPost::
+	msgbox OlivineCity_House1_Text_HouseGladionPost, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_ReunionKukui::
+	lock
+	faceplayer
+	msgbox OlivineCity_House1_Text_IdleKukui, MSGBOX_DEFAULT
+	goto OlivineCity_House1_EventScript_ReleaseEnd
+
+OlivineCity_House1_EventScript_ReleaseEnd::
+	closemessage
+	release
+	end
+
+@ Mission 1 briefing (script revision V2, 25/09/2026). FIVE texts and not one,
+@ because each block has exactly one speaker and the plaque has to change with
+@ it; they are played as consecutive msgbox with no closemessage between them,
+@ so the box never drops and the scene reads as one conversation. Each part
+@ MUST begin with its own {SPEAKER ...}: TrySetSpeakerFromMessage only reads
+@ the start of each message.
+@ It names Clair and the unfamiliar Pokemon in her street and nothing else:
+@ Gladion, the two Ultra Beasts and the identity of the creature are the
+@ surprises of the scene in Blackthorn, so they are never mentioned here. And
+@ nobody names the creature from a description over the telephone.
+OlivineCity_House1_Text_BriefingWelcome:
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}!\n"
+	.string "Thank you for coming.\p"
+	.string "This is Anabel. She's in\n"
+	.string "charge of our investigation.$"
+
+OlivineCity_House1_Text_BriefingAnabel:
+	.string "{SPEAKER NAME_ANABEL}We've been tracking\n"
+	.string "distortions in Johto.\p"
+	.string "They resemble the Ultra\n"
+	.string "Wormholes we encountered in\l"
+	.string "Alola.$"
+
+OlivineCity_House1_Text_BriefingWormholes:
+	.string "{SPEAKER NAME_ANABEL}Passages to other\n"
+	.string "worlds.\p"
+	.string "Sometimes Pokémon come\n"
+	.string "through them.\p"
+	.string "We call those Pokémon Ultra\n"
+	.string "Beasts.\p"
+	.string "They can be dangerous when\n"
+	.string "displaced.$"
+
+OlivineCity_House1_Text_BriefingBlackthorn:
+	.string "{SPEAKER NAME_LOOKER}Clair called from\n"
+	.string "Blackthorn.\p"
+	.string "An unfamiliar Pokémon is in\n"
+	.string "the street.\p"
+	.string "She's keeping it away from the\n"
+	.string "houses, but the readings are\l"
+	.string "rising.$"
+
+OlivineCity_House1_Text_BriefingRequest:
+	.string "{SPEAKER NAME_ANABEL}We need your help\n"
+	.string "protecting the town.\p"
+	.string "And, if we can, the Pokémon\n"
+	.string "too.\p"
+	.string "Meet us by the Pokémon\n"
+	.string "Center.\p"
+	.string "Bring a team ready for a\n"
+	.string "difficult battle.$"
+
+@ Continuity: the Blackthorn hook names no place on purpose ("the moment
+@ something opens, you will be the first to know"). This briefing is that
+@ moment: Mahogany is news to the player here.
+@ Mission 2 briefing: final text (22/09/2026), continuity updated for script
+@ revision V2 (25/09/2026). It names Pryce's call and the blackout and nothing
+@ else: Lillie and the evacuation (Pryce's own line) are what the player finds
+@ in Mahogany, so they are never mentioned here.
+@ What V2 changed: Necrozma is no longer a secret - Gladion named it in
+@ Blackthorn - so Anabel calls it by name, and the thing she is looking for is
+@ already stated: the beasts stayed tied to the rift, and the link is what has
+@ to be cut. Mahogany's barrier and Lillie's test answer a problem the player
+@ has already watched happen.
+@ V3: this briefing starts from Blackthorn, not from a fresh mystery. Gladion
+@ named Necrozma there, so nobody is coy about it here; what the group does NOT
+@ have is any record of that creature collecting Ultra Beasts, and that gap is
+@ the reason they go. One speaker per box, and no hour of the day anywhere:
+@ the blackout is lamps and machines, not darkness.
+OlivineCity_House1_Text_BriefingM2Welcome:
+	.string "{SPEAKER NAME_LOOKER}{PLAYER}! Our holiday\n"
+	.string "reading has finally proved\l"
+	.string "useful.\p"
+	.string "We've compared Gladion's\n"
+	.string "account with the Alola records.\p"
+	.string "Necrozma absorbs light.\p"
+	.string "We found nothing about it\n"
+	.string "taking Ultra Beasts.$"
+
+OlivineCity_House1_Text_BriefingM2Link:
+	.string "{SPEAKER NAME_ANABEL}The rift kept them\n"
+	.string "connected in Blackthorn.\p"
+	.string "We need a way to cut that\n"
+	.string "connection.$"
+
+OlivineCity_House1_Text_BriefingM2Town:
+	.string "{SPEAKER NAME_LOOKER}The power is out in\n"
+	.string "Mahogany.\p"
+	.string "Two Pokémon have been\n"
+	.string "appearing in the street.\p"
+	.string "Pryce is sheltering the\n"
+	.string "residents in his Gym.$"
+
+OlivineCity_House1_Text_BriefingM2Meet:
+	.string "{SPEAKER NAME_ANABEL}The readings match\n"
+	.string "another rupture.\p"
+	.string "We haven't confirmed Necrozma\n"
+	.string "there yet.\p"
+	.string "Meet us by the Pokémon Center.$"
+
+@ Mission 3 briefing (CHERRYGROVE_ULTRABEAST_SCRIPT_V2.md section 4). The call
+@ already named Cherrygrove; this is where the plan is. Kukui is named because
+@ he is the one who reported it, and introduced by his profession only - the
+@ player's earlier meetings with him are not presumed. Necrozma is known since
+@ Blackthorn; what is new is Lillie's note of a PAUSE before it reached over the
+@ ice in Mahogany, which is a hypothesis, not a promise. Four boxes, one speaker
+@ each, played with no closemessage between them.
+OlivineCity_House1_Text_BriefingM3Welcome:
+	.string "{SPEAKER NAME_LOOKER}Professor Kukui reported\n"
+	.string "the disturbance. He studies\l"
+	.string "Pokémon moves in Alola.\p"
+	.string "Fortunately for us, he was\n"
+	.string "visiting Johto.\p"
+	.string "Unfortunately for his holiday.$"
+
+OlivineCity_House1_Text_BriefingM3Evidence:
+	.string "{SPEAKER NAME_ANABEL}Lillie marked a pause\n"
+	.string "before Necrozma reached over\l"
+	.string "the ice.\p"
+	.string "It matches a change in my\n"
+	.string "recording.\p"
+	.string "If it happens again, we may\n"
+	.string "have time to act before it\l"
+	.string "takes them.$"
+
+OlivineCity_House1_Text_BriefingM3Plan:
+	.string "{SPEAKER NAME_ANABEL}We'll weaken the Ultra\n"
+	.string "Beasts, then try to secure one\l"
+	.string "before it moves.\p"
+	.string "I'll watch Necrozma.\n"
+	.string "Kukui will help you hold the\l"
+	.string "shore.$"
+
+OlivineCity_House1_Text_BriefingM3Safety:
+	.string "{SPEAKER NAME_LOOKER}The residents are sheltered\n"
+	.string "at Violet Gym. The Pokémon\l"
+	.string "Center is still available.\p"
+	.string "Meet us on Cherrygrove's\n"
+	.string "northwest shore.$"
+
+@ Mission 4 briefing (NEWBARK_ULTRABEAST_SCRIPT_V2.md section 4).
+@ BRIDGE FROM CHERRYGROVE V2 (section 17 of that script): Kukui asked Elm for
+@ his readings on the beach -> Elm checked six weeks of his own history and
+@ answered -> Anabel and Looker compared -> Looker called. The discovery is
+@ Elm's; he is never treated as someone who ignored three monsters for six
+@ weeks. Pair: CherrygroveCity_Text_UBKukuiElm/UBHookKukui and
+@ RiftMissions_Text_LookerCallM4.
+@ The call does not say Mom is surrounded; this briefing says she is helping
+@ prepare the shelter. The three openings have not happened yet.
+OlivineCity_House1_Text_BriefingM4Evidence:
+	.string "{SPEAKER NAME_LOOKER}Elm sent the records Kukui\n"
+	.string "requested. Some go back six\l"
+	.string "weeks.\p"
+	.string "He checked the equipment.\n"
+	.string "The pulses kept coming back.$"
+
+OlivineCity_House1_Text_BriefingM4Comparison:
+	.string "{SPEAKER NAME_ANABEL}They match our recordings.\n"
+	.string "The latest readings are\l"
+	.string "stronger, and three points\l"
+	.string "are responding.\p"
+	.string "We need to clear the area\n"
+	.string "before they open fully.$"
+
+OlivineCity_House1_Text_BriefingM4Safety:
+	.string "{SPEAKER NAME_LOOKER}Your mother is helping\n"
+	.string "prepare the lab. There's room\l"
+	.string "to shelter the residents.\p"
+	.string "We'll meet you outside your\n"
+	.string "house.$"
+
+@ The resource is named before it is used, and Lusamine's presence is not a
+@ coincidence: Anabel asked Aether for it.
+OlivineCity_House1_Text_BriefingM4Containment:
+	.string "{SPEAKER NAME_ANABEL}Timing wasn't enough at\n"
+	.string "Cherrygrove. We need to\l"
+	.string "interrupt the connection.\p"
+	.string "I asked Aether for containment\n"
+	.string "equipment. Lusamine is\l"
+	.string "bringing it herself.$"
+
+OlivineCity_House1_Text_BriefingM4Plan:
+	.string "{SPEAKER NAME_ANABEL}We'll hold the three fronts,\n"
+	.string "then isolate the weakened\l"
+	.string "Pokémon.\p"
+	.string "Prepare your team before you\n"
+	.string "join us.$"
+
+OlivineCity_House1_Text_LookerHoliday:
+	.string "{SPEAKER NAME_LOOKER}A fine place for a\n"
+	.string "holiday!\p"
+	.string "Though I seem to be spending\n"
+	.string "rather more time indoors than\l"
+	.string "planned.$"
+
+@ Script V2 section 13.3: between finishing a mission and Looker's summons call,
+@ the house offers nothing but this. It does not name the next town, does not
+@ send the player back to the town just cleared, and does not hand out the next
+@ briefing early. The label is the one the script fixes; it is used for every
+@ pending summons, not only Mahogany's.
+OlivineCity_House1_Text_WaitForMahoganyCall:
+	.string "{SPEAKER NAME_LOOKER}We're still checking the\n"
+	.string "reports.\p"
+	.string "I'll call when we have a lead.$"
+
+OlivineCity_House1_Text_WaitForCherrygroveCall:
+	.string "{SPEAKER NAME_LOOKER}We're comparing Lillie's\n"
+	.string "notes with Anabel's\l"
+	.string "recordings.\p"
+	.string "I'll call when we have a lead.$"
+
+OlivineCity_House1_Text_WaitForNewBarkCall:
+	.string "{SPEAKER NAME_LOOKER}We're waiting for Professor\n"
+	.string "Elm's records.\p"
+	.string "I'll call when we've compared\n"
+	.string "them.$"
+
+OlivineCity_House1_Text_WaitForAltarCall:
+	.string "{SPEAKER NAME_LOOKER}We're comparing the records\n"
+	.string "and arranging the meeting.\p"
+	.string "I'll call when everyone's\n"
+	.string "ready.$"
+
+OlivineCity_House1_Text_AnabelWaitForCall:
+	.string "{SPEAKER NAME_ANABEL}Nothing conclusive yet.\p"
+	.string "When there is, Looker will\n"
+	.string "telephone you himself.$"
+
+OlivineCity_House1_Text_LookerGoAhead:
+	.string "{SPEAKER NAME_LOOKER}The Pokémon Center in\n"
+	.string "Blackthorn.\p"
+	.string "We'll meet you there.$"
+
+OlivineCity_House1_Text_LookerGoAheadM2:
+	.string "{SPEAKER NAME_LOOKER}Mahogany's Pokémon\n"
+	.string "Center.\p"
+	.string "Pryce has kept the road to it\n"
+	.string "clear.$"
+
+OlivineCity_House1_Text_LookerGoAheadM3:
+	.string "{SPEAKER NAME_LOOKER}The northwest shore in\n"
+	.string "Cherrygrove. We'll meet you\l"
+	.string "there.$"
+
+OlivineCity_House1_Text_LookerGoAheadM4:
+	.string "{SPEAKER NAME_LOOKER}Outside your house in New\n"
+	.string "Bark. We'll keep the approach\l"
+	.string "clear.$"
+
+OlivineCity_House1_Text_AnabelHoliday:
+	.string "{SPEAKER NAME_ANABEL}It's peaceful here.\p"
+	.string "Looker keeps finding reasons\n"
+	.string "to check the telephone.$"
+
+OlivineCity_House1_Text_AnabelGoAhead:
+	.string "{SPEAKER NAME_ANABEL}Prepare your team\n"
+	.string "before you join us.\p"
+	.string "Clair is holding the street.$"
+
+@ Mahogany V2 section 5. No character predicts the two rounds: "a longer
+@ fight" and "change our approach" are preparation, not foresight.
+OlivineCity_House1_Text_AnabelGoAheadM2:
+	.string "{SPEAKER NAME_ANABEL}Prepare for a longer\n"
+	.string "fight.\p"
+	.string "We may need to change our\n"
+	.string "approach.$"
+
+OlivineCity_House1_Text_AnabelGoAheadM3:
+	.string "{SPEAKER NAME_ANABEL}Prepare before you approach\n"
+	.string "the beach. We need both fronts\l"
+	.string "covered.$"
+
+OlivineCity_House1_Text_AnabelGoAheadM4:
+	.string "{SPEAKER NAME_ANABEL}There's no Pokémon Center in\n"
+	.string "New Bark. Heal before we\l"
+	.string "begin.$"
+
+@ ============================================================================
+@ Pre-Necrozma reunion texts - script V2 (25/09/2026), final lines.
+@ One speaker per box; consecutive msgbox keep the box up and swap the plaque.
+@ No em dash anywhere: U+2014 is not in charmap.txt and breaks the build.
+@ Menus and the obtain fanfare carry no plaque: they are system, not speech.
+@ ============================================================================
+
+@ The records compared during the interval point at the region; Lusamine's
+@ charts give the physical access. The boat route is to the altar IN JOHTO;
+@ the passage beyond it is opened and verified THERE. No compass revealed a
+@ portal's destination by itself.
+OlivineCity_House1_Text_ReunionOpen:
+	.string "{SPEAKER NAME_LOOKER}Good. We're all here.\p"
+	.string "Elm's readings narrowed the\n"
+	.string "search. Aether's charts gave\l"
+	.string "us a landing point.\p"
+	.string "The ship can reach this\n"
+	.string "altar.$"
+
+@ Two moments of the record: the spike after an absorption, the flicker
+@ after it. The indicator gesture is his exclamation; no numbers to read.
+OlivineCity_House1_Text_ReunionKukui:
+	.string "{SPEAKER NAME_KUKUI}See that spike?\n"
+	.string "More power.\p"
+	.string "Then it starts flickering\n"
+	.string "again.\p"
+	.string "Nine Pokémon, and Necrozma\n"
+	.string "still can't hold that light\l"
+	.string "steady.$"
+
+@ Lillie faces her mother, not the floor, and asks for something concrete.
+OlivineCity_House1_Text_ReunionLillie:
+	.string "{SPEAKER NAME_LILLIE}Elm could still detect\n"
+	.string "all nine. We need to get\l"
+	.string "them out.\p"
+	.string "Mother, can your equipment\n"
+	.string "do that?$"
+
+@ She answers with her equipment's LIMIT: no promise the UBs are unharmed,
+@ no certainty of separation. The altar demonstrates how the release works.
+OlivineCity_House1_Text_ReunionLusamineEvidence:
+	.string "{SPEAKER NAME_LUSAMINE}Not while Necrozma\n"
+	.string "keeps drawing them in. We saw\l"
+	.string "that in New Bark.\p"
+	.string "We'll have to weaken it\n"
+	.string "first. Then try to separate\l"
+	.string "them.$"
+
+OlivineCity_House1_Text_ReunionGladionPlan:
+	.string "{SPEAKER NAME_GLADION}And if the passage\n"
+	.string "closes behind us?$"
+
+@ The stabilizer: a fictional resource of the hack, continuous operation,
+@ limited duration. It holds an OPEN passage steady - it opens nothing,
+@ transports nothing by itself, and guarantees no return under any condition.
+@ No item reaches the inventory.
+OlivineCity_House1_Text_ReunionStabilizer:
+	.string "{SPEAKER NAME_LUSAMINE}This holds an open\n"
+	.string "passage steady. One unit on\l"
+	.string "each side.\p"
+	.string "It cannot open one. And\n"
+	.string "someone must keep both units\l"
+	.string "running.$"
+
+OlivineCity_House1_Text_ReunionAnabelReturn:
+	.string "{SPEAKER NAME_ANABEL}I'll take the portable\n"
+	.string "unit. If its signal drops,\l"
+	.string "we withdraw.\p"
+	.string "We test the connection at\n"
+	.string "the altar before anyone\l"
+	.string "crosses.$"
+
+@ The Beast Ball is shown and STAYS WITH ANABEL until the altar's scripted
+@ capture (Act IV). No crafting, no purchase, no player item. Necrozma is
+@ never called an Ultra Beast, and no canonical Ball bonus is promised: the
+@ later guaranteed capture is this event's authorial rule.
+OlivineCity_House1_Text_ReunionCapture:
+	.string "{SPEAKER NAME_ANABEL}Once the others are\n"
+	.string "free, we capture Necrozma.\p"
+	.string "I have a Beast Ball from\n"
+	.string "Kurt ready.\p"
+	.string "Driving it away only moves\n"
+	.string "the danger.$"
+
+OlivineCity_House1_Text_ReunionLusamineCross:
+	.string "{SPEAKER NAME_LUSAMINE}Then I'll lead the\n"
+	.string "crossing.\p"
+	.string "I know Aether's equipment\n"
+	.string "best.$"
+
+OlivineCity_House1_Text_ReunionLillieBoundary:
+	.string "{SPEAKER NAME_LILLIE}Then show us how to\n"
+	.string "use it, Mother.\p"
+	.string "We can't all depend on you\n"
+	.string "alone.$"
+
+@ Family progress (V2 section 5): she shares the control because Lillie asked
+@ for something concrete. No apology for the whole story, no absolution, no
+@ advance surrender of the crossing - the altar's disagreement stays open,
+@ but it will start from this.
+OlivineCity_House1_Text_ReunionLusamineControl:
+	.string "{SPEAKER NAME_LUSAMINE}The lower dial. Keep\n"
+	.string "the two lights level.$"
+
+OlivineCity_House1_Text_ReunionAnabelLeadership:
+	.string "{SPEAKER NAME_ANABEL}We'll decide who leads\n"
+	.string "at the altar.\p"
+	.string "First, let's see whether\n"
+	.string "this works.$"
+
+OlivineCity_House1_Text_ReunionAsk:
+	.string "{SPEAKER NAME_KUKUI}Now we need your\n"
+	.string "partner, {PLAYER}.\p"
+	.string "Solgaleo or Lunala can open\n"
+	.string "the way.\p"
+	.string "Let's check the equipment's\n"
+	.string "response.$"
+
+OlivineCity_House1_Text_ReunionDeferred:
+	.string "{SPEAKER NAME_KUKUI}Sure. Speak to Looker\n"
+	.string "when you're ready.$"
+
+@ Guidance lines (V2 section 6): each one says only what was verified.
+OlivineCity_House1_Text_ReunionStored:
+	.string "{SPEAKER NAME_LOOKER}Bring Solgaleo or\n"
+	.string "Lunala from the PC.\p"
+	.string "We need your partner here\n"
+	.string "for the test.$"
+
+OlivineCity_House1_Text_ReunionUnevolved:
+	.string "{SPEAKER NAME_KUKUI}Your partner needs to\n"
+	.string "evolve first.\p"
+	.string "Bring Solgaleo or Lunala\n"
+	.string "when it's ready.$"
+
+@ Claims no growth, loss, trade or release without evidence.
+OlivineCity_House1_Text_ReunionMissing:
+	.string "{SPEAKER NAME_LOOKER}We'll need Solgaleo or\n"
+	.string "Lunala in your team before\l"
+	.string "we can leave.$"
+
+OlivineCity_House1_Text_ReunionResume:
+	.string "{SPEAKER NAME_LOOKER}Ready to try the\n"
+	.string "equipment with your partner?$"
+
+OlivineCity_House1_Text_ReunionTestStart:
+	.string "{SPEAKER NAME_ANABEL}Ready. Just a short\n"
+	.string "pulse.$"
+
+@ Bench-test result in EVERY save: compatibility and a brief response, never
+@ proof of a safe crossing, and no claim about scenes that may not have been
+@ recorded.
+OlivineCity_House1_Text_ReunionTestResult:
+	.string "{SPEAKER NAME_KUKUI}There! Both lights\n"
+	.string "together.\p"
+	.string "The equipment can follow\n"
+	.string "your partner.\p"
+	.string "Now we test it on a real\n"
+	.string "passage.$"
+
+@ Default version on purpose: the presented Pokemon may be another specimen,
+@ and nothing in the save proves which one hatched from the Violet egg. The
+@ optional "Hard to believe I carried that egg." callback needs verifiable
+@ provenance that no existing data field provides.
+OlivineCity_House1_Text_ReunionGladionPartner:
+	.string "{SPEAKER NAME_GLADION}…You've looked\n"
+	.string "after it.\p"
+	.string "Good.$"
+
+@ Future roles, V2 section 8: player fights and captures; the partner opens
+@ and holds the route; Anabel operates inside; Gladion/Silvally cover the
+@ exit; Lillie/Ninetales receive the UBs; Kukui reads the measurements;
+@ Looker handles transport and recovery. Lusamine prepares the outside base
+@ with Kukui - accepting to STAY outside is the altar's beat, not this one's.
+OlivineCity_House1_Text_ReunionAssignments:
+	.string "{SPEAKER NAME_ANABEL}Gladion, keep the exit\n"
+	.string "clear. Lillie, help the\l"
+	.string "Pokémon we bring back.\p"
+	.string "Professor, check the outside\n"
+	.string "unit with Lusamine when we\l"
+	.string "arrive.$"
+
+OlivineCity_House1_Text_ReunionTicket:
+	.string "{SPEAKER NAME_LOOKER}The ship is ready at\n"
+	.string "Olivine Port.\p"
+	.string "Show the sailor this pass.$"
+
+OlivineCity_House1_Text_ReunionTicketUse:
+	.string "{SPEAKER NAME_LOOKER}He'll take you to the\n"
+	.string "altar and back.\p"
+	.string "Heal your team, and bring\n"
+	.string "your partner.$"
+
+@ Not in the V2 text list: the prevention line for the one delivery failure
+@ that exists (Key Items pocket full). Nothing is claimed beyond the fact.
+OlivineCity_House1_Text_ReunionNoRoom:
+	.string "{SPEAKER NAME_LOOKER}Your Key Items pocket\n"
+	.string "is full.\p"
+	.string "Make room for the pass, then\n"
+	.string "speak to me again.$"
+
+@ Menu labels - system text, no plaque.
+OlivineCity_House1_Text_PartnerSelect:
+	.string "Which Pokémon will you bring\n"
+	.string "forward?$"
+
+OlivineCity_House1_Text_ChoiceSolgaleo:
+	.string "Solgaleo$"
+
+OlivineCity_House1_Text_ChoiceLunala:
+	.string "Lunala$"
+
+OlivineCity_House1_Text_ChoiceNotNow:
+	.string "Not now$"
+
+OlivineCity_House1_Text_ChoiceYes:
+	.string "Yes$"
+
+OlivineCity_House1_Text_ChoiceNotYet:
+	.string "Not yet$"
+
+@ States 12-15, the repeatable orientation (V2 section 10). Releasing the
+@ voyage is persistent; the altar revalidates the team itself.
+OlivineCity_House1_Text_LookerAltar:
+	.string "{SPEAKER NAME_LOOKER}Show your pass to the\n"
+	.string "sailor at Olivine Port.\p"
+	.string "The ship makes the return\n"
+	.string "trip too.$"
+
+OlivineCity_House1_Text_AnabelAltar:
+	.string "{SPEAKER NAME_ANABEL}Bring Solgaleo or\n"
+	.string "Lunala.\p"
+	.string "We'll check the passage at\n"
+	.string "the altar.$"
+
+@ State 11 idle lines (V2 section 9): short preparation notes for whoever
+@ explores the room. None of them carries information the main scene needs.
+OlivineCity_House1_Text_IdleLusamine:
+	.string "{SPEAKER NAME_LUSAMINE}Lillie's notes were\n"
+	.string "useful. She recorded when\l"
+	.string "the light changed.\p"
+	.string "I should have asked to see\n"
+	.string "them sooner.$"
+
+OlivineCity_House1_Text_IdleLillie:
+	.string "{SPEAKER NAME_LILLIE}Mother asked for my\n"
+	.string "notes. Then she actually\l"
+	.string "read them.\p"
+	.string "I'd like that to happen more\n"
+	.string "often.$"
+
+OlivineCity_House1_Text_IdleGladion:
+	.string "{SPEAKER NAME_GLADION}She showed Anabel the\n"
+	.string "controls. That's a start.\p"
+	.string "I'm still watching the exit.$"
+
+OlivineCity_House1_Text_IdleKukui:
+	.string "{SPEAKER NAME_KUKUI}I had a boat booked\n"
+	.string "for Alola. Looker's going to\l"
+	.string "owe me a new ticket.\p"
+	.string "Don't tell him I said that.$"
+
+@ Post-game, state >= 16, V2 section 11: the family's two days a week in this
+@ room (Sunday and Friday, the days the altar doc fixed). Small, still
+@ imperfect coexistence - tea, an agenda under the teapot, Gladion staying
+@ for another cup - and no speech about learning to live together. No line
+@ describes Silvally anywhere his sprite is not: he stands at (2,7), by
+@ Gladion, as always. Lusamine's template sits at (5,6) on these loads
+@ (ApplyPostgameSeating): by the table, near her children.
+OlivineCity_House1_Text_HouseLusaminePost:
+	.string "{SPEAKER NAME_LUSAMINE}Lillie chose tea for\n"
+	.string "this afternoon. I had planned\l"
+	.string "something more elaborate.\p"
+	.string "…Tea will do.\n"
+	.string "Would you like some?$"
+
+OlivineCity_House1_Text_HouseLilliePost:
+	.string "{SPEAKER NAME_LILLIE}We meet here twice a\n"
+	.string "week. Mother tried to make\l"
+	.string "an agenda.\p"
+	.string "Gladion put it under the\n"
+	.string "teapot.$"
+
+OlivineCity_House1_Text_HouseGladionPost:
+	.string "{SPEAKER NAME_GLADION}It was wobbling.\p"
+	.string "…I'm staying for another\n"
+	.string "cup.$"
 `
-
-script Olivine_VoltorbTrade {
-    lock
-    faceplayer
-    if (flag(FLAG_OLIVINE_NPC_TRADE_COMPLETED)) {
-        msgbox("Hi, how is my old Voltorb doing?")
-    } else {
-        ingame_trade(INGAME_TRADE_VOLTORB, "I collect Pokémon
-                                         Do you have a Mareanie?
-                                         Want to trade it for my
-                                         Hisuian Voltorb?", 
-                                         VoltorbTrade_Declined,
-                                         VoltorbTrade_NotRequested,
-                                         "Yay! I got myself a Mareanie!
-                                        Voltorb, you take care!")
-        setflag(FLAG_OLIVINE_NPC_TRADE_COMPLETED)
-    }
-    release
-    end
-}
-
-script VoltorbTrade_Declined {
-    msgbox("You don't want to trade? Aww...")
-    release
-    end                                 
-}
-
-script VoltorbTrade_NotRequested {
-    msgbox("Uh, no, I don't think so.
-            That doesn't look like a Mareanie.")
-    release
-    end
-}

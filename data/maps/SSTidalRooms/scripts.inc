@@ -32,36 +32,6 @@ SSTidalRooms_EventScript_Colton::
 	msgbox SSTidalRooms_Text_ColtonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-SSTidalRooms_EventScript_Micah::
-	trainerbattle_single TRAINER_MICAH, SSTidalRooms_Text_MicahIntro, SSTidalRooms_Text_MicahDefeat
-	msgbox SSTidalRooms_Text_MicahPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-SSTidalRooms_EventScript_Thomas::
-	trainerbattle_single TRAINER_THOMAS, SSTidalRooms_Text_ThomasIntro, SSTidalRooms_Text_ThomasDefeat
-	msgbox SSTidalRooms_Text_ThomasPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-SSTidalRooms_EventScript_Jed::
-	trainerbattle_double TRAINER_LEA_AND_JED, SSTidalRooms_Text_JedIntro, SSTidalRooms_Text_JedDefeat, SSTidalRooms_Text_JedNotEnoughMons
-	msgbox SSTidalRooms_Text_JedPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-SSTidalRooms_EventScript_Lea::
-	trainerbattle_double TRAINER_LEA_AND_JED, SSTidalRooms_Text_LeaIntro, SSTidalRooms_Text_LeaDefeat, SSTidalRooms_Text_LeaNotEnoughMons
-	msgbox SSTidalRooms_Text_LeaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-SSTidalRooms_EventScript_Garret::
-	trainerbattle_single TRAINER_GARRET, SSTidalRooms_Text_GarretIntro, SSTidalRooms_Text_GarretDefeat
-	msgbox SSTidalRooms_Text_GarretPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-SSTidalRooms_EventScript_Naomi::
-	trainerbattle_single TRAINER_NAOMI, SSTidalRooms_Text_NaomiIntro, SSTidalRooms_Text_NaomiDefeat
-	msgbox SSTidalRooms_Text_NaomiPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 SSTidalRooms_Text_TakeRestOnBed:
 	.string "There's a bed…\n"
 	.string "Let's take a rest.$"
@@ -172,4 +142,3 @@ SSTidalRooms_Text_ExplainSnatch:
 	.string "Snatch steals the beneficial effects\n"
 	.string "of certain moves before they can be\l"
 	.string "used by a foe or ally.$"
-

@@ -3164,9 +3164,21 @@ static bool8 IsBattleEntrySelectionComplete(void)
     for (i = 0; i < maxBattlers; i++)
     {
         if (gSelectedOrderFromParty[i] == 0)
+            break;
+    }
+    if (i == maxBattlers)
+        return TRUE;
+
+    // Fewer picks than slots is still complete once the minimum is met and
+    // nothing eligible is left to pick - e.g. a 3-mon multi battle with only
+    // 2 healthy mons (or 2 mons + an Egg). Otherwise the menu can't close.
+    if (i < GetMinBattleEntries())
+        return FALSE;
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        if (GetPartySlotEntryStatus(i) == 0)
             return FALSE;
     }
-
     return TRUE;
 }
 
@@ -5264,7 +5276,7 @@ static void CursorCb_Enter(u8 taskId)
             gSelectedOrderFromParty[i] = gPartyMenu.slotId + 1;
             DisplayPartyPokemonDescriptionText(i + PARTYBOX_DESC_FIRST, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
             RefreshSelectedMonInfoAndPrompt();
-            if (i == maxBattlers - 1)
+            if (IsBattleEntrySelectionComplete())
                 gPartyMenu.task(taskId);
             else
                 gTasks[taskId].func = Task_HandleChooseMonInput;
@@ -5451,7 +5463,10 @@ static void CursorCb_FieldMove(u8 taskId)
         // All field moves before WATERFALL are HMs.
         if (!IsFieldMoveUnlocked(fieldMove))
         {
-            DisplayPartyMenuMessage(gText_CantUseUntilNewBadge, TRUE);
+            if (fieldMove == FIELD_MOVE_DIVE)
+                DisplayPartyMenuStdMessage(FieldMove_GetPartyMsgID(fieldMove));
+            else
+                DisplayPartyMenuMessage(gText_CantUseUntilNewBadge, TRUE);
             gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
         }
         else if (SetUpFieldMove(fieldMove) == TRUE)
@@ -10312,9 +10327,21 @@ static void UnselectLastBattleEntry(void)
 {
     u8 i;
     u8 maxBattlers = GetMaxBattleEntries();
-    u8 slot = gSelectedOrderFromParty[maxBattlers - 1] - 1;
+    u8 last = maxBattlers;
+    u8 slot;
 
-    gSelectedOrderFromParty[maxBattlers - 1] = 0;
+    // The selection can close with fewer picks than slots (1 mon + an Egg in a
+    // multi battle), so the last pick is not always in the last slot. Reading
+    // the empty slot gave slot 255 and wrote outside sPartyMenuBoxes.
+    while (last > 0 && gSelectedOrderFromParty[last - 1] == 0)
+        last--;
+    if (last == 0)
+    {
+        RefreshSelectedMonInfoAndPrompt();
+        return;
+    }
+    slot = gSelectedOrderFromParty[last - 1] - 1;
+    gSelectedOrderFromParty[last - 1] = 0;
     DisplayPartyPokemonDescriptionText(PARTYBOX_DESC_ABLE_3, &sPartyMenuBoxes[slot], 1);
     for (i = 0; i < maxBattlers - 1; i++)
     {

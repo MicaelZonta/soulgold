@@ -469,6 +469,7 @@ static void Task_ValidateChosenHalfParty(u8);
 static bool8 GetBattleEntryEligibility(struct Pokemon *);
 static bool8 IsFrontierSpeciesBanEnforcedForBattleEntry(void);
 static bool8 HasPartySlotAlreadyBeenSelected(u8);
+static bool8 HasUnselectedEligibleMon(void);
 static u8 GetBattleEntryLevelCap(void);
 static u8 GetMaxBattleEntries(void);
 static u8 GetMinBattleEntries(void);
@@ -4038,7 +4039,9 @@ static void CursorCb_Enter(u8 taskId)
             PlaySE(SE_SELECT);
             gSelectedOrderFromParty[i] = gPartyMenu.slotId + 1;
             DisplayPartyPokemonDescriptionText(i + PARTYBOX_DESC_FIRST, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
-            if (i == (maxBattlers - 1))
+            // Also jump to Confirm when nothing eligible is left to pick, e.g. a
+            // 3-mon multi battle with only 2 healthy mons (or 2 mons + an Egg).
+            if (i == (maxBattlers - 1) || !HasUnselectedEligibleMon())
                 MoveCursorToConfirm();
             DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
             gTasks[taskId].func = Task_HandleChooseMonInput;
@@ -4050,6 +4053,18 @@ static void CursorCb_Enter(u8 taskId)
     PlaySE(SE_FAILURE);
     DisplayPartyMenuMessage(gStringVar4, TRUE);
     gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+}
+
+static bool8 HasUnselectedEligibleMon(void)
+{
+    u8 slot;
+
+    for (slot = 0; slot < gPlayerPartyCount; slot++)
+    {
+        if (GetPartySlotEntryStatus(slot) == 0)
+            return TRUE;
+    }
+    return FALSE;
 }
 
 static void MoveCursorToConfirm(void)
@@ -4231,7 +4246,10 @@ static void CursorCb_FieldMove(u8 taskId)
         // All field moves before WATERFALL are HMs.
         if (!IsFieldMoveUnlocked(fieldMove))
         {
-            DisplayPartyMenuMessage(gText_CantUseUntilNewBadge, TRUE);
+            if (fieldMove == FIELD_MOVE_DIVE)
+                DisplayPartyMenuStdMessage(FieldMove_GetPartyMsgID(fieldMove));
+            else
+                DisplayPartyMenuMessage(gText_CantUseUntilNewBadge, TRUE);
             gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
         }
         else if (SetUpFieldMove(fieldMove) == TRUE)
@@ -6141,6 +6159,11 @@ static void Task_LearnedMove(u8 taskId)
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
     s16 *move = &gPartyMenu.data1;
     enum Item item = gSpecialVar_ItemId;
+
+    // Keldeo becomes Resolute once it knows Secret Sword (FORM_CHANGE_MOVE).
+    // Keldeo only: Rotom's move rows must not fire from a TM.
+    if (GET_BASE_SPECIES_ID(GetMonData(mon, MON_DATA_SPECIES)) == SPECIES_KELDEO)
+        TryFormChange(mon, FORM_CHANGE_MOVE);
 
     if (move[1] == 0)
     {
@@ -9321,6 +9344,8 @@ void MoveDeleterForgetMove(void)
     SetBoxMonData(boxmon, MON_DATA_PP_BONUSES, &ppBonuses);
     for (u32 i = gSpecialVar_0x8005; i < MAX_MON_MOVES - 1; i++)
         ShiftMoveSlot(boxmon, i, i + 1);
+    // Forgetting Secret Sword turns Keldeo back to Ordinary (FORM_CHANGE_MOVE).
+    TrySelectedMonMoveFormChange();
 }
 
 static void ShiftMoveSlot(struct BoxPokemon *mon, u8 slotTo, u8 slotFrom)

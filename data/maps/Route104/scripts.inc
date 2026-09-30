@@ -158,24 +158,6 @@ Route104_EventScript_RestoreMusic::
 	fadedefaultbgm
 	return
 
-Route104_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TREECKO, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TORCHIC, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_MUDKIP, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
 Route104_EventScript_BrendanEncounter::
 	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, Route104_EventScript_BrendanDefeated
 	goto_if_set FLAG_REGISTER_RIVAL_POKENAV, Route104_EventScript_BrendanAskToBattle
@@ -223,24 +205,6 @@ Route104_EventScript_BrendanDefeated::
 	msgbox Route104_Text_BrendanPostBattle, MSGBOX_DEFAULT
 	call_if_eq VAR_0x8008, 0, Route104_EventScript_RestoreMusic
 	releaseall
-	end
-
-Route104_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TREECKO, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TORCHIC, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_MUDKIP, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
 	end
 
 Route104_Movement_PlayerBackUp:
@@ -888,17 +852,6 @@ Route104_EventScript_RematchHaley::
 	msgbox Route104_Text_HaleyPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-Route104_EventScript_Winston::
-	trainerbattle_single TRAINER_WINSTON_1, Route104_Text_WinstonIntro, Route104_Text_WinstonDefeat, Route104_EventScript_TryRegisterWinstonAfterBattle
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route104_EventScript_RematchWinston
-	setvar VAR_0x8004, TRAINER_WINSTON_1
-	specialvar VAR_RESULT, IsTrainerRegistered
-	goto_if_eq VAR_RESULT, FALSE, Route104_EventScript_TryRegisterWinston
-	msgbox Route104_Text_WinstonPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 Route104_EventScript_TryRegisterWinstonAfterBattle::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
@@ -920,11 +873,6 @@ Route104_EventScript_TryRegisterWinston::
 Route104_EventScript_RegisterWinston::
 	msgbox Route104_Text_WinstonRegister1, MSGBOX_DEFAULT
 	release
-	end
-
-Route104_EventScript_RematchWinston::
-	trainerbattle_rematch TRAINER_WINSTON_1, Route104_Text_WinstonRematchIntro, Route104_Text_WinstonRematchDefeat
-	msgbox Route104_Text_WinstonPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route104_EventScript_Cindy::

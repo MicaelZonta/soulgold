@@ -267,29 +267,11 @@ Route120_EventScript_Colin::
 	msgbox Route120_Text_ColinPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route120_EventScript_Robert::
-	trainerbattle_single TRAINER_ROBERT_1, Route120_Text_RobertIntro, Route120_Text_RobertDefeat, Route120_EventScript_RegisterRobert
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route120_EventScript_RematchRobert
-	msgbox Route120_Text_RobertPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 Route120_EventScript_RegisterRobert::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
 	msgbox Route120_Text_RobertRegister, MSGBOX_DEFAULT
 	release
-	end
-
-Route120_EventScript_RematchRobert::
-	trainerbattle_rematch TRAINER_ROBERT_1, Route120_Text_RobertRematchIntro, Route120_Text_RobertRematchDefeat
-	msgbox Route120_Text_RobertPostRematch, MSGBOX_AUTOCLOSE
-	end
-
-Route120_EventScript_Lorenzo::
-	trainerbattle_single TRAINER_LORENZO, Route120_Text_LorenzoIntro, Route120_Text_LorenzoDefeat
-	msgbox Route120_Text_LorenzoPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route120_EventScript_Jenna::
@@ -332,24 +314,9 @@ Route120_EventScript_Clarissa::
 	msgbox Route120_Text_ClarissaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route120_EventScript_Angelica::
-	trainerbattle_single TRAINER_ANGELICA, Route120_Text_AngelicaIntro, Route120_Text_AngelicaDefeat
-	msgbox Route120_Text_AngelicaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route120_EventScript_Keigo::
-	trainerbattle_single TRAINER_KEIGO, Route120_Text_KeigoIntro, Route120_Text_KeigoDefeat
-	msgbox Route120_Text_KeigoPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route120_EventScript_Riley::
 	trainerbattle_single TRAINER_RILEY, Route120_Text_RileyIntro, Route120_Text_RileyDefeat
 	msgbox Route120_Text_RileyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route120_EventScript_Leonel::
-	trainerbattle_single TRAINER_LEONEL, Route120_Text_LeonelIntro, Route120_Text_LeonelDefeat
-	msgbox Route120_Text_LeonelPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route120_EventScript_Callie::

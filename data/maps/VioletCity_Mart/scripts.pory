@@ -56,8 +56,8 @@ script Violetcity_Mart2 {
 
 mart Violetcity2 {
 	ITEM_TM_HONE_CLAWS
-    ITEM_HEAL_BALL
-    ITEM_NET_BALL
-    ITEM_NEST_BALL
+    // No Balls on this counter: every Poke Mart in the campaign sells
+    // ITEM_POKE_BALL and nothing else, and Kurt makes the rest by recipe
+    // (.claude/KURT_BALL_CRAFT_DESIGN.md section 2.1).
     ITEM_WOOD_MAIL
 }

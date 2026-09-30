@@ -1545,6 +1545,24 @@ bool8 ScriptCheckFreePokemonStorageSpace(void)
     return CheckFreePokemonStorageSpace();
 }
 
+// Used before Gladion walks out of the Violet City Pokemon Center, since the
+// player can approach him from the west, south, or east and scripted
+// movement doesn't check collision against the player's sprite.
+bool8 ScriptCheckPlayerWestOfGladion(void)
+{
+    u8 i;
+
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        if (gObjectEvents[i].active && gObjectEvents[i].graphicsId == OBJ_EVENT_GFX_GLADION)
+        {
+            return (gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x == gObjectEvents[i].currentCoords.x - 1
+                 && gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y == gObjectEvents[i].currentCoords.y);
+        }
+    }
+    return FALSE;
+}
+
 // Task data for Task_ShakeCamera
 #define tHorizontalPan  data[0]
 #define tDelayCounter   data[1]
@@ -4412,6 +4430,23 @@ bool32 CheckPartyHasSpecies(u32 givenSpecies)
     return FALSE;
 }
 
+// Read-only PC consultation: does any storage box hold gSpecialVar_0x8004?
+// Used by the pre-Necrozma reunion to pick which guidance line is true when
+// the party gate (checkspecies) failed - it must never be used as the gate
+// itself. Eggs do not count: MON_DATA_SPECIES_OR_EGG reports SPECIES_EGG for
+// them, and an egg does not prove the species inside it.
+bool32 CheckPCHasSpecies(void)
+{
+    u32 box, pos;
+
+    for (box = 0; box < TOTAL_BOXES_COUNT; box++)
+        for (pos = 0; pos < IN_BOX_COUNT; pos++)
+            if (GetBoxMonData(GetBoxedMonPtr(box, pos), MON_DATA_SPECIES_OR_EGG, 0) == gSpecialVar_0x8004)
+                return TRUE;
+
+    return FALSE;
+}
+
 void UseBlankMessageToCancelPokemonPic(void)
 {
     DeactivateSingleTextPrinter(0, WINDOW_TEXT_PRINTER);
@@ -4662,6 +4697,151 @@ void HaircutBrother2(void)
     AdjustFriendship(&gPlayerParty[gSpecialVar_0x8004], FRIENDSHIP_EVENT_HAIRCUT2);
 }
 
+// Mom's Grooming service (New Bark Town)
+// Trim order matches the VAR_MOM_FURFROU_EXP unlock progression (0 = Natural only, 9 = every trim known)
+static const u16 sMomFurfrouTrimOrder[FURFROU_TRIM_COUNT] =
+{
+    SPECIES_FURFROU_NATURAL,
+    SPECIES_FURFROU_HEART,
+    SPECIES_FURFROU_STAR,
+    SPECIES_FURFROU_DIAMOND,
+    SPECIES_FURFROU_DANDY,
+    SPECIES_FURFROU_DEBUTANTE,
+    SPECIES_FURFROU_MATRON,
+    SPECIES_FURFROU_LA_REINE,
+    SPECIES_FURFROU_KABUKI,
+    SPECIES_FURFROU_PHARAOH,
+};
+
+// Indexed by season (0 = Spring, 1 = Summer, 2 = Autumn, 3 = Winter)
+static const u16 sMomDeerlingSeasonalForms[][2] =
+{
+    {SPECIES_DEERLING_SPRING, SPECIES_SAWSBUCK_SPRING},
+    {SPECIES_DEERLING_SUMMER, SPECIES_SAWSBUCK_SUMMER},
+    {SPECIES_DEERLING_AUTUMN, SPECIES_SAWSBUCK_AUTUMN},
+    {SPECIES_DEERLING_WINTER, SPECIES_SAWSBUCK_WINTER},
+};
+
+void GroomPokemon(void)
+{
+    AdjustFriendship(&gPlayerParty[gSpecialVar_0x8004], FRIENDSHIP_EVENT_GROOMING);
+}
+
+// Returns which special grooming mini-game (if any) applies to the mon chosen via ChoosePartyMon
+u16 GetGroomTargetCategory(void)
+{
+    u16 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES, NULL);
+
+    switch (species)
+    {
+    case SPECIES_FURFROU_NATURAL:
+    case SPECIES_FURFROU_HEART:
+    case SPECIES_FURFROU_STAR:
+    case SPECIES_FURFROU_DIAMOND:
+    case SPECIES_FURFROU_DEBUTANTE:
+    case SPECIES_FURFROU_MATRON:
+    case SPECIES_FURFROU_DANDY:
+    case SPECIES_FURFROU_LA_REINE:
+    case SPECIES_FURFROU_KABUKI:
+    case SPECIES_FURFROU_PHARAOH:
+        return GROOM_CATEGORY_FURFROU;
+    case SPECIES_DEERLING_SPRING:
+    case SPECIES_DEERLING_SUMMER:
+    case SPECIES_DEERLING_AUTUMN:
+    case SPECIES_DEERLING_WINTER:
+    case SPECIES_SAWSBUCK_SPRING:
+    case SPECIES_SAWSBUCK_SUMMER:
+    case SPECIES_SAWSBUCK_AUTUMN:
+    case SPECIES_SAWSBUCK_WINTER:
+        return GROOM_CATEGORY_DEERLING;
+    // Pikachu Starter is left out on purpose: it has its own stats.
+    case SPECIES_PIKACHU:
+    case SPECIES_PIKACHU_COSPLAY:
+    case SPECIES_PIKACHU_ROCK_STAR:
+    case SPECIES_PIKACHU_BELLE:
+    case SPECIES_PIKACHU_POP_STAR:
+    case SPECIES_PIKACHU_PHD:
+    case SPECIES_PIKACHU_LIBRE:
+    case SPECIES_PIKACHU_ORIGINAL:
+    case SPECIES_PIKACHU_HOENN:
+    case SPECIES_PIKACHU_SINNOH:
+    case SPECIES_PIKACHU_UNOVA:
+    case SPECIES_PIKACHU_KALOS:
+    case SPECIES_PIKACHU_ALOLA:
+    case SPECIES_PIKACHU_PARTNER:
+    case SPECIES_PIKACHU_WORLD:
+        return GROOM_CATEGORY_PIKACHU;
+    default:
+        return GROOM_CATEGORY_NORMAL;
+    }
+}
+
+// Applies the trim chosen from the grooming menu (index in gSpecialVar_0x8005) to the mon in gSpecialVar_0x8004.
+// Only the species field changes, so nickname/OT/IVs/EVs/moves/happiness/shininess are untouched.
+void ApplyFurfrouTrim(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
+    u16 species = sMomFurfrouTrimOrder[gSpecialVar_0x8005];
+
+    SetMonData(mon, MON_DATA_SPECIES, &species);
+    CalculateMonStats(mon);
+    TrySetDayLimitToFormChange(mon);
+}
+
+// Applies the season chosen from the perfume menu (index in gSpecialVar_0x8005) to the mon in gSpecialVar_0x8004,
+// preserving whether it is currently a Deerling or an (already evolved) Sawsbuck.
+void ApplySeasonalForm(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u32 season = gSpecialVar_0x8005;
+    u32 stage = 0; // 0 = Deerling, 1 = Sawsbuck
+
+    if (species == SPECIES_SAWSBUCK_SPRING || species == SPECIES_SAWSBUCK_SUMMER
+     || species == SPECIES_SAWSBUCK_AUTUMN || species == SPECIES_SAWSBUCK_WINTER)
+        stage = 1;
+
+    species = sMomDeerlingSeasonalForms[season][stage];
+    SetMonData(mon, MON_DATA_SPECIES, &species);
+    CalculateMonStats(mon);
+}
+
+// Mom's Pikachu Cosplay Kit menu, in menu order (index in gSpecialVar_0x8005).
+// Index 0 takes the costume off. Cosplay and cap Pikachu cannot evolve, so the
+// player can always come back to a plain Pikachu here.
+static const u16 sMomPikachuCostumes[] =
+{
+    SPECIES_PIKACHU,
+    SPECIES_PIKACHU_ROCK_STAR,
+    SPECIES_PIKACHU_BELLE,
+    SPECIES_PIKACHU_POP_STAR,
+    SPECIES_PIKACHU_PHD,
+    SPECIES_PIKACHU_LIBRE,
+    SPECIES_PIKACHU_COSPLAY,
+    SPECIES_PIKACHU_ORIGINAL,
+    SPECIES_PIKACHU_HOENN,
+    SPECIES_PIKACHU_SINNOH,
+    SPECIES_PIKACHU_UNOVA,
+    SPECIES_PIKACHU_KALOS,
+    SPECIES_PIKACHU_ALOLA,
+    SPECIES_PIKACHU_PARTNER,
+    SPECIES_PIKACHU_WORLD,
+};
+
+// Applies the costume chosen from Mom's menu to the mon in gSpecialVar_0x8004.
+// Only the species changes (nickname, OT, IVs, EVs, moves, shininess stay).
+void ApplyPikachuCostume(void)
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
+    u16 species;
+
+    if (gSpecialVar_0x8005 >= ARRAY_COUNT(sMomPikachuCostumes))
+        return;
+    species = sMomPikachuCostumes[gSpecialVar_0x8005];
+    SetMonData(mon, MON_DATA_SPECIES, &species);
+    CalculateMonStats(mon);
+}
+
 void SetVermilionTrashCans(void)
 {
     u16 idx = (Random() % 15) + 1;
@@ -4782,4 +4962,23 @@ void SetAbility(void)
 {
     u32 ability = gSpecialVar_Result;
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM, &ability);
+}
+
+// VAR_RESULT = a random item of the consecutive run VAR_0x8004 .. VAR_0x8004 +
+// VAR_0x8005 - 1 that the player has none of (Bag or PC), or ITEM_NONE when
+// every one of them is already owned. Used for the drops that complete a set:
+// Silvally's Memories (Gladion's rematch) and Genesect's Drives (Nexus).
+void GetRandomMissingItemInRange(void)
+{
+    u16 missing[32];
+    u32 count = 0;
+    u32 i;
+
+    for (i = 0; i < gSpecialVar_0x8005 && count < ARRAY_COUNT(missing); i++)
+    {
+        u16 item = gSpecialVar_0x8004 + i;
+        if (!CheckBagHasItem(item, 1) && !CheckPCHasItem(item, 1))
+            missing[count++] = item;
+    }
+    gSpecialVar_Result = count == 0 ? ITEM_NONE : missing[Random() % count];
 }

@@ -40,8 +40,8 @@ JOHTO_TRADE_SOURCES = (
         "Goldenrod Dept Store",
     ),
     (
-        "OlivineCity_House1",
-        "OlivineCity_House1",
+        "OlivineCity_House3",
+        "OlivineCity_House3",
         "INGAME_TRADE_VOLTORB",
         "Olivine City",
     ),

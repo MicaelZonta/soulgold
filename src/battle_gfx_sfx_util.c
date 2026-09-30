@@ -729,9 +729,98 @@ void BattleGfxSfxDummy2(u16 species)
 {
 }
 
+// SoulGold: front pic grande (80x80). O hardware desenha no maximo 64x64 por
+// OAM, entao o sprite e montado com 6 subsprites. O quadro comeca na mesma
+// altura dos 64x64 (32 px acima do centro) e sobra 16 px para baixo, para a
+// cabeca nunca cortar no topo da tela.
+#define LARGE_PIC_LEFT  (-TRAINER_PIC_LARGE_WIDTH / 2)
+#define LARGE_PIC_TOP   (-TRAINER_PIC_HEIGHT / 2)
+
+static const struct Subsprite sSubsprites_LargeTrainerFrontPic[] =
+{
+    {.x = LARGE_PIC_LEFT,      .y = LARGE_PIC_TOP,      .shape = SPRITE_SHAPE(64x64), .size = SPRITE_SIZE(64x64), .tileOffset = 0},
+    {.x = LARGE_PIC_LEFT + 64, .y = LARGE_PIC_TOP,      .shape = SPRITE_SHAPE(16x32), .size = SPRITE_SIZE(16x32), .tileOffset = 64},
+    {.x = LARGE_PIC_LEFT + 64, .y = LARGE_PIC_TOP + 32, .shape = SPRITE_SHAPE(16x32), .size = SPRITE_SIZE(16x32), .tileOffset = 72},
+    {.x = LARGE_PIC_LEFT,      .y = LARGE_PIC_TOP + 64, .shape = SPRITE_SHAPE(32x16), .size = SPRITE_SIZE(32x16), .tileOffset = 80},
+    {.x = LARGE_PIC_LEFT + 32, .y = LARGE_PIC_TOP + 64, .shape = SPRITE_SHAPE(32x16), .size = SPRITE_SIZE(32x16), .tileOffset = 88},
+    {.x = LARGE_PIC_LEFT + 64, .y = LARGE_PIC_TOP + 64, .shape = SPRITE_SHAPE(16x16), .size = SPRITE_SIZE(16x16), .tileOffset = 96},
+};
+
+static const struct SubspriteTable sSubspriteTable_LargeTrainerFrontPic[] =
+{
+    {ARRAY_COUNT(sSubsprites_LargeTrainerFrontPic), sSubsprites_LargeTrainerFrontPic},
+};
+
+// Sem affine: subsprites nao acompanham rotacao/escala.
+static const struct OamData sOamData_LargeTrainerFrontPic =
+{
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .shape = SPRITE_SHAPE(64x64),
+    .size = SPRITE_SIZE(64x64),
+    .priority = 2,
+};
+
+static EWRAM_DATA struct SpriteFrameImage sLargeTrainerFrameImages[MAX_BATTLERS_COUNT] = {0};
+
+bool32 IsLargeTrainerFrontPic(u16 frontPicId)
+{
+    return gTrainerSprites[frontPicId].largeFrontPic != NULL;
+}
+
+// O PNG 80x80 sai do gbagfx com os tiles em ordem de linha (10 por linha);
+// cada subsprite quer os seus tiles contiguos, na ordem da tabela acima.
+static void ArrangeLargeTrainerFrontPicTiles(const u8 *src, u8 *dest)
+{
+    u32 i, tx, ty;
+    const u32 tilesPerRow = TRAINER_PIC_LARGE_WIDTH / 8;
+
+    for (i = 0; i < ARRAY_COUNT(sSubsprites_LargeTrainerFrontPic); i++)
+    {
+        const struct Subsprite *subsprite = &sSubsprites_LargeTrainerFrontPic[i];
+        u32 col0 = (subsprite->x - LARGE_PIC_LEFT) / 8;
+        u32 row0 = (subsprite->y - LARGE_PIC_TOP) / 8;
+        u32 width = gOamDimensions[subsprite->shape][subsprite->size].width / 8;
+        u32 height = gOamDimensions[subsprite->shape][subsprite->size].height / 8;
+
+        for (ty = 0; ty < height; ty++)
+        {
+            for (tx = 0; tx < width; tx++)
+            {
+                CpuCopy32(&src[((row0 + ty) * tilesPerRow + col0 + tx) * TILE_SIZE_4BPP], dest, TILE_SIZE_4BPP);
+                dest += TILE_SIZE_4BPP;
+            }
+        }
+    }
+}
+
+void SetLargeTrainerFrontPicTemplate(struct SpriteTemplate *template, enum BattlerPosition position)
+{
+    sLargeTrainerFrameImages[position].data = gMonSpritesGfxPtr->spritesGfx[position];
+    sLargeTrainerFrameImages[position].size = TRAINER_PIC_LARGE_SIZE;
+    template->images = &sLargeTrainerFrameImages[position];
+    template->oam = &sOamData_LargeTrainerFrontPic;
+    template->affineAnims = gDummySpriteAffineAnimTable;
+}
+
+void SetLargeTrainerFrontPicSubsprites(u8 spriteId)
+{
+    SetSubspriteTables(&gSprites[spriteId], sSubspriteTable_LargeTrainerFrontPic);
+    gSprites[spriteId].subspriteMode = SUBSPRITES_IGNORE_PRIORITY;
+}
+
 void DecompressTrainerFrontPic(u16 frontPicId, enum BattlerId battler)
 {
     enum BattlerPosition position = GetBattlerPosition(battler);
+    if (IsLargeTrainerFrontPic(frontPicId))
+    {
+        struct SpritePalette palette = {gTrainerSprites[frontPicId].largePalette, gTrainerSprites[frontPicId].palette.tag};
+        // Descompacta na segunda metade do buffer (8 KB) e reordena para o inicio.
+        u8 *scratch = gMonSpritesGfxPtr->spritesGfx[position] + MON_PIC_SIZE * 2;
+        DecompressDataWithHeaderWram(gTrainerSprites[frontPicId].largeFrontPic, scratch);
+        ArrangeLargeTrainerFrontPicTiles(scratch, gMonSpritesGfxPtr->spritesGfx[position]);
+        TimeMixBattleSpritePalette(OBJ_PLTT_ID(LoadSpritePalette(&palette)));
+        return;
+    }
     DecompressPicFromTable(&gTrainerSprites[frontPicId].frontPic,
                            gMonSpritesGfxPtr->spritesGfx[position]);
     LoadSpritePalette(&gTrainerSprites[frontPicId].palette);

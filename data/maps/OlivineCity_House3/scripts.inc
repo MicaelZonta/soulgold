@@ -55,3 +55,50 @@ OlivineCity_Text_DontWantGoodRod:
 OlivineCity_Text_HaveGoodRod:
 	.string "How are things?\n"
 	.string "Did you land the big one?$"
+
+@ Voltorb in-game trade, moved here from OlivineCity_House1 when that house
+@ became Looker and Anabel's (Rift Missions). FLAG_OLIVINE_NPC_TRADE_COMPLETED
+@ is still the state of the trade, so an in-progress save keeps working.
+Olivine_VoltorbTrade::
+	lock
+	faceplayer
+	goto_if_set FLAG_OLIVINE_NPC_TRADE_COMPLETED, Olivine_VoltorbTrade_2
+	ingame_trade INGAME_TRADE_VOLTORB, Olivine_VoltorbTrade_Text_1, VoltorbTrade_Declined, VoltorbTrade_NotRequested, Olivine_VoltorbTrade_Text_2
+	setflag FLAG_OLIVINE_NPC_TRADE_COMPLETED
+Olivine_VoltorbTrade_1:
+	release
+	end
+
+Olivine_VoltorbTrade_2:
+	msgbox Olivine_VoltorbTrade_Text_0
+	goto Olivine_VoltorbTrade_1
+
+VoltorbTrade_Declined::
+	msgbox VoltorbTrade_Declined_Text_0
+	release
+	end
+
+VoltorbTrade_NotRequested::
+	msgbox VoltorbTrade_NotRequested_Text_0
+	release
+	end
+
+Olivine_VoltorbTrade_Text_0:
+	.string "Hi, how is my old Voltorb doing?$"
+
+Olivine_VoltorbTrade_Text_1:
+	.string "I collect Pokémon\n"
+	.string "Do you have a Mareanie?\l"
+	.string "Want to trade it for my\l"
+	.string "Hisuian Voltorb?$"
+
+Olivine_VoltorbTrade_Text_2:
+	.string "Yay! I got myself a Mareanie!\n"
+	.string "Voltorb, you take care!$"
+
+VoltorbTrade_Declined_Text_0:
+	.string "You don't want to trade? Aww...$"
+
+VoltorbTrade_NotRequested_Text_0:
+	.string "Uh, no, I don't think so.\n"
+	.string "That doesn't look like a Mareanie.$"

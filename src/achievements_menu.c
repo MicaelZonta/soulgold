@@ -8,6 +8,7 @@
 #include "international_string_util.h"
 #include "list_menu.h"
 #include "main.h"
+#include "malloc.h"
 #include "menu.h"
 #include "menu_helpers.h"
 #include "overworld.h"
@@ -94,9 +95,9 @@ EWRAM_DATA static struct SpriteTemplate sListBallIconTemplates[ACHIEVEMENTS_VISI
 EWRAM_DATA static u8 sListCursorAnimId = 0;
 EWRAM_DATA static s16 sListCursorY = 0;
 EWRAM_DATA static u8 sScrollIndicatorArrowPairId = 0;
-EWRAM_DATA static u16 sDetailTilemapBuffer[BG_SCREEN_SIZE / 2] = {};
-EWRAM_DATA static u16 sTextTilemapBuffer[BG_SCREEN_SIZE / 2] = {};
-EWRAM_DATA static u16 sMenuTilemapBuffer[BG_SCREEN_SIZE / 2] = {};
+EWRAM_DATA static u16 *sDetailTilemapBuffer = NULL;
+EWRAM_DATA static u16 *sTextTilemapBuffer = NULL;
+EWRAM_DATA static u16 *sMenuTilemapBuffer = NULL;
 EWRAM_DATA static MainCallback sExitCallback = NULL;
 
 static const u32 sBlankBgTile[8] = {};
@@ -275,9 +276,12 @@ void CB2_InitAchievementsMenuWithCallback(MainCallback callback)
     ResetVramOamAndBgCntRegs();
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
-    CpuFill16(0, sDetailTilemapBuffer, sizeof(sDetailTilemapBuffer));
-    CpuFill16(0, sTextTilemapBuffer, sizeof(sTextTilemapBuffer));
-    CpuFill16(0, sMenuTilemapBuffer, sizeof(sMenuTilemapBuffer));
+    sDetailTilemapBuffer = Alloc(BG_SCREEN_SIZE);
+    sTextTilemapBuffer = Alloc(BG_SCREEN_SIZE);
+    sMenuTilemapBuffer = Alloc(BG_SCREEN_SIZE);
+    CpuFill16(0, sDetailTilemapBuffer, BG_SCREEN_SIZE);
+    CpuFill16(0, sTextTilemapBuffer, BG_SCREEN_SIZE);
+    CpuFill16(0, sMenuTilemapBuffer, BG_SCREEN_SIZE);
     SetBgTilemapBuffer(BG_DETAIL, sDetailTilemapBuffer);
     SetBgTilemapBuffer(BG_TEXT, sTextTilemapBuffer);
     SetBgTilemapBuffer(BG_MENU, sMenuTilemapBuffer);
@@ -792,6 +796,9 @@ static void ExitAchievementsMenu(u8 taskId)
         ResetListCursorAnimation();
         DestroyListBallIcons();
         FreeAllWindowBuffers();
+        Free(sDetailTilemapBuffer);
+        Free(sTextTilemapBuffer);
+        Free(sMenuTilemapBuffer);
         SetMainCallback2(sExitCallback);
     }
 }

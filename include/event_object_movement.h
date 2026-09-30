@@ -9,6 +9,10 @@ struct ScriptContext;
 #error "OW_POKEMON_OBJECT_EVENTS needs to be TRUE in order for OW_BATTLE_ONLY_FORMS to work."
 #endif
 
+#if OW_BATTLE_ONLY_FORMS_NECROZMA_ULTRA && !OW_POKEMON_OBJECT_EVENTS
+#error "OW_POKEMON_OBJECT_EVENTS needs to be TRUE in order for OW_BATTLE_ONLY_FORMS_NECROZMA_ULTRA to work."
+#endif
+
 #if OW_POKEMON_OBJECT_EVENTS == FALSE && OW_FOLLOWERS_ENABLED == TRUE
 #error "OW_POKEMON_OBJECT_EVENTS needs to be TRUE in order for OW_FOLLOWERS_ENABLED to work."
 #endif
@@ -268,6 +272,7 @@ bool8 IsBerryTreeSparkling(u8 localId, u8 mapNum, u8 mapGroup);
 const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup);
 u8 TrySpawnObjectEventTemplate(const struct ObjectEventTemplate *objectEventTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY);
 bool8 GetFollowerInfo(u32 *species, bool32 *shiny, bool32 *female);
+bool32 IsFollowerMegaEnabled(void);
 const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(u32 species, bool32 shiny, bool32 female);
 u16 GetObjectEventFlagIdByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup);
 

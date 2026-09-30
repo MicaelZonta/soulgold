@@ -187,7 +187,7 @@
       "x": 18,
       "y": 10,
       "elevation": 0,
-      "item": "ITEM_ULTRA_BALL",
+      "item": "ITEM_POKE_BALL",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE26_ULTRA_BALL",
       "quantity": 1
     }

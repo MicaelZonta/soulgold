@@ -1,544 +1,568 @@
-# 1 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 2 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 3 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+@ ---------------------------------------------------------------------------
+@ Route30_MrPokemonsHouse staging notes (map-relative tile coords, 13x10 map)
+@
+@   collision grid (. = walkable, # = blocked)
+@        x 0 1 2 3 4 5 6 7 8 9 10
+@    y=2    . . . . . . . . . .  .
+@    y=3    . . . . . . . . . .  .
+@    y=4    . . . # # . . . # #  .     (3-4,4-5) table   (8-9,4) computer desk
+@    y=5    . . . # # . . . . .  .
+@    y=6    . . . . . . . . . .  .
+@    y=7    . . . . . . . . . .  .
+@    y=8    # . . . . . . . . .  #     door/warp at (5,8)
+@
+@   NPC home positions (map.json - do not move them there):
+@     Kukui  (7,5)   Oak (8,5)   Lillie (5,5) = chair east of the table
+@     Vulpix (4,6) = Lillie's Alolan Vulpix, out of its Poké Ball
+@   Scene anchor positions:
+@     player (7,6)   Lillie approach stop (6,6)   Oak talk stop (8,6)
+@     Vulpix stop (5,6), right behind Lillie
+@
+@ Per-visit scratch state (VAR_TEMP_* is cleared on every warp):
+@   VAR_TEMP_3 - battle outcome, copied right after GetBattleOutcome
+@   VAR_TEMP_5 - previous state of B_FLAG_NO_WHITEOUT
+@ ---------------------------------------------------------------------------
+
 Route30_MrPokemonsHouse_MapScripts::
-# 4 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, MrPokemonHouse_OnFrame
-# 5 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.byte 0
-# 6 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 7 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_OnFrame::
-# 8 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	map_script_2 VAR_CHERRYGROVE_CITY_STATE, 1, MrPokemonHouse_EventScript_GiveEgg
-# 9 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	.2byte 0
-# 10 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 11 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+@ Runs while VAR_CHERRYGROVE_CITY_STATE == 1. The battle with Lillie runs with
+@ B_FLAG_NO_WHITEOUT, so winning, losing, drawing or forfeiting all continue to
+@ the Mystery Egg and the Pokédex. The var only becomes 2 at the very end; a
+@ reset before that replays the whole scene from the top.
 MrPokemonHouse_EventScript_GiveEgg::
-# 12 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	lock
-# 13 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+
+	@ --- 1. Kukui (7,5) notices the player standing on the door tile (5,8) ---
 	playse SE_PIN
-# 14 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	applymovement LOCALID_MRPOKEMON, Common_Movement_ExclamationMark	
-# 15 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	delay 60
-# 16 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	turnobject LOCALID_MRPOKEMON, DIR_SOUTH
-# 17 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    createfieldmugshot MUGSHOT_GENTLEMAN
-# 18 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	applymovement LOCALID_ROUTE30_KUKUI, Common_Movement_ExclamationMark
+	waitmovement 0
+	delay 30
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_SOUTH
 	msgbox MrPokemonHouse_Text_Intro1, MSGBOX_DEFAULT
-# 19 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	closemessage
-# 20 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    removefieldmugshot
-# 21 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, MrPokemonHouse_Movement_MeetMrPokemon
-# 22 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	@ (5,8) -> (5,7) -> (5,6) -> (6,6) -> (7,6), facing Kukui
+	applymovement OBJ_EVENT_ID_PLAYER, MrPokemonHouse_Movement_PlayerToProfessors
 	waitmovement 0
-# 23 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    createfieldmugshot MUGSHOT_GENTLEMAN
-# 24 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+
+	@ --- 2. Kukui introduces himself, Oak (8,5) joins in right away ---
 	msgbox MrPokemonHouse_Text_Intro2, MSGBOX_DEFAULT
-# 25 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    removefieldmugshot
-# 26 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	giveitem ITEM_MYSTERY_EGG
-# 27 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	closemessage
+	turnobject LOCALID_ROUTE30_OAK, DIR_SOUTH
+	msgbox MrPokemonHouse_Text_OakGreeting, MSGBOX_DEFAULT
+	closemessage
 
-# 28 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    createfieldmugshot MUGSHOT_GENTLEMAN
-# 29 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	@ --- 3. Kukui explains the Egg, but hands nothing over yet ---
 	msgbox MrPokemonHouse_Text_Intro3, MSGBOX_DEFAULT
-# 30 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	closemessage
+
+	@ --- 4. Kukui turns west toward Lillie's chair and introduces her ---
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_WEST
 	msgbox MrPokemonHouse_Text_Intro4, MSGBOX_DEFAULT
-# 31 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    removefieldmugshot
-# 32 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	turnobject LOCALID_ROUTE30_OAK, DIR_WEST
-# 33 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    createfieldmugshot MUGSHOT_GENTLEMAN
-# 34 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	msgbox MrPokemonHouse_Text_Intro5, MSGBOX_DEFAULT
-# 35 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	closemessage
-# 36 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    removefieldmugshot
-# 37 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	playbgm MUS_HG_OAK, TRUE
-# 38 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	applymovement LOCALID_ROUTE30_OAK, MrPokemonHouse_Movement_OakToPlayer
-# 39 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	waitmovement 0 
-# 40 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-# 41 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    createfieldmugshot MUGSHOT_OAK
-# 42 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	msgbox MrPokemonHouse_Text_OakIntro, MSGBOX_DEFAULT
-# 43 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    removefieldmugshot
-# 44 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 45 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-
-# 46 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 47 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	message MrPokemonHouse_Text_GetDex
-# 48 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	waitfanfare
-# 49 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-
-# 50 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    createfieldmugshot MUGSHOT_OAK
-# 51 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	msgbox MrPokemonHouse_Text_OakParting MSGBOX_DEFAULT
-# 52 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	@ --- 5. Lillie answers from the chair ---
+	turnobject LOCALID_ROUTE30_LILLIE, DIR_EAST
+	msgbox MrPokemonHouse_Text_LillieAnswer, MSGBOX_DEFAULT
 	closemessage
-# 53 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    removefieldmugshot
-# 54 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	applymovement LOCALID_ROUTE30_OAK, MrPokemonHouse_Movement_OakLeave
-# 55 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	waitmovement 0
-# 56 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	playse SE_EXIT
-# 57 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	removeobject LOCALID_ROUTE30_OAK
-# 58 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	setflag FLAG_DELIVERED_EGG
-# 59 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	turnobject OBJ_EVENT_ID_PLAYER DIR_NORTH
-# 60 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	fadedefaultbgm
-# 61 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    createfieldmugshot MUGSHOT_GENTLEMAN
-# 62 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	msgbox MrPokemonHouse_Text_Heal, MSGBOX_DEFAULT
-# 63 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+
+	@ --- 6. Lillie leaves the chair: (5,5) -> (5,6) -> (6,6), beside the player ---
+	@ Vulpix trails one step behind: (4,6) -> (5,6), once Lillie has left it.
+	applymovement LOCALID_ROUTE30_LILLIE, MrPokemonHouse_Movement_LillieToPlayer
+	applymovement LOCALID_ROUTE30_VULPIX, MrPokemonHouse_Movement_VulpixToPlayer
+	waitmovement LOCALID_ROUTE30_LILLIE
+	waitmovement LOCALID_ROUTE30_VULPIX
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+
+	@ --- 7. Lillie's challenge ---
+	msgbox MrPokemonHouse_Text_LillieIntro, MSGBOX_DEFAULT
+	msgbox MrPokemonHouse_Text_LillieVulpix, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- 8. Oak comments on the match ---
+	turnobject LOCALID_ROUTE30_OAK, DIR_SOUTH
+	msgbox MrPokemonHouse_Text_OakBeforeBattle, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- 9. Kukui heals the party, then the battle starts ---
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_SOUTH
+	msgbox MrPokemonHouse_Text_KukuiBeforeBattle, MSGBOX_DEFAULT
+	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
-# 64 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	msgbox MrPokemonHouse_Text_DependingOnYou, MSGBOX_DEFAULT
-# 65 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	msgbox MrPokemonHouse_Text_LillieBeforeBattle, MSGBOX_DEFAULT
 	closemessage
-# 66 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-    removefieldmugshot
-# 67 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	applymovement LOCALID_MRPOKEMON, MrPokemonHouse_Movement_MrPokemon_Leave
-# 68 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	waitmovement 0
-# 69 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	removeobject LOCALID_MRPOKEMON
-# 70 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	clearflag FLAG_HIDE_MRPOKEMON
-# 71 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	addobject LOCALID_MRPOKEMON2
-# 72 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	
-# 73 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	setvar VAR_NEWBARKTOWN_LABSTATE, 4
-# 74 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	setflag FLAG_HIDE_SILVER_NEWBARKTOWN
-# 75 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	setflag FLAG_SYS_POKEDEX_GET
-# 76 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	setflag FLAG_DEXNAV_OBTAINED
-# 77 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	clearflag FLAG_HIDE_LAB_POLICEMAN
-# 78 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	setvar VAR_CHERRYGROVE_CITY_STATE, 2
-# 79 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	setrespawn HEAL_LOCATION_CHERRYGROVE_CITY
-# 80 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	clearflag FLAG_HIDE_SILVER_CHERRYGROVE
-# 81 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	setflag FLAG_HIDE_GUIDE_GENT_CHERRYGROVE
-# 82 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	clearflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT_HOUSE
-# 83 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	@ --- 10. Battle without blackout: every outcome continues the scene ---
+	checkflag B_FLAG_NO_WHITEOUT
+	copyvar VAR_TEMP_5, VAR_RESULT
+	setflag B_FLAG_NO_WHITEOUT
+	setvar VAR_LAST_TALKED, LOCALID_ROUTE30_LILLIE
+	removefieldmugshot
+	trainerbattle_no_intro TRAINER_LILLIE, MrPokemonHouse_Text_LillieDefeated
+	specialvar VAR_RESULT, GetBattleOutcome
+	copyvar VAR_TEMP_3, VAR_RESULT
+	goto_if_eq VAR_TEMP_5, TRUE, MrPokemonHouse_EventScript_KeepWhiteoutOff
+	clearflag B_FLAG_NO_WHITEOUT
+MrPokemonHouse_EventScript_KeepWhiteoutOff::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_WON, MrPokemonHouse_EventScript_LilliePlayerWon
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_LOST, MrPokemonHouse_EventScript_LilliePlayerLost
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_DREW, MrPokemonHouse_EventScript_LillieDraw
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_FORFEITED, MrPokemonHouse_EventScript_LillieForfeit
+	goto MrPokemonHouse_EventScript_LillieUnexpectedOutcome
 
-# 84 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	release
-# 85 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	end
-# 86 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-
-# 87 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_EventScript_MrPokemon::
-# 88 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	lock
-# 89 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	faceplayer
-# 90 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	checkitem ITEM_RED_SCALE
-# 91 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, MrPokemonHouse_EventScript_MrPokemon_RedScale
-# 92 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	msgbox MrPokemonHouse_Text_AlwaysNewDiscoveries, MSGBOX_DEFAULT
-# 93 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+@ B_OUTCOME_WON: MrPokemonHouse_Text_LillieDefeated already played in battle.
+MrPokemonHouse_EventScript_LilliePlayerWon::
+	msgbox MrPokemonHouse_Text_LillieAfterBattle, MSGBOX_DEFAULT
 	closemessage
-# 94 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	release
-# 95 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	end
-# 96 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	goto MrPokemonHouse_EventScript_AfterBattle
 
-# 97 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_EventScript_MrPokemon_RedScale::
-# 98 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	msgbox MrPokemonHouse_Text_GimmeTheScale, MSGBOX_YESNO
-# 99 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, MrPokemonHouse_EventScript_MrPokemon_RedScale_Accepted
-# 100 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	msgbox MrPokemonHouse_Text_Disappointed, MSGBOX_DEFAULT
-# 101 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_EventScript_LilliePlayerLost::
+	msgbox MrPokemonHouse_Text_LillieWon, MSGBOX_DEFAULT
 	closemessage
-# 102 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	release
-# 103 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	end	
-# 104 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	goto MrPokemonHouse_EventScript_AfterBattle
 
-# 105 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_EventScript_MrPokemon_RedScale_Accepted::
-# 106 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	removeitem ITEM_RED_SCALE
-# 107 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	giveitem ITEM_FAIRYTITE
-# 108 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_EventScript_LillieDraw::
+	msgbox MrPokemonHouse_Text_LillieDraw, MSGBOX_DEFAULT
+	closemessage
+	goto MrPokemonHouse_EventScript_AfterBattle
+
+MrPokemonHouse_EventScript_LillieForfeit::
+	msgbox MrPokemonHouse_Text_LillieForfeit, MSGBOX_DEFAULT
+	closemessage
+	goto MrPokemonHouse_EventScript_AfterBattle
+
+@ Should not happen in a trainer battle. It is not treated as a win; the scene
+@ still continues so the ON_FRAME trigger can never re-run it half-staged.
+MrPokemonHouse_EventScript_LillieUnexpectedOutcome::
+	msgbox MrPokemonHouse_Text_LillieUnexpectedOutcome, MSGBOX_DEFAULT
+	closemessage
+
+	@ --- 11. Kukui wraps up the battle and hands over the Mystery Egg ---
+MrPokemonHouse_EventScript_AfterBattle::
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox MrPokemonHouse_Text_KukuiAfterBattle, MSGBOX_DEFAULT
+	msgbox MrPokemonHouse_Text_KukuiGiveEgg, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_MYSTERY_EGG
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-# 109 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+
+	@ --- 12. Oak steps down to (8,6) so he is next to the player at (7,6) ---
+	playbgm MUS_HG_OAK, TRUE
+	applymovement LOCALID_ROUTE30_OAK, MrPokemonHouse_Movement_OakToPlayer
+	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	createfieldmugshot MUGSHOT_OAK
+	msgbox MrPokemonHouse_Text_OakIntro, MSGBOX_DEFAULT
+	closemessage
+	removefieldmugshot
+
+	playfanfare MUS_OBTAIN_ITEM
+	message MrPokemonHouse_Text_GetDex
+	waitfanfare
+	closemessage
+	setflag FLAG_SYS_POKEDEX_GET
+	setflag FLAG_DEXNAV_OBTAINED
+
+	@ --- 13. Oak says goodbye and walks out: (8,6) -> (8,7) -> (5,7) -> (5,8) ---
+	createfieldmugshot MUGSHOT_OAK
+	msgbox MrPokemonHouse_Text_OakParting, MSGBOX_DEFAULT
+	closemessage
+	removefieldmugshot
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_EAST
+	msgbox MrPokemonHouse_Text_KukuiOakParting, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ROUTE30_OAK, MrPokemonHouse_Movement_OakLeave
+	waitmovement 0
+	playse SE_EXIT
+	removeobject LOCALID_ROUTE30_OAK
+	fadedefaultbgm
+
+	@ --- 14. Lillie and Vulpix leave together ---
+	@ Vulpix leads: (5,6) -> (5,7) -> door (5,8).
+	@ Lillie follows: (6,6) -> (6,7) -> (5,7), right behind her.
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	msgbox MrPokemonHouse_Text_LillieParting, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ROUTE30_VULPIX, MrPokemonHouse_Movement_VulpixLeave
+	applymovement LOCALID_ROUTE30_LILLIE, MrPokemonHouse_Movement_LillieLeave
+	waitmovement LOCALID_ROUTE30_VULPIX
+	waitmovement LOCALID_ROUTE30_LILLIE
+	playse SE_EXIT
+	removeobject LOCALID_ROUTE30_VULPIX
+	removeobject LOCALID_ROUTE30_LILLIE
+
+	@ --- 15. Kukui stays at (7,5), heals the party and sends the player off ---
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_SOUTH
+	msgbox MrPokemonHouse_Text_Heal, MSGBOX_DEFAULT
+	closemessage
+	call Common_EventScript_OutOfCenterPartyHeal
+	msgbox MrPokemonHouse_Text_DependingOnYou, MSGBOX_DEFAULT
+	closemessage
+
+	setflag FLAG_DELIVERED_EGG
+	setvar VAR_NEWBARKTOWN_LABSTATE, 4
+	setflag FLAG_HIDE_SILVER_NEWBARKTOWN
+	clearflag FLAG_HIDE_LAB_POLICEMAN
+	setrespawn HEAL_LOCATION_CHERRYGROVE_CITY
+	clearflag FLAG_HIDE_SILVER_CHERRYGROVE
+	setflag FLAG_HIDE_GUIDE_GENT_CHERRYGROVE
+	clearflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT_HOUSE
+	setvar VAR_CHERRYGROVE_CITY_STATE, 2
+
 	release
-# 110 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	end
-# 111 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 112 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_EventScript_Kukui::
+	lock
+	faceplayer
+	checkitem ITEM_RED_SCALE
+	goto_if_eq VAR_RESULT, TRUE, MrPokemonHouse_EventScript_Kukui_RedScale
+	msgbox MrPokemonHouse_Text_AlwaysNewDiscoveries, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
 
-# 113 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_EventScript_Kukui_RedScale::
+	msgbox MrPokemonHouse_Text_GimmeTheScale, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, TRUE, MrPokemonHouse_EventScript_Kukui_RedScale_Accepted
+	msgbox MrPokemonHouse_Text_Disappointed, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+MrPokemonHouse_EventScript_Kukui_RedScale_Accepted::
+	giveitem ITEM_FAIRYTITE
+	goto_if_eq VAR_RESULT, FALSE, MrPokemonHouse_EventScript_Kukui_RedScale_NoRoom
+	removeitem ITEM_RED_SCALE
+	msgbox MrPokemonHouse_Text_ScaleAccepted, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+MrPokemonHouse_EventScript_Kukui_RedScale_NoRoom::
+	msgbox MrPokemonHouse_Text_ScaleBagFull, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
 MrPokemonHouse_EventScript_Computer::
-# 114 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	lock
-# 115 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	msgbox MrPokemonHouse_Text_BrokenComputer, MSGBOX_SIGN
-# 116 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	release
-# 117 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	end
-# 118 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 119 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_EventScript_Magazine::
-# 120 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	lock
-# 121 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	msgbox MrPokemonHouse_Text_ForeignMagazines, MSGBOX_SIGN
-# 122 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	release
-# 123 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	end
-# 124 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 125 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_EventScript_Coins::
-# 126 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	lock
-# 127 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	msgbox MrPokemonHouse_Text_StrangeCoins, MSGBOX_SIGN
-# 128 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	release
-# 129 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	end
-# 130 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 131 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_Movement_MeetMrPokemon:
-# 132 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+@ Player: door (5,8) -> (5,7) -> (5,6) -> (6,6) -> (7,6), facing Kukui at (7,5).
+@ (7,6) leaves (6,6) free for Lillie and (8,6) free for Oak.
+MrPokemonHouse_Movement_PlayerToProfessors:
 	walk_up
-# 133 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	walk_up
-# 134 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	walk_right
-# 135 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	walk_right
-# 136 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	face_up
-# 137 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	step_end
-# 138 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 139 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+@ Lillie: chair (5,5) -> (5,6) -> (6,6), facing the player at (7,6).
+@ Skirts the table, whose blocked tiles are (3,4) (4,4) (3,5) (4,5).
+MrPokemonHouse_Movement_LillieToPlayer:
+	walk_down
+	walk_right
+	face_right
+	step_end
+
+@ Vulpix: (4,6) waits one step, then -> (5,6) once Lillie has moved on to (6,6).
+MrPokemonHouse_Movement_VulpixToPlayer:
+	delay_16
+	walk_right
+	face_right
+	step_end
+
+@ Oak: (8,5) -> (8,6), facing the player at (7,6).
 MrPokemonHouse_Movement_OakToPlayer:
-# 140 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	walk_down
-# 141 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	face_left
-# 142 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	step_end
-# 143 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 144 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+@ Oak: (8,6) -> (8,7) -> (7,7) -> (6,7) -> (5,7) -> door (5,8).
 MrPokemonHouse_Movement_OakLeave:
-# 145 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	walk_down
-# 146 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	walk_left
-# 147 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	walk_left
-# 148 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	walk_left
-# 149 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	walk_down
-# 150 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	walk_in_place_down
-# 151 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 	step_end
-# 152 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 153 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_Movement_MrPokemon_Leave:
-# 154 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	walk_up
-# 155 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	walk_left
-# 156 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	walk_left
-# 157 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+@ Vulpix: (5,6) -> (5,7) -> door (5,8).
+MrPokemonHouse_Movement_VulpixLeave:
+	walk_down
+	walk_down
+	walk_in_place_down
 	step_end
-# 158 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 
-# 159 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+@ Lillie: (6,6) -> (6,7) -> (5,7), stopping behind Vulpix on the door tile.
+MrPokemonHouse_Movement_LillieLeave:
+	walk_down
+	walk_left
+	walk_in_place_down
+	step_end
+
 MrPokemonHouse_Text_Intro1:
-# 160 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Hello, hello! You must be\n"
-# 161 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "{PLAYER}.\p"
-# 162 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Prof. Elm said that you would\n"
-# 163 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "visit.$"
-# 164 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Alola! You're {PLAYER},\n"
+	.string "right? Elm said you'd come!\p"
+	.string "Come in! We've got quite a\n"
+	.string "little gathering here today.$"
 
-# 165 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Intro2:
-# 166 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "This is what I want Prof. Elm\n"
-# 167 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "to examine.$"
-# 168 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}I'm Professor Kukui.\n"
+	.string "I study Pokémon moves in Alola!\p"
+	.string "I was traveling through Kanto\n"
+	.string "when I heard about Johto.\p"
+	.string "Apparently, some Pokémon from\n"
+	.string "Alola have been appearing here!\p"
+	.string "I had to see that for myself.\n"
+	.string "I've been working from this house.$"
 
-# 169 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_Text_GotEgg:
-# 170 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "{PLAYER} received Mystery Egg.$"
-# 171 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_Text_OakGreeting:
+	.string "{SPEAKER NAME_OAK}Ah, you must be {PLAYER}!\n"
+	.string "Elm told us you were coming.$"
 
-# 172 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Intro3:
-# 173 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I know a couple who run a\n"
-# 174 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Pokémon Day-Care service.\p"
-# 175 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "They gave me that Egg.\p"
-# 176 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I was intrigued, so I sent\n"
-# 177 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "mail to Prof. Elm.\p"
-# 178 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "For Pokémon evolution,\n"
-# 179 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Prof. Elm is the authority.$"
-# 180 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}A couple who run a\n"
+	.string "Day-Care gave me an unusual Egg.\p"
+	.string "I contacted Elm right away.\n"
+	.string "He knows much more about Eggs!\p"
+	.string "I'd like you to take it to him.\n"
+	.string "But first, introductions!$"
 
-# 181 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-
-# 182 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Intro4:
-# 183 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Even Prof. Oak here recognizes\n"
-# 184 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "that.$"
-# 185 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}And this is Lillie.\n"
+	.string "She's visiting from Alola too!$"
 
-# 186 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Intro5:
-# 187 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "If my assumption is correct,\n"
-# 188 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Prof. Elm will know it.$"
-# 189 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Lillie, weren't you\n"
+	.string "looking for a training partner?$"
 
-# 190 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_Text_Heal:
-# 191 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "You are returning to Prof. Elm?\p"
-# 192 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Here. Your Pokémon should have\n"
-# 193 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "some rest.$"
-# 194 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_Text_LillieAnswer:
+	.string "{SPEAKER NAME_LILLIE}Oh! Yes, Professor.\n"
+	.string "Just a moment!$"
 
-# 195 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_Text_DependingOnYou:
-# 196 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I'm depending on you!$"
-# 197 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_Text_LillieIntro:
+	.string "{SPEAKER NAME_LILLIE}Yes! Though I wasn't\n"
+	.string "expecting to meet one so soon.\p"
+	.string "It's nice to meet you, {PLAYER}.\n"
+	.string "I'm traveling with my mother.\p"
+	.string "I've started training Pokémon,\n"
+	.string "and there's so much to learn.\p"
+	.string "Would you battle me?\n"
+	.string "Vulpix and I have been practicing!$"
 
-# 198 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_Text_AlwaysNewDiscoveries:
-# 199 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Life is delightful!\n"
-# 200 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Always, new discoveries to be made.$"
-# 201 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_Text_LillieVulpix:
+	.string "{SPEAKER NAME_LILLIE}My Vulpix is from Alola.\n"
+	.string "That's why her fur is white.\p"
+	.string "People here keep asking about it.\n"
+	.string "She seems quite pleased!$"
 
-# 202 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_Text_OakBeforeBattle:
+	.string "{SPEAKER NAME_OAK}A battle? An excellent chance\n"
+	.string "to see how you work together!$"
+
+MrPokemonHouse_Text_KukuiBeforeBattle:
+	.string "{SPEAKER NAME_KUKUI}Let's get your partner\n"
+	.string "rested before we begin.\p"
+	.string "You walked all the way from\n"
+	.string "Elm's lab, after all!$"
+
+MrPokemonHouse_Text_LillieBeforeBattle:
+	.string "{SPEAKER NAME_LILLIE}All right, Vulpix.\n"
+	.string "Let's do this together!$"
+
+MrPokemonHouse_Text_LillieDefeated:
+	.string "{SPEAKER NAME_LILLIE}We did our best, Vulpix.\n"
+	.string "Thank you!$"
+
+MrPokemonHouse_Text_LillieAfterBattle:
+	.string "{SPEAKER NAME_LILLIE}Oh! You changed your\n"
+	.string "approach before I noticed.\p"
+	.string "I was so busy thinking about\n"
+	.string "our next move…\p"
+	.string "I need to watch our opponent\n"
+	.string "more carefully too.\p"
+	.string "Thank you, {PLAYER}.\n"
+	.string "I'm glad I asked!$"
+
+MrPokemonHouse_Text_LillieWon:
+	.string "{SPEAKER NAME_LILLIE}We… we won?\n"
+	.string "Vulpix, we actually won!\p"
+	.string "Oh! I'm sorry, {PLAYER}.\n"
+	.string "I'm just so happy for her!\p"
+	.string "Your Pokémon never gave up\n"
+	.string "on you, not even once.\p"
+	.string "Thank you. I'm glad I asked!$"
+
+MrPokemonHouse_Text_LillieDraw:
+	.string "{SPEAKER NAME_LILLIE}Both of them at once?\n"
+	.string "Then it's a draw!\p"
+	.string "We'll have to settle it\n"
+	.string "another time, {PLAYER}.$"
+
+MrPokemonHouse_Text_LillieForfeit:
+	.string "{SPEAKER NAME_LILLIE}Oh… We're stopping here?\p"
+	.string "That's all right. Knowing when\n"
+	.string "to rest is important too.$"
+
+MrPokemonHouse_Text_LillieUnexpectedOutcome:
+	.string "{SPEAKER NAME_LILLIE}Thank you for battling\n"
+	.string "with us, {PLAYER}!$"
+
+MrPokemonHouse_Text_KukuiAfterBattle:
+	.string "{SPEAKER NAME_KUKUI}There's a lesson you\n"
+	.string "won't find in a notebook!\p"
+	.string "Knowing a move is one thing.\n"
+	.string "Finding its moment takes practice.\p"
+	.string "You both gave your partners\n"
+	.string "something to be proud of!$"
+
+MrPokemonHouse_Text_LillieRematch:
+	.string "{SPEAKER NAME_LILLIE}Shall we try again?\n"
+	.string "We'll be ready when you are.$"
+
+MrPokemonHouse_Text_KukuiGiveEgg:
+	.string "{SPEAKER NAME_KUKUI}Now, about Elm's errand!\p"
+	.string "Please take this Egg to him.\n"
+	.string "I'd like to hear what he thinks.$"
+
 MrPokemonHouse_Text_OakIntro:
-# 203 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Oak: Aha! So you're {PLAYER}!\p"
-# 204 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I'm Oak! A Pokémon researcher.\p"
-# 205 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I was just visiting my old friend\n"
-# 206 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Mr. Pokémon.\p"
-# 207 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I heard you were running an errand\n"
-# 208 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "for Prof. Elm, so I waited here.\p"
-# 209 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Oh! What's this? A rare Pokémon!\p"
-# 210 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Let's see…\n"
-# 211 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Hm, I see!\p"
-# 212 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I understand why Prof. Elm gave\n"
-# 213 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "you a Pokémon for this errand.\p"
-# 214 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "To researchers like Prof. Elm and\n"
-# 215 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I, Pokémon are our friends.\p"
-# 216 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "He saw that you would treat your\n"
-# 217 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Pokémon with love and care.\p"
-# 218 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "…Ah!\p"
-# 219 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "You seem to be dependable. How\n"
-# 220 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "would you like to help me out?\p"
-# 221 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "See? This is the latest version of\n"
-# 222 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "the Pokédex.\p"
-# 223 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "It automatically records data on\n"
-# 224 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Pokémon you've seen or caught.\p"
-# 225 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "It's a hi-tech encyclopedia!\p"
-# 226 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "It shows their habitats, how\n"
-# 227 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "they evolve, and their moves.$"
-# 228 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "{SPEAKER NAME_OAK}That was worth staying for!\p"
+	.string "I came to hear Kukui's findings,\n"
+	.string "but you've given me another idea.\p"
+	.string "You paid close attention to\n"
+	.string "your Pokémon during that battle.\p"
+	.string "That same care will serve you\n"
+	.string "well on a journey of discovery.\p"
+	.string "I'd like you to take a Pokédex.\p"
+	.string "It records the Pokémon you see\n"
+	.string "and catch during your travels.\p"
+	.string "You can look up their habitats,\n"
+	.string "evolutions, and moves as well.\p"
+	.string "Johto still has surprises for us.\n"
+	.string "Help us discover them!$"
 
-# 229 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_GetDex:
-# 230 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "{PLAYER} received Pokédex!$"
-# 231 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "{PLAYER} received the Pokédex!$"
 
-# 232 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_OakParting:
-# 233 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Go meet many kinds of Pokémon and\n"
-# 234 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "complete that Pokédex!\p"
-# 235 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "But I've stayed too long.\p"
-# 236 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I have to get to Goldenrod\n"
-# 237 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "for my usual radio show.\p"
-# 238 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "{PLAYER}, I'm counting on you!$"
-# 239 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "{SPEAKER NAME_OAK}Take your time to observe\n"
+	.string "the Pokémon you meet, {PLAYER}.\p"
+	.string "Even a familiar species may\n"
+	.string "have something new to teach you!\p"
+	.string "Now I must leave for Goldenrod.\n"
+	.string "My radio audience is waiting!\p"
+	.string "Kukui, keep those notes coming.\n"
+	.string "And good luck to both of you!$"
 
-# 240 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_Text_KukuiOakParting:
+	.string "{SPEAKER NAME_KUKUI}Count on it, Professor!\n"
+	.string "Have a good trip!$"
+
+MrPokemonHouse_Text_LillieParting:
+	.string "{SPEAKER NAME_LILLIE}I should be going too.\n"
+	.string "My mother is waiting for me.\p"
+	.string "I told her I'd only stop by\n"
+	.string "to see Professor Kukui.\p"
+	.string "Now I have a battle to tell\n"
+	.string "her about!\p"
+	.string "Let's meet again, {PLAYER}.\n"
+	.string "We'll have more to show you then.\p"
+	.string "Come along, Vulpix!$"
+
+MrPokemonHouse_Text_Heal:
+	.string "{SPEAKER NAME_KUKUI}Before you head out,\n"
+	.string "let me take care of your Pokémon.\p"
+	.string "A good rest is part of\n"
+	.string "good training!$"
+
+MrPokemonHouse_Text_DependingOnYou:
+	.string "{SPEAKER NAME_KUKUI}I'll stay here and\n"
+	.string "keep working on my research.\p"
+	.string "Give Elm my regards!\n"
+	.string "And drop by whenever you like.$"
+
+MrPokemonHouse_Text_AlwaysNewDiscoveries:
+	.string "{SPEAKER NAME_KUKUI}Alola, {PLAYER}!\n"
+	.string "How's the journey going?\p"
+	.string "I've been comparing Pokémon\n"
+	.string "from Johto with those back home.\p"
+	.string "Different surroundings can mean\n"
+	.string "a very different way of living.\p"
+	.string "Sometimes even a different type!\n"
+	.string "There's always more to learn.$"
+
 MrPokemonHouse_Text_GimmeTheScale:
-# 241 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Hm? That Scale! What's that?\n"
-# 242 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "A red Gyarados?\p"
-# 243 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "That's rare! I, I want it…\p"
-# 244 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "{PLAYER}, would you care to\n"
-# 245 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "trade it?\p"
-# 246 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I can offer this Mega Stone\n"
-# 247 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "that I got from Prof. Oak.$"
-# 248 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}Hold on. That red scale…\n"
+	.string "Did it come from a Gyarados?\p"
+	.string "Now that's something I'd love\n"
+	.string "to examine up close!\p"
+	.string "Would you trade it for a\n"
+	.string "Mega Stone Oak left with me?\p"
+	.string "You could put it to good use,\n"
+	.string "and I could study that scale!$"
 
-# 249 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_Disappointed:
-# 250 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "That's disappointing.\n"
-# 251 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "That happens to be very rare.$"
-# 252 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KUKUI}No problem!\n"
+	.string "It's quite a keepsake.\p"
+	.string "If you change your mind,\n"
+	.string "you know where to find me!$"
 
-# 253 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_Text_ExpShare:
-# 254 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "I also have a special item\n"
-# 255 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "for you.$"
-# 256 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_Text_ScaleAccepted:
+	.string "{SPEAKER NAME_KUKUI}Thanks, {PLAYER}!\n"
+	.string "I'll take good care of it.\p"
+	.string "A whole research project,\n"
+	.string "right in the palm of my hand!$"
 
-# 257 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+MrPokemonHouse_Text_ScaleBagFull:
+	.string "{SPEAKER NAME_KUKUI}Make room for the stone\n"
+	.string "first, and we'll make the trade.\p"
+	.string "Keep your scale until then!$"
+
 MrPokemonHouse_Text_ForeignMagazines:
-# 258 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "It's packed with foreign\n"
-# 259 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "magazines.\p"
-# 260 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Can't even read their titles…$"
-# 261 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "Research journals from Alola\n"
+	.string "cover the shelves.\p"
+	.string "One article compares Vulpix\n"
+	.string "from different regions.\p"
+	.string "Kukui has filled the margins\n"
+	.string "with handwritten questions.$"
 
-# 262 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_BrokenComputer:
-# 263 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "It's a big computer.\n"
-# 264 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Hmm. It's broken.$"
-# 265 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
+	.string "A computer displays a map\n"
+	.string "of Johto beside a map of Alola.\p"
+	.string "An unfinished report is open:\n"
+	.string "“Regional Forms in Johto.”\p"
+	.string "There are more questions\n"
+	.string "than answers so far.$"
 
-# 266 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
 MrPokemonHouse_Text_StrangeCoins:
-# 267 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "A whole pile of strange coins!\p"
-# 268 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "Maybe they're from another\n"
-# 269 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "country…$"
-# 270 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-
-# 271 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-MrPokemonHouse_Text_GotExpShare:
-# 272 "data/maps/Route30_MrPokemonsHouse/scripts.pory"
-	.string "{PLAYER} received Eviolite!$"
+	.string "A collection of travel souvenirs\n"
+	.string "is spread across the table.\p"
+	.string "Tickets, coins, and a photograph\n"
+	.string "of a beach in Alola.$"

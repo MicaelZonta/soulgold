@@ -36,7 +36,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewBarkTown_EventScript_FatMan",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FR_LASS",
@@ -49,7 +49,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewBarkTown_EventScript_Lass",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SILVER",
@@ -75,7 +75,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewBarkTown_EventScript_Wooper",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -88,7 +88,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -101,7 +101,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -114,7 +114,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -127,7 +127,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_EVENT_ULTRABEAST_NEWBARK"
     },
     {
       "local_id": "LOCALID_NEWBARK_MARILL",
@@ -222,6 +222,300 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_NIGHT_POKEMON"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_LOOKER",
+      "graphics_id": "OBJ_EVENT_GFX_LOOKER",
+      "x": 21,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBLooker",
+      "flag": "FLAG_TEMP_7"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_ANABEL",
+      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
+      "x": 22,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBAnabel",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_MOM",
+      "graphics_id": "OBJ_EVENT_GFX_MOM",
+      "x": 21,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBMom",
+      "flag": "FLAG_TEMP_4"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_RIVAL",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 11,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBRival",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_AZUMARILL",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(AZUMARILL)",
+      "x": 12,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_ELM",
+      "graphics_id": "OBJ_EVENT_GFX_PROF_ELM",
+      "x": 11,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBElm",
+      "flag": "FLAG_TEMP_3"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_LUSAMINE",
+      "graphics_id": "OBJ_EVENT_GFX_LUSAMINE",
+      "x": 13,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_EventScript_UBLusamine",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_KARTANA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KARTANA)",
+      "x": 14,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_GUZZLORD",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GUZZLORD)",
+      "x": 21,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_NIHILEGO",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NIHILEGO)",
+      "x": 13,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_2"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_NECROZMA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NECROZMA)",
+      "x": 16,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_5"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_ULTRA_NECROZMA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NECROZMA_ULTRA)",
+      "x": 16,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_6"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_SNORLAX",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SNORLAX)",
+      "x": 20,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_8"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_MILOTIC",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MILOTIC)",
+      "x": 15,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_9"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_EMITTER_WEST",
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_EMITTER",
+      "x": 12,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_A"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_EMITTER_EAST",
+      "graphics_id": "OBJ_EVENT_GFX_AETHER_EMITTER",
+      "x": 22,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_A"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_RIFT",
+      "graphics_id": "OBJ_EVENT_GFX_ALTAR_RIFT",
+      "x": 17,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_B"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_COSMOG",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(COSMOG)",
+      "x": 17,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_C"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_COSMOEM",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(COSMOEM)",
+      "x": 17,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_C"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_SOLGALEO",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SOLGALEO)",
+      "x": 17,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_C"
+    },
+    {
+      "local_id": "LOCALID_NEWBARK_UB_LUNALA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LUNALA)",
+      "x": 17,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_C"
     }
   ],
   "warp_events": [

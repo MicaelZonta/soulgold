@@ -8,6 +8,7 @@
 #include "battle_anim.h"
 #include "battle_controllers.h"
 #include "battle_dome.h"
+#include "battle_gfx_sfx_util.h"
 #include "battle_message.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -863,6 +864,7 @@ static const s8 sFriendshipEventModifiers[][3] =
     [FRIENDSHIP_EVENT_FAINT_SMALL]     = {-1, -1, -1},
     [FRIENDSHIP_EVENT_FAINT_FIELD_PSN] = {-5, -5, -10},
     [FRIENDSHIP_EVENT_FAINT_LARGE]     = {-5, -5, -10},
+    [FRIENDSHIP_EVENT_GROOMING]        = { 5,  3,  2},
 };
 
 static const struct SpeciesItem sAlteringCaveWildMonHeldItems[] =
@@ -1043,6 +1045,28 @@ u32 GetCurrentShinyOdds(void)
     return SHINY_ODDS;
 }
 
+enum ShinyRateOption GetShinyRateOption(void)
+{
+    u32 selection = VarGet(VAR_SHINY_RATE);
+    return selection >= SHINY_RATE_256 && selection < SHINY_RATE_COUNT ? selection : SHINY_RATE_256;
+}
+
+u32 GetShinyGenerationOdds(void)
+{
+    switch (GetShinyRateOption())
+    {
+    case SHINY_RATE_256: return 256;
+    case SHINY_RATE_512: return 128;
+    case SHINY_RATE_1024: return 64;
+    default: return 256;
+    }
+}
+
+u32 GetTradeShinyGenerationOdds(void)
+{
+    return 12 * GetShinyGenerationOdds();
+}
+
 void CreateMonWithIVs(struct Pokemon *mon, u16 species, u8 level, u32 personality, struct OriginalTrainerId trainerId, u8 fixedIV)
 {
     CreateMon(mon, species, level, personality, trainerId);
@@ -1123,7 +1147,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u32 personal
 {
     u8 speciesName[POKEMON_NAME_LENGTH + 1];
     u32 value;
-    u32 shinyOdds = GetCurrentShinyOdds();
+    u32 shinyOdds = GetShinyGenerationOdds();
     bool32 isShiny;
 
     ZeroBoxMonData(boxMon);
@@ -2079,6 +2103,8 @@ void SetMultiuseSpriteTemplateToTrainerFront(enum TrainerPicID trainerPicId, enu
 
     gMultiuseSpriteTemplate.paletteTag = trainerPicId;
     gMultiuseSpriteTemplate.anims = gAnims_Trainer;
+    if (gMonSpritesGfxPtr != NULL && IsLargeTrainerFrontPic(trainerPicId))
+        SetLargeTrainerFrontPicTemplate(&gMultiuseSpriteTemplate, battlerPosition);
 }
 
 /* GameFreak called GetMonData with either 2 or 3 arguments, for type
@@ -5158,6 +5184,17 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
         }
     }
 
+    if (CheckMonHasHadPokerus(mon))
+        multiplier *= 2;
+    if (braceCount > 0)
+        multiplier *= braceCount + 1;
+
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        evs[i] = GetMonData(mon, MON_DATA_HP_EV + i, 0);
+        totalEVs += evs[i];
+    }
+
     for (j = 0; j < MAX_MON_ITEMS; j++)
     {
         heldItem = GetMonData(mon, MON_DATA_HELD_ITEM + j, 0);
@@ -5181,12 +5218,6 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
         stat = GetItemSecondaryId(heldItem);
         bonus = GetItemHoldEffectParam(heldItem);
 
-        for (i = 0; i < NUM_STATS; i++)
-        {
-            evs[i] = GetMonData(mon, MON_DATA_HP_EV + i, 0);
-            totalEVs += evs[i];
-        }
-        
         for (i = 0; i < NUM_STATS; i++)
         {
             evIncrease = 0;
@@ -5236,13 +5267,8 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
                 break;
             }
 
-            if (CheckMonHasHadPokerus(mon))
-                multiplier *= 2;
-
-            if (braceCount > 0)
-                multiplier *= braceCount + 1;
-             
-            evIncrease *= multiplier; // Multiplier split out so that multi item additions happen first and then the multiplier is only applied once
+            // Apply the same bonuses to every stat and held-item contribution.
+            evIncrease *= multiplier;
 
             if (totalEVs + (s16)evIncrease > currentEVCap)
                 evIncrease = ((s16)evIncrease + currentEVCap) - (totalEVs + evIncrease);
@@ -6772,6 +6798,23 @@ bool32 TryFormChange(struct Pokemon *mon, enum FormChanges method)
         return TRUE;
     }
 
+    return FALSE;
+}
+
+// Keldeo (Secret Sword): FORM_CHANGE_MOVE re-checked
+// after a move is learned or forgotten outside battle on the Pokemon picked
+// by the script (gSpecialVar_0x8004: party slot or PC_MON_CHOSEN).
+bool32 TrySelectedMonMoveFormChange(void)
+{
+    // Keldeo only: Rotom's FORM_CHANGE_MOVE rows would otherwise turn a Rotom
+    // into another appliance just by learning a TM (its forms belong to the
+    // Goldenrod Apartment appliances).
+    if (GET_BASE_SPECIES_ID(GetBoxMonData(GetSelectedBoxMonFromPcOrParty(), MON_DATA_SPECIES)) != SPECIES_KELDEO)
+        return FALSE;
+    if (gSpecialVar_0x8004 == PC_MON_CHOSEN)
+        return TryBoxMonFormChange(GetSelectedBoxMonFromPcOrParty(), FORM_CHANGE_MOVE);
+    if (gSpecialVar_0x8004 < PARTY_SIZE)
+        return TryFormChange(&gPlayerParty[gSpecialVar_0x8004], FORM_CHANGE_MOVE);
     return FALSE;
 }
 

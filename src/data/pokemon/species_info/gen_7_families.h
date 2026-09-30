@@ -446,7 +446,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
         .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_INTIMIDATE },
-        .innates = { ABILITY_FLAME_BODY, ABILITY_COSTAR, ABILITY_BACKDRAFT },
+        .innates = { ABILITY_HOT_TAG, ABILITY_COSTAR, ABILITY_BACKDRAFT },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Incineroar"),
         .cryId = CRY_INCINEROAR,
@@ -1327,8 +1327,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sCharjabugLevelUpLearnset,
         .teachableLearnset = sCharjabugTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_VIKAVOLT, CONDITIONS({IF_IN_MAPSEC, MAPSEC_RAILWAY_CAVE})},
-                                {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_VIKAVOLT},
-                                {EVO_NONE, 0, SPECIES_VIKAVOLT_TOTEM}),
+                                {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_VIKAVOLT}),
     },
 
     [SPECIES_VIKAVOLT] =
@@ -2067,8 +2066,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sCutieflyLevelUpLearnset,
         .teachableLearnset = sCutieflyTeachableLearnset,
         .eggMoveLearnset = sCutieflyEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_RIBOMBEE},
-                                {EVO_NONE, 0, SPECIES_RIBOMBEE_TOTEM}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_RIBOMBEE}),
     },
 
     [SPECIES_RIBOMBEE] =
@@ -2349,7 +2347,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_KEEN_EYE, ABILITY_SAND_RUSH, ABILITY_STEADFAST },
+        .abilities = { ABILITY_TOUGH_CLAWS, ABILITY_SAND_RUSH, ABILITY_STEADFAST },
         .innates = { ABILITY_STURDY, ABILITY_GUARD_DOG, ABILITY_BATTLE_ARMOR },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Lycanroc"),
@@ -3040,8 +3038,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sDewpiderLevelUpLearnset,
         .teachableLearnset = sDewpiderTeachableLearnset,
         .eggMoveLearnset = sDewpiderEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 22, SPECIES_ARAQUANID},
-                                {EVO_NONE, 0, SPECIES_ARAQUANID_TOTEM}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 22, SPECIES_ARAQUANID}),
     },
 
     [SPECIES_ARAQUANID] =
@@ -3239,8 +3236,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sFomantisLevelUpLearnset,
         .teachableLearnset = sFomantisTeachableLearnset,
         .eggMoveLearnset = sFomantisEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_LURANTIS, CONDITIONS({IF_NOT_TIME, TIME_NIGHT})},
-                                {EVO_NONE, 0, SPECIES_LURANTIS_TOTEM}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_LURANTIS, CONDITIONS({IF_NOT_TIME, TIME_NIGHT})}),
     },
 
     [SPECIES_LURANTIS] =
@@ -3580,8 +3576,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sSalanditLevelUpLearnset,
         .teachableLearnset = sSalanditTeachableLearnset,
         .eggMoveLearnset = sSalanditEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_SALAZZLE, CONDITIONS({IF_GENDER, MON_FEMALE})},
-                                {EVO_NONE, 0, SPECIES_SALAZZLE_TOTEM}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_SALAZZLE, CONDITIONS({IF_GENDER, MON_FEMALE})}),
     },
 
     [SPECIES_SALAZZLE] =
@@ -4363,7 +4358,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_WATER_3),
         .abilities = { ABILITY_EMERGENCY_EXIT, ABILITY_NONE, ABILITY_NONE },
-        .innates = { ABILITY_BATTLE_ARMOR, ABILITY_TOUGH_CLAWS, ABILITY_MERCILESS },
+        .innates = { ABILITY_BATTLE_ARMOR, ABILITY_TOUGH_CLAWS, ABILITY_INDOMITABLE },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Golisopod"),
         .cryId = CRY_GOLISOPOD,
@@ -4434,8 +4429,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_WATER_3),
-        .abilities = { ABILITY_EMERGENCY_EXIT, ABILITY_NONE, ABILITY_NONE },
-        .innates = { ABILITY_BATTLE_ARMOR, ABILITY_TOUGH_CLAWS, ABILITY_MERCILESS },
+        .abilities = { ABILITY_TOUGH_CLAWS, ABILITY_TOUGH_CLAWS, ABILITY_TOUGH_CLAWS },
+        .innates = { ABILITY_BATTLE_ARMOR, ABILITY_SWIFT_SWIM, ABILITY_INDOMITABLE },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Golisopod"),
     #if P_MODIFIED_MEGA_CRIES
@@ -4861,6 +4856,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .growthRate = GROWTH_MEDIUM_SLOW,                                   \
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),                     \
         .abilities = { ABILITY_SHIELDS_DOWN, ABILITY_NONE, ABILITY_NONE },  \
+        .innates = { ABILITY_COSMIC_FORM, ABILITY_LEVITATE, ABILITY_ADAPTABILITY }, \
         .bodyColor = color,                                                 \
         .noFlip = TRUE,                                                     \
         .speciesName = _("Minior"),                                         \
@@ -7434,7 +7430,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         SHADOW(-1, 16, SHADOW_SIZE_L)
         FOOTPRINT(Necrozma)
-    #if OW_BATTLE_ONLY_FORMS
+    #if OW_BATTLE_ONLY_FORMS || OW_BATTLE_ONLY_FORMS_NECROZMA_ULTRA
         OVERWORLD(
             sPicTable_NecrozmaUltra,
             SIZE_32x32, //TODO: 64x64 overworld sprite!
@@ -7444,7 +7440,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_NecrozmaUltra,
             gShinyOverworldPalette_NecrozmaUltra
         )
-    #endif //OW_BATTLE_ONLY_FORMS
+    #endif //OW_BATTLE_ONLY_FORMS || OW_BATTLE_ONLY_FORMS_NECROZMA_ULTRA
         .isRestrictedLegendary = TRUE,
         .isUltraBurst = TRUE,
         .cannotBeTraded = TRUE,
@@ -8036,7 +8032,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
         .abilities = { ABILITY_BEAST_BOOST, ABILITY_NONE, ABILITY_NONE },
-        .innates = { ABILITY_FLASH_FIRE, ABILITY_FLAME_BODY, ABILITY_SMOULDERING },
+        .innates = { ABILITY_FLASH_FIRE, ABILITY_CONTROLLED_BURN, ABILITY_SMOULDERING },
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = TRUE,
         .speciesName = _("Blacephalon"),

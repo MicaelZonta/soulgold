@@ -487,6 +487,17 @@ static const u8 *ExpandPlaceholder_RivalName(void)
 }
 
 
+// SoulGold: the rival who lives next door in New Bark. The game picks them by
+// the player's gender (NewBarkTown_EventScript_RivalBattle: a boy battles
+// Crystal, a girl battles Gold), so the name follows the same rule. Written as
+// {NEIGHBOR}; also the text of the NAME_NEIGHBOR speaker plaque.
+static const u8 *ExpandPlaceholder_Neighbor(void)
+{
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        return gText_ExpandedPlaceholder_Crystal;
+    return gText_ExpandedPlaceholder_Gold;
+}
+
 static const u8 *ExpandPlaceholder_Version(void)
 {
     return gText_ExpandedPlaceholder_Emerald;
@@ -548,6 +559,7 @@ const u8 *GetExpandedPlaceholder(u32 id)
         [PLACEHOLDER_ID_KYOGRE]       = ExpandPlaceholder_Kyogre,
         [PLACEHOLDER_ID_GROUDON]      = ExpandPlaceholder_Groudon,
         [PLACEHOLDER_ID_REGION]       = ExpandPlaceholder_Region,
+        [PLACEHOLDER_ID_NEIGHBOR]     = ExpandPlaceholder_Neighbor,
     };
 
     if (id >= ARRAY_COUNT(funcs))
@@ -723,7 +735,10 @@ u8 GetExtCtrlCodeLength(u8 code)
         [EXT_CTRL_CODE_ENG]                    = 1,
         [EXT_CTRL_CODE_PAUSE_MUSIC]            = 1,
         [EXT_CTRL_CODE_RESUME_MUSIC]           = 1,
-        [EXT_CTRL_CODE_SPEAKER]                = 1,
+        // O codigo carrega 1 byte de argumento (o indice em gSpeakerNamesTable),
+        // igual a EXT_CTRL_CODE_COLOR. Com 1 aqui, SkipExtCtrlCode parava em
+        // cima do argumento e lia o indice como se fosse texto.
+        [EXT_CTRL_CODE_SPEAKER]                = 2,
         [EXT_CTRL_CODE_ACCENT]                 = 2,
         [EXT_CTRL_CODE_BACKGROUND]             = 2,
         [EXT_CTRL_CODE_TEXT_COLORS]            = 4,

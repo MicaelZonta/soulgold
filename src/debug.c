@@ -68,6 +68,7 @@
 #include "constants/rgb.h"
 #include "constants/script_commands.h"
 #include "constants/songs.h"
+#include "constants/vars.h"
 #include "constants/species.h"
 #include "constants/weather.h"
 #include "siirtc.h"
@@ -302,6 +303,7 @@ static void DebugAction_PCBag_ClearBoxes(u8 taskId);
 static void DebugAction_Party_HealParty(u8 taskId);
 static void DebugAction_Party_ClearPokerus(u8 taskId);
 static void DebugAction_Party_ClearParty(u8 taskId);
+static void DebugAction_Party_ResetGroomingDaily(u8 taskId);
 static void DebugAction_Party_SetParty(u8 taskId);
 static void DebugAction_Party_BattleSingle(u8 taskId);
 
@@ -399,6 +401,21 @@ extern const u8 Debug_EventScript_Script_5[];
 extern const u8 Debug_EventScript_Script_6[];
 extern const u8 Debug_EventScript_Script_7[];
 extern const u8 Debug_EventScript_Script_8[];
+extern const u8 Debug_EventScript_RiftLookerCalled[];
+extern const u8 Debug_EventScript_RiftLookerCallNow[];
+extern const u8 Debug_EventScript_RiftLookerReset[];
+extern const u8 Debug_EventScript_NexusColress[];
+extern const u8 Debug_EventScript_NexusBruno[];
+extern const u8 Debug_EventScript_NexusElesa[];
+extern const u8 Debug_EventScript_NexusVolkner[];
+extern const u8 Debug_EventScript_NexusSteven[];
+extern const u8 Debug_EventScript_NexusRamos[];
+extern const u8 Debug_EventScript_NexusGuzma[];
+extern const u8 Debug_EventScript_NexusSoliera[];
+extern const u8 Debug_EventScript_NexusByron[];
+extern const u8 Debug_EventScript_NexusFantina[];
+extern const u8 Debug_EventScript_NexusEnter[];
+extern const u8 Debug_EventScript_NexusNewDay[];
 extern const u8 DebugScript_DaycareMonsNotCompatible[];
 extern const u8 DebugScript_OneDaycareMons[];
 extern const u8 DebugScript_ZeroDaycareMons[];
@@ -648,6 +665,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Party[] =
     { COMPOUND_STRING("Give Pokerus"),       DebugAction_ExecuteScript, Debug_EventScript_GivePokerus },
     { COMPOUND_STRING("Clear Pokerus"),      DebugAction_Party_ClearPokerus},
     { COMPOUND_STRING("Clear Party"),        DebugAction_Party_ClearParty },
+    { COMPOUND_STRING("Reset Grooming Day"), DebugAction_Party_ResetGroomingDaily },
     { COMPOUND_STRING("Set Party"),          DebugAction_Party_SetParty },
     { COMPOUND_STRING("Start Debug Battle"), DebugAction_Party_BattleSingle },
     { NULL }
@@ -752,6 +770,37 @@ static const u8 *const sDebugMenu_Actions_BagUse_Options[] =
     COMPOUND_STRING("No Bag: {STR_VAR_1}Invalid value"),
 };
 
+// Nexus fights (data/scripts/nexus.inc), one per trainer; the script asks
+// whether to use the champion lines.
+static const struct DebugMenuOption sDebugMenu_Actions_RiftNexus[] =
+{
+    { COMPOUND_STRING("Colress"), DebugAction_ExecuteScript, Debug_EventScript_NexusColress },
+    { COMPOUND_STRING("Bruno"), DebugAction_ExecuteScript, Debug_EventScript_NexusBruno },
+    { COMPOUND_STRING("Elesa"), DebugAction_ExecuteScript, Debug_EventScript_NexusElesa },
+    { COMPOUND_STRING("Volkner"), DebugAction_ExecuteScript, Debug_EventScript_NexusVolkner },
+    { COMPOUND_STRING("Steven"), DebugAction_ExecuteScript, Debug_EventScript_NexusSteven },
+    { COMPOUND_STRING("Ramos"), DebugAction_ExecuteScript, Debug_EventScript_NexusRamos },
+    { COMPOUND_STRING("Guzma"), DebugAction_ExecuteScript, Debug_EventScript_NexusGuzma },
+    { COMPOUND_STRING("Soliera"), DebugAction_ExecuteScript, Debug_EventScript_NexusSoliera },
+    { COMPOUND_STRING("Byron"), DebugAction_ExecuteScript, Debug_EventScript_NexusByron },
+    { COMPOUND_STRING("Fantina"), DebugAction_ExecuteScript, Debug_EventScript_NexusFantina },
+    { NULL }
+};
+
+// SoulGold: Rift Missions. The Looker call (states 4/6/8/10) is what lets the
+// next briefing in OlivineCity_House1 happen; these skip the wait for it.
+// data/scripts/debug.inc has the scripts.
+static const struct DebugMenuOption sDebugMenu_Actions_RiftMissions[] =
+{
+    { COMPOUND_STRING("Looker already called"), DebugAction_ExecuteScript, Debug_EventScript_RiftLookerCalled },
+    { COMPOUND_STRING("Looker call now"),       DebugAction_ExecuteScript, Debug_EventScript_RiftLookerCallNow },
+    { COMPOUND_STRING("Reset today's call"),    DebugAction_ExecuteScript, Debug_EventScript_RiftLookerReset },
+    { COMPOUND_STRING("Nexus fights…"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_RiftNexus },
+    { COMPOUND_STRING("Nexus: enter"),          DebugAction_ExecuteScript, Debug_EventScript_NexusEnter },
+    { COMPOUND_STRING("Nexus: new day"),        DebugAction_ExecuteScript, Debug_EventScript_NexusNewDay },
+    { NULL }
+};
+
 static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
 {
     { COMPOUND_STRING("Utilities…"),    DebugAction_OpenSubMenu, sDebugMenu_Actions_Utilities, },
@@ -762,6 +811,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
     { COMPOUND_STRING("Scripts…"),      DebugAction_OpenSubMenu, sDebugMenu_Actions_Scripts, },
     { COMPOUND_STRING("Trainers…"),     DebugAction_OpenSubMenuTrainers, sDebugMenu_Actions_Trainers, },
     { COMPOUND_STRING("Flags & Vars…"), DebugAction_OpenSubMenuFlagsVars, sDebugMenu_Actions_Flags, },
+    { COMPOUND_STRING("Rift Missions…"), DebugAction_OpenSubMenu, sDebugMenu_Actions_RiftMissions, },
     { COMPOUND_STRING("Sound…"),        DebugAction_OpenSubMenu, sDebugMenu_Actions_Sound, },
     { COMPOUND_STRING("ROM Info…"),     DebugAction_OpenSubMenu, sDebugMenu_Actions_ROMInfo2, },
     { COMPOUND_STRING("Cancel"),        DebugAction_Cancel, },
@@ -1229,11 +1279,9 @@ static u32 Debug_CheckToggleFlags(u8 id)
         result = FlagGet(OW_FLAG_NO_COLLISION);
         break;
     #endif
-    #if OW_FLAG_NO_ENCOUNTER != 0
     case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_ENCOUNTER:
         result = FlagGet(OW_FLAG_NO_ENCOUNTER);
         break;
-    #endif
     #if OW_FLAG_NO_TRAINER_SEE != 0
     case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_TRAINER_SEE:
         result = FlagGet(OW_FLAG_NO_TRAINER_SEE);
@@ -2768,15 +2816,11 @@ static void DebugAction_FlagsVars_CollisionOnOff(u8 taskId)
 
 static void DebugAction_FlagsVars_EncounterOnOff(u8 taskId)
 {
-#if OW_FLAG_NO_ENCOUNTER == 0
-    Debug_DestroyMenu_Full_Script(taskId, Debug_FlagsNotSetOverworldConfigMessage);
-#else
     if (FlagGet(OW_FLAG_NO_ENCOUNTER))
         PlaySE(SE_PC_OFF);
     else
         PlaySE(SE_PC_LOGIN);
     FlagToggle(OW_FLAG_NO_ENCOUNTER);
-#endif
 }
 
 static void DebugAction_FlagsVars_TrainerSeeOnOff(u8 taskId)
@@ -5123,6 +5167,14 @@ static void DebugAction_Party_ClearPokerus(u8 taskId)
 static void DebugAction_Party_ClearParty(u8 taskId)
 {
     ZeroPlayerPartyMons();
+    ScriptContext_Enable();
+    Debug_DestroyMenu_Full(taskId);
+}
+
+// Clears Mom's daily Grooming usage (FLAG_GOT_GROOMED) without waiting for the day to roll over.
+static void DebugAction_Party_ResetGroomingDaily(u8 taskId)
+{
+    FlagClear(FLAG_GOT_GROOMED);
     ScriptContext_Enable();
     Debug_DestroyMenu_Full(taskId);
 }

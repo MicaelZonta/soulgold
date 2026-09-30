@@ -8,7 +8,7 @@
 	.if \requests_effects == 0
 	.4byte \ptr
 	.else
-	.4byte \ptr + ROM_SIZE
+	.4byte \ptr + SCRIPT_EFFECT_TAG
 	.endif
 .endm
 
@@ -297,6 +297,7 @@ gSpecials::
 	def_special DoInGameTradeScene
 	def_special GetTradeSpecies
 	def_special GetWeekCount
+	def_special GetDayOfWeek
 	def_special RetrieveLotteryNumber
 	def_special PickLotteryCornerTicket
 	def_special ShowBerryBlenderRecordWindow
@@ -351,6 +352,7 @@ gSpecials::
 	def_special IsStarterInParty
 	def_special CopyCurSecretBaseOwnerName_StrVar1
 	def_special ScriptCheckFreePokemonStorageSpace
+	def_special ScriptCheckPlayerWestOfGladion
 	def_special DoSealedChamberShakingEffect_Long
 	def_special ShowDeptStoreElevatorFloorSelect
 	def_special InteractWithShieldOrTVDecoration
@@ -602,10 +604,17 @@ gSpecials::
 	def_special CheckAerodactyl
 	def_special CheckKabuto
 	def_special CheckOmanyte
-	def_special CheckTogepi
+	def_special CheckMysteryEggPokemon
+	def_special CheckPCHasSpecies
 	def_special CheckCelebi
 	def_special HaircutBrother1
 	def_special HaircutBrother2
+	def_special GroomPokemon
+	def_special GetGroomTargetCategory
+	def_special ApplyFurfrouTrim
+	def_special ApplySeasonalForm
+	def_special ApplyPikachuCostume
+	def_special GetRandomMissingItemInRange
 	def_special SetHpStat
 	def_special SetAtkStat
 	def_special SetDefStat
@@ -644,3 +653,30 @@ gSpecials::
 	def_special EnableAutorun
 	def_special BattleSetup_StartDexNavBattle
 	def_special MigrateLegacyRadioShortcut
+	def_special Nexus_EnterFromAltar
+	def_special Nexus_BeginMapLoad
+	def_special Nexus_GetRoom
+	def_special Nexus_GetProgress
+	def_special Nexus_GetDoorState
+	def_special Nexus_BufferDoorTrainerName
+	def_special Nexus_IsRoomChosen
+	def_special Nexus_ChooseDoor
+	def_special Nexus_RecordFightWon
+	def_special Nexus_AdvanceRoom
+	def_special Nexus_LeaveToAltar
+	def_special Nexus_GetBossRoomState
+	def_special Nexus_SetupBoss
+	def_special Nexus_RecordCapture
+	def_special Nexus_RecordBossBeaten
+	def_special Nexus_BufferFragmentNames
+	def_special Nexus_FragmentNeedsBeastBall
+	def_special Nexus_HasAnyBall
+	def_special Nexus_GiveFragment
+	def_special Nexus_HasLookerFile
+	def_special Nexus_IsGiftTaken
+	def_special Nexus_MarkGiftTaken
+	def_special Nexus_GetPrize
+	def_special Nexus_MarkPrizeTaken
+	def_special Nexus_CheckTraditional
+	def_special Nexus_IsDoneToday
+	def_special Nexus_DebugNewDay

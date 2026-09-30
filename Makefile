@@ -256,6 +256,11 @@ LEGACY_LEVEL_UP_HEADER := $(DATA_SRC_SUBDIR)/pokemon/level_up_learnsets/generate
 WILD_ENCOUNTERS_TOOL_DIR := $(TOOLS_DIR)/wild_encounters
 AUTO_GEN_TARGETS += $(DATA_SRC_SUBDIR)/wild_encounters.h
 AUTO_GEN_TARGETS += $(LEGACY_LEVEL_UP_HEADER)
+DOCS_QR_HEADER := $(DATA_SRC_SUBDIR)/docs_qr.h
+AUTO_GEN_TARGETS += $(DOCS_QR_HEADER)
+
+$(DOCS_QR_HEADER): $(INCLUDE_DIRS)/config/version.h $(TOOLS_DIR)/docs_qr/generate.py $(TOOLS_DIR)/docs_qr/qrcodegen.py
+	python3 $(TOOLS_DIR)/docs_qr/generate.py --output $@
 
 MISC_TOOL_DIR := $(TOOLS_DIR)/misc
 AUTO_GEN_TARGETS +=  $(INCLUDE_DIRS)/constants/script_commands.h
@@ -281,8 +286,8 @@ MAKEFLAGS += --no-print-directory
 # Delete files that weren't built properly
 .DELETE_ON_ERROR:
 
-RULES_NO_SCAN += libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated clean-teachables clean-teachables_intermediates
-.PHONY: all rom check-song-config bps nightly-bps agbcc modern compare check check-all debug release
+RULES_NO_SCAN += map-graph-check mgba-windows libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated clean-teachables clean-teachables_intermediates
+.PHONY: all rom map-graph-check check-song-config bps nightly-bps agbcc modern compare check check-all debug release
 .PHONY: $(RULES_NO_SCAN)
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
@@ -417,7 +422,29 @@ check check-all: $(TEST_SHARD_ELFS)
 check-song-config:
 	@python3 tools/check_song_config.py
 
-rom: $(ROM)
+# Avisa (sem quebrar o build) quando um mapa da ROM fica sem ligacao com o
+# mundo. So roda de novo quando mapa, script ou a lista de referencia mudam.
+# Ver dev_scripts/map_graph.py e a skill mapa-de-ligacoes.
+MAP_GRAPH_STAMP := $(BUILD_DIR)/map_graph.stamp
+$(MAP_GRAPH_STAMP): $(wildcard data/maps/*/map.json) data/maps/map_groups.json $(wildcard data/maps/*/scripts.inc) $(wildcard data/scripts/*.inc) $(wildcard docs/MAPAS_INALCANCAVEIS.txt) dev_scripts/map_graph.py
+	@mkdir -p $(@D)
+	@python3 dev_scripts/map_graph.py check || true
+	@touch $@
+
+map-graph-check:
+	@python3 dev_scripts/map_graph.py check --strict
+
+# SCRIPT_EFFECT_TAG vive em constants/gba_constants.inc (asm) e include/script.h (C).
+# Se divergirem, compila limpo e todo script do jogo trava: conferir antes do link.
+check-script-effect-tag:
+	@a=$$(grep -oE '\.set SCRIPT_EFFECT_TAG, *0x[0-9A-Fa-f]+' constants/gba_constants.inc | grep -oE '0x[0-9A-Fa-f]+$$'); \
+	b=$$(grep -oE '#define SCRIPT_EFFECT_TAG +0x[0-9A-Fa-f]+' include/script.h | grep -oE '0x[0-9A-Fa-f]+$$'); \
+	if [ -z "$$a" ] || [ -z "$$b" ] || [ $$((a)) -ne $$((b)) ]; then \
+		echo "SCRIPT_EFFECT_TAG diverge: gba_constants.inc='$$a' script.h='$$b'"; exit 1; \
+	fi
+$(ELF): | check-script-effect-tag
+
+rom: $(ROM) $(MAP_GRAPH_STAMP)
 ifeq ($(COMPARE),1)
 	@$(SHA1) rom.sha1
 endif
@@ -499,7 +526,7 @@ generated: $(AUTO_GEN_TARGETS)
 %.fastSmol: %      ; $(SMOL) -w $< $@ false false false
 %.smol:     %      ; $(SMOL) -w $< $@
 %.rl:       %      ; $(GFX) $< $@
-data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -fc tools/poryscript/font_config.json -cc tools/poryscript/command_config.json
+data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -fc tools/poryscript/font_config.json -cc tools/poryscript/command_config.json -lm=false
 
 clean-teachables_intermediates:
 	rm -f $(DATA_SRC_SUBDIR)/tutor_moves.h
@@ -590,6 +617,17 @@ $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s
 
 $(DATA_ASM_BUILDDIR)/sound_data.o: | check-song-config
 
+# POC do mapeamento linear de 96 MB: `make ROM_FILLER_MB=62` gera ~92 MB de ROM.
+ROM_FILLER_MB ?= 0
+.PHONY: FORCE
+FORCE:
+ROM_FILLER_STAMP := $(OBJ_DIR)/rom_filler_mb.txt
+$(ROM_FILLER_STAMP): FORCE
+	@mkdir -p $(@D)
+	@echo $(ROM_FILLER_MB) | cmp -s - $@ || echo $(ROM_FILLER_MB) > $@
+$(DATA_ASM_BUILDDIR)/rom_filler.o: $(DATA_ASM_SUBDIR)/rom_filler.s $(ROM_FILLER_STAMP)
+	$(AS) $(ASFLAGS) --defsym ROM_FILLER_BYTES=$$(( $(ROM_FILLER_MB) * 1048576 )) -o $@ $<
+
 $(DATA_ASM_BUILDDIR)/%.d: $(DATA_ASM_SUBDIR)/%.s
 	$(SCANINC) -M $@ $(INCLUDE_SCANINC_ARGS) -I "" $<
 
@@ -654,11 +692,19 @@ endif
 # Builds the rom from the elf file
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
-	$(FIX) $@ -p --silent
+	$(FIX) $@ --silent
 
 emerald: all
 firered: all
 leafgreen: all
-# Symbol file (`make syms`)
-$(SYM): $(ELF)
-	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+# Symbol file (`make syms`). Depende da ROM (e nao so do ELF) para que
+# `make syms` sem ROM_FILLER_MB nao deixe um .gba de 92 MB ao lado de um
+# .elf/.sym relinkados sem filler.
+$(SYM): $(ELF) $(ROM)
+	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389a-d]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+
+# mGBA patchado (tools/mgba-master) como emulador de Windows com menu, direto
+# na pasta de emuladores do autor. Rodar sempre que tools/mgba-master mudar.
+# Detalhes e pre-requisitos (MSYS2): tools/mgba-windows/build.sh.
+mgba-windows:
+	@tools/mgba-windows/build.sh

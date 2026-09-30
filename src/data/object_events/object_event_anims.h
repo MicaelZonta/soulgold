@@ -1144,6 +1144,74 @@ static const union AnimCmd *const sAnimTable_Standard[] = {
     [ANIM_STD_GO_FASTEST_EAST] = sAnim_GoFastestEast,
 };
 
+// Standard human walk, but with its own frames for facing east (9, 10, 11)
+// instead of mirroring the west ones. Same timings as sAnimTable_Standard.
+// Used by the 32x32 Lusamine, whose right side is drawn separately.
+static const union AnimCmd sAnim_FaceEastAsym[] =
+{
+    ANIMCMD_FRAME(9, 16),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_GoEastAsym[] =
+{
+    ANIMCMD_FRAME(10, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(11, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_GoFastEastAsym[] =
+{
+    ANIMCMD_FRAME(10, 4),
+    ANIMCMD_FRAME(9, 4),
+    ANIMCMD_FRAME(11, 4),
+    ANIMCMD_FRAME(9, 4),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_GoFasterEastAsym[] =
+{
+    ANIMCMD_FRAME(10, 2),
+    ANIMCMD_FRAME(9, 2),
+    ANIMCMD_FRAME(11, 2),
+    ANIMCMD_FRAME(9, 2),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_GoFastestEastAsym[] =
+{
+    ANIMCMD_FRAME(10, 1),
+    ANIMCMD_FRAME(9, 1),
+    ANIMCMD_FRAME(11, 1),
+    ANIMCMD_FRAME(9, 1),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_StandardAsym[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_FaceSouth,
+    [ANIM_STD_FACE_NORTH] = sAnim_FaceNorth,
+    [ANIM_STD_FACE_WEST] = sAnim_FaceWest,
+    [ANIM_STD_FACE_EAST] = sAnim_FaceEastAsym,
+    [ANIM_STD_GO_SOUTH] = sAnim_GoSouth,
+    [ANIM_STD_GO_NORTH] = sAnim_GoNorth,
+    [ANIM_STD_GO_WEST] = sAnim_GoWest,
+    [ANIM_STD_GO_EAST] = sAnim_GoEastAsym,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_GoFastSouth,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_GoFastNorth,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_GoFastWest,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_GoFastEastAsym,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_GoFasterSouth,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_GoFasterNorth,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_GoFasterWest,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_GoFasterEastAsym,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_GoFastestSouth,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_GoFastestNorth,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_GoFastestWest,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_GoFastestEastAsym,
+};
+
 const union AnimCmd *const sAnimTable_Following[] = {
     [ANIM_STD_FACE_SOUTH] = sAnim_FaceSouth,
     [ANIM_STD_FACE_NORTH] = sAnim_FaceNorth2F,
@@ -1312,6 +1380,105 @@ static const union AnimCmd sAnim_TowerBeamLoop[] =
     ANIMCMD_FRAME(2, 8),
     ANIMCMD_FRAME(3, 8),
     ANIMCMD_JUMP(0),
+};
+
+// A fenda do altar: quatro quadros em loop, seis frames cada, sem direcao - ela
+// e inanimate e nunca vira para lado nenhum, entao todas as entradas da tabela
+// apontam para o mesmo loop (mesmo padrao de sAnimTable_TowerBeam logo abaixo).
+static const union AnimCmd sAnim_AltarRiftLoop[] = {
+    ANIMCMD_FRAME(0, 6),
+    ANIMCMD_FRAME(1, 6),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_AltarRift[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_FACE_NORTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_FACE_WEST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_FACE_EAST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_SOUTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_NORTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_WEST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_EAST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_AltarRiftLoop,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_AltarRiftLoop,
+};
+
+// O portal do Nexus gira no mesmo ritmo da fenda do Altar.
+static const union AnimCmd sAnim_NexusPortalLoop[] = {
+    ANIMCMD_FRAME(0, 6),
+    ANIMCMD_FRAME(1, 6),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_NexusPortal[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_FACE_NORTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_FACE_WEST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_FACE_EAST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_SOUTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_NORTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_WEST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_EAST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_NexusPortalLoop,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_NexusPortalLoop,
+};
+
+// Emissor da Aether: apagado -> aceso -> pico (faisca) -> aceso com a outra
+// luz do poste. Inanimate, sem direcao: todas as entradas no mesmo loop.
+static const union AnimCmd sAnim_AetherEmitterLoop[] = {
+    ANIMCMD_FRAME(0, 10),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_AetherEmitter[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_FACE_NORTH] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_FACE_WEST] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_FACE_EAST] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_SOUTH] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_NORTH] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_WEST] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_EAST] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_AetherEmitterLoop,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_AetherEmitterLoop,
 };
 
 static const union AnimCmd *const sAnimTable_TowerBeam[] = {
@@ -1544,6 +1711,13 @@ static const struct StepAnimTable sStepAnimTables[] = {
     },
     {
         .anims = sAnimTable_Following,
+        .animPos = {1, 3, 0, 2},
+    },
+    // Without an entry here SetStepAnim never seeks the new anim, so
+    // faceplayer and MOVEMENT_TYPE_FACE_* leave the sprite on its old frame
+    // (only turnobject, which calls StartSpriteAnim, would turn it).
+    {
+        .anims = sAnimTable_StandardAsym,
         .animPos = {1, 3, 0, 2},
     },
     {

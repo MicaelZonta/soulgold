@@ -4,7 +4,19 @@
 #include "bg.h"
 
 // Exported type declarations
+// MAP_NAME_LENGTH is the PAD length GetMapName() pads short names out to; it is
+// NOT a limit on the name itself. MAP_NAME_LENGTH_MAX is the limit: GetMapName()
+// does an unbounded StringCopy of gRegionMapEntries[].name, so every buffer it
+// writes into has to hold the LONGEST name in that table plus the EOS byte.
+// Getting this wrong does not fail the build - it corrupts whatever follows the
+// buffer. In struct RegionMap below that is the inputCallback function pointer,
+// and the region map then jumps into a garbage address the first frame after it
+// opens ("Altar of Sun and Moon", 21 characters, used to do exactly that).
+// A name longer than ~16 characters also overflows the two windows that print
+// it (96 px in the region map, 80 px in the map name popup), so the practical
+// limit is narrower than this one.
 #define MAP_NAME_LENGTH 16
+#define MAP_NAME_LENGTH_MAX 24
 #define FLY_DEST_ICON_GFX_SIZE 0x1C0
 
 enum
@@ -38,7 +50,7 @@ struct RegionMap {
     /*0x000*/ mapsec_u16_t mapSecId;
     /*0x002*/ u8 mapSecType;
     /*0x003*/ u8 posWithinMapSec;
-    /*0x004*/ u8 mapSecName[20];
+    /*0x004*/ u8 mapSecName[MAP_NAME_LENGTH_MAX];
     /*0x018*/ u8 (*inputCallback)(void);
     /*0x01c*/ struct Sprite *cursorSprite;
     /*0x020*/ struct Sprite *playerIconSprite;

@@ -1,1229 +1,1164 @@
-# 1 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 2 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 3 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_MapScripts::
-# 4 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, AzaleaTown_KurtsHouse_OnFrame
-# 5 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	map_script MAP_SCRIPT_ON_TRANSITION, AzaleaTown_KurtsHouse_OnTransition
-# 6 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.byte 0
-# 7 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 8 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_OnTransition::
-# 9 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 3, AzaleaTown_KurtsHouse_EventScript_ReturnFromWellSetup
-# 10 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 11 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 12 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_OnFrame::
-# 13 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	map_script_2 VAR_AZALEA_TOWN_STATE, 3, AzaleaTown_KurtsHouse_EventScript_ReturnFromWell
-# 14 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.2byte 0
-# 15 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 16 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_KurtBefore::
-# 17 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	lock
-# 18 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	faceplayer
-# 19 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_KurtMakingBallsMustWait, MSGBOX_DEFAULT
-# 20 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 21 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_FACING, DIR_NORTH, AzaleaTown_KurtsHouse_EventScript_PlayerMove
-# 22 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	applymovement LOCALID_AZALEA_TOWN_KURT_BEFORE, AzaleaTown_KurtsHouse_Movement_KurtWalkDown
-# 23 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	waitmovement 0
-# 24 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	playse SE_EXIT
-# 25 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	removeobject LOCALID_AZALEA_TOWN_KURT_BEFORE
-# 26 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	setflag FLAG_HIDE_KURT_1
-# 27 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	setflag FLAG_HIDE_AZALEA_TOWN_WELL_ROCKET
-# 28 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	setvar VAR_AZALEA_TOWN_STATE, 2
-# 29 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	release
-# 30 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 31 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 32 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_PlayerMove::
-# 33 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, AzaleaTown_KurtsHouse_Movement_Player
-# 34 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	waitmovement 0
-# 35 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	applymovement LOCALID_AZALEA_TOWN_KURT_BEFORE, AzaleaTown_KurtsHouse_Movement_KurtWalkDown
-# 36 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	waitmovement 0
-# 37 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	playse SE_EXIT
-# 38 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	removeobject LOCALID_AZALEA_TOWN_KURT_BEFORE
-# 39 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	setflag FLAG_HIDE_KURT_1
-# 40 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	setflag FLAG_HIDE_AZALEA_TOWN_WELL_ROCKET
-# 41 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	release
-# 42 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 43 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 44 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_Girl::
-# 45 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	lock
-# 46 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	faceplayer
-# 47 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_unset FLAG_HIDE_KURT_2, AzaleaTown_KurtsHouse_EventScript_Girl2
-# 48 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_set FLAG_HIDE_KURT_1, AzaleaTown_KurtsHouse_EventScript_Girl3
-# 49 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_GranddaughterSlowpokeGone, MSGBOX_DEFAULT
-# 50 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	release
-# 51 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 52 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 53 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_Girl2::
-# 54 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 3, AzaleaTown_KurtsHouse_EventScript_Girl4
-# 55 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 4, AzaleaTown_KurtsHouse_EventScript_Girl4
-# 56 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 5, AzaleaTown_KurtsHouse_EventScript_Girl4
-# 57 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 6, AzaleaTown_KurtsHouse_EventScript_Girl4
-# 58 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 8, AzaleaTown_KurtsHouse_EventScript_Girl5
-# 59 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 9, AzaleaTown_KurtsHouse_EventScript_Girl5
-# 60 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 61 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_GranddaughterDad, MSGBOX_DEFAULT
-# 62 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 63 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	release
-# 64 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 65 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 66 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_Girl3::
-# 67 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_GranddaughterLonely, MSGBOX_DEFAULT
-# 68 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 69 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	release
-# 70 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 71 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 72 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_Girl4::
-# 73 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_GranddaughterSlowpokeBack, MSGBOX_DEFAULT
-# 74 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 75 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-# 76 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	end	
-# 77 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	goto KurtCraft_EventScript_GranddaughterTier
 
-# 78 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+@ How the player finds out Kurt got better, in her voice and not in a number.
+@ One box per band of five levels, four boxes for twenty levels - nobody ever
+@ says "level 13" out loud. The other half of the notification is the menu
+@ itself: a new line appearing in it is the clearest possible signal.
+KurtCraft_EventScript_GranddaughterTier::
+	call KurtCraft_EventScript_ComputeLevel
+	goto_if_ge VAR_0x8004, 16, KurtCraft_EventScript_GranddaughterTierFour
+	goto_if_ge VAR_0x8004, 11, KurtCraft_EventScript_GranddaughterTierThree
+	goto_if_ge VAR_0x8004, 6, KurtCraft_EventScript_GranddaughterTierTwo
+	msgbox KurtsHouse_Text_GranddaughterTierOne, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+KurtCraft_EventScript_GranddaughterTierTwo::
+	msgbox KurtsHouse_Text_GranddaughterTierTwo, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+KurtCraft_EventScript_GranddaughterTierThree::
+	msgbox KurtsHouse_Text_GranddaughterTierThree, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+KurtCraft_EventScript_GranddaughterTierFour::
+	msgbox KurtsHouse_Text_GranddaughterTierFour, MSGBOX_DEFAULT
+	closemessage
+	release
+	end	
+
 AzaleaTown_KurtsHouse_EventScript_Girl5::
-# 79 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_GranddaughterSound, MSGBOX_DEFAULT
-# 80 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 81 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	release
-# 82 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end	
-# 83 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 84 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_ReturnFromWellSetup::
-# 85 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	setobjectmovementtype LOCALID_AZALEA_TOWN_KURT, MOVEMENT_TYPE_FACE_DOWN
-# 86 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 87 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 88 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_ReturnFromWell::
-# 89 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	lock
-# 90 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
-# 91 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_KurtHonoredToMakeBalls, MSGBOX_DEFAULT
-# 92 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	giveitem ITEM_FAST_BALL
-# 93 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	setflag FLAG_DAILY_KURT_FREE_BALLS
-# 94 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-# 95 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	call KurtMakesBallsDaily
-# 96 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 97 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-# 98 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	setvar VAR_AZALEA_TOWN_STATE, 4
-# 99 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	release
-# 100 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 101 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 102 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_KurtCheckGSBall::
-# 103 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	checkitem ITEM_GS_BALL
-# 104 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, AzaleaTown_KurtsHouse_EventScript_KurtGsBall
-# 105 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	return
-# 106 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 107 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+@ ===========================================================================
+@ KURT'S RECIPES - the Poke Ball economy
+@ Plan: .claude/KURT_BALL_CRAFT_DESIGN.md
+@
+@ Every Poke Mart in the campaign now sells ITEM_POKE_BALL and nothing else, and
+@ Kurt is the only factory for the other twenty-six. He makes N lots a day, where
+@ N is his level, each lot is 5 Balls, and each lot costs Berries.
+@
+@ WHAT WAS WRONG BEFORE
+@   1. The recipe menu was UNREACHABLE. The old entry point ended in an
+@      unconditional goto KurtDaily, and the only thing in the repository that
+@      jumped to the menu was the "you don't have the Berry" branch INSIDE a
+@      recipe - a closed loop with no door. Seven recipes had been written and
+@      none of them could ever run.
+@   2. All seven ate the Berries when the bag was full:
+@           giveitem ITEM_LOVE_BALL, 5        <- fails, VAR_RESULT = FALSE
+@           removeitem ITEM_PECHA_BERRY, 5    <- takes them, VAR_RESULT = TRUE
+@           goto_if_eq VAR_RESULT, FALSE, ... <- reads the REMOVEITEM result
+@      Space first, then consume, then give, then guard. That order is not
+@      negotiable and it is why there is ONE generic recipe routine below instead
+@      of twenty-seven copies of twelve lines.
+@
+@ STATE
+@   VAR_KURT_PROFICIENCY  EXP, 0..1520. +1 per Ball, so +5 per lot. Written ONLY
+@                         by a recipe: the free daily draw no longer touches it,
+@                         because a gift must not buy progress.
+@                         level L is unlocked at EXP >= 4 * L * (L - 1)
+@   VAR_KURT_TODAY        lots made today, 0..level
+@   FLAG_DAILY_KURT_NEW_DAY     "today's quota has been zeroed"
+@   FLAG_DAILY_KURT_FREE_BALLS  "today's free draw has been taken" (pre-existing)
+@   Two daily flags and not one: sharing them would make the draw eat the quota.
+@   VAR_RIFT_MISSIONS_STATE     READ ONLY, >= 15 unlocks the Beast Ball
+@
+@ SCRATCH VARS, and they may not be renumbered casually
+@   VAR_0x8004  Kurt's level, from ComputeLevel
+@   VAR_0x8005  Berries per lot, from ComputeCost
+@   VAR_0x8006  the Ball this recipe makes
+@   VAR_0x8007  the Berry this recipe costs
+@   VAR_0x8000/0x8001 belong to giveitem, which is why nothing above uses them.
+@ ===========================================================================
+
 AzaleaTown_KurtsHouse_EventScript_Kurt::
-# 108 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	lock
-# 109 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	faceplayer
-# 110 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 8, AzaleaTown_KurtsHouse_EventScript_KurtGsBall2
-# 111 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	goto_if_eq VAR_AZALEA_TOWN_STATE, 9, AzaleaTown_KurtsHouse_EventScript_KurtGsBall3
-# 112 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	call_if_unset FLAG_CAUGHT_CELEBI, AzaleaTown_KurtsHouse_EventScript_KurtCheckGSBall
-# 113 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto KurtDaily
-# 114 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	goto KurtCraft_EventScript_Entry
 
-# 115 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	AzaleaTown_KurtsHouse_EventScript_Kurt2::
-# 116 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		multichoice 20, 0, MULTI_KURT_BALLS, FALSE
-# 117 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		switch VAR_RESULT
-# 118 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		case 0, AzaleaTown_KurtsHouse_EventScript_Kurt_Love
-# 119 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		case 1, AzaleaTown_KurtsHouse_EventScript_Kurt_Lure
-# 120 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		case 2, AzaleaTown_KurtsHouse_EventScript_Kurt_Friend
-# 121 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		case 3, AzaleaTown_KurtsHouse_EventScript_Kurt_Heavy
-# 122 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		case 4, AzaleaTown_KurtsHouse_EventScript_Kurt_Moon
-# 123 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		case 5, AzaleaTown_KurtsHouse_EventScript_Kurt_Fast
-# 124 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		case 6, AzaleaTown_KurtsHouse_EventScript_Kurt_Level
-# 125 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		case 7, AzaleaTown_KurtsHouse_EventScript_KurtCancel
-# 126 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		case MULTI_B_PRESSED, AzaleaTown_KurtsHouse_EventScript_KurtCancel
-# 127 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-		closemessage
-# 128 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+@ Order of guards, and none of them is reorderable:
+@   1. the day rollover, so the quota is always about today
+@   2. the free draw, if it has not been taken - it gives NO exp
+@   3. the level
+@   4. the quota, BEFORE the menu: never let the player pick and then refuse
+@   5. the menu
+KurtCraft_EventScript_Entry::
+	call KurtCraft_EventScript_RollOver
+	call_if_unset FLAG_DAILY_KURT_FREE_BALLS, KurtCraft_EventScript_FreeDraw
+	call KurtCraft_EventScript_ComputeLevel         @ VAR_0x8004 = level, 1..20
+	goto_if_lt VAR_KURT_TODAY, VAR_0x8004, KurtCraft_EventScript_GroupMenu
+	goto KurtCraft_EventScript_DoneForToday
 
-# 129 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-AzaleaTown_KurtsHouse_EventScript_Kurt_Love::
-# 130 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 131 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	bufferitemname STR_VAR_1, ITEM_PECHA_BERRY
-# 132 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	checkitem ITEM_PECHA_BERRY, 5
-# 133 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-# 134 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-# 135 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 136 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 137 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 138 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 139 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 140 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 141 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 142 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	faceplayer
-# 143 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-# 144 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmessage
-# 145 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_LOVE_BALL, 5
-# 146 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	removeitem ITEM_PECHA_BERRY, 5
-# 147 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-# 148 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-# 149 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 150 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-# 151 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-# 152 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	end
-# 153 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-AzaleaTown_KurtsHouse_EventScript_Kurt_Lure::
-# 154 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 155 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	bufferitemname STR_VAR_1, ITEM_RAWST_BERRY
-# 156 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	checkitem ITEM_RAWST_BERRY, 5
-# 157 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-# 158 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-# 159 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 160 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 161 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 162 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 163 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 164 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 165 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 166 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	faceplayer
-# 167 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-# 168 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmessage
-# 169 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_LURE_BALL, 5
-# 170 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	removeitem ITEM_RAWST_BERRY, 5
-# 171 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-# 172 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-# 173 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 174 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-# 175 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-# 176 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	end
-# 177 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-AzaleaTown_KurtsHouse_EventScript_Kurt_Friend::
-# 178 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 179 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	bufferitemname STR_VAR_1, ITEM_CHERI_BERRY
-# 180 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	checkitem ITEM_CHERI_BERRY, 5
-# 181 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-# 182 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-# 183 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 184 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 185 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 186 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 187 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 188 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 189 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 190 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	faceplayer
-# 191 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-# 192 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmessage
-# 193 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_FRIEND_BALL, 5
-# 194 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	removeitem ITEM_CHERI_BERRY, 5
-# 195 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-# 196 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-# 197 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 198 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-# 199 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-# 200 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	end
-# 201 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-AzaleaTown_KurtsHouse_EventScript_Kurt_Heavy::
-# 202 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 203 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	bufferitemname STR_VAR_1, ITEM_ORAN_BERRY
-# 204 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	checkitem ITEM_ORAN_BERRY, 5
-# 205 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-# 206 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-# 207 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 208 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 209 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 210 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 211 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 212 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 213 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 214 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	faceplayer
-# 215 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-# 216 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmessage
-# 217 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_HEAVY_BALL, 5
-# 218 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	removeitem ITEM_ORAN_BERRY, 5
-# 219 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-# 220 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-# 221 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 222 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-# 223 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-# 224 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	end
-# 225 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-AzaleaTown_KurtsHouse_EventScript_Kurt_Moon::
-# 226 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 227 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	bufferitemname STR_VAR_1, ITEM_CHESTO_BERRY
-# 228 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	checkitem ITEM_CHESTO_BERRY, 5
-# 229 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-# 230 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-# 231 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 232 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 233 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 234 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 235 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 236 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 237 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 238 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	faceplayer
-# 239 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-# 240 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmessage
-# 241 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_MOON_BALL, 5
-# 242 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	removeitem ITEM_CHESTO_BERRY, 5
-# 243 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-# 244 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-# 245 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 246 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-# 247 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-# 248 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	end
-# 249 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-AzaleaTown_KurtsHouse_EventScript_Kurt_Fast::
-# 250 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 251 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	bufferitemname STR_VAR_1, ITEM_ASPEAR_BERRY
-# 252 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	checkitem ITEM_ASPEAR_BERRY, 5
-# 253 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-# 254 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-# 255 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 256 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 257 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 258 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 259 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 260 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 261 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 262 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	faceplayer
-# 263 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-# 264 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmessage
-# 265 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_FAST_BALL, 5
-# 266 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	removeitem ITEM_ASPEAR_BERRY, 5
-# 267 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-# 268 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-# 269 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 270 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-# 271 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-# 272 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	end
-# 273 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-AzaleaTown_KurtsHouse_EventScript_Kurt_Level::
-# 274 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 275 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	bufferitemname STR_VAR_1, ITEM_PERSIM_BERRY
-# 276 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	checkitem ITEM_PERSIM_BERRY, 5
-# 277 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, AzaleaTown_KurtsHouse_EventScript_DontHaveBerry
-# 278 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
-# 279 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 280 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 281 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 282 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 283 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	playse SE_BANG
-# 284 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 285 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmovement 0
-# 286 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	faceplayer
-# 287 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
-# 288 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	waitmessage
-# 289 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_LEVEL_BALL, 5
-# 290 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	removeitem ITEM_PERSIM_BERRY, 5
-# 291 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-# 292 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
-# 293 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	closemessage
-# 294 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-# 295 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-# 296 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	end
-# 297 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+@ The reset is the engine's work: ClearDailyFlags clears FLAG_DAILY_KURT_NEW_DAY
+@ at the date rollover, and the first conversation of the new day finds it clear
+@ and zeroes the quota. No var holds a date and nothing polls the clock.
+KurtCraft_EventScript_RollOver::
+	goto_if_set FLAG_DAILY_KURT_NEW_DAY, KurtCraft_EventScript_RollOverDone
+	setvar VAR_KURT_TODAY, 0
+	setflag FLAG_DAILY_KURT_NEW_DAY
+KurtCraft_EventScript_RollOverDone::
+	return
 
-# 298 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-AzaleaTown_KurtsHouse_EventScript_DontHaveBerry::
-# 299 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+KurtCraft_EventScript_DoneForToday::
+	msgbox KurtsHouse_Text_KurtQuotaSpent, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
+	release
+	end
+
+@ ---------------------------------------------------------------------------
+@ There is no divvar in this script language (only setvar, addvar, subvar and
+@ copyvar), so the level is a DESCENDING ladder against the 4*L*(L-1)
+@ thresholds. Twenty lines, read once per conversation, and the ONLY place in
+@ the repository that turns this var into a level.
+@ The whole pace of the system is the 4 in that formula: K=3 reaches level 20 in
+@ 25 days, K=4 in 32, K=5 in 38. Changing the pace is rewriting these twenty
+@ literals and nothing else.
+@ ---------------------------------------------------------------------------
+KurtCraft_EventScript_ComputeLevel::
+	setvar VAR_0x8004, 20
+	goto_if_ge VAR_KURT_PROFICIENCY, 1520, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 19
+	goto_if_ge VAR_KURT_PROFICIENCY, 1368, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 18
+	goto_if_ge VAR_KURT_PROFICIENCY, 1224, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 17
+	goto_if_ge VAR_KURT_PROFICIENCY, 1088, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 16
+	goto_if_ge VAR_KURT_PROFICIENCY, 960, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 15
+	goto_if_ge VAR_KURT_PROFICIENCY, 840, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 14
+	goto_if_ge VAR_KURT_PROFICIENCY, 728, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 13
+	goto_if_ge VAR_KURT_PROFICIENCY, 624, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 12
+	goto_if_ge VAR_KURT_PROFICIENCY, 528, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 11
+	goto_if_ge VAR_KURT_PROFICIENCY, 440, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 10
+	goto_if_ge VAR_KURT_PROFICIENCY, 360, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 9
+	goto_if_ge VAR_KURT_PROFICIENCY, 288, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 8
+	goto_if_ge VAR_KURT_PROFICIENCY, 224, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 7
+	goto_if_ge VAR_KURT_PROFICIENCY, 168, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 6
+	goto_if_ge VAR_KURT_PROFICIENCY, 120, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 5
+	goto_if_ge VAR_KURT_PROFICIENCY, 80, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 4
+	goto_if_ge VAR_KURT_PROFICIENCY, 48, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 3
+	goto_if_ge VAR_KURT_PROFICIENCY, 24, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 2
+	goto_if_ge VAR_KURT_PROFICIENCY, 8, KurtCraft_EventScript_LevelDone
+	setvar VAR_0x8004, 1
+KurtCraft_EventScript_LevelDone::
+	return
+
+@ Berries per lot = 6 - ceil(level / 5): 5 for levels 1-5, 4 for 6-10, 3 for
+@ 11-15, 2 for 16-20. The cost falls as he gets better, which is what keeps the
+@ end of the curve from being pure grind: level 20 is 40 Berries a day for the
+@ full quota, and THAT number is where the "forever game" actually lives.
+KurtCraft_EventScript_ComputeCost::
+	setvar VAR_0x8005, 2
+	goto_if_ge VAR_0x8004, 16, KurtCraft_EventScript_CostDone
+	setvar VAR_0x8005, 3
+	goto_if_ge VAR_0x8004, 11, KurtCraft_EventScript_CostDone
+	setvar VAR_0x8005, 4
+	goto_if_ge VAR_0x8004, 6, KurtCraft_EventScript_CostDone
+	setvar VAR_0x8005, 5
+KurtCraft_EventScript_CostDone::
+	return
+
+@ +1 per BALL, and every lot is 5 Balls, so every lot is +5 - with no exception
+@ anywhere in the tree. The Master Ball is not a recipe (see the draw below) and
+@ it took the last special case with it, which is why no choice of recipe earns
+@ more EXP than another and there is no optimal play to discover.
+@ The cap is checked BEFORE the add, which is the shape the old code used.
+KurtCraft_EventScript_AddExp::
+	goto_if_ge VAR_KURT_PROFICIENCY, 1516, KurtCraft_EventScript_AddExpMax
+	addvar VAR_KURT_PROFICIENCY, 5
+	return
+KurtCraft_EventScript_AddExpMax::
+	setvar VAR_KURT_PROFICIENCY, 1520
+	return
+
+@ ---------------------------------------------------------------------------
+@ THE MENU. Two steps, group then recipe, because twenty-seven lines in one list
+@ is a wall. dynmultipush/dynmultistack is used and not multichoice: the old
+@ MULTI_KURT_BALLS was a fixed list of eight and could not grow, and a dynamic
+@ stack lets each entry be pushed only when it is actually unlocked - which
+@ makes the MENU the notification. A new line appearing is the clearest possible
+@ way to say "he learned something", and it costs no dialogue box.
+@ The id pushed is what comes back in VAR_RESULT, so the ids are the switch
+@ labels and not positions - a locked entry simply is not there.
+@ ---------------------------------------------------------------------------
+KurtCraft_EventScript_GroupMenu::
+	msgbox KurtsHouse_Text_KurtWhatToday, MSGBOX_DEFAULT
+	dynmultipush KurtCraft_Text_GroupBasic, 0
+	call_if_ge VAR_0x8004, 4, KurtCraft_EventScript_PushApricorn
+	call_if_ge VAR_0x8004, 11, KurtCraft_EventScript_PushModern
+	call_if_ge VAR_0x8004, 16, KurtCraft_EventScript_PushRare
+	call_if_ge VAR_RIFT_MISSIONS_STATE, 15, KurtCraft_EventScript_PushBeast
+	dynmultipush KurtCraft_Text_NeverMind, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	closemessage
+	switch VAR_RESULT
+	case 0, KurtCraft_EventScript_MenuBasic
+	case 1, KurtCraft_EventScript_MenuApricorn
+	case 2, KurtCraft_EventScript_MenuModern
+	case 3, KurtCraft_EventScript_MenuRare
+	case 4, KurtCraft_EventScript_MakeBeast
+	case 9, KurtCraft_EventScript_Cancel
+	case MULTI_B_PRESSED, KurtCraft_EventScript_Cancel
+	goto KurtCraft_EventScript_Cancel
+
+KurtCraft_EventScript_PushApricorn::
+	dynmultipush KurtCraft_Text_GroupApricorn, 1
+	return
+KurtCraft_EventScript_PushModern::
+	dynmultipush KurtCraft_Text_GroupModern, 2
+	return
+KurtCraft_EventScript_PushRare::
+	dynmultipush KurtCraft_Text_GroupRare, 3
+	return
+
+@ The Beast Ball is the ONLY recipe not gated by Kurt's level. It appears the
+@ moment the player beats Ultra Necrozma, because that is when Anabel sends them
+@ here (.claude/rift_missions/ALTAR_SUN_MOON/ALTAR_SUN_MOON_IMPLEMENTATION.md section 10.3) - and a pointer
+@ that leads to "I can't make that yet" is worse than no pointer at all.
+@ State 15 is "Necrozma beaten and received", set by the arena. NOT 16: the
+@ farewell has not played yet when the player could first come back, and one
+@ wasted trip to Azalea is exactly the friction this decision removes.
+KurtCraft_EventScript_PushBeast::
+	dynmultipush KurtCraft_Text_GroupBeast, 4
+	return
+
+@ Levels 1 to 3. The shop sells Poke Balls cheaper and always will; his version
+@ exists because "he makes every Ball" has to be literally true.
+KurtCraft_EventScript_MenuBasic::
+	dynmultipush KurtCraft_Text_PokeBall, 10
+	dynmultipush KurtCraft_Text_GreatBall, 11
+	call_if_ge VAR_0x8004, 2, KurtCraft_EventScript_PushHeal
+	call_if_ge VAR_0x8004, 3, KurtCraft_EventScript_PushUltra
+	dynmultipush KurtCraft_Text_Back, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 10, KurtCraft_EventScript_MakePoke
+	case 11, KurtCraft_EventScript_MakeGreat
+	case 12, KurtCraft_EventScript_MakeHeal
+	case 13, KurtCraft_EventScript_MakeUltra
+	case 9, KurtCraft_EventScript_Cancel
+	case MULTI_B_PRESSED, KurtCraft_EventScript_Cancel
+	goto KurtCraft_EventScript_Cancel
+
+KurtCraft_EventScript_PushHeal::
+	dynmultipush KurtCraft_Text_HealBall, 12
+	return
+KurtCraft_EventScript_PushUltra::
+	dynmultipush KurtCraft_Text_UltraBall, 13
+	return
+
+@ Levels 4 to 10: the seven that were already his, in the order he learns them.
+@ These are the recipes the dead code had, ingredient for ingredient.
+KurtCraft_EventScript_MenuApricorn::
+	dynmultipush KurtCraft_Text_LevelBall, 20
+	call_if_ge VAR_0x8004, 5, KurtCraft_EventScript_PushLure
+	call_if_ge VAR_0x8004, 6, KurtCraft_EventScript_PushMoon
+	call_if_ge VAR_0x8004, 7, KurtCraft_EventScript_PushFriend
+	call_if_ge VAR_0x8004, 8, KurtCraft_EventScript_PushFast
+	call_if_ge VAR_0x8004, 9, KurtCraft_EventScript_PushHeavy
+	call_if_ge VAR_0x8004, 10, KurtCraft_EventScript_PushLove
+	dynmultipush KurtCraft_Text_Back, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 20, KurtCraft_EventScript_MakeLevel
+	case 21, KurtCraft_EventScript_MakeLure
+	case 22, KurtCraft_EventScript_MakeMoon
+	case 23, KurtCraft_EventScript_MakeFriend
+	case 24, KurtCraft_EventScript_MakeFast
+	case 25, KurtCraft_EventScript_MakeHeavy
+	case 26, KurtCraft_EventScript_MakeLove
+	case 9, KurtCraft_EventScript_Cancel
+	case MULTI_B_PRESSED, KurtCraft_EventScript_Cancel
+	goto KurtCraft_EventScript_Cancel
+
+KurtCraft_EventScript_PushLure::
+	dynmultipush KurtCraft_Text_LureBall, 21
+	return
+KurtCraft_EventScript_PushMoon::
+	dynmultipush KurtCraft_Text_MoonBall, 22
+	return
+KurtCraft_EventScript_PushFriend::
+	dynmultipush KurtCraft_Text_FriendBall, 23
+	return
+KurtCraft_EventScript_PushFast::
+	dynmultipush KurtCraft_Text_FastBall, 24
+	return
+KurtCraft_EventScript_PushHeavy::
+	dynmultipush KurtCraft_Text_HeavyBall, 25
+	return
+KurtCraft_EventScript_PushLove::
+	dynmultipush KurtCraft_Text_LoveBall, 26
+	return
+
+@ Levels 11 to 15: the modern Balls, which he makes with visible reluctance.
+KurtCraft_EventScript_MenuModern::
+	dynmultipush KurtCraft_Text_NestBall, 30
+	dynmultipush KurtCraft_Text_NetBall, 31
+	call_if_ge VAR_0x8004, 12, KurtCraft_EventScript_PushQuick
+	call_if_ge VAR_0x8004, 13, KurtCraft_EventScript_PushTimer
+	call_if_ge VAR_0x8004, 14, KurtCraft_EventScript_PushRepeat
+	call_if_ge VAR_0x8004, 15, KurtCraft_EventScript_PushDive
+	call_if_ge VAR_0x8004, 15, KurtCraft_EventScript_PushDusk
+	dynmultipush KurtCraft_Text_Back, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 30, KurtCraft_EventScript_MakeNest
+	case 31, KurtCraft_EventScript_MakeNet
+	case 32, KurtCraft_EventScript_MakeQuick
+	case 33, KurtCraft_EventScript_MakeTimer
+	case 34, KurtCraft_EventScript_MakeRepeat
+	case 35, KurtCraft_EventScript_MakeDive
+	case 36, KurtCraft_EventScript_MakeDusk
+	case 9, KurtCraft_EventScript_Cancel
+	case MULTI_B_PRESSED, KurtCraft_EventScript_Cancel
+	goto KurtCraft_EventScript_Cancel
+
+KurtCraft_EventScript_PushQuick::
+	dynmultipush KurtCraft_Text_QuickBall, 32
+	return
+KurtCraft_EventScript_PushTimer::
+	dynmultipush KurtCraft_Text_TimerBall, 33
+	return
+KurtCraft_EventScript_PushRepeat::
+	dynmultipush KurtCraft_Text_RepeatBall, 34
+	return
+KurtCraft_EventScript_PushDive::
+	dynmultipush KurtCraft_Text_DiveBall, 35
+	return
+KurtCraft_EventScript_PushDusk::
+	dynmultipush KurtCraft_Text_DuskBall, 36
+	return
+
+@ Levels 16 to 20, and the last thing he ever learns is the Strange Ball: the
+@ Ball that does absolutely nothing, for Pokemon that came from another game.
+@ It is the only joke this system tells and it only works because it is last.
+KurtCraft_EventScript_MenuRare::
+	dynmultipush KurtCraft_Text_PremierBall, 40
+	dynmultipush KurtCraft_Text_LuxuryBall, 41
+	call_if_ge VAR_0x8004, 17, KurtCraft_EventScript_PushSport
+	call_if_ge VAR_0x8004, 17, KurtCraft_EventScript_PushPark
+	call_if_ge VAR_0x8004, 18, KurtCraft_EventScript_PushSafari
+	call_if_ge VAR_0x8004, 18, KurtCraft_EventScript_PushDream
+	call_if_ge VAR_0x8004, 19, KurtCraft_EventScript_PushCherish
+	call_if_ge VAR_0x8004, 20, KurtCraft_EventScript_PushStrange
+	dynmultipush KurtCraft_Text_Back, 9
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	switch VAR_RESULT
+	case 40, KurtCraft_EventScript_MakePremier
+	case 41, KurtCraft_EventScript_MakeLuxury
+	case 42, KurtCraft_EventScript_MakeSport
+	case 43, KurtCraft_EventScript_MakePark
+	case 44, KurtCraft_EventScript_MakeSafari
+	case 45, KurtCraft_EventScript_MakeDream
+	case 46, KurtCraft_EventScript_MakeCherish
+	case 47, KurtCraft_EventScript_MakeStrange
+	case 9, KurtCraft_EventScript_Cancel
+	case MULTI_B_PRESSED, KurtCraft_EventScript_Cancel
+	goto KurtCraft_EventScript_Cancel
+
+KurtCraft_EventScript_PushSport::
+	dynmultipush KurtCraft_Text_SportBall, 42
+	return
+KurtCraft_EventScript_PushPark::
+	dynmultipush KurtCraft_Text_ParkBall, 43
+	return
+KurtCraft_EventScript_PushSafari::
+	dynmultipush KurtCraft_Text_SafariBall, 44
+	return
+KurtCraft_EventScript_PushDream::
+	dynmultipush KurtCraft_Text_DreamBall, 45
+	return
+KurtCraft_EventScript_PushCherish::
+	dynmultipush KurtCraft_Text_CherishBall, 46
+	return
+KurtCraft_EventScript_PushStrange::
+	dynmultipush KurtCraft_Text_StrangeBall, 47
+	return
+
+KurtCraft_EventScript_Cancel::
+	closemessage
+	msgbox KurtsHouse_Text_KurtComeBack, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
+	release
+	end
+
+@ ---------------------------------------------------------------------------
+@ THE TWENTY-SEVEN RECIPES. Each one is two setvars and a goto: the Ball it
+@ makes, the Berry it costs, and the one generic routine that does the work.
+@ Twenty-seven copies of the twelve-line body is 324 lines in which the
+@ VAR_RESULT bug of the old code could come back, and it came back seven times
+@ the first time. This is the whole reason the table is data and not code.
+@ ---------------------------------------------------------------------------
+KurtCraft_EventScript_MakePoke::
+	setvar VAR_0x8006, ITEM_POKE_BALL
+	setvar VAR_0x8007, ITEM_LEPPA_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeGreat::
+	setvar VAR_0x8006, ITEM_GREAT_BALL
+	setvar VAR_0x8007, ITEM_AGUAV_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeHeal::
+	setvar VAR_0x8006, ITEM_HEAL_BALL
+	setvar VAR_0x8007, ITEM_LUM_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeUltra::
+	setvar VAR_0x8006, ITEM_ULTRA_BALL
+	setvar VAR_0x8007, ITEM_IAPAPA_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeLevel::
+	setvar VAR_0x8006, ITEM_LEVEL_BALL
+	setvar VAR_0x8007, ITEM_PERSIM_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeLure::
+	setvar VAR_0x8006, ITEM_LURE_BALL
+	setvar VAR_0x8007, ITEM_RAWST_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeMoon::
+	setvar VAR_0x8006, ITEM_MOON_BALL
+	setvar VAR_0x8007, ITEM_CHESTO_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeFriend::
+	setvar VAR_0x8006, ITEM_FRIEND_BALL
+	setvar VAR_0x8007, ITEM_CHERI_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeFast::
+	setvar VAR_0x8006, ITEM_FAST_BALL
+	setvar VAR_0x8007, ITEM_ASPEAR_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeHeavy::
+	setvar VAR_0x8006, ITEM_HEAVY_BALL
+	setvar VAR_0x8007, ITEM_ORAN_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeLove::
+	setvar VAR_0x8006, ITEM_LOVE_BALL
+	setvar VAR_0x8007, ITEM_PECHA_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeNest::
+	setvar VAR_0x8006, ITEM_NEST_BALL
+	setvar VAR_0x8007, ITEM_KELPSY_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeNet::
+	setvar VAR_0x8006, ITEM_NET_BALL
+	setvar VAR_0x8007, ITEM_QUALOT_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeQuick::
+	setvar VAR_0x8006, ITEM_QUICK_BALL
+	setvar VAR_0x8007, ITEM_SITRUS_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeTimer::
+	setvar VAR_0x8006, ITEM_TIMER_BALL
+	setvar VAR_0x8007, ITEM_WIKI_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeRepeat::
+	setvar VAR_0x8006, ITEM_REPEAT_BALL
+	setvar VAR_0x8007, ITEM_GREPA_BERRY
+	goto KurtCraft_EventScript_Make
+@ Passho resists Water, Kasib resists Ghost: the ingredient is the joke.
+KurtCraft_EventScript_MakeDive::
+	setvar VAR_0x8006, ITEM_DIVE_BALL
+	setvar VAR_0x8007, ITEM_PASSHO_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeDusk::
+	setvar VAR_0x8006, ITEM_DUSK_BALL
+	setvar VAR_0x8007, ITEM_KASIB_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakePremier::
+	setvar VAR_0x8006, ITEM_PREMIER_BALL
+	setvar VAR_0x8007, ITEM_HONDEW_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeLuxury::
+	setvar VAR_0x8006, ITEM_LUXURY_BALL
+	setvar VAR_0x8007, ITEM_TAMATO_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeSport::
+	setvar VAR_0x8006, ITEM_SPORT_BALL
+	setvar VAR_0x8007, ITEM_POMEG_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakePark::
+	setvar VAR_0x8006, ITEM_PARK_BALL
+	setvar VAR_0x8007, ITEM_CHILAN_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeSafari::
+	setvar VAR_0x8006, ITEM_SAFARI_BALL
+	setvar VAR_0x8007, ITEM_ROSELI_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeDream::
+	setvar VAR_0x8006, ITEM_DREAM_BALL
+	setvar VAR_0x8007, ITEM_YACHE_BERRY
+	goto KurtCraft_EventScript_Make
+KurtCraft_EventScript_MakeCherish::
+	setvar VAR_0x8006, ITEM_CHERISH_BALL
+	setvar VAR_0x8007, ITEM_COLBUR_BERRY
+	goto KurtCraft_EventScript_Make
+@ The Starf only comes from the Battle Frontier and from the Route 30 Berry
+@ Master's wife, both post-Hall of Fame - which is right for a level-20 recipe.
+KurtCraft_EventScript_MakeStrange::
+	setvar VAR_0x8006, ITEM_STRANGE_BALL
+	setvar VAR_0x8007, ITEM_STARF_BERRY
+	goto KurtCraft_EventScript_Make
+@ The Beast Ball costs quota and Berries like everything else - the story only
+@ decides WHETHER he can make it, never how cheap it is.
+KurtCraft_EventScript_MakeBeast::
+	setvar VAR_0x8006, ITEM_BEAST_BALL
+	setvar VAR_0x8007, ITEM_HABAN_BERRY
+	goto KurtCraft_EventScript_Make
+
+@ ---------------------------------------------------------------------------
+@ The one generic recipe. VAR_0x8006 is the Ball, VAR_0x8007 is the Berry, and
+@ the quantity comes from the level.
+@ checkitem/removeitem/checkitemspace all VarGet BOTH of their arguments
+@ (src/scrcmd.c), so item and quantity can be vars - which is what makes one
+@ routine possible instead of four branches per recipe.
+@
+@ THE ORDER IS THE WHOLE POINT: space first, then consume, then give, then a
+@ defensive guard. The old recipes gave first and consumed second, and read the
+@ CONSUME's VAR_RESULT as if it were the GIVE's - so a full bag lost the Berries
+@ and received nothing, with a clean build.
+@ ---------------------------------------------------------------------------
+KurtCraft_EventScript_Make::
+	closemessage
+	call KurtCraft_EventScript_ComputeCost           @ VAR_0x8005 = 5, 4, 3 or 2
+	bufferitemname STR_VAR_2, VAR_0x8006
+	bufferitemnameplural STR_VAR_1, VAR_0x8007, VAR_0x8005
+	buffernumberstring STR_VAR_3, VAR_0x8005
+	checkitemspace VAR_0x8006, 5
+	goto_if_eq VAR_RESULT, FALSE, KurtCraft_EventScript_BagFull
+	checkitem VAR_0x8007, VAR_0x8005
+	goto_if_eq VAR_RESULT, FALSE, KurtCraft_EventScript_NoIngredient
+	msgbox KurtsHouse_Text_KurtGetStarted, MSGBOX_DEFAULT
+	closemessage
+	call KurtCraft_EventScript_WorkAnimation
+	removeitem VAR_0x8007, VAR_0x8005
+	giveitem VAR_0x8006, 5
+	goto_if_eq VAR_RESULT, FALSE, KurtCraft_EventScript_BagFull
+	addvar VAR_KURT_TODAY, 1
+	call KurtCraft_EventScript_AddExp
+	msgbox KurtsHouse_Text_KurtTurnedOutGreat, MSGBOX_DEFAULT
+	closemessage
+	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
+	release
+	end
+
+KurtCraft_EventScript_WorkAnimation::
+	playse SE_BANG
+	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
+	waitmovement 0
+	playse SE_BANG
+	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
+	waitmovement 0
+	faceplayer
+	msgbox KurtsHouse_Text_KurtJustFinishedYourBall, MSGBOX_DEFAULT
+	waitmessage
+	return
+
+@ Nothing has been consumed and no quota has been spent, so the player goes
+@ straight back to the group menu and can pick something else.
+KurtCraft_EventScript_NoIngredient::
 	msgbox KurtsHouse_Text_KurtThatsALetdown, MSGBOX_DEFAULT
-# 300 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 301 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto AzaleaTown_KurtsHouse_EventScript_Kurt2
-# 302 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-# 303 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	end
-# 304 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	
-# 305 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-AzaleaTown_KurtsHouse_EventScript_KurtCancel::
-# 306 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	goto KurtCraft_EventScript_GroupMenu
+
+@ Reached either before anything was taken (the checkitemspace) or from the
+@ defensive guard after the giveitem. Either way nothing marks progress: the
+@ quota is only spent on the line after a confirmed giveitem.
+KurtCraft_EventScript_BagFull::
+	msgbox KurtsHouse_Text_KurtNoRoom, MSGBOX_DEFAULT
 	closemessage
-# 307 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-# 308 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	release
-# 309 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 310 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 311 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+@ ---------------------------------------------------------------------------
+@ THE FREE DAILY DRAW. Kept exactly as it was, with two changes:
+@   1. it no longer touches VAR_KURT_PROFICIENCY. That var is EXP now, and a
+@      gift must not buy progress - otherwise standing in his house for a month
+@      would unlock the whole tree without making a single Ball.
+@   2. the Master Ball face is re-gated from ">= 4" to ">= 360" (level 10),
+@      because the var changed meaning: ">= 4" used to be four days of visits
+@      and would now be passed by the second lot ever made.
+@
+@ The Master Ball has NO recipe and Kurt never learns one. This face of the die
+@ is the only place in the game it comes from besides Elm's gift, and that is by
+@ far the best thing it can be: a recipe would make it a shopping-list item, and
+@ luck keeps it a thing that happens to you. It is also what stops the draw
+@ becoming pointless at level 20 - even with all twenty-six recipes open, it is
+@ still worth talking to him every morning, for one face of one die.
+@
+@ This is a SUBROUTINE now (it used to release and end), because the
+@ conversation continues into the recipe menu afterwards.
+@ ---------------------------------------------------------------------------
+KurtCraft_EventScript_FreeDraw::
+	msgbox KurtsHouse_Text_KurtTodaysSurplus, MSGBOX_DEFAULT
+	goto_if_ge VAR_KURT_PROFICIENCY, 360, KurtCraft_EventScript_DrawSixteen
+	random 15
+	goto KurtCraft_EventScript_Draw
+KurtCraft_EventScript_DrawSixteen::
+	random 16
+KurtCraft_EventScript_Draw::
+	setflag FLAG_DAILY_KURT_FREE_BALLS
+	switch VAR_RESULT
+	case 0, KurtCraft_EventScript_DrawLuxury
+	case 1, KurtCraft_EventScript_DrawLevel
+	case 2, KurtCraft_EventScript_DrawLure
+	case 3, KurtCraft_EventScript_DrawMoon
+	case 4, KurtCraft_EventScript_DrawFriend
+	case 5, KurtCraft_EventScript_DrawLove
+	case 6, KurtCraft_EventScript_DrawFast
+	case 7, KurtCraft_EventScript_DrawHeavy
+	case 8, KurtCraft_EventScript_DrawDream
+	case 9, KurtCraft_EventScript_DrawSafari
+	case 10, KurtCraft_EventScript_DrawSport
+	case 11, KurtCraft_EventScript_DrawPark
+	case 12, KurtCraft_EventScript_DrawBeast
+	case 13, KurtCraft_EventScript_DrawCherish
+	case 14, KurtCraft_EventScript_DrawStrange
+	case 15, KurtCraft_EventScript_DrawMaster
+	return
+
+KurtCraft_EventScript_DrawLuxury::
+	giveitem ITEM_LUXURY_BALL, 5
+	return
+KurtCraft_EventScript_DrawLevel::
+	giveitem ITEM_LEVEL_BALL, 5
+	return
+KurtCraft_EventScript_DrawLure::
+	giveitem ITEM_LURE_BALL, 5
+	return
+KurtCraft_EventScript_DrawMoon::
+	giveitem ITEM_MOON_BALL, 5
+	return
+KurtCraft_EventScript_DrawFriend::
+	giveitem ITEM_FRIEND_BALL, 5
+	return
+KurtCraft_EventScript_DrawLove::
+	giveitem ITEM_LOVE_BALL, 5
+	return
+KurtCraft_EventScript_DrawFast::
+	giveitem ITEM_FAST_BALL, 5
+	return
+KurtCraft_EventScript_DrawHeavy::
+	giveitem ITEM_HEAVY_BALL, 5
+	return
+KurtCraft_EventScript_DrawDream::
+	giveitem ITEM_DREAM_BALL, 5
+	return
+KurtCraft_EventScript_DrawSafari::
+	giveitem ITEM_SAFARI_BALL, 5
+	return
+KurtCraft_EventScript_DrawSport::
+	giveitem ITEM_SPORT_BALL, 5
+	return
+KurtCraft_EventScript_DrawPark::
+	giveitem ITEM_PARK_BALL, 5
+	return
+@ The Beast Ball is in the draw as well as in the recipe list, which is now
+@ redundancy and not a source: it gives a slow trickle to a player who has not
+@ reached the altar yet.
+KurtCraft_EventScript_DrawBeast::
+	giveitem ITEM_BEAST_BALL, 5
+	return
+KurtCraft_EventScript_DrawCherish::
+	giveitem ITEM_CHERISH_BALL, 5
+	return
+KurtCraft_EventScript_DrawStrange::
+	giveitem ITEM_STRANGE_BALL, 5
+	return
+KurtCraft_EventScript_DrawMaster::
+	msgbox KurtsHouse_Text_KurtMasterpiece, MSGBOX_DEFAULT
+	giveitem ITEM_MASTER_BALL, 1
+	setflag FLAG_KURT_CRAFTED_MASTER_BALL
+	special Achievement_CheckAll
+	return
+
+@ ---------------------------------------------------------------------------
+@ Menu labels. They are plain names and never say a level number out loud: the
+@ player reads the list growing, not a number. The number is the document's.
+@ ---------------------------------------------------------------------------
+KurtCraft_Text_GroupBasic:
+	.string "Everyday Balls$"
+KurtCraft_Text_GroupApricorn:
+	.string "My own recipes$"
+KurtCraft_Text_GroupModern:
+	.string "The new-fangled ones$"
+KurtCraft_Text_GroupRare:
+	.string "The hard ones$"
+KurtCraft_Text_GroupBeast:
+	.string "BEAST BALL$"
+KurtCraft_Text_NeverMind:
+	.string "Never mind$"
+KurtCraft_Text_Back:
+	.string "Back$"
+
+KurtCraft_Text_PokeBall:
+	.string "POKé BALL$"
+KurtCraft_Text_GreatBall:
+	.string "GREAT BALL$"
+KurtCraft_Text_HealBall:
+	.string "HEAL BALL$"
+KurtCraft_Text_UltraBall:
+	.string "ULTRA BALL$"
+KurtCraft_Text_LevelBall:
+	.string "LEVEL BALL$"
+KurtCraft_Text_LureBall:
+	.string "LURE BALL$"
+KurtCraft_Text_MoonBall:
+	.string "MOON BALL$"
+KurtCraft_Text_FriendBall:
+	.string "FRIEND BALL$"
+KurtCraft_Text_FastBall:
+	.string "FAST BALL$"
+KurtCraft_Text_HeavyBall:
+	.string "HEAVY BALL$"
+KurtCraft_Text_LoveBall:
+	.string "LOVE BALL$"
+KurtCraft_Text_NestBall:
+	.string "NEST BALL$"
+KurtCraft_Text_NetBall:
+	.string "NET BALL$"
+KurtCraft_Text_QuickBall:
+	.string "QUICK BALL$"
+KurtCraft_Text_TimerBall:
+	.string "TIMER BALL$"
+KurtCraft_Text_RepeatBall:
+	.string "REPEAT BALL$"
+KurtCraft_Text_DiveBall:
+	.string "DIVE BALL$"
+KurtCraft_Text_DuskBall:
+	.string "DUSK BALL$"
+KurtCraft_Text_PremierBall:
+	.string "PREMIER BALL$"
+KurtCraft_Text_LuxuryBall:
+	.string "LUXURY BALL$"
+KurtCraft_Text_SportBall:
+	.string "SPORT BALL$"
+KurtCraft_Text_ParkBall:
+	.string "PARK BALL$"
+KurtCraft_Text_SafariBall:
+	.string "SAFARI BALL$"
+KurtCraft_Text_DreamBall:
+	.string "DREAM BALL$"
+KurtCraft_Text_CherishBall:
+	.string "CHERISH BALL$"
+KurtCraft_Text_StrangeBall:
+	.string "STRANGE BALL$"
+
 AzaleaTown_KurtsHouse_EventScript_KurtGsBall::
-# 312 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_KurtWhatIsThat, MSGBOX_DEFAULT
-# 313 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 314 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	removeitem ITEM_GS_BALL
-# 315 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	playse SE_BANG
-# 316 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 317 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	waitmovement 0
-# 318 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	playse SE_BANG
-# 319 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Making_Ball
-# 320 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	waitmovement 0
-# 321 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	faceplayer
-# 322 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_KurtThisBallStartedToShake, MSGBOX_DEFAULT
-# 323 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 324 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	playse SE_M_PETAL_DANCE
-# 325 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	waitse
-# 326 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	playse SE_PIN
-# 327 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	applymovement LOCALID_AZALEA_TOWN_KURT, Common_Movement_ExclamationMark
-# 328 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-# 329 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	delay 60
-# 330 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	waitse
-# 331 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	playse SE_M_PETAL_DANCE
-# 332 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	waitse
-# 333 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	applymovement LOCALID_AZALEA_TOWN_KURT, AzaleaTownKurt_Movement_Look_Around
-# 334 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, AzaleaTownKurt_Movement_Look_Around
-# 335 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	waitmovement 0
-# 336 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	waitmovement 0
-# 337 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_KurtGsBall2::
-# 338 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_Kurt_Whatwasthat, MSGBOX_DEFAULT
-# 339 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	setvar VAR_AZALEA_TOWN_STATE, 8
-# 340 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 341 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	release
-# 342 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 343 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 344 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_KurtGsBall3::
-# 345 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_Forest, MSGBOX_DEFAULT
-# 346 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 347 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	delay 30
-# 348 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_BallAnyway, MSGBOX_DEFAULT
-# 349 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 350 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto KurtDaily
-# 351 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	goto KurtCraft_EventScript_Entry
 	release
-# 352 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 353 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_BallAnyway:
-# 354 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Anyway, can I make you some Balls?$"
-# 355 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 356 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_OakPhoto::
-# 357 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_OakPhoto, MSGBOX_SIGN
-# 358 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 359 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 360 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 361 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_EventScript_CelebiStatue::
-# 362 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtsHouse_Text_CelebiStatue, MSGBOX_SIGN
-# 363 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
-# 364 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	end
-# 365 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 366 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTownKurt_Movement_Look_Around:
-# 367 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	face_left
-# 368 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	delay_8
-# 369 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	face_right
-# 370 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	delay_8
-# 371 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	face_up
-# 372 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	delay_8
-# 373 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	face_down
-# 374 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	delay_8
-# 375 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	face_left
-# 376 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	step_end
-# 377 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 378 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTownKurt_Movement_Making_Ball:
-# 379 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	face_up
-# 380 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	walk_in_place_fast_up
-# 381 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	delay_8
-# 382 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	walk_in_place_fast_up
-# 383 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	delay_8
-# 384 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	walk_in_place_fast_up
-# 385 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	step_end
-# 386 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 387 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_Movement_Player:
-# 388 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	face_right
-# 389 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	lock_facing_direction
-# 390 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	walk_left
-# 391 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	unlock_facing_direction
-# 392 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	step_end
-# 393 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 394 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 AzaleaTown_KurtsHouse_Movement_KurtWalkDown:
-# 395 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	walk_fast_down
-# 396 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	walk_fast_down
-# 397 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	walk_fast_down
-# 398 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	walk_fast_down
-# 399 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	walk_fast_down
-# 400 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	walk_fast_down
-# 401 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	step_end
-# 402 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 403 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtGetStarted:
-# 404 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "Kurt: I'll get started right now!$"
-# 405 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KURT}I'll get started right now!$"
 
-# 406 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtMakingBallsMustWait:
-# 407 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Hm? Who are you?\p"
-# 408 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "{PLAYER}, eh? You want me to make\n"
-# 409 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "some Balls?\p"
-# 410 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Sorry, but that'll have to wait.\p"
-# 411 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Do you know Team Rocket?\n"
-# 412 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Ah, don't worry.\p"
-# 413 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "I'll tell you anyhow.\p"
-# 414 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Team Rocket's an evil gang that\n"
-# 415 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "uses Pokémon for their dirty work.\p"
-# 416 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "They're supposed to have disbanded\n"
-# 417 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "three years ago.\p"
-# 418 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Anyway, they're at the Well,\n"
-# 419 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "cutting off Slowpoketails to sell!\p"
-# 420 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "So I'm going to go give them a\n"
-# 421 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "lesson in pain!\p"
-# 422 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Hang on, Slowpoke! Old Kurt\n"
-# 423 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "is on his way!$"
-# 424 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 425 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtHonoredToMakeBalls:
-# 426 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "Kurt: Hi, {PLAYER}!\p"
-# 427 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KURT}Hi, {PLAYER}!\p"
 	.string "You handled yourself like a\n"
-# 428 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "real hero at the Well.\p"
-# 429 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "I like your style!\p"
-# 430 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "I would be honored to make\n"
-# 431 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Balls for a trainer like you.\p"
-# 432 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "This is all I have now, \n"
-# 433 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "but take it.$"
-# 434 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 435 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtBallsFromApricorns:
-# 436 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "Kurt: I make Balls from Berries.\p"
-# 437 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "Collect them from trees and bring\n"
-# 438 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "'em to me in batches of 5.\p"
-# 439 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "I'll make Balls out of them.$"
-# 440 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KURT}I make Balls out of Berries.\p"
+	.string "Nobody else does. The shops sell you a\n"
+	.string "Poké Ball and that's the end of their\l"
+	.string "imagination.\p"
+	.string "Bring me Berries and tell me what you\n"
+	.string "want. The better I get at a shape, the\l"
+	.string "fewer Berries it costs you.$"
 
-# 441 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtAskYouHaveAnApricorn:
-# 442 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "Kurt: You have 5 Berries for me?\p"
-# 443 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KURT}You've brought me Berries?\p"
 	.string "Fine! I'll turn them into Balls.$"
-# 444 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 445 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtThatsALetdown:
-# 446 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "Kurt: I don't see 5 {STR_VAR_1}s!$"
-# 447 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KURT}That's a letdown.\p"
+	.string "I need {STR_VAR_3} {STR_VAR_1} for a\n"
+	.string "batch of those, and you haven't got\l"
+	.string "them on you.$"
 
-# 448 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtJustFinishedYourBall:
-# 449 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "Kurt: Ah, {PLAYER}! \p"
-# 450 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KURT}Ah, {PLAYER}!\p"
 	.string "I just finished your Ball. Here!$"
-# 451 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 452 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtTurnedOutGreat:
-# 453 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "Kurt: That turned out great.\p"
-# 454 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
+	.string "{SPEAKER NAME_KURT}That turned out great.\p"
 	.string "Try catching Pokémon with it.$"
-# 455 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 456 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtWhatIsThat:
-# 457 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Wh-what is that?\p"
-# 458 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "I've never seen one before.\p"
-# 459 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "It looks a like a Poké Ball, but\n"
-# 460 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "it appears to be something else.\p"
-# 461 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Let me check it for you.$"
-# 462 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 463 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtImCheckingItNow:
-# 464 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "I'm checking it now.$"
-# 465 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 466 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtAhHaISee:
-# 467 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Ah-ha! I see! So…$"
-# 468 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 469 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_KurtThisBallStartedToShake:
-# 470 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "{PLAYER}!\p"
-# 471 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "This Ball started to shake\n"
-# 472 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "while I was checking it.\p"
-# 473 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "There must be something to this!$"
-# 474 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 475 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_Kurt_Whatwasthat:
-# 476 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "What was that sound?!\p"
-# 477 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Let's go outside to investigate!$"
-# 478 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 479 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_GranddaughterSlowpokeGone:
-# 480 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "The Slowpoke are gone… \n"
-# 481 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Were they taken away by bad people?$"
-# 482 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 483 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_GranddaughterLonely:
-# 484 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Grandpa's gone… I'm so lonely…$"
-# 485 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 486 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_GranddaughterSlowpokeBack:
-# 487 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "The Slowpoke my dad gave me came back!\p"
-# 488 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Its Tail is growing back too!$"
-# 489 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 490 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_GranddaughterDad:
-# 491 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Dad works at Silph where\n"
-# 492 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "he studies Poké Balls.\p"
-# 493 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "I have to stay home\n"
-# 494 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "with Grandpa and Slowpoke.$"
-# 495 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 496 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_GranddaughterHelp:
-# 497 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "I get to help Grandpa now!\p"
-# 498 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "We'll make good Balls\n"
-# 499 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "for you, so please wait!$"
-# 500 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 501 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_GranddaughterFun:
-# 502 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "It's fun to make Balls!$"
-# 503 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 504 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_GranddaughterSound:
-# 505 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Did that sound come from\n"
-# 506 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Ilex Forest????$"
-# 507 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 508 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_Forest:
-# 509 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Did you check Ilex Forest yet?\n"
-# 510 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "It sounds very restless.$"
-# 511 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 512 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_Slowpoke:
-# 513 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "Slowpoke: … Yawn?$"
-# 514 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 515 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_OakPhoto:
-# 516 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "…A young Prof. Oak?$"
-# 517 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 
-# 518 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 KurtsHouse_Text_CelebiStatue:
-# 519 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "It's a statue of the forest's\n"
-# 520 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "protector.$"
+@ opens the group menu
+KurtsHouse_Text_KurtWhatToday:
+	.string "{SPEAKER NAME_KURT}Right then. What are we making?$"
+
+@ the quota is spent
+KurtsHouse_Text_KurtQuotaSpent:
+	.string "{SPEAKER NAME_KURT}That's my lot for today.\p"
+	.string "Ball-making isn't stirring soup,\n"
+	.string "{PLAYER}. Each one takes what it takes,\l"
+	.string "and these hands only have so many in\l"
+	.string "them before the shells start coming out\l"
+	.string "crooked.\p"
+	.string "Come back in the morning. I'll have the\n"
+	.string "fire up.$"
+
+KurtsHouse_Text_KurtComeBack:
+	.string "{SPEAKER NAME_KURT}Suit yourself.\p"
+	.string "I'll be here. I'm always here.$"
+
+KurtsHouse_Text_KurtNoRoom:
+	.string "{SPEAKER NAME_KURT}Hold on -- where were you planning to\n"
+	.string "put them?\p"
+	.string "Your bag's full, lad. Go and make room.\n"
+	.string "Nothing's wasted: I haven't touched\l"
+	.string "your Berries.$"
+
+@ the free daily draw, no exp
+KurtsHouse_Text_KurtTodaysSurplus:
+	.string "{SPEAKER NAME_KURT}Here's what I had spare this morning.\p"
+	.string "Come by tomorrow and there'll be more.\n"
+	.string "There always is.$"
+
+@ the sixteenth face of the die
+KurtsHouse_Text_KurtMasterpiece:
+	.string "{SPEAKER NAME_KURT}…Well, now.\p"
+	.string "This one's a masterpiece. I can hardly\n"
+	.string "believe I managed to craft it.\p"
+	.string "Don't ask me to make another. I\n"
+	.string "couldn't tell you how I did it.$"
+KurtsHouse_Text_GranddaughterTierOne:
+	.string "Grandpa only knows the easy shapes\n"
+	.string "right now.\p"
+	.string "He gets grumpy about it. He says his\n"
+	.string "hands have forgotten and they need\l"
+	.string "reminding.\p"
+	.string "Bring him more Berries! That's how you\n"
+	.string "remind hands.$"
+
+KurtsHouse_Text_GranddaughterTierTwo:
+	.string "He's doing the old ones again! The ones\n"
+	.string "with the funny names.\p"
+	.string "He made a Lure Ball yesterday and then\n"
+	.string "he sat looking at it for ages and didn't\l"
+	.string "say anything.\p"
+	.string "I think he was happy. It's hard to tell\n"
+	.string "with Grandpa.$"
+
+KurtsHouse_Text_GranddaughterTierThree:
+	.string "He's started making the new-fangled\n"
+	.string "ones.\p"
+	.string "He complains the whole time. He says\n"
+	.string "they're all springs and no soul.\p"
+	.string "…He's very good at them, though. Don't\n"
+	.string "tell him I said that.$"
+
+KurtsHouse_Text_GranddaughterTierFour:
+	.string "Grandpa can make anything now.\p"
+	.string "He uses hardly any Berries any more,\n"
+	.string "either. He says that's what getting\l"
+	.string "good means -- wasting less.\p"
+	.string "Ask him for the strange one. He\n"
+	.string "pretends he hates it and he laughs\l"
+	.string "every single time.$"
 
 KurtMakesBallsDaily::
-# 524 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	msgbox KurtMakesBallsDaily_Text_0
-# 526 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
 	return
-
-
-KurtDaily::
-# 531 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto_if_set FLAG_DAILY_KURT_FREE_BALLS, KurtDaily_2
-# 537 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtDaily_Text_1
-# 539 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	compare VAR_KURT_PROFICIENCY, 4
-	goto_if_ge KurtDaily_5
-# 542 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	random 15
-KurtDaily_4:
-# 544 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	switch VAR_RESULT
-# 545 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 0, KurtDaily_10
-# 547 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 1, KurtDaily_11
-# 549 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 2, KurtDaily_12
-# 551 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 3, KurtDaily_13
-# 553 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 4, KurtDaily_14
-# 555 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 5, KurtDaily_15
-# 557 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 6, KurtDaily_16
-# 559 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 7, KurtDaily_17
-# 561 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 8, KurtDaily_18
-# 563 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 9, KurtDaily_19
-# 565 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 10, KurtDaily_20
-# 567 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 11, KurtDaily_21
-# 569 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 12, KurtDaily_22
-# 571 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 13, KurtDaily_23
-# 573 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 14, KurtDaily_24
-# 575 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	case 15, KurtDaily_25
-KurtDaily_8:
-# 584 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	setflag FLAG_DAILY_KURT_FREE_BALLS
-# 585 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	compare VAR_KURT_PROFICIENCY, 255
-	goto_if_lt KurtDaily_27
-KurtDaily_26:
-# 588 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-	end
-
-KurtDaily_2:
-# 532 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtDaily_Text_0
-# 534 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	release
-	end
-
-KurtDaily_5:
-# 540 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	random 16
-	goto KurtDaily_4
-
-KurtDaily_10:
-# 546 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_LUXURY_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_11:
-# 548 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_LEVEL_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_12:
-# 550 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_LURE_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_13:
-# 552 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_MOON_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_14:
-# 554 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_FRIEND_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_15:
-# 556 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_LOVE_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_16:
-# 558 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_FAST_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_17:
-# 560 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_HEAVY_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_18:
-# 562 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_DREAM_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_19:
-# 564 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_SAFARI_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_20:
-# 566 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_SPORT_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_21:
-# 568 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_PARK_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_22:
-# 570 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_BEAST_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_23:
-# 572 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_CHERISH_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_24:
-# 574 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_STRANGE_BALL, 5
-	goto KurtDaily_8
-
-KurtDaily_25:
-# 576 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	msgbox KurtDaily_Text_2
-# 580 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	giveitem ITEM_MASTER_BALL, 1
-# 581 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	setflag FLAG_KURT_CRAFTED_MASTER_BALL
-# 582 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	special Achievement_CheckAll
-	goto KurtDaily_8
-
-KurtDaily_27:
-# 586 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	addvar VAR_KURT_PROFICIENCY, 1
-	goto KurtDaily_26
 
 
 KurtMakesBallsDaily_Text_0:
-# 524 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	.string "I will give you any surplus Poké Balls\n"
 	.string "I create every day, so stop by!$"
-
-KurtDaily_Text_0:
-# 532 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "Come back tomorrow when I have crafted\n"
-	.string "some more.$"
-
-KurtDaily_Text_1:
-# 537 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "Here's what I got for you today.\n"
-	.string "Stop by tomorrow again for more.$"
-
-KurtDaily_Text_2:
-# 576 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	.string "This once is a masterpiece!\p"
-	.string "I can hardly believe I managed\n"
-	.string "to craft it.$"

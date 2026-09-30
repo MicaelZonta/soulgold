@@ -104,6 +104,15 @@ enum __attribute__((packed)) Stat
 #define SHINY_ODDS 512 // playtest odds. Actual probability is SHINY_ODDS/65536.
 #define RELEASE_SHINY_ODDS 256
 
+enum ShinyRateOption
+{
+    SHINY_RATE_DEFAULT = 0, // Alpha saves
+    SHINY_RATE_256 = 1,
+    SHINY_RATE_512 = 2,
+    SHINY_RATE_1024 = 3,
+    SHINY_RATE_COUNT,
+};
+
 // Ribbon IDs used by TV and Pokénav
 #define CHAMPION_RIBBON       0
 #define COOL_RIBBON_NORMAL    1
@@ -208,6 +217,7 @@ enum OtIdMethod
 #define FRIENDSHIP_EVENT_FAINT_LARGE      8 // If opponent was >= 30 levels higher. See AdjustFriendshipOnBattleFaint
 #define FRIENDSHIP_EVENT_HAIRCUT1         9
 #define FRIENDSHIP_EVENT_HAIRCUT2         10
+#define FRIENDSHIP_EVENT_GROOMING         11
 
 // Constants for GetLeadMonFriendshipScore
 #define FRIENDSHIP_NONE        0
@@ -237,7 +247,7 @@ enum OtIdMethod
 #define MAX_IV_MASK 31
 #define USE_RANDOM_IVS (MAX_PER_STAT_IVS + 1)
 #define MAX_PER_STAT_EVS ((P_EV_CAP >= GEN_6) ? 252 : 255)
-#define MAX_TOTAL_EVS 510
+#define MAX_TOTAL_EVS 1512
 #define EV_ITEM_RAISE_LIMIT ((I_VITAMIN_EV_CAP >= GEN_8) ? MAX_PER_STAT_EVS : 100)
 
 // Move category defines.

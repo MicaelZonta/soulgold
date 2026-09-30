@@ -194,14 +194,6 @@ Route128_EventScript_RematchIsaiah::
 	msgbox Route128_Text_IsaiahPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-Route128_EventScript_Katelyn::
-	trainerbattle_single TRAINER_KATELYN_1, Route128_Text_KatelynIntro, Route128_Text_KatelynDefeat, Route128_EventScript_RegisterKatelyn
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route128_EventScript_RematchKatelyn
-	msgbox Route128_Text_KatelynPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 Route128_EventScript_RegisterKatelyn::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0
@@ -209,19 +201,9 @@ Route128_EventScript_RegisterKatelyn::
 	release
 	end
 
-Route128_EventScript_RematchKatelyn::
-	trainerbattle_rematch TRAINER_KATELYN_1, Route128_Text_KatelynRematchIntro, Route128_Text_KatelynRematchDefeat
-	msgbox Route128_Text_KatelynPostRematch, MSGBOX_AUTOCLOSE
-	end
-
 Route128_EventScript_Alexa::
 	trainerbattle_single TRAINER_NONE, Route128_Text_AlexaIntro, Route128_Text_AlexaDefeat
 	msgbox Route128_Text_AlexaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route128_EventScript_Ruben::
-	trainerbattle_single TRAINER_RUBEN, Route128_Text_RubenIntro, Route128_Text_RubenDefeat
-	msgbox Route128_Text_RubenPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route128_EventScript_Wayne::
@@ -297,4 +279,3 @@ Route128_Text_StevenImGoingToSootopolis:
 	.string "but don't do anything reckless.\p"
 	.string "Okay.\n"
 	.string "I'm going to Sootopolis.$"
-

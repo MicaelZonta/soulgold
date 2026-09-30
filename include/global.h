@@ -284,7 +284,6 @@ struct SaveBlock3
 #if APRICORN_TREE_COUNT > 0
     u8 apricornTrees[NUM_APRICORN_TREE_BYTES];
 #endif
-    u32 candyJarExp;
 }; /* max size 1624 bytes */
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;
@@ -636,7 +635,7 @@ struct SaveBlock2
              u16 unused1:1; // Legacy one-bit party-menu style; read only for migration.
              u16 optionsTrainerLevelScaling:1; //0 = off, 1 = on
              u16 optionsWildLevelScaling:1; //0 = off, 1 = on
-             u16 optionsDifficulty:1; //0 = normal, 1 = hard
+             u16 optionsDifficulty:1; // Reserved legacy difficulty bit; ignored.
              u16 optionsFastIntroNoSlide:1; //0 = show intro slide, 1 = skip intro slide
              u16 optionsBattleSpeed:2;
              u16 optionsFont:2; //0 = emerald, 1 = fire red

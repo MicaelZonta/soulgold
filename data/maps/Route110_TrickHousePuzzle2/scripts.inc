@@ -94,11 +94,6 @@ Route110_TrickHousePuzzle2_EventScript_Paul::
 	msgbox Route110_TrickHousePuzzle2_Text_PaulPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route110_TrickHousePuzzle2_EventScript_Georgia::
-	trainerbattle_single TRAINER_GEORGIA, Route110_TrickHousePuzzle2_Text_GeorgiaIntro, Route110_TrickHousePuzzle2_Text_GeorgiaDefeat
-	msgbox Route110_TrickHousePuzzle2_Text_GeorgiaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route110_TrickHousePuzzle2_Text_WroteSecretCodeLockOpened:
 	.string "{PLAYER} wrote down the secret code\n"
 	.string "on the door.\p"
@@ -138,4 +133,3 @@ Route110_TrickHousePuzzle2_Text_GeorgiaDefeat:
 Route110_TrickHousePuzzle2_Text_GeorgiaPostBattle:
 	.string "You're strong, aren't you?\n"
 	.string "Maybe even enough to be a Gym Leader!$"
-

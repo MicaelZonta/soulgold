@@ -672,6 +672,9 @@ extern const struct AbilityInfo gAbilitiesInfo[];
 extern const struct NatureInfo gNaturesInfo[];
 
 u32 GetCurrentShinyOdds(void);
+enum ShinyRateOption GetShinyRateOption(void);
+u32 GetShinyGenerationOdds(void);
+u32 GetTradeShinyGenerationOdds(void);
 void ZeroBoxMonData(struct BoxPokemon *boxMon);
 void ZeroMonData(struct Pokemon *mon);
 void ZeroPlayerPartyMons(void);
@@ -888,6 +891,7 @@ void RestoreFacilitySketchedMoves(struct Pokemon *savedMon, struct Pokemon *faci
 bool32 IsSpeciesOfType(u32 species, enum Type type);
 u16 GetSpeciesRandomSeeded(u16 species, u8 type, u16 additionalOffset);
 struct BoxPokemon *GetSelectedBoxMonFromPcOrParty(void);
+bool32 TrySelectedMonMoveFormChange(void);
 u32 GiveScriptedMonToPlayer(struct Pokemon *mon, u8 slot);
 void ChangePokemonNicknameWithCallback(void (*callback)(void));
 // Multi Items

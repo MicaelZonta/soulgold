@@ -72,6 +72,7 @@ static bool8 IsArrowWarpMetatileBehavior(u16, enum Direction);
 static s8 GetWarpEventAtMapPosition(struct MapHeader *, struct MapPosition *);
 static void SetupWarp(struct MapHeader *, s8, struct MapPosition *);
 static bool8 TryDoorWarp(struct MapPosition *, u16, enum Direction);
+static bool8 TryLockedDoorScript(struct MapPosition *, u16, enum Direction);
 static s8 GetWarpEventAtPosition(struct MapHeader *, u16, u16, u8);
 static const u8 *GetCoordEventScriptAtPosition(struct MapHeader *, u16, u16, u8);
 static const struct BgEvent *GetBackgroundEventAtPosition(struct MapHeader *, u16, u16, u8);
@@ -79,6 +80,7 @@ static bool8 TryStartCoordEventScript(struct MapPosition *);
 static bool8 TryStartWarpEventScript(struct MapPosition *, u16);
 static bool8 TryStartMiscWalkingScripts(u16);
 static bool8 TryStartStepCountScript(u16);
+static bool8 ShouldDoRiftMissionCall(void);
 static void UpdateFriendshipStepCounter(void);
 static void UpdateFollowerStepCounter(void);
 #if OW_POISON_DAMAGE < GEN_5
@@ -277,6 +279,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (input->heldDirection2 && input->dpadDirection == playerDirection)
     {
+        if (TryLockedDoorScript(&position, metatileBehavior, playerDirection) == TRUE)
+            return TRUE;
         if (TryDoorWarp(&position, metatileBehavior, playerDirection) == TRUE)
             return TRUE;
     }
@@ -837,6 +841,11 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
             ScriptContext_SetupScript(MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall);
             return TRUE;
         }
+        if (ShouldDoRiftMissionCall() == TRUE)
+        {
+            ScriptContext_SetupScript(RiftMissions_EventScript_LookerCall);
+            return TRUE;
+        }
     }
 
     if (SafariZoneTakeStep() == TRUE)
@@ -849,6 +858,57 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
     if (TryStartMatchCall())
         return TRUE;
     return FALSE;
+}
+
+// Rift Missions: Looker telephones to summon the player to the house in Olivine,
+// and until he does the briefing there is not available at all - the house only
+// offers the waiting line (data/scripts/rift_missions.inc has the full contract).
+//
+// The four states below mean "the last mission is closed and the next briefing is
+// pending": 4 Mahogany, 6 Cherrygrove, 8 New Bark, 10 the reunion. A list and not
+// a range, because the odd values in between are incidents in progress.
+// State 2 is deliberately absent: Blackthorn's summons is the dedicated call
+// scene in New Bark, and that invitation persists until the briefing without ever
+// producing a reminder.
+//
+// Three gates, in cheapest-first order:
+//   FLAG_DAILY_LOOKER_CALL       he has already called today. A daily flag, so
+//                                ClearDailyFlags opens the next attempt at the
+//                                change of date - the game calendar, not 24h.
+//                                Every script that closes a mission sets it, so
+//                                finishing Blackthorn on the day he called does
+//                                not buy a second call that day.
+//   FLAG_RIFT_LOOKER_SUMMONS     an invitation is already pending. One issued is
+//                                never re-issued; it waits across days and saves.
+//   ...TYPE_NULL_PENDING         the previous mission has unfinished business.
+//                                Today that is only Gladion still holding the
+//                                Type: Null; any future mission that can end
+//                                with a gift pending belongs in this check.
+//
+// Never inside his own house: the player is already standing in front of him, and
+// being in there only postpones the call - it does not consume it.
+static bool8 ShouldDoRiftMissionCall(void)
+{
+    if (FlagGet(FLAG_DAILY_LOOKER_CALL) == TRUE)
+        return FALSE;
+    if (FlagGet(FLAG_RIFT_LOOKER_SUMMONS) == TRUE)
+        return FALSE;
+    if (FlagGet(FLAG_BLACKTHORN_TYPE_NULL_PENDING) == TRUE)
+        return FALSE;
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_OLIVINE_CITY_HOUSE1)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_OLIVINE_CITY_HOUSE1))
+        return FALSE;
+
+    switch (VarGet(VAR_RIFT_MISSIONS_STATE))
+    {
+    case 4:
+    case 6:
+    case 8:
+    case 10:
+        return TRUE;
+    default:
+        return FALSE;
+    }
 }
 
 static void UNUSED ClearFriendshipStepCounter(void)
@@ -1107,6 +1167,60 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
         if (mapHeader->events->warps[warpEvent->warpId].mapNum == MAP_NUM(MAP_DYNAMIC))
             SetDynamicWarp(mapHeader->events->warps[warpEventId].warpId, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, warpEventId);
     }
+}
+
+// Rift Missions: while a town is evacuated its residents are locked indoors.
+// Every building door of that town refuses the player, except the ones that
+// must stay open (the Pokémon Center: healing, and the blackout respawn).
+// One row per mission; the lock lives exactly as long as the event flag.
+// New Bark has no Center, so its two open doors are the lab (the shelter, where
+// Mom heals the party once she is inside) and the player's own house.
+// openDoorMap2 = 0 means "only one door stays open": no map is MAP_GROUP 0 /
+// MAP_NUM 0 in a town row, so it never matches a real warp.
+struct LockedTownDoors
+{
+    u16 eventFlag;
+    u16 townMap;
+    u16 openDoorMap;
+    u16 openDoorMap2;
+    const u8 *script;
+};
+
+static const struct LockedTownDoors sLockedTownDoors[] =
+{
+    { FLAG_EVENT_ULTRABEAST_BLACKTHORN, MAP_BLACKTHORN_CITY, MAP_BLACKTHORN_CITY_POKEMON_CENTER, 0, BlackthornCity_EventScript_DoorLocked },
+    { FLAG_EVENT_ULTRABEAST_MAHOGANY,   MAP_MAHOGANYTOWN,    MAP_MAHOGANY_TOWN_POKEMON_CENTER,   0, Mahoganytown_EventScript_DoorLocked },
+    { FLAG_EVENT_ULTRABEAST_CHERRYGROVE, MAP_CHERRYGROVE_CITY, MAP_CHERRYGROVE_CITY_POKEMON_CENTER, 0, CherrygroveCity_EventScript_DoorLocked },
+    { FLAG_EVENT_ULTRABEAST_NEWBARK,    MAP_NEW_BARK_TOWN,   MAP_NEW_BARK_TOWN_LAB, MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F, NewBarkTown_EventScript_DoorLocked },
+};
+
+static bool8 TryLockedDoorScript(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)
+{
+    u32 i;
+    s8 warpEventId;
+    const struct WarpEvent *warp;
+    u16 currentMap = (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
+
+    if (direction != DIR_NORTH || MetatileBehavior_IsWarpDoor(metatileBehavior) != TRUE)
+        return FALSE;
+
+    for (i = 0; i < ARRAY_COUNT(sLockedTownDoors); i++)
+    {
+        if (sLockedTownDoors[i].townMap != currentMap || !FlagGet(sLockedTownDoors[i].eventFlag))
+            continue;
+        warpEventId = GetWarpEventAtMapPosition(&gMapHeader, position);
+        if (warpEventId == WARP_ID_NONE)
+            return FALSE;
+        warp = &gMapHeader.events->warps[warpEventId];
+        if (((warp->mapGroup << 8) | warp->mapNum) == sLockedTownDoors[i].openDoorMap)
+            return FALSE;
+        if (sLockedTownDoors[i].openDoorMap2 != 0
+         && ((warp->mapGroup << 8) | warp->mapNum) == sLockedTownDoors[i].openDoorMap2)
+            return FALSE;
+        ScriptContext_SetupScript(sLockedTownDoors[i].script);
+        return TRUE;
+    }
+    return FALSE;
 }
 
 static bool8 TryDoorWarp(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)

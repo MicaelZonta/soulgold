@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_GOLDENROD_FLOWER_SHOP_OWNER",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
       "x": 2,
       "y": 4,
@@ -78,6 +79,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UniversityFlorist",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_GOLDENROD_FLOWER_SHOP_LILLIE",
+      "graphics_id": "OBJ_EVENT_GFX_LILLIE",
+      "x": 4,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GoldenrodCity_FlowerShop_EventScript_Lillie",
+      "flag": "FLAG_RECEIVED_SQUIRTBOTTLE"
+    },
+    {
+      "local_id": "LOCALID_GOLDENROD_FLOWER_SHOP_VULPIX",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VULPIX_ALOLA)",
+      "x": 3,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_RECEIVED_SQUIRTBOTTLE"
     }
   ],
   "warp_events": [
@@ -89,6 +118,16 @@
       "dest_warp_id": "5"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "GoldenrodCity_FlowerShop_EventScript_LillieTrigger"
+    }
+  ],
   "bg_events": []
 }

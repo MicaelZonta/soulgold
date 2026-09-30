@@ -13,6 +13,11 @@ EcruteakCity_Theater_MapScripts::
 	.byte 0
 
 EcruteakCity_Theater_OnTransition::
+	@ Prof. Elm jumps this var straight to 4 (Kimono Girls) whether or not the
+	@ Rocket arc (0 -> 1 -> 2 -> 3) was played. From 4 on the Grunt must be
+	@ gone, or beating him late rewinds the var to 2 and the Kimono Girls
+	@ event can never start.
+	call_if_ge VAR_ECRUTEAK_CITY_THEATER, 4, EcruteakCity_Theater_MapScript_CloseRocketArc
 	call_if_eq VAR_ECRUTEAK_CITY_THEATER, 1, EcruteakCity_Theater_MapScript_SetRocketSceneActive
 	call_if_eq VAR_ECRUTEAK_CITY_THEATER, 7, EcruteakCity_Theater_MapScript_SetKimonoMovement
 	goto_if_set FLAG_IS_CHAMPION, EcruteakTheater_ShowOrHideMeloetta
@@ -28,6 +33,10 @@ EcruteakTheater_ShowMeloetta::
 	return
 EcruteakTheater_HideMeloetta::
 	setflag FLAG_HIDE_MELOETTA
+	return
+
+EcruteakCity_Theater_MapScript_CloseRocketArc::
+	setflag FLAG_HIDE_ECRUTEAK_ROCKET
 	return
 
 EcruteakCity_Theater_MapScript_SetRocketSceneActive::
@@ -171,7 +180,9 @@ EcruteakCity_Theater_EventScript_Rocket::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	msgbox EcruteakCity_Theater_Text_KimonoRocket3, MSGBOX_DEFAULT
 	closemessage	
+	goto_if_ge VAR_ECRUTEAK_CITY_THEATER, 2, EcruteakCity_Theater_EventScript_RocketDone
 	setvar VAR_ECRUTEAK_CITY_THEATER, 2
+EcruteakCity_Theater_EventScript_RocketDone::
 	release
 	end
 	
@@ -710,6 +721,7 @@ EcruteakCity_Theater_EventScript_HoohBuffer::
 	bufferspeciesname STR_VAR_1, SPECIES_HO_OH
 	return
 EcruteakCity_Theater_EventScript_LegendaryCutscene::
+	call EcruteakCity_Theater_EventScript_ResolveLugiaOrHooh
 	call_if_eq VAR_LUGIA_OR_HOOH, 1, EcruteakCity_Theater_EventScript_LugiaBuffer
 	call_if_eq VAR_LUGIA_OR_HOOH, 2, EcruteakCity_Theater_EventScript_HoohBuffer 
 	createfieldmugshot MUGSHOT_KIMONO_GIRL
@@ -721,6 +733,7 @@ EcruteakCity_Theater_EventScript_LegendaryCutscene::
 	waitmovement 0
 	setvar VAR_ECRUTEAK_CITY_THEATER, 6
 EcruteakCity_Theater_EventScript_ZukiBattle::
+	call EcruteakCity_Theater_EventScript_ResolveLugiaOrHooh
 	createfieldmugshot MUGSHOT_KIMONO_GIRL
 	msgbox EcruteakCity_Theater_Text_ZukiSeenAgain, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, EcruteakCity_Theater_EventScript_LegendaryDenied
@@ -779,8 +792,27 @@ EcruteakCity_Theater_EventScript_BeatGauntlet::
 	waitmovement 0
 	createfieldmugshot MUGSHOT_KIMONO_GIRL
 	msgbox EcruteakCity_Theater_Text_ZukiDone, MSGBOX_DEFAULT
-	goto_if_eq VAR_LUGIA_OR_HOOH, 1, EcruteakCity_Theater_EventScript_Lugia
+	@ Any value other than 2 gives the Tidal Bell. Two plain gotos used to fall
+	@ through into the correction blocks below when the var was 0, hit their
+	@ 'return' with nothing on the call stack and kill the script with the
+	@ "Please take it." box still open and the player free to walk.
 	goto_if_eq VAR_LUGIA_OR_HOOH, 2, EcruteakCity_Theater_EventScript_Hooh
+	goto EcruteakCity_Theater_EventScript_Lugia
+
+@ VAR_LUGIA_OR_HOOH is only set when the Radio Tower director hands over a
+@ wing. A save that reaches the theater without it (0) is resolved from the
+@ wing in the bag; with no wing at all it falls back to Lugia (1).
+EcruteakCity_Theater_EventScript_ResolveLugiaOrHooh::
+	goto_if_eq VAR_LUGIA_OR_HOOH, 1, EcruteakCity_Theater_EventScript_ResolveLugiaOrHoohEnd
+	goto_if_eq VAR_LUGIA_OR_HOOH, 2, EcruteakCity_Theater_EventScript_ResolveLugiaOrHoohEnd
+	setvar VAR_LUGIA_OR_HOOH, 1
+	checkitem ITEM_RAINBOW_WING
+	goto_if_eq VAR_RESULT, FALSE, EcruteakCity_Theater_EventScript_ResolveLugiaOrHoohEnd
+	checkitem ITEM_SILVER_WING
+	goto_if_eq VAR_RESULT, TRUE, EcruteakCity_Theater_EventScript_ResolveLugiaOrHoohEnd
+	setvar VAR_LUGIA_OR_HOOH, 2
+EcruteakCity_Theater_EventScript_ResolveLugiaOrHoohEnd::
+	return
 
 	EcruteakCity_Theater_Movement_SouthCorrection::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1
@@ -1021,10 +1053,10 @@ EcruteakCity_Theater_Text_ZukiSeen:
 	.string "To bring back {STR_VAR_1}, we\n"
 	.string "needed someone with the right bond\l"
 	.string "with Pokémon.\p"
-	.string "We asked Mr. Pokémon to give this\n"
+	.string "We asked Kukui to give this\n"
 	.string "Mystery Egg to\l"
 	.string "whoever showed potential.\p"
-	.string "The Egg went from Mr. Pokémon\n"
+	.string "The Egg went from Kukui\n"
 	.string "to Prof. Elm, then to you.\p"
 	.string "But being pure alone is not enough\n"
 	.string "to face the power of this Pokémon.$"
@@ -1122,7 +1154,7 @@ EcruteakCity_Theater_Text_ZukiAfterAll:
 	.string "We appreciate how you lived up\n"
 	.string "to our hopes, {PLAYER}!\p"
 	.string "If you learned anything from\n"
-	.string "this, thank Mr. Pokémon and\l"
+	.string "this, thank Prof. Kukui and\l"
 	.string "Prof. Elm...$"
 
 EcruteakCity_Theater_Text_KimonoGirlsBeforeBattle:

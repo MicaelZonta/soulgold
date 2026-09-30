@@ -89,7 +89,7 @@
 #define SONG_MUS_DP_EVOLUTION                           0
 #define SONG_MUS_DP_LUCAS                               0
 #define SONG_MUS_DP_DAWN                                0
-#define SONG_MUS_DP_LEGEND_APPEARS                      0
+#define SONG_MUS_DP_LEGEND_APPEARS                      1
 #define SONG_MUS_DP_CATASTROPHE                         0
 #define SONG_MUS_DP_POKE_RADAR                          0
 #define SONG_MUS_DP_SURF                                0
