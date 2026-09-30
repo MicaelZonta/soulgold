@@ -247,6 +247,75 @@ Nexus_Text_Colress_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Cada variação pega um ângulo diferente do personagem.
+
+**Variação 2 — método científico.** Humor de laboratório: hipótese, método, controle nenhum. Na derrota, a alegria de estar certo e perder ao mesmo tempo.
+
+**Antes da luta**
+
+> Hypothesis: this Trainer is stronger than they look.
+>
+> Method: battle. Controls: none whatsoever. My colleagues would be horrified.
+>
+> Let us proceed!
+
+**Derrota**
+
+> Hypothesis confirmed. How delightful, to be right and to lose at once.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Colress_Intro2:
+	.string "Hypothesis: this Trainer is stronger\n"
+	.string "than they look.\p"
+	.string "Method: battle. Controls: none\n"
+	.string "whatsoever. My colleagues would be\l"
+	.string "horrified.\p"
+	.string "Let us proceed!$"
+
+Nexus_Text_Colress_Defeat2:
+	.string "Hypothesis confirmed. How delightful,\n"
+	.string "to be right and to lose at once.$"
+```
+
+</details>
+
+**Variação 3 — já nos vimos?.** R21 em jogo: ele tem a sensação de já ter construído uma máquina para fazer o jogador perder. Pode ter acontecido, ou não; a fala não depende disso.
+
+**Antes da luta**
+
+> Have we met? I have the curious feeling I once built a machine to make you lose.
+>
+> It didn't work, I assume. They so rarely do on the interesting ones.
+>
+> Shall we test a new variable?
+
+**Derrota**
+
+> Ah… The variable was you. It is always you.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Colress_Intro3:
+	.string "Have we met? I have the curious feeling\n"
+	.string "I once built a machine to make you lose.\p"
+	.string "It didn't work, I assume. They so rarely\n"
+	.string "do on the interesting ones.\p"
+	.string "Shall we test a new variable?$"
+
+Nexus_Text_Colress_Defeat3:
+	.string "Ah… The variable was you. It is always\n"
+	.string "you.$"
+```
+
+</details>
+
+
+
 ### Diálogo associado ao lendário
 
 ✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Colress_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -306,6 +375,119 @@ Nexus_Text_Colress_ChampionAfter:
 	.string "very generous about it.\p"
 	.string "Refuse. I say that as a man who would\n"
 	.string "have said yes.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1: sobre a criatura, pelo olhar dele, sem dizer o nome da espécie. Labels no padrão `Nexus_Text_Colress_Champion*` + sufixo.
+
+**Variação 2 — a amostra.** O Colress guardou uma gota de amostra e pegou a seringa onze vezes sem usar. Curiosidade virou medo, e medo é dado novo. No fim ele despejou a amostra na água funda.
+
+**Antes da luta**
+
+> I collected a sample. Only a drop, from a thread it left on the glass.
+>
+> I have not tested it. I have picked up the syringe eleven times.
+>
+> A scientist is supposed to be curious. It turns out I am also afraid. That is new data.
+>
+> Let's gather some more. Battle!
+
+**Derrota**
+
+> A result I can trust. Thank you, sincerely.
+
+**Depois da luta**
+
+> I poured the sample out this morning, into the deep water. It glowed all the way down.
+>
+> Eleven attempts and one decision. Not a bad ratio.
+>
+> When it drifts close, don't hold still. It only chooses what stays still long enough.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Colress_ChampionIntro2:
+	.string "I collected a sample. Only a drop, from a\n"
+	.string "thread it left on the glass.\p"
+	.string "I have not tested it. I have picked up\n"
+	.string "the syringe eleven times.\p"
+	.string "A scientist is supposed to be curious.\n"
+	.string "It turns out I am also afraid. That is\l"
+	.string "new data.\p"
+	.string "Let's gather some more. Battle!$"
+
+Nexus_Text_Colress_ChampionDefeat2:
+	.string "A result I can trust. Thank you,\n"
+	.string "sincerely.$"
+
+Nexus_Text_Colress_ChampionAfter2:
+	.string "{SPEAKER NAME_COLRESS}I poured the sample out this morning,\n"
+	.string "into the deep water. It glowed all the\l"
+	.string "way down.\p"
+	.string "Eleven attempts and one decision. Not a\n"
+	.string "bad ratio.\p"
+	.string "When it drifts close, don't hold still.\n"
+	.string "It only chooses what stays still long\l"
+	.string "enough.$"
+```
+
+</details>
+
+**Variação 3 — a mulher de branco.** Alguém disse sim antes do jogador: uma mulher de branco, muito certa, muito bonita, que queria ser amada sem condição (a Lusamine de algum fragmento, nunca nomeada — fio Alola). Ele anotou tudo e não disse “pare”. O conselho: o time é quem diz pare.
+
+**Antes da luta**
+
+> Someone before you said yes to it. A woman in white. Very certain. Very beautiful.
+>
+> She wanted to be loved without conditions. It offered exactly that, and she let it in.
+>
+> I took notes. That is the part I think about.
+>
+> Show me your Pokémon's strength. Their own. Please.
+
+**Derrota**
+
+> Yes. That is what I should have been measuring.
+
+**Depois da luta**
+
+> A good experiment needs someone who can say stop. She had no one. I was standing right there.
+>
+> If it offers you anything, anything at all, look to your team first.
+>
+> They are your someone. Let them say stop.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Colress_ChampionIntro3:
+	.string "Someone before you said yes to it. A\n"
+	.string "woman in white. Very certain. Very\l"
+	.string "beautiful.\p"
+	.string "She wanted to be loved without\n"
+	.string "conditions. It offered exactly that,\l"
+	.string "and she let it in.\p"
+	.string "I took notes. That is the part I think\n"
+	.string "about.\p"
+	.string "Show me your Pokémon's strength. Their\n"
+	.string "own. Please.$"
+
+Nexus_Text_Colress_ChampionDefeat3:
+	.string "Yes. That is what I should have been\n"
+	.string "measuring.$"
+
+Nexus_Text_Colress_ChampionAfter3:
+	.string "{SPEAKER NAME_COLRESS}A good experiment needs someone who\n"
+	.string "can say stop. She had no one. I was\l"
+	.string "standing right there.\p"
+	.string "If it offers you anything, anything at\n"
+	.string "all, look to your team first.\p"
+	.string "They are your someone. Let them say\n"
+	.string "stop.$"
 ```
 
 </details>

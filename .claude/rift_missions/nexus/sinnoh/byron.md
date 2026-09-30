@@ -239,6 +239,77 @@ Nexus_Text_Byron_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Cada variação pega um ângulo diferente do personagem.
+
+**Variação 2 — a picareta perdida.** O Byron perdeu a picareta em algum fragmento e nem liga: a ferramenta de verdade do minerador é o time. Humor e tranquilidade de quem confia em pedra.
+
+**Antes da luta**
+
+> Hah! You've got the look of someone who's been walking a long while. So have I.
+>
+> I keep reaching for my pickaxe. Left it somewhere. Some harbor, some year.
+>
+> Doesn't matter! A miner's real tool is his team. Show me yours!
+
+**Derrota**
+
+> Hah! Struck a vein of pure steel there!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Byron_Intro2:
+	.string "Hah! You've got the look of someone\n"
+	.string "who's been walking a long while. So have\l"
+	.string "I.\p"
+	.string "I keep reaching for my pickaxe. Left it\n"
+	.string "somewhere. Some harbor, some year.\p"
+	.string "Doesn't matter! A miner's real tool is\n"
+	.string "his team. Show me yours!$"
+
+Nexus_Text_Byron_Defeat2:
+	.string "Hah! Struck a vein of pure steel there!$"
+```
+
+</details>
+
+**Variação 3 — o fóssil do filho.** Lembrança do Roark (sem nome): o fóssil que o Byron deu de aniversário, e o filho tentando vencer o pai com pedras desde então. A derrota é o pai pedindo segredo.
+
+**Antes da luta**
+
+> When my boy was small, I gave him a fossil for his birthday. Best rock he ever got, he said.
+>
+> He's been trying to beat his old man with rocks ever since. You've got the same look in your eye.
+>
+> Hah! Come on, then! Dig in!
+
+**Derrota**
+
+> Hah! Well, don't tell him about this. I'd never hear the end of it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Byron_Intro3:
+	.string "When my boy was small, I gave him a\n"
+	.string "fossil for his birthday. Best rock he\l"
+	.string "ever got, he said.\p"
+	.string "He's been trying to beat his old man\n"
+	.string "with rocks ever since. You've got the\l"
+	.string "same look in your eye.\p"
+	.string "Hah! Come on, then! Dig in!$"
+
+Nexus_Text_Byron_Defeat3:
+	.string "Hah! Well, don't tell him about this. I'd\n"
+	.string "never hear the end of it.$"
+```
+
+</details>
+
+
+
 ### Diálogo associado ao lendário
 
 ✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Byron_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -298,6 +369,119 @@ Nexus_Text_Byron_ChampionAfter:
 	.string "everything you've got, all at once.\p"
 	.string "…Then maybe go home and call your\n"
 	.string "family. I'm going to call mine.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1: sobre a criatura, pelo olhar dele, sem dizer o nome da espécie. Labels no padrão `Nexus_Text_Byron_Champion*` + sufixo.
+
+**Variação 2 — o muro que prende a respiração.** O Byron escuta a pedra e percebe que o muro respira. Nunca bateu em nada que estivesse prendendo o fôlego. O conselho vira pergunta: ninguém ergue um muro à toa, o que ele estava segurando lá fora?
+
+**Antes da luta**
+
+> I've been listening to that wall, youngster. Put your ear on stone long enough and it talks.
+>
+> This one isn't talking. It's breathing. A hundred and fifty little breaths, all in time.
+>
+> Could've brought it down the first day. Didn't. Never swung at a thing that was holding its breath.
+>
+> Hah! I'll swing at you, though! Come on!
+
+**Derrota**
+
+> Hah! Didn't give an inch! Just like a good wall should!
+
+**Depois da luta**
+
+> Here's the thing about walls. Nobody builds one for no reason.
+>
+> Something scared those little stones into holding each other that tight.
+>
+> Knock it down if you have to. Just ask yourself what it was keeping out.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Byron_ChampionIntro2:
+	.string "I've been listening to that wall,\n"
+	.string "youngster. Put your ear on stone long\l"
+	.string "enough and it talks.\p"
+	.string "This one isn't talking. It's breathing.\n"
+	.string "A hundred and fifty little breaths, all\l"
+	.string "in time.\p"
+	.string "Could've brought it down the first day.\n"
+	.string "Didn't. Never swung at a thing that was\l"
+	.string "holding its breath.\p"
+	.string "Hah! I'll swing at you, though! Come on!$"
+
+Nexus_Text_Byron_ChampionDefeat2:
+	.string "Hah! Didn't give an inch! Just like a\n"
+	.string "good wall should!$"
+
+Nexus_Text_Byron_ChampionAfter2:
+	.string "{SPEAKER NAME_BYRON}Here's the thing about walls. Nobody\n"
+	.string "builds one for no reason.\p"
+	.string "Something scared those little stones\n"
+	.string "into holding each other that tight.\p"
+	.string "Knock it down if you have to. Just ask\n"
+	.string "yourself what it was keeping out.$"
+```
+
+</details>
+
+**Variação 3 — o capacete na terceira fileira.** Humor e perda: tudo que alguém larga no fragmento vira parte do muro, inclusive o capacete do Byron. O aviso é não largar nada lá dentro, nem a guarda.
+
+**Antes da luta**
+
+> Lost my hard hat in this quarry. Went back for it, and the wall had moved. Twice.
+>
+> It isn't chasing me. It's tidying. Anything you set down, it builds right in.
+>
+> My hat's in there now. Third row, left side. Hah! It wears it better than I did.
+>
+> Right! Before I lose anything else, let's battle!
+
+**Derrota**
+
+> Hah! There goes my pride. That'll end up in the wall too.
+
+**Depois da luta**
+
+> Don't set anything down in there, youngster. Not your bag, not your Poké Balls, not your guard.
+>
+> Whatever it keeps, it keeps for good. Every stone in it was somebody's once.
+>
+> …Bring me back my hat if you see it. Third row. Left side.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Byron_ChampionIntro3:
+	.string "Lost my hard hat in this quarry. Went\n"
+	.string "back for it, and the wall had moved.\l"
+	.string "Twice.\p"
+	.string "It isn't chasing me. It's tidying.\n"
+	.string "Anything you set down, it builds right\l"
+	.string "in.\p"
+	.string "My hat's in there now. Third row, left\n"
+	.string "side. Hah! It wears it better than I did.\p"
+	.string "Right! Before I lose anything else,\n"
+	.string "let's battle!$"
+
+Nexus_Text_Byron_ChampionDefeat3:
+	.string "Hah! There goes my pride. That'll end up\n"
+	.string "in the wall too.$"
+
+Nexus_Text_Byron_ChampionAfter3:
+	.string "{SPEAKER NAME_BYRON}Don't set anything down in there,\n"
+	.string "youngster. Not your bag, not your Poké\l"
+	.string "Balls, not your guard.\p"
+	.string "Whatever it keeps, it keeps for good.\n"
+	.string "Every stone in it was somebody's once.\p"
+	.string "…Bring me back my hat if you see it.\n"
+	.string "Third row. Left side.$"
 ```
 
 </details>

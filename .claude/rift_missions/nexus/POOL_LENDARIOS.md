@@ -172,6 +172,21 @@ na ficha da [Soliera](alola/soliera.md).
 | Terapagos | Lendário restrito | [Roxanne](hoenn/roxanne.md) | campeão no código (fala em `nexus.inc`), 27/09 |
 | Pecharunt | Mítico | [Koga](kanto/koga.md) | campeão no código (fala em `nexus.inc`), 27/09 |
 
+### Proposta de 30/09/2026: campeões para os treinadores novos
+
+📝 **Aguardando o autor; a tabela acima continua sendo o que está no código.**
+Os 17 treinadores com arte nova (`.filetransfer/.trainers/`) precisam de um
+lendário cada. A proposta tira **um** lendário de quem campeia dois ou mais
+(ninguém fica sem) e faz a **Cynthia co-campeã do Giratina** com o Silver,
+como o Kyogre já é com Misty e Archie. A tabela completa (quem cede e com o que
+fica) está em [`DIARIO_LOOKER.md`](DIARIO_LOOKER.md#campeões-novos-proposta-de-30092026):
+
+Agatha → Spectrier · Lorelei → Glastrier · Jessie e James → Meloetta ·
+Barry → Uxie · Cynthia → Giratina (co) · Cyrus → Dialga ·
+Gardenia → Shaymin · Shelly → Manaphy · Zinnia → Rayquaza · Hilda → Reshiram ·
+N → Zekrom · Cheren → Cobalion · Alder → Slither Wing · Diantha → Xerneas ·
+Hau → Tapu Koko · Olivia → Tapu Lele · Leon → Eternatus.
+
 ## Sem método de obtenção
 
 Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogador não tem como pegar.

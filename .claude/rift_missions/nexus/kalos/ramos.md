@@ -246,6 +246,77 @@ Nexus_Text_Ramos_Defeat:
 </details>
 
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Cada variação pega um ângulo diferente do personagem.
+
+**Variação 2 — a árvore do ginásio.** O ginásio de Coumarine, que se sobe como uma árvore, de corda em corda. Sem árvore, o velho reclama dos joelhos.
+
+**Antes da luta**
+
+> Hoho! In my Gym, you climb a tree to reach me. Ropes and all!
+>
+> No tree here, sprout. I'll have to make do with my own two feet. Hardly fair on my knees!
+>
+> Now, let's see if you've got the legs for it!
+
+**Derrota**
+
+> Hohoho! Legs, roots, and a bit of cheek besides.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Ramos_Intro2:
+	.string "Hoho! In my Gym, you climb a tree to\n"
+	.string "reach me. Ropes and all!\p"
+	.string "No tree here, sprout. I'll have to make\n"
+	.string "do with my own two feet. Hardly fair on\l"
+	.string "my knees!\p"
+	.string "Now, let's see if you've got the legs\n"
+	.string "for it!$"
+
+Nexus_Text_Ramos_Defeat2:
+	.string "Hohoho! Legs, roots, and a bit of cheek\n"
+	.string "besides.$"
+```
+
+</details>
+
+**Variação 3 — erva daninha ou flor.** Sabedoria de jardineiro: toda erva daninha é só uma flor que ninguém pediu. O desafio é descobrir qual das duas o jogador é.
+
+**Antes da luta**
+
+> Hmph. I've pulled a thousand weeds in my time, sprout. Not one ever thanked me.
+>
+> Still, every weed is just a flower nobody asked for. Taught me patience, that did.
+>
+> Let's see if you're a weed or a flower!
+
+**Derrota**
+
+> Hoho! A flower. A stubborn one, mind.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Ramos_Intro3:
+	.string "Hmph. I've pulled a thousand weeds in\n"
+	.string "my time, sprout. Not one ever thanked\l"
+	.string "me.\p"
+	.string "Still, every weed is just a flower\n"
+	.string "nobody asked for. Taught me patience,\l"
+	.string "that did.\p"
+	.string "Let's see if you're a weed or a flower!$"
+
+Nexus_Text_Ramos_Defeat3:
+	.string "Hoho! A flower. A stubborn one, mind.$"
+```
+
+</details>
+
+
+
 ### Diálogo associado ao lendário
 
 ✅ **Implementado em 26/09/2026:** `Nexus_EventScript_Ramos_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -301,6 +372,115 @@ Nexus_Text_Ramos_ChampionAfter:
 	.string "You'll lose.\p"
 	.string "Be something that grows back. That's\n"
 	.string "the one thing a blade can never finish.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesma regra da variação 1: sobre a criatura, pelo olhar dele, sem dizer o nome da espécie. Labels no padrão `Nexus_Text_Ramos_Champion*` + sufixo.
+
+**Variação 2 — meia tesoura.** A criatura passou flutuando e cortou uma das lâminas da tesoura de trinta anos. Não cortou o Ramos: só o que era afiado. O conselho é carinhoso: é papel dobrado tão apertado que esqueceu que era macio.
+
+**Antes da luta**
+
+> See these shears, sprout? Thirty years, never once needed sharpening. Came here, and one blade's clean gone.
+>
+> Didn't even see it happen. A little white thing drifted by, and snip. Half a pair of shears.
+>
+> Didn't cut me, though. Only what was sharp. Makes you wonder, doesn't it?
+>
+> Hoho! Come on, then!
+
+**Derrota**
+
+> Hohoho! Couldn't prune that if I tried.
+
+**Depois da luta**
+
+> It's paper, sprout. Paper folded so tight it forgot it was ever soft.
+>
+> Fire will do it. Water softens it. Time, most of all.
+>
+> Me, I'd give it a pot and a patch of sun. But I'm an old softie.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Ramos_ChampionIntro2:
+	.string "See these shears, sprout? Thirty years,\n"
+	.string "never once needed sharpening. Came\l"
+	.string "here, and one blade's clean gone.\p"
+	.string "Didn't even see it happen. A little\n"
+	.string "white thing drifted by, and snip. Half a\l"
+	.string "pair of shears.\p"
+	.string "Didn't cut me, though. Only what was\n"
+	.string "sharp. Makes you wonder, doesn't it?\p"
+	.string "Hoho! Come on, then!$"
+
+Nexus_Text_Ramos_ChampionDefeat2:
+	.string "Hohoho! Couldn't prune that if I tried.$"
+
+Nexus_Text_Ramos_ChampionAfter2:
+	.string "{SPEAKER NAME_RAMOS}It's paper, sprout. Paper folded so\n"
+	.string "tight it forgot it was ever soft.\p"
+	.string "Fire will do it. Water softens it. Time,\n"
+	.string "most of all.\p"
+	.string "Me, I'd give it a pot and a patch of sun.\n"
+	.string "But I'm an old softie.$"
+```
+
+</details>
+
+**Variação 3 — a rosa dobrada.** A perda: a única rosa que ainda crescia na floresta, regada com o cantil dele, amanheceu dobrada, pétala por pétala. A criatura achou que estava ajudando. Ele guarda a rosa no bolso, esperando que desdobre.
+
+**Antes da luta**
+
+> I had a rose in this forest. Only thing still growing. Watered it from my own canteen.
+>
+> This morning it was folded. Every petal creased just so. Pretty as you like. Dead as a stone.
+>
+> It thought it was helping, I reckon. Tidying up.
+>
+> Well. Let's see how you grow, sprout!
+
+**Derrota**
+
+> Hoho… Now there's something no fold could hold.
+
+**Depois da luta**
+
+> I'm keeping the folded rose. It's in my pocket, next to the seeds.
+>
+> Maybe it'll unfold if I wait long enough. Gardeners are good at waiting.
+>
+> You're no gardener, sprout. So don't wait. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Ramos_ChampionIntro3:
+	.string "I had a rose in this forest. Only thing\n"
+	.string "still growing. Watered it from my own\l"
+	.string "canteen.\p"
+	.string "This morning it was folded. Every petal\n"
+	.string "creased just so. Pretty as you like.\l"
+	.string "Dead as a stone.\p"
+	.string "It thought it was helping, I reckon.\n"
+	.string "Tidying up.\p"
+	.string "Well. Let's see how you grow, sprout!$"
+
+Nexus_Text_Ramos_ChampionDefeat3:
+	.string "Hoho… Now there's something no fold\n"
+	.string "could hold.$"
+
+Nexus_Text_Ramos_ChampionAfter3:
+	.string "{SPEAKER NAME_RAMOS}I'm keeping the folded rose. It's in my\n"
+	.string "pocket, next to the seeds.\p"
+	.string "Maybe it'll unfold if I wait long enough.\n"
+	.string "Gardeners are good at waiting.\p"
+	.string "You're no gardener, sprout. So don't\n"
+	.string "wait. Go.$"
 ```
 
 </details>
