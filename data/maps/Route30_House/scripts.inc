@@ -60,6 +60,8 @@ Route30_House_EventScript_BaldMan::
 	goto_if_set FLAG_TEMP_1, Route30_House_EventScript_GiveDraw
 	goto_if_eq VAR_0x8009, 3, Route30_House_EventScript_OfferSeed
 	msgbox Route30_House_Text_TakeTwo, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_GiveDraw
+
 Route30_House_EventScript_GiveDraw::
 	call Route30_House_EventScript_GiveLedgerBerry
 	@ The flag is set right after the FIRST Berry, exactly as the Hoenn original

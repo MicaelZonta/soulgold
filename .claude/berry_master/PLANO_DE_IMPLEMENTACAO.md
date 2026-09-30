@@ -638,6 +638,13 @@ aberto; sem dinheiro não cobra; nível 3 rega sozinho às 4h.
 em ordem”; `map_graph` ok; `berry_mutations_check` ok; testes compilam (não rodam: ver a
 revisão das partes 1–3).
 
+**Auditoria estática (`bug/auditar_scripts.py`, ferramenta de outra sessão, só lida):**
+nos mapas da horta sobram 2 avisos `CALL_END` em `Route30_House` — as saídas de bolsa
+cheia do presente (`Common_EventScript_ShowBagIsFull` faz `release` e encerra de
+propósito, padrão que já existia). O aviso de fall-through do `msgbox` para `GiveDraw` foi
+resolvido com `goto` explícito. O aviso de `lock` ativo em `berry_tree.inc:50` é falso
+positivo: é um `end` depois de um `yesno` cujos dois resultados já desviaram.
+
 **Teste no jogo (falta, o autor faz; debug):**
 - Livro 12 (debug de 12 flags) e ₽5.000: o Bram oferece “12 Berries in your Book now…
   ¥5,000” com a caixa de dinheiro; “Não” → “Suit yourself”; falar de novo na mesma
