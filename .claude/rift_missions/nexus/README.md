@@ -85,6 +85,26 @@ habilidade, golpes aprendíveis, 31 IV/252 EV e as três vagas. Precisa do
 `teachable_learnsets.h` gerado. **Medir as falas:**
 `python3 .claude/skills/nomear-falante/medir_linha.py <ficha.md>`.
 
+## Atualização de 30/09/2026 (📝 proposta, nada no código)
+
+- **18 treinadores novos com arte** em `.filetransfer/.trainers/<Nome>/`:
+  Agatha, Lorelei, Jessie e James, **Ash** (ficha nova, `kanto/ash.md`), Leon,
+  Cynthia, Cyrus, Barry, Gardenia, Shelly, Zinnia, Diantha, Olivia, Hau, Hilda
+  (`unova/hilbert_e_hilda.md`), N, Cheren, Alder. Só a **Cynthia** está
+  registrada no código (sprite + front pic); os outros têm a arte pronta e
+  falta registrar (no checklist: 📦). Cada ficha ganhou time validado
+  (`nexus_validar_time.py`, pic provisória onde falta a arte), lendário
+  (redistribuição em [`POOL_LENDARIOS.md`](POOL_LENDARIOS.md)), 3 falas
+  genéricas e 3 de campeão.
+- **Todos os 68 jogáveis** ganharam as **variações 2 e 3** da fala genérica e
+  da fala de campeão de cada lendário (a variação 1 é a que está em
+  `data/scripts/nexus.inc`). Labels `…_Intro2/3`, `…_ChampionIntro2/3` etc.
+  O sorteio da variação ainda não existe no código (proposta: pela
+  `dailySeed`).
+- **Diário do Looker:** 3 páginas (começo, meio, fim) por campeão, em
+  `<região>/diario_looker/<treinador>/`. Formato, voz, mecânica proposta e os
+  fios que ligam os cadernos: [`DIARIO_LOOKER.md`](DIARIO_LOOKER.md).
+
 ## Armadilhas encontradas ao levantar
 
 - **Brendan e May não são o que parecem.** `OBJ_EVENT_GFX_BRENDAN_*`,
