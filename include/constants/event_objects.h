@@ -374,27 +374,26 @@
 #define OBJ_EVENT_GFX_NEXUS_LOOKER_FILE           349
 #define OBJ_EVENT_GFX_AGATHA                         350
 #define OBJ_EVENT_GFX_ALDER                          351
-#define OBJ_EVENT_GFX_ASH_KETCHUM                    352
-#define OBJ_EVENT_GFX_BARRY                          353
-#define OBJ_EVENT_GFX_CHEREN                         354
-#define OBJ_EVENT_GFX_CYRUS                          355
-#define OBJ_EVENT_GFX_DIANTHA                        356
-#define OBJ_EVENT_GFX_GARDENIA                       357
-#define OBJ_EVENT_GFX_HAU                            358
-#define OBJ_EVENT_GFX_HILDA                          359
-#define OBJ_EVENT_GFX_JESSIE                         360
-#define OBJ_EVENT_GFX_JAMES                          361
-#define OBJ_EVENT_GFX_LEON                           362
-#define OBJ_EVENT_GFX_LORELEI                        363
-#define OBJ_EVENT_GFX_N                              364
-#define OBJ_EVENT_GFX_OLIVIA                         365
-#define OBJ_EVENT_GFX_SHELLY                         366
-#define OBJ_EVENT_GFX_ZINNIA                         367
+#define OBJ_EVENT_GFX_BARRY                          352
+#define OBJ_EVENT_GFX_CHEREN                         353
+#define OBJ_EVENT_GFX_CYRUS                          354
+#define OBJ_EVENT_GFX_DIANTHA                        355
+#define OBJ_EVENT_GFX_GARDENIA                       356
+#define OBJ_EVENT_GFX_HAU                            357
+#define OBJ_EVENT_GFX_HILDA                          358
+#define OBJ_EVENT_GFX_JESSIE                         359
+#define OBJ_EVENT_GFX_JAMES                          360
+#define OBJ_EVENT_GFX_LEON                           361
+#define OBJ_EVENT_GFX_LORELEI                        362
+#define OBJ_EVENT_GFX_N                              363
+#define OBJ_EVENT_GFX_OLIVIA                         364
+#define OBJ_EVENT_GFX_SHELLY                         365
+#define OBJ_EVENT_GFX_ZINNIA                         366
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        368
+#define NUM_OBJ_EVENT_GFX                        367
 
 
 // These are dynamic object gfx ids.
@@ -625,22 +624,21 @@
 #define OBJ_EVENT_PAL_TAG_MISTY                      0x117E
 #define OBJ_EVENT_PAL_TAG_AGATHA                     0x117F
 #define OBJ_EVENT_PAL_TAG_ALDER                      0x1180
-#define OBJ_EVENT_PAL_TAG_ASH_KETCHUM                0x1181
-#define OBJ_EVENT_PAL_TAG_BARRY                      0x1182
-#define OBJ_EVENT_PAL_TAG_CHEREN                     0x1183
-#define OBJ_EVENT_PAL_TAG_CYRUS                      0x1184
-#define OBJ_EVENT_PAL_TAG_DIANTHA                    0x1185
-#define OBJ_EVENT_PAL_TAG_GARDENIA                   0x1186
-#define OBJ_EVENT_PAL_TAG_HAU                        0x1187
-#define OBJ_EVENT_PAL_TAG_HILDA                      0x1188
-#define OBJ_EVENT_PAL_TAG_JESSIE                     0x1189
-#define OBJ_EVENT_PAL_TAG_JAMES                      0x118A
-#define OBJ_EVENT_PAL_TAG_LEON                       0x118B
-#define OBJ_EVENT_PAL_TAG_LORELEI                    0x118C
-#define OBJ_EVENT_PAL_TAG_N                          0x118D
-#define OBJ_EVENT_PAL_TAG_OLIVIA                     0x118E
-#define OBJ_EVENT_PAL_TAG_SHELLY                     0x118F
-#define OBJ_EVENT_PAL_TAG_ZINNIA                     0x1190
+#define OBJ_EVENT_PAL_TAG_BARRY                      0x1181
+#define OBJ_EVENT_PAL_TAG_CHEREN                     0x1182
+#define OBJ_EVENT_PAL_TAG_CYRUS                      0x1183
+#define OBJ_EVENT_PAL_TAG_DIANTHA                    0x1184
+#define OBJ_EVENT_PAL_TAG_GARDENIA                   0x1185
+#define OBJ_EVENT_PAL_TAG_HAU                        0x1186
+#define OBJ_EVENT_PAL_TAG_HILDA                      0x1187
+#define OBJ_EVENT_PAL_TAG_JESSIE                     0x1188
+#define OBJ_EVENT_PAL_TAG_JAMES                      0x1189
+#define OBJ_EVENT_PAL_TAG_LEON                       0x118A
+#define OBJ_EVENT_PAL_TAG_LORELEI                    0x118B
+#define OBJ_EVENT_PAL_TAG_N                          0x118C
+#define OBJ_EVENT_PAL_TAG_OLIVIA                     0x118D
+#define OBJ_EVENT_PAL_TAG_SHELLY                     0x118E
+#define OBJ_EVENT_PAL_TAG_ZINNIA                     0x118F
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

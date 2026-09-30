@@ -105,7 +105,15 @@ do boneco, senão um olho fica com 4 px e o outro com 2 (Zinnia). **Olho no
 Gladion, Kukui, Looker e Lillie têm): para boneco de até 16 px, `afinar_olhos`
 detecta cada olho no quadro parado (pixel escuro cercado de claro) e tira as
 colunas de fora dele, em par espelhado, antes do resto da redução; olho com
-mais de 4 colunas não é olho (franja) e fica. Arte que traz **sombra
+mais de 4 colunas não é olho (franja) e fica; o espelho nunca apaga a coluna
+que ficou de outro olho (o eixo vem da silhueta, e o Blue e o Looker perdiam
+um olho inteiro a 16). **O olho nunca perde o
+pixel preto**: olho de 4 px pode (2 branco + 2 preto), olho de 4 px pretos ou
+sem preto não (autor, 30/09). Os pixels de olho levam alfa 254 (`OLHO`) do
+começo ao fim da redução, e linha ou coluna com eles custa 100000; sem isso a
+linha da pupila saía inteira (Misty, Lorelei, Looker, Leon, Hilda, Guzma).
+Quem o autor prefere com o método de 29/09, de antes dos tratamentos, leva
+`metodo='simples'` em `CHARS` (Gladion, Cynthia). Arte que traz **sombra
 desenhada sob os pés** (Steven, Klein): o jogo já desenha a sombra, então a
 cor dela entra em `bgs` na entrada de `CHARS` e some. Fonte **JPG é quantizada a 15 cores antes** de reduzir (senão o
 contorno dobra). A **altura é escolhida à parte da largura**: os 16 px
@@ -116,15 +124,21 @@ paleta dele, mas só quando é a mesma arte (distância média ≤ 10; a Lillie 
 a Cynthia de hoje são outra arte). Em PNG a cor de fundo sai na imagem
 toda, não só a partir da borda (o verde entre braço e cabelo da Elesa). Cor
 muito usada só vira fundo se for área lisa (o roxo do cabelo do Byron não).
+No JPG a cor do canto e a do fundo contam junto o ruído (tolerância 8): o
+branco do Blue é 1,4% exato e 35% com ruído, e contado exato virava "linha de
+borda" e deixava borrão branco no boneco. A cor de canto que é linha de grade
+também sai em PNG (a linha branca no topo da folha do Byron).
 
 Cada personagem é uma entrada em `CHARS` no script (arquivo, grade, células
 na ordem do jogo, crédito). Se a folha tem o lado direito desenhado, sai com
 12 quadros (`sAnimTable_StandardAsym`); senão 9. Arte que vem também em 2x dá
-tamanhos acima do nativo sem ampliar. Escolhas de 27/09: Lusamine 24 px, o
-resto 18 px (todos em quadro 32x32). Exceções: Looker, Gladion, Kukui e Lillie voltaram
-ao 16x32 antigo, sem retoque, e a Anabel usa a arte nova em 16x32; a folha BW da RHcks (16x19) é a aprovada da Elesa (28/09; o jogo ainda usa a antiga de 22 px), a Lillie aprovada é a 16x32 da UlithiumDragon com o trainer 64x64 do Beliot419 (`final Anabel 16 <png> --quadro 16`,
-12 quadros), porque a cena da Missão 4 em New Bark (7 Pokémon na tela) está no
-limite da VRAM de sprite; antes de aumentar um NPC dessas cenas, meça. A mesma ideia vale para o front pic:
+tamanhos acima do nativo sem ampliar. O tamanho de cada personagem está em
+`.filetransfer/.trainers/TAMANHOS.md`. **Escolha do autor = forma pronta**
+(30/09): o PNG do jogo desse personagem não é regravado nem retratado, nem
+quando o script de redução melhora, a não ser que o autor peça explicitamente
+(ajuste de método já regrediu sprites aprovados). A cena da Missão 4 em New
+Bark (7 Pokémon na tela) está no limite da VRAM de sprite e a Anabel passou a
+32x32 (17x22) em 30/09; antes de aumentar outro NPC dessas cenas, meça. A mesma ideia vale para o front pic:
 arte de treinador maior que 64 px vai para o 80x80 (`TRAINER_SPRITE_LARGE`,
 skill `adicionar-grafico-trainer`).
 

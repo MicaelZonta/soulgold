@@ -340,7 +340,6 @@ extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Diantha;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Cyrus;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Cheren;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Barry;
-extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_AshKetchum;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Alder;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Agatha;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_NurseChansey;
@@ -733,7 +732,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_CYRUS] =                       &gObjectEventGraphicsInfo_Cyrus,
     [OBJ_EVENT_GFX_CHEREN] =                      &gObjectEventGraphicsInfo_Cheren,
     [OBJ_EVENT_GFX_BARRY] =                       &gObjectEventGraphicsInfo_Barry,
-    [OBJ_EVENT_GFX_ASH_KETCHUM] =                 &gObjectEventGraphicsInfo_AshKetchum,
     [OBJ_EVENT_GFX_ALDER] =                       &gObjectEventGraphicsInfo_Alder,
     [OBJ_EVENT_GFX_AGATHA] =                      &gObjectEventGraphicsInfo_Agatha,
     [OBJ_EVENT_GFX_NEXUS_PORTAL] =             &gObjectEventGraphicsInfo_NexusPortal,

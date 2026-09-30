@@ -60,17 +60,14 @@ SP = OW + 'special/'
 # Cada personagem: f = 'Pasta/Sprite - AUTOR.*' em .filetransfer/.trainers; grade em pixels nativos
 # (depois de desfazer k); frames = celulas (linha, coluna) na ordem do jogo.
 CHARS = {
-    'Agatha': dict(f='Agatha/Sprite - RegentOfRaios.jpg', k=2, jpg=True, cell=(34, 36), x0=0, y0=0, px=34, py=36, frames=RPG,
-                   cred='RegentOfRaios'),
-    # teste (30/09): folha 6x4 ampliada por IA; linhas cima/baixo/esq/dir, colunas 0-2 parado, 3 e 4 passos
-    'Agatha IA': dict(f='Agatha/image.png', pasta='Agatha', k=1, reamostrar=(256, 40), cell=(40, 40), x0=0, y0=0,
-                      px=40, py=40, grade=True, frames=[(1, 0), (0, 0), (2, 0), (1, 3), (1, 4), (0, 3), (0, 4),
-                      (2, 3), (2, 4), (3, 0), (3, 3), (3, 4)], pre_cores=96, cred='desconhecido'),
+    # folha 6x4 ampliada por IA (30/09); linhas cima/baixo/esq/dir, colunas 0-2 parado, 3 e 4 passos.
+    # A de RegentOfRaios (JPG) foi para outras/.
+    'Agatha': dict(f='Agatha/Sprite - desconhecido.png', k=1, reamostrar=(256, 40), cell=(40, 40), x0=0, y0=0,
+                   px=40, py=40, grade=True, frames=[(1, 0), (0, 0), (2, 0), (1, 3), (1, 4), (0, 3), (0, 4),
+                   (2, 3), (2, 4), (3, 0), (3, 3), (3, 4)], pre_cores=96, cred='desconhecido', atual=SP + 'agatha.png'),
     'Alder': dict(f='Alder/Sprite - aveontrainer.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, cred='aveontrainer'),
     'Anabel': dict(f='Anabel/Sprite - Vergolophus.png', k=1, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
                    cred='Vergolophus', atual=OW + 'frontier_brains/anabel.png'),
-    'Ash': dict(f='Ash/Sprite - RichardPT e PKMNTrainerSpriterC.png', k=2, cell=(15, 22), x0=0, y0=1, px=15.2, py=22.9, grade=True,
-                frames=RPG, cred='RichardPT e PKMNTrainerSpriterC'),
     'Barry': dict(f='Barry/Sprite - redblueyellow (rip).png', k=1, cell=(34, 34), x0=0, y0=0, px=34, py=34, frames=BCED,
                   cred='redblueyellow (rip)'),
     'Blue': dict(f='Blue/Sprite - chrisx698.png', k=1, jpg=True, cell=(24, 35), x0=0, ys=[0, 35, 70, 104], px=24.5,
@@ -87,7 +84,7 @@ CHARS = {
     'Cheren': dict(f='Cheren/Sprite - PurpleZaffre.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='PurpleZaffre'),
     'Colress': dict(f='Colress/Sprite - Pizza Sun.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
                     cred='Pizza Sun', atual=SP + 'colress.png'),
-    'Cynthia': dict(f='Cynthia/Sprite - oficial Platinum.png', k=1, cell=(27, 32), x0=0, y0=0, px=27, py=32, frames=PLAT,
+    'Cynthia': dict(f='Cynthia/Sprite - oficial Platinum.png', k=1, cell=(27, 32), x0=0, y0=0, px=27, py=32, frames=PLAT, metodo='simples',
                     cred='oficial (Platinum)', atual=SP + 'cynthia.png'),
     'Cyrus': dict(f='Cyrus/Sprite - RHcks.png', k=1, jpg=True, cell=(16, 34), x0=2, y0=1, px=16.2, py=34, frames=FILA[:9],
                   cred='RHcks'),
@@ -100,24 +97,27 @@ CHARS = {
                      cred='oficial (Platinum)'),
     'Gladion': dict(f='Gladion/Sprite - Derlo.png', k=1, crop=(0, 0, 100, 200), cell=(33, 50), x0=0,
                     ys=[14, 80, 144], px=33, frames=[(0, 0), (1, 0), (2, 0), (0, 1), (0, 2), (1, 1), (1, 2), (2, 1), (2, 2)],
-                    cred='Derlo', atual=SP + 'gladion.png'),
+                    cred='Derlo', atual=SP + 'gladion.png', metodo='simples'),
     'Guzma': dict(f='Guzma/Sprite - PurpleZafree.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
                   cred='PurpleZafree', atual=SP + 'guzma.png'),
     'Hau': dict(f='Hau/Sprite - Wergan.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='Wergan'),
-    'Hilda': dict(f='Hilda/Sprite - Redboy265.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='Redboy265'),
+    'Hilda': dict(f='Hilda/Sprite - Redboy265.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='Redboy265',
+                  atual=SP + 'hilda.png'),
     'Jessie': dict(pasta='Jessie e James', f='Jessie e James/Sprite - FallenSoldier.png', k=1, cell=(17, 24), x0=1, y0=2,
                    px=17.3, py=24, frames=FRLG7, cred='FallenSoldier'),
     'James': dict(pasta='Jessie e James', f='Jessie e James/Sprite - FallenSoldier.png', k=1, cell=(15, 24), x0=7, y0=36,
                   px=15.3, py=24, frames=FRLG7, cred='FallenSoldier'),
     'Kukui': dict(f='Kukui/Sprite - Wolfgang62.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
                   cred='Wolfgang62', atual=SP + 'kukui.png'),
-    'Leon': dict(f='Leon/Sprite - Wolfang62.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='Wolfang62'),
+    'Leon': dict(f='Leon/Sprite - Wolfang62.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='Wolfang62',
+                 atual=SP + 'leon.png'),
     'Lillie': dict(f='Lillie/Sprite - UlithiumDragon.png', k=1, cell=(16, 32), x0=0, y0=0, px=16, py=32, grade=True,
                    frames=FILA[:9], cred='UlithiumDragon', atual=SP + 'lillie.png'),
+    # Looker: o PNG do jogo (07/09) e o definitivo, escolha do autor (30/09); a folha e so referencia
     'Looker': dict(f='Looker/Sprite - Vergolophus.png', k=1, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
                    cred='Vergolophus', atual=SP + 'looker.png'),
     'Lorelei': dict(f='Lorelei/Sprite - Purple Zaffre.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
-                    cred='Purple Zaffre'),
+                    cred='Purple Zaffre', atual=SP + 'lorelei.png'),
     'Lusamine': dict(f='Lusamine/Sprite - DiegoWT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
                      cred='DiegoWT', atual=SP + 'lusamine.png'),
     'Misty': dict(f='Misty/Sprite - Lime029.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG,
@@ -165,15 +165,17 @@ def mediana2(im):
     return out
 
 
-def lisa(px, size, col):
-    """fracao dos pixels da cor com a vizinhanca 3x3 inteira da mesma cor."""
+def lisa(px, size, col, tol=0):
+    """fracao dos pixels da cor com a vizinhanca 3x3 inteira da mesma cor (a menos de
+    `tol`: no JPG o fundo branco tem ruido e quase nenhum vizinho identico, Blue)."""
     W, H = size
+    igual = (lambda p: p[:3] == col) if not tol else (lambda p: dist(p, col) <= tol)
     tot = sol = 0
     for y in range(1, H - 1):
         for x in range(1, W - 1):
-            if px[x, y][:3] == col:
+            if igual(px[x, y]):
                 tot += 1
-                sol += all(px[x + a, y + b][:3] == col for a in (-1, 0, 1) for b in (-1, 0, 1))
+                sol += all(igual(px[x + a, y + b]) for a in (-1, 0, 1) for b in (-1, 0, 1))
     return sol / max(tot, 1)
 
 
@@ -190,25 +192,37 @@ def sem_fundo(im, jpg, extra=()):
             if p[3] >= 128:
                 cnt[p[:3]] = cnt.get(p[:3], 0) + 1
     canto = None
-    if bgs[0][3] >= 128 and cnt.get(bgs[0][:3], 0) < im.width * im.height * 0.05:
+    # no JPG o canto conta com o ruido em volta: o branco do Blue e 1,4% exato e 35% com ruido
+    ncanto = sum(m for c2, m in cnt.items() if dist(c2, bgs[0]) <= 8) if jpg else cnt.get(bgs[0][:3], 0)
+    if bgs[0][3] >= 128 and ncanto < im.width * im.height * 0.05:
         canto = bgs[0]   # canto e uma linha de borda, nao o fundo (Cyrus: navy escuro igual a sombra da perna)
         bgs = []         # a borda so serve de porta de entrada para o preenchimento
     if not bgs or bgs[0][3] >= 128:
+        # JPG: conta junto o ruido em volta da cor (o branco do Blue e 14% exato, 20% com ruido)
+        rt = 8 if jpg else 0
         for col, n in sorted(cnt.items(), key=lambda t: -t[1])[:2]:
+            if rt:
+                n = sum(m for c2, m in cnt.items() if dist(c2, col) <= rt)
             # fundo de celula e area lisa; cor do corpo muito usada (cabelo do Byron, 17%) nao
-            if n > im.width * im.height * 0.15 and lisa(px, im.size, col) > 0.5:
+            if n > im.width * im.height * 0.15 and lisa(px, im.size, col, rt) > 0.5:
                 bgs.append(col + (255,))
     bgs += [e + (255,) for e in extra]
     isbg = lambda p: p[3] < 128 or any(b[3] >= 128 and dist(p, b) <= tol for b in bgs)
     passa = lambda p: isbg(p) or (canto is not None and dist(p, canto) <= tol)
+    # a cor do canto (borda/grade) so e apagada nas linhas e colunas em que ela domina;
+    # dentro do boneco a mesma cor pode ser sombra (Cyrus)
+    ecanto = lambda p: canto is not None and p[3] >= 128 and dist(p, canto) <= tol
+    W, H = im.size
+    lin = {y for y in range(H) if sum(1 for x in range(W) if ecanto(px[x, y])) >= 0.6 * W}
+    col = {x for x in range(W) if sum(1 for y in range(H) if ecanto(px[x, y])) >= 0.6 * H}
     if not jpg:
+        # PNG tambem: a linha branca de grade no topo da folha do Byron ficava colada na cabeca
         for y in range(im.height):
             for x in range(im.width):
-                if isbg(px[x, y]):
+                if isbg(px[x, y]) or (ecanto(px[x, y]) and (y in lin or x in col)):
                     px[x, y] = (0, 0, 0, 0)
         return im
     # JPG: preenche a partir da borda da imagem e das linhas da grade, para nao furar o corpo
-    W, H = im.size
     marca = [[passa(px[x, y]) for x in range(W)] for y in range(H)]
     linha = extra[-1] + (255,) if extra else None
     st = [(x, y) for y in range(H) for x in range(W)
@@ -220,11 +234,6 @@ def sem_fundo(im, jpg, extra=()):
             q = (x + dx, y + dy)
             if 0 <= q[0] < W and 0 <= q[1] < H and q not in vis and marca[q[1]][q[0]]:
                 vis.add(q); st.append(q)
-    # a cor do canto (borda/grade) so e apagada nas linhas e colunas em que ela domina;
-    # dentro do boneco a mesma cor pode ser sombra (Cyrus)
-    ecanto = lambda p: canto is not None and p[3] >= 128 and dist(p, canto) <= tol
-    lin = {y for y in range(H) if sum(1 for x in range(W) if ecanto(px[x, y])) >= 0.6 * W}
-    col = {x for x in range(W) if sum(1 for y in range(H) if ecanto(px[x, y])) >= 0.6 * H}
     for (x, y) in vis:
         if isbg(px[x, y]) or (ecanto(px[x, y]) and (y in lin or x in col)):
             px[x, y] = (0, 0, 0, 0)
@@ -375,6 +384,8 @@ def escolher_descartes(mats, n):
                     nxt = m[i + 1][x] if i + 1 < L else (0, 0, 0, 0)
                     if not escuro(q) and not escuro(nxt):
                         c += 6
+                if p[3] == OLHO:
+                    c += 100000
         return c
     keep = set(range(L))
     for k in range(n):
@@ -431,6 +442,21 @@ def mascara_rosto(m):
 
 
 OLHO_1PX_ATE = 16   # boneco ate esta largura: olho com 1 coluna (regra do elenco 16x32, 30/09)
+# Pixel de olho (e boca) leva alfa 254 do comeco ao fim da reducao: linha ou coluna com
+# ele custa 100000 para sair. Sem isso a linha da pupila era apagada inteira (a soma dos
+# 12 quadros acha barata uma linha em que so a pupila muda) e o olho ficava sem o preto
+# (Misty, Lorelei, Looker, Leon, Hilda, Guzma, Cynthia; 30/09). Regra do autor: olho de
+# 4 px pode (2 branco + 2 preto), olho sem preto ou de 4 px pretos nao.
+OLHO = 254
+OLHO_MAX_PX = 6
+
+
+def marcar_olhos(mats):
+    for m in mats:
+        for g in olhos(m):
+            if len(g) <= OLHO_MAX_PX and len({y for _, y in g}) <= 3:
+                for x, y in g:
+                    m[y][x] = m[y][x][:3] + (OLHO,)
 
 
 def afinar_olhos(mats, n):
@@ -441,13 +467,16 @@ def afinar_olhos(mats, n):
     if cx is None:
         return mats, n
     w = len(mats[0][0])
-    fora = set()
+    fora, fica = set(), set()
     for g in olhos(mats[0]):
         xs = sorted({x for x, y in g}, key=lambda x: (abs(x - cx), x))
-        if 1 < len(xs) <= 4:          # 2 a 4 colunas: olho; mais largo e outra coisa (franja)
+        if len(xs) <= 4:              # ate 4 colunas: olho; mais largo e outra coisa (franja)
+            fica.add(xs[0])
             fora |= set(xs[1:])
     fora |= {round(2 * cx - x) for x in list(fora) if 0 <= round(2 * cx - x) < w}
-    fora = sorted(fora)[:n]
+    # o espelho sai do eixo da silhueta (cabelo, casaco), nao do rosto: podia cair na
+    # coluna que ficou do outro olho e o boneco ficava com um olho so (Blue, Looker, 30/09)
+    fora = sorted(fora - fica)[:n]
     if not fora:
         return mats, n
     cols = [x for x in range(w) if x not in fora]
@@ -474,6 +503,8 @@ def energia(m, prot):
                 e += 120
             if prot[y][x]:
                 e += 300
+            if p[3] == OLHO:
+                e += 100000
             E[y][x] = e
     return E
 
@@ -598,6 +629,7 @@ def reduzir(canv, grupos, W, H):
     depois linhas apagadas em faixas com prioridade."""
     L, T, R, B = uniao(canv)
     mats = [[[q.getpixel((x, y)) for x in range(L, R)] for y in range(T, B)] for q in canv]
+    marcar_olhos(mats)
     h, w = B - T, R - L
     n = max(0, w - W)
     k = round(n * parte_por_conteudo(W / w))
@@ -622,7 +654,42 @@ def reduzir(canv, grupos, W, H):
         im = Image.new('RGBA', (len(m[0]), len(rows)), (0, 0, 0, 0))
         for y, r in enumerate(rows):
             for x, p in enumerate(m[r]):
-                im.putpixel((x, y), p)
+                im.putpixel((x, y), p[:3] + (255,) if p[3] == OLHO else p)
+        res.append(im)
+    return res
+
+
+def reduzir_simples(canv, grupos, W, H):
+    """metodo de 29/09, antes dos tratamentos (CHARS metodo='simples'): apaga a linha e a
+    coluna mais parecidas com a vizinha, espalhadas pelo corpo, sem costura nem olho.
+    O autor prefere assim o Gladion e a Cynthia (30/09)."""
+    L, T, R, B = uniao(canv)
+    mats = [[[q.getpixel((x, y)) for x in range(L, R)] for y in range(T, B)] for q in canv]
+    h, w = B - T, R - L
+
+    def descartes(ms, n):
+        N = len(ms[0])
+        diff = lambda i: sum(sum(1 for p, q in zip(m[i], m[i - 1]) if p != q) for m in ms)
+        keep = set(range(N))
+        for k in range(n):
+            a = round(k * N / n); b = round((k + 1) * N / n)
+            cand = [i for i in range(max(a, 1), b) if i - 1 in keep and i in keep]
+            if cand:
+                keep.discard(min(cand, key=lambda i: (diff(i), abs(i - (a + b) / 2))))
+        return sorted(keep)
+    rows = descartes(mats, h - H) if H < h else list(range(h))
+    mats = [[m[y] for y in rows] for m in mats]
+    colsets = {}
+    for g in set(grupos):
+        ms = [[list(c) for c in zip(*mats[i])] for i in range(len(mats)) if grupos[i] == g]
+        colsets[g] = descartes(ms, w - W) if W < w else list(range(w))
+    res = []
+    for i, m in enumerate(mats):
+        cols = colsets[grupos[i]]
+        im = Image.new('RGBA', (len(cols), len(rows)), (0, 0, 0, 0))
+        for y, r in enumerate(m):
+            for x, cx in enumerate(cols):
+                im.putpixel((x, y), r[cx])
         res.append(im)
     return res
 
@@ -725,7 +792,7 @@ def gerar(p, W, fw=None, H=None):
                 origem = ''
             if H and H != Hp:
                 origem = (origem + '  altura do elenco' if Ha == altura_elenco(W, Hp) else origem + f'  altura {H}').strip()
-            fr = reduzir(canv, p['grupos'], W, Ha)
+            fr = (reduzir_simples if p['c'].get('metodo') == 'simples' else reduzir)(canv, p['grupos'], W, Ha)
             fw = fw or (16 if W <= 16 else 32)
             res, fus = G.quantizar(pre_quant(folha(fr, fw), p['c'].get('pre_cores', 40)), 15)
             return Ha, fw, tirar_fiapos(res, fw), origem

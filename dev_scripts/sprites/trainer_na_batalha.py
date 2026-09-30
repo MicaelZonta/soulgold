@@ -36,7 +36,7 @@ FUNDO = 'graphics/battle_environment/plain/1 Forest.png'
 # grid: arte ampliada por fator nao inteiro (mediana do miolo de cada bloco).
 # jpg: fundo com ruido, tirado por tolerancia a partir da borda.
 TRAINERS = {
-    'Agatha': {}, 'Alder': {}, 'Ash': {}, 'Barry': {}, 'Cheren': {}, 'Cyrus': dict(jpg=True),
+    'Agatha': {}, 'Alder': {}, 'Barry': {}, 'Cheren': {}, 'Cyrus': dict(jpg=True),
     'Diantha': {}, 'Gardenia': {}, 'Hau': {}, 'Hilda': dict(jpg=True), 'Jessie e James': {},
     'Leon': {}, 'Lorelei': {}, 'N': dict(jpg=True, grid=2), 'Olivia': {}, 'Shelly': {}, 'Zinnia': {},
     'Anabel': dict(atual='salon_maiden_anabel'),
