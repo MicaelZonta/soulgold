@@ -384,6 +384,66 @@ Nexus_Text_LtSurge_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mesmo registro da variação 1 ([R16](../NEXUS_REGRAS.md)): fala de si, sem citar o lugar nem a criatura do dia. Variação 2: a lembrança por trás do quebra-cabeça das latas de lixo do ginásio — na guerra se esconde o importante onde ninguém quer olhar. Variação 3: humor com o Raichu (a eterna discussão de deixá-lo virar Pikachu de novo, porque é mais fofo).
+
+**Variação 2 — antes da luta**
+
+> Hey, kid! Ever wonder why my gym has switches hidden in the trash cans?
+>
+> In the war, you learn to hide the important stuff where nobody wants to look.
+>
+> Now let's see if you look where you should! Fight!
+
+**Variação 2 — derrota**
+
+> Ha! You found the switch, kid. Right on target!
+
+**Variação 3 — antes da luta**
+
+> Listen up, baby! Some kids say my Raichu should go back to being a Pikachu. Cuter, they say.
+>
+> Cute doesn't win wars! Cute doesn't light up Vermilion!
+>
+> …It was pretty cute, though. Ten-hut! Battle!
+
+**Variação 3 — derrota**
+
+> At ease, kid. You earned it!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_LtSurge_Intro2:
+	.string "Hey, kid! Ever wonder why my gym has\n"
+	.string "switches hidden in the trash cans?\p"
+	.string "In the war, you learn to hide the\n"
+	.string "important stuff where nobody wants to\l"
+	.string "look.\p"
+	.string "Now let's see if you look where you\n"
+	.string "should! Fight!$"
+
+Nexus_Text_LtSurge_Defeat2:
+	.string "Ha! You found the switch, kid. Right on\n"
+	.string "target!$"
+
+Nexus_Text_LtSurge_Intro3:
+	.string "Listen up, baby! Some kids say my Raichu\n"
+	.string "should go back to being a Pikachu.\l"
+	.string "Cuter, they say.\p"
+	.string "Cute doesn't win wars! Cute doesn't\n"
+	.string "light up Vermilion!\p"
+	.string "…It was pretty cute, though. Ten-hut!\n"
+	.string "Battle!$"
+
+Nexus_Text_LtSurge_Defeat3:
+	.string "At ease, kid. You earned it!$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lt. Surge é o **campeão**, a luta logo antes do lendário. A fala é sobre a criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)).
@@ -446,6 +506,98 @@ Nexus_Text_LtSurge_Zapdos_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: a lembrança de guerra — a única tempestade que olhou de volta, descendo entre os dois lados; ele foi procurá-la depois e parou na porta da usina. Variação 3: humor — a ave fica mais forte quando o raio acerta; ele diz que também, e manda não tentar em casa.
+
+**Variação 2 — antes da luta**
+
+> Kid, I've been in a lot of storms. Only one ever looked back at me.
+>
+> Yellow. Big as a truck. Came down between us and the other side, and nobody fired a shot after that.
+>
+> Some say it saved us. I say it was mad at all of us. Let's go!
+
+**Variação 2 — derrota**
+
+> Ha! Took a hit and kept standing, just like I did!
+
+**Variação 2 — depois da luta**
+
+> After the war, I went looking for it. Found an old power plant, humming with no power.
+>
+> I stood at the door a long time. Never went in.
+>
+> You go in, kid. Tell it the soldier says thanks. Move out!
+
+**Variação 3 — antes da luta**
+
+> Fun fact, baby. That bird gets stronger every time lightning hits it.
+>
+> Know who else gets stronger every time lightning hits him? Me! …Don't try that at home.
+>
+> All right! Let's get charged up!
+
+**Variação 3 — derrota**
+
+> Ow! Okay, that one I felt!
+
+**Variação 3 — depois da luta**
+
+> Folks back home say ghosts come out of that power plant when it storms. Bah! No ghosts.
+>
+> Just a big bird who can't sit still and never pays the electric bill.
+>
+> My advice? Rubber boots. Now go, kid!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_LtSurge_Zapdos_ChampionIntro2:
+	.string "Kid, I've been in a lot of storms. Only\n"
+	.string "one ever looked back at me.\p"
+	.string "Yellow. Big as a truck. Came down\n"
+	.string "between us and the other side, and\l"
+	.string "nobody fired a shot after that.\p"
+	.string "Some say it saved us. I say it was mad\n"
+	.string "at all of us. Let's go!$"
+
+Nexus_Text_LtSurge_Zapdos_ChampionDefeat2:
+	.string "Ha! Took a hit and kept standing, just\n"
+	.string "like I did!$"
+
+Nexus_Text_LtSurge_Zapdos_ChampionAfter2:
+	.string "{SPEAKER NAME_LT_SURGE}After the war, I went looking for it.\n"
+	.string "Found an old power plant, humming with\l"
+	.string "no power.\p"
+	.string "I stood at the door a long time. Never\n"
+	.string "went in.\p"
+	.string "You go in, kid. Tell it the soldier says\n"
+	.string "thanks. Move out!$"
+
+Nexus_Text_LtSurge_Zapdos_ChampionIntro3:
+	.string "Fun fact, baby. That bird gets stronger\n"
+	.string "every time lightning hits it.\p"
+	.string "Know who else gets stronger every time\n"
+	.string "lightning hits him? Me! …Don't try that\l"
+	.string "at home.\p"
+	.string "All right! Let's get charged up!$"
+
+Nexus_Text_LtSurge_Zapdos_ChampionDefeat3:
+	.string "Ow! Okay, that one I felt!$"
+
+Nexus_Text_LtSurge_Zapdos_ChampionAfter3:
+	.string "{SPEAKER NAME_LT_SURGE}Folks back home say ghosts come out of\n"
+	.string "that power plant when it storms. Bah! No\l"
+	.string "ghosts.\p"
+	.string "Just a big bird who can't sit still and\n"
+	.string "never pays the electric bill.\p"
+	.string "My advice? Rubber boots. Now go, kid!$"
+```
+
+</details>
+
+
 #### Regieleki
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_LtSurge_Regieleki_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -505,6 +657,96 @@ Nexus_Text_LtSurge_Regieleki_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: a confissão — ele já viu anéis assim numa base, chamados de 'contenção'; a gaiola acostuma quem está dentro, e soltar tudo de uma vez só faz correr: liberdade é um anel por vez. Variação 3: humor de velocidade, e o Electrode dele, o mais rápido de Vermilion, que se sentou pela primeira vez na vida.
+
+**Variação 2 — antes da luta**
+
+> Those rings, kid. I've seen rings like that before. On a base, a long time ago.
+>
+> They had a word for it: 'containment.' Sounds nicer than 'cage,' doesn't it?
+>
+> I don't like that word anymore. Let's battle!
+
+**Variação 2 — derrota**
+
+> Fast. Clean. You'd have made a fine soldier, kid.
+
+**Variação 2 — depois da luta**
+
+> Here's what nobody tells you about a cage. The one inside gets used to it.
+>
+> Take off every ring at once, and it doesn't know what to do with itself. It just runs.
+>
+> One at a time, kid. That's how you set something free. Move out!
+
+**Variação 3 — antes da luta**
+
+> Speed, baby! That thing hits the far wall before you finish saying 'fast'!
+>
+> I tried to race it once. I said 'Go!' It had already won.
+>
+> Let's see how fast YOU are! Go!
+
+**Variação 3 — derrota**
+
+> Whoa! You beat me before I said it!
+
+**Variação 3 — depois da luta**
+
+> My Electrode used to be the fastest thing in Vermilion. Rolled right past the harbor, every morning.
+>
+> Then it met the one out there, and just… sat down. First time in its life.
+>
+> Respect, baby. Go earn some.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_LtSurge_Regieleki_ChampionIntro2:
+	.string "Those rings, kid. I've seen rings like\n"
+	.string "that before. On a base, a long time ago.\p"
+	.string "They had a word for it: 'containment.'\n"
+	.string "Sounds nicer than 'cage,' doesn't it?\p"
+	.string "I don't like that word anymore. Let's\n"
+	.string "battle!$"
+
+Nexus_Text_LtSurge_Regieleki_ChampionDefeat2:
+	.string "Fast. Clean. You'd have made a fine\n"
+	.string "soldier, kid.$"
+
+Nexus_Text_LtSurge_Regieleki_ChampionAfter2:
+	.string "{SPEAKER NAME_LT_SURGE}Here's what nobody tells you about a\n"
+	.string "cage. The one inside gets used to it.\p"
+	.string "Take off every ring at once, and it\n"
+	.string "doesn't know what to do with itself. It\l"
+	.string "just runs.\p"
+	.string "One at a time, kid. That's how you set\n"
+	.string "something free. Move out!$"
+
+Nexus_Text_LtSurge_Regieleki_ChampionIntro3:
+	.string "Speed, baby! That thing hits the far\n"
+	.string "wall before you finish saying 'fast'!\p"
+	.string "I tried to race it once. I said 'Go!' It\n"
+	.string "had already won.\p"
+	.string "Let's see how fast YOU are! Go!$"
+
+Nexus_Text_LtSurge_Regieleki_ChampionDefeat3:
+	.string "Whoa! You beat me before I said it!$"
+
+Nexus_Text_LtSurge_Regieleki_ChampionAfter3:
+	.string "{SPEAKER NAME_LT_SURGE}My Electrode used to be the fastest\n"
+	.string "thing in Vermilion. Rolled right past the\l"
+	.string "harbor, every morning.\p"
+	.string "Then it met the one out there, and\n"
+	.string "just… sat down. First time in its life.\p"
+	.string "Respect, baby. Go earn some.$"
+```
+
+</details>
+
+
 #### Sandy Shocks
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_LtSurge_SandyShocks_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -561,5 +803,97 @@ Nexus_Text_LtSurge_SandyShocks_ChampionAfter:
 ```
 
 </details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Variação 2: o soldado que anda em linha reta no deserto (desminagem); a criatura é mais velha que qualquer guerra e ainda zumbe, esperando ordens de alguém que já se foi — ele conhece a sensação. Variação 3: humor — areia na bota, no cabelo, no Voltorb; um Magneton que esqueceu de se barbear por um milhão de anos.
+
+**Variação 2 — antes da luta**
+
+> In the desert, you learn to walk in straight lines. Every step on ground somebody already checked.
+>
+> Out there, the ground is checking you. Magnets, kid. It's reading your belt.
+>
+> So let's clear this line first. Fight!
+
+**Variação 2 — derrota**
+
+> Line's clear. You walk good, kid.
+
+**Variação 2 — depois da luta**
+
+> That thing's older than any war I know about. Older than war, maybe.
+>
+> And it still hums, baby. Like it's waiting for orders from somebody who's long gone.
+>
+> I know how that feels. Go relieve it of duty.
+
+**Variação 3 — antes da luta**
+
+> Sand in my boots, sand in my hair, sand in my Voltorb. You ever shake sand out of a Voltorb, kid?
+>
+> Don't.
+>
+> Anyway! The big shaggy one out there loves sand even more than I hate it! Let's go!
+
+**Variação 3 — derrota**
+
+> Ha! Now you've got sand in your boots too, kid!
+
+**Variação 3 — depois da luta**
+
+> Looks like a Magneton that forgot to shave for a million years.
+>
+> Honestly? I respect it. Out here, you keep whatever keeps you warm.
+>
+> Hold your Poké Balls tight, and move out!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_LtSurge_SandyShocks_ChampionIntro2:
+	.string "In the desert, you learn to walk in\n"
+	.string "straight lines. Every step on ground\l"
+	.string "somebody already checked.\p"
+	.string "Out there, the ground is checking you.\n"
+	.string "Magnets, kid. It's reading your belt.\p"
+	.string "So let's clear this line first. Fight!$"
+
+Nexus_Text_LtSurge_SandyShocks_ChampionDefeat2:
+	.string "Line's clear. You walk good, kid.$"
+
+Nexus_Text_LtSurge_SandyShocks_ChampionAfter2:
+	.string "{SPEAKER NAME_LT_SURGE}That thing's older than any war I know\n"
+	.string "about. Older than war, maybe.\p"
+	.string "And it still hums, baby. Like it's\n"
+	.string "waiting for orders from somebody who's\l"
+	.string "long gone.\p"
+	.string "I know how that feels. Go relieve it of\n"
+	.string "duty.$"
+
+Nexus_Text_LtSurge_SandyShocks_ChampionIntro3:
+	.string "Sand in my boots, sand in my hair, sand\n"
+	.string "in my Voltorb. You ever shake sand out\l"
+	.string "of a Voltorb, kid?\p"
+	.string "Don't.\p"
+	.string "Anyway! The big shaggy one out there\n"
+	.string "loves sand even more than I hate it!\l"
+	.string "Let's go!$"
+
+Nexus_Text_LtSurge_SandyShocks_ChampionDefeat3:
+	.string "Ha! Now you've got sand in your boots\n"
+	.string "too, kid!$"
+
+Nexus_Text_LtSurge_SandyShocks_ChampionAfter3:
+	.string "{SPEAKER NAME_LT_SURGE}Looks like a Magneton that forgot to\n"
+	.string "shave for a million years.\p"
+	.string "Honestly? I respect it. Out here, you\n"
+	.string "keep whatever keeps you warm.\p"
+	.string "Hold your Poké Balls tight, and move\n"
+	.string "out!$"
+```
+
+</details>
+
 
 Falante novo: `SP_NAME_LT_SURGE` (ainda não existe em `include/constants/speaker_names.h`).
