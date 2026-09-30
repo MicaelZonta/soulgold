@@ -30,7 +30,7 @@
 |---|---|---|---|
 | 1 | Alocação e fundação ✅ 30/09 | constantes, vars, flags, plaquinhas, itens; nada visível | — |
 | 2 | A horta física 🧪 30/09 (código feito, falta teste no jogo) | 10 canteiros + canteiro da Laurel na Route 30; plantar, regar, colher | 1 |
-| 3 | Livro de Berries | colher registra; o Bram só dá berries do Livro; marcos | 1, 2 |
+| 3 | Livro de Berries 🧪 30/09 (código feito, falta teste no jogo) | colher registra; o Bram só dá berries do Livro; marcos | 1, 2 |
 | 4 | Cruzamento completo | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
 | 5 | Estado diário | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
 | 6 | Níveis da horta | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
@@ -310,6 +310,61 @@ nunca dá uma que não foi colhida; debug com 12 flags ligadas → prêmio do ma
 vez só; bolsa cheia → o Bram avisa e não perde o prêmio.
 
 **Pronto quando:** `flag_audit` mostra as 67 como lidas e escritas pelo C.
+
+### Parte 3 — feita no código (30/09/2026), falta o teste no jogo
+
+**O que entrou**
+
+| O quê | Onde |
+|---|---|
+| Arquivo novo das regras da horta; o Livro é o primeiro bloco | `src/berry_garden.c`, `include/berry_garden.h` |
+| `STATIC_ASSERT` de que o bloco de flags tem exatamente as 67 berries | `berry_garden.c` |
+| Specials `BerryLedger_Register` (`VAR_0x8004` = item), `_RegisterStarters`, `_Count`, `_RandomRegistered`, `_RandomRegisteredRare`, `_PendingMilestone` | `data/specials.inc` |
+| Registro na colheita: toda berry que **entra na bolsa** vai para o Livro, a normal e a de mutação, horta e rota | `ObjectEventInteractionPickBerryTree`, `src/berry.c` |
+| Tutorial registra as 8 do Bram e explica o Livro (“I don't hand out what I don't grow, sprout…”) | `Route30_House/scripts.inc` |
+| Presente diário: 2 berries sorteadas do Livro, nunca Lansat, Starf nem Enigma | idem |
+| Marcos 12/20/30/40/50/60 com o prêmio do §3.4, `checkitemspace` antes; a var só anda depois que o prêmio entrou | idem, `VAR_BERRY_LEDGER_MILESTONE` |
+| Rara diária da Laurel (pós-Liga): sorteada das raras **do Livro**, nunca a Enigma; sem nenhuma rara no Livro, fala nova e não gasta o dia | idem |
+
+**Onde divergiu do plano, e por quê**
+
+1. **O registro está no C, não no script** (passo 2). Os dois caminhos de colheita
+   (normal e com mutação) passam por `ObjectEventInteractionPickBerryTree`, e só ali
+   se sabe se a berry **entrou** na bolsa. Registrar no script exigiria repetir o
+   gancho em dois lugares e poderia registrar uma colheita que não coube. O special
+   `BerryLedger_Register` continua existindo para quem precisar pelo script.
+2. **Arquivo novo `src/berry_garden.c`** em vez de `src/berry.c`: o `berry.c` é do
+   motor (upstream), e a horta ainda vai ganhar estado diário, falas, corações e
+   pragas. O `berry.c` só ganhou o gancho de 4 linhas e o `#include`.
+3. **`BerryLedger_BuildSeedMenu` e `BerryLedger_NextDiscovery` não foram escritos
+   agora.** O primeiro só tem uso na Parte 6 (semente encomendada, `dynmultichoice`) e
+   o segundo depende da tabela de 58 receitas da Parte 4 (a de hoje é `static` em
+   `berry.c`). Escritos agora, seriam código sem teste possível. Entram nas Partes 6 e 7.
+4. **Save antigo:** `BerryLedger_RegisterStarters` roda em **toda** conversa com o
+   Bram (não custa nada, e é idempotente). Quem fez o tutorial antes desta parte ganha
+   as 8 iniciais no Livro na próxima conversa, e o sorteio nunca fica vazio.
+5. **O 3º berry do nível 2 não entrou** (passo 4): o texto de hoje diz “take two”, e o
+   nível 2 só existe na Parte 6, que muda o texto junto.
+6. **Marcos:** um texto só (“{STR_VAR_1} Berries! …”) para os seis; o `giveitem` já
+   diz o que foi. Vários marcos pendentes (save antigo com Livro grande) saem todos na
+   mesma conversa, em ordem. O 66 fica fora da lista: é da Parte 16.
+7. **Falas sem plaquinha**, como as do Bram e da Laurel que já existiam: a casa é uma
+   conversa de uma pessoa só. A Parte 9 decide se todo o banco de falas ganha plaquinha.
+
+**Catálogo:** `FLAG_BERRY_LEDGER_START` agora aparece `EM_USO` (lida e escrita pelo
+código). As 65 do meio continuam invisíveis para o `flag_audit` (é soma), como previsto.
+
+**Teste no jogo (falta, o autor faz):**
+- Save novo, tutorial: o texto do Livro aparece; nesse mesmo dia o presente é de
+  berries entre as 8 iniciais.
+- Colher uma berry de rota fora das 8 iniciais (Cheri, Chesto, Pecha, Rawst, Aspear,
+  Leppa, Oran, Persim) → nos dias seguintes ela pode sair no presente.
+- Bolsa sem espaço para berry na colheita → a berry **não** entra no Livro.
+- Marco (debug: ligar 12 flags do Livro): o Bram dá 5 Growth Mulch uma vez só; com
+  a bolsa cheia de adubo ele avisa e paga na próxima visita.
+- Pós-Liga, Livro sem rara: a Laurel diz que falta, e no mesmo dia, depois de colher
+  uma rara, ela dá.
+- Save antigo que já tinha o tutorial: falar com o Bram → presente normal.
 
 ---
 

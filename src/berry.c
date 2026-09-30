@@ -1,5 +1,6 @@
 #include "global.h"
 #include "berry.h"
+#include "berry_garden.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -2343,9 +2344,13 @@ void ObjectEventInteractionPickBerryTree(void)
     u8 berry = GetBerryTypeByBerryTreeId(id);
     u8 mutation = GetTreeMutationValue(id);
 
+    // Every Berry that actually reaches the bag goes into the Book of Berries
+    // (berry_garden.c): garden and route trees alike. Buying never registers.
     if (!OW_BERRY_MUTATIONS || mutation == 0)
     {
         gSpecialVar_0x8004 = AddBagItem(BerryTypeToItemId(berry), GetBerryCountByBerryTreeId(id));
+        if (gSpecialVar_0x8004)
+            BerryLedger_RegisterItem(BerryTypeToItemId(berry));
         return;
     }
     gSpecialVar_0x8004 = (CheckBagHasSpace(BerryTypeToItemId(berry), GetBerryCountByBerryTreeId(id)) && CheckBagHasSpace(BerryTypeToItemId(mutation), 1)) + 2;
@@ -2353,6 +2358,8 @@ void ObjectEventInteractionPickBerryTree(void)
     {
         AddBagItem(BerryTypeToItemId(berry), GetBerryCountByBerryTreeId(id));
         AddBagItem(BerryTypeToItemId(mutation), 1);
+        BerryLedger_RegisterItem(BerryTypeToItemId(berry));
+        BerryLedger_RegisterItem(BerryTypeToItemId(mutation));
     }
 }
 

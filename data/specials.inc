@@ -680,3 +680,9 @@ gSpecials::
 	def_special Nexus_CheckTraditional
 	def_special Nexus_IsDoneToday
 	def_special Nexus_DebugNewDay
+	def_special BerryLedger_Register
+	def_special BerryLedger_RegisterStarters
+	def_special BerryLedger_Count
+	def_special BerryLedger_RandomRegistered
+	def_special BerryLedger_RandomRegisteredRare
+	def_special BerryLedger_PendingMilestone
