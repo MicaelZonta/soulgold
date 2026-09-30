@@ -17,11 +17,16 @@
 //   python3 .claude/skills/nomear-falante/adicionar_falante.py PRYCE "Pryce"
 //   python3 .claude/skills/nomear-falante/checar_falantes.py
 // {SPEAKER NAME_X} grava o indice em SPEAKER_ARG_BYTES bytes (alto, baixo),
-// cada um de 00 a FE: FF e o fim de texto e cortaria a fala. Indice =
-// alto * 255 + baixo, o que da ate 255 * 255 = 65025 falantes. charmap.txt
-// escreve NAME_X = 00 05; a skill `nomear-falante` gera esses valores.
+// cada um de 00 a F9. Os bytes FA..FF ficam de fora porque sao \l, \p, o
+// proprio codigo de controle, placeholder, \n e fim de texto: quem desenha
+// a fala pula o argumento, mas codigo que varre texto byte a byte sem
+// conhecer os codigos (StripLineBreaks em line_break.c, braille) leria um
+// argumento FE como quebra de linha. Indice = alto * 250 + baixo, ate
+// 250 * 250 = 62500 falantes; abaixo de 250 a codificacao e a mesma de
+// quando a base era 255 (00 xx). charmap.txt escreve NAME_X = 00 05; a
+// skill `nomear-falante` le SPEAKER_ARG_BASE daqui e gera esses valores.
 #define SPEAKER_ARG_BYTES 2
-#define SPEAKER_ARG_BASE  255
+#define SPEAKER_ARG_BASE  250
 #define SPEAKER_MAX_NAMES (SPEAKER_ARG_BASE * SPEAKER_ARG_BASE)
 
 enum SpeakerNames {

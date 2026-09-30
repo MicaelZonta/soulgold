@@ -1,6 +1,6 @@
 ---
 name: nomear-falante
-description: Use ao por o nome de quem fala numa plaquinha acima da caixa de dialogo (como a caixa de fala de treinador), ao escrever ou revisar dialogo de cena com varios personagens, ao adicionar um personagem novo a lista de falantes, e ao converter textos antigos do formato "Nome: fala" para a plaquinha. Cobre o codigo {SPEAKER NAME_X}, os tres arquivos que precisam concordar na mesma ordem, a diferenca entre trocar de falante e continuar falando, narracao que herda plaquinha por engano, quantos falantes cabem (indice de 2 bytes, ate 65025 - pode criar a vontade, inclusive Pokemon), por que fala de derrota dentro da batalha fica com "Nome: ", e as ferramentas que medem largura de linha e conferem tudo. Nao use para mugshot (retrato) nem para grafico de treinador.
+description: Use ao por o nome de quem fala numa plaquinha acima da caixa de dialogo (como a caixa de fala de treinador), ao escrever ou revisar dialogo de cena com varios personagens, ao adicionar um personagem novo a lista de falantes, e ao converter textos antigos do formato "Nome: fala" para a plaquinha. Cobre o codigo {SPEAKER NAME_X}, os tres arquivos que precisam concordar na mesma ordem, a diferenca entre trocar de falante e continuar falando, narracao que herda plaquinha por engano, quantos falantes cabem (indice de 2 bytes, ate 62500 - pode criar a vontade, inclusive Pokemon), por que fala de derrota dentro da batalha fica com "Nome: ", e as ferramentas que medem largura de linha e conferem tudo. Nao use para mugshot (retrato) nem para grafico de treinador.
 ---
 
 # Nome do falante acima da caixa
@@ -83,13 +83,21 @@ python3 .claude/skills/nomear-falante/checar_falantes.py
 escrita — e o build continua limpo, porque nada disso é verificado pelo
 compilador.
 
-### Quantos falantes cabem: sem limite prático (65.025)
+### Quantos falantes cabem: sem limite prático (62.500)
 
 O índice vai em **2 bytes** depois do código `FC 19` (`SPEAKER_ARG_BYTES`,
 em `include/constants/speaker_names.h`, mudança de 30/09/2026). Cada byte vai
-de `00` a `FE` — `FF` é o fim de texto e `StringCopy` cortaria a fala ali —,
-então índice = alto × 255 + baixo, até 255 × 255 = **65.025**. Um
-`STATIC_ASSERT` em `src/data/speaker_names.h` guarda o teto.
+de `00` a `F9`, então índice = alto × 250 + baixo, até 250 × 250 = **62.500**.
+Um `STATIC_ASSERT` em `src/data/speaker_names.h` guarda o teto.
+
+Por que 250 e não 255: `FA`..`FF` são `\l`, `\p`, o próprio código de
+controle, placeholder, `\n` e fim de texto. Quem desenha a fala pula o
+argumento, mas código que varre texto byte a byte sem conhecer os códigos
+(`StripLineBreaks` em `line_break.c`, braille) leria um argumento `FE` como
+quebra de linha. Com base 255 isso aconteceria no falante de índice 254;
+abaixo de 250 as duas bases dão os mesmos bytes (`00 xx`), então a troca não
+mexeu em nada já escrito. As ferramentas leem `SPEAKER_ARG_BASE` do
+cabeçalho: nunca escreva a base à mão no Python.
 
 - A tabela só tem o tamanho dos falantes que existem: não há o que reservar.
   Cada falante custa ~15–20 bytes de ROM. Crie à vontade, inclusive Pokémon

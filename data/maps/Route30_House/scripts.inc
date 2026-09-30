@@ -42,7 +42,9 @@ Route30_House_EventScript_BaldMan::
 	special BerryLedger_RegisterStarters
 	call Route30_House_EventScript_Milestones
 	goto_if_set FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY, Route30_House_EventScript_DoneToday
-	msgbox Route30_House_Text_TakeTwo, MSGBOX_DEFAULT
+	@ "You came back!" makes no sense in the same conversation as the tutorial.
+	call_if_set FLAG_TEMP_1, Route30_House_EventScript_FirstTwoText
+	call_if_unset FLAG_TEMP_1, Route30_House_EventScript_TakeTwoText
 	call Route30_House_EventScript_GiveLedgerBerry
 	@ The flag is set BETWEEN the two berries, exactly as the Hoenn original does
 	@ it: setting it after both would let a bag that fills up on the second berry
@@ -54,18 +56,20 @@ Route30_House_EventScript_BaldMan::
 	release
 	end
 
-@ The original one-off, unchanged except that it no longer ends the conversation:
-@ the tutorial and the first daily pair happen on the same visit.
+@ The original one-off Cheri, plus the Book of Berries. It no longer ends the
+@ conversation: the tutorial and the first daily pair happen on the same visit,
+@ so the box stays open into the gift (no closemessage here).
 Route30_House_EventScript_Tutorial::
 	msgbox Route30_BerryHouse_Text_MonEatBerries, MSGBOX_DEFAULT
 	giveitem ITEM_CHERI_BERRY
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_GOT_BERRY_ROUTE_30_HOUSE
+	@ This visit's gift gets the first-time line (cleared by the next map load).
+	setflag FLAG_TEMP_1
 	@ The garden outside opens with the tutorial: bed A is level 1.
 	setvar VAR_BERRY_GARDEN_LEVEL, 1
 	special BerryLedger_RegisterStarters
 	msgbox Route30_House_Text_TheBook, MSGBOX_DEFAULT
-	closemessage
 	return
 
 @ Book of Berries (.claude/berry_master/REI_DA_COLHEITA.md section 3): Bram
@@ -139,6 +143,14 @@ Route30_House_EventScript_Prize50::
 Route30_House_EventScript_Prize60::
 	setvar VAR_0x8009, ITEM_BOOST_MULCH
 	setvar VAR_0x800A, 5
+	return
+
+Route30_House_EventScript_FirstTwoText::
+	msgbox Route30_House_Text_FirstTwo, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_TakeTwoText::
+	msgbox Route30_House_Text_TakeTwo, MSGBOX_DEFAULT
 	return
 
 Route30_House_EventScript_DoneToday::
@@ -226,6 +238,10 @@ Route30_House_Text_Milestone:
 Route30_House_Text_MilestoneBagFull:
 	.string "Your Bag's too full for what I've got\n"
 	.string "for you. I'll keep it. Come back.$"
+
+Route30_House_Text_FirstTwo:
+	.string "And since you're here, take two more.\n"
+	.string "There's always more tomorrow.$"
 
 Route30_House_Text_TakeTwo:
 	.string "You came back! And you looked at the\n"

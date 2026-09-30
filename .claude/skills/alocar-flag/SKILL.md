@@ -61,15 +61,20 @@ STATIC_ASSERT(CUSTOM_FLAGS_END < FLAG_0x1500, CustomFlagsOverflowAllocation);
 // "all new standalone flags belong in CUSTOM_FLAGS"
 ```
 
-O bloco começa em `0x1000`. As posições `0x1000–0x1046` estão todas ocupadas,
-então **a próxima flag nova continua em `0x1047`**, e o bloco pode ir até
-`0x14FF` — 1209 posições.
+O bloco começa em `0x1000` e pode ir até `0x14FF`. **O número da próxima flag
+livre está no marcador `// PROXIMA FLAG NOVA:` logo depois de
+`CUSTOM_FLAGS_END`** em `include/constants/flags.h` (em 30/09/2026, `0x1096`,
+depois do Livro de Berries `0x1053..0x1095`). Não confie em número escrito em
+documento: leia o marcador, e mova-o junto quando alocar.
+
+Var nova segue a mesma ideia: `// PROXIMA VAR NOVA:` em
+`include/constants/vars.h` (em 30/09/2026, `0x412E`).
 
 Edição em `include/constants/flags.h`, no fim do bloco:
 
 ```c
-#define FLAG_VISITED_SUN_MOON_ALTAR                 0x1046
-#define FLAG_MINHA_COISA_NOVA                       0x1047 // o que significa, e quem seta
+#define FLAG_BERRY_LEDGER_END                       0x1095 // (a ultima de hoje)
+#define FLAG_MINHA_COISA_NOVA                       0x1096 // o que significa, e quem seta
 #define CUSTOM_FLAGS_END                            FLAG_MINHA_COISA_NOVA
 ```
 
@@ -97,7 +102,7 @@ Três detalhes que importam:
 | `FLAG_TEMP_*` para estado persistente | Zera ao trocar de mapa |
 | `0xA4C–0xFFF` | Livre de verdade, mas é a reserva de expansão de `SYSTEM_FLAGS`. Não misture com flag de conteúdo |
 
-Regra prática: se você está prestes a usar um número fora de `0x1047+`,
+Regra prática: se você está prestes a usar um número fora do bloco `CUSTOM` (`0x1000..0x14FF`),
 pergunte por que — quase sempre a resposta certa é o bloco `CUSTOM`.
 
 ## 4. Flags de visibilidade de NPC
@@ -127,7 +132,7 @@ A linha confirma que a flag caiu no bloco `CUSTOM` e diz se ela já nasceu
 - [ ] Procurei uma flag existente antes de criar
 - [ ] Não é caso de `FLAG_TEMP_*`, `VAR_TEMP_*` nem `VAR_*`
 - [ ] Não é comportamento de engine que já tem apelido em `include/config/`
-- [ ] Número no bloco `CUSTOM` (`0x1047` em diante), sequencial
+- [ ] Número no bloco `CUSTOM`, o do marcador `PROXIMA FLAG NOVA`, sequencial
 - [ ] `CUSTOM_FLAGS_END` aponta para a minha flag
 - [ ] Comentário diz o que significa e quem seta
 - [ ] Build limpo (os asserts de `global.h` e `save.c` rodam no build)

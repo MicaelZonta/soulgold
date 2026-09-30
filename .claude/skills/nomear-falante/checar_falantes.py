@@ -20,6 +20,8 @@ import re
 import sys
 
 RAIZ = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+BASE = int(re.search(r"#define SPEAKER_ARG_BASE\s+(\d+)",
+                     open(os.path.join(RAIZ, "include/constants/speaker_names.h"), encoding="utf-8").read()).group(1))
 
 
 def ler(caminho):
@@ -43,13 +45,14 @@ def do_charmap():
     texto = ler("charmap.txt")
     texto = texto[texto.index("\nNAME_NONE = "):]
     for linha in texto.split("\n"):
-        # NAME_X = alto baixo: indice = alto * 255 + baixo (FF e fim de texto)
+        # NAME_X = alto baixo: indice = alto * BASE + baixo; byte >= BASE
+        # (FA..FF) colide com \l \p codigo placeholder \n fim de texto
         m = re.match(r"^NAME_(\w+) = ([0-9A-Fa-f]{2}) ([0-9A-Fa-f]{2})\s*(@.*)?$", linha.strip())
         if m:
             alto, baixo = int(m.group(2), 16), int(m.group(3), 16)
-            if alto == 0xFF or baixo == 0xFF:
+            if alto >= BASE or baixo >= BASE:
                 baixo = -1  # vira erro de valor abaixo
-            pares.append((m.group(1), alto * 255 + baixo))
+            pares.append((m.group(1), alto * BASE + baixo))
         elif re.match(r"^NAME_\w+ = ", linha.strip()):
             pares.append((linha.split()[0][5:], -1))
     return pares
@@ -172,7 +175,7 @@ def main():
             erros.append(
                 "charmap.txt: NAME_%s deveria valer %02X %02X (indice %d) e vale "
                 "outra coisa. Rode adicionar_falante.py --sincronizar"
-                % ((nome,) + divmod(i, 255) + (i,))
+                % ((nome,) + divmod(i, BASE) + (i,))
             )
     conta = dict(charmap).get("COUNT")
     if conta is not None and conta != len(enum):

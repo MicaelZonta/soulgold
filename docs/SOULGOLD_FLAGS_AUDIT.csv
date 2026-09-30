@@ -1,5 +1,5 @@
 valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
-0x1,1,FLAG_TEMP_1,TEMP,EM_USO,14,83,112,BattleFrontier_BattleDomePreBattleRoom;BlackthornCity;BlackthornCity_House3;CeladonCity_Gym,GLOBAL(codigo),
+0x1,1,FLAG_TEMP_1,TEMP,EM_USO,16,84,113,BattleFrontier_BattleDomePreBattleRoom;BlackthornCity;BlackthornCity_House3;CeladonCity_Gym,GLOBAL(codigo),
 0x1,1,FLAG_TEMP_SKIP_GABBY_INTERVIEW,TEMP,EM_USO,0,1,1,,GLOBAL(codigo),
 0x2,2,FLAG_TEMP_2,TEMP,EM_USO,17,70,87,BattleFrontier_BattleTowerMultiBattleRoom;BlackthornCity;CeladonCity;CeladonCity_Gym,GLOBAL(codigo),
 0x2,2,FLAG_TEMP_REGICE_PUZZLE_STARTED,TEMP,EM_USO,1,1,1,,GLOBAL(codigo),
@@ -1656,7 +1656,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1043,4163,FLAG_EVENT_ULTRABEAST_CHERRYGROVE,CUSTOM,EM_USO,4,4,8,CherrygroveCity;OlivineCity_House1,GLOBAL(codigo),
 0x1044,4164,FLAG_EVENT_ULTRABEAST_NEWBARK,CUSTOM,EM_USO,9,4,11,NewBarkTown;NewBarkTown_Lab;NewBarkTown_PlayersHouse_1F;OlivineCity_House1,GLOBAL(codigo),
 0x1045,4165,FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED,CUSTOM,EM_USO,2,2,10,OlivineCity_House1;OlivineCity_PortInside,GLOBAL(codigo),
-0x1046,4166,FLAG_VISITED_SUN_MOON_ALTAR,CUSTOM,EM_USO,2,1,4,SunMoonAltar,GLOBAL(codigo),
+0x1046,4166,FLAG_VISITED_SUN_MOON_ALTAR,CUSTOM,EM_USO,2,1,3,SunMoonAltar,GLOBAL(codigo),
 0x1047,4167,FLAG_BLACKTHORN_UB_ENGAGED,CUSTOM,EM_USO,3,2,3,BlackthornCity,MAPA_UNICO:BlackthornCity,
 0x1048,4168,FLAG_BLACKTHORN_TYPE_NULL_PENDING,CUSTOM,EM_USO,3,2,5,BlackthornCity,GLOBAL(codigo),
 0x1049,4169,FLAG_RIFT_LOOKER_SUMMONS,CUSTOM,EM_USO,17,7,12,BlackthornCity;Mahoganytown;OlivineCity_House1,GLOBAL(codigo),
@@ -1670,7 +1670,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1051,4177,FLAG_NEXUS_RULES_EXPLAINED,CUSTOM,EM_USO,1,1,3,Nexus,MAPA_UNICO:Nexus,
 0x1052,4178,FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE,CUSTOM,EM_USO,3,4,6,,GLOBAL(codigo),
 0x1053,4179,FLAG_BERRY_LEDGER_START,CUSTOM,EM_USO,1,1,3,,GLOBAL(codigo),Cheri Berry
-0x1095,4245,FLAG_BERRY_LEDGER_END,CUSTOM,EM_USO,0,0,3,,GLOBAL(codigo),Maranga Berry (67 flags)
+0x1095,4245,FLAG_BERRY_LEDGER_END,CUSTOM,EM_USO,0,0,4,,GLOBAL(codigo),Maranga Berry (67 flags)
 0x1500,5376,FLAG_0x1500,LIVRE,NUNCA_REFERENCIADA,0,0,0,,,
 0x1508,5384,FLAG_ROUTE32_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route32,MAPA_UNICO:HiddenGrotto_Route32,
 0x1509,5385,FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY,DAILY,EM_USO,2,2,1,,GLOBAL(codigo),

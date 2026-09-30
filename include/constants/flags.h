@@ -2034,9 +2034,10 @@
 // the Nexus is touched on a day; cleared by ClearDailyFlags at the date change.
 #define FLAG_DAILY_NEXUS_NEW_DAY                    (DAILY_FLAGS_START + 0x31) // VAR_NEXUS_DAILY already reset today (src/nexus.c RollOverIfNewDay)
 // Berry Master's garden (.claude/berry_master/REI_DA_COLHEITA.md section 14.6):
-// VAR_GARDEN_TODAY has been reset for today. Set by GardenRollDay the first
-// time Route 30 or the Berry Master's house is entered on a day; cleared by
-// ClearDailyFlags at the date change. Same pattern as FLAG_DAILY_KURT_NEW_DAY.
+// VAR_GARDEN_TODAY has been reset for today. Set by GardenRollDay (plan part 5,
+// not written yet) the first time Route 30 or the Berry Master's house is
+// entered on a day; cleared by ClearDailyFlags at the date change. Same pattern
+// as FLAG_DAILY_KURT_NEW_DAY.
 #define FLAG_DAILY_GARDEN_NEW_DAY                   (DAILY_FLAGS_START + 0x32) // VAR_GARDEN_TODAY already reset today (GardenRollDay)
 #define FLAG_UNUSED_0x953                           (DAILY_FLAGS_START + 0x33) // Unused Flag
 #define FLAG_UNUSED_0x954                           (DAILY_FLAGS_START + 0x34) // Unused Flag

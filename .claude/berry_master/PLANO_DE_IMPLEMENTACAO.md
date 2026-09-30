@@ -49,6 +49,37 @@
 As partes 14 e 15 são independentes entre si (dá para fazer uma, testar a 16 com ela,
 e fazer a outra depois). As partes 9, 10 e 11 podem trocar de ordem entre si.
 
+### Revisão das partes 1–3 (30/09/2026)
+
+Revisão pedida pelo autor antes da Parte 4. O que ela achou e o que foi feito:
+
+| # | Achado | Gravidade | Feito |
+|---|---|---|---|
+| 1 | Plaquinha em 2 bytes com base 255: do índice 250 em diante o byte baixo vira `FA`..`FE` (`\l`, `\p`, código, placeholder, `\n`). A fala desenha certo, mas `StripLineBreaks` (`line_break.c`) e o braille varrem byte a byte e leriam `FE` como quebra de linha. Faltavam 7 falantes para acontecer | alta, latente | Base **250** (`SPEAKER_ARG_BASE`); abaixo de 250 os bytes são os mesmos, o charmap não mudou um byte. As ferramentas da skill leem a base do cabeçalho em vez de ter `255` escrito à mão |
+| 2 | No dia do tutorial o Bram dizia “One more thing… o Livro” e logo “You came back! And you looked at the trees” na mesma conversa (defeito antigo, a fala do Livro deixou à vista); a caixa ainda fechava e reabria entre as duas | média | Fala própria para a visita do tutorial (“And since you're here, take two more.”, `FLAG_TEMP_1`), e a caixa fica aberta |
+| 3 | `REI_DA_COLHEITA.md` ainda dizia que a Oran natural sai, que o registro é no script, que o C fica em `berry.c`, e contava 15 objetos (são 16 com o Caterpie) | média (regra do plano: o doc é corrigido na mesma parte) | Corrigido nos 5 pontos, marcado *código (parte N)* |
+| 4 | Skill `alocar-flag` mandava alocar em `0x1047` (velho desde antes da horta); `vars.h` sem marcador de próxima var | média | A skill manda ler o marcador `PROXIMA FLAG NOVA`; `vars.h` ganhou `PROXIMA VAR NOVA: 0x412E` |
+| 5 | Comentários de `flags.h`/`vars.h` citavam `GardenRollDay` e `GardenHearts_Talk`, que ainda não existem | baixa | Marcados “plan part 5/9, not written yet” |
+| 6 | Nenhum teste automático | — | `test/berry_garden.c`: 12 testes (faixa dos canteiros, canteiros e da Laurel não renascem, Oran do WorldHub renasce, Livro só aceita berry e vai de Cheri a Maranga, iniciais idempotentes, sorteios sem Lansat/Starf/Enigma e alcançando todo registrado, rara sem Enigma, marcos em ordem e sem o 66, colheita põe na bolsa e no Livro). **Compilam, mas não rodam** (item 7) |
+| 7 | A infraestrutura de testes do repo **não roda hoje**, sem relação com a horta: (a) `test/vs_seeker.c` cita treinadores de Hoenn que não existem e `test/battle/*.party` quebra com `-Werror=override-init`; (b) o ROM de teste tem 39 MB e o `mgba-rom-test` de fábrica só lê 32 MB (opcode ilegal no primeiro frame). O mGBA patchado lê, mas não tem o executor `rom-test` | alta para o repo | **Não feito** (fora do escopo): recomendação de portar o `rom-test` para `tools/mgba-master` e consertar os dois arquivos de teste. Comando que chegou a compilar e linkar só a horta: `make check TEST_SHARDS=1 CFLAGS=-Wno-error=override-init TEST_SRCS_IN="test/test_runner.c test/test_runner_args.c test/test_runner_battle.c test/berry.c test/berry_garden.c"` |
+| 8 | Site público de documentação (`tools/soulgold_docs`) não foi regenerado com as cenouras | decisão do autor | **Não feito de propósito:** as cenouras são spoiler do Crown Tundra e ainda não têm fonte. Regenerar quando a Parte 13 der a fonte |
+
+Medido com a skill `limites-do-engine` (`dev_scripts/limites_janela_objetos.py --mapa
+Route30`): pior janela de spawn = **14** objetos em (21,35), contando os escondidos por
+flag; nenhum mapa do jogo passa de 15. Save: `SaveBlock1` com 428 bytes livres — a
+Parte 4 não gasta nada (os 6 bits de mutação usam o `padding:2` que já existe).
+Para a Parte 8 existem **duas** saídas para o 16º objeto: tirar o Caterpie de (36,34),
+ou subir `OBJECT_EVENTS_COUNT` (cabe até 27 sem aumentar o save, mas exige o conserto
+do `waitmovement` e de `MAX_SPRITES`, ver `.claude/limites-do-engine.md`). Decisão do
+autor na Parte 8.
+
+Conferido e sem problema: limite de 64 templates por mapa (Route 30 com 33, sobra para o
+elenco); `SetBerryTreeJustPicked` sem teto de `local_id`; Berry Pouch é item-chave sem uso
+(prêmio cosmético seguro); os 4 `case` do `text.c` e o `GetExtCtrlCodeLength` pulam os 2
+bytes; nenhum script cita `local_id` da Route 30 acima de 6; `FLAG_TEMP_5/6` não aparecem
+em script comum; build limpo, `map_graph` ok, `checar_falantes.py` “241, tudo em ordem”,
+`medir_linha.py` sem estouro nos dois mapas.
+
 **Pendências do autor** (nenhuma bloqueia as partes 1–12; ver §18):
 sprites de Peony, Peonia, Klara, Avery, Mustard e Molly adulta; prêmios grandes (Peony,
 Mustard); falas novas dos moradores de Greenfield no estado 12.

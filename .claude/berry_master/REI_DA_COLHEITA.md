@@ -133,6 +133,11 @@ Para caber, o **Weedle decorativo de (19,42) sai do mapa** (ele não tem script)
 Tilly nunca coincide com o Bugsy (fim de semana × terça/quinta). À noite, o Calyrex
 e o Spectrier ocupam a vaga da Laurel, que está em casa.
 
+> **Medido no código (parte 2, 30/09/2026).** A janela real de spawn
+> (`TrySpawnObjectEvents`) também pega o **Caterpie decorativo de (36,34)**, que esta
+> tabela não contava: com ele o pior caso é **16**, acima do limite. A parte 8 tira
+> esse Caterpie (ou o põe fora da janela). Detalhe no plano, “Parte 2 — feita”.
+
 ---
 
 ## 3. O Livro de Berries
@@ -167,11 +172,11 @@ e o Spectrier ocupam a vaga da Laurel, que está em casa.
 Contíguas porque o C calcula a flag por soma, e porque o `flag_audit.py` e a skill
 `catalogar-flags` precisam ver o bloco inteiro de uma vez.
 
-### 3.3 Código (C, `src/berry.c`)
+### 3.3 Código (C, `src/berry_garden.c` — *código, parte 3: arquivo próprio, não `src/berry.c`*)
 
 | Special | Faz | Quem chama |
 |---|---|---|
-| `BerryLedger_Register` | liga a flag da berry em `VAR_0x8004` | `BerryTree_EventScript_PickBerry` (e a versão com mutação), logo depois da colheita |
+| `BerryLedger_Register` | liga a flag da berry em `VAR_0x8004` | *código (parte 3):* a colheita registra direto no C, em `ObjectEventInteractionPickBerryTree`, só o que entrou na bolsa; o special fica para quem precisar pelo script |
 | `BerryLedger_Count` | quantas estão no Livro | Bram (marcos, reformas) |
 | `BerryLedger_RandomRegistered` | sorteia uma berry do Livro (sem Lansat, Starf e Enigma) | presente diário, pedido comum |
 | `BerryLedger_BuildSeedMenu` | monta a lista com rolagem das berries do Livro | semente encomendada (§3.5) |
@@ -355,9 +360,12 @@ marca como regado o estágio atual de todo canteiro da horta, uma vez por dia
 (`FLAG_DAILY_GARDEN_WATERED`). Regar à mão continua valendo para árvore de rota.
 
 **Canteiro da Laurel.** Hoje em (23,38) há uma árvore de rota natural
-(`BERRY_TREE_ORAN_2`, Oran). Ela vira o **canteiro da Laurel**: a Oran natural sai de
-`sNaturalBerriesByTreeId` e de `EventScript_ResetAllBerries`, e o objeto troca para o
-ID `BERRY_TREE_KINGS_PLOT` (apelido de mais um ID de Hoenn). Até o Ato 3 o objeto
+(`BERRY_TREE_ORAN_2`, Oran). Ela vira o **canteiro da Laurel**: o objeto troca para o
+ID `BERRY_TREE_KINGS_PLOT` (apelido de mais um ID de Hoenn, que não é natural e por
+isso nunca renasce Oran). *Corrigido no código (parte 2):* a Oran natural **não** sai
+de `sNaturalBerriesByTreeId` nem de `EventScript_ResetAllBerries`, porque o
+`WorldHub` usa o mesmo `BERRY_TREE_ORAN_2` na horta dele; trocar o ID do objeto da
+Route 30 já basta. Até o Ato 3 o objeto
 fica escondido (`FLAG_TEMP` no `ON_TRANSITION`), e um `bg_event` no mesmo tile
 responde:
 
@@ -959,7 +967,7 @@ Sem estado novo; conferem algo do jogo e falam por cima da fala do dia.
 | C (`src/berry.c`) | médio | 6 bits de mutação, 58 receitas, trava pós-Liga, Livro (4 specials), irrigação, `GetKingsPlotStage`, `RipenGardenTrees`, tabela de pragas |
 | Config | 3 | `OW_BERRY_MUTATIONS`, `_WEEDS`, `_PESTS` = TRUE |
 | Encontros | −8 famílias | `wild_encounters.json` (§7.1) |
-| Árvore natural | −1 | Oran de (23,38) sai de `sNaturalBerriesByTreeId` e `EventScript_ResetAllBerries` |
+| Árvore natural | 0 | *código (parte 2):* a árvore de (23,38) troca de ID; a Oran natural continua (o `WorldHub` usa) |
 
 ---
 
