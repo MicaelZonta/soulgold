@@ -325,6 +325,23 @@ extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Byron;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Fantina;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Cynthia;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_BrendanHoenn;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Zinnia;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Shelly;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Olivia;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_N;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Lorelei;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Leon;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_James;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Jessie;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Hilda;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Hau;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Gardenia;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Diantha;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Cyrus;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Cheren;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Barry;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Alder;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Agatha;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_NurseChansey;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LegendaryShadow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SlowpokeNoTail;
@@ -700,6 +717,23 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_FANTINA] =                     &gObjectEventGraphicsInfo_Fantina,
     [OBJ_EVENT_GFX_CYNTHIA] =                     &gObjectEventGraphicsInfo_Cynthia,
     [OBJ_EVENT_GFX_BRENDAN_HOENN] =               &gObjectEventGraphicsInfo_BrendanHoenn,
+    [OBJ_EVENT_GFX_ZINNIA] =                      &gObjectEventGraphicsInfo_Zinnia,
+    [OBJ_EVENT_GFX_SHELLY] =                      &gObjectEventGraphicsInfo_Shelly,
+    [OBJ_EVENT_GFX_OLIVIA] =                      &gObjectEventGraphicsInfo_Olivia,
+    [OBJ_EVENT_GFX_N] =                           &gObjectEventGraphicsInfo_N,
+    [OBJ_EVENT_GFX_LORELEI] =                     &gObjectEventGraphicsInfo_Lorelei,
+    [OBJ_EVENT_GFX_LEON] =                        &gObjectEventGraphicsInfo_Leon,
+    [OBJ_EVENT_GFX_JAMES] =                       &gObjectEventGraphicsInfo_James,
+    [OBJ_EVENT_GFX_JESSIE] =                      &gObjectEventGraphicsInfo_Jessie,
+    [OBJ_EVENT_GFX_HILDA] =                       &gObjectEventGraphicsInfo_Hilda,
+    [OBJ_EVENT_GFX_HAU] =                         &gObjectEventGraphicsInfo_Hau,
+    [OBJ_EVENT_GFX_GARDENIA] =                    &gObjectEventGraphicsInfo_Gardenia,
+    [OBJ_EVENT_GFX_DIANTHA] =                     &gObjectEventGraphicsInfo_Diantha,
+    [OBJ_EVENT_GFX_CYRUS] =                       &gObjectEventGraphicsInfo_Cyrus,
+    [OBJ_EVENT_GFX_CHEREN] =                      &gObjectEventGraphicsInfo_Cheren,
+    [OBJ_EVENT_GFX_BARRY] =                       &gObjectEventGraphicsInfo_Barry,
+    [OBJ_EVENT_GFX_ALDER] =                       &gObjectEventGraphicsInfo_Alder,
+    [OBJ_EVENT_GFX_AGATHA] =                      &gObjectEventGraphicsInfo_Agatha,
     [OBJ_EVENT_GFX_NEXUS_PORTAL] =             &gObjectEventGraphicsInfo_NexusPortal,
     [OBJ_EVENT_GFX_NEXUS_LOOKER_FILE] =        &gObjectEventGraphicsInfo_NexusLookerFile,
     [OBJ_EVENT_GFX_TMBALL] =                  &gObjectEventGraphicsInfo_TMBall,

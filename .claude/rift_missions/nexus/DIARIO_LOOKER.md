@@ -79,7 +79,7 @@ outro caderno; as páginas 1 e 2 podem tocar.
 
 | Fio | Cadernos que se tocam | O que liga |
 |---|---|---|
-| Pallet | Red, Blue, Leaf, Ash | o garoto de Pallet que nunca cresceu (Ash) é visto de longe nos fragmentos dos outros três; o relógio de bolso parado |
+| Pallet | Red, Blue, Leaf | um garoto de Pallet com um Pikachu no ombro que nunca cresce, visto de longe nos três fragmentos (nunca nomeado); o relógio de bolso parado |
 | Rocket | Giovanni, Silver, Archer, Ariana, Proton, Petrel, Jessie e James | um pai que não voltou; Jessie e James procuram um chefe que, no fragmento deles, nunca existiu; o laboratório de Cinnabar/Mewtwo |
 | Liga de Kanto | Lorelei, Bruno, Agatha, Lance, Koga | uma Liga em que a Elite Four nunca foi derrotada; os corcéis do rei (Agatha e Lorelei) procuram o **Will**, que tem o rei |
 | Tempo | Spenser, Cyrus, Cynthia, Eusine | o relógio parado; a corrente vermelha (Cyrus a usa, Cynthia a quebra); o Celebi do Spenser guarda as horas que o Cyrus apagou |
@@ -97,7 +97,7 @@ outro caderno; as páginas 1 e 2 podem tocar.
 
 ## Campeões novos (proposta de 30/09/2026)
 
-Os 18 treinadores com arte nova (`.filetransfer/.trainers/<Nome>/`, ver
+Os 17 treinadores com arte nova (`.filetransfer/.trainers/<Nome>/`, ver
 [README](README.md)) precisam de lendário. Proposta: **tirar um lendário de
 quem campeia dois ou mais**, sem deixar ninguém sem nenhum; em dois casos,
 **co-campeão** (como o Kyogre com Misty e Archie).
@@ -107,7 +107,6 @@ quem campeia dois ou mais**, sem deixar ninguém sem nenhum; em dois casos,
 | Agatha | Spectrier | Morty | Ho-Oh |
 | Lorelei | Glastrier | Pryce | Articuno |
 | Jessie e James | Meloetta | Petrel | Ogerpon |
-| Ash | Marshadow | Archer | Wo-Chien |
 | Barry | Uxie | Roxanne | Terapagos |
 | Cynthia | Giratina | — (co-campeã com o Silver) | Giratina |
 | Cyrus | Dialga | Spenser | Celebi |
@@ -126,3 +125,5 @@ quem campeia dois ou mais**, sem deixar ninguém sem nenhum; em dois casos,
 Enquanto o autor não aprova, **as fichas de quem cede continuam como estão**
 (o código também). A fala de campeão antiga de quem cede não é apagada: se a
 troca for aprovada, ela vira fala genérica extra ou sai.
+
+> O **Ash** estava na primeira versão desta tabela (→ Marshadow) e saiu: o autor o removeu do projeto em 30/09/2026 (sem fonte legítima de sprite). O Marshadow fica com o Archer.

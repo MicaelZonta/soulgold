@@ -87,12 +87,13 @@ habilidade, golpes aprendíveis, 31 IV/252 EV e as três vagas. Precisa do
 
 ## Atualização de 30/09/2026 (📝 proposta, nada no código)
 
-- **18 treinadores novos com arte** em `.filetransfer/.trainers/<Nome>/`:
-  Agatha, Lorelei, Jessie e James, **Ash** (ficha nova, `kanto/ash.md`), Leon,
+- **17 treinadores novos com arte** em `.filetransfer/.trainers/<Nome>/`:
+  Agatha, Lorelei, Jessie e James, Leon,
   Cynthia, Cyrus, Barry, Gardenia, Shelly, Zinnia, Diantha, Olivia, Hau, Hilda
   (`unova/hilbert_e_hilda.md`), N, Cheren, Alder. Só a **Cynthia** está
-  registrada no código (sprite + front pic); os outros têm a arte pronta e
-  falta registrar (no checklist: 📦). Cada ficha ganhou time validado
+  registrada no código com sprite e front pic; os outros já têm o overworld
+  registrado (menos a Hilda) e a front pic pronta em `.filetransfer`, falta
+  registrar (no checklist: 📦). Cada ficha ganhou time validado
   (`nexus_validar_time.py`, pic provisória onde falta a arte), lendário
   (redistribuição em [`POOL_LENDARIOS.md`](POOL_LENDARIOS.md)), 3 falas
   genéricas e 3 de campeão.
