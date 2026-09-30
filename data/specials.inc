@@ -689,3 +689,9 @@ gSpecials::
 	def_special GardenRollDay
 	def_special GardenToday_Check
 	def_special GardenToday_Set
+	def_special GardenReform_Check
+	def_special GardenReform_Pay
+	def_special GardenReform_TakeBuiltLevel
+	def_special GardenIrrigate
+	def_special GardenGift_Count
+	def_special BerryLedger_BuildSeedMenu

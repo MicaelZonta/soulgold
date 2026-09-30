@@ -27,5 +27,11 @@ void GardenToday_Mark(u32 bit);
 void GardenRollDay(void);
 u16 GardenToday_Check(void);
 void GardenToday_Set(void);
+u16 GardenReform_Check(void);
+u16 GardenReform_Pay(void);
+u16 GardenReform_TakeBuiltLevel(void);
+void GardenIrrigate(void);
+u16 GardenGift_Count(void);
+void BerryLedger_BuildSeedMenu(void);
 
 #endif // GUARD_BERRY_GARDEN_H

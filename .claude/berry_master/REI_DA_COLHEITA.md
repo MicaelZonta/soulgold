@@ -373,6 +373,13 @@ responde:
 
 **As cenas de reforma** (manhã seguinte ao pagamento, ao entrar na Route 30):
 
+> *Código (parte 6, 30/09/2026):* por enquanto a “cena” é a **primeira fala do Bram
+> na conversa seguinte à obra** (na casa), e não um gatilho ao entrar na Route 30: o
+> Bram só passa a existir do lado de fora na parte 8, e a horta tem entradas demais
+> (oeste, norte, porta da casa, escada do sul) para cercar com gatilhos sem buraco. A
+> fala do nível 4 é do Bram contando do Bugsy (o Bugsy não está na casa). A parte 8
+> leva as falas para a horta quando o Bram estiver lá de manhã. Detalhe no plano.
+
 > *Nível 2*
 > **Bram:** Four more beds! Laurel dug them. Don't tell her I said so. She'll say I
 > helped.

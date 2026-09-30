@@ -33,7 +33,7 @@
 | 3 | Livro de Berries 🧪 30/09 (código feito, falta teste no jogo) | colher registra; o Bram só dá berries do Livro; marcos | 1, 2 |
 | 4 | Cruzamento completo 🧪 30/09 (código feito, falta teste no jogo) | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
 | 5 | Estado diário 🧪 30/09 (código feito, falta teste no jogo) | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
-| 6 | Níveis da horta | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
+| 6 | Níveis da horta 🧪 30/09 (código feito, falta teste no jogo) | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
 | 7 | Pedidos do dia | comum e descoberta, dica da Laurel | 3, 4, 5, 6 |
 | 8 | Elenco e rotina | Bram, Laurel, Tilly, Sunflora por horário e dia da semana | 2, 5 |
 | 9 | Banco de falas | rodízio de 10, corações, reações de contexto | 5, 8 |
@@ -378,7 +378,7 @@ vez só; bolsa cheia → o Bram avisa e não perde o prêmio.
    Bram (não custa nada, e é idempotente). Quem fez o tutorial antes desta parte ganha
    as 8 iniciais no Livro na próxima conversa, e o sorteio nunca fica vazio.
 5. **O 3º berry do nível 2 não entrou** (passo 4): o texto de hoje diz “take two”, e o
-   nível 2 só existe na Parte 6, que muda o texto junto.
+   nível 2 só existe na Parte 6, que muda o texto junto. *(Feito na Parte 6.)*
 6. **Marcos:** um texto só (“{STR_VAR_1} Berries! …”) para os seis; o `giveitem` já
    diz o que foi. Vários marcos pendentes (save antigo com Livro grande) saem todos na
    mesma conversa, em ordem. O 66 fica fora da lista: é da Parte 16.
@@ -588,6 +588,69 @@ seguinte.
 **Teste no jogo:** debug Livro 12 + ₽5.000 → paga → no dia seguinte a cena e o B
 aberto; sem dinheiro não cobra; nível 3 rega sozinho às 4h.
 
+### Parte 6 — feita no código (30/09/2026), falta o teste no jogo
+
+**O que entrou**
+
+| O quê | Onde |
+|---|---|
+| `VAR_BERRY_GARDEN_WORK` (`0x412E`): 0 = nada; 2..4 = nível pago, em obra; 12..14 = pronto, fala pendente | `include/constants/vars.h` (marcador → `0x412F`) |
+| Constantes `GARDEN_LEVEL_*`, `GARDEN_WORK_*`, `GARDEN_REFORM_*`, `HARVEST_KING_ACT1_DONE` | `include/constants/berry_garden.h` |
+| Tabela `sGardenReforms` (Livro, Ato 1, preço por nível) com `STATIC_ASSERT` de cobrir todo nível | `src/berry_garden.c` |
+| `GardenReform_Check` / `_Pay` / `_TakeBuiltLevel`; a obra conclui dentro do `GardenRollDay` | idem |
+| `GardenIrrigate` (nível 3): rega os 10 canteiros uma vez por dia (`GARDEN_TODAY_WATERED`), não o da Laurel | idem; `ON_TRANSITION` da Route 30, depois do `GardenRollDay` |
+| Regra de rega extraída para `WaterBerryTreeById`, usada pela regadeira **e** pelo canal (uma regra, dois chamadores) | `src/berry.c`, `include/berry.h` |
+| `GardenGift_Count` (2, ou 3 a partir do nível 2) e `BerryLedger_BuildSeedMenu` | `src/berry_garden.c` |
+| Conversa do Bram: fala da obra pronta → marcos → oferta de reforma (1 vez por visita, `FLAG_TEMP_4`) → presente de 2/3 ou semente encomendada | `Route30_House/scripts.inc` |
+| 16 textos novos (ofertas, obra pronta nos 3 níveis, semente, “three”) | idem |
+| 6 testes (oferta só com Livro 12, sem dinheiro não cobra, obra só no dia seguinte e fala uma vez, Ato 1 e Bug Hotel grátis, canal, lista da semente) | `test/berry_garden.c` |
+
+**Onde divergiu do plano, e por quê**
+
+1. **O “pago, pronto amanhã” mora em `VAR_BERRY_GARDEN_WORK`**, não em “nível + 10”
+   (armadilha achada na revisão da Parte 5: a trava do B compara o nível com `< 2`).
+2. **A cena da manhã seguinte é a primeira fala do Bram na próxima conversa**, na casa.
+   Motivo: o Bram só existe do lado de fora a partir da Parte 8, e um gatilho ao entrar
+   na Route 30 precisaria cercar 4 entradas da horta (oeste, norte, porta, escada do
+   sul) sem buraco. A fala do nível 3 tem as duas plaquinhas (Bram e Laurel, os dois na
+   casa); a do nível 4 é o Bram contando do Bugsy. O design (§5) ganhou a nota.
+3. **A obra conclui no primeiro `GardenRollDay` do dia seguinte**, que é à meia-noite
+   (ou na primeira vez que o jogador aparece no dia). Como toda conversa do Bram chama o
+   `GardenRollDay` antes, o pagamento sempre cai **depois** do rolamento do dia, e a obra
+   nunca fica pronta no mesmo dia.
+4. **A oferta de reforma e o “preciso de ajuda” aparecem uma vez por visita**
+   (`FLAG_TEMP_4`), não em toda conversa. Sem isso, até a Parte 12 o jogador com Livro 22
+   ouviria “preciso de ajuda” a cada presente.
+5. **A oferta diz o número real do Livro** (`{STR_VAR_1}`): ela aparece quando o Livro
+   chega ao tamanho **ou depois**; “Twelve Berries” erraria para quem chega com 20.
+6. **Semente encomendada = 1 berry à escolha**, em vez das 3 sorteadas (“em vez do
+   presente sorteado”, §3.5), qualquer uma do Livro **menos a Enigma**. B ou “Surprise me”
+   voltam ao sorteio de 3. Lista em ordem de item; **sem** o `shouldSort` do motor, que
+   ordena por id (a ordem já é essa) e, com lista vazia, estoura (`count - 1` em `u32`,
+   `scrcmd.c`).
+7. **Os nomes da lista são cópias no heap**: o menu dinâmico dá `Free` em cada nome ao
+   fechar (`script_menu.c`); empurrar o ponteiro do nome direto da ROM travaria o jogo
+   ao fechar o menu, com build limpo.
+8. **Nível 4 (Bug Hotel)**: condição e oferta prontas; o efeito (pragas 30%, raro ×1,5)
+   é da Parte 10, que deve ler `VAR_BERRY_GARDEN_LEVEL >= GARDEN_LEVEL_BUG_HOTEL`.
+
+**Medido:** build limpo; `medir_linha.py` sem estouro; `checar_falantes.py` “241, tudo
+em ordem”; `map_graph` ok; `berry_mutations_check` ok; testes compilam (não rodam: ver a
+revisão das partes 1–3).
+
+**Teste no jogo (falta, o autor faz; debug):**
+- Livro 12 (debug de 12 flags) e ₽5.000: o Bram oferece “12 Berries in your Book now…
+  ¥5,000” com a caixa de dinheiro; “Não” → “Suit yourself”; falar de novo na mesma
+  visita não repete; sair e entrar → oferece de novo.
+- Pagar sem dinheiro: “Come back when you've got the money”, nada é cobrado.
+- Pagar: no mesmo dia nada muda; virar o dia → o B abre (grama vira terra), e a próxima
+  conversa começa com “Four more beds! Laurel dug them.” uma vez só; o presente vira
+  “Three today… Or have you got one in mind?”.
+- “I've got one”: lista com rolagem das berries do Livro, sem Enigma; escolher → 1
+  berry, e o presente do dia acaba; B no menu → sorteio de 3.
+- Nível 3 (debug `VAR_HARVEST_KING` = 4, Livro 22, ₽10.000): “preciso de ajuda” some,
+  oferta do canal; no dia seguinte, plantar e entrar na Route 30 → a planta já regada.
+
 ---
 
 ## Parte 7 — Pedidos do dia
@@ -627,8 +690,14 @@ a Sunflora fica dentro de casa, sozinha).
 
 0. **`FLAG_TEMP` já ocupadas** (revisão da Parte 5): na `Route30`, `FLAG_TEMP_1` (árvore
    de Cut em (30,10)), `FLAG_TEMP_5` (canteiro B) e `FLAG_TEMP_6` (canteiro da Laurel);
-   na `Route30_House`, `FLAG_TEMP_1` (fala do dia do tutorial). A Parte 8 escolhe das
-   livres (conferir com `grep` antes) e dá apelido em `flags.h`, como as da Parte 2.
+   na `Route30_House`, `FLAG_TEMP_1` (fala do dia do tutorial) e `FLAG_TEMP_4` (o Bram
+   já falou da reforma nesta visita, Parte 6). A Parte 8 escolhe das livres (conferir
+   com `grep` antes) e dá apelido em `flags.h`, como as da Parte 2.
+   **Herança da Parte 6:** a fala da obra pronta (`Route30_House_EventScript_BuiltLevel`,
+   que consome `GardenReform_TakeBuiltLevel`) e a oferta de reforma estão na conversa do
+   Bram **na casa**. Quando o Bram passar a ficar na horta de manhã, a conversa dele lá
+   tem que chamar as mesmas duas coisas (e o `GardenRollDay` antes), senão o jogador que
+   só encontra o Bram de manhã nunca ouve a fala nem recebe a oferta.
 1. Objetos na `Route30`: Bram (fora, manhã, (31,45)), Laurel (fora, dia, (27,43)),
    Tilly (banquinha, (24,41), fim de semana de dia), Bugsy ((31,43), ter/qui de dia,
    estado ≥ 3). Cada um com a sua `FLAG_TEMP`.

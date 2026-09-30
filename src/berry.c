@@ -1817,7 +1817,14 @@ struct BerryTree *GetBerryTreeInfo(u8 id)
 
 bool32 ObjectEventInteractionWaterBerryTree(void)
 {
-    struct BerryTree *tree = GetBerryTreeInfo(GetObjectEventBerryTreeId(gSelectedObjectEvent));
+    return WaterBerryTreeById(GetObjectEventBerryTreeId(gSelectedObjectEvent));
+}
+
+// The watering itself, shared by the Squirtbottle and by the Berry Master's
+// garden channel (GardenIrrigate, src/berry_garden.c): one rule, two callers.
+bool32 WaterBerryTreeById(u8 id)
+{
+    struct BerryTree *tree = GetBerryTreeInfo(id);
 
     if (OW_BERRY_MOISTURE)
     {

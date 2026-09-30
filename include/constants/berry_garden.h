@@ -30,4 +30,27 @@
 #define GARDEN_TODAY_TALKED_PEONY    15
 #define GARDEN_TODAY_BIT_COUNT       16  // VAR_GARDEN_TODAY is a u16: nothing past 15
 
+// VAR_BERRY_GARDEN_LEVEL (section 5). 0 until Bram's tutorial.
+#define GARDEN_LEVEL_NONE            0
+#define GARDEN_LEVEL_BACKYARD        1   // bed A; the tutorial
+#define GARDEN_LEVEL_PROPER          2   // bed B, 3 Berries a day, seed order
+#define GARDEN_LEVEL_CHANNEL         3   // the garden wakes up watered
+#define GARDEN_LEVEL_BUG_HOTEL       4   // more pests, rarer ones (part 10)
+#define GARDEN_LEVEL_KINGS           5   // Laurel's plot, epilogue (part 16)
+#define GARDEN_LEVEL_LAST_REFORM     GARDEN_LEVEL_BUG_HOTEL  // Bram builds up to here
+
+// VAR_BERRY_GARDEN_WORK: level paid (being built) or level + GARDEN_WORK_BUILT
+// (built; Bram has not talked about it yet).
+#define GARDEN_WORK_NONE             0
+#define GARDEN_WORK_BUILT            10
+
+// GardenReform_Check, what Bram can offer now. VAR_0x8005 = the next level.
+#define GARDEN_REFORM_NONE           0   // nothing to offer: done, or the Book is short
+#define GARDEN_REFORM_BUILDING       1   // already paid, done by tomorrow
+#define GARDEN_REFORM_NEEDS_HELP     2   // Book is enough, but the story is not there yet
+#define GARDEN_REFORM_READY          3   // can be paid now
+
+// VAR_HARVEST_KING: Act 1 over (section 8.1). Levels 3 and 4 need it.
+#define HARVEST_KING_ACT1_DONE       4
+
 #endif // GUARD_CONSTANTS_BERRY_GARDEN_H

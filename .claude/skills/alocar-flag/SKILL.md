@@ -68,7 +68,7 @@ depois do Livro de Berries `0x1053..0x1095`). Não confie em número escrito em
 documento: leia o marcador, e mova-o junto quando alocar.
 
 Var nova segue a mesma ideia: `// PROXIMA VAR NOVA:` em
-`include/constants/vars.h` (em 30/09/2026, `0x412E`).
+`include/constants/vars.h` (em 30/09/2026, `0x412F`).
 
 Edição em `include/constants/flags.h`, no fim do bloco:
 

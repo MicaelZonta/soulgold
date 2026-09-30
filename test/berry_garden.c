@@ -4,6 +4,10 @@
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "item.h"
+#include "list_menu.h"
+#include "malloc.h"
+#include "money.h"
+#include "script_menu.h"
 #include "test/test.h"
 #include "constants/berry.h"
 #include "constants/event_object_movement.h"
@@ -11,7 +15,7 @@
 #include "constants/items.h"
 
 // Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md,
-// parts 2 to 5).
+// parts 2 to 6).
 
 static void ClearLedger(void)
 {
@@ -312,4 +316,112 @@ TEST("Garden day bits are independent and nothing past bit 15 exists")
     EXPECT(!GardenToday_Has(GARDEN_TODAY_ORDER_DONE));
     EXPECT(!GardenToday_Has(GARDEN_TODAY_BIT_COUNT));
     EXPECT_EQ(VarGet(VAR_GARDEN_TODAY), (1 << GARDEN_TODAY_ORDER_ROLLED) | (1 << GARDEN_TODAY_TALKED_PEONY));
+}
+
+// Garden levels (part 6).
+static void SetUpGarden(u32 level, u32 bookSize, u32 money)
+{
+    ClearLedger();
+    RegisterFirst(bookSize);
+    VarSet(VAR_BERRY_GARDEN_LEVEL, level);
+    VarSet(VAR_BERRY_GARDEN_WORK, GARDEN_WORK_NONE);
+    VarSet(VAR_HARVEST_KING, 0);
+    SetMoney(&gSaveBlock1Ptr->money, money);
+    FlagSet(FLAG_DAILY_GARDEN_NEW_DAY); // today's roll already happened
+}
+
+TEST("Bram only offers the Proper Garden once the Book has 12")
+{
+    SetUpGarden(GARDEN_LEVEL_BACKYARD, 11, 99999);
+    EXPECT_EQ(GardenReform_Check(), GARDEN_REFORM_NONE);
+
+    SetUpGarden(GARDEN_LEVEL_BACKYARD, 12, 99999);
+    EXPECT_EQ(GardenReform_Check(), GARDEN_REFORM_READY);
+    EXPECT_EQ(gSpecialVar_0x8005, GARDEN_LEVEL_PROPER);
+
+    SetUpGarden(GARDEN_LEVEL_NONE, 67, 99999); // before the tutorial
+    EXPECT_EQ(GardenReform_Check(), GARDEN_REFORM_NONE);
+}
+
+TEST("Paying for a reform charges nothing when the money is short")
+{
+    SetUpGarden(GARDEN_LEVEL_BACKYARD, 12, 4999);
+    EXPECT(!GardenReform_Pay());
+    EXPECT_EQ(GetMoney(&gSaveBlock1Ptr->money), 4999);
+    EXPECT_EQ(VarGet(VAR_BERRY_GARDEN_WORK), GARDEN_WORK_NONE);
+}
+
+TEST("A paid reform is built at the next date change, not today, and told once")
+{
+    SetUpGarden(GARDEN_LEVEL_BACKYARD, 12, 6000);
+    EXPECT(GardenReform_Pay());
+    EXPECT_EQ(GetMoney(&gSaveBlock1Ptr->money), 1000);
+    EXPECT_EQ(GardenReform_Check(), GARDEN_REFORM_BUILDING);
+
+    // Same day: rolling again (another map load) builds nothing.
+    GardenRollDay();
+    EXPECT_EQ(VarGet(VAR_BERRY_GARDEN_LEVEL), GARDEN_LEVEL_BACKYARD);
+    EXPECT_EQ(GardenReform_TakeBuiltLevel(), 0);
+
+    ClearDailyFlags();
+    GardenRollDay();
+    EXPECT_EQ(VarGet(VAR_BERRY_GARDEN_LEVEL), GARDEN_LEVEL_PROPER);
+    EXPECT_EQ(GardenGift_Count(), 3);
+    EXPECT_EQ(GardenReform_TakeBuiltLevel(), GARDEN_LEVEL_PROPER);
+    EXPECT_EQ(GardenReform_TakeBuiltLevel(), 0);
+}
+
+TEST("The channel and the Bug Hotel wait for Act 1; the Bug Hotel is free")
+{
+    SetUpGarden(GARDEN_LEVEL_PROPER, 22, 99999);
+    EXPECT_EQ(GardenReform_Check(), GARDEN_REFORM_NEEDS_HELP);
+    EXPECT(!GardenReform_Pay());
+    VarSet(VAR_HARVEST_KING, HARVEST_KING_ACT1_DONE);
+    EXPECT_EQ(GardenReform_Check(), GARDEN_REFORM_READY);
+
+    SetUpGarden(GARDEN_LEVEL_CHANNEL, 32, 0);
+    VarSet(VAR_HARVEST_KING, HARVEST_KING_ACT1_DONE);
+    EXPECT(GardenReform_Pay());
+    EXPECT_EQ(VarGet(VAR_BERRY_GARDEN_WORK), GARDEN_LEVEL_BUG_HOTEL);
+
+    SetUpGarden(GARDEN_LEVEL_BUG_HOTEL, 67, 99999);
+    VarSet(VAR_HARVEST_KING, HARVEST_KING_ACT1_DONE);
+    EXPECT_EQ(GardenReform_Check(), GARDEN_REFORM_NONE);
+}
+
+TEST("The channel waters the garden plots once a day, and not Laurel's plot")
+{
+    ClearBerryTrees();
+    PlantBerryTree(BERRY_TREE_GARDEN_A1, ITEM_TO_BERRY(ITEM_ORAN_BERRY), BERRY_STAGE_PLANTED, TRUE);
+    PlantBerryTree(BERRY_TREE_KINGS_PLOT, ITEM_TO_BERRY(ITEM_ORAN_BERRY), BERRY_STAGE_PLANTED, TRUE);
+    VarSet(VAR_GARDEN_TODAY, 0);
+
+    VarSet(VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_PROPER);
+    GardenIrrigate();
+    EXPECT_EQ((u32)GetBerryTreeInfo(BERRY_TREE_GARDEN_A1)->watered, 0);
+
+    VarSet(VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_CHANNEL);
+    GardenIrrigate();
+    EXPECT_EQ((u32)GetBerryTreeInfo(BERRY_TREE_GARDEN_A1)->watered, 1 << 0);
+    EXPECT_EQ((u32)GetBerryTreeInfo(BERRY_TREE_KINGS_PLOT)->watered, 0);
+    EXPECT(GardenToday_Has(GARDEN_TODAY_WATERED));
+}
+
+TEST("The seed order lists every Berry in the Book but the Enigma, in item order")
+{
+    struct ListMenuItem *first, *last;
+
+    ClearLedger();
+    BerryLedger_RegisterStarters();
+    BerryLedger_RegisterItem(ITEM_ENIGMA_BERRY);
+
+    BerryLedger_BuildSeedMenu();
+    EXPECT_EQ(MultichoiceDynamic_StackSize(), 8);
+    first = MultichoiceDynamic_PeekElementAt(0);
+    last = MultichoiceDynamic_PeekElementAt(7);
+    EXPECT_EQ(first->id, ITEM_CHERI_BERRY);
+    EXPECT_EQ(last->id, ITEM_PERSIM_BERRY);
+    while (!MultichoiceDynamic_StackEmpty())
+        Free((void *)MultichoiceDynamic_PopElement()->name);
+    MultichoiceDynamic_DestroyStack();
 }

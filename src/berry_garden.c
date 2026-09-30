@@ -8,9 +8,17 @@
 // below.
 
 #include "global.h"
+#include "berry.h"
 #include "berry_garden.h"
 #include "event_data.h"
+#include "item.h"
+#include "list_menu.h"
+#include "malloc.h"
+#include "money.h"
 #include "random.h"
+#include "script_menu.h"
+#include "string_util.h"
+#include "constants/berry.h"
 #include "constants/flags.h"
 #include "constants/items.h"
 #include "constants/vars.h"
@@ -190,6 +198,8 @@ void GardenToday_Mark(u32 bit)
         VarSet(VAR_GARDEN_TODAY, VarGet(VAR_GARDEN_TODAY) | (1 << bit));
 }
 
+static void FinishGardenWork(void);
+
 void GardenRollDay(void)
 {
     if (FlagGet(FLAG_DAILY_GARDEN_NEW_DAY))
@@ -197,6 +207,7 @@ void GardenRollDay(void)
 
     VarSet(VAR_GARDEN_TODAY, 0);
     FlagSet(FLAG_DAILY_GARDEN_NEW_DAY);
+    FinishGardenWork();
 
     // The day's draws go here, once each, when their part exists:
     //   Klara's raid, 1 morning in 7, garden level 2+ (part 11) -> GARDEN_TODAY_KLARA_COMES
@@ -213,4 +224,138 @@ u16 GardenToday_Check(void)
 void GardenToday_Set(void)
 {
     GardenToday_Mark(gSpecialVar_0x8004);
+}
+
+// ---------------------------------------------------------------------------
+// Garden levels (section 5)
+//
+// Bram offers the next level once the Book is big enough; the player pays and
+// the work is done overnight: the payment always comes after today's
+// GardenRollDay (every garden conversation calls it first), so the first
+// GardenRollDay that can finish it is tomorrow's. Bram talks about it the next
+// time the player sees him (GardenReform_TakeBuiltLevel).
+// ---------------------------------------------------------------------------
+
+struct GardenReform
+{
+    u8 bookSize;
+    bool8 needsAct1;
+    u16 price;
+};
+
+static const struct GardenReform sGardenReforms[] =
+{
+    [GARDEN_LEVEL_PROPER]    = { .bookSize = 12, .needsAct1 = FALSE, .price = 5000 },
+    [GARDEN_LEVEL_CHANNEL]   = { .bookSize = 22, .needsAct1 = TRUE,  .price = 10000 },
+    [GARDEN_LEVEL_BUG_HOTEL] = { .bookSize = 32, .needsAct1 = TRUE,  .price = 0 }, // Bugsy builds it
+};
+
+STATIC_ASSERT(ARRAY_COUNT(sGardenReforms) == GARDEN_LEVEL_LAST_REFORM + 1, GardenReformsCoverEveryLevel);
+
+static void FinishGardenWork(void)
+{
+    u16 work = VarGet(VAR_BERRY_GARDEN_WORK);
+
+    if (work >= GARDEN_LEVEL_PROPER && work <= GARDEN_LEVEL_LAST_REFORM)
+    {
+        VarSet(VAR_BERRY_GARDEN_LEVEL, work);
+        VarSet(VAR_BERRY_GARDEN_WORK, work + GARDEN_WORK_BUILT);
+    }
+}
+
+// Returns GARDEN_REFORM_*; VAR_0x8005 = the level it is about.
+u16 GardenReform_Check(void)
+{
+    u16 level = VarGet(VAR_BERRY_GARDEN_LEVEL);
+    u16 work = VarGet(VAR_BERRY_GARDEN_WORK);
+    u16 next = level + 1;
+
+    gSpecialVar_0x8005 = next;
+    if (work != GARDEN_WORK_NONE && work < GARDEN_WORK_BUILT)
+    {
+        gSpecialVar_0x8005 = work;
+        return GARDEN_REFORM_BUILDING;
+    }
+    if (level < GARDEN_LEVEL_BACKYARD || next > GARDEN_LEVEL_LAST_REFORM)
+        return GARDEN_REFORM_NONE;
+    if (BerryLedger_Count() < sGardenReforms[next].bookSize)
+        return GARDEN_REFORM_NONE;
+    if (sGardenReforms[next].needsAct1 && VarGet(VAR_HARVEST_KING) < HARVEST_KING_ACT1_DONE)
+        return GARDEN_REFORM_NEEDS_HELP;
+    return GARDEN_REFORM_READY;
+}
+
+// Pays for the next level (only after GardenReform_Check said READY).
+// Returns FALSE, and charges nothing, if the money is short.
+u16 GardenReform_Pay(void)
+{
+    u16 next = VarGet(VAR_BERRY_GARDEN_LEVEL) + 1;
+
+    if (GardenReform_Check() != GARDEN_REFORM_READY)
+        return FALSE;
+    if (!IsEnoughMoney(&gSaveBlock1Ptr->money, sGardenReforms[next].price))
+        return FALSE;
+    RemoveMoney(&gSaveBlock1Ptr->money, sGardenReforms[next].price);
+    VarSet(VAR_BERRY_GARDEN_WORK, next);
+    return TRUE;
+}
+
+// The level built overnight that Bram has not talked about yet, or 0; once
+// asked, it is his to say and is cleared.
+u16 GardenReform_TakeBuiltLevel(void)
+{
+    u16 work = VarGet(VAR_BERRY_GARDEN_WORK);
+
+    if (work <= GARDEN_WORK_BUILT)
+        return 0;
+    VarSet(VAR_BERRY_GARDEN_WORK, GARDEN_WORK_NONE);
+    return work - GARDEN_WORK_BUILT;
+}
+
+// Level 3, the channel: once a day, on entering Route 30, every garden plot
+// gets watered for the stage it is in - the same as one Squirtbottle pass.
+// Laurel's plot is not part of the garden (see BERRY_TREE_GARDEN_LAST).
+void GardenIrrigate(void)
+{
+    u32 id;
+
+    if (VarGet(VAR_BERRY_GARDEN_LEVEL) < GARDEN_LEVEL_CHANNEL || GardenToday_Has(GARDEN_TODAY_WATERED))
+        return;
+    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_GARDEN_LAST; id++)
+        WaterBerryTreeById(id);
+    GardenToday_Mark(GARDEN_TODAY_WATERED);
+}
+
+// Bram's gift: 2 Berries, 3 from level 2 on.
+u16 GardenGift_Count(void)
+{
+    return VarGet(VAR_BERRY_GARDEN_LEVEL) >= GARDEN_LEVEL_PROPER ? 3 : 2;
+}
+
+// ---------------------------------------------------------------------------
+// Seed order (section 3.5): from level 2, once a day and instead of the draw,
+// the player names any Berry in the Book (not the Enigma, which is Laurel's
+// plot's alone). The list is pushed onto the dynamic multichoice stack and
+// shown by `dynmultistack` in the script; the id of each row is the item.
+// The menu Free()s every row name when it closes, so each name is a heap
+// copy, exactly like the dynmultipush command makes.
+// ---------------------------------------------------------------------------
+
+void BerryLedger_BuildSeedMenu(void)
+{
+    u32 itemId;
+
+    for (itemId = LEDGER_FIRST_ITEM; itemId <= LEDGER_LAST_ITEM; itemId++)
+    {
+        struct ListMenuItem row;
+        u8 *name;
+
+        if (!BerryLedger_Has(itemId) || itemId == ITEM_ENIGMA_BERRY)
+            continue;
+        name = Alloc(ITEM_NAME_LENGTH + 1);
+        CopyItemName(itemId, name);
+        row.name = name;
+        row.id = itemId;
+        MultichoiceDynamic_PushElement(row);
+    }
 }

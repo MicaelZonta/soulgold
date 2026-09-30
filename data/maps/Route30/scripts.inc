@@ -10,6 +10,9 @@ Route30_MapScripts::
 Route30_OnTransition: 
 	callnative SetTimeBasedEncounters
 	special GardenRollDay
+	@ Level 3: the channel waters every garden plot once a day (after the roll,
+	@ so a channel finished at this date change already works today).
+	special GardenIrrigate
 	call Route30_EventScript_GardenVisibility
 	end
 

@@ -49,21 +49,152 @@ Route30_House_EventScript_BaldMan::
 	@ Idempotent: also fills the Book of a save that did the tutorial before
 	@ the Book existed, so the daily draw below is never empty.
 	special BerryLedger_RegisterStarters
+	call Route30_House_EventScript_BuiltLevel
 	call Route30_House_EventScript_Milestones
+	call Route30_House_EventScript_Reform
 	goto_if_set FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY, Route30_House_EventScript_DoneToday
+	@ 2 Berries a day, 3 from garden level 2 (src/berry_garden.c).
+	specialvar VAR_0x8009, GardenGift_Count
 	@ "You came back!" makes no sense in the same conversation as the tutorial.
 	call_if_set FLAG_TEMP_1, Route30_House_EventScript_FirstTwoText
-	call_if_unset FLAG_TEMP_1, Route30_House_EventScript_TakeTwoText
+	goto_if_set FLAG_TEMP_1, Route30_House_EventScript_GiveDraw
+	goto_if_eq VAR_0x8009, 3, Route30_House_EventScript_OfferSeed
+	msgbox Route30_House_Text_TakeTwo, MSGBOX_DEFAULT
+Route30_House_EventScript_GiveDraw::
 	call Route30_House_EventScript_GiveLedgerBerry
-	@ The flag is set BETWEEN the two berries, exactly as the Hoenn original does
-	@ it: setting it after both would let a bag that fills up on the second berry
-	@ be used to take both again on the same day.
+	@ The flag is set right after the FIRST Berry, exactly as the Hoenn original
+	@ does it: setting it after all of them would let a bag that fills up on a
+	@ later one be used to take them all again on the same day.
 	setflag FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY
 	call Route30_House_EventScript_GiveLedgerBerry
-	msgbox Route30_House_Text_PlantThem, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8009, 3, Route30_House_EventScript_GiveLedgerBerry
+	call_if_eq VAR_0x8009, 3, Route30_House_EventScript_PlantThemThreeText
+	call_if_ne VAR_0x8009, 3, Route30_House_EventScript_PlantThemText
 	closemessage
 	release
 	end
+
+@ Garden level 2: the day's gift can be one Berry of the player's choosing
+@ instead of the draw (section 3.5). Any Berry in the Book but the Enigma; the
+@ list is built in C (BerryLedger_BuildSeedMenu) in item order, and the id of
+@ each row is the item. No shouldSort: it sorts by id, which is already the
+@ order, and with an empty list its count - 1 underflows (scrcmd.c).
+@ B or "Surprise me" is the ordinary draw of three.
+Route30_House_EventScript_OfferSeed::
+	msgbox Route30_House_Text_TakeThree, MSGBOX_DEFAULT
+	dynmultichoice 0, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, Route30_House_Text_SurpriseMe, Route30_House_Text_OneInMind
+	goto_if_ne VAR_RESULT, 1, Route30_House_EventScript_GiveDraw
+	msgbox Route30_House_Text_NameIt, MSGBOX_DEFAULT
+	special BerryLedger_BuildSeedMenu
+	dynmultistack 0, 0, FALSE, 6, FALSE, 0, DYN_MULTICHOICE_CB_NONE
+	goto_if_eq VAR_RESULT, MULTI_B_PRESSED, Route30_House_EventScript_GiveDraw
+	copyvar VAR_0x8008, VAR_RESULT
+	checkitemspace VAR_0x8008
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY
+	msgbox Route30_House_Text_GoodPick, MSGBOX_DEFAULT
+	giveitem VAR_0x8008
+	closemessage
+	release
+	end
+
+Route30_House_EventScript_PlantThemText::
+	msgbox Route30_House_Text_PlantThem, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_PlantThemThreeText::
+	msgbox Route30_House_Text_PlantThemThree, MSGBOX_DEFAULT
+	return
+
+@ ---------------------------------------------------------------------------
+@ Garden levels (section 5; rules in src/berry_garden.c, sGardenReforms).
+@ Bram offers the next level when the Book is big enough; paid today, built
+@ overnight, and he talks about it the next time the player sees him.
+@ FLAG_TEMP_4: he already brought the garden up on this visit (no repeating
+@ the offer or the "I need help" line every time the player talks to him).
+@ ---------------------------------------------------------------------------
+Route30_House_EventScript_BuiltLevel::
+	specialvar VAR_RESULT, GardenReform_TakeBuiltLevel
+	copyvar VAR_0x8008, VAR_RESULT
+	call_if_eq VAR_0x8008, GARDEN_LEVEL_PROPER, Route30_House_EventScript_BuiltProper
+	call_if_eq VAR_0x8008, GARDEN_LEVEL_CHANNEL, Route30_House_EventScript_BuiltChannel
+	call_if_eq VAR_0x8008, GARDEN_LEVEL_BUG_HOTEL, Route30_House_EventScript_BuiltBugHotel
+	return
+
+Route30_House_EventScript_BuiltProper::
+	msgbox Route30_House_Text_BuiltProper, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_BuiltChannel::
+	msgbox Route30_House_Text_BuiltChannel, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_BuiltBugHotel::
+	msgbox Route30_House_Text_BuiltBugHotel, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_Reform::
+	goto_if_set FLAG_TEMP_4, Route30_House_EventScript_ReformEnd
+	specialvar VAR_RESULT, GardenReform_Check
+	goto_if_eq VAR_RESULT, GARDEN_REFORM_READY, Route30_House_EventScript_ReformOffer
+	goto_if_eq VAR_RESULT, GARDEN_REFORM_NEEDS_HELP, Route30_House_EventScript_ReformNeedsHelp
+Route30_House_EventScript_ReformEnd::
+	return
+
+Route30_House_EventScript_ReformNeedsHelp::
+	setflag FLAG_TEMP_4
+	msgbox Route30_House_Text_ReformNeedsHelp, MSGBOX_DEFAULT
+	return
+
+@ VAR_0x8005 = the level on offer (GardenReform_Check).
+Route30_House_EventScript_ReformOffer::
+	setflag FLAG_TEMP_4
+	@ The offer comes when the Book reaches the size OR LATER: say the real count.
+	specialvar VAR_RESULT, BerryLedger_Count
+	buffernumberstring STR_VAR_1, VAR_RESULT
+	goto_if_eq VAR_0x8005, GARDEN_LEVEL_BUG_HOTEL, Route30_House_EventScript_OfferBugHotel
+	showmoneybox 0, 0
+	call_if_eq VAR_0x8005, GARDEN_LEVEL_PROPER, Route30_House_EventScript_AskProper
+	call_if_eq VAR_0x8005, GARDEN_LEVEL_CHANNEL, Route30_House_EventScript_AskChannel
+	goto_if_eq VAR_RESULT, NO, Route30_House_EventScript_ReformDeclined
+	specialvar VAR_RESULT, GardenReform_Pay
+	goto_if_eq VAR_RESULT, FALSE, Route30_House_EventScript_ReformNoMoney
+	updatemoneybox
+	playse SE_SHOP
+	waitse
+	msgbox Route30_House_Text_ReformPaid, MSGBOX_DEFAULT
+	hidemoneybox
+	return
+
+Route30_House_EventScript_AskProper::
+	msgbox Route30_House_Text_OfferProper, MSGBOX_YESNO
+	return
+
+Route30_House_EventScript_AskChannel::
+	msgbox Route30_House_Text_OfferChannel, MSGBOX_YESNO
+	return
+
+Route30_House_EventScript_ReformDeclined::
+	msgbox Route30_House_Text_ReformDeclined, MSGBOX_DEFAULT
+	hidemoneybox
+	return
+
+Route30_House_EventScript_ReformNoMoney::
+	msgbox Route30_House_Text_ReformNoMoney, MSGBOX_DEFAULT
+	hidemoneybox
+	return
+
+@ Bugsy builds the Bug Hotel himself: nothing to pay, so no money box.
+Route30_House_EventScript_OfferBugHotel::
+	msgbox Route30_House_Text_OfferBugHotel, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route30_House_EventScript_BugHotelDeclined
+	specialvar VAR_RESULT, GardenReform_Pay
+	msgbox Route30_House_Text_ReformPaid, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_BugHotelDeclined::
+	msgbox Route30_House_Text_ReformDeclined, MSGBOX_DEFAULT
+	return
 
 @ The original one-off Cheri, plus the Book of Berries. It no longer ends the
 @ conversation: the tutorial and the first daily pair happen on the same visit,
@@ -163,7 +294,15 @@ Route30_House_EventScript_TakeTwoText::
 	return
 
 Route30_House_EventScript_DoneToday::
+	specialvar VAR_RESULT, GardenGift_Count
+	goto_if_eq VAR_RESULT, 3, Route30_House_EventScript_DoneTodayThree
 	msgbox Route30_House_Text_DoneToday, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+Route30_House_EventScript_DoneTodayThree::
+	msgbox Route30_House_Text_DoneTodayThree, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -259,6 +398,92 @@ Route30_House_Text_TakeTwo:
 	.string "I pick more than two old people can eat.\n"
 	.string "Take two -- there's more tomorrow.\l"
 	.string "There's always more tomorrow.$"
+
+Route30_House_Text_TakeThree:
+	.string "You came back! And you looked at the\n"
+	.string "trees, I'll bet.\p"
+	.string "Three today -- the garden earns its\n"
+	.string "keep. Or have you got one in mind?\p"
+	.string "Name it. If it's in the Book, I've got\n"
+	.string "seed for it.$"
+
+Route30_House_Text_SurpriseMe:
+	.string "Surprise me$"
+
+Route30_House_Text_OneInMind:
+	.string "I've got one$"
+
+Route30_House_Text_NameIt:
+	.string "Go on, then. Which one?$"
+
+Route30_House_Text_GoodPick:
+	.string "Good pick. Plant it next to something\n"
+	.string "it gets along with.$"
+
+Route30_House_Text_PlantThemThree:
+	.string "And don't eat them all. Plant one.\p"
+	.string "That's how this works: a planted Berry\n"
+	.string "is a tree, and a tree is Berries for ever.\p"
+	.string "Check the trees as you go. They grow\n"
+	.string "back after 12 hours.$"
+
+Route30_House_Text_DoneTodayThree:
+	.string "That's your three for today.\p"
+	.string "Go and plant one. I'll pick more by\n"
+	.string "morning -- I always do.$"
+
+Route30_House_Text_OfferProper:
+	.string "{STR_VAR_1} Berries in your Book now.\n"
+	.string "Time this was a proper garden.\p"
+	.string "Four more beds by the pond, dug by\n"
+	.string "morning. ¥5,000 for the lot. Shall I?$"
+
+Route30_House_Text_OfferChannel:
+	.string "{STR_VAR_1} in the Book... I could dig a\n"
+	.string "channel from the pond.\p"
+	.string "The whole garden would water itself\n"
+	.string "every morning. ¥10,000. Shall I?$"
+
+Route30_House_Text_OfferBugHotel:
+	.string "Bugsy wants to build a Bug Hotel by\n"
+	.string "the beds. Won't take a coin for it.\p"
+	.string "Says the bugs will come for the Berries\n"
+	.string "and stay for the architecture.\p"
+	.string "Well? Do I let him?$"
+
+Route30_House_Text_ReformPaid:
+	.string "Tomorrow morning, then. Come and look.$"
+
+Route30_House_Text_ReformDeclined:
+	.string "Suit yourself. The offer keeps.$"
+
+Route30_House_Text_ReformNoMoney:
+	.string "Hah. Come back when you've got the\n"
+	.string "money, sprout.$"
+
+Route30_House_Text_ReformNeedsHelp:
+	.string "I've got the next thing in mind for the\n"
+	.string "garden. But it's more than one old man\l"
+	.string "can dig. I'd need somebody to help.$"
+
+Route30_House_Text_BuiltProper:
+	.string "Four more beds! Laurel dug them.\p"
+	.string "Don't tell her I said so. She'll say\n"
+	.string "I helped.$"
+
+Route30_House_Text_BuiltChannel:
+	.string "{SPEAKER NAME_BERRY_MASTER}See that channel? Runs right from the\n"
+	.string "pond.\p"
+	.string "The whole garden drinks before you're\n"
+	.string "even out of bed now.\p"
+	.string "{SPEAKER NAME_LAUREL}He dug it at three in the morning.\n"
+	.string "The neighbors thought it was a Diglett.$"
+
+Route30_House_Text_BuiltBugHotel:
+	.string "Bugsy finished his Bug Hotel last night.\n"
+	.string "Hollow stems, bark, a pile of stones...\p"
+	.string "He means more bugs. He's happy about\n"
+	.string "more bugs.$"
 
 Route30_House_Text_PlantThem:
 	.string "And don't eat both of them. Plant one.\p"

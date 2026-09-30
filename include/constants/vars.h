@@ -411,7 +411,13 @@
 // Last Book of Berries milestone Bram already paid: 0, 12, 20, 30, 40, 50, 60
 // or 66 (section 3.4). Keeps a prize from being given twice.
 #define VAR_BERRY_LEDGER_MILESTONE                      0x412D
-// PROXIMA VAR NOVA: 0x412E (livre ate VARS_END 0x42FF). Alocar aqui, em
+// Garden works (section 5): 0 = none; GARDEN_LEVEL_* = paid for that level,
+// being built tonight; GARDEN_LEVEL_* + GARDEN_WORK_BUILT = built, Bram's line
+// about it not said yet. Kept out of VAR_BERRY_GARDEN_LEVEL on purpose: bed B
+// and the old-save fix compare the level with < 2 and == 0. Written by
+// GardenReform_Pay and GardenRollDay (src/berry_garden.c) and by Bram.
+#define VAR_BERRY_GARDEN_WORK                           0x412E
+// PROXIMA VAR NOVA: 0x412F (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 
