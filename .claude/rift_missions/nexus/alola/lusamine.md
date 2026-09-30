@@ -327,6 +327,75 @@ Nexus_Text_Lusamine_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Estas duas também servem para qualquer sala e qualquer dia ([R16](../NEXUS_REGRAS.md)): falam só de Lusamine. Nada disto está no código.
+
+**Variação 2 — a ruga.** A beleza parada, pelo avesso. Ela manteve o rosto igual por anos; aí riu de algo que o filho disse e apareceu uma linha. Decidiu ficar com ela. Pede ao jogador algo que mude. Na derrota, mais uma linha, e uma boa.
+
+**Antes da luta**
+
+> Do you know how long I kept my face exactly like this? Years. Decades, perhaps.
+>
+> Then I laughed at something my son said, and a line appeared, just here. I have decided to keep it.
+>
+> Now. Show me something that changes.
+
+**Derrota**
+
+> Ah. Another line, I think. A good one.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lusamine_Intro2:
+	.string "Do you know how long I kept my face\n"
+	.string "exactly like this? Years. Decades,\l"
+	.string "perhaps.\p"
+	.string "Then I laughed at something my son\n"
+	.string "said, and a line appeared, just here. I\l"
+	.string "have decided to keep it.\p"
+	.string "Now. Show me something that changes.$"
+
+Nexus_Text_Lusamine_Defeat2:
+	.string "Ah. Another line, I think. A good one.$"
+```
+
+</details>
+
+**Variação 3 — sem ordens.** A presidente sem fundação. Ela tinha uma ilha e mil pessoas que diziam sim; aqui só tem os Pokémon, que dizem não com frequência, e acha isso refrescante. Promete não dar ordens; na derrota elogia o jogador por não ter obedecido nenhuma vez.
+
+**Antes da luta**
+
+> I used to have a Foundation, an island, and a thousand people who said yes to me.
+>
+> Here I have only my Pokémon, and they say no quite often. It is... refreshing.
+>
+> Shall we? I promise not to give you any orders.
+
+**Derrota**
+
+> You did not obey me once. Good.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lusamine_Intro3:
+	.string "I used to have a Foundation, an island,\n"
+	.string "and a thousand people who said yes to\l"
+	.string "me.\p"
+	.string "Here I have only my Pokémon, and they\n"
+	.string "say no quite often. It is... refreshing.\p"
+	.string "Shall we? I promise not to give you any\n"
+	.string "orders.$"
+
+Nexus_Text_Lusamine_Defeat3:
+	.string "You did not obey me once. Good.$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Lusamine é a **campeã**, a luta logo antes do lendário do dia. Uma fala por lendário; o nome da espécie não aparece ([R16](../NEXUS_REGRAS.md)). Rótulos com a espécie porque Lusamine é campeã de dois.
@@ -395,6 +464,115 @@ Nexus_Text_Lusamine_Enamorus_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Sobre a criatura, pelo olhar de Lusamine, sem o nome da espécie ([R16](../NEXUS_REGRAS.md)). Nada disto está no código.
+
+**Variação 2 — a linha na neve.** A primavera para numa linha: de um lado flores, do outro neve que nunca se mexeu. A Lusamine passou uma hora do lado da neve tentando decidir de que lado ela é, enquanto a criatura decide se ela respeita a vida. No depois: não é cruel, é exata; ela achava que era quem decidia essas coisas. Passe a linha com cuidado, pelas flores.
+
+**Antes da luta**
+
+> The flowers out there stop at a line. On one side, spring. On the other, snow that has never moved.
+>
+> I stood on the snowy side for an hour, trying to decide which side I belong on.
+>
+> It is said to come down from the clouds on anyone who does not respect life. I have been waiting for it to decide about me.
+>
+> ...While it thinks, let us battle.
+
+**Derrota**
+
+> It still has not decided. You, apparently, have.
+
+**Depois da luta**
+
+> It is not cruel. It is simply exact. Love for those who love, and fury for those who do not.
+>
+> I used to believe I was the one who decided such things.
+>
+> Cross the line gently. Not for its sake. For the flowers.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lusamine_Enamorus_ChampionIntro2:
+	.string "The flowers out there stop at a line. On\n"
+	.string "one side, spring. On the other, snow\l"
+	.string "that has never moved.\p"
+	.string "I stood on the snowy side for an hour,\n"
+	.string "trying to decide which side I belong on.\p"
+	.string "It is said to come down from the clouds\n"
+	.string "on anyone who does not respect life. I\l"
+	.string "have been waiting for it to decide\l"
+	.string "about me.\p"
+	.string "...While it thinks, let us battle.$"
+
+Nexus_Text_Lusamine_Enamorus_ChampionDefeat2:
+	.string "It still has not decided. You,\n"
+	.string "apparently, have.$"
+
+Nexus_Text_Lusamine_Enamorus_ChampionAfter2:
+	.string "{SPEAKER NAME_LUSAMINE}It is not cruel. It is simply exact. Love\n"
+	.string "for those who love, and fury for those\l"
+	.string "who do not.\p"
+	.string "I used to believe I was the one who\n"
+	.string "decided such things.\p"
+	.string "Cross the line gently. Not for its sake.\n"
+	.string "For the flowers.$"
+```
+
+</details>
+
+**Variação 3 — o inverno dos filhos.** Na lenda, o inverno acaba no dia em que ela chega do outro lado do mar; ninguém pergunta aonde ela vai no verão. Os filhos da Lusamine saíram de casa no meio do inverno, e ela também esperou a primavera. No depois: ela vai embora quando a terra está pronta, sem ficar para a colheita; antes parecia crueldade, agora parece confiança.
+
+**Antes da luta**
+
+> In the old stories, winter ended the day it flew in from across the sea.
+>
+> Everyone waited for it. No one ever asked where it went when summer came.
+>
+> My children left my house in the middle of winter. I waited for spring, too.
+>
+> ...Enough stories. Show me yours.
+
+**Derrota**
+
+> A warm wind. I felt it, even from here.
+
+**Depois da luta**
+
+> It leaves once the ground is ready. It never stays to see the harvest.
+>
+> I used to think that was cruel. Now I think it is trust.
+>
+> Go on. If it leaves you something small, let it grow somewhere I will never see.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lusamine_Enamorus_ChampionIntro3:
+	.string "In the old stories, winter ended the\n"
+	.string "day it flew in from across the sea.\p"
+	.string "Everyone waited for it. No one ever\n"
+	.string "asked where it went when summer came.\p"
+	.string "My children left my house in the middle\n"
+	.string "of winter. I waited for spring, too.\p"
+	.string "...Enough stories. Show me yours.$"
+
+Nexus_Text_Lusamine_Enamorus_ChampionDefeat3:
+	.string "A warm wind. I felt it, even from here.$"
+
+Nexus_Text_Lusamine_Enamorus_ChampionAfter3:
+	.string "{SPEAKER NAME_LUSAMINE}It leaves once the ground is ready. It\n"
+	.string "never stays to see the harvest.\p"
+	.string "I used to think that was cruel. Now I\n"
+	.string "think it is trust.\p"
+	.string "Go on. If it leaves you something small,\n"
+	.string "let it grow somewhere I will never see.$"
+```
+
+</details>
+
 
 #### Fezandipiti
 
@@ -456,6 +634,114 @@ Nexus_Text_Lusamine_Fezandipiti_ChampionAfter:
 	.string "...And if anything is left of it, let\n"
 	.string "it be ordinary for a while. It may be\l"
 	.string "a relief.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Sobre a criatura, pelo olhar de Lusamine, sem o nome da espécie ([R16](../NEXUS_REGRAS.md)). Nada disto está no código.
+
+**Variação 2 — o perfume.** Honestidade desconfortável: o cheiro doce lembra o saguão do Paraíso no dia da inauguração, e ela gosta, gosta muito, e é exatamente por isso que não confia. No depois: ela teve uma equipe inteira que a admirava e nunca perguntou o que eles estavam respirando. Prenda a respiração, olhe, e decida sozinho.
+
+**Antes da luta**
+
+> Do you smell that? Sweet, like the lobby of my Paradise on opening day.
+>
+> I will be honest with you, since no one else here is. I like it. I like it very much.
+>
+> That is exactly why I do not trust it. Come.
+
+**Derrota**
+
+> Clear-headed to the end. How rare.
+
+**Depois da luta**
+
+> That perfume makes you want to admire whatever stands in front of you.
+>
+> I once had an entire staff who admired me. I never asked what they were breathing.
+>
+> Hold your breath when you face it. Then look, and decide for yourself.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lusamine_Fezandipiti_ChampionIntro2:
+	.string "Do you smell that? Sweet, like the lobby\n"
+	.string "of my Paradise on opening day.\p"
+	.string "I will be honest with you, since no one\n"
+	.string "else here is. I like it. I like it very\l"
+	.string "much.\p"
+	.string "That is exactly why I do not trust it.\n"
+	.string "Come.$"
+
+Nexus_Text_Lusamine_Fezandipiti_ChampionDefeat2:
+	.string "Clear-headed to the end. How rare.$"
+
+Nexus_Text_Lusamine_Fezandipiti_ChampionAfter2:
+	.string "{SPEAKER NAME_LUSAMINE}That perfume makes you want to admire\n"
+	.string "whatever stands in front of you.\p"
+	.string "I once had an entire staff who admired\n"
+	.string "me. I never asked what they were\l"
+	.string "breathing.\p"
+	.string "Hold your breath when you face it. Then\n"
+	.string "look, and decide for yourself.$"
+```
+
+</details>
+
+**Variação 3 — os três leais.** Na história eram três: três heróis, três estátuas, três correntes. "Lealdade é uma palavra bonita para quem nunca vai embora." Ela teve gente leal; um deles ainda manda um cartão todo ano, e ela nunca respondeu (o Faba, sem nome). No depois: só um dos três está nesta porta, e não parece sentir falta dos outros; talvez o veneno seja ser tão adorado que não se nota quem foi embora. Ela decide responder o cartão.
+
+**Antes da luta**
+
+> There were three of them, in the story. Three heroes, three statues, three chains.
+>
+> Loyal to one another, they said. Loyalty is a lovely word for people who never leave.
+>
+> I had loyal people once. One of them still sends me a card every year. I have never answered.
+>
+> ...Well. Let us begin.
+
+**Derrota**
+
+> You fought for yourself. No chain at all.
+
+**Depois da luta**
+
+> Only one of them stands at this door. The other two went elsewhere, and it does not seem to miss them.
+>
+> Perhaps that is the real poison. To be adored so much that you never notice who is gone.
+>
+> ...I will answer that card. Go.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Lusamine_Fezandipiti_ChampionIntro3:
+	.string "There were three of them, in the story.\n"
+	.string "Three heroes, three statues, three\l"
+	.string "chains.\p"
+	.string "Loyal to one another, they said.\n"
+	.string "Loyalty is a lovely word for people who\l"
+	.string "never leave.\p"
+	.string "I had loyal people once. One of them\n"
+	.string "still sends me a card every year. I have\l"
+	.string "never answered.\p"
+	.string "...Well. Let us begin.$"
+
+Nexus_Text_Lusamine_Fezandipiti_ChampionDefeat3:
+	.string "You fought for yourself. No chain at\n"
+	.string "all.$"
+
+Nexus_Text_Lusamine_Fezandipiti_ChampionAfter3:
+	.string "{SPEAKER NAME_LUSAMINE}Only one of them stands at this door.\n"
+	.string "The other two went elsewhere, and it\l"
+	.string "does not seem to miss them.\p"
+	.string "Perhaps that is the real poison. To be\n"
+	.string "adored so much that you never notice\l"
+	.string "who is gone.\p"
+	.string "...I will answer that card. Go.$"
 ```
 
 </details>

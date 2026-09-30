@@ -313,6 +313,77 @@ Nexus_Text_Kukui_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Estas duas também servem para qualquer sala e qualquer dia ([R16](../NEXUS_REGRAS.md)): falam só de Kukui. Nada disto está no código.
+
+**Variação 2 — o som antes.** O Kukui fundou uma Liga. O melhor som do mundo, para ele, não é a torcida: é o instante antes do primeiro golpe, quando todo mundo prende a respiração. Construiu um estádio inteiro para ouvir isso. Na derrota, o som logo depois é melhor ainda.
+
+**Antes da luta**
+
+> Alola, cousin! Hey, you know what the best sound in the world is?
+>
+> It's not a crowd. It's the moment right before the first move, when everybody's holding their breath.
+>
+> I built a whole stadium just to hear that sound. Woo! Let's make it!
+
+**Derrota**
+
+> Woo! And THAT'S the sound right after! Even better, yeah!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Kukui_Intro2:
+	.string "Alola, cousin! Hey, you know what the\n"
+	.string "best sound in the world is?\p"
+	.string "It's not a crowd. It's the moment right\n"
+	.string "before the first move, when\l"
+	.string "everybody's holding their breath.\p"
+	.string "I built a whole stadium just to hear\n"
+	.string "that sound. Woo! Let's make it!$"
+
+Nexus_Text_Kukui_Defeat2:
+	.string "Woo! And THAT'S the sound right after!\n"
+	.string "Even better, yeah!$"
+```
+
+</details>
+
+**Variação 3 — perder sorrindo.** O aprendiz do Hala. O velho mestre dizia que o Kukui perdia sorrindo; o amigo dele perdia sem sorrir, e o Kukui acha que isso fez toda a diferença (o Guzma, sem nome). Então, ganhando ou perdendo, ele sorri.
+
+**Antes da luta**
+
+> You know, I lost a lot growing up. My old teacher said I always lost with a smile on.
+>
+> My buddy lost too, but he never smiled. I think that made all the difference, yeah.
+>
+> So win or lose, I'm smiling! Let's go, cousin!
+
+**Derrota**
+
+> See? Still smiling! Woo!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Kukui_Intro3:
+	.string "You know, I lost a lot growing up. My old\n"
+	.string "teacher said I always lost with a smile\l"
+	.string "on.\p"
+	.string "My buddy lost too, but he never smiled.\n"
+	.string "I think that made all the difference,\l"
+	.string "yeah.\p"
+	.string "So win or lose, I'm smiling! Let's go,\n"
+	.string "cousin!$"
+
+Nexus_Text_Kukui_Defeat3:
+	.string "See? Still smiling! Woo!$"
+```
+
+</details>
+
+
 ### Diálogo associado ao lendário
 
 📝 **Proposta de 27/09/2026, aguardando o autor.** Quando Kukui é o **campeão**, a luta logo antes do lendário do dia. Uma fala por lendário; o nome da espécie não aparece ([R16](../NEXUS_REGRAS.md)). Rótulos com a espécie porque Kukui é campeão de dois.
@@ -378,6 +449,118 @@ Nexus_Text_Kukui_Solgaleo_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Sobre a criatura, pelo olhar de Kukui, sem o nome da espécie ([R16](../NEXUS_REGRAS.md)). Nada disto está no código.
+
+**Variação 2 — a luz acesa.** O relógio diz meia-noite, o céu diz meio-dia, ninguém dorme e as sombras fogem da criatura. O Kukui gosta: alguém lá fora pode precisar da luz para achar o caminho de casa. No depois: a esposa dele estuda o outro lado, onde é sempre escuro, então alguém tem que deixar uma luz acesa deste lado (Burnet, sem nome; é a página 2 do diário).
+
+**Antes da luta**
+
+> Cousin, here's what I can't figure out. It's midnight. My watch says so. The sky says noon.
+>
+> Nobody's slept in ages, yeah. Too bright. The shadows all point away from it, like they're scared.
+>
+> But me? I kinda like it. Somebody out there might need the light to find their way home.
+>
+> Woo! Let's light this place up even more!
+
+**Derrota**
+
+> Woo! Blinding, cousin! Totally blinding!
+
+**Depois da luta**
+
+> Here's a thing I noticed. It never looks back at its shadow. Doesn't have one.
+>
+> My wife studies the other side, yeah. The places past the holes in the sky.
+>
+> She says it's always dark out there. So I figure somebody's gotta keep a light on over here.
+>
+> Go on, cousin. Walk straight at it. That's the only way it knows.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Kukui_Solgaleo_ChampionIntro2:
+	.string "Cousin, here's what I can't figure out.\n"
+	.string "It's midnight. My watch says so. The\l"
+	.string "sky says noon.\p"
+	.string "Nobody's slept in ages, yeah. Too\n"
+	.string "bright. The shadows all point away from\l"
+	.string "it, like they're scared.\p"
+	.string "But me? I kinda like it. Somebody out\n"
+	.string "there might need the light to find\l"
+	.string "their way home.\p"
+	.string "Woo! Let's light this place up even\n"
+	.string "more!$"
+
+Nexus_Text_Kukui_Solgaleo_ChampionDefeat2:
+	.string "Woo! Blinding, cousin! Totally blinding!$"
+
+Nexus_Text_Kukui_Solgaleo_ChampionAfter2:
+	.string "{SPEAKER NAME_KUKUI}Here's a thing I noticed. It never\n"
+	.string "looks back at its shadow. Doesn't have\l"
+	.string "one.\p"
+	.string "My wife studies the other side, yeah.\n"
+	.string "The places past the holes in the sky.\p"
+	.string "She says it's always dark out there. So\n"
+	.string "I figure somebody's gotta keep a light\l"
+	.string "on over here.\p"
+	.string "Go on, cousin. Walk straight at it.\n"
+	.string "That's the only way it knows.$"
+```
+
+</details>
+
+**Variação 3 — pelo bem da ciência.** Humor de pesquisador: ele passou uma hora pedindo à criatura um golpe só, pela ciência, e ela chegou perto, olhou nos olhos dele e seguiu andando. "Acho que eu não valho um meteoro." No depois: tanto poder, e não bateu em quem pediu; os mais fortes escolhem. Deixe ela escolher você.
+
+**Antes da luta**
+
+> I've been asking it nicely for an hour, cousin. Just one hit. For science.
+>
+> It won't do it! It walked right up to me, looked me in the eye, and just... kept walking.
+>
+> Guess I'm not worth a meteor, yeah? Woo! Maybe you are!
+
+**Derrota**
+
+> Woo! Now THAT'S a meteor, cousin!
+
+**Depois da luta**
+
+> All that power, and it wouldn't hit a guy who asked for it. That's a lesson right there.
+>
+> The strongest ones don't swing at everything. They pick.
+>
+> Let it pick you. Go on, cousin!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Kukui_Solgaleo_ChampionIntro3:
+	.string "I've been asking it nicely for an hour,\n"
+	.string "cousin. Just one hit. For science.\p"
+	.string "It won't do it! It walked right up to\n"
+	.string "me, looked me in the eye, and just...\l"
+	.string "kept walking.\p"
+	.string "Guess I'm not worth a meteor, yeah?\n"
+	.string "Woo! Maybe you are!$"
+
+Nexus_Text_Kukui_Solgaleo_ChampionDefeat3:
+	.string "Woo! Now THAT'S a meteor, cousin!$"
+
+Nexus_Text_Kukui_Solgaleo_ChampionAfter3:
+	.string "{SPEAKER NAME_KUKUI}All that power, and it wouldn't hit a\n"
+	.string "guy who asked for it. That's a lesson\l"
+	.string "right there.\p"
+	.string "The strongest ones don't swing at\n"
+	.string "everything. They pick.\p"
+	.string "Let it pick you. Go on, cousin!$"
+```
+
+</details>
+
 
 #### Tapu Koko
 
@@ -438,6 +621,113 @@ Nexus_Text_Kukui_TapuKoko_ChampionAfter:
 	.string "Honestly? Same reason I battle. Took\n"
 	.string "me a while to admit it, yeah.\p"
 	.string "Go on. Let it get to know you!$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+📝 **Proposta de 30/09/2026, aguardando o autor.** A variação 1 é a que já está no jogo (acima). Sobre a criatura, pelo olhar de Kukui, sem o nome da espécie ([R16](../NEXUS_REGRAS.md)). Nada disto está no código.
+
+**Variação 2 — o mascarado.** O Masked Royal, sem dizer que é ele. Um sujeito de máscara luta num estádio vazio toda noite, e toda noite o guardião cai da tempestade para lutar com ele: sem público, sem prêmio. O mascarado perde muito e volta sempre. "Não pergunta como eu sei." No depois: ele aparece mesmo sem ninguém olhando; dê a ele uma plateia de um.
+
+**Antes da luta**
+
+> Cousin, can I tell you a secret? There's a masked fella who fights in an empty stadium every night.
+>
+> And every night, a guardian drops out of the storm to fight him. No crowd. No prize. Just the two of them.
+>
+> The masked fella loses a lot. Keeps coming back anyway. ...Don't ask how I know, yeah! Let's battle!
+
+**Derrota**
+
+> Woo! The masked fella would've loved that one!
+
+**Depois da luta**
+
+> It holds the lightning in its shell like it's saving it for someone.
+>
+> Doesn't matter if nobody's watching. It shows up anyway. That's the whole point, yeah.
+>
+> Go give it a crowd of one, cousin. Trust me, it's enough.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Kukui_TapuKoko_ChampionIntro2:
+	.string "Cousin, can I tell you a secret?\n"
+	.string "There's a masked fella who fights in an\l"
+	.string "empty stadium every night.\p"
+	.string "And every night, a guardian drops out\n"
+	.string "of the storm to fight him. No crowd. No\l"
+	.string "prize. Just the two of them.\p"
+	.string "The masked fella loses a lot. Keeps\n"
+	.string "coming back anyway. ...Don't ask how I\l"
+	.string "know, yeah! Let's battle!$"
+
+Nexus_Text_Kukui_TapuKoko_ChampionDefeat2:
+	.string "Woo! The masked fella would've loved\n"
+	.string "that one!$"
+
+Nexus_Text_Kukui_TapuKoko_ChampionAfter2:
+	.string "{SPEAKER NAME_KUKUI}It holds the lightning in its shell like\n"
+	.string "it's saving it for someone.\p"
+	.string "Doesn't matter if nobody's watching.\n"
+	.string "It shows up anyway. That's the whole\l"
+	.string "point, yeah.\p"
+	.string "Go give it a crowd of one, cousin. Trust\n"
+	.string "me, it's enough.$"
+```
+
+</details>
+
+**Variação 3 — o ciúme.** Quando criança, o Kukui subia às ruínas toda semana e esperava o dia inteiro; o guardião nunca desceu para ele, e desceu para uma criança numa ponte (a da variação 1). Levou anos para parar de ter ciúme, e ainda tem um pouco. No depois: ele aparece para quem o deixa curioso, não para quem espera mais; então o Kukui parou de esperar e passou a ser interessante.
+
+**Antes da luta**
+
+> When I was a kid, I climbed up to its ruins every week. Waited all day.
+>
+> It never came down for me. Not once, yeah. It came down for some kids on a bridge instead.
+>
+> Took me years to stop being jealous. Woo! Kinda still am! Let's go!
+
+**Derrota**
+
+> Woo! It'd come down for you, cousin. No doubt.
+
+**Depois da luta**
+
+> It shows up for whoever makes it curious. Not for whoever waits the longest.
+>
+> So I quit waiting and started being interesting. Built a League. Studied moves.
+>
+> It still hasn't come down for me. But I've had a great time, yeah. Go on!
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Kukui_TapuKoko_ChampionIntro3:
+	.string "When I was a kid, I climbed up to its\n"
+	.string "ruins every week. Waited all day.\p"
+	.string "It never came down for me. Not once,\n"
+	.string "yeah. It came down for some kids on a\l"
+	.string "bridge instead.\p"
+	.string "Took me years to stop being jealous.\n"
+	.string "Woo! Kinda still am! Let's go!$"
+
+Nexus_Text_Kukui_TapuKoko_ChampionDefeat3:
+	.string "Woo! It'd come down for you, cousin. No\n"
+	.string "doubt.$"
+
+Nexus_Text_Kukui_TapuKoko_ChampionAfter3:
+	.string "{SPEAKER NAME_KUKUI}It shows up for whoever makes it\n"
+	.string "curious. Not for whoever waits the\l"
+	.string "longest.\p"
+	.string "So I quit waiting and started being\n"
+	.string "interesting. Built a League. Studied\l"
+	.string "moves.\p"
+	.string "It still hasn't come down for me. But\n"
+	.string "I've had a great time, yeah. Go on!$"
 ```
 
 </details>
