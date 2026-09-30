@@ -318,6 +318,83 @@ Nexus_Text_Drake_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas ([R16](../NEXUS_REGRAS.md)): para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código). Nenhuma cita o lugar nem a criatura do dia.
+
+**Variação 2** — lembrança do marujo: quando era moço de convés, um dragão jovem seguiu o navio por uma semana. O capitão mandou espantar; ele deu comida e esfregou o convés um mês de castigo. O melhor mês da vida: o dragão ainda estava lá no fim.
+
+**Antes da luta**
+
+> When I was a deckhand, a young dragon followed our ship for a week. Just followed.
+>
+> The captain told me to chase it off. I fed it instead. He had me scrub the deck for a month.
+>
+> Best month of my life. It was still there at the end of it.
+>
+> Now then. Show me what follows you!
+
+**Derrota**
+
+> Superb! Your Pokémon follow you by choice. That much is clear.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Drake_Intro2:
+	.string "When I was a deckhand, a young dragon\n"
+	.string "followed our ship for a week. Just\l"
+	.string "followed.\p"
+	.string "The captain told me to chase it off. I\n"
+	.string "fed it instead. He had me scrub the\l"
+	.string "deck for a month.\p"
+	.string "Best month of my life. It was still\n"
+	.string "there at the end of it.\p"
+	.string "Now then. Show me what follows you!$"
+
+Nexus_Text_Drake_Defeat2:
+	.string "Superb! Your Pokémon follow you by\n"
+	.string "choice. That much is clear.$"
+```
+
+</details>
+
+**Variação 3** — provocação: “você olha para mim e vê um velho. Ótimo.” O mar envelhece rápido e ensina quando esperar e quando atacar; ele esperou todo esse tempo por um desafiante que valesse.
+
+**Antes da luta**
+
+> Ha! You look at me and see an old man. Good.
+>
+> The sea ages a man fast. It also teaches him when to wait, and when to strike.
+>
+> I have waited all this time for a challenger worth striking.
+>
+> Do not disappoint an old sailor!
+
+**Derrota**
+
+> Superb! The old sailor is satisfied. Well, mostly.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Drake_Intro3:
+	.string "Ha! You look at me and see an old man.\n"
+	.string "Good.\p"
+	.string "The sea ages a man fast. It also\n"
+	.string "teaches him when to wait, and when to\l"
+	.string "strike.\p"
+	.string "I have waited all this time for a\n"
+	.string "challenger worth striking.\p"
+	.string "Do not disappoint an old sailor!$"
+
+Nexus_Text_Drake_Defeat3:
+	.string "Superb! The old sailor is satisfied.\n"
+	.string "Well, mostly.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -383,6 +460,117 @@ Nexus_Text_Drake_RagingBolt_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela; para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código).
+
+**Variação 2** — lembrança de marinheiro: o fogo que senta no mastro e queima sem queimar, que os marujos chamam de bênção; a fera o usa nas costas como manta de sela. Depois: a lenda das três feras que fugiram de um grande incêndio, uma levou o trovão — e esta é mais velha que a história. Não foge de nada; carrega o que escolheu.
+
+**Antes da luta**
+
+> At sea, lightning sometimes sits on the mast and burns without burning. Sailors call it a blessing.
+>
+> That beast wears it on its back like a saddle blanket.
+>
+> I have never seen a blessing so angry. Ha! Come!
+
+**Derrota**
+
+> Superb. Struck by lightning, and still standing.
+
+**Depois da luta**
+
+> They say three beasts once ran from a great fire, and one of them took the thunder with it.
+>
+> This one is older than that story. Before the fire. Before the running.
+>
+> It is not fleeing anything. It is simply carrying what it chose.
+>
+> Go. And keep your head below the storm.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Drake_RagingBolt_ChampionIntro2:
+	.string "At sea, lightning sometimes sits on the\n"
+	.string "mast and burns without burning.\l"
+	.string "Sailors call it a blessing.\p"
+	.string "That beast wears it on its back like a\n"
+	.string "saddle blanket.\p"
+	.string "I have never seen a blessing so angry.\n"
+	.string "Ha! Come!$"
+
+Nexus_Text_Drake_RagingBolt_ChampionDefeat2:
+	.string "Superb. Struck by lightning, and still\n"
+	.string "standing.$"
+
+Nexus_Text_Drake_RagingBolt_ChampionAfter2:
+	.string "{SPEAKER NAME_DRAKE}They say three beasts once ran from a\n"
+	.string "great fire, and one of them took the\l"
+	.string "thunder with it.\p"
+	.string "This one is older than that story.\n"
+	.string "Before the fire. Before the running.\p"
+	.string "It is not fleeing anything. It is simply\n"
+	.string "carrying what it chose.\p"
+	.string "Go. And keep your head below the storm.$"
+```
+
+</details>
+
+**Variação 3** — o que ele perdeu: um navio, que afundou numa tempestade bem menor que esta. Trinta anos culpando o céu. A virada: encontrou algo que carrega o céu nas costas, e parecia muito cansado; ser a tempestade pesa, e rancor também. O conselho: largue o seu antes de entrar.
+
+**Antes da luta**
+
+> I had a ship once. A good ship. She sank in a storm much smaller than that one.
+>
+> I never forgave the weather. That beast IS the weather, and it does not care what I forgive.
+>
+> Ha! Let us see which of us is more stubborn!
+
+**Derrota**
+
+> Superb. It seems I am not.
+
+**Depois da luta**
+
+> I lost my ship and blamed the sky for thirty years.
+>
+> Then I met something that carries the sky on its back, and it looked so very tired.
+>
+> It is heavy, being the storm. I should have known. I carried a grudge long enough.
+>
+> Go. And put yours down before you go in.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Drake_RagingBolt_ChampionIntro3:
+	.string "I had a ship once. A good ship. She sank\n"
+	.string "in a storm much smaller than that one.\p"
+	.string "I never forgave the weather. That\n"
+	.string "beast IS the weather, and it does not\l"
+	.string "care what I forgive.\p"
+	.string "Ha! Let us see which of us is more\n"
+	.string "stubborn!$"
+
+Nexus_Text_Drake_RagingBolt_ChampionDefeat3:
+	.string "Superb. It seems I am not.$"
+
+Nexus_Text_Drake_RagingBolt_ChampionAfter3:
+	.string "{SPEAKER NAME_DRAKE}I lost my ship and blamed the sky for\n"
+	.string "thirty years.\p"
+	.string "Then I met something that carries the\n"
+	.string "sky on its back, and it looked so very\l"
+	.string "tired.\p"
+	.string "It is heavy, being the storm. I should\n"
+	.string "have known. I carried a grudge long\l"
+	.string "enough.\p"
+	.string "Go. And put yours down before you go\n"
+	.string "in.$"
+```
+
+</details>
+
 
 #### Regidrago
 
@@ -441,6 +629,117 @@ Nexus_Text_Drake_Regidrago_ChampionAfter:
 	.string "That thing has waited in the dark with\n"
 	.string "its mouth open for a very long time.\p"
 	.string "Show it the rest. Show it a partner.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela; para o jogo sortear junto com a variação 1 acima (o sorteio ainda não existe no código).
+
+**Variação 2** — dúvida: a teoria de que os braços da criatura já foram cabeças de dragão, arrancadas e recolocadas. Uma coisa feita do que os outros deixaram. Depois: pedaços não fazem um parceiro, só uma escolha faz; e ninguém nunca pediu que ela escolhesse nada. “Vá. Pergunte a ela.”
+
+**Antes da luta**
+
+> There is a theory that its arms were once dragon heads. Real ones, carved away and set back on.
+>
+> I do not know if it is true. I know what it looks like: a thing made of what others left behind.
+>
+> Ha! Show me what you have that is truly yours!
+
+**Derrota**
+
+> Superb. All of it yours. Every bit.
+
+**Depois da luta**
+
+> Those builders took pieces of dragons and made a new one. It has never flown.
+>
+> Pieces cannot make a partner. Only a choice can.
+>
+> It is not its fault. No one ever asked it to choose anything.
+>
+> Go. Ask it.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Drake_Regidrago_ChampionIntro2:
+	.string "There is a theory that its arms were\n"
+	.string "once dragon heads. Real ones, carved\l"
+	.string "away and set back on.\p"
+	.string "I do not know if it is true. I know what\n"
+	.string "it looks like: a thing made of what\l"
+	.string "others left behind.\p"
+	.string "Ha! Show me what you have that is truly\n"
+	.string "yours!$"
+
+Nexus_Text_Drake_Regidrago_ChampionDefeat2:
+	.string "Superb. All of it yours. Every bit.$"
+
+Nexus_Text_Drake_Regidrago_ChampionAfter2:
+	.string "{SPEAKER NAME_DRAKE}Those builders took pieces of dragons\n"
+	.string "and made a new one. It has never flown.\p"
+	.string "Pieces cannot make a partner. Only a\n"
+	.string "choice can.\p"
+	.string "It is not its fault. No one ever asked\n"
+	.string "it to choose anything.\p"
+	.string "Go. Ask it.$"
+```
+
+</details>
+
+**Variação 3** — humor e lembrança: ele passou a noite nas ruínas conversando com as paredes, cabeça por cabeça; contou do mar e do Salamence que um dia não tinha asas. Plateia difícil. Depois: o Bagon pulava de penhascos querendo asas e as ganhou porque quis — esse é o segredo dos dragões, e a criatura nunca quis nada.
+
+**Antes da luta**
+
+> I spent the night in those ruins, talking to the walls. Every carved head, one by one.
+>
+> Told them about the sea. Told them about my Salamence, and how it once had no wings.
+>
+> Not one of them answered. Ha! Tough crowd. Come!
+
+**Derrota**
+
+> Superb. You would have been a better audience.
+
+**Depois da luta**
+
+> My Salamence spent years as a Bagon, jumping off cliffs, wanting wings.
+>
+> It got them because it wanted them. That is the whole secret of dragons.
+>
+> That thing in the ruins has never wanted anything. It was only ever built.
+>
+> Give it something to want. Even a rematch.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Drake_Regidrago_ChampionIntro3:
+	.string "I spent the night in those ruins,\n"
+	.string "talking to the walls. Every carved\l"
+	.string "head, one by one.\p"
+	.string "Told them about the sea. Told them\n"
+	.string "about my Salamence, and how it once\l"
+	.string "had no wings.\p"
+	.string "Not one of them answered. Ha! Tough\n"
+	.string "crowd. Come!$"
+
+Nexus_Text_Drake_Regidrago_ChampionDefeat3:
+	.string "Superb. You would have been a better\n"
+	.string "audience.$"
+
+Nexus_Text_Drake_Regidrago_ChampionAfter3:
+	.string "{SPEAKER NAME_DRAKE}My Salamence spent years as a Bagon,\n"
+	.string "jumping off cliffs, wanting wings.\p"
+	.string "It got them because it wanted them.\n"
+	.string "That is the whole secret of dragons.\p"
+	.string "That thing in the ruins has never\n"
+	.string "wanted anything. It was only ever\l"
+	.string "built.\p"
+	.string "Give it something to want. Even a\n"
+	.string "rematch.$"
 ```
 
 </details>
