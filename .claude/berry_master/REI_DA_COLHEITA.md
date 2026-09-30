@@ -17,6 +17,13 @@
 > | Upgrade de nível da horta | §5 |
 > | Tarefa repetitiva com muitas falas diferentes, em lugares diferentes por horário (“mini Harvest Moon”) | §2 e §9 |
 >
+> Páginas (artifacts) que apresentam este material, com renders:
+> [Horta do Berry Master](https://claude.ai/artifact/L7mDjKKS2aq63SUgY323nD) (sistema:
+> §2–§7), [O Rei da Colheita](https://claude.ai/artifact/DkvvWE7XYtx3C6SJyJZCcm)
+> (história: §8, §13–§15) e [Caminhos dos Corcéis](https://claude.ai/artifact/R65MTm61Y7NGT8doiocyRY)
+> (protótipo dos mapas: §15.5c). Tudo o que elas dizem está neste documento; a
+> ordem de implementação está em [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md).
+>
 > Texto do documento em português; **tudo que aparece no jogo, em inglês**. As
 > falas estão em prosa: quebrar linha com `nomear-falante/medir_linha.py` na hora
 > de escrever o `.inc`.
@@ -957,6 +964,8 @@ Sem estado novo; conferem algo do jogo e falam por cima da fala do dia.
 ---
 
 ## 11. Ordem de implementação
+
+> **Superado por [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md)** (17 partes, cobre também as rev2–rev4).
 
 Cada passo compila e se testa **no jogo** sozinho (um build limpo não prova a cena).
 
@@ -2058,8 +2067,65 @@ the ones who had nowhere else to go.”
 |---|---|
 | Ato 6 (§8.11 e §14.2) | O Glastrier e o Spectrier saem do `IcePath_Depths` e do `BurnedTower_B1F`. O Pryce e o Morty ficam nos **ginásios** e mandam o jogador para a dungeon |
 | O corcel não escolhido | A mansão Hale fica trancada pelo cristal, ou as Kimono Girls não dançam a Torre de Bronze. O outro corcel continua só no Nexus |
+| Mapas que **não** mudam | O `IcePath_Depths` (com o Chien-Pao) e o `BurnedTower_B1F` ficam como estão; só o jogador acorda no B1F depois do Spectrier |
 | Custo | **4 mapas**, 2 paletas novas, 2 treinadores (Scientist, Tomo), 1 sprite novo (Molly adulta), plaquinhas `NAME_MOLLY` e `NAME_TOMO` (`NAME_EUSINE`: conferir se já existe) |
 | Cortado da versão longa | Deslizar no cristal, palavra dos Unown, Phantom Rider, fogo que avança, puzzle dos sinos, 5 notas do Hale, Pryce jantando aos domingos, 7 treinadores. Ficam como ideias se um dia quiser alongar |
+
+### 15.5c O protótipo dos 4 mapas (página “Caminhos dos Corcéis”)
+
+Tudo que a página https://claude.ai/artifact/R65MTm61Y7NGT8doiocyRY mostra, para não
+depender dela. Arquivos em [`prototipo_corceis/`](prototipo_corceis/): `gera.py`
+(gera os `map.bin` e os renders com `mapa_kit.py`), `*_map.bin`, `*_objects.json`
+(objetos já no formato do `map.json`), `report.json` (tamanhos) e os PNGs (`g1_*` =
+Greenfield, `g2_*` = mansão, `s1_*` = torre 1F, `s2_*` = telhado). No render o jogador
+aparece com o sprite do Brendan; os filtros de cristal, sépia e fogo são simulação:
+no jogo viram paletas novas.
+
+| Mapa | Layout novo | Tamanho | Parte de | Mudança de metatile | Paleta nova | Liga com |
+|---|---|---|---|---|---|---|
+| Greenfield | `Greenfield` | 30×39 | `NewBarkTown` | 8 manchas de flor na grama; a casa grande do alto vira a mansão Hale | cristal **e** “depois” (troca por estado no `ON_LOAD`) | portão novo a oeste de `RuinsOfAlph_Outside` (warp na entrada oeste) |
+| Mansão Hale | `Greenfield_Mansion` | 26×23 | recorte de 26 colunas do saguão do `DarkraiInn1` (tem piano e escada) | o corredor de cima ganha +3 fileiras de piso e vira o salão do Glastrier | cristal **só no salão** (a Molly mantém o saguão aquecido) | porta da casa grande de Greenfield |
+| Torre de Bronze 1F | `BrassTowerMemory_1F` | 27×25 | `BurnedTower_1F` | buracos e entulho viram piso inteiro; 4 estátuas da própria torre marcam as colunas (a mesma sala, 150 anos antes) | entardecer em sépia (“memória”) | warp do `EcruteakCity_Theater` (cena da dança) |
+| Telhado | `BrassTowerMemory_Roof` | 23×21 | `TinTower_RoofDay` (o único telhado de torre de Johto) | brasas no telhado | noite de incêndio | saída para o `BurnedTower_B1F` depois da captura |
+
+**Objetos e cenas de cada mapa**
+
+| Mapa | Objeto | Onde | Sprite (protótipo) | Faz |
+|---|---|---|---|---|
+| Greenfield | Moradora | (11,16), olha p/ baixo | `WOMAN_1` | “Lovely morning, isn't it?” — sempre a mesma frase |
+| Greenfield | Velho | (20,22), olha p/ esquerda | `OLD_MAN_1` | “The flowers will open any day now.” |
+| Greenfield | Menino | (10,29), olha p/ cima | `BOY` | “Molly said she'd play with me after lunch.” |
+| Greenfield | Peonia | (3,12), olha p/ direita | `PICNICKER` (substituto) | acompanha o jogador; fala de chegada do §15.4 |
+| Mansão | Molly | ao piano, no saguão, (16,17) olhando p/ cima; no salão, (15,9) | `WOMAN_2` (substituto) | falas do §15.4; acompanha até a porta do salão |
+| Mansão | Glastrier | (13,5), olha p/ baixo: dormindo no salão de cristal, subindo a escada | `SPECIES(GLASTRIER)` | oferecer a Iceroot Carrot abre a batalha |
+| Mansão | nota do Professor Hale | mesa do salão (`bg_event`) | — | “It sleeps here because nothing here changes…” |
+| Torre 1F | 3 Sábios | (9,8) →, (17,11) ↓, (5,17) ↑ | `SAGE` | um deles: “New novice? Feed the black horse…” |
+| Torre 1F | Kimono Girl | (22,19), olha p/ esquerda | `KIMONO_GIRL` | uma Kimono Girl “de outra época”; sem fala nova obrigatória |
+| Torre 1F | escada do alto | (14,4), gatilho (`coord_event`); a porta é (15,23) | — | raio (flash + `playse`) + narração “Thunder. Then light…” + warp ao telhado |
+| Telhado | Sábio Tomo | (10,9), olha p/ baixo, diante do Spectrier | `SAGE` | treinador, batalha sem blackout (§15.5) |
+| Telhado | Spectrier | (10,8), olha p/ baixo | `SPECIES(SPECTRIER)` | chefe |
+| Telhado | Morty, Eusine, Peonia | (9,12), (11,12), (10,13); o jogador chega em (10,11), e a escada de volta é (10,14) | existem / `PICNICKER` | falas do §15.5; a sombra do Ho-Oh passa depois da batalha e **não** para |
+
+Na chegada à torre pela dança, a fila na porta é Peonia (13,21), Morty (14,21),
+jogador (15,21) e Eusine (16,21). As 4 estátuas da torre ficam em (6,8), (20,8),
+(6,14) e (20,14). Na mansão, a chegada é jogador (10,21) e Peonia (11,21) no saguão, e
+jogador (13,8) e Peonia (11,9) no salão. Só a mansão não tem `*_objects.json`: os
+objetos dela estão em `gera.py` (`MOLLY`, `GLAS`). Coordenadas medidas pelo
+`check_objects` do `gera.py`; conferir de novo com `dump_mapa.py` depois de instalar.
+
+**Greenfield depois (estado 12).** A cor volta, as flores crescem, e as três falas
+“presas” trocam por falas novas: o dia deles andou. As falas novas ainda não foram
+escritas (Parte 14 de [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md)).
+
+**O que faltava na página, depois da aprovação**
+
+1. Aprovar os mapas (feito em 30/09/2026). Se o autor quiser outro desenho para
+   Greenfield (mais flores, uma fonte no meio), é o próximo passo antes de instalar.
+2. Paletas: os filtros viram paletas de verdade nos secundários copiados (skills
+   `montar-tileset` e `adicionar-tileset`). É a única arte nova de mapa.
+3. Instalar: `layouts.json`, `map.bin` (os de `prototipo_corceis/`), `map.json` com os
+   objetos (os `*_objects.json`), e ligação conferida com `mapa-de-ligacoes`.
+4. Do autor: sprites da Molly adulta e da Peonia. Até lá, `WOMAN_2` e `PICNICKER`.
 
 ### 15.6 Outros lugares de Johto que a lore tem e o jogo não (para depois)
 
