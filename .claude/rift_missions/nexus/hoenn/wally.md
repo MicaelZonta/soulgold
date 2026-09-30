@@ -315,6 +315,75 @@ Nexus_Text_Wally_Defeat:
 
 </details>
 
+#### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas genéricas para as quatro primeiras salas, com ângulos diferentes da variação 1 (que está no jogo). Seguem o [R16](../NEXUS_REGRAS.md): falam dele mesmo, sem o lugar nem a criatura do dia.
+
+**Variação 2** — a primeira captura, sozinho (R21: quem devia ir junto não foi).
+
+**Antes da luta**
+
+> Can I tell you about my first Pokémon? I caught it with a borrowed Zigzagoon and a lot of luck.
+>
+> Someone was supposed to come with me that day. They didn't. I went anyway.
+>
+> I think that was the first brave thing I ever did. Here's the second!
+
+**Derrota**
+
+> That's okay. Brave doesn't mean winning. …I'm still working on that.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wally_Intro2:
+	.string "Can I tell you about my first Pokémon?\n"
+	.string "I caught it with a borrowed Zigzagoon\l"
+	.string "and a lot of luck.\p"
+	.string "Someone was supposed to come with me\n"
+	.string "that day. They didn't. I went anyway.\p"
+	.string "I think that was the first brave thing I\n"
+	.string "ever did. Here's the second!$"
+
+Nexus_Text_Wally_Defeat2:
+	.string "That's okay. Brave doesn't mean\n"
+	.string "winning. …I'm still working on that.$"
+```
+
+</details>
+
+**Variação 3** — provocação: não quer ser poupado (o tio, a moça do Poké Mart).
+
+**Antes da luta**
+
+> Please don't go easy on me. Everyone goes easy on me.
+>
+> Nurses. My uncle. The lady at the Poké Mart. She carried my groceries once.
+>
+> I carry my own groceries now! And I battle at full strength. You too, please!
+
+**Derrota**
+
+> Thank you. …For not carrying anything.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wally_Intro3:
+	.string "Please don't go easy on me. Everyone\n"
+	.string "goes easy on me.\p"
+	.string "Nurses. My uncle. The lady at the Poké\n"
+	.string "Mart. She carried my groceries once.\p"
+	.string "I carry my own groceries now! And I\n"
+	.string "battle at full strength. You too,\l"
+	.string "please!$"
+
+Nexus_Text_Wally_Defeat3:
+	.string "Thank you. …For not carrying anything.$"
+```
+
+</details>
+
 
 ### Diálogo associado ao lendário
 
@@ -383,6 +452,112 @@ Nexus_Text_Wally_Azelf_ChampionAfter:
 
 </details>
 
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)); a variação 1 é a que está no jogo.
+
+**Variação 2** — carregar Magikarp de poça em poça (a vontade pequena, que ninguém vê).
+
+**Antes da luta**
+
+> I carried a Magikarp to a bigger puddle this morning. It took twenty minutes. I sat down twice.
+>
+> Then I went back for another. There are a lot of them.
+>
+> My partner helped. It carries better than I do. Let's see if it battles better too!
+
+**Derrota**
+
+> Twenty minutes, sat down twice, and lost. Good day, though.
+
+**Depois da luta**
+
+> Something in the crater watched me the whole time. It didn't help. I think that was on purpose.
+>
+> If it had helped, it would have been its will. Not mine.
+>
+> When you go in, don't ask it for anything. Just show it something you didn't give up on.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wally_Azelf_ChampionIntro2:
+	.string "I carried a Magikarp to a bigger puddle\n"
+	.string "this morning. It took twenty minutes. I\l"
+	.string "sat down twice.\p"
+	.string "Then I went back for another. There are\n"
+	.string "a lot of them.\p"
+	.string "My partner helped. It carries better\n"
+	.string "than I do. Let's see if it battles\l"
+	.string "better too!$"
+
+Nexus_Text_Wally_Azelf_ChampionDefeat2:
+	.string "Twenty minutes, sat down twice, and\n"
+	.string "lost. Good day, though.$"
+
+Nexus_Text_Wally_Azelf_ChampionAfter2:
+	.string "{SPEAKER NAME_WALLY}Something in the crater watched me the\n"
+	.string "whole time. It didn't help. I think that\l"
+	.string "was on purpose.\p"
+	.string "If it had helped, it would have been its\n"
+	.string "will. Not mine.\p"
+	.string "When you go in, don't ask it for\n"
+	.string "anything. Just show it something you\l"
+	.string "didn't give up on.$"
+```
+
+</details>
+
+**Variação 3** — o hotel à beira do lago e o dia em que o lago foi embora (o que ele perdeu naquele fragmento).
+
+**Antes da luta**
+
+> There was a hotel by this lake. My parents sent me there when I was little. Clean air, good for weak lungs.
+>
+> I was there the day the water went away.
+>
+> …Sorry, that's gloomy. Let's battle. It always clears my head!
+
+**Derrota**
+
+> Clear head. Lost battle. Fair trade.
+
+**Depois da luta**
+
+> Men in strange suits came, and the lake was gone all at once. The hotel guests just… left.
+>
+> The Magikarp couldn't leave. So they stayed and kept trying. I understand them better than the guests.
+>
+> Go on. It stayed too. I think that's why it's still here.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wally_Azelf_ChampionIntro3:
+	.string "There was a hotel by this lake. My\n"
+	.string "parents sent me there when I was little.\l"
+	.string "Clean air, good for weak lungs.\p"
+	.string "I was there the day the water went\n"
+	.string "away.\p"
+	.string "…Sorry, that's gloomy. Let's battle. It\n"
+	.string "always clears my head!$"
+
+Nexus_Text_Wally_Azelf_ChampionDefeat3:
+	.string "Clear head. Lost battle. Fair trade.$"
+
+Nexus_Text_Wally_Azelf_ChampionAfter3:
+	.string "{SPEAKER NAME_WALLY}Men in strange suits came, and the lake\n"
+	.string "was gone all at once. The hotel guests\l"
+	.string "just… left.\p"
+	.string "The Magikarp couldn't leave. So they\n"
+	.string "stayed and kept trying. I understand\l"
+	.string "them better than the guests.\p"
+	.string "Go on. It stayed too. I think that's why\n"
+	.string "it's still here.$"
+```
+
+</details>
+
 #### Iron Valiant
 
 ✅ **Implementado em 27/09/2026:** `Nexus_EventScript_Wally_IronValiant_ChampionFight` em `data/scripts/nexus.inc`. O texto abaixo é a proposta que virou código.
@@ -443,6 +618,105 @@ Nexus_Text_Wally_IronValiant_ChampionAfter:
 	.string "has to choose. I don't think I envy it\l"
 	.string "anymore.\p"
 	.string "Go on. Be kind to it, if you can.$"
+```
+
+</details>
+
+##### Variações 2 e 3 (📝 proposta de 30/09/2026)
+
+Mais duas falas de campeão para esta criatura, sem dizer o nome dela ([R16](../NEXUS_REGRAS.md)); a variação 1 é a que está no jogo.
+
+**Variação 2** — humor: a disputa de encarar que ninguém ganha de uma máquina.
+
+**Antes da luta**
+
+> I tried a staring contest with the metal one in the garden. I lost. It doesn't blink.
+>
+> My partner tried too. It lost. Then it sneezed.
+>
+> We're very bad at being perfect. Let's be imperfect together, you and me!
+
+**Derrota**
+
+> Very imperfect. Thank you.
+
+**Depois da luta**
+
+> Everything in that garden is finished. The flowers, the paths. Even it.
+>
+> I don't think I want to be finished. I've got too much left to try.
+>
+> Go on in. If it looks bored, that's why.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wally_IronValiant_ChampionIntro2:
+	.string "I tried a staring contest with the\n"
+	.string "metal one in the garden. I lost. It\l"
+	.string "doesn't blink.\p"
+	.string "My partner tried too. It lost. Then it\n"
+	.string "sneezed.\p"
+	.string "We're very bad at being perfect. Let's\n"
+	.string "be imperfect together, you and me!$"
+
+Nexus_Text_Wally_IronValiant_ChampionDefeat2:
+	.string "Very imperfect. Thank you.$"
+
+Nexus_Text_Wally_IronValiant_ChampionAfter2:
+	.string "{SPEAKER NAME_WALLY}Everything in that garden is finished.\n"
+	.string "The flowers, the paths. Even it.\p"
+	.string "I don't think I want to be finished.\n"
+	.string "I've got too much left to try.\p"
+	.string "Go on in. If it looks bored, that's why.$"
+```
+
+</details>
+
+**Variação 3** — o bilhete sem assinatura que oferece um parceiro que nunca cansa (a tentação e a recusa).
+
+**Antes da luta**
+
+> Someone left a note in the garden. It said the metal one could teach my partner never to get tired again.
+>
+> I thought about it all night. I really did.
+>
+> Then my partner fell asleep on my foot. …Let's battle. I've decided.
+
+**Derrota**
+
+> My foot's still asleep. Worth it.
+
+**Depois da luta**
+
+> The note wasn't signed. The writing was very neat, like a scientist's.
+>
+> Maybe it's a better future. For somebody. Just not for the two of us.
+>
+> If you meet whoever wrote it, tell them we said no, thank you. Politely.
+
+<details><summary><code>.inc</code></summary>
+
+```asm
+Nexus_Text_Wally_IronValiant_ChampionIntro3:
+	.string "Someone left a note in the garden. It\n"
+	.string "said the metal one could teach my\l"
+	.string "partner never to get tired again.\p"
+	.string "I thought about it all night. I really\n"
+	.string "did.\p"
+	.string "Then my partner fell asleep on my foot.\n"
+	.string "…Let's battle. I've decided.$"
+
+Nexus_Text_Wally_IronValiant_ChampionDefeat3:
+	.string "My foot's still asleep. Worth it.$"
+
+Nexus_Text_Wally_IronValiant_ChampionAfter3:
+	.string "{SPEAKER NAME_WALLY}The note wasn't signed. The writing was\n"
+	.string "very neat, like a scientist's.\p"
+	.string "Maybe it's a better future. For\n"
+	.string "somebody. Just not for the two of us.\p"
+	.string "If you meet whoever wrote it, tell them\n"
+	.string "we said no, thank you. Politely.$"
 ```
 
 </details>
