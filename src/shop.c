@@ -1093,7 +1093,7 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y)
                 gStringVar1,
                 GetMartItemCost(itemId),
                 STR_CONV_MODE_LEFT_ALIGN,
-                6);
+                MAX_MONEY_DIGITS);
             StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
         }
         else if (IsBPMart())
@@ -1111,7 +1111,7 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y)
                 gStringVar1,
                 GetMartItemCost(itemId),
                 STR_CONV_MODE_LEFT_ALIGN,
-                6);
+                MAX_MONEY_DIGITS);
             StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
         }
 
@@ -1318,7 +1318,7 @@ static void Task_BuyMenu(u8 taskId)
                     CopyItemName(itemId, gStringVar1);
                     if (GetItemImportance(itemId))
                     {
-                        ConvertIntToDecimalStringN(gStringVar2, sShopData->totalCost, STR_CONV_MODE_LEFT_ALIGN, 6);
+                        ConvertIntToDecimalStringN(gStringVar2, sShopData->totalCost, STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
                         tItemCount = 1;
                         sShopData->totalCost = GetMartItemCost(tItemId) * tItemCount;
                         StringExpandPlaceholders(gStringVar4, IsBPMart() ? gText_YouWantedVar1ThatllBeVar2_Bp : gText_YouWantedVar1ThatllBeVar2);

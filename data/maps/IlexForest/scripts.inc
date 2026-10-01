@@ -6,10 +6,26 @@ IlexForest_MapScripts::
 	.byte 0
 
 IlexForest_OnTransition: 
+	call_if_unset FLAG_VISITED_AZALEA_TOWN, IlexForest_EventScript_HideBeforeAzalea
 	call_if_eq VAR_ILEX_FOREST_FARFETCHD, 1, IlexForest_EventScript_ReenterWhenFarfetchdLeaving
 	call_if_eq VAR_ILEX_FOREST_FARFETCHD, 2, IlexForest_EventScript_ReenterDuringCutScene
 	callnative SetTimeBasedEncounters
 	end	
+
+@ These hide flags are first set by AzaleaTown_EventScript_Trigger, but the
+@ forest can be entered from Route 34 before Azalea: Celebi at the shrine, Kurt,
+@ the charcoal master and apprentice and the Farfetch'd were all standing there
+@ (bug/B08). Same flags, same values, so the Azalea trigger stays in charge.
+IlexForest_EventScript_HideBeforeAzalea::
+	setflag FLAG_HIDE_CELEBI
+	setflag FLAG_HIDE_ILEX_FOREST_KURT
+	setflag FLAG_HIDE_ILEX_FOREST_MASTER
+	setflag FLAG_HIDE_ILEX_FOREST_APPRENTICE
+	setflag FLAG_HIDE_ILEX_FOREST_FARFETCHD_1
+	setflag FLAG_HIDE_ILEX_FOREST_FARFETCHD_2
+	setflag FLAG_HIDE_ILEX_FOREST_FARFETCHD_3
+	setflag FLAG_HIDE_ILEX_FOREST_FARFETCHD_4
+	return
 
 IlexForest_EventScript_ReenterWhenFarfetchdLeaving::
 	setobjectxyperm LOCALID_ILEX_FOREST_FARFETCHD_1, 33, 51
@@ -190,7 +206,7 @@ IlexForest_EventScript_Trigger::
 	msgbox IlexForest_Text_CharcoalMasterIntro, MSGBOX_DEFAULT
 	closemessage
 	giveitem ITEM_HM_CUT
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox IlexForest_Text_CharcoalMasterOutro, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_HM_CUT
 	setflag FLAG_HIDE_ILEX_FOREST_MASTER

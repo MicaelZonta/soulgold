@@ -14,6 +14,10 @@
 
 #define ITEM_FROM_GROTTO_DATA 0xFFFF
 
+// SoulGold: a grotto Pokemon still has 2 perfect IVs, but only this percent
+// of them carry the hidden ability; the rest keep their rolled normal one.
+#define HIDDEN_GROTTO_HIDDEN_ABILITY_CHANCE 5
+
 enum HiddenGrottoId
 {
     //Johto Grottos
@@ -500,7 +504,8 @@ void HiddenGrotto_CreateCurrentMon(void)
 
     CreateScriptedWildMon(content->id, GetHiddenGrottoMonLevel(grotto), ITEM_NONE, ITEM_NONE);
     GiveHiddenGrottoMonPerfectIvs(&gEnemyParty[0]);
-    if (GetSpeciesAbility(content->id, hiddenAbilityNum) != ABILITY_NONE)
+    if (GetSpeciesAbility(content->id, hiddenAbilityNum) != ABILITY_NONE
+     && RandomPercentage(RNG_HIDDEN_GROTTO_ABILITY, HIDDEN_GROTTO_HIDDEN_ABILITY_CHANCE))
         SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &hiddenAbilityNum);
     CalculateMonStats(&gEnemyParty[0]);
     gSpecialVar_Result = TRUE;

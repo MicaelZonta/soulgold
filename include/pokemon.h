@@ -762,6 +762,8 @@ u32 GetSpeciesHeight(u16 species);
 u32 GetSpeciesWeight(u16 species);
 enum Type GetSpeciesType(u16 species, u8 slot);
 enum Ability GetSpeciesAbility(u16 species, u8 slot);
+u32 RollAbilityCapsuleAbilityNum(u16 species);
+bool32 CanAbilityCapsuleChangeAbility(u16 species, u32 currentAbilityNum);
 u32 GetSpeciesBaseHP(u16 species);
 u32 GetSpeciesBaseAttack(u16 species);
 u32 GetSpeciesBaseDefense(u16 species);

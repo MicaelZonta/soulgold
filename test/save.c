@@ -23,8 +23,9 @@
 // If you would like to ensure save compatibility, update the values below with those for your hack. You can find these through the debug menu.
 // Please note that this simple check is not 100% foolproof, but should be able to catch most unintended shifts.
 #define T_SAVEBLOCK1_SIZE 15444
-#define T_SAVEBLOCK2_SIZE 2864
-#define T_SAVEBLOCK3_SIZE 100
+// SoulGold: FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK2 (-104) and Candy Jar removed from SaveBlock3 (-4).
+#define T_SAVEBLOCK2_SIZE 2760
+#define T_SAVEBLOCK3_SIZE 96
 #define T_POKEMON_SECURE_DATA_SIZE 44
 #define T_BOX_POKEMON_SIZE 76
 #define T_POKEMON_SIZE 96

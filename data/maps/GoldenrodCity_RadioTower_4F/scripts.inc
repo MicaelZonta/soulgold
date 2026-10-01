@@ -180,7 +180,7 @@ RadioF4_Mary3::
 	msgbox RadioF4_Mary3_Text_0
 	closemessage
 	giveitem ITEM_BRIGHT_POWDER
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox RadioF4_Mary3_Text_1
 	closemessage
 	setflag FLAG_GOT_MARY_BRIGHT_POWDER

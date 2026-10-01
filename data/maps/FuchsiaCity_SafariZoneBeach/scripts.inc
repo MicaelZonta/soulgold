@@ -12,6 +12,7 @@ SafariZoneFuchsia_EventScript_Attendant1::
 	msgbox SafariZoneFuchsia_Text_Attendant1, MSGBOX_DEFAULT
 	call_if_ge VAR_KANTO_SAFARI_ZONE_PROGRESS, 2, SafariZoneFuchsia_Approved
 	closemessage
+	release
 	end
 
 SafariZoneFuchsia_EventScript_Attendant2::
@@ -20,6 +21,7 @@ SafariZoneFuchsia_EventScript_Attendant2::
 	msgbox SafariZoneFuchsia_Text_Attendant2, MSGBOX_DEFAULT
 	call_if_ge VAR_KANTO_SAFARI_ZONE_PROGRESS, 3, SafariZoneFuchsia_Approved
 	closemessage
+	release
 	end
 
 SafariZoneFuchsia_EventScript_Attendant3::
@@ -28,6 +30,7 @@ SafariZoneFuchsia_EventScript_Attendant3::
 	msgbox SafariZoneFuchsia_Text_Attendant3, MSGBOX_DEFAULT
 	call_if_ge VAR_KANTO_SAFARI_ZONE_PROGRESS, 4, SafariZoneFuchsia_Approved
 	closemessage
+	release
 	end
 
 SafariZoneFuchsia_Trigger1::

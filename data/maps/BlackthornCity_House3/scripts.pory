@@ -4,7 +4,7 @@ BlackthornCity_House3_MapScripts::
 
 BlackthornCity_MoveDeletersHouse_EventScript_MoveDeleter::
 	lockall
-	applymovement LOCALID_MOVE_DELETER, Common_Movement_FacePlayer
+	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox BlackthornCity_MoveDeletersHouse_Text_ICanMakeMonForgetMove, MSGBOX_YESNO
 	switch VAR_RESULT

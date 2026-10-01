@@ -4,7 +4,8 @@ TinTower_1F_MapScripts::
 TinTower_1F_EventScript_SageA::
 	lock
 	faceplayer
-	goto_if_eq VAR_ECRUTEAK_CITY_STATE, 11, TinTower_1F_EventScript_SageA_Hooh
+	goto_if_eq VAR_COMPLETED_HO_OH, 2, TinTower_1F_EventScript_SageA_Hooh
+	goto_if_eq VAR_COMPLETED_HO_OH, 4, TinTower_1F_EventScript_SageA_Hooh
 	msgbox TinTower_1F_Sage4_Text2, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -19,7 +20,8 @@ TinTower_1F_EventScript_SageA_Hooh::
 TinTower_1F_EventScript_SageB::
 	lock
 	faceplayer
-	goto_if_eq VAR_ECRUTEAK_CITY_STATE, 11, TinTower_1F_EventScript_SageB_Hooh
+	goto_if_eq VAR_COMPLETED_HO_OH, 2, TinTower_1F_EventScript_SageB_Hooh
+	goto_if_eq VAR_COMPLETED_HO_OH, 4, TinTower_1F_EventScript_SageB_Hooh
 	msgbox TinTower_1F_Sage2_Text, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -34,7 +36,8 @@ TinTower_1F_EventScript_SageB_Hooh::
 TinTower_1F_EventScript_SageC::
 	lock
 	faceplayer
-	goto_if_eq VAR_ECRUTEAK_CITY_STATE, 11, TinTower_1F_EventScript_SageC_Hooh
+	goto_if_eq VAR_COMPLETED_HO_OH, 2, TinTower_1F_EventScript_SageC_Hooh
+	goto_if_eq VAR_COMPLETED_HO_OH, 4, TinTower_1F_EventScript_SageC_Hooh
 	msgbox TinTower_1F_Sage6_Text2, MSGBOX_DEFAULT
 	closemessage
 	release

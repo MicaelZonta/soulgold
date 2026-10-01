@@ -16,7 +16,6 @@ SeafoamIslands_Gym_EventScript_Blaine::
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
 	msgbox SeafoamIslands_Gym_Text_TM, MSGBOX_DEFAULT
-	setflag FLAG_GARBAGEFLAG
 	setflag FLAG_DEFEATED_CINNABAR_ISLAND_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 15
@@ -43,7 +42,7 @@ SeafomIslands2_EventScript_GymGuide2::
 
 SeafoamIslands_Gym_EventScript_GymStatue::
 	lockall
-	goto_if_set FLAG_GARBAGEFLAG, SeafoamIslands_Gym_EventScript_GymStatuePostVictory
+	goto_if_set FLAG_DEFEATED_CINNABAR_ISLAND_GYM, SeafoamIslands_Gym_EventScript_GymStatuePostVictory
 	msgbox SeafoamIslands_Gym_Text_GymStatue
 	releaseall
 	end

@@ -5,7 +5,7 @@ PalletTown_House2_EventScript_Daisy::
 	lock
 	faceplayer
 	goto_if_unset FLAG_HIDE_CINNABAR_BLUE, PalletTown_House2_EventScript_Blue
-	goto_if_unset FLAG_GARBAGEFLAG, PalletTown_House2_EventScript_DaisyGrooming
+	goto_if_unset FLAG_DAILY_DAISY_GROOMED, PalletTown_House2_EventScript_DaisyGrooming
 	msgbox PalletTown_House2_Text_AlreadyGroomed, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -51,7 +51,7 @@ PalletTown_House2_EventScript_DaisyGrooming::
 	fadescreen FADE_FROM_BLACK
 	special BufferMonNickname
 	msgbox PalletTown_House2_Text_AllDone
-	setflag FLAG_GARBAGEFLAG
+	setflag FLAG_DAILY_DAISY_GROOMED
 	release
 	end
 

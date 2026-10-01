@@ -182,7 +182,7 @@ script RadioF4_Mary3 {
             Won't you take this as my thanks?")
 	closemessage
 	giveitem(ITEM_BRIGHT_POWDER)
-	goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
+	goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 	msgbox("It's good for dodging enemy attacks!
             My Meowth loves it!")
 	closemessage

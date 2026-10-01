@@ -247,7 +247,7 @@ TEST("Battle Cafe can unlock both Paradox legendary rewards")
               BATTLE_CAFE_PARADOX_REWARD_MIRAIDON | BATTLE_CAFE_PARADOX_REWARD_KORAIDON);
 }
 
-TEST("Battle Cafe Attack vitamin set gives two Protein EX and Calcium EX for four points")
+TEST("Battle Cafe Attack vitamin set gives five Protein and Calcium for four points")
 {
     ClearBag();
     VarSet(VAR_BATTLE_CAFE_POINTS, 4);
@@ -257,11 +257,11 @@ TEST("Battle Cafe Attack vitamin set gives two Protein EX and Calcium EX for fou
 
     EXPECT_EQ(gSpecialVar_Result, BATTLE_CAFE_VITAMIN_PURCHASE_SUCCESS);
     EXPECT_EQ(VarGet(VAR_BATTLE_CAFE_POINTS), 0);
-    EXPECT(CheckBagHasItem(ITEM_PROTEIN_EX, 2));
-    EXPECT(CheckBagHasItem(ITEM_CALCIUM_EX, 2));
+    EXPECT(CheckBagHasItem(ITEM_PROTEIN, 5));
+    EXPECT(CheckBagHasItem(ITEM_CALCIUM, 5));
 }
 
-TEST("Battle Cafe Defense vitamin set gives two Iron EX and Zinc EX for four points")
+TEST("Battle Cafe Defense vitamin set gives five Iron and Zinc for four points")
 {
     ClearBag();
     VarSet(VAR_BATTLE_CAFE_POINTS, 4);
@@ -271,11 +271,11 @@ TEST("Battle Cafe Defense vitamin set gives two Iron EX and Zinc EX for four poi
 
     EXPECT_EQ(gSpecialVar_Result, BATTLE_CAFE_VITAMIN_PURCHASE_SUCCESS);
     EXPECT_EQ(VarGet(VAR_BATTLE_CAFE_POINTS), 0);
-    EXPECT(CheckBagHasItem(ITEM_IRON_EX, 2));
-    EXPECT(CheckBagHasItem(ITEM_ZINC_EX, 2));
+    EXPECT(CheckBagHasItem(ITEM_IRON, 5));
+    EXPECT(CheckBagHasItem(ITEM_ZINC, 5));
 }
 
-TEST("Battle Cafe Speed vitamin set gives two Carbos EX for two points")
+TEST("Battle Cafe Speed vitamin set gives five Carbos for two points")
 {
     ClearBag();
     VarSet(VAR_BATTLE_CAFE_POINTS, 2);
@@ -285,7 +285,7 @@ TEST("Battle Cafe Speed vitamin set gives two Carbos EX for two points")
 
     EXPECT_EQ(gSpecialVar_Result, BATTLE_CAFE_VITAMIN_PURCHASE_SUCCESS);
     EXPECT_EQ(VarGet(VAR_BATTLE_CAFE_POINTS), 0);
-    EXPECT(CheckBagHasItem(ITEM_CARBOS_EX, 2));
+    EXPECT(CheckBagHasItem(ITEM_CARBOS, 5));
 }
 
 TEST("Battle Cafe vitamin sets do not charge or give items without enough points")
@@ -298,8 +298,8 @@ TEST("Battle Cafe vitamin sets do not charge or give items without enough points
 
     EXPECT_EQ(gSpecialVar_Result, BATTLE_CAFE_VITAMIN_PURCHASE_NOT_ENOUGH_POINTS);
     EXPECT_EQ(VarGet(VAR_BATTLE_CAFE_POINTS), 3);
-    EXPECT(!CheckBagHasItem(ITEM_PROTEIN_EX, 1));
-    EXPECT(!CheckBagHasItem(ITEM_CALCIUM_EX, 1));
+    EXPECT(!CheckBagHasItem(ITEM_PROTEIN, 1));
+    EXPECT(!CheckBagHasItem(ITEM_CALCIUM, 1));
 }
 
 TEST("Battle Cafe no-innates preference applies only while a challenge is active")

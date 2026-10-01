@@ -1029,8 +1029,8 @@ script BattleCafe_ChooseVitaminSetAtk {
     if (var(VAR_BATTLE_CAFE_POINTS) < 4) {
         goto(BattleCafe_NotEnoughVitaminSetPoints)
     }
-    msgbox("Exchange 4 Café Points for two each of
-            Protein EX and Calcium EX?", MSGBOX_YESNO)
+    msgbox("Exchange 4 Café Points for five each
+            of Protein and Calcium?", MSGBOX_YESNO)
     if (var(VAR_RESULT) != YES) {
         goto(BattleCafe_RewardMenu)
     }
@@ -1044,7 +1044,7 @@ script BattleCafe_ChooseVitaminSetAtk {
     }
     playse(SE_SHOP)
     waitse
-    msgbox("Two Protein EX and two Calcium EX,
+    msgbox("Five Protein and five Calcium,
             power and wisdom!")
     goto(BattleCafe_RewardMenu)
 }
@@ -1053,8 +1053,8 @@ script BattleCafe_ChooseVitaminSetDef {
     if (var(VAR_BATTLE_CAFE_POINTS) < 4) {
         goto(BattleCafe_NotEnoughVitaminSetPoints)
     }
-    msgbox("Exchange 4 Café Points for two each of
-            Iron EX and Zinc EX?", MSGBOX_YESNO)
+    msgbox("Exchange 4 Café Points for five each
+            of Iron and Zinc?", MSGBOX_YESNO)
     if (var(VAR_RESULT) != YES) {
         goto(BattleCafe_RewardMenu)
     }
@@ -1068,7 +1068,7 @@ script BattleCafe_ChooseVitaminSetDef {
     }
     playse(SE_SHOP)
     waitse
-    msgbox("Two Iron EX and two Zinc EX,
+    msgbox("Five Iron and five Zinc,
             time to bulk up!")
     goto(BattleCafe_RewardMenu)
 }
@@ -1078,7 +1078,7 @@ script BattleCafe_ChooseVitaminSetSpe {
         goto(BattleCafe_NotEnoughVitaminSetPoints)
     }
     msgbox("Exchange 2 Café Points for
-            two Carbos EX?", MSGBOX_YESNO)
+            five Carbos?", MSGBOX_YESNO)
     if (var(VAR_RESULT) != YES) {
         goto(BattleCafe_RewardMenu)
     }
@@ -1092,7 +1092,7 @@ script BattleCafe_ChooseVitaminSetSpe {
     }
     playse(SE_SHOP)
     waitse
-    msgbox("Two Carbos EX, ready to speed up!")
+    msgbox("Five Carbos, ready to speed up!")
     goto(BattleCafe_RewardMenu)
 }
 

@@ -46,6 +46,7 @@ voltar) exe/nro com a ROM embutida. O build regenera sozinho tudo que é derivad
 | **Qualquer coisa do Berry Master** (horta da Route 30, Livro de Berries, O Rei da Colheita, dungeons dos corcéis) — ler antes | `.claude/berry_master/README.md` |
 | **Qualquer coisa do Nexus** (loop pós-Necrozma: times, sorteio, pool de lendários, prêmio) — ler antes, sempre | `.claude/rift_missions/nexus/NEXUS_REGRAS.md` |
 | Transformar esqueleto em história: falas, arco da cena, surpresa, feedback do autor | `evoluir-historia-de-evento` |
+| Aumentar/diagnosticar limites: NPCs ao mesmo tempo (16), sprites, paletas, VRAM, save, RAM, mudanças no mGBA para isso | `limites-do-engine` |
 | Forma alternativa ou item de forma: de onde vem, o que é provisório (DNA Splicers, loja de Kitakami…) | `.claude/evolucoes.md` |
 
 Todas cobrem armadilhas que **não dão erro de build** — compilam limpo e

@@ -931,6 +931,11 @@ TEST("CalculateMonStats")
         givemon SPECIES_WOBBUFFET, 100, item=ITEM_LEFTOVERS, ball=BALL_MASTER, nature=NATURE_BOLD, abilityNum=2, gender=MON_MALE, hpEv=1, atkEv=2, defEv=3, speedEv=4, spAtkEv=5, spDefEv=6, hpIv=7, atkIv=8, defIv=9, speedIv=10, spAtkIv=11, spDefIv=12, move1=MOVE_SCRATCH, move2=MOVE_SPLASH, move3=MOVE_CELEBRATE, move4=MOVE_EXPLOSION, shinyMode=SHINY_MODE_ALWAYS, gmaxFactor=TRUE, teraType=TYPE_FIRE;
     );
 
+    // Consider B_FRIENDSHIP_BOOST.
+    u32 friendship = 0;
+    SetMonData(&gPlayerParty[0], MON_DATA_FRIENDSHIP, &friendship);
+    CalculateMonStats(&gPlayerParty[0]);
+
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_MAX_HP), 497);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_ATK), 71);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_DEF), 143);
@@ -962,4 +967,26 @@ TEST("LoadPlayerParty derives cached level from experience")
     EXPECT_EQ(GetLevelFromMonExp(&gPlayerParty[0]), 85);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_MAX_HP), expectedMaxHP);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_HP), expectedMaxHP);
+}
+
+TEST("Ability Capsule rolls the hidden ability only when the hidden roll hits")
+{
+    SetupRiggedRng(__LINE__, RNG_ABILITY_CAPSULE_HIDDEN, TRUE);
+    EXPECT_EQ(RollAbilityCapsuleAbilityNum(SPECIES_APPLIN), NUM_NORMAL_ABILITY_SLOTS);
+}
+
+TEST("Ability Capsule otherwise draws a normal slot, which can be the current one")
+{
+    SetupRiggedRng(__LINE__, RNG_ABILITY_CAPSULE_HIDDEN, FALSE);
+    SetupRiggedRng(__LINE__, RNG_ABILITY_CAPSULE_SLOT, 0);
+    EXPECT_EQ(RollAbilityCapsuleAbilityNum(SPECIES_APPLIN), 0);
+    SetupRiggedRng(__LINE__, RNG_ABILITY_CAPSULE_SLOT, 1);
+    EXPECT_EQ(RollAbilityCapsuleAbilityNum(SPECIES_APPLIN), 1);
+}
+
+TEST("Ability Capsule refuses species that have a single ability")
+{
+    EXPECT(!CanAbilityCapsuleChangeAbility(SPECIES_MISDREAVUS, 0));
+    EXPECT(CanAbilityCapsuleChangeAbility(SPECIES_APPLIN, 0));
+    EXPECT(CanAbilityCapsuleChangeAbility(SPECIES_APPLIN, NUM_NORMAL_ABILITY_SLOTS));
 }

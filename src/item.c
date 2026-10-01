@@ -1019,6 +1019,8 @@ u32 GetItemSellPrice(enum Item itemId)
     if (itemId == ITEM_MASTER_BALL) {
         return GetItemPrice(itemId) / 10; 
     }
+    if (gItemsInfo[SanitizeItemId(itemId)].sortType == ITEM_TYPE_NATURE_MINT)
+        return MINT_SELL_PRICE;
     return GetItemPrice(itemId) / ITEM_SELL_FACTOR;
 }
 

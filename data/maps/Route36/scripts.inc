@@ -132,9 +132,6 @@ Route36_EventScript_Defeated_Sudowoodo::
 	setflag FLAG_HIDE_SUDOWOODO
 	removeobject LOCALID_ROUTE36_SUDOWOODO
 	removeobject LOCALID_ROUTE36_SUDOWOODO_HINT_LADY
-	setflag FLAG_TRAINER_LEVELSCALING
-	setflag FLAG_WILD_LEVELSCALING
-	setflag FLAG_LEVEL_SCALING_ON
 	checkitem ITEM_HM_ROCK_SMASH
 	call_if_eq VAR_RESULT, FALSE, Route36_EventScript_RockSmashGuySudoWoodo
 	release

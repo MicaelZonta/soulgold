@@ -458,7 +458,12 @@ GoldenrodCity_Text_MoveTutorNotEnoughCoins:
 	.string "…You don't have enough coins…$"
 
 Goldenrod_OnFrame:: 
-	map_script_2 VAR_RIVAL_STATE, 6, GoldenrodCity_RivalAfterWhitney
+	@ VAR_TEMP_1 (zerada a cada carga de mapa) e armada no OnTransition so
+	@ quando o rival esta aqui E a Whitney ja foi vencida. Condicionar direto
+	@ em VAR_RIVAL_STATE == 6 congelava a cidade para quem fazia o rival da
+	@ Route 34 antes do ginasio: a condicao valia todo frame e o script saia
+	@ sem muda-la (bug/B01, skill visibilidade-e-gatilhos secao 4).
+	map_script_2 VAR_TEMP_1, 1, GoldenrodCity_RivalAfterWhitney
 	.2byte 0
 
 Goldenrod_Daytime_ExpertM::
@@ -544,6 +549,7 @@ GoldenrodCity_OnTransition_1:
 
 GoldenrodCity_OnTransition_2:
 	clearflag FLAG_HIDE_GOLDENROD_RIVAL
+	setvar VAR_TEMP_1, 1
 	goto GoldenrodCity_OnTransition_1
 
 GoldenrodCity_OnTransition_3:
@@ -552,6 +558,7 @@ GoldenrodCity_OnTransition_3:
 
 
 GoldenrodCity_RivalAfterWhitney::
+	setvar VAR_TEMP_1, 2
 	compare VAR_RIVAL_STATE, 6
 	goto_if_eq GoldenrodCity_RivalAfterWhitney_3
 GoldenrodCity_RivalAfterWhitney_1:

@@ -21,10 +21,18 @@ IcePath_1F_EventScript_KimonoGirl::
 	goto_if_eq VAR_FACING, DIR_SOUTH, IcePath_1F_EventScript_KimonoGirlPushPrompt
 	msgbox IcePath_1F_Text_Stuck1, MSGBOX_DEFAULT
 	closemessage
+	@ Once she has asked for help, the corridor to Blackthorn at (49,29) is
+	@ guarded by IcePath_1F_Trigger_KimonoGirl (VAR_ICE_PATH_STATE == 1) until
+	@ she is pushed free (state 2). Decision of the author, 30/09/2026 (bug/B07).
+	call_if_eq VAR_ICE_PATH_STATE, 0, IcePath_1F_EventScript_KimonoGirlAskedForHelp
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	release
 	end
+
+IcePath_1F_EventScript_KimonoGirlAskedForHelp::
+	setvar VAR_ICE_PATH_STATE, 1
+	return
 
 IcePath_1F_Trigger_KimonoGirl::
 	lock

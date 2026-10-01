@@ -30,9 +30,8 @@ TRAINER_SCRIPT(sWadeScript, TRAINER_BATTLE_SINGLE, TRAINER_WADE);
 TRAINER_SCRIPT(sJoeyScript, TRAINER_BATTLE_CONTINUE_SCRIPT, TRAINER_JOEY);
 TRAINER_SCRIPT(sMikeyScript, TRAINER_BATTLE_DOUBLE, TRAINER_MIKEY);
 TRAINER_SCRIPT(sDonScript, TRAINER_BATTLE_SINGLE, TRAINER_DON);
-TRAINER_SCRIPT(sShelbyScript, TRAINER_BATTLE_CONTINUE_SCRIPT, TRAINER_SHELBY_1);
+TRAINER_SCRIPT(sShelbyScript, TRAINER_BATTLE_CONTINUE_SCRIPT, TRAINER_SHELBY_2);
 TRAINER_SCRIPT(sExpertScript, TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, TRAINER_ROUTE_31_EXPERT);
-TRAINER_SCRIPT(sTabithaScript, TRAINER_BATTLE_SINGLE, TRAINER_TABITHA_MT_CHIMNEY);
 TRAINER_SCRIPT(sNoTrainerIdScript, TRAINER_BATTLE_SINGLE, TRAINER_NONE);
 
 static const u8 sTrainerBattleAfterAnotherCommand[] =
@@ -261,20 +260,17 @@ TEST("Vs Seeker eligibility excludes special and unsafe script shapes")
         { .trainerType = TRAINER_TYPE_NONE, .script = sWadeScript },
         { .trainerType = TRAINER_TYPE_NORMAL, .script = sNoTrainerIdScript },
         { .trainerType = TRAINER_TYPE_NORMAL, .script = sExpertScript },
-        { .trainerType = TRAINER_TYPE_NORMAL, .script = sTabithaScript },
         { .trainerType = TRAINER_TYPE_NORMAL, .script = sTrainerBattleAfterAnotherCommand },
     };
 
     SetTrainerFlag(TRAINER_WADE);
     SetTrainerFlag(TRAINER_ROUTE_31_EXPERT);
-    SetTrainerFlag(TRAINER_TABITHA_MT_CHIMNEY);
     SetTrainerFlag(TRAINER_DON);
     SetVsSeekerChargeSteps(VSSEEKER_RECHARGE_STEPS);
 
     EXPECT_EQ(VsSeekerTryActivate(objects, ARRAY_COUNT(objects), MAP_TYPE_ROUTE), 0);
     EXPECT(HasTrainerBeenFought(TRAINER_WADE));
     EXPECT(HasTrainerBeenFought(TRAINER_ROUTE_31_EXPERT));
-    EXPECT(HasTrainerBeenFought(TRAINER_TABITHA_MT_CHIMNEY));
     EXPECT(HasTrainerBeenFought(TRAINER_DON));
     EXPECT_EQ(GetVsSeekerChargeSteps(), VSSEEKER_RECHARGE_STEPS);
 }
@@ -341,13 +337,13 @@ TEST("Vs Seeker clears only the original Trainer ID")
         .script = sShelbyScript,
     };
 
-    SetTrainerFlag(TRAINER_SHELBY_1);
     SetTrainerFlag(TRAINER_SHELBY_2);
+    SetTrainerFlag(TRAINER_SHELBY_3);
     SetVsSeekerChargeSteps(VSSEEKER_RECHARGE_STEPS);
 
     EXPECT_EQ(VsSeekerTryActivate(&object, 1, MAP_TYPE_ROUTE), 1);
-    EXPECT(!HasTrainerBeenFought(TRAINER_SHELBY_1));
-    EXPECT(HasTrainerBeenFought(TRAINER_SHELBY_2));
+    EXPECT(!HasTrainerBeenFought(TRAINER_SHELBY_2));
+    EXPECT(HasTrainerBeenFought(TRAINER_SHELBY_3));
 }
 
 TEST("Vs Seeker establishes all five expert qualifications")

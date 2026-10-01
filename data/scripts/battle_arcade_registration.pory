@@ -151,6 +151,7 @@ script BattleArcade_Registration_EventScript_NotEnoughValidMons
 	}
 	msgbox(format("Eggs{STR_VAR_1} are not allowed to enter."), MSGBOX_DEFAULT)
 	closemessage
+	release
 	end
 }
 

@@ -551,6 +551,8 @@ static void ItemUse_ApplyReverseCandy(u8 taskId);
 
 static const u8 sText_askText[] = _("Would you like to change {STR_VAR_1}'s\nability to {STR_VAR_2}?");
 static const u8 sText_doneText[] = _("{STR_VAR_1}'s ability became\n{STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
+static const u8 sText_AbilityCapsuleAsk[] = _("Use the Ability Capsule on {STR_VAR_1}?\nIts ability will change at random.");
+static const u8 sText_AbilityCapsuleSame[] = _("{STR_VAR_1}'s ability stayed\n{STR_VAR_2}…{PAUSE_UNTIL_PRESS}");
 static const u8 sText_ChangePokeballAsk[] = _("Use the {STR_VAR_2} to change\n{STR_VAR_1}'s Ball?");
 static const u8 sText_ChangePokeballDone[] = _("{STR_VAR_1}'s Ball was changed\nto the {STR_VAR_2}.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_PokeballAlreadyMatches[] = _("That Pokémon is already in\nthat kind of Ball.{PAUSE_UNTIL_PRESS}");
@@ -5354,10 +5356,7 @@ void Task_AbilityCapsule(u8 taskId)
     {
     case 0:
         // Can't use.
-        if (GetSpeciesAbility(tSpecies, 0) == GetSpeciesAbility(tSpecies, 1)
-            || GetSpeciesAbility(tSpecies, 1) == 0
-            || tAbilityNum > 1
-            || !tSpecies)
+        if (!tSpecies || !CanAbilityCapsuleChangeAbility(tSpecies, tAbilityNum))
         {
             gPartyMenuUseExitCallback = FALSE;
             PlaySE(SE_SELECT);
@@ -5368,8 +5367,7 @@ void Task_AbilityCapsule(u8 taskId)
         }
         gPartyMenuUseExitCallback = TRUE;
         GetMonNickname(&gPlayerParty[tMonId], gStringVar1);
-        StringCopy(gStringVar2, gAbilitiesInfo[GetAbilityBySpecies(tSpecies, tAbilityNum)].name);
-        StringExpandPlaceholders(gStringVar4, sText_askText);
+        StringExpandPlaceholders(gStringVar4, sText_AbilityCapsuleAsk);
         PlaySE(SE_SELECT);
         DisplayPartyMenuMessage(gStringVar4, 1);
         ScheduleBgCopyTilemapToVram(2);
@@ -5402,12 +5400,21 @@ void Task_AbilityCapsule(u8 taskId)
         }
         break;
     case 3:
+    {
+        enum Ability oldAbility = GetAbilityBySpecies(tSpecies, tAbilityNum);
+
+        tAbilityNum = RollAbilityCapsuleAbilityNum(tSpecies);
+        StringCopy(gStringVar2, gAbilitiesInfo[GetAbilityBySpecies(tSpecies, tAbilityNum)].name);
         PlaySE(SE_USE_ITEM);
-        StringExpandPlaceholders(gStringVar4, sText_doneText);
+        if (GetAbilityBySpecies(tSpecies, tAbilityNum) == oldAbility)
+            StringExpandPlaceholders(gStringVar4, sText_AbilityCapsuleSame);
+        else
+            StringExpandPlaceholders(gStringVar4, sText_doneText);
         DisplayPartyMenuMessage(gStringVar4, 1);
         ScheduleBgCopyTilemapToVram(2);
         tState++;
         break;
+    }
     case 4:
         if (!IsPartyMenuTextPrinterActive())
             tState++;
@@ -5427,7 +5434,7 @@ void ItemUseCB_AbilityCapsule(u8 taskId, TaskFunc task)
     tState = 0;
     tMonId = gPartyMenu.slotId;
     tSpecies = GetMonData(&gPlayerParty[tMonId], MON_DATA_SPECIES);
-    tAbilityNum = GetMonData(&gPlayerParty[tMonId], MON_DATA_ABILITY_NUM) ^ 1;
+    tAbilityNum = GetMonData(&gPlayerParty[tMonId], MON_DATA_ABILITY_NUM);
     SetWordTaskArg(taskId, tOldFunc, (uintptr_t)(gTasks[taskId].func));
     gTasks[taskId].func = Task_AbilityCapsule;
 }

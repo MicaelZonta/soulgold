@@ -113,7 +113,8 @@ def scan(root, names):
         parts = f.split('/')
         is_map = f.startswith("data/maps/") and len(parts) > 2
         mapname = parts[2] if is_map else None
-        scriptlike = f.endswith(('.inc', '.pory'))
+        # .s: data/event_scripts.s tambem e script (ex.: setflag FLAG_PETALBURG_MART_EXPANDED_ITEMS)
+        scriptlike = f.endswith(('.inc', '.pory', '.s'))
         for line in txt.splitlines():
             if 'FLAG_' not in line:
                 continue

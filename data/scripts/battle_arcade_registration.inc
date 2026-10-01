@@ -178,6 +178,7 @@ BattleArcade_Registration_EventScript_NotEnoughValidMons::
 BattleArcade_Registration_EventScript_NotEnoughValidMons_1:
 	msgbox BattleArcade_Registration_EventScript_NotEnoughValidMons_Text_2, MSGBOX_DEFAULT
 	closemessage
+	release
 	end
 
 BattleArcade_Registration_EventScript_NotEnoughValidMons_2:

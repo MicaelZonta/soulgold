@@ -200,12 +200,10 @@ Route41_EventScript_TentacruelAttack1::
 	msgbox Route41_Text_TentacruelAttack, MSGBOX_DEFAULT
 	waitmessage
 	setflag B_FLAG_NO_CATCHING
-	setflag FLAG_GARBAGEFLAG
 	setwildbattle SPECIES_TENTACRUEL, 100, ITEM_NONE
 	dowildbattle
 	closemessage
 	clearflag B_FLAG_NO_CATCHING
-	clearflag FLAG_GARBAGEFLAG
 	playse SE_USE_ITEM
 	msgbox Route41_Text_TentacruelHeal, MSGBOX_DEFAULT
 	setvar VAR_TEMP_0, 0

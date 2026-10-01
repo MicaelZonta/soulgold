@@ -8,15 +8,22 @@ MtMoon_Cave_MapScripts::
 
 MtMoon_Cave_OnTransition: 
 	callnative SetTimeBasedEncounters
+	goto_if_set FLAG_HIDE_MTMOON_SILVER, MtMoon_Cave_OnTransition_End
+	setvar VAR_TEMP_1, 1
+MtMoon_Cave_OnTransition_End:
 	end
 
 
+@ Armed by OnTransition while Silver is still here (FLAG_HIDE_MTMOON_SILVER
+@ unset; the scene sets it at the end). It used to read VAR_GARBAGEVAR == 0/1,
+@ the project's scrap var: any script resetting it would replay the scene with
+@ Silver already gone (bug/B07). VAR_TEMP_1 is cleared on every map load.
 MtMoon_Cave_MapScript_OnFrame::
-	map_script_2 VAR_GARBAGEVAR, 0, MtMoon_Cave_EventScript_Silver
-	map_script_2 VAR_GARBAGEVAR, 1, MtMoon_Cave_EventScript_Silver
+	map_script_2 VAR_TEMP_1, 1, MtMoon_Cave_EventScript_Silver
 	.2byte 0
 
 MtMoon_Cave_EventScript_Silver::
+	setvar VAR_TEMP_1, 2
 	lock
 	playbgm MUS_HG_ENCOUNTER_RIVAL, TRUE
 	playse SE_PIN
@@ -55,7 +62,6 @@ MtMoon_Cave_EventScript_SilverAfterBattle::
 	removeobject LOCALID_MTMOON_SILVER
 	setflag FLAG_HIDE_MTMOON_SILVER
 	clearflag FLAG_HIDE_INDIGO_PLATEAU_SILVER
-	setvar VAR_GARBAGEVAR, 2
 		fadedefaultbgm
 	release
 	end

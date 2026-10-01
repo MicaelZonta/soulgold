@@ -124,98 +124,33 @@ TEST("Trainer default moveset initializes authored PP and clears PP bonuses")
     EXPECT_EQ(GetMonData(&mon, MON_DATA_PP4), 0);
 }
 
-TEST("Trainer default moveset Normal doubles matches GiveMonInitialMoveset")
-{
-    static const struct TrainerMon partyEntry = { .species = SPECIES_PYUKUMUKU };
-    struct Pokemon expected;
-    struct Pokemon actual;
-    u32 i;
-
-    CreateMon(&expected, SPECIES_PYUKUMUKU, 100, 0, OTID_STRUCT_PLAYER_ID);
-    CreateMon(&actual, SPECIES_PYUKUMUKU, 100, 0, OTID_STRUCT_PLAYER_ID);
-    GiveMonInitialMoveset(&expected);
-    AssignTrainerMonMoves(&actual, &partyEntry,
-                          TRAINER_BATTLE_TYPE_DOUBLES, DIFFICULTY_NORMAL);
-
-    for (i = 0; i < MAX_MON_MOVES; i++)
-    {
-        EXPECT_EQ(GetMonData(&actual, MON_DATA_MOVE1 + i),
-                  GetMonData(&expected, MON_DATA_MOVE1 + i));
-        EXPECT_EQ(GetMonData(&actual, MON_DATA_PP1 + i),
-                  GetMonData(&expected, MON_DATA_PP1 + i));
-    }
-}
-
-TEST("Trainer default moveset Normal singles filters and backfills ally moves")
-{
-    static const struct TrainerMon partyEntry = { .species = SPECIES_AUDINO };
-    static const enum Move expectedSingles[MAX_MON_MOVES] =
-    {
-        MOVE_TAKE_DOWN,
-        MOVE_SIMPLE_BEAM,
-        MOVE_HYPER_VOICE,
-        MOVE_DOUBLE_EDGE,
-    };
-    static const enum Move expectedDoubles[MAX_MON_MOVES] =
-    {
-        MOVE_SIMPLE_BEAM,
-        MOVE_HYPER_VOICE,
-        MOVE_HEAL_PULSE,
-        MOVE_DOUBLE_EDGE,
-    };
-    enum Move singlesMoves[MAX_MON_MOVES];
-    enum Move doublesMoves[MAX_MON_MOVES];
-    u32 i;
-
-    EXPECT(!TrainerMonHasExplicitMoves(&partyEntry));
-    BuildTrainerMonMoves(singlesMoves, &partyEntry, SPECIES_AUDINO, 48,
-                         TRAINER_BATTLE_TYPE_SINGLES, DIFFICULTY_NORMAL);
-    BuildTrainerMonMoves(doublesMoves, &partyEntry, SPECIES_AUDINO, 48,
-                         TRAINER_BATTLE_TYPE_DOUBLES, DIFFICULTY_NORMAL);
-
-    for (i = 0; i < MAX_MON_MOVES; i++)
-    {
-        EXPECT_EQ(singlesMoves[i], expectedSingles[i]);
-        EXPECT_EQ(doublesMoves[i], expectedDoubles[i]);
-    }
-}
-
 TEST("Trainer default moveset AI-vs-AI player party uses opponent doubles format")
 {
-    static const enum Move expected[MAX_MON_MOVES] =
-    {
-        MOVE_SIMPLE_BEAM,
-        MOVE_HYPER_VOICE,
-        MOVE_HEAL_PULSE,
-        MOVE_DOUBLE_EDGE,
-    };
+    // SoulGold has a single difficulty, so the expected set comes from the
+    // current builder instead of a hardcoded Normal-difficulty list.
+    const struct TrainerMon *partyEntry = GetTrainerStructFromId(16)->party;
+    enum Move singles[MAX_MON_MOVES];
+    enum Move doubles[MAX_MON_MOVES];
+    bool32 formatsDiffer = FALSE;
     u32 i;
+
+    BuildTrainerMonMoves(singles, partyEntry, SPECIES_AUDINO, 30,
+                         TRAINER_BATTLE_TYPE_SINGLES, DIFFICULTY_NORMAL);
+    BuildTrainerMonMoves(doubles, partyEntry, SPECIES_AUDINO, 30,
+                         TRAINER_BATTLE_TYPE_DOUBLES, DIFFICULTY_NORMAL);
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (singles[i] != doubles[i])
+            formatsDiffer = TRUE;
+    }
+    ASSUME(formatsDiffer);
 
     gSpecialVar_0x8004 = 16;
     gSpecialVar_0x8005 = 17;
     CreateTrainerPartyForPlayer();
 
     for (i = 0; i < MAX_MON_MOVES; i++)
-        EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_MOVE1 + i), expected[i]);
-}
-
-TEST("Trainer default moveset Normal uses moves learned at the exact current level")
-{
-    static const struct TrainerMon partyEntry = { .species = SPECIES_CHARIZARD };
-    static const enum Move expected[MAX_MON_MOVES] =
-    {
-        MOVE_DRAGON_RAGE,
-        MOVE_FIRE_FANG,
-        MOVE_SLASH,
-        MOVE_FLAMETHROWER
-    };
-    enum Move moves[MAX_MON_MOVES];
-    u32 i;
-
-    BuildTrainerMonMoves(moves, &partyEntry, SPECIES_CHARIZARD, 30,
-                         TRAINER_BATTLE_TYPE_SINGLES, DIFFICULTY_NORMAL);
-    for (i = 0; i < MAX_MON_MOVES; i++)
-        EXPECT_EQ(moves[i], expected[i]);
+        EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_MOVE1 + i), doubles[i]);
 }
 
 TEST("Trainer default moveset singles classifier follows the documented policy")

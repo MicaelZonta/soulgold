@@ -1070,12 +1070,12 @@ enum __attribute__((packed)) Item
     ITEM_MEOWSCARADITE = 890,
 
     // Super vitamins
-    ITEM_HP_UP_EX = 891,
-    ITEM_PROTEIN_EX = 892,
-    ITEM_IRON_EX = 893,
-    ITEM_CALCIUM_EX = 894,
-    ITEM_ZINC_EX = 895,
-    ITEM_CARBOS_EX = 896,
+    ITEM_UNUSED_891 = 891, // Formerly ITEM_HP_UP_EX (maxed one stat's EVs); removed so EV training takes effort
+    ITEM_UNUSED_892 = 892, // Formerly ITEM_PROTEIN_EX (maxed one stat's EVs); removed so EV training takes effort
+    ITEM_UNUSED_893 = 893, // Formerly ITEM_IRON_EX (maxed one stat's EVs); removed so EV training takes effort
+    ITEM_UNUSED_894 = 894, // Formerly ITEM_CALCIUM_EX (maxed one stat's EVs); removed so EV training takes effort
+    ITEM_UNUSED_895 = 895, // Formerly ITEM_ZINC_EX (maxed one stat's EVs); removed so EV training takes effort
+    ITEM_UNUSED_896 = 896, // Formerly ITEM_CARBOS_EX (maxed one stat's EVs); removed so EV training takes effort
     ITEM_GRIMY_HERB = 897,
     ITEM_GOOPY_HERB = 898,
     ITEM_JADE_ORB = 899,

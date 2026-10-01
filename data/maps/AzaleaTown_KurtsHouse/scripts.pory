@@ -113,19 +113,26 @@ AzaleaTown_KurtsHouse_EventScript_ReturnFromWellSetup::
 	setobjectmovementtype LOCALID_AZALEA_TOWN_KURT, MOVEMENT_TYPE_FACE_DOWN
 	end
 
+@ VAR_AZALEA_TOWN_STATE moves to 4 BEFORE the Fast Ball: it is the ON_FRAME
+@ condition, and a full Ball pocket used to end the script with the state still
+@ 3, replaying this scene every frame forever (bug/B03). With a full pocket the
+@ Fast Ball is skipped and today's free draw stays open instead.
 AzaleaTown_KurtsHouse_EventScript_ReturnFromWell::
 	lock
+	setvar VAR_AZALEA_TOWN_STATE, 4
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	msgbox KurtsHouse_Text_KurtHonoredToMakeBalls, MSGBOX_DEFAULT
 	giveitem ITEM_FAST_BALL
-	setflag FLAG_DAILY_KURT_FREE_BALLS
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	call_if_eq VAR_RESULT, TRUE, AzaleaTown_KurtsHouse_EventScript_TookTodaysBalls
 	call KurtMakesBallsDaily
 	closemessage
 	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-	setvar VAR_AZALEA_TOWN_STATE, 4
 	release
 	end
+
+AzaleaTown_KurtsHouse_EventScript_TookTodaysBalls::
+	setflag FLAG_DAILY_KURT_FREE_BALLS
+	return
 
 AzaleaTown_KurtsHouse_EventScript_KurtCheckGSBall::
 	checkitem ITEM_GS_BALL

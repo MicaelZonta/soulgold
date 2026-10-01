@@ -245,9 +245,12 @@ Route14_EventScript_Pidgeotto::
 	goto_if_set FLAG_GOT_ROUTE_14_AERIAL_ACE, Route14_EventScript_PidgeottoBlowPlayer
 	msgbox Route14_Text_PidgeottoBerry, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, Route14_EventScript_PidgeottoBlowPlayer
-	@chooseitem BERRIES_POCKET
-	removeitem VAR_ITEM_ID, 1
+	@ Same defect as the Ice Path Swinub/Delibird (bug/B08): the Berry pocket was
+	@ never opened and removeitem took whatever VAR_ITEM_ID last held.
+	chooseitem POCKET_BERRIES
+	goto_if_eq VAR_ITEM_ID, ITEM_NONE, Route14_EventScript_PidgeottoBlowPlayer
 	goto_if_ne VAR_ITEM_ID, ITEM_QUALOT_BERRY, Route14_EventScript_PidgeottoDislikedBerry
+	removeitem VAR_ITEM_ID, 1
 	msgbox Route14_Text_PidgeottoAteBerry, MSGBOX_DEFAULT
 	setflag FLAG_GOT_ROUTE_14_AERIAL_ACE
 Route14_EventScript_PidgeottoBlowPlayer::

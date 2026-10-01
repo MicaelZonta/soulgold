@@ -4,7 +4,7 @@ Route5_House_MapScripts::
 Route5_House_EventScript_Granny::
 	goto_if_set FLAG_GOT_CLEANSE_TAG, Route5_House_EventScript_GrannyAfter
 	msgbox Route5_House_Text_Granny1, MSGBOX_NPC
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_GOT_CLEANSE_TAG
 	release
 	end

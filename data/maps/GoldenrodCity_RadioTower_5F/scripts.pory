@@ -51,6 +51,7 @@ GoldenrodCity_RadioTower_5F_EventScript_Petrel::
 	end
 
 GoldenrodCity_RadioTower_5F_EventScript_PetrelNorth::
+	release
 	end
 
 GoldenrodCity_RadioTower_5F_EventScript_Petrel2::

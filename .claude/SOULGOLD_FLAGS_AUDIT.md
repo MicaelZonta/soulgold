@@ -417,6 +417,37 @@ merecem olhada de verdade.
 
 ---
 
+### 7.8 Revisão de 30/09/2026 (bug/B08) — o que foi resolvido
+
+- **7.3 / 7.4 RESOLVIDO.** `FLAG_EXP_SHARE`, `FLAG_LEVEL_SCALING_ON`,
+  `FLAG_TRAINER_LEVELSCALING`, `FLAG_WILD_LEVELSCALING`: escritas apagadas
+  (lab do Elm, Route 36) e defines renomeados para `FLAG_UNUSED_0x4A6`,
+  `0x29F`, `0xA22`, `0xA23`. O scaling e a EXP Share vivem no menu de opções.
+- **7.5 RESOLVIDO.** `FLAG_HIDE_ILEX_FOREST_KURT` agora é a flag do objeto do
+  Kurt no Ilex (usava `FLAG_HIDE_CELEBI` e aparecia junto com o Celebi).
+  `FLAG_HIDE_OLIVINE_PORT_OAK` virou `FLAG_UNUSED_0x350` (o Oak saiu do porto no
+  upstream). `FLAG_HIDE_ROUTE22_JANINE` voltou a ter objeto: a Janine foi
+  recolocada no ReceptionGate em (11,6), como antes de `666d92bda2`; sem ela a
+  revanche no Dojo VIP era impossível.
+- **Achado novo:** as flags de esconder do Ilex (Celebi, Kurt, mestre, aprendiz,
+  Farfetch'd 1–4) só eram setadas pelo gatilho de chegada em Azalea; vindo da
+  Route 34 eles apareciam na tela. `IlexForest_OnTransition` agora as seta
+  enquanto `FLAG_VISITED_AZALEA_TOWN` estiver limpa.
+- **7.6 RESOLVIDO.** `FLAG_SYS_LAKE_OF_RAGE_TIDE` → o lago lê
+  `FLAG_SYS_SHOAL_TIDE` (a que `UpdateShoalTideFlag` escreve); a antiga virou
+  `FLAG_UNUSED_0xA1C`. `FLAG_DAILY_BUG_CONTEST_COMPLETED` → o portão do National
+  Park lê `FLAG_DAILY_BUG_DONE`; a antiga virou `FLAG_UNUSED_0x150B`.
+  `FLAG_PETALBURG_MART_EXPANDED_ITEMS` era escrita em `data/event_scripts.s`:
+  defeito do `flag_audit.py`, que não contava `.s` como script (corrigido).
+  `FLAG_NO_WT_BECAUSE_CHALLENGE` e `FLAG_DEFEATED_SS_TIDAL_TRAINERS` só
+  existem em scripts de mapas fora da ROM: ganharam comentário no `flags.h`.
+- **7.7 ALARME FALSO** para `FLAG_HIDE_ROUTE34_RIVAL` e
+  `FLAG_HIDE_SPROUT_BASEMENT_ITEM`: quem seta é a engine, via `removeobject`
+  (rival) e `finditem` do item ball (`RemoveObjectEventByLocalIdAndMap`).
+- Efeito colateral da correção do `.s` (RESOLVIDO no mesmo dia: os `clearflag` saíram de `EverGrandeCity_HallOfFame_EventScript_ResetEliteFour` e as 4 viraram `FLAG_UNUSED_0x4FB..0x4FE`): `FLAG_DEFEATED_ELITE_4_WILL/KOGA/
+  BRUNO/KAREN` aparecem como `SO_ESCRITA` — só levam `clearflag` em
+  `event_scripts.s` e ninguém lê. Resto inofensivo.
+
 ## 8. Armadilhas estruturais (não são bugs, mas mordem)
 
 ### 8.1 `FLAG_UNUSED_165` e companhia **não** são livres

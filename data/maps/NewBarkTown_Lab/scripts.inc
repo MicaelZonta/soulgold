@@ -144,6 +144,7 @@ NewBarkTown_Lab_EventScript_ElmAfterGladion::
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 3, CopNewBarkTown_Lab_EventScript_ElmState2
 	goto_if_set FLAG_SYS_POKEMON_GET, NewBarkTown_Lab_EventScript_MrPokemon
 	goto_if_eq VAR_NEWBARKTOWN_LABSTATE, 1, NewBarkTown_Lab_EventScript_ElmChoosePokemon
+	release
 	end
 
 NewBarkTown_Lab_EventScript_ElmGladionIsWaiting::
@@ -230,6 +231,7 @@ NewBarkTown_Lab_EventScript_TriggerReturnPlayer::
 NewBarkTown_Lab_EventScript_ShouldntTouch::
 	msgbox NewBarkTown_Lab_Text_ShouldntTouch, MSGBOX_DEFAULT
 	closemessage
+	release
 	end
 
 NewBarkTown_Lab_EventScript_hideStarterCase::
@@ -446,8 +448,8 @@ NewBarkTown_Lab_EventScript_PoliceYes3::
 	setflag FLAG_HIDE_MOMS_FRIEND
 	clearflag FLAG_HIDE_MOMS_FRIEND2
 	setflag FLAG_ADVENTURE_STARTED
-	setflag FLAG_EXP_SHARE
 	removeitem ITEM_MYSTERY_EGG
+	release
 	end
 
 NewBarkTown_Lab_EventScript_PoliceYes2::
@@ -479,8 +481,8 @@ NewBarkTown_Lab_EventScript_PoliceYes2::
 	setflag FLAG_HIDE_MOMS_FRIEND
 	clearflag FLAG_HIDE_MOMS_FRIEND2
 	setflag FLAG_ADVENTURE_STARTED
-	setflag FLAG_EXP_SHARE
 	removeitem ITEM_MYSTERY_EGG
+	release
 	end
 
 NewBarkTown_Lab_EventScript_ElmState5::
@@ -553,7 +555,6 @@ NewBarkTown_Lab_EventScript_ElmSSTicket::
 	closemessage
 	clearflag FLAG_HIDE_SSAQUA_1F_GRANDPA
 	setvar VAR_NEWBARKTOWN_LABSTATE, 11
-	clearflag FLAG_HIDE_OLIVINE_PORT_OAK
 	release
 	end
 

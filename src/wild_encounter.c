@@ -131,6 +131,17 @@ static const struct RockSmashItem sRockSmashItems_RuinsOfAlph[] =
     {ITEM_SAIL_FOSSIL,  10},
     {ITEM_OLD_AMBER,    10},
     {ITEM_COVER_FOSSIL, 10},
+    // Every fossil in the game comes from here for now (author, 30/09/2026),
+    // even the ones with another source. All of them are revived at the
+    // RuinsOfAlph_Lab; the four Galar halves are combined in pairs there.
+    {ITEM_HELIX_FOSSIL,      10},
+    {ITEM_CLAW_FOSSIL,       10},
+    {ITEM_ARMOR_FOSSIL,      10},
+    {ITEM_SKULL_FOSSIL,      10},
+    {ITEM_FOSSILIZED_BIRD,   10},
+    {ITEM_FOSSILIZED_FISH,   10},
+    {ITEM_FOSSILIZED_DRAKE,  10},
+    {ITEM_FOSSILIZED_DINO,   10},
 };
 
 static const struct RockSmashItemTable sRockSmashItemTables[] =

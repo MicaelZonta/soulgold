@@ -87,30 +87,6 @@ Difficulty: Normal
 Mewtwo
 Level: 50
 
-=== 5 ===
-Name: Test2
-Class: Pkmn Trainer 1
-Pic: Red
-Gender: Male
-Music: Male
-Battle Type: Singles
-Difficulty: Easy
-
-Metapod
-Level: 1
-
-=== 5 ===
-Name: Test2
-Class: Pkmn Trainer 1
-Pic: Red
-Gender: Male
-Music: Male
-Battle Type: Singles
-Difficulty: Hard
-
-Arceus
-Level: 99
-
 === 6 ===
 Name: Test3
 Class: Pkmn Trainer 1
@@ -315,7 +291,7 @@ Music: Male
 Battle Type: Singles
 
 Audino
-Level: 48
+Level: 30
 
 === 17 ===
 Name: AI Foe

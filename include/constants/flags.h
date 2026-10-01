@@ -76,7 +76,7 @@
 #define FLAG_SNOWTOP_ABILITY_PATCH              0x2A
 #define FLAG_SYS_SET_BATTLE_BGM                 0x2B // Changes BGM - fora da ROM
 #define FLAG_WONDERTRADE_FIRSTIME               0x2C  // livre desde 24/09/2026
-#define FLAG_NO_WT_BECAUSE_CHALLENGE            0x2D 
+#define FLAG_NO_WT_BECAUSE_CHALLENGE            0x2D // So em BattleFrontier_ExchangeServiceCorner (mapa fora da ROM, script montado): sem efeito no jogo
 #define FLAG_CIANWOOD_GOLDEN_BOTTLECAP          0x2E
 #define FLAG_DOME_FOSSIL_ALTERING_CAVE          0x2F  // fora da ROM
 #define FLAG_GOT_REDORB                         0x30 
@@ -290,7 +290,7 @@
 #define FLAG_FLOOR4_URN1LOOT                 0xF4
 #define FLAG_HIDE_PYRAMIDOUT_SCIENTIST       0xF5
 #define FLAG_RECEIVED_CHESTO_BERRY_ROUTE_104 0xF6  // fora da ROM
-#define FLAG_DEFEATED_SS_TIDAL_TRAINERS      0xF7
+#define FLAG_DEFEATED_SS_TIDAL_TRAINERS      0xF7 // So em SSTidalCorridor (mapa fora da ROM, script montado): sem efeito no jogo
 #define FLAG_RECEIVED_SPELON_BERRY           0xF8  // fora da ROM
 #define FLAG_RECEIVED_PAMTRE_BERRY           0xF9  // fora da ROM
 #define FLAG_RECEIVED_WATMEL_BERRY           0xFA  // fora da ROM
@@ -744,7 +744,7 @@
 #define FLAG_ALLOW_SOUTH_JOHTO_PASS  0x29C
 #define FLAG_SYS_BUG_CONTEST_MODE  0x29D
 #define FLAG_AERODACTYLITE      0x29E
-#define FLAG_LEVEL_SCALING_ON  0x29F
+#define FLAG_UNUSED_0x29F  0x29F // Unused Flag. Era FLAG_LEVEL_SCALING_ON; livre desde 30/09/2026 (level scaling foi para o menu de opcoes, upstream fa819be537)
 #define FLAG_NAMED_SILVER  0x2A0 // Unused Flag
 #define FLAG_SLOWPOKE_TRADE    0x2A1
 #define FLAG_ROUTE31_EXPERT  0x2A2 // Flag for defeating Route 31 expert
@@ -925,7 +925,7 @@
 #define FLAG_HIDE_RAYQUAZA                                          0x34D
 #define FLAG_HIDE_SEAFOAM_BLAINE                                    0x34E
 #define FLAG_HIDE_ILEX_FOREST_SECOND_CELEBI                         0x34F
-#define FLAG_HIDE_OLIVINE_PORT_OAK                                  0x350
+#define FLAG_UNUSED_0x350                                          0x350 // Unused Flag. Era FLAG_HIDE_OLIVINE_PORT_OAK; livre desde 30/09/2026 (Oak saiu do porto, upstream 96eb05b4c8)
 #define FLAG_HIDE_ROUTE22_GIOVANNI_SILVER                           0x351
 #define FLAG_POSTGAME_FEATURES                                      0x352
 #define FLAG_GOT_KUBFU                                              0x353
@@ -1273,7 +1273,7 @@
 #define FLAG_ITEM_VIOLET_CITY_PECHA_BERRY                           0x4A3 
 #define FLAG_ITEM_VIOLET_CITY_RARE_CANDY                            0x4A4 
 #define FLAG_ITEM_VIOLET_CITY_HYPER_POTION                          0x4A5 
-#define FLAG_EXP_SHARE                                              0x4A6 //EXP SHARE
+#define FLAG_UNUSED_0x4A6                                                 0x4A6 // Unused Flag. Era FLAG_EXP_SHARE; livre desde 30/09/2026 (a EXP Share usa FLAG_EXP_SHARE_OPTION)
 #define FLAG_ITEM_SPROUT_TOWER_PARALYZE_HEAL                        0x4A7 
 #define FLAG_ITEM_SPROUT_TOWER_X_DEFEND                             0x4A8 
 #define FLAG_ITEM_SPROUT_TOWER_POTION                               0x4A9 
@@ -1361,10 +1361,10 @@
 #define FLAG_NO_SHINY                                           0x4F9  // livre desde 24/09/2026
 #define FLAG_UNUSED_4FA                                                0x4FA // Reserved legacy difficulty flag; do not reuse in existing saves.
 
-#define FLAG_DEFEATED_ELITE_4_WILL                                  0x4FB
-#define FLAG_DEFEATED_ELITE_4_KOGA                                  0x4FC
-#define FLAG_DEFEATED_ELITE_4_BRUNO                                 0x4FD
-#define FLAG_DEFEATED_ELITE_4_KAREN                                 0x4FE
+#define FLAG_UNUSED_0x4FB                                           0x4FB // Unused Flag. Era FLAG_DEFEATED_ELITE_4_WILL (so levava clearflag); livre desde 30/09/2026
+#define FLAG_UNUSED_0x4FC                                           0x4FC // Unused Flag. Era FLAG_DEFEATED_ELITE_4_KOGA (so levava clearflag); livre desde 30/09/2026
+#define FLAG_UNUSED_0x4FD                                           0x4FD // Unused Flag. Era FLAG_DEFEATED_ELITE_4_BRUNO (so levava clearflag); livre desde 30/09/2026
+#define FLAG_UNUSED_0x4FE                                           0x4FE // Unused Flag. Era FLAG_DEFEATED_ELITE_4_KAREN (so levava clearflag); livre desde 30/09/2026
 
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER                                           0x4FF // Unused Flag
 
@@ -1548,14 +1548,14 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x8D) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x8E)
 #define FLAG_SYS_PC_BILL                           (SYSTEM_FLAGS + 0x8F) // Unused Flag
-#define FLAG_SYS_LAKE_OF_RAGE_TIDE                  (SYSTEM_FLAGS + 0x90) // Unused Flag
+#define FLAG_UNUSED_0xA1C                           (SYSTEM_FLAGS + 0x90) // Unused Flag. Era FLAG_SYS_LAKE_OF_RAGE_TIDE (nada setava); o lago le FLAG_SYS_SHOAL_TIDE desde 30/09/2026
 #define FLAG_RECEIVED_BADGE_5                       (SYSTEM_FLAGS + 0x91)
 #define FLAG_RECEIVED_BADGE_6                       (SYSTEM_FLAGS + 0x92)
 #define FLAG_RECEIVED_BADGE_7                       (SYSTEM_FLAGS + 0x93)
 #define FLAG_GOLDEN_COLOSSEUM                       (SYSTEM_FLAGS + 0x94) // Permission to enter goldenrod underground colosseum - livre desde 24/09/2026
 #define FLAG_NEVER_TURNED_OFF_HARD                  (SYSTEM_FLAGS + 0x95) // If player never chose normal mode during important battles - livre desde 24/09/2026
-#define FLAG_TRAINER_LEVELSCALING                   (SYSTEM_FLAGS + 0x96)
-#define FLAG_WILD_LEVELSCALING                      (SYSTEM_FLAGS + 0x97)
+#define FLAG_UNUSED_0xA22                           (SYSTEM_FLAGS + 0x96) // Unused Flag. Era FLAG_TRAINER_LEVELSCALING; livre desde 30/09/2026
+#define FLAG_UNUSED_0xA23                           (SYSTEM_FLAGS + 0x97) // Unused Flag. Era FLAG_WILD_LEVELSCALING; livre desde 30/09/2026
 #define FLAG_BEAT_STEVEN_KITAKAMI                   (SYSTEM_FLAGS + 0x98)
 #define FLAG_CHOICEBAND_KITAKAMI                    (SYSTEM_FLAGS + 0x99) // Kitakami mountain itemball
 #define FLAG_HIDE_MAREANIES                         (SYSTEM_FLAGS + 0x9A) //Hacky workaround for sequence skip with goldenrod shore
@@ -1965,7 +1965,7 @@
 #define FLAG_ROUTE32_GROTTO                         (DAILY_FLAGS_START + 0x0)
 #define FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY     (DAILY_FLAGS_START + 0x1)
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
-#define FLAG_DAILY_BUG_CONTEST_COMPLETED            (DAILY_FLAGS_START + 0x3)  // Unused Flag
+#define FLAG_UNUSED_0x150B                          (DAILY_FLAGS_START + 0x3)  // Unused Flag. Era FLAG_DAILY_BUG_CONTEST_COMPLETED; o concurso usa FLAG_DAILY_BUG_DONE
 #define FLAG_DAILY_BUG_DONE                         (DAILY_FLAGS_START + 0x4)  // Daily bug catching contest completed
 #define FLAG_GOLDENROD_SHORE_GROTTO                 (DAILY_FLAGS_START + 0x5)
 #define FLAG_ROUTE35_GROTTO                         (DAILY_FLAGS_START + 0x6)
@@ -2040,7 +2040,7 @@
 // ClearDailyFlags at the date change. Same pattern as FLAG_DAILY_KURT_NEW_DAY.
 #define FLAG_DAILY_GARDEN_NEW_DAY                   (DAILY_FLAGS_START + 0x32) // VAR_GARDEN_TODAY already reset today (GardenRollDay)
 #define FLAG_UNUSED_0x953                           (DAILY_FLAGS_START + 0x33) // Unused Flag
-#define FLAG_UNUSED_0x954                           (DAILY_FLAGS_START + 0x34) // Unused Flag
+#define FLAG_DAILY_DAISY_GROOMED                    (DAILY_FLAGS_START + 0x34) // Daisy (Pallet Town House 2) groomed a Pokemon today. Set by PalletTown_House2_EventScript_DaisyGrooming
 #define FLAG_UNUSED_0x955                           (DAILY_FLAGS_START + 0x35) // Unused Flag
 #define FLAG_UNUSED_0x956                           (DAILY_FLAGS_START + 0x36) // Unused Flag
 #define FLAG_UNUSED_0x957                           (DAILY_FLAGS_START + 0x37) // Unused Flag

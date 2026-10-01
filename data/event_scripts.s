@@ -673,10 +673,6 @@ EventScript_MoveMrBrineyToRoute109::
 	end
 
 EverGrandeCity_HallOfFame_EventScript_ResetEliteFour::
-	clearflag FLAG_DEFEATED_ELITE_4_WILL
-	clearflag FLAG_DEFEATED_ELITE_4_KOGA
-	clearflag FLAG_DEFEATED_ELITE_4_BRUNO
-	clearflag FLAG_DEFEATED_ELITE_4_KAREN
 	setvar VAR_GARBAGEVAR, 0
 	return
 

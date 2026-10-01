@@ -35,6 +35,7 @@ GoldenrodCity_UndergroundTunnel_EventScript_KimonoTriggerBot::
 	removeobject LOCALID_GOLDENROD_UNDERGROUND_KIMONO
 	fadedefaultbgm
 	setvar VAR_GOLDENROD_CITY_STATE, 8
+	release
 	end
 
 GoldenrodCity_UndergroundTunnel_EventScript_KimonoTriggerTop::
@@ -65,6 +66,7 @@ GoldenrodCity_UndergroundTunnel_EventScript_KimonoTriggerTop::
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	setvar VAR_GOLDENROD_CITY_STATE, 8
+	release
 	end
 
 
@@ -198,6 +200,7 @@ GoldenrodUnderground_EventScript_Brother_Haircut2::
 	msgbox GoldenrodUnderground_Text_YoungerBrotherDisappointed, MSGBOX_DEFAULT
 	hidemoneybox
 	closemessage
+	release
 	end
 
 GoldenrodUnderground_EventScript_Haircut2::

@@ -44,9 +44,14 @@ IcePath_B3F_EventScript_Swinub::
 	goto_if_set FLAG_ITEM_ICEPATH4_TM_BLIZZARD, IcePath_B3F_EventScript_SwinubBlowPlayer
 	msgbox IcePath_B3F_Text_SwinubBerry, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, IcePath_B3F_EventScript_SwinubBlowPlayer
-	@chooseitem BERRIES_POCKET
-	removeitem VAR_ITEM_ID, 1
+	@ The Berry pocket was never opened (chooseitem commented out): removeitem
+	@ took whatever VAR_ITEM_ID last held - the last item used or picked in
+	@ the Bag (bug/B08). Now: pick a Berry; cancelling costs nothing, and only
+	@ the Aspear Berry it actually eats leaves the Bag.
+	chooseitem POCKET_BERRIES
+	goto_if_eq VAR_ITEM_ID, ITEM_NONE, IcePath_B3F_EventScript_SwinubBlowPlayer
 	goto_if_ne VAR_ITEM_ID, ITEM_ASPEAR_BERRY, IcePath_B3F_EventScript_SwinubDislikedBerry
+	removeitem VAR_ITEM_ID, 1
 	msgbox IcePath_B3F_Text_SwinubAteBerry, MSGBOX_DEFAULT
 	setflag FLAG_ITEM_ICEPATH4_TM_BLIZZARD
 IcePath_B3F_EventScript_SwinubBlowPlayer::
@@ -83,9 +88,14 @@ IcePath_B3F_EventScript_Delibird::
 	goto_if_set FLAG_ITEM_ICEPATH4_TM_BLIZZARD, IcePath_B3F_EventScript_DelibirdBlowPlayer
 	msgbox IcePath_B3F_Text_DelibirdBerry, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, IcePath_B3F_EventScript_DelibirdBlowPlayer
-	@chooseitem BERRIES_POCKET
-	removeitem VAR_ITEM_ID, 1
+	@ The Berry pocket was never opened (chooseitem commented out): removeitem
+	@ took whatever VAR_ITEM_ID last held - the last item used or picked in
+	@ the Bag (bug/B08). Now: pick a Berry; cancelling costs nothing, and only
+	@ the Aspear Berry it actually eats leaves the Bag.
+	chooseitem POCKET_BERRIES
+	goto_if_eq VAR_ITEM_ID, ITEM_NONE, IcePath_B3F_EventScript_DelibirdBlowPlayer
 	goto_if_ne VAR_ITEM_ID, ITEM_ASPEAR_BERRY, IcePath_B3F_EventScript_DelibirdDislikedBerry
+	removeitem VAR_ITEM_ID, 1
 	msgbox IcePath_B3F_Text_DelibirdAteBerry, MSGBOX_DEFAULT
 	setflag FLAG_ITEM_ICEPATH4_TM_BLIZZARD
 IcePath_B3F_EventScript_DelibirdBlowPlayer::

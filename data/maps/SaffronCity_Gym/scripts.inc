@@ -166,7 +166,7 @@ SaffronCity_Gym_Text_GymGuideWin:
 
 SaffronCity_Gym_EventScript_GymStatue::
 	lockall
-	goto_if_set FLAG_GARBAGEFLAG, SaffronCity_Gym_EventScript_GymStatuePostVictory
+	goto_if_set FLAG_DEFEATED_SAFFRON_GYM, SaffronCity_Gym_EventScript_GymStatuePostVictory
 	msgbox SaffronCity_Gym_Text_GymStatue
 	releaseall
 	end

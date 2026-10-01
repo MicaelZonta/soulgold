@@ -24,6 +24,7 @@ PewterCity_EventScript_Gramps::
 	faceplayer
 	goto_if_eq VAR_LUGIA_OR_HOOH, 1, PewterCity_EventScript_GrampsRainbowWing
 	goto_if_eq VAR_LUGIA_OR_HOOH, 2, PewterCity_EventScript_GrampsSilverWing
+	release
 	end
 
 PewterCity_EventScript_GrampsRainbowWing::

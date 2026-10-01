@@ -4,7 +4,6 @@ RuinsOfAlph_Lab_MapScripts::
 	.byte 0
 
 RuinsOfAlph_Lab_OnTransition:
-	call_if_eq VAR_FOSSIL_RESURRECTION_STATE, 1, RustboroCity_DevonCorp_2F_EventScript_SetFossilReady
 	end
 
 RuinsOfAlph_Lab_EventScript_Scientist1::
@@ -26,6 +25,12 @@ RuinsOfAlph_Lab_EventScript_Fossils::
 	release
 	end
 
+RuinsOfAlph_Lab_Text_NoRoomForFossilMon:
+	.string "Oh, but your party and your PC\n"
+	.string "Boxes are both full.\p"
+	.string "Make room for a revived Pokémon,\n"
+	.string "then bring me your fossil.$"
+
 RuinsOfAlph_Lab_Text_Scientist1:
 	.string "The Ruins are about 1500 years old.\p"
 	.string "But it's not known why they were\n"
@@ -45,9 +50,18 @@ RuinsOfAlph_Lab_Text_Fossils:
 RuinsOfAlph_Lab_EventScript_FossilScientist::
 	lock
 	faceplayer
-	goto_if_eq VAR_FOSSIL_RESURRECTION_STATE, 2, RuinsOfAlph_Lab_EventScript_FossilMonReady
-	goto_if_eq VAR_FOSSIL_RESURRECTION_STATE, 1, RuinsOfAlph_Lab_EventScript_StillRegenerating
 	msgbox RuinsOfAlph_Lab_Text_DevelopDeviceToResurrectFossils, MSGBOX_DEFAULT
+	@ Room checked before the offer: the fossil is removed before givemon, so a
+	@ full party AND full PC used to eat it for nothing (bug/B05).
+	getpartysize
+	goto_if_ne VAR_RESULT, PARTY_SIZE, RuinsOfAlph_Lab_EventScript_OfferRevive
+	specialvar VAR_RESULT, ScriptCheckFreePokemonStorageSpace
+	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Lab_EventScript_OfferRevive
+	msgbox RuinsOfAlph_Lab_Text_NoRoomForFossilMon, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+RuinsOfAlph_Lab_EventScript_OfferRevive::
 	msgbox RuinsOfAlph_Lab_Text_WantToBringFossilBackToLife, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RuinsOfAlph_Lab_EventScript_DeclineGiveFossil
 	goto RuinsOfAlph_Lab_EventScript_ChooseFossil
@@ -69,6 +83,87 @@ RuinsOfAlph_Lab_EventScript_GiveHelixFossil::
 	msgbox RuinsOfAlph_Lab_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
 	removeitem ITEM_HELIX_FOSSIL
 	goto RuinsOfAlph_Lab_EventScript_OmanyteReady
+
+RuinsOfAlph_Lab_EventScript_GiveArmorFossil::
+	bufferitemname STR_VAR_1, ITEM_ARMOR_FOSSIL
+	msgbox RuinsOfAlph_Lab_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
+	removeitem ITEM_ARMOR_FOSSIL
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_SHIELDON
+	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
+
+RuinsOfAlph_Lab_EventScript_GiveSkullFossil::
+	bufferitemname STR_VAR_1, ITEM_SKULL_FOSSIL
+	msgbox RuinsOfAlph_Lab_Text_HandedFossilToResearcher, MSGBOX_DEFAULT
+	removeitem ITEM_SKULL_FOSSIL
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CRANIDOS
+	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
+
+@ Galar fossils (Sword/Shield): one upper half (Bird or Fish) plus one lower
+@ half (Drake or Dino) make one Pokemon. Either half may be picked first.
+@   Bird + Drake = Dracozolt   Bird + Dino = Arctozolt
+@   Fish + Drake = Dracovish   Fish + Dino = Arctovish
+@ VAR_0x8008 = the half picked first, VAR_0x8009 = the second one. Nothing is
+@ removed from the bag until the pair is known to be valid.
+RuinsOfAlph_Lab_EventScript_GalarFirstHalf::
+	copyvar VAR_0x8008, VAR_ITEM_ID
+	msgbox RuinsOfAlph_Lab_Text_GalarNeedsOtherHalf, MSGBOX_DEFAULT
+	chooseitem POCKET_ITEMS
+	goto_if_eq VAR_ITEM_ID, ITEM_NONE, RuinsOfAlph_Lab_EventScript_CancelFossilSelect
+	copyvar VAR_0x8009, VAR_ITEM_ID
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_NONE
+	call RuinsOfAlph_Lab_EventScript_GalarPair
+	goto_if_eq VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_NONE, RuinsOfAlph_Lab_EventScript_GalarBadPair
+	bufferitemname STR_VAR_1, VAR_0x8008
+	bufferitemname STR_VAR_3, VAR_0x8009
+	msgbox RuinsOfAlph_Lab_Text_HandedTwoFossils, MSGBOX_DEFAULT
+	removeitem VAR_0x8008
+	removeitem VAR_0x8009
+	goto RuinsOfAlph_Lab_EventScript_NewFossilReady
+
+@ Sets VAR_TEMP_TRANSFERRED_SPECIES from the pair, in either order; leaves it
+@ SPECIES_NONE for two upper halves, two lower halves, or anything else.
+RuinsOfAlph_Lab_EventScript_GalarPair::
+	call_if_eq VAR_0x8008, ITEM_FOSSILIZED_BIRD, RuinsOfAlph_Lab_EventScript_GalarBirdWith
+	call_if_eq VAR_0x8008, ITEM_FOSSILIZED_FISH, RuinsOfAlph_Lab_EventScript_GalarFishWith
+	call_if_eq VAR_0x8009, ITEM_FOSSILIZED_BIRD, RuinsOfAlph_Lab_EventScript_GalarBirdWithFirst
+	call_if_eq VAR_0x8009, ITEM_FOSSILIZED_FISH, RuinsOfAlph_Lab_EventScript_GalarFishWithFirst
+	return
+
+RuinsOfAlph_Lab_EventScript_GalarBirdWith::
+	call_if_eq VAR_0x8009, ITEM_FOSSILIZED_DRAKE, RuinsOfAlph_Lab_EventScript_SetDracozolt
+	call_if_eq VAR_0x8009, ITEM_FOSSILIZED_DINO, RuinsOfAlph_Lab_EventScript_SetArctozolt
+	return
+RuinsOfAlph_Lab_EventScript_GalarFishWith::
+	call_if_eq VAR_0x8009, ITEM_FOSSILIZED_DRAKE, RuinsOfAlph_Lab_EventScript_SetDracovish
+	call_if_eq VAR_0x8009, ITEM_FOSSILIZED_DINO, RuinsOfAlph_Lab_EventScript_SetArctovish
+	return
+RuinsOfAlph_Lab_EventScript_GalarBirdWithFirst::
+	call_if_eq VAR_0x8008, ITEM_FOSSILIZED_DRAKE, RuinsOfAlph_Lab_EventScript_SetDracozolt
+	call_if_eq VAR_0x8008, ITEM_FOSSILIZED_DINO, RuinsOfAlph_Lab_EventScript_SetArctozolt
+	return
+RuinsOfAlph_Lab_EventScript_GalarFishWithFirst::
+	call_if_eq VAR_0x8008, ITEM_FOSSILIZED_DRAKE, RuinsOfAlph_Lab_EventScript_SetDracovish
+	call_if_eq VAR_0x8008, ITEM_FOSSILIZED_DINO, RuinsOfAlph_Lab_EventScript_SetArctovish
+	return
+
+RuinsOfAlph_Lab_EventScript_SetDracozolt::
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_DRACOZOLT
+	return
+RuinsOfAlph_Lab_EventScript_SetArctozolt::
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ARCTOZOLT
+	return
+RuinsOfAlph_Lab_EventScript_SetDracovish::
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_DRACOVISH
+	return
+RuinsOfAlph_Lab_EventScript_SetArctovish::
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ARCTOVISH
+	return
+
+RuinsOfAlph_Lab_EventScript_GalarBadPair::
+	msgbox RuinsOfAlph_Lab_Text_GalarBadPair, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
 
 RuinsOfAlph_Lab_EventScript_GiveDomeFossil::
 	bufferitemname STR_VAR_1, ITEM_DOME_FOSSIL
@@ -114,23 +209,6 @@ RuinsOfAlph_Lab_EventScript_DeclineGiveFossil::
 RuinsOfAlph_Lab_EventScript_DeclineGiveFossil2::
 	msgbox RuinsOfAlph_Lab_Text_OhIsThatSo2, MSGBOX_DEFAULT
 	release
-	end
-
-RuinsOfAlph_Lab_EventScript_StillRegenerating::
-	msgbox RuinsOfAlph_Lab_Text_FossilRegeneratorTakesTime, MSGBOX_DEFAULT
-	release
-	end
-
-RuinsOfAlph_Lab_EventScript_FossilMonReady::
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 1, RuinsOfAlph_Lab_EventScript_LileepReady
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 2, RuinsOfAlph_Lab_EventScript_AnorithReady
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 3, RuinsOfAlph_Lab_EventScript_OmanyteReady
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 4, RuinsOfAlph_Lab_EventScript_KabutoReady
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 5, RuinsOfAlph_Lab_EventScript_AeroReady
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 6, RuinsOfAlph_Lab_EventScript_ArchenReady
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 7, RuinsOfAlph_Lab_EventScript_TyruntReady
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 8, RuinsOfAlph_Lab_EventScript_AmauraReady
-	goto_if_eq VAR_WHICH_FOSSIL_REVIVED, 9, RuinsOfAlph_Lab_EventScript_TirtougaReady
 	end
 
 RuinsOfAlph_Lab_EventScript_LileepReady::
@@ -225,7 +303,6 @@ RuinsOfAlph_Lab_EventScript_ReceivedLileepFanfare::
 	return
 
 RuinsOfAlph_Lab_EventScript_FinishReceivingLileep::
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
 	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
 	release
 	end
@@ -270,7 +347,6 @@ RuinsOfAlph_Lab_EventScript_ReceivedAnorithFanfare::
 	return
 
 RuinsOfAlph_Lab_EventScript_FinishReceivingAnorith::
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
 	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
 	release
 	end
@@ -315,7 +391,6 @@ RuinsOfAlph_Lab_EventScript_ReceivedOmanyteFanfare::
 	return
 
 RuinsOfAlph_Lab_EventScript_FinishReceivingOmanyte::
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
 	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
 	release
 	end
@@ -370,7 +445,6 @@ RuinsOfAlph_Lab_EventScript_ReceivedKabutoFanfare::
 	return
 
 RuinsOfAlph_Lab_EventScript_FinishReceivingKabuto::
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
 	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
 	release
 	end
@@ -415,7 +489,6 @@ RuinsOfAlph_Lab_EventScript_ReceivedAeroFanfare::
 	return
 
 RuinsOfAlph_Lab_EventScript_FinishReceivingAero::
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
 	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
 	release
 	end
@@ -459,7 +532,6 @@ RuinsOfAlph_Lab_EventScript_ReceivedNewFossilMonFanfare::
 	return
 
 RuinsOfAlph_Lab_EventScript_FinishReceivingNewFossilMon::
-	setvar VAR_FOSSIL_RESURRECTION_STATE, 0
 	setflag FLAG_RECEIVED_REVIVED_FOSSIL_MON
 	release
 	end
@@ -472,11 +544,19 @@ RuinsOfAlph_Lab_EventScript_ChooseFossil::
 	case ITEM_NONE, RuinsOfAlph_Lab_EventScript_CancelFossilSelect
 	case ITEM_DOME_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveDomeFossil
 	case ITEM_ROOT_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveRootFossil
+	case ITEM_CLAW_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveClawFossil
 	case ITEM_PLUME_FOSSIL, RuinsOfAlph_Lab_EventScript_GivePlumeFossil
 	case ITEM_JAW_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveJawFossil
 	case ITEM_SAIL_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveSailFossil
 	case ITEM_OLD_AMBER, RuinsOfAlph_Lab_EventScript_GiveOldAmber
 	case ITEM_COVER_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveCoverFossil
+	case ITEM_HELIX_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveHelixFossil
+	case ITEM_ARMOR_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveArmorFossil
+	case ITEM_SKULL_FOSSIL, RuinsOfAlph_Lab_EventScript_GiveSkullFossil
+	case ITEM_FOSSILIZED_BIRD, RuinsOfAlph_Lab_EventScript_GalarFirstHalf
+	case ITEM_FOSSILIZED_FISH, RuinsOfAlph_Lab_EventScript_GalarFirstHalf
+	case ITEM_FOSSILIZED_DRAKE, RuinsOfAlph_Lab_EventScript_GalarFirstHalf
+	case ITEM_FOSSILIZED_DINO, RuinsOfAlph_Lab_EventScript_GalarFirstHalf
 	msgbox RuinsOfAlph_Lab_Text_ThatsNotAFossil, MSGBOX_DEFAULT
 	goto RuinsOfAlph_Lab_EventScript_ChooseFossil
 	end
@@ -595,6 +675,24 @@ RuinsOfAlph_Lab_Text_PickFossilFromBag:
 	.string "Please choose the fossil you'd like\n"
 	.string "to regenerate.$"
 
+RuinsOfAlph_Lab_Text_GalarNeedsOtherHalf:
+	.string "Hmm… That's only half of an\n"
+	.string "ancient Pokémon from Galar.\p"
+	.string "Fossils from there come in two\n"
+	.string "parts. Pick the other half, too.$"
+
+RuinsOfAlph_Lab_Text_GalarBadPair:
+	.string "Those two pieces don't fit\n"
+	.string "together…\p"
+	.string "I need a Bird or Fish half and\n"
+	.string "a Drake or Dino half.$"
+
+RuinsOfAlph_Lab_Text_HandedTwoFossils:
+	.string "Excellent! These two fit!\n"
+	.string "Let's do this right away.\p"
+	.string "{PLAYER} handed the {STR_VAR_1}\n"
+	.string "and the {STR_VAR_3} over.$"
+
 RuinsOfAlph_Lab_Text_ThatsNotAFossil:
 	.string "That's not a fossil!$"
 
@@ -603,14 +701,6 @@ RuinsOfAlph_Lab_Text_HandedFossilToResearcher:
 	.string "Let's do this right away.\p"
 	.string "{PLAYER} handed the {STR_VAR_1} to\n"
 	.string "the Ruins Researcher.$"
-
-RuinsOfAlph_Lab_Text_FossilRegeneratorTakesTime:
-	.string "The Fossil Regenerator, which I made,\n"
-	.string "is incredible.\p"
-	.string "But it has one drawback--it takes\n"
-	.string "a long time to work.\p"
-	.string "So, uh… How about you go for a stroll\n"
-	.string "and look around for a while?$"
 
 RuinsOfAlph_Lab_Text_FossilizedMonBroughtBackToLife:
 	.string "Thanks for waiting!\p"

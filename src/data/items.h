@@ -1519,6 +1519,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Raises the base HP\n"
             "of one Pokémon."),
+        .bpCost = 1,
         .pocket = POCKET_MEDICINE,
         .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
         .heldSlot = 0,
@@ -1549,23 +1550,18 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Zeromin,
     },
 
-    [ITEM_HP_UP_EX] =
+    [ITEM_UNUSED_891] =
     {
-        .name = ITEM_NAME("HP Up EX"),
-        .price = (I_PRICE >= GEN_7) ? 40000 : 19600,
-        .description = COMPOUND_STRING(
-            "Maximizes the\n"
-            "effort value of a\n"
-            "Pokémon's HP."),
-        .bpCost = 10,
+        .name = gQuestionMarksItemName,
+        .price = 0,
+        .description = sQuestionMarksDesc,
         .pocket = POCKET_ITEMS,
-        .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .effect = gItemEffect_HPUpEX,
-        .flingPower = 30,
-        .iconPic = gItemIcon_HPUp,
-        .iconPalette = gItemIconPalette_HPUp,
+        .sortType = ITEM_TYPE_UNCATEGORIZED,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
     },
 
     [ITEM_PROTEIN] =
@@ -1576,6 +1572,7 @@ const struct ItemInfo gItemsInfo[] =
             "Raises the base\n"
             "Attack stat of one\n"
             "Pokémon."),
+        .bpCost = 1,
         .pocket = POCKET_MEDICINE,
         .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
         .heldSlot = 0,
@@ -1587,23 +1584,18 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Protein,
     },
 
-    [ITEM_PROTEIN_EX] =
+    [ITEM_UNUSED_892] =
     {
-        .name = ITEM_NAME("Protein EX"),
-        .price = (I_PRICE >= GEN_7) ? 40000 : 19600,
-        .description = COMPOUND_STRING(
-            "Maximizes the\n"
-            "effort value of a\n"
-            "Pokémon's Attack."),
-        .bpCost = 10,
+        .name = gQuestionMarksItemName,
+        .price = 0,
+        .description = sQuestionMarksDesc,
         .pocket = POCKET_ITEMS,
-        .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .effect = gItemEffect_ProteinEX,
-        .flingPower = 30,
-        .iconPic = gItemIcon_Vitamin,
-        .iconPalette = gItemIconPalette_Protein,
+        .sortType = ITEM_TYPE_UNCATEGORIZED,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
     },
 
     [ITEM_IRON] =
@@ -1614,6 +1606,7 @@ const struct ItemInfo gItemsInfo[] =
             "Raises the base\n"
             "Defense stat of\n"
             "one Pokémon."),
+        .bpCost = 1,
         .pocket = POCKET_MEDICINE,
         .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
         .heldSlot = 0,
@@ -1625,23 +1618,18 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Iron,
     },
 
-    [ITEM_IRON_EX] =
+    [ITEM_UNUSED_893] =
     {
-        .name = ITEM_NAME("Iron EX"),
-        .price = (I_PRICE >= GEN_7) ? 40000 : 19600,
-        .description = COMPOUND_STRING(
-            "Maximizes the\n"
-            "effort value of a\n"
-            "Pokémon's Defense."),
-        .bpCost = 10,
+        .name = gQuestionMarksItemName,
+        .price = 0,
+        .description = sQuestionMarksDesc,
         .pocket = POCKET_ITEMS,
-        .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .effect = gItemEffect_IronEX,
-        .flingPower = 30,
-        .iconPic = gItemIcon_Vitamin,
-        .iconPalette = gItemIconPalette_Iron,
+        .sortType = ITEM_TYPE_UNCATEGORIZED,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
     },
 
     [ITEM_CALCIUM] =
@@ -1652,6 +1640,7 @@ const struct ItemInfo gItemsInfo[] =
             "Raises the base\n"
             "Sp. Atk stat of one\n"
             "Pokémon."),
+        .bpCost = 1,
         .pocket = POCKET_MEDICINE,
         .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
         .heldSlot = 0,
@@ -1663,23 +1652,18 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Calcium,
     },
 
-    [ITEM_CALCIUM_EX] =
+    [ITEM_UNUSED_894] =
     {
-        .name = ITEM_NAME("Calcium EX"),
-        .price = (I_PRICE >= GEN_7) ? 40000 : 19600,
-        .description = COMPOUND_STRING(
-            "Maximizes the\n"
-            "effort value of a\n"
-            "Pokémon's Sp. Atk."),
-        .bpCost = 10,
+        .name = gQuestionMarksItemName,
+        .price = 0,
+        .description = sQuestionMarksDesc,
         .pocket = POCKET_ITEMS,
-        .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .effect = gItemEffect_CalciumEX,
-        .flingPower = 30,
-        .iconPic = gItemIcon_Vitamin,
-        .iconPalette = gItemIconPalette_Calcium,
+        .sortType = ITEM_TYPE_UNCATEGORIZED,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
     },
 
     [ITEM_ZINC] =
@@ -1690,6 +1674,7 @@ const struct ItemInfo gItemsInfo[] =
             "Raises the base\n"
             "Sp. Def stat of one\n"
             "Pokémon."),
+        .bpCost = 1,
         .pocket = POCKET_MEDICINE,
         .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
         .heldSlot = 0,
@@ -1701,23 +1686,18 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Zinc,
     },
 
-    [ITEM_ZINC_EX] =
+    [ITEM_UNUSED_895] =
     {
-        .name = ITEM_NAME("Zinc EX"),
-        .price = (I_PRICE >= GEN_7) ? 40000 : 19600,
-        .description = COMPOUND_STRING(
-            "Maximizes the\n"
-            "effort value of a\n"
-            "Pokémon's Sp. Def."),
-        .bpCost = 10,
+        .name = gQuestionMarksItemName,
+        .price = 0,
+        .description = sQuestionMarksDesc,
         .pocket = POCKET_ITEMS,
-        .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .effect = gItemEffect_ZincEX,
-        .flingPower = 30,
-        .iconPic = gItemIcon_Vitamin,
-        .iconPalette = gItemIconPalette_Zinc,
+        .sortType = ITEM_TYPE_UNCATEGORIZED,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
     },
 
     [ITEM_CARBOS] =
@@ -1729,6 +1709,7 @@ const struct ItemInfo gItemsInfo[] =
             "Raises the base\n"
             "Speed stat of one\n"
             "Pokémon."),
+        .bpCost = 1,
         .pocket = POCKET_MEDICINE,
         .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
         .heldSlot = 0,
@@ -1740,24 +1721,18 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Carbos,
     },
 
-    [ITEM_CARBOS_EX] =
+    [ITEM_UNUSED_896] =
     {
-        .name = ITEM_NAME("Carbos EX"),
-        .pluralName = ITEM_PLURAL_NAME("Carbos EX"),
-        .price = (I_PRICE >= GEN_7) ? 40000 : 19600,
-        .description = COMPOUND_STRING(
-            "Maximizes the\n"
-            "effort value of a\n"
-            "Pokémon's Speed."),
-        .bpCost = 10,
+        .name = gQuestionMarksItemName,
+        .price = 0,
+        .description = sQuestionMarksDesc,
         .pocket = POCKET_ITEMS,
-        .sortType = ITEM_TYPE_STAT_BOOST_DRINK,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .effect = gItemEffect_CarbosEX,
-        .flingPower = 30,
-        .iconPic = gItemIcon_Vitamin,
-        .iconPalette = gItemIconPalette_Carbos,
+        .sortType = ITEM_TYPE_UNCATEGORIZED,
+        .heldSlot = 0,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
     },
 
     [ITEM_WITHERED_HERB] =
@@ -2044,8 +2019,9 @@ const struct ItemInfo gItemsInfo[] =
     #endif
         .holdEffectParam = 0,
         .description = COMPOUND_STRING(
-            "Switches a\n"
-            "Pokémon's ability."),
+            "Rerolls a\n"
+            "Pokémon's ability\n"
+            "at random."),
         .bpCost = 10,
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_FIELD_USE,
@@ -2081,7 +2057,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_LONELY_MINT] =
     {
         .name = ITEM_NAME("Lonely Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Attack, but\n"
@@ -2100,7 +2076,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_ADAMANT_MINT] =
     {
         .name = ITEM_NAME("Adamant Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Attack, but\n"
@@ -2119,7 +2095,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_NAUGHTY_MINT] =
     {
         .name = ITEM_NAME("Naughty Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Attack, but\n"
@@ -2138,7 +2114,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_BRAVE_MINT] =
     {
         .name = ITEM_NAME("Brave Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Attack, but\n"
@@ -2157,7 +2133,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_BOLD_MINT] =
     {
         .name = ITEM_NAME("Bold Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Defense, but\n"
@@ -2176,7 +2152,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_IMPISH_MINT] =
     {
         .name = ITEM_NAME("Impish Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Defense, but\n"
@@ -2195,7 +2171,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_LAX_MINT] =
     {
         .name = ITEM_NAME("Lax Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Defense, but\n"
@@ -2214,7 +2190,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_RELAXED_MINT] =
     {
         .name = ITEM_NAME("Relaxed Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Defense, but\n"
@@ -2233,7 +2209,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_MODEST_MINT] =
     {
         .name = ITEM_NAME("Modest Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Sp. Atk, but\n"
@@ -2252,7 +2228,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_MILD_MINT] =
     {
         .name = ITEM_NAME("Mild Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Sp. Atk, but\n"
@@ -2271,7 +2247,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_RASH_MINT] =
     {
         .name = ITEM_NAME("Rash Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Sp. Atk, but\n"
@@ -2290,7 +2266,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_QUIET_MINT] =
     {
         .name = ITEM_NAME("Quiet Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Sp. Atk, but\n"
@@ -2309,7 +2285,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_CALM_MINT] =
     {
         .name = ITEM_NAME("Calm Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Sp. Def, but\n"
@@ -2328,7 +2304,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_GENTLE_MINT] =
     {
         .name = ITEM_NAME("Gentle Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Sp. Def, but\n"
@@ -2347,7 +2323,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_CAREFUL_MINT] =
     {
         .name = ITEM_NAME("Careful Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Sp. Def, but\n"
@@ -2366,7 +2342,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_SASSY_MINT] =
     {
         .name = ITEM_NAME("Sassy Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Sp. Def, but\n"
@@ -2385,7 +2361,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_TIMID_MINT] =
     {
         .name = ITEM_NAME("Timid Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Speed, but\n"
@@ -2404,7 +2380,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_HASTY_MINT] =
     {
         .name = ITEM_NAME("Hasty Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Speed, but\n"
@@ -2423,7 +2399,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_JOLLY_MINT] =
     {
         .name = ITEM_NAME("Jolly Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Speed, but\n"
@@ -2442,7 +2418,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_NAIVE_MINT] =
     {
         .name = ITEM_NAME("Naive Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "ups Speed, but\n"
@@ -2461,7 +2437,7 @@ const struct ItemInfo gItemsInfo[] =
     [ITEM_SERIOUS_MINT] =
     {
         .name = ITEM_NAME("Serious Mint"),
-        .price = (I_PRICE >= GEN_9) ? 7800 : 20,
+        .price = MINT_SHOP_PRICE,
         .description = COMPOUND_STRING(
             "Can be smelled. It\n"
             "makes each stat\n"

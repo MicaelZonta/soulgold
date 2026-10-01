@@ -71,8 +71,8 @@ EcruteakCity_SageOffice2_EventScript_SageA4::
 EcruteakCity_SageOffice2_EventScript_SageB::
 	lock
 	faceplayer
-	goto_if_eq VAR_ECRUTEAK_CITY_STATE, 10, EcruteakCity_SageOffice2_EventScript_B2
-	goto_if_eq VAR_ECRUTEAK_CITY_STATE, 11, EcruteakCity_SageOffice2_EventScript_B2
+	goto_if_eq VAR_COMPLETED_HO_OH, 2, EcruteakCity_SageOffice2_EventScript_B2
+	goto_if_eq VAR_COMPLETED_HO_OH, 4, EcruteakCity_SageOffice2_EventScript_B2
 	msgbox EcruteakTinTowerEntrance_Text_WanderingSage, MSGBOX_DEFAULT
 	closemessage
 	release

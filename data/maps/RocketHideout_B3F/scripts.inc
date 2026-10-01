@@ -222,6 +222,7 @@ RocketHideout_B3F_EventScript_OpenDoor::
 	end
 
 RocketHideout_B3F_EventScript_DoorIsOpen::
+	release
 	end
 
 RocketHideout_B3F_EventScript_GruntF5::

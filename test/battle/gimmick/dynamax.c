@@ -925,6 +925,7 @@ SINGLE_BATTLE_TEST("Dynamax: Max Starfall sets up Misty Terrain")
 SINGLE_BATTLE_TEST("Dynamax: G-Max Stonesurge sets up Stealth Rocks")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_DREDNAW, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_STONESURGE, MOVE_EFFECT_STEALTH_ROCK));
         PLAYER(SPECIES_DREDNAW) { GigantamaxFactor(TRUE); }
         OPPONENT(SPECIES_WOBBUFFET);
@@ -945,6 +946,7 @@ SINGLE_BATTLE_TEST("Dynamax: G-Max Stonesurge sets up Stealth Rocks")
 SINGLE_BATTLE_TEST("Dynamax: G-Max Steelsurge sets up sharp steel")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_COPPERAJAH, FORM_CHANGE_BATTLE_GIGANTAMAX));
         WITH_CONFIG(B_DEFOG_EFFECT_CLEARING, GEN_6);
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_STEELSURGE, MOVE_EFFECT_STEELSURGE));
         PLAYER(SPECIES_COPPERAJAH) { GigantamaxFactor(TRUE); }
@@ -973,6 +975,7 @@ SINGLE_BATTLE_TEST("Dynamax: G-Max Steelsurge sets up sharp steel")
 DOUBLE_BATTLE_TEST("Dynamax: G-Max Volt Crash paralyzes both opponents")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_PIKACHU, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_VOLT_CRASH, MOVE_EFFECT_PARALYZE_SIDE));
         PLAYER(SPECIES_PIKACHU) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_PICHU);
@@ -995,6 +998,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Volt Crash paralyzes both opponents")
 DOUBLE_BATTLE_TEST("Dynamax: G-Max Gold Rush confuses both opponents and generates money")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_MEOWTH, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_GOLD_RUSH, MOVE_EFFECT_CONFUSE_PAY_DAY_SIDE));
         PLAYER(SPECIES_MEOWTH) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_PERSIAN);
@@ -1015,6 +1019,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Gold Rush confuses both opponents and generat
 DOUBLE_BATTLE_TEST("Dynamax: G-Max Smite confuses both opponents")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_HATTERENE, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_SMITE, MOVE_EFFECT_CONFUSE_SIDE));
         PLAYER(SPECIES_HATTERENE) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_HATENNA);
@@ -1034,6 +1039,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Smite confuses both opponents")
 DOUBLE_BATTLE_TEST("Dynamax: G-Max Cuddle infatuates both opponents, if possible")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_EEVEE, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_CUDDLE, MOVE_EFFECT_INFATUATE_SIDE));
         PLAYER(SPECIES_EEVEE) { Gender(MON_MALE); GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_EEVEE);
@@ -1055,6 +1061,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Cuddle infatuates both opponents, if possible
 DOUBLE_BATTLE_TEST("Dynamax: G-Max Terror traps both opponents")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_GENGAR, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_TERROR, MOVE_EFFECT_PREVENT_ESCAPE_SIDE));
         PLAYER(SPECIES_GENGAR) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_GASTLY);
@@ -1074,6 +1081,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Terror traps both opponents")
 SINGLE_BATTLE_TEST("Dynamax: Baton Pass passes G-Max Terror's escape prevention effect")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_GENGAR, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_TERROR, MOVE_EFFECT_PREVENT_ESCAPE_SIDE));
         PLAYER(SPECIES_GENGAR) { GigantamaxFactor(TRUE); }
         OPPONENT(SPECIES_WOBBUFFET);
@@ -1091,6 +1099,7 @@ SINGLE_BATTLE_TEST("Dynamax: Baton Pass passes G-Max Terror's escape prevention 
 DOUBLE_BATTLE_TEST("Dynamax: G-Max Meltdown torments both opponents for 3 turns")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_MELMETAL, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_MELTDOWN, MOVE_EFFECT_TORMENT_SIDE));
         PLAYER(SPECIES_MELMETAL) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_MELTAN);
@@ -1128,6 +1137,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Wildfire sets a field effect that damages non
 {
     s16 damage;
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_CHARIZARD, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_WILDFIRE, MOVE_EFFECT_WILDFIRE));
         PLAYER(SPECIES_CHARIZARD) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_CHARMANDER);
@@ -1174,6 +1184,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Snooze makes only the target drowsy")
 {
     PASSES_RANDOMLY(1, 2, RNG_G_MAX_SNOOZE);
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_GRIMMSNARL, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_SNOOZE, MOVE_EFFECT_YAWN_FOE));
         ASSUME(GetMoveCategory(MOVE_DARK_PULSE) == DAMAGE_CATEGORY_SPECIAL); // Otherwise, Blissey faints.
         PLAYER(SPECIES_GRIMMSNARL) { GigantamaxFactor(TRUE); }
@@ -1198,6 +1209,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Finale heals allies by 1/6 of their health")
 {
     s16 damage1, damage2;
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_ALCREMIE, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_FINALE, MOVE_EFFECT_HEAL_TEAM));
         PLAYER(SPECIES_ALCREMIE) { HP(1); GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_MILCERY) { HP(1); }
@@ -1220,6 +1232,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Sweetness cures allies' status conditions")
 {
     u32 j;
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_APPLETUN, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_SWEETNESS, MOVE_EFFECT_AROMATHERAPY));
         PLAYER(SPECIES_APPLETUN) { Status1(STATUS1_POISON); GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_APPLIN)  { Status1(STATUS1_POISON); }
@@ -1246,6 +1259,7 @@ TO_DO_BATTLE_TEST("Dynamax: Baton Pass doesn't pass G-Max Chi Strike's effect");
 DOUBLE_BATTLE_TEST("Dynamax: G-Max Depletion takes away 2 PP from the target's last move")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_DURALUDON, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(GetMoveCategory(MOVE_DRAGON_CLAW) == DAMAGE_CATEGORY_PHYSICAL); // Otherwise Sableye faints.
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_DEPLETION, MOVE_EFFECT_SPITE));
         ASSUME(GetMovePP(MOVE_CELEBRATE) >= 3);
@@ -1272,6 +1286,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max One Blow bypasses Max Guard for full damage",
     PARAMETRIZE { protect = TRUE; }
     PARAMETRIZE { protect = FALSE; }
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_URSHIFU, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveIgnoresProtect(MOVE_G_MAX_RAPID_FLOW));
         PLAYER(SPECIES_URSHIFU) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_KUBFU);
@@ -1497,6 +1512,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Finale heals allies by 1/6 of their health, e
 {
     s16 damage1, damage2;
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_ALCREMIE, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_FINALE, MOVE_EFFECT_HEAL_TEAM));
         PLAYER(SPECIES_ALCREMIE) { HP(1); GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_MILCERY) { HP(1); }
@@ -1518,6 +1534,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Finale heals allies by 1/6 of their health, e
 DOUBLE_BATTLE_TEST("Dynamax: G-Max Volt Crash paralyzes other opponent even if its target faints")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_PIKACHU, FORM_CHANGE_BATTLE_GIGANTAMAX));
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_VOLT_CRASH, MOVE_EFFECT_PARALYZE_SIDE));
         PLAYER(SPECIES_PIKACHU) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_PICHU);

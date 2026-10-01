@@ -2142,27 +2142,27 @@ BattleCafe_ChooseMoney_Text_1:
 	.string "on dessert!$"
 
 BattleCafe_ChooseVitaminSetAtk_Text_0:
-	.string "Exchange 4 Café Points for two each of\n"
-	.string "Protein EX and Calcium EX?$"
+	.string "Exchange 4 Café Points for five each\n"
+	.string "of Protein and Calcium?$"
 
 BattleCafe_ChooseVitaminSetAtk_Text_1:
-	.string "Two Protein EX and two Calcium EX,\n"
+	.string "Five Protein and five Calcium,\n"
 	.string "power and wisdom!$"
 
 BattleCafe_ChooseVitaminSetDef_Text_0:
-	.string "Exchange 4 Café Points for two each of\n"
-	.string "Iron EX and Zinc EX?$"
+	.string "Exchange 4 Café Points for five each\n"
+	.string "of Iron and Zinc?$"
 
 BattleCafe_ChooseVitaminSetDef_Text_1:
-	.string "Two Iron EX and two Zinc EX,\n"
+	.string "Five Iron and five Zinc,\n"
 	.string "time to bulk up!$"
 
 BattleCafe_ChooseVitaminSetSpe_Text_0:
 	.string "Exchange 2 Café Points for\n"
-	.string "two Carbos EX?$"
+	.string "five Carbos?$"
 
 BattleCafe_ChooseVitaminSetSpe_Text_1:
-	.string "Two Carbos EX, ready to speed up!$"
+	.string "Five Carbos, ready to speed up!$"
 
 BattleCafe_NotEnoughPoints_Text_0:
 	.string "That prize costs 5 Café Points.\n"
