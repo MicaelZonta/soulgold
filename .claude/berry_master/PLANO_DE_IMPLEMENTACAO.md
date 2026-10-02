@@ -706,6 +706,13 @@ aberto; sem dinheiro não cobra; nível 3 rega sozinho às 4h.
 em ordem”; `map_graph` ok; `berry_mutations_check` ok; testes compilam (não rodam: ver a
 revisão das partes 1–3).
 
+**Bug 3 do teste no jogo (02/10/2026), corrigido:** a oferta de reforma dizia “3052
+Berries in your Book now” — o número era o **dinheiro** do jogador. O `showmoneybox`
+imprime o dinheiro por `gStringVar1` (`PrintMoneyAmount`, `src/money.c`), e o tamanho do
+Livro tinha sido posto no `STR_VAR_1` **antes** de abrir a caixa. Agora o número é
+preenchido depois do `showmoneybox`. Regra: depois de `showmoneybox`/`updatemoneybox`, o
+`STR_VAR_1` não vale mais nada.
+
 **Auditoria estática (`bug/auditar_scripts.py`, ferramenta de outra sessão, só lida):**
 nos mapas da horta sobram 2 avisos `CALL_END` em `Route30_House` — as saídas de bolsa
 cheia do presente (`Common_EventScript_ShowBagIsFull` faz `release` e encerra de

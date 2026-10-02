@@ -151,11 +151,13 @@ Route30_House_EventScript_ReformNeedsHelp::
 @ VAR_0x8005 = the level on offer (GardenReform_Check).
 Route30_House_EventScript_ReformOffer::
 	setflag FLAG_TEMP_4
-	@ The offer comes when the Book reaches the size OR LATER: say the real count.
-	specialvar VAR_RESULT, BerryLedger_Count
-	buffernumberstring STR_VAR_1, VAR_RESULT
 	goto_if_eq VAR_0x8005, GARDEN_LEVEL_BUG_HOTEL, Route30_House_EventScript_OfferBugHotel
 	showmoneybox 0, 0
+	@ The offer comes when the Book reaches the size OR LATER: say the real count.
+	@ Buffered AFTER showmoneybox: the money box prints the money through
+	@ gStringVar1 (PrintMoneyAmount, src/money.c) and would overwrite it.
+	specialvar VAR_RESULT, BerryLedger_Count
+	buffernumberstring STR_VAR_1, VAR_RESULT
 	call_if_eq VAR_0x8005, GARDEN_LEVEL_PROPER, Route30_House_EventScript_AskProper
 	call_if_eq VAR_0x8005, GARDEN_LEVEL_CHANNEL, Route30_House_EventScript_AskChannel
 	goto_if_eq VAR_RESULT, NO, Route30_House_EventScript_ReformDeclined
