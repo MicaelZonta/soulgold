@@ -713,6 +713,14 @@ Livro tinha sido posto no `STR_VAR_1` **antes** de abrir a caixa. Agora o númer
 preenchido depois do `showmoneybox`. Regra: depois de `showmoneybox`/`updatemoneybox`, o
 `STR_VAR_1` não vale mais nada.
 
+**Ajuste do teste no jogo (02/10/2026): a oferta de reforma fecha a conversa.** Antes
+a ordem era marcos → oferta → “Tomorrow morning, then.” → presente (“there's more
+tomorrow…”), e o fechamento da obra ficava no meio do presente, com dois “amanhã”
+seguidos. Agora: obra pronta → marcos → **presente** (ou “That's your two/three”) →
+**oferta por último** (`Route30_House_EventScript_AfterGift`), e quem paga ouve “Done deal.
+Come and look in the morning.” e a conversa acaba. A semente encomendada também termina
+no `AfterGift`. Só a bolsa cheia encerra antes (sem oferta naquela conversa).
+
 **Auditoria estática (`bug/auditar_scripts.py`, ferramenta de outra sessão, só lida):**
 nos mapas da horta sobram 2 avisos `CALL_END` em `Route30_House` — as saídas de bolsa
 cheia do presente (`Common_EventScript_ShowBagIsFull` faz `release` e encerra de

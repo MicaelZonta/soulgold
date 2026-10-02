@@ -51,7 +51,9 @@ Route30_House_EventScript_BaldMan::
 	special BerryLedger_RegisterStarters
 	call Route30_House_EventScript_BuiltLevel
 	call Route30_House_EventScript_Milestones
-	call Route30_House_EventScript_Reform
+	@ The day's gift first - it is what the player came for - and the garden
+	@ works last (Route30_House_EventScript_AfterGift), so a reform deal closes
+	@ the conversation instead of being followed by "take two".
 	goto_if_set FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY, Route30_House_EventScript_DoneToday
 	@ 2 Berries a day, 3 from garden level 2 (src/berry_garden.c).
 	specialvar VAR_0x8009, GardenGift_Count
@@ -72,6 +74,12 @@ Route30_House_EventScript_GiveDraw::
 	call_if_eq VAR_0x8009, 3, Route30_House_EventScript_GiveLedgerBerry
 	call_if_eq VAR_0x8009, 3, Route30_House_EventScript_PlantThemThreeText
 	call_if_ne VAR_0x8009, 3, Route30_House_EventScript_PlantThemText
+	goto Route30_House_EventScript_AfterGift
+
+@ Every path of the conversation ends here (except a full bag, which ends on
+@ Common_EventScript_ShowBagIsFull): the garden works offer, then goodbye.
+Route30_House_EventScript_AfterGift::
+	call Route30_House_EventScript_Reform
 	closemessage
 	release
 	end
@@ -96,9 +104,7 @@ Route30_House_EventScript_OfferSeed::
 	setflag FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY
 	msgbox Route30_House_Text_GoodPick, MSGBOX_DEFAULT
 	giveitem VAR_0x8008
-	closemessage
-	release
-	end
+	goto Route30_House_EventScript_AfterGift
 
 Route30_House_EventScript_PlantThemText::
 	msgbox Route30_House_Text_PlantThem, MSGBOX_DEFAULT
@@ -301,15 +307,11 @@ Route30_House_EventScript_DoneToday::
 	specialvar VAR_RESULT, GardenGift_Count
 	goto_if_eq VAR_RESULT, 3, Route30_House_EventScript_DoneTodayThree
 	msgbox Route30_House_Text_DoneToday, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
+	goto Route30_House_EventScript_AfterGift
 
 Route30_House_EventScript_DoneTodayThree::
 	msgbox Route30_House_Text_DoneTodayThree, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
+	goto Route30_House_EventScript_AfterGift
 
 @ His wife, and the whole reason she exists: the fourteen competitive berries,
 @ two of which (Lansat and Starf) are Kurt's level-20 recipes. One object, one
@@ -456,7 +458,7 @@ Route30_House_Text_OfferBugHotel:
 	.string "Well? Do I let him?$"
 
 Route30_House_Text_ReformPaid:
-	.string "Tomorrow morning, then. Come and look.$"
+	.string "Done deal. Come and look in the morning.$"
 
 Route30_House_Text_ReformDeclined:
 	.string "Suit yourself. The offer keeps.$"
