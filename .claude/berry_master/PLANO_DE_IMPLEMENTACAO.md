@@ -291,7 +291,7 @@ invisível; nenhuma árvore de rota perdeu a berry.
 
 | O quê | Onde |
 |---|---|
-| 10 células de solo: metatile 46, colisão 1, **elevação 3** (a mesma da grama em volta) | `data/layouts/Route30/map.bin`, A (28..30, 43..44) e B (30..31, 41..42) |
+| 10 células de solo: metatile 46, colisão 1, **elevação 3** (a mesma da grama em volta) — valor `0x382E` (ver “Bug 1” abaixo) | `data/layouts/Route30/map.bin`, A (28..30, 43..44) e B (30..31, 41..42) |
 | 10 objetos `BERRY_TREE_GARDEN_A1..A6` / `_B1..B4`, local ids 24..33 | `data/maps/Route30/map.json` (no fim, para não mexer nos ids antigos) |
 | Árvore de (23,38) → `BERRY_TREE_KINGS_PLOT`, flag `FLAG_TEMP_HIDE_KINGS_PLOT` | idem |
 | `bg_event` em (23,38) → `Route30_EventScript_ColdSoil` (“The soil here is hard and cold. / Nothing's grown in it for a long time.”) | idem, `scripts.inc` |
@@ -330,6 +330,18 @@ feito com o Weedle.
 **Renders** (nível 1 de dia, nível 1 à noite, nível 2): o B vira grama no nível 1, o
 A aparece, e (23,38) mostra só a terra. Os três ficaram no scratchpad da sessão;
 não são versionados.
+
+**Bug 1 do teste no jogo (02/10/2026), corrigido:** as 10 covas apareciam como blocos
+**rosa** (um tile do secundário de Cherrygrove) e **sem colisão**. Causa: o `map.bin` foi
+gravado com o layout do pokeemerald original (ID do metatile em 10 bits, colisão no bit
+10), mas **neste repo o ID tem 11 bits** (`MAPGRID_METATILE_ID_MASK 0x07FF`,
+`include/global.fieldmap.h`) e a colisão é o **bit 11**. “46 + colisão” virou o metatile
+**1070**. Gravado de novo como `0x382E` (46, colisão 1, elevação 3), igual em ID e colisão
+à cova da Laurel (`0x082E`). A armadilha já estava escrita no `SKILL.md` da
+`encenar-cutscene`, que esta parte listava e não foi lida; e o `check_objects` do
+`mapa_kit` **não** marcava as covas como bloqueio, sintoma que foi explicado em vez de
+investigado. Regra: decodificar `map.bin` só com as máscaras de `global.fieldmap.h`, e
+conferir o valor contra uma célula que já funciona.
 
 **Teste no jogo (falta, o autor faz):**
 - Save novo: tutorial do Bram, sair, plantar nas 6 células do A, regar, esperar, colher.

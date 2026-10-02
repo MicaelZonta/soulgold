@@ -86,7 +86,8 @@ e por fim `Bram's gift: taken today.` ou `…still waiting today.`
 ### T03 · A horta antes do tutorial (Parte 2)
 - **Passos:** `Berry Master… → Go: the garden`. Olhe em volta.
 - **Esperado:**
-  - Canteiro A: 6 covas de terra marrom, em 2 linhas de 3, à sua direita.
+  - Canteiro A: 6 covas de **terra redonda**, iguais à cova da Laurel, em 2 linhas de 3,
+    à sua direita. **Não** podem ser blocos rosa (bug 1, corrigido em 02/10/2026).
   - Canteiro B: **grama comum** (nada de terra) acima do A, perto do lago.
   - Em (23,38), à esquerda da casa: uma cova de terra, **sem planta**.
   - **Não existe mais** o Weedle decorativo que ficava parado em (19,42), na beira da
@@ -106,7 +107,8 @@ e por fim `Bram's gift: taken today.` ou `…still waiting today.`
 ### T06 · Canteiro A funciona antes do tutorial (Parte 2)
 - **Passos:** olhe para uma cova do A e aperte A.
 - **Esperado:** “It's soft, loamy soil.” (ou “…Want to plant a Berry?” se você já tiver
-  alguma berry). O canteiro A é aberto desde sempre, de propósito.
+  alguma berry). O canteiro A é aberto desde sempre, de propósito. Tente **andar para
+  cima** de uma cova: não dá (são bloqueio, como toda árvore de berry).
 
 ### T07 · Tutorial do Bram (Partes 2 e 3)
 - **Passos:** `Berry Master… → Go: Bram's house`. Fale com o **Bram** (o careca, em (4,4)).
