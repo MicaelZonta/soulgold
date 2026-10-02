@@ -4791,6 +4791,9 @@ bool8 MovementType_BerryTreeGrowth_Normal(struct ObjectEvent *objectEvent, struc
     ClearObjectEventMovement(objectEvent, sprite);
     objectEvent->invisible = TRUE;
     sprite->invisible = TRUE;
+    // SoulGold: wet soil under a tree watered this stage (src/berry.c).
+    BerryTree_UpdateSoilTile(objectEvent->trainerRange_berryTreeId,
+                             objectEvent->currentCoords.x, objectEvent->currentCoords.y);
     berryStage = GetStageByBerryTreeId(objectEvent->trainerRange_berryTreeId);
     if (berryStage == BERRY_STAGE_NO_BERRY)
     {

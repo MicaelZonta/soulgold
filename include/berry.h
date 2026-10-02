@@ -7,6 +7,7 @@ const struct Berry *GetBerryInfo(u8 berry);
 struct BerryTree *GetBerryTreeInfo(u8 id);
 bool32 ObjectEventInteractionWaterBerryTree(void);
 bool32 WaterBerryTreeById(u8 id);
+void BerryTree_UpdateSoilTile(u8 treeId, s16 x, s16 y);
 bool8 IsPlayerFacingEmptyBerryTreePatch(void);
 bool8 TryToWaterBerryTree(void);
 void ClearBerryTrees(void);

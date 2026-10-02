@@ -343,6 +343,21 @@ gravado com o layout do pokeemerald original (ID do metatile em 10 bits, colisã
 investigado. Regra: decodificar `map.bin` só com as máscaras de `global.fieldmap.h`, e
 conferir o valor contra uma célula que já funciona.
 
+**Bug 2 do teste no jogo (02/10/2026), corrigido — terra molhada:** regar não mudava
+nada na tela. O Gen 3 não tem tile de terra molhada (só o HGSS escurece a terra), e o
+primário de Johto e o secundário de Cherrygrove estão com 640/640 e 384/384 tiles. Feito
+sem tile novo (técnica 1 da skill `montar-tileset`): a paleta **7** do secundário
+`CherrygroveCity` não é usada por nenhum metatile (nem dos primários `Johto_General` e
+`Johto_NorthWest` que se juntam a ele), então ganhou a terra escurecida nos índices que o
+tile 12 usa (9, 11, 12, 13, 15); o metatile novo **0x4C8**
+(`METATILE_CherrygroveCity_SoilWet`, anexado no fim) é o 46 com a camada da terra na
+paleta 7. `BerryTree_UpdateSoilTile` (`src/berry.c`), chamada a cada quadro pela árvore
+(`MovementType_BerryTreeGrowth_Normal`), troca seco ↔ molhado conforme o bit de rega do
+estágio atual — molhada depois da Squirtbottle ou do canal, seca no estágio seguinte, na
+colheita e em cova vazia — e só mexe num tile que seja exatamente o seco ou o molhado da
+tabela `sWetSoil`, mantendo a colisão. Outro tileset ganha terra molhada com uma linha na
+tabela e um metatile seu. `check_tileset.py secondary/cherrygrove_city` limpo.
+
 **Teste no jogo (falta, o autor faz):**
 - Save novo: tutorial do Bram, sair, plantar nas 6 células do A, regar, esperar, colher.
 - As 4 células do B: grama, dá para andar em cima, ninguém pergunta “plantar?”.

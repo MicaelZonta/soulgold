@@ -1,6 +1,7 @@
 #include "global.h"
 #include "berry.h"
 #include "berry_garden.h"
+#include "field_camera.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -15,6 +16,7 @@
 #include "text.h"
 #include "constants/event_object_movement.h"
 #include "constants/items.h"
+#include "constants/metatile_labels.h"
 
 static enum Item BerryTypeToItemId(u16 berry);
 static u8 BerryTreeGetNumStagesWatered(struct BerryTree *tree);
@@ -1856,6 +1858,77 @@ bool32 WaterBerryTreeById(u8 id)
         return FALSE;
     }
     return TRUE;
+}
+
+// ---------------------------------------------------------------------------
+// SoulGold: watered soil looks wet (HGSS). Gen 3 has no such tile, so each
+// secondary tileset that wants it gets a "wet" copy of its Berry soil, and the
+// tile under a Berry tree is swapped between the two to match the tree:
+// wet while the CURRENT stage has been watered (the same bits the
+// Squirtbottle sets), dry again when the stage moves on, when the tree is
+// picked, or when there is no wet tile for this map. Called every frame by
+// the tree's movement callback (MovementType_BerryTreeGrowth_Normal), so it
+// follows watering, the garden channel, growth and map reloads by itself.
+// Only a tile that is exactly the dry or the wet soil of the table is ever
+// touched, and its collision is kept.
+// ---------------------------------------------------------------------------
+extern const struct Tileset gTileset_CherrygroveCity;
+
+struct WetSoil
+{
+    const struct Tileset *secondary;
+    u16 dry;
+    u16 wet;
+};
+
+static const struct WetSoil sWetSoil[] =
+{
+    // Route 30 (the Berry Master's garden), Cherrygrove, Routes 31 and 46.
+    { &gTileset_CherrygroveCity, 0x02E, METATILE_CherrygroveCity_SoilWet },
+};
+
+static bool32 IsBerryTreeWateredThisStage(const struct BerryTree *tree)
+{
+    switch (tree->stage)
+    {
+    case BERRY_STAGE_PLANTED:
+        return (tree->watered & (1 << 0)) != 0;
+    case BERRY_STAGE_SPROUTED:
+        return (tree->watered & (1 << 1)) != 0;
+    case BERRY_STAGE_TALLER:
+    case BERRY_STAGE_TRUNK:
+    case BERRY_STAGE_BUDDING:
+        return (tree->watered & (1 << 2)) != 0;
+    case BERRY_STAGE_FLOWERING:
+        return (tree->watered & (1 << 3)) != 0;
+    default:
+        return FALSE;
+    }
+}
+
+// x, y: the tree object's currentCoords (map grid coordinates).
+void BerryTree_UpdateSoilTile(u8 treeId, s16 x, s16 y)
+{
+    u32 i, current, want;
+
+    if (OW_BERRY_MOISTURE)
+        return; // moisture is a level, not a per-stage bit; no tile for it
+    for (i = 0; i < ARRAY_COUNT(sWetSoil); i++)
+    {
+        if (gMapHeader.mapLayout->secondaryTileset == sWetSoil[i].secondary)
+            break;
+    }
+    if (i == ARRAY_COUNT(sWetSoil))
+        return;
+
+    current = MapGridGetMetatileIdAt(x, y);
+    if (current != sWetSoil[i].dry && current != sWetSoil[i].wet)
+        return;
+    want = IsBerryTreeWateredThisStage(GetBerryTreeInfo(treeId)) ? sWetSoil[i].wet : sWetSoil[i].dry;
+    if (current == want)
+        return;
+    MapGridSetMetatileIdAt(x, y, want | (MapGridGetCollisionAt(x, y) << MAPGRID_COLLISION_SHIFT));
+    CurrentMapDrawMetatileAt(x, y);
 }
 
 bool8 IsPlayerFacingEmptyBerryTreePatch(void)
