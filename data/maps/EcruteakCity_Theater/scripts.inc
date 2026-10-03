@@ -13,6 +13,8 @@ EcruteakCity_Theater_MapScripts::
 	.byte 0
 
 EcruteakCity_Theater_OnTransition::
+	@ Berry Master part 15: Peonia, Morty and Eusine after dark in state 11.
+	call BerryGarden_EventScript_TheaterSteeds
 	@ Prof. Elm jumps this var straight to 4 (Kimono Girls) whether or not the
 	@ Rocket arc (0 -> 1 -> 2 -> 3) was played. From 4 on the Grunt must be
 	@ gone, or beating him late rewinds the var to 2 and the Kimono Girls
@@ -1160,3 +1162,101 @@ EcruteakCity_Theater_Text_ZukiAfterAll:
 EcruteakCity_Theater_Text_KimonoGirlsBeforeBattle:
 	.string "Talk to Zuki in the middle\n"
 	.string "when you are ready.$"
+
+@ ---------------------------------------------------------------------------
+@ Berry Master, plan part 15 (dark path).
+@ The Dance Theater (EcruteakCity_Theater), after dark in state 11: Peonia,
+@ Morty and Eusine wait in the aisle, (9,13) (10,13) (11,13), facing the door.
+@ With the Shaderoot, Morty sends the player into the memory of the night the
+@ Brass Tower burned (BrassTowerMemory_1F, arrival (15,21) by the door).
+@ FLAG_TEMP_1 hides the three; nothing else in the theater uses temps.
+BerryGarden_EventScript_TheaterSteeds::
+	setflag FLAG_TEMP_1
+	goto_if_ne VAR_HARVEST_KING, HARVEST_KING_SHADEROOT, BerryGarden_EventScript_SteedsEnd
+	gettimeofday
+	goto_if_lt VAR_0x8000, TIME_EVENING, BerryGarden_EventScript_SteedsEnd
+	clearflag FLAG_TEMP_1
+BerryGarden_EventScript_SteedsEnd::
+	return
+
+BerryGarden_EventScript_TheaterMorty::
+	lock
+	faceplayer
+	checkitem ITEM_SHADEROOT_CARROT
+	goto_if_eq VAR_RESULT, FALSE, BerryGarden_EventScript_TheaterNoCarrot
+	msgbox BerryGarden_Text_TheaterMorty, MSGBOX_DEFAULT
+	msgbox BerryGarden_Text_TheaterEusine, MSGBOX_DEFAULT
+	msgbox BerryGarden_Text_TheaterReady, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BerryGarden_EventScript_TheaterNotYet
+	msgbox BerryGarden_Text_TheaterDance, MSGBOX_DEFAULT
+	closemessage
+	playse SE_M_TEETER_DANCE
+	call BerryGarden_EventScript_WhiteFlash
+	delay 30
+	call BerryGarden_EventScript_WhiteFlash
+	msgbox BerryGarden_Text_TheaterRibbon, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_WHITE
+	warp MAP_BRASS_TOWER_MEMORY_1F, 15, 21
+	waitstate
+	release
+	end
+
+BerryGarden_EventScript_TheaterNotYet::
+	msgbox BerryGarden_Text_TheaterNotYet, MSGBOX_DEFAULT
+	release
+	end
+
+BerryGarden_EventScript_TheaterNoCarrot::
+	msgbox BerryGarden_Text_TheaterNoCarrot, MSGBOX_DEFAULT
+	release
+	end
+
+BerryGarden_EventScript_TheaterEusine::
+	msgbox BerryGarden_Text_TheaterEusineTalk, MSGBOX_NPC
+	end
+
+BerryGarden_EventScript_TheaterPeonia::
+	msgbox BerryGarden_Text_TheaterPeoniaTalk, MSGBOX_NPC
+	end
+
+BerryGarden_Text_TheaterMorty:
+	.string "{SPEAKER NAME_MORTY}Stand in the middle. Don't move until\n"
+	.string "the last ribbon falls.\p"
+	.string "Nothing in there can hurt you.\n"
+	.string "But it can keep you.$"
+
+BerryGarden_Text_TheaterEusine:
+	.string "{SPEAKER NAME_EUSINE}A black beast in the Brass Tower, on\n"
+	.string "the night of the fire? A FOURTH beast?!\p"
+	.string "I'm coming. I've waited my whole life\n"
+	.string "for a fourth beast.\p"
+	.string "{SPEAKER NAME_PEONIA}Me too! Dad said to keep an eye on\n"
+	.string "you. ...He said it the other way\l"
+	.string "around, actually.$"
+
+BerryGarden_Text_TheaterReady:
+	.string "{SPEAKER NAME_MORTY}Are you ready?$"
+
+BerryGarden_Text_TheaterNotYet:
+	.string "{SPEAKER NAME_MORTY}The night is long. We'll wait.$"
+
+BerryGarden_Text_TheaterNoCarrot:
+	.string "{SPEAKER NAME_MORTY}The dance opens the door. The carrot\n"
+	.string "is what he follows. Bring it.$"
+
+BerryGarden_Text_TheaterDance:
+	.string "The Kimono Girls take the stage.\p"
+	.string "Five ribbons rise and fall, slower,\n"
+	.string "and slower...$"
+
+BerryGarden_Text_TheaterRibbon:
+	.string "The last ribbon falls.$"
+
+BerryGarden_Text_TheaterEusineTalk:
+	.string "{SPEAKER NAME_EUSINE}Talk to Morty. I'm too excited to\n"
+	.string "explain anything properly.$"
+
+BerryGarden_Text_TheaterPeoniaTalk:
+	.string "{SPEAKER NAME_PEONIA}A dance that opens a door into a\n"
+	.string "memory. Johto's weird. I love it.$"

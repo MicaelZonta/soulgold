@@ -525,7 +525,7 @@
 #define TRAINER_UNUSED_473                  519  // Former TRAINER_WALLY_VR_1; pending legacy battle removed.
 #define TRAINER_THOM_AND_KAE    520
 #define TRAINER_DUFF_AND_EDA    521
-#define TRAINER_UNUSED_401    522  // Former TRAINER_BRENDAN_ROUTE_119_MUDKIP; Route 119 legacy trigger removed.
+#define TRAINER_BRASS_TOMO    522  // Berry Master, the Brass Tower memory (part 15); was TRAINER_UNUSED_401 (Brendan Route 119 Mudkip)
 #define TRAINER_UNUSED_407   523  // Former TRAINER_BRENDAN_ROUTE_103_TREECKO; Route 103 legacy trigger removed.
 #define TRAINER_UNUSED_396   524  // Former TRAINER_BRENDAN_ROUTE_110_TREECKO; Route 110 legacy trigger removed.
 #define TRAINER_UNUSED_402   525  // Former TRAINER_BRENDAN_ROUTE_119_TREECKO; Route 119 legacy trigger removed.

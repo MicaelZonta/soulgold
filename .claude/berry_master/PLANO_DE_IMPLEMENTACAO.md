@@ -1497,6 +1497,57 @@ depois foi conferida com a flag ligada na RAM).
 **Teste no jogo:** o mesmo da Parte 14, e a cena do raio sem travar (entrada e saída
 por cada lado da escada).
 
+### Parte 15 — feita (03/10/2026)
+
+**Entregue:** a memória da Torre de Bronze jogável, do teatro ao despertar —
+`BrassTowerMemory_1F` (27×25, layout novo `LAYOUT_BRASS_TOWER_MEMORY_1F` do protótipo, com a
+escada de mão do B1F posta na parede norte em (14,3)–(14,4)) e `BrassTowerMemory_Roof`
+(o layout `LAYOUT_TIN_TOWER_ROOF_DAY` sem mudança), no fim do `gMapGroup_Dungeons`
+(24.122 e 24.123). A dança no `EcruteakCity_Theater`, os sábios-memória, a Kimono Girl, o
+raio, o Sábio Tomo (`TRAINER_BRASS_TOMO` = 522, o antigo `TRAINER_UNUSED_401`, escala
+sempre ligada), a sombra do Ho-Oh, o Spectrier Lv60 (só a captura avança: estado 13), o
+despertar no `BurnedTower_B1F` com a Spell Tag do Morty e a lápide do Tomo em Ecruteak.
+Nenhuma flag persistente nova (a vitória sobre o Tomo é a própria flag de treinador dele).
+O tom virou `MapTint_Mode` / `MapTint_Apply` com três modos: cristal (Greenfield),
+entardecer (1F) e fogo (telhado).
+
+**Onde está:** `data/maps/BrassTowerMemory_1F/scripts.inc`,
+`data/maps/BrassTowerMemory_Roof/scripts.inc` (planta no topo); o teatro no fim de
+`data/maps/EcruteakCity_Theater/scripts.inc` (+3 objetos no fim do array: Peonia 14, Morty
+15, Eusine 16); o despertar e a lápide em `data/scripts/berry_garden_steeds.inc`, chamados
+do `BurnedTower_B1F` (Morty = objeto 12) e do `EcruteakCity` (`bg_event` em (36,25)); a
+Spell Tag de reserva no `BerryGarden_EventScript_MortyHook`.
+
+**Decisões:**
+1. **Paletas por código** (como na Parte 14), não `burned_tower` copiado: sépia quente no
+   1F, vermelho de fogo no telhado. Os dois mapas são `INDOOR`, sem a troca dia/noite.
+2. **A escada do 1F**: o 1F do protótipo não tinha escada desenhada; entrou a escada de mão
+   do próprio `BurnedTower_B1F` (metatiles 1045/1053, mesmo tileset). Subir nela é o
+   gatilho do raio.
+3. **O teatro**: os três aparecem no estado 11 do anoitecer ao amanhecer (`gettimeofday` ≥
+   `TIME_EVENING`). Sem a cenoura o Morty diz uma linha; com ela, Yes/No e a dança
+   (narração + clarões, sem coreografia das Kimono Girls — `@ SKELETON` possível de
+   evoluir). A saída da memória pela porta do 1F volta ao teatro.
+4. **No telhado** a Peonia fica em (12,12) e não em (10,13) do protótipo, para não fechar a
+   escada (10,13)–(10,14).
+5. **Tomo**: luta sem whiteout (`garden_fight`); perder ou desistir cura o time e manda o
+   jogador para o pé da escada no 1F; subir de novo repete a cena. Vencido, a flag de
+   treinador fica ligada e ele passa a ficar de lado em (9,9).
+6. **A sombra do Ho-Oh** cruza a linha 7 (o topo da tela com o jogador em (10,11)),
+   elevação 13, por cima do estábulo, e some.
+7. **Despertar**: a Shaderoot é a marca de “Spell Tag devida” (como a Iceroot da Molly): o
+   Morty do B1F só aparece com estado 13 + cenoura na bolsa + jogador em (16,13); se a cena
+   for interrompida, o Morty do ginásio entrega.
+8. **A lápide** é a lanterna de pedra do quintal do escritório dos Sábios: antes do
+   Spectrier (ou no caminho branco) é só uma lanterna.
+9. **O passo 7** (o Spectrier-visitante some da horta a partir do 13) já valia: ele só
+   aparece no estado 4, na cena do Ato 2.
+
+**QA no jogo (headless, 03/10):** T98–T105 (bloco F10). Dois achados corrigidos no teste (a
+sombra do Ho-Oh fora da tela; o Spectrier visível na última fala). **Não jogado:** Morty sem
+cenoura e o “Not yet”, teatro de dia, a Spell Tag pelo ginásio, a lanterna antes do
+Spectrier.
+
 ---
 
 ## Parte 16 — Ato 7, Epílogo e pós-história (estados 12/13 → 15)

@@ -66,9 +66,10 @@ u16 GardenPests_FamiliesCaught(void);
 u16 GardenPest_LastSpecies(void);
 void GardenKingsPlot_Empty(void);
 
-// Greenfield under the Unown crystal (part 14): src/fieldmap.c and
-// src/overworld.c tint the map palettes while it is active.
-bool32 GreenfieldCrystal_IsActive(void);
+// Story places in another light (parts 14-15): src/fieldmap.c and
+// src/overworld.c tint the map palettes while MapTint_Mode() is not NONE.
+u32 MapTint_Mode(void);
+void MapTint_Apply(u16 *pal, u32 count);
 void GreenfieldCrystal_Tint(u16 *pal, u32 count);
 
 // Pests and weeds (part 10): only garden plots (src/berry.c asks these).

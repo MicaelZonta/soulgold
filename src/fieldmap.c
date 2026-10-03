@@ -917,9 +917,9 @@ static void LoadTilesetPalette(struct Tileset const *tileset, u16 destOffset, u1
             LoadPalette((const u16 *)tileset->palettes, destOffset, size);
             ApplyGlobalTintToPaletteEntries(destOffset, size >> 1);
         }
-        if (GreenfieldCrystal_IsActive())
+        if (MapTint_Mode() != MAP_TINT_NONE)
         {
-            GreenfieldCrystal_Tint(&gPlttBufferUnfaded[destOffset], size >> 1);
+            MapTint_Apply(&gPlttBufferUnfaded[destOffset], size >> 1);
             if (!skipFaded)
                 CpuCopy16(&gPlttBufferUnfaded[destOffset], &gPlttBufferFaded[destOffset], size);
         }

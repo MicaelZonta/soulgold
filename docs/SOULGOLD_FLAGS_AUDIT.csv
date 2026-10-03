@@ -1,11 +1,11 @@
 valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
-0x1,1,FLAG_TEMP_1,TEMP,EM_USO,14,85,115,BattleFrontier_BattleDomePreBattleRoom;BlackthornCity;BlackthornCity_House3;CeladonCity_Gym,GLOBAL(codigo),
+0x1,1,FLAG_TEMP_1,TEMP,EM_USO,14,93,123,BattleFrontier_BattleDomePreBattleRoom;BlackthornCity;BlackthornCity_House3;BrassTowerMemory_1F,GLOBAL(codigo),
 0x1,1,FLAG_TEMP_SKIP_GABBY_INTERVIEW,TEMP,EM_USO,0,1,1,,GLOBAL(codigo),
-0x2,2,FLAG_TEMP_2,TEMP,EM_USO,17,72,89,BattleFrontier_BattleTowerMultiBattleRoom;BlackthornCity;CeladonCity;CeladonCity_Gym,GLOBAL(codigo),
+0x2,2,FLAG_TEMP_2,TEMP,EM_USO,17,74,91,BattleFrontier_BattleTowerMultiBattleRoom;BlackthornCity;BrassTowerMemory_Roof;CeladonCity,GLOBAL(codigo),
 0x2,2,FLAG_TEMP_REGICE_PUZZLE_STARTED,TEMP,EM_USO,1,1,1,,GLOBAL(codigo),
 0x3,3,FLAG_TEMP_3,TEMP,EM_USO,7,66,69,BlackthornCity;CeladonCity;CeladonCity_Gym;CeruleanCave_1F,MULTI_MAPA(41),
 0x3,3,FLAG_TEMP_REGICE_PUZZLE_FAILED,TEMP,EM_USO,1,1,1,,GLOBAL(codigo),
-0x4,4,FLAG_TEMP_4,TEMP,EM_USO,6,44,56,BlackthornCity;CeruleanCave_1F;CeruleanCave_B1F;CeruleanCave_B2F,MULTI_MAPA(30),
+0x4,4,FLAG_TEMP_4,TEMP,EM_USO,6,46,58,BlackthornCity;BrassTowerMemory_Roof;CeruleanCave_1F;CeruleanCave_B1F,MULTI_MAPA(31),
 0x4,4,FLAG_TEMP_GARDEN_REFORM_TALKED,TEMP,EM_USO,1,2,2,Route30_House,MAPA_UNICO:Route30_House,"reform offer, once per visit"
 0x5,5,FLAG_TEMP_5,TEMP,EM_USO,10,56,52,BlackthornCity;CeruleanCave_1F;CeruleanCave_B1F;CeruleanCave_B2F,MULTI_MAPA(32),Unused Flag
 0x5,5,FLAG_TEMP_HIDE_GARDEN_B,TEMP,EM_USO,0,1,3,Route30,MAPA_UNICO:Route30,

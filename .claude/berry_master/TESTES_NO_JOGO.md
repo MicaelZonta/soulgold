@@ -907,6 +907,50 @@ que aguente um Lv60 e Poké Balls.
 
 ---
 
+## Bloco F10 — Caminho escuro: a Torre de Bronze (Parte 15)
+
+`Story… → 11 Shaderoot in bag`, de noite (`Clock…`). Teatro: `warp 0 5 6` e entrar; 1F
+direto: `warp 24 122 1` (pé da escada). O Tomo acompanha o Pokémon mais forte do time:
+leve um time completo.
+
+### T98 · O Dance Theater e a dança
+- **Esperado:** Peonia, Morty e Eusine no corredor (9–11,13) só à noite no estado 11. Com a
+  Shaderoot: Morty, Eusine e Peonia (plaquinhas), “Are you ready?” — No: “The night is
+  long…”; Yes: a dança (narração, clarões), “The last ribbon falls.” e o 1F em (15,21) com
+  os três ao lado, “Sunset light…” e o Eusine. Sem a cenoura: “The dance opens the door…”.
+
+### T99 · A torre inteira
+- **Esperado:** tom de entardecer; os 3 sábios, a Kimono Girl e os companheiros com as falas
+  do §15.5; a porta (15,22) devolve ao teatro.
+
+### T100 · A escada
+- **Passos:** suba a escada de mão (14,4).
+- **Esperado:** trovão, tremor, clarão, “Thunder. Then light…”, telhado (10,11) em tom de
+  fogo e a cena do Tomo.
+
+### T101 · Vitória sobre o Tomo
+- **Esperado:** a fala de vitória, a sombra do Ho-Oh cruzando o topo da tela sem parar,
+  Morty e Eusine; o Tomo vai para (9,9).
+
+### T102 · Perder ou desistir do Tomo
+- **Esperado:** “Go back down, child…”, sem whiteout, time curado, jogador em (14,5). Subir
+  de novo repete a cena.
+
+### T103 · Spectrier: recusar e fugir
+- **Esperado:** “Offer it the Shaderoot Carrot?”; No fecha; Yes → Spectrier Lv60. Fugir ou
+  derrotar: “The black horse goes back to watching the stairs…” e ele fica.
+
+### T104 · Captura, o despertar e a Spell Tag
+- **Esperado:** o Spectrier some; “The smoke thins…”; B1F (16,13), Morty sobe até (17,13):
+  “Welcome back. You were gone three minutes…”, Spell Tag, “I'm staying a while…”. A
+  Shaderoot sai da bolsa. Estado 13. Se a cena for cortada, o Morty do ginásio entrega.
+
+### T105 · A lápide do Tomo
+- **Esperado:** lanterna (36,25) do quintal dos Sábios: antes, “A stone lantern…”; depois
+  do Spectrier, “A new stone stands by the lantern: “Brother Tomo…””.
+
+---
+
 ## Bloco G — Regressão fora da horta
 
 ### T39 · Plaquinhas de nome em outras cenas

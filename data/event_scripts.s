@@ -1723,6 +1723,8 @@ Common_Text_ReceivedMon:
 	.include "data/maps/Route30_House/scripts.inc"
 	.include "data/maps/Greenfield/scripts.inc"
 	.include "data/maps/Greenfield_Mansion/scripts.inc"
+	.include "data/maps/BrassTowerMemory_1F/scripts.inc"
+	.include "data/maps/BrassTowerMemory_Roof/scripts.inc"
 
 	.include "data/maps/Route30_MrPokemonsHouse/scripts.inc"
 

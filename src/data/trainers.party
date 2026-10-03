@@ -20587,3 +20587,36 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Ice Beam
 - Thunderbolt
 - Recover
+
+=== TRAINER_BRASS_TOMO ===
+Name: Tomo
+Class: Sage
+Pic: Sage
+Gender: Male
+Music: Hg Sage
+Double Battle: No
+AI: Smart Trainer
+
+Misdreavus
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Shadow Ball
+- Will-O-Wisp
+- Confuse Ray
+- Pain Split
+
+Ninetales
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Flamethrower
+- Extrasensory
+- Will-O-Wisp
+- Hypnosis
+
+Houndoom
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Flamethrower
+- Crunch
+- Nasty Plot
+- Sludge Bomb

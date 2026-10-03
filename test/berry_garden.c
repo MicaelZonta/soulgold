@@ -861,12 +861,12 @@ TEST("Greenfield's crystal goes away with the white path")
     gSaveBlock1Ptr->location.mapGroup = MAP_GROUP(MAP_GREENFIELD);
     gSaveBlock1Ptr->location.mapNum = MAP_NUM(MAP_GREENFIELD);
     VarSet(VAR_GARDEN_NEWS, 0);
-    EXPECT(GreenfieldCrystal_IsActive());
+    EXPECT_EQ(MapTint_Mode(), MAP_TINT_CRYSTAL);
     gSpecialVar_0x8004 = GARDEN_STORY_WHITE_PATH;
     GardenStory_Mark();
-    EXPECT(!GreenfieldCrystal_IsActive());
+    EXPECT_EQ(MapTint_Mode(), MAP_TINT_NONE);
     VarSet(VAR_GARDEN_NEWS, 0);
     gSaveBlock1Ptr->location.mapGroup = MAP_GROUP(MAP_ROUTE30);
     gSaveBlock1Ptr->location.mapNum = MAP_NUM(MAP_ROUTE30);
-    EXPECT(!GreenfieldCrystal_IsActive());
+    EXPECT_EQ(MapTint_Mode(), MAP_TINT_NONE);
 }

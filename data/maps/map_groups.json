@@ -623,7 +623,9 @@
     "MtEmber_RubyPath_B2F_Stairs_Frlg",
     "MtSilver_1F_RegigigasRoom",
     "Greenfield",
-    "Greenfield_Mansion"
+    "Greenfield_Mansion",
+    "BrassTowerMemory_1F",
+    "BrassTowerMemory_Roof"
   ],
   "gMapGroup_Dungeons2": [
     "AcuityCavern",

@@ -676,6 +676,11 @@ BerryGarden_EventScript_PryceCarrot::
 
 BerryGarden_EventScript_MortyHook::
 	goto_if_lt VAR_HARVEST_KING, HARVEST_KING_KING_CAME, BerryGarden_EventScript_StoryEnd
+	@ Part 15: the Spell Tag, if the scene in the Burned Tower was cut short.
+	goto_if_ne VAR_HARVEST_KING, HARVEST_KING_SPECTRIER, BerryGarden_EventScript_MortyHookCarrot
+	checkitem ITEM_SHADEROOT_CARROT
+	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_MortySpellTag
+BerryGarden_EventScript_MortyHookCarrot::
 	goto_if_gt VAR_HARVEST_KING, HARVEST_KING_SHADEROOT, BerryGarden_EventScript_StoryEnd
 	checkitem ITEM_SHADEROOT_CARROT
 	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_MortyCarrot

@@ -94,6 +94,12 @@
 #define GARDEN_STORY_CARROT_READY    4   // a new day came since: the carrot can be pulled at night
 #define GARDEN_STORY_LAUREL_PICKED   5   // Laurel the morning after: "You picked."
 #define GARDEN_STORY_WHITE_PATH      6   // the Glastrier left Greenfield with the player: the crystal is gone
+// MapTint_Mode (src/berry_garden.c): story places in another light.
+#define MAP_TINT_NONE                0
+#define MAP_TINT_CRYSTAL             1   // Greenfield before the Glastrier (part 14)
+#define MAP_TINT_DUSK                2   // the Brass Tower memory, 1F (part 15)
+#define MAP_TINT_FIRE                3   // the Brass Tower memory, roof
+
 #define GARDEN_STORY_COUNT           7
 
 // Act 1c: how many garden-only families Bugsy wants caught.

@@ -10376,6 +10376,16 @@
       "secondary_tileset": "gTileset_Inn",
       "border_filepath": "data/layouts/Greenfield_Mansion/border.bin",
       "blockdata_filepath": "data/layouts/Greenfield_Mansion/map.bin"
+    },
+    {
+      "id": "LAYOUT_BRASS_TOWER_MEMORY_1F",
+      "name": "BrassTowerMemory_1F_Layout",
+      "width": 27,
+      "height": 25,
+      "primary_tileset": "gTileset_Johto_Building",
+      "secondary_tileset": "gTileset_BurnedTower",
+      "border_filepath": "data/layouts/BrassTowerMemory_1F/border.bin",
+      "blockdata_filepath": "data/layouts/BrassTowerMemory_1F/map.bin"
     }
   ]
 }

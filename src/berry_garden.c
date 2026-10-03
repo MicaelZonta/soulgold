@@ -1356,26 +1356,62 @@ void GardenStory_Mark(void)
     VarSet(VAR_GARDEN_NEWS, VarGet(VAR_GARDEN_NEWS) | (1 << (STORY_SHIFT + gSpecialVar_0x8004)));
 }
 
-// Greenfield, part 14. The Unown crystal holds the town until the Glastrier
-// leaves with the player (GARDEN_STORY_WHITE_PATH); until then every map
-// palette is pulled toward pale ice-blue, keeping its light and dark. It is
-// the only "new art" of the town: the layout is New Bark's.
-bool32 GreenfieldCrystal_IsActive(void)
+// Story places told in another light (parts 14 and 15). Every map palette of
+// the place is pulled toward one colour, keeping its light and dark; it is the
+// only "new art" of these maps (their layouts are New Bark's, the Burned
+// Tower's and the Tin Tower roof's):
+//   Greenfield, until the Glastrier leaves (GARDEN_STORY_WHITE_PATH): crystal;
+//   the Brass Tower memory: the dusk before the fire (1F), the fire (roof).
+// src/fieldmap.c and src/overworld.c call MapTint_Apply when a mode is on.
+u32 MapTint_Mode(void)
 {
-    return gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_GREENFIELD)
-        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_GREENFIELD)
-        && !((VarGet(VAR_GARDEN_NEWS) >> (STORY_SHIFT + GARDEN_STORY_WHITE_PATH)) & 1);
+    u32 map = (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
+
+    if (map == MAP_GREENFIELD)
+        return ((VarGet(VAR_GARDEN_NEWS) >> (STORY_SHIFT + GARDEN_STORY_WHITE_PATH)) & 1) ? MAP_TINT_NONE : MAP_TINT_CRYSTAL;
+    if (map == MAP_BRASS_TOWER_MEMORY_1F)
+        return MAP_TINT_DUSK;
+    if (map == MAP_BRASS_TOWER_MEMORY_ROOF)
+        return MAP_TINT_FIRE;
+    return MAP_TINT_NONE;
+}
+
+// Each colour moves 3/4 of the way to a ramp of the tint, by its own light.
+static void TintTowardRamp(u16 *pal, u32 count, const u8 dark[3], const u8 light[3])
+{
+    for (; count != 0; count--, pal++)
+    {
+        u32 c[3] = { *pal & 0x1F, (*pal >> 5) & 0x1F, (*pal >> 10) & 0x1F };
+        u32 l = (c[0] * 5 + c[1] * 9 + c[2] * 2) / 16, k;
+
+        for (k = 0; k < 3; k++)
+            c[k] = ((dark[k] + (light[k] - dark[k]) * l / 31) * 3 + c[k]) / 4;
+        *pal = RGB(c[0], c[1], c[2]);
+    }
 }
 
 void GreenfieldCrystal_Tint(u16 *pal, u32 count)
 {
-    for (; count != 0; count--, pal++)
-    {
-        u32 r = *pal & 0x1F, g = (*pal >> 5) & 0x1F, b = (*pal >> 10) & 0x1F;
-        u32 light = (r * 5 + g * 9 + b * 2) / 16;
-        u32 cr = 6 + light * 22 / 31, cg = 8 + light * 23 / 31, cb = 14 + light * 17 / 31;
+    static const u8 dark[3] = { 6, 8, 14 }, light[3] = { 28, 31, 31 };
+    TintTowardRamp(pal, count, dark, light);
+}
 
-        *pal = RGB((cr * 3 + r) / 4, (cg * 3 + g) / 4, (cb * 3 + b) / 4);
+void MapTint_Apply(u16 *pal, u32 count)
+{
+    static const u8 duskDark[3] = { 5, 3, 2 }, duskLight[3] = { 31, 26, 17 };
+    static const u8 fireDark[3] = { 6, 1, 2 }, fireLight[3] = { 31, 19, 8 };
+
+    switch (MapTint_Mode())
+    {
+    case MAP_TINT_CRYSTAL:
+        GreenfieldCrystal_Tint(pal, count);
+        break;
+    case MAP_TINT_DUSK:
+        TintTowardRamp(pal, count, duskDark, duskLight);
+        break;
+    case MAP_TINT_FIRE:
+        TintTowardRamp(pal, count, fireDark, fireLight);
+        break;
     }
 }
 

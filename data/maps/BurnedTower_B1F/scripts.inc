@@ -11,10 +11,13 @@ BurnedTower_B1F_MapScripts::
 
 BurnedTower_B1F_OnTransition: 
 	callnative SetTimeBasedEncounters
+	@ Berry Master part 15: waking up from the Brass Tower memory.
+	call BerryGarden_EventScript_B1FTransition
 	end
 
 BurnedTower_B1F_OnFrame::
 	map_script_2 VAR_ECRUTEAK_CITY_STATE, 3, BurnedTower_B1F_EventScript_ReleaseBeasts
+	map_script_2 VAR_TEMP_1, 1, BerryGarden_EventScript_B1FWakeUp
 	.2byte 0
 
 BurnedTower_B1F_EventScript_ReleaseBeasts::
