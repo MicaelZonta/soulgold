@@ -135,6 +135,14 @@ Ferramentas:
     `start.sh`, título → START → Continue. Savestate não substitui esse
     passo (ele guarda a RAM inteira, inclusive o que o save perderia).
 
+14. **Atalhos pela RAM (Parte 14–16 do Berry Master).** Para ir direto a um NPC atrás
+    de piso de gelo ou treinadores: escreva `pos` em `gSaveBlock1Ptr` (offset 0, dois
+    `s16`) e recarregue o mapa por uma ação do debug que chame `BerryDebug_ReloadMap`.
+    Para não lutar meia hora contra um time escalado: HP 1 em `gBattleMons[1].hp`
+    (`offsetof(struct BattlePokemon, hp)`) e em `gEnemyParty[i].hp` (`offsetof(struct
+    Pokemon, hp)`) **só nos slots que têm espécie** — HP em slot vazio faz o jogo tentar
+    mandar um Pokémon que não existe e a batalha trava. Diga no relatório quando usou.
+
 ## 4. Rodar um roteiro e reportar
 
 - Siga o roteiro **na ordem**; faça `save /tmp/qa/st/<bloco>.ss` no começo
