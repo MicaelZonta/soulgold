@@ -837,6 +837,76 @@ vencidos.
 
 ---
 
+## Bloco F9 — Caminho branco: Greenfield (Parte 14)
+
+`Story… → 10 Iceroot in bag` (põe o estado 10 e a Iceroot na bolsa). O portão fica no
+recanto oeste das Ruins of Alph, (2,26)–(2,27), na área da câmara do Kabuto (chega-se
+pela Union Cave B1F; no debug, `warp 24 5 8` e dois passos). Para o Glastrier, um time
+que aguente um Lv60 e Poké Balls.
+
+### T88 · Portão fechado
+- **Passos:** sem a Iceroot (ou com o estado 11), entre no recanto.
+- **Esperado:** “Between the rocks, the light bends… / …It won't let you by.” e o
+  jogador volta para (3,26).
+
+### T89 · Portão aberto e a chegada
+- **Passos:** estado 10 com a Iceroot; entre no recanto.
+- **Esperado:** “The Iceroot Carrot in your Bag turns cold. / The glass between the rocks
+  gives way…”, Greenfield em (1,12) virado para a cidade, tudo em tom de cristal. A Peonia
+  (3,12) vira e diz “It's… it's all glass… The TREES are glass. / Freezington's colder,
+  though. …Okay, it isn't.” e volta a olhar a cidade. Falando com ela: “I'll keep watch out
+  here…”.
+
+### T90 · Greenfield parada no tempo
+- **Esperado:** moradora (11,16) “Lovely morning, isn't it?”, velho (20,22) “The flowers
+  will open any day now.”, menino (10,29) “Molly said she'd play with me after lunch.”;
+  placa (10,14) “GREENFIELD / Where the flowers bloom all year”; as portas fechadas
+  (20,11), (4,21), (15,21), (15,28), (12,7): “The door is sealed in crystal…”.
+
+### T91 · Molly no saguão
+- **Passos:** a porta do alto (10,9); fale com a Molly ao piano (16,17).
+- **Esperado:** plaquinha Molly, “Oh. A visitor…” até “I know that feeling.”; narração
+  sem plaquinha “… passed on the old man's good evening.”; “The old man from Mahogany? /
+  …He never came to dinner. Tell him the invitation stands.” Na segunda conversa: “It
+  sleeps in Papa's study, up the hall…”.
+
+### T92 · O Scientist
+- **Passos:** suba pelo corredor oeste.
+- **Esperado:** ao cruzar a linha 11 o Scientist Dalton (5,11) vem até o jogador
+  (plaquinha) e luta (Unown, Bronzong, Porygon2 na escala da party). Perder = whiteout.
+  Vencido: “My watch says 9:14…”; depois do Glastrier: “9:15! It moved!…”.
+
+### T93 · A nota do Hale
+- **Passos:** a mesa (14,3), de (14,4).
+- **Esperado:** “A note in Professor Hale's hand:” e a nota entre aspas curvas.
+
+### T94 · Glastrier: recusar, fugir, derrotar
+- **Passos:** de (13,6), fale com o Glastrier. No; depois Yes e fuja; depois Yes e
+  derrote sem capturar.
+- **Esperado:** “Offer it the Iceroot Carrot?”; No fecha. Yes: “The great horse opens one
+  eye…”, Glastrier Lv60. Fugindo ou derrotando: “The great horse lowers its head onto the
+  crystal again. / It isn't going anywhere. Neither is the cold.”, ele continua ali e a
+  cenoura continua na bolsa. Com a bolsa sem espaço para o Never-Melt Ice: “Your Bag is
+  too full…” e nada de batalha.
+
+### T95 · Captura, Molly e o Never-Melt Ice
+- **Esperado:** capturado, o mapa recarrega com o jogador em (13,6), sem o Glastrier; a
+  Molly sobe até (14,6): “It's melting…”, “Obtained the Never-Melt Ice!”, “The piano's
+  out of tune… / I think I love it.” A Iceroot sai da bolsa. Estado 12.
+
+### T96 · Greenfield depois
+- **Esperado:** Greenfield com a cor normal; moradora “What a long morning that was!…”,
+  velho “Well, look at that. They opened…”, menino “Molly played with me!…”; portas “The
+  door is locked. Someone inside is laughing…”; sem a Peonia. A borda oeste (x 0) leva às
+  ruínas (3,26), e o portão agora abre direto, sem fala. Molly ao piano (depois de
+  recarregar): “The piano's out of tune…”.
+
+### T97 · Pryce: o casaco
+- **Esperado:** no ginásio de Mahogany (já vencido), depois do Glastrier: “…She said the
+  invitation stands? / Hm. I'll need a better coat.” e a fala de sempre.
+
+---
+
 ## Bloco G — Regressão fora da horta
 
 ### T39 · Plaquinhas de nome em outras cenas

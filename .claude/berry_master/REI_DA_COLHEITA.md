@@ -2156,6 +2156,10 @@ jogador (13,8) e Peonia (11,9) no salão. Só a mansão não tem `*_objects.json
 objetos dela estão em `gera.py` (`MOLLY`, `GLAS`). Coordenadas medidas pelo
 `check_objects` do `gera.py`; conferir de novo com `dump_mapa.py` depois de instalar.
 
+> **Instalado na Parte 14 (03/10/2026)** — Greenfield e a mansão Hale estão no jogo; o que
+> divergiu deste protótipo (cristal por código, portão no recanto oeste das ruínas, “TREES”
+> no lugar de “FOUNTAIN”) está em “Parte 14 — feita” do plano.
+
 **Greenfield depois (estado 12).** A cor volta, as flores crescem, e as três falas
 “presas” trocam por falas novas: o dia deles andou. As falas novas ainda não foram
 escritas (Parte 14 de [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md)).

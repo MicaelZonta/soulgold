@@ -475,7 +475,26 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RuinsOfAlph_Outside_EventScript_CrystalGate"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "RuinsOfAlph_Outside_EventScript_CrystalGate"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

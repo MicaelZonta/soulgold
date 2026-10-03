@@ -941,7 +941,7 @@
 #define TRAINER_GARDEN_PEONY_1            960  // Berry Master garden (part 13)
 #define TRAINER_GARDEN_PEONY_2            961  // Berry Master garden (part 13)
 #define TRAINER_GARDEN_PEONY_3            962  // Berry Master garden (part 13)
-#define TRAINER_UNUSED_99                 963
+#define TRAINER_GREENFIELD_SCIENTIST      963  // Berry Master, Greenfield mansion (part 14)
 #define TRAINER_LUSAMINE                  964
 #define TRAINER_LILLIE                    965
 #define TRAINER_KUKUI                     966

@@ -1327,6 +1327,19 @@ Debug_EventScript_BerryStory7::
 	setvar VAR_0x8004, 7
 	goto Debug_EventScript_BerrySetStory
 
+Debug_EventScript_BerryStory9::
+	setvar VAR_0x8004, 9
+	goto Debug_EventScript_BerrySetStory
+
+@ 10 and 11 (part 14): the carrot already pulled, and in the bag.
+Debug_EventScript_BerryStory10::
+	setvar VAR_0x8004, 10
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory11::
+	setvar VAR_0x8004, 11
+	goto Debug_EventScript_BerrySetStory
+
 Debug_EventScript_BerryStory8::
 	setvar VAR_0x8004, 8
 Debug_EventScript_BerrySetStory::

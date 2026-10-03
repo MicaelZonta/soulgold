@@ -82,6 +82,8 @@
 #define HARVEST_KING_KING_CAME       9   // Act 5: Calyrex, Peony and Peonia (13.3, 14.2)
 #define HARVEST_KING_ICEROOT         10  // Act 5b: the Iceroot seed planted (14.2)
 #define HARVEST_KING_SHADEROOT       11  // Act 5b: the Shaderoot seed planted
+#define HARVEST_KING_GLASTRIER       12  // Act 6, white path: the Glastrier caught in Greenfield (part 14)
+#define HARVEST_KING_SPECTRIER       13  // Act 6, dark path: the Spectrier caught in the Brass Tower (part 15)
 #define HARVEST_KING_GUESTS_LEAVE    15  // Peony and Peonia are guests up to here (14.2)
 
 // One-time story lines (GardenStory_Check / _Mark), said once in the game.
@@ -91,6 +93,7 @@
 #define GARDEN_STORY_CARROT_PLANTED  3   // Act 5b: a seed went into Laurel's plot
 #define GARDEN_STORY_CARROT_READY    4   // a new day came since: the carrot can be pulled at night
 #define GARDEN_STORY_LAUREL_PICKED   5   // Laurel the morning after: "You picked."
+#define GARDEN_STORY_WHITE_PATH      6   // the Glastrier left Greenfield with the player: the crystal is gone
 #define GARDEN_STORY_COUNT           7
 
 // Act 1c: how many garden-only families Bugsy wants caught.

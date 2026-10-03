@@ -1355,7 +1355,7 @@ estado 9; placa: menu, “Not yet” não muda nada; Iceroot → “You planted 
 mesmo dia “Nothing yet…”; +24 h, à noite → Iceroot Carrot (item-chave, RAM); casa à
 noite: o Calyrex pelo Peony dormindo (banco M) e a Peonia arrumando a mochila. **Não
 testado no jogo:** Shaderoot, Peony de manhã e a batalha dele, Peonia de dia, Pryce e
-Morty, “You picked.” da Laurel.
+Morty (rodados depois, na Parte 14: T87), “You picked.” da Laurel.
 
 ---
 
@@ -1394,6 +1394,78 @@ Morty, “You picked.” da Laurel.
 
 **Teste no jogo:** fugir, perder e derrotar sem capturar o Glastrier → volta; capturar
 → estado 12, cor volta; o outro caminho continua fechado.
+
+### Parte 14 — feita (03/10/2026)
+
+**Entregue:** os dois mapas do protótipo instalados e jogáveis — `Greenfield` (30×39,
+layout `LAYOUT_GREENFIELD`, `MAP_TYPE_TOWN`, `MUS_HG_SINJOU_RUINS`) e
+`Greenfield_Mansion` (26×23, `MUS_HG_LIGHTHOUSE`), no fim do `gMapGroup_Dungeons`
+(`MAP_GREENFIELD` = 24.120, `MAP_GREENFIELD_MANSION` = 24.121). O portão de cristal nas
+Ruins of Alph, os três moradores presos, a Peonia na entrada, a Molly, o Scientist Dalton
+(`TRAINER_GREENFIELD_SCIENTIST` = 963, o antigo `TRAINER_UNUSED_99`, escala sempre ligada
+como os da horta), a nota do Hale, o Glastrier Lv60 (só a captura avança), o Never-Melt Ice,
+Greenfield “depois” e a fala do casaco do Pryce. Estados `HARVEST_KING_GLASTRIER` (12) e
+`_SPECTRIER` (13, para a Parte 15); fala de uma vez `GARDEN_STORY_WHITE_PATH` (bit 6, o
+último livre do `VAR_GARDEN_NEWS`). Nenhuma flag persistente nova. Debug `Story… → 9 / 10
+Iceroot in bag / 11 Shaderoot in bag` (10 e 11 já põem a cenoura na bolsa). 2 testes de C
+novos (55/55).
+
+**Onde está:**
+- `data/maps/Greenfield/scripts.inc` e `data/maps/Greenfield_Mansion/scripts.inc` (planta
+  no topo de cada um); o portão em `data/maps/RuinsOfAlph_Outside/scripts.pory` (bloco
+  `raw`) com `coord_events` em (2,26) e (2,27); o casaco do Pryce em
+  `data/scripts/berry_garden_steeds.inc` (arquivo novo das Partes 14–15), chamado pelo
+  `BerryGarden_EventScript_PryceHook`.
+- O cristal: `GreenfieldCrystal_IsActive` / `GreenfieldCrystal_Tint`
+  (`src/berry_garden.c`), aplicados em `LoadTilesetPalette` (`src/fieldmap.c`) e em
+  `UpdateAltBgPalettes` (`src/overworld.c`).
+
+**Decisões:**
+1. **Cristal por código, não por tileset copiado.** O passo 1 pedia um secundário copiado
+   com paletas de cristal e de “depois”. Ficou uma função que puxa todas as paletas do
+   mapa de Greenfield para azul-gelo (mantendo claro e escuro) enquanto o bit
+   `WHITE_PATH` não está ligado; o “depois” é a paleta original do New Bark. Zero tile e
+   zero paleta nova, e a troca dia/noite continua valendo (o tom é reaplicado quando a
+   paleta noturna é recalculada).
+2. **Cristal só em Greenfield.** O salão da mansão divide as paletas com o saguão (tileset
+   do `DarkraiInn1`); “cristal só no salão” pede tileset próprio — **pendente**. Os NPCs
+   mantêm a cor normal.
+3. **O portão** é o recanto sem saída (2,26)–(2,27) na parte oeste das ruínas (área da
+   câmara do Kabuto, que se alcança pela Union Cave B1F). Abre com estado 10 + Iceroot na
+   bolsa (“The Iceroot Carrot in your Bag turns cold…”) e, depois do Glastrier, sempre,
+   sem fala. Fora isso — inclusive no caminho escuro (estados 11/13) — uma fala e um passo
+   para trás. Por isso a mansão “trancada pelo cristal” do passo 6 é o próprio portão: no
+   caminho escuro não se entra em Greenfield. Warps por script (`warp`), nos dois
+   sentidos; `map_graph` mostra Ruins → Greenfield → mansão alcançáveis.
+4. **Peonia** fica na entrada (3,12) só no estado 10; ao chegar pelo portão ela fala a
+   linha do §15.4 (a cada chegada no estado 10). “The FOUNTAIN is glass” virou “The TREES
+   are glass” (o mapa aprovado não tem fonte). Ela não some da horta enquanto isso — a
+   horta e Greenfield nunca estão na tela juntas.
+5. **O Scientist** (5,11) olha para oeste sobre a linha 11, que todo caminho até o salão
+   cruza: a luta é obrigatória. Time Unown / Bronzong / Porygon2, escala pela party.
+6. **Glastrier:** oferecer a cenoura (Yes/No) abre a batalha (Lv60, sem escala, como o
+   §8.1). Fugir ou derrotar: “It isn't going anywhere…” e ele fica; perder: whiteout
+   normal. Antes de oferecer, `checkitemspace` do Never-Melt Ice.
+7. **Depois da captura** o mapa recarrega com o jogador em (13,6) e a Molly sobe até o lado
+   dele. **A cenoura é a marca de “presente devido”**: ela só sai da bolsa quando o
+   Never-Melt Ice entra; se a cena for interrompida, a Molly ao piano termina a entrega.
+   Sem flag nova. Nessa visita a Molly do piano fica escondida (uma Molly por vez).
+8. **Molly e o recado do Pryce:** a narração “{PLAYER} passed on the old man's good
+   evening.” vem logo depois da primeira fala dela (não há como saber se o jogador ouviu
+   o Pryce sem gastar bit; ele só chega ali pelo recado).
+9. **Falas novas dos moradores** (pendência 3 do autor): propostas no script, marcadas
+   “for the author to approve”.
+10. **Pryce depois:** “…She said the invitation stands? / Hm. I'll need a better coat.”
+    sempre que se fala com ele depois do Glastrier.
+
+**QA no jogo (headless, 03/10):** T88–T97 (bloco F9 do `TESTES_NO_JOGO.md`) e o T87 da
+Parte 13. Portão fechado (sem cenoura e no estado 11), aberto com a Iceroot, chegada com a
+Peonia e o tom de cristal; moradores, placa, porta; Molly com o recado; Scientist avista,
+escala e o whiteout ao perder; nota do Hale; Glastrier: recusar, fugir, derrotar sem
+capturar, capturar; recarga, Molly e o Never-Melt Ice (cenoura saiu, RAM); Greenfield com
+cor, falas novas, sem a Peonia; saída e volta pelo portão; o casaco do Pryce. **Não jogado:**
+a vitória contra o Scientist (o time de teste não tinha tipo para o Bronzong; a fala de
+depois foi conferida com a flag ligada na RAM).
 
 ---
 

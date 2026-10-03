@@ -11,6 +11,7 @@
 #include "berry.h"
 #include "berry_garden.h"
 #include "clock.h"
+#include "palette.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "field_screen_effect.h"
@@ -28,6 +29,7 @@
 #include "string_util.h"
 #include "wild_encounter.h"
 #include "constants/berry.h"
+#include "constants/rgb.h"
 #include "constants/flags.h"
 #include "constants/items.h"
 #include "constants/maps.h"
@@ -1354,6 +1356,29 @@ void GardenStory_Mark(void)
     VarSet(VAR_GARDEN_NEWS, VarGet(VAR_GARDEN_NEWS) | (1 << (STORY_SHIFT + gSpecialVar_0x8004)));
 }
 
+// Greenfield, part 14. The Unown crystal holds the town until the Glastrier
+// leaves with the player (GARDEN_STORY_WHITE_PATH); until then every map
+// palette is pulled toward pale ice-blue, keeping its light and dark. It is
+// the only "new art" of the town: the layout is New Bark's.
+bool32 GreenfieldCrystal_IsActive(void)
+{
+    return gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_GREENFIELD)
+        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_GREENFIELD)
+        && !((VarGet(VAR_GARDEN_NEWS) >> (STORY_SHIFT + GARDEN_STORY_WHITE_PATH)) & 1);
+}
+
+void GreenfieldCrystal_Tint(u16 *pal, u32 count)
+{
+    for (; count != 0; count--, pal++)
+    {
+        u32 r = *pal & 0x1F, g = (*pal >> 5) & 0x1F, b = (*pal >> 10) & 0x1F;
+        u32 light = (r * 5 + g * 9 + b * 2) / 16;
+        u32 cr = 6 + light * 22 / 31, cg = 8 + light * 23 / 31, cb = 14 + light * 17 / 31;
+
+        *pal = RGB((cr * 3 + r) / 4, (cg * 3 + g) / 4, (cb * 3 + b) / 4);
+    }
+}
+
 // The Enigma's stage in Laurel's plot (BERRY_STAGE_*), 0 if anything else grows there.
 u16 GardenKingsPlot_Stage(void)
 {
@@ -1476,6 +1501,14 @@ void BerryDebug_SetStory(void)
         news |= 1 << (STORY_SHIFT + GARDEN_STORY_BRAM_BUGS);
     if (gSpecialVar_0x8004 > HARVEST_KING_FOOTPRINTS)
         news |= 1 << (STORY_SHIFT + GARDEN_STORY_LAUREL_HEARD);
+    if (gSpecialVar_0x8004 >= HARVEST_KING_ICEROOT)
+        news |= (1 << (STORY_SHIFT + GARDEN_STORY_CARROT_PLANTED))
+              | (1 << (STORY_SHIFT + GARDEN_STORY_CARROT_READY))
+              | (1 << (STORY_SHIFT + GARDEN_STORY_LAUREL_PICKED));
+    if (gSpecialVar_0x8004 == HARVEST_KING_ICEROOT && !CheckBagHasItem(ITEM_ICEROOT_CARROT, 1))
+        AddBagItem(ITEM_ICEROOT_CARROT, 1);
+    if (gSpecialVar_0x8004 == HARVEST_KING_SHADEROOT && !CheckBagHasItem(ITEM_SHADEROOT_CARROT, 1))
+        AddBagItem(ITEM_SHADEROOT_CARROT, 1);
     VarSet(VAR_GARDEN_NEWS, news);
     VarSet(VAR_HARVEST_KING, gSpecialVar_0x8004);
 }

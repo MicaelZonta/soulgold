@@ -461,6 +461,9 @@ extern const u8 Debug_EventScript_BerryStory7[];
 extern const u8 Debug_EventScript_BerryStory8[];
 extern const u8 Debug_EventScript_BerryKingsPlotSprout[];
 extern const u8 Debug_EventScript_BerryKingsPlotRipe[];
+extern const u8 Debug_EventScript_BerryStory9[];
+extern const u8 Debug_EventScript_BerryStory10[];
+extern const u8 Debug_EventScript_BerryStory11[];
 extern const u8 Debug_EventScript_BerryHearts5[];
 extern const u8 Debug_EventScript_BerryHearts12[];
 extern const u8 Debug_EventScript_BerryHearts15[];
@@ -907,6 +910,9 @@ static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster_Story[] =
     { COMPOUND_STRING("8 first leaf (4)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory8 },
     { COMPOUND_STRING("Enigma sprouts (Laurel)"), DebugAction_ExecuteScript, Debug_EventScript_BerryKingsPlotSprout },
     { COMPOUND_STRING("Enigma ripe (Laurel)"),    DebugAction_ExecuteScript, Debug_EventScript_BerryKingsPlotRipe },
+    { COMPOUND_STRING("9 the King came (5)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory9 },
+    { COMPOUND_STRING("10 Iceroot in bag (5b)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory10 },
+    { COMPOUND_STRING("11 Shaderoot in bag (5b)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory11 },
     { NULL }
 };
 

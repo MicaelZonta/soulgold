@@ -5,6 +5,7 @@
 #include "battle_setup.h"
 #include "battle_util.h"
 #include "berry.h"
+#include "berry_garden.h"
 #include "bg.h"
 #include "bug_contest.h"
 #include "cable_club.h"
@@ -1744,6 +1745,8 @@ void UpdateAltBgPalettes(u16 palettes)
                 AvgPaletteWeighted(&((u16 *)primary->palettes)[i * 16], &((u16 *)primary->palettes)[((i + 9) % 16) * 16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
             else
                 AvgPaletteWeighted(&((u16 *)secondary->palettes)[i * 16], &((u16 *)secondary->palettes)[((i + 9) % 16) * 16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
+            if (GreenfieldCrystal_IsActive())
+                GreenfieldCrystal_Tint(gPlttBufferUnfaded + i * 16, 16);
         }
         i++;
         palettes >>= 1;

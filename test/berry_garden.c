@@ -14,6 +14,8 @@
 #include "constants/event_object_movement.h"
 #include "constants/flags.h"
 #include "constants/items.h"
+#include "constants/rgb.h"
+#include "constants/maps.h"
 
 // Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md,
 // parts 2 to 13).
@@ -840,4 +842,31 @@ TEST("The carrot is ready only after a new day since the seed")
     GardenRollDay();
     gSpecialVar_0x8004 = GARDEN_STORY_CARROT_READY;
     EXPECT(GardenStory_Check());
+}
+
+// Part 14: Greenfield's crystal.
+TEST("Greenfield's crystal tint is pale blue and keeps light and dark")
+{
+    u16 pal[4] = { RGB(0, 0, 0), RGB(31, 31, 31), RGB(31, 0, 0), RGB(0, 24, 0) };
+
+    GreenfieldCrystal_Tint(pal, 4);
+    EXPECT_LT(pal[0] & 0x1F, (pal[1] & 0x1F));                    // dark stays darker
+    EXPECT_GE((pal[1] >> 10) & 0x1F, 30);                         // white stays near white
+    EXPECT_GT((pal[2] >> 10) & 0x1F, (pal[2] & 0x1F) / 2);       // red loses to blue
+    EXPECT_GT((pal[3] >> 10) & 0x1F, 10);                        // green turns icy
+}
+
+TEST("Greenfield's crystal goes away with the white path")
+{
+    gSaveBlock1Ptr->location.mapGroup = MAP_GROUP(MAP_GREENFIELD);
+    gSaveBlock1Ptr->location.mapNum = MAP_NUM(MAP_GREENFIELD);
+    VarSet(VAR_GARDEN_NEWS, 0);
+    EXPECT(GreenfieldCrystal_IsActive());
+    gSpecialVar_0x8004 = GARDEN_STORY_WHITE_PATH;
+    GardenStory_Mark();
+    EXPECT(!GreenfieldCrystal_IsActive());
+    VarSet(VAR_GARDEN_NEWS, 0);
+    gSaveBlock1Ptr->location.mapGroup = MAP_GROUP(MAP_ROUTE30);
+    gSaveBlock1Ptr->location.mapNum = MAP_NUM(MAP_ROUTE30);
+    EXPECT(!GreenfieldCrystal_IsActive());
 }

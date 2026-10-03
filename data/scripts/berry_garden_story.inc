@@ -660,6 +660,9 @@ BerryGarden_EventScript_PeoniaGarden::
 @ ---------------------------------------------------------------------------
 BerryGarden_EventScript_PryceHook::
 	goto_if_lt VAR_HARVEST_KING, HARVEST_KING_KING_CAME, BerryGarden_EventScript_StoryEnd
+	setvar VAR_0x8004, GARDEN_STORY_WHITE_PATH
+	specialvar VAR_RESULT, GardenStory_Check
+	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_PryceCoat
 	goto_if_gt VAR_HARVEST_KING, HARVEST_KING_SHADEROOT, BerryGarden_EventScript_StoryEnd
 	checkitem ITEM_ICEROOT_CARROT
 	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_PryceCarrot

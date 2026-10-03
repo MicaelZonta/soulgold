@@ -20554,3 +20554,36 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Dragon Pulse
 - Thunderbolt
 - Stealth Rock
+
+=== TRAINER_GREENFIELD_SCIENTIST ===
+Name: Dalton
+Class: Scientist
+Pic: Scientist
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Smart Trainer
+
+Unown
+Level: 38
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Hidden Power
+- None
+- None
+- None
+
+Bronzong
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Psychic
+- Flash Cannon
+- Hypnosis
+- Reflect
+
+Porygon2
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Tri Attack
+- Ice Beam
+- Thunderbolt
+- Recover

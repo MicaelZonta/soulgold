@@ -10356,6 +10356,26 @@
       "secondary_tileset": "gTileset_UltraSpaceArena",
       "border_filepath": "data/layouts/UltraSpaceArena/border.bin",
       "blockdata_filepath": "data/layouts/UltraSpaceArena/map.bin"
+    },
+    {
+      "id": "LAYOUT_GREENFIELD",
+      "name": "Greenfield_Layout",
+      "width": 30,
+      "height": 39,
+      "primary_tileset": "gTileset_Johto_General",
+      "secondary_tileset": "gTileset_NewBarkTown",
+      "border_filepath": "data/layouts/Greenfield/border.bin",
+      "blockdata_filepath": "data/layouts/Greenfield/map.bin"
+    },
+    {
+      "id": "LAYOUT_GREENFIELD_MANSION",
+      "name": "Greenfield_Mansion_Layout",
+      "width": 26,
+      "height": 23,
+      "primary_tileset": "gTileset_inn",
+      "secondary_tileset": "gTileset_Inn",
+      "border_filepath": "data/layouts/Greenfield_Mansion/border.bin",
+      "blockdata_filepath": "data/layouts/Greenfield_Mansion/map.bin"
     }
   ]
 }

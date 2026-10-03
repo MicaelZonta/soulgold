@@ -596,6 +596,8 @@ enum
     MAP_MT_EMBER_RUBY_PATH_B1F_STAIRS            = (117 | (24 << 8)),
     MAP_MT_EMBER_RUBY_PATH_B2F_STAIRS            = (118 | (24 << 8)),
     MAP_MT_SILVER_1F_REGIGIGAS_ROOM              = (119 | (24 << 8)),
+    MAP_GREENFIELD                               = (120 | (24 << 8)),
+    MAP_GREENFIELD_MANSION                       = (121 | (24 << 8)),
 
     // gMapGroup_Dungeons2
     MAP_ACUITY_CAVERN                     = (0 | (25 << 8)),

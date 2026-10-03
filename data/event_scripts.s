@@ -1207,6 +1207,7 @@ Common_Text_ReceivedMon:
 	.include "data/scripts/berry_garden_lines.inc"
 	.include "data/scripts/berry_garden.inc"
 	.include "data/scripts/berry_garden_story.inc"
+	.include "data/scripts/berry_garden_steeds.inc"
 	.include "data/scripts/secret_base.inc"
 	.include "data/scripts/cable_club.inc"
 	.include "data/text/cable_club.inc"
@@ -1720,6 +1721,8 @@ Common_Text_ReceivedMon:
 	.include "data/maps/Route39_Barn/scripts.inc"
 
 	.include "data/maps/Route30_House/scripts.inc"
+	.include "data/maps/Greenfield/scripts.inc"
+	.include "data/maps/Greenfield_Mansion/scripts.inc"
 
 	.include "data/maps/Route30_MrPokemonsHouse/scripts.inc"
 
