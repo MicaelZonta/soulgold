@@ -20455,3 +20455,102 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Sludge Wave
 - Mortal Spin
 - Stealth Rock
+
+=== TRAINER_GARDEN_PEONY_1 ===
+Name: Peony
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Copperajah
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Iron Head
+- Heavy Slam
+- Play Rough
+- Stealth Rock
+
+Aggron
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Iron Head
+- Rock Slide
+- Earthquake
+- Iron Defense
+
+Bronzong
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Gyro Ball
+- Extrasensory
+- Trick Room
+- Calm Mind
+
+=== TRAINER_GARDEN_PEONY_2 ===
+Name: Peony
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Copperajah
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Iron Head
+- Heavy Slam
+- Play Rough
+- Stealth Rock
+
+Excadrill
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Iron Head
+- Earthquake
+- Rock Slide
+- Swords Dance
+
+Perrserker
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Iron Head
+- Night Slash
+- Fake Out
+- Swords Dance
+
+=== TRAINER_GARDEN_PEONY_3 ===
+Name: Peony
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Copperajah
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Iron Head
+- Heavy Slam
+- Play Rough
+- Stealth Rock
+
+Corviknight
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Brave Bird
+- Iron Head
+- Bulk Up
+- Roost
+
+Duraludon
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Flash Cannon
+- Dragon Pulse
+- Thunderbolt
+- Stealth Rock

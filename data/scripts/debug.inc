@@ -1336,7 +1336,13 @@ Debug_EventScript_BerrySetStory::
 	msgbox Debug_Text_BerryStorySet, MSGBOX_DEFAULT
 	goto Debug_EventScript_BerryReload
 
+Debug_EventScript_BerryKingsPlotRipe::
+	setvar VAR_0x8004, TRUE
+	goto Debug_EventScript_BerryKingsPlotSet
+
 Debug_EventScript_BerryKingsPlotSprout::
+	setvar VAR_0x8004, FALSE
+Debug_EventScript_BerryKingsPlotSet::
 	lockall
 	special BerryDebug_KingsPlotSprout
 	msgbox Debug_Text_BerryKingsPlotSprout, MSGBOX_DEFAULT
@@ -1607,8 +1613,8 @@ Debug_Text_BerryStorySet:
 	.string "Harvest King story: state {STR_VAR_1}.$"
 
 Debug_Text_BerryKingsPlotSprout:
-	.string "An Enigma just sprouted in Laurel's\n"
-	.string "plot.$"
+	.string "An Enigma in Laurel's plot\n"
+	.string "(sprouted or ripe).$"
 
 Debug_Text_BerryKlara:
 	.string "Klara raids this morning: in the\n"

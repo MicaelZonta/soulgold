@@ -735,6 +735,7 @@ gSpecials::
 	def_special GardenPlots_HaveEnigma
 	def_special GardenPests_FamiliesCaught
 	def_special GardenPest_LastSpecies
+	def_special GardenKingsPlot_Empty
 	def_special BerryDebug_SetStory
 	def_special BerryDebug_KingsPlotSprout
 	def_special BerryDebug_NewOrder

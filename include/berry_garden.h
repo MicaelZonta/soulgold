@@ -64,6 +64,7 @@ u16 GardenKingsPlot_Stage(void);
 u16 GardenPlots_HaveEnigma(void);
 u16 GardenPests_FamiliesCaught(void);
 u16 GardenPest_LastSpecies(void);
+void GardenKingsPlot_Empty(void);
 
 // Pests and weeds (part 10): only garden plots (src/berry.c asks these).
 bool32 IsBerryGardenTree(u32 treeId);

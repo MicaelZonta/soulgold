@@ -118,6 +118,8 @@ MahoganyTown_Gym_EventScript_Pryce_Battle3::
 	goto MahoganyTown_Gym_EventScript_PryceVictory
 
 MahoganyTown_Gym_EventScript_Pryce_Defeated::
+	@ The Harvest King (Berry Master part 13): the Iceroot, or a hook.
+	call BerryGarden_EventScript_PryceHook
 	msgbox MahoganyTown_Gym_Text_CherishPokemon, MSGBOX_DEFAULT
 	closemessage
 	release

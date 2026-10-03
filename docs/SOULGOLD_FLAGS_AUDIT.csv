@@ -20,7 +20,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0xA,10,FLAG_TEMP_A,TEMP,EM_USO,2,19,16,CherrygroveCity;GoldenrodCity_DepartmentStore_5F;IcePath_B4F;MtMortar_Depths_1,MULTI_MAPA(6),Unused Flag
 0xA,10,FLAG_TEMP_HIDE_BRAM,TEMP,EM_USO,0,1,5,Route30;Route30_House,GLOBAL(codigo),
 0xB,11,FLAG_TEMP_B,TEMP,EM_USO,0,7,7,NewBarkTown;SunMoonAltar,MULTI_MAPA(2),Unused Flag
-0xB,11,FLAG_TEMP_HIDE_LAUREL,TEMP,EM_USO,2,2,4,Route30;Route30_House,GLOBAL(codigo),
+0xB,11,FLAG_TEMP_HIDE_LAUREL,TEMP,EM_USO,2,3,4,Route30;Route30_House,GLOBAL(codigo),
 0xC,12,FLAG_TEMP_C,TEMP,EM_USO,0,6,7,NewBarkTown;SunMoonAltar,MULTI_MAPA(2),Unused Flag
 0xC,12,FLAG_TEMP_HIDE_TILLY,TEMP,EM_USO,0,0,3,Route30;Route30_House,GLOBAL(codigo),
 0xD,13,FLAG_TEMP_D,TEMP,EM_USO,1,1,2,SunMoonAltar,MAPA_UNICO:SunMoonAltar,Unused Flag
@@ -33,11 +33,14 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x10,16,FLAG_TEMP_HIDE_KLARA,TEMP,EM_USO,0,2,4,Route30,GLOBAL(codigo),Route30: Klara's morning raid (part 11)
 0x11,17,FLAG_TEMP_11,TEMP,EM_USO,0,0,26,Route110_TrickHousePuzzle4;Route120,MULTI_MAPA(2),
 0x11,17,FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE,TEMP,SO_MAPAS_FORA_DA_ROM,0,0,1,,,fora da ROM
-0x12,18,FLAG_TEMP_12,TEMP,EM_USO,0,1,31,MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B1F_Stairs_Frlg;MtEmber_RubyPath_B2F_Frlg,MULTI_MAPA(10),
-0x12,18,FLAG_TEMP_HIDE_SPECTRIER,TEMP,EM_USO,1,2,4,Route30,GLOBAL(codigo),Route30: Act 2's night visitor (part 12)
+0x12,18,FLAG_TEMP_12,TEMP,EM_USO,0,1,32,MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B1F_Stairs_Frlg;MtEmber_RubyPath_B2F_Frlg,MULTI_MAPA(10),
+0x12,18,FLAG_TEMP_HIDE_SPECTRIER,TEMP,EM_USO,1,2,5,Route30,GLOBAL(codigo),Route30: Act 2's night visitor (part 12)
 0x13,19,FLAG_TEMP_13,TEMP,EM_USO,0,1,26,MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B2F_Frlg;MtEmber_RubyPath_B2F_Stairs_Frlg,MULTI_MAPA(8),
+0x13,19,FLAG_TEMP_HIDE_PEONY,TEMP,EM_USO,0,1,3,Route30;Route30_House,GLOBAL(codigo),"Route30 and house: Peony, the guest (part 13)"
 0x14,20,FLAG_TEMP_14,TEMP,EM_USO,0,1,21,IlexForest;MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B2F_Frlg,MULTI_MAPA(9),
+0x14,20,FLAG_TEMP_HIDE_PEONIA,TEMP,EM_USO,0,2,4,Route30;Route30_House,GLOBAL(codigo),Route30 and house: Peonia
 0x15,21,FLAG_TEMP_15,TEMP,EM_USO,0,1,21,MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B2F_Frlg;MtEmber_RubyPath_B3F_Frlg,MULTI_MAPA(8),
+0x15,21,FLAG_TEMP_HIDE_CALYREX,TEMP,EM_USO,1,2,4,Route30,GLOBAL(codigo),Route30: Act 5 only
 0x16,22,FLAG_TEMP_16,TEMP,EM_USO,0,1,16,MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B3F_Frlg;MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle1,MULTI_MAPA(6),
 0x17,23,FLAG_TEMP_17,TEMP,EM_USO,0,1,11,MtEmber_RubyPath_B3F_Frlg;MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle1;Route110_TrickHousePuzzle4,MULTI_MAPA(4),
 0x18,24,FLAG_TEMP_18,TEMP,EM_USO,0,1,8,MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle1;Route110_TrickHousePuzzle4,MULTI_MAPA(3),
@@ -1413,12 +1416,12 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x991,2449,FLAG_SYS_CHAT_USED,SYSTEM,EM_USO,1,1,2,,GLOBAL(codigo),
 0x992,2450,FLAG_UNLOCKED_TRENDY_SAYINGS,SYSTEM,EM_USO,2,1,2,,GLOBAL(codigo),
 0x993,2451,FLAG_BADGE01_GET,SYSTEM,EM_USO,2,8,20,VioletCity_Gym,GLOBAL(codigo),
-0x994,2452,FLAG_BADGE02_GET,SYSTEM,EM_USO,4,4,12,AzaleaTown_Gym,GLOBAL(codigo),
+0x994,2452,FLAG_BADGE02_GET,SYSTEM,EM_USO,4,4,13,AzaleaTown_Gym,GLOBAL(codigo),
 0x995,2453,FLAG_BADGE03_GET,SYSTEM,EM_USO,13,4,14,GoldenrodCity_FlowerShop;GoldenrodCity_Gym;Route36,GLOBAL(codigo),
 0x996,2454,FLAG_BADGE04_GET,SYSTEM,EM_USO,12,4,16,AzaleaTown_Mart;EcruteakCity_Gym;GoldenrodCity_FlowerShop;RuinsOfAlph_Lab,GLOBAL(codigo),
 0x997,2455,FLAG_BADGE05_GET,SYSTEM,EM_USO,8,2,13,BattleFrontier_ExchangeServiceCorner;BlackthornCity;CianwoodCity;CianwoodGym,GLOBAL(codigo),
 0x998,2456,FLAG_BADGE06_GET,SYSTEM,EM_USO,4,3,9,BlackthornCity;GoldenrodCity_FlowerShop;OlivineCity_Gym,GLOBAL(codigo),
-0x999,2457,FLAG_BADGE07_GET,SYSTEM,EM_USO,5,3,11,BlackthornCity;MahoganyTown_Gym,GLOBAL(codigo),
+0x999,2457,FLAG_BADGE07_GET,SYSTEM,EM_USO,5,3,12,BlackthornCity;MahoganyTown_Gym,GLOBAL(codigo),
 0x99A,2458,FLAG_BADGE08_GET,SYSTEM,EM_USO,13,2,20,BattleFrontier_BattleFactoryLobby;DragonsDen_Shrine;OlivineCity_Lighthouse;OlivineCity_PortInside,GLOBAL(codigo),
 0x99B,2459,FLAG_VISITED_NEWBARK_TOWN,SYSTEM,EM_USO,1,2,4,NewBarkTown_PlayersHouse_1F,GLOBAL(codigo),
 0x99C,2460,FLAG_VISITED_CHERRYGROVE_CITY,SYSTEM,EM_USO,1,7,5,CherrygroveCity,GLOBAL(codigo),
@@ -1700,7 +1703,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1516,5398,FLAG_DAILY_ROUTE_120_RECEIVED_BERRY,DAILY,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
 0x1517,5399,FLAG_DAILY_LILYCOVE_RECEIVED_BERRY,DAILY,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
 0x1518,5400,FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY,DAILY,EM_USO,2,2,2,GoldenrodCity_FlowerShop,MAPA_UNICO:GoldenrodCity_FlowerShop,
-0x1519,5401,FLAG_DAILY_BERRY_MASTERS_WIFE,DAILY,EM_USO,2,3,5,Route30_House,GLOBAL(codigo),"Route 30 Berry Master's wife: one rare Berry a day, post-Hall of Fame (.claude/KURT_BALL_CRAFT_DESIGN.md section 5.4). Was allocated and never used by anything"
+0x1519,5401,FLAG_DAILY_BERRY_MASTERS_WIFE,DAILY,EM_USO,2,3,6,Route30_House,GLOBAL(codigo),"Route 30 Berry Master's wife: one rare Berry a day, post-Hall of Fame (.claude/KURT_BALL_CRAFT_DESIGN.md section 5.4). Was allocated and never used by anything"
 0x151A,5402,FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY,DAILY,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
 0x151B,5403,FLAG_LAKEOFRAGE_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Lakeofrage,MAPA_UNICO:HiddenGrotto_Lakeofrage,
 0x151C,5404,FLAG_DAILY_APPRENTICE_LEAVES,DAILY,EM_USO,3,1,3,BattleFrontier_BattleTowerLobby,GLOBAL(codigo),
@@ -1733,7 +1736,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1537,5431,FLAG_DAILY_LOOKER_CALL,DAILY,EM_USO,1,9,13,BlackthornCity;CherrygroveCity;Mahoganytown;NewBarkTown,GLOBAL(codigo),
 0x1538,5432,FLAG_DAILY_ALTAR_RESOLVED,DAILY,EM_USO,1,1,3,SunMoonAltar,MAPA_UNICO:SunMoonAltar,Altar arc closed today: Lusamine rematch without Nihilego
 0x1539,5433,FLAG_DAILY_NEXUS_NEW_DAY,DAILY,EM_USO,2,2,3,,GLOBAL(codigo),VAR_NEXUS_DAILY already reset today (src/nexus.c RollOverIfNewDay)
-0x153A,5434,FLAG_DAILY_GARDEN_NEW_DAY,DAILY,EM_USO,2,4,5,,GLOBAL(codigo),VAR_GARDEN_TODAY already reset today (GardenRollDay)
+0x153A,5434,FLAG_DAILY_GARDEN_NEW_DAY,DAILY,EM_USO,2,5,5,,GLOBAL(codigo),VAR_GARDEN_TODAY already reset today (GardenRollDay)
 0x153B,5435,FLAG_UNUSED_0x953,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
 0x153C,5436,FLAG_DAILY_DAISY_GROOMED,DAILY,EM_USO,1,1,2,PalletTown_House2,MAPA_UNICO:PalletTown_House2,Daisy (Pallet Town House 2) groomed a Pokemon today. Set by PalletTown_House2_EventScript_DaisyGrooming
 0x153D,5437,FLAG_UNUSED_0x955,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag

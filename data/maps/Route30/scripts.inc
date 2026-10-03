@@ -139,6 +139,8 @@ Route30_EventScript_GardenVisibility::
 	call_if_lt VAR_BERRY_GARDEN_LEVEL, 2, Route30_EventScript_HideGardenB
 	@ Laurel's plot opens with Act 3 of the story (part 12): the Enigma.
 	call_if_lt VAR_HARVEST_KING, HARVEST_KING_NOTEBOOK, Route30_EventScript_HideKingsPlot
+	@ From Act 5 the plot takes seeds through its sign, not the Berry menu.
+	call_if_ge VAR_HARVEST_KING, HARVEST_KING_KING_CAME, Route30_EventScript_HideKingsPlot
 	@ Who is out here at this hour (part 8, src/berry_garden.c).
 	special GardenCast_Apply
 	@ Klara's morning raid (part 11): in front of a ripe plot, or not here.
@@ -147,6 +149,8 @@ Route30_EventScript_GardenVisibility::
 	specialvar VAR_RESULT, GardenKlara_Place
 	call_if_eq VAR_RESULT, FALSE, Route30_EventScript_HideKlara
 	call_if_unset FLAG_TEMP_HIDE_SPECTRIER, Route30_EventScript_ArmNightVisitor
+	@ Act 5 (part 13): Peony and Calyrex at Laurel's plot tonight.
+	call_if_unset FLAG_TEMP_HIDE_CALYREX, Route30_EventScript_ArmNightVisitor
 	return
 
 Route30_EventScript_HideKlara::
@@ -185,7 +189,14 @@ Route30_EventScript_LockGardenBSoil::
 	return
 
 Route30_EventScript_ColdSoil::
-	msgbox Route30_Text_ColdSoil, MSGBOX_SIGN
+	lockall
+	@ Acts 5b on (part 13): the seed, then the carrot.
+	call BerryGarden_EventScript_KingsPlot
+	goto_if_eq VAR_RESULT, TRUE, Route30_EventScript_ColdSoilEnd
+	msgbox Route30_Text_ColdSoil, MSGBOX_DEFAULT
+Route30_EventScript_ColdSoilEnd::
+	closemessage
+	releaseall
 	end
 
 Route30_Text_ColdSoil:

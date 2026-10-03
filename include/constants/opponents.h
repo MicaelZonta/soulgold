@@ -938,9 +938,9 @@
 #define TRAINER_GARDEN_KLARA_1            957  // Berry Master garden (part 11)
 #define TRAINER_GARDEN_KLARA_2            958  // Berry Master garden (part 11)
 #define TRAINER_GARDEN_KLARA_3            959  // Berry Master garden (part 11)
-#define TRAINER_UNUSED_96                 960
-#define TRAINER_UNUSED_97                 961
-#define TRAINER_UNUSED_98                 962
+#define TRAINER_GARDEN_PEONY_1            960  // Berry Master garden (part 13)
+#define TRAINER_GARDEN_PEONY_2            961  // Berry Master garden (part 13)
+#define TRAINER_GARDEN_PEONY_3            962  // Berry Master garden (part 13)
 #define TRAINER_UNUSED_99                 963
 #define TRAINER_LUSAMINE                  964
 #define TRAINER_LILLIE                    965

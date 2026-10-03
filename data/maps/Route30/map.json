@@ -531,6 +531,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BerryGarden_EventScript_NightVisitor",
       "flag": "FLAG_TEMP_HIDE_SPECTRIER"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 26,
+      "y": 44,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BerryGarden_EventScript_PeonyGarden",
+      "flag": "FLAG_TEMP_HIDE_PEONY"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CALYREX)",
+      "x": 23,
+      "y": 39,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BerryGarden_EventScript_KingCameTalk",
+      "flag": "FLAG_TEMP_HIDE_CALYREX"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
+      "x": 26,
+      "y": 43,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BerryGarden_EventScript_PeoniaGarden",
+      "flag": "FLAG_TEMP_HIDE_PEONIA"
     }
   ],
   "warp_events": [

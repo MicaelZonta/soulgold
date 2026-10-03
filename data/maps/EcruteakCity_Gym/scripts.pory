@@ -60,6 +60,8 @@ EcruteakCity_Gym_EventScript_Morty::
 	end
 
 EcruteakCity_Gym_EventScript_Morty_Defeated::
+	@ The Harvest King (Berry Master part 13): the Shaderoot, or a hook.
+	call BerryGarden_EventScript_MortyHook
 	msgbox MortyFightDoneText, MSGBOX_DEFAULT
 	closemessage
 	release

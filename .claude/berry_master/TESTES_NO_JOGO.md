@@ -1,4 +1,4 @@
-# Berry Master — testes no jogo, em ordem (Partes 1 a 12)
+# Berry Master — testes no jogo, em ordem (Partes 1 a 13)
 
 > Roteiro único para rodar **de cima para baixo**. Cada teste parte do estado que o
 > anterior deixou, então não pule nenhum sem ler o “Estado ao fim”. Cada um diz qual
@@ -796,6 +796,44 @@ elas ou use o menu de flags do debug (`FLAG_BADGE02_GET`, `FLAG_BADGE07_GET`).
   (plaquinhas), “Go on, sprout. Give us a minute.”, recarga; estado 8. Na noite seguinte:
   “I wrote to Freezington…”. Nas manhãs de segunda, quarta, sexta e domingo, cartas
   (“From Honey. …”, “From Kurt. …”).
+
+---
+
+## Bloco F8 — Ato 5, as sementes e os hóspedes (Parte 13)
+
+`Story… → 8`, `Enigma ripe (Laurel)`, de noite. Para o Pryce e o Morty: ginásios já
+vencidos.
+
+### T83 · Ato 5 — o Rei
+- **Passos:** entre na casa do Bram e saia (ou fale com o Peony/Calyrex no canteiro).
+- **Esperado:** o jogador desce um passo; Peony (“Auntie Laurel! Peony here!…”), flash,
+  “???” falando por ele, o Calyrex come a Enigma (o canteiro esvazia **sem** listras nos
+  NPCs), “I am Calyrex…”, flash e ele some; a Laurel sai da porta e para ao lado do Peony;
+  a Peonia chega correndo do sul; as falas das sementes; recarga. Estado 9.
+
+### T84 · As sementes
+- **Passos:** a placa do canteiro da Laurel (23,38).
+- **Esperado:** menu Iceroot / Shaderoot / Not yet (começa em Not yet). Not yet: nada muda.
+  Iceroot (ou Shaderoot, noutro save): “You planted the … seed. / The cold soil seems to
+  hold its breath.” Estado 10 (11). No mesmo dia: “Nothing yet…”.
+
+### T85 · A cenoura
+- **Passos:** `Clock… → +24 hours`, de noite, a placa.
+- **Esperado:** “Feathery leaves…” e a **Iceroot Carrot** (ou Shaderoot) no bolso de
+  itens-chave. De dia: “…waiting for the dark.” Depois: “The soil is resting…”. Na manhã
+  seguinte ao plantio, a Laurel: “You picked. Good…”.
+
+### T86 · Os hóspedes
+- **Esperado:** manhã: Peony na horta (26,44) (“Peony here! Bram's put me on watering
+  duty…” na primeira conversa, depois o banco K) e a batalha dele (Yes/No, uma por dia);
+  Peonia na mesa da casa (banco L). Dia: Peony dormindo na cadeira azul (“Zzz… Galar
+  time…”), Peonia na horta. Noite: falando com o Peony, exclamação e o Calyrex pela boca
+  dele (plaquinha Calyrex, banco M); a Peonia arrumando a mochila.
+
+### T87 · Pryce e Morty
+- **Esperado:** no ginásio de Mahogany, com a Iceroot: o recado de Greenfield; sem ela
+  (estados 9–11): “You smell of an old woman's garden…”. No de Ecruteak, com a Shaderoot:
+  o recado do Dance Theater; sem: “The spirits are restless lately…”.
 
 ---
 

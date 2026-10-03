@@ -460,6 +460,7 @@ extern const u8 Debug_EventScript_BerryStory6[];
 extern const u8 Debug_EventScript_BerryStory7[];
 extern const u8 Debug_EventScript_BerryStory8[];
 extern const u8 Debug_EventScript_BerryKingsPlotSprout[];
+extern const u8 Debug_EventScript_BerryKingsPlotRipe[];
 extern const u8 Debug_EventScript_BerryHearts5[];
 extern const u8 Debug_EventScript_BerryHearts12[];
 extern const u8 Debug_EventScript_BerryHearts15[];
@@ -905,6 +906,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster_Story[] =
     { COMPOUND_STRING("7 Enigma given (3)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory7 },
     { COMPOUND_STRING("8 first leaf (4)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory8 },
     { COMPOUND_STRING("Enigma sprouts (Laurel)"), DebugAction_ExecuteScript, Debug_EventScript_BerryKingsPlotSprout },
+    { COMPOUND_STRING("Enigma ripe (Laurel)"),    DebugAction_ExecuteScript, Debug_EventScript_BerryKingsPlotRipe },
     { NULL }
 };
 

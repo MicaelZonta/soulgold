@@ -16,7 +16,7 @@
 #include "constants/items.h"
 
 // Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md,
-// parts 2 to 12).
+// parts 2 to 13).
 
 static void ClearLedger(void)
 {
@@ -798,6 +798,7 @@ TEST("Laurel's plot counts only an Enigma")
     tree->berry = ItemIdToBerryType(ITEM_ORAN_BERRY);
     tree->stage = BERRY_STAGE_SPROUTED;
     EXPECT_EQ(GardenKingsPlot_Stage(), BERRY_STAGE_NO_BERRY);
+    gSpecialVar_0x8004 = FALSE;
     BerryDebug_KingsPlotSprout();
     EXPECT_EQ(GardenKingsPlot_Stage(), BERRY_STAGE_SPROUTED);
 }
@@ -814,4 +815,29 @@ TEST("Setting the story by debug marks the lines that came before")
     EXPECT(GardenStory_Check());
     gSpecialVar_0x8004 = GARDEN_STORY_WROTE_HOME;
     EXPECT(!GardenStory_Check());
+}
+
+// Part 13: the guests and the carrot.
+TEST("Peony and Peonia are guests from Act 5 to the epilogue")
+{
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONY, GARDEN_PERIOD_MORNING, WEEKDAY_MON, TRUE, HARVEST_KING_FIRST_LEAF), GARDEN_PLACE_AWAY);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONY, GARDEN_PERIOD_MORNING, WEEKDAY_MON, TRUE, HARVEST_KING_KING_CAME), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONY, GARDEN_PERIOD_DAY, WEEKDAY_MON, TRUE, HARVEST_KING_ICEROOT), GARDEN_PLACE_HOUSE);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONY, GARDEN_PERIOD_NIGHT, WEEKDAY_MON, TRUE, HARVEST_KING_SHADEROOT), GARDEN_PLACE_HOUSE);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONIA, GARDEN_PERIOD_DAY, WEEKDAY_SAT, TRUE, HARVEST_KING_KING_CAME), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONIA, GARDEN_PERIOD_MORNING, WEEKDAY_SAT, TRUE, HARVEST_KING_KING_CAME), GARDEN_PLACE_HOUSE);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONIA, GARDEN_PERIOD_DAY, WEEKDAY_SAT, TRUE, HARVEST_KING_GUESTS_LEAVE), GARDEN_PLACE_AWAY);
+}
+
+TEST("The carrot is ready only after a new day since the seed")
+{
+    VarSet(VAR_GARDEN_NEWS, 0);
+    gSpecialVar_0x8004 = GARDEN_STORY_CARROT_PLANTED;
+    GardenStory_Mark();
+    gSpecialVar_0x8004 = GARDEN_STORY_CARROT_READY;
+    EXPECT(!GardenStory_Check());
+    FlagClear(FLAG_DAILY_GARDEN_NEW_DAY);                 // midnight
+    GardenRollDay();
+    gSpecialVar_0x8004 = GARDEN_STORY_CARROT_READY;
+    EXPECT(GardenStory_Check());
 }

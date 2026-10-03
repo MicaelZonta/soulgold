@@ -40,7 +40,7 @@
 | 10 | Infestações ✅ 03/10, QA rápido no jogo | pragas e ervas só na horta; 8 famílias só daqui | 2, 6 |
 | 11 | Batalhas de sempre (Tilly, Bugsy, Klara) ✅ 03/10, QA rápido no jogo | `garden_fight`; assalto da Klara | 5, 8, 10 |
 | 12 | Sidequest — Prólogo ao Ato 4 ✅ 03/10, QA no jogo dos 8 estados | estados 0 → 8 | 3, 6, 8, 10 |
-| 13 | Sidequest — Ato 5 e 5b | estados 8 → 10/11, Peony e Peonia hóspedes, cenouras | 12 |
+| 13 | Sidequest — Ato 5 e 5b ✅ 03/10, QA no jogo | estados 8 → 10/11, Peony e Peonia hóspedes, cenouras | 12 |
 | 14 | Caminho branco — Greenfield | 2 mapas novos, Glastrier, estado 10 → 12 | 13 |
 | 15 | Caminho escuro — Torre de Bronze | 2 mapas novos, Spectrier, estado 11 → 13 | 13 |
 | 16 | Ato 7, Epílogo e pós-história | estados 12/13 → 15, nível 5, Avery, Peony/Peonia, Mustard | 11, 14 ou 15 |
@@ -1307,6 +1307,55 @@ Peonia com substitutos `HIKER` e `PICNICKER`), `nomear-falante` (a plaquinha “
 
 **Teste no jogo:** as duas escolhas, cada uma num save; “Not yet” não muda nada;
 cenoura só na noite seguinte.
+
+### Parte 13 — feita (03/10/2026)
+
+**Entregue:** Ato 5 inteiro (§13.3 + §14.2 + a fala nova da Laurel do §15.2), as
+sementes no canteiro da Laurel, a cenoura (item-chave) na noite seguinte, Peony e Peonia
+hóspedes (estados 9–14) com os bancos K, L e M, a batalha do Peony (3 times, IDs 960–962,
+escala sempre ligada) e as falas de gancho do Pryce e do Morty depois dos ginásios
+(`MahoganyTown_Gym` e `EcruteakCity_Gym`, nos `.pory`). Estados `HARVEST_KING_KING_CAME`
+(9), `_ICEROOT` (10), `_SHADEROOT` (11); falas de uma vez `CARROT_PLANTED`,
+`CARROT_READY` (marcada pelo `GardenRollDay` do dia seguinte ao plantio) e
+`LAUREL_PICKED`. Objetos: Route 30 — Peony 40 (`HIKER`), Calyrex 41
+(`SPECIES(CALYREX)`), Peonia 42 (`PICNICKER`); casa — Peony 5, Peonia 6
+(`FLAG_TEMP_HIDE_PEONY/PEONIA/CALYREX` = `FLAG_TEMP_13/14/15`). Debug `Enigma ripe
+(Laurel)`. 2 testes novos (53/53).
+
+**Decisões:**
+1. **A cena do Ato 5 toca da porta do Bram** (26,40), como a do Ato 2: o jogador dá um
+   passo para baixo e a cena começa (planta medida no topo do bloco). Falar com o Peony ou
+   o Calyrex primeiro leva o jogador até a porta sob fade (recarga silenciosa).
+2. **A escolha das sementes** é pela placa do canteiro (23,38): a partir do estado 9 a
+   árvore de berry dali fica escondida (a semente não entra pelo menu de berries). Menu
+   Iceroot / Shaderoot / Not yet, que começa em **Not yet** (B não fecha).
+3. **A cenoura sai na noite seguinte**: o primeiro `GardenRollDay` depois do plantio marca
+   “pronta”; de dia a placa diz que as folhas esperam o escuro. Sem desenho de folhas no
+   canteiro (só texto) — **pendente de arte**, se o autor quiser.
+4. **Peony de manhã na horta** em (26,44) (ao lado do Bram), de dia e de noite **dormindo
+   na cadeira azul** (7,4) (a casa não tem sofá). **Peonia** de manhã na mesa (2,4), à noite
+   arrumando a mochila (8,2), de dia na horta em (26,43). A Peonia ainda não vai para a
+   entrada da dungeon (Partes 14/15).
+5. **Batalha do Peony uma vez por dia** (regra do §14.5), não semanal como o plano dizia.
+   Prêmio: 1 Exp. Candy M.
+6. **Pryce e Morty**: com a cenoura certa, o recado do §15.2 (Greenfield; Dance Theater à
+   noite); sem ela, uma fala curta de gancho nos estados 9–11. Os gatilhos das dungeons
+   ficam para as Partes 14 e 15.
+7. **Plaquinha “???”** (`NAME_UNKNOWN`) antes de o Calyrex dizer o nome; o retrato que
+   aparece é o do objeto que fala (o Peony), o que combina com o rei falando pelo corpo
+   dele.
+8. **Site público**: as cenouras agora têm fonte no jogo, mas regenerar `docs/` publica
+   tudo o que mudou na horta; **fica para o autor decidir** (a nota da Parte 4 dizia
+   “regenerar quando a Parte 13 der a fonte”).
+
+**QA no jogo (headless, 03/10):** estado 8 + Enigma madura + noite, saindo da casa: a cena
+inteira com as plaquinhas Peony, ???, Calyrex, Laurel e Peonia, o Calyrex comendo a Enigma
+e sumindo, a Laurel saindo da porta, a Peonia chegando correndo, as sementes, recarga →
+estado 9; placa: menu, “Not yet” não muda nada; Iceroot → “You planted the Iceroot seed.”;
+mesmo dia “Nothing yet…”; +24 h, à noite → Iceroot Carrot (item-chave, RAM); casa à
+noite: o Calyrex pelo Peony dormindo (banco M) e a Peonia arrumando a mochila. **Não
+testado no jogo:** Shaderoot, Peony de manhã e a batalha dele, Peonia de dia, Pryce e
+Morty, “You picked.” da Laurel.
 
 ---
 

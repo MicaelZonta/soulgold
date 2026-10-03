@@ -79,11 +79,18 @@
 #define HARVEST_KING_BRAM_TOLD       6   // Act 2b: Bram told about the seed (8.7)
 #define HARVEST_KING_NOTEBOOK        7   // Act 3: Laurel gave the Enigma (8.8)
 #define HARVEST_KING_FIRST_LEAF      8   // Act 4: the Enigma came up (8.9)
+#define HARVEST_KING_KING_CAME       9   // Act 5: Calyrex, Peony and Peonia (13.3, 14.2)
+#define HARVEST_KING_ICEROOT         10  // Act 5b: the Iceroot seed planted (14.2)
+#define HARVEST_KING_SHADEROOT       11  // Act 5b: the Shaderoot seed planted
+#define HARVEST_KING_GUESTS_LEAVE    15  // Peony and Peonia are guests up to here (14.2)
 
 // One-time story lines (GardenStory_Check / _Mark), said once in the game.
 #define GARDEN_STORY_BRAM_BUGS       0   // Bram after Act 1a: "BUGS? In MY beds?"
 #define GARDEN_STORY_LAUREL_HEARD    1   // Laurel the morning after Act 2
 #define GARDEN_STORY_WROTE_HOME      2   // Laurel the night after Act 4
+#define GARDEN_STORY_CARROT_PLANTED  3   // Act 5b: a seed went into Laurel's plot
+#define GARDEN_STORY_CARROT_READY    4   // a new day came since: the carrot can be pulled at night
+#define GARDEN_STORY_LAUREL_PICKED   5   // Laurel the morning after: "You picked."
 #define GARDEN_STORY_COUNT           7
 
 // Act 1c: how many garden-only families Bugsy wants caught.
@@ -104,6 +111,8 @@
 #define GARDEN_CAST_LAUREL           1
 #define GARDEN_CAST_TILLY            2
 #define GARDEN_CAST_BUGSY            3
+#define GARDEN_CAST_PEONY            4   // guest, story states 9..14 (part 13)
+#define GARDEN_CAST_PEONIA           5
 
 #define GARDEN_PLACE_AWAY            0
 #define GARDEN_PLACE_GARDEN          1   // Route30
@@ -118,6 +127,12 @@
 #define LOCALID_ROUTE30_BUGSY        37
 #define LOCALID_ROUTE30_KLARA        38
 #define LOCALID_ROUTE30_SPECTRIER    39  // Act 2's night visitor (part 12)
+#define LOCALID_ROUTE30_PEONY        40  // part 13
+#define LOCALID_ROUTE30_CALYREX      41
+#define LOCALID_ROUTE30_PEONIA       42
+#define LOCALID_ROUTE30_KINGS_PLOT   22
+#define LOCALID_HOUSE_PEONY          5
+#define LOCALID_HOUSE_PEONIA         6
 // The ten garden trees on Route30 are objects 24..33, in plot order (A1..B4).
 #define LOCALID_ROUTE30_GARDEN_A1    24
 

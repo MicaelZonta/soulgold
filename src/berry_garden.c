@@ -220,6 +220,9 @@ void GardenRollDay(void)
     VarSet(VAR_GARDEN_TODAY, 0);
     FlagSet(FLAG_DAILY_GARDEN_NEW_DAY);
     FinishGardenWork();
+    // Act 5b: a carrot seed planted yesterday (or earlier) can be pulled tonight.
+    if (VarGet(VAR_GARDEN_NEWS) & (1 << (9 + GARDEN_STORY_CARROT_PLANTED)))
+        VarSet(VAR_GARDEN_NEWS, VarGet(VAR_GARDEN_NEWS) | (1 << (9 + GARDEN_STORY_CARROT_READY)));
 
     // The day's draws, once each:
     //   Mustard, 1 Sunday in 4, story state 15 (part 16)          -> GARDEN_TODAY_MUSTARD_COMES
@@ -816,6 +819,17 @@ u32 GardenCast_PlaceOf(u32 who, u32 period, u32 weekday, bool32 tutorialDone, u3
          && (weekday == WEEKDAY_TUE || weekday == WEEKDAY_THU))
             return GARDEN_PLACE_GARDEN;
         return GARDEN_PLACE_AWAY;
+    // Guests from Act 5 to the epilogue (section 14.2): Peony helps Bram in
+    // the mornings and sleeps off Galar's hours in the house; Peonia keeps
+    // Laurel company in the mornings and waits in the garden by day.
+    case GARDEN_CAST_PEONY:
+        if (harvestKing < HARVEST_KING_KING_CAME || harvestKing >= HARVEST_KING_GUESTS_LEAVE)
+            return GARDEN_PLACE_AWAY;
+        return period == GARDEN_PERIOD_MORNING ? GARDEN_PLACE_GARDEN : GARDEN_PLACE_HOUSE;
+    case GARDEN_CAST_PEONIA:
+        if (harvestKing < HARVEST_KING_KING_CAME || harvestKing >= HARVEST_KING_GUESTS_LEAVE)
+            return GARDEN_PLACE_AWAY;
+        return period == GARDEN_PERIOD_DAY ? GARDEN_PLACE_GARDEN : GARDEN_PLACE_HOUSE;
     }
     return GARDEN_PLACE_AWAY;
 }
@@ -826,6 +840,8 @@ static const u16 sCastHideFlags[] =
     [GARDEN_CAST_LAUREL] = FLAG_TEMP_HIDE_LAUREL,
     [GARDEN_CAST_TILLY]  = FLAG_TEMP_HIDE_TILLY,
     [GARDEN_CAST_BUGSY]  = FLAG_TEMP_HIDE_BUGSY,
+    [GARDEN_CAST_PEONY]  = FLAG_TEMP_HIDE_PEONY,
+    [GARDEN_CAST_PEONIA] = FLAG_TEMP_HIDE_PEONIA,
 };
 
 // ON_TRANSITION of Route30 and Route30_House, before anything spawns: freezes
@@ -1405,13 +1421,35 @@ static void GardenCast_ApplyStory(u32 here, u32 period)
     u32 state = VarGet(VAR_HARVEST_KING);
     bool32 laurelKneels = state == HARVEST_KING_NOTEBOOK && period == GARDEN_PERIOD_DAY
                        && GardenKingsPlot_Stage() >= BERRY_STAGE_SPROUTED;
+    bool32 kingCame = state == HARVEST_KING_FIRST_LEAF && period == GARDEN_PERIOD_NIGHT
+                   && GardenKingsPlot_Stage() == BERRY_STAGE_BERRIES;
 
     if (here == GARDEN_PLACE_HOUSE)
     {
         // Act 4: she is out at her plot all day.
         if (laurelKneels)
             FlagSet(FLAG_TEMP_HIDE_LAUREL);
+        // The guests: Peony on the blue chair (7,4), asleep by day and night;
+        // Peonia at the table (2,4) in the morning, packing by the dresser
+        // (8,2) at night.
+        SetObjEventTemplateCoords(LOCALID_HOUSE_PEONIA, period == GARDEN_PERIOD_NIGHT ? 8 : 2,
+                                  period == GARDEN_PERIOD_NIGHT ? 2 : 4);
+        SetObjEventTemplateMovementType(LOCALID_HOUSE_PEONIA, period == GARDEN_PERIOD_NIGHT
+                                        ? MOVEMENT_TYPE_FACE_UP : MOVEMENT_TYPE_FACE_RIGHT);
         return;
+    }
+    // Act 5: Peony kneeling west of Laurel's plot (22,38), Calyrex south of it
+    // (23,39), both looking at the ripe Enigma. Peonia comes in the scene.
+    if (kingCame)
+    {
+        FlagClear(FLAG_TEMP_HIDE_PEONY);
+        FlagSet(FLAG_TEMP_HIDE_PEONIA);
+        SetObjEventTemplateCoords(LOCALID_ROUTE30_PEONY, 22, 38);
+        SetObjEventTemplateMovementType(LOCALID_ROUTE30_PEONY, MOVEMENT_TYPE_FACE_RIGHT);
+    }
+    else
+    {
+        FlagSet(FLAG_TEMP_HIDE_CALYREX);
     }
     // Act 1b: Bugsy's first visit, any day, once the player has the 2nd badge.
     if (state == HARVEST_KING_VISITORS && FlagGet(FLAG_BADGE02_GET) && period == GARDEN_PERIOD_DAY)
@@ -1442,13 +1480,24 @@ void BerryDebug_SetStory(void)
     VarSet(VAR_HARVEST_KING, gSpecialVar_0x8004);
 }
 
-// Debug: an Enigma just sprouted in Laurel's plot (Act 4).
+// Debug: an Enigma in Laurel's plot, just sprouted (Act 4) or, with
+// VAR_0x8004 = TRUE, ripe (Act 5).
 void BerryDebug_KingsPlotSprout(void)
 {
     struct BerryTree *tree = GetBerryTreeInfo(BERRY_TREE_KINGS_PLOT);
 
     *tree = (struct BerryTree){0};
     tree->berry = ItemIdToBerryType(ITEM_ENIGMA_BERRY);
-    tree->stage = BERRY_STAGE_SPROUTED;
-    tree->minutesUntilNextStage = 60;
+    tree->stage = gSpecialVar_0x8004 ? BERRY_STAGE_BERRIES : BERRY_STAGE_SPROUTED;
+    tree->berryYield = gSpecialVar_0x8004 ? 1 : 0;
+    tree->minutesUntilNextStage = 60 * 24;
+}
+
+// Act 5 (part 13): Calyrex ate the Enigma. Emptied the way a harvest does it
+// (no growth sparkle, see KlaraTakesThePlot).
+void GardenKingsPlot_Empty(void)
+{
+    SetBerryTreeJustPicked(LOCALID_ROUTE30_KINGS_PLOT, gSaveBlock1Ptr->location.mapNum,
+                           gSaveBlock1Ptr->location.mapGroup);
+    RemoveBerryTree(BERRY_TREE_KINGS_PLOT);
 }

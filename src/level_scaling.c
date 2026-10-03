@@ -459,7 +459,7 @@ const struct LevelScalingConfig *GetTrainerLevelScalingConfig(u16 trainerId, u8 
     // the player's party, whatever the option says - and their evolved Pokemon
     // step down while the party is young (Scizor -> Scyther, Vespiquen ->
     // Combee). .claude/berry_master, part 11.
-    if (trainerId >= TRAINER_GARDEN_TILLY_1 && trainerId <= TRAINER_GARDEN_KLARA_3)
+    if (trainerId >= TRAINER_GARDEN_TILLY_1 && trainerId <= TRAINER_GARDEN_PEONY_3)
     {
         sTrainerOptionConfig.mode = LEVEL_SCALING_PARTY_AVG;
         sTrainerOptionConfig.levelAugmentAdd = 0;
