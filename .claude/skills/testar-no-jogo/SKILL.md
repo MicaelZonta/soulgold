@@ -144,6 +144,10 @@ Ferramentas:
 - Prefira prova objetiva a "parece": RAM da bolsa (`bolsa.py`), posição
   (`pos`), objetos (`objetos.py`), cor de pixel antes/depois (terra
   molhada: (189,148,140) clara → (140,99,82) escura).
+- **Confirme todo achado no print isolado**, ampliado, antes de reportar.
+  Grade de prints serve para varrer, não para concluir: no reteste de 03/10 uma
+  plaquinha da caixa vizinha foi lida como "narração herdando a plaquinha" e
+  virou um falso defeito. Quando der, confirme também por pixel ou RAM.
 - Separe defeito do jogo, defeito do roteiro (passo impossível, coordenada
   errada, ferramenta de debug que não faz o que o roteiro supõe) e erro seu
   de input. Erro de input não é achado: refaça a partir do savestate.
