@@ -25,10 +25,11 @@ def classify(path):
     yesno = sum(1 for x in range(168, 216) for y in range(70, 104) if im.getpixel((x, y)) == WHITE)
     text = sum(1 for x in range(8, 232) for y in range(124, 152) if im.getpixel((x, y)) == WHITE)
     # menu no canto superior esquerdo (dynmultichoice / listas do debug)
-    menu = sum(1 for x in range(4, 100) for y in range(4, 60) if im.getpixel((x, y)) == WHITE)
+    # so a faixa y 36..56: o pop-up de item e a caixa de dinheiro ficam acima dela
+    menu = sum(1 for x in range(4, 90) for y in range(36, 56) if im.getpixel((x, y)) == WHITE)
     if yesno > 800 and text > 2000:
         return "yesno"
-    if menu > 2000 and text > 2000:   # caixa de dinheiro sozinha da ~1400
+    if menu > 200 and text > 2000:
         return "menu"
     if text > 2000:
         return "text"

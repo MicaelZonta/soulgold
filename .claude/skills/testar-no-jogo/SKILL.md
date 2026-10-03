@@ -120,9 +120,9 @@ Ferramentas:
     reconhece): `A`, `UP`, `A`.
 12. **Detecção de caixa por pixel tem limites.** `conversa.py` reconhece
     caixa de texto, Yes/No do canto direito e menu no canto superior
-    esquerdo. A caixa de dinheiro também fica no canto superior esquerdo
-    (dá ~1400 pixels brancos; menu dá ~2400). Menu novo em outro lugar =
-    print e decisão manual.
+    esquerdo (só olha a faixa y 36..56, abaixo da caixa de dinheiro e do
+    pop-up de descrição de item, que também ficam no topo e enganavam a
+    detecção). Menu novo em outro lugar = print e decisão manual.
 13. **"Fechar e abrir o emulador" é literal**: `quit`, suba de novo com
     `start.sh`, título → START → Continue. Savestate não substitui esse
     passo (ele guarda a RAM inteira, inclusive o que o save perderia).
