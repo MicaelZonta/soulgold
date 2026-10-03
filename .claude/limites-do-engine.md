@@ -1,7 +1,9 @@
 # Limites do engine: objetos, sprites, paletas, VRAM, save e RAM
 
-Análise de 30/09/2026 (branch `rift-mission-v1-complete`). Os números
-mudam com o código: **meça de novo antes de agir** com os dois scripts:
+Análise de 30/09/2026 (branch `rift-mission-v1-complete`). **Etapa A
+aplicada em 02/10/2026**: 24 objetos, 96 sprites, OAM 128 (detalhes no fim).
+Os números mudam com o código: **meça de novo antes de agir** com os dois
+scripts:
 
 ```bash
 dev_scripts/medir_limites_ram_save.sh            # save, sprites, EWRAM/IWRAM (precisa de make antes)
@@ -17,10 +19,10 @@ Fidelidade ao GBA real não é requisito.
 
 | Limite | Valor | Onde | Natureza | Sobe? |
 |---|---|---|---|---|
-| Objetos carregados | 16 (jogador + follower inclusos) | `OBJECT_EVENTS_COUNT`, `include/constants/global.h` | software | sim |
+| Objetos carregados | 24 (jogador + follower inclusos) | `OBJECT_EVENTS_COUNT`, `include/constants/global.h` | software | sim |
 | Templates por mapa | 64 | `OBJECT_EVENT_TEMPLATES_COUNT` | software (vai no save: 24 B cada) | sim, custa save |
-| Sprites | 64 | `MAX_SPRITES`, `include/sprite.h` | software | sim, até 127 |
-| Entradas de OAM por frame | 64 | `gOamLimit = 64` em `ResetSpriteData`, `src/sprite.c` | software (hardware = 128) | sim, até 128 |
+| Sprites | 96 | `MAX_SPRITES`, `include/sprite.h` | software | sim, até 127 |
+| Entradas de OAM por frame | 128 | `gOamLimit = 128` em `ResetSpriteData`, `src/sprite.c` | software (hardware = 128) | sim, até 128 |
 | Paletas de sprite | 16 slots | `sSpritePaletteTags[16]`, `src/sprite.c` | **hardware** (4 bits no attr2 do OAM) | não |
 | VRAM de sprite | 1024 tiles | `sSpriteTileAllocBitmap[128]` | **hardware** (índice de 10 bits) | não |
 | Flash (save) | 128 KB = 32 setores, todos usados | `include/save.h` | cartucho | sim, via mGBA |
@@ -232,7 +234,7 @@ Após mudar o mGBA: `make mgba-windows` com o mGBA fechado.
 
 ## Plano de execução recomendado
 
-**Etapa A: sem aumentar o save** (objetos até 27)
+**Etapa A: sem aumentar o save** (objetos até 27) — **FEITA em 02/10/2026**
 1. `OBJECT_EVENTS_COUNT` 16 → 24.
 2. `script_movement.c`: arrays próprios em EWRAM no lugar da máscara u16.
 3. `SaveBlock1`: `objectEventsExtra[OBJECT_EVENTS_COUNT - 16]` no fim;
@@ -255,6 +257,26 @@ Após mudar o mGBA: `make mgba-windows` com o mGBA fechado.
 3. Então mover `objectEventsExtra` (e o que mais precisar) para lá e
    subir `OBJECT_EVENTS_COUNT` à vontade. O próximo teto passa a ser
    `MAX_SPRITES` ≤ 127 (2 por objeto: ~50 objetos com clima).
+
+### Como a Etapa A ficou no código
+
+- `OBJECT_EVENTS_COUNT 24` e `OBJECT_EVENTS_SAVE_LEGACY_COUNT 16` em
+  `include/constants/global.h`.
+- `SaveBlock1.objectEvents[16]` no lugar de sempre; `objectEventsExtra[8]`
+  no fim (offset 0x3C54, assert `SaveBlock1ObjectEventsExtraOffset`).
+  `load_save.c` usa `GetSavedObjectEvent(i)` para escolher o array.
+- **Saves antigos continuam carregando:** o setor é zerado antes de gravar,
+  então os bytes novos eram zero e o checksum bate; os extras voltam
+  inativos.
+- `script_movement.c`: `sMovementObjEventIds[]` e `sMovementFinished[]` em
+  EWRAM; a task não guarda mais nada em `data[]`.
+- Teste: `test/script_movement.c` (24 objetos em `applymovement` +
+  roundtrip de save dos slots ≥ 16). `T_SAVEBLOCK1_SIZE 15732` em
+  `test/save.c`.
+- **O mGBA não precisou mudar:** 128 entradas de OAM e 1024 tiles são o
+  hardware normal do GBA. Só a Etapa B (save maior) mexe no emulador.
+- Folga depois: SaveBlock1 com 140 B no último setor (+3 objetos no
+  máximo), EWRAM ~9 KB, IWRAM ~8,4 KB.
 
 **Paletas e VRAM** continuam hardware. Trate como regra de design, não
 como limite a subir.

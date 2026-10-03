@@ -202,23 +202,34 @@ void LoadPlayerParty(void)
     }
 }
 
+// Slots >= OBJECT_EVENTS_SAVE_LEGACY_COUNT live in objectEventsExtra, at the
+// end of SaveBlock1, so the legacy offsets stay where the extra PC boxes expect.
+static struct ObjectEvent *GetSavedObjectEvent(u32 i)
+{
+    if (i < OBJECT_EVENTS_SAVE_LEGACY_COUNT)
+        return &gSaveBlock1Ptr->objectEvents[i];
+    return &gSaveBlock1Ptr->objectEventsExtra[i - OBJECT_EVENTS_SAVE_LEGACY_COUNT];
+}
+
 void SaveObjectEvents(void)
 {
     int i;
     u16 graphicsId;
+    struct ObjectEvent *saved;
 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        gSaveBlock1Ptr->objectEvents[i] = gObjectEvents[i];
+        saved = GetSavedObjectEvent(i);
+        *saved = gObjectEvents[i];
         // Swap graphicsId bytes when saving and loading
         // This keeps compatibility with vanilla,
         // since the lower graphicsIds will be in the same place as vanilla
         graphicsId = gObjectEvents[i].graphicsId;
-        gSaveBlock1Ptr->objectEvents[i].graphicsId = (graphicsId >> 8) | (graphicsId << 8);
-        gSaveBlock1Ptr->objectEvents[i].spriteId = 127; // magic number
+        saved->graphicsId = (graphicsId >> 8) | (graphicsId << 8);
+        saved->spriteId = 127; // magic number
         // To avoid crash on vanilla, save follower as inactive
         if (gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER)
-            gSaveBlock1Ptr->objectEvents[i].active = FALSE;
+            saved->active = FALSE;
     }
 }
 
@@ -229,7 +240,7 @@ void LoadObjectEvents(void)
 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        gObjectEvents[i] = gSaveBlock1Ptr->objectEvents[i];
+        gObjectEvents[i] = *GetSavedObjectEvent(i);
         // Swap graphicsId bytes when saving and loading
         // This keeps compatibility with vanilla,
         // since the lower graphicsIds will be in the same place as vanilla

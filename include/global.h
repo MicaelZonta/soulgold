@@ -1169,7 +1169,7 @@ struct SaveBlock1
     /*0x9CA*/ u8 trainerRematches[MAX_REMATCH_ENTRIES];
 #endif //FREE_MATCH_CALL
     /*0xA2E*/ //u8 padding3[2];
-    /*0xA30*/ struct ObjectEvent objectEvents[OBJECT_EVENTS_COUNT];
+    /*0xA30*/ struct ObjectEvent objectEvents[OBJECT_EVENTS_SAVE_LEGACY_COUNT];
     /*0xC70*/ struct ObjectEventTemplate objectEventTemplates[OBJECT_EVENT_TEMPLATES_COUNT];
     /*0x1270*/ u8 flags[NUM_FLAG_BYTES];
     /*0x139C*/ u16 vars[VARS_COUNT];
@@ -1264,7 +1264,8 @@ struct SaveBlock1
                u8 registeredPokegearApps[MAX_REGISTERED_ITEMS];
     /*0x349A*/ u8 pokemonStorageExtensionTail[POKEMON_STORAGE_EXTENSION_TAIL_BYTES];
     /*0x3C32*/ u8 futureReserved[SAVEBLOCK1_FUTURE_RESERVED_BYTES];
-    // sizeof: 0x3C54
+    /*0x3C54*/ struct ObjectEvent objectEventsExtra[OBJECT_EVENTS_COUNT - OBJECT_EVENTS_SAVE_LEGACY_COUNT];
+    // sizeof: 0x3C54 + 36 * (OBJECT_EVENTS_COUNT - 16)
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;

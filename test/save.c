@@ -22,7 +22,8 @@
 
 // If you would like to ensure save compatibility, update the values below with those for your hack. You can find these through the debug menu.
 // Please note that this simple check is not 100% foolproof, but should be able to catch most unintended shifts.
-#define T_SAVEBLOCK1_SIZE 15444
+// SoulGold: +8 ObjectEvents (36 B) in objectEventsExtra, OBJECT_EVENTS_COUNT 16 -> 24.
+#define T_SAVEBLOCK1_SIZE 15732
 // SoulGold: FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK2 (-104) and Candy Jar removed from SaveBlock3 (-4).
 #define T_SAVEBLOCK2_SIZE 2760
 #define T_SAVEBLOCK3_SIZE 96

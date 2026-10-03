@@ -1,6 +1,6 @@
 ---
 name: testar-no-jogo
-description: Use para TESTAR NO JOGO de verdade, sem humano - rodar um roteiro de QA (ex. .claude/berry_master/TESTES_NO_JOGO.md), confirmar que uma cena/NPC/flag/presente funciona em runtime, reproduzir um bug, ou gerar evidencia (prints, estado da RAM). Sobe o mGBA patchado em modo headless com um driver Lua, aperta botoes, tira screenshots, le posicao/bolsa/objetos direto da RAM, navega pelo menu de debug (L+START) e anda ate coordenadas com rota calculada. Cobre as armadilhas que fazem o teste mentir - texto engolindo inputs, cursor de menu lembrado, virada que come o passo, borda de tapete, limite de 16 objetos, save que some ao fechar - e como reportar PASS/FALHA com evidencia.
+description: Use para TESTAR NO JOGO de verdade, sem humano - rodar um roteiro de QA (ex. .claude/berry_master/TESTES_NO_JOGO.md), confirmar que uma cena/NPC/flag/presente funciona em runtime, reproduzir um bug, ou gerar evidencia (prints, estado da RAM). Sobe o mGBA patchado em modo headless com um driver Lua, aperta botoes, tira screenshots, le posicao/bolsa/objetos direto da RAM, navega pelo menu de debug (L+START) e anda ate coordenadas com rota calculada. Cobre as armadilhas que fazem o teste mentir - texto engolindo inputs, cursor de menu lembrado, virada que come o passo, borda de tapete, limite de objetos, save que some ao fechar - e como reportar PASS/FALHA com evidencia.
 ---
 
 # Testar no jogo (QA headless)
@@ -82,7 +82,7 @@ Ferramentas:
    `rota.py` já lê isso do tileset.
 5. **Yes/No precisa de espera.** O DOWN apertado enquanto o menu ainda aparece
    é ignorado e o A confirma **Yes**. `conversa.py` espera 30 quadros.
-6. **Limite de 16 objetos.** Num mapa cheio, NPCs e árvores de berry **não
+6. **Limite de objetos (`OBJECT_EVENTS_COUNT`, 24 desde 02/10/2026; era 16).** Num mapa cheio, NPCs e árvores de berry **não
    são criados**: ficam invisíveis e dá para andar por cima. O spawn só
    acontece quando o objeto **entra pela borda da câmera** com slot livre.
    Antes de concluir "a árvore não existe", rode `objetos.py`; mude o
