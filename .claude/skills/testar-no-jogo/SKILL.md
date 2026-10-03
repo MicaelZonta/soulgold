@@ -95,7 +95,12 @@ Ferramentas:
 8. **Ferramentas de debug têm manias.** `Fill Pocket Berries/Items` só enche
    o que você ainda **não tem**; pilhas existentes ficam como estão.
    `Clear Bag` antes, quando o teste depende de bolsa cheia de verdade.
-9. **Endereços mudam a cada build.** Nunca fixe `0x0300…`: `ir.sym()` lê do
+9. **O ponteiro da SaveBlock muda em tempo de jogo.** `gSaveBlock1Ptr` e
+   `gSaveBlock2Ptr` trocam de endereço quando o mapa recarrega. Leia o
+   ponteiro de novo a cada consulta (as ferramentas já fazem); um valor
+   guardado num `$P` do shell lê lixo e inventa um bug (no reteste, a Oran
+   "virou Kelpsy" por isso).
+   **Endereços mudam a cada build.** Nunca fixe `0x0300…`: `ir.sym()` lê do
    `Soulgold.elf`. Offsets de struct (bolsa, árvores, flags) saem de
    `offsetof` compilado contra os headers:
    ```bash
