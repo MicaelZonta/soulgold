@@ -72,18 +72,18 @@ e por fim `Bram's gift: taken today.` ou `…still waiting today.`
 
 ## Bloco A — Começo limpo e tutorial do Bram (Partes 2 e 3)
 
-### T01 · Reset do Berry Master (menu de debug)
+### T01 · Reset do Berry Master (menu de debug) - OK
 - **Passos:** `Berry Master… → Reset Berry Master` → **Yes**.
 - **Esperado:** “Berry Master reset. Bram will give the tutorial again.” e o mapa
   recarrega no mesmo lugar.
 - **Se falhar:** anote a mensagem e onde você estava.
 
-### T02 · Status zerado
+### T02 · Status zerado ok
 - **Passos:** `Berry Master… → Status`.
 - **Esperado:** `Level 0   Work 0`, `Planted garden plots: 0/10`, `Book 0/67   Paid 0`,
   `Milestone owed: 0`, `Harvest King state: 0`, `Bram's gift: still waiting today.`
 
-### T03 · A horta antes do tutorial (Parte 2)
+### T03 · A horta antes do tutorial (Parte 2) ok
 - **Passos:** `Berry Master… → Go: the garden`. Olhe em volta.
 - **Esperado:**
   - Canteiro A: 6 covas de **terra redonda**, iguais à cova da Laurel, em 2 linhas de 3,
@@ -94,23 +94,23 @@ e por fim `Bram's gift: taken today.` ou `…still waiting today.`
     mata a oeste do caminho que desce da casa.
 - **Se falhar:** screenshot da área.
 
-### T04 · Canteiro B trancado dá para andar (Parte 2)
+### T04 · Canteiro B trancado dá para andar (Parte 2) ok
 - **Passos:** ande por cima das 4 casas do B (30..31, 41..42) e aperte A olhando para elas.
 - **Esperado:** você anda por cima normalmente; apertar A não mostra nada (nem “plantar?”).
 
-### T05 · Canteiro da Laurel trancado (Parte 2)
+### T05 · Canteiro da Laurel trancado (Parte 2)  ok
 - **Passos:** fique ao lado de (23,38) (por exemplo em (23,39), abaixo dele), olhe para
   ele e aperte A. Tente andar para cima dele.
 - **Esperado:** “The soil here is hard and cold. / Nothing's grown in it for a long
   time.” **Não** pergunta se quer plantar. Não dá para andar em cima.
 
-### T06 · Canteiro A funciona antes do tutorial (Parte 2)
+### T06 · Canteiro A funciona antes do tutorial (Parte 2 pl)
 - **Passos:** olhe para uma cova do A e aperte A.
 - **Esperado:** “It's soft, loamy soil.” (ou “…Want to plant a Berry?” se você já tiver
   alguma berry). O canteiro A é aberto desde sempre, de propósito. Tente **andar para
   cima** de uma cova: não dá (são bloqueio, como toda árvore de berry).
 
-### T07 · Tutorial do Bram (Partes 2 e 3)
+### T07 · Tutorial do Bram (Partes 2 e 3) ok
 - **Passos:** `Berry Master… → Go: Bram's house`. Fale com o **Bram** (o careca, em (4,4)).
 - **Esperado, nesta ordem, sem a caixa fechar e reabrir no meio:**
   1. “When you follow that path up north… tell you about Berries! … Here. I'll share one
@@ -125,16 +125,16 @@ e por fim `Bram's gift: taken today.` ou `…still waiting today.`
   4. “And don't eat both of them. Plant one. …”
 - **Se falhar:** anote qual fala veio fora de ordem ou qual berry veio fora das 8.
 
-### T08 · Presente é um por dia (Parte 3)
+### T08 · Presente é um por dia (Parte 3) ok
 - **Passos:** fale com o Bram de novo.
 - **Esperado:** “That's your two for today. / Go and plant one. I'll pick more by morning
   -- I always do.”
 
-### T09 · Status depois do tutorial (Partes 2 e 3)
+### T09 · Status depois do tutorial (Partes 2 e 3) OK
 - **Passos:** `Berry Master… → Status`.
 - **Esperado:** `Level 1`, `Book 8/67`, `Bram's gift: taken today.`
 
-### T10 · Laurel antes da Liga (Parte 3)
+### T10 · Laurel antes da Liga (Parte 3)  OK
 - **Passos:** fale com a **Laurel** (em (3,4), ao lado do Bram).
 - **Esperado:** “My husband hands out the easy ones. / I keep the others. …” e nada mais.
 
@@ -144,7 +144,7 @@ e por fim `Bram's gift: taken today.` ou `…still waiting today.`
 
 ## Bloco B — A horta física (Parte 2)
 
-### T11 · Plantar, regar e colher no A
+### T11 · Plantar, regar e colher no A ok
 - **Passos:**
   1. `Give X… → Give item XYZ… → 722` (Squirtbottle), se você não tiver.
   2. `Go: the garden`. Plante a Cheri numa cova do A.
@@ -154,7 +154,21 @@ e por fim `Bram's gift: taken today.` ou `…still waiting today.`
   “You found N Cheri Berries!” e elas vão para a bolsa. `Status` antes de colher:
   `Planted garden plots: 1/10`.
 
-### T12 · A trava do B sobrevive a menu, batalha e save (Parte 2)
+### T11b · Terra molhada (bug 2, 02/10/2026) ij
+- **Passos:**
+  1. Plante uma berry no A. Olhe a cova: terra **clara**.
+  2. Use a Squirtbottle nela.
+  3. `Berry Master… → Grow garden 1 stage`.
+  4. Regue de novo. Depois `Ripen the garden`.
+  5. Salve, feche, abra e continue (com a cova molhada).
+- **Esperado:** no passo 2 a terra fica **escura** na hora (molhada). No passo 3, estágio
+  novo, ela volta a ficar **clara** (secou: cada estágio pede uma regada, como sempre foi
+  a regra). No passo 4, escura de novo; madura, clara. No passo 5, continua como estava.
+  As covas vazias, a da Laurel e as de outras rotas fora desta lista não mudam nunca.
+- **Onde vale:** mapas com o tileset secundário de Cherrygrove (Route 30, Cherrygrove,
+  Route 31, Route 46 e a frente do Mt. Moon), em árvore sobre a terra de berry comum.
+
+### T12 · A trava do B sobrevive a menu, batalha e save (Parte 2) ok
 - **Passos:**
   1. Na Route 30, perto da horta, abra e feche a bolsa.
   2. Ande na grama alta até uma batalha selvagem; fuja.
@@ -162,18 +176,18 @@ e por fim `Bram's gift: taken today.` ou `…still waiting today.`
 - **Esperado:** nos três casos o B continua **grama**, andável.
 - **Se falhar:** diga em qual dos três passos a terra do B apareceu.
 
-### T13 · Nível 2 abre o B (Parte 2)
+### T13 · Nível 2 abre o B (Parte 2) ok 
 - **Passos:** `Berry Master… → Garden level… → 2 Proper Garden`.
 - **Esperado:** “Garden level 2; works cleared.”, o mapa recarrega, e o B vira **4 covas
   de terra** (não dá mais para andar em cima). Olhe uma cova do B: “It's soft, loamy soil.”
 - Plante qualquer berry numa cova do B.
 
-### T14 · Voltar ao nível 1 esconde o B sem perder o que foi plantado (Parte 2)
+### T14 · Voltar ao nível 1 esconde o B sem perder o que foi plantado (Parte 2) ok
 - **Passos:** `Garden level… → 1 Backyard Plot`. Depois `Garden level… → 2 Proper Garden`.
 - **Esperado:** no nível 1 o B volta a ser grama (a planta some da vista). No nível 2 a
   planta **reaparece** no mesmo lugar e no mesmo estágio.
 
-### T15 · Árvores de fora da horta continuam iguais (Parte 2, regressão)
+### T15 · Árvores de fora da horta continuam iguais (Parte 2, regressão) ok
 - **Passos:**
   1. Na Route 30, árvore de Pecha em (30,4) (norte da rota, perto da casa do Mr. Pokémon):
      colher se estiver madura.
@@ -218,18 +232,20 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
 - **Esperado, em ordem:**
   1. “Let me see that Book of yours... / 12 Berries! You're getting the hang of this,
      sprout. / Here. Something for the garden.” → recebe **5 Growth Mulch**.
-  2. A caixa de dinheiro aparece e ele oferece a reforma: “12 Berries in your Book now.
-     Time this was a proper garden. / Four more beds by the pond, dug by morning. ¥5,000
-     for the lot. Shall I?” → responda **No** → “Suit yourself. The offer keeps.”
-  3. O presente do dia, ou “That's your two for today…”.
+  2. O presente do dia, ou “That's your two for today…”.
+  3. **Por último**, a caixa de dinheiro aparece e ele oferece a reforma: “12 Berries in
+     your Book now. Time this was a proper garden. / Four more beds by the pond, dug by
+     morning. ¥5,000 for the lot. Shall I?” → responda **No** → “Suit yourself. The offer
+     keeps.” e a conversa acaba. (O número é o tamanho do **Livro**, nunca o dinheiro —
+     bug 3, corrigido.)
 - Fale com ele **de novo na mesma visita**.
 - **Esperado:** nem o marco nem a oferta se repetem.
 
 ### T20 · Vários marcos atrasados saem em ordem
 - **Passos:** `Book of Berries… → 32`. Saia da casa e entre de novo. Fale com o Bram.
 - **Esperado:** dois prêmios na mesma conversa, nesta ordem: **20** → 3 Rich Mulch;
-  **30** → 3 Surprise Mulch (o 32 não é marco; o próximo é 40). Depois vem a oferta de
-  reforma (responda **No**). `Status`: `Paid 30`.
+  **30** → 3 Surprise Mulch (o 32 não é marco; o próximo é 40). Depois o presente (ou
+  “That's your two…”) e, no fim, a oferta de reforma (responda **No**). `Status`: `Paid 30`.
 
 ### T21 · Marco com a bolsa cheia não se perde
 - **Passos:**
@@ -348,8 +364,9 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
 ### T32 · Pagar
 - **Passos:** `Give ¥10,000`. **Saia e entre** na casa (a oferta é uma vez por visita).
   Fale com o Bram → **Yes**.
-- **Esperado:** som de compra, a caixa desce para ¥5,000, “Tomorrow morning, then. Come
-  and look.” `Status`: `Level 1   Work 2`.
+- **Esperado:** o presente do dia (ou “That's your two…”) vem **antes**; a oferta fecha a
+  conversa: som de compra, a caixa desce para ¥5,000, “Done deal. Come and look in the
+  morning.” e acabou (nada de presente depois). `Status`: `Level 1   Work 2`.
 
 ### T33 · Nada muda no mesmo dia
 - **Passos:** `Go: the garden`. `Go: Bram's house` e fale com o Bram.
@@ -389,13 +406,15 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
   from the pond.…” — e **Laurel** — “He dug it at three in the morning. The neighbors
   thought it was a Diglett.” `Status`: `Level 3`.
 - **Passos:** `Go: the garden`, `Status`.
-- **Esperado:** `Today bits 4` (o canal regou).
+- **Esperado:** `Today bits 4` (o canal regou), e toda cova plantada aparece **escura**
+  (molhada) ao entrar.
 
 ### T37 · Nível 4: o Bug Hotel é de graça
 - **Passos:** `Book of Berries… → 32`. `Money: set to ¥0`. Saia e entre, fale com o Bram.
 - **Esperado:** **sem** caixa de dinheiro: “Bugsy wants to build a Bug Hotel by the beds.
   Won't take a coin for it. / Says the bugs will come for the Berries and stay for the
-  architecture. / Well? Do I let him?” → **Yes** → “Tomorrow morning, then.…” (com ¥0).
+  architecture. / Well? Do I let him?” → **Yes** → “Done deal. Come and look in the
+  morning.” (com ¥0).
 - **Passos:** `Clock… → +24 hours`, fale com o Bram.
 - **Esperado:** “Bugsy finished his Bug Hotel last night. Hollow stems, bark, a pile of
   stones... / He means more bugs. He's happy about more bugs.” `Status`: `Level 4`. Nas

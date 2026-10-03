@@ -78,7 +78,7 @@
     F(GYRO_BALL) \
     F(SWORDS_DANCE) \
     F(HONE_CLAWS) \
-    F(DIG) \
+    F(ICE_PUNCH) \
     F(BULLDOZE) \
     F(FROST_BREATH) \
     F(ROCK_SLIDE) \
@@ -100,8 +100,7 @@
     F(NATURE_POWER) \
     F(DARK_PULSE) \
     F(PLAY_ROUGH) \
-    F(DAZZLING_GLEAM) \
-    F(ICE_PUNCH)
+    F(DAZZLING_GLEAM)
 
 #define FOREACH_HM(F) \
     F(CUT) \
@@ -113,7 +112,8 @@
     F(WATERFALL) \
     F(DIVE) \
     F(ROCK_CLIMB) \
-    F(WHIRLPOOL)
+    F(WHIRLPOOL) \
+    F(DIG)
 
 #define FOREACH_TMHM(F) \
     FOREACH_TM(F) \

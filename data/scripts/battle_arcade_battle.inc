@@ -923,8 +923,8 @@ BattleArcade_Challenge_EventScript_BrainUpNext_Text_0:
 	.string "or buts! Are you ready?$"
 
 BattleArcade_Challenge_EventScript_BrainIntro_Text_0:
-	.string "{SPEAKER NAME_ARCHER}The Rocket Arcade rewards\n"
-	.string "skill, not luck.\p"
+	.string "{SPEAKER NAME_ARCHER}The Rocket Arcade rewards skill, not\n"
+	.string "luck.\p"
 	.string "You have pressed your advantage well\n"
 	.string "enough to stand before me once more.\l"
 	.string "But this time I will show you the true\l"
@@ -940,21 +940,21 @@ BattleArcade_Challenge_EventScript_BrainIntro_Text_2:
 	.string "that.$"
 
 BattleArcade_Challenge_EventScript_BufferBrainPreBattleText_Text_0:
-	.string "{SPEAKER NAME_ARCHER}A proper Rocket Operative\n"
-	.string "never leaves victory to chance. Let us\l"
-	.string "see if you can stand against it.$"
+	.string "{SPEAKER NAME_ARCHER}A proper Rocket Operative never leaves\n"
+	.string "victory to chance. Let us see if you can\l"
+	.string "stand against it.$"
 
 BattleArcade_Challenge_EventScript_BufferBrainPreBattleText_Text_1:
-	.string "{SPEAKER NAME_ARCHER}You have pushed deeper into my\n"
-	.string "house than most. Now pay attention to\l"
-	.string "how a Rocket closes a game.$"
+	.string "{SPEAKER NAME_ARCHER}You have pushed deeper into my house\n"
+	.string "than most. Now pay attention to how a\l"
+	.string "Rocket closes a game.$"
 
 BattleArcade_Challenge_EventScript_BrainCongratsText_Text_0:
-	.string "{SPEAKER NAME_ARCHER}Hmph. You read the table\n"
-	.string "correctly and struck when it mattered.\l"
-	.string "Take your winnings.$"
+	.string "{SPEAKER NAME_ARCHER}Hmph. You read the table correctly and\n"
+	.string "struck when it mattered. Take your\l"
+	.string "winnings.$"
 
 BattleArcade_Challenge_EventScript_BrainCongratsText_Text_1:
-	.string "{SPEAKER NAME_ARCHER}You have taken even the\n"
-	.string "house's best hand. Remember this\l"
-	.string "feeling. It is expensive to chase.$"
+	.string "{SPEAKER NAME_ARCHER}You have taken even the house's best\n"
+	.string "hand. Remember this feeling. It is\l"
+	.string "expensive to chase.$"

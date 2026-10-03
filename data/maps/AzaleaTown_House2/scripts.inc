@@ -30,11 +30,9 @@ SlowpokeTrade_NotRequested::
 
 
 Azalea_SlowpokeTrade_Text_0:
-# 7 "data/maps/AzaleaTown_House2/scripts.pory"
 	.string "Have you been amassing more slowpoke?$"
 
 Azalea_SlowpokeTrade_Text_1:
-# 9 "data/maps/AzaleaTown_House2/scripts.pory"
 	.string "I love Slowpoke! They are adorable,\n"
 	.string "cuddly, cute, sweet, amazing and\l"
 	.string "awesome! How about I prove it to you?\l"

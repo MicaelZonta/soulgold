@@ -14408,21 +14408,6 @@ const struct ItemInfo gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM_DIG] =
-    {
-        .name = ITEM_NAME("TM77 Dig"),
-        .price = 3000,
-        .description = COMPOUND_STRING(
-            "Burrows on the first\n"
-            "turn, then strikes\n"
-            "on the next turn."),
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .heldSlot = 0,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-    },
-
     [ITEM_TM_BULLDOZE] =
     {
         .name = ITEM_NAME("TM78 Bulldoze"),
@@ -14755,7 +14740,7 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_TM_ICE_PUNCH] =
     {
-        .name = ITEM_NAME("TM100 Ice Punch"),
+        .name = ITEM_NAME("TM77 Ice Punch"),
         .price = 5000,
         .description = COMPOUND_STRING(
             "An icy cold\n"
@@ -14914,6 +14899,22 @@ const struct ItemInfo gItemsInfo[] =
             "Traps the foe in\n"
             "a whirlpool for\n"
             "several turns."),
+        .importance = 1,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+    },
+
+    // SoulGold: was TM77; an HM because Dig has a field use. Still sold
+    // (once) at the Goldenrod Dept. Store 5F.
+    [ITEM_HM_DIG] =
+    {
+        .name = ITEM_NAME("HM11 Dig"),
+        .price = 3000,
+        .description = COMPOUND_STRING(
+            "Burrows on the first\n"
+            "turn, then strikes\n"
+            "on the next turn."),
         .importance = 1,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,

@@ -822,21 +822,9 @@ enum __attribute__((packed)) Item
     ITEM_HM08 = 689,
     ITEM_HM09 = 690,
     ITEM_HM10 = 691,
+    // ITEM_HM11 (Dig) is at the end of the list, so no item id shifts.
 
 
-    /* Expands to:
-     *   ITEM_TM_WORK_UP = ITEM_TM01,
-     *   ...
-     *   ITEM_HM_CUT = ITEM_HM01,
-     *   ... */
-    #define ENUM_TM(n, id) CAT(ITEM_TM_, id) = CAT(ITEM_TM, n),
-    #define ENUM_HM(n, id) CAT(ITEM_HM_, id) = CAT(ITEM_HM, n),
-    #define TO_TMHM_NUMS(a, ...) (__VA_ARGS__)
-    RECURSIVELY(R_ZIP(ENUM_TM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_TM(APPEND_COMMA))))
-    RECURSIVELY(R_ZIP(ENUM_HM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_HM(APPEND_COMMA))))
-    #undef ENUM_TM
-    #undef ENUM_HM
-    #undef TO_TMHM_NUMS
 
     // Charms
     ITEM_OVAL_CHARM = 692,
@@ -1125,8 +1113,26 @@ enum __attribute__((packed)) Item
     ITEM_ICEROOT_CARROT = 935,
     ITEM_SHADEROOT_CARROT = 936,
 
+    // SoulGold: Dig has a field use, so it is an HM (TMs are single-use)
+    ITEM_HM11 = 937,
+
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,
+
+    // After ITEMS_COUNT so ITEM_HM11 is declared; every alias has an explicit value.
+    /* Expands to:
+     *   ITEM_TM_WORK_UP = ITEM_TM01,
+     *   ...
+     *   ITEM_HM_CUT = ITEM_HM01,
+     *   ... */
+    #define ENUM_TM(n, id) CAT(ITEM_TM_, id) = CAT(ITEM_TM, n),
+    #define ENUM_HM(n, id) CAT(ITEM_HM_, id) = CAT(ITEM_HM, n),
+    #define TO_TMHM_NUMS(a, ...) (__VA_ARGS__)
+    RECURSIVELY(R_ZIP(ENUM_TM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_TM(APPEND_COMMA))))
+    RECURSIVELY(R_ZIP(ENUM_HM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_HM(APPEND_COMMA))))
+    #undef ENUM_TM
+    #undef ENUM_HM
+    #undef TO_TMHM_NUMS
 };
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations
