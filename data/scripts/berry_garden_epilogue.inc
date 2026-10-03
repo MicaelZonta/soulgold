@@ -720,8 +720,8 @@ BerryGarden_Text_AveryKing:
 	.string "I, Avery, psychic prodigy.\p"
 	.string "...He is not answering. The patch is not\n"
 	.string "answering me.\p"
-	.string "{SPEAKER NAME_LAUREL}It's a patch of dirt, dear. The king's in\n"
-	.string "{PLAYER}'s Bag.\p"
+	.string "{SPEAKER NAME_LAUREL}It's a patch of dirt, dear. The king\n"
+	.string "travels with {PLAYER} now.\p"
 	.string "{SPEAKER NAME_AVERY}I KNEW that.$"
 
 BerryGarden_Text_AveryJ0:

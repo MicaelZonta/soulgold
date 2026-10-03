@@ -884,7 +884,7 @@ BerryGarden_Text_PrologueAlone:
 
 BerryGarden_Text_LaurelFirstPest:
 	.string "A {STR_VAR_1}. In the beds.\p"
-	.string "Fifty years we've had this garden.\n"
+	.string "Fifty years he's kept this garden.\n"
 	.string "Fifty years and not one bug.\p"
 	.string "Now you come along, and they come\n"
 	.string "along.\p"
@@ -1011,7 +1011,7 @@ BerryGarden_Text_LaurelNotebook2:
 	.string "Johto never remembered. Not for forty\n"
 	.string "years.\p"
 	.string "Then you came, and the bugs came. And\n"
-	.string "three nights ago, the black horse came.\p"
+	.string "one night, the black horse came.\p"
 	.string "The land remembers something now. I\n"
 	.string "think it's you.\p"
 	.string "Take it. Plant it in my patch. Not yours.\n"
@@ -1135,7 +1135,7 @@ BerryGarden_Text_KingCame6:
 	.string "{SPEAKER NAME_PEONIA}DAD! You can't just jump off a ship\n"
 	.string "before it docks!\p"
 	.string "...Is that soil glowing? Is that --\n"
-	.string "Grandma's story? The king?\p"
+	.string "Auntie's story? The king?\p"
 	.string "{SPEAKER NAME_LAUREL}The white one sleeps where the ice\n"
 	.string "never thaws. The black one walks where\l"
 	.string "the fire took the bells.$"
@@ -1359,7 +1359,7 @@ BerryGarden_Text_PeoniaL0:
 
 BerryGarden_Text_PeoniaL1:
 	.string "Dad got lost going to the Pokémon\n"
-	.string "Center. It's across the road. He went\l"
+	.string "Center. It's down the road. He went\l"
 	.string "the long way. Through the pond.$"
 
 BerryGarden_Text_PeoniaL2:

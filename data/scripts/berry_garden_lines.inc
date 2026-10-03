@@ -978,8 +978,8 @@ BerryGarden_Text_Bugsy4:
 	.string "Laurel hates it.$"
 
 BerryGarden_Text_Bugsy5:
-	.string "The Scatterbug here have a wing\n"
-	.string "pattern I've never seen.\p"
+	.string "The Scatterbug here have markings\n"
+	.string "I've never seen.\p"
 	.string "Your garden is making its own Vivillon!$"
 
 BerryGarden_Text_Bugsy6:

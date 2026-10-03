@@ -719,15 +719,14 @@ Route30_House_EventScript_Sunflora::
 	end
 
 Route30_BerryHouse_Text_MonEatBerries:
-	.string "When you follow that path up north,\n"
-	.string "you will see Kukui's house.\p"
-	.string "But before you go, allow me to\n"
-	.string "tell you about Berries!\p"
-	.string "Pokémon get healthier by eating\n"
-	.string "Berries.\p"
-	.string "They can even eat Berries\n"
-	.string "they're holding in battle.\p"
-	.string "Here. I'll share one with you!$"
+	.string "Off to Kukui's? It's up the path,\n"
+	.string "north. Can't miss it.\p"
+	.string "But hold on, sprout. Nobody leaves\n"
+	.string "my house without a Berry.\p"
+	.string "A Pokémon eats one, it feels better.\n"
+	.string "Give it one to hold, and it'll eat it\l"
+	.string "in battle all on its own.\p"
+	.string "Here. Take one.$"
 
 Route30_House_Text_TheBook:
 	.string "One more thing. Every Berry you pick\n"
@@ -821,7 +820,7 @@ Route30_House_Text_BuiltChannel:
 Route30_House_Text_BuiltBugHotel:
 	.string "Bugsy finished his Bug Hotel last night.\n"
 	.string "Hollow stems, bark, a pile of stones...\p"
-	.string "He means more bugs. He's happy about\n"
+	.string "It means more bugs. He's happy about\n"
 	.string "more bugs.$"
 
 Route30_House_Text_OrderKurt:
@@ -886,7 +885,8 @@ Route30_House_Text_OrderLaurel:
 Route30_House_Text_OrderDiscovery:
 	.string "Now here's one I've never grown.\n"
 	.string "Kurt swears there's a Berry called\l"
-	.string "{STR_VAR_1}. I think he's pulling my leg.\p"
+	.string "{STR_VAR_1}.\p"
+	.string "I think he's pulling my leg.\p"
 	.string "Ask Laurel. If anyone knows, she\n"
 	.string "knows. She just won't tell ME.$"
 
@@ -907,7 +907,7 @@ Route30_House_Text_OrderHandOverOne:
 	.string "Hand it over?$"
 
 Route30_House_Text_OrderBagFull:
-	.string "Hold on. There's Mulch in your pay, and\n"
+	.string "Hold on. There's mulch in your pay, and\n"
 	.string "your Bag hasn't room for it.\l"
 	.string "Make room first.$"
 
@@ -926,8 +926,8 @@ Route30_House_Text_OrderThanks3:
 	.string "I do now. Don't tell anyone.$"
 
 Route30_House_Text_OrderThanks4:
-	.string "Right on time. Kurt'll be furious.\n"
-	.string "He likes being disappointed.$"
+	.string "Right on time! Folks'll start\n"
+	.string "thinking I'm reliable.$"
 
 Route30_House_Text_OrderThanks5:
 	.string "Good work, sprout. That's a farmer's\n"

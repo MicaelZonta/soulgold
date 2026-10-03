@@ -435,7 +435,7 @@ responde:
 > **Bugsy:** It's done! A proper Bug Hotel. Hollow stems for the Combee, bark for the
 > Wurmple, a stone pile for Dwebble...
 > They'll come for the berries and they'll stay for the architecture!
-> **Bram:** He means more bugs. He's happy about more bugs.
+> **Bram:** It means more bugs. He's happy about more bugs.
 
 ---
 
@@ -601,7 +601,7 @@ e dia.*
 *Se de dia a Laurel está na horta: ela vira para o jogador.*
 
 > **Laurel:** A {STR_VAR_1}. In the beds.
-> Fifty years we've had this garden. Fifty years and not one bug.
+> Fifty years he's kept this garden. Fifty years and not one bug.
 > Now you come along, and they come along.
 > ...It isn't a complaint. Go and tell him. He'll want to shout.
 
@@ -729,7 +729,7 @@ a Laurel **de noite**, lendo o caderno. A Sunflora grita antes de ela falar.*
 > My grandmother didn't forget. She kept his field.
 > When I left, she gave me this. She said: plant it where the land remembers.
 > Johto never remembered. Not for forty years.
-> Then you came, and the bugs came. And three nights ago, the black horse came.
+> Then you came, and the bugs came. And one night, the black horse came.
 > The land remembers something now. I think it's you.
 > Take it. Plant it in my patch. Not yours. Mine.
 
@@ -1120,7 +1120,7 @@ Calyrex ao lado. O Peony é quem fala pelo rei.*
 > **Laurel:** You said something true. For once.
 > *(a Peonia chega correndo pela trilha — `addobject` fora da câmera)*
 > **Peonia:** DAD! You can't just jump off a ship before it docks!
-> ...Is that soil glowing? Is that — Grandma's story? The king?
+> ...Is that soil glowing? Is that — Auntie's story? The king?
 > **Laurel:** The white one sleeps where the ice never thaws. The black one walks where
 > the fire took the bells.
 > Ice Path, past Mahogany. The old tower in Ecruteak. One horse. Choose.
@@ -1188,8 +1188,8 @@ escala de nível, **sem blackout** (skill `batalha-sem-blackout`).
 > *(vitória)* Ugh, FINE. Keep your dumb Berries. ...Can I at least keep one Pecha?
 > No? Rude. So rude.
 > *(derrota)* Thanks for the content, hun! Like and subscribe~
-> **Berry Master (depois):** That girl again. Laurel says she's got a Slowbro greener
-> than my Wepear.
+> **Berry Master (depois):** That girl again. Laurel says that Slowbro of hers has
+> better manners than she does.
 
 Depois de 5 vitórias contra ela (contador em `VAR_BERRY_ORDER`, byte alto livre, ou
 var própria):
@@ -1203,7 +1203,7 @@ var própria):
 
 > **Avery:** Ahem. O King of Bountiful Harvest. It is I, Avery, psychic prodigy.
 > ...He is not answering. The patch is not answering me.
-> **Laurel:** It's a patch of dirt, dear. The king's in {PLAYER}'s bag.
+> **Laurel:** It's a patch of dirt, dear. The king travels with {PLAYER} now.
 > **Avery:** I KNEW that.
 
 Uma fala por sexta, em rodízio pelo número de dias (`VAR_DAYS` mod 4):
@@ -1642,7 +1642,7 @@ como estão lá.
 | 3 | Don't swat anything! Everything here is somebody's data. |
 | 4 | A Volbeat's tail blinks in patterns. I think this one's saying "more Berries." Or it's broken. |
 | 5 | I've started lying down in the dirt. Bugs are less shy at eye level. Laurel hates it. |
-| 6 | The Scatterbug here have a wing pattern I've never seen. Your garden is making its own Vivillon! |
+| 6 | The Scatterbug here have markings I've never seen. Your garden is making its own Vivillon! |
 | 7 | My Gym Trainers keep asking where I go on Tuesdays. I say "fieldwork." They think it's a date. |
 | 8 | Combee visit one flower at a time. Your red beds get the morning shift. The yellow beds get the afternoon. |
 | 9 | Kurt says bugs are a waste of good Berries. Then he asks me what bait catches a Heracross. Every time. |
@@ -1671,7 +1671,7 @@ Ela perde (5) · ela ganha e leva um canteiro (5) · o Bram na conversa seguinte
 
 | # | Klara perde | Klara ganha | Bram depois |
 |---|---|---|---|
-| 1 | Ugh, FINE. Keep your dumb Berries. ...Can I at least keep one Pecha? No? Rude. So rude. | Thanks for the content, hun! Like and subscribe~ | That girl again. Laurel says she's got a Slowbro greener than my Wepear. |
+| 1 | Ugh, FINE. Keep your dumb Berries. ...Can I at least keep one Pecha? No? Rude. So rude. | Thanks for the content, hun! Like and subscribe~ | That girl again. Laurel says that Slowbro of hers has better manners than she does. |
 | 2 | That footage is SO getting deleted. | Ooh, this one's heavy! Must be the good stuff. Byeee~ | She took the WHOLE bed? ...Well. It'll grow back. Everything grows back. That's the nice thing about Berries. |
 | 3 | My ring light was in my eyes. That's why. Obviously. | Tell the old man I said hi! Actually, don't. | She left a note. "thx." With a heart. Laurel's framing it. Out of spite, I think. |
 | 4 | Whatever! Berries have, like, carbs anyway. | Harvest complete! Klara out~ | When I was a boy we had a word for her kind. The word was "Tuesday." Don't ask. |
@@ -1723,7 +1723,7 @@ Bram. The Berries are next!”* A fala 7 só vale no estado 15.
 | # | Fala |
 |---|---|
 | 1 | Peonia here! ...Why is everyone in Johto so calm? It's suspicious. |
-| 2 | Dad got lost going to the Pokémon Center. It's across the road. He went the long way. Through the pond. |
+| 2 | Dad got lost going to the Pokémon Center. It's down the road. He went the long way. Through the pond. |
 | 3 | Tilly's hired me. I'm "Assistant Mulch Manager." I get paid in Berries. Mostly Pecha. Mostly bitten. |
 | 4 | Back home I do Dynamax Adventures. Here I carry mulch. Honestly? Mulch is harder. |
 | 5 | Don't tell Dad, but I think Johto's prettier than Galar. Don't tell Galar either. |
@@ -1835,7 +1835,7 @@ Entrega (rodízio de 5, mesmo índice % 5):
 | 1 | That's the lot! Here's your pay. Don't spend it all on mulch. Spend some of it on mulch. |
 | 2 | Look at the size of these! They'll think I grew them. I'll let them. |
 | 3 | Perfect. You pick 'em better than I do now. Don't tell anyone. |
-| 4 | Right on time. Kurt'll be furious. He likes being disappointed. |
+| 4 | Right on time! Folks'll start thinking I'm reliable. |
 | 5 | Good work, sprout. That's a farmer's money. Earned in dirt. |
 
 #### R. O presente da manhã (o Bram dá as berries do Livro)
@@ -2096,7 +2096,7 @@ lado (`bg_event`, a única):*
 
 *1F, a torre inteira. Um Sábio-memória (NPC comum, sem batalha):*
 
-> **Sage:** New novice? Feed the black horse in the stable before dark. Brother Tomo
+> **Sage:** You're the new novice? Feed the black horse in the stable before dark. Brother Tomo
 > spoils it. It came from over the sea, they say.
 
 *Subir a escada dispara a cena do raio (flash, `playse`) e o warp para o telhado:*
@@ -2107,7 +2107,7 @@ lado (`bg_event`, a única):*
 *Telhado: o Sábio Tomo diante do estábulo. Batalha sem blackout:*
 
 > **Tomo:** Stay back! No one takes him. He came to us from a land that forgot his
-> name. I won't let this one forget him too.
+> name. I won't let Johto forget him too.
 >
 > *(vitória)* **Tomo:** ...You carry a Shaderoot. From his home. Then you came from his
 > king. Tell him the old monk says he can stop waiting.
@@ -2164,7 +2164,7 @@ no jogo viram paletas novas.
 | Mansão | Molly | ao piano, no saguão, (16,17) olhando p/ cima; no salão, (15,9) | `WOMAN_2` (substituto) | falas do §15.4; acompanha até a porta do salão |
 | Mansão | Glastrier | (13,5), olha p/ baixo: dormindo no salão de cristal, subindo a escada | `SPECIES(GLASTRIER)` | oferecer a Iceroot Carrot abre a batalha |
 | Mansão | nota do Professor Hale | mesa do salão (`bg_event`) | — | “It sleeps here because nothing here changes…” |
-| Torre 1F | 3 Sábios | (9,8) →, (17,11) ↓, (5,17) ↑ | `SAGE` | um deles: “New novice? Feed the black horse…” |
+| Torre 1F | 3 Sábios | (9,8) →, (17,11) ↓, (5,17) ↑ | `SAGE` | um deles: “You're the new novice? Feed the black horse…” |
 | Torre 1F | Kimono Girl | (22,19), olha p/ esquerda | `KIMONO_GIRL` | uma Kimono Girl “de outra época”; sem fala nova obrigatória |
 | Torre 1F | escada do alto | (14,4), gatilho (`coord_event`); a porta é (15,23) | — | raio (flash + `playse`) + narração “Thunder. Then light…” + warp ao telhado |
 | Telhado | Sábio Tomo | (10,9), olha p/ baixo, diante do Spectrier | `SAGE` | treinador, batalha sem blackout (§15.5) |

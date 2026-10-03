@@ -438,8 +438,8 @@ BerryGarden_Text_KlaraTakes4:
 
 BerryGarden_Text_BramKlara1:
 	.string "That girl again.\p"
-	.string "Laurel says she's got a Slowbro greener\n"
-	.string "than my Wepear.$"
+	.string "Laurel says that Slowbro of hers has\n"
+	.string "better manners than she does.$"
 
 BerryGarden_Text_BramKlara2:
 	.string "She took the WHOLE bed? ...Well. It'll\n"

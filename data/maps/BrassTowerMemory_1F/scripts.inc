@@ -107,8 +107,8 @@ BrassTowerMemory_1F_Text_Thunder:
 	.string "Above you, the bells begin to melt.$"
 
 BrassTowerMemory_1F_Text_Sage1:
-	.string "New novice? Feed the black horse in the\n"
-	.string "stable before dark.\p"
+	.string "You're the new novice? Feed the black\n"
+	.string "horse in the stable before dark.\p"
 	.string "Brother Tomo spoils it. It came from\n"
 	.string "over the sea, they say.$"
 

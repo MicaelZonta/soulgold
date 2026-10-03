@@ -374,10 +374,10 @@ RuinsofAlph_Scientist_Text_0:
 	.string "breaking rocks in here.$"
 
 CameronCamera_Text_0:
-	.string "Hello, \n"
-	.string "just when you least expect it! \p"
-	.string "I am Cameron the Photographer. \p"
-	.string "You look so photogenic! \n"
+	.string "Hello,\n"
+	.string "just when you least expect it!\p"
+	.string "I am Cameron the Photographer.\p"
+	.string "You look so photogenic!\n"
 	.string "Why not have a picture taken?$"
 
 CameronCamera_Text_1:

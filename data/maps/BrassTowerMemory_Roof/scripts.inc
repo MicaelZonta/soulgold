@@ -194,7 +194,7 @@ BrassTowerMemory_Roof_EventScript_SpectrierCaught::
 BrassTowerMemory_Roof_Text_TomoStop:
 	.string "{SPEAKER NAME_TOMO}Stay back! No one takes him.\p"
 	.string "He came to us from a land that forgot\n"
-	.string "his name. I won't let this one forget\l"
+	.string "his name. I won't let Johto forget\l"
 	.string "him too.$"
 
 BrassTowerMemory_Roof_Text_TomoDefeat:

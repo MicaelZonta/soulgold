@@ -160,12 +160,12 @@ script RuinsofAlph_Scientist {
 script CameronCamera {
 	lock
 	faceplayer
-	msgbox("Hello, 
-			just when you least expect it! 
+	msgbox("Hello,
+			just when you least expect it!
 			
-			I am Cameron the Photographer. 
+			I am Cameron the Photographer.
 			
-			You look so photogenic! 
+			You look so photogenic!
 			Why not have a picture taken?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		msgbox("All right, then! Get yourselves ready!")
@@ -198,12 +198,12 @@ script CameronCamera {
 script CameronCamera2 {
 	lock
 	faceplayer
-	msgbox("Hello, 
-			just when you least expect it! 
+	msgbox("Hello,
+			just when you least expect it!
 			
-			I am Cameron the Photographer. 
+			I am Cameron the Photographer.
 			
-			You look so photogenic! 
+			You look so photogenic!
 			Why not have a picture taken?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		msgbox("All right, then! Get yourselves ready!")
@@ -236,12 +236,12 @@ script CameronCamera2 {
 script CameronCamera3 {
 	lock
 	faceplayer
-	msgbox("Hello, 
-			just when you least expect it! 
+	msgbox("Hello,
+			just when you least expect it!
 			
-			I am Cameron the Photographer. 
+			I am Cameron the Photographer.
 			
-			You look so photogenic! 
+			You look so photogenic!
 			Why not have a picture taken?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		msgbox("All right, then! Get yourselves ready!")
@@ -274,12 +274,12 @@ script CameronCamera3 {
 script CameronCamera4 {
 	lock
 	faceplayer
-	msgbox("Hello, 
-			just when you least expect it! 
+	msgbox("Hello,
+			just when you least expect it!
 			
-			I am Cameron the Photographer. 
+			I am Cameron the Photographer.
 			
-			You look so photogenic! 
+			You look so photogenic!
 			Why not have a picture taken?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		msgbox("All right, then! Get yourselves ready!")
@@ -312,12 +312,12 @@ script CameronCamera4 {
 script CameronCamera5 {
 	lock
 	faceplayer
-	msgbox("Hello, 
-			just when you least expect it! 
+	msgbox("Hello,
+			just when you least expect it!
 			
-			I am Cameron the Photographer. 
+			I am Cameron the Photographer.
 			
-			You look so photogenic! 
+			You look so photogenic!
 			Why not have a picture taken?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		msgbox("All right, then! Get yourselves ready!")
