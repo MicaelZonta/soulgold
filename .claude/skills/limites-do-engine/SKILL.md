@@ -55,7 +55,7 @@ python3 dev_scripts/limites_janela_objetos.py --mapa NewBarkTown
 ## Teste em runtime obrigatório
 
 Build limpo não prova nada. No mGBA:
-- `WorldHub` (36 objetos sem flag na mesma janela);
+- `WorldHub` (pomar + Elite 4 = 21 objetos na pior janela, todos devem aparecer);
 - `applymovement` em mais de 16 objetos + `waitmovement`;
 - chuva;
 - salvar e carregar com objetos ≥ 16 carregados;

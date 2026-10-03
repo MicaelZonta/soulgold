@@ -23,7 +23,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_F",
       "x": 2,
-      "y": 39,
+      "y": 54,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
@@ -36,7 +36,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
       "x": 3,
-      "y": 39,
+      "y": 54,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
@@ -49,7 +49,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PROTON",
       "x": 5,
-      "y": 40,
+      "y": 55,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
@@ -62,7 +62,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ARIANA",
       "x": 4,
-      "y": 39,
+      "y": 54,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
@@ -75,7 +75,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PETREL",
       "x": 5,
-      "y": 39,
+      "y": 54,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
@@ -88,7 +88,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PETREL",
       "x": 3,
-      "y": 40,
+      "y": 55,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
@@ -101,7 +101,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BUGSY",
       "x": 15,
-      "y": 39,
+      "y": 54,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -114,7 +114,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_WHITNEY",
       "x": 16,
-      "y": 39,
+      "y": 54,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -127,7 +127,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_JASMINE",
       "x": 14,
-      "y": 40,
+      "y": 55,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -140,7 +140,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MORTY",
       "x": 17,
-      "y": 39,
+      "y": 54,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -153,7 +153,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CHUCK",
       "x": 15,
-      "y": 40,
+      "y": 55,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -166,7 +166,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PRYCE",
       "x": 16,
-      "y": 40,
+      "y": 55,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -179,7 +179,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CLAIR",
       "x": 17,
-      "y": 40,
+      "y": 55,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -192,7 +192,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SABRINA",
       "x": 2,
-      "y": 22,
+      "y": 14,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -205,7 +205,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_JANINE",
       "x": 1,
-      "y": 22,
+      "y": 14,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -218,7 +218,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SURGE",
       "x": 3,
-      "y": 21,
+      "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -231,7 +231,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ERIKA",
       "x": 4,
-      "y": 21,
+      "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -244,7 +244,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MISTY",
       "x": 2,
-      "y": 21,
+      "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -257,7 +257,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BROCK",
       "x": 1,
-      "y": 21,
+      "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -270,7 +270,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BLAINE",
       "x": 3,
-      "y": 22,
+      "y": 14,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -283,7 +283,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BLUE",
       "x": 4,
-      "y": 22,
+      "y": 14,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -361,7 +361,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SAGE",
       "x": 1,
-      "y": 18,
+      "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -374,7 +374,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_FIREBREATHER",
       "x": 2,
-      "y": 17,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -387,7 +387,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SILVER",
       "x": 3,
-      "y": 17,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -400,7 +400,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PROF_OAK",
       "x": 4,
-      "y": 18,
+      "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -413,7 +413,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KURT",
       "x": 5,
-      "y": 18,
+      "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -426,7 +426,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_RED_NORMAL",
       "x": 1,
-      "y": 17,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -439,7 +439,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_EUSINE",
       "x": 2,
-      "y": 18,
+      "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -452,7 +452,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PROF_ELM",
       "x": 3,
-      "y": 18,
+      "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -465,7 +465,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 4,
-      "y": 17,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -478,7 +478,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BILL",
       "x": 5,
-      "y": 17,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
@@ -491,7 +491,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_GIOVANNI",
       "x": 2,
-      "y": 40,
+      "y": 55,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 2,
@@ -504,7 +504,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_FALKNER",
       "x": 14,
-      "y": 39,
+      "y": 54,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,

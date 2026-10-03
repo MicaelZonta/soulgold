@@ -484,7 +484,7 @@ NewBarkTown_PlayersHouse_1F_MovementFaceLeft:
 	step_end
 
 NewBarkTown_PlayersHouse_1F_Text_ElmsLookingForYou:
-	.string "Oh, {PLAYER}…! Our neighbor,\n"
+	.string "{SPEAKER NAME_MOM}Oh, {PLAYER}…! Our neighbor,\n"
 	.string "Prof. Elm, was looking for you.\p"
 	.string "He said he wanted you to do\n"
 	.string "something for him.\p"
@@ -502,7 +502,7 @@ NewBarkTown_PlayersHouse_1F_Text_ExplainPokeGear:
 	.string "Gee, isn't that convenient?$"
 
 NewBarkTown_PlayersHouse_1F_Text_WearTheseRunningShoes:
-	.string "Oh, and don't forget your\n"
+	.string "{SPEAKER NAME_MOM}Oh, and don't forget your\n"
 	.string "Running Shoes!$"
 
 NewBarkTown_PlayersHouse_1F_Text_SwitchShoesWithRunningShoes:

@@ -243,8 +243,9 @@ Após mudar o mGBA: `make mgba-windows` com o mGBA fechado.
 5. `make -j$(nproc)`, depois `dev_scripts/medir_limites_ram_save.sh` para
    conferir a folga.
 6. **Teste em runtime no mGBA:**
-   - o `WorldHub` (36 objetos sem flag na mesma janela) deve mostrar 23 +
-     jogador;
+   - o `WorldHub`: a pior janela era de 36 objetos; em 03/10/2026 os grupos de
+     NPC foram afastados do pomar (mapa 20x58) e ela caiu para 21. Todas as
+     árvores e NPCs da janela devem aparecer (`objetos.py`);
    - uma cena com `applymovement` em mais de 16 objetos + `waitmovement`;
    - chuva no mesmo mapa;
    - salvar, carregar e conferir os objetos ≥ 16 na posição certa;

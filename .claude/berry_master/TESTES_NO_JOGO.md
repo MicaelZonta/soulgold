@@ -161,7 +161,8 @@ e por fim `Bram's gift: taken today.` ou `…still waiting today.`
   3. `Berry Master… → Grow garden 1 stage`.
   4. Regue de novo. Depois `Ripen the garden`.
   5. Salve, feche, abra e continue (com a cova molhada).
-- **Esperado:** no passo 2 a terra fica **escura** na hora (molhada). No passo 3, estágio
+- **Esperado:** no passo 2 a terra fica **escura** (molhada) assim que a caixa “watered
+  the …” **fecha**; enquanto a fala está aberta ela ainda aparece clara. No passo 3, estágio
   novo, ela volta a ficar **clara** (secou: cada estágio pede uma regada, como sempre foi
   a regra). No passo 4, escura de novo; madura, clara. No passo 5, continua como estava.
   As covas vazias, a da Laurel e as de outras rotas fora desta lista não mudam nunca.
@@ -195,6 +196,9 @@ e por fim `Bram's gift: taken today.` ou `…still waiting today.`
      árvore em (4,31) é **Oran**: colha.
 - **Esperado:** as duas funcionam como antes. A Oran do WorldHub dá **Oran** e, depois
   de colhida, volta sozinha com o tempo (`Clock… → +24 hours` e olhe de novo).
+- **Atenção:** no QA de 03/10/2026 a Oran nunca aparecia (16 slots de objeto cheios).
+  Desde então o limite é 24 e os NPCs do WorldHub foram afastados do pomar: a Oran e as
+  outras 15 árvores devem aparecer chegando por qualquer lado (`objetos.py` lista todas).
 - **Por que importa:** antes da Parte 2 a Oran do WorldHub e a árvore de (23,38) dividiam
   a mesma vaga do save; agora são separadas.
 
@@ -213,14 +217,18 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
 ### T17 · Colheita que não cabe na bolsa não registra
 - **Passos:**
   1. `Book of Berries… → Bram's 8 only` (Livro 8, sem Sitrus).
-  2. `PC/Bag… → Fill Pocket Berries` (999 de cada berry).
+  2. `PC/Bag… → Clear Bag`, depois `PC/Bag… → Fill Pocket Berries` (999 de cada berry).
+     O Clear Bag vem antes porque o Fill só cria pilhas das berries que você **ainda não
+     tem**: uma pilha que já existe (ex.: as Sitrus colhidas no T16) fica como está, e a
+     colheita cabe nela.
   3. Plante uma Sitrus no A, `Ripen the garden`, colha.
   4. `Status`.
 - **Esperado:** “The Bag's Berries Pocket is full. / The Sitrus Berry couldn't be taken.” e
   o Livro **continua 8**.
 - **Observação:** se a colheita for de só 1 berry, ela cabe (998 + 1). Nesse caso,
   plante de novo e repita.
-- Depois: `PC/Bag… → Clear Bag` e dê de novo a Squirtbottle (722).
+- Depois: `PC/Bag… → Clear Bag` e dê de novo a Squirtbottle (722) (o Clear Bag do passo 2
+  também a levou).
 
 ### T18 · Com 11 no Livro, nenhum marco
 - **Passos:** `Book of Berries… → 11`. `Go: Bram's house`, fale com o Bram.
@@ -380,6 +388,9 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
   2. Presente novo: “You came back! … / Three today -- the garden earns its keep. Or have
      you got one in mind? / Name it. If it's in the Book, I've got seed for it.” e um
      menu com **Surprise me** / **I've got one**.
+  3. Com o Livro em 22 e o Ato 1 por fazer, a conversa termina com “I've got the next
+     thing in mind for the garden. But it's more than one old man can dig. I'd need
+     somebody to help.” É a mesma fala do T36 e está certa aqui também.
 - `Status`: `Work 0`. `Go: the garden`: o B está aberto (4 covas).
 
 ### T35 · Semente encomendada
@@ -445,6 +456,11 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
   o Prof. Elm no laboratório de New Bark).
 - **Esperado:** a plaquinha aparece com o nome certo, sem letra estranha logo depois do
   nome e sem quebra de linha fora do lugar.
+- **Passos:** jogo novo (ou `NewBarkTown_PlayersHouse_1F` com `VAR_NEWBARK_TOWN_STATE` 1):
+  desça a escada e deixe a mãe falar.
+- **Esperado:** **todas** as falas da mãe com retrato têm a plaquinha **Mom**, inclusive
+  “Oh, {PLAYER}…! Our neighbor, Prof. Elm…” e “Oh, and don't forget your Running Shoes!”
+  (corrigidas depois do QA de 03/10/2026).
 
 ### T40 · Árvores de rota comuns
 - **Passos:** colha uma árvore de berry em outra rota (Route 29, Route 31…).

@@ -86,8 +86,9 @@ Ferramentas:
    são criados**: ficam invisíveis e dá para andar por cima. O spawn só
    acontece quando o objeto **entra pela borda da câmera** com slot livre.
    Antes de concluir "a árvore não existe", rode `objetos.py`; mude o
-   ângulo de chegada (no WorldHub, chegar pelo leste cria a Sitrus (7,31),
-   pelo norte não).
+   ângulo de chegada. (O WorldHub tinha esse problema com 16 slots; em
+   03/10/2026 os grupos de NPC foram afastados do pomar e a pior janela
+   ficou em 21 objetos, então todas as árvores são criadas.)
 7. **Print durante a fala não mostra a mudança do mapa.** Metatile trocado por
    script (terra molhada, porta) pode só aparecer quando a caixa fecha.
    Tire o print de prova com a caixa fechada.

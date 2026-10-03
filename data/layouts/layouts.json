@@ -4585,7 +4585,7 @@
       "id": "LAYOUT_WORLD_HUB",
       "name": "WorldHub_Layout",
       "width": 20,
-      "height": 50,
+      "height": 58,
       "primary_tileset": "gTileset_Johto_South",
       "secondary_tileset": "gTileset_Cave_Ice",
       "border_filepath": "data/layouts/WorldHub/border.bin",
