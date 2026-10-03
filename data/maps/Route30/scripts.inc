@@ -140,6 +140,15 @@ Route30_EventScript_GardenVisibility::
 	setflag FLAG_TEMP_HIDE_KINGS_PLOT
 	@ Who is out here at this hour (part 8, src/berry_garden.c).
 	special GardenCast_Apply
+	@ Klara's morning raid (part 11): in front of a ripe plot, or not here.
+	@ If she was left waiting on the last visit, she took that plot.
+	setvar VAR_0x8004, LOCALID_ROUTE30_KLARA
+	specialvar VAR_RESULT, GardenKlara_Place
+	call_if_eq VAR_RESULT, FALSE, Route30_EventScript_HideKlara
+	return
+
+Route30_EventScript_HideKlara::
+	setflag FLAG_TEMP_HIDE_KLARA
 	return
 
 Route30_EventScript_GardenLevelAtLeastOne::
@@ -202,6 +211,19 @@ Route30_EventScript_Tilly::
 	setvar VAR_RESULT, FALSE
 	call_if_eq VAR_0x800B, TRUE, BerryGarden_EventScript_TillyReaction
 	call_if_ne VAR_RESULT, TRUE, BerryGarden_EventScript_TillyStallLine
+	@ Battles from the story's first step on (part 11, data/scripts/berry_garden.inc).
+	goto_if_eq VAR_HARVEST_KING, 0, Route30_EventScript_TillyShop
+	message BerryGarden_Text_TillyMenu
+	waitmessage
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, BerryGarden_Text_TillyBuyMulch, BerryGarden_Text_TillyFight, BerryGarden_Text_TillyBye2
+	goto_if_eq VAR_RESULT, 0, Route30_EventScript_TillyShop
+	goto_if_ne VAR_RESULT, 1, Route30_EventScript_TillyBye
+	call BerryGarden_EventScript_TillyBattle
+	closemessage
+	release
+	end
+
+Route30_EventScript_TillyShop::
 	message Route30_Text_TillyBuy
 	waitmessage
 	goto_if_ge VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_BUG_HOTEL, Route30_EventScript_TillyMartBugHotel
@@ -241,6 +263,8 @@ Route30_EventScript_Bugsy::
 	dotimebasedevents
 	call BerryGarden_EventScript_BugsyReaction
 	call_if_ne VAR_RESULT, TRUE, BerryGarden_EventScript_BugsyLine
+	@ His field test (part 11), once a day from Act 1c.
+	call BerryGarden_EventScript_BugsyBattle
 	closemessage
 	release
 	end

@@ -449,6 +449,7 @@ extern const u8 Debug_EventScript_BerryOrderDiscovery[];
 extern const u8 Debug_EventScript_BerryResetAll[];
 extern const u8 Debug_EventScript_BerryStatus[];
 extern const u8 Debug_EventScript_BerryHearts0[];
+extern const u8 Debug_EventScript_BerryKlara[];
 extern const u8 Debug_EventScript_BerryHearts5[];
 extern const u8 Debug_EventScript_BerryHearts12[];
 extern const u8 Debug_EventScript_BerryHearts15[];
@@ -903,6 +904,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster[] =
     { COMPOUND_STRING("Reset Berry Master"),        DebugAction_ExecuteScript, Debug_EventScript_BerryResetAll },
     // At the end so the QA macros' indices above (.claude/qa/lib.sh) stay put.
     { COMPOUND_STRING("Hearts…"),                   DebugAction_OpenSubMenu, sDebugMenu_Actions_BerryMaster_Hearts },
+    { COMPOUND_STRING("Klara: raid this morning"),  DebugAction_ExecuteScript, Debug_EventScript_BerryKlara },
     { NULL }
 };
 

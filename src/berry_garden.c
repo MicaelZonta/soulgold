@@ -210,6 +210,8 @@ void GardenToday_Mark(u32 bit)
 
 static void FinishGardenWork(void);
 
+#define KLARA_ONE_IN  7   // mornings (section 14.3)
+
 void GardenRollDay(void)
 {
     if (FlagGet(FLAG_DAILY_GARDEN_NEW_DAY))
@@ -219,9 +221,10 @@ void GardenRollDay(void)
     FlagSet(FLAG_DAILY_GARDEN_NEW_DAY);
     FinishGardenWork();
 
-    // The day's draws go here, once each, when their part exists:
-    //   Klara's raid, 1 morning in 7, garden level 2+ (part 11) -> GARDEN_TODAY_KLARA_COMES
+    // The day's draws, once each:
     //   Mustard, 1 Sunday in 4, story state 15 (part 16)          -> GARDEN_TODAY_MUSTARD_COMES
+    if (VarGet(VAR_BERRY_GARDEN_LEVEL) >= GARDEN_LEVEL_PROPER && Random() % KLARA_ONE_IN == 0)
+        GardenToday_Mark(GARDEN_TODAY_KLARA_COMES);
 }
 
 // VAR_0x8004 = GARDEN_TODAY_* bit
@@ -1164,4 +1167,147 @@ u16 GardenPests_AllCaught(void)
             return FALSE;
     }
     return TRUE;
+}
+
+// ---------------------------------------------------------------------------
+// Klara's morning raid (part 11, sections 13.4 and 14.4 I)
+//
+// GardenRollDay draws the morning (1 in 7, level 2+). On a load of Route30 in
+// that morning, with a ripe plot, she stands in front of one; talking to her
+// is a battle with no blackout. She wins, or the player leaves Route30 without
+// talking to her: that plot is emptied. VAR_GARDEN_RIVALS keeps her between
+// loads (it is the only state that has to survive the player walking out):
+//   bits 0-3  wins against her (the 5th brings the mochi line)
+//   bit  4    she is in the garden now, waiting
+//   bits 5-8  the plot she is after (0..9 from GARDEN_FIRST)
+//   bits 9-11 Bram's line about her for his next talk (0 none, 1..5)
+// ---------------------------------------------------------------------------
+
+#define RIVALS_WINS_MASK      0x000F
+#define RIVALS_WAITING        0x0010
+#define RIVALS_PLOT_SHIFT     5
+#define RIVALS_PLOT_MASK      0x01E0
+#define RIVALS_BRAM_SHIFT     9
+#define RIVALS_BRAM_MASK      0x0E00
+
+// Where she stands for each plot (its free side; never Bram's (27,44)) and
+// which way she looks. Measured on Route30 (data/maps/Route30/scripts.inc).
+static const struct { s8 x, y; u8 movement; } sKlaraSpots[] =
+{
+    { 28, 42, MOVEMENT_TYPE_FACE_DOWN },  // A1 (28,43)
+    { 29, 42, MOVEMENT_TYPE_FACE_DOWN },  // A2 (29,43)
+    { 31, 43, MOVEMENT_TYPE_FACE_LEFT },  // A3 (30,43)
+    { 28, 45, MOVEMENT_TYPE_FACE_UP },    // A4 (28,44)
+    { 29, 45, MOVEMENT_TYPE_FACE_UP },    // A5 (29,44)
+    { 30, 45, MOVEMENT_TYPE_FACE_UP },    // A6 (30,44)
+    { 30, 40, MOVEMENT_TYPE_FACE_DOWN },  // B1 (30,41)
+    { 31, 40, MOVEMENT_TYPE_FACE_DOWN },  // B2 (31,41)
+    { 29, 42, MOVEMENT_TYPE_FACE_RIGHT }, // B3 (30,42)
+    { 31, 43, MOVEMENT_TYPE_FACE_UP },    // B4 (31,42)
+};
+STATIC_ASSERT(ARRAY_COUNT(sKlaraSpots) == BERRY_TREE_GARDEN_LAST - BERRY_TREE_GARDEN_FIRST + 1, KlaraSpotEveryPlot);
+
+// The tree is emptied the way a harvest empties it: marked "just picked", so
+// it does not play the growth sparkle. With the sparkle, a plot emptied in
+// sight corrupted the graphics of Bram and Klara (QA 03/10/2026, part 11: the
+// sparkle sprite drew over their tiles); a harvest never shows it.
+static void KlaraTakesThePlot(u16 rivals)
+{
+    u32 plot = (rivals & RIVALS_PLOT_MASK) >> RIVALS_PLOT_SHIFT;
+
+    SetBerryTreeJustPicked(LOCALID_ROUTE30_GARDEN_A1 + plot, gSaveBlock1Ptr->location.mapNum,
+                           gSaveBlock1Ptr->location.mapGroup);
+    RemoveBerryTree(BERRY_TREE_GARDEN_FIRST + plot);
+    GardenToday_Mark(GARDEN_TODAY_KLARA_RESOLVED);
+}
+
+// Route30 ON_TRANSITION, VAR_0x8004 = her local id. TRUE = she is here now
+// (her template is moved in front of the plot); FALSE = hide her. If she was
+// left waiting on the last visit, she took that plot and is gone.
+u16 GardenKlara_Place(void)
+{
+    u16 rivals = VarGet(VAR_GARDEN_RIVALS);
+    u32 id, ripe = 0, pick;
+
+    if (rivals & RIVALS_WAITING)
+    {
+        KlaraTakesThePlot(rivals);
+        rivals &= ~(RIVALS_WAITING | RIVALS_BRAM_MASK);
+        rivals |= (1 + Random() % 4) << RIVALS_BRAM_SHIFT;   // one of his first four
+        VarSet(VAR_GARDEN_RIVALS, rivals);
+        return FALSE;
+    }
+    if (!GardenToday_Has(GARDEN_TODAY_KLARA_COMES) || GardenToday_Has(GARDEN_TODAY_KLARA_RESOLVED)
+     || GardenCast_PeriodOf(GetTimeOfDay()) != GARDEN_PERIOD_MORNING)
+        return FALSE;
+    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_GARDEN_LAST; id++)
+    {
+        if (GetBerryTreeInfo(id)->stage == BERRY_STAGE_BERRIES)
+            ripe++;
+    }
+    if (ripe == 0)
+        return FALSE;
+    pick = Random() % ripe;
+    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_GARDEN_LAST; id++)
+    {
+        if (GetBerryTreeInfo(id)->stage == BERRY_STAGE_BERRIES && pick-- == 0)
+            break;
+    }
+    id -= BERRY_TREE_GARDEN_FIRST;
+    SetObjEventTemplateCoords(gSpecialVar_0x8004, sKlaraSpots[id].x, sKlaraSpots[id].y);
+    SetObjEventTemplateMovementType(gSpecialVar_0x8004, sKlaraSpots[id].movement);
+    rivals &= ~RIVALS_PLOT_MASK;
+    VarSet(VAR_GARDEN_RIVALS, rivals | RIVALS_WAITING | (id << RIVALS_PLOT_SHIFT));
+    return TRUE;
+}
+
+// After the battle. VAR_0x8004 = TRUE if the player won, VAR_0x8005 = the
+// line she said (0..4; Bram answers it). Returns the wins so far (the 5th
+// brings the mochi line). A loss empties her plot.
+u16 GardenKlara_Resolve(void)
+{
+    u16 rivals = VarGet(VAR_GARDEN_RIVALS);
+    u32 wins = rivals & RIVALS_WINS_MASK, bramLine;
+
+    if (gSpecialVar_0x8004)
+    {
+        if (wins < RIVALS_WINS_MASK)
+            wins++;
+        bramLine = 5;
+        GardenToday_Mark(GARDEN_TODAY_KLARA_RESOLVED);
+    }
+    else
+    {
+        KlaraTakesThePlot(rivals);
+        bramLine = 1 + gSpecialVar_0x8005 % 4;
+    }
+    rivals &= ~(RIVALS_WINS_MASK | RIVALS_WAITING | RIVALS_BRAM_MASK);
+    VarSet(VAR_GARDEN_RIVALS, rivals | wins | (bramLine << RIVALS_BRAM_SHIFT));
+    return wins;
+}
+
+// Bram's next talk: 0, or his line 1..5 about her (then forgotten).
+u16 GardenKlara_TakeBramLine(void)
+{
+    u16 rivals = VarGet(VAR_GARDEN_RIVALS);
+    u32 line = (rivals & RIVALS_BRAM_MASK) >> RIVALS_BRAM_SHIFT;
+
+    VarSet(VAR_GARDEN_RIVALS, rivals & ~RIVALS_BRAM_MASK);
+    return line;
+}
+
+// Debug: Klara comes this morning (and is not resolved yet).
+void BerryDebug_KlaraComes(void)
+{
+    GardenToday_Mark(GARDEN_TODAY_KLARA_COMES);
+    VarSet(VAR_GARDEN_TODAY, VarGet(VAR_GARDEN_TODAY) & ~(1 << GARDEN_TODAY_KLARA_RESOLVED));
+    VarSet(VAR_GARDEN_RIVALS, VarGet(VAR_GARDEN_RIVALS) & ~RIVALS_WAITING);
+}
+
+// Tilly's prize: one of the four Mulches she sells, at random.
+u16 GardenTilly_PrizeMulch(void)
+{
+    static const u16 sMulches[] = { ITEM_GROWTH_MULCH, ITEM_DAMP_MULCH, ITEM_STABLE_MULCH, ITEM_GOOEY_MULCH };
+
+    return sMulches[Random() % ARRAY_COUNT(sMulches)];
 }

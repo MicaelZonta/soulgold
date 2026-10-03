@@ -1294,6 +1294,14 @@ Debug_EventScript_BerrySetHearts::
 	releaseall
 	end
 
+@ Klara (part 11): today is a raid morning; she shows up on the next load of
+@ Route30 if it is morning and a garden plot is ripe.
+Debug_EventScript_BerryKlara::
+	lockall
+	special BerryDebug_KlaraComes
+	msgbox Debug_Text_BerryKlara, MSGBOX_DEFAULT
+	goto Debug_EventScript_BerryReload
+
 Debug_EventScript_BerryRipen::
 	lockall
 	special BerryDebug_RipenGarden
@@ -1546,6 +1554,10 @@ Debug_Text_BerryStatusHearts:
 	.string "Hearts (5 and 12 open lines):\n"
 	.string "Bram {STR_VAR_1}  Laurel {STR_VAR_2}\l"
 	.string "Tilly {STR_VAR_3}$"
+
+Debug_Text_BerryKlara:
+	.string "Klara raids this morning: in the\n"
+	.string "garden, morning, with a ripe plot.$"
 
 Debug_Text_BerryHeartsSet:
 	.string "Everyone's hearts: {STR_VAR_1}.\n"

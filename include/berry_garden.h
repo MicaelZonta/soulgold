@@ -54,6 +54,10 @@ u16 GardenPlots_Planted(void);
 u16 GardenPest_IsGardenTree(void);
 u16 GardenWeeds_Bed(void);
 u16 GardenPests_AllCaught(void);
+u16 GardenKlara_Place(void);
+u16 GardenKlara_Resolve(void);
+u16 GardenKlara_TakeBramLine(void);
+u16 GardenTilly_PrizeMulch(void);
 
 // Pests and weeds (part 10): only garden plots (src/berry.c asks these).
 bool32 IsBerryGardenTree(u32 treeId);
@@ -86,5 +90,6 @@ void BerryDebug_ClearMoney(void);
 void BerryDebug_Status(void);
 void BerryDebug_NewOrder(void);
 void BerryDebug_SetHearts(void);
+void BerryDebug_KlaraComes(void);
 
 #endif // GUARD_BERRY_GARDEN_H

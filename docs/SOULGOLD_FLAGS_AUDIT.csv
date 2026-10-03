@@ -30,6 +30,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0xF,15,FLAG_TEMP_BUGSY_REACTED,TEMP,EM_USO,1,1,2,,GLOBAL(codigo),"Route30: his reaction, once per visit (part 9)"
 0xF,15,FLAG_TEMP_F,TEMP,EM_USO,0,3,3,SunMoonAltar,MAPA_UNICO:SunMoonAltar,Unused Flag
 0x10,16,FLAG_TEMP_10,TEMP,EM_USO,2,2,6,CeruleanCave_B1F;CliffEdgeCave;Kitakami_Houses,MULTI_MAPA(3),Unused Flag
+0x10,16,FLAG_TEMP_HIDE_KLARA,TEMP,EM_USO,0,2,3,Route30,GLOBAL(codigo),Route30: Klara's morning raid (part 11)
 0x11,17,FLAG_TEMP_11,TEMP,EM_USO,0,0,26,Route110_TrickHousePuzzle4;Route120,MULTI_MAPA(2),
 0x11,17,FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE,TEMP,SO_MAPAS_FORA_DA_ROM,0,0,1,,,fora da ROM
 0x12,18,FLAG_TEMP_12,TEMP,EM_USO,0,1,31,MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B1F_Stairs_Frlg;MtEmber_RubyPath_B2F_Frlg,MULTI_MAPA(10),

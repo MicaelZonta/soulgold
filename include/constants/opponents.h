@@ -929,15 +929,15 @@
 #define TRAINER_TITLE_DEFENSE_ELDER_LI    948
 #define TRAINER_TITLE_DEFENSE_DIRECTOR    949
 #define TRAINER_TITLE_DEFENSE_LEAF        950
-#define TRAINER_UNUSED_87                 951
-#define TRAINER_UNUSED_88                 952
-#define TRAINER_UNUSED_89                 953
-#define TRAINER_UNUSED_90                 954
-#define TRAINER_UNUSED_91                 955
-#define TRAINER_UNUSED_92                 956
-#define TRAINER_UNUSED_93                 957
-#define TRAINER_UNUSED_94                 958
-#define TRAINER_UNUSED_95                 959
+#define TRAINER_GARDEN_TILLY_1            951  // Berry Master garden (part 11)
+#define TRAINER_GARDEN_TILLY_2            952  // Berry Master garden (part 11)
+#define TRAINER_GARDEN_TILLY_3            953  // Berry Master garden (part 11)
+#define TRAINER_GARDEN_BUGSY_1            954  // Berry Master garden (part 11)
+#define TRAINER_GARDEN_BUGSY_2            955  // Berry Master garden (part 11)
+#define TRAINER_GARDEN_BUGSY_3            956  // Berry Master garden (part 11)
+#define TRAINER_GARDEN_KLARA_1            957  // Berry Master garden (part 11)
+#define TRAINER_GARDEN_KLARA_2            958  // Berry Master garden (part 11)
+#define TRAINER_GARDEN_KLARA_3            959  // Berry Master garden (part 11)
 #define TRAINER_UNUSED_96                 960
 #define TRAINER_UNUSED_97                 961
 #define TRAINER_UNUSED_98                 962

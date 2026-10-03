@@ -92,6 +92,11 @@
 #define GARDEN_PLACE_GARDEN          1   // Route30
 #define GARDEN_PLACE_HOUSE           2   // Route30_House
 
+// Klara's object on Route30 (part 11): her position is set by GardenKlara_Place.
+#define LOCALID_ROUTE30_KLARA        38
+// The ten garden trees on Route30 are objects 24..33, in plot order (A1..B4).
+#define LOCALID_ROUTE30_GARDEN_A1    24
+
 // Hearts (part 9, section 14.3): days the player talked to them, 0..15, in
 // VAR_GARDEN_HEARTS, 4 bits each, and one GARDEN_TODAY_TALKED_* bit each.
 // GardenLine_Pick takes one of these too; GARDEN_HEARTS_NONE = a bank of 10

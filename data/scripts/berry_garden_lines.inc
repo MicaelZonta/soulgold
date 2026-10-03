@@ -428,6 +428,9 @@ BerryGarden_EventScript_BramChat::
 @ the Book that grew in the garden), then the morning reactions of section
 @ 14.4 A. Not on the tutorial visit (the caller skips it).
 BerryGarden_EventScript_BramReaction::
+	@ Klara's morning (part 11, data/scripts/berry_garden.inc) comes first.
+	call BerryGarden_EventScript_BramKlaraLine
+	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_BramReactionEnd
 	specialvar VAR_RESULT, GardenNews_Take
 	goto_if_eq VAR_RESULT, GARDEN_NEWS_FIRST_HARVEST, BerryGarden_EventScript_BramFirstHarvest
 	goto_if_eq VAR_RESULT, GARDEN_NEWS_NEW_BERRY, BerryGarden_EventScript_BramNewBerry
@@ -440,6 +443,9 @@ BerryGarden_EventScript_BramReaction::
 	goto_if_eq VAR_RESULT, WEEKDAY_THU, BerryGarden_EventScript_BramBugsyDay
 BerryGarden_EventScript_NoReaction::
 	setvar VAR_RESULT, FALSE
+	return
+
+BerryGarden_EventScript_BramReactionEnd::
 	return
 
 BerryGarden_EventScript_BramFirstHarvest::

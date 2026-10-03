@@ -10,12 +10,14 @@ on:
       - 'data/layouts/Route30/map.bin'
       - 'dev_scripts/berry_garden_access_check.py'
       - '.claude/qa/rota.py'
+      - 'src/berry_garden.c'
   pull_request:
     paths:
       - 'data/maps/Route30/map.json'
       - 'data/layouts/Route30/map.bin'
       - 'dev_scripts/berry_garden_access_check.py'
       - '.claude/qa/rota.py'
+      - 'src/berry_garden.c'
 
 jobs:
   berry-garden-access:

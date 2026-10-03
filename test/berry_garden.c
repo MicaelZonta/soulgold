@@ -15,7 +15,7 @@
 #include "constants/items.h"
 
 // Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md,
-// parts 2 to 10).
+// parts 2 to 11).
 
 static void ClearLedger(void)
 {
@@ -699,4 +699,66 @@ TEST("The Bug Hotel doubles the pest chance")
     EXPECT_EQ(GardenPest_Chance(), 15);
     VarSet(VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_BUG_HOTEL);
     EXPECT_EQ(GardenPest_Chance(), 30);
+}
+
+// Part 11: Klara's raid (section 13.4).
+static void PlantRipe(u32 id)
+{
+    struct BerryTree *tree = GetBerryTreeInfo(id);
+
+    tree->berry = ItemIdToBerryType(ITEM_PECHA_BERRY);
+    tree->stage = BERRY_STAGE_BERRIES;
+    tree->berryYield = 3;
+}
+
+TEST("Klara left waiting takes her plot and Bram has a line for it")
+{
+    SetUpGarden(GARDEN_LEVEL_PROPER, 8, 0);
+    VarSet(VAR_GARDEN_TODAY, 1 << GARDEN_TODAY_KLARA_COMES);
+    PlantRipe(BERRY_TREE_GARDEN_A3);
+    VarSet(VAR_GARDEN_RIVALS, 0x0010 | (2 << 5));     // waiting, plot A3
+    gSpecialVar_0x8004 = LOCALID_ROUTE30_KLARA;
+    EXPECT(!GardenKlara_Place());
+    EXPECT_EQ((u32)GetBerryTreeInfo(BERRY_TREE_GARDEN_A3)->stage, BERRY_STAGE_NO_BERRY);
+    EXPECT(GardenToday_Has(GARDEN_TODAY_KLARA_RESOLVED));
+    EXPECT(GardenKlara_TakeBramLine() >= 1);
+    EXPECT_EQ(GardenKlara_TakeBramLine(), 0);           // said once
+}
+
+TEST("Beating Klara keeps the plot, counts a win and Bram cheers")
+{
+    SetUpGarden(GARDEN_LEVEL_PROPER, 8, 0);
+    VarSet(VAR_GARDEN_TODAY, 1 << GARDEN_TODAY_KLARA_COMES);
+    PlantRipe(BERRY_TREE_GARDEN_B1);
+    VarSet(VAR_GARDEN_RIVALS, 4 | 0x0010 | (6 << 5)); // 4 wins, waiting, plot B1
+    gSpecialVar_0x8004 = TRUE;
+    gSpecialVar_0x8005 = 0;
+    EXPECT_EQ(GardenKlara_Resolve(), 5);               // the 5th: the mochi line
+    EXPECT_EQ((u32)GetBerryTreeInfo(BERRY_TREE_GARDEN_B1)->stage, BERRY_STAGE_BERRIES);
+    EXPECT(GardenToday_Has(GARDEN_TODAY_KLARA_RESOLVED));
+    EXPECT_EQ(GardenKlara_TakeBramLine(), 5);
+    gSpecialVar_0x8004 = LOCALID_ROUTE30_KLARA;
+    EXPECT(!GardenKlara_Place());                       // resolved: not again today
+}
+
+TEST("Losing to Klara empties her plot")
+{
+    SetUpGarden(GARDEN_LEVEL_PROPER, 8, 0);
+    PlantRipe(BERRY_TREE_GARDEN_A1);
+    VarSet(VAR_GARDEN_RIVALS, 0x0010);                 // waiting, plot A1
+    gSpecialVar_0x8004 = FALSE;
+    gSpecialVar_0x8005 = 2;
+    EXPECT_EQ(GardenKlara_Resolve(), 0);
+    EXPECT_EQ((u32)GetBerryTreeInfo(BERRY_TREE_GARDEN_A1)->stage, BERRY_STAGE_NO_BERRY);
+    EXPECT_EQ(GardenKlara_TakeBramLine(), 3);
+}
+
+TEST("Klara only comes when the morning was drawn")
+{
+    SetUpGarden(GARDEN_LEVEL_PROPER, 8, 0);
+    VarSet(VAR_GARDEN_TODAY, 0);
+    VarSet(VAR_GARDEN_RIVALS, 0);
+    PlantRipe(BERRY_TREE_GARDEN_A1);
+    gSpecialVar_0x8004 = LOCALID_ROUTE30_KLARA;
+    EXPECT(!GardenKlara_Place());
 }

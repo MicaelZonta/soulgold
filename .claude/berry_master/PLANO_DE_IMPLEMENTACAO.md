@@ -38,7 +38,7 @@
 | 8 | Elenco e rotina ✅ 03/10, QA rápido no jogo (falta o roteiro do autor) | Bram, Laurel, Tilly, Sunflora por horário e dia da semana | 2, 5 |
 | 9 | Banco de falas ✅ 03/10, QA rápido no jogo (falta o roteiro do autor) | rodízio de 10, corações, reações de contexto | 5, 8 |
 | 10 | Infestações ✅ 03/10, QA rápido no jogo | pragas e ervas só na horta; 8 famílias só daqui | 2, 6 |
-| 11 | Batalhas de sempre (Tilly, Bugsy, Klara) | `garden_fight`; assalto da Klara | 5, 8, 10 |
+| 11 | Batalhas de sempre (Tilly, Bugsy, Klara) ✅ 03/10, QA rápido no jogo | `garden_fight`; assalto da Klara | 5, 8, 10 |
 | 12 | Sidequest — Prólogo ao Ato 4 | estados 0 → 8 | 3, 6, 8, 10 |
 | 13 | Sidequest — Ato 5 e 5b | estados 8 → 10/11, Peony e Peonia hóspedes, cenouras | 12 |
 | 14 | Caminho branco — Greenfield | 2 mapas novos, Glastrier, estado 10 → 12 | 13 |
@@ -1132,6 +1132,61 @@ noite, adubo (provado nos testes de C), árvore de rota.
 
 **Teste no jogo:** perder para a Tilly não dá blackout nem custa dinheiro; lutar duas
 vezes no mesmo dia não pode; Klara: vencer, perder e sair do mapa, os três casos.
+
+### Parte 11 — feita (03/10/2026)
+
+**Entregue:** `data/scripts/berry_garden.inc` (macro `garden_fight`, cópia da
+`nexus_fight` sem a fala embutida; Tilly, Bugsy e Klara; textos do §14.4 I e §14.5).
+9 treinadores nos IDs livres 951–959 (`TRAINER_GARDEN_TILLY_1..3`, `_BUGSY_1..3`,
+`_KLARA_1..3`), times do §14.5 com os apelidos da Tilly. Assalto da Klara:
+`GardenRollDay` sorteia a manhã (1 em 7, nível 2+); `GardenKlara_Place` (no
+`ON_TRANSITION` da Route 30) a põe na frente de um canteiro maduro (tabela
+`sKlaraSpots`, medida); `GardenKlara_Resolve` / `_TakeBramLine`; estado em
+`VAR_GARDEN_RIVALS` (vitórias, “esperando”, canteiro, fala do Bram). Objeto 38 da Route 30
+(`LASS`, `FLAG_TEMP_HIDE_KLARA` = `FLAG_TEMP_10`). Debug `Klara: raid this morning`.
+Tilly ganha um menu (Buy mulch / Battle / Bye); Bugsy oferece depois da fala.
+4 testes novos (47/47). A checagem de acesso aos canteiros passou a provar também que o
+jogador alcança a Klara em cada uma das 10 posições.
+
+**Decisões:**
+1. **Escala de nível sempre ligada para os 9** (`src/level_scaling.c`, como o Nexus):
+   média do time do jogador, com as evoluções voltando para trás quando o time é jovem
+   (o Ribombee do Bugsy virou Cutiefly no teste). Sem isso a Klara vinha com Slowbro
+   nível 34 contra um time de nível 7 (achado do QA).
+2. **Desde quando:** Tilly luta a partir do estado 1 da história (antes só loja);
+   Bugsy a partir do Ato 1c (estado 4); Klara a partir do nível 2 da horta.
+3. **Perder cura o time** e não custa nada (exceto o canteiro, com a Klara). Empate com a
+   Klara conta como ela levando o canteiro.
+4. **Rodízio dos times** do Bugsy e da Klara pela fala do dia (`VAR_DAYS % 10` em três
+   faixas: 0–2, 3–5, 6–9), não `% 3` exato.
+5. **Fala da Klara ao perder**: a de derrota dentro da batalha é curta (“Ugh!
+   Seriously?!”) e uma das 5 do design sai no campo, depois; na 5ª vitória, o gancho do
+   mochi no lugar dela.
+6. **Fala do Bram depois**: se ela levou o canteiro, a do mesmo número da fala dela (1–4;
+   a 5ª fala dela usa uma das 4); se o jogador venceu, a 5ª (“You chased her off?”). Sair
+   do mapa sem falar com ela: ela leva o canteiro na próxima entrada na Route 30, e o Bram
+   diz uma das 4.
+7. **Sprite e retrato da Klara**: `LASS` provisório (o plano previa), até a arte.
+
+**Achado de motor (contornado, não consertado):** esvaziar uma árvore de berry **visível**
+pelo C (`RemoveBerryTree`) dispara o brilho de crescimento, e com ele o gráfico do Bram e
+o da Klara viraram listras (o brilho escreveu nos tiles deles). Isolado em três ROMs de
+teste: só `removeobject` não corrompe; esvaziar a árvore sem tirar a Klara corrompe os
+dois. O roubo agora marca a árvore como “acabou de ser colhida” (como a colheita do
+jogador, que nunca mostra o brilho), e o problema sumiu. **Pendente para a sessão dos
+limites do engine:** o mesmo brilho aparece quando uma planta cresce de estágio na frente
+do jogador; se a causa for alocação de tiles com 24 objetos, pode atingir NPCs em outros
+mapas. Ferramenta nova para investigar: `.claude/qa/sprites.py` (sprites vivos, tiles e
+sobreposição com objetos).
+
+**QA rápido no jogo (headless, 03/10):** manhã com debug → Klara em (31,43) na frente de
+um canteiro maduro, Bram em (27,44); abertura (“Oh, it's YOU. The Berry police…”), batalha
+com Slowbro nível 7; derrota → “Ooh, this one's heavy!…”, canteiro vazio, ela sai, Bram
+normal; Bram depois: “She took the WHOLE bed?…”. Tilly (sábado à tarde): menu, abertura,
+Mr. Roly nível 7, derrota sem blackout → “I'm telling EVERYONE.”. Bugsy (terça): fala H,
+oferta, batalha (Cutiefly), depois “I'm still writing up the last one.” **Não testado no
+jogo:** vencer a Klara (5ª vitória, mochi), sair do mapa com ela esperando, prêmios da
+Tilly e do Bugsy (todos provados nos testes de C ou no script).
 
 ---
 

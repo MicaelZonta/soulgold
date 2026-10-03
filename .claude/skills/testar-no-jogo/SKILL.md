@@ -62,6 +62,7 @@ Ferramentas:
 | `conversa.py PREFIXO --abrir --respostas NY` | conduz uma conversa: um print por caixa, responde Yes/No pela lista, para em menus que não são Yes/No |
 | `bolsa.py [berries\|items\|key]` | lê um bolso da bolsa da RAM (quantidade decifrada) — prova objetiva de "recebeu X" |
 | `objetos.py` | lista os `gObjectEvents` ativos — prova se um NPC/árvore foi criado |
+| `sprites.py` | lista os `gSprites` vivos com os tiles de VRAM e aponta sprite desenhando nos tiles de um objeto (gráfico “listrado”) |
 | `grid.py OUT a.png b.png…` / `zoom.py` / `crop.py` | junta prints em grade, amplia, recorta a mesma região de vários prints lado a lado |
 
 ## 3. Armadilhas que fazem o teste mentir

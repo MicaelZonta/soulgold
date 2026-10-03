@@ -19,10 +19,17 @@ ledge pelo comportamento do metatile, que o dump_mapa.py nao mostra: agua tem
 colisao 0). Foi assim que o Bugsy de (32,43) apareceu dentro do lago e o Bram
 de (31,45) trancou dois canteiros (Parte 8, 03/10/2026).
 
+A Klara (assalto da manha, parte 11) fica DE PROPOSITO na frente de um
+canteiro maduro e vai embora depois da conversa: ela fica fora da conta acima.
+Para ela a regra e outra: em cada posicao da tabela sKlaraSpots
+(src/berry_garden.c), com o resto do elenco de pe, o jogador alcanca um tile
+vizinho dela (para falar) e ela nao esta em tile bloqueado nem em cima de alguem.
+
 Sai com 1 e lista os canteiros trancados quando a regra falha.
 """
 import json
 import os
+import re
 import sys
 from collections import deque
 
@@ -31,7 +38,8 @@ sys.path.insert(0, os.path.join(RAIZ, ".claude/qa"))
 import rota  # noqa: E402
 
 MAPA = "Route30"
-PORTA = (26, 40)          # o tile de chegada fica logo abaixo do warp (26,39)
+PORTA = (26, 40)            # o tile de chegada fica logo abaixo do warp (26,39)
+SO_NA_HORA = {"KLARA"}       # de pe na frente de um canteiro de proposito
 AREA = (range(22, 34), range(37, 47))
 
 
@@ -49,23 +57,43 @@ def main():
     for quem, pos in elenco.items():
         if pos in bloqueio:
             erros.append(f"{quem} em {pos}: tile bloqueado ou agua")
-    fechado = bloqueio | set(canteiros) | set(elenco.values())
-    visto, fila = {PORTA}, deque([PORTA])
-    while fila:
-        c = fila.popleft()
-        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            n = (c[0] + dx, c[1] + dy)
-            if 0 <= n[0] < w and 0 <= n[1] < h and n not in fechado and n not in visto \
-                    and frozenset({c, n}) not in bordas:
-                visto.add(n)
-                fila.append(n)
+    fixos = {k: v for k, v in elenco.items() if k not in SO_NA_HORA}
+
+    def alcance(extra):
+        fechado = bloqueio | set(canteiros) | set(fixos.values()) | set(extra)
+        visto, fila = {PORTA}, deque([PORTA])
+        while fila:
+            c = fila.popleft()
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                n = (c[0] + dx, c[1] + dy)
+                if 0 <= n[0] < w and 0 <= n[1] < h and n not in fechado and n not in visto \
+                        and frozenset({c, n}) not in bordas:
+                    visto.add(n)
+                    fila.append(n)
+        return visto
+
+    visto = alcance(())
     for c in canteiros:
         if not any((c[0] + dx, c[1] + dy) in visto for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
             erros.append(f"canteiro {c} trancado com o elenco em {elenco}")
+    src = open(os.path.join(RAIZ, "src/berry_garden.c")).read()
+    tabela = src[src.index("sKlaraSpots[] ="):]
+    tabela = tabela[:tabela.index("};")]
+    spots = [(int(x), int(y)) for x, y in re.findall(r"\{\s*(\d+),\s*(\d+),\s*MOVEMENT_TYPE", tabela)]
+    if len(spots) != len(canteiros) - 1:   # menos o canteiro da Laurel
+        erros.append(f"sKlaraSpots tem {len(spots)} posicoes para {len(canteiros) - 1} canteiros da horta")
+    for k in spots:
+        if k in bloqueio or k in set(canteiros) or k in fixos.values():
+            erros.append(f"Klara em {k}: tile bloqueado, canteiro ou alguem do elenco")
+            continue
+        perto = alcance([k])
+        if not any((k[0] + dx, k[1] + dy) in perto for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+            erros.append(f"Klara em {k}: o jogador nao chega ate ela")
     if erros:
         print("\n".join(erros))
         sys.exit(1)
-    print(f"ok: {len(canteiros)} canteiros alcancaveis com {', '.join(f'{k} {v}' for k, v in elenco.items())}")
+    print(f"ok: {len(canteiros)} canteiros alcancaveis com {', '.join(f'{k} {v}' for k, v in fixos.items())}; "
+          f"Klara alcancavel nas {len(spots)} posicoes")
 
 
 if __name__ == "__main__":

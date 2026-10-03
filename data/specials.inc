@@ -724,4 +724,9 @@ gSpecials::
 	def_special GardenPest_IsGardenTree
 	def_special GardenWeeds_Bed
 	def_special GardenPests_AllCaught
+	def_special GardenKlara_Place
+	def_special GardenKlara_Resolve
+	def_special GardenKlara_TakeBramLine
+	def_special GardenTilly_PrizeMulch
+	def_special BerryDebug_KlaraComes
 	def_special BerryDebug_NewOrder

@@ -1,4 +1,4 @@
-# Berry Master — testes no jogo, em ordem (Partes 1 a 10)
+# Berry Master — testes no jogo, em ordem (Partes 1 a 11)
 
 > Roteiro único para rodar **de cima para baixo**. Cada teste parte do estado que o
 > anterior deixou, então não pule nenhum sem ler o “Estado ao fim”. Cada um diz qual
@@ -698,6 +698,47 @@ já passou de “plantada”: use `Berry Master… → Grow garden 1 stage` ante
 - **Esperado:** nunca Blipbug, Combee, Scatterbug, Rellor, Wurmple, Illumise, Volbeat
   nem Dwebble. Com os 8 capturados, o Bugsy diz “You found all of them? / I'm going to
   have to write a second notebook.”
+
+---
+
+## Bloco F6 — Batalhas de sempre e o assalto da Klara (Parte 11)
+
+Nenhuma dá blackout nem custa dinheiro (perder cura o time), uma por dia por pessoa,
+prêmio só na vitória. Os times acompanham o nível do seu time (sempre, como o Nexus).
+
+### T69 · Tilly
+- **Preparação:** `Act 1 done: toggle` (ligado), sábado ou domingo à tarde.
+- **Esperado:** depois da fala dela, “Mulch, or a battle? Mulch is cheaper.” com o menu
+  **Buy mulch / Battle / Bye**. Battle → “Battle time! My bugs have names…” → Bug Catcher
+  Tilly (Mr. Roly e Buzzbelle; com a horta no nível 3–4 também Pebbles e Squiggles; no 5 o
+  time evoluído). Vencer: “You won! Here, two from the shop…” e 2 de um adubo dela.
+  Perder: “Mr. Roly WINS!…”, time curado. De novo no mesmo dia: “Mr. Roly needs a nap…”.
+  Sem o Ato 1 (estado 0): só a loja, sem menu.
+
+### T70 · Bugsy
+- **Preparação:** Ato 1 ligado, terça ou quinta à tarde.
+- **Esperado:** depois da fala, “Field test!… For science! Are you in?” (Yes/No). Yes →
+  batalha (sempre com Scizor, ou Scyther se o seu time for baixo). Vencer: “Your bugs
+  earned this…” e 3 berries do Livro. No mesmo dia: “I'm still writing up the last one.”
+
+### T71 · Klara aparece
+- **Passos:** horta no nível 2+, um canteiro maduro (`Ripen the garden`), de manhã:
+  `Berry Master… → Klara: raid this morning`.
+- **Esperado:** a Klara de pé na frente de um canteiro maduro, virada para ele.
+
+### T72 · Perder para a Klara
+- **Esperado:** abertura (uma de 10, ex.: “Oh, it's YOU. The Berry police.”), batalha,
+  derrota sem blackout, uma fala dela levando o canteiro (“Ooh, this one's heavy!…”),
+  fade e ela some; o canteiro fica vazio, **sem** gráficos corrompidos no Bram. O Bram,
+  na conversa seguinte, comenta (“She took the WHOLE bed?…”).
+
+### T73 · Vencer a Klara
+- **Esperado:** uma fala de derrota dela, ela some, o canteiro fica. O Bram: “You chased
+  her off? Ha!…”. Na 5ª vitória: “You know what? Berries are SO last season. Mochi…”.
+
+### T74 · Sair sem falar com ela
+- **Passos:** com a Klara na horta, entre na casa e volte.
+- **Esperado:** ela não está mais, o canteiro dela está vazio, e o Bram comenta.
 
 ---
 

@@ -454,6 +454,25 @@ const struct LevelScalingConfig *GetTrainerLevelScalingConfig(u16 trainerId, u8 
     bool8 isOptionalTrainer = IsOptionalScalingTrainer(trainerId);
     bool8 forceScaling = FALSE;
 
+    // SoulGold: the Berry Master's garden fights (Tilly, Bugsy, Klara) come
+    // back at any point of the game, so, like the Nexus, they always follow
+    // the player's party, whatever the option says - and their evolved Pokemon
+    // step down while the party is young (Scizor -> Scyther, Vespiquen ->
+    // Combee). .claude/berry_master, part 11.
+    if (trainerId >= TRAINER_GARDEN_TILLY_1 && trainerId <= TRAINER_GARDEN_KLARA_3)
+    {
+        sTrainerOptionConfig.mode = LEVEL_SCALING_PARTY_AVG;
+        sTrainerOptionConfig.levelAugmentAdd = 0;
+        sTrainerOptionConfig.levelVariation = 0;
+        sTrainerOptionConfig.minLevel = 0;
+        sTrainerOptionConfig.maxLevel = 0;
+        sTrainerOptionConfig.manageEvolutions = TRUE;
+        sTrainerOptionConfig.excludeFainted = FALSE;
+        sTrainerOptionConfig.useAuthoredLevelFloor = FALSE;
+        sTrainerOptionConfig.evolveAboveLevel = FALSE;
+        return &sTrainerOptionConfig;
+    }
+
     if (IsNexusTrainer(trainerId))
     {
         sTrainerOptionConfig.mode = LEVEL_SCALING_PARTY_HIGHEST;
