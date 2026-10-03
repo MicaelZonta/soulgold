@@ -721,4 +721,7 @@ gSpecials::
 	def_special GardenLead_IsType
 	def_special GardenPlots_Planted
 	def_special BerryDebug_SetHearts
+	def_special GardenPest_IsGardenTree
+	def_special GardenWeeds_Bed
+	def_special GardenPests_AllCaught
 	def_special BerryDebug_NewOrder

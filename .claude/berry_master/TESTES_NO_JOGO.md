@@ -1,4 +1,4 @@
-# Berry Master — testes no jogo, em ordem (Partes 1 a 9)
+# Berry Master — testes no jogo, em ordem (Partes 1 a 10)
 
 > Roteiro único para rodar **de cima para baixo**. Cada teste parte do estado que o
 > anterior deixou, então não pule nenhum sem ler o “Estado ao fim”. Cada um diz qual
@@ -658,6 +658,46 @@ conversa do dia** pode vir uma **reação** no lugar da fala do dia.
   com 66, “You grew ALL of them?…”; domingo com inseto te seguindo, “Is that a …?!”).
   Bugsy diz uma fala do banco H; com a horta no nível 4, a primeira conversa de cada
   visita é “The hotel's full! Well, one Combee. / It's a start.”.
+
+---
+
+## Bloco F5 — Pragas e ervas (Parte 10)
+
+Só os 10 canteiros da horta têm praga e erva; árvore de rota nunca. A praga aparece ao
+falar com uma planta **crescendo** (não madura). Debug: `Utilities… → Berry Functions… →
+Give map trees pests / weeds` (põe em todas as árvores na tela; a praga só em planta que
+já passou de “plantada”: use `Berry Master… → Grow garden 1 stage` antes).
+
+### T64 · Praga na horta
+- **Passos:** plante uma berry num canteiro, `Grow garden 1 stage`, `Give map trees
+  pests`, fale com a planta.
+- **Esperado:** uma narração do banco P (“Something is nibbling at the leaves!”, “A tiny
+  face peeks out…”), depois batalha selvagem. Nível `10 + 4 × insígnias` (teto 60). Cor da
+  berry → praga: vermelha de dia Ledyba (de noite Spinarak); azul/roxa Blipbug (noite
+  Volbeat); rosa Cutiefly (noite Illumise); verde Burmy (noite Kricketot); amarela Combee
+  (noite Venonat).
+
+### T65 · Adubo muda a praga
+- **Passos:** adube um canteiro com Stable Mulch e plante; repita T64 algumas vezes.
+  Depois com Gooey ou Rich Mulch.
+- **Esperado:** metade das vezes Dwebble (Stable) ou Rellor (Gooey/Rich).
+
+### T66 · Árvore de rota nunca
+- **Passos:** numa árvore de rota crescendo, `Give map trees pests`, fale com ela.
+- **Esperado:** nenhuma batalha, nenhuma narração (a praga some).
+
+### T67 · Erva daninha
+- **Passos:** `Give map trees weeds`, fale com uma planta da horta crescendo.
+- **Esperado:** “A weed is growing here. Do you want to pull it out?” → Yes → “… pulled
+  out the weed!”. Com erva num canteiro, a Laurel (primeira conversa do dia, de dia)
+  diz “There's a weed in bed A. I'm not pulling it. / It's your bed.” (ou B).
+
+### T68 · As 8 famílias só na horta
+- **Passos:** ande na grama da Route 30, 31, 37, National Park e Kitakami Border, e use
+  Rock Smash na Cliff Edge Cave.
+- **Esperado:** nunca Blipbug, Combee, Scatterbug, Rellor, Wurmple, Illumise, Volbeat
+  nem Dwebble. Com os 8 capturados, o Bugsy diz “You found all of them? / I'm going to
+  have to write a second notebook.”
 
 ---
 

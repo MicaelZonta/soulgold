@@ -40,6 +40,7 @@ from tools.soulgold_docs.parsers.gifts import (
 )
 from tools.soulgold_docs.parsers.hidden_grottos import parse_hidden_grottos
 from tools.soulgold_docs.parsers.trades import add_johto_trade_species_locations
+from tools.soulgold_docs.parsers.berry_garden import add_berry_garden_pest_locations
 from tools.soulgold_docs.parsers.evolutions import parse_evolutions, parse_mega_evolutions
 from tools.soulgold_docs.parsers.items import (
     build_important_items,
@@ -116,6 +117,7 @@ def build() -> None:
     add_gachapon_species_locations(species_locations, species_data.by_constant)
     add_odd_egg_species_locations(species_locations, species_data.by_constant)
     add_johto_trade_species_locations(species_locations, species_data.by_constant)
+    add_berry_garden_pest_locations(species_locations, species_data.by_constant)
     add_rotom_form_change_locations(species_locations, species_data.by_constant)
     add_wild_random_form_locations(species_locations, species_data.by_constant)
     add_mom_grooming_form_locations(species_locations, species_data.by_constant)

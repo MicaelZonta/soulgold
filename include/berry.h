@@ -18,6 +18,7 @@ void RemoveBerryTree(u8 id);
 u8 GetBerryTypeByBerryTreeId(u8 id);
 u8 GetStageByBerryTreeId(u8 id);
 u8 ItemIdToBerryType(enum Item item);
+enum Item BerryTypeToItemId(u16 berry);
 void GetBerryNameByBerryType(u8 berry, u8 *string);
 void Bag_ChooseBerry(void);
 void Bag_ChooseMulch(void);

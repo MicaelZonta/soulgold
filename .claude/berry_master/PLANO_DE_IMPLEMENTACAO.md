@@ -37,7 +37,7 @@
 | 7 | Pedidos do dia ✅ 03/10, testada no jogo 03/10 (QA) | comum e descoberta, dica da Laurel | 3, 4, 5, 6 |
 | 8 | Elenco e rotina ✅ 03/10, QA rápido no jogo (falta o roteiro do autor) | Bram, Laurel, Tilly, Sunflora por horário e dia da semana | 2, 5 |
 | 9 | Banco de falas ✅ 03/10, QA rápido no jogo (falta o roteiro do autor) | rodízio de 10, corações, reações de contexto | 5, 8 |
-| 10 | Infestações | pragas e ervas só na horta; 8 famílias só daqui | 2, 6 |
+| 10 | Infestações ✅ 03/10, QA rápido no jogo | pragas e ervas só na horta; 8 famílias só daqui | 2, 6 |
 | 11 | Batalhas de sempre (Tilly, Bugsy, Klara) | `garden_fight`; assalto da Klara | 5, 8, 10 |
 | 12 | Sidequest — Prólogo ao Ato 4 | estados 0 → 8 | 3, 6, 8, 10 |
 | 13 | Sidequest — Ato 5 e 5b | estados 8 → 10/11, Peony e Peonia hóspedes, cenouras | 12 |
@@ -1065,6 +1065,46 @@ trava vazar para árvore de rota).
 **Teste no jogo:** 20 manhãs no relógio com a horta cheia → pragas aparecem nos
 canteiros e **nunca** numa árvore de rota; cor vermelha dá Wurmple no incomum; Stable
 Mulch dá Dwebble.
+
+### Parte 10 — feita (03/10/2026)
+
+**Entregue:** `OW_BERRY_WEEDS` e `OW_BERRY_PESTS` ligados; `IsBerryGardenTree` guarda
+`TryForWeeds` / `TryForPests` (agora recebem o id da árvore); praga e nível vêm da horta
+(`GardenPest_Species`, `GardenPest_Level`, `GardenPest_Chance`, regra pura
+`GardenPest_Pick` em `src/berry_garden.c`); banco P (10 narrações, `random 10`) só nos
+canteiros (`berry_tree.inc`); reações novas: erva no canteiro A/B (Laurel) e os 8
+exclusivos capturados (Bugsy, antes do Bug Hotel). As 8 famílias saíram do
+`wild_encounters.json`. O gerador do site ganhou o parser da horta
+(`tools/soulgold_docs/parsers/berry_garden.py`), e o expansor de formas aceita a praga.
+5 testes novos de C (43/43), motor `test/berry.c` 5/5, testes do site 62/62.
+
+**Decisões:**
+1. **Berry roxa usa a linha azul** (o design tem 5 cores; o motor tem 6).
+2. **Scatterbug da horta é o “Fancy” do encontro selvagem**: sorteia os 20 padrões pela
+   mesma `GetWildFormVariantSpecies` (tornada pública), como o slot do National Park
+   fazia. Assim a fala do Bugsy (“Your garden is making its own Vivillon!”) vale, e nenhum
+   padrão perde a fonte (`fontes_legitimas.py`: mesmas contagens de antes).
+3. **Nível:** `10 + 4 × insígnias` (as 16), teto 60, e depois a escala de nível de
+   selvagem que o jogador escolheu (`CalculateWildScaledLevel`), como qualquer selvagem.
+   A espécie não evolui pela escala (a praga é sempre o primeiro estágio).
+4. **Substitutos nas rotas** (espécies que já estavam na mesma tabela, mesmos níveis):
+   Route 30 Blipbug → Kricketot; Route 31 Combee → Venonat; National Park Scatterbug →
+   Nymble; Route 37 Rellor → Fomantis e Wurmple → Tandemaus; Cliff Edge (Rock Smash)
+   Dwebble → Nosepass; Kitakami Border Illumise → Cyclizar (slot de 20%) e Volbeat →
+   Sinistea.
+5. **Correção do motor:** `TryForPests` testava `OW_BERRY_WEEDS` em vez de
+   `OW_BERRY_PESTS` (do upstream).
+6. **Árvore de rota com praga** (só pelo debug, que põe em todas): a praga é apagada
+   sem batalha.
+7. **Site público não regenerado** (decisão do autor das cenouras): o gerador foi rodado
+   só para conferir as fontes e o `docs/` foi restaurado.
+8. Ervas cosméticas (decisão 4 do rev1): arrancar dá o bônus do motor; a Laurel comenta.
+
+**QA rápido no jogo (headless, 03/10):** Cheri plantada no canteiro (28,43), crescida 1
+estágio, praga pelo debug → “A tiny face peeks out from between the Berries!” (banco P)
+e Ledyba **nível 10** (vermelha, de dia, 0 insígnias); fuga ok. Erva pelo debug → “A weed
+is growing here…” → arrancada. **Não testado:** praga natural ao longo de horas, linha de
+noite, adubo (provado nos testes de C), árvore de rota.
 
 ---
 

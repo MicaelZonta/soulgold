@@ -15,7 +15,7 @@
 #include "constants/items.h"
 
 // Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md,
-// parts 2 to 9).
+// parts 2 to 10).
 
 static void ClearLedger(void)
 {
@@ -651,4 +651,52 @@ TEST("Bram celebrates the first garden harvest once, then each new Berry")
 
     BerryLedger_RegisterHarvest(BERRY_TREE_GARDEN_A3, ITEM_LUM_BERRY);  // not new any more
     EXPECT_EQ(GardenNews_Take(), GARDEN_NEWS_NONE);               // and no second "first"
+}
+
+// Part 10: pests (section 7.2).
+TEST("Pests only on the ten garden plots")
+{
+    EXPECT(IsBerryGardenTree(BERRY_TREE_GARDEN_A1));
+    EXPECT(IsBerryGardenTree(BERRY_TREE_GARDEN_B4));
+    EXPECT(!IsBerryGardenTree(BERRY_TREE_KINGS_PLOT));
+    EXPECT(!IsBerryGardenTree(BERRY_TREE_ROUTE_30_PECHA));
+}
+
+TEST("The colour picks the row and the hour the common pest")
+{
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 0, ITEM_NONE, 0, FALSE), SPECIES_LEDYBA);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, TRUE, 0, ITEM_NONE, 0, FALSE), SPECIES_SPINARAK);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_BLUE, FALSE, 0, ITEM_NONE, 0, FALSE), SPECIES_BLIPBUG);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_BLUE, TRUE, 0, ITEM_NONE, 0, FALSE), SPECIES_VOLBEAT);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_PURPLE, TRUE, 0, ITEM_NONE, 0, FALSE), SPECIES_VOLBEAT); // shares blue
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_PINK, TRUE, 0, ITEM_NONE, 0, FALSE), SPECIES_ILLUMISE);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_YELLOW, FALSE, 0, ITEM_NONE, 0, FALSE), SPECIES_COMBEE);
+}
+
+TEST("The Berry's generation makes the uncommon and the rare pests likelier")
+{
+    // generation 0-1: 70 / 27 / 3
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 1, ITEM_NONE, 69, FALSE), SPECIES_LEDYBA);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 1, ITEM_NONE, 70, FALSE), SPECIES_WURMPLE);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 1, ITEM_NONE, 97, FALSE), SPECIES_HERACROSS);
+    // generation 4+: 30 / 40 / 30
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 4, ITEM_NONE, 30, FALSE), SPECIES_WURMPLE);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 4, ITEM_NONE, 70, FALSE), SPECIES_HERACROSS);
+}
+
+TEST("Mulch brings Rellor or Dwebble half of the time")
+{
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 0, ITEM_GOOEY_MULCH, 0, TRUE), SPECIES_RELLOR);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 0, ITEM_RICH_MULCH, 0, TRUE), SPECIES_RELLOR);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 0, ITEM_STABLE_MULCH, 0, TRUE), SPECIES_DWEBBLE);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 0, ITEM_STABLE_MULCH, 0, FALSE), SPECIES_LEDYBA);
+    EXPECT_EQ(GardenPest_Pick(BERRY_COLOR_RED, FALSE, 0, ITEM_GROWTH_MULCH, 0, TRUE), SPECIES_LEDYBA);
+}
+
+TEST("The Bug Hotel doubles the pest chance")
+{
+    VarSet(VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_CHANNEL);
+    EXPECT_EQ(GardenPest_Chance(), 15);
+    VarSet(VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_BUG_HOTEL);
+    EXPECT_EQ(GardenPest_Chance(), 30);
 }

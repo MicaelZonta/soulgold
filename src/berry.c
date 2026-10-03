@@ -18,7 +18,6 @@
 #include "constants/items.h"
 #include "constants/metatile_labels.h"
 
-static enum Item BerryTypeToItemId(u16 berry);
 static u8 BerryTreeGetNumStagesWatered(struct BerryTree *tree);
 static u8 GetNumStagesWateredByBerryTreeId(u8 id);
 static u8 CalcBerryYieldInternal(u16 max, u16 min, u8 water);
@@ -32,9 +31,8 @@ static u8 GetWeedingBonusByBerryType(u8);
 static u8 GetPestsBonusByBerryType(u8);
 static void SetTreeMutations(u8 id, u8 berry);
 static u8 GetTreeMutationValue(u8 id);
-static u16 GetBerryPestSpecies(u8 berryId);
-static void TryForWeeds(struct BerryTree *tree);
-static void TryForPests(struct BerryTree *tree);
+static void TryForWeeds(u32 treeId, struct BerryTree *tree);
+static void TryForPests(u32 treeId, struct BerryTree *tree);
 static void AddTreeBonus(struct BerryTree *tree, u8 bonus);
 static u8 GetNaturalBerryByTreeId(u8 id);
 static void StartNaturalBerryTreeRegeneration(u8 id);
@@ -2065,8 +2063,8 @@ void BerryTreeTimeUpdate(s32 minutes)
                         }
                         if (tree->moistureClock == 120)
                         {
-                            TryForWeeds(tree);
-                            TryForPests(tree);
+                            TryForWeeds(i, tree);
+                            TryForPests(i, tree);
                             tree->moistureClock = 0;
                         }
                     }
@@ -2201,7 +2199,7 @@ u8 ItemIdToBerryType(enum Item item)
         return ITEM_TO_BERRY(item);
 }
 
-static enum Item BerryTypeToItemId(u16 berry)
+enum Item BerryTypeToItemId(u16 berry)
 {
     enum Item item = berry - 1;
 
@@ -2473,16 +2471,20 @@ bool8 ObjectEventInteractionBerryHasWeed(void)
     return gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].weeds;
 }
 
+// SoulGold: pests only ever appear on the Berry Master's garden plots, and the
+// garden decides which and at what level (berry_garden.c, part 10).
 bool8 ObjectEventInteractionBerryHasPests(void)
 {
+    u8 id = GetObjectEventBerryTreeId(gSelectedObjectEvent);
     u16 species;
-    if (!OW_BERRY_PESTS || !gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].pests)
+
+    if (!OW_BERRY_PESTS || !gSaveBlock1Ptr->berryTrees[id].pests)
         return FALSE;
-    species = GetBerryPestSpecies(gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].berry);
-    if (species == SPECIES_NONE)
+    gSaveBlock1Ptr->berryTrees[id].pests = FALSE;
+    if (!IsBerryGardenTree(id))
         return FALSE;
-    CreateScriptedWildMon(species, 14 + Random() % 3, ITEM_NONE, ITEM_NONE);
-    gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].pests = FALSE;
+    species = GardenPest_Species(id);
+    CreateScriptedWildMon(species, GardenPest_Level(species), ITEM_NONE, ITEM_NONE);
     return TRUE;
 }
 
@@ -2759,41 +2761,15 @@ static void SetTreeMutations(u8 id, u8 berry)
 #endif
 }
 
-static u16 GetBerryPestSpecies(u8 berryId)
-{
-#if OW_BERRY_PESTS == TRUE
-    const struct Berry *berry = GetBerryInfo(berryId);
-    switch (berry->color)
-    {
-    case BERRY_COLOR_RED:
-        return P_FAMILY_LEDYBA ? SPECIES_LEDYBA : SPECIES_NONE;
-        break;
-    case BERRY_COLOR_BLUE:
-        return P_FAMILY_VOLBEAT_ILLUMISE ? SPECIES_VOLBEAT : SPECIES_NONE;
-        break;
-    case BERRY_COLOR_PURPLE:
-        return P_FAMILY_VOLBEAT_ILLUMISE ? SPECIES_ILLUMISE : SPECIES_NONE;
-        break;
-    case BERRY_COLOR_GREEN:
-        return P_FAMILY_BURMY ? SPECIES_BURMY_PLANT : SPECIES_NONE;
-        break;
-    case BERRY_COLOR_YELLOW:
-        return P_FAMILY_COMBEE ? SPECIES_COMBEE : SPECIES_NONE;
-        break;
-    case BERRY_COLOR_PINK:
-        return P_FAMILY_SCATTERBUG ? SPECIES_SPEWPA : SPECIES_NONE;
-        break;
-    }
-#endif
-    return SPECIES_NONE;
-}
-
 #define BERRY_WEEDS_CHANCE 15
-#define BERRY_PESTS_CHANCE 15
 
-static void TryForWeeds(struct BerryTree *tree)
+// SoulGold: weeds and pests only on the Berry Master's garden plots (route
+// trees never get either; BERRY_MASTER_DESIGN.md section 6.1), and the pest
+// chance is the garden's (15%, 30% with the Bug Hotel). Upstream checked
+// OW_BERRY_WEEDS for pests too; fixed to OW_BERRY_PESTS.
+static void TryForWeeds(u32 treeId, struct BerryTree *tree)
 {
-    if (!OW_BERRY_WEEDS)
+    if (!OW_BERRY_WEEDS || !IsBerryGardenTree(treeId))
         return;
     if (tree->weeds == TRUE)
         return;
@@ -2801,13 +2777,13 @@ static void TryForWeeds(struct BerryTree *tree)
         tree->weeds = TRUE;
 }
 
-static void TryForPests(struct BerryTree *tree)
+static void TryForPests(u32 treeId, struct BerryTree *tree)
 {
-    if (!OW_BERRY_WEEDS)
+    if (!OW_BERRY_PESTS || !IsBerryGardenTree(treeId))
         return;
     if (tree->pests == TRUE)
         return;
-    if (Random() % 100 < BERRY_PESTS_CHANCE && tree->stage > BERRY_STAGE_PLANTED)
+    if (Random() % 100 < GardenPest_Chance() && tree->stage > BERRY_STAGE_PLANTED)
         tree->pests = TRUE;
 }
 

@@ -319,6 +319,49 @@ BerryGarden_EventScript_TillyStall9::
 	msgbox BerryGarden_Text_TillyStall9, MSGBOX_DEFAULT
 	return
 
+@ P. A pest comes out of a garden plot (narration; random, several a day)
+BerryGarden_EventScript_PestLine::
+	random 10
+	switch VAR_RESULT
+	case 1, BerryGarden_EventScript_Pest1
+	case 2, BerryGarden_EventScript_Pest2
+	case 3, BerryGarden_EventScript_Pest3
+	case 4, BerryGarden_EventScript_Pest4
+	case 5, BerryGarden_EventScript_Pest5
+	case 6, BerryGarden_EventScript_Pest6
+	case 7, BerryGarden_EventScript_Pest7
+	case 8, BerryGarden_EventScript_Pest8
+	case 9, BerryGarden_EventScript_Pest9
+	msgbox BerryGarden_Text_Pest0, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Pest1::
+	msgbox BerryGarden_Text_Pest1, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Pest2::
+	msgbox BerryGarden_Text_Pest2, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Pest3::
+	msgbox BerryGarden_Text_Pest3, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Pest4::
+	msgbox BerryGarden_Text_Pest4, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Pest5::
+	msgbox BerryGarden_Text_Pest5, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Pest6::
+	msgbox BerryGarden_Text_Pest6, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Pest7::
+	msgbox BerryGarden_Text_Pest7, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Pest8::
+	msgbox BerryGarden_Text_Pest8, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Pest9::
+	msgbox BerryGarden_Text_Pest9, MSGBOX_DEFAULT
+	return
+
 @ H. Bugsy, Tuesday and Thursday afternoons
 BerryGarden_EventScript_BugsyLine::
 	setvar VAR_0x8004, GARDEN_HEARTS_NONE
@@ -429,6 +472,10 @@ BerryGarden_EventScript_LaurelReaction::
 	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_LaurelGrassLead
 BerryGarden_EventScript_LaurelEmptyBedsCheck::
 	goto_if_lt VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_BACKYARD, BerryGarden_EventScript_LaurelBreadCheck
+	@ Weeds are the player's to pull (part 10: cosmetic, a small bonus).
+	specialvar VAR_RESULT, GardenWeeds_Bed
+	goto_if_eq VAR_RESULT, 1, BerryGarden_EventScript_LaurelWeedA
+	goto_if_eq VAR_RESULT, 2, BerryGarden_EventScript_LaurelWeedB
 	specialvar VAR_RESULT, GardenPlots_Planted
 	goto_if_eq VAR_RESULT, 0, BerryGarden_EventScript_LaurelEmptyBeds
 BerryGarden_EventScript_LaurelBreadCheck::
@@ -444,6 +491,16 @@ BerryGarden_EventScript_LaurelTeaserCheck::
 
 BerryGarden_EventScript_LaurelGrassLead::
 	msgbox BerryGarden_Text_LaurelGrassLead, MSGBOX_DEFAULT
+	goto BerryGarden_EventScript_Reacted
+
+BerryGarden_EventScript_LaurelWeedA::
+	bufferstring STR_VAR_1, BerryGarden_Text_BedA
+	goto BerryGarden_EventScript_LaurelWeed
+
+BerryGarden_EventScript_LaurelWeedB::
+	bufferstring STR_VAR_1, BerryGarden_Text_BedB
+BerryGarden_EventScript_LaurelWeed::
+	msgbox BerryGarden_Text_LaurelWeed, MSGBOX_DEFAULT
 	goto BerryGarden_EventScript_Reacted
 
 BerryGarden_EventScript_LaurelEmptyBeds::
@@ -472,11 +529,18 @@ BerryGarden_EventScript_TillyAllGrown::
 	goto BerryGarden_EventScript_Reacted
 
 @ Bugsy has no hearts: his reaction is once per visit (FLAG_TEMP_BUGSY_REACTED).
+@ The eight garden-only families all caught first, then the Bug Hotel.
 BerryGarden_EventScript_BugsyReaction::
 	goto_if_set FLAG_TEMP_BUGSY_REACTED, BerryGarden_EventScript_NoReaction
 	setflag FLAG_TEMP_BUGSY_REACTED
+	specialvar VAR_RESULT, GardenPests_AllCaught
+	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_BugsyAllCaught
 	goto_if_lt VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_BUG_HOTEL, BerryGarden_EventScript_NoReaction
 	msgbox BerryGarden_Text_BugsyHotel, MSGBOX_DEFAULT
+	goto BerryGarden_EventScript_Reacted
+
+BerryGarden_EventScript_BugsyAllCaught::
+	msgbox BerryGarden_Text_BugsyAllCaught, MSGBOX_DEFAULT
 	goto BerryGarden_EventScript_Reacted
 
 @ ---------------------------------------------------------------------------
@@ -842,6 +906,44 @@ BerryGarden_Text_TillyStall9:
 	.string "next to mine.\p"
 	.string "And we'll share the bugs.$"
 
+BerryGarden_Text_Pest0:
+	.string "Something is nibbling at the leaves!$"
+
+BerryGarden_Text_Pest1:
+	.string "The branches are shaking... there's a\n"
+	.string "bug in this tree!$"
+
+BerryGarden_Text_Pest2:
+	.string "A tiny face peeks out from between the\n"
+	.string "Berries!$"
+
+BerryGarden_Text_Pest3:
+	.string "Crunch. Crunch. Crunch. Somebody's\n"
+	.string "having breakfast!$"
+
+BerryGarden_Text_Pest4:
+	.string "A trail of bitten leaves leads straight\n"
+	.string "into the tree!$"
+
+BerryGarden_Text_Pest5:
+	.string "The whole tree is buzzing!$"
+
+BerryGarden_Text_Pest6:
+	.string "Something drops out of the branches,\n"
+	.string "hugging a Berry!$"
+
+BerryGarden_Text_Pest7:
+	.string "Two little eyes are glowing between the\n"
+	.string "leaves!$"
+
+BerryGarden_Text_Pest8:
+	.string "Someone got here before you -- and\n"
+	.string "they're still here!$"
+
+BerryGarden_Text_Pest9:
+	.string "The Berries are moving. Berries\n"
+	.string "shouldn't move.$"
+
 BerryGarden_Text_Bugsy0:
 	.string "Every color of Berry calls a different\n"
 	.string "bug. I've got a chart.\p"
@@ -944,4 +1046,20 @@ BerryGarden_Text_TillyAllGrown:
 BerryGarden_Text_BugsyHotel:
 	.string "The hotel's full! Well, one Combee.\p"
 	.string "It's a start.$"
+
+BerryGarden_Text_BugsyAllCaught:
+	.string "You found all of them?\p"
+	.string "I'm going to have to write a second\n"
+	.string "notebook.$"
+
+BerryGarden_Text_LaurelWeed:
+	.string "There's a weed in bed {STR_VAR_1}.\n"
+	.string "I'm not pulling it.\p"
+	.string "It's your bed.$"
+
+BerryGarden_Text_BedA:
+	.string "A$"
+
+BerryGarden_Text_BedB:
+	.string "B$"
 

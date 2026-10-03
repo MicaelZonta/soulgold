@@ -641,7 +641,9 @@ static const u16 sWildTatsugiriForms[] =
     SPECIES_TATSUGIRI_STRETCHY,
 };
 
-static u16 GetWildFormVariantSpecies(u16 species)
+// SoulGold: also used by the Berry Master's garden pests (berry_garden.c),
+// which create their wild Pokemon outside this file.
+u16 GetWildFormVariantSpecies(u16 species)
 {
     if (species == SPECIES_MINIOR_METEOR_RED)
         return sWildMiniorMeteorForms[Random() % ARRAY_COUNT(sWildMiniorMeteorForms)];

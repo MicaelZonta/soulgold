@@ -15,15 +15,18 @@
 #include "event_object_movement.h"
 #include "field_screen_effect.h"
 #include "item.h"
+#include "level_scaling.h"
 #include "list_menu.h"
 #include "malloc.h"
 #include "money.h"
 #include "overworld.h"
+#include "pokedex.h"
 #include "pokemon.h"
 #include "random.h"
 #include "rtc.h"
 #include "script_menu.h"
 #include "string_util.h"
+#include "wild_encounter.h"
 #include "constants/berry.h"
 #include "constants/flags.h"
 #include "constants/items.h"
@@ -992,4 +995,173 @@ void BerryDebug_SetHearts(void)
 
     for (who = 0; who < GARDEN_HEARTS_NONE; who++)
         GardenHearts_Set(who, gSpecialVar_0x8004);
+}
+
+// ---------------------------------------------------------------------------
+// Pests and weeds (part 10, section 7)
+//
+// Only in the ten garden plots (route trees never get either). Eight families
+// live only here now - Wurmple, Blipbug, Volbeat, Illumise, Scatterbug,
+// Combee, Rellor and Dwebble are out of src/data/wild_encounters.json.
+// The pest: the mulch first (half the time: Gooey/Rich -> Rellor rolling it,
+// Stable -> Dwebble moving into the stone), then the Berry's colour picks the
+// row, the hour the common one, and the Berry's generation how often the
+// uncommon and the rare come. Purple Berries share the blue row.
+// ---------------------------------------------------------------------------
+
+#define PEST_CHANCE              15   // % per two hours of growth
+#define PEST_CHANCE_BUG_HOTEL    30
+#define PEST_LEVEL_BASE          10
+#define PEST_LEVEL_PER_BADGE     4
+#define PEST_LEVEL_MAX           60
+
+enum PestSlot
+{
+    PEST_COMMON_DAY,
+    PEST_COMMON_NIGHT,
+    PEST_UNCOMMON,
+    PEST_RARE,
+    PEST_SLOT_COUNT,
+};
+
+enum PestRow
+{
+    PEST_ROW_RED,
+    PEST_ROW_BLUE,
+    PEST_ROW_PINK,
+    PEST_ROW_GREEN,
+    PEST_ROW_YELLOW,
+    PEST_ROW_COUNT,
+};
+
+static const u16 sPests[PEST_ROW_COUNT][PEST_SLOT_COUNT] =
+{
+    [PEST_ROW_RED]    = { SPECIES_LEDYBA,      SPECIES_SPINARAK,  SPECIES_WURMPLE,          SPECIES_HERACROSS },
+    [PEST_ROW_BLUE]   = { SPECIES_BLIPBUG,     SPECIES_VOLBEAT,   SPECIES_SURSKIT,          SPECIES_JOLTIK },
+    [PEST_ROW_PINK]   = { SPECIES_CUTIEFLY,    SPECIES_ILLUMISE,  SPECIES_SCATTERBUG_FANCY, SPECIES_SHUCKLE },
+    [PEST_ROW_GREEN]  = { SPECIES_BURMY_PLANT, SPECIES_KRICKETOT, SPECIES_SCATTERBUG_FANCY, SPECIES_SEWADDLE },
+    [PEST_ROW_YELLOW] = { SPECIES_COMBEE,      SPECIES_VENONAT,   SPECIES_KRICKETOT,        SPECIES_HERACROSS },
+};
+
+// The eight families that only come from here, by their first stage (Bugsy's
+// "you found all of them").
+static const u16 sGardenOnlyPests[] =
+{
+    SPECIES_WURMPLE, SPECIES_BLIPBUG, SPECIES_VOLBEAT, SPECIES_ILLUMISE,
+    SPECIES_SCATTERBUG, SPECIES_COMBEE, SPECIES_RELLOR, SPECIES_DWEBBLE,
+};
+
+static const u8 sPestRowByColor[] =
+{
+    [BERRY_COLOR_RED]    = PEST_ROW_RED,
+    [BERRY_COLOR_BLUE]   = PEST_ROW_BLUE,
+    [BERRY_COLOR_PURPLE] = PEST_ROW_BLUE,
+    [BERRY_COLOR_GREEN]  = PEST_ROW_GREEN,
+    [BERRY_COLOR_YELLOW] = PEST_ROW_YELLOW,
+    [BERRY_COLOR_PINK]   = PEST_ROW_PINK,
+};
+
+bool32 IsBerryGardenTree(u32 treeId)
+{
+    return treeId >= BERRY_TREE_GARDEN_FIRST && treeId <= BERRY_TREE_GARDEN_LAST;
+}
+
+// % chance per check (src/berry.c TryForPests): doubled by the Bug Hotel.
+u32 GardenPest_Chance(void)
+{
+    if (VarGet(VAR_BERRY_GARDEN_LEVEL) >= GARDEN_LEVEL_BUG_HOTEL)
+        return PEST_CHANCE_BUG_HOTEL;
+    return PEST_CHANCE;
+}
+
+// The rule with every die already thrown: roll 0..99 for the slot, mulchRoll
+// TRUE for the half of the time the mulch wins. Scatterbug comes back as
+// SPECIES_SCATTERBUG_FANCY, which the caller turns into one of the patterns.
+u16 GardenPest_Pick(u32 color, bool32 night, u32 generation, u16 mulchItem, u32 roll, bool32 mulchRoll)
+{
+    u32 row = color < ARRAY_COUNT(sPestRowByColor) ? sPestRowByColor[color] : PEST_ROW_GREEN;
+    u32 common, uncommon;
+
+    if (mulchRoll && (mulchItem == ITEM_GOOEY_MULCH || mulchItem == ITEM_RICH_MULCH))
+        return SPECIES_RELLOR;
+    if (mulchRoll && mulchItem == ITEM_STABLE_MULCH)
+        return SPECIES_DWEBBLE;
+    if (generation <= 1)
+        common = 70, uncommon = 27;
+    else if (generation <= 3)
+        common = 50, uncommon = 38;
+    else
+        common = 30, uncommon = 40;
+    if (roll < common)
+        return sPests[row][night ? PEST_COMMON_NIGHT : PEST_COMMON_DAY];
+    if (roll < common + uncommon)
+        return sPests[row][PEST_UNCOMMON];
+    return sPests[row][PEST_RARE];
+}
+
+// The pest that comes out of this garden tree now.
+u16 GardenPest_Species(u32 treeId)
+{
+    struct BerryTree *tree = GetBerryTreeInfo(treeId);
+    u16 itemId = BerryTypeToItemId(tree->berry);
+    u16 mulchItem = tree->mulch ? ITEM_GROWTH_MULCH + tree->mulch - 1 : ITEM_NONE;
+    bool32 night = GardenCast_PeriodOf(GetTimeOfDay()) == GARDEN_PERIOD_NIGHT;
+    u16 species;
+
+    species = GardenPest_Pick(GetBerryInfo(tree->berry)->color, night, GetBerryGeneration(itemId),
+                              mulchItem, Random() % 100, Random() % 2);
+    return GetWildFormVariantSpecies(species);
+}
+
+// 10 + 4 per badge (all 16), up to 60, then the wild level scaling the player
+// chose, like any wild Pokemon.
+u8 GardenPest_Level(u16 species)
+{
+    u32 badge, level = PEST_LEVEL_BASE;
+
+    for (badge = FLAG_BADGE01_GET; badge <= FLAG_BADGE08_GET; badge++)
+    {
+        if (FlagGet(badge))
+            level += PEST_LEVEL_PER_BADGE;
+    }
+    for (badge = FLAG_BADGE09_GET; badge <= FLAG_BADGE16_GET; badge++)
+    {
+        if (FlagGet(badge))
+            level += PEST_LEVEL_PER_BADGE;
+    }
+    level = min(level, PEST_LEVEL_MAX);
+    return CalculateWildScaledLevel(species, level, 0);
+}
+
+// The tree the player is facing is a garden plot (berry_tree.inc: the pest
+// lines of bank P are only for the garden).
+u16 GardenPest_IsGardenTree(void)
+{
+    return IsBerryGardenTree(GetObjectEventBerryTreeId(gSelectedObjectEvent));
+}
+
+// Laurel's reaction: 1 = a weed in bed A, 2 = in bed B, 0 = none.
+u16 GardenWeeds_Bed(void)
+{
+    u32 id;
+
+    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_GARDEN_LAST; id++)
+    {
+        if (GetBerryTreeInfo(id)->weeds && GetBerryTreeInfo(id)->stage != BERRY_STAGE_NO_BERRY)
+            return id <= BERRY_TREE_GARDEN_A6 ? 1 : 2;
+    }
+    return 0;
+}
+
+// Bugsy's reaction: every one of the eight garden-only families caught.
+u16 GardenPests_AllCaught(void)
+{
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sGardenOnlyPests); i++)
+    {
+        if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(sGardenOnlyPests[i]), FLAG_GET_CAUGHT))
+            return FALSE;
+    }
+    return TRUE;
 }

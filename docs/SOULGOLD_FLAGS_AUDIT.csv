@@ -27,7 +27,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0xD,13,FLAG_TEMP_HIDE_BUGSY,TEMP,EM_USO,0,0,2,Route30,GLOBAL(codigo),
 0xE,14,FLAG_TEMP_E,TEMP,EM_USO,0,0,6,NewBarkTown,MAPA_UNICO:NewBarkTown,"When set, follower pokemon won't be spawned"
 0xE,14,FLAG_TEMP_HIDE_FOLLOWER,TEMP,EM_USO,2,17,18,BattleFrontier_BattleDomeBattleRoom;DarkraiInn1;DarkraiInn1Ruined;DarkraiInnFinalRoom,GLOBAL(codigo),
-0xF,15,FLAG_TEMP_BUGSY_REACTED,TEMP,EM_USO,1,1,1,,GLOBAL(codigo),"Route30: his reaction, once per visit (part 9)"
+0xF,15,FLAG_TEMP_BUGSY_REACTED,TEMP,EM_USO,1,1,2,,GLOBAL(codigo),"Route30: his reaction, once per visit (part 9)"
 0xF,15,FLAG_TEMP_F,TEMP,EM_USO,0,3,3,SunMoonAltar,MAPA_UNICO:SunMoonAltar,Unused Flag
 0x10,16,FLAG_TEMP_10,TEMP,EM_USO,2,2,6,CeruleanCave_B1F;CliffEdgeCave;Kitakami_Houses,MULTI_MAPA(3),Unused Flag
 0x11,17,FLAG_TEMP_11,TEMP,EM_USO,0,0,26,Route110_TrickHousePuzzle4;Route120,MULTI_MAPA(2),
@@ -1410,14 +1410,14 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x990,2448,FLAG_SYS_GAME_CLEAR,SYSTEM,EM_USO,40,10,32,BattleFrontier_ExchangeServiceCorner;CianwoodCity;GoldenrodCity_BikeShop;ReceptionGate,GLOBAL(codigo),
 0x991,2449,FLAG_SYS_CHAT_USED,SYSTEM,EM_USO,1,1,2,,GLOBAL(codigo),
 0x992,2450,FLAG_UNLOCKED_TRENDY_SAYINGS,SYSTEM,EM_USO,2,1,2,,GLOBAL(codigo),
-0x993,2451,FLAG_BADGE01_GET,SYSTEM,EM_USO,2,8,19,VioletCity_Gym,GLOBAL(codigo),
+0x993,2451,FLAG_BADGE01_GET,SYSTEM,EM_USO,2,8,20,VioletCity_Gym,GLOBAL(codigo),
 0x994,2452,FLAG_BADGE02_GET,SYSTEM,EM_USO,3,4,10,AzaleaTown_Gym,GLOBAL(codigo),
 0x995,2453,FLAG_BADGE03_GET,SYSTEM,EM_USO,13,4,14,GoldenrodCity_FlowerShop;GoldenrodCity_Gym;Route36,GLOBAL(codigo),
 0x996,2454,FLAG_BADGE04_GET,SYSTEM,EM_USO,12,4,16,AzaleaTown_Mart;EcruteakCity_Gym;GoldenrodCity_FlowerShop;RuinsOfAlph_Lab,GLOBAL(codigo),
 0x997,2455,FLAG_BADGE05_GET,SYSTEM,EM_USO,8,2,13,BattleFrontier_ExchangeServiceCorner;BlackthornCity;CianwoodCity;CianwoodGym,GLOBAL(codigo),
 0x998,2456,FLAG_BADGE06_GET,SYSTEM,EM_USO,4,3,9,BlackthornCity;GoldenrodCity_FlowerShop;OlivineCity_Gym,GLOBAL(codigo),
 0x999,2457,FLAG_BADGE07_GET,SYSTEM,EM_USO,4,3,10,BlackthornCity;MahoganyTown_Gym,GLOBAL(codigo),
-0x99A,2458,FLAG_BADGE08_GET,SYSTEM,EM_USO,13,2,19,BattleFrontier_BattleFactoryLobby;DragonsDen_Shrine;OlivineCity_Lighthouse;OlivineCity_PortInside,GLOBAL(codigo),
+0x99A,2458,FLAG_BADGE08_GET,SYSTEM,EM_USO,13,2,20,BattleFrontier_BattleFactoryLobby;DragonsDen_Shrine;OlivineCity_Lighthouse;OlivineCity_PortInside,GLOBAL(codigo),
 0x99B,2459,FLAG_VISITED_NEWBARK_TOWN,SYSTEM,EM_USO,1,2,4,NewBarkTown_PlayersHouse_1F,GLOBAL(codigo),
 0x99C,2460,FLAG_VISITED_CHERRYGROVE_CITY,SYSTEM,EM_USO,1,7,5,CherrygroveCity,GLOBAL(codigo),
 0x99D,2461,FLAG_VISITED_VIOLET_CITY,SYSTEM,EM_USO,1,3,5,VioletCity,GLOBAL(codigo),
@@ -1536,14 +1536,14 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0xA0E,2574,FLAG_LANDMARK_TRAINER_HILL,SYSTEM,EM_USO,0,0,1,,GLOBAL(codigo),
 0xA0F,2575,FLAG_ALL_INNATES_UNLOCKED,SYSTEM,EM_USO,7,9,7,NewBarkTown_Lab,GLOBAL(codigo),
 0xA10,2576,FLAG_RECEIVED_POKEDEX_FROM_BIRCH,SYSTEM,EM_USO,0,0,1,,GLOBAL(codigo),
-0xA11,2577,FLAG_BADGE09_GET,SYSTEM,EM_USO,1,3,3,PewterCity_Gym,GLOBAL(codigo),
+0xA11,2577,FLAG_BADGE09_GET,SYSTEM,EM_USO,1,3,4,PewterCity_Gym,GLOBAL(codigo),
 0xA12,2578,FLAG_BADGE10_GET,SYSTEM,EM_USO,1,3,3,CeruleanCity_Gym,GLOBAL(codigo),
 0xA13,2579,FLAG_BADGE11_GET,SYSTEM,EM_USO,1,3,3,VermilionCity_Gym,GLOBAL(codigo),
 0xA14,2580,FLAG_BADGE12_GET,SYSTEM,EM_USO,1,3,3,CeladonCity_Gym,GLOBAL(codigo),
 0xA15,2581,FLAG_BADGE13_GET,SYSTEM,SO_ESCRITA,0,3,3,SaffronCity_Gym,GLOBAL(codigo),
 0xA16,2582,FLAG_BADGE14_GET,SYSTEM,SO_ESCRITA,0,3,3,FuchsiaCity_Gym,GLOBAL(codigo),
 0xA17,2583,FLAG_BADGE15_GET,SYSTEM,SO_ESCRITA,0,2,3,,GLOBAL(codigo),
-0xA18,2584,FLAG_BADGE16_GET,SYSTEM,EM_USO,1,3,4,Route19;ViridianCity_Gym,GLOBAL(codigo),
+0xA18,2584,FLAG_BADGE16_GET,SYSTEM,EM_USO,1,3,5,Route19;ViridianCity_Gym,GLOBAL(codigo),
 0xA19,2585,FLAG_IS_CHAMPION,SYSTEM,EM_USO,42,2,42,AbandonedRocketHideoutBackroom;BlackthornCity_Gym;DarkCave_NorthSide;EcruteakCity_Theater,GLOBAL(codigo),Seems to be related to linking.
 0xA1A,2586,FLAG_NURSE_UNION_ROOM_REMINDER,SYSTEM,EM_USO,1,2,2,,GLOBAL(codigo),
 0xA1B,2587,FLAG_SYS_PC_BILL,SYSTEM,EM_USO,2,2,4,GoldenrodCity;GoldenrodCity_BillsHouse,MULTI_MAPA(2),Unused Flag

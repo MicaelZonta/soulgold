@@ -51,6 +51,17 @@ u16 GardenNews_Take(void);
 u16 GardenLead_IsType(void);
 u16 GardenPlots_Planted(void);
 
+u16 GardenPest_IsGardenTree(void);
+u16 GardenWeeds_Bed(void);
+u16 GardenPests_AllCaught(void);
+
+// Pests and weeds (part 10): only garden plots (src/berry.c asks these).
+bool32 IsBerryGardenTree(u32 treeId);
+u32 GardenPest_Chance(void);
+u16 GardenPest_Species(u32 treeId);
+u8 GardenPest_Level(u16 species);
+u16 GardenPest_Pick(u32 color, bool32 night, u32 generation, u16 mulchItem, u32 roll, bool32 mulchRoll);
+
 // Hearts and line banks as pure rules (tests).
 u32 GardenHearts_Get(u32 who);
 u32 GardenLine_Count(u32 who);
