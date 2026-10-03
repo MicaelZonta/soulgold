@@ -1,6 +1,28 @@
 # O Rei da Colheita — a horta do Berry Master, completa
 
-> **Proposta rev1 — 30/09/2026; rev2 (Galar) §13; rev3 (revisão, Crown Tundra, 10 falas por evento, batalhas de sempre) §14; rev4 (as dungeons dos corcéis; sem o Will) §15.** Nada implementado. Junta num sistema só a
+> **Implementado (partes 1–17, até 03/10/2026).** A horta, o Livro, os cruzamentos, os
+> níveis, os pedidos, as pragas, a rotina com corações e bancos de falas, os rivais e a
+> sidequest inteira, do prólogo ao estado 15 e o pós-história, estão no jogo e foram
+> testados no mGBA headless (relatório: https://claude.ai/artifact/KGqanvCP1LAQKQhNQBmgyk).
+> Onde o código divergiu deste documento, a decisão está na seção “Parte N — feita” de
+> [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md). As principais:
+>
+> | Aqui | No jogo |
+> |---|---|
+> | Paletas novas para Greenfield e a Torre de Bronze (§15.3) | Tom por código sobre as paletas existentes (`MapTint_Mode`): cristal, entardecer, fogo |
+> | Portão novo a oeste das ruínas | Recanto (2,26)–(2,27) da área da câmara do Kabuto (chega-se pela Union Cave B1F) |
+> | A mansão trancada no caminho escuro | O próprio portão não abre fora do caminho branco |
+> | “The FOUNTAIN is glass” | “The TREES are glass” (o mapa aprovado não tem fonte) |
+> | A prova do Rei “na próxima noite” | Pode ser repetida na hora; vencida, não se repete |
+> | Peonia escolhe “Dad ou Me” | De noite a batalha é a dela; o Peony tem a dele |
+> | A Enigma pela regeneração das árvores de rota | `GardenRollDay` replanta o canteiro vazio |
+> | Os dois corcéis no Nexus | O escolhido segue a R1; o outro fica só no Nexus (`GardenSteed_NexusEligible`) |
+>
+> Pendente do autor: sprites (Peony, Peonia, Klara, Avery, Mustard, Molly adulta), o
+> prêmio do Mustard, cristal só no salão da mansão, arte das folhas de cenoura, e
+> regenerar o site público (`docs/`).
+
+> **Proposta rev1 — 30/09/2026; rev2 (Galar) §13; rev3 (revisão, Crown Tundra, 10 falas por evento, batalhas de sempre) §14; rev4 (as dungeons dos corcéis; sem o Will) §15.** Junta num sistema só a
 > horta ([`BERRY_MASTER_DESIGN.md`](BERRY_MASTER_DESIGN.md)), as infestações e o
 > lendário ([`LENDARIO_E_INFESTACAO.md`](LENDARIO_E_INFESTACAO.md)). **Onde este
 > documento e os dois anteriores discordam, vale este.**

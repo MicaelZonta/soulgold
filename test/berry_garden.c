@@ -931,3 +931,20 @@ TEST("King's Garden doubles Laurel's plot, up to what the tree can hold")
     EXPECT_EQ(GardenKingsPlot_Yield(kings, 20), 31);
     EXPECT_EQ(GardenKingsPlot_Yield(other, 5), 5);
 }
+
+// Part 17: the Nexus (R1) and the steeds.
+TEST("The Nexus waits for the chosen steed's capture and lets the other one in")
+{
+    VarSet(VAR_GARDEN_NEWS, 0);
+    VarSet(VAR_HARVEST_KING, HARVEST_KING_KING_CAME);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_GLASTRIER), FLAG_SET_CAUGHT);
+    EXPECT(GardenSteed_NexusEligible(SPECIES_GLASTRIER));
+    EXPECT(!GardenSteed_NexusEligible(SPECIES_SPECTRIER));           // before the choice: needs a capture
+    VarSet(VAR_HARVEST_KING, HARVEST_KING_SHADEROOT);
+    EXPECT(GardenSteed_NexusEligible(SPECIES_GLASTRIER));            // not chosen: Nexus-only
+    EXPECT(!GardenSteed_NexusEligible(SPECIES_SPECTRIER));
+    VarSet(VAR_HARVEST_KING, HARVEST_KING_GLASTRIER);
+    gSpecialVar_0x8004 = GARDEN_STORY_WHITE_PATH;
+    GardenStory_Mark();
+    EXPECT(GardenSteed_NexusEligible(SPECIES_SPECTRIER));            // the white path left it
+}

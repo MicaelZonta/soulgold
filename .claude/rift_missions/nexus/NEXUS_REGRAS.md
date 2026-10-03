@@ -34,6 +34,10 @@ Lendário **sem** método fora do Nexus entra no sorteio desde o início.
   Aves de Galar são espécies separadas das de Kanto.
 - **No código:** `getcaughtmon SPECIES_X` (`asm/macros/event.inc`) lê a flag de
   capturado da Pokédex — é o que as Meteor Caves já usam.
+- **Os corcéis do Calyrex** (Berry Master, 03/10/2026): só um deles pode ser pego na
+  campanha. Antes da escolha das sementes os dois esperam captura; depois, o corcel
+  **não escolhido** volta a ser só do Nexus e entra sempre no sorteio
+  (`GardenSteed_NexusEligible`, `src/berry_garden.c`). O Calyrex segue a R1 normal.
 
 ## R2. Level scaling: 100% no maior nível da equipe
 

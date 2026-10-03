@@ -1635,6 +1635,27 @@ void BerryDebug_SetStory(void)
     VarSet(VAR_HARVEST_KING, gSpecialVar_0x8004);
 }
 
+// The Nexus (NEXUS_REGRAS.md R1) and the two steeds of the Harvest King. Only
+// the one the player chose can be caught outside the Nexus: before the choice
+// (Act 5b) both wait for a capture, which also keeps the surprise; after it
+// the other one is Nexus-only again (REI_DA_COLHEITA.md 15.5b), so it is
+// always eligible.
+bool32 GardenSteed_NexusEligible(u16 species)
+{
+    u32 state = VarGet(VAR_HARVEST_KING);
+    u16 chosen;
+
+    if (state < HARVEST_KING_ICEROOT)
+        chosen = species;
+    else if (state == HARVEST_KING_ICEROOT || GardenStory_Has(GARDEN_STORY_WHITE_PATH))
+        chosen = SPECIES_GLASTRIER;
+    else
+        chosen = SPECIES_SPECTRIER;
+    if (species != chosen)
+        return TRUE;
+    return GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT);
+}
+
 // King's Garden (garden level 5, section 5, part 16): Laurel's plot gives
 // double. src/berry.c (CalcBerryYield) asks; the yield field holds up to 31.
 u8 GardenKingsPlot_Yield(const struct BerryTree *tree, u8 yield)

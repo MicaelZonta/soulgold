@@ -68,6 +68,7 @@ void GardenKingsPlot_Empty(void);
 u8 GardenKingsPlot_Yield(const struct BerryTree *tree, u8 yield);
 u16 GardenTree_IsKingsPlot(void);
 u16 BerryLedger_HasTitle(void);
+bool32 GardenSteed_NexusEligible(u16 species);
 
 // Story places in another light (parts 14-15): src/fieldmap.c and
 // src/overworld.c tint the map palettes while MapTint_Mode() is not NONE.

@@ -1652,6 +1652,20 @@ verdade contra Avery/Peonia/Mustard/dupla (falas de vitória e prêmios).
 9. Marcar no topo do `REI_DA_COLHEITA.md` o que foi implementado e onde o código
    divergiu do design.
 
+### Parte 17 — feita (03/10/2026)
+
+| # | Passo | Resultado |
+|---|---|---|
+| 1 | Auditoria de flags | Rodada a cada parte e commitada junto. Flags novas das partes 14–16: só aliases de `FLAG_TEMP_*` (Avery `16`, Mustard `17`); nenhuma persistente nova, nenhuma fora do array. As vitórias do Tomo e da prova do Rei usam a própria flag de treinador |
+| 2 | Falantes e largura | `checar_falantes.py`: 242 falantes em ordem; `medir_linha.py` sem estouro em todos os `.inc` da horta, dos 4 mapas novos e do teatro |
+| 3 | Mapas | `map_graph check`: 560 alcançáveis, nenhum desligado. Greenfield (pelas ruínas), mansão, Torre 1F (pelo teatro) e telhado |
+| 4 | Nexus (R1) | Calyrex, Glastrier e Spectrier agora `requiresCaught`; os corcéis por `GardenSteed_NexusEligible`: antes da escolha os dois esperam captura (protege a surpresa), depois o não escolhido fica só no Nexus. `POOL_LENDARIOS.md` (99 com método) e a R1 do `NEXUS_REGRAS.md` atualizados. 1 teste de C (60/60) |
+| 5 | Itens e fontes | `item_audit.py` ao vivo: cenouras, Reins of Unity e os 4 adubos do Livro com fonte. **O catálogo `docs/SOULGOLD_ITEMS_AUDIT.*` não foi regravado**: o diff traria mudanças de outras sessões (TM/HM Dig, Silver Powder, sinos). `fontes_legitimas.py` depende de regenerar o site público, que é **decisão do autor** |
+| 6 | Renders | Não refeitos (opcional; o autor decide se quer as páginas atualizadas) |
+| 7 | Surpresa | `grep` de Calyrex/Glastrier/Spectrier nos bancos da rotina e nos mapas da horta: nada antes do Ato 5. No Nexus a R1 nova também esconde os três até a captura |
+| 8 | Jogada completa num save novo | **Não feita** como uma corrida só. Cada parte foi jogada no mGBA headless a partir do estado anterior (debug `Story…`), dos dois caminhos; ver o relatório |
+| 9 | Topo do `REI_DA_COLHEITA.md` | Nota de implementação com as divergências principais |
+
 ---
 
 ## 18. Pendências do autor
