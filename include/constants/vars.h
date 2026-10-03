@@ -493,6 +493,9 @@
 // Route30 / Route30_House: GARDEN_PERIOD_* frozen at map load, so what the
 // garden's people say matches where they stand even if the hour turns.
 #define VAR_TEMP_GARDEN_PERIOD        VAR_TEMP_9
+// Route30: the story scene that may start on this load (part 12; ON_FRAME
+// trigger, set to 0 by its first instruction).
+#define VAR_TEMP_GARDEN_SCENE         VAR_TEMP_A
 
 #if TESTING
 #define TESTING_VARS_START                  0x9000

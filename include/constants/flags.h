@@ -2096,6 +2096,7 @@
 #define FLAG_TEMP_HIDE_BUGSY                    FLAG_TEMP_D
 #define FLAG_TEMP_BUGSY_REACTED                 FLAG_TEMP_F  // Route30: his reaction, once per visit (part 9)
 #define FLAG_TEMP_HIDE_KLARA                    FLAG_TEMP_10 // Route30: Klara's morning raid (part 11)
+#define FLAG_TEMP_HIDE_SPECTRIER                FLAG_TEMP_12 // Route30: Act 2's night visitor (part 12)
 
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000

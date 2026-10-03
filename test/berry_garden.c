@@ -7,6 +7,7 @@
 #include "list_menu.h"
 #include "malloc.h"
 #include "money.h"
+#include "pokedex.h"
 #include "script_menu.h"
 #include "test/test.h"
 #include "constants/berry.h"
@@ -15,7 +16,7 @@
 #include "constants/items.h"
 
 // Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md,
-// parts 2 to 11).
+// parts 2 to 12).
 
 static void ClearLedger(void)
 {
@@ -761,4 +762,56 @@ TEST("Klara only comes when the morning was drawn")
     PlantRipe(BERRY_TREE_GARDEN_A1);
     gSpecialVar_0x8004 = LOCALID_ROUTE30_KLARA;
     EXPECT(!GardenKlara_Place());
+}
+
+// Part 12: the story, prologue to Act 4.
+TEST("One-time story lines are said once")
+{
+    VarSet(VAR_GARDEN_NEWS, 0);
+    gSpecialVar_0x8004 = GARDEN_STORY_BRAM_BUGS;
+    EXPECT(!GardenStory_Check());
+    GardenStory_Mark();
+    EXPECT(GardenStory_Check());
+    gSpecialVar_0x8004 = GARDEN_STORY_LAUREL_HEARD;
+    EXPECT(!GardenStory_Check());
+    EXPECT_EQ(VarGet(VAR_GARDEN_NEWS) & 0x1FF, 0);     // Bram's news bits untouched
+}
+
+TEST("Act 1c counts garden-only families, any stage of each")
+{
+    memset(gSaveBlock1Ptr->dexCaught, 0, sizeof(gSaveBlock1Ptr->dexCaught));
+    EXPECT_EQ(GardenPests_FamiliesCaught(), 0);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_BEAUTIFLY), FLAG_SET_CAUGHT);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_COMBEE), FLAG_SET_CAUGHT);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_VESPIQUEN), FLAG_SET_CAUGHT);
+    EXPECT_EQ(GardenPests_FamiliesCaught(), 2);          // Wurmple's and Combee's
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_DWEBBLE), FLAG_SET_CAUGHT);
+    EXPECT_EQ(GardenPests_FamiliesCaught(), GARDEN_CENSUS_FAMILIES);
+}
+
+TEST("Laurel's plot counts only an Enigma")
+{
+    struct BerryTree *tree = GetBerryTreeInfo(BERRY_TREE_KINGS_PLOT);
+
+    *tree = (struct BerryTree){0};
+    EXPECT_EQ(GardenKingsPlot_Stage(), BERRY_STAGE_NO_BERRY);
+    tree->berry = ItemIdToBerryType(ITEM_ORAN_BERRY);
+    tree->stage = BERRY_STAGE_SPROUTED;
+    EXPECT_EQ(GardenKingsPlot_Stage(), BERRY_STAGE_NO_BERRY);
+    BerryDebug_KingsPlotSprout();
+    EXPECT_EQ(GardenKingsPlot_Stage(), BERRY_STAGE_SPROUTED);
+}
+
+TEST("Setting the story by debug marks the lines that came before")
+{
+    VarSet(VAR_GARDEN_NEWS, 0);
+    gSpecialVar_0x8004 = HARVEST_KING_BRAM_TOLD;
+    BerryDebug_SetStory();
+    EXPECT_EQ(VarGet(VAR_HARVEST_KING), HARVEST_KING_BRAM_TOLD);
+    gSpecialVar_0x8004 = GARDEN_STORY_BRAM_BUGS;
+    EXPECT(GardenStory_Check());
+    gSpecialVar_0x8004 = GARDEN_STORY_LAUREL_HEARD;
+    EXPECT(GardenStory_Check());
+    gSpecialVar_0x8004 = GARDEN_STORY_WROTE_HOME;
+    EXPECT(!GardenStory_Check());
 }

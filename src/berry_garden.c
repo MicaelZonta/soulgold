@@ -775,6 +775,8 @@ void BerryDebug_NewOrder(void)
 // someone only changes place when the player comes back in, never in sight.
 // ---------------------------------------------------------------------------
 
+static void GardenCast_ApplyStory(u32 here, u32 period);
+
 u32 GardenCast_PeriodOf(enum TimeOfDay timeOfDay)
 {
     switch (timeOfDay)
@@ -848,6 +850,7 @@ void GardenCast_Apply(void)
                                VarGet(VAR_HARVEST_KING)) != here)
             FlagSet(sCastHideFlags[who]);
     }
+    GardenCast_ApplyStory(here, period);
 }
 
 // For the scripts' weekday lines: TRUE on Saturday and Sunday.
@@ -1102,6 +1105,9 @@ u16 GardenPest_Pick(u32 color, bool32 night, u32 generation, u16 mulchItem, u32 
     return sPests[row][PEST_RARE];
 }
 
+// Act 1a needs it after the battle (GardenPest_LastSpecies, part 12).
+static EWRAM_DATA u16 sLastPestSpecies = SPECIES_NONE;
+
 // The pest that comes out of this garden tree now.
 u16 GardenPest_Species(u32 treeId)
 {
@@ -1113,7 +1119,9 @@ u16 GardenPest_Species(u32 treeId)
 
     species = GardenPest_Pick(GetBerryInfo(tree->berry)->color, night, GetBerryGeneration(itemId),
                               mulchItem, Random() % 100, Random() % 2);
-    return GetWildFormVariantSpecies(species);
+    species = GetWildFormVariantSpecies(species);
+    sLastPestSpecies = species;
+    return species;
 }
 
 // 10 + 4 per badge (all 16), up to 60, then the wild level scaling the player
@@ -1310,4 +1318,137 @@ u16 GardenTilly_PrizeMulch(void)
     static const u16 sMulches[] = { ITEM_GROWTH_MULCH, ITEM_DAMP_MULCH, ITEM_STABLE_MULCH, ITEM_GOOEY_MULCH };
 
     return sMulches[Random() % ARRAY_COUNT(sMulches)];
+}
+
+// ---------------------------------------------------------------------------
+// The story, prologue to Act 4 (part 12, sections 8.2-8.9). The scripts run
+// the scenes; this holds the conditions and who stands where for them.
+// ---------------------------------------------------------------------------
+
+#define STORY_SHIFT  9   // VAR_GARDEN_NEWS bits 9..15 (GARDEN_STORY_*)
+
+// VAR_0x8004 = GARDEN_STORY_*: TRUE if that one-time line was already said.
+u16 GardenStory_Check(void)
+{
+    return (VarGet(VAR_GARDEN_NEWS) >> (STORY_SHIFT + gSpecialVar_0x8004)) & 1;
+}
+
+void GardenStory_Mark(void)
+{
+    VarSet(VAR_GARDEN_NEWS, VarGet(VAR_GARDEN_NEWS) | (1 << (STORY_SHIFT + gSpecialVar_0x8004)));
+}
+
+// The Enigma's stage in Laurel's plot (BERRY_STAGE_*), 0 if anything else grows there.
+u16 GardenKingsPlot_Stage(void)
+{
+    struct BerryTree *tree = GetBerryTreeInfo(BERRY_TREE_KINGS_PLOT);
+
+    if (tree->stage == BERRY_STAGE_NO_BERRY || BerryTypeToItemId(tree->berry) != ITEM_ENIGMA_BERRY)
+        return BERRY_STAGE_NO_BERRY;
+    return tree->stage;
+}
+
+// TRUE if an Enigma grows in one of the ten beds (Act 3: "That's a bed.").
+u16 GardenPlots_HaveEnigma(void)
+{
+    u32 id;
+
+    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_GARDEN_LAST; id++)
+    {
+        struct BerryTree *tree = GetBerryTreeInfo(id);
+
+        if (tree->stage != BERRY_STAGE_NO_BERRY && BerryTypeToItemId(tree->berry) == ITEM_ENIGMA_BERRY)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+// Act 1c: the garden-only families with any member caught (section 7.1).
+static const u16 sGardenOnlyFamilies[][5] =
+{
+    { SPECIES_WURMPLE, SPECIES_SILCOON, SPECIES_BEAUTIFLY, SPECIES_CASCOON, SPECIES_DUSTOX },
+    { SPECIES_BLIPBUG, SPECIES_DOTTLER, SPECIES_ORBEETLE },
+    { SPECIES_VOLBEAT },
+    { SPECIES_ILLUMISE },
+    { SPECIES_SCATTERBUG, SPECIES_SPEWPA, SPECIES_VIVILLON },
+    { SPECIES_COMBEE, SPECIES_VESPIQUEN },
+    { SPECIES_RELLOR, SPECIES_RABSCA },
+    { SPECIES_DWEBBLE, SPECIES_CRUSTLE },
+};
+
+u16 GardenPests_FamiliesCaught(void)
+{
+    u32 family, member, caught = 0;
+
+    for (family = 0; family < ARRAY_COUNT(sGardenOnlyFamilies); family++)
+    {
+        for (member = 0; member < ARRAY_COUNT(sGardenOnlyFamilies[0]) && sGardenOnlyFamilies[family][member]; member++)
+        {
+            if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(sGardenOnlyFamilies[family][member]), FLAG_GET_CAUGHT))
+            {
+                caught++;
+                break;
+            }
+        }
+    }
+    return caught;
+}
+
+// The species of the last garden pest (Act 1a: Laurel names it).
+u16 GardenPest_LastSpecies(void)
+{
+    return sLastPestSpecies;
+}
+
+static void GardenCast_ApplyStory(u32 here, u32 period)
+{
+    u32 state = VarGet(VAR_HARVEST_KING);
+    bool32 laurelKneels = state == HARVEST_KING_NOTEBOOK && period == GARDEN_PERIOD_DAY
+                       && GardenKingsPlot_Stage() >= BERRY_STAGE_SPROUTED;
+
+    if (here == GARDEN_PLACE_HOUSE)
+    {
+        // Act 4: she is out at her plot all day.
+        if (laurelKneels)
+            FlagSet(FLAG_TEMP_HIDE_LAUREL);
+        return;
+    }
+    // Act 1b: Bugsy's first visit, any day, once the player has the 2nd badge.
+    if (state == HARVEST_KING_VISITORS && FlagGet(FLAG_BADGE02_GET) && period == GARDEN_PERIOD_DAY)
+        FlagClear(FLAG_TEMP_HIDE_BUGSY);
+    // Act 2: the night visitor, eating from bed B.
+    if (!(state == HARVEST_KING_ACT1_DONE && period == GARDEN_PERIOD_NIGHT
+       && VarGet(VAR_BERRY_GARDEN_LEVEL) >= GARDEN_LEVEL_CHANNEL))
+        FlagSet(FLAG_TEMP_HIDE_SPECTRIER);
+    // Act 4: Laurel on her knees by her plot (23,38), from its south side.
+    if (laurelKneels)
+    {
+        FlagClear(FLAG_TEMP_HIDE_LAUREL);
+        SetObjEventTemplateCoords(LOCALID_ROUTE30_LAUREL, 23, 39);
+        SetObjEventTemplateMovementType(LOCALID_ROUTE30_LAUREL, MOVEMENT_TYPE_FACE_UP);
+    }
+}
+
+// Debug: the story state (VAR_0x8004) and the one-time lines that come before it.
+void BerryDebug_SetStory(void)
+{
+    u16 news = VarGet(VAR_GARDEN_NEWS) & ~(((1 << GARDEN_STORY_COUNT) - 1) << STORY_SHIFT);
+
+    if (gSpecialVar_0x8004 > HARVEST_KING_VISITORS)
+        news |= 1 << (STORY_SHIFT + GARDEN_STORY_BRAM_BUGS);
+    if (gSpecialVar_0x8004 > HARVEST_KING_FOOTPRINTS)
+        news |= 1 << (STORY_SHIFT + GARDEN_STORY_LAUREL_HEARD);
+    VarSet(VAR_GARDEN_NEWS, news);
+    VarSet(VAR_HARVEST_KING, gSpecialVar_0x8004);
+}
+
+// Debug: an Enigma just sprouted in Laurel's plot (Act 4).
+void BerryDebug_KingsPlotSprout(void)
+{
+    struct BerryTree *tree = GetBerryTreeInfo(BERRY_TREE_KINGS_PLOT);
+
+    *tree = (struct BerryTree){0};
+    tree->berry = ItemIdToBerryType(ITEM_ENIGMA_BERRY);
+    tree->stage = BERRY_STAGE_SPROUTED;
+    tree->minutesUntilNextStage = 60;
 }

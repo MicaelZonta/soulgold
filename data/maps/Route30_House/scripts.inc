@@ -28,7 +28,6 @@
 @ once-per-visit marks are FLAG_TEMP_* that Route30 leaves free (flags.h).
 @ ===========================================================================
 
-.set LOCALID_BRAM_HOUSE, 1
 
 Route30_House_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route30_House_OnTransition
@@ -45,7 +44,7 @@ Route30_House_OnTransition::
 @ visit is the classic one at any hour).
 Route30_House_EventScript_BramDozes::
 	goto_if_unset FLAG_GOT_BERRY_ROUTE_30_HOUSE, Route30_House_EventScript_BramDozesEnd
-	setobjectmovementtype LOCALID_BRAM_HOUSE, MOVEMENT_TYPE_FACE_RIGHT
+	setobjectmovementtype LOCALID_HOUSE_BRAM, MOVEMENT_TYPE_FACE_RIGHT
 Route30_House_EventScript_BramDozesEnd::
 	return
 
@@ -107,6 +106,8 @@ Route30_House_EventScript_GiveDraw::
 @ Every path of the conversation ends here (except a full bag, which ends on
 @ Common_EventScript_ShowBagIsFull): the garden works offer, then goodbye.
 Route30_House_EventScript_AfterGift::
+	@ The story's first step (part 12): the end of the first conversation.
+	call BerryGarden_EventScript_Prologue
 	call Route30_House_EventScript_Reform
 	closemessage
 	release
@@ -400,7 +401,10 @@ Route30_House_EventScript_CheckAsleep::
 	@ Still up on the visit he did the tutorial in, even at night: he was
 	@ awake a minute ago (and the map loaded with him facing the player).
 	goto_if_set FLAG_TEMP_BRAM_TUTORIAL_VISIT, Route30_House_EventScript_CheckAsleepEnd
-	goto_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, Route30_House_EventScript_BramAsleep
+	goto_if_ne VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, Route30_House_EventScript_CheckAsleepEnd
+	@ Act 2b (part 12): the night after the visitor, he wakes up.
+	goto_if_eq VAR_HARVEST_KING, HARVEST_KING_FOOTPRINTS, BerryGarden_EventScript_BramWakes
+	goto Route30_House_EventScript_BramAsleep
 Route30_House_EventScript_CheckAsleepEnd::
 	return
 
@@ -568,12 +572,17 @@ Route30_House_EventScript_DoneToday::
 @ Hoenn wife latches on FLAG_GARBAGEFLAG), so this whole NPC costs no new flag.
 Route30_House_EventScript_BerryWife::
 	lock
+	@ Act 4 (part 12): kneeling at her plot, she does not look up.
+	call BerryGarden_EventScript_FirstLeafCheck
 	faceplayer
 	dotimebasedevents
 	special GardenRollDay
 	@ Hearts (part 9): VAR_0x800B = first talk of the day, read by WifeChat.
 	setvar VAR_0x8004, GARDEN_HEARTS_LAUREL
 	specialvar VAR_0x800B, GardenHearts_Talk
+	@ The story (part 12) may take the whole conversation.
+	call BerryGarden_EventScript_LaurelStory
+	goto_if_eq VAR_RESULT, TRUE, Route30_House_EventScript_WifeChatEnd
 	call Route30_House_EventScript_LaurelHint
 	call Route30_House_EventScript_LaurelNightGift
 	goto_if_unset FLAG_SYS_GAME_CLEAR, Route30_House_EventScript_WifeChat
@@ -627,7 +636,7 @@ Route30_House_EventScript_WifeChat::
 	call_if_eq VAR_0x800B, TRUE, BerryGarden_EventScript_LaurelReaction
 	goto_if_eq VAR_RESULT, TRUE, Route30_House_EventScript_WifeChatEnd
 	goto_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, Route30_House_EventScript_WifeNight
-	call_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_MORNING, BerryGarden_EventScript_LaurelMorningLine
+	call_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_MORNING, BerryGarden_EventScript_LaurelMorning
 	call_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_DAY, BerryGarden_EventScript_LaurelDayLine
 	goto Route30_House_EventScript_WifeChatEnd
 

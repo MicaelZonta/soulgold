@@ -470,6 +470,8 @@ BerryTree_EventScript_EncounterGardenPests::
 	call BerryGarden_EventScript_PestLine
 	closemessage
 	dowildbattle
+	@ The story's Act 1a (part 12): the first one beaten or caught.
+	call BerryGarden_EventScript_PestAfter
 	return
 
 BerryTree_Text_APokemonAppeared:

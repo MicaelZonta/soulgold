@@ -39,7 +39,7 @@
 | 9 | Banco de falas ✅ 03/10, QA rápido no jogo (falta o roteiro do autor) | rodízio de 10, corações, reações de contexto | 5, 8 |
 | 10 | Infestações ✅ 03/10, QA rápido no jogo | pragas e ervas só na horta; 8 famílias só daqui | 2, 6 |
 | 11 | Batalhas de sempre (Tilly, Bugsy, Klara) ✅ 03/10, QA rápido no jogo | `garden_fight`; assalto da Klara | 5, 8, 10 |
-| 12 | Sidequest — Prólogo ao Ato 4 | estados 0 → 8 | 3, 6, 8, 10 |
+| 12 | Sidequest — Prólogo ao Ato 4 ✅ 03/10, QA no jogo dos 8 estados | estados 0 → 8 | 3, 6, 8, 10 |
 | 13 | Sidequest — Ato 5 e 5b | estados 8 → 10/11, Peony e Peonia hóspedes, cenouras | 12 |
 | 14 | Caminho branco — Greenfield | 2 mapas novos, Glastrier, estado 10 → 12 | 13 |
 | 15 | Caminho escuro — Torre de Bronze | 2 mapas novos, Spectrier, estado 11 → 13 | 13 |
@@ -1219,6 +1219,66 @@ Tilly e do Bugsy (todos provados nos testes de C ou no script).
 
 **Teste no jogo:** jogar os 8 estados com debug de var entre um e outro; cada ato
 testado também entrando por um save velho no meio.
+
+### Parte 12 — feita (03/10/2026)
+
+**Entregue:** `data/scripts/berry_garden_story.inc` (as cenas, os gatilhos e os textos),
+constantes `HARVEST_KING_*` (0..8) e `GARDEN_STORY_*` (falas de uma vez, bits 9–15 de
+`VAR_GARDEN_NEWS`), specials `GardenStory_Check/Mark`, `GardenKingsPlot_Stage`,
+`GardenPlots_HaveEnigma`, `GardenPests_FamiliesCaught`, `GardenPest_LastSpecies`;
+`GardenCast_ApplyStory` (Bugsy no Ato 1b, o visitante no Ato 2, a Laurel ajoelhada no
+Ato 4). Objeto 39 da Route 30 (`SPECIES(SPECTRIER)`, `FLAG_TEMP_HIDE_SPECTRIER` =
+`FLAG_TEMP_12`); `VAR_TEMP_GARDEN_SCENE` (= `VAR_TEMP_A`) arma a cena do Ato 2 no
+`ON_FRAME`. O canteiro da Laurel aparece a partir do estado 7. Debug `Story…` (estados
+0–8, com as falas de uma vez anteriores já marcadas) e `Enigma sprouts (Laurel)`.
+4 testes novos (51/51). Ferramentas de QA: `flag.py` (flag e Pokédex na RAM).
+
+**Como cada ato dispara (determinístico):**
+
+| Estado | Gatilho no jogo |
+|---|---|
+| 0 → 1 | fim da primeira conversa com o Bram (tutorial; ou a próxima conversa num save antigo) |
+| 1 → 2 | primeira praga da horta **vencida ou capturada** (a qualquer hora); a Laurel fala se estiver na horta |
+| 2 → 3 | falar com o Bugsy, que aparece na horta de dia (qualquer dia) com a 2ª insígnia |
+| 3 → 4 | falar com o Bugsy com 3 famílias exclusivas capturadas (qualquer estágio da família) |
+| 4 → 5 | nível 3 + noite: o visitante no canteiro B; a cena toca ao **sair da casa do Bram** ou ao falar com ele |
+| 5 → 6 | falar com o Bram à noite (ele acorda) |
+| 6 → 7 | Livro 40 + 7ª insígnia + falar com a Laurel à noite |
+| 7 → 8 | Enigma brotada no canteiro dela; de dia ela fica ajoelhada lá; falar com ela |
+
+**Decisões:**
+1. **Prólogo sem a Laurel quando ela não está** (de dia ela fica na horta): o Bram diz
+   “And not the patch by the door. That one's Laurel's. Don't ask me why. I asked once.”.
+   A versão com ela tem plaquinhas (dois falantes). As linhas do Livro saíram do
+   prólogo (o tutorial já explica).
+2. **Ato 1a a qualquer hora** (o design dizia “só de dia”): o estado avança na vitória ou
+   captura; a fala da Laurel só se ela estiver na horta. O “BUGS?” do Bram vem na
+   próxima conversa, uma vez.
+3. **Ato 1b em qualquer dia de semana**, não só terça/quinta (o Bugsy vem por causa da
+   carta).
+4. **Ato 1c só na horta** (o design também citava o Ginásio de Azalea): não mexi no
+   script do ginásio.
+5. **Ato 2 sem andar sozinho**: a cena começa com o jogador saindo da casa do Bram
+   ((26,40), o visitante 5 tiles a leste, no quadro) ou falando com o visitante. Entrar na
+   Route 30 por outro lado não dispara nada; ele fica no canteiro até o jogador chegar.
+6. **Ato 3, Enigma de novo**: no estado 7, com o canteiro da Laurel vazio e nenhuma
+   Enigma na bolsa, ela dá outra uma vez por dia (marca diária
+   `FLAG_DAILY_BERRY_MASTERS_WIFE`, “a Laurel já deu a berry dela hoje”), dizendo “That's
+   a bed…” se houver uma Enigma num canteiro.
+7. **Ato 4 pela conversa**: o Bram sai da porta e anda 2 ou 3 tiles conforme o lado em
+   que o jogador falou com ela ((23,40) ou (22,39)); a cena termina com recarga do mapa sob
+   fade.
+8. **Cartas da manhã** (banco O, desde o Ato 4) e a fala “I wrote to Freezington” (noite
+   seguinte) entram; as cartas do Ato 5 e do estado 15 caem na fala do banco D até lá.
+9. **Surpresa conferida com `grep`:** rei, cavalos e corcéis só no texto do Ato 3.
+
+**QA no jogo (headless, 03/10):** os 8 estados em sequência, com debug só para pular o
+que é jogo de verdade (insígnias e Pokédex pela RAM, Livro 60, nível 3, broto da
+Enigma): prólogo (variante sem a Laurel); praga vencida → fala da Laurel na horta →
+“BUGS?” do Bram; Bugsy chegando; censo com 2 (“caught 2 of them so far”) e com 3 →
+Silver Powder; o visitante ao sair da casa à noite; o Bram acordando; o caderno da
+Laurel → Enigma na bolsa (RAM); a Laurel ajoelhada e a cena do Bram. **Não testado no
+jogo:** as cartas, “I wrote to Freezington”, a Enigma de novo, “You were out late”.
 
 ---
 

@@ -68,9 +68,26 @@
 #define GARDEN_CLIENT_LAUREL         9
 #define GARDEN_CLIENT_COUNT          10
 
-// VAR_HARVEST_KING: Act 1 over (section 8.1). Levels 3 and 4 need it.
-#define HARVEST_KING_ACT1_DONE       4
-#define HARVEST_KING_BUGSY_CAME      3   // Act 1b: Bugsy is around (section 8.4)
+// VAR_HARVEST_KING, the "Harvest King" story (section 8.1; part 12 writes
+// 0..8, part 13 on the rest). Nothing in the garden routine stops on it.
+#define HARVEST_KING_NONE            0   // before Bram's tutorial
+#define HARVEST_KING_PROLOGUE        1   // "Not the patch by the door." (8.2)
+#define HARVEST_KING_VISITORS        2   // the first pest beaten or caught (8.3)
+#define HARVEST_KING_BUGSY_CAME      3   // Act 1b: Bugsy is around (8.4)
+#define HARVEST_KING_ACT1_DONE       4   // Act 1c, the census: levels 3 and 4 open (8.5)
+#define HARVEST_KING_FOOTPRINTS      5   // Act 2: the night visitor seen (8.6)
+#define HARVEST_KING_BRAM_TOLD       6   // Act 2b: Bram told about the seed (8.7)
+#define HARVEST_KING_NOTEBOOK        7   // Act 3: Laurel gave the Enigma (8.8)
+#define HARVEST_KING_FIRST_LEAF      8   // Act 4: the Enigma came up (8.9)
+
+// One-time story lines (GardenStory_Check / _Mark), said once in the game.
+#define GARDEN_STORY_BRAM_BUGS       0   // Bram after Act 1a: "BUGS? In MY beds?"
+#define GARDEN_STORY_LAUREL_HEARD    1   // Laurel the morning after Act 2
+#define GARDEN_STORY_WROTE_HOME      2   // Laurel the night after Act 4
+#define GARDEN_STORY_COUNT           7
+
+// Act 1c: how many garden-only families Bugsy wants caught.
+#define GARDEN_CENSUS_FAMILIES       3
 
 // Every Berry in the Book but the Enigma (the title, section 3.4): nothing
 // left that grows from a cross. With Lansat and Starf locked before the League
@@ -93,7 +110,14 @@
 #define GARDEN_PLACE_HOUSE           2   // Route30_House
 
 // Klara's object on Route30 (part 11): her position is set by GardenKlara_Place.
+// Route30_House (Bram's and Laurel's scripts run on both maps).
+#define LOCALID_HOUSE_BRAM           1
+#define LOCALID_HOUSE_SUNFLORA       4
+#define LOCALID_ROUTE30_BRAM         34
+#define LOCALID_ROUTE30_LAUREL       35
+#define LOCALID_ROUTE30_BUGSY        37
 #define LOCALID_ROUTE30_KLARA        38
+#define LOCALID_ROUTE30_SPECTRIER    39  // Act 2's night visitor (part 12)
 // The ten garden trees on Route30 are objects 24..33, in plot order (A1..B4).
 #define LOCALID_ROUTE30_GARDEN_A1    24
 

@@ -1,4 +1,4 @@
-# Berry Master — testes no jogo, em ordem (Partes 1 a 11)
+# Berry Master — testes no jogo, em ordem (Partes 1 a 12)
 
 > Roteiro único para rodar **de cima para baixo**. Cada teste parte do estado que o
 > anterior deixou, então não pule nenhum sem ler o “Estado ao fim”. Cada um diz qual
@@ -739,6 +739,63 @@ prêmio só na vitória. Os times acompanham o nível do seu time (sempre, como 
 ### T74 · Sair sem falar com ela
 - **Passos:** com a Klara na horta, entre na casa e volte.
 - **Esperado:** ela não está mais, o canteiro dela está vazio, e o Bram comenta.
+
+---
+
+## Bloco F7 — A história, prólogo ao Ato 4 (Parte 12)
+
+`Berry Master… → Story…` põe o estado (0–8) e marca as falas de uma vez anteriores;
+`Enigma sprouts (Laurel)` planta a Enigma brotada no canteiro dela. Insígnias: jogue até
+elas ou use o menu de flags do debug (`FLAG_BADGE02_GET`, `FLAG_BADGE07_GET`).
+
+### T75 · Prólogo
+- **Passos:** `Reset Berry Master`, tutorial com o Bram.
+- **Esperado:** no fim da conversa, com a Laurel na mesa: “Now that's the talk…” e a troca
+  “Not the patch by the door.” / “…Not the patch by the door.” / “That one's mine.” (com
+  plaquinhas). Sem a Laurel em casa: o Bram sozinho, “…That one's Laurel's. Don't ask me
+  why. I asked once.” `Status`: estado 1.
+
+### T76 · Ato 1a — a primeira praga
+- **Passos:** estado 1; vença ou capture uma praga na horta, de dia, com a Laurel lá.
+- **Esperado:** depois da batalha, a Laurel vira: “A Ledyba. In the beds. / Fifty years…”.
+  Na conversa seguinte, o Bram: “BUGS? In MY beds?…” (uma vez). Estado 2.
+
+### T77 · Ato 1b — o Bugsy chega
+- **Passos:** estado 2 + 2ª insígnia, Route 30 de dia.
+- **Esperado:** o Bugsy na horta (29,41); falando com ele: “Shh! Don't move. There's a
+  Blipbug on the third bed…”. Estado 3; ele passa a vir terça e quinta.
+
+### T78 · Ato 1c — o censo
+- **Esperado:** com menos de 3 famílias exclusivas capturadas: “Any luck? You've caught N of
+  them so far…”. Com 3: “Three of them!…” e a **Silver Powder**. Estado 4 (níveis 3 e 4 da
+  horta e a batalha do Bugsy liberados).
+
+### T79 · Ato 2 — o visitante da noite
+- **Passos:** estado 4, horta nível 3, de noite; entre na casa do Bram e saia.
+- **Esperado:** ao sair, um cavalo escuro no canteiro B; exclamação, ele vira, grita, flash
+  e foge pelo lago; “Something dark and tall…” e “Hoofprints…”. Estado 5. Falar com ele
+  (chegando pelo outro lado) dá a mesma cena. Na manhã seguinte, a Laurel: “You were out
+  late…” (uma vez).
+
+### T80 · Ato 2b — o Bram acorda
+- **Esperado:** estado 5, de noite: o Bram acorda (exclamação) e conta da semente de
+  Freezington. Estado 6.
+
+### T81 · Ato 3 — o caderno
+- **Passos:** estado 6, Livro ≥ 40, 7ª insígnia, Laurel de noite.
+- **Esperado:** a Sunflora grita; a Laurel conta a história do rei e dos dois cavalos e dá a
+  **Enigma Berry**. O canteiro dela (23,38) aparece. Estado 7. Com a bolsa cheia: “Come
+  back when you have room…”, nada muda. Sem a Enigma depois (plantada num canteiro comum ou
+  vendida): uma por dia, com “That's a bed…” ou “You lost it?…”.
+
+### T82 · Ato 4 — a primeira folha
+- **Passos:** plante a Enigma no canteiro da Laurel e espere brotar (ou `Enigma sprouts`);
+  de dia, Route 30.
+- **Esperado:** a Laurel ajoelhada em (23,39), olhando o broto (não está em casa). Falando
+  com ela: “… / It came up.”, o Bram sai pela porta e para ao lado, o diálogo dos dois
+  (plaquinhas), “Go on, sprout. Give us a minute.”, recarga; estado 8. Na noite seguinte:
+  “I wrote to Freezington…”. Nas manhãs de segunda, quarta, sexta e domingo, cartas
+  (“From Honey. …”, “From Kurt. …”).
 
 ---
 

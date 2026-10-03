@@ -22,6 +22,7 @@ Route30_OnLoad::
 
 Route30_OnFrame::
 	map_script_2 VAR_CHERRYGROVE_CITY_STATE, 2, Route30_EventScript_ElmCall_Trigger
+	map_script_2 VAR_TEMP_GARDEN_SCENE, 1, BerryGarden_EventScript_SceneOnLoad
 	.2byte 0
 	
 Route30_EventScript_Boy::
@@ -136,8 +137,8 @@ Route30_EventScript_GardenVisibility::
 	@ Saves that finished Bram's tutorial before the garden existed.
 	call_if_set FLAG_GOT_BERRY_ROUTE_30_HOUSE, Route30_EventScript_GardenLevelAtLeastOne
 	call_if_lt VAR_BERRY_GARDEN_LEVEL, 2, Route30_EventScript_HideGardenB
-	@ Laurel's plot opens in Act 3 of the sidequest (part 12).
-	setflag FLAG_TEMP_HIDE_KINGS_PLOT
+	@ Laurel's plot opens with Act 3 of the story (part 12): the Enigma.
+	call_if_lt VAR_HARVEST_KING, HARVEST_KING_NOTEBOOK, Route30_EventScript_HideKingsPlot
 	@ Who is out here at this hour (part 8, src/berry_garden.c).
 	special GardenCast_Apply
 	@ Klara's morning raid (part 11): in front of a ripe plot, or not here.
@@ -145,10 +146,21 @@ Route30_EventScript_GardenVisibility::
 	setvar VAR_0x8004, LOCALID_ROUTE30_KLARA
 	specialvar VAR_RESULT, GardenKlara_Place
 	call_if_eq VAR_RESULT, FALSE, Route30_EventScript_HideKlara
+	call_if_unset FLAG_TEMP_HIDE_SPECTRIER, Route30_EventScript_ArmNightVisitor
 	return
 
 Route30_EventScript_HideKlara::
 	setflag FLAG_TEMP_HIDE_KLARA
+	return
+
+Route30_EventScript_HideKingsPlot::
+	setflag FLAG_TEMP_HIDE_KINGS_PLOT
+	return
+
+@ Act 2 (part 12): the visitor is out there tonight - the scene may start on
+@ this load (Route30_OnFrame; it only plays from Bram's door).
+Route30_EventScript_ArmNightVisitor::
+	setvar VAR_TEMP_GARDEN_SCENE, 1
 	return
 
 Route30_EventScript_GardenLevelAtLeastOne::
@@ -261,10 +273,14 @@ Route30_EventScript_Bugsy::
 	lock
 	faceplayer
 	dotimebasedevents
+	@ Acts 1b and 1c (part 12) take the conversation.
+	call BerryGarden_EventScript_BugsyStory
+	goto_if_eq VAR_RESULT, TRUE, Route30_EventScript_BugsyStoryEnd
 	call BerryGarden_EventScript_BugsyReaction
 	call_if_ne VAR_RESULT, TRUE, BerryGarden_EventScript_BugsyLine
 	@ His field test (part 11), once a day from Act 1c.
 	call BerryGarden_EventScript_BugsyBattle
+Route30_EventScript_BugsyStoryEnd::
 	closemessage
 	release
 	end

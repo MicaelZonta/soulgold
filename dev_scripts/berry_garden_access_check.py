@@ -19,8 +19,9 @@ ledge pelo comportamento do metatile, que o dump_mapa.py nao mostra: agua tem
 colisao 0). Foi assim que o Bugsy de (32,43) apareceu dentro do lago e o Bram
 de (31,45) trancou dois canteiros (Parte 8, 03/10/2026).
 
-A Klara (assalto da manha, parte 11) fica DE PROPOSITO na frente de um
-canteiro maduro e vai embora depois da conversa: ela fica fora da conta acima.
+A Klara (assalto da manha, parte 11) e o visitante da noite (Ato 2, parte 12)
+ficam DE PROPOSITO na frente de um canteiro e vao embora na cena: ficam fora da
+conta acima, mas o jogador tem de alcancar um vizinho de cada um.
 Para ela a regra e outra: em cada posicao da tabela sKlaraSpots
 (src/berry_garden.c), com o resto do elenco de pe, o jogador alcanca um tile
 vizinho dela (para falar) e ela nao esta em tile bloqueado nem em cima de alguem.
@@ -39,7 +40,7 @@ import rota  # noqa: E402
 
 MAPA = "Route30"
 PORTA = (26, 40)            # o tile de chegada fica logo abaixo do warp (26,39)
-SO_NA_HORA = {"KLARA"}       # de pe na frente de um canteiro de proposito
+SO_NA_HORA = {"KLARA", "SPECTRIER"}  # de pe na frente de um canteiro so durante a cena
 AREA = (range(22, 34), range(37, 47))
 
 
@@ -89,6 +90,13 @@ def main():
         perto = alcance([k])
         if not any((k[0] + dx, k[1] + dy) in perto for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
             erros.append(f"Klara em {k}: o jogador nao chega ate ela")
+    for quem in SO_NA_HORA - {"KLARA"}:
+        k = elenco.get(quem)
+        if k is None:
+            continue
+        perto = alcance([k])
+        if not any((k[0] + dx, k[1] + dy) in perto for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+            erros.append(f"{quem} em {k}: o jogador nao chega ate ele")
     if erros:
         print("\n".join(erros))
         sys.exit(1)

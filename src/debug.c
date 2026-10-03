@@ -450,6 +450,16 @@ extern const u8 Debug_EventScript_BerryResetAll[];
 extern const u8 Debug_EventScript_BerryStatus[];
 extern const u8 Debug_EventScript_BerryHearts0[];
 extern const u8 Debug_EventScript_BerryKlara[];
+extern const u8 Debug_EventScript_BerryStory0[];
+extern const u8 Debug_EventScript_BerryStory1[];
+extern const u8 Debug_EventScript_BerryStory2[];
+extern const u8 Debug_EventScript_BerryStory3[];
+extern const u8 Debug_EventScript_BerryStory4[];
+extern const u8 Debug_EventScript_BerryStory5[];
+extern const u8 Debug_EventScript_BerryStory6[];
+extern const u8 Debug_EventScript_BerryStory7[];
+extern const u8 Debug_EventScript_BerryStory8[];
+extern const u8 Debug_EventScript_BerryKingsPlotSprout[];
 extern const u8 Debug_EventScript_BerryHearts5[];
 extern const u8 Debug_EventScript_BerryHearts12[];
 extern const u8 Debug_EventScript_BerryHearts15[];
@@ -883,6 +893,21 @@ static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster_Hearts[] =
     { NULL }
 };
 
+static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster_Story[] =
+{
+    { COMPOUND_STRING("0 before the tutorial"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory0 },
+    { COMPOUND_STRING("1 prologue done"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory1 },
+    { COMPOUND_STRING("2 first pest (1a)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory2 },
+    { COMPOUND_STRING("3 Bugsy came (1b)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory3 },
+    { COMPOUND_STRING("4 census done (1c)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory4 },
+    { COMPOUND_STRING("5 night visitor (2)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory5 },
+    { COMPOUND_STRING("6 Bram told (2b)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory6 },
+    { COMPOUND_STRING("7 Enigma given (3)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory7 },
+    { COMPOUND_STRING("8 first leaf (4)"), DebugAction_ExecuteScript, Debug_EventScript_BerryStory8 },
+    { COMPOUND_STRING("Enigma sprouts (Laurel)"), DebugAction_ExecuteScript, Debug_EventScript_BerryKingsPlotSprout },
+    { NULL }
+};
+
 static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster[] =
 {
     { COMPOUND_STRING("Status"),                    DebugAction_ExecuteScript, Debug_EventScript_BerryStatus },
@@ -905,6 +930,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster[] =
     // At the end so the QA macros' indices above (.claude/qa/lib.sh) stay put.
     { COMPOUND_STRING("Hearts…"),                   DebugAction_OpenSubMenu, sDebugMenu_Actions_BerryMaster_Hearts },
     { COMPOUND_STRING("Klara: raid this morning"),  DebugAction_ExecuteScript, Debug_EventScript_BerryKlara },
+    { COMPOUND_STRING("Story…"),                    DebugAction_OpenSubMenu, sDebugMenu_Actions_BerryMaster_Story },
     { NULL }
 };
 

@@ -1294,6 +1294,54 @@ Debug_EventScript_BerrySetHearts::
 	releaseall
 	end
 
+@ The story (part 12): VAR_HARVEST_KING 0..8 and the one-time lines before it.
+Debug_EventScript_BerryStory0::
+	setvar VAR_0x8004, 0
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory1::
+	setvar VAR_0x8004, 1
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory2::
+	setvar VAR_0x8004, 2
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory3::
+	setvar VAR_0x8004, 3
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory4::
+	setvar VAR_0x8004, 4
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory5::
+	setvar VAR_0x8004, 5
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory6::
+	setvar VAR_0x8004, 6
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory7::
+	setvar VAR_0x8004, 7
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory8::
+	setvar VAR_0x8004, 8
+Debug_EventScript_BerrySetStory::
+	lockall
+	special BerryDebug_SetStory
+	buffernumberstring STR_VAR_1, VAR_0x8004
+	msgbox Debug_Text_BerryStorySet, MSGBOX_DEFAULT
+	goto Debug_EventScript_BerryReload
+
+Debug_EventScript_BerryKingsPlotSprout::
+	lockall
+	special BerryDebug_KingsPlotSprout
+	msgbox Debug_Text_BerryKingsPlotSprout, MSGBOX_DEFAULT
+	goto Debug_EventScript_BerryReload
+
 @ Klara (part 11): today is a raid morning; she shows up on the next load of
 @ Route30 if it is morning and a garden plot is ripe.
 Debug_EventScript_BerryKlara::
@@ -1554,6 +1602,13 @@ Debug_Text_BerryStatusHearts:
 	.string "Hearts (5 and 12 open lines):\n"
 	.string "Bram {STR_VAR_1}  Laurel {STR_VAR_2}\l"
 	.string "Tilly {STR_VAR_3}$"
+
+Debug_Text_BerryStorySet:
+	.string "Harvest King story: state {STR_VAR_1}.$"
+
+Debug_Text_BerryKingsPlotSprout:
+	.string "An Enigma just sprouted in Laurel's\n"
+	.string "plot.$"
 
 Debug_Text_BerryKlara:
 	.string "Klara raids this morning: in the\n"

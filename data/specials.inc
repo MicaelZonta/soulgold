@@ -729,4 +729,12 @@ gSpecials::
 	def_special GardenKlara_TakeBramLine
 	def_special GardenTilly_PrizeMulch
 	def_special BerryDebug_KlaraComes
+	def_special GardenStory_Check
+	def_special GardenStory_Mark
+	def_special GardenKingsPlot_Stage
+	def_special GardenPlots_HaveEnigma
+	def_special GardenPests_FamiliesCaught
+	def_special GardenPest_LastSpecies
+	def_special BerryDebug_SetStory
+	def_special BerryDebug_KingsPlotSprout
 	def_special BerryDebug_NewOrder
