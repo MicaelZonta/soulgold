@@ -2284,7 +2284,7 @@ static u8 CalcBerryYield(struct BerryTree *tree)
     else
         result = CalcBerryYieldInternal(max, min, BerryTreeGetNumStagesWatered(tree));
 
-    return result;
+    return GardenKingsPlot_Yield(tree, result);
 }
 
 static u32 GetBerryTreeAge(u8 id, u8 stage)

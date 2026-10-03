@@ -570,6 +570,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BerryGarden_EventScript_PeoniaGarden",
       "flag": "FLAG_TEMP_HIDE_PEONIA"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+      "x": 23,
+      "y": 39,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BerryGarden_EventScript_Avery",
+      "flag": "FLAG_TEMP_HIDE_AVERY"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "x": 26,
+      "y": 44,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BerryGarden_EventScript_Mustard",
+      "flag": "FLAG_TEMP_HIDE_MUSTARD"
     }
   ],
   "warp_events": [

@@ -951,6 +951,59 @@ leve um time completo.
 
 ---
 
+## Bloco F11 — Ato 7, epílogo e pós-história (Parte 16)
+
+`Story… → 12 Glastrier caught` (ou 13) e o corcel no time (`Give X… → Pokémon`, 896 ou 897).
+O epílogo e o pós-história também saem de `Story… → 14` e `→ 15`. Para os dias da semana,
+`Clock… → +24 hours`: ter/qui Bugsy, sex Avery, sáb/dom banquinha.
+
+### T106 · Ato 7 sem o corcel
+- **Esperado:** de noite, Peony (22,38) e Calyrex (23,39); falando com eles, o jogador vai
+  à porta e o Calyrex: “Where is my steed? / Bring him to me.”
+
+### T107 · A prova
+- **Esperado:** com o corcel: Peony (“Chum, that's a KING…”), clarão, “You found him.”, a
+  fala do corcel (Glastrier ou Spectrier), “Good. Now a king must know…” e a batalha com
+  o time do Peony (“Pokémon Trainer Calyrex”).
+
+### T108 · Perder a prova
+- **Esperado:** “Not tonight. / Rest, and come back…”, sem whiteout; falar de novo repete.
+
+### T109 · Vencer a prova e o Rei
+- **Esperado:** “Yes. You are the one the field remembers.”, o Peony acorda, “Show me
+  yours.” e o Calyrex Lv65. Fugir/derrotar: “The king steps back among the leaves…”. Bolsa
+  sem espaço para as Reins: uma fala e nada de batalha.
+
+### T110 · Captura, a Laurel e as Reins
+- **Esperado:** a Laurel sai da porta até o Peony, as falas da avó, as Reins of Unity, o
+  Peony (“Grand!…”), recarga com a horta madura; estado 14; a Enigma no Livro.
+
+### T111 · O epílogo
+- **Esperado:** a primeira manhã depois, o Bram: “She sang…”, “The patch by the door's
+  yours too now…”, Kurt, “Peony and the girl went home at sunrise…”; recarga: estado 15,
+  nível 5, Peony fora, o canteiro da Laurel é árvore de novo.
+
+### T112 · O nome, a Enigma e o 66
+- **Esperado:** a Laurel: “{PLAYER}. / …What? I know your name…” e a carta da Honey; depois
+  “Leave my plot empty and it grows his Berry back…”. Com o Livro em 66 o Bram dá o título
+  depois dos marcos; a Laurel: “Sixty-six. All of them but his…” (ou o nome, se o 66 vier
+  antes do epílogo).
+
+### T113 · Avery às sextas
+- **Esperado:** sexta de dia em (23,39): linha do dia e convite; com o Calyrex no time, a cena
+  com a Laurel; batalha (sem whiteout), uma por dia; vitória dá 1 berry rara do Livro.
+
+### T114 · O Calyrex no canteiro
+- **Esperado:** de noite, com o Calyrex no time, uma fala dele (banco N) antes do menu da
+  árvore do canteiro da Laurel.
+
+### T115 · Lago, Mustard e Team Mulch
+- **Esperado:** noites de fim de semana: Peony (31,39) e Peonia (31,38) no lago, falas e
+  batalhas. Domingo de manhã, 1 em 4: o Mustard (26,44), banco S e batalha. Dias de fim de
+  semana: Peonia (25,41) na banquinha e a dupla com a Tilly (2 Pokémon), uma por dia.
+
+---
+
 ## Bloco G — Regressão fora da horta
 
 ### T39 · Plaquinhas de nome em outras cenas

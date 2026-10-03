@@ -65,6 +65,9 @@ u16 GardenPlots_HaveEnigma(void);
 u16 GardenPests_FamiliesCaught(void);
 u16 GardenPest_LastSpecies(void);
 void GardenKingsPlot_Empty(void);
+u8 GardenKingsPlot_Yield(const struct BerryTree *tree, u8 yield);
+u16 GardenTree_IsKingsPlot(void);
+u16 BerryLedger_HasTitle(void);
 
 // Story places in another light (parts 14-15): src/fieldmap.c and
 // src/overworld.c tint the map palettes while MapTint_Mode() is not NONE.

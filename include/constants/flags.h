@@ -2099,7 +2099,9 @@
 #define FLAG_TEMP_HIDE_SPECTRIER                FLAG_TEMP_12 // Route30: Act 2's night visitor (part 12)
 #define FLAG_TEMP_HIDE_PEONY                    FLAG_TEMP_13 // Route30 and house: Peony, the guest (part 13)
 #define FLAG_TEMP_HIDE_PEONIA                   FLAG_TEMP_14 // Route30 and house: Peonia
-#define FLAG_TEMP_HIDE_CALYREX                  FLAG_TEMP_15 // Route30: Act 5 only
+#define FLAG_TEMP_HIDE_CALYREX                  FLAG_TEMP_15 // Route30: Act 5 and Act 7 (parts 13, 16)
+#define FLAG_TEMP_HIDE_AVERY                    FLAG_TEMP_16 // Route30: Avery, Fridays after the story (part 16)
+#define FLAG_TEMP_HIDE_MUSTARD                  FLAG_TEMP_17 // Route30: Mustard, a rare Sunday morning (part 16)
 
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000

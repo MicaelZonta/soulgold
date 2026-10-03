@@ -212,10 +212,16 @@ void GardenToday_Mark(u32 bit)
 
 static void FinishGardenWork(void);
 
+#define MUSTARD_ONE_IN  4   // Mustard: 1 Sunday morning in 4 after the story (section 14.3)
 #define KLARA_ONE_IN  7   // mornings (section 14.3)
+
+static bool32 GardenStory_Has(u32 id);
+static void GardenStory_Set(u32 id);
 
 void GardenRollDay(void)
 {
+    u32 state = VarGet(VAR_HARVEST_KING);
+
     if (FlagGet(FLAG_DAILY_GARDEN_NEW_DAY))
         return;
 
@@ -225,10 +231,19 @@ void GardenRollDay(void)
     // Act 5b: a carrot seed planted yesterday (or earlier) can be pulled tonight.
     if (VarGet(VAR_GARDEN_NEWS) & (1 << (9 + GARDEN_STORY_CARROT_PLANTED)))
         VarSet(VAR_GARDEN_NEWS, VarGet(VAR_GARDEN_NEWS) | (1 << (9 + GARDEN_STORY_CARROT_READY)));
+    // Part 16: the morning after Act 7 is the epilogue's.
+    if (state == HARVEST_KING_ACT7_DONE)
+        GardenStory_Set(GARDEN_STORY_EPILOGUE_READY);
+    // After the story Laurel's plot, if it was left empty, grows the Enigma
+    // back by itself (section 3.5): the one daily source of the Enigma.
+    if (state >= HARVEST_KING_GUESTS_LEAVE
+     && GetBerryTreeInfo(BERRY_TREE_KINGS_PLOT)->stage == BERRY_STAGE_NO_BERRY)
+        PlantBerryTree(BERRY_TREE_KINGS_PLOT, ItemIdToBerryType(ITEM_ENIGMA_BERRY), BERRY_STAGE_PLANTED, TRUE);
 
-    // The day's draws, once each:
-    //   Mustard, 1 Sunday in 4, story state 15 (part 16)          -> GARDEN_TODAY_MUSTARD_COMES
-    if (VarGet(VAR_BERRY_GARDEN_LEVEL) >= GARDEN_LEVEL_PROPER && Random() % KLARA_ONE_IN == 0)
+    // The day's draws, once each; Mustard and Klara never on the same morning.
+    if (state >= HARVEST_KING_GUESTS_LEAVE && GetDayOfWeek() == WEEKDAY_SUN && Random() % MUSTARD_ONE_IN == 0)
+        GardenToday_Mark(GARDEN_TODAY_MUSTARD_COMES);
+    else if (VarGet(VAR_BERRY_GARDEN_LEVEL) >= GARDEN_LEVEL_PROPER && Random() % KLARA_ONE_IN == 0)
         GardenToday_Mark(GARDEN_TODAY_KLARA_COMES);
 }
 
@@ -824,14 +839,24 @@ u32 GardenCast_PlaceOf(u32 who, u32 period, u32 weekday, bool32 tutorialDone, u3
     // Guests from Act 5 to the epilogue (section 14.2): Peony helps Bram in
     // the mornings and sleeps off Galar's hours in the house; Peonia keeps
     // Laurel company in the mornings and waits in the garden by day.
+    // After the story (part 16, section 13.4) they camp by the pond on weekend
+    // nights, and Peonia helps at Tilly's stall on weekend days.
     case GARDEN_CAST_PEONY:
-        if (harvestKing < HARVEST_KING_KING_CAME || harvestKing >= HARVEST_KING_GUESTS_LEAVE)
+        if (harvestKing >= HARVEST_KING_GUESTS_LEAVE)
+            return (IsWeekend(weekday) && period == GARDEN_PERIOD_NIGHT) ? GARDEN_PLACE_GARDEN : GARDEN_PLACE_AWAY;
+        if (harvestKing < HARVEST_KING_KING_CAME)
             return GARDEN_PLACE_AWAY;
         return period == GARDEN_PERIOD_MORNING ? GARDEN_PLACE_GARDEN : GARDEN_PLACE_HOUSE;
     case GARDEN_CAST_PEONIA:
-        if (harvestKing < HARVEST_KING_KING_CAME || harvestKing >= HARVEST_KING_GUESTS_LEAVE)
+        if (harvestKing >= HARVEST_KING_GUESTS_LEAVE)
+            return (IsWeekend(weekday) && period != GARDEN_PERIOD_MORNING) ? GARDEN_PLACE_GARDEN : GARDEN_PLACE_AWAY;
+        if (harvestKing < HARVEST_KING_KING_CAME)
             return GARDEN_PLACE_AWAY;
         return period == GARDEN_PERIOD_DAY ? GARDEN_PLACE_GARDEN : GARDEN_PLACE_HOUSE;
+    case GARDEN_CAST_AVERY:
+        if (harvestKing >= HARVEST_KING_GUESTS_LEAVE && weekday == WEEKDAY_FRI && period == GARDEN_PERIOD_DAY)
+            return GARDEN_PLACE_GARDEN;
+        return GARDEN_PLACE_AWAY;
     }
     return GARDEN_PLACE_AWAY;
 }
@@ -844,6 +869,8 @@ static const u16 sCastHideFlags[] =
     [GARDEN_CAST_BUGSY]  = FLAG_TEMP_HIDE_BUGSY,
     [GARDEN_CAST_PEONY]  = FLAG_TEMP_HIDE_PEONY,
     [GARDEN_CAST_PEONIA] = FLAG_TEMP_HIDE_PEONIA,
+    [GARDEN_CAST_AVERY]  = FLAG_TEMP_HIDE_AVERY,
+    [GARDEN_CAST_MUSTARD] = FLAG_TEMP_HIDE_MUSTARD,
 };
 
 // ON_TRANSITION of Route30 and Route30_House, before anything spawns: freezes
@@ -1346,14 +1373,31 @@ u16 GardenTilly_PrizeMulch(void)
 #define STORY_SHIFT  9   // VAR_GARDEN_NEWS bits 9..15 (GARDEN_STORY_*)
 
 // VAR_0x8004 = GARDEN_STORY_*: TRUE if that one-time line was already said.
+// GARDEN_STORY_* below GARDEN_STORY_COUNT live in VAR_GARDEN_NEWS (bits 9..15),
+// the rest in VAR_GARDEN_STORY2 (part 16).
+static bool32 GardenStory_Has(u32 id)
+{
+    if (id < GARDEN_STORY_COUNT)
+        return (VarGet(VAR_GARDEN_NEWS) >> (STORY_SHIFT + id)) & 1;
+    return (VarGet(VAR_GARDEN_STORY2) >> (id - GARDEN_STORY_COUNT)) & 1;
+}
+
+static void GardenStory_Set(u32 id)
+{
+    if (id < GARDEN_STORY_COUNT)
+        VarSet(VAR_GARDEN_NEWS, VarGet(VAR_GARDEN_NEWS) | (1 << (STORY_SHIFT + id)));
+    else
+        VarSet(VAR_GARDEN_STORY2, VarGet(VAR_GARDEN_STORY2) | (1 << (id - GARDEN_STORY_COUNT)));
+}
+
 u16 GardenStory_Check(void)
 {
-    return (VarGet(VAR_GARDEN_NEWS) >> (STORY_SHIFT + gSpecialVar_0x8004)) & 1;
+    return GardenStory_Has(gSpecialVar_0x8004);
 }
 
 void GardenStory_Mark(void)
 {
-    VarSet(VAR_GARDEN_NEWS, VarGet(VAR_GARDEN_NEWS) | (1 << (STORY_SHIFT + gSpecialVar_0x8004)));
+    GardenStory_Set(gSpecialVar_0x8004);
 }
 
 // Story places told in another light (parts 14 and 15). Every map palette of
@@ -1484,9 +1528,15 @@ static void GardenCast_ApplyStory(u32 here, u32 period)
                        && GardenKingsPlot_Stage() >= BERRY_STAGE_SPROUTED;
     bool32 kingCame = state == HARVEST_KING_FIRST_LEAF && period == GARDEN_PERIOD_NIGHT
                    && GardenKingsPlot_Stage() == BERRY_STAGE_BERRIES;
+    // Act 7 (part 16): every night once a steed is caught, Calyrex and Peony
+    // wait at Laurel's plot, as in Act 5.
+    bool32 act7 = (state == HARVEST_KING_GLASTRIER || state == HARVEST_KING_SPECTRIER)
+               && period == GARDEN_PERIOD_NIGHT;
 
     if (here == GARDEN_PLACE_HOUSE)
     {
+        if (act7)
+            FlagSet(FLAG_TEMP_HIDE_PEONY);
         // Act 4: she is out at her plot all day.
         if (laurelKneels)
             FlagSet(FLAG_TEMP_HIDE_LAUREL);
@@ -1501,9 +1551,10 @@ static void GardenCast_ApplyStory(u32 here, u32 period)
     }
     // Act 5: Peony kneeling west of Laurel's plot (22,38), Calyrex south of it
     // (23,39), both looking at the ripe Enigma. Peonia comes in the scene.
-    if (kingCame)
+    if (kingCame || act7)
     {
         FlagClear(FLAG_TEMP_HIDE_PEONY);
+        FlagClear(FLAG_TEMP_HIDE_CALYREX);
         FlagSet(FLAG_TEMP_HIDE_PEONIA);
         SetObjEventTemplateCoords(LOCALID_ROUTE30_PEONY, 22, 38);
         SetObjEventTemplateMovementType(LOCALID_ROUTE30_PEONY, MOVEMENT_TYPE_FACE_RIGHT);
@@ -1526,6 +1577,29 @@ static void GardenCast_ApplyStory(u32 here, u32 period)
         SetObjEventTemplateCoords(LOCALID_ROUTE30_LAUREL, 23, 39);
         SetObjEventTemplateMovementType(LOCALID_ROUTE30_LAUREL, MOVEMENT_TYPE_FACE_UP);
     }
+    // After the story (part 16). Peony camps on the pond's west bank (31,39)
+    // looking at the water, Peonia beside him (31,38); by day she is at Tilly's
+    // stall, east of her (25,41). Avery stands where Calyrex used to, south of
+    // Laurel's plot (23,39). Mustard turns up beside Bram (26,44) on his
+    // Sunday morning. None of these tiles is a plot's only way in
+    // (dev_scripts/berry_garden_access_check.py checks the table).
+    if (state >= HARVEST_KING_GUESTS_LEAVE)
+    {
+        SetObjEventTemplateCoords(LOCALID_ROUTE30_PEONY, 31, 39);
+        SetObjEventTemplateMovementType(LOCALID_ROUTE30_PEONY, MOVEMENT_TYPE_FACE_RIGHT);
+        if (period == GARDEN_PERIOD_NIGHT)
+        {
+            SetObjEventTemplateCoords(LOCALID_ROUTE30_PEONIA, 31, 38);
+            SetObjEventTemplateMovementType(LOCALID_ROUTE30_PEONIA, MOVEMENT_TYPE_FACE_DOWN);
+        }
+        else
+        {
+            SetObjEventTemplateCoords(LOCALID_ROUTE30_PEONIA, 25, 41);
+            SetObjEventTemplateMovementType(LOCALID_ROUTE30_PEONIA, MOVEMENT_TYPE_FACE_DOWN);
+        }
+        if (period == GARDEN_PERIOD_MORNING && GardenToday_Has(GARDEN_TODAY_MUSTARD_COMES))
+            FlagClear(FLAG_TEMP_HIDE_MUSTARD);
+    }
 }
 
 // Debug: the story state (VAR_0x8004) and the one-time lines that come before it.
@@ -1545,8 +1619,42 @@ void BerryDebug_SetStory(void)
         AddBagItem(ITEM_ICEROOT_CARROT, 1);
     if (gSpecialVar_0x8004 == HARVEST_KING_SHADEROOT && !CheckBagHasItem(ITEM_SHADEROOT_CARROT, 1))
         AddBagItem(ITEM_SHADEROOT_CARROT, 1);
+    // 12+ (part 16): the steed's path is behind, the carrots eaten; 12 and 14
+    // are the white path, 13 the dark one.
+    if (gSpecialVar_0x8004 >= HARVEST_KING_GLASTRIER)
+    {
+        RemoveBagItem(ITEM_ICEROOT_CARROT, 1);
+        RemoveBagItem(ITEM_SHADEROOT_CARROT, 1);
+        if (gSpecialVar_0x8004 != HARVEST_KING_SPECTRIER)
+            news |= 1 << (STORY_SHIFT + GARDEN_STORY_WHITE_PATH);
+    }
+    if (gSpecialVar_0x8004 >= HARVEST_KING_GUESTS_LEAVE)
+        VarSet(VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_KINGS);
+    VarSet(VAR_GARDEN_STORY2, 0);
     VarSet(VAR_GARDEN_NEWS, news);
     VarSet(VAR_HARVEST_KING, gSpecialVar_0x8004);
+}
+
+// King's Garden (garden level 5, section 5, part 16): Laurel's plot gives
+// double. src/berry.c (CalcBerryYield) asks; the yield field holds up to 31.
+u8 GardenKingsPlot_Yield(const struct BerryTree *tree, u8 yield)
+{
+    if (tree == GetBerryTreeInfo(BERRY_TREE_KINGS_PLOT) && VarGet(VAR_BERRY_GARDEN_LEVEL) >= GARDEN_LEVEL_KINGS)
+        return yield * 2 > 31 ? 31 : yield * 2;
+    return yield;
+}
+
+// The Berry tree the player is talking to is Laurel's plot (part 16: Calyrex's
+// line before the Berry menu, bank N).
+u16 GardenTree_IsKingsPlot(void)
+{
+    return GetObjectEventBerryTreeId(gSelectedObjectEvent) == BERRY_TREE_KINGS_PLOT;
+}
+
+// The Book's 66 (section 3.4): every Berry but the Enigma is in it.
+u16 BerryLedger_HasTitle(void)
+{
+    return BerryLedger_Count() - BerryLedger_Has(ITEM_ENIGMA_BERRY) >= BERRY_LEDGER_TITLE_COUNT;
 }
 
 // Debug: an Enigma in Laurel's plot, just sprouted (Act 4) or, with

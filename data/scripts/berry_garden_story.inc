@@ -121,6 +121,8 @@ BerryGarden_EventScript_SceneOnLoad::
 	goto_if_ne VAR_0x8005, 40, BerryGarden_EventScript_SceneOnLoadEnd
 	lockall
 	goto_if_eq VAR_HARVEST_KING, HARVEST_KING_FIRST_LEAF, BerryGarden_EventScript_KingCameScene
+	goto_if_eq VAR_HARVEST_KING, HARVEST_KING_GLASTRIER, BerryGarden_EventScript_Act7Scene
+	goto_if_eq VAR_HARVEST_KING, HARVEST_KING_SPECTRIER, BerryGarden_EventScript_Act7Scene
 	goto BerryGarden_EventScript_NightVisitorScene
 
 BerryGarden_EventScript_SceneOnLoadEnd::
@@ -185,6 +187,9 @@ BerryGarden_EventScript_BramWakes::
 @ ---------------------------------------------------------------------------
 BerryGarden_EventScript_LaurelStory::
 	setvar VAR_RESULT, FALSE
+	@ Part 16: her name for the player, the Book's 66, the Enigma (once each).
+	call BerryGarden_EventScript_LaurelAfterStory
+	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_StoryEnd
 	call_if_eq VAR_HARVEST_KING, HARVEST_KING_BRAM_TOLD, BerryGarden_EventScript_LaurelNotebookCheck
 	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_StoryEnd
 	call_if_eq VAR_HARVEST_KING, HARVEST_KING_NOTEBOOK, BerryGarden_EventScript_LaurelEnigmaAgain
@@ -339,10 +344,35 @@ BerryGarden_EventScript_LaurelLetter::
 	case 0, BerryGarden_EventScript_Letter0
 	case 1, BerryGarden_EventScript_Letter1
 	case 2, BerryGarden_EventScript_Letter2
+	case 3, BerryGarden_EventScript_LetterSonia
 	case 4, BerryGarden_EventScript_Letter4
 	case 5, BerryGarden_EventScript_Letter5
 	case 6, BerryGarden_EventScript_Letter6
+	case 7, BerryGarden_EventScript_Letter7
+	case 8, BerryGarden_EventScript_Letter8
+	case 9, BerryGarden_EventScript_LetterSonia
 	goto BerryGarden_EventScript_LaurelMorningLine
+
+@ Part 16: Sonia from Act 5 on (3 and 9), 8 and 9 after the story; reading 8
+@ (Freezington's statue) unlocks Calyrex's line about it (bank N).
+BerryGarden_EventScript_LetterSonia::
+	goto_if_lt VAR_HARVEST_KING, HARVEST_KING_KING_CAME, BerryGarden_EventScript_LaurelMorningLine
+	goto_if_eq VAR_RESULT, 9, BerryGarden_EventScript_Letter9
+	msgbox BerryGarden_Text_Letter3, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Letter9::
+	msgbox BerryGarden_Text_Letter9, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Letter7::
+	goto_if_lt VAR_HARVEST_KING, HARVEST_KING_GUESTS_LEAVE, BerryGarden_EventScript_LaurelMorningLine
+	setvar VAR_0x8004, GARDEN_STORY_STATUE_LETTER
+	special GardenStory_Mark
+	msgbox BerryGarden_Text_Letter7, MSGBOX_DEFAULT
+	return
+BerryGarden_EventScript_Letter8::
+	goto_if_lt VAR_HARVEST_KING, HARVEST_KING_GUESTS_LEAVE, BerryGarden_EventScript_LaurelMorningLine
+	msgbox BerryGarden_Text_Letter8, MSGBOX_DEFAULT
+	return
 BerryGarden_EventScript_Letter0::
 	msgbox BerryGarden_Text_Letter0, MSGBOX_DEFAULT
 	return
@@ -563,6 +593,9 @@ BerryGarden_EventScript_PeonyGarden::
 	special GardenRollDay
 	setvar VAR_0x8004, GARDEN_HEARTS_PEONY
 	specialvar VAR_0x800B, GardenHearts_Talk
+	@ The watering line is the guest's (states 9..14); after the story, by
+	@ the pond, his line of the day.
+	call_if_ge VAR_HARVEST_KING, HARVEST_KING_GUESTS_LEAVE, BerryGarden_EventScript_PeonyNotGuest
 	call_if_eq VAR_0x800B, TRUE, BerryGarden_EventScript_PeonyWatering
 	call_if_ne VAR_0x800B, TRUE, BerryGarden_EventScript_PeonyLine
 	call BerryGarden_EventScript_PeonyBattle
@@ -572,6 +605,10 @@ BerryGarden_EventScript_PeonyGarden::
 
 BerryGarden_EventScript_PeonyWatering::
 	msgbox BerryGarden_Text_PeonyWatering, MSGBOX_DEFAULT
+	return
+
+BerryGarden_EventScript_PeonyNotGuest::
+	setvar VAR_0x800B, FALSE
 	return
 
 BerryGarden_EventScript_PeonyBattle::
@@ -648,6 +685,9 @@ BerryGarden_EventScript_PeoniaPacking::
 BerryGarden_EventScript_PeoniaGarden::
 	lock
 	faceplayer
+	dotimebasedevents
+	special GardenRollDay
+	goto_if_ge VAR_HARVEST_KING, HARVEST_KING_GUESTS_LEAVE, BerryGarden_EventScript_PeoniaAfter
 	msgbox BerryGarden_Text_PeoniaWaiting, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -701,6 +741,7 @@ BerryGarden_EventScript_PeonyLine::
 	case 3, BerryGarden_EventScript_PeonyK3
 	case 4, BerryGarden_EventScript_PeonyK4
 	case 5, BerryGarden_EventScript_PeonyK5
+	case 6, BerryGarden_EventScript_PeonyK6Check
 	case 7, BerryGarden_EventScript_PeonyK7
 	case 8, BerryGarden_EventScript_PeonyK8
 	case 9, BerryGarden_EventScript_PeonyK9
@@ -720,6 +761,11 @@ BerryGarden_EventScript_PeonyK4::
 	return
 BerryGarden_EventScript_PeonyK5::
 	msgbox BerryGarden_Text_PeonyK5, MSGBOX_DEFAULT
+	return
+@ Line 7 only after the story (14.4 K).
+BerryGarden_EventScript_PeonyK6Check::
+	goto_if_lt VAR_HARVEST_KING, HARVEST_KING_GUESTS_LEAVE, BerryGarden_EventScript_PeonyK1
+	msgbox BerryGarden_Text_PeonyK6, MSGBOX_DEFAULT
 	return
 BerryGarden_EventScript_PeonyK7::
 	msgbox BerryGarden_Text_PeonyK7, MSGBOX_DEFAULT

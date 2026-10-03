@@ -526,16 +526,16 @@
 #define TRAINER_THOM_AND_KAE    520
 #define TRAINER_DUFF_AND_EDA    521
 #define TRAINER_BRASS_TOMO    522  // Berry Master, the Brass Tower memory (part 15); was TRAINER_UNUSED_401 (Brendan Route 119 Mudkip)
-#define TRAINER_UNUSED_407   523  // Former TRAINER_BRENDAN_ROUTE_103_TREECKO; Route 103 legacy trigger removed.
-#define TRAINER_UNUSED_396   524  // Former TRAINER_BRENDAN_ROUTE_110_TREECKO; Route 110 legacy trigger removed.
-#define TRAINER_UNUSED_402   525  // Former TRAINER_BRENDAN_ROUTE_119_TREECKO; Route 119 legacy trigger removed.
-#define TRAINER_UNUSED_408   526  // Former TRAINER_BRENDAN_ROUTE_103_TORCHIC; Route 103 legacy trigger removed.
-#define TRAINER_UNUSED_397   527  // Former TRAINER_BRENDAN_ROUTE_110_TORCHIC; Route 110 legacy trigger removed.
-#define TRAINER_UNUSED_403   528  // Former TRAINER_BRENDAN_ROUTE_119_TORCHIC; Route 119 legacy trigger removed.
-#define TRAINER_UNUSED_409        529  // Former TRAINER_MAY_ROUTE_103_MUDKIP; Route 103 legacy trigger removed.
-#define TRAINER_UNUSED_398        530  // Former TRAINER_MAY_ROUTE_110_MUDKIP; Route 110 legacy trigger removed.
-#define TRAINER_UNUSED_404        531  // Former TRAINER_MAY_ROUTE_119_MUDKIP; Route 119 legacy trigger removed.
-#define TRAINER_UNUSED_410       532  // Former TRAINER_MAY_ROUTE_103_TREECKO; Route 103 legacy trigger removed.
+#define TRAINER_HARVEST_KING_TRIAL  523  // Berry Master (part 16); was TRAINER_UNUSED_407 (Former TRAINER_BRENDAN_ROUTE_103_TREECKO; Route 103 legacy trigger removed.)
+#define TRAINER_GARDEN_AVERY_1  524  // Berry Master (part 16); was TRAINER_UNUSED_396 (Former TRAINER_BRENDAN_ROUTE_110_TREECKO; Route 110 legacy trigger removed.)
+#define TRAINER_GARDEN_AVERY_2  525  // Berry Master (part 16); was TRAINER_UNUSED_402 (Former TRAINER_BRENDAN_ROUTE_119_TREECKO; Route 119 legacy trigger removed.)
+#define TRAINER_GARDEN_AVERY_3  526  // Berry Master (part 16); was TRAINER_UNUSED_408 (Former TRAINER_BRENDAN_ROUTE_103_TORCHIC; Route 103 legacy trigger removed.)
+#define TRAINER_GARDEN_PEONIA_1  527  // Berry Master (part 16); was TRAINER_UNUSED_397 (Former TRAINER_BRENDAN_ROUTE_110_TORCHIC; Route 110 legacy trigger removed.)
+#define TRAINER_GARDEN_PEONIA_2  528  // Berry Master (part 16); was TRAINER_UNUSED_403 (Former TRAINER_BRENDAN_ROUTE_119_TORCHIC; Route 119 legacy trigger removed.)
+#define TRAINER_GARDEN_PEONIA_3  529  // Berry Master (part 16); was TRAINER_UNUSED_409 (Former TRAINER_MAY_ROUTE_103_MUDKIP; Route 103 legacy trigger removed.)
+#define TRAINER_GARDEN_TILLY_DUO  530  // Berry Master (part 16); was TRAINER_UNUSED_398 (Former TRAINER_MAY_ROUTE_110_MUDKIP; Route 110 legacy trigger removed.)
+#define TRAINER_GARDEN_PEONIA_DUO  531  // Berry Master (part 16); was TRAINER_UNUSED_404 (Former TRAINER_MAY_ROUTE_119_MUDKIP; Route 119 legacy trigger removed.)
+#define TRAINER_GARDEN_MUSTARD  532  // Berry Master (part 16); was TRAINER_UNUSED_410 (Former TRAINER_MAY_ROUTE_103_TREECKO; Route 103 legacy trigger removed.)
 #define TRAINER_UNUSED_399       533  // Former TRAINER_MAY_ROUTE_110_TREECKO; Route 110 legacy trigger removed.
 #define TRAINER_UNUSED_405       534  // Former TRAINER_MAY_ROUTE_119_TREECKO; Route 119 legacy trigger removed.
 #define TRAINER_UNUSED_411       535  // Former TRAINER_MAY_ROUTE_103_TORCHIC; Route 103 legacy trigger removed.

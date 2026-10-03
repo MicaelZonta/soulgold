@@ -731,6 +731,8 @@ gSpecials::
 	def_special BerryDebug_KlaraComes
 	def_special GardenStory_Check
 	def_special GardenStory_Mark
+	def_special GardenTree_IsKingsPlot
+	def_special BerryLedger_HasTitle
 	def_special GardenKingsPlot_Stage
 	def_special GardenPlots_HaveEnigma
 	def_special GardenPests_FamiliesCaught

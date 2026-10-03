@@ -1578,6 +1578,61 @@ Spectrier.
 dois caminhos; a Enigma volta depois de colhida; uma semana inteira de pós-história no
 relógio contando objetos.
 
+### Parte 16 — feita (03/10/2026)
+
+**Entregue:** o Ato 7 (a prova do Rei pelo corpo do Peony e o Calyrex Lv65, estado 14), o
+epílogo (estado 15, horta nível 5), a cena única do nome da Laurel (`LaurelSaysName`, na
+primeira entre o epílogo e o marco 66), o título 66 do Bram, a Enigma que renasce no
+canteiro da Laurel, a colheita dobrada dele, e a horta depois da história: Avery às
+sextas (banco J, batalha), Peony e Peonia no lago nas noites de fim de semana (bancos K e
+L, batalhas), Peonia na banquinha da Tilly e a dupla “Team Mulch”, Mustard num domingo
+sorteado (1 em 4, banco S, batalha sem Urshifu), o Calyrex no canteiro de noite (banco N)
+e as cartas que faltavam (Sonia ×2, a estátua de Freezington, Honey 9). 10 treinadores
+novos, IDs **523–532** (`TRAINER_HARVEST_KING_TRIAL`, `TRAINER_GARDEN_AVERY_1..3`,
+`_PEONIA_1..3`, `_TILLY_DUO`, `_PEONIA_DUO`, `_MUSTARD`; eram `TRAINER_UNUSED_*` do bloco
+livre 522–537), todos com escala sempre ligada. Var nova **`VAR_GARDEN_STORY2` (0x4130)**:
+as marcas de uma vez a partir da oitava (`GARDEN_STORY_EPILOGUE_READY`, `_LAUREL_NAME`,
+`_TITLE_66`, `_LAUREL_66`, `_ENIGMA_TOLD`, `_STATUE_LETTER`), pelos mesmos specials
+`GardenStory_Check/Mark`. `FLAG_TEMP_16/17` = Avery e Mustard. Objetos 43 (Avery,
+`PSYCHIC_M`) e 44 (Mustard, `BLACK_BELT`, substituto) na Route 30. Debug `Story… → 12, 13,
+14, 15`. 4 testes de C novos (59/59).
+
+**Onde está:** `data/scripts/berry_garden_epilogue.inc` (arquivo novo; textos gerados por
+`p16/gen_texts.py` no scratchpad, com quebra por pixel); ganchos em
+`berry_garden_story.inc` (cena da porta, `LaurelStory`, cartas, Peony/Peonia),
+`Route30_House` (epílogo e título no Bram), `berry_tree.inc` (banco N) e `Route30`
+(canteiro da Laurel visível a partir do 15). C: `GardenRollDay` (epílogo, Enigma, Mustard),
+`GardenCast_PlaceOf/ApplyStory` (Ato 7 e pós-história), `GardenKingsPlot_Yield` (chamado em
+`CalcBerryYield`), `GardenTree_IsKingsPlot`, `BerryLedger_HasTitle`.
+
+**Decisões:**
+1. **Ato 7 pela porta**, como o Ato 5: Peony (22,38) e Calyrex (23,39) toda noite nos
+   estados 12/13; falar com eles leva à porta e a cena toca na recarga. Sem o corcel: só a
+   fala. O corcel não “sai da bola” (sem objeto extra; fica para evoluir).
+2. **A prova pode ser repetida na hora** (o design dizia “na próxima noite”): perder cura e
+   deixa tentar de novo; vencida, a flag de treinador fica e a próxima noite vai direto ao
+   Rei. A Laurel só sai de casa depois da captura (orçamento do §13.3).
+3. **A colheita farta** é o `RipenGardenTrees` (o do debug) sob o fade da recarga final,
+   para nenhuma árvore mudar à vista (o brilho que corrompia sprites, Parte 11).
+4. **Epílogo** na primeira conversa com o Bram em qualquer manhã do estado 14 (o Ato 7 só
+   acontece de noite) ou, de tarde, depois que o dia virou. Corrigido no teste: com o Ato 7
+   depois da meia-noite, “a manhã seguinte” é o mesmo dia do calendário.
+5. **O nome** (`LaurelSaysName`) toca na primeira conversa com a Laurel depois do epílogo
+   **ou** do título 66, o que vier primeiro; a carta da Honey vem junto quando é o epílogo;
+   o outro evento ganha a fala própria (“Sixty-six. All of them but his…”). O título 66 é do
+   Bram, depois dos marcos, só em casa/horta onde ele paga os marcos.
+6. **A Enigma** renasce no `GardenRollDay` (canteiro vazio no dia novo → Enigma plantada),
+   sem a regeneração das árvores de rota. A colheita dobrada para em 31 (o campo tem 5 bits).
+7. **Peonia** não escolhe “Dad ou Me”: de noite a batalha é a dela; o Peony tem a dele. De
+   dia, na banquinha, a dupla com a Tilly (precisa de 2 Pokémon; senão uma fala).
+8. **Prêmio do Mustard**: Exp. Candy L como substituto (`@ SKELETON`, pendência 2 do autor).
+   Avery dá 1 berry rara do Livro; Peonia 2 Growth Mulch; a dupla 1 Surprise Mulch.
+9. **Sprites substitutos**: Avery `PSYCHIC_M`, Mustard `BLACK_BELT`.
+
+**QA no jogo (headless, 03/10):** T106–T115 (bloco F11). **Não jogado:** a Enigma renascendo e
+a colheita dobrada no jogo (cobertas por teste de C), as cartas novas, as vitórias de
+verdade contra Avery/Peonia/Mustard/dupla (falas de vitória e prêmios).
+
 ---
 
 ## Parte 17 — Fechamento

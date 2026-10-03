@@ -20620,3 +20620,349 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Crunch
 - Nasty Plot
 - Sludge Bomb
+
+=== TRAINER_HARVEST_KING_TRIAL ===
+Name: Calyrex
+Class: Pkmn Trainer 1
+Pic: Hiker
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Copperajah
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Iron Head
+- Heavy Slam
+- Play Rough
+- Stealth Rock
+
+Aggron
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Iron Head
+- Rock Slide
+- Earthquake
+- Iron Defense
+
+Excadrill
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Iron Head
+- Earthquake
+- Rock Slide
+- Swords Dance
+
+Corviknight
+Level: 44
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Brave Bird
+- Iron Head
+- Bulk Up
+- Roost
+
+=== TRAINER_GARDEN_AVERY_1 ===
+Name: Avery
+Class: Psychic
+Pic: Psychic M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Slowking Galar
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Sludge Bomb
+- Psychic
+- Flamethrower
+- Slack Off
+
+Alakazam
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Psychic
+- Shadow Ball
+- Focus Blast
+- Calm Mind
+
+Swoobat
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Psychic
+- Air Slash
+- Calm Mind
+- Heat Wave
+
+=== TRAINER_GARDEN_AVERY_2 ===
+Name: Avery
+Class: Psychic
+Pic: Psychic M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Slowking Galar
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Sludge Bomb
+- Psychic
+- Flamethrower
+- Slack Off
+
+Espathra
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Lumina Crash
+- Dazzling Gleam
+- Calm Mind
+- Roost
+
+Gardevoir
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Psychic
+- Moonblast
+- Calm Mind
+- Thunderbolt
+
+=== TRAINER_GARDEN_AVERY_3 ===
+Name: Avery
+Class: Psychic
+Pic: Psychic M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Slowking Galar
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Sludge Bomb
+- Psychic
+- Flamethrower
+- Slack Off
+
+Bronzong
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Psychic
+- Flash Cannon
+- Trick Room
+- Hypnosis
+
+Hatterene
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Psychic
+- Dazzling Gleam
+- Mystical Fire
+- Calm Mind
+
+=== TRAINER_GARDEN_PEONIA_1 ===
+Name: Peonia
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Mr Rime
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Freeze-Dry
+- Psychic
+- Rapid Spin
+- Slack Off
+
+Frosmoth
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Ice Beam
+- Bug Buzz
+- Quiver Dance
+- Hurricane
+
+Eiscue
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Icicle Crash
+- Zen Headbutt
+- Belly Drum
+- Liquidation
+
+=== TRAINER_GARDEN_PEONIA_2 ===
+Name: Peonia
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Mr Rime
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Freeze-Dry
+- Psychic
+- Rapid Spin
+- Slack Off
+
+Darmanitan-Galar
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Icicle Crash
+- Flare Blitz
+- U-turn
+- Earthquake
+
+Arctozolt
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Bolt Beak
+- Icicle Crash
+- Freeze-Dry
+- Low Kick
+
+=== TRAINER_GARDEN_PEONIA_3 ===
+Name: Peonia
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Mr Rime
+Level: 42
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Freeze-Dry
+- Psychic
+- Rapid Spin
+- Slack Off
+
+Cetitan
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Icicle Crash
+- Earthquake
+- Belly Drum
+- Liquidation
+
+Glalie
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Freeze-Dry
+- Crunch
+- Earthquake
+- Ice Shard
+
+=== TRAINER_GARDEN_TILLY_DUO ===
+Name: Tilly
+Class: Bug Catcher
+Pic: Picnicker
+Gender: Female
+Music: Hg Girl 1
+Double Battle: Yes
+AI: Smart Trainer
+
+Vespiquen
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Attack Order
+- Defend Order
+- Heal Order
+- Air Slash
+
+Crustle
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- X-Scissor
+- Rock Slide
+- Shell Smash
+- Earthquake
+
+=== TRAINER_GARDEN_PEONIA_DUO ===
+Name: Peonia
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Smart Trainer
+
+Mr Rime
+Level: 41
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Freeze-Dry
+- Psychic
+- Rapid Spin
+- Slack Off
+
+Frosmoth
+Level: 40
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Ice Beam
+- Bug Buzz
+- Quiver Dance
+- Hurricane
+
+=== TRAINER_GARDEN_MUSTARD ===
+Name: Mustard
+Class: Black Belt
+Pic: Black Belt
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Luxray
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Wild Charge
+- Crunch
+- Ice Fang
+- Play Rough
+
+Corviknight
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Brave Bird
+- Iron Head
+- Bulk Up
+- Roost
+
+Cloyster
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Icicle Spear
+- Rock Blast
+- Shell Smash
+- Liquidation
+
+Kommo-o
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Close Combat
+- Dragon Claw
+- Poison Jab
+- Swords Dance
+
+Sirfetch'd
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Close Combat
+- Brave Bird
+- Knock Off
+- Swords Dance
+
+Rapidash Galar
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Psychic
+- Dazzling Gleam
+- Megahorn
+- High Horsepower

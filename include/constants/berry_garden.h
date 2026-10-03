@@ -84,6 +84,7 @@
 #define HARVEST_KING_SHADEROOT       11  // Act 5b: the Shaderoot seed planted
 #define HARVEST_KING_GLASTRIER       12  // Act 6, white path: the Glastrier caught in Greenfield (part 14)
 #define HARVEST_KING_SPECTRIER       13  // Act 6, dark path: the Spectrier caught in the Brass Tower (part 15)
+#define HARVEST_KING_ACT7_DONE       14  // Act 7: Calyrex caught, the Reins given (part 16)
 #define HARVEST_KING_GUESTS_LEAVE    15  // Peony and Peonia are guests up to here (14.2)
 
 // One-time story lines (GardenStory_Check / _Mark), said once in the game.
@@ -100,7 +101,15 @@
 #define MAP_TINT_DUSK                2   // the Brass Tower memory, 1F (part 15)
 #define MAP_TINT_FIRE                3   // the Brass Tower memory, roof
 
-#define GARDEN_STORY_COUNT           7
+#define BERRY_LEDGER_TITLE_COUNT     66  // section 3.4: every Berry but the Enigma
+#define GARDEN_STORY_COUNT           7   // the ones in VAR_GARDEN_NEWS; the rest are in VAR_GARDEN_STORY2
+#define GARDEN_STORY_EPILOGUE_READY  7   // a new day came after Act 7: Bram tells the epilogue (part 16)
+#define GARDEN_STORY_LAUREL_NAME     8   // Laurel said the player's name (epilogue or Book 66, whichever first)
+#define GARDEN_STORY_TITLE_66        9   // Bram gave the Book-66 title
+#define GARDEN_STORY_LAUREL_66       10  // Laurel's line about 66 when she had already said the name
+#define GARDEN_STORY_ENIGMA_TOLD     11  // Laurel explained that her plot grows the Enigma back
+#define GARDEN_STORY_STATUE_LETTER   12  // Freezington's statue letter was read (Calyrex's line 6 after it)
+#define GARDEN_STORY_TOTAL           (GARDEN_STORY_COUNT + 16)
 
 // Act 1c: how many garden-only families Bugsy wants caught.
 #define GARDEN_CENSUS_FAMILIES       3
@@ -120,8 +129,10 @@
 #define GARDEN_CAST_LAUREL           1
 #define GARDEN_CAST_TILLY            2
 #define GARDEN_CAST_BUGSY            3
-#define GARDEN_CAST_PEONY            4   // guest, story states 9..14 (part 13)
-#define GARDEN_CAST_PEONIA           5
+#define GARDEN_CAST_PEONY            4   // guest, story states 9..14 (part 13); weekend nights at the pond from 15
+#define GARDEN_CAST_PEONIA           5   // likewise; and Tilly's stall at weekends from 15 (part 16)
+#define GARDEN_CAST_AVERY            6   // Fridays by day, at Laurel's plot, from 15 (part 16)
+#define GARDEN_CAST_MUSTARD          7   // a drawn Sunday morning, from 15: placed by GardenCast_ApplyStory
 
 #define GARDEN_PLACE_AWAY            0
 #define GARDEN_PLACE_GARDEN          1   // Route30
@@ -139,6 +150,8 @@
 #define LOCALID_ROUTE30_PEONY        40  // part 13
 #define LOCALID_ROUTE30_CALYREX      41
 #define LOCALID_ROUTE30_PEONIA       42
+#define LOCALID_ROUTE30_AVERY        43  // part 16
+#define LOCALID_ROUTE30_MUSTARD      44
 #define LOCALID_ROUTE30_KINGS_PLOT   22
 #define LOCALID_HOUSE_PEONY          5
 #define LOCALID_HOUSE_PEONIA         6

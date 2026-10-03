@@ -423,7 +423,12 @@
 // Written by BerryLedger_RegisterHarvest, read by GardenNews_Take
 // (src/berry_garden.c).
 #define VAR_GARDEN_NEWS                                 0x412F
-// PROXIMA VAR NOVA: 0x4130 (livre ate VARS_END 0x42FF). Alocar aqui, em
+// More one-time story marks of the Berry Master (part 16): GARDEN_STORY_* from
+// GARDEN_STORY_COUNT on live here, bit (id - GARDEN_STORY_COUNT). Same
+// specials as VAR_GARDEN_NEWS's (GardenStory_Check / GardenStory_Mark), and
+// GardenRollDay marks the epilogue's morning (src/berry_garden.c).
+#define VAR_GARDEN_STORY2                               0x4130
+// PROXIMA VAR NOVA: 0x4131 (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 

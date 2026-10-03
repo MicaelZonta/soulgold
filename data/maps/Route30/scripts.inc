@@ -139,8 +139,9 @@ Route30_EventScript_GardenVisibility::
 	call_if_lt VAR_BERRY_GARDEN_LEVEL, 2, Route30_EventScript_HideGardenB
 	@ Laurel's plot opens with Act 3 of the story (part 12): the Enigma.
 	call_if_lt VAR_HARVEST_KING, HARVEST_KING_NOTEBOOK, Route30_EventScript_HideKingsPlot
-	@ From Act 5 the plot takes seeds through its sign, not the Berry menu.
-	call_if_ge VAR_HARVEST_KING, HARVEST_KING_KING_CAME, Route30_EventScript_HideKingsPlot
+	@ From Act 5 the plot takes seeds through its sign, not the Berry menu;
+	@ after the story it is a Berry tree again (part 16, King's Garden).
+	call_if_ge VAR_HARVEST_KING, HARVEST_KING_KING_CAME, Route30_EventScript_KingsPlotSeedsOnly
 	@ Who is out here at this hour (part 8, src/berry_garden.c).
 	special GardenCast_Apply
 	@ Klara's morning raid (part 11): in front of a ripe plot, or not here.
@@ -159,6 +160,10 @@ Route30_EventScript_HideKlara::
 
 Route30_EventScript_HideKingsPlot::
 	setflag FLAG_TEMP_HIDE_KINGS_PLOT
+	return
+
+Route30_EventScript_KingsPlotSeedsOnly::
+	call_if_lt VAR_HARVEST_KING, HARVEST_KING_GUESTS_LEAVE, Route30_EventScript_HideKingsPlot
 	return
 
 @ Act 2 (part 12): the visitor is out there tonight - the scene may start on

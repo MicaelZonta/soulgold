@@ -1340,6 +1340,24 @@ Debug_EventScript_BerryStory11::
 	setvar VAR_0x8004, 11
 	goto Debug_EventScript_BerrySetStory
 
+@ 12..15 (part 16): the steed's path behind (12/14 white, 13 dark); 15 also
+@ sets the garden to level 5.
+Debug_EventScript_BerryStory12::
+	setvar VAR_0x8004, 12
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory13::
+	setvar VAR_0x8004, 13
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory14::
+	setvar VAR_0x8004, 14
+	goto Debug_EventScript_BerrySetStory
+
+Debug_EventScript_BerryStory15::
+	setvar VAR_0x8004, 15
+	goto Debug_EventScript_BerrySetStory
+
 Debug_EventScript_BerryStory8::
 	setvar VAR_0x8004, 8
 Debug_EventScript_BerrySetStory::

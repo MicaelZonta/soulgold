@@ -41,6 +41,10 @@ import rota  # noqa: E402
 MAPA = "Route30"
 PORTA = (26, 40)            # o tile de chegada fica logo abaixo do warp (26,39)
 SO_NA_HORA = {"KLARA", "SPECTRIER"}  # de pe na frente de um canteiro so durante a cena
+# Posicoes que o C da (GardenCast_ApplyStory, src/berry_garden.c) depois da
+# historia (parte 16): Peony e Peonia no lago, Peonia na banquinha da Tilly.
+# Entram na conta junto com o elenco fixo.
+POS_DO_C = {"PEONY_LAGO": (31, 39), "PEONIA_LAGO": (31, 38), "PEONIA_BANCA": (25, 41)}
 AREA = (range(22, 34), range(37, 47))
 
 
@@ -59,6 +63,10 @@ def main():
         if pos in bloqueio:
             erros.append(f"{quem} em {pos}: tile bloqueado ou agua")
     fixos = {k: v for k, v in elenco.items() if k not in SO_NA_HORA}
+    for quem, pos in POS_DO_C.items():
+        if pos in bloqueio:
+            erros.append(f"{quem} em {pos}: tile bloqueado ou agua")
+        fixos[quem] = pos
 
     def alcance(extra):
         fechado = bloqueio | set(canteiros) | set(fixos.values()) | set(extra)

@@ -1208,6 +1208,7 @@ Common_Text_ReceivedMon:
 	.include "data/scripts/berry_garden.inc"
 	.include "data/scripts/berry_garden_story.inc"
 	.include "data/scripts/berry_garden_steeds.inc"
+	.include "data/scripts/berry_garden_epilogue.inc"
 	.include "data/scripts/secret_base.inc"
 	.include "data/scripts/cable_club.inc"
 	.include "data/text/cable_club.inc"

@@ -828,7 +828,7 @@ TEST("Peony and Peonia are guests from Act 5 to the epilogue")
     EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONY, GARDEN_PERIOD_NIGHT, WEEKDAY_MON, TRUE, HARVEST_KING_SHADEROOT), GARDEN_PLACE_HOUSE);
     EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONIA, GARDEN_PERIOD_DAY, WEEKDAY_SAT, TRUE, HARVEST_KING_KING_CAME), GARDEN_PLACE_GARDEN);
     EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONIA, GARDEN_PERIOD_MORNING, WEEKDAY_SAT, TRUE, HARVEST_KING_KING_CAME), GARDEN_PLACE_HOUSE);
-    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONIA, GARDEN_PERIOD_DAY, WEEKDAY_SAT, TRUE, HARVEST_KING_GUESTS_LEAVE), GARDEN_PLACE_AWAY);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONIA, GARDEN_PERIOD_DAY, WEEKDAY_MON, TRUE, HARVEST_KING_GUESTS_LEAVE), GARDEN_PLACE_AWAY);
 }
 
 TEST("The carrot is ready only after a new day since the seed")
@@ -869,4 +869,65 @@ TEST("Greenfield's crystal goes away with the white path")
     gSaveBlock1Ptr->location.mapGroup = MAP_GROUP(MAP_ROUTE30);
     gSaveBlock1Ptr->location.mapNum = MAP_NUM(MAP_ROUTE30);
     EXPECT_EQ(MapTint_Mode(), MAP_TINT_NONE);
+}
+
+// Part 16: after the story.
+TEST("After the story Galar visits: the pond on weekend nights, the stall, Avery on Fridays")
+{
+    u32 end = HARVEST_KING_GUESTS_LEAVE;
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONY, GARDEN_PERIOD_NIGHT, WEEKDAY_SAT, TRUE, end), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONY, GARDEN_PERIOD_NIGHT, WEEKDAY_WED, TRUE, end), GARDEN_PLACE_AWAY);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONY, GARDEN_PERIOD_MORNING, WEEKDAY_SUN, TRUE, end), GARDEN_PLACE_AWAY);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONIA, GARDEN_PERIOD_DAY, WEEKDAY_SAT, TRUE, end), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONIA, GARDEN_PERIOD_NIGHT, WEEKDAY_SUN, TRUE, end), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_PEONIA, GARDEN_PERIOD_MORNING, WEEKDAY_SAT, TRUE, end), GARDEN_PLACE_AWAY);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_AVERY, GARDEN_PERIOD_DAY, WEEKDAY_FRI, TRUE, end), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_AVERY, GARDEN_PERIOD_DAY, WEEKDAY_FRI, TRUE, HARVEST_KING_ACT7_DONE), GARDEN_PLACE_AWAY);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_AVERY, GARDEN_PERIOD_DAY, WEEKDAY_THU, TRUE, end), GARDEN_PLACE_AWAY);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_MUSTARD, GARDEN_PERIOD_MORNING, WEEKDAY_SUN, TRUE, end), GARDEN_PLACE_AWAY);
+}
+
+TEST("Story marks past the seventh live in the second var")
+{
+    VarSet(VAR_GARDEN_NEWS, 0);
+    VarSet(VAR_GARDEN_STORY2, 0);
+    gSpecialVar_0x8004 = GARDEN_STORY_LAUREL_NAME;
+    EXPECT(!GardenStory_Check());
+    GardenStory_Mark();
+    EXPECT(GardenStory_Check());
+    EXPECT_EQ(VarGet(VAR_GARDEN_NEWS), 0);
+    EXPECT_EQ(VarGet(VAR_GARDEN_STORY2), 1 << (GARDEN_STORY_LAUREL_NAME - GARDEN_STORY_COUNT));
+    gSpecialVar_0x8004 = GARDEN_STORY_WHITE_PATH;
+    EXPECT(!GardenStory_Check());
+    EXPECT_LE(GARDEN_STORY_STATUE_LETTER, GARDEN_STORY_TOTAL - 1);
+}
+
+TEST("The morning after Act 7 is the epilogue's, and Laurel's plot grows the Enigma back")
+{
+    VarSet(VAR_GARDEN_NEWS, 0);
+    VarSet(VAR_GARDEN_STORY2, 0);
+    VarSet(VAR_HARVEST_KING, HARVEST_KING_ACT7_DONE);
+    FlagClear(FLAG_DAILY_GARDEN_NEW_DAY);
+    GardenRollDay();
+    gSpecialVar_0x8004 = GARDEN_STORY_EPILOGUE_READY;
+    EXPECT(GardenStory_Check());
+
+    VarSet(VAR_HARVEST_KING, HARVEST_KING_GUESTS_LEAVE);
+    *GetBerryTreeInfo(BERRY_TREE_KINGS_PLOT) = (struct BerryTree){0};
+    FlagClear(FLAG_DAILY_GARDEN_NEW_DAY);
+    GardenRollDay();
+    EXPECT_EQ(GardenKingsPlot_Stage(), BERRY_STAGE_PLANTED);
+}
+
+TEST("King's Garden doubles Laurel's plot, up to what the tree can hold")
+{
+    struct BerryTree *kings = GetBerryTreeInfo(BERRY_TREE_KINGS_PLOT);
+    struct BerryTree *other = GetBerryTreeInfo(BERRY_TREE_GARDEN_FIRST);
+
+    VarSet(VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_BUG_HOTEL);
+    EXPECT_EQ(GardenKingsPlot_Yield(kings, 5), 5);
+    VarSet(VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_KINGS);
+    EXPECT_EQ(GardenKingsPlot_Yield(kings, 5), 10);
+    EXPECT_EQ(GardenKingsPlot_Yield(kings, 20), 31);
+    EXPECT_EQ(GardenKingsPlot_Yield(other, 5), 5);
 }

@@ -64,6 +64,8 @@ Route30_House_EventScript_BaldMan::
 	@ Midnight may have passed with the player in here: no map load, so the
 	@ garden's day has to be checked again after the clock (src/berry_garden.c).
 	special GardenRollDay
+	@ The morning after Act 7, the epilogue (part 16): it reloads the map.
+	call BerryGarden_EventScript_BramEpilogue
 	call_if_unset FLAG_GOT_BERRY_ROUTE_30_HOUSE, Route30_House_EventScript_Tutorial
 	@ Idempotent: also fills the Book of a save that did the tutorial before
 	@ the Book existed, so the daily draw below is never empty.
@@ -76,6 +78,7 @@ Route30_House_EventScript_BaldMan::
 	call_if_unset FLAG_TEMP_BRAM_TUTORIAL_VISIT, BerryGarden_EventScript_BramReaction
 	call Route30_House_EventScript_BuiltLevel
 	call Route30_House_EventScript_Milestones
+	call BerryGarden_EventScript_BramTitle
 	call Route30_House_EventScript_Order
 	@ The day's gift first - it is what the player came for - and the garden
 	@ works last (Route30_House_EventScript_AfterGift), so a reform deal closes

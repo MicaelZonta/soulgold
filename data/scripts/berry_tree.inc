@@ -1,4 +1,6 @@
 BerryTreeScript::
+	@ Berry Master part 16: Calyrex at Laurel's plot, at night (bank N).
+	call BerryGarden_EventScript_KingsPlotKing
 	special ObjectEventInteractionGetBerryTreeData
 	switch VAR_0x8004
 	case BERRY_STAGE_SPARKLING, BerryTree_EventScript_Sparkling
