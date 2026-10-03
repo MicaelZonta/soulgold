@@ -707,3 +707,10 @@ gSpecials::
 	def_special BerryDebug_ResetAll
 	def_special BerryDebug_Status
 	def_special BerryDebug_ClearMoney
+	def_special BerryLedger_NextDiscovery
+	def_special BerryLedger_GetRecipe
+	def_special GardenOrder_Roll
+	def_special GardenOrder_Get
+	def_special GardenOrder_RewardMulch
+	def_special GardenOrder_Pay
+	def_special BerryDebug_NewOrder

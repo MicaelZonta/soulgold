@@ -51,6 +51,7 @@ Route30_House_EventScript_BaldMan::
 	special BerryLedger_RegisterStarters
 	call Route30_House_EventScript_BuiltLevel
 	call Route30_House_EventScript_Milestones
+	call Route30_House_EventScript_Order
 	@ The day's gift first - it is what the player came for - and the garden
 	@ works last (Route30_House_EventScript_AfterGift), so a reform deal closes
 	@ the conversation instead of being followed by "take two".
@@ -105,6 +106,163 @@ Route30_House_EventScript_OfferSeed::
 	msgbox Route30_House_Text_GoodPick, MSGBOX_DEFAULT
 	giveitem VAR_0x8008
 	goto Route30_House_EventScript_AfterGift
+
+@ ---------------------------------------------------------------------------
+@ Today's order (section 6; rules in src/berry_garden.c, GardenOrder_*).
+@ Drawn in the first conversation of the day and announced then; on later
+@ visits Bram reminds once per visit (FLAG_TEMP_7) and takes the Berries the
+@ moment the player has them. The pay is asked about BEFORE anything leaves
+@ the bag: checkitem -> yesno -> checkitemspace -> removeitem -> pay.
+@ VAR_0x8004 Berry, 0x8005 how many, 0x8006 client, 0x8007 discovery,
+@ 0x800A "drawn just now". STR_VAR_1 = the Berry (plural), STR_VAR_2 = how many.
+@ Not on the tutorial visit (FLAG_TEMP_1): the first order waits for the
+@ next visit, so the tutorial ends on the Book and the first two Berries.
+@ ---------------------------------------------------------------------------
+Route30_House_EventScript_Order::
+	goto_if_set FLAG_TEMP_1, Route30_House_EventScript_OrderEnd
+	specialvar VAR_0x800A, GardenOrder_Roll
+	specialvar VAR_RESULT, GardenOrder_Get
+	goto_if_ne VAR_RESULT, GARDEN_ORDER_OPEN, Route30_House_EventScript_OrderEnd
+	bufferitemnameplural STR_VAR_1, VAR_0x8004, VAR_0x8005
+	buffernumberstring STR_VAR_2, VAR_0x8005
+	call_if_eq VAR_0x800A, TRUE, Route30_House_EventScript_OrderAnnounce
+	checkitem VAR_0x8004, VAR_0x8005
+	goto_if_eq VAR_RESULT, TRUE, Route30_House_EventScript_OrderDeliver
+	goto_if_set FLAG_TEMP_7, Route30_House_EventScript_OrderEnd
+	setflag FLAG_TEMP_7
+	call_if_eq VAR_0x8007, FALSE, Route30_House_EventScript_OrderReminder
+	call_if_eq VAR_0x8007, TRUE, Route30_House_EventScript_OrderReminderDiscovery
+Route30_House_EventScript_OrderEnd::
+	return
+
+Route30_House_EventScript_OrderReminder::
+	msgbox Route30_House_Text_OrderReminder, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderReminderDiscovery::
+	msgbox Route30_House_Text_OrderReminderDiscovery, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderAnnounce::
+	setflag FLAG_TEMP_7
+	goto_if_eq VAR_0x8007, TRUE, Route30_House_EventScript_OrderAnnounceDiscovery
+	switch VAR_0x8006
+	case GARDEN_CLIENT_KURT, Route30_House_EventScript_OrderKurt
+	case GARDEN_CLIENT_FLOWER_SHOP, Route30_House_EventScript_OrderFlowerShop
+	case GARDEN_CLIENT_NURSE, Route30_House_EventScript_OrderNurse
+	case GARDEN_CLIENT_MOOMOO_FARM, Route30_House_EventScript_OrderMoomoo
+	case GARDEN_CLIENT_DAY_CARE, Route30_House_EventScript_OrderDayCare
+	case GARDEN_CLIENT_BUGSY, Route30_House_EventScript_OrderBugsy
+	case GARDEN_CLIENT_THEATER, Route30_House_EventScript_OrderTheater
+	case GARDEN_CLIENT_LIGHTHOUSE, Route30_House_EventScript_OrderLighthouse
+	case GARDEN_CLIENT_SCHOOL, Route30_House_EventScript_OrderSchool
+	case GARDEN_CLIENT_LAUREL, Route30_House_EventScript_OrderLaurel
+	return
+
+Route30_House_EventScript_OrderAnnounceDiscovery::
+	msgbox Route30_House_Text_OrderDiscovery, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderKurt::
+	msgbox Route30_House_Text_OrderKurt, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderFlowerShop::
+	msgbox Route30_House_Text_OrderFlowerShop, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderNurse::
+	msgbox Route30_House_Text_OrderNurse, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderMoomoo::
+	msgbox Route30_House_Text_OrderMoomoo, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderDayCare::
+	msgbox Route30_House_Text_OrderDayCare, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderBugsy::
+	msgbox Route30_House_Text_OrderBugsy, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderTheater::
+	msgbox Route30_House_Text_OrderTheater, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderLighthouse::
+	msgbox Route30_House_Text_OrderLighthouse, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderSchool::
+	msgbox Route30_House_Text_OrderSchool, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderLaurel::
+	msgbox Route30_House_Text_OrderLaurel, MSGBOX_DEFAULT
+	return
+
+@ The player has the Berries. The Mulch of the pay must fit before anything is
+@ taken; after removeitem, GardenOrder_Pay pays the money and closes the order.
+Route30_House_EventScript_OrderDeliver::
+	call_if_eq VAR_0x8005, 1, Route30_House_EventScript_OrderHandOverOne
+	call_if_ne VAR_0x8005, 1, Route30_House_EventScript_OrderHandOverMany
+	goto_if_eq VAR_RESULT, NO, Route30_House_EventScript_OrderEnd
+	specialvar VAR_0x8008, GardenOrder_RewardMulch
+	checkitemspace VAR_0x8008
+	goto_if_eq VAR_RESULT, FALSE, Route30_House_EventScript_OrderBagFull
+	removeitem VAR_0x8004, VAR_0x8005
+	specialvar VAR_RESULT, GardenOrder_Pay
+	buffernumberstring STR_VAR_3, VAR_RESULT
+	@ Delivery lines rotate with the client (section 14.4 Q, index % 5).
+	call_if_eq VAR_0x8006, 0, Route30_House_EventScript_OrderThanks1
+	call_if_eq VAR_0x8006, 5, Route30_House_EventScript_OrderThanks1
+	call_if_eq VAR_0x8006, 1, Route30_House_EventScript_OrderThanks2
+	call_if_eq VAR_0x8006, 6, Route30_House_EventScript_OrderThanks2
+	call_if_eq VAR_0x8006, 2, Route30_House_EventScript_OrderThanks3
+	call_if_eq VAR_0x8006, 7, Route30_House_EventScript_OrderThanks3
+	call_if_eq VAR_0x8006, 3, Route30_House_EventScript_OrderThanks4
+	call_if_eq VAR_0x8006, 8, Route30_House_EventScript_OrderThanks4
+	call_if_eq VAR_0x8006, 4, Route30_House_EventScript_OrderThanks5
+	call_if_eq VAR_0x8006, 9, Route30_House_EventScript_OrderThanks5
+	playse SE_SHOP
+	msgbox Route30_House_Text_OrderPaid, MSGBOX_DEFAULT
+	waitse
+	giveitem VAR_0x8008
+	return
+
+Route30_House_EventScript_OrderHandOverOne::
+	msgbox Route30_House_Text_OrderHandOverOne, MSGBOX_YESNO
+	return
+
+Route30_House_EventScript_OrderHandOverMany::
+	msgbox Route30_House_Text_OrderHandOver, MSGBOX_YESNO
+	return
+
+Route30_House_EventScript_OrderBagFull::
+	msgbox Route30_House_Text_OrderBagFull, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderThanks1::
+	msgbox Route30_House_Text_OrderThanks1, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderThanks2::
+	msgbox Route30_House_Text_OrderThanks2, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderThanks3::
+	msgbox Route30_House_Text_OrderThanks3, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderThanks4::
+	msgbox Route30_House_Text_OrderThanks4, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_OrderThanks5::
+	msgbox Route30_House_Text_OrderThanks5, MSGBOX_DEFAULT
+	return
 
 Route30_House_EventScript_PlantThemText::
 	msgbox Route30_House_Text_PlantThem, MSGBOX_DEFAULT
@@ -330,6 +488,7 @@ Route30_House_EventScript_BerryWife::
 	faceplayer
 	dotimebasedevents
 	special GardenRollDay
+	call Route30_House_EventScript_LaurelHint
 	goto_if_unset FLAG_SYS_GAME_CLEAR, Route30_House_EventScript_WifeChat
 	goto_if_set FLAG_DAILY_BERRY_MASTERS_WIFE, Route30_House_EventScript_WifeDoneToday
 	@ Only a rare the player has harvested (the Book), never the Enigma.
@@ -343,6 +502,26 @@ Route30_House_EventScript_BerryWife::
 	closemessage
 	release
 	end
+
+@ A discovery order is open: Bram does not know the recipe, Laurel does
+@ (section 6). Once per visit (FLAG_TEMP_8), then her usual line.
+@ STR_VAR_1 = the new Berry, STR_VAR_2 / STR_VAR_3 = the two parents.
+Route30_House_EventScript_LaurelHint::
+	goto_if_set FLAG_TEMP_8, Route30_House_EventScript_LaurelHintEnd
+	specialvar VAR_RESULT, GardenOrder_Get
+	goto_if_ne VAR_RESULT, GARDEN_ORDER_OPEN, Route30_House_EventScript_LaurelHintEnd
+	goto_if_eq VAR_0x8007, FALSE, Route30_House_EventScript_LaurelHintEnd
+	specialvar VAR_RESULT, BerryLedger_GetRecipe
+	goto_if_eq VAR_RESULT, FALSE, Route30_House_EventScript_LaurelHintEnd
+	setflag FLAG_TEMP_8
+	bufferitemname STR_VAR_1, VAR_0x8004
+	bufferitemname STR_VAR_2, VAR_0x8005
+	bufferitemname STR_VAR_3, VAR_0x8006
+	msgbox Route30_House_Text_LaurelHint, MSGBOX_DEFAULT
+	return
+
+Route30_House_EventScript_LaurelHintEnd::
+	return
 
 Route30_House_EventScript_WifeNoRare::
 	msgbox Route30_House_Text_WifeNoRare, MSGBOX_DEFAULT
@@ -490,6 +669,125 @@ Route30_House_Text_BuiltBugHotel:
 	.string "Hollow stems, bark, a pile of stones...\p"
 	.string "He means more bugs. He's happy about\n"
 	.string "more bugs.$"
+
+Route30_House_Text_OrderKurt:
+	.string "Kurt called. Wants\n"
+	.string "{STR_VAR_2} {STR_VAR_1}.\p"
+	.string "Said “by tomorrow.” Kurt thinks\n"
+	.string "everything's by tomorrow.$"
+
+Route30_House_Text_OrderFlowerShop:
+	.string "The girls at the Goldenrod flower shop\n"
+	.string "want {STR_VAR_2} {STR_VAR_1}\l"
+	.string "for the window.\p"
+	.string "Pretty ones, they said. As if I grow\n"
+	.string "ugly ones.$"
+
+Route30_House_Text_OrderNurse:
+	.string "Nurse in Cherrygrove's running low.\n"
+	.string "{STR_VAR_2} {STR_VAR_1}.\p"
+	.string "For the patients, she says.\n"
+	.string "For her tea, I say.$"
+
+Route30_House_Text_OrderMoomoo:
+	.string "Moomoo Farm's Miltank have gone off\n"
+	.string "their feed.\p"
+	.string "{STR_VAR_2} {STR_VAR_1}\n"
+	.string "ought to fix that.$"
+
+Route30_House_Text_OrderDayCare:
+	.string "The Day Care couple want\n"
+	.string "{STR_VAR_2} {STR_VAR_1}.\p"
+	.string "The babies love them. The old man\n"
+	.string "loves them more.$"
+
+Route30_House_Text_OrderBugsy:
+	.string "Bugsy wants {STR_VAR_2} {STR_VAR_1}.\n"
+	.string "“For bait,” he says.\p"
+	.string "The bait always gets eaten by Bugsy.$"
+
+Route30_House_Text_OrderTheater:
+	.string "Letter from Ecruteak. The dance\n"
+	.string "theater wants {STR_VAR_2} {STR_VAR_1}.\p"
+	.string "Those Kimono Girls eat like Snorlax,\n"
+	.string "I'm told.$"
+
+Route30_House_Text_OrderLighthouse:
+	.string "The lighthouse in Olivine.\n"
+	.string "{STR_VAR_2} {STR_VAR_1},\l"
+	.string "for the Ampharos.\p"
+	.string "That Ampharos eats better than I do.$"
+
+Route30_House_Text_OrderSchool:
+	.string "The teacher at the Violet school wants\n"
+	.string "{STR_VAR_2} {STR_VAR_1} for a lesson.\p"
+	.string "Kids learn more from a Berry than\n"
+	.string "a book, I say.$"
+
+Route30_House_Text_OrderLaurel:
+	.string "Laurel wants {STR_VAR_2} {STR_VAR_1}.\n"
+	.string "She won't say why.\p"
+	.string "She never says why. Just bring them.$"
+
+Route30_House_Text_OrderDiscovery:
+	.string "Now here's one I've never grown.\n"
+	.string "Kurt swears there's a Berry called\l"
+	.string "{STR_VAR_1}. I think he's pulling my leg.\p"
+	.string "Ask Laurel. If anyone knows, she\n"
+	.string "knows. She just won't tell ME.$"
+
+Route30_House_Text_OrderReminder:
+	.string "Still need {STR_VAR_2} {STR_VAR_1} for\n"
+	.string "today's order. No rush. Some rush.$"
+
+Route30_House_Text_OrderReminderDiscovery:
+	.string "Any luck with that {STR_VAR_1}?\n"
+	.string "Did you ask Laurel?$"
+
+Route30_House_Text_OrderHandOver:
+	.string "That's {STR_VAR_2} {STR_VAR_1}!\n"
+	.string "Hand them over?$"
+
+Route30_House_Text_OrderHandOverOne:
+	.string "That's the {STR_VAR_1}!\n"
+	.string "Hand it over?$"
+
+Route30_House_Text_OrderBagFull:
+	.string "Hold on. There's Mulch in your pay, and\n"
+	.string "your Bag hasn't room for it.\l"
+	.string "Make room first.$"
+
+Route30_House_Text_OrderThanks1:
+	.string "That's the lot! Here's your pay.\p"
+	.string "Don't spend it all on mulch. Spend\n"
+	.string "some of it on mulch.$"
+
+Route30_House_Text_OrderThanks2:
+	.string "Look at the size of these!\n"
+	.string "They'll think I grew them.\l"
+	.string "I'll let them.$"
+
+Route30_House_Text_OrderThanks3:
+	.string "Perfect. You pick 'em better than\n"
+	.string "I do now. Don't tell anyone.$"
+
+Route30_House_Text_OrderThanks4:
+	.string "Right on time. Kurt'll be furious.\n"
+	.string "He likes being disappointed.$"
+
+Route30_House_Text_OrderThanks5:
+	.string "Good work, sprout. That's a farmer's\n"
+	.string "money. Earned in dirt.$"
+
+Route30_House_Text_OrderPaid:
+	.string "{PLAYER} received ¥{STR_VAR_3}.$"
+
+Route30_House_Text_LaurelHint:
+	.string "{STR_VAR_1}. {STR_VAR_2} beside\n"
+	.string "{STR_VAR_3}.\p"
+	.string "Touching, side by side. Not corner to\n"
+	.string "corner. People always do corner to\l"
+	.string "corner.$"
 
 Route30_House_Text_PlantThem:
 	.string "And don't eat both of them. Plant one.\p"

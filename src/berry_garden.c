@@ -524,3 +524,233 @@ void BerryDebug_Status(void)
     gSpecialVar_0x8006 = gLocalTime.hours;
     gSpecialVar_0x8007 = planted;
 }
+
+// ---------------------------------------------------------------------------
+// Today's order (section 6)
+//
+// One a day, drawn in the first conversation with Bram (GARDEN_TODAY_ORDER_ROLLED)
+// and kept until the date changes, so walking out and in never redraws it.
+//   common:    N of a Berry already in the Book
+//   discovery: (garden level 2+, 1 day in 3) ONE Berry not in the Book whose two
+//              parents are; Bram does not know the recipe, Laurel does
+// The order lives in VAR_BERRY_ORDER: bits 0-6 Berry (offset + 1, 0 = none),
+// 7-10 how many, 11 discovery, 12-15 client.
+// How many and the pay come from the Berry's generation (section 4.2): the
+// further from Bram's eight, the fewer asked and the better paid. Never a
+// Poke Ball (Kurt is the only maker).
+// ---------------------------------------------------------------------------
+
+#define ORDER_BERRY_MASK     0x007F
+#define ORDER_COUNT_SHIFT    7
+#define ORDER_COUNT_MASK     0x0780
+#define ORDER_DISCOVERY      0x0800
+#define ORDER_CLIENT_SHIFT   12
+
+#define DISCOVERY_ONE_IN     3
+#define MAX_GENERATION       7
+
+// By generation 0..7: how many a common order asks for, and the pay per Berry.
+static const u8 sOrderCountByGeneration[MAX_GENERATION + 1] = {3, 5, 5, 3, 3, 1, 1, 1};
+static const u16 sOrderPayByGeneration[MAX_GENERATION + 1]  = {100, 150, 200, 300, 400, 600, 800, 1000};
+
+static bool32 IsStarterBerry(u16 itemId)
+{
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sStarterBerries); i++)
+    {
+        if (sStarterBerries[i] == itemId)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+// Crosses between this Berry and Bram's eight. The table has no cycles
+// (dev_scripts/berry_mutations_check.py), so the recursion ends; a Berry
+// with no recipe that is not a starter (the Enigma) counts as the deepest.
+static u32 GetBerryGeneration(u16 itemId)
+{
+    u16 parent1, parent2;
+    u32 gen1, gen2;
+
+    if (IsStarterBerry(itemId))
+        return 0;
+    if (!GetBerryRecipe(itemId, &parent1, &parent2))
+        return MAX_GENERATION;
+    gen1 = GetBerryGeneration(parent1);
+    gen2 = GetBerryGeneration(parent2);
+    return min(MAX_GENERATION, max(gen1, gen2) + 1);
+}
+
+// A Berry not in the Book whose two parents are (and whose recipe is open:
+// no Lansat or Starf before the League), drawn at random; ITEM_NONE if there
+// is none. VAR_0x8005 / VAR_0x8006 = the parents.
+static u16 NextDiscovery(u16 *parent1, u16 *parent2)
+{
+    u32 itemId, count = 0, pick;
+    u16 p1, p2;
+
+    for (itemId = LEDGER_FIRST_ITEM; itemId <= LEDGER_LAST_ITEM; itemId++)
+    {
+        if (!BerryLedger_Has(itemId) && GetBerryRecipe(itemId, &p1, &p2)
+         && BerryLedger_Has(p1) && BerryLedger_Has(p2))
+            count++;
+    }
+    if (count == 0)
+        return ITEM_NONE;
+    pick = Random() % count;
+    for (itemId = LEDGER_FIRST_ITEM; itemId <= LEDGER_LAST_ITEM; itemId++)
+    {
+        if (!BerryLedger_Has(itemId) && GetBerryRecipe(itemId, &p1, &p2)
+         && BerryLedger_Has(p1) && BerryLedger_Has(p2) && pick-- == 0)
+        {
+            *parent1 = p1;
+            *parent2 = p2;
+            return itemId;
+        }
+    }
+    return ITEM_NONE;
+}
+
+u16 BerryLedger_NextDiscovery(void)
+{
+    u16 parent1 = ITEM_NONE, parent2 = ITEM_NONE;
+    u16 itemId = NextDiscovery(&parent1, &parent2);
+
+    gSpecialVar_0x8005 = parent1;
+    gSpecialVar_0x8006 = parent2;
+    return itemId;
+}
+
+// VAR_0x8004 = Berry -> VAR_0x8005 / VAR_0x8006 = its parents; FALSE if none.
+u16 BerryLedger_GetRecipe(void)
+{
+    u16 parent1, parent2;
+
+    if (!GetBerryRecipe(gSpecialVar_0x8004, &parent1, &parent2))
+        return FALSE;
+    gSpecialVar_0x8005 = parent1;
+    gSpecialVar_0x8006 = parent2;
+    return TRUE;
+}
+
+static u16 PickClient(void)
+{
+    u16 client = Random() % GARDEN_CLIENT_COUNT;
+
+    if (client == GARDEN_CLIENT_BUGSY && VarGet(VAR_HARVEST_KING) < HARVEST_KING_BUGSY_CAME)
+        client = GARDEN_CLIENT_KURT;
+    return client;
+}
+
+enum OrderKind
+{
+    ORDER_KIND_RANDOM,      // the game: discovery 1 day in 3 from level 2
+    ORDER_KIND_COMMON,      // debug menu
+    ORDER_KIND_DISCOVERY,   // debug menu (falls back to common if none is possible)
+};
+
+// Debug menu only (BerryDebug_NewOrder); RAM, never saved.
+static EWRAM_DATA enum OrderKind sForcedOrderKind = ORDER_KIND_RANDOM;
+
+static bool32 DrawOrder(enum OrderKind kind)
+{
+    u16 itemId = ITEM_NONE, count = 0, order = 0, p1, p2;
+    bool32 tryDiscovery;
+
+    GardenToday_Mark(GARDEN_TODAY_ORDER_ROLLED);
+    if (kind == ORDER_KIND_RANDOM)
+        tryDiscovery = VarGet(VAR_BERRY_GARDEN_LEVEL) >= GARDEN_LEVEL_PROPER && Random() % DISCOVERY_ONE_IN == 0;
+    else
+        tryDiscovery = (kind == ORDER_KIND_DISCOVERY);
+
+    if (tryDiscovery)
+    {
+        itemId = NextDiscovery(&p1, &p2);
+        if (itemId != ITEM_NONE)
+        {
+            count = 1;
+            order = ORDER_DISCOVERY;
+        }
+    }
+    if (itemId == ITEM_NONE && VarGet(VAR_BERRY_GARDEN_LEVEL) >= GARDEN_LEVEL_BACKYARD)
+    {
+        itemId = BerryLedger_RandomRegistered();
+        if (itemId != ITEM_NONE)
+            count = sOrderCountByGeneration[GetBerryGeneration(itemId)];
+    }
+    if (itemId == ITEM_NONE)
+    {
+        VarSet(VAR_BERRY_ORDER, 0);
+        return FALSE;
+    }
+    order |= (itemId - LEDGER_FIRST_ITEM + 1) | (count << ORDER_COUNT_SHIFT) | (PickClient() << ORDER_CLIENT_SHIFT);
+    VarSet(VAR_BERRY_ORDER, order);
+    return TRUE;
+}
+
+// Draws today's order if it was not drawn yet. Returns TRUE if it drew one
+// now (Bram announces it in this conversation).
+u16 GardenOrder_Roll(void)
+{
+    enum OrderKind kind = sForcedOrderKind;
+
+    if (GardenToday_Has(GARDEN_TODAY_ORDER_ROLLED))
+        return FALSE;
+    sForcedOrderKind = ORDER_KIND_RANDOM;
+    return DrawOrder(kind);
+}
+
+// Returns GARDEN_ORDER_*; VAR_0x8004 = Berry, VAR_0x8005 = how many,
+// VAR_0x8006 = client, VAR_0x8007 = TRUE for a discovery order.
+u16 GardenOrder_Get(void)
+{
+    u16 order = VarGet(VAR_BERRY_ORDER);
+
+    if (!GardenToday_Has(GARDEN_TODAY_ORDER_ROLLED) || (order & ORDER_BERRY_MASK) == 0)
+        return GARDEN_ORDER_NONE;
+    gSpecialVar_0x8004 = LEDGER_FIRST_ITEM + (order & ORDER_BERRY_MASK) - 1;
+    gSpecialVar_0x8005 = (order & ORDER_COUNT_MASK) >> ORDER_COUNT_SHIFT;
+    gSpecialVar_0x8006 = order >> ORDER_CLIENT_SHIFT;
+    gSpecialVar_0x8007 = (order & ORDER_DISCOVERY) != 0;
+    if (GardenToday_Has(GARDEN_TODAY_ORDER_DONE))
+        return GARDEN_ORDER_DONE;
+    return GARDEN_ORDER_OPEN;
+}
+
+// The Mulch that goes with today's pay: Surprise for a discovery, else
+// Growth or Damp, a day each.
+u16 GardenOrder_RewardMulch(void)
+{
+    if (VarGet(VAR_BERRY_ORDER) & ORDER_DISCOVERY)
+        return ITEM_SURPRISE_MULCH;
+    return (VarGet(VAR_DAYS) % 2) ? ITEM_DAMP_MULCH : ITEM_GROWTH_MULCH;
+}
+
+// After the script took the Berries: pays, marks the order done and returns
+// the money paid (for the text). 0, and nothing paid, if there is no open order.
+u16 GardenOrder_Pay(void)
+{
+    u32 pay;
+
+    if (GardenOrder_Get() != GARDEN_ORDER_OPEN)
+        return 0;
+    pay = gSpecialVar_0x8005 * sOrderPayByGeneration[GetBerryGeneration(gSpecialVar_0x8004)];
+    if (gSpecialVar_0x8007)
+        pay *= 2;
+    AddMoney(&gSaveBlock1Ptr->money, pay);
+    GardenToday_Mark(GARDEN_TODAY_ORDER_DONE);
+    return pay;
+}
+
+// Debug: forget today's order and force the kind of the next draw
+// (VAR_0x8004 = TRUE for a discovery). The next talk with Bram draws and
+// announces it exactly like the first conversation of a day.
+void BerryDebug_NewOrder(void)
+{
+    VarSet(VAR_GARDEN_TODAY, VarGet(VAR_GARDEN_TODAY)
+           & ~((1 << GARDEN_TODAY_ORDER_ROLLED) | (1 << GARDEN_TODAY_ORDER_DONE)));
+    VarSet(VAR_BERRY_ORDER, 0);
+    sForcedOrderKind = gSpecialVar_0x8004 ? ORDER_KIND_DISCOVERY : ORDER_KIND_COMMON;
+}
+

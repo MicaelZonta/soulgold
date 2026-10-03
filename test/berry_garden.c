@@ -442,3 +442,79 @@ TEST("The debug Book sizes are exact, and only 67 includes the Enigma")
         EXPECT_EQ(BerryLedger_Has(ITEM_ENIGMA_BERRY), sizes[i] == 67);
     }
 }
+
+// Today's order (part 7).
+TEST("A Berry's recipe matches the crossing table, and Lansat waits for the League")
+{
+    u16 p1 = ITEM_NONE, p2 = ITEM_NONE;
+
+    EXPECT(GetBerryRecipe(ITEM_AGUAV_BERRY, &p1, &p2));
+    EXPECT((p1 == ITEM_RAWST_BERRY && p2 == ITEM_LEPPA_BERRY) || (p1 == ITEM_LEPPA_BERRY && p2 == ITEM_RAWST_BERRY));
+    EXPECT(!GetBerryRecipe(ITEM_CHERI_BERRY, &p1, &p2));
+    EXPECT(!GetBerryRecipe(ITEM_ENIGMA_BERRY, &p1, &p2));
+    FlagClear(FLAG_SYS_GAME_CLEAR);
+    EXPECT(!GetBerryRecipe(ITEM_LANSAT_BERRY, &p1, &p2));
+    FlagSet(FLAG_SYS_GAME_CLEAR);
+    EXPECT(GetBerryRecipe(ITEM_LANSAT_BERRY, &p1, &p2));
+    FlagClear(FLAG_SYS_GAME_CLEAR);
+}
+
+TEST("A discovery is never in the Book and both its parents are")
+{
+    u32 i;
+
+    ClearLedger();
+    BerryLedger_RegisterStarters();
+    for (i = 0; i < 50; i++)
+    {
+        u16 item = BerryLedger_NextDiscovery();
+        EXPECT(item != ITEM_NONE);
+        EXPECT(!BerryLedger_Has(item));
+        EXPECT(BerryLedger_Has(gSpecialVar_0x8005));
+        EXPECT(BerryLedger_Has(gSpecialVar_0x8006));
+    }
+    RegisterFirst(67);
+    EXPECT_EQ(BerryLedger_NextDiscovery(), ITEM_NONE);
+}
+
+TEST("The day's order is drawn once, paid once and drawn again the next day")
+{
+    u32 money;
+
+    SetUpGarden(GARDEN_LEVEL_BACKYARD, 8, 0);
+    VarSet(VAR_GARDEN_TODAY, 0);
+    EXPECT_EQ(GardenOrder_Get(), GARDEN_ORDER_NONE);
+    EXPECT(GardenOrder_Roll());
+    EXPECT(!GardenOrder_Roll());
+    EXPECT_EQ(GardenOrder_Get(), GARDEN_ORDER_OPEN);
+    EXPECT(BerryLedger_Has(gSpecialVar_0x8004));   // level 1: always a common order
+    EXPECT_EQ(gSpecialVar_0x8005, 3);               // Bram's eight are generation 0
+    EXPECT_EQ(gSpecialVar_0x8007, FALSE);
+
+    money = GetMoney(&gSaveBlock1Ptr->money);
+    EXPECT_EQ(GardenOrder_Pay(), 300);              // 3 x 100
+    EXPECT_EQ(GetMoney(&gSaveBlock1Ptr->money), money + 300);
+    EXPECT_EQ(GardenOrder_Get(), GARDEN_ORDER_DONE);
+    EXPECT_EQ(GardenOrder_Pay(), 0);                // never twice
+
+    ClearDailyFlags();
+    GardenRollDay();
+    EXPECT_EQ(GardenOrder_Get(), GARDEN_ORDER_NONE);
+    EXPECT(GardenOrder_Roll());
+    EXPECT_EQ(GardenOrder_Get(), GARDEN_ORDER_OPEN);
+}
+
+TEST("A discovery order asks for one Berry, pays double and gives Surprise Mulch")
+{
+    SetUpGarden(GARDEN_LEVEL_PROPER, 8, 0);
+    VarSet(VAR_GARDEN_TODAY, 0);
+    gSpecialVar_0x8004 = TRUE;
+    BerryDebug_NewOrder();
+    EXPECT(GardenOrder_Roll());
+    EXPECT_EQ(GardenOrder_Get(), GARDEN_ORDER_OPEN);
+    EXPECT_EQ(gSpecialVar_0x8007, TRUE);
+    EXPECT_EQ(gSpecialVar_0x8005, 1);
+    EXPECT(!BerryLedger_Has(gSpecialVar_0x8004));
+    EXPECT_EQ(GardenOrder_RewardMulch(), ITEM_SURPRISE_MULCH);
+    EXPECT_EQ(GardenOrder_Pay(), 300);              // generation 1: 1 x 150 x 2
+}

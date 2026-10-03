@@ -62,11 +62,14 @@ yourself. The offer keeps.”); ela só é o assunto no bloco F.
 1. `Level L   Work W` / `Planted garden plots: N/10`
 2. `Book B/67   Paid P` / `Milestone owed: M`
 3. `Hour H   Today bits T` / `Harvest King state: S`
-e por fim `Bram's gift: taken today.` ou `…still waiting today.`
+e por fim `Bram's gift: taken today.` ou `…still waiting today.` e a linha do pedido:
+`Order: none drawn today.`, `Order: 3 Cheri Berries, open.`, `Order: DISCOVERY Aguav
+Berry, open.` ou `Order: … delivered.`
 
 `Work`: 0 = nenhuma obra; 2, 3 ou 4 = obra paga daquele nível, fica pronta amanhã;
 12, 13 ou 14 = pronta, o Bram ainda não falou dela.
-`Today bits`: número que soma as marcas do dia; hoje só existe o 4 (= “canal regou hoje”).
+`Today bits`: número que soma as marcas do dia: 1 = pedido sorteado, 2 = pedido entregue,
+4 = canal regou hoje.
 
 ---
 
@@ -444,6 +447,69 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
 - **Esperado:** no passo 4, `Level 1` (entrar na Route 30 corrigiu o nível). No passo 5,
   **sem** tutorial: vai direto ao presente (“You came back!…”, 2 berries das 8 iniciais),
   e o `Status` mostra `Book 8/67` (a conversa registrou as 8 do Bram).
+
+---
+
+## Bloco F2 — Pedidos do dia (Parte 7)
+
+Um pedido por dia, sorteado na primeira conversa com o Bram (a qualquer hora, por
+enquanto; a rotina por horário é da Parte 8). **Comum**: N de uma berry do Livro (3 a 5
+das fáceis, 1 das difíceis), paga ₽ por berry + 1 adubo (Growth ou Damp, alternando por
+dia). **Descoberta** (horta nível 2+, 1 dia em 3): 1 berry que ainda **não** está no Livro
+mas cujos dois pais estão; o Bram manda perguntar à Laurel; paga o dobro + Surprise Mulch.
+
+Valores por “geração” (quantos cruzamentos separam a berry das 8 do Bram):
+
+| Geração | 0 (as 8) | 1 | 2 | 3 | 4 | 5+ |
+|---|---|---|---|---|---|---|
+| Pede | 3 | 5 | 5 | 3 | 3 | 1 |
+| ₽ por berry | 100 | 150 | 200 | 300 | 400 | 600–1000 |
+
+Debug: `Order: new common` / `Order: new discovery` apagam o pedido de hoje; a próxima
+conversa com o Bram sorteia e anuncia um novo daquele tipo (descoberta sem candidata →
+comum). Os pedidos são lidos no `Status` (última linha).
+
+### T41 · Não há pedido no dia do tutorial
+- **Passos:** `Reset Berry Master`. Fale com o Bram (tutorial inteiro). Fale de novo sem sair.
+- **Esperado:** nenhuma fala de pedido nas duas conversas; `Status`: `Order: none drawn today.`
+- **Passos:** saia da casa, entre de novo, fale com o Bram.
+- **Esperado:** agora ele anuncia o pedido (“The girls at the Goldenrod flower shop want 3
+  Cheri Berries…”, o cliente varia). Se você já tiver as berries, ele pergunta na hora
+  “That's 3 Cheri Berries! Hand them over?”.
+
+### T42 · O pedido não muda no mesmo dia
+- **Passos:** sem as berries pedidas, fale com o Bram de novo; saia, entre e fale mais uma vez.
+- **Esperado:** na mesma visita ele não repete nada do pedido; depois de sair e entrar,
+  **um** lembrete curto do **mesmo** pedido (mesma berry, mesma quantidade). `Status` igual.
+
+### T43 · Entregar um pedido comum
+- **Passos:** `Order: new common`, fale com o Bram (anúncio). Dê-se as berries pedidas
+  (`Give item`: Cheri = 514 e as outras em sequência, na ordem da bolsa; Aguav = 527), fale com ele, **No** no “Hand them over?”, e de novo, **Yes**.
+- **Esperado:** **No** → ele não tira nada e a conversa segue. **Yes** → as berries saem,
+  agradecimento do cliente, “{nome} received ¥N.” com o valor da tabela × quantidade,
+  e 1 Growth ou Damp Mulch. `Status`: `…, delivered.` Falar de novo: nada de pedido.
+
+### T44 · Bolsa sem espaço para o adubo
+- **Passos:** `Order: new common`, fale (anúncio). `PC/Bag… → Clear Bag`, `Fill Pocket
+  Items` (999 de cada item, adubos inclusive) e dê-se as berries pedidas. Fale com o
+  Bram, **Yes**. Depois `Clear Bag` e dê de novo a Squirtbottle (722).
+- **Esperado:** ele avisa que a bolsa está cheia **antes** de tirar as berries; as berries
+  continuam na bolsa, nada de dinheiro, `Status` continua `open`.
+
+### T45 · Pedido de descoberta e a dica da Laurel
+- **Preparação:** nível 2+ (`Garden level… → 2`), Livro com as 8 do Bram.
+- **Passos:** `Order: new discovery`, fale com o Bram. Fale com a Laurel. Fale com ela de novo.
+- **Esperado:** o Bram: “Kurt swears there's a Berry called X… Ask Laurel”. A Laurel, na
+  primeira conversa da visita: “X. Y beside Z.” — Y e Z são os pais de verdade (ex.: Aguav
+  = Rawst ao lado de Leppa); na segunda, sem dica.
+- **Passos:** plante Y e Z lado a lado na horta, `Ripen` até sair a X (ou dê-se a X), entregue.
+- **Esperado:** “That's the X Berry! Hand it over?” (singular), pagamento em dobro
+  (Aguav: ₽300) e **Surprise Mulch**.
+
+### T46 · Dia seguinte, pedido novo
+- **Passos:** com um pedido entregue, `Clock… → +24 h`, entre na casa e fale com o Bram.
+- **Esperado:** pedido novo anunciado (a berry pode repetir, mas o anúncio aparece de novo),
+  `Status` `open`.
 
 ---
 

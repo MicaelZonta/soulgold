@@ -1325,6 +1325,22 @@ Debug_EventScript_BerryMoney::
 	releaseall
 	end
 
+Debug_EventScript_BerryOrderCommon::
+	lockall
+	setvar VAR_0x8004, FALSE
+	special BerryDebug_NewOrder
+	msgbox Debug_Text_BerryOrderCommon, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Debug_EventScript_BerryOrderDiscovery::
+	lockall
+	setvar VAR_0x8004, TRUE
+	special BerryDebug_NewOrder
+	msgbox Debug_Text_BerryOrderDiscovery, MSGBOX_DEFAULT
+	releaseall
+	end
+
 Debug_EventScript_BerryNoMoney::
 	lockall
 	special BerryDebug_ClearMoney
@@ -1376,8 +1392,36 @@ Debug_EventScript_BerryStatus::
 	msgbox Debug_Text_BerryStatus3, MSGBOX_DEFAULT
 	call_if_set FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY, Debug_EventScript_BerryGiftTaken
 	call_if_unset FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY, Debug_EventScript_BerryGiftOpen
+	specialvar VAR_RESULT, GardenOrder_Get
+	goto_if_eq VAR_RESULT, GARDEN_ORDER_NONE, Debug_EventScript_BerryNoOrder
+	bufferitemnameplural STR_VAR_1, VAR_0x8004, VAR_0x8005
+	buffernumberstring STR_VAR_2, VAR_0x8005
+	call_if_eq VAR_RESULT, GARDEN_ORDER_OPEN, Debug_EventScript_BerryOrderOpen
+	call_if_eq VAR_RESULT, GARDEN_ORDER_DONE, Debug_EventScript_BerryOrderDone
 	releaseall
 	end
+
+Debug_EventScript_BerryNoOrder::
+	msgbox Debug_Text_BerryNoOrder, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Debug_EventScript_BerryOrderOpen::
+	call_if_eq VAR_0x8007, TRUE, Debug_EventScript_BerryOrderOpenDiscovery
+	call_if_eq VAR_0x8007, FALSE, Debug_EventScript_BerryOrderOpenCommon
+	return
+
+Debug_EventScript_BerryOrderOpenCommon::
+	msgbox Debug_Text_BerryOrderOpen, MSGBOX_DEFAULT
+	return
+
+Debug_EventScript_BerryOrderOpenDiscovery::
+	msgbox Debug_Text_BerryOrderOpenDiscovery, MSGBOX_DEFAULT
+	return
+
+Debug_EventScript_BerryOrderDone::
+	msgbox Debug_Text_BerryOrderDone, MSGBOX_DEFAULT
+	return
 
 Debug_EventScript_BerryGiftTaken::
 	msgbox Debug_Text_BerryGiftTaken, MSGBOX_DEFAULT
@@ -1437,6 +1481,14 @@ Debug_Text_BerryLeagueOff:
 Debug_Text_BerryMoney:
 	.string "Got ¥10,000.$"
 
+Debug_Text_BerryOrderCommon:
+	.string "Today's order cleared. Bram draws a\n"
+	.string "COMMON one next time you talk.$"
+
+Debug_Text_BerryOrderDiscovery:
+	.string "Today's order cleared. Bram draws a\n"
+	.string "DISCOVERY next time (common if none).$"
+
 Debug_Text_BerryNoMoney:
 	.string "Money set to ¥0.$"
 
@@ -1462,6 +1514,18 @@ Debug_Text_BerryStatus2:
 Debug_Text_BerryStatus3:
 	.string "Hour {STR_VAR_1}   Today bits {STR_VAR_2}\n"
 	.string "Harvest King state: {STR_VAR_3}$"
+
+Debug_Text_BerryNoOrder:
+	.string "Order: none drawn today.$"
+
+Debug_Text_BerryOrderOpen:
+	.string "Order: {STR_VAR_2} {STR_VAR_1}, open.$"
+
+Debug_Text_BerryOrderOpenDiscovery:
+	.string "Order: DISCOVERY {STR_VAR_1}, open.$"
+
+Debug_Text_BerryOrderDone:
+	.string "Order: {STR_VAR_2} {STR_VAR_1}, delivered.$"
 
 Debug_Text_BerryGiftTaken:
 	.string "Bram's gift: taken today.$"

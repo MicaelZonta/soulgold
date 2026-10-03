@@ -50,7 +50,26 @@
 #define GARDEN_REFORM_NEEDS_HELP     2   // Book is enough, but the story is not there yet
 #define GARDEN_REFORM_READY          3   // can be paid now
 
+// Today's order (section 6), GardenOrder_Get.
+#define GARDEN_ORDER_NONE            0   // nothing to deliver today (no Book yet)
+#define GARDEN_ORDER_OPEN            1
+#define GARDEN_ORDER_DONE            2
+
+// Who placed the order (section 14.4 Q): only the first line of Bram's text.
+#define GARDEN_CLIENT_KURT           0
+#define GARDEN_CLIENT_FLOWER_SHOP    1
+#define GARDEN_CLIENT_NURSE          2
+#define GARDEN_CLIENT_MOOMOO_FARM    3
+#define GARDEN_CLIENT_DAY_CARE       4
+#define GARDEN_CLIENT_BUGSY          5   // story state >= 3; Kurt before that
+#define GARDEN_CLIENT_THEATER        6
+#define GARDEN_CLIENT_LIGHTHOUSE     7
+#define GARDEN_CLIENT_SCHOOL         8
+#define GARDEN_CLIENT_LAUREL         9
+#define GARDEN_CLIENT_COUNT          10
+
 // VAR_HARVEST_KING: Act 1 over (section 8.1). Levels 3 and 4 need it.
 #define HARVEST_KING_ACT1_DONE       4
+#define HARVEST_KING_BUGSY_CAME      3   // Act 1b: Bugsy is around (section 8.4)
 
 #endif // GUARD_CONSTANTS_BERRY_GARDEN_H

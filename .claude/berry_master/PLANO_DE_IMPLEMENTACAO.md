@@ -34,7 +34,7 @@
 | 4 | Cruzamento completo ✅ 30/09, testada no jogo 03/10 (QA) | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
 | 5 | Estado diário ✅ 30/09, testada no jogo 03/10 (QA) | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
 | 6 | Níveis da horta ✅ 30/09, testada no jogo 03/10 (QA) | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
-| 7 | Pedidos do dia | comum e descoberta, dica da Laurel | 3, 4, 5, 6 |
+| 7 | Pedidos do dia ✅ 03/10, testada no jogo 03/10 (QA) | comum e descoberta, dica da Laurel | 3, 4, 5, 6 |
 | 8 | Elenco e rotina | Bram, Laurel, Tilly, Sunflora por horário e dia da semana | 2, 5 |
 | 9 | Banco de falas | rodízio de 10, corações, reações de contexto | 5, 8 |
 | 10 | Infestações | pragas e ervas só na horta; 8 famílias só daqui | 2, 6 |
@@ -114,6 +114,7 @@ fez. Código: `sDebugMenu_Actions_BerryMaster*` em `src/debug.c`, scripts
 | Ripen / Grow 1 stage / Empty | os 10 canteiros: tudo maduro, um estágio, ou terra vazia (vazio inclui o da Laurel) |
 | Act 1 done: toggle | `VAR_HARVEST_KING` 0 ↔ 4 (libera as ofertas dos níveis 3 e 4) |
 | League clear: toggle | `FLAG_SYS_GAME_CLEAR` (rara da Laurel; Lansat e Starf cruzam) |
+| Order: new common / new discovery | apaga o pedido de hoje; a próxima conversa com o Bram sorteia e anuncia um daquele tipo (descoberta sem candidata → comum) |
 | Give ¥10,000 / Money: set to ¥0 / 5 of each Mulch | dinheiro para as reformas (ou nenhum, para testar a recusa); os 8 adubos |
 | Reset Berry Master | save que nunca viu o Bram: tutorial de novo, Livro, horta, níveis, marcos e história zerados |
 
@@ -780,6 +781,55 @@ positivo: é um `end` depois de um `yesno` cujos dois resultados já desviaram.
 berries; sair e entrar não troca o pedido; pedido de descoberta cruzado de verdade
 com a dica.
 
+### Parte 7 — feita (03/10/2026)
+
+**Entregue:** `GardenOrder_Roll/Get/RewardMulch/Pay`, `BerryLedger_NextDiscovery`,
+`BerryLedger_GetRecipe` e `GetBerryRecipe` (`src/berry.c`, lê a tabela de mutações; sem
+`OW_BERRY_MUTATIONS` devolve FALSE). Conversa do Bram: obra pronta → marcos → **pedido** →
+presente → oferta de reforma. Dica na conversa da Laurel. Debug `Order: new common /
+new discovery` e linha do pedido no `Status`. 4 testes novos em `test/berry_garden.c`
+(27/27 PASS com `make check`). Roteiro T41–T46 em `TESTES_NO_JOGO.md`.
+
+**Decisões:**
+1. **Sorteado a qualquer hora, não só de manhã.** Até a Parte 8 o Bram fica só em casa;
+   prender o pedido à manhã faria o jogador que passa à tarde nunca ver um. A Parte 8
+   decide se aperta. Herança: quando o Bram ficar na horta de manhã, a conversa dele lá
+   chama o mesmo `Route30_House_EventScript_Order` (com o `GardenRollDay` antes).
+2. **Não há pedido na visita do tutorial** (`FLAG_TEMP_1`): o tutorial termina no Livro e
+   nas duas primeiras berries; o primeiro pedido sai na visita seguinte (mesmo dia).
+   Achado na revisão depois da implementação; testado no jogo.
+3. **Quantidade e pagamento pela geração** (cruzamentos até as 8 do Bram, recursivo sobre
+   a tabela, que não tem ciclos — `berry_mutations_check.py`): 3/5/5/3/3/1 berries,
+   ₽100/150/200/300/400/600–1000 por berry. A comum mais cara paga ₽1.200 (3 × 400); a
+   descoberta é sempre 1 e paga o dobro (até ₽2.000).
+   Enigma (sem receita, não inicial) conta como a mais funda.
+4. **Comum só a partir do nível 1**, de qualquer berry do Livro (inclusive as 8 iniciais).
+   **Descoberta** a partir do nível 2, 1 dia em 3; sem candidata (Livro sem pares, ou
+   Lansat/Starf antes da Liga) vira comum no mesmo sorteio.
+5. **`VAR_BERRY_ORDER` em 16 bits**: berry 7 bits (índice no Livro + 1; 0 = nada), quantidade
+   4 bits, descoberta 1 bit, cliente 4 bits. Vale só com o bit `ORDER_ROLLED` do dia: na
+   virada o bit cai e a var velha fica ignorada até o próximo sorteio.
+6. **Clientes (10) só no texto**, por sorteio; o Bugsy vira Kurt antes do estado 3 da
+   sidequest. Agradecimentos em 5 falas (cliente % 5). Nenhum dá Poké Ball.
+7. **A entrega pergunta antes** (`checkitem` → `yesno` → `checkitemspace` do adubo →
+   `removeitem` → `GardenOrder_Pay`). Bolsa sem espaço para o adubo: avisa e não tira nada.
+   Fala no singular para 1 (“That's the Aguav Berry! Hand it over?”).
+8. **Lembrete uma vez por visita** (`FLAG_TEMP_7`), **dica da Laurel uma vez por visita**
+   (`FLAG_TEMP_8`) e só com pedido de descoberta aberto. A dica usa 3 buffers
+   (`STR_VAR_1..3`), nunca `STR_VAR_4`.
+9. **Dinheiro depois do `removeitem`**, pelo `GardenOrder_Pay` (que recusa pagar duas vezes
+   no mesmo dia); o valor vai para `STR_VAR_3` só depois, como manda a regra do Bug 3.
+
+**Medido no jogo (QA headless, 03/10):** pedido comum anunciado e entregue (₽750 + Damp
+Mulch, bolsa conferida na RAM); “No” mantém o pedido; sem lembrete na mesma visita e um
+lembrete depois de sair e entrar; bolsa cheia → recusa, as berries ficam; descoberta Aguav
+anunciada, Laurel: “Rawst Berry beside Leppa Berry” (receita certa), segunda conversa sem
+dica; entrega singular “Hand it over?”, ₽300 + Surprise Mulch; virada de dia → pedido
+novo; tutorial sem pedido e pedido na visita seguinte.
+
+**Flags:** só `FLAG_TEMP_7`/`FLAG_TEMP_8` da `Route30_House` passaram a ser usadas; o
+catálogo foi regenerado (o restante do diff do CSV é de outras sessões).
+
 ---
 
 ## Parte 8 — Elenco e rotina por horário
@@ -795,8 +845,10 @@ a Sunflora fica dentro de casa, sozinha).
 
 0. **`FLAG_TEMP` já ocupadas** (revisão da Parte 5): na `Route30`, `FLAG_TEMP_1` (árvore
    de Cut em (30,10)), `FLAG_TEMP_5` (canteiro B) e `FLAG_TEMP_6` (canteiro da Laurel);
-   na `Route30_House`, `FLAG_TEMP_1` (fala do dia do tutorial) e `FLAG_TEMP_4` (o Bram
-   já falou da reforma nesta visita, Parte 6). A Parte 8 escolhe das livres (conferir
+   na `Route30_House`, `FLAG_TEMP_1` (fala do dia do tutorial; também adia o primeiro
+   pedido), `FLAG_TEMP_4` (o Bram já falou da reforma nesta visita, Parte 6),
+   `FLAG_TEMP_7` (lembrete do pedido já dado nesta visita) e `FLAG_TEMP_8` (dica da
+   Laurel já dada nesta visita), as duas da Parte 7. A Parte 8 escolhe das livres (conferir
    com `grep` antes) e dá apelido em `flags.h`, como as da Parte 2.
    **Herança da Parte 6:** a fala da obra pronta (`Route30_House_EventScript_BuiltLevel`,
    que consome `GardenReform_TakeBuiltLevel`) e a oferta de reforma estão na conversa do

@@ -33,6 +33,12 @@ u16 GardenReform_TakeBuiltLevel(void);
 void GardenIrrigate(void);
 u16 GardenGift_Count(void);
 void BerryLedger_BuildSeedMenu(void);
+u16 BerryLedger_NextDiscovery(void);
+u16 BerryLedger_GetRecipe(void);
+u16 GardenOrder_Roll(void);
+u16 GardenOrder_Get(void);
+u16 GardenOrder_RewardMulch(void);
+u16 GardenOrder_Pay(void);
 
 // Debug menu (Berry Master...)
 void BerryDebug_AdvanceHours(void);
@@ -47,5 +53,6 @@ void BerryDebug_ResetToday(void);
 void BerryDebug_ResetAll(void);
 void BerryDebug_ClearMoney(void);
 void BerryDebug_Status(void);
+void BerryDebug_NewOrder(void);
 
 #endif // GUARD_BERRY_GARDEN_H

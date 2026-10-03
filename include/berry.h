@@ -8,6 +8,7 @@ struct BerryTree *GetBerryTreeInfo(u8 id);
 bool32 ObjectEventInteractionWaterBerryTree(void);
 bool32 WaterBerryTreeById(u8 id);
 void BerryTree_UpdateSoilTile(u8 treeId, s16 x, s16 y);
+bool32 GetBerryRecipe(u16 itemId, u16 *parent1, u16 *parent2);
 bool8 IsPlayerFacingEmptyBerryTreePatch(void);
 bool8 TryToWaterBerryTree(void);
 void ClearBerryTrees(void);

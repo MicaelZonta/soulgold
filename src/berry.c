@@ -2622,6 +2622,28 @@ static bool32 IsMutationUnlocked(u8 result)
     return TRUE;
 }
 
+// SoulGold: the recipe of a Berry (the pair that crosses into it), for the
+// Berry Master's discovery orders and Laurel's hints. FALSE if the Berry has
+// no recipe (Bram's eight, the Enigma) or if it is still locked (Lansat and
+// Starf before the League).
+bool32 GetBerryRecipe(u16 itemId, u16 *parent1, u16 *parent2)
+{
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sBerryMutations); i++)
+    {
+        if (BerryTypeToItemId(sBerryMutations[i][2]) == itemId)
+        {
+            if (!IsMutationUnlocked(sBerryMutations[i][2]))
+                return FALSE;
+            *parent1 = BerryTypeToItemId(sBerryMutations[i][0]);
+            *parent2 = BerryTypeToItemId(sBerryMutations[i][1]);
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 static u8 GetMutationOutcome(u8 berry1, u8 berry2)
 {
     u8 i;
@@ -2685,6 +2707,11 @@ static u8 TryForMutation(u8 berryTreeId, u8 berry)
         }
     }
     return 0;
+}
+#else
+bool32 GetBerryRecipe(u16 itemId, u16 *parent1, u16 *parent2)
+{
+    return FALSE;
 }
 #endif
 
