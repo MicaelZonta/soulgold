@@ -92,4 +92,22 @@
 #define GARDEN_PLACE_GARDEN          1   // Route30
 #define GARDEN_PLACE_HOUSE           2   // Route30_House
 
+// Hearts (part 9, section 14.3): days the player talked to them, 0..15, in
+// VAR_GARDEN_HEARTS, 4 bits each, and one GARDEN_TODAY_TALKED_* bit each.
+// GardenLine_Pick takes one of these too; GARDEN_HEARTS_NONE = a bank of 10
+// with no hearts (Bugsy, Laurel's notebook, Bram's gift, dreams...).
+#define GARDEN_HEARTS_BRAM           0
+#define GARDEN_HEARTS_LAUREL         1
+#define GARDEN_HEARTS_TILLY          2
+#define GARDEN_HEARTS_PEONY          3
+#define GARDEN_HEARTS_NONE           4
+#define GARDEN_HEARTS_MAX            15
+#define GARDEN_HEARTS_TIER1_DAYS     5   // lines 5-7 open
+#define GARDEN_HEARTS_TIER2_DAYS     12  // lines 8-10 open
+
+// What Bram has to tell on the next talk (GardenNews_Take).
+#define GARDEN_NEWS_NONE             0
+#define GARDEN_NEWS_FIRST_HARVEST    1   // the first Berry picked in the garden
+#define GARDEN_NEWS_NEW_BERRY        2   // a Berry new to the Book grew in the garden; VAR_0x8004 = it
+
 #endif // GUARD_CONSTANTS_BERRY_GARDEN_H

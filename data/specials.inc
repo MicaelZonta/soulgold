@@ -715,4 +715,10 @@ gSpecials::
 	def_special GardenOrder_Pay
 	def_special GardenCast_Apply
 	def_special GardenCast_IsWeekend
+	def_special GardenHearts_Talk
+	def_special GardenLine_Pick
+	def_special GardenNews_Take
+	def_special GardenLead_IsType
+	def_special GardenPlots_Planted
+	def_special BerryDebug_SetHearts
 	def_special BerryDebug_NewOrder

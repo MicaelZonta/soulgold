@@ -15,7 +15,7 @@
 #include "constants/items.h"
 
 // Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md,
-// parts 2 to 8).
+// parts 2 to 9).
 
 static void ClearLedger(void)
 {
@@ -579,4 +579,76 @@ TEST("Tilly and Bugsy are never in the garden together")
                 || GardenCast_PlaceOf(GARDEN_CAST_BUGSY, period, day, TRUE, HARVEST_KING_ACT1_DONE) != GARDEN_PLACE_GARDEN);
         }
     }
+}
+
+// Part 9: hearts, line banks and Bram's news (section 14.3, 9.8).
+TEST("A heart a day: only the first talk of the day counts")
+{
+    VarSet(VAR_GARDEN_HEARTS, 0);
+    VarSet(VAR_GARDEN_TODAY, 0);
+    gSpecialVar_0x8004 = GARDEN_HEARTS_LAUREL;
+    EXPECT(GardenHearts_Talk());
+    gSpecialVar_0x8004 = GARDEN_HEARTS_LAUREL;
+    EXPECT(!GardenHearts_Talk());
+    EXPECT_EQ(GardenHearts_Get(GARDEN_HEARTS_LAUREL), 1);
+    EXPECT_EQ(GardenHearts_Get(GARDEN_HEARTS_BRAM), 0);   // nibbles do not leak
+    VarSet(VAR_GARDEN_TODAY, 0);                          // the next day
+    gSpecialVar_0x8004 = GARDEN_HEARTS_LAUREL;
+    EXPECT(GardenHearts_Talk());
+    EXPECT_EQ(GardenHearts_Get(GARDEN_HEARTS_LAUREL), 2);
+}
+
+TEST("Hearts stop at 15 and open the lines at 5 and 12 days")
+{
+    u32 day;
+
+    VarSet(VAR_GARDEN_HEARTS, 0);
+    EXPECT_EQ(GardenLine_Count(GARDEN_HEARTS_TILLY), 4);
+    for (day = 1; day <= 20; day++)
+    {
+        VarSet(VAR_GARDEN_TODAY, 0);
+        gSpecialVar_0x8004 = GARDEN_HEARTS_TILLY;
+        GardenHearts_Talk();
+        if (day == GARDEN_HEARTS_TIER1_DAYS)
+            EXPECT_EQ(GardenLine_Count(GARDEN_HEARTS_TILLY), 7);
+        if (day == GARDEN_HEARTS_TIER2_DAYS)
+            EXPECT_EQ(GardenLine_Count(GARDEN_HEARTS_TILLY), 10);
+    }
+    EXPECT_EQ(GardenHearts_Get(GARDEN_HEARTS_TILLY), GARDEN_HEARTS_MAX);
+    EXPECT_EQ(GardenHearts_Get(GARDEN_HEARTS_PEONY), 0);
+    EXPECT_EQ(GardenLine_Count(GARDEN_HEARTS_NONE), 10);
+}
+
+TEST("The line of the day is the same all day and moves with the days")
+{
+    VarSet(VAR_GARDEN_HEARTS, 0);
+    VarSet(VAR_DAYS, 6);
+    gSpecialVar_0x8004 = GARDEN_HEARTS_BRAM;
+    EXPECT_EQ(GardenLine_Pick(), 2);                      // 6 % 4
+    gSpecialVar_0x8004 = GARDEN_HEARTS_NONE;
+    EXPECT_EQ(GardenLine_Pick(), 6);                      // 6 % 10
+    VarSet(VAR_DAYS, 7);
+    gSpecialVar_0x8004 = GARDEN_HEARTS_BRAM;
+    EXPECT_EQ(GardenLine_Pick(), 3);
+}
+
+TEST("Bram celebrates the first garden harvest once, then each new Berry")
+{
+    SetUpGarden(GARDEN_LEVEL_PROPER, 8, 0);
+    VarSet(VAR_GARDEN_NEWS, 0);
+    BerryLedger_RegisterHarvest(BERRY_TREE_ROUTE_30_PECHA, ITEM_LUM_BERRY); // a route tree: no news
+    EXPECT_EQ(GardenNews_Take(), GARDEN_NEWS_NONE);
+    EXPECT(BerryLedger_Has(ITEM_LUM_BERRY));               // still in the Book
+
+    ClearLedger();
+    RegisterFirst(8);
+    BerryLedger_RegisterHarvest(BERRY_TREE_GARDEN_A1, ITEM_ORAN_BERRY); // a starter in the garden
+    BerryLedger_RegisterHarvest(BERRY_TREE_GARDEN_A2, ITEM_LUM_BERRY);  // a cross, new
+    EXPECT_EQ(GardenNews_Take(), GARDEN_NEWS_FIRST_HARVEST);
+    EXPECT_EQ(GardenNews_Take(), GARDEN_NEWS_NEW_BERRY);
+    EXPECT_EQ(gSpecialVar_0x8004, ITEM_LUM_BERRY);
+    EXPECT_EQ(GardenNews_Take(), GARDEN_NEWS_NONE);
+
+    BerryLedger_RegisterHarvest(BERRY_TREE_GARDEN_A3, ITEM_LUM_BERRY);  // not new any more
+    EXPECT_EQ(GardenNews_Take(), GARDEN_NEWS_NONE);               // and no second "first"
 }

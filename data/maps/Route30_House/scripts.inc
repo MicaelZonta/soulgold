@@ -69,6 +69,12 @@ Route30_House_EventScript_BaldMan::
 	@ Idempotent: also fills the Book of a save that did the tutorial before
 	@ the Book existed, so the daily draw below is never empty.
 	special BerryLedger_RegisterStarters
+	@ Hearts: the first talk of the day counts one and may bring a reaction
+	@ (part 9, data/scripts/berry_garden_lines.inc). VAR_0x800B is only read
+	@ by the reaction, right below.
+	setvar VAR_0x8004, GARDEN_HEARTS_BRAM
+	specialvar VAR_0x800B, GardenHearts_Talk
+	call_if_unset FLAG_TEMP_BRAM_TUTORIAL_VISIT, BerryGarden_EventScript_BramReaction
 	call Route30_House_EventScript_BuiltLevel
 	call Route30_House_EventScript_Milestones
 	call Route30_House_EventScript_Order
@@ -78,11 +84,12 @@ Route30_House_EventScript_BaldMan::
 	goto_if_set FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY, Route30_House_EventScript_DoneToday
 	@ 2 Berries a day, 3 from garden level 2 (src/berry_garden.c).
 	specialvar VAR_0x8009, GardenGift_Count
-	@ "You came back!" makes no sense in the same conversation as the tutorial.
+	@ The tutorial visit has its own line; every other day, the line of the
+	@ day (bank R), and from level 2 the question about the seed.
 	call_if_set FLAG_TEMP_BRAM_TUTORIAL_VISIT, Route30_House_EventScript_FirstTwoText
 	goto_if_set FLAG_TEMP_BRAM_TUTORIAL_VISIT, Route30_House_EventScript_GiveDraw
+	call BerryGarden_EventScript_BramGiftLine
 	goto_if_eq VAR_0x8009, 3, Route30_House_EventScript_OfferSeed
-	msgbox Route30_House_Text_TakeTwo, MSGBOX_DEFAULT
 	goto Route30_House_EventScript_GiveDraw
 
 Route30_House_EventScript_GiveDraw::
@@ -93,8 +100,8 @@ Route30_House_EventScript_GiveDraw::
 	setflag FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY
 	call Route30_House_EventScript_GiveLedgerBerry
 	call_if_eq VAR_0x8009, 3, Route30_House_EventScript_GiveLedgerBerry
-	call_if_eq VAR_0x8009, 3, Route30_House_EventScript_PlantThemThreeText
-	call_if_ne VAR_0x8009, 3, Route30_House_EventScript_PlantThemText
+	@ How planting works: the tutorial's, not every day's.
+	call_if_set FLAG_TEMP_BRAM_TUTORIAL_VISIT, Route30_House_EventScript_PlantThemText
 	goto Route30_House_EventScript_AfterGift
 
 @ Every path of the conversation ends here (except a full bag, which ends on
@@ -288,10 +295,6 @@ Route30_House_EventScript_OrderThanks5::
 
 Route30_House_EventScript_PlantThemText::
 	msgbox Route30_House_Text_PlantThem, MSGBOX_DEFAULT
-	return
-
-Route30_House_EventScript_PlantThemThreeText::
-	msgbox Route30_House_Text_PlantThemThree, MSGBOX_DEFAULT
 	return
 
 @ ---------------------------------------------------------------------------
@@ -546,18 +549,9 @@ Route30_House_EventScript_FirstTwoText::
 	msgbox Route30_House_Text_FirstTwo, MSGBOX_DEFAULT
 	return
 
-Route30_House_EventScript_TakeTwoText::
-	msgbox Route30_House_Text_TakeTwo, MSGBOX_DEFAULT
-	return
-
+@ The gift is already out today: the line of the day (banks A and B).
 Route30_House_EventScript_DoneToday::
-	specialvar VAR_RESULT, GardenGift_Count
-	goto_if_eq VAR_RESULT, 3, Route30_House_EventScript_DoneTodayThree
-	msgbox Route30_House_Text_DoneToday, MSGBOX_DEFAULT
-	goto Route30_House_EventScript_AfterGift
-
-Route30_House_EventScript_DoneTodayThree::
-	msgbox Route30_House_Text_DoneTodayThree, MSGBOX_DEFAULT
+	call BerryGarden_EventScript_BramChat
 	goto Route30_House_EventScript_AfterGift
 
 @ His wife, and the whole reason she exists: the fourteen competitive berries,
@@ -577,10 +571,14 @@ Route30_House_EventScript_BerryWife::
 	faceplayer
 	dotimebasedevents
 	special GardenRollDay
+	@ Hearts (part 9): VAR_0x800B = first talk of the day, read by WifeChat.
+	setvar VAR_0x8004, GARDEN_HEARTS_LAUREL
+	specialvar VAR_0x800B, GardenHearts_Talk
 	call Route30_House_EventScript_LaurelHint
 	call Route30_House_EventScript_LaurelNightGift
 	goto_if_unset FLAG_SYS_GAME_CLEAR, Route30_House_EventScript_WifeChat
-	goto_if_set FLAG_DAILY_BERRY_MASTERS_WIFE, Route30_House_EventScript_WifeDoneToday
+	@ After the League: one rare a day, then her usual lines.
+	goto_if_set FLAG_DAILY_BERRY_MASTERS_WIFE, Route30_House_EventScript_WifeChat
 	@ Only a rare the player has harvested (the Book), never the Enigma.
 	specialvar VAR_RESULT, BerryLedger_RandomRegisteredRare
 	goto_if_eq VAR_RESULT, ITEM_NONE, Route30_House_EventScript_WifeNoRare
@@ -607,7 +605,9 @@ Route30_House_EventScript_LaurelHint::
 	bufferitemname STR_VAR_1, VAR_0x8004
 	bufferitemname STR_VAR_2, VAR_0x8005
 	bufferitemname STR_VAR_3, VAR_0x8006
-	msgbox Route30_House_Text_LaurelHint, MSGBOX_DEFAULT
+	@ By day her plain line; at night the notebook's line of the day (bank F).
+	goto_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, BerryGarden_EventScript_LaurelRecipeLine
+	msgbox BerryGarden_Text_LaurelRecipe0, MSGBOX_DEFAULT
 	return
 
 Route30_House_EventScript_LaurelHintEnd::
@@ -619,21 +619,16 @@ Route30_House_EventScript_WifeNoRare::
 	release
 	end
 
-@ Her line of the hour (part 8; part 9 turns each into a bank of 10).
+@ Her line: a reaction on the first talk of the day, else the line of the
+@ day for the hour (banks D, E and the notebook F;
+@ data/scripts/berry_garden_lines.inc).
 Route30_House_EventScript_WifeChat::
+	setvar VAR_RESULT, FALSE
+	call_if_eq VAR_0x800B, TRUE, BerryGarden_EventScript_LaurelReaction
+	goto_if_eq VAR_RESULT, TRUE, Route30_House_EventScript_WifeChatEnd
 	goto_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, Route30_House_EventScript_WifeNight
-	goto_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_MORNING, Route30_House_EventScript_WifeMorning
-	specialvar VAR_RESULT, GardenCast_IsWeekend
-	goto_if_eq VAR_RESULT, TRUE, Route30_House_EventScript_WifeBreadDay
-	msgbox Route30_House_Text_WifeGarden, MSGBOX_DEFAULT
-	goto Route30_House_EventScript_WifeChatEnd
-
-Route30_House_EventScript_WifeMorning::
-	msgbox Route30_House_Text_WifeMorning, MSGBOX_DEFAULT
-	goto Route30_House_EventScript_WifeChatEnd
-
-Route30_House_EventScript_WifeBreadDay::
-	msgbox Route30_House_Text_WifeBreadDay, MSGBOX_DEFAULT
+	call_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_MORNING, BerryGarden_EventScript_LaurelMorningLine
+	call_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_DAY, BerryGarden_EventScript_LaurelDayLine
 	goto Route30_House_EventScript_WifeChatEnd
 
 @ Night: the notebook (section 14.4 F). Any Berry the player can discover now,
@@ -647,7 +642,7 @@ Route30_House_EventScript_WifeNight::
 	bufferitemname STR_VAR_1, VAR_RESULT
 	bufferitemname STR_VAR_2, VAR_0x8005
 	bufferitemname STR_VAR_3, VAR_0x8006
-	msgbox Route30_House_Text_LaurelHint, MSGBOX_DEFAULT
+	call BerryGarden_EventScript_LaurelRecipeLine
 	goto Route30_House_EventScript_WifeChatEnd
 
 Route30_House_EventScript_WifeNothingTonight::
@@ -685,16 +680,15 @@ Route30_House_EventScript_LaurelNightGift::
 Route30_House_EventScript_LaurelNightGiftEnd::
 	return
 
-Route30_House_EventScript_WifeDoneToday::
-	msgbox Route30_House_Text_WifeDoneToday, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
 
 @ Weekend mornings (part 8): breakfast at the table before her stall opens.
 Route30_House_EventScript_Tilly::
 	lock
 	faceplayer
+	dotimebasedevents
+	special GardenRollDay
+	setvar VAR_0x8004, GARDEN_HEARTS_TILLY
+	special GardenHearts_Talk
 	msgbox Route30_House_Text_TillyBreakfast, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -748,20 +742,9 @@ Route30_House_Text_FirstTwo:
 	.string "And since you're here, take two more.\n"
 	.string "There's always more tomorrow.$"
 
-Route30_House_Text_TakeTwo:
-	.string "You came back! And you looked at the\n"
-	.string "trees, I'll bet.\p"
-	.string "I pick more than two old people can eat.\n"
-	.string "Take two -- there's more tomorrow.\l"
-	.string "There's always more tomorrow.$"
-
 Route30_House_Text_TakeThree:
-	.string "You came back! And you looked at the\n"
-	.string "trees, I'll bet.\p"
 	.string "Three today -- the garden earns its\n"
-	.string "keep. Or have you got one in mind?\p"
-	.string "Name it. If it's in the Book, I've got\n"
-	.string "seed for it.$"
+	.string "keep. Or have you got one in mind?$"
 
 Route30_House_Text_SurpriseMe:
 	.string "Surprise me$"
@@ -775,18 +758,6 @@ Route30_House_Text_NameIt:
 Route30_House_Text_GoodPick:
 	.string "Good pick. Plant it next to something\n"
 	.string "it gets along with.$"
-
-Route30_House_Text_PlantThemThree:
-	.string "And don't eat them all. Plant one.\p"
-	.string "That's how this works: a planted Berry\n"
-	.string "is a tree, and a tree is Berries for ever.\p"
-	.string "Check the trees as you go. They grow\n"
-	.string "back after 12 hours.$"
-
-Route30_House_Text_DoneTodayThree:
-	.string "That's your three for today.\p"
-	.string "Go and plant one. I'll pick more by\n"
-	.string "morning -- I always do.$"
 
 Route30_House_Text_OfferProper:
 	.string "{STR_VAR_1} Berries in your Book now.\n"
@@ -953,39 +924,12 @@ Route30_House_Text_OrderThanks5:
 Route30_House_Text_OrderPaid:
 	.string "{PLAYER} received ¥{STR_VAR_3}.$"
 
-Route30_House_Text_LaurelHint:
-	.string "{STR_VAR_1}. {STR_VAR_2} beside\n"
-	.string "{STR_VAR_3}.\p"
-	.string "Touching, side by side. Not corner to\n"
-	.string "corner. People always do corner to\l"
-	.string "corner.$"
-
 Route30_House_Text_PlantThem:
 	.string "And don't eat both of them. Plant one.\p"
 	.string "That's how this works: a planted Berry\n"
 	.string "is a tree, and a tree is Berries for ever.\p"
 	.string "Check the trees as you go. They grow\n"
 	.string "back after 12 hours.$"
-
-Route30_House_Text_DoneToday:
-	.string "That's your two for today.\p"
-	.string "Go and plant one. I'll pick more by\n"
-	.string "morning -- I always do.$"
-
-Route30_House_Text_WifeMorning:
-	.string "He's out in the beds. Left at four.\n"
-	.string "He always leaves at four.\p"
-	.string "Sit. Eat. The Berries can wait ten\n"
-	.string "minutes. He can't, but they can.$"
-
-Route30_House_Text_WifeGarden:
-	.string "Too much water. Not you. Him.\p"
-	.string "He's inside with his seeds. Go on.$"
-
-Route30_House_Text_WifeBreadDay:
-	.string "Bread day. Don't open the oven.\n"
-	.string "Don't look at the oven.\p"
-	.string "The oven can feel you looking.$"
 
 Route30_House_Text_WifeReading:
 	.string "I'm reading. You've had your page.$"
@@ -1076,7 +1020,3 @@ Route30_House_Text_WifeNoRare:
 	.string "Grow one yourself first. Then we'll\n"
 	.string "talk.$"
 
-Route30_House_Text_WifeDoneToday:
-	.string "One a day. I said don't argue.\p"
-	.string "Come back tomorrow and I'll pick you\n"
-	.string "another.$"

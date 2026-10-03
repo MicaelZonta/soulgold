@@ -2430,7 +2430,7 @@ void ObjectEventInteractionPickBerryTree(void)
     {
         gSpecialVar_0x8004 = AddBagItem(BerryTypeToItemId(berry), GetBerryCountByBerryTreeId(id));
         if (gSpecialVar_0x8004)
-            BerryLedger_RegisterItem(BerryTypeToItemId(berry));
+            BerryLedger_RegisterHarvest(id, BerryTypeToItemId(berry));
         return;
     }
     gSpecialVar_0x8004 = (CheckBagHasSpace(BerryTypeToItemId(berry), GetBerryCountByBerryTreeId(id)) && CheckBagHasSpace(BerryTypeToItemId(mutation), 1)) + 2;
@@ -2438,8 +2438,8 @@ void ObjectEventInteractionPickBerryTree(void)
     {
         AddBagItem(BerryTypeToItemId(berry), GetBerryCountByBerryTreeId(id));
         AddBagItem(BerryTypeToItemId(mutation), 1);
-        BerryLedger_RegisterItem(BerryTypeToItemId(berry));
-        BerryLedger_RegisterItem(BerryTypeToItemId(mutation));
+        BerryLedger_RegisterHarvest(id, BerryTypeToItemId(berry));
+        BerryLedger_RegisterHarvest(id, BerryTypeToItemId(mutation));
     }
 }
 

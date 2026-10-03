@@ -1,4 +1,4 @@
-# Berry Master — testes no jogo, em ordem (Partes 1 a 8)
+# Berry Master — testes no jogo, em ordem (Partes 1 a 9)
 
 > Roteiro único para rodar **de cima para baixo**. Cada teste parte do estado que o
 > anterior deixou, então não pule nenhum sem ler o “Estado ao fim”. Cada um diz qual
@@ -142,8 +142,8 @@ Berry, open.` ou `Order: … delivered.`
 
 ### T08 · Presente é um por dia (Parte 3) ok
 - **Passos:** fale com o Bram de novo.
-- **Esperado:** “That's your two for today. / Go and plant one. I'll pick more by morning
-  -- I always do.”
+- **Esperado:** nenhuma berry; ele diz a fala do dia (banco B à tarde, banco A de manhã
+  na horta — desde a Parte 9 no lugar de “That's your two for today…”).
 
 ### T09 · Status depois do tutorial (Partes 2 e 3) OK
 - **Passos:** `Berry Master… → Status`.
@@ -248,14 +248,14 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
 ### T18 · Com 11 no Livro, nenhum marco
 - **Passos:** `Book of Berries… → 11`. `Go: Bram's house`, fale com o Bram.
 - **Esperado:** nenhum prêmio. Só o presente do dia (se o dia virou em algum teste
-  anterior) ou “That's your two for today…” (se não virou).
+  anterior) ou a fala do dia (se não virou).
 
 ### T19 · Marco 12 (e a oferta de reforma junto)
 - **Passos:** `Book of Berries… → 12 (level 2)`. Fale com o Bram.
 - **Esperado, em ordem:**
   1. “Let me see that Book of yours... / 12 Berries! You're getting the hang of this,
      sprout. / Here. Something for the garden.” → recebe **5 Growth Mulch**.
-  2. O presente do dia, ou “That's your two for today…”.
+  2. O presente do dia, ou a fala do dia.
   3. **Por último**, a caixa de dinheiro aparece e ele oferece a reforma: “12 Berries in
      your Book now. Time this was a proper garden. / Four more beds by the pond, dug by
      morning. ¥5,000 for the lot. Shall I?” → responda **No** → “Suit yourself. The offer
@@ -298,7 +298,7 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
   não foi gasto).
 - **Passos:** `Book of Berries… → 67 (every Berry)`. Fale com a Laurel. Fale de novo.
 - **Esperado:** primeira vez: “…One a day. Don't argue.” e uma rara (Liechi a Maranga),
-  **nunca Enigma**. Segunda vez: “One a day. I said don't argue.”
+  **nunca Enigma**. Segunda vez: a fala do dia dela (desde a Parte 9), sem rara.
 - Depois: `League clear: toggle` de volta para “League NOT cleared.”
 
 **Estado ao fim do bloco C:** Livro 67, nível 1, marcos pagos até 60, Liga desligada.
@@ -400,9 +400,9 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
   Fale com o Bram.
 - **Esperado, em ordem:**
   1. “Four more beds! Laurel dug them. / Don't tell her I said so. She'll say I helped.”
-  2. Presente novo: “You came back! … / Three today -- the garden earns its keep. Or have
-     you got one in mind? / Name it. If it's in the Book, I've got seed for it.” e um
-     menu com **Surprise me** / **I've got one**.
+  2. Presente novo: a fala do dia do banco R (ex.: “Here. From the Book. Grow 'em
+     well.”), depois “Three today -- the garden earns its keep. Or have you got one in
+     mind?” e um menu com **Surprise me** / **I've got one**.
   3. Com o Livro em 22 e o Ato 1 por fazer, a conversa termina com “I've got the next
      thing in mind for the garden. But it's more than one old man can dig. I'd need
      somebody to help.” É a mesma fala do T36 e está certa aqui também.
@@ -457,7 +457,7 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
   4. `Go: the garden`. `Status`.
   5. `Go: Bram's house`. Fale com o Bram. `Status`.
 - **Esperado:** no passo 4, `Level 1` (entrar na Route 30 corrigiu o nível). No passo 5,
-  **sem** tutorial: vai direto ao presente (“You came back!…”, 2 berries das 8 iniciais),
+  **sem** tutorial: vai direto ao presente (fala do banco R, 2 berries das 8 iniciais),
   e o `Status` mostra `Book 8/67` (a conversa registrou as 8 do Bram).
 
 ---
@@ -537,7 +537,7 @@ sábado).
 - **Passos:** `Clock…` até dar entre 10h e 19h num dia em que a Tilly **não** está na
   banquinha. Olhe a horta e entre na casa.
 - **Esperado:** horta: só a Laurel, em (27,43), virada para os canteiros; falando com ela:
-  “Too much water. Not you. Him. / He's inside with his seeds. Go on.”. Casa: Bram na mesa
+  uma fala do banco E (ou, na primeira conversa do dia, uma reação: ver T58). Casa: Bram na mesa
   (fala de sempre: presente, pedido…), Sunflora sob a janela (“Floraaa!”, com plaquinha
   e grito). Ninguém ocupa o único acesso de um canteiro: todos os 10 se alcançam a pé.
 
@@ -556,13 +556,13 @@ sábado).
 - **Passos:** fale com a Laurel.
 - **Esperado:** “He's asleep. He left these on the table for you. / He counted them twice.
   Don't tell him I watched.” e 2 berries do Livro (3 no nível 2+). Falar de novo: sem
-  presente. De manhã o Bram diz “That's your two for today.” (o presente já saiu).
+  presente. De manhã o Bram vai direto à fala do dia (o presente já saiu).
 
 ### T50 · De manhã
 - **Passos:** `Clock… → Next morning, 7:00`. Horta e casa.
 - **Esperado:** horta: Bram em (27,44), virado para a fileira de baixo; a conversa com ele
   é a mesma da casa (obra pronta, marcos, pedido, presente, reforma). Casa: só a Laurel
-  (“He's out in the beds. Left at four…”) e a Sunflora.
+  (fala do banco D) e a Sunflora.
 
 ### T51 · Fim de semana
 - **Passos:** `Clock… → +24 hours` até a Tilly aparecer (de manhã em casa, à tarde na
@@ -571,7 +571,7 @@ sábado).
   watering! I'm eating toast…”). À tarde: Tilly na banquinha (24,41) com a fala do dia,
   “Buy some! Buy LOTS!” e a loja: Growth, Damp, Stable, Gooey Mulch (₽200). Ao sair da
   loja: “Come back next weekend! Bring money!”. A Laurel **não** está na horta (dia de
-  forno): em casa, “Bread day. Don't open the oven…”.
+  forno): em casa, na primeira conversa do dia, “Bread day. Don't open the oven…”.
 
 ### T52 · Loja no nível 4
 - **Passos:** `Garden level… → 4`, fale com a Tilly num fim de semana à tarde.
@@ -579,8 +579,7 @@ sábado).
 
 ### T53 · Bugsy
 - **Passos:** `Act 1 done: toggle` → ligado. Terça ou quinta à tarde, horta.
-- **Esperado:** Bugsy em (29,41), virado para o canteiro B. Terça: “Every color of Berry
-  calls a different bug…”; quinta: “Try Stable Mulch on one bed…”. Com o Ato 1 desligado,
+- **Esperado:** Bugsy em (29,41), virado para o canteiro B, com uma fala do banco H. Com o Ato 1 desligado,
   ele não vem. Nunca no mesmo dia que a Tilly. Desligue o Ato 1 de volta.
 
 ### T54 · Tutorial a qualquer hora
@@ -588,6 +587,77 @@ sábado).
 - **Esperado:** antes do tutorial o Bram está **em casa**, acordado, a qualquer hora; o
   tutorial roda normal. Depois dele, a rotina vale (de manhã, na próxima entrada, ele vai
   para a horta).
+
+---
+
+## Bloco F4 — Banco de falas e corações (Parte 9)
+
+Cada pessoa tem um banco de 10 falas; a do dia é `dias de jogo % N` (a mesma o dia todo).
+Bram, Laurel e Tilly têm **corações**: +1 por dia em que você fala com eles; com 0–4 só
+as falas 1–4 saem, com 5–11 até a 7, com 12+ todas. `Berry Master… → Hearts…` põe todos
+em 0, 5, 12 ou 15; a última página do `Status` mostra os corações. Na **primeira
+conversa do dia** pode vir uma **reação** no lugar da fala do dia.
+
+### T55 · Corações sobem uma vez por dia
+- **Passos:** `Hearts… → 0`. Fale com a Laurel duas vezes. `Status`. `Clock… → New day,
+  keep clock`, fale com ela de novo. `Status`.
+- **Esperado:** Laurel 1 depois das duas conversas; 2 no dia seguinte. Bram e Tilly não
+  mudam.
+
+### T56 · O presente tem fala própria e não repete o tutorial
+- **Passos:** dia novo, fale com o Bram (presente ainda não retirado).
+- **Esperado:** uma fala do banco R (“Here. From the Book. Grow 'em well.”, “Hold out
+  your hands…”…), as berries e **nenhum** “And don't eat both of them. Plant one…” (isso é
+  só do tutorial). No nível 2+: depois da fala R, “Three today -- the garden earns its
+  keep. Or have you got one in mind?” com o menu — sem “You came back!” e sem “Name it…”
+  antes do menu.
+
+### T57 · Depois do presente, a fala do dia
+- **Passos:** fale com o Bram de novo, de tarde (em casa) e de manhã (na horta).
+- **Esperado:** de tarde, uma fala do banco B (“Seed day. Sit down…”, “I've got a seed
+  here I can't name…”); de manhã, do banco A (“Water before the sun's up…”, “I talk to the
+  trees…”). A mesma fala o dia todo; com `Hearts… → 12`, também as falas 8–10 aparecem
+  ao longo dos dias.
+
+### T58 · Reações da Laurel
+- **Esperado, na primeira conversa do dia (de manhã ou à tarde, nunca à noite):**
+  - segunda-feira, antes da Liga: “My husband hands out the easy ones. / I keep the
+    others…”;
+  - quarta-feira com um Pokémon de Planta te seguindo: “That one would like it here. /
+    Let it out sometime.”;
+  - horta toda vazia (`Empty the garden`): “Empty beds. Like an empty table…”;
+  - sábado ou domingo à tarde (em casa): “Bread day. Don't open the oven…”.
+  Na segunda conversa do dia: a fala do banco (D de manhã, E à tarde).
+
+### T59 · O caderno da Laurel à noite
+- **Passos:** de noite, fale com ela em dias diferentes.
+- **Esperado:** a receita sai cada dia com uma fala diferente do banco F (“The page with
+  the coffee stain…”, “My grandmother's hand…”, “Sit. No, closer, the lamp's bad…”), com
+  a berry nova e os dois pais certos. Com pedido de descoberta aberto, a dica do pedido à
+  noite também usa essas falas; de dia, a fala simples (“X. Y beside Z. Touching…”).
+
+### T60 · O Bram comemora a primeira colheita
+- **Preparação:** `Reset Berry Master`, tutorial, plante uma berry num canteiro da horta,
+  `Ripen the garden`, colha.
+- **Esperado:** na conversa seguinte com o Bram: “Your first! Hold it up. No -- higher. /
+  There. Now you're a farmer.” Só uma vez no jogo; colher numa árvore de rota não conta.
+
+### T61 · O Bram comemora berry nova cruzada
+- **Passos:** cruze duas berries na horta até sair uma que não está no Livro (ou plante
+  uma berry de fora do Livro), colha, fale com o Bram.
+- **Esperado:** “You grew a {berry}? I've never seen one! / Laurel! LAUREL!”, uma vez por
+  berry nova. As 8 do Bram e berries colhidas fora da horta não contam.
+
+### T62 · Reações da manhã do Bram
+- **Esperado, de manhã, na primeira conversa do dia:** domingo — “Sunday! Tilly's
+  selling out front this afternoon…”; terça e quinta, com o Ato 1 feito — “Bugsy's coming
+  today…”.
+
+### T63 · Tilly e Bugsy
+- **Esperado:** Tilly na banquinha diz uma fala do banco G antes da loja (reações: Livro
+  com 66, “You grew ALL of them?…”; domingo com inseto te seguindo, “Is that a …?!”).
+  Bugsy diz uma fala do banco H; com a horta no nível 4, a primeira conversa de cada
+  visita é “The hotel's full! Well, one Combee. / It's a start.”.
 
 ---
 

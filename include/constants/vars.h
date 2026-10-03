@@ -398,7 +398,7 @@
 #define VAR_GARDEN_TODAY                                0x4127
 // Hearts (days the player talked to them), 4 bits each: Bram, Laurel, Tilly,
 // Peony from the low nibble up (section 14.3). Written by
-// GardenHearts_Talk (plan part 9, not written yet).
+// GardenHearts_Talk (src/berry_garden.c).
 #define VAR_GARDEN_HEARTS                               0x4128
 // Wins against Klara in the morning raids (section 14.5).
 #define VAR_GARDEN_RIVALS                               0x4129
@@ -417,7 +417,13 @@
 // and the old-save fix compare the level with < 2 and == 0. Written by
 // GardenReform_Pay and GardenRollDay (src/berry_garden.c) and by Bram.
 #define VAR_BERRY_GARDEN_WORK                           0x412E
-// PROXIMA VAR NOVA: 0x412F (livre ate VARS_END 0x42FF). Alocar aqui, em
+// What Bram tells the player on the next talk (part 9, section 9.8): bits 0-6
+// a Berry new to the Book that grew in the garden (Book index + 1, 0 = none),
+// bit 7 the first garden harvest is waiting to be celebrated, bit 8 it was.
+// Written by BerryLedger_RegisterHarvest, read by GardenNews_Take
+// (src/berry_garden.c).
+#define VAR_GARDEN_NEWS                                 0x412F
+// PROXIMA VAR NOVA: 0x4130 (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 

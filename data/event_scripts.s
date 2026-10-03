@@ -1204,6 +1204,7 @@ Common_Text_ReceivedMon:
 	.include "data/scripts/nexus.inc"
 	.include "data/scripts/trainer_script.inc"
 	.include "data/scripts/berry_tree.inc"
+	.include "data/scripts/berry_garden_lines.inc"
 	.include "data/scripts/secret_base.inc"
 	.include "data/scripts/cable_club.inc"
 	.include "data/text/cable_club.inc"

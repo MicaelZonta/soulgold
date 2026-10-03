@@ -1459,6 +1459,15 @@ Eventos que **sorteiam** o dia (primeira entrada do dia na Route 30, special
 Tudo em inglês, em prosa (quebrar linha com `nomear-falante/medir_linha.py` ao
 escrever o `.inc`). Coluna ♥: **0** sempre, **1** com 5 dias de conversa, **2** com 12.
 
+> **Código (parte 9, 03/10/2026):** A, B, D, E, F, G, H e R estão em
+> `data/scripts/berry_garden_lines.inc`. R1 e R6 foram reescritas para servir também à
+> tarde (o Bram entrega em casa): “Picked these at dawn, sprout. Still had the dew on
+> 'em…” e “Fresh from this morning! Fresher than me, anyway.”. A reação do Bugsy de
+> terça/quinta diz “this afternoon” implícito; a de domingo virou “Tilly's selling out
+> front this afternoon.” As reações ao Pokémon da frente só valem num dia fixo (Laurel,
+> Planta: quarta; Tilly, inseto: domingo). P (pragas) fica para a parte 10. Aspas
+> curvas no jogo (o charmap não tem as retas).
+
 #### A. Bram — manhã, na horta, depois do presente
 
 | # | ♥ | Fala |

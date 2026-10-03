@@ -12,12 +12,14 @@
 #include "berry_garden.h"
 #include "clock.h"
 #include "event_data.h"
+#include "event_object_movement.h"
 #include "field_screen_effect.h"
 #include "item.h"
 #include "list_menu.h"
 #include "malloc.h"
 #include "money.h"
 #include "overworld.h"
+#include "pokemon.h"
 #include "random.h"
 #include "rtc.h"
 #include "script_menu.h"
@@ -502,27 +504,25 @@ void BerryDebug_ResetAll(void)
     VarSet(VAR_BERRY_LEDGER_MILESTONE, 0);
     VarSet(VAR_GARDEN_HEARTS, 0);
     VarSet(VAR_GARDEN_RIVALS, 0);
+    VarSet(VAR_GARDEN_NEWS, 0);
     VarSet(VAR_BERRY_ORDER, 0);
     VarSet(VAR_HARVEST_KING, 0);
     BerryDebug_ResetToday();
 }
 
 // For the status screen: VAR_0x8004 = the Book, VAR_0x8005 = pending milestone,
-// VAR_0x8006 = the local hour, VAR_0x8007 = how many garden plots are planted.
+// VAR_0x8006 = the local hour, VAR_0x8007 = how many garden plots are planted,
+// VAR_0x8008..0x800A = Bram's, Laurel's and Tilly's hearts.
 void BerryDebug_Status(void)
 {
-    u32 id, planted = 0;
-
-    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_GARDEN_LAST; id++)
-    {
-        if (GetBerryTreeInfo(id)->stage != BERRY_STAGE_NO_BERRY)
-            planted++;
-    }
     RtcCalcLocalTime();
     gSpecialVar_0x8004 = BerryLedger_Count();
     gSpecialVar_0x8005 = BerryLedger_PendingMilestone();
     gSpecialVar_0x8006 = gLocalTime.hours;
-    gSpecialVar_0x8007 = planted;
+    gSpecialVar_0x8007 = GardenPlots_Planted();
+    gSpecialVar_0x8008 = GardenHearts_Get(GARDEN_HEARTS_BRAM);
+    gSpecialVar_0x8009 = GardenHearts_Get(GARDEN_HEARTS_LAUREL);
+    gSpecialVar_0x800A = GardenHearts_Get(GARDEN_HEARTS_TILLY);
 }
 
 // ---------------------------------------------------------------------------
@@ -848,4 +848,148 @@ void GardenCast_Apply(void)
 u16 GardenCast_IsWeekend(void)
 {
     return IsWeekend(GetDayOfWeek());
+}
+
+// ---------------------------------------------------------------------------
+// Hearts and line banks (part 9, section 14.3)
+//
+// Every repeated event has a bank of 10 lines; the line is VAR_DAYS % N, so it
+// is the same all day (a Harvest Moon villager) and none repeats within N days.
+// Bram, Laurel, Tilly and Peony have hearts: one more for each day the player
+// talks to them, up to 15. Lines 1-4 always, 5-7 from 5 days, 8-10 from 12.
+// ---------------------------------------------------------------------------
+
+#define HEARTS_BITS  4
+#define HEARTS_MASK  0xF
+
+u32 GardenHearts_Get(u32 who)
+{
+    if (who >= GARDEN_HEARTS_NONE)
+        return 0;
+    return (VarGet(VAR_GARDEN_HEARTS) >> (who * HEARTS_BITS)) & HEARTS_MASK;
+}
+
+static void GardenHearts_Set(u32 who, u32 hearts)
+{
+    u16 all = VarGet(VAR_GARDEN_HEARTS) & ~(HEARTS_MASK << (who * HEARTS_BITS));
+
+    VarSet(VAR_GARDEN_HEARTS, all | (min(hearts, GARDEN_HEARTS_MAX) << (who * HEARTS_BITS)));
+}
+
+// How many lines of a bank are open: 10 without hearts, else 4, 7 or 10.
+u32 GardenLine_Count(u32 who)
+{
+    u32 hearts;
+
+    if (who >= GARDEN_HEARTS_NONE)
+        return 10;
+    hearts = GardenHearts_Get(who);
+    if (hearts >= GARDEN_HEARTS_TIER2_DAYS)
+        return 10;
+    if (hearts >= GARDEN_HEARTS_TIER1_DAYS)
+        return 7;
+    return 4;
+}
+
+// VAR_0x8004 = GARDEN_HEARTS_*. The first talk of the day counts a heart
+// (GARDEN_TODAY_TALKED_*); returns TRUE then, so the script knows it may say
+// a reaction (section 14.3: reactions only on the first talk of the day).
+u16 GardenHearts_Talk(void)
+{
+    u32 who = gSpecialVar_0x8004;
+
+    if (who >= GARDEN_HEARTS_NONE || GardenToday_Has(GARDEN_TODAY_TALKED_BRAM + who))
+        return FALSE;
+    GardenToday_Mark(GARDEN_TODAY_TALKED_BRAM + who);
+    GardenHearts_Set(who, GardenHearts_Get(who) + 1);
+    return TRUE;
+}
+
+// VAR_0x8004 = GARDEN_HEARTS_* -> the line of the day, 0..N-1.
+u16 GardenLine_Pick(void)
+{
+    return VarGet(VAR_DAYS) % GardenLine_Count(gSpecialVar_0x8004);
+}
+
+// ---------------------------------------------------------------------------
+// Bram's news (part 9, section 9.8): things he says on the next talk, then
+// forgets. The first garden harvest once in the whole game; a Berry new to
+// the Book every time one grows in the garden.
+// ---------------------------------------------------------------------------
+
+#define NEWS_NEW_BERRY_MASK      0x007F
+#define NEWS_FIRST_HARVEST       0x0080
+#define NEWS_FIRST_HARVEST_TOLD  0x0100
+
+void BerryLedger_RegisterHarvest(u32 treeId, u16 itemId)
+{
+    bool32 isNew = IsInLedger(itemId) && !BerryLedger_Has(itemId);
+    u16 news;
+
+    BerryLedger_RegisterItem(itemId);
+    if (treeId < BERRY_TREE_GARDEN_FIRST || treeId > BERRY_TREE_GARDEN_LAST)
+        return;
+    news = VarGet(VAR_GARDEN_NEWS);
+    if (!(news & NEWS_FIRST_HARVEST_TOLD))
+        news |= NEWS_FIRST_HARVEST;
+    if (isNew && !IsStarterBerry(itemId))
+        news = (news & ~NEWS_NEW_BERRY_MASK) | (itemId - LEDGER_FIRST_ITEM + 1);
+    VarSet(VAR_GARDEN_NEWS, news);
+}
+
+// One piece of news at a time, the first harvest first. Returns GARDEN_NEWS_*;
+// for a new Berry, VAR_0x8004 = the Berry.
+u16 GardenNews_Take(void)
+{
+    u16 news = VarGet(VAR_GARDEN_NEWS);
+
+    if (news & NEWS_FIRST_HARVEST)
+    {
+        VarSet(VAR_GARDEN_NEWS, (news & ~NEWS_FIRST_HARVEST) | NEWS_FIRST_HARVEST_TOLD);
+        return GARDEN_NEWS_FIRST_HARVEST;
+    }
+    if (news & NEWS_NEW_BERRY_MASK)
+    {
+        gSpecialVar_0x8004 = LEDGER_FIRST_ITEM + (news & NEWS_NEW_BERRY_MASK) - 1;
+        VarSet(VAR_GARDEN_NEWS, news & ~NEWS_NEW_BERRY_MASK);
+        return GARDEN_NEWS_NEW_BERRY;
+    }
+    return GARDEN_NEWS_NONE;
+}
+
+// VAR_0x8004 = TYPE_* -> TRUE if the Pokemon walking behind the player (the
+// first live one) has that type; VAR_0x8005 = its species.
+u16 GardenLead_IsType(void)
+{
+    struct Pokemon *mon = GetFirstLiveMon();
+    u32 species;
+
+    if (mon == NULL)
+        return FALSE;
+    species = GetMonData(mon, MON_DATA_SPECIES);
+    gSpecialVar_0x8005 = species;
+    return gSpeciesInfo[species].types[0] == gSpecialVar_0x8004
+        || gSpeciesInfo[species].types[1] == gSpecialVar_0x8004;
+}
+
+// How many of the ten garden plots have something growing.
+u16 GardenPlots_Planted(void)
+{
+    u32 id, planted = 0;
+
+    for (id = BERRY_TREE_GARDEN_FIRST; id <= BERRY_TREE_GARDEN_LAST; id++)
+    {
+        if (GetBerryTreeInfo(id)->stage != BERRY_STAGE_NO_BERRY)
+            planted++;
+    }
+    return planted;
+}
+
+// Debug: everyone's hearts to VAR_0x8004 (0, 5, 12 or 15).
+void BerryDebug_SetHearts(void)
+{
+    u32 who;
+
+    for (who = 0; who < GARDEN_HEARTS_NONE; who++)
+        GardenHearts_Set(who, gSpecialVar_0x8004);
 }

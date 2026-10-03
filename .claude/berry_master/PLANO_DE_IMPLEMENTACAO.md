@@ -36,7 +36,7 @@
 | 6 | Níveis da horta ✅ 30/09, testada no jogo 03/10 (QA) | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
 | 7 | Pedidos do dia ✅ 03/10, testada no jogo 03/10 (QA) | comum e descoberta, dica da Laurel | 3, 4, 5, 6 |
 | 8 | Elenco e rotina ✅ 03/10, QA rápido no jogo (falta o roteiro do autor) | Bram, Laurel, Tilly, Sunflora por horário e dia da semana | 2, 5 |
-| 9 | Banco de falas | rodízio de 10, corações, reações de contexto | 5, 8 |
+| 9 | Banco de falas ✅ 03/10, QA rápido no jogo (falta o roteiro do autor) | rodízio de 10, corações, reações de contexto | 5, 8 |
 | 10 | Infestações | pragas e ervas só na horta; 8 famílias só daqui | 2, 6 |
 | 11 | Batalhas de sempre (Tilly, Bugsy, Klara) | `garden_fight`; assalto da Klara | 5, 8, 10 |
 | 12 | Sidequest — Prólogo ao Ato 4 | estados 0 → 8 | 3, 6, 8, 10 |
@@ -972,6 +972,68 @@ cada personagem).
 
 **Teste no jogo:** 10 dias seguidos no relógio → 10 falas diferentes do Bram; debug
 com corações 5 e 12 → falas íntimas aparecem.
+
+### Parte 9 — feita (03/10/2026)
+
+**Entregue:** `GardenHearts_Talk` / `GardenHearts_Get`, `GardenLine_Pick` /
+`GardenLine_Count`, `GardenNews_Take` + `BerryLedger_RegisterHarvest` (chamado pela
+colheita em `src/berry.c`), `GardenLead_IsType`, `GardenPlots_Planted`. Var nova
+`VAR_GARDEN_NEWS` (`0x412F`). Arquivo novo `data/scripts/berry_garden_lines.inc`
+(incluído no `event_scripts.s`) com 8 bancos de 10 falas — A, B (Bram), R (presente), D,
+E, F (Laurel), G (Tilly), H (Bugsy) — e as reações. Debug `Hearts…` (0/5/12/15, no fim do
+menu para não mexer nos índices das macros de QA) e página de corações no `Status`.
+4 testes novos (38/38 com `make check`). Roteiro T55–T63.
+
+**Decisões:**
+1. **Onde cada banco entra.** Bram: R ao entregar o presente (no lugar do “You came
+   back!…”); A (manhã, horta) e B (tarde, casa) nas conversas **depois** do presente do
+   dia, no lugar de “That's your two for today. Go and plant one…”. O tutorial de plantio
+   (“And don't eat both of them…”) ficou só na visita do tutorial. Laurel: D de manhã, E à
+   tarde (horta ou casa no fim de semana), F à noite (o caderno; e a dica do pedido de
+   descoberta à noite também usa o rodízio). Depois da Liga, quem já recebeu a rara do
+   dia ouve o banco (antes ouvia sempre “One a day. I said don't argue.”).
+2. **R adaptado para valer de tarde também:** R1 “Picked these at dawn, sprout. Still had
+   the dew on 'em…” e R6 “Fresh from this morning! Fresher than me, anyway.” (os do design
+   diziam “Morning, sprout!”, e o Bram entrega também à tarde, em casa).
+3. **Reações** (primeira conversa do dia, a primeira que casar ganha):
+   - Bram (qualquer conversa, uma vez cada): **primeira colheita na horta** (uma vez no
+     jogo) e **berry nova no Livro que cresceu na horta** (“You grew a {X}? I've never
+     seen one! Laurel! LAUREL!”) — guardadas em `VAR_GARDEN_NEWS` até a próxima conversa;
+     de manhã: domingo (Tilly à tarde) e terça/quinta com o Bugsy (estado ≥ 3).
+   - Laurel (não à noite): Pokémon de Planta seguindo o jogador (**só às quartas**),
+     horta vazia, dia de forno (fim de semana à tarde) e, **às segundas antes da Liga**, a
+     fala antiga da rara (“My husband hands out the easy ones…”, a herança da Parte 8).
+   - Tilly: Livro com 66, inseto seguindo o jogador (**só aos domingos**).
+   - Bugsy (sem corações): Bug Hotel pronto, uma vez por visita (`FLAG_TEMP_BUGSY_REACTED`).
+   - Reação sobre o Pokémon da frente **num dia fixo da semana**: quem anda sempre com o
+     mesmo nunca ouviria o banco na primeira conversa do dia.
+4. **Fica para depois**, por depender de parte futura ou da regra da surpresa: banco P
+   (pragas, Parte 10); reações da erva daninha (Parte 10), dos 8 exclusivos (Parte 10),
+   da Klara (Parte 11), dos hóspedes e do Ato 7 (Partes 12–13), “depois do Ato 2” da Tilly
+   (cita o corcel); “Laurel diz o nome” (Livro 66 / estado 15, Parte 16).
+5. **Aspas curvas** (`“ ”`): o charmap não tem aspas retas.
+6. **Os bancos são gerados** do texto do design com quebra por pixel (mesmas larguras do
+   `medir_linha.py`, `{STR_VAR}` medido como o nome de berry mais largo) e depois mantidos
+   à mão no `.inc`.
+
+**Bugs achados no teste rápido e corrigidos:** a pergunta do nível 2 ainda começava com
+“You came back! And you looked at the trees, I'll bet.” depois da fala do banco R, e
+mostrava “Name it…” antes do menu; agora é só “Three today -- the garden earns its keep.
+Or have you got one in mind?”. A dica do pedido de descoberta à noite usava sempre a 1ª
+fala do banco F; agora usa o rodízio.
+
+**Medido:** build limpo; `checar_falantes.py` 242 em ordem; `medir_linha.py` sem estouro
+nos três arquivos; acesso aos canteiros ok; flag audit regenerado
+(`FLAG_TEMP_BUGSY_REACTED` em uso).
+
+**QA rápido no jogo (headless, 03/10):** primeira colheita na horta → o Bram abre a
+conversa seguinte com “Your first! Hold it up…”; Laurel na horta, segunda-feira antes da
+Liga: reação da rara na primeira conversa, “Weeds are just plants…” (banco E) na segunda;
+Bram de tarde depois do presente: banco B; dia novo: banco R + a pergunta corrigida + 3
+berries, sem o tutorial de plantio; debug de corações 12 e a página do Status; noite:
+banco F (“The page with the coffee stain. Tamato Berry…”). **Não testado:** bancos A, D,
+G, H na tela (mesmo mecanismo, provado nos testes de C), reações de quarta/domingo, berry
+nova cruzada na horta (provado no teste de C), Bug Hotel do Bugsy.
 
 ---
 

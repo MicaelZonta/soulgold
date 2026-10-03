@@ -448,6 +448,10 @@ extern const u8 Debug_EventScript_BerryOrderCommon[];
 extern const u8 Debug_EventScript_BerryOrderDiscovery[];
 extern const u8 Debug_EventScript_BerryResetAll[];
 extern const u8 Debug_EventScript_BerryStatus[];
+extern const u8 Debug_EventScript_BerryHearts0[];
+extern const u8 Debug_EventScript_BerryHearts5[];
+extern const u8 Debug_EventScript_BerryHearts12[];
+extern const u8 Debug_EventScript_BerryHearts15[];
 extern const u8 DebugScript_DaycareMonsNotCompatible[];
 extern const u8 DebugScript_OneDaycareMons[];
 extern const u8 DebugScript_ZeroDaycareMons[];
@@ -869,6 +873,15 @@ static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster_Level[] =
     { NULL }
 };
 
+static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster_Hearts[] =
+{
+    { COMPOUND_STRING("0 (lines 1-4)"),             DebugAction_ExecuteScript, Debug_EventScript_BerryHearts0 },
+    { COMPOUND_STRING("5 (lines 1-7)"),             DebugAction_ExecuteScript, Debug_EventScript_BerryHearts5 },
+    { COMPOUND_STRING("12 (all 10)"),               DebugAction_ExecuteScript, Debug_EventScript_BerryHearts12 },
+    { COMPOUND_STRING("15 (most)"),                 DebugAction_ExecuteScript, Debug_EventScript_BerryHearts15 },
+    { NULL }
+};
+
 static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster[] =
 {
     { COMPOUND_STRING("Status"),                    DebugAction_ExecuteScript, Debug_EventScript_BerryStatus },
@@ -888,6 +901,8 @@ static const struct DebugMenuOption sDebugMenu_Actions_BerryMaster[] =
     { COMPOUND_STRING("Money: set to ¥0"),          DebugAction_ExecuteScript, Debug_EventScript_BerryNoMoney },
     { COMPOUND_STRING("Give 5 of each Mulch"),      DebugAction_ExecuteScript, Debug_EventScript_BerryMulch },
     { COMPOUND_STRING("Reset Berry Master"),        DebugAction_ExecuteScript, Debug_EventScript_BerryResetAll },
+    // At the end so the QA macros' indices above (.claude/qa/lib.sh) stay put.
+    { COMPOUND_STRING("Hearts…"),                   DebugAction_OpenSubMenu, sDebugMenu_Actions_BerryMaster_Hearts },
     { NULL }
 };
 

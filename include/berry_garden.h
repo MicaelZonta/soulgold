@@ -11,6 +11,9 @@ bool32 BerryLedger_Has(u16 itemId);
 // Called from ObjectEventInteractionPickBerryTree for every Berry that
 // actually went into the bag. Not a Berry: ignored.
 void BerryLedger_RegisterItem(u16 itemId);
+// The same for a Berry picked from a tree, plus what Bram will say about it
+// (first garden harvest, a Berry new to the Book grown in the garden).
+void BerryLedger_RegisterHarvest(u32 treeId, u16 itemId);
 
 // Specials (data/specials.inc)
 void BerryLedger_Register(void);
@@ -42,6 +45,15 @@ u16 GardenOrder_RewardMulch(void);
 u16 GardenOrder_Pay(void);
 void GardenCast_Apply(void);
 u16 GardenCast_IsWeekend(void);
+u16 GardenHearts_Talk(void);
+u16 GardenLine_Pick(void);
+u16 GardenNews_Take(void);
+u16 GardenLead_IsType(void);
+u16 GardenPlots_Planted(void);
+
+// Hearts and line banks as pure rules (tests).
+u32 GardenHearts_Get(u32 who);
+u32 GardenLine_Count(u32 who);
 
 // The routine as pure rules (tests): GARDEN_PERIOD_* of a TimeOfDay, and the
 // GARDEN_PLACE_* of a GARDEN_CAST_* member at that period and weekday.
@@ -62,5 +74,6 @@ void BerryDebug_ResetAll(void);
 void BerryDebug_ClearMoney(void);
 void BerryDebug_Status(void);
 void BerryDebug_NewOrder(void);
+void BerryDebug_SetHearts(void);
 
 #endif // GUARD_BERRY_GARDEN_H

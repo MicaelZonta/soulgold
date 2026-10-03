@@ -2094,6 +2094,7 @@
 #define FLAG_TEMP_HIDE_LAUREL                   FLAG_TEMP_B
 #define FLAG_TEMP_HIDE_TILLY                    FLAG_TEMP_C
 #define FLAG_TEMP_HIDE_BUGSY                    FLAG_TEMP_D
+#define FLAG_TEMP_BUGSY_REACTED                 FLAG_TEMP_F  // Route30: his reaction, once per visit (part 9)
 
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000

@@ -1271,6 +1271,29 @@ Debug_EventScript_BerrySetLevel::
 	msgbox Debug_Text_BerryLevelSet, MSGBOX_DEFAULT
 	goto Debug_EventScript_BerryReload
 
+@ Hearts (part 9): 0 = only lines 1-4, 5 = up to 7, 12 or 15 = all 10.
+Debug_EventScript_BerryHearts0::
+	setvar VAR_0x8004, 0
+	goto Debug_EventScript_BerrySetHearts
+
+Debug_EventScript_BerryHearts5::
+	setvar VAR_0x8004, GARDEN_HEARTS_TIER1_DAYS
+	goto Debug_EventScript_BerrySetHearts
+
+Debug_EventScript_BerryHearts12::
+	setvar VAR_0x8004, GARDEN_HEARTS_TIER2_DAYS
+	goto Debug_EventScript_BerrySetHearts
+
+Debug_EventScript_BerryHearts15::
+	setvar VAR_0x8004, GARDEN_HEARTS_MAX
+Debug_EventScript_BerrySetHearts::
+	lockall
+	special BerryDebug_SetHearts
+	buffernumberstring STR_VAR_1, VAR_0x8004
+	msgbox Debug_Text_BerryHeartsSet, MSGBOX_DEFAULT
+	releaseall
+	end
+
 Debug_EventScript_BerryRipen::
 	lockall
 	special BerryDebug_RipenGarden
@@ -1390,6 +1413,10 @@ Debug_EventScript_BerryStatus::
 	buffernumberstring STR_VAR_2, VAR_GARDEN_TODAY
 	buffernumberstring STR_VAR_3, VAR_HARVEST_KING
 	msgbox Debug_Text_BerryStatus3, MSGBOX_DEFAULT
+	buffernumberstring STR_VAR_1, VAR_0x8008
+	buffernumberstring STR_VAR_2, VAR_0x8009
+	buffernumberstring STR_VAR_3, VAR_0x800A
+	msgbox Debug_Text_BerryStatusHearts, MSGBOX_DEFAULT
 	call_if_set FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY, Debug_EventScript_BerryGiftTaken
 	call_if_unset FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY, Debug_EventScript_BerryGiftOpen
 	specialvar VAR_RESULT, GardenOrder_Get
@@ -1514,6 +1541,15 @@ Debug_Text_BerryStatus2:
 Debug_Text_BerryStatus3:
 	.string "Hour {STR_VAR_1}   Today bits {STR_VAR_2}\n"
 	.string "Harvest King state: {STR_VAR_3}$"
+
+Debug_Text_BerryStatusHearts:
+	.string "Hearts (5 and 12 open lines):\n"
+	.string "Bram {STR_VAR_1}  Laurel {STR_VAR_2}\l"
+	.string "Tilly {STR_VAR_3}$"
+
+Debug_Text_BerryHeartsSet:
+	.string "Everyone's hearts: {STR_VAR_1}.\n"
+	.string "Talked-today marks are kept.$"
 
 Debug_Text_BerryNoOrder:
 	.string "Order: none drawn today.$"

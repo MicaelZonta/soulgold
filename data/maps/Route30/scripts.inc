@@ -193,9 +193,15 @@ Route30_Text_ColdSoil:
 Route30_EventScript_Tilly::
 	lock
 	faceplayer
-	specialvar VAR_RESULT, GetDayOfWeek
-	call_if_eq VAR_RESULT, WEEKDAY_SAT, Route30_EventScript_TillySaturday
-	call_if_ne VAR_RESULT, WEEKDAY_SAT, Route30_EventScript_TillySunday
+	dotimebasedevents
+	special GardenRollDay
+	@ Hearts (part 9): a reaction on the first talk of the day, else the line
+	@ of the day (bank G, data/scripts/berry_garden_lines.inc).
+	setvar VAR_0x8004, GARDEN_HEARTS_TILLY
+	specialvar VAR_0x800B, GardenHearts_Talk
+	setvar VAR_RESULT, FALSE
+	call_if_eq VAR_0x800B, TRUE, BerryGarden_EventScript_TillyReaction
+	call_if_ne VAR_RESULT, TRUE, BerryGarden_EventScript_TillyStallLine
 	message Route30_Text_TillyBuy
 	waitmessage
 	goto_if_ge VAR_BERRY_GARDEN_LEVEL, GARDEN_LEVEL_BUG_HOTEL, Route30_EventScript_TillyMartBugHotel
@@ -208,14 +214,6 @@ Route30_EventScript_TillyBye::
 	msgbox Route30_Text_TillyBye, MSGBOX_DEFAULT
 	release
 	end
-
-Route30_EventScript_TillySaturday::
-	msgbox Route30_Text_TillySaturday, MSGBOX_DEFAULT
-	return
-
-Route30_EventScript_TillySunday::
-	msgbox Route30_Text_TillySunday, MSGBOX_DEFAULT
-	return
 
 	.align 2
 Route30_Mart_TillyMulch:
@@ -235,48 +233,23 @@ Route30_Mart_TillyMulchBugHotel:
 	.2byte ITEM_SURPRISE_MULCH
 	.2byte ITEM_NONE
 
-@ Tuesdays and Thursdays (section 14.4 H): one line each until part 9.
+@ Tuesdays and Thursdays (section 14.4 H): his reaction once per visit, else
+@ the line of the day (data/scripts/berry_garden_lines.inc). No hearts.
 Route30_EventScript_Bugsy::
 	lock
 	faceplayer
-	specialvar VAR_RESULT, GetDayOfWeek
-	goto_if_eq VAR_RESULT, WEEKDAY_THU, Route30_EventScript_BugsyThursday
-	msgbox Route30_Text_BugsyTuesday, MSGBOX_DEFAULT
-	goto Route30_EventScript_BugsyEnd
-
-Route30_EventScript_BugsyThursday::
-	msgbox Route30_Text_BugsyThursday, MSGBOX_DEFAULT
-Route30_EventScript_BugsyEnd::
+	dotimebasedevents
+	call BerryGarden_EventScript_BugsyReaction
+	call_if_ne VAR_RESULT, TRUE, BerryGarden_EventScript_BugsyLine
 	closemessage
 	release
 	end
-
-Route30_Text_TillySaturday:
-	.string "Welcome to Tilly's Mulch Emporium!\p"
-	.string "It's mulch. It's the best mulch.\n"
-	.string "Grandpa made it but I named it.$"
-
-Route30_Text_TillySunday:
-	.string "Do you know what Rellor do with mulch?\n"
-	.string "They ROLL it.\p"
-	.string "I'm going to have ten Rellor.\n"
-	.string "Grandma said one.$"
 
 Route30_Text_TillyBuy:
 	.string "Buy some! Buy LOTS!$"
 
 Route30_Text_TillyBye:
 	.string "Come back next weekend! Bring money!$"
-
-Route30_Text_BugsyTuesday:
-	.string "Every color of Berry calls a different\n"
-	.string "bug. I've got a chart.\p"
-	.string "It's twelve pages.$"
-
-Route30_Text_BugsyThursday:
-	.string "Try Stable Mulch on one bed. Watch\n"
-	.string "what moves in.\p"
-	.string "You'll love him.$"
 
 Route30_Text_Mailbox:
 	.string "Mr.Pokémon's House$"
