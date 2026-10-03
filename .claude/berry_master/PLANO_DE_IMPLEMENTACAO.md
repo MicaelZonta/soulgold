@@ -29,11 +29,11 @@
 | # | Parte | Entrega jogável | Depende de |
 |---|---|---|---|
 | 1 | Alocação e fundação ✅ 30/09 | constantes, vars, flags, plaquinhas, itens; nada visível | — |
-| 2 | A horta física 🧪 30/09 (código feito, falta teste no jogo) | 10 canteiros + canteiro da Laurel na Route 30; plantar, regar, colher | 1 |
-| 3 | Livro de Berries 🧪 30/09 (código feito, falta teste no jogo) | colher registra; o Bram só dá berries do Livro; marcos | 1, 2 |
-| 4 | Cruzamento completo 🧪 30/09 (código feito, falta teste no jogo) | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
-| 5 | Estado diário 🧪 30/09 (código feito, falta teste no jogo) | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
-| 6 | Níveis da horta 🧪 30/09 (código feito, falta teste no jogo) | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
+| 2 | A horta física ✅ 30/09, testada no jogo 03/10 (QA) | 10 canteiros + canteiro da Laurel na Route 30; plantar, regar, colher | 1 |
+| 3 | Livro de Berries ✅ 30/09, testada no jogo 03/10 (QA) | colher registra; o Bram só dá berries do Livro; marcos | 1, 2 |
+| 4 | Cruzamento completo ✅ 30/09, testada no jogo 03/10 (QA) | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
+| 5 | Estado diário ✅ 30/09, testada no jogo 03/10 (QA) | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
+| 6 | Níveis da horta ✅ 30/09, testada no jogo 03/10 (QA) | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
 | 7 | Pedidos do dia | comum e descoberta, dica da Laurel | 3, 4, 5, 6 |
 | 8 | Elenco e rotina | Bram, Laurel, Tilly, Sunflora por horário e dia da semana | 2, 5 |
 | 9 | Banco de falas | rodízio de 10, corações, reações de contexto | 5, 8 |
@@ -48,6 +48,17 @@
 
 As partes 14 e 15 são independentes entre si (dá para fazer uma, testar a 16 com ela,
 e fazer a outra depois). As partes 9, 10 e 11 podem trocar de ordem entre si.
+
+### QA no jogo das partes 1–6 (03/10/2026)
+
+O roteiro `TESTES_NO_JOGO.md` (T01–T40 + T11b) foi rodado inteiro no mGBA headless (skill
+`testar-no-jogo`), com prints e leitura da RAM: **40 passaram, 1 com observação** (T32: o
+som de compra não se ouve no emulador headless), nenhum falhou. Relatório: página “QA do
+Berry Master” e `.claude/berry_master/QA_2026-10-03.md`. Achados fora da horta, todos
+corrigidos e retestados: pomar do WorldHub sem árvores por falta de slot de objeto (limite
+16 → 24, commit `0fd111d`, e NPCs afastados do pomar, `bdfdabc`); duas falas da mãe sem
+plaquinha. Bugs da horta achados pelo autor antes do QA: 1 (covas rosa), 2 (terra
+molhada), 3 (dinheiro no lugar do Livro) e a ordem da conversa do Bram — todos corrigidos.
 
 ### Revisão das partes 1–3 (30/09/2026)
 
@@ -72,6 +83,10 @@ Para a Parte 8 existem **duas** saídas para o 16º objeto: tirar o Caterpie de 
 ou subir `OBJECT_EVENTS_COUNT` (cabe até 27 sem aumentar o save, mas exige o conserto
 do `waitmovement` e de `MAX_SPRITES`, ver `.claude/limites-do-engine.md`). Decisão do
 autor na Parte 8.
+*(Resolvido em 02/10/2026, commit `0fd111d`: `OBJECT_EVENTS_COUNT` subiu para **24**, com
+o `waitmovement` e `MAX_SPRITES` consertados. A Route 30 com Laurel, Bugsy e o canteiro da
+Laurel cabe sem tirar o Caterpie; a Parte 8 só confere a conta com
+`dev_scripts/limites_janela_objetos.py --mapa Route30`.)*
 
 Conferido e sem problema: limite de 64 templates por mapa (Route 30 com 33, sobra para o
 elenco); `SetBerryTreeJustPicked` sem teto de `local_id`; Berry Pouch é item-chave sem uso

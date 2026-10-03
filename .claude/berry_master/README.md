@@ -3,7 +3,7 @@
 | Arquivo | O que é | Status |
 |---|---|---|
 | [`REI_DA_COLHEITA.md`](REI_DA_COLHEITA.md) | **O design que vale**: horta, Livro, cruzamento, níveis, pedidos, infestações, rotina, falas, batalhas, a sidequest e as dungeons dos corcéis (rev1–rev4, §1–§15) | aprovado; em implementação (ver o plano) |
-| [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md) | Ordem de trabalho em 17 partes numeradas, cada uma jogável sozinha; o feedback de cada parte feita fica dentro dela | Partes 1–6 no código (30/09); 2–6 esperam o teste no jogo |
+| [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md) | Ordem de trabalho em 17 partes numeradas, cada uma jogável sozinha; o feedback de cada parte feita fica dentro dela | Partes 1–6 feitas e testadas no jogo (QA 03/10/2026) |
 | [`BERRY_MASTER_DESIGN.md`](BERRY_MASTER_DESIGN.md) | Primeira proposta da horta (rev1); auditoria do motor e das coordenadas | superado em parte pelo `REI_DA_COLHEITA.md` |
 | [`LENDARIO_E_INFESTACAO.md`](LENDARIO_E_INFESTACAO.md) | Análise: lendários sem fonte e onde cada inseto aparece hoje | superado em parte pelo `REI_DA_COLHEITA.md` |
 | `cenas/` | Renders das cenas dos atos e da rotina (usados na página “O Rei da Colheita”) | — |
