@@ -72,4 +72,24 @@
 #define HARVEST_KING_ACT1_DONE       4
 #define HARVEST_KING_BUGSY_CAME      3   // Act 1b: Bugsy is around (section 8.4)
 
+// Every Berry in the Book but the Enigma (the title, section 3.4): nothing
+// left that grows from a cross. With Lansat and Starf locked before the League
+// the Book stops at 65, so 66 always means "the notebook is done".
+#define BERRY_LEDGER_ALL_GROWN       66
+
+// The routine (part 8, section 2.1). Periods follow the game's clock
+// (GetTimeOfDay, OW_TIMES_OF_DAY): evening counts as night.
+#define GARDEN_PERIOD_MORNING        0
+#define GARDEN_PERIOD_DAY            1
+#define GARDEN_PERIOD_NIGHT          2
+
+#define GARDEN_CAST_BRAM             0
+#define GARDEN_CAST_LAUREL           1
+#define GARDEN_CAST_TILLY            2
+#define GARDEN_CAST_BUGSY            3
+
+#define GARDEN_PLACE_AWAY            0
+#define GARDEN_PLACE_GARDEN          1   // Route30
+#define GARDEN_PLACE_HOUSE           2   // Route30_House
+
 #endif // GUARD_CONSTANTS_BERRY_GARDEN_H

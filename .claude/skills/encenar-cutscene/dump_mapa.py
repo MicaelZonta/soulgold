@@ -10,14 +10,22 @@ Sem eles imprime o mapa inteiro.
 
 Legenda:
     .  chao livre          #  colisao (parede/movel/vazio)
-    0-9 A-Z  objeto (marcador na lista abaixo, sobre o tile dele)
+    ~  agua (so com Surf)  ^  ledge/cachoeira (nao se pisa a pe)
+    0-9 A-Z a-z  objeto (marcador na lista abaixo, sobre o tile dele)
     W  warp
 
 Formato do map.bin (include/global.fieldmap.h): u16 little-endian por bloco,
 bits 0-10 = metatile id, bit 11 = COLISAO (1 bit!), bits 12-15 = elevacao.
 Decodificar colisao como 2 bits a partir do bit 10 e o erro classico: o bit
 alto do metatile vaza e o chao vira parede fantasma.
+
+Agua tem colisao 0: o que a torna intransitavel a pe e o COMPORTAMENTO do
+metatile (metatile_attributes.bin do tileset). Sem a marca ~ ela sai como "."
+e um NPC posto ali fica de pe no lago (Bugsy na horta, Parte 8 do Berry
+Master, 03/10/2026).
 """
+
+import re
 
 import json
 import os
@@ -46,14 +54,42 @@ def carregar_layout(nome_mapa):
         "blockdata_filepath"
     ) else os.path.join(ROOT, "data", "layouts", layout["name"].replace("_Layout", ""), "map.bin")
     blocos = struct.unpack(f"<{w * h}H", open(bin_path, "rb").read())
-    return mapa, w, h, blocos
+    return mapa, w, h, blocos, layout
+
+
+# include/global.fieldmap.h e include/fieldmap.h
+METATILE_ID_MASK, NUM_PRIMARY = 0x07FF, 1024
+
+
+def comportamentos(layout, blocos, w, h):
+    """(x, y) -> nome MB_* do comportamento do metatile."""
+    src = open(os.path.join(ROOT, "src/data/tilesets/metatiles.h")).read()
+    hdr = open(os.path.join(ROOT, "include/constants/metatile_behaviors.h")).read()
+    nomes = re.findall(r"^\s*(MB_\w+)", hdr[hdr.index("{") + 1:hdr.index("}")], re.M)
+
+    def attrs(sym):
+        m = re.search(r"gMetatileAttributes_%s\[\] = INCBIN_U16\(\"([^\"]+)\"" % sym.replace("gTileset_", ""), src)
+        return open(os.path.join(ROOT, m.group(1)), "rb").read() if m else None
+
+    tabelas = [attrs(layout["primary_tileset"]), attrs(layout["secondary_tileset"])]
+    out = {}
+    for y in range(h):
+        for x in range(w):
+            mid = blocos[y * w + x] & METATILE_ID_MASK
+            a = tabelas[0] if mid < NUM_PRIMARY else tabelas[1]
+            i = mid if mid < NUM_PRIMARY else mid - NUM_PRIMARY
+            if a is not None and i * 2 + 2 <= len(a):
+                b = struct.unpack_from("<H", a, i * 2)[0] & 0xFF
+                out[(x, y)] = nomes[b] if b < len(nomes) else "?"
+    return out
 
 
 def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
     nome = sys.argv[1]
-    mapa, w, h, blocos = carregar_layout(nome)
+    mapa, w, h, blocos, layout = carregar_layout(nome)
+    mb = comportamentos(layout, blocos, w, h)
 
     if len(sys.argv) >= 6:
         x0, x1, y0, y1 = (int(v) for v in sys.argv[2:6])
@@ -65,8 +101,8 @@ def main():
     def colisao(x, y):
         return (blocos[y * w + x] >> 11) & 1
 
-    # base36 para nao repetir marcador em mapa com mais de 10 objetos
-    alfabeto = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    # base62 para nao repetir marcador em mapa com mais de 10 objetos
+    alfabeto = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
     def marcador(i):
         return alfabeto[i] if i < len(alfabeto) else "?"
@@ -85,7 +121,16 @@ def main():
         linha = ""
         for x in range(x0, x1 + 1):
             marca = em_tile.get((x, y))
-            linha += f" {marca}" if marca else (" #" if colisao(x, y) else " .")
+            if marca:
+                linha += f" {marca}"
+            elif colisao(x, y):
+                linha += " #"
+            elif any(k in mb.get((x, y), "") for k in ("WATER", "POND", "OCEAN", "DIVE")):
+                linha += " ~"
+            elif any(k in mb.get((x, y), "") for k in ("JUMP_", "WATERFALL")):
+                linha += " ^"
+            else:
+                linha += " ."
         print(f"y={y:3} {linha}")
 
     print()

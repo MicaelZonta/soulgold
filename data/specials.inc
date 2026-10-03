@@ -713,4 +713,6 @@ gSpecials::
 	def_special GardenOrder_Get
 	def_special GardenOrder_RewardMulch
 	def_special GardenOrder_Pay
+	def_special GardenCast_Apply
+	def_special GardenCast_IsWeekend
 	def_special BerryDebug_NewOrder

@@ -3,8 +3,9 @@
 
     rota.py <Mapa> X0 Y0 X1 Y1 [--face DIR]
 
-Usa a colisao do map.bin (bits 10-11 != 0 bloqueia) e trata todo object_event
-como bloqueio (NPC parado, arvore de berry...). O destino pode ser um tile
+Usa a colisao do map.bin (bit 11, MAPGRID_COLLISION_MASK de global.fieldmap.h:
+o ID do metatile tem 11 bits, nunca o layout de 10 bits do pokeemerald) e trata
+todo object_event como bloqueio (NPC parado, arvore de berry...). O destino pode ser um tile
 bloqueado: entao o caminho para no vizinho e vira o rosto para ele (bom para
 "falar com" / "olhar para" uma arvore). Agua, cachoeira e ledges contam como bloqueio (sem Surf, sem pular).
 Saida: uma linha com os comandos separados por ';' (para o q.py).
@@ -16,15 +17,22 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 
 
-def load(mapname):
+# include/global.fieldmap.h e include/fieldmap.h (medir, nunca supor)
+METATILE_ID_MASK, COLLISION_MASK, NUM_PRIMARY = 0x07FF, 0x0800, 1024
+
+
+def load(mapname, objs=None):
+    """objs: posicoes dos objetos VIVOS (ir.py le da RAM). Sem isso, todo
+    object_event do map.json bloqueia, inclusive os escondidos por flag."""
     m = json.load(open(REPO / f"data/maps/{mapname}/map.json"))
     layouts = json.load(open(REPO / "data/layouts/layouts.json"))["layouts"]
     lay = next(l for l in layouts if l["id"] == m["layout"])
     raw = open(REPO / lay["blockdata_filepath"], "rb").read()
     w, h = lay["width"], lay["height"]
     cells = struct.unpack(f"<{w*h}H", raw)
-    block = {(x, y) for y in range(h) for x in range(w) if (cells[y * w + x] >> 10) & 3}
-    objs = {(o["x"], o["y"]) for o in m.get("object_events", [])}
+    block = {(x, y) for y in range(h) for x in range(w) if cells[y * w + x] & COLLISION_MASK}
+    if objs is None:
+        objs = {(o["x"], o["y"]) for o in m.get("object_events", [])}
     # Bordas direcionais (MB_IMPASSABLE_WEST etc., ex.: borda de tapete): a
     # borda daquele lado do tile nao se cruza em nenhum sentido.
     edges = set()
@@ -32,9 +40,9 @@ def load(mapname):
     names = behavior_names()
     for y in range(h):
         for x in range(w):
-            mid = cells[y * w + x] & 0x3FF
-            a = attrs[0] if mid < 640 else attrs[1]
-            i = mid if mid < 640 else mid - 640
+            mid = cells[y * w + x] & METATILE_ID_MASK
+            a = attrs[0] if mid < NUM_PRIMARY else attrs[1]
+            i = mid if mid < NUM_PRIMARY else mid - NUM_PRIMARY
             if a is None or i * 2 + 2 > len(a):
                 continue
             name = names[struct.unpack_from("<H", a, i * 2)[0] & 0xFF]
@@ -63,8 +71,8 @@ def behavior_names():
 DIRS = {"UP": (0, -1), "DOWN": (0, 1), "LEFT": (-1, 0), "RIGHT": (1, 0)}
 
 
-def path(mapname, a, b):
-    w, h, block, edges = load(mapname)
+def path(mapname, a, b, objs=None):
+    w, h, block, edges = load(mapname, objs)
     goals = {b} if b not in block else {(b[0] - d[0], b[1] - d[1]) for d in DIRS.values()}
     prev = {a: None}
     q = deque([a])

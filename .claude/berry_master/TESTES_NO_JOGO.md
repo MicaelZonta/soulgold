@@ -1,4 +1,4 @@
-# Berry Master — testes no jogo, em ordem (Partes 1 a 6)
+# Berry Master — testes no jogo, em ordem (Partes 1 a 8)
 
 > Roteiro único para rodar **de cima para baixo**. Cada teste parte do estado que o
 > anterior deixou, então não pule nenhum sem ler o “Estado ao fim”. Cada um diz qual
@@ -29,6 +29,14 @@ falhar, você volta ao começo do bloco em vez do começo do roteiro.
 mapa) o Bram oferece a próxima reforma. Nos blocos A a E, responda **No** (“Suit
 yourself. The offer keeps.”); ela só é o assunto no bloco F.
 
+**Desde a Parte 8 o Bram muda de lugar com a hora** (relógio do jogo): de **manhã
+(6–10)** ele está na **horta**, em (27,44), logo acima de onde o `Go: the garden` te
+deixa; de **dia (10–19)** em casa; de **noite (19–6)** dorme à mesa e não dá nada (quem
+entrega o presente é a Laurel). Os blocos A a F dizem “fale com o Bram na casa”: faça-os
+**de dia**, ou fale com ele onde ele estiver — a conversa é a mesma nos dois lugares.
+Depois de `Next morning, 7:00`, ele está na **horta**. O tutorial (T02) é a exceção:
+antes dele o Bram fica em casa a qualquer hora.
+
 **Relógio: `+24 hours` × `Next morning, 7:00`.** O `+24 hours` sempre vira o dia. O
 `Next morning, 7:00` vai para a **próxima** 7:00, que pode ser a de hoje se ainda não deu
 7h — e aí **não** vira o dia. Quando o teste precisa de dia novo, ele diz `+24 hours`.
@@ -55,7 +63,11 @@ yourself. The offer keeps.”); ela só é o assunto no bloco F.
 | Canteiro B (4 covas) | Route 30, (30..31, 41..42) — logo acima do A, colado no lago |
 | Canteiro da Laurel | Route 30, (23,38) — à esquerda da casa |
 | Onde o teleporte “Go: the garden” te deixa | Route 30, (27,45) — à esquerda do A |
-| Bram | dentro da casa, (4,4) |
+| Bram | manhã: horta (27,44); dia: casa (4,4); noite: casa (4,4), dormindo |
+| Laurel | casa (3,4); dia de semana à tarde: horta (27,43) |
+| Tilly (sáb e dom) | manhã: casa, cadeira azul (7,5); tarde: banquinha na horta (24,41) |
+| Bugsy (ter e qui, Ato 1 feito) | tarde: horta (29,41) |
+| Sunflora | casa, sob a janela (6,2) |
 | Laurel | dentro da casa, (3,4) |
 
 **Tela de Status** (`Berry Master… → Status`), três páginas:
@@ -510,6 +522,72 @@ comum). Os pedidos são lidos no `Status` (última linha).
 - **Passos:** com um pedido entregue, `Clock… → +24 h`, entre na casa e fale com o Bram.
 - **Esperado:** pedido novo anunciado (a berry pode repetir, mas o anúncio aparece de novo),
   `Status` `open`.
+
+---
+
+## Bloco F3 — Elenco e rotina (Parte 8)
+
+Ninguém troca de lugar na sua frente: a posição e a fala de cada um são decididas ao
+**entrar no mapa**. Depois de cada `Clock…` (que recarrega o mapa), confira os dois mapas:
+a Route 30 (horta) e a casa. Para saber o dia da semana sem calendário: a Tilly só aparece
+sábado e domingo, e a fala dela diz qual dos dois (“Welcome to Tilly's Mulch Emporium!” =
+sábado).
+
+### T47 · De dia, em dia de semana
+- **Passos:** `Clock…` até dar entre 10h e 19h num dia em que a Tilly **não** está na
+  banquinha. Olhe a horta e entre na casa.
+- **Esperado:** horta: só a Laurel, em (27,43), virada para os canteiros; falando com ela:
+  “Too much water. Not you. Him. / He's inside with his seeds. Go on.”. Casa: Bram na mesa
+  (fala de sempre: presente, pedido…), Sunflora sob a janela (“Floraaa!”, com plaquinha
+  e grito). Ninguém ocupa o único acesso de um canteiro: todos os 10 se alcançam a pé.
+
+### T48 · De noite
+- **Passos:** `Clock… → +6 hours` até passar das 19h. Horta e casa.
+- **Esperado:** horta vazia. Casa: Bram à mesa **virado para ela**; falando com ele, uma
+  fala de sonho (“Zzz…”), e ele **não** se vira para você; Laurel à mesa.
+- **Passos:** fale com a Laurel. Saia e entre, fale de novo.
+- **Esperado:** na primeira conversa da visita, uma receita do caderno (“X. Y beside Z.
+  Touching, side by side…”), com Y e Z no seu Livro e X fora dele; na segunda, “I'm
+  reading. You've had your page.”; depois de sair e entrar, outra receita (pode repetir).
+
+### T49 · O presente à noite
+- **Preparação:** presente do dia ainda não retirado (`Clock… → New day, keep clock`, de
+  noite).
+- **Passos:** fale com a Laurel.
+- **Esperado:** “He's asleep. He left these on the table for you. / He counted them twice.
+  Don't tell him I watched.” e 2 berries do Livro (3 no nível 2+). Falar de novo: sem
+  presente. De manhã o Bram diz “That's your two for today.” (o presente já saiu).
+
+### T50 · De manhã
+- **Passos:** `Clock… → Next morning, 7:00`. Horta e casa.
+- **Esperado:** horta: Bram em (27,44), virado para a fileira de baixo; a conversa com ele
+  é a mesma da casa (obra pronta, marcos, pedido, presente, reforma). Casa: só a Laurel
+  (“He's out in the beds. Left at four…”) e a Sunflora.
+
+### T51 · Fim de semana
+- **Passos:** `Clock… → +24 hours` até a Tilly aparecer (de manhã em casa, à tarde na
+  horta).
+- **Esperado:** sábado/domingo de manhã: Tilly na cadeira azul da casa (“Grandpa's out
+  watering! I'm eating toast…”). À tarde: Tilly na banquinha (24,41) com a fala do dia,
+  “Buy some! Buy LOTS!” e a loja: Growth, Damp, Stable, Gooey Mulch (₽200). Ao sair da
+  loja: “Come back next weekend! Bring money!”. A Laurel **não** está na horta (dia de
+  forno): em casa, “Bread day. Don't open the oven…”.
+
+### T52 · Loja no nível 4
+- **Passos:** `Garden level… → 4`, fale com a Tilly num fim de semana à tarde.
+- **Esperado:** a lista tem também Rich e Surprise Mulch. Volte para o nível que estava.
+
+### T53 · Bugsy
+- **Passos:** `Act 1 done: toggle` → ligado. Terça ou quinta à tarde, horta.
+- **Esperado:** Bugsy em (29,41), virado para o canteiro B. Terça: “Every color of Berry
+  calls a different bug…”; quinta: “Try Stable Mulch on one bed…”. Com o Ato 1 desligado,
+  ele não vem. Nunca no mesmo dia que a Tilly. Desligue o Ato 1 de volta.
+
+### T54 · Tutorial a qualquer hora
+- **Passos:** `Reset Berry Master`, `Next morning, 7:00` (ou de noite). Horta e casa.
+- **Esperado:** antes do tutorial o Bram está **em casa**, acordado, a qualquer hora; o
+  tutorial roda normal. Depois dele, a rotina vale (de manhã, na próxima entrada, ele vai
+  para a horta).
 
 ---
 

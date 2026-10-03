@@ -2082,6 +2082,18 @@
 // Laurel's plot until the sidequest opens it (.claude/berry_master).
 #define FLAG_TEMP_HIDE_GARDEN_B                 FLAG_TEMP_5
 #define FLAG_TEMP_HIDE_KINGS_PLOT               FLAG_TEMP_6
+// Bram's and Laurel's scripts run on BOTH Route30 and Route30_House (part 8:
+// they move by the hour), so their once-per-visit marks must be free on both
+// maps. Route30 already uses FLAG_TEMP_1 (Cut tree), 5 and 6.
+#define FLAG_TEMP_GARDEN_REFORM_TALKED          FLAG_TEMP_4  // reform offer, once per visit
+#define FLAG_TEMP_GARDEN_ORDER_REMINDED         FLAG_TEMP_7  // order reminder, once per visit
+#define FLAG_TEMP_LAUREL_HINTED                 FLAG_TEMP_8  // Laurel's recipe hint, once per visit
+#define FLAG_TEMP_BRAM_TUTORIAL_VISIT           FLAG_TEMP_9  // this visit was the tutorial
+// Who is where (GardenCast_Place, set in both maps' ON_TRANSITION).
+#define FLAG_TEMP_HIDE_BRAM                     FLAG_TEMP_A
+#define FLAG_TEMP_HIDE_LAUREL                   FLAG_TEMP_B
+#define FLAG_TEMP_HIDE_TILLY                    FLAG_TEMP_C
+#define FLAG_TEMP_HIDE_BUGSY                    FLAG_TEMP_D
 
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000

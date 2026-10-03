@@ -35,7 +35,7 @@
 | 5 | Estado diário ✅ 30/09, testada no jogo 03/10 (QA) | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
 | 6 | Níveis da horta ✅ 30/09, testada no jogo 03/10 (QA) | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
 | 7 | Pedidos do dia ✅ 03/10, testada no jogo 03/10 (QA) | comum e descoberta, dica da Laurel | 3, 4, 5, 6 |
-| 8 | Elenco e rotina | Bram, Laurel, Tilly, Sunflora por horário e dia da semana | 2, 5 |
+| 8 | Elenco e rotina ✅ 03/10, QA rápido no jogo (falta o roteiro do autor) | Bram, Laurel, Tilly, Sunflora por horário e dia da semana | 2, 5 |
 | 9 | Banco de falas | rodízio de 10, corações, reações de contexto | 5, 8 |
 | 10 | Infestações | pragas e ervas só na horta; 8 famílias só daqui | 2, 6 |
 | 11 | Batalhas de sempre (Tilly, Bugsy, Klara) | `garden_fight`; assalto da Klara | 5, 8, 10 |
@@ -844,12 +844,9 @@ a Sunflora fica dentro de casa, sozinha).
 **Passos**
 
 0. **`FLAG_TEMP` já ocupadas** (revisão da Parte 5): na `Route30`, `FLAG_TEMP_1` (árvore
-   de Cut em (30,10)), `FLAG_TEMP_5` (canteiro B) e `FLAG_TEMP_6` (canteiro da Laurel);
-   na `Route30_House`, `FLAG_TEMP_1` (fala do dia do tutorial; também adia o primeiro
-   pedido), `FLAG_TEMP_4` (o Bram já falou da reforma nesta visita, Parte 6),
-   `FLAG_TEMP_7` (lembrete do pedido já dado nesta visita) e `FLAG_TEMP_8` (dica da
-   Laurel já dada nesta visita), as duas da Parte 7. A Parte 8 escolhe das livres (conferir
-   com `grep` antes) e dá apelido em `flags.h`, como as da Parte 2.
+   de Cut em (30,10)), `FLAG_TEMP_5` (canteiro B) e `FLAG_TEMP_6` (canteiro da Laurel).
+   *(Feito: as marcas da casa viraram apelidos em `flags.h`, livres nos dois mapas,
+   porque os scripts do Bram e da Laurel rodam nos dois — ver “Parte 8 — feita”.)*
    **Herança da Parte 6:** a fala da obra pronta (`Route30_House_EventScript_BuiltLevel`,
    que consome `GardenReform_TakeBuiltLevel`) e a oferta de reforma estão na conversa do
    Bram **na casa**. Quando o Bram passar a ficar na horta de manhã, a conversa dele lá
@@ -871,6 +868,83 @@ a Sunflora fica dentro de casa, sozinha).
 
 **Teste no jogo:** passar pelos três períodos e pelos 7 dias da semana mudando o
 relógio; nenhum canteiro some; ninguém fica no único acesso de um canteiro.
+
+### Parte 8 — feita (03/10/2026)
+
+**Entregue:** `GardenCast_PlaceOf` (regra pura, testada), `GardenCast_PeriodOf`,
+`GardenCast_Apply` (no `ON_TRANSITION` dos dois mapas: congela o período em
+`VAR_TEMP_GARDEN_PERIOD` e seta as `FLAG_TEMP_HIDE_*` de quem não está ali) e
+`GardenCast_IsWeekend`. Objetos novos (sempre no fim do array): Route 30 — Bram 34,
+Laurel 35, Tilly 36, Bugsy 37; casa — Tilly 3, Sunflora 4 (Bram 1 e Laurel 2 ganharam
+flag). Falas: Bram dormindo (banco C inteiro, `random 10`, a 10ª pelo estado da
+história), Laurel por período (manhã, horta, dia de forno, caderno à noite), Tilly
+(café em casa; loja de adubo na horta), Bugsy (terça/quinta), Sunflora (falante novo
+`NAME_SUNFLORA`). Loja da Tilly: Growth, Damp, Stable, Gooey; + Rich e Surprise no
+nível 4. 7 testes novos (34/34 com `make check`). Roteiro T47–T54.
+
+**Decisões:**
+1. **Horários do relógio do jogo**, não os 4–10/10–18/18–4 do design: manhã 6–10, dia
+   10–19, noite 19–6 (o entardecer de 19–20 conta como noite). O elenco troca junto com
+   a cor do céu, e o `Clock… → next 7:00` do debug cai de manhã.
+2. **Antes do tutorial o Bram fica em casa a qualquer hora.** Senão quem passa pela
+   Route 30 de manhã ou de noite na primeira vez não ganha a primeira berry nem ouve o
+   tutorial.
+3. **À noite a Laurel entrega o presente do dia** (“He left these on the table for
+   you”), com o mesmo flag diário do Bram, marcado depois da primeira berry como o dele.
+   Sem isso quem joga só à noite (19h–6h, 11 horas) perderia a fonte de berries do jogo
+   inteiro. Só o sorteio: semente encomendada, pedido, marcos e reformas esperam o Bram
+   acordar (ele guarda). **Decisão para o autor confirmar.**
+4. **Um objeto por pessoa por mapa**, não versão dia/noite: na casa ninguém muda de
+   lugar (não há sofá nem cama), e o Bram dormindo é o mesmo objeto virado para a mesa
+   (`setobjectmovementtype` no `ON_TRANSITION`, antes do spawn). Dormindo ele não vira
+   para o jogador.
+5. **O período fica congelado no carregamento do mapa** (`VAR_TEMP_GARDEN_PERIOD`): se a
+   hora vira com o jogador parado, ninguém troca de lugar nem de fala até a próxima
+   entrada (§2.2).
+6. **Os scripts do Bram e da Laurel são os mesmos nos dois mapas** (a Route 30 usa os
+   rótulos `Route30_House_EventScript_BaldMan` / `_BerryWife`). Por isso as marcas por
+   visita saíram de números crus para apelidos em `flags.h` livres nos dois mapas: a
+   antiga `FLAG_TEMP_1` do tutorial é a árvore de Cut na Route 30 (o Bram falando lá
+   esconderia a árvore e, com ela cortada, acharia que toda visita é a do tutorial).
+   Agora: `FLAG_TEMP_GARDEN_REFORM_TALKED` (4), `_ORDER_REMINDED` (7),
+   `FLAG_TEMP_LAUREL_HINTED` (8), `FLAG_TEMP_BRAM_TUTORIAL_VISIT` (9),
+   `FLAG_TEMP_HIDE_BRAM/LAUREL/TILLY/BUGSY` (A–D).
+7. **Dica da Laurel à noite** (banco F, 1ª fala): qualquer berry descobrível agora
+   (`BerryLedger_NextDiscovery`), uma vez por visita, dividindo a marca com a dica do
+   pedido de descoberta (uma visita nunca dá duas receitas). Livro com 66 →
+   “Nothing left…”; nenhum par pronto → “Nothing for you tonight…”.
+8. **A fala genérica antiga da Laurel** (“My husband hands out the easy ones… you're
+   still carrying a town map”, o aviso da rara pós-Liga) saiu: o lugar dela virou a
+   fala do período. **Para a Parte 9**: voltar como reação de contexto pré-Liga.
+
+**Bugs achados no teste rápido e corrigidos antes do commit:**
+- **Bugsy dentro do lago** em (32,43): água tem colisão 0 e o `dump_mapa.py` a
+  mostrava como chão. Agora o dump marca `~` (água) e `^` (ledge), e a skill
+  `encenar-cutscene` avisa.
+- **Bram em (31,45) trancava dois canteiros a manhã inteira**: o bolsão (31,43)–(31,44)
+  é o único acesso de (30,43) e (31,42) e só se chega a ele pela linha 45. Bram foi
+  para (27,44), Bugsy para (29,41). Prova em `dev_scripts/berry_garden_access_check.py`
+  (elenco inteiro de pé ao mesmo tempo, o que cobre todo horário), também no CI
+  (`.github/workflows/berry-garden-access.yml`). **Para as Partes 11 e 12 (Klara,
+  Avery, Peony):** objeto novo da horta com flag `FLAG_TEMP_HIDE_*` entra sozinho na
+  checagem.
+- **Ferramenta de QA** (`rota.py`) lia o `map.bin` com o layout de 10 bits e contava os
+  NPCs escondidos como parede; corrigida (máscaras do `global.fieldmap.h`; o `ir.py`
+  usa os objetos vivos da RAM).
+
+**Medido:** build limpo; `checar_falantes.py` 242 em ordem; `medir_linha.py` sem
+estouro; pior janela de objetos da Route 30 = 17 contando todos os escondidos (limite
+24); flag audit regenerado.
+
+**QA rápido no jogo (headless, 03/10):** dia de semana — Laurel na horta falando “Too
+much water…”, Bram em casa; noite — horta vazia, Bram dormindo à mesa (sonho sorteado,
+não vira), Laurel em casa com a dica (Bluk = Chesto + Oran) e, com o dia novo, o presente
+(3 berries, conferidas na RAM); manhã — Bram na horta em (27,44) com o fluxo inteiro
+(obra pronta, pedido, presente e semente encomendada); sábado à tarde — Laurel fora da
+horta, Tilly na banquinha com a loja (4 adubos a ₽200) e a despedida; terça à tarde com o
+Ato 1 — Bugsy em (29,41) com a fala de terça, Laurel ao lado. **Não testado:** Tilly
+em casa de manhã, fala de quinta do Bugsy, loja no nível 4, falas de sonho 10 por
+estado.
 
 ---
 

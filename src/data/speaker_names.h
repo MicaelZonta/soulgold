@@ -246,6 +246,7 @@ const u8 *const gSpeakerNamesTable[SP_NAME_COUNT] =
     [SP_NAME_RHYPERIOR] = COMPOUND_STRING("Rhyperior"),
     [SP_NAME_VULLABY] = COMPOUND_STRING("Vullaby"),
     [SP_NAME_EXCADRILL] = COMPOUND_STRING("Excadrill"),
+    [SP_NAME_SUNFLORA] = COMPOUND_STRING("Sunflora"),
 };
 
 STATIC_ASSERT(SP_NAME_COUNT <= SPEAKER_MAX_NAMES, TooManySpeakerNames);

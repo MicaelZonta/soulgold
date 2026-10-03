@@ -754,3 +754,98 @@ void BerryDebug_NewOrder(void)
     sForcedOrderKind = gSpecialVar_0x8004 ? ORDER_KIND_DISCOVERY : ORDER_KIND_COMMON;
 }
 
+
+// ---------------------------------------------------------------------------
+// Who is where (part 8, section 2.1 / 14.3)
+//
+//            morning        day                         night
+//   Bram     garden         house (seeds)               house, asleep
+//   Laurel   house          garden; house on weekends   house (notebook)
+//   Tilly    house (Sat/Sun)  garden stall (Sat/Sun)    away
+//   Bugsy    away           garden, Tue/Thu, state >= 3 away
+// Before the tutorial Bram stays in the house at any hour: the first visit is
+// the classic one, and nobody misses the first Berry because of the clock.
+// Nothing is saved: both maps ask again on every load (FLAG_TEMP_HIDE_*), so
+// someone only changes place when the player comes back in, never in sight.
+// ---------------------------------------------------------------------------
+
+u32 GardenCast_PeriodOf(enum TimeOfDay timeOfDay)
+{
+    switch (timeOfDay)
+    {
+    case TIME_MORNING:
+        return GARDEN_PERIOD_MORNING;
+    case TIME_DAY:
+        return GARDEN_PERIOD_DAY;
+    default:
+        return GARDEN_PERIOD_NIGHT;
+    }
+}
+
+static bool32 IsWeekend(u32 weekday)
+{
+    return weekday == WEEKDAY_SAT || weekday == WEEKDAY_SUN;
+}
+
+u32 GardenCast_PlaceOf(u32 who, u32 period, u32 weekday, bool32 tutorialDone, u32 harvestKing)
+{
+    switch (who)
+    {
+    case GARDEN_CAST_BRAM:
+        if (tutorialDone && period == GARDEN_PERIOD_MORNING)
+            return GARDEN_PLACE_GARDEN;
+        return GARDEN_PLACE_HOUSE;
+    case GARDEN_CAST_LAUREL:
+        if (period == GARDEN_PERIOD_DAY && !IsWeekend(weekday))
+            return GARDEN_PLACE_GARDEN;
+        return GARDEN_PLACE_HOUSE;
+    case GARDEN_CAST_TILLY:
+        if (!IsWeekend(weekday) || period == GARDEN_PERIOD_NIGHT)
+            return GARDEN_PLACE_AWAY;
+        return period == GARDEN_PERIOD_DAY ? GARDEN_PLACE_GARDEN : GARDEN_PLACE_HOUSE;
+    case GARDEN_CAST_BUGSY:
+        if (period == GARDEN_PERIOD_DAY && harvestKing >= HARVEST_KING_BUGSY_CAME
+         && (weekday == WEEKDAY_TUE || weekday == WEEKDAY_THU))
+            return GARDEN_PLACE_GARDEN;
+        return GARDEN_PLACE_AWAY;
+    }
+    return GARDEN_PLACE_AWAY;
+}
+
+static const u16 sCastHideFlags[] =
+{
+    [GARDEN_CAST_BRAM]   = FLAG_TEMP_HIDE_BRAM,
+    [GARDEN_CAST_LAUREL] = FLAG_TEMP_HIDE_LAUREL,
+    [GARDEN_CAST_TILLY]  = FLAG_TEMP_HIDE_TILLY,
+    [GARDEN_CAST_BUGSY]  = FLAG_TEMP_HIDE_BUGSY,
+};
+
+// ON_TRANSITION of Route30 and Route30_House, before anything spawns: freezes
+// the period in VAR_TEMP_GARDEN_PERIOD (what they say matches where they
+// stand) and hides whoever is not on this map now. FLAG_TEMP_* start clear on
+// every load, so this only ever sets.
+void GardenCast_Apply(void)
+{
+    u32 who, period, weekday, here;
+
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE30)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE30))
+        here = GARDEN_PLACE_GARDEN;
+    else
+        here = GARDEN_PLACE_HOUSE;
+    period = GardenCast_PeriodOf(GetTimeOfDay());
+    weekday = GetDayOfWeek();
+    VarSet(VAR_TEMP_GARDEN_PERIOD, period);
+    for (who = 0; who < ARRAY_COUNT(sCastHideFlags); who++)
+    {
+        if (GardenCast_PlaceOf(who, period, weekday, FlagGet(FLAG_GOT_BERRY_ROUTE_30_HOUSE),
+                               VarGet(VAR_HARVEST_KING)) != here)
+            FlagSet(sCastHideFlags[who]);
+    }
+}
+
+// For the scripts' weekday lines: TRUE on Saturday and Sunday.
+u16 GardenCast_IsWeekend(void)
+{
+    return IsWeekend(GetDayOfWeek());
+}

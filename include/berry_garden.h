@@ -2,6 +2,7 @@
 #define GUARD_BERRY_GARDEN_H
 
 #include "constants/berry_garden.h"
+#include "constants/rtc.h"
 
 // Berry Master's garden on Route 30 (.claude/berry_master/REI_DA_COLHEITA.md).
 
@@ -39,6 +40,13 @@ u16 GardenOrder_Roll(void);
 u16 GardenOrder_Get(void);
 u16 GardenOrder_RewardMulch(void);
 u16 GardenOrder_Pay(void);
+void GardenCast_Apply(void);
+u16 GardenCast_IsWeekend(void);
+
+// The routine as pure rules (tests): GARDEN_PERIOD_* of a TimeOfDay, and the
+// GARDEN_PLACE_* of a GARDEN_CAST_* member at that period and weekday.
+u32 GardenCast_PeriodOf(enum TimeOfDay timeOfDay);
+u32 GardenCast_PlaceOf(u32 who, u32 period, u32 weekday, bool32 tutorialDone, u32 harvestKing);
 
 // Debug menu (Berry Master...)
 void BerryDebug_AdvanceHours(void);

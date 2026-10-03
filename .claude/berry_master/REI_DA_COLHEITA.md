@@ -97,6 +97,25 @@ Coordenadas de fora são **sugestões**: medir com `dump_mapa.py Route30` antes
 (skill `encenar-cutscene`). Regra: ninguém em pé numa célula que seja o **único**
 acesso a um canteiro (lista em `BERRY_MASTER_DESIGN.md` §2.1).
 
+> **Código (parte 8, 03/10/2026) — medido, substitui as coordenadas e horários acima.**
+> - **Horários:** os do relógio do jogo (`GetTimeOfDay`, `OW_TIMES_OF_DAY` = geração
+>   atual): manhã **6–10**, dia **10–19**, entardecer 19–20 e noite 20–6. O entardecer
+>   conta como noite. Assim o elenco combina com a cor do céu.
+> - **Bram de manhã em (27,44)**, não (31,45): o lago começa em x = 32 (água tem
+>   colisão 0 e o `dump_mapa.py` a mostrava como chão), e o bolsão (31,43)–(31,44),
+>   único acesso de (30,43) e (31,42), só se alcança pela linha 45 a leste de (27,45).
+>   Com o Bram em (31,45) esses dois canteiros ficavam trancados a manhã inteira.
+> - **Bugsy em (29,41)**, de lupa no canteiro B; (31,43) era o único acesso de dois
+>   canteiros e (32,43) é água.
+> - **Casa:** Bram e Laurel na mesa (4,4)/(3,4) em todos os períodos (o Bram dorme
+>   sentado, virado para a mesa); Tilly na cadeira azul (7,5); Sunflora sob a
+>   janela (6,2). A casa não tem sofá nem cama.
+> - **Antes do tutorial o Bram fica em casa a qualquer hora** (a primeira visita é a
+>   clássica). **À noite a Laurel entrega o presente do dia** que ele deixou na mesa
+>   (só o sorteio: semente encomendada, pedido, marcos e reformas esperam o Bram).
+> - Prova com o elenco todo de pé: `python3 dev_scripts/berry_garden_access_check.py`
+>   (também no CI).
+
 ### 2.2 Como se faz sem flag nenhuma
 
 Um script `ON_TRANSITION` em `Route30` e outro em `Route30_House`:

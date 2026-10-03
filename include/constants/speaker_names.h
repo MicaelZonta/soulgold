@@ -272,6 +272,7 @@ enum SpeakerNames {
     SP_NAME_RHYPERIOR,
     SP_NAME_VULLABY,
     SP_NAME_EXCADRILL,
+    SP_NAME_SUNFLORA,
     SP_NAME_COUNT
 };
 

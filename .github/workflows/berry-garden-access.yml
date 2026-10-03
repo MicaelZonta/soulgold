@@ -1,0 +1,26 @@
+name: Acesso aos canteiros da horta
+
+# Falha quando alguem do elenco da horta (Bram, Laurel, Tilly, Bugsy e os
+# proximos) fica de pe na agua ou tranca o unico acesso de um canteiro da
+# Route 30. So precisa de python.
+on:
+  push:
+    paths:
+      - 'data/maps/Route30/map.json'
+      - 'data/layouts/Route30/map.bin'
+      - 'dev_scripts/berry_garden_access_check.py'
+      - '.claude/qa/rota.py'
+  pull_request:
+    paths:
+      - 'data/maps/Route30/map.json'
+      - 'data/layouts/Route30/map.bin'
+      - 'dev_scripts/berry_garden_access_check.py'
+      - '.claude/qa/rota.py'
+
+jobs:
+  berry-garden-access:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Nenhum canteiro trancado
+        run: python3 dev_scripts/berry_garden_access_check.py

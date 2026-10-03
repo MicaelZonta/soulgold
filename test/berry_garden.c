@@ -15,7 +15,7 @@
 #include "constants/items.h"
 
 // Berry Master's garden (.claude/berry_master/PLANO_DE_IMPLEMENTACAO.md,
-// parts 2 to 6).
+// parts 2 to 8).
 
 static void ClearLedger(void)
 {
@@ -517,4 +517,66 @@ TEST("A discovery order asks for one Berry, pays double and gives Surprise Mulch
     EXPECT(!BerryLedger_Has(gSpecialVar_0x8004));
     EXPECT_EQ(GardenOrder_RewardMulch(), ITEM_SURPRISE_MULCH);
     EXPECT_EQ(GardenOrder_Pay(), 300);              // generation 1: 1 x 150 x 2
+}
+
+// Part 8: who is where (section 2.1 / 14.3).
+#define PLACE(who, period, day) GardenCast_PlaceOf(GARDEN_CAST_##who, GARDEN_PERIOD_##period, WEEKDAY_##day, TRUE, HARVEST_KING_ACT1_DONE)
+
+TEST("The game's evening counts as the garden's night")
+{
+    EXPECT_EQ(GardenCast_PeriodOf(TIME_MORNING), GARDEN_PERIOD_MORNING);
+    EXPECT_EQ(GardenCast_PeriodOf(TIME_DAY), GARDEN_PERIOD_DAY);
+    EXPECT_EQ(GardenCast_PeriodOf(TIME_EVENING), GARDEN_PERIOD_NIGHT);
+    EXPECT_EQ(GardenCast_PeriodOf(TIME_NIGHT), GARDEN_PERIOD_NIGHT);
+}
+
+TEST("Bram waters in the morning and is home the rest of the day")
+{
+    EXPECT_EQ(PLACE(BRAM, MORNING, MON), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(PLACE(BRAM, DAY, MON), GARDEN_PLACE_HOUSE);
+    EXPECT_EQ(PLACE(BRAM, NIGHT, SAT), GARDEN_PLACE_HOUSE);
+}
+
+TEST("Before the tutorial Bram is in the house at any hour")
+{
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_BRAM, GARDEN_PERIOD_MORNING, WEEKDAY_MON, FALSE, 0), GARDEN_PLACE_HOUSE);
+}
+
+TEST("Laurel is in the garden on weekday afternoons and bakes at home on weekends")
+{
+    EXPECT_EQ(PLACE(LAUREL, MORNING, WED), GARDEN_PLACE_HOUSE);
+    EXPECT_EQ(PLACE(LAUREL, DAY, WED), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(PLACE(LAUREL, DAY, SUN), GARDEN_PLACE_HOUSE);
+    EXPECT_EQ(PLACE(LAUREL, NIGHT, WED), GARDEN_PLACE_HOUSE);
+}
+
+TEST("Tilly only comes on weekends and goes home at night")
+{
+    EXPECT_EQ(PLACE(TILLY, DAY, FRI), GARDEN_PLACE_AWAY);
+    EXPECT_EQ(PLACE(TILLY, MORNING, SAT), GARDEN_PLACE_HOUSE);
+    EXPECT_EQ(PLACE(TILLY, DAY, SUN), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(PLACE(TILLY, NIGHT, SAT), GARDEN_PLACE_AWAY);
+}
+
+TEST("Bugsy comes on Tuesday and Thursday afternoons from Act 1b on")
+{
+    EXPECT_EQ(PLACE(BUGSY, DAY, TUE), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(PLACE(BUGSY, DAY, THU), GARDEN_PLACE_GARDEN);
+    EXPECT_EQ(PLACE(BUGSY, MORNING, TUE), GARDEN_PLACE_AWAY);
+    EXPECT_EQ(PLACE(BUGSY, DAY, WED), GARDEN_PLACE_AWAY);
+    EXPECT_EQ(GardenCast_PlaceOf(GARDEN_CAST_BUGSY, GARDEN_PERIOD_DAY, WEEKDAY_TUE, TRUE, HARVEST_KING_BUGSY_CAME - 1), GARDEN_PLACE_AWAY);
+}
+
+TEST("Tilly and Bugsy are never in the garden together")
+{
+    u32 day, period;
+
+    for (day = WEEKDAY_SUN; day <= WEEKDAY_SAT; day++)
+    {
+        for (period = GARDEN_PERIOD_MORNING; period <= GARDEN_PERIOD_NIGHT; period++)
+        {
+            EXPECT(GardenCast_PlaceOf(GARDEN_CAST_TILLY, period, day, TRUE, HARVEST_KING_ACT1_DONE) != GARDEN_PLACE_GARDEN
+                || GardenCast_PlaceOf(GARDEN_CAST_BUGSY, period, day, TRUE, HARVEST_KING_ACT1_DONE) != GARDEN_PLACE_GARDEN);
+        }
+    }
 }

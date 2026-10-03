@@ -38,11 +38,29 @@ def pos():
     return struct.unpack("<hh", bytes.fromhex(h))
 
 
+def live_objects():
+    """Posicoes dos gObjectEvents ativos, menos jogador (255) e follower (254):
+    so o que existe de verdade agora bloqueia a rota (NPC escondido por flag
+    nao). Layout de struct ObjectEvent como em objetos.py."""
+    import re
+    count = int(re.search(r"#define OBJECT_EVENTS_COUNT (\d+)",
+        (REPO / "include/constants/global.h").read_text()).group(1))
+    size, off_local, off_coords = 36, 8, 16
+    raw = bytes.fromhex(q.run([f"range {sym('gObjectEvents')} {count * size}"]).split("=")[1])
+    objs = set()
+    for i in range(count):
+        o = raw[i * size:(i + 1) * size]
+        if o[0] & 1 and o[off_local] not in (254, 255):
+            x, y = struct.unpack_from("<hh", o, off_coords)
+            objs.add((x - 7, y - 7))
+    return objs
+
+
 def go(mapname, target):
     q.run(["press B 6 24"] * 8)   # fecha caixa de texto que tenha ficado aberta
     for _ in range(200):
         cur = pos()
-        steps, face = path(mapname, cur, target)
+        steps, face = path(mapname, cur, target, live_objects())
         if not steps:
             if face:
                 q.run([f"press {face} 10 12"])   # < 8 quadros nao chega a virar

@@ -14,12 +14,21 @@
 @
 @ Floor plan (dump_mapa.py Route30_House; y grows DOWNWARD):
 @       x= 0 1 2 3 4 5 6 7 8 9 10
-@   y=4    . . . W M # # . . . .   M = the Berry Master (4,4)
-@   y=5    . . . . . # # . . . .   W = his wife (3,4), NEW
-@   y=8    # . . . D . . . . . #   D = the door (4,8)
-@ Neither of them ever moves, and neither is south of the player at the door, so
-@ the text box covers nobody.
+@   y=2    . . . . . . S . . . .   S = Laurel's Sunflora, under the window (6,2)
+@   y=4    . . . L B # # . . . .   B = Bram (4,4), L = Laurel (3,4)
+@   y=5    . . . . . # # T . . .   T = Tilly on the blue chair (7,5), weekend mornings
+@   y=8    # . . . D . . . . . #   D = the door (4,8);  # # = the table (5..6, 4..5)
+@ Nobody ever walks, and nobody is south of the player at the door, so the text
+@ box covers nobody.
+@ Who is in here depends on the hour (part 8, GardenCast_Apply in
+@ src/berry_garden.c): Bram is out in the garden in the morning and asleep at
+@ the table at night; Laurel is out in the garden on weekday afternoons; Tilly
+@ only comes on weekends. Bram's and Laurel's scripts are the SAME on both
+@ maps (Route30 uses these labels), so they never use a LOCALID and their
+@ once-per-visit marks are FLAG_TEMP_* that Route30 leaves free (flags.h).
 @ ===========================================================================
+
+.set LOCALID_BRAM_HOUSE, 1
 
 Route30_House_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route30_House_OnTransition
@@ -28,7 +37,17 @@ Route30_House_MapScripts::
 @ The garden's day starts wherever the player first shows up (src/berry_garden.c).
 Route30_House_OnTransition::
 	special GardenRollDay
+	special GardenCast_Apply
+	call_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, Route30_House_EventScript_BramDozes
 	end
+
+@ Asleep at the table, facing it. Before the tutorial he is still up (the first
+@ visit is the classic one at any hour).
+Route30_House_EventScript_BramDozes::
+	goto_if_unset FLAG_GOT_BERRY_ROUTE_30_HOUSE, Route30_House_EventScript_BramDozesEnd
+	setobjectmovementtype LOCALID_BRAM_HOUSE, MOVEMENT_TYPE_FACE_RIGHT
+Route30_House_EventScript_BramDozesEnd::
+	return
 
 @ He keeps the one-off Cheri Berry - it is the tutorial and it explains the whole
 @ system - and gains a daily gift on top of it.
@@ -40,6 +59,7 @@ Route30_House_OnTransition::
 @ is a hack; that line is deliberately NOT copied here.
 Route30_House_EventScript_BaldMan::
 	lock
+	call_if_set FLAG_GOT_BERRY_ROUTE_30_HOUSE, Route30_House_EventScript_CheckAsleep
 	faceplayer
 	dotimebasedevents
 	@ Midnight may have passed with the player in here: no map load, so the
@@ -59,8 +79,8 @@ Route30_House_EventScript_BaldMan::
 	@ 2 Berries a day, 3 from garden level 2 (src/berry_garden.c).
 	specialvar VAR_0x8009, GardenGift_Count
 	@ "You came back!" makes no sense in the same conversation as the tutorial.
-	call_if_set FLAG_TEMP_1, Route30_House_EventScript_FirstTwoText
-	goto_if_set FLAG_TEMP_1, Route30_House_EventScript_GiveDraw
+	call_if_set FLAG_TEMP_BRAM_TUTORIAL_VISIT, Route30_House_EventScript_FirstTwoText
+	goto_if_set FLAG_TEMP_BRAM_TUTORIAL_VISIT, Route30_House_EventScript_GiveDraw
 	goto_if_eq VAR_0x8009, 3, Route30_House_EventScript_OfferSeed
 	msgbox Route30_House_Text_TakeTwo, MSGBOX_DEFAULT
 	goto Route30_House_EventScript_GiveDraw
@@ -110,16 +130,18 @@ Route30_House_EventScript_OfferSeed::
 @ ---------------------------------------------------------------------------
 @ Today's order (section 6; rules in src/berry_garden.c, GardenOrder_*).
 @ Drawn in the first conversation of the day and announced then; on later
-@ visits Bram reminds once per visit (FLAG_TEMP_7) and takes the Berries the
-@ moment the player has them. The pay is asked about BEFORE anything leaves
-@ the bag: checkitem -> yesno -> checkitemspace -> removeitem -> pay.
+@ visits Bram reminds once per visit (FLAG_TEMP_GARDEN_ORDER_REMINDED) and
+@ takes the Berries the moment the player has them. The pay is asked about
+@ BEFORE anything leaves the bag:
+@ checkitem -> yesno -> checkitemspace -> removeitem -> pay.
 @ VAR_0x8004 Berry, 0x8005 how many, 0x8006 client, 0x8007 discovery,
 @ 0x800A "drawn just now". STR_VAR_1 = the Berry (plural), STR_VAR_2 = how many.
-@ Not on the tutorial visit (FLAG_TEMP_1): the first order waits for the
-@ next visit, so the tutorial ends on the Book and the first two Berries.
+@ Not on the tutorial visit (FLAG_TEMP_BRAM_TUTORIAL_VISIT): the first order
+@ waits for the next visit, so the tutorial ends on the Book and the first two
+@ Berries.
 @ ---------------------------------------------------------------------------
 Route30_House_EventScript_Order::
-	goto_if_set FLAG_TEMP_1, Route30_House_EventScript_OrderEnd
+	goto_if_set FLAG_TEMP_BRAM_TUTORIAL_VISIT, Route30_House_EventScript_OrderEnd
 	specialvar VAR_0x800A, GardenOrder_Roll
 	specialvar VAR_RESULT, GardenOrder_Get
 	goto_if_ne VAR_RESULT, GARDEN_ORDER_OPEN, Route30_House_EventScript_OrderEnd
@@ -128,8 +150,8 @@ Route30_House_EventScript_Order::
 	call_if_eq VAR_0x800A, TRUE, Route30_House_EventScript_OrderAnnounce
 	checkitem VAR_0x8004, VAR_0x8005
 	goto_if_eq VAR_RESULT, TRUE, Route30_House_EventScript_OrderDeliver
-	goto_if_set FLAG_TEMP_7, Route30_House_EventScript_OrderEnd
-	setflag FLAG_TEMP_7
+	goto_if_set FLAG_TEMP_GARDEN_ORDER_REMINDED, Route30_House_EventScript_OrderEnd
+	setflag FLAG_TEMP_GARDEN_ORDER_REMINDED
 	call_if_eq VAR_0x8007, FALSE, Route30_House_EventScript_OrderReminder
 	call_if_eq VAR_0x8007, TRUE, Route30_House_EventScript_OrderReminderDiscovery
 Route30_House_EventScript_OrderEnd::
@@ -144,7 +166,7 @@ Route30_House_EventScript_OrderReminderDiscovery::
 	return
 
 Route30_House_EventScript_OrderAnnounce::
-	setflag FLAG_TEMP_7
+	setflag FLAG_TEMP_GARDEN_ORDER_REMINDED
 	goto_if_eq VAR_0x8007, TRUE, Route30_House_EventScript_OrderAnnounceDiscovery
 	switch VAR_0x8006
 	case GARDEN_CLIENT_KURT, Route30_House_EventScript_OrderKurt
@@ -276,8 +298,9 @@ Route30_House_EventScript_PlantThemThreeText::
 @ Garden levels (section 5; rules in src/berry_garden.c, sGardenReforms).
 @ Bram offers the next level when the Book is big enough; paid today, built
 @ overnight, and he talks about it the next time the player sees him.
-@ FLAG_TEMP_4: he already brought the garden up on this visit (no repeating
-@ the offer or the "I need help" line every time the player talks to him).
+@ FLAG_TEMP_GARDEN_REFORM_TALKED: he already brought the garden up on this
+@ visit (no repeating the offer or the "I need help" line every time the
+@ player talks to him).
 @ ---------------------------------------------------------------------------
 Route30_House_EventScript_BuiltLevel::
 	specialvar VAR_RESULT, GardenReform_TakeBuiltLevel
@@ -300,7 +323,7 @@ Route30_House_EventScript_BuiltBugHotel::
 	return
 
 Route30_House_EventScript_Reform::
-	goto_if_set FLAG_TEMP_4, Route30_House_EventScript_ReformEnd
+	goto_if_set FLAG_TEMP_GARDEN_REFORM_TALKED, Route30_House_EventScript_ReformEnd
 	specialvar VAR_RESULT, GardenReform_Check
 	goto_if_eq VAR_RESULT, GARDEN_REFORM_READY, Route30_House_EventScript_ReformOffer
 	goto_if_eq VAR_RESULT, GARDEN_REFORM_NEEDS_HELP, Route30_House_EventScript_ReformNeedsHelp
@@ -308,13 +331,13 @@ Route30_House_EventScript_ReformEnd::
 	return
 
 Route30_House_EventScript_ReformNeedsHelp::
-	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_GARDEN_REFORM_TALKED
 	msgbox Route30_House_Text_ReformNeedsHelp, MSGBOX_DEFAULT
 	return
 
 @ VAR_0x8005 = the level on offer (GardenReform_Check).
 Route30_House_EventScript_ReformOffer::
-	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_GARDEN_REFORM_TALKED
 	goto_if_eq VAR_0x8005, GARDEN_LEVEL_BUG_HOTEL, Route30_House_EventScript_OfferBugHotel
 	showmoneybox 0, 0
 	@ The offer comes when the Book reaches the size OR LATER: say the real count.
@@ -367,13 +390,79 @@ Route30_House_EventScript_BugHotelDeclined::
 @ The original one-off Cheri, plus the Book of Berries. It no longer ends the
 @ conversation: the tutorial and the first daily pair happen on the same visit,
 @ so the box stays open into the gift (no closemessage here).
+@ Night (part 8): asleep at the table. No faceplayer, no gift - Laurel hands
+@ his Berries out at night (Route30_House_EventScript_LaurelNightGift).
+@ Dreams have no calendar: random, not the day's line (section 14.4 C).
+Route30_House_EventScript_CheckAsleep::
+	@ Still up on the visit he did the tutorial in, even at night: he was
+	@ awake a minute ago (and the map loaded with him facing the player).
+	goto_if_set FLAG_TEMP_BRAM_TUTORIAL_VISIT, Route30_House_EventScript_CheckAsleepEnd
+	goto_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, Route30_House_EventScript_BramAsleep
+Route30_House_EventScript_CheckAsleepEnd::
+	return
+
+Route30_House_EventScript_BramAsleep::
+	random 10
+	switch VAR_RESULT
+	case 0, Route30_House_EventScript_Dream0
+	case 1, Route30_House_EventScript_Dream1
+	case 2, Route30_House_EventScript_Dream2
+	case 3, Route30_House_EventScript_Dream3
+	case 4, Route30_House_EventScript_Dream4
+	case 5, Route30_House_EventScript_Dream5
+	case 6, Route30_House_EventScript_Dream6
+	case 7, Route30_House_EventScript_Dream7
+	case 8, Route30_House_EventScript_Dream8
+	@ The last one follows the story: the king's plot comes up in Act 4 (8).
+	goto_if_ge VAR_HARVEST_KING, 15, Route30_House_EventScript_Dream9Song
+	goto_if_ge VAR_HARVEST_KING, 8, Route30_House_EventScript_Dream9CameUp
+	msgbox Route30_House_Text_Dream9, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+
+Route30_House_EventScript_Dream0::
+	msgbox Route30_House_Text_Dream0, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+Route30_House_EventScript_Dream1::
+	msgbox Route30_House_Text_Dream1, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+Route30_House_EventScript_Dream2::
+	msgbox Route30_House_Text_Dream2, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+Route30_House_EventScript_Dream3::
+	msgbox Route30_House_Text_Dream3, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+Route30_House_EventScript_Dream4::
+	msgbox Route30_House_Text_Dream4, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+Route30_House_EventScript_Dream5::
+	msgbox Route30_House_Text_Dream5, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+Route30_House_EventScript_Dream6::
+	msgbox Route30_House_Text_Dream6, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+Route30_House_EventScript_Dream7::
+	msgbox Route30_House_Text_Dream7, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+Route30_House_EventScript_Dream8::
+	msgbox Route30_House_Text_Dream8, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+Route30_House_EventScript_Dream9CameUp::
+	msgbox Route30_House_Text_Dream9CameUp, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_DreamEnd
+Route30_House_EventScript_Dream9Song::
+	msgbox Route30_House_Text_Dream9Song, MSGBOX_DEFAULT
+Route30_House_EventScript_DreamEnd::
+	closemessage
+	release
+	end
+
 Route30_House_EventScript_Tutorial::
 	msgbox Route30_BerryHouse_Text_MonEatBerries, MSGBOX_DEFAULT
 	giveitem ITEM_CHERI_BERRY
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_GOT_BERRY_ROUTE_30_HOUSE
 	@ This visit's gift gets the first-time line (cleared by the next map load).
-	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_BRAM_TUTORIAL_VISIT
 	@ The garden outside opens with the tutorial: bed A is level 1.
 	setvar VAR_BERRY_GARDEN_LEVEL, 1
 	special BerryLedger_RegisterStarters
@@ -489,6 +578,7 @@ Route30_House_EventScript_BerryWife::
 	dotimebasedevents
 	special GardenRollDay
 	call Route30_House_EventScript_LaurelHint
+	call Route30_House_EventScript_LaurelNightGift
 	goto_if_unset FLAG_SYS_GAME_CLEAR, Route30_House_EventScript_WifeChat
 	goto_if_set FLAG_DAILY_BERRY_MASTERS_WIFE, Route30_House_EventScript_WifeDoneToday
 	@ Only a rare the player has harvested (the Book), never the Enigma.
@@ -504,16 +594,16 @@ Route30_House_EventScript_BerryWife::
 	end
 
 @ A discovery order is open: Bram does not know the recipe, Laurel does
-@ (section 6). Once per visit (FLAG_TEMP_8), then her usual line.
+@ (section 6). Once per visit (FLAG_TEMP_LAUREL_HINTED), then her usual line.
 @ STR_VAR_1 = the new Berry, STR_VAR_2 / STR_VAR_3 = the two parents.
 Route30_House_EventScript_LaurelHint::
-	goto_if_set FLAG_TEMP_8, Route30_House_EventScript_LaurelHintEnd
+	goto_if_set FLAG_TEMP_LAUREL_HINTED, Route30_House_EventScript_LaurelHintEnd
 	specialvar VAR_RESULT, GardenOrder_Get
 	goto_if_ne VAR_RESULT, GARDEN_ORDER_OPEN, Route30_House_EventScript_LaurelHintEnd
 	goto_if_eq VAR_0x8007, FALSE, Route30_House_EventScript_LaurelHintEnd
 	specialvar VAR_RESULT, BerryLedger_GetRecipe
 	goto_if_eq VAR_RESULT, FALSE, Route30_House_EventScript_LaurelHintEnd
-	setflag FLAG_TEMP_8
+	setflag FLAG_TEMP_LAUREL_HINTED
 	bufferitemname STR_VAR_1, VAR_0x8004
 	bufferitemname STR_VAR_2, VAR_0x8005
 	bufferitemname STR_VAR_3, VAR_0x8006
@@ -529,15 +619,96 @@ Route30_House_EventScript_WifeNoRare::
 	release
 	end
 
+@ Her line of the hour (part 8; part 9 turns each into a bank of 10).
 Route30_House_EventScript_WifeChat::
-	msgbox Route30_House_Text_WifeChat, MSGBOX_DEFAULT
+	goto_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, Route30_House_EventScript_WifeNight
+	goto_if_eq VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_MORNING, Route30_House_EventScript_WifeMorning
+	specialvar VAR_RESULT, GardenCast_IsWeekend
+	goto_if_eq VAR_RESULT, TRUE, Route30_House_EventScript_WifeBreadDay
+	msgbox Route30_House_Text_WifeGarden, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_WifeChatEnd
+
+Route30_House_EventScript_WifeMorning::
+	msgbox Route30_House_Text_WifeMorning, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_WifeChatEnd
+
+Route30_House_EventScript_WifeBreadDay::
+	msgbox Route30_House_Text_WifeBreadDay, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_WifeChatEnd
+
+@ Night: the notebook (section 14.4 F). Any Berry the player can discover now,
+@ once per visit, sharing the mark with the order hint so one visit never gets
+@ two recipes.
+Route30_House_EventScript_WifeNight::
+	goto_if_set FLAG_TEMP_LAUREL_HINTED, Route30_House_EventScript_WifeReading
+	specialvar VAR_RESULT, BerryLedger_NextDiscovery
+	goto_if_eq VAR_RESULT, ITEM_NONE, Route30_House_EventScript_WifeNothingTonight
+	setflag FLAG_TEMP_LAUREL_HINTED
+	bufferitemname STR_VAR_1, VAR_RESULT
+	bufferitemname STR_VAR_2, VAR_0x8005
+	bufferitemname STR_VAR_3, VAR_0x8006
+	msgbox Route30_House_Text_LaurelHint, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_WifeChatEnd
+
+Route30_House_EventScript_WifeNothingTonight::
+	specialvar VAR_RESULT, BerryLedger_Count
+	goto_if_ge VAR_RESULT, BERRY_LEDGER_ALL_GROWN, Route30_House_EventScript_WifeBookDone
+	msgbox Route30_House_Text_WifeNothingTonight, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_WifeChatEnd
+
+Route30_House_EventScript_WifeBookDone::
+	msgbox Route30_House_Text_WifeBookDone, MSGBOX_DEFAULT
+	goto Route30_House_EventScript_WifeChatEnd
+
+Route30_House_EventScript_WifeReading::
+	msgbox Route30_House_Text_WifeReading, MSGBOX_DEFAULT
+Route30_House_EventScript_WifeChatEnd::
 	closemessage
 	release
 	end
 
+@ Night: Bram is asleep, so his Berries are on the table and Laurel hands them
+@ over (part 8). Only the draw - the seed of your choice, the order, the
+@ milestones and the reforms wait for him to wake up. Same daily flag as his,
+@ set after the first Berry like his (Route30_House_EventScript_GiveDraw).
+Route30_House_EventScript_LaurelNightGift::
+	goto_if_ne VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, Route30_House_EventScript_LaurelNightGiftEnd
+	goto_if_unset FLAG_GOT_BERRY_ROUTE_30_HOUSE, Route30_House_EventScript_LaurelNightGiftEnd
+	goto_if_set FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY, Route30_House_EventScript_LaurelNightGiftEnd
+	special BerryLedger_RegisterStarters
+	specialvar VAR_0x8009, GardenGift_Count
+	msgbox Route30_House_Text_LaurelNightGift, MSGBOX_DEFAULT
+	call Route30_House_EventScript_GiveLedgerBerry
+	setflag FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY
+	call Route30_House_EventScript_GiveLedgerBerry
+	call_if_eq VAR_0x8009, 3, Route30_House_EventScript_GiveLedgerBerry
+Route30_House_EventScript_LaurelNightGiftEnd::
+	return
+
 Route30_House_EventScript_WifeDoneToday::
 	msgbox Route30_House_Text_WifeDoneToday, MSGBOX_DEFAULT
 	closemessage
+	release
+	end
+
+@ Weekend mornings (part 8): breakfast at the table before her stall opens.
+Route30_House_EventScript_Tilly::
+	lock
+	faceplayer
+	msgbox Route30_House_Text_TillyBreakfast, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+@ Laurel's Sunflora stays indoors (object budget, section 1), in the sun
+@ under the window.
+Route30_House_EventScript_Sunflora::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_SUNFLORA, CRY_MODE_NORMAL
+	msgbox Route30_House_Text_Sunflora, MSGBOX_DEFAULT
+	waitmoncry
 	release
 	end
 
@@ -801,12 +972,95 @@ Route30_House_Text_DoneToday:
 	.string "Go and plant one. I'll pick more by\n"
 	.string "morning -- I always do.$"
 
-Route30_House_Text_WifeChat:
-	.string "My husband hands out the easy ones.\p"
-	.string "I keep the others. They only fruit for\n"
-	.string "somebody who knows what they're doing,\l"
-	.string "and no offence, dear, but you're still\l"
-	.string "carrying a town map.$"
+Route30_House_Text_WifeMorning:
+	.string "He's out in the beds. Left at four.\n"
+	.string "He always leaves at four.\p"
+	.string "Sit. Eat. The Berries can wait ten\n"
+	.string "minutes. He can't, but they can.$"
+
+Route30_House_Text_WifeGarden:
+	.string "Too much water. Not you. Him.\p"
+	.string "He's inside with his seeds. Go on.$"
+
+Route30_House_Text_WifeBreadDay:
+	.string "Bread day. Don't open the oven.\n"
+	.string "Don't look at the oven.\p"
+	.string "The oven can feel you looking.$"
+
+Route30_House_Text_WifeReading:
+	.string "I'm reading. You've had your page.$"
+
+Route30_House_Text_WifeNothingTonight:
+	.string "Nothing for you tonight. Grow what\n"
+	.string "you've got.\p"
+	.string "The book isn't going anywhere.$"
+
+Route30_House_Text_WifeBookDone:
+	.string "Nothing left in here you haven't\n"
+	.string "grown.\p"
+	.string "I don't know whether to be proud or\n"
+	.string "bored.$"
+
+Route30_House_Text_LaurelNightGift:
+	.string "He's asleep. He left these on the\n"
+	.string "table for you.\p"
+	.string "He counted them twice. Don't tell him\n"
+	.string "I watched.$"
+
+Route30_House_Text_TillyBreakfast:
+	.string "Grandpa's out watering! I'm eating\n"
+	.string "toast.\p"
+	.string "The shop opens at ten. The mulch has\n"
+	.string "to wake up first.$"
+
+Route30_House_Text_Sunflora:
+	.string "{SPEAKER NAME_SUNFLORA}Floraaa!$"
+
+Route30_House_Text_Dream0:
+	.string "Zzz... No, no, the Sitrus goes by\n"
+	.string "the fence...$"
+
+Route30_House_Text_Dream1:
+	.string "Zzz... Laurel... there's a Combee in\n"
+	.string "my hat...$"
+
+Route30_House_Text_Dream2:
+	.string "Zzz... Forty-one... forty-two...\n"
+	.string "forty-three Pecha...$"
+
+Route30_House_Text_Dream3:
+	.string "Zzz... Kurt, you owe me for the\n"
+	.string "Leppa...$"
+
+Route30_House_Text_Dream4:
+	.string "Zzz... Hm? The Book?\p"
+	.string "...Six more... zzz...$"
+
+Route30_House_Text_Dream5:
+	.string "Zzz... Tilly... that's not a Rellor...\n"
+	.string "that's my breakfast...$"
+
+Route30_House_Text_Dream6:
+	.string "Zzz... biggest Oran in Johto...\n"
+	.string "the judges are weeping...$"
+
+Route30_House_Text_Dream7:
+	.string "Zzz... sprout... water the...\n"
+	.string "the... zzz...$"
+
+Route30_House_Text_Dream8:
+	.string "Zzz... Bugsy... put it down...\n"
+	.string "that's the salt...$"
+
+Route30_House_Text_Dream9:
+	.string "Zzz... just one more row...$"
+
+Route30_House_Text_Dream9CameUp:
+	.string "Zzz... it came up... it finally\n"
+	.string "came up... zzz...$"
+
+Route30_House_Text_Dream9Song:
+	.string "Zzz... Laurel... you're singing...$"
 
 Route30_House_Text_WifeRare:
 	.string "My husband hands out the easy ones. I\n"
