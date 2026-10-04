@@ -55,5 +55,5 @@ BattleFrontier_PokemonCenter_1F_Text_GoingThroughEveryChallenge:
 	.string "challenge with just this baby!$"
 
 BattleFrontier_PokemonCenter_1F_Text_Skitty:
-	.string "Skitty: Mya myaaah!$"
+	.string "{SPEAKER NAME_SKITTY}Mya myaaah!$"
 

@@ -63,7 +63,7 @@ PewterCity_Gym_Text_Brock_BoulderBadge:
 	.string "Pokémon even more powerful.$"
 
 PewterCity_Gym_Text_EarthquakeSpeech:
-    .string "That TM contains Earthquake.\p"
+    .string "{SPEAKER NAME_BROCK}That TM contains Earthquake.\p"
     .string "It's a powerful attack that\n"
     .string "shakes up the battlefield.\p"
     .string "But be careful not to\n"

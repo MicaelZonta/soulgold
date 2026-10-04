@@ -148,7 +148,7 @@ GoldenrodCity_RadioTower_5F_Text_FakeDirectorAfter:
 	.string "But I doubt you'll get that far.$"
 
 GoldenrodCity_RadioTower_5F_Text_FakeDirectorAfter2:
-	.string "The boss stashed the Director in\n"
+	.string "{SPEAKER NAME_PETREL}The boss stashed the Director in\n"
 	.string "the Underground Warehouse.\p"
 	.string "It's at the far end of the Under-\n"
 	.string "Ground.\p"
@@ -258,7 +258,7 @@ GoldenrodCity_RadioTower_5F_Text_ExecutiveF1Beaten:
 	.string "I'm so sorry Giovanni…$"
 
 GoldenrodCity_RadioTower_5F_Text_ExecutiveF1After:
-	.string "{PLAYER}, isn't it?\p"
+	.string "{SPEAKER NAME_ARIANA}{PLAYER}, isn't it?\p"
 	.string "A brat like you won't appreciate\n"
 	.string "the magnificence of Team Rocket.\p"
 	.string "That's too bad. I really admire\n"

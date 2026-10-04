@@ -90,5 +90,5 @@ FortreeCity_House4_Text_FriendsFarAwayThanksToWingull:
 	.string "who live far away.$"
 
 FortreeCity_House4_Text_Wingull:
-	.string "Wingull: Pihyoh!$"
+	.string "{SPEAKER NAME_WINGULL}Pihyoh!$"
 

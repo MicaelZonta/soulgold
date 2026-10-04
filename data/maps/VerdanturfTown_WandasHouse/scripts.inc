@@ -83,7 +83,7 @@ VerdanturfTown_WandasHouse_EventScript_WallysAuntEverGrande::
 	end
 
 VerdanturfTown_WandasHouse_Text_StrongerSpeech:
-	.string "Wally: I lost to you, {PLAYER}, but I'm\n"
+	.string "{SPEAKER NAME_WALLY}I lost to you, {PLAYER}, but I'm\n"
 	.string "not feeling down anymore.\p"
 	.string "Because I have a new purpose in life.\n"
 	.string "Together with my Ralts, I'm going\l"
@@ -95,13 +95,13 @@ VerdanturfTown_WandasHouse_Text_StrongerSpeech:
 	.string "to another battle.$"
 
 VerdanturfTown_WandasHouse_Text_StrongerSpeechShort:
-	.string "Wally: Please watch me, {PLAYER}.\n"
+	.string "{SPEAKER NAME_WALLY}Please watch me, {PLAYER}.\n"
 	.string "I'm going to get stronger than you.\p"
 	.string "When I do, I'm going to challenge you\n"
 	.string "to another battle.$"
 
 VerdanturfTown_WandasHouse_Text_WallysNextDoor:
-	.string "Uncle: Oh! {PLAYER}{KUN}!\n"
+	.string "{SPEAKER NAME_UNCLE}Oh! {PLAYER}{KUN}!\n"
 	.string "Wally's next door.\p"
 	.string "But, boy, there's something I have to\n"
 	.string "tell you.\p"
@@ -116,14 +116,14 @@ VerdanturfTown_WandasHouse_Text_WallySlippedOff:
 	.string "He slipped off on his own…$"
 
 VerdanturfTown_WandasHouse_Text_WallyGoneThatFar:
-	.string "Uncle: Is that right?\n"
+	.string "{SPEAKER NAME_UNCLE}Is that right?\n"
 	.string "Wally's gone away that far all by\l"
 	.string "himself…\p"
 	.string "Well, I have to give him credit--he is\n"
 	.string "my little brother's son.$"
 
 VerdanturfTown_WandasHouse_Text_MeetWanda:
-	.string "Wanda: You are?\n"
+	.string "{SPEAKER NAME_WANDA}You are?\n"
 	.string "Oh, right, I get it!\p"
 	.string "You're the {PLAYER} who Wally was\n"
 	.string "telling me about.\p"
@@ -133,7 +133,7 @@ VerdanturfTown_WandasHouse_Text_MeetWanda:
 	.string "and healthy since he came here.$"
 
 VerdanturfTown_WandasHouse_Text_DontWorryAboutWally:
-	.string "Wanda: Don't worry about Wally.\n"
+	.string "{SPEAKER NAME_WANDA}Don't worry about Wally.\n"
 	.string "He'll be just fine.\p"
 	.string "I know my little cousin, and he has\n"
 	.string "Pokémon with him, too.$"

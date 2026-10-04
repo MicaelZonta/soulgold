@@ -214,7 +214,7 @@ CeruleanCity_Gym_EventScript_Misty_Defeated::
 	end
 
 CeruleanCity_Gym_Text_WaterPulseSpeech:
-    .string "That TM contains Water Pulse.\p"
+    .string "{SPEAKER NAME_MISTY}That TM contains Water Pulse.\p"
     .string "It can sometimes confuse your foe.\p"
     .string "You've managed to defeat Trainers\n"
     .string "all the way from Johto. I'm sure\l"
@@ -328,4 +328,4 @@ CeruleanGym_Text_GuideWin:
 	.string "great battle!$"
 
 CeruleanGym_Text_MistyTm:
-	.string "Here, take this too.$"
+	.string "{SPEAKER NAME_MISTY}Here, take this too.$"

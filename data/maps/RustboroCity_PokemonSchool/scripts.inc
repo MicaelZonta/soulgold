@@ -316,12 +316,12 @@ RustboroCity_PokemonSchool_Text_ScottMetAlreadyCut:
 	.string "this town has Cut.$"
 
 RustboroCity_PokemonSchool_Text_StudentTalentLevelUnknown:
-	.string "Scott: Hmm…\p"
+	.string "{SPEAKER NAME_SCOTT}Hmm…\p"
 	.string "The talent levels of the students here\n"
 	.string "are unknown. The potential's there.$"
 
 RustboroCity_PokemonSchool_Text_ScottStoneBadge:
-	.string "Scott: Oh, what's that?\p"
+	.string "{SPEAKER NAME_SCOTT}Oh, what's that?\p"
 	.string "It's a Stone Badge, isn't it?\n"
 	.string "That's pretty impressive, I'd say.\p"
 	.string "But, you know, I would've loved to see\n"

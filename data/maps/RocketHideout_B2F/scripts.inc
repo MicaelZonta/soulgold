@@ -640,14 +640,14 @@ RocketHideout_Text_ArianaRetreat:
     .string "Hee hee hee...$"
 
 RocketHideout_Text_LanceStepBack:
-    .string "Sorry, {PLAYER}. I saw how well you\n"
+    .string "{SPEAKER NAME_LANCE}Sorry, {PLAYER}. I saw how well you\n"
     .string "were doing, so I just hung back.\p"
     .string "Now all there is left to do is to turn\n"
     .string "off that odd radio signal.$"
 
 
 RocketHideout_B2F_Text_LanceElectrodeFaint:
-    .string "It's this machine that's causing\n"
+    .string "{SPEAKER NAME_LANCE}It's this machine that's causing\n"
     .string "all the problems.\p"
     .string "I don't see a switch on it…\p"
     .string "We have no choice. We have to\n"

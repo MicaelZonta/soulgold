@@ -149,7 +149,7 @@ BurnedTower_1F_Silver_Battle_Chikorita::
 	return
 
 BurnedTowerSilver_BeforeText:
-	.string "..............................\p"
+	.string "{SPEAKER NAME_SILVER}..............................\p"
 	.string "...Oh, it's you.\p"
 	.string "I came looking for some\n"
 	.string "legendary Pokémon they say\l"
@@ -167,7 +167,7 @@ BurnedTowerSilver_WinText:
 	.string "How pathetic.$"
 
 BurnedTowerSilver_AfterText1:
-	.string "...Aw, whatever.\p"
+	.string "{SPEAKER NAME_SILVER}...Aw, whatever.\p"
 	.string "You'd never be able to catch\n"
 	.string "a legendary Pokémon anyway.$"
 
@@ -177,7 +177,7 @@ BurnedTowerSilver_LossText:
 	.string "wimps. It's a waste of time.$"
 
 BurnedTowerSilver_AfterText2:
-	.string "Humph!\p"
+	.string "{SPEAKER NAME_SILVER}Humph!\p"
 	.string "What are you doing falling\n"
 	.string "into a hole? Some genius!\p"
 	.string "Serves you right!$"

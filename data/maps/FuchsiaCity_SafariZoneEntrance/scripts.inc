@@ -95,7 +95,7 @@ FuchsiaCity_SafariZoneEntrance_StevenAfter::
 	end
 
 FuchsiaCity_SafariZoneEntrance_Text_StevenChamp:
-	.string "Oh, hey {PLAYER}.\n"
+	.string "{SPEAKER NAME_STEVEN}Oh, hey {PLAYER}.\n"
 	.string "Or should I say Kanto champion?\p"
 	.string "You know, for some time, I was the\n"
 	.string "champion of the Hoenn region.\p"
@@ -297,7 +297,7 @@ FuchsiaCity_SafariZoneEntrance_UpgradeGuyNotEnoughMoney::
 	end
 
 FuchsiaCity_SafariZoneEntrance_Text_Steven:
-	.string "Oh, hey, {PLAYER}.\p"
+	.string "{SPEAKER NAME_STEVEN}Oh, hey, {PLAYER}.\p"
 	.string "I hope you're enjoying the Safari.\p"
 	.string "Have you seen any rare stones\n"
 	.string "lately?$"

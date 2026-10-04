@@ -90,7 +90,7 @@ EcruteakCity_Gym_Text_GymStatueCertified:
 	.string "{PLAYER}$"
 
 MortyIntroText:
-	.string "Good of you to have come.\p"
+	.string "{SPEAKER NAME_MORTY}Good of you to have come.\p"
 	.string "Here in Ecruteak, Pokémon have\n"
 	.string "always been revered.\p"
 	.string "It's said that a rainbow-colored\n"
@@ -115,7 +115,7 @@ Text_ReceivedFogBadge:
 	.string "{PLAYER} received the Fogbadge.$"
 
 MortyText_FogBadgeSpeech:
-	.string "With the Fogbadge, Pokémon up\n"
+	.string "{SPEAKER NAME_MORTY}With the Fogbadge, Pokémon up\n"
 	.string "to Level 50 will obey you.\p"
 	.string "Also, any Pokémon that knows\n"
 	.string "Surf will be able to use it\l"
@@ -123,13 +123,13 @@ MortyText_FogBadgeSpeech:
 	.string "I want you to have this too.$"
 
 MortyText_ShadowBallSpeech:
-	.string "That's Shadow Ball.\n"
+	.string "{SPEAKER NAME_MORTY}That's Shadow Ball.\n"
 	.string "It causes damage and may\l"
 	.string "lower Sp. Def.\p"
 	.string "Use it if it suits you.$"
 
 MortyFightDoneText:
-	.string "I see...\p"
+	.string "{SPEAKER NAME_MORTY}I see...\p"
 	.string "Your journey has taken you to\n"
 	.string "far-off places.\p"
 	.string "You've witnessed more than I\n"

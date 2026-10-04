@@ -259,7 +259,7 @@ MeteorFalls_1F_1R_Text_BeSeeingYouTeamAqua:
 	.string "Aqua dingbats!$"
 
 MeteorFalls_1F_1R_Text_ArchieSeenYouBefore:
-	.string "Archie: Didn't I see you before?\n"
+	.string "{SPEAKER NAME_ARCHIE}Didn't I see you before?\n"
 	.string "At Slateport's Museum?\p"
 	.string "Ah, so your name is {PLAYER}.\p"
 	.string "At the time, I thought you were one\n"
@@ -278,13 +278,13 @@ MeteorFalls_1F_1R_Text_BossWeShouldChaseMagma:
 	.string "Team Magma…$"
 
 MeteorFalls_1F_1R_Text_ArchieYesNoTellingWhatMagmaWillDo:
-	.string "Archie: Yes, yes, we must!\n"
+	.string "{SPEAKER NAME_ARCHIE}Yes, yes, we must!\n"
 	.string "We've got to hurry.\p"
 	.string "There's no telling what Team Magma\n"
 	.string "will do at Mt. Chimney!$"
 
 MeteorFalls_1F_1R_Text_ArchieFarewell:
-	.string "Archie: {PLAYER}, you should keep\n"
+	.string "{SPEAKER NAME_ARCHIE}{PLAYER}, you should keep\n"
 	.string "an eye out for Team Magma, too.\p"
 	.string "Farewell!$"
 
@@ -304,6 +304,6 @@ MeteorFalls_1F_1R_Text_MeetProfCozmo:
 	.string "Meteorite at Mt. Chimney?$"
 
 MeteorFalls_1F_1R_Text_WhatsTeamMagmaDoingAtMtChimney:
-	.string "Prof. Cozmo: But that Team Magma…\p"
+	.string "{SPEAKER NAME_PROF_COZMO}But that Team Magma…\p"
 	.string "What are they going to do with that\n"
 	.string "Meteorite at Mt. Chimney?$"

@@ -89,7 +89,7 @@ IndigoPlateau_Silver_Battle_Chikorita::
 	return
 
 IndigoPlateau_Text_RivalEntrance1:
-    .string "Hold it.\p"
+    .string "{SPEAKER NAME_SILVER}Hold it.\p"
     .string "You're going to take the Pokémon\n"
     .string "League challenge now?\p"
     .string "That's not going to happen.\p"
@@ -103,7 +103,7 @@ IndigoPlateau_Text_RivalWin:
     .string "Ok--I lost…$"
 
 IndigoPlateau_Text_RivalAfter:
-    .string "…Darn… I still can't win…\p"
+    .string "{SPEAKER NAME_SILVER}…Darn… I still can't win…\p"
     .string "I… I have to think more about my\n"
     .string "Pokémon…\p"
     .string "Humph! Try not to lose!$"

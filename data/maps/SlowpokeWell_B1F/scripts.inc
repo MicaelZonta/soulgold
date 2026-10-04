@@ -110,7 +110,7 @@ SlowpokeWell_B1F_Text_GruntM29After:
 	.string "and we'll do anything for money!$"
 
 SlowpokeWell_B1F_Text_ProtonSeen:
-	.string "What do you want?\p"
+	.string "{SPEAKER NAME_PROTON}What do you want?\p"
 	.string "If you interrupt our work,\n"
 	.string "don't expect any mercy!$"
 
@@ -119,7 +119,7 @@ SlowpokeWell_B1F_Text_ProtonBeaten:
 	.string "but wait till next time!$"
 
 SlowpokeWell_B1F_Text_ProtonAfter:
-	.string "Yeah, Team Rocket was broken up\n"
+	.string "{SPEAKER NAME_PROTON}Yeah, Team Rocket was broken up\n"
 	.string "three years ago.\p"
 	.string "The boss went into hiding.\p"
 	.string "But we continued our activities\n"

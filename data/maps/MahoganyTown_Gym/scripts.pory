@@ -126,7 +126,7 @@ MahoganyTown_Gym_EventScript_Pryce_Defeated::
 	end
 
 MahoganyTown_Gym_Text_PryceIntro:
-    .string "Pokémon have many experiences\n"
+    .string "{SPEAKER NAME_PRYCE}Pokémon have many experiences\n"
     .string "in their lives, just like we do.\p"
     .string "I, too, have seen and suffered\n"
     .string "much in my life.\p"
@@ -149,20 +149,20 @@ MahoganyTown_Gym_Text_ReceivedBadge:
     .string "{PLAYER} received Glacierbadge.$"
 
 MahoganyTown_Gym_Text_GlacierBadgeSpeech:
-    .string "That Badge lets your Pokémon use\n"
+    .string "{SPEAKER NAME_PRYCE}That Badge lets your Pokémon use\n"
     .string "Whirlpool to get across\l"
     .string "real whirlpools.\p"
     .string "And this… This is a gift from me!$"
 
 MahoganyTown_Gym_Text_HailSpeech:
-    .string "That TM contains Hail.\p"
+    .string "{SPEAKER NAME_PRYCE}That TM contains Hail.\p"
     .string "It inflicts damage every\n"
     .string "turn for 5 turns.\p"
     .string "It demonstrates the harshness\n"
     .string "of winter.$"
 
 MahoganyTown_Gym_Text_CherishPokemon:
-    .string "When the ice and snow melt,\n"
+    .string "{SPEAKER NAME_PRYCE}When the ice and snow melt,\n"
     .string "spring arrives.\p"
     .string "You and your Pokémon will be\n"
     .string "together for many years to come.\p"

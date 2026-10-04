@@ -127,7 +127,7 @@ GoldenrodCity_Gym_Text_GymStatueCertified:
 	.string "{PLAYER}$"
 
 GoldenrodCity_Gym_Text_WhitneyBefore:
-    .string "Hi! I'm Whitney!\p"
+    .string "{SPEAKER NAME_WHITNEY}Hi! I'm Whitney!\p"
     .string "Everyone was into Pokémon, so I got\n"
     .string "into it too!\p"
     .string "Pokémon are super-cute!\p"
@@ -141,12 +141,12 @@ GoldenrodCity_Gym_Text_WhitneyShouldntBeSoSerious:
     .string "you child, you!$"
 
 GoldenrodCity_Gym_Text_WhitneyYouMeanie:
-    .string "Waaaaah!\p"
+    .string "{SPEAKER NAME_WHITNEY}Waaaaah!\p"
     .string "Waaaaah!\p"
     .string "…Snivel, hic… …You meanie!$"
 
 GoldenrodCity_Gym_Text_WhitneyWhatDoYouWant:
-    .string "…Sniff…\p"
+    .string "{SPEAKER NAME_WHITNEY}…Sniff…\p"
     .string "What? What do you want? A Badge?\p"
     .string "Oh, right. I forgot. Here's\n"
     .string "Plainbadge.$"
@@ -155,18 +155,18 @@ GoldenrodCity_Gym_Text_PlayerReceivedPlainBadge:
     .string "{PLAYER} received Plainbadge.$"
 
 GoldenrodCity_Gym_Text_WhitneyPlainBadge:
-    .string "Plainbadge lets your Pokémon use\n"
+    .string "{SPEAKER NAME_WHITNEY}Plainbadge lets your Pokémon use\n"
     .string "Strength outside of battle.\p"
     .string "Oh, you can have this too!$"
 
 GoldenrodCity_Gym_Text_WhitneyAttract:
-    .string "It's Attract! It makes full use of a\n"
+    .string "{SPEAKER NAME_WHITNEY}It's Attract! It makes full use of a\n"
     .string "Pokémon's charm.\p"
     .string "Isn't it just perfect for a cutie\n"
     .string "like me?$"
 
 GoldenrodCity_Gym_Text_WhitneyGoodCry:
-    .string "Ah, that was a good cry!$"
+    .string "{SPEAKER NAME_WHITNEY}Ah, that was a good cry!$"
 
 GoldenrodCity_Gym_Text_WhitneyRematch:
     .string "Hi! It's you!\p"

@@ -122,7 +122,7 @@ VictoryRoadKanto_1F_Movement_SilverLeave:
 	step_end
 
 VictoryRoad_Text_RivalBefore:
-    .string "Hold it.\p"
+    .string "{SPEAKER NAME_SILVER}Hold it.\p"
     .string "…Are you going to take the Pokémon\n"
     .string "League challenge?\p"
     .string "…Don't make me laugh.\p"
@@ -142,7 +142,7 @@ VictoryRoad_Text_RivalDefeat:
     .string "that dragon master said to me…$"
 
 VictoryRoad_Text_RivalAfter:
-    .string "…I haven't given up on becoming the\n"
+    .string "{SPEAKER NAME_SILVER}…I haven't given up on becoming the\n"
     .string "greatest trainer…\p"
     .string "I'm going to find out why I can't\n"
     .string "win and become stronger…\p"

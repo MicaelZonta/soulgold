@@ -359,7 +359,7 @@ DewfordTown_Gym_Text_KnuckleBadgeInfoTakeThis:
 	.string "Machine, too.$"
 
 DewfordTown_Gym_Text_ExplainBulkUp:
-	.string "That TM08 contains Bulk Up.\p"
+	.string "{SPEAKER NAME_BRAWLY}That TM08 contains Bulk Up.\p"
 	.string "It's a move that raises both Attack\n"
 	.string "and Defense stats.\p"
 	.string "… … … … … …$"
@@ -369,7 +369,7 @@ DewfordTown_Gym_Text_RegisteredBrawly:
 	.string "in the PokéNav.$"
 
 DewfordTown_Gym_Text_BrawlyPostBattle:
-	.string "I can see your talent becoming a giant\n"
+	.string "{SPEAKER NAME_BRAWLY}I can see your talent becoming a giant\n"
 	.string "wave to cause a storm of astonishment\l"
 	.string "among Trainers one day!$"
 
@@ -382,7 +382,7 @@ DewfordTown_Gym_Text_GymStatueCertified:
 	.string "{PLAYER}$"
 
 DewfordTown_Gym_Text_BrawlyPreRematch:
-	.string "Brawly: A wave may draw back, but it\n"
+	.string "{SPEAKER NAME_BRAWLY}A wave may draw back, but it\n"
 	.string "always returns to the shore.\p"
 	.string "A giant wave of a talent like you…\n"
 	.string "I knew you would return!\p"
@@ -394,12 +394,12 @@ DewfordTown_Gym_Text_BrawlyRematchDefeat:
 	.string "Swamped again!$"
 
 DewfordTown_Gym_Text_BrawlyPostRematch:
-	.string "Brawly: Battling is vast and it's deep.\n"
+	.string "{SPEAKER NAME_BRAWLY}Battling is vast and it's deep.\n"
 	.string "You can't see the bottom.\l"
 	.string "It's just like the sea of Hoenn!$"
 
 DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons:
-	.string "Brawly: A wave may draw back, but it\n"
+	.string "{SPEAKER NAME_BRAWLY}A wave may draw back, but it\n"
 	.string "always returns to the shore.\p"
 	.string "A giant wave of a talent like you…\n"
 	.string "I knew you would return!\p"

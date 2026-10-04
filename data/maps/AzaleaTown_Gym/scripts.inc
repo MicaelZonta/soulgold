@@ -677,7 +677,7 @@ AzaleaTown_Gym_Text_GymStatueCertified:
 	.string "{PLAYER}$"
 
 AzaleaTown_Gym_Text_BugsyIntro:
-	.string "I'm Bugsy!\p"
+	.string "{SPEAKER NAME_BUGSY}I'm Bugsy!\p"
 	.string "I never lose when it comes\n"
 	.string "to bug Pokémon.\p"
 	.string "My research is going to make me the\n"
@@ -697,7 +697,7 @@ AzaleaTown_Gym_Text_ReceivedHiveBadge:
 	.string "{PLAYER} received Hivebadge.$"
 
 AzaleaTown_Gym_Text_HiveBadgeSpeech:
-	.string "Do you know the benefits\n"
+	.string "{SPEAKER NAME_BUGSY}Do you know the benefits\n"
 	.string "of Hivebadge?\p"
 	.string "If you have it, Pokémon up\n"
 	.string "to L30 will obey you,\l"
@@ -708,14 +708,14 @@ AzaleaTown_Gym_Text_HiveBadgeSpeech:
 	.string "have this.$"
 
 AzaleaTown_Gym_Text_FuryCutterSpeech:
-	.string "TM89 contains U-Turn.\p"
+	.string "{SPEAKER NAME_BUGSY}TM89 contains U-Turn.\p"
 	.string "It lets you attack and swap to\n"
 	.string "another Pokémon.\p"
 	.string "Isn't that great?\n"
 	.string "I discovered it!$"
 
 AzaleaTown_Gym_Text_BugsyAdvice:
-	.string "Bug Pokémon are deep. There are\n"
+	.string "{SPEAKER NAME_BUGSY}Bug Pokémon are deep. There are\n"
 	.string "many mysteries to be explored.\p"
 	.string "Study your favorites thoroughly.$"
 

@@ -916,7 +916,7 @@ CianwoodCity_Text_EusineBeaten:
 	.string "I hate to admit it, but you win.$"
 
 CianwoodCity_Text_EusineAfter:
-	.string "You're amazing, {PLAYER}!\p"
+	.string "{SPEAKER NAME_EUSINE}You're amazing, {PLAYER}!\p"
 	.string "No wonder Pokémon gravitate to you.\p"
 	.string "I get it now.\p"
 	.string "I'm going to keep searching for\n"

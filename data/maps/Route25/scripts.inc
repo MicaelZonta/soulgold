@@ -195,7 +195,7 @@ Route25_Text_Eusine1:
 	.string "you.$"
 
 Route25_Text_Eusine2:
-	.string "Take a look at it!\p"
+	.string "{SPEAKER NAME_EUSINE}Take a look at it!\p"
 	.string "Suicune is waiting for you!\n"
 	.string "It has been waiting for a battle\l"
 	.string "with a worthy trainer to whom it\l"

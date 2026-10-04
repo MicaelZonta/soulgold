@@ -234,7 +234,7 @@ BlackthornGym_EventScript_ClairAfterLeague::
 	end
 
 BlackthornGym_Text_ClairIntroText:
-    .string "I am Clair.\p"
+    .string "{SPEAKER NAME_CLAIR}I am Clair.\p"
     .string "The world's best dragon master.\p"
     .string "I can hold my own against even the\n"
     .string "Pokémon League's Elite Four.\p"
@@ -249,7 +249,7 @@ BlackthornGym_Text_ClairWinText:
     .string "some mistake…$"
 
 BlackthornGym_Text_ClairText_GoToDragonsDen:
-    .string "I won't admit this.\p"
+    .string "{SPEAKER NAME_CLAIR}I won't admit this.\p"
     .string "I may have lost, but you're still\n"
     .string "not ready for the Pokémon League.\p"
     .string "I know. You should take the dragon\n"
@@ -264,7 +264,7 @@ BlackthornGym_Text_ClairText_GoToDragonsDen:
     .string "Badge!$"
 
 BlackthornGym_Text_ClairText_TooMuchToExpect:
-    .string "What's the matter?\p"
+    .string "{SPEAKER NAME_CLAIR}What's the matter?\p"
     .string "Is it too much to expect of you?$"
 
 BlackthornGym_Text_ClairText_YouKeptMeWaiting:
@@ -276,7 +276,7 @@ BlackthornGym_Text_ClairText_DescribeTM:
     .string "You can figure out what it does.$"
 
 BlackthornGym_Text_ClairText_League:
-    .string "What's the matter?\p"
+    .string "{SPEAKER NAME_CLAIR}What's the matter?\p"
     .string "Aren't you headed to the Pokémon\n"
     .string "League?\p"
     .string "Don't you know where it is?\p"
@@ -290,7 +290,7 @@ BlackthornGym_Text_ClairText_League:
     .string "Give it everything you've got.$"
 
 BlackthornGym_Text_ClairAfterLeague:
-    .string "You did it, huh?\p"
+    .string "{SPEAKER NAME_CLAIR}You did it, huh?\p"
     .string "You are now the Johto Champ.$"
 
 BlackthornGym_Text_ClairRematchText:

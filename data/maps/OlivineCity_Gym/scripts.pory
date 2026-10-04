@@ -289,7 +289,7 @@ OlivineCity_Gym_EventScript_Jasmine_Defeated::
 
 
 OlivineCity_Gym_Text_JasmineSteelTypeIntro:
-	.string "…Thank you for your help at the\n"
+	.string "{SPEAKER NAME_JASMINE}…Thank you for your help at the\n"
 	.string "Lighthouse…\p"
 	.string "But this is different.\n"
 	.string "Please allow me to introduce myself.\p"
@@ -310,14 +310,14 @@ OlivineCity_Gym_Text_ReceivedMineralBadge:
 	.string "{PLAYER} received Mineralbadge.$"
 
 OlivineCity_Gym_Text_JasmineBadgeSpeech:
-	.string "…Um… Please take this too…$"
+	.string "{SPEAKER NAME_JASMINE}…Um… Please take this too…$"
 
 OlivineCity_Gym_Text_JasmineIronTailSpeech:
-	.string "…You could use that TM to teach\n"
+	.string "{SPEAKER NAME_JASMINE}…You could use that TM to teach\n"
 	.string "Flash Cannon.$"
 
 OlivineCity_Gym_Text_JasmineGoodLuck:
-	.string "Um… I don't know how to say this,\n"
+	.string "{SPEAKER NAME_JASMINE}Um… I don't know how to say this,\n"
 	.string "but good luck…$"
 
 OlivineCity_Gym_Text_JasmineRematchText:

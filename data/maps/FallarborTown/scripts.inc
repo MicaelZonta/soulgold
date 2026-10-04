@@ -69,7 +69,7 @@ FallarborTown_Text_MyPreciousAzurill:
 	.string "It's slick and smooth and plushy, too!$"
 
 FallarborTown_Text_Azurill:
-	.string "Azurill: Rooreelooo.$"
+	.string "{SPEAKER NAME_AZURILL}Rooreelooo.$"
 
 FallarborTown_Text_HaveYouChallengedFlannery:
 	.string "Have you already challenged Flannery,\n"

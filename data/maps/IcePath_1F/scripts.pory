@@ -129,7 +129,7 @@ IcePath_1F_Text_Cruel:
     .string "You will push my back, won't you?$"
 
 IcePath_1F_Text_Thanks:
-    .string "You really are kind.\n"
+    .string "{SPEAKER NAME_KIMONO_GIRL}You really are kind.\n"
     .string "Thank you so much!$"
 `
 

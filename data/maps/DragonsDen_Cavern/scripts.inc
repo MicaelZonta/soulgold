@@ -108,14 +108,14 @@ DragonsDen_Cavern_Text_ClairGiveDragonclaw:
     .string "Here, take this as my apology.$"
 
 DragonsDen_Cavern_Text_ClairDescribeDragonclaw:
-    .string "That contains Dragon Claw.\p"
+    .string "{SPEAKER NAME_CLAIR}That contains Dragon Claw.\p"
     .string "No, it doesn't have anything to\n"
     .string "do with my nails.\p"
     .string "If you don't want it, you don't\n"
     .string "have to take it.$"
 
 DragonsDen_Cavern_Text_ClairWhatsTheMatter:
-    .string "What's the matter? Aren't\n"
+    .string "{SPEAKER NAME_CLAIR}What's the matter? Aren't\n"
     .string "you going on to the Pokémon\l"
     .string "League?\p"
     .string "After you become Champion, you\n"

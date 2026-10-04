@@ -54,87 +54,87 @@ MeteorFalls_1F_2R_Text_NicolasPostRematch:
 	.string "can become stronger!$"
 
 MeteorFalls_1F_2R_Text_JohnIntro:
-	.string "John: We've always battled Pokémon\n"
+	.string "{SPEAKER NAME_JOHN}We've always battled Pokémon\n"
 	.string "together as a twosome.\l"
 	.string "We've confidence in ourselves.$"
 
 MeteorFalls_1F_2R_Text_JohnDefeat:
-	.string "John: Oh, my.\n"
+	.string "{SPEAKER NAME_JOHN}Oh, my.\n"
 	.string "We've lost, dear wife.$"
 
 MeteorFalls_1F_2R_Text_JohnPostBattle:
-	.string "John: We've been married for\n"
+	.string "{SPEAKER NAME_JOHN}We've been married for\n"
 	.string "fifty years.\p"
 	.string "Come to think of it, I've yet to beat\n"
 	.string "my dear wife in a battle.$"
 
 MeteorFalls_1F_2R_Text_JohnNotEnoughMons:
-	.string "John: Well, well, what a young Trainer!\p"
+	.string "{SPEAKER NAME_JOHN}Well, well, what a young Trainer!\p"
 	.string "Will you battle with us? If so, you'll\n"
 	.string "have to return with more Pokémon.$"
 
 MeteorFalls_1F_2R_Text_JohnRegister:
-	.string "John: Young Trainer, if the chance\n"
+	.string "{SPEAKER NAME_JOHN}Young Trainer, if the chance\n"
 	.string "arises, will you battle with us again?$"
 
 MeteorFalls_1F_2R_Text_JayIntro:
-	.string "Jay: We've been married for\n"
+	.string "{SPEAKER NAME_JAY}We've been married for\n"
 	.string "fifty years.\p"
 	.string "The bond we share as a couple could\n"
 	.string "never be broken.$"
 
 MeteorFalls_1F_2R_Text_JayDefeat:
-	.string "Jay: Oh, dear.\n"
+	.string "{SPEAKER NAME_JAY}Oh, dear.\n"
 	.string "We've lost, my dear husband.$"
 
 MeteorFalls_1F_2R_Text_JayPostBattle:
-	.string "Jay: Fifty years of marriage…\p"
+	.string "{SPEAKER NAME_JAY}Fifty years of marriage…\p"
 	.string "If we ever argued, we always settled\n"
 	.string "it with a Pokémon battle…$"
 
 MeteorFalls_1F_2R_Text_JayNotEnoughMons:
-	.string "Jay: Well, well, aren't you a young\n"
+	.string "{SPEAKER NAME_JAY}Well, well, aren't you a young\n"
 	.string "Trainer?\p"
 	.string "If you'd care to battle with us, you'll\n"
 	.string "have to come back with more Pokémon.$"
 
 MeteorFalls_1F_2R_Text_JohnRematchIntro:
-	.string "John: We've always battled Pokémon\n"
+	.string "{SPEAKER NAME_JOHN}We've always battled Pokémon\n"
 	.string "together as a twosome.\l"
 	.string "We've confidence in ourselves.$"
 
 MeteorFalls_1F_2R_Text_JohnRematchDefeat:
-	.string "John: Oh, my.\n"
+	.string "{SPEAKER NAME_JOHN}Oh, my.\n"
 	.string "We've lost, dear wife.$"
 
 MeteorFalls_1F_2R_Text_JohnPostRematch:
-	.string "John: Married for fifty years…\p"
+	.string "{SPEAKER NAME_JOHN}Married for fifty years…\p"
 	.string "On reflection, the dear wife and I,\n"
 	.string "we battled day in and day out…$"
 
 MeteorFalls_1F_2R_Text_JohnRematchNotEnoughMons:
-	.string "John: Well, well, what a young Trainer!\p"
+	.string "{SPEAKER NAME_JOHN}Well, well, what a young Trainer!\p"
 	.string "Will you battle with us? If so, you'll\n"
 	.string "have to return with more Pokémon.$"
 
 MeteorFalls_1F_2R_Text_JayRematchIntro:
-	.string "Jay: We've been married for\n"
+	.string "{SPEAKER NAME_JAY}We've been married for\n"
 	.string "fifty years.\p"
 	.string "We've supported each other all that\n"
 	.string "time. We've made ourselves strong.$"
 
 MeteorFalls_1F_2R_Text_JayRematchDefeat:
-	.string "Jay: Oh, dear.\n"
+	.string "{SPEAKER NAME_JAY}Oh, dear.\n"
 	.string "We've lost, my dear husband.$"
 
 MeteorFalls_1F_2R_Text_JayPostRematch:
-	.string "Jay: Fifty years of marriage…\n"
+	.string "{SPEAKER NAME_JAY}Fifty years of marriage…\n"
 	.string "Many things have happened.\p"
 	.string "I hope that we will continue to make\n"
 	.string "happy memories together.$"
 
 MeteorFalls_1F_2R_Text_JayRematchNotEnoughMons:
-	.string "Jay: Well, well, aren't you a young\n"
+	.string "{SPEAKER NAME_JAY}Well, well, aren't you a young\n"
 	.string "Trainer?\p"
 	.string "If you'd care to battle with us, you'll\n"
 	.string "have to come back with more Pokémon.$"

@@ -338,7 +338,7 @@ CherrygroveCity_Text_GuideGentDecline:
 	.string "you like.$"
 
 CherrygroveCity_Text_RivalSeen:
-	.string "… … … … … … … …\p"
+	.string "{SPEAKER NAME_UNKNOWN}… … … … … … … …\p"
 	.string "You got a Pokémon at the Lab.\p"
 	.string "What a waste.\n"
 	.string "A wimp like you.\p"
@@ -351,13 +351,13 @@ CherrygroveCity_Text_SilverWin:
 	.string "Humph. Are you happy you won?$"
 
 CherrygroveCity_Text_RivalAfter:
-	.string "… … … … … … … …\p"
+	.string "{SPEAKER NAME_UNKNOWN}… … … … … … … …\p"
 	.string "Do you want to know who I am?\p"
 	.string "I'm going to be the world's\n"
 	.string "greatest Pokémon trainer.$"
 
 CherrygroveCity_Text_RivalID:
-	.string "Give it back!\n"
+	.string "{SPEAKER NAME_UNKNOWN}Give it back!\n"
 	.string "That's my Trainer Card!\p"
 	.string "Oh no!\n"
 	.string "You saw my name...$"

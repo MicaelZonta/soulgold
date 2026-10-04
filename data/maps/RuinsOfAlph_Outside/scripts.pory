@@ -1,6 +1,22 @@
 raw `
 RuinsOfAlph_Outside_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, RuinsOfAlph_Outside_OnTransition
 	.byte 0
+
+@ The crystal gate's glass (OBJ_EVENT_GFX_CRYSTAL_GLINT at (1,26), FLAG_TEMP_7):
+@ the light bending between the rocks, so the player has a reason to walk into
+@ the nook. It is there until the Glastrier is caught and the glass gives way.
+@ MOVEMENT_TYPE_NONE keeps it animating (FACE_* pauses the anim); elevation 4
+@ puts it above the tree's top layer, which hid half of it at elevation 3.
+RuinsOfAlph_Outside_OnTransition::
+	setvar VAR_0x8004, GARDEN_STORY_WHITE_PATH
+	specialvar VAR_RESULT, GardenStory_Check
+	call_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Outside_EventScript_HideCrystalGlint
+	end
+
+RuinsOfAlph_Outside_EventScript_HideCrystalGlint::
+	setflag FLAG_TEMP_7
+	return
 
 RuinsOfAlph_Outside_EventScript_Quagsire::
 	lock

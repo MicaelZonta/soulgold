@@ -176,7 +176,7 @@ SproutTower_Text_ElderLecturesRival:
 	.string "Pokémon are not tools of war…$"
 
 SproutTower_Text_RivalOnlyCaresStrong:
-	.string "…\n"
+	.string "{SPEAKER NAME_SILVER}…\n"
 	.string "…Humph!\p"
 	.string "He claims to be the Elder but\n"
 	.string "he's weak.\p"
@@ -192,7 +192,7 @@ SproutTower_Text_RivalUsedEscapeRope:
 	.string "{RIVAL} used an Escape Rope!$"
 
 SproutTower_Text_SageLi_Seen:
-	.string "So good of you to come here!\p"
+	.string "{SPEAKER NAME_ELDER}So good of you to come here!\p"
 	.string "Sprout Tower is a place of\n"
 	.string "training.\p"
 	.string "People and Pokémon test their\n"
@@ -206,18 +206,18 @@ SproutTower_Text_SageLi_Beaten:
 	.string "Ah, excellent!$"
 
 SproutTower_Text_SageLi_TakeFlash:
-	.string "You and your Pokémon should\n"
+	.string "{SPEAKER NAME_ELDER}You and your Pokémon should\n"
 	.string "have no problem using this move.\p"
 	.string "Take this Flash HM.$"
 
 SproutTower_Text_SageLi_FlashExplain:
-	.string "Flash illuminates even the\n"
+	.string "{SPEAKER NAME_ELDER}Flash illuminates even the\n"
 	.string "darkest of all places.\p"
 	.string "But to use it out of battle, you\n"
 	.string "need the Badge from Violet's Gym.$"
 
 SproutTower_Text_SageLi_AfterBattle:
-	.string "I hope you learn and grow from\n"
+	.string "{SPEAKER NAME_ELDER}I hope you learn and grow from\n"
 	.string "your journey.$"
 
 SproutTower_Text_SageJin_Seen:

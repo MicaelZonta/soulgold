@@ -194,7 +194,7 @@ SlateportCity_ContestHall_Text_ExplainTorment:
 
 @ Unused
 SlateportCity_ContestHall_Text_MCStepUpTakePartInContest:
-	.string "Mc: Oh, my, my!\n"
+	.string "{SPEAKER NAME_MC}Oh, my, my!\n"
 	.string "Now isn't that a dandy of a Pokémon?\p"
 	.string "Please! Do step right up and take\n"
 	.string "part in our splendid Contests!\p"
@@ -203,7 +203,7 @@ SlateportCity_ContestHall_Text_MCStepUpTakePartInContest:
 
 @ Unused
 SlateportCity_ContestHall_Text_JudgeWouldntDoToMissContest:
-	.string "Judge: Well, hello there!\n"
+	.string "{SPEAKER NAME_JUDGE}Well, hello there!\n"
 	.string "I see that you're a Trainer!\p"
 	.string "Then, it just wouldn't do for you\n"
 	.string "to miss a Pokémon Contest!\p"

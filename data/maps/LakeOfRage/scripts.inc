@@ -238,7 +238,7 @@ LakeOfRage_Text_Dragonite:
 	.string "{SPEAKER NAME_DRAGONITE}Gyafooha!$"
 
 LakeOfRage_Text_LanceForcedToEvolve:
-    .string "This lake is full of Gyarados\n"
+    .string "{SPEAKER NAME_LANCE}This lake is full of Gyarados\n"
     .string "but nothing else…\p"
     .string "So the Magikarp are being forced\n"
     .string "to evolve…$"
@@ -250,12 +250,12 @@ LakeOfRage_Text_LanceIntro1:
     .string "trainer like you.$"
 
 LakeOfRage_Text_LanceIntro2:
-    .string "This man here informed me of\n"
+    .string "{SPEAKER NAME_LANCE}This man here informed me of\n"
     .string "some rumors.\p"
     .string "So we came to investigate…$"
 
 LakeOfRage_Text_LanceIntro3:
-    .string "I saw the way you battled\n"
+    .string "{SPEAKER NAME_LANCE}I saw the way you battled\n"
     .string "earlier, {PLAYER}.\p"
     .string "I can tell that you're a trainer\n"
     .string "with considerable skill.\p"
@@ -272,7 +272,7 @@ LakeOfRage_Text_LanceRadioSignal:
     .string "{PLAYER}.$"
 
 LakeOfRage_Text_LanceRefused:
-    .string "Oh… Well, if you change your mind,\n"
+    .string "{SPEAKER NAME_LANCE}Oh… Well, if you change your mind,\n"
     .string "please help us.$"
 
 LakeOfRage_Text_LanceAskHelp:

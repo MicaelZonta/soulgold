@@ -288,12 +288,12 @@ NewBarkTown_Text_LassState5:
 	.string "to let her know how you're doing.$\p"
 
 NewBarkTown_Text_Silver1:
-	.string ". . .\p"
+	.string "{SPEAKER NAME_UNKNOWN}. . .\p"
 	.string "So this is the famous Elm\n"
 	.string "Pokémon Lab…$"
 
 NewBarkTown_Text_Silver2:
-	.string "…What are you staring at?$"
+	.string "{SPEAKER NAME_UNKNOWN}…What are you staring at?$"
 
 NewBarkTown_Text_Sign:
 	.string "New Bark Town\p"

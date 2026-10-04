@@ -256,11 +256,11 @@ OlivineLighthouse_Text_JasmineCianwoodPharmacy:
 	.string "And I can't leave Amphy unattended…$"
 
 OlivineLighthouse_Text_JasmineGetMedicine:
-	.string "…May I ask you to get some medicine\n"
+	.string "{SPEAKER NAME_JASMINE}…May I ask you to get some medicine\n"
 	.string "for me? Please?$"
 
 OlivineLighthouse_Text_JasmineGetMedicine2:
-	.string "There is a wonderful Pharmacy\n"
+	.string "{SPEAKER NAME_JASMINE}There is a wonderful Pharmacy\n"
 	.string "in Cianwood…\p"
 	.string "But that's across the sea…\n"
 	.string "And I can't leave Amphy unattended…\p"

@@ -95,7 +95,7 @@ FuchsiaCity_Gym_EventScript_Janine_Defeated::
 	end
 
 FuchsiaCity_Gym_Text_Janine_DisappointYou:
-	.string "Fufufufu…\p"
+	.string "{SPEAKER NAME_JANINE}Fufufufu…\p"
 	.string "I'm sorry to disappoint you…\p"
 	.string "I'm only joking!\p"
 	.string "I'm the real deal!\p"

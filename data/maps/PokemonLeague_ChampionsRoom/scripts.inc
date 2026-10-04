@@ -356,7 +356,7 @@ PokemonLeague_ChampionsRoom_Text_BattleWin:
     .string "of a great new Champion!$"
 
 PokemonLeague_ChampionsRoom_Text_BattleAfter:
-    .string "…Whew.\p"
+    .string "{SPEAKER NAME_LANCE}…Whew.\p"
     .string "You have become truly powerful,\n"
     .string "{PLAYER}.\p"
     .string "Your Pokémon have responded to your\n"

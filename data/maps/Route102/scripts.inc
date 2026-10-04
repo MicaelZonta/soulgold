@@ -61,7 +61,7 @@ Route102_EventScript_Allen::
 	end
 
 Route102_Text_WatchMeCatchPokemon:
-	.string "Wally: {PLAYER}…\n"
+	.string "{SPEAKER NAME_WALLY}{PLAYER}…\n"
 	.string "Pokémon hide in tall grass like this,\l"
 	.string "don't they?\p"
 	.string "Please watch me and see if I can\n"
@@ -69,7 +69,7 @@ Route102_Text_WatchMeCatchPokemon:
 	.string "…Whoa!$"
 
 Route102_Text_WallyIDidIt:
-	.string "Wally: I did it… It's my…\n"
+	.string "{SPEAKER NAME_WALLY}I did it… It's my…\n"
 	.string "My Pokémon!$"
 
 Route102_Text_LetsGoBack:

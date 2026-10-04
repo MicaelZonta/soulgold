@@ -284,7 +284,7 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2:
 	step_end
 
 PlayersHouse_1F_Text_IsntItNiceInHere:
-	.string "Mom: See, {PLAYER}?\n"
+	.string "{SPEAKER NAME_MOM}See, {PLAYER}?\n"
 	.string "Isn't it nice in here, too?$"
 
 PlayersHouse_1F_Text_MoversPokemonGoSetClock:
@@ -298,24 +298,24 @@ PlayersHouse_1F_Text_MoversPokemonGoSetClock:
 	.string "Don't forget to set it!$"
 
 PlayersHouse_1F_Text_ArentYouInterestedInRoom:
-	.string "Mom: Well, {PLAYER}?\p"
+	.string "{SPEAKER NAME_MOM}Well, {PLAYER}?\p"
 	.string "Aren't you interested in seeing your\n"
 	.string "very own room?$"
 
 PlayersHouse_1F_Text_GoSetTheClock:
-	.string "Mom: {PLAYER}.\p"
+	.string "{SPEAKER NAME_MOM}{PLAYER}.\p"
 	.string "Go set the clock in your room, honey.$"
 
 PlayersHouse_1F_Text_OhComeQuickly:
-	.string "Mom: Oh! {PLAYER}, {PLAYER}!\n"
+	.string "{SPEAKER NAME_MOM}Oh! {PLAYER}, {PLAYER}!\n"
 	.string "Quick! Come quickly!$"
 
 PlayersHouse_1F_Text_MaybeDadWillBeOn:
-	.string "Mom: Look! It's Petalburg Gym!\n"
+	.string "{SPEAKER NAME_MOM}Look! It's Petalburg Gym!\n"
 	.string "Maybe Dad will be on!$"
 
 PlayersHouse_1F_Text_ItsOverWeMissedHim:
-	.string "Mom: Oh… It's over.\p"
+	.string "{SPEAKER NAME_MOM}Oh… It's over.\p"
 	.string "I think Dad was on, but we missed him.\n"
 	.string "Too bad.$"
 
@@ -327,22 +327,22 @@ PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
 	.string "go over and introduce yourself.$"
 
 PlayersHouse_1F_Text_SeeYouHoney:
-	.string "Mom: See you, honey!$"
+	.string "{SPEAKER NAME_MOM}See you, honey!$"
 
 PlayersHouse_1F_Text_DidYouMeetProfBirch:
-	.string "Mom: Did you introduce yourself to\n"
+	.string "{SPEAKER NAME_MOM}Did you introduce yourself to\n"
 	.string "Prof. Birch?$"
 
 PlayersHouse_1F_Text_YouShouldRestABit:
-	.string "Mom: How are you doing, {PLAYER}?\n"
+	.string "{SPEAKER NAME_MOM}How are you doing, {PLAYER}?\n"
 	.string "You look a little tired.\p"
 	.string "I think you should rest a bit.$"
 
 PlayersHouse_1F_Text_TakeCareHoney:
-	.string "Mom: Take care, honey!$"
+	.string "{SPEAKER NAME_MOM}Take care, honey!$"
 
 PlayersHouse_1F_Text_GotDadsBadgeHeresSomethingFromMom:
-	.string "Mom: Oh? Did Dad give you that Badge?\p"
+	.string "{SPEAKER NAME_MOM}Oh? Did Dad give you that Badge?\p"
 	.string "Then here's something from your Mom!$"
 
 PlayersHouse_1F_Text_DontPushYourselfTooHard:
@@ -351,7 +351,7 @@ PlayersHouse_1F_Text_DontPushYourselfTooHard:
 	.string "Go for it, honey!$"
 
 PlayersHouse_1F_Text_IsThatAPokenav:
-	.string "Mom: What is that, honey? A PokéNav?\n"
+	.string "{SPEAKER NAME_MOM}What is that, honey? A PokéNav?\n"
 	.string "Someone from Devon gave it to you?\p"
 	.string "Well, honey, how about registering\n"
 	.string "your mom?\p"
@@ -368,7 +368,7 @@ PlayersHouse_1F_Text_Vigoroth2:
 	.string "Huggoh, uggo uggo…$"
 
 PlayersHouse_1F_Text_ReportFromPetalburgGym:
-	.string "Interviewer: …We brought you this\n"
+	.string "{SPEAKER NAME_INTERVIEWER}…We brought you this\n"
 	.string "report from in front of Petalburg Gym.$"
 
 PlayersHouse_1F_Text_TheresAMovieOnTV:
@@ -386,7 +386,7 @@ PlayersHouse_1F_Text_RunningShoesManual:
 	.string "the road running!”$"
 
 PlayersHouse_1F_Text_TicketFromBrineyCameForYou:
-	.string "Dad: Hm?\p"
+	.string "{SPEAKER NAME_DAD}Hm?\p"
 	.string "Hey, it's {PLAYER}!\p"
 	.string "It's been a while since I saw you,\n"
 	.string "but you look…stronger, somehow.\p"
@@ -397,7 +397,7 @@ PlayersHouse_1F_Text_TicketFromBrineyCameForYou:
 	.string "Mr. Briney.$"
 
 PlayersHouse_1F_Text_PortsInSlateportLilycove:
-	.string "Dad: Hm, a Ticket for a ferry?\p"
+	.string "{SPEAKER NAME_DAD}Hm, a Ticket for a ferry?\p"
 	.string "If I recall, there are ferry ports in\n"
 	.string "Slateport and Lilycove.$"
 
@@ -407,13 +407,13 @@ PlayersHouse_1F_Text_BetterGetBackToGym:
 	.string "while I'm away.$"
 
 PlayersHouse_1F_Text_DadShouldStayLonger:
-	.string "Mom: That Dad of yours…\p"
+	.string "{SPEAKER NAME_MOM}That Dad of yours…\p"
 	.string "He comes home for the first time in a\n"
 	.string "while, but all he talks about is Pokémon.\p"
 	.string "He should relax and stay a little longer.$"
 
 PlayersHouse_1F_Text_IsThatABreakingStory:
-	.string "Mom: Is that a breaking news story?$"
+	.string "{SPEAKER NAME_MOM}Is that a breaking news story?$"
 
 PlayersHouse_1F_Text_LatiEmergencyNewsFlash:
 	.string "We bring you this emergency\n"
@@ -427,10 +427,10 @@ PlayersHouse_1F_Text_LatiEmergencyNewsFlash:
 	.string "movie program.$"
 
 PlayersHouse_1F_Text_WhatColorDidTheySay:
-	.string "Mom: {PLAYER}, did you catch that?\p"
+	.string "{SPEAKER NAME_MOM}{PLAYER}, did you catch that?\p"
 	.string "What color did the announcer say\n"
 	.string "that Pokémon was?$"
 
 PlayersHouse_1F_Text_StillUnknownPokemon:
-	.string "Mom: Well, isn't that something!\n"
+	.string "{SPEAKER NAME_MOM}Well, isn't that something!\n"
 	.string "There are still unknown Pokémon.$"

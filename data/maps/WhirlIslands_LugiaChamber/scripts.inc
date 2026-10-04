@@ -673,7 +673,7 @@ WhirlIslands_LugiaChamber_Text_Kimono_Opening::
 	.string "the waterfall basin once again. $"
 
 WhirlIslands_LugiaChamber_Text_Kimono_Closing1::
-	.string "That is indeed Lugia...\n"
+	.string "{SPEAKER NAME_KIMONO_GIRL}That is indeed Lugia...\n"
 	.string "The guardian of these islands from\l"
 	.string "ancient times... \p"
 	.string "So many have tried again and again,\n"

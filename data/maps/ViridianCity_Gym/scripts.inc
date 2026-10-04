@@ -75,7 +75,7 @@ ViridianCity_Gym_Text_ReceivedEarthBadge:
 	.string "{PLAYER} received Earthbadge.$"
 
 ViridianCity_Gym_Text_BulkUpSpeech:
-    .string "That TM contains Bulk Up.\p"
+    .string "{SPEAKER NAME_BLUE}That TM contains Bulk Up.\p"
     .string "It lets a Pokémon become an\n"
     .string "unstoppable force and an\l"
 	.string "immovable object all at once!\p"

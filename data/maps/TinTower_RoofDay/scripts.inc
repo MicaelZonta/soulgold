@@ -566,7 +566,7 @@ TinTower_RoofDay_Text_Kimono_Opening::
 	.string "arch of the sky once again. $"
 
 TinTower_RoofDay_Text_Kimono_Closing1::
-	.string "That is indeed Ho-Oh...\n"
+	.string "{SPEAKER NAME_KIMONO_GIRL}That is indeed Ho-Oh...\n"
 	.string "The guardian of the sky from\p"
 	.string "ancient times... \p"
 	.string "So many have tried again and again,\n"

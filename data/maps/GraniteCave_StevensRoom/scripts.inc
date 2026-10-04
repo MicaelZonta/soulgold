@@ -79,14 +79,14 @@ GraniteCave_StevensRoom_Movement_StevenExitSouth:
 	step_end
 
 GraniteCave_StevensRoom_Text_ImStevenLetterForMe:
-	.string "My name is Steven.\p"
+	.string "{SPEAKER NAME_STEVEN}My name is Steven.\p"
 	.string "I'm interested in rare stones,\n"
 	.string "so I travel here and there.\p"
 	.string "Oh?\n"
 	.string "A Letter for me?$"
 
 GraniteCave_StevensRoom_Text_ThankYouTakeThis:
-	.string "Steven: Okay, thank you.\p"
+	.string "{SPEAKER NAME_STEVEN}Okay, thank you.\p"
 	.string "You went through all this trouble to\n"
 	.string "deliver that. I need to thank you.\p"
 	.string "Let me see…\n"
@@ -95,7 +95,7 @@ GraniteCave_StevensRoom_Text_ThankYouTakeThis:
 	.string "Steel Wing.$"
 
 GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister:
-	.string "Steven: Your Pokémon appear quite\n"
+	.string "{SPEAKER NAME_STEVEN}Your Pokémon appear quite\n"
 	.string "capable.\p"
 	.string "If you keep training, you could even\n"
 	.string "become the Champion of the Pokémon\l"
@@ -110,9 +110,9 @@ GraniteCave_StevensRoom_Text_RegisteredSteven:
 	.string "in the PokéNav.$"
 
 GraniteCave_StevensRoom_Text_IveGotToHurryAlong:
-	.string "Now, I've got to hurry along.$"
+	.string "{SPEAKER NAME_STEVEN}Now, I've got to hurry along.$"
 
 GraniteCave_StevensRoom_Text_OhBagIsFull:
-	.string "Oh, your Bag is full…\n"
+	.string "{SPEAKER NAME_STEVEN}Oh, your Bag is full…\n"
 	.string "That's too bad, then.$"
 

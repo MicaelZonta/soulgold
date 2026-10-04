@@ -68,7 +68,7 @@ PokemonLeague_KogasRoom_Text_RematchBefore:
     .string "Show me how you've grown!$"
 
 PokemonLeague_KogasRoom_Text_Before:
-    .string "Fwahahahaha!\p"
+    .string "{SPEAKER NAME_KOGA}Fwahahahaha!\p"
     .string "I am Koga of the Elite Four.\p"
     .string "I live in shadows, a ninja!\p"
     .string "My intricate style will confound\n"
@@ -85,7 +85,7 @@ PokemonLeague_KogasRoom_Text_Beaten:
     .string "You have proven your worth!$"
 
 PokemonLeague_KogasRoom_Text_Defeat:
-    .string "I subjected you to everything I\n"
+    .string "{SPEAKER NAME_KOGA}I subjected you to everything I\n"
     .string "could muster.\p"
     .string "But my efforts failed. I must hone\n"
     .string "my skills.\p"

@@ -362,7 +362,7 @@ SafariZoneGate_SafariZoneEntrance_Movement_ReturnToTable:
 	step_end
 
 SafariZoneGate_SafariZoneEntrance_Text_BaobaWelcome:
-	.string "Hi {PLAYER}!\n"
+	.string "{SPEAKER NAME_WARDEN_BAOBA}Hi {PLAYER}!\n"
 	.string "I've been waiting for you.\n"
 	.string "What do you think?\p"
 	.string "This is a brand new Safari Zone\n"
@@ -375,7 +375,7 @@ SafariZoneGate_SafariZoneEntrance_Text_BaobaWelcome:
 	.string "are ready!$"
 
 SafariZoneGate_SafariZoneEntrance_Text_BaobaPokeblocks:
-	.string "Oh! I almost forgot.\p"
+	.string "{SPEAKER NAME_WARDEN_BAOBA}Oh! I almost forgot.\p"
 	.string "Pokéblocks are an essential\n"
 	.string "feature of my Safari Zone, so\l"
 	.string "you'd better have one of these!$"

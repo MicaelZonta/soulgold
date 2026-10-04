@@ -365,7 +365,7 @@ RivalsHouse_2F_Text_ItsRivalsPokeBall:
 	.string "Better leave it right where it is.$"
 
 RivalsHouse_2F_Text_MayJustCheckingMyPokedex:
-	.string "May: {PLAYER}{KUN}!\p"
+	.string "{SPEAKER NAME_MAY}{PLAYER}{KUN}!\p"
 	.string "I was just checking my Pokédex.\p"
 	.string "There's still a lot of Pokémon that\n"
 	.string "I've seen but haven't caught.\p"
@@ -375,13 +375,13 @@ RivalsHouse_2F_Text_MayJustCheckingMyPokedex:
 	.string "some Pokémon next?$"
 
 RivalsHouse_2F_Text_MayWhereShouldIGoNext:
-	.string "May: I wonder where I should go catch\n"
+	.string "{SPEAKER NAME_MAY}I wonder where I should go catch\n"
 	.string "some Pokémon next?\p"
 	.string "Wouldn't it be funny if we ran into each\n"
 	.string "other, {PLAYER}{KUN}?$"
 
 RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex:
-	.string "Brendan: Hey, it's {PLAYER}.\p"
+	.string "{SPEAKER NAME_BRENDAN}Hey, it's {PLAYER}.\p"
 	.string "I was just checking out my Pokédex.\p"
 	.string "There are still many Pokémon that\n"
 	.string "I need to catch, I know, but this\l"
@@ -390,7 +390,7 @@ RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex:
 	.string "the urge to hit the road again.$"
 
 RivalsHouse_2F_Text_BrendanWhereShouldIGoNext:
-	.string "Brendan: I'm having a hard time deciding\n"
+	.string "{SPEAKER NAME_BRENDAN}I'm having a hard time deciding\n"
 	.string "where I should catch Pokémon next.\p"
 	.string "Hey, {PLAYER}, if I see you while I'm out\n"
 	.string "catching Pokémon, I can pitch you a\l"

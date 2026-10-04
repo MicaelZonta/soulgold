@@ -1049,7 +1049,7 @@ EcruteakCity_Theater_Text_KimonoGirlBeaten:
 	.string "...$"
 
 EcruteakCity_Theater_Text_ZukiSeen:
-	.string "Welcome. My name is Zuki.\n"
+	.string "{SPEAKER NAME_ZUKI}Welcome. My name is Zuki.\n"
 	.string "I met you previously in Violet\l"
 	.string "City.\p"
 	.string "To bring back {STR_VAR_1}, we\n"
@@ -1064,17 +1064,17 @@ EcruteakCity_Theater_Text_ZukiSeen:
 	.string "to face the power of this Pokémon.$"
 
 EcruteakCity_Theater_Text_ZukiSeenAgain:
-	.string "I will test you to see if you are\n"
+	.string "{SPEAKER NAME_ZUKI}I will test you to see if you are\n"
 	.string "a good Trainer.\p"
 	.string "Are you ready, {PLAYER}?$"
 
 EcruteakCity_Theater_Text_ZukiNo:
-	.string "That is fine...\n"
+	.string "{SPEAKER NAME_ZUKI}That is fine...\n"
 	.string "I will wait for you to get\l"
 	.string "ready.$"
 
 EcruteakCity_Theater_Text_NaokoSeen:
-	.string "You are quite strong. You helped\n"
+	.string "{SPEAKER NAME_NAOKO}You are quite strong. You helped\n"
 	.string "me in the Ilex Forest.\p"
 	.string "I'm Naoko--not so good with\n"
 	.string "directions.\p"
@@ -1085,7 +1085,7 @@ EcruteakCity_Theater_Text_NaokoSeen:
 	.string "Pokémon!$"
 
 EcruteakCity_Theater_Text_MikiSeen:
-	.string "You're quite the Trainer. I\n"
+	.string "{SPEAKER NAME_MIKI}You're quite the Trainer. I\n"
 	.string "remember you chased off that\l"
 	.string "Rocket Grunt from right here.\p"
 	.string "Thank you for that.\p"
@@ -1097,7 +1097,7 @@ EcruteakCity_Theater_Text_MikiSeen:
 	.string "Pokémon!$"
 
 EcruteakCity_Theater_Text_SayoSeen:
-	.string "Excellent spirit! You got me\n"
+	.string "{SPEAKER NAME_SAYO}Excellent spirit! You got me\n"
 	.string "off the ice by pushing me.\p"
 	.string "I skate in sandals.\n"
 	.string "I am Sayo--the Kimono Girl!\p"
@@ -1107,7 +1107,7 @@ EcruteakCity_Theater_Text_SayoSeen:
 	.string "Pokémon!$"
 
 EcruteakCity_Theater_Text_KuniSeen:
-	.string "I'm the last one.\p"
+	.string "{SPEAKER NAME_KUNI}I'm the last one.\p"
 	.string "You were dependable at the\n"
 	.string "Goldenrod Tunnel.\p"
 	.string "I'm the one who twirls even\n"
@@ -1119,7 +1119,7 @@ EcruteakCity_Theater_Text_KuniSeen:
 	.string "Pokémon!$"
 
 EcruteakCity_Theater_Text_ZukiDone:
-	.string "We were not wrong about you.\n"
+	.string "{SPEAKER NAME_ZUKI}We were not wrong about you.\n"
 	.string "You are indeed worthy of this...\p"
 	.string "Please take it.$"
 

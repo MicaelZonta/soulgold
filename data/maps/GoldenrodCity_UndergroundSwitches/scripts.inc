@@ -522,7 +522,7 @@ GoldenrodCity_UndergroundSwitches_EventScript_Grunt27::
 	end
 
 GoldenrodUnderground_Text_SilverBefore:
-    .string "Hold it!\p"
+    .string "{SPEAKER NAME_SILVER}Hold it!\p"
     .string "I saw you, so I tailed you.\p"
     .string "I don't need you underfoot while I\n"
     .string "take care of Team Rocket.\p"
@@ -539,7 +539,7 @@ GoldenrodUnderground_Text_SilverWin:
     .string "So why do I lose?$"
 
 GoldenrodUnderground_Text_SilverAfter:
-    .string "…I don't understand…\p"
+    .string "{SPEAKER NAME_SILVER}…I don't understand…\p"
     .string "Is what that Lance guy said true?\p"
     .string "That I don't treat Pokémon properly?\p"
     .string "Love…\p"
