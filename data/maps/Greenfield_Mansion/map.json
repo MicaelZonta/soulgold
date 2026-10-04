@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_MANSION_MOLLY",
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_MOLLY_HALE",
       "x": 16,
       "y": 17,
       "elevation": 3,
@@ -58,7 +58,7 @@
     },
     {
       "local_id": "LOCALID_MANSION_MOLLY_SALON",
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_MOLLY_HALE",
       "x": 14,
       "y": 9,
       "elevation": 3,
@@ -69,6 +69,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "GreenfieldMansion_EventScript_MollySalon",
       "flag": "FLAG_TEMP_3"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MOLLY_HALE",
+      "x": 13,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BerryGarden_EventScript_MollyChat",
+      "flag": "FLAG_TEMP_6"
     }
   ],
   "warp_events": [

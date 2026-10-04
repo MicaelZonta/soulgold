@@ -325,9 +325,17 @@ BerryGarden_EventScript_AveryFight3::
 BerryGarden_EventScript_AveryAfterFight::
 	goto_if_ne VAR_TEMP_3, B_OUTCOME_WON, BerryGarden_EventScript_RivalWon
 	specialvar VAR_RESULT, BerryLedger_RandomRegisteredRare
-	goto_if_eq VAR_RESULT, ITEM_NONE, BerryGarden_EventScript_StoryEnd
+	goto_if_eq VAR_RESULT, ITEM_NONE, BerryGarden_EventScript_AveryPrizeCommon
 	copyvar VAR_0x8008, VAR_RESULT
 	msgbox BerryGarden_Text_AveryPrize, MSGBOX_DEFAULT
+	giveitem VAR_0x8008
+	return
+
+@ No rare in the Book yet: one of the common ones, so a win always pays.
+BerryGarden_EventScript_AveryPrizeCommon::
+	specialvar VAR_RESULT, BerryLedger_RandomRegistered
+	copyvar VAR_0x8008, VAR_RESULT
+	msgbox BerryGarden_Text_AveryPrizeCommon, MSGBOX_DEFAULT
 	giveitem VAR_0x8008
 	return
 
@@ -387,7 +395,7 @@ BerryGarden_EventScript_AveryJ9::
 @ ---------------------------------------------------------------------------
 @ Mustard, a drawn Sunday morning after the story, beside Bram (26,44). Bank
 @ S (5 lines: VAR_DAYS % 10 folded onto 5). A battle once a day; prize: one
-@ big item (SKELETON: the author picks it - an Exp. Candy L for now).
+@ PP Up (the author's pick).
 @ ---------------------------------------------------------------------------
 BerryGarden_EventScript_Mustard::
 	lock
@@ -416,9 +424,8 @@ BerryGarden_EventScript_MustardBattle::
 	special GardenToday_Set
 	garden_fight TRAINER_GARDEN_MUSTARD, BerryGarden_Text_MustardDefeat
 	goto_if_ne VAR_TEMP_3, B_OUTCOME_WON, BerryGarden_EventScript_MustardLost
-	@ SKELETON: the big prize is the author's to choose (section 14.5).
 	msgbox BerryGarden_Text_MustardPrize, MSGBOX_DEFAULT
-	giveitem ITEM_EXP_CANDY_L
+	giveitem ITEM_PP_UP
 	goto BerryGarden_EventScript_MustardEnd
 BerryGarden_EventScript_MustardLost::
 	special HealPlayerParty
@@ -625,7 +632,7 @@ BerryGarden_Text_Act7PeonyGrand:
 	.string "expedition.$"
 
 BerryGarden_Text_Epilogue1:
-	.string "You know what Laurel did this morning?\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}You know what Laurel did this morning?\n"
 	.string "She sang. At breakfast.\p"
 	.string "Forty years. I didn't know she could\n"
 	.string "sing.\p"
@@ -636,7 +643,7 @@ BerryGarden_Text_Epilogue1:
 	.string "stopped asking questions last night.$"
 
 BerryGarden_Text_Epilogue2:
-	.string "Oh -- Kurt came by at dawn. First time\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Oh -- Kurt came by at dawn. First time\n"
 	.string "he's left Azalea since I don't know\l"
 	.string "when.\p"
 	.string "Said he “felt it in his knees.” Took a\n"
@@ -646,7 +653,7 @@ BerryGarden_Text_Epilogue2:
 	.string "weekends, to camp by the pond.$"
 
 BerryGarden_Text_BramTitle:
-	.string "Sixty-six. Every Berry there is, bar the\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Sixty-six. Every Berry there is, bar the\n"
 	.string "king's.\p"
 	.string "I had to count twice. Laurel counted\n"
 	.string "three times.\p"
@@ -654,22 +661,22 @@ BerryGarden_Text_BramTitle:
 	.string "...I'm just Bram. Suits me fine.$"
 
 BerryGarden_Text_LaurelSaysName:
-	.string "{PLAYER}.\p"
+	.string "{SPEAKER NAME_LAUREL}{PLAYER}.\p"
 	.string "...What? I know your name. I've always\n"
 	.string "known your name.$"
 
 BerryGarden_Text_LaurelHoney:
-	.string "Honey wrote. Mustard cried when he read\n"
+	.string "{SPEAKER NAME_LAUREL}Honey wrote. Mustard cried when he read\n"
 	.string "about the king.\p"
 	.string "He says it was hay fever. He's lived on\n"
 	.string "an island with no hay for fifty years.$"
 
 BerryGarden_Text_Laurel66:
-	.string "Sixty-six. All of them but his.\p"
+	.string "{SPEAKER NAME_LAUREL}Sixty-six. All of them but his.\p"
 	.string "Bram cried in the shed. Leave him be.$"
 
 BerryGarden_Text_LaurelEnigma:
-	.string "Leave my plot empty and it grows his\n"
+	.string "{SPEAKER NAME_LAUREL}Leave my plot empty and it grows his\n"
 	.string "Berry back on its own. It remembers now.\p"
 	.string "Don't ask me how. I stopped asking\n"
 	.string "questions too.$"
@@ -785,6 +792,12 @@ BerryGarden_Text_AveryPrize:
 	.string "{SPEAKER NAME_AVERY}Take this. Laurel says it's rare. I say\n"
 	.string "it is a tribute. To me. From you.$"
 
+BerryGarden_Text_AveryPrizeCommon:
+	.string "{SPEAKER NAME_AVERY}Laurel says your Book has no rare ones\n"
+	.string "yet. Disappointing.\p"
+	.string "Take this instead. A lesser tribute, for\n"
+	.string "a lesser victory. Yours, not mine.$"
+
 BerryGarden_Text_AveryTired:
 	.string "{SPEAKER NAME_AVERY}My mind is exhausted. I am resting it. By\n"
 	.string "talking. Leave.$"
@@ -873,47 +886,47 @@ BerryGarden_Text_TeamMulchTired:
 	.string "{SPEAKER NAME_PEONIA}Team Mulch is eating all the Pecha.$"
 
 BerryGarden_Text_PeoniaL5:
-	.string "Tilly's hired me. I'm “Assistant Mulch\n"
+	.string "{SPEAKER NAME_PEONIA}Tilly's hired me. I'm “Assistant Mulch\n"
 	.string "Manager.”\p"
 	.string "I get paid in Berries. Mostly Pecha.\n"
 	.string "Mostly bitten.$"
 
 BerryGarden_Text_PeoniaL6:
-	.string "Grandpa Bram -- he said I could call him\n"
+	.string "{SPEAKER NAME_PEONIA}Grandpa Bram -- he said I could call him\n"
 	.string "that -- taught me how to tell a ripe\l"
 	.string "Berry.\p"
 	.string "You don't. The Berry tells you. I think\n"
 	.string "he made that up.$"
 
 BerryGarden_Text_PeoniaL7:
-	.string "Auntie Laurel's the only one who can\n"
+	.string "{SPEAKER NAME_PEONIA}Auntie Laurel's the only one who can\n"
 	.string "tell Dad “no” and make it stick.\p"
 	.string "I'm studying her technique.$"
 
 BerryGarden_Text_PeoniaL8:
-	.string "I'm training for a real expedition\n"
+	.string "{SPEAKER NAME_PEONIA}I'm training for a real expedition\n"
 	.string "someday. Not Dad's kind. The kind with\l"
 	.string "maps.$"
 
 BerryGarden_Text_PeoniaL9:
-	.string "Thanks for taking me along, back then. I\n"
+	.string "{SPEAKER NAME_PEONIA}Thanks for taking me along, back then. I\n"
 	.string "was scared.\p"
 	.string "I'm telling you that once. Only once.$"
 
 BerryGarden_Text_PeonyK6:
-	.string "The king still talks through me\n"
+	.string "{SPEAKER NAME_PEONY}The king still talks through me\n"
 	.string "sometimes. In me sleep.\p"
 	.string "Peonia says I say “carrots” a lot.$"
 
 BerryGarden_Text_Letter3:
-	.string "From Sonia.\p"
+	.string "{SPEAKER NAME_LAUREL}From Sonia.\p"
 	.string "“The King of Bountiful Harvest is\n"
 	.string "chapter nine of my book! May I visit?\p"
 	.string "I'll bring Yamper. He's very polite. He\n"
 	.string "is not polite.”$"
 
 BerryGarden_Text_Letter7:
-	.string "From Freezington.\p"
+	.string "{SPEAKER NAME_LAUREL}From Freezington.\p"
 	.string "“We mended the old statue in the\n"
 	.string "square. Nobody remembers who\l"
 	.string "suggested it.\p"
@@ -921,14 +934,124 @@ BerryGarden_Text_Letter7:
 	.string "bit, when the ice melted.”$"
 
 BerryGarden_Text_Letter8:
-	.string "From Honey.\p"
+	.string "{SPEAKER NAME_LAUREL}From Honey.\p"
 	.string "“Mustard has taken up gardening. He\n"
 	.string "planted one seed and named it. He talks\l"
 	.string "to it.\p"
 	.string "I hear you know the type.”$"
 
 BerryGarden_Text_Letter9:
-	.string "From Sonia.\p"
+	.string "{SPEAKER NAME_LAUREL}From Sonia.\p"
 	.string "“Leon says hello. Well -- Leon got lost\n"
 	.string "on the way to the post office, so I'm\l"
 	.string "saying it for him.”$"
+
+@ ---------------------------------------------------------------------------
+@ Molly Hale after the white path (MollyCast_Place, src/berry_garden.c):
+@ mornings among Greenfield's flowers, weekday afternoons at the piano,
+@ weekend afternoons playing with the boy, nights in Papa's study. Same talk
+@ everywhere: the line of her place, then a battle just for fun, as often as
+@ the player likes - no daily limit, no prize, no whiteout (garden_fight).
+@ Her team scales with the party (TRAINER_GARDEN_MOLLY, src/level_scaling.c).
+@ VAR_LAST_TALKED turns her back to what she was doing afterwards.
+@ ---------------------------------------------------------------------------
+BerryGarden_EventScript_MollyChat::
+	lock
+	faceplayer
+	specialvar VAR_RESULT, MollyCast_Place
+	switch VAR_RESULT
+	case MOLLY_PLACE_FLOWERS, BerryGarden_EventScript_MollyFlowers
+	case MOLLY_PLACE_BOY, BerryGarden_EventScript_MollyBoy
+	case MOLLY_PLACE_STUDY, BerryGarden_EventScript_MollyStudy
+	msgbox BerryGarden_Text_MollyPianoLine, MSGBOX_DEFAULT
+	goto BerryGarden_EventScript_MollyAsk
+
+BerryGarden_EventScript_MollyFlowers::
+	msgbox BerryGarden_Text_MollyFlowersLine, MSGBOX_DEFAULT
+	goto BerryGarden_EventScript_MollyAsk
+
+BerryGarden_EventScript_MollyBoy::
+	msgbox BerryGarden_Text_MollyBoyLine, MSGBOX_DEFAULT
+	goto BerryGarden_EventScript_MollyAsk
+
+BerryGarden_EventScript_MollyStudy::
+	msgbox BerryGarden_Text_MollyStudyLine, MSGBOX_DEFAULT
+BerryGarden_EventScript_MollyAsk::
+	msgbox BerryGarden_Text_MollyAsk, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BerryGarden_EventScript_MollyDeclined
+	garden_fight TRAINER_GARDEN_MOLLY, BerryGarden_Text_MollyDefeat
+	goto_if_eq VAR_TEMP_3, B_OUTCOME_WON, BerryGarden_EventScript_MollyLost
+	special HealPlayerParty
+	msgbox BerryGarden_Text_MollyWon, MSGBOX_DEFAULT
+	goto BerryGarden_EventScript_MollyEnd
+
+BerryGarden_EventScript_MollyLost::
+	msgbox BerryGarden_Text_MollyLost, MSGBOX_DEFAULT
+	goto BerryGarden_EventScript_MollyEnd
+
+BerryGarden_EventScript_MollyDeclined::
+	msgbox BerryGarden_Text_MollyDeclined, MSGBOX_DEFAULT
+BerryGarden_EventScript_MollyEnd::
+	closemessage
+	@ back to what she was doing: the flowers and the boy are south of her
+	specialvar VAR_RESULT, MollyCast_Place
+	call_if_eq VAR_RESULT, MOLLY_PLACE_FLOWERS, BerryGarden_EventScript_MollyFaceSouth
+	call_if_eq VAR_RESULT, MOLLY_PLACE_BOY, BerryGarden_EventScript_MollyFaceSouth
+	call_if_eq VAR_RESULT, MOLLY_PLACE_PIANO, BerryGarden_EventScript_MollyFaceNorth
+	call_if_eq VAR_RESULT, MOLLY_PLACE_STUDY, BerryGarden_EventScript_MollyFaceNorth
+	release
+	end
+
+BerryGarden_EventScript_MollyFaceNorth::
+	turnobject VAR_LAST_TALKED, DIR_NORTH
+	return
+
+BerryGarden_EventScript_MollyFaceSouth::
+	turnobject VAR_LAST_TALKED, DIR_SOUTH
+	return
+
+BerryGarden_Text_MollyFlowersLine:
+	.string "{SPEAKER NAME_MOLLY}They open in the morning and close at\n"
+	.string "night. Every single day.\p"
+	.string "I'd forgotten flowers keep a schedule.\n"
+	.string "I'm trying to keep one too.$"
+
+BerryGarden_Text_MollyPianoLine:
+	.string "{SPEAKER NAME_MOLLY}Still out of tune. I play it anyway.\p"
+	.string "Papa used to say a house with no music\n"
+	.string "is just a very large box.$"
+
+BerryGarden_Text_MollyBoyLine:
+	.string "{SPEAKER NAME_MOLLY}He wants to play Unown again. I'm the\n"
+	.string "Unown. I'm always the Unown.\p"
+	.string "I've been a lot of things in this house.\n"
+	.string "This is the best one.$"
+
+BerryGarden_Text_MollyStudyLine:
+	.string "{SPEAKER NAME_MOLLY}This is where it slept. Papa's study.\p"
+	.string "I come up at night and read his notes.\n"
+	.string "He wrote my name in the margins.\l"
+	.string "A lot.$"
+
+BerryGarden_Text_MollyAsk:
+	.string "{SPEAKER NAME_MOLLY}Papa's Unown never liked to lose.\n"
+	.string "Neither do I.\p"
+	.string "A battle? Just for fun. No prizes,\n"
+	.string "no promises.$"
+
+BerryGarden_Text_MollyDefeat:
+	.string "...Again? You're very good at this.$"
+
+BerryGarden_Text_MollyLost:
+	.string "{SPEAKER NAME_MOLLY}That was fun. Come back and do it\n"
+	.string "again sometime. I mean it.$"
+
+BerryGarden_Text_MollyWon:
+	.string "{SPEAKER NAME_MOLLY}I won! ...Sorry. I haven't won anything\n"
+	.string "in a very long time.\p"
+	.string "Your Pokémon look tired. There.\n"
+	.string "All better.$"
+
+BerryGarden_Text_MollyDeclined:
+	.string "{SPEAKER NAME_MOLLY}Another time, then. Time is something\n"
+	.string "I have plenty of now.$"

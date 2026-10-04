@@ -9,7 +9,7 @@ BerryGarden_EventScript_PryceCoat::
 	return
 
 BerryGarden_Text_PryceCoat:
-	.string "...She said the invitation stands?\p"
+	.string "{SPEAKER NAME_PRYCE}...She said the invitation stands?\p"
 	.string "Hm. I'll need a better coat.$"
 
 @ ----------------------------------------------------------------- dark path
@@ -66,6 +66,17 @@ BerryGarden_EventScript_MortySpellTag::
 	closemessage
 	return
 
+@ The same Spell Tag at the Gym, when the scene in the tower was cut short:
+@ the tower's welcome line would not make sense here.
+BerryGarden_EventScript_MortySpellTagGym::
+	msgbox BerryGarden_Text_MortyWelcomeGym, MSGBOX_DEFAULT
+	giveitem ITEM_SPELL_TAG
+	goto_if_eq VAR_RESULT, FALSE, BerryGarden_EventScript_MortyBagFull
+	removeitem ITEM_SHADEROOT_CARROT
+	msgbox BerryGarden_Text_MortyAfterGym, MSGBOX_DEFAULT
+	closemessage
+	return
+
 BerryGarden_EventScript_MortyBagFull::
 	msgbox BerryGarden_Text_MortyBagFull, MSGBOX_DEFAULT
 	closemessage
@@ -99,6 +110,20 @@ BerryGarden_Text_MortyAfter:
 	.string "Peonia went home to tell her father.\p"
 	.string "I'm staying a while. Someone should\n"
 	.string "remember the monk.$"
+
+BerryGarden_Text_MortyWelcomeGym:
+	.string "{SPEAKER NAME_MORTY}There you are. You left the tower\n"
+	.string "before I could give you this.\p"
+	.string "The tower's quiet now.\p"
+	.string "The spirits used to say something\n"
+	.string "walked there at night, hungry. Not\l"
+	.string "anymore. Take this. It's from them.$"
+
+BerryGarden_Text_MortyAfterGym:
+	.string "{SPEAKER NAME_MORTY}Eusine went home to write it all down.\n"
+	.string "Peonia went home to tell her father.\p"
+	.string "I go up to the tower most nights now.\n"
+	.string "Someone should remember the monk.$"
 
 BerryGarden_Text_MortyBagFull:
 	.string "{SPEAKER NAME_MORTY}Your Bag is full. Find me at the Gym\n"

@@ -100,6 +100,7 @@
 #define MAP_TINT_CRYSTAL             1   // Greenfield before the Glastrier (part 14)
 #define MAP_TINT_DUSK                2   // the Brass Tower memory, 1F (part 15)
 #define MAP_TINT_FIRE                3   // the Brass Tower memory, roof
+#define GREENFIELD_CRYSTAL_PAL       7   // gTileset_Greenfield's crystal pieces: MAP_TINT_CRYSTAL leaves it alone
 
 #define BERRY_LEDGER_TITLE_COUNT     66  // section 3.4: every Berry but the Enigma
 #define GARDEN_STORY_COUNT           7   // the ones in VAR_GARDEN_NEWS; the rest are in VAR_GARDEN_STORY2
@@ -124,6 +125,14 @@
 #define GARDEN_PERIOD_MORNING        0
 #define GARDEN_PERIOD_DAY            1
 #define GARDEN_PERIOD_NIGHT          2
+
+// Molly Hale's day once the white path is done and the Never-Melt Ice was
+// given (MollyCast_Place). Before that she stays at the piano, as the story
+// needs her there.
+#define MOLLY_PLACE_PIANO            0   // the mansion lobby, (16,17); weekday afternoons
+#define MOLLY_PLACE_FLOWERS          1   // Greenfield, among the flowers, (6,14); mornings
+#define MOLLY_PLACE_BOY              2   // Greenfield, playing with the boy, (10,28); weekend afternoons
+#define MOLLY_PLACE_STUDY            3   // the mansion salon, Papa's study, (13,6); nights
 
 #define GARDEN_CAST_BRAM             0
 #define GARDEN_CAST_LAUREL           1

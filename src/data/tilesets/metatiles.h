@@ -587,3 +587,9 @@ const u16 gMetatileAttributes_AltarSunMoon[] = INCBIN_U16("data/tilesets/seconda
 
 const u16 gMetatiles_UltraSpaceArena[] = INCBIN_U16("data/tilesets/secondary/ultra_space_arena/metatiles.bin");
 const u16 gMetatileAttributes_UltraSpaceArena[] = INCBIN_U16("data/tilesets/secondary/ultra_space_arena/metatile_attributes.bin");
+
+const u16 gMetatiles_Greenfield[] = INCBIN_U16("data/tilesets/secondary/greenfield/metatiles.bin");
+const u16 gMetatileAttributes_Greenfield[] = INCBIN_U16("data/tilesets/secondary/greenfield/metatile_attributes.bin");
+
+const u16 gMetatiles_HaleMansion[] = INCBIN_U16("data/tilesets/secondary/hale_mansion/metatiles.bin");
+const u16 gMetatileAttributes_HaleMansion[] = INCBIN_U16("data/tilesets/secondary/hale_mansion/metatile_attributes.bin");

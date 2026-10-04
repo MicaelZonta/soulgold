@@ -583,6 +583,8 @@ Route30_House_EventScript_BerryWife::
 	@ Hearts (part 9): VAR_0x800B = first talk of the day, read by WifeChat.
 	setvar VAR_0x8004, GARDEN_HEARTS_LAUREL
 	specialvar VAR_0x800B, GardenHearts_Talk
+	@ VAR_0x800A = the order hint was given in this talk (WifeNight).
+	setvar VAR_0x800A, FALSE
 	@ The story (part 12) may take the whole conversation.
 	call BerryGarden_EventScript_LaurelStory
 	goto_if_eq VAR_RESULT, TRUE, Route30_House_EventScript_WifeChatEnd
@@ -614,6 +616,7 @@ Route30_House_EventScript_LaurelHint::
 	specialvar VAR_RESULT, BerryLedger_GetRecipe
 	goto_if_eq VAR_RESULT, FALSE, Route30_House_EventScript_LaurelHintEnd
 	setflag FLAG_TEMP_LAUREL_HINTED
+	setvar VAR_0x800A, TRUE
 	bufferitemname STR_VAR_1, VAR_0x8004
 	bufferitemname STR_VAR_2, VAR_0x8005
 	bufferitemname STR_VAR_3, VAR_0x8006
@@ -647,6 +650,8 @@ Route30_House_EventScript_WifeChat::
 @ once per visit, sharing the mark with the order hint so one visit never gets
 @ two recipes.
 Route30_House_EventScript_WifeNight::
+	@ The order hint just now was tonight's page: nothing more to say.
+	goto_if_eq VAR_0x800A, TRUE, Route30_House_EventScript_WifeChatEnd
 	goto_if_set FLAG_TEMP_LAUREL_HINTED, Route30_House_EventScript_WifeReading
 	specialvar VAR_RESULT, BerryLedger_NextDiscovery
 	goto_if_eq VAR_RESULT, ITEM_NONE, Route30_House_EventScript_WifeNothingTonight
@@ -719,7 +724,7 @@ Route30_House_EventScript_Sunflora::
 	end
 
 Route30_BerryHouse_Text_MonEatBerries:
-	.string "Off to Kukui's? It's up the path,\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Off to Kukui's? It's up the path,\n"
 	.string "north. Can't miss it.\p"
 	.string "But hold on, sprout. Nobody leaves\n"
 	.string "my house without a Berry.\p"
@@ -729,7 +734,7 @@ Route30_BerryHouse_Text_MonEatBerries:
 	.string "Here. Take one.$"
 
 Route30_House_Text_TheBook:
-	.string "One more thing. Every Berry you pick\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}One more thing. Every Berry you pick\n"
 	.string "yourself goes in the Book.\p"
 	.string "Off my trees, off any tree on any\n"
 	.string "road. Buying one doesn't count.\p"
@@ -740,21 +745,21 @@ Route30_House_Text_TheBook:
 	.string "seed for you by morning.$"
 
 Route30_House_Text_Milestone:
-	.string "Let me see that Book of yours...\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}Let me see that Book of yours...\p"
 	.string "{STR_VAR_1} Berries! You're getting\n"
 	.string "the hang of this, sprout.\p"
 	.string "Here. Something for the garden.$"
 
 Route30_House_Text_MilestoneBagFull:
-	.string "Your Bag's too full for what I've got\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Your Bag's too full for what I've got\n"
 	.string "for you. I'll keep it. Come back.$"
 
 Route30_House_Text_FirstTwo:
-	.string "And since you're here, take two more.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}And since you're here, take two more.\n"
 	.string "There's always more tomorrow.$"
 
 Route30_House_Text_TakeThree:
-	.string "Three today -- the garden earns its\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Three today -- the garden earns its\n"
 	.string "keep. Or have you got one in mind?$"
 
 Route30_House_Text_SurpriseMe:
@@ -764,48 +769,48 @@ Route30_House_Text_OneInMind:
 	.string "I've got one$"
 
 Route30_House_Text_NameIt:
-	.string "Go on, then. Which one?$"
+	.string "{SPEAKER NAME_BERRY_MASTER}Go on, then. Which one?$"
 
 Route30_House_Text_GoodPick:
-	.string "Good pick. Plant it next to something\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Good pick. Plant it next to something\n"
 	.string "it gets along with.$"
 
 Route30_House_Text_OfferProper:
-	.string "{STR_VAR_1} Berries in your Book now.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}{STR_VAR_1} Berries in your Book now.\n"
 	.string "Time this was a proper garden.\p"
 	.string "Four more beds by the pond, dug by\n"
 	.string "morning. ¥5,000 for the lot. Shall I?$"
 
 Route30_House_Text_OfferChannel:
-	.string "{STR_VAR_1} in the Book... I could dig a\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}{STR_VAR_1} in the Book... I could dig a\n"
 	.string "channel from the pond.\p"
 	.string "The whole garden would water itself\n"
 	.string "every morning. ¥10,000. Shall I?$"
 
 Route30_House_Text_OfferBugHotel:
-	.string "Bugsy wants to build a Bug Hotel by\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Bugsy wants to build a Bug Hotel by\n"
 	.string "the beds. Won't take a coin for it.\p"
 	.string "Says the bugs will come for the Berries\n"
 	.string "and stay for the architecture.\p"
 	.string "Well? Do I let him?$"
 
 Route30_House_Text_ReformPaid:
-	.string "Done deal. Come and look in the morning.$"
+	.string "{SPEAKER NAME_BERRY_MASTER}Done deal. Come and look in the morning.$"
 
 Route30_House_Text_ReformDeclined:
-	.string "Suit yourself. The offer keeps.$"
+	.string "{SPEAKER NAME_BERRY_MASTER}Suit yourself. The offer keeps.$"
 
 Route30_House_Text_ReformNoMoney:
-	.string "Hah. Come back when you've got the\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Hah. Come back when you've got the\n"
 	.string "money, sprout.$"
 
 Route30_House_Text_ReformNeedsHelp:
-	.string "I've got the next thing in mind for the\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}I've got the next thing in mind for the\n"
 	.string "garden. But it's more than one old man\l"
 	.string "can dig. I'd need somebody to help.$"
 
 Route30_House_Text_BuiltProper:
-	.string "Four more beds! Laurel dug them.\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}Four more beds! Laurel dug them.\p"
 	.string "Don't tell her I said so. She'll say\n"
 	.string "I helped.$"
 
@@ -818,72 +823,72 @@ Route30_House_Text_BuiltChannel:
 	.string "The neighbors thought it was a Diglett.$"
 
 Route30_House_Text_BuiltBugHotel:
-	.string "Bugsy finished his Bug Hotel last night.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Bugsy finished his Bug Hotel last night.\n"
 	.string "Hollow stems, bark, a pile of stones...\p"
 	.string "It means more bugs. He's happy about\n"
 	.string "more bugs.$"
 
 Route30_House_Text_OrderKurt:
-	.string "Kurt called. Wants\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Kurt called. Wants\n"
 	.string "{STR_VAR_2} {STR_VAR_1}.\p"
 	.string "Said “by tomorrow.” Kurt thinks\n"
 	.string "everything's by tomorrow.$"
 
 Route30_House_Text_OrderFlowerShop:
-	.string "The girls at the Goldenrod flower shop\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}The girls at the Goldenrod flower shop\n"
 	.string "want {STR_VAR_2} {STR_VAR_1}\l"
 	.string "for the window.\p"
 	.string "Pretty ones, they said. As if I grow\n"
 	.string "ugly ones.$"
 
 Route30_House_Text_OrderNurse:
-	.string "Nurse in Cherrygrove's running low.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Nurse in Cherrygrove's running low.\n"
 	.string "{STR_VAR_2} {STR_VAR_1}.\p"
 	.string "For the patients, she says.\n"
 	.string "For her tea, I say.$"
 
 Route30_House_Text_OrderMoomoo:
-	.string "Moomoo Farm's Miltank have gone off\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Moomoo Farm's Miltank have gone off\n"
 	.string "their feed.\p"
 	.string "{STR_VAR_2} {STR_VAR_1}\n"
 	.string "ought to fix that.$"
 
 Route30_House_Text_OrderDayCare:
-	.string "The Day Care couple want\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}The Day Care couple want\n"
 	.string "{STR_VAR_2} {STR_VAR_1}.\p"
 	.string "The babies love them. The old man\n"
 	.string "loves them more.$"
 
 Route30_House_Text_OrderBugsy:
-	.string "Bugsy wants {STR_VAR_2} {STR_VAR_1}.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Bugsy wants {STR_VAR_2} {STR_VAR_1}.\n"
 	.string "“For bait,” he says.\p"
 	.string "The bait always gets eaten by Bugsy.$"
 
 Route30_House_Text_OrderTheater:
-	.string "Letter from Ecruteak. The dance\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Letter from Ecruteak. The dance\n"
 	.string "theater wants {STR_VAR_2} {STR_VAR_1}.\p"
 	.string "Those Kimono Girls eat like Snorlax,\n"
 	.string "I'm told.$"
 
 Route30_House_Text_OrderLighthouse:
-	.string "The lighthouse in Olivine.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}The lighthouse in Olivine.\n"
 	.string "{STR_VAR_2} {STR_VAR_1},\l"
 	.string "for the Ampharos.\p"
 	.string "That Ampharos eats better than I do.$"
 
 Route30_House_Text_OrderSchool:
-	.string "The teacher at the Violet school wants\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}The teacher at the Violet school wants\n"
 	.string "{STR_VAR_2} {STR_VAR_1} for a lesson.\p"
 	.string "Kids learn more from a Berry than\n"
 	.string "a book, I say.$"
 
 Route30_House_Text_OrderLaurel:
-	.string "Laurel wants {STR_VAR_2} {STR_VAR_1}.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Laurel wants {STR_VAR_2} {STR_VAR_1}.\n"
 	.string "She won't say why.\p"
 	.string "She never says why. Just bring them.$"
 
 Route30_House_Text_OrderDiscovery:
-	.string "Now here's one I've never grown.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Now here's one I've never grown.\n"
 	.string "Kurt swears there's a Berry called\l"
 	.string "{STR_VAR_1}.\p"
 	.string "I think he's pulling my leg.\p"
@@ -891,80 +896,80 @@ Route30_House_Text_OrderDiscovery:
 	.string "knows. She just won't tell ME.$"
 
 Route30_House_Text_OrderReminder:
-	.string "Still need {STR_VAR_2} {STR_VAR_1} for\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Still need {STR_VAR_2} {STR_VAR_1} for\n"
 	.string "today's order. No rush. Some rush.$"
 
 Route30_House_Text_OrderReminderDiscovery:
-	.string "Any luck with that {STR_VAR_1}?\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Any luck with that {STR_VAR_1}?\n"
 	.string "Did you ask Laurel?$"
 
 Route30_House_Text_OrderHandOver:
-	.string "That's {STR_VAR_2} {STR_VAR_1}!\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}That's {STR_VAR_2} {STR_VAR_1}!\n"
 	.string "Hand them over?$"
 
 Route30_House_Text_OrderHandOverOne:
-	.string "That's the {STR_VAR_1}!\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}That's the {STR_VAR_1}!\n"
 	.string "Hand it over?$"
 
 Route30_House_Text_OrderBagFull:
-	.string "Hold on. There's mulch in your pay, and\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Hold on. There's mulch in your pay, and\n"
 	.string "your Bag hasn't room for it.\l"
 	.string "Make room first.$"
 
 Route30_House_Text_OrderThanks1:
-	.string "That's the lot! Here's your pay.\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}That's the lot! Here's your pay.\p"
 	.string "Don't spend it all on mulch. Spend\n"
 	.string "some of it on mulch.$"
 
 Route30_House_Text_OrderThanks2:
-	.string "Look at the size of these!\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Look at the size of these!\n"
 	.string "They'll think I grew them.\l"
 	.string "I'll let them.$"
 
 Route30_House_Text_OrderThanks3:
-	.string "Perfect. You pick 'em better than\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Perfect. You pick 'em better than\n"
 	.string "I do now. Don't tell anyone.$"
 
 Route30_House_Text_OrderThanks4:
-	.string "Right on time! Folks'll start\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Right on time! Folks'll start\n"
 	.string "thinking I'm reliable.$"
 
 Route30_House_Text_OrderThanks5:
-	.string "Good work, sprout. That's a farmer's\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Good work, sprout. That's a farmer's\n"
 	.string "money. Earned in dirt.$"
 
 Route30_House_Text_OrderPaid:
 	.string "{PLAYER} received ¥{STR_VAR_3}.$"
 
 Route30_House_Text_PlantThem:
-	.string "And don't eat both of them. Plant one.\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}And don't eat both of them. Plant one.\p"
 	.string "That's how this works: a planted Berry\n"
 	.string "is a tree, and a tree is Berries for ever.\p"
 	.string "Check the trees as you go. They grow\n"
 	.string "back after 12 hours.$"
 
 Route30_House_Text_WifeReading:
-	.string "I'm reading. You've had your page.$"
+	.string "{SPEAKER NAME_LAUREL}I'm reading. You've had your page.$"
 
 Route30_House_Text_WifeNothingTonight:
-	.string "Nothing for you tonight. Grow what\n"
+	.string "{SPEAKER NAME_LAUREL}Nothing for you tonight. Grow what\n"
 	.string "you've got.\p"
 	.string "The book isn't going anywhere.$"
 
 Route30_House_Text_WifeBookDone:
-	.string "Nothing left in here you haven't\n"
+	.string "{SPEAKER NAME_LAUREL}Nothing left in here you haven't\n"
 	.string "grown.\p"
 	.string "I don't know whether to be proud or\n"
 	.string "bored.$"
 
 Route30_House_Text_LaurelNightGift:
-	.string "He's asleep. He left these on the\n"
+	.string "{SPEAKER NAME_LAUREL}He's asleep. He left these on the\n"
 	.string "table for you.\p"
 	.string "He counted them twice. Don't tell him\n"
 	.string "I watched.$"
 
 Route30_House_Text_TillyBreakfast:
-	.string "Grandpa's out watering! I'm eating\n"
+	.string "{SPEAKER NAME_TILLY}Grandpa's out watering! I'm eating\n"
 	.string "toast.\p"
 	.string "The shop opens at ten. The mulch has\n"
 	.string "to wake up first.$"
@@ -973,53 +978,53 @@ Route30_House_Text_Sunflora:
 	.string "{SPEAKER NAME_SUNFLORA}Floraaa!$"
 
 Route30_House_Text_Dream0:
-	.string "Zzz... No, no, the Sitrus goes by\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... No, no, the Sitrus goes by\n"
 	.string "the fence...$"
 
 Route30_House_Text_Dream1:
-	.string "Zzz... Laurel... there's a Combee in\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... Laurel... there's a Combee in\n"
 	.string "my hat...$"
 
 Route30_House_Text_Dream2:
-	.string "Zzz... Forty-one... forty-two...\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... Forty-one... forty-two...\n"
 	.string "forty-three Pecha...$"
 
 Route30_House_Text_Dream3:
-	.string "Zzz... Kurt, you owe me for the\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... Kurt, you owe me for the\n"
 	.string "Leppa...$"
 
 Route30_House_Text_Dream4:
-	.string "Zzz... Hm? The Book?\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... Hm? The Book?\p"
 	.string "...Six more... zzz...$"
 
 Route30_House_Text_Dream5:
-	.string "Zzz... Tilly... that's not a Rellor...\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... Tilly... that's not a Rellor...\n"
 	.string "that's my breakfast...$"
 
 Route30_House_Text_Dream6:
-	.string "Zzz... biggest Oran in Johto...\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... biggest Oran in Johto...\n"
 	.string "the judges are weeping...$"
 
 Route30_House_Text_Dream7:
-	.string "Zzz... sprout... water the...\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... sprout... water the...\n"
 	.string "the... zzz...$"
 
 Route30_House_Text_Dream8:
-	.string "Zzz... Bugsy... put it down...\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... Bugsy... put it down...\n"
 	.string "that's the salt...$"
 
 Route30_House_Text_Dream9:
-	.string "Zzz... just one more row...$"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... just one more row...$"
 
 Route30_House_Text_Dream9CameUp:
-	.string "Zzz... it came up... it finally\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... it came up... it finally\n"
 	.string "came up... zzz...$"
 
 Route30_House_Text_Dream9Song:
-	.string "Zzz... Laurel... you're singing...$"
+	.string "{SPEAKER NAME_BERRY_MASTER}Zzz... Laurel... you're singing...$"
 
 Route30_House_Text_WifeRare:
-	.string "My husband hands out the easy ones. I\n"
+	.string "{SPEAKER NAME_LAUREL}My husband hands out the easy ones. I\n"
 	.string "keep the others.\p"
 	.string "These only fruit for somebody who\n"
 	.string "knows what they're doing, and I saw\l"
@@ -1027,7 +1032,7 @@ Route30_House_Text_WifeRare:
 	.string "One a day. Don't argue.$"
 
 Route30_House_Text_WifeNoRare:
-	.string "The rare ones only come from the\n"
+	.string "{SPEAKER NAME_LAUREL}The rare ones only come from the\n"
 	.string "Book, dear. Yours hasn't got one yet.\p"
 	.string "Grow one yourself first. Then we'll\n"
 	.string "talk.$"

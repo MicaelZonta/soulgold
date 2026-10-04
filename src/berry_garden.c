@@ -904,6 +904,31 @@ u16 GardenCast_IsWeekend(void)
     return IsWeekend(GetDayOfWeek());
 }
 
+// Molly Hale's routine (after the story). Greenfield and the mansion ask on
+// ON_TRANSITION and hide the Mollys that are not on their map. While the white
+// path is not done, or the Never-Melt Ice is still owed (the Iceroot in the
+// Bag), she is at the piano, where the story needs her.
+u32 MollyCast_PlaceOf(u32 period, u32 weekday, bool32 storyDone)
+{
+    if (!storyDone)
+        return MOLLY_PLACE_PIANO;
+    switch (period)
+    {
+    case GARDEN_PERIOD_MORNING:
+        return MOLLY_PLACE_FLOWERS;
+    case GARDEN_PERIOD_NIGHT:
+        return MOLLY_PLACE_STUDY;
+    default:
+        return IsWeekend(weekday) ? MOLLY_PLACE_BOY : MOLLY_PLACE_PIANO;
+    }
+}
+
+u16 MollyCast_Place(void)
+{
+    return MollyCast_PlaceOf(GardenCast_PeriodOf(GetTimeOfDay()), GetDayOfWeek(),
+                             GardenStory_Has(GARDEN_STORY_WHITE_PATH) && !CheckBagHasItem(ITEM_ICEROOT_CARROT, 1));
+}
+
 // ---------------------------------------------------------------------------
 // Hearts and line banks (part 9, section 14.3)
 //
@@ -1401,12 +1426,13 @@ void GardenStory_Mark(void)
 }
 
 // Story places told in another light (parts 14 and 15). Every map palette of
-// the place is pulled toward one colour, keeping its light and dark; it is the
-// only "new art" of these maps (their layouts are New Bark's, the Burned
-// Tower's and the Tin Tower roof's):
-//   Greenfield, until the Glastrier leaves (GARDEN_STORY_WHITE_PATH): crystal;
+// the place is pulled toward one colour, keeping its light and dark (their
+// layouts are New Bark's, the Burned Tower's and the Tin Tower roof's):
+//   Greenfield, until the Glastrier leaves (GARDEN_STORY_WHITE_PATH): a faded,
+//   almost white day; its crystal pieces (gTileset_Greenfield) are drawn in
+//   GREENFIELD_CRYSTAL_PAL, which the tint leaves alone;
 //   the Brass Tower memory: the dusk before the fire (1F), the fire (roof).
-// src/fieldmap.c and src/overworld.c call MapTint_Apply when a mode is on.
+// src/fieldmap.c and src/overworld.c call MapTint_ApplyToBg when a mode is on.
 u32 MapTint_Mode(void)
 {
     u32 map = (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
@@ -1434,9 +1460,10 @@ static void TintTowardRamp(u16 *pal, u32 count, const u8 dark[3], const u8 light
     }
 }
 
+// Ramp of proposal E (.claude/berry_master/prototipo_corceis/greenfield_cristal.py).
 void GreenfieldCrystal_Tint(u16 *pal, u32 count)
 {
-    static const u8 dark[3] = { 6, 8, 14 }, light[3] = { 28, 31, 31 };
+    static const u8 dark[3] = { 12, 13, 17 }, light[3] = { 30, 31, 31 };
     TintTowardRamp(pal, count, dark, light);
 }
 
@@ -1456,6 +1483,21 @@ void MapTint_Apply(u16 *pal, u32 count)
     case MAP_TINT_FIRE:
         TintTowardRamp(pal, count, fireDark, fireLight);
         break;
+    }
+}
+
+// Tints the BG palette colours [firstColor, firstColor + count) of gPlttBufferUnfaded,
+// one palette at a time, skipping Greenfield's crystal pieces.
+void MapTint_ApplyToBg(u32 firstColor, u32 count)
+{
+    u32 mode = MapTint_Mode();
+    u32 end = firstColor + count;
+
+    for (; firstColor < end; firstColor += 16)
+    {
+        if (mode == MAP_TINT_CRYSTAL && firstColor / 16 == GREENFIELD_CRYSTAL_PAL)
+            continue;
+        MapTint_Apply(&gPlttBufferUnfaded[firstColor], min(16, end - firstColor));
     }
 }
 
@@ -1692,10 +1734,20 @@ void BerryDebug_KingsPlotSprout(void)
 }
 
 // Act 5 (part 13): Calyrex ate the Enigma. Emptied the way a harvest does it
-// (no growth sparkle, see KlaraTakesThePlot).
+// (no growth sparkle, see KlaraTakesThePlot). The scene runs under lockall,
+// which freezes the tree's movement callback, the only thing that hides an
+// empty tree: hide the sprite here or it stays until the reload.
 void GardenKingsPlot_Empty(void)
 {
+    u8 objId;
+
     SetBerryTreeJustPicked(LOCALID_ROUTE30_KINGS_PLOT, gSaveBlock1Ptr->location.mapNum,
                            gSaveBlock1Ptr->location.mapGroup);
     RemoveBerryTree(BERRY_TREE_KINGS_PLOT);
+    if (!TryGetObjectEventIdByLocalIdAndMap(LOCALID_ROUTE30_KINGS_PLOT, gSaveBlock1Ptr->location.mapNum,
+                                            gSaveBlock1Ptr->location.mapGroup, &objId))
+    {
+        gObjectEvents[objId].invisible = TRUE;
+        gSprites[gObjectEvents[objId].spriteId].invisible = TRUE;
+    }
 }

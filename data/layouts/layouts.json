@@ -10363,7 +10363,7 @@
       "width": 30,
       "height": 39,
       "primary_tileset": "gTileset_Johto_General",
-      "secondary_tileset": "gTileset_NewBarkTown",
+      "secondary_tileset": "gTileset_Greenfield",
       "border_filepath": "data/layouts/Greenfield/border.bin",
       "blockdata_filepath": "data/layouts/Greenfield/map.bin"
     },
@@ -10373,7 +10373,7 @@
       "width": 26,
       "height": 23,
       "primary_tileset": "gTileset_inn",
-      "secondary_tileset": "gTileset_Inn",
+      "secondary_tileset": "gTileset_HaleMansion",
       "border_filepath": "data/layouts/Greenfield_Mansion/border.bin",
       "blockdata_filepath": "data/layouts/Greenfield_Mansion/map.bin"
     },
@@ -10386,6 +10386,26 @@
       "secondary_tileset": "gTileset_BurnedTower",
       "border_filepath": "data/layouts/BrassTowerMemory_1F/border.bin",
       "blockdata_filepath": "data/layouts/BrassTowerMemory_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GREENFIELD_AFTER",
+      "name": "GreenfieldAfter_Layout",
+      "width": 30,
+      "height": 39,
+      "primary_tileset": "gTileset_Johto_General",
+      "secondary_tileset": "gTileset_NewBarkTown",
+      "border_filepath": "data/layouts/GreenfieldAfter/border.bin",
+      "blockdata_filepath": "data/layouts/GreenfieldAfter/map.bin"
+    },
+    {
+      "id": "LAYOUT_GREENFIELD_MANSION_AFTER",
+      "name": "GreenfieldMansionAfter_Layout",
+      "width": 26,
+      "height": 23,
+      "primary_tileset": "gTileset_inn",
+      "secondary_tileset": "gTileset_Inn",
+      "border_filepath": "data/layouts/GreenfieldMansionAfter/border.bin",
+      "blockdata_filepath": "data/layouts/GreenfieldMansionAfter/map.bin"
     }
   ]
 }

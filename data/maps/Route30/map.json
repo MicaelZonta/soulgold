@@ -507,7 +507,7 @@
       "flag": "FLAG_TEMP_HIDE_BUGSY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "graphics_id": "OBJ_EVENT_GFX_KLARA",
       "x": 28,
       "y": 42,
       "elevation": 3,
@@ -533,7 +533,7 @@
       "flag": "FLAG_TEMP_HIDE_SPECTRIER"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "graphics_id": "OBJ_EVENT_GFX_PEONY",
       "x": 26,
       "y": 44,
       "elevation": 3,
@@ -559,7 +559,7 @@
       "flag": "FLAG_TEMP_HIDE_CALYREX"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
+      "graphics_id": "OBJ_EVENT_GFX_PEONIA",
       "x": 26,
       "y": 43,
       "elevation": 3,
@@ -572,7 +572,7 @@
       "flag": "FLAG_TEMP_HIDE_PEONIA"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+      "graphics_id": "OBJ_EVENT_GFX_AVERY",
       "x": 23,
       "y": 39,
       "elevation": 3,
@@ -585,7 +585,7 @@
       "flag": "FLAG_TEMP_HIDE_AVERY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "graphics_id": "OBJ_EVENT_GFX_MUSTARD",
       "x": 26,
       "y": 44,
       "elevation": 3,
@@ -596,6 +596,34 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BerryGarden_EventScript_Mustard",
       "flag": "FLAG_TEMP_HIDE_MUSTARD"
+    },
+    {
+      "local_id": "LOCALID_ROUTE30_ICEROOT_PLANT",
+      "graphics_id": "OBJ_EVENT_GFX_KINGS_CARROT_ICE",
+      "x": 23,
+      "y": 38,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route30_EventScript_ColdSoil",
+      "flag": "FLAG_TEMP_HIDE_ICEROOT_PLANT"
+    },
+    {
+      "local_id": "LOCALID_ROUTE30_SHADEROOT_PLANT",
+      "graphics_id": "OBJ_EVENT_GFX_KINGS_CARROT_SHADE",
+      "x": 23,
+      "y": 38,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route30_EventScript_ColdSoil",
+      "flag": "FLAG_TEMP_HIDE_SHADEROOT_PLANT"
     }
   ],
   "warp_events": [

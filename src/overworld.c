@@ -1746,7 +1746,7 @@ void UpdateAltBgPalettes(u16 palettes)
             else
                 AvgPaletteWeighted(&((u16 *)secondary->palettes)[i * 16], &((u16 *)secondary->palettes)[((i + 9) % 16) * 16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
             if (MapTint_Mode() != MAP_TINT_NONE)
-                MapTint_Apply(gPlttBufferUnfaded + i * 16, 16);
+                MapTint_ApplyToBg(i * 16, 16);
         }
         i++;
         palettes >>= 1;

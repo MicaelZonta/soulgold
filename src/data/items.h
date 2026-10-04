@@ -17650,38 +17650,37 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_Scarf,
         .iconPalette = gItemIconPalette_YellowScarf,
     },
-    // Icons borrowed from the Big Root until the carrots get their own art.
     [ITEM_ICEROOT_CARROT] =
     {
         .name = ITEM_NAME("Iceroot Carrot"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A carrot grown from\n"
-            "a seed of the Crown\n"
-            "Tundra. Icy cold."),
+            "Pulled at night.\n"
+            "Its frost never\n"
+            "quite melts."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .heldSlot = 0,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BigRoot,
-        .iconPalette = gItemIconPalette_BigRoot,
+        .iconPic = gItemIcon_IcerootCarrot,
+        .iconPalette = gItemIconPalette_IcerootCarrot,
     },
     [ITEM_SHADEROOT_CARROT] =
     {
         .name = ITEM_NAME("Shaderoot Carrot"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A carrot grown from\n"
-            "a seed of the Crown\n"
-            "Tundra. Pitch black."),
+            "Pulled at night.\n"
+            "It casts no\n"
+            "shadow at all."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .heldSlot = 0,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BigRoot,
-        .iconPalette = gItemIconPalette_BigRoot,
+        .iconPic = gItemIcon_ShaderootCarrot,
+        .iconPalette = gItemIconPalette_ShaderootCarrot,
     },
 };
 

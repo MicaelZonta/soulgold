@@ -67,7 +67,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "graphics_id": "OBJ_EVENT_GFX_PEONY",
       "x": 7,
       "y": 4,
       "elevation": 0,
@@ -80,7 +80,7 @@
       "flag": "FLAG_TEMP_HIDE_PEONY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
+      "graphics_id": "OBJ_EVENT_GFX_PEONIA",
       "x": 2,
       "y": 4,
       "elevation": 0,

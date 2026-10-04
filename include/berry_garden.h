@@ -45,6 +45,8 @@ u16 GardenOrder_RewardMulch(void);
 u16 GardenOrder_Pay(void);
 void GardenCast_Apply(void);
 u16 GardenCast_IsWeekend(void);
+u16 MollyCast_Place(void);
+u32 MollyCast_PlaceOf(u32 period, u32 weekday, bool32 storyDone);
 u16 GardenHearts_Talk(void);
 u16 GardenLine_Pick(void);
 u16 GardenNews_Take(void);
@@ -74,6 +76,7 @@ bool32 GardenSteed_NexusEligible(u16 species);
 // src/overworld.c tint the map palettes while MapTint_Mode() is not NONE.
 u32 MapTint_Mode(void);
 void MapTint_Apply(u16 *pal, u32 count);
+void MapTint_ApplyToBg(u32 firstColor, u32 count);
 void GreenfieldCrystal_Tint(u16 *pal, u32 count);
 
 // Pests and weeds (part 10): only garden plots (src/berry.c asks these).

@@ -557,360 +557,360 @@ BerryGarden_EventScript_BugsyAllCaught::
 @ ---------------------------------------------------------------------------
 
 BerryGarden_Text_BramMorning0:
-	.string "Water before the sun's up and the\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Water before the sun's up and the\n"
 	.string "leaves won't burn. My father told me\l"
 	.string "that.\p"
 	.string "Then he watered at noon every day of\n"
 	.string "his life.$"
 
 BerryGarden_Text_BramMorning1:
-	.string "You know how you tell a ripe Berry? You\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}You know how you tell a ripe Berry? You\n"
 	.string "don't. The Berry tells you.$"
 
 BerryGarden_Text_BramMorning2:
-	.string "I talk to the trees. Laurel says it\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}I talk to the trees. Laurel says it\n"
 	.string "doesn't help.\p"
 	.string "The trees haven't complained.$"
 
 BerryGarden_Text_BramMorning3:
-	.string "Dew on the leaves, sprout. That's the\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Dew on the leaves, sprout. That's the\n"
 	.string "garden saying good morning.\p"
 	.string "Say it back. ...Out loud. There you go.$"
 
 BerryGarden_Text_BramMorning4:
-	.string "My knees know the weather before the\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}My knees know the weather before the\n"
 	.string "radio does.\p"
 	.string "Today they say “sunny, with a chance of\n"
 	.string "Bram sitting down.”$"
 
 BerryGarden_Text_BramMorning5:
-	.string "First tree I ever planted was an Oran. I\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}First tree I ever planted was an Oran. I\n"
 	.string "was six. Watered it so much it drowned.\p"
 	.string "Planted another right on top. That\n"
 	.string "one's still out back.$"
 
 BerryGarden_Text_BramMorning6:
-	.string "Kurt wants Berries again. I asked what\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Kurt wants Berries again. I asked what\n"
 	.string "for. He said “Balls.”\p"
 	.string "Then he hung up on me.$"
 
 BerryGarden_Text_BramMorning7:
-	.string "You're here every morning now. Tilly\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}You're here every morning now. Tilly\n"
 	.string "asked if you live here.\p"
 	.string "I said, “Near enough.”$"
 
 BerryGarden_Text_BramMorning8:
-	.string "When the garden was just me, I talked\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}When the garden was just me, I talked\n"
 	.string "to the trees. Now I talk to you.\p"
 	.string "The trees were better listeners. Don't\n"
 	.string "tell them I said that.$"
 
 BerryGarden_Text_BramMorning9:
-	.string "Laurel set out a third cup this morning.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Laurel set out a third cup this morning.\n"
 	.string "Didn't say a word about it.\p"
 	.string "That one's yours, sprout. That's how\n"
 	.string "she says it.$"
 
 BerryGarden_Text_BramHome0:
-	.string "Seed day. Sit down. No -- not on those.\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}Seed day. Sit down. No -- not on those.\p"
 	.string "Those are Persim.$"
 
 BerryGarden_Text_BramHome1:
-	.string "I've got a seed here I can't name.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}I've got a seed here I can't name.\n"
 	.string "Could be a Wiki. Could be a pebble.\p"
 	.string "We'll find out.$"
 
 BerryGarden_Text_BramHome2:
-	.string "Every seed in this jar is a tree\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Every seed in this jar is a tree\n"
 	.string "someday. Every one.\p"
 	.string "That's what gets me up in the morning.\n"
 	.string "That and Laurel.$"
 
 BerryGarden_Text_BramHome3:
-	.string "You sort seeds by size, then by shape,\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}You sort seeds by size, then by shape,\n"
 	.string "then by smell.\p"
 	.string "Then Laurel comes in and sorts them all\n"
 	.string "again.$"
 
 BerryGarden_Text_BramHome4:
-	.string "Forty years married. The trick is, she's\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Forty years married. The trick is, she's\n"
 	.string "always right, and I'm always hungry.$"
 
 BerryGarden_Text_BramHome5:
-	.string "When I was your age I wanted to be a\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}When I was your age I wanted to be a\n"
 	.string "Pokémon Trainer.\p"
 	.string "Then I grew a tomato. That was that.$"
 
 BerryGarden_Text_BramHome6:
-	.string "Tilly asked why the sky is blue. I said,\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Tilly asked why the sky is blue. I said,\n"
 	.string "“Because the Oran Berries are.”\p"
 	.string "She believed me for a whole year.$"
 
 BerryGarden_Text_BramHome7:
-	.string "I wrote your name on the seed jar.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}I wrote your name on the seed jar.\n"
 	.string "Laurel crossed it out and wrote it\l"
 	.string "again, neater.\p"
 	.string "That's a compliment, sprout. From her,\n"
 	.string "that's a medal.$"
 
 BerryGarden_Text_BramHome8:
-	.string "My old man said a farmer's rich if he's\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}My old man said a farmer's rich if he's\n"
 	.string "got more seed than worry.\p"
 	.string "Most days I'm rich now. You helped.$"
 
 BerryGarden_Text_BramHome9:
-	.string "Want to know a secret? I don't know\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Want to know a secret? I don't know\n"
 	.string "half the Berries in that Book.\p"
 	.string "I just nod when Laurel says them.$"
 
 BerryGarden_Text_BramGift0:
-	.string "Picked these at dawn, sprout. Still had\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Picked these at dawn, sprout. Still had\n"
 	.string "the dew on 'em.\p"
 	.string "That's how you know they're good.$"
 
 BerryGarden_Text_BramGift1:
-	.string "Here. From the Book. Grow 'em well.$"
+	.string "{SPEAKER NAME_BERRY_MASTER}Here. From the Book. Grow 'em well.$"
 
 BerryGarden_Text_BramGift2:
-	.string "Hold out your hands. No -- both hands.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Hold out your hands. No -- both hands.\n"
 	.string "There.$"
 
 BerryGarden_Text_BramGift3:
-	.string "These practically jumped into the\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}These practically jumped into the\n"
 	.string "basket. Take 'em before they jump out.$"
 
 BerryGarden_Text_BramGift4:
-	.string "Laurel said give you the good ones.\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Laurel said give you the good ones.\n"
 	.string "These are the good ones.\p"
 	.string "The bad ones I ate.$"
 
 BerryGarden_Text_BramGift5:
-	.string "Fresh from this morning! Fresher than\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Fresh from this morning! Fresher than\n"
 	.string "me, anyway.$"
 
 BerryGarden_Text_BramGift6:
-	.string "Something for your beds, and something\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Something for your beds, and something\n"
 	.string "for your pocket, in case you get hungry.$"
 
 BerryGarden_Text_BramGift7:
-	.string "Wrote these down in the Book twice. Big\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Wrote these down in the Book twice. Big\n"
 	.string "day for these ones.$"
 
 BerryGarden_Text_BramGift8:
-	.string "Eh? Oh! Almost forgot. Here.\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}Eh? Oh! Almost forgot. Here.\p"
 	.string "Don't tell Tilly, she'll want a cut.$"
 
 BerryGarden_Text_BramGift9:
-	.string "For you. Same as every day. Tomorrow\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}For you. Same as every day. Tomorrow\n"
 	.string "too. That's a promise, sprout.$"
 
 BerryGarden_Text_LaurelMorning0:
-	.string "Sit. Eat. The Berries can wait ten\n"
+	.string "{SPEAKER NAME_LAUREL}Sit. Eat. The Berries can wait ten\n"
 	.string "minutes.\p"
 	.string "He can't, but they can.$"
 
 BerryGarden_Text_LaurelMorning1:
-	.string "Toast. No, you don't want jam. That's\n"
+	.string "{SPEAKER NAME_LAUREL}Toast. No, you don't want jam. That's\n"
 	.string "Tilly's jam.\p"
 	.string "Nobody wants Tilly's jam.$"
 
 BerryGarden_Text_LaurelMorning2:
-	.string "He left at four. He always leaves at\n"
+	.string "{SPEAKER NAME_LAUREL}He left at four. He always leaves at\n"
 	.string "four.\p"
 	.string "I stopped setting an alarm years ago.$"
 
 BerryGarden_Text_LaurelMorning3:
-	.string "Wipe your feet. ...The other one too.$"
+	.string "{SPEAKER NAME_LAUREL}Wipe your feet. ...The other one too.$"
 
 BerryGarden_Text_LaurelMorning4:
-	.string "The kettle's older than you. It\n"
+	.string "{SPEAKER NAME_LAUREL}The kettle's older than you. It\n"
 	.string "whistles off-key. I won't replace it.$"
 
 BerryGarden_Text_LaurelMorning5:
-	.string "He talks to the trees. I talk to the\n"
+	.string "{SPEAKER NAME_LAUREL}He talks to the trees. I talk to the\n"
 	.string "kettle.\p"
 	.string "Everyone needs someone who doesn't\n"
 	.string "answer back.$"
 
 BerryGarden_Text_LaurelMorning6:
-	.string "Where I grew up, breakfast was fish and\n"
+	.string "{SPEAKER NAME_LAUREL}Where I grew up, breakfast was fish and\n"
 	.string "bread and more bread.\p"
 	.string "This is better. Don't tell anyone I said\n"
 	.string "so.$"
 
 BerryGarden_Text_LaurelMorning7:
-	.string "You've got soil under your nails. Good.\p"
+	.string "{SPEAKER NAME_LAUREL}You've got soil under your nails. Good.\p"
 	.string "Hands that are too clean don't grow\n"
 	.string "anything.$"
 
 BerryGarden_Text_LaurelMorning8:
-	.string "Frost on the window. Not real frost.\n"
+	.string "{SPEAKER NAME_LAUREL}Frost on the window. Not real frost.\n"
 	.string "Johto frost.\p"
 	.string "...I miss real frost. That's all. Eat.$"
 
 BerryGarden_Text_LaurelMorning9:
-	.string "I made too much. I always make too much\n"
+	.string "{SPEAKER NAME_LAUREL}I made too much. I always make too much\n"
 	.string "now.\p"
 	.string "...Take it with you.$"
 
 BerryGarden_Text_LaurelDay0:
-	.string "Too much water. Not you. Him.$"
+	.string "{SPEAKER NAME_LAUREL}Too much water. Not you. Him.$"
 
 BerryGarden_Text_LaurelDay1:
-	.string "Weeds are just plants in the wrong\n"
+	.string "{SPEAKER NAME_LAUREL}Weeds are just plants in the wrong\n"
 	.string "place. I'm not sentimental about it.$"
 
 BerryGarden_Text_LaurelDay2:
-	.string "You're standing on a sprout.\p"
+	.string "{SPEAKER NAME_LAUREL}You're standing on a sprout.\p"
 	.string "...No. The other foot.$"
 
 BerryGarden_Text_LaurelDay3:
-	.string "Tilly counts the money. I count the\n"
+	.string "{SPEAKER NAME_LAUREL}Tilly counts the money. I count the\n"
 	.string "Berries.\p"
 	.string "Neither of us trusts the other one.$"
 
 BerryGarden_Text_LaurelDay4:
-	.string "Freezington had one road and one shop.\n"
+	.string "{SPEAKER NAME_LAUREL}Freezington had one road and one shop.\n"
 	.string "I liked it.\p"
 	.string "Don't tell him.$"
 
 BerryGarden_Text_LaurelDay5:
-	.string "Plant the sour ones by the pond. They\n"
+	.string "{SPEAKER NAME_LAUREL}Plant the sour ones by the pond. They\n"
 	.string "like wet feet.\p"
 	.string "Like him.$"
 
 BerryGarden_Text_LaurelDay6:
-	.string "Forty years I've knelt in this dirt. My\n"
+	.string "{SPEAKER NAME_LAUREL}Forty years I've knelt in this dirt. My\n"
 	.string "knees are Johto now.\p"
 	.string "The rest of me hasn't decided.$"
 
 BerryGarden_Text_LaurelDay7:
-	.string "My grandmother kept a field. Harder soil\n"
+	.string "{SPEAKER NAME_LAUREL}My grandmother kept a field. Harder soil\n"
 	.string "than this.\p"
 	.string "She'd have liked you. She didn't like\n"
 	.string "anyone.$"
 
 BerryGarden_Text_LaurelDay8:
-	.string "You come every day. I noticed. I don't\n"
+	.string "{SPEAKER NAME_LAUREL}You come every day. I noticed. I don't\n"
 	.string "say things I notice.\p"
 	.string "I'm saying this one.$"
 
 BerryGarden_Text_LaurelDay9:
-	.string "When I'm gone, this garden...\p"
+	.string "{SPEAKER NAME_LAUREL}When I'm gone, this garden...\p"
 	.string "No. Never mind. Pull that weed.$"
 
 BerryGarden_Text_LaurelRecipe0:
-	.string "{STR_VAR_1}. {STR_VAR_2} beside\n"
+	.string "{SPEAKER NAME_LAUREL}{STR_VAR_1}. {STR_VAR_2} beside\n"
 	.string "{STR_VAR_3}.\p"
 	.string "Touching, side by side. Not corner to\n"
 	.string "corner. People always do corner to\l"
 	.string "corner.$"
 
 BerryGarden_Text_LaurelRecipe1:
-	.string "The page with the coffee stain.\n"
+	.string "{SPEAKER NAME_LAUREL}The page with the coffee stain.\n"
 	.string "{STR_VAR_1}.\p"
 	.string "You'll want {STR_VAR_2} next to\n"
 	.string "{STR_VAR_3}. I'm not telling you\l"
 	.string "twice.$"
 
 BerryGarden_Text_LaurelRecipe2:
-	.string "My grandmother's hand. Hard to read.\p"
+	.string "{SPEAKER NAME_LAUREL}My grandmother's hand. Hard to read.\p"
 	.string "...{STR_VAR_2} and {STR_VAR_3}, side\n"
 	.string "by side, and you get {STR_VAR_1}.\l"
 	.string "Probably.$"
 
 BerryGarden_Text_LaurelRecipe3:
-	.string "You want something. Fine.\n"
+	.string "{SPEAKER NAME_LAUREL}You want something. Fine.\n"
 	.string "{STR_VAR_1}.\p"
 	.string "Plant {STR_VAR_2} by {STR_VAR_3}.\n"
 	.string "Now let me read.$"
 
 BerryGarden_Text_LaurelRecipe4:
-	.string "Here. {STR_VAR_1}.\p"
+	.string "{SPEAKER NAME_LAUREL}Here. {STR_VAR_1}.\p"
 	.string "{STR_VAR_2}, then {STR_VAR_3} right\n"
 	.string "beside it. Don't crowd them. They sulk.$"
 
 BerryGarden_Text_LaurelRecipe5:
-	.string "He'd tell you this with a song and a\n"
+	.string "{SPEAKER NAME_LAUREL}He'd tell you this with a song and a\n"
 	.string "dance. I'll just tell you.\p"
 	.string "{STR_VAR_2} next to {STR_VAR_3}.\n"
 	.string "That's {STR_VAR_1}.$"
 
 BerryGarden_Text_LaurelRecipe6:
-	.string "{STR_VAR_1}. I grew one once, in a\n"
+	.string "{SPEAKER NAME_LAUREL}{STR_VAR_1}. I grew one once, in a\n"
 	.string "teacup, on a windowsill in Freezington.\p"
 	.string "{STR_VAR_2} and {STR_VAR_3}. Side\n"
 	.string "by side.$"
 
 BerryGarden_Text_LaurelRecipe7:
-	.string "It says here: “{STR_VAR_2} and\n"
+	.string "{SPEAKER NAME_LAUREL}It says here: “{STR_VAR_2} and\n"
 	.string "{STR_VAR_3}, touching, make\l"
 	.string "{STR_VAR_1}.”\p"
 	.string "Somebody underlined it three times. It\n"
 	.string "was me.$"
 
 BerryGarden_Text_LaurelRecipe8:
-	.string "Sit. No, closer, the lamp's bad.\p"
+	.string "{SPEAKER NAME_LAUREL}Sit. No, closer, the lamp's bad.\p"
 	.string "{STR_VAR_1}. {STR_VAR_2} beside\n"
 	.string "{STR_VAR_3}. There. Go to bed.$"
 
 BerryGarden_Text_LaurelRecipe9:
-	.string "You're still up. So am I.\p"
+	.string "{SPEAKER NAME_LAUREL}You're still up. So am I.\p"
 	.string "{STR_VAR_1}: {STR_VAR_2} with\n"
 	.string "{STR_VAR_3}. ...I'll tell you tomorrow,\l"
 	.string "if you forget.$"
 
 BerryGarden_Text_TillyStall0:
-	.string "Welcome to Tilly's Mulch Emporium!\p"
+	.string "{SPEAKER NAME_TILLY}Welcome to Tilly's Mulch Emporium!\p"
 	.string "It's mulch. It's the best mulch.\n"
 	.string "Grandpa made it but I named it.$"
 
 BerryGarden_Text_TillyStall1:
-	.string "Do you know what Rellor do with mulch?\n"
+	.string "{SPEAKER NAME_TILLY}Do you know what Rellor do with mulch?\n"
 	.string "They ROLL it.\p"
 	.string "I'm going to have ten Rellor. Grandma\n"
 	.string "said one.$"
 
 BerryGarden_Text_TillyStall2:
-	.string "Today's special is mulch! Yesterday's\n"
+	.string "{SPEAKER NAME_TILLY}Today's special is mulch! Yesterday's\n"
 	.string "special was ALSO mulch.\p"
 	.string "It's a very special shop.$"
 
 BerryGarden_Text_TillyStall3:
-	.string "I named a Combee Buzzbelle. She stung\n"
+	.string "{SPEAKER NAME_TILLY}I named a Combee Buzzbelle. She stung\n"
 	.string "Grandpa.\p"
 	.string "Now she's Buzzbelle the Brave.$"
 
 BerryGarden_Text_TillyStall4:
-	.string "Grandma says a good shopkeeper\n"
+	.string "{SPEAKER NAME_TILLY}Grandma says a good shopkeeper\n"
 	.string "doesn't talk too much.\p"
 	.string "Grandma's wrong about that. Grandma's\n"
 	.string "wrong about ONE thing.$"
 
 BerryGarden_Text_TillyStall5:
-	.string "Buy three mulch and you get a sticker!\n"
+	.string "{SPEAKER NAME_TILLY}Buy three mulch and you get a sticker!\n"
 	.string "I'm out of stickers.\p"
 	.string "You get a high five. Up top!$"
 
 BerryGarden_Text_TillyStall6:
-	.string "I'm going to be a Bug Catcher. The best\n"
+	.string "{SPEAKER NAME_TILLY}I'm going to be a Bug Catcher. The best\n"
 	.string "one. Better than Bugsy.\p"
 	.string "Don't tell Bugsy. Actually, tell him.\n"
 	.string "He'll laugh.$"
 
 BerryGarden_Text_TillyStall7:
-	.string "Grandpa lets me water the Pecha.\n"
+	.string "{SPEAKER NAME_TILLY}Grandpa lets me water the Pecha.\n"
 	.string "Grandma watches me water the Pecha.\p"
 	.string "I think she thinks I'll drown it.$"
 
 BerryGarden_Text_TillyStall8:
-	.string "You come every weekend! That makes you\n"
+	.string "{SPEAKER NAME_TILLY}You come every weekend! That makes you\n"
 	.string "a regular. Regulars get the good mulch.\p"
 	.string "It's the same mulch. But I SAY it's\n"
 	.string "good.$"
 
 BerryGarden_Text_TillyStall9:
-	.string "When I grow up I'll have a garden next\n"
+	.string "{SPEAKER NAME_TILLY}When I grow up I'll have a garden next\n"
 	.string "to Grandpa's. And you can have one\l"
 	.string "next to mine.\p"
 	.string "And we'll share the bugs.$"
@@ -954,115 +954,115 @@ BerryGarden_Text_Pest9:
 	.string "shouldn't move.$"
 
 BerryGarden_Text_Bugsy0:
-	.string "Every color of Berry calls a different\n"
+	.string "{SPEAKER NAME_BUGSY}Every color of Berry calls a different\n"
 	.string "bug. I've got a chart.\p"
 	.string "It's twelve pages.$"
 
 BerryGarden_Text_Bugsy1:
-	.string "Try Stable Mulch on one bed. Watch what\n"
+	.string "{SPEAKER NAME_BUGSY}Try Stable Mulch on one bed. Watch what\n"
 	.string "moves in.\p"
 	.string "You'll love him.$"
 
 BerryGarden_Text_Bugsy2:
-	.string "Don't swat anything! Everything here\n"
+	.string "{SPEAKER NAME_BUGSY}Don't swat anything! Everything here\n"
 	.string "is somebody's data.$"
 
 BerryGarden_Text_Bugsy3:
-	.string "A Volbeat's tail blinks in patterns. I\n"
+	.string "{SPEAKER NAME_BUGSY}A Volbeat's tail blinks in patterns. I\n"
 	.string "think this one's saying “more Berries.”\p"
 	.string "Or it's broken.$"
 
 BerryGarden_Text_Bugsy4:
-	.string "I've started lying down in the dirt.\n"
+	.string "{SPEAKER NAME_BUGSY}I've started lying down in the dirt.\n"
 	.string "Bugs are less shy at eye level.\p"
 	.string "Laurel hates it.$"
 
 BerryGarden_Text_Bugsy5:
-	.string "The Scatterbug here have markings\n"
+	.string "{SPEAKER NAME_BUGSY}The Scatterbug here have markings\n"
 	.string "I've never seen.\p"
 	.string "Your garden is making its own Vivillon!$"
 
 BerryGarden_Text_Bugsy6:
-	.string "My Gym Trainers keep asking where I go\n"
+	.string "{SPEAKER NAME_BUGSY}My Gym Trainers keep asking where I go\n"
 	.string "on Tuesdays. I say “fieldwork.”\p"
 	.string "They think it's a date.$"
 
 BerryGarden_Text_Bugsy7:
-	.string "Combee visit one flower at a time. Your\n"
+	.string "{SPEAKER NAME_BUGSY}Combee visit one flower at a time. Your\n"
 	.string "red beds get the morning shift.\p"
 	.string "The yellow beds get the afternoon.$"
 
 BerryGarden_Text_Bugsy8:
-	.string "Kurt says bugs are a waste of good\n"
+	.string "{SPEAKER NAME_BUGSY}Kurt says bugs are a waste of good\n"
 	.string "Berries.\p"
 	.string "Then he asks me what bait catches a\n"
 	.string "Heracross. Every time.$"
 
 BerryGarden_Text_Bugsy9:
-	.string "When I was little I had a garden like\n"
+	.string "{SPEAKER NAME_BUGSY}When I was little I had a garden like\n"
 	.string "this. Well, a flowerpot.\p"
 	.string "Well, a flowerpot with one Caterpie in\n"
 	.string "it. This is better.$"
 
 BerryGarden_Text_BramFirstHarvest:
-	.string "Your first! Hold it up. No -- higher.\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}Your first! Hold it up. No -- higher.\p"
 	.string "There. Now you're a farmer.$"
 
 BerryGarden_Text_BramNewBerry:
-	.string "You grew a {STR_VAR_1}? I've never\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}You grew a {STR_VAR_1}? I've never\n"
 	.string "seen one!\p"
 	.string "Laurel! LAUREL!$"
 
 BerryGarden_Text_BramSunday:
-	.string "Sunday! Tilly's selling out front this\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Sunday! Tilly's selling out front this\n"
 	.string "afternoon.\p"
 	.string "Buy something, or she'll follow you to\n"
 	.string "Violet.$"
 
 BerryGarden_Text_BramBugsyDay:
-	.string "Bugsy's coming today. He brought a\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Bugsy's coming today. He brought a\n"
 	.string "notebook last time.\p"
 	.string "The time before, two.$"
 
 BerryGarden_Text_LaurelGrassLead:
-	.string "That one would like it here.\p"
+	.string "{SPEAKER NAME_LAUREL}That one would like it here.\p"
 	.string "Let it out sometime.$"
 
 BerryGarden_Text_LaurelEmptyBeds:
-	.string "Empty beds. Like an empty table.\p"
+	.string "{SPEAKER NAME_LAUREL}Empty beds. Like an empty table.\p"
 	.string "Don't make me look at it.$"
 
 BerryGarden_Text_LaurelBreadDay:
-	.string "Bread day. Don't open the oven. Don't\n"
+	.string "{SPEAKER NAME_LAUREL}Bread day. Don't open the oven. Don't\n"
 	.string "look at the oven.\p"
 	.string "The oven can feel you looking.$"
 
 BerryGarden_Text_LaurelRareTeaser:
-	.string "My husband hands out the easy ones.\p"
+	.string "{SPEAKER NAME_LAUREL}My husband hands out the easy ones.\p"
 	.string "I keep the others. They only fruit for\n"
 	.string "somebody who knows what they're doing,\l"
 	.string "and no offence, dear, but you're still\l"
 	.string "carrying a town map.$"
 
 BerryGarden_Text_TillyBugLead:
-	.string "Is that a {STR_VAR_1}?! Can I hold it?\p"
+	.string "{SPEAKER NAME_TILLY}Is that a {STR_VAR_1}?! Can I hold it?\p"
 	.string "I'm holding it.$"
 
 BerryGarden_Text_TillyAllGrown:
-	.string "You grew ALL of them? Even the Kee?\p"
+	.string "{SPEAKER NAME_TILLY}You grew ALL of them? Even the Kee?\p"
 	.string "The Kee is so ugly. I love it.$"
 
 BerryGarden_Text_BugsyHotel:
-	.string "The hotel's full! Well, one Combee.\p"
+	.string "{SPEAKER NAME_BUGSY}The hotel's full! Well, one Combee.\p"
 	.string "It's a start.$"
 
 BerryGarden_Text_BugsyAllCaught:
-	.string "You found all of them?\p"
+	.string "{SPEAKER NAME_BUGSY}You found all of them?\p"
 	.string "I'm going to have to write a second\n"
 	.string "notebook.$"
 
 BerryGarden_Text_LaurelWeed:
-	.string "There's a weed in bed {STR_VAR_1}.\n"
+	.string "{SPEAKER NAME_LAUREL}There's a weed in bed {STR_VAR_1}.\n"
 	.string "I'm not pulling it.\p"
 	.string "It's your bed.$"
 

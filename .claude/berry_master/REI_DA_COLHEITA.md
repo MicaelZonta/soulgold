@@ -18,9 +18,8 @@
 > | A Enigma pela regeneração das árvores de rota | `GardenRollDay` replanta o canteiro vazio |
 > | Os dois corcéis no Nexus | O escolhido segue a R1; o outro fica só no Nexus (`GardenSteed_NexusEligible`) |
 >
-> Pendente do autor: sprites (Peony, Peonia, Klara, Avery, Mustard, Molly adulta), o
-> prêmio do Mustard, cristal só no salão da mansão, arte das folhas de cenoura, e
-> regenerar o site público (`docs/`).
+> Sprites (Peony, Peonia, Klara, Avery, Mustard, Molly adulta) no jogo desde 03/10/2026. Arte das cenouras
+> (proposta C) no jogo e site público regenerado em 03/10/2026.
 
 > **Proposta rev1 — 30/09/2026; rev2 (Galar) §13; rev3 (revisão, Crown Tundra, 10 falas por evento, batalhas de sempre) §14; rev4 (as dungeons dos corcéis; sem o Will) §15.** Junta num sistema só a
 > horta ([`BERRY_MASTER_DESIGN.md`](BERRY_MASTER_DESIGN.md)), as infestações e o
@@ -2044,6 +2043,10 @@ uma cidade de Johto com a paleta trocada para cristal (azul-claro); a Torre de B
 usa `burned_tower` com paleta quente de entardecer e, no telhado, de fogo. É só
 paleta: `montar-tileset`, parte “reaproveitar peças com outra cor”.
 
+> **03/10/2026:** Greenfield ganhou arte própria, o `gTileset_Greenfield` (proposta E,
+> “Instante parado”): cidade desbotada quase branca e cristais brancos com reflexo de
+> arco-íris. Detalhes na Parte 14 do [plano](PLANO_DE_IMPLEMENTACAO.md).
+
 ### 15.4 Caminho branco — Greenfield
 
 *Entrada, na primeira vez:*
@@ -2194,7 +2197,7 @@ escritas (Parte 14 de [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md)).
    `montar-tileset` e `adicionar-tileset`). É a única arte nova de mapa.
 3. Instalar: `layouts.json`, `map.bin` (os de `prototipo_corceis/`), `map.json` com os
    objetos (os `*_objects.json`), e ligação conferida com `mapa-de-ligacoes`.
-4. Do autor: sprites da Molly adulta e da Peonia. Até lá, `WOMAN_2` e `PICNICKER`.
+4. ~~Do autor: sprites da Molly adulta e da Peonia.~~ No jogo desde 03/10/2026 (`OBJ_EVENT_GFX_MOLLY_HALE`, `OBJ_EVENT_GFX_PEONIA`).
 
 ### 15.6 Outros lugares de Johto que a lore tem e o jogo não (para depois)
 

@@ -137,7 +137,7 @@ Berries para plantar: **PC/Bag… → Fill Pocket Berries** (já existia).
   → oferta do canal → pagar → dia seguinte → plantar → +24 h → ao entrar, já regado.
 
 **Pendências do autor** (nenhuma bloqueia as partes 1–12; ver §18):
-sprites de Peony, Peonia, Klara, Avery, Mustard e Molly adulta; prêmios grandes (Peony,
+~~sprites de Peony, Peonia, Klara, Avery, Mustard e Molly adulta~~ (overworlds no jogo em 03/10/2026, no lugar dos provisórios); prêmios grandes (Peony,
 Mustard); falas novas dos moradores de Greenfield no estado 12.
 
 ---
@@ -1330,8 +1330,14 @@ escala sempre ligada) e as falas de gancho do Pryce e do Morty depois dos ginás
    árvore de berry dali fica escondida (a semente não entra pelo menu de berries). Menu
    Iceroot / Shaderoot / Not yet, que começa em **Not yet** (B não fecha).
 3. **A cenoura sai na noite seguinte**: o primeiro `GardenRollDay` depois do plantio marca
-   “pronta”; de dia a placa diz que as folhas esperam o escuro. Sem desenho de folhas no
-   canteiro (só texto) — **pendente de arte**, se o autor quiser.
+   “pronta”; de dia a placa diz que as folhas esperam o escuro. **Arte (03/10/2026, proposta
+   C):** dois objetos em (23,38) (`OBJ_EVENT_GFX_KINGS_CARROT_ICE`/`_SHADE`, paleta comum,
+   escondidos por `FLAG_TEMP_HIDE_ICEROOT_PLANT`/`_SHADEROOT_PLANT`, script da placa). O
+   quadro sai da direção, posta por `setobjectmovementtype` em `Route30_EventScript_KingsCarrot`:
+   baixo = marca de geada/sombra (plantada), cima = folhas fechadas (pronta, de dia),
+   esquerda = folhas acesas (pronta, à noite); colhida, `removeobject` e some. Ícones e
+   descrições próprios (“Pulled at night. …”). Gerador:
+   `prototipo_corceis/cenouras_do_rei.py <saida> --instalar C`.
 4. **Peony de manhã na horta** em (26,44) (ao lado do Bram), de dia e de noite **dormindo
    na cadeira azul** (7,4) (a casa não tem sofá). **Peonia** de manhã na mesa (2,4), à noite
    arrumando a mochila (8,2), de dia na horta em (26,43). A Peonia ainda não vai para a
@@ -1427,9 +1433,39 @@ novos (55/55).
    `WHITE_PATH` não está ligado; o “depois” é a paleta original do New Bark. Zero tile e
    zero paleta nova, e a troca dia/noite continua valendo (o tom é reaplicado quando a
    paleta noturna é recalculada).
-2. **Cristal só em Greenfield.** O salão da mansão divide as paletas com o saguão (tileset
-   do `DarkraiInn1`); “cristal só no salão” pede tileset próprio — **pendente**. Os NPCs
-   mantêm a cor normal.
+   **Revisto em 03/10/2026 — o filtro ganhou peças de cristal.** O autor escolheu a proposta
+   E (“Instante parado”) entre cinco ([página](https://claude.ai/artifact/W2haZmEgrB8MxF3CKdTaz3)):
+   - `gTileset_Greenfield` (`data/tilesets/secondary/greenfield`) = o secundário do New Bark
+     com os 144 metatiles nos mesmos índices + 50 tiles e 13 metatiles de cristal a partir
+     do 1168 (aglomerados, pilar 1×2 com a ponta na camada top, bloco 2×2, flor de vidro
+     andável, lascas no caminho). Arte no slot 7, que o New Bark não usava.
+   - O filtro virou um dia desbotado, quase branco (rampa `{12,13,17}`→`{30,31,31}`), e
+     `MapTint_ApplyToBg` deixa o `GREENFIELD_CRYSTAL_PAL` (7) de fora: os cristais mantêm o
+     branco com reflexo de arco-íris.
+   - `LAYOUT_GREENFIELD` tem os cristais; `LAYOUT_GREENFIELD_AFTER` (o mapa de antes, tileset
+     do New Bark) entra pelo `setmaplayoutindex` no `Greenfield_OnTransition` quando o bit
+     `WHITE_PATH` está ligado.
+   - Gerador: `prototipo_corceis/greenfield_cristal.py <saida> --instalar E` (lê a base do
+     `GreenfieldAfter`; grava o tileset e o `map.bin` do `Greenfield`). Teste de C novo: o
+     filtro não toca o slot 7. No jogo (headless): cristais com a cor própria de dia, o
+     pilar cobre o jogador que passa atrás, o bloco trava; com `WHITE_PATH` a cidade volta
+     sem cristais e se anda onde estava o bloco.
+2. **Cristal no salão da mansão (03/10/2026).** O salão e o saguão dividem as paletas do Inn,
+   mas os slots 7 e 8 só aparecem no salão. O autor escolheu a proposta C (“Instante parado”)
+   entre três ([página](https://claude.ai/artifact/CksFTUjbBYQX2ycHb6JcXo)):
+   - `gTileset_HaleMansion` (`data/tilesets/secondary/hale_mansion`) = o secundário do Inn com
+     os 128 metatiles nos mesmos índices + 129 tiles e 57 metatiles: de 1152 a 1175, as peças
+     do salão repintadas com o filtro de Greenfield gravado (slot 7) e com meia geada no
+     corredor da escada (slot 8, cores 1–3); a partir do 1176, os cristais (crosta de
+     parede, aglomerado, pilar 1×2 com a ponta na camada top, bloco 2×2, geada andável e a
+     cama do Glastrier em (12..14,5), andável), no slot 8, cores 4–15.
+   - `LAYOUT_GREENFIELD_MANSION` tem o cristal; `LAYOUT_GREENFIELD_MANSION_AFTER` (a mansão de
+     antes, com o `gTileset_Inn`) entra pelo `setmaplayoutindex` no ramo “thawed” do
+     `GreenfieldMansion_OnTransition`. O saguão não muda nenhum tile. Os NPCs mantêm a cor
+     normal.
+   - Gerador: `prototipo_corceis/salao_cristal.py <saida> --instalar C` (lê a base do
+     `GreenfieldMansionAfter`). No jogo (headless, T93b): salão de cristal, saguão com as
+     cores da casa, Glastrier na cama de cristal no estado 10, e o salão de madeira no 12.
 3. **O portão** é o recanto sem saída (2,26)–(2,27) na parte oeste das ruínas (área da
    câmara do Kabuto, que se alcança pela Union Cave B1F). Abre com estado 10 + Iceroot na
    bolsa (“The Iceroot Carrot in your Bag turns cold…”) e, depois do Glastrier, sempre,
@@ -1660,7 +1696,7 @@ verdade contra Avery/Peonia/Mustard/dupla (falas de vitória e prêmios).
 | 2 | Falantes e largura | `checar_falantes.py`: 242 falantes em ordem; `medir_linha.py` sem estouro em todos os `.inc` da horta, dos 4 mapas novos e do teatro |
 | 3 | Mapas | `map_graph check`: 560 alcançáveis, nenhum desligado. Greenfield (pelas ruínas), mansão, Torre 1F (pelo teatro) e telhado |
 | 4 | Nexus (R1) | Calyrex, Glastrier e Spectrier agora `requiresCaught`; os corcéis por `GardenSteed_NexusEligible`: antes da escolha os dois esperam captura (protege a surpresa), depois o não escolhido fica só no Nexus. `POOL_LENDARIOS.md` (99 com método) e a R1 do `NEXUS_REGRAS.md` atualizados. 1 teste de C (60/60) |
-| 5 | Itens e fontes | `item_audit.py` ao vivo: cenouras, Reins of Unity e os 4 adubos do Livro com fonte. **O catálogo `docs/SOULGOLD_ITEMS_AUDIT.*` não foi regravado**: o diff traria mudanças de outras sessões (TM/HM Dig, Silver Powder, sinos). `fontes_legitimas.py` depende de regenerar o site público, que é **decisão do autor** |
+| 5 | Itens e fontes | `item_audit.py` ao vivo: cenouras, Reins of Unity e os 4 adubos do Livro com fonte. **O catálogo `docs/SOULGOLD_ITEMS_AUDIT.*` não foi regravado**: o diff traria mudanças de outras sessões (TM/HM Dig, Silver Powder, sinos). Site público regenerado em 03/10/2026 (pedido do autor): o parser (`tools/soulgold_docs/parsers/gifts.py`) passou a ler `seteventmon` e os scripts de `data/scripts/` que o mapa alcança, pulando chefes (`setbossbattle`/`NO_CATCHING`); Calyrex, Glastrier, Spectrier (e a Celebi de Ilex) ganharam fonte e saíram da lista “só Nexus” do `fontes_legitimas.py` |
 | 6 | Renders | Não refeitos (opcional; o autor decide se quer as páginas atualizadas) |
 | 7 | Surpresa | `grep` de Calyrex/Glastrier/Spectrier nos bancos da rotina e nos mapas da horta: nada antes do Ato 5. No Nexus a R1 nova também esconde os três até a captura |
 | 8 | Jogada completa num save novo | **Não feita** como uma corrida só. Cada parte foi jogada no mGBA headless a partir do estado anterior (debug `Story…`), dos dois caminhos; ver o relatório |
@@ -1673,11 +1709,12 @@ verdade contra Avery/Peonia/Mustard/dupla (falas de vitória e prêmios).
 | # | O quê | Bloqueia | Até lá |
 |---|---|---|---|
 | 1 | Sprites (overworld + front pic): Peony, Peonia, Klara, Avery, Mustard, Molly adulta | nada | `HIKER`, `PICNICKER`, `LASS`, `PSYCHIC_M`, (Mustard: a definir), `WOMAN_2` |
-| 2 | Prêmio do Peony (Exp. Candy M? conferir no `SOULGOLD_ITEMS_AUDIT.md`) e o item grande do Mustard | Parte 16 | adubo |
+| 2 | ~~Prêmio do Peony e o item grande do Mustard~~ | — | **fechada em 03/10/2026:** os dois dão PP Up (definitivo) |
 | 3 | Falas novas dos 3 moradores de Greenfield no estado 12 | Parte 14 | o agente propõe, o autor aprova |
-| 4 | Time do Sábio Tomo | Parte 15 | o agente propõe |
+| 4 | ~~Time do Sábio Tomo~~ | — | **fechada em 03/10/2026:** o autor aceitou o time e a dificuldade na escala da party |
 | 5 | Greenfield com outro desenho (mais flores, fonte no meio)? | Parte 14 | o protótipo aprovado |
 | 6 | ~~Vars novas em `0x4127..` ou reciclar `VAR_GIFT_UNUSED_5..7`~~ | — | **fechada na Parte 1:** vars novas `0x4127..0x412D` |
 | 7 | ~~Onde guardar o “último marco do Livro pago”~~ | — | **fechada na Parte 1:** `VAR_BERRY_LEDGER_MILESTONE` (`0x412D`) |
 | 8 | Canteiro da Laurel fora das regras da horta (sem praga, erva nem rega automática)? | Parte 10 | fora (`GARDEN_LAST` = B4); ver “Parte 1 — feita” |
-| 9 | Descrição e ícone das cenouras | nada | texto provisório + ícone do Big Root |
+| 9 | ~~Descrição e ícone das cenouras, e as folhas no canteiro~~ | — | **fechada em 03/10/2026:** proposta C (“A noite revela”) de https://claude.ai/artifact/KvYi8zKVNGyVgGv5UgjByH, no jogo |
+| 10 | ~~Lugar do portão de Greenfield~~ | — | **fechada em 03/10/2026:** fica no recanto oeste das ruínas (pela Union Cave B1F) |

@@ -2312,3 +2312,25 @@ const struct Tileset gTileset_UltraSpaceArena =
     .metatileAttributes = gMetatileAttributes_UltraSpaceArena,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Greenfield =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Greenfield,
+    .palettes = gTilesetPalettes_Greenfield,
+    .metatiles = gMetatiles_Greenfield,
+    .metatileAttributes = gMetatileAttributes_Greenfield,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_HaleMansion =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HaleMansion,
+    .palettes = gTilesetPalettes_HaleMansion,
+    .metatiles = gMetatiles_HaleMansion,
+    .metatileAttributes = gMetatileAttributes_HaleMansion,
+    .callback = NULL,
+};

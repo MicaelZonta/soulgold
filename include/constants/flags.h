@@ -2102,6 +2102,8 @@
 #define FLAG_TEMP_HIDE_CALYREX                  FLAG_TEMP_15 // Route30: Act 5 and Act 7 (parts 13, 16)
 #define FLAG_TEMP_HIDE_AVERY                    FLAG_TEMP_16 // Route30: Avery, Fridays after the story (part 16)
 #define FLAG_TEMP_HIDE_MUSTARD                  FLAG_TEMP_17 // Route30: Mustard, a rare Sunday morning (part 16)
+#define FLAG_TEMP_HIDE_ICEROOT_PLANT            FLAG_TEMP_18 // Route30: the King's carrot in Laurel's plot (act 5b)
+#define FLAG_TEMP_HIDE_SHADEROOT_PLANT          FLAG_TEMP_19 // Route30: the same, Shaderoot
 
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000

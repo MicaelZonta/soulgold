@@ -131,16 +131,18 @@ BerryGarden_EventScript_SceneOnLoadEnd::
 BerryGarden_EventScript_NightVisitor::
 	lockall
 BerryGarden_EventScript_NightVisitorScene::
-	fadeoutbgm 4
+	@ The reaction comes at once; a long blocking fadeoutbgm before it read as
+	@ a freeze (QA 03/10/2026). The cry runs over the flash and the escape.
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement LOCALID_ROUTE30_SPECTRIER, Common_Movement_FacePlayer
 	waitmovement 0
+	fadeoutbgm 1
 	playmoncry SPECIES_SPECTRIER, CRY_MODE_ENCOUNTER
-	waitmoncry
 	call BerryGarden_EventScript_Flash
 	applymovement LOCALID_ROUTE30_SPECTRIER, BerryGarden_Movement_VisitorFlees
 	waitmovement 0
+	waitmoncry
 	setflag FLAG_TEMP_HIDE_SPECTRIER
 	removeobject LOCALID_ROUTE30_SPECTRIER
 	msgbox BerryGarden_Text_NightVisitor, MSGBOX_DEFAULT
@@ -541,16 +543,20 @@ BerryGarden_EventScript_CarrotPlot::
 	specialvar VAR_RESULT, GardenStory_Check
 	goto_if_ne VAR_RESULT, TRUE, BerryGarden_EventScript_CarrotNotYet
 	goto_if_ne VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, BerryGarden_EventScript_CarrotWaits
-	msgbox BerryGarden_Text_CarrotUp, MSGBOX_DEFAULT
 	call_if_eq VAR_HARVEST_KING, HARVEST_KING_ICEROOT, BerryGarden_EventScript_GiveIceroot
 	call_if_eq VAR_HARVEST_KING, HARVEST_KING_SHADEROOT, BerryGarden_EventScript_GiveShaderoot
 	goto BerryGarden_EventScript_Reacted
 
+@ Each carrot is pulled with its own line (its leaves, its item description).
 BerryGarden_EventScript_GiveIceroot::
+	msgbox BerryGarden_Text_IcerootUp, MSGBOX_DEFAULT
+	removeobject LOCALID_ROUTE30_ICEROOT_PLANT
 	giveitem ITEM_ICEROOT_CARROT
 	return
 
 BerryGarden_EventScript_GiveShaderoot::
+	msgbox BerryGarden_Text_ShaderootUp, MSGBOX_DEFAULT
+	removeobject LOCALID_ROUTE30_SHADEROOT_PLANT
 	giveitem ITEM_SHADEROOT_CARROT
 	return
 
@@ -587,6 +593,9 @@ BerryGarden_EventScript_LaurelPickedCheck::
 @ line, then his line of the day (bank K, hearts); then a battle, once a day
 @ (14.5).
 BerryGarden_EventScript_PeonyGarden::
+	@ Act 5 and Act 7: with Calyrex at Laurel's plot Peony kneels beside him,
+	@ and talking to either one starts the scene.
+	goto_if_unset FLAG_TEMP_HIDE_CALYREX, BerryGarden_EventScript_KingCameTalk
 	lock
 	faceplayer
 	dotimebasedevents
@@ -635,7 +644,7 @@ BerryGarden_EventScript_PeonyFight3::
 BerryGarden_EventScript_PeonyAfterFight::
 	goto_if_ne VAR_TEMP_3, B_OUTCOME_WON, BerryGarden_EventScript_PeonyWon
 	msgbox BerryGarden_Text_PeonyPrize, MSGBOX_DEFAULT
-	giveitem ITEM_EXP_CANDY_M
+	giveitem ITEM_PP_UP
 	return
 
 BerryGarden_EventScript_PeonyWon::
@@ -719,7 +728,7 @@ BerryGarden_EventScript_MortyHook::
 	@ Part 15: the Spell Tag, if the scene in the Burned Tower was cut short.
 	goto_if_ne VAR_HARVEST_KING, HARVEST_KING_SPECTRIER, BerryGarden_EventScript_MortyHookCarrot
 	checkitem ITEM_SHADEROOT_CARROT
-	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_MortySpellTag
+	goto_if_eq VAR_RESULT, TRUE, BerryGarden_EventScript_MortySpellTagGym
 BerryGarden_EventScript_MortyHookCarrot::
 	goto_if_gt VAR_HARVEST_KING, HARVEST_KING_SHADEROOT, BerryGarden_EventScript_StoryEnd
 	checkitem ITEM_SHADEROOT_CARROT
@@ -869,7 +878,7 @@ BerryGarden_Text_PrologueWithLaurel:
 	.string "{SPEAKER NAME_LAUREL}That one's mine.$"
 
 BerryGarden_Text_PrologueAlone:
-	.string "Now that's the talk. Here's the part\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Now that's the talk. Here's the part\n"
 	.string "the talk leaves out.\p"
 	.string "Out the door, to the right. Six beds.\n"
 	.string "They're yours.\p"
@@ -883,7 +892,7 @@ BerryGarden_Text_PrologueAlone:
 	.string "Don't ask me why. I asked once.$"
 
 BerryGarden_Text_LaurelFirstPest:
-	.string "A {STR_VAR_1}. In the beds.\p"
+	.string "{SPEAKER NAME_LAUREL}A {STR_VAR_1}. In the beds.\p"
 	.string "Fifty years he's kept this garden.\n"
 	.string "Fifty years and not one bug.\p"
 	.string "Now you come along, and they come\n"
@@ -892,7 +901,7 @@ BerryGarden_Text_LaurelFirstPest:
 	.string "He'll want to shout.$"
 
 BerryGarden_Text_BramBugs:
-	.string "BUGS? In MY beds?\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}BUGS? In MY beds?\p"
 	.string "...What kind? Ooh. I've never even seen\n"
 	.string "one of those.\p"
 	.string "Laurel says write to the boy in Azalea.\n"
@@ -903,7 +912,7 @@ BerryGarden_Text_BramBugs:
 	.string "you're serious.$"
 
 BerryGarden_Text_BugsyArrives:
-	.string "Shh! Don't move. There's a Blipbug on\n"
+	.string "{SPEAKER NAME_BUGSY}Shh! Don't move. There's a Blipbug on\n"
 	.string "the third bed.\p"
 	.string "...It's gone. Hello! You must be {PLAYER}.\n"
 	.string "I got a letter. Well, the letter was\l"
@@ -925,14 +934,14 @@ BerryGarden_Text_BugsyArrives:
 	.string "like this.$"
 
 BerryGarden_Text_BugsyCensusSoFar:
-	.string "Any luck? You've caught {STR_VAR_1}\n"
+	.string "{SPEAKER NAME_BUGSY}Any luck? You've caught {STR_VAR_1}\n"
 	.string "of them so far.\p"
 	.string "I need three. Only the ones that come\n"
 	.string "to this garden -- the Berries decide\l"
 	.string "which.$"
 
 BerryGarden_Text_BugsyCensus:
-	.string "Three of them! Let me see...\p"
+	.string "{SPEAKER NAME_BUGSY}Three of them! Let me see...\p"
 	.string "It's the colors. Red Berries, red bugs.\n"
 	.string "Blue Berries bring Blipbug in the day\l"
 	.string "and Volbeat after dark.\p"
@@ -947,7 +956,7 @@ BerryGarden_Text_BugsyCensus:
 	.string "raise.$"
 
 BerryGarden_Text_BugsyBagFull:
-	.string "Your Bag's full! Make some room, and\n"
+	.string "{SPEAKER NAME_BUGSY}Your Bag's full! Make some room, and\n"
 	.string "I'll have something for you.$"
 
 BerryGarden_Text_NightVisitor:
@@ -961,14 +970,14 @@ BerryGarden_Text_Hoofprints:
 	.string "They stop at the edge of the pond.$"
 
 BerryGarden_Text_LaurelHeardIt:
-	.string "You were out late.\p"
+	.string "{SPEAKER NAME_LAUREL}You were out late.\p"
 	.string "...Don't tell me. I heard it. I've heard\n"
 	.string "it before.\p"
 	.string "Eat your breakfast. It isn't here for\n"
 	.string "you.$"
 
 BerryGarden_Text_BramWakes:
-	.string "Hm? Oh. It's you. Keep it down. She's\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}Hm? Oh. It's you. Keep it down. She's\n"
 	.string "reading.\p"
 	.string "...She told you it isn't here for you.\n"
 	.string "She's right. It's here for her. Or for\l"
@@ -989,7 +998,7 @@ BerryGarden_Text_BramWakes:
 	.string "waiting forty years.$"
 
 BerryGarden_Text_LaurelNotebook1:
-	.string "Forty. Forty Berries, and you grew every\n"
+	.string "{SPEAKER NAME_LAUREL}Forty. Forty Berries, and you grew every\n"
 	.string "one of them.\p"
 	.string "Sit. No, sit.\p"
 	.string "Where I come from there's a story.\n"
@@ -1004,7 +1013,7 @@ BerryGarden_Text_LaurelNotebook1:
 	.string "horses. He loses the harvest.$"
 
 BerryGarden_Text_LaurelNotebook2:
-	.string "My grandmother didn't forget. She kept\n"
+	.string "{SPEAKER NAME_LAUREL}My grandmother didn't forget. She kept\n"
 	.string "his field.\p"
 	.string "When I left, she gave me this. She said:\n"
 	.string "plant it where the land remembers.\p"
@@ -1018,17 +1027,17 @@ BerryGarden_Text_LaurelNotebook2:
 	.string "Mine.$"
 
 BerryGarden_Text_LaurelNotebookBagFull:
-	.string "Come back when you have room.\p"
+	.string "{SPEAKER NAME_LAUREL}Come back when you have room.\p"
 	.string "It's waited forty years.$"
 
 BerryGarden_Text_LaurelThatsABed:
-	.string "That's a bed. I said my patch. It isn't\n"
+	.string "{SPEAKER NAME_LAUREL}That's a bed. I said my patch. It isn't\n"
 	.string "the same soil. Trust me.\p"
 	.string "Here. Another one. My patch, by the\n"
 	.string "door.$"
 
 BerryGarden_Text_LaurelLostIt:
-	.string "You lost it? ...Here. Another one.\p"
+	.string "{SPEAKER NAME_LAUREL}You lost it? ...Here. Another one.\p"
 	.string "My patch, by the door. Don't make me\n"
 	.string "say it a third time.$"
 
@@ -1046,47 +1055,47 @@ BerryGarden_Text_FirstLeaf2:
 	.string "{SPEAKER NAME_BERRY_MASTER}I was not.$"
 
 BerryGarden_Text_FirstLeaf3:
-	.string "Go on, sprout. Give us a minute.$"
+	.string "{SPEAKER NAME_BERRY_MASTER}Go on, sprout. Give us a minute.$"
 
 BerryGarden_Text_LaurelWroteHome:
-	.string "I wrote to Freezington. First letter in\n"
+	.string "{SPEAKER NAME_LAUREL}I wrote to Freezington. First letter in\n"
 	.string "forty years.\p"
 	.string "Someone there used to follow me around\n"
 	.string "like a Yamper. He'll come. He never could\l"
 	.string "leave a thing alone.$"
 
 BerryGarden_Text_Letter0:
-	.string "From Honey.\p"
+	.string "{SPEAKER NAME_LAUREL}From Honey.\p"
 	.string "“The students ate every Berry you sent\n"
 	.string "in one sitting. Mustard says his knees\l"
 	.string "are fine. They are not.”$"
 
 BerryGarden_Text_Letter1:
-	.string "From Freezington.\p"
+	.string "{SPEAKER NAME_LAUREL}From Freezington.\p"
 	.string "“The whole village read your letter. The\n"
 	.string "Mayor wants to know if Johto sells\l"
 	.string "carrots.”$"
 
 BerryGarden_Text_Letter2:
-	.string "From Honey.\p"
+	.string "{SPEAKER NAME_LAUREL}From Honey.\p"
 	.string "“Mustard asks if your husband can arm\n"
 	.string "wrestle. Please say no. He will fly over.”\p"
 	.string "P.S., in different handwriting: “I would\n"
 	.string "win.”$"
 
 BerryGarden_Text_Letter4:
-	.string "From Honey.\p"
+	.string "{SPEAKER NAME_LAUREL}From Honey.\p"
 	.string "“I tried your Pecha jam. It exploded.\n"
 	.string "Mustard ate it off the ceiling.”$"
 
 BerryGarden_Text_Letter5:
-	.string "From Freezington.\p"
+	.string "{SPEAKER NAME_LAUREL}From Freezington.\p"
 	.string "“Snow's up to the windows. The children\n"
 	.string "built a snow Laurel. It's frowning. It's\l"
 	.string "very accurate.”$"
 
 BerryGarden_Text_Letter6:
-	.string "From Kurt.\p"
+	.string "{SPEAKER NAME_LAUREL}From Kurt.\p"
 	.string "“Berries arrived. Some bruised. Send\n"
 	.string "more. -- K.”\p"
 	.string "From Kurt, that's a love letter.$"
@@ -1199,27 +1208,34 @@ BerryGarden_Text_CarrotWaits:
 	.string "Feathery leaves have come up.\p"
 	.string "They seem to be waiting for the dark.$"
 
-BerryGarden_Text_CarrotUp:
-	.string "Feathery leaves, cold to the touch...\p"
-	.string "You pull, and something long comes up\n"
-	.string "out of the soil!$"
+BerryGarden_Text_IcerootUp:
+	.string "The leaves glitter with frost, and the\n"
+	.string "cold bites into your fingers.\p"
+	.string "You pull, and something long and pale\n"
+	.string "comes up out of the soil!$"
+
+BerryGarden_Text_ShaderootUp:
+	.string "The leaves glow a faint violet. Your\n"
+	.string "hand casts no shadow over them.\p"
+	.string "You pull, and something long and dark\n"
+	.string "comes up out of the soil!$"
 
 BerryGarden_Text_CarrotResting:
 	.string "The soil is resting. Whatever grew here\n"
 	.string "is in your Bag.$"
 
 BerryGarden_Text_LaurelPicked:
-	.string "You picked. Good. Don't tell me which.\p"
+	.string "{SPEAKER NAME_LAUREL}You picked. Good. Don't tell me which.\p"
 	.string "I'll know when I see the leaves.$"
 
 BerryGarden_Text_PeonyWatering:
-	.string "Peony here! Bram's put me on watering\n"
+	.string "{SPEAKER NAME_PEONY}Peony here! Bram's put me on watering\n"
 	.string "duty.\p"
 	.string "I've watered the path, the fence, and\n"
 	.string "Bram. The Berries are next!$"
 
 BerryGarden_Text_PeonyIntro:
-	.string "Peony here! Fancy a scrap, chum?\p"
+	.string "{SPEAKER NAME_PEONY}Peony here! Fancy a scrap, chum?\p"
 	.string "Me and Copperajah haven't had a proper\n"
 	.string "one since Galar!$"
 
@@ -1228,44 +1244,44 @@ BerryGarden_Text_PeonyDefeat:
 	.string "every second!$"
 
 BerryGarden_Text_PeonyPrize:
-	.string "Here, chum -- a little something from\n"
+	.string "{SPEAKER NAME_PEONY}Here, chum -- a little something from\n"
 	.string "Galar.\p"
 	.string "Don't tell Peonia, she thinks I spend\n"
 	.string "too much.$"
 
 BerryGarden_Text_PeonyWon:
-	.string "Ha! Copperajah wins! Don't feel bad,\n"
+	.string "{SPEAKER NAME_PEONY}Ha! Copperajah wins! Don't feel bad,\n"
 	.string "chum.\p"
 	.string "He's bigger than a house.$"
 
 BerryGarden_Text_PeonyTired:
-	.string "Once a day, chum. Me back's not what it\n"
+	.string "{SPEAKER NAME_PEONY}Once a day, chum. Me back's not what it\n"
 	.string "was.\p"
 	.string "Me front neither.$"
 
 BerryGarden_Text_PeonySnores:
-	.string "Zzz... Galar time... zzz...\p"
+	.string "{SPEAKER NAME_PEONY}Zzz... Galar time... zzz...\p"
 	.string "He's fast asleep. It's the middle of\n"
 	.string "the night where he comes from.$"
 
 BerryGarden_Text_PeoniaPacking:
-	.string "Rope. Torch. Snacks. More snacks.\p"
+	.string "{SPEAKER NAME_PEONIA}Rope. Torch. Snacks. More snacks.\p"
 	.string "...Dad packed a kettle. Why is there a\n"
 	.string "kettle.$"
 
 BerryGarden_Text_PeoniaWaiting:
-	.string "Peonia here! Auntie says the carrot\n"
+	.string "{SPEAKER NAME_PEONIA}Peonia here! Auntie says the carrot\n"
 	.string "comes when it comes.\p"
 	.string "I hate waiting. Dad loves waiting. Dad's\n"
 	.string "asleep.$"
 
 BerryGarden_Text_PryceHook:
-	.string "You smell of an old woman's garden.\p"
+	.string "{SPEAKER NAME_PRYCE}You smell of an old woman's garden.\p"
 	.string "Riddles about ice come to me sooner or\n"
 	.string "later. Bring me whatever she gave you.$"
 
 BerryGarden_Text_PryceCarrot1:
-	.string "...Iceroot. My mother fed it to the\n"
+	.string "{SPEAKER NAME_PRYCE}...Iceroot. My mother fed it to the\n"
 	.string "Mamoswine in the worst winters.\p"
 	.string "The Ice Path? Child, the Ice Path thaws\n"
 	.string "every spring. I've watched it for fifty\l"
@@ -1276,7 +1292,7 @@ BerryGarden_Text_PryceCarrot1:
 	.string "crystal, once, when I was younger.$"
 
 BerryGarden_Text_PryceCarrot2:
-	.string "It went away. Last winter, it came back.\p"
+	.string "{SPEAKER NAME_PRYCE}It went away. Last winter, it came back.\p"
 	.string "I went there, the first time. A little\n"
 	.string "girl asked me to stay for dinner. I\l"
 	.string "didn't.\p"
@@ -1287,13 +1303,13 @@ BerryGarden_Text_PryceCarrot2:
 	.string "evening.$"
 
 BerryGarden_Text_MortyHook:
-	.string "The spirits are restless lately. They\n"
+	.string "{SPEAKER NAME_MORTY}The spirits are restless lately. They\n"
 	.string "say a horse is looking for something to\l"
 	.string "eat.\p"
 	.string "I don't know what that means. Yet.$"
 
 BerryGarden_Text_MortyCarrot:
-	.string "Shaderoot. The spirits in my tower like\n"
+	.string "{SPEAKER NAME_MORTY}Shaderoot. The spirits in my tower like\n"
 	.string "the smell. So does he.\p"
 	.string "You won't find him in the ruin. He\n"
 	.string "doesn't walk in what the tower is. He\l"
@@ -1306,74 +1322,74 @@ BerryGarden_Text_MortyCarrot:
 	.string "Bring your carrot. Bring your courage.$"
 
 BerryGarden_Text_PeonyK0:
-	.string "Peony here! Johto's grand, chum. The\n"
+	.string "{SPEAKER NAME_PEONY}Peony here! Johto's grand, chum. The\n"
 	.string "stars are the same as back home, just a\l"
 	.string "bit to the left.$"
 
 BerryGarden_Text_PeonyK1:
-	.string "Did I ever tell you about the time I fell\n"
+	.string "{SPEAKER NAME_PEONY}Did I ever tell you about the time I fell\n"
 	.string "in a frozen lake looking for the white\l"
 	.string "horse? Came out a Peony-sicle! Worth\l"
 	.string "it!$"
 
 BerryGarden_Text_PeonyK2:
-	.string "Me Copperajah's asleep by the pond.\n"
+	.string "{SPEAKER NAME_PEONY}Me Copperajah's asleep by the pond.\n"
 	.string "Snores like a steam train. Tilly thinks\l"
 	.string "it's a monster. It IS a monster! A\l"
 	.string "lovely one!$"
 
 BerryGarden_Text_PeonyK3:
-	.string "You know what they call me in\n"
+	.string "{SPEAKER NAME_PEONY}You know what they call me in\n"
 	.string "Freezington? “That loud one.” Ha! Fair!$"
 
 BerryGarden_Text_PeonyK4:
-	.string "My big brother Rose tried to buy\n"
+	.string "{SPEAKER NAME_PEONY}My big brother Rose tried to buy\n"
 	.string "Freezington once. The whole village. The\l"
 	.string "Mayor sold him a hat and sent him home.$"
 
 BerryGarden_Text_PeonyK5:
-	.string "I was a Gym Leader once, y'know! Steel\n"
+	.string "{SPEAKER NAME_PEONY}I was a Gym Leader once, y'know! Steel\n"
 	.string "types! ...Then I quit. Rose was ever so\l"
 	.string "cross. Best day of me life.$"
 
 BerryGarden_Text_PeonyK7:
-	.string "Auntie Laurel pulled me out of a tree\n"
+	.string "{SPEAKER NAME_PEONY}Auntie Laurel pulled me out of a tree\n"
 	.string "once. I was eight. Up there three hours.\l"
 	.string "She never asked why. Brought me a\l"
 	.string "sandwich.$"
 
 BerryGarden_Text_PeonyK8:
-	.string "When I was a lad, Auntie told us the king\n"
+	.string "{SPEAKER NAME_PEONY}When I was a lad, Auntie told us the king\n"
 	.string "would come back if someone grew a\l"
 	.string "garden for him. We thought it was a\l"
 	.string "bedtime story. Shows what we knew!$"
 
 BerryGarden_Text_PeonyK9:
-	.string "Chum... thanks. For Auntie. She hasn't\n"
+	.string "{SPEAKER NAME_PEONY}Chum... thanks. For Auntie. She hasn't\n"
 	.string "smiled this much since... well. Since\l"
 	.string "ever, honestly. Ha!$"
 
 BerryGarden_Text_PeoniaL0:
-	.string "Peonia here! ...Why is everyone in Johto\n"
+	.string "{SPEAKER NAME_PEONIA}Peonia here! ...Why is everyone in Johto\n"
 	.string "so calm? It's suspicious.$"
 
 BerryGarden_Text_PeoniaL1:
-	.string "Dad got lost going to the Pokémon\n"
+	.string "{SPEAKER NAME_PEONIA}Dad got lost going to the Pokémon\n"
 	.string "Center. It's down the road. He went\l"
 	.string "the long way. Through the pond.$"
 
 BerryGarden_Text_PeoniaL2:
-	.string "Back home I do Dynamax Adventures.\n"
+	.string "{SPEAKER NAME_PEONIA}Back home I do Dynamax Adventures.\n"
 	.string "Here I carry mulch. Honestly? Mulch is\l"
 	.string "harder.$"
 
 BerryGarden_Text_PeoniaL3:
-	.string "Don't tell Dad, but I think Johto's\n"
+	.string "{SPEAKER NAME_PEONIA}Don't tell Dad, but I think Johto's\n"
 	.string "prettier than Galar. Don't tell Galar\l"
 	.string "either.$"
 
 BerryGarden_Text_PeoniaL4:
-	.string "Dad cries at everything. He cried at a\n"
+	.string "{SPEAKER NAME_PEONIA}Dad cries at everything. He cried at a\n"
 	.string "sunset on the boat. It was a normal\l"
 	.string "sunset.$"
 

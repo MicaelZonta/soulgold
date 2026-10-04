@@ -277,7 +277,7 @@ BerryGarden_EventScript_KlaraOpening9::
 @ ---------------------------------------------------------------------------
 
 BerryGarden_Text_TillyMenu:
-	.string "Mulch, or a battle? Mulch is cheaper.$"
+	.string "{SPEAKER NAME_TILLY}Mulch, or a battle? Mulch is cheaper.$"
 
 BerryGarden_Text_TillyBuyMulch:
 	.string "Buy mulch$"
@@ -289,7 +289,7 @@ BerryGarden_Text_TillyBye2:
 	.string "Bye$"
 
 BerryGarden_Text_TillyIntro:
-	.string "Battle time! My bugs have names, so\n"
+	.string "{SPEAKER NAME_TILLY}Battle time! My bugs have names, so\n"
 	.string "they're stronger.\p"
 	.string "That's science.$"
 
@@ -298,20 +298,20 @@ BerryGarden_Text_TillyDefeat:
 	.string "...He's fine. He's rolling. He's fine.$"
 
 BerryGarden_Text_TillyPrize:
-	.string "You won! Here, two from the shop.\p"
+	.string "{SPEAKER NAME_TILLY}You won! Here, two from the shop.\p"
 	.string "Winners get mulch. Don't tell Grandma.$"
 
 BerryGarden_Text_TillyWon:
-	.string "Mr. Roly WINS! I'm telling Grandpa.\p"
+	.string "{SPEAKER NAME_TILLY}Mr. Roly WINS! I'm telling Grandpa.\p"
 	.string "I'm telling EVERYONE.$"
 
 BerryGarden_Text_TillyNap:
-	.string "Mr. Roly needs a nap. Come back\n"
+	.string "{SPEAKER NAME_TILLY}Mr. Roly needs a nap. Come back\n"
 	.string "tomorrow!\p"
 	.string "He'll be ready. I'll be READIER.$"
 
 BerryGarden_Text_BugsyIntro:
-	.string "Field test! I want to see how\n"
+	.string "{SPEAKER NAME_BUGSY}Field test! I want to see how\n"
 	.string "garden-raised bugs do against a real\l"
 	.string "trainer.\p"
 	.string "For science! Are you in?$"
@@ -321,20 +321,20 @@ BerryGarden_Text_BugsyDefeat:
 	.string "a very well-documented way.$"
 
 BerryGarden_Text_BugsyPrize:
-	.string "Your bugs earned this. Well, you did.\p"
+	.string "{SPEAKER NAME_BUGSY}Your bugs earned this. Well, you did.\p"
 	.string "Here -- Berries from the garden. Laurel\n"
 	.string "said I could.$"
 
 BerryGarden_Text_BugsyWon:
-	.string "A clear result! For the bugs, I mean.\p"
+	.string "{SPEAKER NAME_BUGSY}A clear result! For the bugs, I mean.\p"
 	.string "Rest your team. I'll be here next time.$"
 
 BerryGarden_Text_BugsyBusy:
-	.string "I'm still writing up the last one.\p"
+	.string "{SPEAKER NAME_BUGSY}I'm still writing up the last one.\p"
 	.string "Twelve pages so far.$"
 
 BerryGarden_Text_BugsyDeclined:
-	.string "Another time! The bugs aren't going\n"
+	.string "{SPEAKER NAME_BUGSY}Another time! The bugs aren't going\n"
 	.string "anywhere.\p"
 	.string "Well. They are. But slowly.$"
 
@@ -342,123 +342,123 @@ BerryGarden_Text_KlaraDefeat:
 	.string "Ugh! Seriously?!$"
 
 BerryGarden_Text_KlaraMochi:
-	.string "You know what? Berries are SO last\n"
+	.string "{SPEAKER NAME_KLARA}You know what? Berries are SO last\n"
 	.string "season. Mochi is the new thing.\p"
 	.string "There's this cute little shop in\n"
 	.string "Kitakami... Toodles~$"
 
 BerryGarden_Text_KlaraOpening0:
-	.string "Oopsie! Didn't see you there, hun~\p"
+	.string "{SPEAKER NAME_KLARA}Oopsie! Didn't see you there, hun~\p"
 	.string "These are for my channel. “Top 10 Johto\n"
 	.string "Snacks -- Number 7 Will SHOCK You.”$"
 
 BerryGarden_Text_KlaraOpening1:
-	.string "Shh! I'm live! ...Hi, besties! Today we're\n"
+	.string "{SPEAKER NAME_KLARA}Shh! I'm live! ...Hi, besties! Today we're\n"
 	.string "foraging!\p"
 	.string "Foraging means taking. Don't tell\n"
 	.string "anyone~$"
 
 BerryGarden_Text_KlaraOpening2:
-	.string "Oh, it's YOU. The Berry police.\p"
+	.string "{SPEAKER NAME_KLARA}Oh, it's YOU. The Berry police.\p"
 	.string "Ugh, fine. Arrest me. In battle. Cutely.$"
 
 BerryGarden_Text_KlaraOpening3:
-	.string "These Pecha are, like, SO pink. My\n"
+	.string "{SPEAKER NAME_KLARA}These Pecha are, like, SO pink. My\n"
 	.string "followers need them.\p"
 	.string "It's basically charity.$"
 
 BerryGarden_Text_KlaraOpening4:
-	.string "I'm not stealing, hun. I'm “sourcing\n"
+	.string "{SPEAKER NAME_KLARA}I'm not stealing, hun. I'm “sourcing\n"
 	.string "locally.”\p"
 	.string "It's a whole trend.$"
 
 BerryGarden_Text_KlaraOpening5:
-	.string "Don't look at me like that! I left a\n"
+	.string "{SPEAKER NAME_KLARA}Don't look at me like that! I left a\n"
 	.string "thank-you note!\p"
 	.string "...It says “thx.” It counts!$"
 
 BerryGarden_Text_KlaraOpening6:
-	.string "My Slowbro's hungry. And when she's\n"
+	.string "{SPEAKER NAME_KLARA}My Slowbro's hungry. And when she's\n"
 	.string "hungry she's mean.\p"
 	.string "Like me! Hehe~$"
 
 BerryGarden_Text_KlaraOpening7:
-	.string "You again?! Do you, like, LIVE in this\n"
+	.string "{SPEAKER NAME_KLARA}You again?! Do you, like, LIVE in this\n"
 	.string "garden? Get a hobby.\p"
 	.string "Oh wait. This is your hobby. Cringe.$"
 
 BerryGarden_Text_KlaraOpening8:
-	.string "New video idea: “I Battled a Farmer for\n"
+	.string "{SPEAKER NAME_KLARA}New video idea: “I Battled a Farmer for\n"
 	.string "Snacks!”\p"
 	.string "You're the farmer. Smile!$"
 
 BerryGarden_Text_KlaraOpening9:
-	.string "Okay, okay. Final offer: I take ONE bed,\n"
+	.string "{SPEAKER NAME_KLARA}Okay, okay. Final offer: I take ONE bed,\n"
 	.string "you get a shout-out.\p"
 	.string "...No? Fine. Battle me, hun~$"
 
 BerryGarden_Text_KlaraLoses0:
-	.string "Ugh, FINE. Keep your dumb Berries.\p"
+	.string "{SPEAKER NAME_KLARA}Ugh, FINE. Keep your dumb Berries.\p"
 	.string "...Can I at least keep one Pecha? No?\n"
 	.string "Rude. So rude.$"
 
 BerryGarden_Text_KlaraLoses1:
-	.string "That footage is SO getting deleted.$"
+	.string "{SPEAKER NAME_KLARA}That footage is SO getting deleted.$"
 
 BerryGarden_Text_KlaraLoses2:
-	.string "My ring light was in my eyes. That's why.\n"
+	.string "{SPEAKER NAME_KLARA}My ring light was in my eyes. That's why.\n"
 	.string "Obviously.$"
 
 BerryGarden_Text_KlaraLoses3:
-	.string "Whatever! Berries have, like, carbs\n"
+	.string "{SPEAKER NAME_KLARA}Whatever! Berries have, like, carbs\n"
 	.string "anyway.$"
 
 BerryGarden_Text_KlaraLoses4:
-	.string "You're lucky I'm nice. I'm not nice.\p"
+	.string "{SPEAKER NAME_KLARA}You're lucky I'm nice. I'm not nice.\p"
 	.string "You're just lucky.$"
 
 BerryGarden_Text_KlaraTakes0:
-	.string "Thanks for the content, hun! Like and\n"
+	.string "{SPEAKER NAME_KLARA}Thanks for the content, hun! Like and\n"
 	.string "subscribe~$"
 
 BerryGarden_Text_KlaraTakes1:
-	.string "Ooh, this one's heavy! Must be the good\n"
+	.string "{SPEAKER NAME_KLARA}Ooh, this one's heavy! Must be the good\n"
 	.string "stuff. Byeee~$"
 
 BerryGarden_Text_KlaraTakes2:
-	.string "Tell the old man I said hi! Actually,\n"
+	.string "{SPEAKER NAME_KLARA}Tell the old man I said hi! Actually,\n"
 	.string "don't.$"
 
 BerryGarden_Text_KlaraTakes3:
-	.string "Harvest complete! Klara out~$"
+	.string "{SPEAKER NAME_KLARA}Harvest complete! Klara out~$"
 
 BerryGarden_Text_KlaraTakes4:
-	.string "Don't cry, hun. You can grow more.\p"
+	.string "{SPEAKER NAME_KLARA}Don't cry, hun. You can grow more.\p"
 	.string "That's, like, what plants DO.$"
 
 BerryGarden_Text_BramKlara1:
-	.string "That girl again.\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}That girl again.\p"
 	.string "Laurel says that Slowbro of hers has\n"
 	.string "better manners than she does.$"
 
 BerryGarden_Text_BramKlara2:
-	.string "She took the WHOLE bed? ...Well. It'll\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}She took the WHOLE bed? ...Well. It'll\n"
 	.string "grow back.\p"
 	.string "Everything grows back. That's the nice\n"
 	.string "thing about Berries.$"
 
 BerryGarden_Text_BramKlara3:
-	.string "She left a note. “thx.” With a heart.\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}She left a note. “thx.” With a heart.\p"
 	.string "Laurel's framing it. Out of spite, I\n"
 	.string "think.$"
 
 BerryGarden_Text_BramKlara4:
-	.string "When I was a boy we had a word for her\n"
+	.string "{SPEAKER NAME_BERRY_MASTER}When I was a boy we had a word for her\n"
 	.string "kind.\p"
 	.string "The word was “Tuesday.” Don't ask.$"
 
 BerryGarden_Text_BramKlara5:
-	.string "You chased her off? Ha!\p"
+	.string "{SPEAKER NAME_BERRY_MASTER}You chased her off? Ha!\p"
 	.string "Sprout, you're a real farmer now.\n"
 	.string "Farmers have enemies.$"
 

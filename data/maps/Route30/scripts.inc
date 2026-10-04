@@ -152,6 +152,62 @@ Route30_EventScript_GardenVisibility::
 	call_if_unset FLAG_TEMP_HIDE_SPECTRIER, Route30_EventScript_ArmNightVisitor
 	@ Act 5 (part 13): Peony and Calyrex at Laurel's plot tonight.
 	call_if_unset FLAG_TEMP_HIDE_CALYREX, Route30_EventScript_ArmNightVisitor
+	@ Act 5b: the King's carrot in Laurel's plot (after GardenCast_Apply: it needs the period).
+	call Route30_EventScript_KingsCarrot
+	return
+
+@ Planted: a mark on the soil (facing down). Ready (CARROT_READY): the leaves,
+@ closed by day (up) and lit at night (left). Pulled (in the Bag): nothing.
+Route30_EventScript_KingsCarrot::
+	setflag FLAG_TEMP_HIDE_ICEROOT_PLANT
+	setflag FLAG_TEMP_HIDE_SHADEROOT_PLANT
+	goto_if_eq VAR_HARVEST_KING, HARVEST_KING_ICEROOT, Route30_EventScript_KingsCarrotIce
+	goto_if_eq VAR_HARVEST_KING, HARVEST_KING_SHADEROOT, Route30_EventScript_KingsCarrotShade
+	return
+
+Route30_EventScript_KingsCarrotIce::
+	checkitem ITEM_ICEROOT_CARROT
+	goto_if_eq VAR_RESULT, TRUE, Route30_EventScript_KingsCarrotEnd
+	clearflag FLAG_TEMP_HIDE_ICEROOT_PLANT
+	call Route30_EventScript_KingsCarrotStage
+	call_if_eq VAR_RESULT, 1, Route30_EventScript_IcerootClosed
+	call_if_eq VAR_RESULT, 2, Route30_EventScript_IcerootLit
+	return
+
+Route30_EventScript_KingsCarrotShade::
+	checkitem ITEM_SHADEROOT_CARROT
+	goto_if_eq VAR_RESULT, TRUE, Route30_EventScript_KingsCarrotEnd
+	clearflag FLAG_TEMP_HIDE_SHADEROOT_PLANT
+	call Route30_EventScript_KingsCarrotStage
+	call_if_eq VAR_RESULT, 1, Route30_EventScript_ShaderootClosed
+	call_if_eq VAR_RESULT, 2, Route30_EventScript_ShaderootLit
+	return
+
+@ VAR_RESULT = 0 planted, 1 ready by day, 2 ready at night.
+Route30_EventScript_KingsCarrotStage::
+	setvar VAR_0x8004, GARDEN_STORY_CARROT_READY
+	specialvar VAR_RESULT, GardenStory_Check
+	goto_if_ne VAR_RESULT, TRUE, Route30_EventScript_KingsCarrotEnd
+	setvar VAR_RESULT, 1
+	goto_if_ne VAR_TEMP_GARDEN_PERIOD, GARDEN_PERIOD_NIGHT, Route30_EventScript_KingsCarrotEnd
+	setvar VAR_RESULT, 2
+Route30_EventScript_KingsCarrotEnd::
+	return
+
+Route30_EventScript_IcerootClosed::
+	setobjectmovementtype LOCALID_ROUTE30_ICEROOT_PLANT, MOVEMENT_TYPE_FACE_UP
+	return
+
+Route30_EventScript_IcerootLit::
+	setobjectmovementtype LOCALID_ROUTE30_ICEROOT_PLANT, MOVEMENT_TYPE_FACE_LEFT
+	return
+
+Route30_EventScript_ShaderootClosed::
+	setobjectmovementtype LOCALID_ROUTE30_SHADEROOT_PLANT, MOVEMENT_TYPE_FACE_UP
+	return
+
+Route30_EventScript_ShaderootLit::
+	setobjectmovementtype LOCALID_ROUTE30_SHADEROOT_PLANT, MOVEMENT_TYPE_FACE_LEFT
 	return
 
 Route30_EventScript_HideKlara::
@@ -302,10 +358,10 @@ Route30_EventScript_BugsyStoryEnd::
 	end
 
 Route30_Text_TillyBuy:
-	.string "Buy some! Buy LOTS!$"
+	.string "{SPEAKER NAME_TILLY}Buy some! Buy LOTS!$"
 
 Route30_Text_TillyBye:
-	.string "Come back next weekend! Bring money!$"
+	.string "{SPEAKER NAME_TILLY}Come back next weekend! Bring money!$"
 
 Route30_Text_Mailbox:
 	.string "Mr.Pokémon's House$"

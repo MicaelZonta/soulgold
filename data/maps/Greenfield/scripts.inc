@@ -1,5 +1,7 @@
 @ Greenfield, the town the Unown covered in crystal (Berry Master, plan part 14;
-@ REI_DA_COLHEITA.md section 15.4). Layout: New Bark Town's, with flowers.
+@ REI_DA_COLHEITA.md section 15.4). Layout: New Bark Town's, with flowers;
+@ LAYOUT_GREENFIELD adds the crystal pieces (gTileset_Greenfield) and is swapped
+@ for LAYOUT_GREENFIELD_AFTER, the same town without them, once the Glastrier leaves.
 @
 @ Plan (map.bin measured with dump_mapa.py):
 @   west edge x 0, rows 11-14: coord_events back to the Ruins of Alph (3,26)
@@ -8,9 +10,11 @@
 @   woman (11,16) v, old man (20,22) <, boy (10,29) ^: stuck in the same
 @     morning until the Glastrier leaves (GARDEN_STORY_WHITE_PATH)
 @   mansion door (10,9) -> Greenfield_Mansion; the other doors are signs
-@ The crystal itself is a palette tint (GreenfieldCrystal_*, src/berry_garden.c).
+@ The crystal: a palette tint on the whole town (GreenfieldCrystal_*, src/berry_garden.c)
+@ and the crystal pieces of gTileset_Greenfield, drawn in a palette the tint leaves alone.
 @
-@ Temps: FLAG_TEMP_1 hides Peonia; VAR_TEMP_1 arms her arrival line (1 = armed,
+@ Temps: FLAG_TEMP_2 / FLAG_TEMP_3 show Molly among the flowers / with the boy
+@ (after the story); FLAG_TEMP_1 hides Peonia; VAR_TEMP_1 arms her arrival line (1 = armed,
 @ 2 = done); VAR_TEMP_0 stays 0 for the exit triggers.
 Greenfield_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Greenfield_OnTransition
@@ -19,6 +23,17 @@ Greenfield_MapScripts::
 	.byte 0
 
 Greenfield_OnTransition::
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_3
+	call Greenfield_EventScript_CheckThawed
+	goto_if_ne VAR_RESULT, TRUE, Greenfield_EventScript_CrystalLayout
+	setmaplayoutindex LAYOUT_GREENFIELD_AFTER
+	@ Molly's routine (MollyCast_Place): mornings among the flowers (6,14),
+	@ weekend afternoons playing with the boy (10,28); the rest, the mansion.
+	specialvar VAR_RESULT, MollyCast_Place
+	call_if_eq VAR_RESULT, MOLLY_PLACE_FLOWERS, Greenfield_EventScript_ShowMollyFlowers
+	call_if_eq VAR_RESULT, MOLLY_PLACE_BOY, Greenfield_EventScript_ShowMollyBoy
+Greenfield_EventScript_CrystalLayout::
 	setflag FLAG_TEMP_1
 	setvar VAR_TEMP_1, 0
 	goto_if_ne VAR_HARVEST_KING, HARVEST_KING_ICEROOT, Greenfield_EventScript_TransitionEnd
@@ -28,6 +43,14 @@ Greenfield_OnTransition::
 	setvar VAR_TEMP_1, 1
 Greenfield_EventScript_TransitionEnd::
 	end
+
+Greenfield_EventScript_ShowMollyFlowers::
+	clearflag FLAG_TEMP_2
+	return
+
+Greenfield_EventScript_ShowMollyBoy::
+	clearflag FLAG_TEMP_3
+	return
 
 @ Coming through the gate the player still faces west, into the rocks.
 Greenfield_OnWarp::
@@ -142,7 +165,7 @@ Greenfield_Text_Boy:
 	.string "Molly said she'd play with me after\n"
 	.string "lunch.$"
 
-@ After: their day moved on (plan part 14, step 5; for the author to approve).
+@ After: their day moved on (plan part 14, step 5; approved by the author 03/10/2026).
 Greenfield_Text_WomanAfter:
 	.string "What a long morning that was! I feel\n"
 	.string "like I slept through a whole winter.\p"

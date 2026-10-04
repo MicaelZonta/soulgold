@@ -715,6 +715,7 @@ gSpecials::
 	def_special GardenOrder_Pay
 	def_special GardenCast_Apply
 	def_special GardenCast_IsWeekend
+	def_special MollyCast_Place
 	def_special GardenHearts_Talk
 	def_special GardenLine_Pick
 	def_special GardenNews_Take

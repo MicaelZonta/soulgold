@@ -20,7 +20,12 @@
 @
 @ Temps: FLAG_TEMP_2 hides the Glastrier, FLAG_TEMP_3 Molly in the salon,
 @ FLAG_TEMP_4 Molly at the piano; FLAG_TEMP_5 = Molly already said her piece
-@ this visit; VAR_TEMP_1 arms the gift scene (1 = armed, 2 = done).
+@ this visit; VAR_TEMP_1 arms the gift scene (1 = armed, 2 = done);
+@ FLAG_TEMP_6 Molly in Papa's study at night (13,6), after the story.
+@ After the story Molly keeps a routine (MollyCast_Place): here she is at the
+@ piano on weekday afternoons and in the study at night; mornings and weekend
+@ afternoons she is out in Greenfield. Talking to her is
+@ BerryGarden_EventScript_MollyChat (data/scripts/berry_garden_epilogue.inc).
 Greenfield_Mansion_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, GreenfieldMansion_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, GreenfieldMansion_OnFrame
@@ -30,6 +35,7 @@ GreenfieldMansion_OnTransition::
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_3
 	clearflag FLAG_TEMP_4
+	setflag FLAG_TEMP_6
 	setvar VAR_TEMP_1, 0
 	call GreenfieldMansion_EventScript_CheckThawed
 	goto_if_eq VAR_RESULT, TRUE, GreenfieldMansion_EventScript_TransitionThawed
@@ -40,9 +46,11 @@ GreenfieldMansion_EventScript_ShowGlastrier::
 	clearflag FLAG_TEMP_2
 	return
 
+@ The salon's crystal (LAYOUT_GREENFIELD_MANSION) is gone once the Glastrier left.
 GreenfieldMansion_EventScript_TransitionThawed::
+	setmaplayoutindex LAYOUT_GREENFIELD_MANSION_AFTER
 	checkitem ITEM_ICEROOT_CARROT
-	goto_if_eq VAR_RESULT, FALSE, GreenfieldMansion_EventScript_TransitionEnd
+	goto_if_eq VAR_RESULT, FALSE, GreenfieldMansion_EventScript_MollyRoutine
 	getplayerxy VAR_0x8004, VAR_0x8005
 	goto_if_ne VAR_0x8004, 13, GreenfieldMansion_EventScript_TransitionEnd
 	goto_if_ne VAR_0x8005, 6, GreenfieldMansion_EventScript_TransitionEnd
@@ -50,6 +58,14 @@ GreenfieldMansion_EventScript_TransitionThawed::
 	setflag FLAG_TEMP_4
 	setvar VAR_TEMP_1, 1
 GreenfieldMansion_EventScript_TransitionEnd::
+	end
+
+GreenfieldMansion_EventScript_MollyRoutine::
+	specialvar VAR_RESULT, MollyCast_Place
+	goto_if_eq VAR_RESULT, MOLLY_PLACE_PIANO, GreenfieldMansion_EventScript_TransitionEnd
+	setflag FLAG_TEMP_4
+	goto_if_ne VAR_RESULT, MOLLY_PLACE_STUDY, GreenfieldMansion_EventScript_TransitionEnd
+	clearflag FLAG_TEMP_6
 	end
 
 GreenfieldMansion_OnFrame::
@@ -92,12 +108,9 @@ GreenfieldMansion_EventScript_MollyThawed::
 	release
 	end
 
+@ After the gift: her routine's talk and the battle for fun.
 GreenfieldMansion_EventScript_MollyPiano::
-	msgbox GreenfieldMansion_Text_MollyPiano, MSGBOX_DEFAULT
-	closemessage
-	turnobject LOCALID_MANSION_MOLLY, DIR_NORTH
-	release
-	end
+	goto BerryGarden_EventScript_MollyChat
 
 @ In the salon, after her scene.
 GreenfieldMansion_EventScript_MollySalon::

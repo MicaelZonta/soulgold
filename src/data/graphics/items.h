@@ -1460,6 +1460,12 @@ const u16 gItemIconPalette_ShedShell[] = INCBIN_U16("graphics/items/icon_palette
 const u32 gItemIcon_BigRoot[] = INCBIN_U32("graphics/items/icons/big_root.4bpp.smol");
 const u16 gItemIconPalette_BigRoot[] = INCBIN_U16("graphics/items/icon_palettes/big_root.gbapal");
 
+// The King's carrots (Berry Master, act 5b): .claude/berry_master/prototipo_corceis/cenouras_do_rei.py
+const u32 gItemIcon_IcerootCarrot[] = INCBIN_U32("graphics/items/icons/iceroot_carrot.4bpp.smol");
+const u16 gItemIconPalette_IcerootCarrot[] = INCBIN_U16("graphics/items/icon_palettes/iceroot_carrot.gbapal");
+const u32 gItemIcon_ShaderootCarrot[] = INCBIN_U32("graphics/items/icons/shaderoot_carrot.4bpp.smol");
+const u16 gItemIconPalette_ShaderootCarrot[] = INCBIN_U16("graphics/items/icon_palettes/shaderoot_carrot.gbapal");
+
 const u32 gItemIcon_RazorClaw[] = INCBIN_U32("graphics/items/icons/razor_claw.4bpp.smol");
 const u16 gItemIconPalette_RazorClaw[] = INCBIN_U16("graphics/items/icon_palettes/razor_claw.gbapal");
 

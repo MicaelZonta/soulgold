@@ -919,7 +919,7 @@ static void LoadTilesetPalette(struct Tileset const *tileset, u16 destOffset, u1
         }
         if (MapTint_Mode() != MAP_TINT_NONE)
         {
-            MapTint_Apply(&gPlttBufferUnfaded[destOffset], size >> 1);
+            MapTint_ApplyToBg(destOffset, size >> 1);
             if (!skipFaded)
                 CpuCopy16(&gPlttBufferUnfaded[destOffset], &gPlttBufferFaded[destOffset], size);
         }

@@ -1,11 +1,17 @@
-# Berry Master — testes no jogo, em ordem (Partes 1 a 13)
+# Berry Master — testes no jogo, em ordem (Partes 1 a 17)
 
 > Roteiro único para rodar **de cima para baixo**. Cada teste parte do estado que o
 > anterior deixou, então não pule nenhum sem ler o “Estado ao fim”. Cada um diz qual
 > parte do `PLANO_DE_IMPLEMENTACAO.md` ele verifica.
 >
-> Escrito em 30/09/2026 contra o commit que traz o menu de debug. As falas citadas são
-> as do código; se uma fala sair diferente, isso já é um achado.
+> Escrito em 30/09/2026 contra o commit que traz o menu de debug e revisado depois do
+> reteste completo de 03/10/2026 (Artifact "QA do Berry Master"). As falas citadas são as
+> do código; se uma fala sair diferente, isso já é um achado.
+>
+> **Plaquinha:** desde 03/10/2026 toda fala de personagem do Berry Master (Bram = "Berry
+> Master", Laurel, Tilly, Bugsy, Klara, Peony, Peonia, Avery, Mustard, Calyrex) sai com a
+> plaquinha do nome. Narração (pragas, a placa do canteiro, as cenouras, "{PLAYER}
+> received…") sai sem. Fala de derrota **dentro** da batalha não tem plaquinha.
 
 ---
 
@@ -81,7 +87,18 @@ Berry, open.` ou `Order: … delivered.`
 `Work`: 0 = nenhuma obra; 2, 3 ou 4 = obra paga daquele nível, fica pronta amanhã;
 12, 13 ou 14 = pronta, o Bram ainda não falou dela.
 `Today bits`: número que soma as marcas do dia: 1 = pedido sorteado, 2 = pedido entregue,
-4 = canal regou hoje.
+4 = canal regou hoje, e as das Partes 9–16 (8 Klara vem, 16 Klara resolvida, 32…2048
+batalhas do dia e o Mustard, **4096 falou com o Bram hoje**, 8192 Laurel, 16384 Tilly,
+32768 Peony). Depois de falar com o Bram o valor ganha 4096: o “4” do canal aparece como
+4100.
+
+**Para montar a bolsa cheia.** `Fill Pocket Berries` deixa 3 dos 70 espaços livres, e
+nenhum `Fill…` enche o bolso **Battle Items** (Silver Powder, Never-Melt Ice, Spell Tag):
+os testes que pedem “bolsa cheia” desses itens são montados pela RAM.
+
+**Relógio e savestate.** O relógio do jogo é o real. Um savestate carregado uma hora
+depois volta uma hora adiantado (a noite pode virar manhã): confira a hora no `Status`
+depois de carregar.
 
 ---
 
@@ -128,7 +145,7 @@ Berry, open.` ou `Order: … delivered.`
 ### T07 · Tutorial do Bram (Partes 2 e 3) ok
 - **Passos:** `Berry Master… → Go: Bram's house`. Fale com o **Bram** (o careca, em (4,4)).
 - **Esperado, nesta ordem, sem a caixa fechar e reabrir no meio:**
-  1. “When you follow that path up north… tell you about Berries! … Here. I'll share one
+  1. “Off to Kukui's? It's up the path, north. Can't miss it. … Here. I'll share one
      with you!” → recebe **1 Cheri Berry**.
   2. “One more thing. Every Berry you pick yourself goes in the Book. / Off my trees, off
      any tree on any road. Buying one doesn't count. / I don't hand out what I don't grow,
@@ -150,8 +167,12 @@ Berry, open.` ou `Order: … delivered.`
 - **Esperado:** `Level 1`, `Book 8/67`, `Bram's gift: taken today.`
 
 ### T10 · Laurel antes da Liga (Parte 3)  OK
-- **Passos:** fale com a **Laurel** (em (3,4), ao lado do Bram).
-- **Esperado:** “My husband hands out the easy ones. / I keep the others. …” e nada mais.
+- **Passos:** fale com a **Laurel**: em casa, (3,4), ou na horta, (27,43), nas tardes de dia
+  de semana (Parte 8).
+- **Esperado:** uma fala dela (a do dia, ou uma reação na primeira conversa do dia; ver
+  T58) e **nenhuma** berry rara. “My husband hands out the easy ones. / I keep the
+  others. …” é a reação de segunda-feira antes da Liga, quando nenhuma de prioridade
+  maior vale.
 
 **Estado ao fim do bloco A:** tutorial feito, nível 1, Livro 8, presente de hoje já pego.
 
@@ -207,8 +228,9 @@ Berry, open.` ou `Order: … delivered.`
 - **Passos:**
   1. Na Route 30, árvore de Pecha em (30,4) (norte da rota, perto da casa do Mr. Pokémon):
      colher se estiver madura.
-  2. Vá ao **WorldHub** (pela casa do jogador em New Bark). Na horta de árvores dele, a
-     árvore em (4,31) é **Oran**: colha.
+  2. Vá ao **WorldHub** (`warp 28 19 0`; a pé não há caminho: as portas de New Bark,
+     (16,7) e (3,7), ficam cercadas de árvores). Na horta de árvores dele, a árvore em
+     (4,31) é **Oran**: colha.
 - **Esperado:** as duas funcionam como antes. A Oran do WorldHub dá **Oran** e, depois
   de colhida, volta sozinha com o tempo (`Clock… → +24 hours` e olhe de novo).
 - **Atenção:** no QA de 03/10/2026 a Oran nunca aparecia (16 slots de objeto cheios).
@@ -238,8 +260,8 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
      colheita cabe nela.
   3. Plante uma Sitrus no A, `Ripen the garden`, colha.
   4. `Status`.
-- **Esperado:** “The Bag's Berries Pocket is full. / The Sitrus Berry couldn't be taken.” e
-  o Livro **continua 8**.
+- **Esperado:** “The Bag's Berries Pocket is full. / The Sitrus Berries couldn't be
+  taken.” (singular se a colheita for de 1) e o Livro **continua 8**.
 - **Observação:** se a colheita for de só 1 berry, ela cabe (998 + 1). Nesse caso,
   plante de novo e repita.
 - Depois: `PC/Bag… → Clear Bag` e dê de novo a Squirtbottle (722) (o Clear Bag do passo 2
@@ -268,15 +290,16 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
 - **Passos:** `Book of Berries… → 32`. Saia da casa e entre de novo. Fale com o Bram.
 - **Esperado:** dois prêmios na mesma conversa, nesta ordem: **20** → 3 Rich Mulch;
   **30** → 3 Surprise Mulch (o 32 não é marco; o próximo é 40). Depois o presente (ou
-  “That's your two…”) e, no fim, a oferta de reforma (responda **No**). `Status`: `Paid 30`.
+  a fala do dia) e, no fim, a oferta de reforma (responda **No**). `Status`: `Paid 30`.
 
 ### T21 · Marco com a bolsa cheia não se perde
 - **Passos:**
   1. `Book of Berries… → 60 (last milestone)`.
   2. `PC/Bag… → Fill Pocket Items` (999 de cada item comum, adubos incluídos).
   3. Fale com o Bram.
-- **Esperado:** “Let me see that Book of yours... / 40 Berries!…” e em seguida “Your Bag's
-  too full for what I've got for you. I'll keep it. Come back.” `Status`: `Paid 30`
+- **Esperado:** “Let me see that Book of yours... / 40 Berries!… / Here. Something for the
+  garden.” e em seguida “Your Bag's too full for what I've got for you. I'll keep it.
+  Come back.” `Status`: `Paid 30`
   (não andou) e `Milestone owed: 40`.
 - **Passos:** `PC/Bag… → Clear Bag`. Fale com o Bram de novo (mesma visita serve).
 - **Esperado:** 40 → 3 Amaze Mulch; 50 → **Berry Pouch** (item-chave); 60 → 5 Boost
@@ -359,16 +382,19 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
   3. `Go: the garden` de novo. `Status`.
   4. `Go: Bram's house`. `Clock… → +24 hours`. `Status` (ainda dentro da casa).
   5. `Go: the garden`. `Status`.
-- **Esperado:** `Today bits` = **4** em 1, 2 e 3 (o canal regou uma vez, e a marca fica o
-  dia inteiro); **0** em 4 (dia novo, e dentro da casa não há canal); **4** em 5.
+- **Esperado:** o bit do canal (4) ligado em 1, 2 e 3 (o canal regou uma vez, e a marca
+  fica o dia inteiro); **0** em 4 (dia novo, e dentro da casa não há canal); **4** em 5.
+  Se você falou com o Bram no dia, some 4096 (marca de corações): 4100.
 - **Se falhar:** anote os cinco valores.
 
 ### T29 · Meia-noite sem trocar de mapa (opcional, demorado)
-- **Passos:** ajuste o relógio do jogo (`Clock… → +1 hour` várias vezes) até ~23:50.
-  Entre na casa do Bram e **espere dentro** passar da meia-noite (use o avanço rápido do
-  mGBA). Sem sair, fale com o Bram.
-- **Esperado:** ele dá o presente do dia novo (o dia foi percebido na conversa, sem
-  recarregar o mapa).
+- **Passos:** pegue o presente do dia. Acerte o relógio de parede para 23:58
+  (`Utilities… → Time Functions → Set wall clock`; o `Clock…` e o avanço rápido não
+  servem, porque o jogo usa o relógio real). Entre na casa do Bram e **espere dentro**,
+  em tempo real, passar da meia-noite. Sem sair, fale com a **Laurel** (de noite o Bram
+  dorme e só sonha; quem entrega o presente é ela).
+- **Esperado:** a Laurel entrega o presente do dia novo (o dia foi percebido na conversa,
+  sem recarregar o mapa).
 
 ---
 
@@ -387,7 +413,7 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
 ### T32 · Pagar
 - **Passos:** `Give ¥10,000`. **Saia e entre** na casa (a oferta é uma vez por visita).
   Fale com o Bram → **Yes**.
-- **Esperado:** o presente do dia (ou “That's your two…”) vem **antes**; a oferta fecha a
+- **Esperado:** o presente do dia (ou a fala do dia) vem **antes**; a oferta fecha a
   conversa: som de compra, a caixa desce para ¥5,000, “Done deal. Come and look in the
   morning.” e acabou (nada de presente depois). `Status`: `Level 1   Work 2`.
 
@@ -412,15 +438,17 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
 - **Passos:** no menu do T34, **I've got one** → “Go on, then. Which one?” → lista.
   Role a lista inteira e aperte **B**.
 - **Esperado:** a lista tem as berries do Livro (22), em ordem, e B volta ao **sorteio de
-  3** (3 berries + “And don't eat them all. Plant one.…”).
+  3** (3 berries; o “Plant one” é só do tutorial).
 - **Passos:** `Book of Berries… → 67`, `Clock… → New day, keep clock`, fale com o Bram →
   **I've got one** → escolha **Sitrus**.
 - **Esperado:** a lista **não tem Enigma** (66 linhas); “Good pick. Plant it next to
-  something it gets along with.” → **1 Sitrus**. Falar de novo: “That's your three for
-  today.…”
+  something it gets along with.” → **1 Sitrus**. Falar de novo: a fala do dia, sem
+  presente.
 
 ### T36 · Nível 3: primeiro falta ajuda, depois o canal
-- **Passos:** `Book of Berries… → 22`. Confira `Act 1 done: toggle` em “back to state 0”.
+- **Passos:** `Book of Berries… → 22`. Confira `Act 1 done: toggle` em “back to state 0”
+  (o estado 0 é antes do prólogo: na próxima conversa o Bram repete o prólogo antes da
+  fala abaixo; para não sujar, use `Story… → 1`).
   Saia e entre na casa, fale com o Bram. Fale de novo.
 - **Esperado:** na primeira conversa, “I've got the next thing in mind for the garden.
   But it's more than one old man can dig. I'd need somebody to help.” Na segunda (mesma
@@ -443,7 +471,7 @@ Volte para o nível 1 para o bloco C: `Garden level… → 1 Backyard Plot`.
   morning.” (com ¥0).
 - **Passos:** `Clock… → +24 hours`, fale com o Bram.
 - **Esperado:** “Bugsy finished his Bug Hotel last night. Hollow stems, bark, a pile of
-  stones... / He means more bugs. He's happy about more bugs.” `Status`: `Level 4`. Nas
+  stones... / It means more bugs. He's happy about more bugs.” `Status`: `Level 4`. Nas
   próximas conversas, nenhuma oferta (acabaram as reformas do Bram).
 
 ### T38 · Save antigo: tutorial feito antes de a horta existir (Partes 2 e 3)
@@ -498,7 +526,7 @@ comum). Os pedidos são lidos no `Status` (última linha).
 - **Passos:** `Order: new common`, fale com o Bram (anúncio). Dê-se as berries pedidas
   (`Give item`: Cheri = 514 e as outras em sequência, na ordem da bolsa; Aguav = 527), fale com ele, **No** no “Hand them over?”, e de novo, **Yes**.
 - **Esperado:** **No** → ele não tira nada e a conversa segue. **Yes** → as berries saem,
-  agradecimento do cliente, “{nome} received ¥N.” com o valor da tabela × quantidade,
+  o Bram agradece pelo cliente (“That's the lot! Here's your pay.”…), “{nome} received ¥N.” com o valor da tabela × quantidade,
   e 1 Growth ou Damp Mulch. `Status`: `…, delivered.` Falar de novo: nada de pedido.
 
 ### T44 · Bolsa sem espaço para o adubo
@@ -516,7 +544,11 @@ comum). Os pedidos são lidos no `Status` (última linha).
   = Rawst ao lado de Leppa); na segunda, sem dica.
 - **Passos:** plante Y e Z lado a lado na horta, `Ripen` até sair a X (ou dê-se a X), entregue.
 - **Esperado:** “That's the X Berry! Hand it over?” (singular), pagamento em dobro
-  (Aguav: ₽300) e **Surprise Mulch**.
+  (Aguav: ₽300) e **Surprise Mulch**. `Status`: `Order: 1 X Berry, delivered.` (sem
+  “DISCOVERY” depois de entregue).
+- **Passos:** de noite, com um pedido de descoberta aberto, fale com a Laurel em casa.
+- **Esperado:** a dica numa fala do caderno (banco F) e a conversa **termina** ali; o “I'm
+  reading. You've had your page.” só na conversa seguinte (corrigido em 03/10/2026).
 
 ### T46 · Dia seguinte, pedido novo
 - **Passos:** com um pedido entregue, `Clock… → +24 h`, entre na casa e fale com o Bram.
@@ -546,8 +578,9 @@ sábado).
 - **Esperado:** horta vazia. Casa: Bram à mesa **virado para ela**; falando com ele, uma
   fala de sonho (“Zzz…”), e ele **não** se vira para você; Laurel à mesa.
 - **Passos:** fale com a Laurel. Saia e entre, fale de novo.
-- **Esperado:** na primeira conversa da visita, uma receita do caderno (“X. Y beside Z.
-  Touching, side by side…”), com Y e Z no seu Livro e X fora dele; na segunda, “I'm
+- **Esperado:** na primeira conversa da visita, uma receita do caderno numa das falas do
+  banco F (“X. Y beside Z. Touching…”, “You want something. Fine. X. / Plant Y by Z…”),
+  com Y e Z no seu Livro e X fora dele; na segunda, “I'm
   reading. You've had your page.”; depois de sair e entrar, outra receita (pode repetir).
 
 ### T49 · O presente à noite
@@ -568,10 +601,13 @@ sábado).
 - **Passos:** `Clock… → +24 hours` até a Tilly aparecer (de manhã em casa, à tarde na
   horta).
 - **Esperado:** sábado/domingo de manhã: Tilly na cadeira azul da casa (“Grandpa's out
-  watering! I'm eating toast…”). À tarde: Tilly na banquinha (24,41) com a fala do dia,
-  “Buy some! Buy LOTS!” e a loja: Growth, Damp, Stable, Gooey Mulch (₽200). Ao sair da
-  loja: “Come back next weekend! Bring money!”. A Laurel **não** está na horta (dia de
-  forno): em casa, na primeira conversa do dia, “Bread day. Don't open the oven…”.
+  watering! I'm eating toast…”). À tarde: Tilly na banquinha (24,41) com a fala do dia.
+  Com o Ato 1 feito vem “Mulch, or a battle? Mulch is cheaper.” e o menu **Buy mulch /
+  Battle / Bye** (Parte 11); antes dele, direto à loja. Buy mulch → “Buy some! Buy LOTS!”
+  e a loja: Growth, Damp, Stable, Gooey Mulch (₽200). Ao sair da loja: “Come back next
+  weekend! Bring money!”. A Laurel **não** está na horta (dia de forno): em casa, na
+  primeira conversa do dia, “Bread day. Don't open the oven…” — **com alguma cova
+  plantada** (horta vazia dá “Empty beds…”, que tem prioridade; ver T58).
 
 ### T52 · Loja no nível 4
 - **Passos:** `Garden level… → 4`, fale com a Tilly num fim de semana à tarde.
@@ -617,9 +653,12 @@ conversa do dia** pode vir uma **reação** no lugar da fala do dia.
 - **Esperado:** de tarde, uma fala do banco B (“Seed day. Sit down…”, “I've got a seed
   here I can't name…”); de manhã, do banco A (“Water before the sun's up…”, “I talk to the
   trees…”). A mesma fala o dia todo; com `Hearts… → 12`, também as falas 8–10 aparecem
-  ao longo dos dias.
+  ao longo dos dias. Para virar a fala do dia use `+24 hours`: o `New day, keep clock` zera as
+  marcas do dia mas não muda o contador de dias, e a fala fica a mesma.
 
 ### T58 · Reações da Laurel
+- **Prioridade:** erva num canteiro > horta toda vazia > dia de pão > segunda antes da
+  Liga. Para ver as de baixo, plante algo e arranque as ervas (elas nascem sozinhas).
 - **Esperado, na primeira conversa do dia (de manhã ou à tarde, nunca à noite):**
   - segunda-feira, antes da Liga: “My husband hands out the easy ones. / I keep the
     others…”;
@@ -651,7 +690,8 @@ conversa do dia** pode vir uma **reação** no lugar da fala do dia.
 ### T62 · Reações da manhã do Bram
 - **Esperado, de manhã, na primeira conversa do dia:** domingo — “Sunday! Tilly's
   selling out front this afternoon…”; terça e quinta, com o Ato 1 feito — “Bugsy's coming
-  today…”.
+  today…”. No primeiro dia depois de ligar o Ato 1 pelo toggle sai antes a fala única
+  “BUGS? In MY beds?”: o “Bugsy's coming” fica para a terça/quinta seguinte.
 
 ### T63 · Tilly e Bugsy
 - **Esperado:** Tilly na banquinha diz uma fala do banco G antes da loja (reações: Livro
@@ -671,8 +711,9 @@ já passou de “plantada”: use `Berry Master… → Grow garden 1 stage` ante
 ### T64 · Praga na horta
 - **Passos:** plante uma berry num canteiro, `Grow garden 1 stage`, `Give map trees
   pests`, fale com a planta.
-- **Esperado:** uma narração do banco P (“Something is nibbling at the leaves!”, “A tiny
-  face peeks out…”), depois batalha selvagem. Nível `10 + 4 × insígnias` (teto 60). Cor da
+- **Esperado:** uma narração do banco P, sem plaquinha (“Something is nibbling at the
+  leaves!”, “The branches are shaking...”, “A tiny face peeks out…”), depois batalha
+  selvagem. Nível `10 + 4 × insígnias` (teto 60). Cor da
   berry → praga: vermelha de dia Ledyba (de noite Spinarak); azul/roxa Blipbug (noite
   Volbeat); rosa Cutiefly (noite Illumise); verde Burmy (noite Kricketot); amarela Combee
   (noite Venonat).
@@ -712,7 +753,9 @@ prêmio só na vitória. Os times acompanham o nível do seu time (sempre, como 
   **Buy mulch / Battle / Bye**. Battle → “Battle time! My bugs have names…” → Bug Catcher
   Tilly (Mr. Roly e Buzzbelle; com a horta no nível 3–4 também Pebbles e Squiggles; no 5 o
   time evoluído). Vencer: “You won! Here, two from the shop…” e 2 de um adubo dela.
-  Perder: “Mr. Roly WINS!…”, time curado. De novo no mesmo dia: “Mr. Roly needs a nap…”.
+  Perder: “Mr. Roly WINS!…”, time curado. Na batalha, a Tilly ainda usa o retrato de
+  Picnicker (ela não tem arte própria); Klara, Peony, Peonia, Avery e Mustard usam os
+  retratos próprios desde 03/10/2026. De novo no mesmo dia: “Mr. Roly needs a nap…”.
   Sem o Ato 1 (estado 0): só a loja, sem menu.
 
 ### T70 · Bugsy
@@ -727,10 +770,12 @@ prêmio só na vitória. Os times acompanham o nível do seu time (sempre, como 
 - **Esperado:** a Klara de pé na frente de um canteiro maduro, virada para ele.
 
 ### T72 · Perder para a Klara
-- **Esperado:** abertura (uma de 10, ex.: “Oh, it's YOU. The Berry police.”), batalha,
-  derrota sem blackout, uma fala dela levando o canteiro (“Ooh, this one's heavy!…”),
-  fade e ela some; o canteiro fica vazio, **sem** gráficos corrompidos no Bram. O Bram,
-  na conversa seguinte, comenta (“She took the WHOLE bed?…”).
+- **Esperado:** abertura (uma de 10, ex.: “Oh, it's YOU. The Berry police.”), batalha
+  (retrato da Klara), derrota sem blackout, uma fala dela levando o canteiro (“Ooh, this
+  one's heavy!…”), fade e ela some; o canteiro fica vazio, **sem** gráficos corrompidos
+  no Bram. O Bram comenta (“She took the WHOLE bed?…”) na primeira conversa livre: falas
+  únicas pendentes (“BUGS? In MY beds?”, se o estado veio do toggle) e o presente vêm
+  antes. Monte o F6 com `Story… → 4` para não cair nisso.
 
 ### T73 · Vencer a Klara
 - **Esperado:** uma fala de derrota dela, ela some, o canteiro fica. O Bram: “You chased
@@ -752,8 +797,8 @@ elas ou use o menu de flags do debug (`FLAG_BADGE02_GET`, `FLAG_BADGE07_GET`).
 - **Passos:** `Reset Berry Master`, tutorial com o Bram.
 - **Esperado:** no fim da conversa, com a Laurel na mesa: “Now that's the talk…” e a troca
   “Not the patch by the door.” / “…Not the patch by the door.” / “That one's mine.” (com
-  plaquinhas). Sem a Laurel em casa: o Bram sozinho, “…That one's Laurel's. Don't ask me
-  why. I asked once.” `Status`: estado 1.
+  plaquinhas). Sem a Laurel em casa: o Bram sozinho, “And not the patch by the door.
+  That one's Laurel's. / Don't ask me why. I asked once.” `Status`: estado 1.
 
 ### T76 · Ato 1a — a primeira praga
 - **Passos:** estado 1; vença ou capture uma praga na horta, de dia, com a Laurel lá.
@@ -772,8 +817,8 @@ elas ou use o menu de flags do debug (`FLAG_BADGE02_GET`, `FLAG_BADGE07_GET`).
 
 ### T79 · Ato 2 — o visitante da noite
 - **Passos:** estado 4, horta nível 3, de noite; entre na casa do Bram e saia.
-- **Esperado:** ao sair, um cavalo escuro no canteiro B; exclamação, ele vira, grita, flash
-  e foge pelo lago; “Something dark and tall…” e “Hoofprints…”. Estado 5. Falar com ele
+- **Esperado:** ao sair, um cavalo escuro no canteiro B; exclamação **na hora** (até
+  03/10/2026 havia ~7 s parados antes dela), ele vira, grita, flash e foge pelo lago; “Something dark and tall…” e “Hoofprints…”. Estado 5. Falar com ele
   (chegando pelo outro lado) dá a mesma cena. Na manhã seguinte, a Laurel: “You were out
   late…” (uma vez).
 
@@ -793,7 +838,8 @@ elas ou use o menu de flags do debug (`FLAG_BADGE02_GET`, `FLAG_BADGE07_GET`).
   de dia, Route 30.
 - **Esperado:** a Laurel ajoelhada em (23,39), olhando o broto (não está em casa). Falando
   com ela: “… / It came up.”, o Bram sai pela porta e para ao lado, o diálogo dos dois
-  (plaquinhas), “Go on, sprout. Give us a minute.”, recarga; estado 8. Na noite seguinte:
+  (plaquinhas), “Go on, sprout. Give us a minute.” (plaquinha Berry Master), recarga;
+  estado 8. Na noite seguinte:
   “I wrote to Freezington…”. Nas manhãs de segunda, quarta, sexta e domingo, cartas
   (“From Honey. …”, “From Kurt. …”).
 
@@ -805,10 +851,12 @@ elas ou use o menu de flags do debug (`FLAG_BADGE02_GET`, `FLAG_BADGE07_GET`).
 vencidos.
 
 ### T83 · Ato 5 — o Rei
-- **Passos:** entre na casa do Bram e saia (ou fale com o Peony/Calyrex no canteiro).
+- **Passos:** entre na casa do Bram e saia, ou fale com o Peony **ou** com o Calyrex no
+  canteiro (os dois levam à porta e à cena; até 03/10/2026 o Peony respondia como
+  hóspede).
 - **Esperado:** o jogador desce um passo; Peony (“Auntie Laurel! Peony here!…”), flash,
-  “???” falando por ele, o Calyrex come a Enigma (o canteiro esvazia **sem** listras nos
-  NPCs), “I am Calyrex…”, flash e ele some; a Laurel sai da porta e para ao lado do Peony;
+  “???” falando por ele, o Calyrex come a Enigma (a planta **some na hora** do canteiro,
+  sem listras nos NPCs; até 03/10/2026 ela ficava desenhada até a recarga), “I am Calyrex…”, flash e ele some; a Laurel sai da porta e para ao lado do Peony;
   a Peonia chega correndo do sul; as falas das sementes; recarga. Estado 9.
 
 ### T84 · As sementes
@@ -819,8 +867,9 @@ vencidos.
 
 ### T85 · A cenoura
 - **Passos:** `Clock… → +24 hours`, de noite, a placa.
-- **Esperado:** “Feathery leaves…” e a **Iceroot Carrot** (ou Shaderoot) no bolso de
-  itens-chave. De dia: “…waiting for the dark.” Depois: “The soil is resting…”. Na manhã
+- **Esperado:** de noite, a colheita do T87b e a **Iceroot Carrot** (ou Shaderoot) no
+  bolso de itens-chave. De dia: “Feathery leaves have come up. / They seem to be waiting
+  for the dark.” Depois: “The soil is resting…”. Na manhã
   seguinte ao plantio, a Laurel: “You picked. Good…”.
 
 ### T86 · Os hóspedes
@@ -844,6 +893,18 @@ recanto oeste das Ruins of Alph, (2,26)–(2,27), na área da câmara do Kabuto 
 pela Union Cave B1F; no debug, `warp 24 5 8` e dois passos). Para o Glastrier, um time
 que aguente um Lv60 e Poké Balls.
 
+### T87b · As cenouras no canteiro
+- **Passos:** estado 9; na placa do canteiro (23,38), plante a Iceroot; recarregue o mapa.
+  Vire o dia (`Clock… → +24 hours`); veja de dia e de noite; colha à noite. Repita com a
+  Shaderoot.
+- **Esperado:** plantada: marca de geada (Iceroot) ou de sombra (Shaderoot) no solo. Pronta,
+  de dia: folhas fechadas e “They seem to be waiting for the dark.”; à noite: folhas
+  acesas. Colhendo: “The leaves glitter with frost, and the cold bites into your fingers.”
+  (Shaderoot: “The leaves glow a faint violet. Your hand casts no shadow over them.”), “You
+  pull, and something long and pale (dark) comes up out of the soil!”. Colhida: a planta
+  some, “Obtained the Iceroot Carrot!” com o ícone próprio e “Pulled at night. Its frost
+  never quite melts.” (Shaderoot: “It casts no shadow at all.”).
+
 ### T88 · Portão fechado
 - **Passos:** sem a Iceroot (ou com o estado 11), entre no recanto.
 - **Esperado:** “Between the rocks, the light bends… / …It won't let you by.” e o
@@ -852,7 +913,8 @@ que aguente um Lv60 e Poké Balls.
 ### T89 · Portão aberto e a chegada
 - **Passos:** estado 10 com a Iceroot; entre no recanto.
 - **Esperado:** “The Iceroot Carrot in your Bag turns cold. / The glass between the rocks
-  gives way…”, Greenfield em (1,12) virado para a cidade, tudo em tom de cristal. A Peonia
+  gives way…”, Greenfield em (1,12) virado para a cidade, desbotada e quase branca, com cristais
+  brancos de reflexo de arco-íris pela grama e flores de vidro (os cristais não perdem a cor). A Peonia
   (3,12) vira e diz “It's… it's all glass… The TREES are glass. / Freezington's colder,
   though. …Okay, it isn't.” e volta a olhar a cidade. Falando com ela: “I'll keep watch out
   here…”.
@@ -880,14 +942,22 @@ que aguente um Lv60 e Poké Balls.
 - **Passos:** a mesa (14,3), de (14,4).
 - **Esperado:** “A note in Professor Hale's hand:” e a nota entre aspas curvas.
 
+### T93b · Salão de cristal, saguão quente
+- **Passos:** antes do estado 10, suba até (13,8); depois (4,10) e (14,18). Estado 10:
+  volte ao salão. Estado 12: volte de novo.
+- **Esperado:** salão vitrificado com crosta de cristal na parede, pilares, aglomerados e
+  geada; no corredor (4,10), meia geada; escada e saguão com as cores da casa, Molly ao
+  piano. No estado 10 o Glastrier dorme sobre a cama de cristal (13,5). No 12 o salão é de
+  madeira, sem cristal (`LAYOUT_GREENFIELD_MANSION_AFTER`).
+
 ### T94 · Glastrier: recusar, fugir, derrotar
 - **Passos:** de (13,6), fale com o Glastrier. No; depois Yes e fuja; depois Yes e
   derrote sem capturar.
 - **Esperado:** “Offer it the Iceroot Carrot?”; No fecha. Yes: “The great horse opens one
   eye…”, Glastrier Lv60. Fugindo ou derrotando: “The great horse lowers its head onto the
   crystal again. / It isn't going anywhere. Neither is the cold.”, ele continua ali e a
-  cenoura continua na bolsa. Com a bolsa sem espaço para o Never-Melt Ice: “Your Bag is
-  too full…” e nada de batalha.
+  cenoura continua na bolsa. Com a bolsa sem espaço para o Never-Melt Ice (bolso Battle
+  Items, que só se enche pela RAM): “Your Bag is too full…” e nada de batalha.
 
 ### T95 · Captura, Molly e o Never-Melt Ice
 - **Esperado:** capturado, o mapa recarrega com o jogador em (13,6), sem o Glastrier; a
@@ -895,7 +965,8 @@ que aguente um Lv60 e Poké Balls.
   out of tune… / I think I love it.” A Iceroot sai da bolsa. Estado 12.
 
 ### T96 · Greenfield depois
-- **Esperado:** Greenfield com a cor normal; moradora “What a long morning that was!…”,
+- **Esperado:** Greenfield com a cor normal e sem nenhum cristal nem flor de vidro (layout
+  `GREENFIELD_AFTER`); moradora “What a long morning that was!…”,
   velho “Well, look at that. They opened…”, menino “Molly played with me!…”; portas “The
   door is locked. Someone inside is laughing…”; sem a Peonia. A borda oeste (x 0) leva às
   ruínas (3,26), e o portão agora abre direto, sem fala. Molly ao piano (depois de
@@ -914,6 +985,8 @@ direto: `warp 24 122 1` (pé da escada). O Tomo acompanha o Pokémon mais forte 
 leve um time completo.
 
 ### T98 · O Dance Theater e a dança
+- **Atenção:** com `VAR_ECRUTEAK_CITY_THEATER` em 1 a primeira entrada roda a cena antiga
+  dos Rockets e leva ao palco; passe por ela (ou acerte a var) antes.
 - **Esperado:** Peonia, Morty e Eusine no corredor (9–11,13) só à noite no estado 11. Com a
   Shaderoot: Morty, Eusine e Peonia (plaquinhas), “Are you ready?” — No: “The night is
   long…”; Yes: a dança (narração, clarões), “The last ribbon falls.” e o 1F em (15,21) com
@@ -943,7 +1016,9 @@ leve um time completo.
 ### T104 · Captura, o despertar e a Spell Tag
 - **Esperado:** o Spectrier some; “The smoke thins…”; B1F (16,13), Morty sobe até (17,13):
   “Welcome back. You were gone three minutes…”, Spell Tag, “I'm staying a while…”. A
-  Shaderoot sai da bolsa. Estado 13. Se a cena for cortada, o Morty do ginásio entrega.
+  Shaderoot sai da bolsa. Estado 13. Se a cena for cortada, o Morty do ginásio entrega
+  com falas próprias: “There you are. You left the tower before I could give you this.”
+  e “…I go up to the tower most nights now.”
 
 ### T105 · A lápide do Tomo
 - **Esperado:** lanterna (36,25) do quintal dos Sábios: antes, “A stone lantern…”; depois
@@ -991,7 +1066,9 @@ O epílogo e o pós-história também saem de `Story… → 14` e `→ 15`. Para
 
 ### T113 · Avery às sextas
 - **Esperado:** sexta de dia em (23,39): linha do dia e convite; com o Calyrex no time, a cena
-  com a Laurel; batalha (sem whiteout), uma por dia; vitória dá 1 berry rara do Livro.
+  com a Laurel; batalha (retrato do Avery, sem whiteout), uma por dia; vitória dá 1 berry
+  rara do Livro. Sem nenhuma rara no Livro: “Laurel says your Book has no rare ones yet.
+  Disappointing. / Take this instead…” e 1 berry comum do Livro.
 
 ### T114 · O Calyrex no canteiro
 - **Esperado:** de noite, com o Calyrex no time, uma fala dele (banco N) antes do menu da
@@ -1001,6 +1078,25 @@ O epílogo e o pós-história também saem de `Story… → 14` e `→ 15`. Para
 - **Esperado:** noites de fim de semana: Peony (31,39) e Peonia (31,38) no lago, falas e
   batalhas. Domingo de manhã, 1 em 4: o Mustard (26,44), banco S e batalha. Dias de fim de
   semana: Peonia (25,41) na banquinha e a dupla com a Tilly (2 Pokémon), uma por dia.
+
+### T116 · A rotina da Molly e a luta por diversão
+- **Preparação:** `Story… → 12 Glastrier caught` (ou 15) e o Never-Melt Ice já entregue
+  (a Iceroot fora da bolsa). Para ver cada horário, `Clock…`; Greenfield fica no fim do
+  portão das Ruínas (agora aberto direto).
+- **Esperado:**
+  - **Manhã (6–10h):** Molly em Greenfield entre as flores (6,14), olhando para baixo; o
+    piano da mansão vazio.
+  - **Tarde (10–19h), dia de semana:** ao piano no saguão (16,17).
+  - **Tarde, sábado e domingo:** em Greenfield (10,28), de frente para o menino (10,29).
+  - **Noite (19–6h):** no escritório do pai, no salão (13,6), olhando para cima.
+  - Antes do Glastrier, ou com o presente ainda devido: sempre ao piano, como na história.
+- **Conversa:** a fala do lugar (plaquinha Molly), “Papa's Unown never liked to lose…
+  A battle? Just for fun.” (Yes/No). No: “Another time, then…”. Yes: batalha com a Molly
+  (Lady Molly, retrato próprio; Unown, Ursaring, Donphan, Mantine, Ampharos, Glaceon, no
+  nível do time). Vencer: “That was fun. Come back and do it again…”, sem prêmio. Perder:
+  sem whiteout, “I won! …Your Pokémon look tired. There. All better.” e o time curado.
+  Falar de novo logo depois: a mesma oferta — **sem limite por dia**. No fim ela volta a
+  olhar para o que fazia.
 
 ---
 
@@ -1012,7 +1108,9 @@ O epílogo e o pós-história também saem de `Story… → 14` e `→ 15`. Para
 - **Passos:** fale com qualquer personagem que use plaquinha fora da horta (por exemplo,
   o Prof. Elm no laboratório de New Bark).
 - **Esperado:** a plaquinha aparece com o nome certo, sem letra estranha logo depois do
-  nome e sem quebra de linha fora do lugar.
+  nome e sem quebra de linha fora do lugar. Desde 03/10/2026 as falas do Elm no
+  laboratório (“Kukui is staying in a house on Route 30…”, “I'm counting on you!”) também
+  têm a plaquinha **Elm**.
 - **Passos:** jogo novo (ou `NewBarkTown_PlayersHouse_1F` com `VAR_NEWBARK_TOWN_STATE` 1):
   desça a escada e deixe a mãe falar.
 - **Esperado:** **todas** as falas da mãe com retrato têm a plaquinha **Mom**, inclusive

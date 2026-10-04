@@ -7,6 +7,7 @@
 #include "list_menu.h"
 #include "malloc.h"
 #include "money.h"
+#include "palette.h"
 #include "pokedex.h"
 #include "script_menu.h"
 #include "test/test.h"
@@ -553,6 +554,15 @@ TEST("Laurel is in the garden on weekday afternoons and bakes at home on weekend
     EXPECT_EQ(PLACE(LAUREL, NIGHT, WED), GARDEN_PLACE_HOUSE);
 }
 
+TEST("Molly keeps a routine only after the white path and the gift")
+{
+    EXPECT_EQ(MollyCast_PlaceOf(GARDEN_PERIOD_NIGHT, WEEKDAY_SAT, FALSE), MOLLY_PLACE_PIANO);
+    EXPECT_EQ(MollyCast_PlaceOf(GARDEN_PERIOD_MORNING, WEEKDAY_MON, TRUE), MOLLY_PLACE_FLOWERS);
+    EXPECT_EQ(MollyCast_PlaceOf(GARDEN_PERIOD_DAY, WEEKDAY_WED, TRUE), MOLLY_PLACE_PIANO);
+    EXPECT_EQ(MollyCast_PlaceOf(GARDEN_PERIOD_DAY, WEEKDAY_SUN, TRUE), MOLLY_PLACE_BOY);
+    EXPECT_EQ(MollyCast_PlaceOf(GARDEN_PERIOD_NIGHT, WEEKDAY_SAT, TRUE), MOLLY_PLACE_STUDY);
+}
+
 TEST("Tilly only comes on weekends and goes home at night")
 {
     EXPECT_EQ(PLACE(TILLY, DAY, FRI), GARDEN_PLACE_AWAY);
@@ -854,6 +864,22 @@ TEST("Greenfield's crystal tint is pale blue and keeps light and dark")
     EXPECT_GE((pal[1] >> 10) & 0x1F, 30);                         // white stays near white
     EXPECT_GT((pal[2] >> 10) & 0x1F, (pal[2] & 0x1F) / 2);       // red loses to blue
     EXPECT_GT((pal[3] >> 10) & 0x1F, 10);                        // green turns icy
+}
+
+TEST("Greenfield's tint leaves the crystal pieces' palette alone")
+{
+    gSaveBlock1Ptr->location.mapGroup = MAP_GROUP(MAP_GREENFIELD);
+    gSaveBlock1Ptr->location.mapNum = MAP_NUM(MAP_GREENFIELD);
+    VarSet(VAR_GARDEN_NEWS, 0);
+    gPlttBufferUnfaded[6 * 16 + 1] = RGB(31, 0, 0);
+    gPlttBufferUnfaded[GREENFIELD_CRYSTAL_PAL * 16 + 1] = RGB(31, 0, 0);
+    gPlttBufferUnfaded[8 * 16 + 1] = RGB(31, 0, 0);
+    MapTint_ApplyToBg(0, 13 * 16);
+    EXPECT_NE(gPlttBufferUnfaded[6 * 16 + 1], RGB(31, 0, 0));
+    EXPECT_EQ(gPlttBufferUnfaded[GREENFIELD_CRYSTAL_PAL * 16 + 1], RGB(31, 0, 0));
+    EXPECT_NE(gPlttBufferUnfaded[8 * 16 + 1], RGB(31, 0, 0));
+    gSaveBlock1Ptr->location.mapGroup = MAP_GROUP(MAP_ROUTE30);
+    gSaveBlock1Ptr->location.mapNum = MAP_NUM(MAP_ROUTE30);
 }
 
 TEST("Greenfield's crystal goes away with the white path")
