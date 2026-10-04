@@ -41,6 +41,9 @@ import rota  # noqa: E402
 MAPA = "Route30"
 PORTA = (26, 40)            # o tile de chegada fica logo abaixo do warp (26,39)
 SO_NA_HORA = {"KLARA", "SPECTRIER"}  # de pe na frente de um canteiro so durante a cena
+# As cenouras do Rei (Ato 5b) ficam EM CIMA do canteiro da Laurel, que ja e tile
+# bloqueado e ja conta como canteiro: nao sao gente na frente de nada.
+PLANTAS_NO_CANTEIRO = {"ICEROOT_PLANT", "SHADEROOT_PLANT"}
 # Posicoes que o C da (GardenCast_ApplyStory, src/berry_garden.c) depois da
 # historia (parte 16): Peony e Peonia no lago, Peonia na banquinha da Tilly.
 # Entram na conta junto com o elenco fixo.
@@ -56,7 +59,8 @@ def main():
         pos = (o["x"], o["y"])
         if o["graphics_id"] == "OBJ_EVENT_GFX_BERRY_TREE" and o["x"] in AREA[0] and o["y"] in AREA[1]:
             canteiros.append(pos)
-        elif o["flag"].startswith("FLAG_TEMP_HIDE_") and o["graphics_id"] != "OBJ_EVENT_GFX_BERRY_TREE":
+        elif o["flag"].startswith("FLAG_TEMP_HIDE_") and o["graphics_id"] != "OBJ_EVENT_GFX_BERRY_TREE" \
+                and o["flag"][len("FLAG_TEMP_HIDE_"):] not in PLANTAS_NO_CANTEIRO:
             elenco[o["flag"][len("FLAG_TEMP_HIDE_"):]] = pos
     erros = []
     for quem, pos in elenco.items():
