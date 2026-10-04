@@ -24,7 +24,7 @@ Aparece no checklist como:
 
 | Constante | Arquivo |
 |---|---|
-| `OBJ_EVENT_GFX_LEAF` | `graphics/object_events/pics/people/leaf.png` |
+| `OBJ_EVENT_GFX_LEAF` | `graphics/object_events/pics/people/leaf.png` — trocado em 03/10/2026 pela arte da Miused (`.filetransfer/.trainers/Green/`): boneco 16x21, quadro 16x32, 12 quadros, `sAnimTable_StandardAsym`, paleta própria `OBJ_EVENT_PAL_TAG_LEAF` (antes dividia `RED_LEAF` com o Red). Vale também para o avatar FRLG, o Title Defense e a Cerulean Cave |
 
 ### Battle sprite (front pic)
 

@@ -1416,6 +1416,41 @@ static const union AnimCmd *const sAnimTable_AltarRift[] = {
     [ANIM_STD_GO_FASTEST_EAST] = sAnim_AltarRiftLoop,
 };
 
+// O vidro do portao de cristal (Ruins of Alph): o painel parado, depois o
+// reflexo descendo em quatro quadros; o painel fica mais tempo para o brilho
+// parecer passar de vez em quando, e nao girar sem parar.
+static const union AnimCmd sAnim_CrystalGlintLoop[] = {
+    ANIMCMD_FRAME(0, 40),
+    ANIMCMD_FRAME(1, 6),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_FRAME(4, 6),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_CrystalGlint[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_FACE_NORTH] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_FACE_WEST] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_FACE_EAST] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_SOUTH] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_NORTH] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_WEST] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_EAST] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_CrystalGlintLoop,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_CrystalGlintLoop,
+};
+
 // O portal do Nexus gira no mesmo ritmo da fenda do Altar.
 static const union AnimCmd sAnim_NexusPortalLoop[] = {
     ANIMCMD_FRAME(0, 6),

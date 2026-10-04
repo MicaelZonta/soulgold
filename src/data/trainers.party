@@ -20360,7 +20360,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_KLARA_1 ===
 Name: Klara
 Class: Lass
-Pic: Lass
+Pic: Klara
 Gender: Female
 Music: Hg Girl 1
 Double Battle: No
@@ -20393,7 +20393,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_KLARA_2 ===
 Name: Klara
 Class: Lass
-Pic: Lass
+Pic: Klara
 Gender: Female
 Music: Hg Girl 1
 Double Battle: No
@@ -20426,7 +20426,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_KLARA_3 ===
 Name: Klara
 Class: Lass
-Pic: Lass
+Pic: Klara
 Gender: Female
 Music: Hg Girl 1
 Double Battle: No
@@ -20459,7 +20459,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_PEONY_1 ===
 Name: Peony
 Class: Hiker
-Pic: Hiker
+Pic: Peony
 Gender: Male
 Music: Male
 Double Battle: No
@@ -20492,7 +20492,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_PEONY_2 ===
 Name: Peony
 Class: Hiker
-Pic: Hiker
+Pic: Peony
 Gender: Male
 Music: Male
 Double Battle: No
@@ -20525,7 +20525,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_PEONY_3 ===
 Name: Peony
 Class: Hiker
-Pic: Hiker
+Pic: Peony
 Gender: Male
 Music: Male
 Double Battle: No
@@ -20624,7 +20624,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_HARVEST_KING_TRIAL ===
 Name: Calyrex
 Class: Pkmn Trainer 1
-Pic: Hiker
+Pic: Peony
 Gender: Male
 Music: Male
 Double Battle: No
@@ -20665,7 +20665,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_AVERY_1 ===
 Name: Avery
 Class: Psychic
-Pic: Psychic M
+Pic: Avery
 Gender: Male
 Music: Male
 Double Battle: No
@@ -20698,7 +20698,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_AVERY_2 ===
 Name: Avery
 Class: Psychic
-Pic: Psychic M
+Pic: Avery
 Gender: Male
 Music: Male
 Double Battle: No
@@ -20731,7 +20731,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_AVERY_3 ===
 Name: Avery
 Class: Psychic
-Pic: Psychic M
+Pic: Avery
 Gender: Male
 Music: Male
 Double Battle: No
@@ -20764,7 +20764,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_PEONIA_1 ===
 Name: Peonia
 Class: Picnicker
-Pic: Picnicker
+Pic: Peonia
 Gender: Female
 Music: Female
 Double Battle: No
@@ -20797,7 +20797,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_PEONIA_2 ===
 Name: Peonia
 Class: Picnicker
-Pic: Picnicker
+Pic: Peonia
 Gender: Female
 Music: Female
 Double Battle: No
@@ -20830,7 +20830,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_PEONIA_3 ===
 Name: Peonia
 Class: Picnicker
-Pic: Picnicker
+Pic: Peonia
 Gender: Female
 Music: Female
 Double Battle: No
@@ -20888,7 +20888,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_PEONIA_DUO ===
 Name: Peonia
 Class: Picnicker
-Pic: Picnicker
+Pic: Peonia
 Gender: Female
 Music: Female
 Double Battle: Yes
@@ -20913,7 +20913,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 === TRAINER_GARDEN_MUSTARD ===
 Name: Mustard
 Class: Black Belt
-Pic: Black Belt
+Pic: Mustard
 Gender: Male
 Music: Male
 Double Battle: No
@@ -20966,3 +20966,57 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Dazzling Gleam
 - Megahorn
 - High Horsepower
+
+=== TRAINER_GARDEN_MOLLY ===
+Name: Molly
+Class: Lady
+Pic: Molly Hale
+Gender: Female
+Music: Hg Girl 2
+Double Battle: No
+AI: Smart Trainer
+
+Unown
+Level: 45
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Hidden Power
+
+Ursaring
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Body Slam
+- Crunch
+- Close Combat
+- Play Rough
+
+Donphan
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Earthquake
+- Ice Shard
+- Knock Off
+- Rapid Spin
+
+Mantine
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Scald
+- Air Slash
+- Ice Beam
+- Roost
+
+Ampharos
+Level: 46
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Thunderbolt
+- Dragon Pulse
+- Focus Blast
+- Power Gem
+
+Glaceon
+Level: 47
+IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
+- Ice Beam
+- Shadow Ball
+- Freeze-Dry
+- Calm Mind

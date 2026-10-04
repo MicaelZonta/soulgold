@@ -536,7 +536,7 @@
 #define TRAINER_GARDEN_TILLY_DUO  530  // Berry Master (part 16); was TRAINER_UNUSED_398 (Former TRAINER_MAY_ROUTE_110_MUDKIP; Route 110 legacy trigger removed.)
 #define TRAINER_GARDEN_PEONIA_DUO  531  // Berry Master (part 16); was TRAINER_UNUSED_404 (Former TRAINER_MAY_ROUTE_119_MUDKIP; Route 119 legacy trigger removed.)
 #define TRAINER_GARDEN_MUSTARD  532  // Berry Master (part 16); was TRAINER_UNUSED_410 (Former TRAINER_MAY_ROUTE_103_TREECKO; Route 103 legacy trigger removed.)
-#define TRAINER_UNUSED_399       533  // Former TRAINER_MAY_ROUTE_110_TREECKO; Route 110 legacy trigger removed.
+#define TRAINER_GARDEN_MOLLY    533  // Berry Master, Molly Hale after the white path (rematch for fun); was TRAINER_UNUSED_399 (Former TRAINER_MAY_ROUTE_110_TREECKO)
 #define TRAINER_UNUSED_405       534  // Former TRAINER_MAY_ROUTE_119_TREECKO; Route 119 legacy trigger removed.
 #define TRAINER_UNUSED_411       535  // Former TRAINER_MAY_ROUTE_103_TORCHIC; Route 103 legacy trigger removed.
 #define TRAINER_UNUSED_400       536  // Former TRAINER_MAY_ROUTE_110_TORCHIC; Route 110 legacy trigger removed.

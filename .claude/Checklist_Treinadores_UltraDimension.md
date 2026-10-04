@@ -3,10 +3,11 @@
 > Lista baseada principalmente nos jogos da série principal. Cada item possui uma descrição curta e pode ser marcado com `[x]` conforme você usar, enfrentar, desenhar ou adicionar o personagem ao seu projeto.
 
 <!-- nexus-legenda -->
-> **Checklist do Nexus (Rift Missions).** O `[x]` de cada treinador agora significa **pronto para uso**: tem **sprite de overworld** e **battle sprite** (os dois obrigatórios). Embaixo de cada nome, a linha de status mostra o resto — mugshot, time das Rift Missions, lendário associado, diálogo genérico e diálogo do lendário — e leva à **ficha** do treinador em `.claude/rift_missions/nexus/<região>/`, com as constantes, os arquivos, os IDs de batalha e as flags. Cada treinador tem **uma** ficha, mesmo aparecendo em várias seções. Hoje: **68 de 260** fichas prontas e **68 treinadores jogáveis no Nexus** (time, fala genérica e fala de campeão no código) — todos os prontos. Estado conferido no código em 27/09/2026 (implementação em lote dos 58 que faltavam, a partir das propostas de `POOL_LENDARIOS.md`; build limpo, `nexus_validar_time.py` sem erro novo). A Zossie fica de fora (falta sprite e battle sprite, R-obrigatório).
+> **Checklist do Nexus (Rift Missions).** O `[x]` de cada treinador agora significa **pronto para uso**: tem **sprite de overworld** e **battle sprite** (os dois obrigatórios). Embaixo de cada nome, a linha de status mostra o resto — mugshot, time das Rift Missions, lendário associado, diálogo genérico e diálogo do lendário — e leva à **ficha** do treinador em `.claude/rift_missions/nexus/<região>/`, com as constantes, os arquivos, os IDs de batalha e as flags. Cada treinador tem **uma** ficha, mesmo aparecendo em várias seções. Hoje: **83 de 263** fichas prontas e **68 treinadores jogáveis no Nexus** (time, fala genérica e fala de campeão no código) — todos os prontos menos os do lote de 03/10/2026 (sprites e front pics registrados; falta time e falas). Estado conferido no código em 27/09/2026 (implementação em lote dos 58 que faltavam, a partir das propostas de `POOL_LENDARIOS.md`; build limpo, `nexus_validar_time.py` sem erro novo). A Zossie fica de fora (falta sprite e battle sprite, R-obrigatório).
 >
 > `✅` em Time Rift / Lendário / diálogos = implementado: `TRAINER_NEXUS_*` em `src/data/trainers.party` e `Nexus_EventScript_<Nome>_Fight` / `_ChampionFight` (por lendário, quando o treinador campeia mais de um) em `data/scripts/nexus.inc` (o sorteio do Daily que usa essa ligação ainda não existe). Qual treinador é o campeão de cada lendário: [`POOL_LENDARIOS.md`](rift_missions/nexus/POOL_LENDARIOS.md).
 > `📦` em Battle sprite = **arte pronta em `.filetransfer/.trainers/<Nome>/`, falta registrar no código** (os overworlds desses 17 já foram registrados em 30/09) (skills `converter-sprite`, `adicionar-npc`, `adicionar-grafico-trainer`). `📝` = proposta escrita na ficha, aguardando o autor. Em 30/09/2026 os 17 treinadores com arte nova (Agatha, Lorelei, Jessie e James, Leon, Cynthia, Cyrus, Barry, Gardenia, Shelly, Zinnia, Diantha, Olivia, Hau, Hilda, N, Cheren, Alder) ganharam ficha completa em proposta — time, lendário, 3 falas genéricas, 3 de campeão e as 3 páginas do [Diário do Looker](rift_missions/nexus/DIARIO_LOOKER.md); os 68 jogáveis ganharam as variações 2 e 3 das falas e o diário.
+> Em 03/10/2026 entraram no código os overworlds do lote novo — Allister, Avery, Bea, Dawn, Klara, Lenora, Mustard, Nemona, Nessa, Peonia, Peony, Rosa, Skyla e Molly Hale —, a Leaf e a Shelly ganharam arte nova, e todos ganharam front pic (64x64 + 80x80, `TRAINER_SPRITE_LARGE`); a Leaf ganhou o 80x80. A Molly criança tem só overworld (`OBJ_EVENT_GFX_MOLLY_CHILD`), sem batalha.
 <!-- /nexus-legenda -->
 
 ## Geração I — Kanto
@@ -123,6 +124,8 @@
 
 - [x] **Eusine** — pesquisador e treinador obcecado em encontrar Suicune.
   - [ficha](rift_missions/nexus/johto/eusine.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ✅ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
+- [x] **Molly Hale** — filha do Professor Hale, de Greenfield; adulta no hack, guarda a Mansão Hale (Berry Master).
+  - [ficha](rift_missions/nexus/johto/molly.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Red** — superchefe silencioso encontrado no topo do Mt. Silver.
   - [ficha](rift_missions/nexus/kanto/red.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 
@@ -207,7 +210,7 @@
   - [ficha](rift_missions/nexus/hoenn/archie.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 - [ ] **Matt** — administrador forte e extremamente leal a Archie.
   - [ficha](rift_missions/nexus/hoenn/matt.md) · Sprite ❌ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Shelly** — administradora inteligente envolvida nas operações científicas da equipe.
+- [x] **Shelly** — administradora inteligente envolvida nas operações científicas da equipe.
   - [ficha](rift_missions/nexus/hoenn/shelly.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝 · Diário 📝
 
 ### Outros notáveis
@@ -223,6 +226,8 @@
 
 - [ ] **Barry** — rival hiperativo, competitivo e filho do Frontier Brain Palmer.
   - [ficha](rift_missions/nexus/sinnoh/barry.md) · Sprite ✅ · Battle sprite 📦 · Mugshot ❌ · Time Rift 📝 · Lendário 📝 · Diálogo genérico 📝 · Diálogo lendário 📝 · Diário 📝
+- [x] **Dawn** — protagonista feminina de *Diamond/Pearl/Platinum*.
+  - [ficha](rift_missions/nexus/sinnoh/dawn.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ### Líderes de Ginásio
 
@@ -309,6 +314,8 @@
   - [ficha](rift_missions/nexus/unova/bianca.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Hugh** — rival de *Black 2/White 2* que busca recuperar o Purrloin roubado de sua irmã.
   - [ficha](rift_missions/nexus/unova/hugh.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Rosa** — protagonista feminina de *Black 2/White 2*.
+  - [ficha](rift_missions/nexus/unova/rosa.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ### Líderes de Ginásio
 
@@ -318,16 +325,16 @@
   - [ficha](rift_missions/nexus/unova/chili.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Cress — Água** — o mais calmo e refinado dos irmãos de Striaton.
   - [ficha](rift_missions/nexus/unova/cress.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Lenora — Normal** — arqueóloga, diretora de museu e Líder de Nacrene.
-  - [ficha](rift_missions/nexus/unova/lenora.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Lenora — Normal** — arqueóloga, diretora de museu e Líder de Nacrene.
+  - [ficha](rift_missions/nexus/unova/lenora.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Burgh — Inseto** — artista e Líder de Castelia.
   - [ficha](rift_missions/nexus/unova/burgh.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [x] **Elesa — Elétrico** — modelo famosa e Líder de Nimbasa.
   - [ficha](rift_missions/nexus/unova/elesa.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ✅ · Lendário ✅ · Diálogo genérico ✅ · Diálogo lendário ✅
 - [ ] **Clay — Terra** — empresário da mineração e Líder de Driftveil.
   - [ficha](rift_missions/nexus/unova/clay.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Skyla — Voador** — piloto que administra o Ginásio de Mistralton.
-  - [ficha](rift_missions/nexus/unova/skyla.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Skyla — Voador** — piloto que administra o Ginásio de Mistralton.
+  - [ficha](rift_missions/nexus/unova/skyla.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Brycen — Gelo** — antigo ator e Líder de Icirrus.
   - [ficha](rift_missions/nexus/unova/brycen.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Drayden — Dragão** — prefeito de Opelucid e mentor de Iris.
@@ -586,23 +593,23 @@
   - [ficha](rift_missions/nexus/galar/bede.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Marnie** — rival de Spikemuth apoiada pelo Team Yell.
   - [ficha](rift_missions/nexus/galar/marnie.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Klara — Veneno** — rival de *Sword* no Isle of Armor, ambiciosa e trapaceira.
-  - [ficha](rift_missions/nexus/galar/klara.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Avery — Psíquico** — rival de *Shield* no Isle of Armor, orgulhoso e teatral.
-  - [ficha](rift_missions/nexus/galar/avery.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Klara — Veneno** — rival de *Sword* no Isle of Armor, ambiciosa e trapaceira.
+  - [ficha](rift_missions/nexus/galar/klara.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Avery — Psíquico** — rival de *Shield* no Isle of Armor, orgulhoso e teatral.
+  - [ficha](rift_missions/nexus/galar/avery.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ### Líderes de Ginásio
 
 - [ ] **Milo — Grama** — fazendeiro gentil e primeiro Líder do desafio de Galar.
   - [ficha](rift_missions/nexus/galar/milo.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Nessa — Água** — modelo e poderosa rival esportiva de Sonia.
-  - [ficha](rift_missions/nexus/galar/nessa.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Nessa — Água** — modelo e poderosa rival esportiva de Sonia.
+  - [ficha](rift_missions/nexus/galar/nessa.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Kabu — Fogo** — veterano de Hoenn conhecido por seu treinamento disciplinado.
   - [ficha](rift_missions/nexus/galar/kabu.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Bea — Lutador** — Líder exclusiva de *Sword*, séria e dedicada às artes marciais.
-  - [ficha](rift_missions/nexus/galar/bea.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Allister — Fantasma** — Líder exclusivo de *Shield*, tímido e sempre mascarado.
-  - [ficha](rift_missions/nexus/galar/allister.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Bea — Lutador** — Líder exclusiva de *Sword*, séria e dedicada às artes marciais.
+  - [ficha](rift_missions/nexus/galar/bea.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Allister — Fantasma** — Líder exclusivo de *Shield*, tímido e sempre mascarado.
+  - [ficha](rift_missions/nexus/galar/allister.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Opal — Fada** — veterana que procura um sucessor para seu Ginásio.
   - [ficha](rift_missions/nexus/galar/opal.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Gordie — Pedra** — Líder exclusivo de *Sword* e filho de Melony.
@@ -655,14 +662,14 @@
 
 ### Isle of Armor e Crown Tundra
 
-- [ ] **Mustard** — antigo Campeão de Galar e mestre do Master Dojo.
-  - [ficha](rift_missions/nexus/galar/mustard.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Mustard** — antigo Campeão de Galar e mestre do Master Dojo.
+  - [ficha](rift_missions/nexus/galar/mustard.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Honey** — administradora do dojo e esposa de Mustard.
   - [ficha](rift_missions/nexus/galar/honey.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Peony** — ex-Líder e aventureiro, irmão mais novo de Rose.
-  - [ficha](rift_missions/nexus/galar/peony.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Peonia** — filha de Peony, interessada nas Dynamax Adventures.
-  - [ficha](rift_missions/nexus/galar/peonia.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Peony** — ex-Líder e aventureiro, irmão mais novo de Rose.
+  - [ficha](rift_missions/nexus/galar/peony.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Peonia** — filha de Peony, interessada nas Dynamax Adventures.
+  - [ficha](rift_missions/nexus/galar/peonia.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ### Hisui — *Pokémon Legends: Arceus*
 
@@ -697,8 +704,8 @@
 
 ### Rivais e companheiros
 
-- [ ] **Nemona** — Campeã extremamente entusiasmada por batalhas e principal rival do jogador.
-  - [ficha](rift_missions/nexus/paldea/nemona.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Nemona** — Campeã extremamente entusiasmada por batalhas e principal rival do jogador.
+  - [ficha](rift_missions/nexus/paldea/nemona.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Arven** — filho de Sada ou Turo que procura os Herba Mystica para curar Mabosstiff.
   - [ficha](rift_missions/nexus/paldea/arven.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Penny** — fundadora secreta do Team Star sob o codinome Cassiopeia.
@@ -739,8 +746,8 @@
   - [ficha](rift_missions/nexus/paldea/hassel.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 - [ ] **Geeta — Top Champion** — presidente da Liga Pokémon e da academia de Paldea.
   - [ficha](rift_missions/nexus/paldea/geeta.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
-- [ ] **Nemona — nível Campeão** — já possui o título antes de iniciar uma nova jornada ao lado do jogador.
-  - [ficha](rift_missions/nexus/paldea/nemona.md) · Sprite ❌ · Battle sprite ❌ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
+- [x] **Nemona — nível Campeão** — já possui o título antes de iniciar uma nova jornada ao lado do jogador.
+  - [ficha](rift_missions/nexus/paldea/nemona.md) · Sprite ✅ · Battle sprite ✅ · Mugshot ❌ · Time Rift ❌ · Lendário ❌ · Diálogo genérico ❌ · Diálogo lendário ❌
 
 ### Team Star
 
@@ -849,7 +856,7 @@
 - [ ] **Leon** — Campeão invicto de Galar. → [ficha](rift_missions/nexus/galar/leon.md)
 - [ ] **Marnie** — rival popular ligada a Spikemuth. → [ficha](rift_missions/nexus/galar/marnie.md)
 - [ ] **Volo** — antagonista histórico associado a Giratina. → [ficha](rift_missions/nexus/hisui/volo.md)
-- [ ] **Nemona** — rival Campeã apaixonada por batalhas. → [ficha](rift_missions/nexus/paldea/nemona.md)
+- [x] **Nemona** — rival Campeã apaixonada por batalhas. → [ficha](rift_missions/nexus/paldea/nemona.md)
 - [ ] **Arven** — companheiro central na exploração da Area Zero. → [ficha](rift_missions/nexus/paldea/arven.md)
 - [ ] **Kieran** — rival com uma transformação dramática. → [ficha](rift_missions/nexus/paldea/kieran.md)
 - [ ] **Geeta** — Top Champion de Paldea. → [ficha](rift_missions/nexus/paldea/geeta.md)

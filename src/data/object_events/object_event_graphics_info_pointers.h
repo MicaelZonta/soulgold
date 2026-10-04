@@ -325,6 +325,24 @@ extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Byron;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Fantina;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Cynthia;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_BrendanHoenn;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_MollyChild;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_MollyHale;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_KingsCarrotIce;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_KingsCarrotShade;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_CrystalGlint;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Skyla;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Rosa;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Peony;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Peonia;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Nessa;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Nemona;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Mustard;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Lenora;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Klara;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Dawn;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Bea;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Avery;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Alister;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Zinnia;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Shelly;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Olivia;
@@ -717,6 +735,24 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_FANTINA] =                     &gObjectEventGraphicsInfo_Fantina,
     [OBJ_EVENT_GFX_CYNTHIA] =                     &gObjectEventGraphicsInfo_Cynthia,
     [OBJ_EVENT_GFX_BRENDAN_HOENN] =               &gObjectEventGraphicsInfo_BrendanHoenn,
+    [OBJ_EVENT_GFX_MOLLY_CHILD] =                 &gObjectEventGraphicsInfo_MollyChild,
+    [OBJ_EVENT_GFX_MOLLY_HALE] =                  &gObjectEventGraphicsInfo_MollyHale,
+    [OBJ_EVENT_GFX_KINGS_CARROT_ICE] =            &gObjectEventGraphicsInfo_KingsCarrotIce,
+    [OBJ_EVENT_GFX_KINGS_CARROT_SHADE] =          &gObjectEventGraphicsInfo_KingsCarrotShade,
+    [OBJ_EVENT_GFX_CRYSTAL_GLINT] =               &gObjectEventGraphicsInfo_CrystalGlint,
+    [OBJ_EVENT_GFX_SKYLA] =                       &gObjectEventGraphicsInfo_Skyla,
+    [OBJ_EVENT_GFX_ROSA] =                        &gObjectEventGraphicsInfo_Rosa,
+    [OBJ_EVENT_GFX_PEONY] =                       &gObjectEventGraphicsInfo_Peony,
+    [OBJ_EVENT_GFX_PEONIA] =                      &gObjectEventGraphicsInfo_Peonia,
+    [OBJ_EVENT_GFX_NESSA] =                       &gObjectEventGraphicsInfo_Nessa,
+    [OBJ_EVENT_GFX_NEMONA] =                      &gObjectEventGraphicsInfo_Nemona,
+    [OBJ_EVENT_GFX_MUSTARD] =                     &gObjectEventGraphicsInfo_Mustard,
+    [OBJ_EVENT_GFX_LENORA] =                      &gObjectEventGraphicsInfo_Lenora,
+    [OBJ_EVENT_GFX_KLARA] =                       &gObjectEventGraphicsInfo_Klara,
+    [OBJ_EVENT_GFX_DAWN] =                        &gObjectEventGraphicsInfo_Dawn,
+    [OBJ_EVENT_GFX_BEA] =                         &gObjectEventGraphicsInfo_Bea,
+    [OBJ_EVENT_GFX_AVERY] =                       &gObjectEventGraphicsInfo_Avery,
+    [OBJ_EVENT_GFX_ALISTER] =                     &gObjectEventGraphicsInfo_Alister,
     [OBJ_EVENT_GFX_ZINNIA] =                      &gObjectEventGraphicsInfo_Zinnia,
     [OBJ_EVENT_GFX_SHELLY] =                      &gObjectEventGraphicsInfo_Shelly,
     [OBJ_EVENT_GFX_OLIVIA] =                      &gObjectEventGraphicsInfo_Olivia,
