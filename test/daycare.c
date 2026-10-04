@@ -299,3 +299,72 @@ TEST("Pending Day-Care egg keeps its shiny result after a rate change")
     VarSet(VAR_SHINY_RATE, SHINY_RATE_DEFAULT);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_IS_SHINY), expected);
 }
+
+TEST("(Daycare) Destiny Knot copies every IV from one of the parents")
+{
+    u32 stat;
+    ASSUME(P_FAMILY_PIKACHU == TRUE);
+
+    ZeroPlayerPartyMons();
+    RUN_OVERWORLD_SCRIPT(
+        givemon SPECIES_PIKACHU, 100, gender=MON_MALE, item=ITEM_NONE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31;
+        givemon SPECIES_PIKACHU, 100, gender=MON_FEMALE, item=ITEM_DESTINY_KNOT, hpIv=3, atkIv=3, defIv=3, speedIv=3, spAtkIv=3, spDefIv=3;
+    );
+    STORE_IN_DAYCARE_AND_GET_EGG();
+
+    for (stat = 0; stat < NUM_STATS; stat++)
+    {
+        u32 iv = GetMonData(&gPlayerParty[0], MON_DATA_HP_IV + stat);
+        EXPECT(iv == 31 || iv == 3);
+    }
+}
+
+TEST("(Daycare) Without a Destiny Knot an inherited IV is drawn between the parents' IVs")
+{
+    u32 stat;
+    ASSUME(P_FAMILY_PIKACHU == TRUE);
+
+    ZeroPlayerPartyMons();
+    RUN_OVERWORLD_SCRIPT(
+        givemon SPECIES_PIKACHU, 100, gender=MON_MALE, item=ITEM_NONE, hpIv=11, atkIv=11, defIv=11, speedIv=11, spAtkIv=11, spDefIv=11;
+        givemon SPECIES_PIKACHU, 100, gender=MON_FEMALE, item=ITEM_NONE, hpIv=20, atkIv=20, defIv=20, speedIv=20, spAtkIv=20, spDefIv=20;
+    );
+    SetupRiggedRng(__LINE__, RNG_BREEDING_IV_INHERIT, TRUE);
+    SetupRiggedRng(__LINE__, RNG_BREEDING_IV_RANGE, 15);
+    STORE_IN_DAYCARE_AND_GET_EGG();
+
+    for (stat = 0; stat < NUM_STATS; stat++)
+        EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_HP_IV + stat), 15);
+}
+
+TEST("(Daycare) Without a Destiny Knot two equal parents pass their IV when it is inherited")
+{
+    u32 stat;
+    ASSUME(P_FAMILY_PIKACHU == TRUE);
+
+    ZeroPlayerPartyMons();
+    RUN_OVERWORLD_SCRIPT(
+        givemon SPECIES_PIKACHU, 100, gender=MON_MALE, item=ITEM_NONE, hpIv=7, atkIv=7, defIv=7, speedIv=7, spAtkIv=7, spDefIv=7;
+        givemon SPECIES_PIKACHU, 100, gender=MON_FEMALE, item=ITEM_NONE, hpIv=7, atkIv=7, defIv=7, speedIv=7, spAtkIv=7, spDefIv=7;
+    );
+    SetupRiggedRng(__LINE__, RNG_BREEDING_IV_INHERIT, TRUE);
+    STORE_IN_DAYCARE_AND_GET_EGG();
+
+    for (stat = 0; stat < NUM_STATS; stat++)
+        EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_HP_IV + stat), 7);
+}
+
+TEST("(Daycare) A Power item copies its stat from the holder even when the other IVs mutate")
+{
+    ASSUME(P_FAMILY_PIKACHU == TRUE);
+
+    ZeroPlayerPartyMons();
+    RUN_OVERWORLD_SCRIPT(
+        givemon SPECIES_PIKACHU, 100, gender=MON_MALE, item=ITEM_POWER_BRACER, hpIv=30, atkIv=30, defIv=30, speedIv=30, spAtkIv=30, spDefIv=30;
+        givemon SPECIES_PIKACHU, 100, gender=MON_FEMALE, item=ITEM_NONE, hpIv=2, atkIv=2, defIv=2, speedIv=2, spAtkIv=2, spDefIv=2;
+    );
+    SetupRiggedRng(__LINE__, RNG_BREEDING_IV_INHERIT, FALSE);
+    STORE_IN_DAYCARE_AND_GET_EGG();
+
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_ATK_IV), 30);
+}

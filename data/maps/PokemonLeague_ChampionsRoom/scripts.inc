@@ -313,7 +313,7 @@ PokemonLeague_ChampionsRoom_Movement_MaryLeft:
 	step_end
 
 PokemonLeague_ChampionsRoom_Text_RematchBattleIntro:
-    .string "Lance: Welcome back!\p"
+    .string "{SPEAKER NAME_LANCE}Welcome back!\p"
     .string "You've proven yourself in Johto,\p"
     .string "acquiring all 8 badges and even\n"
     .string "besting me once.\p"
@@ -335,7 +335,7 @@ PokemonLeague_ChampionsRoom_Text_RematchBattleIntro:
     .string "conquered Johto, Champion.$"
 
 PokemonLeague_ChampionsRoom_Text_BattleIntro:
-    .string "Lance: I've been waiting for you.\p"
+    .string "{SPEAKER NAME_LANCE}I've been waiting for you.\p"
     .string "{PLAYER}!\p"
     .string "I knew that you, with your skills,\n"
     .string "would eventually reach me here.\p"
@@ -356,7 +356,7 @@ PokemonLeague_ChampionsRoom_Text_BattleWin:
     .string "of a great new Champion!$"
 
 PokemonLeague_ChampionsRoom_Text_BattleAfter:
-    .string "…Whew.\p"
+    .string "{SPEAKER NAME_LANCE}…Whew.\p"
     .string "You have become truly powerful,\n"
     .string "{PLAYER}.\p"
     .string "Your Pokémon have responded to your\n"
@@ -365,11 +365,11 @@ PokemonLeague_ChampionsRoom_Text_BattleAfter:
     .string "grow strong with your Pokémon.$"
 
 PokemonLeague_ChampionsRoom_Text_MaryOhNoOak:
-    .string "Mary: Oh, no! It's all over!\p"
+    .string "{SPEAKER NAME_MARY}Oh, no! It's all over!\p"
     .string "Prof. Oak, if you weren't so slow…$"
 
 PokemonLeague_ChampionsRoom_Text_OakCongratulations:
-    .string "Prof. Oak: Ah, {PLAYER}!\p"
+    .string "{SPEAKER NAME_OAK}Ah, {PLAYER}!\p"
     .string "It's been a long while.\p"
     .string "You certainly look more impressive.\p"
     .string "Your conquest of the Johto League\n"
@@ -382,7 +382,7 @@ PokemonLeague_ChampionsRoom_Text_OakCongratulations:
     .string "Congratulations, {PLAYER}!$"
 
 PokemonLeague_ChampionsRoom_Text_RematchOakCongratulations:
-    .string "Prof. Oak: Ah, {PLAYER}!\p"
+    .string "{SPEAKER NAME_OAK}Ah, {PLAYER}!\p"
     .string "I've been following your progress\n"
     .string "since Prof. Elm sent you on your\l"
     .string "way.\p"
@@ -405,23 +405,23 @@ PokemonLeague_ChampionsRoom_Text_RematchOakCongratulations:
     .string "{PLAYER}!$"
 
 PokemonLeague_ChampionsRoom_Text_MaryInterview:
-    .string "Mary: Let's interview the brand new\n"
+    .string "{SPEAKER NAME_MARY}Let's interview the brand new\n"
     .string "Johto Champion!$"
 
 PokemonLeague_ChampionsRoom_Text_RematchMaryInterview:
-    .string "Mary: Let's interview the brand new\n"
+    .string "{SPEAKER NAME_MARY}Let's interview the brand new\n"
     .string "Kanto Champion!$"
 
 PokemonLeague_ChampionsRoom_Text_Noisy:
-    .string "Lance: This is getting to be a bit\n"
+    .string "{SPEAKER NAME_LANCE}This is getting to be a bit\n"
     .string "too noisy…\p"
     .string "{PLAYER}, could you come with me?$"
 
 PokemonLeague_ChampionsRoom_Text_MaryNoInterview:
-    .string "Mary: Oh, wait! We haven't done\n"
+    .string "{SPEAKER NAME_MARY}Oh, wait! We haven't done\n"
     .string "the interview!$"
 
 PokemonLeague_ChampionsRoom_Text_RematchMaryNoInterview:
-    .string "Mary: Come on! You can't blow off\n"
+    .string "{SPEAKER NAME_MARY}Come on! You can't blow off\n"
     .string "the interview Again!$"
 

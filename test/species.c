@@ -140,7 +140,8 @@ TEST("Form change targets have the appropriate species flags")
         {
         case FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM:
         case FORM_CHANGE_BATTLE_MEGA_EVOLUTION_MOVE:
-            EXPECT(targetSpeciesInfo->isMegaEvolution);
+            // SoulGold: G-Max forms are reached by Mega Evolution with ITEM_GIGANTATITE.
+            EXPECT(targetSpeciesInfo->isMegaEvolution || targetSpeciesInfo->isGigantamax);
             break;
         case FORM_CHANGE_BATTLE_PRIMAL_REVERSION:
             EXPECT(targetSpeciesInfo->isPrimalReversion);

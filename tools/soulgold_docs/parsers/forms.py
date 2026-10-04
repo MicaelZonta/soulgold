@@ -110,9 +110,12 @@ def add_wild_random_form_locations(
         for name, body in WILD_FORM_ARRAY_RE.findall(text)
     }
     for slot_species, pool_name in WILD_FORM_RULE_RE.findall(text):
+        # Wild tables, and the Berry Master's garden pests, which roll the
+        # form through the same GetWildFormVariantSpecies (src/berry_garden.c).
         wild = [
             location for location in locations.get(slot_species, [])
             if str(location.get("method", "")).endswith(" Mons")
+            or str(location.get("method", "")).startswith("Berry Master's garden")
         ]
         for species in pools.get(pool_name, []):
             if species == slot_species or species not in by_species:

@@ -3153,6 +3153,35 @@ enum Ability GetAbilityBySpecies(u16 species, u8 abilityNum)
     return gLastUsedAbility;
 }
 
+// SoulGold Ability Capsule: the ability is drawn at random among the species'
+// normal abilities, so it can land on the one the Pokemon already has. One use
+// in ABILITY_CAPSULE_HIDDEN_CHANCE percent lands on the hidden ability instead.
+#define ABILITY_CAPSULE_HIDDEN_CHANCE 1
+
+u32 RollAbilityCapsuleAbilityNum(u16 species)
+{
+    u32 normalSlots = (GetSpeciesAbility(species, 1) != ABILITY_NONE) ? NUM_NORMAL_ABILITY_SLOTS : 1;
+
+    if (GetSpeciesAbility(species, NUM_NORMAL_ABILITY_SLOTS) != ABILITY_NONE
+     && RandomPercentage(RNG_ABILITY_CAPSULE_HIDDEN, ABILITY_CAPSULE_HIDDEN_CHANCE))
+        return NUM_NORMAL_ABILITY_SLOTS;
+    return RandomUniform(RNG_ABILITY_CAPSULE_SLOT, 0, normalSlots - 1);
+}
+
+// FALSE when no roll could ever give a different ability (one ability only).
+bool32 CanAbilityCapsuleChangeAbility(u16 species, u32 currentAbilityNum)
+{
+    enum Ability current = GetAbilityBySpecies(species, currentAbilityNum);
+    u32 i;
+
+    for (i = 0; i <= NUM_NORMAL_ABILITY_SLOTS; i++)
+    {
+        if (GetSpeciesAbility(species, i) != ABILITY_NONE && GetSpeciesAbility(species, i) != current)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 enum Ability GetMonAbility(struct Pokemon *mon)
 {
     u16 species = GetMonData(mon, MON_DATA_SPECIES);

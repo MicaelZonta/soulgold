@@ -8,6 +8,7 @@ SlowpokeWell_B1F_EventScript_Kurt::
 	lock
 	msgbox SlowpokeWell_B1F_Text_KurtIntro, MSGBOX_DEFAULT
 	closemessage
+	release
 	end
 
 SlowpokeWell_B1F_EventScript_Grunt21::
@@ -69,7 +70,7 @@ SlowpokeWell_B1F_Movement_Kurt:
 	step_end
 
 SlowpokeWell_B1F_Text_KurtIntro:
-	.string "Kurt: Hey there, {PLAYER}!\p"
+	.string "{SPEAKER NAME_KURT}Hey there, {PLAYER}!\p"
 	.string "The guard up top took off when\n"
 	.string "I shouted at him.\p"
 	.string "But then I took a tumble down\n"
@@ -83,7 +84,7 @@ SlowpokeWell_B1F_Text_KurtIntro:
 	.string "you are in my place!$"
 
 SlowpokeWell_B1F_Text_KurtAfter:
-	.string "Kurt: Way to go, {PLAYER}!\p"
+	.string "{SPEAKER NAME_KURT}Way to go, {PLAYER}!\p"
 	.string "Team Rocket has taken off.\p"
 	.string "My back's better too.\n"
 	.string "Let's get out of here.$"
@@ -109,7 +110,7 @@ SlowpokeWell_B1F_Text_GruntM29After:
 	.string "and we'll do anything for money!$"
 
 SlowpokeWell_B1F_Text_ProtonSeen:
-	.string "What do you want?\p"
+	.string "{SPEAKER NAME_PROTON}What do you want?\p"
 	.string "If you interrupt our work,\n"
 	.string "don't expect any mercy!$"
 
@@ -118,7 +119,7 @@ SlowpokeWell_B1F_Text_ProtonBeaten:
 	.string "but wait till next time!$"
 
 SlowpokeWell_B1F_Text_ProtonAfter:
-	.string "Yeah, Team Rocket was broken up\n"
+	.string "{SPEAKER NAME_PROTON}Yeah, Team Rocket was broken up\n"
 	.string "three years ago.\p"
 	.string "The boss went into hiding.\p"
 	.string "But we continued our activities\n"

@@ -1,6 +1,22 @@
 
 RuinsOfAlph_Outside_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, RuinsOfAlph_Outside_OnTransition
 	.byte 0
+
+@ The crystal gate's glass (OBJ_EVENT_GFX_CRYSTAL_GLINT at (1,26), FLAG_TEMP_7):
+@ the light bending between the rocks, so the player has a reason to walk into
+@ the nook. It is there until the Glastrier is caught and the glass gives way.
+@ MOVEMENT_TYPE_NONE keeps it animating (FACE_* pauses the anim); elevation 4
+@ puts it above the tree's top layer, which hid half of it at elevation 3.
+RuinsOfAlph_Outside_OnTransition::
+	setvar VAR_0x8004, GARDEN_STORY_WHITE_PATH
+	specialvar VAR_RESULT, GardenStory_Check
+	call_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Outside_EventScript_HideCrystalGlint
+	end
+
+RuinsOfAlph_Outside_EventScript_HideCrystalGlint::
+	setflag FLAG_TEMP_7
+	return
 
 RuinsOfAlph_Outside_EventScript_Quagsire::
 	lock
@@ -13,7 +29,7 @@ RuinsOfAlph_Outside_EventScript_Quagsire::
 	end
 
 RuinsOfAlph_Outside_Text_Quagsire:
-	.string "Quagsire: Quag Quag$"
+	.string "{SPEAKER NAME_QUAGSIRE}Quag Quag$"
 
 RuinsOfAlph_Outside_EventScript_Stan::
 	trainerbattle_single TRAINER_STAN, RuinsOfAlph_Outside_Text_SuperNerdStan_Seen, RuinsOfAlph_Outside_Text_SuperNerdStan_Beaten
@@ -321,15 +337,63 @@ CameronCamera5_1:
 	end
 
 
+
+@ Berry Master, plan part 14 (white path).
+@ The crystal gate: the dead-end nook at the west edge of the Ruins of Alph,
+@ (2,26)-(2,27), coord_events on VAR_TEMP_0 = 0 (always true there). It opens
+@ for the Iceroot path (state 10 with the carrot in the bag) and, once the
+@ Glastrier is caught, for good. Anything else: one line and a step back.
+@ Arrival in Greenfield is (1,12); Greenfield's west edge (x 0) walks back
+@ to (3,26) here.
+RuinsOfAlph_Outside_EventScript_CrystalGate::
+	lockall
+	setvar VAR_0x8004, GARDEN_STORY_WHITE_PATH
+	specialvar VAR_RESULT, GardenStory_Check
+	goto_if_eq VAR_RESULT, TRUE, RuinsOfAlph_Outside_EventScript_CrystalGateOpen
+	goto_if_ne VAR_HARVEST_KING, HARVEST_KING_ICEROOT, RuinsOfAlph_Outside_EventScript_CrystalGateShut
+	checkitem ITEM_ICEROOT_CARROT
+	goto_if_eq VAR_RESULT, FALSE, RuinsOfAlph_Outside_EventScript_CrystalGateShut
+	msgbox RuinsOfAlph_Outside_Text_CrystalGateGives, MSGBOX_DEFAULT
+	closemessage
+RuinsOfAlph_Outside_EventScript_CrystalGateOpen::
+	warp MAP_GREENFIELD, 1, 12
+	waitstate
+	releaseall
+	end
+
+RuinsOfAlph_Outside_EventScript_CrystalGateShut::
+	msgbox RuinsOfAlph_Outside_Text_CrystalGateShut, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, RuinsOfAlph_Outside_Movement_StepEast
+	waitmovement 0
+	releaseall
+	end
+
+RuinsOfAlph_Outside_Movement_StepEast:
+	walk_right
+	step_end
+
+RuinsOfAlph_Outside_Text_CrystalGateShut:
+	.string "Between the rocks, the light bends\n"
+	.string "as if it were passing through glass.\p"
+	.string "Something on the other side is cold,\n"
+	.string "and very still. It won't let you by.$"
+
+RuinsOfAlph_Outside_Text_CrystalGateGives:
+	.string "The Iceroot Carrot in your Bag turns\n"
+	.string "cold.\p"
+	.string "The glass between the rocks gives way,\n"
+	.string "like a door someone stopped holding.$"
+
 RuinsofAlph_Scientist_Text_0:
 	.string "Sometimes fossils can be found while\n"
 	.string "breaking rocks in here.$"
 
 CameronCamera_Text_0:
-	.string "Hello, \n"
-	.string "just when you least expect it! \p"
-	.string "I am Cameron the Photographer. \p"
-	.string "You look so photogenic! \n"
+	.string "Hello,\n"
+	.string "just when you least expect it!\p"
+	.string "I am Cameron the Photographer.\p"
+	.string "You look so photogenic!\n"
 	.string "Why not have a picture taken?$"
 
 CameronCamera_Text_1:

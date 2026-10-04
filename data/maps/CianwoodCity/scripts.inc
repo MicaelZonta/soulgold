@@ -897,7 +897,7 @@ CianwoodCity_Movement_Eusine3:
 	step_end
 
 CianwoodCity_Text_EusineSuicune:
-	.string "Eusine: Yo, {PLAYER}.\p"
+	.string "{SPEAKER NAME_EUSINE}Yo, {PLAYER}.\p"
 	.string "Wasn't that Suicune just now?\p"
 	.string "I only caught a quick glimpse, but\n"
 	.string "I thought I saw Suicune running on\l"
@@ -916,7 +916,7 @@ CianwoodCity_Text_EusineBeaten:
 	.string "I hate to admit it, but you win.$"
 
 CianwoodCity_Text_EusineAfter:
-	.string "You're amazing, {PLAYER}!\p"
+	.string "{SPEAKER NAME_EUSINE}You're amazing, {PLAYER}!\p"
 	.string "No wonder Pokémon gravitate to you.\p"
 	.string "I get it now.\p"
 	.string "I'm going to keep searching for\n"

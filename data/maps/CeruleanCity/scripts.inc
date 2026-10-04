@@ -72,7 +72,7 @@ CeruleanCity_EventScript_Slowbro::
 	end
 
 CeruleanCity_Text_Slowbro:
-	.string "Slowbro: Yarah?$"
+	.string "{SPEAKER NAME_SLOWBRO}Yarah?$"
 
 CeruleanCity_EventScript_SlowbroWoman::
 	msgbox CeruleanCity_Text_CooltrainerF1, MSGBOX_NPC

@@ -14,6 +14,7 @@
 //     specials at the end of this file.
 
 #include "global.h"
+#include "berry_garden.h"
 #include "data.h"
 #include "event_data.h"
 #include "frontier_util.h"
@@ -153,6 +154,9 @@ static bool32 IsLegendaryEligible(const struct NexusLegendary *legendary)
 {
     if (!legendary->requiresCaught)
         return TRUE;
+    // The Harvest King's steeds: only the chosen one can be caught outside.
+    if (legendary->species == SPECIES_GLASTRIER || legendary->species == SPECIES_SPECTRIER)
+        return GardenSteed_NexusEligible(legendary->species);
     return GetSetPokedexFlag(SpeciesToNationalPokedexNum(legendary->species), FLAG_GET_CAUGHT);
 }
 

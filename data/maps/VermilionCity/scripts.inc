@@ -260,7 +260,7 @@ VermilionCity_Movement_EusineLeave:
 	step_end
 
 VermilionCity_Text_Eusine:
-	.string "Eusine: That was so close!\n"
+	.string "{SPEAKER NAME_EUSINE}That was so close!\n"
 	.string "I though I could corner it by\l"
 	.string "ambushing it here.\p"
 	.string "But running on the water is beyond\n"
@@ -286,7 +286,7 @@ VermilionCity_Text_MachopOwner:
 	.string "project…$"
 
 VermilionCity_Text_Machop1:
-	.string "Machop: Guooh gogogoh!$"
+	.string "{SPEAKER NAME_MACHOP}Guooh gogogoh!$"
 
 VermilionCity_Text_Machop2:
 	.string "A Machop is growling while\n"

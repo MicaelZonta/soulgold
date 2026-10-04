@@ -47,7 +47,7 @@ NationalPark_Normal_EventScript_TeacherQuickclaw::
 	goto_if_set FLAG_GOT_QUICK_CLAW, NationalPark_Normal_EventScript_TeacherQuickclaw2
 	msgbox NationalPark_Normal_Text_Teacher1, MSGBOX_DEFAULT
 	giveitem ITEM_QUICK_CLAW
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_GOT_QUICK_CLAW
 NationalPark_Normal_EventScript_TeacherQuickclaw2::
 	msgbox NationalPark_Normal_Text_Teacher1_QuickClaw, MSGBOX_DEFAULT
@@ -105,7 +105,7 @@ NationalPark_Normal_Text_Teacher2:
 	.string "Let me heal your Pokémon for you.$"
 
 NationalPark_Normal_Text_Persian:
-	.string "Persian: Fufushaa!$"
+	.string "{SPEAKER NAME_PERSIAN}Fufushaa!$"
 
 NationalPark_Normal_EventScript_Jack::
 	trainerbattle_single TRAINER_JACK NationalPark_Normal_Text_SchoolboyJack1_Seen, NationalPark_Normal_Text_SchoolboyJack1_Beaten

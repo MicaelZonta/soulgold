@@ -23,7 +23,7 @@ FuchsiaCity_EventScript_BaobaCall::
 	end
 
 FuchsiaCity_Text_Baoba:
-	.string "Warden Baoba: {PLAYER}!\p"
+	.string "{SPEAKER NAME_WARDEN_BAOBA}{PLAYER}!\p"
 	.string "This is Warden Baoba.\p"
 	.string "Something awful has happened!\n"
 	.string "My old Safari Zone in Fuchsia City\l"

@@ -210,7 +210,7 @@ RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor:
 	.string "Letter to Steven in Dewford.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis:
-	.string "Mr. Stone: Now, you should know that\n"
+	.string "{SPEAKER NAME_MR_STONE}Now, you should know that\n"
 	.string "I am a great President.\p"
 	.string "So, I'd never be so cheap as to ask\n"
 	.string "a favor for nothing in return.\p"
@@ -220,7 +220,7 @@ RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
 	.string "{PLAYER} received a PokéNav.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
-	.string "Mr. Stone: That device…\p"
+	.string "{SPEAKER NAME_MR_STONE}That device…\p"
 	.string "It's a Pokémon Navigator, or PokéNav\n"
 	.string "for short.\p"
 	.string "It's an indispensable tool for any\n"
@@ -235,20 +235,20 @@ RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
 	.string "up before you go on your way.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare:
-	.string "Mr. Stone: Well, then, {PLAYER}{KUN},\n"
+	.string "{SPEAKER NAME_MR_STONE}Well, then, {PLAYER}{KUN},\n"
 	.string "go with caution and care!$"
 
 RustboroCity_DevonCorp_3F_Text_CountingOnYou:
-	.string "Mr. Stone: I'm counting on you!$"
+	.string "{SPEAKER NAME_MR_STONE}I'm counting on you!$"
 
 RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter:
-	.string "Mr. Stone: You delivered my Letter?\n"
+	.string "{SPEAKER NAME_MR_STONE}You delivered my Letter?\n"
 	.string "Thank you kindly!\p"
 	.string "This is my way of thanking you.\n"
 	.string "It should help you, a Trainer.$"
 
 RustboroCity_DevonCorp_3F_Text_ExplainExpShare:
-	.string "Mr. Stone: A Pokémon holding that\n"
+	.string "{SPEAKER NAME_MR_STONE}A Pokémon holding that\n"
 	.string "Exp. Share will be given some of the\l"
 	.string "Exp Points from battle.\p"
 	.string "It will get Exp Points even if it didn't\n"
@@ -257,7 +257,7 @@ RustboroCity_DevonCorp_3F_Text_ExplainExpShare:
 	.string "for raising weak Pokémon.$"
 
 RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends:
-	.string "Mr. Stone: Since my youth, I've immersed\n"
+	.string "{SPEAKER NAME_MR_STONE}Since my youth, I've immersed\n"
 	.string "myself in work.\p"
 	.string "Consequently, I'm not familiar with\n"
 	.string "trends and that sort of thing.\p"

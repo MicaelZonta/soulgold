@@ -35,7 +35,7 @@ script Rinto_Gible {
     lock
     faceplayer
     playmoncry(SPECIES_GIBLE, CRY_MODE_NORMAL)
-    msgbox("Gible: Gibgib!")
+    msgbox("{SPEAKER NAME_GIBLE}Gibgib!")
     waitmoncry
     release
     end
@@ -45,7 +45,7 @@ script Rinto_Maractus {
     lock
     faceplayer
     playmoncry(SPECIES_MARACTUS, CRY_MODE_NORMAL)
-    msgbox("Maractus: Maaaai!")
+    msgbox("{SPEAKER NAME_MARACTUS}Maaaai!")
     waitmoncry
     release
     end

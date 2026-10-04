@@ -58,7 +58,7 @@ VioletCity_Gym_EventScript_Falkner_Defeated::
 	end
 
 VioletGym_Text_Falkner_Intro:
-	.string "I'm Falkner, the Violet Pokémon\n"
+	.string "{SPEAKER NAME_FALKNER}I'm Falkner, the Violet Pokémon\n"
 	.string "Gym leader!\p"
 	.string "People say you can clip\n"
 	.string "Flying-type Pokémon's wings\p"
@@ -79,7 +79,7 @@ VioletGym_Text_ReceivedZephyrBadge:
 	.string "{PLAYER} received Zephyrbadge.$"
 
 VioletGym_Text_Falkner_BadgeExplain:
-	.string "Zephyrbadge allows Pokémon to\n"
+	.string "{SPEAKER NAME_FALKNER}Zephyrbadge allows Pokémon to\n"
 	.string "use Flash, if they can\l"
 	.string "learn it, anytime.\p"
 	.string "Here--take this too.$"
@@ -87,7 +87,7 @@ VioletGym_Text_Falkner_BadgeExplain:
 
 
 VioletGym_Text_Falkner_AfterFight:
-	.string "There are Pokémon Gyms in cities\n"
+	.string "{SPEAKER NAME_FALKNER}There are Pokémon Gyms in cities\n"
 	.string "and towns ahead.\p"
 	.string "You should test your skills at\n"
 	.string "these Gyms.\p"

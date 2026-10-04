@@ -706,11 +706,14 @@ struct BattleCafeVitaminSet
     u8 cost;
 };
 
+// How many of each vitamin one set gives.
+#define BATTLE_CAFE_VITAMINS_PER_SET 5
+
 static const struct BattleCafeVitaminSet sBattleCafeVitaminSets[] =
 {
-    [BATTLE_CAFE_VITAMIN_SET_ATK] = {ITEM_PROTEIN_EX, ITEM_CALCIUM_EX, 4},
-    [BATTLE_CAFE_VITAMIN_SET_DEF] = {ITEM_IRON_EX, ITEM_ZINC_EX, 4},
-    [BATTLE_CAFE_VITAMIN_SET_SPE] = {ITEM_CARBOS_EX, ITEM_NONE, 2},
+    [BATTLE_CAFE_VITAMIN_SET_ATK] = {ITEM_PROTEIN, ITEM_CALCIUM, 4},
+    [BATTLE_CAFE_VITAMIN_SET_DEF] = {ITEM_IRON, ITEM_ZINC, 4},
+    [BATTLE_CAFE_VITAMIN_SET_SPE] = {ITEM_CARBOS, ITEM_NONE, 2},
 };
 
 static const u16 sBattleCafePastParadoxSpecies[] =
@@ -1014,14 +1017,14 @@ void BattleCafe_TryPurchaseVitaminSet(void)
         return;
     }
 
-    if (!AddBagItem(set->firstItem, 2))
+    if (!AddBagItem(set->firstItem, BATTLE_CAFE_VITAMINS_PER_SET))
     {
         gSpecialVar_Result = BATTLE_CAFE_VITAMIN_PURCHASE_NO_BAG_SPACE;
         return;
     }
-    if (set->secondItem != ITEM_NONE && !AddBagItem(set->secondItem, 2))
+    if (set->secondItem != ITEM_NONE && !AddBagItem(set->secondItem, BATTLE_CAFE_VITAMINS_PER_SET))
     {
-        RemoveBagItem(set->firstItem, 2);
+        RemoveBagItem(set->firstItem, BATTLE_CAFE_VITAMINS_PER_SET);
         gSpecialVar_Result = BATTLE_CAFE_VITAMIN_PURCHASE_NO_BAG_SPACE;
         return;
     }

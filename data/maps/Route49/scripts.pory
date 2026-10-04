@@ -29,7 +29,7 @@ script Route49_Stantler {
     lock
     faceplayer
     playmoncry(SPECIES_STANTLER, CRY_MODE_NORMAL)
-    msgbox("Stantler: Staaaaa!")
+    msgbox("{SPEAKER NAME_STANTLER}Staaaaa!")
     waitmoncry
     release
     end

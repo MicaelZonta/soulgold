@@ -95,7 +95,7 @@ FuchsiaCity_Gym_EventScript_Janine_Defeated::
 	end
 
 FuchsiaCity_Gym_Text_Janine_DisappointYou:
-	.string "Fufufufu…\p"
+	.string "{SPEAKER NAME_JANINE}Fufufufu…\p"
 	.string "I'm sorry to disappoint you…\p"
 	.string "I'm only joking!\p"
 	.string "I'm the real deal!\p"
@@ -110,13 +110,13 @@ FuchsiaCity_Gym_Text_ReceivedSoulBadge:
 	.string "{PLAYER} received Soulbadge.$"
 
 FuchsiaCity_Gym_Text_Janine_ToxicSpeech:
-	.string "Janine: You're so tough! I have a\n"
+	.string "{SPEAKER NAME_JANINE}You're so tough! I have a\n"
 	.string "special gift!\p"
 	.string "It's Toxic, a powerful poison that\n"
 	.string "steadily saps the victim's Hp.$"
 
 FuchsiaCity_Gym_Text_Janine_ApplyMyself:
-	.string "Janine: I'm going to really apply\n"
+	.string "{SPEAKER NAME_JANINE}I'm going to really apply\n"
 	.string "myself and improve my skills.\p"
 	.string "I want to become better than both\n"
 	.string "Father and you!$"

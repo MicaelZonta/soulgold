@@ -112,14 +112,14 @@ BlackthornCity_EventScript_Call::
 	end
 
 BlackthornCity_Text_BaobaCall:
-	.string "Warden Baoba: {PLAYER}!\p"
+	.string "{SPEAKER NAME_WARDEN_BAOBA}{PLAYER}!\p"
 	.string "This is Warden Baoba.\p"
 	.string "I'm calling to tell you that\n"
 	.string "the Safari Zone has expanded!\p"
 	.string "Please come visit!$"
 
 BlackthornCity_Text_ElmCall:
-	.string "Prof. Elm: Hello, {PLAYER}?\p"
+	.string "{SPEAKER NAME_ELM}Hello, {PLAYER}?\p"
 	.string "I have something here for you.\n"
 	.string "Could you swing by my Lab?\p"
 	.string "See you later!$"
@@ -307,7 +307,7 @@ BlackthornYoungsterText:
 	.string "of Blackthorn.$"
 
 BlackthornCity_MeetSantosText:
-	.string "Santos: …\p"
+	.string "{SPEAKER NAME_SANTOS}…\p"
 	.string "I'm Santos of the weekday family.\p"
 	.string "Take a guess.$"
 
@@ -315,18 +315,18 @@ BlackthornCity_SantosGivesGiftText:
 	.string "You can have this…$"
 
 BlackthornCity_SantosGaveGiftText:
-	.string "Santos: …\p"
+	.string "{SPEAKER NAME_SANTOS}…\p"
 	.string "Spell Tag…\p"
 	.string "Ghost-type moves get stronger…\p"
 	.string "It will frighten you…$"
 
 BlackthornCity_SantosSaturdayText:
-	.string "Santos: …\p"
+	.string "{SPEAKER NAME_SANTOS}…\p"
 	.string "See you again on another Saturday…\p"
 	.string "I won't have any more gifts…$"
 
 BlackthornCity_SantosNopeText:
-	.string "Santos: No.$"
+	.string "{SPEAKER NAME_SANTOS}No.$"
 
 BlackthornCooltrainerF2Text:
 	.string "Wow, you came through the Ice Path?\p"

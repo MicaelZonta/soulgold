@@ -101,12 +101,12 @@ EcruteakCity_PokemonCenter_Movement_BillBot:
 
 
 EcruteakCity_PokemonCenter1F_Text_Bill1:
-	.string "Hi, I'm Bill. And who are you?\p"
+	.string "{SPEAKER NAME_BILL}Hi, I'm Bill. And who are you?\p"
 	.string "Hmm, {PLAYER}, huh?\n"
 	.string "You've come at the right time.$"
 
 EcruteakCity_PokemonCenter1F_Text_Bill2:
-	.string "I just finished adjustments on my\n"
+	.string "{SPEAKER NAME_BILL}I just finished adjustments on my\n"
 	.string "Pokémon Storage System.\p"
 	.string "You know that PC you use to store\n"
 	.string "all your Pokémon?\p"

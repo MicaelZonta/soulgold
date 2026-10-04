@@ -88,7 +88,7 @@ VajraPyramidOutside_ScientistPostgame_Text_1:
 	.string "you should come back later.$"
 
 VajraPyramidOutside_ScientistsTinkaton_Text_0:
-	.string "Tinkaton: Tinktii!$"
+	.string "{SPEAKER NAME_TINKATON}Tinktii!$"
 
 VajraPyramidOutside_ScientistsTinkaton_Text_1:
 	.string "Your old Tinkaton seems to be having\n"

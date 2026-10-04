@@ -232,7 +232,10 @@ ifeq ($(shell uname),Darwin)
     ROMTEST ?= $(shell command -v mgba-rom-test-mac 2>/dev/null || echo $(TOOLS_DIR)/mgba/mgba-rom-test-mac)
     ROMTESTHYDRA := $(shell command -v mgba-rom-test-hydra 2>/dev/null || echo $(TOOLS_DIR)/mgba-rom-test-hydra/mgba-rom-test-hydra)
 else ifeq ($(shell uname),Linux)
-    ROMTEST ?= $(shell command -v mgba-rom-test 2>/dev/null || echo $(TOOLS_DIR)/mgba/mgba-rom-test)
+    # A ROM de teste passa de 32 MiB: o mgba-rom-test pre-compilado a trunca
+    # e acha zero testes. Usa o mGBA patchado (ver regra mgba-rom-test).
+    ROMTEST ?= dev_scripts/mgba_rom_test.sh
+    ROMTEST_NEEDS_PATCHED_MGBA := 1
     ROMTESTHYDRA := $(shell command -v mgba-rom-test-hydra 2>/dev/null || echo $(TOOLS_DIR)/mgba-rom-test-hydra/mgba-rom-test-hydra)
 else
     ROMTEST ?= $(TOOLS_DIR)/mgba/mgba-rom-test$(EXE)
@@ -286,7 +289,7 @@ MAKEFLAGS += --no-print-directory
 # Delete files that weren't built properly
 .DELETE_ON_ERROR:
 
-RULES_NO_SCAN += map-graph-check mgba-windows libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated clean-teachables clean-teachables_intermediates
+RULES_NO_SCAN += map-graph-check mgba-windows mgba-rom-test libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated clean-teachables clean-teachables_intermediates
 .PHONY: all rom map-graph-check check-song-config bps nightly-bps agbcc modern compare check check-all debug release
 .PHONY: $(RULES_NO_SCAN)
 
@@ -407,6 +410,9 @@ endif
 
 check: TEST_SKIP_DUPLICATE_TRAIT_TESTS := \x01
 check-all: TEST_SKIP_DUPLICATE_TRAIT_TESTS := \x00
+ifeq ($(ROMTEST_NEEDS_PATCHED_MGBA),1)
+check check-all: | mgba-rom-test
+endif
 check check-all: $(TEST_SHARD_ELFS)
 	@set -e; \
 	printf 'Running %s test shard(s). Each test summary below is for one shard, not the full suite.\n' "$(words $^)"; \
@@ -708,3 +714,18 @@ $(SYM): $(ELF) $(ROM)
 # Detalhes e pre-requisitos (MSYS2): tools/mgba-windows/build.sh.
 mgba-windows:
 	@tools/mgba-windows/build.sh
+
+# mgba-headless do mGBA patchado, usado por `make check` via
+# dev_scripts/mgba_rom_test.sh. Sempre chama o make do CMake: e no-op quando
+# nada mudou e recompila sozinho quando tools/mgba-master muda.
+MGBA_ROM_TEST_DIR := $(BUILD_DIR)/mgba-rom-test
+mgba-rom-test:
+	@if [ ! -f $(MGBA_ROM_TEST_DIR)/CMakeCache.txt ]; then \
+		cmake -S tools/mgba-master -B $(MGBA_ROM_TEST_DIR) -DCMAKE_BUILD_TYPE=Release \
+			-DBUILD_HEADLESS=ON -DBUILD_QT=OFF -DBUILD_SDL=OFF -DUSE_FFMPEG=OFF \
+			-DUSE_EDITLINE=OFF -DUSE_ELF=OFF -DUSE_LUA=OFF -DENABLE_SCRIPTING=OFF \
+			-DUSE_DISCORD_RPC=OFF -DUSE_SQLITE3=OFF -DUSE_LIBZIP=OFF -DUSE_MINIZIP=OFF \
+			-DBUILD_STATIC=ON -DBUILD_SHARED=OFF -DM_CORE_GB=OFF -DUSE_DEBUGGERS=OFF \
+			-DUSE_GDB_STUB=OFF -DUSE_PNG=OFF -DUSE_EPOXY=OFF > /dev/null; \
+	fi
+	@$(MAKE) --no-print-directory -s -C $(MGBA_ROM_TEST_DIR) mgba-headless > /dev/null

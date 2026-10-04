@@ -406,9 +406,12 @@ const struct NexusLegendary gNexusLegendaries[] =
     { .species = SPECIES_ETERNATUS, .champion = NEXUS_TRAINER_TUCKER, NEXUS_CHAMPION(Tucker_Eternatus), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Eternatus) },
     { .species = SPECIES_REGIELEKI, .champion = NEXUS_TRAINER_LT_SURGE, NEXUS_CHAMPION(LtSurge_Regieleki), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Regieleki) },
     { .species = SPECIES_REGIDRAGO, .champion = NEXUS_TRAINER_DRAKE, NEXUS_CHAMPION(Drake_Regidrago), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Regidrago) },
-    { .species = SPECIES_GLASTRIER, .champion = NEXUS_TRAINER_PRYCE, NEXUS_CHAMPION(Pryce_Glastrier), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Glastrier) },
-    { .species = SPECIES_SPECTRIER, .champion = NEXUS_TRAINER_MORTY, NEXUS_CHAMPION(Morty_Spectrier), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Spectrier) },
-    { .species = SPECIES_CALYREX, .champion = NEXUS_TRAINER_WILL, NEXUS_CHAMPION(Will_Calyrex), NEXUS_BOSS_DEFAULT, NEXUS_AFTER_BOSS(Calyrex), NEXUS_LOOKER_FILE(Calyrex) },
+    // The Berry Master's Harvest King (Greenfield / the Brass Tower memory / Route 30):
+    // only the steed the player chose can be caught outside; src/nexus.c asks
+    // GardenSteed_NexusEligible which one waits for the capture.
+    { .species = SPECIES_GLASTRIER, .champion = NEXUS_TRAINER_PRYCE, NEXUS_CHAMPION(Pryce_Glastrier), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Glastrier) },
+    { .species = SPECIES_SPECTRIER, .champion = NEXUS_TRAINER_MORTY, NEXUS_CHAMPION(Morty_Spectrier), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Spectrier) },
+    { .species = SPECIES_CALYREX, .champion = NEXUS_TRAINER_WILL, NEXUS_CHAMPION(Will_Calyrex), .requiresCaught = TRUE, NEXUS_BOSS_DEFAULT, NEXUS_AFTER_BOSS(Calyrex), NEXUS_LOOKER_FILE(Calyrex) },
     { .species = SPECIES_WO_CHIEN, .champion = NEXUS_TRAINER_ARCHER, NEXUS_CHAMPION(Archer_WoChien), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(WoChien) },
     { .species = SPECIES_TING_LU, .champion = NEXUS_TRAINER_PROTON, NEXUS_CHAMPION(Proton_TingLu), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(TingLu) },
     { .species = SPECIES_OKIDOGI, .champion = NEXUS_TRAINER_JANINE, NEXUS_CHAMPION(Janine_Okidogi), NEXUS_BOSS_DEFAULT, NEXUS_LOOKER_FILE(Okidogi) },

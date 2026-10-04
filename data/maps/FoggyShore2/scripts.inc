@@ -57,4 +57,4 @@ FoggyShoreSign_Text_0:
 	.string "{UP_ARROW} Lost Woods$"
 
 FoggyShoreBuizel_Text_0:
-	.string "Buizel: Buibuibuiiii!$"
+	.string "{SPEAKER NAME_BUIZEL}Buibuibuiiii!$"

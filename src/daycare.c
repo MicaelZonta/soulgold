@@ -638,126 +638,65 @@ static void UNUSED TriggerPendingDaycareMaleEgg(void)
     _TriggerPendingDaycareMaleEgg(&gSaveBlock1Ptr->daycare);
 }
 
+// SoulGold breeding: every stat rolls on its own. With a Destiny Knot on either
+// parent, each IV is copied from one of the parents (picked per stat), so no
+// random IV comes in. Without it, BREEDING_IV_INHERIT_CHANCE percent of the
+// time the IV is drawn between the two parents' values (11 and 20 give 11..20);
+// otherwise it mutates and keeps the egg's own random IV. A Power item still
+// forces its stat to be copied from the parent holding it (a random holder when
+// both parents have one).
+#define BREEDING_IV_INHERIT_CHANCE 50
+
+static u32 GetParentPowerItemStat(struct BoxPokemon *parent)
+{
+    u32 i;
+
+    for (i = 0; i < MAX_MON_ITEMS; i++)
+    {
+        enum Item item = GetBoxMonData(parent, MON_DATA_HELD_ITEM + i);
+
+        if (GetItemHoldEffect(item) == HOLD_EFFECT_POWER_ITEM)
+            return GetItemSecondaryId(item);
+    }
+    return NUM_STATS;
+}
+
 static void InheritIVs(struct Pokemon *egg, struct DayCare *daycare)
 {
-    enum Item item1, motherItem = ITEM_NONE;
-    enum Item item2, fatherItem = ITEM_NONE;
-    u16 slot[MAX_MON_ITEMS];
-    u8 i, start;
-    u8 selectedIvs[5];
-    u8 availableIVs[NUM_STATS];
-    u8 whichParents[5];
+    bool32 hasDestinyKnot = BoxMonHasItem(&daycare->mons[0].mon, ITEM_DESTINY_KNOT)
+                         || BoxMonHasItem(&daycare->mons[1].mon, ITEM_DESTINY_KNOT);
+    u32 powerStat[DAYCARE_MON_COUNT];
+    u32 powerParent;
+    u32 stat, parent;
     u8 iv;
-    u8 howManyIVs = 3;
 
-    if (BoxMonHasItem(&daycare->mons[0].mon, ITEM_DESTINY_KNOT)|| BoxMonHasItem(&daycare->mons[1].mon, ITEM_DESTINY_KNOT))
-        howManyIVs = 5;
+    powerStat[0] = GetParentPowerItemStat(&daycare->mons[0].mon);
+    powerStat[1] = GetParentPowerItemStat(&daycare->mons[1].mon);
+    if (powerStat[0] != NUM_STATS && powerStat[1] != NUM_STATS)
+        powerParent = Random() % DAYCARE_MON_COUNT;
+    else
+        powerParent = (powerStat[0] != NUM_STATS) ? 0 : 1;
 
-    // Initialize a list of IV indices.
-    for (i = 0; i < NUM_STATS; i++)
+    for (stat = 0; stat < NUM_STATS; stat++)
     {
-        availableIVs[i] = i;
-    }
-
-    for ( i = 0; i < MAX_MON_ITEMS; i++)
-    {
-        if (motherItem == ITEM_NONE)
-            item1 = GetBoxMonData(&daycare->mons[0].mon, MON_DATA_HELD_ITEM + i);
-        if (fatherItem == ITEM_NONE)
-            item2 = GetBoxMonData(&daycare->mons[1].mon, MON_DATA_HELD_ITEM + i);
-
-        if (GetItemHoldEffect(item1) == HOLD_EFFECT_POWER_ITEM)
-            {
-                motherItem = item1;
-                slot[0] = i;
-            }
-        if (GetItemHoldEffect(item2) == HOLD_EFFECT_POWER_ITEM)
-            {
-                fatherItem = item2;
-                slot[1] = i;
-            }
-    }
-
-    start = 0;
-    if (GetItemHoldEffect(motherItem) == HOLD_EFFECT_POWER_ITEM &&
-        GetItemHoldEffect(fatherItem) == HOLD_EFFECT_POWER_ITEM)
-    {
-        whichParents[0] = Random() % DAYCARE_MON_COUNT;
-        selectedIvs[0] = GetItemSecondaryId(
-            GetBoxMonData(&daycare->mons[whichParents[0]].mon, MON_DATA_HELD_ITEM + slot[whichParents[0]]));
-        RemoveIVIndexFromList(availableIVs, selectedIvs[0]);
-        start++;
-    }
-    else if (GetItemHoldEffect(motherItem) == HOLD_EFFECT_POWER_ITEM)
-    {
-        whichParents[0] = 0;
-        selectedIvs[0] = GetItemSecondaryId(motherItem);
-        RemoveIVIndexFromList(availableIVs, selectedIvs[0]);
-        start++;
-    }
-    else if (GetItemHoldEffect(fatherItem) == HOLD_EFFECT_POWER_ITEM)
-    {
-        whichParents[0] = 1;
-        selectedIvs[0] = GetItemSecondaryId(fatherItem);
-        RemoveIVIndexFromList(availableIVs, selectedIvs[0]);
-        start++;
-    }
-
-    // Select which IVs that will be inherited.
-    for (i = start; i < howManyIVs; i++)
-    {
-        // Randomly pick an IV from the available list and stop from being chosen again.
-        // BUG: Instead of removing the IV that was just picked, this
-        // removes position 0 (HP) then position 1 (DEF), then position 2. This is why HP and DEF
-        // have a lower chance to be inherited in Emerald and why the IV picked for inheritance can
-        // be repeated. Amusingly, FRLG and RS also got this wrong. They remove selectedIvs[i], which
-        // is not an index! This means that it can sometimes remove the wrong stat.
-        #ifndef BUGFIX
-        selectedIvs[i] = availableIVs[Random() % (NUM_STATS - i)];
-        RemoveIVIndexFromList(availableIVs, i);
-        #else
-        u8 index = Random() % (NUM_STATS - i);
-        selectedIvs[i] = availableIVs[index];
-        RemoveIVIndexFromList(availableIVs, index);
-        #endif
-    }
-
-    // Determine which parent each of the selected IVs should inherit from.
-    for (i = start; i < howManyIVs; i++)
-    {
-        whichParents[i] = Random() % DAYCARE_MON_COUNT;
-    }
-
-    // Set each of inherited IVs on the egg mon.
-    for (i = 0; i < howManyIVs; i++)
-    {
-        switch (selectedIvs[i])
+        if (stat == powerStat[powerParent] || hasDestinyKnot)
         {
-        case 0:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_HP_IV);
-            SetMonData(egg, MON_DATA_HP_IV, &iv);
-            break;
-        case 1:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_ATK_IV);
-            SetMonData(egg, MON_DATA_ATK_IV, &iv);
-            break;
-        case 2:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_DEF_IV);
-            SetMonData(egg, MON_DATA_DEF_IV, &iv);
-            break;
-        case 3:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_SPEED_IV);
-            SetMonData(egg, MON_DATA_SPEED_IV, &iv);
-            break;
-        case 4:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_SPATK_IV);
-            SetMonData(egg, MON_DATA_SPATK_IV, &iv);
-            break;
-        case 5:
-            iv = GetBoxMonData(&daycare->mons[whichParents[i]].mon, MON_DATA_SPDEF_IV);
-            SetMonData(egg, MON_DATA_SPDEF_IV, &iv);
-            break;
+            parent = (stat == powerStat[powerParent]) ? powerParent
+                   : RandomUniform(RNG_BREEDING_IV_PARENT, 0, DAYCARE_MON_COUNT - 1);
+            iv = GetBoxMonData(&daycare->mons[parent].mon, MON_DATA_HP_IV + stat);
         }
+        else if (RandomPercentage(RNG_BREEDING_IV_INHERIT, BREEDING_IV_INHERIT_CHANCE))
+        {
+            u32 ivA = GetBoxMonData(&daycare->mons[0].mon, MON_DATA_HP_IV + stat);
+            u32 ivB = GetBoxMonData(&daycare->mons[1].mon, MON_DATA_HP_IV + stat);
+
+            iv = RandomUniform(RNG_BREEDING_IV_RANGE, min(ivA, ivB), max(ivA, ivB));
+        }
+        else
+        {
+            continue;
+        }
+        SetMonData(egg, MON_DATA_HP_IV + stat, &iv);
     }
 }
 

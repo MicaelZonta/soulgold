@@ -1,0 +1,27 @@
+name: Cruzamento de berries
+
+# Falha quando a tabela de cruzamento (sBerryMutations, src/berry.c) sai do
+# design do Berry Master: par repetido, berry sem receita, geracao diferente
+# da secao 4.2 do REI_DA_COLHEITA.md, ou mais que 63 receitas (6 bits no save).
+# So precisa de python.
+on:
+  push:
+    paths:
+      - 'src/berry.c'
+      - 'include/constants/items.h'
+      - '.claude/berry_master/REI_DA_COLHEITA.md'
+      - 'dev_scripts/berry_mutations_check.py'
+  pull_request:
+    paths:
+      - 'src/berry.c'
+      - 'include/constants/items.h'
+      - '.claude/berry_master/REI_DA_COLHEITA.md'
+      - 'dev_scripts/berry_mutations_check.py'
+
+jobs:
+  berry-mutations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Receitas de cruzamento
+        run: python3 dev_scripts/berry_mutations_check.py

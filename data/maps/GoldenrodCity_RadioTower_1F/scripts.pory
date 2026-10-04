@@ -47,7 +47,7 @@ RadioTower1F_EventScript_Whitney::
 	end
 
 RadioTower1F_Text_Whitney1::
-	.string "Whitney: Hi!\p"
+	.string "{SPEAKER NAME_WHITNEY}Hi!\p"
 	.string "My name is Whitney!\p"
 	.string "I heard about the Radio Quiz and\n"
 	.string "its special prize, so I came here\l"
@@ -55,7 +55,7 @@ RadioTower1F_Text_Whitney1::
 	.string "But this Quiz is so hard!$"
 
 RadioTower1F_Text_Whitney2::
-	.string "Whitney: Wow, you did it!\p"
+	.string "{SPEAKER NAME_WHITNEY}Wow, you did it!\p"
 	.string "I thought the answer to the third\n"
 	.string "question was surely apricorns!\l"
 	.string "Oops!\p"

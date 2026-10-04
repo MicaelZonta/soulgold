@@ -58,7 +58,7 @@ PokemonLeague_BrunosRoom_EventScript_BrunoDefeated::
 	end
 
 PokemonLeague_BrunosRoom_Text_RematchBefore:
-    .string "Bruno: Welcome back, young\n"
+    .string "{SPEAKER NAME_BRUNO}Welcome back, young\n"
     .string "warrior.\p"
     .string "Through rigorous training, we have\n"
     .string "grown stronger.\p"
@@ -71,7 +71,7 @@ PokemonLeague_BrunosRoom_Text_RematchBefore:
     .string "Hoo hah!$"
 
 PokemonLeague_BrunosRoom_Text_Before:
-    .string "I am Bruno of the Elite Four.\p"
+    .string "{SPEAKER NAME_BRUNO}I am Bruno of the Elite Four.\p"
     .string "I always train to the extreme be-\n"
     .string "cause I believe in our potential.\p"
     .string "That is how we became strong.\p"
@@ -86,6 +86,6 @@ PokemonLeague_BrunosRoom_Text_Beaten:
     .string "Why? How could we lose?$"
 
 PokemonLeague_BrunosRoom_Text_Defeat:
-    .string "Having lost, I have no right to\n"
+    .string "{SPEAKER NAME_BRUNO}Having lost, I have no right to\n"
     .string "say anything…\p"
     .string "Go face your next challenge!$"

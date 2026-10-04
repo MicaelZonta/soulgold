@@ -150,14 +150,14 @@ Route39_Text_BarnTwinFeedingMoomoo:
 	.string "Thank you!$"
 
 Route39_Text_MoomooWeakMoo:
-	.string "Miltank: …Moo…$"
+	.string "{SPEAKER NAME_MILTANK}…Moo…$"
 
 Route39_Text_BarnCryIsWeak:
 	.string "Its cry is weak…\n"
 	.string "Give an Oran Berry to Miltank?$"
 
 Route39_Text_MoomooHappyMoo:
-	.string "Miltank: Mooo!$"
+	.string "{SPEAKER NAME_MILTANK}Mooo!$"
 
 Route39_Text_BarnGaveBerry:
 	.string "{PLAYER} gave an Oran Berry to\n"

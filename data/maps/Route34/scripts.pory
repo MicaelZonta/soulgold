@@ -172,48 +172,48 @@ Route34_Text_TrainerTips:
 	.string "Berries.$"
 
 Route34_Text_CooltrainerIrene_Seen:
-	.string "Irene: Kyaaah! Someone found us!$"
+	.string "{SPEAKER NAME_IRENE}Kyaaah! Someone found us!$"
 
 Route34_Text_CooltrainerIrene_Beaten:
-	.string "Irene: Ohhh! You're too strong!$"
+	.string "{SPEAKER NAME_IRENE}Ohhh! You're too strong!$"
 
 Route34_Text_CooltrainerIrene_After1:
-	.string "Irene: My sister Kate will get you\n"
+	.string "{SPEAKER NAME_IRENE}My sister Kate will get you\n"
 	.string "for this!$"
 
 Route34_Text_CooltrainerIrene_After2:
-	.string "Irene: Isn't this beach great?\p"
+	.string "{SPEAKER NAME_IRENE}Isn't this beach great?\p"
 	.string "It's our secret little getaway!$"
 
 Route34_Text_CooltrainerJenn_Seen:
-	.string "Jenn: You can't beat Irene and go\n"
+	.string "{SPEAKER NAME_JENN}You can't beat Irene and go\n"
 	.string "unpunished!$"
 
 Route34_Text_CooltrainerJenn_Beaten:
-	.string "Jenn: So sorry, Irene! Dear Sis!$"
+	.string "{SPEAKER NAME_JENN}So sorry, Irene! Dear Sis!$"
 
 Route34_Text_CooltrainerJenn_After1:
-	.string "Jenn: Don't get cocky! My sister\n"
+	.string "{SPEAKER NAME_JENN}Don't get cocky! My sister\n"
 	.string "Kate is tough!$"
 
 Route34_Text_CooltrainerJenn_After2:
-	.string "Jenn: Sunlight makes your body\n"
+	.string "{SPEAKER NAME_JENN}Sunlight makes your body\n"
 	.string "stronger.$"
 
 Route34_Text_CooltrainerKate_Seen:
-	.string "Kate: You sure were mean to my\n"
+	.string "{SPEAKER NAME_KATE}You sure were mean to my\n"
 	.string "little sisters!$"
 
 Route34_Text_CooltrainerKate_Beaten:
-	.string "Kate: No! I can't believe I lost.$"
+	.string "{SPEAKER NAME_KATE}No! I can't believe I lost.$"
 
 Route34_Text_CooltrainerKate_GiveSoftSand:
-	.string "Kate: You're too strong. I didn't\n"
+	.string "{SPEAKER NAME_KATE}You're too strong. I didn't\n"
 	.string "stand a chance. Here, you deserve\n"
 	.string "this.$"
 
 Route34_Text_CooltrainerKate_After:
-	.string "Kate: I'm sorry we jumped you.\p"
+	.string "{SPEAKER NAME_KATE}I'm sorry we jumped you.\p"
 	.string "We never expected anyone to find\n"
 	.string "us here. You sure startled us.$"
 

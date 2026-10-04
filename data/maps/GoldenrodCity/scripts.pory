@@ -298,13 +298,13 @@ GoldenrodCity_Text_HikerNight:
 	.string "in there?!$"
 
 GoldenrodCity_Text_Snubbull:
-	.string "Audino: Audiiinii!$"
+	.string "{SPEAKER NAME_AUDINO}Audiiinii!$"
 
 GoldenrodCity_Text_MrMime:
 	.string "............................$"
 
 GoldenrodCity_Text_ElmCall:
-	.string "Elm: Hello, {PLAYER}?\n"
+	.string "{SPEAKER NAME_ELM}Hello, {PLAYER}?\n"
 	.string "Has that egg hatched yet?\p"
 	.string "Once it hatches, don't forget to\n"
 	.string "bring it by the lab! I need to\l"
@@ -458,7 +458,12 @@ GoldenrodCity_Text_MoveTutorNotEnoughCoins:
 	.string "…You don't have enough coins…$"
 
 Goldenrod_OnFrame:: 
-	map_script_2 VAR_RIVAL_STATE, 6, GoldenrodCity_RivalAfterWhitney
+	@ VAR_TEMP_1 (zerada a cada carga de mapa) e armada no OnTransition so
+	@ quando o rival esta aqui E a Whitney ja foi vencida. Condicionar direto
+	@ em VAR_RIVAL_STATE == 6 congelava a cidade para quem fazia o rival da
+	@ Route 34 antes do ginasio: a condicao valia todo frame e o script saia
+	@ sem muda-la (bug/B01, skill visibilidade-e-gatilhos secao 4).
+	map_script_2 VAR_TEMP_1, 1, GoldenrodCity_RivalAfterWhitney
 	.2byte 0
 `
 
@@ -558,11 +563,13 @@ script GoldenrodCity_OnTransition {
 	setflag(FLAG_HIDE_GOLDENROD_RIVAL)
 	if (var(VAR_RIVAL_STATE) == 6 && flag(FLAG_DEFEATED_GOLDENROD_CITY_GYM)) {
 		clearflag(FLAG_HIDE_GOLDENROD_RIVAL)
+		setvar(VAR_TEMP_1, 1)
 	}
 	end
 }
 
 script GoldenrodCity_RivalAfterWhitney {
+	setvar(VAR_TEMP_1, 2)
 	if (var(VAR_RIVAL_STATE) == 6 && flag(FLAG_DEFEATED_GOLDENROD_CITY_GYM)) { 
 		lock
 		playse(SE_PIN)

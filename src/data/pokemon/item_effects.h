@@ -187,24 +187,12 @@ const u8 gItemEffect_HPUp[ITEM_EFFECT_COUNT] = {
     [10] = ITEM10_IS_VITAMIN,
 };
 
-const u8 gItemEffect_HPUpEX[ITEM_EFFECT_COUNT] = {
-    [4] = ITEM4_EV_HP,
-    [5] = ITEM5_FRIENDSHIP_ALL,
-    [6] = ITEM6_MAX_EV,
-};
-
 const u8 gItemEffect_Protein[ITEM_EFFECT_COUNT] = {
     [4] = ITEM4_EV_ATK,
     [5] = ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_ADD_EV,
     VITAMIN_FRIENDSHIP_CHANGE(7),
     [10] = ITEM10_IS_VITAMIN,
-};
-
-const u8 gItemEffect_ProteinEX[ITEM_EFFECT_COUNT] = {
-    [4] = ITEM4_EV_ATK,
-    [5] = ITEM5_FRIENDSHIP_ALL,
-    [6] = ITEM6_MAX_EV,
 };
 
 const u8 gItemEffect_Iron[ITEM_EFFECT_COUNT] = {
@@ -214,21 +202,11 @@ const u8 gItemEffect_Iron[ITEM_EFFECT_COUNT] = {
     [10] = ITEM10_IS_VITAMIN,
 };
 
-const u8 gItemEffect_IronEX[ITEM_EFFECT_COUNT] = {
-    [5] = ITEM5_EV_DEF | ITEM5_FRIENDSHIP_ALL,
-    [6] = ITEM6_MAX_EV,
-};
-
 const u8 gItemEffect_Carbos[ITEM_EFFECT_COUNT] = {
     [5] = ITEM5_EV_SPEED | ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_ADD_EV,
     VITAMIN_FRIENDSHIP_CHANGE(7),
     [10] = ITEM10_IS_VITAMIN,
-};
-
-const u8 gItemEffect_CarbosEX[ITEM_EFFECT_COUNT] = {
-    [5] = ITEM5_EV_SPEED | ITEM5_FRIENDSHIP_ALL,
-    [6] = ITEM6_MAX_EV,
 };
 
 const u8 gItemEffect_Calcium[ITEM_EFFECT_COUNT] = {
@@ -238,21 +216,11 @@ const u8 gItemEffect_Calcium[ITEM_EFFECT_COUNT] = {
     [10] = ITEM10_IS_VITAMIN,
 };
 
-const u8 gItemEffect_CalciumEX[ITEM_EFFECT_COUNT] = {
-    [5] = ITEM5_EV_SPATK | ITEM5_FRIENDSHIP_ALL,
-    [6] = ITEM6_MAX_EV,
-};
-
 const u8 gItemEffect_Zinc[ITEM_EFFECT_COUNT] = {
     [5] = ITEM5_EV_SPDEF | ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_ADD_EV,
     VITAMIN_FRIENDSHIP_CHANGE(7),
     [10] = ITEM10_IS_VITAMIN,
-};
-
-const u8 gItemEffect_ZincEX[ITEM_EFFECT_COUNT] = {
-    [5] = ITEM5_EV_SPDEF | ITEM5_FRIENDSHIP_ALL,
-    [6] = ITEM6_MAX_EV,
 };
 
 const u8 gItemEffect_ReduceHpIV[ITEM_EFFECT_COUNT] = {

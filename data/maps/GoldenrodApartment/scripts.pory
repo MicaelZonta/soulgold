@@ -159,7 +159,7 @@ script MadScientistEvent {
     playbgm(MUS_HG_TEAM_ROCKET_HQ, FALSE)
     applymovement(LOCALID_MADSC, moves(walk_in_place_up))
     waitmovement(0)
-    msgbox("Scientist: Ha haa! The machine is nearly
+    msgbox("{SPEAKER NAME_SCIENTIST}Ha haa! The machine is nearly
             complete! 
             
             I shall have my revenge on those 
@@ -170,7 +170,7 @@ script MadScientistEvent {
     playse(SE_LEDGE)
     applymovement(LOCALID_MADSC, moves(jump_in_place_up))
     waitmovement
-    msgbox("Scientist: And then! The rest of those
+    msgbox("{SPEAKER NAME_SCIENTIST}And then! The rest of those
             snobby scientific committee members!
             
             This will be my ultimate creation!
@@ -178,7 +178,7 @@ script MadScientistEvent {
     msgbox("But first...")
     delay(30)
     turnobject(LOCALID_MADSC, DIR_SOUTH)
-    msgbox("Scientist: Who are you and how 
+    msgbox("{SPEAKER NAME_SCIENTIST}Who are you and how 
             did you get in?!")
     msgbox("I don't have time for 
             debt collectors or salespeople! 
@@ -189,7 +189,7 @@ script MadScientistEvent {
     waitmovement(0)
     trainerbattle_no_intro(TRAINER_MAD_SCIENTIST, "No! I can't afford this!")
     applymovement(LOCALID_MADSC, moves(walk_in_place_down))
-    msgbox("Scientist: It seems the tax office has 
+    msgbox("{SPEAKER NAME_SCIENTIST}It seems the tax office has 
             sent quite a tough customer this time. 
             
             No matter!
@@ -202,7 +202,7 @@ script MadScientistEvent {
     closemessage
     applymovement(LOCALID_MADSC, moves(walk_right, face_up))
     waitmovement(0)
-    msgbox("Scientist: Magearna! Destroy this 
+    msgbox("{SPEAKER NAME_SCIENTIST}Magearna! Destroy this 
             foolish intruder!")
     closemessage
     playmoncry(SPECIES_MAGEARNA, CRY_MODE_NORMAL)
@@ -223,7 +223,7 @@ script MadScientistEvent {
                                     MOVE_DRAINING_KISS, 
                                     MOVE_STORED_POWER)
     playbgm(MUS_HG_TEAM_ROCKET_HQ, FALSE)
-    msgbox("Scientist: This... THIS CANNOT BE!
+    msgbox("{SPEAKER NAME_SCIENTIST}This... THIS CANNOT BE!
     
             My creation... Gone? JUST LIKE THAT?
             
@@ -245,12 +245,12 @@ script MadScientistEvent {
     applymovement(LOCALID_M_POLICE2, moves(walk_left, walk_up*5, walk_left*4, walk_up*2, face_left))
     waitmovement(0)
     turnobject(LOCALID_PLAYER, DIR_EAST)
-    msgbox("Police: You're under arrest for tax 
+    msgbox("{SPEAKER NAME_POLICE}You're under arrest for tax 
             evasion, having ties to the Team Rocket
             and for developing illegal Pokémon.")
     applymovement(LOCALID_MADSC, moves(walk_in_place_down))
     waitmovement(0)
-    msgbox("Scientist: B-But I was the one whom 
+    msgbox("{SPEAKER NAME_SCIENTIST}B-But I was the one whom 
             Team Rocket abandoned!
             
             I'm innocent! I just wanted
@@ -260,7 +260,7 @@ script MadScientistEvent {
     msgbox("Save it for the judge.")
     turnobject(LOCALID_M_POLICE1, DIR_WEST)
     fadedefaultbgm
-    msgbox("Police: I thank you for help 
+    msgbox("{SPEAKER NAME_POLICE}I thank you for help 
             subduing this crook. 
             
             They've been holed up here

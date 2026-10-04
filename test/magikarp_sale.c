@@ -156,6 +156,7 @@ TEST("Magikarp sale removes a boxed Magikarp without applying the last party mon
 {
     struct BoxPokemon *boxMon;
 
+    ZeroPlayerPartyMons(); // earlier tests in the same shard may leave mons in the party
     CreateSaleMon(0, SPECIES_BULBASAUR, 10);
     boxMon = CreateSaleBoxMon(0, 0, SPECIES_MAGIKARP, 10);
     SetMoney(&gSaveBlock1Ptr->money, 0);

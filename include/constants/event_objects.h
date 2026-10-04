@@ -389,11 +389,29 @@
 #define OBJ_EVENT_GFX_OLIVIA                         364
 #define OBJ_EVENT_GFX_SHELLY                         365
 #define OBJ_EVENT_GFX_ZINNIA                         366
+#define OBJ_EVENT_GFX_ALISTER                        367
+#define OBJ_EVENT_GFX_AVERY                          368
+#define OBJ_EVENT_GFX_BEA                            369
+#define OBJ_EVENT_GFX_DAWN                           370
+#define OBJ_EVENT_GFX_KLARA                          371
+#define OBJ_EVENT_GFX_LENORA                         372
+#define OBJ_EVENT_GFX_MUSTARD                        373
+#define OBJ_EVENT_GFX_NEMONA                         374
+#define OBJ_EVENT_GFX_NESSA                          375
+#define OBJ_EVENT_GFX_PEONIA                         376
+#define OBJ_EVENT_GFX_PEONY                          377
+#define OBJ_EVENT_GFX_ROSA                           378
+#define OBJ_EVENT_GFX_SKYLA                          379
+#define OBJ_EVENT_GFX_MOLLY_HALE                     380
+#define OBJ_EVENT_GFX_MOLLY_CHILD                    381
+#define OBJ_EVENT_GFX_KINGS_CARROT_ICE               382
+#define OBJ_EVENT_GFX_KINGS_CARROT_SHADE             383
+#define OBJ_EVENT_GFX_CRYSTAL_GLINT                  384
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        367
+#define NUM_OBJ_EVENT_GFX                        385
 
 
 // These are dynamic object gfx ids.
@@ -639,6 +657,24 @@
 #define OBJ_EVENT_PAL_TAG_OLIVIA                     0x118D
 #define OBJ_EVENT_PAL_TAG_SHELLY                     0x118E
 #define OBJ_EVENT_PAL_TAG_ZINNIA                     0x118F
+#define OBJ_EVENT_PAL_TAG_ALISTER                    0x1190
+#define OBJ_EVENT_PAL_TAG_AVERY                      0x1191
+#define OBJ_EVENT_PAL_TAG_BEA                        0x1192
+#define OBJ_EVENT_PAL_TAG_DAWN                       0x1193
+#define OBJ_EVENT_PAL_TAG_LEAF                       0x1194
+#define OBJ_EVENT_PAL_TAG_KLARA                      0x1195
+#define OBJ_EVENT_PAL_TAG_LENORA                     0x1196
+#define OBJ_EVENT_PAL_TAG_MUSTARD                    0x1197
+#define OBJ_EVENT_PAL_TAG_NEMONA                     0x1198
+#define OBJ_EVENT_PAL_TAG_NESSA                      0x1199
+#define OBJ_EVENT_PAL_TAG_PEONIA                     0x119A
+#define OBJ_EVENT_PAL_TAG_PEONY                      0x119B
+#define OBJ_EVENT_PAL_TAG_ROSA                       0x119C
+#define OBJ_EVENT_PAL_TAG_SKYLA                      0x119D
+#define OBJ_EVENT_PAL_TAG_MOLLY_HALE                 0x119E
+#define OBJ_EVENT_PAL_TAG_MOLLY_CHILD                0x119F
+#define OBJ_EVENT_PAL_TAG_KINGS_CARROT               0x11A0
+#define OBJ_EVENT_PAL_TAG_CRYSTAL_GLINT              0x11A1
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

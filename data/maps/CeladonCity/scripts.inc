@@ -27,7 +27,7 @@ CeladonCity_EventScript_Erika::
     end
 
 CeladonCity_Text_Erika:
-    .string "Oh, {PLAYER}.\n"
+    .string "{SPEAKER NAME_ERIKA}Oh, {PLAYER}.\n"
 	.string "Isn't the fountain lovely today?\p"
 	.string "If you wish for another battle,\n"
 	.string "I'll be at the Fighting Dojo.$"
@@ -79,7 +79,7 @@ CeladonCity_Text_Fisher:
 	.string "into a frog Pokémon.$"
 
 CeladonCity_Text_Poliwrath:
-	.string "Poliwrath: Croak!$"
+	.string "{SPEAKER NAME_POLIWRATH}Croak!$"
 
 CeladonCity_Text_Teacher1:
 	.string "I lost at the slot machines again…\p"

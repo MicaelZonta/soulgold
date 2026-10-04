@@ -1,4 +1,6 @@
 BerryTreeScript::
+	@ Berry Master part 16: Calyrex at Laurel's plot, at night (bank N).
+	call BerryGarden_EventScript_KingsPlotKing
 	special ObjectEventInteractionGetBerryTreeData
 	switch VAR_0x8004
 	case BERRY_STAGE_SPARKLING, BerryTree_EventScript_Sparkling
@@ -455,11 +457,23 @@ BerryTree_EventScript_CheckForPests::
 	call_if_eq VAR_RESULT, TRUE, BerryTree_EventScript_EncounterPests
 	return
 
+@ SoulGold: pests only come out of the Berry Master's garden plots, with a
+@ line of their own (bank P, data/scripts/berry_garden_lines.inc).
 BerryTree_EventScript_EncounterPests::
+	specialvar VAR_RESULT, GardenPest_IsGardenTree
+	goto_if_eq VAR_RESULT, TRUE, BerryTree_EventScript_EncounterGardenPests
 	message BerryTree_Text_APokemonAppeared
 	waitmessage
 	waitbuttonpress
 	dowildbattle
+	return
+
+BerryTree_EventScript_EncounterGardenPests::
+	call BerryGarden_EventScript_PestLine
+	closemessage
+	dowildbattle
+	@ The story's Act 1a (part 12): the first one beaten or caught.
+	call BerryGarden_EventScript_PestAfter
 	return
 
 BerryTree_Text_APokemonAppeared:

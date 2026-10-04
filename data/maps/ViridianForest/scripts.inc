@@ -17,7 +17,7 @@ ViridianForest_EventScript_Bugsy::
 	end
 
 ViridianForest_Text_Bugsy:
-	.string "Bugsy: I came to Kanto to look for\n"
+	.string "{SPEAKER NAME_BUGSY}I came to Kanto to look for\n"
 	.string "Bug-Type Pokémon, so I can become\l"
 	.string "a stronger Bug-Type Pokémon\l"
 	.string "Trainer!\p"

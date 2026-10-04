@@ -23,4 +23,10 @@ enum Pocket
 
 #define ITEM_SELL_FACTOR ((I_SELL_VALUE_FRACTION >= GEN_9) ? 4 : 2)
 
+// SoulGold: Nature Mints cost a fortune in shops so breeding for the nature
+// stays the main route; selling one still pays only the old value, so Mints
+// picked up from the ground are not a money source.
+#define MINT_SHOP_PRICE  1000000
+#define MINT_SELL_PRICE  (7800 / ITEM_SELL_FACTOR)
+
 #endif // GUARD_ITEM_CONSTANTS_H

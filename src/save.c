@@ -138,7 +138,8 @@ STATIC_ASSERT(offsetof(struct SaveBlock1, pokemonStorageExtensionTail) == 0x349A
 STATIC_ASSERT(sizeof(((struct SaveBlock1 *)0)->pokemonStorageExtensionTail) == 1944, SaveBlock1PokemonStorageExtensionTailSize);
 STATIC_ASSERT(offsetof(struct SaveBlock1, futureReserved) == 0x3C32, SaveBlock1FutureReserveOffset);
 STATIC_ASSERT(sizeof(((struct SaveBlock1 *)0)->futureReserved) == 34, SaveBlock1FutureReserveSize);
-STATIC_ASSERT(sizeof(struct SaveBlock1) == 0x3C54, SaveBlock1LegacySize);
+STATIC_ASSERT(offsetof(struct SaveBlock1, objectEventsExtra) == 0x3C54, SaveBlock1ObjectEventsExtraOffset);
+STATIC_ASSERT(sizeof(struct SaveBlock1) == 0x3C54 + sizeof(struct ObjectEvent) * (OBJECT_EVENTS_COUNT - OBJECT_EVENTS_SAVE_LEGACY_COUNT), SaveBlock1LegacySize);
 
 #define PKMN_STORAGE_REGULAR_SIZE (SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START + 1))
 #define PKMN_STORAGE_LEGACY_SIZE 34740

@@ -192,7 +192,7 @@ VioletCity_TrainerSchool_Text_Notebook3:
 	.string "Pokémon Gyms and defeat other\n"
 	.string "trainers.\p"
 	.string "The next page is… Blank!\p"
-	.string "Boy: E-he-he…\p"
+	.string "{SPEAKER NAME_BOY}E-he-he…\p"
 	.string "I haven't written anymore…$"
 
 VioletCity_TrainerSchool_Text_StickerMachine:

@@ -20,6 +20,7 @@ u32 GetNameboxWidth(void);
 void TrySpawnAndShowNamebox(const u8 *speaker, u32 tileNum);
 void TrySetSpeakerFromMessage(const u8 *str);
 void SetSpeakerNameForNextMessage(const u8 *speaker);
+const u8 *GetSpeakerNameFromArg(const u8 *arg);
 bool32 IsNameboxShowingSpeaker(const u8 *speaker);
 
 #endif // GUARD_FIELD_NAME_BOX_H

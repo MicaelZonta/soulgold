@@ -11,5 +11,7 @@ OneIsland_Harbor_Movement_PlayerExitHarbor::
 OneIsland_Harbor_EventScript_Sailor::
 	lock
 	faceplayer
-	message Text_WhereDoYouWantToSail
+	msgbox Text_WhereDoYouWantToSail, MSGBOX_DEFAULT
+	closemessage
+	release
 	end

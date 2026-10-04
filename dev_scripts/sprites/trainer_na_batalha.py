@@ -12,6 +12,7 @@ y=8 e o 80x80 tambem (sobra para baixo, ver battle_gfx_sfx_util.c). Cores ja
 reduzidas a 15 + transparencia, como o jogo mostraria.
 
     trainer_na_batalha.py [Nome ...]      (sem nome: todos de TRAINERS)
+    trainer_na_batalha.py gravar <Nome> <saida 64x64.png> [<saida 80x80.png>]
 
 Precisa de Pillow (no WSL: Python do Windows).
 """
@@ -34,11 +35,23 @@ FUNDO = 'graphics/battle_environment/plain/1 Forest.png'
 
 # atual: front pic de hoje (64x64); o _large ao lado, se existir, e o da batalha.
 # grid: arte ampliada por fator nao inteiro (mediana do miolo de cada bloco).
+# ia: arte ampliada por IA, sem grade fixa (o pixel varia de 7 a 12 px): as bordas de
+#     cada pixel sao achadas uma a uma (grade_ia); o valor e o menor vao aceito.
 # jpg: fundo com ruido, tirado por tolerancia a partir da borda.
+# pasta + f: segunda arte de um personagem (o nome da entrada vira sufixo da folha).
 TRAINERS = {
     'Agatha': {}, 'Alder': {}, 'Barry': {}, 'Cheren': {}, 'Cyrus': dict(jpg=True),
     'Diantha': {}, 'Gardenia': {}, 'Hau': {}, 'Hilda': dict(jpg=True), 'Jessie e James': {},
-    'Leon': {}, 'Lorelei': {}, 'N': dict(jpg=True, grid=2), 'Olivia': {}, 'Shelly': {}, 'Zinnia': {},
+    'Leon': {}, 'Lorelei': {}, 'N': dict(jpg=True, grid=2), 'Olivia': {}, 'Zinnia': {},
+    'Shelly': dict(f='Trainer - Swizzler121.png'),
+    # lote de 03/10/2026
+    'Alister': dict(ia=9), 'Avery': dict(grid=2), 'Bea': dict(ia=8), 'Green': {}, 'Klara': dict(grid=4),
+    'Mustard': {}, 'Nemona': {}, 'Nessa': {}, 'Peonia': {}, 'Peony': {}, 'Rosa': dict(ia=8), 'Skyla': dict(ia=8),
+    'Molly adulta': dict(ia=7),
+    'Dawn': dict(f='Trainer - oficial DP.png'),   # escolha do autor (03/10); a de Platinum ficou em outras/
+    'Lenora': dict(f='Trainer - desconhecido.png', grid=4),
+    'Lenora (IA)': dict(pasta='Lenora', f='Trainer - IA.png', ia=8),
+    'Shelly (AI)': dict(pasta='Shelly', f='Trainer - AI.png', ia=8),
     'Anabel': dict(atual='salon_maiden_anabel'),
     'Blue': dict(atual='leader_blue', jpg=True),
     'Brendan': dict(atual='brendan_rs'),
@@ -109,13 +122,61 @@ def opaco(im):
     return im
 
 
+def grade_ia(im, pmin, pmax=12):
+    """arte ampliada por IA, sem grade fixa: acha as bordas de pixel em x e em y por
+    programacao dinamica (energia de borda maxima, vao entre pmin e pmax) e pega o
+    medoide do miolo de cada bloco. Recorta antes na figura, senao o fundo com ruido
+    vira vaos minimos e achata a largura (Alister, 03/10/2026)."""
+    import numpy as np
+    A = np.asarray(im.convert('RGBA')).astype(float)
+    op = A[..., 3] >= 170
+    ys = np.where(op.sum(1) > op.shape[1] * 0.004)[0]
+    xs = np.where(op.sum(0) > op.shape[0] * 0.004)[0]
+    A = A[ys[0]:ys[-1] + 1, xs[0]:xs[-1] + 1]
+
+    def cortes(e):
+        n = len(e) + 1
+        lam = np.percentile(e, 60)
+        best = np.full(n + 1, -1e18); prev = np.zeros(n + 1, int); best[0] = 0
+        for i in range(1, n + 1):
+            sc = e[i - 1] - lam if i < n else 0
+            for g in range(pmin, pmax + 1):
+                j = i - g
+                if j < 0:
+                    break
+                if best[j] + sc > best[i]:
+                    best[i] = best[j] + sc; prev[i] = j
+        i = max(range(max(0, n - pmax), n + 1), key=lambda k: best[k])
+        b = [n]
+        while i > 0:
+            b.append(i); i = prev[i]
+        return sorted(set([0] + b))
+    bx = cortes(np.abs(np.diff(A[..., :3], axis=1)).sum(axis=(0, 2)))
+    by = cortes(np.abs(np.diff(A[..., :3], axis=0)).sum(axis=(1, 2)))
+    out = np.zeros((len(by) - 1, len(bx) - 1, 4), np.uint8)
+    for j in range(len(by) - 1):
+        for i in range(len(bx) - 1):
+            y0, y1, x0, x1 = by[j], min(by[j + 1], A.shape[0]), bx[i], min(bx[i + 1], A.shape[1])
+            h, w = y1 - y0, x1 - x0
+            b = A[y0 + h // 4:y1 - h // 4, x0 + w // 4:x1 - w // 4].reshape(-1, 4)
+            o = b[b[:, 3] >= 170]
+            if not len(b) or 2 * len(o) < len(b):
+                continue
+            med = np.median(o[:, :3], 0)
+            out[j, i] = (*o[np.argmin(np.abs(o[:, :3] - med).sum(1)), :3].astype(np.uint8), 255)
+    return Image.fromarray(out, 'RGBA')
+
+
 def figura(nome, c):
-    f = glob.glob(os.path.join(TR, nome, 'Trainer - *'))
+    pasta = os.path.join(TR, c.get('pasta', nome))
+    f = [os.path.join(pasta, c['f'])] if c.get('f') else glob.glob(os.path.join(pasta, 'Trainer - *'))
     f = [x for x in f if 'comparacao' not in x]
     if not f:
         return None, None
     im = Image.open(f[0]).convert('RGBA')
-    if c.get('grid'):
+    if c.get('ia'):
+        im = grade_ia(im, c['ia'])
+    elif c.get('grid'):
         im = recover_grid(im, c['grid'])
     else:
         k = G.escala_detectada(im) if im.width * im.height <= 160 * 160 else 1
@@ -267,10 +328,28 @@ def comparar(nome, z=2):
         real = Image.new('RGBA', (pic.width, pic.height), (120, 176, 96, 255))
         real.alpha_composite(pic)
         img.paste(real.convert('RGB'), (x, topo + h + 20))
-    img.save(os.path.join(TR, nome, 'Trainer - comparacao no jogo.png'))
+    pasta = c.get('pasta', nome)
+    sufixo = nome[len(pasta):] if nome.startswith(pasta) and nome != pasta else (f' ({nome})' if pasta != nome else '')
+    img.save(os.path.join(TR, pasta, f'Trainer - comparacao no jogo{sufixo}.png'))
     print(f'{nome}: figura {fig.width}x{fig.height} ({arq})')
 
 
+def gravar(nome, saida64, saida80=None):
+    """grava o front pic do jogo igual ao painel da comparacao: 64x64 e, se pedido,
+    o 80x80 (TRAINER_SPRITE_LARGE), indexados com o indice 0 transparente."""
+    c = TRAINERS[nome]
+    fig, _ = figura(nome, c)
+    for lado, saida in ((64, saida64), (80, saida80)):
+        if saida:
+            pic, rot = indexada(fig, lado)
+            res, fus = G.quantizar(pic, 15)
+            res.save(saida)
+            print(f'{nome}: {lado}x{lado} {rot} -> {saida}')
+
+
 if __name__ == '__main__':
+    if sys.argv[1:2] == ['gravar']:
+        gravar(*sys.argv[2:])
+        sys.exit()
     for n in sys.argv[1:] or list(TRAINERS):
         comparar(n)

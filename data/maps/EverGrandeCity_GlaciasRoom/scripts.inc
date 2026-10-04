@@ -59,7 +59,7 @@ EverGrandeCity_GlaciasRoom_EventScript_Defeated::
 	end
 
 EverGrandeCity_GlaciasRoom_Text_IntroSpeech:
-	.string "Welcome, my name is Glacia\n"
+	.string "{SPEAKER NAME_GLACIA}Welcome, my name is Glacia\n"
 	.string "of the Elite Four.\p"
 	.string "I've traveled from afar to Hoenn\n"
 	.string "so that I may hone my ice skills.\p"
@@ -77,7 +77,7 @@ EverGrandeCity_GlaciasRoom_Text_Defeat:
 	.string "failed to harm you.$"
 
 EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech:
-	.string "Advance to the next room.\p"
+	.string "{SPEAKER NAME_GLACIA}Advance to the next room.\p"
 	.string "And there, confirm the truly fearsome\n"
 	.string "side of the Pokémon League.$"
 

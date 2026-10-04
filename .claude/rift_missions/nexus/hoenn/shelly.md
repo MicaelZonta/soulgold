@@ -6,14 +6,14 @@ Aparece no checklist como:
 
 - **Shelly** (Hoenn · Team Aqua) — administradora inteligente envolvida nas operações científicas da equipe.
 
-**Pronto para o Nexus:** ❌ não — o overworld próprio entrou no código em 30/09/2026 (`OBJ_EVENT_GFX_SHELLY`); a front pic hoje é a genérica de admin da Aqua (`TRAINER_PIC_FRONT_AQUA_ADMIN_F`), e a arte nova da Swizzler121 ainda não foi registrada. Falta também o time e as falas irem para o código.
+**Pronto para o Nexus:** ✅ sim — tem sprite e battle sprite (03/10/2026). Falta o time e as falas irem para o código.
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Shelly/` (o overworld já registrado; a front pic, não).
 
 ## Checklist
 
-- [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_SHELLY`, 30/09/2026
-- [x] Battle sprite / front pic *(obrigatório)* — só a genérica de admin da Aqua; a arte nova falta registrar
+- [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_SHELLY`, 30/09/2026; arte DiegoWT 25x21 em 03/10/2026
+- [x] Battle sprite / front pic *(obrigatório)* — `TRAINER_PIC_FRONT_SHELLY` (64x64 + 80x80), 03/10/2026
 - [ ] Field mugshot (retrato na caixa de diálogo)
 - [ ] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026), fora do código
 - [ ] Associado a um lendário — 📝 proposta: Manaphy (cedido pela Misty)
@@ -26,13 +26,15 @@ Aparece no checklist como:
 
 | Constante | Arquivo |
 |---|---|
-| `OBJ_EVENT_GFX_SHELLY` | `graphics/object_events/pics/people/special/shelly.png` (16x32, 12 quadros, `sAnimTable_StandardAsym`; paleta própria `OBJ_EVENT_PAL_TAG_SHELLY`) — registrado em 30/09/2026 |
+| `OBJ_EVENT_GFX_SHELLY` | `graphics/object_events/pics/people/special/shelly.png` — desde 03/10/2026 a arte da **DiegoWT** (`Sprite - DiegoWT.png`), boneco 25x21, quadro 32x32, 12 quadros, `sAnimTable_StandardAsym`; paleta própria `OBJ_EVENT_PAL_TAG_SHELLY` (a Swizzler121 16x19 de 30/09 saiu, escolha do autor) |
 
 Fonte da arte em `.filetransfer/.trainers/Shelly/` (autor **Swizzler121**):
 
 | Arquivo | O que é |
 |---|---|
-| `Sprite - Swizzler121.png` | overworld (origem do `shelly.png` acima) |
+| `Sprite - DiegoWT.png` | overworld atual (origem do `shelly.png` acima) |
+| `Sprite - Swizzler121.png` | overworld antigo (30/09), substituído |
+| `Trainer - AI.png` | front pic alternativa (comparação `Trainer - comparacao no jogo (AI).png`) |
 | `Sprite - comparacao no jogo.png` | comparação do overworld no jogo |
 | `Trainer - Swizzler121.png` | front pic — **ainda não registrada** (skills `converter-sprite` e `adicionar-grafico-trainer`) |
 | `Trainer - comparacao no jogo.png` | comparação da front pic no jogo |
@@ -42,9 +44,7 @@ Fonte da arte em `.filetransfer/.trainers/Shelly/` (autor **Swizzler121**):
 
 | Constante | Arquivo |
 |---|---|
-| `TRAINER_PIC_FRONT_AQUA_ADMIN_F` | `graphics/trainers/front_pics/aqua_admin_f.png` (a admin da Aqua de Emerald; serve de pic até a arte nova entrar) |
-
-A front pic nova (`Trainer - Swizzler121.png`) falta converter e registrar: skills `converter-sprite` e `adicionar-grafico-trainer`.
+| `TRAINER_PIC_FRONT_SHELLY` | `graphics/trainers/front_pics/shelly.png` (64x64) + `shelly_large.png` (80x80, `TRAINER_SPRITE_LARGE`) — 03/10/2026; nenhuma batalha usa ainda |
 
 ### Field mugshot
 

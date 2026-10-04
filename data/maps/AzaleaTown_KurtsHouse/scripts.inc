@@ -113,19 +113,26 @@ AzaleaTown_KurtsHouse_EventScript_ReturnFromWellSetup::
 	setobjectmovementtype LOCALID_AZALEA_TOWN_KURT, MOVEMENT_TYPE_FACE_DOWN
 	end
 
+@ VAR_AZALEA_TOWN_STATE moves to 4 BEFORE the Fast Ball: it is the ON_FRAME
+@ condition, and a full Ball pocket used to end the script with the state still
+@ 3, replaying this scene every frame forever (bug/B03). With a full pocket the
+@ Fast Ball is skipped and today's free draw stays open instead.
 AzaleaTown_KurtsHouse_EventScript_ReturnFromWell::
 	lock
+	setvar VAR_AZALEA_TOWN_STATE, 4
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	msgbox KurtsHouse_Text_KurtHonoredToMakeBalls, MSGBOX_DEFAULT
 	giveitem ITEM_FAST_BALL
-	setflag FLAG_DAILY_KURT_FREE_BALLS
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	call_if_eq VAR_RESULT, TRUE, AzaleaTown_KurtsHouse_EventScript_TookTodaysBalls
 	call KurtMakesBallsDaily
 	closemessage
 	turnobject LOCALID_AZALEA_TOWN_KURT, DIR_NORTH
-	setvar VAR_AZALEA_TOWN_STATE, 4
 	release
 	end
+
+AzaleaTown_KurtsHouse_EventScript_TookTodaysBalls::
+	setflag FLAG_DAILY_KURT_FREE_BALLS
+	return
 
 AzaleaTown_KurtsHouse_EventScript_KurtCheckGSBall::
 	checkitem ITEM_GS_BALL
@@ -906,7 +913,7 @@ AzaleaTown_KurtsHouse_EventScript_KurtGsBall3::
 	release
 	end
 KurtsHouse_Text_BallAnyway:
-	.string "Anyway, can I make you some Balls?$"
+	.string "{SPEAKER NAME_KURT}Anyway, can I make you some Balls?$"
 
 AzaleaTown_KurtsHouse_EventScript_OakPhoto::
 	msgbox KurtsHouse_Text_OakPhoto, MSGBOX_SIGN
@@ -959,7 +966,7 @@ KurtsHouse_Text_KurtGetStarted:
 	.string "{SPEAKER NAME_KURT}I'll get started right now!$"
 
 KurtsHouse_Text_KurtMakingBallsMustWait:
-	.string "Hm? Who are you?\p"
+	.string "{SPEAKER NAME_KURT}Hm? Who are you?\p"
 	.string "{PLAYER}, eh? You want me to make\n"
 	.string "some Balls?\p"
 	.string "Sorry, but that'll have to wait.\p"
@@ -1015,7 +1022,7 @@ KurtsHouse_Text_KurtTurnedOutGreat:
 	.string "Try catching Pokémon with it.$"
 
 KurtsHouse_Text_KurtWhatIsThat:
-	.string "Wh-what is that?\p"
+	.string "{SPEAKER NAME_KURT}Wh-what is that?\p"
 	.string "I've never seen one before.\p"
 	.string "It looks a like a Poké Ball, but\n"
 	.string "it appears to be something else.\p"
@@ -1028,13 +1035,13 @@ KurtsHouse_Text_KurtAhHaISee:
 	.string "Ah-ha! I see! So…$"
 
 KurtsHouse_Text_KurtThisBallStartedToShake:
-	.string "{PLAYER}!\p"
+	.string "{SPEAKER NAME_KURT}{PLAYER}!\p"
 	.string "This Ball started to shake\n"
 	.string "while I was checking it.\p"
 	.string "There must be something to this!$"
 
 KurtsHouse_Text_Kurt_Whatwasthat:
-	.string "What was that sound?!\p"
+	.string "{SPEAKER NAME_KURT}What was that sound?!\p"
 	.string "Let's go outside to investigate!$"
 
 KurtsHouse_Text_GranddaughterSlowpokeGone:
@@ -1067,11 +1074,11 @@ KurtsHouse_Text_GranddaughterSound:
 	.string "Ilex Forest????$"
 
 KurtsHouse_Text_Forest:
-	.string "Did you check Ilex Forest yet?\n"
+	.string "{SPEAKER NAME_KURT}Did you check Ilex Forest yet?\n"
 	.string "It sounds very restless.$"
 
 KurtsHouse_Text_Slowpoke:
-	.string "Slowpoke: … Yawn?$"
+	.string "{SPEAKER NAME_SLOWPOKE}… Yawn?$"
 
 KurtsHouse_Text_OakPhoto:
 	.string "…A young Prof. Oak?$"

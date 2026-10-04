@@ -4,6 +4,7 @@
 SINGLE_BATTLE_TEST("Orichalcum Pulse sets up sun for 5 turns")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER, GEN_6);
         PLAYER(SPECIES_KORAIDON) { Moves(MOVE_CELEBRATE); Ability(ABILITY_ORICHALCUM_PULSE); }
         OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
     } WHEN {
@@ -25,6 +26,7 @@ SINGLE_BATTLE_TEST("Orichalcum Pulse sets up sun for 5 turns")
 SINGLE_BATTLE_TEST("Orichalcum Pulse sets up sun for 8 turns with Heat Rock")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER, GEN_6);
         PLAYER(SPECIES_KORAIDON) { Moves(MOVE_CELEBRATE); Ability(ABILITY_ORICHALCUM_PULSE); Item(ITEM_HEAT_ROCK); }
         OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
     } WHEN {
@@ -115,6 +117,7 @@ SINGLE_BATTLE_TEST("Orichalcum Pulse does not boost physical moves if holder has
 SINGLE_BATTLE_TEST("Orichalcum Pulse sets up sun for 8 turns with Heat Rock (Items)")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER, GEN_6);
         PLAYER(SPECIES_KORAIDON) { Moves(MOVE_CELEBRATE); Ability(ABILITY_ORICHALCUM_PULSE); Items(ITEM_PECHA_BERRY, ITEM_HEAT_ROCK); }
         OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
     } WHEN {

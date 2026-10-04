@@ -44,17 +44,15 @@ SaffronCity_FightingDojo_EventScript_Lickilicky_EV_HP::
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
 SaffronCity_FightingDojo_EventScript_BattleLickilicky_EV_HP::
 	setflag B_FLAG_NO_CATCHING
-	setflag FLAG_GARBAGEFLAG
 	setwildbattle SPECIES_LICKILICKY, 1, ITEM_NONE
 	dowildbattle
 	clearflag B_FLAG_NO_CATCHING
-	clearflag FLAG_GARBAGEFLAG
 	setflag FLAG_TEMP_1
 	release
 	end
 	
 SaffronCity_FightingDojo_Text_Lickilicky:
-	.string "Lickilicky: Liiiiick!$"
+	.string "{SPEAKER NAME_LICKILICKY}Liiiiick!$"
 
 SaffronCity_FightingDojo_EventScript_Machamp_EV_Attack::
 	lock
@@ -72,17 +70,15 @@ SaffronCity_FightingDojo_EventScript_Machamp_EV_Attack::
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
 SaffronCity_FightingDojo_EventScript_BattleMachamp_EV_Attack::
 	setflag B_FLAG_NO_CATCHING
-	setflag FLAG_GARBAGEFLAG
 	setwildbattle SPECIES_MACHAMP, 1, ITEM_NONE
 	dowildbattle
 	clearflag B_FLAG_NO_CATCHING
-	clearflag FLAG_GARBAGEFLAG
 	setflag FLAG_TEMP_2
 	release
 	end
 
 SaffronCity_FightingDojo_Text_Machamp:
-	.string "Machamp: Champ!$"
+	.string "{SPEAKER NAME_MACHAMP}Champ!$"
 
 SaffronCity_FightingDojo_EventScript_Steelix_EV_Defense::
 	lock
@@ -100,17 +96,15 @@ SaffronCity_FightingDojo_EventScript_Steelix_EV_Defense::
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
 SaffronCity_FightingDojo_EventScript_BattleSteelix_EV_Defense::
 	setflag B_FLAG_NO_CATCHING
-	setflag FLAG_GARBAGEFLAG
 	setwildbattle SPECIES_STEELIX, 1, ITEM_NONE
 	dowildbattle
 	clearflag B_FLAG_NO_CATCHING
-	clearflag FLAG_GARBAGEFLAG
 	setflag FLAG_TEMP_3
 	release
 	end
 
 SaffronCity_FightingDojo_Text_Steelix:
-	.string "Steelix: Grrrind!$"
+	.string "{SPEAKER NAME_STEELIX}Grrrind!$"
 
 SaffronCity_FightingDojo_EventScript_Alakazam_EV_SpecialAttack::
 	lock
@@ -128,17 +122,15 @@ SaffronCity_FightingDojo_EventScript_Alakazam_EV_SpecialAttack::
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
 SaffronCity_FightingDojo_EventScript_BattleAlakazam_EV_SpecialAttack::
 	setflag B_FLAG_NO_CATCHING
-	setflag FLAG_GARBAGEFLAG
 	setwildbattle SPECIES_ALAKAZAM, 1, ITEM_NONE
 	dowildbattle
 	clearflag B_FLAG_NO_CATCHING
-	clearflag FLAG_GARBAGEFLAG
 	setflag FLAG_TEMP_4
 	release
 	end
 
 SaffronCity_FightingDojo_Text_Alakazam:
-	.string "Alakazam: Zam!$"
+	.string "{SPEAKER NAME_ALAKAZAM}Zam!$"
 
 SaffronCity_FightingDojo_EventScript_Slowking_EV_SpecialDefense::
 	lock
@@ -156,17 +148,15 @@ SaffronCity_FightingDojo_EventScript_Slowking_EV_SpecialDefense::
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
 SaffronCity_FightingDojo_EventScript_BattleSlowking_EV_SpecialDefense::
 	setflag B_FLAG_NO_CATCHING
-	setflag FLAG_GARBAGEFLAG
 	setwildbattle SPECIES_SLOWKING, 1, ITEM_NONE
 	dowildbattle
 	clearflag B_FLAG_NO_CATCHING
-	clearflag FLAG_GARBAGEFLAG
 	setflag FLAG_TEMP_5
 	release
 	end
 
 SaffronCity_FightingDojo_Text_Slowking:
-	.string "Slowking: HMMM...$"
+	.string "{SPEAKER NAME_SLOWKING}HMMM...$"
 
 SaffronCity_FightingDojo_EventScript_Raichu_EV_Speed::
 	lock
@@ -184,17 +174,15 @@ SaffronCity_FightingDojo_EventScript_Raichu_EV_Speed::
 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
 SaffronCity_FightingDojo_EventScript_BattleRaichu_EV_Speed::
 	setflag B_FLAG_NO_CATCHING
-	setflag FLAG_GARBAGEFLAG
 	setwildbattle SPECIES_RAICHU, 1, ITEM_NONE
 	dowildbattle
 	clearflag B_FLAG_NO_CATCHING
-	clearflag FLAG_GARBAGEFLAG
 	setflag FLAG_TEMP_6
 	release
 	end
 
 SaffronCity_FightingDojo_Text_Raichu:
-	.string "Raichu: Chuuu!$"
+	.string "{SPEAKER NAME_RAICHU}Chuuu!$"
 
 SaffronCity_FightingDojo_Text_HP:
 	.string "Hp$"
@@ -253,23 +241,29 @@ SaffronCity_FightingDojo_SetZeroNoMoney::
 	end
 
 SaffronCity_FightingDojo_Ability_CheckMoney:
-	checkmoney 25000, 0
+	checkmoney 1000000, 0
 	compare VAR_RESULT, TRUE
 	goto_if_eq SaffronCity_FightingDojo_Ability_Continue
 	compare VAR_RESULT, FALSE
 	goto_if_eq SaffronCity_FightingDojo_SetZeroNoMoney
 	end
 
+@ SwitchMonAbility (src/field_specials.c) was commented out and never
+@ registered as a special, while VAR_RESULT still held TRUE from checkmoney:
+@ every visit charged 25,000 and changed nothing, even after cancelling the
+@ party menu (bug/B06). Cancel and Eggs now cost nothing; callnative keeps
+@ data/specials.inc untouched.
 SaffronCity_FightingDojo_Ability_Continue:
 	closemessage
 	special ChoosePartyMon
 	waitstate
-	@special SwitchMonAbility
-	compare VAR_RESULT, TRUE
-	goto_if_eq SaffronCity_FightingDojo_Ability_Finish
-	compare VAR_RESULT, FALSE
-	goto_if_eq SaffronCity_FightingDojo_Ability_Cant
-	end
+	lock
+	goto_if_ge VAR_0x8004, PARTY_SIZE, SaffronCity_FightingDojo_Ability_No
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	goto_if_eq VAR_RESULT, SPECIES_EGG, SaffronCity_FightingDojo_Ability_Cant
+	callnative SwitchMonAbility
+	goto_if_eq VAR_RESULT, TRUE, SaffronCity_FightingDojo_Ability_Finish
+	goto SaffronCity_FightingDojo_Ability_Cant
 
 SaffronCity_FightingDojo_Ability_Cant:
 	msgbox SaffronCity_FightingDojo_Ability_Text_Cant, MSGBOX_DEFAULT
@@ -285,7 +279,7 @@ SaffronCity_FightingDojo_Ability_Finish:
 	waitse
 	playse SE_EXP_MAX
 	msgbox SaffronCity_FightingDojo_Ability_Finish_Text, MSGBOX_DEFAULT
-	removemoney 25000, 0
+	removemoney 1000000, 0
 	closemessage
 	release
 	end
@@ -296,7 +290,7 @@ SaffronCity_FightingDojo_Ability_Finish_Text:
 SaffronCity_FightingDojo_Ability_Text1:
 	.string "Welcome! I'm the Ability Expert!\p"
 	.string "I can swap Pokémon's abilities in\n"
-	.string "a heartbeat, only for 25.000¥!\p"
+	.string "a heartbeat, for just ¥1,000,000!\p"
 	.string "Would you like me to swap any\n"
 	.string "Pokémon's ability?$"
 

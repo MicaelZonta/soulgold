@@ -354,7 +354,7 @@ AzaleaTown_Movement_KurtLeave:
 	step_end
 
 AzaleaTown_Text_RivalBefore:
-	.string "…Tell me something.\p"
+	.string "{SPEAKER NAME_SILVER}…Tell me something.\p"
 	.string "Is it true that Team Rocket\n"
 	.string "has returned?\p"
 	.string "What? You beat them? Hah! Quit\n"
@@ -368,7 +368,7 @@ AzaleaTown_Text_RivalWin:
 	.string "my Pokémon were weak.$"
 
 AzaleaTown_Text_RivalAfter:
-	.string "I hate the weak.\p"
+	.string "{SPEAKER NAME_SILVER}I hate the weak.\p"
 	.string "Pokémon, trainers. It doesn't\n"
 	.string "matter who or what.\p"
 	.string "I'm going to be strong and wipe\n"
@@ -482,4 +482,4 @@ AzaleaTownKid_Text_0:
 	.string "there... If only I could use Rock Climb.$"
 
 AzaleaTownVulpix_Text_0:
-	.string "Vulpix: Vul!$"
+	.string "{SPEAKER NAME_VULPIX}Vul!$"

@@ -29,7 +29,7 @@ script FoggyShoreBuizel {
     lock
     faceplayer
     playmoncry(SPECIES_BUIZEL, CRY_MODE_NORMAL)
-    msgbox("Buizel: Buibuibuiiii!")
+    msgbox("{SPEAKER NAME_BUIZEL}Buibuibuiiii!")
     waitmoncry
     release
     end

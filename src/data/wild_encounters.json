@@ -273,7 +273,7 @@
               {
                 "min_level": 3,
                 "max_level": 5,
-                "species": "SPECIES_BLIPBUG"
+                "species": "SPECIES_KRICKETOT"
               },
               {
                 "min_level": 3,
@@ -412,7 +412,7 @@
               {
                 "min_level": 5,
                 "max_level": 6,
-                "species": "SPECIES_COMBEE"
+                "species": "SPECIES_VENONAT"
               },
               {
                 "min_level": 4,
@@ -2799,7 +2799,7 @@
               {
                 "min_level": 14,
                 "max_level": 17,
-                "species": "SPECIES_SCATTERBUG_FANCY"
+                "species": "SPECIES_NYMBLE"
               },
               {
                 "min_level": 17,
@@ -2948,12 +2948,12 @@
               {
                 "min_level": 18,
                 "max_level": 21,
-                "species": "SPECIES_RELLOR"
+                "species": "SPECIES_FOMANTIS"
               },
               {
                 "min_level": 18,
                 "max_level": 22,
-                "species": "SPECIES_WURMPLE"
+                "species": "SPECIES_TANDEMAUS"
               },
               {
                 "min_level": 16,
@@ -4285,7 +4285,7 @@
               {
                 "min_level": 28,
                 "max_level": 31,
-                "species": "SPECIES_DWEBBLE"
+                "species": "SPECIES_NOSEPASS"
               },
               {
                 "min_level": 28,
@@ -11673,7 +11673,7 @@
               {
                 "min_level": 42,
                 "max_level": 48,
-                "species": "SPECIES_ILLUMISE"
+                "species": "SPECIES_CYCLIZAR"
               },
               {
                 "min_level": 42,
@@ -11708,7 +11708,7 @@
               {
                 "min_level": 42,
                 "max_level": 48,
-                "species": "SPECIES_VOLBEAT"
+                "species": "SPECIES_SINISTEA"
               },
               {
                 "min_level": 42,

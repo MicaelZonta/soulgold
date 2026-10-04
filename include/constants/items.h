@@ -822,21 +822,9 @@ enum __attribute__((packed)) Item
     ITEM_HM08 = 689,
     ITEM_HM09 = 690,
     ITEM_HM10 = 691,
+    // ITEM_HM11 (Dig) is at the end of the list, so no item id shifts.
 
 
-    /* Expands to:
-     *   ITEM_TM_WORK_UP = ITEM_TM01,
-     *   ...
-     *   ITEM_HM_CUT = ITEM_HM01,
-     *   ... */
-    #define ENUM_TM(n, id) CAT(ITEM_TM_, id) = CAT(ITEM_TM, n),
-    #define ENUM_HM(n, id) CAT(ITEM_HM_, id) = CAT(ITEM_HM, n),
-    #define TO_TMHM_NUMS(a, ...) (__VA_ARGS__)
-    RECURSIVELY(R_ZIP(ENUM_TM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_TM(APPEND_COMMA))))
-    RECURSIVELY(R_ZIP(ENUM_HM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_HM(APPEND_COMMA))))
-    #undef ENUM_TM
-    #undef ENUM_HM
-    #undef TO_TMHM_NUMS
 
     // Charms
     ITEM_OVAL_CHARM = 692,
@@ -1070,12 +1058,12 @@ enum __attribute__((packed)) Item
     ITEM_MEOWSCARADITE = 890,
 
     // Super vitamins
-    ITEM_HP_UP_EX = 891,
-    ITEM_PROTEIN_EX = 892,
-    ITEM_IRON_EX = 893,
-    ITEM_CALCIUM_EX = 894,
-    ITEM_ZINC_EX = 895,
-    ITEM_CARBOS_EX = 896,
+    ITEM_UNUSED_891 = 891, // Formerly ITEM_HP_UP_EX (maxed one stat's EVs); removed so EV training takes effort
+    ITEM_UNUSED_892 = 892, // Formerly ITEM_PROTEIN_EX (maxed one stat's EVs); removed so EV training takes effort
+    ITEM_UNUSED_893 = 893, // Formerly ITEM_IRON_EX (maxed one stat's EVs); removed so EV training takes effort
+    ITEM_UNUSED_894 = 894, // Formerly ITEM_CALCIUM_EX (maxed one stat's EVs); removed so EV training takes effort
+    ITEM_UNUSED_895 = 895, // Formerly ITEM_ZINC_EX (maxed one stat's EVs); removed so EV training takes effort
+    ITEM_UNUSED_896 = 896, // Formerly ITEM_CARBOS_EX (maxed one stat's EVs); removed so EV training takes effort
     ITEM_GRIMY_HERB = 897,
     ITEM_GOOPY_HERB = 898,
     ITEM_JADE_ORB = 899,
@@ -1121,8 +1109,30 @@ enum __attribute__((packed)) Item
     // SoulGold: lets Mom dress Pikachu in its cosplay outfits and caps
     ITEM_PIKACHU_COSPLAY_KIT = 934,
 
+    // SoulGold: steed carrots grown in Laurel's plot (berry_master/REI_DA_COLHEITA.md 14.2)
+    ITEM_ICEROOT_CARROT = 935,
+    ITEM_SHADEROOT_CARROT = 936,
+
+    // SoulGold: Dig has a field use, so it is an HM (TMs are single-use)
+    ITEM_HM11 = 937,
+
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,
+
+    // After ITEMS_COUNT so ITEM_HM11 is declared; every alias has an explicit value.
+    /* Expands to:
+     *   ITEM_TM_WORK_UP = ITEM_TM01,
+     *   ...
+     *   ITEM_HM_CUT = ITEM_HM01,
+     *   ... */
+    #define ENUM_TM(n, id) CAT(ITEM_TM_, id) = CAT(ITEM_TM, n),
+    #define ENUM_HM(n, id) CAT(ITEM_HM_, id) = CAT(ITEM_HM, n),
+    #define TO_TMHM_NUMS(a, ...) (__VA_ARGS__)
+    RECURSIVELY(R_ZIP(ENUM_TM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_TM(APPEND_COMMA))))
+    RECURSIVELY(R_ZIP(ENUM_HM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_HM(APPEND_COMMA))))
+    #undef ENUM_TM
+    #undef ENUM_HM
+    #undef TO_TMHM_NUMS
 };
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

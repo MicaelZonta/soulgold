@@ -40,6 +40,7 @@ CherryGrove_Pokecenter_Chansey::
 	delay 40
 	waitmoncry
 	closemessage
+	release
 	end
 
 CherryGrove_Pokecenter_Text_Fisher:
@@ -56,4 +57,4 @@ CherryGrove_Pokecenter_Text_Lass:
 	.string "in the PokéCenter makes time fly!$"
 
 CherryGrove_Pokecenter_Text_Chansey:
-	.string "Chansey: Chansii!$"
+	.string "{SPEAKER NAME_CHANSEY}Chansii!$"

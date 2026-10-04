@@ -39,6 +39,12 @@ MrPokemonHouse_OnFrame::
 @ reset before that replays the whole scene from the top.
 MrPokemonHouse_EventScript_GiveEgg::
 	lock
+	@ Room for the Mystery Egg is checked before anything else: a full Key Items
+	@ pocket at the end of the scene used to leave the var at 1 and replay the
+	@ whole scene, battle included, on the very next frame (bug/B04). Without
+	@ room Kukui sends the player back out; the scene waits for the next visit.
+	checkitemspace ITEM_MYSTERY_EGG
+	goto_if_eq VAR_RESULT, FALSE, MrPokemonHouse_EventScript_NoRoomForEgg
 
 	@ --- 1. Kukui (7,5) notices the player standing on the door tile (5,8) ---
 	playse SE_PIN
@@ -138,6 +144,18 @@ MrPokemonHouse_EventScript_LillieForfeit::
 	msgbox MrPokemonHouse_Text_LillieForfeit, MSGBOX_DEFAULT
 	closemessage
 	goto MrPokemonHouse_EventScript_AfterBattle
+
+MrPokemonHouse_EventScript_NoRoomForEgg::
+	playse SE_PIN
+	applymovement LOCALID_ROUTE30_KUKUI, Common_Movement_ExclamationMark
+	waitmovement 0
+	turnobject LOCALID_ROUTE30_KUKUI, DIR_SOUTH
+	msgbox MrPokemonHouse_Text_NoRoomForEgg, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_ROUTE30, 1
+	waitstate
+	release
+	end
 
 @ Should not happen in a trainer battle. It is not treated as a win; the scene
 @ still continues so the ON_FRAME trigger can never re-run it half-staged.
@@ -326,6 +344,14 @@ MrPokemonHouse_Movement_LillieLeave:
 	walk_left
 	walk_in_place_down
 	step_end
+
+MrPokemonHouse_Text_NoRoomForEgg:
+	.string "{SPEAKER NAME_KUKUI}Alola! You're {PLAYER},\n"
+	.string "right? Elm said you'd come!\p"
+	.string "I've got something for you, but\n"
+	.string "your Key Items pocket is full.\p"
+	.string "Make some room and come back,\n"
+	.string "yeah?$"
 
 MrPokemonHouse_Text_Intro1:
 	.string "{SPEAKER NAME_KUKUI}Alola! You're {PLAYER},\n"

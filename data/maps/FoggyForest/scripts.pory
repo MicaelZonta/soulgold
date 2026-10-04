@@ -15,7 +15,7 @@ script FoggyForest_Phantump {
     lock
     faceplayer
     playmoncry(SPECIES_PHANTUMP, CRY_MODE_NORMAL)
-    msgbox("Phantump: Phoo!")
+    msgbox("{SPEAKER NAME_PHANTUMP}Phoo!")
     waitmoncry
     release
     end

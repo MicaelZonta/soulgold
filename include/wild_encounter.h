@@ -70,4 +70,8 @@ u32 ChooseHiddenMonIndex(void);
 bool32 MapHasNoEncounterData(void);
 enum TimeOfDay GetTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area);
 
+// One wild form at random for the species that stand for a group of forms
+// (Scatterbug Fancy -> any of the 20 patterns, Minior, Pumpkaboo...).
+u16 GetWildFormVariantSpecies(u16 species);
+
 #endif // GUARD_WILD_ENCOUNTER_H

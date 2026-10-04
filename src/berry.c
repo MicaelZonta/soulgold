@@ -1,5 +1,7 @@
 #include "global.h"
 #include "berry.h"
+#include "berry_garden.h"
+#include "field_camera.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -14,8 +16,8 @@
 #include "text.h"
 #include "constants/event_object_movement.h"
 #include "constants/items.h"
+#include "constants/metatile_labels.h"
 
-static enum Item BerryTypeToItemId(u16 berry);
 static u8 BerryTreeGetNumStagesWatered(struct BerryTree *tree);
 static u8 GetNumStagesWateredByBerryTreeId(u8 id);
 static u8 CalcBerryYieldInternal(u16 max, u16 min, u8 water);
@@ -29,9 +31,8 @@ static u8 GetWeedingBonusByBerryType(u8);
 static u8 GetPestsBonusByBerryType(u8);
 static void SetTreeMutations(u8 id, u8 berry);
 static u8 GetTreeMutationValue(u8 id);
-static u16 GetBerryPestSpecies(u8 berryId);
-static void TryForWeeds(struct BerryTree *tree);
-static void TryForPests(struct BerryTree *tree);
+static void TryForWeeds(u32 treeId, struct BerryTree *tree);
+static void TryForPests(u32 treeId, struct BerryTree *tree);
 static void AddTreeBonus(struct BerryTree *tree, u8 bonus);
 static u8 GetNaturalBerryByTreeId(u8 id);
 static void StartNaturalBerryTreeRegeneration(u8 id);
@@ -1816,7 +1817,14 @@ struct BerryTree *GetBerryTreeInfo(u8 id)
 
 bool32 ObjectEventInteractionWaterBerryTree(void)
 {
-    struct BerryTree *tree = GetBerryTreeInfo(GetObjectEventBerryTreeId(gSelectedObjectEvent));
+    return WaterBerryTreeById(GetObjectEventBerryTreeId(gSelectedObjectEvent));
+}
+
+// The watering itself, shared by the Squirtbottle and by the Berry Master's
+// garden channel (GardenIrrigate, src/berry_garden.c): one rule, two callers.
+bool32 WaterBerryTreeById(u8 id)
+{
+    struct BerryTree *tree = GetBerryTreeInfo(id);
 
     if (OW_BERRY_MOISTURE)
     {
@@ -1848,6 +1856,77 @@ bool32 ObjectEventInteractionWaterBerryTree(void)
         return FALSE;
     }
     return TRUE;
+}
+
+// ---------------------------------------------------------------------------
+// SoulGold: watered soil looks wet (HGSS). Gen 3 has no such tile, so each
+// secondary tileset that wants it gets a "wet" copy of its Berry soil, and the
+// tile under a Berry tree is swapped between the two to match the tree:
+// wet while the CURRENT stage has been watered (the same bits the
+// Squirtbottle sets), dry again when the stage moves on, when the tree is
+// picked, or when there is no wet tile for this map. Called every frame by
+// the tree's movement callback (MovementType_BerryTreeGrowth_Normal), so it
+// follows watering, the garden channel, growth and map reloads by itself.
+// Only a tile that is exactly the dry or the wet soil of the table is ever
+// touched, and its collision is kept.
+// ---------------------------------------------------------------------------
+extern const struct Tileset gTileset_CherrygroveCity;
+
+struct WetSoil
+{
+    const struct Tileset *secondary;
+    u16 dry;
+    u16 wet;
+};
+
+static const struct WetSoil sWetSoil[] =
+{
+    // Route 30 (the Berry Master's garden), Cherrygrove, Routes 31 and 46.
+    { &gTileset_CherrygroveCity, 0x02E, METATILE_CherrygroveCity_SoilWet },
+};
+
+static bool32 IsBerryTreeWateredThisStage(const struct BerryTree *tree)
+{
+    switch (tree->stage)
+    {
+    case BERRY_STAGE_PLANTED:
+        return (tree->watered & (1 << 0)) != 0;
+    case BERRY_STAGE_SPROUTED:
+        return (tree->watered & (1 << 1)) != 0;
+    case BERRY_STAGE_TALLER:
+    case BERRY_STAGE_TRUNK:
+    case BERRY_STAGE_BUDDING:
+        return (tree->watered & (1 << 2)) != 0;
+    case BERRY_STAGE_FLOWERING:
+        return (tree->watered & (1 << 3)) != 0;
+    default:
+        return FALSE;
+    }
+}
+
+// x, y: the tree object's currentCoords (map grid coordinates).
+void BerryTree_UpdateSoilTile(u8 treeId, s16 x, s16 y)
+{
+    u32 i, current, want;
+
+    if (OW_BERRY_MOISTURE)
+        return; // moisture is a level, not a per-stage bit; no tile for it
+    for (i = 0; i < ARRAY_COUNT(sWetSoil); i++)
+    {
+        if (gMapHeader.mapLayout->secondaryTileset == sWetSoil[i].secondary)
+            break;
+    }
+    if (i == ARRAY_COUNT(sWetSoil))
+        return;
+
+    current = MapGridGetMetatileIdAt(x, y);
+    if (current != sWetSoil[i].dry && current != sWetSoil[i].wet)
+        return;
+    want = IsBerryTreeWateredThisStage(GetBerryTreeInfo(treeId)) ? sWetSoil[i].wet : sWetSoil[i].dry;
+    if (current == want)
+        return;
+    MapGridSetMetatileIdAt(x, y, want | (MapGridGetCollisionAt(x, y) << MAPGRID_COLLISION_SHIFT));
+    CurrentMapDrawMetatileAt(x, y);
 }
 
 bool8 IsPlayerFacingEmptyBerryTreePatch(void)
@@ -1984,8 +2063,8 @@ void BerryTreeTimeUpdate(s32 minutes)
                         }
                         if (tree->moistureClock == 120)
                         {
-                            TryForWeeds(tree);
-                            TryForPests(tree);
+                            TryForWeeds(i, tree);
+                            TryForPests(i, tree);
                             tree->moistureClock = 0;
                         }
                     }
@@ -2120,7 +2199,7 @@ u8 ItemIdToBerryType(enum Item item)
         return ITEM_TO_BERRY(item);
 }
 
-static enum Item BerryTypeToItemId(u16 berry)
+enum Item BerryTypeToItemId(u16 berry)
 {
     enum Item item = berry - 1;
 
@@ -2205,7 +2284,7 @@ static u8 CalcBerryYield(struct BerryTree *tree)
     else
         result = CalcBerryYieldInternal(max, min, BerryTreeGetNumStagesWatered(tree));
 
-    return result;
+    return GardenKingsPlot_Yield(tree, result);
 }
 
 static u32 GetBerryTreeAge(u8 id, u8 stage)
@@ -2343,9 +2422,13 @@ void ObjectEventInteractionPickBerryTree(void)
     u8 berry = GetBerryTypeByBerryTreeId(id);
     u8 mutation = GetTreeMutationValue(id);
 
+    // Every Berry that actually reaches the bag goes into the Book of Berries
+    // (berry_garden.c): garden and route trees alike. Buying never registers.
     if (!OW_BERRY_MUTATIONS || mutation == 0)
     {
         gSpecialVar_0x8004 = AddBagItem(BerryTypeToItemId(berry), GetBerryCountByBerryTreeId(id));
+        if (gSpecialVar_0x8004)
+            BerryLedger_RegisterHarvest(id, BerryTypeToItemId(berry));
         return;
     }
     gSpecialVar_0x8004 = (CheckBagHasSpace(BerryTypeToItemId(berry), GetBerryCountByBerryTreeId(id)) && CheckBagHasSpace(BerryTypeToItemId(mutation), 1)) + 2;
@@ -2353,6 +2436,8 @@ void ObjectEventInteractionPickBerryTree(void)
     {
         AddBagItem(BerryTypeToItemId(berry), GetBerryCountByBerryTreeId(id));
         AddBagItem(BerryTypeToItemId(mutation), 1);
+        BerryLedger_RegisterHarvest(id, BerryTypeToItemId(berry));
+        BerryLedger_RegisterHarvest(id, BerryTypeToItemId(mutation));
     }
 }
 
@@ -2386,16 +2471,20 @@ bool8 ObjectEventInteractionBerryHasWeed(void)
     return gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].weeds;
 }
 
+// SoulGold: pests only ever appear on the Berry Master's garden plots, and the
+// garden decides which and at what level (berry_garden.c, part 10).
 bool8 ObjectEventInteractionBerryHasPests(void)
 {
+    u8 id = GetObjectEventBerryTreeId(gSelectedObjectEvent);
     u16 species;
-    if (!OW_BERRY_PESTS || !gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].pests)
+
+    if (!OW_BERRY_PESTS || !gSaveBlock1Ptr->berryTrees[id].pests)
         return FALSE;
-    species = GetBerryPestSpecies(gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].berry);
-    if (species == SPECIES_NONE)
+    gSaveBlock1Ptr->berryTrees[id].pests = FALSE;
+    if (!IsBerryGardenTree(id))
         return FALSE;
-    CreateScriptedWildMon(species, 14 + Random() % 3, ITEM_NONE, ITEM_NONE);
-    gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].pests = FALSE;
+    species = GardenPest_Species(id);
+    CreateScriptedWildMon(species, GardenPest_Level(species), ITEM_NONE, ITEM_NONE);
     return TRUE;
 }
 
@@ -2466,8 +2555,96 @@ static const u8 sBerryMutations[][3] = {
     {ITEM_TO_BERRY(ITEM_KELPSY_BERRY), ITEM_TO_BERRY(ITEM_WACAN_BERRY),  ITEM_TO_BERRY(ITEM_APICOT_BERRY)},
     {ITEM_TO_BERRY(ITEM_GANLON_BERRY), ITEM_TO_BERRY(ITEM_LIECHI_BERRY), ITEM_TO_BERRY(ITEM_KEE_BERRY)},
     {ITEM_TO_BERRY(ITEM_SALAC_BERRY),  ITEM_TO_BERRY(ITEM_PETAYA_BERRY), ITEM_TO_BERRY(ITEM_MARANGA_BERRY)},
-    // Up to one more Mutation can be added here for a total of 15 (only 4 bits are allocated)
+    // SoulGold (.claude/berry_master/REI_DA_COLHEITA.md section 4.2): the other
+    // 45, so that every Berry but the Enigma grows out of Bram's eight. The 13
+    // above keep their positions (the save stores index + 1).
+    // Generation 1
+    {ITEM_TO_BERRY(ITEM_CHERI_BERRY), ITEM_TO_BERRY(ITEM_CHESTO_BERRY), ITEM_TO_BERRY(ITEM_LUM_BERRY)},
+    {ITEM_TO_BERRY(ITEM_ORAN_BERRY), ITEM_TO_BERRY(ITEM_LEPPA_BERRY), ITEM_TO_BERRY(ITEM_SITRUS_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CHERI_BERRY), ITEM_TO_BERRY(ITEM_RAWST_BERRY), ITEM_TO_BERRY(ITEM_FIGY_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CHESTO_BERRY), ITEM_TO_BERRY(ITEM_ASPEAR_BERRY), ITEM_TO_BERRY(ITEM_WIKI_BERRY)},
+    {ITEM_TO_BERRY(ITEM_PECHA_BERRY), ITEM_TO_BERRY(ITEM_PERSIM_BERRY), ITEM_TO_BERRY(ITEM_MAGO_BERRY)},
+    {ITEM_TO_BERRY(ITEM_RAWST_BERRY), ITEM_TO_BERRY(ITEM_LEPPA_BERRY), ITEM_TO_BERRY(ITEM_AGUAV_BERRY)},
+    {ITEM_TO_BERRY(ITEM_ASPEAR_BERRY), ITEM_TO_BERRY(ITEM_ORAN_BERRY), ITEM_TO_BERRY(ITEM_IAPAPA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CHERI_BERRY), ITEM_TO_BERRY(ITEM_PECHA_BERRY), ITEM_TO_BERRY(ITEM_RAZZ_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CHESTO_BERRY), ITEM_TO_BERRY(ITEM_ORAN_BERRY), ITEM_TO_BERRY(ITEM_BLUK_BERRY)},
+    {ITEM_TO_BERRY(ITEM_PECHA_BERRY), ITEM_TO_BERRY(ITEM_ASPEAR_BERRY), ITEM_TO_BERRY(ITEM_NANAB_BERRY)},
+    {ITEM_TO_BERRY(ITEM_RAWST_BERRY), ITEM_TO_BERRY(ITEM_PERSIM_BERRY), ITEM_TO_BERRY(ITEM_WEPEAR_BERRY)},
+    {ITEM_TO_BERRY(ITEM_ASPEAR_BERRY), ITEM_TO_BERRY(ITEM_CHERI_BERRY), ITEM_TO_BERRY(ITEM_PINAP_BERRY)},
+    // Generation 2
+    {ITEM_TO_BERRY(ITEM_BLUK_BERRY), ITEM_TO_BERRY(ITEM_WIKI_BERRY), ITEM_TO_BERRY(ITEM_CORNN_BERRY)},
+    {ITEM_TO_BERRY(ITEM_NANAB_BERRY), ITEM_TO_BERRY(ITEM_MAGO_BERRY), ITEM_TO_BERRY(ITEM_MAGOST_BERRY)},
+    {ITEM_TO_BERRY(ITEM_AGUAV_BERRY), ITEM_TO_BERRY(ITEM_WEPEAR_BERRY), ITEM_TO_BERRY(ITEM_RABUTA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_PINAP_BERRY), ITEM_TO_BERRY(ITEM_IAPAPA_BERRY), ITEM_TO_BERRY(ITEM_NOMEL_BERRY)},
+    {ITEM_TO_BERRY(ITEM_RAZZ_BERRY), ITEM_TO_BERRY(ITEM_FIGY_BERRY), ITEM_TO_BERRY(ITEM_SPELON_BERRY)},
+    {ITEM_TO_BERRY(ITEM_BLUK_BERRY), ITEM_TO_BERRY(ITEM_KELPSY_BERRY), ITEM_TO_BERRY(ITEM_PAMTRE_BERRY)},
+    {ITEM_TO_BERRY(ITEM_NANAB_BERRY), ITEM_TO_BERRY(ITEM_RAZZ_BERRY), ITEM_TO_BERRY(ITEM_CHILAN_BERRY)},
+    {ITEM_TO_BERRY(ITEM_KELPSY_BERRY), ITEM_TO_BERRY(ITEM_ORAN_BERRY), ITEM_TO_BERRY(ITEM_PASSHO_BERRY)},
+    {ITEM_TO_BERRY(ITEM_WEPEAR_BERRY), ITEM_TO_BERRY(ITEM_HONDEW_BERRY), ITEM_TO_BERRY(ITEM_RINDO_BERRY)},
+    {ITEM_TO_BERRY(ITEM_LUM_BERRY), ITEM_TO_BERRY(ITEM_WEPEAR_BERRY), ITEM_TO_BERRY(ITEM_TANGA_BERRY)},
+    // Generation 3
+    {ITEM_TO_BERRY(ITEM_MAGOST_BERRY), ITEM_TO_BERRY(ITEM_POMEG_BERRY), ITEM_TO_BERRY(ITEM_WATMEL_BERRY)},
+    {ITEM_TO_BERRY(ITEM_RABUTA_BERRY), ITEM_TO_BERRY(ITEM_HONDEW_BERRY), ITEM_TO_BERRY(ITEM_DURIN_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CORNN_BERRY), ITEM_TO_BERRY(ITEM_PAMTRE_BERRY), ITEM_TO_BERRY(ITEM_BELUE_BERRY)},
+    {ITEM_TO_BERRY(ITEM_SPELON_BERRY), ITEM_TO_BERRY(ITEM_TAMATO_BERRY), ITEM_TO_BERRY(ITEM_OCCA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_PINAP_BERRY), ITEM_TO_BERRY(ITEM_NOMEL_BERRY), ITEM_TO_BERRY(ITEM_WACAN_BERRY)},
+    {ITEM_TO_BERRY(ITEM_WIKI_BERRY), ITEM_TO_BERRY(ITEM_CORNN_BERRY), ITEM_TO_BERRY(ITEM_YACHE_BERRY)},
+    {ITEM_TO_BERRY(ITEM_POMEG_BERRY), ITEM_TO_BERRY(ITEM_RAZZ_BERRY), ITEM_TO_BERRY(ITEM_CHOPLE_BERRY)},
+    {ITEM_TO_BERRY(ITEM_RABUTA_BERRY), ITEM_TO_BERRY(ITEM_POMEG_BERRY), ITEM_TO_BERRY(ITEM_KEBIA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_GREPA_BERRY), ITEM_TO_BERRY(ITEM_NOMEL_BERRY), ITEM_TO_BERRY(ITEM_SHUCA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_MAGOST_BERRY), ITEM_TO_BERRY(ITEM_SPELON_BERRY), ITEM_TO_BERRY(ITEM_PAYAPA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_NOMEL_BERRY), ITEM_TO_BERRY(ITEM_QUALOT_BERRY), ITEM_TO_BERRY(ITEM_CHARTI_BERRY)},
+    {ITEM_TO_BERRY(ITEM_NANAB_BERRY), ITEM_TO_BERRY(ITEM_MAGOST_BERRY), ITEM_TO_BERRY(ITEM_ROSELI_BERRY)},
+    // Generation 4
+    {ITEM_TO_BERRY(ITEM_BELUE_BERRY), ITEM_TO_BERRY(ITEM_PAMTRE_BERRY), ITEM_TO_BERRY(ITEM_COBA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_MAGOST_BERRY), ITEM_TO_BERRY(ITEM_BELUE_BERRY), ITEM_TO_BERRY(ITEM_KASIB_BERRY)},
+    {ITEM_TO_BERRY(ITEM_DURIN_BERRY), ITEM_TO_BERRY(ITEM_TAMATO_BERRY), ITEM_TO_BERRY(ITEM_HABAN_BERRY)},
+    {ITEM_TO_BERRY(ITEM_KEBIA_BERRY), ITEM_TO_BERRY(ITEM_MAGOST_BERRY), ITEM_TO_BERRY(ITEM_COLBUR_BERRY)},
+    {ITEM_TO_BERRY(ITEM_DURIN_BERRY), ITEM_TO_BERRY(ITEM_QUALOT_BERRY), ITEM_TO_BERRY(ITEM_BABIRI_BERRY)},
+    // Generation 5
+    {ITEM_TO_BERRY(ITEM_GANLON_BERRY), ITEM_TO_BERRY(ITEM_APICOT_BERRY), ITEM_TO_BERRY(ITEM_CUSTAP_BERRY)},
+    {ITEM_TO_BERRY(ITEM_CHOPLE_BERRY), ITEM_TO_BERRY(ITEM_BABIRI_BERRY), ITEM_TO_BERRY(ITEM_JABOCA_BERRY)},
+    {ITEM_TO_BERRY(ITEM_PAYAPA_BERRY), ITEM_TO_BERRY(ITEM_COLBUR_BERRY), ITEM_TO_BERRY(ITEM_ROWAP_BERRY)},
+    // Generation 6
+    {ITEM_TO_BERRY(ITEM_LIECHI_BERRY), ITEM_TO_BERRY(ITEM_PETAYA_BERRY), ITEM_TO_BERRY(ITEM_MICLE_BERRY)},
+    // Generation 7: only after the League (see IsMutationUnlocked)
+    {ITEM_TO_BERRY(ITEM_MICLE_BERRY), ITEM_TO_BERRY(ITEM_CUSTAP_BERRY), ITEM_TO_BERRY(ITEM_LANSAT_BERRY)},
+    {ITEM_TO_BERRY(ITEM_KEE_BERRY), ITEM_TO_BERRY(ITEM_MARANGA_BERRY), ITEM_TO_BERRY(ITEM_STARF_BERRY)},
 };
+
+// The index + 1 is stored in 6 bits of the tree (mutationC:B:A).
+STATIC_ASSERT(ARRAY_COUNT(sBerryMutations) <= 63, BerryMutationsFitIn6Bits);
+
+// Lansat and Starf are Kurt's level-20 recipes: they only cross after the
+// League (.claude/KURT_BALL_CRAFT_DESIGN.md). Replanting one is always free.
+static bool32 IsMutationUnlocked(u8 result)
+{
+    if (result == ITEM_TO_BERRY(ITEM_LANSAT_BERRY) || result == ITEM_TO_BERRY(ITEM_STARF_BERRY))
+        return FlagGet(FLAG_SYS_GAME_CLEAR);
+    return TRUE;
+}
+
+// SoulGold: the recipe of a Berry (the pair that crosses into it), for the
+// Berry Master's discovery orders and Laurel's hints. FALSE if the Berry has
+// no recipe (Bram's eight, the Enigma) or if it is still locked (Lansat and
+// Starf before the League).
+bool32 GetBerryRecipe(u16 itemId, u16 *parent1, u16 *parent2)
+{
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sBerryMutations); i++)
+    {
+        if (BerryTypeToItemId(sBerryMutations[i][2]) == itemId)
+        {
+            if (!IsMutationUnlocked(sBerryMutations[i][2]))
+                return FALSE;
+            *parent1 = BerryTypeToItemId(sBerryMutations[i][0]);
+            *parent2 = BerryTypeToItemId(sBerryMutations[i][1]);
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
 
 static u8 GetMutationOutcome(u8 berry1, u8 berry2)
 {
@@ -2476,7 +2653,7 @@ static u8 GetMutationOutcome(u8 berry1, u8 berry2)
     {
         if ((sBerryMutations[i][0] == berry1 && sBerryMutations[i][1] == berry2)
           ||(sBerryMutations[i][0] == berry2 && sBerryMutations[i][1] == berry1))
-            return (i + 1);
+            return IsMutationUnlocked(sBerryMutations[i][2]) ? (i + 1) : 0;
     }
     return 0;
 }
@@ -2500,34 +2677,51 @@ static u8 TryForMutation(u8 berryTreeId, u8 berry)
 
     mulch = GetMulchByBerryTreeId(GetObjectEventBerryTreeId(i));
 
-    // Try mutation for each adjacent tree
+    // Try mutation for each adjacent tree.
+    // SoulGold: only a neighbour that forms a recipe gets a roll. Upstream
+    // rolled for every tree and returned on the first adjacent success even
+    // when that pair had no recipe, so in a full garden a neighbour with no
+    // recipe could take the chance away from the one that had it.
     for (j = 0; j < OBJECT_EVENTS_COUNT; j++)
     {
         if (gObjectEvents[j].active && gObjectEvents[j].movementType == MOVEMENT_TYPE_BERRY_TREE_GROWTH && GetStageByBerryTreeId(GetObjectEventBerryTreeId(j)) != BERRY_STAGE_NO_BERRY && j != i)
         {
+            u8 outcome;
+            u32 rate = OW_BERRY_MUTATION_CHANCE;
+
             x2 = gObjectEvents[j].currentCoords.x;
             y2 = gObjectEvents[j].currentCoords.y;
-            u32 rate = OW_BERRY_MUTATION_CHANCE;
+            if (!((x1 == x2 && y1 == y2 - 1) ||
+                  (x1 == x2 && y1 == y2 + 1) ||
+                  (x1 == x2 - 1 && y1 == y2) ||
+                  (x1 == x2 + 1 && y1 == y2)))
+                continue;
+
+            outcome = GetMutationOutcome(berry, gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(j)].berry);
+            if (outcome == 0)
+                continue;
 
             if (mulch == ITEM_TO_MULCH(ITEM_SURPRISE_MULCH) || mulch == ITEM_TO_MULCH(ITEM_AMAZE_MULCH))
                 rate *= 2;
 
-            if (Random() % 100 < rate && (
-                (x1 == x2 && y1 == y2 - 1) ||
-                (x1 == x2 && y1 == y2 + 1) ||
-                (x1 == x2 - 1 && y1 == y2) ||
-                (x1 == x2 + 1 && y1 == y2)))
-                return GetMutationOutcome(berry, gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(j)].berry);
+            if (Random() % 100 < rate)
+                return outcome;
         }
     }
     return 0;
+}
+#else
+bool32 GetBerryRecipe(u16 itemId, u16 *parent1, u16 *parent2)
+{
+    return FALSE;
 }
 #endif
 
 struct TreeMutationBitfield {
   u8 a: 2;
   u8 b: 2;
-  u8 unused: 4;
+  u8 c: 2;
+  u8 unused: 2;
 };
 
 union TreeMutation {
@@ -2544,6 +2738,7 @@ static u8 GetTreeMutationValue(u8 id)
         return 0;
     myMutation.asField.a = tree->mutationA;
     myMutation.asField.b = tree->mutationB;
+    myMutation.asField.c = tree->mutationC;
     myMutation.asField.unused = 0;
     if (myMutation.value == 0) // no mutation
         return 0;
@@ -2562,44 +2757,19 @@ static void SetTreeMutations(u8 id, u8 berry)
     myMutation.value = TryForMutation(id, berry);
     tree->mutationA = myMutation.asField.a;
     tree->mutationB = myMutation.asField.b;
+    tree->mutationC = myMutation.asField.c;
 #endif
-}
-
-static u16 GetBerryPestSpecies(u8 berryId)
-{
-#if OW_BERRY_PESTS == TRUE
-    const struct Berry *berry = GetBerryInfo(berryId);
-    switch (berry->color)
-    {
-    case BERRY_COLOR_RED:
-        return P_FAMILY_LEDYBA ? SPECIES_LEDYBA : SPECIES_NONE;
-        break;
-    case BERRY_COLOR_BLUE:
-        return P_FAMILY_VOLBEAT_ILLUMISE ? SPECIES_VOLBEAT : SPECIES_NONE;
-        break;
-    case BERRY_COLOR_PURPLE:
-        return P_FAMILY_VOLBEAT_ILLUMISE ? SPECIES_ILLUMISE : SPECIES_NONE;
-        break;
-    case BERRY_COLOR_GREEN:
-        return P_FAMILY_BURMY ? SPECIES_BURMY_PLANT : SPECIES_NONE;
-        break;
-    case BERRY_COLOR_YELLOW:
-        return P_FAMILY_COMBEE ? SPECIES_COMBEE : SPECIES_NONE;
-        break;
-    case BERRY_COLOR_PINK:
-        return P_FAMILY_SCATTERBUG ? SPECIES_SPEWPA : SPECIES_NONE;
-        break;
-    }
-#endif
-    return SPECIES_NONE;
 }
 
 #define BERRY_WEEDS_CHANCE 15
-#define BERRY_PESTS_CHANCE 15
 
-static void TryForWeeds(struct BerryTree *tree)
+// SoulGold: weeds and pests only on the Berry Master's garden plots (route
+// trees never get either; BERRY_MASTER_DESIGN.md section 6.1), and the pest
+// chance is the garden's (15%, 30% with the Bug Hotel). Upstream checked
+// OW_BERRY_WEEDS for pests too; fixed to OW_BERRY_PESTS.
+static void TryForWeeds(u32 treeId, struct BerryTree *tree)
 {
-    if (!OW_BERRY_WEEDS)
+    if (!OW_BERRY_WEEDS || !IsBerryGardenTree(treeId))
         return;
     if (tree->weeds == TRUE)
         return;
@@ -2607,13 +2777,13 @@ static void TryForWeeds(struct BerryTree *tree)
         tree->weeds = TRUE;
 }
 
-static void TryForPests(struct BerryTree *tree)
+static void TryForPests(u32 treeId, struct BerryTree *tree)
 {
-    if (!OW_BERRY_WEEDS)
+    if (!OW_BERRY_PESTS || !IsBerryGardenTree(treeId))
         return;
     if (tree->pests == TRUE)
         return;
-    if (Random() % 100 < BERRY_PESTS_CHANCE && tree->stage > BERRY_STAGE_PLANTED)
+    if (Random() % 100 < GardenPest_Chance() && tree->stage > BERRY_STAGE_PLANTED)
         tree->pests = TRUE;
 }
 

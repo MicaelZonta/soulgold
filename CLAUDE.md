@@ -43,8 +43,11 @@ voltar) exe/nro com a ROM embutida. O build regenera sozinho tudo que é derivad
 | Script que entrega Pokémon ou ovo (`givemon`, `giveegg`) | `entregar-pokemon-ou-ovo` |
 | Nome de quem fala numa plaquinha acima da caixa de diálogo | `nomear-falante` |
 | Evento em modo esqueleto (Rift Missions) e seu doc de implementação | `evento-esqueleto` |
+| **Qualquer coisa do Berry Master** (horta da Route 30, Livro de Berries, O Rei da Colheita, dungeons dos corcéis) — ler antes | `.claude/berry_master/README.md` |
 | **Qualquer coisa do Nexus** (loop pós-Necrozma: times, sorteio, pool de lendários, prêmio) — ler antes, sempre | `.claude/rift_missions/nexus/NEXUS_REGRAS.md` |
 | Transformar esqueleto em história: falas, arco da cena, surpresa, feedback do autor | `evoluir-historia-de-evento` |
+| Aumentar/diagnosticar limites: NPCs ao mesmo tempo (16), sprites, paletas, VRAM, save, RAM, mudanças no mGBA para isso | `limites-do-engine` |
+| **Testar no jogo** sem humano: rodar um roteiro de QA (`TESTES_NO_JOGO.md`), provar que uma cena/flag/presente funciona, gerar prints e evidência | `testar-no-jogo` |
 | Forma alternativa ou item de forma: de onde vem, o que é provisório (DNA Splicers, loja de Kitakami…) | `.claude/evolucoes.md` |
 
 Todas cobrem armadilhas que **não dão erro de build** — compilam limpo e

@@ -46,12 +46,12 @@ ViridianCity_Gym_EventScript_BlueGotoDojo::
 	end
 
 ViridianCity_Gym_Text_BlueGotoDojo:
-	.string "Blue: Back for more already?\p"
+	.string "{SPEAKER NAME_BLUE}Back for more already?\p"
 	.string "If you want another shot at me,\n"
 	.string "come to the Fighting Dojo!$"
 
 ViridianCity_Gym_Text_LeaderBlue_Before:
-	.string "Blue: Yo! Finally got here, huh?\p"
+	.string "{SPEAKER NAME_BLUE}Yo! Finally got here, huh?\p"
 	.string "I wasn't in the mood at Cinnabar,\p"
 	.string "but now I'm ready to battle you.\p"
 	.string "…\p"
@@ -75,7 +75,7 @@ ViridianCity_Gym_Text_ReceivedEarthBadge:
 	.string "{PLAYER} received Earthbadge.$"
 
 ViridianCity_Gym_Text_BulkUpSpeech:
-    .string "That TM contains Bulk Up.\p"
+    .string "{SPEAKER NAME_BLUE}That TM contains Bulk Up.\p"
     .string "It lets a Pokémon become an\n"
     .string "unstoppable force and an\l"
 	.string "immovable object all at once!\p"
@@ -84,14 +84,14 @@ ViridianCity_Gym_Text_BulkUpSpeech:
 	.string "between offense and defense.$"
 
 ViridianCity_Gym_Text_LeaderBlue_After:
-	.string "Blue: …\p"
+	.string "{SPEAKER NAME_BLUE}…\p"
 	.string "All right, I was wrong. You're the\n"
 	.string "real deal. You are a good trainer.\p"
 	.string "But I'm going to beat you someday.\p"
 	.string "Don't you forget it!$"
 
 ViridianCity_Gym_Text_LeaderBlue_Epilogue:
-	.string "Blue: Listen, you.\p"
+	.string "{SPEAKER NAME_BLUE}Listen, you.\p"
 	.string "You'd better not lose until I beat\n"
 	.string "you. Got it?$"
 

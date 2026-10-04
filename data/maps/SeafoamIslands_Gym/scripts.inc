@@ -16,7 +16,6 @@ SeafoamIslands_Gym_EventScript_Blaine::
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
 	msgbox SeafoamIslands_Gym_Text_TM, MSGBOX_DEFAULT
-	setflag FLAG_GARBAGEFLAG
 	setflag FLAG_DEFEATED_CINNABAR_ISLAND_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 15
@@ -43,7 +42,7 @@ SeafomIslands2_EventScript_GymGuide2::
 
 SeafoamIslands_Gym_EventScript_GymStatue::
 	lockall
-	goto_if_set FLAG_GARBAGEFLAG, SeafoamIslands_Gym_EventScript_GymStatuePostVictory
+	goto_if_set FLAG_DEFEATED_CINNABAR_ISLAND_GYM, SeafoamIslands_Gym_EventScript_GymStatuePostVictory
 	msgbox SeafoamIslands_Gym_Text_GymStatue
 	releaseall
 	end
@@ -66,12 +65,12 @@ SeafoamIslands_Gym_Text_GymStatuePlayerWon::
 	.string "Blue, Red, {PLAYER}$"
 
 SeafoamIslands_Gym_Text_TM:
-	.string "Take this too. This TM contains\n"
+	.string "{SPEAKER NAME_BLAINE}Take this too. This TM contains\n"
 	.string "the awesome Overheat.\p"
 	.string "I hope your next opponent has an\n"
 	.string "extra Burn Heal! Waaah!$"
 SeafoamIslands_Gym_Text_BlaineIntro:
-	.string "Blaine: Waaah!\p"
+	.string "{SPEAKER NAME_BLAINE}Waaah!\p"
 	.string "My Gym in Cinnabar burned down.\p"
 	.string "My fire-breathing Pokémon and I are\n"
 	.string "homeless because of the volcano.\p"
@@ -90,18 +89,18 @@ SeafoamIslands_Gym_Text_ReceivedVolcanoBadge:
 	.string "{PLAYER} received Volcanobadge.$"
 
 SeafoamIslands_Gym_Text_BlaineAfterBattle:
-	.string "Blaine: I did lose this time, but\n"
+	.string "{SPEAKER NAME_BLAINE}I did lose this time, but\n"
 	.string "I'm going to win the next time.\p"
 	.string "When I rebuild my Cinnabar Gym,\n"
 	.string "we'll have to have a rematch.$"
 
 SeafoamIslands_Gym_Text_BlaineFightDone:
-	.string "Blaine: My fire Pokémon will be\n"
+	.string "{SPEAKER NAME_BLAINE}My fire Pokémon will be\n"
 	.string "even stronger.\p"
 	.string "Just you watch!$"
 
 SeafoamIslands_Gym_Text_BlaineRematch:
-	.string "Blaine: Whoa!\p"
+	.string "{SPEAKER NAME_BLAINE}Whoa!\p"
 	.string "I see you've become the Kanto\n"
 	.string "Champion!\p"
 	.string "That's blazing!\p"
@@ -110,7 +109,7 @@ SeafoamIslands_Gym_Text_BlaineRematch:
 	.string "Want to have a rematch with me?$"
 
 SeafoamIslands_Gym_Text_BlaineRematchDefeat:
-	.string "Blaine: Your skills are truly fiery!\p"
+	.string "{SPEAKER NAME_BLAINE}Your skills are truly fiery!\p"
 	.string "You've burned right through my\n"
 	.string "defenses.$"
 

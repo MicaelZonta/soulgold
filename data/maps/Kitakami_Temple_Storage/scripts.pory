@@ -4,7 +4,7 @@ script StorageMienfoo {
     lock
     faceplayer
     playmoncry(SPECIES_MIENFOO, CRY_MODE_NORMAL)
-    msgbox("Mienfoo: Foo!")
+    msgbox("{SPEAKER NAME_MIENFOO}Foo!")
     waitmoncry
     release
     end

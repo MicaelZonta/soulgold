@@ -1578,14 +1578,14 @@ SootopolisCity_Text_YouBroughtFlyingMon:
 	.string "Well, aren't you amazing!$"
 
 SootopolisCity_Text_GroudonPleaseStop:
-	.string "Maxie: G… Groudon…\n"
+	.string "{SPEAKER NAME_MAXIE}G… Groudon…\n"
 	.string "Please! Stop what you're doing!\p"
 	.string "I know the extent of your power now!\p"
 	.string "If you keep going, all Hoenn, not just\n"
 	.string "Sootopolis, will be utterly ruined!$"
 
 SootopolisCity_Text_AfterAllOurScheming:
-	.string "Maxie: So the super-ancient Pokémon\n"
+	.string "{SPEAKER NAME_MAXIE}So the super-ancient Pokémon\n"
 	.string "weren't only Groudon and Kyogre…\p"
 	.string "After all our fruitless scheming and\n"
 	.string "frantic efforts, that one Pokémon's\l"
@@ -1595,7 +1595,7 @@ SootopolisCity_Text_AfterAllOurScheming:
 	.string "Fuhahaha…$"
 
 SootopolisCity_Text_KyogreCalmDown:
-	.string "Archie: Kyogre! What's wrong?!\n"
+	.string "{SPEAKER NAME_ARCHIE}Kyogre! What's wrong?!\n"
 	.string "Look over here! It's the Red Orb!\l"
 	.string "Calm down! Kyogre!\p"
 	.string "… … … … … …\n"
@@ -1604,7 +1604,7 @@ SootopolisCity_Text_KyogreCalmDown:
 	.string "It's not responding at all!$"
 
 SootopolisCity_Text_TryingMeaninglessToPokemon:
-	.string "Archie: Kyogre and Groudon both\n"
+	.string "{SPEAKER NAME_ARCHIE}Kyogre and Groudon both\n"
 	.string "flew off to who knows where.\p"
 	.string "The weather in Hoenn has returned\n"
 	.string "to its normal state…\p"
@@ -1615,7 +1615,7 @@ SootopolisCity_Text_TryingMeaninglessToPokemon:
 	.string "to Pokémon…$"
 
 SootopolisCity_Text_InvolvedWithCrisisComeWithMe:
-	.string "Steven: Those Pokémon fighting…\n"
+	.string "{SPEAKER NAME_STEVEN}Those Pokémon fighting…\n"
 	.string "Groudon… And Kyogre…\p"
 	.string "The two super-ancient Pokémon\n"
 	.string "were awakened from a long sleep…\p"
@@ -1630,7 +1630,7 @@ SootopolisCity_Text_InvolvedWithCrisisComeWithMe:
 	.string "Come with me, please.$"
 
 SootopolisCity_Text_DoesThisMakeYourFearPokemon:
-	.string "Steven: Listen, {PLAYER}{KUN}.\p"
+	.string "{SPEAKER NAME_STEVEN}Listen, {PLAYER}{KUN}.\p"
 	.string "Does seeing Groudon and Kyogre make\n"
 	.string "you think Pokémon are to be feared?\p"
 	.string "But that's not true.\n"
@@ -1639,34 +1639,34 @@ SootopolisCity_Text_DoesThisMakeYourFearPokemon:
 	.string "You already know.$"
 
 SootopolisCity_Text_HereWereAreHelpWallace:
-	.string "Steven: Okay, here we are!\p"
+	.string "{SPEAKER NAME_STEVEN}Okay, here we are!\p"
 	.string "Inside here you'll find someone named\n"
 	.string "Wallace.\p"
 	.string "I think you have what's needed to\n"
 	.string "help him…$"
 
 SootopolisCity_Text_KnowWhatsNeededToHelpHim:
-	.string "Steven: I think you have what's\n"
+	.string "{SPEAKER NAME_STEVEN}I think you have what's\n"
 	.string "needed to help him…$"
 
 SootopolisCity_Text_NeverBeenToSkyPillar:
-	.string "Steven: The Sky Pillar…\p"
+	.string "{SPEAKER NAME_STEVEN}The Sky Pillar…\p"
 	.string "I've never been there.\n"
 	.string "I wonder where it could be?$"
 
 SootopolisCity_Text_SoThatsRayquaza:
-	.string "Steven: So that's Rayquaza…\p"
+	.string "{SPEAKER NAME_STEVEN}So that's Rayquaza…\p"
 	.string "It's incredible how the two rampaging\n"
 	.string "Pokémon would flee from it in fear…$"
 
 SootopolisCity_Text_MaxieArchieLeft:
-	.string "Steven: It looks like both Maxie and\n"
+	.string "{SPEAKER NAME_STEVEN}It looks like both Maxie and\n"
 	.string "Archie have gone away somewhere.\p"
 	.string "Perhaps they've gone to Mt. Pyre to\n"
 	.string "return those Orbs…$"
 
 SootopolisCity_Text_HaventYouScaledSkyPillar:
-	.string "Wallace: Oh?\n"
+	.string "{SPEAKER NAME_WALLACE}Oh?\n"
 	.string "{PLAYER}{KUN}?\p"
 	.string "Haven't you scaled the Sky Pillar\n"
 	.string "yet?\p"
@@ -1674,14 +1674,14 @@ SootopolisCity_Text_HaventYouScaledSkyPillar:
 	.string "the top of the Sky Pillar…$"
 
 SootopolisCity_Text_AquaMagmaDidntMeanHarm:
-	.string "Wallace: {PLAYER}{KUN}…\p"
+	.string "{SPEAKER NAME_WALLACE}{PLAYER}{KUN}…\p"
 	.string "The leaders of Team Magma and Aqua,\n"
 	.string "I don't think they meant harm.\p"
 	.string "It wouldn't hurt to hear what they\n"
 	.string "have to say for themselves.$"
 
 SootopolisCity_Text_ThankYouForHelpAcceptThis:
-	.string "Wallace: {PLAYER}{KUN}…\n"
+	.string "{SPEAKER NAME_WALLACE}{PLAYER}{KUN}…\n"
 	.string "My eyes didn't deceive me.\p"
 	.string "Thanks to your help, Sootopolis…\n"
 	.string "No, all of Hoenn was saved.\p"
@@ -1690,7 +1690,7 @@ SootopolisCity_Text_ThankYouForHelpAcceptThis:
 	.string "Please accept it.$"
 
 SootopolisCity_Text_ExplainWaterfallGoToGym:
-	.string "That Hidden Machine contains\n"
+	.string "{SPEAKER NAME_WALLACE}That Hidden Machine contains\n"
 	.string "Waterfall.\p"
 	.string "If you have the Rain Badge, a Pokémon\n"
 	.string "that has learned that HM move can\l"
@@ -1703,6 +1703,6 @@ SootopolisCity_Text_ExplainWaterfallGoToGym:
 	.string "that door.$"
 
 SootopolisCity_Text_DazzledByMentor:
-	.string "Wallace: I'm sure that you will be\n"
+	.string "{SPEAKER NAME_WALLACE}I'm sure that you will be\n"
 	.string "dazzled by my mentor's breathtakingly\l"
 	.string "elegant battle style.$"

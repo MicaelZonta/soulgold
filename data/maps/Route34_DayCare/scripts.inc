@@ -207,7 +207,7 @@ Route34_DayCare_EventScript_Ditto::
 	end
 
 Route34_DayCare_Text_Ditto:
-	.string "Ditto: Tto!$"
+	.string "{SPEAKER NAME_DITTO}Tto!$"
 
 Route34_EventScript_DaycareMan::
 	lock
@@ -638,8 +638,11 @@ Route34_EventScript_DaycareEggSentToPC::
 
 
 daycareDestinyKnotGift_Text_0:
-	.string "Destiny Knot will let Pokémon inherit\n"
-	.string "5 Innate values from their parents.$"
+	.string "With a Destiny Knot, a baby gets\n"
+	.string "every Innate value from a parent.\p"
+	.string "Without one, half the time a value\n"
+	.string "lands between the parents' values,\l"
+	.string "and half the time it's random.$"
 
 daycareDestinyKnotGift_Text_1:
 	.string "Hey! Have you tried putting your\n"

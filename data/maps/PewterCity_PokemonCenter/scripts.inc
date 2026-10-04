@@ -22,7 +22,7 @@ PewterCity_PokemonCenter1F_Text_Teacher:
 	.string "…Yes? I'm on the phone. Go away!$"
 
 PewterCity_PokemonCenter1F_Text_Jigglypuff:
-	.string "Jigglypuff: Puu pupuu.$"
+	.string "{SPEAKER NAME_JIGGLYPUFF}Puu pupuu.$"
 
 PewterCity_PokemonCenter1F_Text_BugCatcher:
 	.string "Most Pokémon get drowsy if they hear a\n"

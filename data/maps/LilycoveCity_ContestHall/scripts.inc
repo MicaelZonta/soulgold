@@ -337,13 +337,13 @@ LilycoveCity_ContestHall_Text_IsntThisPlaceHumongous:
 	.string "like a Contest hall in the sticks.$"
 
 LilycoveCity_ContestHall_Text_GiveItBestSmartAppeal:
-	.string "Mc: Okay, Smart Pokémon and their\n"
+	.string "{SPEAKER NAME_MC}Okay, Smart Pokémon and their\n"
 	.string "Trainers, are you ready?!\p"
 	.string "Give it your best showing!\n"
 	.string "Let's appeal!$"
 
 LilycoveCity_ContestHall_Text_AreYouEnjoyingThisContest:
-	.string "Judge: Are you enjoying this Contest?\p"
+	.string "{SPEAKER NAME_JUDGE}Are you enjoying this Contest?\p"
 	.string "Come back with three friends, and\n"
 	.string "all of you may enter a Contest!$"
 
@@ -396,11 +396,11 @@ LilycoveCity_ContestHall_Text_StillLoveSmartnessContests:
 	.string "It's so… So… Cool.$"
 
 LilycoveCity_ContestHall_Text_AreYouEnteringBeautyContest:
-	.string "Mc: Are you entering the Beauty\n"
+	.string "{SPEAKER NAME_MC}Are you entering the Beauty\n"
 	.string "Contest, too? Good luck!$"
 
 LilycoveCity_ContestHall_Text_EveryPokemonPristineBeauty:
-	.string "Judge: Ah, every Pokémon here is\n"
+	.string "{SPEAKER NAME_JUDGE}Ah, every Pokémon here is\n"
 	.string "a model of pristine beauty!\p"
 	.string "Why, I almost forgot to score them!$"
 
@@ -449,13 +449,13 @@ LilycoveCity_ContestHall_Text_CantWinOnBeautyAlone:
 	.string "it's nice and glossy like mine.$"
 
 LilycoveCity_ContestHall_Text_InTheMiddleOfContest:
-	.string "Mc: Uh-oh! Hello!\n"
+	.string "{SPEAKER NAME_MC}Uh-oh! Hello!\n"
 	.string "We're in the middle of a Contest!\p"
 	.string "Please enter at our registration\n"
 	.string "counter and come out, okay?$"
 
 LilycoveCity_ContestHall_Text_SuchCharmingCuteAppeals:
-	.string "Judge: Oh, such charming and cute\n"
+	.string "{SPEAKER NAME_JUDGE}Oh, such charming and cute\n"
 	.string "appeals!\p"
 	.string "Oh, my goodness! What a perfectly\n"
 	.string "adorable Water Sport appeal!$"

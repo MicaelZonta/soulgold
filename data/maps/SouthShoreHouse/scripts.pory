@@ -54,7 +54,7 @@ script SouthShoreHouseSableye {
     lock
     faceplayer
     playmoncry(SPECIES_SABLEYE, CRY_MODE_NORMAL)
-    msgbox("Sableye: Sablblbllblb!")
+    msgbox("{SPEAKER NAME_SABLEYE}Sablblbllblb!")
     waitmoncry
     release
     end

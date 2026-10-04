@@ -19,7 +19,7 @@ OlivineCity_PortOutside_EventScript_Sabrina::
     end
 
 OlivineCity_PortOutside_Text_Sabrina:
-    .string "Sabrina: Out of the blue,\n"
+    .string "{SPEAKER NAME_SABRINA}Out of the blue,\n"
 	.string "I get the urge to see the ocean.\p"
 	.string "I'll see you at the Fighting\n"
 	.string "Dojo.$"

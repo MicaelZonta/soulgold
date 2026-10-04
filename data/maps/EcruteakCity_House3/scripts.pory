@@ -28,7 +28,7 @@ script EcruteakCity_House3_Lampent {
     lock
     faceplayer
     playmoncry(SPECIES_LAMPENT, CRY_MODE_NORMAL)
-    msgbox("Lampent: Lamppp!")
+    msgbox("{SPEAKER NAME_LAMPENT}Lamppp!")
     release
     end
 }

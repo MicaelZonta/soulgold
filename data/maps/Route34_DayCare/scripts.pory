@@ -207,7 +207,7 @@ Route34_DayCare_EventScript_Ditto::
 	end
 
 Route34_DayCare_Text_Ditto:
-	.string "Ditto: Tto!$"
+	.string "{SPEAKER NAME_DITTO}Tto!$"
 
 Route34_EventScript_DaycareMan::
 	lock
@@ -619,8 +619,12 @@ script daycareDestinyKnotGift {
 	lock
 	faceplayer
 	if (flag(FLAG_DESTINYKNOT_GIFT)) {
-		msgbox("Destiny Knot will let Pokémon inherit
-				5 Innate values from their parents.")
+		msgbox("With a Destiny Knot, a baby gets
+				every Innate value from a parent.
+
+				Without one, half the time a value
+				lands between the parents' values,
+				and half the time it's random.")
 				release
 				end
 	}
@@ -632,8 +636,12 @@ script daycareDestinyKnotGift {
 			you might find this useful.")
 	giveitem(ITEM_DESTINY_KNOT)
 	setflag(FLAG_DESTINYKNOT_GIFT)
-	msgbox("Destiny Knot will let Pokémon inherit
-			5 Innate values from their parents.")
+	msgbox("With a Destiny Knot, a baby gets
+			every Innate value from a parent.
+
+			Without one, half the time a value
+			lands between the parents' values,
+			and half the time it's random.")
 	waitmessage
 	release
 	end

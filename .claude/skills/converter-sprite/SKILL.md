@@ -97,7 +97,24 @@ preenchimento e é apagada apenas nas linhas/colunas de grade. Arte JPG
 borrada na origem (Olivia zender1752) continua borrada: o caminho é arte nova.
 Folha **ampliada por IA** (sem grade fixa, o pixel varia de 5 a 8 px; Olivia
 de 30/09): `reamostrar=(celula, N)` reduz cada célula ao medoide do miolo de
-cada bloco antes de tudo. Roupa clara de poucos pixels (top rosa) some no
+cada bloco antes de tudo. **Trainer** ampliado por IA (~1254 px, pixel de
+7 a 12 px; lote de 03/10): `ia=8` em `TRAINERS` acha cada borda de pixel por
+programação dinâmica (`grade_ia`), recortando antes na figura — o fundo com
+ruído virava vãos mínimos e achatava a largura (Alister precisou de `ia=9`).
+Segunda arte do mesmo personagem: entrada extra com `pasta` + `f`, a folha sai
+com sufixo (`Lenora (IA)`).
+**Chibi 32x48** (Aveontrainer, Miused; boneco de 28-32 px que encolhe quase pela
+metade): o método padrão deixou Dawn, Green, Klara, Rosa e Skyla "deformadas"
+(autor, 03/10) — `metodo='bloco'` em `CHARS` (cada pixel novo = cor mais comum
+do bloco, olho ganha). Avery e Mustard, da mesma família, foram aprovados no
+padrão. **Mas a causa de fundo era outra:** essas folhas 128x192 são **2x**
+(99% dos pares de pixel iguais) e `escala_detectada` dava 1 por causa de meia
+dúzia de pixels soltos; com `k=2`, `cell=(16, 24)` o boneco nativo de 14-16 px
+sai sem redução nenhuma, e foi assim que Dawn e Green ganharam os olhos de volta.
+**Antes de reduzir, meça os pares** (`a[:, 0::2] == a[:, 1::2]`) além do
+`escala_detectada`; a folha da Peonia era 4x e lida como 2x deu um boneco
+"horrível" (`k=4` resolveu). Boneco nativo mais estreito que 16 (Dawn 14x20)
+também entra na folha de comparação. Roupa clara de poucos pixels (top rosa) some no
 median cut a 40 cores quando o cabelo domina: `pre_cores=96` na entrada. Nos
 quadros de **frente e costas** as colunas saem aos pares espelhados no eixo
 do boneco, senão um olho fica com 4 px e o outro com 2 (Zinnia). **Olho no

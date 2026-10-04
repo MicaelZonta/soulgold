@@ -27,12 +27,16 @@ NAMED_GIFT_COMMAND_RE = re.compile(r"\bgivenamedmon\s+(\d+)\b", re.IGNORECASE)
 NAMED_GIFT_CASE_RE = re.compile(
     r"\bcase\s+(\d+)\s*:[^\n]*\n\s*species\s*=\s*(SPECIES_[A-Z0-9_]+)\s*;\s*\n\s*level\s*=\s*(\d+)\s*;"
 )
+# setwildbattle, and seteventmon (the battle starts with special
+# BattleSetup_StartLegendaryBattle; Berry Master's steeds and Calyrex).
 STATIC_ENCOUNTER_RE = re.compile(
-    r"\bsetwildbattle\s+(SPECIES_[A-Z0-9_]+)\s*,\s*(\d+)\b",
+    r"\b(?:setwildbattle|seteventmon)\s+(SPECIES_[A-Z0-9_]+)\s*,\s*(\d+)\b",
     re.IGNORECASE,
 )
 # A block that sets any of these before its battle is a boss fight, not a source.
-NO_CATCHING_RE = re.compile(r"\bsetflag\s+\w*NO_CATCHING\b")
+# Boss fights cannot be caught: the NO_CATCHING flag (often set in the block that
+# jumps here) or the boss setup itself in the same block.
+NO_CATCHING_RE = re.compile(r"\bsetflag\s+\w*NO_CATCHING\b|\bsetbossbattle\b")
 GACHA_ARRAY_RE = re.compile(
     r"static\s+const\s+u16\s+sGacha(Basic|Great|Ultra|Master)Species(Common|Uncommon|Rare|UltraRare)\[\]"
     r"\s*=\s*\{(.*?)\};",
@@ -114,6 +118,19 @@ def script_blocks(text: str) -> dict[str, str]:
         match.group(1): text[match.end():matches[index + 1].start() if index + 1 < len(matches) else len(text)]
         for index, match in enumerate(matches)
     }
+
+
+_SHARED_SCRIPT_BLOCKS: dict[str, str] | None = None
+
+
+def shared_script_blocks() -> dict[str, str]:
+    """Labels of data/scripts/*.inc: a map reaches them through its own scripts."""
+    global _SHARED_SCRIPT_BLOCKS
+    if _SHARED_SCRIPT_BLOCKS is None:
+        _SHARED_SCRIPT_BLOCKS = {}
+        for path in sorted((REPO_ROOT / "data" / "scripts").glob("*.inc")):
+            _SHARED_SCRIPT_BLOCKS.update(script_blocks(read(path)))
+    return _SHARED_SCRIPT_BLOCKS
 
 
 def reachable_script_labels(map_data: Mapping[str, object], blocks: dict[str, str]) -> set[str]:
@@ -389,7 +406,7 @@ def add_scripted_legendary_species_locations(
             map_dir = REPO_ROOT / "data" / "maps" / map_name
             try:
                 map_data = json.loads(read(map_dir / "map.json"))
-                blocks = script_blocks(read(map_dir / "scripts.inc"))
+                blocks = {**shared_script_blocks(), **script_blocks(read(map_dir / "scripts.inc"))}
             except (FileNotFoundError, json.JSONDecodeError):
                 continue
 

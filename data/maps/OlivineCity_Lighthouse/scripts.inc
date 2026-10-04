@@ -246,7 +246,7 @@ OlivineLighthouse_EventScript_AmpharosSick::
 	end
 
 OlivineLighthouse_Text_JasmineCianwoodPharmacy:
-	.string "Jasmine: …This Pokémon always kept\n"
+	.string "{SPEAKER NAME_JASMINE}…This Pokémon always kept\n"
 	.string "the sea lit at night.\p"
 	.string "…But it suddenly got sick… It's\n"
 	.string "gasping for air…\p"
@@ -256,11 +256,11 @@ OlivineLighthouse_Text_JasmineCianwoodPharmacy:
 	.string "And I can't leave Amphy unattended…$"
 
 OlivineLighthouse_Text_JasmineGetMedicine:
-	.string "…May I ask you to get some medicine\n"
+	.string "{SPEAKER NAME_JASMINE}…May I ask you to get some medicine\n"
 	.string "for me? Please?$"
 
 OlivineLighthouse_Text_JasmineGetMedicine2:
-	.string "There is a wonderful Pharmacy\n"
+	.string "{SPEAKER NAME_JASMINE}There is a wonderful Pharmacy\n"
 	.string "in Cianwood…\p"
 	.string "But that's across the sea…\n"
 	.string "And I can't leave Amphy unattended…\p"
@@ -268,7 +268,7 @@ OlivineLighthouse_Text_JasmineGetMedicine2:
 	.string "for me? Please?$"
 
 OlivineLighthouse_Text_JasmineCureAmphy:
-	.string "Jasmine: …Will that medicine cure\n"
+	.string "{SPEAKER NAME_JASMINE}…Will that medicine cure\n"
 	.string "Amphy?$"
 
 
@@ -340,17 +340,17 @@ OlivineLighthouse_Text_PlayerHandedSecretpotion:
 	.string "Jasmine.$"
 
 OlivineLighthouse_Text_JasmineDontBeOffended:
-	.string "Jasmine: …Um, please don't be\n"
+	.string "{SPEAKER NAME_JASMINE}…Um, please don't be\n"
 	.string "offended…\p"
 	.string "…Amphy will not take anything from\n"
 	.string "anyone but me…$"
 
 OlivineLighthouse_Text_JasmineAmphyHowFeeling:
-	.string "Jasmine: …\p"
+	.string "{SPEAKER NAME_JASMINE}…\p"
 	.string "Amphy, how are you feeling?$"
 
 OlivineLighthouse_Text_JasmineThankYou:
-	.string "Jasmine: …Oh, I'm so relieved…\p"
+	.string "{SPEAKER NAME_JASMINE}…Oh, I'm so relieved…\p"
 	.string "This is just so wonderful…\p"
 	.string "Thank you so very, very much.\p"
 	.string "…I will return to the Gym…\p"
@@ -358,11 +358,11 @@ OlivineLighthouse_Text_JasmineThankYou:
 	.string "are powerful.$"
 
 OlivineLighthouse_Text_JasmineISee:
-	.string "Jasmine: …I see…\n"
+	.string "{SPEAKER NAME_JASMINE}…I see…\n"
 	.string "…Amphy, hang on!$"
 
 OlivineLighthouse_Text_AmphyPalPaloo:
-	.string "Amphy: …\n"
+	.string "{SPEAKER NAME_AMPHY}…\n"
 	.string "…Pa… paloo…$"
 
 OlivineLighthouse_Text_AmphyBreathingLabored:
@@ -370,6 +370,6 @@ OlivineLighthouse_Text_AmphyBreathingLabored:
 	.string "labored…$"
 
 OlivineLighthouse_Text_AmphyPaluPalulu:
-	.string "Amphy: Palu! Palulu!$"
+	.string "{SPEAKER NAME_AMPHY}Palu! Palulu!$"
 
 

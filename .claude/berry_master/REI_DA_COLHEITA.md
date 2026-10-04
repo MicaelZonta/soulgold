@@ -1,6 +1,27 @@
 # O Rei da Colheita — a horta do Berry Master, completa
 
-> **Proposta rev1 — 30/09/2026; rev2 (Galar) §13; rev3 (revisão, Crown Tundra, 10 falas por evento, batalhas de sempre) §14; rev4 (as dungeons dos corcéis; sem o Will) §15.** Nada implementado. Junta num sistema só a
+> **Implementado (partes 1–17, até 03/10/2026).** A horta, o Livro, os cruzamentos, os
+> níveis, os pedidos, as pragas, a rotina com corações e bancos de falas, os rivais e a
+> sidequest inteira, do prólogo ao estado 15 e o pós-história, estão no jogo e foram
+> testados no mGBA headless (relatório: https://claude.ai/artifact/KGqanvCP1LAQKQhNQBmgyk).
+> Onde o código divergiu deste documento, a decisão está na seção “Parte N — feita” de
+> [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md). As principais:
+>
+> | Aqui | No jogo |
+> |---|---|
+> | Paletas novas para Greenfield e a Torre de Bronze (§15.3) | Tom por código sobre as paletas existentes (`MapTint_Mode`): cristal, entardecer, fogo |
+> | Portão novo a oeste das ruínas | Recanto (2,26)–(2,27) da área da câmara do Kabuto (chega-se pela Union Cave B1F) |
+> | A mansão trancada no caminho escuro | O próprio portão não abre fora do caminho branco |
+> | “The FOUNTAIN is glass” | “The TREES are glass” (o mapa aprovado não tem fonte) |
+> | A prova do Rei “na próxima noite” | Pode ser repetida na hora; vencida, não se repete |
+> | Peonia escolhe “Dad ou Me” | De noite a batalha é a dela; o Peony tem a dele |
+> | A Enigma pela regeneração das árvores de rota | `GardenRollDay` replanta o canteiro vazio |
+> | Os dois corcéis no Nexus | O escolhido segue a R1; o outro fica só no Nexus (`GardenSteed_NexusEligible`) |
+>
+> Sprites (Peony, Peonia, Klara, Avery, Mustard, Molly adulta) no jogo desde 03/10/2026. Arte das cenouras
+> (proposta C) no jogo e site público regenerado em 03/10/2026.
+
+> **Proposta rev1 — 30/09/2026; rev2 (Galar) §13; rev3 (revisão, Crown Tundra, 10 falas por evento, batalhas de sempre) §14; rev4 (as dungeons dos corcéis; sem o Will) §15.** Junta num sistema só a
 > horta ([`BERRY_MASTER_DESIGN.md`](BERRY_MASTER_DESIGN.md)), as infestações e o
 > lendário ([`LENDARIO_E_INFESTACAO.md`](LENDARIO_E_INFESTACAO.md)). **Onde este
 > documento e os dois anteriores discordam, vale este.**
@@ -16,6 +37,13 @@
 > | **Todas** as berries obteníveis pela horta | §4 (58 receitas, das 8 iniciais até Lansat e Starf) |
 > | Upgrade de nível da horta | §5 |
 > | Tarefa repetitiva com muitas falas diferentes, em lugares diferentes por horário (“mini Harvest Moon”) | §2 e §9 |
+>
+> Páginas (artifacts) que apresentam este material, com renders:
+> [Horta do Berry Master](https://claude.ai/artifact/L7mDjKKS2aq63SUgY323nD) (sistema:
+> §2–§7), [O Rei da Colheita](https://claude.ai/artifact/DkvvWE7XYtx3C6SJyJZCcm)
+> (história: §8, §13–§15) e [Caminhos dos Corcéis](https://claude.ai/artifact/R65MTm61Y7NGT8doiocyRY)
+> (protótipo dos mapas: §15.5c). Tudo o que elas dizem está neste documento; a
+> ordem de implementação está em [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md).
 >
 > Texto do documento em português; **tudo que aparece no jogo, em inglês**. As
 > falas estão em prosa: quebrar linha com `nomear-falante/medir_linha.py` na hora
@@ -90,6 +118,25 @@ Coordenadas de fora são **sugestões**: medir com `dump_mapa.py Route30` antes
 (skill `encenar-cutscene`). Regra: ninguém em pé numa célula que seja o **único**
 acesso a um canteiro (lista em `BERRY_MASTER_DESIGN.md` §2.1).
 
+> **Código (parte 8, 03/10/2026) — medido, substitui as coordenadas e horários acima.**
+> - **Horários:** os do relógio do jogo (`GetTimeOfDay`, `OW_TIMES_OF_DAY` = geração
+>   atual): manhã **6–10**, dia **10–19**, entardecer 19–20 e noite 20–6. O entardecer
+>   conta como noite. Assim o elenco combina com a cor do céu.
+> - **Bram de manhã em (27,44)**, não (31,45): o lago começa em x = 32 (água tem
+>   colisão 0 e o `dump_mapa.py` a mostrava como chão), e o bolsão (31,43)–(31,44),
+>   único acesso de (30,43) e (31,42), só se alcança pela linha 45 a leste de (27,45).
+>   Com o Bram em (31,45) esses dois canteiros ficavam trancados a manhã inteira.
+> - **Bugsy em (29,41)**, de lupa no canteiro B; (31,43) era o único acesso de dois
+>   canteiros e (32,43) é água.
+> - **Casa:** Bram e Laurel na mesa (4,4)/(3,4) em todos os períodos (o Bram dorme
+>   sentado, virado para a mesa); Tilly na cadeira azul (7,5); Sunflora sob a
+>   janela (6,2). A casa não tem sofá nem cama.
+> - **Antes do tutorial o Bram fica em casa a qualquer hora** (a primeira visita é a
+>   clássica). **À noite a Laurel entrega o presente do dia** que ele deixou na mesa
+>   (só o sorteio: semente encomendada, pedido, marcos e reformas esperam o Bram).
+> - Prova com o elenco todo de pé: `python3 dev_scripts/berry_garden_access_check.py`
+>   (também no CI).
+
 ### 2.2 Como se faz sem flag nenhuma
 
 Um script `ON_TRANSITION` em `Route30` e outro em `Route30_House`:
@@ -126,6 +173,11 @@ Para caber, o **Weedle decorativo de (19,42) sai do mapa** (ele não tem script)
 Tilly nunca coincide com o Bugsy (fim de semana × terça/quinta). À noite, o Calyrex
 e o Spectrier ocupam a vaga da Laurel, que está em casa.
 
+> **Medido no código (parte 2, 30/09/2026).** A janela real de spawn
+> (`TrySpawnObjectEvents`) também pega o **Caterpie decorativo de (36,34)**, que esta
+> tabela não contava: com ele o pior caso é **16**, acima do limite. A parte 8 tira
+> esse Caterpie (ou o põe fora da janela). Detalhe no plano, “Parte 2 — feita”.
+
 ---
 
 ## 3. O Livro de Berries
@@ -160,11 +212,11 @@ e o Spectrier ocupam a vaga da Laurel, que está em casa.
 Contíguas porque o C calcula a flag por soma, e porque o `flag_audit.py` e a skill
 `catalogar-flags` precisam ver o bloco inteiro de uma vez.
 
-### 3.3 Código (C, `src/berry.c`)
+### 3.3 Código (C, `src/berry_garden.c` — *código, parte 3: arquivo próprio, não `src/berry.c`*)
 
 | Special | Faz | Quem chama |
 |---|---|---|
-| `BerryLedger_Register` | liga a flag da berry em `VAR_0x8004` | `BerryTree_EventScript_PickBerry` (e a versão com mutação), logo depois da colheita |
+| `BerryLedger_Register` | liga a flag da berry em `VAR_0x8004` | *código (parte 3):* a colheita registra direto no C, em `ObjectEventInteractionPickBerryTree`, só o que entrou na bolsa; o special fica para quem precisar pelo script |
 | `BerryLedger_Count` | quantas estão no Livro | Bram (marcos, reformas) |
 | `BerryLedger_RandomRegistered` | sorteia uma berry do Livro (sem Lansat, Starf e Enigma) | presente diário, pedido comum |
 | `BerryLedger_BuildSeedMenu` | monta a lista com rolagem das berries do Livro | semente encomendada (§3.5) |
@@ -348,15 +400,25 @@ marca como regado o estágio atual de todo canteiro da horta, uma vez por dia
 (`FLAG_DAILY_GARDEN_WATERED`). Regar à mão continua valendo para árvore de rota.
 
 **Canteiro da Laurel.** Hoje em (23,38) há uma árvore de rota natural
-(`BERRY_TREE_ORAN_2`, Oran). Ela vira o **canteiro da Laurel**: a Oran natural sai de
-`sNaturalBerriesByTreeId` e de `EventScript_ResetAllBerries`, e o objeto troca para o
-ID `BERRY_TREE_KINGS_PLOT` (apelido de mais um ID de Hoenn). Até o Ato 3 o objeto
+(`BERRY_TREE_ORAN_2`, Oran). Ela vira o **canteiro da Laurel**: o objeto troca para o
+ID `BERRY_TREE_KINGS_PLOT` (apelido de mais um ID de Hoenn, que não é natural e por
+isso nunca renasce Oran). *Corrigido no código (parte 2):* a Oran natural **não** sai
+de `sNaturalBerriesByTreeId` nem de `EventScript_ResetAllBerries`, porque o
+`WorldHub` usa o mesmo `BERRY_TREE_ORAN_2` na horta dele; trocar o ID do objeto da
+Route 30 já basta. Até o Ato 3 o objeto
 fica escondido (`FLAG_TEMP` no `ON_TRANSITION`), e um `bg_event` no mesmo tile
 responde:
 
 > The soil here is hard and cold. Nothing's grown in it for a long time.
 
 **As cenas de reforma** (manhã seguinte ao pagamento, ao entrar na Route 30):
+
+> *Código (parte 6, 30/09/2026):* por enquanto a “cena” é a **primeira fala do Bram
+> na conversa seguinte à obra** (na casa), e não um gatilho ao entrar na Route 30: o
+> Bram só passa a existir do lado de fora na parte 8, e a horta tem entradas demais
+> (oeste, norte, porta da casa, escada do sul) para cercar com gatilhos sem buraco. A
+> fala do nível 4 é do Bram contando do Bugsy (o Bugsy não está na casa). A parte 8
+> leva as falas para a horta quando o Bram estiver lá de manhã. Detalhe no plano.
 
 > *Nível 2*
 > **Bram:** Four more beds! Laurel dug them. Don't tell her I said so. She'll say I
@@ -372,7 +434,7 @@ responde:
 > **Bugsy:** It's done! A proper Bug Hotel. Hollow stems for the Combee, bark for the
 > Wurmple, a stone pile for Dwebble...
 > They'll come for the berries and they'll stay for the architecture!
-> **Bram:** He means more bugs. He's happy about more bugs.
+> **Bram:** It means more bugs. He's happy about more bugs.
 
 ---
 
@@ -538,7 +600,7 @@ e dia.*
 *Se de dia a Laurel está na horta: ela vira para o jogador.*
 
 > **Laurel:** A {STR_VAR_1}. In the beds.
-> Fifty years we've had this garden. Fifty years and not one bug.
+> Fifty years he's kept this garden. Fifty years and not one bug.
 > Now you come along, and they come along.
 > ...It isn't a complaint. Go and tell him. He'll want to shout.
 
@@ -666,7 +728,7 @@ a Laurel **de noite**, lendo o caderno. A Sunflora grita antes de ela falar.*
 > My grandmother didn't forget. She kept his field.
 > When I left, she gave me this. She said: plant it where the land remembers.
 > Johto never remembered. Not for forty years.
-> Then you came, and the bugs came. And three nights ago, the black horse came.
+> Then you came, and the bugs came. And one night, the black horse came.
 > The land remembers something now. I think it's you.
 > Take it. Plant it in my patch. Not yours. Mine.
 
@@ -952,11 +1014,13 @@ Sem estado novo; conferem algo do jogo e falam por cima da fala do dia.
 | C (`src/berry.c`) | médio | 6 bits de mutação, 58 receitas, trava pós-Liga, Livro (4 specials), irrigação, `GetKingsPlotStage`, `RipenGardenTrees`, tabela de pragas |
 | Config | 3 | `OW_BERRY_MUTATIONS`, `_WEEDS`, `_PESTS` = TRUE |
 | Encontros | −8 famílias | `wild_encounters.json` (§7.1) |
-| Árvore natural | −1 | Oran de (23,38) sai de `sNaturalBerriesByTreeId` e `EventScript_ResetAllBerries` |
+| Árvore natural | 0 | *código (parte 2):* a árvore de (23,38) troca de ID; a Oran natural continua (o `WorldHub` usa) |
 
 ---
 
 ## 11. Ordem de implementação
+
+> **Superado por [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md)** (17 partes, cobre também as rev2–rev4).
 
 Cada passo compila e se testa **no jogo** sozinho (um build limpo não prova a cena).
 
@@ -1055,7 +1119,7 @@ Calyrex ao lado. O Peony é quem fala pelo rei.*
 > **Laurel:** You said something true. For once.
 > *(a Peonia chega correndo pela trilha — `addobject` fora da câmera)*
 > **Peonia:** DAD! You can't just jump off a ship before it docks!
-> ...Is that soil glowing? Is that — Grandma's story? The king?
+> ...Is that soil glowing? Is that — Auntie's story? The king?
 > **Laurel:** The white one sleeps where the ice never thaws. The black one walks where
 > the fire took the bells.
 > Ice Path, past Mahogany. The old tower in Ecruteak. One horse. Choose.
@@ -1123,8 +1187,8 @@ escala de nível, **sem blackout** (skill `batalha-sem-blackout`).
 > *(vitória)* Ugh, FINE. Keep your dumb Berries. ...Can I at least keep one Pecha?
 > No? Rude. So rude.
 > *(derrota)* Thanks for the content, hun! Like and subscribe~
-> **Berry Master (depois):** That girl again. Laurel says she's got a Slowbro greener
-> than my Wepear.
+> **Berry Master (depois):** That girl again. Laurel says that Slowbro of hers has
+> better manners than she does.
 
 Depois de 5 vitórias contra ela (contador em `VAR_BERRY_ORDER`, byte alto livre, ou
 var própria):
@@ -1138,7 +1202,7 @@ var própria):
 
 > **Avery:** Ahem. O King of Bountiful Harvest. It is I, Avery, psychic prodigy.
 > ...He is not answering. The patch is not answering me.
-> **Laurel:** It's a patch of dirt, dear. The king's in {PLAYER}'s bag.
+> **Laurel:** It's a patch of dirt, dear. The king travels with {PLAYER} now.
 > **Avery:** I KNEW that.
 
 Uma fala por sexta, em rodízio pelo número de dias (`VAR_DAYS` mod 4):
@@ -1416,6 +1480,15 @@ Eventos que **sorteiam** o dia (primeira entrada do dia na Route 30, special
 Tudo em inglês, em prosa (quebrar linha com `nomear-falante/medir_linha.py` ao
 escrever o `.inc`). Coluna ♥: **0** sempre, **1** com 5 dias de conversa, **2** com 12.
 
+> **Código (parte 9, 03/10/2026):** A, B, D, E, F, G, H e R estão em
+> `data/scripts/berry_garden_lines.inc`. R1 e R6 foram reescritas para servir também à
+> tarde (o Bram entrega em casa): “Picked these at dawn, sprout. Still had the dew on
+> 'em…” e “Fresh from this morning! Fresher than me, anyway.”. A reação do Bugsy de
+> terça/quinta diz “this afternoon” implícito; a de domingo virou “Tilly's selling out
+> front this afternoon.” As reações ao Pokémon da frente só valem num dia fixo (Laurel,
+> Planta: quarta; Tilly, inseto: domingo). P (pragas) fica para a parte 10. Aspas
+> curvas no jogo (o charmap não tem as retas).
+
 #### A. Bram — manhã, na horta, depois do presente
 
 | # | ♥ | Fala |
@@ -1568,7 +1641,7 @@ como estão lá.
 | 3 | Don't swat anything! Everything here is somebody's data. |
 | 4 | A Volbeat's tail blinks in patterns. I think this one's saying "more Berries." Or it's broken. |
 | 5 | I've started lying down in the dirt. Bugs are less shy at eye level. Laurel hates it. |
-| 6 | The Scatterbug here have a wing pattern I've never seen. Your garden is making its own Vivillon! |
+| 6 | The Scatterbug here have markings I've never seen. Your garden is making its own Vivillon! |
 | 7 | My Gym Trainers keep asking where I go on Tuesdays. I say "fieldwork." They think it's a date. |
 | 8 | Combee visit one flower at a time. Your red beds get the morning shift. The yellow beds get the afternoon. |
 | 9 | Kurt says bugs are a waste of good Berries. Then he asks me what bait catches a Heracross. Every time. |
@@ -1597,7 +1670,7 @@ Ela perde (5) · ela ganha e leva um canteiro (5) · o Bram na conversa seguinte
 
 | # | Klara perde | Klara ganha | Bram depois |
 |---|---|---|---|
-| 1 | Ugh, FINE. Keep your dumb Berries. ...Can I at least keep one Pecha? No? Rude. So rude. | Thanks for the content, hun! Like and subscribe~ | That girl again. Laurel says she's got a Slowbro greener than my Wepear. |
+| 1 | Ugh, FINE. Keep your dumb Berries. ...Can I at least keep one Pecha? No? Rude. So rude. | Thanks for the content, hun! Like and subscribe~ | That girl again. Laurel says that Slowbro of hers has better manners than she does. |
 | 2 | That footage is SO getting deleted. | Ooh, this one's heavy! Must be the good stuff. Byeee~ | She took the WHOLE bed? ...Well. It'll grow back. Everything grows back. That's the nice thing about Berries. |
 | 3 | My ring light was in my eyes. That's why. Obviously. | Tell the old man I said hi! Actually, don't. | She left a note. "thx." With a heart. Laurel's framing it. Out of spite, I think. |
 | 4 | Whatever! Berries have, like, carbs anyway. | Harvest complete! Klara out~ | When I was a boy we had a word for her kind. The word was "Tuesday." Don't ask. |
@@ -1649,7 +1722,7 @@ Bram. The Berries are next!”* A fala 7 só vale no estado 15.
 | # | Fala |
 |---|---|
 | 1 | Peonia here! ...Why is everyone in Johto so calm? It's suspicious. |
-| 2 | Dad got lost going to the Pokémon Center. It's across the road. He went the long way. Through the pond. |
+| 2 | Dad got lost going to the Pokémon Center. It's down the road. He went the long way. Through the pond. |
 | 3 | Tilly's hired me. I'm "Assistant Mulch Manager." I get paid in Berries. Mostly Pecha. Mostly bitten. |
 | 4 | Back home I do Dynamax Adventures. Here I carry mulch. Honestly? Mulch is harder. |
 | 5 | Don't tell Dad, but I think Johto's prettier than Galar. Don't tell Galar either. |
@@ -1761,7 +1834,7 @@ Entrega (rodízio de 5, mesmo índice % 5):
 | 1 | That's the lot! Here's your pay. Don't spend it all on mulch. Spend some of it on mulch. |
 | 2 | Look at the size of these! They'll think I grew them. I'll let them. |
 | 3 | Perfect. You pick 'em better than I do now. Don't tell anyone. |
-| 4 | Right on time. Kurt'll be furious. He likes being disappointed. |
+| 4 | Right on time! Folks'll start thinking I'm reliable. |
 | 5 | Good work, sprout. That's a farmer's money. Earned in dirt. |
 
 #### R. O presente da manhã (o Bram dá as berries do Livro)
@@ -1970,6 +2043,10 @@ uma cidade de Johto com a paleta trocada para cristal (azul-claro); a Torre de B
 usa `burned_tower` com paleta quente de entardecer e, no telhado, de fogo. É só
 paleta: `montar-tileset`, parte “reaproveitar peças com outra cor”.
 
+> **03/10/2026:** Greenfield ganhou arte própria, o `gTileset_Greenfield` (proposta E,
+> “Instante parado”): cidade desbotada quase branca e cristais brancos com reflexo de
+> arco-íris. Detalhes na Parte 14 do [plano](PLANO_DE_IMPLEMENTACAO.md).
+
 ### 15.4 Caminho branco — Greenfield
 
 *Entrada, na primeira vez:*
@@ -2022,7 +2099,7 @@ lado (`bg_event`, a única):*
 
 *1F, a torre inteira. Um Sábio-memória (NPC comum, sem batalha):*
 
-> **Sage:** New novice? Feed the black horse in the stable before dark. Brother Tomo
+> **Sage:** You're the new novice? Feed the black horse in the stable before dark. Brother Tomo
 > spoils it. It came from over the sea, they say.
 
 *Subir a escada dispara a cena do raio (flash, `playse`) e o warp para o telhado:*
@@ -2033,7 +2110,7 @@ lado (`bg_event`, a única):*
 *Telhado: o Sábio Tomo diante do estábulo. Batalha sem blackout:*
 
 > **Tomo:** Stay back! No one takes him. He came to us from a land that forgot his
-> name. I won't let this one forget him too.
+> name. I won't let Johto forget him too.
 >
 > *(vitória)* **Tomo:** ...You carry a Shaderoot. From his home. Then you came from his
 > king. Tell him the old monk says he can stop waiting.
@@ -2058,8 +2135,69 @@ the ones who had nowhere else to go.”
 |---|---|
 | Ato 6 (§8.11 e §14.2) | O Glastrier e o Spectrier saem do `IcePath_Depths` e do `BurnedTower_B1F`. O Pryce e o Morty ficam nos **ginásios** e mandam o jogador para a dungeon |
 | O corcel não escolhido | A mansão Hale fica trancada pelo cristal, ou as Kimono Girls não dançam a Torre de Bronze. O outro corcel continua só no Nexus |
+| Mapas que **não** mudam | O `IcePath_Depths` (com o Chien-Pao) e o `BurnedTower_B1F` ficam como estão; só o jogador acorda no B1F depois do Spectrier |
 | Custo | **4 mapas**, 2 paletas novas, 2 treinadores (Scientist, Tomo), 1 sprite novo (Molly adulta), plaquinhas `NAME_MOLLY` e `NAME_TOMO` (`NAME_EUSINE`: conferir se já existe) |
 | Cortado da versão longa | Deslizar no cristal, palavra dos Unown, Phantom Rider, fogo que avança, puzzle dos sinos, 5 notas do Hale, Pryce jantando aos domingos, 7 treinadores. Ficam como ideias se um dia quiser alongar |
+
+### 15.5c O protótipo dos 4 mapas (página “Caminhos dos Corcéis”)
+
+Tudo que a página https://claude.ai/artifact/R65MTm61Y7NGT8doiocyRY mostra, para não
+depender dela. Arquivos em [`prototipo_corceis/`](prototipo_corceis/): `gera.py`
+(gera os `map.bin` e os renders com `mapa_kit.py`), `*_map.bin`, `*_objects.json`
+(objetos já no formato do `map.json`), `report.json` (tamanhos) e os PNGs (`g1_*` =
+Greenfield, `g2_*` = mansão, `s1_*` = torre 1F, `s2_*` = telhado). No render o jogador
+aparece com o sprite do Brendan; os filtros de cristal, sépia e fogo são simulação:
+no jogo viram paletas novas.
+
+| Mapa | Layout novo | Tamanho | Parte de | Mudança de metatile | Paleta nova | Liga com |
+|---|---|---|---|---|---|---|
+| Greenfield | `Greenfield` | 30×39 | `NewBarkTown` | 8 manchas de flor na grama; a casa grande do alto vira a mansão Hale | cristal **e** “depois” (troca por estado no `ON_LOAD`) | portão novo a oeste de `RuinsOfAlph_Outside` (warp na entrada oeste) |
+| Mansão Hale | `Greenfield_Mansion` | 26×23 | recorte de 26 colunas do saguão do `DarkraiInn1` (tem piano e escada) | o corredor de cima ganha +3 fileiras de piso e vira o salão do Glastrier | cristal **só no salão** (a Molly mantém o saguão aquecido) | porta da casa grande de Greenfield |
+| Torre de Bronze 1F | `BrassTowerMemory_1F` | 27×25 | `BurnedTower_1F` | buracos e entulho viram piso inteiro; 4 estátuas da própria torre marcam as colunas (a mesma sala, 150 anos antes) | entardecer em sépia (“memória”) | warp do `EcruteakCity_Theater` (cena da dança) |
+| Telhado | `BrassTowerMemory_Roof` | 23×21 | `TinTower_RoofDay` (o único telhado de torre de Johto) | brasas no telhado | noite de incêndio | saída para o `BurnedTower_B1F` depois da captura |
+
+**Objetos e cenas de cada mapa**
+
+| Mapa | Objeto | Onde | Sprite (protótipo) | Faz |
+|---|---|---|---|---|
+| Greenfield | Moradora | (11,16), olha p/ baixo | `WOMAN_1` | “Lovely morning, isn't it?” — sempre a mesma frase |
+| Greenfield | Velho | (20,22), olha p/ esquerda | `OLD_MAN_1` | “The flowers will open any day now.” |
+| Greenfield | Menino | (10,29), olha p/ cima | `BOY` | “Molly said she'd play with me after lunch.” |
+| Greenfield | Peonia | (3,12), olha p/ direita | `PICNICKER` (substituto) | acompanha o jogador; fala de chegada do §15.4 |
+| Mansão | Molly | ao piano, no saguão, (16,17) olhando p/ cima; no salão, (15,9) | `WOMAN_2` (substituto) | falas do §15.4; acompanha até a porta do salão |
+| Mansão | Glastrier | (13,5), olha p/ baixo: dormindo no salão de cristal, subindo a escada | `SPECIES(GLASTRIER)` | oferecer a Iceroot Carrot abre a batalha |
+| Mansão | nota do Professor Hale | mesa do salão (`bg_event`) | — | “It sleeps here because nothing here changes…” |
+| Torre 1F | 3 Sábios | (9,8) →, (17,11) ↓, (5,17) ↑ | `SAGE` | um deles: “You're the new novice? Feed the black horse…” |
+| Torre 1F | Kimono Girl | (22,19), olha p/ esquerda | `KIMONO_GIRL` | uma Kimono Girl “de outra época”; sem fala nova obrigatória |
+| Torre 1F | escada do alto | (14,4), gatilho (`coord_event`); a porta é (15,23) | — | raio (flash + `playse`) + narração “Thunder. Then light…” + warp ao telhado |
+| Telhado | Sábio Tomo | (10,9), olha p/ baixo, diante do Spectrier | `SAGE` | treinador, batalha sem blackout (§15.5) |
+| Telhado | Spectrier | (10,8), olha p/ baixo | `SPECIES(SPECTRIER)` | chefe |
+| Telhado | Morty, Eusine, Peonia | (9,12), (11,12), (10,13); o jogador chega em (10,11), e a escada de volta é (10,14) | existem / `PICNICKER` | falas do §15.5; a sombra do Ho-Oh passa depois da batalha e **não** para |
+
+Na chegada à torre pela dança, a fila na porta é Peonia (13,21), Morty (14,21),
+jogador (15,21) e Eusine (16,21). As 4 estátuas da torre ficam em (6,8), (20,8),
+(6,14) e (20,14). Na mansão, a chegada é jogador (10,21) e Peonia (11,21) no saguão, e
+jogador (13,8) e Peonia (11,9) no salão. Só a mansão não tem `*_objects.json`: os
+objetos dela estão em `gera.py` (`MOLLY`, `GLAS`). Coordenadas medidas pelo
+`check_objects` do `gera.py`; conferir de novo com `dump_mapa.py` depois de instalar.
+
+> **Instalado na Parte 14 (03/10/2026)** — Greenfield e a mansão Hale estão no jogo; o que
+> divergiu deste protótipo (cristal por código, portão no recanto oeste das ruínas, “TREES”
+> no lugar de “FOUNTAIN”) está em “Parte 14 — feita” do plano.
+
+**Greenfield depois (estado 12).** A cor volta, as flores crescem, e as três falas
+“presas” trocam por falas novas: o dia deles andou. As falas novas ainda não foram
+escritas (Parte 14 de [`PLANO_DE_IMPLEMENTACAO.md`](PLANO_DE_IMPLEMENTACAO.md)).
+
+**O que faltava na página, depois da aprovação**
+
+1. Aprovar os mapas (feito em 30/09/2026). Se o autor quiser outro desenho para
+   Greenfield (mais flores, uma fonte no meio), é o próximo passo antes de instalar.
+2. Paletas: os filtros viram paletas de verdade nos secundários copiados (skills
+   `montar-tileset` e `adicionar-tileset`). É a única arte nova de mapa.
+3. Instalar: `layouts.json`, `map.bin` (os de `prototipo_corceis/`), `map.json` com os
+   objetos (os `*_objects.json`), e ligação conferida com `mapa-de-ligacoes`.
+4. ~~Do autor: sprites da Molly adulta e da Peonia.~~ No jogo desde 03/10/2026 (`OBJ_EVENT_GFX_MOLLY_HALE`, `OBJ_EVENT_GFX_PEONIA`).
 
 ### 15.6 Outros lugares de Johto que a lore tem e o jogo não (para depois)
 

@@ -85,26 +85,26 @@ SlateportCity_SternsShipyard_1F_Text_MeetDockDeliverToStern:
 	.string "Stern and deliver that to him?$"
 
 SlateportCity_SternsShipyard_1F_Text_CouldYouFindStern:
-	.string "Dock: Where could Capt. Stern have\n"
+	.string "{SPEAKER NAME_DOCK}Where could Capt. Stern have\n"
 	.string "gone off to?\p"
 	.string "Could you go find Capt. Stern and\n"
 	.string "deliver that parcel to him?$"
 
 SlateportCity_SternsShipyard_1F_Text_CouldUseAdviceFromVeteran:
-	.string "Dock: Shipbuilding is an art.\p"
+	.string "{SPEAKER NAME_DOCK}Shipbuilding is an art.\p"
 	.string "A lot of things can't be figured out\n"
 	.string "just by calculating.\p"
 	.string "I really could use advice from a veteran\n"
 	.string "who knows the seas…$"
 
 SlateportCity_SternsShipyard_1F_Text_BrineyJoinedUs:
-	.string "Dock: Hi! Mr. Briney's joined us to\n"
+	.string "{SPEAKER NAME_DOCK}Hi! Mr. Briney's joined us to\n"
 	.string "lend us his help.\p"
 	.string "Thanks to the veteran sailor, the\n"
 	.string "ferry is steadily coming together.$"
 
 SlateportCity_SternsShipyard_1F_Text_FerryIsReady:
-	.string "Dock: The ferry is finally ready!\p"
+	.string "{SPEAKER NAME_DOCK}The ferry is finally ready!\p"
 	.string "The new S.S. Tidal is truly a marvel\n"
 	.string "of technology!\p"
 	.string "But, I get the feeling that we can\n"
@@ -113,7 +113,7 @@ SlateportCity_SternsShipyard_1F_Text_FerryIsReady:
 	.string "technology's march.$"
 
 SlateportCity_SternsShipyard_1F_Text_DecidedToHelpDock:
-	.string "Mr. Briney: Ah, {PLAYER}{KUN}!\n"
+	.string "{SPEAKER NAME_MR_BRINEY}Ah, {PLAYER}{KUN}!\n"
 	.string "It's been too long!\p"
 	.string "Aye, since I met you, this old sea dog's\n"
 	.string "been feeling frisky!\p"

@@ -552,7 +552,7 @@ script BattleArcade_Challenge_EventScript_BrainIntro
 		return
 	}
 
-	msgbox(format("Archer: The Rocket Arcade rewards skill, not luck.\pYou have pressed your advantage well enough to stand before me once more. But this time I will show you the true might of Team Rocket."),MSGBOX_DEFAULT)
+	msgbox(format("{SPEAKER NAME_ARCHER}The Rocket Arcade rewards skill, not luck.\pYou have pressed your advantage well enough to stand before me once more. But this time I will show you the true might of Team Rocket."),MSGBOX_DEFAULT)
 	arcade_getprintfromstreak
 	if (var(VAR_RESULT) == ARCADE_SYMBOL_SILVER)
 	{
@@ -569,11 +569,11 @@ script BattleArcade_Challenge_EventScript_BufferBrainPreBattleText
 	arcade_getprintfromstreak
 	if (var(VAR_RESULT) == ARCADE_SYMBOL_SILVER)
 	{
-		bufferstring(STR_VAR_3,format("Archer: A proper Rocket Operative never leaves victory to chance. Let us see if you can stand against it."))
+		bufferstring(STR_VAR_3,format("{SPEAKER NAME_ARCHER}A proper Rocket Operative never leaves victory to chance. Let us see if you can stand against it."))
 	}
 	else
 	{
-		bufferstring(STR_VAR_3,format("Archer: You have pushed deeper into my house than most. Now pay attention to how a Rocket closes a game."))
+		bufferstring(STR_VAR_3,format("{SPEAKER NAME_ARCHER}You have pushed deeper into my house than most. Now pay attention to how a Rocket closes a game."))
 	}
 }
 
@@ -582,11 +582,11 @@ script BattleArcade_Challenge_EventScript_BrainCongratsText
 	arcade_getprintfromstreak
 	if (var(VAR_RESULT) == ARCADE_SYMBOL_SILVER)
 	{
-		msgbox(format("Archer: Hmph. You read the table correctly and struck when it mattered. Take your winnings."),MSGBOX_DEFAULT)
+		msgbox(format("{SPEAKER NAME_ARCHER}Hmph. You read the table correctly and struck when it mattered. Take your winnings."),MSGBOX_DEFAULT)
 	}
 	else
 	{
-		msgbox(format("Archer: You have taken even the house's best hand. Remember this feeling. It is expensive to chase."),MSGBOX_DEFAULT)
+		msgbox(format("{SPEAKER NAME_ARCHER}You have taken even the house's best hand. Remember this feeling. It is expensive to chase."),MSGBOX_DEFAULT)
 	}
 	closemessage
 }

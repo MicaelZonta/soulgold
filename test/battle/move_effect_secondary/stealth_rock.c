@@ -9,6 +9,7 @@ ASSUMPTIONS
 SINGLE_BATTLE_TEST("Steath Rock: Rock from G-Max Stonesurge are set up before any ability activation")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_DREDNAW, FORM_CHANGE_BATTLE_GIGANTAMAX));
         PLAYER(SPECIES_DREDNAW) { GigantamaxFactor(TRUE); }
         OPPONENT(SPECIES_SKARMORY) { Ability(ABILITY_WEAK_ARMOR); }
     } WHEN {

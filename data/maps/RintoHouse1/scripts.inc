@@ -23,7 +23,7 @@ RintoHouse1_Mom::
 
 
 RintoHouse1_Vullaby_Text_0:
-	.string "Vullaby: Vuvaaaaaa!$"
+	.string "{SPEAKER NAME_VULLABY}Vuvaaaaaa!$"
 
 RintoHouse1_Girl_Text_0:
 	.string "I heard that several Pokémon evolve\n"

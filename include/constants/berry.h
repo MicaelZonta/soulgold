@@ -186,6 +186,30 @@ enum __attribute__((__packed__)) Flavor
 
 // Remainder are unused
 
+// Route 30 Berry Master's garden (.claude/berry_master/REI_DA_COLHEITA.md
+// section 10; BERRY_MASTER_DESIGN.md section 2.2). ALIASES, not renames, of
+// slots 5..15: only Route103/104/123 use them, and those maps are outside the
+// ROM (rom_excluded_groups); none of them is in sNaturalBerriesByTreeId or in
+// EventScript_ResetAllBerries, so they are always the player's soil and never
+// regrow on their own. The garden must stay one contiguous range: FIRST..LAST
+// is what tells a garden plot from a route tree (weeds and pests only here).
+// Laurel's plot sits right after the range, deliberately outside it: it follows
+// the sidequest, not the garden rules.
+#define BERRY_TREE_GARDEN_A1       BERRY_TREE_ROUTE_103_CHERI_1   // 5
+#define BERRY_TREE_GARDEN_A2        BERRY_TREE_ROUTE_103_LEPPA     // 6
+#define BERRY_TREE_GARDEN_A3        BERRY_TREE_ROUTE_103_CHERI_2   // 7
+#define BERRY_TREE_GARDEN_A4        BERRY_TREE_ROUTE_104_CHERI_1   // 8
+#define BERRY_TREE_GARDEN_A5        BERRY_TREE_ROUTE_104_SOIL_2    // 9
+#define BERRY_TREE_GARDEN_A6        BERRY_TREE_ROUTE_104_LEPPA     // 10
+#define BERRY_TREE_GARDEN_B1        BERRY_TREE_ROUTE_104_ORAN_2    // 11
+#define BERRY_TREE_GARDEN_B2        BERRY_TREE_ROUTE_104_SOIL_3    // 12
+#define BERRY_TREE_GARDEN_B3        BERRY_TREE_ROUTE_104_PECHA     // 13
+#define BERRY_TREE_GARDEN_B4        BERRY_TREE_ROUTE_123_QUALOT_1  // 14
+#define BERRY_TREE_GARDEN_FIRST     BERRY_TREE_GARDEN_A1
+#define BERRY_TREE_GARDEN_LAST      BERRY_TREE_GARDEN_B4
+// Laurel's plot: the old Oran tree at (23,38) (BERRY_TREE_ORAN_2) moves here.
+#define BERRY_TREE_KINGS_PLOT       BERRY_TREE_ROUTE_123_POMEG_1   // 15
+
 #define BERRY_TREES_COUNT 128
 
 #endif // GUARD_CONSTANTS_BERRY_H

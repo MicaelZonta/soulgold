@@ -161,45 +161,45 @@ NationalPark_BugContest_Text_Trash:
 	.string "Nothing here.$"
 
 NationlParkBugContest_Text_EnjoyTheContest:
-	.string "Attendant: Enjoy the contest!$"
+	.string "{SPEAKER NAME_ATTENDANT}Enjoy the contest!$"
 
 NationalParkBugContest_Text_Attendant:
-	.string "Attendant: Would you like to end\n"
+	.string "{SPEAKER NAME_ATTENDANT}Would you like to end\n"
 	.string "the contest?$"
 
 NationalParkBugContest_Text_ContestantBelinda:
-	.string "Belinda: I'm going to win!\n"
+	.string "{SPEAKER NAME_BELINDA}I'm going to win!\n"
 	.string "Don't bother me.$"
 
 NationalParkBugContest_Text_Contestant2A:
-	.string "Ed: My Parasect puts Pokémon to\n"
+	.string "{SPEAKER NAME_ED}My Parasect puts Pokémon to\n"
 	.string "sleep with Spore.$"
 
 NationalParkBugContest_Text_ContestantShaun:
-	.string "Shaun: I'm not concerned about\n"
+	.string "{SPEAKER NAME_SHAUN}I'm not concerned about\n"
 	.string "winning.\p"
 	.string "I'm just looking for rare Pokémon.$"
 
 NationalParkBugContest_Text_Contestant6A:
-	.string "Barry: You should weaken bug\n"
+	.string "{SPEAKER NAME_BARRY}You should weaken bug\n"
 	.string "Pokémon first,\p"
 	.string "then throw a Ball.$"
 
 NationalParkBugContest_Text_Contestant7A:
-	.string "Cindy: I love bug Pokémon.\p"
+	.string "{SPEAKER NAME_CINDY}I love bug Pokémon.\p"
 	.string "I guess you must like them too.$"
 
 NationalParkBugContest_Text_Contestant8A:
-	.string "Josh: I've been collecting bug\n"
+	.string "{SPEAKER NAME_JOSH}I've been collecting bug\n"
 	.string "Pokémon since I was just a baby.\p"
 	.string "There's no way I'm going to lose!$"
 
 NationalParkBugContest_Text_Contestant9A:
-	.string "Samuel: If you've got the time to\n"
+	.string "{SPEAKER NAME_SAMUEL}If you've got the time to\n"
 	.string "chat, go find some bug Pokémon.$"
 
 NationalParkBugContest_Text_Contestant10A:
-	.string "Kipp: I've studied about bug\n"
+	.string "{SPEAKER NAME_KIPP}I've studied about bug\n"
 	.string "Pokémon a lot.\p"
 	.string "I'm going to win for sure.$"
 

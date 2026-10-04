@@ -55,7 +55,7 @@ FallarborTown_Mart_Text_DecidingSkittyEvolve:
 	.string "But it will look so different, too.$"
 
 FallarborTown_Mart_Text_Skitty:
-	.string "Skitty: Miyao?$"
+	.string "{SPEAKER NAME_SKITTY}Miyao?$"
 
 FallarborTown_Mart_Text_SellNuggetIFound:
 	.string "This Nugget I found here…\n"

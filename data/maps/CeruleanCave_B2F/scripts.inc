@@ -79,10 +79,10 @@ NamelessDungeon_Leaf_5:
 
 
 NamelessDungeon_Leaf_Text_0:
-	.string "???: Hmm, Mewtwo should be just ahead...$"
+	.string "{SPEAKER NAME_UNKNOWN}Hmm, Mewtwo should be just ahead...$"
 
 NamelessDungeon_Leaf_Text_1:
-	.string "???: Oh, hello! Who might you be?\p"
+	.string "{SPEAKER NAME_UNKNOWN}Oh, hello! Who might you be?\p"
 	.string "...\p"
 	.string "Oh, you're {PLAYER}? Nice to meet you!\p"
 	.string "I'm Leaf. \p"

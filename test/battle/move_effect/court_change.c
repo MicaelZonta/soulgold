@@ -165,6 +165,7 @@ DOUBLE_BATTLE_TEST("Court Change used by the opponent swaps Mist, Safeguard, Aur
 DOUBLE_BATTLE_TEST("Court Change used by the player swaps G-Max Steelsurge")
 {
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_COPPERAJAH, FORM_CHANGE_BATTLE_GIGANTAMAX));
         PLAYER(SPECIES_COPPERAJAH) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WOBBUFFET);
@@ -190,6 +191,7 @@ DOUBLE_BATTLE_TEST("Court Change used by the player swaps G-Max Vine Lash, G-Max
     PARAMETRIZE { species = SPECIES_CHARIZARD; move = MOVE_EMBER; }
     PARAMETRIZE { species = SPECIES_BLASTOISE; move = MOVE_WATER_GUN; }
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(species, FORM_CHANGE_BATTLE_GIGANTAMAX));
         PLAYER(species) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WOBBUFFET);

@@ -17,16 +17,16 @@ Conferido no código em 25/09/2026.
 
 | | Espécies |
 |---|---|
-| ✅ Tem método | **96** |
+| ✅ Tem método | **99** |
 | ⚠️ Só em mapa fora da ROM | **1** |
 | 🚫 Só batalha sem captura | **9** |
-| ❌ Nenhum método | **22** |
+| ❌ Nenhum método | **19** |
 | **Total** | **128** |
 
 | Categoria | Total | ✅ | Sem método (⚠️ + 🚫 + ❌) |
 |---|---|---|---|
-| Lendário restrito | 27 | 16 | 11 |
-| Sub-lendário | 47 | 39 | 8 |
+| Lendário restrito | 27 | 17 | 10 |
+| Sub-lendário | 47 | 41 | 6 |
 | Mítico | 23 | 19 | 4 |
 | Ultra Beast | 11 | 2 | 9 |
 | Paradoxo | 20 | 20 | 0 |
@@ -216,9 +216,6 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Eternatus** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Regieleki** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
 | **Regidrago** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
-| **Glastrier** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
-| **Spectrier** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
-| **Calyrex** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Wo-Chien** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
 | **Ting-Lu** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
 | **Okidogi** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
@@ -248,11 +245,14 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Necrozma** | presente (givemon) — `UltraSpaceArena` Lv75 | NECROZMA, NECROZMA_DUSK_MANE, NECROZMA_DAWN_WINGS, NECROZMA_ULTRA |
 | **Koraidon** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
 | **Miraidon** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
+| **Calyrex** | encontro estático (seteventmon) — `Route30`, Ato 7 do Berry Master Lv65 (03/10/2026) | CALYREX, CALYREX_ICE, CALYREX_SHADOW |
 
 ### Sub-lendário
 
 | Espécie | Como obter | Formas no engine |
 |---|---|---|
+| **Glastrier** | encontro estático (seteventmon) — `Greenfield_Mansion` Lv60, caminho branco do Berry Master (03/10/2026). **Só um dos corcéis por save:** o não escolhido continua só no Nexus (`GardenSteed_NexusEligible`) |  |
+| **Spectrier** | encontro estático (seteventmon) — `BrassTowerMemory_Roof` Lv60, caminho escuro do Berry Master (03/10/2026). Mesma regra do Glastrier |  |
 | **Silvally** | evolui de Type Null (amizade) |  |
 | **Ogerpon** | boss (bosslegendaryencounter) — `KitakamiMountainEnclave` Lv55 |  |
 | **Articuno** | encontro estático (seteventmon) — `SeafoamIslands_B1F` Lv50; encontro estático — `SnowtopMountainOutside` Lv50 |  |

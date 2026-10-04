@@ -35,6 +35,7 @@ jogo). Precisa de Pillow (no WSL: Python do Windows).
 """
 import os
 import sys
+from collections import Counter
 from PIL import Image, ImageDraw
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -143,6 +144,41 @@ CHARS = {
     'Volkner': dict(f='Volkner/Sprite - desconhecido.png', k=1, cell=(23, 32), x0=0, y0=0, px=23, py=32, frames=PLAT,
                     cred='desconhecido', atual=SP + 'volkner.png'),
     'Zinnia': dict(f='Zinnia/Sprite - Aveontrainer.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, cred='Aveontrainer'),
+    # lote de 03/10/2026: folhas 4x4 (baixo, esq, dir, cima). DiegoWT = 32x32 em 2x (como a Lusamine);
+    # Aveontrainer/Miused/Lolw3e932 = 32x48 encostados (como a Zinnia); CyberStryke7 em 4x: k=4, o nativo
+    # ja e o boneco 16x20 (lido a 2x e reduzido apagando linhas, saiu 'horrivel').
+    # metodo='bloco': chibis que o autor achou deformadas com o metodo padrao (03/10).
+    # As folhas 128x192 (Aveontrainer, Miused, Lolw3e932) sao 2x (99% dos pares de pixel iguais;
+    # escala_detectada da 1 por causa de poucos pixels soltos): Dawn e Green com k=2 tem o
+    # boneco nativo de 16 px, sem reducao (o olho da Dawn e o rosto da Green quebravam).
+    # Avery, Mustard, Klara, Rosa e Skyla ja foram escolhidos pelo autor: ficam como estao.
+    'Alister': dict(f='Alister/Sprite - DiegoWT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='DiegoWT'),
+    'Avery': dict(f='Avery/Sprite - Aveontrainer.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, cred='Aveontrainer'),
+    # segunda arte do Avery (03/10/2026): folha de 9 quadros ampliada por IA, bonecos a cada
+    # 232 px a partir de x=41 (nao na grade de 241); cada pixel da arte ~7,5 px -> celula 31.
+    'Avery (IA)': dict(pasta='Avery', f='Avery/Sprite - AI.png', k=1, crop=(41, 130, 2129, 594), reamostrar=(232, 31),
+                       cell=(31, 62), x0=0, y0=0, px=31, py=62, frames=FILA[:9], cred='AI'),
+    'Avery (IA bloco)': dict(pasta='Avery', f='Avery/Sprite - AI.png', k=1, crop=(41, 130, 2129, 594), reamostrar=(232, 31),
+                       cell=(31, 62), x0=0, y0=0, px=31, py=62, frames=FILA[:9], metodo='bloco', olho_lum=15, cred='AI'),
+    'Bea': dict(f='Bea/Sprite - DiegoWT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='DiegoWT'),
+    'Dawn': dict(f='Dawn/Sprite - Aveontrainer.png', k=2, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='Aveontrainer'),
+    'Green': dict(f='Green/Sprite - Miused.png', k=2, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='Miused'),
+    'Klara': dict(f='Klara/Sprite - Aveontrainer.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, metodo='bloco', cred='Aveontrainer'),
+    'Lenora': dict(f='Lenora/Sprite - DiegoWT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='DiegoWT'),
+    # folha de 9 quadros ampliada por IA (~7,5 px por pixel, sem grade fixa): celulas de 241 px -> 32;
+    # boneco nativo 29x34 (chibi de verdade, nao 2x): metodo padrao saiu 'deformada' (autor, 03/10)
+    'Molly adulta': dict(f='Molly adulta/Sprite - AI.png', k=1, crop=(0, 150, 2169, 632), reamostrar=(241, 32),
+                         cell=(32, 64), x0=15, y0=0, px=31, py=64, frames=FILA[:9], metodo='bloco', olho_lum=15, cred='AI'),  # bonecos a cada 31 px, nao 32
+    'Molly crianca': dict(f='Molly crianca/Sprite - AI.png', k=1, cell=(32, 32), x0=0, y0=0, px=32, py=32, grade=True, frames=FILA[:9], cred='AI'),
+    'Mustard': dict(f='Mustard/Sprite - Lolw3e932.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, cred='Lolw3e932'),
+    'Nemona': dict(f='Nemona/Sprite - DiegoWT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='DiegoWT'),
+    'Nessa': dict(f='Nessa/Sprite - DiegoWT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='DiegoWT'),
+    'Peonia': dict(f='Peonia/Sprite - CyberStryke7.png', k=4, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='CyberStryke7'),
+    'Peony': dict(f='Peony/Sprite - DiegoWT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='DiegoWT'),
+    'Rosa': dict(f='Rosa/Sprite - Aveontrainer.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, metodo='bloco', cred='Aveontrainer'),
+    # segunda arte da Shelly (a Swizzler121 16x19 e forma pronta: esta e so alternativa)
+    'Shelly DiegoWT': dict(pasta='Shelly', f='Shelly/Sprite - DiegoWT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='DiegoWT'),
+    'Skyla': dict(f='Skyla/Sprite - Miused.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, metodo='bloco', cred='Miused'),
 }
 GRUPOS = [0, 1, 2, 0, 0, 1, 1, 2, 2, 3, 3, 3]
 
@@ -299,8 +335,9 @@ def frames_nativos(c, big=False):
     if 'reamostrar' in c:
         im = desfazer_ampliacao_ia(im, *c['reamostrar'])
     e = 2 if big else 1
-    if c['k'] == 2 and not big:
-        im = mediana2(im) if c.get('jpg') else im.resize((im.width // 2, im.height // 2), Image.NEAREST)
+    f = c['k'] // e      # folha em 4x (Peonia): nativo = /4, arte 2x = /2
+    if f > 1:
+        im = mediana2(im) if c.get('jpg') else im.resize((im.width // f, im.height // f), Image.NEAREST)
     im = sem_fundo(im, c.get('jpg'), c.get('bgs', ()))
     cw, ch = c['cell'][0] * e, c['cell'][1] * e
     comps = componentes(im)
@@ -694,6 +731,69 @@ def reduzir_simples(canv, grupos, W, H):
     return res
 
 
+
+def reduzir_bloco(canv, grupos, W, H, olho_lum=None):
+    """arte chibi que encolhe quase pela metade (folhas 32x48 da Aveontrainer e da Miused,
+    boneco de 28-32 px; lote de 03/10/2026): apagar linha/coluna some com metade dos tracos
+    de 1 px e o autor achou Dawn, Green, Klara, Rosa e Skyla deformadas. Aqui cada pixel
+    novo e um bloco da arte: transparente se o bloco e mais vazio que cheio; pixel de olho
+    (OLHO) ganha, o mais escuro, para o olho nunca perder o preto; senao a cor mais comum
+    do bloco (empate: a mais escura). CHARS metodo='bloco'."""
+    L, T, R, B = uniao(canv)
+    w, h = R - L, B - T
+    res = []
+    for fi, q in enumerate(canv):
+        m = [[q.getpixel((x, y)) for x in range(L, R)] for y in range(T, B)]
+        marcar_olhos([m])
+        if olho_lum is not None:   # pupila mais escura que o contorno, que marcar_olhos nao acha (Molly adulta)
+            for row in m:
+                for x, p in enumerate(row):
+                    if p[3] >= 128 and lum(p) < olho_lum:
+                        row[x] = p[:3] + (OLHO,)
+        out = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        pupila = set()
+        for j in range(H):
+            y0 = j * h // H; y1 = max(y0 + 1, (j + 1) * h // H)
+            for i in range(W):
+                x0 = i * w // W; x1 = max(x0 + 1, (i + 1) * w // W)
+                op = [m[y][x] for y in range(y0, y1) for x in range(x0, x1) if m[y][x][3] >= 128]
+                if 2 * len(op) < (y1 - y0) * (x1 - x0):
+                    continue
+                olho = [p for p in op if p[3] == OLHO]
+                if olho:
+                    c = min(olho, key=lum)
+                    pupila.add((i, j))
+                else:
+                    cnt = Counter(p[:3] for p in op)
+                    c = max(cnt, key=lambda k: (cnt[k], -lum(k)))
+                out.putpixel((i, j), c[:3] + (255,))
+        if olho_lum is not None and W <= 18 and grupos[fi] == 0:
+            afinar_pupilas(out, pupila)
+        res.append(out)
+    return res
+
+
+def afinar_pupilas(out, pupila):
+    """quadro de frente: olho de 2 px de largura vira 1 (regra do elenco, 30/09), tirando a
+    coluna de dentro, a do lado do nariz, nesta linha e na de baixo (a iris), com a cor da
+    pele vizinha. Sem isso a Molly adulta a 16-18 px ficava com os olhos colados numa
+    faixa so (autor, 03/10)."""
+    px = out.load()
+    bb = out.getbbox()
+    cx = (bb[0] + bb[2] - 1) / 2
+    for (i, j) in sorted(pupila):
+        viz = (i + 1, j) if i < cx else (i - 1, j)
+        if viz not in pupila:
+            continue
+        dentro = viz if abs(viz[0] - cx) < abs(i - cx) else (i, j)
+        fora = (i, j) if dentro == viz else viz
+        pele_x = dentro[0] + (1 if dentro[0] > fora[0] else -1)
+        for y in (j, j + 1):
+            if 0 <= pele_x < out.width and y < out.height:
+                px[dentro[0], y] = px[pele_x, y]
+        pupila.discard(dentro)
+
+
 def folha(frames, fw, fh=32, pes=30):
     """frames todos com mesmo tamanho (caixa comum). Centraliza e poe pes na linha `pes`."""
     w, h = frames[0].size
@@ -759,7 +859,7 @@ def preparar(nome):
         canv = limpar_jpg(canv)
     L, T, R, B = uniao(canv)
     p = dict(c=c, grupos=grupos, canv=canv, w0=R - L, h0=B - T, canv2=None)
-    if c['k'] == 2 and not c.get('jpg'):
+    if c['k'] >= 2 and not c.get('jpg'):
         o2, g2, r2 = frames_nativos(c, big=True)
         p['canv2'] = montar(o2, g2, r2, 96, 80)
         L, T, R, B = uniao(p['canv2'])
@@ -792,7 +892,10 @@ def gerar(p, W, fw=None, H=None):
                 origem = ''
             if H and H != Hp:
                 origem = (origem + '  altura do elenco' if Ha == altura_elenco(W, Hp) else origem + f'  altura {H}').strip()
-            fr = (reduzir_simples if p['c'].get('metodo') == 'simples' else reduzir)(canv, p['grupos'], W, Ha)
+            if p['c'].get('metodo') == 'bloco':
+                fr = reduzir_bloco(canv, p['grupos'], W, Ha, p['c'].get('olho_lum'))
+            else:
+                fr = (reduzir_simples if p['c'].get('metodo') == 'simples' else reduzir)(canv, p['grupos'], W, Ha)
             fw = fw or (16 if W <= 16 else 32)
             res, fus = G.quantizar(pre_quant(folha(fr, fw), p['c'].get('pre_cores', 40)), 15)
             return Ha, fw, tirar_fiapos(res, fw), origem
@@ -831,7 +934,7 @@ def cmd_propostas(nomes):
         p = preparar(nome)
         print(f"{nome}: nativo {p['w0']}x{p['h0']}" + (f", arte 2x {p['w2']}x{p['h2']}" if p['canv2'] else ''))
         feitos = []
-        for W in range(16, 33):
+        for W in range(min(16, p['w0']), 33):   # boneco nativo mais estreito que 16 (Dawn, 14x20) entra sem reduzir
             g = gerar(p, W)
             if not g:
                 break

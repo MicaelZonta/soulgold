@@ -18,7 +18,7 @@ DiglettsCave_EntranceNorth_EventScript_Brock::
     end
 
 DiglettsCave_EntranceNorth_Text_Brock:
-    .string "Brock: Small spaces surrounded by\n"
+    .string "{SPEAKER NAME_BROCK}Small spaces surrounded by\n"
     .string "rocks make you feel peaceful,\l"
     .string "don't you agree?\p"
 	.string "If you want another match, I'll be\n"

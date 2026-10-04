@@ -80,4 +80,4 @@ FoggyForest_Girl_Text_0:
 	.string "here, la la la!$"
 
 FoggyForest_Phantump_Text_0:
-	.string "Phantump: Phoo!$"
+	.string "{SPEAKER NAME_PHANTUMP}Phoo!$"

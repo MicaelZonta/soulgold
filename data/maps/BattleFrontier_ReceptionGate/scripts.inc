@@ -324,7 +324,7 @@ BattleFrontier_ReceptionGate_Text_IfItIsntPlayerYouCame:
 	.string "A new trainer, huh?$"
 
 BattleFrontier_ReceptionGate_Text_OhMrScottGoodDay:
-	.string "Guide: Oh! Mr. Scott, sir!\n"
+	.string "{SPEAKER NAME_GUIDE}Oh! Mr. Scott, sir!\n"
 	.string "Good day to you, sir!$"
 
 BattleFrontier_ReceptionGate_Text_ScottGreatToSeeYouHere:

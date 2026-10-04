@@ -262,7 +262,7 @@ SaffronCity_FightingDojoVIP_EventScript_Scizor::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Scizor:
-	.string "Scizor: Scii-zor!$"
+	.string "{SPEAKER NAME_SCIZOR}Scii-zor!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Miltank::
 	lock
@@ -276,7 +276,7 @@ SaffronCity_FightingDojoVIP_EventScript_Miltank::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Miltank:
-	.string "Miltank: MooOOO!$"
+	.string "{SPEAKER NAME_MILTANK}MooOOO!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Poliwhirl::
 	lock
@@ -290,7 +290,7 @@ SaffronCity_FightingDojoVIP_EventScript_Poliwhirl::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Poliwhirl:
-	.string "Poliwhirl: Whirl-whirl!$"
+	.string "{SPEAKER NAME_POLIWHIRL}Whirl-whirl!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Dewgong::
 	lock
@@ -304,7 +304,7 @@ SaffronCity_FightingDojoVIP_EventScript_Dewgong::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Dewgong:
-	.string "Dewgong: Goooooong!$"
+	.string "{SPEAKER NAME_DEWGONG}Goooooong!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Steelix::
 	lock
@@ -318,7 +318,7 @@ SaffronCity_FightingDojoVIP_EventScript_Steelix::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Steelix:
-	.string "Steelix: GraaAAANk!$"
+	.string "{SPEAKER NAME_STEELIX}GraaAAANk!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Kingdra::
 	lock
@@ -332,7 +332,7 @@ SaffronCity_FightingDojoVIP_EventScript_Kingdra::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Kingdra:
-	.string "Kingdra: Draaa...$"
+	.string "{SPEAKER NAME_KINGDRA}Draaa...$"
 
 SaffronCity_FightingDojoVIP_EventScript_Onix::
 	lock
@@ -346,7 +346,7 @@ SaffronCity_FightingDojoVIP_EventScript_Onix::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Onix:
-	.string "Onix: Oooonix!$"
+	.string "{SPEAKER NAME_ONIX}Oooonix!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Starmie::
 	lock
@@ -360,7 +360,7 @@ SaffronCity_FightingDojoVIP_EventScript_Starmie::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Starmie:
-	.string "Starmie: Hyaaa!$"
+	.string "{SPEAKER NAME_STARMIE}Hyaaa!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Victreebel::
 	lock
@@ -374,7 +374,7 @@ SaffronCity_FightingDojoVIP_EventScript_Victreebel::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Victreebel:
-	.string "Victreebel: Vreeee!$"
+	.string "{SPEAKER NAME_VICTREEBEL}Vreeee!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Muk::
 	lock
@@ -388,7 +388,7 @@ SaffronCity_FightingDojoVIP_EventScript_Muk::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Muk:
-	.string "Muk: Muuuk...$"
+	.string "{SPEAKER NAME_MUK}Muuuk...$"
 
 SaffronCity_FightingDojoVIP_EventScript_Kadabra::
 	lock
@@ -402,7 +402,7 @@ SaffronCity_FightingDojoVIP_EventScript_Kadabra::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Kadabra:
-	.string "Kadabra: Kadabra!$"
+	.string "{SPEAKER NAME_KADABRA}Kadabra!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Magmar::
 	lock
@@ -416,7 +416,7 @@ SaffronCity_FightingDojoVIP_EventScript_Magmar::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Magmar:
-	.string "Magmar: Magmaaaar!$"
+	.string "{SPEAKER NAME_MAGMAR}Magmaaaar!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Raichu::
 	lock
@@ -430,7 +430,7 @@ SaffronCity_FightingDojoVIP_EventScript_Raichu::
 	release
 	end
 SaffronCity_FightingDojoVIP_Text_Raichu:
-	.string "Raichu: Rai-Chu!$"
+	.string "{SPEAKER NAME_RAICHU}Rai-Chu!$"
 
 SaffronCity_FightingDojoVIP_EventScript_Machamp::
 	lock
@@ -1783,7 +1783,7 @@ BattleTower_Outside_ExchangeServiceCorner_Text_ScopeLensDesc::
 
 
 SaffronCity_FightingDojoVIP_Text_Machamp:
-	.string "Machamp: Maa-champ!$"
+	.string "{SPEAKER NAME_MACHAMP}Maa-champ!$"
 
 SaffronCity_FightingDojo_EventScript_Chased::
 	msgbox SaffronCity_FightingDojoVIP_Text_Chased, MSGBOX_NPC
@@ -1800,7 +1800,7 @@ SaffronCity_FightingDojoVIP_Text_Statue:
 	.string "Fighting Dojo Vip Lounge$"
 
 SaffronCity_FightingDojoVIP_Text_Falkner_Rematch:
-	.string "Congratulations on defeating\n"
+	.string "{SPEAKER NAME_FALKNER}Congratulations on defeating\n"
 	.string "the Elite 4!\p"
 	.string "I've been training my\n"
 	.string "Flying-type Pokémon even harder.\p"
@@ -1813,7 +1813,7 @@ SaffronCity_FightingDojoVIP_Text_Falkner_RematchDefeat:
 	.string "become the greatest bird master!$"
 
 SaffronCity_FightingDojoVIP_Text_Bugsy_Rematch:
-	.string "Wow, you're the Johto Champion\n"
+	.string "{SPEAKER NAME_BUGSY}Wow, you're the Johto Champion\n"
 	.string "now!\p"
 	.string "Your skills are truly impressive!\p"
 	.string "I've been busy with my research.\p"
@@ -1828,7 +1828,7 @@ SaffronCity_FightingDojoVIP_Text_Bugsy_RematchDefeat:
 	.string "complete…$"
 
 SaffronCity_FightingDojoVIP_Text_Whitney_Rematch:
-	.string "Hi! It's you!\p"
+	.string "{SPEAKER NAME_WHITNEY}Hi! It's you!\p"
 	.string "Wow, Johto Champion now?\p"
 	.string "You really are amazing!\p"
 	.string "I want to see how strong you are.\p"
@@ -1840,7 +1840,7 @@ SaffronCity_FightingDojoVIP_Text_Whitney_RematchDefeat:
 	.string "…Snivel, hic… …You meanie!$"
 
 SaffronCity_FightingDojoVIP_Text_Morty_Rematch:
-	.string "Ah, the Johto Champion! Good of\n"
+	.string "{SPEAKER NAME_MORTY}Ah, the Johto Champion! Good of\n"
 	.string "you to come.\p"
 	.string "You've shown your strength and\n"
 	.string "skill, but have you improved\l"
@@ -1858,7 +1858,7 @@ SaffronCity_FightingDojoVIP_Text_Morty_RematchDefeat:
 	.string "I envy you for that…$"
 
 SaffronCity_FightingDojoVIP_Text_Chuck_Rematch:
-	.string "Wahahah! Johto Champion!\p"
+	.string "{SPEAKER NAME_CHUCK}Wahahah! Johto Champion!\p"
 	.string "You've come back for more!\p"
 	.string "I see your skills have improved!\p"
 	.string "Ready to see who's stronger?$"
@@ -1867,7 +1867,7 @@ SaffronCity_FightingDojoVIP_Text_Chuck_RematchDefeat:
 	.string "Wha? Huh? I lost? Again?$"
 
 SaffronCity_FightingDojoVIP_Text_Jasmine_Rematch:
-	.string "…Congratulations, Johto\n"
+	.string "{SPEAKER NAME_JASMINE}…Congratulations, Johto\n"
 	.string "Champion.\p"
 	.string "You have become so strong…\p"
 	.string "I wonder if I have improved.\p"
@@ -1880,7 +1880,7 @@ SaffronCity_FightingDojoVIP_Text_Jasmine_RematchDefeat:
 	.string "in both skill and kindness.$"
 
 SaffronCity_FightingDojoVIP_Text_Pryce_Rematch:
-	.string "Ah, Johto Champion!\p"
+	.string "{SPEAKER NAME_PRYCE}Ah, Johto Champion!\p"
 	.string "Your skills are indeed\n"
 	.string "remarkable.\p"
 	.string "I am impressed.\p"
@@ -1898,7 +1898,7 @@ SaffronCity_FightingDojoVIP_Text_Pryce_RematchDefeat:
 	.string "obstacles.$"
 
 SaffronCity_FightingDojoVIP_Text_Clair_Rematch:
-	.string "You did it, huh?\p"
+	.string "{SPEAKER NAME_CLAIR}You did it, huh?\p"
 	.string "You are now the Johto Champ.\p"
 	.string "You've proven your strength but\n"
 	.string "can you handle me again?\p"
@@ -1914,7 +1914,7 @@ SaffronCity_FightingDojoVIP_Text_Clair_RematchDefeat:
 	.string "be some mistake…$"
 
 SaffronCity_FightingDojoVIP_Text_Brock_Rematch:
-	.string "Brock: Hey there, {PLAYER}!\p"
+	.string "{SPEAKER NAME_BROCK}Hey there, {PLAYER}!\p"
 	.string "I heard you are now the Kanto\n"
 	.string "Champion.\p"
 	.string "That's incredible!\p"
@@ -1926,7 +1926,7 @@ SaffronCity_FightingDojoVIP_Text_Brock_RematchDefeat:
 	.string "overcame my rock-hard defense…$"
 
 SaffronCity_FightingDojoVIP_Text_Misty_Rematch:
-	.string "Misty: Wow, you're the Kanto\n"
+	.string "{SPEAKER NAME_MISTY}Wow, you're the Kanto\n"
 	.string "Champion now!\p"
 	.string "That's amazing! You've come a\n"
 	.string "long way, {PLAYER}.\p"
@@ -1937,7 +1937,7 @@ SaffronCity_FightingDojoVIP_Text_Misty_RematchDefeat:
 	.string "Misty: You really are good…$"
 
 SaffronCity_FightingDojoVIP_Text_Surge_Rematch:
-	.string "Surge: So, you're now Kanto\n"
+	.string "{SPEAKER NAME_LT_SURGE}So, you're now Kanto\n"
 	.string "Champion!\p"
 	.string "Impressive work, kid! But don't\n"
 	.string "think I'm done!\p"
@@ -1948,7 +1948,7 @@ SaffronCity_FightingDojoVIP_Text_Surge_RematchDefeat:
 	.string "as strong!$"
 
 SaffronCity_FightingDojoVIP_Text_Erika_Rematch:
-	.string "Erika: Oh, hello.\p"
+	.string "{SPEAKER NAME_ERIKA}Oh, hello.\p"
 	.string "What a surprise, Champion!\p"
 	.string "It's so lovely to see you again.\p"
 	.string "Your journey must have been so\n"
@@ -1963,7 +1963,7 @@ SaffronCity_FightingDojoVIP_Text_Erika_RematchDefeat:
 	.string "trainers spurs me to do better…$"
 
 SaffronCity_FightingDojoVIP_Text_Sabrina_Rematch:
-	.string "Sabrina: Ah, the Champion.\p"
+	.string "{SPEAKER NAME_SABRINA}Ah, the Champion.\p"
 	.string "I sensed your return.\p"
 	.string "Your power has grown immensely.\p"
 	.string "Even now, I feel your aura.\p"
@@ -1975,7 +1975,7 @@ SaffronCity_FightingDojoVIP_Text_Sabrina_RematchDefeat:
 	.string "psychic power…$"
 
 SaffronCity_FightingDojoVIP_Text_Janine_Rematch:
-	.string "Fufufufu…\p"
+	.string "{SPEAKER NAME_JANINE}Fufufufu…\p"
 	.string "Wow, you did it!\p"
 	.string "You're the Champion now!\p"
 	.string "I'm so proud of you! But don't\n"
@@ -1988,7 +1988,7 @@ SaffronCity_FightingDojoVIP_Text_Janine_RematchDefeat:
 	.string "You definitely won…$"
 
 SaffronCity_FightingDojoVIP_Text_Blaine_Rematch:
-	.string "Blaine: Whoa!\p"
+	.string "{SPEAKER NAME_BLAINE}Whoa!\p"
 	.string "I see you've become the Kanto\n"
 	.string "Champion!\p"
 	.string "That's blazing!\p"
@@ -2003,7 +2003,7 @@ SaffronCity_FightingDojoVIP_Text_Blaine_RematchDefeat:
 	.string "defenses.$"
 
 SaffronCity_FightingDojoVIP_Text_Blue_Rematch:
-	.string "Blue: Well, well. Champion!\p"
+	.string "{SPEAKER NAME_BLUE}Well, well. Champion!\p"
 	.string "Looks like you've come a long way.\p"
 	.string "I used to have that title too,\n"
 	.string "you know. But I won't go easy.\p"

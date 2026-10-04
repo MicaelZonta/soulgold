@@ -4585,7 +4585,7 @@
       "id": "LAYOUT_WORLD_HUB",
       "name": "WorldHub_Layout",
       "width": 20,
-      "height": 50,
+      "height": 58,
       "primary_tileset": "gTileset_Johto_South",
       "secondary_tileset": "gTileset_Cave_Ice",
       "border_filepath": "data/layouts/WorldHub/border.bin",
@@ -10356,6 +10356,56 @@
       "secondary_tileset": "gTileset_UltraSpaceArena",
       "border_filepath": "data/layouts/UltraSpaceArena/border.bin",
       "blockdata_filepath": "data/layouts/UltraSpaceArena/map.bin"
+    },
+    {
+      "id": "LAYOUT_GREENFIELD",
+      "name": "Greenfield_Layout",
+      "width": 30,
+      "height": 39,
+      "primary_tileset": "gTileset_Johto_General",
+      "secondary_tileset": "gTileset_Greenfield",
+      "border_filepath": "data/layouts/Greenfield/border.bin",
+      "blockdata_filepath": "data/layouts/Greenfield/map.bin"
+    },
+    {
+      "id": "LAYOUT_GREENFIELD_MANSION",
+      "name": "Greenfield_Mansion_Layout",
+      "width": 26,
+      "height": 23,
+      "primary_tileset": "gTileset_inn",
+      "secondary_tileset": "gTileset_HaleMansion",
+      "border_filepath": "data/layouts/Greenfield_Mansion/border.bin",
+      "blockdata_filepath": "data/layouts/Greenfield_Mansion/map.bin"
+    },
+    {
+      "id": "LAYOUT_BRASS_TOWER_MEMORY_1F",
+      "name": "BrassTowerMemory_1F_Layout",
+      "width": 27,
+      "height": 25,
+      "primary_tileset": "gTileset_Johto_Building",
+      "secondary_tileset": "gTileset_BurnedTower",
+      "border_filepath": "data/layouts/BrassTowerMemory_1F/border.bin",
+      "blockdata_filepath": "data/layouts/BrassTowerMemory_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GREENFIELD_AFTER",
+      "name": "GreenfieldAfter_Layout",
+      "width": 30,
+      "height": 39,
+      "primary_tileset": "gTileset_Johto_General",
+      "secondary_tileset": "gTileset_NewBarkTown",
+      "border_filepath": "data/layouts/GreenfieldAfter/border.bin",
+      "blockdata_filepath": "data/layouts/GreenfieldAfter/map.bin"
+    },
+    {
+      "id": "LAYOUT_GREENFIELD_MANSION_AFTER",
+      "name": "GreenfieldMansionAfter_Layout",
+      "width": 26,
+      "height": 23,
+      "primary_tileset": "gTileset_inn",
+      "secondary_tileset": "gTileset_Inn",
+      "border_filepath": "data/layouts/GreenfieldMansionAfter/border.bin",
+      "blockdata_filepath": "data/layouts/GreenfieldMansionAfter/map.bin"
     }
   ]
 }

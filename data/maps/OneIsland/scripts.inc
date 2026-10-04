@@ -32,7 +32,7 @@ OneIsland_EventScript_PokemonNetCenterSign::
 	end
 
 OneIsland_Text_BillLetsGoSeeCelio::
-	.string "BILL: Here we are!\n"
+	.string "{SPEAKER NAME_BILL}Here we are!\n"
 	.string "This is ONE ISLAND.\p"
 	.string "There are several islands around\n"
 	.string "here, and this is one of them.\p"

@@ -62,7 +62,7 @@ EverGrandeCity_DrakesRoom_EventScript_Defeated::
 	end
 
 EverGrandeCity_DrakesRoom_Text_IntroSpeech:
-	.string "I am the last of the Pokémon League\n"
+	.string "{SPEAKER NAME_DRAKE}I am the last of the Pokémon League\n"
 	.string "Elite Four, Drake the Dragon master!\p"
 	.string "In their natural state, Pokémon are\n"
 	.string "wild living things. They are free.\p"
@@ -78,7 +78,7 @@ EverGrandeCity_DrakesRoom_Text_Defeat:
 	.string "Superb, it should be said.$"
 
 EverGrandeCity_DrakesRoom_Text_PostBattleSpeech:
-	.string "You deserve every credit for coming\n"
+	.string "{SPEAKER NAME_DRAKE}You deserve every credit for coming\n"
 	.string "this far as a Trainer of Pokémon.\p"
 	.string "You do seem to know what is needed.\p"
 	.string "Yes, what a Trainer needs is a\n"

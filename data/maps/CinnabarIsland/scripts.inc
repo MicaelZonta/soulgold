@@ -30,7 +30,7 @@ CinnabarIsland_EventScript_Blaine::
     end
 
 CinnabarIsland_Text_Blaine:
-    .string "Blaine: I'll never give up\n"
+    .string "{SPEAKER NAME_BLAINE}I'll never give up\n"
 	.string "until the day I've rebuilt\l"
 	.string "Cinnabar Gym!\p"
 	.string "I'll be at the Fighting Dojo\n"
@@ -58,7 +58,7 @@ CinnabarIsland_EventScript_BlueActive::
 
 
 CinnabarIsland_Text_BlueBefore:
-	.string "Who are you?\p"
+	.string "{SPEAKER NAME_BLUE}Who are you?\p"
 	.string "Well, it's plain to see that you're\n"
 	.string "a trainer…\p"
 	.string "My name's Blue.\p"
@@ -85,7 +85,7 @@ CinnabarIsland_Text_BlueBefore:
 	.string "I'll take you on then.$"
 
 CinnabarIsland_Text_Blue:
-	.string "Who are you?\p"
+	.string "{SPEAKER NAME_BLUE}Who are you?\p"
 	.string "Well, it's plain to see that you're\n"
 	.string "a trainer…\p"
 	.string "My name's Blue.\p"

@@ -160,6 +160,11 @@
 // gTileset_CeruleanCity
 #define METATILE_CeruleanCity_Cerulean  0x418
 
+// gTileset_CherrygroveCity
+// SoulGold: watered Berry soil (metatile 46 of Johto_General with secondary
+// palette 7). Swapped in and out by BerryTree_UpdateSoilTile (src/berry.c).
+#define METATILE_CherrygroveCity_SoilWet                 0x4C8
+
 // gTileset_Contest
 #define METATILE_Contest_CounterFlap_Bottom  0x4D9
 #define METATILE_Contest_CounterFlap_Top     0x4D1

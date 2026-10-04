@@ -3,6 +3,7 @@
 #include "text.h"
 #include "strings.h"
 #include "union_room_chat.h"
+#include "constants/speaker_names.h"
 #include "constants/flags.h"
 #include "event_data.h"
 
@@ -735,10 +736,10 @@ u8 GetExtCtrlCodeLength(u8 code)
         [EXT_CTRL_CODE_ENG]                    = 1,
         [EXT_CTRL_CODE_PAUSE_MUSIC]            = 1,
         [EXT_CTRL_CODE_RESUME_MUSIC]           = 1,
-        // O codigo carrega 1 byte de argumento (o indice em gSpeakerNamesTable),
-        // igual a EXT_CTRL_CODE_COLOR. Com 1 aqui, SkipExtCtrlCode parava em
-        // cima do argumento e lia o indice como se fosse texto.
-        [EXT_CTRL_CODE_SPEAKER]                = 2,
+        // O codigo carrega SPEAKER_ARG_BYTES bytes de argumento (o indice em
+        // gSpeakerNamesTable, ver GetSpeakerNameFromArg). Contar a menos aqui
+        // faz SkipExtCtrlCode parar em cima do argumento e le-lo como texto.
+        [EXT_CTRL_CODE_SPEAKER]                = 1 + SPEAKER_ARG_BYTES,
         [EXT_CTRL_CODE_ACCENT]                 = 2,
         [EXT_CTRL_CODE_BACKGROUND]             = 2,
         [EXT_CTRL_CODE_TEXT_COLORS]            = 4,

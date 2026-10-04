@@ -29,7 +29,7 @@ ReceptionGate_EventScript_Janine::
     end
 
 ReceptionGate_Text_Janine:
-    .string "Jaine: I'm on the way to my dad's\n"
+    .string "{SPEAKER NAME_JAINE}I'm on the way to my dad's\n"
     .string "house to give him his lunch.\p"
     .string "The Elite Four has no time to rest\n"
     .string "day or night. It's such hard work,\l"
@@ -582,3 +582,38 @@ ReceptionGate_Text_CosmogLegend:
 	.string "Silvally, look. We weren't the\n"
 	.string "only ones who changed.$"
 
+
+@ Easter egg (author, 30/09/2026, bug/B07): a crack in the west wall of the
+@ gate. Before the League it is just a draft; after the Hall of Fame the player
+@ can squeeze through to Route 22 (warp 0, the door at (12,9)). The Route 22
+@ door lands here, on warp 4 at (9,9), right beside the crack. Placeholder
+@ until the real Route 22 connection is designed.
+ReceptionGate_EventScript_HiddenPassage::
+	lockall
+	goto_if_set FLAG_SYS_GAME_CLEAR, ReceptionGate_EventScript_HiddenPassageOpen
+	msgbox ReceptionGate_Text_HiddenPassageClosed, MSGBOX_DEFAULT
+	releaseall
+	end
+
+ReceptionGate_EventScript_HiddenPassageOpen::
+	msgbox ReceptionGate_Text_HiddenPassageOpen, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, ReceptionGate_EventScript_HiddenPassageStay
+	closemessage
+	warp MAP_ROUTE22, 0
+	waitstate
+	releaseall
+	end
+
+ReceptionGate_EventScript_HiddenPassageStay::
+	closemessage
+	releaseall
+	end
+
+ReceptionGate_Text_HiddenPassageClosed:
+	.string "A faint draft is coming through\n"
+	.string "a crack in the wall…$"
+
+ReceptionGate_Text_HiddenPassageOpen:
+	.string "The crack in the wall has grown\n"
+	.string "wide enough to squeeze through!\p"
+	.string "Squeeze through the wall?$"

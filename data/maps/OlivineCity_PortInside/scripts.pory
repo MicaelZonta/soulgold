@@ -23,7 +23,7 @@ OlivineCity_PortInside_Movement_OakLeave:
 	step_end
 
 OlivineCity_PortInside_Text_Nationaldex1:
-	.string "Prof.Oak: Hello!\n"
+	.string "{SPEAKER NAME_OAK}Hello!\n"
 	.string "You are starting to have the\l"
 	.string "attitude of a Champion, {PLAYER}!\p"
 	.string "It's time for your Pokédex to\n"
@@ -36,7 +36,7 @@ OlivineCity_PortInside_Text_Nationaldex2:
 	.string "{PLAYER}'s Pokédex was upgraded\n"
 	.string "with the National Mode!$"
 OlivineCity_PortInside_Text_Nationaldex3:
-	.string "Prof.Oak: It won't be easy to\n"
+	.string "{SPEAKER NAME_OAK}It won't be easy to\n"
 	.string "complete the National Pokédex...\p"
 	.string "However, I'm sure you will make\n"
 	.string "honest attempt on our behalf!$"
@@ -253,13 +253,13 @@ script OlivinePort_EventScript_SailFaraway {
 script OlivinePortBlaine {
 	lock
 	if (flag(FLAG_CANSAIL_FARAWAYISLAND)) {
-		msgbox("Blaine: I let the sailor know about the
+		msgbox("{SPEAKER NAME_BLAINE}I let the sailor know about the
 				island.")
 		release
 		end
 	}
 	if (!flag(FLAG_TEMP_5)) {
-		msgbox("???: Ahh... Nothing quite like 
+		msgbox("{SPEAKER NAME_UNKNOWN}Ahh... Nothing quite like 
 			a refreshing Soda Pop!")
 		faceplayer
 		msgbox("Oh! Are those all 8 badges of Johto?
@@ -270,23 +270,23 @@ script OlivinePortBlaine {
 				My name is Blaine. I am a Gym Leader in
 				another region.
 				
-				Blaine: Ooh! I have an idea!
+				{SPEAKER NAME_BLAINE}Ooh! I have an idea!
 				
 				Quiz time!")
-		msgbox("Blaine: Are you afraid of the unknown?", MSGBOX_YESNO)
+		msgbox("{SPEAKER NAME_BLAINE}Are you afraid of the unknown?", MSGBOX_YESNO)
 		if (var(VAR_RESULT) == YES) {
 			msgbox("Oh... Wrong Answer!")
 			release
 			end
 		}
-		msgbox("Blaine: Good!
+		msgbox("{SPEAKER NAME_BLAINE}Good!
 		
 				Next question!
 				
 				Do you think you could beat me in
 				a Pokémon battle?", MSGBOX_YESNO)
 		if (var(VAR_RESULT) == NO) {
-			msgbox("Blaine: I respect the honesty, but you
+			msgbox("{SPEAKER NAME_BLAINE}I respect the honesty, but you
 					should have a bit more confidence
 					in yourself!")
 			setflag(FLAG_TEMP_5)
@@ -301,7 +301,7 @@ script OlivinePortBlaine {
 				Do you think you could beat me in
 				a Pokémon battle?", MSGBOX_YESNO)
 		if (var(VAR_RESULT) == NO) {
-			msgbox("Blaine: Still not confident enough?
+			msgbox("{SPEAKER NAME_BLAINE}Still not confident enough?
 					Well I can't blame you. 
 					
 					After all, I am quite the fiery soul!
@@ -311,12 +311,12 @@ script OlivinePortBlaine {
 		}
 	}
 	playbgm(MUS_RG_ENCOUNTER_GYM_LEADER, FALSE)
-	msgbox("Blaine: Such a bold statement! 
+	msgbox("{SPEAKER NAME_BLAINE}Such a bold statement! 
 			I shall put that to the test right here!")
 	msgbox("Hope you brought a Burn Heal!")
 	trainerbattle_no_intro(TRAINER_BLAINE_OLIVINE, "Wowzers! You scorched me!")
 	createfieldmugshot(MUGSHOT_BLAINE)
-	msgbox("Blaine: Yowch! I got burned!
+	msgbox("{SPEAKER NAME_BLAINE}Yowch! I got burned!
 			You're the real deal!
 			
 			Here's the thing. I was visiting

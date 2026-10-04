@@ -19,6 +19,10 @@ static void ScriptMovement_MoveObjects(u8 taskId);
 static void ScriptMovement_TakeStep(u8 taskId, u8 moveScrId, u8 objEventId, const u8 *movementScript);
 
 static EWRAM_DATA const u8 *sMovementScripts[OBJECT_EVENTS_COUNT] = {0};
+// Kept here instead of in the task data: a u16 "finished" mask and one id byte
+// per slot in data[1..] only fit 16 objects, and waitmovement hangs past that.
+static EWRAM_DATA u8 sMovementObjEventIds[OBJECT_EVENTS_COUNT] = {0};
+static EWRAM_DATA bool8 sMovementFinished[OBJECT_EVENTS_COUNT] = {0};
 
 bool8 ScriptMovement_StartObjectMovementScript(u8 localId, u8 mapNum, u8 mapGroup, const u8 *movementScript)
 {
@@ -51,11 +55,9 @@ bool32 ScriptMovement_IsAllObjectMovementFinished(void)
     u8 taskId = GetMoveObjectsTaskId();
     if (taskId != TASK_NONE)
     {
-        u32 finishedMovements = gTasks[taskId].data[0];
-        const u8 *objEventIds = (u8 *)&gTasks[taskId].data[1];
         for (u32 i = 0; i < OBJECT_EVENTS_COUNT; i++)
         {
-            if (objEventIds[i] != 0xFF && !(finishedMovements & (1 << i)))
+            if (sMovementObjEventIds[i] != 0xFF && !sMovementFinished[i])
                 return FALSE;
         }
     }
@@ -76,13 +78,15 @@ void ScriptMovement_UnfreezeObjectEvents(void)
 
 static void ScriptMovement_StartMoveObjects(u8 priority)
 {
-    u8 taskId;
     u8 i;
 
-    taskId = CreateTask(ScriptMovement_MoveObjects, priority);
+    CreateTask(ScriptMovement_MoveObjects, priority);
 
-    for (i = 1; i < NUM_TASK_DATA; i++)
-        gTasks[taskId].data[i] = 0xFFFF;
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        sMovementObjEventIds[i] = 0xFF;
+        sMovementFinished[i] = FALSE;
+    }
 }
 
 static u8 GetMoveObjectsTaskId(void)
@@ -121,63 +125,39 @@ static bool8 ScriptMovement_TryAddNewMovement(u8 taskId, u8 objEventId, const u8
 
 static u8 GetMovementScriptIdFromObjectEventId(u8 taskId, u8 objEventId)
 {
-    u8 *moveScriptId;
     u8 i;
 
-    moveScriptId = (u8 *)&gTasks[taskId].data[1];
-    for (i = 0; i < OBJECT_EVENTS_COUNT; i++, moveScriptId++)
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        if (*moveScriptId == objEventId)
+        if (sMovementObjEventIds[i] == objEventId)
             return i;
     }
     return OBJECT_EVENTS_COUNT;
 }
 
-static void LoadObjectEventIdPtrFromMovementScript(u8 taskId, u8 moveScrId, u8 **pObjEventId)
-{
-    u8 i;
-
-    *pObjEventId = (u8 *)&gTasks[taskId].data[1];
-    for (i = 0; i < moveScrId; i++, (*pObjEventId)++)
-        ;
-}
-
 static void SetObjectEventIdAtMovementScript(u8 taskId, u8 moveScrId, u8 objEventId)
 {
-    u8 *ptr;
-
-    LoadObjectEventIdPtrFromMovementScript(taskId, moveScrId, &ptr);
-    *ptr = objEventId;
+    sMovementObjEventIds[moveScrId] = objEventId;
 }
 
 static void LoadObjectEventIdFromMovementScript(u8 taskId, u8 moveScrId, u8 *objEventId)
 {
-    u8 *ptr;
-
-    LoadObjectEventIdPtrFromMovementScript(taskId, moveScrId, &ptr);
-    *objEventId = *ptr;
+    *objEventId = sMovementObjEventIds[moveScrId];
 }
 
 static void ClearMovementScriptFinished(u8 taskId, u8 moveScrId)
 {
-    u16 mask = ~(1u << moveScrId);
-
-    gTasks[taskId].data[0] &= mask;
+    sMovementFinished[moveScrId] = FALSE;
 }
 
 static void SetMovementScriptFinished(u8 taskId, u8 moveScrId)
 {
-    gTasks[taskId].data[0] |= (1u << moveScrId);
+    sMovementFinished[moveScrId] = TRUE;
 }
 
 static bool8 IsMovementScriptFinished(u8 taskId, u8 moveScrId)
 {
-    u16 moveScriptFinished = (u16)gTasks[taskId].data[0] & (1u << moveScrId);
-
-    if (moveScriptFinished != 0)
-        return TRUE;
-    else
-        return FALSE;
+    return sMovementFinished[moveScrId];
 }
 
 static void SetMovementScript(u8 moveScrId, const u8 *movementScript)
@@ -199,14 +179,12 @@ static void ScriptMovement_AddNewMovement(u8 taskId, u8 moveScrId, u8 objEventId
 
 static void ScriptMovement_UnfreezeActiveObjects(u8 taskId)
 {
-    u8 *pObjEventId;
     u8 i;
 
-    pObjEventId = (u8 *)&gTasks[taskId].data[1];
-    for (i = 0; i < OBJECT_EVENTS_COUNT; i++, pObjEventId++)
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        if (*pObjEventId != 0xFF)
-            UnfreezeObjectEvent(&gObjectEvents[*pObjEventId]);
+        if (sMovementObjEventIds[i] != 0xFF)
+            UnfreezeObjectEvent(&gObjectEvents[sMovementObjEventIds[i]]);
     }
 }
 

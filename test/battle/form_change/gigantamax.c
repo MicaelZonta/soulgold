@@ -8,6 +8,7 @@ SINGLE_BATTLE_TEST("Dynamax: Pokemon with Gigantamax forms change upon Dynamaxin
     PARAMETRIZE { gigantamaxFactor = FALSE; species = SPECIES_VENUSAUR; }
     PARAMETRIZE { gigantamaxFactor = TRUE; species = SPECIES_VENUSAUR_GMAX; }
     GIVEN {
+        ASSUME(DoesSpeciesHaveFormChangeMethod(SPECIES_VENUSAUR, FORM_CHANGE_BATTLE_GIGANTAMAX));
         PLAYER(SPECIES_VENUSAUR) { GigantamaxFactor(gigantamaxFactor); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

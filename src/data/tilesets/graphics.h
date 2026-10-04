@@ -4327,3 +4327,46 @@ const u16 gTilesetPalettes_UltraSpaceArena[][16] =
 };
 
 const u32 gTilesetTiles_UltraSpaceArena[] = INCBIN_U32("data/tilesets/secondary/ultra_space_arena/tiles.4bpp.fastSmol");
+
+// Greenfield (Berry Master, part 14): New Bark's tileset plus the crystal pieces;
+// built by .claude/berry_master/prototipo_corceis/greenfield_cristal.py.
+const u16 gTilesetPalettes_Greenfield[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/greenfield/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Greenfield[] = INCBIN_U32("data/tilesets/secondary/greenfield/tiles.4bpp.fastSmol");
+
+// Hale mansion (Berry Master, part 14): the Inn's secondary plus the crystal salon
+// (the salon's pieces repainted in slots 7/8 and the crystal pieces);
+// built by .claude/berry_master/prototipo_corceis/salao_cristal.py.
+const u16 gTilesetPalettes_HaleMansion[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hale_mansion/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_HaleMansion[] = INCBIN_U32("data/tilesets/secondary/hale_mansion/tiles.4bpp.fastSmol");

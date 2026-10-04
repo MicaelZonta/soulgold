@@ -27,13 +27,20 @@ surpresa.
 Lendário **sem** método fora do Nexus entra no sorteio desde o início.
 
 - A classificação de quem tem método está em
-  [`POOL_LENDARIOS.md`](POOL_LENDARIOS.md) (96 com método, 32 sem, em
-  25/09/2026). Método novo criado na campanha **move** o lendário para o grupo
+  [`POOL_LENDARIOS.md`](POOL_LENDARIOS.md) (99 com método, 29 sem, em
+  03/10/2026: 93 linhas do pool exigem captura, 29 entram desde o início). Método novo criado na campanha **move** o lendário para o grupo
   "precisa capturar antes"; atualize aquele arquivo junto.
+- **Exceção — Ultra Beasts** (autor, 03/10/2026): o Nexus é o **único** lugar legítimo
+  para capturá-las (a batalha das Rift Missions não captura). Entram no sorteio desde
+  o início, sem R1. Naganadel é a exceção da exceção: evolui do Poipole da Route 40.
 - Formas contam pela espécie: pegar Kyogre libera Kyogre (a Primal vem com ele).
   Aves de Galar são espécies separadas das de Kanto.
 - **No código:** `getcaughtmon SPECIES_X` (`asm/macros/event.inc`) lê a flag de
   capturado da Pokédex — é o que as Meteor Caves já usam.
+- **Os corcéis do Calyrex** (Berry Master, 03/10/2026): só um deles pode ser pego na
+  campanha. Antes da escolha das sementes os dois esperam captura; depois, o corcel
+  **não escolhido** volta a ser só do Nexus e entra sempre no sorteio
+  (`GardenSteed_NexusEligible`, `src/berry_garden.c`). O Calyrex segue a R1 normal.
 
 ## R2. Level scaling: 100% no maior nível da equipe
 

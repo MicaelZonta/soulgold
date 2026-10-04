@@ -197,4 +197,4 @@ GoldenrodDeptStore_Text_B1FBlackBelt3After:
     .string "Take it if you want it!$"
 
 GoldenrodDeptStore_Text_B1FMachoke:
-    .string "Machoke: Maaacho!$"
+    .string "{SPEAKER NAME_MACHOKE}Maaacho!$"

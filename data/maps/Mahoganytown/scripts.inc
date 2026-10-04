@@ -227,7 +227,7 @@ MahoganyTown_EventScript_MerchantTrigger::
 	hidemoneybox
 	msgbox MahoganyTown_Text_RageCandyBarMerchantSavorIt, MSGBOX_DEFAULT
 	giveitem ITEM_RAGE_CANDY_BAR
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	closemessage
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	call_if_eq VAR_TEMP_0, 30, MahoganyTown_EventScript_PushPlayer
@@ -423,7 +423,7 @@ MahoganyTown_Text_GymSign:
     .string "The Teacher of Winter's Harshness$"
 
 ElmPhoneRadioTowerRocketTakeoverText:
-	.string "Prof. Elm: {PLAYER}, how are\n"
+	.string "{SPEAKER NAME_ELM}{PLAYER}, how are\n"
 	.string "things going?\p"
 	.string "I called because something weird\n"
 	.string "is happening with the radio\l"
@@ -438,7 +438,7 @@ ElmPhoneRadioTowerRocketTakeoverText:
 	.string "Take care!$"
 
 ElmPhoneRoute39LegendaryText:
-	.string "Prof. Elm: Woah!\n"
+	.string "{SPEAKER NAME_ELM}Woah!\n"
 	.string "{PLAYER}, did you see that?!\p"
 	.string "A massive Pokémon just flew over\n"
 	.string "Ecruteak City!\l"

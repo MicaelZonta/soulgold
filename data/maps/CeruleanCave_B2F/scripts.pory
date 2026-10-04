@@ -36,14 +36,14 @@ script NamelessDungeonMewtwo {
 script NamelessDungeon_Leaf {
     lock
     if (!flag(FLAG_TEMP_3)) {
-        msgbox("???: Hmm, Mewtwo should be just ahead...")
+        msgbox("{SPEAKER NAME_UNKNOWN}Hmm, Mewtwo should be just ahead...")
         delay(30)
         playse(SE_PIN)
         applymovement(LOCALID_NAMELESS_LEAF, Common_Movement_ExclamationMark)
         faceplayer
         waitse
         createfieldmugshot(MUGSHOT_LEAF)
-        msgbox("???: Oh, hello! Who might you be?
+        msgbox("{SPEAKER NAME_UNKNOWN}Oh, hello! Who might you be?
         
                 ...
                 

@@ -44,8 +44,8 @@ homônimos genéricos que não são o personagem.
 
 ## Estado em 27/09/2026
 
-**68 de 260 prontas** (sprite + battle sprite), e **68 jogáveis no Nexus** —
-todos os prontos: time `TRAINER_NEXUS_*` (IDs 975–1042) em
+**83 de 263 prontas** (sprite + battle sprite), e **68 jogáveis no Nexus** —
+todos os prontos menos os 15 do lote de 03/10/2026 (sprites e front pics no código, falta time e falas): time `TRAINER_NEXUS_*` (IDs 975–1042) em
 `src/data/trainers.party`, fala genérica e fala de campeão (uma por lendário,
 quando o treinador campeia mais de um, R16) em `data/scripts/nexus.inc`.
 Testáveis pelo menu de debug → Rift Missions… → Nexus fights….
@@ -53,12 +53,14 @@ Testáveis pelo menu de debug → Rift Missions… → Nexus fights….
 | Região | Prontas | Quais |
 |---|---|---|
 | Kanto | 18/22 | Red, Blue, Brock, Misty, Lt. Surge, Erika, Koga, Sabrina, Blaine, Giovanni, Janine, Leaf, Bruno, Lance, Archer, Ariana, Proton, Petrel |
-| Johto | 12/12 | Silver, Falkner, Bugsy, Whitney, Morty, Chuck, Jasmine, Pryce, Clair, Will, Karen, Eusine |
-| Hoenn | 26/31 | Brendan, May, Wally, os 8 líderes + Juan, Tate e Liza, a Elite Four, Steven, Wallace, os 7 Frontier Brains, Maxie, Archie |
-| Sinnoh | 3/30 | Fantina, Byron, Volkner |
-| Unova | 2/31 | Elesa, Colress |
+| Johto | 13/13 | Silver, Falkner, Bugsy, Whitney, Morty, Chuck, Jasmine, Pryce, Clair, Will, Karen, Eusine, Molly Hale (03/10) |
+| Hoenn | 27/31 | Brendan, May, Wally, os 8 líderes + Juan, Tate e Liza, a Elite Four, Steven, Wallace, os 7 Frontier Brains, Maxie, Archie, Shelly (03/10) |
+| Sinnoh | 4/31 | Fantina, Byron, Volkner, Dawn (03/10) |
+| Unova | 5/32 | Elesa, Colress, Lenora, Rosa, Skyla (03/10) |
 | Kalos | 1/30 | Ramos |
 | Alola | 6/27 | Gladion, Lusamine, Kukui, Lillie, Guzma, Soliera |
+| Galar | 8/25 | Allister, Avery, Bea, Klara, Mustard, Nessa, Peony, Peonia (03/10) |
+| Paldea | 1/41 | Nemona (03/10) |
 
 Todos os 68 são jogáveis, cada um campeão de ao menos um lendário do pool de
 [`POOL_LENDARIOS.md`](POOL_LENDARIOS.md) (121 lendários para 68 treinadores,

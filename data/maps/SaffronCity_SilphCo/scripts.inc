@@ -31,7 +31,7 @@ SaffronCity_SilphCo_EventScript_Refused::
 	end
 
 SaffronCity_SilphCo_Text_Refused:
-	.string "Oh...$"
+	.string "{SPEAKER NAME_STEVEN}Oh...$"
 
 SaffronCity_SilphCo_EventScript_TreeckoChosen::
 	closemessage
@@ -93,13 +93,13 @@ SaffronCity_SilphCo_Movement_StevenLeave:
 
 
 SaffronCity_SilphCo_Text_Steven1:
-	.string "Hello...\n"
+	.string "{SPEAKER NAME_STEVEN}Hello...\n"
 	.string "You're breaking up...\l"
 	.string "I think it depends on my dad.\l"
 	.string "I see...\n"
 	.string "I'll be on my way. See you soon.$"
 SaffronCity_SilphCo_Text_Steven2:
-	.string "Steven: You are... I remember your\n"
+	.string "{SPEAKER NAME_STEVEN}You are... I remember your\n"
 	.string "eyes.\p"
 	.string "When I see a trainer whose eyes\n"
 	.string "twinkle, I always remember.\p"

@@ -32,7 +32,7 @@ Route39_EventScript_Miltank::
 	end
 
 Route39_Text_Miltank:
-	.string "Miltank: Mooo!$"
+	.string "{SPEAKER NAME_MILTANK}Mooo!$"
 
 Route39_EventScript_Eugene::
 	trainerbattle_single TRAINER_EUGENE, Route39_Text_SailorEugeneSeen, Route39_Text_SailorEugeneBeaten
@@ -185,7 +185,7 @@ script Route39_BaobaTrigger {
 	approachobject(LOCALID_R39_BAOBA, LOCALID_PLAYER, DIR_EAST, DIR_WEST)
 	waitmovement(0)
 	createfieldmugshot(MUGSHOT_GENTLEMAN)
-	msgbox("Baoba: ...Ohh! 
+	msgbox("{SPEAKER NAME_WARDEN_BAOBA}...Ohh! 
 			What you are holding is...
 			what they call... a Pokédex!
 			Haven't seen one of those in ages.

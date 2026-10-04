@@ -590,6 +590,24 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_LeaderBlue,             OBJ_EVENT_PAL_TAG_BLUE},
     {gObjectEventPal_Cynthia,                OBJ_EVENT_PAL_TAG_CYNTHIA},
     {gObjectEventPal_BrendanHoenn,           OBJ_EVENT_PAL_TAG_BRENDAN_HOENN},
+    {gObjectEventPal_MollyChild,              OBJ_EVENT_PAL_TAG_MOLLY_CHILD},
+    {gObjectEventPal_MollyHale,               OBJ_EVENT_PAL_TAG_MOLLY_HALE},
+    {gObjectEventPal_KingsCarrot,             OBJ_EVENT_PAL_TAG_KINGS_CARROT},
+    {gObjectEventPal_CrystalGlint,            OBJ_EVENT_PAL_TAG_CRYSTAL_GLINT},
+    {gObjectEventPal_Skyla,                   OBJ_EVENT_PAL_TAG_SKYLA},
+    {gObjectEventPal_Rosa,                    OBJ_EVENT_PAL_TAG_ROSA},
+    {gObjectEventPal_Peony,                   OBJ_EVENT_PAL_TAG_PEONY},
+    {gObjectEventPal_Peonia,                  OBJ_EVENT_PAL_TAG_PEONIA},
+    {gObjectEventPal_Nessa,                   OBJ_EVENT_PAL_TAG_NESSA},
+    {gObjectEventPal_Nemona,                  OBJ_EVENT_PAL_TAG_NEMONA},
+    {gObjectEventPal_Mustard,                 OBJ_EVENT_PAL_TAG_MUSTARD},
+    {gObjectEventPal_Lenora,                  OBJ_EVENT_PAL_TAG_LENORA},
+    {gObjectEventPal_Klara,                   OBJ_EVENT_PAL_TAG_KLARA},
+    {gObjectEventPal_Leaf,                    OBJ_EVENT_PAL_TAG_LEAF},
+    {gObjectEventPal_Dawn,                    OBJ_EVENT_PAL_TAG_DAWN},
+    {gObjectEventPal_Bea,                     OBJ_EVENT_PAL_TAG_BEA},
+    {gObjectEventPal_Avery,                   OBJ_EVENT_PAL_TAG_AVERY},
+    {gObjectEventPal_Alister,                 OBJ_EVENT_PAL_TAG_ALISTER},
     {gObjectEventPal_Zinnia,                  OBJ_EVENT_PAL_TAG_ZINNIA},
     {gObjectEventPal_Shelly,                  OBJ_EVENT_PAL_TAG_SHELLY},
     {gObjectEventPal_Olivia,                  OBJ_EVENT_PAL_TAG_OLIVIA},
@@ -4791,6 +4809,9 @@ bool8 MovementType_BerryTreeGrowth_Normal(struct ObjectEvent *objectEvent, struc
     ClearObjectEventMovement(objectEvent, sprite);
     objectEvent->invisible = TRUE;
     sprite->invisible = TRUE;
+    // SoulGold: wet soil under a tree watered this stage (src/berry.c).
+    BerryTree_UpdateSoilTile(objectEvent->trainerRange_berryTreeId,
+                             objectEvent->currentCoords.x, objectEvent->currentCoords.y);
     berryStage = GetStageByBerryTreeId(objectEvent->trainerRange_berryTreeId);
     if (berryStage == BERRY_STAGE_NO_BERRY)
     {

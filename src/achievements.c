@@ -130,7 +130,7 @@ static const u8 sText_AchTm20Desc[] = _("Collect 20 TMs.");
 static const u8 sText_AchTm50Name[] = _("TM Expert");
 static const u8 sText_AchTm50Desc[] = _("Collect 50 TMs.");
 static const u8 sText_AchTm100Name[] = _("TM Master");
-static const u8 sText_AchTm100Desc[] = _("Collect 100 TMs.");
+static const u8 sText_AchTm100Desc[] = _("Hold every TM at once.");
 static const u8 sText_AchPokedex200Name[] = _("Field Researcher");
 static const u8 sText_AchPokedex200Desc[] = _("Register 200 caught Pokémon.");
 static const u8 sText_AchPokedex350Name[] = _("Dex Specialist");
@@ -369,7 +369,7 @@ static const struct Achievement sAchievements[] =
     {ACH_TM_1, sText_AchTm1Name, sText_AchTm1Desc, ACH_TIER_BRONZE, ACH_COUNTER_TMS_COLLECTED, 1, TRAINER_NONE_ACH, NULL},
     {ACH_TM_20, sText_AchTm20Name, sText_AchTm20Desc, ACH_TIER_SILVER, ACH_COUNTER_TMS_COLLECTED, 20, TRAINER_NONE_ACH, NULL},
     {ACH_TM_50, sText_AchTm50Name, sText_AchTm50Desc, ACH_TIER_GOLD, ACH_COUNTER_TMS_COLLECTED, 50, TRAINER_NONE_ACH, NULL},
-    {ACH_TM_100, sText_AchTm100Name, sText_AchTm100Desc, ACH_TIER_PLATINUM, ACH_COUNTER_TMS_COLLECTED, 100, TRAINER_NONE_ACH, NULL},
+    {ACH_TM_100, sText_AchTm100Name, sText_AchTm100Desc, ACH_TIER_PLATINUM, ACH_COUNTER_TMS_COLLECTED, NUM_TECHNICAL_MACHINES, TRAINER_NONE_ACH, NULL},
     {ACH_POKEDEX_200, sText_AchPokedex200Name, sText_AchPokedex200Desc, ACH_TIER_SILVER, ACH_COUNTER_POKEDEX_CAUGHT, 200, TRAINER_NONE_ACH, NULL},
     {ACH_POKEDEX_350, sText_AchPokedex350Name, sText_AchPokedex350Desc, ACH_TIER_GOLD, ACH_COUNTER_POKEDEX_CAUGHT, 350, TRAINER_NONE_ACH, NULL},
     {ACH_POKEDEX_500, sText_AchPokedex500Name, sText_AchPokedex500Desc, ACH_TIER_PLATINUM, ACH_COUNTER_POKEDEX_CAUGHT, 500, TRAINER_NONE_ACH, NULL},

@@ -609,4 +609,4 @@ BattleFrontier_OutsideWest_Text_Reparations4:
     .string "collapse would take forever!$"
 
 BattleFrontier_OutsideWest_Text_Milotic:
-	.string "Milotic: Milooo!$"
+	.string "{SPEAKER NAME_MILOTIC}Milooo!$"

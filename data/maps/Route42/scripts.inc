@@ -132,7 +132,7 @@ Route42_Movement_Eusine2:
 	step_end
 
 Route42_Text_EusineAdmireSuicune:
-	.string "Eusine: Suicune...\n"
+	.string "{SPEAKER NAME_EUSINE}Suicune...\n"
 	.string "How brave it is!\p"
 	.string "How refreshing it is!\n"
 	.string "How beautiful it is!\p"

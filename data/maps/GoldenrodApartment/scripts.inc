@@ -362,14 +362,14 @@ MadScientistEvent_Text_1:
 	.string "Are you prepared to go forward?$"
 
 MadScientistEvent_Text_2:
-	.string "Scientist: Ha haa! The machine is nearly\n"
+	.string "{SPEAKER NAME_SCIENTIST}Ha haa! The machine is nearly\n"
 	.string "complete! \p"
 	.string "I shall have my revenge on those \n"
 	.string "Rocket executives for taking my\l"
 	.string "research funding!$"
 
 MadScientistEvent_Text_3:
-	.string "Scientist: And then! The rest of those\n"
+	.string "{SPEAKER NAME_SCIENTIST}And then! The rest of those\n"
 	.string "snobby scientific committee members!\p"
 	.string "This will be my ultimate creation!\n"
 	.string "Ahahahahahahahahaaaaaaaaaaaaaa!$"
@@ -378,7 +378,7 @@ MadScientistEvent_Text_4:
 	.string "But first...$"
 
 MadScientistEvent_Text_5:
-	.string "Scientist: Who are you and how \n"
+	.string "{SPEAKER NAME_SCIENTIST}Who are you and how \n"
 	.string "did you get in?!$"
 
 MadScientistEvent_Text_6:
@@ -390,7 +390,7 @@ MadScientistEvent_Text_7:
 	.string "No! I can't afford this!$"
 
 MadScientistEvent_Text_8:
-	.string "Scientist: It seems the tax office has \n"
+	.string "{SPEAKER NAME_SCIENTIST}It seems the tax office has \n"
 	.string "sent quite a tough customer this time. \p"
 	.string "No matter!\p"
 	.string "I've been looking for volunteers\n"
@@ -399,11 +399,11 @@ MadScientistEvent_Text_8:
 	.string "raw power of my mechanical Pokémon!$"
 
 MadScientistEvent_Text_9:
-	.string "Scientist: Magearna! Destroy this \n"
+	.string "{SPEAKER NAME_SCIENTIST}Magearna! Destroy this \n"
 	.string "foolish intruder!$"
 
 MadScientistEvent_Text_10:
-	.string "Scientist: This... THIS CANNOT BE!\p"
+	.string "{SPEAKER NAME_SCIENTIST}This... THIS CANNOT BE!\p"
 	.string "My creation... Gone? JUST LIKE THAT?\p"
 	.string "It was supposed to be invincible!\p"
 	.string "This isn't over! I can still-$"
@@ -412,12 +412,12 @@ MadScientistEvent_Text_11:
 	.string "??? Hold it right there!$"
 
 MadScientistEvent_Text_12:
-	.string "Police: You're under arrest for tax \n"
+	.string "{SPEAKER NAME_POLICE}You're under arrest for tax \n"
 	.string "evasion, having ties to the Team Rocket\l"
 	.string "and for developing illegal Pokémon.$"
 
 MadScientistEvent_Text_13:
-	.string "Scientist: B-But I was the one whom \n"
+	.string "{SPEAKER NAME_SCIENTIST}B-But I was the one whom \n"
 	.string "Team Rocket abandoned!\p"
 	.string "I'm innocent! I just wanted\n"
 	.string "to show them they were in the wrong!$"
@@ -426,7 +426,7 @@ MadScientistEvent_Text_14:
 	.string "Save it for the judge.$"
 
 MadScientistEvent_Text_15:
-	.string "Police: I thank you for help \n"
+	.string "{SPEAKER NAME_POLICE}I thank you for help \n"
 	.string "subduing this crook. \p"
 	.string "They've been holed up here\n"
 	.string "for a while, causing all sorts of\l"

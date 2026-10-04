@@ -40,4 +40,4 @@ EcruteakCity_House3_HexLady_Text_1:
 	.string "Here... Take it...$"
 
 EcruteakCity_House3_Lampent_Text_0:
-	.string "Lampent: Lamppp!$"
+	.string "{SPEAKER NAME_LAMPENT}Lamppp!$"

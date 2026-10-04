@@ -484,7 +484,7 @@ NewBarkTown_PlayersHouse_1F_MovementFaceLeft:
 	step_end
 
 NewBarkTown_PlayersHouse_1F_Text_ElmsLookingForYou:
-	.string "Oh, {PLAYER}…! Our neighbor,\n"
+	.string "{SPEAKER NAME_MOM}Oh, {PLAYER}…! Our neighbor,\n"
 	.string "Prof. Elm, was looking for you.\p"
 	.string "He said he wanted you to do\n"
 	.string "something for him.\p"
@@ -496,13 +496,13 @@ NewBarkTown_PlayersHouse_1F_Text_ObtainedPokeGear:
 	.string "{PLAYER} obtained the Pokégear.$"
 
 NewBarkTown_PlayersHouse_1F_Text_ExplainPokeGear:
-	.string "Mom: Phone numbers are stored\n"
+	.string "{SPEAKER NAME_MOM}Phone numbers are stored\n"
 	.string "in memory.\p"
 	.string "Just choose a name you want to call.\p"
 	.string "Gee, isn't that convenient?$"
 
 NewBarkTown_PlayersHouse_1F_Text_WearTheseRunningShoes:
-	.string "Oh, and don't forget your\n"
+	.string "{SPEAKER NAME_MOM}Oh, and don't forget your\n"
 	.string "Running Shoes!$"
 
 NewBarkTown_PlayersHouse_1F_Text_SwitchShoesWithRunningShoes:
@@ -510,11 +510,11 @@ NewBarkTown_PlayersHouse_1F_Text_SwitchShoesWithRunningShoes:
 	.string "Running Shoes.$"
 
 NewBarkTown_PlayersHouse_1F_Text_ExplainRunningShoes:
-	.string "Mom: You'll get everywhere faster\n"
+	.string "{SPEAKER NAME_MOM}You'll get everywhere faster\n"
 	.string "with them!$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomHurryUpElmIsWaiting:
-	.string "Mom: Prof. Elm is waiting for you.\p"
+	.string "{SPEAKER NAME_MOM}Prof. Elm is waiting for you.\p"
 	.string "Hurry up, baby!$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomsFriend:
@@ -526,7 +526,7 @@ NewBarkTown_PlayersHouse_1F_Text_MomsFriend:
 	.string "She really loves Pokémon!$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomLeaving:
-	.string "Mom: Wow, that's a cute Pokémon.\n"
+	.string "{SPEAKER NAME_MOM}Wow, that's a cute Pokémon.\n"
 	.string "Where did you get it?\p"
 	.string "…\p"
 	.string "So, you're leaving on an adventure...\n"
@@ -538,7 +538,7 @@ NewBarkTown_PlayersHouse_1F_Text_MomLeaving:
 	.string "I'm behind you all the way!$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomWelcomeHome:
-	.string "Mom: Welcome home, {PLAYER}!\p"
+	.string "{SPEAKER NAME_MOM}Welcome home, {PLAYER}!\p"
 	.string "Would you like to rest, or should\n"
 	.string "we groom one of your Pokémon?$"
 
@@ -552,30 +552,30 @@ NewBarkTown_PlayersHouse_1F_Text_MomMenuCancel:
 	.string "Cancel$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomAskWhichPokemon:
-	.string "Mom: All right! Which Pokémon\n"
+	.string "{SPEAKER NAME_MOM}All right! Which Pokémon\n"
 	.string "needs a little care today?$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomAlreadyGroomedToday:
-	.string "Mom: That's enough grooming for\n"
+	.string "{SPEAKER NAME_MOM}That's enough grooming for\n"
 	.string "today. We should give your\l"
 	.string "Pokémon's coat some time to settle.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomGroomedGeneric:
-	.string "Mom: There we go!\n"
+	.string "{SPEAKER NAME_MOM}There we go!\n"
 	.string "{STR_VAR_1} looks much happier.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomGroomingEgg:
-	.string "Mom: Oh, that's still an Egg!\n"
+	.string "{SPEAKER NAME_MOM}Oh, that's still an Egg!\n"
 	.string "Let's wait until it hatches.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomFurfrouFirstMeeting:
-	.string "Mom: Oh! What an adorable Pokémon!\n"
+	.string "{SPEAKER NAME_MOM}Oh! What an adorable Pokémon!\n"
 	.string "Its coat is so soft and elegant…\p"
 	.string "I'd love to practice styling it.\n"
 	.string "Maybe I could learn a few trims!$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomFurfrouWhichTrim:
-	.string "Mom: Which trim should I try today?$"
+	.string "{SPEAKER NAME_MOM}Which trim should I try today?$"
 
 NewBarkTown_PlayersHouse_1F_Text_TrimNatural:
 	.string "Natural$"
@@ -608,47 +608,47 @@ NewBarkTown_PlayersHouse_1F_Text_TrimPharaoh:
 	.string "Pharaoh$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomFurfrouUnlockStar:
-	.string "Mom: I think I'm getting better at\n"
+	.string "{SPEAKER NAME_MOM}I think I'm getting better at\n"
 	.string "this! Next time, I should be able\l"
 	.string "to try the Star Trim.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomFurfrouUnlockDiamond:
-	.string "Mom: I think I'm getting better at\n"
+	.string "{SPEAKER NAME_MOM}I think I'm getting better at\n"
 	.string "this! Next time, I should be able\l"
 	.string "to try the Diamond Trim.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomFurfrouUnlockDandy:
-	.string "Mom: I think I'm getting better at\n"
+	.string "{SPEAKER NAME_MOM}I think I'm getting better at\n"
 	.string "this! Next time, I should be able\l"
 	.string "to try the Dandy Trim.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomFurfrouUnlockDebutante:
-	.string "Mom: I think I'm getting better at\n"
+	.string "{SPEAKER NAME_MOM}I think I'm getting better at\n"
 	.string "this! Next time, I should be able\l"
 	.string "to try the Debutante Trim.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomFurfrouUnlockMatron:
-	.string "Mom: I think I'm getting better at\n"
+	.string "{SPEAKER NAME_MOM}I think I'm getting better at\n"
 	.string "this! Next time, I should be able\l"
 	.string "to try the Matron Trim.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomFurfrouUnlockLaReine:
-	.string "Mom: I think I'm getting better at\n"
+	.string "{SPEAKER NAME_MOM}I think I'm getting better at\n"
 	.string "this! Next time, I should be able\l"
 	.string "to try the La Reine Trim.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomFurfrouUnlockKabuki:
-	.string "Mom: I think I'm getting better at\n"
+	.string "{SPEAKER NAME_MOM}I think I'm getting better at\n"
 	.string "this! Next time, I should be able\l"
 	.string "to try the Kabuki Trim.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomFurfrouMastered:
-	.string "Mom: I finally understand every\n"
+	.string "{SPEAKER NAME_MOM}I finally understand every\n"
 	.string "style! From now on, I can give\l"
 	.string "Furfrou any trim you like.$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomDeerlingFirstMeeting:
-	.string "Mom: How curious…\n"
+	.string "{SPEAKER NAME_MOM}How curious…\n"
 	.string "Its coat reacted when it caught\l"
 	.string "the scent of these flowers.\p"
 	.string "I heard the Flower Shop in\n"
@@ -658,12 +658,12 @@ NewBarkTown_PlayersHouse_1F_Text_MomDeerlingFirstMeeting:
 	.string "the way its coat looks!$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomDeerlingDeliverPerfume:
-	.string "Mom: You found it!\n"
+	.string "{SPEAKER NAME_MOM}You found it!\n"
 	.string "These four scents are wonderful.\l"
 	.string "Let's see how your Pokémon reacts!$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomDeerlingSeasonPrompt:
-	.string "Mom: Which scent should we try\n"
+	.string "{SPEAKER NAME_MOM}Which scent should we try\n"
 	.string "today?$"
 
 NewBarkTown_PlayersHouse_1F_Text_SeasonSpring:
@@ -679,7 +679,7 @@ NewBarkTown_PlayersHouse_1F_Text_SeasonWinter:
 	.string "Winter$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomPikachuCosplayHint:
-	.string "Mom: Oh, look at those cheeks!\n"
+	.string "{SPEAKER NAME_MOM}Oh, look at those cheeks!\n"
 	.string "It's just too cute!\p"
 	.string "You know, there's a young man at\n"
 	.string "the Goldenrod Dept. Store, on the\l"
@@ -691,20 +691,20 @@ NewBarkTown_PlayersHouse_1F_Text_MomPikachuCosplayHint:
 	.string "to dress this little one up!$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumePrompt:
-	.string "Mom: The Cosplay Kit! Oh, this is\n"
+	.string "{SPEAKER NAME_MOM}The Cosplay Kit! Oh, this is\n"
 	.string "going to be fun. What should it\l"
 	.string "wear today?$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumeOn:
-	.string "Mom: Ta-da! {STR_VAR_1} looks\n"
+	.string "{SPEAKER NAME_MOM}Ta-da! {STR_VAR_1} looks\n"
 	.string "absolutely adorable!$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumeOff:
-	.string "Mom: There we go, back to its\n"
+	.string "{SPEAKER NAME_MOM}There we go, back to its\n"
 	.string "everyday look. Still cute!$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomPikachuCostumeCancelled:
-	.string "Mom: Can't decide? That's all\n"
+	.string "{SPEAKER NAME_MOM}Can't decide? That's all\n"
 	.string "right. Come back when you do!$"
 
 NewBarkTown_PlayersHouse_1F_Text_CostumeNone:
@@ -753,5 +753,5 @@ NewBarkTown_PlayersHouse_1F_Text_CapWorld:
 	.string "World Cap$"
 
 NewBarkTown_PlayersHouse_1F_Text_MomDeerlingSeasonApplied:
-	.string "Mom: The seasonal scent gently\n"
+	.string "{SPEAKER NAME_MOM}The seasonal scent gently\n"
 	.string "settled into {STR_VAR_1}'s coat!$"

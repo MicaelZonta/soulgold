@@ -76,7 +76,7 @@
 #define FLAG_SNOWTOP_ABILITY_PATCH              0x2A
 #define FLAG_SYS_SET_BATTLE_BGM                 0x2B // Changes BGM - fora da ROM
 #define FLAG_WONDERTRADE_FIRSTIME               0x2C  // livre desde 24/09/2026
-#define FLAG_NO_WT_BECAUSE_CHALLENGE            0x2D 
+#define FLAG_NO_WT_BECAUSE_CHALLENGE            0x2D // So em BattleFrontier_ExchangeServiceCorner (mapa fora da ROM, script montado): sem efeito no jogo
 #define FLAG_CIANWOOD_GOLDEN_BOTTLECAP          0x2E
 #define FLAG_DOME_FOSSIL_ALTERING_CAVE          0x2F  // fora da ROM
 #define FLAG_GOT_REDORB                         0x30 
@@ -290,7 +290,7 @@
 #define FLAG_FLOOR4_URN1LOOT                 0xF4
 #define FLAG_HIDE_PYRAMIDOUT_SCIENTIST       0xF5
 #define FLAG_RECEIVED_CHESTO_BERRY_ROUTE_104 0xF6  // fora da ROM
-#define FLAG_DEFEATED_SS_TIDAL_TRAINERS      0xF7
+#define FLAG_DEFEATED_SS_TIDAL_TRAINERS      0xF7 // So em SSTidalCorridor (mapa fora da ROM, script montado): sem efeito no jogo
 #define FLAG_RECEIVED_SPELON_BERRY           0xF8  // fora da ROM
 #define FLAG_RECEIVED_PAMTRE_BERRY           0xF9  // fora da ROM
 #define FLAG_RECEIVED_WATMEL_BERRY           0xFA  // fora da ROM
@@ -744,7 +744,7 @@
 #define FLAG_ALLOW_SOUTH_JOHTO_PASS  0x29C
 #define FLAG_SYS_BUG_CONTEST_MODE  0x29D
 #define FLAG_AERODACTYLITE      0x29E
-#define FLAG_LEVEL_SCALING_ON  0x29F
+#define FLAG_UNUSED_0x29F  0x29F // Unused Flag. Era FLAG_LEVEL_SCALING_ON; livre desde 30/09/2026 (level scaling foi para o menu de opcoes, upstream fa819be537)
 #define FLAG_NAMED_SILVER  0x2A0 // Unused Flag
 #define FLAG_SLOWPOKE_TRADE    0x2A1
 #define FLAG_ROUTE31_EXPERT  0x2A2 // Flag for defeating Route 31 expert
@@ -925,7 +925,7 @@
 #define FLAG_HIDE_RAYQUAZA                                          0x34D
 #define FLAG_HIDE_SEAFOAM_BLAINE                                    0x34E
 #define FLAG_HIDE_ILEX_FOREST_SECOND_CELEBI                         0x34F
-#define FLAG_HIDE_OLIVINE_PORT_OAK                                  0x350
+#define FLAG_UNUSED_0x350                                          0x350 // Unused Flag. Era FLAG_HIDE_OLIVINE_PORT_OAK; livre desde 30/09/2026 (Oak saiu do porto, upstream 96eb05b4c8)
 #define FLAG_HIDE_ROUTE22_GIOVANNI_SILVER                           0x351
 #define FLAG_POSTGAME_FEATURES                                      0x352
 #define FLAG_GOT_KUBFU                                              0x353
@@ -1273,7 +1273,7 @@
 #define FLAG_ITEM_VIOLET_CITY_PECHA_BERRY                           0x4A3 
 #define FLAG_ITEM_VIOLET_CITY_RARE_CANDY                            0x4A4 
 #define FLAG_ITEM_VIOLET_CITY_HYPER_POTION                          0x4A5 
-#define FLAG_EXP_SHARE                                              0x4A6 //EXP SHARE
+#define FLAG_UNUSED_0x4A6                                                 0x4A6 // Unused Flag. Era FLAG_EXP_SHARE; livre desde 30/09/2026 (a EXP Share usa FLAG_EXP_SHARE_OPTION)
 #define FLAG_ITEM_SPROUT_TOWER_PARALYZE_HEAL                        0x4A7 
 #define FLAG_ITEM_SPROUT_TOWER_X_DEFEND                             0x4A8 
 #define FLAG_ITEM_SPROUT_TOWER_POTION                               0x4A9 
@@ -1361,10 +1361,10 @@
 #define FLAG_NO_SHINY                                           0x4F9  // livre desde 24/09/2026
 #define FLAG_UNUSED_4FA                                                0x4FA // Reserved legacy difficulty flag; do not reuse in existing saves.
 
-#define FLAG_DEFEATED_ELITE_4_WILL                                  0x4FB
-#define FLAG_DEFEATED_ELITE_4_KOGA                                  0x4FC
-#define FLAG_DEFEATED_ELITE_4_BRUNO                                 0x4FD
-#define FLAG_DEFEATED_ELITE_4_KAREN                                 0x4FE
+#define FLAG_UNUSED_0x4FB                                           0x4FB // Unused Flag. Era FLAG_DEFEATED_ELITE_4_WILL (so levava clearflag); livre desde 30/09/2026
+#define FLAG_UNUSED_0x4FC                                           0x4FC // Unused Flag. Era FLAG_DEFEATED_ELITE_4_KOGA (so levava clearflag); livre desde 30/09/2026
+#define FLAG_UNUSED_0x4FD                                           0x4FD // Unused Flag. Era FLAG_DEFEATED_ELITE_4_BRUNO (so levava clearflag); livre desde 30/09/2026
+#define FLAG_UNUSED_0x4FE                                           0x4FE // Unused Flag. Era FLAG_DEFEATED_ELITE_4_KAREN (so levava clearflag); livre desde 30/09/2026
 
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER                                           0x4FF // Unused Flag
 
@@ -1548,14 +1548,14 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x8D) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x8E)
 #define FLAG_SYS_PC_BILL                           (SYSTEM_FLAGS + 0x8F) // Unused Flag
-#define FLAG_SYS_LAKE_OF_RAGE_TIDE                  (SYSTEM_FLAGS + 0x90) // Unused Flag
+#define FLAG_UNUSED_0xA1C                           (SYSTEM_FLAGS + 0x90) // Unused Flag. Era FLAG_SYS_LAKE_OF_RAGE_TIDE (nada setava); o lago le FLAG_SYS_SHOAL_TIDE desde 30/09/2026
 #define FLAG_RECEIVED_BADGE_5                       (SYSTEM_FLAGS + 0x91)
 #define FLAG_RECEIVED_BADGE_6                       (SYSTEM_FLAGS + 0x92)
 #define FLAG_RECEIVED_BADGE_7                       (SYSTEM_FLAGS + 0x93)
 #define FLAG_GOLDEN_COLOSSEUM                       (SYSTEM_FLAGS + 0x94) // Permission to enter goldenrod underground colosseum - livre desde 24/09/2026
 #define FLAG_NEVER_TURNED_OFF_HARD                  (SYSTEM_FLAGS + 0x95) // If player never chose normal mode during important battles - livre desde 24/09/2026
-#define FLAG_TRAINER_LEVELSCALING                   (SYSTEM_FLAGS + 0x96)
-#define FLAG_WILD_LEVELSCALING                      (SYSTEM_FLAGS + 0x97)
+#define FLAG_UNUSED_0xA22                           (SYSTEM_FLAGS + 0x96) // Unused Flag. Era FLAG_TRAINER_LEVELSCALING; livre desde 30/09/2026
+#define FLAG_UNUSED_0xA23                           (SYSTEM_FLAGS + 0x97) // Unused Flag. Era FLAG_WILD_LEVELSCALING; livre desde 30/09/2026
 #define FLAG_BEAT_STEVEN_KITAKAMI                   (SYSTEM_FLAGS + 0x98)
 #define FLAG_CHOICEBAND_KITAKAMI                    (SYSTEM_FLAGS + 0x99) // Kitakami mountain itemball
 #define FLAG_HIDE_MAREANIES                         (SYSTEM_FLAGS + 0x9A) //Hacky workaround for sequence skip with goldenrod shore
@@ -1941,8 +1941,18 @@
 // achievements. Upstream numbers it 0x1041, which here is FLAG_NO_CATCHING;
 // moved to the next free slot when upstream was merged (28/09/2026).
 #define FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE 0x1052
-#define CUSTOM_FLAGS_END                            FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE
-// PROXIMA FLAG NOVA: 0x1053 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Berry Master's Book of Berries (.claude/berry_master/REI_DA_COLHEITA.md
+// section 3): one flag per Berry, in item order, set when the player HARVESTS
+// that Berry from any tree (garden or route); buying one never registers it.
+// The flag of a Berry is FLAG_BERRY_LEDGER_START + (item - FIRST_BERRY_INDEX),
+// so the block must stay contiguous: 67 flags, ITEM_CHERI_BERRY (514) ..
+// ITEM_MARANGA_BERRY (580); the e-Reader Enigma (581) has no entry. Written by
+// BerryLedger_Register (src/berry.c) and by the end of Bram's tutorial (the 8
+// starting Berries); read by the other BerryLedger_* specials.
+#define FLAG_BERRY_LEDGER_START                     0x1053 // Cheri Berry
+#define FLAG_BERRY_LEDGER_END                       0x1095 // Maranga Berry (67 flags)
+#define CUSTOM_FLAGS_END                            FLAG_BERRY_LEDGER_END
+// PROXIMA FLAG NOVA: 0x1096 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 
@@ -1955,7 +1965,7 @@
 #define FLAG_ROUTE32_GROTTO                         (DAILY_FLAGS_START + 0x0)
 #define FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY     (DAILY_FLAGS_START + 0x1)
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
-#define FLAG_DAILY_BUG_CONTEST_COMPLETED            (DAILY_FLAGS_START + 0x3)  // Unused Flag
+#define FLAG_UNUSED_0x150B                          (DAILY_FLAGS_START + 0x3)  // Unused Flag. Era FLAG_DAILY_BUG_CONTEST_COMPLETED; o concurso usa FLAG_DAILY_BUG_DONE
 #define FLAG_DAILY_BUG_DONE                         (DAILY_FLAGS_START + 0x4)  // Daily bug catching contest completed
 #define FLAG_GOLDENROD_SHORE_GROTTO                 (DAILY_FLAGS_START + 0x5)
 #define FLAG_ROUTE35_GROTTO                         (DAILY_FLAGS_START + 0x6)
@@ -2023,9 +2033,14 @@
 // been reset for today. Set by RollOverIfNewDay (src/nexus.c) the first time
 // the Nexus is touched on a day; cleared by ClearDailyFlags at the date change.
 #define FLAG_DAILY_NEXUS_NEW_DAY                    (DAILY_FLAGS_START + 0x31) // VAR_NEXUS_DAILY already reset today (src/nexus.c RollOverIfNewDay)
-#define FLAG_UNUSED_0x952                           (DAILY_FLAGS_START + 0x32) // Unused Flag
+// Berry Master's garden (.claude/berry_master/REI_DA_COLHEITA.md section 14.6):
+// VAR_GARDEN_TODAY has been reset for today. Set by GardenRollDay
+// (src/berry_garden.c), called on entering Route 30 or the Berry Master's
+// house and at the start of every garden conversation; cleared by
+// ClearDailyFlags at the date change. Same pattern as FLAG_DAILY_KURT_NEW_DAY.
+#define FLAG_DAILY_GARDEN_NEW_DAY                   (DAILY_FLAGS_START + 0x32) // VAR_GARDEN_TODAY already reset today (GardenRollDay)
 #define FLAG_UNUSED_0x953                           (DAILY_FLAGS_START + 0x33) // Unused Flag
-#define FLAG_UNUSED_0x954                           (DAILY_FLAGS_START + 0x34) // Unused Flag
+#define FLAG_DAILY_DAISY_GROOMED                    (DAILY_FLAGS_START + 0x34) // Daisy (Pallet Town House 2) groomed a Pokemon today. Set by PalletTown_House2_EventScript_DaisyGrooming
 #define FLAG_UNUSED_0x955                           (DAILY_FLAGS_START + 0x35) // Unused Flag
 #define FLAG_UNUSED_0x956                           (DAILY_FLAGS_START + 0x36) // Unused Flag
 #define FLAG_UNUSED_0x957                           (DAILY_FLAGS_START + 0x37) // Unused Flag
@@ -2062,6 +2077,33 @@
 #define FLAG_TEMP_REGICE_PUZZLE_FAILED          FLAG_TEMP_3
 #define FLAG_TEMP_HIDE_FOLLOWER                 FLAG_TEMP_E
 #define FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE FLAG_TEMP_11  // fora da ROM
+// Route 30, Berry Master's garden (set in Route30_OnTransition, which decides
+// again on every map load): bed B while the garden is below level 2, and
+// Laurel's plot until the sidequest opens it (.claude/berry_master).
+#define FLAG_TEMP_HIDE_GARDEN_B                 FLAG_TEMP_5
+#define FLAG_TEMP_HIDE_KINGS_PLOT               FLAG_TEMP_6
+// Bram's and Laurel's scripts run on BOTH Route30 and Route30_House (part 8:
+// they move by the hour), so their once-per-visit marks must be free on both
+// maps. Route30 already uses FLAG_TEMP_1 (Cut tree), 5 and 6.
+#define FLAG_TEMP_GARDEN_REFORM_TALKED          FLAG_TEMP_4  // reform offer, once per visit
+#define FLAG_TEMP_GARDEN_ORDER_REMINDED         FLAG_TEMP_7  // order reminder, once per visit
+#define FLAG_TEMP_LAUREL_HINTED                 FLAG_TEMP_8  // Laurel's recipe hint, once per visit
+#define FLAG_TEMP_BRAM_TUTORIAL_VISIT           FLAG_TEMP_9  // this visit was the tutorial
+// Who is where (GardenCast_Place, set in both maps' ON_TRANSITION).
+#define FLAG_TEMP_HIDE_BRAM                     FLAG_TEMP_A
+#define FLAG_TEMP_HIDE_LAUREL                   FLAG_TEMP_B
+#define FLAG_TEMP_HIDE_TILLY                    FLAG_TEMP_C
+#define FLAG_TEMP_HIDE_BUGSY                    FLAG_TEMP_D
+#define FLAG_TEMP_BUGSY_REACTED                 FLAG_TEMP_F  // Route30: his reaction, once per visit (part 9)
+#define FLAG_TEMP_HIDE_KLARA                    FLAG_TEMP_10 // Route30: Klara's morning raid (part 11)
+#define FLAG_TEMP_HIDE_SPECTRIER                FLAG_TEMP_12 // Route30: Act 2's night visitor (part 12)
+#define FLAG_TEMP_HIDE_PEONY                    FLAG_TEMP_13 // Route30 and house: Peony, the guest (part 13)
+#define FLAG_TEMP_HIDE_PEONIA                   FLAG_TEMP_14 // Route30 and house: Peonia
+#define FLAG_TEMP_HIDE_CALYREX                  FLAG_TEMP_15 // Route30: Act 5 and Act 7 (parts 13, 16)
+#define FLAG_TEMP_HIDE_AVERY                    FLAG_TEMP_16 // Route30: Avery, Fridays after the story (part 16)
+#define FLAG_TEMP_HIDE_MUSTARD                  FLAG_TEMP_17 // Route30: Mustard, a rare Sunday morning (part 16)
+#define FLAG_TEMP_HIDE_ICEROOT_PLANT            FLAG_TEMP_18 // Route30: the King's carrot in Laurel's plot (act 5b)
+#define FLAG_TEMP_HIDE_SHADEROOT_PLANT          FLAG_TEMP_19 // Route30: the same, Shaderoot
 
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000

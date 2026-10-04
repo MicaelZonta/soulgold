@@ -41,8 +41,8 @@ ViridianCity_House1_Text_Lass:
 	.string "Rattey--a Rattata.$"
 
 ViridianCity_House1_Text_Speary:
-	.string "Speary: Ch-chun!$"
+	.string "{SPEAKER NAME_SPEARY}Ch-chun!$"
 
 ViridianCity_House1_Text_Rattey:
-	.string "Rattey: Kikiii!$"
+	.string "{SPEAKER NAME_RATTEY}Kikiii!$"
 

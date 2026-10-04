@@ -134,12 +134,12 @@ EcruteakCity_Text_Silver1:
 	.string "Thud!!$"
 
 EcruteakCity_Text_Silver2:
-	.string "Silver: How...? How is this\n"
+	.string "{SPEAKER NAME_SILVER}How...? How is this\n"
 	.string "possible? How can I lose to mere\l"
 	.string "Kimono Girls...?$"
 
 EcruteakCity_Text_Silver3:
-	.string "Silver: You were watching me,\n"
+	.string "{SPEAKER NAME_SILVER}You were watching me,\n"
 	.string "{PLAYER}...\p"
 	.string "Yeah, that's right!\p"
 	.string "I never thought defeating five\n"
@@ -290,10 +290,10 @@ EcruteakCity_EventScript_Vulpix::
 	end
 
 EcruteakCity_Text_Eevee:
-	.string "Eevee: Veee!$"
+	.string "{SPEAKER NAME_EEVEE}Veee!$"
 
 EcruteakCity_Text_Vulpix:
-	.string "Vulpix: Vullll Pix!$"
+	.string "{SPEAKER NAME_VULPIX}Vullll Pix!$"
 
 
 EcruteakCity_Text_UnusedMissingDaughter:

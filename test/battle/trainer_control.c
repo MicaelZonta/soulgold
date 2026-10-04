@@ -24,7 +24,8 @@ enum DifficultyLevel GetTrainerDifficultyLevelTest(u16 trainerId)
 {
     enum DifficultyLevel difficulty = GetCurrentDifficultyLevel();
 
-    if (difficulty == DIFFICULTY_NORMAL)
+    // SoulGold has a single difficulty; DIFFICULTY_EASY/HARD alias NORMAL.
+    if (difficulty == DIFFICULTY_NORMAL || difficulty >= DIFFICULTY_COUNT)
         return DIFFICULTY_NORMAL;
 
     if (sTestTrainers[difficulty][trainerId].party == NULL)

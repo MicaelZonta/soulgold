@@ -6,12 +6,12 @@ Aparece no checklist como:
 
 - **Avery — Psíquico** (Galar · Rivais de Galar) — rival de *Shield* no Isle of Armor, orgulhoso e teatral.
 
-**Pronto para o Nexus:** ❌ não — falta sprite de overworld e battle sprite (os dois são obrigatórios).
+**Pronto para o Nexus:** ✅ sim — tem sprite e battle sprite (03/10/2026). Falta o time e as falas irem para o código.
 
 ## Checklist
 
-- [ ] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)*
+- [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_AVERY`, 03/10/2026
+- [x] Battle sprite / front pic *(obrigatório)* — `TRAINER_PIC_FRONT_AVERY` (64x64 + 80x80), 03/10/2026
 - [ ] Field mugshot (retrato na caixa de diálogo)
 - [ ] Time para as Rift Missions definido
 - [ ] Associado a um lendário
@@ -22,11 +22,17 @@ Aparece no checklist como:
 
 ### Sprite de overworld
 
-Não existe. Criar com a skill `adicionar-npc`.
+| Constante | Arquivo |
+|---|---|
+| `OBJ_EVENT_GFX_AVERY` | `graphics/object_events/pics/people/special/avery.png` (boneco 16x20, quadro 16x32, 12 quadros, `sAnimTable_StandardAsym`; paleta própria `OBJ_EVENT_PAL_TAG_AVERY`) — registrado em 03/10/2026, visto no jogo de frente |
+
+Origem: `.filetransfer/.trainers/Avery/Sprite - Aveontrainer.png` (tamanho escolhido pelo autor; ver `TAMANHOS.md`).
 
 ### Battle sprite (front pic)
 
-Não existe. Criar com a skill `adicionar-grafico-trainer`.
+| Constante | Arquivo |
+|---|---|
+| `TRAINER_PIC_FRONT_AVERY` | `graphics/trainers/front_pics/avery.png` (64x64) + `avery_large.png` (80x80, `TRAINER_SPRITE_LARGE`) — 03/10/2026; nenhuma batalha usa ainda |
 
 ### Field mugshot
 

@@ -155,7 +155,7 @@ LilycoveCity_DepartmentStore_1F_Text_BuyingSomethingForAzumarill:
 	.string "as a reward for winning a Contest.$"
 
 LilycoveCity_DepartmentStore_1F_Text_Azumarill:
-	.string "Azumarill: Maririroo!$"
+	.string "{SPEAKER NAME_AZUMARILL}Maririroo!$"
 
 LilycoveCity_DepartmentStore_1F_Text_FloorNamesSign:
 	.string "1F: Service Counter\n"

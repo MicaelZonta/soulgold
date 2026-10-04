@@ -454,7 +454,7 @@ Route32_Text_RoarOutro:
 	.string "Roar!$"
 
 Route32_Text_MeetFrieda:
-	.string "Frieda: Yahoo!\p"
+	.string "{SPEAKER NAME_FRIEDA}Yahoo!\p"
 	.string "I'm Frieda of the Weekday Family!\n"
 	.string "Nice to meet you!\p"
 	.string "If you can guess my favorite day,\n"
@@ -464,7 +464,7 @@ Route32_Text_FriedaGivesGift:
 	.string "Here's a Poison Barb for you!$"
 
 Route32_Text_FriedaGaveGift:
-	.string "Frieda: Give it to a Pokémon\n"
+	.string "{SPEAKER NAME_FRIEDA}Give it to a Pokémon\n"
 	.string "that has Poison-type moves.\p"
 	.string "Oh!\p"
 	.string "It's wicked!\p"
@@ -472,14 +472,14 @@ Route32_Text_FriedaGaveGift:
 	.string "makes poison moves!$"
 
 Route32_Text_FriedaFriday:
-	.string "Frieda: Hiya! What day do\n"
+	.string "{SPEAKER NAME_FRIEDA}Hiya! What day do\n"
 	.string "you like?\p"
 	.string "I love Friday. No doubt about\n"
 	.string "it!\p"
 	.string "Don't you think it's great too?$"
 
 Route32_Text_FriedaNope:
-	.string "Frieda: Not that one!$"
+	.string "{SPEAKER NAME_FRIEDA}Not that one!$"
 
 Route32_Text_Sign1:
 	.string "Route 32\p"

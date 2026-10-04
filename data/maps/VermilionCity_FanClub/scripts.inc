@@ -170,7 +170,7 @@ PokemonFanClub_Text_ClefairyDoll:
 	.string "Doll.$"
 
 PokemonFanClub_Text_Bayleef:
-	.string "Bayleef: Li liif!$"
+	.string "{SPEAKER NAME_BAYLEEF}Li liif!$"
 
 PokemonFanClub_Text_Listen:
 	.string "Let's all listen politely to\n"

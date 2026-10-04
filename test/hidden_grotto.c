@@ -142,7 +142,7 @@ TEST("Hidden Grotto repairs nonempty ids stored in empty slots")
     EXPECT_EQ(content->id, ITEM_HEALTH_WING);
 }
 
-TEST("Hidden Grotto Pokemon receive a real hidden ability and two perfect IVs")
+TEST("Hidden Grotto Pokemon receive a real hidden ability when the hidden ability roll hits")
 {
     struct HiddenGrottoContent *content;
 
@@ -151,6 +151,7 @@ TEST("Hidden Grotto Pokemon receive a real hidden ability and two perfect IVs")
     content->type = HIDDEN_GROTTO_POKEMON;
     content->id = SPECIES_APPLIN;
     SetupRiggedRng(__LINE__, RNG_HIDDEN_GROTTO_IVS, 0);
+    SetupRiggedRng(__LINE__, RNG_HIDDEN_GROTTO_ABILITY, TRUE);
 
     HiddenGrotto_CreateCurrentMon();
 
@@ -159,6 +160,26 @@ TEST("Hidden Grotto Pokemon receive a real hidden ability and two perfect IVs")
     EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_LEVEL), 10);
     EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM), NUM_NORMAL_ABILITY_SLOTS);
     EXPECT_EQ(GetMonAbility(&gEnemyParty[0]), ABILITY_BULLETPROOF);
+    EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_HP_IV), MAX_PER_STAT_IVS);
+    EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_ATK_IV), MAX_PER_STAT_IVS);
+}
+
+TEST("Hidden Grotto Pokemon keep a normal ability and two perfect IVs when the hidden ability roll misses")
+{
+    struct HiddenGrottoContent *content;
+
+    SetCurrentMapToRoute32Grotto();
+    content = GetRoute32GrottoContent();
+    content->type = HIDDEN_GROTTO_POKEMON;
+    content->id = SPECIES_APPLIN;
+    SetupRiggedRng(__LINE__, RNG_HIDDEN_GROTTO_IVS, 0);
+    SetupRiggedRng(__LINE__, RNG_HIDDEN_GROTTO_ABILITY, FALSE);
+
+    HiddenGrotto_CreateCurrentMon();
+
+    EXPECT(gSpecialVar_Result);
+    EXPECT_LT(GetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM), NUM_NORMAL_ABILITY_SLOTS);
+    EXPECT_NE(GetMonAbility(&gEnemyParty[0]), ABILITY_BULLETPROOF);
     EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_HP_IV), MAX_PER_STAT_IVS);
     EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_ATK_IV), MAX_PER_STAT_IVS);
 }

@@ -67,4 +67,4 @@ SouthShoreHouseMan_Text_2:
 	.string "Best of luck finding the beast, trainer.$"
 
 SouthShoreHouseSableye_Text_0:
-	.string "Sableye: Sablblbllblb!$"
+	.string "{SPEAKER NAME_SABLEYE}Sablblbllblb!$"

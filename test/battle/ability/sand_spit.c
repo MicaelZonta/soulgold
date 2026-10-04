@@ -4,6 +4,7 @@
 SINGLE_BATTLE_TEST("Sand Spit sets up sandstorm for 5 turns when hit")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER, GEN_6);
         PLAYER(SPECIES_SANDSLASH) { Moves(MOVE_CELEBRATE); Ability(ABILITY_SAND_SPIT); }
         OPPONENT(SPECIES_LANDORUS) { Moves(MOVE_TACKLE, MOVE_CELEBRATE); }
     } WHEN {
@@ -28,6 +29,7 @@ SINGLE_BATTLE_TEST("Sand Spit sets up sandstorm for 5 turns when hit")
 SINGLE_BATTLE_TEST("Sand Spit sets up sandstorm for 8 turns when hit with Smooth Rock")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER, GEN_6);
         PLAYER(SPECIES_SANDSLASH) { Moves(MOVE_CELEBRATE); Ability(ABILITY_SAND_SPIT); Item(ITEM_SMOOTH_ROCK); }
         OPPONENT(SPECIES_LANDORUS) { Moves(MOVE_TACKLE, MOVE_CELEBRATE); }
     } WHEN {
@@ -80,6 +82,7 @@ SINGLE_BATTLE_TEST("Sand Spit triggers even if the user is knocked out by the hi
 SINGLE_BATTLE_TEST("Sand Spit sets up sandstorm for 8 turns when hit with Smooth Rock (Items)")
 {
     GIVEN {
+        WITH_CONFIG(B_ABILITY_WEATHER, GEN_6);
         PLAYER(SPECIES_SANDSLASH) { Moves(MOVE_CELEBRATE); Ability(ABILITY_SAND_SPIT); Items(ITEM_PECHA_BERRY, ITEM_SMOOTH_ROCK); }
         OPPONENT(SPECIES_LANDORUS) { Moves(MOVE_TACKLE, MOVE_CELEBRATE); }
     } WHEN {

@@ -15,6 +15,7 @@ Route10_PowerPlantEntrance_EventScript_Cop::
 	goto_if_ge VAR_KANTO_ROCKET_STORY_STATE, 3, Route10_PowerPlantEntrance_EventScript_CopAfterDone
 	msgbox Route10_PowerPlantEntrance_Text_Officer1AThiefBrokeIn, MSGBOX_DEFAULT
 	closemessage
+	release
 	end
 
 Route10_PowerPlantEntrance_EventScript_CopDuringRocket::
@@ -23,6 +24,7 @@ Route10_PowerPlantEntrance_EventScript_CopDuringRocket::
 	msgbox Route10_PowerPlantEntrance_Text_Officer1CeruleanShadyCharacter, MSGBOX_DEFAULT
 	msgbox Route10_PowerPlantEntrance_Text_Officer1CouldIAskForYourCooperation, MSGBOX_DEFAULT
 	closemessage
+	release
 	end
 
 Route10_PowerPlantEntrance_EventScript_CopAfterDone::
@@ -30,6 +32,7 @@ Route10_PowerPlantEntrance_EventScript_CopAfterDone::
 	faceplayer
 	msgbox Route10_PowerPlantEntrance_Text_Officer1HaveToBeefUpSecurity, MSGBOX_DEFAULT
 	closemessage
+	release
 	end
 
 Route10_PowerPlantEntrance_EventScript_Engineer1::

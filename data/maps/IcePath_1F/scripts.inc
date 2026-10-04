@@ -21,10 +21,18 @@ IcePath_1F_EventScript_KimonoGirl::
 	goto_if_eq VAR_FACING, DIR_SOUTH, IcePath_1F_EventScript_KimonoGirlPushPrompt
 	msgbox IcePath_1F_Text_Stuck1, MSGBOX_DEFAULT
 	closemessage
+	@ Once she has asked for help, the corridor to Blackthorn at (49,29) is
+	@ guarded by IcePath_1F_Trigger_KimonoGirl (VAR_ICE_PATH_STATE == 1) until
+	@ she is pushed free (state 2). Decision of the author, 30/09/2026 (bug/B07).
+	call_if_eq VAR_ICE_PATH_STATE, 0, IcePath_1F_EventScript_KimonoGirlAskedForHelp
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	release
 	end
+
+IcePath_1F_EventScript_KimonoGirlAskedForHelp::
+	setvar VAR_ICE_PATH_STATE, 1
+	return
 
 IcePath_1F_Trigger_KimonoGirl::
 	lock
@@ -88,7 +96,7 @@ IcePath_Movement_KimonoLeave:
 	step_end
 
 IcePath_1F_Text_Leave:
-	.string "Kimono Girl: .....................$"
+	.string "{SPEAKER NAME_KIMONO_GIRL}.....................$"
 
 IcePath_1F_Text_Stuck1:
     .string "Me oh my... Is that you, {PLAYER}?\n"
@@ -121,7 +129,7 @@ IcePath_1F_Text_Cruel:
     .string "You will push my back, won't you?$"
 
 IcePath_1F_Text_Thanks:
-    .string "You really are kind.\n"
+    .string "{SPEAKER NAME_KIMONO_GIRL}You really are kind.\n"
     .string "Thank you so much!$"
 
 IcePath_1F_Rival::

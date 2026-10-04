@@ -34,6 +34,11 @@ Imprime a grade de colisão com as posições dos objetos e dos warps
 sobrepostas. Use a saída como fonte de verdade; não confie em memória nem
 em comentários antigos do script.
 
+> ⚠️ **Água tem colisão 0.** O que a torna intransitável a pé é o
+> *comportamento* do metatile, não o bit de colisão. O dump marca água com
+> `~` (e ledge/cachoeira com `^`); antes de 03/10/2026 ela saía como `.`, e o
+> Bugsy da horta foi posto de pé dentro do lago da Route 30. NPC só em `.`.
+
 Se for decodificar `map.bin` na mão, o formato é (`include/global.fieldmap.h:7-9`):
 
 | Bits | Campo | Máscara |
@@ -119,7 +124,7 @@ alguém no começo da cena, **recalcule a saída**.
 
 ## Checklist antes de fechar
 
-- [ ] Rodei `dump_mapa.py` e conferi que todo tile de todo `walk_*` é `.`
+- [ ] Rodei `dump_mapa.py` e conferi que todo tile de todo `walk_*` é `.` (nem `~` água, nem `^` ledge)
 - [ ] Toda `DIR_*` foi derivada da diferença de coordenadas, não de memória
 - [ ] Ninguém que precisa ser visto está ao sul do jogador durante a fala
 - [ ] Nenhum ator termina no tile de outro ator ou do jogador

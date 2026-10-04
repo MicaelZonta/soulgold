@@ -1,0 +1,1720 @@
+# Berry Master inteiro — plano de implementação em partes
+
+> **Plano rev1 — 30/09/2026.** Ordem de trabalho para implementar tudo o que está em
+> [`REI_DA_COLHEITA.md`](REI_DA_COLHEITA.md) (§1–§15): a horta, o Livro de Berries, o
+> cruzamento, os níveis, os pedidos, as infestações, a rotina com 10 falas por
+> evento, as batalhas de sempre, a sidequest “O Rei da Colheita” e as duas dungeons
+> dos corcéis. Substitui o §11 do `REI_DA_COLHEITA.md` e o §11 do
+> `BERRY_MASTER_DESIGN.md`.
+>
+> **Regras de todas as partes**
+>
+> - Cada parte **compila e se testa no jogo sozinha** (`make -j$(nproc)`, mGBA
+>   patchado). Build limpo só prova que compila.
+> - Cada parte é um commit (ou uma série curta) que deixa o jogo jogável. Nenhuma
+>   parte deixa NPC, canteiro ou fala “pela metade” visível para o jogador.
+> - Parte que cria ou passa a usar flag termina com `python3 dev_scripts/flag_audit.py
+>   --csv` e a leitura do diff (skill `catalogar-flags`).
+> - Texto no jogo em inglês, quebrado com `.claude/skills/nomear-falante/medir_linha.py`.
+> - `Route30` e `Route30_House` **não têm `.pory`**: edita-se o `scripts.inc`. Mapas
+>   novos podem nascer com `.pory` se o autor preferir; o plano assume `.inc`.
+> - Onde o plano e o `REI_DA_COLHEITA.md` discordarem num fato de design, vale o
+>   documento de design; onde discordarem num fato do código, vale o código (e o
+>   documento é corrigido na mesma parte).
+
+---
+
+## 0. Mapa das partes
+
+| # | Parte | Entrega jogável | Depende de |
+|---|---|---|---|
+| 1 | Alocação e fundação ✅ 30/09 | constantes, vars, flags, plaquinhas, itens; nada visível | — |
+| 2 | A horta física ✅ 30/09, testada no jogo 03/10 (QA) | 10 canteiros + canteiro da Laurel na Route 30; plantar, regar, colher | 1 |
+| 3 | Livro de Berries ✅ 30/09, testada no jogo 03/10 (QA) | colher registra; o Bram só dá berries do Livro; marcos | 1, 2 |
+| 4 | Cruzamento completo ✅ 30/09, testada no jogo 03/10 (QA) | 58 receitas em 6 bits; Lansat/Starf só pós-Liga | 2, 3 |
+| 5 | Estado diário ✅ 30/09, testada no jogo 03/10 (QA) | `FLAG_DAILY_GARDEN_NEW_DAY` + `VAR_GARDEN_TODAY` | 1 |
+| 6 | Níveis da horta ✅ 30/09, testada no jogo 03/10 (QA) | reformas 1–4, canteiro B, irrigação, semente encomendada | 3, 5 |
+| 7 | Pedidos do dia ✅ 03/10, testada no jogo 03/10 (QA) | comum e descoberta, dica da Laurel | 3, 4, 5, 6 |
+| 8 | Elenco e rotina ✅ 03/10, QA rápido no jogo (falta o roteiro do autor) | Bram, Laurel, Tilly, Sunflora por horário e dia da semana | 2, 5 |
+| 9 | Banco de falas ✅ 03/10, QA rápido no jogo (falta o roteiro do autor) | rodízio de 10, corações, reações de contexto | 5, 8 |
+| 10 | Infestações ✅ 03/10, QA rápido no jogo | pragas e ervas só na horta; 8 famílias só daqui | 2, 6 |
+| 11 | Batalhas de sempre (Tilly, Bugsy, Klara) ✅ 03/10, QA rápido no jogo | `garden_fight`; assalto da Klara | 5, 8, 10 |
+| 12 | Sidequest — Prólogo ao Ato 4 ✅ 03/10, QA no jogo dos 8 estados | estados 0 → 8 | 3, 6, 8, 10 |
+| 13 | Sidequest — Ato 5 e 5b ✅ 03/10, QA no jogo | estados 8 → 10/11, Peony e Peonia hóspedes, cenouras | 12 |
+| 14 | Caminho branco — Greenfield | 2 mapas novos, Glastrier, estado 10 → 12 | 13 |
+| 15 | Caminho escuro — Torre de Bronze | 2 mapas novos, Spectrier, estado 11 → 13 | 13 |
+| 16 | Ato 7, Epílogo e pós-história | estados 12/13 → 15, nível 5, Avery, Peony/Peonia, Mustard | 11, 14 ou 15 |
+| 17 | Fechamento | auditorias, Nexus, renders, jogada completa | todas |
+
+As partes 14 e 15 são independentes entre si (dá para fazer uma, testar a 16 com ela,
+e fazer a outra depois). As partes 9, 10 e 11 podem trocar de ordem entre si.
+
+### QA no jogo das partes 1–6 (03/10/2026)
+
+O roteiro `TESTES_NO_JOGO.md` (T01–T40 + T11b) foi rodado inteiro no mGBA headless (skill
+`testar-no-jogo`), com prints e leitura da RAM: **40 passaram, 1 com observação** (T32: o
+som de compra não se ouve no emulador headless), nenhum falhou. Relatório: página “QA do
+Berry Master” e `.claude/berry_master/QA_2026-10-03.md`. Achados fora da horta, todos
+corrigidos e retestados: pomar do WorldHub sem árvores por falta de slot de objeto (limite
+16 → 24, commit `0fd111d`, e NPCs afastados do pomar, `bdfdabc`); duas falas da mãe sem
+plaquinha. Bugs da horta achados pelo autor antes do QA: 1 (covas rosa), 2 (terra
+molhada), 3 (dinheiro no lugar do Livro) e a ordem da conversa do Bram — todos corrigidos.
+
+### Revisão das partes 1–3 (30/09/2026)
+
+Revisão pedida pelo autor antes da Parte 4. O que ela achou e o que foi feito:
+
+| # | Achado | Gravidade | Feito |
+|---|---|---|---|
+| 1 | Plaquinha em 2 bytes com base 255: do índice 250 em diante o byte baixo vira `FA`..`FE` (`\l`, `\p`, código, placeholder, `\n`). A fala desenha certo, mas `StripLineBreaks` (`line_break.c`) e o braille varrem byte a byte e leriam `FE` como quebra de linha. Faltavam 7 falantes para acontecer | alta, latente | Base **250** (`SPEAKER_ARG_BASE`); abaixo de 250 os bytes são os mesmos, o charmap não mudou um byte. As ferramentas da skill leem a base do cabeçalho em vez de ter `255` escrito à mão |
+| 2 | No dia do tutorial o Bram dizia “One more thing… o Livro” e logo “You came back! And you looked at the trees” na mesma conversa (defeito antigo, a fala do Livro deixou à vista); a caixa ainda fechava e reabria entre as duas | média | Fala própria para a visita do tutorial (“And since you're here, take two more.”, `FLAG_TEMP_1`), e a caixa fica aberta |
+| 3 | `REI_DA_COLHEITA.md` ainda dizia que a Oran natural sai, que o registro é no script, que o C fica em `berry.c`, e contava 15 objetos (são 16 com o Caterpie) | média (regra do plano: o doc é corrigido na mesma parte) | Corrigido nos 5 pontos, marcado *código (parte N)* |
+| 4 | Skill `alocar-flag` mandava alocar em `0x1047` (velho desde antes da horta); `vars.h` sem marcador de próxima var | média | A skill manda ler o marcador `PROXIMA FLAG NOVA`; `vars.h` ganhou `PROXIMA VAR NOVA: 0x412E` |
+| 5 | Comentários de `flags.h`/`vars.h` citavam `GardenRollDay` e `GardenHearts_Talk`, que ainda não existem | baixa | Marcados “plan part 5/9, not written yet” |
+| 6 | Nenhum teste automático | — | `test/berry_garden.c`: 12 testes (faixa dos canteiros, canteiros e da Laurel não renascem, Oran do WorldHub renasce, Livro só aceita berry e vai de Cheri a Maranga, iniciais idempotentes, sorteios sem Lansat/Starf/Enigma e alcançando todo registrado, rara sem Enigma, marcos em ordem e sem o 66, colheita põe na bolsa e no Livro). **Compilam, mas não rodam** (item 7) |
+| 7 | A infraestrutura de testes do repo **não roda hoje**, sem relação com a horta: (a) `test/vs_seeker.c` cita treinadores de Hoenn que não existem e `test/battle/*.party` quebra com `-Werror=override-init`; (b) o ROM de teste tem 39 MB e o `mgba-rom-test` de fábrica só lê 32 MB (opcode ilegal no primeiro frame). O mGBA patchado lê, mas não tem o executor `rom-test` | alta para o repo | **Não feito** (fora do escopo): recomendação de portar o `rom-test` para `tools/mgba-master` e consertar os dois arquivos de teste. Comando que chegou a compilar e linkar só a horta: `make check TEST_SHARDS=1 CFLAGS=-Wno-error=override-init TEST_SRCS_IN="test/test_runner.c test/test_runner_args.c test/test_runner_battle.c test/berry.c test/berry_garden.c"` |
+| 8 | Site público de documentação (`tools/soulgold_docs`) não foi regenerado com as cenouras | decisão do autor | **Não feito de propósito:** as cenouras são spoiler do Crown Tundra e ainda não têm fonte. Regenerar quando a Parte 13 der a fonte |
+
+Medido com a skill `limites-do-engine` (`dev_scripts/limites_janela_objetos.py --mapa
+Route30`): pior janela de spawn = **14** objetos em (21,35), contando os escondidos por
+flag; nenhum mapa do jogo passa de 15. Save: `SaveBlock1` com 428 bytes livres — a
+Parte 4 não gasta nada (os 6 bits de mutação usam o `padding:2` que já existe).
+Para a Parte 8 existem **duas** saídas para o 16º objeto: tirar o Caterpie de (36,34),
+ou subir `OBJECT_EVENTS_COUNT` (cabe até 27 sem aumentar o save, mas exige o conserto
+do `waitmovement` e de `MAX_SPRITES`, ver `.claude/limites-do-engine.md`). Decisão do
+autor na Parte 8.
+*(Resolvido em 02/10/2026, commit `0fd111d`: `OBJECT_EVENTS_COUNT` subiu para **24**, com
+o `waitmovement` e `MAX_SPRITES` consertados. A Route 30 com Laurel, Bugsy e o canteiro da
+Laurel cabe sem tirar o Caterpie; a Parte 8 só confere a conta com
+`dev_scripts/limites_janela_objetos.py --mapa Route30`.)*
+
+Conferido e sem problema: limite de 64 templates por mapa (Route 30 com 33, sobra para o
+elenco); `SetBerryTreeJustPicked` sem teto de `local_id`; Berry Pouch é item-chave sem uso
+(prêmio cosmético seguro); os 4 `case` do `text.c` e o `GetExtCtrlCodeLength` pulam os 2
+bytes; nenhum script cita `local_id` da Route 30 acima de 6; `FLAG_TEMP_5/6` não aparecem
+em script comum; build limpo, `map_graph` ok, `checar_falantes.py` “241, tudo em ordem”,
+`medir_linha.py` sem estouro nos dois mapas.
+
+### Como testar: menu de debug “Berry Master…” (30/09/2026)
+
+No jogo de desenvolvimento (`make -j$(nproc)`; o release não tem debug): **L + START** no
+campo → **Berry Master…**. Tudo nele muda o save do jeito que o jogo mudaria e diz o que
+fez. Código: `sDebugMenu_Actions_BerryMaster*` em `src/debug.c`, scripts
+`Debug_EventScript_Berry*` em `data/scripts/debug.inc`, regras `BerryDebug_*` em
+`src/berry_garden.c`.
+
+| Item | Faz |
+|---|---|
+| Status | nível, obra, canteiros plantados, Livro, marco pago e devido, hora, bits do dia, estado da sidequest, presente do Bram |
+| Go: the garden / Go: Bram's house | teleporte para (27,45) na Route 30 / porta da casa |
+| Clock… | +1 h, +6 h, +24 h, próxima 7:00 (que pode ser a de **hoje**: para virar o dia, use +24 h) — **move o relógio de verdade** (o deslocamento do RTC, como o relógio de parede), só para a frente, e recarrega o mapa: as árvores crescem as horas puladas e a virada de dia limpa as flags diárias pelo caminho normal |
+| Clock… → New day, keep clock | dia novo **da horta** sem mexer no relógio: presente do Bram e rara da Laurel de volta, obra paga concluída |
+| Book of Berries… | Livro com 8, 11, 12, 22, 32, 60, 66 (sem Enigma) ou 67; “Milestones unpaid” zera os marcos pagos |
+| Garden level… | nível 1–4 (descarta obra em andamento) e recarrega |
+| Ripen / Grow 1 stage / Empty | os 10 canteiros: tudo maduro, um estágio, ou terra vazia (vazio inclui o da Laurel) |
+| Act 1 done: toggle | `VAR_HARVEST_KING` 0 ↔ 4 (libera as ofertas dos níveis 3 e 4) |
+| League clear: toggle | `FLAG_SYS_GAME_CLEAR` (rara da Laurel; Lansat e Starf cruzam) |
+| Order: new common / new discovery | apaga o pedido de hoje; a próxima conversa com o Bram sorteia e anuncia um daquele tipo (descoberta sem candidata → comum) |
+| Give ¥10,000 / Money: set to ¥0 / 5 of each Mulch | dinheiro para as reformas (ou nenhum, para testar a recusa); os 8 adubos |
+| Reset Berry Master | save que nunca viu o Bram: tutorial de novo, Livro, horta, níveis, marcos e história zerados |
+
+Berries para plantar: **PC/Bag… → Fill Pocket Berries** (já existia).
+
+**Roteiros por parte**
+- **Parte 2:** Reset Berry Master → Go: Bram's house → tutorial → Go: the garden → plantar
+  no A; B é grama; placa em (23,38). Garden level… → 2 → o B vira terra com 4 canteiros.
+- **Parte 3:** Book… → 11, falar com o Bram (nada); Book… → 12, falar → 5 Growth Mulch
+  (e, junto, a oferta da reforma do nível 2, que é da Parte 6).
+  Colher de uma árvore de rota fora das 8 → Status mostra o Livro +1.
+- **Parte 4:** a mutação é sorteada **no plantio** (25%, contra o vizinho já plantado) e
+  só aparece **na colheita**. Ciclo: Fill Pocket Berries → plantar Chesto em A1 →
+  plantar Cheri em A2 → Ripen → falar com A2: “…and 1 Lum Berry!” (se não veio, Empty e
+  repetir; ~4 tentativas em média). Micle ao lado de Custap: sem League clear nunca dá
+  Lansat; com League clear, dá.
+- **Parte 5:** Status (bits do dia); Clock… → +24 h → bits zerados.
+- **Parte 6:** Book 12, ¥10,000, falar com o Bram → pagar → Clock… → +24 hours →
+  “Four more beds!” e o B aberto; o presente vira 3 / semente à escolha. Book 22 + Act 1
+  → oferta do canal → pagar → dia seguinte → plantar → +24 h → ao entrar, já regado.
+
+**Pendências do autor** (nenhuma bloqueia as partes 1–12; ver §18):
+~~sprites de Peony, Peonia, Klara, Avery, Mustard e Molly adulta~~ (overworlds no jogo em 03/10/2026, no lugar dos provisórios); prêmios grandes (Peony,
+Mustard); falas novas dos moradores de Greenfield no estado 12.
+
+---
+
+## Parte 1 — Alocação e fundação
+
+**Objetivo.** Reservar tudo que as outras partes usam, num lugar só, antes de escrever
+qualquer script. Nada muda no jogo.
+
+**Skills:** `alocar-flag`, `nomear-falante`, `catalogar-flags`.
+
+**Fatos medidos no repo (30/09/2026)**
+
+| Fato | Onde |
+|---|---|
+| Última flag custom é `0x1052`; `CUSTOM_FLAGS_END` aponta para ela; próxima livre `0x1053` | `include/constants/flags.h:1943-1946` |
+| Última var custom é `VAR_SHINY_RATE` `0x4126`; livres a partir de `0x4127` até `VARS_END` `0x42FF` | `include/constants/vars.h:390-404` |
+| `FLAG_UNUSED_0x952` do design é o **bit 0x32 do bloco diário** (`DAILY_FLAGS_START + 0x32`); fora do bloco, `0x952` é `FLAG_TM_SLEEP_TALK` | `flags.h:1662`, `:1954` |
+| Plaquinhas são `SP_NAME_*` em `include/constants/speaker_names.h` (o design escreve `NAME_*`) | já existem `SP_NAME_PRYCE`, `SP_NAME_KURT`, `SP_NAME_BUGSY`, `SP_NAME_MORTY`, `SP_NAME_EUSINE` |
+| `ITEM_REINS_OF_UNITY` existe (704); Iceroot/Shaderoot Carrot **não** | `include/constants/items.h:856` |
+| `OW_BERRY_MUTATIONS`, `_WEEDS`, `_PESTS` = FALSE | `include/config/overworld.h:36-42` |
+
+**Passos**
+
+1. **Flags** (`flags.h`, bloco `CUSTOM_FLAGS`): `FLAG_BERRY_LEDGER_START 0x1053` ..
+   `FLAG_BERRY_LEDGER_END 0x1095` (67, em ordem de item), `CUSTOM_FLAGS_END` passa a
+   `FLAG_BERRY_LEDGER_END`. Comentário apontando para `REI_DA_COLHEITA.md` §3.2.
+2. **Flag diária**: `FLAG_DAILY_GARDEN_NEW_DAY` no primeiro bit livre do bloco diário
+   (o design sugere `+ 0x32`; conferir com `alocar-flag`).
+3. **Vars** novas, contíguas a partir de `0x4127` (em vez de reciclar
+   `VAR_GIFT_UNUSED_5..7`, que o design deixava “a conferir”):
+
+   | Var | Faixa | Uso |
+   |---|---|---|
+   | `VAR_GARDEN_TODAY` | bits | estado do dia (§14.6) |
+   | `VAR_GARDEN_HEARTS` | 4×4 bits | corações de Bram, Laurel, Tilly, Peony |
+   | `VAR_GARDEN_RIVALS` | contador | vitórias contra a Klara |
+   | `VAR_BERRY_GARDEN_LEVEL` | 1..5 | nível da horta |
+   | `VAR_BERRY_ORDER` | índice + qtd | pedido do dia |
+   | `VAR_HARVEST_KING` | 0..15 | estado da sidequest |
+
+   Recomendação a confirmar na hora: se o autor preferir reciclar os `VAR_GIFT_UNUSED`,
+   provar antes com `grep` que nada escreve neles.
+4. **IDs de árvore**: 11 apelidos em `include/constants/berry.h` sobre IDs só de Hoenn
+   sem berry natural, faixa contígua a partir de 5 (`BERRY_TREE_GARDEN_A1..A6`,
+   `_B1..B4`, `BERRY_TREE_KINGS_PLOT`), mais `BERRY_TREE_GARDEN_FIRST/LAST`. Conferir
+   que nenhum está em `sNaturalBerriesByTreeId` nem em `EventScript_ResetAllBerries`
+   (design rev1 §2.2).
+5. **Plaquinhas** (skill `nomear-falante`, os três arquivos na mesma ordem):
+   `SP_NAME_BERRY_MASTER` (“Berry Master”), `SP_NAME_LAUREL`, `SP_NAME_TILLY`,
+   `SP_NAME_CALYREX`, `SP_NAME_PEONY`, `SP_NAME_PEONIA`, `SP_NAME_KLARA`,
+   `SP_NAME_AVERY`, `SP_NAME_MUSTARD`, `SP_NAME_MOLLY`, `SP_NAME_TOMO`. Plaquinha “???”
+   para o Calyrex antes de se apresentar: conferir se a skill já tem o padrão.
+6. **Itens-chave**: `ITEM_ICEROOT_CARROT`, `ITEM_SHADEROOT_CARROT` (nome, descrição,
+   ícone emprestado de um item parecido até ter arte). Registrar no
+   `SOULGOLD_ITEMS_AUDIT` pelo `dev_scripts/item_audit.py`.
+7. `python3 dev_scripts/flag_audit.py --csv` e ler o diff: as 67 flags aparecem como
+   “não usadas” até a Parte 3; isso é esperado e fica anotado no commit.
+
+**Pronto quando:** build limpo; `checar_falantes.py` ok; o diff do CSV só mostra o
+bloco novo.
+
+### Parte 1 — feita (30/09/2026)
+
+**O que entrou**
+
+| O quê | Onde | Valor |
+|---|---|---|
+| Livro de Berries | `include/constants/flags.h` | `FLAG_BERRY_LEDGER_START 0x1053` (Cheri, item 514) .. `FLAG_BERRY_LEDGER_END 0x1095` (Maranga, 580); `CUSTOM_FLAGS_END` aponta para o END; próxima flag nova `0x1096` |
+| Flag diária | `flags.h`, bloco DAILY | `FLAG_DAILY_GARDEN_NEW_DAY` = `DAILY_FLAGS_START + 0x32` (`0x153A`), no lugar do `FLAG_UNUSED_0x952` do bloco diário |
+| Vars | `include/constants/vars.h` | `VAR_GARDEN_TODAY 0x4127`, `VAR_GARDEN_HEARTS 0x4128`, `VAR_GARDEN_RIVALS 0x4129`, `VAR_BERRY_GARDEN_LEVEL 0x412A`, `VAR_BERRY_ORDER 0x412B`, `VAR_HARVEST_KING 0x412C`, `VAR_BERRY_LEDGER_MILESTONE 0x412D`; próxima var livre `0x412E` |
+| IDs de árvore | `include/constants/berry.h` | `BERRY_TREE_GARDEN_A1..A6` = 5..10, `_B1..B4` = 11..14, `BERRY_TREE_KINGS_PLOT` = 15; `GARDEN_FIRST` = A1, `GARDEN_LAST` = **B4** |
+| Plaquinhas | os 3 arquivos, índices `00 55`..`00 60` (2 bytes) | `NAME_BERRY_MASTER`, `_LAUREL`, `_TILLY`, `_CALYREX`, `_PEONY`, `_PEONIA`, `_KLARA`, `_AVERY`, `_MUSTARD`, `_MOLLY`, `_TOMO`, **`_UNKNOWN` (“???”)** |
+| Itens-chave | `include/constants/items.h`, `src/data/items.h` | `ITEM_ICEROOT_CARROT 935`, `ITEM_SHADEROOT_CARROT 936`; ícone e paleta do Big Root nas duas (provisório) |
+| Catálogos | `docs/` | `SOULGOLD_FLAGS_AUDIT.csv`, `SOULGOLD_ITEMS_AUDIT.csv/.md` regenerados |
+
+**Onde a Parte 1 divergiu do plano, e por quê**
+
+1. **`VAR_BERRY_LEDGER_MILESTONE` já alocada** (pendência 7 do §18, na recomendação
+   “var própria”). Custa uma var e deixa a Parte 3 sem decisão pendente. Guarda o
+   último marco **pago** (0, 12, 20 … 66), não um índice.
+2. **Pendência 6 fechada:** vars novas em `0x4127..`, nenhum `VAR_GIFT_UNUSED` reciclado.
+3. **O canteiro da Laurel fica fora de `GARDEN_FIRST..LAST`.** A faixa cobre só os 10
+   canteiros (5..14); `KINGS_PLOT` é o 15, logo depois. Motivo: praga, erva e a rega
+   automática do nível 3 seguem a horta, e o canteiro da Laurel segue a história (uma
+   praga em cima da Enigma no Ato 4 quebraria a cena). Se o autor quiser o contrário,
+   é trocar `GARDEN_LAST` para `BERRY_TREE_KINGS_PLOT`, uma linha.
+4. **Plaquinha “???” genérica** (`SP_NAME_UNKNOWN`), e não uma “Calyrex ???”: a skill
+   não tinha o padrão, e qualquer personagem que ainda não se apresentou pode usar.
+   Na troca de nome no meio da cena, `{SPEAKER NAME_UNKNOWN}` → `{SPEAKER NAME_CALYREX}`.
+5. **Descrição das cenouras** (texto provisório, o autor pode trocar):
+   “A carrot grown from / a seed of the Crown / Tundra. Icy cold.” e “… Pitch black.”
+   Medidas contra as descrições que já existem (a maior tem ~108 px; a nossa, 103 px).
+
+**O que as próximas partes precisam saber**
+
+- **O `flag_audit` não enxerga as 65 flags do meio do Livro.** Elas não têm nome
+  próprio (o C calcula `START + (item − FIRST_BERRY_INDEX)`), então o catálogo só lista
+  `FLAG_BERRY_LEDGER_START` e `_END`, hoje como `SO_EM_DOC`. O “pronto quando” da
+  Parte 3 (“as 67 como lidas e escritas pelo C”) **não vai aparecer no CSV**: a
+  prova lá é o teste no jogo e um `STATIC_ASSERT(FLAG_BERRY_LEDGER_END -
+  FLAG_BERRY_LEDGER_START + 1 == ITEM_MARANGA_BERRY - FIRST_BERRY_INDEX + 1)` em
+  `src/berry.c`, que a Parte 3 deve pôr junto do `BerryLedger_Register`.
+- **`FLAG_DAILY_GARDEN_NEW_DAY` já sai `EM_USO` no catálogo** (0 leituras, 0 escritas)
+  porque o `ClearDailyFlags` limpa o bloco inteiro. Não é sinal de que alguém a usa.
+- **As cenouras estão `SEM FONTE`** no catálogo de itens até a Parte 13.
+- **Os dois catálogos estavam atrasados** antes desta parte. O de flags tinha 10
+  linhas com contagem de docs velha (`FLAG_SYS_NO_CATCHING` passou de
+  `SO_MAPAS_FORA_DA_ROM` para `SO_ESCRITA` só por isso). O de itens tinha sido gerado
+  por uma versão antiga do `item_audit.py` (sem as colunas `display_name`,
+  `out_camp_detail`, `trainer_held_only`), então o diff dele é o arquivo inteiro; foi
+  regravado com CRLF, como estava. Por isso os catálogos foram para um commit separado.
+- **Plaquinhas em 2 bytes.** No mesmo dia o índice de `{SPEAKER ...}` passou a 2 bytes
+  e o jogo inteiro foi convertido para plaquinha (commit dos falantes, logo antes
+  deste). As 12 da horta ficaram em `00 55`..`00 60`; `checar_falantes.py` dá
+  “241 falantes, tudo em ordem”. Falante novo agora entra por
+  `.claude/skills/nomear-falante/adicionar_falante.py`, não à mão.
+- Os IDs 5..15 só aparecem em `Route103/104/123`, todos `fora da ROM`
+  (`map_graph.py info`), e nenhum está em `sNaturalBerriesByTreeId` nem em
+  `EventScript_ResetAllBerries`. Um save antigo não tem nada gravado neles.
+
+**Teste no jogo:** nada muda no jogo nesta parte. O build limpo prova os asserts do
+save (`global.h`, `save.c`). A primeira coisa visível é a Parte 2.
+
+---
+
+## Parte 2 — A horta física
+
+**Objetivo.** Os canteiros existem e funcionam como terra de berry normal. Sem
+cruzamento, sem praga, sem Livro ainda.
+
+**Skills:** `encenar-cutscene` (medir colisão), `visibilidade-e-gatilhos`,
+`mapa-de-ligacoes` (só conferir que nada muda de ligação), `prototipo-de-mapa`
+(render antes/depois).
+
+**Passos**
+
+1. **Metatiles** em `data/layouts/Route30/map.bin`: canteiro A = (28..30, 43..44),
+   hoje 189–191/205–207 → **46 com colisão**; canteiro B = (30..31, 41..42) → 46 com
+   colisão; o canteiro da Laurel já é a árvore Oran de (23,38). Medir tudo com
+   `dump_mapa.py Route30` antes.
+2. **Objetos** em `data/maps/Route30/map.json`: 10 objetos de árvore
+   (`BERRY_TREE_GARDEN_*`) e a árvore de (23,38) trocada para `BERRY_TREE_KINGS_PLOT`.
+   **Tirar o Weedle decorativo de (19,42)** (decisão 7 do autor).
+3. **Oran natural sai**: `BERRY_TREE_ORAN_2` sai de `sNaturalBerriesByTreeId` e de
+   `EventScript_ResetAllBerries`, para o canteiro da Laurel não renascer Oran.
+4. **Canteiro B trancado**: no `ON_LOAD` da Route 30, com `VAR_BERRY_GARDEN_LEVEL < 2`,
+   `setmetatile` das 4 células de volta para grama sem colisão; no `ON_TRANSITION`,
+   `setflag` da `FLAG_TEMP` que esconde os 4 objetos do B. As duas coisas: árvore vazia
+   é invisível **mas interativa**.
+5. **Canteiro da Laurel trancado** até o Ato 3: objeto escondido por `FLAG_TEMP` no
+   `ON_TRANSITION` e `bg_event` no mesmo tile: “The soil here is hard and cold.
+   Nothing's grown in it for a long time.”
+6. Por enquanto `VAR_BERRY_GARDEN_LEVEL` = 1 quando o tutorial do Bram (que já existe)
+   termina; só o A abre.
+
+**Teste no jogo:** plantar nas 6 células do A, regar com a Squirtbottle, esperar,
+colher; o B e o canteiro da Laurel não perguntam “plantar?”; o `bg_event` responde;
+contar objetos na pior posição (jogador em (27,40)) com o render.
+
+**Pronto quando:** render da Route 30 (dia e noite) mostra a horta; nenhum canteiro
+invisível; nenhuma árvore de rota perdeu a berry.
+
+### Parte 2 — feita no código (30/09/2026), falta o teste no jogo
+
+**O que entrou**
+
+| O quê | Onde |
+|---|---|
+| 10 células de solo: metatile 46, colisão 1, **elevação 3** (a mesma da grama em volta) — valor `0x382E` (ver “Bug 1” abaixo) | `data/layouts/Route30/map.bin`, A (28..30, 43..44) e B (30..31, 41..42) |
+| 10 objetos `BERRY_TREE_GARDEN_A1..A6` / `_B1..B4`, local ids 24..33 | `data/maps/Route30/map.json` (no fim, para não mexer nos ids antigos) |
+| Árvore de (23,38) → `BERRY_TREE_KINGS_PLOT`, flag `FLAG_TEMP_HIDE_KINGS_PLOT` | idem |
+| `bg_event` em (23,38) → `Route30_EventScript_ColdSoil` (“The soil here is hard and cold. / Nothing's grown in it for a long time.”) | idem, `scripts.inc` |
+| Weedle decorativo de (19,42) removido; ids 12..24 desceram um (nenhum script os citava) | idem |
+| `ON_TRANSITION` → `Route30_EventScript_GardenVisibility`: esconde o B com nível < 2 e sempre o canteiro da Laurel | `data/maps/Route30/scripts.inc` |
+| `ON_LOAD` novo → `LockGardenBSoil`: B volta a grama (0, 0, 1, 0) com nível < 2 | idem |
+| `FLAG_TEMP_HIDE_GARDEN_B` = `FLAG_TEMP_5`, `FLAG_TEMP_HIDE_KINGS_PLOT` = `FLAG_TEMP_6` (apelidos) | `include/constants/flags.h` |
+| Fim do tutorial do Bram: `setvar VAR_BERRY_GARDEN_LEVEL, 1` | `data/maps/Route30_House/scripts.inc` |
+
+**Onde divergiu do plano, e por quê**
+
+1. **O passo 3 não foi feito, e não deve ser.** `BERRY_TREE_ORAN_2` **não** é só da
+   Route 30: o `WorldHub` (alcançável, pela casa do jogador em New Bark) tem uma horta
+   de árvores naturais e usa o mesmo ID em (4,31). As duas árvores dividiam o estado
+   até agora. Trocar o objeto da Route 30 para `KINGS_PLOT` já basta: a Route 30 deixa
+   de ter Oran natural, e o WorldHub continua com a dele.
+2. **Save antigo.** Quem já tinha feito o tutorial antes desta parte fica com
+   `VAR_BERRY_GARDEN_LEVEL` = 0. O `ON_TRANSITION` da Route 30 corrige: com
+   `FLAG_GOT_BERRY_ROUTE_30_HOUSE` e nível 0, grava 1. A Parte 6 não precisa pensar nisso.
+3. **Canteiro A não tem trava.** Ele fica aberto desde o começo, até antes do tutorial,
+   porque o nível só importa para o B. Se o autor quiser o A fechado até o tutorial, é
+   o mesmo par de travas do B (flag temp + `setmetatile`).
+4. **Elevação 3 no solo novo**, e não 0 como no solo de (23,38) e na maioria das
+   árvores de Johto. Com 3, o `setmetatile` que devolve a grama no B (ele preserva a
+   elevação) deixa a mesma elevação do resto do chão.
+
+**Orçamento de objetos (medido com a janela real do spawn, `TrySpawnObjectEvents`)**
+
+Hoje, na pior posição ((27,40) ou (31,40)), com o nível 2: 10 canteiros + o
+**Caterpie decorativo de (36,34)** = 11, mais jogador e follower = **13**. O design
+(§2.3) não contava esse Caterpie. Quando a Parte 8 puser Laurel e Bugsy (e o Ato 3
+mostrar o canteiro da Laurel), a conta vai a **16**, acima do limite. **A Parte 8
+tem que tirar o Caterpie de (36,34)** (ou movê-lo para fora da janela), como foi
+feito com o Weedle.
+
+**Renders** (nível 1 de dia, nível 1 à noite, nível 2): o B vira grama no nível 1, o
+A aparece, e (23,38) mostra só a terra. Os três ficaram no scratchpad da sessão;
+não são versionados.
+
+**Bug 1 do teste no jogo (02/10/2026), corrigido:** as 10 covas apareciam como blocos
+**rosa** (um tile do secundário de Cherrygrove) e **sem colisão**. Causa: o `map.bin` foi
+gravado com o layout do pokeemerald original (ID do metatile em 10 bits, colisão no bit
+10), mas **neste repo o ID tem 11 bits** (`MAPGRID_METATILE_ID_MASK 0x07FF`,
+`include/global.fieldmap.h`) e a colisão é o **bit 11**. “46 + colisão” virou o metatile
+**1070**. Gravado de novo como `0x382E` (46, colisão 1, elevação 3), igual em ID e colisão
+à cova da Laurel (`0x082E`). A armadilha já estava escrita no `SKILL.md` da
+`encenar-cutscene`, que esta parte listava e não foi lida; e o `check_objects` do
+`mapa_kit` **não** marcava as covas como bloqueio, sintoma que foi explicado em vez de
+investigado. Regra: decodificar `map.bin` só com as máscaras de `global.fieldmap.h`, e
+conferir o valor contra uma célula que já funciona.
+
+**Bug 2 do teste no jogo (02/10/2026), corrigido — terra molhada:** regar não mudava
+nada na tela. O Gen 3 não tem tile de terra molhada (só o HGSS escurece a terra), e o
+primário de Johto e o secundário de Cherrygrove estão com 640/640 e 384/384 tiles. Feito
+sem tile novo (técnica 1 da skill `montar-tileset`): a paleta **7** do secundário
+`CherrygroveCity` não é usada por nenhum metatile (nem dos primários `Johto_General` e
+`Johto_NorthWest` que se juntam a ele), então ganhou a terra escurecida nos índices que o
+tile 12 usa (9, 11, 12, 13, 15); o metatile novo **0x4C8**
+(`METATILE_CherrygroveCity_SoilWet`, anexado no fim) é o 46 com a camada da terra na
+paleta 7. `BerryTree_UpdateSoilTile` (`src/berry.c`), chamada a cada quadro pela árvore
+(`MovementType_BerryTreeGrowth_Normal`), troca seco ↔ molhado conforme o bit de rega do
+estágio atual — molhada depois da Squirtbottle ou do canal, seca no estágio seguinte, na
+colheita e em cova vazia — e só mexe num tile que seja exatamente o seco ou o molhado da
+tabela `sWetSoil`, mantendo a colisão. Outro tileset ganha terra molhada com uma linha na
+tabela e um metatile seu. `check_tileset.py secondary/cherrygrove_city` limpo.
+
+**Teste no jogo (falta, o autor faz):**
+- Save novo: tutorial do Bram, sair, plantar nas 6 células do A, regar, esperar, colher.
+- As 4 células do B: grama, dá para andar em cima, ninguém pergunta “plantar?”.
+- (23,38): a placa responde, não pergunta “plantar?”.
+- Save antigo com o tutorial já feito: entrar na Route 30 e conferir que o A funciona.
+- Árvore Oran do WorldHub continua dando Oran.
+
+---
+
+## Parte 3 — Livro de Berries
+
+**Objetivo.** A colheita registra a berry, e o presente diário do Bram passa a sair
+só do Livro. Base de tudo o que vem depois.
+
+**Skills:** `alocar-flag` (já feito), `catalogar-flags`, `entregar-pokemon-ou-ovo`
+(não se aplica; mas a ordem `checkitemspace` antes de dar vale igual).
+
+**Passos**
+
+1. **C** (`src/berry.c`): `BerryLedger_Register`, `BerryLedger_Count`,
+   `BerryLedger_RandomRegistered` (sem Lansat, Starf, Enigma),
+   `BerryLedger_BuildSeedMenu` (fica pronto para a Parte 6),
+   `BerryLedger_NextDiscovery` (depende da tabela da Parte 4: nesta parte devolve
+   “nenhuma” com a tabela de 13 do jogo, e passa a valer sozinho quando a tabela crescer).
+   Registrar os specials em `data/specials.inc`.
+2. **Gancho na colheita**: `BerryTree_EventScript_PickBerry` e a versão com mutação
+   (`data/scripts/berry_tree.inc`) chamam `BerryLedger_Register` logo depois de dar as
+   berries. Vale para horta **e** rota. Comprar não registra.
+3. **Tutorial**: ao fim do tutorial do Bram (`Route30_House/scripts.inc`), registrar as
+   8 iniciais (Cheri, Chesto, Pecha, Rawst, Aspear, Leppa, Oran, Persim).
+4. **Presente diário do Bram** (já existe, `FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY`):
+   troca o sorteio de pool pelo `BerryLedger_RandomRegistered`, 2 berries (3 a partir do
+   nível 2, na Parte 6).
+5. **Rara diária da Laurel** (já existe, pós-Liga): sorteia **do Livro**, raras, nunca
+   a Enigma.
+6. **Marcos** (12 / 20 / 30 / 40 / 50 / 60 / 66): o Bram confere
+   `BerryLedger_Count` na conversa e entrega o prêmio do §3.4 com `checkitemspace`
+   antes. Estado “já entreguei o marco N” sem flag nova: guardar o último marco pago num
+   nibble de `VAR_BERRY_GARDEN_LEVEL` **ou** numa var própria — decidir na parte (o
+   design não diz; recomendação: var própria `VAR_BERRY_LEDGER_MILESTONE`, mais simples
+   de ler em script).
+7. Fala do Bram quando não tem a berry: “I don't hand out what I don't grow, sprout…”.
+8. O marco 66 **não** toca a cena do nome ainda: deixa um gancho para a Parte 16
+   (`LaurelSaysName`, §14.1 item 4). *Para a Parte 16:* o `BerryLedger_Count`
+   **conta a Enigma**, então “66 no Livro” não é “todas menos a Enigma” (quem tem a
+   Enigma e falta uma outra também chega a 66). A condição tem que ser “todas as 66
+   que não são a Enigma”.
+
+**Teste no jogo:** colher uma Sitrus de rota → no dia seguinte o Bram pode dá-la;
+nunca dá uma que não foi colhida; debug com 12 flags ligadas → prêmio do marco 12 uma
+vez só; bolsa cheia → o Bram avisa e não perde o prêmio.
+
+**Pronto quando:** `flag_audit` mostra as 67 como lidas e escritas pelo C.
+
+### Parte 3 — feita no código (30/09/2026), falta o teste no jogo
+
+**O que entrou**
+
+| O quê | Onde |
+|---|---|
+| Arquivo novo das regras da horta; o Livro é o primeiro bloco | `src/berry_garden.c`, `include/berry_garden.h` |
+| `STATIC_ASSERT` de que o bloco de flags tem exatamente as 67 berries | `berry_garden.c` |
+| Specials `BerryLedger_Register` (`VAR_0x8004` = item), `_RegisterStarters`, `_Count`, `_RandomRegistered`, `_RandomRegisteredRare`, `_PendingMilestone` | `data/specials.inc` |
+| Registro na colheita: toda berry que **entra na bolsa** vai para o Livro, a normal e a de mutação, horta e rota | `ObjectEventInteractionPickBerryTree`, `src/berry.c` |
+| Tutorial registra as 8 do Bram e explica o Livro (“I don't hand out what I don't grow, sprout…”) | `Route30_House/scripts.inc` |
+| Presente diário: 2 berries sorteadas do Livro, nunca Lansat, Starf nem Enigma | idem |
+| Marcos 12/20/30/40/50/60 com o prêmio do §3.4, `checkitemspace` antes; a var só anda depois que o prêmio entrou | idem, `VAR_BERRY_LEDGER_MILESTONE` |
+| Rara diária da Laurel (pós-Liga): sorteada das raras **do Livro**, nunca a Enigma; sem nenhuma rara no Livro, fala nova e não gasta o dia | idem |
+
+**Onde divergiu do plano, e por quê**
+
+1. **O registro está no C, não no script** (passo 2). Os dois caminhos de colheita
+   (normal e com mutação) passam por `ObjectEventInteractionPickBerryTree`, e só ali
+   se sabe se a berry **entrou** na bolsa. Registrar no script exigiria repetir o
+   gancho em dois lugares e poderia registrar uma colheita que não coube. O special
+   `BerryLedger_Register` continua existindo para quem precisar pelo script.
+2. **Arquivo novo `src/berry_garden.c`** em vez de `src/berry.c`: o `berry.c` é do
+   motor (upstream), e a horta ainda vai ganhar estado diário, falas, corações e
+   pragas. O `berry.c` só ganhou o gancho de 4 linhas e o `#include`.
+3. **`BerryLedger_BuildSeedMenu` e `BerryLedger_NextDiscovery` não foram escritos
+   agora.** O primeiro só tem uso na Parte 6 (semente encomendada, `dynmultichoice`) e
+   o segundo depende da tabela de 58 receitas da Parte 4 (a de hoje é `static` em
+   `berry.c`). Escritos agora, seriam código sem teste possível. Entram nas Partes 6 e 7.
+   *(`BuildSeedMenu`: feito na Parte 6. `NextDiscovery`: Parte 7.)*
+4. **Save antigo:** `BerryLedger_RegisterStarters` roda em **toda** conversa com o
+   Bram (não custa nada, e é idempotente). Quem fez o tutorial antes desta parte ganha
+   as 8 iniciais no Livro na próxima conversa, e o sorteio nunca fica vazio.
+5. **O 3º berry do nível 2 não entrou** (passo 4): o texto de hoje diz “take two”, e o
+   nível 2 só existe na Parte 6, que muda o texto junto. *(Feito na Parte 6.)*
+6. **Marcos:** um texto só (“{STR_VAR_1} Berries! …”) para os seis; o `giveitem` já
+   diz o que foi. Vários marcos pendentes (save antigo com Livro grande) saem todos na
+   mesma conversa, em ordem. O 66 fica fora da lista: é da Parte 16.
+7. **Falas sem plaquinha**, como as do Bram e da Laurel que já existiam: a casa é uma
+   conversa de uma pessoa só. A Parte 9 decide se todo o banco de falas ganha plaquinha.
+
+**Catálogo:** `FLAG_BERRY_LEDGER_START` agora aparece `EM_USO` (lida e escrita pelo
+código). As 65 do meio continuam invisíveis para o `flag_audit` (é soma), como previsto.
+
+**Teste no jogo (falta, o autor faz):**
+- Save novo, tutorial: o texto do Livro aparece; nesse mesmo dia o presente é de
+  berries entre as 8 iniciais.
+- Colher uma berry de rota fora das 8 iniciais (Cheri, Chesto, Pecha, Rawst, Aspear,
+  Leppa, Oran, Persim) → nos dias seguintes ela pode sair no presente.
+- Bolsa sem espaço para berry na colheita → a berry **não** entra no Livro.
+- Marco (debug: ligar 12 flags do Livro): o Bram dá 5 Growth Mulch uma vez só; com
+  a bolsa cheia de adubo ele avisa e paga na próxima visita.
+- Pós-Liga, Livro sem rara: a Laurel diz que falta, e no mesmo dia, depois de colher
+  uma rara, ela dá.
+- Save antigo que já tinha o tutorial: falar com o Bram → presente normal.
+
+---
+
+## Parte 4 — Cruzamento completo
+
+**Objetivo.** As 67 berries nascem das 8 iniciais.
+
+**Skills:** nenhuma específica; `diagnosticar-flag` se a trava pós-Liga falhar.
+
+**Passos**
+
+1. `OW_BERRY_MUTATIONS` = TRUE.
+2. **4 → 6 bits**: `padding:2` do struct da árvore (`include/global.berry.h:80`) vira
+   `mutationC:2`; `union TreeMutation` ganha o campo; `GetTreeMutationValue` e
+   `SetTreeMutations` leem e gravam os 6 bits. Conferir o tamanho do struct com
+   `STATIC_ASSERT` (o save não pode crescer).
+3. `sBerryMutations` (`src/berry.c:2455`) passa de 13 para as 58 linhas do §4.2, com as
+   13 do jogo intocadas.
+4. **Trava pós-Liga**: `TryForMutation` ignora as linhas de Lansat e Starf sem
+   `FLAG_SYS_GAME_CLEAR`.
+5. **Script de verificação** em `dev_scripts/` (ex.: `berry_mutations_check.py`): lê a
+   tabela do C e confere que nenhum par se repete, que toda berry menos a Enigma tem
+   receita ou é inicial, e que a geração de cada uma bate com o §4.2. Rodar no CI se
+   for barato.
+
+**Teste no jogo (debug):** Chesto ao lado de Persim com Surprise Mulch → Kelpsy extra
+na colheita e Kelpsy no Livro; três gerações seguidas; Micle + Custap antes da Liga
+não dá Lansat; depois da Liga dá.
+
+**Pronto quando:** o script passa e as três gerações foram vistas no jogo.
+
+### Parte 4 — feita no código (30/09/2026), falta o teste no jogo
+
+**O que entrou**
+
+| O quê | Onde |
+|---|---|
+| `OW_BERRY_MUTATIONS` = TRUE | `include/config/overworld.h` |
+| `padding:2` → `mutationC:2`; índice da receita em 6 bits (C:B:A), `union TreeMutation` com o campo `c` | `include/global.berry.h`, `src/berry.c` |
+| `STATIC_ASSERT(sizeof(struct BerryTree) == 8)` (o save não cresce sem alguém ver) e `ARRAY_COUNT(sBerryMutations) <= 63` | idem |
+| `sBerryMutations`: as 13 do jogo **nas mesmas posições** + 45 novas, por geração = 58 | `src/berry.c` |
+| Trava pós-Liga: `IsMutationUnlocked` (Lansat, Starf só com `FLAG_SYS_GAME_CLEAR`) dentro de `GetMutationOutcome` | idem |
+| `dev_scripts/berry_mutations_check.py`: 6 regras (6 bits, par repetido, duas receitas, sem receita, alcançável, receita e geração iguais às do §4.2) | novo |
+| CI `.github/workflows/berry-mutations.yml`, no molde do `map-graph.yml` | novo |
+| 3 testes de cruzamento em `test/berry_garden.c` | idem |
+
+**Onde divergiu do plano, e por quê**
+
+1. **Consertado um defeito do motor (upstream) que o plano não previa.** O
+   `TryForMutation` sorteava a chance para **cada** árvore e, no primeiro vizinho
+   adjacente sorteado, devolvia o resultado **mesmo quando o par não tinha receita**.
+   Numa horta cheia, um vizinho sem receita roubava a chance do vizinho que tinha:
+   com 4 vizinhos, a chance real de uma receita caía bem abaixo dos 25% do design.
+   Agora só vizinho que forma receita (e está liberada) ganha sorteio, cada um com os
+   25% (50% com Surprise/Amaze Mulch). Com dois vizinhos com receita, a chance de
+   cruzar fica maior que 25%, e é isso que faz o canteiro cheio valer a pena (§4.2).
+2. **A trava pós-Liga vale no plantio**, que é quando o motor decide a mutação. Plantar
+   Micle ao lado de Custap antes da Liga e colher depois não dá Lansat; replantar
+   depois da Liga dá.
+3. **Verificador no CI** e não no `make`: o `map_graph` roda no `make` só como aviso,
+   e uma tabela errada tem que **barrar**, não avisar.
+
+**Medido**
+- `berry_mutations_check.py`: “ok - 58 receitas, 66 berries alcançáveis (geração
+  0: 8, 1: 15, 2: 13, 3: 13, 4: 8, 5: 5, 6: 2, 7: 2)” — igual ao ritmo do §4.2.
+- O verificador **pega** erro: testado com 5 tabelas quebradas de propósito (par
+  repetido, berry sem receita, geração errada, Enigma com receita, inicial com
+  receita), todas reprovadas com a mensagem certa.
+- Save: `struct BerryTree` continua com 8 bytes (o assert passa no build).
+- Falas de colheita com mutação (do motor, agora alcançáveis): pior caso real
+  (nome de 7 letras + “15 Maranga Berries”) = 200 px, dentro dos 208.
+
+**Teste no jogo (falta, o autor faz; debug ajuda):**
+- Cheri no canteiro, Chesto plantada ao lado **antes**, replantar a Cheri até cruzar →
+  na colheita, “and 1 Lum Berry”; a Lum entra no Livro.
+- Três gerações seguidas (ex.: Cheri+Chesto → Lum; Oran+Leppa → Sitrus; Lum+Sitrus →
+  Tamato).
+- Micle ao lado de Custap antes da Liga nunca dá Lansat; depois da Liga dá.
+- Árvore de rota natural ao lado de um plantio: pode ser o vizinho que cruza, mas ela
+  mesma nunca dá mutação (`stopGrowth`, regra do motor).
+
+---
+
+## Parte 5 — Estado diário da horta
+
+**Objetivo.** Uma flag diária e uma var de bits controlam tudo o que é “uma vez por
+dia”, como o Kurt (`VAR_KURT_TODAY` + `FLAG_DAILY_KURT_NEW_DAY`) e o Nexus.
+
+**Passos**
+
+1. Specials `GardenRollDay`, `GardenToday_Check`, `GardenToday_Set` (§14.6). O
+   `GardenRollDay` zera `VAR_GARDEN_TODAY` quando `FLAG_DAILY_GARDEN_NEW_DAY` está
+   limpa, seta a flag e sorteia os eventos do dia (Klara 1 em 7, Mustard 1 domingo em 4
+   — os sorteios ficam desligados até as Partes 11 e 16).
+2. Chamar `GardenRollDay` no `ON_TRANSITION` da `Route30` **e** da `Route30_House`
+   (quem entrar primeiro no dia).
+3. Constantes dos 16 bits (`GARDEN_TODAY_ORDER_ROLLED` … `GARDEN_TODAY_TALKED_PEONY`)
+   num header novo, `include/constants/berry_garden.h`.
+
+**Teste no jogo:** mudar o relógio para o dia seguinte → a var zera uma vez só; sair e
+entrar no mesmo dia não zera.
+
+### Parte 5 — feita no código (30/09/2026), falta o teste no jogo
+
+**O que entrou**
+
+| O quê | Onde |
+|---|---|
+| Os 16 bits `GARDEN_TODAY_*`, cada um com a parte que o usa pela primeira vez, e `GARDEN_TODAY_BIT_COUNT` | `include/constants/berry_garden.h` (novo), incluído em `data/event_scripts.s` e em `include/berry_garden.h` |
+| `GardenRollDay`, `GardenToday_Check`, `GardenToday_Set` (specials, `VAR_0x8004` = bit) e `GardenToday_Has` / `GardenToday_Mark` para o C | `src/berry_garden.c`, `data/specials.inc` |
+| `GardenRollDay` no `ON_TRANSITION` da `Route30` e da `Route30_House` (a casa ganhou `ON_TRANSITION`) | os dois `scripts.inc` |
+| `GardenRollDay` também no começo da conversa do Bram e da Laurel, depois do `dotimebasedevents` | `Route30_House/scripts.inc` |
+| 2 testes (o dia recomeça uma vez; bits independentes, nada além do 15) | `test/berry_garden.c` |
+
+**Onde divergiu do plano, e por quê**
+
+1. **`GardenRollDay` também nas conversas**, não só no `ON_TRANSITION`. Medido no
+   motor: a flag diária é limpa pelo `DoTimeBasedEvents`, que roda **antes** do
+   `ON_TRANSITION` em toda troca de mapa (`overworld.c`) — então o `ON_TRANSITION`
+   sempre vê o dia certo. Mas o `DoTimeBasedEvents` também roda por uma tarefa
+   periódica enquanto o jogador anda (`field_tasks.c`): se a meia-noite passar com o
+   jogador parado na Route 30 ou dentro da casa, não há troca de mapa, e só uma
+   conversa depois do `dotimebasedevents` percebe o dia novo. É o mesmo cuidado do Kurt.
+   **Regra para as próximas partes:** todo NPC da horta que lê `VAR_GARDEN_TODAY` chama
+   `dotimebasedevents` + `special GardenRollDay` antes.
+2. **Sem macros de script** (`garden_today_check`…): uma macro teria que existir antes
+   de todo mapa no `event_scripts.s`, e o repo não tem esse lugar para macros de
+   conteúdo. Os scripts usam `setvar VAR_0x8004, GARDEN_TODAY_X` + `specialvar`/`special`,
+   como o resto do repo.
+3. **Os sorteios do dia não existem ainda** (Klara, Mustard): o `GardenRollDay` tem o
+   ponto marcado onde entram, com a condição de cada um. Escrever agora seria código
+   que ninguém lê.
+
+**Revisão do que já existia, feita junto** (achados que só apareceram com a Parte 5):
+- Comentários de `flags.h`/`vars.h` que diziam “not written yet” para o
+  `GardenRollDay` foram atualizados.
+- **Armadilha para a Parte 6** (escrita no passo 1 dela): o “nível + 10” que o plano
+  sugeria para “reforma paga” abriria o canteiro B na hora, porque a Parte 2 compara
+  a var com `< 2`.
+- **Armadilha para a Parte 16** (escrita no passo 2 dela e no C): o
+  `BerryLedger_Count` conta a Enigma, então “66 no Livro” não é “todas menos a Enigma”.
+- **`FLAG_TEMP` já ocupadas** listadas no começo da Parte 8.
+
+**Catálogo:** `FLAG_DAILY_GARDEN_NEW_DAY` agora aparece lida e escrita pelo código
+(2/2), não só “limpa pelo bloco diário”.
+
+**Teste no jogo (falta, o autor faz):** nada visível muda nesta parte; o teste é o
+debug de var.
+- Ver `VAR_GARDEN_TODAY` (0x4127) = 0 ao entrar na Route 30; marcar um bit no debug;
+  sair e entrar no mesmo dia → o bit continua.
+- Mudar o relógio para o dia seguinte e entrar → volta a 0.
+- Ficar parado na casa virando a meia-noite e falar com o Bram → volta a 0.
+
+---
+
+## Parte 6 — Níveis da horta
+
+**Objetivo.** Reformas 1–4 (a 5 é da Parte 16), com pagamento e cena na manhã
+seguinte.
+
+**Skills:** `encenar-cutscene`, `visibilidade-e-gatilhos`.
+
+**Passos**
+
+1. Menu de reforma com o Bram (em casa, de dia): mostra o próximo nível, o que pede
+   (Livro N + ₽) e cobra. Grava “pago, pronto amanhã” sem flag nova (ex.: nível + 10
+   em `VAR_BERRY_GARDEN_LEVEL` até a manhã seguinte; o `ON_TRANSITION` da manhã conclui).
+   **Cuidado (revisão da Parte 5):** o “nível + 10” quebra quem já compara essa var.
+   `Route30_EventScript_GardenVisibility` e `Route30_OnLoad` trancam o canteiro B com
+   `< 2`, e a migração de save antigo testa `== 0`: com 1 pago para 2, a var vira 11 e
+   o B **abre na hora**, antes da cena. O “pago” tem que morar fora do nível. O
+   `VAR_GARDEN_TODAY` não serve: zera à meia-noite e a obra conclui só “na manhã
+   seguinte”. Recomendação: var própria `VAR_BERRY_GARDEN_WORK` (nível encomendado,
+   0 = nenhum), concluída no primeiro `GardenRollDay` de um dia **depois** do pagamento.
+2. **Cenas de reforma** (§5), ao entrar na Route 30 na manhã seguinte ao pagamento:
+   nível 2 (Bram), 3 (Bram + Laurel), 4 (Bugsy + Bram).
+3. **Nível 2**: canteiro B abre (a trava da Parte 2 passa a ler o nível), presente vira
+   3 berries, **semente encomendada** (`BerryLedger_BuildSeedMenu` + `dynmultichoice`,
+   1 por dia, divide a flag diária do presente com o sorteio).
+4. **Nível 3** (Livro 22 + ₽10.000 + Ato 1 feito): special `WaterGardenTrees` no
+   `ON_TRANSITION`, uma vez por dia (bit “horta regada”).
+5. **Nível 4** (Livro 32 + Ato 1 feito, o Bugsy constrói): `BERRY_PESTS_CHANCE` 30% e
+   raro ×1,5 — só tem efeito depois da Parte 10; a condição já fica escrita.
+6. A condição “Ato 1 feito” lê `VAR_HARVEST_KING >= 4`; até a Parte 12 existir, os
+   níveis 3 e 4 ficam indisponíveis (o Bram diz que “falta alguém para ajudar”).
+
+**Teste no jogo:** debug Livro 12 + ₽5.000 → paga → no dia seguinte a cena e o B
+aberto; sem dinheiro não cobra; nível 3 rega sozinho às 4h.
+
+### Parte 6 — feita no código (30/09/2026), falta o teste no jogo
+
+**O que entrou**
+
+| O quê | Onde |
+|---|---|
+| `VAR_BERRY_GARDEN_WORK` (`0x412E`): 0 = nada; 2..4 = nível pago, em obra; 12..14 = pronto, fala pendente | `include/constants/vars.h` (marcador → `0x412F`) |
+| Constantes `GARDEN_LEVEL_*`, `GARDEN_WORK_*`, `GARDEN_REFORM_*`, `HARVEST_KING_ACT1_DONE` | `include/constants/berry_garden.h` |
+| Tabela `sGardenReforms` (Livro, Ato 1, preço por nível) com `STATIC_ASSERT` de cobrir todo nível | `src/berry_garden.c` |
+| `GardenReform_Check` / `_Pay` / `_TakeBuiltLevel`; a obra conclui dentro do `GardenRollDay` | idem |
+| `GardenIrrigate` (nível 3): rega os 10 canteiros uma vez por dia (`GARDEN_TODAY_WATERED`), não o da Laurel | idem; `ON_TRANSITION` da Route 30, depois do `GardenRollDay` |
+| Regra de rega extraída para `WaterBerryTreeById`, usada pela regadeira **e** pelo canal (uma regra, dois chamadores) | `src/berry.c`, `include/berry.h` |
+| `GardenGift_Count` (2, ou 3 a partir do nível 2) e `BerryLedger_BuildSeedMenu` | `src/berry_garden.c` |
+| Conversa do Bram: fala da obra pronta → marcos → oferta de reforma (1 vez por visita, `FLAG_TEMP_4`) → presente de 2/3 ou semente encomendada | `Route30_House/scripts.inc` |
+| 16 textos novos (ofertas, obra pronta nos 3 níveis, semente, “three”) | idem |
+| 6 testes (oferta só com Livro 12, sem dinheiro não cobra, obra só no dia seguinte e fala uma vez, Ato 1 e Bug Hotel grátis, canal, lista da semente) | `test/berry_garden.c` |
+
+**Onde divergiu do plano, e por quê**
+
+1. **O “pago, pronto amanhã” mora em `VAR_BERRY_GARDEN_WORK`**, não em “nível + 10”
+   (armadilha achada na revisão da Parte 5: a trava do B compara o nível com `< 2`).
+2. **A cena da manhã seguinte é a primeira fala do Bram na próxima conversa**, na casa.
+   Motivo: o Bram só existe do lado de fora a partir da Parte 8, e um gatilho ao entrar
+   na Route 30 precisaria cercar 4 entradas da horta (oeste, norte, porta, escada do
+   sul) sem buraco. A fala do nível 3 tem as duas plaquinhas (Bram e Laurel, os dois na
+   casa); a do nível 4 é o Bram contando do Bugsy. O design (§5) ganhou a nota.
+3. **A obra conclui no primeiro `GardenRollDay` do dia seguinte**, que é à meia-noite
+   (ou na primeira vez que o jogador aparece no dia). Como toda conversa do Bram chama o
+   `GardenRollDay` antes, o pagamento sempre cai **depois** do rolamento do dia, e a obra
+   nunca fica pronta no mesmo dia.
+4. **A oferta de reforma e o “preciso de ajuda” aparecem uma vez por visita**
+   (`FLAG_TEMP_4`), não em toda conversa. Sem isso, até a Parte 12 o jogador com Livro 22
+   ouviria “preciso de ajuda” a cada presente.
+5. **A oferta diz o número real do Livro** (`{STR_VAR_1}`): ela aparece quando o Livro
+   chega ao tamanho **ou depois**; “Twelve Berries” erraria para quem chega com 20.
+6. **Semente encomendada = 1 berry à escolha**, em vez das 3 sorteadas (“em vez do
+   presente sorteado”, §3.5), qualquer uma do Livro **menos a Enigma**. B ou “Surprise me”
+   voltam ao sorteio de 3. Lista em ordem de item; **sem** o `shouldSort` do motor, que
+   ordena por id (a ordem já é essa) e, com lista vazia, estoura (`count - 1` em `u32`,
+   `scrcmd.c`).
+7. **Os nomes da lista são cópias no heap**: o menu dinâmico dá `Free` em cada nome ao
+   fechar (`script_menu.c`); empurrar o ponteiro do nome direto da ROM travaria o jogo
+   ao fechar o menu, com build limpo.
+8. **Nível 4 (Bug Hotel)**: condição e oferta prontas; o efeito (pragas 30%, raro ×1,5)
+   é da Parte 10, que deve ler `VAR_BERRY_GARDEN_LEVEL >= GARDEN_LEVEL_BUG_HOTEL`.
+
+**Medido:** build limpo; `medir_linha.py` sem estouro; `checar_falantes.py` “241, tudo
+em ordem”; `map_graph` ok; `berry_mutations_check` ok; testes compilam (não rodam: ver a
+revisão das partes 1–3).
+
+**Bug 3 do teste no jogo (02/10/2026), corrigido:** a oferta de reforma dizia “3052
+Berries in your Book now” — o número era o **dinheiro** do jogador. O `showmoneybox`
+imprime o dinheiro por `gStringVar1` (`PrintMoneyAmount`, `src/money.c`), e o tamanho do
+Livro tinha sido posto no `STR_VAR_1` **antes** de abrir a caixa. Agora o número é
+preenchido depois do `showmoneybox`. Regra: depois de `showmoneybox`/`updatemoneybox`, o
+`STR_VAR_1` não vale mais nada.
+
+**Ajuste do teste no jogo (02/10/2026): a oferta de reforma fecha a conversa.** Antes
+a ordem era marcos → oferta → “Tomorrow morning, then.” → presente (“there's more
+tomorrow…”), e o fechamento da obra ficava no meio do presente, com dois “amanhã”
+seguidos. Agora: obra pronta → marcos → **presente** (ou “That's your two/three”) →
+**oferta por último** (`Route30_House_EventScript_AfterGift`), e quem paga ouve “Done deal.
+Come and look in the morning.” e a conversa acaba. A semente encomendada também termina
+no `AfterGift`. Só a bolsa cheia encerra antes (sem oferta naquela conversa).
+
+**Auditoria estática (`bug/auditar_scripts.py`, ferramenta de outra sessão, só lida):**
+nos mapas da horta sobram 2 avisos `CALL_END` em `Route30_House` — as saídas de bolsa
+cheia do presente (`Common_EventScript_ShowBagIsFull` faz `release` e encerra de
+propósito, padrão que já existia). O aviso de fall-through do `msgbox` para `GiveDraw` foi
+resolvido com `goto` explícito. O aviso de `lock` ativo em `berry_tree.inc:50` é falso
+positivo: é um `end` depois de um `yesno` cujos dois resultados já desviaram.
+
+**Teste no jogo (falta, o autor faz; debug):**
+- Livro 12 (debug de 12 flags) e ₽5.000: o Bram oferece “12 Berries in your Book now…
+  ¥5,000” com a caixa de dinheiro; “Não” → “Suit yourself”; falar de novo na mesma
+  visita não repete; sair e entrar → oferece de novo.
+- Pagar sem dinheiro: “Come back when you've got the money”, nada é cobrado.
+- Pagar: no mesmo dia nada muda; virar o dia → o B abre (grama vira terra), e a próxima
+  conversa começa com “Four more beds! Laurel dug them.” uma vez só; o presente vira
+  “Three today… Or have you got one in mind?”.
+- “I've got one”: lista com rolagem das berries do Livro, sem Enigma; escolher → 1
+  berry, e o presente do dia acaba; B no menu → sorteio de 3.
+- Nível 3 (debug `VAR_HARVEST_KING` = 4, Livro 22, ₽10.000): “preciso de ajuda” some,
+  oferta do canal; no dia seguinte, plantar e entrar na Route 30 → a planta já regada.
+
+---
+
+## Parte 7 — Pedidos do dia
+
+**Objetivo.** Um pedido por dia; o de descoberta traz a Laurel para o ciclo.
+
+**Passos**
+
+1. Na primeira conversa do dia com o Bram de manhã: sorteia o pedido (bit
+   `ORDER_ROLLED`), grava em `VAR_BERRY_ORDER`.
+2. **Comum**: N de uma berry do Livro; paga ₽ por berry + 1 adubo.
+3. **Descoberta** (nível 2+, 1 dia em 3): `BerryLedger_NextDiscovery`; o Bram não sabe
+   a receita e manda perguntar à Laurel. Paga ₽ em dobro + Surprise Mulch.
+4. **Dica da Laurel**: um texto só com 3 buffers (berry, pai 1, pai 2) — **nunca**
+   `STR_VAR_4` (não existe no `charmap.txt`, §14.1 item 1).
+5. Entrega: `checkitem` → `yesno` → `checkitemspace` → `removeitem` → `giveitem` →
+   bit `ORDER_DONE`.
+6. Clientes só no texto (Kurt, floricultura, Nurse de Cherrygrove, Moomoo Farm, Day
+   Care). Nunca Poké Ball.
+
+**Teste no jogo:** entregar com a bolsa cheia de adubo → avisa antes de tirar as
+berries; sair e entrar não troca o pedido; pedido de descoberta cruzado de verdade
+com a dica.
+
+### Parte 7 — feita (03/10/2026)
+
+**Entregue:** `GardenOrder_Roll/Get/RewardMulch/Pay`, `BerryLedger_NextDiscovery`,
+`BerryLedger_GetRecipe` e `GetBerryRecipe` (`src/berry.c`, lê a tabela de mutações; sem
+`OW_BERRY_MUTATIONS` devolve FALSE). Conversa do Bram: obra pronta → marcos → **pedido** →
+presente → oferta de reforma. Dica na conversa da Laurel. Debug `Order: new common /
+new discovery` e linha do pedido no `Status`. 4 testes novos em `test/berry_garden.c`
+(27/27 PASS com `make check`). Roteiro T41–T46 em `TESTES_NO_JOGO.md`.
+
+**Decisões:**
+1. **Sorteado a qualquer hora, não só de manhã.** Até a Parte 8 o Bram fica só em casa;
+   prender o pedido à manhã faria o jogador que passa à tarde nunca ver um. A Parte 8
+   decide se aperta. Herança: quando o Bram ficar na horta de manhã, a conversa dele lá
+   chama o mesmo `Route30_House_EventScript_Order` (com o `GardenRollDay` antes).
+2. **Não há pedido na visita do tutorial** (`FLAG_TEMP_1`): o tutorial termina no Livro e
+   nas duas primeiras berries; o primeiro pedido sai na visita seguinte (mesmo dia).
+   Achado na revisão depois da implementação; testado no jogo.
+3. **Quantidade e pagamento pela geração** (cruzamentos até as 8 do Bram, recursivo sobre
+   a tabela, que não tem ciclos — `berry_mutations_check.py`): 3/5/5/3/3/1 berries,
+   ₽100/150/200/300/400/600–1000 por berry. A comum mais cara paga ₽1.200 (3 × 400); a
+   descoberta é sempre 1 e paga o dobro (até ₽2.000).
+   Enigma (sem receita, não inicial) conta como a mais funda.
+4. **Comum só a partir do nível 1**, de qualquer berry do Livro (inclusive as 8 iniciais).
+   **Descoberta** a partir do nível 2, 1 dia em 3; sem candidata (Livro sem pares, ou
+   Lansat/Starf antes da Liga) vira comum no mesmo sorteio.
+5. **`VAR_BERRY_ORDER` em 16 bits**: berry 7 bits (índice no Livro + 1; 0 = nada), quantidade
+   4 bits, descoberta 1 bit, cliente 4 bits. Vale só com o bit `ORDER_ROLLED` do dia: na
+   virada o bit cai e a var velha fica ignorada até o próximo sorteio.
+6. **Clientes (10) só no texto**, por sorteio; o Bugsy vira Kurt antes do estado 3 da
+   sidequest. Agradecimentos em 5 falas (cliente % 5). Nenhum dá Poké Ball.
+7. **A entrega pergunta antes** (`checkitem` → `yesno` → `checkitemspace` do adubo →
+   `removeitem` → `GardenOrder_Pay`). Bolsa sem espaço para o adubo: avisa e não tira nada.
+   Fala no singular para 1 (“That's the Aguav Berry! Hand it over?”).
+8. **Lembrete uma vez por visita** (`FLAG_TEMP_7`), **dica da Laurel uma vez por visita**
+   (`FLAG_TEMP_8`) e só com pedido de descoberta aberto. A dica usa 3 buffers
+   (`STR_VAR_1..3`), nunca `STR_VAR_4`.
+9. **Dinheiro depois do `removeitem`**, pelo `GardenOrder_Pay` (que recusa pagar duas vezes
+   no mesmo dia); o valor vai para `STR_VAR_3` só depois, como manda a regra do Bug 3.
+
+**Medido no jogo (QA headless, 03/10):** pedido comum anunciado e entregue (₽750 + Damp
+Mulch, bolsa conferida na RAM); “No” mantém o pedido; sem lembrete na mesma visita e um
+lembrete depois de sair e entrar; bolsa cheia → recusa, as berries ficam; descoberta Aguav
+anunciada, Laurel: “Rawst Berry beside Leppa Berry” (receita certa), segunda conversa sem
+dica; entrega singular “Hand it over?”, ₽300 + Surprise Mulch; virada de dia → pedido
+novo; tutorial sem pedido e pedido na visita seguinte.
+
+**Flags:** só `FLAG_TEMP_7`/`FLAG_TEMP_8` da `Route30_House` passaram a ser usadas; o
+catálogo foi regenerado (o restante do diff do CSV é de outras sessões).
+
+---
+
+## Parte 8 — Elenco e rotina por horário
+
+**Objetivo.** O mini Harvest Moon: cada um no seu lugar por período e dia da semana,
+sem flag persistente.
+
+**Skills:** `visibilidade-e-gatilhos`, `encenar-cutscene`, `adicionar-npc` (só se a
+Tilly precisar de sprite novo: `LITTLE_GIRL` existe), `parceiro-pokemon-de-npc` (não:
+a Sunflora fica dentro de casa, sozinha).
+
+**Passos**
+
+0. **`FLAG_TEMP` já ocupadas** (revisão da Parte 5): na `Route30`, `FLAG_TEMP_1` (árvore
+   de Cut em (30,10)), `FLAG_TEMP_5` (canteiro B) e `FLAG_TEMP_6` (canteiro da Laurel).
+   *(Feito: as marcas da casa viraram apelidos em `flags.h`, livres nos dois mapas,
+   porque os scripts do Bram e da Laurel rodam nos dois — ver “Parte 8 — feita”.)*
+   **Herança da Parte 6:** a fala da obra pronta (`Route30_House_EventScript_BuiltLevel`,
+   que consome `GardenReform_TakeBuiltLevel`) e a oferta de reforma estão na conversa do
+   Bram **na casa**. Quando o Bram passar a ficar na horta de manhã, a conversa dele lá
+   tem que chamar as mesmas duas coisas (e o `GardenRollDay` antes), senão o jogador que
+   só encontra o Bram de manhã nunca ouve a fala nem recebe a oferta.
+1. Objetos na `Route30`: Bram (fora, manhã, (31,45)), Laurel (fora, dia, (27,43)),
+   Tilly (banquinha, (24,41), fim de semana de dia), Bugsy ((31,43), ter/qui de dia,
+   estado ≥ 3). Cada um com a sua `FLAG_TEMP`.
+2. Objetos na `Route30_House`: Bram e Laurel em versão dia/noite (mesa, sofá,
+   janela), Tilly (manhã de fim de semana), Sunflora da Laurel.
+3. `ON_TRANSITION` de cada mapa: `GetTimeOfDay` + `GetDayOfWeek` + `VAR_HARVEST_KING`
+   → seta a `FLAG_TEMP` de quem **não** está ali agora. Rev3: fim de semana de dia a
+   Laurel fica em casa (dia de forno).
+4. Bram dormindo à noite: fala dormindo (texto próprio).
+5. Tilly de loja: `pokemart` com os adubos (inclusive Rich e Surprise quando a horta
+   chega ao nível 4).
+6. **Orçamento de objetos**: contar na pior hora de cada tabela (§2.3, §13.4, §14.3):
+   nunca passar de 15 com jogador e follower. Registrar a conta no commit.
+
+**Teste no jogo:** passar pelos três períodos e pelos 7 dias da semana mudando o
+relógio; nenhum canteiro some; ninguém fica no único acesso de um canteiro.
+
+### Parte 8 — feita (03/10/2026)
+
+**Entregue:** `GardenCast_PlaceOf` (regra pura, testada), `GardenCast_PeriodOf`,
+`GardenCast_Apply` (no `ON_TRANSITION` dos dois mapas: congela o período em
+`VAR_TEMP_GARDEN_PERIOD` e seta as `FLAG_TEMP_HIDE_*` de quem não está ali) e
+`GardenCast_IsWeekend`. Objetos novos (sempre no fim do array): Route 30 — Bram 34,
+Laurel 35, Tilly 36, Bugsy 37; casa — Tilly 3, Sunflora 4 (Bram 1 e Laurel 2 ganharam
+flag). Falas: Bram dormindo (banco C inteiro, `random 10`, a 10ª pelo estado da
+história), Laurel por período (manhã, horta, dia de forno, caderno à noite), Tilly
+(café em casa; loja de adubo na horta), Bugsy (terça/quinta), Sunflora (falante novo
+`NAME_SUNFLORA`). Loja da Tilly: Growth, Damp, Stable, Gooey; + Rich e Surprise no
+nível 4. 7 testes novos (34/34 com `make check`). Roteiro T47–T54.
+
+**Decisões:**
+1. **Horários do relógio do jogo**, não os 4–10/10–18/18–4 do design: manhã 6–10, dia
+   10–19, noite 19–6 (o entardecer de 19–20 conta como noite). O elenco troca junto com
+   a cor do céu, e o `Clock… → next 7:00` do debug cai de manhã.
+2. **Antes do tutorial o Bram fica em casa a qualquer hora.** Senão quem passa pela
+   Route 30 de manhã ou de noite na primeira vez não ganha a primeira berry nem ouve o
+   tutorial.
+3. **À noite a Laurel entrega o presente do dia** (“He left these on the table for
+   you”), com o mesmo flag diário do Bram, marcado depois da primeira berry como o dele.
+   Sem isso quem joga só à noite (19h–6h, 11 horas) perderia a fonte de berries do jogo
+   inteiro. Só o sorteio: semente encomendada, pedido, marcos e reformas esperam o Bram
+   acordar (ele guarda). **Decisão para o autor confirmar.**
+4. **Um objeto por pessoa por mapa**, não versão dia/noite: na casa ninguém muda de
+   lugar (não há sofá nem cama), e o Bram dormindo é o mesmo objeto virado para a mesa
+   (`setobjectmovementtype` no `ON_TRANSITION`, antes do spawn). Dormindo ele não vira
+   para o jogador.
+5. **O período fica congelado no carregamento do mapa** (`VAR_TEMP_GARDEN_PERIOD`): se a
+   hora vira com o jogador parado, ninguém troca de lugar nem de fala até a próxima
+   entrada (§2.2).
+6. **Os scripts do Bram e da Laurel são os mesmos nos dois mapas** (a Route 30 usa os
+   rótulos `Route30_House_EventScript_BaldMan` / `_BerryWife`). Por isso as marcas por
+   visita saíram de números crus para apelidos em `flags.h` livres nos dois mapas: a
+   antiga `FLAG_TEMP_1` do tutorial é a árvore de Cut na Route 30 (o Bram falando lá
+   esconderia a árvore e, com ela cortada, acharia que toda visita é a do tutorial).
+   Agora: `FLAG_TEMP_GARDEN_REFORM_TALKED` (4), `_ORDER_REMINDED` (7),
+   `FLAG_TEMP_LAUREL_HINTED` (8), `FLAG_TEMP_BRAM_TUTORIAL_VISIT` (9),
+   `FLAG_TEMP_HIDE_BRAM/LAUREL/TILLY/BUGSY` (A–D).
+7. **Dica da Laurel à noite** (banco F, 1ª fala): qualquer berry descobrível agora
+   (`BerryLedger_NextDiscovery`), uma vez por visita, dividindo a marca com a dica do
+   pedido de descoberta (uma visita nunca dá duas receitas). Livro com 66 →
+   “Nothing left…”; nenhum par pronto → “Nothing for you tonight…”.
+8. **A fala genérica antiga da Laurel** (“My husband hands out the easy ones… you're
+   still carrying a town map”, o aviso da rara pós-Liga) saiu: o lugar dela virou a
+   fala do período. **Para a Parte 9**: voltar como reação de contexto pré-Liga.
+
+**Bugs achados no teste rápido e corrigidos antes do commit:**
+- **Bugsy dentro do lago** em (32,43): água tem colisão 0 e o `dump_mapa.py` a
+  mostrava como chão. Agora o dump marca `~` (água) e `^` (ledge), e a skill
+  `encenar-cutscene` avisa.
+- **Bram em (31,45) trancava dois canteiros a manhã inteira**: o bolsão (31,43)–(31,44)
+  é o único acesso de (30,43) e (31,42) e só se chega a ele pela linha 45. Bram foi
+  para (27,44), Bugsy para (29,41). Prova em `dev_scripts/berry_garden_access_check.py`
+  (elenco inteiro de pé ao mesmo tempo, o que cobre todo horário), também no CI
+  (`.github/workflows/berry-garden-access.yml`). **Para as Partes 11 e 12 (Klara,
+  Avery, Peony):** objeto novo da horta com flag `FLAG_TEMP_HIDE_*` entra sozinho na
+  checagem.
+- **Ferramenta de QA** (`rota.py`) lia o `map.bin` com o layout de 10 bits e contava os
+  NPCs escondidos como parede; corrigida (máscaras do `global.fieldmap.h`; o `ir.py`
+  usa os objetos vivos da RAM).
+
+**Medido:** build limpo; `checar_falantes.py` 242 em ordem; `medir_linha.py` sem
+estouro; pior janela de objetos da Route 30 = 17 contando todos os escondidos (limite
+24); flag audit regenerado.
+
+**QA rápido no jogo (headless, 03/10):** dia de semana — Laurel na horta falando “Too
+much water…”, Bram em casa; noite — horta vazia, Bram dormindo à mesa (sonho sorteado,
+não vira), Laurel em casa com a dica (Bluk = Chesto + Oran) e, com o dia novo, o presente
+(3 berries, conferidas na RAM); manhã — Bram na horta em (27,44) com o fluxo inteiro
+(obra pronta, pedido, presente e semente encomendada); sábado à tarde — Laurel fora da
+horta, Tilly na banquinha com a loja (4 adubos a ₽200) e a despedida; terça à tarde com o
+Ato 1 — Bugsy em (29,41) com a fala de terça, Laurel ao lado. **Não testado:** Tilly
+em casa de manhã, fala de quinta do Bugsy, loja no nível 4, falas de sonho 10 por
+estado.
+
+---
+
+## Parte 9 — Banco de falas
+
+**Objetivo.** 10 falas por evento repetitivo, corações e reações.
+
+**Skills:** `nomear-falante` (medir e checar), `evoluir-historia-de-evento` (voz de
+cada personagem).
+
+**Passos**
+
+1. Specials `GardenLine_Pick` (`VAR_DAYS % N`, N por tier) e `GardenHearts_Talk`
+   (sobe 1 por dia que o jogador fala, bit em `VAR_GARDEN_TODAY`, 4 bits por
+   personagem em `VAR_GARDEN_HEARTS`; tiers 5 e 12 dias).
+2. Ordem de cada conversa: cena pendente → reação de contexto (primeira conversa do
+   dia) → rodízio.
+3. Escrever os bancos do §14.4 A–S que não dependem da história (A–H, P, Q, R) num
+   arquivo novo `data/scripts/berry_garden_lines.inc`, com os textos em
+   `data/text/berry_garden.inc` (ou onde o repo guarda texto compartilhado).
+4. Os bancos que dependem de personagem da história (I Klara, J Avery, K Peony, L
+   Peonia, M/N Calyrex, O cartas, S Mustard) ficam para as partes que trazem o
+   personagem.
+5. **Regra da surpresa**: nenhuma fala desta parte cita rei, corcel ou Calyrex.
+
+**Teste no jogo:** 10 dias seguidos no relógio → 10 falas diferentes do Bram; debug
+com corações 5 e 12 → falas íntimas aparecem.
+
+### Parte 9 — feita (03/10/2026)
+
+**Entregue:** `GardenHearts_Talk` / `GardenHearts_Get`, `GardenLine_Pick` /
+`GardenLine_Count`, `GardenNews_Take` + `BerryLedger_RegisterHarvest` (chamado pela
+colheita em `src/berry.c`), `GardenLead_IsType`, `GardenPlots_Planted`. Var nova
+`VAR_GARDEN_NEWS` (`0x412F`). Arquivo novo `data/scripts/berry_garden_lines.inc`
+(incluído no `event_scripts.s`) com 8 bancos de 10 falas — A, B (Bram), R (presente), D,
+E, F (Laurel), G (Tilly), H (Bugsy) — e as reações. Debug `Hearts…` (0/5/12/15, no fim do
+menu para não mexer nos índices das macros de QA) e página de corações no `Status`.
+4 testes novos (38/38 com `make check`). Roteiro T55–T63.
+
+**Decisões:**
+1. **Onde cada banco entra.** Bram: R ao entregar o presente (no lugar do “You came
+   back!…”); A (manhã, horta) e B (tarde, casa) nas conversas **depois** do presente do
+   dia, no lugar de “That's your two for today. Go and plant one…”. O tutorial de plantio
+   (“And don't eat both of them…”) ficou só na visita do tutorial. Laurel: D de manhã, E à
+   tarde (horta ou casa no fim de semana), F à noite (o caderno; e a dica do pedido de
+   descoberta à noite também usa o rodízio). Depois da Liga, quem já recebeu a rara do
+   dia ouve o banco (antes ouvia sempre “One a day. I said don't argue.”).
+2. **R adaptado para valer de tarde também:** R1 “Picked these at dawn, sprout. Still had
+   the dew on 'em…” e R6 “Fresh from this morning! Fresher than me, anyway.” (os do design
+   diziam “Morning, sprout!”, e o Bram entrega também à tarde, em casa).
+3. **Reações** (primeira conversa do dia, a primeira que casar ganha):
+   - Bram (qualquer conversa, uma vez cada): **primeira colheita na horta** (uma vez no
+     jogo) e **berry nova no Livro que cresceu na horta** (“You grew a {X}? I've never
+     seen one! Laurel! LAUREL!”) — guardadas em `VAR_GARDEN_NEWS` até a próxima conversa;
+     de manhã: domingo (Tilly à tarde) e terça/quinta com o Bugsy (estado ≥ 3).
+   - Laurel (não à noite): Pokémon de Planta seguindo o jogador (**só às quartas**),
+     horta vazia, dia de forno (fim de semana à tarde) e, **às segundas antes da Liga**, a
+     fala antiga da rara (“My husband hands out the easy ones…”, a herança da Parte 8).
+   - Tilly: Livro com 66, inseto seguindo o jogador (**só aos domingos**).
+   - Bugsy (sem corações): Bug Hotel pronto, uma vez por visita (`FLAG_TEMP_BUGSY_REACTED`).
+   - Reação sobre o Pokémon da frente **num dia fixo da semana**: quem anda sempre com o
+     mesmo nunca ouviria o banco na primeira conversa do dia.
+4. **Fica para depois**, por depender de parte futura ou da regra da surpresa: banco P
+   (pragas, Parte 10); reações da erva daninha (Parte 10), dos 8 exclusivos (Parte 10),
+   da Klara (Parte 11), dos hóspedes e do Ato 7 (Partes 12–13), “depois do Ato 2” da Tilly
+   (cita o corcel); “Laurel diz o nome” (Livro 66 / estado 15, Parte 16).
+5. **Aspas curvas** (`“ ”`): o charmap não tem aspas retas.
+6. **Os bancos são gerados** do texto do design com quebra por pixel (mesmas larguras do
+   `medir_linha.py`, `{STR_VAR}` medido como o nome de berry mais largo) e depois mantidos
+   à mão no `.inc`.
+
+**Bugs achados no teste rápido e corrigidos:** a pergunta do nível 2 ainda começava com
+“You came back! And you looked at the trees, I'll bet.” depois da fala do banco R, e
+mostrava “Name it…” antes do menu; agora é só “Three today -- the garden earns its keep.
+Or have you got one in mind?”. A dica do pedido de descoberta à noite usava sempre a 1ª
+fala do banco F; agora usa o rodízio.
+
+**Medido:** build limpo; `checar_falantes.py` 242 em ordem; `medir_linha.py` sem estouro
+nos três arquivos; acesso aos canteiros ok; flag audit regenerado
+(`FLAG_TEMP_BUGSY_REACTED` em uso).
+
+**QA rápido no jogo (headless, 03/10):** primeira colheita na horta → o Bram abre a
+conversa seguinte com “Your first! Hold it up…”; Laurel na horta, segunda-feira antes da
+Liga: reação da rara na primeira conversa, “Weeds are just plants…” (banco E) na segunda;
+Bram de tarde depois do presente: banco B; dia novo: banco R + a pergunta corrigida + 3
+berries, sem o tutorial de plantio; debug de corações 12 e a página do Status; noite:
+banco F (“The page with the coffee stain. Tamato Berry…”). **Não testado:** bancos A, D,
+G, H na tela (mesmo mecanismo, provado nos testes de C), reações de quarta/domingo, berry
+nova cruzada na horta (provado no teste de C), Bug Hotel do Bugsy.
+
+---
+
+## Parte 10 — Infestações
+
+**Objetivo.** Pragas e ervas só nos canteiros da horta; 8 famílias passam a existir só
+ali.
+
+**Skills:** `adicionar-batalha-npc` (não; é selvagem), `diagnosticar-flag` (se a
+trava vazar para árvore de rota).
+
+**Passos**
+
+1. `OW_BERRY_WEEDS` e `OW_BERRY_PESTS` = TRUE; `IsBerryGardenTree` com `FIRST..LAST` e
+   a guarda em `TryForWeeds` e `TryForPests` (design rev1 §6.1).
+2. `GetBerryPestSpecies` vira tabela `[cor][slot]` (§7.2), com horário, geração da
+   berry (da tabela da Parte 4) e adubo (Gooey/Rich → Rellor, Stable → Dwebble, metade
+   das vezes).
+3. Nível do selvagem: `10 + 4 × insígnias`, teto 60, no `CreateScriptedWildMon`
+   (`src/berry.c:2397`).
+4. `BERRY_PESTS_CHANCE` 15%, 30% no nível 4.
+5. **Tirar as 8 famílias** de `src/data/wild_encounters.json` (Rellor e Wurmple da
+   Route 37, Blipbug da Route 30, Scatterbug do National Park, Combee da Route 31,
+   Volbeat e Illumise da Kitakami Border, Dwebble da Cliff Edge Cave), redistribuindo a
+   porcentagem entre o que já existe na rota. Rodar `dev_scripts/fontes_legitimas.py`
+   para confirmar que cada família ainda tem fonte (a horta).
+6. Ervas daninhas cosméticas na v1 (decisão 4 do rev1).
+
+**Teste no jogo:** 20 manhãs no relógio com a horta cheia → pragas aparecem nos
+canteiros e **nunca** numa árvore de rota; cor vermelha dá Wurmple no incomum; Stable
+Mulch dá Dwebble.
+
+### Parte 10 — feita (03/10/2026)
+
+**Entregue:** `OW_BERRY_WEEDS` e `OW_BERRY_PESTS` ligados; `IsBerryGardenTree` guarda
+`TryForWeeds` / `TryForPests` (agora recebem o id da árvore); praga e nível vêm da horta
+(`GardenPest_Species`, `GardenPest_Level`, `GardenPest_Chance`, regra pura
+`GardenPest_Pick` em `src/berry_garden.c`); banco P (10 narrações, `random 10`) só nos
+canteiros (`berry_tree.inc`); reações novas: erva no canteiro A/B (Laurel) e os 8
+exclusivos capturados (Bugsy, antes do Bug Hotel). As 8 famílias saíram do
+`wild_encounters.json`. O gerador do site ganhou o parser da horta
+(`tools/soulgold_docs/parsers/berry_garden.py`), e o expansor de formas aceita a praga.
+5 testes novos de C (43/43), motor `test/berry.c` 5/5, testes do site 62/62.
+
+**Decisões:**
+1. **Berry roxa usa a linha azul** (o design tem 5 cores; o motor tem 6).
+2. **Scatterbug da horta é o “Fancy” do encontro selvagem**: sorteia os 20 padrões pela
+   mesma `GetWildFormVariantSpecies` (tornada pública), como o slot do National Park
+   fazia. Assim a fala do Bugsy (“Your garden is making its own Vivillon!”) vale, e nenhum
+   padrão perde a fonte (`fontes_legitimas.py`: mesmas contagens de antes).
+3. **Nível:** `10 + 4 × insígnias` (as 16), teto 60, e depois a escala de nível de
+   selvagem que o jogador escolheu (`CalculateWildScaledLevel`), como qualquer selvagem.
+   A espécie não evolui pela escala (a praga é sempre o primeiro estágio).
+4. **Substitutos nas rotas** (espécies que já estavam na mesma tabela, mesmos níveis):
+   Route 30 Blipbug → Kricketot; Route 31 Combee → Venonat; National Park Scatterbug →
+   Nymble; Route 37 Rellor → Fomantis e Wurmple → Tandemaus; Cliff Edge (Rock Smash)
+   Dwebble → Nosepass; Kitakami Border Illumise → Cyclizar (slot de 20%) e Volbeat →
+   Sinistea.
+5. **Correção do motor:** `TryForPests` testava `OW_BERRY_WEEDS` em vez de
+   `OW_BERRY_PESTS` (do upstream).
+6. **Árvore de rota com praga** (só pelo debug, que põe em todas): a praga é apagada
+   sem batalha.
+7. **Site público não regenerado** (decisão do autor das cenouras): o gerador foi rodado
+   só para conferir as fontes e o `docs/` foi restaurado.
+8. Ervas cosméticas (decisão 4 do rev1): arrancar dá o bônus do motor; a Laurel comenta.
+
+**QA rápido no jogo (headless, 03/10):** Cheri plantada no canteiro (28,43), crescida 1
+estágio, praga pelo debug → “A tiny face peeks out from between the Berries!” (banco P)
+e Ledyba **nível 10** (vermelha, de dia, 0 insígnias); fuga ok. Erva pelo debug → “A weed
+is growing here…” → arrancada. **Não testado:** praga natural ao longo de horas, linha de
+noite, adubo (provado nos testes de C), árvore de rota.
+
+---
+
+## Parte 11 — Batalhas de sempre: Tilly, Bugsy e Klara
+
+**Objetivo.** As batalhas repetíveis que não dependem do fim da história.
+
+**Skills:** `adicionar-batalha-npc`, `batalha-sem-blackout`,
+`adicionar-grafico-trainer` (Klara), `converter-sprite` (quando o autor trouxer a arte).
+
+**Passos**
+
+1. Macro `garden_fight` em `data/scripts/berry_garden.inc`, cópia da `nexus_fight`
+   (`cleartrainerflag` antes e depois, `B_FLAG_NO_WHITEOUT` só durante, resultado em
+   `GetBattleOutcome`, bit “lutou hoje”).
+2. Treinadores em `opponents.h` e `src/data/trainers.party`: Tilly ×3 (time pelo
+   nível da horta, com os apelidos do §14.5), Bugsy ×3 (rodízio `VAR_DAYS % 3`),
+   Klara ×3. Nível pela escala do repo (`src/level_scaling.c`).
+3. **Assalto da Klara**: sorteado no `GardenRollDay` (1 manhã em 7, horta nível 2+ e
+   algum canteiro maduro); objeto na frente de um canteiro maduro; vitória salva,
+   derrota ou sair do mapa sem falar → special `EmptyRandomRipeGardenTree`; 5ª vitória
+   → fala do gancho do mochi (`VAR_GARDEN_RIVALS`).
+4. Banco I (Klara) do §14.4 e as falas de batalha do §14.5.
+5. Sprite da Klara: `LASS` como substituto até o autor trazer o de verdade.
+
+**Teste no jogo:** perder para a Tilly não dá blackout nem custa dinheiro; lutar duas
+vezes no mesmo dia não pode; Klara: vencer, perder e sair do mapa, os três casos.
+
+### Parte 11 — feita (03/10/2026)
+
+**Entregue:** `data/scripts/berry_garden.inc` (macro `garden_fight`, cópia da
+`nexus_fight` sem a fala embutida; Tilly, Bugsy e Klara; textos do §14.4 I e §14.5).
+9 treinadores nos IDs livres 951–959 (`TRAINER_GARDEN_TILLY_1..3`, `_BUGSY_1..3`,
+`_KLARA_1..3`), times do §14.5 com os apelidos da Tilly. Assalto da Klara:
+`GardenRollDay` sorteia a manhã (1 em 7, nível 2+); `GardenKlara_Place` (no
+`ON_TRANSITION` da Route 30) a põe na frente de um canteiro maduro (tabela
+`sKlaraSpots`, medida); `GardenKlara_Resolve` / `_TakeBramLine`; estado em
+`VAR_GARDEN_RIVALS` (vitórias, “esperando”, canteiro, fala do Bram). Objeto 38 da Route 30
+(`LASS`, `FLAG_TEMP_HIDE_KLARA` = `FLAG_TEMP_10`). Debug `Klara: raid this morning`.
+Tilly ganha um menu (Buy mulch / Battle / Bye); Bugsy oferece depois da fala.
+4 testes novos (47/47). A checagem de acesso aos canteiros passou a provar também que o
+jogador alcança a Klara em cada uma das 10 posições.
+
+**Decisões:**
+1. **Escala de nível sempre ligada para os 9** (`src/level_scaling.c`, como o Nexus):
+   média do time do jogador, com as evoluções voltando para trás quando o time é jovem
+   (o Ribombee do Bugsy virou Cutiefly no teste). Sem isso a Klara vinha com Slowbro
+   nível 34 contra um time de nível 7 (achado do QA).
+2. **Desde quando:** Tilly luta a partir do estado 1 da história (antes só loja);
+   Bugsy a partir do Ato 1c (estado 4); Klara a partir do nível 2 da horta.
+3. **Perder cura o time** e não custa nada (exceto o canteiro, com a Klara). Empate com a
+   Klara conta como ela levando o canteiro.
+4. **Rodízio dos times** do Bugsy e da Klara pela fala do dia (`VAR_DAYS % 10` em três
+   faixas: 0–2, 3–5, 6–9), não `% 3` exato.
+5. **Fala da Klara ao perder**: a de derrota dentro da batalha é curta (“Ugh!
+   Seriously?!”) e uma das 5 do design sai no campo, depois; na 5ª vitória, o gancho do
+   mochi no lugar dela.
+6. **Fala do Bram depois**: se ela levou o canteiro, a do mesmo número da fala dela (1–4;
+   a 5ª fala dela usa uma das 4); se o jogador venceu, a 5ª (“You chased her off?”). Sair
+   do mapa sem falar com ela: ela leva o canteiro na próxima entrada na Route 30, e o Bram
+   diz uma das 4.
+7. **Sprite e retrato da Klara**: `LASS` provisório (o plano previa), até a arte.
+
+**Achado de motor (contornado, não consertado):** esvaziar uma árvore de berry **visível**
+pelo C (`RemoveBerryTree`) dispara o brilho de crescimento, e com ele o gráfico do Bram e
+o da Klara viraram listras (o brilho escreveu nos tiles deles). Isolado em três ROMs de
+teste: só `removeobject` não corrompe; esvaziar a árvore sem tirar a Klara corrompe os
+dois. O roubo agora marca a árvore como “acabou de ser colhida” (como a colheita do
+jogador, que nunca mostra o brilho), e o problema sumiu. **Pendente para a sessão dos
+limites do engine:** o mesmo brilho aparece quando uma planta cresce de estágio na frente
+do jogador; se a causa for alocação de tiles com 24 objetos, pode atingir NPCs em outros
+mapas. Ferramenta nova para investigar: `.claude/qa/sprites.py` (sprites vivos, tiles e
+sobreposição com objetos).
+
+**QA rápido no jogo (headless, 03/10):** manhã com debug → Klara em (31,43) na frente de
+um canteiro maduro, Bram em (27,44); abertura (“Oh, it's YOU. The Berry police…”), batalha
+com Slowbro nível 7; derrota → “Ooh, this one's heavy!…”, canteiro vazio, ela sai, Bram
+normal; Bram depois: “She took the WHOLE bed?…”. Tilly (sábado à tarde): menu, abertura,
+Mr. Roly nível 7, derrota sem blackout → “I'm telling EVERYONE.”. Bugsy (terça): fala H,
+oferta, batalha (Cutiefly), depois “I'm still writing up the last one.” **Não testado no
+jogo:** vencer a Klara (5ª vitória, mochi), sair do mapa com ela esperando, prêmios da
+Tilly e do Bugsy (todos provados nos testes de C ou no script).
+
+---
+
+## Parte 12 — Sidequest: Prólogo ao Ato 4 (estados 0 → 8)
+
+**Objetivo.** A história até a primeira folha, sem nenhuma menção a rei ou corcel.
+
+**Skills:** `evento-esqueleto` (primeiro esqueleto com estado certo, depois as falas),
+`evoluir-historia-de-evento`, `encenar-cutscene`, `visibilidade-e-gatilhos`,
+`nomear-falante`.
+
+**Passos** (um commit por ato; gatilhos da tabela do §8.1)
+
+1. **Prólogo** (0 → 1): fala do tutorial (“Not the patch by the door.”).
+2. **Ato 1a** (1 → 2): sub-rotina chamada pelo script de praga depois da batalha.
+3. **Ato 1b** (2 → 3): 2ª insígnia + Route 30 de dia; o Bugsy chega; ele entra na
+   rotina de ter/qui.
+4. **Ato 1c** (3 → 4): 3 exclusivos da horta na Pokédex (`getcaughtmon`) + falar com o
+   Bugsy; libera níveis 3 e 4 (Parte 6) e a batalha do Bugsy (Parte 11 já pronta).
+5. **Ato 2** (4 → 5): horta nível 3 + noite no lago; o Spectrier como “visitante
+   noturno” (objeto `SPECIES(SPECTRIER)` escondido por `FLAG_TEMP`, nunca batalhável
+   aqui).
+6. **Ato 2b** (5 → 6): o Bram acorda à noite.
+7. **Ato 3** (6 → 7): Livro 40 + 7ª insígnia + Laurel à noite; ela entrega a Enigma;
+   o canteiro da Laurel destrava (a trava da Parte 2 passa a ler o estado).
+8. **Ato 4** (7 → 8): `GetKingsPlotStage` e `RipenGardenTrees` (C); a Enigma brota;
+   começam as **cartas da manhã** (banco O) e a fala “I wrote to Freezington”.
+9. **Retry** e **surpresa** conferidos com `grep` (nenhum “king”, “Calyrex”,
+   “Glastrier”, “Spectrier” em texto alcançável antes do estado 7).
+
+**Teste no jogo:** jogar os 8 estados com debug de var entre um e outro; cada ato
+testado também entrando por um save velho no meio.
+
+### Parte 12 — feita (03/10/2026)
+
+**Entregue:** `data/scripts/berry_garden_story.inc` (as cenas, os gatilhos e os textos),
+constantes `HARVEST_KING_*` (0..8) e `GARDEN_STORY_*` (falas de uma vez, bits 9–15 de
+`VAR_GARDEN_NEWS`), specials `GardenStory_Check/Mark`, `GardenKingsPlot_Stage`,
+`GardenPlots_HaveEnigma`, `GardenPests_FamiliesCaught`, `GardenPest_LastSpecies`;
+`GardenCast_ApplyStory` (Bugsy no Ato 1b, o visitante no Ato 2, a Laurel ajoelhada no
+Ato 4). Objeto 39 da Route 30 (`SPECIES(SPECTRIER)`, `FLAG_TEMP_HIDE_SPECTRIER` =
+`FLAG_TEMP_12`); `VAR_TEMP_GARDEN_SCENE` (= `VAR_TEMP_A`) arma a cena do Ato 2 no
+`ON_FRAME`. O canteiro da Laurel aparece a partir do estado 7. Debug `Story…` (estados
+0–8, com as falas de uma vez anteriores já marcadas) e `Enigma sprouts (Laurel)`.
+4 testes novos (51/51). Ferramentas de QA: `flag.py` (flag e Pokédex na RAM).
+
+**Como cada ato dispara (determinístico):**
+
+| Estado | Gatilho no jogo |
+|---|---|
+| 0 → 1 | fim da primeira conversa com o Bram (tutorial; ou a próxima conversa num save antigo) |
+| 1 → 2 | primeira praga da horta **vencida ou capturada** (a qualquer hora); a Laurel fala se estiver na horta |
+| 2 → 3 | falar com o Bugsy, que aparece na horta de dia (qualquer dia) com a 2ª insígnia |
+| 3 → 4 | falar com o Bugsy com 3 famílias exclusivas capturadas (qualquer estágio da família) |
+| 4 → 5 | nível 3 + noite: o visitante no canteiro B; a cena toca ao **sair da casa do Bram** ou ao falar com ele |
+| 5 → 6 | falar com o Bram à noite (ele acorda) |
+| 6 → 7 | Livro 40 + 7ª insígnia + falar com a Laurel à noite |
+| 7 → 8 | Enigma brotada no canteiro dela; de dia ela fica ajoelhada lá; falar com ela |
+
+**Decisões:**
+1. **Prólogo sem a Laurel quando ela não está** (de dia ela fica na horta): o Bram diz
+   “And not the patch by the door. That one's Laurel's. Don't ask me why. I asked once.”.
+   A versão com ela tem plaquinhas (dois falantes). As linhas do Livro saíram do
+   prólogo (o tutorial já explica).
+2. **Ato 1a a qualquer hora** (o design dizia “só de dia”): o estado avança na vitória ou
+   captura; a fala da Laurel só se ela estiver na horta. O “BUGS?” do Bram vem na
+   próxima conversa, uma vez.
+3. **Ato 1b em qualquer dia de semana**, não só terça/quinta (o Bugsy vem por causa da
+   carta).
+4. **Ato 1c só na horta** (o design também citava o Ginásio de Azalea): não mexi no
+   script do ginásio.
+5. **Ato 2 sem andar sozinho**: a cena começa com o jogador saindo da casa do Bram
+   ((26,40), o visitante 5 tiles a leste, no quadro) ou falando com o visitante. Entrar na
+   Route 30 por outro lado não dispara nada; ele fica no canteiro até o jogador chegar.
+6. **Ato 3, Enigma de novo**: no estado 7, com o canteiro da Laurel vazio e nenhuma
+   Enigma na bolsa, ela dá outra uma vez por dia (marca diária
+   `FLAG_DAILY_BERRY_MASTERS_WIFE`, “a Laurel já deu a berry dela hoje”), dizendo “That's
+   a bed…” se houver uma Enigma num canteiro.
+7. **Ato 4 pela conversa**: o Bram sai da porta e anda 2 ou 3 tiles conforme o lado em
+   que o jogador falou com ela ((23,40) ou (22,39)); a cena termina com recarga do mapa sob
+   fade.
+8. **Cartas da manhã** (banco O, desde o Ato 4) e a fala “I wrote to Freezington” (noite
+   seguinte) entram; as cartas do Ato 5 e do estado 15 caem na fala do banco D até lá.
+9. **Surpresa conferida com `grep`:** rei, cavalos e corcéis só no texto do Ato 3.
+
+**QA no jogo (headless, 03/10):** os 8 estados em sequência, com debug só para pular o
+que é jogo de verdade (insígnias e Pokédex pela RAM, Livro 60, nível 3, broto da
+Enigma): prólogo (variante sem a Laurel); praga vencida → fala da Laurel na horta →
+“BUGS?” do Bram; Bugsy chegando; censo com 2 (“caught 2 of them so far”) e com 3 →
+Silver Powder; o visitante ao sair da casa à noite; o Bram acordando; o caderno da
+Laurel → Enigma na bolsa (RAM); a Laurel ajoelhada e a cena do Bram. **Não testado no
+jogo:** as cartas, “I wrote to Freezington”, a Enigma de novo, “You were out late”.
+
+---
+
+## Parte 13 — Ato 5 e 5b: o Rei e as sementes (estados 8 → 10/11)
+
+**Skills:** `evoluir-historia-de-evento`, `encenar-cutscene`,
+`parceiro-pokemon-de-npc` (não; o Calyrex é objeto de cena), `adicionar-npc` (Peony e
+Peonia com substitutos `HIKER` e `PICNICKER`), `nomear-falante` (a plaquinha “???”).
+
+**Passos**
+
+1. **Ato 5** (8 → 9, versão §13.3 + §14.2): Enigma madura + noite; `hidefollower`;
+   Peony ajoelhado, o Calyrex fala por ele; `removeobject` do Calyrex antes de a
+   Peonia entrar; orçamento 15.
+2. **As sementes**: fala do Peony e da Laurel; special `EmptyKingsPlot`; o canteiro da
+   Laurel em estado 9 abre `multichoice` (Iceroot / Shaderoot / Not yet); plantar grava
+   10 ou 11.
+3. **A cenoura**: na noite seguinte o canteiro dá o item-chave; sem ele, o corcel não
+   aparece (a checagem fica pronta para as Partes 14 e 15).
+4. **Peony e Peonia hóspedes** (estados 9–14): objetos na casa e na horta com
+   `FLAG_TEMP` pelo estado e período; bancos K, L e M (o Calyrex pelo Peony dormindo).
+5. Batalha semanal do Peony na horta de manhã (Parte 11 já tem a macro).
+6. Pryce e Morty nos ginásios ganham a fala de gancho (sem cenoura: só a linha curta;
+   com cenoura: o recado do §15.2). O gatilho da dungeon fica escondido até as partes
+   14/15 existirem.
+
+**Teste no jogo:** as duas escolhas, cada uma num save; “Not yet” não muda nada;
+cenoura só na noite seguinte.
+
+### Parte 13 — feita (03/10/2026)
+
+**Entregue:** Ato 5 inteiro (§13.3 + §14.2 + a fala nova da Laurel do §15.2), as
+sementes no canteiro da Laurel, a cenoura (item-chave) na noite seguinte, Peony e Peonia
+hóspedes (estados 9–14) com os bancos K, L e M, a batalha do Peony (3 times, IDs 960–962,
+escala sempre ligada) e as falas de gancho do Pryce e do Morty depois dos ginásios
+(`MahoganyTown_Gym` e `EcruteakCity_Gym`, nos `.pory`). Estados `HARVEST_KING_KING_CAME`
+(9), `_ICEROOT` (10), `_SHADEROOT` (11); falas de uma vez `CARROT_PLANTED`,
+`CARROT_READY` (marcada pelo `GardenRollDay` do dia seguinte ao plantio) e
+`LAUREL_PICKED`. Objetos: Route 30 — Peony 40 (`HIKER`), Calyrex 41
+(`SPECIES(CALYREX)`), Peonia 42 (`PICNICKER`); casa — Peony 5, Peonia 6
+(`FLAG_TEMP_HIDE_PEONY/PEONIA/CALYREX` = `FLAG_TEMP_13/14/15`). Debug `Enigma ripe
+(Laurel)`. 2 testes novos (53/53).
+
+**Decisões:**
+1. **A cena do Ato 5 toca da porta do Bram** (26,40), como a do Ato 2: o jogador dá um
+   passo para baixo e a cena começa (planta medida no topo do bloco). Falar com o Peony ou
+   o Calyrex primeiro leva o jogador até a porta sob fade (recarga silenciosa).
+2. **A escolha das sementes** é pela placa do canteiro (23,38): a partir do estado 9 a
+   árvore de berry dali fica escondida (a semente não entra pelo menu de berries). Menu
+   Iceroot / Shaderoot / Not yet, que começa em **Not yet** (B não fecha).
+3. **A cenoura sai na noite seguinte**: o primeiro `GardenRollDay` depois do plantio marca
+   “pronta”; de dia a placa diz que as folhas esperam o escuro. **Arte (03/10/2026, proposta
+   C):** dois objetos em (23,38) (`OBJ_EVENT_GFX_KINGS_CARROT_ICE`/`_SHADE`, paleta comum,
+   escondidos por `FLAG_TEMP_HIDE_ICEROOT_PLANT`/`_SHADEROOT_PLANT`, script da placa). O
+   quadro sai da direção, posta por `setobjectmovementtype` em `Route30_EventScript_KingsCarrot`:
+   baixo = marca de geada/sombra (plantada), cima = folhas fechadas (pronta, de dia),
+   esquerda = folhas acesas (pronta, à noite); colhida, `removeobject` e some. Ícones e
+   descrições próprios (“Pulled at night. …”). Gerador:
+   `prototipo_corceis/cenouras_do_rei.py <saida> --instalar C`.
+4. **Peony de manhã na horta** em (26,44) (ao lado do Bram), de dia e de noite **dormindo
+   na cadeira azul** (7,4) (a casa não tem sofá). **Peonia** de manhã na mesa (2,4), à noite
+   arrumando a mochila (8,2), de dia na horta em (26,43). A Peonia ainda não vai para a
+   entrada da dungeon (Partes 14/15).
+5. **Batalha do Peony uma vez por dia** (regra do §14.5), não semanal como o plano dizia.
+   Prêmio: 1 Exp. Candy M.
+6. **Pryce e Morty**: com a cenoura certa, o recado do §15.2 (Greenfield; Dance Theater à
+   noite); sem ela, uma fala curta de gancho nos estados 9–11. Os gatilhos das dungeons
+   ficam para as Partes 14 e 15.
+7. **Plaquinha “???”** (`NAME_UNKNOWN`) antes de o Calyrex dizer o nome; o retrato que
+   aparece é o do objeto que fala (o Peony), o que combina com o rei falando pelo corpo
+   dele.
+8. **Site público**: as cenouras agora têm fonte no jogo, mas regenerar `docs/` publica
+   tudo o que mudou na horta; **fica para o autor decidir** (a nota da Parte 4 dizia
+   “regenerar quando a Parte 13 der a fonte”).
+
+**QA no jogo (headless, 03/10):** estado 8 + Enigma madura + noite, saindo da casa: a cena
+inteira com as plaquinhas Peony, ???, Calyrex, Laurel e Peonia, o Calyrex comendo a Enigma
+e sumindo, a Laurel saindo da porta, a Peonia chegando correndo, as sementes, recarga →
+estado 9; placa: menu, “Not yet” não muda nada; Iceroot → “You planted the Iceroot seed.”;
+mesmo dia “Nothing yet…”; +24 h, à noite → Iceroot Carrot (item-chave, RAM); casa à
+noite: o Calyrex pelo Peony dormindo (banco M) e a Peonia arrumando a mochila. **Não
+testado no jogo:** Shaderoot, Peony de manhã e a batalha dele, Peonia de dia, Pryce e
+Morty (rodados depois, na Parte 14: T87), “You picked.” da Laurel.
+
+---
+
+## Parte 14 — Caminho branco: Greenfield (estado 10 → 12)
+
+**Objetivo.** Os 2 mapas do protótipo instalados e a dungeon jogável.
+
+**Skills:** `adicionar-tileset` e `montar-tileset` (paleta de cristal e a do “depois”),
+`prototipo-de-mapa`, `mapa-de-ligacoes`, `acabamento-de-mapa`,
+`adicionar-batalha-npc`, `batalha-sem-blackout`, `adicionar-npc` (Molly), `encenar-cutscene`.
+
+**Material pronto:** `prototipo_corceis/greenfield_map.bin`, `mansion_map.bin`,
+`greenfield_objects.json`, `gera.py`; tabela do `REI_DA_COLHEITA.md` §15.5c.
+
+**Passos**
+
+1. **Paletas**: secundário de uma cidade de Johto copiado, com a paleta de cristal
+   (azul-claro) e a de “depois”; troca por estado no `ON_LOAD`. É a única arte nova.
+2. **Layouts** `Greenfield` (30×39) e `Greenfield_Mansion` (26×23) em
+   `layouts.json`; `map.json` com os objetos do protótipo (Molly e Glastrier vêm do
+   `gera.py`).
+3. **Ligação**: portão novo a oeste de `RuinsOfAlph_Outside` → entrada oeste de
+   Greenfield; porta da casa grande → mansão. `mapa-de-ligacoes` confirma alcançável.
+   O portão só deixa passar com a Iceroot na bolsa e estado 10 (senão uma fala curta
+   do cristal).
+4. **Cenas**: chegada da Peonia; os três moradores presos; Molly no saguão; o
+   Scientist (1 treinador, preso no “mesmo dia”); o salão com a nota do Hale
+   (`bg_event`); oferecer a Iceroot; batalha e captura do Glastrier (nível 60, retry
+   do §8.1; só a captura avança); `removeitem` da cenoura; Never-Melt Ice da Molly
+   (`checkitemspace` antes).
+5. **Estado 12**: Greenfield com a paleta do “depois”; falas novas dos três moradores
+   (**escrever**: o design só diz que “o dia deles andou”); o Pryce em Mahogany diz
+   “I'll need a better coat.”
+6. A mansão fica trancada pelo cristal se o jogador escolheu o outro corcel (estado
+   11/13).
+
+**Teste no jogo:** fugir, perder e derrotar sem capturar o Glastrier → volta; capturar
+→ estado 12, cor volta; o outro caminho continua fechado.
+
+### Parte 14 — feita (03/10/2026)
+
+**Entregue:** os dois mapas do protótipo instalados e jogáveis — `Greenfield` (30×39,
+layout `LAYOUT_GREENFIELD`, `MAP_TYPE_TOWN`, `MUS_HG_SINJOU_RUINS`) e
+`Greenfield_Mansion` (26×23, `MUS_HG_LIGHTHOUSE`), no fim do `gMapGroup_Dungeons`
+(`MAP_GREENFIELD` = 24.120, `MAP_GREENFIELD_MANSION` = 24.121). O portão de cristal nas
+Ruins of Alph, os três moradores presos, a Peonia na entrada, a Molly, o Scientist Dalton
+(`TRAINER_GREENFIELD_SCIENTIST` = 963, o antigo `TRAINER_UNUSED_99`, escala sempre ligada
+como os da horta), a nota do Hale, o Glastrier Lv60 (só a captura avança), o Never-Melt Ice,
+Greenfield “depois” e a fala do casaco do Pryce. Estados `HARVEST_KING_GLASTRIER` (12) e
+`_SPECTRIER` (13, para a Parte 15); fala de uma vez `GARDEN_STORY_WHITE_PATH` (bit 6, o
+último livre do `VAR_GARDEN_NEWS`). Nenhuma flag persistente nova. Debug `Story… → 9 / 10
+Iceroot in bag / 11 Shaderoot in bag` (10 e 11 já põem a cenoura na bolsa). 2 testes de C
+novos (55/55).
+
+**Onde está:**
+- `data/maps/Greenfield/scripts.inc` e `data/maps/Greenfield_Mansion/scripts.inc` (planta
+  no topo de cada um); o portão em `data/maps/RuinsOfAlph_Outside/scripts.pory` (bloco
+  `raw`) com `coord_events` em (2,26) e (2,27); o casaco do Pryce em
+  `data/scripts/berry_garden_steeds.inc` (arquivo novo das Partes 14–15), chamado pelo
+  `BerryGarden_EventScript_PryceHook`.
+- O cristal: `GreenfieldCrystal_IsActive` / `GreenfieldCrystal_Tint`
+  (`src/berry_garden.c`), aplicados em `LoadTilesetPalette` (`src/fieldmap.c`) e em
+  `UpdateAltBgPalettes` (`src/overworld.c`).
+
+**Decisões:**
+1. **Cristal por código, não por tileset copiado.** O passo 1 pedia um secundário copiado
+   com paletas de cristal e de “depois”. Ficou uma função que puxa todas as paletas do
+   mapa de Greenfield para azul-gelo (mantendo claro e escuro) enquanto o bit
+   `WHITE_PATH` não está ligado; o “depois” é a paleta original do New Bark. Zero tile e
+   zero paleta nova, e a troca dia/noite continua valendo (o tom é reaplicado quando a
+   paleta noturna é recalculada).
+   **Revisto em 03/10/2026 — o filtro ganhou peças de cristal.** O autor escolheu a proposta
+   E (“Instante parado”) entre cinco ([página](https://claude.ai/artifact/W2haZmEgrB8MxF3CKdTaz3)):
+   - `gTileset_Greenfield` (`data/tilesets/secondary/greenfield`) = o secundário do New Bark
+     com os 144 metatiles nos mesmos índices + 50 tiles e 13 metatiles de cristal a partir
+     do 1168 (aglomerados, pilar 1×2 com a ponta na camada top, bloco 2×2, flor de vidro
+     andável, lascas no caminho). Arte no slot 7, que o New Bark não usava.
+   - O filtro virou um dia desbotado, quase branco (rampa `{12,13,17}`→`{30,31,31}`), e
+     `MapTint_ApplyToBg` deixa o `GREENFIELD_CRYSTAL_PAL` (7) de fora: os cristais mantêm o
+     branco com reflexo de arco-íris.
+   - `LAYOUT_GREENFIELD` tem os cristais; `LAYOUT_GREENFIELD_AFTER` (o mapa de antes, tileset
+     do New Bark) entra pelo `setmaplayoutindex` no `Greenfield_OnTransition` quando o bit
+     `WHITE_PATH` está ligado.
+   - Gerador: `prototipo_corceis/greenfield_cristal.py <saida> --instalar E` (lê a base do
+     `GreenfieldAfter`; grava o tileset e o `map.bin` do `Greenfield`). Teste de C novo: o
+     filtro não toca o slot 7. No jogo (headless): cristais com a cor própria de dia, o
+     pilar cobre o jogador que passa atrás, o bloco trava; com `WHITE_PATH` a cidade volta
+     sem cristais e se anda onde estava o bloco.
+2. **Cristal no salão da mansão (03/10/2026).** O salão e o saguão dividem as paletas do Inn,
+   mas os slots 7 e 8 só aparecem no salão. O autor escolheu a proposta C (“Instante parado”)
+   entre três ([página](https://claude.ai/artifact/CksFTUjbBYQX2ycHb6JcXo)):
+   - `gTileset_HaleMansion` (`data/tilesets/secondary/hale_mansion`) = o secundário do Inn com
+     os 128 metatiles nos mesmos índices + 129 tiles e 57 metatiles: de 1152 a 1175, as peças
+     do salão repintadas com o filtro de Greenfield gravado (slot 7) e com meia geada no
+     corredor da escada (slot 8, cores 1–3); a partir do 1176, os cristais (crosta de
+     parede, aglomerado, pilar 1×2 com a ponta na camada top, bloco 2×2, geada andável e a
+     cama do Glastrier em (12..14,5), andável), no slot 8, cores 4–15.
+   - `LAYOUT_GREENFIELD_MANSION` tem o cristal; `LAYOUT_GREENFIELD_MANSION_AFTER` (a mansão de
+     antes, com o `gTileset_Inn`) entra pelo `setmaplayoutindex` no ramo “thawed” do
+     `GreenfieldMansion_OnTransition`. O saguão não muda nenhum tile. Os NPCs mantêm a cor
+     normal.
+   - Gerador: `prototipo_corceis/salao_cristal.py <saida> --instalar C` (lê a base do
+     `GreenfieldMansionAfter`). No jogo (headless, T93b): salão de cristal, saguão com as
+     cores da casa, Glastrier na cama de cristal no estado 10, e o salão de madeira no 12.
+3. **O portão** é o recanto sem saída (2,26)–(2,27) na parte oeste das ruínas (área da
+   câmara do Kabuto, que se alcança pela Union Cave B1F). Abre com estado 10 + Iceroot na
+   bolsa (“The Iceroot Carrot in your Bag turns cold…”) e, depois do Glastrier, sempre,
+   sem fala. Fora isso — inclusive no caminho escuro (estados 11/13) — uma fala e um passo
+   para trás. Por isso a mansão “trancada pelo cristal” do passo 6 é o próprio portão: no
+   caminho escuro não se entra em Greenfield. Warps por script (`warp`), nos dois
+   sentidos; `map_graph` mostra Ruins → Greenfield → mansão alcançáveis.
+4. **Peonia** fica na entrada (3,12) só no estado 10; ao chegar pelo portão ela fala a
+   linha do §15.4 (a cada chegada no estado 10). “The FOUNTAIN is glass” virou “The TREES
+   are glass” (o mapa aprovado não tem fonte). Ela não some da horta enquanto isso — a
+   horta e Greenfield nunca estão na tela juntas.
+5. **O Scientist** (5,11) olha para oeste sobre a linha 11, que todo caminho até o salão
+   cruza: a luta é obrigatória. Time Unown / Bronzong / Porygon2, escala pela party.
+6. **Glastrier:** oferecer a cenoura (Yes/No) abre a batalha (Lv60, sem escala, como o
+   §8.1). Fugir ou derrotar: “It isn't going anywhere…” e ele fica; perder: whiteout
+   normal. Antes de oferecer, `checkitemspace` do Never-Melt Ice.
+7. **Depois da captura** o mapa recarrega com o jogador em (13,6) e a Molly sobe até o lado
+   dele. **A cenoura é a marca de “presente devido”**: ela só sai da bolsa quando o
+   Never-Melt Ice entra; se a cena for interrompida, a Molly ao piano termina a entrega.
+   Sem flag nova. Nessa visita a Molly do piano fica escondida (uma Molly por vez).
+8. **Molly e o recado do Pryce:** a narração “{PLAYER} passed on the old man's good
+   evening.” vem logo depois da primeira fala dela (não há como saber se o jogador ouviu
+   o Pryce sem gastar bit; ele só chega ali pelo recado).
+9. **Falas novas dos moradores** (pendência 3 do autor): propostas no script, marcadas
+   “for the author to approve”.
+10. **Pryce depois:** “…She said the invitation stands? / Hm. I'll need a better coat.”
+    sempre que se fala com ele depois do Glastrier.
+
+**QA no jogo (headless, 03/10):** T88–T97 (bloco F9 do `TESTES_NO_JOGO.md`) e o T87 da
+Parte 13. Portão fechado (sem cenoura e no estado 11), aberto com a Iceroot, chegada com a
+Peonia e o tom de cristal; moradores, placa, porta; Molly com o recado; Scientist avista,
+escala e o whiteout ao perder; nota do Hale; Glastrier: recusar, fugir, derrotar sem
+capturar, capturar; recarga, Molly e o Never-Melt Ice (cenoura saiu, RAM); Greenfield com
+cor, falas novas, sem a Peonia; saída e volta pelo portão; o casaco do Pryce. **Não jogado:**
+a vitória contra o Scientist (o time de teste não tinha tipo para o Bronzong; a fala de
+depois foi conferida com a flag ligada na RAM).
+
+---
+
+## Parte 15 — Caminho escuro: a Torre de Bronze (estado 11 → 13)
+
+**Skills:** as mesmas da Parte 14.
+
+**Material pronto:** `prototipo_corceis/brasstower_1f_map.bin`,
+`brasstower_1f_objects.json`, `brasstower_roof_objects.json`, `gera.py`; §15.5c.
+
+**Passos**
+
+1. **Paletas**: `burned_tower` com entardecer sépia (1F) e noite de incêndio (telhado).
+2. **Layouts** `BrassTowerMemory_1F` (27×25, `BurnedTower_1F` sem buracos, 4 estátuas)
+   e `BrassTowerMemory_Roof` (23×21, `TinTower_RoofDay` com brasas).
+3. **Entrada**: `EcruteakCity_Theater` à noite, estado 11, Shaderoot na bolsa → cena
+   da dança (Morty, Eusine) → warp para o 1F. Sem cenoura, as Kimono Girls não dançam
+   isso.
+4. **1F**: 3 Sábios-memória (falas), Kimono Girl no canto; `coord_event` na escada
+   (14,4): raio (flash + `playse`) + narração + warp ao telhado.
+5. **Telhado**: Sábio Tomo (treinador, sem blackout, time a definir — sugestão:
+   fantasmas e fogo de Johto antigo); fala de vitória; a sombra do Ho-Oh passa e não
+   para (movimento de objeto `SPECIES(HO_OH)` pelo céu, sem parar); batalha e captura do
+   Spectrier (nível 60, retry); `removeitem` da cenoura.
+6. **Volta**: o jogador acorda no `BurnedTower_B1F` (“You were gone three minutes.”);
+   Spell Tag do Morty; lápide do Tomo em Ecruteak (`bg_event` no quintal dos Sábios).
+7. O Spectrier-visitante do Ato 2 some da horta a partir do estado 13.
+
+**Teste no jogo:** o mesmo da Parte 14, e a cena do raio sem travar (entrada e saída
+por cada lado da escada).
+
+### Parte 15 — feita (03/10/2026)
+
+**Entregue:** a memória da Torre de Bronze jogável, do teatro ao despertar —
+`BrassTowerMemory_1F` (27×25, layout novo `LAYOUT_BRASS_TOWER_MEMORY_1F` do protótipo, com a
+escada de mão do B1F posta na parede norte em (14,3)–(14,4)) e `BrassTowerMemory_Roof`
+(o layout `LAYOUT_TIN_TOWER_ROOF_DAY` sem mudança), no fim do `gMapGroup_Dungeons`
+(24.122 e 24.123). A dança no `EcruteakCity_Theater`, os sábios-memória, a Kimono Girl, o
+raio, o Sábio Tomo (`TRAINER_BRASS_TOMO` = 522, o antigo `TRAINER_UNUSED_401`, escala
+sempre ligada), a sombra do Ho-Oh, o Spectrier Lv60 (só a captura avança: estado 13), o
+despertar no `BurnedTower_B1F` com a Spell Tag do Morty e a lápide do Tomo em Ecruteak.
+Nenhuma flag persistente nova (a vitória sobre o Tomo é a própria flag de treinador dele).
+O tom virou `MapTint_Mode` / `MapTint_Apply` com três modos: cristal (Greenfield),
+entardecer (1F) e fogo (telhado).
+
+**Onde está:** `data/maps/BrassTowerMemory_1F/scripts.inc`,
+`data/maps/BrassTowerMemory_Roof/scripts.inc` (planta no topo); o teatro no fim de
+`data/maps/EcruteakCity_Theater/scripts.inc` (+3 objetos no fim do array: Peonia 14, Morty
+15, Eusine 16); o despertar e a lápide em `data/scripts/berry_garden_steeds.inc`, chamados
+do `BurnedTower_B1F` (Morty = objeto 12) e do `EcruteakCity` (`bg_event` em (36,25)); a
+Spell Tag de reserva no `BerryGarden_EventScript_MortyHook`.
+
+**Decisões:**
+1. **Paletas por código** (como na Parte 14), não `burned_tower` copiado: sépia quente no
+   1F, vermelho de fogo no telhado. Os dois mapas são `INDOOR`, sem a troca dia/noite.
+2. **A escada do 1F**: o 1F do protótipo não tinha escada desenhada; entrou a escada de mão
+   do próprio `BurnedTower_B1F` (metatiles 1045/1053, mesmo tileset). Subir nela é o
+   gatilho do raio.
+3. **O teatro**: os três aparecem no estado 11 do anoitecer ao amanhecer (`gettimeofday` ≥
+   `TIME_EVENING`). Sem a cenoura o Morty diz uma linha; com ela, Yes/No e a dança
+   (narração + clarões, sem coreografia das Kimono Girls — `@ SKELETON` possível de
+   evoluir). A saída da memória pela porta do 1F volta ao teatro.
+4. **No telhado** a Peonia fica em (12,12) e não em (10,13) do protótipo, para não fechar a
+   escada (10,13)–(10,14).
+5. **Tomo**: luta sem whiteout (`garden_fight`); perder ou desistir cura o time e manda o
+   jogador para o pé da escada no 1F; subir de novo repete a cena. Vencido, a flag de
+   treinador fica ligada e ele passa a ficar de lado em (9,9).
+6. **A sombra do Ho-Oh** cruza a linha 7 (o topo da tela com o jogador em (10,11)),
+   elevação 13, por cima do estábulo, e some.
+7. **Despertar**: a Shaderoot é a marca de “Spell Tag devida” (como a Iceroot da Molly): o
+   Morty do B1F só aparece com estado 13 + cenoura na bolsa + jogador em (16,13); se a cena
+   for interrompida, o Morty do ginásio entrega.
+8. **A lápide** é a lanterna de pedra do quintal do escritório dos Sábios: antes do
+   Spectrier (ou no caminho branco) é só uma lanterna.
+9. **O passo 7** (o Spectrier-visitante some da horta a partir do 13) já valia: ele só
+   aparece no estado 4, na cena do Ato 2.
+
+**QA no jogo (headless, 03/10):** T98–T105 (bloco F10). Dois achados corrigidos no teste (a
+sombra do Ho-Oh fora da tela; o Spectrier visível na última fala). **Não jogado:** Morty sem
+cenoura e o “Not yet”, teatro de dia, a Spell Tag pelo ginásio, a lanterna antes do
+Spectrier.
+
+---
+
+## Parte 16 — Ato 7, Epílogo e pós-história (estados 12/13 → 15)
+
+**Skills:** `batalha-sem-blackout`, `adicionar-batalha-npc`, `evoluir-historia-de-evento`,
+`entregar-pokemon-ou-ovo` (não; é captura), `encenar-cutscene`.
+
+**Passos**
+
+1. **Ato 7** (→ 14): noite, corcel na party; a prova com
+   `TRAINER_HARVEST_KING_TRIAL` (time do Peony, classe e nome “Calyrex”, front pic do
+   Peony, sem blackout); depois o encontro fixo com o Calyrex (nível 65); só a captura
+   avança; Reins of Unity da Laurel (`checkitemspace` antes).
+2. **Epílogo** (→ 15): manhã seguinte; cena `LaurelSaysName` única (a primeira entre
+   marco 66 e epílogo toca a principal; a outra toca a alternativa); carta da Honey.
+   **Atenção:** “marco 66” = todas as berries **menos a Enigma** registradas, e não
+   `BerryLedger_Count() >= 66` (a contagem inclui a Enigma; ver Parte 3, passo 8).
+3. **Nível 5 — King's Garden**: canteiro da Laurel com colheita dobrada; a Enigma
+   renasce sozinha quando o canteiro fica vazio (tratar o ID como natural de Enigma com
+   `StartNaturalBerryTreeRegeneration`).
+4. **Pós-história**: Avery às sextas (banco J, batalha), Peony e Peonia acampados no
+   lago nas noites de fim de semana (bancos K e L, batalhas, dupla Tilly + Peonia),
+   Mustard 1 domingo em 4 (banco S, batalha sem Urshifu), carta de Freezington
+   (estátua) e a fala 6 do Calyrex na party (banco N).
+5. Treinadores restantes do §14.6 (Avery ×3, Peony ×3, Peonia ×3 + dupla, Mustard ×1).
+
+**Teste no jogo:** perder a prova e voltar na noite seguinte; capturar; epílogo nos
+dois caminhos; a Enigma volta depois de colhida; uma semana inteira de pós-história no
+relógio contando objetos.
+
+### Parte 16 — feita (03/10/2026)
+
+**Entregue:** o Ato 7 (a prova do Rei pelo corpo do Peony e o Calyrex Lv65, estado 14), o
+epílogo (estado 15, horta nível 5), a cena única do nome da Laurel (`LaurelSaysName`, na
+primeira entre o epílogo e o marco 66), o título 66 do Bram, a Enigma que renasce no
+canteiro da Laurel, a colheita dobrada dele, e a horta depois da história: Avery às
+sextas (banco J, batalha), Peony e Peonia no lago nas noites de fim de semana (bancos K e
+L, batalhas), Peonia na banquinha da Tilly e a dupla “Team Mulch”, Mustard num domingo
+sorteado (1 em 4, banco S, batalha sem Urshifu), o Calyrex no canteiro de noite (banco N)
+e as cartas que faltavam (Sonia ×2, a estátua de Freezington, Honey 9). 10 treinadores
+novos, IDs **523–532** (`TRAINER_HARVEST_KING_TRIAL`, `TRAINER_GARDEN_AVERY_1..3`,
+`_PEONIA_1..3`, `_TILLY_DUO`, `_PEONIA_DUO`, `_MUSTARD`; eram `TRAINER_UNUSED_*` do bloco
+livre 522–537), todos com escala sempre ligada. Var nova **`VAR_GARDEN_STORY2` (0x4130)**:
+as marcas de uma vez a partir da oitava (`GARDEN_STORY_EPILOGUE_READY`, `_LAUREL_NAME`,
+`_TITLE_66`, `_LAUREL_66`, `_ENIGMA_TOLD`, `_STATUE_LETTER`), pelos mesmos specials
+`GardenStory_Check/Mark`. `FLAG_TEMP_16/17` = Avery e Mustard. Objetos 43 (Avery,
+`PSYCHIC_M`) e 44 (Mustard, `BLACK_BELT`, substituto) na Route 30. Debug `Story… → 12, 13,
+14, 15`. 4 testes de C novos (59/59).
+
+**Onde está:** `data/scripts/berry_garden_epilogue.inc` (arquivo novo; textos gerados por
+`p16/gen_texts.py` no scratchpad, com quebra por pixel); ganchos em
+`berry_garden_story.inc` (cena da porta, `LaurelStory`, cartas, Peony/Peonia),
+`Route30_House` (epílogo e título no Bram), `berry_tree.inc` (banco N) e `Route30`
+(canteiro da Laurel visível a partir do 15). C: `GardenRollDay` (epílogo, Enigma, Mustard),
+`GardenCast_PlaceOf/ApplyStory` (Ato 7 e pós-história), `GardenKingsPlot_Yield` (chamado em
+`CalcBerryYield`), `GardenTree_IsKingsPlot`, `BerryLedger_HasTitle`.
+
+**Decisões:**
+1. **Ato 7 pela porta**, como o Ato 5: Peony (22,38) e Calyrex (23,39) toda noite nos
+   estados 12/13; falar com eles leva à porta e a cena toca na recarga. Sem o corcel: só a
+   fala. O corcel não “sai da bola” (sem objeto extra; fica para evoluir).
+2. **A prova pode ser repetida na hora** (o design dizia “na próxima noite”): perder cura e
+   deixa tentar de novo; vencida, a flag de treinador fica e a próxima noite vai direto ao
+   Rei. A Laurel só sai de casa depois da captura (orçamento do §13.3).
+3. **A colheita farta** é o `RipenGardenTrees` (o do debug) sob o fade da recarga final,
+   para nenhuma árvore mudar à vista (o brilho que corrompia sprites, Parte 11).
+4. **Epílogo** na primeira conversa com o Bram em qualquer manhã do estado 14 (o Ato 7 só
+   acontece de noite) ou, de tarde, depois que o dia virou. Corrigido no teste: com o Ato 7
+   depois da meia-noite, “a manhã seguinte” é o mesmo dia do calendário.
+5. **O nome** (`LaurelSaysName`) toca na primeira conversa com a Laurel depois do epílogo
+   **ou** do título 66, o que vier primeiro; a carta da Honey vem junto quando é o epílogo;
+   o outro evento ganha a fala própria (“Sixty-six. All of them but his…”). O título 66 é do
+   Bram, depois dos marcos, só em casa/horta onde ele paga os marcos.
+6. **A Enigma** renasce no `GardenRollDay` (canteiro vazio no dia novo → Enigma plantada),
+   sem a regeneração das árvores de rota. A colheita dobrada para em 31 (o campo tem 5 bits).
+7. **Peonia** não escolhe “Dad ou Me”: de noite a batalha é a dela; o Peony tem a dele. De
+   dia, na banquinha, a dupla com a Tilly (precisa de 2 Pokémon; senão uma fala).
+8. **Prêmio do Mustard**: Exp. Candy L como substituto (`@ SKELETON`, pendência 2 do autor).
+   Avery dá 1 berry rara do Livro; Peonia 2 Growth Mulch; a dupla 1 Surprise Mulch.
+9. **Sprites substitutos**: Avery `PSYCHIC_M`, Mustard `BLACK_BELT`.
+
+**QA no jogo (headless, 03/10):** T106–T115 (bloco F11). **Não jogado:** a Enigma renascendo e
+a colheita dobrada no jogo (cobertas por teste de C), as cartas novas, as vitórias de
+verdade contra Avery/Peonia/Mustard/dupla (falas de vitória e prêmios).
+
+---
+
+## Parte 17 — Fechamento
+
+1. `python3 dev_scripts/flag_audit.py --csv` e revisão final do diff (skill
+   `catalogar-flags`): nenhuma flag órfã, nenhuma fora do array de save.
+2. `checar_falantes.py` e `medir_linha.py` em todos os textos novos.
+3. `mapa-de-ligacoes`: os 4 mapas novos alcançáveis; o `map_graph` sem aviso.
+4. **Nexus**: pela R1 do `NEXUS_REGRAS.md`, Calyrex e o corcel escolhido entram no
+   sorteio depois de capturados; atualizar `.claude/rift_missions/nexus/POOL_LENDARIOS.md`.
+5. `dev_scripts/item_audit.py` e `fontes_legitimas.py`: Glastrier/Spectrier/Calyrex,
+   as 8 famílias e os adubos sem fonte agora têm fonte.
+6. Renders novos da Route 30 (dia/noite/fim de semana) e dos 4 mapas instalados;
+   atualizar as páginas (artifacts) se o autor quiser.
+7. `grep` da surpresa em todo texto alcançável antes do estado 7.
+8. **Jogada completa** num save novo, do tutorial ao estado 15, nos dois caminhos.
+9. Marcar no topo do `REI_DA_COLHEITA.md` o que foi implementado e onde o código
+   divergiu do design.
+
+### Parte 17 — feita (03/10/2026)
+
+| # | Passo | Resultado |
+|---|---|---|
+| 1 | Auditoria de flags | Rodada a cada parte e commitada junto. Flags novas das partes 14–16: só aliases de `FLAG_TEMP_*` (Avery `16`, Mustard `17`); nenhuma persistente nova, nenhuma fora do array. As vitórias do Tomo e da prova do Rei usam a própria flag de treinador |
+| 2 | Falantes e largura | `checar_falantes.py`: 242 falantes em ordem; `medir_linha.py` sem estouro em todos os `.inc` da horta, dos 4 mapas novos e do teatro |
+| 3 | Mapas | `map_graph check`: 560 alcançáveis, nenhum desligado. Greenfield (pelas ruínas), mansão, Torre 1F (pelo teatro) e telhado |
+| 4 | Nexus (R1) | Calyrex, Glastrier e Spectrier agora `requiresCaught`; os corcéis por `GardenSteed_NexusEligible`: antes da escolha os dois esperam captura (protege a surpresa), depois o não escolhido fica só no Nexus. `POOL_LENDARIOS.md` (99 com método) e a R1 do `NEXUS_REGRAS.md` atualizados. 1 teste de C (60/60) |
+| 5 | Itens e fontes | `item_audit.py` ao vivo: cenouras, Reins of Unity e os 4 adubos do Livro com fonte. **O catálogo `docs/SOULGOLD_ITEMS_AUDIT.*` não foi regravado**: o diff traria mudanças de outras sessões (TM/HM Dig, Silver Powder, sinos). Site público regenerado em 03/10/2026 (pedido do autor): o parser (`tools/soulgold_docs/parsers/gifts.py`) passou a ler `seteventmon` e os scripts de `data/scripts/` que o mapa alcança, pulando chefes (`setbossbattle`/`NO_CATCHING`); Calyrex, Glastrier, Spectrier (e a Celebi de Ilex) ganharam fonte e saíram da lista “só Nexus” do `fontes_legitimas.py` |
+| 6 | Renders | Não refeitos (opcional; o autor decide se quer as páginas atualizadas) |
+| 7 | Surpresa | `grep` de Calyrex/Glastrier/Spectrier nos bancos da rotina e nos mapas da horta: nada antes do Ato 5. No Nexus a R1 nova também esconde os três até a captura |
+| 8 | Jogada completa num save novo | **Não feita** como uma corrida só. Cada parte foi jogada no mGBA headless a partir do estado anterior (debug `Story…`), dos dois caminhos; ver o relatório |
+| 9 | Topo do `REI_DA_COLHEITA.md` | Nota de implementação com as divergências principais |
+
+---
+
+## 18. Pendências do autor
+
+| # | O quê | Bloqueia | Até lá |
+|---|---|---|---|
+| 1 | Sprites (overworld + front pic): Peony, Peonia, Klara, Avery, Mustard, Molly adulta | nada | `HIKER`, `PICNICKER`, `LASS`, `PSYCHIC_M`, (Mustard: a definir), `WOMAN_2` |
+| 2 | ~~Prêmio do Peony e o item grande do Mustard~~ | — | **fechada em 03/10/2026:** os dois dão PP Up (definitivo) |
+| 3 | Falas novas dos 3 moradores de Greenfield no estado 12 | Parte 14 | o agente propõe, o autor aprova |
+| 4 | ~~Time do Sábio Tomo~~ | — | **fechada em 03/10/2026:** o autor aceitou o time e a dificuldade na escala da party |
+| 5 | Greenfield com outro desenho (mais flores, fonte no meio)? | Parte 14 | o protótipo aprovado |
+| 6 | ~~Vars novas em `0x4127..` ou reciclar `VAR_GIFT_UNUSED_5..7`~~ | — | **fechada na Parte 1:** vars novas `0x4127..0x412D` |
+| 7 | ~~Onde guardar o “último marco do Livro pago”~~ | — | **fechada na Parte 1:** `VAR_BERRY_LEDGER_MILESTONE` (`0x412D`) |
+| 8 | Canteiro da Laurel fora das regras da horta (sem praga, erva nem rega automática)? | Parte 10 | fora (`GARDEN_LAST` = B4); ver “Parte 1 — feita” |
+| 9 | ~~Descrição e ícone das cenouras, e as folhas no canteiro~~ | — | **fechada em 03/10/2026:** proposta C (“A noite revela”) de https://claude.ai/artifact/KvYi8zKVNGyVgGv5UgjByH, no jogo |
+| 10 | ~~Lugar do portão de Greenfield~~ | — | **fechada em 03/10/2026:** fica no recanto oeste das ruínas (pela Union Cave B1F) |

@@ -35,6 +35,7 @@ GoldenrodCity_UndergroundTunnel_EventScript_KimonoTriggerBot::
 	removeobject LOCALID_GOLDENROD_UNDERGROUND_KIMONO
 	fadedefaultbgm
 	setvar VAR_GOLDENROD_CITY_STATE, 8
+	release
 	end
 
 GoldenrodCity_UndergroundTunnel_EventScript_KimonoTriggerTop::
@@ -65,6 +66,7 @@ GoldenrodCity_UndergroundTunnel_EventScript_KimonoTriggerTop::
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	setvar VAR_GOLDENROD_CITY_STATE, 8
+	release
 	end
 
 
@@ -114,7 +116,7 @@ GoldenrodCity_UndergroundTunnel_Movement_Kimono_Leave2:
 
 
 GoldenrodCity_UndergroundTunnel_Text_Kimono1:
-	.string "Team Rocket members in black suits\n"
+	.string "{SPEAKER NAME_KIMONO_GIRL}Team Rocket members in black suits\n"
 	.string "have been running around...\p"
 	.string "I was wondering what was going on.\n"
 	.string "So, you took on Team Rocket?\l"
@@ -123,7 +125,7 @@ GoldenrodCity_UndergroundTunnel_Text_Kimono1:
 	.string "legendary Pokémon...$"
 
 GoldenrodCity_UndergroundTunnel_Text_Kimono2:
-	.string "Hahaha! Never mind.\n"
+	.string "{SPEAKER NAME_KIMONO_GIRL}Hahaha! Never mind.\n"
 	.string "I must go now.$"
 
 GoldenrodUnderground_EventScript_Eric::
@@ -198,6 +200,7 @@ GoldenrodUnderground_EventScript_Brother_Haircut2::
 	msgbox GoldenrodUnderground_Text_YoungerBrotherDisappointed, MSGBOX_DEFAULT
 	hidemoneybox
 	closemessage
+	release
 	end
 
 GoldenrodUnderground_EventScript_Haircut2::

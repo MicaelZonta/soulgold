@@ -13,4 +13,4 @@ TohjoPass_Floette::
 
 
 TohjoPass_Floette_Text_0:
-	.string "Floette: Floweeeeey!$"
+	.string "{SPEAKER NAME_FLOETTE}Floweeeeey!$"

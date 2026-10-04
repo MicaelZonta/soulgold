@@ -172,10 +172,10 @@ Rinto_TempleSage_Text_0:
 	.string "the beauty of the world.$"
 
 Rinto_Gible_Text_0:
-	.string "Gible: Gibgib!$"
+	.string "{SPEAKER NAME_GIBLE}Gibgib!$"
 
 Rinto_Maractus_Text_0:
-	.string "Maractus: Maaaai!$"
+	.string "{SPEAKER NAME_MARACTUS}Maaaai!$"
 
 Rinto_Piplup_Text_0:
 	.string "...The Piplup appears to have dozed off.$"

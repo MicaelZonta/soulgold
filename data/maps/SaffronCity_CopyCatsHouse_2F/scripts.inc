@@ -217,7 +217,7 @@ Copycat_Text_Male_1:
 	.string "{PLAYER}: Huh? You're strange!$"
 
 Copycat_Text_QuickMimicking:
-	.string "Copycat: Hmm? Quit mimicking?\p"
+	.string "{SPEAKER NAME_COPYCAT}Hmm? Quit mimicking?\p"
 	.string "But that's my favorite hobby!$"
 
 Copycat_Text_Male_2:
@@ -230,14 +230,14 @@ Copycat_Text_Male_2:
 	.string "went to Vermilion City?$"
 
 Copycat_Text_Worried:
-	.string "Copycat: Pardon?\p"
+	.string "{SPEAKER NAME_COPYCAT}Pardon?\p"
 	.string "I shouldn't decide what you\n"
 	.string "should do?\p"
 	.string "But I'm really worried… What if\n"
 	.string "someone finds it?$"
 
 Copycat_Text_GiveDoll:
-	.string "Copycat: Yay! That's my Clefairy\n"
+	.string "{SPEAKER NAME_COPYCAT}Yay! That's my Clefairy\n"
 	.string "Poké Doll!\p"
 	.string "See the tear where the right leg\n"
 	.string "is sewn on? That's proof!$"
@@ -247,7 +247,7 @@ Copycat_Text_GivePass:
 	.string "like I promised!$"
 
 Copycat_Text_ExplainPass:
-	.string "Copycat: That's the Pass for the\n"
+	.string "{SPEAKER NAME_COPYCAT}That's the Pass for the\n"
 	.string "Magnet Train.\p"
 	.string "The rail company man gave me\n"
 	.string "that when they tore down our old\l"
@@ -261,10 +261,10 @@ Copycat_Text_Male_3:
 	.string "my every move?$"
 
 Copycat_Text_ItsAScream:
-	.string "Copycat: You bet! It's a scream!$"
+	.string "{SPEAKER NAME_COPYCAT}You bet! It's a scream!$"
 
 Copycat_Text_Dodrio1:
-	.string "Dodrio: Gii giii!$"
+	.string "{SPEAKER NAME_DODRIO}Gii giii!$"
 
 Copycat_Text_Dodrio2:
 	.string "Mirror, Mirror On The Wall,\n"

@@ -6,12 +6,12 @@ Aparece no checklist como:
 
 - **Bea — Lutador** (Galar · Líderes de Ginásio) — Líder exclusiva de *Sword*, séria e dedicada às artes marciais.
 
-**Pronto para o Nexus:** ❌ não — falta sprite de overworld e battle sprite (os dois são obrigatórios).
+**Pronto para o Nexus:** ✅ sim — tem sprite e battle sprite (03/10/2026). Falta o time e as falas irem para o código.
 
 ## Checklist
 
-- [ ] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)*
+- [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_BEA`, 03/10/2026
+- [x] Battle sprite / front pic *(obrigatório)* — `TRAINER_PIC_FRONT_BEA` (64x64 + 80x80), 03/10/2026
 - [ ] Field mugshot (retrato na caixa de diálogo)
 - [ ] Time para as Rift Missions definido
 - [ ] Associado a um lendário
@@ -22,11 +22,17 @@ Aparece no checklist como:
 
 ### Sprite de overworld
 
-Não existe. Criar com a skill `adicionar-npc`.
+| Constante | Arquivo |
+|---|---|
+| `OBJ_EVENT_GFX_BEA` | `graphics/object_events/pics/people/special/bea.png` (boneco 21x24, quadro 32x32, 12 quadros, `sAnimTable_StandardAsym`; paleta própria `OBJ_EVENT_PAL_TAG_BEA`) — registrado em 03/10/2026, visto no jogo de frente |
+
+Origem: `.filetransfer/.trainers/Bea/Sprite - DiegoWT.png` (tamanho escolhido pelo autor; ver `TAMANHOS.md`).
 
 ### Battle sprite (front pic)
 
-Não existe. Criar com a skill `adicionar-grafico-trainer`.
+| Constante | Arquivo |
+|---|---|
+| `TRAINER_PIC_FRONT_BEA` | `graphics/trainers/front_pics/bea.png` (64x64) + `bea_large.png` (80x80, `TRAINER_SPRITE_LARGE`) — 03/10/2026; nenhuma batalha usa ainda |
 
 ### Field mugshot
 

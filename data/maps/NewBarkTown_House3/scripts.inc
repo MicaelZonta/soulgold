@@ -418,4 +418,4 @@ NewBarkTownRivalHouseMarill_Text_0:
 	.string "Marii!$"
 
 NewBarkTownRivalHouseAzumarill_Text_0:
-	.string "Azumarill: Azuu!$"
+	.string "{SPEAKER NAME_AZUMARILL}Azuu!$"

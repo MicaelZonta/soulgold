@@ -83,7 +83,7 @@ CianwoodGym_EventScript_ChuckGotoDojo::
 	end
 
 CianwoodGym_Text_ChuckGotoDojo:
-	.string "Wahahaha {PLAYER}!\n"
+	.string "{SPEAKER NAME_CHUCK}Wahahaha {PLAYER}!\n"
 	.string "I'm in the middle of my training!\p"
 	.string "If you want another match, come to\n"
 	.string "the Fighting Dojo in Saffron!$"	
@@ -95,7 +95,7 @@ CianwoodGym_EventScript_ChuckAtDojo::
 	end
 
 CianwoodGym_Text_ChuckAtDojo:
-	.string "I will see you at the Dojo!\n"
+	.string "{SPEAKER NAME_CHUCK}I will see you at the Dojo!\n"
 	.string "Wahahahahaha$"
 
 CianwoodGym_EventScript_OlivineCheckMahog::
@@ -136,7 +136,7 @@ CianwoodGym_Movement_ChuckRight:
 	step_end
 
 CianwoodGym_Text_ChuckIntro1:
-	.string "Wahahah!\p"
+	.string "{SPEAKER NAME_CHUCK}Wahahah!\p"
 	.string "So you've come this far!\p"
 	.string "Let me tell you, I'm tough!\p"
 	.string "My Pokémon will crush stones and\n"
@@ -149,7 +149,7 @@ CianwoodGym_Text_ChuckIntro2:
 	.string "Oooarrgh!$"
 
 CianwoodGym_Text_ChuckIntro3:
-	.string "There! Scared now, are you?\p"
+	.string "{SPEAKER NAME_CHUCK}There! Scared now, are you?\p"
 	.string "What? It has nothing to do with\n"
 	.string "Pokémon?\p"
 	.string "That's true!\p"
@@ -164,19 +164,19 @@ CianwoodGym_Text_GetStormBadge:
 	.string "{PLAYER} received Stormbadge.$"
 
 CianwoodGym_Text_ChuckBadgeSpeech:
-	.string "Stormbadge makes all Pokémon up to\n"
+	.string "{SPEAKER NAME_CHUCK}Stormbadge makes all Pokémon up to\n"
 	.string "L70 obey, even traded ones.\p"
 	.string "It also lets your Pokémon use Fly\n"
 	.string "when you're not in a battle.\p"
 	.string "Here, take this too!$"
 
 CianwoodGym_Text_ChuckTMSpeech:
-	.string "That is Bulk Up.\p"
+	.string "{SPEAKER NAME_CHUCK}That is Bulk Up.\p"
 	.string "It bolsters your Pokémon both \n"
 	.string "offensively and defensively!$"
 
 CianwoodGym_Text_ChuckAfter:
-	.string "Wahahah! I enjoyed battling you!\p"
+	.string "{SPEAKER NAME_CHUCK}Wahahah! I enjoyed battling you!\p"
 	.string "But a loss is a loss!\p"
 	.string "From now on, I'm going to train\n"
 	.string "24 hours a day!$"

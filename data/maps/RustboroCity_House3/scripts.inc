@@ -33,5 +33,5 @@ RustboroCity_House3_Text_NamingPikachuPekachu:
 	.string "that's easy to understand, but…$"
 
 RustboroCity_House3_Text_Pekachu:
-	.string "Pekachu: Peka!$"
+	.string "{SPEAKER NAME_PEKACHU}Peka!$"
 

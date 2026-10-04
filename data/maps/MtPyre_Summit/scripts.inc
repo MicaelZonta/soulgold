@@ -482,7 +482,7 @@ MtPyre_Summit_Text_Grunt4PostBattle:
 	.string "with us members and our leader.$"
 
 MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo:
-	.string "Archie: Team Magma's Maxie got ahead\n"
+	.string "{SPEAKER NAME_ARCHIE}Team Magma's Maxie got ahead\n"
 	.string "of us, but we also got what we wanted.\p"
 	.string "The Red Orb preserved at Mt. Pyre…\n"
 	.string "I, Archie, now have it in my possession!\p"
@@ -584,7 +584,7 @@ MtPyre_Summit_Text_WellThatTooIsFine:
 	.string "Well, that, too, is fine…$"
 
 MtPyre_Summit_Text_MaxieSilence:
-	.string "Maxie: {PLAYER}…\p"
+	.string "{SPEAKER NAME_MAXIE}{PLAYER}…\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …$"
 

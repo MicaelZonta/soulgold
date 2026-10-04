@@ -85,7 +85,10 @@ struct BerryTree
     u8 watered:4; // Used to keep track of bonuses in case of gradient watering
     u16 moistureLevel:7;
     u16 moistureClock:7;
-    u16 padding:2;
+    u16 mutationC:2; // SoulGold: was padding; mutation index is now C:B:A, 6 bits
 };
+
+// Lives in the save (gSaveBlock1Ptr->berryTrees): must never grow.
+STATIC_ASSERT(sizeof(struct BerryTree) == 8, BerryTreeSizeIsSaveLayout);
 
 #endif // GUARD_GLOBAL_BERRY_H

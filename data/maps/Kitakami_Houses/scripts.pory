@@ -38,7 +38,7 @@ script KitakamiHouses_3_Sinistea {
     lock
     faceplayer
     playmoncry(SPECIES_SINISTEA, CRY_MODE_NORMAL)
-    msgbox("Sinistea: Siii!")
+    msgbox("{SPEAKER NAME_SINISTEA}Siii!")
     waitmoncry
     release
     end

@@ -388,6 +388,49 @@
 // when upstream was merged (28/09/2026).
 #define VAR_FOLLOWER_MEGA_OFF                           0x4125
 #define VAR_SHINY_RATE                                  0x4126
+// Berry Master's garden on Route 30 and the "Harvest King" sidequest
+// (.claude/berry_master/REI_DA_COLHEITA.md; work order in
+// .claude/berry_master/PLANO_DE_IMPLEMENTACAO.md).
+// What happened in the garden today: 16 one-day bits (section 14.6; the
+// GARDEN_TODAY_* list is include/constants/berry_garden.h), zeroed by
+// GardenRollDay (src/berry_garden.c) when FLAG_DAILY_GARDEN_NEW_DAY is found
+// clear.
+#define VAR_GARDEN_TODAY                                0x4127
+// Hearts (days the player talked to them), 4 bits each: Bram, Laurel, Tilly,
+// Peony from the low nibble up (section 14.3). Written by
+// GardenHearts_Talk (src/berry_garden.c).
+#define VAR_GARDEN_HEARTS                               0x4128
+// Wins against Klara in the morning raids (section 14.5).
+#define VAR_GARDEN_RIVALS                               0x4129
+// Garden level 1..5 (section 5); 0 until Bram's tutorial is done.
+#define VAR_BERRY_GARDEN_LEVEL                          0x412A
+// Today's order from Bram: which Berry and how many (section 6).
+#define VAR_BERRY_ORDER                                 0x412B
+// "Harvest King" sidequest state 0..15 (sections 8.1 and 14.2).
+#define VAR_HARVEST_KING                                0x412C
+// Last Book of Berries milestone Bram already paid: 0, 12, 20, 30, 40, 50, 60
+// or 66 (section 3.4). Keeps a prize from being given twice.
+#define VAR_BERRY_LEDGER_MILESTONE                      0x412D
+// Garden works (section 5): 0 = none; GARDEN_LEVEL_* = paid for that level,
+// being built tonight; GARDEN_LEVEL_* + GARDEN_WORK_BUILT = built, Bram's line
+// about it not said yet. Kept out of VAR_BERRY_GARDEN_LEVEL on purpose: bed B
+// and the old-save fix compare the level with < 2 and == 0. Written by
+// GardenReform_Pay and GardenRollDay (src/berry_garden.c) and by Bram.
+#define VAR_BERRY_GARDEN_WORK                           0x412E
+// What Bram tells the player on the next talk (part 9, section 9.8): bits 0-6
+// a Berry new to the Book that grew in the garden (Book index + 1, 0 = none),
+// bit 7 the first garden harvest is waiting to be celebrated, bit 8 it was.
+// Written by BerryLedger_RegisterHarvest, read by GardenNews_Take
+// (src/berry_garden.c).
+#define VAR_GARDEN_NEWS                                 0x412F
+// More one-time story marks of the Berry Master (part 16): GARDEN_STORY_* from
+// GARDEN_STORY_COUNT on live here, bit (id - GARDEN_STORY_COUNT). Same
+// specials as VAR_GARDEN_NEWS's (GardenStory_Check / GardenStory_Mark), and
+// GardenRollDay marks the epilogue's morning (src/berry_garden.c).
+#define VAR_GARDEN_STORY2                               0x4130
+// PROXIMA VAR NOVA: 0x4131 (livre ate VARS_END 0x42FF). Alocar aqui, em
+// sequencia, com comentario dizendo o que guarda e quem escreve, e mover
+// este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 
 #define ALTAR_STEP_NONE           0  // nothing pending inside the current state
 #define ALTAR_STEP_DUEL_DONE      1  // (13) duel resolved; agreement + test pending (never re-fight)
@@ -451,6 +494,13 @@
 #define VAR_TEMP_FRONTIER_TUTOR_ID         VAR_TEMP_E
 
 #define VAR_TEMP_TRANSFERRED_SPECIES  VAR_TEMP_1
+
+// Route30 / Route30_House: GARDEN_PERIOD_* frozen at map load, so what the
+// garden's people say matches where they stand even if the hour turns.
+#define VAR_TEMP_GARDEN_PERIOD        VAR_TEMP_9
+// Route30: the story scene that may start on this load (part 12; ON_FRAME
+// trigger, set to 0 by its first instruction).
+#define VAR_TEMP_GARDEN_SCENE         VAR_TEMP_A
 
 #if TESTING
 #define TESTING_VARS_START                  0x9000

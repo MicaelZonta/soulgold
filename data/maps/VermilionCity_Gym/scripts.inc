@@ -286,7 +286,7 @@ VermilionCity_Gym_EventScript_Surge_Defeated::
 	end
 
 VermilionGym_Text_LtSurgeIntro:
-	.string "Surge: Hey, you little tyke!\p"
+	.string "{SPEAKER NAME_LT_SURGE}Hey, you little tyke!\p"
 	.string "I have to hand it to you.\n"
 	.string "It may not be very smart to\l"
 	.string "challenge me, but it takes guts!\p"
@@ -305,7 +305,7 @@ VermilionGym_Text_ReceivedThunderBadge:
 	.string "{PLAYER} received Thunderbadge.$"
 
 VermilionGym_Text_ThunderBadgeInfo:
-	.string "Surge: Thunderbadge increases\n"
+	.string "{SPEAKER NAME_LT_SURGE}Thunderbadge increases\n"
 	.string "Pokémon's speed.\p"
 	.string "Consider it proof that you\n"
 	.string "defeated me.\p"
@@ -321,19 +321,19 @@ VermilionGym_Text_LtSurgeThunderstone:
 
 
 VermilionGym_Text_LtSurgePostBattle:
-	.string "Surge: Hey, kid! Still slugging\n"
+	.string "{SPEAKER NAME_LT_SURGE}Hey, kid! Still slugging\n"
 	.string "and chugging away?\p"
 	.string "My Pokémon and I are still at it!$"
 
 VermilionGym_Text_SurgeRematch:
-	.string "Surge: So, you're now Kanto\n"
+	.string "{SPEAKER NAME_LT_SURGE}So, you're now Kanto\n"
 	.string "Champion!\p"
 	.string "Impressive work, kid!\n"
 	.string "But don't think I'm done!\p"
 	.string "How about we have a go again?$"
 
 VermilionGym_Text_SurgeRematchDefeat:
-	.string "Surge: Arrrgh! You're still just\n"
+	.string "{SPEAKER NAME_LT_SURGE}Arrrgh! You're still just\n"
 	.string "as strong!$"
 
 VermilionGym_Text_GentlemanGregorySeen:

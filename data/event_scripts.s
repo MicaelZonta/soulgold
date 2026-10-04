@@ -18,6 +18,7 @@
 #include "constants/battle_tower.h"
 #include "constants/battle_arcade.h" // battle_arcade
 #include "constants/berry.h"
+#include "constants/berry_garden.h"
 #include "constants/cable_club.h"
 #include "constants/coins.h"
 #include "constants/contest.h"
@@ -672,10 +673,6 @@ EventScript_MoveMrBrineyToRoute109::
 	end
 
 EverGrandeCity_HallOfFame_EventScript_ResetEliteFour::
-	clearflag FLAG_DEFEATED_ELITE_4_WILL
-	clearflag FLAG_DEFEATED_ELITE_4_KOGA
-	clearflag FLAG_DEFEATED_ELITE_4_BRUNO
-	clearflag FLAG_DEFEATED_ELITE_4_KAREN
 	setvar VAR_GARBAGEVAR, 0
 	return
 
@@ -1207,6 +1204,11 @@ Common_Text_ReceivedMon:
 	.include "data/scripts/nexus.inc"
 	.include "data/scripts/trainer_script.inc"
 	.include "data/scripts/berry_tree.inc"
+	.include "data/scripts/berry_garden_lines.inc"
+	.include "data/scripts/berry_garden.inc"
+	.include "data/scripts/berry_garden_story.inc"
+	.include "data/scripts/berry_garden_steeds.inc"
+	.include "data/scripts/berry_garden_epilogue.inc"
 	.include "data/scripts/secret_base.inc"
 	.include "data/scripts/cable_club.inc"
 	.include "data/text/cable_club.inc"
@@ -1720,6 +1722,10 @@ Common_Text_ReceivedMon:
 	.include "data/maps/Route39_Barn/scripts.inc"
 
 	.include "data/maps/Route30_House/scripts.inc"
+	.include "data/maps/Greenfield/scripts.inc"
+	.include "data/maps/Greenfield_Mansion/scripts.inc"
+	.include "data/maps/BrassTowerMemory_1F/scripts.inc"
+	.include "data/maps/BrassTowerMemory_Roof/scripts.inc"
 
 	.include "data/maps/Route30_MrPokemonsHouse/scripts.inc"
 

@@ -9,7 +9,9 @@ LakeOfRage_OnTransition::
 	call_if_lt VAR_MAHOGANY_TOWN_STATE, 2, LakeOfRage_EventScript_HideLois
 	goto_if_lt VAR_MAHOGANY_TOWN_STATE, 14, LakeOfRage_EventScript_SetHighTide
 	special UpdateShoalTideFlag
-	goto_if_set FLAG_SYS_LAKE_OF_RAGE_TIDE, LakeOfRage_EventScript_SetHighTide
+	@ UpdateShoalTideFlag (src/time_events.c) writes FLAG_SYS_SHOAL_TIDE; this
+	@ used to read a Lake-of-Rage tide flag that nothing set (bug/B08).
+	goto_if_set FLAG_SYS_SHOAL_TIDE, LakeOfRage_EventScript_SetHighTide
 	goto LakeOfRage_EventScript_SetLowTide
 
 LakeOfRage_EventScript_SetLowTide::
@@ -233,10 +235,10 @@ LakeOfRage_Movement_DragoniteLeave:
 	step_end
 
 LakeOfRage_Text_Dragonite:
-	.string "Dragonite: Gyafooha!$"
+	.string "{SPEAKER NAME_DRAGONITE}Gyafooha!$"
 
 LakeOfRage_Text_LanceForcedToEvolve:
-    .string "This lake is full of Gyarados\n"
+    .string "{SPEAKER NAME_LANCE}This lake is full of Gyarados\n"
     .string "but nothing else…\p"
     .string "So the Magikarp are being forced\n"
     .string "to evolve…$"
@@ -248,12 +250,12 @@ LakeOfRage_Text_LanceIntro1:
     .string "trainer like you.$"
 
 LakeOfRage_Text_LanceIntro2:
-    .string "This man here informed me of\n"
+    .string "{SPEAKER NAME_LANCE}This man here informed me of\n"
     .string "some rumors.\p"
     .string "So we came to investigate…$"
 
 LakeOfRage_Text_LanceIntro3:
-    .string "I saw the way you battled\n"
+    .string "{SPEAKER NAME_LANCE}I saw the way you battled\n"
     .string "earlier, {PLAYER}.\p"
     .string "I can tell that you're a trainer\n"
     .string "with considerable skill.\p"
@@ -261,7 +263,7 @@ LakeOfRage_Text_LanceIntro3:
     .string "us investigate?$"
 
 LakeOfRage_Text_LanceRadioSignal:
-    .string "Lance: Excellent!\p"
+    .string "{SPEAKER NAME_LANCE}Excellent!\p"
     .string "It seems that the Lake's Magikarp\n"
     .string "are being forced to evolve.\p"
     .string "A mysterious radio broadcast\n"
@@ -270,15 +272,15 @@ LakeOfRage_Text_LanceRadioSignal:
     .string "{PLAYER}.$"
 
 LakeOfRage_Text_LanceRefused:
-    .string "Oh… Well, if you change your mind,\n"
+    .string "{SPEAKER NAME_LANCE}Oh… Well, if you change your mind,\n"
     .string "please help us.$"
 
 LakeOfRage_Text_LanceAskHelp:
-    .string "Lance: Hm? Are you going to help\n"
+    .string "{SPEAKER NAME_LANCE}Hm? Are you going to help\n"
     .string "us?$"
 
 LakeOfRage_Text_GyaradosCry:
-    .string "Gyarados: Gyashaa!$"
+    .string "{SPEAKER NAME_GYARADOS}Gyashaa!$"
 
 LakeOfRage_Text_Gramps:
     .string "The Gyarados are angry!\p"
@@ -399,7 +401,7 @@ LakeOfRage_EventScript_WesleyCompleted::
 	end
 
 LakeOfRage_Text_MeetWesley:
-    .string "Wesley: Well, how do you do?\p"
+    .string "{SPEAKER NAME_WESLEY}Well, how do you do?\p"
     .string "I'm a member of the Weekday family!\n"
 	.string "Can you guess my favorite day?$"
 
@@ -408,17 +410,17 @@ LakeOfRage_Text_WesleyGivesGift:
     .string "souvenir.$"
 
 LakeOfRage_Text_WesleyGaveGift:
-    .string "Wesley: Blackbelt beefs up the\n"
+    .string "{SPEAKER NAME_WESLEY}Blackbelt beefs up the\n"
     .string "power of fighting moves.$"
 
 LakeOfRage_Text_WesleyWednesday:
-    .string "Wesley: Since you found me, you\n"
+    .string "{SPEAKER NAME_WESLEY}Since you found me, you\n"
     .string "must have met my brothers and\l"
     .string "sisters.\p"
     .string "Or did you just get lucky?$"
 
 LakeOfRage_Text_WesleyNotWednesday:
-    .string "Wesley: Not exactly...$"
+    .string "{SPEAKER NAME_WESLEY}Not exactly...$"
 
 LakeOfRage_EventScript_Sign1::
 	msgbox LakeOfRage_Text_Sign, MSGBOX_SIGN

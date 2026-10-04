@@ -10,8 +10,7 @@ SandpitSW::
 	playse SE_FALL
 	delay 60
 	@ warphole MAP_VAJRA_DESERT_TUNNELS
-	waitstate
-	end
+	goto Sandpit_EventScript_NoDestination
 
 
 SandpitSE::
@@ -26,8 +25,7 @@ SandpitSE::
 	playse SE_FALL
 	delay 60
 	@ warphole MAP_VAJRA_DESERT_TUNNELS
-	waitstate
-	end
+	goto Sandpit_EventScript_NoDestination
 
 
 SandpitNE::
@@ -42,8 +40,7 @@ SandpitNE::
 	playse SE_FALL
 	delay 60
 	@ warphole MAP_VAJRA_DESERT_TUNNELS
-	waitstate
-	end
+	goto Sandpit_EventScript_NoDestination
 
 
 SandpitNW::
@@ -58,8 +55,7 @@ SandpitNW::
 	playse SE_FALL
 	delay 60
 	@ warphole MAP_VAJRA_DESERT_TUNNELS
-	waitstate
-	end
+	goto Sandpit_EventScript_NoDestination
 
 
 SandpitWest::
@@ -74,8 +70,7 @@ SandpitWest::
 	playse SE_FALL
 	delay 60
 	@ warphole MAP_VAJRA_DESERT_TUNNELS
-	waitstate
-	end
+	goto Sandpit_EventScript_NoDestination
 
 
 SandpitEast::
@@ -90,8 +85,7 @@ SandpitEast::
 	playse SE_FALL
 	delay 60
 	@ warphole MAP_VAJRA_DESERT_TUNNELS
-	waitstate
-	end
+	goto Sandpit_EventScript_NoDestination
 
 
 spinWest:
@@ -146,4 +140,19 @@ spinSW:
 	walk_in_place_fast_up
 	walk_in_place_faster_left
 	walk_in_place_fast_down
+	step_end
+
+@ The destination map (MAP_VAJRA_DESERT_TUNNELS) does not exist yet, so the
+@ warphole above stays commented out. It used to be followed by a bare
+@ waitstate that nothing ever resumes: stepping on a sandpit tile would leave
+@ the player invisible and frozen forever (bug/README, FALLTHROUGH review).
+@ No tileset has a sandpit behavior today; this only keeps the trap disarmed.
+Sandpit_EventScript_NoDestination::
+	applymovement OBJ_EVENT_ID_PLAYER, Sandpit_Movement_SetVisible
+	waitmovement 0
+	releaseall
+	end
+
+Sandpit_Movement_SetVisible:
+	set_visible
 	step_end

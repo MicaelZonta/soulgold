@@ -180,6 +180,17 @@ static void WindowFunc_ClearNamebox(u8 bg, u8 L, u8 T, u8 w, u8 h, u8 p)
 // por TrySetSpeakerFromMessage apagaria o nome logo antes de ele aparecer.
 static bool8 sSpeakerSetExternally = FALSE;
 
+// O argumento de {SPEAKER ...} tem SPEAKER_ARG_BYTES bytes (charmap.txt:
+// NAME_X = alto baixo), cada um abaixo de SPEAKER_ARG_BASE: o indice e
+// alto * SPEAKER_ARG_BASE + baixo. Por que a base e 250 e nao 255:
+// include/constants/speaker_names.h.
+const u8 *GetSpeakerNameFromArg(const u8 *arg)
+{
+    u32 name = arg[0] * SPEAKER_ARG_BASE + arg[1];
+
+    return name < SP_NAME_COUNT ? gSpeakerNamesTable[name] : NULL;
+}
+
 void SetSpeakerNameForNextMessage(const u8 *speaker)
 {
     gSpeakerName = speaker;
@@ -222,9 +233,7 @@ void TrySetSpeakerFromMessage(const u8 *str)
 
         if (code == EXT_CTRL_CODE_SPEAKER)
         {
-            u32 name = *++str;
-
-            gSpeakerName = name < SP_NAME_COUNT ? gSpeakerNamesTable[name] : NULL;
+            gSpeakerName = GetSpeakerNameFromArg(str + 1);
             return;
         }
 

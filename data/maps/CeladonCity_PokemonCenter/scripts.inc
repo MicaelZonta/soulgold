@@ -33,7 +33,7 @@ CeladonCity_PokemonCenter1F_Text_Pharmacist:
 	.string "ago.$"
 
 Celadon_Text_Eusine1:
-	.string "Eusine: Hi!\p"
+	.string "{SPEAKER NAME_EUSINE}Hi!\p"
 	.string "I'm back visiting my hometown.\p"
 	.string "It's been quite a while.$"
 

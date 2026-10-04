@@ -256,7 +256,7 @@ NewBarkTown_Text_Door:
 	.string "The door is locked.$"
 
 NewBarkTown_Text_Wooper:
-	.string "Wooper: Woooooop.$"
+	.string "{SPEAKER NAME_WOOPER}Woooooop.$"
 
 NewBarkTown_Text_FatManState2:
 	.string "Wow, your Pokégear is impressive!\n"
@@ -288,12 +288,12 @@ NewBarkTown_Text_LassState5:
 	.string "to let her know how you're doing.$\p"
 
 NewBarkTown_Text_Silver1:
-	.string ". . .\p"
+	.string "{SPEAKER NAME_UNKNOWN}. . .\p"
 	.string "So this is the famous Elm\n"
 	.string "Pokémon Lab…$"
 
 NewBarkTown_Text_Silver2:
-	.string "…What are you staring at?$"
+	.string "{SPEAKER NAME_UNKNOWN}…What are you staring at?$"
 
 NewBarkTown_Text_Sign:
 	.string "New Bark Town\p"
@@ -2875,9 +2875,9 @@ RivalsMailbox_Text_1:
 	.string "Gold's house$"
 
 NewBarkTown_EventScript_ArcherArcadeCall_Text_0:
-	.string "???: Greetings, {PLAYER}.\p"
+	.string "{SPEAKER NAME_UNKNOWN}Greetings, {PLAYER}.\p"
 	.string "This is Archer speaking.\p"
-	.string "Archer: I've heard of your victory\n"
+	.string "{SPEAKER NAME_ARCHER}I've heard of your victory\n"
 	.string "in the League and would like to \l"
 	.string "offer you an invitation to our \l"
 	.string "newly opened Rocket Arcade.\p"

@@ -205,7 +205,7 @@ KitakamiHouses_1_Oldman_Text_1:
 	.string "Here, have some from my daily batch!$"
 
 KitakamiHouses_3_Sinistea_Text_0:
-	.string "Sinistea: Siii!$"
+	.string "{SPEAKER NAME_SINISTEA}Siii!$"
 
 KitakamiHouses_2_Steven_Text_0:
 	.string "That face of determination... I assume\n"

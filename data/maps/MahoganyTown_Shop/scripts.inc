@@ -234,7 +234,7 @@ MahoganyMart1F_Text_BlackBelt_Lance:
     .string "That guy's Pokémon are tough…$"
 
 MahoganyMart1F_Text_Lance_HyperBeam:
-    .string "Lance: Dragonite, Hyper Beam.$"
+    .string "{SPEAKER NAME_LANCE}Dragonite, Hyper Beam.$"
 
 MahoganyMart1F_Text_Lance_Radio:
     .string "What took you, {PLAYER}?\p"
@@ -246,7 +246,7 @@ MahoganyMart1F_Text_Lance_Stairs:
 	.string "Dragonite!$"
 
 MahoganyMart1F_Text_Lance_SplitUp:
-    .string "Lance: {PLAYER}, we should split up\n"
+    .string "{SPEAKER NAME_LANCE}{PLAYER}, we should split up\n"
     .string "to check this place.\p"
     .string "I'll go first.$"
 

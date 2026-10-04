@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route30_House_EventScript_BaldMan",
-      "flag": "0"
+      "flag": "FLAG_TEMP_HIDE_BRAM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
@@ -38,7 +38,59 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route30_House_EventScript_BerryWife",
+      "flag": "FLAG_TEMP_HIDE_LAUREL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "x": 7,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route30_House_EventScript_Tilly",
+      "flag": "FLAG_TEMP_HIDE_TILLY"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SUNFLORA)",
+      "x": 6,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route30_House_EventScript_Sunflora",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PEONY",
+      "x": 7,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BerryGarden_EventScript_PeonyHouse",
+      "flag": "FLAG_TEMP_HIDE_PEONY"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PEONIA",
+      "x": 2,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BerryGarden_EventScript_PeoniaHouse",
+      "flag": "FLAG_TEMP_HIDE_PEONIA"
     }
   ],
   "warp_events": [
