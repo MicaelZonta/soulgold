@@ -4,12 +4,13 @@ CeladonCity_Apartments_RoofHouse_MapScripts::
 CeladonCity_Apartments_RoofHouse_EventScript_BlackBelt::
 	lock 
 	faceplayer
-	goto_if_set FLAG_GOT_TM_REST, CeladonCity_Apartments_RoofHouse_EventScript_BlackBeltAfter
+	goto_if_set FLAG_GOT_TM_SLEEP_TALK, CeladonCity_Apartments_RoofHouse_EventScript_BlackBeltAfter
 	msgbox CeladonMansionRoofHouse_Text_PharmacistIntro, MSGBOX_DEFAULT	
 	goto_if_set FLAG_NIGHT_POKEMON, CeladonCity_Apartments_RoofHouse_EventScript_BlackBeltRefused
 	msgbox CeladonMansionRoofHouse_Text_PharmacistStory, MSGBOX_NPC
+	giveitem ITEM_TM_SLEEP_TALK
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_GOT_TM_REST
+	setflag FLAG_GOT_TM_SLEEP_TALK
 	msgbox CeladonMansionRoofHouse_Text_PharmacistCurse, MSGBOX_NPC
 	closemessage
 	release
@@ -32,12 +33,12 @@ CeladonMansionRoofHouse_Text_PharmacistIntro:
 CeladonMansionRoofHouse_Text_PharmacistNotNight:
 	.string "Then again, it's not as scary\n"
 	.string "while it's still light outside.\p"
-	.string "Come back after sunset, Ok?$"
+	.string "Come back after sunset, OK?$"
 
 CeladonMansionRoofHouse_Text_PharmacistStory:
 	.string "Once upon a time, there was a\n"
 	.string "little boy who was given a new\l"
-	.string "Bicycle…\p"
+	.string "BICYCLE…\p"
 	.string "He wanted to try it right away…\p"
 	.string "He was having so much fun that\n"
 	.string "he didn't notice the sun had set…\p"
@@ -52,18 +53,18 @@ CeladonMansionRoofHouse_Text_PharmacistStory:
 	.string "oblivion!\p"
 	.string "…\p"
 	.string "…\p"
-	.string "Shrieeeek!\p"
+	.string "SHRIEEEEK!\p"
 	.string "The boy had been riding uphill on\n"
-	.string "Cycling Road!\p"
+	.string "CYCLING ROAD!\p"
 	.string "…\n"
 	.string "Ba-dum ba-dum!\p"
 	.string "For listening so patiently, you\n"
-	.string "may take this--TM44!$"
+	.string "may take this--TM82!$"
 
 CeladonMansionRoofHouse_Text_PharmacistCurse:
-	.string "TM44 is Rest.\p"
-	.string "It will allow your Pokémon to nap\n"
-	.string "mid-battle and regain health.\p"
+	.string "TM82 is SLEEP TALK.\p"
+	.string "It will allow your POKéMON to use\n"
+	.string "a random move while asleep.\p"
 	.string "But good luck sleeping after that\n"
 	.string "terrifying tale!$"
 

@@ -1,5 +1,3 @@
-.set LOCALID_MTMOON_SILVER, 1
-
 MtMoon_Cave_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, MtMoon_Cave_MapScript_OnFrame
 	map_script MAP_SCRIPT_ON_TRANSITION, MtMoon_Cave_OnTransition
@@ -8,30 +6,27 @@ MtMoon_Cave_MapScripts::
 
 MtMoon_Cave_OnTransition: 
 	callnative SetTimeBasedEncounters
-	goto_if_set FLAG_HIDE_MTMOON_SILVER, MtMoon_Cave_OnTransition_End
-	setvar VAR_TEMP_1, 1
-MtMoon_Cave_OnTransition_End:
 	end
 
 
-@ Armed by OnTransition while Silver is still here (FLAG_HIDE_MTMOON_SILVER
-@ unset; the scene sets it at the end). It used to read VAR_GARBAGEVAR == 0/1,
-@ the project's scrap var: any script resetting it would replay the scene with
-@ Silver already gone (bug/B07). VAR_TEMP_1 is cleared on every map load.
 MtMoon_Cave_MapScript_OnFrame::
-	map_script_2 VAR_TEMP_1, 1, MtMoon_Cave_EventScript_Silver
+	map_script_2 VAR_PEWTER_CITY_STATE, 0, MtMoon_Cave_EventScript_Silver
+	map_script_2 VAR_PEWTER_CITY_STATE, 1, MtMoon_Cave_EventScript_Silver
 	.2byte 0
 
+MtMoon_Cave_EventScript_Sign::
+	msgbox MtMoon_Cave_Text_Sign, MSGBOX_SIGN
+	end
+
 MtMoon_Cave_EventScript_Silver::
-	setvar VAR_TEMP_1, 2
 	lock
-	playbgm MUS_HG_ENCOUNTER_RIVAL, TRUE
+	playbgm MUS_HG_ENCOUNTER_RIVAL, FALSE
 	playse SE_PIN
-	applymovement LOCALID_MTMOON_SILVER, Common_Movement_ExclamationMark
+	applymovement2 LOCALID_MTMOON_SILVER, Common_Movement_ExclamationMark
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	delay 60
-	applymovement LOCALID_MTMOON_SILVER MtMoon_Cave_Movement_WalkToPlayer
-	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_WalkRight1
+	applymovement2 LOCALID_MTMOON_SILVER MtMoon_Cave_Movement_WalkToPlayer
+	applymovement2 OBJ_EVENT_ID_PLAYER Common_Movement_WalkRight1
 	waitmovement LOCALID_MTMOON_SILVER
 	waitmovement OBJ_EVENT_ID_PLAYER
 	msgbox MtMoon_Cave_Text_Rival_Before, MSGBOX_DEFAULT
@@ -54,28 +49,36 @@ MtMoon_Cave_EventScript_Silver_Battle_Chikorita::
 	goto MtMoon_Cave_EventScript_SilverAfterBattle
 
 MtMoon_Cave_EventScript_SilverAfterBattle::
-	playbgm MUS_HG_RIVAL_EXIT, TRUE
+	playbgm MUS_HG_RIVAL_EXIT, FALSE
 	msgbox MtMoon_Cave_Text_Rival_After, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_MTMOON_SILVER, MtMoon_Cave_Movement_SilverLeave
+	applymovement2 LOCALID_MTMOON_SILVER, MtMoon_Cave_Movement_SilverLeave
 	waitmovement 0
 	removeobject LOCALID_MTMOON_SILVER
 	setflag FLAG_HIDE_MTMOON_SILVER
 	clearflag FLAG_HIDE_INDIGO_PLATEAU_SILVER
-		fadedefaultbgm
+	setvar VAR_PEWTER_CITY_STATE, 2
+	fadedefaultbgm
 	release
 	end
 
 MtMoon_Cave_Movement_WalkToPlayer:
 	walk_left
 	walk_left
+	walk_left
 	step_end
 
 MtMoon_Cave_Movement_SilverLeave:
 	walk_right
+	walk_right
+	walk_right
 	walk_down
 	walk_down
 	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
 	walk_down
 	walk_down
 	walk_down
@@ -85,13 +88,13 @@ MtMoon_Cave_Text_Rival_Before:
 	.string "..................................\p"
 	.string "It's been a while, {PLAYER}.\p"
 	.string "…Since I lost to you, I thought about\n"
-	.string "what I was lacking with my Pokémon…\p"
+	.string "what I was lacking with my POKéMON…\p"
 	.string "And we came up with an answer.\p"
 	.string "{PLAYER}, now we'll show you!$"
 
 MtMoon_Cave_Text_Rival_Win:
 	.string "..................................\p"
-	.string "I thought I raised my Pokémon to be the\n"
+	.string "I thought I raised my POKéMON to be the\n"
 	.string "best they could be…\p"
 	.string "…But it still wasn't enough…$"
 
@@ -99,7 +102,7 @@ MtMoon_Cave_Text_Rival_After:
 	.string "..................................\p"
 	.string "…You won, fair and square.\p"
 	.string "I admit it. But this isn't the end.\p"
-	.string "I'm going to be the greatest Pokémon\n"
+	.string "I'm going to be the greatest POKéMON\n"
 	.string "trainer ever.\p"
 	.string "Because these guys are behind me.\p"
 	.string "…Listen, {PLAYER}.\p"
@@ -109,7 +112,9 @@ MtMoon_Cave_Text_Rival_After:
 MtMoon_Cave_Text_Rival_Loss:
 	.string "..................................\p"
 	.string "I've repaid my debt to you.\p"
-	.string "With my Pokémon, I'm going to beat the\n"
-	.string "Champion and become the world's greatest\n"
+	.string "With my POKéMON, I'm going to beat the\n"
+	.string "CHAMPION and become the world's greatest\n"
 	.string "trainer.$"
 
+MtMoon_Cave_Text_Sign:
+	.string "MT MOON SQUARE ->$"

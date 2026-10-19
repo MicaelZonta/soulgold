@@ -2,7 +2,7 @@
   "id": "MAP_SAFFRON_CITY_SILPH_CO",
   "name": "SaffronCity_SilphCo",
   "layout": "LAYOUT_SAFFRON_CITY_SILPH_CO",
-  "music": "MUS_HG_GOLDENROD",
+  "music": "MUS_HG_PEWTER",
   "region_map_section": "MAPSEC_SAFFRON_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -12,10 +12,10 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "graphics_id": "OBJ_EVENT_GFX_OFFICER",
       "x": 31,
       "y": 2,
       "elevation": 0,
@@ -28,6 +28,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_SILPHCO_STEVEN",
       "graphics_id": "OBJ_EVENT_GFX_STEVEN",
       "x": 17,
       "y": 14,
@@ -81,5 +82,7 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_SilphCo_EventScript_Sign2"
     }
-  ]
+  ],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

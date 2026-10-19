@@ -27,44 +27,44 @@ CeladonCity_Apartments_3F_EventScript_CharacterDesigner::
 
 GameFreak_Text_GameDesigner:
 	.string "Is that right?\p"
-	.string "I'm the Game Designer!\p"
-	.string "Filling up your Pokédex is tough,\n"
+	.string "I'm the GAME DESIGNER!\p"
+	.string "Filling up your POKéDEX is tough,\n"
 	.string "but don't give up!$"
 
 GameFreak_Text_GameDesignerCompletedPokedex:
 	.string "Wow! Excellent! You completed\n"
-	.string "your Pokédex!\p"
+	.string "your POKéDEX!\p"
 	.string "Congratulations!$"
 
 GameFreak_Text_GraphicArtist:
-	.string "I'm the Graphic Artist.\p"
+	.string "I'm the GRAPHIC ARTIST.\p"
 	.string "I drew you!$"
 
 GameFreak_Text_GraphicArtistPrintDiploma:
-	.string "I'm the Graphic Artist.\p"
-	.string "Oh, you completed your Pokédex?\p"
+	.string "I'm the GRAPHIC ARTIST.\p"
+	.string "Oh, you completed your POKéDEX?\p"
 	.string "Want me to print out your\n"
-	.string "Diploma?$"
+	.string "DIPLOMA?$"
 
 GameFreak_Text_GraphicArtistRefused:
 	.string "Give me a shout if you want your\n"
-	.string "Diploma printed.$"
+	.string "DIPLOMA printed.$"
 
 GameFreak_Text_GraphicArtistError:
 	.string "Something's wrong. I'll have to\n"
 	.string "cancel printing.$"
 
 GameFreak_Text_Programmer:
-	.string "Who, me? I'm the Programmer.\p"
+	.string "Who, me? I'm the PROGRAMMER.\p"
 	.string "Play the slot machines!$"
 
 GameFreak_Text_CharacterDesigner:
-	.string "Aren't the Twins adorable?\p"
-	.string "Jasmine's pretty too.\p"
+	.string "Aren't the TWINS adorable?\p"
+	.string "JASMINE's pretty too.\p"
 	.string "Oh, I love them!$"
 
 CeladonMansion3F_Text_DevRoomSign:
-	.string "Game Freak Development Room$"
+	.string "GAME FREAK DEVELOPMENT ROOM$"
 
 CeladonMansion3F_Text_Drawing:
 	.string "It's a detailed drawing of a\n"
@@ -78,4 +78,4 @@ CeladonMansion3F_Text_GameProgram:
 CeladonMansion3F_Text_ReferenceMaterial:
 	.string "It's crammed with reference\n"
 	.string "materials. There's even a\n"
-	.string "Poké Doll.$"
+	.string "POKé DOLL.$"

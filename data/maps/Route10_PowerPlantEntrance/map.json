@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE10_POWER_PLANT_ENTRANCE",
   "name": "Route10_PowerPlantEntrance",
   "layout": "LAYOUT_ROUTE10_POWER_PLANT_ENTRANCE",
-  "music": "MUS_HG_ROUTE3",
+  "music": "MUS_HG_PEWTER",
   "region_map_section": "MAPSEC_POWER_PLANT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -12,10 +12,11 @@
   "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "local_id": "LOCALID_POWERPLANT_COP",
+      "graphics_id": "OBJ_EVENT_GFX_OFFICER",
       "x": 3,
       "y": 18,
       "elevation": 0,
@@ -28,6 +29,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_POWERPLANT_ENGINEER",
       "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
       "x": 7,
       "y": 14,
@@ -67,7 +69,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "graphics_id": "OBJ_EVENT_GFX_OFFICER",
       "x": 10,
       "y": 6,
       "elevation": 0,
@@ -77,6 +79,19 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route10_PowerPlantEntrance_EventScript_Cop2",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
+      "x": 18,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route10_PowerPlantEntrance_EventScript_Lorenzo",
       "flag": "0"
     }
   ],
@@ -107,5 +122,7 @@
       "script": "Route10_PowerPlantEntrance_Trigger_Cop"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

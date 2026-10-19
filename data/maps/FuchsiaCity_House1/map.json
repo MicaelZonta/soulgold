@@ -2,7 +2,7 @@
   "id": "MAP_FUCHSIA_CITY_HOUSE1",
   "name": "FuchsiaCity_House1",
   "layout": "LAYOUT_FUCHSIA_CITY_HOUSE1",
-  "music": "MUS_RG_FUCHSIA",
+  "music": "MUS_HG_CERULEAN",
   "region_map_section": "MAPSEC_FUCHSIA_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -51,5 +51,7 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

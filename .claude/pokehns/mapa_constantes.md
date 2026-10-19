@@ -1,10 +1,10 @@
 # Mapa de constantes — Kanto do HnS (gerado)
 
-- Já existem no S: **669**
+- Já existem no S: **675**
 - Resolvem com rename `_HNS` → sem sufixo: **463**
-- Faltantes (alocar/decidir): **214**
+- Faltantes (alocar/decidir): **208**
 
-## FLAG_ faltantes (135)
+## FLAG_ faltantes (131)
 
 | token | proposta | mapas que usam |
 |---|---|---|
@@ -137,12 +137,8 @@
 | `FLAG_TELEPORTER_UNLOCKED` | 0x1115 | 1: Route25_BillsHouse |
 | `FLAG_USED_TELEPORTER` | 0x1116 | 1: Route25_BillsHouse |
 | `FLAG_VISITED_ALOLA` | 0x1117 | 1: Route13 |
-| `FLAG_VISITED_FUCHSIA_CITY` | 0x1118 | 1: FuchsiaCity |
-| `FLAG_VISITED_KANTO` | 0x1119 | 1: Route27 |
-| `FLAG_VISITED_PALLET_TOWN` | 0x111A | 1: PalletTown |
-| `FLAG_VISITED_PEWTER_CITY` | 0x111B | 1: PewterCity |
-| `FLAG_VISITED_ROUTE4` | 0x111C | 1: Route4_PokemonCenter |
-| `FLAG_VISITED_VIRIDIAN_CITY` | 0x111D | 1: ViridianCity |
+| `FLAG_VISITED_KANTO` | 0x1118 | 1: Route27 |
+| `FLAG_VISITED_ROUTE4` | 0x1119 | 1: Route4_PokemonCenter |
 
 ## ITEM_ faltantes (15)
 
@@ -231,7 +227,7 @@
 | `TRAINER_WHITNEY_POSTOBC_HNS` | — | 1: SaffronCity_FightingDojoVIP |
 | `TRAINER_WILL_POSTOBC_HNS` | — | 1: PokemonLeague_WillsRoom |
 
-## VAR_ faltantes (12)
+## VAR_ faltantes (10)
 
 | token | proposta | mapas que usam |
 |---|---|---|
@@ -239,11 +235,9 @@
 | `VAR_ALOLA_TRAVEL` | 0x4133 | 1: Route13 |
 | `VAR_CLEFAIRY_DOLL_STATE` | 0x4134 | 1: SSAqua_1F |
 | `VAR_JOSE_ITEM_HNS` | 0x4135 | 1: Route27 |
-| `VAR_OAK_MT_SILVER_CALL` | 0x4136 | 3: SSAqua_1F, ViridianCity, ViridianCity_Gym |
-| `VAR_PEWTER_CITY_STATE` | 0x4137 | 1: MtMoon_Cave |
-| `VAR_ROUTE28_SCIENTIST` | 0x4138 | 2: PalletTown_Lab, Route28 |
-| `VAR_SINJOH_STORYLINE` | 0x4139 | 9: MtSilver_1F_WaterfallRoom, MtSilver_SummitDay, PokemonLeague_BrunosRoom, PokemonLeague_ChampionsRoom |
-| `VAR_TEMP_MTSILVER_RESUME_BLIZZARD_SE` | 0x413A | 1: MtSilver_SummitDay |
-| `VAR_VERMILION_CITY_SAMSON` | 0x413B | 2: Route10_PowerPlantBackRoom, VermilionCity |
-| `VAR_VERMILION_CITY_STEVEN` | 0x413C | 2: SSAqua_1F, VermilionCity |
-| `VAR_VIRIDIAN_FOREST_PICHU` | 0x413D | 3: PokemonLeague_HallOfFame, SSAqua_1F, ViridianForest |
+| `VAR_PEWTER_CITY_STATE` | 0x4136 | 1: MtMoon_Cave |
+| `VAR_SINJOH_STORYLINE` | 0x4137 | 9: MtSilver_1F_WaterfallRoom, MtSilver_SummitDay, PokemonLeague_BrunosRoom, PokemonLeague_ChampionsRoom |
+| `VAR_TEMP_MTSILVER_RESUME_BLIZZARD_SE` | 0x4138 | 1: MtSilver_SummitDay |
+| `VAR_VERMILION_CITY_SAMSON` | 0x4139 | 2: Route10_PowerPlantBackRoom, VermilionCity |
+| `VAR_VERMILION_CITY_STEVEN` | 0x413A | 2: SSAqua_1F, VermilionCity |
+| `VAR_VIRIDIAN_FOREST_PICHU` | 0x413B | 3: PokemonLeague_HallOfFame, SSAqua_1F, ViridianForest |

@@ -1,5 +1,4 @@
 Gate_SaffronCity_Route7_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SaffronCity_OnFrame
 	.byte 0
 
 Gate_SaffronCity_Route7_EventScript_Guard::
@@ -13,11 +12,11 @@ Gate_SaffronCity_Route7_EventScript_GuardReturnedPart::
 
 Route7_Text_SaffronGuard_PowerPlant:
 	.string "Did you hear about the accident\n"
-	.string "at the Power Plant?\p"
+	.string "at the POWER PLANT?\p"
 	.string "It's located in the East, close\n"
-	.string "to Lavender Town.$"
+	.string "to LAVENDER TOWN.$"
 
 Route7_Text_SaffronGuard_Serious:
-	.string "I take my Guard job seriously.\p"
-	.string "Hey! You have a Pokédex.\p"
-	.string "Ok. You can go through.$"
+	.string "I take my GUARD job seriously.\p"
+	.string "Hey! You have a POKéDEX.\p"
+	.string "OK. You can go through.$"

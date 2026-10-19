@@ -2987,3 +2987,57 @@ static const struct SpriteFrameImage sPicTable_AetherEmitter[] = {
 static const struct SpriteFrameImage sPicTable_Timegear[] = {
     overworld_frame(gObjectEventPic_Timegear, 2, 2, 0),
 };
+
+// Kanto do HnS
+static const struct SpriteFrameImage sPicTable_SleepingSnorlax_hns[] = {
+    obj_frame_tiles(gObjectEventPic_SleepingSnorlax_hns),
+};
+
+static const struct SpriteFrameImage sPicTable_SsAqua_hns[] = {
+    obj_frame_tiles(gObjectEventPic_SsAqua_hns),
+    obj_frame_tiles(gObjectEventPic_SsAqua_hns),
+    obj_frame_tiles(gObjectEventPic_SsAqua_hns),
+    obj_frame_tiles(gObjectEventPic_SsAqua_hns),
+    obj_frame_tiles(gObjectEventPic_SsAqua_hns),
+    obj_frame_tiles(gObjectEventPic_SsAqua_hns),
+    obj_frame_tiles(gObjectEventPic_SsAqua_hns),
+    obj_frame_tiles(gObjectEventPic_SsAqua_hns),
+    obj_frame_tiles(gObjectEventPic_SsAqua_hns),
+};
+
+static const struct SpriteFrameImage sPicTable_SwimmingLapras_hns[] = {
+    overworld_frame(gObjectEventPic_SwimmingLapras_hns, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SwimmingLapras_hns, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SwimmingLapras_hns, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SwimmingLapras_hns, 4, 4, 3),
+    overworld_frame(gObjectEventPic_SwimmingLapras_hns, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SwimmingLapras_hns, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_TrainWest_hns[] = {
+    obj_frame_tiles(gObjectEventPic_TrainWest_hns),
+};
+
+static const struct SpriteFrameImage sPicTable_GoldNormal_hns[] = {
+    overworld_frame(gObjectEventPic_GoldNormal_hns, 2, 4, 0),
+    overworld_frame(gObjectEventPic_GoldNormal_hns, 2, 4, 1),
+    overworld_frame(gObjectEventPic_GoldNormal_hns, 2, 4, 2),
+    overworld_frame(gObjectEventPic_GoldNormal_hns, 2, 4, 3),
+    overworld_frame(gObjectEventPic_GoldNormal_hns, 2, 4, 4),
+    overworld_frame(gObjectEventPic_GoldNormal_hns, 2, 4, 5),
+    overworld_frame(gObjectEventPic_GoldNormal_hns, 2, 4, 6),
+    overworld_frame(gObjectEventPic_GoldNormal_hns, 2, 4, 7),
+    overworld_frame(gObjectEventPic_GoldNormal_hns, 2, 4, 8),
+};
+
+static const struct SpriteFrameImage sPicTable_KrisNormal_hns[] = {
+    overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 0),
+    overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 1),
+    overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 2),
+    overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 3),
+    overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 4),
+    overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 5),
+    overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 6),
+    overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 7),
+    overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 8),
+};

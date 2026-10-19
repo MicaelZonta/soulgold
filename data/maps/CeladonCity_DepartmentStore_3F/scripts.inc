@@ -14,31 +14,55 @@ CeladonDept3_EventScript_Gbakid2::
 CeladonDept3_EventScript_SuperNerd::
 	msgbox CeladonDeptStore3F_Text_SuperNerd, MSGBOX_NPC
 	end
+CeladonDept3_EventScript_Clerk::
+	lock
+	faceplayer
+	message gText_HowMayIServeYou
+	waitmessage
+	pokemart CeladonDept3_Pokemart
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+CeladonDept3_Pokemart:
+	.2byte ITEM_TM_SAFEGUARD
+	.2byte ITEM_TM_CAPTIVATE
+	.2byte ITEM_TM_STEALTH_ROCK
+	.2byte ITEM_TM_BRINE
+	.2byte ITEM_TM_AVALANCHE
+	.2byte ITEM_TM_DARK_PULSE
+	.2byte ITEM_TM_GYRO_BALL
+	.2byte ITEM_TM_DREAM_EATER
+	.2byte ITEM_TM_GIGA_IMPACT
+	.2byte ITEM_TM_ENDURE
+	pokemartlistend
+
 CeladonDept3_EventScript_Directory::
 	msgbox CeladonDeptStore3F_Text_Directory, MSGBOX_SIGN
 	end
 
 CeladonDeptStore3F_Text_Youngster:
-	.string "I can't decide which Pokémon I\n"
+	.string "I can't decide which POKéMON I\n"
 	.string "should use this TM on…$"
 
 CeladonDeptStore3F_Text_GameboyKid1:
-	.string "Uh-oh! I traded my Pokémon without\n"
-	.string "removing the Upgrade from it.$"
+	.string "Uh-oh! I traded my POKéMON without\n"
+	.string "removing the UPGRADE from it.$"
 
 CeladonDeptStore3F_Text_GameboyKid2:
 	.string "Yeah! I'm finally getting a\n"
-	.string "Porygon!\p"
+	.string "PORYGON!\p"
 	.string "I'm no good at the slots, so I\n"
 	.string "could never get enough coins…\p"
 	.string "…Huh?\p"
-	.string "The traded Porygon turned into a\n"
-	.string "different Pokémon!$"
+	.string "The traded PORYGON turned into a\n"
+	.string "different POKéMON!$"
 
 CeladonDeptStore3F_Text_SuperNerd:
-	.string "The TM Shop sells some rare moves.$"
+	.string "The TM SHOP sells some rare moves.$"
 
 CeladonDeptStore3F_Text_Directory:
-	.string "3F: TM Shop\p"
-	.string "Make Your Pokémon Stronger!$"
+	.string "3F: TM SHOP\p"
+	.string "Make Your POKéMON Stronger!$"
 

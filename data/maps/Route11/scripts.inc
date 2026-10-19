@@ -8,37 +8,40 @@ Route11_OnTransition:
 	end
 
 Route11_EventScript_Owen::
-	trainerbattle_single TRAINER_OWEN Route11_Text_YoungsterOwenSeen, Route11_Text_YoungsterOwenBeaten
+	trainerbattle_single TRAINER_OWEN, Route11_Text_YoungsterOwenSeen, Route11_Text_YoungsterOwenBeaten
 	msgbox Route11_Text_YoungsterOwenAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route11_EventScript_Jason::
-	trainerbattle_single TRAINER_JASON Route11_Text_YoungsterJasonSeen, Route11_Text_YoungsterJasonBeaten
+	trainerbattle_single TRAINER_JASON, Route11_Text_YoungsterJasonSeen, Route11_Text_YoungsterJasonBeaten
 	msgbox Route11_Text_YoungsterJasonAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route11_EventScript_Herman::
-	trainerbattle_single TRAINER_HERMAN Route11_Text_PsychicHermanSeen, Route11_Text_PsychicHermanBeaten
+	trainerbattle_single TRAINER_HERMAN, Route11_Text_PsychicHermanSeen, Route11_Text_PsychicHermanBeaten
 	msgbox Route11_Text_PsychicHermanAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route11_EventScript_Fidel::
-	trainerbattle_single TRAINER_FIDEL Route11_Text_PsychicFidelSeen, Route11_Text_PsychicFidelBeaten
+	trainerbattle_single TRAINER_FIDEL, Route11_Text_PsychicFidelSeen, Route11_Text_PsychicFidelBeaten
 	msgbox Route11_Text_PsychicFidelAfterBattle, MSGBOX_AUTOCLOSE
 	end
-
 
 Route11_EventScript_Engineer::
 	msgbox Route11_Text_Engineer, MSGBOX_NPC
 	end
 
+Route11_EventScript_Item_Grass_Knot::
+    finditem ITEM_TM_GRASS_KNOT
+    end
+
 Route11_Text_Engineer:
-	.string "I saw a strange Pokémon climbing\n"
+	.string "I saw a strange POKéMON climbing\n"
 	.string "in the trees, but it didn't\l"
-	.string "look like Mankey...$"
+	.string "look like MANKEY...$"
 
 Route11_Text_YoungsterOwenSeen:
-	.string "There's no cheating in Pokémon.\p"
+	.string "There's no cheating in POKéMON.\p"
 	.string "Let's keep it fair and square!$"
 
 Route11_Text_YoungsterOwenBeaten:
@@ -57,7 +60,7 @@ Route11_Text_YoungsterJasonBeaten:
 	.string "Aiyaaah! I got stomped!$"
 
 Route11_Text_YoungsterJasonAfterBattle:
-	.string "I'm going to catch more Pokémon in\n"
+	.string "I'm going to catch more POKéMON in\n"
 	.string "the grass.$"
 
 Route11_Text_PsychicHermanSeen:
@@ -80,8 +83,8 @@ Route11_Text_PsychicFidelBeaten:
 Route11_Text_PsychicFidelAfterBattle:
 	.string "Strength in conviction…\p"
 	.string "You're strong because you believe\n"
-	.string "in your Pokémon.$"
+	.string "in your POKéMON.$"
 
 Route11_Text_Sign:
-	.string "Route 11$"
+	.string "ROUTE 11$"
 

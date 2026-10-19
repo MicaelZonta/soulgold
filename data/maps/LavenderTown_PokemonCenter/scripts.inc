@@ -1,5 +1,3 @@
-.set LOCALID_NURSE, 1
-
 LavenderTown_PokemonCenter_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LavenderTown_PokemonCenter_OnTransition
 	.byte 0
@@ -26,25 +24,27 @@ LavenderTown_PokemonCenter_EventScript_YoungsterReturnedMachinePart::
 	end
 
 LavenderTown_PokemonCenter1F_Text_Gentleman:
-	.string "To the north of Lavender is Rock\n"
-	.string "Tunnel. Go through it to get to\l"
-	.string "the Power Plant.$"
+	.string "To the north of LAVENDER is ROCK\n"
+	.string "TUNNEL. Go through it to get to\l"
+	.string "the POWER PLANT.$"
 
 LavenderTown_PokemonCenter1F_Text_Teacher:
 	.string "There's a radio program that plays\n"
-	.string "Poké Flute music.\p"
-	.string "Oh? Ah, your radio needs an Expn\n"
-	.string "Card to tune into it.$"
+	.string "POKé FLUTE music.\p"
+	.string "Oh? Ah, your radio needs a RADIO\n"
+	.string "UPGRADE to tune into it.\p"
+	.string "Maybe the RADIO STATION here\n"
+	.string "in town can provide you one?$"
 
 LavenderTown_PokemonCenter1F_Text_Youngster:
-	.string "If the Power Plant isn't running,\n"
-	.string "the Magnet Train won't run either…\p"
-	.string "It also means the Radio Station\n"
+	.string "If the POWER PLANT isn't running,\n"
+	.string "the MAGNET TRAIN won't run either…\p"
+	.string "It also means the RADIO STATION\n"
 	.string "can't broadcast…$"
 
 LavenderTown_PokemonCenter1F_Text_Youngster_ReturnedMachinePart:
-	.string "The Director of the Radio Station\n"
+	.string "The DIRECTOR of the RADIO STATION\n"
 	.string "sure was happy.\p"
 	.string "He said they're back on the air\n"
-	.string "because the Power Plant is running\l"
+	.string "because the POWER PLANT is running\l"
 	.string "smoothly again.$"

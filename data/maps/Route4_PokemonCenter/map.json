@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE4_POKEMON_CENTER",
   "name": "Route4_PokemonCenter",
   "layout": "LAYOUT_ROUTE4_POKEMON_CENTER",
-  "music": "MUS_HG_POKE_CENTER",
+  "music": "MUS_RG_POKE_CENTER",
   "region_map_section": "MAPSEC_ROUTE_4",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -25,10 +25,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OldaleTown_PokemonCenter_1F_EventScript_Nurse",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_ROUTE4_NURSE"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
       "x": 8,
       "y": 2,
       "elevation": 0,
@@ -64,5 +65,16 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LittlerootTown_BrendansHouse_2F_EventScript_WallClock"
+    }
+  ],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

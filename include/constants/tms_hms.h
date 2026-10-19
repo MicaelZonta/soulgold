@@ -100,7 +100,21 @@
     F(NATURE_POWER) \
     F(DARK_PULSE) \
     F(PLAY_ROUGH) \
-    F(DAZZLING_GLEAM)
+    F(DAZZLING_GLEAM) \
+    F(AVALANCHE)\
+    F(BRINE)\
+    F(CAPTIVATE)\
+    F(DREAM_EATER)\
+    F(ENDURE)\
+    F(EXPLOSION)\
+    F(PSYCH_UP)\
+    F(RECYCLE)\
+    F(ROCK_POLISH)\
+    F(SHOCK_WAVE)\
+    F(SILVER_WIND)\
+    F(SKILL_SWAP)\
+    F(SLEEP_TALK)\
+    F(STEALTH_ROCK)
 
 #define FOREACH_HM(F) \
     F(CUT) \
@@ -114,6 +128,7 @@
     F(ROCK_CLIMB) \
     F(WHIRLPOOL) \
     F(DIG)
+
 
 #define FOREACH_TMHM(F) \
     FOREACH_TM(F) \

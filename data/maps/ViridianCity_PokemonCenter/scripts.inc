@@ -1,5 +1,3 @@
-.set LOCALID_NURSE, 1
-
 ViridianCity_PokemonCenter_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, ViridianCity_PokemonCenter_OnTransition
 	.byte 0
@@ -26,20 +24,20 @@ ViridianCity_PokemonCenter_EventScript_BugCatcher::
 	end
 
 ViridianCity_PokemonCenter_Text_1FCooltrainerM:
-	.string "Where in the world is Viridian's Gym\n"
-	.string "Leader? I wanted to challenge him.$"
+	.string "Where in the world is VIRIDIAN's GYM\n"
+	.string "LEADER? I wanted to challenge him.$"
 
 ViridianCity_PokemonCenter_Text_1FCooltrainerM_BlueReturned:
-	.string "There are no Gym Trainers at the\n"
-	.string "Viridian Gym.\p"
-	.string "The Leader claims his policy is to\n"
+	.string "There are no GYM TRAINERS at the\n"
+	.string "VIRIDIAN GYM.\p"
+	.string "The LEADER claims his policy is to\n"
 	.string "win without having any underlings.$"
 
 ViridianCity_PokemonCenter_Text_1FCooltrainerF:
-	.string "I heard that the Gym in Cinnabar is\n"
+	.string "I heard that the GYM in CINNABAR is\n"
 	.string "gone.\p"
-	.string "I wonder what became of Blaine, the\n"
-	.string "Gym Leader.$"
+	.string "I wonder what became of BLAINE, the\n"
+	.string "GYM LEADER.$"
 
 ViridianCity_PokemonCenter_Text_1FBugCatcher:
-	.string "My dream is to become a Gym Leader.$"
+	.string "My dream is to become a GYM LEADER.$"

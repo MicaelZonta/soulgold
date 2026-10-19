@@ -322,7 +322,8 @@ orelha espetada, times "Crystal Legacy"). O trabalho de texto é a camada
   girando até o STOP) e headbutt (texto da árvore) PASS por injeção de RAM.
 - Descobertas: **nenhum mapa do escopo usa spin tiles** (o ginásio de
   Viridian do HnS-Kanto não tem labirinto; as setas são só do modo FRLG
-  deles) — decisão do autor se importamos o layout FRLG do ginásio depois.
+  deles) — ✅ decisão do autor (19/10): **fiel ao HnS**, ginásio fica sem
+  labirinto; engine de spin fica pronto para uso futuro.
   **Headbutt trees existem em 16 mapas do escopo** (Routes 6/11/12/15/18/
   22/23/25–28, Viridian, Vermilion, Fuchsia, Mt. Silver ×2) — vêm na Fase 3.
 - Regras aprendidas para a Fase 3: `_hns` também no meio de identificador;
@@ -336,7 +337,28 @@ orelha espetada, times "Crystal Legacy"). O trabalho de texto é a camada
   teste no jogo (skill `testar-no-jogo`, **pedir permissão antes**). Só
   avançar para a Fase 3 com o piloto aprovado no jogo.
 
-**Fase 3 — Lote completo (197 − fronteiras)**
+**Fase 3 — Lote completo** ✅ FEITA (19/10/2026) — build limpo, 168 mapas
+- 163 do lote + 4 do piloto + MtSilver_1F_WaterfallRoom (adiantado por
+  dependência de label). Adiados: 13 fronteiras (Fase 4) e 17 de conteúdo S
+  pesado (Fase 5) — listas em `.claude/pokehns/DEFER_FASES_4_5.txt`.
+- 69 tilesets `_hns` convertidos/registrados (lavaridge_hns cortado p/ 384
+  tiles); 34 treinadores em slots UNUSED; 12 sprites OW (6 alias + 6
+  importados: S.S. Aqua 96x40, Lapras nadador, trem, Snorlax dormindo,
+  Gold/Kris); 131 flags (0x109B–0x111D) + 10 vars (0x4134–0x413D); 153
+  tabelas de encontro (47 mapas, Safari de Fuchsia incl.; 18 custom do S
+  mantidas); 14 TMs novos (TM100–113, ids 681+939–951) + Azure Flute (938);
+  help windows Teleporter/Alola; heal location da Route 4; specials do
+  Teleporter portados **sem as aves** (decisão).
+- **Stubs com TODO(hns) a fechar depois**: CheckRadioStation=FALSE (Snorlax
+  só acorda na Fase 6/rádio); InitKantoRoamers vazio (Fase 6); animação do
+  cabo do Teleporter (precisa METATILE_SeaCottage_*); warps p/
+  MAP_SNOWSWEPT_CAVERN e MAP_MELEMELE_ISLE auto-warp
+  (`.claude/pokehns/WARPS_STUBADOS.txt` + Route13); ícone da Azure Flute =
+  Poké Flute provisório; placa de Viridian reusa texto do Contest Hall (QA).
+- Aprendizados que viraram regra: enfermeiras precisam de LOCALID_ por
+  cidade (heal locations); `local_id` sem prefixo LOCALID_ não gera
+  constante; labels de mapas fora da ROM são filtrados do build (copiar
+  local); itens nunca renumeram (TM novo = id novo no fim + FOREACH_TM).
 - Script de migração que roda o pipeline da Fase 2 em lote.
 - Encontros junto (as 71 tabelas Day/Night do P), já que é o mesmo diff de
   dados.

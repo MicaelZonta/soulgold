@@ -437,7 +437,18 @@
 // cientista da Route 28 (Oak poe 1 ao dar as 16 badges).
 #define VAR_OAK_MT_SILVER_CALL                          0x4132
 #define VAR_ROUTE28_SCIENTIST                           0x4133
-// PROXIMA VAR NOVA: 0x4134 (livre ate VARS_END 0x42FF). Alocar aqui, em
+// Lote Fase 3 - vars dos scripts de Kanto do HnS.
+#define VAR_ALOLA_STATE                                 0x4134 // HnS: PokemonLeague_HallOfFame
+#define VAR_ALOLA_TRAVEL                                0x4135 // HnS: Route13
+#define VAR_CLEFAIRY_DOLL_STATE                         0x4136 // HnS: SSAqua_1F
+#define VAR_JOSE_ITEM                                   0x4137 // HnS: Route27
+#define VAR_PEWTER_CITY_STATE                           0x4138 // HnS: MtMoon_Cave
+#define VAR_SINJOH_STORYLINE                            0x4139 // HnS: MtSilver_1F_WaterfallRoom, MtSilver_SummitDay
+#define VAR_TEMP_MTSILVER_RESUME_BLIZZARD_SE            0x413A // HnS: MtSilver_SummitDay
+#define VAR_VERMILION_CITY_SAMSON                       0x413B // HnS: Route10_PowerPlantBackRoom, VermilionCity
+#define VAR_VERMILION_CITY_STEVEN                       0x413C // HnS: SSAqua_1F, VermilionCity
+#define VAR_VIRIDIAN_FOREST_PICHU                       0x413D // HnS: PokemonLeague_HallOfFame, SSAqua_1F
+// PROXIMA VAR NOVA: 0x413E (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 

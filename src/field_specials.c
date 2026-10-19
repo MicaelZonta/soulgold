@@ -4982,3 +4982,107 @@ void GetRandomMissingItemInRange(void)
     }
     gSpecialVar_Result = count == 0 ? ITEM_NONE : missing[Random() % count];
 }
+
+// HnS (adocao do Kanto): checa se alguma especie da party e' gSpecialVar_0x8004.
+void CheckPartyForSpecies(void)
+{
+    u16 species = gSpecialVar_0x8004;
+    u8 i;
+
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == species)
+        {
+            gSpecialVar_Result = TRUE;
+            return;
+        }
+    }
+    gSpecialVar_Result = FALSE;
+}
+
+// Stub: o SoulGold nao tem o desafio de Pokecenter do HnS; sempre FALSE.
+void IsPokecenterChallengeActivated(void)
+{
+    gSpecialVar_Result = FALSE;
+}
+
+// HnS Teleporter (casa do Bill): converte especies em formas regionais.
+// DECISAO do autor (19/10/2026): as aves lendarias ficam FORA da tabela —
+// Articuno/Zapdos/Moltres de Galar terao encontro proprio em Johto.
+static const struct {
+    u16 src;
+    u16 dst;
+} sRegionalFormTable[] = {
+    { SPECIES_MEOWTH,     SPECIES_MEOWTH_GALAR },
+    { SPECIES_PONYTA,     SPECIES_PONYTA_GALAR },
+    { SPECIES_RAPIDASH,   SPECIES_RAPIDASH_GALAR },
+    { SPECIES_SLOWPOKE,   SPECIES_SLOWPOKE_GALAR },
+    { SPECIES_SLOWBRO,    SPECIES_SLOWBRO_GALAR },
+    { SPECIES_SLOWKING,   SPECIES_SLOWKING_GALAR },
+    { SPECIES_FARFETCHD,  SPECIES_FARFETCHD_GALAR },
+    { SPECIES_WEEZING,    SPECIES_WEEZING_GALAR },
+    { SPECIES_MR_MIME,    SPECIES_MR_MIME_GALAR },
+    { SPECIES_CORSOLA,    SPECIES_CORSOLA_GALAR },
+    { SPECIES_ZIGZAGOON,  SPECIES_ZIGZAGOON_GALAR },
+    { SPECIES_LINOONE,    SPECIES_LINOONE_GALAR },
+};
+
+void GetRegionalFormSpecies(void)
+{
+    u16 species = VarGet(VAR_TEMP_0);
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sRegionalFormTable); i++)
+    {
+        if (sRegionalFormTable[i].src == species)
+        {
+            gSpecialVar_Result = sRegionalFormTable[i].dst;
+            return;
+        }
+    }
+    gSpecialVar_Result = species;
+}
+
+void ConvertToRegionalForm(void)
+{
+    u16 oldSpecies = VarGet(VAR_TEMP_0);
+    u16 newSpecies = VarGet(VAR_TEMP_1);
+    u8 i;
+
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == oldSpecies)
+        {
+            SetMonData(&gPlayerParty[i], MON_DATA_SPECIES, &newSpecies);
+            CalculateMonStats(&gPlayerParty[i]);
+            EvolutionRenameMon(&gPlayerParty[i], oldSpecies, newSpecies);
+            GetSetPokedexFlag(SpeciesToNationalPokedexNum(newSpecies), FLAG_SET_SEEN);
+            GetSetPokedexFlag(SpeciesToNationalPokedexNum(newSpecies), FLAG_SET_CAUGHT);
+            gSpecialVar_Result = TRUE;
+            return;
+        }
+    }
+    gSpecialVar_Result = FALSE;
+}
+
+// TODO(hns): animacao do cabo do Teleporter (Task_DrawTeleporterCable do P,
+// precisa dos METATILE_SeaCottage_*); por ora sem animacao, so a conversao.
+void AnimateTeleporterHousing(void)
+{
+}
+
+void AnimateTeleporterCable(void)
+{
+}
+
+// TODO(hns Fase 6 - radio): estacao Poke Flute acorda o Snorlax; sem o radio
+// de 12 estacoes importado, nunca bate.
+void CheckRadioStation(void)
+{
+    gSpecialVar_Result = FALSE;
+}
+
+// TODO(hns Fase 6 - roamers de Kanto): escolha do Steven em Vermilion.
+void InitKantoRoamers(void)
+{
+}

@@ -1,6 +1,3 @@
-.set LOCALID_SSAQUA_ROOM_SSE_GRANDDAUGTHER, 2
-.set LOCALID_SSAQUA_ROOM_SSE_GRANDFATHER, 1
-
 SSAqua_RoomSSE_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SSAqua_RoomSSE_OnFrame
     map_script MAP_SCRIPT_ON_TRANSITION, SSAqua_RoomSSE_OnTransition
@@ -25,7 +22,8 @@ SSAqua_RoomSSE_EventScript_ReuinionScene::
     turnobject LOCALID_SSAQUA_ROOM_SSE_GRANDFATHER, DIR_SOUTH
     playse SE_PIN
     applymovement LOCALID_SSAQUA_ROOM_SSE_GRANDFATHER, Common_Movement_ExclamationMark
-    delay 60
+    delay 55
+    waitmovement LOCALID_SSAQUA_ROOM_SSE_GRANDFATHER
 	applymovement LOCALID_SSAQUA_ROOM_SSE_GRANDDAUGTHER, SSAqua_RoomSSE_Movement_GirlEnter
     waitmovement 0
     turnobject LOCALID_SSAQUA_ROOM_SSE_GRANDFATHER, DIR_EAST
@@ -36,6 +34,7 @@ SSAqua_RoomSSE_EventScript_ReuinionScene::
     turnobject LOCALID_SSAQUA_ROOM_SSE_GRANDFATHER, DIR_SOUTH
     msgbox SSAqua_RoomSSE_Text_EntertainedGranddaughter, MSGBOX_DEFAULT
     msgbox SSAqua_RoomSSE_Text_GrandpaHaveThis, MSGBOX_DEFAULT
+    giveitem ITEM_METAL_COAT
     closemessage
 	setvar VAR_SSAQUA_STATE, 5
 	release
@@ -78,7 +77,7 @@ SSAqua_RoomSSE_Text_CantFindGranddaughter:
     .string "I still can't find my\n"
     .string "granddaughter.\p"
     .string "If she's on the ship,\n"
-    .string "that's Ok.\p"
+    .string "that's OK.\p"
     .string "She's an energetic child,\n"
     .string "so she may be bugging someone\l"
     .string "I'm worried…$"
@@ -100,7 +99,7 @@ SSAqua_RoomSSE_Text_GrandpaTravelling:
 SSAqua_RoomSSE_Text_GranddaughterWasPlaying:
     .string "Grandpa, here I am!\n"
     .string "I was playing with\l"
-    .string "the Captain and this person!$"
+    .string "the CAPTAIN and this person!$"
 
 SSAqua_RoomSSE_Text_GranddaughterHadFun:
     .string "I had lots of fun playing!$"

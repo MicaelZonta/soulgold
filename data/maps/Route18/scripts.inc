@@ -7,13 +7,25 @@ Route18_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
+Route18_EventScript_Trigger_HideKecleon0::
+	setvar VAR_TEMP_0, 1
+	setflag FLAG_TEMP_1
+	removeobject LOCALID_ROUTE18_KECLEON0
+	end
+
+Route18_EventScript_Trigger_HideKecleon1::
+	setvar VAR_TEMP_1, 1
+	setflag FLAG_TEMP_2
+	removeobject LOCALID_ROUTE18_KECLEON1
+	end
+
 Route18_EventScript_Boris::
-	trainerbattle_single TRAINER_BORIS Route18_Text_BirdKeeperBorisSeen, Route18_Text_BirdKeeperBorisBeaten
+	trainerbattle_single TRAINER_BORIS, Route18_Text_BirdKeeperBorisSeen, Route18_Text_BirdKeeperBorisBeaten
 	msgbox Route18_Text_BirdKeeperBorisAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route18_EventScript_Bob::
-	trainerbattle_single TRAINER_BOB Route18_Text_BirdKeeperBobSeen, Route18_Text_BirdKeeperBobBeaten
+	trainerbattle_single TRAINER_BOB, Route18_Text_BirdKeeperBobSeen, Route18_Text_BirdKeeperBobBeaten
 	msgbox Route18_Text_BirdKeeperBobAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -22,7 +34,7 @@ Route18_EventScript_Sign::
 	end
 
 Route18_Text_BirdKeeperBorisSeen:
-	.string "If you're looking for Pokémon,\n"
+	.string "If you're looking for POKéMON,\n"
 	.string "you have to look in the tall grass.$"
 
 Route18_Text_BirdKeeperBorisBeaten:
@@ -33,17 +45,17 @@ Route18_Text_BirdKeeperBorisAfterBattle:
 	.string "fun to battle.$"
 
 Route18_Text_BirdKeeperBobSeen:
-	.string "Cycling Road is a quick shortcut\n"
-	.string "to Celadon.$"
+	.string "CYCLING ROAD is a quick shortcut\n"
+	.string "to CELADON.$"
 
 Route18_Text_BirdKeeperBobBeaten:
 	.string "…Whew!$"
 
 Route18_Text_BirdKeeperBobAfterBattle:
-	.string "If you don't have a Bicycle,\n"
-	.string "you're not allowed to use the\n"
+	.string "If you don't have a BICYCLE,\n"
+	.string "you're not allowed to use the\l"
 	.string "shortcut.$"
 
 Route18_Text_Sign:
-	.string "Route 18\p"
-	.string "Celadon City - Fuchsia City$"
+	.string "ROUTE 18\p"
+	.string "CELADON CITY - FUCHSIA CITY$"

@@ -7,3 +7,10 @@ RockTunnel_B1F_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
+RockTunnel_B1F_EventScript_ItemFling::
+	finditem ITEM_TM_FLING
+	end
+
+RockTunnel_B1F_EventScript_Elixir::
+	finditem ITEM_ELIXIR
+	end

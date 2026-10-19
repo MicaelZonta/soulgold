@@ -8,22 +8,22 @@ Route19_OnTransition:
 	end
 
 Route19_EventScript_Harold::
-	trainerbattle_single TRAINER_HAROLD Route19_Text_SwimmermHaroldSeen, Route19_Text_SwimmermHaroldBeaten
+	trainerbattle_single TRAINER_HAROLD, Route19_Text_SwimmermHaroldSeen, Route19_Text_SwimmermHaroldBeaten
 	msgbox Route19_Text_SwimmermHaroldAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route19_EventScript_Tucker::
-	trainerbattle_single TRAINER_TUCKER Route19_Text_SwimmermTuckerSeen, Route19_Text_SwimmermTuckerBeaten
+	trainerbattle_single TRAINER_TUCKER, Route19_Text_SwimmermTuckerSeen, Route19_Text_SwimmermTuckerBeaten
 	msgbox Route19_Text_SwimmermTuckerAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route19_EventScript_Dawn::
-	trainerbattle_single TRAINER_DAWN Route19_Text_SwimmerfDawnSeen, Route19_Text_SwimmerfDawnBeaten
+	trainerbattle_single TRAINER_DAWN, Route19_Text_SwimmerfDawnSeen, Route19_Text_SwimmerfDawnBeaten
 	msgbox Route19_Text_SwimmerfDawnAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route19_EventScript_Jerome::
-	trainerbattle_single TRAINER_JEROME Route19_Text_SwimmermJeromeSeen, Route19_Text_SwimmermJeromeBeaten
+	trainerbattle_single TRAINER_JEROME, Route19_Text_SwimmermJeromeSeen, Route19_Text_SwimmermJeromeBeaten
 	msgbox Route19_Text_SwimmermJeromeAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -63,6 +63,10 @@ Route19_EventScript_FisherBefore::
 	msgbox Route19_Text_FisherBefore, MSGBOX_NPC
 	end
 
+Route19_EventScript_Item_Brine::
+    finditem ITEM_TM_BRINE
+    end
+
 Route19_Text_SwimmermHaroldSeen:
 	.string "Have you ever gone swimming in the\n"
 	.string "sea at night?$"
@@ -76,14 +80,14 @@ Route19_Text_SwimmermHaroldAfterBattle:
 
 Route19_Text_SwimmermTuckerSeen:
 	.string "Pant, pant… Just… a little…\p"
-	.string "farther… to… Fuchsia…$"
+	.string "farther… to… FUCHSIA…$"
 
 Route19_Text_SwimmermTuckerBeaten:
 	.string "I'm drowning!$"
 
 Route19_Text_SwimmermTuckerAfterBattle:
 	.string "I… asked my girlfriend to swim to\n"
-	.string "Fuchsia… Gasp…$"
+	.string "FUCHSIA… Gasp…$"
 
 Route19_Text_SwimmerfDawnSeen:
 	.string "I'm disgusted by wimpy people!$"
@@ -92,8 +96,8 @@ Route19_Text_SwimmerfDawnBeaten:
 	.string "I could beat you at swimming…$"
 
 Route19_Text_SwimmerfDawnAfterBattle:
-	.string "It's a quick swim between Fuchsia\n"
-	.string "and Seafoam Islands…\p"
+	.string "It's a quick swim between FUCHSIA\n"
+	.string "and SEAFOAM ISLANDS…\p"
 	.string "Sheesh, some big man my boyfriend\n"
 	.string "is! What a wimp!$"
 
@@ -112,34 +116,34 @@ Route19_Text_SwimmermJeromeAfterBattle:
 Route19_Text_Fisher1:
 	.string "Sorry. This road is closed for\n"
 	.string "construction.\p"
-	.string "If you want to get to Cinnabar,\n"
-	.string "you'd better go south from Pallet\n"
-	.string "Town.$"
+	.string "If you want to get to CINNABAR,\n"
+	.string "you'd better go south from PALLET\n"
+	.string "TOWN.$"
 
 Route19_Text_Kingler:
-	.string "{SPEAKER NAME_KINGLER}Keeeeeeeeeeee$"
+	.string "KINGLER: KEEEEEEEEEEEE$"
 
 Route19_Text_Fisher1_RocksCleared:
 	.string "I'm all sweaty. Time for a swim!$"
 
 Route19_Text_Fisher2:
-	.string "Aw man, Kingler is blocking the\n"
+	.string "Aw man, KINGLER is blocking the\n"
 	.string "beach.$"
 
 Route19_Text_FisherBefore:
-	.string "No fishing until these Kingler\n"
+	.string "No fishing until these KINGLER\n"
 	.string "clear out.$"
 
 Route19_Text_Fisher2_RocksCleared:
-	.string "Those Kingler finally left!\p"
+	.string "Those KINGLER finally left!\p"
 	.string "Now I can go fishing again.$"
 
 Route19_Text_Sign:
-	.string "Route 19\p"
-	.string "Fuchsia City - Seafoam Islands$"
+	.string "ROUTE 19\p"
+	.string "FUCHSIA CITY - SEAFOAM ISLANDS$"
 
 Route19_Text_CarefulSwimmingSign:
 	.string "Please be careful if you are\n"
-	.string "swimming to Seafoam Islands.\p"
-	.string "Fuchsia Police$"
+	.string "swimming to SEAFOAM ISLANDS.\p"
+	.string "FUCHSIA POLICE$"
 

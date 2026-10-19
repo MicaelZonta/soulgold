@@ -1,14 +1,9 @@
 LavenderTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LavenderTown_EventScript_CityEnter
-	map_script MAP_SCRIPT_ON_LOAD, LavenderTown_OnLoad
 	.byte 0
 
 LavenderTown_EventScript_CityEnter::
 	setflag FLAG_VISITED_LAVENDER_TOWN
-	end
-
-LavenderTown_OnLoad::
-	setrespawn HEAL_LOCATION_LAVENDER_TOWN
 	end
 
 LavenderTown_EventScript_PokefanM::
@@ -45,35 +40,35 @@ LavenderTown_EventScript_SoulHouseSign::
 
 LavenderTown_Text_PokefanM:
 	.string "That's quite some building, eh?\p"
-	.string "It's Kanto's Radio Tower.$"
+	.string "It's KANTO's RADIO TOWER.$"
 
 LavenderTown_Text_Teacher:
-	.string "Kanto has many good radio shows.$"
+	.string "KANTO has many good radio shows.$"
 
 LavenderTown_Text_Gramps:
 	.string "People come from all over to pay\n"
 	.string "their respects to the departed\l"
-	.string "souls of Pokémon.$"
+	.string "souls of POKéMON.$"
 
 LavenderTown_Text_Youngster:
-	.string "You need a Poké Flute to wake\n"
-	.string "sleeping Pokémon.\p"
+	.string "You need a POKé FLUTE to wake\n"
+	.string "sleeping POKéMON.\p"
 	.string "Every trainer has to know that!$"
 
 LavenderTown_Text_Sign:
-	.string "Lavender Town\p"
+	.string "LAVENDER TOWN\p"
 	.string "The Noble Purple Town$"
 
 LavenderTown_Text_KantoRadioStationSign:
-	.string "Kanto Radio Station\p"
+	.string "KANTO RADIO STATION\p"
 	.string "Your Favorite Programs On-Air\n"
 	.string "Around the Clock!$"
 
 LavenderTown_Text_VolunteerPokemonHouseSign:
-	.string "Lavender Volunteer Pokémon\n"
-	.string "House$"
+	.string "LAVENDER VOLUNTEER POKéMON\n"
+	.string "HOUSE$"
 
 LavenderTown_Text_SoulHouseSign:
-	.string "Soul House\p"
-	.string "May the Souls of Pokémon Rest\n"
+	.string "SOUL HOUSE\p"
+	.string "May the Souls of POKéMON Rest\n"
 	.string "Easy$"

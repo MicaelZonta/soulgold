@@ -11,22 +11,22 @@ SaffronCity_Gym_EventScript_GymGuy2::
 	end
 
 SaffronCity_Gym_EventScript_Rebecca::
-	trainerbattle_single TRAINER_REBECCA SaffronCity_Gym_Text_MediumRebeccaSeen, SaffronCity_Gym_Text_MediumRebeccaBeaten
+	trainerbattle_single TRAINER_REBECCA, SaffronCity_Gym_Text_MediumRebeccaSeen, SaffronCity_Gym_Text_MediumRebeccaBeaten
 	msgbox SaffronCity_Gym_Text_MediumRebeccaAfter, MSGBOX_AUTOCLOSE
 	end
 
 SaffronCity_Gym_EventScript_Franklin::
-	trainerbattle_single TRAINER_FRANKLIN SaffronCity_Gym_Text_PsychicFranklinSeen, SaffronCity_Gym_Text_PsychicFranklinBeaten
+	trainerbattle_single TRAINER_FRANKLIN, SaffronCity_Gym_Text_PsychicFranklinSeen, SaffronCity_Gym_Text_PsychicFranklinBeaten
 	msgbox SaffronCity_Gym_Text_PsychicFranklinAfter, MSGBOX_AUTOCLOSE
 	end
 
 SaffronCity_Gym_EventScript_Doris::
-	trainerbattle_single TRAINER_DORIS SaffronCity_Gym_Text_MediumDorisSeen, SaffronCity_Gym_Text_MediumDorisBeaten
+	trainerbattle_single TRAINER_DORIS, SaffronCity_Gym_Text_MediumDorisSeen, SaffronCity_Gym_Text_MediumDorisBeaten
 	msgbox SaffronCity_Gym_Text_MediumDorisAfter, MSGBOX_AUTOCLOSE
 	end
 
 SaffronCity_Gym_EventScript_Jared::
-	trainerbattle_single TRAINER_JARED SaffronCity_Gym_Text_PsychicJaredSeen, SaffronCity_Gym_Text_PsychicJaredBeaten
+	trainerbattle_single TRAINER_JARED, SaffronCity_Gym_Text_PsychicJaredSeen, SaffronCity_Gym_Text_PsychicJaredBeaten
 	msgbox SaffronCity_Gym_Text_PsychicJaredAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -40,13 +40,16 @@ SaffronCity_Gym_EventScript_Sabrina::
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
 	msgbox SaffronCity_Gym_Text_MarshBadgeInfo, MSGBOX_DEFAULT
+	msgbox SaffronCity_Gym_Text_Sabrina_GiveTM, MSGBOX_DEFAULT
+	giveitem ITEM_TM_SKILL_SWAP
+	msgbox SaffronCity_Gym_Text_Sabrina_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE13_GET
-	special Achievement_CheckAll
 	setflag FLAG_DEFEATED_SAFFRON_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 13
 	call Common_EventScript_SetGymTrainers
 	closemessage
+	clearflag FLAG_HIDE_OLIVINE_SABRINA
 	release
 	end
 
@@ -57,54 +60,63 @@ SaffronCity_Gym_EventScript_Sabrina_Defeated::
 	end
 
 SaffronCity_Gym_Text_SabrinaIntro:
-	.string "{SPEAKER NAME_SABRINA}I knew you were coming…\p"
+	.string "SABRINA: I knew you were coming…\p"
 	.string "Three years ago I had a vision\n"
 	.string "of your arrival.\p"
-	.string "You're after my Badge.\p"
+	.string "You're after my BADGE.\p"
 	.string "I don't enjoy battling, but it's\n"
-	.string "my duty as a Leader to confer\l"
-	.string "Badges on anyone who has proven\l"
+	.string "my duty as a LEADER to confer\l"
+	.string "BADGES on anyone who has proven\l"
 	.string "him- or herself worthy.\p"
 	.string "Since you wish it, I will show\n"
 	.string "you my psychic powers!$"
 
 SaffronCity_Gym_Text_SabrinaWinLoss:
-	.string "Sabrina: Your power…\p"
+	.string "SABRINA: Your power…\p"
 	.string "It far exceeds what I foresaw…\p"
 	.string "Maybe it isn't possible to fully\n"
 	.string "predict what the future holds…\p"
-	.string "Ok, you win. You earned yourself\n"
-	.string "Marshbadge.$"
+	.string "OK, you win. You earned yourself\n"
+	.string "MARSHBADGE.$"
 
 SaffronCity_Gym_Text_ReceivedMarshBadge:
-	.string "{PLAYER} received Marshbadge.$"
+	.string "{PLAYER} received MARSHBADGE.$"
 
 SaffronCity_Gym_Text_MarshBadgeInfo:
-	.string "{SPEAKER NAME_SABRINA}Marshbadge draws out\n"
+	.string "SABRINA: MARSHBADGE draws out\n"
 	.string "your subliminal powers…\p"
 	.string "Although I failed to accurately\n"
 	.string "predict your power, this much I\l"
 	.string "know to be true.\p"
 	.string "You will become a celebrated and\n"
-	.string "beloved Champion!$"
+	.string "beloved CHAMPION!$"
+
+SaffronCity_Gym_Text_Sabrina_GiveTM:
+	.string "Here, take this as well.$"
+
+SaffronCity_Gym_Text_Sabrina_ExplainTM:
+	.string "It holds SKILL SWAP.\p"
+	.string "It can take your opponents' abilities\n"
+	.string "away from them and give them your own.\p"
+	.string "Use it wisely...$"
 
 SaffronCity_Gym_Text_SabrinaPostBattle:
-	.string "{SPEAKER NAME_SABRINA}Your love for your\n"
-	.string "Pokémon overwhelmed my psychic\l"
+	.string "SABRINA: Your love for your\n"
+	.string "POKéMON overwhelmed my psychic\l"
 	.string "power…\p"
 	.string "The power of love, I think, is\n"
 	.string "also a kind of psychic power…$"
 
 SaffronCity_Gym_Text_SabrinaRematch:
-	.string "{SPEAKER NAME_SABRINA}Ah, the Kanto Champion.\p"
+	.string "SABRINA: Ah, the KANTO CHAMPION.\p"
 	.string "I sensed your return.\p"
 	.string "Your power has grown immensely.\p"
 	.string "Even now, I feel your aura.\p"
 	.string "Want to have a rematch with me?$"
 
 SaffronCity_Gym_Text_SabrinaRematchDefeat:
-	.string "{SPEAKER NAME_SABRINA}Your love for your\n"
-	.string "Pokémon again overwhelmed my\l"
+	.string "SABRINA: Your love for your\n"
+	.string "POKéMON again overwhelmed my\l"
 	.string "psychic power…$"
 
 SaffronCity_Gym_Text_MediumRebeccaSeen:
@@ -141,22 +153,22 @@ SaffronCity_Gym_Text_MediumDorisAfter:
 	.string "would lose to you.$"
 
 SaffronCity_Gym_Text_PsychicJaredSeen:
-	.string "The Fighting Dojo next door was\n"
-	.string "once this city's Gym.$"
+	.string "The FIGHTING DOJO next door was\n"
+	.string "once this city's GYM.$"
 
 SaffronCity_Gym_Text_PsychicJaredBeaten:
 	.string "I was no match…$"
 
 SaffronCity_Gym_Text_PsychicJaredAfter:
-	.string "Karate King, the master of the\n"
-	.string "Fighting Dojo, was just destroyed\l"
-	.string "by Sabrina.$"
+	.string "KARATE KING, the master of the\n"
+	.string "FIGHTING DOJO, was just destroyed\l"
+	.string "by SABRINA.$"
 
 SaffronCity_Gym_Text_GymGuideIntro:
-	.string "Yo, Champ in making!\p"
+	.string "Yo, CHAMP in making!\p"
 	.string "A trainer as skilled as you\n"
 	.string "doesn't need to be told how to\l"
-	.string "deal with Psychic-type Pokémon,\l"
+	.string "deal with PSYCHIC-type POKéMON,\l"
 	.string "right?\p"
 	.string "I expect great things from you!\p"
 	.string "Good luck!$"
@@ -166,7 +178,7 @@ SaffronCity_Gym_Text_GymGuideWin:
 
 SaffronCity_Gym_EventScript_GymStatue::
 	lockall
-	goto_if_set FLAG_DEFEATED_SAFFRON_GYM, SaffronCity_Gym_EventScript_GymStatuePostVictory
+	goto_if_set FLAG_BADGE13_GET, SaffronCity_Gym_EventScript_GymStatuePostVictory
 	msgbox SaffronCity_Gym_Text_GymStatue
 	releaseall
 	end
@@ -178,13 +190,13 @@ SaffronCity_Gym_EventScript_GymStatuePostVictory::
 
 
 SaffronCity_Gym_Text_GymStatue::
-    .string "Saffron Pokémon Gym\n"
-    .string "Leader: Sabrina\p"
-	.string "Winning Trainers:\n"
-	.string "Blue, Red$"
+    .string "SAFFRON POKéMON GYM\n"
+    .string "LEADER: SABRINA\p"
+	.string "WINNING TRAINERS:\n"
+	.string "BLUE, RED$"
 
 SaffronCity_Gym_Text_GymStatuePlayerWon::
-    .string "Saffron Pokémon Gym\n"
-    .string "Leader: Sabrina\p"
-    .string "Winning Trainers:\n"
-	.string "Blue, Red, {PLAYER}$"
+    .string "SAFFRON POKéMON GYM\n"
+    .string "LEADER: SABRINA\p"
+    .string "WINNING TRAINERS:\n"
+	.string "BLUE, RED, {PLAYER}$"

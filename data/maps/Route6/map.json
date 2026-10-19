@@ -20,41 +20,41 @@
     },
     {
       "map": "MAP_SAFFRON_CITY",
-      "offset": 16,
+      "offset": 12,
       "direction": "up"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_CAMPER",
-      "x": 42,
-      "y": 26,
+      "x": 41,
+      "y": 25,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 7,
-      "movement_range_y": 4,
+      "movement_range_y": 3,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "7",
+      "trainer_sight_or_berry_tree_id": "3",
       "script": "Route6_EventScript_Allan",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CAMPER",
-      "x": 35,
+      "graphics_id": "OBJ_EVENT_GFX_BALDING_MAN",
+      "x": 30,
       "y": 17,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 7,
       "movement_range_y": 4,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "7",
+      "trainer_sight_or_berry_tree_id": "4",
       "script": "Route6_EventScript_Rex",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGNEMITE)",
-      "x": 54,
-      "y": 17,
+      "x": 48,
+      "y": 12,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
       "movement_range_x": 0,
@@ -67,7 +67,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGNEMITE)",
       "x": 48,
-      "y": 31,
+      "y": 28,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_UP_LEFT",
       "movement_range_x": 3,
@@ -78,8 +78,8 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH)",
-      "x": 28,
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GRANBULL)",
+      "x": 24,
       "y": 16,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
@@ -92,7 +92,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 35,
+      "x": 32,
       "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
@@ -104,8 +104,8 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(JIGGLYPUFF)",
-      "x": 28,
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SNUBBULL)",
+      "x": 24,
       "y": 18,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
@@ -117,9 +117,9 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BALDING_MAN",
-      "x": 49,
-      "y": 14,
+      "graphics_id": "OBJ_EVENT_GFX_ENGINEER",
+      "x": 47,
+      "y": 15,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -130,11 +130,11 @@
       "flag": "FLAG_RETURNED_MACHINE_PART"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGNEMITE)",
-      "x": 29,
-      "y": 28,
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PLUSLE)",
+      "x": 57,
+      "y": 4,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 5,
       "movement_range_y": 5,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -143,36 +143,127 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGNEMITE)",
-      "x": 28,
-      "y": 29,
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MINUN)",
+      "x": 56,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 5,
-      "movement_range_y": 5,
+      "movement_range_x": 2,
+      "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 28,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route6_EventScript_Item_Silver_Wind",
+      "flag": "FLAG_ITEM_ROUTE6_TM_SILVER_WIND"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SMALL_LIGHT",
+      "x": 41,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SMALL_LIGHT",
+      "x": 43,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SMALL_LIGHT",
+      "x": 38,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SMALL_LIGHT",
+      "x": 50,
+      "y": 22,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SMALL_LIGHT",
+      "x": 43,
+      "y": 29,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SMALL_LIGHT",
+      "x": 39,
+      "y": 29,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "3",
       "script": "NULL",
       "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 42,
+      "x": 40,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_GATE_SAFFRON_CITY_ROUTE6",
       "dest_warp_id": "1"
     },
     {
-      "x": 49,
-      "y": 13,
+      "x": 47,
+      "y": 14,
       "elevation": 0,
       "dest_map": "MAP_ROUTE6_TUNNEL_ENTRANCE",
       "dest_warp_id": "0"
     },
     {
-      "x": 43,
+      "x": 41,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_GATE_SAFFRON_CITY_ROUTE6",
@@ -183,11 +274,13 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 51,
+      "x": 45,
       "y": 15,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route6_EventScript_Sign"
     }
-  ]
+  ],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

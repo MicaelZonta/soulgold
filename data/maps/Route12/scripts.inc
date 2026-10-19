@@ -8,27 +8,68 @@ Route12_OnTransition:
 	end
 
 Route12_EventScript_Martin::
-	trainerbattle_single TRAINER_MARTIN Route12_Text_FisherMartinSeen, Route12_Text_FisherMartinBeaten
+	trainerbattle_single TRAINER_MARTIN, Route12_Text_FisherMartinSeen, Route12_Text_FisherMartinBeaten
 	msgbox Route12_Text_FisherMartinAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route12_EventScript_Stephen::
-	trainerbattle_single TRAINER_STEPHEN Route12_Text_FisherStephenSeen, Route12_Text_FisherStephenBeaten
+	trainerbattle_single TRAINER_STEPHEN, Route12_Text_FisherStephenSeen, Route12_Text_FisherStephenBeaten
 	msgbox Route12_Text_FisherStephenAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route12_EventScript_Barney::
-	trainerbattle_single TRAINER_BARNEY Route12_Text_FisherBarneySeen, Route12_Text_FisherBarneyBeaten
+	trainerbattle_single TRAINER_BARNEY, Route12_Text_FisherBarneySeen, Route12_Text_FisherBarneyBeaten
 	msgbox Route12_Text_FisherBarneyAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route12_EventScript_Kyle::
-	trainerbattle_single TRAINER_KYLE Route12_Text_FisherKyleSeen, Route12_Text_FisherKyleBeaten
+	trainerbattle_single TRAINER_KYLE, Route12_Text_FisherKyleSeen, Route12_Text_FisherKyleBeaten, Route12_EventScript_RegisterKyle
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route12_EventScript_RematchKyle
 	msgbox Route12_Text_FisherKyleAfterBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route12_EventScript_RegisterKyle::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route12_Text_KyleRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_KYLE
+	release
+	end
+
+Route12_EventScript_RematchKyle::
+	trainerbattle_rematch TRAINER_KYLE, Route12_Text_KyleRematchIntro, Route12_Text_KyleRematchDefeat
+	msgbox Route12_Text_KylePostRematch, MSGBOX_AUTOCLOSE
+	goto_if_defeated TRAINER_KYLE_2, Route12_EventScript_RematchKyleTryGiveItem
+	end
+
+Route12_EventScript_RematchKyleTryGiveItem::
+	checkitem ITEM_BLUE_SHARD
+	goto_if_eq VAR_RESULT, TRUE, Common_EventScript_NoOp
+	giveitem ITEM_BLUE_SHARD
+	closemessage
 	end
 
 Route12_EventScript_NewFisher::
 	msgbox Route12_Text_NewFisher, MSGBOX_NPC
+	end
+
+Route12_EventScript_Elixir::
+	finditem ITEM_ELIXIR
+	end
+
+Route12_EventScript_Calcium::
+	finditem ITEM_CALCIUM
+	end
+
+Route12_EventScript_Magikarp::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_MAGIKARP, CRY_MODE_NORMAL
+	msgbox Route12_Text_Magikarp, MSGBOX_DEFAULT
+	waitmoncry
+	release
 	end
 
 Route12_EventScript_Tentacruel::
@@ -41,13 +82,16 @@ Route12_EventScript_Tentacruel::
 	release
 	end
 
+Route12_Text_Magikarp:
+	.string "MAGIKARP: Kaaaarp.$"
+
 Route12_Text_NewFisher:
 	.string "Careful, something vicious lives in\n"
 	.string "these waters.$"
 
 Route12_Text_FisherMartinSeen:
 	.string "Patience is the key to both\n"
-	.string "fishing and Pokémon.$"
+	.string "fishing and POKéMON.$"
 
 Route12_Text_FisherMartinBeaten:
 	.string "Gwaaah!$"
@@ -64,7 +108,7 @@ Route12_Text_FisherStephenBeaten:
 	.string "My stupid radio distracted me!$"
 
 Route12_Text_FisherStephenAfterBattle:
-	.string "Have you checked out Kanto's radio\n"
+	.string "Have you checked out KANTO's radio\n"
 	.string "programs? We get a good variety\l"
 	.string "here.$"
 
@@ -81,8 +125,23 @@ Route12_Text_FisherBarneyAfterBattle:
 	.string "lives.\p"
 	.string "If it weren't, people wouldn't\n"
 	.string "have made such a fuss when the\l"
-	.string "Power Plant went out of\l"
+	.string "POWER PLANT went out of\l"
 	.string "commission.$"
+
+Route12_Text_KyleRegister:
+	.string "I'll remember this.\n"
+	.string "Give me your number!$"
+
+Route12_Text_KyleRematchIntro:
+	.string "Did you forget?\n"
+	.string "Let's see!$"
+
+Route12_Text_KyleRematchDefeat:
+	.string "You remembered.$"
+
+Route12_Text_KylePostRematch:
+	.string "The thrill of battle is almost\n"
+	.string "as good as a big catch!$"
 
 Route12_Text_FisherKyleSeen:
 	.string "Do you remember?$"
@@ -91,8 +150,8 @@ Route12_Text_FisherKyleBeaten:
 	.string "You do remember?$"
 
 Route12_Text_FisherKyleAfterBattle:
-	.string "The tug you feel on the Rod when\n"
-	.string "you hook a Pokémon…\p"
+	.string "The tug you feel on the ROD when\n"
+	.string "you hook a POKéMON…\p"
 	.string "That's the best feeling ever for\n"
 	.string "an angler like me.$"
 
@@ -105,9 +164,9 @@ Route12_EventScript_FishingSign::
 	end
 
 Route12_Text_Sign:
-	.string "Route 12\p"
-	.string "North To Lavender Town$"
+	.string "ROUTE 12\p"
+	.string "NORTH TO LAVENDER TOWN$"
 
 Route12_Text_FishingSpotSign:
-	.string "Fishing Spot$"
+	.string "FISHING SPOT$"
 

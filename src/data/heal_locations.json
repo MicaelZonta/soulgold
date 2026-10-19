@@ -594,6 +594,14 @@
       "map": "MAP_SUN_MOON_ALTAR",
       "x": 14,
       "y": 16
+    },
+    {
+      "id": "HEAL_LOCATION_ROUTE4",
+      "map": "MAP_ROUTE4",
+      "x": 12,
+      "y": 6,
+      "respawn_map": "MAP_ROUTE4_POKEMON_CENTER",
+      "respawn_npc": "LOCALID_ROUTE4_NURSE"
     }
   ]
 }

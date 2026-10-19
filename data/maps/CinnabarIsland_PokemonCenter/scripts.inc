@@ -1,5 +1,3 @@
-.set LOCALID_NURSE, 1
-
 CinnabarIsland_PokemonCenter_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CinnabarIsland_PokemonCenter_OnTransition
 	.byte 0
@@ -17,8 +15,8 @@ CinnabarIsland_PokemonCenter_EventScript_Fisher::
 	end
 
 CinnabarIsland_PokemonCenter1F_Text_CooltrainerF:
-	.string "Cinnabar Gym's Blaine apparently\n"
-	.string "lives alone in the Seafoam Islands\n"
+	.string "CINNABAR GYM's BLAINE apparently\n"
+	.string "lives alone in the SEAFOAM ISLANDS\l"
 	.string "cave…$"
 
 CinnabarIsland_PokemonCenter1F_Text_Fisher:

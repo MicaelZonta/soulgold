@@ -2,12 +2,12 @@ SSAqua_RoomSW_MapScripts::
 	.byte 0
 
 SSAqua_RoomSW_EventScript_Cassie::
-	trainerbattle_single TRAINER_CASSIE SSAqua_RoomSW_Text_BeautyCassieSeen, SSAqua_RoomSW_Text_BeautyCassieBeaten
+	trainerbattle_single TRAINER_CASSIE, SSAqua_RoomSW_Text_BeautyCassieSeen, SSAqua_RoomSW_Text_BeautyCassieBeaten
 	msgbox SSAqua_RoomSW_Text_BeautyCassieAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 SSAqua_RoomSW_EventScript_Clyde::
-	trainerbattle_single TRAINER_CLYDE SSAqua_RoomSW_Text_GuitaristClydeSeen, SSAqua_RoomSW_Text_GuitaristClydeBeaten
+	trainerbattle_single TRAINER_CLYDE, SSAqua_RoomSW_Text_GuitaristClydeSeen, SSAqua_RoomSW_Text_GuitaristClydeBeaten
 	msgbox SSAqua_RoomSW_Text_GuitaristClydeAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -21,22 +21,22 @@ SSAqua_RoomSW_Text_BeautyCassieBeaten:
 SSAqua_RoomSW_Text_BeautyCassieAfterBattle:
     .string "A voyage is best for getting over\n"
     .string "a broken heart.\p"
-    .string "But a Fast Ship trip is too short\n"
+    .string "But a FAST SHIP trip is too short\n"
     .string "for grieving.$"
 
 SSAqua_RoomSW_Text_GuitaristClydeSeen:
     .string "I'm going to audition my songs\n"
-    .string "at Goldenrod's Radio Station.$"
+    .string "at GOLDENROD's RADIO STATION.$"
 
 SSAqua_RoomSW_Text_GuitaristClydeBeaten:
     .string "Yowza! Total distortion!$"
 
 SSAqua_RoomSW_Text_GuitaristClydeAfterBattleMobile:
     .string "I was going to make my debut at\n"
-    .string "the Battle Tower…\p"
-    .string "I should go back to Vermilion and\n"
+    .string "the BATTLE TOWER…\p"
+    .string "I should go back to VERMILION and\n"
     .string "redo my training…$"
 
 SSAqua_RoomSW_Text_GuitaristClydeAfterBattle:
-    .string "Speaking of the Radio Station,\n"
+    .string "Speaking of the RADIO STATION,\n"
     .string "what's this week's lucky number?$"

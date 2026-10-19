@@ -1,6 +1,3 @@
-.set LOCALID_VERMILIONMARINA_SAILOR, 1
-.set LOCALID_VERMILIONMARINA_BOAT, 2
-
 VermilionCity_PortInside_MapScripts::
 	.byte 0
 
@@ -12,18 +9,17 @@ VermilionPortIndoor_EventScript_Nerd::
 	end
 
 VermilionPortPassage_Text_Teacher:
-	.string "The Fast Ship sails every day!$"
+	.string "The FAST SHIP sails every day!$"
 
 VermilionPort_Text_SuperNerd:
-	.string "You came from Johto?\p"
-	.string "I hear many rare Pokémon live\n"
+	.string "You came from JOHTO?\p"
+	.string "I hear many rare POKéMON live\n"
 	.string "over there.$"
 
 VermilionPort_EventScript_Sailor::
 	lock
 	faceplayer
 	goto_if_unset FLAG_RETURNED_MACHINE_PART, VermilionPort_EventScript_SailorCantSail
-	goto_if_set FLAG_DEFEATED_MTSILVER_RIVAL, VermilionPort_EventScript_Sailor_After_Red
 	goto_if_ge VAR_SSAQUA_STATE, 7, VermilionPort_EventScript_Sailor_AfterKanto
 	msgbox VermilionPort_Text_AskBoard, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_Refused
@@ -48,19 +44,6 @@ VermilionPort_EventScript_Sailor_AfterKanto::
 	case 1, VermilionPort_EventScript_ChoseSouthernIsland
 	case 2, VermilionPort_EventScript_ChoseBirthIsland
 	case 3, VermilionPort_EventScript_ChoseFarawayIsland
-	case 4, VermilionPort_EventScript_Sailor_Refused
-	case MULTI_B_PRESSED, VermilionPort_EventScript_Sailor_Refused
-	release
-	end
-
-VermilionPort_EventScript_Sailor_After_Red::
-	message VermilionPort_Text_WhereSail
-	multichoice 20, 0, MULTI_VERMILION_HARBOR_RED, FALSE
-	switch VAR_RESULT
-	case 0, VermilionPort_EventScript_ChoseOlivine
-	case 1, VermilionPort_EventScript_ChoseSouthernIsland
-	case 2, VermilionPort_EventScript_ChoseBirthIsland
-	case 3, VermilionPort_EventScript_ChoseFarawayIsland
 	case 4, VermilionPort_EventScript_ChoseBattleFrontier
 	case 5, VermilionPort_EventScript_Sailor_Refused
 	case MULTI_B_PRESSED, VermilionPort_EventScript_Sailor_Refused
@@ -74,6 +57,8 @@ VermilionPort_EventScript_ChoseOlivine::
 	bufferitemname STR_VAR_1, ITEM_SS_TICKET
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_NoCredentials
 	call VermilionPort_EventScript_EnterShip
+	warpsilent MAP_OLIVINE_CITY_PORT_INSIDE, 8, 16
+	waitstate
 	release
 	end
 
@@ -84,6 +69,8 @@ VermilionPort_EventScript_ChoseSouthernIsland::
 	bufferitemname STR_VAR_1, ITEM_EON_TICKET
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_NoCredentials
 	call VermilionPort_EventScript_EnterShip
+	warpsilent MAP_SOUTHERN_ISLAND_EXTERIOR, 13, 22
+	waitstate
 	release
 	end
 
@@ -94,6 +81,8 @@ VermilionPort_EventScript_ChoseBirthIsland::
 	bufferitemname STR_VAR_1, ITEM_AURORA_TICKET
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_NoCredentials
 	call VermilionPort_EventScript_EnterShip
+	warpsilent MAP_BIRTH_ISLAND_EXTERIOR, 13, 23
+	waitstate
 	release
 	end
 
@@ -104,6 +93,17 @@ VermilionPort_EventScript_ChoseFarawayIsland::
 	bufferitemname STR_VAR_1, ITEM_OLD_SEA_MAP
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_NoCredentials
 	call VermilionPort_EventScript_EnterShip
+	warpsilent MAP_FARAWAY_ISLAND_ENTRANCE, 13, 38
+	waitstate
+	release
+	end	
+
+VermilionPort_EventScript_ChoseBattleFrontier::
+	closemessage
+	delay 20
+	call VermilionPort_EventScript_EnterShip
+	warpsilent MAP_BATTLE_FRONTIER_OUTSIDE_WEST, 20, 67
+	waitstate
 	release
 	end	
 
@@ -111,15 +111,10 @@ VermilionPort_EventScript_Sailor_MaidenVoyage::
 	msgbox VermilionPort_Text_FlashTicket, MSGBOX_DEFAULT
 	call VermilionPort_EventScript_EnterShip
 	setvar VAR_SSAQUA_STATE, 1
+	warpsilent MAP_SSAQUA_1F, 29, 3
+	waitstate
 	release
 	end
-
-VermilionPort_EventScript_ChoseBattleFrontier::
-	closemessage
-	delay 20
-	call VermilionPort_EventScript_EnterShip
-	release
-	end	
 
 VermilionPort_EventScript_EnterShip::
 	msgbox VermilionPort_Text_SailorGetOnBoard, MSGBOX_DEFAULT
@@ -173,8 +168,8 @@ VermilionPort_Movement_BoatLeave:
 
 VermilionPort_Text_SailorCantSail:
 	.string "There's been a break-in at the\n"
-	.string "Power Plant, so we cannot set sail\l"
-	.string "until the Thief is found.$"
+	.string "POWER PLANT, so we cannot set sail\l"
+	.string "until the THIEF is found.$"
 
 VermilionPort_Text_NoPass:
     .string "{PLAYER} tried to show the\n"
@@ -195,23 +190,23 @@ VermilionPort_Text_WhereSail:
     .string "Where would you like to sail?$"
 
 VermilionPort_Text_AskBoard:
-    .string "Welcome to Fast Ship S.S.Aqua.\p"
+    .string "Welcome to FAST SHIP S.S.AQUA.\p"
     .string "Will you be boarding today?$"
 
 VermilionPort_Text_AskTicket:
-    .string "May I see your S.S.Ticket?$"
+    .string "May I see your S.S.TICKET?$"
 
 VermilionPort_Text_ComeAgain:
     .string "We hope to see you again!$"
 
 VermilionPort_Text_FlashTicket:
-    .string "{PLAYER} flashed the S.S.Ticket.\p"
+    .string "{PLAYER} flashed the S.S.TICKET.\p"
     .string "That's it. Thank you!$"
 
 VermilionPort_Text_NoTicket:
     .string "{PLAYER} tried to show the\n"
-    .string "S.S.Ticket…\p"
-    .string "…But no Ticket!\p"
+    .string "S.S.TICKET…\p"
+    .string "…But no TICKET!\p"
     .string "Sorry!\n"
     .string "You may board only\l"
-    .string "if you have an S.S.Ticket.$"
+    .string "if you have an S.S.TICKET.$"

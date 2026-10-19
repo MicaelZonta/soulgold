@@ -709,3 +709,17 @@ const u32 gObjectEventPic_AetherEmitter[] = INCBIN_U32("graphics/object_events/p
 const u32 gObjectEventPic_Timegear[] = INCBIN_U32("graphics/object_events/pics/misc/timegear.4bpp");
 const u32 gObjectEventPic_TMBall[] = INCBIN_U32("graphics/object_events/pics/misc/tm_ball.4bpp");
 const u32 gObjectEventPic_Megastone[] = INCBIN_U32("graphics/object_events/pics/misc/megastone.4bpp");
+
+// Kanto do HnS
+const u32 gObjectEventPic_SleepingSnorlax_hns[] = INCBIN_U32("graphics/object_events/pics/dolls/sleeping_snorlax_hns.4bpp");
+const u32 gObjectEventPic_SsAqua_hns[] = INCBIN_U32("graphics/object_events/pics/misc/ss_aqua_hns.4bpp");
+const u32 gObjectEventPic_SwimmingLapras_hns[] = INCBIN_U32("graphics/object_events/pics/dolls/swimming_lapras_hns.4bpp");
+const u32 gObjectEventPic_TrainWest_hns[] = INCBIN_U32("graphics/object_events/pics/misc/train_west_hns.4bpp");
+const u32 gObjectEventPic_GoldNormal_hns[] = INCBIN_U32("graphics/object_events/pics/people/gold_hns/walking.4bpp");
+const u32 gObjectEventPic_KrisNormal_hns[] = INCBIN_U32("graphics/object_events/pics/people/kris_hns/walking.4bpp");
+const u16 gObjectEventPal_Snorlax_hns[] = INCBIN_U16("graphics/object_events/palettes/snorlax_hns.gbapal");
+const u16 gObjectEventPal_SsAqua_hns[] = INCBIN_U16("graphics/object_events/palettes/ss_aqua_hns.gbapal");
+const u16 gObjectEventPal_Lapras_hns[] = INCBIN_U16("graphics/object_events/palettes/lapras_hns.gbapal");
+const u16 gObjectEventPal_Train_hns[] = INCBIN_U16("graphics/object_events/palettes/train_hns.gbapal");
+const u16 gObjectEventPal_Gold_hns[] = INCBIN_U16("graphics/object_events/palettes/gold_hns.gbapal");
+const u16 gObjectEventPal_Kris_hns[] = INCBIN_U16("graphics/object_events/palettes/kris_hns.gbapal");

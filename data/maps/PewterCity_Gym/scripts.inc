@@ -17,19 +17,21 @@ PewterCity_Gym_EventScript_Brock::
 	message PewterCity_Gym_Text_ReceivedBoulderBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
-	msgbox PewterCity_Gym_Text_Brock_FightDone, MSGBOX_DEFAULT
+	msgbox PewterCity_Gym_Text_Brock_GiveTM, MSGBOX_DEFAULT
+	giveitem ITEM_TM_ROCK_SLIDE
+	msgbox PewterCity_Gym_Text_Brock_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE09_GET
-	special Achievement_CheckAll
 	setflag FLAG_DEFEATED_PEWTER_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 9
 	call Common_EventScript_SetGymTrainers
-	msgbox PewterCity_Gym_Text_EarthquakeSpeech, MSGBOX_DEFAULT
+	clearflag FLAG_HIDE_DIGLETT_BROCK
 	closemessage
 	release
 	end
 
 PewterCity_Gym_EventScript_Brock_Defeated::
+	goto_if_unset FLAG_HIDE_DOJO_BROCK, PewterCity_Gym_EventScript_Brock_Trade
 	msgbox PewterCity_Gym_Text_Brock_FightDone, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -37,48 +39,50 @@ PewterCity_Gym_EventScript_Brock_Defeated::
 
 
 PewterCity_Gym_Text_Brock_Intro:
-	.string "{SPEAKER NAME_BROCK}Wow, it's not often that we get a\n"
-	.string "challenger from Johto.\p"
-	.string "I'm Brock, the Pewter Gym Leader.\p"
-	.string "I'm an expert on rock-type Pokémon.\p"
-	.string "My Pokémon are impervious to most\n"
+	.string "BROCK: Wow, it's not often that we get a\n"
+	.string "challenger from JOHTO.\p"
+	.string "I'm BROCK, the PEWTER GYM LEADER.\p"
+	.string "I'm an expert on ROCK-type POKéMON.\p"
+	.string "My POKéMON are impervious to most\n"
 	.string "physical attacks. You'll have a hard\l"
 	.string "time inflicting any damage.\p"
 	.string "Come on!$"
 
 PewterCity_Gym_Text_Brock_WinLoss:
-	.string "Brock: Your Pokémon's powerful attacks\n"
+	.string "BROCK: Your POKéMON's powerful attacks\n"
 	.string "overcame my rock-hard defense…\p"
 	.string "You're stronger than I expected…\p"
-	.string "Go ahead--take this Badge.$"
+	.string "Go ahead--take this BADGE.$"
 
 PewterCity_Gym_Text_ReceivedBoulderBadge:
-	.string "{PLAYER} received Boulderbadge.$"
+	.string "{PLAYER} received BOULDERBADGE.$"
+
+PewterCity_Gym_Text_Brock_GiveTM:
+	.string "Here, take this TM with you.$"
+
+PewterCity_Gym_Text_Brock_ExplainTM:
+	.string "It contains ROCK SLIDE.\p"
+	.string "It drops rocks on your opponents\n"
+	.string "with a chance to cause flinching.\p"
+	.string "Use it to stop them in their tracks.$"
 
 PewterCity_Gym_Text_Brock_BoulderBadge:
-	.string "{SPEAKER NAME_BROCK}{PLAYER}, thanks. I enjoyed\n"
+	.string "BROCK: {PLAYER}, thanks. I enjoyed\n"
 	.string "battling you, even though I am a bit\l"
 	.string "upset.\p"
-	.string "That Boulderbadge will make your\n"
-	.string "Pokémon even more powerful.$"
-
-PewterCity_Gym_Text_EarthquakeSpeech:
-    .string "{SPEAKER NAME_BROCK}That TM contains Earthquake.\p"
-    .string "It's a powerful attack that\n"
-    .string "shakes up the battlefield.\p"
-    .string "But be careful not to\n"
-    .string "undermine your own Pokémon!$"
+	.string "That BOULDERBADGE will make your\n"
+	.string "POKéMON even more powerful.$"
 
 PewterCity_Gym_Text_Brock_FightDone:
-	.string "{SPEAKER NAME_BROCK}The world is huge. There are\n"
+	.string "BROCK: The world is huge. There are\n"
 	.string "still many strong trainers like you.\p"
 	.string "Just wait and see. I'm going to become\n"
 	.string "a lot stronger too.$"
 
 PewterCity_Gym_Text_CamperJerry_Seen:
-	.string "The trainers of this Gym use rock-type\n"
-	.string "Pokémon.\p"
-	.string "The rock-type has high Defense.\p"
+	.string "The trainers of this GYM use ROCK-type\n"
+	.string "POKéMON.\p"
+	.string "The ROCK-type has high DEFENSE.\p"
 	.string "Battles could end up going a long time.\n"
 	.string "Are you ready for this?$"
 
@@ -86,20 +90,20 @@ PewterCity_Gym_Text_CamperJerry_Beaten:
 	.string "I have to win these battles…$"
 
 PewterCity_Gym_Text_CamperJerry_AfterBattle:
-	.string "Hey, you! Trainer from Johto! Brock is\n"
+	.string "Hey, you! Trainer from JOHTO! BROCK is\n"
 	.string "tough. He'll punish you if you don't\l"
 	.string "take him seriously.$"
 
 PewterCity_Gym_Text_Guide:
-	.string "Yo! Champ in making! You're really\n"
+	.string "Yo! CHAMP in making! You're really\n"
 	.string "rocking.\p"
-	.string "Are you battling the Gym Leaders of\n"
-	.string "Kanto?\p"
+	.string "Are you battling the GYM LEADERS of\n"
+	.string "KANTO?\p"
 	.string "They're strong and dedicated people,\n"
-	.string "just like Johto's Gym Leaders.$"
+	.string "just like JOHTO's GYM LEADERS.$"
 
 PewterCity_Gym_Text_Guide_Win:
-	.string "Yo! Champ in making! That Gym didn't\n"
+	.string "Yo! CHAMP in making! That GYM didn't\n"
 	.string "give you much trouble.\p"
 	.string "The way you took charge was really\n"
 	.string "inspiring. I mean that seriously.$"
@@ -127,14 +131,61 @@ PewterCity_Gym_EventScript_GymStatuePostVictory::
 	end
 
 PewterCity_Gym_Text_GymStatue::
-    .string "Pewter Pokémon Gym\n"
-    .string "Leader: Brock\p"
-	.string "Winning Trainers:\n"
-	.string "Blue, Red$"
+    .string "PEWTER POKéMON GYM\n"
+    .string "LEADER: BROCK\p"
+	.string "WINNING TRAINERS:\n"
+	.string "BLUE, RED$"
 
 PewterCity_Gym_Text_GymStatuePlayerWon::
-    .string "Pewter Pokémon Gym\n"
-    .string "Leader: Brock\p"
-    .string "Winning Trainers:\n"
-	.string "Blue, Red, {PLAYER}$"
+    .string "PEWTER POKéMON GYM\n"
+    .string "LEADER: BROCK\p"
+    .string "WINNING TRAINERS:\n"
+	.string "BLUE, RED, {PLAYER}$"
 
+PewterCity_Gym_EventScript_Brock_Trade::
+	goto_if_set FLAG_PEWTER_GYM_NPC_TRADE_COMPLETED, PewterCity_Gym_EventScript_BrockTradeCompleted
+	ingame_trade INGAME_TRADE_BONSLY, PewterCity_Gym_Text_BrockWantToTrade, PewterCity_Gym_EventScript_BrockDeclineTrade, PewterCity_Gym_EventScript_BrockNotRequestedMon, PewterCity_Gym_Text_BrockTakeCare
+	setflag FLAG_PEWTER_GYM_NPC_TRADE_COMPLETED
+	release
+	end
+
+PewterCity_Gym_EventScript_BrockDeclineTrade::
+	msgbox PewterCity_Gym_Text_BrockDeclineTrade, MSGBOX_DEFAULT
+	release
+	end
+
+PewterCity_Gym_EventScript_BrockNotRequestedMon::
+	bufferspeciesname STR_VAR_1, VAR_0x8009
+	msgbox PewterCity_Gym_Text_BrockNotRequestedMon, MSGBOX_DEFAULT
+	release
+	end
+
+PewterCity_Gym_EventScript_BrockTradeCompleted::
+	msgbox PewterCity_Gym_Text_BrockTradeCompleted, MSGBOX_DEFAULT
+	release
+	end
+
+PewterCity_Gym_Text_BrockWantToTrade:
+	.string "BROCK: Hey, {PLAYER}. I found this\n"
+	.string "little BONSLY while training in the\l"
+	.string "mountains.\p"
+	.string "It's cute, but I think it needs\n"
+	.string "a different kind of trainer.\p"
+	.string "Would you trade a {STR_VAR_1}\n"
+	.string "for my {STR_VAR_2}?$"
+
+PewterCity_Gym_Text_BrockTakeCare:
+	.string "BROCK: Thanks! Take good care of\n"
+	.string "WOODY for me!$"
+
+PewterCity_Gym_Text_BrockDeclineTrade:
+	.string "BROCK: No? That's okay.\n"
+	.string "WOODY and I will keep training.$"
+
+PewterCity_Gym_Text_BrockNotRequestedMon:
+	.string "BROCK: That's not a {STR_VAR_1}.\n"
+	.string "That's not what I'm after.$"
+
+PewterCity_Gym_Text_BrockTradeCompleted:
+	.string "BROCK: How's WOODY doing?\n"
+	.string "BONSLY are tougher than they look!$"

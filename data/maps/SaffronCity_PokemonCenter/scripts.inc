@@ -1,5 +1,3 @@
-.set LOCALID_NURSE, 1
-
 SaffronCity_PokemonCenter_MapScripts::
 map_script MAP_SCRIPT_ON_TRANSITION, SaffronCity_PokemonCenter_OnTransition
 	.byte 0
@@ -25,25 +23,25 @@ SaffronCity_PokemonCenter_EventScript_Youngster::
 	end
 
 SaffronCity_PokemonCenter1F_Text_Teacher:
-	.string "What are Johto's Pokémon Centers\n"
+	.string "What are JOHTO's POKéMON CENTERS\n"
 	.string "like?\p"
 	.string "…Oh, I see. So they're not much\n"
-	.string "different from the ones in Kanto.\p"
-	.string "I can go to Johto without\n"
+	.string "different from the ones in KANTO.\p"
+	.string "I can go to JOHTO without\n"
 	.string "worrying, then!$"
 
 SaffronCity_PokemonCenter1F_Text_Fisher:
 	.string "I just happened to come through\n"
-	.string "Rock Tunnel.\p"
+	.string "ROCK TUNNEL.\p"
 	.string "There was some commotion at the\n"
-	.string "Power Plant.$"
+	.string "POWER PLANT.$"
 
 SaffronCity_PokemonCenter1F_Text_Fisher_ReturnedPart:
-	.string "There's an odd cave in Cerulean.\p"
-	.string "As a pro Hiker, I should explore it,\n"
+	.string "There's an odd cave in CERULEAN.\p"
+	.string "As a pro HIKER, I should explore it,\n"
 	.string "but that place scares even me.$"
 
 SaffronCity_PokemonCenter1F_Text_Youngster:
-	.string "Silph Co.'s Head Office and the\n"
-	.string "Magnet Train Station--they're the\l"
-	.string "places to see in Saffron.$"
+	.string "SILPH CO.'s HEAD OFFICE and the\n"
+	.string "MAGNET TRAIN STATION--they're the\l"
+	.string "places to see in SAFFRON.$"

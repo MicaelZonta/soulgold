@@ -1,7 +1,3 @@
-.set LOCALID_ROUTE24_WOMAN, 4
-.set LOCALID_ROUTE24_MAN, 3
-.set LOCALID_ROUTE24_GRUNT, 1
-
 Route24_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route24_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
@@ -13,8 +9,8 @@ Route24_OnTransition:
 	end
 
 Route24_MapScript_SetRocketScene:
-	setobjectxyperm LOCALID_ROUTE24_GRUNT, 10, 28
-	setobjectxyperm LOCALID_ROUTE24_WOMAN, 10, 29
+	setobjectxyperm LOCALID_ROUTE24_GRUNT, 16, 8
+	setobjectxyperm LOCALID_ROUTE24_WOMAN, 16, 9
 	setobjectmovementtype LOCALID_ROUTE24_GRUNT, MOVEMENT_TYPE_FACE_LEFT
 	setobjectmovementtype LOCALID_ROUTE24_WOMAN, MOVEMENT_TYPE_FACE_UP
 	setobjectmovementtype LOCALID_ROUTE24_MAN, MOVEMENT_TYPE_FACE_DOWN
@@ -51,11 +47,12 @@ Route24_EventScript_ManAfterRocket::
 Route24_Trigger_GruntScene::
 	lock
 	playse SE_PIN
-	applymovement LOCALID_ROUTE24_GRUNT Common_Movement_ExclamationMark
-	delay 60
-	applymovement LOCALID_ROUTE24_GRUNT, Route24_Movement_GruntHide
+	applymovement2 LOCALID_ROUTE24_GRUNT Common_Movement_ExclamationMark
+	delay 55
+	waitmovement LOCALID_ROUTE24_GRUNT
+	applymovement2 LOCALID_ROUTE24_GRUNT, Route24_Movement_GruntHide
 	delay 10
-	applymovement LOCALID_ROUTE24_WOMAN, Route24_Movement_WomanMove
+	applymovement2 LOCALID_ROUTE24_WOMAN, Route24_Movement_WomanMove
 	waitmovement 0
 	turnobject LOCALID_ROUTE24_MAN, DIR_SOUTH
 	setvar VAR_KANTO_ROCKET_STORY_STATE, 4
@@ -83,8 +80,9 @@ Route24_EventScript_Grunt::
 	msgbox Route24_Text_RocketAfter, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
-	applymovement FLAG_HIDE_CERULEAN_CAPE_ROCKET, Common_Movement_QuestionMark
-	delay 50
+	applymovement2 LOCALID_ROUTE24_GRUNT, Common_Movement_QuestionMark
+	delay 55
+	waitmovement LOCALID_ROUTE24_GRUNT
 	msgbox Route24_Text_RocketDisappears, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route24_Movement_PlayerSlide
@@ -120,7 +118,7 @@ Route24_Movement_GruntLeave:
 	step_end
 
 Route24_Text_RocketSeen:
-	.string "Hey, kid! Me am a Team Rocket\n"
+	.string "Hey, kid! Me am a TEAM ROCKET\n"
 	.string "member kind of guy!\p"
 	.string "Come from another country, a\n"
 	.string "trainer number one, me!\p"
@@ -140,21 +138,21 @@ Route24_Text_RocketBeaten:
 	.string "I am not to you!$"
 
 Route24_Text_RocketAfter:
-	.string "Ok. Tell you mine secret will I\n"
-	.string "Machine Part steal by me, hide it\l"
-	.string "I did in Gym of the Cerulean.\p"
+	.string "OK. Tell you mine secret will I?\n"
+	.string "MACHINE PART steal by me, hide it\l"
+	.string "I did in GYM of the CERULEAN.\p"
 	.string "Inside water put it I did. Look\n"
-	.string "for in water center of Gym at.\p"
+	.string "for in water center of GYM at.\p"
 	.string "But you forget me not!\p"
-	.string "Beat you for sure will Team\n"
-	.string "Rocket.\p"
-	.string "Come from Johto will they, mine\n"
+	.string "Beat you for sure will TEAM\n"
+	.string "ROCKET.\p"
+	.string "Come from JOHTO will they, mine\n"
 	.string "friends, yes. Will revenge they\l"
 	.string "are.$"
 
 Route24_Text_RocketDisappears:
 	.string "…\p"
-	.string "You say what? Team Rocket bye-\n"
+	.string "You say what? TEAM ROCKET bye-\n"
 	.string "bye a go-go? Broken it is says\l"
 	.string "you?\p"
 	.string "Oh, no! Should I do what now on\n"
@@ -175,4 +173,4 @@ Route24_Text_ManRocket:
 Route24_Text_WomanAfterRocket:
 	.string "What was that all about?$"
 Route24_Text_ManAfterRocket:
-	.string "Was that a Rocket?$"
+	.string "Was that a ROCKET?$"

@@ -1,37 +1,23 @@
 SaffronCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SaffronCity_EventScript_CityEnter
-	map_script MAP_SCRIPT_ON_LOAD, SaffronCity_OnLoad
 	.byte 0
-
-SaffronCity_OnFrame::
-	map_script_2 VAR_SAFFRON_CITY_STATE, 0,  SaffronCity_EventScript_BaobaCall
-	.2byte 0
-
-SaffronCity_OnLoad::
-	setrespawn HEAL_LOCATION_SAFFRON_CITY
-	end
 
 SaffronCity_EventScript_CityEnter::
 	setflag FLAG_VISITED_SAFFRON_CITY
 	end
 
-SaffronCity_EventScript_BaobaCall::
-	pokenavcall SaffronCity_Text_Baoba
-	waitmessage
-	delay 30
-	setflag FLAG_SAFARI_ZONE_EAST_EXPANSION
-	setvar VAR_SAFFRON_CITY_STATE, 1
-	end
+SaffronCity_Text_BaobaName:
+	.string "BAOBA$"
 
 SaffronCity_Text_Baoba:
-	.string "{SPEAKER NAME_WARDEN_BAOBA}{PLAYER}!\p"
-	.string "This is Warden Baoba.\p"
+	.string "WARDEN BAOBA: {PLAYER}!\p"
+	.string "This is WARDEN BAOBA.\p"
 	.string "I'm calling to tell you that the\n"
-	.string "Safari Zone has expanded again!\p"
-	.string "Finally, my Safari Zone has been\n"
+	.string "SAFARI ZONE has expanded again!\p"
+	.string "Finally, my SAFARI ZONE has been\n"
 	.string "fully realized!\p"
 	.string "You remember where it is, right?\p"
-	.string "Just west of Cianwood City!\n"
+	.string "Just west of CIANWOOD CITY!\n"
 	.string "see you soon!$"
 
 SaffronCity_EventScript_Lass1A::
@@ -109,7 +95,7 @@ SaffronCity_EventScript_Elli::
 	end
 
 SaffronCity_Text_Elli:
-	.string "I love Vulpix! :D$"
+	.string "I love VULPIX! :D$"
 
 SaffronCity_Text_Lass1:
 	.string "A little girl who is an expert at\n"
@@ -118,43 +104,43 @@ SaffronCity_Text_Lass1:
 	.string "conversing with. It's confusing.$"
 
 SaffronCity_Text_Lass1_ReturnedPart:
-	.string "The Copycat girl looked unhappy.\p"
+	.string "The COPYCAT girl looked unhappy.\p"
 	.string "She said she lost her favorite\n"
-	.string "Poké Doll--Clefairy.$"
+	.string "POKé DOLL--CLEFAIRY.$"
 
 SaffronCity_Text_PokefanM:
-	.string "You came out from Johto?\p"
+	.string "You came out from JOHTO?\p"
 	.string "You can zip back home if the\n"
-	.string "Magnet Train's running.$"
+	.string "MAGNET TRAIN's running.$"
 
 SaffronCity_Text_PokefanM_ReturnedPart:
-	.string "You came out from Johto?\p"
+	.string "You came out from JOHTO?\p"
 	.string "You can zip back home by hopping\n"
-	.string "on the Magnet Train.$"
+	.string "on the MAGNET TRAIN.$"
 
 SaffronCity_Text_CooltrainerM:
-	.string "I went to the Gym, raring for\n"
+	.string "I went to the GYM, raring for\n"
 	.string "battles against trainers…\p"
 	.string "It turns out, I stumbled into the\n"
-	.string "unused Gym next door.\p"
+	.string "unused GYM next door.\p"
 	.string "Boy, I was pretty embarrassed.$"
 
 SaffronCity_Text_CooltrainerF:
-	.string "This is Silph Co., famous for\n"
-	.string "Pokémon merchandise.\p"
-	.string "In the past, Team Rocket wanted\n"
+	.string "This is SILPH CO., famous for\n"
+	.string "POKéMON merchandise.\p"
+	.string "In the past, TEAM ROCKET wanted\n"
 	.string "the company because of that.$"
 
 SaffronCity_Text_Fisher:
 	.string "Chew… Chew…\p"
 	.string "I hear there's big trouble brewing\n"
-	.string "at the Power Plant.\p"
+	.string "at the POWER PLANT.\p"
 	.string "Chew… Chew…$"
 
 SaffronCity_Text_Fisher_ReturnedPart:
 	.string "Chew… Chew…\p"
 	.string "I hear there was big trouble at the\n"
-	.string "Power Plant.\p"
+	.string "POWER PLANT.\p"
 	.string "Chew… Chew… Haaah, I'm full!$"
 
 SaffronCity_Text_Youngster1:
@@ -162,8 +148,8 @@ SaffronCity_Text_Youngster1:
 	.string "time makes me sorta anxious.$"
 
 SaffronCity_Text_Youngster2:
-	.string "There's a place called Trainer\n"
-	.string "House in Viridian where trainers\p"
+	.string "There's a place called the CONTEST\n"
+	.string "HALL in VIRIDIAN where trainers\l"
 	.string "gather from all over the place.$"
 
 SaffronCity_Text_Lass2:
@@ -174,27 +160,36 @@ SaffronCity_Text_Lass2:
 	.string "too.$"
 
 SaffronCity_Text_Sign:
-	.string "Saffron City\p"
+	.string "SAFFRON CITY\p"
 	.string "Shining, Golden Land of Commerce$"
 
 SaffronCity_Text_GymSign:
-	.string "Saffron City\n"
-	.string "Pokémon Gym\l"
-	.string "Leader: Sabrina\p"
-	.string "The Master of Psychic Pokémon!$"
+	.string "SAFFRON CITY\n"
+	.string "POKéMON GYM\l"
+	.string "LEADER: SABRINA\p"
+	.string "The Master of Psychic POKéMON!$"
 
 SaffronCity_Text_FightingDojoSign:
 	.string "Everyone Welcome!\n"
-	.string "Fighting Dojo$"
+	.string "FIGHTING DOJO$"
 
 SaffronCity_Text_SilphCoSign:
-	.string "Silph Co.\n"
-	.string "Office Building$"
+	.string "SILPH CO.\n"
+	.string "OFFICE BUILDING$"
 
 SaffronCity_Text_MrPsychicHouseSign:
-	.string "Mr.Psychic's\n"
-	.string "House$"
+	.string "MR.PSYCHIC'S\n"
+	.string "HOUSE$"
 
 SaffronCity_Text_MagnetTrainStationSign:
-	.string "Saffron City\n"
-	.string "Magnet Train Station$"
+	.string "SAFFRON CITY\n"
+	.string "MAGNET TRAIN STATION$"
+
+@ Conteudo SoulGold preservado (chamada do Baoba; Route27/28 referenciam):
+SaffronCity_EventScript_BaobaCall::
+	pokenavcall SaffronCity_Text_Baoba
+	waitmessage
+	delay 30
+	setflag FLAG_SAFARI_ZONE_EAST_EXPANSION
+	setvar VAR_SAFFRON_CITY_STATE, 1
+	end

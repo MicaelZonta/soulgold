@@ -1,0 +1,32 @@
+# Fase 4 (fronteiras):
+CeruleanCave_1F
+MtSilver_1F_WaterfallRoom
+MtSilver_Outside
+Route22
+Route26
+Route26North
+Route27
+Route28
+SSAqua_1F
+SaffronCity_TrainStation
+TohjoFalls_Cavern
+TohjoFalls_GiovanniRoom
+VictoryRoadKanto_B2F
+# Fase 5 (conteudo S pesado, merge manual):
+CeruleanCave_B1F
+CeruleanCave_B2F
+FuchsiaCity_SafariZoneEntrance
+IndigoPlateau_PokemonCenter
+MtSilver_SummitDay
+MtSilver_SummitNight
+PokemonLeague_BrunosRoom
+PokemonLeague_ChampionsRoom
+PokemonLeague_HallOfFame
+PokemonLeague_KarensRoom
+PokemonLeague_KogasRoom
+PokemonLeague_WillsRoom
+Route10
+Route4
+SaffronCity_FightingDojo
+SaffronCity_FightingDojoVIP
+VictoryRoadKanto_B1F

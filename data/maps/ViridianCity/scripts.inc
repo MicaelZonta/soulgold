@@ -1,10 +1,34 @@
 ViridianCity_MapScripts::
-	map_script MAP_SCRIPT_ON_LOAD, ViridianCity_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, ViridianCity_EventScript_CityEnter
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, ViridianCity_OnFrame
 	.byte 0
 
-ViridianCity_OnLoad::
-	setrespawn HEAL_LOCATION_VIRIDIAN_CITY
+ViridianCity_EventScript_CityEnter::
+	setflag FLAG_VISITED_VIRIDIAN_CITY
 	end
+
+ViridianCity_OnFrame::
+	map_script_2 VAR_OAK_MT_SILVER_CALL, 1, ViridianCity_EventScript_OakCall
+	.2byte 0
+
+ViridianCity_EventScript_OakCall::
+	lock
+	setspeaker ViridianCity_Text_OakName
+	pokenavcall ViridianCity_Text_OakCall
+	waitmessage
+	delay 30
+	setvar VAR_OAK_MT_SILVER_CALL, 2
+	release
+	end
+
+ViridianCity_Text_OakName:
+	.string "OAK$"
+
+ViridianCity_Text_OakCall:
+	.string "OAK: Ah, {PLAYER}!\p"
+	.string "Come and see my at my\n"
+	.string "LAB in PALLET TOWN\l"
+	.string "when you get the chance.$"
 
 ViridianCity_EventScript_Gramps::
 	lock
@@ -32,9 +56,10 @@ VirianCity_EventScript_GymGrampsBlue::
 	end
 
 ViridianCity_EventScript_Fisher::
-	goto_if_set FLAG_GOT_VIRIDIAN_TM_SLUDGE_BOMB, ViridianCity_EventScript_FisherAfter
-	msgbox ViridianCity_Text_DreamEaterFisherNew, MSGBOX_NPC
-	setflag FLAG_GOT_VIRIDIAN_TM_SLUDGE_BOMB
+	goto_if_set FLAG_GOT_VIRIDIAN_TM_DREAM_EATER, ViridianCity_EventScript_FisherAfter
+	msgbox ViridianCity_Text_DreamEaterFisher, MSGBOX_NPC
+	giveitem ITEM_TM_DREAM_EATER
+	setflag FLAG_GOT_VIRIDIAN_TM_DREAM_EATER
 	end
 
 ViridianCity_EventScript_FisherAfter::
@@ -63,7 +88,7 @@ ViridianCity_Text_CoffeeGramps_Question:
 	.string "I need to talk to someone, so you'll\n"
 	.string "have to do!\p"
 	.string "I might not look like much now, but\n"
-	.string "I was an expert at catching Pokémon.\p"
+	.string "I was an expert at catching POKéMON.\p"
 	.string "Do you believe me?$"
 
 ViridianCity_Text_CoffeeGramps_Believed:
@@ -77,14 +102,14 @@ ViridianCity_Text_CoffeeGramps_Doubted:
 	.string "show you a thing or two. Humph!$"
 
 ViridianCity_Text_GrampsNearGym:
-	.string "This Gym didn't have a Leader\n"
+	.string "This GYM didn't have a LEADER\n"
 	.string "until recently.\p"
-	.string "A young man from Pallet became\n"
-	.string "the Leader, but he's often away.$"
+	.string "A young man from PALLET became\n"
+	.string "the LEADER, but he's often away.$"
 
 ViridianCity_Text_GrampsNearGym_BlueReturned:
 	.string "Are you going to battle the\n"
-	.string "Leader?\p"
+	.string "LEADER?\p"
 	.string "Good luck to you. You'll need it.$"
 
 ViridianCity_Text_DreamEaterFisherNew:
@@ -101,7 +126,7 @@ ViridianCity_Text_DreamEaterFisher_GotTM::
 ViridianCity_Text_DreamEaterFisher:
 	.string "Yawn!\p"
 	.string "I must have dozed off in the sun.\p"
-	.string "…I had this dream about a Drowzee\n"
+	.string "…I had this dream about a DROWZEE\n"
 	.string "eating my dream. Weird, huh?\p"
 	.string "Huh? What's this?\p"
 	.string "Where did this TM come from?\p"
@@ -109,26 +134,35 @@ ViridianCity_Text_DreamEaterFisher:
 	.string "this TM.$"
 
 ViridianCity_Text_DreamEaterFisher_GotDreamEater:
-	.string "TM42 contains Dream Eater…\p"
+	.string "TM42 contains DREAM EATER…\p"
 	.string "…Zzzzz…$"
 
 ViridianCity_Text_Youngster:
 	.string "I heard that there are many items\n"
-	.string "on the ground in Viridian Forest.$"
+	.string "on the ground in VIRIDIAN FOREST.$"
 
 ViridianCity_Text_Sign:
-	.string "Viridian City\p"
+	.string "VIRIDIAN CITY\p"
 	.string "The Eternally Green Paradise$"
 
 ViridianCity_Text_GymSign:
-	.string "Viridian City Pokémon Gym\n"
-	.string "Leader: …\p"
+	.string "VIRIDIAN CITY POKéMON GYM\n"
+	.string "LEADER: …\p"
 	.string "The rest of the text is illegible…$"
 
 ViridianCity_Text_WelcomeSign:
-	.string "Welcome To Viridian City,\p"
-	.string "The Gateway To Indigo Plateau$"
+	.string "WELCOME TO VIRIDIAN CITY,\p"
+	.string "THE GATEWAY TO INDIGO PLATEAU$"
 
 ViridianCity_Text_TrainerHouseSign:
-	.string "Trainer House\p"
+	.string "TRAINER HOUSE\p"
 	.string "The Club for Top Trainer Battles$"
+
+@ Copiado do LilycoveCity do HnS (o Lilycove do S esta fora da ROM e o
+@ filtro corta o scripts.inc dele; referencia local do map.json importado):
+LilycoveCity_EventScript_ContestHallSign::
+	msgbox LilycoveCity_Text_ContestHallSign, MSGBOX_SIGN
+	end
+LilycoveCity_Text_ContestHallSign:
+	.string "POKéMON CONTEST HALL\n"
+	.string "“The gathering place for TRAINERS!”$"

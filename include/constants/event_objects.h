@@ -407,11 +407,24 @@
 #define OBJ_EVENT_GFX_KINGS_CARROT_ICE               382
 #define OBJ_EVENT_GFX_KINGS_CARROT_SHADE             383
 #define OBJ_EVENT_GFX_CRYSTAL_GLINT                  384
+#define OBJ_EVENT_GFX_SLEEPING_SNORLAX           385
+#define OBJ_EVENT_GFX_SS_AQUA                    386
+#define OBJ_EVENT_GFX_SWIMMING_LAPRAS            387
+#define OBJ_EVENT_GFX_TRAIN_WEST                 388
+#define OBJ_EVENT_GFX_GOLD_NORMAL                389
+#define OBJ_EVENT_GFX_KRIS_NORMAL                390
+// Aliases dos sprites do Kanto do HnS que o SoulGold ja tem com outro nome.
+#define OBJ_EVENT_GFX_OFFICER                    OBJ_EVENT_GFX_POLICEMAN
+#define OBJ_EVENT_GFX_ATTENDANT_F                OBJ_EVENT_GFX_ATTENDANT
+#define OBJ_EVENT_GFX_ALOLA_OAK                  OBJ_EVENT_GFX_PROF_OAK
+#define OBJ_EVENT_GFX_SAGE_ELDER                 OBJ_EVENT_GFX_SAGE
+#define OBJ_EVENT_GFX_MYSTERY_EVENT_DELIVERYMAN  OBJ_EVENT_GFX_MYSTERY_GIFT_MAN
+#define OBJ_EVENT_GFX_SMALL_LIGHT                OBJ_EVENT_GFX_LIGHT_SPRITE
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        385
+#define NUM_OBJ_EVENT_GFX                        391
 
 
 // These are dynamic object gfx ids.
@@ -675,6 +688,12 @@
 #define OBJ_EVENT_PAL_TAG_MOLLY_CHILD                0x119F
 #define OBJ_EVENT_PAL_TAG_KINGS_CARROT               0x11A0
 #define OBJ_EVENT_PAL_TAG_CRYSTAL_GLINT              0x11A1
+#define OBJ_EVENT_PAL_TAG_SNORLAX_HNS               0x11A2
+#define OBJ_EVENT_PAL_TAG_SSAQUA_HNS                0x11A3
+#define OBJ_EVENT_PAL_TAG_LAPRAS_HNS                0x11A4
+#define OBJ_EVENT_PAL_TAG_TRAIN_HNS                 0x11A5
+#define OBJ_EVENT_PAL_TAG_GOLD_HNS                  0x11A6
+#define OBJ_EVENT_PAL_TAG_KRIS_HNS                  0x11A7
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

@@ -4,6 +4,8 @@ enum {
     HELP_MEGA_EVOLUTION,
     HELP_MASTER_BALL,
     HELP_GIMMIGHOUL_COINS,
+    HELP_TELEPORTER_WINDOW,
+    HELP_ALOLA_WINDOW,
     HELP_COUNT
 };
 
@@ -48,6 +50,31 @@ const struct HelpWindow gHelpWindowInfo[] =
                                 "all around Paldea."
                             ),
         .headerFont = FONT_NARROWER,
+    },
+    [HELP_TELEPORTER_WINDOW] =
+    {
+        .header = COMPOUND_STRING("Optional bonus content: Teleporter"),
+        .desc = COMPOUND_STRING("The Teleporter can PERMANENTLY change\n"
+                                "Pokémon into their Galarian forms.\n"
+                                "Galarian forms are NOT required\n"
+                                "for story progression or\n"
+                                "National Pokédex completion.\n"
+                            ),
+        .headerFont = FONT_NORMAL,
+        .descFont = FONT_NORMAL,
+    },
+    [HELP_ALOLA_WINDOW] =
+    {
+        .header = COMPOUND_STRING("Optional bonus content: Isles"),
+        .desc = COMPOUND_STRING("This NPC grants access to optional\n"
+                                "bonus content: Isles.\n"
+                                "It is NOT required for story\n"
+                                "or National Pokédex completion.\n"
+                                "\n"
+                                "It's just a bonus. If you want it."
+                            ),
+        .headerFont = FONT_NORMAL,
+        .descFont = FONT_NORMAL,
     },
     // Add more entries
 };

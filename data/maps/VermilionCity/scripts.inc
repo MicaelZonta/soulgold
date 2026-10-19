@@ -1,16 +1,7 @@
-.set LOCALID_VERMILION_EUSINE, 24
-.set LOCALID_VERMILION_SUICUNE, 23
-.set LOCALID_VERMILION_SNORLAX, 1
-
 VermilionCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VermilionCity_MapScript_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
-	map_script MAP_SCRIPT_ON_LOAD, VermilionCity_OnLoad
 	.byte 0
-
-VermilionCity_OnLoad::
-	setrespawn HEAL_LOCATION_VERMILION_CITY
-	end
 
 VermilionCity_MapScript_OnTransition::
 	setflag FLAG_VISITED_VERMILION_CITY
@@ -24,13 +15,39 @@ VermilionCity_EventScript_SetSuicuneScene::
 	callnative SetTimeBasedEncounters
 	end
 
-VermilionCity_TriggerSuicuneTop::
+VermilionCity_EventScript_OldSeaMap::
+	finditem ITEM_OLD_SEA_MAP
+	end
+
+VermilionCity_TriggerSuicuneNorth_Left::
 	lock
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	delay 60
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1
+	waitmovement 0
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1
+	waitmovement 0
+	goto VermilionCity_TriggerSuicuneNorth_Merge
+VermilionCity_TriggerSuicuneNorth_Mid::
+	lock
+	playse SE_PIN
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1
+	waitmovement 0
+	goto VermilionCity_TriggerSuicuneNorth_Merge
+VermilionCity_TriggerSuicuneNorth_Right::
+	lock
+	playse SE_PIN
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto VermilionCity_TriggerSuicuneNorth_Merge
+VermilionCity_TriggerSuicuneNorth_Merge::
+	applymovement OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_NorthSuicune_PlayerWalkDown
+	waitmovement 0
 	playmoncry SPECIES_SUICUNE, CRY_MODE_NORMAL
-	applymovement LOCALID_VERMILION_SUICUNE, VermilionCity_Movement_Suicune1
+	applymovement2 LOCALID_VERMILION_SUICUNE, VermilionCity_Movement_Suicune1
 	playse SE_LEDGE
 	waitse
 	playse SE_LEDGE
@@ -38,19 +55,48 @@ VermilionCity_TriggerSuicuneTop::
 	playse SE_LEDGE
 	waitse
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_PlayerWalkToRailTop
+	applymovement2 OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_NorthSuicune_PlayerWalkDown
 	delay 60
-	applymovement LOCALID_VERMILION_EUSINE, VermilionCity_Movement_EusineWalkToRail
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+	applymovement2 LOCALID_VERMILION_EUSINE, VermilionCity_Movement_EusineWalkToRail
+	waitmovement LOCALID_VERMILION_EUSINE
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto VermilionCity_EventScript_SuicuneEpisode
+
+VermilionCity_Movement_NorthSuicune_PlayerWalkDown:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+VermilionCity_TriggerSuicuneTop::
+	lock
+	playse SE_PIN
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	playmoncry SPECIES_SUICUNE, CRY_MODE_NORMAL
+	applymovement2 LOCALID_VERMILION_SUICUNE, VermilionCity_Movement_Suicune1
+	playse SE_LEDGE
+	waitse
+	playse SE_LEDGE
+	waitse
+	playse SE_LEDGE
+	waitse
+	waitmovement 0
+	applymovement2 OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_PlayerWalkToRailTop
+	delay 60
+	applymovement2 LOCALID_VERMILION_EUSINE, VermilionCity_Movement_EusineWalkToRail
 	waitmovement LOCALID_VERMILION_EUSINE
 	waitmovement OBJ_EVENT_ID_PLAYER
 	goto VermilionCity_EventScript_SuicuneEpisode
 VermilionCity_TriggerSuicuneMid::
 	lock
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	delay 60
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playmoncry SPECIES_SUICUNE, CRY_MODE_NORMAL
-	applymovement LOCALID_VERMILION_SUICUNE, VermilionCity_Movement_Suicune1
+	applymovement2 LOCALID_VERMILION_SUICUNE, VermilionCity_Movement_Suicune1
 	playse SE_LEDGE
 	waitse
 	playse SE_LEDGE
@@ -58,30 +104,30 @@ VermilionCity_TriggerSuicuneMid::
 	playse SE_LEDGE
 	waitse
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_PlayerWalkToRailMid
+	applymovement2 OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_PlayerWalkToRailMid
 	delay 60
-	applymovement LOCALID_VERMILION_EUSINE, VermilionCity_Movement_EusineWalkToRail
+	applymovement2 LOCALID_VERMILION_EUSINE, VermilionCity_Movement_EusineWalkToRail
 	waitmovement LOCALID_VERMILION_EUSINE
 	waitmovement OBJ_EVENT_ID_PLAYER
 	goto VermilionCity_EventScript_SuicuneEpisode
 VermilionCity_TriggerSuicuneBot::
 	lock
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	delay 60
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playmoncry SPECIES_SUICUNE, CRY_MODE_NORMAL
-	applymovement LOCALID_VERMILION_SUICUNE, VermilionCity_Movement_Suicune1
+	applymovement2 LOCALID_VERMILION_SUICUNE, VermilionCity_Movement_Suicune1
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_PlayerWalkToRailBot
-	delay 60
-	applymovement LOCALID_VERMILION_EUSINE, VermilionCity_Movement_EusineWalkToRail
+	applymovement2 OBJ_EVENT_ID_PLAYER, VermilionCity_Movement_PlayerWalkToRailBot
+	waitmovement 0
+	applymovement2 LOCALID_VERMILION_EUSINE, VermilionCity_Movement_EusineWalkToRail
 	waitmovement LOCALID_VERMILION_EUSINE
 	waitmovement OBJ_EVENT_ID_PLAYER
 	goto VermilionCity_EventScript_SuicuneEpisode
 
 VermilionCity_EventScript_SuicuneEpisode::
 	playmoncry SPECIES_SUICUNE, CRY_MODE_NORMAL
-	applymovement LOCALID_VERMILION_SUICUNE, VermilionCity_Movement_SuicuneLeave
+	applymovement2 LOCALID_VERMILION_SUICUNE, VermilionCity_Movement_SuicuneLeave
 	playse SE_LEDGE
 	waitse
 	playse SE_LEDGE
@@ -96,7 +142,7 @@ VermilionCity_EventScript_SuicuneEpisode::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	msgbox VermilionCity_Text_Eusine2, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_VERMILION_EUSINE, VermilionCity_Movement_EusineLeave
+	applymovement2 LOCALID_VERMILION_EUSINE, VermilionCity_Movement_EusineLeave
 	waitmovement 0
 	removeobject LOCALID_VERMILION_EUSINE
 	removeobject LOCALID_VERMILION_SUICUNE
@@ -132,38 +178,41 @@ VermilionCity_EventScript_Nerd::
 
 VermilionCity_EventScript_Snorlax::
 	lock
-	goto_if_set FLAG_KANTO_RADIO_GOT, VermilionCity_EventScript_SnorlaxWakeUp
+	special CheckRadioStation
+	goto_if_eq VAR_RESULT, TRUE, VermilionCity_EventScript_SnorlaxWakeUp
+	@goto_if_set FLAG_KANTO_RADIO_GOT, VermilionCity_EventScript_SnorlaxWakeUp
 	msgbox VermilionCity_Text_SnorlaxSleeping, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
 
 VermilionCity_EventScript_SnorlaxWakeUp::
-	playse MUS_HG_RADIO_POKE_FLUTE
-	msgbox VermilionCity_Text_RadioNearSnorlax, MSGBOX_DEFAULT
-	waitse
-	playmoncry SPECIES_SNORLAX, CRY_MODE_ENCOUNTER
-	delay 40
-	waitmoncry
-	setwildbattle SPECIES_SNORLAX, 50
-	dowildbattle
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, VermilionCity_EventScript_SnorlaxRan
-	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject LOCALID_VERMILION_SNORLAX
-	removeobject 8
-	removeobject 9
-	removeobject 10
-	removeobject 11
-	setflag FLAG_HIDE_VERMILION_SNORLAX
-	fadescreenswapbuffers FADE_FROM_BLACK
-	setflag FLAG_INDIGOJUNCTION_HIDE_KANTO_GUARD
-	release
-	end
+    playbgm MUS_HG_RADIO_POKE_FLUTE, FALSE
+    msgbox VermilionCity_Text_RadioNearSnorlax, MSGBOX_DEFAULT
+    playmoncry SPECIES_SNORLAX, CRY_MODE_ENCOUNTER
+    delay 40
+    waitmoncry
+    setwildbattle SPECIES_SNORLAX, 50
+    dowildbattle
+    specialvar VAR_RESULT, GetBattleOutcome
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, VermilionCity_EventScript_SnorlaxRan
+    fadescreenswapbuffers FADE_TO_BLACK
+    removeobject LOCALID_VERMILION_SNORLAX
+    removeobject 8
+    removeobject 9
+    removeobject 10
+    removeobject 11
+    setflag FLAG_HIDE_VERMILION_SNORLAX
+    fadescreenswapbuffers FADE_FROM_BLACK
+    setflag FLAG_INDIGOJUNCTION_HIDE_KANTO_GUARD
+    fadedefaultbgm
+    release
+    end
 
 VermilionCity_EventScript_SnorlaxRan::
-	release
-	end
+    fadedefaultbgm
+    release
+    end
 
 VermilionCity_EventScript_BadgeGuy::
 	lock
@@ -207,7 +256,7 @@ VermilionCity_Movement_Suicune1:
 	jump_in_place_left
 	step_end
 
-VermilionCity_Movement_PlayerWalkToRailTop:
+VermilionCity_Movement_PlayerWalkToRailTop: @goal tile = 51, 28
 	walk_right
 	walk_right
 	walk_up
@@ -260,78 +309,78 @@ VermilionCity_Movement_EusineLeave:
 	step_end
 
 VermilionCity_Text_Eusine:
-	.string "{SPEAKER NAME_EUSINE}That was so close!\n"
+	.string "EUSINE: That was so close!\n"
 	.string "I though I could corner it by\l"
 	.string "ambushing it here.\p"
 	.string "But running on the water is beyond\n"
 	.string "me.\p"
 	.string "Still, I am starting to see\n"
 	.string "a pattern.\p"
-	.string "Suicune prefers water!\p"
+	.string "SUICUNE prefers water!\p"
 	.string "That means...$"
 
 VermilionCity_Text_Eusine2:
 	.string "Sorry {PLAYER}, I've got to go!$"
 
 VermilionCity_Text_Teacher:
-	.string "Vermilion Port is Kanto's seaside\n"
+	.string "VERMILION PORT is KANTO's seaside\n"
 	.string "gateway.\p"
 	.string "Luxury liners from around the\n"
 	.string "world dock here.$"
 
 VermilionCity_Text_MachopOwner:
-	.string "My Pokémon is preparing the land\n"
+	.string "My POKéMON is preparing the land\n"
 	.string "for construction.\p"
 	.string "But I have no money to start the\n"
 	.string "project…$"
 
 VermilionCity_Text_Machop1:
-	.string "{SPEAKER NAME_MACHOP}Guooh gogogoh!$"
+	.string "MACHOP: Guooh gogogoh!$"
 
 VermilionCity_Text_Machop2:
-	.string "A Machop is growling while\n"
+	.string "A MACHOP is growling while\n"
 	.string "stomping the ground flat.$"
 
 VermilionCity_Text_SuperNerd:
-	.string "There are eight Gyms in Kanto.\p"
-	.string "That big building is Vermilion's\n"
-	.string "Pokémon Gym.$"
+	.string "There are eight GYMS in KANTO.\p"
+	.string "That big building is VERMILION's\n"
+	.string "POKéMON GYM.$"
 
 VermilionCity_Text_SnorlaxSleeping:
-	.string "Snorlax is snoring peacefully…$"
+	.string "SNORLAX is snoring peacefully…$"
 
 VermilionCity_Text_RadioNearSnorlax:
-	.string "The Radio was placed near the\n"
-	.string "sleeping Snorlax…\p"
+	.string "The POKéGEAR was placed near \n"
+	.string "the sleeping SNORLAX…\p"
 	.string "…\p"
-	.string "Snorlax woke up!$"
+	.string "SNORLAX woke up!$"
 
 VermilionCity_Text_BadgeGuy_Trainer:
-	.string "Skilled trainers gather in Kanto.\p"
-	.string "Gym Leaders are especially strong.\p"
+	.string "Skilled trainers gather in KANTO.\p"
+	.string "GYM LEADERS are especially strong.\p"
 	.string "They won't be easy to defeat.$"
 
 VermilionCity_Text_BadgeGuy_SomeBadges:
-	.string "You've started to collect Kanto\n"
-	.string "Gym Badges?\p"
+	.string "You've started to collect KANTO\n"
+	.string "GYM BADGES?\p"
 	.string "Don't you agree that the trainers\n"
 	.string "here are tough?$"
 
 VermilionCity_Text_BadgeGuy_MostBadges:
 	.string "I guess you'll be finished with\n"
-	.string "your conquest of Kanto Gyms soon.\p"
+	.string "your conquest of KANTO GYMS soon.\p"
 	.string "Let me know if you get all eight\n"
-	.string "Badges.$"
+	.string "BADGES.$"
 
 VermilionCity_Text_BadgeGuy_AllBadges:
 	.string "Congratulations!\p"
-	.string "You got all the Kanto Gym Badges.\p"
+	.string "You got all the KANTO GYM BADGES.\p"
 	.string "I've got a reward for your efforts.$"
 
 VermilionCity_Text_BadgeGuy_BattleEdge:
-	.string "Having a variety of Pokémon types\n"
+	.string "Having a variety of POKéMON types\n"
 	.string "should give you an edge in battle.\p"
-	.string "I'm sure the Kanto Gym Badges will\n"
+	.string "I'm sure the KANTO GYM BADGES will\n"
 	.string "help you.$"
 
 VermilionCity_EventScript_CitySign::
@@ -348,22 +397,196 @@ VermilionCity_EventScript_DiglettsCaveSign::
 	end
 
 VermilionCity_Text_Sign:
-	.string "Vermilion City\p"
+	.string "VERMILION CITY\p"
 	.string "The Port of Exquisite Sunsets$"
 
 VermilionCity_Text_GymSign:
-	.string "Vermilion City\n"
-	.string "Pokémon Gym\p"
-	.string "Leader: Lt.Surge\p"
+	.string "VERMILION CITY\n"
+	.string "POKéMON GYM\p"
+	.string "LEADER: LT.SURGE\p"
 	.string "The Lightning American$"
 
 VermilionCity_Text_FanClubSign:
-	.string "Pokémon Fan Club\p"
-	.string "All Pokémon Fans Welcome!$"
+	.string "POKéMON FAN CLUB\p"
+	.string "All POKéMON Fans Welcome!$"
 
 VermilionCity_Text_DiglettsCaveSign:
-	.string "Diglett's Cave$"
+	.string "DIGLETT'S CAVE$"
 
 VermilionCity_Text_PortSign:
-	.string "Vermilion Port\n"
-	.string "Entrance$"
+	.string "VERMILION PORT\n"
+	.string "ENTRANCE$"
+
+VermilionCity_EventScript_TriggerStevenLeft::
+	lock
+	playse SE_PIN
+	applymovement2 LOCALID_PLAYER, Common_Movement_ExclamationMark
+	delay 55
+	waitmovement LOCALID_PLAYER
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, Common_Movement_WalkLeft1
+	waitmovement 0
+	call VermilionCity_EventScript_LatiChoice
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, Common_Movement_WalkRight1
+	waitmovement 0
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, VermilionCity_Movement_StevenWalkToPlayer
+	waitmovement 0
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, Common_Movement_WalkDown1
+	waitmovement 0
+	setvar VAR_VERMILION_CITY_STEVEN, 1
+	removeobject LOCALID_VERMILIONCITY_STEVEN
+	release
+	end
+
+VermilionCity_EventScript_TriggerStevenMiddle::
+	lock
+	playse SE_PIN
+	applymovement2 LOCALID_PLAYER, Common_Movement_ExclamationMark
+	delay 55
+	waitmovement LOCALID_PLAYER
+	call VermilionCity_EventScript_LatiChoice
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, Common_Movement_WalkLeft1
+	waitmovement 0
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, VermilionCity_Movement_StevenWalkToPlayer
+	waitmovement 0
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, Common_Movement_WalkDown1
+	waitmovement 0
+	setvar VAR_VERMILION_CITY_STEVEN, 1
+	removeobject LOCALID_VERMILIONCITY_STEVEN
+	release
+	end
+ 
+VermilionCity_EventScript_TriggerStevenRight::
+	lock
+	playse SE_PIN
+	applymovement2 LOCALID_PLAYER, Common_Movement_ExclamationMark
+	delay 55
+	waitmovement LOCALID_PLAYER
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, Common_Movement_WalkRight1
+	waitmovement 0
+	call VermilionCity_EventScript_LatiChoice
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, Common_Movement_WalkLeft1
+	waitmovement 0
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, VermilionCity_Movement_StevenWalkToPlayer
+	waitmovement 0
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, Common_Movement_WalkDown1
+	waitmovement 0
+	setvar VAR_VERMILION_CITY_STEVEN, 1
+	removeobject LOCALID_VERMILIONCITY_STEVEN
+	release
+	end
+
+
+VermilionCity_EventScript_LatiChoice::
+	applymovement2 LOCALID_VERMILIONCITY_STEVEN, VermilionCity_Movement_StevenWalkToPlayer
+	waitmovement LOCALID_VERMILIONCITY_STEVEN
+	msgbox VermilionCity_Text_StevenIntro, MSGBOX_DEFAULT
+	multichoice 20, 8, MULTI_TV_LATI, TRUE
+	@goto_if_eq VAR_RESULT, MULTI_B_PRESSED, VermilionCity_EventScript_LatiCancel
+	copyvar VAR_0x8004, VAR_RESULT
+	copyvar VAR_ROAMER_POKEMON, VAR_RESULT
+	special InitKantoRoamers
+	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
+	msgbox VermilionCity_Text_StevenOutro, MSGBOX_DEFAULT
+	closemessage
+	return
+
+VermilionCity_Movement_StevenWalkToPlayer:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_in_place_down
+	step_end
+
+VermilionCity_Text_StevenIntro:
+	.string "Hi!\n"
+	.string "My name is Steven.\l"
+	.string "The Champion from the HOENN region.\p"
+	.string "Have we met...before?\p"
+	.string "That's not possible. \n"
+	.string "All the trainers I have battled\l"
+	.string "seem to have the same look, anyway.\p"
+	.string "Especially the ones who gave me\n"
+	.string "tough battles.\p"
+	.string "I'm in KANTO for business.\n"
+	.string "Recently many HOENN POKéMON have\l"
+	.string "migrated to this region.\l"
+	.string "This influx risks disrupting the\l"
+	.string "natural ecosystem here.\p"
+	.string "So with the help of my company,\n"
+	.string "I'm creating a special habitat\l"
+	.string "to attract and contain the most\l"
+	.string "invasive species.\p"
+	.string "Make sure you keep an eye out\n"
+	.string "and catch any HOENN POKéMON you see.\p"
+	.string "Some trainers have even reported\n"
+	.string "one that soars through the sky like\l"
+	.string "a jet... What color was it again?$"
+
+VermilionCity_Text_StevenOutro:
+	.string "Ah, that's right.\p"
+	.string "I must go.\n"
+	.string "May our journeys cross again.$"
+
+VermilionCity_EventScript_TriggerSamson::
+	lock
+	clearflag FLAG_HIDE_VERMILION_CITY_SAMSON
+	addobject LOCALID_VERMILION_CITY_SAMSON
+	playse SE_BANG
+	applymovement LOCALID_VERMILION_CITY_SAMSON, VermilionCity_Movement_SamsonEnter
+	applymovement LOCALID_PLAYER, VermilionCity_Movement_PlayerSlideback
+	waitmovement LOCALID_VERMILION_CITY_SAMSON
+	waitmovement LOCALID_PLAYER
+	msgbox VermilionCity_Text_Samson, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_VERMILION_CITY_SAMSON, VermilionCity_Movement_SamsonLeave
+	waitmovement LOCALID_VERMILION_CITY_SAMSON
+	removeobject LOCALID_VERMILION_CITY_SAMSON
+	setflag FLAG_HIDE_VERMILION_CITY_SAMSON
+	setvar VAR_VERMILION_CITY_SAMSON, 2
+	release
+	end
+
+VermilionCity_Movement_PlayerSlideback:
+	lock_facing_direction
+	walk_fast_down
+	walk_fast_down
+	unlock_facing_direction
+	step_end
+
+VermilionCity_Movement_SamsonEnter:
+	walk_fast_down
+	walk_fast_down
+	step_end
+
+VermilionCity_Movement_SamsonLeave:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+VermilionCity_Text_Samson:
+	.string "Whoah!\p"
+	.string "Sorry kiddo, I'm in a hurry!\p"
+	.string "The ferry on ROUTE 13 will be\n"
+	.string "leaving for the ISLES soon, and\l"
+	.string "I've got to be on it!\p"
+	.string "Phew... Phew...\p"
+	.string "I ran all the way here from\n"
+	.string "MT. MOON.\p"
+	.string "See this tchotchke here?\p"
+	.string "I picked up this STRANGE SOUVENIR\n"
+	.string "at the GIFT SHOP.\p"
+	.string "It's my ticket onto the ISLES.\p"
+	.string "Well, see-ya!$"

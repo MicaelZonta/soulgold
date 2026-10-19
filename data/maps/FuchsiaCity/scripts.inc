@@ -1,40 +1,38 @@
 FuchsiaCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FuchsiaCity_EventScript_CityEnter
-	map_script MAP_SCRIPT_ON_LOAD, FuchsiaCity_OnLoad
 	.byte 0
 
-FuchsiaCity_OnFrame::
-	map_script_2 VAR_FUCHSIA_CITY_STATE, 0,  FuchsiaCity_EventScript_BaobaCall
-	.2byte 0
-
 FuchsiaCity_EventScript_CityEnter::
-	end
-
-FuchsiaCity_OnLoad::
-	setrespawn HEAL_LOCATION_FUCHSIA_CITY
+	setflag FLAG_VISITED_FUCHSIA_CITY
 	end
 
 FuchsiaCity_EventScript_BaobaCall::
+	lock
+	setspeaker FuchsiaCity_Text_BaobaName
 	pokenavcall FuchsiaCity_Text_Baoba
 	waitmessage
 	delay 30
 	setvar VAR_BAOBA_QUEST_STATE, 1
 	setvar VAR_FUCHSIA_CITY_STATE, 1
+	release
 	end
 
+FuchsiaCity_Text_BaobaName:
+	.string "BAOBA$"
+
 FuchsiaCity_Text_Baoba:
-	.string "{SPEAKER NAME_WARDEN_BAOBA}{PLAYER}!\p"
-	.string "This is Warden Baoba.\p"
+	.string "WARDEN BAOBA: {PLAYER}!\p"
+	.string "This is WARDEN BAOBA.\p"
 	.string "Something awful has happened!\n"
-	.string "My old Safari Zone in Fuchsia City\l"
+	.string "My old SAFARI ZONE in FUCHSIA CITY\l"
 	.string "was bought out and reopened!\p"
 	.string "And apparently it has exotic new\n"
-	.string "Pokémon!\p"
+	.string "POKéMON!\p"
 	.string "It's hurting my business!\p"
 	.string "{PLAYER}, you must venture into the\n"
-	.string "new Safari Zone and catch a Pokémon\l"
+	.string "new SAFARI ZONE and catch a POKéMON\l"
 	.string "to show me. I must know about these\l"
-	.string "'exotic' Pokémon.\p"
+	.string "'exotic' POKéMON.\p"
 	.string "Please {PLAYER}, my business depends\n"
 	.string "on you!$"
 
@@ -99,41 +97,41 @@ FuchsiaCity_EventScript_SafariZone::
 	end
 
 FuchsiaCity_Text_Youngster:
-	.string "One of the Elite Four used to be\n"
-	.string "the Leader of Fuchsia's Gym.$"
+	.string "One of the ELITE FOUR used to be\n"
+	.string "the LEADER of FUCHSIA's GYM.$"
 
 FuchsiaCity_Text_PokefanM:
-	.string "Koga's daughter succeeded him as\n"
-	.string "the Gym Leader after he joined the\l"
-	.string "Elite Four.$"
+	.string "KOGA's daughter succeeded him as\n"
+	.string "the GYM LEADER after he joined the\l"
+	.string "ELITE FOUR.$"
 
 FuchsiaCity_Text_Teacher:
-	.string "The Safari Zone is under new\n"
+	.string "The SAFARI ZONE is under new\n"
 	.string "management.\p"
-	.string "And it has tons of new Pokémon!$"
+	.string "And it has tons of new POKéMON!$"
 
 FuchsiaCity_Text_Sign:
-	.string "Fuchsia City\p"
+	.string "FUCHSIA CITY\p"
 	.string "Behold! It's Passion Pink!$"
 
 FuchsiaCity_Text_GymSign:
-	.string "Fuchsia City Pokémon Gym\n"
-	.string "Leader: Janine\p"
+	.string "FUCHSIA CITY POKéMON GYM\n"
+	.string "LEADER: JANINE\p"
 	.string "The Poisonous Ninja Master$"
 
 FuchsiaCity_Text_SafariZoneOfficeSign:
 	.string "There's a notice here…\p"
-	.string "Safari Zone Office is closed until\n"
+	.string "SAFARI ZONE OFFICE is closed until\n"
 	.string "further notice.$"
 
 FuchsiaCity_Text_SafariZone:
-	.string "Safari Zone\n"
-	.string "Now Owned By\l"
-	.string "Devon Corp.$"
+	.string "SAFARI ZONE\n"
+	.string "NOW OWNED BY\l"
+	.string "DEVON CORP.$"
 
 FuchsiaCity_Text_SafariZoneClosedSign:
-	.string "The Warden is traveling abroad.\p"
-	.string "Therefore, the Safari Zone is\n"
+	.string "The WARDEN is traveling abroad.\p"
+	.string "Therefore, the SAFARI ZONE is\n"
 	.string "closed.$"
 
 FuchsiaCity_Text_NoLitteringSign:

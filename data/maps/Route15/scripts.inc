@@ -8,37 +8,87 @@ Route15_OnTransition:
 	end
 
 Route15_EventScript_Colette::
-	trainerbattle_single TRAINER_COLETTE Route15_Text_TeacherColetteSeen, Route15_Text_TeacherColetteBeaten
+	trainerbattle_single TRAINER_COLETTE, Route15_Text_TeacherColetteSeen, Route15_Text_TeacherColetteBeaten
 	msgbox Route15_Text_TeacherColetteAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route15_EventScript_Hillary::
-	trainerbattle_single TRAINER_HILLARY Route15_Text_TeacherHillarySeen, Route15_Text_TeacherHillaryBeaten
+	trainerbattle_single TRAINER_HILLARY, Route15_Text_TeacherHillarySeen, Route15_Text_TeacherHillaryBeaten, Route15_EventScript_RegisterHillary
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route15_EventScript_RematchHillary
 	msgbox Route15_Text_TeacherHillaryAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route15_EventScript_RegisterHillary::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route15_Text_HillaryRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_HILLARY
+	release
+	end
+
+Route15_EventScript_RematchHillary::
+	trainerbattle_rematch TRAINER_HILLARY, Route15_Text_HillaryRematchIntro, Route15_Text_HillaryRematchDefeat
+	msgbox Route15_Text_HillaryPostRematch, MSGBOX_AUTOCLOSE
+	goto_if_defeated TRAINER_HILLARY_2, Route15_EventScript_RematchHillaryTryGiveItem
+	end
+
+Route15_EventScript_RematchHillaryTryGiveItem::
+	checkitem ITEM_TM_ENERGY_BALL
+	goto_if_eq VAR_RESULT, TRUE, Common_EventScript_NoOp
+	giveitem ITEM_TM_ENERGY_BALL
+	closemessage
+	end
+
 Route15_EventScript_Kipp::
-	trainerbattle_single TRAINER_KIPP Route15_Text_SchoolboyKippSeen, Route15_Text_SchoolboyKippBeaten
+	trainerbattle_single TRAINER_KIPP, Route15_Text_SchoolboyKippSeen, Route15_Text_SchoolboyKippBeaten
 	msgbox Route15_Text_SchoolboyKippAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route15_EventScript_Tommy::
-	trainerbattle_single TRAINER_TOMMY Route15_Text_SchoolboyTommySeen, Route15_Text_SchoolboyTommyBeaten
+	trainerbattle_single TRAINER_TOMMY, Route15_Text_SchoolboyTommySeen, Route15_Text_SchoolboyTommyBeaten
 	msgbox Route15_Text_SchoolboyTommyAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route15_EventScript_Johnny::
-	trainerbattle_single TRAINER_JOHNNY Route15_Text_SchoolboyJohnnySeen, Route15_Text_SchoolboyJohnnyBeaten
+	trainerbattle_single TRAINER_JOHNNY, Route15_Text_SchoolboyJohnnySeen, Route15_Text_SchoolboyJohnnyBeaten
 	msgbox Route15_Text_SchoolboyJohnnyAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route15_EventScript_Billy::
-	trainerbattle_single TRAINER_BILLY Route15_Text_SchoolboyBillySeen, Route15_Text_SchoolboyBillyBeaten
+	trainerbattle_single TRAINER_BILLY, Route15_Text_SchoolboyBillySeen, Route15_Text_SchoolboyBillyBeaten, Route15_EventScript_RegisterBilly
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route15_EventScript_RematchBilly
 	msgbox Route15_Text_SchoolboyBillyAfterBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route15_EventScript_RegisterBilly::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route15_Text_BillyRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_BILLY
+	release
+	end
+
+Route15_EventScript_RematchBilly::
+	trainerbattle_rematch TRAINER_BILLY, Route15_Text_BillyRematchIntro, Route15_Text_BillyRematchDefeat
+	msgbox Route15_Text_BillyPostRematch, MSGBOX_AUTOCLOSE
+	goto_if_defeated TRAINER_BILLY_2, Route15_EventScript_RematchBillyTryGiveItem
+	end
+
+Route15_EventScript_RematchBillyTryGiveItem::
+	checkitem ITEM_TM_FACADE
+	goto_if_eq VAR_RESULT, TRUE, Common_EventScript_NoOp
+	giveitem ITEM_TM_FACADE
+	closemessage
 	end
 
 Route15_EventScript_Sign::
 	msgbox Route15_Text_Sign, MSGBOX_SIGN
+	end
+
+Route15_EventScript_PPup::
+	finditem ITEM_PP_UP
 	end
 
 Route15_Text_TeacherColetteSeen:
@@ -53,7 +103,7 @@ Route15_Text_TeacherColetteAfterBattle:
 
 Route15_Text_TeacherHillarySeen:
 	.string "On sunny days, I think that the\n"
-	.string "kids would rather be playing in the\n"
+	.string "kids would rather be playing in the\l"
 	.string "schoolyard than studying in class.$"
 
 Route15_Text_TeacherHillaryBeaten:
@@ -62,6 +112,20 @@ Route15_Text_TeacherHillaryBeaten:
 Route15_Text_TeacherHillaryAfterBattle:
 	.string "Studying is important, but\n"
 	.string "exercise is just as vital.$"
+
+Route15_Text_HillaryRegister:
+	.string "You've taught me a lesson!\n"
+	.string "May I have your number?$"
+
+Route15_Text_HillaryRematchIntro:
+	.string "I'll school you this time!$"
+
+Route15_Text_HillaryRematchDefeat:
+	.string "Back to the drawing board…$"
+
+Route15_Text_HillaryPostRematch:
+	.string "Teaching POKéMON is just like\n"
+	.string "teaching children. Patience!$"
 
 Route15_Text_SchoolboyKippSeen:
 	.string "Hang on. I have to phone my mom.$"
@@ -84,8 +148,8 @@ Route15_Text_SchoolboyTommyAfterBattle:
 	.string "my Japanese class.$"
 
 Route15_Text_SchoolboyJohnnySeen:
-	.string "We're on a field trip to Lavender\n"
-	.string "Radio Tower for social studies.$"
+	.string "We're on a field trip to LAVENDER\n"
+	.string "RADIO TOWER for social studies.$"
 
 Route15_Text_SchoolboyJohnnyBeaten:
 	.string "You're wickedly tough!$"
@@ -95,16 +159,31 @@ Route15_Text_SchoolboyJohnnyAfterBattle:
 	.string "take a break.$"
 
 Route15_Text_SchoolboyBillySeen:
-	.string "My favorite class is gym!$"
+	.string "My favorite class is Gym!$"
 
 Route15_Text_SchoolboyBillyBeaten:
 	.string "Oh, no! How could I lose?$"
 
 Route15_Text_SchoolboyBillyAfterBattle:
-	.string "If Pokémon were a subject at\n"
+	.string "If POKéMON were a subject at\n"
 	.string "school, I'd be the best!$"
 
+Route15_Text_BillyRegister:
+	.string "I should've paid more attention in class.\n"
+	.string "Can I have your number?$"
+
+Route15_Text_BillyRematchIntro:
+	.string "I've been studying hard!\n"
+	.string "Let me show you what I learned!$"
+
+Route15_Text_BillyRematchDefeat:
+	.string "I need to study more…$"
+
+Route15_Text_BillyPostRematch:
+	.string "Book smarts aren't everything.\n"
+	.string "I need battle experience too!$"
+
 Route15_Text_Sign:
-	.string "Route 15\p"
-	.string "Fuchsia City - Lavender Town$"
+	.string "ROUTE 15\p"
+	.string "FUCHSIA CITY - LAVENDER TOWN$"
 

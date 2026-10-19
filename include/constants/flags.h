@@ -1963,8 +1963,142 @@
 #define FLAG_VISITED_VIRIDIAN_CITY                   0x1098
 #define FLAG_VISITED_PEWTER_CITY                     0x1099
 #define FLAG_VISITED_FUCHSIA_CITY                    0x109A
-#define CUSTOM_FLAGS_END                            FLAG_VISITED_FUCHSIA_CITY
-// PROXIMA FLAG NOVA: 0x109B (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Lote Fase 3 - flags dos scripts de Kanto importados do HnS 2.0.6.
+// Significado vem do nome; a coluna do mapa diz quem usa. Hidden items
+// tambem vivem aqui (o 'bloco' de hidden item e' so organizacao).
+#define FLAG_DEFEATED_RED                                    0x109B // HnS: MtSilver_SummitDay
+#define FLAG_END_NUZLOCKE                                    0x109C // HnS: MtSilver_SummitDay
+#define FLAG_FUCHSIA_SAFARI_NPC_TRADE_COMPLETED              0x109D // HnS: FuchsiaCity_SafariZoneEntrance
+#define FLAG_GOT_TM_SLEEP_TALK                               0x109E // HnS: CeladonCity_Apartments_RoofHouse, SSAqua_1F
+#define FLAG_GOT_VIRIDIAN_TM_DREAM_EATER                     0x109F // HnS: SSAqua_1F, ViridianCity
+#define FLAG_HIDDEN_ITEM_CELADON_CITY_PP_UP                  0x10A0 // HnS: CeladonCity
+#define FLAG_HIDDEN_ITEM_CERULEAN_CAVE_1F_SEA_INCENSE        0x10A1 // HnS: CeruleanCave_1F
+#define FLAG_HIDDEN_ITEM_CERULEAN_CAVE_B1F_ODD_INCENSE       0x10A2 // HnS: CeruleanCave_B1F
+#define FLAG_HIDDEN_ITEM_CERULEAN_CAVE_B2F_BLACK_SLUDGE      0x10A3 // HnS: CeruleanCave_B2F
+#define FLAG_HIDDEN_ITEM_CERULEAN_CAVE_B2F_DUSK_STONE        0x10A4 // HnS: CeruleanCave_B2F
+#define FLAG_HIDDEN_ITEM_CERULEAN_CAVE_B2F_ELECTIRIZER       0x10A5 // HnS: CeruleanCave_B2F
+#define FLAG_HIDDEN_ITEM_CERULEAN_CITY_NUGGET                0x10A6 // HnS: CeruleanCity
+#define FLAG_HIDDEN_ITEM_MT_MOON_CAVE_REVIVE                 0x10A7 // HnS: MtMoon_Cave
+#define FLAG_HIDDEN_ITEM_MT_SILVER_1F_WATERFALL_ROOM_EXPERT_BELT 0x10A8 // HnS: MtSilver_1F_WaterfallRoom
+#define FLAG_HIDDEN_ITEM_MT_SILVER_MOUNTAINSIDE_PROTEIN      0x10A9 // HnS: MtSilver_MountainSide
+#define FLAG_HIDDEN_ITEM_MT_SILVER_OUTSIDE_FULL_RESTORE      0x10AA // HnS: MtSilver_Outside
+#define FLAG_HIDDEN_ITEM_MT_SILVER_OUTSIDE_REAPER_CLOTH      0x10AB // HnS: MtSilver_Outside
+#define FLAG_HIDDEN_ITEM_MT_SILVER_SNOW_DAWN_STONE           0x10AC // HnS: MtSilver_Snow
+#define FLAG_HIDDEN_ITEM_MT_SILVER_SNOW_PURE_INCENSE         0x10AD // HnS: MtSilver_Snow
+#define FLAG_HIDDEN_ITEM_PEWTER_CITY_WISE_GLASSES            0x10AE // HnS: PewterCity
+#define FLAG_HIDDEN_ITEM_ROCKTUNNEL_1F_IRON                  0x10AF // HnS: RockTunnel_1F
+#define FLAG_HIDDEN_ITEM_ROCKTUNNEL_B1F_OVAL_STONE           0x10B0 // HnS: RockTunnel_B1F
+#define FLAG_HIDDEN_ITEM_ROUTE10_TM_ROCK_POLISH              0x10B1 // HnS: Route10
+#define FLAG_HIDDEN_ITEM_ROUTE11_REVIVE                      0x10B2 // HnS: Route11
+#define FLAG_HIDDEN_ITEM_ROUTE12_CALCIUM                     0x10B3 // HnS: Route12
+#define FLAG_HIDDEN_ITEM_ROUTE12_YELLOW_FLUTE                0x10B4 // HnS: Route12
+#define FLAG_HIDDEN_ITEM_ROUTE13_CALCIUM                     0x10B5 // HnS: Route13
+#define FLAG_HIDDEN_ITEM_ROUTE14_LUCKY_PUNCH                 0x10B6 // HnS: Route14
+#define FLAG_HIDDEN_ITEM_ROUTE15_ROSE_INCENSE                0x10B7 // HnS: Route15
+#define FLAG_HIDDEN_ITEM_ROUTE17_MAX_ELIXIR                  0x10B8 // HnS: Route17
+#define FLAG_HIDDEN_ITEM_ROUTE17_MAX_ETHER                   0x10B9 // HnS: Route17
+#define FLAG_HIDDEN_ITEM_ROUTE20_DEEP_SEA_SCALE              0x10BA // HnS: Route20
+#define FLAG_HIDDEN_ITEM_ROUTE20_DEEP_SEA_TOOTH              0x10BB // HnS: Route20
+#define FLAG_HIDDEN_ITEM_ROUTE21_STARDUST_1                  0x10BC // HnS: Route21
+#define FLAG_HIDDEN_ITEM_ROUTE21_STARDUST_2                  0x10BD // HnS: Route21
+#define FLAG_HIDDEN_ITEM_ROUTE21_STARDUST_3                  0x10BE // HnS: Route21
+#define FLAG_HIDDEN_ITEM_ROUTE24_PECHA_BERRY                 0x10BF // HnS: Route24
+#define FLAG_HIDDEN_ITEM_ROUTE25_REVIVE                      0x10C0 // HnS: Route25
+#define FLAG_HIDDEN_ITEM_ROUTE26_TINY_MUSHROOM               0x10C1 // HnS: Route26
+#define FLAG_HIDDEN_ITEM_ROUTE2_REVIVE                       0x10C2 // HnS: Route2
+#define FLAG_HIDDEN_ITEM_ROUTE3_STARDUST                     0x10C3 // HnS: Route3
+#define FLAG_HIDDEN_ITEM_ROUTE4_BIG_MUSHROOM                 0x10C4 // HnS: Route4
+#define FLAG_HIDDEN_ITEM_ROUTE8_FAIRY_GEM                    0x10C5 // HnS: Route8
+#define FLAG_HIDDEN_ITEM_ROUTE8_TM_TORMENT                   0x10C6 // HnS: Route8
+#define FLAG_HIDDEN_ITEM_ROUTE9_LIGHT_CLAY                   0x10C7 // HnS: Route9
+#define FLAG_HIDDEN_ITEM_SEAFOAM_ISLANDS_1F_ICE_HEAL         0x10C8 // HnS: SeafoamIslands_1F
+#define FLAG_HIDDEN_ITEM_SEAFOAM_ISLANDS_1F_RARE_CANDY       0x10C9 // HnS: SeafoamIslands_1F
+#define FLAG_HIDDEN_ITEM_SEAFOAM_ISLANDS_1F_ULTRA_BALL       0x10CA // HnS: SeafoamIslands_1F
+#define FLAG_HIDDEN_ITEM_SEAFOAM_ISLANDS_B1F_GRIP_CLAW       0x10CB // HnS: SeafoamIslands_B1F
+#define FLAG_HIDDEN_ITEM_SEAFOAM_ISLANDS_B1F_MAX_REVIVE      0x10CC // HnS: SeafoamIslands_B1F
+#define FLAG_HIDDEN_ITEM_SEAFOAM_ISLANDS_B1F_WATER_STONE     0x10CD // HnS: SeafoamIslands_B1F
+#define FLAG_HIDDEN_ITEM_VERMILION_CITY_BIG_PEARL            0x10CE // HnS: VermilionCity
+#define FLAG_HIDDEN_ITEM_VERMILION_CITY_HEART_SCALE          0x10CF // HnS: VermilionCity
+#define FLAG_HIDDEN_ITEM_VERMILION_CITY_PEARL_STRING         0x10D0 // HnS: VermilionCity
+#define FLAG_HIDDEN_ITEM_VICTORYROADKANTO_B1F_PP_UP          0x10D1 // HnS: VictoryRoadKanto_B1F
+#define FLAG_HIDDEN_ITEM_VICTORYROADKANTO_B2F_ZINC           0x10D2 // HnS: VictoryRoadKanto_B2F
+#define FLAG_HIDDEN_ITEM_VIRIDIAN_FOREST_BIG_MUSHROOM_1      0x10D3 // HnS: ViridianForest
+#define FLAG_HIDDEN_ITEM_VIRIDIAN_FOREST_BIG_MUSHROOM_2      0x10D4 // HnS: ViridianForest
+#define FLAG_HIDDEN_ITEM_VIRIDIAN_FOREST_BLUE_FLUTE          0x10D5 // HnS: ViridianForest
+#define FLAG_HIDDEN_ITEM_VIRIDIAN_FOREST_LEAF_STONE          0x10D6 // HnS: ViridianForest
+#define FLAG_HIDE_AKALA_TOTEM                                0x10D7 // HnS: Route13
+#define FLAG_HIDE_AZALEA_TOWN_TAILED_SLOWPOKES               0x10D8 // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_CELADON_FALKNER                            0x10D9 // HnS: CeladonCity_DepartmentStore_5F, SSAqua_1F
+#define FLAG_HIDE_DUGTRIO_ALOLA                              0x10DA // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_EXEGGUTOR_ALOLA                            0x10DB // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_FLYOVER                                    0x10DC // HnS: Route13
+#define FLAG_HIDE_GOLEM_ALOLA                                0x10DD // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_MAROWAK_ALOLA                              0x10DE // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_MELEMELE_TOTEM                             0x10DF // HnS: Route13
+#define FLAG_HIDE_MTMOON_JIRACHI                             0x10E0 // HnS: MtMoon_Outside
+#define FLAG_HIDE_MTSILVER_RED                               0x10E1 // HnS: MtSilver_SummitDay, MtSilver_SummitNight
+#define FLAG_HIDE_MT_SILVER_2F_AZURE_FLUTE                   0x10E2 // HnS: MtSilver_2F
+#define FLAG_HIDE_MUK_ALOLA                                  0x10E3 // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_NINETALES_ALOLA                            0x10E4 // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_PHANT_INSIDE                               0x10E5 // HnS: Route13
+#define FLAG_HIDE_PHANT_OUTSIDE                              0x10E6 // HnS: Route13
+#define FLAG_HIDE_PONI_TOTEM                                 0x10E7 // HnS: Route13
+#define FLAG_HIDE_RAICHU_ALOLA                               0x10E8 // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_ROUTE13_BOAT                               0x10E9 // HnS: Route13, SSAqua_1F
+#define FLAG_HIDE_ROUTE28_SCIENTIST                          0x10EA // HnS: Route28, SSAqua_1F
+#define FLAG_HIDE_SAMSONOAK_INTRO                            0x10EB // HnS: Route13
+#define FLAG_HIDE_SANDSLASH_ALOLA                            0x10EC // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_SINJOHRUINS_ARCEUSROOM_ARCEUS              0x10ED // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_SINJOHRUINS_REGICE                         0x10EE // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_SINJOHRUINS_REGIDRAGO                      0x10EF // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_SINJOHRUINS_REGIELEKI                      0x10F0 // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_SINJOHRUINS_REGIGIGAS                      0x10F1 // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_SINJOHRUINS_REGIROCK                       0x10F2 // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_SINJOHRUINS_REGISTEEL                      0x10F3 // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_SLOWPOKE_WELL_TAILLESS_SLOWPOKES           0x10F4 // HnS: PokemonLeague_HallOfFame
+#define FLAG_HIDE_TAPU_BULU                                  0x10F5 // HnS: PokemonLeague_HallOfFame, Route13
+#define FLAG_HIDE_TAPU_FINI                                  0x10F6 // HnS: PokemonLeague_HallOfFame, Route13
+#define FLAG_HIDE_TAPU_KOKO                                  0x10F7 // HnS: PokemonLeague_HallOfFame, Route13
+#define FLAG_HIDE_TAPU_LELE                                  0x10F8 // HnS: PokemonLeague_HallOfFame, Route13
+#define FLAG_HIDE_ULAULA_TOTEM                               0x10F9 // HnS: Route13
+#define FLAG_HIDE_VERMILION_CITY_SAMSON                      0x10FA // HnS: SSAqua_1F, VermilionCity
+#define FLAG_HIDE_VERMILION_STEVEN                           0x10FB // HnS: VermilionCity
+#define FLAG_HIDE_VIRIDIAN_BUGSY                             0x10FC // HnS: SSAqua_1F, ViridianForest
+#define FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU          0x10FD // HnS: PokemonLeague_HallOfFame, SSAqua_1F
+#define FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU1         0x10FE // HnS: SSAqua_1F, ViridianForest
+#define FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU2         0x10FF // HnS: SSAqua_1F, ViridianForest
+#define FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU3         0x1100 // HnS: SSAqua_1F, ViridianForest
+#define FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU4         0x1101 // HnS: SSAqua_1F
+#define FLAG_ITEM_CELADON_CITY_TM_RECYCLE                    0x1102 // HnS: CeladonCity
+#define FLAG_ITEM_MT_SILVER_CAVE_TM_STEALTH_ROCK             0x1103 // HnS: MtSilver_MountainSide
+#define FLAG_ITEM_ROUTE10_TM_ROCK_POLISH                     0x1104 // HnS: Route10
+#define FLAG_ITEM_ROUTE11_TM_GRASS_KNOT                      0x1105 // HnS: Route11
+#define FLAG_ITEM_ROUTE19_TM_BRINE                           0x1106 // HnS: Route19
+#define FLAG_ITEM_ROUTE27_DESTINY_KNOT                       0x1107 // HnS: Route27
+#define FLAG_ITEM_ROUTE27_DRAGONCLAW                         0x1108 // HnS: Route27
+#define FLAG_ITEM_ROUTE28_TM_FLAMETHROWER                    0x1109 // HnS: Route28
+#define FLAG_ITEM_ROUTE6_TM_SILVER_WIND                      0x110A // HnS: Route6
+#define FLAG_ITEM_ROUTE9_TM_FLASH_CANNON                     0x110B // HnS: Route9
+#define FLAG_ITEM_SEAFOAM_ISLANDS_B4F_TM_ICE_BEAM            0x110C // HnS: SeafoamIslands_B1F
+#define FLAG_ITEM_UNDERGROUND_PATH_TM_EXPLOSION              0x110D // HnS: SaffronCity_Tunnel_NS
+#define FLAG_ITEM_VICTORYROAD1_TM_EARTHQUAKE                 0x110E // HnS: VictoryRoadKanto_B2F
+#define FLAG_ITEM_VICTORY_ROAD_3F_TM_DARK_PULSE              0x110F // HnS: VictoryRoadKanto_1F
+#define FLAG_ITEM_VIRIDIANFOREST_FULL_HEAL                   0x1110 // HnS: ViridianForest
+#define FLAG_ITEM_VIRIDIAN_FOREST_TM_PSYCH_UP                0x1111 // HnS: ViridianForest
+#define FLAG_JOSE_HAS_ITEM                                   0x1112 // HnS: Route27
+#define FLAG_MT_SILVER_1F_HIDE_SCIENTIST                     0x1113 // HnS: MtSilver_1F_WaterfallRoom, SSAqua_1F
+#define FLAG_NO_WILD_CATCHING                                0x1114 // HnS: SaffronCity_FightingDojo
+#define FLAG_PEWTER_GYM_NPC_TRADE_COMPLETED                  0x1115 // HnS: PewterCity_Gym
+#define FLAG_PEWTER_NPC_TRADE_COMPLETED                      0x1116 // HnS: PewterCity_PokemonCenter
+#define FLAG_POWERPLANT_NPC_TRADE_COMPLETED                  0x1117 // HnS: Route10_PowerPlantEntrance
+#define FLAG_SUMMONED_MTMOON_JIRACHI                         0x1118 // HnS: MtMoon_Outside, PokemonLeague_HallOfFame
+#define FLAG_TELEPORTER_UNLOCKED                             0x1119 // HnS: Route25_BillsHouse
+#define FLAG_USED_TELEPORTER                                 0x111A // HnS: Route25_BillsHouse
+#define FLAG_VISITED_ALOLA                                   0x111B // HnS: Route13
+#define FLAG_VISITED_KANTO                                   0x111C // HnS: Route27
+#define FLAG_VISITED_ROUTE4                                  0x111D // HnS: Route4_PokemonCenter
+#define CUSTOM_FLAGS_END                            FLAG_VISITED_ROUTE4
+// PROXIMA FLAG NOVA: 0x111E (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

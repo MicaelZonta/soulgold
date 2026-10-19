@@ -2,17 +2,17 @@
   "id": "MAP_CELADON_CITY_DEPARTMENT_STORE_ROOF_DAY",
   "name": "CeladonCity_DepartmentStore_RoofDay",
   "layout": "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_ROOF_DAY",
-  "music": "MUS_HG_CELADON",
+  "music": "MUS_HG_POKE_MART",
   "region_map_section": "MAPSEC_CELADON_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_INDOOR",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_WORKER_M",
@@ -84,5 +84,7 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine"
     }
-  ]
+  ],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

@@ -165,7 +165,7 @@
 #define SONG_MUS_HG_INTRO                               0
 #define SONG_MUS_HG_EVOLUTION                           0
 #define SONG_MUS_HG_EVOLUTION_NO_INTRO                  1
-#define SONG_MUS_HG_CYCLING                             0
+#define SONG_MUS_HG_CYCLING                             1
 #define SONG_MUS_HG_HALL_OF_FAME                        0
 #define SONG_MUS_HG_CREDITS                             0
 #define SONG_MUS_HG_END                                 0

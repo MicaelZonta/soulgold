@@ -1116,6 +1116,22 @@ enum __attribute__((packed)) Item
     // SoulGold: Dig has a field use, so it is an HM (TMs are single-use)
     ITEM_HM11 = 937,
 
+    // Itens do Kanto do HnS (append-only; ids nunca renumeram)
+    ITEM_AZURE_FLUTE = 938, // TM100 reusa a vaga 681 do bloco original
+    ITEM_TM101 = 939,
+    ITEM_TM102 = 940,
+    ITEM_TM103 = 941,
+    ITEM_TM104 = 942,
+    ITEM_TM105 = 943,
+    ITEM_TM106 = 944,
+    ITEM_TM107 = 945,
+    ITEM_TM108 = 946,
+    ITEM_TM109 = 947,
+    ITEM_TM110 = 948,
+    ITEM_TM111 = 949,
+    ITEM_TM112 = 950,
+    ITEM_TM113 = 951,
+
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,
 

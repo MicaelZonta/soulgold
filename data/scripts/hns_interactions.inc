@@ -169,3 +169,6 @@ Text_MonUsedHeadbutt::
 Text_CantHeadbutt::
 	.string "It's a small tree, but a wild\n"
 	.string "POKéMON may be living within.$"
+
+Common_EventScript_NoOp::
+	end

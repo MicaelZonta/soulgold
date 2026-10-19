@@ -2,7 +2,7 @@
   "id": "MAP_CELADON_CITY_DEPARTMENT_STORE_5F",
   "name": "CeladonCity_DepartmentStore_5F",
   "layout": "LAYOUT_CELADON_CITY_DEPARTMENT_STORE_5F",
-  "music": "MUS_HG_CELADON",
+  "music": "MUS_HG_POKE_MART",
   "region_map_section": "MAPSEC_CELADON_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -12,7 +12,7 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_SAILOR",
@@ -65,6 +65,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CeladonDeptElevator_EventScript_Elevator",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_CELADON_FALKNER",
+      "graphics_id": "OBJ_EVENT_GFX_FALKNER",
+      "x": 4,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CeladonDeptStore5_EventScript_Falkner",
+      "flag": "FLAG_HIDE_CELADON_FALKNER"
     }
   ],
   "warp_events": [
@@ -93,5 +107,7 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CeladonDept5_EventScript_Directory"
     }
-  ]
+  ],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

@@ -1,14 +1,9 @@
 PewterCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PewterCity_EventScript_CityEnter
-	map_script MAP_SCRIPT_ON_LOAD, PewterCity_OnLoad
 	.byte 0
 
 PewterCity_EventScript_CityEnter::
-	setflag FLAG_VISITED_BATTLE_TOWER
-	end
-
-PewterCity_OnLoad::
-	setrespawn HEAL_LOCATION_PEWTER_CITY
+	setflag FLAG_VISITED_PEWTER_CITY
 	end
 
 PewterCity_EventScript_CooltrainerF::
@@ -24,7 +19,6 @@ PewterCity_EventScript_Gramps::
 	faceplayer
 	goto_if_eq VAR_LUGIA_OR_HOOH, 1, PewterCity_EventScript_GrampsRainbowWing
 	goto_if_eq VAR_LUGIA_OR_HOOH, 2, PewterCity_EventScript_GrampsSilverWing
-	release
 	end
 
 PewterCity_EventScript_GrampsRainbowWing::
@@ -64,23 +58,23 @@ PewterCity_EventScript_Cooltrainer::
 	end
 
 PewterCity_Text_CooltrainerF:
-	.string "Have you visited Pewter Gym?\p"
-	.string "The Leader uses rock-type Pokémon.$"
+	.string "Have you visited PEWTER GYM?\p"
+	.string "The LEADER uses ROCK-type POKéMON.$"
 
 PewterCity_Text_BugCatcher:
-	.string "At night, Clefairy come out to play at\n"
-	.string "Mt.Moon.\p"
+	.string "At night, CLEFAIRY come out to play at\n"
+	.string "MT.MOON.\p"
 	.string "But not every night.$"
 
 PewterCity_Text_Gramps:
 	.string "Ah, you came all the way out here from\n"
-	.string "Johto?\p"
+	.string "JOHTO?\p"
 	.string "That brings back memories. When I was\n"
-	.string "young, I went to Johto to train.\p"
+	.string "young, I went to JOHTO to train.\p"
 	.string "You remind me so much of what I was like\n"
 	.string "as a young man.\p"
 	.string "Here. I want you to have this item I\n"
-	.string "found in Johto.$"
+	.string "found in JOHTO.$"
 
 PewterCity_Text_Gramps_GotSilverWing:
 	.string "Going to new, unknown places and seeing\n"
@@ -108,23 +102,23 @@ PewterCity_EventScript_WelcomeSign::
 	end
 
 PewterCity_Text_Sign:
-	.string "Pewter City\n"
+	.string "PEWTER CITY\n"
 	.string "A Stone Gray City$"
 
 PewterCity_Text_GymSign:
-	.string "Pewter City Pokémon Gym\n"
-	.string "Leader: Brock\p"
-	.string "The Rock Solid Pokémon Trainer$"
+	.string "PEWTER CITY POKéMON GYM\n"
+	.string "LEADER: BROCK\p"
+	.string "The Rock Solid POKéMON Trainer$"
 
 PewterCity_Text_MuseumSign:
 	.string "There's a notice here…\p"
-	.string "Pewter Museum Of Science is closed for\n"
+	.string "PEWTER MUSEUM OF SCIENCE is closed for\n"
 	.string "renovations…$"
 
 PewterCity_Text_MtMoonGiftShopSign:
 	.string "There's a notice here…\p"
-	.string "Mt.Moon Gift Shop Now Open!$"
+	.string "MT.MOON GIFT SHOP NOW OPEN!$"
 
 PewterCity_Text_WelcomeSign:
-	.string "Welcome To Pewter City!$"
+	.string "WELCOME TO PEWTER CITY!$"
 

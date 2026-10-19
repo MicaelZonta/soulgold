@@ -1,6 +1,3 @@
-.set LOCALID_POWERPLANT_COP, 1
-.set LOCALID_POWERPLANT_ENGINEER, 2
-
 Route10_PowerPlantEntrance_MapScripts::
 	.byte 0
 
@@ -15,7 +12,6 @@ Route10_PowerPlantEntrance_EventScript_Cop::
 	goto_if_ge VAR_KANTO_ROCKET_STORY_STATE, 3, Route10_PowerPlantEntrance_EventScript_CopAfterDone
 	msgbox Route10_PowerPlantEntrance_Text_Officer1AThiefBrokeIn, MSGBOX_DEFAULT
 	closemessage
-	release
 	end
 
 Route10_PowerPlantEntrance_EventScript_CopDuringRocket::
@@ -24,7 +20,6 @@ Route10_PowerPlantEntrance_EventScript_CopDuringRocket::
 	msgbox Route10_PowerPlantEntrance_Text_Officer1CeruleanShadyCharacter, MSGBOX_DEFAULT
 	msgbox Route10_PowerPlantEntrance_Text_Officer1CouldIAskForYourCooperation, MSGBOX_DEFAULT
 	closemessage
-	release
 	end
 
 Route10_PowerPlantEntrance_EventScript_CopAfterDone::
@@ -32,7 +27,6 @@ Route10_PowerPlantEntrance_EventScript_CopAfterDone::
 	faceplayer
 	msgbox Route10_PowerPlantEntrance_Text_Officer1HaveToBeefUpSecurity, MSGBOX_DEFAULT
 	closemessage
-	release
 	end
 
 Route10_PowerPlantEntrance_EventScript_Engineer1::
@@ -73,9 +67,9 @@ Route10_PowerPlantEntrance_EventScript_Engineer3Done::
 Route10_PowerPlantEntrance_Trigger_Cop::
 	lock
 	playse SE_POKENAV_CALL
-	applymovement LOCALID_POWERPLANT_COP, Common_Movement_ExclamationMark
+	applymovement2 LOCALID_POWERPLANT_COP, Common_Movement_ExclamationMark
 	waitse
-	applymovement LOCALID_POWERPLANT_COP, Route10_PowerPlantEntrance_Movement_WalkToPlayer
+	applymovement2 LOCALID_POWERPLANT_COP, Route10_PowerPlantEntrance_Movement_WalkToPlayer
 	waitmovement 0
 	turnobject LOCALID_POWERPLANT_ENGINEER, DIR_SOUTH
 	msgbox Route10_PowerPlantEntrance_Text_Officer1CeruleanShadyCharacter, MSGBOX_DEFAULT
@@ -85,7 +79,7 @@ Route10_PowerPlantEntrance_Trigger_Cop::
 	delay 30
 	msgbox Route10_PowerPlantEntrance_Text_Officer1CouldIAskForYourCooperation, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_POWERPLANT_COP, Route10_PowerPlantEntrance_Movement_WalkBack
+	applymovement2 LOCALID_POWERPLANT_COP, Route10_PowerPlantEntrance_Movement_WalkBack
 	waitmovement 0
 	setvar VAR_KANTO_ROCKET_STORY_STATE, 2
 	clearflag FLAG_HIDE_CERULEAN_GYM_ROCKET
@@ -113,12 +107,12 @@ Route10_PowerPlantEntrance_Movement_WalkBack:
 	step_end
 
 Route10_PowerPlantEntrance_Text_Officer1AThiefBrokeIn:
-	.string "A thief broke into the Power\n"
-	.string "Plant…\p"
+	.string "A thief broke into the POWER\n"
+	.string "PLANT…\p"
 	.string "What is the world coming to?$"
 
 Route10_PowerPlantEntrance_Text_Officer1CeruleanShadyCharacter:
-	.string "I just got word from Cerulean.\p"
+	.string "I just got word from CERULEAN.\p"
 	.string "It appears that a shady\n"
 	.string "character has been loitering\l"
 	.string "around.$"
@@ -143,17 +137,17 @@ Route10_PowerPlantEntrance_Text_Engineer1GeneratorUpAndRunning:
 	.string "It's making electricity to spare.$"
 
 Route10_PowerPlantEntrance_Text_Engineer2PowerPlantUpAndRunning:
-	.string "This Power Plant had been\n"
+	.string "This POWER PLANT had been\n"
 	.string "abandoned in the past.\p"
 	.string "We got it back up and running to\n"
-	.string "provide power to the Magnet\l"
-	.string "Train.$"
+	.string "provide power to the MAGNET\l"
+	.string "TRAIN.$"
 
 Route10_PowerPlantEntrance_Text_Engineer2GeneratorIsRunningAgain:
 	.string "The generator's running again!$"
 
 Route10_PowerPlantEntrance_Text_Officer2ManagerHasBeenSadAndFurious:
-	.string "The Power Plant's Manager is in\n"
+	.string "The POWER PLANT's MANAGER is in\n"
 	.string "the back room with the generator.\p"
 	.string "But since someone wrecked the\n"
 	.string "generator, he's been both sad and\l"
@@ -161,14 +155,64 @@ Route10_PowerPlantEntrance_Text_Officer2ManagerHasBeenSadAndFurious:
 
 Route10_PowerPlantEntrance_Text_Officer2ManagerHasBeenCheerful:
 	.string "Since the generator's been fixed,\n"
-	.string "the Manager has been cheerful.$"
+	.string "the MANAGER has been cheerful.$"
 
 Route10_PowerPlantEntrance_Text_Engineer4MagnetTrainConsumesElectricity:
-	.string "The Magnet Train consumes a lot\n"
+	.string "The MAGNET TRAIN consumes a lot\n"
 	.string "of electricity.\p"
 	.string "It can't move if the new\n"
 	.string "generator isn't operating.$"
 
+Route10_PowerPlantEntrance_EventScript_Lorenzo::
+	lock
+	faceplayer
+	goto_if_set FLAG_POWERPLANT_NPC_TRADE_COMPLETED, Route10_PowerPlantEntrance_EventScript_TradeCompleted
+	ingame_trade INGAME_TRADE_MAGNETON, Route10_PowerPlantEntrance_Text_WantToTrade, Route10_PowerPlantEntrance_EventScript_DeclineTrade, Route10_PowerPlantEntrance_EventScript_NotRequestedMon, Route10_PowerPlantEntrance_Text_TakeCare
+	setflag FLAG_POWERPLANT_NPC_TRADE_COMPLETED
+	release
+	end
+
+Route10_PowerPlantEntrance_EventScript_DeclineTrade::
+	msgbox Route10_PowerPlantEntrance_Text_DeclineTrade, MSGBOX_DEFAULT
+	release
+	end
+
+Route10_PowerPlantEntrance_EventScript_NotRequestedMon::
+	bufferspeciesname STR_VAR_1, VAR_0x8009
+	msgbox Route10_PowerPlantEntrance_Text_NotRequestedMon, MSGBOX_DEFAULT
+	release
+	end
+
+Route10_PowerPlantEntrance_EventScript_TradeCompleted::
+	msgbox Route10_PowerPlantEntrance_Text_TradeCompleted, MSGBOX_DEFAULT
+	release
+	end
+
+Route10_PowerPlantEntrance_Text_WantToTrade:
+	.string "I work here at the POWER PLANT.\n"
+	.string "My MAGNETON's been my partner\l"
+	.string "for years.\p"
+	.string "But I've always wanted a\n"
+	.string "{STR_VAR_1}.\p"
+	.string "Would you trade one for my\n"
+	.string "{STR_VAR_2}?$"
+
+Route10_PowerPlantEntrance_Text_TakeCare:
+	.string "Thanks! Take good care of\n"
+	.string "MAGGIE for me!$"
+
+Route10_PowerPlantEntrance_Text_DeclineTrade:
+	.string "No? That's a shame.\n"
+	.string "My MAGNETON's a hard worker.$"
+
+Route10_PowerPlantEntrance_Text_NotRequestedMon:
+	.string "Hmm, that's not a {STR_VAR_1}.\n"
+	.string "That's not what I had in mind.$"
+
+Route10_PowerPlantEntrance_Text_TradeCompleted:
+	.string "How's MAGGIE doing?\n"
+	.string "She loves magnetic fields!$"
+
 Route10_PowerPlantEntrance_Text_Engineer4WeCanGetMagnetTrainRunning:
 	.string "All right! We can finally get the\n"
-	.string "Magnet Train running again.$"
+	.string "MAGNET TRAIN running again.$"

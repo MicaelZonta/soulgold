@@ -1,5 +1,3 @@
-.set LOCALID_SSAQUA_B1F_SAILORLOOKING, 10
-
 SSAqua_B1F_MapScripts::
 	.byte 0
 
@@ -58,7 +56,7 @@ SSAqua_B1F_Text_FastShipOnDutySailor:
 
 SSAqua_B1F_Text_FastShipOnDutySailorRefused:
 	.string "Oh, gee…\p"
-	.string "The Captain will be furious…$"
+	.string "The CAPTAIN will be furious…$"
 
 SSAqua_B1F_Text_FastShipOnDutySailorThanks:
 	.string "Thanks, kid! I chewed him out\n"
@@ -71,10 +69,10 @@ SSAqua_B1F_Text_FastShipOnDutySailorSawGirl:
 SSAqua_B1F_Text_FastShipOnDutySailorDirections:
 	.string "The dining room is up ahead.\p"
 	.string "The stairs at the end lead to\n"
-	.string "the Captain's cabin.$"
+	.string "the CAPTAIN's cabin.$"
 
 SSAqua_B1F_EventScript_Jeff::
-	trainerbattle_single TRAINER_JEFF SSAqua_B1F_Text_SailorJeffSeen, SSAqua_B1F_Text_SailorJeffBeaten
+	trainerbattle_single TRAINER_JEFF, SSAqua_B1F_Text_SailorJeffSeen, SSAqua_B1F_Text_SailorJeffBeaten
 	msgbox SSAqua_B1F_Text_SailorJeffAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -90,7 +88,7 @@ SSAqua_B1F_Text_SailorJeffAfter:
 	.string "get serious.$"
 
 SSAqua_B1F_EventScript_Debra::
-	trainerbattle_single TRAINER_DEBRA SSAqua_B1F_Text_PicnickerDebraSeen, SSAqua_B1F_Text_PicnickerDebraBeaten
+	trainerbattle_single TRAINER_DEBRA, SSAqua_B1F_Text_PicnickerDebraSeen, SSAqua_B1F_Text_PicnickerDebraBeaten
 	msgbox SSAqua_B1F_Text_PicnickerDebraAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -101,11 +99,11 @@ SSAqua_B1F_Text_PicnickerDebraBeaten:
 	.string "Yow! You're too strong!$"
 
 SSAqua_B1F_Text_PicnickerDebraAfter:
-	.string "Saffron, Celadon… I hear there\n"
-	.string "are many big cities in Kanto.$"
+	.string "SAFFRON, CELADON… I hear there\n"
+	.string "are many big cities in KANTO.$"
 
 SSAqua_B1F_EventScript_Fritz::
-	trainerbattle_single TRAINER_FRITZ SSAqua_B1F_Text_JugglerFritzSeen, SSAqua_B1F_Text_JugglerFritzBeaten
+	trainerbattle_single TRAINER_FRITZ, SSAqua_B1F_Text_JugglerFritzSeen, SSAqua_B1F_Text_JugglerFritzBeaten
 	msgbox SSAqua_B1F_Text_JugglerFritzAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -118,10 +116,10 @@ SSAqua_B1F_Text_JugglerFritzBeaten:
 SSAqua_B1F_Text_JugglerFritzAfter:
 	.string "No more ships for me.\n"
 	.string "Next time,\p"
-	.string "I'm taking the Magnet Train.$"
+	.string "I'm taking the MAGNET TRAIN.$"
 
 SSAqua_B1F_EventScript_Garrett::
-	trainerbattle_single TRAINER_GARRETT SSAqua_B1F_Text_SailorGarrettSeen, SSAqua_B1F_Text_SailorGarrettBeaten
+	trainerbattle_single TRAINER_GARRETT, SSAqua_B1F_Text_SailorGarrettSeen, SSAqua_B1F_Text_SailorGarrettBeaten
 	msgbox SSAqua_B1F_Text_SailorGarrettAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -133,11 +131,11 @@ SSAqua_B1F_Text_SailorGarrettBeaten:
 
 SSAqua_B1F_Text_SailorGarrettAfter:
 	.string "We get different passengers\n"
-	.string "from Vermilion City to\p"
-	.string "Olivine City.$"
+	.string "from VERMILION CITY to\p"
+	.string "OLIVINE CITY.$"
 
 SSAqua_B1F_EventScript_Jonah::
-	trainerbattle_single TRAINER_JONAH SSAqua_B1F_Text_FisherJonahSeen, SSAqua_B1F_Text_FisherJonahBeaten
+	trainerbattle_single TRAINER_JONAH, SSAqua_B1F_Text_FisherJonahSeen, SSAqua_B1F_Text_FisherJonahBeaten
 	msgbox SSAqua_B1F_Text_FisherJonahAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -151,10 +149,10 @@ SSAqua_B1F_Text_FisherJonahBeaten:
 
 SSAqua_B1F_Text_FisherJonahAfter:
 	.string "I plan to fish off\n"
-	.string "Vermilion's pier.$"
+	.string "VERMILION's pier.$"
 
 SSAqua_B1F_EventScript_Wai::
-	trainerbattle_single TRAINER_WAI SSAqua_B1F_Text_BlackbeltWaiSeen, SSAqua_B1F_Text_BlackbeltWaiBeaten
+	trainerbattle_single TRAINER_WAI, SSAqua_B1F_Text_BlackbeltWaiSeen, SSAqua_B1F_Text_BlackbeltWaiBeaten
 	msgbox SSAqua_B1F_Text_BlackbeltWaiAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -167,32 +165,32 @@ SSAqua_B1F_Text_BlackbeltWaiBeaten:
 	.string "Rocked and rolled over!$"
 
 SSAqua_B1F_Text_BlackbeltWaiAfter:
-	.string "I couldn't find the Karate King\n"
-	.string "in Johto.\p"
+	.string "I couldn't find the KARATE KING\n"
+	.string "in JOHTO.\p"
 	.string "He's supposed to be training in\n"
 	.string "a cave somewhere.$"
 
 SSAqua_B1F_EventScript_Kenneth::
-	trainerbattle_single TRAINER_KENNETH SSAqua_B1F_Text_SailorKennethSeen, SSAqua_B1F_Text_SailorKennethBeaten
+	trainerbattle_single TRAINER_KENNETH, SSAqua_B1F_Text_SailorKennethSeen, SSAqua_B1F_Text_SailorKennethBeaten
 	msgbox SSAqua_B1F_Text_SailorKennethAfter, MSGBOX_AUTOCLOSE
 	end
 
 SSAqua_B1F_Text_SailorKennethSeen:
 	.string "I'm a sailor man!\p"
-	.string "But I'm training Pokémon, so I\n"
-	.string "can become the Champ!$"
+	.string "But I'm training POKéMON, so I\n"
+	.string "can become the CHAMP!$"
 
 SSAqua_B1F_Text_SailorKennethBeaten:
 	.string "My lack of training is obvious…$"
 
 SSAqua_B1F_Text_SailorKennethAfter:
-	.string "Eight Badges! They must prove\n"
+	.string "Eight BADGES! They must prove\n"
 	.string "that you've beaten\p"
-	.string "Gym Leaders.\p"
+	.string "GYM LEADERS.\p"
 	.string "No wonder you're so good!$"
 
 SSAqua_B1F_EventScript_Shirley::
-	trainerbattle_single TRAINER_SHIRLEY SSAqua_B1F_Text_TeacherShirleySeen, SSAqua_B1F_Text_TeacherShirleyBeaten
+	trainerbattle_single TRAINER_SHIRLEY, SSAqua_B1F_Text_TeacherShirleySeen, SSAqua_B1F_Text_TeacherShirleyBeaten
 	msgbox SSAqua_B1F_Text_TeacherShirleyAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -205,31 +203,31 @@ SSAqua_B1F_Text_TeacherShirleyBeaten:
 
 SSAqua_B1F_Text_TeacherShirleyAfter:
 	.string "We're on a field trip to the\n"
-	.string "Ruins outside Violet.$"
+	.string "RUINS outside VIOLET.$"
 
 SSAqua_B1F_EventScript_Nate::
-	trainerbattle_single TRAINER_NATE SSAqua_B1F_Text_SchoolboyNateSeen, SSAqua_B1F_Text_SchoolboyNateBeaten
+	trainerbattle_single TRAINER_NATE, SSAqua_B1F_Text_SchoolboyNateSeen, SSAqua_B1F_Text_SchoolboyNateBeaten
 	msgbox SSAqua_B1F_Text_SchoolboyNateAfter, MSGBOX_AUTOCLOSE
 	end
 
 SSAqua_B1F_Text_SchoolboyNateSeen:
-	.string "Do you know the Ruins Of Alph?$"
+	.string "Do you know the RUINS OF ALPH?$"
 
 SSAqua_B1F_Text_SchoolboyNateBeaten:
 	.string "Yaargh!$"
 
 SSAqua_B1F_Text_SchoolboyNateAfter:
 	.string "Radios pick up strange signals\n"
-	.string "inside the Ruins.$"
+	.string "inside the RUINS.$"
 
 SSAqua_B1F_EventScript_Ricky::
-	trainerbattle_single TRAINER_RICKY SSAqua_B1F_Text_SchoolboyRickySeen, SSAqua_B1F_Text_SchoolboyRickyBeaten
+	trainerbattle_single TRAINER_RICKY, SSAqua_B1F_Text_SchoolboyRickySeen, SSAqua_B1F_Text_SchoolboyRickyBeaten
 	msgbox SSAqua_B1F_Text_SchoolboyRickyAfter, MSGBOX_AUTOCLOSE
 	end
 
 SSAqua_B1F_Text_SchoolboyRickySeen:
 	.string "There are some odd stone panels\n"
-	.string "in the Ruins Of Alph.$"
+	.string "in the RUINS OF ALPH.$"
 
 SSAqua_B1F_Text_SchoolboyRickyBeaten:
 	.string "I was done in!$"

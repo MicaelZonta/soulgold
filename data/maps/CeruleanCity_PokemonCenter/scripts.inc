@@ -1,5 +1,3 @@
-.set LOCALID_NURSE, 1
-
 CeruleanCity_PokemonCenter_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, CeruleanCity_PokemonCenter_OnTransition
 	.byte 0
@@ -18,12 +16,12 @@ CeruleanCity_PokemonCenter_EventScript_Guy::
 
 CeruleanCity_PokemonCenter1F_Text_SuperNerd:
 	.string "For battles, I'd much rather use\n"
-	.string "Pokémon I've been raising, even if\p"
+	.string "POKéMON I've been raising, even if\p"
 	.string "they're weaker than some newly\n"
-	.string "caught Pokémon.$"
+	.string "caught POKéMON.$"
 
 CeruleanCity_PokemonCenter1F_Text_GymGuide:
-	.string "The Magnet Train travels at over\n"
-	.string "340 mph. It goes between Kanto and\l"
-	.string "Johto in almost no time at all.\p"
-	.string "It really makes Johto accessible.$"
+	.string "The MAGNET TRAIN travels at over\n"
+	.string "340 mph. It goes between KANTO and\l"
+	.string "JOHTO in almost no time at all.\p"
+	.string "It really makes JOHTO accessible.$"

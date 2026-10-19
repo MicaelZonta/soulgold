@@ -9,7 +9,7 @@ VictoryRoadKanto_B1F_OnTransition::
 
 
 
-MtSilver_1F_MoltresRoom_EventScript_MoltresRan::
+VictoryRoadKanto_B1F_EventScript_MoltresRanLegado:: @ label duplicado com o MoltresRoom importado; B1F sera refeito na Fase 5 (Moltres-Galar)
 	release
 	end
 

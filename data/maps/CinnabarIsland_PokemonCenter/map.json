@@ -12,10 +12,9 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
-      "local_id": "LOCALID_CINNABAR_NURSE",
       "graphics_id": "OBJ_EVENT_GFX_NURSE",
       "x": 7,
       "y": 2,
@@ -26,10 +25,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OldaleTown_PokemonCenter_1F_EventScript_Nurse",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_CINNABAR_NURSE"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
       "x": 8,
       "y": 2,
       "elevation": 0,
@@ -55,7 +55,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FISHER",
+      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
       "x": 1,
       "y": 6,
       "elevation": 0,
@@ -116,5 +116,7 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "EventScript_BookShelf"
     }
-  ]
+  ],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

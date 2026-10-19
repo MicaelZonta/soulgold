@@ -25,10 +25,11 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "VermilionPort_EventScript_Sailor",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_VERMILIONMARINA_SAILOR"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SS_TIDAL",
+      "graphics_id": "OBJ_EVENT_GFX_SS_AQUA",
       "x": 8,
       "y": 13,
       "elevation": 0,
@@ -38,7 +39,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_VERMILIONMARINA_BOAT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SUPER_NERD",
@@ -77,5 +79,7 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

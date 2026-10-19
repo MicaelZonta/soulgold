@@ -1,7 +1,3 @@
-.set LOCALID_ROUTE14_SUICUNE, 5
-.set LOCALID_ROUTE14_EUSINE, 6
-.set LOCALID_ROUTE14_PIDGEOTTO, 9
-
 Route14_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route14_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
@@ -164,36 +160,82 @@ Route14_Movement_EusineLeave:
 	step_end
 
 Route14_EventScript_Carter::
-	trainerbattle_single TRAINER_CARTER Route14_Text_PokefanmCarterSeen, Route14_Text_PokefanmCarterBeaten
+	trainerbattle_single TRAINER_CARTER, Route14_Text_PokefanmCarterSeen, Route14_Text_PokefanmCarterBeaten, Route14_EventScript_RegisterCarter
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route14_EventScript_RematchCarter
 	msgbox Route14_Text_PokefanmCarterAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route14_EventScript_RegisterCarter::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route14_Text_CarterRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_CARTER
+	release
+	end
+
+Route14_EventScript_RematchCarter::
+	trainerbattle_rematch TRAINER_CARTER, Route14_Text_CarterRematchIntro, Route14_Text_CarterRematchDefeat
+	msgbox Route14_Text_CarterPostRematch, MSGBOX_AUTOCLOSE
+	goto_if_defeated TRAINER_CARTER_2, Route14_EventScript_RematchCarterTryGiveItem
+	end
+
+Route14_EventScript_RematchCarterTryGiveItem::
+	checkitem ITEM_TM_THUNDER_WAVE
+	goto_if_eq VAR_RESULT, TRUE, Common_EventScript_NoOp
+	giveitem ITEM_TM_THUNDER_WAVE
+	closemessage
+	end
+
 Route14_EventScript_Roy::
-	trainerbattle_single TRAINER_ROY Route14_Text_BirdKeeperRoySeen, Route14_Text_BirdKeeperRoyBeaten
+	trainerbattle_single TRAINER_ROY, Route14_Text_BirdKeeperRoySeen, Route14_Text_BirdKeeperRoyBeaten
 	msgbox Route14_Text_BirdKeeperRoyAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route14_EventScript_Trevor::
-	trainerbattle_single TRAINER_TREVOR Route14_Text_PokefanmTrevorSeen, Route14_Text_PokefanmTrevorBeaten
+	trainerbattle_single TRAINER_TREVOR, Route14_Text_PokefanmTrevorSeen, Route14_Text_PokefanmTrevorBeaten, Route14_EventScript_RegisterTrevor
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route14_EventScript_RematchTrevor
 	msgbox Route14_Text_PokefanmTrevorAfterBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route14_EventScript_RegisterTrevor::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route14_Text_TrevorRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_TREVOR
+	release
+	end
+
+Route14_EventScript_RematchTrevor::
+	trainerbattle_rematch TRAINER_TREVOR, Route14_Text_TrevorRematchIntro, Route14_Text_TrevorRematchDefeat
+	msgbox Route14_Text_TrevorPostRematch, MSGBOX_AUTOCLOSE
+	goto_if_defeated TRAINER_TREVOR_2, Route14_EventScript_RematchTrevorTryGiveItem
+	end
+
+Route14_EventScript_RematchTrevorTryGiveItem::
+	checkitem ITEM_TM_WILL_O_WISP
+	goto_if_eq VAR_RESULT, TRUE, Common_EventScript_NoOp
+	giveitem ITEM_TM_WILL_O_WISP
+	closemessage
 	end
 
 
 
 Route14_Text_Eusine:
-	.string "{SPEAKER NAME_EUSINE}{PLAYER}! Not again!\n"
+	.string "EUSINE: {PLAYER}! Not again!\n"
 	.string "I'll be there first next time!\p"
 	.string "Having followed it here, I'm\n"
-	.string "starting to understand what Suicune\l"
+	.string "starting to understand what SUICUNE\l"
 	.string "is after.\p"
 	.string "To be honest, I would like to keep\n"
 	.string "this information to myself.\p"
 	.string "But I want to be an honest trainer\n"
-	.string "in front of Suicune!\p"
+	.string "in front of SUICUNE!\p"
 	.string "That's why I am sharing a clue with\n"
 	.string "you.\p"
 	.string "It seems that...\n"
-	.string "Suicune prefers a hilly place...\l"
+	.string "SUICUNE prefers a hilly place...\l"
 	.string "Near water...\l"
 	.string "Somewhere north...\p"
 	.string "I don't know exactly where yet.\n"
@@ -201,40 +243,70 @@ Route14_Text_Eusine:
 	.string "Who'll find it first?\n"
 	.string "I challenge you!$"
 
+Route14_Text_PokefanmTrevorSeen:
+	.string "Hi. Did you know…?\p"
+	.string "POKéMON get more friendly if you\n"
+	.string "train them in a place that they\l"
+	.string "remember.$"
+
+Route14_Text_PokefanmTrevorBeaten:
+	.string "Where did I meet this SCIZOR?$"
+
+Route14_Text_PokefanmTrevorAfterBattle:
+	.string "If only there were an easy way to\n"
+	.string "identify where I got my POKéMON…$"
+
+Route14_Text_TrevorRegister:
+	.string "You're interesting!\n"
+	.string "Can I have your number?$"
+
+Route14_Text_TrevorRematchIntro:
+	.string "I've been training with my\n"
+	.string "POKéMON in familiar places!$"
+
+Route14_Text_TrevorRematchDefeat:
+	.string "Maybe I need new places…$"
+
+Route14_Text_TrevorPostRematch:
+	.string "Friendship makes POKéMON\n"
+	.string "stronger. I'm sure of it!$"
+
 Route14_Text_PokefanmCarterSeen:
 	.string "Let me tell you, I had a hard time\n"
-	.string "catching my prized Pokémon.$"
+	.string "catching my prized POKéMON.$"
 
 Route14_Text_PokefanmCarterBeaten:
 	.string "Awaaah!$"
 
 Route14_Text_PokefanmCarterAfterBattle:
-	.string "Totodile, Cyndaquil, Chikorita…\p"
+	.string "TOTODILE, CYNDAQUIL, CHIKORITA…\p"
 	.string "I think that's a well-balanced mix.$"
+
+Route14_Text_CarterRegister:
+	.string "You know your starters!\n"
+	.string "Let me get your number!$"
+
+Route14_Text_CarterRematchIntro:
+	.string "I've found even more rare starters\n"
+	.string "to show off! Battle me!$"
+
+Route14_Text_CarterRematchDefeat:
+	.string "My precious starters…$"
+
+Route14_Text_CarterPostRematch:
+	.string "There are so many starters from\n"
+	.string "different regions to collect!$"
 
 Route14_Text_BirdKeeperRoySeen:
 	.string "My dream is to fly with my beloved\n"
-	.string "bird Pokémon.$"
+	.string "bird POKéMON.$"
 
 Route14_Text_BirdKeeperRoyBeaten:
 	.string "I can dream, but I can't ever fly…$"
 
 Route14_Text_BirdKeeperRoyAfterBattle:
-	.string "You have Pokémon that know the HM\n"
-	.string "move Fly, don't you? I envy you.$"
-
-Route14_Text_PokefanmTrevorSeen:
-	.string "Hi. Did you know…?\p"
-	.string "Pokémon get more friendly if you\n"
-	.string "train them in a place that they\n"
-	.string "remember.$"
-
-Route14_Text_PokefanmTrevorBeaten:
-	.string "Where did I meet this Scizor?$"
-
-Route14_Text_PokefanmTrevorAfterBattle:
-	.string "If only there were an easy way to\n"
-	.string "identify where I got my Pokémon…$"
+	.string "You have POKéMON that know the HM\n"
+	.string "move FLY, don't you? I envy you.$"
 
 Route14_EventScript_Pidgeotto::
 	lockall
@@ -245,13 +317,13 @@ Route14_EventScript_Pidgeotto::
 	goto_if_set FLAG_GOT_ROUTE_14_AERIAL_ACE, Route14_EventScript_PidgeottoBlowPlayer
 	msgbox Route14_Text_PidgeottoBerry, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, Route14_EventScript_PidgeottoBlowPlayer
-	@ Same defect as the Ice Path Swinub/Delibird (bug/B08): the Berry pocket was
-	@ never opened and removeitem took whatever VAR_ITEM_ID last held.
-	chooseitem POCKET_BERRIES
-	goto_if_eq VAR_ITEM_ID, ITEM_NONE, Route14_EventScript_PidgeottoBlowPlayer
-	goto_if_ne VAR_ITEM_ID, ITEM_QUALOT_BERRY, Route14_EventScript_PidgeottoDislikedBerry
+	fadescreen FADE_TO_BLACK
+	special Bag_ChooseBerry
+	waitstate
 	removeitem VAR_ITEM_ID, 1
+	goto_if_ne VAR_ITEM_ID, ITEM_QUALOT_BERRY, Route14_EventScript_PidgeottoDislikedBerry
 	msgbox Route14_Text_PidgeottoAteBerry, MSGBOX_DEFAULT
+	giveitem ITEM_TM_AERIAL_ACE
 	setflag FLAG_GOT_ROUTE_14_AERIAL_ACE
 Route14_EventScript_PidgeottoBlowPlayer::
 	closemessage
@@ -327,11 +399,11 @@ Route14_Movement_StuckPidgeottoJump:
 	step_end
 
 Route14_Text_Pidgeotto:
-	.string "{SPEAKER NAME_PIDGEOTTO}Kaaaaa!$"
+	.string "PIDGEOTTO: Kaaaaa!$"
 Route14_Text_PidgeottoBerry:
-	.string "Give the Pidgeotto a Berry?$"
+	.string "Give the PIDGEOTTO a BERRY?$"
 Route14_Text_PidgeottoAteBerry:
-	.string "Pidgeotto enjoyed the Qualot Berry!$"
+	.string "PIDGEOTTO enjoyed the QUALOT BERRY!$"
 Route14_Text_PidgeottoTurnedAway:
-	.string "Pidgeotto doesn't like it!$"
+	.string "PIDGEOTTO doesn't like it!$"
 

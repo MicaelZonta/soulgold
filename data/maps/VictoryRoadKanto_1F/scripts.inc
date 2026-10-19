@@ -1,56 +1,61 @@
-.set LOCALID_VICTORYROAD_SILVER, 13
-
 VictoryRoadKanto_1F_MapScripts::
 	.byte 0
 
+VictoryRoadKanto_1F_EventScript_Item_RareCandy::
+	finditem ITEM_RARE_CANDY
+	end
+VictoryRoadKanto_1F_EventScript_Item_MaxEther::
+	finditem ITEM_MAX_ETHER
+	end
+VictoryRoadKanto_EventScript_Item_Dark_Pulse::
+    finditem ITEM_TM_DARK_PULSE
+    end
+
 VictoryRoadKanto_1F_Trigger::
 	lock
-	playbgm MUS_HG_ENCOUNTER_RIVAL, TRUE
+	playbgm MUS_HG_ENCOUNTER_RIVAL, FALSE
 	delay 5
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	delay 60
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	addobject LOCALID_VICTORYROAD_SILVER
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	call_if_eq VAR_TEMP_0, 27, VictoryRoadKanto_1F_EventScript_SilverEnterLeft
 	call_if_eq VAR_TEMP_0, 28, VictoryRoadKanto_1F_EventScript_SilverEnterMid
 	call_if_eq VAR_TEMP_0, 29, VictoryRoadKanto_1F_EventScript_SilverEnterRight
-	createfieldmugshot MUGSHOT_SILVER
 	msgbox VictoryRoad_Text_RivalBefore, MSGBOX_DEFAULT
 	call_if_eq VAR_STARTER_MON, 0, VictoryRoadKanto_1F_Silver_Battle_Cyndaquil
 	call_if_eq VAR_STARTER_MON, 1, VictoryRoadKanto_1F_Silver_Battle_Totodile
 	call_if_eq VAR_STARTER_MON, 2, VictoryRoadKanto_1F_Silver_Battle_Chikorita
-	playbgm MUS_HG_RIVAL_EXIT, TRUE
-	createfieldmugshot MUGSHOT_SILVER
+	playbgm MUS_HG_RIVAL_EXIT, FALSE
 	msgbox VictoryRoad_Text_RivalAfter, MSGBOX_DEFAULT
-	giveitem ITEM_HM_ROCK_CLIMB
 	closemessage
-	applymovement LOCALID_VICTORYROAD_SILVER, VictoryRoadKanto_1F_Movement_SilverLeave
+	applymovement2 LOCALID_VICTORYROAD_SILVER, VictoryRoadKanto_1F_Movement_SilverLeave
 	waitmovement 0
 	removeobject LOCALID_VICTORYROAD_SILVER
 	fadedefaultbgm
 	release
-	setvar VAR_ROUTE27_STATE, 2
+	setvar VAR_ROUTE27_STATE, 3
 	end
 
 VictoryRoadKanto_1F_EventScript_SilverEnterLeft::
-	applymovement LOCALID_VICTORYROAD_SILVER, VictoryRoadKanto_1F_Movement_SilverEnterLeft
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_WalkUp1
+	applymovement2 LOCALID_VICTORYROAD_SILVER, VictoryRoadKanto_1F_Movement_SilverEnterLeft
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
+	applymovement2 OBJ_EVENT_ID_FOLLOWER, Common_Movement_WalkUp1
 	waitmovement LOCALID_VICTORYROAD_SILVER
 	return
 
 VictoryRoadKanto_1F_EventScript_SilverEnterMid::
-	applymovement LOCALID_VICTORYROAD_SILVER, VictoryRoadKanto_1F_Movement_SilverEnterMid
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_WalkUp1
+	applymovement2 LOCALID_VICTORYROAD_SILVER, VictoryRoadKanto_1F_Movement_SilverEnterMid
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
+	applymovement2 OBJ_EVENT_ID_FOLLOWER, Common_Movement_WalkUp1
 	waitmovement LOCALID_VICTORYROAD_SILVER
 	return
 
 VictoryRoadKanto_1F_EventScript_SilverEnterRight::
-	applymovement LOCALID_VICTORYROAD_SILVER, VictoryRoadKanto_1F_Movement_SilverEnterRight
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
-	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_WalkUp1
+	applymovement2 LOCALID_VICTORYROAD_SILVER, VictoryRoadKanto_1F_Movement_SilverEnterRight
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
+	applymovement2 OBJ_EVENT_ID_FOLLOWER, Common_Movement_WalkUp1
 	waitmovement LOCALID_VICTORYROAD_SILVER
 	return
 
@@ -122,14 +127,14 @@ VictoryRoadKanto_1F_Movement_SilverLeave:
 	step_end
 
 VictoryRoad_Text_RivalBefore:
-    .string "{SPEAKER NAME_SILVER}Hold it.\p"
-    .string "…Are you going to take the Pokémon\n"
-    .string "League challenge?\p"
+    .string "Hold it.\p"
+    .string "…Are you going to take the POKéMON\n"
+    .string "LEAGUE challenge?\p"
     .string "…Don't make me laugh.\p"
     .string "You're so much weaker than I am.\p"
     .string "I'm not like I was before.\p"
     .string "I now have the best and strongest\n"
-    .string "Pokémon with me.\p"
+    .string "POKéMON with me.\p"
     .string "I'm invincible!\p"
     .string "{PLAYER}!\n"
     .string "I challenge you!$"
@@ -142,13 +147,11 @@ VictoryRoad_Text_RivalDefeat:
     .string "that dragon master said to me…$"
 
 VictoryRoad_Text_RivalAfter:
-    .string "{SPEAKER NAME_SILVER}…I haven't given up on becoming the\n"
+    .string "…I haven't given up on becoming the\n"
     .string "greatest trainer…\p"
     .string "I'm going to find out why I can't\n"
     .string "win and become stronger…\p"
     .string "When I do, I will challenge you.\p"
     .string "And I'll beat you down with all my\n"
     .string "power.\p"
-    .string "…Humph! You keep at it until then.\p"
-	.string "You should take this, I have other\n"
-	.string "priorities now.$"
+    .string "…Humph! You keep at it until then.$"

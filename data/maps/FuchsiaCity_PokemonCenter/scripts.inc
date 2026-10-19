@@ -1,7 +1,3 @@
-.set LOCALID_NURSE, 1
-.set LOCALID_FUCHSIAPOKECENTER_WOMAN, 6
-.set LOCALID_FUCHSIAPOKECENTER_JASMINE, 4
-
 FuchsiaCity_PokemonCenter_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FuchsiaCity_PokemonCenter_OnTransition
 	.byte 0
@@ -46,16 +42,16 @@ FuchsiaCity_PokemonCenter_EventScript_JanineClone::
 
 FuchsiaCity_PokemonCenter1F_Text_CooltrainerM:
 	.string "Hey! You have a brand new kind of\n"
-	.string "Pokédex.\p"
-	.string "Did Prof.Oak give that to you?$"
+	.string "POKéDEX.\p"
+	.string "Did PROF.OAK give that to you?$"
 
 FuchsiaCity_PokemonCenter1F_Text_CooltrainerF:
-	.string "I got quite a shock at the Gym.\p"
+	.string "I got quite a shock at the GYM.\p"
 	.string "There were all these girls who\n"
 	.string "looked identical.$"
 
 FuchsiaCity_PokemonCenter1F_Text_JanineImpersonator1:
-	.string "I'm Janine! Hocus-pocus… Poof!$"
+	.string "I'm JANINE! Hocus-pocus… Poof!$"
 
 FuchsiaCity_PokemonCenter1F_Text_JanineImpersonator2:
 	.string "See? I look just like her now!$"

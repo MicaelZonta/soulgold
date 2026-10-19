@@ -742,3 +742,11 @@ gSpecials::
 	def_special BerryDebug_SetStory
 	def_special BerryDebug_KingsPlotSprout
 	def_special BerryDebug_NewOrder
+	def_special CheckPartyForSpecies
+	def_special IsPokecenterChallengeActivated
+	def_special GetRegionalFormSpecies
+	def_special ConvertToRegionalForm
+	def_special AnimateTeleporterHousing
+	def_special AnimateTeleporterCable
+	def_special CheckRadioStation
+	def_special InitKantoRoamers

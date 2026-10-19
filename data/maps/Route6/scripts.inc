@@ -8,12 +8,12 @@ Route6_OnTransition:
 	end
 
 Route6_EventScript_Rex::
-	trainerbattle_single TRAINER_REX PokefanM_Text_RexSeen, PokefanM_Text_RexBeaten
+	trainerbattle_single TRAINER_REX, PokefanM_Text_RexSeen, PokefanM_Text_RexBeaten
 	msgbox PokefanM_Text_RexAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route6_EventScript_Allan::
-	trainerbattle_single TRAINER_ALLAN PokefanM_Text_AllanSeen, PokefanM_Text_AllanBeaten
+	trainerbattle_single TRAINER_ALLAN, PokefanM_Text_AllanSeen, PokefanM_Text_AllanBeaten
 	msgbox PokefanM_Text_AllanAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -25,37 +25,41 @@ Route6_EventScript_Sign::
 	msgbox Route6_Text_UndergroundPathSign, MSGBOX_SIGN
 	end
 
+Route6_EventScript_Item_Silver_Wind::
+    finditem ITEM_TM_SILVER_WIND
+    end
+
 Route6_Text_PokefanM:
 	.string "The road is closed until the\n"
-	.string "problem at the Power Plant is\l"
+	.string "problem at the POWER PLANT is\l"
 	.string "solved.$"
 
 Route6_Text_UndergroundPathSign:
-	.string "Underground Path\p"
-	.string "Cerulean City - Vermilion City$"
+	.string "UNDERGROUND PATH\p"
+	.string "CERULEAN CITY - VERMILION CITY$"
 
 PokefanM_Text_RexSeen:
-	.string "My Stantler is the cutest in the\n"
+	.string "My STANTLER is the cutest in the\n"
 	.string "world.$"
 
 PokefanM_Text_RexBeaten:
-	.string "My Stantler!$"
+	.string "My STANTLER!$"
 
 PokefanM_Text_RexAfter:
-	.string "Look how adorable my Stantler\n"
+	.string "Look how adorable my STANTLER\n"
 	.string "acts!\p"
 	.string "Isn't it cute enough to make\n"
 	.string "your heart melt?$"
 
 PokefanM_Text_AllanSeen:
-	.string "My Granbull is the cutest in the\n"
+	.string "My GRANBULL is the cutest in the\n"
 	.string "world.$"
 
 PokefanM_Text_AllanBeaten:
-	.string "My Granbull!$"
+	.string "My GRANBULL!$"
 
 PokefanM_Text_AllanAfter:
-	.string "Look how adorable my Granbull\n"
+	.string "Look how adorable my GRANBULL\n"
 	.string "acts!\p"
 	.string "Isn't it cute enough to make\n"
 	.string "your heart melt?$"

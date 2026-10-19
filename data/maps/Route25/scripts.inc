@@ -1,9 +1,3 @@
-.set LOCALID_ROUTE25_MISTY, 10
-.set LOCALID_ROUTE25_MAN, 11
-.set LOCALID_ROUTE25_SUICUNE, 16
-.set LOCALID_ROUTE25_EUSINE, 15
-.set LOCALID_CAPE_MISTY, 20
-
 Route25_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route25_MapScript_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
@@ -15,7 +9,7 @@ Route25_MapScript_OnTransition::
 	end
 
 Route25_EventScript_SetSuicuneSceneMid::
-	setobjectxyperm LOCALID_ROUTE25_EUSINE, 65, 9
+	setobjectxyperm LOCALID_ROUTE25_EUSINE, 98, 14
 	end
 
 Route25_EventScript_MistyRematch::
@@ -32,45 +26,45 @@ Route25_EventScript_MistyRematch::
     end
 
 Route25_Text_Misty:
-    .string "{SPEAKER NAME_MISTY}I love the sunset here!\n"
+    .string "MISTY: I love the sunset here!\n"
 	.string "It gives me the courage to go on,\l"
 	.string "you know?\p"
 	.string "Right!\p"
 	.string "If you're ready for a real splash,\n"
-	.string "meet me at the Fighting Dojo!$"
+	.string "meet me at the FIGHTING DOJO!$"
 
 Route25_EventScript_Dudley::
-	trainerbattle_single TRAINER_DUDLEY Route25_Text_SchoolboyDudleySeen, Route25_Text_SchoolboyDudleyBeaten
+	trainerbattle_single TRAINER_DUDLEY, Route25_Text_SchoolboyDudleySeen, Route25_Text_SchoolboyDudleyBeaten
 	msgbox Route25_Text_SchoolboyDudleyAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route25_EventScript_Ellen::
-	trainerbattle_single TRAINER_ELLEN Route25_Text_LassEllenSeen, Route25_Text_LassEllenBeaten
+	trainerbattle_single TRAINER_ELLEN, Route25_Text_LassEllenSeen, Route25_Text_LassEllenBeaten
 	msgbox Route25_Text_LassEllenAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route25_EventScript_Joe::
-	trainerbattle_single TRAINER_JOE Route25_Text_SchoolboyJoeSeen, Route25_Text_SchoolboyJoeBeaten
+	trainerbattle_single TRAINER_JOE, Route25_Text_SchoolboyJoeSeen, Route25_Text_SchoolboyJoeBeaten
 	msgbox Route25_Text_SchoolboyJoeAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route25_EventScript_Laura::
-	trainerbattle_single TRAINER_LAURA Route25_Text_LassLauraSeen, Route25_Text_LassLauraBeaten
+	trainerbattle_single TRAINER_LAURA, Route25_Text_LassLauraSeen, Route25_Text_LassLauraBeaten
 	msgbox Route25_Text_LassLauraAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route25_EventScript_Lloyd::
-	trainerbattle_single TRAINER_LLOYD Route25_Text_CamperLloydSeen, Route25_Text_CamperLloydBeaten
+	trainerbattle_single TRAINER_LLOYD, Route25_Text_CamperLloydSeen, Route25_Text_CamperLloydBeaten
 	msgbox Route25_Text_CamperLloydAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route25_EventScript_Shannon::
-	trainerbattle_single TRAINER_SHANNON Route25_Text_LassShannonSeen, Route25_Text_LassShannonBeaten
+	trainerbattle_single TRAINER_SHANNON, Route25_Text_LassShannonSeen, Route25_Text_LassShannonBeaten
 	msgbox Route25_Text_LassShannonAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route25_EventScript_Pat::
-	trainerbattle_single TRAINER_PAT Route25_Text_SupernerdPatSeen, Route25_Text_SupernerdPatBeaten
+	trainerbattle_single TRAINER_PAT, Route25_Text_SupernerdPatSeen, Route25_Text_SupernerdPatBeaten
 	msgbox Route25_Text_SupernerdPatAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -102,11 +96,12 @@ Route25_Trigger_MistyRight::
 	delay 40
 	turnobject LOCALID_ROUTE25_MAN, DIR_SOUTH
 	playse SE_PIN
-	applymovement LOCALID_ROUTE25_MAN, Common_Movement_ExclamationMark
-	delay 60
-	applymovement LOCALID_ROUTE25_MAN, Route25_Movement_ManLeaveRight
+	applymovement2 LOCALID_ROUTE25_MAN, Common_Movement_ExclamationMark
+	delay 55
+	waitmovement LOCALID_ROUTE25_MAN
+	applymovement2 LOCALID_ROUTE25_MAN, Route25_Movement_ManLeaveRight
 	waitmovement 0
-	applymovement LOCALID_ROUTE25_MISTY, Route25_Movement_MistyWalkToPlayerRight
+	applymovement2 LOCALID_ROUTE25_MISTY, Route25_Movement_MistyWalkToPlayerRight
 	waitmovement 0
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	goto Route25_EventScript_Misty
@@ -116,18 +111,19 @@ Route25_Trigger_MistyLeft::
 	delay 40
 	turnobject LOCALID_ROUTE25_MAN, DIR_SOUTH
 	playse SE_PIN
-	applymovement LOCALID_ROUTE25_MAN, Common_Movement_ExclamationMark
-	delay 60
-	applymovement LOCALID_ROUTE25_MAN, Route25_Movement_ManLeaveLeft
+	applymovement2 LOCALID_ROUTE25_MAN, Common_Movement_ExclamationMark
+	delay 55
+	waitmovement LOCALID_ROUTE25_MAN
+	applymovement2 LOCALID_ROUTE25_MAN, Route25_Movement_ManLeaveLeft
 	waitmovement 0
-	applymovement LOCALID_ROUTE25_MISTY, Route25_Movement_MistyWalkToPlayerLeft
+	applymovement2 LOCALID_ROUTE25_MISTY, Route25_Movement_MistyWalkToPlayerLeft
 	waitmovement 0
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	goto Route25_EventScript_Misty
 Route25_EventScript_Misty::
 	msgbox Route25_Text_MistyDate, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_ROUTE25_MISTY, Route25_Movement_MistyLeave
+	applymovement2 LOCALID_ROUTE25_MISTY, Route25_Movement_MistyLeave
 	waitmovement 0
 	removeobject LOCALID_ROUTE25_MISTY
 	removeobject LOCALID_ROUTE25_MAN
@@ -142,7 +138,7 @@ Route25_Trigger_SuicuneLeft::
 	lock
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	delay 60
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playmoncry SPECIES_SUICUNE, CRY_MODE_NORMAL
 	applymovement LOCALID_ROUTE25_SUICUNE, Route25_Movement_Suicune1
 	playse SE_LEDGE
@@ -157,7 +153,7 @@ Route25_Trigger_SuicuneRight::
 	lock
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	delay 60
+	waitmovement OBJ_EVENT_ID_PLAYER
 	playmoncry SPECIES_SUICUNE, CRY_MODE_NORMAL
 	applymovement LOCALID_ROUTE25_SUICUNE, Route25_Movement_Suicune1
 	playse SE_LEDGE
@@ -183,20 +179,31 @@ Route25_EventScript_SuicuneMerge::
 	release
 	end
 	
+Route25_Trigger_SuicuneRightRight::
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft1
+	waitmovement 0
+	goto Route25_Trigger_SuicuneRight
+Route25_Trigger_SuicuneLeftLeft::
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1
+	waitmovement 0
+	goto Route25_Trigger_SuicuneLeft
+
 Route25_Text_Eusine1:
-	.string "{SPEAKER NAME_EUSINE}Puff, puff...\n"
+	.string "EUSINE: Puff, puff...\n"
 	.string "I am... no match for you.\p"
 	.string "...As I predicted.\n"
 	.string "..........................\l"
 	.string "... Go ahead.\p"
-	.string "Since I met you in the Burned Tower\n"
-	.string "at Ecruteak City, I've sort of\l"
-	.string "known that Suicune would choose\l"
+	.string "Since I met you in the BURNED TOWER\n"
+	.string "at ECRUTEAK CITY, I've sort of\l"
+	.string "known that SUICUNE would choose\l"
 	.string "you.$"
 
 Route25_Text_Eusine2:
-	.string "{SPEAKER NAME_EUSINE}Take a look at it!\p"
-	.string "Suicune is waiting for you!\n"
+	.string "Take a look at it!\p"
+	.string "SUICUNE is waiting for you!\n"
 	.string "It has been waiting for a battle\l"
 	.string "with a worthy trainer to whom it\l"
 	.string "can entrust itself.$"
@@ -207,7 +214,7 @@ Route25_Text_Eusine3:
 	.string "I have never seen a battle this\n"
 	.string "intense!\l"
 	.string "I have no regrets...\p"
-	.string "Farewell, Suicune!\n"
+	.string "Farewell, SUICUNE!\n"
 	.string "Farewell... {PLAYER}!$"
 
 Route25_EventScript_Eusine::
@@ -236,12 +243,13 @@ Route25_EventScript_Suicune::
 	fadescreenswapbuffers FADE_FROM_BLACK
 	goto_if_ge VAR_SUICUNE_ENCOUNTERS, 8, Route25_EventScript_SuicunePostGame
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
-	call_if_eq VAR_TEMP_0, 66, Route25_AdjustPlayer
+	call_if_eq VAR_TEMP_0, 99, Route25_AdjustPlayer
+	call_if_eq VAR_TEMP_0, 100, Route25_AdjustPlayerTwice
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	turnobject LOCALID_ROUTE25_EUSINE, DIR_NORTH
 	msgbox Route25_Text_Eusine3, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_ROUTE25_EUSINE, Route25_Movement_EusineLeave
+	applymovement2 LOCALID_ROUTE25_EUSINE, Route25_Movement_EusineLeave
 	waitmovement 0
 	removeobject LOCALID_ROUTE25_EUSINE
 	setflag FLAG_HIDE_ROUTE25_EUSINE
@@ -255,6 +263,13 @@ Route25_EventScript_SuicuneRan::
 	end
 
 Route25_AdjustPlayer::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft1
+	waitmovement 0
+	return
+
+Route25_AdjustPlayerTwice::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft1
+	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft1
 	waitmovement 0
 	return
@@ -303,8 +318,6 @@ Route25_Movement_WalkToSuicune:
 Route25_Movement_MistyLeave:
 	walk_down
 	walk_down
-	walk_down
-	walk_down
 	walk_left
 	walk_left
 	walk_left
@@ -317,8 +330,7 @@ Route25_Movement_MistyLeave:
 
 Route25_Movement_ManLeaveRight:
 	walk_fast_left
-	walk_fast_down
-	walk_fast_down
+	walk_fast_left
 	walk_fast_down
 	walk_fast_down
 	walk_fast_down
@@ -336,8 +348,7 @@ Route25_Movement_ManLeaveRight:
 	walk_fast_left
 	step_end
 Route25_Movement_ManLeaveLeft:
-	walk_fast_down
-	walk_fast_down
+	walk_fast_left
 	walk_fast_down
 	walk_fast_down
 	walk_fast_down
@@ -356,6 +367,7 @@ Route25_Movement_ManLeaveLeft:
 	step_end
 
 Route25_Movement_MistyWalkToPlayerRight:
+	walk_fast_left
 	walk_left
 	walk_down
 	walk_down
@@ -364,6 +376,7 @@ Route25_Movement_MistyWalkToPlayerRight:
 	face_right
 	step_end
 Route25_Movement_MistyWalkToPlayerLeft:
+	walk_fast_left
 	walk_down
 	walk_down
 	walk_down
@@ -372,21 +385,21 @@ Route25_Movement_MistyWalkToPlayerLeft:
 	step_end
 
 Route25_Text_MistyDate:
-	.string "{SPEAKER NAME_MISTY}Aww! Why did you have to\n"
+	.string "MISTY: Aww! Why did you have to\n"
 	.string "show up and bug us now?\p"
 	.string "Do you know what they call\n"
 	.string "people like you?\p"
 	.string "Pests! You heard me right,\n"
 	.string "pest!\p"
 	.string "…\p"
-	.string "…Oh? Those Badges you have…\n"
-	.string "Are they Johto Gym Badges?\p"
+	.string "…Oh? Those BADGES you have…\n"
+	.string "Are they JOHTO GYM BADGES?\p"
 	.string "If you have eight, you must be\n"
 	.string "good.\p"
-	.string "Ok, then. Come to Cerulean Gym.\p"
+	.string "OK, then. Come to CERULEAN GYM.\p"
 	.string "I'll be happy to take you on.\p"
-	.string "I'm Misty, the Gym Leader in\n"
-	.string "Cerulean.$"
+	.string "I'm MISTY, the GYM LEADER in\n"
+	.string "CERULEAN.$"
 
 Route25_Text_SchoolboyDudleySeen:
 	.string "Beat the six of us trainers to\n"
@@ -434,7 +447,7 @@ Route25_Text_LassLauraAfter:
 	.string "I have no regrets.$"
 
 Route25_Text_CamperLloydSeen:
-	.string "Ok! I'm No. 5.\n"
+	.string "OK! I'm No. 5.\n"
 	.string "I'll stomp you!$"
 
 Route25_Text_CamperLloydBeaten:
@@ -488,10 +501,10 @@ Route25_Text_CooltrainerKevinBeaten:
 
 Route25_Text_CooltrainerKevinAfter:
 	.string "That was a great battle!\p"
-	.string "You and your Pokémon are truly\n"
+	.string "You and your POKéMON are truly\n"
 	.string "outstanding!$"
 
 Route25_Text_BillsHouseSign:
-	.string "Sea Cottage\n"
-	.string "Bill's House$"
+	.string "SEA COTTAGE\n"
+	.string "BILL'S HOUSE$"
 

@@ -1,5 +1,4 @@
 Gate_SaffronCity_Route6_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SaffronCity_OnFrame
 	.byte 0
 
 Gate_SaffronCity_Route6_EventScript_Guard::
@@ -12,15 +11,15 @@ Gate_SaffronCity_Route6_EventScript_Guard2::
 	end
 
 Route6_Text_SaffronGuardWelcome:
-	.string "Welcome to Saffron City, home of\n"
-	.string "the Magnet Train!\p"
+	.string "Welcome to SAFFRON CITY, home of\n"
+	.string "the MAGNET TRAIN!\p"
 	.string "…That's what I'd normally say,\n"
-	.string "but the Magnet Train isn't\l"
+	.string "but the MAGNET TRAIN isn't\l"
 	.string "running now.\p"
 	.string "It's not getting any electricity\n"
 	.string "because there's something wrong\l"
-	.string "with the Power Plant.$"
+	.string "with the POWER PLANT.$"
 
 Route6_Text_SaffronGuardMagnetTrain:
-	.string "The Magnet Train is the most\n"
-	.string "famous thing about Saffron.$"
+	.string "The MAGNET TRAIN is the most\n"
+	.string "famous thing about SAFFRON.$"

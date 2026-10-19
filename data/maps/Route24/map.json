@@ -15,20 +15,21 @@
   "connections": [
     {
       "map": "MAP_CERULEAN_CITY",
-      "offset": -20,
+      "offset": -25,
       "direction": "down"
     },
     {
       "map": "MAP_ROUTE25",
-      "offset": -4,
-      "direction": "right"
+      "offset": 0,
+      "direction": "up"
     }
   ],
   "object_events": [
     {
+      "local_id": "LOCALID_ROUTE24_GRUNT",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
-      "x": 12,
-      "y": 28,
+      "x": 18,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -40,10 +41,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ABRA)",
-      "x": 14,
-      "y": 1,
+      "x": 2,
+      "y": 12,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -52,9 +53,10 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ROUTE24_MAN",
       "graphics_id": "OBJ_EVENT_GFX_WORKER_M",
-      "x": 10,
-      "y": 27,
+      "x": 16,
+      "y": 7,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -65,9 +67,10 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_ROUTE24_WOMAN",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-      "x": 10,
-      "y": 28,
+      "x": 16,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -78,22 +81,22 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ODDISH)",
-      "x": 23,
-      "y": 28,
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SURSKIT)",
+      "x": 21,
+      "y": -3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
       "movement_range_x": 0,
-      "movement_range_y": 8,
+      "movement_range_y": 12,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_DAY_POKEMON"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ABRA)",
-      "x": 2,
-      "y": 34,
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SPOINK)",
+      "x": 5,
+      "y": 18,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
       "movement_range_x": 0,
@@ -105,8 +108,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 5,
-      "y": 4,
+      "x": 8,
+      "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
       "movement_range_x": 0,
@@ -115,14 +118,27 @@
       "trainer_sight_or_berry_tree_id": "BERRY_TREE_KELPSY_2",
       "script": "BerryTreeScript",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
+      "x": 19,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OlivineCity_PortOutside_EventScript_Fisherman2",
+      "flag": "0"
     }
   ],
   "warp_events": [],
   "coord_events": [
     {
       "type": "trigger",
-      "x": 10,
-      "y": 31,
+      "x": 16,
+      "y": 11,
       "elevation": 0,
       "var": "VAR_KANTO_ROCKET_STORY_STATE",
       "var_value": "3",
@@ -130,8 +146,8 @@
     },
     {
       "type": "trigger",
-      "x": 11,
-      "y": 31,
+      "x": 17,
+      "y": 11,
       "elevation": 0,
       "var": "VAR_KANTO_ROCKET_STORY_STATE",
       "var_value": "3",
@@ -139,13 +155,24 @@
     },
     {
       "type": "trigger",
-      "x": 12,
-      "y": 31,
+      "x": 18,
+      "y": 11,
       "elevation": 0,
       "var": "VAR_KANTO_ROCKET_STORY_STATE",
       "var_value": "3",
       "script": "Route24_Trigger_GruntScene"
     }
   ],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 24,
+      "y": 20,
+      "elevation": 0,
+      "item": "ITEM_PECHA_BERRY",
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE24_PECHA_BERRY"
+    }
+  ],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

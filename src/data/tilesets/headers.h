@@ -2391,3 +2391,709 @@ const struct Tileset gTileset_ViridianCity_Gym_Hns =
     .metatileAttributes = gMetatileAttributes_ViridianCity_Gym_Hns,
     .callback = NULL,
 };
+
+// Lote Fase 3: tilesets do escopo Kanto importados do HnS 2.0.6.
+
+const struct Tileset gTileset_AzaleaTown_Gym_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_AzaleaTown_Gym_Hns,
+    .palettes = gTilesetPalettes_AzaleaTown_Gym_Hns,
+    .metatiles = gMetatiles_AzaleaTown_Gym_Hns,
+    .metatileAttributes = gMetatileAttributes_AzaleaTown_Gym_Hns,
+    .callback = InitTilesetAnim_AzaleaTown_Gym,
+};
+
+const struct Tileset gTileset_BikeShop_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BikeShop_Hns,
+    .palettes = gTilesetPalettes_BikeShop_Hns,
+    .metatiles = gMetatiles_BikeShop_Hns,
+    .metatileAttributes = gMetatileAttributes_BikeShop_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_BlackthornGym_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BlackthornGym_Hns,
+    .palettes = gTilesetPalettes_BlackthornGym_Hns,
+    .metatiles = gMetatiles_BlackthornGym_Hns,
+    .metatileAttributes = gMetatileAttributes_BlackthornGym_Hns,
+    .callback = InitTilesetAnim_Lavaridge,
+};
+
+const struct Tileset gTileset_Blackthorn_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Blackthorn_Hns,
+    .palettes = gTilesetPalettes_Blackthorn_Hns,
+    .metatiles = gMetatiles_Blackthorn_Hns,
+    .metatileAttributes = gMetatileAttributes_Blackthorn_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Cafe_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Cafe_Hns,
+    .palettes = gTilesetPalettes_Cafe_Hns,
+    .metatiles = gMetatiles_Cafe_Hns,
+    .metatileAttributes = gMetatileAttributes_Cafe_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Cave_Default_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Cave_Default_Hns,
+    .palettes = gTilesetPalettes_Cave_Default_Hns,
+    .metatiles = gMetatiles_Cave_Default_Hns,
+    .metatileAttributes = gMetatileAttributes_Cave_Default_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Cave_Gray_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Cave_Gray_Hns,
+    .palettes = gTilesetPalettes_Cave_Gray_Hns,
+    .metatiles = gMetatiles_Cave_Gray_Hns,
+    .metatileAttributes = gMetatileAttributes_Cave_Gray_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Cave_Green_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Cave_Green_Hns,
+    .palettes = gTilesetPalettes_Cave_Green_Hns,
+    .metatiles = gMetatiles_Cave_Green_Hns,
+    .metatileAttributes = gMetatileAttributes_Cave_Green_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Cave_Ice_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Cave_Ice_Hns,
+    .palettes = gTilesetPalettes_Cave_Ice_Hns,
+    .metatiles = gMetatiles_Cave_Ice_Hns,
+    .metatileAttributes = gMetatileAttributes_Cave_Ice_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Cave_MtMoon_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Cave_MtMoon_Hns,
+    .palettes = gTilesetPalettes_Cave_MtMoon_Hns,
+    .metatiles = gMetatiles_Cave_MtMoon_Hns,
+    .metatileAttributes = gMetatileAttributes_Cave_MtMoon_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Cave_Sandy_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Cave_Sandy_Hns,
+    .palettes = gTilesetPalettes_Cave_Sandy_Hns,
+    .metatiles = gMetatiles_Cave_Sandy_Hns,
+    .metatileAttributes = gMetatileAttributes_Cave_Sandy_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CeladonApartments_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CeladonApartments_Hns,
+    .palettes = gTilesetPalettes_CeladonApartments_Hns,
+    .metatiles = gMetatiles_CeladonApartments_Hns,
+    .metatileAttributes = gMetatileAttributes_CeladonApartments_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CeladonCity_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CeladonCity_Hns,
+    .palettes = gTilesetPalettes_CeladonCity_Hns,
+    .metatiles = gMetatiles_CeladonCity_Hns,
+    .metatileAttributes = gMetatileAttributes_CeladonCity_Hns,
+    .callback = InitTilesetAnim_CeladonCity,
+};
+
+const struct Tileset gTileset_CeruleanCity_Gym_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CeruleanCity_Gym_Hns,
+    .palettes = gTilesetPalettes_CeruleanCity_Gym_Hns,
+    .metatiles = gMetatiles_CeruleanCity_Gym_Hns,
+    .metatileAttributes = gMetatileAttributes_CeruleanCity_Gym_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CeruleanCity_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CeruleanCity_Hns,
+    .palettes = gTilesetPalettes_CeruleanCity_Hns,
+    .metatiles = gMetatiles_CeruleanCity_Hns,
+    .metatileAttributes = gMetatileAttributes_CeruleanCity_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CherrygroveCity_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CherrygroveCity_Hns,
+    .palettes = gTilesetPalettes_CherrygroveCity_Hns,
+    .metatiles = gMetatiles_CherrygroveCity_Hns,
+    .metatileAttributes = gMetatileAttributes_CherrygroveCity_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CyclingRoad_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CyclingRoad_Hns,
+    .palettes = gTilesetPalettes_CyclingRoad_Hns,
+    .metatiles = gMetatiles_CyclingRoad_Hns,
+    .metatileAttributes = gMetatileAttributes_CyclingRoad_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_DepartmentStore_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DepartmentStore_Hns,
+    .palettes = gTilesetPalettes_DepartmentStore_Hns,
+    .metatiles = gMetatiles_DepartmentStore_Hns,
+    .metatileAttributes = gMetatileAttributes_DepartmentStore_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_EcruteakTheater_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_EcruteakTheater_Hns,
+    .palettes = gTilesetPalettes_EcruteakTheater_Hns,
+    .metatiles = gMetatiles_EcruteakTheater_Hns,
+    .metatileAttributes = gMetatileAttributes_EcruteakTheater_Hns,
+    .callback = InitTilesetAnim_ecruteak_theater,
+};
+
+const struct Tileset gTileset_FuchsiaCity_Gym_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_FuchsiaCity_Gym_Hns,
+    .palettes = gTilesetPalettes_FuchsiaCity_Gym_Hns,
+    .metatiles = gMetatiles_FuchsiaCity_Gym_Hns,
+    .metatileAttributes = gMetatileAttributes_FuchsiaCity_Gym_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Fuchsia_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Fuchsia_Hns,
+    .palettes = gTilesetPalettes_Fuchsia_Hns,
+    .metatiles = gMetatiles_Fuchsia_Hns,
+    .metatileAttributes = gMetatileAttributes_Fuchsia_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_GameCorner_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_GameCorner_Hns,
+    .palettes = gTilesetPalettes_GameCorner_Hns,
+    .metatiles = gMetatiles_GameCorner_Hns,
+    .metatileAttributes = gMetatileAttributes_GameCorner_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Gate_Standard_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Gate_Standard_Hns,
+    .palettes = gTilesetPalettes_Gate_Standard_Hns,
+    .metatiles = gMetatiles_Gate_Standard_Hns,
+    .metatileAttributes = gMetatileAttributes_Gate_Standard_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_GoldenrodCity_TrainStation_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_GoldenrodCity_TrainStation_Hns,
+    .palettes = gTilesetPalettes_GoldenrodCity_TrainStation_Hns,
+    .metatiles = gMetatiles_GoldenrodCity_TrainStation_Hns,
+    .metatileAttributes = gMetatileAttributes_GoldenrodCity_TrainStation_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_GoldenrodUndergroundRocket_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_GoldenrodUndergroundRocket_Hns,
+    .palettes = gTilesetPalettes_GoldenrodUndergroundRocket_Hns,
+    .metatiles = gMetatiles_GoldenrodUndergroundRocket_Hns,
+    .metatileAttributes = gMetatileAttributes_GoldenrodUndergroundRocket_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_GoldenrodUndergroundTunnel_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_GoldenrodUndergroundTunnel_Hns,
+    .palettes = gTilesetPalettes_GoldenrodUndergroundTunnel_Hns,
+    .metatiles = gMetatiles_GoldenrodUndergroundTunnel_Hns,
+    .metatileAttributes = gMetatileAttributes_GoldenrodUndergroundTunnel_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_HallOfFame_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HallOfFame_Hns,
+    .palettes = gTilesetPalettes_HallOfFame_Hns,
+    .metatiles = gMetatiles_HallOfFame_Hns,
+    .metatileAttributes = gMetatileAttributes_HallOfFame_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_House_2_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_House_2_Hns,
+    .palettes = gTilesetPalettes_House_2_Hns,
+    .metatiles = gMetatiles_House_2_Hns,
+    .metatileAttributes = gMetatileAttributes_House_2_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_IndigoPlateau_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_IndigoPlateau_Hns,
+    .palettes = gTilesetPalettes_IndigoPlateau_Hns,
+    .metatiles = gMetatiles_IndigoPlateau_Hns,
+    .metatileAttributes = gMetatileAttributes_IndigoPlateau_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Johto_General_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_Johto_General_Hns,
+    .palettes = gTilesetPalettes_Johto_General_Hns,
+    .metatiles = gMetatiles_Johto_General_Hns,
+    .metatileAttributes = gMetatileAttributes_Johto_General_Hns,
+    .callback = InitTilesetAnim_General,
+};
+
+const struct Tileset gTileset_Johto_NorthEast_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_Johto_NorthEast_Hns,
+    .palettes = gTilesetPalettes_Johto_NorthEast_Hns,
+    .metatiles = gMetatiles_Johto_NorthEast_Hns,
+    .metatileAttributes = gMetatileAttributes_Johto_NorthEast_Hns,
+    .callback = InitTilesetAnim_General,
+};
+
+const struct Tileset gTileset_KantoMart_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_KantoMart_Hns,
+    .palettes = gTilesetPalettes_KantoMart_Hns,
+    .metatiles = gMetatiles_KantoMart_Hns,
+    .metatileAttributes = gMetatileAttributes_KantoMart_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Kanto_Building_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_Kanto_Building_Hns,
+    .palettes = gTilesetPalettes_Kanto_Building_Hns,
+    .metatiles = gMetatiles_Kanto_Building_Hns,
+    .metatileAttributes = gMetatileAttributes_Kanto_Building_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Kanto_PokemonCenter_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Kanto_PokemonCenter_Hns,
+    .palettes = gTilesetPalettes_Kanto_PokemonCenter_Hns,
+    .metatiles = gMetatiles_Kanto_PokemonCenter_Hns,
+    .metatileAttributes = gMetatileAttributes_Kanto_PokemonCenter_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Lavaridge_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Lavaridge_Hns,
+    .palettes = gTilesetPalettes_Lavaridge_Hns,
+    .metatiles = gMetatiles_Lavaridge_Hns,
+    .metatileAttributes = gMetatileAttributes_Lavaridge_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_LavenderTown_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_LavenderTown_Hns,
+    .palettes = gTilesetPalettes_LavenderTown_Hns,
+    .metatiles = gMetatiles_LavenderTown_Hns,
+    .metatileAttributes = gMetatileAttributes_LavenderTown_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_MahoganyTown_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MahoganyTown_Hns,
+    .palettes = gTilesetPalettes_MahoganyTown_Hns,
+    .metatiles = gMetatiles_MahoganyTown_Hns,
+    .metatileAttributes = gMetatileAttributes_MahoganyTown_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_MtSilverSnow_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MtSilverSnow_Hns,
+    .palettes = gTilesetPalettes_MtSilverSnow_Hns,
+    .metatiles = gMetatiles_MtSilverSnow_Hns,
+    .metatileAttributes = gMetatileAttributes_MtSilverSnow_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Museum_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Museum_Hns,
+    .palettes = gTilesetPalettes_Museum_Hns,
+    .metatiles = gMetatiles_Museum_Hns,
+    .metatileAttributes = gMetatileAttributes_Museum_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_NationalPark_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NationalPark_Hns,
+    .palettes = gTilesetPalettes_NationalPark_Hns,
+    .metatiles = gMetatiles_NationalPark_Hns,
+    .metatileAttributes = gMetatileAttributes_NationalPark_Hns,
+    .callback = InitTilesetAnim_NationalPark,
+};
+
+const struct Tileset gTileset_NewBarkTown_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NewBarkTown_Hns,
+    .palettes = gTilesetPalettes_NewBarkTown_Hns,
+    .metatiles = gMetatiles_NewBarkTown_Hns,
+    .metatileAttributes = gMetatileAttributes_NewBarkTown_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PewterCity_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PewterCity_Hns,
+    .palettes = gTilesetPalettes_PewterCity_Hns,
+    .metatiles = gMetatiles_PewterCity_Hns,
+    .metatileAttributes = gMetatileAttributes_PewterCity_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PlayersHouse_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PlayersHouse_Hns,
+    .palettes = gTilesetPalettes_PlayersHouse_Hns,
+    .metatiles = gMetatiles_PlayersHouse_Hns,
+    .metatileAttributes = gMetatileAttributes_PlayersHouse_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PokemonCenter_White_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PokemonCenter_White_Hns,
+    .palettes = gTilesetPalettes_PokemonCenter_White_Hns,
+    .metatiles = gMetatiles_PokemonCenter_White_Hns,
+    .metatileAttributes = gMetatileAttributes_PokemonCenter_White_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PokemonDayCare_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PokemonDayCare_Hns,
+    .palettes = gTilesetPalettes_PokemonDayCare_Hns,
+    .metatiles = gMetatiles_PokemonDayCare_Hns,
+    .metatileAttributes = gMetatileAttributes_PokemonDayCare_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PokemonLeague_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PokemonLeague_Hns,
+    .palettes = gTilesetPalettes_PokemonLeague_Hns,
+    .metatiles = gMetatiles_PokemonLeague_Hns,
+    .metatileAttributes = gMetatileAttributes_PokemonLeague_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PortIndoor_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PortIndoor_Hns,
+    .palettes = gTilesetPalettes_PortIndoor_Hns,
+    .metatiles = gMetatiles_PortIndoor_Hns,
+    .metatileAttributes = gMetatileAttributes_PortIndoor_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PowerPlant_GeneratorRoom_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PowerPlant_GeneratorRoom_Hns,
+    .palettes = gTilesetPalettes_PowerPlant_GeneratorRoom_Hns,
+    .metatiles = gMetatiles_PowerPlant_GeneratorRoom_Hns,
+    .metatileAttributes = gMetatileAttributes_PowerPlant_GeneratorRoom_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Route40_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Route40_Hns,
+    .palettes = gTilesetPalettes_Route40_Hns,
+    .metatiles = gMetatiles_Route40_Hns,
+    .metatileAttributes = gMetatileAttributes_Route40_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SafariZoneJohto_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SafariZoneJohto_Hns,
+    .palettes = gTilesetPalettes_SafariZoneJohto_Hns,
+    .metatiles = gMetatiles_SafariZoneJohto_Hns,
+    .metatileAttributes = gMetatileAttributes_SafariZoneJohto_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SafariZone_Entrance_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SafariZone_Entrance_Hns,
+    .palettes = gTilesetPalettes_SafariZone_Entrance_Hns,
+    .metatiles = gMetatiles_SafariZone_Entrance_Hns,
+    .metatileAttributes = gMetatileAttributes_SafariZone_Entrance_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SaffronCity_FightingDojoVIP_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SaffronCity_FightingDojoVIP_Hns,
+    .palettes = gTilesetPalettes_SaffronCity_FightingDojoVIP_Hns,
+    .metatiles = gMetatiles_SaffronCity_FightingDojoVIP_Hns,
+    .metatileAttributes = gMetatileAttributes_SaffronCity_FightingDojoVIP_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SaffronCity_Gym_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SaffronCity_Gym_Hns,
+    .palettes = gTilesetPalettes_SaffronCity_Gym_Hns,
+    .metatiles = gMetatiles_SaffronCity_Gym_Hns,
+    .metatileAttributes = gMetatileAttributes_SaffronCity_Gym_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SaffronCity_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SaffronCity_Hns,
+    .palettes = gTilesetPalettes_SaffronCity_Hns,
+    .metatiles = gMetatiles_SaffronCity_Hns,
+    .metatileAttributes = gMetatileAttributes_SaffronCity_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SeaCottage_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SeaCottage_Hns,
+    .palettes = gTilesetPalettes_SeaCottage_Hns,
+    .metatiles = gMetatiles_SeaCottage_Hns,
+    .metatileAttributes = gMetatileAttributes_SeaCottage_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_ShopRooftop_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ShopRooftop_Hns,
+    .palettes = gTilesetPalettes_ShopRooftop_Hns,
+    .metatiles = gMetatiles_ShopRooftop_Hns,
+    .metatileAttributes = gMetatileAttributes_ShopRooftop_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SilphCo_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SilphCo_Hns,
+    .palettes = gTilesetPalettes_SilphCo_Hns,
+    .metatiles = gMetatiles_SilphCo_Hns,
+    .metatileAttributes = gMetatileAttributes_SilphCo_Hns,
+    .callback = InitTilesetAnim_SilphCo,
+};
+
+const struct Tileset gTileset_SoulHouse_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SoulHouse_Hns,
+    .palettes = gTilesetPalettes_SoulHouse_Hns,
+    .metatiles = gMetatiles_SoulHouse_Hns,
+    .metatileAttributes = gMetatileAttributes_SoulHouse_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_VermilionCity_Gym_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_VermilionCity_Gym_Hns,
+    .palettes = gTilesetPalettes_VermilionCity_Gym_Hns,
+    .metatiles = gMetatiles_VermilionCity_Gym_Hns,
+    .metatileAttributes = gMetatileAttributes_VermilionCity_Gym_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Vermilion_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Vermilion_Hns,
+    .palettes = gTilesetPalettes_Vermilion_Hns,
+    .metatiles = gMetatiles_Vermilion_Hns,
+    .metatileAttributes = gMetatileAttributes_Vermilion_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_ViridianCity_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ViridianCity_Hns,
+    .palettes = gTilesetPalettes_ViridianCity_Hns,
+    .metatiles = gMetatiles_ViridianCity_Hns,
+    .metatileAttributes = gMetatileAttributes_ViridianCity_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_ViridianForest_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ViridianForest_Hns,
+    .palettes = gTilesetPalettes_ViridianForest_Hns,
+    .metatiles = gMetatiles_ViridianForest_Hns,
+    .metatileAttributes = gMetatileAttributes_ViridianForest_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_WhirlIslands_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_WhirlIslands_Hns,
+    .palettes = gTilesetPalettes_WhirlIslands_Hns,
+    .metatiles = gMetatiles_WhirlIslands_Hns,
+    .metatileAttributes = gMetatileAttributes_WhirlIslands_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_ssaqua_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ssaqua_Hns,
+    .palettes = gTilesetPalettes_ssaqua_Hns,
+    .metatiles = gMetatiles_ssaqua_Hns,
+    .metatileAttributes = gMetatileAttributes_ssaqua_Hns,
+    .callback = NULL,
+};

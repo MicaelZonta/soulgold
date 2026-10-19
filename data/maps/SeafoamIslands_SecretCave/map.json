@@ -24,8 +24,9 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EmbeddedTower_EventScript_Groudon",
-      "flag": "FLAG_HIDE_GROUDON"
+      "script": "SeafoamIslands_SecretCave_EventScript_Groudon",
+      "flag": "FLAG_HIDE_GROUDON",
+      "localid": "LOCALID_SEAFOAMGROUDON"
     }
   ],
   "warp_events": [
@@ -38,5 +39,7 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

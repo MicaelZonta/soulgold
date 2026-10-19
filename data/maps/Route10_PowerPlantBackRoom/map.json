@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE10_POWER_PLANT_BACK_ROOM",
   "name": "Route10_PowerPlantBackRoom",
   "layout": "LAYOUT_ROUTE10_POWER_PLANT_BACK_ROOM",
-  "music": "MUS_HG_ROUTE3",
+  "music": "MUS_HG_PEWTER",
   "region_map_section": "MAPSEC_POWER_PLANT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -58,5 +58,7 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

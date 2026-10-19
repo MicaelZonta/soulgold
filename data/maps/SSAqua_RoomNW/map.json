@@ -25,7 +25,8 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "SSAqua_RoomNW_EventScript_Stanly",
-      "flag": "FLAG_HIDE_SSAQUA_SAILOR"
+      "flag": "FLAG_HIDE_SSAQUA_SAILOR",
+      "local_id": "LOCALID_SSAQUA_SLEEPYSAILOR"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
@@ -64,5 +65,7 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "game_version": "hns",
+  "region": "REGION_JOHTO"
 }

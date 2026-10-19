@@ -234,17 +234,17 @@ VermilionCity_Gym_EventScript_GymStatuePostVictory::
 	end
 
 VermilionCity_Gym_EventScript_Gregory::
-	trainerbattle_single TRAINER_GREGORY VermilionGym_Text_GentlemanGregorySeen, VermilionGym_Text_GentlemanGregoryBeaten
+	trainerbattle_single TRAINER_GREGORY, VermilionGym_Text_GentlemanGregorySeen, VermilionGym_Text_GentlemanGregoryBeaten
 	msgbox VermilionGym_Text_GentlemanGregoryAfter, MSGBOX_AUTOCLOSE
 	end
 
 VermilionCity_Gym_EventScript_Vincent::
-	trainerbattle_single TRAINER_VINCENT VermilionGym_Text_GuitaristVincentSeen, VermilionGym_Text_GuitaristVincentBeaten
+	trainerbattle_single TRAINER_VINCENT, VermilionGym_Text_GuitaristVincentSeen, VermilionGym_Text_GuitaristVincentBeaten
 	msgbox VermilionGym_Text_GuitaristVincentAfter, MSGBOX_AUTOCLOSE
 	end
 
 VermilionCity_Gym_EventScript_Horton::
-	trainerbattle_single TRAINER_HORTON VermilionGym_Text_JugglerHortonSeen, VermilionGym_Text_JugglerHortonBeaten
+	trainerbattle_single TRAINER_HORTON, VermilionGym_Text_JugglerHortonSeen, VermilionGym_Text_JugglerHortonBeaten
 	msgbox VermilionGym_Text_JugglerHortonAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -259,24 +259,27 @@ VermilionCity_Gym_EventScript_Surge::
 	call Common_EventScript_PlayGymBadgeFanfare
 	msgbox VermilionGym_Text_ThunderBadgeInfo, MSGBOX_DEFAULT
 	setflag FLAG_BADGE11_GET
-	special Achievement_CheckAll
 	setflag FLAG_DEFEATED_VERMILION_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 11
 	call Common_EventScript_SetGymTrainers
+	checkitem ITEM_TM_SHOCK_WAVE
 	call_if_eq VAR_RESULT, TRUE, VermilionCity_Gym_EventScript_GiveThunderstone
 	call_if_eq VAR_RESULT, FALSE, VermilionCity_Gym_EventScript_GiveTM
+	clearflag FLAG_HIDE_PLANT_SURGE
 	closemessage
 	release
 	end
 
 VermilionCity_Gym_EventScript_GiveThunderstone::
 	msgbox VermilionGym_Text_LtSurgeThunderstone, MSGBOX_DEFAULT
-	giveitem ITEM_POTION
+	giveitem ITEM_THUNDER_STONE
 	return
 
 VermilionCity_Gym_EventScript_GiveTM::
-	msgbox VermilionGym_Text_LtSurgeTm, MSGBOX_DEFAULT
+	msgbox VermilionGym_Text_LtSurge_GiveTM, MSGBOX_DEFAULT
+	giveitem ITEM_TM_SHOCK_WAVE
+	msgbox VermilionGym_Text_LtSurge_ExplainTM, MSGBOX_DEFAULT
 	return
 
 VermilionCity_Gym_EventScript_Surge_Defeated::
@@ -286,34 +289,39 @@ VermilionCity_Gym_EventScript_Surge_Defeated::
 	end
 
 VermilionGym_Text_LtSurgeIntro:
-	.string "{SPEAKER NAME_LT_SURGE}Hey, you little tyke!\p"
+	.string "SURGE: Hey, you little tyke!\p"
 	.string "I have to hand it to you.\n"
 	.string "It may not be very smart to\l"
 	.string "challenge me, but it takes guts!\p"
 	.string "When it comes to electric\n"
-	.string "Pokémon, I'm number one!\p"
+	.string "POKéMON, I'm number one!\p"
 	.string "I've never lost on the\n"
 	.string "battlefield.\p"
 	.string "I'll zap you just like I did my\n"
 	.string "enemies in war!$"
 
 VermilionGym_Text_LtSurgeWinLoss:
-	.string "Surge: Arrrgh! You are strong!\p"
-	.string "Ok, kid. You get Thunderbadge!$"
+	.string "SURGE: Arrrgh! You are strong!\p"
+	.string "OK, kid. You get THUNDERBADGE!$"
 
 VermilionGym_Text_ReceivedThunderBadge:
-	.string "{PLAYER} received Thunderbadge.$"
+	.string "{PLAYER} received THUNDERBADGE.$"
 
 VermilionGym_Text_ThunderBadgeInfo:
-	.string "{SPEAKER NAME_LT_SURGE}Thunderbadge increases\n"
-	.string "Pokémon's speed.\p"
+	.string "SURGE: THUNDERBADGE increases\n"
+	.string "POKéMON's speed.\p"
 	.string "Consider it proof that you\n"
 	.string "defeated me.\p"
 	.string "You wear it proudly, hear?$"
 
-VermilionGym_Text_LtSurgeTm:
+VermilionGym_Text_LtSurge_GiveTM:
 	.string "And take this TM. It served me\n"
 	.string "well in the war!$"
+
+VermilionGym_Text_LtSurge_ExplainTM:
+	.string "It's SHOCK WAVE.\p"
+	.string "A shockingly accurate move\n"
+	.string "which hits every time!$"
 
 VermilionGym_Text_LtSurgeThunderstone:
 	.string "And take this stone. It has real\n"
@@ -321,44 +329,46 @@ VermilionGym_Text_LtSurgeThunderstone:
 
 
 VermilionGym_Text_LtSurgePostBattle:
-	.string "{SPEAKER NAME_LT_SURGE}Hey, kid! Still slugging\n"
+	.string "SURGE: Hey, kid! Still slugging\n"
 	.string "and chugging away?\p"
-	.string "My Pokémon and I are still at it!$"
+	.string "My POKéMON and I are still at it!$"
 
 VermilionGym_Text_SurgeRematch:
-	.string "{SPEAKER NAME_LT_SURGE}So, you're now Kanto\n"
-	.string "Champion!\p"
+	.string "SURGE: So, you're now KANTO\n"
+	.string "CHAMPION!\p"
 	.string "Impressive work, kid!\n"
 	.string "But don't think I'm done!\p"
 	.string "How about we have a go again?$"
 
 VermilionGym_Text_SurgeRematchDefeat:
-	.string "{SPEAKER NAME_LT_SURGE}Arrrgh! You're still just\n"
+	.string "SURGE: Arrrgh! You're still just\n"
 	.string "as strong!$"
 
 VermilionGym_Text_GentlemanGregorySeen:
-	.string "You're here to defeat Lt.Surge?\p"
+	.string "You're here to defeat LT.SURGE?\p"
 	.string "Not if I can help it!$"
 
 VermilionGym_Text_GentlemanGregoryBeaten:
 	.string "Sorry I failed you,\n"
-	.string "Lt.Surge, sir!$"
+	.string "LT.SURGE, sir!$"
 
 VermilionGym_Text_GentlemanGregoryAfter:
 	.string "When I was still in the army,\n"
-	.string "Lt.Surge saved my life.$"
+	.string "LT.SURGE saved my life.$"
 
 VermilionGym_Text_GuitaristVincentSeen:
-	.string "Lt.Surge recognized my potential\n"
-	.string "with electric Pokémon.\p"
+	.string "LT.SURGE recognized my potential\n"
+	.string "with electric POKéMON.\p"
 	.string "Think you can beat me?$"
 
 VermilionGym_Text_GuitaristVincentBeaten:
 	.string "Ooh, how shocking!$"
 
 VermilionGym_Text_GuitaristVincentAfter:
-	.string "If the Gym's traps were working,\n"
-	.string "you would have been toast…$"
+	.string "Mom told me not to quit my\n"
+	.string "day job, but what am I supposed\l"
+	.string "to do when I'm not finding\l"
+	.string "success there either?$"
 
 VermilionGym_Text_JugglerHortonSeen:
 	.string "I'm going to take you down!\n"
@@ -370,20 +380,20 @@ VermilionGym_Text_JugglerHortonBeaten:
 VermilionGym_Text_JugglerHortonAfter:
 	.string "Don't get too comfortable about\n"
 	.string "beating me…\p"
-	.string "Lt.Surge is tough.$"
+	.string "LT.SURGE is tough.$"
 
 VermilionCity_Gym_Text_GymGuyAdvice::
     .string "Yo!\n"
     .string "Champ in the making!\p"
-    .string "Lt. Surge has a nickname.\p"
+    .string "LT. SURGE has a nickname.\p"
     .string "People refer to him as the\n"
     .string "Lightning American!\p"
     .string "He's an expert on electric\n"
-    .string "Pokémon.\p"
-    .string "Flying/Water-type Pokémon match\n"
-    .string "poorly against the Electric type.\p"
+    .string "POKéMON.\p"
+    .string "FLYING/WATER-type POKéMON match\n"
+    .string "poorly against the ELECTRIC type.\p"
     .string "Beware of paralysis, too.\p"
-    .string "Lt. Surge is very cautious.\p"
+    .string "LT. SURGE is very cautious.\p"
     .string "He's locked himself in, so it won't\n"
     .string "be easy getting to him.$"
 
@@ -393,17 +403,17 @@ VermilionCity_Gym_Text_GymGuyPostVictory::
 	.string "It sure made me nervous.$"
 
 VermilionCity_Gym_Text_GymStatue::
-    .string "Vermilion Pokémon Gym\n"
-    .string "Leader: Lt. Surge\p"
-	.string "Winning Trainers:\n"
-	.string "Blue, Red$"
+    .string "VERMILION POKéMON GYM\n"
+    .string "LEADER: LT. SURGE\p"
+	.string "WINNING TRAINERS:\n"
+	.string "BLUE, RED$"
 
 
 VermilionCity_Gym_Text_GymStatuePlayerWon::
-    .string "Vermilion Pokémon Gym\n"
-    .string "Leader: Lt. Surge\p"
-    .string "Winning Trainers:\n"
-    .string "Blue, Red, {PLAYER}$"
+    .string "VERMILION POKéMON GYM\n"
+    .string "LEADER: LT. SURGE\p"
+    .string "WINNING TRAINERS:\n"
+    .string "BLUE, RED, {PLAYER}$"
 
 VermilionCity_Gym_Text_NopeOnlyTrashHere::
     .string "Nope!\n"
@@ -423,3 +433,4 @@ VermilionCity_Gym_Text_OnlyTrashLocksWereReset::
     .string "There's only trash here.\p"
     .string "Hey!\n"
     .string "The electric locks were reset!$"
+

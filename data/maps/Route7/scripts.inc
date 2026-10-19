@@ -19,11 +19,11 @@ Route7_Text_UndergroundPathSign:
 	.string "What's this flyer?\p"
 	.string "… Uncouth trainers have been\n"
 	.string "holding battles in the\l"
-	.string "Underground Path.\p"
+	.string "UNDERGROUND PATH.\p"
 	.string "Because of rising complaints by\n"
-	.string "local residents, the Underground\l"
-	.string "Path has been sealed indefinitely.\p"
-	.string "Celadon Police$"
+	.string "local residents, the UNDERGROUND\l"
+	.string "PATH has been sealed indefinitely.\p"
+	.string "CELADON POLICE$"
 
 Route7_Text_LockedDoor:
 	.string "It's locked…$"

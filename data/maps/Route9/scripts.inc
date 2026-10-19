@@ -8,32 +8,32 @@ Route9_OnTransition:
 	end
 
 Route9_EventScript_Dean::
-	trainerbattle_single TRAINER_DEAN Route9_Text_CamperDeanSeen, Route9_Text_CamperDeanBeaten
+	trainerbattle_single TRAINER_DEAN, Route9_Text_CamperDeanSeen, Route9_Text_CamperDeanBeaten
 	msgbox Route9_Text_CamperDeanAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route9_EventScript_Heidi::
-	trainerbattle_single TRAINER_HEIDI Route9_Text_PicnickerHeidiSeen, Route9_Text_PicnickerHeidiBeaten
+	trainerbattle_single TRAINER_HEIDI, Route9_Text_PicnickerHeidiSeen, Route9_Text_PicnickerHeidiBeaten
 	msgbox Route9_Text_PicnickerHeidiAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route9_EventScript_Edna::
-	trainerbattle_single TRAINER_EDNA Route9_Text_PicnickerEdnaSeen, Route9_Text_PicnickerEdnaBeaten
+	trainerbattle_single TRAINER_EDNA, Route9_Text_PicnickerEdnaSeen, Route9_Text_PicnickerEdnaBeaten
 	msgbox Route9_Text_PicnickerEdnaAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route9_EventScript_Sid::
-	trainerbattle_single TRAINER_SID Route9_Text_CamperSidSeen, Route9_Text_CamperSidBeaten
+	trainerbattle_single TRAINER_SID, Route9_Text_CamperSidSeen, Route9_Text_CamperSidBeaten
 	msgbox Route9_Text_CamperSidAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route9_EventScript_Tim::
-	trainerbattle_single TRAINER_TIM Route9_Text_HikerTimSeen, Route9_Text_HikerTimBeaten
+	trainerbattle_single TRAINER_TIM, Route9_Text_HikerTimSeen, Route9_Text_HikerTimBeaten
 	msgbox Route9_Text_HikerTimAfter, MSGBOX_AUTOCLOSE
 	end
 
 Route9_EventScript_Sidney::
-	trainerbattle_single TRAINER_SIDNEY Route9_Text_HikerSidneySeen, Route9_Text_HikerSidneyBeaten
+	trainerbattle_single TRAINER_SIDNEY, Route9_Text_HikerSidneySeen, Route9_Text_HikerSidneyBeaten
 	msgbox Route9_Text_HikerSidneyAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -41,17 +41,21 @@ Route9_EventScript_Sign::
 	msgbox Route9_Text_Sign, MSGBOX_SIGN
 	end
 
+Route9_EventScript_Item_Flash_Cannon::
+    finditem ITEM_TM_FLASH_CANNON
+    end
+
 Route9_Text_CamperDeanSeen:
-	.string "I came to explore Rock Tunnel.$"
+	.string "I came to explore ROCK TUNNEL.$"
 
 Route9_Text_CamperDeanBeaten:
 	.string "Whoa! Danger, man.$"
 
 Route9_Text_CamperDeanAfter:
-	.string "My Pokémon were hurt before even\n"
-	.string "entering Rock Tunnel.\p"
-	.string "I'd better take them to a Pokémon\n"
-	.string "Center right away.$"
+	.string "My POKéMON were hurt before even\n"
+	.string "entering ROCK TUNNEL.\p"
+	.string "I'd better take them to a POKéMON\n"
+	.string "CENTER right away.$"
 
 Route9_Text_PicnickerHeidiSeen:
 	.string "Have you ever been to a picnic?\p"
@@ -88,9 +92,9 @@ Route9_Text_PicnickerEdnaAfter:
 	.string "vital.$"
 
 Route9_Text_HikerTimSeen:
-	.string "She'll be coming 'round Mt.Silver\n"
+	.string "She'll be coming 'round MT.SILVER\n"
 	.string "when she comes…\p"
-	.string "Mt.Silver is in Johto, right?$"
+	.string "MT.SILVER is in JOHTO, right?$"
 
 Route9_Text_HikerTimBeaten:
 	.string "I was too busy singing…$"
@@ -106,9 +110,9 @@ Route9_Text_HikerSidneyBeaten:
 	.string "Oh, dang! I lost that…$"
 
 Route9_Text_HikerSidneyAfter:
-	.string "The Power Plant is across a small\n"
+	.string "The POWER PLANT is across a small\n"
 	.string "river.$"
 
 Route9_Text_Sign:
-	.string "Route 9\p"
-	.string "Cerulean City - Rock Tunnel$"
+	.string "ROUTE 9\p"
+	.string "CERULEAN CITY - ROCK TUNNEL$"

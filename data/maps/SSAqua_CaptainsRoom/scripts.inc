@@ -1,6 +1,3 @@
-.set LOCALID_SSAQUA_CAPTAINS_ROOM_GRANDDAUGHTER, 2
-.set LOCALID_SSAQUA_CAPTAINS_ROOM_CAPTAIN, 1
-
 SSAqua_CaptainsRoom_MapScripts::
 	.byte 0
 
@@ -21,7 +18,8 @@ SSAqua_CaptainsRoom_EventScript_Granddaughter::
 	turnobject LOCALID_SSAQUA_CAPTAINS_ROOM_CAPTAIN, DIR_WEST
 	playse SE_PIN
 	applymovement LOCALID_SSAQUA_CAPTAINS_ROOM_CAPTAIN, Common_Movement_QuestionMark
-	waitmovement 0
+	delay 55
+	waitmovement LOCALID_SSAQUA_CAPTAINS_ROOM_CAPTAIN
 	delay 60
 	faceplayer
 	msgbox SSAqua_CaptainsRoom_Text_GranddaughterHasToFindGrandpa, MSGBOX_DEFAULT
@@ -31,6 +29,7 @@ SSAqua_CaptainsRoom_EventScript_Granddaughter::
 	setvar VAR_SSAQUA_STATE, 4
 	clearflag FLAG_HIDE_SSAQUA_ROOM_SSE_GRANDDAUGHTER
 	warp MAP_SSAQUA_ROOM_SSE, 0
+	waitstate
 	release
 	end
 
@@ -41,7 +40,7 @@ SSAqua_CaptainsRoom_Movement_Jump:
 	step_end
 
 SSAqua_CaptainsRoom_Text_GranddaughterCaptainPlayWithMe:
-	.string "Captain, play with me, please?\p"
+	.string "CAPTAIN, play with me, please?\p"
 	.string "I'm bored! I want to play more!$"
 
 SSAqua_CaptainsRoom_Text_GranddaughterHasToFindGrandpa:
@@ -57,7 +56,7 @@ SSAqua_CaptainsRoom_Text_CaptainExhausting:
 	.string "was exhausting.$"
 
 SSAqua_CaptainsRoom_Text_CaptainHowDoYouLike:
-	.string "How do you like S.S.Aqua's ride?\p"
+	.string "How do you like S.S.AQUA's ride?\p"
 	.string "She practically skates across\n"
 	.string "the waves.$"
 

@@ -330,6 +330,12 @@ extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_MollyHale;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_KingsCarrotIce;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_KingsCarrotShade;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_CrystalGlint;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_SleepingSnorlax_hns;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_SsAqua_hns;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_SwimmingLapras_hns;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_TrainWest_hns;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_GoldNormal_hns;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_KrisNormal_hns;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Skyla;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Rosa;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Peony;
@@ -740,6 +746,12 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_KINGS_CARROT_ICE] =            &gObjectEventGraphicsInfo_KingsCarrotIce,
     [OBJ_EVENT_GFX_KINGS_CARROT_SHADE] =          &gObjectEventGraphicsInfo_KingsCarrotShade,
     [OBJ_EVENT_GFX_CRYSTAL_GLINT] =               &gObjectEventGraphicsInfo_CrystalGlint,
+    [OBJ_EVENT_GFX_SLEEPING_SNORLAX] = &gObjectEventGraphicsInfo_SleepingSnorlax_hns,
+    [OBJ_EVENT_GFX_SS_AQUA] = &gObjectEventGraphicsInfo_SsAqua_hns,
+    [OBJ_EVENT_GFX_SWIMMING_LAPRAS] = &gObjectEventGraphicsInfo_SwimmingLapras_hns,
+    [OBJ_EVENT_GFX_TRAIN_WEST] = &gObjectEventGraphicsInfo_TrainWest_hns,
+    [OBJ_EVENT_GFX_GOLD_NORMAL] = &gObjectEventGraphicsInfo_GoldNormal_hns,
+    [OBJ_EVENT_GFX_KRIS_NORMAL] = &gObjectEventGraphicsInfo_KrisNormal_hns,
     [OBJ_EVENT_GFX_SKYLA] =                       &gObjectEventGraphicsInfo_Skyla,
     [OBJ_EVENT_GFX_ROSA] =                        &gObjectEventGraphicsInfo_Rosa,
     [OBJ_EVENT_GFX_PEONY] =                       &gObjectEventGraphicsInfo_Peony,

@@ -1,6 +1,3 @@
-.set LOCALID_MUSEUM_ROOTFOSSIL, 5
-.set LOCALID_MUSEUM_CLAWFOSSIL, 6
-
 PewterCity_Museum_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RuinsOfAlph_Lab_OnTransition
 	.byte 0
@@ -60,7 +57,7 @@ PewterCity_Museum_1F_Text_FossilWoman:
 
 PewterCity_Museum_1F_Text_FossilWomanAfter:
 	.string "We often share research with the\n"
-	.string "Ruins Of Alph researchers.\p"
+	.string "RUINS OF ALPH researchers.\p"
 	.string "We even share fossils with them\n"
 	.string "through the PC!$"
 
@@ -72,4 +69,4 @@ PewterCity_Museum_1F_Text_Oldman:
 
 PewterCity_Museum_1F_Text_Bones:
 	.string "Bones of an ancient dragon\n"
-	.string "Pokémon.$"
+	.string "POKéMON.$"

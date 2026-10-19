@@ -197,13 +197,17 @@
   "FLAG_VISITED_CELADON_CITY",
   "FLAG_VISITED_CERULEAN_CITY",
   "FLAG_VISITED_CINNABAR_ISLAND",
+  "FLAG_VISITED_FUCHSIA_CITY",
   "FLAG_VISITED_INDIGO_PLATEAU",
   "FLAG_VISITED_LAVENDER_TOWN",
   "FLAG_VISITED_MT_SILVER",
+  "FLAG_VISITED_PALLET_TOWN",
+  "FLAG_VISITED_PEWTER_CITY",
   "FLAG_VISITED_RECEPTION_GATE",
   "FLAG_VISITED_ROUTE10",
   "FLAG_VISITED_SAFFRON_CITY",
   "FLAG_VISITED_VERMILION_CITY",
+  "FLAG_VISITED_VIRIDIAN_CITY",
   "ITEM_AURORA_TICKET",
   "ITEM_BIG_MUSHROOM",
   "ITEM_BIG_NUGGET",
@@ -650,6 +654,7 @@
   "VAR_MT_SILVER_STATE",
   "VAR_NEWBARK_TOWN_STATE",
   "VAR_NUM_BADGES",
+  "VAR_OAK_MT_SILVER_CALL",
   "VAR_OBJ_GFX_ID_0",
   "VAR_OBJ_GFX_ID_1",
   "VAR_OBJ_GFX_ID_2",
@@ -658,6 +663,7 @@
   "VAR_ROUTE22_GIOVANNI_STATE",
   "VAR_ROUTE27_BAOBA_CALL",
   "VAR_ROUTE27_STATE",
+  "VAR_ROUTE28_SCIENTIST",
   "VAR_SAFARI_ZONE_STATE",
   "VAR_SSAQUA_STATE",
   "VAR_STARTER_MON",
@@ -2319,40 +2325,13 @@
     "proposta": "0x1117"
    },
    {
-    "token": "FLAG_VISITED_FUCHSIA_CITY",
-    "base": "FLAG_VISITED_FUCHSIA_CITY",
-    "n_mapas": 1,
-    "mapas": [
-     "FuchsiaCity"
-    ],
-    "proposta": "0x1118"
-   },
-   {
     "token": "FLAG_VISITED_KANTO",
     "base": "FLAG_VISITED_KANTO",
     "n_mapas": 1,
     "mapas": [
      "Route27"
     ],
-    "proposta": "0x1119"
-   },
-   {
-    "token": "FLAG_VISITED_PALLET_TOWN",
-    "base": "FLAG_VISITED_PALLET_TOWN",
-    "n_mapas": 1,
-    "mapas": [
-     "PalletTown"
-    ],
-    "proposta": "0x111A"
-   },
-   {
-    "token": "FLAG_VISITED_PEWTER_CITY",
-    "base": "FLAG_VISITED_PEWTER_CITY",
-    "n_mapas": 1,
-    "mapas": [
-     "PewterCity"
-    ],
-    "proposta": "0x111B"
+    "proposta": "0x1118"
    },
    {
     "token": "FLAG_VISITED_ROUTE4",
@@ -2361,16 +2340,7 @@
     "mapas": [
      "Route4_PokemonCenter"
     ],
-    "proposta": "0x111C"
-   },
-   {
-    "token": "FLAG_VISITED_VIRIDIAN_CITY",
-    "base": "FLAG_VISITED_VIRIDIAN_CITY",
-    "n_mapas": 1,
-    "mapas": [
-     "ViridianCity"
-    ],
-    "proposta": "0x111D"
+    "proposta": "0x1119"
    }
   ],
   "ITEM_": [
@@ -2979,34 +2949,13 @@
     "proposta": "0x4135"
    },
    {
-    "token": "VAR_OAK_MT_SILVER_CALL",
-    "base": "VAR_OAK_MT_SILVER_CALL",
-    "n_mapas": 3,
-    "mapas": [
-     "SSAqua_1F",
-     "ViridianCity",
-     "ViridianCity_Gym"
-    ],
-    "proposta": "0x4136"
-   },
-   {
     "token": "VAR_PEWTER_CITY_STATE",
     "base": "VAR_PEWTER_CITY_STATE",
     "n_mapas": 1,
     "mapas": [
      "MtMoon_Cave"
     ],
-    "proposta": "0x4137"
-   },
-   {
-    "token": "VAR_ROUTE28_SCIENTIST",
-    "base": "VAR_ROUTE28_SCIENTIST",
-    "n_mapas": 2,
-    "mapas": [
-     "PalletTown_Lab",
-     "Route28"
-    ],
-    "proposta": "0x4138"
+    "proposta": "0x4136"
    },
    {
     "token": "VAR_SINJOH_STORYLINE",
@@ -3018,7 +2967,7 @@
      "PokemonLeague_BrunosRoom",
      "PokemonLeague_ChampionsRoom"
     ],
-    "proposta": "0x4139"
+    "proposta": "0x4137"
    },
    {
     "token": "VAR_TEMP_MTSILVER_RESUME_BLIZZARD_SE",
@@ -3027,7 +2976,7 @@
     "mapas": [
      "MtSilver_SummitDay"
     ],
-    "proposta": "0x413A"
+    "proposta": "0x4138"
    },
    {
     "token": "VAR_VERMILION_CITY_SAMSON",
@@ -3037,7 +2986,7 @@
      "Route10_PowerPlantBackRoom",
      "VermilionCity"
     ],
-    "proposta": "0x413B"
+    "proposta": "0x4139"
    },
    {
     "token": "VAR_VERMILION_CITY_STEVEN",
@@ -3047,7 +2996,7 @@
      "SSAqua_1F",
      "VermilionCity"
     ],
-    "proposta": "0x413C"
+    "proposta": "0x413A"
    },
    {
     "token": "VAR_VIRIDIAN_FOREST_PICHU",
@@ -3058,7 +3007,7 @@
      "SSAqua_1F",
      "ViridianForest"
     ],
-    "proposta": "0x413D"
+    "proposta": "0x413B"
    }
   ]
  }

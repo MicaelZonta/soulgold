@@ -1,5 +1,3 @@
-.set LOCALID_SILPHCO_STEVEN, 2
-
 SaffronCity_SilphCo_MapScripts::
 	.byte 0
 
@@ -12,7 +10,8 @@ SaffronCity_SilphCo_EventScript_Steven::
 	delay 20
 	playse SE_PIN
 	applymovement LOCALID_SILPHCO_STEVEN, Common_Movement_ExclamationMark
-	delay 60
+	delay 55
+	waitmovement LOCALID_SILPHCO_STEVEN
 SaffronCity_SilphCo_EventScript_StevenChooseStone::
 	message SaffronCity_SilphCo_Text_Steven2
 	waitmessage
@@ -31,7 +30,7 @@ SaffronCity_SilphCo_EventScript_Refused::
 	end
 
 SaffronCity_SilphCo_Text_Refused:
-	.string "{SPEAKER NAME_STEVEN}Oh...$"
+	.string "Oh...$"
 
 SaffronCity_SilphCo_EventScript_TreeckoChosen::
 	closemessage
@@ -93,18 +92,18 @@ SaffronCity_SilphCo_Movement_StevenLeave:
 
 
 SaffronCity_SilphCo_Text_Steven1:
-	.string "{SPEAKER NAME_STEVEN}Hello...\n"
+	.string "Hello...\n"
 	.string "You're breaking up...\l"
 	.string "I think it depends on my dad.\l"
 	.string "I see...\n"
 	.string "I'll be on my way. See you soon.$"
 SaffronCity_SilphCo_Text_Steven2:
-	.string "{SPEAKER NAME_STEVEN}You are... I remember your\n"
+	.string "STEVEN: You are... I remember your\n"
 	.string "eyes.\p"
 	.string "When I see a trainer whose eyes\n"
 	.string "twinkle, I always remember.\p"
-	.string "You have a Pokédex! So you are\n"
-	.string "also in search of Pokémon!\l"
+	.string "You have a POKéDEX! So you are\n"
+	.string "also in search of POKéMON!\l"
 	.string "Let me see...\p"
 	.string "I think I can help you with that.\p"
 	.string "Let's say that you have stones in\n"
@@ -138,16 +137,16 @@ SaffronCity_SilphCo_EventScript_Sign2::
 	end
 
 SilphCo_Text_Sign1:
-	.string "Silph Co.\n"
-	.string "1F Reception.$"
+	.string "SILPH CO.\n"
+	.string "1F RECEPTION.$"
 
 SilphCo_Text_Sign2:
-	.string "Silph Co.\n"
-	.string "Elevator Out Of Service$"
+	.string "SILPH CO.\n"
+	.string "ELEVATOR OUT OF SERVICE$"
 
 SilphCo_Text_Receptionist:
-	.string "Welcome. This is Silph Co.'s Head\n"
-	.string "Office Building.$"
+	.string "Welcome. This is SILPH CO.'s HEAD\n"
+	.string "OFFICE BUILDING.$"
 
 SilphCo_Text_Officer:
 	.string "Only employees are permitted to\n"
@@ -157,5 +156,5 @@ SilphCo_Text_Officer:
 	.string "have this neat little souvenir.$"
 
 SilphCo_Text_Officer_GotUpGrade:
-	.string "It's Silph Co.'s latest product.\p"
+	.string "It's SILPH CO.'s latest product.\p"
 	.string "It's not for sale anywhere yet.$"

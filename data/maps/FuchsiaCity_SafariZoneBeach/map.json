@@ -39,7 +39,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(QUAGSIRE)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LOMBRE)",
       "x": 9,
       "y": 33,
       "elevation": 0,
@@ -78,7 +78,8 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CACNEA)",
+      "local_id": "LOCALID_SAFARIATTENDANT_1",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LOTAD)",
       "x": 11,
       "y": 18,
       "elevation": 0,
@@ -91,6 +92,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_SAFARIATTENDANT_3",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(VIBRAVA)",
       "x": 10,
       "y": 40,
@@ -104,6 +106,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_SAFARIATTENDANT_4",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CACNEA)",
       "x": 18,
       "y": 18,
@@ -117,6 +120,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_SAFARIATTENDANT_2",
       "graphics_id": "OBJ_EVENT_GFX_ATTENDANT_M",
       "x": 0,
       "y": 12,
@@ -173,5 +177,7 @@
       "script": "SafariZoneFuchsia_Trigger2"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

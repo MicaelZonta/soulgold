@@ -37,6 +37,7 @@ Route10_PowerPlantBackRoom_EventScript_ManagerCheckPart::
 	removeitem ITEM_MACHINE_PART
 	msgbox Route10_PowerPlantBackRoom_Text_ManagerThatsThePart, MSGBOX_DEFAULT
 	msgbox Route10_PowerPlantBackRoom_Text_ManagerTakeThisTM, MSGBOX_DEFAULT
+	giveitem ITEM_TM_THUNDER
 	msgbox Route10_PowerPlantBackRoom_Text_ManagerTM07IsZapCannon, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_KANTO_ROCKET_STORY_STATE, 7
@@ -44,6 +45,7 @@ Route10_PowerPlantBackRoom_EventScript_ManagerCheckPart::
 	setvar VAR_CERULEAN_CITY_STATE, 2
 	setflag FLAG_HIDE_POWER_PLANT_ENGINEER
 	setflag FLAG_RETURNED_MACHINE_PART
+	setvar VAR_VERMILION_CITY_SAMSON, 1
 	release
 	end
 
@@ -58,24 +60,24 @@ Route10_PowerPlantBackRoom_EventScript_Engineer::
 	end
 
 Route10_PowerPlantBackRoom_Text_ManagerWhoWouldRuinMyGenerator:
-	.string "{SPEAKER NAME_MANAGER}I, I, I'm ready to blast\n"
+	.string "MANAGER: I, I, I'm ready to blast\n"
 	.string "someone!\p"
 	.string "Who would dare ruin my\n"
 	.string "generator?\p"
 	.string "I spent so much time on it!\p"
 	.string "If I catch him, he's going to\n"
-	.string "get a taste of my Zap Cannon!$"
+	.string "get a taste of my ZAP CANNON!$"
 
 Route10_PowerPlantBackRoom_Text_ManagerIWontForgiveCulprit:
-	.string "{SPEAKER NAME_MANAGER}I won't forgive him!\p"
+	.string "MANAGER: I won't forgive him!\p"
 	.string "The culprit can cry and\n"
 	.string "apologize,\p"
 	.string "but I'll still hammer him!\p"
 	.string "Gahahahah!$"
 
 Route10_PowerPlantBackRoom_Text_ManagerThatsThePart:
-	.string "{SPEAKER NAME_MANAGER}Ah! Yeah!\p"
-	.string "That's the missing Part from my\n"
+	.string "MANAGER: Ah! Yeah!\p"
+	.string "That's the missing PART from my\n"
 	.string "beloved generator! You found it?$"
 
 Route10_PowerPlantBackRoom_Text_ManagerTakeThisTM:
@@ -83,14 +85,14 @@ Route10_PowerPlantBackRoom_Text_ManagerTakeThisTM:
 	.string "Here! Take this TM as a reward!$"
 
 Route10_PowerPlantBackRoom_Text_ManagerTM07IsZapCannon:
-	.string "{SPEAKER NAME_MANAGER}That TM is Thunder.\p"
+	.string "MANAGER: That TM is THUNDER.\p"
 	.string "It's a powerful technique!\p"
 	.string "It's not what anyone would\n"
 	.string "consider accurate, but it packs a\l"
 	.string "wallop!$"
 
 Route10_PowerPlantBackRoom_Text_ManagerMyBelovedGenerator:
-	.string "{SPEAKER NAME_MANAGER}My beloved generator!\p"
+	.string "MANAGER: My beloved generator!\p"
 	.string "Keep pumping the electricity out!$"
 
 Route10_PowerPlantBackRoom_Text_Engineer:
