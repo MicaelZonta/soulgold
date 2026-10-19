@@ -1,9 +1,9 @@
 PalletTown_MapScripts::
-	map_script MAP_SCRIPT_ON_LOAD, PalletTown_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, PalletTown_EventScript_CityEnter
 	.byte 0
 
-PalletTown_OnLoad::
-	setrespawn HEAL_LOCATION_PALLET_TOWN
+PalletTown_EventScript_CityEnter::
+	setflag FLAG_VISITED_PALLET_TOWN
 	end
 
 PalletTown_EventScript_Woman::
@@ -26,26 +26,26 @@ PalletTown_EventScript_OaksLabSign::
 	end	
 
 PalletTown_Text_Teacher:
-	.string "I'm raising Pokémon too.\p"
+	.string "I'm raising POKéMON too.\p"
 	.string "They serve as my private\n"
 	.string "guards.$"
 
 PalletTown_Text_Fisher:
 	.string "Technology is incredible!\p"
-	.string "You can now trade Pokémon\n"
+	.string "You can now trade POKéMON\n"
 	.string "across time like e-mail.$"
 
 PalletTown_Text_Sign:
-	.string "Pallet Town\p"
+	.string "PALLET TOWN\p"
 	.string "A Tranquil Setting of Peace\n"
 	.string "& Purity$"
 
 PalletTown_Text_RedsHouseSign:
-	.string "Red's House$"
+	.string "RED'S HOUSE$"
 
 PalletTown_Text_OaksLabSign:
-	.string "Oak Pokémon\n"
-	.string "Research Lab$"
+	.string "OAK POKéMON\n"
+	.string "RESEARCH LAB$"
 
 PalletTown_Text_BluesHouseSign:
-	.string "Blue's House$"
+	.string "BLUE'S HOUSE$"

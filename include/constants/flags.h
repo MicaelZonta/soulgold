@@ -1955,8 +1955,16 @@
 // Upstream numera (SYSTEM_FLAGS + 0x3), que aqui e FLAG_STARTED_SEASONAL_PERFUME_QUEST;
 // movida para o proximo slot livre no merge do upstream (19/10/2026).
 #define FLAG_FAST_HMS                                0x1096
-#define CUSTOM_FLAGS_END                            FLAG_FAST_HMS
-// PROXIMA FLAG NOVA: 0x1097 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Visited das 4 cidades de Kanto que faltavam (Fly/region map); setadas no
+// ON_TRANSITION do map.json de cada cidade, importado do HnS (adocao do
+// Kanto, Fase 2+). O bloco SYSTEM_FLAGS de visited esta cheio, dai viverem
+// aqui, como FLAG_VISITED_ROUTE50 e FLAG_VISITED_SUN_MOON_ALTAR.
+#define FLAG_VISITED_PALLET_TOWN                     0x1097
+#define FLAG_VISITED_VIRIDIAN_CITY                   0x1098
+#define FLAG_VISITED_PEWTER_CITY                     0x1099
+#define FLAG_VISITED_FUCHSIA_CITY                    0x109A
+#define CUSTOM_FLAGS_END                            FLAG_VISITED_FUCHSIA_CITY
+// PROXIMA FLAG NOVA: 0x109B (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

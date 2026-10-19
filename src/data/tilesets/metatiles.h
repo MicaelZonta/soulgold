@@ -593,3 +593,20 @@ const u16 gMetatileAttributes_Greenfield[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_HaleMansion[] = INCBIN_U16("data/tilesets/secondary/hale_mansion/metatiles.bin");
 const u16 gMetatileAttributes_HaleMansion[] = INCBIN_U16("data/tilesets/secondary/hale_mansion/metatile_attributes.bin");
+
+// Tilesets importados do Heart & Soul 2.0.6 (adocao do Kanto; mantem o nome _Hns do P).
+
+const u16 gMetatiles_Kanto_General_Hns[] = INCBIN_U16("data/tilesets/primary/kanto_general_hns/metatiles.bin");
+const u16 gMetatileAttributes_Kanto_General_Hns[] = INCBIN_U16("data/tilesets/primary/kanto_general_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_Johto_Building_Hns[] = INCBIN_U16("data/tilesets/primary/johto_building_hns/metatiles.bin");
+const u16 gMetatileAttributes_Johto_Building_Hns[] = INCBIN_U16("data/tilesets/primary/johto_building_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_PalletTown_Hns[] = INCBIN_U16("data/tilesets/secondary/pallet_town_hns/metatiles.bin");
+const u16 gMetatileAttributes_PalletTown_Hns[] = INCBIN_U16("data/tilesets/secondary/pallet_town_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_House_Lab_Hns[] = INCBIN_U16("data/tilesets/secondary/house_lab_hns/metatiles.bin");
+const u16 gMetatileAttributes_House_Lab_Hns[] = INCBIN_U16("data/tilesets/secondary/house_lab_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_ViridianCity_Gym_Hns[] = INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/metatiles.bin");
+const u16 gMetatileAttributes_ViridianCity_Gym_Hns[] = INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/metatile_attributes.bin");

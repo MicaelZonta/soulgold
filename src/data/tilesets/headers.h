@@ -2334,3 +2334,60 @@ const struct Tileset gTileset_HaleMansion =
     .metatileAttributes = gMetatileAttributes_HaleMansion,
     .callback = NULL,
 };
+
+// Tilesets importados do Heart & Soul 2.0.6 (adocao do Kanto; mantem o nome _Hns do P).
+
+const struct Tileset gTileset_Kanto_General_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_Kanto_General_Hns,
+    .palettes = gTilesetPalettes_Kanto_General_Hns,
+    .metatiles = gMetatiles_Kanto_General_Hns,
+    .metatileAttributes = gMetatileAttributes_Kanto_General_Hns,
+    .callback = InitTilesetAnim_General,
+};
+
+const struct Tileset gTileset_Johto_Building_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_Johto_Building_Hns,
+    .palettes = gTilesetPalettes_Johto_Building_Hns,
+    .metatiles = gMetatiles_Johto_Building_Hns,
+    .metatileAttributes = gMetatileAttributes_Johto_Building_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PalletTown_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PalletTown_Hns,
+    .palettes = gTilesetPalettes_PalletTown_Hns,
+    .metatiles = gMetatiles_PalletTown_Hns,
+    .metatileAttributes = gMetatileAttributes_PalletTown_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_House_Lab_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_House_Lab_Hns,
+    .palettes = gTilesetPalettes_House_Lab_Hns,
+    .metatiles = gMetatiles_House_Lab_Hns,
+    .metatileAttributes = gMetatileAttributes_House_Lab_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_ViridianCity_Gym_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ViridianCity_Gym_Hns,
+    .palettes = gTilesetPalettes_ViridianCity_Gym_Hns,
+    .metatiles = gMetatiles_ViridianCity_Gym_Hns,
+    .metatileAttributes = gMetatileAttributes_ViridianCity_Gym_Hns,
+    .callback = NULL,
+};

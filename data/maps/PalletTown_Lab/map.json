@@ -2,7 +2,7 @@
   "id": "MAP_PALLET_TOWN_LAB",
   "name": "PalletTown_Lab",
   "layout": "LAYOUT_PALLET_TOWN_LAB",
-  "music": "MUS_HG_OAK",
+  "music": "MUS_HG_PALLET",
   "region_map_section": "MAPSEC_PALLET_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -12,10 +12,9 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
-      "local_id": "LOCALID_PROF_OAK",
       "graphics_id": "OBJ_EVENT_GFX_PROF_OAK",
       "x": 13,
       "y": 11,
@@ -26,7 +25,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PalletTown_Lab_EventScript_Oak",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_PROF_OAK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_M",
@@ -87,5 +87,7 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "PalletTown_Lab_EventScript_PC"
     }
-  ]
+  ],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

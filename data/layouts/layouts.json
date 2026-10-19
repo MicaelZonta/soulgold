@@ -4624,10 +4624,10 @@
     {
       "id": "LAYOUT_ROUTE1",
       "name": "Route1_Layout",
-      "width": 30,
+      "width": 50,
       "height": 40,
-      "primary_tileset": "gTileset_Johto_General",
-      "secondary_tileset": "gTileset_PalletTown",
+      "primary_tileset": "gTileset_Kanto_General_Hns",
+      "secondary_tileset": "gTileset_PalletTown_Hns",
       "border_filepath": "data/layouts/Route1/border.bin",
       "blockdata_filepath": "data/layouts/Route1/map.bin"
     },
@@ -5156,8 +5156,8 @@
       "name": "PalletTown_Layout",
       "width": 24,
       "height": 20,
-      "primary_tileset": "gTileset_Johto_General",
-      "secondary_tileset": "gTileset_PalletTown",
+      "primary_tileset": "gTileset_Kanto_General_Hns",
+      "secondary_tileset": "gTileset_PalletTown_Hns",
       "border_filepath": "data/layouts/PalletTown/border.bin",
       "blockdata_filepath": "data/layouts/PalletTown/map.bin"
     },
@@ -7276,8 +7276,8 @@
       "name": "PalletTown_Lab_Layout",
       "width": 32,
       "height": 28,
-      "primary_tileset": "gTileset_Johto_Building",
-      "secondary_tileset": "gTileset_House_Lab",
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_House_Lab_Hns",
       "border_filepath": "data/layouts/PalletTown_Lab/border.bin",
       "blockdata_filepath": "data/layouts/PalletTown_Lab/map.bin"
     },
@@ -7316,8 +7316,8 @@
       "name": "ViridianCity_Gym_Layout",
       "width": 11,
       "height": 22,
-      "primary_tileset": "gTileset_Johto_Building",
-      "secondary_tileset": "gTileset_ViridianCity_Gym",
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_ViridianCity_Gym_Hns",
       "border_filepath": "data/layouts/ViridianCity_Gym/border.bin",
       "blockdata_filepath": "data/layouts/ViridianCity_Gym/map.bin"
     },

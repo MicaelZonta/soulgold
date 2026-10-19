@@ -432,7 +432,12 @@
 // Upstream numbers it 0x4121, which here is VAR_RIFT_ALTAR_STEP; moved to the
 // next free slot when upstream was merged (19/10/2026).
 #define VAR_BATTLE_MUSIC_THEME                          0x4131
-// PROXIMA VAR NOVA: 0x4132 (livre ate VARS_END 0x42FF). Alocar aqui, em
+// Pos-game de Kanto importado do HnS (16 badges): a ligacao do Oak que abre o
+// Mt. Silver (escrita no Lab de Pallet / lida no ginasio de Viridian) e o
+// cientista da Route 28 (Oak poe 1 ao dar as 16 badges).
+#define VAR_OAK_MT_SILVER_CALL                          0x4132
+#define VAR_ROUTE28_SCIENTIST                           0x4133
+// PROXIMA VAR NOVA: 0x4134 (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 

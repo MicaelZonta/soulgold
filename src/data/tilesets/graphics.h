@@ -4370,3 +4370,100 @@ const u16 gTilesetPalettes_HaleMansion[][16] =
 };
 
 const u32 gTilesetTiles_HaleMansion[] = INCBIN_U32("data/tilesets/secondary/hale_mansion/tiles.4bpp.fastSmol");
+
+// Tilesets importados do Heart & Soul 2.0.6 (adocao do Kanto; mantem o nome _Hns do P).
+
+const u16 gTilesetPalettes_Kanto_General_Hns[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/kanto_general_hns/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Kanto_General_Hns[] = INCBIN_U32("data/tilesets/primary/kanto_general_hns/tiles.4bpp.fastSmol");
+
+const u16 gTilesetPalettes_Johto_Building_Hns[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/johto_building_hns/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Johto_Building_Hns[] = INCBIN_U32("data/tilesets/primary/johto_building_hns/tiles.4bpp.fastSmol");
+
+const u16 gTilesetPalettes_PalletTown_Hns[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/pallet_town_hns/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_PalletTown_Hns[] = INCBIN_U32("data/tilesets/secondary/pallet_town_hns/tiles.4bpp.fastSmol");
+
+const u16 gTilesetPalettes_House_Lab_Hns[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_lab_hns/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_House_Lab_Hns[] = INCBIN_U32("data/tilesets/secondary/house_lab_hns/tiles.4bpp.fastSmol");
+
+const u16 gTilesetPalettes_ViridianCity_Gym_Hns[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/viridian_city_gym_hns/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_ViridianCity_Gym_Hns[] = INCBIN_U32("data/tilesets/secondary/viridian_city_gym_hns/tiles.4bpp.fastSmol");
