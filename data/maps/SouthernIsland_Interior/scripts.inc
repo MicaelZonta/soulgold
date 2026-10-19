@@ -14,19 +14,21 @@ SouthernIsland_Interior_EventScript_TryRemoveLati::
 	return
 
 SouthernIsland_Interior_OnTransition:
-	call_if_eq VAR_ROAMER_POKEMON, 0, SouthernIsland_Interior_EventScript_SetUpLatios
-	call_if_ne VAR_ROAMER_POKEMON, 0, SouthernIsland_Interior_EventScript_SetUpLatias
+	call_if_eq VAR_ROAMER_POKEMON, 0, SouthernIsland_Interior_EventScript_SetUpMunkidori
+	call_if_ne VAR_ROAMER_POKEMON, 0, SouthernIsland_Interior_EventScript_SetUpOkidogi
 	call SouthernIsland_Interior_EventScript_SetUpPlayerGfx
 	end
 
-SouthernIsland_Interior_EventScript_SetUpLatios::
-	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_LATIOS
-	setvar VAR_TEMP_4, SPECIES_LATIOS
+@ Trio Leal: quem NAO roama por Kanto espera aqui (0 = Okidogi roamando ->
+@ ilha tem Munkidori; 1 = inverso).
+SouthernIsland_Interior_EventScript_SetUpMunkidori::
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(MUNKIDORI)
+	setvar VAR_TEMP_4, SPECIES_MUNKIDORI
 	return
 
-SouthernIsland_Interior_EventScript_SetUpLatias::
-	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_LATIAS
-	setvar VAR_TEMP_4, SPECIES_LATIAS
+SouthernIsland_Interior_EventScript_SetUpOkidogi::
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(OKIDOGI)
+	setvar VAR_TEMP_4, SPECIES_OKIDOGI
 	return
 
 SouthernIsland_Interior_EventScript_SetUpPlayerGfx::
@@ -51,10 +53,10 @@ SouthernIsland_Interior_EventScript_TryLatiEncounter::
 
 SouthernIsland_Interior_EventScript_Lati::
 	goto_if_set FLAG_TEMP_2, SouthernIsland_Interior_EventScript_Sign
-	goto_if_set FLAG_DEFEATED_LATIAS_OR_LATIOS, SouthernIsland_Interior_EventScript_Sign
-	goto_if_set FLAG_CAUGHT_LATIAS_OR_LATIOS, SouthernIsland_Interior_EventScript_Sign
+	goto_if_set FLAG_DEFEATED_LOYAL_ISLAND_MON, SouthernIsland_Interior_EventScript_Sign
+	goto_if_set FLAG_CAUGHT_LOYAL_ISLAND_MON, SouthernIsland_Interior_EventScript_Sign
 	goto_if_unset FLAG_GARBAGEFLAG, SouthernIsland_Interior_EventScript_Sign
-	setflag FLAG_ENCOUNTERED_LATIAS_OR_LATIOS
+	setflag FLAG_ENCOUNTERED_LOYAL_ISLAND_MON
 	setflag FLAG_TEMP_2
 	special SpawnCameraObject
 	applymovement LOCALID_CAMERA, SouthernIsland_Interior_Movement_CameraPanUp
@@ -72,8 +74,8 @@ SouthernIsland_Interior_EventScript_Lati::
 	delay 50
 	special RemoveCameraObject
 	setvar VAR_LAST_TALKED, LOCALID_SOUTHERN_ISLAND_LATI
-	call_if_eq VAR_ROAMER_POKEMON, 0, SouthernIsland_Interior_EventScript_SetLatiosBattleVars
-	call_if_ne VAR_ROAMER_POKEMON, 0, SouthernIsland_Interior_EventScript_SetLatiasBattleVars
+	call_if_eq VAR_ROAMER_POKEMON, 0, SouthernIsland_Interior_EventScript_SetMunkidoriBattleVars
+	call_if_ne VAR_ROAMER_POKEMON, 0, SouthernIsland_Interior_EventScript_SetOkidogiBattleVars
 	setflag FLAG_GARBAGEFLAG
 	special BattleSetup_StartLatiBattle
 	waitstate
@@ -82,12 +84,12 @@ SouthernIsland_Interior_EventScript_Lati::
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, SouthernIsland_Interior_EventScript_LatiDefeated
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, SouthernIsland_Interior_EventScript_RanFromLati
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, SouthernIsland_Interior_EventScript_RanFromLati
-	setflag FLAG_CAUGHT_LATIAS_OR_LATIOS
+	setflag FLAG_CAUGHT_LOYAL_ISLAND_MON
 	releaseall
 	end
 
 SouthernIsland_Interior_EventScript_LatiDefeated::
-	setflag FLAG_DEFEATED_LATIAS_OR_LATIOS
+	setflag FLAG_DEFEATED_LOYAL_ISLAND_MON
 	copyvar VAR_0x8004, VAR_TEMP_4
 	goto Common_EventScript_LegendaryFlewAway
 	end
@@ -102,12 +104,12 @@ SouthernIsland_Interior_EventScript_Sign::
 	releaseall
 	end
 
-SouthernIsland_Interior_EventScript_SetLatiosBattleVars::
-	seteventmon SPECIES_LATIOS, 50, ITEM_SOUL_DEW
+SouthernIsland_Interior_EventScript_SetMunkidoriBattleVars::
+	seteventmon SPECIES_MUNKIDORI, 60
 	return
 
-SouthernIsland_Interior_EventScript_SetLatiasBattleVars::
-	seteventmon SPECIES_LATIAS, 50, ITEM_SOUL_DEW
+SouthernIsland_Interior_EventScript_SetOkidogiBattleVars::
+	seteventmon SPECIES_OKIDOGI, 60
 	return
 
 SouthernIsland_Interior_Movement_CameraPanUp:

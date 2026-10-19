@@ -6,6 +6,7 @@
 #include "fieldmap.h"
 #include "ow_synchronize.h"
 #include "pokemon.h"
+#include "pokedex.h"
 #include "random.h"
 #include "roamer.h"
 #include "sound.h"
@@ -351,7 +352,15 @@ void InitRoamer(void)
 // Para um roamer de Kanto no futuro: TryAddRoamer(especie, nivel, ROAMER_LOC_TABLE_KANTO).
 void InitKantoRoamers(void)
 {
+    // Trio Leal (decisao do autor, 19/10/2026): o Steven de Vermilion deixa o
+    // jogador escolher qual dos dois ele rastreia. O escolhido vira o roamer
+    // de Kanto; o outro espera na Southern Island (Fezandipiti ja mora no
+    // poco de Kitakami). gSpecialVar_0x8004: 0 = Okidogi roama, 1 = Munkidori.
+    u16 species = (gSpecialVar_0x8004 == 0) ? SPECIES_OKIDOGI : SPECIES_MUNKIDORI;
+
     DeactivateRoamersByLocationTable(ROAMER_LOC_TABLE_KANTO);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_SEEN);
+    TryAddRoamer(species, 60, ROAMER_LOC_TABLE_KANTO);
 }
 
 void UpdateLocationHistoryForRoamer(void)

@@ -708,7 +708,12 @@
     "SafariZoneIndoor",
     "Saffron_Temp",
     "TestingMap",
-    "OneIsland_KindleRoad_EmberSpa_Frlg"
+    "OneIsland_KindleRoad_EmberSpa_Frlg",
+    "SouthernIsland_Exterior",
+    "SouthernIsland_Interior",
+    "BirthIsland_Exterior",
+    "FarawayIsland_Entrance",
+    "FarawayIsland_Interior"
   ],
   "gMapGroup_Emerald1": [
     "InsideOfTruck",
@@ -1121,8 +1126,6 @@
     "SSTidalCorridor",
     "SSTidalLowerDeck",
     "SSTidalRooms",
-    "SouthernIsland_Exterior",
-    "SouthernIsland_Interior",
     "SafariZone_RestHouse",
     "SafariZone_Northeast",
     "SafariZone_Southeast"
@@ -1196,9 +1199,6 @@
     "BattleFrontier_PokemonCenter_1F",
     "BattleFrontier_PokemonCenter_2F",
     "BattleFrontier_Mart",
-    "FarawayIsland_Entrance",
-    "FarawayIsland_Interior",
-    "BirthIsland_Exterior",
     "BirthIsland_Harbor",
     "UnionRoom",
     "SafariZone_Northwest",
@@ -1237,8 +1237,6 @@
     "ContestHall",
     "DewfordTown_Hall",
     "FallarborTown_Mart",
-    "FarawayIsland_Entrance",
-    "FarawayIsland_Interior",
     "IslandCave",
     "LavaridgeTown",
     "LavaridgeTown_HerbShop",

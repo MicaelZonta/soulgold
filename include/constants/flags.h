@@ -245,7 +245,7 @@
 #define FLAG_RECEIVED_GREEN_SCARF            0xCB  // fora da ROM
 #define FLAG_RECEIVED_YELLOW_SCARF           0xCC  // fora da ROM
 #define FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER    0xCD
-#define FLAG_ENCOUNTERED_LATIAS_OR_LATIOS    0xCE  // fora da ROM
+#define FLAG_ENCOUNTERED_LOYAL_ISLAND_MON    0xCE  // fora da ROM
 #define FLAG_MET_ARCHIE_METEOR_FALLS         0xCF
 #define FLAG_GOT_BASEMENT_KEY_FROM_WATTSON   0xD0
 #define FLAG_RAILWAY_THUNDERBOLT             0xD1
@@ -298,7 +298,7 @@
 #define FLAG_RECEIVED_BELUE_BERRY            0xFC  // fora da ROM
 #define FLAG_ENABLE_RIVAL_MATCH_CALL         0xFD
 #define FLAG_GARBAGEFLAG4               0xFE
-#define FLAG_LATIOS_OR_LATIAS_ROAMING        0xFF
+#define FLAG_LOYAL_ROAMER_RELEASED        0xFF // era LATIOS_OR_LATIAS_ROAMING; desde 19/10/2026: Steven soltou o roamer do Trio Leal em Kanto
 #define FLAG_FLOOR4_URN2LOOT                 0x100
 #define FLAG_RECEIVED_OLD_ROD                0x101  // fora da ROM
 #define FLAG_RECEIVED_COIN_CASE              0x102  // fora da ROM
@@ -520,8 +520,8 @@
 #define FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT 0x1C5  // fora da ROM
 #define FLAG_DEFEATED_SUDOWOODO              0x1C6
 #define FLAG_DEFEATED_MEW                    0x1C7 //HnS
-#define FLAG_DEFEATED_LATIAS_OR_LATIOS       0x1C8  // fora da ROM
-#define FLAG_CAUGHT_LATIAS_OR_LATIOS         0x1C9  // fora da ROM
+#define FLAG_DEFEATED_LOYAL_ISLAND_MON       0x1C8  // fora da ROM
+#define FLAG_CAUGHT_LOYAL_ISLAND_MON         0x1C9  // fora da ROM
 #define FLAG_CAUGHT_MEW                      0x1CA
 #define FLAG_MET_SCOTT_AFTER_OBTAINING_STONE_BADGE 0x1CB  // fora da ROM
 #define FLAG_MET_SCOTT_IN_VERDANTURF         0x1CC  // fora da ROM

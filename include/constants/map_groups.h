@@ -684,6 +684,11 @@ enum
     MAP_SAFFRON_TEMP                     = (26 | (28 << 8)),
     MAP_TESTING_MAP                      = (27 | (28 << 8)),
     MAP_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA = (28 | (28 << 8)),
+    MAP_SOUTHERN_ISLAND_EXTERIOR         = (29 | (28 << 8)),
+    MAP_SOUTHERN_ISLAND_INTERIOR         = (30 | (28 << 8)),
+    MAP_BIRTH_ISLAND_EXTERIOR            = (31 | (28 << 8)),
+    MAP_FARAWAY_ISLAND_ENTRANCE          = (32 | (28 << 8)),
+    MAP_FARAWAY_ISLAND_INTERIOR          = (33 | (28 << 8)),
 
     // gMapGroup_Emerald1
     MAP_INSIDE_OF_TRUCK                         = (0 | (29 << 8)),
@@ -1096,11 +1101,9 @@ enum
     MAP_SS_TIDAL_CORRIDOR        = (40 | (32 << 8)),
     MAP_SS_TIDAL_LOWER_DECK      = (41 | (32 << 8)),
     MAP_SS_TIDAL_ROOMS           = (42 | (32 << 8)),
-    MAP_SOUTHERN_ISLAND_EXTERIOR = (43 | (32 << 8)),
-    MAP_SOUTHERN_ISLAND_INTERIOR = (44 | (32 << 8)),
-    MAP_SAFARI_ZONE_REST_HOUSE   = (45 | (32 << 8)),
-    MAP_SAFARI_ZONE_NORTHEAST    = (46 | (32 << 8)),
-    MAP_SAFARI_ZONE_SOUTHEAST    = (47 | (32 << 8)),
+    MAP_SAFARI_ZONE_REST_HOUSE   = (43 | (32 << 8)),
+    MAP_SAFARI_ZONE_NORTHEAST    = (44 | (32 << 8)),
+    MAP_SAFARI_ZONE_SOUTHEAST    = (45 | (32 << 8)),
 
     // gMapGroup_Emerald5
     MAP_BATTLE_FRONTIER_OUTSIDE_EAST                 = (0 | (33 << 8)),
@@ -1171,15 +1174,12 @@ enum
     MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F            = (65 | (33 << 8)),
     MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F            = (66 | (33 << 8)),
     MAP_BATTLE_FRONTIER_MART                         = (67 | (33 << 8)),
-    MAP_FARAWAY_ISLAND_ENTRANCE                      = (68 | (33 << 8)),
-    MAP_FARAWAY_ISLAND_INTERIOR                      = (69 | (33 << 8)),
-    MAP_BIRTH_ISLAND_EXTERIOR                        = (70 | (33 << 8)),
-    MAP_BIRTH_ISLAND_HARBOR                          = (71 | (33 << 8)),
-    MAP_UNION_ROOM                                   = (72 | (33 << 8)),
-    MAP_SAFARI_ZONE_NORTHWEST                        = (73 | (33 << 8)),
-    MAP_SAFARI_ZONE_NORTH                            = (74 | (33 << 8)),
-    MAP_SAFARI_ZONE_SOUTHWEST                        = (75 | (33 << 8)),
-    MAP_SAFARI_ZONE_SOUTH                            = (76 | (33 << 8)),
+    MAP_BIRTH_ISLAND_HARBOR                          = (68 | (33 << 8)),
+    MAP_UNION_ROOM                                   = (69 | (33 << 8)),
+    MAP_SAFARI_ZONE_NORTHWEST                        = (70 | (33 << 8)),
+    MAP_SAFARI_ZONE_NORTH                            = (71 | (33 << 8)),
+    MAP_SAFARI_ZONE_SOUTHWEST                        = (72 | (33 << 8)),
+    MAP_SAFARI_ZONE_SOUTH                            = (73 | (33 << 8)),
 
     // gMapGroup_IndoorRinto
     MAP_RINTO_POEMON_CENTER = (0 | (34 << 8)),

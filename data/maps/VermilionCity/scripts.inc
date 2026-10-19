@@ -480,12 +480,12 @@ VermilionCity_EventScript_LatiChoice::
 	applymovement2 LOCALID_VERMILIONCITY_STEVEN, VermilionCity_Movement_StevenWalkToPlayer
 	waitmovement LOCALID_VERMILIONCITY_STEVEN
 	msgbox VermilionCity_Text_StevenIntro, MSGBOX_DEFAULT
-	multichoice 20, 8, MULTI_TV_LATI, TRUE
+	multichoice 20, 8, MULTI_LOYAL_TWO, TRUE
 	@goto_if_eq VAR_RESULT, MULTI_B_PRESSED, VermilionCity_EventScript_LatiCancel
 	copyvar VAR_0x8004, VAR_RESULT
 	copyvar VAR_ROAMER_POKEMON, VAR_RESULT
 	special InitKantoRoamers
-	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
+	setflag FLAG_LOYAL_ROAMER_RELEASED
 	msgbox VermilionCity_Text_StevenOutro, MSGBOX_DEFAULT
 	closemessage
 	return
@@ -501,32 +501,36 @@ VermilionCity_Movement_StevenWalkToPlayer:
 	step_end
 
 VermilionCity_Text_StevenIntro:
-	.string "Hi!\n"
+	.string "{SPEAKER NAME_STEVEN}Hi!\n"
 	.string "My name is Steven.\l"
-	.string "The Champion from the HOENN region.\p"
-	.string "Have we met...before?\p"
-	.string "That's not possible. \n"
-	.string "All the trainers I have battled\l"
-	.string "seem to have the same look, anyway.\p"
-	.string "Especially the ones who gave me\n"
-	.string "tough battles.\p"
-	.string "I'm in KANTO for business.\n"
-	.string "Recently many HOENN POKéMON have\l"
-	.string "migrated to this region.\l"
-	.string "This influx risks disrupting the\l"
-	.string "natural ecosystem here.\p"
-	.string "So with the help of my company,\n"
-	.string "I'm creating a special habitat\l"
-	.string "to attract and contain the most\l"
-	.string "invasive species.\p"
-	.string "Make sure you keep an eye out\n"
-	.string "and catch any HOENN POKéMON you see.\p"
-	.string "Some trainers have even reported\n"
-	.string "one that soars through the sky like\l"
-	.string "a jet... What color was it again?$"
+	.string "The Champion from the Hoenn region.\p"
+	.string "Have we met... before?\p"
+	.string "Never mind that. I could use a\n"
+	.string "sharp trainer right now.\p"
+	.string "Two troublemakers from Kitakami\n"
+	.string "slipped into Kanto on a cargo\l"
+	.string "ship: Okidogi and Munkidori.\p"
+	.string "They're two of the so-called\n"
+	.string "Loyal Three. Wherever they go,\l"
+	.string "those toxic chains of theirs\l"
+	.string "leave a mess behind.\p"
+	.string "My tracker can only follow one\n"
+	.string "signal at a time. The other one\l"
+	.string "seems to be hiding out on the\l"
+	.string "Southern Island, down south.\p"
+	.string "So, which one should I track\n"
+	.string "for you as it roams Kanto?$"
 
 VermilionCity_Text_StevenOutro:
-	.string "Ah, that's right.\p"
+	.string "{SPEAKER NAME_STEVEN}Good choice.\n"
+	.string "I'll feed its signal to your\l"
+	.string "PokéGear map when it's close.\p"
+	.string "Their third partner was last seen\n"
+	.string "deep in a well in Kitakami...\p"
+	.string "And listen: catch all three, and\n"
+	.string "I suspect the puppet master who\l"
+	.string "made them loyal will come looking\l"
+	.string "for YOU. Be ready for that.\p"
 	.string "I must go.\n"
 	.string "May our journeys cross again.$"
 

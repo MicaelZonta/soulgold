@@ -218,10 +218,7 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Regidrago** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
 | **Wo-Chien** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
 | **Ting-Lu** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
-| **Okidogi** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
-| **Munkidori** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
-| **Terapagos** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
-| **Pecharunt** | Mítico | ❌ nenhuma referência de obtenção no código |
+| **Pecharunt** | Mítico | ❌ ainda sem fonte — DECISÃO 19/10/2026: ganhará evento próprio quando o Trio Leal inteiro estiver capturado (Okidogi + Munkidori + Fezandipiti) |
 
 ## Com método de obtenção
 
@@ -243,8 +240,11 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Solgaleo** | evolui de Cosmoem (Lv53) |  |
 | **Lunala** | evolui de Cosmoem (Lv53) |  |
 | **Necrozma** | presente (givemon) — `UltraSpaceArena` Lv75 | NECROZMA, NECROZMA_DUSK_MANE, NECROZMA_DAWN_WINGS, NECROZMA_ULTRA |
-| **Koraidon** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
-| **Miraidon** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
+| **Koraidon** | recompensa do Battle Café (25 pontos, Lv70) — `BattleCafe` |  |
+| **Miraidon** | recompensa do Battle Café (25 pontos, Lv70) — `BattleCafe` |  |
+| **Okidogi** | evento do Steven em `VermilionCity` (19/10/2026): escolhido → roamer de Kanto Lv60; preterido → `SouthernIsland_Interior` Lv60 |  |
+| **Munkidori** | mesmo evento do Steven: o par do Okidogi (um roama, o outro na Southern Island) |  |
+| **Terapagos** | ovo do rival no topo do Mt. Silver (19/10/2026), após a batalha final dele — com pendência retomável se party+PC cheios |  |
 | **Calyrex** | encontro estático (seteventmon) — `Route30`, Ato 7 do Berry Master Lv65 (03/10/2026) | CALYREX, CALYREX_ICE, CALYREX_SHADOW |
 
 ### Sub-lendário
@@ -356,6 +356,6 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 - **As 7 UBs das missões + Stakataka e Blacephalon** aparecem só como batalha sem captura (Rift Missions). O design prevê a Anabel vendendo Beast Balls no `UltraSpaceArena` (§10), o que já aponta para o loop como o lugar onde elas passam a ser capturáveis.
 - **Necrozma** é presente no fim do clímax (`UltraSpaceArena`, Lv75). O Ultra Necrozma do boss não é capturável. Dusk Mane e Dawn Wings dependem de fusão com Solgaleo/Lunala.
 - **Evoluções customizadas:** Manaphy evolui de **Phione** no Lv58 (Phione é pescado na `Route33South_2`); Melmetal de Meltan no Lv60; Naganadel de Poipole no Lv50; Cosmog → Cosmoem (Lv43) → Solgaleo/Lunala (Lv53). Os pergaminhos do Urshifu são vendidos no `GoldenrodBattleAracdeLobby`.
-- **Battle Café** troca 5 pontos por um Lv70 de: Tornadus, Thundurus, Landorus, Enamorus, os quatro Tapus, as três aves de Galar, Koraidon e Miraidon (e Diancie como presente à parte).
+- **Battle Café** troca 5 pontos por um Lv70 de: Tornadus, Thundurus, Landorus, Enamorus, os quatro Tapus, as três aves de Galar, Koraidon e Miraidon por 25 pontos (e Diancie como presente à parte). DECISÃO 19/10: Koraidon/Miraidon ganharão casas próprias (cavernas de Seafoam/Route 19) e sairão do Café quando entregues.
 - **Celebi** tem uma entrada na tabela da Hidden Grotto, mas é a `HIDDEN_GROTTO_JOHTO_UNUSED2`; o método real é o evento da Ilex Forest.
 - **Lendários já capturados continuam elegíveis** no loop (design §10). Esta tabela diz só se há **algum** jeito de obter; não restringe o pool.
