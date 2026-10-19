@@ -1,0 +1,38 @@
+diff --git a/data/maps/VermilionCity_House2/map.json b/data/maps/VermilionCity_House2/map.json
+index 6b9c4d17ba..85b91d358a 100644
+--- a/data/maps/VermilionCity_House2/map.json
++++ b/data/maps/VermilionCity_House2/map.json
+@@ -50,10 +50,6 @@
+       "dest_warp_id": "4"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/VermilionCity_House2/scripts.inc b/data/maps/VermilionCity_House2/scripts.inc
+index dd89e37260..e2ec0b1066 100644
+--- a/data/maps/VermilionCity_House2/scripts.inc
++++ b/data/maps/VermilionCity_House2/scripts.inc
+@@ -10,11 +10,11 @@ VermilionCity_House2_EventScript_Youngster::
+ 	end
+ 
+ VermilionCity_House2_Text_PokefanF:
+-	.string "Do you know about the MAGNET\n"
+-	.string "TRAIN?\p"
++	.string "Do you know about the Magnet\n"
++	.string "Train?\p"
+ 	.string "It's a railway that goes to\n"
+-	.string "GOLDENROD in JOHTO.$"
++	.string "Goldenrod in Johto.$"
+ 
+ VermilionCity_House2_Text_Youngster:
+-	.string "I want to go to SAFFRON to see\n"
+-	.string "the MAGNET TRAIN.$"
++	.string "I want to go to Saffron to see\n"
++	.string "the Magnet Train.$"

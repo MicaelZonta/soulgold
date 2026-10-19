@@ -1,0 +1,47 @@
+diff --git a/data/maps/SSAqua_RoomNNE/map.json b/data/maps/SSAqua_RoomNNE/map.json
+index 4a03cafa7d..97bff308d1 100644
+--- a/data/maps/SSAqua_RoomNNE/map.json
++++ b/data/maps/SSAqua_RoomNNE/map.json
+@@ -50,10 +50,6 @@
+       "dest_warp_id": "4"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/SSAqua_RoomNNE/scripts.inc b/data/maps/SSAqua_RoomNNE/scripts.inc
+index 7bba0464ef..bae0e7ad45 100644
+--- a/data/maps/SSAqua_RoomNNE/scripts.inc
++++ b/data/maps/SSAqua_RoomNNE/scripts.inc
+@@ -12,20 +12,20 @@ SSAqua_RoomNNE_EventScript_Carol::
+ 	end
+ 
+ SSAqua_RoomNNE_Text_CooltrainermSeanSeen:
+-    .string "I'm going to KANTO\n"
++    .string "I'm going to Kanto\n"
+     .string "to test my skills.$"
+ 
+ SSAqua_RoomNNE_Text_CooltrainermSeanBeaten:
+     .string "I wanted to win!$"
+ 
+ SSAqua_RoomNNE_Text_CooltrainermSeanAfterBattle:
+-    .string "Trainers from JOHTO\n"
+-    .string "can battle with KANTO\l"
+-    .string "GYM LEADERS.$"
++    .string "Trainers from Johto\n"
++    .string "can battle with Kanto\l"
++    .string "Gym Leaders.$"
+ 
+ SSAqua_RoomNNE_Text_CooltrainerfCarolSeen:
+     .string "I'm training to\n"
+-    .string "become the CHAMP!$"
++    .string "become the Champ!$"
+ 
+ SSAqua_RoomNNE_Text_CooltrainerfCarolBeaten:
+     .string "What's so different\n"

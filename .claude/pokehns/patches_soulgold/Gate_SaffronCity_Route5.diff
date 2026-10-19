@@ -1,0 +1,30 @@
+diff --git a/data/maps/Gate_SaffronCity_Route5/map.json b/data/maps/Gate_SaffronCity_Route5/map.json
+index 46c321f486..6ee21f2c20 100644
+--- a/data/maps/Gate_SaffronCity_Route5/map.json
++++ b/data/maps/Gate_SaffronCity_Route5/map.json
+@@ -44,10 +44,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/Gate_SaffronCity_Route5/scripts.inc b/data/maps/Gate_SaffronCity_Route5/scripts.inc
+index 839866720d..3f31e26331 100644
+--- a/data/maps/Gate_SaffronCity_Route5/scripts.inc
++++ b/data/maps/Gate_SaffronCity_Route5/scripts.inc
+@@ -7,6 +7,6 @@ Gate_SaffronCity_Route5_EventScript_Guard::
+ 	end
+ 
+ Route5_Text_SaffronGateOfficer:
+-	.string "You're from JOHTO, aren't you?\p"
+-	.string "How do you like KANTO?\n"
++	.string "You're from Johto, aren't you?\p"
++	.string "How do you like Kanto?\n"
+ 	.string "It's nice, don't you agree?$"

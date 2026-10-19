@@ -1,0 +1,30 @@
+diff --git a/data/maps/VermilionCity_House3/map.json b/data/maps/VermilionCity_House3/map.json
+index c649f3e42f..bf7b475295 100644
+--- a/data/maps/VermilionCity_House3/map.json
++++ b/data/maps/VermilionCity_House3/map.json
+@@ -37,10 +37,6 @@
+       "dest_warp_id": "7"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/VermilionCity_House3/scripts.inc b/data/maps/VermilionCity_House3/scripts.inc
+index 3320597a7d..06846b1ac2 100644
+--- a/data/maps/VermilionCity_House3/scripts.inc
++++ b/data/maps/VermilionCity_House3/scripts.inc
+@@ -6,7 +6,7 @@ VermilionCity_House3_EventScript_Gentleman::
+ 	end
+ 
+ VermilionCity_House3_Text_Gentleman:
+-	.string "Over many years, DIGLETT dug a\n"
++	.string "Over many years, Diglett dug a\n"
+ 	.string "large tunnel.\p"
+ 	.string "That tunnel goes to a distant\n"
+ 	.string "town.$"

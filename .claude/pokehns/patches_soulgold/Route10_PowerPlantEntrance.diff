@@ -1,0 +1,118 @@
+diff --git a/data/maps/Route10_PowerPlantEntrance/map.json b/data/maps/Route10_PowerPlantEntrance/map.json
+index 658ebae0d3..08b9eb81eb 100644
+--- a/data/maps/Route10_PowerPlantEntrance/map.json
++++ b/data/maps/Route10_PowerPlantEntrance/map.json
+@@ -107,7 +107,5 @@
+       "script": "Route10_PowerPlantEntrance_Trigger_Cop"
+     }
+   ],
+-  "bg_events": [
+-
+-  ]
++  "bg_events": []
+ }
+diff --git a/data/maps/Route10_PowerPlantEntrance/scripts.inc b/data/maps/Route10_PowerPlantEntrance/scripts.inc
+index c340ae5a82..7464617c80 100644
+--- a/data/maps/Route10_PowerPlantEntrance/scripts.inc
++++ b/data/maps/Route10_PowerPlantEntrance/scripts.inc
+@@ -15,6 +15,7 @@ Route10_PowerPlantEntrance_EventScript_Cop::
+ 	goto_if_ge VAR_KANTO_ROCKET_STORY_STATE, 3, Route10_PowerPlantEntrance_EventScript_CopAfterDone
+ 	msgbox Route10_PowerPlantEntrance_Text_Officer1AThiefBrokeIn, MSGBOX_DEFAULT
+ 	closemessage
++	release
+ 	end
+ 
+ Route10_PowerPlantEntrance_EventScript_CopDuringRocket::
+@@ -23,6 +24,7 @@ Route10_PowerPlantEntrance_EventScript_CopDuringRocket::
+ 	msgbox Route10_PowerPlantEntrance_Text_Officer1CeruleanShadyCharacter, MSGBOX_DEFAULT
+ 	msgbox Route10_PowerPlantEntrance_Text_Officer1CouldIAskForYourCooperation, MSGBOX_DEFAULT
+ 	closemessage
++	release
+ 	end
+ 
+ Route10_PowerPlantEntrance_EventScript_CopAfterDone::
+@@ -30,6 +32,7 @@ Route10_PowerPlantEntrance_EventScript_CopAfterDone::
+ 	faceplayer
+ 	msgbox Route10_PowerPlantEntrance_Text_Officer1HaveToBeefUpSecurity, MSGBOX_DEFAULT
+ 	closemessage
++	release
+ 	end
+ 
+ Route10_PowerPlantEntrance_EventScript_Engineer1::
+@@ -70,9 +73,9 @@ Route10_PowerPlantEntrance_EventScript_Engineer3Done::
+ Route10_PowerPlantEntrance_Trigger_Cop::
+ 	lock
+ 	playse SE_POKENAV_CALL
+-	applymovement2 LOCALID_POWERPLANT_COP, Common_Movement_ExclamationMark
++	applymovement LOCALID_POWERPLANT_COP, Common_Movement_ExclamationMark
+ 	waitse
+-	applymovement2 LOCALID_POWERPLANT_COP, Route10_PowerPlantEntrance_Movement_WalkToPlayer
++	applymovement LOCALID_POWERPLANT_COP, Route10_PowerPlantEntrance_Movement_WalkToPlayer
+ 	waitmovement 0
+ 	turnobject LOCALID_POWERPLANT_ENGINEER, DIR_SOUTH
+ 	msgbox Route10_PowerPlantEntrance_Text_Officer1CeruleanShadyCharacter, MSGBOX_DEFAULT
+@@ -82,7 +85,7 @@ Route10_PowerPlantEntrance_Trigger_Cop::
+ 	delay 30
+ 	msgbox Route10_PowerPlantEntrance_Text_Officer1CouldIAskForYourCooperation, MSGBOX_DEFAULT
+ 	closemessage
+-	applymovement2 LOCALID_POWERPLANT_COP, Route10_PowerPlantEntrance_Movement_WalkBack
++	applymovement LOCALID_POWERPLANT_COP, Route10_PowerPlantEntrance_Movement_WalkBack
+ 	waitmovement 0
+ 	setvar VAR_KANTO_ROCKET_STORY_STATE, 2
+ 	clearflag FLAG_HIDE_CERULEAN_GYM_ROCKET
+@@ -110,12 +113,12 @@ Route10_PowerPlantEntrance_Movement_WalkBack:
+ 	step_end
+ 
+ Route10_PowerPlantEntrance_Text_Officer1AThiefBrokeIn:
+-	.string "A thief broke into the POWER\n"
+-	.string "PLANT…\p"
++	.string "A thief broke into the Power\n"
++	.string "Plant…\p"
+ 	.string "What is the world coming to?$"
+ 
+ Route10_PowerPlantEntrance_Text_Officer1CeruleanShadyCharacter:
+-	.string "I just got word from CERULEAN.\p"
++	.string "I just got word from Cerulean.\p"
+ 	.string "It appears that a shady\n"
+ 	.string "character has been loitering\l"
+ 	.string "around.$"
+@@ -140,17 +143,17 @@ Route10_PowerPlantEntrance_Text_Engineer1GeneratorUpAndRunning:
+ 	.string "It's making electricity to spare.$"
+ 
+ Route10_PowerPlantEntrance_Text_Engineer2PowerPlantUpAndRunning:
+-	.string "This POWER PLANT had been\n"
++	.string "This Power Plant had been\n"
+ 	.string "abandoned in the past.\p"
+ 	.string "We got it back up and running to\n"
+-	.string "provide power to the MAGNET\l"
+-	.string "TRAIN.$"
++	.string "provide power to the Magnet\l"
++	.string "Train.$"
+ 
+ Route10_PowerPlantEntrance_Text_Engineer2GeneratorIsRunningAgain:
+ 	.string "The generator's running again!$"
+ 
+ Route10_PowerPlantEntrance_Text_Officer2ManagerHasBeenSadAndFurious:
+-	.string "The POWER PLANT's MANAGER is in\n"
++	.string "The Power Plant's Manager is in\n"
+ 	.string "the back room with the generator.\p"
+ 	.string "But since someone wrecked the\n"
+ 	.string "generator, he's been both sad and\l"
+@@ -158,14 +161,14 @@ Route10_PowerPlantEntrance_Text_Officer2ManagerHasBeenSadAndFurious:
+ 
+ Route10_PowerPlantEntrance_Text_Officer2ManagerHasBeenCheerful:
+ 	.string "Since the generator's been fixed,\n"
+-	.string "the MANAGER has been cheerful.$"
++	.string "the Manager has been cheerful.$"
+ 
+ Route10_PowerPlantEntrance_Text_Engineer4MagnetTrainConsumesElectricity:
+-	.string "The MAGNET TRAIN consumes a lot\n"
++	.string "The Magnet Train consumes a lot\n"
+ 	.string "of electricity.\p"
+ 	.string "It can't move if the new\n"
+ 	.string "generator isn't operating.$"
+ 
+ Route10_PowerPlantEntrance_Text_Engineer4WeCanGetMagnetTrainRunning:
+ 	.string "All right! We can finally get the\n"
+-	.string "MAGNET TRAIN running again.$"
++	.string "Magnet Train running again.$"

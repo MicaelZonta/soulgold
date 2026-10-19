@@ -1,0 +1,17 @@
+diff --git a/data/maps/SSAqua_RoomSE/map.json b/data/maps/SSAqua_RoomSE/map.json
+index 2d0e66e5c3..499a8f1bbc 100644
+--- a/data/maps/SSAqua_RoomSE/map.json
++++ b/data/maps/SSAqua_RoomSE/map.json
+@@ -89,10 +89,6 @@
+       "dest_warp_id": "6"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }

@@ -1,0 +1,182 @@
+diff --git a/data/maps/Route11/map.json b/data/maps/Route11/map.json
+index 81fc26b096..a18971b7c6 100644
+--- a/data/maps/Route11/map.json
++++ b/data/maps/Route11/map.json
+@@ -91,7 +91,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DROWZEE)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH)",
+       "x": 21,
+       "y": 31,
+       "elevation": 0,
+@@ -104,7 +104,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HYPNO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NOCTOWL)",
+       "x": 37,
+       "y": 1,
+       "elevation": 0,
+@@ -143,7 +143,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HYPNO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NOCTOWL)",
+       "x": 44,
+       "y": 1,
+       "elevation": 0,
+@@ -208,7 +208,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SLAKOTH)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RATICATE)",
+       "x": 24,
+       "y": 2,
+       "elevation": 0,
+@@ -221,13 +221,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     }
+   ],
+-  "warp_events": [
+-
+-  ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "warp_events": [],
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/Route11/map.json.bak b/data/maps/Route11/map.json.bak
+index 47199bb98c..332dd0fbf5 100644
+--- a/data/maps/Route11/map.json.bak
++++ b/data/maps/Route11/map.json.bak
+@@ -91,7 +91,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_DROWZEE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DROWZEE"),
+       "x": 21,
+       "y": 31,
+       "elevation": 0,
+@@ -104,7 +104,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HYPNO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HYPNO"),
+       "x": 37,
+       "y": 1,
+       "elevation": 0,
+@@ -117,7 +117,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MEOWTH",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH"),
+       "x": 40,
+       "y": 1,
+       "elevation": 0,
+@@ -130,7 +130,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MEOWTH",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH"),
+       "x": 41,
+       "y": 1,
+       "elevation": 0,
+@@ -143,7 +143,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HYPNO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HYPNO"),
+       "x": 44,
+       "y": 1,
+       "elevation": 0,
+@@ -169,7 +169,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAGNEMITE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGNEMITE"),
+       "x": 52,
+       "y": 29,
+       "elevation": 0,
+@@ -182,7 +182,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAGNEMITE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGNEMITE"),
+       "x": 57,
+       "y": 29,
+       "elevation": 0,
+@@ -195,7 +195,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HOPPIP",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOPPIP"),
+       "x": 13,
+       "y": 10,
+       "elevation": 0,
+@@ -208,7 +208,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SLAKOTH",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SLAKOTH"),
+       "x": 24,
+       "y": 2,
+       "elevation": 0,
+diff --git a/data/maps/Route11/scripts.inc b/data/maps/Route11/scripts.inc
+index ae495a674e..3f48a91448 100644
+--- a/data/maps/Route11/scripts.inc
++++ b/data/maps/Route11/scripts.inc
+@@ -33,12 +33,12 @@ Route11_EventScript_Engineer::
+ 	end
+ 
+ Route11_Text_Engineer:
+-	.string "I saw a strange POKéMON climbing\n"
++	.string "I saw a strange Pokémon climbing\n"
+ 	.string "in the trees, but it didn't\l"
+-	.string "look like MANKEY...$"
++	.string "look like Mankey...$"
+ 
+ Route11_Text_YoungsterOwenSeen:
+-	.string "There's no cheating in POKéMON.\p"
++	.string "There's no cheating in Pokémon.\p"
+ 	.string "Let's keep it fair and square!$"
+ 
+ Route11_Text_YoungsterOwenBeaten:
+@@ -57,7 +57,7 @@ Route11_Text_YoungsterJasonBeaten:
+ 	.string "Aiyaaah! I got stomped!$"
+ 
+ Route11_Text_YoungsterJasonAfterBattle:
+-	.string "I'm going to catch more POKéMON in\n"
++	.string "I'm going to catch more Pokémon in\n"
+ 	.string "the grass.$"
+ 
+ Route11_Text_PsychicHermanSeen:
+@@ -80,8 +80,8 @@ Route11_Text_PsychicFidelBeaten:
+ Route11_Text_PsychicFidelAfterBattle:
+ 	.string "Strength in conviction…\p"
+ 	.string "You're strong because you believe\n"
+-	.string "in your POKéMON.$"
++	.string "in your Pokémon.$"
+ 
+ Route11_Text_Sign:
+-	.string "ROUTE 11$"
++	.string "Route 11$"
+ 

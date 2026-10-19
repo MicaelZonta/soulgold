@@ -1,0 +1,87 @@
+diff --git a/data/maps/Route12_House/map.json b/data/maps/Route12_House/map.json
+index ed2e827807..507525cb76 100644
+--- a/data/maps/Route12_House/map.json
++++ b/data/maps/Route12_House/map.json
+@@ -14,19 +14,6 @@
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+   "connections": 0,
+   "object_events": [
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_FISHER",
+-      "x": 7,
+-      "y": 4,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
+-      "movement_range_x": 0,
+-      "movement_range_y": 0,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "Route12_House_EventScript_SuperRod",
+-      "flag": "0"
+-    }
+   ],
+   "warp_events": [
+     {
+@@ -37,10 +24,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/Route12_House/scripts.inc b/data/maps/Route12_House/scripts.inc
+index ddc387f8b9..772d2c85f8 100644
+--- a/data/maps/Route12_House/scripts.inc
++++ b/data/maps/Route12_House/scripts.inc
+@@ -1,20 +1,6 @@
+ Route12_House_MapScripts::
+ 	.byte 0
+ 
+-Route12_House_EventScript_SuperRod::
+-	lock
+-	faceplayer
+-	goto_if_set FLAG_GOT_SUPER_ROD, Route12_House_EventScript_SuperRodGot
+-	msgbox Route12_House_Text_OfferSuperRod, MSGBOX_YESNO
+-	goto_if_eq VAR_RESULT, FALSE, Route12_House_EventScript_SuperRodRefused
+-	msgbox Route12_House_Text_GiveSuperRod, MSGBOX_DEFAULT
+-	giveitem ITEM_SUPER_ROD
+-	msgbox Route12_House_Text_GaveSuperRod, MSGBOX_DEFAULT
+-	setflag FLAG_GOT_SUPER_ROD
+-	closemessage
+-	release
+-	end
+-
+ Route12_House_EventScript_SuperRodRefused::
+ 	msgbox Route12_House_Text_DontWantSuperRod, MSGBOX_DEFAULT
+ 	closemessage
+@@ -27,7 +13,7 @@ Route12_House_EventScript_SuperRodGot::
+ 	end
+ 
+ Route12_House_Text_OfferSuperRod:
+-	.string "I'm the FISHING GURU's younger\n"
++	.string "I'm the Fishing Guru's younger\n"
+ 	.string "brother.\p"
+ 	.string "I can see that you like fishing.\p"
+ 	.string "There's no doubt in my mind at\n"
+@@ -37,13 +23,13 @@ Route12_House_Text_OfferSuperRod:
+ Route12_House_Text_GiveSuperRod:
+ 	.string "Yes, yes. Just as I thought!\p"
+ 	.string "Here, fishing fan! Take this--\n"
+-	.string "it's a SUPER ROD.$"
++	.string "it's a Super Rod.$"
+ 
+ Route12_House_Text_GaveSuperRod:
+ 	.string "Try your hand at fishing wherever\n"
+ 	.string "there is water.\p"
+ 	.string "Remember--you can catch different\n"
+-	.string "POKéMON using different RODS.$"
++	.string "Pokémon using different Rods.$"
+ 
+ Route12_House_Text_DontWantSuperRod:
+ 	.string "Huh? My own eyes deceived me?$"

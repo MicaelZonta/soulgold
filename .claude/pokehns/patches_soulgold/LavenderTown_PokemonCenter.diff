@@ -1,0 +1,77 @@
+diff --git a/data/maps/LavenderTown_PokemonCenter/map.json b/data/maps/LavenderTown_PokemonCenter/map.json
+index e6924fc07b..bbc8997188 100644
+--- a/data/maps/LavenderTown_PokemonCenter/map.json
++++ b/data/maps/LavenderTown_PokemonCenter/map.json
+@@ -12,9 +12,10 @@
+   "allow_running": false,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
++      "local_id": "LOCALID_LAVENDER_NURSE",
+       "graphics_id": "OBJ_EVENT_GFX_NURSE",
+       "x": 7,
+       "y": 2,
+@@ -28,7 +29,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+       "x": 8,
+       "y": 2,
+       "elevation": 0,
+@@ -89,9 +90,7 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/LavenderTown_PokemonCenter/scripts.inc b/data/maps/LavenderTown_PokemonCenter/scripts.inc
+index 7ac25bcfbb..3ecc7bd99f 100644
+--- a/data/maps/LavenderTown_PokemonCenter/scripts.inc
++++ b/data/maps/LavenderTown_PokemonCenter/scripts.inc
+@@ -26,25 +26,25 @@ LavenderTown_PokemonCenter_EventScript_YoungsterReturnedMachinePart::
+ 	end
+ 
+ LavenderTown_PokemonCenter1F_Text_Gentleman:
+-	.string "To the north of LAVENDER is ROCK\n"
+-	.string "TUNNEL. Go through it to get to\l"
+-	.string "the POWER PLANT.$"
++	.string "To the north of Lavender is Rock\n"
++	.string "Tunnel. Go through it to get to\l"
++	.string "the Power Plant.$"
+ 
+ LavenderTown_PokemonCenter1F_Text_Teacher:
+ 	.string "There's a radio program that plays\n"
+-	.string "POKé FLUTE music.\p"
+-	.string "Oh? Ah, your radio needs an EXPN\n"
+-	.string "CARD to tune into it.$"
++	.string "Poké Flute music.\p"
++	.string "Oh? Ah, your radio needs an Expn\n"
++	.string "Card to tune into it.$"
+ 
+ LavenderTown_PokemonCenter1F_Text_Youngster:
+-	.string "If the POWER PLANT isn't running,\n"
+-	.string "the MAGNET TRAIN won't run either…\p"
+-	.string "It also means the RADIO STATION\n"
++	.string "If the Power Plant isn't running,\n"
++	.string "the Magnet Train won't run either…\p"
++	.string "It also means the Radio Station\n"
+ 	.string "can't broadcast…$"
+ 
+ LavenderTown_PokemonCenter1F_Text_Youngster_ReturnedMachinePart:
+-	.string "The DIRECTOR of the RADIO STATION\n"
++	.string "The Director of the Radio Station\n"
+ 	.string "sure was happy.\p"
+ 	.string "He said they're back on the air\n"
+-	.string "because the POWER PLANT is running\l"
++	.string "because the Power Plant is running\l"
+ 	.string "smoothly again.$"

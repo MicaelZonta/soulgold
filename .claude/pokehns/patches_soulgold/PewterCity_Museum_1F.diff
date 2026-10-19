@@ -1,0 +1,34 @@
+diff --git a/data/maps/PewterCity_Museum_1F/map.json b/data/maps/PewterCity_Museum_1F/map.json
+index bd65023d54..13b7c4daa7 100644
+--- a/data/maps/PewterCity_Museum_1F/map.json
++++ b/data/maps/PewterCity_Museum_1F/map.json
+@@ -129,9 +129,7 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/PewterCity_Museum_1F/scripts.inc b/data/maps/PewterCity_Museum_1F/scripts.inc
+index 4f0fd04809..cd07d70533 100644
+--- a/data/maps/PewterCity_Museum_1F/scripts.inc
++++ b/data/maps/PewterCity_Museum_1F/scripts.inc
+@@ -60,7 +60,7 @@ PewterCity_Museum_1F_Text_FossilWoman:
+ 
+ PewterCity_Museum_1F_Text_FossilWomanAfter:
+ 	.string "We often share research with the\n"
+-	.string "RUINS OF ALPH researchers.\p"
++	.string "Ruins Of Alph researchers.\p"
+ 	.string "We even share fossils with them\n"
+ 	.string "through the PC!$"
+ 
+@@ -72,4 +72,4 @@ PewterCity_Museum_1F_Text_Oldman:
+ 
+ PewterCity_Museum_1F_Text_Bones:
+ 	.string "Bones of an ancient dragon\n"
+-	.string "POKéMON.$"
++	.string "Pokémon.$"

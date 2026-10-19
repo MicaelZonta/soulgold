@@ -1,0 +1,148 @@
+diff --git a/data/maps/Route4/map.json b/data/maps/Route4/map.json
+index 0d2c489ad9..ad8323b6c3 100644
+--- a/data/maps/Route4/map.json
++++ b/data/maps/Route4/map.json
+@@ -39,8 +39,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "Route4_EventScript_HpUp",
++      "trainer_sight_or_berry_tree_id": "ITEM_HP_UP",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROUTE4_HPUP"
+     },
+     {
+@@ -122,7 +122,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SEVIPER)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RATICATE)",
+       "x": 83,
+       "y": 0,
+       "elevation": 0,
+@@ -135,7 +135,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZANGOOSE)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZUBAT)",
+       "x": 30,
+       "y": 16,
+       "elevation": 0,
+@@ -156,8 +156,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "Route4_EventScript_UltraBall",
++      "trainer_sight_or_berry_tree_id": "ITEM_POKE_BALL",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROUTE4_ULTRABALL"
+     },
+     {
+@@ -197,9 +197,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/Route4/map.json.bak b/data/maps/Route4/map.json.bak
+index 94a5e2b293..41d317a552 100644
+--- a/data/maps/Route4/map.json.bak
++++ b/data/maps/Route4/map.json.bak
+@@ -83,7 +83,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PIDGEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY"),
+       "x": 58,
+       "y": 0,
+       "elevation": 0,
+@@ -96,7 +96,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_EKANS",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EKANS"),
+       "x": 72,
+       "y": 13,
+       "elevation": 0,
+@@ -122,7 +122,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SEVIPER",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SEVIPER"),
+       "x": 83,
+       "y": 0,
+       "elevation": 0,
+@@ -135,7 +135,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ZANGOOSE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZANGOOSE"),
+       "x": 30,
+       "y": 16,
+       "elevation": 0,
+diff --git a/data/maps/Route4/scripts.inc b/data/maps/Route4/scripts.inc
+index 1c959575b4..d89a914c92 100644
+--- a/data/maps/Route4/scripts.inc
++++ b/data/maps/Route4/scripts.inc
+@@ -7,14 +7,6 @@ Route4_OnTransition:
+ 	callnative SetTimeBasedEncounters
+ 	end
+ 
+-Route4_EventScript_HpUp::
+-	finditem ITEM_HP_UP
+-	end
+-
+-Route4_EventScript_UltraBall::
+-	finditem ITEM_ULTRA_BALL
+-	end
+-
+ Route4_EventScript_Hank::
+ 	trainerbattle_single TRAINER_HANK, Route4_Text_BirdKeeperHank_Seen, Route4_Text_BirdKeeperHank_Beaten
+ 	msgbox Route4_Text_BirdKeeperHank_AfterBattle, MSGBOX_AUTOCLOSE
+@@ -35,14 +27,14 @@ Route4_EventScript_Sign::
+ 	end
+ 
+ Route4_Text_BirdKeeperHank_Seen:
+-	.string "I'm raising my POKéMON. Want to battle\n"
++	.string "I'm raising my Pokémon. Want to battle\n"
+ 	.string "with me?$"
+ 
+ Route4_Text_BirdKeeperHank_Beaten:
+ 	.string "Ack! I lost that one…$"
+ 
+ Route4_Text_BirdKeeperHank_AfterBattle:
+-	.string "If you have a specific POKéMON that you\n"
++	.string "If you have a specific Pokémon that you\n"
+ 	.string "want to raise, put it out first, then\n"
+ 	.string "switch it right away.\p"
+ 	.string "That's how to do it.$"
+@@ -55,7 +47,7 @@ Route4_Text_PicnickerHope_Beaten:
+ 	.string "Aww, you are too strong.$"
+ 
+ Route4_Text_PicnickerHope_AfterBattle:
+-	.string "I heard CLEFAIRY appear at MT.MOON.\p"
++	.string "I heard Clefairy appear at Mt.Moon.\p"
+ 	.string "But where could they be?$"
+ 
+ Route4_Text_PicnickerSharon_Seen:
+@@ -69,6 +61,6 @@ Route4_Text_PicnickerSharon_AfterBattle:
+ 	.string "……I'll go train some more…$"
+ 
+ Route4_Text_MtMoonSquareSign:
+-	.string "MT.MOON SQUARE\p"
++	.string "Mt.Moon Square\p"
+ 	.string "Just go up the stairs.$"
+ 

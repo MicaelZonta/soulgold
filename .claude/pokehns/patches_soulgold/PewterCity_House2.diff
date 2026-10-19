@@ -1,0 +1,17 @@
+diff --git a/data/maps/PewterCity_House2/map.json b/data/maps/PewterCity_House2/map.json
+index 41d7c3f3a3..a5c0844753 100644
+--- a/data/maps/PewterCity_House2/map.json
++++ b/data/maps/PewterCity_House2/map.json
+@@ -37,10 +37,6 @@
+       "dest_warp_id": "5"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }

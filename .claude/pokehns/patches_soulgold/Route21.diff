@@ -1,0 +1,83 @@
+diff --git a/data/maps/Route21/map.json b/data/maps/Route21/map.json
+index a465d2b462..3dc1bcf681 100644
+--- a/data/maps/Route21/map.json
++++ b/data/maps/Route21/map.json
+@@ -104,7 +104,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CORPHISH)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(QUAGSIRE)",
+       "x": 22,
+       "y": 39,
+       "elevation": 0,
+@@ -117,13 +117,7 @@
+       "flag": "0"
+     }
+   ],
+-  "warp_events": [
+-
+-  ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "warp_events": [],
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/Route21/map.json.bak b/data/maps/Route21/map.json.bak
+index 6b33877293..dd10318c8d 100644
+--- a/data/maps/Route21/map.json.bak
++++ b/data/maps/Route21/map.json.bak
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MR_MIME",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MR_MIME"),
+       "x": 19,
+       "y": 1,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_TANGELA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TANGELA"),
+       "x": 4,
+       "y": 11,
+       "elevation": 0,
+@@ -91,7 +91,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_TANGELA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TANGELA"),
+       "x": 19,
+       "y": 7,
+       "elevation": 0,
+@@ -104,7 +104,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CORPHISH",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CORPHISH"),
+       "x": 22,
+       "y": 39,
+       "elevation": 0,
+diff --git a/data/maps/Route21/scripts.inc b/data/maps/Route21/scripts.inc
+index db3342b131..708b3e33d1 100644
+--- a/data/maps/Route21/scripts.inc
++++ b/data/maps/Route21/scripts.inc
+@@ -29,7 +29,7 @@ Route21_Text_SwimmermSethBeaten:
+ 	.string "Glug…$"
+ 
+ Route21_Text_SwimmermSethAfterBattle:
+-	.string "This arrogant guy was at CINNABAR's\n"
++	.string "This arrogant guy was at Cinnabar's\n"
+ 	.string "volcano.$"
+ 
+ Route21_Text_SwimmerfNikkiSeen:

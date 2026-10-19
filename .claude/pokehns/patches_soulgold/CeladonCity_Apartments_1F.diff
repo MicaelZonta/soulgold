@@ -1,0 +1,63 @@
+diff --git a/data/maps/CeladonCity_Apartments_1F/map.json b/data/maps/CeladonCity_Apartments_1F/map.json
+index 549998c666..1e5e48d588 100644
+--- a/data/maps/CeladonCity_Apartments_1F/map.json
++++ b/data/maps/CeladonCity_Apartments_1F/map.json
+@@ -41,7 +41,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SKITTY)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH)",
+       "x": 6,
+       "y": 9,
+       "elevation": 0,
+@@ -84,9 +84,7 @@
+       "dest_warp_id": "2"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/CeladonCity_Apartments_1F/map.json.bak b/data/maps/CeladonCity_Apartments_1F/map.json.bak
+index 385e8ce996..0c9f425cff 100644
+--- a/data/maps/CeladonCity_Apartments_1F/map.json.bak
++++ b/data/maps/CeladonCity_Apartments_1F/map.json.bak
+@@ -28,7 +28,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MEOWTH",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEOWTH"),
+       "x": 4,
+       "y": 8,
+       "elevation": 0,
+@@ -41,7 +41,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SKITTY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SKITTY"),
+       "x": 6,
+       "y": 9,
+       "elevation": 0,
+diff --git a/data/maps/CeladonCity_Apartments_1F/scripts.inc b/data/maps/CeladonCity_Apartments_1F/scripts.inc
+index 3701e6551d..92ca03aa17 100644
+--- a/data/maps/CeladonCity_Apartments_1F/scripts.inc
++++ b/data/maps/CeladonCity_Apartments_1F/scripts.inc
+@@ -10,9 +10,9 @@ CeladonCity_Apartments_1F_EventScript_Sign::
+ 	end
+ 
+ CeladonMansion_Text_Manager:
+-	.string "My dear POKéMON keep me company,\n"
++	.string "My dear Pokémon keep me company,\n"
+ 	.string "so I don't ever feel lonely.\p"
+-	.string "MEOWTH even brings money home.$"
++	.string "Meowth even brings money home.$"
+ 
+ CeladonMansion_Text_ManagersSuiteSign:
+-	.string "CELADON MANSION MANAGER'S SUITE$"
++	.string "Celadon Mansion Manager's Suite$"

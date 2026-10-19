@@ -1,0 +1,57 @@
+diff --git a/data/maps/Route7/map.json b/data/maps/Route7/map.json
+index 8b1498b490..f768b08754 100644
+--- a/data/maps/Route7/map.json
++++ b/data/maps/Route7/map.json
+@@ -81,9 +81,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/Route7/map.json.bak b/data/maps/Route7/map.json.bak
+index ec46779d29..a6985bc714 100644
+--- a/data/maps/Route7/map.json.bak
++++ b/data/maps/Route7/map.json.bak
+@@ -26,7 +26,7 @@
+   ],
+   "object_events": [
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_JIGGLYPUFF",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(JIGGLYPUFF"),
+       "x": 17,
+       "y": 19,
+       "elevation": 0,
+@@ -52,7 +52,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_RALTS",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RALTS"),
+       "x": 11,
+       "y": 14,
+       "elevation": 0,
+diff --git a/data/maps/Route7/scripts.inc b/data/maps/Route7/scripts.inc
+index fadc16836a..3660a5baf6 100644
+--- a/data/maps/Route7/scripts.inc
++++ b/data/maps/Route7/scripts.inc
+@@ -19,11 +19,11 @@ Route7_Text_UndergroundPathSign:
+ 	.string "What's this flyer?\p"
+ 	.string "… Uncouth trainers have been\n"
+ 	.string "holding battles in the\l"
+-	.string "UNDERGROUND PATH.\p"
++	.string "Underground Path.\p"
+ 	.string "Because of rising complaints by\n"
+-	.string "local residents, the UNDERGROUND\l"
+-	.string "PATH has been sealed indefinitely.\p"
+-	.string "CELADON POLICE$"
++	.string "local residents, the Underground\l"
++	.string "Path has been sealed indefinitely.\p"
++	.string "Celadon Police$"
+ 
+ Route7_Text_LockedDoor:
+ 	.string "It's locked…$"

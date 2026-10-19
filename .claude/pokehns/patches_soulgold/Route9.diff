@@ -1,0 +1,139 @@
+diff --git a/data/maps/Route9/map.json b/data/maps/Route9/map.json
+index daf9a24df8..22db666c67 100644
+--- a/data/maps/Route9/map.json
++++ b/data/maps/Route9/map.json
+@@ -130,7 +130,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VENONAT)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SPINARAK)",
+       "x": 38,
+       "y": 9,
+       "elevation": 0,
+@@ -143,7 +143,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VENOMOTH)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZUBAT)",
+       "x": 33,
+       "y": 3,
+       "elevation": 0,
+@@ -169,13 +169,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     }
+   ],
+-  "warp_events": [
+-
+-  ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "warp_events": [],
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/Route9/map.json.bak b/data/maps/Route9/map.json.bak
+index 825f729fb2..ad4dc63fa3 100644
+--- a/data/maps/Route9/map.json.bak
++++ b/data/maps/Route9/map.json.bak
+@@ -104,7 +104,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAROWAK",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAROWAK"),
+       "x": 28,
+       "y": 16,
+       "elevation": 0,
+@@ -117,7 +117,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAROWAK",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAROWAK"),
+       "x": 8,
+       "y": 12,
+       "elevation": 0,
+@@ -130,7 +130,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_VENONAT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VENONAT"),
+       "x": 38,
+       "y": 9,
+       "elevation": 0,
+@@ -143,7 +143,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_VENOMOTH",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VENOMOTH"),
+       "x": 33,
+       "y": 3,
+       "elevation": 0,
+@@ -156,7 +156,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ARON",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ARON"),
+       "x": 72,
+       "y": 17,
+       "elevation": 0,
+diff --git a/data/maps/Route9/scripts.inc b/data/maps/Route9/scripts.inc
+index 2f10f0d8b9..ed21b33011 100644
+--- a/data/maps/Route9/scripts.inc
++++ b/data/maps/Route9/scripts.inc
+@@ -42,16 +42,16 @@ Route9_EventScript_Sign::
+ 	end
+ 
+ Route9_Text_CamperDeanSeen:
+-	.string "I came to explore ROCK TUNNEL.$"
++	.string "I came to explore Rock Tunnel.$"
+ 
+ Route9_Text_CamperDeanBeaten:
+ 	.string "Whoa! Danger, man.$"
+ 
+ Route9_Text_CamperDeanAfter:
+-	.string "My POKéMON were hurt before even\n"
+-	.string "entering ROCK TUNNEL.\p"
+-	.string "I'd better take them to a POKéMON\n"
+-	.string "CENTER right away.$"
++	.string "My Pokémon were hurt before even\n"
++	.string "entering Rock Tunnel.\p"
++	.string "I'd better take them to a Pokémon\n"
++	.string "Center right away.$"
+ 
+ Route9_Text_PicnickerHeidiSeen:
+ 	.string "Have you ever been to a picnic?\p"
+@@ -88,9 +88,9 @@ Route9_Text_PicnickerEdnaAfter:
+ 	.string "vital.$"
+ 
+ Route9_Text_HikerTimSeen:
+-	.string "She'll be coming 'round MT.SILVER\n"
++	.string "She'll be coming 'round Mt.Silver\n"
+ 	.string "when she comes…\p"
+-	.string "MT.SILVER is in JOHTO, right?$"
++	.string "Mt.Silver is in Johto, right?$"
+ 
+ Route9_Text_HikerTimBeaten:
+ 	.string "I was too busy singing…$"
+@@ -106,9 +106,9 @@ Route9_Text_HikerSidneyBeaten:
+ 	.string "Oh, dang! I lost that…$"
+ 
+ Route9_Text_HikerSidneyAfter:
+-	.string "The POWER PLANT is across a small\n"
++	.string "The Power Plant is across a small\n"
+ 	.string "river.$"
+ 
+ Route9_Text_Sign:
+-	.string "ROUTE 9\p"
+-	.string "CERULEAN CITY - ROCK TUNNEL$"
++	.string "Route 9\p"
++	.string "Cerulean City - Rock Tunnel$"

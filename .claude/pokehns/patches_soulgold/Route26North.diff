@@ -1,0 +1,161 @@
+diff --git a/data/maps/Route26North/map.json b/data/maps/Route26North/map.json
+index 83a4add4b8..fc4f9815e2 100644
+--- a/data/maps/Route26North/map.json
++++ b/data/maps/Route26North/map.json
+@@ -57,7 +57,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SQUIRTLE)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EELEKTROSS)",
+       "x": 11,
+       "y": 22,
+       "elevation": 0,
+@@ -70,7 +70,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BULBASAUR)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DOUBLADE)",
+       "x": 23,
+       "y": 17,
+       "elevation": 0,
+@@ -83,7 +83,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHARMANDER)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SCOVILLAIN)",
+       "x": 20,
+       "y": 11,
+       "elevation": 0,
+@@ -97,10 +97,10 @@
+     },
+     {
+       "graphics_id": "OBJ_EVENT_GFX_COOLTRAINER_F",
+-      "x": 9,
+-      "y": 11,
++      "x": 10,
++      "y": 10,
+       "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
++      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
+       "movement_range_x": 7,
+       "movement_range_y": 4,
+       "trainer_type": "TRAINER_TYPE_NORMAL",
+@@ -120,6 +120,45 @@
+       "trainer_sight_or_berry_tree_id": "0",
+       "script": "NULL",
+       "flag": "FLAG_NIGHT_POKEMON"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
++      "x": 7,
++      "y": 16,
++      "elevation": 0,
++      "movement_type": "MOVEMENT_TYPE_NONE",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "ITEM_CHOICE_SCARF",
++      "script": "Common_EventScript_FindItem",
++      "flag": "FLAG_CHOICE_SCARF_ITEM_R26"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
++      "x": 14,
++      "y": 7,
++      "elevation": 0,
++      "movement_type": "MOVEMENT_TYPE_NONE",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "NULL",
++      "flag": "FLAG_NIGHT_POKEMON"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
++      "x": 10,
++      "y": 7,
++      "elevation": 0,
++      "movement_type": "MOVEMENT_TYPE_NONE",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "NULL",
++      "flag": "FLAG_NIGHT_POKEMON"
+     }
+   ],
+   "warp_events": [
+@@ -143,6 +182,14 @@
+     }
+   ],
+   "bg_events": [
+-
++    {
++      "type": "hidden_item",
++      "x": 18,
++      "y": 10,
++      "elevation": 0,
++      "item": "ITEM_POKE_BALL",
++      "flag": "FLAG_HIDDEN_ITEM_ROUTE26_ULTRA_BALL",
++      "quantity": 1
++    }
+   ]
+ }
+diff --git a/data/maps/Route26North/map.json.bak b/data/maps/Route26North/map.json.bak
+index 60efa03088..3ddb23f887 100644
+--- a/data/maps/Route26North/map.json.bak
++++ b/data/maps/Route26North/map.json.bak
+@@ -57,7 +57,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SQUIRTLE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SQUIRTLE"),
+       "x": 11,
+       "y": 22,
+       "elevation": 0,
+@@ -70,7 +70,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_BULBASAUR",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BULBASAUR"),
+       "x": 23,
+       "y": 17,
+       "elevation": 0,
+@@ -83,7 +83,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CHARMANDER",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHARMANDER"),
+       "x": 20,
+       "y": 11,
+       "elevation": 0,
+@@ -109,7 +109,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MURKROW",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MURKROW"),
+       "x": 11,
+       "y": 2,
+       "elevation": 0,
+diff --git a/data/maps/Route26North/scripts.inc b/data/maps/Route26North/scripts.inc
+index e548d64cdf..f96937ffce 100644
+--- a/data/maps/Route26North/scripts.inc
++++ b/data/maps/Route26North/scripts.inc
+@@ -2,6 +2,6 @@ Route26North_MapScripts::
+ 	.byte 0
+ 
+ Route26North_Trigger::
+-	setflag FLAG_GARBAGEFLAG
++	setflag FLAG_VISITED_RECEPTION_GATE
+ 	setvar VAR_TEMP_0, 1
+-	end
+\ No newline at end of file
++	end

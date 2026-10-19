@@ -1,0 +1,139 @@
+diff --git a/data/maps/MtMoon_Outside/map.json b/data/maps/MtMoon_Outside/map.json
+index 8af32adc18..dbb69be048 100644
+--- a/data/maps/MtMoon_Outside/map.json
++++ b/data/maps/MtMoon_Outside/map.json
+@@ -123,19 +123,6 @@
+       "trainer_sight_or_berry_tree_id": "0",
+       "script": "MtMoon_Outside_EventScript_Clefairy",
+       "flag": "FLAG_NIGHT_POKEMON"
+-    },
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+-      "x": 6,
+-      "y": 24,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_NONE",
+-      "movement_range_x": 0,
+-      "movement_range_y": 0,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "MtMoon_EventScript_Moonstone",
+-      "flag": "FLAG_ITEM_MTMOON_MOONSTONE"
+     }
+   ],
+   "warp_events": [
+@@ -161,9 +148,7 @@
+       "dest_warp_id": "8"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/MtMoon_Outside/map.json.bak b/data/maps/MtMoon_Outside/map.json.bak
+index da355d08e5..58a60292c8 100644
+--- a/data/maps/MtMoon_Outside/map.json.bak
++++ b/data/maps/MtMoon_Outside/map.json.bak
+@@ -21,7 +21,7 @@
+   ],
+   "object_events": [
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 16,
+       "y": 8,
+       "elevation": 0,
+@@ -34,7 +34,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 16,
+       "y": 14,
+       "elevation": 0,
+@@ -47,7 +47,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 10,
+       "y": 14,
+       "elevation": 0,
+@@ -60,7 +60,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 10,
+       "y": 8,
+       "elevation": 0,
+@@ -73,7 +73,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 10,
+       "y": 11,
+       "elevation": 0,
+@@ -86,7 +86,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 13,
+       "y": 14,
+       "elevation": 0,
+@@ -99,7 +99,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 16,
+       "y": 11,
+       "elevation": 0,
+@@ -112,7 +112,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 13,
+       "y": 8,
+       "elevation": 0,
+diff --git a/data/maps/MtMoon_Outside/scripts.inc b/data/maps/MtMoon_Outside/scripts.inc
+index b42925574e..b24618ba3a 100644
+--- a/data/maps/MtMoon_Outside/scripts.inc
++++ b/data/maps/MtMoon_Outside/scripts.inc
+@@ -1,10 +1,6 @@
+ MtMoon_Outside_MapScripts::
+ 	.byte 0
+ 
+-MtMoon_EventScript_Moonstone::
+-	finditem ITEM_MOON_STONE
+-	end
+-
+ MtMoon_Outside_EventScript_Sign::
+ 	msgbox MtMoon_Outside_Text_DontLitterSign, MSGBOX_SIGN
+ 	end
+@@ -20,9 +16,9 @@ MtMoon_Outside_EventScript_Clefairy::
+ 	end
+ 
+ MtMoon_Outside_Text_DontLitterSign:
+-	.string "MT.MOON SQUARE\n"
+-	.string "DON'T LITTER$"
++	.string "Mt.Moon Square\n"
++	.string "Don'T Litter$"
+ 
+ MtMoon_Outside_Text_Clefairy:
+-    .string "CLEFAIRY: Pi pippippi!$"
++    .string "{SPEAKER NAME_CLEFAIRY}Pi pippippi!$"
+ 

@@ -1,0 +1,75 @@
+diff --git a/data/maps/ViridianCity_House1/map.json b/data/maps/ViridianCity_House1/map.json
+index b27b0d8b19..09f44ea9e6 100644
+--- a/data/maps/ViridianCity_House1/map.json
++++ b/data/maps/ViridianCity_House1/map.json
+@@ -54,7 +54,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SPEAROW)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RATTATA)",
+       "x": 11,
+       "y": 4,
+       "elevation": 0,
+@@ -76,10 +76,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/ViridianCity_House1/map.json.bak b/data/maps/ViridianCity_House1/map.json.bak
+index 75ce4e6af8..4106331ee6 100644
+--- a/data/maps/ViridianCity_House1/map.json.bak
++++ b/data/maps/ViridianCity_House1/map.json.bak
+@@ -41,7 +41,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_RATTATA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RATTATA"),
+       "x": 10,
+       "y": 3,
+       "elevation": 0,
+@@ -54,7 +54,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SPEAROW",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SPEAROW"),
+       "x": 11,
+       "y": 4,
+       "elevation": 0,
+diff --git a/data/maps/ViridianCity_House1/scripts.inc b/data/maps/ViridianCity_House1/scripts.inc
+index 90eee89acc..bb60d6d407 100644
+--- a/data/maps/ViridianCity_House1/scripts.inc
++++ b/data/maps/ViridianCity_House1/scripts.inc
+@@ -32,17 +32,17 @@ ViridianCity_House1_EventScript_Rattey::
+ 
+ ViridianCity_House1_Text_PokefanM:
+ 	.string "Do you put a lot of thought into\n"
+-	.string "naming your POKéMON?\p"
++	.string "naming your Pokémon?\p"
+ 	.string "Giving them good nicknames adds to\n"
+ 	.string "the fun of trading with others.$"
+ 
+ ViridianCity_House1_Text_Lass:
+-	.string "They're SPEARY--a SPEAROW--and\n"
+-	.string "RATTEY--a RATTATA.$"
++	.string "They're Speary--a Spearow--and\n"
++	.string "Rattey--a Rattata.$"
+ 
+ ViridianCity_House1_Text_Speary:
+-	.string "SPEARY: Ch-chun!$"
++	.string "{SPEAKER NAME_SPEARY}Ch-chun!$"
+ 
+ ViridianCity_House1_Text_Rattey:
+-	.string "RATTEY: Kikiii!$"
++	.string "{SPEAKER NAME_RATTEY}Kikiii!$"
+ 

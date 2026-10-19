@@ -1,0 +1,13 @@
+diff --git a/data/maps/Gate_FuchsiaCity_Route18/map.json b/data/maps/Gate_FuchsiaCity_Route18/map.json
+index c405d1c457..00a6be9732 100644
+--- a/data/maps/Gate_FuchsiaCity_Route18/map.json
++++ b/data/maps/Gate_FuchsiaCity_Route18/map.json
+@@ -73,7 +73,5 @@
+       "script": "Gate_CeladonCity_Route16_TriggerScript"
+     }
+   ],
+-  "bg_events": [
+-
+-  ]
++  "bg_events": []
+ }

@@ -1,0 +1,87 @@
+diff --git a/data/maps/PokemonLeague_BrunosRoom/map.json b/data/maps/PokemonLeague_BrunosRoom/map.json
+index 2fa61fbe44..bb08692354 100644
+--- a/data/maps/PokemonLeague_BrunosRoom/map.json
++++ b/data/maps/PokemonLeague_BrunosRoom/map.json
+@@ -44,10 +44,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/PokemonLeague_BrunosRoom/scripts.inc b/data/maps/PokemonLeague_BrunosRoom/scripts.inc
+index f93f546e13..07d608dcd7 100644
+--- a/data/maps/PokemonLeague_BrunosRoom/scripts.inc
++++ b/data/maps/PokemonLeague_BrunosRoom/scripts.inc
+@@ -6,13 +6,14 @@ PokemonLeague_BrunosRoom_MapScripts::
+ 
+ PokemonLeague_BrunosRoom_OnResume::
+ 	setvar VAR_0x8004, 2
++	@special DoPokemonLeagueLightingEffect
+ 	end
+ 
+ PokemonLeague_BrunosRoom_EventScript_Bruno::
+ 	lock 
+ 	faceplayer
+ 	goto_if_ge VAR_LEAGUE_STATE, 4, PokemonLeague_BrunosRoom_EventScript_BrunoDefeated
+-	goto_if_set FLAG_GARBAGEFLAG, PokemonLeague_BrunosRoom_EventScript_BrunoRematch
++	goto_if_set FLAG_IS_CHAMPION, PokemonLeague_BrunosRoom_EventScript_BrunoRematch
+ 	msgbox PokemonLeague_BrunosRoom_Text_Before, MSGBOX_DEFAULT
+ 	setflag FLAG_TEMP_3
+ 	setflag FLAG_TEMP_5
+@@ -23,15 +24,21 @@ PokemonLeague_BrunosRoom_EventScript_BrunoRematch::
+ 	msgbox PokemonLeague_BrunosRoom_Text_RematchBefore, MSGBOX_DEFAULT
+ 	setflag FLAG_TEMP_3
+ 	setflag FLAG_TEMP_5
++	goto_if_eq VAR_TEMP_1, 1, PokemonLeague_BrunosRoom_EventScript_BrunoRematchAlt
+ 	trainerbattle_no_intro TRAINER_BRUNO_2, PokemonLeague_BrunosRoom_Text_Beaten
+ 	goto PokemonLeague_BrunosRoom_EventScript_BrunoOnDefeat
+ 
++PokemonLeague_BrunosRoom_EventScript_BrunoRematchAlt::
++	trainerbattle_no_intro TRAINER_BRUNO_REMATCH_ALT, PokemonLeague_BrunosRoom_Text_Beaten
++	goto PokemonLeague_BrunosRoom_EventScript_BrunoOnDefeat
++
+ PokemonLeague_BrunosRoom_EventScript_BrunoOnDefeat::
+ 	clearflag FLAG_TEMP_5	
++	createfieldmugshot MUGSHOT_BRUNO
+ 	msgbox PokemonLeague_BrunosRoom_Text_Defeat, MSGBOX_DEFAULT
+ 	closemessage
+-	setmetatile 6, 1, 0x28E, FALSE
+-	setmetatile 6, 2, 0x296, FALSE	
++	setmetatile 6, 1, 0x40E, FALSE
++	setmetatile 6, 2, 0x416, FALSE	
+ 	playse SE_BANG
+ 	setvar VAR_0x8004, 1  @ vertical pan
+ 	setvar VAR_0x8005, 1  @ horizontal pan
+@@ -51,7 +58,7 @@ PokemonLeague_BrunosRoom_EventScript_BrunoDefeated::
+ 	end
+ 
+ PokemonLeague_BrunosRoom_Text_RematchBefore:
+-    .string "BRUNO: Welcome back, young\n"
++    .string "{SPEAKER NAME_BRUNO}Welcome back, young\n"
+     .string "warrior.\p"
+     .string "Through rigorous training, we have\n"
+     .string "grown stronger.\p"
+@@ -64,7 +71,7 @@ PokemonLeague_BrunosRoom_Text_RematchBefore:
+     .string "Hoo hah!$"
+ 
+ PokemonLeague_BrunosRoom_Text_Before:
+-    .string "I am BRUNO of the ELITE FOUR.\p"
++    .string "{SPEAKER NAME_BRUNO}I am Bruno of the Elite Four.\p"
+     .string "I always train to the extreme be-\n"
+     .string "cause I believe in our potential.\p"
+     .string "That is how we became strong.\p"
+@@ -79,6 +86,6 @@ PokemonLeague_BrunosRoom_Text_Beaten:
+     .string "Why? How could we lose?$"
+ 
+ PokemonLeague_BrunosRoom_Text_Defeat:
+-    .string "Having lost, I have no right to\n"
++    .string "{SPEAKER NAME_BRUNO}Having lost, I have no right to\n"
+     .string "say anything…\p"
+     .string "Go face your next challenge!$"

@@ -1,0 +1,184 @@
+diff --git a/data/maps/CeruleanCave_1F/map.json b/data/maps/CeruleanCave_1F/map.json
+index fa90cfefab..1a4f35ffc6 100644
+--- a/data/maps/CeruleanCave_1F/map.json
++++ b/data/maps/CeruleanCave_1F/map.json
+@@ -12,7 +12,7 @@
+   "allow_running": true,
+   "show_map_name": true,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
+       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+@@ -23,8 +23,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "CeruleanCave1_EventScript_RareCandy",
++      "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_CERULEANCAVE1_RARE_CANDY"
+     },
+     {
+@@ -36,8 +36,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "CeruleanCave1_EventScript_MaxElixir",
++      "trainer_sight_or_berry_tree_id": "ITEM_MAX_ELIXIR",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_CERULEANCAVE1_MAX_ELIXIR"
+     },
+     {
+@@ -49,8 +49,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "CeruleanCave1_EventScript_PpUp",
++      "trainer_sight_or_berry_tree_id": "ITEM_PP_MAX",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_CERULEANCAVE1_PP_UP"
+     },
+     {
+@@ -171,7 +171,7 @@
+       "flag": "FLAG_TEMP_9"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PARASECT)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOLBAT)",
+       "x": 39,
+       "y": 21,
+       "elevation": 0,
+@@ -184,7 +184,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PARASECT)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOLBAT)",
+       "x": 40,
+       "y": 23,
+       "elevation": 0,
+@@ -280,8 +280,8 @@
+       "x": 35,
+       "y": 23,
+       "elevation": 0,
+-      "dest_map": "MAP_CERULEAN_CITY",
+-      "dest_warp_id": "0"
++      "dest_map": "MAP_KITAKAMI_BORDER",
++      "dest_warp_id": "2"
+     },
+     {
+       "x": 12,
+@@ -333,10 +333,6 @@
+       "dest_warp_id": "5"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/CeruleanCave_1F/map.json.bak b/data/maps/CeruleanCave_1F/map.json.bak
+index 19d97a82ef..4f22977ff6 100644
+--- a/data/maps/CeruleanCave_1F/map.json.bak
++++ b/data/maps/CeruleanCave_1F/map.json.bak
+@@ -171,7 +171,7 @@
+       "flag": "FLAG_TEMP_9"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PARASECT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PARASECT"),
+       "x": 39,
+       "y": 21,
+       "elevation": 0,
+@@ -184,7 +184,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PARASECT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PARASECT"),
+       "x": 40,
+       "y": 23,
+       "elevation": 0,
+@@ -197,7 +197,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PRIMEAPE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PRIMEAPE"),
+       "x": 17,
+       "y": 2,
+       "elevation": 0,
+@@ -210,7 +210,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MACHAMP",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MACHAMP"),
+       "x": 20,
+       "y": 2,
+       "elevation": 0,
+@@ -223,7 +223,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAGNETON",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGNETON"),
+       "x": 4,
+       "y": 23,
+       "elevation": 0,
+@@ -236,7 +236,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ELECTRODE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ELECTRODE"),
+       "x": 3,
+       "y": 24,
+       "elevation": 0,
+@@ -249,7 +249,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_DITTO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DITTO"),
+       "x": 3,
+       "y": 3,
+       "elevation": 0,
+@@ -262,7 +262,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GOLBAT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOLBAT"),
+       "x": 6,
+       "y": 5,
+       "elevation": 0,
+diff --git a/data/maps/CeruleanCave_1F/scripts.inc b/data/maps/CeruleanCave_1F/scripts.inc
+index b8195f252e..ba4a17449c 100644
+--- a/data/maps/CeruleanCave_1F/scripts.inc
++++ b/data/maps/CeruleanCave_1F/scripts.inc
+@@ -2,15 +2,3 @@ CeruleanCave_1F_MapScripts::
+ 	.byte 0
+ 
+ 
+-CeruleanCave1_EventScript_MaxElixir::
+-    finditem ITEM_MAX_ELIXIR
+-    end
+-
+-CeruleanCave1_EventScript_RareCandy::
+-    finditem ITEM_RARE_CANDY
+-    end
+-
+-CeruleanCave1_EventScript_PpUp::
+-    finditem ITEM_PP_UP
+-    end
+-

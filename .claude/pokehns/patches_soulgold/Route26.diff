@@ -1,0 +1,272 @@
+diff --git a/data/maps/Route26/map.json b/data/maps/Route26/map.json
+index da2ab6c63c..2afaa9c6b1 100644
+--- a/data/maps/Route26/map.json
++++ b/data/maps/Route26/map.json
+@@ -64,45 +64,6 @@
+       "script": "Route26_EventScript_Joyce",
+       "flag": "0"
+     },
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BULBASAUR)",
+-      "x": 15,
+-      "y": 56,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_LEFT_UP",
+-      "movement_range_x": 2,
+-      "movement_range_y": 2,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "NULL",
+-      "flag": "0"
+-    },
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SQUIRTLE)",
+-      "x": 17,
+-      "y": 56,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT",
+-      "movement_range_x": 2,
+-      "movement_range_y": 2,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "NULL",
+-      "flag": "FLAG_NIGHT_POKEMON"
+-    },
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHARMANDER)",
+-      "x": 17,
+-      "y": 58,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN",
+-      "movement_range_x": 2,
+-      "movement_range_y": 2,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "NULL",
+-      "flag": "FLAG_DAY_POKEMON"
+-    },
+     {
+       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ARBOK)",
+       "x": 15,
+@@ -117,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DOUBLADE)",
+       "x": 2,
+       "y": 22,
+       "elevation": 0,
+@@ -257,10 +218,16 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+-
++    {
++      "type": "hidden_item",
++      "x": 10,
++      "y": 61,
++      "elevation": 0,
++      "item": "ITEM_RARE_CANDY",
++      "flag": "FLAG_HIDDEN_ITEM_ROUTE26_RARE_CANDY",
++      "quantity": 1
++    }
+   ]
+ }
+diff --git a/data/maps/Route26/map.json.bak b/data/maps/Route26/map.json.bak
+index 6aa5a6f33b..c1ff565753 100644
+--- a/data/maps/Route26/map.json.bak
++++ b/data/maps/Route26/map.json.bak
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_BULBASAUR",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BULBASAUR"),
+       "x": 15,
+       "y": 56,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SQUIRTLE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SQUIRTLE"),
+       "x": 17,
+       "y": 56,
+       "elevation": 0,
+@@ -91,7 +91,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CHARMANDER",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHARMANDER"),
+       "x": 17,
+       "y": 58,
+       "elevation": 0,
+@@ -104,7 +104,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ARBOK",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ARBOK"),
+       "x": 15,
+       "y": 50,
+       "elevation": 0,
+@@ -117,7 +117,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_DODRIO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO"),
+       "x": 2,
+       "y": 22,
+       "elevation": 0,
+@@ -130,7 +130,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PONYTA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PONYTA"),
+       "x": 38,
+       "y": 16,
+       "elevation": 0,
+@@ -143,7 +143,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_RAPIDASH",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RAPIDASH"),
+       "x": 36,
+       "y": 20,
+       "elevation": 0,
+@@ -156,7 +156,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_BULBASAUR",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BULBASAUR"),
+       "x": 23,
+       "y": -13,
+       "elevation": 0,
+@@ -169,7 +169,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SQUIRTLE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SQUIRTLE"),
+       "x": 11,
+       "y": -8,
+       "elevation": 0,
+@@ -182,7 +182,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CHARMANDER",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHARMANDER"),
+       "x": 20,
+       "y": -19,
+       "elevation": 0,
+@@ -195,7 +195,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MURKROW",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MURKROW"),
+       "x": 11,
+       "y": -28,
+       "elevation": 0,
+diff --git a/data/maps/Route26/scripts.inc b/data/maps/Route26/scripts.inc
+index 1e2e01749f..201a384db8 100644
+--- a/data/maps/Route26/scripts.inc
++++ b/data/maps/Route26/scripts.inc
+@@ -34,17 +34,17 @@ Route26_EventScript_Richard::
+ 
+ Route26_Text_CooltrainermJakeSeen:
+     .string "I'm making my final preparations\n"
+-    .string "for the POKéMON LEAGUE.$"
++    .string "for the Pokémon League.$"
+ 
+ Route26_Text_CooltrainermJakeBeaten:
+     .string "I blew it!$"
+ 
+ Route26_Text_CooltrainermJakeAfter:
+     .string "It's going to be tough to win at\n"
+-    .string "the LEAGUE.\p"
++    .string "the League.\p"
+     .string "I need to do some more training.\p"
+-    .string "I hear that the LEAGUE's ELITE\n"
+-    .string "FOUR are tougher than GYM LEADERS.$"
++    .string "I hear that the League's Elite\n"
++    .string "Four are tougher than Gym Leaders.$"
+ 
+ Route26_Text_CooltrainermGavenSeen:
+     .string "By experiencing tough battles, you\n"
+@@ -54,9 +54,9 @@ Route26_Text_CooltrainermGavenBeaten:
+     .string "Gaah! Life is even tougher!$"
+ 
+ Route26_Text_CooltrainermGavenAfter:
+-    .string "To get to POKéMON LEAGUE, you have\n"
+-    .string "to get through VICTORY ROAD.\p"
+-    .string "But VICTORY ROAD is tough.\p"
++    .string "To get to Pokémon League, you have\n"
++    .string "to get through Victory Road.\p"
++    .string "But Victory Road is tough.\p"
+     .string "Practically nobody goes there!$"
+ 
+ Route26_Text_CooltrainerfJoyceSeen:
+@@ -69,26 +69,26 @@ Route26_Text_CooltrainerfJoyceBeaten:
+     .string "No! I don't believe this!$"
+ 
+ Route26_Text_CooltrainerfJoyceAfter:
+-    .string "I've defeated eight GYM LEADERS,\n"
++    .string "I've defeated eight Gym Leaders,\n"
+     .string "so I was feeling confident.\p"
+     .string "I'll have to try harder next time.$"
+ 
+ Route26_Text_CooltrainerfBethSeen:
+-    .string "I lost to a trainer named SILVER.\p"
++    .string "I lost to a trainer named Silver.\p"
+     .string "He was really strong, but…\p"
+     .string "It was as if he absolutely had to\n"
+     .string "win at any cost.\p"
+-    .string "I felt sorry for his POKéMON.$"
++    .string "I felt sorry for his Pokémon.$"
+ 
+ Route26_Text_CooltrainerfBethBeaten:
+-    .string "POKéMON aren't tools of war.$"
++    .string "Pokémon aren't tools of war.$"
+ 
+ Route26_Text_CooltrainerfBethAfter:
+-    .string "POKéMON are in-valuable, lifelong\n"
++    .string "Pokémon are in-valuable, lifelong\n"
+     .string "partners.$"
+ 
+ Route26_Text_PsychicRichardSeen:
+-    .string "Wow, look at all those BADGES!\n"
++    .string "Wow, look at all those Badges!\n"
+     .string "I'm impressed.\p"
+     .string "But you're not satisfied by just\n"
+     .string "collecting them, right?$"
+@@ -97,12 +97,12 @@ Route26_Text_PsychicRichardBeaten:
+     .string "Good battle!$"
+ 
+ Route26_Text_PsychicRichardAfter:
+-    .string "People and POKéMON grow from their\n"
++    .string "People and Pokémon grow from their\n"
+     .string "experiences.\p"
+     .string "Don't get lazy and complacent.$"
+ 
+ Route26_Text_Sign:
+-    .string "ROUTE 26\p"
+-    .string "POKéMON LEAGUE\n"
+-    .string "RECEPTION GATE$"
++    .string "Route 26\p"
++    .string "Pokémon League\n"
++    .string "Reception Gate$"
+ 

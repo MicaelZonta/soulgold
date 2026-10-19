@@ -1,0 +1,163 @@
+diff --git a/data/maps/Route14/map.json b/data/maps/Route14/map.json
+index 71eef90cbd..472d487c14 100644
+--- a/data/maps/Route14/map.json
++++ b/data/maps/Route14/map.json
+@@ -143,9 +143,7 @@
+       "flag": "0"
+     }
+   ],
+-  "warp_events": [
+-
+-  ],
++  "warp_events": [],
+   "coord_events": [
+     {
+       "type": "trigger",
+@@ -193,7 +191,5 @@
+       "script": "Route14_TriggerSuicune_1"
+     }
+   ],
+-  "bg_events": [
+-
+-  ]
++  "bg_events": []
+ }
+diff --git a/data/maps/Route14/map.json.bak b/data/maps/Route14/map.json.bak
+index 949d45340b..941d6c89b9 100644
+--- a/data/maps/Route14/map.json.bak
++++ b/data/maps/Route14/map.json.bak
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SUICUNE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SUICUNE"),
+       "x": 21,
+       "y": 42,
+       "elevation": 0,
+@@ -104,7 +104,7 @@
+       "flag": "FLAG_HIDE_ROUTE14_EUSINE"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SHROOMISH",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SHROOMISH"),
+       "x": 0,
+       "y": 20,
+       "elevation": 0,
+@@ -130,7 +130,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PIDGEOTTO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEOTTO"),
+       "x": 23,
+       "y": 13,
+       "elevation": 0,
+diff --git a/data/maps/Route14/scripts.inc b/data/maps/Route14/scripts.inc
+index 36cd6bfa98..9d413a645b 100644
+--- a/data/maps/Route14/scripts.inc
++++ b/data/maps/Route14/scripts.inc
+@@ -181,19 +181,19 @@ Route14_EventScript_Trevor::
+ 
+ 
+ Route14_Text_Eusine:
+-	.string "EUSINE: {PLAYER}! Not again!\n"
++	.string "{SPEAKER NAME_EUSINE}{PLAYER}! Not again!\n"
+ 	.string "I'll be there first next time!\p"
+ 	.string "Having followed it here, I'm\n"
+-	.string "starting to understand what SUICUNE\l"
++	.string "starting to understand what Suicune\l"
+ 	.string "is after.\p"
+ 	.string "To be honest, I would like to keep\n"
+ 	.string "this information to myself.\p"
+ 	.string "But I want to be an honest trainer\n"
+-	.string "in front of SUICUNE!\p"
++	.string "in front of Suicune!\p"
+ 	.string "That's why I am sharing a clue with\n"
+ 	.string "you.\p"
+ 	.string "It seems that...\n"
+-	.string "SUICUNE prefers a hilly place...\l"
++	.string "Suicune prefers a hilly place...\l"
+ 	.string "Near water...\l"
+ 	.string "Somewhere north...\p"
+ 	.string "I don't know exactly where yet.\n"
+@@ -203,38 +203,38 @@ Route14_Text_Eusine:
+ 
+ Route14_Text_PokefanmCarterSeen:
+ 	.string "Let me tell you, I had a hard time\n"
+-	.string "catching my prized POKéMON.$"
++	.string "catching my prized Pokémon.$"
+ 
+ Route14_Text_PokefanmCarterBeaten:
+ 	.string "Awaaah!$"
+ 
+ Route14_Text_PokefanmCarterAfterBattle:
+-	.string "TOTODILE, CYNDAQUIL, CHIKORITA…\p"
++	.string "Totodile, Cyndaquil, Chikorita…\p"
+ 	.string "I think that's a well-balanced mix.$"
+ 
+ Route14_Text_BirdKeeperRoySeen:
+ 	.string "My dream is to fly with my beloved\n"
+-	.string "bird POKéMON.$"
++	.string "bird Pokémon.$"
+ 
+ Route14_Text_BirdKeeperRoyBeaten:
+ 	.string "I can dream, but I can't ever fly…$"
+ 
+ Route14_Text_BirdKeeperRoyAfterBattle:
+-	.string "You have POKéMON that know the HM\n"
+-	.string "move FLY, don't you? I envy you.$"
++	.string "You have Pokémon that know the HM\n"
++	.string "move Fly, don't you? I envy you.$"
+ 
+ Route14_Text_PokefanmTrevorSeen:
+ 	.string "Hi. Did you know…?\p"
+-	.string "POKéMON get more friendly if you\n"
++	.string "Pokémon get more friendly if you\n"
+ 	.string "train them in a place that they\n"
+ 	.string "remember.$"
+ 
+ Route14_Text_PokefanmTrevorBeaten:
+-	.string "Where did I meet this SCIZOR?$"
++	.string "Where did I meet this Scizor?$"
+ 
+ Route14_Text_PokefanmTrevorAfterBattle:
+ 	.string "If only there were an easy way to\n"
+-	.string "identify where I got my POKéMON…$"
++	.string "identify where I got my Pokémon…$"
+ 
+ Route14_EventScript_Pidgeotto::
+ 	lockall
+@@ -245,11 +245,13 @@ Route14_EventScript_Pidgeotto::
+ 	goto_if_set FLAG_GOT_ROUTE_14_AERIAL_ACE, Route14_EventScript_PidgeottoBlowPlayer
+ 	msgbox Route14_Text_PidgeottoBerry, MSGBOX_YESNO
+ 	goto_if_eq VAR_RESULT, FALSE, Route14_EventScript_PidgeottoBlowPlayer
+-	@chooseitem BERRIES_POCKET
+-	removeitem VAR_ITEM_ID, 1
++	@ Same defect as the Ice Path Swinub/Delibird (bug/B08): the Berry pocket was
++	@ never opened and removeitem took whatever VAR_ITEM_ID last held.
++	chooseitem POCKET_BERRIES
++	goto_if_eq VAR_ITEM_ID, ITEM_NONE, Route14_EventScript_PidgeottoBlowPlayer
+ 	goto_if_ne VAR_ITEM_ID, ITEM_QUALOT_BERRY, Route14_EventScript_PidgeottoDislikedBerry
++	removeitem VAR_ITEM_ID, 1
+ 	msgbox Route14_Text_PidgeottoAteBerry, MSGBOX_DEFAULT
+-	giveitem ITEM_TM_AERIAL_ACE
+ 	setflag FLAG_GOT_ROUTE_14_AERIAL_ACE
+ Route14_EventScript_PidgeottoBlowPlayer::
+ 	closemessage
+@@ -325,11 +327,11 @@ Route14_Movement_StuckPidgeottoJump:
+ 	step_end
+ 
+ Route14_Text_Pidgeotto:
+-	.string "PIDGEOTTO: Kaaaaa!$"
++	.string "{SPEAKER NAME_PIDGEOTTO}Kaaaaa!$"
+ Route14_Text_PidgeottoBerry:
+-	.string "Give the PIDGEOTTO a BERRY?$"
++	.string "Give the Pidgeotto a Berry?$"
+ Route14_Text_PidgeottoAteBerry:
+-	.string "PIDGEOTTO enjoyed the QUALOT BERRY!$"
++	.string "Pidgeotto enjoyed the Qualot Berry!$"
+ Route14_Text_PidgeottoTurnedAway:
+-	.string "PIDGEOTTO doesn't like it!$"
++	.string "Pidgeotto doesn't like it!$"
+ 

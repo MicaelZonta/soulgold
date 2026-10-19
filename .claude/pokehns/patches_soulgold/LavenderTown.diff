@@ -1,0 +1,167 @@
+diff --git a/data/maps/LavenderTown/map.json b/data/maps/LavenderTown/map.json
+index 79857fe162..7379dcea62 100644
+--- a/data/maps/LavenderTown/map.json
++++ b/data/maps/LavenderTown/map.json
+@@ -251,9 +251,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/LavenderTown/map.json.bak b/data/maps/LavenderTown/map.json.bak
+index 7bc7ff8707..9ad0e8690a 100644
+--- a/data/maps/LavenderTown/map.json.bak
++++ b/data/maps/LavenderTown/map.json.bak
+@@ -83,7 +83,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GASTLY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GASTLY"),
+       "x": 19,
+       "y": 4,
+       "elevation": 0,
+@@ -96,7 +96,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MISDREAVUS",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MISDREAVUS"),
+       "x": 23,
+       "y": 4,
+       "elevation": 0,
+@@ -109,7 +109,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GASTLY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GASTLY"),
+       "x": 25,
+       "y": 4,
+       "elevation": 0,
+@@ -122,7 +122,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HAUNTER",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HAUNTER"),
+       "x": 22,
+       "y": 11,
+       "elevation": 0,
+@@ -135,7 +135,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HAUNTER",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HAUNTER"),
+       "x": 24,
+       "y": 13,
+       "elevation": 0,
+@@ -148,7 +148,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GENGAR",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GENGAR"),
+       "x": 24,
+       "y": -2,
+       "elevation": 0,
+@@ -161,7 +161,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GASTLY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GASTLY"),
+       "x": 0,
+       "y": 3,
+       "elevation": 0,
+@@ -174,7 +174,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GASTLY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GASTLY"),
+       "x": 4,
+       "y": 20,
+       "elevation": 0,
+@@ -187,7 +187,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GASTLY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GASTLY"),
+       "x": 22,
+       "y": 20,
+       "elevation": 0,
+diff --git a/data/maps/LavenderTown/scripts.inc b/data/maps/LavenderTown/scripts.inc
+index 352b643732..e43a2d2782 100644
+--- a/data/maps/LavenderTown/scripts.inc
++++ b/data/maps/LavenderTown/scripts.inc
+@@ -1,9 +1,14 @@
+ LavenderTown_MapScripts::
+ 	map_script MAP_SCRIPT_ON_TRANSITION, LavenderTown_EventScript_CityEnter
++	map_script MAP_SCRIPT_ON_LOAD, LavenderTown_OnLoad
+ 	.byte 0
+ 
+ LavenderTown_EventScript_CityEnter::
+-	setflag FLAG_GARBAGEFLAG
++	setflag FLAG_VISITED_LAVENDER_TOWN
++	end
++
++LavenderTown_OnLoad::
++	setrespawn HEAL_LOCATION_LAVENDER_TOWN
+ 	end
+ 
+ LavenderTown_EventScript_PokefanM::
+@@ -40,35 +45,35 @@ LavenderTown_EventScript_SoulHouseSign::
+ 
+ LavenderTown_Text_PokefanM:
+ 	.string "That's quite some building, eh?\p"
+-	.string "It's KANTO's RADIO TOWER.$"
++	.string "It's Kanto's Radio Tower.$"
+ 
+ LavenderTown_Text_Teacher:
+-	.string "KANTO has many good radio shows.$"
++	.string "Kanto has many good radio shows.$"
+ 
+ LavenderTown_Text_Gramps:
+ 	.string "People come from all over to pay\n"
+ 	.string "their respects to the departed\l"
+-	.string "souls of POKéMON.$"
++	.string "souls of Pokémon.$"
+ 
+ LavenderTown_Text_Youngster:
+-	.string "You need a POKé FLUTE to wake\n"
+-	.string "sleeping POKéMON.\p"
++	.string "You need a Poké Flute to wake\n"
++	.string "sleeping Pokémon.\p"
+ 	.string "Every trainer has to know that!$"
+ 
+ LavenderTown_Text_Sign:
+-	.string "LAVENDER TOWN\p"
++	.string "Lavender Town\p"
+ 	.string "The Noble Purple Town$"
+ 
+ LavenderTown_Text_KantoRadioStationSign:
+-	.string "KANTO RADIO STATION\p"
++	.string "Kanto Radio Station\p"
+ 	.string "Your Favorite Programs On-Air\n"
+ 	.string "Around the Clock!$"
+ 
+ LavenderTown_Text_VolunteerPokemonHouseSign:
+-	.string "LAVENDER VOLUNTEER POKéMON\n"
+-	.string "HOUSE$"
++	.string "Lavender Volunteer Pokémon\n"
++	.string "House$"
+ 
+ LavenderTown_Text_SoulHouseSign:
+-	.string "SOUL HOUSE\p"
+-	.string "May the Souls of POKéMON Rest\n"
++	.string "Soul House\p"
++	.string "May the Souls of Pokémon Rest\n"
+ 	.string "Easy$"

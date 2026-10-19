@@ -1,0 +1,160 @@
+diff --git a/data/maps/PalletTown/map.json b/data/maps/PalletTown/map.json
+index 82e6697a7a..dfa98facf5 100644
+--- a/data/maps/PalletTown/map.json
++++ b/data/maps/PalletTown/map.json
+@@ -52,7 +52,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PINECO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EXEGGCUTE)",
+       "x": 1,
+       "y": 8,
+       "elevation": 0,
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PINECO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EXEGGCUTE)",
+       "x": -2,
+       "y": 0,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PINECO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EXEGGCUTE)",
+       "x": 24,
+       "y": 10,
+       "elevation": 0,
+@@ -91,7 +91,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PINECO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EXEGGCUTE)",
+       "x": 22,
+       "y": 2,
+       "elevation": 0,
+@@ -153,9 +153,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/PalletTown/map.json.bak b/data/maps/PalletTown/map.json.bak
+index 300fd91d66..dd3393aaa9 100644
+--- a/data/maps/PalletTown/map.json.bak
++++ b/data/maps/PalletTown/map.json.bak
+@@ -52,7 +52,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PINECO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PINECO"),
+       "x": 1,
+       "y": 8,
+       "elevation": 0,
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PINECO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PINECO"),
+       "x": -2,
+       "y": 0,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PINECO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PINECO"),
+       "x": 24,
+       "y": 10,
+       "elevation": 0,
+@@ -91,7 +91,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PINECO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PINECO"),
+       "x": 22,
+       "y": 2,
+       "elevation": 0,
+@@ -104,7 +104,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MR_MIME",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MR_MIME"),
+       "x": 19,
+       "y": 21,
+       "elevation": 0,
+@@ -117,7 +117,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PIDGEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY"),
+       "x": 13,
+       "y": 10,
+       "elevation": 0,
+diff --git a/data/maps/PalletTown/scripts.inc b/data/maps/PalletTown/scripts.inc
+index c866443925..8982303d66 100644
+--- a/data/maps/PalletTown/scripts.inc
++++ b/data/maps/PalletTown/scripts.inc
+@@ -1,9 +1,9 @@
+ PalletTown_MapScripts::
+-	map_script MAP_SCRIPT_ON_TRANSITION, PalletTown_EventScript_CityEnter
++	map_script MAP_SCRIPT_ON_LOAD, PalletTown_OnLoad
+ 	.byte 0
+ 
+-PalletTown_EventScript_CityEnter::
+-	setflag FLAG_GARBAGEFLAG
++PalletTown_OnLoad::
++	setrespawn HEAL_LOCATION_PALLET_TOWN
+ 	end
+ 
+ PalletTown_EventScript_Woman::
+@@ -26,26 +26,26 @@ PalletTown_EventScript_OaksLabSign::
+ 	end	
+ 
+ PalletTown_Text_Teacher:
+-	.string "I'm raising POKéMON too.\p"
++	.string "I'm raising Pokémon too.\p"
+ 	.string "They serve as my private\n"
+ 	.string "guards.$"
+ 
+ PalletTown_Text_Fisher:
+ 	.string "Technology is incredible!\p"
+-	.string "You can now trade POKéMON\n"
++	.string "You can now trade Pokémon\n"
+ 	.string "across time like e-mail.$"
+ 
+ PalletTown_Text_Sign:
+-	.string "PALLET TOWN\p"
++	.string "Pallet Town\p"
+ 	.string "A Tranquil Setting of Peace\n"
+ 	.string "& Purity$"
+ 
+ PalletTown_Text_RedsHouseSign:
+-	.string "RED'S HOUSE$"
++	.string "Red's House$"
+ 
+ PalletTown_Text_OaksLabSign:
+-	.string "OAK POKéMON\n"
+-	.string "RESEARCH LAB$"
++	.string "Oak Pokémon\n"
++	.string "Research Lab$"
+ 
+ PalletTown_Text_BluesHouseSign:
+-	.string "BLUE'S HOUSE$"
++	.string "Blue's House$"

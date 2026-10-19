@@ -1,0 +1,28 @@
+diff --git a/data/maps/DiglettsCave_EntranceSouth/map.json b/data/maps/DiglettsCave_EntranceSouth/map.json
+index 7c0544cf5e..c2374a50b0 100644
+--- a/data/maps/DiglettsCave_EntranceSouth/map.json
++++ b/data/maps/DiglettsCave_EntranceSouth/map.json
+@@ -13,9 +13,7 @@
+   "show_map_name": true,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+   "connections": 0,
+-  "object_events": [
+-
+-  ],
++  "object_events": [],
+   "warp_events": [
+     {
+       "x": 4,
+@@ -32,10 +30,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }

@@ -1,0 +1,112 @@
+diff --git a/data/maps/RockTunnel_1F/map.json b/data/maps/RockTunnel_1F/map.json
+index 6631e81d66..ca2f7f2e6c 100644
+--- a/data/maps/RockTunnel_1F/map.json
++++ b/data/maps/RockTunnel_1F/map.json
+@@ -12,7 +12,7 @@
+   "allow_running": true,
+   "show_map_name": true,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
+       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+@@ -23,8 +23,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "RockTunnel_1F_EventScript_ItemIron",
++      "trainer_sight_or_berry_tree_id": "ITEM_IRON",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROCKTUNNEL2_IRON"
+     },
+     {
+@@ -36,8 +36,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "RockTunnel_1F_EventScript_PPup",
++      "trainer_sight_or_berry_tree_id": "ITEM_PP_UP",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROCKTUNNEL2_PP_UP"
+     },
+     {
+@@ -253,10 +253,6 @@
+       "dest_warp_id": "2"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/RockTunnel_1F/map.json.bak b/data/maps/RockTunnel_1F/map.json.bak
+index fe0ede033d..0156bbf9c2 100644
+--- a/data/maps/RockTunnel_1F/map.json.bak
++++ b/data/maps/RockTunnel_1F/map.json.bak
+@@ -158,7 +158,7 @@
+       "flag": "FLAG_TEMP_5"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAROWAK",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAROWAK"),
+       "x": 42,
+       "y": 33,
+       "elevation": 0,
+@@ -171,7 +171,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_KANGASKHAN",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KANGASKHAN"),
+       "x": 3,
+       "y": 43,
+       "elevation": 0,
+@@ -184,7 +184,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ONIX",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ONIX"),
+       "x": 6,
+       "y": 26,
+       "elevation": 0,
+@@ -197,7 +197,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAWILE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAWILE"),
+       "x": 20,
+       "y": 8,
+       "elevation": 0,
+@@ -210,7 +210,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GOLBAT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOLBAT"),
+       "x": 56,
+       "y": 30,
+       "elevation": 0,
+diff --git a/data/maps/RockTunnel_1F/scripts.inc b/data/maps/RockTunnel_1F/scripts.inc
+index 7bce359deb..a2ab1945a1 100644
+--- a/data/maps/RockTunnel_1F/scripts.inc
++++ b/data/maps/RockTunnel_1F/scripts.inc
+@@ -7,10 +7,3 @@ RockTunnel_1F_OnTransition:
+ 	callnative SetTimeBasedEncounters
+ 	end
+ 
+-RockTunnel_1F_EventScript_ItemIron::
+-	finditem ITEM_IRON
+-	end
+-
+-RockTunnel_1F_EventScript_PPup::
+-	finditem ITEM_PP_UP
+-	end

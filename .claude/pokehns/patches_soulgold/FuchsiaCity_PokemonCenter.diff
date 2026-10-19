@@ -1,0 +1,61 @@
+diff --git a/data/maps/FuchsiaCity_PokemonCenter/map.json b/data/maps/FuchsiaCity_PokemonCenter/map.json
+index c33039020d..a600975441 100644
+--- a/data/maps/FuchsiaCity_PokemonCenter/map.json
++++ b/data/maps/FuchsiaCity_PokemonCenter/map.json
+@@ -12,9 +12,10 @@
+   "allow_running": false,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
++      "local_id": "LOCALID_FUCHSIA_NURSE",
+       "graphics_id": "OBJ_EVENT_GFX_NURSE",
+       "x": 7,
+       "y": 2,
+@@ -28,7 +29,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+       "x": 8,
+       "y": 2,
+       "elevation": 0,
+@@ -102,9 +103,7 @@
+       "dest_warp_id": "5"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/FuchsiaCity_PokemonCenter/scripts.inc b/data/maps/FuchsiaCity_PokemonCenter/scripts.inc
+index 7fa94fefac..cd58068c2e 100644
+--- a/data/maps/FuchsiaCity_PokemonCenter/scripts.inc
++++ b/data/maps/FuchsiaCity_PokemonCenter/scripts.inc
+@@ -46,16 +46,16 @@ FuchsiaCity_PokemonCenter_EventScript_JanineClone::
+ 
+ FuchsiaCity_PokemonCenter1F_Text_CooltrainerM:
+ 	.string "Hey! You have a brand new kind of\n"
+-	.string "POKéDEX.\p"
+-	.string "Did PROF.OAK give that to you?$"
++	.string "Pokédex.\p"
++	.string "Did Prof.Oak give that to you?$"
+ 
+ FuchsiaCity_PokemonCenter1F_Text_CooltrainerF:
+-	.string "I got quite a shock at the GYM.\p"
++	.string "I got quite a shock at the Gym.\p"
+ 	.string "There were all these girls who\n"
+ 	.string "looked identical.$"
+ 
+ FuchsiaCity_PokemonCenter1F_Text_JanineImpersonator1:
+-	.string "I'm JANINE! Hocus-pocus… Poof!$"
++	.string "I'm Janine! Hocus-pocus… Poof!$"
+ 
+ FuchsiaCity_PokemonCenter1F_Text_JanineImpersonator2:
+ 	.string "See? I look just like her now!$"

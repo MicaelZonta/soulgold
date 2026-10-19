@@ -1,0 +1,232 @@
+diff --git a/data/maps/PokemonLeague_ChampionsRoom/map.json b/data/maps/PokemonLeague_ChampionsRoom/map.json
+index 5f5271c149..6306d48e68 100644
+--- a/data/maps/PokemonLeague_ChampionsRoom/map.json
++++ b/data/maps/PokemonLeague_ChampionsRoom/map.json
+@@ -12,7 +12,7 @@
+   "allow_running": false,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
+       "graphics_id": "OBJ_EVENT_GFX_LANCE",
+@@ -99,7 +99,5 @@
+       "script": "ChampionRoom_Trigger"
+     }
+   ],
+-  "bg_events": [
+-
+-  ]
++  "bg_events": []
+ }
+diff --git a/data/maps/PokemonLeague_ChampionsRoom/scripts.inc b/data/maps/PokemonLeague_ChampionsRoom/scripts.inc
+index 3692498d56..2c7551bf66 100644
+--- a/data/maps/PokemonLeague_ChampionsRoom/scripts.inc
++++ b/data/maps/PokemonLeague_ChampionsRoom/scripts.inc
+@@ -48,7 +48,7 @@ PokemonLeague_WillsRoom_EventScript_Lance::
+ 	call_if_eq VAR_FACING, DIR_SOUTH, PokemonLeague_ChampionsRoom_EventScript_AdjustPlayerFacingSouth
+ 	call_if_eq VAR_FACING, DIR_WEST, PokemonLeague_ChampionsRoom_EventScript_AdjustPlayerFacingWest
+ 	faceplayer
+-	goto_if_set FLAG_GARBAGEFLAG, PokemonLeague_WillsRoom_EventScript_LanceRematch
++	goto_if_set FLAG_IS_CHAMPION, PokemonLeague_WillsRoom_EventScript_LanceRematch
+ 	msgbox PokemonLeague_ChampionsRoom_Text_BattleIntro, MSGBOX_DEFAULT
+ 	setflag FLAG_TEMP_3
+ 	setflag FLAG_TEMP_5
+@@ -64,10 +64,11 @@ PokemonLeague_WillsRoom_EventScript_LanceRematch::
+ 
+ PokemonLeague_WillsRoom_EventScript_LanceOnDefeatJohto::
+ 	clearflag FLAG_TEMP_5
++	createfieldmugshot MUGSHOT_LANCE
+ 	msgbox PokemonLeague_ChampionsRoom_Text_BattleAfter, MSGBOX_DEFAULT
+ 	closemessage
+-	setmetatile 6, 1, 0x3F2, FALSE
+-	setmetatile 6, 2, 0x296, FALSE	
++	setmetatile 6, 1, 0x572, FALSE
++	setmetatile 6, 2, 0x416, FALSE	
+ 	playse SE_BANG
+ 	setvar VAR_0x8004, 1  @ vertical pan
+ 	setvar VAR_0x8005, 1  @ horizontal pan
+@@ -95,6 +96,7 @@ PokemonLeague_WillsRoom_EventScript_LanceOnDefeatJohto::
+ 	applymovement LOCALID_LEAGUE_MARY, PokemonLeague_ChampionsRoom_Movement_MaryMoveOver
+ 	waitmovement LOCALID_LEAGUE_MARY
+ 	waitmovement LOCALID_LEAGUE_OAK
++	createfieldmugshot MUGSHOT_OAK
+ 	msgbox PokemonLeague_ChampionsRoom_Text_OakCongratulations, MSGBOX_DEFAULT
+ 	applymovement LOCALID_LEAGUE_MARY, PokemonLeague_ChampionsRoom_Movement_MaryInterview
+ 	waitmovement 0
+@@ -102,6 +104,7 @@ PokemonLeague_WillsRoom_EventScript_LanceOnDefeatJohto::
+ 	closemessage
+ 	applymovement LOCALID_LEAGUE_LANCE, PokemonLeague_ChampionsRoom_Movement_LanceAnxious
+ 	waitmovement 0
++	createfieldmugshot MUGSHOT_LANCE
+ 	msgbox PokemonLeague_ChampionsRoom_Text_Noisy, MSGBOX_DEFAULT
+ 	closemessage
+ 	applymovement LOCALID_LEAGUE_LANCE, PokemonLeague_ChampionsRoom_Movement_LanceLeave
+@@ -126,6 +129,7 @@ PokemonLeague_WillsRoom_EventScript_LanceOnDefeatJohto::
+ 	closemessage
+ 	setvar VAR_LEAGUE_STATE, 6
+ 	warpsilent MAP_POKEMON_LEAGUE_HALL_OF_FAME, 0
++	waitstate
+ 	releaseall
+ 	end
+ 
+@@ -133,8 +137,8 @@ PokemonLeague_WillsRoom_EventScript_LanceOnDefeatKanto::
+ 	clearflag FLAG_TEMP_5
+ 	msgbox PokemonLeague_ChampionsRoom_Text_BattleAfter, MSGBOX_DEFAULT
+ 	closemessage
+-	setmetatile 6, 1, 0x3F2, FALSE
+-	setmetatile 6, 2, 0x296, FALSE	
++	setmetatile 6, 1, 0x572, FALSE
++	setmetatile 6, 2, 0x416, FALSE	
+ 	playse SE_BANG
+ 	setvar VAR_0x8004, 1  @ vertical pan
+ 	setvar VAR_0x8005, 1  @ horizontal pan
+@@ -193,6 +197,7 @@ PokemonLeague_WillsRoom_EventScript_LanceOnDefeatKanto::
+ 	closemessage
+ 	setvar VAR_LEAGUE_STATE, 6
+ 	warpsilent MAP_POKEMON_LEAGUE_HALL_OF_FAME, 0
++	waitstate
+ 	releaseall
+ 	end
+ 
+@@ -308,13 +313,13 @@ PokemonLeague_ChampionsRoom_Movement_MaryLeft:
+ 	step_end
+ 
+ PokemonLeague_ChampionsRoom_Text_RematchBattleIntro:
+-    .string "LANCE: Welcome back!\p"
+-    .string "You've proven yourself in JOHTO,\p"
++    .string "{SPEAKER NAME_LANCE}Welcome back!\p"
++    .string "You've proven yourself in Johto,\p"
+     .string "acquiring all 8 badges and even\n"
+     .string "besting me once.\p"
+     .string "But now, you're in the big\n"
+     .string "leagues.\p"
+-    .string "The KANTO LEAGUE!\p"
++    .string "The Kanto League!\p"
+     .string "A region with its own trials and\n"
+     .string "champions.\p"
+     .string "Here, I am the final challenge,\n"
+@@ -322,15 +327,15 @@ PokemonLeague_ChampionsRoom_Text_RematchBattleIntro:
+     .string "before.\p"
+     .string "This is the true test,\p"
+     .string "a battle to determine the\n"
+-    .string "CHAMPION of KANTO.\p"
++    .string "Champion of Kanto.\p"
+     .string "Are you ready to rise to this new\n"
+     .string "challenge?\p"
+     .string "To prove yourself once more?\p"
+     .string "Show me the strength that\n"
+-    .string "conquered JOHTO, CHAMPION.$"
++    .string "conquered Johto, Champion.$"
+ 
+ PokemonLeague_ChampionsRoom_Text_BattleIntro:
+-    .string "LANCE: I've been waiting for you.\p"
++    .string "{SPEAKER NAME_LANCE}I've been waiting for you.\p"
+     .string "{PLAYER}!\p"
+     .string "I knew that you, with your skills,\n"
+     .string "would eventually reach me here.\p"
+@@ -338,8 +343,8 @@ PokemonLeague_ChampionsRoom_Text_BattleIntro:
+     .string "We will battle to determine who is\n"
+     .string "the stronger of the two of us.\p"
+     .string "As the most powerful trainer and as\n"
+-    .string "the POKéMON LEAGUE CHAMPION…\p"
+-    .string "I, LANCE the dragon master, accept\n"
++    .string "the Pokémon League Champion…\p"
++    .string "I, Lance the dragon master, accept\n"
+     .string "your challenge!$"
+ 
+ PokemonLeague_ChampionsRoom_Text_BattleWin:
+@@ -348,45 +353,45 @@ PokemonLeague_ChampionsRoom_Text_BattleWin:
+     .string "I'm not angry that I lost. In fact,\n"
+     .string "I feel happy.\p"
+     .string "Happy that I witnessed the rise\n"
+-    .string "of a great new CHAMPION!$"
++    .string "of a great new Champion!$"
+ 
+ PokemonLeague_ChampionsRoom_Text_BattleAfter:
+-    .string "…Whew.\p"
++    .string "{SPEAKER NAME_LANCE}…Whew.\p"
+     .string "You have become truly powerful,\n"
+     .string "{PLAYER}.\p"
+-    .string "Your POKéMON have responded to your\n"
++    .string "Your Pokémon have responded to your\n"
+     .string "strong and upstanding nature.\p"
+     .string "As a trainer, you will continue to\n"
+-    .string "grow strong with your POKéMON.$"
++    .string "grow strong with your Pokémon.$"
+ 
+ PokemonLeague_ChampionsRoom_Text_MaryOhNoOak:
+-    .string "MARY: Oh, no! It's all over!\p"
+-    .string "PROF.OAK, if you weren't so slow…$"
++    .string "{SPEAKER NAME_MARY}Oh, no! It's all over!\p"
++    .string "Prof. Oak, if you weren't so slow…$"
+ 
+ PokemonLeague_ChampionsRoom_Text_OakCongratulations:
+-    .string "PROF.OAK: Ah, {PLAYER}!\p"
++    .string "{SPEAKER NAME_OAK}Ah, {PLAYER}!\p"
+     .string "It's been a long while.\p"
+     .string "You certainly look more impressive.\p"
+-    .string "Your conquest of the JOHTO LEAGUE\n"
++    .string "Your conquest of the Johto League\n"
+     .string "is just fantastic!\p"
+     .string "Your dedication, trust and love for\n"
+-    .string "your POKéMON made this happen.\p"
+-    .string "Your POKéMON were outstanding too.\p"
++    .string "your Pokémon made this happen.\p"
++    .string "Your Pokémon were outstanding too.\p"
+     .string "Because they believed in you as a\n"
+     .string "trainer, they persevered.\p"
+     .string "Congratulations, {PLAYER}!$"
+ 
+ PokemonLeague_ChampionsRoom_Text_RematchOakCongratulations:
+-    .string "PROF.OAK: Ah, {PLAYER}!\p"
++    .string "{SPEAKER NAME_OAK}Ah, {PLAYER}!\p"
+     .string "I've been following your progress\n"
+-    .string "since PROF. ELM sent you on your\l"
++    .string "since Prof. Elm sent you on your\l"
+     .string "way.\p"
+     .string "You've certainly become more\n"
+     .string "impressive.\p"
+-    .string "Conquering both the JOHTO and now\n"
+-    .string "the KANTO LEAGUE is no small feat.\p"
++    .string "Conquering both the Johto and now\n"
++    .string "the Kanto League is no small feat.\p"
+     .string "You've truly outdone yourself!\p"
+-    .string "It's clear that your POKéMON trust\n"
++    .string "It's clear that your Pokémon trust\n"
+     .string "you immensely,\p"
+     .string "and that trust has been the\n"
+     .string "foundation of your success.\p"
+@@ -400,23 +405,23 @@ PokemonLeague_ChampionsRoom_Text_RematchOakCongratulations:
+     .string "{PLAYER}!$"
+ 
+ PokemonLeague_ChampionsRoom_Text_MaryInterview:
+-    .string "MARY: Let's interview the brand new\n"
+-    .string "JOHTO CHAMPION!$"
++    .string "{SPEAKER NAME_MARY}Let's interview the brand new\n"
++    .string "Johto Champion!$"
+ 
+ PokemonLeague_ChampionsRoom_Text_RematchMaryInterview:
+-    .string "MARY: Let's interview the brand new\n"
+-    .string "KANTO CHAMPION!$"
++    .string "{SPEAKER NAME_MARY}Let's interview the brand new\n"
++    .string "Kanto Champion!$"
+ 
+ PokemonLeague_ChampionsRoom_Text_Noisy:
+-    .string "LANCE: This is getting to be a bit\n"
++    .string "{SPEAKER NAME_LANCE}This is getting to be a bit\n"
+     .string "too noisy…\p"
+     .string "{PLAYER}, could you come with me?$"
+ 
+ PokemonLeague_ChampionsRoom_Text_MaryNoInterview:
+-    .string "MARY: Oh, wait! We haven't done\n"
++    .string "{SPEAKER NAME_MARY}Oh, wait! We haven't done\n"
+     .string "the interview!$"
+ 
+ PokemonLeague_ChampionsRoom_Text_RematchMaryNoInterview:
+-    .string "MARY: Come on! You can't blow off\n"
+-    .string "the interview AGAIN!$"
++    .string "{SPEAKER NAME_MARY}Come on! You can't blow off\n"
++    .string "the interview Again!$"
+ 

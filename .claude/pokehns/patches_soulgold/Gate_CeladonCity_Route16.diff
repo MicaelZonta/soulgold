@@ -1,0 +1,52 @@
+diff --git a/data/maps/Gate_CeladonCity_Route16/map.json b/data/maps/Gate_CeladonCity_Route16/map.json
+index 2250356db7..3fb39e6d4e 100644
+--- a/data/maps/Gate_CeladonCity_Route16/map.json
++++ b/data/maps/Gate_CeladonCity_Route16/map.json
+@@ -73,7 +73,5 @@
+       "script": "Gate_CeladonCity_Route16_TriggerScript"
+     }
+   ],
+-  "bg_events": [
+-
+-  ]
++  "bg_events": []
+ }
+diff --git a/data/maps/Gate_CeladonCity_Route16/scripts.inc b/data/maps/Gate_CeladonCity_Route16/scripts.inc
+index de7a891e11..361d030549 100644
+--- a/data/maps/Gate_CeladonCity_Route16/scripts.inc
++++ b/data/maps/Gate_CeladonCity_Route16/scripts.inc
+@@ -5,27 +5,29 @@ Gate_CeladonCity_Route16_TriggerScript::
+ 	lockall
+ 	specialvar VAR_RESULT, GetPlayerAvatarBike
+ 	goto_if_eq VAR_RESULT, 0, Gate_CeladonCity_Route16_NoBike
+-	goto_if_set FLAG_GARBAGEFLAG, Gate_CeladonCity_Route16_ExitCyclingRoad
+-	goto_if_unset FLAG_GARBAGEFLAG, Gate_CeladonCity_Route16_EnterCyclingRoad
++	goto_if_set FLAG_SYS_CYCLING_ROAD, Gate_CeladonCity_Route16_ExitCyclingRoad
++	goto_if_unset FLAG_SYS_CYCLING_ROAD, Gate_CeladonCity_Route16_EnterCyclingRoad
+ 
+ Gate_CeladonCity_Route16_NoBike::
+ 	msgbox Route110_SeasideCyclingRoadSouthEntrance_Text_TooDangerousToWalk, MSGBOX_DEFAULT
+ 	closemessage
+ 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1
+ 	waitmovement 0
+-	clearflag FLAG_GARBAGEFLAG
++	clearflag FLAG_SYS_CYCLING_ROAD
+ 	releaseall
+ 	end
+ 
+ Gate_CeladonCity_Route16_EnterCyclingRoad::
+ 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft1
+ 	waitmovement 0
+-	setflag FLAG_GARBAGEFLAG
++	setflag FLAG_SYS_CYCLING_ROAD
++	releaseall
+ 	end
+ 
+ Gate_CeladonCity_Route16_ExitCyclingRoad::
+ 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1
+ 	waitmovement 0
+-	clearflag FLAG_GARBAGEFLAG
++	clearflag FLAG_SYS_CYCLING_ROAD
++	releaseall
+ 	end
+ 

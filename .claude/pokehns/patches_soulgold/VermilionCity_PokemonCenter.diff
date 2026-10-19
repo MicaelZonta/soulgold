@@ -1,0 +1,71 @@
+diff --git a/data/maps/VermilionCity_PokemonCenter/map.json b/data/maps/VermilionCity_PokemonCenter/map.json
+index 03f58ab84e..209548eda7 100644
+--- a/data/maps/VermilionCity_PokemonCenter/map.json
++++ b/data/maps/VermilionCity_PokemonCenter/map.json
+@@ -12,9 +12,10 @@
+   "allow_running": false,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
++      "local_id": "LOCALID_VERMILION_NURSE",
+       "graphics_id": "OBJ_EVENT_GFX_NURSE",
+       "x": 7,
+       "y": 2,
+@@ -28,7 +29,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+       "x": 8,
+       "y": 2,
+       "elevation": 0,
+@@ -89,9 +90,7 @@
+       "dest_warp_id": "2"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/VermilionCity_PokemonCenter/scripts.inc b/data/maps/VermilionCity_PokemonCenter/scripts.inc
+index 1e74ace31a..a12ff2b222 100644
+--- a/data/maps/VermilionCity_PokemonCenter/scripts.inc
++++ b/data/maps/VermilionCity_PokemonCenter/scripts.inc
+@@ -26,23 +26,23 @@ VermilionPokeCenter_EventScript_Bugcatcher::
+ 	end
+ 
+ VermilionCity_PokemonCenter1F_Text_FishingGuru:
+-	.string "A sleeping POKéMON is lying in\n"
+-	.string "front of DIGLETT'S CAVE.\p"
++	.string "A sleeping Pokémon is lying in\n"
++	.string "front of Diglett's Cave.\p"
+ 	.string "It's a fantastic opportunity to\n"
+ 	.string "get it, but how do you wake it up?$"
+ 
+ VermilionCity_PokemonCenter1F_Text_FishingGuru_FoughtSnorlax:
+ 	.string "There used to be a sleeping\n"
+-	.string "POKéMON lying in front of\l"
+-	.string "DIGLETT'S CAVE.\p"
++	.string "Pokémon lying in front of\l"
++	.string "Diglett's Cave.\p"
+ 	.string "But it seems to have disappeared.$"
+ 
+ VermilionCity_PokemonCenter1F_Text_Sailor:
+-	.string "The FAST SHIP is a great place to\n"
++	.string "The Fast Ship is a great place to\n"
+ 	.string "meet and battle trainers.$"
+ 
+ VermilionCity_PokemonCenter1F_Text_BugCatcher:
+-	.string "Oh? You have some BADGES I've\n"
++	.string "Oh? You have some Badges I've\n"
+ 	.string "never seen before.\p"
+ 	.string "Oh, I get it. You got them in\n"
+-	.string "JOHTO.$"
++	.string "Johto.$"

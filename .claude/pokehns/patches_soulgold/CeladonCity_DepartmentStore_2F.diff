@@ -1,0 +1,26 @@
+diff --git a/data/maps/CeladonCity_DepartmentStore_2F/map.json b/data/maps/CeladonCity_DepartmentStore_2F/map.json
+index d1a0cb4e83..5037b16606 100644
+--- a/data/maps/CeladonCity_DepartmentStore_2F/map.json
++++ b/data/maps/CeladonCity_DepartmentStore_2F/map.json
+@@ -83,9 +83,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/CeladonCity_DepartmentStore_2F/scripts.inc b/data/maps/CeladonCity_DepartmentStore_2F/scripts.inc
+index 3ba0199869..0e4a359791 100644
+--- a/data/maps/CeladonCity_DepartmentStore_2F/scripts.inc
++++ b/data/maps/CeladonCity_DepartmentStore_2F/scripts.inc
+@@ -27,5 +27,5 @@ CeladonDeptStore2F_Text_Youngster:
+ 
+ CeladonDeptStore2F_Text_Directory:
+ 	.string "Top Grade Items for Trainers!\p"
+-	.string "2F: TRAINER'S MARKET$"
++	.string "2F: Trainer's Market$"
+ 

@@ -1,0 +1,412 @@
+diff --git a/data/maps/CeruleanCave_B2F/map.json b/data/maps/CeruleanCave_B2F/map.json
+index d280a47f44..66497510bd 100644
+--- a/data/maps/CeruleanCave_B2F/map.json
++++ b/data/maps/CeruleanCave_B2F/map.json
+@@ -12,7 +12,7 @@
+   "allow_running": true,
+   "show_map_name": true,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
+       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+@@ -23,8 +23,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "CeruleanCave3_EventScript_MaxRevive",
++      "trainer_sight_or_berry_tree_id": "ITEM_MAX_REVIVE",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_CERULEANCAVE3_MAX_REVIVE"
+     },
+     {
+@@ -36,8 +36,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "CeruleanCave3_EventScript_UltraBall",
++      "trainer_sight_or_berry_tree_id": "ITEM_FAIRY_FEATHER",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_CERULEANCAVE3_ULTRA_BALL"
+     },
+     {
+@@ -106,16 +106,17 @@
+       "flag": "FLAG_TEMP_5"
+     },
+     {
++      "local_id": "LOCALID_CERULEANCAVE_MEWTWO",
+       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEWTWO)",
+       "x": 8,
+       "y": 14,
+       "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_NONE",
++      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+       "trainer_sight_or_berry_tree_id": "0",
+-      "script": "CeruleanCave3_EventScript_MewtwoNew",
++      "script": "NamelessDungeonMewtwo",
+       "flag": "FLAG_HIDE_MEWTWO"
+     },
+     {
+@@ -208,6 +209,20 @@
+       "trainer_sight_or_berry_tree_id": "0",
+       "script": "NULL",
+       "flag": "0"
++    },
++    {
++      "local_id": "LOCALID_NAMELESS_LEAF",
++      "graphics_id": "OBJ_EVENT_GFX_LEAF",
++      "x": 18,
++      "y": 19,
++      "elevation": 0,
++      "movement_type": "MOVEMENT_TYPE_NONE",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "NamelessDungeon_Leaf",
++      "flag": "FLAG_HIDE_LEAF_NAMELESS"
+     }
+   ],
+   "warp_events": [
+@@ -219,10 +234,6 @@
+       "dest_warp_id": "4"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/CeruleanCave_B2F/map.json.bak b/data/maps/CeruleanCave_B2F/map.json.bak
+index ad603feb9b..c72d37db13 100644
+--- a/data/maps/CeruleanCave_B2F/map.json.bak
++++ b/data/maps/CeruleanCave_B2F/map.json.bak
+@@ -106,7 +106,7 @@
+       "flag": "FLAG_TEMP_5"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MEWTWO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MEWTWO"),
+       "x": 8,
+       "y": 14,
+       "elevation": 0,
+@@ -119,7 +119,7 @@
+       "flag": "FLAG_HIDE_MEWTWO"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ANNIHILAPE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ANNIHILAPE"),
+       "x": 30,
+       "y": 1,
+       "elevation": 0,
+@@ -132,7 +132,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MACHOKE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MACHOKE"),
+       "x": 27,
+       "y": 1,
+       "elevation": 0,
+@@ -145,7 +145,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_KADABRA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KADABRA"),
+       "x": 38,
+       "y": 5,
+       "elevation": 0,
+@@ -158,7 +158,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_KADABRA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KADABRA"),
+       "x": 38,
+       "y": 10,
+       "elevation": 0,
+@@ -171,7 +171,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CROBAT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CROBAT"),
+       "x": 21,
+       "y": 5,
+       "elevation": 0,
+@@ -184,7 +184,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MACHOKE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MACHOKE"),
+       "x": 39,
+       "y": 18,
+       "elevation": 0,
+@@ -197,7 +197,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_DITTO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DITTO"),
+       "x": 28,
+       "y": 22,
+       "elevation": 0,
+diff --git a/data/maps/CeruleanCave_B2F/scripts.inc b/data/maps/CeruleanCave_B2F/scripts.inc
+index ead7de7907..d9ecaae240 100644
+--- a/data/maps/CeruleanCave_B2F/scripts.inc
++++ b/data/maps/CeruleanCave_B2F/scripts.inc
+@@ -1,4 +1,3 @@
+-.set LOCALID_CERULEANCAVE_MEWTWO, 8
+ 
+ CeruleanCave_B2F_MapScripts::
+ 	.byte 0
+@@ -24,11 +23,110 @@ CeruleanCave3_EventScript_MewtwoRan::
+ 	release
+ 	end
+ 
+-CeruleanCave3_EventScript_MaxRevive::
+-    finditem ITEM_MAX_REVIVE
+-    end
++NamelessDungeonMewtwo::
++	lock
++	faceplayer
++	bosslegendaryencounterwithmoves SPECIES_MEWTWO, 80, LOCALID_CERULEANCAVE_MEWTWO, FLAG_HIDE_MEWTWO, 4, SPECIES_NONE, 110, MOVE_PSYSTRIKE, MOVE_ICE_BEAM, MOVE_FIRE_BLAST, MOVE_TAUNT, BOSS_PHASE_PROFILE_MEWTWO
++	release
++	end
++
++
++NamelessDungeon_Leaf::
++	lock
++	goto_if_unset FLAG_TEMP_3, NamelessDungeon_Leaf_2
++NamelessDungeon_Leaf_1:
++	faceplayer
++	msgbox NamelessDungeon_Leaf_Text_4, MSGBOX_YESNO
++	compare VAR_RESULT, NO
++	goto_if_eq NamelessDungeon_Leaf_5
++	playbgm MUS_RG_ENCOUNTER_GYM_LEADER, FALSE
++	msgbox NamelessDungeon_Leaf_Text_6
++	trainerbattle_no_intro TRAINER_NAMELESS_LEAF, NamelessDungeon_Leaf_Text_7
++	createfieldmugshot MUGSHOT_LEAF
++	msgbox NamelessDungeon_Leaf_Text_8
++	closemessage
++	fadescreen FADE_TO_BLACK
++	setflag FLAG_HIDE_LEAF_NAMELESS
++	setflag FLAG_POSTGAME_CAP1
++	playse SE_EXIT
++	removeobject LOCALID_NAMELESS_LEAF
++	delay 60
++	fadescreen FADE_FROM_BLACK
++	release
++	end
++
++NamelessDungeon_Leaf_2:
++	msgbox NamelessDungeon_Leaf_Text_0
++	delay 30
++	playse SE_PIN
++	applymovement LOCALID_NAMELESS_LEAF, Common_Movement_ExclamationMark
++	faceplayer
++	waitse
++	createfieldmugshot MUGSHOT_LEAF
++	msgbox NamelessDungeon_Leaf_Text_1
++	turnobject LOCALID_NAMELESS_LEAF, DIR_WEST
++	msgbox NamelessDungeon_Leaf_Text_2
++	faceplayer
++	msgbox NamelessDungeon_Leaf_Text_3
++	setflag FLAG_TEMP_3
++	goto NamelessDungeon_Leaf_1
++
++NamelessDungeon_Leaf_5:
++	msgbox NamelessDungeon_Leaf_Text_5
++	turnobject LOCALID_NAMELESS_LEAF, DIR_SOUTH
++	release
++	end
++
++
++NamelessDungeon_Leaf_Text_0:
++	.string "{SPEAKER NAME_UNKNOWN}Hmm, Mewtwo should be just ahead...$"
++
++NamelessDungeon_Leaf_Text_1:
++	.string "{SPEAKER NAME_UNKNOWN}Oh, hello! Who might you be?\p"
++	.string "...\p"
++	.string "Oh, you're {PLAYER}? Nice to meet you!\p"
++	.string "I'm Leaf. \p"
++	.string "I'm in search of some rarer\n"
++	.string "than your average rare Pokémon.$"
++
++NamelessDungeon_Leaf_Text_2:
++	.string "I've tracked it down to this cave, and\n"
++	.string "the only place it can be hiding in is\l"
++	.string "just past this pool of water.$"
++
++NamelessDungeon_Leaf_Text_3:
++	.string "Piqued your interest, eh?\p"
++	.string "Can't blame you, this one is\n"
++	.string "apparently an experiment created\l"
++	.string "from the DNA of another Pokémon!\p"
++	.string "Unfortunately for you, I was here\n"
++	.string "first!\p"
++	.string "Only way to convince me otherwise\n"
++	.string "would involve beating me in a battle.$"
++
++NamelessDungeon_Leaf_Text_4:
++	.string "What do you say? Interested?\n"
++	.string "I'll warn you though, I'm really\l"
++	.string "tough!$"
++
++NamelessDungeon_Leaf_Text_5:
++	.string "Ah shame, I was hoping you'd say\n"
++	.string "yes.$"
++
++NamelessDungeon_Leaf_Text_6:
++	.string "Great! Get ready for a beatdown!$"
+ 
+-CeruleanCave3_EventScript_UltraBall::
+-    finditem ITEM_ULTRA_BALL
+-    end
++NamelessDungeon_Leaf_Text_7:
++	.string "Damn, you're good!$"
+ 
++NamelessDungeon_Leaf_Text_8:
++	.string "Let me tell you, \n"
++	.string "I was not expecting that!\p"
++	.string "You are a monster in battle!\p"
++	.string "What? You're this region's Champion?\p"
++	.string "Oh...\p"
++	.string "That explains a few things!\p"
++	.string "Anyway, as promised, I'll let you have\n"
++	.string "this one, but mark my words, I'll get\l"
++	.string "the better of you next time we meet!\p"
++	.string "Laters!$"
+diff --git a/data/maps/CeruleanCave_B2F/scripts.pory b/data/maps/CeruleanCave_B2F/scripts.pory
+new file mode 100644
+index 0000000000..933c82bac1
+--- /dev/null
++++ b/data/maps/CeruleanCave_B2F/scripts.pory
+@@ -0,0 +1,115 @@
++raw `
++CeruleanCave_B2F_MapScripts::
++	.byte 0
++
++CeruleanCave3_EventScript_MewtwoNew::
++	lock
++	faceplayer
++	playmoncry SPECIES_MEWTWO, CRY_MODE_ENCOUNTER
++	waitmoncry
++	seteventmon SPECIES_MEWTWO, 80
++	special BattleSetup_StartLegendaryBattle
++waitstate
++	specialvar VAR_RESULT, GetBattleOutcome
++	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, CeruleanCave3_EventScript_MewtwoRan
++	fadescreenswapbuffers FADE_TO_BLACK
++	removeobject LOCALID_CERULEANCAVE_MEWTWO
++	setflag FLAG_HIDE_MEWTWO
++	fadescreenswapbuffers FADE_FROM_BLACK
++	release
++	end
++
++CeruleanCave3_EventScript_MewtwoRan::
++	release
++	end
++
++`
++
++script NamelessDungeonMewtwo {
++        lock
++        faceplayer
++        bosslegendaryencounterwithmoves(SPECIES_MEWTWO, 80, LOCALID_CERULEANCAVE_MEWTWO, FLAG_HIDE_MEWTWO, 4, SPECIES_NONE, 110, MOVE_PSYSTRIKE, MOVE_ICE_BEAM, MOVE_FIRE_BLAST, MOVE_TAUNT, BOSS_PHASE_PROFILE_MEWTWO)
++        release
++        end
++}
++
++script NamelessDungeon_Leaf {
++    lock
++    if (!flag(FLAG_TEMP_3)) {
++        msgbox("{SPEAKER NAME_UNKNOWN}Hmm, Mewtwo should be just ahead...")
++        delay(30)
++        playse(SE_PIN)
++        applymovement(LOCALID_NAMELESS_LEAF, Common_Movement_ExclamationMark)
++        faceplayer
++        waitse
++        createfieldmugshot(MUGSHOT_LEAF)
++        msgbox("{SPEAKER NAME_UNKNOWN}Oh, hello! Who might you be?
++        
++                ...
++                
++                Oh, you're {PLAYER}? Nice to meet you!
++                
++                I'm Leaf. 
++                
++                I'm in search of some rarer
++                than your average rare Pokémon.")
++        turnobject(LOCALID_NAMELESS_LEAF, DIR_WEST)
++        msgbox("I've tracked it down to this cave, and
++                the only place it can be hiding in is
++                just past this pool of water.")
++        faceplayer
++        msgbox("Piqued your interest, eh?
++        
++                Can't blame you, this one is
++                apparently an experiment created
++                from the DNA of another Pokémon!
++                
++                Unfortunately for you, I was here
++                first!
++                
++                Only way to convince me otherwise
++                would involve beating me in a battle.")
++        setflag(FLAG_TEMP_3)
++    }
++    faceplayer
++    msgbox("What do you say? Interested?
++            I'll warn you though, I'm really
++            tough!", MSGBOX_YESNO)
++    if (var(VAR_RESULT) == NO) {
++        msgbox("Ah shame, I was hoping you'd say
++                yes.")
++        turnobject(LOCALID_NAMELESS_LEAF, DIR_SOUTH)
++        release
++        end
++    }
++    playbgm(MUS_RG_ENCOUNTER_GYM_LEADER, FALSE)
++    msgbox("Great! Get ready for a beatdown!")
++    trainerbattle_no_intro(TRAINER_NAMELESS_LEAF, "Damn, you're good!")
++    createfieldmugshot(MUGSHOT_LEAF)
++    msgbox("Let me tell you, 
++            I was not expecting that!
++            
++            You are a monster in battle!
++            
++            What? You're this region's Champion?
++            
++            Oh...
++            
++            That explains a few things!
++            
++            Anyway, as promised, I'll let you have
++            this one, but mark my words, I'll get
++            the better of you next time we meet!
++            
++            Laters!")
++    closemessage
++    fadescreen(FADE_TO_BLACK)
++    setflag(FLAG_HIDE_LEAF_NAMELESS)
++    setflag(FLAG_POSTGAME_CAP1)
++    playse(SE_EXIT)
++    removeobject(LOCALID_NAMELESS_LEAF)
++    delay(60)
++    fadescreen(FADE_FROM_BLACK)
++    release
++    end
++}

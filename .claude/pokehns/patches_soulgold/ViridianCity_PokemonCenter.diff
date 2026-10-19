@@ -1,0 +1,79 @@
+diff --git a/data/maps/ViridianCity_PokemonCenter/map.json b/data/maps/ViridianCity_PokemonCenter/map.json
+index bb3158fa7d..64d0f91cfd 100644
+--- a/data/maps/ViridianCity_PokemonCenter/map.json
++++ b/data/maps/ViridianCity_PokemonCenter/map.json
+@@ -12,9 +12,10 @@
+   "allow_running": true,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
++      "local_id": "LOCALID_VIRIDIAN_NURSE",
+       "graphics_id": "OBJ_EVENT_GFX_NURSE",
+       "x": 7,
+       "y": 2,
+@@ -28,7 +29,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_LASS",
++      "graphics_id": "OBJ_EVENT_GFX_FR_LASS",
+       "x": 9,
+       "y": 4,
+       "elevation": 0,
+@@ -67,7 +68,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+       "x": 8,
+       "y": 2,
+       "elevation": 0,
+@@ -89,9 +90,7 @@
+       "dest_warp_id": "4"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/ViridianCity_PokemonCenter/scripts.inc b/data/maps/ViridianCity_PokemonCenter/scripts.inc
+index 274f8d98c2..323a46781c 100644
+--- a/data/maps/ViridianCity_PokemonCenter/scripts.inc
++++ b/data/maps/ViridianCity_PokemonCenter/scripts.inc
+@@ -26,20 +26,20 @@ ViridianCity_PokemonCenter_EventScript_BugCatcher::
+ 	end
+ 
+ ViridianCity_PokemonCenter_Text_1FCooltrainerM:
+-	.string "Where in the world is VIRIDIAN's GYM\n"
+-	.string "LEADER? I wanted to challenge him.$"
++	.string "Where in the world is Viridian's Gym\n"
++	.string "Leader? I wanted to challenge him.$"
+ 
+ ViridianCity_PokemonCenter_Text_1FCooltrainerM_BlueReturned:
+-	.string "There are no GYM TRAINERS at the\n"
+-	.string "VIRIDIAN GYM.\p"
+-	.string "The LEADER claims his policy is to\n"
++	.string "There are no Gym Trainers at the\n"
++	.string "Viridian Gym.\p"
++	.string "The Leader claims his policy is to\n"
+ 	.string "win without having any underlings.$"
+ 
+ ViridianCity_PokemonCenter_Text_1FCooltrainerF:
+-	.string "I heard that the GYM in CINNABAR is\n"
++	.string "I heard that the Gym in Cinnabar is\n"
+ 	.string "gone.\p"
+-	.string "I wonder what became of BLAINE, the\n"
+-	.string "GYM LEADER.$"
++	.string "I wonder what became of Blaine, the\n"
++	.string "Gym Leader.$"
+ 
+ ViridianCity_PokemonCenter_Text_1FBugCatcher:
+-	.string "My dream is to become a GYM LEADER.$"
++	.string "My dream is to become a Gym Leader.$"

@@ -1,0 +1,33 @@
+diff --git a/data/maps/ViridianCity_Mart/map.json b/data/maps/ViridianCity_Mart/map.json
+index 99ab9fee5d..7fdcdab487 100644
+--- a/data/maps/ViridianCity_Mart/map.json
++++ b/data/maps/ViridianCity_Mart/map.json
+@@ -63,10 +63,6 @@
+       "dest_warp_id": "3"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/ViridianCity_Mart/scripts.inc b/data/maps/ViridianCity_Mart/scripts.inc
+index 874d3da081..4fbe01a8aa 100644
+--- a/data/maps/ViridianCity_Mart/scripts.inc
++++ b/data/maps/ViridianCity_Mart/scripts.inc
+@@ -10,9 +10,9 @@ ViridianCity_Mart_EventScript_Cooltrainer::
+ 	end
+ 
+ ViridianMart_Text_Lass:
+-	.string "The GYM LEADER here is totally cool.$"
++	.string "The Gym Leader here is totally cool.$"
+ 
+ ViridianMart_Text_CooltrainerM:
+-	.string "Have you been to CINNABAR?\p"
++	.string "Have you been to Cinnabar?\p"
+ 	.string "It's an island way south of here.$"
+ 

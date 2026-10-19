@@ -1,0 +1,31 @@
+diff --git a/data/maps/LavenderTown_House2/map.json b/data/maps/LavenderTown_House2/map.json
+index f059110d95..9669d88952 100644
+--- a/data/maps/LavenderTown_House2/map.json
++++ b/data/maps/LavenderTown_House2/map.json
+@@ -37,10 +37,6 @@
+       "dest_warp_id": "5"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/LavenderTown_House2/scripts.inc b/data/maps/LavenderTown_House2/scripts.inc
+index 72657396f5..b789059728 100644
+--- a/data/maps/LavenderTown_House2/scripts.inc
++++ b/data/maps/LavenderTown_House2/scripts.inc
+@@ -6,7 +6,7 @@ LavenderTown_House2_EventScript_Woman::
+ 	end
+ 
+ LavenderSpeechHouse_Text_PokefanF:
+-	.string "LAVENDER is a tiny, quiet town at\n"
++	.string "Lavender is a tiny, quiet town at\n"
+ 	.string "the foot of the mountains.\p"
+ 	.string "It's gotten a bit busier since\n"
+-	.string "the RADIO TOWER was built.$"
++	.string "the Radio Tower was built.$"

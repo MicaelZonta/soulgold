@@ -1,0 +1,30 @@
+diff --git a/data/maps/MtSilver_3F/map.json b/data/maps/MtSilver_3F/map.json
+index 817ce283c9..0fea91f09e 100644
+--- a/data/maps/MtSilver_3F/map.json
++++ b/data/maps/MtSilver_3F/map.json
+@@ -12,10 +12,8 @@
+   "allow_running": false,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
+-  "object_events": [
+-
+-  ],
++  "connections": null,
++  "object_events": [],
+   "warp_events": [
+     {
+       "x": 12,
+@@ -32,10 +30,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }

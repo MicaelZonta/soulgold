@@ -1,0 +1,44 @@
+diff --git a/data/maps/PewterCity_House1/map.json b/data/maps/PewterCity_House1/map.json
+index b222716c90..5ad8afa24c 100644
+--- a/data/maps/PewterCity_House1/map.json
++++ b/data/maps/PewterCity_House1/map.json
+@@ -50,10 +50,6 @@
+       "dest_warp_id": "4"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/PewterCity_House1/map.json.bak b/data/maps/PewterCity_House1/map.json.bak
+index a8781209df..5f3eb0efaa 100644
+--- a/data/maps/PewterCity_House1/map.json.bak
++++ b/data/maps/PewterCity_House1/map.json.bak
+@@ -28,7 +28,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_NIDORAN_M",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NIDORAN_M"),
+       "x": 6,
+       "y": 6,
+       "elevation": 0,
+diff --git a/data/maps/PewterCity_House1/scripts.inc b/data/maps/PewterCity_House1/scripts.inc
+index 7e8d87a1a8..8ecd63bf22 100644
+--- a/data/maps/PewterCity_House1/scripts.inc
++++ b/data/maps/PewterCity_House1/scripts.inc
+@@ -16,7 +16,7 @@ PewterCity_House1_EventScript_Nidorian::
+ 	end
+ 
+ PewterCity_House1_Text_SuperNerd:
+-	.string "NIDORAN, shake!$"
++	.string "Nidoran, shake!$"
+ 
+ PewterCity_House1_Text_Nidoran:
+-	.string "NIDORAN: Gau gau!$"
++	.string "{SPEAKER NAME_NIDORAN}Gau gau!$"

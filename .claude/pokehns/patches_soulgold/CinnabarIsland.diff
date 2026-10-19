@@ -1,0 +1,261 @@
+diff --git a/data/maps/CinnabarIsland/map.json b/data/maps/CinnabarIsland/map.json
+index b91e658b41..5f053dabe0 100644
+--- a/data/maps/CinnabarIsland/map.json
++++ b/data/maps/CinnabarIsland/map.json
+@@ -39,7 +39,7 @@
+       "flag": "FLAG_HIDE_CINNABAR_BLUE"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGCARGO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TORKOAL)",
+       "x": 61,
+       "y": 32,
+       "elevation": 0,
+@@ -52,7 +52,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGCARGO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TORKOAL)",
+       "x": 52,
+       "y": 24,
+       "elevation": 0,
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SLUGMA)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGMAR)",
+       "x": 53,
+       "y": 25,
+       "elevation": 0,
+@@ -156,7 +156,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WAILMER)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TENTACOOL)",
+       "x": 63,
+       "y": 42,
+       "elevation": 0,
+@@ -198,9 +198,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/CinnabarIsland/map.json.bak b/data/maps/CinnabarIsland/map.json.bak
+index e05a084a4e..32a0a45037 100644
+--- a/data/maps/CinnabarIsland/map.json.bak
++++ b/data/maps/CinnabarIsland/map.json.bak
+@@ -39,7 +39,7 @@
+       "flag": "FLAG_HIDE_CINNABAR_BLUE"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAGCARGO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGCARGO"),
+       "x": 61,
+       "y": 32,
+       "elevation": 0,
+@@ -52,7 +52,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAGCARGO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGCARGO"),
+       "x": 52,
+       "y": 24,
+       "elevation": 0,
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SLUGMA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SLUGMA"),
+       "x": 53,
+       "y": 25,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_KOFFING",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KOFFING"),
+       "x": 57,
+       "y": 9,
+       "elevation": 0,
+@@ -91,7 +91,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_WEEZING",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WEEZING"),
+       "x": 59,
+       "y": 11,
+       "elevation": 0,
+@@ -104,7 +104,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAGMAR",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGMAR"),
+       "x": 36,
+       "y": 9,
+       "elevation": 0,
+@@ -117,7 +117,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAGBY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAGBY"),
+       "x": 38,
+       "y": 9,
+       "elevation": 0,
+@@ -130,7 +130,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MISDREAVUS",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MISDREAVUS"),
+       "x": 25,
+       "y": 13,
+       "elevation": 0,
+@@ -143,7 +143,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_TORKOAL",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TORKOAL"),
+       "x": 3,
+       "y": 38,
+       "elevation": 0,
+@@ -156,7 +156,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_WAILMER",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WAILMER"),
+       "x": 63,
+       "y": 42,
+       "elevation": 0,
+diff --git a/data/maps/CinnabarIsland/scripts.inc b/data/maps/CinnabarIsland/scripts.inc
+index c40af2d0b9..1af8d5ba00 100644
+--- a/data/maps/CinnabarIsland/scripts.inc
++++ b/data/maps/CinnabarIsland/scripts.inc
+@@ -4,12 +4,17 @@
+ CinnabarIsland_MapScripts::
+ 	map_script MAP_SCRIPT_ON_TRANSITION, CinnabarIsland_OnTransition
+ 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
++	map_script MAP_SCRIPT_ON_LOAD, CinnabarIsland_OnLoad
+ 	.byte 0
+ 	
+ CinnabarIsland_OnTransition:
+-	setflag FLAG_GARBAGEFLAG
++	setflag FLAG_VISITED_CINNABAR_ISLAND
+ 	callnative SetTimeBasedEncounters
+ 	end
++	
++CinnabarIsland_OnLoad::
++	setrespawn HEAL_LOCATION_CINNABAR_ISLAND
++	end
+ 
+ CinnabarIsland_EventScript_Blaine::
+     lock
+@@ -25,10 +30,10 @@ CinnabarIsland_EventScript_Blaine::
+     end
+ 
+ CinnabarIsland_Text_Blaine:
+-    .string "BLAINE: I'll never give up\n"
++    .string "{SPEAKER NAME_BLAINE}I'll never give up\n"
+ 	.string "until the day I've rebuilt\l"
+-	.string "CINNABAR GYM!\p"
+-	.string "I'll be at the FIGHTING DOJO\n"
++	.string "Cinnabar Gym!\p"
++	.string "I'll be at the Fighting Dojo\n"
+ 	.string "until then.$"
+ 
+ 
+@@ -53,13 +58,13 @@ CinnabarIsland_EventScript_BlueActive::
+ 
+ 
+ CinnabarIsland_Text_BlueBefore:
+-	.string "Who are you?\p"
++	.string "{SPEAKER NAME_BLUE}Who are you?\p"
+ 	.string "Well, it's plain to see that you're\n"
+ 	.string "a trainer…\p"
+-	.string "My name's BLUE.\p"
+-	.string "I was once the CHAMPION, although\n"
++	.string "My name's Blue.\p"
++	.string "I was once the Champion, although\n"
+ 	.string "it was for only a short time…\p"
+-	.string "That meddling RED did me in…\p"
++	.string "That meddling Red did me in…\p"
+ 	.string "Anyway, what do you want? You want\n"
+ 	.string "to challenge me or something?\p"
+ 	.string "…I hate to say it, but I'm not in\n"
+@@ -68,7 +73,7 @@ CinnabarIsland_Text_BlueBefore:
+ 	.string "A volcano erupts, and just like\n"
+ 	.string "that, a whole town disappears.\p"
+ 	.string "We can go on winning and losing in\n"
+-	.string "POKéMON. But if nature so much as\l"
++	.string "Pokémon. But if nature so much as\l"
+ 	.string "twitches, we can lose in a second.\p"
+ 	.string "…\p"
+ 	.string "That's the way it is…\p"
+@@ -80,13 +85,13 @@ CinnabarIsland_Text_BlueBefore:
+ 	.string "I'll take you on then.$"
+ 
+ CinnabarIsland_Text_Blue:
+-	.string "Who are you?\p"
++	.string "{SPEAKER NAME_BLUE}Who are you?\p"
+ 	.string "Well, it's plain to see that you're\n"
+ 	.string "a trainer…\p"
+-	.string "My name's BLUE.\p"
+-	.string "I was once the CHAMPION, although\n"
++	.string "My name's Blue.\p"
++	.string "I was once the Champion, although\n"
+ 	.string "it was for only a short time…\p"
+-	.string "That meddling RED did me in…\p"
++	.string "That meddling Red did me in…\p"
+ 	.string "Anyway, what do you want? You want\n"
+ 	.string "to challenge me or something?\p"
+ 	.string "…I hate to say it, but I'm not in\n"
+@@ -95,7 +100,7 @@ CinnabarIsland_Text_Blue:
+ 	.string "A volcano erupts, and just like\n"
+ 	.string "that, a whole town disappears.\p"
+ 	.string "We can go on winning and losing in\n"
+-	.string "POKéMON. But if nature so much as\l"
++	.string "Pokémon. But if nature so much as\l"
+ 	.string "twitches, we can lose in a second.\p"
+ 	.string "…\p"
+ 	.string "That's the way it is…\p"
+@@ -103,7 +108,7 @@ CinnabarIsland_Text_Blue:
+ 	.string "If I see a strong opponent, it\n"
+ 	.string "makes me want to battle.\p"
+ 	.string "If you want to battle me, come to\n"
+-	.string "the VIRIDIAN GYM.\p"
++	.string "the Viridian Gym.\p"
+ 	.string "I'll take you on then.$"
+ 
+ CinnabarIsland_EventScript_Sign::
+@@ -116,11 +121,11 @@ CinnabarIsland_EventScript_GymSign::
+ 
+ CinnabarIsland_Text_GymSign:
+ 	.string "There's a notice here…\p"
+-	.string "CINNABAR GYM has relocated to\n"
+-	.string "SEAFOAM ISLANDS.\p"
+-	.string "BLAINE$"
++	.string "Cinnabar Gym has relocated to\n"
++	.string "Seafoam Islands.\p"
++	.string "Blaine$"
+ 
+ CinnabarIsland_Text_Sign:
+-	.string "CINNABAR ISLAND\p"
++	.string "Cinnabar Island\p"
+ 	.string "The Fiery Town of Burning Desire$"
+ 

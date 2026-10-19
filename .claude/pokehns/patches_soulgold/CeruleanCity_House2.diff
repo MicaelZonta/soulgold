@@ -1,0 +1,40 @@
+diff --git a/data/maps/CeruleanCity_House2/map.json b/data/maps/CeruleanCity_House2/map.json
+index 206ac39d06..203089dfe6 100644
+--- a/data/maps/CeruleanCity_House2/map.json
++++ b/data/maps/CeruleanCity_House2/map.json
+@@ -63,10 +63,6 @@
+       "dest_warp_id": "2"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/CeruleanCity_House2/map.json.bak b/data/maps/CeruleanCity_House2/map.json.bak
+index 211cee5533..e5f8951628 100644
+--- a/data/maps/CeruleanCity_House2/map.json.bak
++++ b/data/maps/CeruleanCity_House2/map.json.bak
+@@ -41,7 +41,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_DIGLETT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DIGLETT"),
+       "x": 2,
+       "y": 4,
+       "elevation": 0,
+diff --git a/data/maps/CeruleanCity_House2/scripts.inc b/data/maps/CeruleanCity_House2/scripts.inc
+index b43b9584f2..30cfbbef28 100644
+--- a/data/maps/CeruleanCity_House2/scripts.inc
++++ b/data/maps/CeruleanCity_House2/scripts.inc
+@@ -29,4 +29,4 @@ CeruleanPolice_Text_PokefanF:
+ 	.string "We were held up by robbers before.$"
+ 
+ CeruleanPolice_Text_Diglett:
+-	.string "DIGLETT: Dug dug.$"
++	.string "{SPEAKER NAME_DIGLETT}Dug dug.$"

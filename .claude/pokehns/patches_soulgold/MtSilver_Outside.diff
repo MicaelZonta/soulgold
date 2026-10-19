@@ -1,0 +1,287 @@
+diff --git a/data/maps/MtSilver_Outside/map.json b/data/maps/MtSilver_Outside/map.json
+index b4dee94c4c..e7185bb595 100644
+--- a/data/maps/MtSilver_Outside/map.json
++++ b/data/maps/MtSilver_Outside/map.json
+@@ -21,7 +21,7 @@
+   ],
+   "object_events": [
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(QUAGSIRE)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(POLITOED)",
+       "x": 5,
+       "y": 26,
+       "elevation": 0,
+@@ -34,7 +34,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VENUSAUR)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LUXRAY)",
+       "x": 34,
+       "y": 8,
+       "elevation": 0,
+@@ -47,7 +47,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHARIZARD)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SKARMORY)",
+       "x": 8,
+       "y": 20,
+       "elevation": 0,
+@@ -60,7 +60,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOLEM)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZOROARK)",
+       "x": 4,
+       "y": 8,
+       "elevation": 0,
+@@ -73,7 +73,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(URSARING)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(FARIGIRAF)",
+       "x": 16,
+       "y": 4,
+       "elevation": 0,
+@@ -86,22 +86,9 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DONPHAN)",
+-      "x": 7,
+-      "y": 11,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_DOWN_RIGHT",
+-      "movement_range_x": 3,
+-      "movement_range_y": 3,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "NULL",
+-      "flag": "FLAG_DAY_POKEMON"
+-    },
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BLASTOISE)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LICKILICKY)",
+       "x": 32,
+-      "y": 26,
++      "y": 24,
+       "elevation": 0,
+       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+       "movement_range_x": 0,
+@@ -112,7 +99,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(QUAGSIRE)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(POLITOED)",
+       "x": 4,
+       "y": 27,
+       "elevation": 0,
+@@ -125,7 +112,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOUNDOOM)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SKARMORY)",
+       "x": 8,
+       "y": 18,
+       "elevation": 0,
+@@ -138,7 +125,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOUNDOOM)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SKARMORY)",
+       "x": 7,
+       "y": 19,
+       "elevation": 0,
+@@ -151,33 +138,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CROBAT)",
+-      "x": 4,
+-      "y": 11,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_UP_LEFT_DOWN",
+-      "movement_range_x": 3,
+-      "movement_range_y": 3,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "NULL",
+-      "flag": "FLAG_NIGHT_POKEMON"
+-    },
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CROBAT)",
+-      "x": 7,
+-      "y": 8,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_DOWN_RIGHT_UP",
+-      "movement_range_x": 3,
+-      "movement_range_y": 3,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "NULL",
+-      "flag": "FLAG_NIGHT_POKEMON"
+-    },
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SKARMORY)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ARCANINE)",
+       "x": 24,
+       "y": 11,
+       "elevation": 0,
+@@ -206,9 +167,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/MtSilver_Outside/map.json.bak b/data/maps/MtSilver_Outside/map.json.bak
+index 2f8f4d2c59..603e84f90b 100644
+--- a/data/maps/MtSilver_Outside/map.json.bak
++++ b/data/maps/MtSilver_Outside/map.json.bak
+@@ -21,7 +21,7 @@
+   ],
+   "object_events": [
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_QUAGSIRE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(QUAGSIRE"),
+       "x": 5,
+       "y": 26,
+       "elevation": 0,
+@@ -34,7 +34,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_VENUSAUR",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VENUSAUR"),
+       "x": 34,
+       "y": 8,
+       "elevation": 0,
+@@ -47,7 +47,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CHARIZARD",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHARIZARD"),
+       "x": 8,
+       "y": 20,
+       "elevation": 0,
+@@ -60,7 +60,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GOLEM",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOLEM"),
+       "x": 4,
+       "y": 8,
+       "elevation": 0,
+@@ -73,7 +73,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_URSARING",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(URSARING"),
+       "x": 16,
+       "y": 4,
+       "elevation": 0,
+@@ -86,7 +86,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_DONPHAN",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DONPHAN"),
+       "x": 7,
+       "y": 11,
+       "elevation": 0,
+@@ -99,7 +99,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_BLASTOISE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BLASTOISE"),
+       "x": 32,
+       "y": 26,
+       "elevation": 0,
+@@ -112,7 +112,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_QUAGSIRE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(QUAGSIRE"),
+       "x": 4,
+       "y": 27,
+       "elevation": 0,
+@@ -125,7 +125,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HOUNDOOM",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOUNDOOM"),
+       "x": 8,
+       "y": 18,
+       "elevation": 0,
+@@ -138,7 +138,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HOUNDOOM",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOUNDOOM"),
+       "x": 7,
+       "y": 19,
+       "elevation": 0,
+@@ -151,7 +151,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CROBAT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CROBAT"),
+       "x": 4,
+       "y": 11,
+       "elevation": 0,
+@@ -164,7 +164,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CROBAT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CROBAT"),
+       "x": 7,
+       "y": 8,
+       "elevation": 0,
+@@ -177,7 +177,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SKARMORY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SKARMORY"),
+       "x": 24,
+       "y": 11,
+       "elevation": 0,
+diff --git a/data/maps/MtSilver_Outside/scripts.inc b/data/maps/MtSilver_Outside/scripts.inc
+index 903509dc6f..fff7fa008e 100644
+--- a/data/maps/MtSilver_Outside/scripts.inc
++++ b/data/maps/MtSilver_Outside/scripts.inc
+@@ -5,7 +5,7 @@ MtSilver_Outside_MapScripts::
+ 
+ MtSilver_Outside_OnTransition: 
+ 	callnative SetTimeBasedEncounters
+-	setflag FLAG_GARBAGEFLAG
++	setflag FLAG_VISITED_MT_SILVER
+ 	end
+ 
+ MtSilver_Outside_EventScript_Sign::
+@@ -13,4 +13,4 @@ MtSilver_Outside_EventScript_Sign::
+ 	end
+ 
+ MtSilver_Outside_Text_Sign:
+-	.string "MT. SILVER$"
++	.string "Mt. Silver$"

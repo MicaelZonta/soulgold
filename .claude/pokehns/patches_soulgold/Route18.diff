@@ -1,0 +1,127 @@
+diff --git a/data/maps/Route18/map.json b/data/maps/Route18/map.json
+index 938fce7648..6bc775abc9 100644
+--- a/data/maps/Route18/map.json
++++ b/data/maps/Route18/map.json
+@@ -52,7 +52,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KECLEON)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HAUNTER)",
+       "x": 35,
+       "y": 12,
+       "elevation": 0,
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NOCTOWL)",
+       "x": 32,
+       "y": 12,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NOCTOWL)",
+       "x": 35,
+       "y": 13,
+       "elevation": 0,
+@@ -91,7 +91,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KECLEON)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HAUNTER)",
+       "x": 33,
+       "y": 13,
+       "elevation": 0,
+@@ -120,9 +120,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/Route18/map.json.bak b/data/maps/Route18/map.json.bak
+index faea77f3f6..2112b3711e 100644
+--- a/data/maps/Route18/map.json.bak
++++ b/data/maps/Route18/map.json.bak
+@@ -52,7 +52,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_KECLEON",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KECLEON"),
+       "x": 35,
+       "y": 12,
+       "elevation": 0,
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_DODRIO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO"),
+       "x": 32,
+       "y": 12,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_DODRIO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO"),
+       "x": 35,
+       "y": 13,
+       "elevation": 0,
+@@ -91,7 +91,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_KECLEON",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KECLEON"),
+       "x": 33,
+       "y": 13,
+       "elevation": 0,
+diff --git a/data/maps/Route18/scripts.inc b/data/maps/Route18/scripts.inc
+index c35e03a88b..3120c675fa 100644
+--- a/data/maps/Route18/scripts.inc
++++ b/data/maps/Route18/scripts.inc
+@@ -22,7 +22,7 @@ Route18_EventScript_Sign::
+ 	end
+ 
+ Route18_Text_BirdKeeperBorisSeen:
+-	.string "If you're looking for POKéMON,\n"
++	.string "If you're looking for Pokémon,\n"
+ 	.string "you have to look in the tall grass.$"
+ 
+ Route18_Text_BirdKeeperBorisBeaten:
+@@ -33,17 +33,17 @@ Route18_Text_BirdKeeperBorisAfterBattle:
+ 	.string "fun to battle.$"
+ 
+ Route18_Text_BirdKeeperBobSeen:
+-	.string "CYCLING ROAD is a quick shortcut\n"
+-	.string "to CELADON.$"
++	.string "Cycling Road is a quick shortcut\n"
++	.string "to Celadon.$"
+ 
+ Route18_Text_BirdKeeperBobBeaten:
+ 	.string "…Whew!$"
+ 
+ Route18_Text_BirdKeeperBobAfterBattle:
+-	.string "If you don't have a BICYCLE,\n"
++	.string "If you don't have a Bicycle,\n"
+ 	.string "you're not allowed to use the\n"
+ 	.string "shortcut.$"
+ 
+ Route18_Text_Sign:
+-	.string "ROUTE 18\p"
+-	.string "CELADON CITY - FUCHSIA CITY$"
++	.string "Route 18\p"
++	.string "Celadon City - Fuchsia City$"

@@ -1,0 +1,138 @@
+diff --git a/data/maps/Route12/map.json b/data/maps/Route12/map.json
+index 00ff5d801a..614748f701 100644
+--- a/data/maps/Route12/map.json
++++ b/data/maps/Route12/map.json
+@@ -117,8 +117,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "Route12_EventScript_Elixir",
++      "trainer_sight_or_berry_tree_id": "ITEM_ELIXIR",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROUTE12_ELIXIR"
+     },
+     {
+@@ -143,8 +143,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "Route12_EventScript_Calcium",
++      "trainer_sight_or_berry_tree_id": "ITEM_CALCIUM",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROUTE12_CALCIUM"
+     },
+     {
+@@ -196,9 +196,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/Route12/map.json.bak b/data/maps/Route12/map.json.bak
+index 8adb15dd2d..07bb61e1df 100644
+--- a/data/maps/Route12/map.json.bak
++++ b/data/maps/Route12/map.json.bak
+@@ -148,7 +148,7 @@
+       "flag": "FLAG_ITEM_ROUTE12_CALCIUM"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_TENTACRUEL",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TENTACRUEL"),
+       "x": 11,
+       "y": 23,
+       "elevation": 0,
+@@ -161,7 +161,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_TENTACRUEL",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TENTACRUEL"),
+       "x": 9,
+       "y": 72,
+       "elevation": 0,
+@@ -174,7 +174,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CARVANHA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CARVANHA"),
+       "x": 28,
+       "y": 85,
+       "elevation": 0,
+diff --git a/data/maps/Route12/scripts.inc b/data/maps/Route12/scripts.inc
+index 2f4e194d13..de0f396308 100644
+--- a/data/maps/Route12/scripts.inc
++++ b/data/maps/Route12/scripts.inc
+@@ -31,14 +31,6 @@ Route12_EventScript_NewFisher::
+ 	msgbox Route12_Text_NewFisher, MSGBOX_NPC
+ 	end
+ 
+-Route12_EventScript_Elixir::
+-	finditem ITEM_ELIXIR
+-	end
+-
+-Route12_EventScript_Calcium::
+-	finditem ITEM_CALCIUM
+-	end
+-
+ Route12_EventScript_Tentacruel::
+ 	lock
+ 	faceplayer
+@@ -55,7 +47,7 @@ Route12_Text_NewFisher:
+ 
+ Route12_Text_FisherMartinSeen:
+ 	.string "Patience is the key to both\n"
+-	.string "fishing and POKéMON.$"
++	.string "fishing and Pokémon.$"
+ 
+ Route12_Text_FisherMartinBeaten:
+ 	.string "Gwaaah!$"
+@@ -72,7 +64,7 @@ Route12_Text_FisherStephenBeaten:
+ 	.string "My stupid radio distracted me!$"
+ 
+ Route12_Text_FisherStephenAfterBattle:
+-	.string "Have you checked out KANTO's radio\n"
++	.string "Have you checked out Kanto's radio\n"
+ 	.string "programs? We get a good variety\l"
+ 	.string "here.$"
+ 
+@@ -89,7 +81,7 @@ Route12_Text_FisherBarneyAfterBattle:
+ 	.string "lives.\p"
+ 	.string "If it weren't, people wouldn't\n"
+ 	.string "have made such a fuss when the\l"
+-	.string "POWER PLANT went out of\l"
++	.string "Power Plant went out of\l"
+ 	.string "commission.$"
+ 
+ Route12_Text_FisherKyleSeen:
+@@ -99,8 +91,8 @@ Route12_Text_FisherKyleBeaten:
+ 	.string "You do remember?$"
+ 
+ Route12_Text_FisherKyleAfterBattle:
+-	.string "The tug you feel on the ROD when\n"
+-	.string "you hook a POKéMON…\p"
++	.string "The tug you feel on the Rod when\n"
++	.string "you hook a Pokémon…\p"
+ 	.string "That's the best feeling ever for\n"
+ 	.string "an angler like me.$"
+ 
+@@ -113,9 +105,9 @@ Route12_EventScript_FishingSign::
+ 	end
+ 
+ Route12_Text_Sign:
+-	.string "ROUTE 12\p"
+-	.string "NORTH TO LAVENDER TOWN$"
++	.string "Route 12\p"
++	.string "North To Lavender Town$"
+ 
+ Route12_Text_FishingSpotSign:
+-	.string "FISHING SPOT$"
++	.string "Fishing Spot$"
+ 

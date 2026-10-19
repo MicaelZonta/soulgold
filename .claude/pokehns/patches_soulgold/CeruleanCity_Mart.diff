@@ -1,0 +1,36 @@
+diff --git a/data/maps/CeruleanCity_Mart/map.json b/data/maps/CeruleanCity_Mart/map.json
+index 03fe632750..880e529e0f 100644
+--- a/data/maps/CeruleanCity_Mart/map.json
++++ b/data/maps/CeruleanCity_Mart/map.json
+@@ -63,10 +63,6 @@
+       "dest_warp_id": "7"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/CeruleanCity_Mart/scripts.inc b/data/maps/CeruleanCity_Mart/scripts.inc
+index 8c618570c2..dcd0c350ad 100644
+--- a/data/maps/CeruleanCity_Mart/scripts.inc
++++ b/data/maps/CeruleanCity_Mart/scripts.inc
+@@ -11,11 +11,11 @@ CeruleanCity_Mart_EventScript_CooltrainerF::
+ 
+ CeruleanMart_Text_CooltrainerM:
+ 	.string "You'll run into many trainers on\n"
+-	.string "the way to CERULEAN's CAPE.\p"
++	.string "the way to Cerulean's Cape.\p"
+ 	.string "They want to see how they stack\n"
+ 	.string "up against other trainers.$"
+ 
+ CeruleanMart_Text_CooltrainerF:
+-	.string "MISTY is about the only person in\n"
++	.string "Misty is about the only person in\n"
+ 	.string "town who can beat the trainers at\l"
+-	.string "CERULEAN's CAPE.$"
++	.string "Cerulean's Cape.$"

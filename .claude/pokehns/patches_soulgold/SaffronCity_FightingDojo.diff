@@ -1,0 +1,329 @@
+diff --git a/data/maps/SaffronCity_FightingDojo/map.json b/data/maps/SaffronCity_FightingDojo/map.json
+index 7339cef445..be8782240f 100644
+--- a/data/maps/SaffronCity_FightingDojo/map.json
++++ b/data/maps/SaffronCity_FightingDojo/map.json
+@@ -161,9 +161,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/SaffronCity_FightingDojo/map.json.bak b/data/maps/SaffronCity_FightingDojo/map.json.bak
+index d071603618..0fc921402e 100644
+--- a/data/maps/SaffronCity_FightingDojo/map.json.bak
++++ b/data/maps/SaffronCity_FightingDojo/map.json.bak
+@@ -15,7 +15,7 @@
+   "connections": 0,
+   "object_events": [
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_LICKILICKY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LICKILICKY"),
+       "x": 3,
+       "y": 6,
+       "elevation": 0,
+@@ -28,7 +28,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MACHAMP",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MACHAMP"),
+       "x": 25,
+       "y": 6,
+       "elevation": 0,
+@@ -41,7 +41,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_STEELIX",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(STEELIX"),
+       "x": 7,
+       "y": 9,
+       "elevation": 0,
+@@ -54,7 +54,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ALAKAZAM",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ALAKAZAM"),
+       "x": 21,
+       "y": 9,
+       "elevation": 0,
+@@ -67,7 +67,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SLOWKING",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SLOWKING"),
+       "x": 3,
+       "y": 12,
+       "elevation": 0,
+@@ -80,7 +80,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_RAICHU",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RAICHU"),
+       "x": 25,
+       "y": 12,
+       "elevation": 0,
+diff --git a/data/maps/SaffronCity_FightingDojo/scripts.inc b/data/maps/SaffronCity_FightingDojo/scripts.inc
+index f6800f843e..8705c59844 100644
+--- a/data/maps/SaffronCity_FightingDojo/scripts.inc
++++ b/data/maps/SaffronCity_FightingDojo/scripts.inc
+@@ -43,18 +43,16 @@ SaffronCity_FightingDojo_EventScript_Lickilicky_EV_HP::
+ 	msgbox SaffronCity_FightingDojo_Text_WouldYouLikeToBattle, MSGBOX_YESNO
+ 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
+ SaffronCity_FightingDojo_EventScript_BattleLickilicky_EV_HP::
+-	setflag FLAG_SYS_NO_CATCHING
+-	setflag FLAG_GARBAGEFLAG
++	setflag B_FLAG_NO_CATCHING
+ 	setwildbattle SPECIES_LICKILICKY, 1, ITEM_NONE
+ 	dowildbattle
+-	clearflag FLAG_SYS_NO_CATCHING
+-	clearflag FLAG_GARBAGEFLAG
++	clearflag B_FLAG_NO_CATCHING
+ 	setflag FLAG_TEMP_1
+ 	release
+ 	end
+ 	
+ SaffronCity_FightingDojo_Text_Lickilicky:
+-	.string "LICKILICKY: LIIIIICK!$"
++	.string "{SPEAKER NAME_LICKILICKY}Liiiiick!$"
+ 
+ SaffronCity_FightingDojo_EventScript_Machamp_EV_Attack::
+ 	lock
+@@ -71,18 +69,16 @@ SaffronCity_FightingDojo_EventScript_Machamp_EV_Attack::
+ 	msgbox SaffronCity_FightingDojo_Text_WouldYouLikeToBattle, MSGBOX_YESNO
+ 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
+ SaffronCity_FightingDojo_EventScript_BattleMachamp_EV_Attack::
+-	setflag FLAG_SYS_NO_CATCHING
+-	setflag FLAG_GARBAGEFLAG
++	setflag B_FLAG_NO_CATCHING
+ 	setwildbattle SPECIES_MACHAMP, 1, ITEM_NONE
+ 	dowildbattle
+-	clearflag FLAG_SYS_NO_CATCHING
+-	clearflag FLAG_GARBAGEFLAG
++	clearflag B_FLAG_NO_CATCHING
+ 	setflag FLAG_TEMP_2
+ 	release
+ 	end
+ 
+ SaffronCity_FightingDojo_Text_Machamp:
+-	.string "MACHAMP: CHAMP!$"
++	.string "{SPEAKER NAME_MACHAMP}Champ!$"
+ 
+ SaffronCity_FightingDojo_EventScript_Steelix_EV_Defense::
+ 	lock
+@@ -99,18 +95,16 @@ SaffronCity_FightingDojo_EventScript_Steelix_EV_Defense::
+ 	msgbox SaffronCity_FightingDojo_Text_WouldYouLikeToBattle, MSGBOX_YESNO
+ 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
+ SaffronCity_FightingDojo_EventScript_BattleSteelix_EV_Defense::
+-	setflag FLAG_SYS_NO_CATCHING
+-	setflag FLAG_GARBAGEFLAG
++	setflag B_FLAG_NO_CATCHING
+ 	setwildbattle SPECIES_STEELIX, 1, ITEM_NONE
+ 	dowildbattle
+-	clearflag FLAG_SYS_NO_CATCHING
+-	clearflag FLAG_GARBAGEFLAG
++	clearflag B_FLAG_NO_CATCHING
+ 	setflag FLAG_TEMP_3
+ 	release
+ 	end
+ 
+ SaffronCity_FightingDojo_Text_Steelix:
+-	.string "STEELIX: GRRRIND!$"
++	.string "{SPEAKER NAME_STEELIX}Grrrind!$"
+ 
+ SaffronCity_FightingDojo_EventScript_Alakazam_EV_SpecialAttack::
+ 	lock
+@@ -127,18 +121,16 @@ SaffronCity_FightingDojo_EventScript_Alakazam_EV_SpecialAttack::
+ 	msgbox SaffronCity_FightingDojo_Text_WouldYouLikeToBattle, MSGBOX_YESNO
+ 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
+ SaffronCity_FightingDojo_EventScript_BattleAlakazam_EV_SpecialAttack::
+-	setflag FLAG_SYS_NO_CATCHING
+-	setflag FLAG_GARBAGEFLAG
++	setflag B_FLAG_NO_CATCHING
+ 	setwildbattle SPECIES_ALAKAZAM, 1, ITEM_NONE
+ 	dowildbattle
+-	clearflag FLAG_SYS_NO_CATCHING
+-	clearflag FLAG_GARBAGEFLAG
++	clearflag B_FLAG_NO_CATCHING
+ 	setflag FLAG_TEMP_4
+ 	release
+ 	end
+ 
+ SaffronCity_FightingDojo_Text_Alakazam:
+-	.string "ALAKAZAM: ZAM!$"
++	.string "{SPEAKER NAME_ALAKAZAM}Zam!$"
+ 
+ SaffronCity_FightingDojo_EventScript_Slowking_EV_SpecialDefense::
+ 	lock
+@@ -155,18 +147,16 @@ SaffronCity_FightingDojo_EventScript_Slowking_EV_SpecialDefense::
+ 	msgbox SaffronCity_FightingDojo_Text_WouldYouLikeToBattle, MSGBOX_YESNO
+ 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
+ SaffronCity_FightingDojo_EventScript_BattleSlowking_EV_SpecialDefense::
+-	setflag FLAG_SYS_NO_CATCHING
+-	setflag FLAG_GARBAGEFLAG
++	setflag B_FLAG_NO_CATCHING
+ 	setwildbattle SPECIES_SLOWKING, 1, ITEM_NONE
+ 	dowildbattle
+-	clearflag FLAG_SYS_NO_CATCHING
+-	clearflag FLAG_GARBAGEFLAG
++	clearflag B_FLAG_NO_CATCHING
+ 	setflag FLAG_TEMP_5
+ 	release
+ 	end
+ 
+ SaffronCity_FightingDojo_Text_Slowking:
+-	.string "SLOWKING: HMMM...$"
++	.string "{SPEAKER NAME_SLOWKING}HMMM...$"
+ 
+ SaffronCity_FightingDojo_EventScript_Raichu_EV_Speed::
+ 	lock
+@@ -183,49 +173,47 @@ SaffronCity_FightingDojo_EventScript_Raichu_EV_Speed::
+ 	msgbox SaffronCity_FightingDojo_Text_WouldYouLikeToBattle, MSGBOX_YESNO
+ 	goto_if_eq VAR_RESULT, FALSE, SaffronCity_FightingDojo_EventScript_Refused
+ SaffronCity_FightingDojo_EventScript_BattleRaichu_EV_Speed::
+-	setflag FLAG_SYS_NO_CATCHING
+-	setflag FLAG_GARBAGEFLAG
++	setflag B_FLAG_NO_CATCHING
+ 	setwildbattle SPECIES_RAICHU, 1, ITEM_NONE
+ 	dowildbattle
+-	clearflag FLAG_SYS_NO_CATCHING
+-	clearflag FLAG_GARBAGEFLAG
++	clearflag B_FLAG_NO_CATCHING
+ 	setflag FLAG_TEMP_6
+ 	release
+ 	end
+ 
+ SaffronCity_FightingDojo_Text_Raichu:
+-	.string "RAICHU: CHUUU!$"
++	.string "{SPEAKER NAME_RAICHU}Chuuu!$"
+ 
+ SaffronCity_FightingDojo_Text_HP:
+-	.string "HP$"
++	.string "Hp$"
+ SaffronCity_FightingDojo_Text_Attack:
+-	.string "ATK$"
++	.string "Atk$"
+ SaffronCity_FightingDojo_Text_Defense:
+-	.string "DEF$"
++	.string "Def$"
+ SaffronCity_FightingDojo_Text_SpecialAttack:
+-	.string "SP.ATK$"
++	.string "Sp.Atk$"
+ SaffronCity_FightingDojo_Text_SpecialDefense:
+-	.string "SP.DEF$"
++	.string "Sp.Def$"
+ SaffronCity_FightingDojo_Text_Speed:
+-	.string "SPD$"
++	.string "Spd$"
+ 
+ SaffronCity_FightingDojo_Text_WouldYouLikeToBattle:
+ 	.string "Battle {STR_VAR_1} for 3 {STR_VAR_2} EVs?$"
+ 
+ SaffronCity_FightingDojo_Text_BlackBelt:
+-	.string "You enter the FIGHTING DOJO!\p"
++	.string "You enter the Fighting Dojo!\p"
+ 	.string "Here, you may hone the stats of\n"
+-	.string "of your POKéMON by battle!$"
++	.string "of your Pokémon by battle!$"
+ 
+ SaffronCity_FightingDojo_Text_Sign1:
+-	.string "Left: HP, DEF, SDEF$"
++	.string "Left: Hp, Def, Sdef$"
+ 
+ SaffronCity_FightingDojo_Text_Sign2:
+-	.string "RIGHT: ATK, SPATK, SPD$"
++	.string "Right: Atk, Spatk, Spd$"
+ 
+ SaffronCity_FightingDojo_Text_Cooltrainer::
+-	.string "Only trainers with all KANTO badges\n"
+-	.string "may enter the VIP lounge.$"
++	.string "Only trainers with all Kanto badges\n"
++	.string "may enter the Vip lounge.$"
+ 
+ @Ability swapper
+ 
+@@ -253,23 +241,29 @@ SaffronCity_FightingDojo_SetZeroNoMoney::
+ 	end
+ 
+ SaffronCity_FightingDojo_Ability_CheckMoney:
+-	checkmoney 25000, 0
++	checkmoney 1000000, 0
+ 	compare VAR_RESULT, TRUE
+ 	goto_if_eq SaffronCity_FightingDojo_Ability_Continue
+ 	compare VAR_RESULT, FALSE
+ 	goto_if_eq SaffronCity_FightingDojo_SetZeroNoMoney
+ 	end
+ 
++@ SwitchMonAbility (src/field_specials.c) was commented out and never
++@ registered as a special, while VAR_RESULT still held TRUE from checkmoney:
++@ every visit charged 25,000 and changed nothing, even after cancelling the
++@ party menu (bug/B06). Cancel and Eggs now cost nothing; callnative keeps
++@ data/specials.inc untouched.
+ SaffronCity_FightingDojo_Ability_Continue:
+ 	closemessage
+ 	special ChoosePartyMon
+ 	waitstate
+-	@special SwitchMonAbility
+-	compare VAR_RESULT, TRUE
+-	goto_if_eq SaffronCity_FightingDojo_Ability_Finish
+-	compare VAR_RESULT, FALSE
+-	goto_if_eq SaffronCity_FightingDojo_Ability_Cant
+-	end
++	lock
++	goto_if_ge VAR_0x8004, PARTY_SIZE, SaffronCity_FightingDojo_Ability_No
++	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
++	goto_if_eq VAR_RESULT, SPECIES_EGG, SaffronCity_FightingDojo_Ability_Cant
++	callnative SwitchMonAbility
++	goto_if_eq VAR_RESULT, TRUE, SaffronCity_FightingDojo_Ability_Finish
++	goto SaffronCity_FightingDojo_Ability_Cant
+ 
+ SaffronCity_FightingDojo_Ability_Cant:
+ 	msgbox SaffronCity_FightingDojo_Ability_Text_Cant, MSGBOX_DEFAULT
+@@ -285,7 +279,7 @@ SaffronCity_FightingDojo_Ability_Finish:
+ 	waitse
+ 	playse SE_EXP_MAX
+ 	msgbox SaffronCity_FightingDojo_Ability_Finish_Text, MSGBOX_DEFAULT
+-	removemoney 25000, 0
++	removemoney 1000000, 0
+ 	closemessage
+ 	release
+ 	end
+@@ -294,22 +288,22 @@ SaffronCity_FightingDojo_Ability_Finish_Text:
+ 	.string "That's it! You're welcome!$"
+ 
+ SaffronCity_FightingDojo_Ability_Text1:
+-	.string "Welcome! I'm the ABILITY EXPERT!\p"
+-	.string "I can swap POKéMON's abilities in\n"
+-	.string "a heartbeat, only for 25.000¥!\p"
++	.string "Welcome! I'm the Ability Expert!\p"
++	.string "I can swap Pokémon's abilities in\n"
++	.string "a heartbeat, for just ¥1,000,000!\p"
+ 	.string "Would you like me to swap any\n"
+-	.string "POKéMON's ability?$"
++	.string "Pokémon's ability?$"
+ 
+ SaffronCity_FightingDojo_Ability_Text_No:
+ 	.string "Sure. I'll be here if you need me.$"
+ 
+ SaffronCity_FightingDojo_Ability_Text_Cant:
+-	.string "I cannot do that. This POKéMON\n"
+-	.string "does not have a second ABILITY!$"
++	.string "I cannot do that. This Pokémon\n"
++	.string "does not have a second Ability!$"
+ 
+ SaffronCity_FightingDojo_Ability_Text_NoChampion:
+-	.string "Welcome! I'm the ABILITY EXPERT!\p"
+-	.string "I can swap POKéMON's abilities\n"
++	.string "Welcome! I'm the Ability Expert!\p"
++	.string "I can swap Pokémon's abilities\n"
+ 	.string "in a heartbeat.\p"
+ 	.string "Unfortunately, my back hurts and\n"
+ 	.string "I can't work today.\p"

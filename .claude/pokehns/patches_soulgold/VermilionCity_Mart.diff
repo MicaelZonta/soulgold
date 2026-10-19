@@ -1,0 +1,44 @@
+diff --git a/data/maps/VermilionCity_Mart/map.json b/data/maps/VermilionCity_Mart/map.json
+index a0c60d8c8b..64b1a02e3f 100644
+--- a/data/maps/VermilionCity_Mart/map.json
++++ b/data/maps/VermilionCity_Mart/map.json
+@@ -28,7 +28,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_LASS",
++      "graphics_id": "OBJ_EVENT_GFX_FR_LASS",
+       "x": 6,
+       "y": 5,
+       "elevation": 0,
+@@ -63,10 +63,6 @@
+       "dest_warp_id": "5"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/VermilionCity_Mart/scripts.inc b/data/maps/VermilionCity_Mart/scripts.inc
+index 9690a187b6..e7aa706621 100644
+--- a/data/maps/VermilionCity_Mart/scripts.inc
++++ b/data/maps/VermilionCity_Mart/scripts.inc
+@@ -10,10 +10,10 @@ VermilionCity_Mart_EventScript_Woman::
+ 	end
+ 
+ VermilionMart_Text_SuperNerd:
+-	.string "TEAM ROCKET is no longer in\n"
+-	.string "KANTO.\p"
++	.string "Team Rocket is no longer in\n"
++	.string "Kanto.\p"
+ 	.string "That alone makes me happy.$"
+ 
+ VermilionMart_Text_Beauty:
+ 	.string "I'm thinking about going shopping\n"
+-	.string "in SAFFRON.$"
++	.string "in Saffron.$"

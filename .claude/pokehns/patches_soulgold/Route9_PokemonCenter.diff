@@ -1,0 +1,42 @@
+diff --git a/data/maps/Route9_PokemonCenter/map.json b/data/maps/Route9_PokemonCenter/map.json
+index fb4a7ee65d..8c4e4a6c5b 100644
+--- a/data/maps/Route9_PokemonCenter/map.json
++++ b/data/maps/Route9_PokemonCenter/map.json
+@@ -28,7 +28,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+       "x": 8,
+       "y": 2,
+       "elevation": 0,
+@@ -76,9 +76,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/Route9_PokemonCenter/scripts.inc b/data/maps/Route9_PokemonCenter/scripts.inc
+index f96c42efd6..b3edbb0757 100644
+--- a/data/maps/Route9_PokemonCenter/scripts.inc
++++ b/data/maps/Route9_PokemonCenter/scripts.inc
+@@ -15,9 +15,9 @@ Route9_PokemonCenter_EventScript_Engineer2::
+ Route9_PokemonCenter_Text_Engineer1:
+ 	.string "Sometimes us engineers come here\n"
+ 	.string "for our break. Or just to get away\l"
+-	.string "from our MANAGER.\p"
++	.string "from our Manager.\p"
+ 	.string "That guy is crazy.$"
+ 
+ Route9_PokemonCenter_Text_Engineer2:
+-	.string "The POWER PLANT is very remote, so\n"
+-	.string "I travel far for work.$"
+\ No newline at end of file
++	.string "The Power Plant is very remote, so\n"
++	.string "I travel far for work.$"

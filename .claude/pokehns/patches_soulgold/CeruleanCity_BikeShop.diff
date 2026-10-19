@@ -1,0 +1,28 @@
+diff --git a/data/maps/CeruleanCity_BikeShop/map.json b/data/maps/CeruleanCity_BikeShop/map.json
+index 53d69f921f..4198320241 100644
+--- a/data/maps/CeruleanCity_BikeShop/map.json
++++ b/data/maps/CeruleanCity_BikeShop/map.json
+@@ -13,9 +13,7 @@
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+   "connections": 0,
+-  "object_events": [
+-
+-  ],
++  "object_events": [],
+   "warp_events": [
+     {
+       "x": 5,
+@@ -25,10 +23,6 @@
+       "dest_warp_id": "6"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }

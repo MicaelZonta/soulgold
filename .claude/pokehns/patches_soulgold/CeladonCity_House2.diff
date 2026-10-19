@@ -1,0 +1,17 @@
+diff --git a/data/maps/CeladonCity_House2/map.json b/data/maps/CeladonCity_House2/map.json
+index d39c6fda46..b380d1fb2b 100644
+--- a/data/maps/CeladonCity_House2/map.json
++++ b/data/maps/CeladonCity_House2/map.json
+@@ -37,10 +37,6 @@
+       "dest_warp_id": "7"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }

@@ -1,0 +1,49 @@
+diff --git a/data/maps/FuchsiaCity_House2/map.json b/data/maps/FuchsiaCity_House2/map.json
+index 91eb0f4d90..f10dcb3523 100644
+--- a/data/maps/FuchsiaCity_House2/map.json
++++ b/data/maps/FuchsiaCity_House2/map.json
+@@ -44,9 +44,7 @@
+       "dest_warp_id": "7"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/FuchsiaCity_House2/scripts.inc b/data/maps/FuchsiaCity_House2/scripts.inc
+index 7559b3fa8b..80c1124fdb 100644
+--- a/data/maps/FuchsiaCity_House2/scripts.inc
++++ b/data/maps/FuchsiaCity_House2/scripts.inc
+@@ -16,23 +16,23 @@ FuchsiaCity_House2_EventScript_Photo::
+ 	end
+ 
+ FuchsiaCity_House2_Text_WardensGranddaughter1:
+-	.string "My grandpa is the SAFARI ZONE\n"
+-	.string "WARDEN.\p"
++	.string "My grandpa is the Safari Zone\n"
++	.string "Warden.\p"
+ 	.string "At least he was…\p"
+ 	.string "He decided to go on a vacation and\n"
+ 	.string "took off overseas all by himself.\p"
+-	.string "He quit running SAFARI ZONE just\n"
++	.string "He quit running Safari Zone just\n"
+ 	.string "like that.$"
+ 
+ FuchsiaCity_House2_Text_WardensGranddaughter2:
+ 	.string "Many people were disappointed that\n"
+-	.string "SAFARI ZONE closed down, but Grandpa\l"
++	.string "Safari Zone closed down, but Grandpa\l"
+ 	.string "is so stubborn…$"
+ 
+ FuchsiaCity_House2_Text_WardenPhoto:
+ 	.string "It's a photo of a grinning old man\n"
+-	.string "who's surrounded by POKéMON.$"
++	.string "who's surrounded by Pokémon.$"
+ 
+ FuchsiaCity_House2_Text_SafariZonePhoto:
+ 	.string "It's a photo of a huge grassy plain\n"
+-	.string "with rare POKéMON frolicking in it.$"
++	.string "with rare Pokémon frolicking in it.$"

@@ -1,0 +1,53 @@
+diff --git a/data/maps/CeladonCity_House1/map.json b/data/maps/CeladonCity_House1/map.json
+index 79b52f9b93..c55f7e62ce 100644
+--- a/data/maps/CeladonCity_House1/map.json
++++ b/data/maps/CeladonCity_House1/map.json
+@@ -89,18 +89,8 @@
+       "dest_warp_id": "6"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+-    {
+-      "type": "hidden_item",
+-      "x": 11,
+-      "y": 8,
+-      "elevation": 0,
+-      "item": "ITEM_LEFTOVERS",
+-      "flag": "FLAG_ITEM_CELADON_LEFTOVERS"
+-    },
+     {
+       "type": "sign",
+       "x": 4,
+diff --git a/data/maps/CeladonCity_House1/scripts.inc b/data/maps/CeladonCity_House1/scripts.inc
+index 82e8458d0f..8d4b66f74c 100644
+--- a/data/maps/CeladonCity_House1/scripts.inc
++++ b/data/maps/CeladonCity_House1/scripts.inc
+@@ -78,20 +78,20 @@ CeladonCity_House1_Text_Fisher3MunchMunch:
+ 
+ CeladonCity_House1_Text_Fisher3GoldenrodIsBest:
+ 	.string "The food is good here, but\n"
+-	.string "GOLDENROD has the best food\l"
++	.string "Goldenrod has the best food\l"
+ 	.string "anywhere.$"
+ 
+ CeladonCity_House1_Text_TeacherCrunchCrunch:
+ 	.string "Crunch… Crunch…$"
+ 
+ CeladonCity_House1_Text_TeacherNoCoinCase:
+-	.string "Nobody here will give you a COIN\n"
+-	.string "CASE. You should look in JOHTO.$"
++	.string "Nobody here will give you a Coin\n"
++	.string "Case. You should look in Johto.$"
+ 
+ CeladonCity_House1_Text_TeacherKeepEating:
+ 	.string "Crunch… Crunch…\p"
+ 	.string "I can keep eating!\p"
+-	.string "More, CHEF!$"
++	.string "More, Chef!$"
+ 
+ CeladonCity_House1_Text_EatathonContestPoster:
+ 	.string "Eatathon Contest! No time limit!\p"

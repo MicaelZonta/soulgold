@@ -1,0 +1,17 @@
+diff --git a/data/maps/ViridianCity_House2/map.json b/data/maps/ViridianCity_House2/map.json
+index f94fe0a84b..564a1eec79 100644
+--- a/data/maps/ViridianCity_House2/map.json
++++ b/data/maps/ViridianCity_House2/map.json
+@@ -37,10 +37,6 @@
+       "dest_warp_id": "2"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }

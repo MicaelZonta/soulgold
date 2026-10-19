@@ -1,0 +1,29 @@
+diff --git a/data/maps/FuchsiaCity_Route15_Gate/map.json b/data/maps/FuchsiaCity_Route15_Gate/map.json
+index a4c9934a6a..1795e268d6 100644
+--- a/data/maps/FuchsiaCity_Route15_Gate/map.json
++++ b/data/maps/FuchsiaCity_Route15_Gate/map.json
+@@ -44,10 +44,6 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/FuchsiaCity_Route15_Gate/scripts.inc b/data/maps/FuchsiaCity_Route15_Gate/scripts.inc
+index 6d78ff2905..570ff69bb9 100644
+--- a/data/maps/FuchsiaCity_Route15_Gate/scripts.inc
++++ b/data/maps/FuchsiaCity_Route15_Gate/scripts.inc
+@@ -7,6 +7,6 @@ Route15_EventScript_Officer::
+ 	end
+ 
+ Route15FuchsiaGate_Text_Officer:
+-	.string "You're working on a POKéDEX? That's\n"
++	.string "You're working on a Pokédex? That's\n"
+ 	.string "really something.\p"
+ 	.string "Don't give up!$"

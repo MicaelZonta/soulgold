@@ -1,0 +1,56 @@
+diff --git a/data/maps/SaffronCity_CopyCatsHouse_1F/map.json b/data/maps/SaffronCity_CopyCatsHouse_1F/map.json
+index e7096d818d..f03d2b1d59 100644
+--- a/data/maps/SaffronCity_CopyCatsHouse_1F/map.json
++++ b/data/maps/SaffronCity_CopyCatsHouse_1F/map.json
+@@ -70,10 +70,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/SaffronCity_CopyCatsHouse_1F/map.json.bak b/data/maps/SaffronCity_CopyCatsHouse_1F/map.json.bak
+index b4de1b3a0a..875eb24caf 100644
+--- a/data/maps/SaffronCity_CopyCatsHouse_1F/map.json.bak
++++ b/data/maps/SaffronCity_CopyCatsHouse_1F/map.json.bak
+@@ -41,7 +41,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_BLISSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BLISSEY"),
+       "x": 8,
+       "y": 6,
+       "elevation": 0,
+diff --git a/data/maps/SaffronCity_CopyCatsHouse_1F/scripts.inc b/data/maps/SaffronCity_CopyCatsHouse_1F/scripts.inc
+index fe6b81d853..dcc2e0e12e 100644
+--- a/data/maps/SaffronCity_CopyCatsHouse_1F/scripts.inc
++++ b/data/maps/SaffronCity_CopyCatsHouse_1F/scripts.inc
+@@ -27,18 +27,18 @@ SaffronCity_CopyCatsHouse_1F_EventScript_Blissey::
+ CopycatsHouse1F_Text_PokefanM:
+ 	.string "My daughter likes to mimic people.\p"
+ 	.string "Her mimicry has earned her the\n"
+-	.string "nickname COPYCAT around here.$"
++	.string "nickname Copycat around here.$"
+ 
+ CopycatsHouse1F_Text_PokefanF:
+ 	.string "My daughter is so self-centered…\p"
+ 	.string "She only has a few friends.$"
+ 
+ CopycatsHouse1F_Text_PokefanF_ReturnedPart:
+-	.string "She recently lost the POKé DOLL\n"
++	.string "She recently lost the Poké Doll\n"
+ 	.string "that a boy gave her three years\l"
+ 	.string "ago.\p"
+ 	.string "Ever since then, she's gotten even\n"
+ 	.string "better at mimicry…$"
+ 
+ CopycatsHouse1F_Text_Blissey:
+-	.string "BLISSEY: Bliisii!$"
++	.string "{SPEAKER NAME_BLISSEY}Bliisii!$"

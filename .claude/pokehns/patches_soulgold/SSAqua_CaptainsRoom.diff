@@ -1,0 +1,39 @@
+diff --git a/data/maps/SSAqua_CaptainsRoom/map.json b/data/maps/SSAqua_CaptainsRoom/map.json
+index be5ace3d40..8304649de8 100644
+--- a/data/maps/SSAqua_CaptainsRoom/map.json
++++ b/data/maps/SSAqua_CaptainsRoom/map.json
+@@ -50,10 +50,6 @@
+       "dest_warp_id": "11"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/SSAqua_CaptainsRoom/scripts.inc b/data/maps/SSAqua_CaptainsRoom/scripts.inc
+index d42af8560b..8e483ed71b 100644
+--- a/data/maps/SSAqua_CaptainsRoom/scripts.inc
++++ b/data/maps/SSAqua_CaptainsRoom/scripts.inc
+@@ -41,7 +41,7 @@ SSAqua_CaptainsRoom_Movement_Jump:
+ 	step_end
+ 
+ SSAqua_CaptainsRoom_Text_GranddaughterCaptainPlayWithMe:
+-	.string "CAPTAIN, play with me, please?\p"
++	.string "Captain, play with me, please?\p"
+ 	.string "I'm bored! I want to play more!$"
+ 
+ SSAqua_CaptainsRoom_Text_GranddaughterHasToFindGrandpa:
+@@ -57,7 +57,7 @@ SSAqua_CaptainsRoom_Text_CaptainExhausting:
+ 	.string "was exhausting.$"
+ 
+ SSAqua_CaptainsRoom_Text_CaptainHowDoYouLike:
+-	.string "How do you like S.S.AQUA's ride?\p"
++	.string "How do you like S.S.Aqua's ride?\p"
+ 	.string "She practically skates across\n"
+ 	.string "the waves.$"
+ 

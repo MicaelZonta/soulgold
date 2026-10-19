@@ -1,0 +1,37 @@
+diff --git a/data/maps/MtMoon_Shop/map.json b/data/maps/MtMoon_Shop/map.json
+index 8b2efe0cbb..8f6bcb81b1 100644
+--- a/data/maps/MtMoon_Shop/map.json
++++ b/data/maps/MtMoon_Shop/map.json
+@@ -50,10 +50,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/MtMoon_Shop/scripts.inc b/data/maps/MtMoon_Shop/scripts.inc
+index 4657224796..154186840b 100644
+--- a/data/maps/MtMoon_Shop/scripts.inc
++++ b/data/maps/MtMoon_Shop/scripts.inc
+@@ -17,7 +17,6 @@ MtMoon_Shop_EventScript_Clerk::
+ 
+ 	.align 2
+ MtMoon_Shop_Pokemart:
+-	.2byte ITEM_MOON_STONE
+ 	.2byte ITEM_POKE_DOLL
+ 	.2byte ITEM_FRESH_WATER
+ 	.2byte ITEM_SODA_POP
+@@ -28,6 +27,6 @@ MtMoon_Shop_Pokemart:
+ 	end
+ 
+ MtMoon_Shop_Text_GiftShopLass:
+-	.string "When the sun goes down, CLEFAIRY\n"
++	.string "When the sun goes down, Clefairy\n"
+ 	.string "come out to play.$"
+ 

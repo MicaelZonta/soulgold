@@ -1,0 +1,100 @@
+diff --git a/data/maps/SSAqua_1F/map.json b/data/maps/SSAqua_1F/map.json
+index ff587ec4dd..de4b7ff883 100644
+--- a/data/maps/SSAqua_1F/map.json
++++ b/data/maps/SSAqua_1F/map.json
+@@ -12,7 +12,7 @@
+   "allow_running": false,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
+       "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+@@ -186,7 +186,5 @@
+       "script": "SSAqua_1F_Trigger_Grandpa"
+     }
+   ],
+-  "bg_events": [
+-
+-  ]
++  "bg_events": []
+ }
+diff --git a/data/maps/SSAqua_1F/scripts.inc b/data/maps/SSAqua_1F/scripts.inc
+index 7c79e51cce..be871f4f70 100644
+--- a/data/maps/SSAqua_1F/scripts.inc
++++ b/data/maps/SSAqua_1F/scripts.inc
+@@ -90,7 +90,7 @@ SSAqua_1F_EventScript_LeaveBoat::
+ 	clearflag FLAG_HIDE_MTMOON_SILVER
+ 	clearflag FLAG_GOT_TM_STEEL_WING
+ 	clearflag FLAG_HIDE_CERULEANCAVE_GUARD
+-	clearflag FLAG_HIDE_MTSILVER_RED
++	clearflag FLAG_HIDE_MTSILVER_RIVAL
+ 	clearflag FLAG_HIDE_MEWTWO
+ 	clearflag FLAG_HIDE_LATIAS
+ 	clearflag FLAG_HIDE_LATIOS
+@@ -99,8 +99,8 @@ SSAqua_1F_EventScript_LeaveBoat::
+ 	clearflag FLAG_HIDE_RAYQUAZA
+ 	clearflag FLAG_HIDE_SEAFOAM_BLAINE
+ 
+-	clearflag FLAG_HIDE_CELADON_FALKNER
+-	clearflag FLAG_HIDE_VIRIDIAN_BUGSY
++	clearflag FLAG_HIDE_VIOLET_SCHOOL_FALKNER
++	clearflag FLAG_HIDE_NATIONAL_BUGSY
+ 	clearflag FLAG_HIDE_DEPTSTORE_WHITNEY
+ 	clearflag FLAG_HIDE_BELLCHIME_MORTY
+ 	clearflag FLAG_HIDE_CAFE_JASMINE
+@@ -114,7 +114,6 @@ SSAqua_1F_EventScript_LeaveBoat::
+ 
+ 	setvar VAR_FAN_CLUB_CLEFAIRY, 0
+ 	setvar VAR_FAN_CLUB_GUY, 0
+-	setvar VAR_CLEFAIRY_DOLL_STATE, 0
+ 	setvar VAR_NUM_BADGES, 8
+ 	setvar VAR_VERMILION_CITY_STATE, 1
+ 
+@@ -240,20 +239,20 @@ SSAqua_1F_Movement_GrandpaLeave:
+ 	step_end
+ 
+ SSAqua_1F_Text_Sailor1_ToVermilion:
+-    .string "FAST SHIP S.S.AQUA is en route to\n"
+-    .string "VERMILION CITY.\p"
++    .string "Fast Ship S.S.Aqua is en route to\n"
++    .string "Vermilion City.\p"
+     .string "We will make an announcement when\n"
+     .string "we arrive.$"
+ 
+ SSAqua_1F_Text_Sailor1_ToOlivine:
+-    .string "FAST SHIP S.S.AQUA is en route to\n"
+-    .string "OLIVINE CITY.\p"
++    .string "Fast Ship S.S.Aqua is en route to\n"
++    .string "Olivine City.\p"
+     .string "We will make an announcement when\n"
+     .string "we arrive.$"
+ 
+ SSAqua_1F_Text_Sailor2_FirstTime:
+     .string "Here's your cabin.\p"
+-    .string "If your POKéMON are hurt, take a\n"
++    .string "If your Pokémon are hurt, take a\n"
+     .string "nap in the bed.\p"
+     .string "That will heal them.$"
+ 
+@@ -269,14 +268,14 @@ SSAqua_1F_Text_Grandpa:
+     .string "her, please let me know!$"
+ 
+ SSAqua_1F_Text_Sailor1_InOlivine:
+-    .string "FAST SHIP S.S.AQUA has arrived in\n"
+-    .string "OLIVINE CITY.$"
++    .string "Fast Ship S.S.Aqua has arrived in\n"
++    .string "Olivine City.$"
+ 
+ SSAqua_1F_Text_Sailor1_InVermilion:
+-    .string "FAST SHIP S.S.AQUA has arrived in\n"
+-    .string "VERMILION CITY.$"
++    .string "Fast Ship S.S.Aqua has arrived in\n"
++    .string "Vermilion City.$"
+ 
+ 
+ SSAqua_1F_Text_SailorDoorArrived:
+-    .string "We have arrived in VERMILION CITY.\n"
++    .string "We have arrived in Vermilion City.\n"
+     .string "Would you like to disembark?$"

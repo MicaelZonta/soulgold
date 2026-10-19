@@ -1,0 +1,34 @@
+diff --git a/data/maps/Route26_House1/map.json b/data/maps/Route26_House1/map.json
+index a540e6fd1d..4931123df5 100644
+--- a/data/maps/Route26_House1/map.json
++++ b/data/maps/Route26_House1/map.json
+@@ -37,10 +37,6 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/Route26_House1/scripts.inc b/data/maps/Route26_House1/scripts.inc
+index 15b471b9a6..71069582ea 100644
+--- a/data/maps/Route26_House1/scripts.inc
++++ b/data/maps/Route26_House1/scripts.inc
+@@ -13,10 +13,10 @@ Route26_House1_EventScript_HealWoman::
+ 
+ 
+ Route26_Text_HealHouseRest:
+-    .string "Your POKéMON look a little tired.\p"
++    .string "Your Pokémon look a little tired.\p"
+     .string "You should rest them a while.$"
+ 
+ Route26_Text_HealHouseKeepAtIt:
+     .string "There!\p"
+-    .string "Your POKéMON are looking good!\p"
++    .string "Your Pokémon are looking good!\p"
+     .string "Keep at it!$"

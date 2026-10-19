@@ -1,0 +1,40 @@
+diff --git a/data/maps/PewterCity_Mart/map.json b/data/maps/PewterCity_Mart/map.json
+index df80b5c09d..ddc75847a6 100644
+--- a/data/maps/PewterCity_Mart/map.json
++++ b/data/maps/PewterCity_Mart/map.json
+@@ -63,10 +63,6 @@
+       "dest_warp_id": "3"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/PewterCity_Mart/scripts.inc b/data/maps/PewterCity_Mart/scripts.inc
+index 1dd8d5d3e0..8c9699238d 100644
+--- a/data/maps/PewterCity_Mart/scripts.inc
++++ b/data/maps/PewterCity_Mart/scripts.inc
+@@ -10,13 +10,13 @@ PewterCity_Mart_EventScript_Nerd::
+ 	end
+ 
+ PewterCity_Mart_Text_Youngster:
+-	.string "Hi! Check out my GYARADOS!\p"
+-	.string "I raised it from a MAGIKARP. I can't\n"
++	.string "Hi! Check out my Gyarados!\p"
++	.string "I raised it from a Magikarp. I can't\n"
+ 	.string "believe how strong it has become.$"
+ 
+ PewterCity_Mart_Text_SuperNerd:
+ 	.string "There once was a weird old man who sold\n"
+-	.string "MAGIKARP.\p"
+-	.string "He was saying the MAGIKARP from the\n"
+-	.string "LAKE OF RAGE were excellent.$"
++	.string "Magikarp.\p"
++	.string "He was saying the Magikarp from the\n"
++	.string "Lake Of Rage were excellent.$"
+ 

@@ -1,0 +1,85 @@
+diff --git a/data/maps/SaffronCity_PokemonCenter/map.json b/data/maps/SaffronCity_PokemonCenter/map.json
+index fd7b209ff3..0a8feb5afa 100644
+--- a/data/maps/SaffronCity_PokemonCenter/map.json
++++ b/data/maps/SaffronCity_PokemonCenter/map.json
+@@ -12,9 +12,10 @@
+   "allow_running": false,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
++      "local_id": "LOCALID_SAFFRON_NURSE",
+       "graphics_id": "OBJ_EVENT_GFX_NURSE",
+       "x": 7,
+       "y": 2,
+@@ -54,7 +55,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_LASS",
++      "graphics_id": "OBJ_EVENT_GFX_FR_LASS",
+       "x": 13,
+       "y": 3,
+       "elevation": 0,
+@@ -67,7 +68,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+       "x": 8,
+       "y": 2,
+       "elevation": 3,
+@@ -102,9 +103,7 @@
+       "dest_warp_id": "12"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/SaffronCity_PokemonCenter/scripts.inc b/data/maps/SaffronCity_PokemonCenter/scripts.inc
+index 76a4f3822e..847fdd7b62 100644
+--- a/data/maps/SaffronCity_PokemonCenter/scripts.inc
++++ b/data/maps/SaffronCity_PokemonCenter/scripts.inc
+@@ -25,25 +25,25 @@ SaffronCity_PokemonCenter_EventScript_Youngster::
+ 	end
+ 
+ SaffronCity_PokemonCenter1F_Text_Teacher:
+-	.string "What are JOHTO's POKéMON CENTERS\n"
++	.string "What are Johto's Pokémon Centers\n"
+ 	.string "like?\p"
+ 	.string "…Oh, I see. So they're not much\n"
+-	.string "different from the ones in KANTO.\p"
+-	.string "I can go to JOHTO without\n"
++	.string "different from the ones in Kanto.\p"
++	.string "I can go to Johto without\n"
+ 	.string "worrying, then!$"
+ 
+ SaffronCity_PokemonCenter1F_Text_Fisher:
+ 	.string "I just happened to come through\n"
+-	.string "ROCK TUNNEL.\p"
++	.string "Rock Tunnel.\p"
+ 	.string "There was some commotion at the\n"
+-	.string "POWER PLANT.$"
++	.string "Power Plant.$"
+ 
+ SaffronCity_PokemonCenter1F_Text_Fisher_ReturnedPart:
+-	.string "There's an odd cave in CERULEAN.\p"
+-	.string "As a pro HIKER, I should explore it,\n"
++	.string "There's an odd cave in Cerulean.\p"
++	.string "As a pro Hiker, I should explore it,\n"
+ 	.string "but that place scares even me.$"
+ 
+ SaffronCity_PokemonCenter1F_Text_Youngster:
+-	.string "SILPH CO.'s HEAD OFFICE and the\n"
+-	.string "MAGNET TRAIN STATION--they're the\l"
+-	.string "places to see in SAFFRON.$"
++	.string "Silph Co.'s Head Office and the\n"
++	.string "Magnet Train Station--they're the\l"
++	.string "places to see in Saffron.$"

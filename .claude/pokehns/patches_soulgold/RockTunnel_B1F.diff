@@ -1,0 +1,106 @@
+diff --git a/data/maps/RockTunnel_B1F/map.json b/data/maps/RockTunnel_B1F/map.json
+index 3784f48b35..fa9c293720 100644
+--- a/data/maps/RockTunnel_B1F/map.json
++++ b/data/maps/RockTunnel_B1F/map.json
+@@ -12,21 +12,8 @@
+   "allow_running": true,
+   "show_map_name": true,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+-      "x": 45,
+-      "y": 33,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_NONE",
+-      "movement_range_x": 0,
+-      "movement_range_y": 0,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "RockTunnel_B1F_EventScript_ItemFacade",
+-      "flag": "FLAG_ITEM_ROCKTUNNEL1_TM_FACADE"
+-    },
+     {
+       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+       "x": 1,
+@@ -36,8 +23,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "RockTunnel_B1F_EventScript_Elixir",
++      "trainer_sight_or_berry_tree_id": "ITEM_ELIXIR",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROCKTUNNEL1_ELIXIR"
+     },
+     {
+@@ -228,10 +215,6 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/RockTunnel_B1F/map.json.bak b/data/maps/RockTunnel_B1F/map.json.bak
+index c7b0a99808..fe7ff518ec 100644
+--- a/data/maps/RockTunnel_B1F/map.json.bak
++++ b/data/maps/RockTunnel_B1F/map.json.bak
+@@ -132,7 +132,7 @@
+       "flag": "FLAG_TEMP_1"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MACHOP",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MACHOP"),
+       "x": 10,
+       "y": 35,
+       "elevation": 0,
+@@ -145,7 +145,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CUBONE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CUBONE"),
+       "x": 27,
+       "y": 33,
+       "elevation": 0,
+@@ -158,7 +158,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MACHOKE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MACHOKE"),
+       "x": 0,
+       "y": 1,
+       "elevation": 0,
+@@ -171,7 +171,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SABLEYE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SABLEYE"),
+       "x": 57,
+       "y": 17,
+       "elevation": 0,
+diff --git a/data/maps/RockTunnel_B1F/scripts.inc b/data/maps/RockTunnel_B1F/scripts.inc
+index 7c01b4a539..951198a908 100644
+--- a/data/maps/RockTunnel_B1F/scripts.inc
++++ b/data/maps/RockTunnel_B1F/scripts.inc
+@@ -7,10 +7,3 @@ RockTunnel_B1F_OnTransition:
+ 	callnative SetTimeBasedEncounters
+ 	end
+ 
+-RockTunnel_B1F_EventScript_ItemFacade::
+-	finditem ITEM_TM_FACADE
+-	end
+-
+-RockTunnel_B1F_EventScript_Elixir::
+-	finditem ITEM_ELIXIR
+-	end

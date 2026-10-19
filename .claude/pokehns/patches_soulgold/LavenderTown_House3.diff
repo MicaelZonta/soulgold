@@ -1,0 +1,17 @@
+diff --git a/data/maps/LavenderTown_House3/map.json b/data/maps/LavenderTown_House3/map.json
+index 7649f8e302..c185f63dc6 100644
+--- a/data/maps/LavenderTown_House3/map.json
++++ b/data/maps/LavenderTown_House3/map.json
+@@ -37,10 +37,6 @@
+       "dest_warp_id": "6"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }

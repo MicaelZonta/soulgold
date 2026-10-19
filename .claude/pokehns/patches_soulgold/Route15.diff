@@ -1,0 +1,178 @@
+diff --git a/data/maps/Route15/map.json b/data/maps/Route15/map.json
+index aba1a8766e..e3157d55c3 100644
+--- a/data/maps/Route15/map.json
++++ b/data/maps/Route15/map.json
+@@ -34,8 +34,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "Route15_EventScript_PPup",
++      "trainer_sight_or_berry_tree_id": "ITEM_PP_UP",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROUTE15_PP_UP"
+     },
+     {
+@@ -117,7 +117,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VOLBEAT)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NOCTOWL)",
+       "x": 18,
+       "y": 1,
+       "elevation": 0,
+@@ -234,7 +234,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ILLUMISE)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+       "x": 18,
+       "y": 1,
+       "elevation": 0,
+@@ -263,9 +263,7 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/Route15/map.json.bak b/data/maps/Route15/map.json.bak
+index 431561c2eb..e319874a93 100644
+--- a/data/maps/Route15/map.json.bak
++++ b/data/maps/Route15/map.json.bak
+@@ -117,7 +117,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_VOLBEAT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VOLBEAT"),
+       "x": 18,
+       "y": 1,
+       "elevation": 0,
+@@ -130,7 +130,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HOPPIP",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOPPIP"),
+       "x": 50,
+       "y": 2,
+       "elevation": 0,
+@@ -143,7 +143,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HOPPIP",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOPPIP"),
+       "x": 65,
+       "y": 2,
+       "elevation": 0,
+@@ -156,7 +156,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HOPPIP",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOPPIP"),
+       "x": 37,
+       "y": 2,
+       "elevation": 0,
+@@ -169,7 +169,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HOPPIP",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOPPIP"),
+       "x": 19,
+       "y": 16,
+       "elevation": 0,
+@@ -182,7 +182,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HOPPIP",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOPPIP"),
+       "x": 32,
+       "y": 16,
+       "elevation": 0,
+@@ -195,7 +195,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_HOPPIP",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOPPIP"),
+       "x": 45,
+       "y": 16,
+       "elevation": 0,
+@@ -208,7 +208,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CHANSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY"),
+       "x": 70,
+       "y": 16,
+       "elevation": 0,
+@@ -221,7 +221,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PIDGEOTTO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEOTTO"),
+       "x": 14,
+       "y": 9,
+       "elevation": 0,
+@@ -234,7 +234,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ILLUMISE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ILLUMISE"),
+       "x": 18,
+       "y": 1,
+       "elevation": 0,
+diff --git a/data/maps/Route15/scripts.inc b/data/maps/Route15/scripts.inc
+index 08e4266b88..c033f2ee4c 100644
+--- a/data/maps/Route15/scripts.inc
++++ b/data/maps/Route15/scripts.inc
+@@ -41,10 +41,6 @@ Route15_EventScript_Sign::
+ 	msgbox Route15_Text_Sign, MSGBOX_SIGN
+ 	end
+ 
+-Route15_EventScript_PPup::
+-	finditem ITEM_PP_UP
+-	end
+-
+ Route15_Text_TeacherColetteSeen:
+ 	.string "Have you forgotten anything?$"
+ 
+@@ -88,8 +84,8 @@ Route15_Text_SchoolboyTommyAfterBattle:
+ 	.string "my Japanese class.$"
+ 
+ Route15_Text_SchoolboyJohnnySeen:
+-	.string "We're on a field trip to LAVENDER\n"
+-	.string "RADIO TOWER for social studies.$"
++	.string "We're on a field trip to Lavender\n"
++	.string "Radio Tower for social studies.$"
+ 
+ Route15_Text_SchoolboyJohnnyBeaten:
+ 	.string "You're wickedly tough!$"
+@@ -105,10 +101,10 @@ Route15_Text_SchoolboyBillyBeaten:
+ 	.string "Oh, no! How could I lose?$"
+ 
+ Route15_Text_SchoolboyBillyAfterBattle:
+-	.string "If POKéMON were a subject at\n"
++	.string "If Pokémon were a subject at\n"
+ 	.string "school, I'd be the best!$"
+ 
+ Route15_Text_Sign:
+-	.string "ROUTE 15\p"
+-	.string "FUCHSIA CITY - LAVENDER TOWN$"
++	.string "Route 15\p"
++	.string "Fuchsia City - Lavender Town$"
+ 

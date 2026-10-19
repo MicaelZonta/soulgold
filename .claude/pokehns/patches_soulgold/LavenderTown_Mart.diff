@@ -1,0 +1,39 @@
+diff --git a/data/maps/LavenderTown_Mart/map.json b/data/maps/LavenderTown_Mart/map.json
+index c7b0b6a3a6..a7cd37fe37 100644
+--- a/data/maps/LavenderTown_Mart/map.json
++++ b/data/maps/LavenderTown_Mart/map.json
+@@ -63,10 +63,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/LavenderTown_Mart/scripts.inc b/data/maps/LavenderTown_Mart/scripts.inc
+index 31269e15bd..e58fd0aabf 100644
+--- a/data/maps/LavenderTown_Mart/scripts.inc
++++ b/data/maps/LavenderTown_Mart/scripts.inc
+@@ -10,7 +10,7 @@ LavenderTown_Mart_EventScript_Rocker::
+ 	end
+ 
+ LavenderMart_Text_PokefanM:
+-	.string "REPEL is a necessity if you are\n"
++	.string "Repel is a necessity if you are\n"
+ 	.string "going to explore a cave.\p"
+ 	.string "Even though I like exploring,\n"
+ 	.string "I still haven't made it to all\l"
+@@ -18,6 +18,6 @@ LavenderMart_Text_PokefanM:
+ 
+ LavenderMart_Text_Rocker:
+ 	.string "I heard about a craftsman who\n"
+-	.string "makes custom BALLS in the JOHTO\l"
+-	.string "town of AZALEA.\p"
++	.string "makes custom Balls in the Johto\l"
++	.string "town of Azalea.\p"
+ 	.string "I wish I had some.$"

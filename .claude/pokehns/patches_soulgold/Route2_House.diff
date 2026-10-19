@@ -1,0 +1,29 @@
+diff --git a/data/maps/Route2_House/map.json b/data/maps/Route2_House/map.json
+index 13a2cfa7dd..29c4cecbc2 100644
+--- a/data/maps/Route2_House/map.json
++++ b/data/maps/Route2_House/map.json
+@@ -37,10 +37,6 @@
+       "dest_warp_id": "6"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/Route2_House/scripts.inc b/data/maps/Route2_House/scripts.inc
+index 9b88be6d60..2cce090336 100644
+--- a/data/maps/Route2_House/scripts.inc
++++ b/data/maps/Route2_House/scripts.inc
+@@ -28,6 +28,6 @@ Route2_House_Text_Fisher:
+ 	.string "little present.$"
+ 
+ Route2_House_Text_Fisher_GotNugget:
+-	.string "That's a NUGGET.\p"
++	.string "That's a Nugget.\p"
+ 	.string "I can't give you any nuggets of\n"
+ 	.string "wisdom, so that'll have to do!$"

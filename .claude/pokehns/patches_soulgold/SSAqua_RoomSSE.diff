@@ -1,0 +1,47 @@
+diff --git a/data/maps/SSAqua_RoomSSE/map.json b/data/maps/SSAqua_RoomSSE/map.json
+index 0e40059280..1478e8d261 100644
+--- a/data/maps/SSAqua_RoomSSE/map.json
++++ b/data/maps/SSAqua_RoomSSE/map.json
+@@ -50,10 +50,6 @@
+       "dest_warp_id": "5"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/SSAqua_RoomSSE/scripts.inc b/data/maps/SSAqua_RoomSSE/scripts.inc
+index e80c8336da..0390ef6dd1 100644
+--- a/data/maps/SSAqua_RoomSSE/scripts.inc
++++ b/data/maps/SSAqua_RoomSSE/scripts.inc
+@@ -36,7 +36,6 @@ SSAqua_RoomSSE_EventScript_ReuinionScene::
+     turnobject LOCALID_SSAQUA_ROOM_SSE_GRANDFATHER, DIR_SOUTH
+     msgbox SSAqua_RoomSSE_Text_EntertainedGranddaughter, MSGBOX_DEFAULT
+     msgbox SSAqua_RoomSSE_Text_GrandpaHaveThis, MSGBOX_DEFAULT
+-    giveitem ITEM_METAL_COAT
+     closemessage
+ 	setvar VAR_SSAQUA_STATE, 5
+ 	release
+@@ -79,7 +78,7 @@ SSAqua_RoomSSE_Text_CantFindGranddaughter:
+     .string "I still can't find my\n"
+     .string "granddaughter.\p"
+     .string "If she's on the ship,\n"
+-    .string "that's OK.\p"
++    .string "that's Ok.\p"
+     .string "She's an energetic child,\n"
+     .string "so she may be bugging someone\l"
+     .string "I'm worried…$"
+@@ -101,7 +100,7 @@ SSAqua_RoomSSE_Text_GrandpaTravelling:
+ SSAqua_RoomSSE_Text_GranddaughterWasPlaying:
+     .string "Grandpa, here I am!\n"
+     .string "I was playing with\l"
+-    .string "the CAPTAIN and this person!$"
++    .string "the Captain and this person!$"
+ 
+ SSAqua_RoomSSE_Text_GranddaughterHadFun:
+     .string "I had lots of fun playing!$"

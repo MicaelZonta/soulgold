@@ -1,0 +1,171 @@
+diff --git a/data/maps/FuchsiaCity_SafariZoneBeach/map.json b/data/maps/FuchsiaCity_SafariZoneBeach/map.json
+index 6f725803b0..f8afbc5c2f 100644
+--- a/data/maps/FuchsiaCity_SafariZoneBeach/map.json
++++ b/data/maps/FuchsiaCity_SafariZoneBeach/map.json
+@@ -39,7 +39,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LOMBRE)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(QUAGSIRE)",
+       "x": 9,
+       "y": 33,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LOTAD)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CACNEA)",
+       "x": 11,
+       "y": 18,
+       "elevation": 0,
+@@ -173,7 +173,5 @@
+       "script": "SafariZoneFuchsia_Trigger2"
+     }
+   ],
+-  "bg_events": [
+-
+-  ]
++  "bg_events": []
+ }
+diff --git a/data/maps/FuchsiaCity_SafariZoneBeach/map.json.bak b/data/maps/FuchsiaCity_SafariZoneBeach/map.json.bak
+index e3cb437f5a..100a37a392 100644
+--- a/data/maps/FuchsiaCity_SafariZoneBeach/map.json.bak
++++ b/data/maps/FuchsiaCity_SafariZoneBeach/map.json.bak
+@@ -26,7 +26,7 @@
+   ],
+   "object_events": [
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MAKUHITA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAKUHITA"),
+       "x": 11,
+       "y": 32,
+       "elevation": 0,
+@@ -39,7 +39,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_LOMBRE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LOMBRE"),
+       "x": 9,
+       "y": 33,
+       "elevation": 0,
+@@ -52,7 +52,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_TRAPINCH",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TRAPINCH"),
+       "x": 9,
+       "y": 42,
+       "elevation": 0,
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_BELDUM",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BELDUM"),
+       "x": 24,
+       "y": 19,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_LOTAD",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LOTAD"),
+       "x": 11,
+       "y": 18,
+       "elevation": 0,
+@@ -91,7 +91,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_VIBRAVA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VIBRAVA"),
+       "x": 10,
+       "y": 40,
+       "elevation": 0,
+@@ -104,7 +104,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CACNEA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CACNEA"),
+       "x": 18,
+       "y": 18,
+       "elevation": 0,
+diff --git a/data/maps/FuchsiaCity_SafariZoneBeach/scripts.inc b/data/maps/FuchsiaCity_SafariZoneBeach/scripts.inc
+index 6eb2f1dc8d..901c2074b4 100644
+--- a/data/maps/FuchsiaCity_SafariZoneBeach/scripts.inc
++++ b/data/maps/FuchsiaCity_SafariZoneBeach/scripts.inc
+@@ -12,6 +12,7 @@ SafariZoneFuchsia_EventScript_Attendant1::
+ 	msgbox SafariZoneFuchsia_Text_Attendant1, MSGBOX_DEFAULT
+ 	call_if_ge VAR_KANTO_SAFARI_ZONE_PROGRESS, 2, SafariZoneFuchsia_Approved
+ 	closemessage
++	release
+ 	end
+ 
+ SafariZoneFuchsia_EventScript_Attendant2::
+@@ -20,6 +21,7 @@ SafariZoneFuchsia_EventScript_Attendant2::
+ 	msgbox SafariZoneFuchsia_Text_Attendant2, MSGBOX_DEFAULT
+ 	call_if_ge VAR_KANTO_SAFARI_ZONE_PROGRESS, 3, SafariZoneFuchsia_Approved
+ 	closemessage
++	release
+ 	end
+ 
+ SafariZoneFuchsia_EventScript_Attendant3::
+@@ -28,13 +30,14 @@ SafariZoneFuchsia_EventScript_Attendant3::
+ 	msgbox SafariZoneFuchsia_Text_Attendant3, MSGBOX_DEFAULT
+ 	call_if_ge VAR_KANTO_SAFARI_ZONE_PROGRESS, 4, SafariZoneFuchsia_Approved
+ 	closemessage
++	release
+ 	end
+ 
+ SafariZoneFuchsia_Trigger1::
+ 	lock
+ 	turnobject LOCALID_SAFARIATTENDANT_1, DIR_SOUTH
+ 	msgbox SafariZoneFuchsia_Text_Attendant1, MSGBOX_NPC
+-	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1
++	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1
+ 	waitmovement 0
+ 	release
+ 	end
+@@ -43,7 +46,7 @@ SafariZoneFuchsia_Trigger2::
+ 	lock
+ 	turnobject LOCALID_SAFARIATTENDANT_2, DIR_EAST
+ 	msgbox SafariZoneFuchsia_Text_Attendant2, MSGBOX_NPC
+-	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
++	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
+ 	waitmovement 0
+ 	turnobject LOCALID_SAFARIATTENDANT_2, DIR_SOUTH
+ 	release
+@@ -54,7 +57,7 @@ SafariZoneFuchsia_Trigger3::
+ 	turnobject LOCALID_SAFARIATTENDANT_3, DIR_EAST
+ 	turnobject LOCALID_SAFARIATTENDANT_4, DIR_EAST
+ 	msgbox SafariZoneFuchsia_Text_Attendant3, MSGBOX_NPC
+-	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
++	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
+ 	waitmovement 0
+ 	turnobject LOCALID_SAFARIATTENDANT_3, DIR_SOUTH
+ 	turnobject LOCALID_SAFARIATTENDANT_4, DIR_SOUTH
+@@ -67,15 +70,15 @@ SafariZoneFuchsia_Approved::
+ 
+ SafariZoneFuchsia_Text_Attendant1:
+ 	.string "This area requires\n"
+-	.string "SAFARI LEVEL 2.$"
++	.string "Safari Level 2.$"
+ 
+ SafariZoneFuchsia_Text_Attendant2:
+ 	.string "This area requires\n"
+-	.string "SAFARI LEVEL 3.$"
++	.string "Safari Level 3.$"
+ 
+ SafariZoneFuchsia_Text_Attendant3:
+ 	.string "This area requires\n"
+-	.string "SAFARI LEVEL 4.$"
++	.string "Safari Level 4.$"
+ 
+ SafariZoneFuchsia_Text_Approved:
+ 	.string "Go right ahead.$"

@@ -1,0 +1,309 @@
+diff --git a/data/maps/Route22/map.json b/data/maps/Route22/map.json
+index 5f9e9692df..1e0b5604d5 100644
+--- a/data/maps/Route22/map.json
++++ b/data/maps/Route22/map.json
+@@ -26,7 +26,7 @@
+   ],
+   "object_events": [
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(FEAROW)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RATTATA)",
+       "x": 24,
+       "y": 5,
+       "elevation": 0,
+@@ -39,7 +39,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SPEAROW)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(POLIWAG)",
+       "x": 15,
+       "y": 6,
+       "elevation": 0,
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODUO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(POLIWHIRL)",
+       "x": 34,
+       "y": 13,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAILLOW)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RATTATA)",
+       "x": 4,
+       "y": 22,
+       "elevation": 0,
+diff --git a/data/maps/Route22/map.json.bak b/data/maps/Route22/map.json.bak
+index 96408ae7c3..6372006c95 100644
+--- a/data/maps/Route22/map.json.bak
++++ b/data/maps/Route22/map.json.bak
+@@ -26,7 +26,7 @@
+   ],
+   "object_events": [
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_FEAROW",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(FEAROW"),
+       "x": 24,
+       "y": 5,
+       "elevation": 0,
+@@ -39,7 +39,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SPEAROW",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SPEAROW"),
+       "x": 15,
+       "y": 6,
+       "elevation": 0,
+@@ -52,7 +52,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_PONYTA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PONYTA"),
+       "x": 28,
+       "y": 23,
+       "elevation": 0,
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_DODUO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODUO"),
+       "x": 34,
+       "y": 13,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_TAILLOW",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAILLOW"),
+       "x": 4,
+       "y": 22,
+       "elevation": 0,
+diff --git a/data/maps/Route22/scripts.inc b/data/maps/Route22/scripts.inc
+index 5204c3c6be..d80d1adcda 100644
+--- a/data/maps/Route22/scripts.inc
++++ b/data/maps/Route22/scripts.inc
+@@ -15,8 +15,8 @@ Route22_EventScript_Sign::
+ 	end
+ 
+ Route22_Text_VictoryRoadEntranceSign:
+-	.string "POKéMON LEAGUE\p"
+-	.string "VICTORY ROAD ENTRANCE$"
++	.string "Pokémon League\p"
++	.string "Victory Road Entrance$"
+ 
+ Route22_EventScript_ResetActivation::
+ 	setvar VAR_TEMP_0, 0
+@@ -46,20 +46,20 @@ Route22_EventScript_TriggerMid::
+ 
+ Route22_EventScript_Scene::
+ 	lock
+-	applymovement2 OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiBegin
++	applymovement OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiBegin
+ 	playse SE_LEDGE
+ 	waitse
+ 	playse SE_LEDGE
+ 	waitse
+ 	waitmovement 0
+ 	playse SE_PIN
+-	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
++	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+ 	delay 60
+ 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+ 	playse SE_PIN
+-	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
++	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+ 	delay 60
+-	applymovement2 OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiSpin1
++	applymovement OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiSpin1
+ 	playse SE_LEDGE
+ 	waitse
+ 	playse SE_LEDGE
+@@ -83,90 +83,90 @@ Route22_EventScript_Scene::
+ 	delay 50
+ 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+ 	special SpawnCameraObject
+-	applymovement2 OBJ_EVENT_ID_CAMERA, Route22_Movement_CameraPanLeft
++	applymovement OBJ_EVENT_ID_CAMERA, Route22_Movement_CameraPanLeft
+ 	waitmovement 0
+ 	delay 30
+-	applymovement2 LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
++	applymovement LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
+ 	waitmovement 0
+ 	msgbox Route22_Text_Silver1, MSGBOX_DEFAULT
+ 	closemessage
+ 	delay 30
+-	applymovement2 LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceRight
++	applymovement LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceRight
+ 	waitmovement 0
+ 	msgbox Route22_Text_Giovanni1, MSGBOX_DEFAULT
+ 	closemessage
+ 	delay 30
+-	applymovement2 LOCALID_ROUTE22_SILVER, Route22_Movement_WalkInPlaceLeft
++	applymovement LOCALID_ROUTE22_SILVER, Route22_Movement_WalkInPlaceLeft
+ 	waitmovement 0
+ 	msgbox Route22_Text_Silver2, MSGBOX_DEFAULT
+ 	closemessage
+ 	delay 30
+-	applymovement2 LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceRight
++	applymovement LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceRight
+ 	waitmovement 0
+ 	msgbox Route22_Text_Giovanni2, MSGBOX_DEFAULT
+ 	closemessage
+ 	delay 10
+-	applymovement2 LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
++	applymovement LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
+ 	waitmovement 0
+ 	msgbox Route22_Text_Silver3, MSGBOX_DEFAULT
+ 	closemessage
+ 	delay 30
+-	applymovement2 LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceLeft
++	applymovement LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceLeft
+ 	waitmovement 0
+ 	msgbox Route22_Text_Giovanni3, MSGBOX_DEFAULT
+ 	closemessage
+ 	delay 30
+-	applymovement2 LOCALID_ROUTE22_GIOVANNI, Route22_Movement_GiovanniLeave
++	applymovement LOCALID_ROUTE22_GIOVANNI, Route22_Movement_GiovanniLeave
+ 	waitmovement 0
+ 	msgbox Route22_Text_Silver4, MSGBOX_DEFAULT
+ 	closemessage
+ 	delay 30
+-	applymovement2 LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
++	applymovement LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
+ 	waitmovement 0
+ 	msgbox Route22_Text_Silver5, MSGBOX_DEFAULT
+ 	closemessage
+ 	delay 20
+ 	playbgm MUS_HG_ENCOUNTER_RIVAL, TRUE
+-	applymovement2 LOCALID_ROUTE22_SILVER, Route22_Movement_SilverStartLeave
+-	applymovement2 OBJ_EVENT_ID_CAMERA, Route22_Movement_CameraPanRight
++	applymovement LOCALID_ROUTE22_SILVER, Route22_Movement_SilverStartLeave
++	applymovement OBJ_EVENT_ID_CAMERA, Route22_Movement_CameraPanRight
+ 	waitmovement LOCALID_ROUTE22_SILVER
+ 	waitmovement OBJ_EVENT_ID_CAMERA
+ 	special RemoveCameraObject
+ 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+ 	playse SE_PIN
+-	applymovement2 LOCALID_ROUTE22_SILVER, Common_Movement_ExclamationMark
++	applymovement LOCALID_ROUTE22_SILVER, Common_Movement_ExclamationMark
+ 	delay 60
+ 	msgbox Route22_Text_Silver6, MSGBOX_DEFAULT
+ 	closemessage
+-	applymovement2 LOCALID_ROUTE22_SILVER, Common_Movement_WalkRight1
+-	applymovement2 OBJ_EVENT_ID_PLAYER, Route22_Movement_PlayerPushed
+-	applymovement2 OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiPush
++	applymovement LOCALID_ROUTE22_SILVER, Common_Movement_WalkRight1
++	applymovement OBJ_EVENT_ID_PLAYER, Route22_Movement_PlayerPushed
++	applymovement OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiPush
+ 	playse SE_LEDGE
+ 	waitmovement LOCALID_ROUTE22_SILVER
+ 	waitmovement OBJ_EVENT_ID_PLAYER
+ 	waitmovement OBJ_EVENT_ID_FOLLOWER
+ 	waitse
+-	applymovement2 LOCALID_ROUTE22_SILVER, Route22_Movement_SilverFinishLeave
++	applymovement LOCALID_ROUTE22_SILVER, Route22_Movement_SilverFinishLeave
+ 	waitmovement 0
+ 	setflag FLAG_HIDE_ROUTE22_GIOVANNI_SILVER
+ 	removeobject LOCALID_ROUTE22_SILVER
+ 	removeobject LOCALID_ROUTE22_GIOVANNI
+ 
+-	applymovement2 OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiBegin
++	applymovement OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiBegin
+ 	playse SE_LEDGE
+ 	waitse
+ 	playse SE_LEDGE
+ 	waitse
+ 	waitmovement 0
+ 	playse SE_PIN
+-	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
++	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+ 	delay 60
+ 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+ 	delay 20
+ 	playse SE_PIN
+-	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
++	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+ 	delay 60
+-	applymovement2 OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiSpin1
++	applymovement OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiSpin1
+ 	playse SE_LEDGE
+ 	waitse
+ 	playse SE_LEDGE
+@@ -286,7 +286,7 @@ Route22_Movement_CelebiPush:
+ 
+ 
+ Route22_Text_Silver1:
+-	.string "SILVER: You told me...\n"
++	.string "{SPEAKER NAME_SILVER}You told me...\n"
+ 	.string "you were the number one in the whole\l"
+ 	.string "world!\p"
+ 	.string "Are you gonna quit?\p"
+@@ -294,40 +294,40 @@ Route22_Text_Silver1:
+ 
+ Route22_Text_Giovanni1:
+ 	.string "....................\p"
+-	.string "GIOVANNI: One must acknowledge one's\n"
++	.string "{SPEAKER NAME_GIOVANNI}One must acknowledge one's\n"
+ 	.string "defeat before he can move on...\p"
+ 	.string "I will go solo... for now...\p"
+ 	.string "So that one day I will form a\n"
+ 	.string "stronger organization!$"
+ 
+ Route22_Text_Silver2:
+-	.string "SILVER: What aspect of you was\n"
++	.string "{SPEAKER NAME_SILVER}What aspect of you was\n"
+ 	.string "number one?\p"
+ 	.string "Gathering so many only to be\n"
+ 	.string "defeated by a mere child!$"
+ 
+ Route22_Text_Giovanni2:
+-	.string "GIOVANNI: Putting together the\n"
++	.string "{SPEAKER NAME_GIOVANNI}Putting together the\n"
+ 	.string "potential of many is how you\l"
+ 	.string "produce a huge power...\l"
+ 	.string "That's what an organization is...\l"
+-	.string "That's the strength of organizatoin\p"
++	.string "That's the strength of organization\p"
+ 	.string "I failed... to make the best use of\n"
+ 	.string "my subordinates' potential...!\p"
+ 	.string "But you shall witness one day the\n"
+-	.string "revival of me and my TEAM ROCKET!$"
++	.string "revival of me and my Team Rocket!$"
+ 
+ Route22_Text_Silver3:
+-	.string "SILVER: I don't understand you!\p"
++	.string "{SPEAKER NAME_SILVER}I don't understand you!\p"
+ 	.string "You don't make any sense!$"
+ 
+ Route22_Text_Giovanni3:
+ 	.string ".......................\p"
+-	.string "GIOVANNI: One day you will\n"
++	.string "{SPEAKER NAME_GIOVANNI}One day you will\n"
+ 	.string "understand.$"
+ 
+ Route22_Text_Silver4:
+-	.string "SILVER: I don't want to\n"
++	.string "{SPEAKER NAME_SILVER}I don't want to\n"
+ 	.string "Understand you!\p"
+ 	.string "I will never become someone like\n"
+ 	.string "you.\p"
+@@ -339,8 +339,7 @@ Route22_Text_Silver4:
+ 	.string "by myself!$"
+ 
+ Route22_Text_Silver5:
+-	.string "ALL BY MYSELF!$"
++	.string "All By Myself!$"
+ 
+ Route22_Text_Silver6:
+-	.string "SILVER: ... What are you staring at?$"
+-
++	.string "{SPEAKER NAME_SILVER}... What are you staring at?$"

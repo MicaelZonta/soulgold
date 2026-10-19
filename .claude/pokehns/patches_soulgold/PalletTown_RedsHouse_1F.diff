@@ -1,0 +1,42 @@
+diff --git a/data/maps/PalletTown_RedsHouse_1F/map.json b/data/maps/PalletTown_RedsHouse_1F/map.json
+index 0e8920d78e..ed8d0fbb19 100644
+--- a/data/maps/PalletTown_RedsHouse_1F/map.json
++++ b/data/maps/PalletTown_RedsHouse_1F/map.json
+@@ -44,9 +44,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/PalletTown_RedsHouse_1F/scripts.inc b/data/maps/PalletTown_RedsHouse_1F/scripts.inc
+index 6326d7b8c7..dd18f9ef4d 100644
+--- a/data/maps/PalletTown_RedsHouse_1F/scripts.inc
++++ b/data/maps/PalletTown_RedsHouse_1F/scripts.inc
+@@ -23,7 +23,7 @@ PalletTown_RedsHouse_1F_EventScript_TV::
+ 
+ RedsHouse_Text_Mom1:
+ 	.string "Hi!\p"
+-	.string "RED's been away for a long time.\p"
++	.string "Red's been away for a long time.\p"
+ 	.string "He hasn't called either, so I have\n"
+ 	.string "no idea where he is or what he's\l"
+ 	.string "been doing.\p"
+@@ -32,11 +32,11 @@ RedsHouse_Text_Mom1:
+ 	.string "about him.$"
+ 
+ RedsHouse_Text_Mom2:
+-	.string "I worry about RED getting hurt or\n"
++	.string "I worry about Red getting hurt or\n"
+ 	.string "sick, but he's a boy.\p"
+ 	.string "I'm proud that he is doing what he\n"
+ 	.string "wants to do.$"
+ 
+ RedsHouse_Text_TV:
+ 	.string "They have programs that aren't\n"
+-	.string "shown in JOHTO…$"
++	.string "shown in Johto…$"

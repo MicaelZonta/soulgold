@@ -1,0 +1,39 @@
+diff --git a/data/maps/PalletTown_RedsHouse_2F/map.json b/data/maps/PalletTown_RedsHouse_2F/map.json
+index e8a595fe09..6354485a75 100644
+--- a/data/maps/PalletTown_RedsHouse_2F/map.json
++++ b/data/maps/PalletTown_RedsHouse_2F/map.json
+@@ -13,9 +13,7 @@
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+   "connections": 0,
+-  "object_events": [
+-
+-  ],
++  "object_events": [],
+   "warp_events": [
+     {
+       "x": 9,
+@@ -25,9 +23,7 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/PalletTown_RedsHouse_2F/scripts.inc b/data/maps/PalletTown_RedsHouse_2F/scripts.inc
+index 4689d4f3b5..ab42bd5e1e 100644
+--- a/data/maps/PalletTown_RedsHouse_2F/scripts.inc
++++ b/data/maps/PalletTown_RedsHouse_2F/scripts.inc
+@@ -10,7 +10,7 @@ PalletTown_RedsHouse_2F_EventScript_PC::
+ 	end
+ 
+ RedsHouse_Text_NES:
+-	.string "{PLAYER} played the NES.\p"
++	.string "{PLAYER} played the Nes.\p"
+ 	.string "Better get going--no time to lose!$"
+ 
+ RedsHouse_Text_PC:

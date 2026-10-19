@@ -1,0 +1,165 @@
+diff --git a/data/maps/PokemonLeague_KarensRoom/map.json b/data/maps/PokemonLeague_KarensRoom/map.json
+index 8e99426d4c..0265808cbe 100644
+--- a/data/maps/PokemonLeague_KarensRoom/map.json
++++ b/data/maps/PokemonLeague_KarensRoom/map.json
+@@ -40,14 +40,10 @@
+       "x": 6,
+       "y": 2,
+       "elevation": 0,
+-      "dest_map": "MAP_POKEMON_LEAGUE_CHAMPIONS_ROOM",
++      "dest_map": "MAP_DYNAMIC",
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/PokemonLeague_KarensRoom/scripts.inc b/data/maps/PokemonLeague_KarensRoom/scripts.inc
+index 7814abed97..cf821dccfa 100644
+--- a/data/maps/PokemonLeague_KarensRoom/scripts.inc
++++ b/data/maps/PokemonLeague_KarensRoom/scripts.inc
+@@ -1,18 +1,29 @@
+ PokemonLeague_KarensRoom_MapScripts::
++	map_script MAP_SCRIPT_ON_TRANSITION, PokemonLeague_KarensRoom_OnTransition
+ 	map_script MAP_SCRIPT_ON_FRAME_TABLE, EliteFourRoom_OnFrame
+ 	map_script MAP_SCRIPT_ON_RESUME, PokemonLeague_KarensRoom_OnResume
+ 	map_script MAP_SCRIPT_ON_LOAD, EliteFourRoom_OnLoad
+ 	.byte 0
+ 
++PokemonLeague_KarensRoom_OnTransition::
++	goto_if_set FLAG_IS_CHAMPION, PokemonLeague_KarensRoom_SetTitleDefenseWarp
++	setdynamicwarp MAP_POKEMON_LEAGUE_CHAMPIONS_ROOM, 0
++	end
++
++PokemonLeague_KarensRoom_SetTitleDefenseWarp::
++	setdynamicwarp MAP_POKEMON_LEAGUE_CHAMPIONS_ROOM_TITLE_DEFENSE, 0
++	end
++
+ PokemonLeague_KarensRoom_OnResume::
+ 	setvar VAR_0x8004, 3
++	@special DoPokemonLeagueLightingEffect
+ 	end
+ 
+ PokemonLeague_KarensRoom_EventScript_Karen::
+ 	lock 
+ 	faceplayer
+ 	goto_if_ge VAR_LEAGUE_STATE, 5, PokemonLeague_KarensRoom_EventScript_KarenDefeated
+-	goto_if_set FLAG_GARBAGEFLAG, PokemonLeague_KarensRoom_EventScript_KarenRematch
++	goto_if_set FLAG_IS_CHAMPION, PokemonLeague_KarensRoom_EventScript_KarenRematch
+ 	msgbox PokemonLeague_KarensRoom_Text_Before, MSGBOX_DEFAULT
+ 	setflag FLAG_TEMP_3
+ 	setflag FLAG_TEMP_5
+@@ -23,15 +34,21 @@ PokemonLeague_KarensRoom_EventScript_KarenRematch::
+ 	msgbox PokemonLeague_KarensRoom_Text_RematchBefore, MSGBOX_DEFAULT
+ 	setflag FLAG_TEMP_3
+ 	setflag FLAG_TEMP_5
++	goto_if_eq VAR_TEMP_1, 1, PokemonLeague_KarensRoom_EventScript_KarenRematchAlt
+ 	trainerbattle_no_intro TRAINER_KAREN_2, PokemonLeague_KarensRoom_Text_Beaten
+-	goto PokemonLeague_KarensRoom_EventScript_KarenOnDefeat
++	goto PokemonLeague_KarensRoom_EventScript_KarenOnDefeatPostgame
++
++PokemonLeague_KarensRoom_EventScript_KarenRematchAlt::
++	trainerbattle_no_intro TRAINER_KAREN_REMATCH_ALT, PokemonLeague_KarensRoom_Text_Beaten
++	goto PokemonLeague_KarensRoom_EventScript_KarenOnDefeatPostgame
+ 
+ PokemonLeague_KarensRoom_EventScript_KarenOnDefeat::
+     clearflag FLAG_TEMP_5
++	createfieldmugshot MUGSHOT_KAREN
+ 	msgbox PokemonLeague_KarensRoom_Text_Defeat, MSGBOX_DEFAULT
+ 	closemessage
+-	setmetatile 6, 1, 0x28E, FALSE
+-	setmetatile 6, 2, 0x296, FALSE	
++	setmetatile 6, 1, 0x40E, FALSE
++	setmetatile 6, 2, 0x416, FALSE	
+ 	playse SE_BANG
+ 	setvar VAR_0x8004, 1  @ vertical pan
+ 	setvar VAR_0x8005, 1  @ horizontal pan
+@@ -50,24 +67,49 @@ PokemonLeague_KarensRoom_EventScript_KarenDefeated::
+ 	release
+ 	end
+ 
++PokemonLeague_KarensRoom_EventScript_KarenOnDefeatPostgame::
++    clearflag FLAG_TEMP_5
++	createfieldmugshot MUGSHOT_KAREN
++	msgbox PokemonLeague_KarensRoom_Text_DefeatPostgame, MSGBOX_DEFAULT
++	closemessage
++	setmetatile 6, 1, 0x40E, FALSE
++	setmetatile 6, 2, 0x416, FALSE	
++	playse SE_BANG
++	setvar VAR_0x8004, 1  @ vertical pan
++	setvar VAR_0x8005, 1  @ horizontal pan
++	setvar VAR_0x8006, 4  @ num shakes
++	setvar VAR_0x8007, 4  @ shake delay
++	special ShakeCamera
++	waitstate
++	special DrawWholeMapView
++	setvar VAR_LEAGUE_STATE, 5
++	release
++	end
++
++PokemonLeague_KarensRoom_EventScript_KarenDefeatedPostgame::
++	msgbox PokemonLeague_KarensRoom_Text_DefeatPostgame, MSGBOX_DEFAULT
++	closemessage
++	release
++	end
++
+ PokemonLeague_KarensRoom_Text_RematchBefore:
+-    .string "KAREN: Ah, it's you again.\p"
++    .string "{SPEAKER NAME_KAREN}Ah, it's you again.\p"
+     .string "I trust you haven't forgotten\n"
+     .string "my belief:\p"
+     .string "True strength arises from trust\n"
+-    .string "in one's POKéMON.\p"
++    .string "in one's Pokémon.\p"
+     .string "Since our last encounter, my\n"
+-    .string "bond with my POKéMON has\l"
++    .string "bond with my Pokémon has\l"
+     .string "deepened further.\p"
+     .string "Are you ready to face a team\n"
+     .string "united by an unbreakable bond?\p"
+     .string "Show me the power of the bond\n"
+-    .string "with your POKéMON.$"
++    .string "with your Pokémon.$"
+ 
+ PokemonLeague_KarensRoom_Text_Before:
+-    .string "I am KAREN of the ELITE FOUR.\p"
++    .string "{SPEAKER NAME_KAREN}I am Karen of the Elite Four.\p"
+     .string "You're {PLAYER}? How amusing.\p"
+-    .string "I love DARK-type POKéMON.\p"
++    .string "I love Dark-type Pokémon.\p"
+     .string "I find their wild, tough image\n"
+     .string "to be so appealing. And they're\l"
+     .string "so strong.\p"
+@@ -80,13 +122,23 @@ PokemonLeague_KarensRoom_Text_Beaten:
+     .string "in a trainer.$"
+ 
+ PokemonLeague_KarensRoom_Text_Defeat:
+-    .string "Strong POKéMON.\p"
+-    .string "Weak POKéMON.\p"
++    .string "{SPEAKER NAME_KAREN}Strong Pokémon.\p"
++    .string "Weak Pokémon.\p"
+     .string "That is only the selfish\n"
+     .string "perception of people.\p"
+     .string "Truly skilled trainers should\n"
+     .string "try to win with their favorites.\p"
+     .string "I like your style. You understand\n"
+     .string "what's important.\p"
+-    .string "Go on--the CHAMPION is waiting.$"
++    .string "Go on--the Champion is waiting.$"
+ 
++PokemonLeague_KarensRoom_Text_DefeatPostgame:
++    .string "{SPEAKER NAME_KAREN}Strong Pokémon.\p"
++    .string "Weak Pokémon.\p"
++    .string "That is only the selfish\n"
++    .string "perception of people.\p"
++    .string "Truly skilled trainers should\n"
++    .string "try to win with their favorites.\p"
++    .string "I like your style. You understand\n"
++    .string "what's important.\p"
++    .string "Go on--the Challenger will arrive.$"

@@ -1,0 +1,35 @@
+diff --git a/data/maps/DiglettsCave_EntranceNorth/map.json b/data/maps/DiglettsCave_EntranceNorth/map.json
+index 276946da78..c72a7ad02e 100644
+--- a/data/maps/DiglettsCave_EntranceNorth/map.json
++++ b/data/maps/DiglettsCave_EntranceNorth/map.json
+@@ -44,10 +44,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/DiglettsCave_EntranceNorth/scripts.inc b/data/maps/DiglettsCave_EntranceNorth/scripts.inc
+index 171c417a2f..04309cde62 100644
+--- a/data/maps/DiglettsCave_EntranceNorth/scripts.inc
++++ b/data/maps/DiglettsCave_EntranceNorth/scripts.inc
+@@ -18,11 +18,11 @@ DiglettsCave_EntranceNorth_EventScript_Brock::
+     end
+ 
+ DiglettsCave_EntranceNorth_Text_Brock:
+-    .string "BROCK: Small spaces surrounded by\n"
++    .string "{SPEAKER NAME_BROCK}Small spaces surrounded by\n"
+     .string "rocks make you feel peaceful,\l"
+     .string "don't you agree?\p"
+ 	.string "If you want another match, I'll be\n"
+-	.string "at the FIGHTING DOJO.$"
++	.string "at the Fighting Dojo.$"
+ 
+ 
+ 

@@ -1,0 +1,2874 @@
+{
+ "fonte": "tilesets *_hns do pokehns 2.0.6",
+ "mascara_behavior": "0x00FF",
+ "remap": {
+  "0": {
+   "p_id": 0,
+   "p_name": "MB_NORMAL",
+   "tilesets": [
+    "arceus_room_hns",
+    "azalea_town_gym_hns",
+    "azalea_town_hns",
+    "barn_hns",
+    "bellchime_trail_hns",
+    "bike_shop_hns"
+   ],
+   "n_tilesets": 104,
+   "s_id": 0,
+   "action": "igual"
+  },
+  "1": {
+   "p_id": 1,
+   "p_name": "MB_SECRET_BASE_WALL",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "cerulean_city_hns",
+    "ecruteak_theater_hns",
+    "general_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 5,
+   "s_id": 1,
+   "action": "igual"
+  },
+  "2": {
+   "p_id": 2,
+   "p_name": "MB_TALL_GRASS",
+   "tilesets": [
+    "bellchime_trail_hns",
+    "celadon_apartments_hns",
+    "cerulean_city_hns",
+    "ecruteak_city_hns",
+    "general_hns",
+    "ilex_forest_hns"
+   ],
+   "n_tilesets": 19,
+   "s_id": 2,
+   "action": "igual"
+  },
+  "3": {
+   "p_id": 3,
+   "p_name": "MB_LONG_GRASS",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "general_hns",
+    "national_park_hns",
+    "route38_farmland_hns",
+    "safari_zone_johto_hns"
+   ],
+   "n_tilesets": 6,
+   "s_id": 3,
+   "action": "igual"
+  },
+  "4": {
+   "p_id": 4,
+   "p_name": "MB_UNUSED_04",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "cerulean_city_hns",
+    "ruins_of_alph_outside_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 4,
+   "action": "igual"
+  },
+  "6": {
+   "p_id": 6,
+   "p_name": "MB_DEEP_SAND",
+   "tilesets": [
+    "cave_sandy_hns",
+    "department_store_hns",
+    "safari_zone_johto_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 6,
+   "action": "igual"
+  },
+  "7": {
+   "p_id": 7,
+   "p_name": "MB_SHORT_GRASS",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "general_hns",
+    "indigo_plateau_hns",
+    "johto_south_hns"
+   ],
+   "n_tilesets": 5,
+   "s_id": 7,
+   "action": "igual"
+  },
+  "8": {
+   "p_id": 8,
+   "p_name": "MB_CAVE",
+   "tilesets": [
+    "arceus_room_hns",
+    "blackthorn_gym_hns",
+    "burned_tower_hns",
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns"
+   ],
+   "n_tilesets": 31,
+   "s_id": 8,
+   "action": "igual"
+  },
+  "9": {
+   "p_id": 9,
+   "p_name": "MB_LONG_GRASS_SOUTH_EDGE",
+   "tilesets": [
+    "cave_sandy_hns",
+    "national_park_hns",
+    "route38_farmland_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 9,
+   "action": "igual"
+  },
+  "10": {
+   "p_id": 10,
+   "p_name": "MB_NO_RUNNING",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 10,
+   "action": "igual"
+  },
+  "11": {
+   "p_id": 11,
+   "p_name": "MB_INDOOR_ENCOUNTER",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "goldenrod_underground_rocket_hns",
+    "johto_building_hns",
+    "power_plant_generator_room_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 6,
+   "s_id": 11,
+   "action": "igual"
+  },
+  "12": {
+   "p_id": 12,
+   "p_name": "MB_MOUNTAIN_TOP",
+   "tilesets": [
+    "cave_ice_hns",
+    "general_hns",
+    "johto_general_hns",
+    "johto_north_east_hns",
+    "johto_north_west_hns",
+    "johto_south_hns"
+   ],
+   "n_tilesets": 10,
+   "s_id": 12,
+   "action": "igual"
+  },
+  "13": {
+   "p_id": 13,
+   "p_name": "MB_BATTLE_PYRAMID_WARP",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 13,
+   "action": "igual"
+  },
+  "14": {
+   "p_id": 14,
+   "p_name": "MB_MOSSDEEP_GYM_WARP",
+   "tilesets": [
+    "cave_sandy_hns",
+    "department_store_hns",
+    "shop_rooftop_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 14,
+   "action": "igual"
+  },
+  "15": {
+   "p_id": 15,
+   "p_name": "MB_MT_PYRE_HOLE",
+   "tilesets": [
+    "burned_tower_hns",
+    "cave_default_hns",
+    "cave_ice_hns",
+    "celadon_apartments_hns",
+    "ecruteak_city_gym_hns",
+    "ecruteak_theater_hns"
+   ],
+   "n_tilesets": 13,
+   "s_id": 15,
+   "action": "igual"
+  },
+  "16": {
+   "p_id": 16,
+   "p_name": "MB_POND_WATER",
+   "tilesets": [
+    "bellchime_trail_hns",
+    "celadon_apartments_hns",
+    "celadon_city_hns",
+    "cerulean_city_hns",
+    "cherrygrove_city_hns",
+    "ecruteak_city_hns"
+   ],
+   "n_tilesets": 22,
+   "s_id": 16,
+   "action": "igual"
+  },
+  "17": {
+   "p_id": 17,
+   "p_name": "MB_INTERIOR_DEEP_WATER",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_green_hns",
+    "cave_ice_hns",
+    "cave_sandy_hns"
+   ],
+   "n_tilesets": 18,
+   "s_id": 17,
+   "action": "igual"
+  },
+  "18": {
+   "p_id": 18,
+   "p_name": "MB_DEEP_WATER",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "general_hns",
+    "goldenrod_underground_tunnel_hns",
+    "johto_north_east_hns"
+   ],
+   "n_tilesets": 8,
+   "s_id": 18,
+   "action": "igual"
+  },
+  "19": {
+   "p_id": 19,
+   "p_name": "MB_WATERFALL",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_ice_hns",
+    "celadon_apartments_hns",
+    "general_hns",
+    "johto_general_hns",
+    "johto_north_east_hns"
+   ],
+   "n_tilesets": 10,
+   "s_id": 19,
+   "action": "igual"
+  },
+  "20": {
+   "p_id": 20,
+   "p_name": "MB_SOOTOPOLIS_DEEP_WATER",
+   "tilesets": [
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 20,
+   "action": "igual"
+  },
+  "21": {
+   "p_id": 21,
+   "p_name": "MB_OCEAN_WATER",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_ice_hns",
+    "celadon_apartments_hns",
+    "cerulean_city_gym_hns"
+   ],
+   "n_tilesets": 30,
+   "s_id": 21,
+   "action": "igual"
+  },
+  "22": {
+   "p_id": 22,
+   "p_name": "MB_PUDDLE",
+   "tilesets": [
+    "cave_ice_hns",
+    "general_hns",
+    "goldenrod_underground_storage_hns",
+    "goldenrod_underground_tunnel_hns",
+    "national_park_hns",
+    "trainer_hill_courtyard_hns"
+   ],
+   "n_tilesets": 6,
+   "s_id": 22,
+   "action": "igual"
+  },
+  "23": {
+   "p_id": 23,
+   "p_name": "MB_SHALLOW_WATER",
+   "tilesets": [
+    "cave_ice_hns",
+    "cianwood_city_gym_hns",
+    "cianwood_city_hns",
+    "general_hns",
+    "indigo_plateau_hns",
+    "johto_general_hns"
+   ],
+   "n_tilesets": 16,
+   "s_id": 23,
+   "action": "igual"
+  },
+  "24": {
+   "p_id": 24,
+   "p_name": "MB_UNUSED_SOOTOPOLIS_DEEP_WATER",
+   "tilesets": [
+    "cave_gray_hns",
+    "ecruteak_theater_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 24,
+   "action": "igual"
+  },
+  "25": {
+   "p_id": 25,
+   "p_name": "MB_NO_SURFACING",
+   "tilesets": [
+    "cave_gray_hns",
+    "cerulean_city_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 25,
+   "action": "igual"
+  },
+  "26": {
+   "p_id": 26,
+   "p_name": "MB_UNUSED_SOOTOPOLIS_DEEP_WATER_2",
+   "tilesets": [
+    "cave_gray_hns",
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 26,
+   "action": "igual"
+  },
+  "27": {
+   "p_id": 27,
+   "p_name": "MB_STAIRS_OUTSIDE_ABANDONED_SHIP",
+   "tilesets": [
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 27,
+   "action": "igual"
+  },
+  "28": {
+   "p_id": 28,
+   "p_name": "MB_SHOAL_CAVE_ENTRANCE",
+   "tilesets": [
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 28,
+   "action": "igual"
+  },
+  "29": {
+   "p_id": 29,
+   "p_name": "MB_SIGNPOST",
+   "tilesets": [
+    "mt_ember_hns",
+    "mt_silver_exp_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 29,
+   "action": "igual"
+  },
+  "30": {
+   "p_id": 30,
+   "p_name": "MB_POKEMON_CENTER_SIGN",
+   "tilesets": [
+    "cave_gray_hns",
+    "celadon_apartments_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 30,
+   "action": "igual"
+  },
+  "31": {
+   "p_id": 31,
+   "p_name": "MB_POKEMART_SIGN",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 31,
+   "action": "igual"
+  },
+  "32": {
+   "p_id": 32,
+   "p_name": "MB_ICE",
+   "tilesets": [
+    "cave_gray_hns",
+    "cave_green_hns",
+    "cave_ice_hns",
+    "cave_mt_moon_hns",
+    "cave_sandy_hns",
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 12,
+   "s_id": 32,
+   "action": "igual"
+  },
+  "33": {
+   "p_id": 33,
+   "p_name": "MB_SAND",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "celadon_city_hns",
+    "cerulean_city_hns",
+    "cianwood_city_hns",
+    "department_store_hns",
+    "general_hns"
+   ],
+   "n_tilesets": 18,
+   "s_id": 33,
+   "action": "igual"
+  },
+  "34": {
+   "p_id": 34,
+   "p_name": "MB_SEAWEED",
+   "tilesets": [
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 34,
+   "action": "igual"
+  },
+  "35": {
+   "p_id": 35,
+   "p_name": "MB_STRENGTH_BUTTON",
+   "tilesets": [
+    "cave_ice_hns",
+    "celadon_apartments_hns",
+    "cianwood_city_gym_hns",
+    "hall_of_fame_hns",
+    "mt_silver_snow_hns"
+   ],
+   "n_tilesets": 5,
+   "action": "novo",
+   "s_id_proposto": 35,
+   "s_slot_unused": "MB_UNUSED_23",
+   "identidade": true
+  },
+  "36": {
+   "p_id": 36,
+   "p_name": "MB_ASHGRASS",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 36,
+   "action": "igual"
+  },
+  "37": {
+   "p_id": 37,
+   "p_name": "MB_FOOTPRINTS",
+   "tilesets": [
+    "department_store_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 37,
+   "action": "igual"
+  },
+  "38": {
+   "p_id": 38,
+   "p_name": "MB_THIN_ICE",
+   "tilesets": [
+    "cave_ice_hns",
+    "celadon_apartments_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 38,
+   "action": "igual"
+  },
+  "40": {
+   "p_id": 40,
+   "p_name": "MB_HOT_SPRINGS",
+   "tilesets": [
+    "ecruteak_theater_hns",
+    "mt_ember_hns",
+    "mt_silver_ancient_hns",
+    "mt_silver_newsinjoh_hns",
+    "mt_silver_snow_hns"
+   ],
+   "n_tilesets": 5,
+   "s_id": 40,
+   "action": "igual"
+  },
+  "41": {
+   "p_id": 41,
+   "p_name": "MB_LAVARIDGE_GYM_B1F_WARP",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "department_store_hns",
+    "ecruteak_theater_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 41,
+   "action": "igual"
+  },
+  "42": {
+   "p_id": 42,
+   "p_name": "MB_SEAWEED_NO_SURFACING",
+   "tilesets": [
+    "dragons_den_shrine_hns",
+    "johto_general_hns",
+    "johto_north_east_hns",
+    "johto_north_west_hns",
+    "johto_south_hns",
+    "kanto_general_hns"
+   ],
+   "n_tilesets": 8,
+   "s_id": 42,
+   "action": "igual"
+  },
+  "43": {
+   "p_id": 43,
+   "p_name": "MB_REFLECTION_UNDER_BRIDGE",
+   "tilesets": [
+    "cave_gray_hns",
+    "cave_sandy_hns",
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 43,
+   "action": "igual"
+  },
+  "44": {
+   "p_id": 44,
+   "p_name": "MB_FAST_WATER",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "mt_ember_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "novo",
+   "s_id_proposto": 44,
+   "s_slot_unused": "MB_UNUSED_2C",
+   "identidade": true
+  },
+  "45": {
+   "p_id": 45,
+   "p_name": "MB_CYCLING_ROAD_WATER",
+   "tilesets": [
+    "department_store_hns",
+    "ecruteak_theater_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "novo",
+   "s_id_proposto": 45,
+   "s_slot_unused": "MB_UNUSED_2D",
+   "identidade": true
+  },
+  "48": {
+   "p_id": 48,
+   "p_name": "MB_IMPASSABLE_EAST",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "cafe_hns",
+    "celadon_apartments_hns",
+    "cerulean_city_hns",
+    "department_store_hns",
+    "game_corner_hns"
+   ],
+   "n_tilesets": 18,
+   "s_id": 48,
+   "action": "igual"
+  },
+  "49": {
+   "p_id": 49,
+   "p_name": "MB_IMPASSABLE_WEST",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "cafe_hns",
+    "celadon_apartments_hns",
+    "cerulean_city_hns",
+    "department_store_hns",
+    "game_corner_hns"
+   ],
+   "n_tilesets": 18,
+   "s_id": 49,
+   "action": "igual"
+  },
+  "50": {
+   "p_id": 50,
+   "p_name": "MB_IMPASSABLE_NORTH",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_green_hns",
+    "cave_ice_hns"
+   ],
+   "n_tilesets": 33,
+   "s_id": 50,
+   "action": "igual"
+  },
+  "51": {
+   "p_id": 51,
+   "p_name": "MB_IMPASSABLE_SOUTH",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "celadon_apartments_hns",
+    "cerulean_city_hns",
+    "goldenrod_underground_rocket_hns",
+    "goldenrod_underground_storage_hns",
+    "kanto_pokemon_center_hns"
+   ],
+   "n_tilesets": 10,
+   "s_id": 51,
+   "action": "igual"
+  },
+  "52": {
+   "p_id": 52,
+   "p_name": "MB_IMPASSABLE_NORTHEAST",
+   "tilesets": [
+    "cave_gray_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 52,
+   "action": "igual"
+  },
+  "56": {
+   "p_id": 56,
+   "p_name": "MB_JUMP_EAST",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_green_hns",
+    "cave_ice_hns",
+    "cave_mt_moon_hns"
+   ],
+   "n_tilesets": 22,
+   "s_id": 56,
+   "action": "igual"
+  },
+  "57": {
+   "p_id": 57,
+   "p_name": "MB_JUMP_WEST",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_green_hns",
+    "cave_ice_hns"
+   ],
+   "n_tilesets": 22,
+   "s_id": 57,
+   "action": "igual"
+  },
+  "59": {
+   "p_id": 59,
+   "p_name": "MB_JUMP_SOUTH",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_green_hns",
+    "cave_ice_hns"
+   ],
+   "n_tilesets": 32,
+   "s_id": 59,
+   "action": "igual"
+  },
+  "60": {
+   "p_id": 60,
+   "p_name": "MB_JUMP_NORTHEAST",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "indigo_plateau_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 60,
+   "action": "igual"
+  },
+  "61": {
+   "p_id": 61,
+   "p_name": "MB_JUMP_NORTHWEST",
+   "tilesets": [
+    "cerulean_city_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 61,
+   "action": "igual"
+  },
+  "62": {
+   "p_id": 62,
+   "p_name": "MB_JUMP_SOUTHEAST",
+   "tilesets": [
+    "general_hns",
+    "indigo_plateau_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 62,
+   "action": "igual"
+  },
+  "63": {
+   "p_id": 63,
+   "p_name": "MB_JUMP_SOUTHWEST",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "general_hns",
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 63,
+   "action": "igual"
+  },
+  "64": {
+   "p_id": 64,
+   "p_name": "MB_WALK_EAST",
+   "tilesets": [
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 64,
+   "action": "igual"
+  },
+  "65": {
+   "p_id": 65,
+   "p_name": "MB_WALK_WEST",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 65,
+   "action": "igual"
+  },
+  "66": {
+   "p_id": 66,
+   "p_name": "MB_WALK_NORTH",
+   "tilesets": [
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 66,
+   "action": "igual"
+  },
+  "67": {
+   "p_id": 67,
+   "p_name": "MB_WALK_SOUTH",
+   "tilesets": [
+    "indigo_plateau_hns",
+    "pokemon_center_white_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 67,
+   "action": "igual"
+  },
+  "68": {
+   "p_id": 68,
+   "p_name": "MB_SLIDE_EAST",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "celadon_apartments_hns",
+    "cerulean_city_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 68,
+   "action": "igual"
+  },
+  "69": {
+   "p_id": 69,
+   "p_name": "MB_SLIDE_WEST",
+   "tilesets": [
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 69,
+   "action": "igual"
+  },
+  "70": {
+   "p_id": 70,
+   "p_name": "MB_SLIDE_NORTH",
+   "tilesets": [
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 70,
+   "action": "igual"
+  },
+  "71": {
+   "p_id": 71,
+   "p_name": "MB_SLIDE_SOUTH",
+   "tilesets": [
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 71,
+   "action": "igual"
+  },
+  "72": {
+   "p_id": 72,
+   "p_name": "MB_TRICK_HOUSE_PUZZLE_8_FLOOR",
+   "tilesets": [
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 72,
+   "action": "igual"
+  },
+  "73": {
+   "p_id": 73,
+   "p_name": "MB_SIDEWAYS_STAIRS_RIGHT_SIDE",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_gray_hns",
+    "celadon_apartments_hns",
+    "johto_general_hns",
+    "johto_north_east_hns",
+    "kanto_general_hns"
+   ],
+   "n_tilesets": 8,
+   "s_id": 73,
+   "action": "igual"
+  },
+  "74": {
+   "p_id": 74,
+   "p_name": "MB_SIDEWAYS_STAIRS_LEFT_SIDE",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_gray_hns",
+    "cerulean_city_hns",
+    "indigo_plateau_hns",
+    "johto_general_hns",
+    "johto_north_east_hns"
+   ],
+   "n_tilesets": 11,
+   "s_id": 74,
+   "action": "igual"
+  },
+  "75": {
+   "p_id": 75,
+   "p_name": "MB_SIDEWAYS_STAIRS_RIGHT_SIDE_TOP",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_gray_hns",
+    "indigo_plateau_hns",
+    "johto_general_hns",
+    "johto_north_east_hns",
+    "kanto_general_hns"
+   ],
+   "n_tilesets": 9,
+   "s_id": 75,
+   "action": "igual"
+  },
+  "76": {
+   "p_id": 76,
+   "p_name": "MB_SIDEWAYS_STAIRS_LEFT_SIDE_TOP",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_gray_hns",
+    "gate_standard_hns",
+    "indigo_plateau_hns",
+    "johto_building_hns",
+    "johto_general_hns"
+   ],
+   "n_tilesets": 13,
+   "s_id": 76,
+   "action": "igual"
+  },
+  "77": {
+   "p_id": 77,
+   "p_name": "MB_SIDEWAYS_STAIRS_RIGHT_SIDE_BOTTOM",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_gray_hns",
+    "johto_general_hns",
+    "johto_north_east_hns",
+    "kanto_general_hns",
+    "mt_ember_hns"
+   ],
+   "n_tilesets": 7,
+   "s_id": 77,
+   "action": "igual"
+  },
+  "78": {
+   "p_id": 78,
+   "p_name": "MB_SIDEWAYS_STAIRS_LEFT_SIDE_BOTTOM",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_gray_hns",
+    "gate_standard_hns",
+    "indigo_plateau_hns",
+    "johto_general_hns",
+    "johto_north_east_hns"
+   ],
+   "n_tilesets": 10,
+   "s_id": 78,
+   "action": "igual"
+  },
+  "79": {
+   "p_id": 79,
+   "p_name": "MB_ROCK_STAIRS",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "burned_tower_hns",
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_ice_hns"
+   ],
+   "n_tilesets": 24,
+   "s_id": 79,
+   "action": "igual"
+  },
+  "80": {
+   "p_id": 80,
+   "p_name": "MB_EASTWARD_CURRENT",
+   "tilesets": [
+    "cave_ice_hns",
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 80,
+   "action": "igual"
+  },
+  "81": {
+   "p_id": 81,
+   "p_name": "MB_WESTWARD_CURRENT",
+   "tilesets": [
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 81,
+   "action": "igual"
+  },
+  "82": {
+   "p_id": 82,
+   "p_name": "MB_NORTHWARD_CURRENT",
+   "tilesets": [
+    "cave_ice_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 82,
+   "action": "igual"
+  },
+  "83": {
+   "p_id": 83,
+   "p_name": "MB_SOUTHWARD_CURRENT",
+   "tilesets": [
+    "cave_ice_hns",
+    "whirl_islands_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 83,
+   "action": "igual"
+  },
+  "84": {
+   "p_id": 84,
+   "p_name": "MB_SPIN_RIGHT",
+   "tilesets": [
+    "cerulean_city_hns",
+    "silph_co_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "novo",
+   "s_id_proposto": 84,
+   "s_slot_unused": "MB_UNUSED_54",
+   "identidade": true
+  },
+  "85": {
+   "p_id": 85,
+   "p_name": "MB_SPIN_LEFT",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "silph_co_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "novo",
+   "s_id_proposto": 85,
+   "s_slot_unused": "MB_UNUSED_55",
+   "identidade": true
+  },
+  "86": {
+   "p_id": 86,
+   "p_name": "MB_SPIN_UP",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "cerulean_city_hns",
+    "silph_co_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 4,
+   "action": "novo",
+   "s_id_proposto": 86,
+   "s_slot_unused": "MB_UNUSED_56",
+   "identidade": true
+  },
+  "87": {
+   "p_id": 87,
+   "p_name": "MB_SPIN_DOWN",
+   "tilesets": [
+    "silph_co_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "action": "novo",
+   "s_id_proposto": 87,
+   "s_slot_unused": "MB_UNUSED_57",
+   "identidade": true
+  },
+  "88": {
+   "p_id": 88,
+   "p_name": "MB_STOP_SPINNING",
+   "tilesets": [
+    "goldenrod_underground_storage_hns",
+    "indigo_plateau_hns",
+    "silph_co_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 4,
+   "action": "novo",
+   "s_id_proposto": 88,
+   "s_slot_unused": "MB_UNUSED_58",
+   "identidade": true
+  },
+  "90": {
+   "p_id": 90,
+   "p_name": "MB_KITCHEN",
+   "tilesets": [
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 1,
+   "action": "novo",
+   "s_id_proposto": 90,
+   "s_slot_unused": "MB_UNUSED_5A",
+   "identidade": true
+  },
+  "91": {
+   "p_id": 91,
+   "p_name": "MB_DRESSER",
+   "tilesets": [
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 1,
+   "action": "novo",
+   "s_id_proposto": 91,
+   "s_slot_unused": "MB_UNUSED_5B",
+   "identidade": true
+  },
+  "96": {
+   "p_id": 96,
+   "p_name": "MB_NON_ANIMATED_DOOR",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "blackthorn_hns",
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_green_hns"
+   ],
+   "n_tilesets": 46,
+   "s_id": 96,
+   "action": "igual"
+  },
+  "97": {
+   "p_id": 97,
+   "p_name": "MB_LADDER",
+   "tilesets": [
+    "azalea_town_hns",
+    "blackthorn_gym_hns",
+    "burned_tower_hns",
+    "cafe_hns",
+    "cave_default_hns",
+    "cave_dragons_den_hns"
+   ],
+   "n_tilesets": 22,
+   "s_id": 97,
+   "action": "igual"
+  },
+  "98": {
+   "p_id": 98,
+   "p_name": "MB_EAST_ARROW_WARP",
+   "tilesets": [
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_green_hns",
+    "cave_ice_hns",
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 38,
+   "s_id": 98,
+   "action": "igual"
+  },
+  "99": {
+   "p_id": 99,
+   "p_name": "MB_WEST_ARROW_WARP",
+   "tilesets": [
+    "bellchime_trail_hns",
+    "blackthorn_hns",
+    "celadon_apartments_hns",
+    "cianwood_city_hns",
+    "department_store_hns",
+    "ecruteak_theater_hns"
+   ],
+   "n_tilesets": 29,
+   "s_id": 99,
+   "action": "igual"
+  },
+  "100": {
+   "p_id": 100,
+   "p_name": "MB_NORTH_ARROW_WARP",
+   "tilesets": [
+    "bellchime_trail_hns",
+    "ecruteak_city_hns",
+    "general_hns",
+    "indigo_plateau_hns",
+    "mt_silver_exp_hns",
+    "port_indoor_hns"
+   ],
+   "n_tilesets": 11,
+   "s_id": 100,
+   "action": "igual"
+  },
+  "101": {
+   "p_id": 101,
+   "p_name": "MB_SOUTH_ARROW_WARP",
+   "tilesets": [
+    "arceus_room_hns",
+    "azalea_town_gym_hns",
+    "barn_hns",
+    "bellchime_trail_hns",
+    "bike_shop_hns",
+    "blackthorn_gym_hns"
+   ],
+   "n_tilesets": 83,
+   "s_id": 101,
+   "action": "igual"
+  },
+  "102": {
+   "p_id": 102,
+   "p_name": "MB_CRACKED_FLOOR_HOLE",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_green_hns",
+    "cave_ice_hns",
+    "cave_mt_moon_hns"
+   ],
+   "n_tilesets": 11,
+   "s_id": 102,
+   "action": "igual"
+  },
+  "103": {
+   "p_id": 103,
+   "p_name": "MB_AQUA_HIDEOUT_WARP",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "celadon_apartments_hns",
+    "dragons_den_shrine_hns",
+    "goldenrod_underground_storage_hns",
+    "johto_building_hns",
+    "power_plant_generator_room_hns"
+   ],
+   "n_tilesets": 7,
+   "s_id": 103,
+   "action": "igual"
+  },
+  "104": {
+   "p_id": 104,
+   "p_name": "MB_LAVARIDGE_GYM_1F_WARP",
+   "tilesets": [
+    "blackthorn_gym_hns",
+    "cave_sandy_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 104,
+   "action": "igual"
+  },
+  "105": {
+   "p_id": 105,
+   "p_name": "MB_ANIMATED_DOOR",
+   "tilesets": [
+    "bellchime_trail_hns",
+    "blackthorn_hns",
+    "cave_dragons_den_hns",
+    "celadon_city_hns",
+    "cerulean_city_hns",
+    "cherrygrove_city_hns"
+   ],
+   "n_tilesets": 47,
+   "s_id": 105,
+   "action": "igual"
+  },
+  "106": {
+   "p_id": 106,
+   "p_name": "MB_UP_ESCALATOR",
+   "tilesets": [
+    "kanto_pokemon_center_hns",
+    "pokemon_center_white_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 106,
+   "action": "igual"
+  },
+  "107": {
+   "p_id": 107,
+   "p_name": "MB_DOWN_ESCALATOR",
+   "tilesets": [
+    "johto_building_hns",
+    "kanto_pokemon_center_hns",
+    "pokemon_center_white_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 107,
+   "action": "igual"
+  },
+  "108": {
+   "p_id": 108,
+   "p_name": "MB_WATER_DOOR",
+   "tilesets": [
+    "burned_tower_hns",
+    "celadon_apartments_hns",
+    "ecruteak_city_gym_hns",
+    "ecruteak_theater_hns",
+    "goldenrod_station_hns",
+    "goldenrod_underground_storage_hns"
+   ],
+   "n_tilesets": 12,
+   "s_id": 108,
+   "action": "igual"
+  },
+  "109": {
+   "p_id": 109,
+   "p_name": "MB_WATER_SOUTH_ARROW_WARP",
+   "tilesets": [
+    "cianwood_city_hns",
+    "ecruteak_city_gym_hns",
+    "gate_standard_hns",
+    "goldenrod_underground_rocket_hns",
+    "goldenrod_underground_storage_hns",
+    "olivine_city_hns"
+   ],
+   "n_tilesets": 8,
+   "s_id": 109,
+   "action": "igual"
+  },
+  "110": {
+   "p_id": 110,
+   "p_name": "MB_DEEP_SOUTH_WARP",
+   "tilesets": [
+    "ecruteak_city_gym_hns",
+    "goldenrod_underground_tunnel_hns",
+    "johto_building_hns",
+    "shop_rooftop_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 5,
+   "s_id": 110,
+   "action": "igual"
+  },
+  "111": {
+   "p_id": 111,
+   "p_name": "MB_UNUSED_6F",
+   "tilesets": [
+    "burned_tower_hns",
+    "department_store_hns",
+    "ecruteak_city_gym_hns",
+    "ecruteak_theater_hns",
+    "goldenrod_station_hns",
+    "goldenrod_underground_rocket_hns"
+   ],
+   "n_tilesets": 15,
+   "s_id": 111,
+   "action": "igual"
+  },
+  "112": {
+   "p_id": 112,
+   "p_name": "MB_BRIDGE_OVER_OCEAN",
+   "tilesets": [
+    "cerulean_city_hns",
+    "cianwood_city_hns",
+    "whirl_islands_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 112,
+   "action": "igual"
+  },
+  "113": {
+   "p_id": 113,
+   "p_name": "MB_BRIDGE_OVER_POND_LOW",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "ecruteak_theater_hns",
+    "hall_of_fame_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 113,
+   "action": "igual"
+  },
+  "114": {
+   "p_id": 114,
+   "p_name": "MB_BRIDGE_OVER_POND_MED",
+   "tilesets": [
+    "indigo_plateau_hns",
+    "johto_general_hns",
+    "johto_north_west_hns",
+    "johto_south_hns",
+    "kanto_general_hns"
+   ],
+   "n_tilesets": 5,
+   "s_id": 114,
+   "action": "igual"
+  },
+  "115": {
+   "p_id": 115,
+   "p_name": "MB_BRIDGE_OVER_POND_HIGH",
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 115,
+   "action": "igual"
+  },
+  "118": {
+   "p_id": 118,
+   "p_name": "MB_PACIFIDLOG_HORIZONTAL_LOG_LEFT",
+   "tilesets": [
+    "department_store_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 118,
+   "action": "igual"
+  },
+  "119": {
+   "p_id": 119,
+   "p_name": "MB_PACIFIDLOG_HORIZONTAL_LOG_RIGHT",
+   "tilesets": [
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 119,
+   "action": "igual"
+  },
+  "120": {
+   "p_id": 120,
+   "p_name": "MB_FORTREE_BRIDGE",
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 120,
+   "action": "igual"
+  },
+  "126": {
+   "p_id": 126,
+   "p_name": "MB_UNUSED_BRIDGE",
+   "tilesets": [
+    "goldenrod_hns",
+    "national_park_hns",
+    "ruins_of_alph_outside_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 126,
+   "action": "igual"
+  },
+  "127": {
+   "p_id": 127,
+   "p_name": "MB_BIKE_BRIDGE_OVER_BARRIER",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 127,
+   "action": "igual"
+  },
+  "128": {
+   "p_id": 128,
+   "p_name": "MB_COUNTER",
+   "tilesets": [
+    "bike_shop_hns",
+    "cafe_hns",
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "ecruteak_city_gym_hns"
+   ],
+   "n_tilesets": 27,
+   "s_id": 128,
+   "action": "igual"
+  },
+  "129": {
+   "p_id": 129,
+   "p_name": "MB_BOOKSHELF_GREEN",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "gate_standard_hns",
+    "house_2_hns",
+    "johto_building_hns"
+   ],
+   "n_tilesets": 13,
+   "action": "novo",
+   "s_id_proposto": 129,
+   "s_slot_unused": "MB_UNUSED_81",
+   "identidade": true
+  },
+  "130": {
+   "p_id": 130,
+   "p_name": "MB_SHOP_SHELF_DEPARTMENT",
+   "tilesets": [
+    "cave_sandy_hns",
+    "cerulean_city_hns",
+    "department_store_hns",
+    "game_corner_hns",
+    "house_lab_hns",
+    "johto_mart_hns"
+   ],
+   "n_tilesets": 9,
+   "action": "novo",
+   "s_id_proposto": 130,
+   "s_slot_unused": "MB_UNUSED_82",
+   "identidade": true
+  },
+  "131": {
+   "p_id": 131,
+   "p_name": "MB_PC",
+   "tilesets": [
+    "cave_sandy_hns",
+    "department_store_hns",
+    "goldenrod_underground_tunnel_hns",
+    "house_lab_hns",
+    "indigo_plateau_hns",
+    "johto_building_hns"
+   ],
+   "n_tilesets": 11,
+   "s_id": 131,
+   "action": "igual"
+  },
+  "132": {
+   "p_id": 132,
+   "p_name": "MB_CABLE_BOX_RESULTS_1",
+   "tilesets": [
+    "azalea_town_hns",
+    "cafe_hns",
+    "cave_default_hns",
+    "cave_dragons_den_hns",
+    "cave_gray_hns",
+    "cave_green_hns"
+   ],
+   "n_tilesets": 36,
+   "s_id": 132,
+   "action": "igual"
+  },
+  "133": {
+   "p_id": 133,
+   "p_name": "MB_REGION_MAP",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns",
+    "johto_building_hns",
+    "kanto_building_hns",
+    "kanto_pokemon_center_hns",
+    "pokemon_center_white_hns",
+    "pokemon_day_care_hns"
+   ],
+   "n_tilesets": 9,
+   "s_id": 133,
+   "action": "igual"
+  },
+  "134": {
+   "p_id": 134,
+   "p_name": "MB_TELEVISION",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns",
+    "house_lab_hns",
+    "indigo_plateau_hns",
+    "johto_building_hns",
+    "kanto_building_hns",
+    "pokemon_day_care_hns"
+   ],
+   "n_tilesets": 6,
+   "s_id": 134,
+   "action": "igual"
+  },
+  "135": {
+   "p_id": 135,
+   "p_name": "MB_POKEBLOCK_FEEDER",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "johto_north_east_hns",
+    "national_park_hns",
+    "safari_zone_johto_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 8,
+   "s_id": 135,
+   "action": "igual"
+  },
+  "136": {
+   "p_id": 136,
+   "p_name": "MB_UNUSED_88",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "goldenrod_underground_tunnel_hns",
+    "pokemon_day_care_hns",
+    "trainer_school_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 5,
+   "s_id": 136,
+   "action": "igual"
+  },
+  "137": {
+   "p_id": 137,
+   "p_name": "MB_SLOT_MACHINE",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "goldenrod_underground_tunnel_hns",
+    "johto_building_hns",
+    "kanto_building_hns"
+   ],
+   "n_tilesets": 8,
+   "s_id": 137,
+   "action": "igual"
+  },
+  "138": {
+   "p_id": 138,
+   "p_name": "MB_ROULETTE",
+   "tilesets": [
+    "cafe_hns",
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "goldenrod_underground_tunnel_hns",
+    "kanto_building_hns",
+    "saffron_city_dojo_vip_hns"
+   ],
+   "n_tilesets": 9,
+   "s_id": 138,
+   "action": "igual"
+  },
+  "139": {
+   "p_id": 139,
+   "p_name": "MB_CLOSED_SOOTOPOLIS_DOOR",
+   "tilesets": [
+    "cafe_hns",
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "goldenrod_underground_tunnel_hns",
+    "kanto_building_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 7,
+   "s_id": 139,
+   "action": "igual"
+  },
+  "140": {
+   "p_id": 140,
+   "p_name": "MB_TRICK_HOUSE_PUZZLE_DOOR",
+   "tilesets": [
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 140,
+   "action": "igual"
+  },
+  "141": {
+   "p_id": 141,
+   "p_name": "MB_PETALBURG_GYM_DOOR",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns",
+    "pokemon_center_white_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 141,
+   "action": "igual"
+  },
+  "142": {
+   "p_id": 142,
+   "p_name": "MB_RUNNING_SHOES_INSTRUCTION",
+   "tilesets": [
+    "kanto_pokemon_center_hns",
+    "pokemon_center_white_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 142,
+   "action": "igual"
+  },
+  "143": {
+   "p_id": 143,
+   "p_name": "MB_QUESTIONNAIRE",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "johto_mart_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 143,
+   "action": "igual"
+  },
+  "144": {
+   "p_id": 144,
+   "p_name": "MB_SECRET_BASE_SPOT_RED_CAVE",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "general_hns",
+    "johto_building_hns",
+    "kanto_building_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 6,
+   "s_id": 144,
+   "action": "igual"
+  },
+  "145": {
+   "p_id": 145,
+   "p_name": "MB_SECRET_BASE_SPOT_RED_CAVE_OPEN",
+   "tilesets": [
+    "cave_gray_hns",
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "general_hns",
+    "goldenrod_underground_tunnel_hns"
+   ],
+   "n_tilesets": 10,
+   "s_id": 145,
+   "action": "igual"
+  },
+  "146": {
+   "p_id": 146,
+   "p_name": "MB_SECRET_BASE_SPOT_BROWN_CAVE",
+   "tilesets": [
+    "ecruteak_theater_hns",
+    "goldenrod_underground_tunnel_hns",
+    "indigo_plateau_hns",
+    "pokemon_center_white_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 5,
+   "s_id": 146,
+   "action": "igual"
+  },
+  "147": {
+   "p_id": 147,
+   "p_name": "MB_SECRET_BASE_SPOT_BROWN_CAVE_OPEN",
+   "tilesets": [
+    "goldenrod_underground_rocket_hns",
+    "goldenrod_underground_storage_hns",
+    "goldenrod_underground_tunnel_hns",
+    "safari_zone_johto_hns",
+    "silph_co_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 7,
+   "s_id": 147,
+   "action": "igual"
+  },
+  "148": {
+   "p_id": 148,
+   "p_name": "MB_SECRET_BASE_SPOT_YELLOW_CAVE",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "general_hns",
+    "goldenrod_underground_rocket_hns",
+    "goldenrod_underground_storage_hns",
+    "kanto_building_hns",
+    "museum_hns"
+   ],
+   "n_tilesets": 7,
+   "s_id": 148,
+   "action": "igual"
+  },
+  "149": {
+   "p_id": 149,
+   "p_name": "MB_SECRET_BASE_SPOT_YELLOW_CAVE_OPEN",
+   "tilesets": [
+    "general_hns",
+    "goldenrod_underground_rocket_hns",
+    "goldenrod_underground_storage_hns",
+    "goldenrod_underground_tunnel_hns",
+    "house_lab_hns",
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 10,
+   "s_id": 149,
+   "action": "igual"
+  },
+  "150": {
+   "p_id": 150,
+   "p_name": "MB_SECRET_BASE_SPOT_TREE_LEFT",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "general_hns",
+    "goldenrod_underground_rocket_hns",
+    "goldenrod_underground_storage_hns",
+    "goldenrod_underground_tunnel_hns"
+   ],
+   "n_tilesets": 8,
+   "s_id": 150,
+   "action": "igual"
+  },
+  "151": {
+   "p_id": 151,
+   "p_name": "MB_SECRET_BASE_SPOT_TREE_LEFT_OPEN",
+   "tilesets": [
+    "ecruteak_theater_hns",
+    "general_hns",
+    "goldenrod_underground_rocket_hns",
+    "goldenrod_underground_storage_hns",
+    "house_lab_hns",
+    "johto_building_hns"
+   ],
+   "n_tilesets": 11,
+   "s_id": 151,
+   "action": "igual"
+  },
+  "152": {
+   "p_id": 152,
+   "p_name": "MB_SECRET_BASE_SPOT_SHRUB",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "ecruteak_theater_hns",
+    "indigo_plateau_hns",
+    "johto_mart_hns",
+    "safari_zone_johto_hns"
+   ],
+   "n_tilesets": 7,
+   "s_id": 152,
+   "action": "igual"
+  },
+  "153": {
+   "p_id": 153,
+   "p_name": "MB_SECRET_BASE_SPOT_SHRUB_OPEN",
+   "tilesets": [
+    "cafe_hns",
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "goldenrod_underground_tunnel_hns",
+    "saffron_city_dojo_vip_hns"
+   ],
+   "n_tilesets": 9,
+   "s_id": 153,
+   "action": "igual"
+  },
+  "154": {
+   "p_id": 154,
+   "p_name": "MB_SECRET_BASE_SPOT_BLUE_CAVE",
+   "tilesets": [
+    "cafe_hns",
+    "department_store_hns",
+    "general_hns",
+    "goldenrod_underground_tunnel_hns",
+    "shop_rooftop_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 6,
+   "s_id": 154,
+   "action": "igual"
+  },
+  "155": {
+   "p_id": 155,
+   "p_name": "MB_SECRET_BASE_SPOT_BLUE_CAVE_OPEN",
+   "tilesets": [
+    "cafe_hns",
+    "general_hns",
+    "goldenrod_underground_tunnel_hns",
+    "kanto_building_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 5,
+   "s_id": 155,
+   "action": "igual"
+  },
+  "156": {
+   "p_id": 156,
+   "p_name": "MB_SECRET_BASE_SPOT_TREE_RIGHT",
+   "tilesets": [
+    "cave_gray_hns",
+    "cave_sandy_hns",
+    "department_store_hns",
+    "general_hns",
+    "indigo_plateau_hns",
+    "johto_building_hns"
+   ],
+   "n_tilesets": 10,
+   "s_id": 156,
+   "action": "igual"
+  },
+  "157": {
+   "p_id": 157,
+   "p_name": "MB_SECRET_BASE_SPOT_TREE_RIGHT_OPEN",
+   "tilesets": [
+    "azalea_town_gym_hns",
+    "gate_standard_hns",
+    "general_hns",
+    "goldenrod_underground_tunnel_hns",
+    "indigo_plateau_hns",
+    "kanto_building_hns"
+   ],
+   "n_tilesets": 9,
+   "s_id": 157,
+   "action": "igual"
+  },
+  "158": {
+   "p_id": 158,
+   "p_name": "MB_UNUSED_9E",
+   "tilesets": [
+    "goldenrod_underground_rocket_hns",
+    "goldenrod_underground_storage_hns",
+    "goldenrod_underground_tunnel_hns",
+    "house_lab_hns",
+    "indigo_plateau_hns",
+    "power_plant_generator_room_hns"
+   ],
+   "n_tilesets": 9,
+   "s_id": 158,
+   "action": "igual"
+  },
+  "159": {
+   "p_id": 159,
+   "p_name": "MB_SHOP_SHELF_DEPARTMENT_FORWARD",
+   "tilesets": [
+    "bike_shop_hns",
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "johto_bike_shop_hns",
+    "johto_building_hns",
+    "johto_mart_hns"
+   ],
+   "n_tilesets": 7,
+   "action": "novo",
+   "s_id_proposto": 159,
+   "s_slot_unused": "MB_UNUSED_9F",
+   "identidade": true
+  },
+  "160": {
+   "p_id": 160,
+   "p_name": "MB_BERRY_TREE_SOIL",
+   "tilesets": [
+    "dragons_den_shrine_hns",
+    "general_hns",
+    "indigo_plateau_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 160,
+   "action": "igual"
+  },
+  "161": {
+   "p_id": 161,
+   "p_name": "MB_INDIGO_PLATEAU_SIGN_1",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "department_store_hns",
+    "kanto_general_hns",
+    "shop_rooftop_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 5,
+   "action": "novo",
+   "s_id_proposto": 161,
+   "s_slot_unused": "MB_UNUSED_A1",
+   "identidade": true
+  },
+  "162": {
+   "p_id": 162,
+   "p_name": "MB_INDIGO_PLATEAU_SIGN_2",
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "action": "novo",
+   "s_id_proposto": 162,
+   "s_slot_unused": "MB_UNUSED_A2",
+   "identidade": true
+  },
+  "163": {
+   "p_id": 163,
+   "p_name": "MB_BLUEPRINTS",
+   "tilesets": [
+    "department_store_hns",
+    "goldenrod_station_hns",
+    "goldenrod_underground_storage_hns",
+    "goldenrod_underground_tunnel_hns",
+    "port_indoor_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 7,
+   "action": "novo",
+   "s_id_proposto": 163,
+   "s_slot_unused": "MB_UNUSED_A3",
+   "identidade": true
+  },
+  "164": {
+   "p_id": 164,
+   "p_name": "MB_PAINTING",
+   "tilesets": [
+    "department_store_hns",
+    "shop_rooftop_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "novo",
+   "s_id_proposto": 164,
+   "s_slot_unused": "MB_UNUSED_A4",
+   "identidade": true
+  },
+  "165": {
+   "p_id": 165,
+   "p_name": "MB_POWER_PLANT_MACHINE",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "action": "novo",
+   "s_id_proposto": 165,
+   "s_slot_unused": "MB_UNUSED_A5",
+   "identidade": true
+  },
+  "166": {
+   "p_id": 166,
+   "p_name": "MB_TELEPHONE",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "action": "novo",
+   "s_id_proposto": 166,
+   "s_slot_unused": "MB_UNUSED_A6",
+   "identidade": true
+  },
+  "168": {
+   "p_id": 168,
+   "p_name": "MB_ADVERTISING_POSTER",
+   "tilesets": [
+    "department_store_hns",
+    "indigo_plateau_hns",
+    "johto_mart_hns",
+    "shop_rooftop_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 5,
+   "action": "novo",
+   "s_id_proposto": 168,
+   "s_slot_unused": "MB_UNUSED_A8",
+   "identidade": true
+  },
+  "170": {
+   "p_id": 170,
+   "p_name": "MB_PORTHOLE",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "indigo_plateau_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "novo",
+   "s_id_proposto": 170,
+   "s_slot_unused": "MB_UNUSED_AA",
+   "identidade": true
+  },
+  "171": {
+   "p_id": 171,
+   "p_name": "MB_WINDOW",
+   "tilesets": [
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 1,
+   "action": "novo",
+   "s_id_proposto": 171,
+   "s_slot_unused": "MB_UNUSED_AB",
+   "identidade": true
+  },
+  "172": {
+   "p_id": 172,
+   "p_name": "MB_CUP",
+   "tilesets": [
+    "indigo_plateau_hns",
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "novo",
+   "s_id_proposto": 172,
+   "s_slot_unused": "MB_UNUSED_AC",
+   "identidade": true
+  },
+  "174": {
+   "p_id": 174,
+   "p_name": "MB_NEATLY_LINED_UP_TOOLS",
+   "tilesets": [
+    "department_store_hns",
+    "goldenrod_underground_tunnel_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "novo",
+   "s_id_proposto": 174,
+   "s_slot_unused": "MB_UNUSED_AE",
+   "identidade": true
+  },
+  "175": {
+   "p_id": 175,
+   "p_name": "MB_IMPRESSIVE_MACHINE",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns"
+   ],
+   "n_tilesets": 1,
+   "action": "novo",
+   "s_id_proposto": 175,
+   "s_slot_unused": "MB_UNUSED_AF",
+   "identidade": true
+  },
+  "176": {
+   "p_id": 176,
+   "p_name": "MB_SECRET_BASE_PC",
+   "tilesets": [
+    "mt_silver_snow_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 176,
+   "action": "igual"
+  },
+  "177": {
+   "p_id": 177,
+   "p_name": "MB_SECRET_BASE_REGISTER_PC",
+   "tilesets": [
+    "mt_silver_snow_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 177,
+   "action": "igual"
+  },
+  "178": {
+   "p_id": 178,
+   "p_name": "MB_SECRET_BASE_SCENERY",
+   "tilesets": [
+    "mt_silver_snow_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 178,
+   "action": "igual"
+  },
+  "179": {
+   "p_id": 179,
+   "p_name": "MB_SECRET_BASE_TRAINER_SPOT",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "indigo_plateau_hns",
+    "mt_silver_snow_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 179,
+   "action": "igual"
+  },
+  "180": {
+   "p_id": 180,
+   "p_name": "MB_SECRET_BASE_DECORATION",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns",
+    "indigo_plateau_hns",
+    "mt_silver_snow_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 180,
+   "action": "igual"
+  },
+  "181": {
+   "p_id": 181,
+   "p_name": "MB_HOLDS_SMALL_DECORATION",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "goldenrod_underground_tunnel_hns",
+    "johto_building_hns",
+    "mt_silver_snow_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 5,
+   "s_id": 181,
+   "action": "igual"
+  },
+  "182": {
+   "p_id": 182,
+   "p_name": "MB_UNUSED_B6",
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 182,
+   "action": "igual"
+  },
+  "183": {
+   "p_id": 183,
+   "p_name": "MB_SECRET_BASE_NORTH_WALL",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 183,
+   "action": "igual"
+  },
+  "184": {
+   "p_id": 184,
+   "p_name": "MB_SECRET_BASE_BALLOON",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 184,
+   "action": "igual"
+  },
+  "186": {
+   "p_id": 186,
+   "p_name": "MB_SECRET_BASE_GLITTER_MAT",
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 186,
+   "action": "igual"
+  },
+  "187": {
+   "p_id": 187,
+   "p_name": "MB_SECRET_BASE_JUMP_MAT",
+   "tilesets": [
+    "indigo_plateau_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 187,
+   "action": "igual"
+  },
+  "188": {
+   "p_id": 188,
+   "p_name": "MB_SECRET_BASE_SPIN_MAT",
+   "tilesets": [
+    "indigo_plateau_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 188,
+   "action": "igual"
+  },
+  "189": {
+   "p_id": 189,
+   "p_name": "MB_SECRET_BASE_SOUND_MAT",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 189,
+   "action": "igual"
+  },
+  "190": {
+   "p_id": 190,
+   "p_name": "MB_SECRET_BASE_BREAKABLE_DOOR",
+   "tilesets": [
+    "indigo_plateau_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 190,
+   "action": "igual"
+  },
+  "191": {
+   "p_id": 191,
+   "p_name": "MB_SECRET_BASE_SAND_ORNAMENT",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "goldenrod_underground_tunnel_hns",
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 191,
+   "action": "igual"
+  },
+  "192": {
+   "p_id": 192,
+   "p_name": "MB_IMPASSABLE_SOUTH_AND_NORTH",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "cerulean_city_hns",
+    "department_store_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 192,
+   "action": "igual"
+  },
+  "193": {
+   "p_id": 193,
+   "p_name": "MB_IMPASSABLE_WEST_AND_EAST",
+   "tilesets": [
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 193,
+   "action": "igual"
+  },
+  "194": {
+   "p_id": 194,
+   "p_name": "MB_SECRET_BASE_HOLE",
+   "tilesets": [
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 194,
+   "action": "igual"
+  },
+  "195": {
+   "p_id": 195,
+   "p_name": "MB_HOLDS_LARGE_DECORATION",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns",
+    "johto_building_hns",
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 195,
+   "action": "igual"
+  },
+  "196": {
+   "p_id": 196,
+   "p_name": "MB_SECRET_BASE_TV_SHIELD",
+   "tilesets": [
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 196,
+   "action": "igual"
+  },
+  "197": {
+   "p_id": 197,
+   "p_name": "MB_PLAYER_ROOM_PC_ON",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 197,
+   "action": "igual"
+  },
+  "199": {
+   "p_id": 199,
+   "p_name": "MB_SECRET_BASE_POSTER",
+   "tilesets": [
+    "cave_gray_hns",
+    "goldenrod_underground_tunnel_hns",
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 199,
+   "action": "igual"
+  },
+  "200": {
+   "p_id": 200,
+   "p_name": "MB_CYCLING_ROAD_PULL_DOWN",
+   "tilesets": [
+    "cerulean_city_hns",
+    "cycling_road_hns",
+    "goldenrod_underground_tunnel_hns",
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 5,
+   "action": "novo",
+   "s_id_proposto": 200,
+   "s_slot_unused": "MB_UNUSED_C8",
+   "identidade": true
+  },
+  "201": {
+   "p_id": 201,
+   "p_name": "MB_CYCLING_ROAD_PULL_DOWN_GRASS",
+   "tilesets": [
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "action": "novo",
+   "s_id_proposto": 201,
+   "s_slot_unused": "MB_UNUSED_C9",
+   "identidade": true
+  },
+  "202": {
+   "p_id": 202,
+   "p_name": "MB_VIDEO_GAME",
+   "tilesets": [
+    "ecruteak_theater_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 2,
+   "action": "novo",
+   "s_id_proposto": 202,
+   "s_slot_unused": "MB_UNUSED_CA",
+   "identidade": true
+  },
+  "203": {
+   "p_id": 203,
+   "p_name": "MB_BURGLARY",
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "action": "novo",
+   "s_id_proposto": 203,
+   "s_slot_unused": "MB_UNUSED_CB",
+   "identidade": true
+  },
+  "205": {
+   "p_id": 205,
+   "p_name": "MB_UNUSED_CD",
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 205,
+   "action": "igual"
+  },
+  "206": {
+   "p_id": 206,
+   "p_name": "MB_UNUSED_CE",
+   "tilesets": [
+    "department_store_hns",
+    "shop_rooftop_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 206,
+   "action": "igual"
+  },
+  "207": {
+   "p_id": 207,
+   "p_name": "MB_UNUSED_CF",
+   "tilesets": [
+    "cave_sandy_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 207,
+   "action": "igual"
+  },
+  "208": {
+   "p_id": 208,
+   "p_name": "MB_MUDDY_SLOPE",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "general_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 208,
+   "action": "igual"
+  },
+  "209": {
+   "p_id": 209,
+   "p_name": "MB_BUMPY_SLOPE",
+   "tilesets": [
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "ecruteak_theater_hns",
+    "general_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 209,
+   "action": "igual"
+  },
+  "210": {
+   "p_id": 210,
+   "p_name": "MB_CRACKED_FLOOR",
+   "tilesets": [
+    "cave_ice_hns",
+    "indigo_plateau_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 210,
+   "action": "igual"
+  },
+  "211": {
+   "p_id": 211,
+   "p_name": "MB_ISOLATED_VERTICAL_RAIL",
+   "tilesets": [
+    "general_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 211,
+   "action": "igual"
+  },
+  "212": {
+   "p_id": 212,
+   "p_name": "MB_ISOLATED_HORIZONTAL_RAIL",
+   "tilesets": [
+    "cave_sandy_hns",
+    "general_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 212,
+   "action": "igual"
+  },
+  "213": {
+   "p_id": 213,
+   "p_name": "MB_VERTICAL_RAIL",
+   "tilesets": [
+    "cave_sandy_hns",
+    "general_hns",
+    "indigo_plateau_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 213,
+   "action": "igual"
+  },
+  "214": {
+   "p_id": 214,
+   "p_name": "MB_HORIZONTAL_RAIL",
+   "tilesets": [
+    "department_store_hns",
+    "general_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 214,
+   "action": "igual"
+  },
+  "215": {
+   "p_id": 215,
+   "p_name": "MB_TALL_GRASS_IMPASSABLE_NORTH",
+   "tilesets": [
+    "johto_north_east_hns",
+    "mt_silver_exp_hns",
+    "viridian_forest_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "novo",
+   "s_id_proposto": 46,
+   "s_slot_unused": "MB_UNUSED_2E",
+   "identidade": false
+  },
+  "216": {
+   "p_id": 216,
+   "p_name": "MB_CAVE_IMPASSABLE_NORTH",
+   "tilesets": [
+    "cave_gray_hns",
+    "cave_sandy_hns",
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 4,
+   "action": "novo",
+   "s_id_proposto": 216,
+   "s_slot_unused": "MB_UNUSED_D8",
+   "identidade": true
+  },
+  "217": {
+   "p_id": 217,
+   "p_name": "MB_UNUSED_D9",
+   "tilesets": [
+    "cave_gray_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 217,
+   "action": "igual"
+  },
+  "218": {
+   "p_id": 218,
+   "p_name": "MB_UNUSED_DA",
+   "tilesets": [
+    "cave_gray_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 218,
+   "action": "igual"
+  },
+  "219": {
+   "p_id": 219,
+   "p_name": "MB_UNUSED_DB",
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 219,
+   "action": "igual"
+  },
+  "220": {
+   "p_id": 220,
+   "p_name": "MB_UNUSED_DC",
+   "tilesets": [
+    "cave_sandy_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 220,
+   "action": "igual"
+  },
+  "221": {
+   "p_id": 221,
+   "p_name": "MB_UNUSED_DD",
+   "tilesets": [
+    "cave_sandy_hns",
+    "department_store_hns",
+    "shop_rooftop_hns",
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 5,
+   "s_id": 221,
+   "action": "igual"
+  },
+  "222": {
+   "p_id": 222,
+   "p_name": "MB_UNUSED_DE",
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 222,
+   "action": "igual"
+  },
+  "223": {
+   "p_id": 223,
+   "p_name": "MB_UNUSED_DF",
+   "tilesets": [
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 223,
+   "action": "igual"
+  },
+  "224": {
+   "p_id": 224,
+   "p_name": "MB_PICTURE_BOOK_SHELF",
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 224,
+   "action": "igual"
+  },
+  "225": {
+   "p_id": 225,
+   "p_name": "MB_BOOKSHELF",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "johto_building_hns",
+    "kanto_building_hns",
+    "ssaqua_hns",
+    "trainer_school_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 6,
+   "s_id": 225,
+   "action": "igual"
+  },
+  "226": {
+   "p_id": 226,
+   "p_name": "MB_POKEMON_CENTER_BOOKSHELF",
+   "tilesets": [
+    "pokemon_day_care_hns",
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 226,
+   "action": "igual"
+  },
+  "227": {
+   "p_id": 227,
+   "p_name": "MB_VASE",
+   "tilesets": [
+    "department_store_hns",
+    "shop_rooftop_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 227,
+   "action": "igual"
+  },
+  "228": {
+   "p_id": 228,
+   "p_name": "MB_TRASH_CAN",
+   "tilesets": [
+    "goldenrod_underground_tunnel_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 228,
+   "action": "igual"
+  },
+  "229": {
+   "p_id": 229,
+   "p_name": "MB_SHOP_SHELF",
+   "tilesets": [
+    "johto_mart_hns",
+    "kanto_mart_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 229,
+   "action": "igual"
+  },
+  "230": {
+   "p_id": 230,
+   "p_name": "MB_BLUEPRINT",
+   "tilesets": [
+    "department_store_hns",
+    "shop_rooftop_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 230,
+   "action": "igual"
+  },
+  "231": {
+   "p_id": 231,
+   "p_name": "MB_CABLE_BOX_RESULTS_2",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "indigo_plateau_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 231,
+   "action": "igual"
+  },
+  "232": {
+   "p_id": 232,
+   "p_name": "MB_WIRELESS_BOX_RESULTS",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "ssaqua_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 232,
+   "action": "igual"
+  },
+  "235": {
+   "p_id": 235,
+   "p_name": "MB_UP_RIGHT_STAIR_WARP",
+   "tilesets": [
+    "department_store_hns",
+    "indigo_plateau_hns",
+    "shop_rooftop_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 4,
+   "s_id": 235,
+   "action": "igual"
+  },
+  "236": {
+   "p_id": 236,
+   "p_name": "MB_UP_LEFT_STAIR_WARP",
+   "tilesets": [
+    "department_store_hns",
+    "shop_rooftop_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "s_id": 236,
+   "action": "igual"
+  },
+  "238": {
+   "p_id": 238,
+   "p_name": "MB_DOWN_LEFT_STAIR_WARP",
+   "tilesets": [
+    "department_store_hns",
+    "shop_rooftop_hns"
+   ],
+   "n_tilesets": 2,
+   "s_id": 238,
+   "action": "igual"
+  },
+  "239": {
+   "p_id": 239,
+   "p_name": "MB_ROCK_CLIMB",
+   "tilesets": [
+    "indigo_plateau_hns"
+   ],
+   "n_tilesets": 1,
+   "s_id": 239,
+   "action": "igual"
+  },
+  "240": {
+   "p_id": 240,
+   "p_name": "MB_HEADBUTT_TREE",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "cerulean_city_hns",
+    "ecruteak_theater_hns",
+    "ilex_forest_hns",
+    "johto_general_hns",
+    "johto_north_east_hns"
+   ],
+   "n_tilesets": 11,
+   "action": "novo",
+   "s_id_proposto": 47,
+   "s_slot_unused": "MB_UNUSED_2F",
+   "identidade": false
+  },
+  "241": {
+   "p_id": 241,
+   "p_name": "MB_WATER_NORTH_ARROW_WARP",
+   "tilesets": [
+    "celadon_apartments_hns",
+    "cianwood_city_hns",
+    "department_store_hns",
+    "shop_rooftop_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 5,
+   "action": "novo",
+   "s_id_proposto": 89,
+   "s_slot_unused": "MB_UNUSED_59",
+   "identidade": false
+  },
+  "242": {
+   "p_id": 242,
+   "p_name": "MB_BRIDGE_OVER_ICE",
+   "tilesets": [
+    "mt_silver_exp_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "action": "novo",
+   "s_id_proposto": 92,
+   "s_slot_unused": "MB_UNUSED_5C",
+   "identidade": false
+  },
+  "243": {
+   "p_id": 243,
+   "p_name": null,
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "action": "sem_nome_no_P",
+   "s_id_proposto": 0,
+   "sanitizar": true
+  },
+  "244": {
+   "p_id": 244,
+   "p_name": null,
+   "tilesets": [
+    "cave_sandy_hns",
+    "indigo_plateau_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "sem_nome_no_P",
+   "s_id_proposto": 0,
+   "sanitizar": true
+  },
+  "246": {
+   "p_id": 246,
+   "p_name": null,
+   "tilesets": [
+    "celadon_apartments_hns"
+   ],
+   "n_tilesets": 1,
+   "action": "sem_nome_no_P",
+   "s_id_proposto": 0,
+   "sanitizar": true
+  },
+  "251": {
+   "p_id": 251,
+   "p_name": null,
+   "tilesets": [
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 1,
+   "action": "sem_nome_no_P",
+   "s_id_proposto": 0,
+   "sanitizar": true
+  },
+  "252": {
+   "p_id": 252,
+   "p_name": null,
+   "tilesets": [
+    "ecruteak_theater_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 2,
+   "action": "sem_nome_no_P",
+   "s_id_proposto": 0,
+   "sanitizar": true
+  },
+  "254": {
+   "p_id": 254,
+   "p_name": null,
+   "tilesets": [
+    "cave_gray_hns",
+    "ssaqua_hns",
+    "viridian_city_gym_hns"
+   ],
+   "n_tilesets": 3,
+   "action": "sem_nome_no_P",
+   "s_id_proposto": 0,
+   "sanitizar": true
+  },
+  "255": {
+   "p_id": 255,
+   "p_name": null,
+   "tilesets": [
+    "cafe_hns",
+    "cave_gray_hns",
+    "cave_green_hns",
+    "cave_sandy_hns",
+    "celadon_apartments_hns",
+    "cerulean_city_hns"
+   ],
+   "n_tilesets": 13,
+   "action": "sem_nome_no_P",
+   "s_id_proposto": 0,
+   "sanitizar": true
+  }
+ }
+}

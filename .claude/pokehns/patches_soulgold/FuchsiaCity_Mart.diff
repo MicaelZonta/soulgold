@@ -1,0 +1,42 @@
+diff --git a/data/maps/FuchsiaCity_Mart/map.json b/data/maps/FuchsiaCity_Mart/map.json
+index 6762ad443b..e4b65acfd7 100644
+--- a/data/maps/FuchsiaCity_Mart/map.json
++++ b/data/maps/FuchsiaCity_Mart/map.json
+@@ -28,7 +28,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_LASS",
++      "graphics_id": "OBJ_EVENT_GFX_FR_LASS",
+       "x": 9,
+       "y": 5,
+       "elevation": 0,
+@@ -63,10 +63,6 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/FuchsiaCity_Mart/scripts.inc b/data/maps/FuchsiaCity_Mart/scripts.inc
+index f70711523f..bbb69c78c6 100644
+--- a/data/maps/FuchsiaCity_Mart/scripts.inc
++++ b/data/maps/FuchsiaCity_Mart/scripts.inc
+@@ -10,9 +10,9 @@ FuchsiaCity_Mart_EventScript_Woman::
+ 	end
+ 
+ FuchsiaMart_Text_Fisher:
+-	.string "The old SAFARI ZONE had way better\n"
++	.string "The old Safari Zone had way better\n"
+ 	.string "souvenirs...$"
+ 
+ FuchsiaMart_Text_CooltrainerF:
+-	.string "The old SAFARI ZONE WARDEN's \n"
++	.string "The old Safari Zone Warden's \n"
+ 	.string "granddaughter lives in town.$"

@@ -1,0 +1,49 @@
+diff --git a/data/maps/PewterCity_Museum_2F/map.json b/data/maps/PewterCity_Museum_2F/map.json
+index f7acb29a95..40f20dba6f 100644
+--- a/data/maps/PewterCity_Museum_2F/map.json
++++ b/data/maps/PewterCity_Museum_2F/map.json
+@@ -63,9 +63,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/PewterCity_Museum_2F/scripts.inc b/data/maps/PewterCity_Museum_2F/scripts.inc
+index 474e30171a..6ff99777fd 100644
+--- a/data/maps/PewterCity_Museum_2F/scripts.inc
++++ b/data/maps/PewterCity_Museum_2F/scripts.inc
+@@ -24,7 +24,7 @@ PewterCity_Museum_2F_EventScript_Meteor::
+ 
+ PewterCity_Museum_2F_Text_Nerd:
+ 	.string "They say that meteorites struck\n"
+-	.string "BIRTH ISLAND.\p"
++	.string "Birth Island.\p"
+ 	.string "We would love to display them here\n"
+ 	.string "in our museum, but...\p"
+ 	.string "These meteorites are said to emit\n"
+@@ -32,16 +32,16 @@ PewterCity_Museum_2F_Text_Nerd:
+ 	.string "carried away...$"
+ 
+ PewterCity_Museum_2F_Text_AskedDaddyToCatchPikachu::
+-    .string "I want a PIKACHU!\n"
++    .string "I want a Pikachu!\n"
+     .string "It's so cute!\p"
+     .string "I asked my daddy to catch me one!$"
+ 
+ PewterCity_Museum_2F_Text_PikachuSoonIPromise::
+-    .string "Yeah, a PIKACHU soon, I promise!$"
++    .string "Yeah, a Pikachu soon, I promise!$"
+ 
+ PewterCity_Museum_2F_Text_SpaceShuttle::
+     .string "Space Shuttle$"
+ 
+ PewterCity_Museum_2F_Text_MeteoriteThatFellOnMtMoon::
+-    .string "A meteorite that fell on MT. MOON.\n"
+-    .string "It is thought to be a MOON STONE.$"
++    .string "A meteorite that fell on Mt. Moon.\n"
++    .string "It is thought to be a Moon Stone.$"

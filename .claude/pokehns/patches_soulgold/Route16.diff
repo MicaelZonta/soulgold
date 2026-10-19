@@ -1,0 +1,70 @@
+diff --git a/data/maps/Route16/map.json b/data/maps/Route16/map.json
+index aa63ceb879..2475911269 100644
+--- a/data/maps/Route16/map.json
++++ b/data/maps/Route16/map.json
+@@ -114,9 +114,7 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/Route16/map.json.bak b/data/maps/Route16/map.json.bak
+index db4182062e..81e78eb562 100644
+--- a/data/maps/Route16/map.json.bak
++++ b/data/maps/Route16/map.json.bak
+@@ -26,7 +26,7 @@
+   ],
+   "object_events": [
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GRIMER",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GRIMER"),
+       "x": 1,
+       "y": 3,
+       "elevation": 0,
+@@ -52,7 +52,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_MURKROW",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MURKROW"),
+       "x": 24,
+       "y": 11,
+       "elevation": 0,
+@@ -65,7 +65,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SHUPPET",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SHUPPET"),
+       "x": 35,
+       "y": 1,
+       "elevation": 0,
+@@ -78,7 +78,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ROSELIA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ROSELIA"),
+       "x": 45,
+       "y": 3,
+       "elevation": 0,
+diff --git a/data/maps/Route16/scripts.inc b/data/maps/Route16/scripts.inc
+index cfe2ac5a7b..7ae842fe86 100644
+--- a/data/maps/Route16/scripts.inc
++++ b/data/maps/Route16/scripts.inc
+@@ -12,6 +12,6 @@ Route16_EventScript_Sign::
+ 	end
+ 
+ Route16_Text_Sign:
+-	.string "CYCLING ROAD\n"
+-	.string "DOWNHILL COASING\l"
+-	.string "ALL THE WAY DOWN!$"
+\ No newline at end of file
++	.string "Cycling Road\n"
++	.string "Downhill Coasing\l"
++	.string "All The Way Down!$"

@@ -1,0 +1,101 @@
+diff --git a/data/maps/TohjoFalls_Cavern/map.json b/data/maps/TohjoFalls_Cavern/map.json
+index a799353e25..f37e419090 100644
+--- a/data/maps/TohjoFalls_Cavern/map.json
++++ b/data/maps/TohjoFalls_Cavern/map.json
+@@ -12,10 +12,10 @@
+   "allow_running": true,
+   "show_map_name": true,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
++      "graphics_id": "OBJ_EVENT_GFX_MEGASTONE",
+       "x": 15,
+       "y": 11,
+       "elevation": 0,
+@@ -23,8 +23,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "TohjoFalls_Cavern_EventScript_HeartScale",
++      "trainer_sight_or_berry_tree_id": "ITEM_NORMALITE",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_TOHJOFALLS_HEART_SCALE"
+     },
+     {
+@@ -116,10 +116,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/TohjoFalls_Cavern/map.json.bak b/data/maps/TohjoFalls_Cavern/map.json.bak
+index 5cf603abfd..3c606067d1 100644
+--- a/data/maps/TohjoFalls_Cavern/map.json.bak
++++ b/data/maps/TohjoFalls_Cavern/map.json.bak
+@@ -28,7 +28,7 @@
+       "flag": "FLAG_ITEM_TOHJOFALLS_HEART_SCALE"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SLOWPOKE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SLOWPOKE"),
+       "x": 42,
+       "y": 10,
+       "elevation": 0,
+@@ -41,7 +41,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SLOWPOKE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SLOWPOKE"),
+       "x": 45,
+       "y": 11,
+       "elevation": 0,
+@@ -54,7 +54,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SLOWPOKE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SLOWPOKE"),
+       "x": 49,
+       "y": 10,
+       "elevation": 0,
+@@ -67,7 +67,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ZUBAT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZUBAT"),
+       "x": 15,
+       "y": 22,
+       "elevation": 0,
+@@ -80,7 +80,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_RATICATE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RATICATE"),
+       "x": 41,
+       "y": 25,
+       "elevation": 0,
+diff --git a/data/maps/TohjoFalls_Cavern/scripts.inc b/data/maps/TohjoFalls_Cavern/scripts.inc
+index 36d3f5f2e0..20793d04ae 100644
+--- a/data/maps/TohjoFalls_Cavern/scripts.inc
++++ b/data/maps/TohjoFalls_Cavern/scripts.inc
+@@ -1,6 +1,3 @@
+ TohjoFalls_Cavern_MapScripts::
+ 	.byte 0
+ 
+-TohjoFalls_Cavern_EventScript_HeartScale::
+-	finditem ITEM_HEART_SCALE
+-	end

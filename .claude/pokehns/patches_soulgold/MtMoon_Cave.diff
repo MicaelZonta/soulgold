@@ -1,0 +1,245 @@
+diff --git a/data/maps/MtMoon_Cave/map.json b/data/maps/MtMoon_Cave/map.json
+index 4a4c817dc9..6ba0cf0ca8 100644
+--- a/data/maps/MtMoon_Cave/map.json
++++ b/data/maps/MtMoon_Cave/map.json
+@@ -12,7 +12,7 @@
+   "allow_running": true,
+   "show_map_name": true,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
+       "graphics_id": "OBJ_EVENT_GFX_SILVER",
+@@ -145,7 +145,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LUNATONE)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY)",
+       "x": 22,
+       "y": 8,
+       "elevation": 0,
+@@ -158,7 +158,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SOLROCK)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GEODUDE)",
+       "x": 29,
+       "y": 13,
+       "elevation": 0,
+@@ -263,10 +263,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/MtMoon_Cave/map.json.bak b/data/maps/MtMoon_Cave/map.json.bak
+index 08fffb0b9c..0aeacfbbf2 100644
+--- a/data/maps/MtMoon_Cave/map.json.bak
++++ b/data/maps/MtMoon_Cave/map.json.bak
+@@ -28,7 +28,7 @@
+       "flag": "FLAG_HIDE_MTMOON_SILVER"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 14,
+       "y": 33,
+       "elevation": 0,
+@@ -41,7 +41,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 9,
+       "y": 28,
+       "elevation": 0,
+@@ -54,7 +54,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GEODUDE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GEODUDE"),
+       "x": 10,
+       "y": 7,
+       "elevation": 0,
+@@ -67,7 +67,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 14,
+       "y": 28,
+       "elevation": 0,
+@@ -80,7 +80,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 9,
+       "y": 33,
+       "elevation": 0,
+@@ -93,7 +93,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 13,
+       "y": 29,
+       "elevation": 0,
+@@ -106,7 +106,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 10,
+       "y": 29,
+       "elevation": 0,
+@@ -119,7 +119,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 10,
+       "y": 32,
+       "elevation": 0,
+@@ -132,7 +132,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 13,
+       "y": 32,
+       "elevation": 0,
+@@ -145,7 +145,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_LUNATONE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LUNATONE"),
+       "x": 22,
+       "y": 8,
+       "elevation": 0,
+@@ -158,7 +158,7 @@
+       "flag": "FLAG_NIGHT_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_SOLROCK",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SOLROCK"),
+       "x": 29,
+       "y": 13,
+       "elevation": 0,
+@@ -171,7 +171,7 @@
+       "flag": "FLAG_DAY_POKEMON"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CLEFAIRY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY"),
+       "x": 10,
+       "y": 7,
+       "elevation": 0,
+diff --git a/data/maps/MtMoon_Cave/scripts.inc b/data/maps/MtMoon_Cave/scripts.inc
+index b58f736cad..c325d5bb82 100644
+--- a/data/maps/MtMoon_Cave/scripts.inc
++++ b/data/maps/MtMoon_Cave/scripts.inc
+@@ -8,23 +8,30 @@ MtMoon_Cave_MapScripts::
+ 
+ MtMoon_Cave_OnTransition: 
+ 	callnative SetTimeBasedEncounters
++	goto_if_set FLAG_HIDE_MTMOON_SILVER, MtMoon_Cave_OnTransition_End
++	setvar VAR_TEMP_1, 1
++MtMoon_Cave_OnTransition_End:
+ 	end
+ 
+ 
++@ Armed by OnTransition while Silver is still here (FLAG_HIDE_MTMOON_SILVER
++@ unset; the scene sets it at the end). It used to read VAR_GARBAGEVAR == 0/1,
++@ the project's scrap var: any script resetting it would replay the scene with
++@ Silver already gone (bug/B07). VAR_TEMP_1 is cleared on every map load.
+ MtMoon_Cave_MapScript_OnFrame::
+-	map_script_2 VAR_PEWTER_CITY_STATE, 0, MtMoon_Cave_EventScript_Silver
+-	map_script_2 VAR_PEWTER_CITY_STATE, 1, MtMoon_Cave_EventScript_Silver
++	map_script_2 VAR_TEMP_1, 1, MtMoon_Cave_EventScript_Silver
+ 	.2byte 0
+ 
+ MtMoon_Cave_EventScript_Silver::
++	setvar VAR_TEMP_1, 2
+ 	lock
+ 	playbgm MUS_HG_ENCOUNTER_RIVAL, TRUE
+ 	playse SE_PIN
+-	applymovement2 LOCALID_MTMOON_SILVER, Common_Movement_ExclamationMark
++	applymovement LOCALID_MTMOON_SILVER, Common_Movement_ExclamationMark
+ 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
+ 	delay 60
+-	applymovement2 LOCALID_MTMOON_SILVER MtMoon_Cave_Movement_WalkToPlayer
+-	applymovement2 OBJ_EVENT_ID_PLAYER Common_Movement_WalkRight1
++	applymovement LOCALID_MTMOON_SILVER MtMoon_Cave_Movement_WalkToPlayer
++	applymovement OBJ_EVENT_ID_PLAYER Common_Movement_WalkRight1
+ 	waitmovement LOCALID_MTMOON_SILVER
+ 	waitmovement OBJ_EVENT_ID_PLAYER
+ 	msgbox MtMoon_Cave_Text_Rival_Before, MSGBOX_DEFAULT
+@@ -50,12 +57,11 @@ MtMoon_Cave_EventScript_SilverAfterBattle::
+ 	playbgm MUS_HG_RIVAL_EXIT, TRUE
+ 	msgbox MtMoon_Cave_Text_Rival_After, MSGBOX_DEFAULT
+ 	closemessage
+-	applymovement2 LOCALID_MTMOON_SILVER, MtMoon_Cave_Movement_SilverLeave
++	applymovement LOCALID_MTMOON_SILVER, MtMoon_Cave_Movement_SilverLeave
+ 	waitmovement 0
+ 	removeobject LOCALID_MTMOON_SILVER
+ 	setflag FLAG_HIDE_MTMOON_SILVER
+ 	clearflag FLAG_HIDE_INDIGO_PLATEAU_SILVER
+-	setvar VAR_PEWTER_CITY_STATE, 2
+ 		fadedefaultbgm
+ 	release
+ 	end
+@@ -79,13 +85,13 @@ MtMoon_Cave_Text_Rival_Before:
+ 	.string "..................................\p"
+ 	.string "It's been a while, {PLAYER}.\p"
+ 	.string "…Since I lost to you, I thought about\n"
+-	.string "what I was lacking with my POKéMON…\p"
++	.string "what I was lacking with my Pokémon…\p"
+ 	.string "And we came up with an answer.\p"
+ 	.string "{PLAYER}, now we'll show you!$"
+ 
+ MtMoon_Cave_Text_Rival_Win:
+ 	.string "..................................\p"
+-	.string "I thought I raised my POKéMON to be the\n"
++	.string "I thought I raised my Pokémon to be the\n"
+ 	.string "best they could be…\p"
+ 	.string "…But it still wasn't enough…$"
+ 
+@@ -93,7 +99,7 @@ MtMoon_Cave_Text_Rival_After:
+ 	.string "..................................\p"
+ 	.string "…You won, fair and square.\p"
+ 	.string "I admit it. But this isn't the end.\p"
+-	.string "I'm going to be the greatest POKéMON\n"
++	.string "I'm going to be the greatest Pokémon\n"
+ 	.string "trainer ever.\p"
+ 	.string "Because these guys are behind me.\p"
+ 	.string "…Listen, {PLAYER}.\p"
+@@ -103,7 +109,7 @@ MtMoon_Cave_Text_Rival_After:
+ MtMoon_Cave_Text_Rival_Loss:
+ 	.string "..................................\p"
+ 	.string "I've repaid my debt to you.\p"
+-	.string "With my POKéMON, I'm going to beat the\n"
+-	.string "CHAMPION and become the world's greatest\n"
++	.string "With my Pokémon, I'm going to beat the\n"
++	.string "Champion and become the world's greatest\n"
+ 	.string "trainer.$"
+ 

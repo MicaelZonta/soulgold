@@ -1,0 +1,27 @@
+diff --git a/data/maps/CeladonCity_DepartmentStore_RoofDay/map.json b/data/maps/CeladonCity_DepartmentStore_RoofDay/map.json
+index f5b0fce3df..fd615a9e31 100644
+--- a/data/maps/CeladonCity_DepartmentStore_RoofDay/map.json
++++ b/data/maps/CeladonCity_DepartmentStore_RoofDay/map.json
+@@ -50,9 +50,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/CeladonCity_DepartmentStore_RoofDay/scripts.inc b/data/maps/CeladonCity_DepartmentStore_RoofDay/scripts.inc
+index 36852589db..f6a3e6d667 100644
+--- a/data/maps/CeladonCity_DepartmentStore_RoofDay/scripts.inc
++++ b/data/maps/CeladonCity_DepartmentStore_RoofDay/scripts.inc
+@@ -49,5 +49,5 @@ CeladonDeptStore6F_Text_Youngster:
+ 	.string "I wanted to play…$"
+ 
+ CeladonDeptStore6F_Text_Directory:
+-	.string "6F: ROOFTOP SQUARE VENDING\n"
+-	.string "MACHINES$"
++	.string "6F: Rooftop Square Vending\n"
++	.string "Machines$"

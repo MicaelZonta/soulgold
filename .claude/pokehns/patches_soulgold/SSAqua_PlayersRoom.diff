@@ -1,0 +1,41 @@
+diff --git a/data/maps/SSAqua_PlayersRoom/map.json b/data/maps/SSAqua_PlayersRoom/map.json
+index e86fa2182d..c2dbde6f6d 100644
+--- a/data/maps/SSAqua_PlayersRoom/map.json
++++ b/data/maps/SSAqua_PlayersRoom/map.json
+@@ -12,10 +12,8 @@
+   "allow_running": false,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
+-  "object_events": [
+-
+-  ],
++  "connections": null,
++  "object_events": [],
+   "warp_events": [
+     {
+       "x": 2,
+@@ -25,9 +23,7 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/SSAqua_PlayersRoom/scripts.inc b/data/maps/SSAqua_PlayersRoom/scripts.inc
+index 572ed4f33a..a18c6589ad 100644
+--- a/data/maps/SSAqua_PlayersRoom/scripts.inc
++++ b/data/maps/SSAqua_PlayersRoom/scripts.inc
+@@ -19,7 +19,7 @@ SSAquaRooms_EventScript_Bed_PokecenterChallenge::
+ 
+ SSAquaRooms_Text_TakeRestOnBed_PokecenterChallenge:
+ 	.string "Sorry, you are playing with\n"
+-	.string "the POKéCENTER challenge!$"
++	.string "the Pokémon Center challenge!$"
+ 
+ SSAquaRooms_Text_TakeRestOnBed:
+ 	.string "There's a bed…\n"

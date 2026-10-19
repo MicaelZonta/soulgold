@@ -1,0 +1,46 @@
+diff --git a/data/maps/CeladonCity_DepartmentStore_4F/map.json b/data/maps/CeladonCity_DepartmentStore_4F/map.json
+index a554b64ef1..92e8b6781e 100644
+--- a/data/maps/CeladonCity_DepartmentStore_4F/map.json
++++ b/data/maps/CeladonCity_DepartmentStore_4F/map.json
+@@ -37,7 +37,7 @@
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+       "trainer_sight_or_berry_tree_id": "0",
+-      "script": "LilycoveCity_DepartmentStore_3F_EventScript_ClerkLeft",
++      "script": "Goldenrod_DepartmentStore_3F_EventScript_ClerkLeft",
+       "flag": "0"
+     },
+     {
+@@ -83,9 +83,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/CeladonCity_DepartmentStore_4F/scripts.inc b/data/maps/CeladonCity_DepartmentStore_4F/scripts.inc
+index 7ffc64dad4..ce9efb0930 100644
+--- a/data/maps/CeladonCity_DepartmentStore_4F/scripts.inc
++++ b/data/maps/CeladonCity_DepartmentStore_4F/scripts.inc
+@@ -13,14 +13,14 @@ CeladonDept_EventScript_Directory::
+ 	end
+ 
+ CeladonDeptStore4F_Text_SuperNerd:
+-	.string "I'm here to buy SURF MAIL to send\n"
++	.string "I'm here to buy Surf Mail to send\n"
+ 	.string "to my girlfriend.\p"
+ 	.string "Wait, they're out of stock?$"
+ 
+ CeladonDeptStore4F_Text_Youngster:
+ 	.string "This is the only place where you\n"
+-	.string "can buy LOVELY MAIL.$"
++	.string "can buy Lovely Mail.$"
+ 
+ CeladonDeptStore4F_Text_Directory:
+ 	.string "Express Yourself With Gifts!\p"
+-	.string "4F: WISEMAN GIFTS$"
++	.string "4F: Wiseman Gifts$"

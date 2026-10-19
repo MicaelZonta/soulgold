@@ -1,0 +1,39 @@
+diff --git a/data/maps/IndigoPlateau/map.json b/data/maps/IndigoPlateau/map.json
+index 2bd7974abe..572f32d2c9 100644
+--- a/data/maps/IndigoPlateau/map.json
++++ b/data/maps/IndigoPlateau/map.json
+@@ -19,9 +19,7 @@
+       "direction": "down"
+     }
+   ],
+-  "object_events": [
+-
+-  ],
++  "object_events": [],
+   "warp_events": [
+     {
+       "x": 11,
+@@ -31,9 +29,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/IndigoPlateau/scripts.inc b/data/maps/IndigoPlateau/scripts.inc
+index 733aa2f9bd..9b884b1924 100644
+--- a/data/maps/IndigoPlateau/scripts.inc
++++ b/data/maps/IndigoPlateau/scripts.inc
+@@ -6,6 +6,6 @@ IndigoPlateau_Sign::
+ 	end
+ 
+ IndigoPlateau_Text_Sign:
+-	.string "INDIGO PLATEAU\p"
++	.string "Indigo Plateau\p"
+ 	.string "The Ultimate Goal for Trainers!\p"
+-	.string "POKéMON LEAGUE HQ$"
++	.string "Pokémon League Hq$"

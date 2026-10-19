@@ -1,0 +1,155 @@
+diff --git a/data/maps/PokemonLeague_WillsRoom/map.json b/data/maps/PokemonLeague_WillsRoom/map.json
+index 5884f7df1e..6c1dd1326a 100644
+--- a/data/maps/PokemonLeague_WillsRoom/map.json
++++ b/data/maps/PokemonLeague_WillsRoom/map.json
+@@ -44,10 +44,6 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/PokemonLeague_WillsRoom/scripts.inc b/data/maps/PokemonLeague_WillsRoom/scripts.inc
+index ea09d4cec0..616d2bf29a 100644
+--- a/data/maps/PokemonLeague_WillsRoom/scripts.inc
++++ b/data/maps/PokemonLeague_WillsRoom/scripts.inc
+@@ -9,16 +9,17 @@ EliteFourRoom_OnLoad::
+ 	end
+ 
+ EliteFourRoom_CreateDoor::
+-	setmetatile 5, 11, 0x29D, TRUE
+-	setmetatile 6, 11, 0x29E, TRUE
+-	setmetatile 7, 11, 0x29F, TRUE
+-	setmetatile 5, 12, 0x2A5, TRUE
+-	setmetatile 6, 12, 0x2A6, TRUE
+-	setmetatile 7, 12, 0x2A7, TRUE
++	setmetatile 5, 11, 0x41D, TRUE
++	setmetatile 6, 11, 0x41E, TRUE
++	setmetatile 7, 11, 0x41F, TRUE
++	setmetatile 5, 12, 0x425, TRUE
++	setmetatile 6, 12, 0x426, TRUE
++	setmetatile 7, 12, 0x427, TRUE
+ 	return
+ 
+ PokemonLeague_WillsRoom_OnResume::
+ 	setvar VAR_0x8004, 0
++	@special DoPokemonLeagueLightingEffect
+ 	end
+ 
+ EliteFourRoom_OnFrame::
+@@ -27,17 +28,18 @@ EliteFourRoom_OnFrame::
+ 
+ EliteFourRoom_CloseDoor::
+ 	lock
++	call_if_set FLAG_IS_CHAMPION, EliteFourRoom_RollRematchParty
+ 	setflag FLAG_TEMP_2
+ 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1
+ 	waitmovement 0
+ 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1
+ 	waitmovement 0
+-	setmetatile 5, 11, 0x29D, TRUE
+-	setmetatile 6, 11, 0x29E, TRUE
+-	setmetatile 7, 11, 0x29F, TRUE
+-	setmetatile 5, 12, 0x2A5, TRUE
+-	setmetatile 6, 12, 0x2A6, TRUE
+-	setmetatile 7, 12, 0x2A7, TRUE
++	setmetatile 5, 11, 0x41D, TRUE
++	setmetatile 6, 11, 0x41E, TRUE
++	setmetatile 7, 11, 0x41F, TRUE
++	setmetatile 5, 12, 0x425, TRUE
++	setmetatile 6, 12, 0x426, TRUE
++	setmetatile 7, 12, 0x427, TRUE
+ 	playse SE_BANG
+ 	setvar VAR_0x8004, 1  @ vertical pan
+ 	setvar VAR_0x8005, 1  @ horizontal pan
+@@ -50,11 +52,16 @@ EliteFourRoom_CloseDoor::
+ 	release
+ 	end
+ 
++EliteFourRoom_RollRematchParty::
++	random 2
++	copyvar VAR_TEMP_1, VAR_RESULT
++	return
++
+ PokemonLeague_WillsRoom_EventScript_Will::
+ 	lock 
+ 	faceplayer
+ 	goto_if_ge VAR_LEAGUE_STATE, 2, PokemonLeague_WillsRoom_EventScript_WillDefeated
+-	goto_if_set FLAG_GARBAGEFLAG, PokemonLeague_WillsRoom_EventScript_WillRematch
++	goto_if_set FLAG_IS_CHAMPION, PokemonLeague_WillsRoom_EventScript_WillRematch
+ 	msgbox PokemonLeague_WillsRoom_Text_Before, MSGBOX_DEFAULT
+ 	setflag FLAG_TEMP_3
+ 	setflag FLAG_TEMP_5
+@@ -65,15 +72,21 @@ PokemonLeague_WillsRoom_EventScript_WillRematch::
+ 	msgbox PokemonLeague_WillsRoom_Text_RematchBefore, MSGBOX_DEFAULT
+ 	setflag FLAG_TEMP_3
+ 	setflag FLAG_TEMP_5
++	goto_if_eq VAR_TEMP_1, 1, PokemonLeague_WillsRoom_EventScript_WillRematchAlt
+ 	trainerbattle_no_intro TRAINER_WILL_2, PokemonLeague_WillsRoom_Text_Beaten
+ 	goto PokemonLeague_WillsRoom_EventScript_WillOnDefeat
+ 
++PokemonLeague_WillsRoom_EventScript_WillRematchAlt::
++	trainerbattle_no_intro TRAINER_WILL_REMATCH_ALT, PokemonLeague_WillsRoom_Text_Beaten
++	goto PokemonLeague_WillsRoom_EventScript_WillOnDefeat
++
+ PokemonLeague_WillsRoom_EventScript_WillOnDefeat::
+ 	clearflag FLAG_TEMP_5
++	createfieldmugshot MUGSHOT_WILL
+ 	msgbox PokemonLeague_WillsRoom_Text_Defeat, MSGBOX_DEFAULT
+ 	closemessage
+-	setmetatile 6, 1, 0x28E, FALSE
+-	setmetatile 6, 2, 0x296, FALSE	
++	setmetatile 6, 1, 0x40E, FALSE
++	setmetatile 6, 2, 0x416, FALSE	
+ 	playse SE_BANG
+ 	setvar VAR_0x8004, 1  @ vertical pan
+ 	setvar VAR_0x8005, 1  @ horizontal pan
+@@ -93,15 +106,15 @@ PokemonLeague_WillsRoom_EventScript_WillDefeated::
+ 	end
+ 
+ PokemonLeague_WillsRoom_Text_Before:
+-    .string "Welcome to POKéMON LEAGUE,\n"
++    .string "{SPEAKER NAME_WILL}Welcome to Pokémon League,\n"
+     .string "{PLAYER}.\p"
+     .string "Allow me to introduce myself.\n"
+-    .string "I am WILL.\p"
++    .string "I am Will.\p"
+     .string "I have trained all around the\n"
+     .string "world, making my psychic\l"
+-    .string "POKéMON powerful.\p"
++    .string "Pokémon powerful.\p"
+     .string "And, at last, I've been accepted\n"
+-    .string "into the ELITE FOUR.\p"
++    .string "into the Elite Four.\p"
+     .string "I can only keep getting better!\p"
+     .string "Losing is not an option!$"
+ 
+@@ -109,18 +122,18 @@ PokemonLeague_WillsRoom_Text_Beaten:
+     .string "I… I can't… believe it…$"
+ 
+ PokemonLeague_WillsRoom_Text_Defeat:
+-    .string "Even though I was defeated, I\n"
++    .string "{SPEAKER NAME_WILL}Even though I was defeated, I\n"
+     .string "won't change my course.\p"
+     .string "I will continue battling until I\n"
+     .string "stand above all trainers!\p"
+     .string "Now, {PLAYER}, move on and\n"
+     .string "experience the true ferocity of\l"
+-    .string "the ELITE FOUR.$"
++    .string "the Elite Four.$"
+ 
+ PokemonLeague_WillsRoom_Text_RematchBefore:
+-    .string "WILL: Ah, welcome back.\p"
++    .string "{SPEAKER NAME_WILL}Ah, welcome back.\p"
+     .string "I have foreseen this encounter.\p"
+-    .string "My psychic POKéMON and I have\n"
++    .string "My psychic Pokémon and I have\n"
+     .string "evolved,\l"
+     .string "developing new tactics.\p"
+     .string "Prepare yourself for a battle of\n"

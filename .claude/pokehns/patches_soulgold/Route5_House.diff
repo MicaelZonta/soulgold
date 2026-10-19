@@ -1,0 +1,38 @@
+diff --git a/data/maps/Route5_House/map.json b/data/maps/Route5_House/map.json
+index a13b2e4e25..c298f6c4e5 100644
+--- a/data/maps/Route5_House/map.json
++++ b/data/maps/Route5_House/map.json
+@@ -50,10 +50,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/Route5_House/scripts.inc b/data/maps/Route5_House/scripts.inc
+index 4f83cd9339..62a5190c4c 100644
+--- a/data/maps/Route5_House/scripts.inc
++++ b/data/maps/Route5_House/scripts.inc
+@@ -4,8 +4,7 @@ Route5_House_MapScripts::
+ Route5_House_EventScript_Granny::
+ 	goto_if_set FLAG_GOT_CLEANSE_TAG, Route5_House_EventScript_GrannyAfter
+ 	msgbox Route5_House_Text_Granny1, MSGBOX_NPC
+-	giveitem ITEM_CLEANSE_TAG
+-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
++	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+ 	setflag FLAG_GOT_CLEANSE_TAG
+ 	release
+ 	end
+@@ -31,4 +30,4 @@ Route5_House_Text_Granny2:
+ Route5_House_Text_Woman:
+ 	.string "My grandma is into warding off what\n"
+ 	.string "she believes to be evil spirits.\p"
+-	.string "I'm sorry that she startled you.$"
+\ No newline at end of file
++	.string "I'm sorry that she startled you.$"

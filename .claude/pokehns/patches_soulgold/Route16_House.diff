@@ -1,0 +1,29 @@
+diff --git a/data/maps/Route16_House/map.json b/data/maps/Route16_House/map.json
+index 5f847709f6..b354ced178 100644
+--- a/data/maps/Route16_House/map.json
++++ b/data/maps/Route16_House/map.json
+@@ -37,10 +37,6 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/Route16_House/scripts.inc b/data/maps/Route16_House/scripts.inc
+index c26532c225..274302afb6 100644
+--- a/data/maps/Route16_House/scripts.inc
++++ b/data/maps/Route16_House/scripts.inc
+@@ -8,5 +8,5 @@ Route16FuchsiaSpeechHouse_EventScript_SuperNerd::
+ Route16FuchsiaSpeechHouse_Text_SuperNerd:
+ 	.string "A celebrity used to live here.$"
+ Route16FuchsiaSpeechHouse_Text_SuperNerdOld:
+-	.string "If you cruise down CYCLING ROAD,\n"
+-	.string "you will end up in FUCHSIA CITY.$"
++	.string "If you cruise down Cycling Road,\n"
++	.string "you will end up in Fuchsia City.$"

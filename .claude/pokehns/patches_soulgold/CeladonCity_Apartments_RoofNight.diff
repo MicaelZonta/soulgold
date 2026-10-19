@@ -1,0 +1,15 @@
+diff --git a/data/maps/CeladonCity_Apartments_RoofNight/map.json b/data/maps/CeladonCity_Apartments_RoofNight/map.json
+index 5d535febb8..75afbc8eab 100644
+--- a/data/maps/CeladonCity_Apartments_RoofNight/map.json
++++ b/data/maps/CeladonCity_Apartments_RoofNight/map.json
+@@ -51,9 +51,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",

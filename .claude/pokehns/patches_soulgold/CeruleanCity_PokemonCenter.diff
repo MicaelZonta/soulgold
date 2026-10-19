@@ -1,0 +1,59 @@
+diff --git a/data/maps/CeruleanCity_PokemonCenter/map.json b/data/maps/CeruleanCity_PokemonCenter/map.json
+index 69474b9b4c..1c34d92f3f 100644
+--- a/data/maps/CeruleanCity_PokemonCenter/map.json
++++ b/data/maps/CeruleanCity_PokemonCenter/map.json
+@@ -12,9 +12,10 @@
+   "allow_running": false,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
++      "local_id": "LOCALID_CERULEAN_NURSE",
+       "graphics_id": "OBJ_EVENT_GFX_NURSE",
+       "x": 7,
+       "y": 2,
+@@ -41,7 +42,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+       "x": 8,
+       "y": 2,
+       "elevation": 0,
+@@ -76,9 +77,7 @@
+       "dest_warp_id": "4"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/CeruleanCity_PokemonCenter/scripts.inc b/data/maps/CeruleanCity_PokemonCenter/scripts.inc
+index 6705c06953..229718c20c 100644
+--- a/data/maps/CeruleanCity_PokemonCenter/scripts.inc
++++ b/data/maps/CeruleanCity_PokemonCenter/scripts.inc
+@@ -18,12 +18,12 @@ CeruleanCity_PokemonCenter_EventScript_Guy::
+ 
+ CeruleanCity_PokemonCenter1F_Text_SuperNerd:
+ 	.string "For battles, I'd much rather use\n"
+-	.string "POKéMON I've been raising, even if\p"
++	.string "Pokémon I've been raising, even if\p"
+ 	.string "they're weaker than some newly\n"
+-	.string "caught POKéMON.$"
++	.string "caught Pokémon.$"
+ 
+ CeruleanCity_PokemonCenter1F_Text_GymGuide:
+-	.string "The MAGNET TRAIN travels at over\n"
+-	.string "340 mph. It goes between KANTO and\l"
+-	.string "JOHTO in almost no time at all.\p"
+-	.string "It really makes JOHTO accessible.$"
++	.string "The Magnet Train travels at over\n"
++	.string "340 mph. It goes between Kanto and\l"
++	.string "Johto in almost no time at all.\p"
++	.string "It really makes Johto accessible.$"

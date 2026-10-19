@@ -1,0 +1,15 @@
+diff --git a/data/maps/CeladonCity_DepartmentStore_RoofNight/map.json b/data/maps/CeladonCity_DepartmentStore_RoofNight/map.json
+index e979f1ad1b..28e3c210ce 100644
+--- a/data/maps/CeladonCity_DepartmentStore_RoofNight/map.json
++++ b/data/maps/CeladonCity_DepartmentStore_RoofNight/map.json
+@@ -50,9 +50,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",

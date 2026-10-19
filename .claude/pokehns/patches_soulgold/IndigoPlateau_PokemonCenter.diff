@@ -1,0 +1,575 @@
+diff --git a/data/maps/IndigoPlateau_PokemonCenter/map.json b/data/maps/IndigoPlateau_PokemonCenter/map.json
+index 92f11bbc65..3ca3234643 100644
+--- a/data/maps/IndigoPlateau_PokemonCenter/map.json
++++ b/data/maps/IndigoPlateau_PokemonCenter/map.json
+@@ -12,9 +12,10 @@
+   "allow_running": true,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
++      "local_id": "LOCALID_INDIGO_PLATEAU_NURSE",
+       "graphics_id": "OBJ_EVENT_GFX_NURSE",
+       "x": 19,
+       "y": 10,
+@@ -28,7 +29,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+       "x": 20,
+       "y": 10,
+       "elevation": 0,
+@@ -42,7 +43,7 @@
+     },
+     {
+       "graphics_id": "OBJ_EVENT_GFX_CLERK",
+-      "x": 10,
++      "x": 9,
+       "y": 10,
+       "elevation": 0,
+       "movement_type": "MOVEMENT_TYPE_NONE",
+@@ -50,7 +51,7 @@
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+       "trainer_sight_or_berry_tree_id": "0",
+-      "script": "BattleFrontier_Mart_EventScript_Clerk",
++      "script": "IndigoPlateau_StoneMerchant",
+       "flag": "0"
+     },
+     {
+@@ -66,32 +67,6 @@
+       "script": "IndigoPlateau_EventScript_Cooltrainer",
+       "flag": "0"
+     },
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+-      "x": 30,
+-      "y": 14,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+-      "movement_range_x": 0,
+-      "movement_range_y": 0,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "IndigoPlateau_EventScript_Psychic",
+-      "flag": "0"
+-    },
+-    {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ABRA)",
+-      "x": 28,
+-      "y": 15,
+-      "elevation": 0,
+-      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
+-      "movement_range_x": 0,
+-      "movement_range_y": 0,
+-      "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "IndigoPlateau_EventScript_Abra",
+-      "flag": "0"
+-    },
+     {
+       "graphics_id": "OBJ_EVENT_GFX_SILVER",
+       "x": 32,
+@@ -107,8 +82,8 @@
+     },
+     {
+       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+-      "x": 32,
+-      "y": 3,
++      "x": 8,
++      "y": 0,
+       "elevation": 0,
+       "movement_type": "MOVEMENT_TYPE_NONE",
+       "movement_range_x": 0,
+@@ -130,6 +105,32 @@
+       "trainer_sight_or_berry_tree_id": "0",
+       "script": "IndigoPlateau_EventScript_ShigyNinja",
+       "flag": "0"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_CLERK",
++      "x": 11,
++      "y": 10,
++      "elevation": 0,
++      "movement_type": "MOVEMENT_TYPE_NONE",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "BattleFrontier_Mart_EventScript_Clerk",
++      "flag": "0"
++    },
++    {
++      "graphics_id": "OBJ_EVENT_GFX_CLERK",
++      "x": 10,
++      "y": 10,
++      "elevation": 0,
++      "movement_type": "MOVEMENT_TYPE_NONE",
++      "movement_range_x": 0,
++      "movement_range_y": 0,
++      "trainer_type": "TRAINER_TYPE_NONE",
++      "trainer_sight_or_berry_tree_id": "0",
++      "script": "IndigoPlateau_GemMerchant",
++      "flag": "0"
+     }
+   ],
+   "warp_events": [
+@@ -137,7 +138,7 @@
+       "x": 19,
+       "y": 16,
+       "elevation": 0,
+-      "dest_map": "MAP_INDIGO_PLATEAU",
++      "dest_map": "MAP_ROUTE28",
+       "dest_warp_id": "0"
+     },
+     {
+@@ -148,9 +149,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/IndigoPlateau_PokemonCenter/map.json.bak b/data/maps/IndigoPlateau_PokemonCenter/map.json.bak
+index ba85f4d240..a5c82a15c1 100644
+--- a/data/maps/IndigoPlateau_PokemonCenter/map.json.bak
++++ b/data/maps/IndigoPlateau_PokemonCenter/map.json.bak
+@@ -80,7 +80,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ABRA",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ABRA"),
+       "x": 28,
+       "y": 15,
+       "elevation": 0,
+diff --git a/data/maps/IndigoPlateau_PokemonCenter/scripts.inc b/data/maps/IndigoPlateau_PokemonCenter/scripts.inc
+index 66eb6dc3ed..f8ac856353 100644
+--- a/data/maps/IndigoPlateau_PokemonCenter/scripts.inc
++++ b/data/maps/IndigoPlateau_PokemonCenter/scripts.inc
+@@ -1,11 +1,16 @@
++
+ .set LOCALID_NURSE, 1
+-.set LOCALID_INDIGOPLATEAU_ABRA, 6
+ 
+ IndigoPlateau_PokemonCenter_MapScripts::
+ 	@map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+ 	map_script MAP_SCRIPT_ON_FRAME_TABLE, IndigoPlateau_PokemonCenter_OnFrame 
++	map_script MAP_SCRIPT_ON_LOAD, IndigoPlateau_PokemonCenter_OnLoad
+ 	.byte 0
+ 
++IndigoPlateau_PokemonCenter_OnLoad::
++	setrespawn HEAL_LOCATION_INDIGO_PLATEAU_POKEMON_CENTER
++	end
++
+ IndigoPlateau_PokemonCenter_OnFrame::
+ 	map_script_2 VAR_LEAGUE_STATE, 0, IndigoPlateau_PokemonCenter_Enter
+ 	map_script_2 VAR_LEAGUE_STATE, 2, IndigoPlateau_PokemonCenter_Enter
+@@ -16,7 +21,7 @@ IndigoPlateau_PokemonCenter_OnFrame::
+ 	.2byte 0
+ 
+ IndigoPlateau_PokemonCenter_Enter::
+-	setflag FLAG_GARBAGEFLAG
++	setflag FLAG_VISITED_INDIGO_PLATEAU
+ 	setvar VAR_LEAGUE_STATE, 1
+ 	end
+ 
+@@ -42,26 +47,26 @@ IndigoPlateau_Text_ShigyNinja:
+ 	.string "Now, go get em'!$"
+ 
+ IndigoPlateau_Text_Blackbelt:
+-	.string "The POKéMON LEAGUE is not taking\n"
++	.string "The Pokémon League is not taking\n"
+ 	.string "new challengers at the moment.\p"
+ 	.string "Please check back later.$"
+ 
+ IndigoPlateau_Text_CooltrainerM:
+-    .string "At the POKéMON LEAGUE, you'll get\n"
+-    .string "tested by the ELITE FOUR.\p"
++    .string "At the Pokémon League, you'll get\n"
++    .string "tested by the Elite Four.\p"
+     .string "You have to beat them all. If you\n"
+     .string "lose, you have to start all over!$"
+ 
+ IndigoPlateau_EventScript_Silver::
+ 	lock
+ 	faceplayer 
+-	goto_if_set FLAG_GARBAGEFLAG, IndigoPlateau_EventScript_SilverBeat
++	goto_if_set FLAG_DAILY_BEAT_SILVER, IndigoPlateau_EventScript_SilverBeat
+ 	msgbox IndigoPlateau_Text_RivalEntrance1, MSGBOX_DEFAULT
+ 	call_if_eq VAR_STARTER_MON, 0, IndigoPlateau_Silver_Battle_Cyndaquil
+ 	call_if_eq VAR_STARTER_MON, 1, IndigoPlateau_Silver_Battle_Totodile
+ 	call_if_eq VAR_STARTER_MON, 2, IndigoPlateau_Silver_Battle_Chikorita
+ 	msgbox IndigoPlateau_Text_RivalAfter, MSGBOX_DEFAULT
+-	setflag FLAG_GARBAGEFLAG
++	setflag FLAG_DAILY_BEAT_SILVER
+ 	release
+ 	end
+ 
+@@ -84,78 +89,110 @@ IndigoPlateau_Silver_Battle_Chikorita::
+ 	return
+ 
+ IndigoPlateau_Text_RivalEntrance1:
+-    .string "Hold it.\p"
+-    .string "You're going to take the POKéMON\n"
+-    .string "LEAGUE challenge now?\p"
++    .string "{SPEAKER NAME_SILVER}Hold it.\p"
++    .string "You're going to take the Pokémon\n"
++    .string "League challenge now?\p"
+     .string "That's not going to happen.\p"
+-    .string "My super-well-trained POKéMON\n"
++    .string "My super-well-trained Pokémon\n"
+     .string "are going to pound you.\p"
+     .string "{PLAYER}!\n"
+     .string "I challenge you!$"
+ 
+ IndigoPlateau_Text_RivalWin:
+     .string "…\p"
+-    .string "OK--I lost…$"
++    .string "Ok--I lost…$"
+ 
+ IndigoPlateau_Text_RivalAfter:
+-    .string "…Darn… I still can't win…\p"
++    .string "{SPEAKER NAME_SILVER}…Darn… I still can't win…\p"
+     .string "I… I have to think more about my\n"
+-    .string "POKéMON…\p"
++    .string "Pokémon…\p"
+     .string "Humph! Try not to lose!$"
+ 
+-IndigoPlateau_EventScript_Psychic::
++IndigoPlateau_Text_TeleportGuy1:
++    .string "Ah! You're challenging the Elite\n"
++    .string "Four? Are you sure you're ready?\p"
++    .string "If you need to train some more,\n"
++    .string "my Abra can help you.\p"
++    .string "It can Teleport you home.\p"
++    .string "Would you like to go home now?$"
++
++IndigoPlateau_Text_TeleportGuyYes:
++    .string "Ok, Ok. Picture your house in your\n"
++    .string "mind…$"
++
++IndigoPlateau_Text_TeleportGuyNo:
++    .string "Ok, Ok. The best of luck to you!$"
++
++IndigoPlateau_Text_Abra:
++    .string "{SPEAKER NAME_ABRA}Aabra…$"
++
++IndigoPlateau_StoneMerchant::
+ 	lock
+ 	faceplayer
+-	msgbox IndigoPlateau_Text_TeleportGuy1, MSGBOX_YESNO
+-	goto_if_eq VAR_RESULT, TRUE, IndigoPlateau_EventScript_PsychicTeleport
+-	msgbox IndigoPlateau_Text_TeleportGuyNo, MSGBOX_DEFAULT
+-	closemessage
++	message IndigoPlateau_StoneMerchant_Text_0
++	waitmessage
++	pokemart IndigoPlateau_StoneMerchantMart
++	msgbox IndigoPlateau_StoneMerchant_Text_1
+ 	release
+ 	end
+ 
+-IndigoPlateau_EventScript_PsychicTeleport::
+-	msgbox IndigoPlateau_Text_TeleportGuyYes, MSGBOX_DEFAULT
+-	closemessage
+-	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
+-	playbgm MUS_HG_NEW_BARK, TRUE
+-	delay 60
+-	playmoncry SPECIES_ABRA, CRY_MODE_NORMAL
+-	applymovement2 LOCALID_INDIGOPLATEAU_ABRA, IndigoPLateau_Movement_Abra
+-	waitmovement 0
+-	fadescreen FADE_TO_WHITE
+-	warpteleport MAP_NEW_BARK_TOWN, 20, 12
+-	release
+-	end
+-	
+-IndigoPLateau_Movement_Abra:
+-	jump_in_place_right
+-	jump_in_place_right
+-	step_end
+ 
+-IndigoPlateau_EventScript_Abra::
++IndigoPlateau_GemMerchant::
+ 	lock
+ 	faceplayer
+-	waitse
+-	playmoncry SPECIES_ABRA, CRY_MODE_NORMAL
+-	msgbox IndigoPlateau_Text_Abra, MSGBOX_DEFAULT
+-	waitmoncry
++	message IndigoPlateau_StoneMerchant_Text_0
++	waitmessage
++	pokemart IndigoPlateau_GemMerchantMart
++	msgbox IndigoPlateau_StoneMerchant_Text_1
+ 	release
+ 	end
+ 
+-IndigoPlateau_Text_TeleportGuy1:
+-    .string "Ah! You're challenging the ELITE\n"
+-    .string "FOUR? Are you sure you're ready?\p"
+-    .string "If you need to train some more,\n"
+-    .string "my ABRA can help you.\p"
+-    .string "It can TELEPORT you home.\p"
+-    .string "Would you like to go home now?$"
+ 
+-IndigoPlateau_Text_TeleportGuyYes:
+-    .string "OK, OK. Picture your house in your\n"
+-    .string "mind…$"
+-
+-IndigoPlateau_Text_TeleportGuyNo:
+-    .string "OK, OK. The best of luck to you!$"
+-
+-IndigoPlateau_Text_Abra:
+-    .string "ABRA: Aabra…$"
++	.align 2
++IndigoPlateau_StoneMerchantMart:
++	.2byte ITEM_FIRE_STONE
++	.2byte ITEM_WATER_STONE
++	.2byte ITEM_LEAF_STONE
++	.2byte ITEM_THUNDER_STONE
++	.2byte ITEM_MOON_STONE
++	.2byte ITEM_ICE_STONE
++	.2byte ITEM_SUN_STONE
++	.2byte ITEM_SHINY_STONE
++	.2byte ITEM_DUSK_STONE
++	.2byte ITEM_DAWN_STONE
++	.2byte ITEM_LINKING_CORD
++	.2byte ITEM_AUSPICIOUS_ARMOR
++	.2byte ITEM_MALICIOUS_ARMOR
++	.2byte ITEM_SACHET
++	.2byte ITEM_WHIPPED_DREAM
++	.2byte ITEM_PEAT_BLOCK
++	.2byte ITEM_BLACK_AUGURITE
++	.2byte ITEM_NONE
++
++	.align 2
++IndigoPlateau_GemMerchantMart:
++	.2byte ITEM_NORMAL_GEM
++	.2byte ITEM_FIRE_GEM
++	.2byte ITEM_WATER_GEM
++	.2byte ITEM_ELECTRIC_GEM
++	.2byte ITEM_GRASS_GEM
++	.2byte ITEM_ICE_GEM
++	.2byte ITEM_FIGHTING_GEM
++	.2byte ITEM_POISON_GEM
++	.2byte ITEM_GROUND_GEM
++	.2byte ITEM_FLYING_GEM
++	.2byte ITEM_PSYCHIC_GEM
++	.2byte ITEM_BUG_GEM
++	.2byte ITEM_ROCK_GEM
++	.2byte ITEM_GHOST_GEM
++	.2byte ITEM_DRAGON_GEM
++	.2byte ITEM_DARK_GEM
++	.2byte ITEM_STEEL_GEM
++	.2byte ITEM_FAIRY_GEM
++	.2byte ITEM_NONE
++
++IndigoPlateau_StoneMerchant_Text_0:
++	.string "Welcome! How may I help you?$"
++
++IndigoPlateau_StoneMerchant_Text_1:
++	.string "Come back soon!$"
+diff --git a/data/maps/IndigoPlateau_PokemonCenter/scripts.pory b/data/maps/IndigoPlateau_PokemonCenter/scripts.pory
+new file mode 100644
+index 0000000000..691bd395d9
+--- /dev/null
++++ b/data/maps/IndigoPlateau_PokemonCenter/scripts.pory
+@@ -0,0 +1,191 @@
++raw `
++.set LOCALID_NURSE, 1
++
++IndigoPlateau_PokemonCenter_MapScripts::
++	@map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
++	map_script MAP_SCRIPT_ON_FRAME_TABLE, IndigoPlateau_PokemonCenter_OnFrame 
++	map_script MAP_SCRIPT_ON_LOAD, IndigoPlateau_PokemonCenter_OnLoad
++	.byte 0
++
++IndigoPlateau_PokemonCenter_OnLoad::
++	setrespawn HEAL_LOCATION_INDIGO_PLATEAU_POKEMON_CENTER
++	end
++
++IndigoPlateau_PokemonCenter_OnFrame::
++	map_script_2 VAR_LEAGUE_STATE, 0, IndigoPlateau_PokemonCenter_Enter
++	map_script_2 VAR_LEAGUE_STATE, 2, IndigoPlateau_PokemonCenter_Enter
++	map_script_2 VAR_LEAGUE_STATE, 3, IndigoPlateau_PokemonCenter_Enter
++	map_script_2 VAR_LEAGUE_STATE, 4, IndigoPlateau_PokemonCenter_Enter
++	map_script_2 VAR_LEAGUE_STATE, 5, IndigoPlateau_PokemonCenter_Enter
++	map_script_2 VAR_LEAGUE_STATE, 6, IndigoPlateau_PokemonCenter_Enter
++	.2byte 0
++
++IndigoPlateau_PokemonCenter_Enter::
++	setflag FLAG_VISITED_INDIGO_PLATEAU
++	setvar VAR_LEAGUE_STATE, 1
++	end
++
++IndigoPlateau_EventScript_Cooltrainer::
++	msgbox IndigoPlateau_Text_CooltrainerM, MSGBOX_NPC
++	end
++
++IndigoPlateau_EventScript_BlackBelt::
++	msgbox IndigoPlateau_Text_Blackbelt, MSGBOX_NPC
++	end
++
++IndigoPlateau_EventScript_ShigyNinja::
++	msgbox IndigoPlateau_Text_ShigyNinja, MSGBOX_NPC
++	end
++
++IndigoPlateau_Text_ShigyNinja:
++	.string "Congrats on making it here!\p"
++	.string "I've seen tons of trainers come\n"
++	.string "through here over the years, and\l"
++	.string "all of them are wonderfully unique.\p"
++	.string "You should be proud of yourself\n"
++	.string "for getting this far!\p"
++	.string "Now, go get em'!$"
++
++IndigoPlateau_Text_Blackbelt:
++	.string "The Pokémon League is not taking\n"
++	.string "new challengers at the moment.\p"
++	.string "Please check back later.$"
++
++IndigoPlateau_Text_CooltrainerM:
++    .string "At the Pokémon League, you'll get\n"
++    .string "tested by the Elite Four.\p"
++    .string "You have to beat them all. If you\n"
++    .string "lose, you have to start all over!$"
++
++IndigoPlateau_EventScript_Silver::
++	lock
++	faceplayer 
++	goto_if_set FLAG_DAILY_BEAT_SILVER, IndigoPlateau_EventScript_SilverBeat
++	msgbox IndigoPlateau_Text_RivalEntrance1, MSGBOX_DEFAULT
++	call_if_eq VAR_STARTER_MON, 0, IndigoPlateau_Silver_Battle_Cyndaquil
++	call_if_eq VAR_STARTER_MON, 1, IndigoPlateau_Silver_Battle_Totodile
++	call_if_eq VAR_STARTER_MON, 2, IndigoPlateau_Silver_Battle_Chikorita
++	msgbox IndigoPlateau_Text_RivalAfter, MSGBOX_DEFAULT
++	setflag FLAG_DAILY_BEAT_SILVER
++	release
++	end
++
++IndigoPlateau_EventScript_SilverBeat::
++	msgbox IndigoPlateau_Text_RivalAfter, MSGBOX_DEFAULT
++	closemessage
++	release
++	end
++
++IndigoPlateau_Silver_Battle_Cyndaquil::
++	trainerbattle_no_intro TRAINER_RIVAL_CYNDAQUIL_7, IndigoPlateau_Text_RivalWin
++	return
++
++IndigoPlateau_Silver_Battle_Totodile::
++	trainerbattle_no_intro TRAINER_RIVAL_TOTODILE_7, IndigoPlateau_Text_RivalWin
++	return
++
++IndigoPlateau_Silver_Battle_Chikorita::
++	trainerbattle_no_intro TRAINER_RIVAL_CHIKORITA_7, IndigoPlateau_Text_RivalWin
++	return
++
++IndigoPlateau_Text_RivalEntrance1:
++    .string "{SPEAKER NAME_SILVER}Hold it.\p"
++    .string "You're going to take the Pokémon\n"
++    .string "League challenge now?\p"
++    .string "That's not going to happen.\p"
++    .string "My super-well-trained Pokémon\n"
++    .string "are going to pound you.\p"
++    .string "{PLAYER}!\n"
++    .string "I challenge you!$"
++
++IndigoPlateau_Text_RivalWin:
++    .string "…\p"
++    .string "Ok--I lost…$"
++
++IndigoPlateau_Text_RivalAfter:
++    .string "{SPEAKER NAME_SILVER}…Darn… I still can't win…\p"
++    .string "I… I have to think more about my\n"
++    .string "Pokémon…\p"
++    .string "Humph! Try not to lose!$"
++
++IndigoPlateau_Text_TeleportGuy1:
++    .string "Ah! You're challenging the Elite\n"
++    .string "Four? Are you sure you're ready?\p"
++    .string "If you need to train some more,\n"
++    .string "my Abra can help you.\p"
++    .string "It can Teleport you home.\p"
++    .string "Would you like to go home now?$"
++
++IndigoPlateau_Text_TeleportGuyYes:
++    .string "Ok, Ok. Picture your house in your\n"
++    .string "mind…$"
++
++IndigoPlateau_Text_TeleportGuyNo:
++    .string "Ok, Ok. The best of luck to you!$"
++
++IndigoPlateau_Text_Abra:
++    .string "{SPEAKER NAME_ABRA}Aabra…$"
++`
++
++script IndigoPlateau_StoneMerchant {
++    lock
++    faceplayer
++    message("Welcome! How may I help you?")
++    waitmessage
++    pokemart(IndigoPlateau_StoneMerchantMart)
++    msgbox("Come back soon!")
++    release
++    end
++}
++
++script IndigoPlateau_GemMerchant {
++    lock
++    faceplayer
++    message("Welcome! How may I help you?")
++    waitmessage
++    pokemart(IndigoPlateau_GemMerchantMart)
++    msgbox("Come back soon!")
++    release
++    end
++}
++
++mart IndigoPlateau_StoneMerchantMart {
++    ITEM_FIRE_STONE
++    ITEM_WATER_STONE
++    ITEM_LEAF_STONE
++    ITEM_THUNDER_STONE
++    ITEM_MOON_STONE
++    ITEM_ICE_STONE
++    ITEM_SUN_STONE
++    ITEM_SHINY_STONE
++    ITEM_DUSK_STONE
++    ITEM_DAWN_STONE
++    ITEM_LINKING_CORD
++    ITEM_AUSPICIOUS_ARMOR
++    ITEM_MALICIOUS_ARMOR
++    ITEM_SACHET
++    ITEM_WHIPPED_DREAM
++    ITEM_PEAT_BLOCK
++    ITEM_BLACK_AUGURITE
++}
++
++mart IndigoPlateau_GemMerchantMart {
++    ITEM_NORMAL_GEM
++    ITEM_FIRE_GEM
++    ITEM_WATER_GEM
++    ITEM_ELECTRIC_GEM
++    ITEM_GRASS_GEM
++    ITEM_ICE_GEM
++    ITEM_FIGHTING_GEM
++    ITEM_POISON_GEM
++    ITEM_GROUND_GEM
++    ITEM_FLYING_GEM
++    ITEM_PSYCHIC_GEM
++    ITEM_BUG_GEM
++    ITEM_ROCK_GEM
++    ITEM_GHOST_GEM
++    ITEM_DRAGON_GEM
++    ITEM_DARK_GEM
++    ITEM_STEEL_GEM
++    ITEM_FAIRY_GEM
++}

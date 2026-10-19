@@ -1,0 +1,125 @@
+diff --git a/data/maps/Route2/map.json b/data/maps/Route2/map.json
+index 6b77ecee8f..ee228640e0 100644
+--- a/data/maps/Route2/map.json
++++ b/data/maps/Route2/map.json
+@@ -34,8 +34,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "Route2_EventScript_Carbos",
++      "trainer_sight_or_berry_tree_id": "ITEM_CARBOS",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROUTE2_CARBOS"
+     },
+     {
+@@ -86,8 +86,8 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "Route2_EventScript_Nugget",
++      "trainer_sight_or_berry_tree_id": "ITEM_NUGGET",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_ROUTE2_NUGGET"
+     },
+     {
+@@ -242,9 +242,7 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/Route2/map.json.bak b/data/maps/Route2/map.json.bak
+index cebbcb20ec..54a91ac3f3 100644
+--- a/data/maps/Route2/map.json.bak
++++ b/data/maps/Route2/map.json.bak
+@@ -104,7 +104,7 @@
+       "flag": "FLAG_TEMP_1"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_CATERPIE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CATERPIE"),
+       "x": 14,
+       "y": 54,
+       "elevation": 0,
+@@ -117,7 +117,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_WEEDLE",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WEEDLE"),
+       "x": 1,
+       "y": 62,
+       "elevation": 0,
+@@ -143,7 +143,7 @@
+       "flag": "FLAG_TEMP_5"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ZIGZAGOON",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZIGZAGOON"),
+       "x": 23,
+       "y": 77,
+       "elevation": 0,
+diff --git a/data/maps/Route2/scripts.inc b/data/maps/Route2/scripts.inc
+index 77e8c94cb6..3a8405b94a 100644
+--- a/data/maps/Route2/scripts.inc
++++ b/data/maps/Route2/scripts.inc
+@@ -30,16 +30,8 @@ Route2_EventScript_CaveSign::
+ 	msgbox Route2_Text_DiglettsCaveSign, MSGBOX_SIGN
+ 	end
+ 
+-Route2_EventScript_Carbos::
+-    finditem ITEM_CARBOS
+-    end
+-
+-Route2_EventScript_Nugget::
+-    finditem ITEM_NUGGET
+-    end
+-
+ Route2_Text_BugCatcherRob_Seen:
+-	.string "My bug POKéMON are tough. Prepare to\n"
++	.string "My bug Pokémon are tough. Prepare to\n"
+ 	.string "lose!$"
+ 
+ Route2_Text_BugCatcherRob_Beaten:
+@@ -47,7 +39,7 @@ Route2_Text_BugCatcherRob_Beaten:
+ 
+ Route2_Text_BugCatcherRob_AfterBattle:
+ 	.string "I'm going to look for stronger bug\n"
+-	.string "POKéMON.$"
++	.string "Pokémon.$"
+ 
+ Route2_Text_BugCatcherEd_Seen:
+ 	.string "If you walk in tall grass wearing\n"
+@@ -61,20 +53,20 @@ Route2_Text_BugCatcherEd_AfterBattle:
+ 	.string "bath.$"
+ 
+ Route2_Text_BugCatcherDoug_Seen:
+-	.string "Why don't girls like bug POKéMON?$"
++	.string "Why don't girls like bug Pokémon?$"
+ 
+ Route2_Text_BugCatcherDoug_Beaten:
+ 	.string "No good!$"
+ 
+ Route2_Text_BugCatcherDoug_AfterBattle:
+-	.string "Bug POKéMON squish like plush toys\n"
++	.string "Bug Pokémon squish like plush toys\n"
+ 	.string "when you squeeze their bellies.\p"
+ 	.string "I love how they feel!$"
+ 
+ Route2_Text_Sign:
+-	.string "ROUTE 2\p"
+-	.string "VIRIDIAN CITY - PEWTER CITY$"
++	.string "Route 2\p"
++	.string "Viridian City - Pewter City$"
+ 
+ Route2_Text_DiglettsCaveSign:
+-	.string "DIGLETT'S CAVE$"
++	.string "Diglett's Cave$"
+ 

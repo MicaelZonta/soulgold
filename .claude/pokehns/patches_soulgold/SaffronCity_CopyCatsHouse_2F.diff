@@ -1,0 +1,126 @@
+diff --git a/data/maps/SaffronCity_CopyCatsHouse_2F/map.json b/data/maps/SaffronCity_CopyCatsHouse_2F/map.json
+index f1b014a036..33331a860e 100644
+--- a/data/maps/SaffronCity_CopyCatsHouse_2F/map.json
++++ b/data/maps/SaffronCity_CopyCatsHouse_2F/map.json
+@@ -67,7 +67,7 @@
+       "flag": "FLAG_HIDE_COPYCAT_CLEFAIRY_DOLL"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY)",
+       "x": 5,
+       "y": 5,
+       "elevation": 0,
+@@ -115,10 +115,6 @@
+       "dest_warp_id": "1"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/SaffronCity_CopyCatsHouse_2F/map.json.bak b/data/maps/SaffronCity_CopyCatsHouse_2F/map.json.bak
+index f9f204a37c..46d679716e 100644
+--- a/data/maps/SaffronCity_CopyCatsHouse_2F/map.json.bak
++++ b/data/maps/SaffronCity_CopyCatsHouse_2F/map.json.bak
+@@ -67,7 +67,7 @@
+       "flag": "FLAG_HIDE_COPYCAT_CLEFAIRY_DOLL"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_DODRIO",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO"),
+       "x": 5,
+       "y": 5,
+       "elevation": 0,
+diff --git a/data/maps/SaffronCity_CopyCatsHouse_2F/scripts.inc b/data/maps/SaffronCity_CopyCatsHouse_2F/scripts.inc
+index 0df85df6d2..2349379eb8 100644
+--- a/data/maps/SaffronCity_CopyCatsHouse_2F/scripts.inc
++++ b/data/maps/SaffronCity_CopyCatsHouse_2F/scripts.inc
+@@ -212,64 +212,64 @@ SaffronCity_CopyCatsHouse_2F_EventScript_CopycatAfterDollReturned_Female::
+ 	end
+ 
+ Copycat_Text_Male_1:
+-	.string "{PLAYER}: Hi! Do you like POKéMON?\p"
++	.string "{PLAYER}: Hi! Do you like Pokémon?\p"
+ 	.string "{PLAYER}: Uh, no, I just asked you.\p"
+ 	.string "{PLAYER}: Huh? You're strange!$"
+ 
+ Copycat_Text_QuickMimicking:
+-	.string "COPYCAT: Hmm? Quit mimicking?\p"
++	.string "{SPEAKER NAME_COPYCAT}Hmm? Quit mimicking?\p"
+ 	.string "But that's my favorite hobby!$"
+ 
+ Copycat_Text_Male_2:
+ 	.string "{PLAYER}: Hi! I heard that you\n"
+-	.string "lost your favorite POKé DOLL.\p"
++	.string "lost your favorite Poké Doll.\p"
+ 	.string "{PLAYER}: If I find it, you'll give\n"
+-	.string "me a rail PASS?\p"
++	.string "me a rail Pass?\p"
+ 	.string "{PLAYER}: I'll go find it for you.\p"
+ 	.string "You think you lost it when you\n"
+-	.string "went to VERMILION CITY?$"
++	.string "went to Vermilion City?$"
+ 
+ Copycat_Text_Worried:
+-	.string "COPYCAT: Pardon?\p"
++	.string "{SPEAKER NAME_COPYCAT}Pardon?\p"
+ 	.string "I shouldn't decide what you\n"
+ 	.string "should do?\p"
+ 	.string "But I'm really worried… What if\n"
+ 	.string "someone finds it?$"
+ 
+ Copycat_Text_GiveDoll:
+-	.string "COPYCAT: Yay! That's my CLEFAIRY\n"
+-	.string "POKé DOLL!\p"
++	.string "{SPEAKER NAME_COPYCAT}Yay! That's my Clefairy\n"
++	.string "Poké Doll!\p"
+ 	.string "See the tear where the right leg\n"
+ 	.string "is sewn on? That's proof!$"
+ 
+ Copycat_Text_GivePass:
+-	.string "OK. Here's the MAGNET TRAIN PASS\n"
++	.string "Ok. Here's the Magnet Train Pass\n"
+ 	.string "like I promised!$"
+ 
+ Copycat_Text_ExplainPass:
+-	.string "COPYCAT: That's the PASS for the\n"
+-	.string "MAGNET TRAIN.\p"
++	.string "{SPEAKER NAME_COPYCAT}That's the Pass for the\n"
++	.string "Magnet Train.\p"
+ 	.string "The rail company man gave me\n"
+ 	.string "that when they tore down our old\l"
+-	.string "house for the STATION.$"
++	.string "house for the Station.$"
+ 
+ Copycat_Text_Male_3:
+ 	.string "{PLAYER}: Hi! Thanks a lot for the\n"
+-	.string "rail PASS!\p"
++	.string "rail Pass!\p"
+ 	.string "{PLAYER}: Pardon?\p"
+ 	.string "{PLAYER}: Is it that fun to mimic\n"
+ 	.string "my every move?$"
+ 
+ Copycat_Text_ItsAScream:
+-	.string "COPYCAT: You bet! It's a scream!$"
++	.string "{SPEAKER NAME_COPYCAT}You bet! It's a scream!$"
+ 
+ Copycat_Text_Dodrio1:
+-	.string "DODRIO: Gii giii!$"
++	.string "{SPEAKER NAME_DODRIO}Gii giii!$"
+ 
+ Copycat_Text_Dodrio2:
+-	.string "MIRROR, MIRROR ON THE WALL,\n"
+-	.string "WHO'S THE FAIREST ONE OF ALL?$"
++	.string "Mirror, Mirror On The Wall,\n"
++	.string "Who's The Fairest One Of All?$"
+ 
+ Copycat_Text_2FDoll:
+-	.string "This is a rare POKéMON! Huh?\p"
++	.string "This is a rare Pokémon! Huh?\p"
+ 	.string "It's only a doll…$"

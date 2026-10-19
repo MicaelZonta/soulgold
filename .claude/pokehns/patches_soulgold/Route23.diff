@@ -1,0 +1,26 @@
+diff --git a/data/maps/Route23/map.json b/data/maps/Route23/map.json
+index 8cdb5ef7ed..eadda99ee5 100644
+--- a/data/maps/Route23/map.json
++++ b/data/maps/Route23/map.json
+@@ -19,9 +19,7 @@
+       "direction": "up"
+     }
+   ],
+-  "object_events": [
+-
+-  ],
++  "object_events": [],
+   "warp_events": [
+     {
+       "x": 18,
+@@ -31,9 +29,7 @@
+       "dest_warp_id": "0"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",

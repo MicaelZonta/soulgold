@@ -1,0 +1,32 @@
+diff --git a/data/maps/SaffronCity_Mart/map.json b/data/maps/SaffronCity_Mart/map.json
+index 9c5072b340..e049dcac7b 100644
+--- a/data/maps/SaffronCity_Mart/map.json
++++ b/data/maps/SaffronCity_Mart/map.json
+@@ -63,10 +63,6 @@
+       "dest_warp_id": "9"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/SaffronCity_Mart/scripts.inc b/data/maps/SaffronCity_Mart/scripts.inc
+index fc718872a6..319a39ad6e 100644
+--- a/data/maps/SaffronCity_Mart/scripts.inc
++++ b/data/maps/SaffronCity_Mart/scripts.inc
+@@ -8,8 +8,8 @@ SafronMart_EventScript_CooltrainerF::
+ 	msgbox SaffronMart_Text_CooltrainerF, MSGBOX_NPC
+ 	end
+ SaffronMart_Text_CooltrainerM:
+-	.string "There's a big RADIO TOWER in\n"
+-	.string "LAVENDER.$"
++	.string "There's a big Radio Tower in\n"
++	.string "Lavender.$"
+ 
+ SaffronMart_Text_CooltrainerF:
+ 	.string "I want to become stronger, but\n"

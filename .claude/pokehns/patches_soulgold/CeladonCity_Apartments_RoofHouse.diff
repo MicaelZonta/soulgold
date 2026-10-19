@@ -1,0 +1,66 @@
+diff --git a/data/maps/CeladonCity_Apartments_RoofHouse/map.json b/data/maps/CeladonCity_Apartments_RoofHouse/map.json
+index 5c5f905896..5e33d23f27 100644
+--- a/data/maps/CeladonCity_Apartments_RoofHouse/map.json
++++ b/data/maps/CeladonCity_Apartments_RoofHouse/map.json
+@@ -37,10 +37,6 @@
+       "dest_warp_id": "2"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/CeladonCity_Apartments_RoofHouse/scripts.inc b/data/maps/CeladonCity_Apartments_RoofHouse/scripts.inc
+index bb9bf321ee..4d91b3eb03 100644
+--- a/data/maps/CeladonCity_Apartments_RoofHouse/scripts.inc
++++ b/data/maps/CeladonCity_Apartments_RoofHouse/scripts.inc
+@@ -8,7 +8,6 @@ CeladonCity_Apartments_RoofHouse_EventScript_BlackBelt::
+ 	msgbox CeladonMansionRoofHouse_Text_PharmacistIntro, MSGBOX_DEFAULT	
+ 	goto_if_set FLAG_NIGHT_POKEMON, CeladonCity_Apartments_RoofHouse_EventScript_BlackBeltRefused
+ 	msgbox CeladonMansionRoofHouse_Text_PharmacistStory, MSGBOX_NPC
+-	giveitem ITEM_TM_REST
+ 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+ 	setflag FLAG_GOT_TM_REST
+ 	msgbox CeladonMansionRoofHouse_Text_PharmacistCurse, MSGBOX_NPC
+@@ -33,12 +32,12 @@ CeladonMansionRoofHouse_Text_PharmacistIntro:
+ CeladonMansionRoofHouse_Text_PharmacistNotNight:
+ 	.string "Then again, it's not as scary\n"
+ 	.string "while it's still light outside.\p"
+-	.string "Come back after sunset, OK?$"
++	.string "Come back after sunset, Ok?$"
+ 
+ CeladonMansionRoofHouse_Text_PharmacistStory:
+ 	.string "Once upon a time, there was a\n"
+ 	.string "little boy who was given a new\l"
+-	.string "BICYCLE…\p"
++	.string "Bicycle…\p"
+ 	.string "He wanted to try it right away…\p"
+ 	.string "He was having so much fun that\n"
+ 	.string "he didn't notice the sun had set…\p"
+@@ -53,17 +52,17 @@ CeladonMansionRoofHouse_Text_PharmacistStory:
+ 	.string "oblivion!\p"
+ 	.string "…\p"
+ 	.string "…\p"
+-	.string "SHRIEEEEK!\p"
++	.string "Shrieeeek!\p"
+ 	.string "The boy had been riding uphill on\n"
+-	.string "CYCLING ROAD!\p"
++	.string "Cycling Road!\p"
+ 	.string "…\n"
+ 	.string "Ba-dum ba-dum!\p"
+ 	.string "For listening so patiently, you\n"
+ 	.string "may take this--TM44!$"
+ 
+ CeladonMansionRoofHouse_Text_PharmacistCurse:
+-	.string "TM44 is REST.\p"
+-	.string "It will allow your POKéMON to nap\n"
++	.string "TM44 is Rest.\p"
++	.string "It will allow your Pokémon to nap\n"
+ 	.string "mid-battle and regain health.\p"
+ 	.string "But good luck sleeping after that\n"
+ 	.string "terrifying tale!$"

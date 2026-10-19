@@ -1,0 +1,74 @@
+diff --git a/data/maps/PewterCity_PokemonCenter/map.json b/data/maps/PewterCity_PokemonCenter/map.json
+index d9f10c0e57..30d4f62115 100644
+--- a/data/maps/PewterCity_PokemonCenter/map.json
++++ b/data/maps/PewterCity_PokemonCenter/map.json
+@@ -12,9 +12,10 @@
+   "allow_running": false,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
++      "local_id": "LOCALID_PEWTER_NURSE",
+       "graphics_id": "OBJ_EVENT_GFX_NURSE",
+       "x": 7,
+       "y": 2,
+@@ -28,7 +29,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_NURSE_CHANSEY",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+       "x": 8,
+       "y": 2,
+       "elevation": 0,
+@@ -89,9 +90,7 @@
+       "dest_warp_id": "6"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
++  "coord_events": [],
+   "bg_events": [
+     {
+       "type": "sign",
+diff --git a/data/maps/PewterCity_PokemonCenter/map.json.bak b/data/maps/PewterCity_PokemonCenter/map.json.bak
+index 2fee5ba0ea..879677c2dc 100644
+--- a/data/maps/PewterCity_PokemonCenter/map.json.bak
++++ b/data/maps/PewterCity_PokemonCenter/map.json.bak
+@@ -41,7 +41,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_JIGGLYPUFF",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(JIGGLYPUFF"),
+       "x": 4,
+       "y": 4,
+       "elevation": 0,
+diff --git a/data/maps/PewterCity_PokemonCenter/scripts.inc b/data/maps/PewterCity_PokemonCenter/scripts.inc
+index 0202d263d5..d277474555 100644
+--- a/data/maps/PewterCity_PokemonCenter/scripts.inc
++++ b/data/maps/PewterCity_PokemonCenter/scripts.inc
+@@ -17,15 +17,15 @@ PewterCity_PokemonCenter_EventScript_BugCatcher::
+ 	end
+ 
+ PewterCity_PokemonCenter1F_Text_Teacher:
+-	.string "…Yeah, and the GYM in CINNABAR's gone.\p"
++	.string "…Yeah, and the Gym in Cinnabar's gone.\p"
+ 	.string "I was really amazed.\p"
+ 	.string "…Yes? I'm on the phone. Go away!$"
+ 
+ PewterCity_PokemonCenter1F_Text_Jigglypuff:
+-	.string "JIGGLYPUFF: Puu pupuu.$"
++	.string "{SPEAKER NAME_JIGGLYPUFF}Puu pupuu.$"
+ 
+ PewterCity_PokemonCenter1F_Text_BugCatcher:
+-	.string "Most POKéMON get drowsy if they hear a\n"
+-	.string "JIGGLYPUFF singing.\p"
++	.string "Most Pokémon get drowsy if they hear a\n"
++	.string "Jigglypuff singing.\p"
+ 	.string "There are several moves that can be\n"
+-	.string "used only while a POKéMON is asleep.$"
++	.string "used only while a Pokémon is asleep.$"

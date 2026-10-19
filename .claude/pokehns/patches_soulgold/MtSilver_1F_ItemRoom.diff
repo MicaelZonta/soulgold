@@ -1,0 +1,109 @@
+diff --git a/data/maps/MtSilver_1F_ItemRoom/map.json b/data/maps/MtSilver_1F_ItemRoom/map.json
+index 380ba8ad13..e3b3f2f104 100644
+--- a/data/maps/MtSilver_1F_ItemRoom/map.json
++++ b/data/maps/MtSilver_1F_ItemRoom/map.json
+@@ -12,7 +12,7 @@
+   "allow_running": true,
+   "show_map_name": false,
+   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+-  "connections": 0,
++  "connections": null,
+   "object_events": [
+     {
+       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+@@ -23,12 +23,12 @@
+       "movement_range_x": 0,
+       "movement_range_y": 0,
+       "trainer_type": "TRAINER_TYPE_NONE",
+-      "trainer_sight_or_berry_tree_id": "0",
+-      "script": "MtSilver_1F_WaterfallRoom_EventScript_SpellTag",
++      "trainer_sight_or_berry_tree_id": "ITEM_ZOOM_LENS",
++      "script": "Common_EventScript_FindItem",
+       "flag": "FLAG_ITEM_MTSILVER_SPELL_TAG"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ONIX)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LYCANROC_MIDNIGHT)",
+       "x": 4,
+       "y": 13,
+       "elevation": 0,
+@@ -41,7 +41,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ONIX)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LYCANROC_MIDNIGHT)",
+       "x": 16,
+       "y": 3,
+       "elevation": 0,
+@@ -54,7 +54,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GRAVELER)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LYCANROC_MIDNIGHT)",
+       "x": 15,
+       "y": 7,
+       "elevation": 0,
+@@ -67,7 +67,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOLBAT)",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LYCANROC_MIDNIGHT)",
+       "x": 4,
+       "y": 8,
+       "elevation": 0,
+@@ -89,10 +89,6 @@
+       "dest_warp_id": "5"
+     }
+   ],
+-  "coord_events": [
+-
+-  ],
+-  "bg_events": [
+-
+-  ]
++  "coord_events": [],
++  "bg_events": []
+ }
+diff --git a/data/maps/MtSilver_1F_ItemRoom/map.json.bak b/data/maps/MtSilver_1F_ItemRoom/map.json.bak
+index 775e8ebb9b..69f96a1fb4 100644
+--- a/data/maps/MtSilver_1F_ItemRoom/map.json.bak
++++ b/data/maps/MtSilver_1F_ItemRoom/map.json.bak
+@@ -28,7 +28,7 @@
+       "flag": "FLAG_ITEM_MTSILVER_SPELL_TAG"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ONIX",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ONIX"),
+       "x": 4,
+       "y": 13,
+       "elevation": 0,
+@@ -41,7 +41,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_ONIX",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ONIX"),
+       "x": 16,
+       "y": 3,
+       "elevation": 0,
+@@ -54,7 +54,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GRAVELER",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GRAVELER"),
+       "x": 15,
+       "y": 7,
+       "elevation": 0,
+@@ -67,7 +67,7 @@
+       "flag": "0"
+     },
+     {
+-      "graphics_id": "OBJ_EVENT_GFX_SPECIES+SPECIES_GOLBAT",
++      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOLBAT"),
+       "x": 4,
+       "y": 8,
+       "elevation": 0,
