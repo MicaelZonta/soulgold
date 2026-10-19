@@ -57,7 +57,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(EELEKTROSS)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SQUIRTLE)",
       "x": 11,
       "y": 22,
       "elevation": 0,
@@ -70,7 +70,7 @@
       "flag": "FLAG_NIGHT_POKEMON"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DOUBLADE)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BULBASAUR)",
       "x": 23,
       "y": 17,
       "elevation": 0,
@@ -83,7 +83,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SCOVILLAIN)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHARMANDER)",
       "x": 20,
       "y": 11,
       "elevation": 0,
@@ -97,10 +97,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_COOLTRAINER_F",
-      "x": 10,
-      "y": 10,
+      "x": 9,
+      "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
       "movement_range_x": 7,
       "movement_range_y": 4,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -116,45 +116,6 @@
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
       "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_NIGHT_POKEMON"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 7,
-      "y": 16,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_CHOICE_SCARF",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_CHOICE_SCARF_ITEM_R26"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
-      "x": 14,
-      "y": 7,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_NIGHT_POKEMON"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
-      "x": 10,
-      "y": 7,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
@@ -181,15 +142,7 @@
       "script": "Route26North_Trigger"
     }
   ],
-  "bg_events": [
-    {
-      "type": "hidden_item",
-      "x": 18,
-      "y": 10,
-      "elevation": 0,
-      "item": "ITEM_POKE_BALL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE26_ULTRA_BALL",
-      "quantity": 1
-    }
-  ]
+  "bg_events": [],
+  "game_version": "hns",
+  "region": "REGION_JOHTO"
 }

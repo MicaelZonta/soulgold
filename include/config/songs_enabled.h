@@ -174,7 +174,7 @@
 #define SONG_MUS_HG_FOLLOW_ME_2                         0
 #define SONG_MUS_HG_BUG_CONTEST_PREP                    0
 #define SONG_MUS_HG_BUG_CATCHING_CONTEST                0
-#define SONG_MUS_HG_MAGNET_TRAIN                        0
+#define SONG_MUS_HG_MAGNET_TRAIN                        1
 #define SONG_MUS_HG_RADIO_JINGLE                        0
 #define SONG_MUS_HG_CLAIR                               0
 #define SONG_MUS_HG_VS_WILD_KANTO                       1

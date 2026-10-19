@@ -1,6 +1,3 @@
-.set LOCALID_SSAQUA_1F_DOORSAILOR, 4
-.set LOCALID_SSAQUA_1F_GRANDPA, 2
-
 SSAqua_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SSAqua_1F_OnFrame
 	.byte 0
@@ -55,15 +52,24 @@ SSAqua_1F_EventScript_LeaveBoat::
 	setflag FLAG_HIDE_VIRIDIAN_BLUE
 	setflag FLAG_HIDE_ROUTE14_EUSINE
 	setflag FLAG_HIDE_ROUTE14_SUICUNE
-	
-	clearflag FLAG_GARBAGEFLAG
-	clearflag FLAG_GARBAGEFLAG
-	clearflag FLAG_GARBAGEFLAG
-	clearflag FLAG_GARBAGEFLAG
-	clearflag FLAG_GARBAGEFLAG
-	clearflag FLAG_GARBAGEFLAG
-	clearflag FLAG_GARBAGEFLAG
-	clearflag FLAG_GARBAGEFLAG
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU1
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU2
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU3
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU4
+	setflag FLAG_HIDE_ROUTE13_BOAT
+	setflag FLAG_MT_SILVER_1F_HIDE_SCIENTIST
+	setflag FLAG_HIDE_VERMILION_CITY_SAMSON
+	setflag FLAG_HIDE_ROUTE28_SCIENTIST
+
+	clearflag FLAG_BADGE09_GET
+	clearflag FLAG_BADGE10_GET
+	clearflag FLAG_BADGE11_GET
+	clearflag FLAG_BADGE12_GET
+	clearflag FLAG_BADGE13_GET
+	clearflag FLAG_BADGE14_GET
+	clearflag FLAG_BADGE15_GET
+	clearflag FLAG_BADGE16_GET
 	clearflag FLAG_GOT_VERMILION_HP_UP
 	clearflag FLAG_KANTO_RADIO_GOT
 	clearflag FLAG_HIDE_VERMILION_SNORLAX
@@ -79,18 +85,18 @@ SSAqua_1F_EventScript_LeaveBoat::
 	clearflag FLAG_HIDE_ZAPDOS
 	clearflag FLAG_HIDE_ARTICUNO
 	clearflag FLAG_HIDE_MOLTRES
-	clearflag FLAG_GOT_TM_REST
+	clearflag FLAG_GOT_TM_SLEEP_TALK
 	clearflag FLAG_GOT_SUPER_ROD
 	clearflag FLAG_HIDE_CINNABAR_BLUE
 	clearflag FLAG_GOT_ROUTE2_NUGGET
-	clearflag FLAG_GOT_VIRIDIAN_TM_SLUDGE_BOMB
+	clearflag FLAG_GOT_VIRIDIAN_TM_DREAM_EATER
 	clearflag FLAG_GOT_ROUTE_14_AERIAL_ACE
 	clearflag FLAG_HIDE_PEWTER_ROOT_FOSSIL
 	clearflag FLAG_HIDE_PEWTER_CLAW_FOSSIL
 	clearflag FLAG_HIDE_MTMOON_SILVER
 	clearflag FLAG_GOT_TM_STEEL_WING
 	clearflag FLAG_HIDE_CERULEANCAVE_GUARD
-	clearflag FLAG_HIDE_MTSILVER_RIVAL
+	clearflag FLAG_HIDE_MTSILVER_RED
 	clearflag FLAG_HIDE_MEWTWO
 	clearflag FLAG_HIDE_LATIAS
 	clearflag FLAG_HIDE_LATIOS
@@ -99,8 +105,8 @@ SSAqua_1F_EventScript_LeaveBoat::
 	clearflag FLAG_HIDE_RAYQUAZA
 	clearflag FLAG_HIDE_SEAFOAM_BLAINE
 
-	clearflag FLAG_HIDE_VIOLET_SCHOOL_FALKNER
-	clearflag FLAG_HIDE_NATIONAL_BUGSY
+	clearflag FLAG_HIDE_CELADON_FALKNER
+	clearflag FLAG_HIDE_VIRIDIAN_BUGSY
 	clearflag FLAG_HIDE_DEPTSTORE_WHITNEY
 	clearflag FLAG_HIDE_BELLCHIME_MORTY
 	clearflag FLAG_HIDE_CAFE_JASMINE
@@ -110,10 +116,14 @@ SSAqua_1F_EventScript_LeaveBoat::
 
 	setvar VAR_KANTO_ROCKET_STORY_STATE, 0
 	setvar VAR_BILLS_GRANDPA, 0
+	setvar VAR_VERMILION_CITY_STEVEN, 0
+	setvar VAR_OAK_MT_SILVER_CALL, 0
+	setvar VAR_VIRIDIAN_FOREST_PICHU, 0
 
 
 	setvar VAR_FAN_CLUB_CLEFAIRY, 0
 	setvar VAR_FAN_CLUB_GUY, 0
+	setvar VAR_CLEFAIRY_DOLL_STATE, 0
 	setvar VAR_NUM_BADGES, 8
 	setvar VAR_VERMILION_CITY_STATE, 1
 
@@ -145,6 +155,7 @@ SSAqua_1F_EventScript_LeaveBoat::
 	@end flagheap
 	setvar VAR_SSAQUA_STATE, 7
 	warp MAP_VERMILION_CITY_PORT_INSIDE, 8, 9
+	waitstate
 	release
 	end
 
@@ -239,20 +250,20 @@ SSAqua_1F_Movement_GrandpaLeave:
 	step_end
 
 SSAqua_1F_Text_Sailor1_ToVermilion:
-    .string "Fast Ship S.S.Aqua is en route to\n"
-    .string "Vermilion City.\p"
+    .string "FAST SHIP S.S.AQUA is en route to\n"
+    .string "VERMILION CITY.\p"
     .string "We will make an announcement when\n"
     .string "we arrive.$"
 
 SSAqua_1F_Text_Sailor1_ToOlivine:
-    .string "Fast Ship S.S.Aqua is en route to\n"
-    .string "Olivine City.\p"
+    .string "FAST SHIP S.S.AQUA is en route to\n"
+    .string "OLIVINE CITY.\p"
     .string "We will make an announcement when\n"
     .string "we arrive.$"
 
 SSAqua_1F_Text_Sailor2_FirstTime:
     .string "Here's your cabin.\p"
-    .string "If your Pokémon are hurt, take a\n"
+    .string "If your POKéMON are hurt, take a\n"
     .string "nap in the bed.\p"
     .string "That will heal them.$"
 
@@ -268,14 +279,14 @@ SSAqua_1F_Text_Grandpa:
     .string "her, please let me know!$"
 
 SSAqua_1F_Text_Sailor1_InOlivine:
-    .string "Fast Ship S.S.Aqua has arrived in\n"
-    .string "Olivine City.$"
+    .string "FAST SHIP S.S.AQUA has arrived in\n"
+    .string "OLIVINE CITY.$"
 
 SSAqua_1F_Text_Sailor1_InVermilion:
-    .string "Fast Ship S.S.Aqua has arrived in\n"
-    .string "Vermilion City.$"
+    .string "FAST SHIP S.S.AQUA has arrived in\n"
+    .string "VERMILION CITY.$"
 
 
 SSAqua_1F_Text_SailorDoorArrived:
-    .string "We have arrived in Vermilion City.\n"
+    .string "We have arrived in VERMILION CITY.\n"
     .string "Would you like to disembark?$"

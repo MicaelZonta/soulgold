@@ -365,7 +365,19 @@ orelha espetada, times "Crystal Legacy"). O trabalho de texto é a camada
 - `make` + `map_graph.py check` a cada sub-lote (cidades → rotas →
   interiores → dungeons).
 
-**Fase 4 — Fronteiras à mão**
+**Fase 4 — Fronteiras** ✅ FEITA (19/10/2026) — build limpo, grafo ok (571)
+- 12 fronteiras importadas; fiação divergente era mínima e foi tratada:
+  warp p/ **TohjoPass** restaurado na GiovanniRoom, warp p/ **KitakamiBorder**
+  restaurado na CeruleanCave_1F, e o atalho antigo Route28→Indigo PCenter
+  **aposentado de propósito** (o caminho HnS completo existe de novo:
+  Route 23 → Victory Road → Indigo exterior).
+- `MUS_HG_MAGNET_TRAIN` ligada (estação de Saffron).
+- Inalcançáveis documentados: MtSilver_SummitNight (doador de layout do
+  SummitDay) e **MtSilver_1F_RegigigasRoom** (a porta antiga virou a sala do
+  Moltres no layout HnS; Regigigas do Mt. Silver já está marcado p/
+  aposentar/reaproveitar na Parte D — resolver na Fase 7).
+- LOCALID_ROUTE27_EXPERT religado automaticamente (conteúdo do expert volta
+  na Fase 5 via patch).
 - Route 26/26N/27/28, Tohjo Falls, VictoryRoadKanto_B2F↔ReceptionGate,
   SaffronCity_TrainStation, MtSilver_Outside, SSAqua_1F, CeruleanCave_1F
   (↔Kitakami): sobrescrever interior preservando warps/conexões/eventos de

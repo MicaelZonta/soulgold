@@ -1,7 +1,3 @@
-
-.set LOCALID_SAFFRON_STATION_ATTENDANT, 1
-.set LOCALID_SAFFRON_STATION_TRAIN, 5
-
 SaffronCity_TrainStation_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SaffronStation_OnFrame
 	.byte 0
@@ -70,6 +66,7 @@ SaffronStation_EventScript_BoardTrain::
 
 	applymovement LOCALID_SAFFRON_STATION_TRAIN SaffronStation_Movement_SlideLeft
 	applymovement OBJ_EVENT_ID_CAMERA, SaffronStation_Movement_SlideLeft
+	playbgm MUS_HG_MAGNET_TRAIN, FALSE
 	fadescreen FADE_FROM_BLACK
 	playse SE_TRUCK_MOVE
 	delay 220
@@ -82,6 +79,7 @@ SaffronStation_EventScript_BoardTrain::
 	setvar VAR_TRAIN, 1
 	delay 60
 	warp MAP_GOLDENROD_CITY_TRAIN_STATION, 19, 16
+	waitstate
 	delay 60
 	end
 
@@ -298,31 +296,31 @@ SaffronMagnetTrainStation_Text_OfficerTrainHasntComeIn:
     .string "That won't work.$"
 
 SaffronMagnetTrainStation_Text_OfficerComingAboard:
-    .string "We'll soon depart for Goldenrod.\p"
+    .string "We'll soon depart for GOLDENROD.\p"
     .string "Are you coming aboard?$"
 
 SaffronMagnetTrainStation_Text_OfficerRightThisWay:
-    .string "May I see your rail Pass, please?\p"
-    .string "Ok. Right this way, please.$"
+    .string "May I see your rail PASS, please?\p"
+    .string "OK. Right this way, please.$"
 
 SaffronMagnetTrainStation_Text_OfficerNoRailPass:
-    .string "Sorry. You don't have a rail Pass.$"
+    .string "Sorry. You don't have a rail PASS.$"
 
 SaffronMagnetTrainStation_Text_OfficerHopeToSeeYouAgain:
     .string "We hope to see you again!$"
 
 SaffronMagnetTrainStation_Text_OfficerArrivedInSaffron:
-    .string "We have arrived in Saffron.\p"
+    .string "We have arrived in SAFFRON.\p"
     .string "We hope to see you again.$"
 
 @=============================================================================================================================
 
 SaffronMagnetTrainStation_Text_Officer_TrainNotOperating:
-	.string "I'm sorry, but the Magnet Train\n"
+	.string "I'm sorry, but the MAGNET TRAIN\n"
 	.string "isn't operating now.$"
 
 SaffronMagnetTrainStation_Text_GymGuide:
-	.string "The Magnet Train is a super-modern\n"
+	.string "The MAGNET TRAIN is a super-modern\n"
 	.string "rail liner that uses electricity\p"
 	.string "and magnets to attain incredible\n"
 	.string "speed.\p"
@@ -332,16 +330,16 @@ SaffronMagnetTrainStation_Text_GymGuide:
 SaffronMagnetTrainStation_Text_GymGuide_ReturnedPart:
 	.string "Whew…\p"
 	.string "How many times have I gone back\n"
-	.string "and forth between Kanto and Johto?$"
+	.string "and forth between KANTO and JOHTO?$"
 
 SaffronMagnetTrainStation_Text_Teacher:
-	.string "Before the Magnet Train Station\n"
+	.string "Before the MAGNET TRAIN STATION\n"
 	.string "was built, there was a house there.\p"
-	.string "A little girl named Copycat used\n"
+	.string "A little girl named COPYCAT used\n"
 	.string "to live there.$"
 
 SaffronMagnetTrainStation_Text_Lass:
-	.string "Hi. Do you have a rail Pass?\n"
+	.string "Hi. Do you have a rail PASS?\n"
 	.string "I have one.\p"
-	.string "All the people in Saffron who ride\n"
-	.string "the Magnet Train have Passes.$"
+	.string "All the people in SAFFRON who ride\n"
+	.string "the MAGNET TRAIN have PASSES.$"

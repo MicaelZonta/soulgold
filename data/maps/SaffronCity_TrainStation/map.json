@@ -2,7 +2,7 @@
   "id": "MAP_SAFFRON_CITY_TRAIN_STATION",
   "name": "SaffronCity_TrainStation",
   "layout": "LAYOUT_SAFFRON_CITY_TRAIN_STATION",
-  "music": "MUS_HG_GOLDENROD",
+  "music": "MUS_HG_PEWTER",
   "region_map_section": "MAPSEC_SAFFRON_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -15,7 +15,7 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
+      "graphics_id": "OBJ_EVENT_GFX_OFFICER",
       "x": 137,
       "y": 20,
       "elevation": 0,
@@ -25,7 +25,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronStation_EventScript_Attendant",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_SAFFRON_STATION_ATTENDANT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BATTLE_GIRL",
@@ -41,7 +42,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FR_LASS",
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 131,
       "y": 23,
       "elevation": 0,
@@ -67,7 +68,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TRAIN_BACK",
+      "graphics_id": "OBJ_EVENT_GFX_TRAIN_WEST",
       "x": 152,
       "y": 5,
       "elevation": 0,
@@ -77,7 +78,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_SAFFRON_STATION_TRAIN"
     }
   ],
   "warp_events": [
@@ -97,5 +99,7 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }

@@ -1,6 +1,3 @@
-.set LOCALID_ROUTE22_GIOVANNI, 6
-.set LOCALID_ROUTE22_SILVER, 7
-
 Route22_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route22_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
@@ -15,8 +12,8 @@ Route22_EventScript_Sign::
 	end
 
 Route22_Text_VictoryRoadEntranceSign:
-	.string "Pokémon League\p"
-	.string "Victory Road Entrance$"
+	.string "POKéMON LEAGUE\p"
+	.string "VICTORY ROAD ENTRANCE$"
 
 Route22_EventScript_ResetActivation::
 	setvar VAR_TEMP_0, 0
@@ -46,20 +43,20 @@ Route22_EventScript_TriggerMid::
 
 Route22_EventScript_Scene::
 	lock
-	applymovement OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiBegin
+	applymovement2 OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiBegin
 	playse SE_LEDGE
 	waitse
 	playse SE_LEDGE
 	waitse
 	waitmovement 0
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	delay 60
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
-	delay 60
-	applymovement OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiSpin1
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement2 OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiSpin1
 	playse SE_LEDGE
 	waitse
 	playse SE_LEDGE
@@ -78,95 +75,96 @@ Route22_EventScript_Scene::
 	addobject LOCALID_ROUTE22_GIOVANNI
 	addobject LOCALID_ROUTE22_SILVER
 	waitse
-	playbgm MUS_RG_ROUTE3, TRUE
+	playbgm MUS_HG_ROUTE3, FALSE
 	fadescreenswapbuffers FADE_FROM_WHITE
 	delay 50
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, Route22_Movement_CameraPanLeft
+	applymovement2 OBJ_EVENT_ID_CAMERA, Route22_Movement_CameraPanLeft
 	waitmovement 0
 	delay 30
-	applymovement LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
+	applymovement2 LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
 	waitmovement 0
 	msgbox Route22_Text_Silver1, MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	applymovement LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceRight
+	applymovement2 LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceRight
 	waitmovement 0
 	msgbox Route22_Text_Giovanni1, MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	applymovement LOCALID_ROUTE22_SILVER, Route22_Movement_WalkInPlaceLeft
+	applymovement2 LOCALID_ROUTE22_SILVER, Route22_Movement_WalkInPlaceLeft
 	waitmovement 0
 	msgbox Route22_Text_Silver2, MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	applymovement LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceRight
+	applymovement2 LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceRight
 	waitmovement 0
 	msgbox Route22_Text_Giovanni2, MSGBOX_DEFAULT
 	closemessage
 	delay 10
-	applymovement LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
+	applymovement2 LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
 	waitmovement 0
 	msgbox Route22_Text_Silver3, MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	applymovement LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceLeft
+	applymovement2 LOCALID_ROUTE22_GIOVANNI, Route22_Movement_WalkInPlaceLeft
 	waitmovement 0
 	msgbox Route22_Text_Giovanni3, MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	applymovement LOCALID_ROUTE22_GIOVANNI, Route22_Movement_GiovanniLeave
+	applymovement2 LOCALID_ROUTE22_GIOVANNI, Route22_Movement_GiovanniLeave
 	waitmovement 0
 	msgbox Route22_Text_Silver4, MSGBOX_DEFAULT
 	closemessage
 	delay 30
-	applymovement LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
+	applymovement2 LOCALID_ROUTE22_SILVER, Common_Movement_WalkLeft1
 	waitmovement 0
 	msgbox Route22_Text_Silver5, MSGBOX_DEFAULT
 	closemessage
 	delay 20
-	playbgm MUS_HG_ENCOUNTER_RIVAL, TRUE
-	applymovement LOCALID_ROUTE22_SILVER, Route22_Movement_SilverStartLeave
-	applymovement OBJ_EVENT_ID_CAMERA, Route22_Movement_CameraPanRight
+	playbgm MUS_HG_ENCOUNTER_RIVAL, FALSE
+	applymovement2 LOCALID_ROUTE22_SILVER, Route22_Movement_SilverStartLeave
+	applymovement2 OBJ_EVENT_ID_CAMERA, Route22_Movement_CameraPanRight
 	waitmovement LOCALID_ROUTE22_SILVER
 	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	playse SE_PIN
-	applymovement LOCALID_ROUTE22_SILVER, Common_Movement_ExclamationMark
-	delay 60
+	applymovement2 LOCALID_ROUTE22_SILVER, Common_Movement_ExclamationMark
+	delay 55
+	waitmovement LOCALID_ROUTE22_SILVER
 	msgbox Route22_Text_Silver6, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_ROUTE22_SILVER, Common_Movement_WalkRight1
-	applymovement OBJ_EVENT_ID_PLAYER, Route22_Movement_PlayerPushed
-	applymovement OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiPush
+	applymovement2 LOCALID_ROUTE22_SILVER, Common_Movement_WalkRight1
+	applymovement2 OBJ_EVENT_ID_PLAYER, Route22_Movement_PlayerPushed
+	applymovement2 OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiPush
 	playse SE_LEDGE
 	waitmovement LOCALID_ROUTE22_SILVER
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement OBJ_EVENT_ID_FOLLOWER
 	waitse
-	applymovement LOCALID_ROUTE22_SILVER, Route22_Movement_SilverFinishLeave
+	applymovement2 LOCALID_ROUTE22_SILVER, Route22_Movement_SilverFinishLeave
 	waitmovement 0
 	setflag FLAG_HIDE_ROUTE22_GIOVANNI_SILVER
 	removeobject LOCALID_ROUTE22_SILVER
 	removeobject LOCALID_ROUTE22_GIOVANNI
 
-	applymovement OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiBegin
+	applymovement2 OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiBegin
 	playse SE_LEDGE
 	waitse
 	playse SE_LEDGE
 	waitse
 	waitmovement 0
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
-	delay 60
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement OBJ_EVENT_ID_PLAYER
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	delay 20
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
-	delay 60
-	applymovement OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiSpin1
+	applymovement2 OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	waitmovement OBJ_EVENT_ID_PLAYER
+	applymovement2 OBJ_EVENT_ID_FOLLOWER, Route22_Movement_CelebiSpin1
 	playse SE_LEDGE
 	waitse
 	playse SE_LEDGE
@@ -286,7 +284,7 @@ Route22_Movement_CelebiPush:
 
 
 Route22_Text_Silver1:
-	.string "{SPEAKER NAME_SILVER}You told me...\n"
+	.string "{RIVAL}: You told me...\n"
 	.string "you were the number one in the whole\l"
 	.string "world!\p"
 	.string "Are you gonna quit?\p"
@@ -294,20 +292,20 @@ Route22_Text_Silver1:
 
 Route22_Text_Giovanni1:
 	.string "....................\p"
-	.string "{SPEAKER NAME_GIOVANNI}One must acknowledge one's\n"
+	.string "GIOVANNI: One must acknowledge one's\n"
 	.string "defeat before he can move on...\p"
 	.string "I will go solo... for now...\p"
 	.string "So that one day I will form a\n"
 	.string "stronger organization!$"
 
 Route22_Text_Silver2:
-	.string "{SPEAKER NAME_SILVER}What aspect of you was\n"
+	.string "{RIVAL}: What aspect of you was\n"
 	.string "number one?\p"
 	.string "Gathering so many only to be\n"
 	.string "defeated by a mere child!$"
 
 Route22_Text_Giovanni2:
-	.string "{SPEAKER NAME_GIOVANNI}Putting together the\n"
+	.string "GIOVANNI: Putting together the\n"
 	.string "potential of many is how you\l"
 	.string "produce a huge power...\l"
 	.string "That's what an organization is...\l"
@@ -315,20 +313,20 @@ Route22_Text_Giovanni2:
 	.string "I failed... to make the best use of\n"
 	.string "my subordinates' potential...!\p"
 	.string "But you shall witness one day the\n"
-	.string "revival of me and my Team Rocket!$"
+	.string "revival of me and my TEAM ROCKET!$"
 
 Route22_Text_Silver3:
-	.string "{SPEAKER NAME_SILVER}I don't understand you!\p"
+	.string "{RIVAL}: I don't understand you!\p"
 	.string "You don't make any sense!$"
 
 Route22_Text_Giovanni3:
 	.string ".......................\p"
-	.string "{SPEAKER NAME_GIOVANNI}One day you will\n"
+	.string "GIOVANNI: One day you will\n"
 	.string "understand.$"
 
 Route22_Text_Silver4:
-	.string "{SPEAKER NAME_SILVER}I don't want to\n"
-	.string "Understand you!\p"
+	.string "{RIVAL}: I don't want to\n"
+	.string "understand you!\p"
 	.string "I will never become someone like\n"
 	.string "you.\p"
 	.string "A coward when you're alone and\n"
@@ -339,7 +337,8 @@ Route22_Text_Silver4:
 	.string "by myself!$"
 
 Route22_Text_Silver5:
-	.string "All By Myself!$"
+	.string "ALL BY MYSELF!$"
 
 Route22_Text_Silver6:
-	.string "{SPEAKER NAME_SILVER}... What are you staring at?$"
+	.string "{RIVAL}: ... What are you staring at?$"
+

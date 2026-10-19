@@ -26,6 +26,20 @@
   ],
   "object_events": [
     {
+      "local_id": "LOCALID_ROUTE27_FATMAN",
+      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
+      "x": 27,
+      "y": 24,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route27_EventScript_Fatman",
+      "flag": "0"
+    },
+    {
       "graphics_id": "OBJ_EVENT_GFX_COOLTRAINER_F",
       "x": 44,
       "y": 22,
@@ -49,7 +63,8 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "7",
       "script": "Route27_EventScript_Brian",
-      "flag": "0"
+      "flag": "0",
+      "local_id": "LOCALID_ROUTE27_EXPERT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ROCKER",
@@ -86,8 +101,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_CARBOS",
-      "script": "Common_EventScript_FindItem",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route27_EventScript_Item_RareCandy",
       "flag": "FLAG_ITEM_ROUTE27_RARECANDY"
     },
     {
@@ -99,8 +114,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_MOON_STONE",
-      "script": "Common_EventScript_FindItem",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route27_EventScript_Item_Moonstone",
       "flag": "FLAG_ITEM_ROUTE27_MOONSTONE"
     },
     {
@@ -130,7 +145,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FISHER",
+      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
       "x": 145,
       "y": 25,
       "elevation": 0,
@@ -141,6 +156,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route27_EventScript_Scott",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHIKORITA)",
+      "x": 58,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT",
+      "movement_range_x": 3,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CYNDAQUIL)",
+      "x": 55,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_LEFT_UP",
+      "movement_range_x": 3,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_DAY_POKEMON"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TOTODILE)",
+      "x": 58,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN",
+      "movement_range_x": 3,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_NIGHT_POKEMON"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ARBOK)",
@@ -169,7 +223,7 @@
       "flag": "FLAG_NIGHT_POKEMON"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LINOONE)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PONYTA)",
       "x": 72,
       "y": 15,
       "elevation": 0,
@@ -182,7 +236,20 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LINOONE)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DODRIO)",
+      "x": 110,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
+      "movement_range_x": 15,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RAPIDASH)",
       "x": 109,
       "y": 9,
       "elevation": 0,
@@ -195,7 +262,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMBALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 133,
       "y": 17,
       "elevation": 0,
@@ -203,9 +270,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_TM_SOLAR_BEAM",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE27_SOLARBEAM"
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route27_EventScript_Item_DragonClaw",
+      "flag": "FLAG_ITEM_ROUTE27_DRAGONCLAW"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -216,49 +283,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_REVIVE",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE27_REVIVE"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 149,
-      "y": 21,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_ABILITY_PATCH",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ABILITY_PATCH_R27"
-    },
-    {
-      "local_id": "LOCALID_ROUTE27_EXPERT",
-      "graphics_id": "OBJ_EVENT_GFX_COOLTRAINER_M",
-      "x": 52,
-      "y": 26,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route27_RouteExpert",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
-      "x": 29,
-      "y": 23,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_NIGHT_POKEMON"
+      "script": "Route27_EventScript_Item_Destiny_Knot",
+      "flag": "FLAG_ITEM_ROUTE27_DESTINY_KNOT"
     }
   ],
   "warp_events": [
@@ -287,17 +314,26 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 43,
-      "y": 11,
+      "x": 25,
+      "y": 25,
       "elevation": 0,
-      "var": "VAR_ROUTE27_BAOBA_CALL",
+      "var": "VAR_ROUTE27_STATE",
       "var_value": "0",
-      "script": "Route27_EventScript_BaobaCall"
+      "script": "Route27_EventScript_FirstSteps"
     },
     {
       "type": "trigger",
-      "x": 46,
-      "y": 11,
+      "x": 25,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_ROUTE27_STATE",
+      "var_value": "0",
+      "script": "Route27_EventScript_FirstSteps"
+    },
+    {
+      "type": "trigger",
+      "x": 45,
+      "y": 19,
       "elevation": 0,
       "var": "VAR_ROUTE27_BAOBA_CALL",
       "var_value": "0",
@@ -308,18 +344,9 @@
       "x": 46,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_SAFFRON_CITY_STATE",
+      "var": "VAR_ROUTE27_BAOBA_CALL",
       "var_value": "0",
-      "script": "SaffronCity_EventScript_BaobaCall"
-    },
-    {
-      "type": "trigger",
-      "x": 45,
-      "y": 19,
-      "elevation": 0,
-      "var": "VAR_SAFFRON_CITY_STATE",
-      "var_value": "0",
-      "script": "SaffronCity_EventScript_BaobaCall"
+      "script": "Route27_EventScript_BaobaCall"
     }
   ],
   "bg_events": [
@@ -341,12 +368,13 @@
     },
     {
       "type": "hidden_item",
-      "x": 50,
-      "y": 26,
+      "x": 119,
+      "y": 15,
       "elevation": 0,
       "item": "ITEM_REVIVE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE27_REVIVE",
-      "quantity": 1
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE27_REVIVE"
     }
-  ]
+  ],
+  "game_version": "hns",
+  "region": "REGION_JOHTO"
 }

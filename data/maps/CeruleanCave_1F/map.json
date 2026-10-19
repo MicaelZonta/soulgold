@@ -2,7 +2,7 @@
   "id": "MAP_CERULEAN_CAVE_1F",
   "name": "CeruleanCave_1F",
   "layout": "LAYOUT_CERULEAN_CAVE_1F",
-  "music": "MUS_HG_UNION_CAVE",
+  "music": "MUS_HG_ROCK_TUNNEL",
   "region_map_section": "MAPSEC_CERULEAN_CAVE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -23,8 +23,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
-      "script": "Common_EventScript_FindItem",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CeruleanCave1_EventScript_RareCandy",
       "flag": "FLAG_ITEM_CERULEANCAVE1_RARE_CANDY"
     },
     {
@@ -36,8 +36,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_MAX_ELIXIR",
-      "script": "Common_EventScript_FindItem",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CeruleanCave1_EventScript_MaxElixir",
       "flag": "FLAG_ITEM_CERULEANCAVE1_MAX_ELIXIR"
     },
     {
@@ -49,8 +49,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_PP_MAX",
-      "script": "Common_EventScript_FindItem",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CeruleanCave1_EventScript_PpUp",
       "flag": "FLAG_ITEM_CERULEANCAVE1_PP_UP"
     },
     {
@@ -171,7 +171,7 @@
       "flag": "FLAG_TEMP_9"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOLBAT)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PARASECT)",
       "x": 39,
       "y": 21,
       "elevation": 0,
@@ -184,7 +184,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOLBAT)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PARASECT)",
       "x": 40,
       "y": 23,
       "elevation": 0,
@@ -280,8 +280,8 @@
       "x": 35,
       "y": 23,
       "elevation": 0,
-      "dest_map": "MAP_KITAKAMI_BORDER",
-      "dest_warp_id": "2"
+      "dest_map": "MAP_CERULEAN_CITY",
+      "dest_warp_id": "0"
     },
     {
       "x": 12,
@@ -331,8 +331,26 @@
       "elevation": 0,
       "dest_map": "MAP_CERULEAN_CAVE_B1F",
       "dest_warp_id": "5"
+    },
+    {
+      "x": 35,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_KITAKAMI_BORDER",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 26,
+      "y": 21,
+      "elevation": 0,
+      "item": "ITEM_SEA_INCENSE",
+      "flag": "FLAG_HIDDEN_ITEM_CERULEAN_CAVE_1F_SEA_INCENSE"
+    }
+  ],
+  "game_version": "hns",
+  "region": "REGION_KANTO"
 }
