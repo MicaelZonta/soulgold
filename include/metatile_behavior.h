@@ -173,4 +173,30 @@ bool8 MetatileBehavior_isSandpitSE(u8);
 bool8 MetatileBehavior_isSandpitWest(u8);
 bool8 MetatileBehavior_isSandpitEast(u8);
 
+// Heart & Soul
+bool8 MetatileBehavior_IsHeadbuttTree(u8 metatileBehavior);
+bool8 MetatileBehavior_IsFastWater(u8 metatileBehavior);
+bool8 MetatileBehavior_IsSpinRight(u8 metatileBehavior);
+bool8 MetatileBehavior_IsSpinLeft(u8 metatileBehavior);
+bool8 MetatileBehavior_IsSpinUp(u8 metatileBehavior);
+bool8 MetatileBehavior_IsSpinDown(u8 metatileBehavior);
+bool8 MetatileBehavior_IsStopSpinning(u8 metatileBehavior);
+bool8 MetatileBehavior_IsSpinTile(u8 metatileBehavior);
+bool32 MetatileBehavior_IsCyclingRoadPullDownTile(u8 metatileBehavior);
+bool8 MetatileBehavior_IsCyclingRoadPullDownTileGrass(u8 metatileBehavior);
+bool8 MetatileBehavior_IsKitchen(u8 metatileBehavior);
+bool8 MetatileBehavior_IsDresser(u8 metatileBehavior);
+bool8 MetatileBehavior_IsIndigoPlateauSign1(u8 metatileBehavior);
+bool8 MetatileBehavior_IsIndigoPlateauSign2(u8 metatileBehavior);
+bool8 MetatileBehavior_IsBlueprints(u8 metatileBehavior);
+bool8 MetatileBehavior_IsPainting(u8 metatileBehavior);
+bool8 MetatileBehavior_IsPowerPlantMachine(u8 metatileBehavior);
+bool8 MetatileBehavior_IsTelephone(u8 metatileBehavior);
+bool8 MetatileBehavior_IsAdvertisingPoster(u8 metatileBehavior);
+bool8 MetatileBehavior_IsCup(u8 metatileBehavior);
+bool8 MetatileBehavior_IsNeatlyLinedUpTools(u8 metatileBehavior);
+bool8 MetatileBehavior_IsImpressiveMachine(u8 metatileBehavior);
+bool8 MetatileBehavior_IsVideoGame(u8 metatileBehavior);
+bool8 MetatileBehavior_IsBurglary(u8 metatileBehavior);
+
 #endif // GUARD_METATILE_BEHAVIOR_H

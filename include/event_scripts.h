@@ -565,6 +565,25 @@ extern const u8 EventScript_Vase[];
 extern const u8 EventScript_EmptyTrashCan[];
 extern const u8 EventScript_ShopShelf[];
 extern const u8 EventScript_Blueprint[];
+
+// Heart & Soul interactions (data/scripts/hns_interactions.inc)
+extern const u8 EventScript_Kitchen[];
+extern const u8 EventScript_Dresser[];
+extern const u8 EventScript_Blueprints[];
+extern const u8 EventScript_Painting[];
+extern const u8 EventScript_PowerPlantMachine[];
+extern const u8 EventScript_Telephone[];
+extern const u8 EventScript_AdvertisingPoster[];
+extern const u8 EventScript_Cup[];
+extern const u8 EventScript_NeatlyLinedUpTools[];
+extern const u8 EventScript_ImpressiveMachine[];
+extern const u8 EventScript_VideoGame[];
+extern const u8 EventScript_Burglary[];
+extern const u8 EventScript_Indigo_UltimateGoal[];
+extern const u8 EventScript_Indigo_HighestAuthority[];
+extern const u8 EventScript_CurrentTooFast[];
+extern const u8 EventScript_Headbutt[];
+
 extern const u8 EventScript_WirelessBoxResults[];
 extern const u8 EventScript_CableBoxResults[];
 extern const u8 EventScript_Questionnaire[];

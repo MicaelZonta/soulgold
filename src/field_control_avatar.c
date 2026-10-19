@@ -603,6 +603,46 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         SetMsgSignPostAndVarFacing(direction);
         return Common_EventScript_ShowPokemonCenterSign;
     }
+    if (MetatileBehavior_IsHeadbuttTree(metatileBehavior) == TRUE)
+        return EventScript_Headbutt;
+    if (MetatileBehavior_IsImpressiveMachine(metatileBehavior) == TRUE)
+        return EventScript_ImpressiveMachine;
+    if (MetatileBehavior_IsBlueprints(metatileBehavior) == TRUE)
+        return EventScript_Blueprints;
+    if (MetatileBehavior_IsVideoGame(metatileBehavior) == TRUE)
+        return EventScript_VideoGame;
+    if (MetatileBehavior_IsBurglary(metatileBehavior) == TRUE)
+        return EventScript_Burglary;
+    if (MetatileBehavior_IsKitchen(metatileBehavior) == TRUE)
+        return EventScript_Kitchen;
+    if (MetatileBehavior_IsDresser(metatileBehavior) == TRUE)
+        return EventScript_Dresser;
+    if (MetatileBehavior_IsPainting(metatileBehavior) == TRUE)
+        return EventScript_Painting;
+    if (MetatileBehavior_IsPowerPlantMachine(metatileBehavior) == TRUE)
+        return EventScript_PowerPlantMachine;
+    if (MetatileBehavior_IsTelephone(metatileBehavior) == TRUE)
+        return EventScript_Telephone;
+    if (MetatileBehavior_IsAdvertisingPoster(metatileBehavior) == TRUE)
+        return EventScript_AdvertisingPoster;
+    if (MetatileBehavior_IsCup(metatileBehavior) == TRUE)
+        return EventScript_Cup;
+    if (MetatileBehavior_IsNeatlyLinedUpTools(metatileBehavior) == TRUE)
+        return EventScript_NeatlyLinedUpTools;
+    if (MetatileBehavior_IsIndigoPlateauSign1(metatileBehavior) == TRUE)
+    {
+        if (direction != DIR_NORTH)
+            return NULL;
+        SetMsgSignPostAndVarFacing(direction);
+        return EventScript_Indigo_UltimateGoal;
+    }
+    if (MetatileBehavior_IsIndigoPlateauSign2(metatileBehavior) == TRUE)
+    {
+        if (direction != DIR_NORTH)
+            return NULL;
+        SetMsgSignPostAndVarFacing(direction);
+        return EventScript_Indigo_HighestAuthority;
+    }
     if (MetatileBehavior_IsRockClimbable(metatileBehavior) == TRUE && !IsRockClimbActive())
         return EventScript_UseRockClimb;
 
@@ -644,6 +684,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 
 static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metatileBehavior, enum Direction direction)
 {
+    if (MetatileBehavior_IsFastWater(metatileBehavior) == TRUE && !TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
+        return EventScript_CurrentTooFast;
     if (IsFieldMoveUnlocked(FIELD_MOVE_SURF) && (PartyHasMonWithSurf() == TRUE || CheckBagHasItem(ITEM_HM03, 1)) && IsPlayerFacingSurfableFishableWater() == TRUE
      && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF)
      )
@@ -697,7 +739,7 @@ static bool8 TryStartStepBasedScript(struct MapPosition *position, u16 metatileB
         return TRUE;
     if (TryStartStepCountScript(metatileBehavior) == TRUE)
         return TRUE;
-    if (UpdateRepelCounter() == TRUE)
+    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED_MOVE) && !MetatileBehavior_IsForcedMovementTile(metatileBehavior) && UpdateRepelCounter() == TRUE)
         return TRUE;
     if (OnStep_DexNavSearch())
         return TRUE;
@@ -1531,5 +1573,24 @@ void HandleBoulderFallThroughHole(struct ObjectEvent * object)
         PlaySE(SE_FALL);
         RemoveObjectEventByLocalIdAndMap(object->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
         FlagClear(GetBoulderRevealFlagByLocalIdAndMap(object->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup));
+    }
+}
+
+void HandleBoulderActivateVictoryRoadSwitch(u16 x, u16 y)
+{
+    int i;
+    const struct CoordEvent *events = gMapHeader.events->coordEvents;
+    int n = gMapHeader.events->coordEventCount;
+
+    if (MapGridGetMetatileBehaviorAt(x, y) == MB_STRENGTH_BUTTON)
+    {
+        for (i = 0; i < n; i++)
+        {
+            if (events[i].x + MAP_OFFSET == x && events[i].y + MAP_OFFSET == y)
+            {
+                ScriptContext_SetupScript(events[i].script);
+                LockPlayerFieldControls();
+            }
+        }
     }
 }

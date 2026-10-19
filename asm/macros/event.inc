@@ -2971,6 +2971,15 @@
 	.4byte \products
 	.endm
 
+	@ Checks if a party mon knows the given move, or could learn it (needing the
+	@ matching TM/HM in the bag when the move has one; moves with no machine, like
+	@ HEADBUTT, pass on learnability alone). Sets VAR_RESULT to the slot, or
+	@ PARTY_SIZE if none, and VAR_0x8004 to that mon's species.
+	.macro checkpartymove move:req
+	.byte SCR_OP_CHECKPARTYMOVE
+	.2byte \move
+	.endm
+
 	@ Opens the bag in the specified pocket and lets the Player choose an item.
 	@ This item can be used for scripting purposes and it's stored in VAR_ITEM_ID.
 	.macro chooseitem pocket:req

@@ -264,6 +264,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_CHECKPARTYMONLEVEL            ScrCmd_checkpartymonlevel			requests_effects=1  @ 0xef
 	script_cmd_table_entry SCR_OP_SETWILDBATTLE2 				ScrCmd_setwildbattle2               requests_effects=1  @ 0xf0
 	script_cmd_table_entry SCR_OP_BPMART                        ScrCmd_bpmart,                      requests_effects=1  @ 0xf1
+	script_cmd_table_entry SCR_OP_CHECKPARTYMOVE                ScrCmd_checkpartymove,              requests_effects=0  @ 0xf2
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

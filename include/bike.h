@@ -43,6 +43,7 @@ enum AcroState
     ACRO_STATE_WHEELIE_MOVING,
     ACRO_STATE_SIDE_JUMP,
     ACRO_STATE_TURN_JUMP,
+    ACRO_STATE_SLOPE,
 };
 
 // Acro bike transitions
@@ -61,6 +62,8 @@ enum AcroTransition
     ACRO_TRANS_WHEELIE_MOVING,
     ACRO_TRANS_WHEELIE_RISING_MOVING,
     ACRO_TRANS_WHEELIE_LOWERING_MOVING,
+    ACRO_TRANS_DOWNHILL,
+    ACRO_TRANS_UPHILL,
 };
 
 // Exported RAM declarations

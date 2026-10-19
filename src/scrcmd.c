@@ -4143,3 +4143,46 @@ bool8 ScrCmd_setstartingstatus(struct ScriptContext *ctx)
 
     return FALSE;
 }
+
+bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
+{
+    u16 moveId = ScriptReadHalfword(ctx);
+    u32 i;
+
+    gSpecialVar_Result = PARTY_SIZE;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        if (!species)
+            break;
+        if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && MonKnowsMove(&gPlayerParty[i], moveId) == TRUE)
+        {
+            gSpecialVar_Result = i;
+            gSpecialVar_0x8004 = species;
+            break;
+        }
+    }
+    if (gSpecialVar_Result == PARTY_SIZE)
+    {
+        // A mon that can learn the move may use it without knowing it, but only
+        // while the player carries the matching TM/HM. Moves with no machine at
+        // all (Headbutt) have no item to require, so learnability alone is enough.
+        enum Item itemId = GetTMHMItemIdFromMoveId(moveId);
+        if (itemId == ITEM_NONE || CheckBagHasItem(itemId, 1))
+        {
+            for (i = 0; i < PARTY_SIZE; i++)
+            {
+                u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+                if (!species)
+                    break;
+                if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && CanLearnTeachableMove(species, moveId))
+                {
+                    gSpecialVar_Result = i;
+                    gSpecialVar_0x8004 = species;
+                    break;
+                }
+            }
+        }
+    }
+    return FALSE;
+}
