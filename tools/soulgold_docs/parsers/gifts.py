@@ -1,5 +1,3 @@
-"""Parse reachable scripted Pokemon sources for species location documentation."""
-
 from __future__ import annotations
 
 import json
@@ -18,25 +16,15 @@ GIFT_COMMAND_RE = re.compile(
     r"\b(givemon|giveegg)\s+(SPECIES_[A-Z0-9_]+)(?:\s*,\s*(\d+))?",
     re.IGNORECASE,
 )
-LEGENDARY_ENCOUNTER_RE = re.compile(
-    r"\b(?:bosslegendaryencounterwithmoves|bosslegendaryencounter|legendaryencounter)"
+SCRIPTED_ENCOUNTER_RE = re.compile(
+    r"^\s*(bosslegendaryencounterwithmoves|bosslegendaryencounter|legendaryencounter|setwildbattle|setwildbattleshiny|setwildbattle2|seteventmon)"
     r"\s+(SPECIES_[A-Z0-9_]+)\s*,\s*(\d+)\b",
-    re.IGNORECASE,
+    re.IGNORECASE | re.MULTILINE,
 )
 NAMED_GIFT_COMMAND_RE = re.compile(r"\bgivenamedmon\s+(\d+)\b", re.IGNORECASE)
 NAMED_GIFT_CASE_RE = re.compile(
     r"\bcase\s+(\d+)\s*:[^\n]*\n\s*species\s*=\s*(SPECIES_[A-Z0-9_]+)\s*;\s*\n\s*level\s*=\s*(\d+)\s*;"
 )
-# setwildbattle, and seteventmon (the battle starts with special
-# BattleSetup_StartLegendaryBattle; Berry Master's steeds and Calyrex).
-STATIC_ENCOUNTER_RE = re.compile(
-    r"\b(?:setwildbattle|seteventmon)\s+(SPECIES_[A-Z0-9_]+)\s*,\s*(\d+)\b",
-    re.IGNORECASE,
-)
-# A block that sets any of these before its battle is a boss fight, not a source.
-# Boss fights cannot be caught: the NO_CATCHING flag (often set in the block that
-# jumps here) or the boss setup itself in the same block.
-NO_CATCHING_RE = re.compile(r"\bsetflag\s+\w*NO_CATCHING\b|\bsetbossbattle\b")
 GACHA_ARRAY_RE = re.compile(
     r"static\s+const\s+u16\s+sGacha(Basic|Great|Ultra|Master)Species(Common|Uncommon|Rare|UltraRare)\[\]"
     r"\s*=\s*\{(.*?)\};",
@@ -133,7 +121,7 @@ def shared_script_blocks() -> dict[str, str]:
     return _SHARED_SCRIPT_BLOCKS
 
 
-def reachable_script_labels(map_data: Mapping[str, object], blocks: dict[str, str]) -> set[str]:
+def reachable_script_labels(map_data: Mapping[str, object], blocks: dict[str, str]) -> list[str]:
     roots = {
         str(event.get("script"))
         for event_key in ("object_events", "coord_events", "bg_events")
@@ -152,11 +140,10 @@ def reachable_script_labels(map_data: Mapping[str, object], blocks: dict[str, st
         reachable.add(label)
         references = set(re.findall(r"\b[A-Za-z_][A-Za-z0-9_]*\b", blocks[label]))
         pending.extend(references & known_labels - reachable)
-    return reachable
+    return [label for label in blocks if label in reachable]
 
 
 def ruins_of_alph_rock_smash_fossils() -> set[str]:
-    """Return the fossils currently available from the Ruins of Alph rocks."""
     try:
         text = strip_c_comments(read(REPO_ROOT / "src/wild_encounter.c"))
     except FileNotFoundError:
@@ -173,7 +160,6 @@ def add_fossil_revival_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Document fossil revivals separately from ordinary scripted gifts."""
     rock_smash_fossils = ruins_of_alph_rock_smash_fossils()
     for species, fossil in FOSSIL_REVIVAL_ITEMS.items():
         if species not in by_species:
@@ -203,7 +189,6 @@ def add_game_corner_exchange_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Add the Pokemon offered by the Goldenrod Game Corner prize menu."""
     map_dir = REPO_ROOT / "data" / "maps" / GAME_CORNER_MAP_NAME
     try:
         map_data = json.loads(read(map_dir / "map.json"))
@@ -239,7 +224,6 @@ def add_battle_cafe_exchange_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Show cafe point exchange rewards in the docs."""
     map_dir = REPO_ROOT / "data" / "maps" / "BattleCafe"
     try:
         map_data = json.loads(read(map_dir / "map.json"))
@@ -387,18 +371,17 @@ def add_gift_species_locations(
                 locations[species].append(location)
 
 
-def add_scripted_legendary_species_locations(
+def add_scripted_encounter_species_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Add reachable encounters created by the supported legendary script macros."""
     try:
         map_groups = json.loads(read(MAP_GROUPS_JSON))
     except (FileNotFoundError, json.JSONDecodeError):
         return
 
     aliases = species_aliases()
-    legendary_locations: dict[str, list[SpeciesLocation]] = defaultdict(list)
+    scripted_encounters: dict[str, list[SpeciesLocation]] = defaultdict(list)
     for group_name in map_groups.get("group_order") or []:
         for map_name in map_groups.get(group_name) or []:
             if is_docs_excluded_map(map_name, group_name):
@@ -416,8 +399,14 @@ def add_scripted_legendary_species_locations(
                 map_display_name(map_data, map_name),
             )
             for label in reachable_script_labels(map_data, blocks):
-                for command in LEGENDARY_ENCOUNTER_RE.finditer(blocks[label]):
-                    raw_species, raw_level = command.groups()
+                for command in SCRIPTED_ENCOUNTER_RE.finditer(blocks[label]):
+                    kind, raw_species, raw_level = command.groups()
+                    catching_flags = re.findall(
+                        r"\b(setflag|clearflag)\s+\w*NO_CATCHING\b",
+                        blocks[label][:command.start()],
+                    )
+                    if catching_flags and catching_flags[-1] == "setflag":
+                        continue
                     species = aliases.get(raw_species, raw_species)
                     if species not in by_species:
                         continue
@@ -426,36 +415,19 @@ def add_scripted_legendary_species_locations(
                         "map": map_constant,
                         "name": display_name,
                         "time": "",
-                        "method": "Legendary encounter",
+                        "method": (
+                            "Legendary encounter" if "legendary" in kind.lower()
+                            or {"legendary", "mythical"} & set(getattr(by_species[species], "categories", []))
+                            else "Static encounter"
+                        ),
                         "minLevel": level,
                         "maxLevel": level,
                         "rate": None,
                     }
-                    if location not in legendary_locations[species]:
-                        legendary_locations[species].append(location)
-                # setwildbattle is a source only when the block leaves catching on
-                # (boss fights set B_FLAG_NO_CATCHING / FLAG_SYS_NO_CATCHING first).
-                if NO_CATCHING_RE.search(blocks[label]):
-                    continue
-                for command in STATIC_ENCOUNTER_RE.finditer(blocks[label]):
-                    raw_species, raw_level = command.groups()
-                    species = aliases.get(raw_species, raw_species)
-                    if species not in by_species:
-                        continue
-                    level = int(raw_level)
-                    location = {
-                        "map": map_constant,
-                        "name": display_name,
-                        "time": "",
-                        "method": "Static encounter",
-                        "minLevel": level,
-                        "maxLevel": level,
-                        "rate": None,
-                    }
-                    if location not in legendary_locations[species]:
-                        legendary_locations[species].append(location)
+                    if location not in scripted_encounters[species]:
+                        scripted_encounters[species].append(location)
 
-    for species, scripted_locations in legendary_locations.items():
+    for species, scripted_locations in scripted_encounters.items():
         locations.setdefault(species, [])
         for location in scripted_locations:
             if location not in locations[species]:
@@ -538,7 +510,6 @@ def add_odd_egg_species_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Add the uniformly random, one-time Route 34 Odd Egg pool."""
     try:
         text = strip_c_comments(read(ODD_EGG_C))
     except FileNotFoundError:

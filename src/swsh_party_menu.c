@@ -435,7 +435,6 @@ static void TryGiveItemOrMailToSelectedMon(u8);
 static void SwitchSelectedMons(u8);
 static void TryEnterMonForMinigame(u8, u8);
 static void Task_TryCreateSelectionWindow(u8);
-static bool8 IsBattleEntrySelectionComplete(void);
 static inline u8 GetButtonPromptType(void);
 static void ShowButtonPrompt(u8 type);
 static void RefreshSelectedMonInfoAndPrompt(void);
@@ -1988,7 +1987,7 @@ void Task_HandleChooseMonInput(u8 taskId)
             HandleChooseMonCancel(taskId, slotPtr);
             break;
         case START_BUTTON:
-            if (sPartyMenuInternal->chooseHalf && IsBattleEntrySelectionComplete())
+            if (sPartyMenuInternal->chooseHalf)
             {
                 PlaySE(SE_SELECT);
                 gPartyMenu.task(taskId);

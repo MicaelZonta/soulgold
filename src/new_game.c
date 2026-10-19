@@ -77,12 +77,14 @@ struct NewGameOptions
     enum DifficultyLevel difficulty;
     u16 overworldSpeed;
     u8 battleSpeed;
+    enum BattleMusicTheme battleMusicTheme;
     u8 partyMenuStyle;
     enum ReplayBattleFormat battleFormat;
     u16 followerMegaOff;
     enum ShinyRateOption shinyRate;
     bool8 overworldLighting;
     bool8 battleLighting;
+    bool8 fastHMs;
 };
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
@@ -144,8 +146,10 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsDarkBattleUi = FALSE;
     gSaveBlock2Ptr->optionsBattleSpeed = OPTIONS_BATTLE_SCENE_2X;
     VarSet(VAR_BATTLE_SPEED, OPTIONS_BATTLE_SCENE_2X);
+    SetBattleMusicTheme(BATTLE_MUSIC_THEME_DEFAULT);
     VarSet(VAR_FOLLOWER_MEGA_OFF, 0);
     VarSet(VAR_SHINY_RATE, SHINY_RATE_256);
+    FlagClear(FLAG_FAST_HMS);
     SetDefaultPartyMenuStyle();
                
 }
@@ -224,12 +228,14 @@ void NewGameInitData(void)
         .difficulty = GetCurrentDifficultyLevel(),
         .overworldSpeed = VarGet(VAR_OVERWORLD_SPEEDUP),
         .battleSpeed = VarGet(VAR_BATTLE_SPEED),
+        .battleMusicTheme = GetBattleMusicTheme(),
         .partyMenuStyle = GetCurrentPartyMenuStyle(),
         .battleFormat = GetReplayBattleFormat(),
         .followerMegaOff = !IsFollowerMegaEnabled(),
         .shinyRate = GetShinyRateOption(),
         .overworldLighting = !FlagGet(FLAG_OW_LIGHTING),
         .battleLighting = !FlagGet(FLAG_BATTLE_LIGHTING),
+        .fastHMs = FlagGet(FLAG_FAST_HMS),
     };
 
     if (options.overworldSpeed > OPTIONS_OVERWORLD_SPEED_4X)
@@ -310,6 +316,7 @@ void NewGameInitData(void)
     VarSet(VAR_OVERWORLD_SPEEDUP, options.overworldSpeed);
     gSaveBlock2Ptr->optionsBattleSpeed = options.battleSpeed;
     VarSet(VAR_BATTLE_SPEED, options.battleSpeed);
+    SetBattleMusicTheme(options.battleMusicTheme);
     gSaveBlock1Ptr->optionsPartyMenuStyle = options.partyMenuStyle;
     gSaveBlock1Ptr->optionsPartyMenuStyleMagic = PARTY_MENU_OPTION_SAVE_MAGIC;
     SetReplayBattleFormat(options.battleFormat);
@@ -319,6 +326,8 @@ void NewGameInitData(void)
         FlagSet(FLAG_OW_LIGHTING);
     if (!options.battleLighting)
         FlagSet(FLAG_BATTLE_LIGHTING);
+    if (options.fastHMs)
+        FlagSet(FLAG_FAST_HMS);
     VarSet(VAR_BATTLE_FACILITY_BGM, 0);
     ResetItemFlags();
     ResetDexNav();

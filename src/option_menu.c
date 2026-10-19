@@ -80,7 +80,9 @@ enum
     MENUITEM_BATTLE_LIGHTING,
     MENUITEM_FAST_MEGAS,
     MENUITEM_FAST_WEATHER,
+    MENUITEM_FAST_HMS,
     MENUITEM_SURF_MUSIC,
+    MENUITEM_BATTLE_MUSIC,
     MENUITEM_PARTY_MENU,
     MENUITEM_BATTLE_FORMAT,
     MENUITEM_FOLLOWER_MEGA,
@@ -122,6 +124,7 @@ enum
 #define YPOS_FAST_MEGAS            sOptionDrawY
 #define YPOS_FAST_WEATHER          sOptionDrawY
 #define YPOS_SURF_MUSIC            sOptionDrawY
+#define YPOS_BATTLE_MUSIC          sOptionDrawY
 #define YPOS_PARTY_MENU            sOptionDrawY
 #define YPOS_BATTLE_FORMAT         sOptionDrawY
 
@@ -191,6 +194,8 @@ static u8 GetSavedPartyMenuStyle(void);
 static void SetSavedPartyMenuStyle(u8 selection);
 static u8 BattleFormat_ProcessInput(u8 selection);
 static void BattleFormat_DrawChoices(u8 selection);
+static enum BattleMusicTheme BattleMusic_ProcessInput(enum BattleMusicTheme selection);
+static void BattleMusic_DrawChoice(enum BattleMusicTheme selection);
 
 static void DrawHeaderText(void);
 static void DrawBgWindowFrames(void);
@@ -205,11 +210,13 @@ EWRAM_DATA static bool8 sFollowerMega = FALSE;
 EWRAM_DATA static u8 sShinyRate = 0;
 EWRAM_DATA static bool8 sFastWeather = FALSE;
 EWRAM_DATA static bool8 sSurfMusic = FALSE;
+EWRAM_DATA static enum BattleMusicTheme sBattleMusicTheme = BATTLE_MUSIC_THEME_DEFAULT;
 EWRAM_DATA static u8 sPartyMenuStyle = PARTY_MENU_DEFAULT_OPTION;
 EWRAM_DATA static u8 sBattleFormat = REPLAY_BATTLE_FORMAT_DESIGNED;
 EWRAM_DATA static u16 sOptionScrollOffset = 0;
 EWRAM_DATA static u8 sOptionScrollArrowTaskId = 0;
 EWRAM_DATA static u8 sOptionDrawY = 0;
+EWRAM_DATA static bool8 sFastHMs = FALSE;
 
 static const u8 gText_Option[]             = _("Options");
 static const u8 gText_TextSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Normal");
@@ -257,6 +264,12 @@ static const u8 gText_FastWeatherOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_FastWeatherOff[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 static const u8 gText_SurfMusicOn[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
 static const u8 gText_SurfMusicOff[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
+static const u8 gText_BattleMusicDefault[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<Default>");
+static const u8 gText_BattleMusicHgssKanto[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<Kanto>");
+static const u8 gText_BattleMusicFrlg[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<FRLG>");
+static const u8 gText_BattleMusicRse[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<RSE>");
+static const u8 gText_BattleMusicDppt[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<D/P/Pt>");
+static const u8 gText_BattleMusicRandom[]  = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<Random>");
 static const u8 gText_PartyMenuCustom[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Custom");
 static const u8 gText_PartyMenuHGSS[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}HGSS");
 static const u8 gText_PartyMenuBW[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}BW");
@@ -320,7 +333,9 @@ static const u8 *const sOptionMenuItemsNames_Pg3[MENUITEM_COUNT_PG3] =
     [MENUITEM_SHINY_RATE] = COMPOUND_STRING("Shiny odds"),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING("Fast megas"),
     [MENUITEM_FAST_WEATHER] = COMPOUND_STRING("Fast weather"),
+    [MENUITEM_FAST_HMS] = COMPOUND_STRING("Fast HMs"),
     [MENUITEM_SURF_MUSIC] = COMPOUND_STRING("Surf music"),
+    [MENUITEM_BATTLE_MUSIC] = COMPOUND_STRING("Battle music"),
     [MENUITEM_PARTY_MENU] = COMPOUND_STRING("Party menu"),
     [MENUITEM_BATTLE_FORMAT] = COMPOUND_STRING("Trainer format"),
 };
@@ -358,7 +373,7 @@ static const u8 *const sOptionMenuHelpTexts[MENUITEM_COUNT] =
     [MENUITEM_LEVELCAPS] = COMPOUND_STRING(
         "None gives full EXP at all\n"
         "levels. Soft sharply reduces EXP\n"
-        "at the story cap. Hard gives no\n"
+        "at the level cap. Hard gives no\n"
         "EXP at the cap."),
 };
 
@@ -384,7 +399,7 @@ static const u8 *const sOptionMenuHelpTexts_Pg2[MENUITEM_COUNT_PG2] =
     [MENUITEM_TRAINER_LEVEL_SCALING] = COMPOUND_STRING(
         "On scales trainer levels to trail\n"
         "your party's average level.\n"
-        "Off uses each trainer's default\n"
+        "Off uses each trainer's curated\n"
         "levels."),
     [MENUITEM_WILD_LEVEL_SCALING] = COMPOUND_STRING(
         "On scales wild Pokémon levels to\n"
@@ -406,8 +421,7 @@ static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
     [MENUITEM_DARK_BATTLE_UI] = COMPOUND_STRING(
         "Light uses the standard UI. Dark\n"
         "uses dark healthboxes, battle\n"
-        "menus, and Bag screens.\n"
-        "Shiny healthboxes are unchanged."),
+        "menus, and Bag screens."),
     [MENUITEM_OW_LIGHTING] = COMPOUND_STRING(
         "On applies day/night visuals in\n"
         "the overworld. Off keeps daytime\n"
@@ -416,33 +430,36 @@ static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
     [MENUITEM_BATTLE_LIGHTING] = COMPOUND_STRING(
         "On applies day/night effects to\n"
         "battle backgrounds, Pokémon,\n"
-        "Trainers, and other sprites.\n"
-        "Off keeps their normal colors."),
+        "Trainers, and other sprites."),
     [MENUITEM_FOLLOWER_MEGA] = COMPOUND_STRING(
         "Show Mega forms on follower\n"
         "instead of base form when equipped\n"
         "with Mega Stone. Some newer Megas\n"
         "lack overworld sprites currently."),
     [MENUITEM_SHINY_RATE] = COMPOUND_STRING(
-        "Odds of running into shiny Pokémon.\n"
-        "Does not change existing shinyness."),
+        "Odds of finding shiny Pokémon."),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING(
         "On uses a near-instant Mega\n"
         "Evolution animation. Off plays\n"
-        "the complete animation."),
+        "the full animation."),
     [MENUITEM_FAST_WEATHER] = COMPOUND_STRING(
         "On skips repeated weather text\n"
-        "and animations after it begins.\n"
-        "Off shows them each turn."),
+        "and animations."),
+    [MENUITEM_FAST_HMS] = COMPOUND_STRING(
+        "On skips the yes/no prompt when\n"
+        "using HMs."),
     [MENUITEM_SURF_MUSIC] = COMPOUND_STRING(
         "On plays the Surf theme while\n"
         "surfing. Off keeps the map music."),
+    [MENUITEM_BATTLE_MUSIC] = COMPOUND_STRING(
+        "Changes wild, Trainer, and Gym\n"
+        "battle music."),
     [MENUITEM_PARTY_MENU] = COMPOUND_STRING(
         "Custom uses the redesigned screen.\n"
         "HGSS and BW use their respective\n"
         "DS-style layouts."),
     [MENUITEM_BATTLE_FORMAT] = COMPOUND_STRING(
-        "Default uses intended formats.\n"
+        "Default uses curated formats.\n"
         "Singles/Doubles override eligible\n"
         "trainers; Doubles needs 2 Pokémon.\n"
         "Wild/facility/partner/multi\n"
@@ -540,7 +557,9 @@ static void ReadAllCurrentSettings(u8 taskId)
         sFollowerMega = IsFollowerMegaEnabled();
         sShinyRate = GetShinyRateOption();
         sFastWeather = gSaveBlock2Ptr->optionsFastWeather;
+        sFastHMs = FlagGet(FLAG_FAST_HMS);
         sSurfMusic = gSaveBlock2Ptr->optionsSurfMusic;
+        sBattleMusicTheme = GetBattleMusicTheme();
         sPartyMenuStyle = GetSavedPartyMenuStyle();
         sBattleFormat = GetReplayBattleFormat();
 }
@@ -742,8 +761,14 @@ static void DrawOptionChoices(u8 taskId, u8 option)
     case OPTION_MENU_PG3_START + MENUITEM_FAST_WEATHER:
         FastWeather_DrawChoices(sFastWeather);
         break;
+    case OPTION_MENU_PG3_START + MENUITEM_FAST_HMS:
+        FastWeather_DrawChoices(sFastHMs);
+        break;
     case OPTION_MENU_PG3_START + MENUITEM_SURF_MUSIC:
         SurfMusic_DrawChoices(sSurfMusic);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_BATTLE_MUSIC:
+        BattleMusic_DrawChoice(sBattleMusicTheme);
         break;
     case OPTION_MENU_PG3_START + MENUITEM_PARTY_MENU:
         PartyMenuStyle_DrawChoices(sPartyMenuStyle);
@@ -899,11 +924,23 @@ static void ProcessOptionInput(u8 taskId)
         if (previousOption != sFastWeather)
             FastWeather_DrawChoices(sFastWeather);
         break;
+    case OPTION_MENU_PG3_START + MENUITEM_FAST_HMS:
+        previousOption = sFastHMs;
+        sFastHMs = FastWeather_ProcessInput(sFastHMs);
+        if (previousOption != sFastHMs)
+            FastWeather_DrawChoices(sFastHMs);
+        break;
     case OPTION_MENU_PG3_START + MENUITEM_SURF_MUSIC:
         previousOption = sSurfMusic;
         sSurfMusic = SurfMusic_ProcessInput(sSurfMusic);
         if (previousOption != sSurfMusic)
             SurfMusic_DrawChoices(sSurfMusic);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_BATTLE_MUSIC:
+        previousOption = sBattleMusicTheme;
+        sBattleMusicTheme = BattleMusic_ProcessInput(sBattleMusicTheme);
+        if (previousOption != sBattleMusicTheme)
+            BattleMusic_DrawChoice(sBattleMusicTheme);
         break;
     case OPTION_MENU_PG3_START + MENUITEM_PARTY_MENU:
         previousOption = sPartyMenuStyle;
@@ -1065,7 +1102,12 @@ static void SaveCurrentSettings(u8 taskId)
     VarSet(VAR_FOLLOWER_MEGA_OFF, !sFollowerMega);
     VarSet(VAR_SHINY_RATE, sShinyRate);
     gSaveBlock2Ptr->optionsFastWeather = sFastWeather;
+    if (sFastHMs)
+        FlagSet(FLAG_FAST_HMS);
+    else
+        FlagClear(FLAG_FAST_HMS);
     gSaveBlock2Ptr->optionsSurfMusic = sSurfMusic;
+    SetBattleMusicTheme(sBattleMusicTheme);
     SetSavedPartyMenuStyle(sPartyMenuStyle);
     SetReplayBattleFormat(sBattleFormat);
 }
@@ -1742,6 +1784,95 @@ static void SurfMusic_DrawChoices(u8 selection)
 
     DrawOptionMenuChoice(gText_SurfMusicOn, 104, YPOS_SURF_MUSIC, styles[TRUE]);
     DrawOptionMenuChoice(gText_SurfMusicOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_SurfMusicOff, 198), YPOS_SURF_MUSIC, styles[FALSE]);
+}
+
+static enum BattleMusicTheme BattleMusic_ProcessInput(enum BattleMusicTheme selection)
+{
+    if (selection >= BATTLE_MUSIC_THEME_COUNT)
+        selection = BATTLE_MUSIC_THEME_DEFAULT;
+
+    if (JOY_NEW(DPAD_RIGHT))
+    {
+        switch (selection)
+        {
+        case BATTLE_MUSIC_THEME_DEFAULT:
+            selection = BATTLE_MUSIC_THEME_HGSS_KANTO;
+            break;
+        case BATTLE_MUSIC_THEME_HGSS_KANTO:
+            selection = BATTLE_MUSIC_THEME_FRLG;
+            break;
+        case BATTLE_MUSIC_THEME_FRLG:
+            selection = BATTLE_MUSIC_THEME_RSE;
+            break;
+        case BATTLE_MUSIC_THEME_RSE:
+            selection = BATTLE_MUSIC_THEME_DPPT;
+            break;
+        case BATTLE_MUSIC_THEME_DPPT:
+            selection = BATTLE_MUSIC_THEME_RANDOM;
+            break;
+        default:
+            selection = BATTLE_MUSIC_THEME_DEFAULT;
+            break;
+        }
+        sArrowPressed = TRUE;
+    }
+    else if (JOY_NEW(DPAD_LEFT))
+    {
+        switch (selection)
+        {
+        case BATTLE_MUSIC_THEME_DEFAULT:
+            selection = BATTLE_MUSIC_THEME_RANDOM;
+            break;
+        case BATTLE_MUSIC_THEME_FRLG:
+            selection = BATTLE_MUSIC_THEME_HGSS_KANTO;
+            break;
+        case BATTLE_MUSIC_THEME_RSE:
+            selection = BATTLE_MUSIC_THEME_FRLG;
+            break;
+        case BATTLE_MUSIC_THEME_DPPT:
+            selection = BATTLE_MUSIC_THEME_RSE;
+            break;
+        case BATTLE_MUSIC_THEME_RANDOM:
+            selection = BATTLE_MUSIC_THEME_DPPT;
+            break;
+        default:
+            selection = BATTLE_MUSIC_THEME_DEFAULT;
+            break;
+        }
+        sArrowPressed = TRUE;
+    }
+
+    return selection;
+}
+
+static void BattleMusic_DrawChoice(enum BattleMusicTheme selection)
+{
+    const u8 *text;
+
+    switch (selection)
+    {
+    case BATTLE_MUSIC_THEME_HGSS_KANTO:
+        text = gText_BattleMusicHgssKanto;
+        break;
+    case BATTLE_MUSIC_THEME_FRLG:
+        text = gText_BattleMusicFrlg;
+        break;
+    case BATTLE_MUSIC_THEME_RSE:
+        text = gText_BattleMusicRse;
+        break;
+    case BATTLE_MUSIC_THEME_DPPT:
+        text = gText_BattleMusicDppt;
+        break;
+    case BATTLE_MUSIC_THEME_RANDOM:
+        text = gText_BattleMusicRandom;
+        break;
+    default:
+        text = gText_BattleMusicDefault;
+        break;
+    }
+
+    FillWindowPixelRect(WIN_OPTIONS, PIXEL_FILL(1), 100, YPOS_BATTLE_MUSIC, 108, 16);
+    DrawOptionMenuChoice(text, 104 + GetStringCenterAlignXOffset(FONT_NORMAL, text, 94), YPOS_BATTLE_MUSIC, 1);
 }
 
 static u8 PartyMenuStyle_ProcessInput(u8 selection)

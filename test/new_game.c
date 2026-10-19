@@ -16,14 +16,17 @@ TEST("A fresh new game defaults to 2x battle speed")
 {
     FlagClear(FLAG_OW_LIGHTING);
     FlagClear(FLAG_BATTLE_LIGHTING);
+    FlagSet(FLAG_FAST_HMS);
     Sav2_ClearSetDefault();
 
     NewGameInitData();
 
     EXPECT_EQ(VarGet(VAR_BATTLE_SPEED), OPTIONS_BATTLE_SCENE_2X);
     EXPECT_EQ((u8)gSaveBlock2Ptr->optionsBattleSpeed, OPTIONS_BATTLE_SCENE_2X);
+    EXPECT_EQ(GetBattleMusicTheme(), BATTLE_MUSIC_THEME_DEFAULT);
     EXPECT(IsOverworldLightingEnabled());
     EXPECT(IsBattleLightingEnabled());
+    EXPECT(!FlagGet(FLAG_FAST_HMS));
     EXPECT(FlagGet(FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE));
     EXPECT_EQ(GetGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS), 0);
 }
@@ -34,11 +37,13 @@ TEST("Starting a new game preserves settings selected from the main menu")
     VarSet(VAR_OVERWORLD_SPEEDUP, OPTIONS_OVERWORLD_SPEED_4X);
     VarSet(VAR_BATTLE_SPEED, OPTIONS_BATTLE_SCENE_3X);
     gSaveBlock2Ptr->optionsBattleSpeed = OPTIONS_BATTLE_SCENE_3X;
+    SetBattleMusicTheme(BATTLE_MUSIC_THEME_DPPT);
     gSaveBlock1Ptr->optionsPartyMenuStyle = PARTY_MENU_OPTION_HGSS;
     gSaveBlock1Ptr->optionsPartyMenuStyleMagic = PARTY_MENU_OPTION_SAVE_MAGIC;
     SetReplayBattleFormat(REPLAY_BATTLE_FORMAT_DOUBLES);
     FlagSet(FLAG_OW_LIGHTING);
     FlagClear(FLAG_BATTLE_LIGHTING);
+    FlagSet(FLAG_FAST_HMS);
 
     NewGameInitData();
 
@@ -46,11 +51,14 @@ TEST("Starting a new game preserves settings selected from the main menu")
     EXPECT_EQ(VarGet(VAR_OVERWORLD_SPEEDUP), OPTIONS_OVERWORLD_SPEED_4X);
     EXPECT_EQ(VarGet(VAR_BATTLE_SPEED), OPTIONS_BATTLE_SCENE_3X);
     EXPECT_EQ((u8)gSaveBlock2Ptr->optionsBattleSpeed, OPTIONS_BATTLE_SCENE_3X);
+    EXPECT_EQ(GetBattleMusicTheme(), BATTLE_MUSIC_THEME_DPPT);
     EXPECT_EQ(gSaveBlock1Ptr->optionsPartyMenuStyle, PARTY_MENU_OPTION_HGSS);
     EXPECT_EQ(gSaveBlock1Ptr->optionsPartyMenuStyleMagic, PARTY_MENU_OPTION_SAVE_MAGIC);
     EXPECT_EQ(GetReplayBattleFormat(), REPLAY_BATTLE_FORMAT_DOUBLES);
     EXPECT(!IsOverworldLightingEnabled());
     EXPECT(IsBattleLightingEnabled());
+    EXPECT(FlagGet(FLAG_FAST_HMS));
+    FlagClear(FLAG_FAST_HMS);
 }
 
 TEST("Shiny RNG audit: a fresh new game sets exactly 1-in-256 base odds")

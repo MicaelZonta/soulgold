@@ -6060,3 +6060,5 @@ $(OBJEVENTGFXDIR)/people/special/kings_carrot_ice.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/special/kings_carrot_shade.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
+$(OBJEVENTGFXDIR)/pokemon/surfable/regional_%.4bpp: $(OBJEVENTGFXDIR)/pokemon/surfable/regional_%.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4

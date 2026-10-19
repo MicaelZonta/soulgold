@@ -1951,8 +1951,12 @@
 // starting Berries); read by the other BerryLedger_* specials.
 #define FLAG_BERRY_LEDGER_START                     0x1053 // Cheri Berry
 #define FLAG_BERRY_LEDGER_END                       0x1095 // Maranga Berry (67 flags)
-#define CUSTOM_FLAGS_END                            FLAG_BERRY_LEDGER_END
-// PROXIMA FLAG NOVA: 0x1096 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Upstream (Eemeliri/soulgold): toggle do option menu para HMs rapidos.
+// Upstream numera (SYSTEM_FLAGS + 0x3), que aqui e FLAG_STARTED_SEASONAL_PERFUME_QUEST;
+// movida para o proximo slot livre no merge do upstream (19/10/2026).
+#define FLAG_FAST_HMS                                0x1096
+#define CUSTOM_FLAGS_END                            FLAG_FAST_HMS
+// PROXIMA FLAG NOVA: 0x1097 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

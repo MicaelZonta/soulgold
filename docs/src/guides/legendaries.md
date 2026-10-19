@@ -41,7 +41,7 @@ Choose the Silver Wing after the Rocket takeover. If you chose the Rainbow Wing 
 
 #### Shadow Lugia
 
-Explore south of Johto to find the Abandoned Rocket Warehouse. Solve its puzzles to obtain a Dark Crystal, then bring it to the regular Lugia encounter.
+Explore south of Johto (Surf south from Route 33 as far down as you can and then take the right turn) to find the Abandoned Rocket Warehouse. Solve its puzzles to obtain a Dark Crystal, then bring it to the regular Lugia encounter.
 
 If you have already caught Lugia, complete one round of Title Defense to reset the spawn. If you chose Ho-Oh during the main story, defeat the Director in the postgame to obtain the Silver Wing.
 
@@ -167,7 +167,7 @@ Found in the Dream Garden, accessible from Tohjo Falls after obtaining Rock Clim
 
 #### Arceus
 
-Reward from Oak in Radio Tower 2F for completing the Pokédex. Requires having caught all 615 non-legendary/non-mythical Pokémon.
+Reward from Oak in Radio Tower 2F for completing the Pokédex. Requires having caught all 608 non-legendary/non-mythical Pokémon.
 
 #### Victini
 

@@ -5,7 +5,7 @@ import unittest
 from tools.soulgold_docs.parsers.gifts import (
     add_gachapon_species_locations,
     add_gift_species_locations,
-    add_scripted_legendary_species_locations,
+    add_scripted_encounter_species_locations,
     named_gift_table,
 )
 
@@ -56,7 +56,7 @@ class ScriptedSourceTests(unittest.TestCase):
     def test_catchable_static_encounter_is_a_source(self) -> None:
         locations = {}
 
-        add_scripted_legendary_species_locations(  # type: ignore[arg-type]
+        add_scripted_encounter_species_locations(  # type: ignore[arg-type]
             locations,
             {"SPECIES_SUDOWOODO": object()},
         )
@@ -70,7 +70,7 @@ class ScriptedSourceTests(unittest.TestCase):
         # The Fighting Dojo battles set B_FLAG_NO_CATCHING first.
         locations = {}
 
-        add_scripted_legendary_species_locations(  # type: ignore[arg-type]
+        add_scripted_encounter_species_locations(  # type: ignore[arg-type]
             locations,
             {"SPECIES_LICKILICKY": object()},
         )

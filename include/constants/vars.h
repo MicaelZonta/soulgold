@@ -428,7 +428,11 @@
 // specials as VAR_GARDEN_NEWS's (GardenStory_Check / GardenStory_Mark), and
 // GardenRollDay marks the epilogue's morning (src/berry_garden.c).
 #define VAR_GARDEN_STORY2                               0x4130
-// PROXIMA VAR NOVA: 0x4131 (livre ate VARS_END 0x42FF). Alocar aqui, em
+// Upstream (Eemeliri/soulgold): battle music theme chosen in the option menu.
+// Upstream numbers it 0x4121, which here is VAR_RIFT_ALTAR_STEP; moved to the
+// next free slot when upstream was merged (19/10/2026).
+#define VAR_BATTLE_MUSIC_THEME                          0x4131
+// PROXIMA VAR NOVA: 0x4132 (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 
