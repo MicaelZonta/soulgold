@@ -371,15 +371,23 @@ Route25_BillsHouse_Text_NotInParty:
 Route25_BillsHouse_EventScript_Gramps::
 	lock
 	faceplayer
-	goto_if_eq VAR_BILLS_GRANDPA, 1, Route25_BillsHouse_EventScript_Gramps_Meowth
-	goto_if_eq VAR_BILLS_GRANDPA, 2, Route25_BillsHouse_EventScript_Gramps_Zigzagoon
-	goto_if_eq VAR_BILLS_GRANDPA, 3, Route25_BillsHouse_EventScript_Gramps_Ponyta
-	goto_if_eq VAR_BILLS_GRANDPA, 4, Route25_BillsHouse_EventScript_Gramps_Farfetchd
-	goto_if_eq VAR_BILLS_GRANDPA, 5, Route25_BillsHouse_EventScript_Gramps_Slowpoke
-	goto_if_eq VAR_BILLS_GRANDPA, 6, Route25_BillsHouse_EventScript_Gramps_ShownAll
+	@ 1-5: pedidos do SoulGold (Spinda..Pichu); 6: os 5 foram mostrados.
+	@ 7-11: pedidos do HnS (Meowth..Slowpoke, destrava o Teleporter); 12: tudo mostrado.
+	goto_if_eq VAR_BILLS_GRANDPA, 1, Route25_BillsHouse_EventScript_Gramps_Spinda
+	goto_if_eq VAR_BILLS_GRANDPA, 2, Route25_BillsHouse_EventScript_Gramps_Roselia
+	goto_if_eq VAR_BILLS_GRANDPA, 3, Route25_BillsHouse_EventScript_Gramps_Lotad
+	goto_if_eq VAR_BILLS_GRANDPA, 4, Route25_BillsHouse_EventScript_Gramps_Growlithe
+	goto_if_eq VAR_BILLS_GRANDPA, 5, Route25_BillsHouse_EventScript_Gramps_Pichu
+	goto_if_eq VAR_BILLS_GRANDPA, 6, Route25_BillsHouse_EventScript_Gramps_Meowth
+	goto_if_eq VAR_BILLS_GRANDPA, 7, Route25_BillsHouse_EventScript_Gramps_Meowth
+	goto_if_eq VAR_BILLS_GRANDPA, 8, Route25_BillsHouse_EventScript_Gramps_Zigzagoon
+	goto_if_eq VAR_BILLS_GRANDPA, 9, Route25_BillsHouse_EventScript_Gramps_Ponyta
+	goto_if_eq VAR_BILLS_GRANDPA, 10, Route25_BillsHouse_EventScript_Gramps_Farfetchd
+	goto_if_eq VAR_BILLS_GRANDPA, 11, Route25_BillsHouse_EventScript_Gramps_Slowpoke
+	goto_if_eq VAR_BILLS_GRANDPA, 12, Route25_BillsHouse_EventScript_Gramps_ShownAll
 	msgbox Route25_BillsHouse_Text_GrandpaIntro, MSGBOX_DEFAULT
 	setvar VAR_BILLS_GRANDPA, 1
-	goto Route25_BillsHouse_EventScript_Gramps_Meowth
+	goto Route25_BillsHouse_EventScript_Gramps_Spinda
 
 Route25_BillsHouse_EventScript_Gramps_Declined::
 	msgbox Route25_BillsHouse_Text_YouDontHaveIt, MSGBOX_DEFAULT
@@ -393,7 +401,78 @@ Route25_BillsHouse_EventScript_Gramps_WrongMon::
 	release
 	end
 
+Route25_BillsHouse_EventScript_Gramps_AskToSee::
+	msgbox Route25_BillsHouse_Text_AskToSeeMon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, FALSE, Route25_BillsHouse_EventScript_Gramps_AskToSeeNone
+	msgbox Route25_BillsHouse_Text_ExcitedToSee, MSGBOX_DEFAULT
+	special ChoosePartyMon
+	waitstate
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, Route25_BillsHouse_EventScript_Gramps_AskToSeeNone
+	copyvar VAR_0x8005, VAR_0x8004
+	specialvar VAR_RESULT, GetTradeSpecies
+	return
+
+Route25_BillsHouse_EventScript_Gramps_AskToSeeNone::
+	setvar VAR_RESULT, SPECIES_NONE
+	return
+
+Route25_BillsHouse_EventScript_Gramps_Spinda::
+	msgbox Route25_BillsHouse_Text_Spinda, MSGBOX_DEFAULT
+	call Route25_BillsHouse_EventScript_Gramps_AskToSee
+	goto_if_eq VAR_RESULT, SPECIES_NONE, Route25_BillsHouse_EventScript_Gramps_Declined
+	goto_if_ne VAR_RESULT, SPECIES_SPINDA, Route25_BillsHouse_EventScript_Gramps_WrongMon
+	bufferspeciesname STR_VAR_1, SPECIES_SPINDA
+	setvar VAR_TEMP_0, ITEM_EVERSTONE
+	setvar VAR_TEMP_1, 1
+	goto Route25_BillsHouse_EventScript_Gramps_Correctmon
+
+Route25_BillsHouse_EventScript_Gramps_Roselia::
+	msgbox Route25_BillsHouse_Text_Roselia, MSGBOX_DEFAULT
+	call Route25_BillsHouse_EventScript_Gramps_AskToSee
+	goto_if_eq VAR_RESULT, SPECIES_NONE, Route25_BillsHouse_EventScript_Gramps_Declined
+	goto_if_ne VAR_RESULT, SPECIES_ROSELIA, Route25_BillsHouse_EventScript_Gramps_WrongMon
+	bufferspeciesname STR_VAR_1, SPECIES_ROSELIA
+	setvar VAR_TEMP_0, ITEM_LEAF_STONE
+	setvar VAR_TEMP_1, 3
+	goto Route25_BillsHouse_EventScript_Gramps_Correctmon
+
+Route25_BillsHouse_EventScript_Gramps_Lotad::
+	msgbox Route25_BillsHouse_Text_Lotad, MSGBOX_DEFAULT
+	call Route25_BillsHouse_EventScript_Gramps_AskToSee
+	goto_if_eq VAR_RESULT, SPECIES_NONE, Route25_BillsHouse_EventScript_Gramps_Declined
+	goto_if_ne VAR_RESULT, SPECIES_LOTAD, Route25_BillsHouse_EventScript_Gramps_WrongMon
+	bufferspeciesname STR_VAR_1, SPECIES_LOTAD
+	setvar VAR_TEMP_0, ITEM_DEEP_SEA_TOOTH
+	setvar VAR_TEMP_1, 1
+	goto Route25_BillsHouse_EventScript_Gramps_Correctmon
+
+Route25_BillsHouse_EventScript_Gramps_Growlithe::
+	msgbox Route25_BillsHouse_Text_Growlithe, MSGBOX_DEFAULT
+	call Route25_BillsHouse_EventScript_Gramps_AskToSee
+	goto_if_eq VAR_RESULT, SPECIES_NONE, Route25_BillsHouse_EventScript_Gramps_Declined
+	goto_if_ne VAR_RESULT, SPECIES_GROWLITHE, Route25_BillsHouse_EventScript_Gramps_WrongMon
+	bufferspeciesname STR_VAR_1, SPECIES_GROWLITHE
+	setvar VAR_TEMP_0, ITEM_SUN_STONE
+	setvar VAR_TEMP_1, 1
+	goto Route25_BillsHouse_EventScript_Gramps_Correctmon
+
+Route25_BillsHouse_EventScript_Gramps_Pichu::
+	msgbox Route25_BillsHouse_Text_Pichu, MSGBOX_DEFAULT
+	call Route25_BillsHouse_EventScript_Gramps_AskToSee
+	goto_if_eq VAR_RESULT, SPECIES_NONE, Route25_BillsHouse_EventScript_Gramps_Declined
+	goto_if_ne VAR_RESULT, SPECIES_PICHU, Route25_BillsHouse_EventScript_Gramps_WrongMon
+	bufferspeciesname STR_VAR_1, SPECIES_PICHU
+	setvar VAR_TEMP_0, ITEM_DEEP_SEA_SCALE
+	setvar VAR_TEMP_1, 1
+	goto Route25_BillsHouse_EventScript_Gramps_Correctmon
+
 Route25_BillsHouse_EventScript_Gramps_Meowth::
+	goto_if_eq VAR_BILLS_GRANDPA, 6, Route25_BillsHouse_EventScript_Gramps_StartHnSChain
+	goto Route25_BillsHouse_EventScript_Gramps_MeowthAsk
+
+Route25_BillsHouse_EventScript_Gramps_StartHnSChain::
+	setvar VAR_BILLS_GRANDPA, 7
+Route25_BillsHouse_EventScript_Gramps_MeowthAsk::
 	msgbox Route25_BillsHouse_Text_GrampsMeowth, MSGBOX_DEFAULT
 	msgbox Route25_BillsHouse_Text_AskToSeeMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, Route25_BillsHouse_EventScript_Gramps_Declined
@@ -505,6 +584,8 @@ Route25_BillsHouse_EventScript_Gramps_ShownAll::
 	end
 
 Route25_BillsHouse_EventScript_Gramps_Correctmon::
+	checkitemspace VAR_TEMP_0, VAR_TEMP_1
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox Route25_BillsHouse_Text_ShownPokemon, MSGBOX_DEFAULT
 	msgbox Route25_BillsHouse_Text_Appreciation, MSGBOX_DEFAULT
 	setvar VAR_0x8006, 0
@@ -622,4 +703,34 @@ Route25_BillsHouse_Text_WrongPokemon:
 	.string "That's not the POKéMON that I\n"
 	.string "was told about.$"
 
+Route25_BillsHouse_Text_Spinda:
+	.string "My grandson Bill told me about\n"
+	.string "a Pokémon that is covered in\l"
+	.string "a random pattern.$"
 
+Route25_BillsHouse_Text_Roselia:
+	.string "Ah, my grandson mentioned a\n"
+	.string "green Pokémon that has flowers\l"
+	.string "growing from its wrists.$"
+
+Route25_BillsHouse_Text_Lotad:
+	.string "Do you know of a water Pokémon\n"
+	.string "that has a big lily pad on\l"
+	.string "its head?\p"
+	.string "I heard there are some at the\n"
+	.string "Fuchsia Safari Zone.\p"
+	.string "I would surely like to see it.$"
+
+Route25_BillsHouse_Text_Growlithe:
+	.string "Bill told me about a Pokémon\n"
+	.string "that is very loyal to its\l"
+	.string "trainer.\p"
+	.string "It's supposed to Roar well.$"
+
+Route25_BillsHouse_Text_Pichu:
+	.string "Do you know that hugely popular\n"
+	.string "Pokémon?\p"
+	.string "The Pokémon that has a yellow\n"
+	.string "body and red cheeks.\p"
+	.string "I would love to see what it\n"
+	.string "looks like before it evolves.$"

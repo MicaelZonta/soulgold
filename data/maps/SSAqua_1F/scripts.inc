@@ -36,6 +36,9 @@ SSAqua_1F_EventScript_DoorSailorArrived::
 	end
 
 SSAqua_1F_EventScript_LeaveBoat::
+	@ Camada SoulGold: chegar a Kanto revela o rival no Mt. Silver (reaplicado
+	@ na Fase 5; o resto do flagheap antigo do S NAO volta — ver merge_hns).
+	clearflag FLAG_HIDE_MTSILVER_RIVAL
 	fadescreenswapbuffers FADE_TO_BLACK
 
 	@Kanto FLAGHEAP

@@ -21,6 +21,7 @@ PewterCity_Gym_EventScript_Brock::
 	giveitem ITEM_TM_ROCK_SLIDE
 	msgbox PewterCity_Gym_Text_Brock_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE09_GET
+	special Achievement_CheckAll
 	setflag FLAG_DEFEATED_PEWTER_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 9

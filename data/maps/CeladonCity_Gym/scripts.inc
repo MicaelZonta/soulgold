@@ -15,6 +15,7 @@ CeladonCity_Gym_EventScript_Erika::
 	giveitem ITEM_TM_GIGA_DRAIN
 	msgbox CeladonCity_Gym_Text_Erika_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE12_GET
+	special Achievement_CheckAll
 	setflag FLAG_DEFEATED_CELADON_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 12

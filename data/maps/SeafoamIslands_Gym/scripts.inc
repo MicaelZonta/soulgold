@@ -19,6 +19,7 @@ SeafoamIslands_Gym_EventScript_Blaine::
 	giveitem ITEM_TM_OVERHEAT
 	msgbox SeafoamIslands_Gym_Text_Blaine_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE15_GET
+	special Achievement_CheckAll
 	setflag FLAG_DEFEATED_CINNABAR_ISLAND_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 15

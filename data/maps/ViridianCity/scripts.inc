@@ -1,10 +1,15 @@
 ViridianCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, ViridianCity_EventScript_CityEnter
+	map_script MAP_SCRIPT_ON_LOAD, ViridianCity_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, ViridianCity_OnFrame
 	.byte 0
 
 ViridianCity_EventScript_CityEnter::
 	setflag FLAG_VISITED_VIRIDIAN_CITY
+	end
+
+ViridianCity_OnLoad::
+	setrespawn HEAL_LOCATION_VIRIDIAN_CITY
 	end
 
 ViridianCity_OnFrame::
@@ -56,10 +61,16 @@ VirianCity_EventScript_GymGrampsBlue::
 	end
 
 ViridianCity_EventScript_Fisher::
-	goto_if_set FLAG_GOT_VIRIDIAN_TM_DREAM_EATER, ViridianCity_EventScript_FisherAfter
-	msgbox ViridianCity_Text_DreamEaterFisher, MSGBOX_NPC
-	giveitem ITEM_TM_DREAM_EATER
-	setflag FLAG_GOT_VIRIDIAN_TM_DREAM_EATER
+	goto_if_set FLAG_GOT_VIRIDIAN_TM_SLUDGE_BOMB, ViridianCity_EventScript_FisherAfter
+	msgbox ViridianCity_Text_DreamEaterFisherNew, MSGBOX_NPC
+	checkitemspace ITEM_TM_SLUDGE_BOMB
+	goto_if_eq VAR_RESULT, FALSE, ViridianCity_EventScript_FisherNoSpace
+	giveitem ITEM_TM_SLUDGE_BOMB
+	setflag FLAG_GOT_VIRIDIAN_TM_SLUDGE_BOMB
+	end
+
+ViridianCity_EventScript_FisherNoSpace::
+	msgbox ViridianCity_Text_FisherNoSpace, MSGBOX_NPC
 	end
 
 ViridianCity_EventScript_FisherAfter::
@@ -166,3 +177,7 @@ LilycoveCity_EventScript_ContestHallSign::
 LilycoveCity_Text_ContestHallSign:
 	.string "POKéMON CONTEST HALL\n"
 	.string "“The gathering place for TRAINERS!”$"
+
+ViridianCity_Text_FisherNoSpace:
+	.string "Your bag is full.\n"
+	.string "Make some room and come back.$"

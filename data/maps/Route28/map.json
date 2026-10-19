@@ -319,6 +319,15 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route28_EventScript_Sign"
+    },
+    {
+      "type": "hidden_item",
+      "x": 41,
+      "y": 9,
+      "elevation": 0,
+      "item": "ITEM_MAX_REVIVE",
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE28_MAX_REVIVE",
+      "quantity": 1
     }
   ],
   "game_version": "hns",

@@ -17,6 +17,7 @@ ViridianCity_Gym_EventScript_Blue::
 	giveitem ITEM_TM_TRICK_ROOM
 	msgbox ViridianCity_Gym_Text_LeaderBlue_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE16_GET
+	special Achievement_CheckAll
 	setflag FLAG_DEFEATED_VIRIDIAN_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 16

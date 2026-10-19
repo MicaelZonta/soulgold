@@ -44,6 +44,7 @@ SaffronCity_Gym_EventScript_Sabrina::
 	giveitem ITEM_TM_SKILL_SWAP
 	msgbox SaffronCity_Gym_Text_Sabrina_ExplainTM, MSGBOX_DEFAULT
 	setflag FLAG_BADGE13_GET
+	special Achievement_CheckAll
 	setflag FLAG_DEFEATED_SAFFRON_GYM
 	addvar VAR_NUM_BADGES, 1
 	setvar VAR_0x8008, 13

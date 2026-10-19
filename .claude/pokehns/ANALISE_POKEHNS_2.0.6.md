@@ -383,7 +383,15 @@ orelha espetada, times "Crystal Legacy"). O trabalho de texto é a camada
   (↔Kitakami): sobrescrever interior preservando warps/conexões/eventos de
   ligação do S.
 
-**Fase 5 — Reaplicar o conteúdo SoulGold (patches da Fase 0)**
+**Fase 5 — Reaplicar o conteúdo SoulGold** ✅ FEITA (19/10/2026, exceto
+plaquinhas/decap = K8, passe próprio). Detalhes em
+`.claude/merge_hns/fase5_reaplicacao.md`: Achievement_CheckAll nos 8
+ginásios; expert da Route 27 + itens de fronteira + megastone; Pallet/
+Viridian/Bill's House fundidos; clerk do Celadon 4F no script do Goldenrod;
+rival revelado no desembarque do S.S. Aqua (flagheap antigo NÃO volta —
+respawn é Fase 7). Mapas inteiros do S (Liga/HOF, Rift, Mewtwo, Dojo,
+Summit) intocados, com fiação conferida (pareamento de warps) e o Indigo
+PCenter religado ao exterior.
 - Liga/HOF + TitleDefense, Rift Missions, Mewtwo boss (decisão: fica o
   nosso), rival, ginásios, BP rewards, plaquinhas `{SPEAKER}` (K8).
 - `flag_audit.py --csv` + diff ao final (skill `catalogar-flags`).
