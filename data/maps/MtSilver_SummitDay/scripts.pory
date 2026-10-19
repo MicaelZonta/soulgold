@@ -16,8 +16,32 @@ MtSilver_SummitDay_OnTransition:
     call Common_EventScript_SetupRivalGfxId
 	call_if_set FLAG_DAY_POKEMON, MtSilver_SummitDay_EventScript_SetNight
 	call_if_unset FLAG_DAY_POKEMON, MtSilver_SummitDay_EventScript_SetDay
+	@ Revezamento do topo: antes da primeira vitoria sobre o rival, o Red
+	@ nunca aparece (o LeaveBoat do S.S. Aqua limpa FLAG_HIDE_MTSILVER_RED,
+	@ entao escondemos de novo aqui). Depois dela, Red fica com domingo (0),
+	@ quarta (3) e sabado (6); o rival com os demais dias.
+	goto_if_unset FLAG_DEFEATED_MTSILVER_RIVAL, MtSilver_Summit_Transition_PreDefeat
+	compare VAR_DAY_OF_WEEK, 0
+	goto_if_eq MtSilver_Summit_Transition_RedDay
+	compare VAR_DAY_OF_WEEK, 3
+	goto_if_eq MtSilver_Summit_Transition_RedDay
+	compare VAR_DAY_OF_WEEK, 6
+	goto_if_eq MtSilver_Summit_Transition_RedDay
+	clearflag FLAG_HIDE_MTSILVER_RIVAL
+	setflag FLAG_HIDE_MTSILVER_RED
+	cleartrainerflag TRAINER_RIVAL_GOLD_FINAL
+	cleartrainerflag TRAINER_RIVAL_CRYSTAL_FINAL
 	end
 
+MtSilver_Summit_Transition_RedDay:
+	setflag FLAG_HIDE_MTSILVER_RIVAL
+	clearflag FLAG_HIDE_MTSILVER_RED
+	cleartrainerflag TRAINER_RED
+	end
+
+MtSilver_Summit_Transition_PreDefeat:
+	setflag FLAG_HIDE_MTSILVER_RED
+	end
 
 MtSilver_SummitDay_OnTransition_SetLayout:
 	call_if_set FLAG_DAY_POKEMON, MtSilver_SummitDay_EventScript_SetNight
@@ -35,23 +59,35 @@ MtSilver_SummitDay_EventScript_SetDay::
 
 script MtSilver_SummitDay_EventScript_Rival {
 	lock
+	if (flag(FLAG_DEFEATED_MTSILVER_RIVAL)) {
+		goto(MtSilver_SummitDay_EventScript_RivalPostgame)
+	}
+	// Espaço conferido ANTES da cena: a surpresa do ovo vem depois da
+	// batalha e o doador vai embora no fim (skill entregar-pokemon-ou-ovo).
+	getpartysize
+	if (var(VAR_RESULT) == PARTY_SIZE) {
+		specialvar(VAR_RESULT, ScriptCheckFreePokemonStorageSpace)
+		if (var(VAR_RESULT) == FALSE) {
+			goto(MtSilver_SummitDay_EventScript_RivalNoRoom)
+		}
+	}
 	createfieldmugshotrival
 	msgbox("I knew you'd come here.")
 	delay(30)
 	faceplayer
 	msgbox("I've been up here thinking.
 			Not much else to do.
-			
+
 			I kept telling myself,
 			one more badge. One more win.
 
 			Then I would finally catch up.
-			
+
 			Silly isn't it? In the end I was
 			just trying to stand out.
 
 			Assuming everyone had some sort of
-			expectation of me to reach these 
+			expectation of me to reach these
 			heights and become the best.")
 	closemessage
 	applymovement(LOCALID_MTSILVER_RIVAL, moves(walk_in_place_up))
@@ -65,10 +101,10 @@ script MtSilver_SummitDay_EventScript_Rival {
 			So! I want you, {PLAYER} to give me
 			one last battle to knock some sense
 			into me!
-			
-			Not asking as a bitter rival, 
+
+			Not asking as a bitter rival,
 			but as your best friend!
-			
+
 			I got nothing to prove, but let's
 			have fun like we used to.")
 	removefieldmugshot
@@ -90,10 +126,10 @@ script MtSilver_SummitDay_EventScript_Rival {
 
 	msgbox("When I was just standing here alone, I
 			was wishing you could arrive.
-			
+
 			then, I saw this egg in the ground
-			here. 
-			
+			here.
+
 			I think it appeared in reaction to my
 			wish, but you should have it instead.
 
@@ -104,11 +140,23 @@ script MtSilver_SummitDay_EventScript_Rival {
 	removefieldmugshot
 	msgbox("{PLAYER} received an Egg!")
 	waitfanfare
-	giveegg(SPECIES_JIRACHI)
+	giveegg(SPECIES_TERAPAGOS)
+	// Guarda defensiva: se mesmo assim nao coube, o rival fica com o ovo e
+	// entrega no proximo dia de rival aqui em cima. Nada de perder presente.
+	if (var(VAR_RESULT) == MON_CANT_GIVE) {
+		setflag(FLAG_RIVAL_SUMMIT_EGG_PENDING)
+		createfieldmugshotrival
+		msgbox("Huh, no room after all?
+				Then I'll hold onto it for you.
+
+				Come find me up here again
+				and it's yours, promise!")
+		removefieldmugshot
+	}
 	createfieldmugshotrival
 	msgbox("Now c'mon, let's race back home!
-			
-			My fingers are freezing from just 
+
+			My fingers are freezing from just
 			standing around here.")
 	removefieldmugshot
 	closemessage
@@ -124,5 +172,107 @@ script MtSilver_SummitDay_EventScript_Rival {
 	warp(MAP_NEW_BARK_TOWN_HOUSE3, 33, 3)
 	waitstate
 	releaseall
+	end
+}
+
+script MtSilver_SummitDay_EventScript_RivalNoRoom {
+	faceplayer
+	createfieldmugshotrival
+	msgbox("Whoa, hold up, {PLAYER}!
+			Your team is full and your storage
+			boxes are stuffed to the brim too.
+
+			I've got something planned for
+			after our battle, and I'm not
+			letting it go to waste.
+
+			Go make some room, then climb
+			back up here. I'm not moving!")
+	removefieldmugshot
+	release
+	end
+}
+
+script MtSilver_SummitDay_EventScript_RivalPostgame {
+	faceplayer
+	if (flag(FLAG_RIVAL_SUMMIT_EGG_PENDING)) {
+		// Entrega pendente: mesma regra de espaco antes da oferta.
+		getpartysize
+		if (var(VAR_RESULT) == PARTY_SIZE) {
+			specialvar(VAR_RESULT, ScriptCheckFreePokemonStorageSpace)
+			if (var(VAR_RESULT) == FALSE) {
+				createfieldmugshotrival
+				msgbox("Still no room for the egg, huh?
+						Team full, boxes full.
+
+						I'm keeping it warm for you.
+						Come back when you've made space!")
+				removefieldmugshot
+				release
+				end
+			}
+		}
+		createfieldmugshotrival
+		msgbox("You came back for the egg, right?
+				Kept it nice and warm for you.")
+		playfanfare(MUS_OBTAIN_ITEM)
+		removefieldmugshot
+		msgbox("{PLAYER} received the Egg!")
+		waitfanfare
+		giveegg(SPECIES_TERAPAGOS)
+		if (var(VAR_RESULT) == MON_CANT_GIVE) {
+			release
+			end
+		}
+		clearflag(FLAG_RIVAL_SUMMIT_EGG_PENDING)
+		createfieldmugshotrival
+		msgbox("Take good care of it!")
+		removefieldmugshot
+		release
+		end
+	}
+	createfieldmugshotrival
+	msgbox("Heh, caught me. I still come up
+			here to train when I can.
+
+			Y'know who else trains here?
+			That quiet guy with the Pikachu.
+			We kind of take turns.
+
+			Since you climbed all this way,
+			how about a battle, best friend?")
+	removefieldmugshot
+	closemessage
+	checkplayergender
+	if (var(VAR_RESULT) == MALE) {
+		trainerbattle_no_intro(TRAINER_RIVAL_CRYSTAL_FINAL, "Hah! Still got that smile.")
+	} else {
+		trainerbattle_no_intro(TRAINER_RIVAL_GOLD_FINAL, "Hah! Still got that smile.")
+	}
+	createfieldmugshotrival
+	msgbox("Same time next week?
+			I'm not giving up on beating
+			you, best friend or not!")
+	removefieldmugshot
+	release
+	end
+}
+
+script MtSilver_SummitDay_EventScript_Red {
+	lock
+	faceplayer
+	msgbox("……")
+	closemessage
+	delay(20)
+	msgbox("…!")
+	closemessage
+	trainerbattle_no_intro(TRAINER_RED, "………")
+	if (!flag(FLAG_DEFEATED_RED)) {
+		setflag(FLAG_DEFEATED_RED)
+	}
+	msgbox("……
+
+			…………")
+	release
 	end
 }

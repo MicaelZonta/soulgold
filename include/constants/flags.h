@@ -2097,8 +2097,12 @@
 #define FLAG_VISITED_ALOLA                                   0x111B // HnS: Route13
 #define FLAG_VISITED_KANTO                                   0x111C // HnS: Route27
 #define FLAG_VISITED_ROUTE4                                  0x111D // HnS: Route4_PokemonCenter
-#define CUSTOM_FLAGS_END                            FLAG_VISITED_ROUTE4
-// PROXIMA FLAG NOVA: 0x111E (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// O rival do topo do Mt. Silver ficou com o ovo (Terapagos) porque a equipe E
+// as caixas do jogador estavam cheias apos a batalha; o script pos-derrota do
+// rival (dias de rival no revezamento com o Red) entrega e limpa.
+#define FLAG_RIVAL_SUMMIT_EGG_PENDING                0x111E
+#define CUSTOM_FLAGS_END                            FLAG_RIVAL_SUMMIT_EGG_PENDING
+// PROXIMA FLAG NOVA: 0x111F (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 
