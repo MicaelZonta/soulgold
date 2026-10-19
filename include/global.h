@@ -748,8 +748,17 @@ struct Roamer
     /*0x13*/ bool8 active;
     /*0x14*/ u8 statusB; // Stores frostbite
     /*0x15*/ bool8 shiny;
-    /*0x16*/ u8 filler[0x6];
+    /*0x16*/ u8 locationTableId; // porte HnS: tabela Johto/Kanto do roamer
+    /*0x17*/ u8 filler[0x5];
 };
+
+struct MomSavingsData
+{
+    u32 momsMoney;
+    u16 normalGiftFlags;
+    u8 isSavingMoney;
+    u8 isInitialized;
+}; // 8 bytes (porte do HnS)
 
 struct RamScriptData
 {
@@ -1263,6 +1272,9 @@ struct SaveBlock1
                u8 registeredShortcutTypes[MAX_REGISTERED_ITEMS];
                u8 registeredPokegearApps[MAX_REGISTERED_ITEMS];
     /*0x349A*/ u8 pokemonStorageExtensionTail[POKEMON_STORAGE_EXTENSION_TAIL_BYTES];
+    // Mom's Savings (porte do HnS, Fase 6): 8 bytes, descontados de
+    // SAVEBLOCK1_FUTURE_RESERVED_BYTES.
+    /*0x3???*/ struct MomSavingsData momSavings;
     /*0x3C32*/ u8 futureReserved[SAVEBLOCK1_FUTURE_RESERVED_BYTES];
     /*0x3C54*/ struct ObjectEvent objectEventsExtra[OBJECT_EVENTS_COUNT - OBJECT_EVENTS_SAVE_LEGACY_COUNT];
     // sizeof: 0x3C54 + 36 * (OBJECT_EVENTS_COUNT - 16)

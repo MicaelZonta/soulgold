@@ -99,7 +99,7 @@ enum Language
 #define GIFT_RIBBONS_COUNT 11
 #define SAVED_TRENDS_COUNT 5
 #define PYRAMID_BAG_ITEMS_COUNT 10
-#define ROAMER_COUNT 3 // Number of maximum concurrent active roamers
+#define ROAMER_COUNT 4 // maximo de roamers simultaneos (3 Johto + 1 Kanto, porte HnS)
 #define MAX_REGISTERED_ITEMS 4
 
 // Bag constants

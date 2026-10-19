@@ -10,6 +10,7 @@
 #include "item.h"
 #include "random.h"
 #include "field_player_avatar.h"
+#include "pokegear_radio.h"
 #include "link.h"
 #include "metatile_behavior.h"
 #include "overworld.h"
@@ -64,6 +65,7 @@ static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildM
 static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum Type type, enum Ability ability, u8 *monIndex);
 #endif
 static bool8 IsAbilityAllowingEncounter(u8 level);
+static bool8 TryGetHoennSoundWildMonIndex(const struct WildPokemon *wildMon, u8 numMon, u8 *monIndex);
 struct RockSmashItem;
 struct RockSmashItemTable;
 static const struct RockSmashItemTable *GetRockSmashItemTable(void);
@@ -687,6 +689,36 @@ void CreateWildMon(u16 species, u8 level)
 #define TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildPokemon, type, ability, ptr, count) TryGetAbilityInfluencedWildMonIndex(wildPokemon, type, ability, ptr)
 #endif
 
+// Radio "Hoenn Sound" (src/pokegear_radio.c): while a Hoenn route theme is
+// playing in Kanto, 1 in 10 land/water encounters is forced to a Hoenn-dex
+// species, when the table has both Hoenn and non-Hoenn slots (as in HnS).
+#define HOENN_DEX_START SPECIES_TREECKO
+#define HOENN_DEX_END   SPECIES_DEOXYS
+
+static bool8 TryGetHoennSoundWildMonIndex(const struct WildPokemon *wildMon, u8 numMon, u8 *monIndex)
+{
+    u8 validIndexes[LAND_WILD_COUNT];
+    u8 i, validMonCount;
+
+    if (!IsHoennSoundPlaying())
+        return FALSE;
+    if (Random() % 10 != 0)
+        return FALSE;
+
+    for (validMonCount = 0, i = 0; i < numMon; i++)
+    {
+        u16 species = wildMon[i].species;
+        if (species >= HOENN_DEX_START && species <= HOENN_DEX_END)
+            validIndexes[validMonCount++] = i;
+    }
+
+    if (validMonCount == 0 || validMonCount == numMon)
+        return FALSE;
+
+    *monIndex = validIndexes[Random() % validMonCount];
+    return TRUE;
+}
+
 static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPokemonArea area, u8 flags)
 {
     u8 wildMonIndex = 0;
@@ -707,6 +739,8 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum 
             break;
         if (OW_STORM_DRAIN >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex, LAND_WILD_COUNT))
             break;
+        if (TryGetHoennSoundWildMonIndex(wildMonInfo->wildPokemon, LAND_WILD_COUNT, &wildMonIndex))
+            break;
 
         wildMonIndex = ChooseWildMonIndex_Land();
         break;
@@ -722,6 +756,8 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum 
         if (OW_HARVEST >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_HARVEST, &wildMonIndex, WATER_WILD_COUNT))
             break;
         if (OW_STORM_DRAIN >= GEN_8 && TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex, WATER_WILD_COUNT))
+            break;
+        if (TryGetHoennSoundWildMonIndex(wildMonInfo->wildPokemon, WATER_WILD_COUNT, &wildMonIndex))
             break;
 
         wildMonIndex = ChooseWildMonIndex_Water();

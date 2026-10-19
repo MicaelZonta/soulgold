@@ -1974,7 +1974,7 @@ static void DebugAction_Roamers_SetCount(u8 taskId, u32 count)
 
     DeactivateAllRoamers();
     for (i = 0; i < count; i++)
-        TryAddRoamer(sRoamerSpecies[i], 40);
+        TryAddRoamer(sRoamerSpecies[i], 40, 0);
 
     Debug_DestroyMenu_Full(taskId);
     ScriptContext_Enable();

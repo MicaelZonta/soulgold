@@ -50,6 +50,15 @@ static void CreateFanfareTask(void);
 static void RestoreBGMVolumeAfterPokemonCry(void);
 static void ResetMapMusicState(void);
 
+// Indices of the HGSS-only fanfares (same numbers as the HnS constants/sound.h;
+// defined here because the port does not edit that header).
+#ifndef FANFARE_HG_BUG_CONTEST_1ST
+#define FANFARE_HG_BUG_CONTEST_1ST  18
+#define FANFARE_HG_BUG_CONTEST_2ND  19
+#define FANFARE_HG_BUG_CONTEST_3RD  20
+#define FANFARE_HG_OBTAIN_EGG       21
+#endif
+
 // The 3rd argument in the table is the length of the fanfare, measured in frames.
 // This is calculated by multiplying the duration of the MIDI file by
 // 59.72750056960583 and rounding up to the nearest integer.
@@ -72,6 +81,12 @@ static const struct Fanfare sFanfares[] = {
     [FANFARE_OBTAIN_B_POINTS]     = { MUS_OBTAIN_B_POINTS,     MUS_HG_OBTAIN_B_POINTS,      264 },
     [FANFARE_OBTAIN_SYMBOL]       = { MUS_OBTAIN_SYMBOL,       MUS_OBTAIN_SYMBOL,           318 },
     [FANFARE_REGISTER_MATCH_CALL] = { MUS_REGISTER_MATCH_CALL, MUS_HG_POKEGEAR_REGISTERED, 185 },
+    // HnS port (phase 6): HGSS-only fanfares. They have no GBA equivalent, so
+    // the lookup song is the HG song itself: PlayFanfare(MUS_HG_...) finds them.
+    [FANFARE_HG_BUG_CONTEST_1ST]  = { MUS_HG_BUG_CONTEST_1ST_PLACE, MUS_HG_BUG_CONTEST_1ST_PLACE, 232 },
+    [FANFARE_HG_BUG_CONTEST_2ND]  = { MUS_HG_BUG_CONTEST_2ND_PLACE, MUS_HG_BUG_CONTEST_2ND_PLACE, 186 },
+    [FANFARE_HG_BUG_CONTEST_3RD]  = { MUS_HG_BUG_CONTEST_3RD_PLACE, MUS_HG_BUG_CONTEST_3RD_PLACE,  84 },
+    [FANFARE_HG_OBTAIN_EGG]       = { MUS_HG_OBTAIN_EGG,            MUS_HG_OBTAIN_EGG,            131 },
 };
 
 void InitMapMusic(void)

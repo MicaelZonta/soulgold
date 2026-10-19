@@ -175,7 +175,7 @@
 #define SONG_MUS_HG_BUG_CONTEST_PREP                    0
 #define SONG_MUS_HG_BUG_CATCHING_CONTEST                0
 #define SONG_MUS_HG_MAGNET_TRAIN                        1
-#define SONG_MUS_HG_RADIO_JINGLE                        0
+#define SONG_MUS_HG_RADIO_JINGLE                        1
 #define SONG_MUS_HG_CLAIR                               0
 #define SONG_MUS_HG_VS_WILD_KANTO                       1
 #define SONG_MUS_HG_VICTORY_TRAINER                     1
@@ -220,10 +220,10 @@
 #define SONG_MUS_HG_DEX_RATING_4                        0
 #define SONG_MUS_HG_DEX_RATING_5                        0
 #define SONG_MUS_HG_DEX_RATING_6                        0
-#define SONG_MUS_HG_OBTAIN_EGG                          0
-#define SONG_MUS_HG_BUG_CONTEST_1ST_PLACE               0
-#define SONG_MUS_HG_BUG_CONTEST_2ND_PLACE               0
-#define SONG_MUS_HG_BUG_CONTEST_3RD_PLACE               0
+#define SONG_MUS_HG_OBTAIN_EGG                     1
+#define SONG_MUS_HG_BUG_CONTEST_1ST_PLACE                     1
+#define SONG_MUS_HG_BUG_CONTEST_2ND_PLACE                     1
+#define SONG_MUS_HG_BUG_CONTEST_3RD_PLACE                     1
 #define SONG_MUS_HG_CARD_FLIP                           0
 #define SONG_MUS_HG_CARD_FLIP_GAME_OVER                 0
 #define SONG_MUS_HG_LETS_GO_TOGETHER                    0

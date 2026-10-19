@@ -396,7 +396,25 @@ PCenter religado ao exterior.
   nosso), rival, ginásios, BP rewards, plaquinhas `{SPEAKER}` (K8).
 - `flag_audit.py --csv` + diff ao final (skill `catalogar-flags`).
 
-**Fase 6 — Sistemas decididos como IMPORTAR**
+**Fase 6 — Sistemas** ✅ FEITA (19/10/2026, exceto Match Call — ver abaixo).
+Docs: `.claude/merge_hns/fase6_{radio,roamers,mom_surf_fanfarras}.md`.
+- **Rádio 12 estações** (Poké Flute/Hoenn Sound/P&P/Sing só em Kanto c/ EXPN
+  Card; Lucky Channel diário; Evolution escondida até o evento de Mahogany;
+  nossas 4+Rocket intactas) + `CheckRadioStation` real → **Snorlax
+  acordável**; Hoenn Sound = 1/10 de encontro Hoenn em Kanto.
+- **Roamers**: tabelas Johto/Kanto, `TryAttractRoamer` (2%/lendário, máx
+  12%), aviso animado `TryShowRoamerFlash` (3 variações); ROAMER_COUNT 4;
+  `InitKantoRoamers` é no-op documentado (latis só no LatiTemple; cena do
+  Steven re-roteiriza na Fase 7 — slot de roamer de Kanto ficou vago).
+- **Mom's Savings**: 8 B no SaveBlock1 (offsets +0x1C documentados no
+  save.c; emulator-only), menu integrado à mãe real sem perder o fluxo S
+  (Rest/Grooming/Savings), 14 presentes por marco, depósito de 25% do
+  prêmio, saldo no cartão.
+- **Fanfarras HGSS**: 4 que faltavam (Bug Contest 1º/2º/3º, Obtain Egg).
+- **Surf Gen 4**: JÁ EXISTIA no S via upstream (nada copiado).
+- Pendências: Match Call GSC (fica para rodada própria — mexe em
+  FREE_MATCH_CALL/save), QA no jogo (rádio por posição, Snorlax, flash de
+  roamer, menu da mãe, "MOM:" sem plaquinha → passe K8).
 - Ordem sugerida pela cadeia de dependências:
   1. **Rádio 12 estações** (pré-requisito do Snorlax e do Hoenn Sound);
   2. **S.S. Aqua** ida-e-volta (destrava Vermilion, Latis, ilhas; cuidado com

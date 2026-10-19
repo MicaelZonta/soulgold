@@ -59,6 +59,7 @@
 #include "config/battle.h"
 #include "constants/heal_locations.h"
 #include "main_menu.h"
+#include "mom_savings.h"
 #include "constants/flags.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
@@ -295,6 +296,7 @@ void NewGameInitData(void)
     NewGameInitPCItems();
     ClearPokeblocks();
     ClearDecorationInventories();
+    InitMomSavings();
     InitEasyChatPhrases();
     SetMauvilleOldMan();
     InitDewfordTrend();

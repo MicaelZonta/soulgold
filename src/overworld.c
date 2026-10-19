@@ -895,6 +895,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     InitSecondaryTilesetAnimation();
     UpdateLocationHistoryForRoamer();
     MoveAllRoamers();
+    TryShowRoamerFlash();
     DoCurrentWeather();
     ResetFieldTasksArgs();
     RunOnResumeMapScript();

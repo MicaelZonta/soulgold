@@ -448,7 +448,10 @@
 #define VAR_VERMILION_CITY_SAMSON                       0x413B // HnS: Route10_PowerPlantBackRoom, VermilionCity
 #define VAR_VERMILION_CITY_STEVEN                       0x413C // HnS: SSAqua_1F, VermilionCity
 #define VAR_VIRIDIAN_FOREST_PICHU                       0x413D // HnS: PokemonLeague_HallOfFame, SSAqua_1F
-// PROXIMA VAR NOVA: 0x413E (livre ate VARS_END 0x42FF). Alocar aqui, em
+// Lucky Channel do radio (porte HnS, Fase 6): id sorteado do dia (16+16 bits).
+#define VAR_RADIO_LUCKY_ID                              0x413E
+#define VAR_RADIO_LUCKY_ID_HI                           0x413F
+// PROXIMA VAR NOVA: 0x4140 (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 

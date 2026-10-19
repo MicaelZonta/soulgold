@@ -130,16 +130,19 @@ STATIC_ASSERT(offsetof(struct SaveBlock3, dexNavChain) == 0xC, SaveBlock3DexNavC
 STATIC_ASSERT(offsetof(struct SaveBlock3, hiddenGrottoContents) == 0x10, SaveBlock3HiddenGrottoOffset);
 STATIC_ASSERT(sizeof(struct SaveBlock3) == 0x60, SaveBlock3LegacySize);
 STATIC_ASSERT(offsetof(struct SaveBlock1, registeredItemCompat) == 0x47E, SaveBlock1LegacyRegisteredItemOffset);
-STATIC_ASSERT(offsetof(struct SaveBlock1, registeredItems) == 0x3484, SaveBlock1RegisteredItemsOffset);
-STATIC_ASSERT(offsetof(struct SaveBlock1, optionsPartyMenuStyle) == 0x348C, SaveBlock1PartyMenuStyleOffset);
-STATIC_ASSERT(offsetof(struct SaveBlock1, registeredShortcutsMagic) == 0x348E, SaveBlock1ShortcutMagicOffset);
-STATIC_ASSERT(offsetof(struct SaveBlock1, registeredShortcutTypes) == 0x3492, SaveBlock1ShortcutTypesOffset);
-STATIC_ASSERT(offsetof(struct SaveBlock1, pokemonStorageExtensionTail) == 0x349A, SaveBlock1PokemonStorageExtensionTailOffset);
+STATIC_ASSERT(offsetof(struct SaveBlock1, registeredItems) == 0x34A0, SaveBlock1RegisteredItemsOffset);
+STATIC_ASSERT(offsetof(struct SaveBlock1, optionsPartyMenuStyle) == 0x34A8, SaveBlock1PartyMenuStyleOffset);
+STATIC_ASSERT(offsetof(struct SaveBlock1, registeredShortcutsMagic) == 0x34AA, SaveBlock1ShortcutMagicOffset);
+STATIC_ASSERT(offsetof(struct SaveBlock1, registeredShortcutTypes) == 0x34AE, SaveBlock1ShortcutTypesOffset);
+STATIC_ASSERT(offsetof(struct SaveBlock1, pokemonStorageExtensionTail) == 0x34B6, SaveBlock1PokemonStorageExtensionTailOffset);
 STATIC_ASSERT(sizeof(((struct SaveBlock1 *)0)->pokemonStorageExtensionTail) == 1944, SaveBlock1PokemonStorageExtensionTailSize);
-STATIC_ASSERT(offsetof(struct SaveBlock1, futureReserved) == 0x3C32, SaveBlock1FutureReserveOffset);
-STATIC_ASSERT(sizeof(((struct SaveBlock1 *)0)->futureReserved) == 34, SaveBlock1FutureReserveSize);
-STATIC_ASSERT(offsetof(struct SaveBlock1, objectEventsExtra) == 0x3C54, SaveBlock1ObjectEventsExtraOffset);
-STATIC_ASSERT(sizeof(struct SaveBlock1) == 0x3C54 + sizeof(struct ObjectEvent) * (OBJECT_EVENTS_COUNT - OBJECT_EVENTS_SAVE_LEGACY_COUNT), SaveBlock1LegacySize);
+// Offsets +0x1C desde 19/10/2026: ROAMER_COUNT 3->4 (+28 B, roamer de Kanto
+// do HnS) e +8 B de momSavings. Emulator-only: sem compat de save.
+STATIC_ASSERT(offsetof(struct SaveBlock1, momSavings) == 0x3C50, SaveBlock1MomSavingsOffset); // HnS Fase 6
+STATIC_ASSERT(offsetof(struct SaveBlock1, futureReserved) == 0x3C58, SaveBlock1FutureReserveOffset);
+STATIC_ASSERT(sizeof(((struct SaveBlock1 *)0)->futureReserved) == 24, SaveBlock1FutureReserveSize); // 34-10 (momSavings+alinhamento)
+STATIC_ASSERT(offsetof(struct SaveBlock1, objectEventsExtra) == 0x3C70, SaveBlock1ObjectEventsExtraOffset);
+STATIC_ASSERT(sizeof(struct SaveBlock1) == 0x3C70 + sizeof(struct ObjectEvent) * (OBJECT_EVENTS_COUNT - OBJECT_EVENTS_SAVE_LEGACY_COUNT), SaveBlock1LegacySize);
 
 #define PKMN_STORAGE_REGULAR_SIZE (SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START + 1))
 #define PKMN_STORAGE_LEGACY_SIZE 34740
@@ -204,7 +207,7 @@ STATIC_ASSERT(sizeof(((struct Bx19AuxiliaryRecord *)0)->hallOfFame.teams) == 158
 STATIC_ASSERT(sizeof(struct Bx19AuxiliaryRecord) == 3892, Bx19AuxiliaryUsedSize);
 STATIC_ASSERT(SECTOR_DATA_SIZE - sizeof(struct Bx19AuxiliaryRecord) == 76, Bx19AuxiliaryFreeSpace);
 STATIC_ASSERT(sizeof(struct Bx19AuxiliaryRecord) - offsetof(struct Bx19AuxiliaryRecord, box19) == 3880, Bx19AuxiliaryPayloadSize);
-STATIC_ASSERT(SAVEBLOCK1_EXTENSION_TAIL_SECTOR_OFFSET == 1562, SaveBlock1ExtensionTailSectorOffset);
+STATIC_ASSERT(SAVEBLOCK1_EXTENSION_TAIL_SECTOR_OFFSET == 1590, SaveBlock1ExtensionTailSectorOffset); // +28: ROAMER_COUNT 4
 STATIC_ASSERT(PKMN_STORAGE_BX16_OVERFLOW_SIZE % sizeof(u32) == 0, PokemonStorageBx16OverflowChecksumAlignment);
 STATIC_ASSERT(PKMN_STORAGE_BX17_PAYLOAD_SIZE % sizeof(u32) == 0, PokemonStorageBx17ChecksumAlignment);
 STATIC_ASSERT(PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_SIZE % sizeof(u32) == 0, PokemonStorageBx18OverflowChecksumAlignment);

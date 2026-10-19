@@ -35,6 +35,7 @@
 #include "constants/rgb.h"
 #include "constants/trainers.h"
 #include "constants/union_room.h"
+#include "mom_savings.h"
 #include "constants/flags.h"
 
 // --- extra badges on the trainer card (local to this file) ---
@@ -1083,7 +1084,13 @@ static void PrintMoneyOnCard(void)
         AddTextPrinterParameterized3(WIN_CARD_TEXT, FONT_NORMAL, 16, 57, sTrainerCardTextColors, TEXT_SKIP_DRAW, gText_TrainerCardMoney);
 
     ConvertIntToDecimalStringN(gStringVar1, sData->trainerCard.money, STR_CONV_MODE_LEFT_ALIGN, MAX_MONEY_DIGITS);
-    StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
+    {
+        u8 *ptr = gStringVar4;
+        ptr = StringExpandPlaceholders(ptr, gText_PokedollarVar1);
+        *ptr++ = CHAR_SLASH;
+        ConvertIntToDecimalStringN(gStringVar2, Mom_GetBalance(), STR_CONV_MODE_LEFT_ALIGN, 6);
+        StringCopy(ptr, gStringVar2);
+    }
     if (!sData->isHoenn)
     {
         xOffset = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, 144);

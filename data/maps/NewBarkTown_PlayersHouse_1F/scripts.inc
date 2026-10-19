@@ -74,12 +74,25 @@ NewBarkTown_PlayersHouse_1F_MomEventScript_GoodLuck::
 
 
 NewBarkTown_PlayersHouse_1F_EventScript_Mom_Regular::
+	@ Mom's Savings (HnS port, phase 6): the savings option is added to the
+	@ existing Rest / Grooming flow; Rest and Grooming behave exactly as before.
+	callnative Special_MomEnsureInitialized
 	checkitem ITEM_GROOMING_KIT, 1
-	goto_if_eq VAR_RESULT, FALSE, NewBarkTown_PlayersHouse_1F_EventScript_Mom_RestOnly
+	goto_if_eq VAR_RESULT, FALSE, NewBarkTown_PlayersHouse_1F_EventScript_Mom_NoKitMenu
 	msgbox NewBarkTown_PlayersHouse_1F_Text_MomWelcomeHome, MSGBOX_DEFAULT
-	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, NewBarkTown_PlayersHouse_1F_Text_MomMenuRest, NewBarkTown_PlayersHouse_1F_Text_MomMenuGrooming, NewBarkTown_PlayersHouse_1F_Text_MomMenuCancel
+	dynmultichoice 0, 0, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE, NewBarkTown_PlayersHouse_1F_Text_MomMenuRest, NewBarkTown_PlayersHouse_1F_Text_MomMenuGrooming, NewBarkTown_PlayersHouse_1F_Text_MomMenuSavings, NewBarkTown_PlayersHouse_1F_Text_MomMenuCancel
 	goto_if_eq VAR_RESULT, 0, NewBarkTown_PlayersHouse_1F_EventScript_Mom_RestOnly
 	goto_if_eq VAR_RESULT, 1, NewBarkTown_PlayersHouse_1F_EventScript_Mom_GroomingStart
+	goto_if_eq VAR_RESULT, 2, NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	closemessage
+	release
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_Mom_NoKitMenu::
+	msgbox NewBarkTown_PlayersHouse_1F_Text_MomWelcomeHomeNoKit, MSGBOX_DEFAULT
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, NewBarkTown_PlayersHouse_1F_Text_MomMenuRest, NewBarkTown_PlayersHouse_1F_Text_MomMenuSavings, NewBarkTown_PlayersHouse_1F_Text_MomMenuCancel
+	goto_if_eq VAR_RESULT, 0, NewBarkTown_PlayersHouse_1F_EventScript_Mom_RestOnly
+	goto_if_eq VAR_RESULT, 1, NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
 	closemessage
 	release
 	end
@@ -551,6 +564,14 @@ NewBarkTown_PlayersHouse_1F_Text_MomMenuGrooming:
 NewBarkTown_PlayersHouse_1F_Text_MomMenuCancel:
 	.string "Cancel$"
 
+NewBarkTown_PlayersHouse_1F_Text_MomMenuSavings:
+	.string "Savings$"
+
+NewBarkTown_PlayersHouse_1F_Text_MomWelcomeHomeNoKit:
+	.string "{SPEAKER NAME_MOM}Welcome home, {PLAYER}!\p"
+	.string "Would you like to rest, or talk\n"
+	.string "about your savings?$"
+
 NewBarkTown_PlayersHouse_1F_Text_MomAskWhichPokemon:
 	.string "{SPEAKER NAME_MOM}All right! Which Pokémon\n"
 	.string "needs a little care today?$"
@@ -755,3 +776,150 @@ NewBarkTown_PlayersHouse_1F_Text_CapWorld:
 NewBarkTown_PlayersHouse_1F_Text_MomDeerlingSeasonApplied:
 	.string "{SPEAKER NAME_MOM}The seasonal scent gently\n"
 	.string "settled into {STR_VAR_1}'s coat!$"
+
+@ ---------------------------------------------------------------------------
+@ Mom's Savings (ported from pokehns-expansion v2.0.6; src/mom_savings.c).
+@ Special_* are called with callnative (no specials.inc entries). Every path
+@ ends with release, so this block is entered with goto from the Mom script.
+@ ---------------------------------------------------------------------------
+
+NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu::
+	msgbox NewBarkTown_PlayersHouse_1F_Text_MomSavingsAnythingElse, MSGBOX_DEFAULT
+	dynmultichoice 0, 0, FALSE, 5, 0, DYN_MULTICHOICE_CB_NONE, NewBarkTown_PlayersHouse_1F_Text_SavingsCheck, NewBarkTown_PlayersHouse_1F_Text_SavingsDeposit, NewBarkTown_PlayersHouse_1F_Text_SavingsWithdraw, NewBarkTown_PlayersHouse_1F_Text_SavingsToggle, NewBarkTown_PlayersHouse_1F_Text_SavingsExit
+	switch VAR_RESULT
+	case 0, NewBarkTown_PlayersHouse_1F_EventScript_SavingsCheck
+	case 1, NewBarkTown_PlayersHouse_1F_EventScript_SavingsDeposit
+	case 2, NewBarkTown_PlayersHouse_1F_EventScript_SavingsWithdraw
+	case 3, NewBarkTown_PlayersHouse_1F_EventScript_SavingsToggle
+	goto NewBarkTown_PlayersHouse_1F_EventScript_SavingsExit
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_SavingsCheck::
+	callnative Special_MomGetBalance
+	msgbox NewBarkTown_PlayersHouse_1F_Text_SavingsCurrent, MSGBOX_DEFAULT
+	goto NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_SavingsDeposit::
+	checkmoney 1
+	goto_if_eq VAR_RESULT, FALSE, NewBarkTown_PlayersHouse_1F_EventScript_SavingsDepositFailed
+	closemessage
+	callnative Special_MomOpenDepositInput
+	waitstate
+	lock
+	faceplayer
+	goto_if_eq VAR_0x8000, 0, NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	msgbox NewBarkTown_PlayersHouse_1F_Text_SavingsDepositDone, MSGBOX_DEFAULT
+	goto NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_SavingsDepositFailed::
+	msgbox NewBarkTown_PlayersHouse_1F_Text_SavingsNoMoneyToDeposit, MSGBOX_DEFAULT
+	goto NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_SavingsWithdraw::
+	callnative Special_MomGetBalance
+	goto_if_eq VAR_RESULT, 0, NewBarkTown_PlayersHouse_1F_EventScript_SavingsWithdrawFailed
+	closemessage
+	callnative Special_MomOpenWithdrawInput
+	waitstate
+	lock
+	faceplayer
+	goto_if_eq VAR_0x8000, 0, NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	msgbox NewBarkTown_PlayersHouse_1F_Text_SavingsWithdrawDone, MSGBOX_DEFAULT
+	goto NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_SavingsWithdrawFailed::
+	msgbox NewBarkTown_PlayersHouse_1F_Text_SavingsNoMoneyToWithdraw, MSGBOX_DEFAULT
+	goto NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_SavingsToggle::
+	callnative Special_MomIsSavingEnabled
+	goto_if_eq VAR_RESULT, TRUE, NewBarkTown_PlayersHouse_1F_EventScript_SavingsDisable
+	msgbox NewBarkTown_PlayersHouse_1F_Text_SavingsAskEnable, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, NewBarkTown_PlayersHouse_1F_EventScript_SavingsConfirmEnable
+	goto NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_SavingsConfirmEnable::
+	callnative Special_MomEnableSaving
+	msgbox NewBarkTown_PlayersHouse_1F_Text_SavingsEnabled, MSGBOX_DEFAULT
+	goto NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_SavingsDisable::
+	msgbox NewBarkTown_PlayersHouse_1F_Text_SavingsAskDisable, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, NewBarkTown_PlayersHouse_1F_EventScript_SavingsConfirmDisable
+	goto NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_SavingsConfirmDisable::
+	callnative Special_MomDisableSaving
+	msgbox NewBarkTown_PlayersHouse_1F_Text_SavingsDisabled, MSGBOX_DEFAULT
+	goto NewBarkTown_PlayersHouse_1F_EventScript_MomSavingsMenu
+	end
+
+NewBarkTown_PlayersHouse_1F_EventScript_SavingsExit::
+	msgbox NewBarkTown_PlayersHouse_1F_Text_SavingsGoodbye, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+NewBarkTown_PlayersHouse_1F_Text_MomSavingsAnythingElse:
+	.string "{SPEAKER NAME_MOM}What would you like to do with\n"
+	.string "your savings, sweetie?$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsCheck:
+	.string "Check savings$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsDeposit:
+	.string "Deposit$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsWithdraw:
+	.string "Withdraw$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsToggle:
+	.string "Auto-saving$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsExit:
+	.string "Exit$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsCurrent:
+	.string "{SPEAKER NAME_MOM}I'm holding {STR_VAR_2}\n"
+	.string "for you right now.$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsAskEnable:
+	.string "{SPEAKER NAME_MOM}Do you want me to save some of\n"
+	.string "the money you earn?$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsEnabled:
+	.string "{SPEAKER NAME_MOM}Okay! I'll save 25% of the money\n"
+	.string "you earn from battles.$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsAskDisable:
+	.string "{SPEAKER NAME_MOM}Do you want me to stop saving\n"
+	.string "the money you earn?$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsDisabled:
+	.string "{SPEAKER NAME_MOM}Okay. I won't save any more of\n"
+	.string "your battle winnings.$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsDepositDone:
+	.string "{SPEAKER NAME_MOM}I'll keep that safe for you!$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsWithdrawDone:
+	.string "{SPEAKER NAME_MOM}Here you go, sweetie!$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsNoMoneyToDeposit:
+	.string "{SPEAKER NAME_MOM}You don't have any money\n"
+	.string "to deposit, sweetie.$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsNoMoneyToWithdraw:
+	.string "{SPEAKER NAME_MOM}I'm not holding any money\n"
+	.string "for you right now.$"
+
+NewBarkTown_PlayersHouse_1F_Text_SavingsGoodbye:
+	.string "{SPEAKER NAME_MOM}Take care, sweetie!$"

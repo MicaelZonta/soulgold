@@ -2101,8 +2101,11 @@
 // as caixas do jogador estavam cheias apos a batalha; o script pos-derrota do
 // rival (dias de rival no revezamento com o Red) entrega e limpa.
 #define FLAG_RIVAL_SUMMIT_EGG_PENDING                0x111E
-#define CUSTOM_FLAGS_END                            FLAG_RIVAL_SUMMIT_EGG_PENDING
-// PROXIMA FLAG NOVA: 0x111F (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Mom's Savings (porte do HnS, Fase 6): a mae tem um presente comprado com a
+// poupanca esperando o jogador (setada em mom_savings.c, lida na ligacao).
+#define FLAG_MOM_HAS_GIFT                            0x111F
+#define CUSTOM_FLAGS_END                            FLAG_MOM_HAS_GIFT
+// PROXIMA FLAG NOVA: 0x1120 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 
@@ -2115,7 +2118,7 @@
 #define FLAG_ROUTE32_GROTTO                         (DAILY_FLAGS_START + 0x0)
 #define FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY     (DAILY_FLAGS_START + 0x1)
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
-#define FLAG_UNUSED_0x150B                          (DAILY_FLAGS_START + 0x3)  // Unused Flag. Era FLAG_DAILY_BUG_CONTEST_COMPLETED; o concurso usa FLAG_DAILY_BUG_DONE
+#define FLAG_DAILY_LUCKY_NUMBER_SET                 (DAILY_FLAGS_START + 0x3)  // Lucky Channel do radio sorteou o numero de hoje (era FLAG_UNUSED_0x150B; antes disso, BUG_CONTEST_COMPLETED)
 #define FLAG_DAILY_BUG_DONE                         (DAILY_FLAGS_START + 0x4)  // Daily bug catching contest completed
 #define FLAG_GOLDENROD_SHORE_GROTTO                 (DAILY_FLAGS_START + 0x5)
 #define FLAG_ROUTE35_GROTTO                         (DAILY_FLAGS_START + 0x6)

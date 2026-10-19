@@ -5075,14 +5075,4 @@ void AnimateTeleporterCable(void)
 {
 }
 
-// TODO(hns Fase 6 - radio): estacao Poke Flute acorda o Snorlax; sem o radio
-// de 12 estacoes importado, nunca bate.
-void CheckRadioStation(void)
-{
-    gSpecialVar_Result = FALSE;
-}
 
-// TODO(hns Fase 6 - roamers de Kanto): escolha do Steven em Vermilion.
-void InitKantoRoamers(void)
-{
-}

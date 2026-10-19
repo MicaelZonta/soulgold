@@ -77,6 +77,7 @@
 #include "test/battle.h"
 #include "follower_npc.h"
 #include "load_save.h"
+#include "mom_savings.h"
 #include "test/test_runner_battle.h"
 
 // Helper for accessing command arguments and advancing gBattlescriptCurrInstr.
@@ -6770,6 +6771,12 @@ static void Cmd_getmoneyreward(void)
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
             money += GetTrainerMoneyToGive(TRAINER_BATTLE_PARAM.opponentB);
         AddMoney(&gSaveBlock1Ptr->money, money);
+        if (Mom_IsSavingEnabled())
+        {
+            u32 depositAmount = money / 4;
+            if (depositAmount > 0)
+                Mom_AutoDepositFromBattle(depositAmount);
+        }
     }
     else
     {
