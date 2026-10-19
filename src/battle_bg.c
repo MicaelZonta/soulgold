@@ -1237,7 +1237,14 @@ void DrawTerrainTypeBattleBackground(void)
         LoadMoveBg(BG_PSYCHIC_TERRAIN);
         break;
     case STATUS_FIELD_SCORCHED_FIELD:
+    case STATUS_FIELD_FIRE_TERRAIN:
         LoadMoveBg(BG_SCORCHED_TERRAIN);
+        break;
+    case STATUS_FIELD_WATER_TERRAIN:
+        LoadMoveBg(BG_WATER_PULSE);
+        break;
+    case STATUS_FIELD_FOAM_TERRAIN:
+        LoadMoveBg(BG_WATER);
         break;
     default:
         DrawMainBattleBackground();

@@ -7828,6 +7828,161 @@ BattleScript_FlameburstEnd:
 	restoreattacker
 	return
 
+BattleScript_BlazingSurgeActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_FIRETERRAINSTARTED
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_SCRIPTING, B_ANIM_RESTORE_BG
+	call BattleScript_ActivateTerrainEffects
+	return
+
+BattleScript_TidalSurgeActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_WATERTERRAINSTARTED
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_SCRIPTING, B_ANIM_RESTORE_BG
+	call BattleScript_ActivateTerrainEffects
+	return
+
+BattleScript_FoamOverflowActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_FOAMTERRAINSTARTED
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_SCRIPTING, B_ANIM_RESTORE_BG
+	call BattleScript_ActivateTerrainEffects
+	return
+
+BattleScript_FireTerrainHeals::
+	printstring STRINGID_FIRETERRAINHEALS
+	waitmessage B_WAIT_TIME_LONG
+	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	end2
+
+BattleScript_WaterTerrainHeals::
+	printstring STRINGID_WATERTERRAINHEALS
+	waitmessage B_WAIT_TIME_LONG
+	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	end2
+
+BattleScript_FoamTerrainCures::
+	printstring STRINGID_FOAMTERRAINCURES
+	waitmessage B_WAIT_TIME_LONG
+	updatestatusicon BS_ATTACKER
+	end2
+
+BattleScript_WindRageActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_WINDRAGECLEARED
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_TAILWINDBLEW
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryTailwindAbilitiesLoop
+	restoreattacker
+	return
+
+BattleScript_WindRageClears::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_WINDRAGECLEARED
+	waitmessage B_WAIT_TIME_LONG
+	restoreattacker
+	return
+
+BattleScript_StonesurgeActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_POINTEDSTONESFLOAT
+	waitmessage B_WAIT_TIME_LONG
+	restoretarget
+	return
+
+BattleScript_SteelsurgeActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_SHARPSTEELFLOATS
+	waitmessage B_WAIT_TIME_LONG
+	restoretarget
+	return
+
+BattleScript_SweetnessActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	updatestatusicon BS_ATTACKER
+	printstring STRINGID_SWEETNESSACTIVATES
+	waitmessage B_WAIT_TIME_LONG
+	restoreattacker
+	return
+
+BattleScript_SweetnessActivatesDoubles::
+	waitstate
+	call BattleScript_AbilityPopUp
+	updatestatusicon BS_ATTACKER
+	updatestatusicon BS_ATTACKER_PARTNER
+	printstring STRINGID_SWEETNESSACTIVATES
+	waitmessage B_WAIT_TIME_LONG
+	restoreattacker
+	return
+
+BattleScript_FourArmedFocusActivates::
+	pause B_WAIT_TIME_SHORTEST
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_FOURARMEDFOCUS
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_MeltdownActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_CentifernoActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printfromtable gWrappedStringIds
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_NightTerrorActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNWASMADEDROWSY
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_PowerGridActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_POWERGRIDCHARGED
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_FrozenResonanceActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_SNOWWARNINGSNOW
+	waitstate
+	playanimation BS_BATTLER_0, B_ANIM_SNOW_CONTINUES
+	call BattleScript_ActivateWeatherAbilities
+	return
+
+BattleScript_SweetFinaleActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	healthbarupdate BS_TARGET, PASSIVE_HP_UPDATE
+	datahpupdate BS_TARGET, PASSIVE_HP_UPDATE
+	printstring STRINGID_SWEETFINALESHARED
+	waitmessage B_WAIT_TIME_LONG
+	restoretarget
+	return
+
 BattleScript_BrandOfTormentActivates::
 	waitstate
 	call BattleScript_AbilityPopUp

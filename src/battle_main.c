@@ -5239,6 +5239,18 @@ s32 GetBattleMovePriority(enum BattlerId battler, enum Move move)
     return priority;
 }
 
+// Trick Room inverts speed order; Foam Terrain inverts it again between grounded Pokemon.
+static bool32 IsSpeedOrderInverted(enum BattlerId battler1, enum BattlerId battler2)
+{
+    bool32 inverted = (gFieldStatuses & STATUS_FIELD_TRICK_ROOM) != 0;
+
+    if ((gFieldStatuses & STATUS_FIELD_FOAM_TERRAIN)
+     && IsBattlerGrounded(battler1)
+     && IsBattlerGrounded(battler2))
+        inverted = !inverted;
+    return inverted;
+}
+
 s32 GetWhichBattlerFasterArgs(struct BattleCalcValues *calcValues, bool32 ignoreChosenMoves, u32 speedBattler1, u32 speedBattler2, s32 priority1, s32 priority2)
 {
     u32 strikesFirst = 0;
@@ -5273,7 +5285,7 @@ s32 GetWhichBattlerFasterArgs(struct BattleCalcValues *calcValues, bool32 ignore
             else if (speedBattler1 < speedBattler2)
             {
                 // battler2 has more speed
-                if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)
+                if (IsSpeedOrderInverted(calcValues->battlerAtk, calcValues->battlerDef))
                     strikesFirst = 1;
                 else
                     strikesFirst = -1;
@@ -5281,7 +5293,7 @@ s32 GetWhichBattlerFasterArgs(struct BattleCalcValues *calcValues, bool32 ignore
             else
             {
                 // battler1 has more speed
-                if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)
+                if (IsSpeedOrderInverted(calcValues->battlerAtk, calcValues->battlerDef))
                     strikesFirst = -1;
                 else
                     strikesFirst = 1;
@@ -6516,8 +6528,10 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
                     return TYPE_FAIRY;
                 else if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
                     return TYPE_PSYCHIC;
-                else if (gFieldStatuses & STATUS_FIELD_SCORCHED_FIELD)
+                else if (gFieldStatuses & (STATUS_FIELD_SCORCHED_FIELD | STATUS_FIELD_FIRE_TERRAIN))
                     return TYPE_FIRE;
+                else if (gFieldStatuses & (STATUS_FIELD_WATER_TERRAIN | STATUS_FIELD_FOAM_TERRAIN))
+                    return TYPE_WATER;
                 else //failsafe
                     return moveType;
             }

@@ -1004,6 +1004,20 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_BOSSPHASESURGINGWITHPOWER]            = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} is surging with power!"),
     [STRINGID_BOSSPHASETRANSFORMED]                 = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} transformed!"),
     [STRINGID_MALICEAURAENTERS]                     = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} is radiating a malicious aura!"),
+    [STRINGID_FOURARMEDFOCUS]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} focused all four arms!"),
+    [STRINGID_POWERGRIDCHARGED]                     = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} stored the energy!"),
+    [STRINGID_WINDRAGECLEARED]                      = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s raging wind cleared the field!"),
+    [STRINGID_SWEETNESSACTIVATES]                   = COMPOUND_STRING("A sweet aroma wrapped {B_ATK_TEAM2} team in a soothing mist!"),
+    [STRINGID_FIRETERRAINSTARTED]                   = COMPOUND_STRING("Flames spread across the battlefield!"),
+    [STRINGID_FIRETERRAINENDS]                      = COMPOUND_STRING("The flames on the battlefield died down."),
+    [STRINGID_FIRETERRAINHEALS]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is healed by the fiery terrain!"),
+    [STRINGID_WATERTERRAINSTARTED]                  = COMPOUND_STRING("Water flooded the battlefield!"),
+    [STRINGID_WATERTERRAINENDS]                     = COMPOUND_STRING("The water drained from the battlefield."),
+    [STRINGID_WATERTERRAINHEALS]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is healed by the watery terrain!"),
+    [STRINGID_FOAMTERRAINSTARTED]                   = COMPOUND_STRING("Foam bubbled up across the battlefield!"),
+    [STRINGID_FOAMTERRAINENDS]                      = COMPOUND_STRING("The foam on the battlefield popped away."),
+    [STRINGID_FOAMTERRAINCURES]                     = COMPOUND_STRING("The foam washed away {B_ATK_NAME_WITH_PREFIX2}'s status!"),
+    [STRINGID_SWEETFINALESHARED]                    = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} shared the sweet treat!"),
 };
 
 const u16 gBossHealthBarBreakStringIds[] =
@@ -1045,6 +1059,9 @@ const u16 gStartingStatusStringIds[B_MSG_STARTING_STATUS_COUNT] =
     [B_MSG_TERRAIN_SET_PSYCHIC]  = STRINGID_TERRAINBECOMESPSYCHIC,
     [B_MSG_TERRAIN_SET_GRASSY]   = STRINGID_TERRAINBECOMESGRASSY,
     [B_MSG_TERRAIN_SET_SCORCHED] = STRINGID_SCORCHEDFIELDSTARTED,
+    [B_MSG_TERRAIN_SET_FIRE]     = STRINGID_FIRETERRAINSTARTED,
+    [B_MSG_TERRAIN_SET_WATER]    = STRINGID_WATERTERRAINSTARTED,
+    [B_MSG_TERRAIN_SET_FOAM]     = STRINGID_FOAMTERRAINSTARTED,
     [B_MSG_SET_TRICK_ROOM]       = STRINGID_DIMENSIONSWERETWISTED,
     [B_MSG_SET_MAGIC_ROOM]       = STRINGID_BIZARREARENACREATED,
     [B_MSG_SET_WONDER_ROOM]      = STRINGID_BIZARREAREACREATED,
@@ -1066,11 +1083,17 @@ const u16 gTerrainStringIds[B_MSG_TERRAIN_COUNT] =
     [B_MSG_TERRAIN_SET_PSYCHIC] = STRINGID_TERRAINBECOMESPSYCHIC,
     [B_MSG_TERRAIN_SET_GRASSY] = STRINGID_TERRAINBECOMESGRASSY,
     [B_MSG_TERRAIN_SET_SCORCHED] = STRINGID_SCORCHEDFIELDSTARTED,
+    [B_MSG_TERRAIN_SET_FIRE] = STRINGID_FIRETERRAINSTARTED,
+    [B_MSG_TERRAIN_SET_WATER] = STRINGID_WATERTERRAINSTARTED,
+    [B_MSG_TERRAIN_SET_FOAM] = STRINGID_FOAMTERRAINSTARTED,
     [B_MSG_TERRAIN_END_MISTY] = STRINGID_MISTYTERRAINENDS,
     [B_MSG_TERRAIN_END_ELECTRIC] = STRINGID_ELECTRICTERRAINENDS,
     [B_MSG_TERRAIN_END_PSYCHIC] = STRINGID_PSYCHICTERRAINENDS,
     [B_MSG_TERRAIN_END_GRASSY] = STRINGID_GRASSYTERRAINENDS,
     [B_MSG_TERRAIN_END_SCORCHED] = STRINGID_SCORCHEDFIELDSETTLED,
+    [B_MSG_TERRAIN_END_FIRE] = STRINGID_FIRETERRAINENDS,
+    [B_MSG_TERRAIN_END_WATER] = STRINGID_WATERTERRAINENDS,
+    [B_MSG_TERRAIN_END_FOAM] = STRINGID_FOAMTERRAINENDS,
 };
 
 const u16 gTerrainPreventsStringIds[] =
@@ -2261,6 +2284,8 @@ static const u8 sRecordedBattleTextSpeeds[] =
     [OPTIONS_TEXT_SPEED_FASTER]  = 0,
 };
 
+static const u8 sText_GmaxMegaEvoEvolved[] = _("{B_ATK_NAME_WITH_PREFIX} has Mega Evolved into {B_BUFF1} G!");
+
 void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
 {
     s32 i;
@@ -2736,6 +2761,14 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
         break;
     case STRINGID_TRAINERSLIDE:
         stringPtr = gBattleStruct->trainerSlideMsg;
+        break;
+    case STRINGID_MEGAEVOEVOLVED:
+        // Gigantamax forms Mega Evolve here, but are named "<Species> G".
+        if (gBattleMons[gBattleScripting.battler].species >= SPECIES_VENUSAUR_GMAX
+         && gBattleMons[gBattleScripting.battler].species <= SPECIES_URSHIFU_RAPID_STRIKE_GMAX)
+            stringPtr = sText_GmaxMegaEvoEvolved;
+        else
+            stringPtr = gBattleStringsTable[stringID];
         break;
     default: // load a string from the table
         if (stringID >= STRINGID_COUNT)

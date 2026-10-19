@@ -26,7 +26,7 @@ Each Pokemon must hold the item shown below and you must have the Mega Ring.
 
 ## [Bugtite](https://eemeliri.github.io/soulgold/items/bugtite/)
 
-- [Butterfree](https://eemeliri.github.io/soulgold/pokedex/butterfree/) -> [Mega Butterfree](https://eemeliri.github.io/soulgold/pokedex/butterfree-gmax/)
+- [Butterfree](https://eemeliri.github.io/soulgold/pokedex/butterfree/) -> [Butterfree G](https://eemeliri.github.io/soulgold/pokedex/butterfree-gmax/)
 - [Beedrill](https://eemeliri.github.io/soulgold/pokedex/beedrill/) -> [Mega Beedrill](https://eemeliri.github.io/soulgold/pokedex/beedrill-mega/)
 - [Scizor](https://eemeliri.github.io/soulgold/pokedex/scizor/) -> [Mega Scizor](https://eemeliri.github.io/soulgold/pokedex/scizor-mega/)
 - [Pinsir](https://eemeliri.github.io/soulgold/pokedex/pinsir/) -> [Mega Pinsir](https://eemeliri.github.io/soulgold/pokedex/pinsir-mega/)
@@ -66,8 +66,8 @@ Each Pokemon must hold the item shown below and you must have the Mega Ring.
 - [Manectric](https://eemeliri.github.io/soulgold/pokedex/manectric/) -> [Mega Manectric](https://eemeliri.github.io/soulgold/pokedex/manectric-mega/)
 - [Eelektross](https://eemeliri.github.io/soulgold/pokedex/eelektross/) -> [Mega Eelektross](https://eemeliri.github.io/soulgold/pokedex/eelektross-mega/)
 - [Zeraora](https://eemeliri.github.io/soulgold/pokedex/zeraora/) -> [Mega Zeraora](https://eemeliri.github.io/soulgold/pokedex/zeraora-mega/)
-- [Toxtricity (Amped Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-amped/) -> [Mega Toxtricity (Amped Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-amped-gmax/)
-- [Toxtricity (Low Key Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-low-key/) -> [Mega Toxtricity (Low Key Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-low-key-gmax/)
+- [Toxtricity (Amped Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-amped/) -> [Toxtricity Amped G](https://eemeliri.github.io/soulgold/pokedex/toxtricity-amped-gmax/)
+- [Toxtricity (Low Key Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-low-key/) -> [Toxtricity Low Key G](https://eemeliri.github.io/soulgold/pokedex/toxtricity-low-key-gmax/)
 
 ## [Fairytite](https://eemeliri.github.io/soulgold/items/fairytite/)
 
@@ -80,7 +80,7 @@ Each Pokemon must hold the item shown below and you must have the Mega Ring.
 
 ## [Fightite](https://eemeliri.github.io/soulgold/items/fightite/)
 
-- [Machamp](https://eemeliri.github.io/soulgold/pokedex/machamp/) -> [Mega Machamp](https://eemeliri.github.io/soulgold/pokedex/machamp-gmax/)
+- [Machamp](https://eemeliri.github.io/soulgold/pokedex/machamp/) -> [Machamp G](https://eemeliri.github.io/soulgold/pokedex/machamp-gmax/)
 - [Mewtwo](https://eemeliri.github.io/soulgold/pokedex/mewtwo/) -> [Mega Mewtwo X](https://eemeliri.github.io/soulgold/pokedex/mewtwo-mega-x/)
 - [Medicham](https://eemeliri.github.io/soulgold/pokedex/medicham/) -> [Mega Medicham](https://eemeliri.github.io/soulgold/pokedex/medicham-mega/)
 - [Lucario](https://eemeliri.github.io/soulgold/pokedex/lucario/) -> [Mega Lucario](https://eemeliri.github.io/soulgold/pokedex/lucario-mega/)
@@ -94,14 +94,14 @@ Each Pokemon must hold the item shown below and you must have the Mega Ring.
 - [Heatran](https://eemeliri.github.io/soulgold/pokedex/heatran/) -> [Mega Heatran](https://eemeliri.github.io/soulgold/pokedex/heatran-mega/)
 - [Emboar](https://eemeliri.github.io/soulgold/pokedex/emboar/) -> [Mega Emboar](https://eemeliri.github.io/soulgold/pokedex/emboar-mega/)
 - [Pyroar](https://eemeliri.github.io/soulgold/pokedex/pyroar/) -> [Mega Pyroar](https://eemeliri.github.io/soulgold/pokedex/pyroar-mega/)
-- [Cinderace](https://eemeliri.github.io/soulgold/pokedex/cinderace/) -> [Mega Cinderace](https://eemeliri.github.io/soulgold/pokedex/cinderace-gmax/)
-- [Centiskorch](https://eemeliri.github.io/soulgold/pokedex/centiskorch/) -> [Mega Centiskorch](https://eemeliri.github.io/soulgold/pokedex/centiskorch-gmax/)
+- [Cinderace](https://eemeliri.github.io/soulgold/pokedex/cinderace/) -> [Cinderace G](https://eemeliri.github.io/soulgold/pokedex/cinderace-gmax/)
+- [Centiskorch](https://eemeliri.github.io/soulgold/pokedex/centiskorch/) -> [Centiskorch G](https://eemeliri.github.io/soulgold/pokedex/centiskorch-gmax/)
 
 ## [Flyingite](https://eemeliri.github.io/soulgold/items/flyingite/)
 
 - [Pidgeot](https://eemeliri.github.io/soulgold/pokedex/pidgeot/) -> [Mega Pidgeot](https://eemeliri.github.io/soulgold/pokedex/pidgeot-mega/)
 - [Staraptor](https://eemeliri.github.io/soulgold/pokedex/staraptor/) -> [Mega Staraptor](https://eemeliri.github.io/soulgold/pokedex/staraptor-mega/)
-- [Corviknight](https://eemeliri.github.io/soulgold/pokedex/corviknight/) -> [Mega Corviknight](https://eemeliri.github.io/soulgold/pokedex/corviknight-gmax/)
+- [Corviknight](https://eemeliri.github.io/soulgold/pokedex/corviknight/) -> [Corviknight G](https://eemeliri.github.io/soulgold/pokedex/corviknight-gmax/)
 
 ## [Ghostite](https://eemeliri.github.io/soulgold/items/ghostite/)
 
@@ -114,7 +114,7 @@ Each Pokemon must hold the item shown below and you must have the Mega Ring.
 
 - [Venusaur](https://eemeliri.github.io/soulgold/pokedex/venusaur/) -> [Mega Venusaur](https://eemeliri.github.io/soulgold/pokedex/venusaur-mega/)
 - [Sceptile](https://eemeliri.github.io/soulgold/pokedex/sceptile/) -> [Mega Sceptile](https://eemeliri.github.io/soulgold/pokedex/sceptile-mega/)
-- [Rillaboom](https://eemeliri.github.io/soulgold/pokedex/rillaboom/) -> [Mega Rillaboom](https://eemeliri.github.io/soulgold/pokedex/rillaboom-gmax/)
+- [Rillaboom](https://eemeliri.github.io/soulgold/pokedex/rillaboom/) -> [Rillaboom G](https://eemeliri.github.io/soulgold/pokedex/rillaboom-gmax/)
 - [Scovillain](https://eemeliri.github.io/soulgold/pokedex/scovillain/) -> [Mega Scovillain](https://eemeliri.github.io/soulgold/pokedex/scovillain-mega/)
 
 ## [Groundite](https://eemeliri.github.io/soulgold/items/groundite/)
@@ -122,7 +122,7 @@ Each Pokemon must hold the item shown below and you must have the Mega Ring.
 - [Garchomp](https://eemeliri.github.io/soulgold/pokedex/garchomp/) -> [Mega Garchomp](https://eemeliri.github.io/soulgold/pokedex/garchomp-mega/)
 - [Excadrill](https://eemeliri.github.io/soulgold/pokedex/excadrill/) -> [Mega Excadrill](https://eemeliri.github.io/soulgold/pokedex/excadrill-mega/)
 - [Golurk](https://eemeliri.github.io/soulgold/pokedex/golurk/) -> [Mega Golurk](https://eemeliri.github.io/soulgold/pokedex/golurk-mega/)
-- [Sandaconda](https://eemeliri.github.io/soulgold/pokedex/sandaconda/) -> [Mega Sandaconda](https://eemeliri.github.io/soulgold/pokedex/sandaconda-gmax/)
+- [Sandaconda](https://eemeliri.github.io/soulgold/pokedex/sandaconda/) -> [Sandaconda G](https://eemeliri.github.io/soulgold/pokedex/sandaconda-gmax/)
 
 ## [Hearthflame Mask](https://eemeliri.github.io/soulgold/items/hearthflame-mask/)
 
@@ -130,7 +130,7 @@ Each Pokemon must hold the item shown below and you must have the Mega Ring.
 
 ## [Icetite](https://eemeliri.github.io/soulgold/items/icetite/)
 
-- [Lapras](https://eemeliri.github.io/soulgold/pokedex/lapras/) -> [Mega Lapras](https://eemeliri.github.io/soulgold/pokedex/lapras-gmax/)
+- [Lapras](https://eemeliri.github.io/soulgold/pokedex/lapras/) -> [Lapras G](https://eemeliri.github.io/soulgold/pokedex/lapras-gmax/)
 - [Glalie](https://eemeliri.github.io/soulgold/pokedex/glalie/) -> [Mega Glalie](https://eemeliri.github.io/soulgold/pokedex/glalie-mega/)
 - [Froslass](https://eemeliri.github.io/soulgold/pokedex/froslass/) -> [Mega Froslass](https://eemeliri.github.io/soulgold/pokedex/froslass-mega/)
 - [Abomasnow](https://eemeliri.github.io/soulgold/pokedex/abomasnow/) -> [Mega Abomasnow](https://eemeliri.github.io/soulgold/pokedex/abomasnow-mega/)
@@ -139,7 +139,7 @@ Each Pokemon must hold the item shown below and you must have the Mega Ring.
 ## [Normalite](https://eemeliri.github.io/soulgold/items/normalite/)
 
 - [Kangaskhan](https://eemeliri.github.io/soulgold/pokedex/kangaskhan/) -> [Mega Kangaskhan](https://eemeliri.github.io/soulgold/pokedex/kangaskhan-mega/)
-- [Snorlax](https://eemeliri.github.io/soulgold/pokedex/snorlax/) -> [Mega Snorlax](https://eemeliri.github.io/soulgold/pokedex/snorlax-gmax/)
+- [Snorlax](https://eemeliri.github.io/soulgold/pokedex/snorlax/) -> [Snorlax G](https://eemeliri.github.io/soulgold/pokedex/snorlax-gmax/)
 - [Lopunny](https://eemeliri.github.io/soulgold/pokedex/lopunny/) -> [Mega Lopunny](https://eemeliri.github.io/soulgold/pokedex/lopunny-mega/)
 - [Audino](https://eemeliri.github.io/soulgold/pokedex/audino/) -> [Mega Audino](https://eemeliri.github.io/soulgold/pokedex/audino-mega/)
 - [Drampa](https://eemeliri.github.io/soulgold/pokedex/drampa/) -> [Mega Drampa](https://eemeliri.github.io/soulgold/pokedex/drampa-mega/)
@@ -184,7 +184,7 @@ Each Pokemon must hold the item shown below and you must have the Mega Ring.
 - [Gyarados](https://eemeliri.github.io/soulgold/pokedex/gyarados/) -> [Mega Gyarados](https://eemeliri.github.io/soulgold/pokedex/gyarados-mega/)
 - [Swampert](https://eemeliri.github.io/soulgold/pokedex/swampert/) -> [Mega Swampert](https://eemeliri.github.io/soulgold/pokedex/swampert-mega/)
 - [Sharpedo](https://eemeliri.github.io/soulgold/pokedex/sharpedo/) -> [Mega Sharpedo](https://eemeliri.github.io/soulgold/pokedex/sharpedo-mega/)
-- [Inteleon](https://eemeliri.github.io/soulgold/pokedex/inteleon/) -> [Mega Inteleon](https://eemeliri.github.io/soulgold/pokedex/inteleon-gmax/)
+- [Inteleon](https://eemeliri.github.io/soulgold/pokedex/inteleon/) -> [Inteleon G](https://eemeliri.github.io/soulgold/pokedex/inteleon-gmax/)
 
 ## [Wellspring Mask](https://eemeliri.github.io/soulgold/items/wellspring-mask/)
 

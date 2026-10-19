@@ -308,7 +308,11 @@ enum VolatileFlags
     F(VOLATILE_OCTOLOCKED_BY,               octolockedBy,                  (enum BattlerId, MAX_BITS(MAX_BATTLERS_COUNT))) \
     F(VOLATILE_PARADOX_BOOSTED_STAT,        paradoxBoostedStat,            (enum Stat, NUM_STATS - 1)) \
     F(VOLATILE_UNABLE_TO_USE_MOVE,          unableToUseMove,               (u32, 1)) \
-    F(VOLATILE_ACTIVATE_DANCER,             activateDancer,                (u32, 1))
+    F(VOLATILE_ACTIVATE_DANCER,             activateDancer,                (u32, 1)) \
+    F(VOLATILE_POWER_GRID_CHARGED,          powerGridCharged,              (u32, 1)) \
+    F(VOLATILE_FOUR_ARMED_FOCUS_STAGES,     fourArmedFocusStages,          (u32, 6)) \
+    F(VOLATILE_NIGHT_TERROR_USED,           nightTerrorUsed,               (u32, 1)) \
+    F(VOLATILE_SEVEN_LIVES_ESCAPE,          sevenLivesEscape,              (u32, 1))
 
 
 /* Use within a macro to get the maximum allowed value for a volatile. Requires _typeMaxValue as input. */
@@ -420,8 +424,11 @@ enum TypeSideHazard
 #define STATUS_FIELD_ION_DELUGE                     (1 << 10)
 #define STATUS_FIELD_FAIRY_LOCK                     (1 << 11)
 #define STATUS_FIELD_SCORCHED_FIELD                 (1 << 12)
+#define STATUS_FIELD_FIRE_TERRAIN                   (1 << 13)
+#define STATUS_FIELD_WATER_TERRAIN                  (1 << 14)
+#define STATUS_FIELD_FOAM_TERRAIN                   (1 << 15)
 
-#define STATUS_FIELD_TERRAIN_ANY        (STATUS_FIELD_GRASSY_TERRAIN | STATUS_FIELD_MISTY_TERRAIN | STATUS_FIELD_ELECTRIC_TERRAIN | STATUS_FIELD_PSYCHIC_TERRAIN | STATUS_FIELD_SCORCHED_FIELD)
+#define STATUS_FIELD_TERRAIN_ANY        (STATUS_FIELD_GRASSY_TERRAIN | STATUS_FIELD_MISTY_TERRAIN | STATUS_FIELD_ELECTRIC_TERRAIN | STATUS_FIELD_PSYCHIC_TERRAIN | STATUS_FIELD_SCORCHED_FIELD | STATUS_FIELD_FIRE_TERRAIN | STATUS_FIELD_WATER_TERRAIN | STATUS_FIELD_FOAM_TERRAIN)
 
 // Flags describing move's result
 #define MOVE_RESULT_MISSED                (1 << 0)

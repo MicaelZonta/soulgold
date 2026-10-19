@@ -367,11 +367,36 @@ static bool32 HandleEndTurnFirstEventBlock(enum BattlerId battler)
             BattleScriptExecute(BattleScript_GrassyTerrainHeals);
             effect = TRUE;
         }
+        else if (((gFieldStatuses & STATUS_FIELD_FIRE_TERRAIN && IS_BATTLER_OF_TYPE(battler, TYPE_FIRE))
+               || (gFieldStatuses & STATUS_FIELD_WATER_TERRAIN && IS_BATTLER_OF_TYPE(battler, TYPE_WATER)))
+         && !IsBattlerAtMaxHp(battler)
+         && !gBattleMons[battler].volatiles.healBlock
+         && !IsSemiInvulnerable(battler, CHECK_ALL)
+         && IsBattlerGrounded(battler))
+        {
+            SetHealAmount(battler, GetNonDynamaxMaxHP(battler) / 16);
+            BattleScriptExecute((gFieldStatuses & STATUS_FIELD_FIRE_TERRAIN) ? BattleScript_FireTerrainHeals : BattleScript_WaterTerrainHeals);
+            effect = TRUE;
+        }
+        else if ((gFieldStatuses & STATUS_FIELD_FOAM_TERRAIN)
+         && IS_BATTLER_OF_TYPE(battler, TYPE_WATER)
+         && (gBattleMons[battler].status1 & STATUS1_ANY)
+         && !IsSemiInvulnerable(battler, CHECK_ALL)
+         && IsBattlerGrounded(battler))
+        {
+            gBattleMons[battler].status1 = 0;
+            gBattleMons[battler].volatiles.nightmare = FALSE;
+            BtlController_EmitSetMonData(battler, B_COMM_TO_CONTROLLER, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[battler].status1), &gBattleMons[battler].status1);
+            MarkBattlerForControllerExec(battler);
+            BattleScriptExecute(BattleScript_FoamTerrainCures);
+            effect = TRUE;
+        }
         gBattleStruct->eventState.endTurnBlock++;
         break;
     case FIRST_EVENT_BLOCK_ABILITIES:
     {
         if (BattlerHasTrait(battler, ABILITY_HEALER)
+         || BattlerHasTrait(battler, ABILITY_HIBERNATE)
          || BattlerHasTrait(battler, ABILITY_HYDRATION)
          || BattlerHasTrait(battler, ABILITY_SHED_SKIN)
          || BattlerHasTrait(battler, ABILITY_JADE_BLOOM))
@@ -1225,6 +1250,12 @@ static bool32 HandleEndTurnTerrain(enum BattlerId battler)
         effect = EndTurnTerrain(STATUS_FIELD_PSYCHIC_TERRAIN, B_MSG_TERRAIN_END_PSYCHIC);
     else if (gFieldStatuses & STATUS_FIELD_SCORCHED_FIELD)
         effect = EndTurnTerrain(STATUS_FIELD_SCORCHED_FIELD, B_MSG_TERRAIN_END_SCORCHED);
+    else if (gFieldStatuses & STATUS_FIELD_FIRE_TERRAIN)
+        effect = EndTurnTerrain(STATUS_FIELD_FIRE_TERRAIN, B_MSG_TERRAIN_END_FIRE);
+    else if (gFieldStatuses & STATUS_FIELD_WATER_TERRAIN)
+        effect = EndTurnTerrain(STATUS_FIELD_WATER_TERRAIN, B_MSG_TERRAIN_END_WATER);
+    else if (gFieldStatuses & STATUS_FIELD_FOAM_TERRAIN)
+        effect = EndTurnTerrain(STATUS_FIELD_FOAM_TERRAIN, B_MSG_TERRAIN_END_FOAM);
 
     return effect;
 }

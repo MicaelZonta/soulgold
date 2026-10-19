@@ -469,6 +469,10 @@ enum BattlerId GetTargetBySlot(enum BattlerId battlerAtk, enum BattlerId battler
 //Traits
 enum Ability GetBattlerTrait(enum BattlerId battler, u32 traitNum, bool32 ignoreMoldBreaker);
 bool32 BattlerHasInnate(enum BattlerId battlerId, enum Ability ability);
+bool32 IsDeadeyeProjectileMove(enum Move move);
+bool32 DoesTraitBreakMoldForMove(enum BattlerId battlerAtk, enum Move move);
+bool32 IsNightTerrorVictimAsleep(enum BattlerId battlerAtk);
+enum Type GetEonShiftType(enum Type moveType);
 bool32 BattlerHasTrait(enum BattlerId battlerId, enum Ability ability); //Returns the trait slot number of the given ability. Starts at 1 for the primary Ability and returns 0 if the ability is not found. 
 bool32 BattlerHasTraitPlain(enum BattlerId battlerId, enum Ability ability); //BattlerHasTrait for functions already under GetBattlerAbility to avoid infinite loops.
 void PushTraitStack(enum BattlerId battlerId, enum Ability ability); //Pushes an ability to the trait stack

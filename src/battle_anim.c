@@ -428,7 +428,14 @@ void LaunchBattleAnimation(u32 animType, u32 animId)
                     sBattleAnimScriptPtr = gBattleAnimMove_Confusion;
                     break;
                 case STATUS_FIELD_SCORCHED_FIELD:
+                case STATUS_FIELD_FIRE_TERRAIN:
                     sBattleAnimScriptPtr = gBattleAnimMove_Incinerate;
+                    break;
+                case STATUS_FIELD_WATER_TERRAIN:
+                    sBattleAnimScriptPtr = gBattleAnimMove_WaterPulse;
+                    break;
+                case STATUS_FIELD_FOAM_TERRAIN:
+                    sBattleAnimScriptPtr = gBattleAnimMove_BubbleBeam;
                     break;
                 }
             }

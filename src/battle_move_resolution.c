@@ -1498,6 +1498,24 @@ static enum CancelerResult CancelerProtean(struct BattleContext *ctx)
     return CANCELER_RESULT_SUCCESS;
 }
 
+static enum CancelerResult CancelerFourArmedFocus(struct BattleContext *ctx)
+{
+    // Each punching move focuses the arms one stage further before it lands.
+    if (BattlerHasTrait(ctx->battlerAtk, ABILITY_FOUR_ARMED_FOCUS)
+     && IsPunchingMove(ctx->move)
+     && !gProtectStructs[ctx->battlerAtk].fourArmedFocusUsed
+     && gBattleMons[ctx->battlerAtk].volatiles.fourArmedFocusStages < 6)
+    {
+        gProtectStructs[ctx->battlerAtk].fourArmedFocusUsed = TRUE;
+        gBattleMons[ctx->battlerAtk].volatiles.fourArmedFocusStages++;
+        gBattlerAbility = ctx->battlerAtk;
+        PushTraitStack(ctx->battlerAtk, ABILITY_FOUR_ARMED_FOCUS);
+        BattleScriptCall(BattleScript_FourArmedFocusActivates);
+        return CANCELER_RESULT_BREAK;
+    }
+    return CANCELER_RESULT_SUCCESS;
+}
+
 static enum CancelerResult CancelerExplodingDamp(struct BattleContext *ctx)
 {
     u32 dampBattler = IsAbilityOnField(ABILITY_DAMP);
@@ -2076,6 +2094,7 @@ static enum CancelerResult (*const sMoveSuccessOrderCancelers[])(struct BattleCo
     [CANCELER_POWDER_STATUS] = CancelerPowderStatus,
     [CANCELER_PRIORITY_BLOCK] = CancelerPriorityBlock,
     [CANCELER_PROTEAN] = CancelerProtean,
+    [CANCELER_FOUR_ARMED_FOCUS] = CancelerFourArmedFocus,
     [CANCELER_EXPLODING_DAMP] = CancelerExplodingDamp,
     [CANCELER_EXPLOSION] = CancelerExplosion,
     [CANCELER_CHARGING] = CancelerCharging,
@@ -2145,7 +2164,7 @@ static enum MoveEndResult MoveEndProtectLikeEffect(void)
     }
 
     if (method != PROTECT_MAX_GUARD
-     && BattlerHasTrait(gBattlerAttacker, ABILITY_UNSEEN_FIST)
+     && (BattlerHasTrait(gBattlerAttacker, ABILITY_UNSEEN_FIST) || BattlerHasTrait(gBattlerAttacker, ABILITY_UNSEEN_FORCE))
      && IsMoveMakingContact(gBattlerAttacker, gBattlerTarget, gCurrentMove))
     {
         gBattleScripting.moveendState++;
@@ -2400,6 +2419,29 @@ static enum MoveEndResult MoveEndTempo(void)
         SET_STATCHANGER(STAT_SPEED, 1, FALSE);
         PushTraitStack(gBattlerAttacker, ABILITY_TEMPO);
         BattleScriptCall(BattleScript_AttackerAbilityStatRaise);
+        result = MOVEEND_RESULT_RUN_SCRIPT;
+    }
+
+    gBattleScripting.moveendState++;
+    return result;
+}
+
+static enum MoveEndResult MoveEndPowerGridCharge(void)
+{
+    enum MoveEndResult result = MOVEEND_RESULT_CONTINUE;
+
+    if (BattlerHasTrait(gBattlerTarget, ABILITY_POWER_GRID)
+     && !gBattleMons[gBattlerTarget].volatiles.powerGridCharged
+     && gBattlerTarget != gBattlerAttacker
+     && IsBattlerAlive(gBattlerTarget)
+     && !gBattleStruct->unableToUseMove
+     && IsBattleMoveSpecial(gCurrentMove)
+     && IsBattlerTurnDamaged(gBattlerTarget, EXCLUDING_SUBSTITUTES))
+    {
+        gBattleMons[gBattlerTarget].volatiles.powerGridCharged = TRUE;
+        gBattleScripting.battler = gBattlerAbility = gBattlerTarget;
+        PushTraitStack(gBattlerTarget, ABILITY_POWER_GRID);
+        BattleScriptCall(BattleScript_PowerGridActivates);
         result = MOVEEND_RESULT_RUN_SCRIPT;
     }
 
@@ -3588,6 +3630,14 @@ static enum MoveEndResult MoveEndLifesteal(void)
     bool32 hasLifesteal = BattlerHasTrait(gBattlerAttacker, ABILITY_LIFESTEAL);
     bool32 hasSpectralDrain = BattlerHasTrait(gBattlerAttacker, ABILITY_SPECTRAL_DRAIN)
                            && (GetBattleMoveType(gCurrentMove) == TYPE_GHOST || GetBattleMoveType(gCurrentMove) == TYPE_GROUND);
+    bool32 hasAbyssalMaw = BattlerHasTrait(gBattlerAttacker, ABILITY_ABYSSAL_MAW)
+                        && GetBattleMoveType(gCurrentMove) == TYPE_GHOST;
+
+    if (hasAbyssalMaw && !hasSpectralDrain)
+    {
+        hasSpectralDrain = TRUE; // Same 25% drain.
+        hasLifesteal = FALSE;
+    }
 
     if ((hasLifesteal || hasSpectralDrain)
      && gBattleScripting.savedDmg > 0
@@ -3604,9 +3654,103 @@ static enum MoveEndResult MoveEndLifesteal(void)
         if (healAmount == 0)
             healAmount = 1;
         SetHealAmount(gBattlerAttacker, healAmount);
-        PushTraitStack(gBattlerAttacker, hasSpectralDrain ? ABILITY_SPECTRAL_DRAIN : ABILITY_LIFESTEAL);
+        PushTraitStack(gBattlerAttacker, hasAbyssalMaw ? ABILITY_ABYSSAL_MAW : (hasSpectralDrain ? ABILITY_SPECTRAL_DRAIN : ABILITY_LIFESTEAL));
         BattleScriptCall(hasSpectralDrain ? BattleScript_SpectralDrainActivates : BattleScript_LifestealActivates);
         result = MOVEEND_RESULT_RUN_SCRIPT;
+    }
+
+    gBattleScripting.moveendState++;
+    return result;
+}
+
+static enum MoveEndResult MoveEndFrozenResonance(void)
+{
+    enum MoveEndResult result = MOVEEND_RESULT_CONTINUE;
+
+    // The charge is spent by the special move that used it.
+    if (gBattleMons[gBattlerAttacker].volatiles.powerGridCharged
+     && !gBattleStruct->unableToUseMove
+     && IsBattleMoveSpecial(gCurrentMove)
+     && IsAnyTargetTurnDamaged(gBattlerAttacker))
+        gBattleMons[gBattlerAttacker].volatiles.powerGridCharged = FALSE;
+
+    if (BattlerHasTrait(gBattlerAttacker, ABILITY_FROZEN_RESONANCE)
+     && IsSoundMove(gCurrentMove)
+     && !gBattleStruct->unableToUseMove
+     && IsBattlerAlive(gBattlerAttacker))
+    {
+        if (gBattleWeather & B_WEATHER_SNOW)
+        {
+            // Renew the snow instead of announcing it again.
+            if (gBattleStruct->weatherDuration != 0)
+                gBattleStruct->weatherDuration = 5;
+        }
+        else if (TryChangeBattleWeather(gBattlerAttacker, BATTLE_WEATHER_SNOW, TRUE))
+        {
+            gBattleStruct->weatherDuration = 5;
+            gBattleScripting.battler = gBattlerAbility = gBattlerAttacker;
+            PushTraitStack(gBattlerAttacker, ABILITY_FROZEN_RESONANCE);
+            BattleScriptCall(BattleScript_FrozenResonanceActivates);
+            result = MOVEEND_RESULT_RUN_SCRIPT;
+        }
+    }
+
+    gBattleScripting.moveendState++;
+    return result;
+}
+
+static enum MoveEndResult MoveEndSweetFinale(void)
+{
+    enum MoveEndResult result = MOVEEND_RESULT_CONTINUE;
+    enum BattlerId partner = BATTLE_PARTNER(gBattlerAttacker);
+    u32 shared = gBattleStruct->sweetFinaleHeal / 2;
+
+    gBattleStruct->sweetFinaleHeal = 0;
+    if (shared != 0
+     && IsDoubleBattle()
+     && IsBattlerAlive(gBattlerAttacker)
+     && IsBattlerAlive(partner)
+     && !IsBattlerAtMaxHp(partner)
+     && !gBattleMons[partner].volatiles.healBlock)
+    {
+        SetHealAmount(partner, shared);
+        SaveBattlerTarget(gBattlerTarget);
+        gBattlerTarget = partner;
+        gBattlerAbility = gBattlerAttacker;
+        PushTraitStack(gBattlerAttacker, ABILITY_SWEET_FINALE);
+        BattleScriptCall(BattleScript_SweetFinaleActivates);
+        result = MOVEEND_RESULT_RUN_SCRIPT;
+    }
+
+    gBattleScripting.moveendState++;
+    return result;
+}
+
+static enum MoveEndResult MoveEndFoamOverflow(void)
+{
+    enum MoveEndResult result = MOVEEND_RESULT_CONTINUE;
+
+    // Offensive Water moves create Foam Terrain for 3 turns, or renew it.
+    if (BattlerHasTrait(gBattlerAttacker, ABILITY_FOAM_OVERFLOW)
+     && GetBattleMoveType(gCurrentMove) == TYPE_WATER
+     && !IsBattleMoveStatus(gCurrentMove)
+     && !gBattleStruct->unableToUseMove
+     && IsBattlerAlive(gBattlerAttacker)
+     && !gBattleStruct->isSkyBattle)
+    {
+        if (gFieldStatuses & STATUS_FIELD_FOAM_TERRAIN)
+        {
+            if (gFieldTimers.terrainTimer != 0)
+                gFieldTimers.terrainTimer = 3;
+        }
+        else if (TryChangeBattleTerrain(gBattlerAttacker, STATUS_FIELD_FOAM_TERRAIN))
+        {
+            gFieldTimers.terrainTimer = 3;
+            gBattleScripting.battler = gBattlerAbility = gBattlerAttacker;
+            PushTraitStack(gBattlerAttacker, ABILITY_FOAM_OVERFLOW);
+            BattleScriptCall(BattleScript_FoamOverflowActivates);
+            result = MOVEEND_RESULT_RUN_SCRIPT;
+        }
     }
 
     gBattleScripting.moveendState++;
@@ -4194,6 +4338,7 @@ static enum MoveEndResult (*const sMoveEndHandlers[])(void) =
     [MOVEEND_FORM_CHANGE_ON_HIT] = MoveEndFormChangeOnHit,
     [MOVEEND_ABILITIES_ATTACKER] = MoveEndAbilitiesAttacker,
     [MOVEEND_TEMPO] = MoveEndTempo,
+    [MOVEEND_POWER_GRID_CHARGE] = MoveEndPowerGridCharge,
     [MOVEEND_QUEUE_DANCER] = MoveEndQueueDancer,
     [MOVEEND_STATUS_IMMUNITY_ABILITIES] = MoveEndStatusImmunityAbilities,
     [MOVEEND_SYNCHRONIZE_ATTACKER] = MoveEndSynchronizeAttacker,
@@ -4224,6 +4369,9 @@ static enum MoveEndResult (*const sMoveEndHandlers[])(void) =
     [MOVEEND_CARD_BUTTON] = MoveEndCardButton,
     [MOVEEND_LIFE_ORB_SHELL_BELL] = MoveEndLifeOrbShellBell,
     [MOVEEND_LIFESTEAL] = MoveEndLifesteal,
+    [MOVEEND_FROZEN_RESONANCE] = MoveEndFrozenResonance,
+    [MOVEEND_SWEET_FINALE] = MoveEndSweetFinale,
+    [MOVEEND_FOAM_OVERFLOW] = MoveEndFoamOverflow,
     [MOVEEND_LAST_STAND] = MoveEndLastStand,
     [MOVEEND_FORM_CHANGE] = MoveEndFormChange,
     [MOVEEND_EMERGENCY_EXIT] = MoveEndEmergencyExit,
@@ -4492,8 +4640,12 @@ enum Move GetNaturePowerMove(void)
         move = MOVE_ENERGY_BALL;
     else if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
         move = MOVE_PSYCHIC;
-    else if (gFieldStatuses & STATUS_FIELD_SCORCHED_FIELD)
+    else if (gFieldStatuses & (STATUS_FIELD_SCORCHED_FIELD | STATUS_FIELD_FIRE_TERRAIN))
         move = MOVE_FLAMETHROWER;
+    else if (gFieldStatuses & STATUS_FIELD_WATER_TERRAIN)
+        move = MOVE_SCALD;
+    else if (gFieldStatuses & STATUS_FIELD_FOAM_TERRAIN)
+        move = MOVE_BUBBLE_BEAM;
     else if (gBattleEnvironmentInfo[gBattleEnvironment].naturePower == MOVE_NONE)
         move = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT;
 

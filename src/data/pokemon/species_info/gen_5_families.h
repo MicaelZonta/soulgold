@@ -6845,11 +6845,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     [SPECIES_GARBODOR_GMAX] =
     {
         .baseHP        = 80,
-        .baseAttack    = 95,
-        .baseDefense   = 82,
+        .baseAttack    = 125,
+        .baseDefense   = 112,
         .baseSpeed     = 75,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 82,
+        .baseSpAttack  = 70,
+        .baseSpDefense = 112,
         .types = MON_TYPES(TYPE_POISON),
         .catchRate = 60,
         .expYield = 166,
@@ -6861,7 +6861,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_STENCH, ABILITY_WEAK_ARMOR, ABILITY_AFTERMATH },
+        .abilities = { ABILITY_NEUTRALIZING_GAS, ABILITY_NEUTRALIZING_GAS, ABILITY_NEUTRALIZING_GAS },
         .innates = { ABILITY_POISON_TOUCH, ABILITY_CORROSION, ABILITY_MERCILESS },
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
@@ -6897,7 +6897,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         NO_SHADOW
         FOOTPRINT(Garbodor)
-        .isGigantamax = TRUE,
+        .isMegaEvolution = TRUE,
         .levelUpLearnset = sGarbodorLevelUpLearnset,
         .teachableLearnset = sGarbodorTeachableLearnset,
         .formSpeciesIdTable = sGarbodorFormSpeciesIdTable,

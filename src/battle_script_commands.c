@@ -3524,7 +3524,14 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
                     moveEffect = MOVE_EFFECT_SPD_MINUS_1;
                     break;
                 case STATUS_FIELD_SCORCHED_FIELD:
+                case STATUS_FIELD_FIRE_TERRAIN:
                     moveEffect = MOVE_EFFECT_BURN;
+                    break;
+                case STATUS_FIELD_WATER_TERRAIN:
+                    moveEffect = MOVE_EFFECT_ATK_MINUS_1;
+                    break;
+                case STATUS_FIELD_FOAM_TERRAIN:
+                    moveEffect = MOVE_EFFECT_SPD_MINUS_1;
                     break;
                 default:
                     moveEffect = MOVE_EFFECT_PARALYSIS;
@@ -7648,6 +7655,15 @@ static void RemoveAllTerrains(void)
     case STATUS_FIELD_SCORCHED_FIELD:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_END_SCORCHED;
         break;
+    case STATUS_FIELD_FIRE_TERRAIN:
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_END_FIRE;
+        break;
+    case STATUS_FIELD_WATER_TERRAIN:
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_END_WATER;
+        break;
+    case STATUS_FIELD_FOAM_TERRAIN:
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_END_FOAM;
+        break;
     default:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_COUNT;  // failsafe
         break;
@@ -7976,6 +7992,21 @@ static void Cmd_jumpifnexttargetvalid(void)
     }
 }
 
+// Sweet Finale: healing moves restore 25% more; remembers self-healing to share with the ally.
+static s32 ApplySweetFinale(enum BattlerId battler, s32 amount)
+{
+    if (!BattlerHasTrait(gBattlerAttacker, ABILITY_SWEET_FINALE) || !IsHealingMove(gCurrentMove))
+        return amount;
+
+    amount = amount * 125 / 100;
+    if (battler == gBattlerAttacker)
+    {
+        s32 missing = GetNonDynamaxMaxHP(battler) - gBattleMons[battler].hp;
+        gBattleStruct->sweetFinaleHeal = min(amount, missing);
+    }
+    return amount;
+}
+
 static void Cmd_tryhealhalfhealth(void)
 {
     CMD_ARGS(u8 battler, const u8 *failInstr);
@@ -7985,7 +8016,7 @@ static void Cmd_tryhealhalfhealth(void)
     if (cmd->battler == BS_ATTACKER)
         gBattlerTarget = gBattlerAttacker;
 
-    SetHealAmount(gBattlerTarget, GetNonDynamaxMaxHP(gBattlerTarget) / 2);
+    SetHealAmount(gBattlerTarget, ApplySweetFinale(gBattlerTarget, GetNonDynamaxMaxHP(gBattlerTarget) / 2));
     if (gBattleMons[gBattlerTarget].hp == gBattleMons[gBattlerTarget].maxHP)
         gBattlescriptCurrInstr = failInstr;
     else
@@ -10173,7 +10204,7 @@ static void Cmd_recoverbasedonsunlight(void)
 
         }
 
-        SetHealAmount(gBattlerAttacker, recoverAmount);
+        SetHealAmount(gBattlerAttacker, ApplySweetFinale(gBattlerAttacker, recoverAmount));
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else
@@ -11324,7 +11355,12 @@ static void Cmd_settypetoenvironment(void)
         environmentType = TYPE_PSYCHIC;
         break;
     case STATUS_FIELD_SCORCHED_FIELD:
+    case STATUS_FIELD_FIRE_TERRAIN:
         environmentType = TYPE_FIRE;
+        break;
+    case STATUS_FIELD_WATER_TERRAIN:
+    case STATUS_FIELD_FOAM_TERRAIN:
+        environmentType = TYPE_WATER;
         break;
     default:
         environmentType = gBattleEnvironmentInfo[gBattleEnvironment].camouflageType;
@@ -13591,7 +13627,7 @@ void BS_TryHealPulse(void)
         else
             healAmount = GetNonDynamaxMaxHP(gBattlerTarget) / 2;
 
-        SetHealAmount(gBattlerTarget, healAmount);
+        SetHealAmount(gBattlerTarget, ApplySweetFinale(gBattlerTarget, healAmount));
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
@@ -16040,7 +16076,7 @@ void BS_TryHealQuarterHealth(void)
 {
     NATIVE_ARGS(u8 battler, const u8 *failInstr);
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
-    SetHealAmount(battler, GetNonDynamaxMaxHP(battler) / 4);
+    SetHealAmount(battler, ApplySweetFinale(battler, GetNonDynamaxMaxHP(battler) / 4));
     if (gBattleMons[battler].hp == gBattleMons[battler].maxHP)
         gBattlescriptCurrInstr = cmd->failInstr;    // fail
     else

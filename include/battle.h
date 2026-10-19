@@ -89,7 +89,8 @@ struct ProtectStruct
     u16 helpingHand:3;
     u16 revengeDoubled:4;
     u16 tempoUsed:1;
-    u16 padding2:8;
+    u16 fourArmedFocusUsed:1;
+    u16 padding2:7;
     // End of 16-bit bitfield
     u16 physicalDmg;
     u16 specialDmg;
@@ -691,6 +692,9 @@ struct BattleStruct
     u32 stellarBoostFlags[NUM_BATTLE_SIDES]; // stored as a bitfield of flags for all types for each side
     u8 monCausingSleepClause[NUM_BATTLE_SIDES]; // Stores which pokemon on a given side is causing Sleep Clause to be active as the mon's index in the party
     u8 rebornUsed[NUM_BATTLE_SIDES]; // Party-index bitfield per side.
+    u8 sevenLivesUsed[NUM_BATTLE_SIDES][PARTY_SIZE];
+    u8 nightTerrorTarget[NUM_BATTLE_SIDES]; // Party index + 1 of the foe put to sleep by Night Terror, per user side.
+    u16 sweetFinaleHeal; // HP a Sweet Finale user restored to itself with the current move.
     u16 opponentMonCanTera:6;
     u16 opponentMonCanDynamax:6;
     u16 additionalEffectsCounter:4; // A counter for the additionalEffects applied by the current move in Cmd_setadditionaleffects

@@ -890,9 +890,9 @@
       "stats": {
         "hp": 80,
         "atk": 82,
-        "def": 83,
-        "spa": 100,
-        "spd": 100,
+        "def": 133,
+        "spa": 120,
+        "spd": 130,
         "spe": 80
       },
       "evYield": {
@@ -903,17 +903,21 @@
         "EGG_GROUP_MONSTER",
         "EGG_GROUP_GRASS"
       ],
-      "categories": [],
-      "bst": 525,
+      "categories": [
+        "mega"
+      ],
+      "bst": 625,
       "abilities": [
-        "ABILITY_OVERGROW",
-        "ABILITY_CHLOROPHYLL"
+        "ABILITY_GRASSY_SURGE",
+        "ABILITY_GRASSY_SURGE",
+        "ABILITY_GRASSY_SURGE"
       ],
       "regularAbilities": [
-        "ABILITY_OVERGROW"
+        "ABILITY_GRASSY_SURGE",
+        "ABILITY_GRASSY_SURGE"
       ],
       "hiddenAbilities": [
-        "ABILITY_CHLOROPHYLL"
+        "ABILITY_GRASSY_SURGE"
       ],
       "innates": [
         "ABILITY_SEED_SOWER",
@@ -2248,14 +2252,14 @@
       "name": "Charizard",
       "types": [
         "TYPE_FIRE",
-        "TYPE_FLYING"
+        "TYPE_FIRE"
       ],
       "stats": {
         "hp": 78,
         "atk": 84,
-        "def": 78,
-        "spa": 120,
-        "spd": 85,
+        "def": 118,
+        "spa": 139,
+        "spd": 115,
         "spe": 100
       },
       "evYield": {
@@ -2265,22 +2269,26 @@
         "EGG_GROUP_MONSTER",
         "EGG_GROUP_DRAGON"
       ],
-      "categories": [],
-      "bst": 545,
+      "categories": [
+        "mega"
+      ],
+      "bst": 634,
       "abilities": [
-        "ABILITY_BLAZE",
-        "ABILITY_SOLAR_POWER"
+        "ABILITY_BLAZING_SURGE",
+        "ABILITY_BLAZING_SURGE",
+        "ABILITY_BLAZING_SURGE"
       ],
       "regularAbilities": [
-        "ABILITY_BLAZE"
+        "ABILITY_BLAZING_SURGE",
+        "ABILITY_BLAZING_SURGE"
       ],
       "hiddenAbilities": [
-        "ABILITY_SOLAR_POWER"
+        "ABILITY_BLAZING_SURGE"
       ],
       "innates": [
         "ABILITY_TURBOBLAZE",
         "ABILITY_BERSERK",
-        "ABILITY_RECKLESS"
+        "ABILITY_FLAME_BODY"
       ],
       "sprite": "sprites/pokemon/charizard_gmax.png",
       "shinySprite": "sprites/pokemon/charizard_gmax_shiny.png",
@@ -3382,9 +3390,9 @@
       "stats": {
         "hp": 79,
         "atk": 83,
-        "def": 100,
-        "spa": 85,
-        "spd": 105,
+        "def": 130,
+        "spa": 125,
+        "spd": 135,
         "spe": 78
       },
       "evYield": {
@@ -3394,17 +3402,21 @@
         "EGG_GROUP_MONSTER",
         "EGG_GROUP_WATER_1"
       ],
-      "categories": [],
-      "bst": 530,
+      "categories": [
+        "mega"
+      ],
+      "bst": 630,
       "abilities": [
-        "ABILITY_TORRENT",
-        "ABILITY_RAIN_DISH"
+        "ABILITY_TIDAL_SURGE",
+        "ABILITY_TIDAL_SURGE",
+        "ABILITY_TIDAL_SURGE"
       ],
       "regularAbilities": [
-        "ABILITY_TORRENT"
+        "ABILITY_TIDAL_SURGE",
+        "ABILITY_TIDAL_SURGE"
       ],
       "hiddenAbilities": [
-        "ABILITY_RAIN_DISH"
+        "ABILITY_TIDAL_SURGE"
       ],
       "innates": [
         "ABILITY_SHELL_ARMOR",
@@ -4026,10 +4038,10 @@
       "stats": {
         "hp": 60,
         "atk": 45,
-        "def": 50,
-        "spa": 120,
+        "def": 60,
+        "spa": 125,
         "spd": 100,
-        "spe": 120
+        "spe": 105
       },
       "evYield": {
         "spa": 2,
@@ -4044,13 +4056,13 @@
       "bst": 495,
       "abilities": [
         "ABILITY_COMPOUND_EYES",
-        "ABILITY_TINTED_LENS"
+        "ABILITY_OBSCURING_POLLEN"
       ],
       "regularAbilities": [
         "ABILITY_COMPOUND_EYES"
       ],
       "hiddenAbilities": [
-        "ABILITY_TINTED_LENS"
+        "ABILITY_OBSCURING_POLLEN"
       ],
       "innates": [
         "ABILITY_UNDERDOG",
@@ -11275,11 +11287,11 @@
       ],
       "stats": {
         "hp": 35,
-        "atk": 55,
-        "def": 40,
-        "spa": 50,
-        "spd": 40,
-        "spe": 90
+        "atk": 75,
+        "def": 75,
+        "spa": 75,
+        "spd": 75,
+        "spe": 85
       },
       "evYield": {
         "spe": 2
@@ -11288,17 +11300,21 @@
         "EGG_GROUP_FIELD",
         "EGG_GROUP_FAIRY"
       ],
-      "categories": [],
-      "bst": 310,
+      "categories": [
+        "mega"
+      ],
+      "bst": 420,
       "abilities": [
-        "ABILITY_STATIC",
-        "ABILITY_LIGHTNING_ROD"
+        "ABILITY_GIGAVOLT_BODY",
+        "ABILITY_GIGAVOLT_BODY",
+        "ABILITY_GIGAVOLT_BODY"
       ],
       "regularAbilities": [
-        "ABILITY_STATIC"
+        "ABILITY_GIGAVOLT_BODY",
+        "ABILITY_GIGAVOLT_BODY"
       ],
       "hiddenAbilities": [
-        "ABILITY_LIGHTNING_ROD"
+        "ABILITY_GIGAVOLT_BODY"
       ],
       "innates": [
         "ABILITY_PLUS",
@@ -20974,11 +20990,11 @@
       ],
       "stats": {
         "hp": 40,
-        "atk": 45,
-        "def": 35,
-        "spa": 40,
-        "spd": 40,
-        "spe": 90
+        "atk": 85,
+        "def": 45,
+        "spa": 60,
+        "spd": 50,
+        "spe": 110
       },
       "evYield": {
         "spe": 1
@@ -20986,19 +21002,21 @@
       "eggGroups": [
         "EGG_GROUP_FIELD"
       ],
-      "categories": [],
-      "bst": 290,
+      "categories": [
+        "mega"
+      ],
+      "bst": 390,
       "abilities": [
-        "ABILITY_PICKUP",
-        "ABILITY_TECHNICIAN",
-        "ABILITY_UNNERVE"
+        "ABILITY_SEVEN_LIVES",
+        "ABILITY_SEVEN_LIVES",
+        "ABILITY_SEVEN_LIVES"
       ],
       "regularAbilities": [
-        "ABILITY_PICKUP",
-        "ABILITY_TECHNICIAN"
+        "ABILITY_SEVEN_LIVES",
+        "ABILITY_SEVEN_LIVES"
       ],
       "hiddenAbilities": [
-        "ABILITY_UNNERVE"
+        "ABILITY_SEVEN_LIVES"
       ],
       "innates": [
         "ABILITY_SUPER_LUCK",
@@ -26617,11 +26635,11 @@
       ],
       "stats": {
         "hp": 90,
-        "atk": 140,
-        "def": 110,
+        "atk": 145,
+        "def": 115,
         "spa": 65,
         "spd": 125,
-        "spe": 75
+        "spe": 65
       },
       "evYield": {
         "atk": 3
@@ -26636,17 +26654,17 @@
       "abilities": [
         "ABILITY_GUTS",
         "ABILITY_NO_GUARD",
-        "ABILITY_STEADFAST"
+        "ABILITY_FOUR_ARMED_FOCUS"
       ],
       "regularAbilities": [
         "ABILITY_GUTS",
         "ABILITY_NO_GUARD"
       ],
       "hiddenAbilities": [
-        "ABILITY_STEADFAST"
+        "ABILITY_FOUR_ARMED_FOCUS"
       ],
       "innates": [
-        "ABILITY_SHEER_FORCE",
+        "ABILITY_IRON_FIST",
         "ABILITY_DEFIANT",
         "ABILITY_TITAN_GRIP"
       ],
@@ -36775,10 +36793,10 @@
       "stats": {
         "hp": 60,
         "atk": 65,
-        "def": 60,
-        "spa": 130,
-        "spd": 75,
-        "spe": 110
+        "def": 100,
+        "spa": 150,
+        "spd": 105,
+        "spe": 120
       },
       "evYield": {
         "spa": 3
@@ -36786,15 +36804,22 @@
       "eggGroups": [
         "EGG_GROUP_AMORPHOUS"
       ],
-      "categories": [],
-      "bst": 500,
+      "categories": [
+        "mega"
+      ],
+      "bst": 600,
       "abilities": [
-        "ABILITY_CURSED_BODY"
+        "ABILITY_ABYSSAL_MAW",
+        "ABILITY_ABYSSAL_MAW",
+        "ABILITY_ABYSSAL_MAW"
       ],
       "regularAbilities": [
-        "ABILITY_CURSED_BODY"
+        "ABILITY_ABYSSAL_MAW",
+        "ABILITY_ABYSSAL_MAW"
       ],
-      "hiddenAbilities": [],
+      "hiddenAbilities": [
+        "ABILITY_ABYSSAL_MAW"
+      ],
       "innates": [
         "ABILITY_MOXIE",
         "ABILITY_GLUTTONY",
@@ -38184,11 +38209,11 @@
       ],
       "stats": {
         "hp": 55,
-        "atk": 130,
-        "def": 115,
+        "atk": 160,
+        "def": 145,
         "spa": 50,
-        "spd": 50,
-        "spe": 75
+        "spd": 120,
+        "spe": 45
       },
       "evYield": {
         "atk": 2
@@ -38196,19 +38221,21 @@
       "eggGroups": [
         "EGG_GROUP_WATER_3"
       ],
-      "categories": [],
-      "bst": 475,
+      "categories": [
+        "mega"
+      ],
+      "bst": 575,
       "abilities": [
-        "ABILITY_HYPER_CUTTER",
-        "ABILITY_SHELL_ARMOR",
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_FOAM_OVERFLOW",
+        "ABILITY_FOAM_OVERFLOW",
+        "ABILITY_FOAM_OVERFLOW"
       ],
       "regularAbilities": [
-        "ABILITY_HYPER_CUTTER",
-        "ABILITY_SHELL_ARMOR"
+        "ABILITY_FOAM_OVERFLOW",
+        "ABILITY_FOAM_OVERFLOW"
       ],
       "hiddenAbilities": [
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_FOAM_OVERFLOW"
       ],
       "innates": [
         "ABILITY_WATER_VEIL",
@@ -50724,10 +50751,10 @@
       "stats": {
         "hp": 130,
         "atk": 85,
-        "def": 105,
-        "spa": 135,
-        "spd": 120,
-        "spe": 60
+        "def": 115,
+        "spa": 125,
+        "spd": 125,
+        "spe": 55
       },
       "evYield": {
         "hp": 2
@@ -50754,7 +50781,7 @@
       ],
       "innates": [
         "ABILITY_SOOTHING",
-        "ABILITY_LIQUID_VOICE",
+        "ABILITY_FROZEN_RESONANCE",
         "ABILITY_ICE_SCALES"
       ],
       "sprite": "sprites/pokemon/lapras_gmax.png",
@@ -51546,9 +51573,9 @@
       "stats": {
         "hp": 55,
         "atk": 55,
-        "def": 50,
+        "def": 100,
         "spa": 45,
-        "spd": 65,
+        "spd": 115,
         "spe": 55
       },
       "evYield": {
@@ -51557,23 +51584,25 @@
       "eggGroups": [
         "EGG_GROUP_FIELD"
       ],
-      "categories": [],
-      "bst": 325,
+      "categories": [
+        "mega"
+      ],
+      "bst": 425,
       "abilities": [
-        "ABILITY_RUN_AWAY",
-        "ABILITY_ADAPTABILITY",
-        "ABILITY_ANTICIPATION"
+        "ABILITY_FLUFFY",
+        "ABILITY_FLUFFY",
+        "ABILITY_FLUFFY"
       ],
       "regularAbilities": [
-        "ABILITY_RUN_AWAY",
-        "ABILITY_ADAPTABILITY"
+        "ABILITY_FLUFFY",
+        "ABILITY_FLUFFY"
       ],
       "hiddenAbilities": [
-        "ABILITY_ANTICIPATION"
+        "ABILITY_FLUFFY"
       ],
       "innates": [
         "ABILITY_SCRAPPY",
-        "ABILITY_FLUFFY",
+        "ABILITY_EON_SHIFT",
         "ABILITY_NORMALIZE"
       ],
       "sprite": "sprites/pokemon/eevee_gmax.png",
@@ -54431,10 +54460,10 @@
       ],
       "stats": {
         "hp": 160,
-        "atk": 130,
-        "def": 95,
-        "spa": 95,
-        "spd": 130,
+        "atk": 135,
+        "def": 105,
+        "spa": 75,
+        "spd": 135,
         "spe": 30
       },
       "evYield": {
@@ -54448,19 +54477,19 @@
       ],
       "bst": 640,
       "abilities": [
-        "ABILITY_THICK_FAT",
-        "ABILITY_THICK_FAT",
-        "ABILITY_THICK_FAT"
+        "ABILITY_HIBERNATE",
+        "ABILITY_HIBERNATE",
+        "ABILITY_HIBERNATE"
       ],
       "regularAbilities": [
-        "ABILITY_THICK_FAT",
-        "ABILITY_THICK_FAT"
+        "ABILITY_HIBERNATE",
+        "ABILITY_HIBERNATE"
       ],
       "hiddenAbilities": [
-        "ABILITY_THICK_FAT"
+        "ABILITY_HIBERNATE"
       ],
       "innates": [
-        "ABILITY_BULLETPROOF",
+        "ABILITY_THICK_FAT",
         "ABILITY_SEED_SOWER",
         "ABILITY_ROOTED"
       ],
@@ -86410,8 +86439,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -86419,8 +86448,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -177285,10 +177314,10 @@
       ],
       "stats": {
         "hp": 80,
-        "atk": 95,
-        "def": 82,
-        "spa": 60,
-        "spd": 82,
+        "atk": 125,
+        "def": 112,
+        "spa": 70,
+        "spd": 112,
         "spe": 75
       },
       "evYield": {
@@ -177297,19 +177326,21 @@
       "eggGroups": [
         "EGG_GROUP_MINERAL"
       ],
-      "categories": [],
-      "bst": 474,
+      "categories": [
+        "mega"
+      ],
+      "bst": 574,
       "abilities": [
-        "ABILITY_STENCH",
-        "ABILITY_WEAK_ARMOR",
-        "ABILITY_AFTERMATH"
+        "ABILITY_NEUTRALIZING_GAS",
+        "ABILITY_NEUTRALIZING_GAS",
+        "ABILITY_NEUTRALIZING_GAS"
       ],
       "regularAbilities": [
-        "ABILITY_STENCH",
-        "ABILITY_WEAK_ARMOR"
+        "ABILITY_NEUTRALIZING_GAS",
+        "ABILITY_NEUTRALIZING_GAS"
       ],
       "hiddenAbilities": [
-        "ABILITY_AFTERMATH"
+        "ABILITY_NEUTRALIZING_GAS"
       ],
       "innates": [
         "ABILITY_POISON_TOUCH",
@@ -260992,10 +261023,10 @@
       ],
       "stats": {
         "hp": 135,
-        "atk": 143,
-        "def": 143,
+        "atk": 163,
+        "def": 173,
         "spa": 80,
-        "spd": 65,
+        "spd": 115,
         "spe": 34
       },
       "evYield": {
@@ -261005,16 +261036,22 @@
         "EGG_GROUP_NO_EGGS_DISCOVERED"
       ],
       "categories": [
-        "mythical"
+        "mythical",
+        "mega"
       ],
-      "bst": 600,
+      "bst": 700,
       "abilities": [
-        "ABILITY_IRON_FIST"
+        "ABILITY_MELTDOWN",
+        "ABILITY_MELTDOWN",
+        "ABILITY_MELTDOWN"
       ],
       "regularAbilities": [
-        "ABILITY_IRON_FIST"
+        "ABILITY_MELTDOWN",
+        "ABILITY_MELTDOWN"
       ],
-      "hiddenAbilities": [],
+      "hiddenAbilities": [
+        "ABILITY_MELTDOWN"
+      ],
       "innates": [
         "ABILITY_HEAVY_METAL",
         "ABILITY_STAMINA",
@@ -261754,11 +261791,11 @@
       ],
       "stats": {
         "hp": 100,
-        "atk": 135,
-        "def": 130,
+        "atk": 145,
+        "def": 125,
         "spa": 60,
-        "spd": 120,
-        "spe": 85
+        "spd": 110,
+        "spe": 90
       },
       "evYield": {
         "atk": 3
@@ -261772,16 +261809,16 @@
       ],
       "bst": 630,
       "abilities": [
-        "ABILITY_GRASSY_SURGE",
-        "ABILITY_GRASSY_SURGE",
-        "ABILITY_GRASSY_SURGE"
+        "ABILITY_DRUM_SOLO",
+        "ABILITY_DRUM_SOLO",
+        "ABILITY_DRUM_SOLO"
       ],
       "regularAbilities": [
-        "ABILITY_GRASSY_SURGE",
-        "ABILITY_GRASSY_SURGE"
+        "ABILITY_DRUM_SOLO",
+        "ABILITY_DRUM_SOLO"
       ],
       "hiddenAbilities": [
-        "ABILITY_GRASSY_SURGE"
+        "ABILITY_DRUM_SOLO"
       ],
       "innates": [
         "ABILITY_PUNK_ROCK",
@@ -262526,11 +262563,11 @@
       ],
       "stats": {
         "hp": 80,
-        "atk": 136,
-        "def": 100,
+        "atk": 141,
+        "def": 98,
         "spa": 65,
-        "spd": 100,
-        "spe": 149
+        "spd": 96,
+        "spe": 150
       },
       "evYield": {
         "spe": 3
@@ -262544,16 +262581,16 @@
       ],
       "bst": 630,
       "abilities": [
-        "ABILITY_LIBERO",
-        "ABILITY_LIBERO",
-        "ABILITY_LIBERO"
+        "ABILITY_ACE_STRIKER",
+        "ABILITY_ACE_STRIKER",
+        "ABILITY_ACE_STRIKER"
       ],
       "regularAbilities": [
-        "ABILITY_LIBERO",
-        "ABILITY_LIBERO"
+        "ABILITY_ACE_STRIKER",
+        "ABILITY_ACE_STRIKER"
       ],
       "hiddenAbilities": [
-        "ABILITY_LIBERO"
+        "ABILITY_ACE_STRIKER"
       ],
       "innates": [
         "ABILITY_STEEL_FEET",
@@ -263283,10 +263320,10 @@
       "stats": {
         "hp": 70,
         "atk": 85,
-        "def": 70,
-        "spa": 150,
+        "def": 85,
+        "spa": 140,
         "spd": 105,
-        "spe": 150
+        "spe": 145
       },
       "evYield": {
         "spe": 3
@@ -263300,16 +263337,16 @@
       ],
       "bst": 630,
       "abilities": [
-        "ABILITY_SNIPER",
-        "ABILITY_SNIPER",
-        "ABILITY_SNIPER"
+        "ABILITY_DEADEYE",
+        "ABILITY_DEADEYE",
+        "ABILITY_DEADEYE"
       ],
       "regularAbilities": [
-        "ABILITY_SNIPER",
-        "ABILITY_SNIPER"
+        "ABILITY_DEADEYE",
+        "ABILITY_DEADEYE"
       ],
       "hiddenAbilities": [
-        "ABILITY_SNIPER"
+        "ABILITY_DEADEYE"
       ],
       "innates": [
         "ABILITY_MEGA_LAUNCHER",
@@ -264365,11 +264402,11 @@
       ],
       "stats": {
         "hp": 98,
-        "atk": 130,
+        "atk": 125,
         "def": 140,
         "spa": 53,
-        "spd": 85,
-        "spe": 89
+        "spd": 100,
+        "spe": 79
       },
       "evYield": {
         "def": 3
@@ -264382,16 +264419,16 @@
       ],
       "bst": 595,
       "abilities": [
-        "ABILITY_PRESSURE",
-        "ABILITY_UNNERVE",
-        "ABILITY_MIRROR_ARMOR"
+        "ABILITY_WIND_RAGE",
+        "ABILITY_WIND_RAGE",
+        "ABILITY_WIND_RAGE"
       ],
       "regularAbilities": [
-        "ABILITY_PRESSURE",
-        "ABILITY_UNNERVE"
+        "ABILITY_WIND_RAGE",
+        "ABILITY_WIND_RAGE"
       ],
       "hiddenAbilities": [
-        "ABILITY_MIRROR_ARMOR"
+        "ABILITY_WIND_RAGE"
       ],
       "innates": [
         "ABILITY_IRON_BARBS",
@@ -265012,9 +265049,9 @@
       "stats": {
         "hp": 60,
         "atk": 45,
-        "def": 110,
-        "spa": 80,
-        "spd": 120,
+        "def": 140,
+        "spa": 120,
+        "spd": 150,
         "spe": 90
       },
       "evYield": {
@@ -265023,19 +265060,21 @@
       "eggGroups": [
         "EGG_GROUP_BUG"
       ],
-      "categories": [],
-      "bst": 505,
+      "categories": [
+        "mega"
+      ],
+      "bst": 605,
       "abilities": [
-        "ABILITY_SWARM",
-        "ABILITY_FRISK",
-        "ABILITY_TELEPATHY"
+        "ABILITY_GRAVITAS",
+        "ABILITY_GRAVITAS",
+        "ABILITY_GRAVITAS"
       ],
       "regularAbilities": [
-        "ABILITY_SWARM",
-        "ABILITY_FRISK"
+        "ABILITY_GRAVITAS",
+        "ABILITY_GRAVITAS"
       ],
       "hiddenAbilities": [
-        "ABILITY_TELEPATHY"
+        "ABILITY_GRAVITAS"
       ],
       "innates": [
         "ABILITY_COMPOUND_EYES",
@@ -266549,10 +266588,10 @@
       ],
       "stats": {
         "hp": 90,
-        "atk": 115,
-        "def": 90,
+        "atk": 145,
+        "def": 130,
         "spa": 48,
-        "spd": 68,
+        "spd": 98,
         "spe": 74
       },
       "evYield": {
@@ -266562,19 +266601,21 @@
         "EGG_GROUP_MONSTER",
         "EGG_GROUP_WATER_1"
       ],
-      "categories": [],
-      "bst": 485,
+      "categories": [
+        "mega"
+      ],
+      "bst": 585,
       "abilities": [
-        "ABILITY_STRONG_JAW",
-        "ABILITY_SHELL_ARMOR",
-        "ABILITY_SWIFT_SWIM"
+        "ABILITY_STONESURGE",
+        "ABILITY_STONESURGE",
+        "ABILITY_STONESURGE"
       ],
       "regularAbilities": [
-        "ABILITY_STRONG_JAW",
-        "ABILITY_SHELL_ARMOR"
+        "ABILITY_STONESURGE",
+        "ABILITY_STONESURGE"
       ],
       "hiddenAbilities": [
-        "ABILITY_SWIFT_SWIM"
+        "ABILITY_STONESURGE"
       ],
       "innates": [
         "ABILITY_ROCK_HEAD",
@@ -267640,11 +267681,11 @@
       ],
       "stats": {
         "hp": 110,
-        "atk": 80,
-        "def": 120,
-        "spa": 80,
-        "spd": 90,
-        "spe": 30
+        "atk": 100,
+        "def": 150,
+        "spa": 110,
+        "spd": 120,
+        "spe": 20
       },
       "evYield": {
         "def": 3
@@ -267652,19 +267693,21 @@
       "eggGroups": [
         "EGG_GROUP_MINERAL"
       ],
-      "categories": [],
-      "bst": 510,
+      "categories": [
+        "mega"
+      ],
+      "bst": 610,
       "abilities": [
         "ABILITY_STEAM_ENGINE",
-        "ABILITY_FLAME_BODY",
-        "ABILITY_FLASH_FIRE"
+        "ABILITY_STEAM_ENGINE",
+        "ABILITY_STEAM_ENGINE"
       ],
       "regularAbilities": [
         "ABILITY_STEAM_ENGINE",
-        "ABILITY_FLAME_BODY"
+        "ABILITY_STEAM_ENGINE"
       ],
       "hiddenAbilities": [
-        "ABILITY_FLASH_FIRE"
+        "ABILITY_STEAM_ENGINE"
       ],
       "innates": [
         "ABILITY_STURDY",
@@ -268158,10 +268201,10 @@
       ],
       "stats": {
         "hp": 70,
-        "atk": 110,
-        "def": 80,
-        "spa": 95,
-        "spd": 60,
+        "atk": 140,
+        "def": 100,
+        "spa": 125,
+        "spd": 80,
         "spe": 70
       },
       "evYield": {
@@ -268171,19 +268214,21 @@
         "EGG_GROUP_GRASS",
         "EGG_GROUP_DRAGON"
       ],
-      "categories": [],
-      "bst": 485,
+      "categories": [
+        "mega"
+      ],
+      "bst": 585,
       "abilities": [
-        "ABILITY_RIPEN",
-        "ABILITY_GLUTTONY",
-        "ABILITY_HUSTLE"
+        "ABILITY_TARTNESS",
+        "ABILITY_TARTNESS",
+        "ABILITY_TARTNESS"
       ],
       "regularAbilities": [
-        "ABILITY_RIPEN",
-        "ABILITY_GLUTTONY"
+        "ABILITY_TARTNESS",
+        "ABILITY_TARTNESS"
       ],
       "hiddenAbilities": [
-        "ABILITY_HUSTLE"
+        "ABILITY_TARTNESS"
       ],
       "innates": [
         "ABILITY_LEAF_GUARD",
@@ -268557,10 +268602,10 @@
       "stats": {
         "hp": 110,
         "atk": 85,
-        "def": 80,
-        "spa": 100,
-        "spd": 80,
-        "spe": 30
+        "def": 120,
+        "spa": 130,
+        "spd": 120,
+        "spe": 20
       },
       "evYield": {
         "hp": 2
@@ -268569,19 +268614,21 @@
         "EGG_GROUP_GRASS",
         "EGG_GROUP_DRAGON"
       ],
-      "categories": [],
-      "bst": 485,
+      "categories": [
+        "mega"
+      ],
+      "bst": 585,
       "abilities": [
-        "ABILITY_RIPEN",
-        "ABILITY_GLUTTONY",
-        "ABILITY_THICK_FAT"
+        "ABILITY_SWEETNESS",
+        "ABILITY_SWEETNESS",
+        "ABILITY_SWEETNESS"
       ],
       "regularAbilities": [
-        "ABILITY_RIPEN",
-        "ABILITY_GLUTTONY"
+        "ABILITY_SWEETNESS",
+        "ABILITY_SWEETNESS"
       ],
       "hiddenAbilities": [
-        "ABILITY_THICK_FAT"
+        "ABILITY_SWEETNESS"
       ],
       "innates": [
         "ABILITY_LEAF_GUARD",
@@ -269090,11 +269137,11 @@
       ],
       "stats": {
         "hp": 72,
-        "atk": 128,
-        "def": 125,
+        "atk": 132,
+        "def": 145,
         "spa": 65,
-        "spd": 70,
-        "spe": 150
+        "spd": 85,
+        "spe": 111
       },
       "evYield": {
         "def": 2
@@ -269108,16 +269155,16 @@
       ],
       "bst": 610,
       "abilities": [
-        "ABILITY_SAND_SPIT",
-        "ABILITY_SHED_SKIN",
-        "ABILITY_SAND_VEIL"
+        "ABILITY_SAND_STREAM",
+        "ABILITY_SAND_STREAM",
+        "ABILITY_SAND_STREAM"
       ],
       "regularAbilities": [
-        "ABILITY_SAND_SPIT",
-        "ABILITY_SHED_SKIN"
+        "ABILITY_SAND_STREAM",
+        "ABILITY_SAND_STREAM"
       ],
       "hiddenAbilities": [
-        "ABILITY_SAND_VEIL"
+        "ABILITY_SAND_STREAM"
       ],
       "innates": [
         "ABILITY_EARTH_EATER",
@@ -270731,10 +270778,10 @@
       "stats": {
         "hp": 75,
         "atk": 118,
-        "def": 90,
-        "spa": 134,
-        "spd": 90,
-        "spe": 95
+        "def": 95,
+        "spa": 139,
+        "spd": 95,
+        "spe": 80
       },
       "evYield": {
         "spa": 2
@@ -270747,16 +270794,16 @@
       ],
       "bst": 602,
       "abilities": [
-        "ABILITY_PUNK_ROCK",
-        "ABILITY_PLUS",
-        "ABILITY_TECHNICIAN"
+        "ABILITY_STUN_SHOCK",
+        "ABILITY_STUN_SHOCK",
+        "ABILITY_STUN_SHOCK"
       ],
       "regularAbilities": [
-        "ABILITY_PUNK_ROCK",
-        "ABILITY_PLUS"
+        "ABILITY_STUN_SHOCK",
+        "ABILITY_STUN_SHOCK"
       ],
       "hiddenAbilities": [
-        "ABILITY_TECHNICIAN"
+        "ABILITY_STUN_SHOCK"
       ],
       "innates": [
         "ABILITY_ECHOING",
@@ -270950,10 +270997,10 @@
       "stats": {
         "hp": 75,
         "atk": 118,
-        "def": 90,
-        "spa": 134,
-        "spd": 90,
-        "spe": 95
+        "def": 95,
+        "spa": 139,
+        "spd": 95,
+        "spe": 80
       },
       "evYield": {
         "spa": 2
@@ -270966,16 +271013,16 @@
       ],
       "bst": 602,
       "abilities": [
-        "ABILITY_PUNK_ROCK",
-        "ABILITY_MINUS",
-        "ABILITY_TECHNICIAN"
+        "ABILITY_STUN_SHOCK",
+        "ABILITY_STUN_SHOCK",
+        "ABILITY_STUN_SHOCK"
       ],
       "regularAbilities": [
-        "ABILITY_PUNK_ROCK",
-        "ABILITY_MINUS"
+        "ABILITY_STUN_SHOCK",
+        "ABILITY_STUN_SHOCK"
       ],
       "hiddenAbilities": [
-        "ABILITY_TECHNICIAN"
+        "ABILITY_STUN_SHOCK"
       ],
       "innates": [
         "ABILITY_ECHOING",
@@ -271519,8 +271566,8 @@
         "atk": 145,
         "def": 100,
         "spa": 90,
-        "spd": 90,
-        "spe": 100
+        "spd": 105,
+        "spe": 85
       },
       "evYield": {
         "atk": 2
@@ -271533,16 +271580,16 @@
       ],
       "bst": 625,
       "abilities": [
-        "ABILITY_FLASH_FIRE",
-        "ABILITY_WHITE_SMOKE",
-        "ABILITY_FLAME_BODY"
+        "ABILITY_CENTIFERNO",
+        "ABILITY_CENTIFERNO",
+        "ABILITY_CENTIFERNO"
       ],
       "regularAbilities": [
-        "ABILITY_FLASH_FIRE",
-        "ABILITY_WHITE_SMOKE"
+        "ABILITY_CENTIFERNO",
+        "ABILITY_CENTIFERNO"
       ],
       "hiddenAbilities": [
-        "ABILITY_FLAME_BODY"
+        "ABILITY_CENTIFERNO"
       ],
       "innates": [
         "ABILITY_SMOULDERING",
@@ -273370,10 +273417,10 @@
       "stats": {
         "hp": 57,
         "atk": 90,
-        "def": 95,
-        "spa": 136,
-        "spd": 103,
-        "spe": 29
+        "def": 135,
+        "spa": 166,
+        "spd": 143,
+        "spe": 19
       },
       "evYield": {
         "spa": 3
@@ -273381,16 +273428,18 @@
       "eggGroups": [
         "EGG_GROUP_FAIRY"
       ],
-      "categories": [],
-      "bst": 510,
+      "categories": [
+        "mega"
+      ],
+      "bst": 610,
       "abilities": [
-        "ABILITY_HEALER",
-        "ABILITY_ANTICIPATION",
+        "ABILITY_MAGIC_BOUNCE",
+        "ABILITY_MAGIC_BOUNCE",
         "ABILITY_MAGIC_BOUNCE"
       ],
       "regularAbilities": [
-        "ABILITY_HEALER",
-        "ABILITY_ANTICIPATION"
+        "ABILITY_MAGIC_BOUNCE",
+        "ABILITY_MAGIC_BOUNCE"
       ],
       "hiddenAbilities": [
         "ABILITY_MAGIC_BOUNCE"
@@ -274136,11 +274185,11 @@
       ],
       "stats": {
         "hp": 95,
-        "atk": 120,
-        "def": 65,
-        "spa": 95,
-        "spd": 75,
-        "spe": 60
+        "atk": 150,
+        "def": 105,
+        "spa": 75,
+        "spd": 115,
+        "spe": 70
       },
       "evYield": {
         "atk": 3
@@ -274149,19 +274198,21 @@
         "EGG_GROUP_FAIRY",
         "EGG_GROUP_HUMAN_LIKE"
       ],
-      "categories": [],
-      "bst": 510,
+      "categories": [
+        "mega"
+      ],
+      "bst": 610,
       "abilities": [
-        "ABILITY_PRANKSTER",
-        "ABILITY_FRISK",
-        "ABILITY_PICKPOCKET"
+        "ABILITY_NIGHT_TERROR",
+        "ABILITY_NIGHT_TERROR",
+        "ABILITY_NIGHT_TERROR"
       ],
       "regularAbilities": [
-        "ABILITY_PRANKSTER",
-        "ABILITY_FRISK"
+        "ABILITY_NIGHT_TERROR",
+        "ABILITY_NIGHT_TERROR"
       ],
       "hiddenAbilities": [
-        "ABILITY_PICKPOCKET"
+        "ABILITY_NIGHT_TERROR"
       ],
       "innates": [
         "ABILITY_UNNERVE",
@@ -288486,10 +288537,10 @@
       "stats": {
         "hp": 65,
         "atk": 60,
-        "def": 75,
-        "spa": 110,
-        "spd": 121,
-        "spe": 64
+        "def": 125,
+        "spa": 140,
+        "spd": 161,
+        "spe": 44
       },
       "evYield": {
         "spd": 2
@@ -288498,17 +288549,21 @@
         "EGG_GROUP_FAIRY",
         "EGG_GROUP_AMORPHOUS"
       ],
-      "categories": [],
-      "bst": 495,
+      "categories": [
+        "mega"
+      ],
+      "bst": 595,
       "abilities": [
-        "ABILITY_SWEET_VEIL",
-        "ABILITY_AROMA_VEIL"
+        "ABILITY_SWEET_FINALE",
+        "ABILITY_SWEET_FINALE",
+        "ABILITY_SWEET_FINALE"
       ],
       "regularAbilities": [
-        "ABILITY_SWEET_VEIL"
+        "ABILITY_SWEET_FINALE",
+        "ABILITY_SWEET_FINALE"
       ],
       "hiddenAbilities": [
-        "ABILITY_AROMA_VEIL"
+        "ABILITY_SWEET_FINALE"
       ],
       "innates": [
         "ABILITY_HEALER",
@@ -291116,11 +291171,11 @@
       ],
       "stats": {
         "hp": 122,
-        "atk": 130,
-        "def": 69,
+        "atk": 160,
+        "def": 99,
         "spa": 80,
-        "spd": 69,
-        "spe": 30
+        "spd": 99,
+        "spe": 40
       },
       "evYield": {
         "atk": 2
@@ -291129,17 +291184,21 @@
         "EGG_GROUP_FIELD",
         "EGG_GROUP_MINERAL"
       ],
-      "categories": [],
-      "bst": 500,
+      "categories": [
+        "mega"
+      ],
+      "bst": 600,
       "abilities": [
-        "ABILITY_SHEER_FORCE",
-        "ABILITY_HEAVY_METAL"
+        "ABILITY_STEELSURGE",
+        "ABILITY_STEELSURGE",
+        "ABILITY_STEELSURGE"
       ],
       "regularAbilities": [
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_STEELSURGE",
+        "ABILITY_STEELSURGE"
       ],
       "hiddenAbilities": [
-        "ABILITY_HEAVY_METAL"
+        "ABILITY_STEELSURGE"
       ],
       "innates": [
         "ABILITY_BATTLE_ARMOR",
@@ -292203,9 +292262,9 @@
       "stats": {
         "hp": 70,
         "atk": 95,
-        "def": 115,
-        "spa": 120,
-        "spd": 50,
+        "def": 145,
+        "spa": 140,
+        "spd": 100,
         "spe": 85
       },
       "evYield": {
@@ -292215,19 +292274,21 @@
         "EGG_GROUP_MINERAL",
         "EGG_GROUP_DRAGON"
       ],
-      "categories": [],
-      "bst": 535,
+      "categories": [
+        "mega"
+      ],
+      "bst": 635,
       "abilities": [
-        "ABILITY_LIGHT_METAL",
-        "ABILITY_HEAVY_METAL",
-        "ABILITY_STALWART"
+        "ABILITY_POWER_GRID",
+        "ABILITY_POWER_GRID",
+        "ABILITY_POWER_GRID"
       ],
       "regularAbilities": [
-        "ABILITY_LIGHT_METAL",
-        "ABILITY_HEAVY_METAL"
+        "ABILITY_POWER_GRID",
+        "ABILITY_POWER_GRID"
       ],
       "hiddenAbilities": [
-        "ABILITY_STALWART"
+        "ABILITY_POWER_GRID"
       ],
       "innates": [
         "ABILITY_BATTLE_ARMOR",
@@ -294607,10 +294668,10 @@
       ],
       "stats": {
         "hp": 100,
-        "atk": 130,
-        "def": 100,
+        "atk": 170,
+        "def": 130,
         "spa": 63,
-        "spd": 60,
+        "spd": 90,
         "spe": 97
       },
       "evYield": {
@@ -294621,16 +294682,22 @@
         "EGG_GROUP_HUMAN_LIKE"
       ],
       "categories": [
-        "legendary"
+        "legendary",
+        "mega"
       ],
-      "bst": 550,
+      "bst": 650,
       "abilities": [
-        "ABILITY_UNSEEN_FIST"
+        "ABILITY_UNSEEN_FORCE",
+        "ABILITY_UNSEEN_FORCE",
+        "ABILITY_UNSEEN_FORCE"
       ],
       "regularAbilities": [
-        "ABILITY_UNSEEN_FIST"
+        "ABILITY_UNSEEN_FORCE",
+        "ABILITY_UNSEEN_FORCE"
       ],
-      "hiddenAbilities": [],
+      "hiddenAbilities": [
+        "ABILITY_UNSEEN_FORCE"
+      ],
       "innates": [
         "ABILITY_INNER_FOCUS",
         "ABILITY_SCRAPPY",
@@ -294794,11 +294861,11 @@
       ],
       "stats": {
         "hp": 100,
-        "atk": 130,
-        "def": 100,
+        "atk": 150,
+        "def": 120,
         "spa": 63,
-        "spd": 60,
-        "spe": 97
+        "spd": 90,
+        "spe": 127
       },
       "evYield": {
         "atk": 3
@@ -294808,16 +294875,22 @@
         "EGG_GROUP_HUMAN_LIKE"
       ],
       "categories": [
-        "legendary"
+        "legendary",
+        "mega"
       ],
-      "bst": 550,
+      "bst": 650,
       "abilities": [
+        "ABILITY_UNSEEN_FIST",
+        "ABILITY_UNSEEN_FIST",
         "ABILITY_UNSEEN_FIST"
       ],
       "regularAbilities": [
+        "ABILITY_UNSEEN_FIST",
         "ABILITY_UNSEEN_FIST"
       ],
-      "hiddenAbilities": [],
+      "hiddenAbilities": [
+        "ABILITY_UNSEEN_FIST"
+      ],
       "innates": [
         "ABILITY_INNER_FOCUS",
         "ABILITY_SCRAPPY",
@@ -339968,12 +340041,6 @@
             "name": "Garbodor",
             "dex": 569,
             "sprite": "sprites/pokemon/garbodor.png"
-          },
-          {
-            "species": "SPECIES_GARBODOR_GMAX",
-            "name": "Garbodor",
-            "dex": 569,
-            "sprite": "sprites/pokemon/garbodor_gmax.png"
           }
         ],
         "innate": [
@@ -341632,12 +341699,6 @@
             "sprite": "sprites/pokemon/sandaconda.png"
           },
           {
-            "species": "SPECIES_SANDACONDA_GMAX",
-            "name": "Sandaconda",
-            "dex": 844,
-            "sprite": "sprites/pokemon/sandaconda_gmax.png"
-          },
-          {
             "species": "SPECIES_WIGLETT",
             "name": "Wiglett",
             "dex": 960,
@@ -341840,12 +341901,6 @@
             "name": "Pikachu",
             "dex": 25,
             "sprite": "sprites/pokemon/pikachu_starter.png"
-          },
-          {
-            "species": "SPECIES_PIKACHU_GMAX",
-            "name": "Pikachu",
-            "dex": 25,
-            "sprite": "sprites/pokemon/pikachu_gmax.png"
           },
           {
             "species": "SPECIES_RAICHU",
@@ -343726,12 +343781,6 @@
             "sprite": "sprites/pokemon/coalossal.png"
           },
           {
-            "species": "SPECIES_COALOSSAL_GMAX",
-            "name": "Coalossal",
-            "dex": 839,
-            "sprite": "sprites/pokemon/coalossal_gmax.png"
-          },
-          {
             "species": "SPECIES_SIZZLIPEDE",
             "name": "Sizzlipede",
             "dex": 850,
@@ -343742,12 +343791,6 @@
             "name": "Centiskorch",
             "dex": 851,
             "sprite": "sprites/pokemon/centiskorch.png"
-          },
-          {
-            "species": "SPECIES_CENTISKORCH_GMAX",
-            "name": "Centiskorch",
-            "dex": 851,
-            "sprite": "sprites/pokemon/centiskorch_gmax.png"
           },
           {
             "species": "SPECIES_CHARCADET",
@@ -346808,12 +346851,6 @@
             "sprite": "sprites/pokemon/pikachu_starter.png"
           },
           {
-            "species": "SPECIES_PIKACHU_GMAX",
-            "name": "Pikachu",
-            "dex": 25,
-            "sprite": "sprites/pokemon/pikachu_gmax.png"
-          },
-          {
             "species": "SPECIES_RAICHU",
             "name": "Raichu",
             "dex": 26,
@@ -347444,12 +347481,6 @@
             "sprite": "sprites/pokemon/drednaw.png"
           },
           {
-            "species": "SPECIES_DREDNAW_GMAX",
-            "name": "Drednaw",
-            "dex": 834,
-            "sprite": "sprites/pokemon/drednaw_gmax.png"
-          },
-          {
             "species": "SPECIES_ARROKUDA",
             "name": "Arrokuda",
             "dex": 846,
@@ -347580,12 +347611,6 @@
             "name": "Venusaur",
             "dex": 3,
             "sprite": "sprites/pokemon/venusaur.png"
-          },
-          {
-            "species": "SPECIES_VENUSAUR_GMAX",
-            "name": "Venusaur",
-            "dex": 3,
-            "sprite": "sprites/pokemon/venusaur_gmax.png"
           },
           {
             "species": "SPECIES_ODDISH",
@@ -349591,12 +349616,6 @@
             "sprite": "sprites/pokemon/blastoise.png"
           },
           {
-            "species": "SPECIES_BLASTOISE_GMAX",
-            "name": "Blastoise",
-            "dex": 9,
-            "sprite": "sprites/pokemon/blastoise_gmax.png"
-          },
-          {
             "species": "SPECIES_TENTACOOL",
             "name": "Tentacool",
             "dex": 72,
@@ -349847,6 +349866,12 @@
             "name": "Gigalith",
             "dex": 526,
             "sprite": "sprites/pokemon/gigalith.png"
+          },
+          {
+            "species": "SPECIES_SANDACONDA_GMAX",
+            "name": "Sandaconda",
+            "dex": 844,
+            "sprite": "sprites/pokemon/sandaconda_gmax.png"
           }
         ],
         "innate": []
@@ -350058,12 +350083,6 @@
             "sprite": "sprites/pokemon/corviknight.png"
           },
           {
-            "species": "SPECIES_CORVIKNIGHT_GMAX",
-            "name": "Corviknight",
-            "dex": 823,
-            "sprite": "sprites/pokemon/corviknight_gmax.png"
-          },
-          {
             "species": "SPECIES_ETERNATUS",
             "name": "Eternatus",
             "dex": 890,
@@ -350190,12 +350209,6 @@
             "sprite": "sprites/pokemon/snorlax.png"
           },
           {
-            "species": "SPECIES_SNORLAX_GMAX",
-            "name": "Snorlax",
-            "dex": 143,
-            "sprite": "sprites/pokemon/snorlax_gmax.png"
-          },
-          {
             "species": "SPECIES_MARILL",
             "name": "Marill",
             "dex": 183,
@@ -350310,12 +350323,6 @@
             "sprite": "sprites/pokemon/appletun.png"
           },
           {
-            "species": "SPECIES_APPLETUN_GMAX",
-            "name": "Appletun",
-            "dex": 842,
-            "sprite": "sprites/pokemon/appletun_gmax.png"
-          },
-          {
             "species": "SPECIES_OINKOLOGNE_M",
             "name": "Oinkologne",
             "dex": 916,
@@ -350364,6 +350371,12 @@
             "name": "Tauros",
             "dex": 128,
             "sprite": "sprites/pokemon/tauros_paldea_aqua.png"
+          },
+          {
+            "species": "SPECIES_SNORLAX_GMAX",
+            "name": "Snorlax",
+            "dex": 143,
+            "sprite": "sprites/pokemon/snorlax_gmax.png"
           },
           {
             "species": "SPECIES_WAILMER",
@@ -350718,12 +350731,6 @@
             "sprite": "sprites/pokemon/coalossal.png"
           },
           {
-            "species": "SPECIES_COALOSSAL_GMAX",
-            "name": "Coalossal",
-            "dex": 839,
-            "sprite": "sprites/pokemon/coalossal_gmax.png"
-          },
-          {
             "species": "SPECIES_SIZZLIPEDE",
             "name": "Sizzlipede",
             "dex": 850,
@@ -350734,12 +350741,6 @@
             "name": "Centiskorch",
             "dex": 851,
             "sprite": "sprites/pokemon/centiskorch.png"
-          },
-          {
-            "species": "SPECIES_CENTISKORCH_GMAX",
-            "name": "Centiskorch",
-            "dex": 851,
-            "sprite": "sprites/pokemon/centiskorch_gmax.png"
           },
           {
             "species": "SPECIES_CHARCADET",
@@ -350766,6 +350767,12 @@
             "name": "Charizard",
             "dex": 6,
             "sprite": "sprites/pokemon/charizard_mega_x.png"
+          },
+          {
+            "species": "SPECIES_CHARIZARD_GMAX",
+            "name": "Charizard",
+            "dex": 6,
+            "sprite": "sprites/pokemon/charizard_gmax.png"
           },
           {
             "species": "SPECIES_CYNDAQUIL",
@@ -350974,12 +350981,6 @@
             "name": "Eevee",
             "dex": 133,
             "sprite": "sprites/pokemon/eevee_starter.png"
-          },
-          {
-            "species": "SPECIES_EEVEE_GMAX",
-            "name": "Eevee",
-            "dex": 133,
-            "sprite": "sprites/pokemon/eevee_gmax.png"
           },
           {
             "species": "SPECIES_SENTRET",
@@ -351594,12 +351595,6 @@
             "sprite": "sprites/pokemon/kingler.png"
           },
           {
-            "species": "SPECIES_KINGLER_GMAX",
-            "name": "Kingler",
-            "dex": 99,
-            "sprite": "sprites/pokemon/kingler_gmax.png"
-          },
-          {
             "species": "SPECIES_PINSIR",
             "name": "Pinsir",
             "dex": 127,
@@ -351730,12 +351725,6 @@
             "name": "Meowth",
             "dex": 52,
             "sprite": "sprites/pokemon/meowth_galar.png"
-          },
-          {
-            "species": "SPECIES_MEOWTH_GMAX",
-            "name": "Meowth",
-            "dex": 52,
-            "sprite": "sprites/pokemon/meowth_gmax.png"
           },
           {
             "species": "SPECIES_AIPOM",
@@ -352097,12 +352086,6 @@
             "sprite": "sprites/pokemon/flapple.png"
           },
           {
-            "species": "SPECIES_FLAPPLE_GMAX",
-            "name": "Flapple",
-            "dex": 841,
-            "sprite": "sprites/pokemon/flapple_gmax.png"
-          },
-          {
             "species": "SPECIES_DRACOZOLT",
             "name": "Dracozolt",
             "dex": 880,
@@ -352419,12 +352402,6 @@
             "name": "Toxtricity",
             "dex": 849,
             "sprite": "sprites/pokemon/toxtricity_amped.png"
-          },
-          {
-            "species": "SPECIES_TOXTRICITY_AMPED_GMAX",
-            "name": "Toxtricity",
-            "dex": 849,
-            "sprite": "sprites/pokemon/toxtricity_amped_gmax.png"
           }
         ],
         "innate": [
@@ -352635,12 +352612,6 @@
             "name": "Toxtricity",
             "dex": 849,
             "sprite": "sprites/pokemon/toxtricity_low_key.png"
-          },
-          {
-            "species": "SPECIES_TOXTRICITY_LOW_KEY_GMAX",
-            "name": "Toxtricity",
-            "dex": 849,
-            "sprite": "sprites/pokemon/toxtricity_low_key_gmax.png"
           }
         ],
         "innate": [
@@ -353090,12 +353061,6 @@
             "name": "Sandaconda",
             "dex": 844,
             "sprite": "sprites/pokemon/sandaconda.png"
-          },
-          {
-            "species": "SPECIES_SANDACONDA_GMAX",
-            "name": "Sandaconda",
-            "dex": 844,
-            "sprite": "sprites/pokemon/sandaconda_gmax.png"
           },
           {
             "species": "SPECIES_RELLOR",
@@ -353758,12 +353723,6 @@
             "sprite": "sprites/pokemon/venusaur.png"
           },
           {
-            "species": "SPECIES_VENUSAUR_GMAX",
-            "name": "Venusaur",
-            "dex": 3,
-            "sprite": "sprites/pokemon/venusaur_gmax.png"
-          },
-          {
             "species": "SPECIES_CHIKORITA",
             "name": "Chikorita",
             "dex": 152,
@@ -353968,12 +353927,6 @@
             "sprite": "sprites/pokemon/charizard.png"
           },
           {
-            "species": "SPECIES_CHARIZARD_GMAX",
-            "name": "Charizard",
-            "dex": 6,
-            "sprite": "sprites/pokemon/charizard_gmax.png"
-          },
-          {
             "species": "SPECIES_CYNDAQUIL",
             "name": "Cyndaquil",
             "dex": 155,
@@ -354176,12 +354129,6 @@
             "name": "Blastoise",
             "dex": 9,
             "sprite": "sprites/pokemon/blastoise.png"
-          },
-          {
-            "species": "SPECIES_BLASTOISE_GMAX",
-            "name": "Blastoise",
-            "dex": 9,
-            "sprite": "sprites/pokemon/blastoise_gmax.png"
           },
           {
             "species": "SPECIES_TOTODILE",
@@ -354541,12 +354488,6 @@
             "name": "Orbeetle",
             "dex": 826,
             "sprite": "sprites/pokemon/orbeetle.png"
-          },
-          {
-            "species": "SPECIES_ORBEETLE_GMAX",
-            "name": "Orbeetle",
-            "dex": 826,
-            "sprite": "sprites/pokemon/orbeetle_gmax.png"
           },
           {
             "species": "SPECIES_KLEAVOR",
@@ -355297,12 +355238,6 @@
             "name": "Centiskorch",
             "dex": 851,
             "sprite": "sprites/pokemon/centiskorch.png"
-          },
-          {
-            "species": "SPECIES_CENTISKORCH_GMAX",
-            "name": "Centiskorch",
-            "dex": 851,
-            "sprite": "sprites/pokemon/centiskorch_gmax.png"
           }
         ],
         "innate": [
@@ -355404,12 +355339,6 @@
             "name": "Kingler",
             "dex": 99,
             "sprite": "sprites/pokemon/kingler.png"
-          },
-          {
-            "species": "SPECIES_KINGLER_GMAX",
-            "name": "Kingler",
-            "dex": 99,
-            "sprite": "sprites/pokemon/kingler_gmax.png"
           },
           {
             "species": "SPECIES_LAPRAS",
@@ -355548,12 +355477,6 @@
             "name": "Drednaw",
             "dex": 834,
             "sprite": "sprites/pokemon/drednaw.png"
-          },
-          {
-            "species": "SPECIES_DREDNAW_GMAX",
-            "name": "Drednaw",
-            "dex": 834,
-            "sprite": "sprites/pokemon/drednaw_gmax.png"
           },
           {
             "species": "SPECIES_KLAWF",
@@ -356042,12 +355965,6 @@
             "sprite": "sprites/pokemon/machamp.png"
           },
           {
-            "species": "SPECIES_MACHAMP_GMAX",
-            "name": "Machamp",
-            "dex": 68,
-            "sprite": "sprites/pokemon/machamp_gmax.png"
-          },
-          {
             "species": "SPECIES_FARFETCHD_GALAR",
             "name": "Farfetch'd",
             "dex": 83,
@@ -356522,22 +356439,10 @@
             "sprite": "sprites/pokemon/flapple.png"
           },
           {
-            "species": "SPECIES_FLAPPLE_GMAX",
-            "name": "Flapple",
-            "dex": 841,
-            "sprite": "sprites/pokemon/flapple_gmax.png"
-          },
-          {
             "species": "SPECIES_APPLETUN",
             "name": "Appletun",
             "dex": 842,
             "sprite": "sprites/pokemon/appletun.png"
-          },
-          {
-            "species": "SPECIES_APPLETUN_GMAX",
-            "name": "Appletun",
-            "dex": 842,
-            "sprite": "sprites/pokemon/appletun_gmax.png"
           },
           {
             "species": "SPECIES_OINKOLOGNE_M",
@@ -357344,12 +357249,6 @@
             "sprite": "sprites/pokemon/melmetal.png"
           },
           {
-            "species": "SPECIES_MELMETAL_GMAX",
-            "name": "Melmetal",
-            "dex": 809,
-            "sprite": "sprites/pokemon/melmetal_gmax.png"
-          },
-          {
             "species": "SPECIES_PAWMI",
             "name": "Pawmi",
             "dex": 921,
@@ -357369,6 +357268,12 @@
           }
         ],
         "innate": [
+          {
+            "species": "SPECIES_MACHAMP_GMAX",
+            "name": "Machamp",
+            "dex": 68,
+            "sprite": "sprites/pokemon/machamp_gmax.png"
+          },
           {
             "species": "SPECIES_SCIZOR",
             "name": "Scizor",
@@ -357570,12 +357475,6 @@
             "name": "Eevee",
             "dex": 133,
             "sprite": "sprites/pokemon/eevee_starter.png"
-          },
-          {
-            "species": "SPECIES_EEVEE_GMAX",
-            "name": "Eevee",
-            "dex": 133,
-            "sprite": "sprites/pokemon/eevee_gmax.png"
           },
           {
             "species": "SPECIES_CORPHISH",
@@ -358196,12 +358095,6 @@
             "sprite": "sprites/pokemon/charizard.png"
           },
           {
-            "species": "SPECIES_CHARIZARD_GMAX",
-            "name": "Charizard",
-            "dex": 6,
-            "sprite": "sprites/pokemon/charizard_gmax.png"
-          },
-          {
             "species": "SPECIES_SUNKERN",
             "name": "Sunkern",
             "dex": 191,
@@ -358638,12 +358531,6 @@
             "name": "Inteleon",
             "dex": 818,
             "sprite": "sprites/pokemon/inteleon.png"
-          },
-          {
-            "species": "SPECIES_INTELEON_GMAX",
-            "name": "Inteleon",
-            "dex": 818,
-            "sprite": "sprites/pokemon/inteleon_gmax.png"
           }
         ],
         "innate": [
@@ -359162,12 +359049,6 @@
             "sprite": "sprites/pokemon/meowth_alola.png"
           },
           {
-            "species": "SPECIES_MEOWTH_GMAX",
-            "name": "Meowth",
-            "dex": 52,
-            "sprite": "sprites/pokemon/meowth_gmax.png"
-          },
-          {
             "species": "SPECIES_PERSIAN",
             "name": "Persian",
             "dex": 53,
@@ -359274,18 +359155,6 @@
             "name": "Toxtricity",
             "dex": 849,
             "sprite": "sprites/pokemon/toxtricity_low_key.png"
-          },
-          {
-            "species": "SPECIES_TOXTRICITY_AMPED_GMAX",
-            "name": "Toxtricity",
-            "dex": 849,
-            "sprite": "sprites/pokemon/toxtricity_amped_gmax.png"
-          },
-          {
-            "species": "SPECIES_TOXTRICITY_LOW_KEY_GMAX",
-            "name": "Toxtricity",
-            "dex": 849,
-            "sprite": "sprites/pokemon/toxtricity_low_key_gmax.png"
           },
           {
             "species": "SPECIES_CLOBBOPUS",
@@ -360257,12 +360126,6 @@
             "name": "Garbodor",
             "dex": 569,
             "sprite": "sprites/pokemon/garbodor.png"
-          },
-          {
-            "species": "SPECIES_GARBODOR_GMAX",
-            "name": "Garbodor",
-            "dex": 569,
-            "sprite": "sprites/pokemon/garbodor_gmax.png"
           }
         ],
         "innate": [
@@ -360343,12 +360206,6 @@
             "sprite": "sprites/pokemon/eevee_starter.png"
           },
           {
-            "species": "SPECIES_EEVEE_GMAX",
-            "name": "Eevee",
-            "dex": 133,
-            "sprite": "sprites/pokemon/eevee_gmax.png"
-          },
-          {
             "species": "SPECIES_BARBOACH",
             "name": "Barboach",
             "dex": 339,
@@ -360413,12 +360270,6 @@
             "name": "Hatterene",
             "dex": 858,
             "sprite": "sprites/pokemon/hatterene.png"
-          },
-          {
-            "species": "SPECIES_HATTERENE_GMAX",
-            "name": "Hatterene",
-            "dex": 858,
-            "sprite": "sprites/pokemon/hatterene_gmax.png"
           },
           {
             "species": "SPECIES_FLITTLE",
@@ -360827,12 +360678,6 @@
             "name": "Butterfree",
             "dex": 12,
             "sprite": "sprites/pokemon/butterfree.png"
-          },
-          {
-            "species": "SPECIES_BUTTERFREE_GMAX",
-            "name": "Butterfree",
-            "dex": 12,
-            "sprite": "sprites/pokemon/butterfree_gmax.png"
           },
           {
             "species": "SPECIES_VENONAT",
@@ -362957,12 +362802,6 @@
             "sprite": "sprites/pokemon/orbeetle.png"
           },
           {
-            "species": "SPECIES_ORBEETLE_GMAX",
-            "name": "Orbeetle",
-            "dex": 826,
-            "sprite": "sprites/pokemon/orbeetle_gmax.png"
-          },
-          {
             "species": "SPECIES_IMPIDIMP",
             "name": "Impidimp",
             "dex": 859,
@@ -362979,12 +362818,6 @@
             "name": "Grimmsnarl",
             "dex": 861,
             "sprite": "sprites/pokemon/grimmsnarl.png"
-          },
-          {
-            "species": "SPECIES_GRIMMSNARL_GMAX",
-            "name": "Grimmsnarl",
-            "dex": 861,
-            "sprite": "sprites/pokemon/grimmsnarl_gmax.png"
           },
           {
             "species": "SPECIES_WYRDEER",
@@ -363125,12 +362958,6 @@
             "name": "Charizard",
             "dex": 6,
             "sprite": "sprites/pokemon/charizard_mega_x.png"
-          },
-          {
-            "species": "SPECIES_CHARIZARD_GMAX",
-            "name": "Charizard",
-            "dex": 6,
-            "sprite": "sprites/pokemon/charizard_gmax.png"
           },
           {
             "species": "SPECIES_MAROWAK",
@@ -363410,12 +363237,6 @@
             "sprite": "sprites/pokemon/grimmsnarl.png"
           },
           {
-            "species": "SPECIES_GRIMMSNARL_GMAX",
-            "name": "Grimmsnarl",
-            "dex": 861,
-            "sprite": "sprites/pokemon/grimmsnarl_gmax.png"
-          },
-          {
             "species": "SPECIES_SHROODLE",
             "name": "Shroodle",
             "dex": 944,
@@ -363590,12 +363411,6 @@
             "sprite": "sprites/pokemon/kingler.png"
           },
           {
-            "species": "SPECIES_KINGLER_GMAX",
-            "name": "Kingler",
-            "dex": 99,
-            "sprite": "sprites/pokemon/kingler_gmax.png"
-          },
-          {
             "species": "SPECIES_TAUROS",
             "name": "Tauros",
             "dex": 128,
@@ -363752,12 +363567,6 @@
             "sprite": "sprites/pokemon/copperajah.png"
           },
           {
-            "species": "SPECIES_COPPERAJAH_GMAX",
-            "name": "Copperajah",
-            "dex": 879,
-            "sprite": "sprites/pokemon/copperajah_gmax.png"
-          },
-          {
             "species": "SPECIES_KLEAVOR",
             "name": "Kleavor",
             "dex": 900,
@@ -363812,12 +363621,6 @@
             "name": "Machamp",
             "dex": 68,
             "sprite": "sprites/pokemon/machamp.png"
-          },
-          {
-            "species": "SPECIES_MACHAMP_GMAX",
-            "name": "Machamp",
-            "dex": 68,
-            "sprite": "sprites/pokemon/machamp_gmax.png"
           },
           {
             "species": "SPECIES_MAROWAK_ALOLA",
@@ -364003,12 +363806,6 @@
             "sprite": "sprites/pokemon/meowth_galar.png"
           },
           {
-            "species": "SPECIES_MEOWTH_GMAX",
-            "name": "Meowth",
-            "dex": 52,
-            "sprite": "sprites/pokemon/meowth_gmax.png"
-          },
-          {
             "species": "SPECIES_PERSIAN",
             "name": "Persian",
             "dex": 53,
@@ -364127,12 +363924,6 @@
             "name": "Corviknight",
             "dex": 823,
             "sprite": "sprites/pokemon/corviknight.png"
-          },
-          {
-            "species": "SPECIES_CORVIKNIGHT_GMAX",
-            "name": "Corviknight",
-            "dex": 823,
-            "sprite": "sprites/pokemon/corviknight_gmax.png"
           },
           {
             "species": "SPECIES_CALYREX",
@@ -364504,12 +364295,6 @@
             "name": "Gengar",
             "dex": 94,
             "sprite": "sprites/pokemon/gengar.png"
-          },
-          {
-            "species": "SPECIES_GENGAR_GMAX",
-            "name": "Gengar",
-            "dex": 94,
-            "sprite": "sprites/pokemon/gengar_gmax.png"
           },
           {
             "species": "SPECIES_MAROWAK_ALOLA",
@@ -364942,12 +364727,6 @@
             "name": "Hatterene",
             "dex": 858,
             "sprite": "sprites/pokemon/hatterene.png"
-          },
-          {
-            "species": "SPECIES_HATTERENE_GMAX",
-            "name": "Hatterene",
-            "dex": 858,
-            "sprite": "sprites/pokemon/hatterene_gmax.png"
           }
         ],
         "innate": [
@@ -366072,12 +365851,6 @@
             "sprite": "sprites/pokemon/garbodor.png"
           },
           {
-            "species": "SPECIES_GARBODOR_GMAX",
-            "name": "Garbodor",
-            "dex": 569,
-            "sprite": "sprites/pokemon/garbodor_gmax.png"
-          },
-          {
             "species": "SPECIES_VANILLITE",
             "name": "Vanillite",
             "dex": 582,
@@ -366209,22 +365982,10 @@
             "sprite": "sprites/pokemon/copperajah.png"
           },
           {
-            "species": "SPECIES_COPPERAJAH_GMAX",
-            "name": "Copperajah",
-            "dex": 879,
-            "sprite": "sprites/pokemon/copperajah_gmax.png"
-          },
-          {
             "species": "SPECIES_DURALUDON",
             "name": "Duraludon",
             "dex": 884,
             "sprite": "sprites/pokemon/duraludon.png"
-          },
-          {
-            "species": "SPECIES_DURALUDON_GMAX",
-            "name": "Duraludon",
-            "dex": 884,
-            "sprite": "sprites/pokemon/duraludon_gmax.png"
           }
         ],
         "innate": [
@@ -366309,12 +366070,6 @@
             "name": "Duraludon",
             "dex": 884,
             "sprite": "sprites/pokemon/duraludon.png"
-          },
-          {
-            "species": "SPECIES_DURALUDON_GMAX",
-            "name": "Duraludon",
-            "dex": 884,
-            "sprite": "sprites/pokemon/duraludon_gmax.png"
           }
         ],
         "innate": [
@@ -366733,12 +366488,6 @@
             "name": "Orbeetle",
             "dex": 826,
             "sprite": "sprites/pokemon/orbeetle.png"
-          },
-          {
-            "species": "SPECIES_ORBEETLE_GMAX",
-            "name": "Orbeetle",
-            "dex": 826,
-            "sprite": "sprites/pokemon/orbeetle_gmax.png"
           },
           {
             "species": "SPECIES_RABSCA",
@@ -369654,12 +369403,6 @@
             "sprite": "sprites/pokemon/grimmsnarl.png"
           },
           {
-            "species": "SPECIES_GRIMMSNARL_GMAX",
-            "name": "Grimmsnarl",
-            "dex": 861,
-            "sprite": "sprites/pokemon/grimmsnarl_gmax.png"
-          },
-          {
             "species": "SPECIES_SHROODLE",
             "name": "Shroodle",
             "dex": 944,
@@ -370521,12 +370264,6 @@
             "name": "Alcremie",
             "dex": 869,
             "sprite": "sprites/pokemon/alcremie_ribbon_rainbow_swirl.png"
-          },
-          {
-            "species": "SPECIES_ALCREMIE_GMAX",
-            "name": "Alcremie",
-            "dex": 869,
-            "sprite": "sprites/pokemon/alcremie_gmax.png"
           },
           {
             "species": "SPECIES_OINKOLOGNE_F",
@@ -371640,12 +371377,6 @@
             "sprite": "sprites/pokemon/rhydon.png"
           },
           {
-            "species": "SPECIES_SNORLAX_GMAX",
-            "name": "Snorlax",
-            "dex": 143,
-            "sprite": "sprites/pokemon/snorlax_gmax.png"
-          },
-          {
             "species": "SPECIES_OCTILLERY",
             "name": "Octillery",
             "dex": 224,
@@ -371942,12 +371673,6 @@
             "name": "Drednaw",
             "dex": 834,
             "sprite": "sprites/pokemon/drednaw.png"
-          },
-          {
-            "species": "SPECIES_DREDNAW_GMAX",
-            "name": "Drednaw",
-            "dex": 834,
-            "sprite": "sprites/pokemon/drednaw_gmax.png"
           },
           {
             "species": "SPECIES_BOLTUND",
@@ -372722,12 +372447,6 @@
             "name": "Alcremie",
             "dex": 869,
             "sprite": "sprites/pokemon/alcremie_ribbon_rainbow_swirl.png"
-          },
-          {
-            "species": "SPECIES_ALCREMIE_GMAX",
-            "name": "Alcremie",
-            "dex": 869,
-            "sprite": "sprites/pokemon/alcremie_gmax.png"
           }
         ],
         "innate": [
@@ -375754,12 +375473,6 @@
             "sprite": "sprites/pokemon/lapras.png"
           },
           {
-            "species": "SPECIES_LAPRAS_GMAX",
-            "name": "Lapras",
-            "dex": 131,
-            "sprite": "sprites/pokemon/lapras_gmax.png"
-          },
-          {
             "species": "SPECIES_POLITOED",
             "name": "Politoed",
             "dex": 186,
@@ -376629,6 +376342,12 @@
       "usage": {
         "base": [
           {
+            "species": "SPECIES_EEVEE_GMAX",
+            "name": "Eevee",
+            "dex": 133,
+            "sprite": "sprites/pokemon/eevee_gmax.png"
+          },
+          {
             "species": "SPECIES_STUFFUL",
             "name": "Stufful",
             "dex": 759,
@@ -376666,12 +376385,6 @@
           }
         ],
         "innate": [
-          {
-            "species": "SPECIES_EEVEE_GMAX",
-            "name": "Eevee",
-            "dex": 133,
-            "sprite": "sprites/pokemon/eevee_gmax.png"
-          },
           {
             "species": "SPECIES_MAREEP",
             "name": "Mareep",
@@ -377524,6 +377237,12 @@
       "usage": {
         "base": [
           {
+            "species": "SPECIES_VENUSAUR_GMAX",
+            "name": "Venusaur",
+            "dex": 3,
+            "sprite": "sprites/pokemon/venusaur_gmax.png"
+          },
+          {
             "species": "SPECIES_TAPU_BULU",
             "name": "Tapu Bulu",
             "dex": 787,
@@ -377546,12 +377265,6 @@
             "name": "Rillaboom",
             "dex": 812,
             "sprite": "sprites/pokemon/rillaboom.png"
-          },
-          {
-            "species": "SPECIES_RILLABOOM_GMAX",
-            "name": "Rillaboom",
-            "dex": 812,
-            "sprite": "sprites/pokemon/rillaboom_gmax.png"
           }
         ],
         "innate": [
@@ -377869,12 +377582,6 @@
             "name": "Cinderace",
             "dex": 815,
             "sprite": "sprites/pokemon/cinderace.png"
-          },
-          {
-            "species": "SPECIES_CINDERACE_GMAX",
-            "name": "Cinderace",
-            "dex": 815,
-            "sprite": "sprites/pokemon/cinderace_gmax.png"
           }
         ],
         "innate": []
@@ -378029,12 +377736,6 @@
             "name": "Corviknight",
             "dex": 823,
             "sprite": "sprites/pokemon/corviknight.png"
-          },
-          {
-            "species": "SPECIES_CORVIKNIGHT_GMAX",
-            "name": "Corviknight",
-            "dex": 823,
-            "sprite": "sprites/pokemon/corviknight_gmax.png"
           }
         ],
         "innate": [
@@ -378112,12 +377813,6 @@
             "name": "Duraludon",
             "dex": 884,
             "sprite": "sprites/pokemon/duraludon.png"
-          },
-          {
-            "species": "SPECIES_DURALUDON_GMAX",
-            "name": "Duraludon",
-            "dex": 884,
-            "sprite": "sprites/pokemon/duraludon_gmax.png"
           },
           {
             "species": "SPECIES_ARCHALUDON",
@@ -378213,18 +377908,6 @@
             "name": "Toxtricity",
             "dex": 849,
             "sprite": "sprites/pokemon/toxtricity_low_key.png"
-          },
-          {
-            "species": "SPECIES_TOXTRICITY_AMPED_GMAX",
-            "name": "Toxtricity",
-            "dex": 849,
-            "sprite": "sprites/pokemon/toxtricity_amped_gmax.png"
-          },
-          {
-            "species": "SPECIES_TOXTRICITY_LOW_KEY_GMAX",
-            "name": "Toxtricity",
-            "dex": 849,
-            "sprite": "sprites/pokemon/toxtricity_low_key_gmax.png"
           }
         ],
         "innate": [
@@ -378321,12 +378004,6 @@
             "name": "Sandaconda",
             "dex": 844,
             "sprite": "sprites/pokemon/sandaconda.png"
-          },
-          {
-            "species": "SPECIES_SANDACONDA_GMAX",
-            "name": "Sandaconda",
-            "dex": 844,
-            "sprite": "sprites/pokemon/sandaconda_gmax.png"
           }
         ],
         "innate": [
@@ -378437,22 +378114,10 @@
             "sprite": "sprites/pokemon/flapple.png"
           },
           {
-            "species": "SPECIES_FLAPPLE_GMAX",
-            "name": "Flapple",
-            "dex": 841,
-            "sprite": "sprites/pokemon/flapple_gmax.png"
-          },
-          {
             "species": "SPECIES_APPLETUN",
             "name": "Appletun",
             "dex": 842,
             "sprite": "sprites/pokemon/appletun.png"
-          },
-          {
-            "species": "SPECIES_APPLETUN_GMAX",
-            "name": "Appletun",
-            "dex": 842,
-            "sprite": "sprites/pokemon/appletun_gmax.png"
           }
         ],
         "innate": [
@@ -378780,6 +378445,12 @@
             "name": "Weezing",
             "dex": 110,
             "sprite": "sprites/pokemon/weezing_galar.png"
+          },
+          {
+            "species": "SPECIES_GARBODOR_GMAX",
+            "name": "Garbodor",
+            "dex": 569,
+            "sprite": "sprites/pokemon/garbodor_gmax.png"
           }
         ],
         "innate": []
@@ -378952,12 +378623,6 @@
             "name": "Urshifu",
             "dex": 892,
             "sprite": "sprites/pokemon/urshifu_rapid_strike.png"
-          },
-          {
-            "species": "SPECIES_URSHIFU_SINGLE_STRIKE_GMAX",
-            "name": "Urshifu",
-            "dex": 892,
-            "sprite": "sprites/pokemon/urshifu_single_strike_gmax.png"
           },
           {
             "species": "SPECIES_URSHIFU_RAPID_STRIKE_GMAX",
@@ -390264,6 +389929,633 @@
           }
         ],
         "innate": []
+      }
+    },
+    "ABILITY_BLAZING_SURGE": {
+      "constant": "ABILITY_BLAZING_SURGE",
+      "name": "Blazing Surge",
+      "description": "Turns the ground into Fire Terrain for 5 turns on entry. Fire moves get stronger and Fire types heal a bit each turn.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "blazing-surge",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_CHARIZARD_GMAX",
+            "name": "Charizard",
+            "dex": 6,
+            "sprite": "sprites/pokemon/charizard_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_TIDAL_SURGE": {
+      "constant": "ABILITY_TIDAL_SURGE",
+      "name": "Tidal Surge",
+      "description": "Turns the ground into Water Terrain for 5 turns on entry. Water moves get stronger and Water types heal a bit each turn.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "tidal-surge",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_BLASTOISE_GMAX",
+            "name": "Blastoise",
+            "dex": 9,
+            "sprite": "sprites/pokemon/blastoise_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_OBSCURING_POLLEN": {
+      "constant": "ABILITY_OBSCURING_POLLEN",
+      "name": "Obscuring Pollen",
+      "description": "Takes 40% less damage each turn until it acts. The pollen settles once it has moved.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "obscuring-pollen",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_BUTTERFREE_GMAX",
+            "name": "Butterfree",
+            "dex": 12,
+            "sprite": "sprites/pokemon/butterfree_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_GIGAVOLT_BODY": {
+      "constant": "ABILITY_GIGAVOLT_BODY",
+      "name": "Gigavolt Body",
+      "description": "Its charged body takes 25% less damage from direct attacks.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "gigavolt-body",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_PIKACHU_GMAX",
+            "name": "Pikachu",
+            "dex": 25,
+            "sprite": "sprites/pokemon/pikachu_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_SEVEN_LIVES": {
+      "constant": "ABILITY_SEVEN_LIVES",
+      "name": "Seven Lives",
+      "description": "Up to 7 times a battle, a hit that would KO it leaves 1 HP and forces it to switch out. Needs a party member to escape.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "seven-lives",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_MEOWTH_GMAX",
+            "name": "Meowth",
+            "dex": 52,
+            "sprite": "sprites/pokemon/meowth_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_FOUR_ARMED_FOCUS": {
+      "constant": "ABILITY_FOUR_ARMED_FOCUS",
+      "name": "Four-Armed Focus",
+      "description": "Each punching move it uses raises its accuracy and critical-hit ratio by one stage before it hits.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "four-armed-focus",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_MACHAMP_GMAX",
+            "name": "Machamp",
+            "dex": 68,
+            "sprite": "sprites/pokemon/machamp_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_ABYSSAL_MAW": {
+      "constant": "ABILITY_ABYSSAL_MAW",
+      "name": "Abyssal Maw",
+      "description": "Ghost-type moves restore 25% of the damage they deal to this Pokemon.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "abyssal-maw",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_GENGAR_GMAX",
+            "name": "Gengar",
+            "dex": 94,
+            "sprite": "sprites/pokemon/gengar_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_FOAM_OVERFLOW": {
+      "constant": "ABILITY_FOAM_OVERFLOW",
+      "name": "Foam Overflow",
+      "description": "Water attacks set Foam Terrain for 3 turns. Slower grounded Pokemon move first and grounded Water types are cured of status.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "foam-overflow",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_KINGLER_GMAX",
+            "name": "Kingler",
+            "dex": 99,
+            "sprite": "sprites/pokemon/kingler_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_FROZEN_RESONANCE": {
+      "constant": "ABILITY_FROZEN_RESONANCE",
+      "name": "Frozen Resonance",
+      "description": "Normal-type moves become Ice-type and get a 20% boost. Using a sound move summons snow for 5 turns.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "frozen-resonance",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_LAPRAS_GMAX",
+            "name": "Lapras",
+            "dex": 131,
+            "sprite": "sprites/pokemon/lapras_gmax.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_HIBERNATE": {
+      "constant": "ABILITY_HIBERNATE",
+      "name": "Hibernate",
+      "description": "While asleep, it takes 25% less damage and restores 1/8 of its max HP at the end of each turn.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "hibernate",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_SNORLAX_GMAX",
+            "name": "Snorlax",
+            "dex": 143,
+            "sprite": "sprites/pokemon/snorlax_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_MELTDOWN": {
+      "constant": "ABILITY_MELTDOWN",
+      "name": "Meltdown",
+      "description": "Its punching moves inflict Torment, so the target can't use the same move twice in a row.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "meltdown",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_MELMETAL_GMAX",
+            "name": "Melmetal",
+            "dex": 809,
+            "sprite": "sprites/pokemon/melmetal_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_DRUM_SOLO": {
+      "constant": "ABILITY_DRUM_SOLO",
+      "name": "Drum Solo",
+      "description": "Grass-type moves ignore the target's defensive Abilities, Defense boosts, Reflect and Aurora Veil.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "drum-solo",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_RILLABOOM_GMAX",
+            "name": "Rillaboom",
+            "dex": 812,
+            "sprite": "sprites/pokemon/rillaboom_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_ACE_STRIKER": {
+      "constant": "ABILITY_ACE_STRIKER",
+      "name": "Ace Striker",
+      "description": "Ball and bomb moves deal 30% more damage and ignore the target's defensive Abilities.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "ace-striker",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_CINDERACE_GMAX",
+            "name": "Cinderace",
+            "dex": 815,
+            "sprite": "sprites/pokemon/cinderace_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_DEADEYE": {
+      "constant": "ABILITY_DEADEYE",
+      "name": "Deadeye",
+      "description": "Projectile moves always land a critical hit, but don't get Sniper's bonus.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "deadeye",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_INTELEON_GMAX",
+            "name": "Inteleon",
+            "dex": 818,
+            "sprite": "sprites/pokemon/inteleon_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_WIND_RAGE": {
+      "constant": "ABILITY_WIND_RAGE",
+      "name": "Wind Rage",
+      "description": "On entry, removes hazards on its side and the foe's screens, then sets up Tailwind for 4 turns.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "wind-rage",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_CORVIKNIGHT_GMAX",
+            "name": "Corviknight",
+            "dex": 823,
+            "sprite": "sprites/pokemon/corviknight_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_GRAVITAS": {
+      "constant": "ABILITY_GRAVITAS",
+      "name": "Gravitas",
+      "description": "Sets Gravity for 5 turns on entry. While Gravity is active, its moves deal 20% more to grounded targets.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "gravitas",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_ORBEETLE_GMAX",
+            "name": "Orbeetle",
+            "dex": 826,
+            "sprite": "sprites/pokemon/orbeetle_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_STONESURGE": {
+      "constant": "ABILITY_STONESURGE",
+      "name": "Stonesurge",
+      "description": "Scatters pointed stones on the foe's side every time it enters battle.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "stonesurge",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_DREDNAW_GMAX",
+            "name": "Drednaw",
+            "dex": 834,
+            "sprite": "sprites/pokemon/drednaw_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_TARTNESS": {
+      "constant": "ABILITY_TARTNESS",
+      "name": "Tartness",
+      "description": "Its moves can't miss and ignore evasion boosts. Foes' moves can still miss it.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "tartness",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_FLAPPLE_GMAX",
+            "name": "Flapple",
+            "dex": 841,
+            "sprite": "sprites/pokemon/flapple_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_SWEETNESS": {
+      "constant": "ABILITY_SWEETNESS",
+      "name": "Sweetness",
+      "description": "On entry, cures its own and its ally's status and sets Mist on its side for 5 turns.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "sweetness",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_APPLETUN_GMAX",
+            "name": "Appletun",
+            "dex": 842,
+            "sprite": "sprites/pokemon/appletun_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_STUN_SHOCK": {
+      "constant": "ABILITY_STUN_SHOCK",
+      "name": "Stun Shock",
+      "description": "Sound moves have a 30% chance to paralyze or poison the target.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "stun-shock",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_TOXTRICITY_AMPED_GMAX",
+            "name": "Toxtricity",
+            "dex": 849,
+            "sprite": "sprites/pokemon/toxtricity_amped_gmax.png"
+          },
+          {
+            "species": "SPECIES_TOXTRICITY_LOW_KEY_GMAX",
+            "name": "Toxtricity",
+            "dex": 849,
+            "sprite": "sprites/pokemon/toxtricity_low_key_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_CENTIFERNO": {
+      "constant": "ABILITY_CENTIFERNO",
+      "name": "Centiferno",
+      "description": "Damaging Fire-type moves trap the target in a Fire Spin for 4 turns. Reapplying only resets it.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "centiferno",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_CENTISKORCH_GMAX",
+            "name": "Centiskorch",
+            "dex": 851,
+            "sprite": "sprites/pokemon/centiskorch_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_NIGHT_TERROR": {
+      "constant": "ABILITY_NIGHT_TERROR",
+      "name": "Night Terror",
+      "description": "After entering, its first Dark or Fairy hit that is not resisted makes the target drowsy. One sleeper at a time.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "night-terror",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_GRIMMSNARL_GMAX",
+            "name": "Grimmsnarl",
+            "dex": 861,
+            "sprite": "sprites/pokemon/grimmsnarl_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_SWEET_FINALE": {
+      "constant": "ABILITY_SWEET_FINALE",
+      "name": "Sweet Finale",
+      "description": "Healing moves restore 25% more HP. Its ally recovers half of the HP it restores.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "sweet-finale",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_ALCREMIE_GMAX",
+            "name": "Alcremie",
+            "dex": 869,
+            "sprite": "sprites/pokemon/alcremie_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_STEELSURGE": {
+      "constant": "ABILITY_STEELSURGE",
+      "name": "Steelsurge",
+      "description": "Scatters sharp steel on the foe's side every time it enters battle. Damage depends on Steel matchups.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "steelsurge",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_COPPERAJAH_GMAX",
+            "name": "Copperajah",
+            "dex": 879,
+            "sprite": "sprites/pokemon/copperajah_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_POWER_GRID": {
+      "constant": "ABILITY_POWER_GRID",
+      "name": "Power Grid",
+      "description": "When hit by a special move, it stores a charge. Its next special move deals 30% more damage.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "power-grid",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_DURALUDON_GMAX",
+            "name": "Duraludon",
+            "dex": 884,
+            "sprite": "sprites/pokemon/duraludon_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_UNSEEN_FORCE": {
+      "constant": "ABILITY_UNSEEN_FORCE",
+      "name": "Unseen Force",
+      "description": "Contact moves bypass Protect, Reflect, Aurora Veil and the target's defensive Abilities.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "unseen-force",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_URSHIFU_SINGLE_STRIKE_GMAX",
+            "name": "Urshifu",
+            "dex": 892,
+            "sprite": "sprites/pokemon/urshifu_single_strike_gmax.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_EON_SHIFT": {
+      "constant": "ABILITY_EON_SHIFT",
+      "name": "Eon Shift",
+      "description": "After it is hit, it takes the type of the Eevee evolution that best resists that move's type.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "eon-shift",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_EEVEE_GMAX",
+            "name": "Eevee",
+            "dex": 133,
+            "sprite": "sprites/pokemon/eevee_gmax.png"
+          }
+        ]
       }
     }
   },
@@ -460375,7 +460667,7 @@
       "category": "Guide",
       "order": 7,
       "source": "guides/megaevolutions.md",
-      "content": "Each Pokemon must hold the item shown below and you must have the Mega Ring.\n\n## [Bondstone](https://eemeliri.github.io/soulgold/items/bondstone/)\n\n- [Raichu](https://eemeliri.github.io/soulgold/pokedex/raichu/) -> [Mega Raichu Y](https://eemeliri.github.io/soulgold/pokedex/raichu-mega-y/)\n- [Meganium](https://eemeliri.github.io/soulgold/pokedex/meganium/) -> [Mega Meganium](https://eemeliri.github.io/soulgold/pokedex/meganium-mega/)\n- [Typhlosion](https://eemeliri.github.io/soulgold/pokedex/typhlosion/) -> [Mega Typhlosion](https://eemeliri.github.io/soulgold/pokedex/typhlosion-mega/)\n- [Feraligatr](https://eemeliri.github.io/soulgold/pokedex/feraligatr/) -> [Mega Feraligatr](https://eemeliri.github.io/soulgold/pokedex/feraligatr-mega/)\n- [Blaziken](https://eemeliri.github.io/soulgold/pokedex/blaziken/) -> [Mega Blaziken](https://eemeliri.github.io/soulgold/pokedex/blaziken-mega/)\n- [Gardevoir](https://eemeliri.github.io/soulgold/pokedex/gardevoir/) -> [Mega Gardevoir Z](https://eemeliri.github.io/soulgold/pokedex/gardevoir-mega-z/)\n- [Primarina](https://eemeliri.github.io/soulgold/pokedex/primarina/) -> [Mega Primarina](https://eemeliri.github.io/soulgold/pokedex/primarina-mega/)\n- [Chesnaught](https://eemeliri.github.io/soulgold/pokedex/chesnaught/) -> [Mega Chesnaught](https://eemeliri.github.io/soulgold/pokedex/chesnaught-mega/)\n- [Delphox](https://eemeliri.github.io/soulgold/pokedex/delphox/) -> [Mega Delphox](https://eemeliri.github.io/soulgold/pokedex/delphox-mega/)\n- [Greninja](https://eemeliri.github.io/soulgold/pokedex/greninja/) -> [Mega Greninja](https://eemeliri.github.io/soulgold/pokedex/greninja-mega/)\n- [Meowscarada](https://eemeliri.github.io/soulgold/pokedex/meowscarada/) -> [Mega Meowscarada](https://eemeliri.github.io/soulgold/pokedex/meowscarada-mega/)\n- [Ogerpon (Teal Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-teal/) -> [Mega Ogerpon (Teal Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-teal-tera/)\n\n## [Bugtite](https://eemeliri.github.io/soulgold/items/bugtite/)\n\n- [Butterfree](https://eemeliri.github.io/soulgold/pokedex/butterfree/) -> [Mega Butterfree](https://eemeliri.github.io/soulgold/pokedex/butterfree-gmax/)\n- [Beedrill](https://eemeliri.github.io/soulgold/pokedex/beedrill/) -> [Mega Beedrill](https://eemeliri.github.io/soulgold/pokedex/beedrill-mega/)\n- [Scizor](https://eemeliri.github.io/soulgold/pokedex/scizor/) -> [Mega Scizor](https://eemeliri.github.io/soulgold/pokedex/scizor-mega/)\n- [Pinsir](https://eemeliri.github.io/soulgold/pokedex/pinsir/) -> [Mega Pinsir](https://eemeliri.github.io/soulgold/pokedex/pinsir-mega/)\n- [Heracross](https://eemeliri.github.io/soulgold/pokedex/heracross/) -> [Mega Heracross](https://eemeliri.github.io/soulgold/pokedex/heracross-mega/)\n- [Golisopod](https://eemeliri.github.io/soulgold/pokedex/golisopod/) -> [Mega Golisopod](https://eemeliri.github.io/soulgold/pokedex/golisopod-mega/)\n\n## [Cornerstone Mask](https://eemeliri.github.io/soulgold/items/cornerstone-mask/)\n\n- [Ogerpon (Cornerstone Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-cornerstone/) -> [Mega Ogerpon (Cornerstone Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-cornerstone-tera/)\n\n## [Darktite](https://eemeliri.github.io/soulgold/items/darktite/)\n\n- [Houndoom](https://eemeliri.github.io/soulgold/pokedex/houndoom/) -> [Mega Houndoom](https://eemeliri.github.io/soulgold/pokedex/houndoom-mega/)\n- [Sableye](https://eemeliri.github.io/soulgold/pokedex/sableye/) -> [Mega Sableye](https://eemeliri.github.io/soulgold/pokedex/sableye-mega/)\n- [Absol](https://eemeliri.github.io/soulgold/pokedex/absol/) -> [Mega Absol](https://eemeliri.github.io/soulgold/pokedex/absol-mega/)\n- [Darkrai](https://eemeliri.github.io/soulgold/pokedex/darkrai/) -> [Mega Darkrai](https://eemeliri.github.io/soulgold/pokedex/darkrai-mega/)\n- [Scrafty](https://eemeliri.github.io/soulgold/pokedex/scrafty/) -> [Mega Scrafty](https://eemeliri.github.io/soulgold/pokedex/scrafty-mega/)\n- [Malamar](https://eemeliri.github.io/soulgold/pokedex/malamar/) -> [Mega Malamar](https://eemeliri.github.io/soulgold/pokedex/malamar-mega/)\n\n## [Dragotite](https://eemeliri.github.io/soulgold/items/dragotite/)\n\n- [Charizard](https://eemeliri.github.io/soulgold/pokedex/charizard/) -> [Mega Charizard X](https://eemeliri.github.io/soulgold/pokedex/charizard-mega-x/)\n- [Dragonite](https://eemeliri.github.io/soulgold/pokedex/dragonite/) -> [Mega Dragonite](https://eemeliri.github.io/soulgold/pokedex/dragonite-mega/)\n- [Salamence](https://eemeliri.github.io/soulgold/pokedex/salamence/) -> [Mega Salamence](https://eemeliri.github.io/soulgold/pokedex/salamence-mega/)\n- [Latias](https://eemeliri.github.io/soulgold/pokedex/latias/) -> [Mega Latias](https://eemeliri.github.io/soulgold/pokedex/latias-mega/)\n- [Latios](https://eemeliri.github.io/soulgold/pokedex/latios/) -> [Mega Latios](https://eemeliri.github.io/soulgold/pokedex/latios-mega/)\n- [Garchomp](https://eemeliri.github.io/soulgold/pokedex/garchomp/) -> [Mega Garchomp Z](https://eemeliri.github.io/soulgold/pokedex/garchomp-mega-z/)\n- [Tatsugiri (Curly Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-curly/) -> [Mega Tatsugiri (Curly Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-curly-mega/)\n- [Tatsugiri (Droopy Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-droopy/) -> [Mega Tatsugiri (Droopy Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-droopy-mega/)\n- [Tatsugiri (Stretchy Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-stretchy/) -> [Mega Tatsugiri (Stretchy Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-stretchy-mega/)\n- [Baxcalibur](https://eemeliri.github.io/soulgold/pokedex/baxcalibur/) -> [Mega Baxcalibur](https://eemeliri.github.io/soulgold/pokedex/baxcalibur-mega/)\n\n## [Electrite](https://eemeliri.github.io/soulgold/items/electrite/)\n\n- [Raichu](https://eemeliri.github.io/soulgold/pokedex/raichu/) -> [Mega Raichu X](https://eemeliri.github.io/soulgold/pokedex/raichu-mega-x/)\n- [Ampharos](https://eemeliri.github.io/soulgold/pokedex/ampharos/) -> [Mega Ampharos](https://eemeliri.github.io/soulgold/pokedex/ampharos-mega/)\n- [Manectric](https://eemeliri.github.io/soulgold/pokedex/manectric/) -> [Mega Manectric](https://eemeliri.github.io/soulgold/pokedex/manectric-mega/)\n- [Eelektross](https://eemeliri.github.io/soulgold/pokedex/eelektross/) -> [Mega Eelektross](https://eemeliri.github.io/soulgold/pokedex/eelektross-mega/)\n- [Zeraora](https://eemeliri.github.io/soulgold/pokedex/zeraora/) -> [Mega Zeraora](https://eemeliri.github.io/soulgold/pokedex/zeraora-mega/)\n- [Toxtricity (Amped Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-amped/) -> [Mega Toxtricity (Amped Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-amped-gmax/)\n- [Toxtricity (Low Key Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-low-key/) -> [Mega Toxtricity (Low Key Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-low-key-gmax/)\n\n## [Fairytite](https://eemeliri.github.io/soulgold/items/fairytite/)\n\n- [Clefable](https://eemeliri.github.io/soulgold/pokedex/clefable/) -> [Mega Clefable](https://eemeliri.github.io/soulgold/pokedex/clefable-mega/)\n- [Gardevoir](https://eemeliri.github.io/soulgold/pokedex/gardevoir/) -> [Mega Gardevoir](https://eemeliri.github.io/soulgold/pokedex/gardevoir-mega/)\n- [Mawile](https://eemeliri.github.io/soulgold/pokedex/mawile/) -> [Mega Mawile](https://eemeliri.github.io/soulgold/pokedex/mawile-mega/)\n- [Altaria](https://eemeliri.github.io/soulgold/pokedex/altaria/) -> [Mega Altaria](https://eemeliri.github.io/soulgold/pokedex/altaria-mega/)\n- [Floette (Eternal Flower)](https://eemeliri.github.io/soulgold/pokedex/floette-eternal/) -> [Mega Floette](https://eemeliri.github.io/soulgold/pokedex/floette-mega/)\n- [Diancie](https://eemeliri.github.io/soulgold/pokedex/diancie/) -> [Mega Diancie](https://eemeliri.github.io/soulgold/pokedex/diancie-mega/)\n\n## [Fightite](https://eemeliri.github.io/soulgold/items/fightite/)\n\n- [Machamp](https://eemeliri.github.io/soulgold/pokedex/machamp/) -> [Mega Machamp](https://eemeliri.github.io/soulgold/pokedex/machamp-gmax/)\n- [Mewtwo](https://eemeliri.github.io/soulgold/pokedex/mewtwo/) -> [Mega Mewtwo X](https://eemeliri.github.io/soulgold/pokedex/mewtwo-mega-x/)\n- [Medicham](https://eemeliri.github.io/soulgold/pokedex/medicham/) -> [Mega Medicham](https://eemeliri.github.io/soulgold/pokedex/medicham-mega/)\n- [Lucario](https://eemeliri.github.io/soulgold/pokedex/lucario/) -> [Mega Lucario](https://eemeliri.github.io/soulgold/pokedex/lucario-mega/)\n- [Hawlucha](https://eemeliri.github.io/soulgold/pokedex/hawlucha/) -> [Mega Hawlucha](https://eemeliri.github.io/soulgold/pokedex/hawlucha-mega/)\n- [Falinks](https://eemeliri.github.io/soulgold/pokedex/falinks/) -> [Mega Falinks](https://eemeliri.github.io/soulgold/pokedex/falinks-mega/)\n\n## [Firetite](https://eemeliri.github.io/soulgold/items/firetite/)\n\n- [Charizard](https://eemeliri.github.io/soulgold/pokedex/charizard/) -> [Mega Charizard Y](https://eemeliri.github.io/soulgold/pokedex/charizard-mega-y/)\n- [Camerupt](https://eemeliri.github.io/soulgold/pokedex/camerupt/) -> [Mega Camerupt](https://eemeliri.github.io/soulgold/pokedex/camerupt-mega/)\n- [Heatran](https://eemeliri.github.io/soulgold/pokedex/heatran/) -> [Mega Heatran](https://eemeliri.github.io/soulgold/pokedex/heatran-mega/)\n- [Emboar](https://eemeliri.github.io/soulgold/pokedex/emboar/) -> [Mega Emboar](https://eemeliri.github.io/soulgold/pokedex/emboar-mega/)\n- [Pyroar](https://eemeliri.github.io/soulgold/pokedex/pyroar/) -> [Mega Pyroar](https://eemeliri.github.io/soulgold/pokedex/pyroar-mega/)\n- [Cinderace](https://eemeliri.github.io/soulgold/pokedex/cinderace/) -> [Mega Cinderace](https://eemeliri.github.io/soulgold/pokedex/cinderace-gmax/)\n- [Centiskorch](https://eemeliri.github.io/soulgold/pokedex/centiskorch/) -> [Mega Centiskorch](https://eemeliri.github.io/soulgold/pokedex/centiskorch-gmax/)\n\n## [Flyingite](https://eemeliri.github.io/soulgold/items/flyingite/)\n\n- [Pidgeot](https://eemeliri.github.io/soulgold/pokedex/pidgeot/) -> [Mega Pidgeot](https://eemeliri.github.io/soulgold/pokedex/pidgeot-mega/)\n- [Staraptor](https://eemeliri.github.io/soulgold/pokedex/staraptor/) -> [Mega Staraptor](https://eemeliri.github.io/soulgold/pokedex/staraptor-mega/)\n- [Corviknight](https://eemeliri.github.io/soulgold/pokedex/corviknight/) -> [Mega Corviknight](https://eemeliri.github.io/soulgold/pokedex/corviknight-gmax/)\n\n## [Ghostite](https://eemeliri.github.io/soulgold/items/ghostite/)\n\n- [Gengar](https://eemeliri.github.io/soulgold/pokedex/gengar/) -> [Mega Gengar](https://eemeliri.github.io/soulgold/pokedex/gengar-mega/)\n- [Banette](https://eemeliri.github.io/soulgold/pokedex/banette/) -> [Mega Banette](https://eemeliri.github.io/soulgold/pokedex/banette-mega/)\n- [Absol](https://eemeliri.github.io/soulgold/pokedex/absol/) -> [Mega Absol Z](https://eemeliri.github.io/soulgold/pokedex/absol-mega-z/)\n- [Chandelure](https://eemeliri.github.io/soulgold/pokedex/chandelure/) -> [Mega Chandelure](https://eemeliri.github.io/soulgold/pokedex/chandelure-mega/)\n\n## [Grasstite](https://eemeliri.github.io/soulgold/items/grasstite/)\n\n- [Venusaur](https://eemeliri.github.io/soulgold/pokedex/venusaur/) -> [Mega Venusaur](https://eemeliri.github.io/soulgold/pokedex/venusaur-mega/)\n- [Sceptile](https://eemeliri.github.io/soulgold/pokedex/sceptile/) -> [Mega Sceptile](https://eemeliri.github.io/soulgold/pokedex/sceptile-mega/)\n- [Rillaboom](https://eemeliri.github.io/soulgold/pokedex/rillaboom/) -> [Mega Rillaboom](https://eemeliri.github.io/soulgold/pokedex/rillaboom-gmax/)\n- [Scovillain](https://eemeliri.github.io/soulgold/pokedex/scovillain/) -> [Mega Scovillain](https://eemeliri.github.io/soulgold/pokedex/scovillain-mega/)\n\n## [Groundite](https://eemeliri.github.io/soulgold/items/groundite/)\n\n- [Garchomp](https://eemeliri.github.io/soulgold/pokedex/garchomp/) -> [Mega Garchomp](https://eemeliri.github.io/soulgold/pokedex/garchomp-mega/)\n- [Excadrill](https://eemeliri.github.io/soulgold/pokedex/excadrill/) -> [Mega Excadrill](https://eemeliri.github.io/soulgold/pokedex/excadrill-mega/)\n- [Golurk](https://eemeliri.github.io/soulgold/pokedex/golurk/) -> [Mega Golurk](https://eemeliri.github.io/soulgold/pokedex/golurk-mega/)\n- [Sandaconda](https://eemeliri.github.io/soulgold/pokedex/sandaconda/) -> [Mega Sandaconda](https://eemeliri.github.io/soulgold/pokedex/sandaconda-gmax/)\n\n## [Hearthflame Mask](https://eemeliri.github.io/soulgold/items/hearthflame-mask/)\n\n- [Ogerpon (Hearthflame Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-hearthflame/) -> [Mega Ogerpon (Hearthflame Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-hearthflame-tera/)\n\n## [Icetite](https://eemeliri.github.io/soulgold/items/icetite/)\n\n- [Lapras](https://eemeliri.github.io/soulgold/pokedex/lapras/) -> [Mega Lapras](https://eemeliri.github.io/soulgold/pokedex/lapras-gmax/)\n- [Glalie](https://eemeliri.github.io/soulgold/pokedex/glalie/) -> [Mega Glalie](https://eemeliri.github.io/soulgold/pokedex/glalie-mega/)\n- [Froslass](https://eemeliri.github.io/soulgold/pokedex/froslass/) -> [Mega Froslass](https://eemeliri.github.io/soulgold/pokedex/froslass-mega/)\n- [Abomasnow](https://eemeliri.github.io/soulgold/pokedex/abomasnow/) -> [Mega Abomasnow](https://eemeliri.github.io/soulgold/pokedex/abomasnow-mega/)\n- [Crabominable](https://eemeliri.github.io/soulgold/pokedex/crabominable/) -> [Mega Crabominable](https://eemeliri.github.io/soulgold/pokedex/crabominable-mega/)\n\n## [Normalite](https://eemeliri.github.io/soulgold/items/normalite/)\n\n- [Kangaskhan](https://eemeliri.github.io/soulgold/pokedex/kangaskhan/) -> [Mega Kangaskhan](https://eemeliri.github.io/soulgold/pokedex/kangaskhan-mega/)\n- [Snorlax](https://eemeliri.github.io/soulgold/pokedex/snorlax/) -> [Mega Snorlax](https://eemeliri.github.io/soulgold/pokedex/snorlax-gmax/)\n- [Lopunny](https://eemeliri.github.io/soulgold/pokedex/lopunny/) -> [Mega Lopunny](https://eemeliri.github.io/soulgold/pokedex/lopunny-mega/)\n- [Audino](https://eemeliri.github.io/soulgold/pokedex/audino/) -> [Mega Audino](https://eemeliri.github.io/soulgold/pokedex/audino-mega/)\n- [Drampa](https://eemeliri.github.io/soulgold/pokedex/drampa/) -> [Mega Drampa](https://eemeliri.github.io/soulgold/pokedex/drampa-mega/)\n\n## [Poisontite](https://eemeliri.github.io/soulgold/items/poisontite/)\n\n- [Victreebel](https://eemeliri.github.io/soulgold/pokedex/victreebel/) -> [Mega Victreebel](https://eemeliri.github.io/soulgold/pokedex/victreebel-mega/)\n- [Scolipede](https://eemeliri.github.io/soulgold/pokedex/scolipede/) -> [Mega Scolipede](https://eemeliri.github.io/soulgold/pokedex/scolipede-mega/)\n- [Dragalge](https://eemeliri.github.io/soulgold/pokedex/dragalge/) -> [Mega Dragalge](https://eemeliri.github.io/soulgold/pokedex/dragalge-mega/)\n\n## [Psychite](https://eemeliri.github.io/soulgold/items/psychite/)\n\n- [Alakazam](https://eemeliri.github.io/soulgold/pokedex/alakazam/) -> [Mega Alakazam](https://eemeliri.github.io/soulgold/pokedex/alakazam-mega/)\n- [Mewtwo](https://eemeliri.github.io/soulgold/pokedex/mewtwo/) -> [Mega Mewtwo Y](https://eemeliri.github.io/soulgold/pokedex/mewtwo-mega-y/)\n- [Gallade](https://eemeliri.github.io/soulgold/pokedex/gallade/) -> [Mega Gallade](https://eemeliri.github.io/soulgold/pokedex/gallade-mega/)\n- [Chimecho](https://eemeliri.github.io/soulgold/pokedex/chimecho/) -> [Mega Chimecho](https://eemeliri.github.io/soulgold/pokedex/chimecho-mega/)\n- [Meowstic (Male)](https://eemeliri.github.io/soulgold/pokedex/meowstic-m/) -> [Mega Meowstic (Male)](https://eemeliri.github.io/soulgold/pokedex/meowstic-m-mega/)\n- [Meowstic (Female)](https://eemeliri.github.io/soulgold/pokedex/meowstic-f/) -> [Mega Meowstic (Female)](https://eemeliri.github.io/soulgold/pokedex/meowstic-f-mega/)\n\n## [Rocktite](https://eemeliri.github.io/soulgold/items/rocktite/)\n\n- [Aerodactyl](https://eemeliri.github.io/soulgold/pokedex/aerodactyl/) -> [Mega Aerodactyl](https://eemeliri.github.io/soulgold/pokedex/aerodactyl-mega/)\n- [Tyranitar](https://eemeliri.github.io/soulgold/pokedex/tyranitar/) -> [Mega Tyranitar](https://eemeliri.github.io/soulgold/pokedex/tyranitar-mega/)\n- [Barbaracle](https://eemeliri.github.io/soulgold/pokedex/barbaracle/) -> [Mega Barbaracle](https://eemeliri.github.io/soulgold/pokedex/barbaracle-mega/)\n- [Glimmora](https://eemeliri.github.io/soulgold/pokedex/glimmora/) -> [Mega Glimmora](https://eemeliri.github.io/soulgold/pokedex/glimmora-mega/)\n\n## [Steeltite](https://eemeliri.github.io/soulgold/items/steeltite/)\n\n- [Steelix](https://eemeliri.github.io/soulgold/pokedex/steelix/) -> [Mega Steelix](https://eemeliri.github.io/soulgold/pokedex/steelix-mega/)\n- [Skarmory](https://eemeliri.github.io/soulgold/pokedex/skarmory/) -> [Mega Skarmory](https://eemeliri.github.io/soulgold/pokedex/skarmory-mega/)\n- [Aggron](https://eemeliri.github.io/soulgold/pokedex/aggron/) -> [Mega Aggron](https://eemeliri.github.io/soulgold/pokedex/aggron-mega/)\n- [Metagross](https://eemeliri.github.io/soulgold/pokedex/metagross/) -> [Mega Metagross](https://eemeliri.github.io/soulgold/pokedex/metagross-mega/)\n- [Lucario](https://eemeliri.github.io/soulgold/pokedex/lucario/) -> [Mega Lucario Z](https://eemeliri.github.io/soulgold/pokedex/lucario-mega-z/)\n- [Magearna](https://eemeliri.github.io/soulgold/pokedex/magearna/) -> [Mega Magearna](https://eemeliri.github.io/soulgold/pokedex/magearna-mega/)\n- [Magearna (Original Color)](https://eemeliri.github.io/soulgold/pokedex/magearna-original/) -> [Mega Magearna (Original Color)](https://eemeliri.github.io/soulgold/pokedex/magearna-original-mega/)\n\n## [Watertite](https://eemeliri.github.io/soulgold/items/watertite/)\n\n- [Blastoise](https://eemeliri.github.io/soulgold/pokedex/blastoise/) -> [Mega Blastoise](https://eemeliri.github.io/soulgold/pokedex/blastoise-mega/)\n- [Slowbro](https://eemeliri.github.io/soulgold/pokedex/slowbro/) -> [Mega Slowbro](https://eemeliri.github.io/soulgold/pokedex/slowbro-mega/)\n- [Starmie](https://eemeliri.github.io/soulgold/pokedex/starmie/) -> [Mega Starmie](https://eemeliri.github.io/soulgold/pokedex/starmie-mega/)\n- [Gyarados](https://eemeliri.github.io/soulgold/pokedex/gyarados/) -> [Mega Gyarados](https://eemeliri.github.io/soulgold/pokedex/gyarados-mega/)\n- [Swampert](https://eemeliri.github.io/soulgold/pokedex/swampert/) -> [Mega Swampert](https://eemeliri.github.io/soulgold/pokedex/swampert-mega/)\n- [Sharpedo](https://eemeliri.github.io/soulgold/pokedex/sharpedo/) -> [Mega Sharpedo](https://eemeliri.github.io/soulgold/pokedex/sharpedo-mega/)\n- [Inteleon](https://eemeliri.github.io/soulgold/pokedex/inteleon/) -> [Mega Inteleon](https://eemeliri.github.io/soulgold/pokedex/inteleon-gmax/)\n\n## [Wellspring Mask](https://eemeliri.github.io/soulgold/items/wellspring-mask/)\n\n- [Ogerpon (Wellspring Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-wellspring/) -> [Mega Ogerpon (Wellspring Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-wellspring-tera/)"
+      "content": "Each Pokemon must hold the item shown below and you must have the Mega Ring.\n\n## [Bondstone](https://eemeliri.github.io/soulgold/items/bondstone/)\n\n- [Raichu](https://eemeliri.github.io/soulgold/pokedex/raichu/) -> [Mega Raichu Y](https://eemeliri.github.io/soulgold/pokedex/raichu-mega-y/)\n- [Meganium](https://eemeliri.github.io/soulgold/pokedex/meganium/) -> [Mega Meganium](https://eemeliri.github.io/soulgold/pokedex/meganium-mega/)\n- [Typhlosion](https://eemeliri.github.io/soulgold/pokedex/typhlosion/) -> [Mega Typhlosion](https://eemeliri.github.io/soulgold/pokedex/typhlosion-mega/)\n- [Feraligatr](https://eemeliri.github.io/soulgold/pokedex/feraligatr/) -> [Mega Feraligatr](https://eemeliri.github.io/soulgold/pokedex/feraligatr-mega/)\n- [Blaziken](https://eemeliri.github.io/soulgold/pokedex/blaziken/) -> [Mega Blaziken](https://eemeliri.github.io/soulgold/pokedex/blaziken-mega/)\n- [Gardevoir](https://eemeliri.github.io/soulgold/pokedex/gardevoir/) -> [Mega Gardevoir Z](https://eemeliri.github.io/soulgold/pokedex/gardevoir-mega-z/)\n- [Primarina](https://eemeliri.github.io/soulgold/pokedex/primarina/) -> [Mega Primarina](https://eemeliri.github.io/soulgold/pokedex/primarina-mega/)\n- [Chesnaught](https://eemeliri.github.io/soulgold/pokedex/chesnaught/) -> [Mega Chesnaught](https://eemeliri.github.io/soulgold/pokedex/chesnaught-mega/)\n- [Delphox](https://eemeliri.github.io/soulgold/pokedex/delphox/) -> [Mega Delphox](https://eemeliri.github.io/soulgold/pokedex/delphox-mega/)\n- [Greninja](https://eemeliri.github.io/soulgold/pokedex/greninja/) -> [Mega Greninja](https://eemeliri.github.io/soulgold/pokedex/greninja-mega/)\n- [Meowscarada](https://eemeliri.github.io/soulgold/pokedex/meowscarada/) -> [Mega Meowscarada](https://eemeliri.github.io/soulgold/pokedex/meowscarada-mega/)\n- [Ogerpon (Teal Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-teal/) -> [Mega Ogerpon (Teal Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-teal-tera/)\n\n## [Bugtite](https://eemeliri.github.io/soulgold/items/bugtite/)\n\n- [Butterfree](https://eemeliri.github.io/soulgold/pokedex/butterfree/) -> [Butterfree G](https://eemeliri.github.io/soulgold/pokedex/butterfree-gmax/)\n- [Beedrill](https://eemeliri.github.io/soulgold/pokedex/beedrill/) -> [Mega Beedrill](https://eemeliri.github.io/soulgold/pokedex/beedrill-mega/)\n- [Scizor](https://eemeliri.github.io/soulgold/pokedex/scizor/) -> [Mega Scizor](https://eemeliri.github.io/soulgold/pokedex/scizor-mega/)\n- [Pinsir](https://eemeliri.github.io/soulgold/pokedex/pinsir/) -> [Mega Pinsir](https://eemeliri.github.io/soulgold/pokedex/pinsir-mega/)\n- [Heracross](https://eemeliri.github.io/soulgold/pokedex/heracross/) -> [Mega Heracross](https://eemeliri.github.io/soulgold/pokedex/heracross-mega/)\n- [Golisopod](https://eemeliri.github.io/soulgold/pokedex/golisopod/) -> [Mega Golisopod](https://eemeliri.github.io/soulgold/pokedex/golisopod-mega/)\n\n## [Cornerstone Mask](https://eemeliri.github.io/soulgold/items/cornerstone-mask/)\n\n- [Ogerpon (Cornerstone Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-cornerstone/) -> [Mega Ogerpon (Cornerstone Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-cornerstone-tera/)\n\n## [Darktite](https://eemeliri.github.io/soulgold/items/darktite/)\n\n- [Houndoom](https://eemeliri.github.io/soulgold/pokedex/houndoom/) -> [Mega Houndoom](https://eemeliri.github.io/soulgold/pokedex/houndoom-mega/)\n- [Sableye](https://eemeliri.github.io/soulgold/pokedex/sableye/) -> [Mega Sableye](https://eemeliri.github.io/soulgold/pokedex/sableye-mega/)\n- [Absol](https://eemeliri.github.io/soulgold/pokedex/absol/) -> [Mega Absol](https://eemeliri.github.io/soulgold/pokedex/absol-mega/)\n- [Darkrai](https://eemeliri.github.io/soulgold/pokedex/darkrai/) -> [Mega Darkrai](https://eemeliri.github.io/soulgold/pokedex/darkrai-mega/)\n- [Scrafty](https://eemeliri.github.io/soulgold/pokedex/scrafty/) -> [Mega Scrafty](https://eemeliri.github.io/soulgold/pokedex/scrafty-mega/)\n- [Malamar](https://eemeliri.github.io/soulgold/pokedex/malamar/) -> [Mega Malamar](https://eemeliri.github.io/soulgold/pokedex/malamar-mega/)\n\n## [Dragotite](https://eemeliri.github.io/soulgold/items/dragotite/)\n\n- [Charizard](https://eemeliri.github.io/soulgold/pokedex/charizard/) -> [Mega Charizard X](https://eemeliri.github.io/soulgold/pokedex/charizard-mega-x/)\n- [Dragonite](https://eemeliri.github.io/soulgold/pokedex/dragonite/) -> [Mega Dragonite](https://eemeliri.github.io/soulgold/pokedex/dragonite-mega/)\n- [Salamence](https://eemeliri.github.io/soulgold/pokedex/salamence/) -> [Mega Salamence](https://eemeliri.github.io/soulgold/pokedex/salamence-mega/)\n- [Latias](https://eemeliri.github.io/soulgold/pokedex/latias/) -> [Mega Latias](https://eemeliri.github.io/soulgold/pokedex/latias-mega/)\n- [Latios](https://eemeliri.github.io/soulgold/pokedex/latios/) -> [Mega Latios](https://eemeliri.github.io/soulgold/pokedex/latios-mega/)\n- [Garchomp](https://eemeliri.github.io/soulgold/pokedex/garchomp/) -> [Mega Garchomp Z](https://eemeliri.github.io/soulgold/pokedex/garchomp-mega-z/)\n- [Tatsugiri (Curly Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-curly/) -> [Mega Tatsugiri (Curly Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-curly-mega/)\n- [Tatsugiri (Droopy Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-droopy/) -> [Mega Tatsugiri (Droopy Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-droopy-mega/)\n- [Tatsugiri (Stretchy Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-stretchy/) -> [Mega Tatsugiri (Stretchy Form)](https://eemeliri.github.io/soulgold/pokedex/tatsugiri-stretchy-mega/)\n- [Baxcalibur](https://eemeliri.github.io/soulgold/pokedex/baxcalibur/) -> [Mega Baxcalibur](https://eemeliri.github.io/soulgold/pokedex/baxcalibur-mega/)\n\n## [Electrite](https://eemeliri.github.io/soulgold/items/electrite/)\n\n- [Raichu](https://eemeliri.github.io/soulgold/pokedex/raichu/) -> [Mega Raichu X](https://eemeliri.github.io/soulgold/pokedex/raichu-mega-x/)\n- [Ampharos](https://eemeliri.github.io/soulgold/pokedex/ampharos/) -> [Mega Ampharos](https://eemeliri.github.io/soulgold/pokedex/ampharos-mega/)\n- [Manectric](https://eemeliri.github.io/soulgold/pokedex/manectric/) -> [Mega Manectric](https://eemeliri.github.io/soulgold/pokedex/manectric-mega/)\n- [Eelektross](https://eemeliri.github.io/soulgold/pokedex/eelektross/) -> [Mega Eelektross](https://eemeliri.github.io/soulgold/pokedex/eelektross-mega/)\n- [Zeraora](https://eemeliri.github.io/soulgold/pokedex/zeraora/) -> [Mega Zeraora](https://eemeliri.github.io/soulgold/pokedex/zeraora-mega/)\n- [Toxtricity (Amped Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-amped/) -> [Toxtricity Amped G](https://eemeliri.github.io/soulgold/pokedex/toxtricity-amped-gmax/)\n- [Toxtricity (Low Key Form)](https://eemeliri.github.io/soulgold/pokedex/toxtricity-low-key/) -> [Toxtricity Low Key G](https://eemeliri.github.io/soulgold/pokedex/toxtricity-low-key-gmax/)\n\n## [Fairytite](https://eemeliri.github.io/soulgold/items/fairytite/)\n\n- [Clefable](https://eemeliri.github.io/soulgold/pokedex/clefable/) -> [Mega Clefable](https://eemeliri.github.io/soulgold/pokedex/clefable-mega/)\n- [Gardevoir](https://eemeliri.github.io/soulgold/pokedex/gardevoir/) -> [Mega Gardevoir](https://eemeliri.github.io/soulgold/pokedex/gardevoir-mega/)\n- [Mawile](https://eemeliri.github.io/soulgold/pokedex/mawile/) -> [Mega Mawile](https://eemeliri.github.io/soulgold/pokedex/mawile-mega/)\n- [Altaria](https://eemeliri.github.io/soulgold/pokedex/altaria/) -> [Mega Altaria](https://eemeliri.github.io/soulgold/pokedex/altaria-mega/)\n- [Floette (Eternal Flower)](https://eemeliri.github.io/soulgold/pokedex/floette-eternal/) -> [Mega Floette](https://eemeliri.github.io/soulgold/pokedex/floette-mega/)\n- [Diancie](https://eemeliri.github.io/soulgold/pokedex/diancie/) -> [Mega Diancie](https://eemeliri.github.io/soulgold/pokedex/diancie-mega/)\n\n## [Fightite](https://eemeliri.github.io/soulgold/items/fightite/)\n\n- [Machamp](https://eemeliri.github.io/soulgold/pokedex/machamp/) -> [Machamp G](https://eemeliri.github.io/soulgold/pokedex/machamp-gmax/)\n- [Mewtwo](https://eemeliri.github.io/soulgold/pokedex/mewtwo/) -> [Mega Mewtwo X](https://eemeliri.github.io/soulgold/pokedex/mewtwo-mega-x/)\n- [Medicham](https://eemeliri.github.io/soulgold/pokedex/medicham/) -> [Mega Medicham](https://eemeliri.github.io/soulgold/pokedex/medicham-mega/)\n- [Lucario](https://eemeliri.github.io/soulgold/pokedex/lucario/) -> [Mega Lucario](https://eemeliri.github.io/soulgold/pokedex/lucario-mega/)\n- [Hawlucha](https://eemeliri.github.io/soulgold/pokedex/hawlucha/) -> [Mega Hawlucha](https://eemeliri.github.io/soulgold/pokedex/hawlucha-mega/)\n- [Falinks](https://eemeliri.github.io/soulgold/pokedex/falinks/) -> [Mega Falinks](https://eemeliri.github.io/soulgold/pokedex/falinks-mega/)\n\n## [Firetite](https://eemeliri.github.io/soulgold/items/firetite/)\n\n- [Charizard](https://eemeliri.github.io/soulgold/pokedex/charizard/) -> [Mega Charizard Y](https://eemeliri.github.io/soulgold/pokedex/charizard-mega-y/)\n- [Camerupt](https://eemeliri.github.io/soulgold/pokedex/camerupt/) -> [Mega Camerupt](https://eemeliri.github.io/soulgold/pokedex/camerupt-mega/)\n- [Heatran](https://eemeliri.github.io/soulgold/pokedex/heatran/) -> [Mega Heatran](https://eemeliri.github.io/soulgold/pokedex/heatran-mega/)\n- [Emboar](https://eemeliri.github.io/soulgold/pokedex/emboar/) -> [Mega Emboar](https://eemeliri.github.io/soulgold/pokedex/emboar-mega/)\n- [Pyroar](https://eemeliri.github.io/soulgold/pokedex/pyroar/) -> [Mega Pyroar](https://eemeliri.github.io/soulgold/pokedex/pyroar-mega/)\n- [Cinderace](https://eemeliri.github.io/soulgold/pokedex/cinderace/) -> [Cinderace G](https://eemeliri.github.io/soulgold/pokedex/cinderace-gmax/)\n- [Centiskorch](https://eemeliri.github.io/soulgold/pokedex/centiskorch/) -> [Centiskorch G](https://eemeliri.github.io/soulgold/pokedex/centiskorch-gmax/)\n\n## [Flyingite](https://eemeliri.github.io/soulgold/items/flyingite/)\n\n- [Pidgeot](https://eemeliri.github.io/soulgold/pokedex/pidgeot/) -> [Mega Pidgeot](https://eemeliri.github.io/soulgold/pokedex/pidgeot-mega/)\n- [Staraptor](https://eemeliri.github.io/soulgold/pokedex/staraptor/) -> [Mega Staraptor](https://eemeliri.github.io/soulgold/pokedex/staraptor-mega/)\n- [Corviknight](https://eemeliri.github.io/soulgold/pokedex/corviknight/) -> [Corviknight G](https://eemeliri.github.io/soulgold/pokedex/corviknight-gmax/)\n\n## [Ghostite](https://eemeliri.github.io/soulgold/items/ghostite/)\n\n- [Gengar](https://eemeliri.github.io/soulgold/pokedex/gengar/) -> [Mega Gengar](https://eemeliri.github.io/soulgold/pokedex/gengar-mega/)\n- [Banette](https://eemeliri.github.io/soulgold/pokedex/banette/) -> [Mega Banette](https://eemeliri.github.io/soulgold/pokedex/banette-mega/)\n- [Absol](https://eemeliri.github.io/soulgold/pokedex/absol/) -> [Mega Absol Z](https://eemeliri.github.io/soulgold/pokedex/absol-mega-z/)\n- [Chandelure](https://eemeliri.github.io/soulgold/pokedex/chandelure/) -> [Mega Chandelure](https://eemeliri.github.io/soulgold/pokedex/chandelure-mega/)\n\n## [Grasstite](https://eemeliri.github.io/soulgold/items/grasstite/)\n\n- [Venusaur](https://eemeliri.github.io/soulgold/pokedex/venusaur/) -> [Mega Venusaur](https://eemeliri.github.io/soulgold/pokedex/venusaur-mega/)\n- [Sceptile](https://eemeliri.github.io/soulgold/pokedex/sceptile/) -> [Mega Sceptile](https://eemeliri.github.io/soulgold/pokedex/sceptile-mega/)\n- [Rillaboom](https://eemeliri.github.io/soulgold/pokedex/rillaboom/) -> [Rillaboom G](https://eemeliri.github.io/soulgold/pokedex/rillaboom-gmax/)\n- [Scovillain](https://eemeliri.github.io/soulgold/pokedex/scovillain/) -> [Mega Scovillain](https://eemeliri.github.io/soulgold/pokedex/scovillain-mega/)\n\n## [Groundite](https://eemeliri.github.io/soulgold/items/groundite/)\n\n- [Garchomp](https://eemeliri.github.io/soulgold/pokedex/garchomp/) -> [Mega Garchomp](https://eemeliri.github.io/soulgold/pokedex/garchomp-mega/)\n- [Excadrill](https://eemeliri.github.io/soulgold/pokedex/excadrill/) -> [Mega Excadrill](https://eemeliri.github.io/soulgold/pokedex/excadrill-mega/)\n- [Golurk](https://eemeliri.github.io/soulgold/pokedex/golurk/) -> [Mega Golurk](https://eemeliri.github.io/soulgold/pokedex/golurk-mega/)\n- [Sandaconda](https://eemeliri.github.io/soulgold/pokedex/sandaconda/) -> [Sandaconda G](https://eemeliri.github.io/soulgold/pokedex/sandaconda-gmax/)\n\n## [Hearthflame Mask](https://eemeliri.github.io/soulgold/items/hearthflame-mask/)\n\n- [Ogerpon (Hearthflame Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-hearthflame/) -> [Mega Ogerpon (Hearthflame Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-hearthflame-tera/)\n\n## [Icetite](https://eemeliri.github.io/soulgold/items/icetite/)\n\n- [Lapras](https://eemeliri.github.io/soulgold/pokedex/lapras/) -> [Lapras G](https://eemeliri.github.io/soulgold/pokedex/lapras-gmax/)\n- [Glalie](https://eemeliri.github.io/soulgold/pokedex/glalie/) -> [Mega Glalie](https://eemeliri.github.io/soulgold/pokedex/glalie-mega/)\n- [Froslass](https://eemeliri.github.io/soulgold/pokedex/froslass/) -> [Mega Froslass](https://eemeliri.github.io/soulgold/pokedex/froslass-mega/)\n- [Abomasnow](https://eemeliri.github.io/soulgold/pokedex/abomasnow/) -> [Mega Abomasnow](https://eemeliri.github.io/soulgold/pokedex/abomasnow-mega/)\n- [Crabominable](https://eemeliri.github.io/soulgold/pokedex/crabominable/) -> [Mega Crabominable](https://eemeliri.github.io/soulgold/pokedex/crabominable-mega/)\n\n## [Normalite](https://eemeliri.github.io/soulgold/items/normalite/)\n\n- [Kangaskhan](https://eemeliri.github.io/soulgold/pokedex/kangaskhan/) -> [Mega Kangaskhan](https://eemeliri.github.io/soulgold/pokedex/kangaskhan-mega/)\n- [Snorlax](https://eemeliri.github.io/soulgold/pokedex/snorlax/) -> [Snorlax G](https://eemeliri.github.io/soulgold/pokedex/snorlax-gmax/)\n- [Lopunny](https://eemeliri.github.io/soulgold/pokedex/lopunny/) -> [Mega Lopunny](https://eemeliri.github.io/soulgold/pokedex/lopunny-mega/)\n- [Audino](https://eemeliri.github.io/soulgold/pokedex/audino/) -> [Mega Audino](https://eemeliri.github.io/soulgold/pokedex/audino-mega/)\n- [Drampa](https://eemeliri.github.io/soulgold/pokedex/drampa/) -> [Mega Drampa](https://eemeliri.github.io/soulgold/pokedex/drampa-mega/)\n\n## [Poisontite](https://eemeliri.github.io/soulgold/items/poisontite/)\n\n- [Victreebel](https://eemeliri.github.io/soulgold/pokedex/victreebel/) -> [Mega Victreebel](https://eemeliri.github.io/soulgold/pokedex/victreebel-mega/)\n- [Scolipede](https://eemeliri.github.io/soulgold/pokedex/scolipede/) -> [Mega Scolipede](https://eemeliri.github.io/soulgold/pokedex/scolipede-mega/)\n- [Dragalge](https://eemeliri.github.io/soulgold/pokedex/dragalge/) -> [Mega Dragalge](https://eemeliri.github.io/soulgold/pokedex/dragalge-mega/)\n\n## [Psychite](https://eemeliri.github.io/soulgold/items/psychite/)\n\n- [Alakazam](https://eemeliri.github.io/soulgold/pokedex/alakazam/) -> [Mega Alakazam](https://eemeliri.github.io/soulgold/pokedex/alakazam-mega/)\n- [Mewtwo](https://eemeliri.github.io/soulgold/pokedex/mewtwo/) -> [Mega Mewtwo Y](https://eemeliri.github.io/soulgold/pokedex/mewtwo-mega-y/)\n- [Gallade](https://eemeliri.github.io/soulgold/pokedex/gallade/) -> [Mega Gallade](https://eemeliri.github.io/soulgold/pokedex/gallade-mega/)\n- [Chimecho](https://eemeliri.github.io/soulgold/pokedex/chimecho/) -> [Mega Chimecho](https://eemeliri.github.io/soulgold/pokedex/chimecho-mega/)\n- [Meowstic (Male)](https://eemeliri.github.io/soulgold/pokedex/meowstic-m/) -> [Mega Meowstic (Male)](https://eemeliri.github.io/soulgold/pokedex/meowstic-m-mega/)\n- [Meowstic (Female)](https://eemeliri.github.io/soulgold/pokedex/meowstic-f/) -> [Mega Meowstic (Female)](https://eemeliri.github.io/soulgold/pokedex/meowstic-f-mega/)\n\n## [Rocktite](https://eemeliri.github.io/soulgold/items/rocktite/)\n\n- [Aerodactyl](https://eemeliri.github.io/soulgold/pokedex/aerodactyl/) -> [Mega Aerodactyl](https://eemeliri.github.io/soulgold/pokedex/aerodactyl-mega/)\n- [Tyranitar](https://eemeliri.github.io/soulgold/pokedex/tyranitar/) -> [Mega Tyranitar](https://eemeliri.github.io/soulgold/pokedex/tyranitar-mega/)\n- [Barbaracle](https://eemeliri.github.io/soulgold/pokedex/barbaracle/) -> [Mega Barbaracle](https://eemeliri.github.io/soulgold/pokedex/barbaracle-mega/)\n- [Glimmora](https://eemeliri.github.io/soulgold/pokedex/glimmora/) -> [Mega Glimmora](https://eemeliri.github.io/soulgold/pokedex/glimmora-mega/)\n\n## [Steeltite](https://eemeliri.github.io/soulgold/items/steeltite/)\n\n- [Steelix](https://eemeliri.github.io/soulgold/pokedex/steelix/) -> [Mega Steelix](https://eemeliri.github.io/soulgold/pokedex/steelix-mega/)\n- [Skarmory](https://eemeliri.github.io/soulgold/pokedex/skarmory/) -> [Mega Skarmory](https://eemeliri.github.io/soulgold/pokedex/skarmory-mega/)\n- [Aggron](https://eemeliri.github.io/soulgold/pokedex/aggron/) -> [Mega Aggron](https://eemeliri.github.io/soulgold/pokedex/aggron-mega/)\n- [Metagross](https://eemeliri.github.io/soulgold/pokedex/metagross/) -> [Mega Metagross](https://eemeliri.github.io/soulgold/pokedex/metagross-mega/)\n- [Lucario](https://eemeliri.github.io/soulgold/pokedex/lucario/) -> [Mega Lucario Z](https://eemeliri.github.io/soulgold/pokedex/lucario-mega-z/)\n- [Magearna](https://eemeliri.github.io/soulgold/pokedex/magearna/) -> [Mega Magearna](https://eemeliri.github.io/soulgold/pokedex/magearna-mega/)\n- [Magearna (Original Color)](https://eemeliri.github.io/soulgold/pokedex/magearna-original/) -> [Mega Magearna (Original Color)](https://eemeliri.github.io/soulgold/pokedex/magearna-original-mega/)\n\n## [Watertite](https://eemeliri.github.io/soulgold/items/watertite/)\n\n- [Blastoise](https://eemeliri.github.io/soulgold/pokedex/blastoise/) -> [Mega Blastoise](https://eemeliri.github.io/soulgold/pokedex/blastoise-mega/)\n- [Slowbro](https://eemeliri.github.io/soulgold/pokedex/slowbro/) -> [Mega Slowbro](https://eemeliri.github.io/soulgold/pokedex/slowbro-mega/)\n- [Starmie](https://eemeliri.github.io/soulgold/pokedex/starmie/) -> [Mega Starmie](https://eemeliri.github.io/soulgold/pokedex/starmie-mega/)\n- [Gyarados](https://eemeliri.github.io/soulgold/pokedex/gyarados/) -> [Mega Gyarados](https://eemeliri.github.io/soulgold/pokedex/gyarados-mega/)\n- [Swampert](https://eemeliri.github.io/soulgold/pokedex/swampert/) -> [Mega Swampert](https://eemeliri.github.io/soulgold/pokedex/swampert-mega/)\n- [Sharpedo](https://eemeliri.github.io/soulgold/pokedex/sharpedo/) -> [Mega Sharpedo](https://eemeliri.github.io/soulgold/pokedex/sharpedo-mega/)\n- [Inteleon](https://eemeliri.github.io/soulgold/pokedex/inteleon/) -> [Inteleon G](https://eemeliri.github.io/soulgold/pokedex/inteleon-gmax/)\n\n## [Wellspring Mask](https://eemeliri.github.io/soulgold/items/wellspring-mask/)\n\n- [Ogerpon (Wellspring Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-wellspring/) -> [Mega Ogerpon (Wellspring Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-wellspring-tera/)"
     },
     {
       "slug": "achievement-rewards",

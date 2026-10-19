@@ -8371,11 +8371,11 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
     [SPECIES_MELMETAL_GMAX] =
     {
         .baseHP        = 135,
-        .baseAttack    = 143,
-        .baseDefense   = 143,
+        .baseAttack    = 163,
+        .baseDefense   = 173,
         .baseSpeed     = 34,
         .baseSpAttack  = 80,
-        .baseSpDefense = 65,
+        .baseSpDefense = 115,
         .types = MON_TYPES(TYPE_STEEL),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
@@ -8385,7 +8385,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_IRON_FIST, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_MELTDOWN, ABILITY_MELTDOWN, ABILITY_MELTDOWN },
         .innates = { ABILITY_HEAVY_METAL, ABILITY_STAMINA, ABILITY_STURDY },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Melmetal"),
@@ -8421,7 +8421,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         SHADOW(2, 13, SHADOW_SIZE_XL_BATTLE_ONLY)
         FOOTPRINT(Melmetal)
         .isMythical = TRUE,
-        .isGigantamax = TRUE,
+        .isMegaEvolution = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sMelmetalLevelUpLearnset,

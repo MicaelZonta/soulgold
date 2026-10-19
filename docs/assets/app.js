@@ -2142,15 +2142,25 @@ function speciesFormLabel(mon) {
   if (mon.constant.endsWith("_MEGA_Y")) return `${mon.name} Y`;
   if (mon.constant.endsWith("_MEGA_Z")) return `${mon.name} Z`;
   if (mon.constant.endsWith("_MEGA")) return `${mon.name} Mega`;
-  if (mon.constant.endsWith("_GMAX") || mon.constant.endsWith("_DMAX")) return `${mon.name} Mega`;
+  if (mon.constant.endsWith("_GMAX") || mon.constant.endsWith("_DMAX")) return gmaxFormLabel(mon);
   return mon.name;
+}
+
+// Gigantamax forms work as Megas here, but keep their own " G" name.
+function gmaxFormLabel(mon) {
+  const split = mon.constant.match(/^SPECIES_(?:TOXTRICITY|URSHIFU)_([A-Z_]+)_[GD]MAX$/);
+  if (split) {
+    const form = split[1].split("_").map((word) => word[0] + word.slice(1).toLowerCase()).join(" ");
+    return `${mon.name} ${form} G`;
+  }
+  return `${mon.name} G`;
 }
 
 function megaTargetLabel(mon) {
   if (/^SPECIES_OGERPON_(?:TEAL|WELLSPRING|HEARTHFLAME|CORNERSTONE)_TERA$/.test(mon.constant)) {
     return `${speciesFormLabel(mon)} Mega`;
   }
-  if (mon.constant.endsWith("_GMAX") || mon.constant.endsWith("_DMAX")) return `${mon.name} Mega`;
+  if (mon.constant.endsWith("_GMAX") || mon.constant.endsWith("_DMAX")) return gmaxFormLabel(mon);
   return speciesFormLabel(mon);
 }
 

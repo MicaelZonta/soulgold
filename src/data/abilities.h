@@ -5789,4 +5789,305 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 7,
         .breakable = TRUE,
     },
+
+    [ABILITY_BLAZING_SURGE] =
+    {
+        .name = _("Blazing Surge"),
+        .description = COMPOUND_STRING("Sets Fire Terrain."),
+        .longDescription = COMPOUND_STRING("Turns the ground into\n"
+                                           "Fire Terrain for 5 turns\n"
+                                           "on entry. Fire moves get\n"
+                                           "stronger and Fire types\n"
+                                           "heal a bit each turn."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_TIDAL_SURGE] =
+    {
+        .name = _("Tidal Surge"),
+        .description = COMPOUND_STRING("Sets Water Terrain."),
+        .longDescription = COMPOUND_STRING("Turns the ground into\n"
+                                           "Water Terrain for 5 turns\n"
+                                           "on entry. Water moves get\n"
+                                           "stronger and Water types\n"
+                                           "heal a bit each turn."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_OBSCURING_POLLEN] =
+    {
+        .name = _("Obscuring Pollen"),
+        .description = COMPOUND_STRING("Pollen guards until it moves."),
+        .longDescription = COMPOUND_STRING("Takes 40% less damage\n"
+                                           "each turn until it acts.\n"
+                                           "The pollen settles once\n"
+                                           "it has moved."),
+        .aiRating = 6,
+        .breakable = TRUE,
+    },
+
+    [ABILITY_GIGAVOLT_BODY] =
+    {
+        .name = _("Gigavolt Body"),
+        .description = COMPOUND_STRING("Reduces direct damage."),
+        .longDescription = COMPOUND_STRING("Its charged body takes\n"
+                                           "25% less damage from\n"
+                                           "direct attacks."),
+        .aiRating = 6,
+        .breakable = TRUE,
+    },
+
+    [ABILITY_SEVEN_LIVES] =
+    {
+        .name = _("Seven Lives"),
+        .description = COMPOUND_STRING("Escapes a KO up to 7 times."),
+        .longDescription = COMPOUND_STRING("Up to 7 times a battle,\n"
+                                           "a hit that would KO it\n"
+                                           "leaves 1 HP and forces\n"
+                                           "it to switch out. Needs a\n"
+                                           "party member to escape."),
+        .aiRating = 7,
+        .breakable = TRUE,
+    },
+
+    [ABILITY_FOUR_ARMED_FOCUS] =
+    {
+        .name = _("Four-Armed Focus"),
+        .description = COMPOUND_STRING("Punches sharpen aim and crits."),
+        .longDescription = COMPOUND_STRING("Each punching move it\n"
+                                           "uses raises its accuracy\n"
+                                           "and critical-hit ratio by\n"
+                                           "one stage before it hits."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_ABYSSAL_MAW] =
+    {
+        .name = _("Abyssal Maw"),
+        .description = COMPOUND_STRING("Ghost moves drain HP."),
+        .longDescription = COMPOUND_STRING("Ghost-type moves restore\n"
+                                           "25% of the damage they\n"
+                                           "deal to this Pokemon."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_FOAM_OVERFLOW] =
+    {
+        .name = _("Foam Overflow"),
+        .description = COMPOUND_STRING("Water moves set Foam Terrain."),
+        .longDescription = COMPOUND_STRING("Water attacks set Foam\n"
+                                           "Terrain for 3 turns. Slower\n"
+                                           "grounded Pokemon move first\n"
+                                           "and grounded Water types\n"
+                                           "are cured of status."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_FROZEN_RESONANCE] =
+    {
+        .name = _("Frozen Resonance"),
+        .description = COMPOUND_STRING("Icy Normal moves; songs snow."),
+        .longDescription = COMPOUND_STRING("Normal-type moves become\n"
+                                           "Ice-type and get a 20%\n"
+                                           "boost. Using a sound move\n"
+                                           "summons snow for 5 turns."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_HIBERNATE] =
+    {
+        .name = _("Hibernate"),
+        .description = COMPOUND_STRING("Sleep shields and heals it."),
+        .longDescription = COMPOUND_STRING("While asleep, it takes\n"
+                                           "25% less damage and\n"
+                                           "restores 1/8 of its max\n"
+                                           "HP at the end of each turn."),
+        .aiRating = 6,
+        .breakable = TRUE,
+    },
+
+    [ABILITY_MELTDOWN] =
+    {
+        .name = _("Meltdown"),
+        .description = COMPOUND_STRING("Punches inflict Torment."),
+        .longDescription = COMPOUND_STRING("Its punching moves inflict\n"
+                                           "Torment, so the target\n"
+                                           "can't use the same move\n"
+                                           "twice in a row."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_DRUM_SOLO] =
+    {
+        .name = _("Drum Solo"),
+        .description = COMPOUND_STRING("Grass moves break defenses."),
+        .longDescription = COMPOUND_STRING("Grass-type moves ignore\n"
+                                           "the target's defensive\n"
+                                           "Abilities, Defense boosts,\n"
+                                           "Reflect and Aurora Veil."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_ACE_STRIKER] =
+    {
+        .name = _("Ace Striker"),
+        .description = COMPOUND_STRING("Boosts ball and bomb moves."),
+        .longDescription = COMPOUND_STRING("Ball and bomb moves deal\n"
+                                           "30% more damage and ignore\n"
+                                           "the target's defensive\n"
+                                           "Abilities."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_DEADEYE] =
+    {
+        .name = _("Deadeye"),
+        .description = COMPOUND_STRING("Projectiles always crit."),
+        .longDescription = COMPOUND_STRING("Projectile moves always\n"
+                                           "land a critical hit, but\n"
+                                           "don't get Sniper's bonus."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_WIND_RAGE] =
+    {
+        .name = _("Wind Rage"),
+        .description = COMPOUND_STRING("Clears the way for Tailwind."),
+        .longDescription = COMPOUND_STRING("On entry, removes hazards\n"
+                                           "on its side and the foe's\n"
+                                           "screens, then sets up\n"
+                                           "Tailwind for 4 turns."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_GRAVITAS] =
+    {
+        .name = _("Gravitas"),
+        .description = COMPOUND_STRING("Sets Gravity on entry."),
+        .longDescription = COMPOUND_STRING("Sets Gravity for 5 turns\n"
+                                           "on entry. While Gravity is\n"
+                                           "active, its moves deal 20%\n"
+                                           "more to grounded targets."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_STONESURGE] =
+    {
+        .name = _("Stonesurge"),
+        .description = COMPOUND_STRING("Sets Stealth Rock on entry."),
+        .longDescription = COMPOUND_STRING("Scatters pointed stones\n"
+                                           "on the foe's side every\n"
+                                           "time it enters battle."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_TARTNESS] =
+    {
+        .name = _("Tartness"),
+        .description = COMPOUND_STRING("Its moves never miss."),
+        .longDescription = COMPOUND_STRING("Its moves can't miss and\n"
+                                           "ignore evasion boosts.\n"
+                                           "Foes' moves can still\n"
+                                           "miss it."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_SWEETNESS] =
+    {
+        .name = _("Sweetness"),
+        .description = COMPOUND_STRING("Cures team status, sets Mist."),
+        .longDescription = COMPOUND_STRING("On entry, cures its own\n"
+                                           "and its ally's status and\n"
+                                           "sets Mist on its side\n"
+                                           "for 5 turns."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_STUN_SHOCK] =
+    {
+        .name = _("Stun Shock"),
+        .description = COMPOUND_STRING("Sound may paralyze or poison."),
+        .longDescription = COMPOUND_STRING("Sound moves have a 30%\n"
+                                           "chance to paralyze or\n"
+                                           "poison the target."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_CENTIFERNO] =
+    {
+        .name = _("Centiferno"),
+        .description = COMPOUND_STRING("Fire moves trap in flames."),
+        .longDescription = COMPOUND_STRING("Damaging Fire-type moves\n"
+                                           "trap the target in a\n"
+                                           "Fire Spin for 4 turns.\n"
+                                           "Reapplying only resets it."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_NIGHT_TERROR] =
+    {
+        .name = _("Night Terror"),
+        .description = COMPOUND_STRING("First hit makes a foe drowsy."),
+        .longDescription = COMPOUND_STRING("After entering, its first\n"
+                                           "Dark or Fairy hit that is\n"
+                                           "not resisted makes the\n"
+                                           "target drowsy. One sleeper\n"
+                                           "at a time."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_SWEET_FINALE] =
+    {
+        .name = _("Sweet Finale"),
+        .description = COMPOUND_STRING("Boosts healing and shares it."),
+        .longDescription = COMPOUND_STRING("Healing moves restore 25%\n"
+                                           "more HP. Its ally recovers\n"
+                                           "half of the HP it\n"
+                                           "restores."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_STEELSURGE] =
+    {
+        .name = _("Steelsurge"),
+        .description = COMPOUND_STRING("Sets sharp steel on entry."),
+        .longDescription = COMPOUND_STRING("Scatters sharp steel on\n"
+                                           "the foe's side every time\n"
+                                           "it enters battle. Damage\n"
+                                           "depends on Steel matchups."),
+        .aiRating = 7,
+    },
+
+    [ABILITY_POWER_GRID] =
+    {
+        .name = _("Power Grid"),
+        .description = COMPOUND_STRING("Special hits charge it up."),
+        .longDescription = COMPOUND_STRING("When hit by a special\n"
+                                           "move, it stores a charge.\n"
+                                           "Its next special move\n"
+                                           "deals 30% more damage."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_UNSEEN_FORCE] =
+    {
+        .name = _("Unseen Force"),
+        .description = COMPOUND_STRING("Contact breaks all guards."),
+        .longDescription = COMPOUND_STRING("Contact moves bypass\n"
+                                           "Protect, Reflect, Aurora\n"
+                                           "Veil and the target's\n"
+                                           "defensive Abilities."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_EON_SHIFT] =
+    {
+        .name = _("Eon Shift"),
+        .description = COMPOUND_STRING("Shifts to a resisting type."),
+        .longDescription = COMPOUND_STRING("After it is hit, it takes\n"
+                                           "the type of the Eevee\n"
+                                           "evolution that best resists\n"
+                                           "that move's type."),
+        .aiRating = 7,
+    },
 };
