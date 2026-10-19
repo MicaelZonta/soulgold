@@ -313,7 +313,20 @@ orelha espetada, times "Crystal Legacy"). O trabalho de texto é a camada
 4. **Specials/comandos**: portar os ~10 specials só-P + `set_gym_trainers` +
    comandos de script que o Kanto usa (`baobacheckmon` não — é Johto).
 
-**Fase 2 — Piloto vertical (prova o pipeline inteiro)**
+**Fase 2 — Piloto vertical** ✅ FEITA E VALIDADA NO JOGO (19/10/2026)
+- Pallet Town, Route 1 (50x40), Lab e ginásio de Viridian importados;
+  5 tilesets novos; build limpo; renders dia/noite ok.
+- QA no mGBA headless (prints em scratchpad/qa/): carregamento, travessia
+  Pallet→Route 1 (popup + offset de conexão certos, trainer sight funciona),
+  diálogo no Lab, noite com janelas acesas — tudo PASS. Spin tile (desliza
+  girando até o STOP) e headbutt (texto da árvore) PASS por injeção de RAM.
+- Descobertas: **nenhum mapa do escopo usa spin tiles** (o ginásio de
+  Viridian do HnS-Kanto não tem labirinto; as setas são só do modo FRLG
+  deles) — decisão do autor se importamos o layout FRLG do ginásio depois.
+  **Headbutt trees existem em 16 mapas do escopo** (Routes 6/11/12/15/18/
+  22/23/25–28, Viridian, Vermilion, Fuchsia, Mt. Silver ×2) — vêm na Fase 3.
+- Regras aprendidas para a Fase 3: `_hns` também no meio de identificador;
+  preservar `local_id` nomeado (importador já faz); limpar `*.pla` do HnS.
 - Escopo: **Pallet Town + Route 1 + PalletTown_Lab + um ginásio de puzzle
   (Viridian, por causa dos spin tiles)**.
 - Pipeline por mapa: copiar `map.json`+`scripts.inc`+layout do P → rename
