@@ -919,9 +919,10 @@ static bool32 Achievement_PredicateCaughtZeraora(void)
 
 static bool32 Achievement_PredicateObtainedGalarianBirds(void)
 {
-    return FlagGet(FLAG_BATTLE_CAFE_ARTICUNO_RECEIVED)
-        && FlagGet(FLAG_BATTLE_CAFE_ZAPDOS_RECEIVED)
-        && FlagGet(FLAG_BATTLE_CAFE_MOLTRES_RECEIVED);
+    // Fase 7: aves de Galar viraram encontros em Johto (sairam do Cafe).
+    return Achievement_PredicateCaughtSpecies(SPECIES_ARTICUNO_GALAR)
+        && Achievement_PredicateCaughtSpecies(SPECIES_ZAPDOS_GALAR)
+        && Achievement_PredicateCaughtSpecies(SPECIES_MOLTRES_GALAR);
 }
 
 static bool32 Achievement_PredicateObtainedWeatherGenies(void)
@@ -942,8 +943,8 @@ static bool32 Achievement_PredicateObtainedTapus(void)
 
 static bool32 Achievement_PredicateObtainedParadoxLegends(void)
 {
-    return FlagGet(FLAG_BATTLE_CAFE_MIRAIDON_RECEIVED)
-        && FlagGet(FLAG_BATTLE_CAFE_KORAIDON_RECEIVED);
+    return Achievement_PredicateCaughtSpecies(SPECIES_MIRAIDON)
+        && Achievement_PredicateCaughtSpecies(SPECIES_KORAIDON);
 }
 
 static const u16 sParadoxPokemon[] =
@@ -1280,18 +1281,19 @@ void Achievement_OnPokemonObtained(u16 species)
         Achievement_Unlock(ACH_OBTAIN_DIANCIE);
         break;
     case SPECIES_ARTICUNO_GALAR:
-        if (FlagGet(FLAG_BATTLE_CAFE_ZAPDOS_RECEIVED)
-         && FlagGet(FLAG_BATTLE_CAFE_MOLTRES_RECEIVED))
+        // Fase 7: as aves de Galar sairam do Cafe e viraram encontros em Johto.
+        if (Achievement_PredicateCaughtSpecies(SPECIES_ZAPDOS_GALAR)
+         && Achievement_PredicateCaughtSpecies(SPECIES_MOLTRES_GALAR))
             Achievement_Unlock(ACH_OBTAIN_GALARIAN_BIRDS);
         break;
     case SPECIES_ZAPDOS_GALAR:
-        if (FlagGet(FLAG_BATTLE_CAFE_ARTICUNO_RECEIVED)
-         && FlagGet(FLAG_BATTLE_CAFE_MOLTRES_RECEIVED))
+        if (Achievement_PredicateCaughtSpecies(SPECIES_ARTICUNO_GALAR)
+         && Achievement_PredicateCaughtSpecies(SPECIES_MOLTRES_GALAR))
             Achievement_Unlock(ACH_OBTAIN_GALARIAN_BIRDS);
         break;
     case SPECIES_MOLTRES_GALAR:
-        if (FlagGet(FLAG_BATTLE_CAFE_ARTICUNO_RECEIVED)
-         && FlagGet(FLAG_BATTLE_CAFE_ZAPDOS_RECEIVED))
+        if (Achievement_PredicateCaughtSpecies(SPECIES_ARTICUNO_GALAR)
+         && Achievement_PredicateCaughtSpecies(SPECIES_ZAPDOS_GALAR))
             Achievement_Unlock(ACH_OBTAIN_GALARIAN_BIRDS);
         break;
     case SPECIES_TORNADUS:

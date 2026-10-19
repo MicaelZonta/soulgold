@@ -716,185 +716,95 @@ BattleCafe_ChallengeWon_8:
 BattleCafe_RewardMenu::
 	buffernumberstring STR_VAR_1, VAR_BATTLE_CAFE_POINTS
 	msgbox BattleCafe_RewardMenu_Text_0
-	special BattleCafe_GetParadoxRewardEligibility
-	copyvar VAR_TEMP_C, VAR_RESULT
 	dynmultipush BattleCafe_RewardMenu_Text_1, 10
 	dynmultipush BattleCafe_RewardMenu_Text_2, 11
 	dynmultipush BattleCafe_RewardMenu_Text_3, 12
 	dynmultipush BattleCafe_RewardMenu_Text_4, 7
 	dynmultipush BattleCafe_RewardMenu_Text_5, 8
 	dynmultipush BattleCafe_RewardMenu_Text_6, 9
-	dynmultipush BattleCafe_RewardMenu_Text_7, 0
-	dynmultipush BattleCafe_RewardMenu_Text_8, 1
-	dynmultipush BattleCafe_RewardMenu_Text_9, 2
-	dynmultipush BattleCafe_RewardMenu_Text_10, 3
-	dynmultipush BattleCafe_RewardMenu_Text_11, 4
-	dynmultipush BattleCafe_RewardMenu_Text_12, 5
-	dynmultipush BattleCafe_RewardMenu_Text_13, 6
-	dynmultipush BattleCafe_RewardMenu_Text_14, 16
-	dynmultipush BattleCafe_RewardMenu_Text_15, 17
-	dynmultipush BattleCafe_RewardMenu_Text_16, 18
-	dynmultipush BattleCafe_RewardMenu_Text_17, 19
-	compare VAR_TEMP_C, BATTLE_CAFE_PARADOX_REWARD_MIRAIDON
-	goto_if_eq BattleCafe_RewardMenu_2
-	compare VAR_TEMP_C, BATTLE_CAFE_PARADOX_REWARD_MIRAIDON + BATTLE_CAFE_PARADOX_REWARD_KORAIDON
-	goto_if_eq BattleCafe_RewardMenu_2
-BattleCafe_RewardMenu_1:
-	compare VAR_TEMP_C, BATTLE_CAFE_PARADOX_REWARD_KORAIDON
-	goto_if_eq BattleCafe_RewardMenu_7
-	compare VAR_TEMP_C, BATTLE_CAFE_PARADOX_REWARD_MIRAIDON + BATTLE_CAFE_PARADOX_REWARD_KORAIDON
-	goto_if_eq BattleCafe_RewardMenu_7
-BattleCafe_RewardMenu_6:
+	dynmultipush BattleCafe_RewardMenu_Text_7, 3
+	dynmultipush BattleCafe_RewardMenu_Text_8, 4
+	dynmultipush BattleCafe_RewardMenu_Text_9, 5
+	dynmultipush BattleCafe_RewardMenu_Text_10, 6
+	dynmultipush BattleCafe_RewardMenu_Text_11, 16
+	dynmultipush BattleCafe_RewardMenu_Text_12, 17
+	dynmultipush BattleCafe_RewardMenu_Text_13, 18
+	dynmultipush BattleCafe_RewardMenu_Text_14, 19
 	dynmultipush BattleCafe_OptionsMenu_Text_5, 15
 	dynmultistack 0, 0, FALSE, 6, FALSE, 10, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
-	case 0, BattleCafe_RewardMenu_12
-	case 1, BattleCafe_RewardMenu_13
-	case 2, BattleCafe_RewardMenu_14
-	case 3, BattleCafe_RewardMenu_15
-	case 4, BattleCafe_RewardMenu_16
-	case 5, BattleCafe_RewardMenu_17
-	case 6, BattleCafe_RewardMenu_18
-	case 7, BattleCafe_RewardMenu_19
-	case 8, BattleCafe_RewardMenu_20
-	case 9, BattleCafe_RewardMenu_21
-	case 10, BattleCafe_RewardMenu_22
-	case 11, BattleCafe_RewardMenu_23
-	case 12, BattleCafe_RewardMenu_24
-	case 13, BattleCafe_RewardMenu_25
-	case 14, BattleCafe_RewardMenu_26
-	case 16, BattleCafe_RewardMenu_27
-	case 17, BattleCafe_RewardMenu_28
-	case 18, BattleCafe_RewardMenu_29
-	case 19, BattleCafe_RewardMenu_30
+	case 3, BattleCafe_RewardMenu_2
+	case 4, BattleCafe_RewardMenu_3
+	case 5, BattleCafe_RewardMenu_4
+	case 6, BattleCafe_RewardMenu_5
+	case 7, BattleCafe_RewardMenu_6
+	case 8, BattleCafe_RewardMenu_7
+	case 9, BattleCafe_RewardMenu_8
+	case 10, BattleCafe_RewardMenu_9
+	case 11, BattleCafe_RewardMenu_10
+	case 12, BattleCafe_RewardMenu_11
+	case 16, BattleCafe_RewardMenu_12
+	case 17, BattleCafe_RewardMenu_13
+	case 18, BattleCafe_RewardMenu_14
+	case 19, BattleCafe_RewardMenu_15
 	goto BattleCafe_OwnerMenu
 	return
 
 BattleCafe_RewardMenu_2:
-	dynmultipush BattleCafe_RewardMenu_Text_18, 13
-	goto BattleCafe_RewardMenu_1
-
-BattleCafe_RewardMenu_7:
-	dynmultipush BattleCafe_RewardMenu_Text_19, 14
-	goto BattleCafe_RewardMenu_6
-
-BattleCafe_RewardMenu_12:
-	goto BattleCafe_ChooseArticuno
-	return
-
-BattleCafe_RewardMenu_13:
-	goto BattleCafe_ChooseZapdos
-	return
-
-BattleCafe_RewardMenu_14:
-	goto BattleCafe_ChooseMoltres
-	return
-
-BattleCafe_RewardMenu_15:
 	goto BattleCafe_ChooseTornadus
 	return
 
-BattleCafe_RewardMenu_16:
+BattleCafe_RewardMenu_3:
 	goto BattleCafe_ChooseThundurus
 	return
 
-BattleCafe_RewardMenu_17:
+BattleCafe_RewardMenu_4:
 	goto BattleCafe_ChooseLandorus
 	return
 
-BattleCafe_RewardMenu_18:
+BattleCafe_RewardMenu_5:
 	goto BattleCafe_ChooseEnamorus
 	return
 
-BattleCafe_RewardMenu_19:
+BattleCafe_RewardMenu_6:
 	goto BattleCafe_ChooseShinyGenome
 	return
 
-BattleCafe_RewardMenu_20:
+BattleCafe_RewardMenu_7:
 	goto BattleCafe_ChooseGoldBottleCaps
 	return
 
-BattleCafe_RewardMenu_21:
+BattleCafe_RewardMenu_8:
 	goto BattleCafe_ChooseMoney
 	return
 
-BattleCafe_RewardMenu_22:
+BattleCafe_RewardMenu_9:
 	goto BattleCafe_ChooseVitaminSetAtk
 	return
 
-BattleCafe_RewardMenu_23:
+BattleCafe_RewardMenu_10:
 	goto BattleCafe_ChooseVitaminSetDef
 	return
 
-BattleCafe_RewardMenu_24:
+BattleCafe_RewardMenu_11:
 	goto BattleCafe_ChooseVitaminSetSpe
 	return
 
-BattleCafe_RewardMenu_25:
-	goto BattleCafe_ChooseMiraidon
-	return
-
-BattleCafe_RewardMenu_26:
-	goto BattleCafe_ChooseKoraidon
-	return
-
-BattleCafe_RewardMenu_27:
+BattleCafe_RewardMenu_12:
 	goto BattleCafe_ChooseTapuKoko
 	return
 
-BattleCafe_RewardMenu_28:
+BattleCafe_RewardMenu_13:
 	goto BattleCafe_ChooseTapuLele
 	return
 
-BattleCafe_RewardMenu_29:
+BattleCafe_RewardMenu_14:
 	goto BattleCafe_ChooseTapuBulu
 	return
 
-BattleCafe_RewardMenu_30:
+BattleCafe_RewardMenu_15:
 	goto BattleCafe_ChooseTapuFini
 	return
-
-
-BattleCafe_ChooseArticuno::
-	goto_if_set FLAG_BATTLE_CAFE_ARTICUNO_RECEIVED, BattleCafe_ChooseArticuno_2
-BattleCafe_ChooseArticuno_1:
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ARTICUNO_GALAR
-	setvar VAR_TEMP_B, 0
-	goto BattleCafe_ConfirmRewardMon
-	return
-
-BattleCafe_ChooseArticuno_2:
-	msgbox BattleCafe_ChooseArticuno_Text_0
-	goto BattleCafe_RewardMenu
-	goto BattleCafe_ChooseArticuno_1
-
-
-BattleCafe_ChooseZapdos::
-	goto_if_set FLAG_BATTLE_CAFE_ZAPDOS_RECEIVED, BattleCafe_ChooseZapdos_2
-BattleCafe_ChooseZapdos_1:
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ZAPDOS_GALAR
-	setvar VAR_TEMP_B, 1
-	goto BattleCafe_ConfirmRewardMon
-	return
-
-BattleCafe_ChooseZapdos_2:
-	msgbox BattleCafe_ChooseZapdos_Text_0
-	goto BattleCafe_RewardMenu
-	goto BattleCafe_ChooseZapdos_1
-
-
-BattleCafe_ChooseMoltres::
-	goto_if_set FLAG_BATTLE_CAFE_MOLTRES_RECEIVED, BattleCafe_ChooseMoltres_2
-BattleCafe_ChooseMoltres_1:
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MOLTRES_GALAR
-	setvar VAR_TEMP_B, 2
-	goto BattleCafe_ConfirmRewardMon
-	return
-
-BattleCafe_ChooseMoltres_2:
-	msgbox BattleCafe_ChooseMoltres_Text_0
-	goto BattleCafe_RewardMenu
-	goto BattleCafe_ChooseMoltres_1
 
 
 BattleCafe_ChooseTornadus::
@@ -1030,22 +940,19 @@ BattleCafe_ConfirmRewardMon_14:
 	hidemonpic
 	subvar VAR_BATTLE_CAFE_POINTS, 5
 	switch VAR_TEMP_B
-	case 0, BattleCafe_ConfirmRewardMon_21
-	case 1, BattleCafe_ConfirmRewardMon_22
-	case 2, BattleCafe_ConfirmRewardMon_23
-	case 3, BattleCafe_ConfirmRewardMon_24
-	case 4, BattleCafe_ConfirmRewardMon_25
-	case 5, BattleCafe_ConfirmRewardMon_26
-	case 6, BattleCafe_ConfirmRewardMon_27
-	case 7, BattleCafe_ConfirmRewardMon_28
-	case 8, BattleCafe_ConfirmRewardMon_29
-	case 9, BattleCafe_ConfirmRewardMon_30
-	case 10, BattleCafe_ConfirmRewardMon_31
+	case 3, BattleCafe_ConfirmRewardMon_21
+	case 4, BattleCafe_ConfirmRewardMon_22
+	case 5, BattleCafe_ConfirmRewardMon_23
+	case 6, BattleCafe_ConfirmRewardMon_24
+	case 7, BattleCafe_ConfirmRewardMon_25
+	case 8, BattleCafe_ConfirmRewardMon_26
+	case 9, BattleCafe_ConfirmRewardMon_27
+	case 10, BattleCafe_ConfirmRewardMon_28
 BattleCafe_ConfirmRewardMon_19:
 	special Achievement_CheckAll
 	compare VAR_TEMP_B, 3
-	goto_if_ge BattleCafe_ConfirmRewardMon_34
-BattleCafe_ConfirmRewardMon_32:
+	goto_if_ge BattleCafe_ConfirmRewardMon_31
+BattleCafe_ConfirmRewardMon_29:
 	msgbox BattleCafe_ConfirmRewardMon_Text_2
 	goto BattleCafe_RewardMenu
 	return
@@ -1084,139 +991,52 @@ BattleCafe_ConfirmRewardMon_17:
 	goto BattleCafe_ConfirmRewardMon_7
 
 BattleCafe_ConfirmRewardMon_21:
-	setflag FLAG_BATTLE_CAFE_ARTICUNO_RECEIVED
-	goto BattleCafe_ConfirmRewardMon_19
-
-BattleCafe_ConfirmRewardMon_22:
-	setflag FLAG_BATTLE_CAFE_ZAPDOS_RECEIVED
-	goto BattleCafe_ConfirmRewardMon_19
-
-BattleCafe_ConfirmRewardMon_23:
-	setflag FLAG_BATTLE_CAFE_MOLTRES_RECEIVED
-	goto BattleCafe_ConfirmRewardMon_19
-
-BattleCafe_ConfirmRewardMon_24:
 	setflag FLAG_BATTLE_CAFE_TORNADUS_RECEIVED
 	goto BattleCafe_ConfirmRewardMon_19
 
-BattleCafe_ConfirmRewardMon_25:
+BattleCafe_ConfirmRewardMon_22:
 	setflag FLAG_BATTLE_CAFE_THUNDURUS_RECEIVED
 	goto BattleCafe_ConfirmRewardMon_19
 
-BattleCafe_ConfirmRewardMon_26:
+BattleCafe_ConfirmRewardMon_23:
 	setflag FLAG_BATTLE_CAFE_LANDORUS_RECEIVED
 	goto BattleCafe_ConfirmRewardMon_19
 
-BattleCafe_ConfirmRewardMon_27:
+BattleCafe_ConfirmRewardMon_24:
 	setflag FLAG_BATTLE_CAFE_ENAMORUS_RECEIVED
 	goto BattleCafe_ConfirmRewardMon_19
 
-BattleCafe_ConfirmRewardMon_28:
+BattleCafe_ConfirmRewardMon_25:
 	setflag FLAG_BATTLE_CAFE_TAPU_KOKO_RECEIVED
 	goto BattleCafe_ConfirmRewardMon_19
 
-BattleCafe_ConfirmRewardMon_29:
+BattleCafe_ConfirmRewardMon_26:
 	setflag FLAG_BATTLE_CAFE_TAPU_LELE_RECEIVED
 	goto BattleCafe_ConfirmRewardMon_19
 
-BattleCafe_ConfirmRewardMon_30:
+BattleCafe_ConfirmRewardMon_27:
 	setflag FLAG_BATTLE_CAFE_TAPU_BULU_RECEIVED
 	goto BattleCafe_ConfirmRewardMon_19
 
-BattleCafe_ConfirmRewardMon_31:
+BattleCafe_ConfirmRewardMon_28:
 	setflag FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED
 	goto BattleCafe_ConfirmRewardMon_19
 
-BattleCafe_ConfirmRewardMon_33:
+BattleCafe_ConfirmRewardMon_30:
 	checkitem ITEM_REVEAL_GLASS
 	compare VAR_RESULT, FALSE
-	goto_if_eq BattleCafe_ConfirmRewardMon_37
-	goto BattleCafe_ConfirmRewardMon_32
+	goto_if_eq BattleCafe_ConfirmRewardMon_34
+	goto BattleCafe_ConfirmRewardMon_29
+
+BattleCafe_ConfirmRewardMon_31:
+	compare VAR_TEMP_B, 6
+	goto_if_le BattleCafe_ConfirmRewardMon_30
+	goto BattleCafe_ConfirmRewardMon_29
 
 BattleCafe_ConfirmRewardMon_34:
-	compare VAR_TEMP_B, 6
-	goto_if_le BattleCafe_ConfirmRewardMon_33
-	goto BattleCafe_ConfirmRewardMon_32
-
-BattleCafe_ConfirmRewardMon_37:
 	msgbox BattleCafe_ConfirmRewardMon_Text_1
 	giveitem ITEM_REVEAL_GLASS
-	goto BattleCafe_ConfirmRewardMon_32
-
-
-BattleCafe_ChooseMiraidon::
-	goto_if_set FLAG_BATTLE_CAFE_MIRAIDON_RECEIVED, BattleCafe_ChooseMiraidon_2
-BattleCafe_ChooseMiraidon_1:
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MIRAIDON
-	setvar VAR_TEMP_B, 0
-	goto BattleCafe_ConfirmParadoxLegend
-	return
-
-BattleCafe_ChooseMiraidon_2:
-	msgbox BattleCafe_ChooseMiraidon_Text_0
-	goto BattleCafe_RewardMenu
-	goto BattleCafe_ChooseMiraidon_1
-
-
-BattleCafe_ChooseKoraidon::
-	goto_if_set FLAG_BATTLE_CAFE_KORAIDON_RECEIVED, BattleCafe_ChooseKoraidon_2
-BattleCafe_ChooseKoraidon_1:
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_KORAIDON
-	setvar VAR_TEMP_B, 1
-	goto BattleCafe_ConfirmParadoxLegend
-	return
-
-BattleCafe_ChooseKoraidon_2:
-	msgbox BattleCafe_ChooseKoraidon_Text_0
-	goto BattleCafe_RewardMenu
-	goto BattleCafe_ChooseKoraidon_1
-
-
-BattleCafe_ConfirmParadoxLegend::
-	compare VAR_BATTLE_CAFE_POINTS, 25
-	goto_if_lt BattleCafe_ConfirmParadoxLegend_2
-BattleCafe_ConfirmParadoxLegend_1:
-	bufferspeciesname STR_VAR_1, VAR_TEMP_TRANSFERRED_SPECIES
-	msgbox BattleCafe_ConfirmParadoxLegend_Text_0, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_ne BattleCafe_ConfirmParadoxLegend_5
-BattleCafe_ConfirmParadoxLegend_4:
-	givemon VAR_TEMP_TRANSFERRED_SPECIES, 70
-	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_eq BattleCafe_ConfirmParadoxLegend_8
-BattleCafe_ConfirmParadoxLegend_7:
-	showgivemonpic 10, 3
-	call Common_EventScript_GiftMon
-	hidemonpic
-	subvar VAR_BATTLE_CAFE_POINTS, 25
-	switch VAR_TEMP_B
-	case 0, BattleCafe_ConfirmParadoxLegend_12
-	case 1, BattleCafe_ConfirmParadoxLegend_13
-BattleCafe_ConfirmParadoxLegend_10:
-	special Achievement_CheckAll
-	msgbox BattleCafe_ConfirmParadoxLegend_Text_1
-	goto BattleCafe_RewardMenu
-	return
-
-BattleCafe_ConfirmParadoxLegend_2:
-	goto BattleCafe_NotEnoughLegendPoints
-	goto BattleCafe_ConfirmParadoxLegend_1
-
-BattleCafe_ConfirmParadoxLegend_5:
-	goto BattleCafe_RewardMenu
-	goto BattleCafe_ConfirmParadoxLegend_4
-
-BattleCafe_ConfirmParadoxLegend_8:
-	goto Common_EventScript_NoMoreRoomForPokemon
-	goto BattleCafe_ConfirmParadoxLegend_7
-
-BattleCafe_ConfirmParadoxLegend_12:
-	setflag FLAG_BATTLE_CAFE_MIRAIDON_RECEIVED
-	goto BattleCafe_ConfirmParadoxLegend_10
-
-BattleCafe_ConfirmParadoxLegend_13:
-	setflag FLAG_BATTLE_CAFE_KORAIDON_RECEIVED
-	goto BattleCafe_ConfirmParadoxLegend_10
+	goto BattleCafe_ConfirmRewardMon_29
 
 
 BattleCafe_ChooseShinyGenome::
@@ -2007,55 +1827,28 @@ BattleCafe_RewardMenu_Text_6:
 	.string "¥250,000 - 5$"
 
 BattleCafe_RewardMenu_Text_7:
-	.string "G. Articuno - 5$"
-
-BattleCafe_RewardMenu_Text_8:
-	.string "G. Zapdos - 5$"
-
-BattleCafe_RewardMenu_Text_9:
-	.string "G. Moltres - 5$"
-
-BattleCafe_RewardMenu_Text_10:
 	.string "Tornadus - 5$"
 
-BattleCafe_RewardMenu_Text_11:
+BattleCafe_RewardMenu_Text_8:
 	.string "Thundurus - 5$"
 
-BattleCafe_RewardMenu_Text_12:
+BattleCafe_RewardMenu_Text_9:
 	.string "Landorus - 5$"
 
-BattleCafe_RewardMenu_Text_13:
+BattleCafe_RewardMenu_Text_10:
 	.string "Enamorus - 5$"
 
-BattleCafe_RewardMenu_Text_14:
+BattleCafe_RewardMenu_Text_11:
 	.string "Tapu Koko - 5$"
 
-BattleCafe_RewardMenu_Text_15:
+BattleCafe_RewardMenu_Text_12:
 	.string "Tapu Lele - 5$"
 
-BattleCafe_RewardMenu_Text_16:
+BattleCafe_RewardMenu_Text_13:
 	.string "Tapu Bulu - 5$"
 
-BattleCafe_RewardMenu_Text_17:
+BattleCafe_RewardMenu_Text_14:
 	.string "Tapu Fini - 5$"
-
-BattleCafe_RewardMenu_Text_18:
-	.string "Miraidon - 25$"
-
-BattleCafe_RewardMenu_Text_19:
-	.string "Koraidon - 25$"
-
-BattleCafe_ChooseArticuno_Text_0:
-	.string "I've already entrusted Galarian\n"
-	.string "Articuno to you.$"
-
-BattleCafe_ChooseZapdos_Text_0:
-	.string "I've already entrusted Galarian\n"
-	.string "Zapdos to you.$"
-
-BattleCafe_ChooseMoltres_Text_0:
-	.string "I've already entrusted Galarian\n"
-	.string "Moltres to you.$"
 
 BattleCafe_ChooseTornadus_Text_0:
 	.string "I've already entrusted Tornadus\n"
@@ -2099,22 +1892,6 @@ BattleCafe_ConfirmRewardMon_Text_1:
 BattleCafe_ConfirmRewardMon_Text_2:
 	.string "A fair trade. I'm sure it'll fit right\n"
 	.string "into your team.$"
-
-BattleCafe_ChooseMiraidon_Text_0:
-	.string "I've already entrusted Miraidon\n"
-	.string "to you.$"
-
-BattleCafe_ChooseKoraidon_Text_0:
-	.string "I've already entrusted Koraidon\n"
-	.string "to you.$"
-
-BattleCafe_ConfirmParadoxLegend_Text_0:
-	.string "Exchange 25 Café Points for\n"
-	.string "{STR_VAR_1}?$"
-
-BattleCafe_ConfirmParadoxLegend_Text_1:
-	.string "A rare specimen from Paldea. Take good\n"
-	.string "care of it!$"
 
 BattleCafe_ChooseShinyGenome_Text_0:
 	.string "Exchange 4 Café Points for a\n"

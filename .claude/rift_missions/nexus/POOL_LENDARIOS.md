@@ -240,8 +240,8 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Solgaleo** | evolui de Cosmoem (Lv53) |  |
 | **Lunala** | evolui de Cosmoem (Lv53) |  |
 | **Necrozma** | presente (givemon) — `UltraSpaceArena` Lv75 | NECROZMA, NECROZMA_DUSK_MANE, NECROZMA_DAWN_WINGS, NECROZMA_ULTRA |
-| **Koraidon** | recompensa do Battle Café (25 pontos, Lv70) — `BattleCafe` |  |
-| **Miraidon** | recompensa do Battle Café (25 pontos, Lv70) — `BattleCafe` |  |
+| **Koraidon** | Boss Fight (3 barras) — `SeafoamIslands_SecretCave` Lv75; FORA do Café desde 19/10 |  |
+| **Miraidon** | Boss Fight (3 barras) — `Route19_Cave` Lv75; FORA do Café desde 19/10 |  |
 | **Okidogi** | evento do Steven em `VermilionCity` (19/10/2026): escolhido → roamer de Kanto Lv60; preterido → `SouthernIsland_Interior` Lv60 |  |
 | **Munkidori** | mesmo evento do Steven: o par do Okidogi (um roama, o outro na Southern Island) |  |
 | **Terapagos** | ovo do rival no topo do Mt. Silver (19/10/2026), após a batalha final dele — com pendência retomável se party+PC cheios |  |
@@ -255,12 +255,12 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Spectrier** | encontro estático (seteventmon) — `BrassTowerMemory_Roof` Lv60, caminho escuro do Berry Master (03/10/2026). Mesma regra do Glastrier |  |
 | **Silvally** | evolui de Type Null (amizade) |  |
 | **Ogerpon** | boss (bosslegendaryencounter) — `KitakamiMountainEnclave` Lv55 |  |
-| **Articuno** | encontro estático (seteventmon) — `SeafoamIslands_B1F` Lv50; encontro estático — `SnowtopMountainOutside` Lv50 |  |
-| **Articuno de Galar** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
-| **Zapdos** | encontro estático — `OlivineCity_LighthouseTop` Lv50; encontro estático (seteventmon) — `Route10` Lv50 |  |
-| **Zapdos de Galar** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
-| **Moltres** | encontro estático — `VictoryRoadKanto_B1F` Lv60 |  |
-| **Moltres de Galar** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
+| **Articuno** | Boss Fight (2 barras) — `SeafoamIslands_B1F` Lv50 |  |
+| **Articuno de Galar** | Boss Fight (2 barras) — `SnowtopMountainOutside` Lv60 (saiu do Café) |  |
+| **Zapdos** | Boss Fight (2 barras) — `Route10` Lv50 |  |
+| **Zapdos de Galar** | Boss Fight (2 barras) — `OlivineCity_LighthouseTop` Lv60 (saiu do Café) |  |
+| **Moltres** | Boss Fight (2 barras) — `MtSilver_1F_MoltresRoom` Lv50 |  |
+| **Moltres de Galar** | Boss Fight (2 barras) — `VictoryRoadKanto_B1F` Lv60 (saiu do Café) |  |
 | **Raikou** | roamer (após Burned Tower / Hall of Fame) — `BurnedTower_B1F` |  |
 | **Entei** | roamer (após Burned Tower / Hall of Fame) — `BurnedTower_B1F` |  |
 | **Suicune** | encontro estático (seteventmon) — `Route25` Lv50; roamer (após Burned Tower / Hall of Fame) — `BurnedTower_B1F` |  |
@@ -356,6 +356,6 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 - **As 7 UBs das missões + Stakataka e Blacephalon** aparecem só como batalha sem captura (Rift Missions). O design prevê a Anabel vendendo Beast Balls no `UltraSpaceArena` (§10), o que já aponta para o loop como o lugar onde elas passam a ser capturáveis.
 - **Necrozma** é presente no fim do clímax (`UltraSpaceArena`, Lv75). O Ultra Necrozma do boss não é capturável. Dusk Mane e Dawn Wings dependem de fusão com Solgaleo/Lunala.
 - **Evoluções customizadas:** Manaphy evolui de **Phione** no Lv58 (Phione é pescado na `Route33South_2`); Melmetal de Meltan no Lv60; Naganadel de Poipole no Lv50; Cosmog → Cosmoem (Lv43) → Solgaleo/Lunala (Lv53). Os pergaminhos do Urshifu são vendidos no `GoldenrodBattleAracdeLobby`.
-- **Battle Café** troca 5 pontos por um Lv70 de: Tornadus, Thundurus, Landorus, Enamorus, os quatro Tapus, as três aves de Galar, Koraidon e Miraidon por 25 pontos (e Diancie como presente à parte). DECISÃO 19/10: Koraidon/Miraidon ganharão casas próprias (cavernas de Seafoam/Route 19) e sairão do Café quando entregues.
+- **Battle Café** troca 5 pontos por um Lv70 de: Tornadus, Thundurus, Landorus, Enamorus, os quatro Tapus, e os quatro Tapus (e Diancie como presente à parte). FEITO 19/10: aves de Galar, Koraidon e Miraidon saíram do Café e viraram Boss Fights (casas próprias).
 - **Celebi** tem uma entrada na tabela da Hidden Grotto, mas é a `HIDDEN_GROTTO_JOHTO_UNUSED2`; o método real é o evento da Ilex Forest.
 - **Lendários já capturados continuam elegíveis** no loop (design §10). Esta tabela diz só se há **algum** jeito de obter; não restringe o pool.

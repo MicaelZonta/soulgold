@@ -15,7 +15,6 @@ MtMoon_Outside_EventScript_Clefairy::
 	waitse
 	playmoncry SPECIES_CLEFAIRY, CRY_MODE_NORMAL
 	msgbox MtMoon_Outside_Text_Clefairy, MSGBOX_DEFAULT
-	waitmoncry
 	release
 	end
 
@@ -77,7 +76,6 @@ MtMoon_Outside_EventScript_WhiteRockSpawnJirachi::
 	waitse
 	playse SE_LEDGE
 	waitmovement 0
-	playmoncry SPECIES_JIRACHI, CRY_MODE_NORMAL
 	applymovement2 OBJ_EVENT_ID_CAMERA, MtMoon_Outside_Movement_CameraPanUp
 	waitmovement 0
 	special RemoveCameraObject
@@ -122,19 +120,7 @@ MtMoon_Outside_EventScript_Jirachi::
 	msgbox MtMoon_Outside_Text_Jirachi
 	delay 40
 	waitmoncry
-	seteventmon SPECIES_JIRACHI, 50
-	special BattleSetup_StartLegendaryBattle
-	waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MtMoon_Outside_EventScript_JirachiRan
-	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject LOCALID_MTMOON_JIRACHI
-	setflag FLAG_HIDE_MTMOON_JIRACHI
-	fadescreenswapbuffers FADE_FROM_BLACK
-	release
-	end
-
-MtMoon_Outside_EventScript_JirachiRan::
+	bosslegendaryencounter SPECIES_JIRACHI, 50, LOCALID_MTMOON_JIRACHI, FLAG_HIDE_MTMOON_JIRACHI, 2
 	release
 	end
 

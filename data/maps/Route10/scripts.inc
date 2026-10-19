@@ -64,23 +64,9 @@ Route10_EventScript_PPSign::
 Route10_EventScript_Zapdos::
 	lock
 	faceplayer
-	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
 	msgbox SeafoamIslands_B1F_Text_ArticunoBattle
 	delay 40
-	waitmoncry
-	seteventmon SPECIES_ZAPDOS, 50
-	special BattleSetup_StartLegendaryBattle
-waitstate
-	specialvar VAR_RESULT, GetBattleOutcome
-	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, Route10_EventScript_ZapdosRan
-	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject LOCALID_ROUTE10_ZAPDOS
-	setflag FLAG_HIDE_ZAPDOS
-	fadescreenswapbuffers FADE_FROM_BLACK
-	release
-	end
-
-Route10_EventScript_ZapdosRan::
+	bosslegendaryencounter SPECIES_ZAPDOS, 50, LOCALID_ROUTE10_ZAPDOS, FLAG_HIDE_ZAPDOS, 2
 	release
 	end
 

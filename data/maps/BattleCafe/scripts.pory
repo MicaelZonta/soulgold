@@ -682,17 +682,12 @@ script BattleCafe_RewardMenu {
     buffernumberstring(STR_VAR_1, VAR_BATTLE_CAFE_POINTS)
     msgbox("You have {STR_VAR_1} Café Points.
             Anything you want to exchange for?")
-    special(BattleCafe_GetParadoxRewardEligibility)
-    copyvar(VAR_TEMP_C, VAR_RESULT)
     dynmultipush("Vitamin Set Atk - 4", 10)
     dynmultipush("Vitamin Set Def - 4", 11)
     dynmultipush("Vitamin Set Spe - 2", 12)
     dynmultipush("Shiny Genome - 4", 7)
     dynmultipush("2 Gold Caps - 5", 8)
     dynmultipush("¥250,000 - 5", 9)
-    dynmultipush("G. Articuno - 5", 0)
-    dynmultipush("G. Zapdos - 5", 1)
-    dynmultipush("G. Moltres - 5", 2)
     dynmultipush("Tornadus - 5", 3)
     dynmultipush("Thundurus - 5", 4)
     dynmultipush("Landorus - 5", 5)
@@ -701,20 +696,9 @@ script BattleCafe_RewardMenu {
     dynmultipush("Tapu Lele - 5", 17)
     dynmultipush("Tapu Bulu - 5", 18)
     dynmultipush("Tapu Fini - 5", 19)
-    if (var(VAR_TEMP_C) == BATTLE_CAFE_PARADOX_REWARD_MIRAIDON
-        || var(VAR_TEMP_C) == BATTLE_CAFE_PARADOX_REWARD_MIRAIDON + BATTLE_CAFE_PARADOX_REWARD_KORAIDON) {
-        dynmultipush("Miraidon - 25", 13)
-    }
-    if (var(VAR_TEMP_C) == BATTLE_CAFE_PARADOX_REWARD_KORAIDON
-        || var(VAR_TEMP_C) == BATTLE_CAFE_PARADOX_REWARD_MIRAIDON + BATTLE_CAFE_PARADOX_REWARD_KORAIDON) {
-        dynmultipush("Koraidon - 25", 14)
-    }
     dynmultipush("Back", 15)
     dynmultistack(0, 0, FALSE, 6, FALSE, 10, DYN_MULTICHOICE_CB_NONE)
     switch (var(VAR_RESULT)) {
-        case 0: goto(BattleCafe_ChooseArticuno)
-        case 1: goto(BattleCafe_ChooseZapdos)
-        case 2: goto(BattleCafe_ChooseMoltres)
         case 3: goto(BattleCafe_ChooseTornadus)
         case 4: goto(BattleCafe_ChooseThundurus)
         case 5: goto(BattleCafe_ChooseLandorus)
@@ -725,47 +709,12 @@ script BattleCafe_RewardMenu {
         case 10: goto(BattleCafe_ChooseVitaminSetAtk)
         case 11: goto(BattleCafe_ChooseVitaminSetDef)
         case 12: goto(BattleCafe_ChooseVitaminSetSpe)
-        case 13: goto(BattleCafe_ChooseMiraidon)
-        case 14: goto(BattleCafe_ChooseKoraidon)
         case 16: goto(BattleCafe_ChooseTapuKoko)
         case 17: goto(BattleCafe_ChooseTapuLele)
         case 18: goto(BattleCafe_ChooseTapuBulu)
         case 19: goto(BattleCafe_ChooseTapuFini)
         default: goto(BattleCafe_OwnerMenu)
     }
-}
-
-script BattleCafe_ChooseArticuno {
-    if (flag(FLAG_BATTLE_CAFE_ARTICUNO_RECEIVED)) {
-        msgbox("I've already entrusted Galarian
-                Articuno to you.")
-        goto(BattleCafe_RewardMenu)
-    }
-    setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ARTICUNO_GALAR)
-    setvar(VAR_TEMP_B, 0)
-    goto(BattleCafe_ConfirmRewardMon)
-}
-
-script BattleCafe_ChooseZapdos {
-    if (flag(FLAG_BATTLE_CAFE_ZAPDOS_RECEIVED)) {
-        msgbox("I've already entrusted Galarian
-                Zapdos to you.")
-        goto(BattleCafe_RewardMenu)
-    }
-    setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ZAPDOS_GALAR)
-    setvar(VAR_TEMP_B, 1)
-    goto(BattleCafe_ConfirmRewardMon)
-}
-
-script BattleCafe_ChooseMoltres {
-    if (flag(FLAG_BATTLE_CAFE_MOLTRES_RECEIVED)) {
-        msgbox("I've already entrusted Galarian
-                Moltres to you.")
-        goto(BattleCafe_RewardMenu)
-    }
-    setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MOLTRES_GALAR)
-    setvar(VAR_TEMP_B, 2)
-    goto(BattleCafe_ConfirmRewardMon)
 }
 
 script BattleCafe_ChooseTornadus {
@@ -883,9 +832,6 @@ script BattleCafe_ConfirmRewardMon {
     hidemonpic
     subvar(VAR_BATTLE_CAFE_POINTS, 5)
     switch (var(VAR_TEMP_B)) {
-        case 0: setflag(FLAG_BATTLE_CAFE_ARTICUNO_RECEIVED)
-        case 1: setflag(FLAG_BATTLE_CAFE_ZAPDOS_RECEIVED)
-        case 2: setflag(FLAG_BATTLE_CAFE_MOLTRES_RECEIVED)
         case 3: setflag(FLAG_BATTLE_CAFE_TORNADUS_RECEIVED)
         case 4: setflag(FLAG_BATTLE_CAFE_THUNDURUS_RECEIVED)
         case 5: setflag(FLAG_BATTLE_CAFE_LANDORUS_RECEIVED)
@@ -904,56 +850,6 @@ script BattleCafe_ConfirmRewardMon {
     }
     msgbox("A fair trade. I'm sure it'll fit right
             into your team.")
-    goto(BattleCafe_RewardMenu)
-}
-
-script BattleCafe_ChooseMiraidon {
-    if (flag(FLAG_BATTLE_CAFE_MIRAIDON_RECEIVED)) {
-        msgbox("I've already entrusted Miraidon
-                to you.")
-        goto(BattleCafe_RewardMenu)
-    }
-    setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MIRAIDON)
-    setvar(VAR_TEMP_B, 0)
-    goto(BattleCafe_ConfirmParadoxLegend)
-}
-
-script BattleCafe_ChooseKoraidon {
-    if (flag(FLAG_BATTLE_CAFE_KORAIDON_RECEIVED)) {
-        msgbox("I've already entrusted Koraidon
-                to you.")
-        goto(BattleCafe_RewardMenu)
-    }
-    setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_KORAIDON)
-    setvar(VAR_TEMP_B, 1)
-    goto(BattleCafe_ConfirmParadoxLegend)
-}
-
-script BattleCafe_ConfirmParadoxLegend {
-    if (var(VAR_BATTLE_CAFE_POINTS) < 25) {
-        goto(BattleCafe_NotEnoughLegendPoints)
-    }
-    bufferspeciesname(STR_VAR_1, VAR_TEMP_TRANSFERRED_SPECIES)
-    msgbox("Exchange 25 Café Points for
-            {STR_VAR_1}?", MSGBOX_YESNO)
-    if (var(VAR_RESULT) != YES) {
-        goto(BattleCafe_RewardMenu)
-    }
-    givemon(VAR_TEMP_TRANSFERRED_SPECIES, 70)
-    if (var(VAR_RESULT) == MON_CANT_GIVE) {
-        goto(Common_EventScript_NoMoreRoomForPokemon)
-    }
-    showgivemonpic(10, 3)
-    call(Common_EventScript_GiftMon)
-    hidemonpic
-    subvar(VAR_BATTLE_CAFE_POINTS, 25)
-    switch (var(VAR_TEMP_B)) {
-        case 0: setflag(FLAG_BATTLE_CAFE_MIRAIDON_RECEIVED)
-        case 1: setflag(FLAG_BATTLE_CAFE_KORAIDON_RECEIVED)
-    }
-    special(Achievement_CheckAll)
-    msgbox("A rare specimen from Paldea. Take good
-            care of it!")
     goto(BattleCafe_RewardMenu)
 }
 

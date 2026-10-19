@@ -20,7 +20,7 @@ SnowtopMountainOutside_Snover::
 SnowtopMountainOutside_Articuno::
 	lock
 	faceplayer
-	legendaryencounter SPECIES_ARTICUNO, 50, LOCALID_ARTICUNO, FLAG_HIDE_ARTICUNO
+	bosslegendaryencounter SPECIES_ARTICUNO_GALAR, 60, LOCALID_ARTICUNO, FLAG_HIDE_ARTICUNO_GALAR, 2
 	release
 	end
 

@@ -3,7 +3,7 @@ OlivineCity_LighthouseTop_MapScripts::
 	.byte 0
 
 OlivineCity_LighthouseTop_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto_if_unset FLAG_HIDE_ZAPDOS, OlivineCity_LighthouseTop_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	goto_if_unset FLAG_HIDE_ZAPDOS_GALAR, OlivineCity_LighthouseTop_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	setweather WEATHER_NONE
 	return
 
@@ -15,7 +15,7 @@ OlivineCity_LighthouseTop_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 Lighthousetop_Zapdos::
 	lock
 	faceplayer
-	legendaryencounter SPECIES_ZAPDOS, 50, LOCALID_LIGHTHOUSE_ZAPDOS, FLAG_HIDE_ZAPDOS
+	bosslegendaryencounter SPECIES_ZAPDOS_GALAR, 60, LOCALID_LIGHTHOUSE_ZAPDOS, FLAG_HIDE_ZAPDOS_GALAR, 2
 	release
 	end
 

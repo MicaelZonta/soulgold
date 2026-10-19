@@ -1,6 +1,6 @@
 mapscripts OlivineCity_LighthouseTop_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        if (flag(FLAG_HIDE_ZAPDOS) == FALSE) {
+        if (flag(FLAG_HIDE_ZAPDOS_GALAR) == FALSE) {
             setweather(WEATHER_RAIN_THUNDERSTORM)
         } else {
             setweather(WEATHER_NONE)
@@ -11,7 +11,7 @@ mapscripts OlivineCity_LighthouseTop_MapScripts {
 script Lighthousetop_Zapdos {
     lock
     faceplayer
-    legendaryencounter(SPECIES_ZAPDOS, 50, LOCALID_LIGHTHOUSE_ZAPDOS, FLAG_HIDE_ZAPDOS)
+    bosslegendaryencounter(SPECIES_ZAPDOS_GALAR, 60, LOCALID_LIGHTHOUSE_ZAPDOS, FLAG_HIDE_ZAPDOS_GALAR, 2)
     release
     end
 }

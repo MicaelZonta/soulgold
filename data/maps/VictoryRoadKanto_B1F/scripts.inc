@@ -9,14 +9,14 @@ VictoryRoadKanto_B1F_OnTransition::
 
 
 
-VictoryRoadKanto_B1F_EventScript_MoltresRanLegado:: @ label duplicado com o MoltresRoom importado; B1F sera refeito na Fase 5 (Moltres-Galar)
+MtSilver_1F_MoltresRoom_EventScript_MoltresRan::
 	release
 	end
 
 VictoryRoadKanto_B1F_EventScript_Moltres::
 	lock
 	faceplayer
-	legendaryencounter SPECIES_MOLTRES, 60, LOCALID_VICTORYROAD_MOLTRES, FLAG_HIDE_MOLTRES
+	bosslegendaryencounter SPECIES_MOLTRES_GALAR, 60, LOCALID_VICTORYROAD_MOLTRES, FLAG_HIDE_MOLTRES_GALAR, 2
 	release
 	end
 

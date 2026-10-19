@@ -2104,8 +2104,15 @@
 // Mom's Savings (porte do HnS, Fase 6): a mae tem um presente comprado com a
 // poupanca esperando o jogador (setada em mom_savings.c, lida na ligacao).
 #define FLAG_MOM_HAS_GIFT                            0x111F
-#define CUSTOM_FLAGS_END                            FLAG_MOM_HAS_GIFT
-// PROXIMA FLAG NOVA: 0x1120 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Fase 7 (19/10/2026): aves de Galar com encontro proprio em Johto e
+// Koraidon/Miraidon nas cavernas de Kanto (saem do Battle Cafe ao entrar).
+#define FLAG_HIDE_ARTICUNO_GALAR                     0x1120 // Snowtop Mountain
+#define FLAG_HIDE_ZAPDOS_GALAR                       0x1121 // farol de Olivine
+#define FLAG_HIDE_MOLTRES_GALAR                      0x1122 // Victory Road Kanto B1F
+#define FLAG_HIDE_KORAIDON                           0x1123 // Seafoam SecretCave (sala do Groudon do HnS)
+#define FLAG_HIDE_MIRAIDON                           0x1124 // Route19_Cave (sala do Kyogre do HnS)
+#define CUSTOM_FLAGS_END                            FLAG_HIDE_MIRAIDON
+// PROXIMA FLAG NOVA: 0x1125 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

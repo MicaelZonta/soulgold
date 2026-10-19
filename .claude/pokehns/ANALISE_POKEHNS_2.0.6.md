@@ -423,7 +423,22 @@ Docs: `.claude/merge_hns/fase6_{radio,roamers,mom_surf_fanfarras}.md`.
   4. **Match Call GSC** (reverter `FREE_MATCH_CALL`, redesenhar headers);
   5. **Mom's Savings**, **surf sprites Gen 4**, **fanfarras HGSS**.
 
-**Fase 7 — Lendários + Battle Café**
+**Fase 7 — Lendários + Battle Café** ✅ FEITA (19/10/2026). Docs:
+`merge_hns/fase7_trio_leal.md` + `fase7_bosses_e_casas.md`.
+- Trio Leal: Steven/Vermilion (Okidogi×Munkidori: roamer Lv60 + Southern
+  Island Lv60); Fezandipiti já em Kitakami; Pecharunt = evento futuro com o
+  trio capturado. Ilhas do barco de volta à ROM (Southern/Birth/Faraway).
+- 10 encontros viraram Boss Fight: aves de Kanto Lv50/2 barras (Seafoam,
+  Route 10, sala do Moltres no Mt. Silver), Jirachi 50/2, Deoxys 70/3
+  (puzzle intacto), **Koraidon 75/3** (SecretCave de Seafoam, ex-Groudon),
+  **Miraidon 75/3** (Route19_Cave, ex-Kyogre), aves de **Galar 60/2** em
+  Johto (Snowtop/farol de Olivine/Victory Road B1F) com flags próprias —
+  as 6 aves coexistem.
+- Café: as 3 Galar + Koraidon/Miraidon removidos (.pory); achievements
+  migrados para checagem de captura real; cry duplicado das cenas removido.
+- Summit: Red×rival por dia da semana + ovo de Terapagos (feito antes).
+- Pendências F7: respawn pós-HOF dos novos bosses (integrar ao hub da HOF),
+  cena do Steven antigo citava "jato no céu" — já reescrita; QA no jogo.
 - Executar a tabela de decisão da Parte D; remover do Café o que ficou
   obtível; aves Galarian em Johto com flags novas; atualizar
   `POOL_LENDARIOS.md`.
