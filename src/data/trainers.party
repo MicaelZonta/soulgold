@@ -23594,3 +23594,173 @@ IVs: 0 Atk
 - Tailwind  
 - Feather Dance  
 
+
+=== TRAINER_SKYLAR ===
+Name: SKYLAR
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move
+
+Scyther @ King's Rock  
+Ability: Technician  
+Level: 70
+EVs: 4 HP / 252 Atk / 252 Spe  
+Hasty Nature  
+- Dual Wingbeat  
+- Close Combat  
+- Lunge  
+- Psycho Cut  
+
+Gliscor @ Toxic Orb  
+Ability: Poison Heal  
+Level: 70 
+EVs: 124 Atk / 252 Def / 132 SpD  
+Adamant Nature  
+- Tailwind  
+- Fling  
+- Acrobatics  
+- Earthquake  
+
+Crobat @ Big Root  
+Ability: Inner Focus  
+Level: 70 
+EVs: 252 HP / 252 Atk / 4 SpD  
+Adamant Nature  
+- Cross Poison  
+- Brave Bird  
+- Roost  
+- Leech Life  
+
+Swellow @ Flame Orb  
+Ability: Guts  
+Level: 70  
+EVs: 252 Atk / 252 Spe  
+Adamant Nature  
+- Facade  
+- Roost  
+- Steel Wing  
+- Tailwind  
+
+Fearow @ Scope Lens  
+Ability: Sniper  
+Level: 70  
+EVs: 252 Atk / 252 Spe  
+Naive Nature  
+- Drill Run  
+- Focus Energy  
+- Drill Peck  
+- Double-Edge  
+
+
+=== TRAINER_FINLEY ===
+Name: FINLEY
+Class: Sage
+Pic: Sage
+Music: Hg Sage
+Gender: Male
+Double Battle: Yes
+AI: Smart Trainer / Prediction
+
+Flygon @ Focus Sash  
+Ability: Levitate  
+Level: 70 
+EVs: 252 SpA / 252 Spe  
+Modest Nature  
+IVs: 0 Atk  
+- Dragon Cheer  
+- Alluring Voice  
+- Heat Wave  
+- Scorching Sands  
+
+Salamence @ Draco Plate
+Ability: Intimidate  
+Level: 70  
+EVs: 252 Atk / 248 Spe  
+Adamant Nature  
+- Dragon Dance  
+- Dragon Rush  
+- Crunch  
+- Temper Flare  
+
+Kingdra @ Scope Lens  
+Ability: Sniper  
+Level: 70  
+EVs: 148 Def / 252 SpA / 108 SpD  
+Modest Nature  
+IVs: 0 Atk  
+- Flash Cannon  
+- Muddy Water  
+- Whirlpool  
+- Agility  
+
+Exeggutor-Alola @ White Herb  
+Ability: Frisk  
+Level: 70 
+- Light Screen  
+- Draco Meteor  
+- Outrage  
+- Seed Bomb  
+
+
+=== TRAINER_WESSEL ===
+Name: WESSEL
+Class: Super Nerd
+Pic: Super Nerd
+Gender: Male
+Music: Hg Suspicious 1
+Double Battle: No
+AI: Check Bad Move
+
+Dugtrio-Alola @ Focus Sash  
+Ability: Sand Force  
+Level: 70  
+EVs: 252 Atk / 252 Spe  
+- Earthquake  
+- Iron Head  
+- Stealth Rock  
+- Swords Dance  
+
+Steelix @ Assault Vest  
+Ability: Rock Head  
+Level: 70  
+EVs: 252 HP / 252 SpD  
+Sassy Nature  
+IVs: 0 Spe  
+- Head Smash  
+- Gyro Ball  
+- Psychic Fangs  
+- Fire Fang  
+
+Scizor @ Covert Cloak  
+Ability: Technician  
+Level: 70  
+EVs: 172 HP / 124 Atk / 88 Def / 124 SpD  
+Adamant Nature  
+- Pounce  
+- Dual Wingbeat  
+- Iron Head  
+- Curse  
+
+Aggron @ Loaded Dice  
+Ability: Heavy Metal  
+Level: 70   
+EVs: 108 HP / 252 Atk / 28 Def / 120 SpD  
+Relaxed Nature  
+- Heavy Slam  
+- Body Press  
+- Iron Defense  
+- Rock Blast  
+
+Perrserker @ Iron Plate  
+Ability: Steely Spirit  
+Level: 70 
+EVs: 248 HP / 252 Atk / 8 SpD  
+Adamant Nature  
+- Iron Tail  
+- Hone Claws  
+- Play Rough  
+- Trailblaze  
+

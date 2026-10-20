@@ -2190,8 +2190,25 @@
 #define FLAG_ULAULA_HIDDEN_ITEM_1                            0x1170 // HnS: UlaulaIsle
 #define FLAG_ULAULA_HIDDEN_ITEM_2                            0x1171 // HnS: UlaulaIsle
 #define FLAG_ULAULA_MOVE_TUTOR_PAID                          0x1172 // HnS: UlaulaIsle
-#define CUSTOM_FLAGS_END                            FLAG_ULAULA_MOVE_TUTOR_PAID
-// PROXIMA FLAG NOVA: 0x1173 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Rotas 49/50 de Sinjoh (HnS, renomeadas p/ nao colidir com as nossas).
+#define FLAG_HIDE_ROUTE49_SINJOH_NOBLE_OVERQWIL              0x1173
+#define FLAG_HIDE_ROUTE49_SINJOH_NOBLE_WYRDEER               0x1174
+#define FLAG_HIDE_ROUTE49_SINJOH_TM_ROCK_CLIMB               0x1175
+#define FLAG_HIDE_ROUTE50_SINJOH_NOBLE_ELECTRODE             0x1176
+#define FLAG_HIDE_ROUTE50_SINJOH_NOBLE_KLEAVOR               0x1177
+#define FLAG_ROUTE49_SINJOH_HIDDENITEM_ICESTONE              0x1178
+#define FLAG_ROUTE49_SINJOH_HIDDENITEM_KINGSROCK             0x1179
+#define FLAG_ROUTE49_SINJOH_HIDDENITEM_ULTRABALL             0x117A
+#define FLAG_ROUTE49_SINJOH_ITEM_LURE                        0x117B
+#define FLAG_ROUTE49_SINJOH_ITEM_STARDUST                    0x117C
+#define FLAG_ROUTE49_SINJOH_KIMONOGIRL                       0x117D
+#define FLAG_ROUTE50_SINJOH_HIDDENITEM_1                     0x117E
+#define FLAG_ROUTE50_SINJOH_HIDDENITEM_2                     0x117F
+#define FLAG_ROUTE50_SINJOH_HIDDENITEM_3                     0x1180
+#define FLAG_ROUTE50_SINJOH_ITEMBALL_1                       0x1181
+#define FLAG_ROUTE50_SINJOH_ITEMBALL_2                       0x1182
+#define CUSTOM_FLAGS_END                            FLAG_ROUTE50_SINJOH_ITEMBALL_2
+// PROXIMA FLAG NOVA: 0x1183 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

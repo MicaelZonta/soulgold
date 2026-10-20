@@ -4,16 +4,16 @@
 #include "constants/battle_partner.h"
 
 #define TRAINER_NONE                          0
-#define TRAINER_UNUSED_424                      1  // Former TRAINER_SAWYER_1; pending legacy battle removed.
+#define TRAINER_SKYLAR                      1  // Former TRAINER_SAWYER_1; pending legacy battle removed.
 #define TRAINER_SAYO          2
 #define TRAINER_SCOTT          3
 #define TRAINER_SEAN          4
 #define TRAINER_SETH          5
 #define TRAINER_TROY       6
 #define TRAINER_TULLY       7
-#define TRAINER_UNUSED_440       8  // Former TRAINER_TYLER; orphaned party removed.
+#define TRAINER_FINLEY       8  // Former TRAINER_TYLER; orphaned party removed.
 #define TRAINER_ROD                   9
-#define TRAINER_UNUSED_383        10  // Former TRAINER_TONY; orphaned party removed.
+#define TRAINER_WESSEL        10  // Former TRAINER_TONY; orphaned party removed.
 #define TRAINER_WILL_REMATCH_ALT             11
 #define TRAINER_ARNOLD                      12
 #define TRAINER_ED                           13

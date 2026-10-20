@@ -12,7 +12,13 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": [],
+  "connections": [
+    {
+      "map": "MAP_ROUTE50_SINJOH",
+      "offset": 6,
+      "direction": "down"
+    }
+  ],
   "object_events": [
     {
       "local_id": "LOCALID_SINJOHRUINS_STEVEN",
@@ -398,13 +404,6 @@
       "elevation": 0,
       "dest_map": "MAP_SINJOH_RUINS_REGIDRACO_ROOM",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 8,
-      "y": 74,
-      "elevation": 0,
-      "dest_map": "MAP_NEW_SINJOH",
-      "dest_warp_id": "8"
     }
   ],
   "coord_events": [

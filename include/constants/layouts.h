@@ -1080,6 +1080,8 @@
 #define LAYOUT_ULA_ULA_HOUSE 1073
 #define LAYOUT_ULAULA_ISLE 1074
 #define LAYOUT_PONI_CAVE 1075
+#define LAYOUT_ROUTE49_SINJOH 1076
+#define LAYOUT_ROUTE50_SINJOH 1077
 
 //Constants for unused layouts
 #define LAYOUT_TRAINER_TOWER_1F                   0xFFFF

@@ -1237,6 +1237,8 @@ enum
     MAP_SINJOH_RUINS_REGISTEEL_ROOM = (16 | (38 << 8)),
     MAP_SINJOH_RUINS_TEMPLE         = (17 | (38 << 8)),
     MAP_SNOWSWEPT_CAVERN            = (18 | (38 << 8)),
+    MAP_ROUTE49_SINJOH              = (19 | (38 << 8)),
+    MAP_ROUTE50_SINJOH              = (20 | (38 << 8)),
 
 };
 

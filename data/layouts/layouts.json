@@ -10796,6 +10796,26 @@
       "secondary_tileset": "gTileset_Cave_Default_Hns",
       "border_filepath": "data/layouts/Poni_Cave/border.bin",
       "blockdata_filepath": "data/layouts/Poni_Cave/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE49_SINJOH",
+      "name": "Route49Sinjoh_Layout",
+      "width": 78,
+      "height": 64,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_MtSilver_Ancient_Hns",
+      "border_filepath": "data/layouts/Route49Sinjoh/border.bin",
+      "blockdata_filepath": "data/layouts/Route49Sinjoh/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE50_SINJOH",
+      "name": "Route50Sinjoh_Layout",
+      "width": 82,
+      "height": 63,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_MtSilver_Ancient_Hns",
+      "border_filepath": "data/layouts/Route50Sinjoh/border.bin",
+      "blockdata_filepath": "data/layouts/Route50Sinjoh/map.bin"
     }
   ]
 }

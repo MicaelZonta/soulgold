@@ -12,7 +12,18 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": [],
+  "connections": [
+    {
+      "map": "MAP_ROUTE50_SINJOH",
+      "offset": 20,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_ROUTE49_SINJOH",
+      "offset": 10,
+      "direction": "down"
+    }
+  ],
   "object_events": [
     {
       "local_id": "Travel Supplier",
@@ -628,20 +639,6 @@
       "elevation": 0,
       "dest_map": "MAP_NEWSINJOH_HOTSPRINGS",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 8,
-      "y": 50,
-      "elevation": 0,
-      "dest_map": "MAP_SNOWSWEPT_CAVERN",
-      "dest_warp_id": "1"
-    },
-    {
-      "x": 2,
-      "y": 0,
-      "elevation": 0,
-      "dest_map": "MAP_SINJOH_RUINS",
-      "dest_warp_id": "10"
     }
   ],
   "coord_events": [

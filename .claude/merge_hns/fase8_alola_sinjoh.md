@@ -102,3 +102,15 @@ Phione: encounters de pesca removidos (viraram Finizen), evolução
 Phione→Manaphy removida; Phione agora só por breeding do Manaphy (nativo no
 daycare) e fragmento do Nexus. Manaphy segue no Nexus (campeã da Misty,
 requiresCaught). FLAG_ARCEUS_EGG_GIVE re-ressignificada (comentário).
+
+## Adendo 19/10 — Route 49/50 de Sinjoh importadas (atalho desfeito)
+- Importadas RENOMEADAS (`Route49Sinjoh`/`Route50Sinjoh`, MAP_/LAYOUT_
+  *_SINJOH) para não colidir com as nossas rotas 49/50 custom.
+- Cadeia fiel ao HnS restaurada: Waterfall → Snowswept → (warp 49,3) →
+  Route49Sinjoh → NewSinjoh → Route50Sinjoh → SinjohRuins; atalho e ponte
+  de storyline removidos (a Kimono da Route 49 volta a fazer 3→4).
+- 16 flags novas com infixo SINJOH (0x1173+); 3 treinadores (SKYLAR com a
+  Sky Plate — classe/pic Picnicker provisórios, TODO Skier; FINLEY, WESSEL);
+  nobles Wyrdeer/Overqwil/Kleavor/Electrode via setwildbossbattle já portado.
+- ITEM_TM_ROCK_CLIMB→ITEM_HM_ROCK_CLIMB (no S é HM); MAPSEC_ROUTE_50
+  adicionada no FIM do enum (meio do enum deslocaria met-locations).

@@ -4,16 +4,10 @@ map_script MAP_SCRIPT_ON_TRANSITION, NewSinjoh_On_Transition
 
 NewSinjoh_On_Transition:
     setflag FLAG_VISITED_NEW_SINJOH
-	call_if_eq VAR_SINJOH_STORYLINE, 3, NewSinjoh_EventScript_StorylineBridgeRoute49
 	end
 
 @ TODO(hns): PONTE PROVISORIA. No HnS a Route 49 (cena da Kimono Girl) leva o storyline de 3 para 4 antes de
 @ New Sinjoh. A Route 49/50 do HnS ainda nao foram importadas (precisam de 15 flags novas); ate la o
-@ SnowsweptCavern liga direto a New Sinjoh e esta ponte faz 3 -> 4 para a cena do Kimono Hideout rodar.
-NewSinjoh_EventScript_StorylineBridgeRoute49:
-	setvar VAR_SINJOH_STORYLINE, 4
-	return
-
 NewSinjoh_EventScript_TriggerNorthGate::
 	lock
 	msgbox NewSinjoh_Text_TriggerNorthGate, MSGBOX_DEFAULT

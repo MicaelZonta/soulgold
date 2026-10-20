@@ -2466,6 +2466,8 @@ Common_Text_ReceivedMon:
 	.include "data/maps/SinjohRuins_RegisteelRoom/scripts.inc"
 	.include "data/maps/SinjohRuins_Temple/scripts.inc"
 	.include "data/maps/SnowsweptCavern/scripts.inc"
+	.include "data/maps/Route49Sinjoh/scripts.inc"
+	.include "data/maps/Route50Sinjoh/scripts.inc"
 	.include "data/maps/UlaUla_Cave/scripts.inc"
 	.include "data/maps/UlaUla_Cave_2/scripts.inc"
 	.include "data/maps/UlaUla_Forest/scripts.inc"
