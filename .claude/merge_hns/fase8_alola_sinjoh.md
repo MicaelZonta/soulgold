@@ -94,3 +94,11 @@ Mapa de ligações: `map_graph.py check` -> "615 mapas alcançáveis, nenhum map
 8. Rodar `flag_audit.py --csv` (não rodei, ordem do pedido): `FLAG_ARCEUS_EGG_GIVE` mudou de sentido; `FLAG_NO_WILD_CATCHING` ficou sem leitores; flags dos Tapus/Regis/Arceus já existiam.
 9. Aviso do assembler (10x): `setvar VAR_OBJ_GFX_ID_n, OBJ_EVENT_GFX_SPECIES(...)` dispara "might be a VAR_ constant"; falso positivo (mesmo padrão do P).
 10. Teste no jogo pendente (pedir permissão ao autor): boss de cada Tapu/Regi, Arceus 2 fases, Oak, warps provisórios, trades Tauros, tutor PLA.
+
+## Adendo 19/10 — Oak dá o Mystery Egg (Manaphy)
+Decisão do autor: o Oak NÃO dá starter de Kanto; dá um **Mystery Egg com
+Manaphy** (diálogo evoca o Mystery Egg de GSC). Starter multichoice removida.
+Phione: encounters de pesca removidos (viraram Finizen), evolução
+Phione→Manaphy removida; Phione agora só por breeding do Manaphy (nativo no
+daycare) e fragmento do Nexus. Manaphy segue no Nexus (campeã da Misty,
+requiresCaught). FLAG_ARCEUS_EGG_GIVE re-ressignificada (comentário).

@@ -627,8 +627,18 @@ GoldenrodCity_RadioTower_2F_EventScript_Oak::
 	goto_if_eq GoldenrodCity_RadioTower_2F_EventScript_Oak_8
 GoldenrodCity_RadioTower_2F_EventScript_Oak_7:
 	msgbox GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_3
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter
-	return
+	playfanfare MUS_OBTAIN_ITEM
+	message GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_4
+	waitfanfare
+	giveegg SPECIES_MANAPHY
+	compare VAR_RESULT, MON_CANT_GIVE
+	goto_if_eq GoldenrodCity_RadioTower_2F_EventScript_Oak_11
+GoldenrodCity_RadioTower_2F_EventScript_Oak_10:
+	setflag FLAG_ARCEUS_EGG_GIVE
+	msgbox GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_5
+	closemessage
+	release
+	end
 
 GoldenrodCity_RadioTower_2F_EventScript_Oak_2:
 	closemessage
@@ -644,81 +654,16 @@ GoldenrodCity_RadioTower_2F_EventScript_Oak_5:
 GoldenrodCity_RadioTower_2F_EventScript_Oak_8:
 	specialvar VAR_RESULT, ScriptCheckFreePokemonStorageSpace
 	compare VAR_RESULT, FALSE
-	goto_if_eq GoldenrodCity_RadioTower_2F_EventScript_Oak_10
+	goto_if_eq GoldenrodCity_RadioTower_2F_EventScript_Oak_13
 	goto GoldenrodCity_RadioTower_2F_EventScript_Oak_7
 
-GoldenrodCity_RadioTower_2F_EventScript_Oak_10:
+GoldenrodCity_RadioTower_2F_EventScript_Oak_11:
+	goto GoldenrodCity_RadioTower_2F_Oak_NoRoom
+	goto GoldenrodCity_RadioTower_2F_EventScript_Oak_10
+
+GoldenrodCity_RadioTower_2F_EventScript_Oak_13:
 	goto GoldenrodCity_RadioTower_2F_Oak_NoRoom
 	goto GoldenrodCity_RadioTower_2F_EventScript_Oak_7
-
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter::
-	multichoice 20, 8, MULTI_KANTO_STARTERS, TRUE
-	switch VAR_RESULT
-	case 0, GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_3
-	case 1, GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_4
-	case 2, GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_5
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_1:
-	copyvar VAR_0x8004, VAR_RESULT
-	msgbox GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_Text_0, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_7
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_6:
-	switch VAR_0x8004
-	case 0, GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_11
-	case 1, GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_12
-	case 2, GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_13
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_9:
-	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_eq GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_15
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_14:
-	setflag FLAG_ARCEUS_EGG_GIVE
-	playfanfare MUS_OBTAIN_ITEM
-	message GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_Text_1
-	waitfanfare
-	compare VAR_RESULT, MON_GIVEN_TO_PC
-	goto_if_eq GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_18
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_17:
-	msgbox GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_Text_3
-	closemessage
-	release
-	end
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_3:
-	bufferspeciesname STR_VAR_1, SPECIES_BULBASAUR
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_1
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_4:
-	bufferspeciesname STR_VAR_1, SPECIES_CHARMANDER
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_1
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_5:
-	bufferspeciesname STR_VAR_1, SPECIES_SQUIRTLE
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_1
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_7:
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_6
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_11:
-	givemon SPECIES_BULBASAUR, 5
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_9
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_12:
-	givemon SPECIES_CHARMANDER, 5
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_9
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_13:
-	givemon SPECIES_SQUIRTLE, 5
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_9
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_15:
-	goto GoldenrodCity_RadioTower_2F_Oak_NoRoom
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_14
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_18:
-	msgbox GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_Text_2
-	goto GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_17
 
 
 GoldenrodCity_RadioTower_2F_Oak_NoRoom::
@@ -741,32 +686,31 @@ GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_1:
 GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_2:
 	.string "{SPEAKER NAME_OAK}Your completed Johto Pokédex\n"
 	.string "fills me with pride.\p"
-	.string "Take good care of that Pokémon!$"
+	.string "Take good care of that Egg!$"
 
 GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_3:
 	.string "{SPEAKER NAME_OAK}Ah! You've completed the\n"
 	.string "Johto Pokédex!\p"
 	.string "This is a magnificent feat!\p"
-	.string "As a reward, I want you to have\n"
-	.string "a Pokémon from my own lab in\l"
-	.string "Kanto.\p"
-	.string "Choose the partner you like best!$"
+	.string "And the timing could not be\n"
+	.string "better. A marine researcher\l"
+	.string "friend sent me this Egg, found\l"
+	.string "adrift far out at sea.\p"
+	.string "None of our instruments can\n"
+	.string "tell what sleeps inside it.\p"
+	.string "It reminds me of the old\n"
+	.string "Mystery Egg days, doesn't it?\p"
+	.string "A mystery like this belongs with\n"
+	.string "the trainer who finished the\l"
+	.string "Pokédex. It's yours.$"
 
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_Text_0:
-	.string "{SPEAKER NAME_OAK}So you want {STR_VAR_1}?\n"
-	.string "Are you sure?$"
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_Text_1:
-	.string "{PLAYER} received {STR_VAR_1}\n"
+GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_4:
+	.string "{PLAYER} received a Mystery Egg\n"
 	.string "from Prof. Oak!$"
 
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_Text_2:
-	.string "Your party was full, so {STR_VAR_1}\n"
-	.string "was sent to your PC.$"
-
-GoldenrodCity_RadioTower_2F_Oak_ChooseStarter_Text_3:
-	.string "{SPEAKER NAME_OAK}I can't wait to see what you\n"
-	.string "discover. Take good care of it!$"
+GoldenrodCity_RadioTower_2F_EventScript_Oak_Text_5:
+	.string "{SPEAKER NAME_OAK}I can't wait to hear what\n"
+	.string "hatches from it. Keep it warm!$"
 
 GoldenrodCity_RadioTower_2F_Oak_NoRoom_Text_0:
 	.string "{SPEAKER NAME_OAK}Oh! There isn't any room in\n"

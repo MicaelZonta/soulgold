@@ -1076,7 +1076,6 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TOURNEY_NO_RECORD]          = MULTICHOICE(MultichoiceList_TourneyNoRecord),
     [MULTI_TV_LATI]                    = MULTICHOICE(MultichoiceList_TVLati),
     [MULTI_LOYAL_TWO]                  = MULTICHOICE(MultichoiceList_LoyalTwo),
-    [MULTI_KANTO_STARTERS]             = MULTICHOICE(MultichoiceList_KantoStarters),
     [MULTI_BATTLE_TOWER_FEELINGS]      = MULTICHOICE(MultichoiceList_BattleTowerFeelings),
     [MULTI_WHERES_RAYQUAZA]            = MULTICHOICE(MultichoiceList_WheresRayquaza),
     [MULTI_SLATEPORT_TENT_RULES]       = MULTICHOICE(MultichoiceList_SlateportTentRules),

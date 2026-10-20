@@ -145,7 +145,6 @@
 #define MULTI_ROCKET_ARCADE_CASH_OUT        134
 #define MULTI_LEVEL_MODE_WITH_EXIT           135
 #define MULTI_LOYAL_TWO                      136 // Steven em Vermilion: Okidogi x Munkidori
-#define MULTI_KANTO_STARTERS                 137 // Oak na Radio Tower (Goldenrod): Bulbasaur/Charmander/Squirtle
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

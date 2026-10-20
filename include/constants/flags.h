@@ -69,7 +69,7 @@
 #define FLAG_SYS_NO_BAG_USE                     0x23 // Unused Flag //DEBUG
 #define FLAG_SYS_NO_CATCHING                    0x24 // NAO USE: nada le esta flag. Para desligar captura use B_FLAG_NO_CATCHING (include/config/battle.h). Auditoria 7.2
 #define FLAG_SYS_PC_FROM_DEBUG_MENU             0x25 // Unused Flag //DEBUG
-#define FLAG_ARCEUS_EGG_GIVE                    0x26 // desde 19/10/2026: 'Oak ja deu o starter de Kanto' (era o ovo de Arceus; Arceus agora vem de Sinjoh)
+#define FLAG_ARCEUS_EGG_GIVE                    0x26 // desde 19/10/2026: 'Oak ja deu o Mystery Egg (Manaphy)' (era o ovo de Arceus; Arceus vem de Sinjoh)
 #define FLAG_SYS_NO_BATTLE_DMG                  0x27 // Unused Flag //DEBUG
 #define FLAG_ONETIME_GROUDON                    0x28 
 #define FLAG_ONETIME_KYOGRE                     0x29

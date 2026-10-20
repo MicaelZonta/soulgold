@@ -627,12 +627,12 @@ script GoldenrodCity_RadioTower_2F_EventScript_Oak {
 		end
 	}
 	if (flag(FLAG_ARCEUS_EGG_GIVE)) {
-		// Flag historica do ovo de Arceus: agora significa "Oak ja deu o inicial de Kanto"
-		// (saves antigos que pegaram o ovo continuam marcados como entregue).
+		// Flag historica do ovo de Arceus: hoje significa "Oak ja deu o Mystery Egg
+		// (Manaphy)". Saves antigos que pegaram o ovo antigo continuam marcados.
 		msgbox("{SPEAKER NAME_OAK}Your completed Johto Pokédex
 				fills me with pride.
 
-				Take good care of that Pokémon!")
+				Take good care of that Egg!")
 		closemessage
 		release
 		end
@@ -650,53 +650,32 @@ script GoldenrodCity_RadioTower_2F_EventScript_Oak {
 
 			This is a magnificent feat!
 
-			As a reward, I want you to have
-			a Pokémon from my own lab in
-			Kanto.
+			And the timing could not be
+			better. A marine researcher
+			friend sent me this Egg, found
+			adrift far out at sea.
 
-			Choose the partner you like best!")
-	goto(GoldenrodCity_RadioTower_2F_Oak_ChooseStarter)
-}
+			None of our instruments can
+			tell what sleeps inside it.
 
-script GoldenrodCity_RadioTower_2F_Oak_ChooseStarter {
-	multichoice(20, 8, MULTI_KANTO_STARTERS, TRUE)
-	switch (var(VAR_RESULT)) {
-		case 0:
-			bufferspeciesname(STR_VAR_1, SPECIES_BULBASAUR)
-		case 1:
-			bufferspeciesname(STR_VAR_1, SPECIES_CHARMANDER)
-		case 2:
-			bufferspeciesname(STR_VAR_1, SPECIES_SQUIRTLE)
-	}
-	copyvar(VAR_0x8004, VAR_RESULT)
-	msgbox("{SPEAKER NAME_OAK}So you want {STR_VAR_1}?
-			Are you sure?", MSGBOX_YESNO)
-	if (var(VAR_RESULT) == NO) {
-		goto(GoldenrodCity_RadioTower_2F_Oak_ChooseStarter)
-	}
-	switch (var(VAR_0x8004)) {
-		case 0:
-			givemon(SPECIES_BULBASAUR, 5)
-		case 1:
-			givemon(SPECIES_CHARMANDER, 5)
-		case 2:
-			givemon(SPECIES_SQUIRTLE, 5)
-	}
+			It reminds me of the old
+			Mystery Egg days, doesn't it?
+
+			A mystery like this belongs with
+			the trainer who finished the
+			Pokédex. It's yours.")
+	playfanfare(MUS_OBTAIN_ITEM)
+	message("{PLAYER} received a Mystery Egg
+			from Prof. Oak!")
+	waitfanfare
+	giveegg(SPECIES_MANAPHY)
 	// Guarda defensiva: um presente que falhou nunca vira "entregue".
 	if (var(VAR_RESULT) == MON_CANT_GIVE) {
 		goto(GoldenrodCity_RadioTower_2F_Oak_NoRoom)
 	}
 	setflag(FLAG_ARCEUS_EGG_GIVE)
-	playfanfare(MUS_OBTAIN_ITEM)
-	message("{PLAYER} received {STR_VAR_1}
-			from Prof. Oak!")
-	waitfanfare
-	if (var(VAR_RESULT) == MON_GIVEN_TO_PC) {
-		msgbox("Your party was full, so {STR_VAR_1}
-				was sent to your PC.")
-	}
-	msgbox("{SPEAKER NAME_OAK}I can't wait to see what you
-			discover. Take good care of it!")
+	msgbox("{SPEAKER NAME_OAK}I can't wait to hear what
+			hatches from it. Keep it warm!")
 	closemessage
 	release
 	end
