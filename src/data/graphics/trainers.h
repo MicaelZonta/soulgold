@@ -120,6 +120,8 @@ const u32 gTrainerFrontPic_MollyHale[] = INCBIN_U32("graphics/trainers/front_pic
 const u16 gTrainerPalette_MollyHale[] = INCBIN_U16("graphics/trainers/front_pics/molly_hale.gbapal");
 const u32 gTrainerFrontPicLarge_MollyHale[] = INCBIN_U32("graphics/trainers/front_pics/molly_hale_large.4bpp.smol");
 const u16 gTrainerPaletteLarge_MollyHale[] = INCBIN_U16("graphics/trainers/front_pics/molly_hale_large.gbapal");
+const u32 gTrainerFrontPic_SamsonOak[] = INCBIN_U32("graphics/trainers/front_pics/samson_oak.4bpp.smol");
+const u16 gTrainerPalette_SamsonOak[] = INCBIN_U16("graphics/trainers/front_pics/samson_oak.gbapal");
 const u32 gTrainerFrontPicLarge_Leaf[] = INCBIN_U32("graphics/trainers/front_pics/leaf_large.4bpp.smol");
 const u16 gTrainerPaletteLarge_Leaf[] = INCBIN_U16("graphics/trainers/front_pics/leaf_large.gbapal");
 
@@ -699,6 +701,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE_LARGE(TRAINER_PIC_FRONT_SKYLA, gTrainerFrontPic_Skyla, gTrainerPalette_Skyla, gTrainerFrontPicLarge_Skyla, gTrainerPaletteLarge_Skyla),
     TRAINER_SPRITE_LARGE(TRAINER_PIC_FRONT_SHELLY, gTrainerFrontPic_Shelly, gTrainerPalette_Shelly, gTrainerFrontPicLarge_Shelly, gTrainerPaletteLarge_Shelly),
     TRAINER_SPRITE_LARGE(TRAINER_PIC_FRONT_MOLLY_HALE, gTrainerFrontPic_MollyHale, gTrainerPalette_MollyHale, gTrainerFrontPicLarge_MollyHale, gTrainerPaletteLarge_MollyHale),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_SAMSON_OAK, gTrainerFrontPic_SamsonOak, gTrainerPalette_SamsonOak),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =

@@ -35,7 +35,10 @@
     "gMapGroup_Emerald4",
     "gMapGroup_Emerald5",
     "gMapGroup_IndoorRinto",
-    "gMapGroup_RiftMissions"
+    "gMapGroup_RiftMissions",
+    "gMapGroup_OutdoorAlola",
+    "gMapGroup_IndoorAlola",
+    "gMapGroup_Sinjoh"
   ],
   "gMapGroup_TownsAndRoutes": [
     "NewBarkTown",
@@ -1278,5 +1281,50 @@
     "SootopolisCity_Gym_1F",
     "TrainerHill_Entrance",
     "VerdanturfTown_FriendshipRatersHouse"
+  ],
+  "gMapGroup_OutdoorAlola": [
+    "AkalaIsle",
+    "AlolaWater",
+    "MelemeleIsle",
+    "PoniIsle",
+    "UlaulaIsle"
+  ],
+  "gMapGroup_IndoorAlola": [
+    "Akala_Cave",
+    "Akala_Forest",
+    "Akala_House",
+    "Melemele_House",
+    "Melemele_House_2",
+    "Melemele_House_3",
+    "Melemele_House_4",
+    "Melemele_House_5",
+    "Melemele_House_6",
+    "Melemele_PlayerHouse",
+    "UlaUla_Cave",
+    "UlaUla_Cave_2",
+    "UlaUla_Forest",
+    "UlaUla_House",
+    "Poni_Cave"
+  ],
+  "gMapGroup_Sinjoh": [
+    "NewSinjoh",
+    "NewSinjoh_HotSprings",
+    "NewSinjoh_House1",
+    "NewSinjoh_House2",
+    "NewSinjoh_House3",
+    "NewSinjoh_House4",
+    "NewSinjoh_KimonoHideout",
+    "NewSinjoh_PokemonCenter",
+    "SinjohRuins",
+    "SinjohRuins_ArceusRoom",
+    "SinjohRuins_House1",
+    "SinjohRuins_RegiceRoom",
+    "SinjohRuins_RegidracoRoom",
+    "SinjohRuins_RegielekiRoom",
+    "SinjohRuins_RegigigasRoom",
+    "SinjohRuins_RegirockRoom",
+    "SinjohRuins_RegisteelRoom",
+    "SinjohRuins_Temple",
+    "SnowsweptCavern"
   ]
 }

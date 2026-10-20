@@ -323,7 +323,7 @@ Route13_TravelToAlola_13:
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject LOCALID_ROUTE13_BOAT
 	special RemoveCameraObject
-	warp MAP_ROUTE13, 255 @ TODO(hns-alola Fase 8): destino real MAP_MELEMELE_ISLE 25,33
+	warp MAP_MELEMELE_ISLE, 25, 33
 	waitstate
 	end
 
@@ -358,7 +358,7 @@ Route13_TravelToAlola_16:
 	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject LOCALID_ROUTE13_BOAT
 	special RemoveCameraObject
-	warp MAP_ROUTE13, 255 @ TODO(hns-alola Fase 8): destino real MAP_MELEMELE_ISLE 25,33
+	warp MAP_MELEMELE_ISLE, 25, 33
 	waitstate
 	end
 

@@ -1480,6 +1480,46 @@ void GiveLeadMonEffortRibbon(void)
         TryPutSpotTheCutiesOnAir(leadMon, MON_DATA_EFFORT_RIBBON);
 }
 
+// HnS (Melemele): Marine Ribbon for the whole party.
+void GivePartyMonMarineRibbon(void)
+{
+    bool8 ribbonSet = TRUE;
+    u8 i;
+    struct Pokemon *mon;
+
+    IncrementGameStat(GAME_STAT_RECEIVED_RIBBONS);
+    FlagSet(FLAG_SYS_RIBBON_GET);
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        mon = &gPlayerParty[i];
+        if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+            continue;
+        SetMonData(mon, MON_DATA_MARINE_RIBBON, &ribbonSet);
+        if (GetRibbonCount(mon) > NUM_CUTIES_RIBBONS)
+            TryPutSpotTheCutiesOnAir(mon, MON_DATA_MARINE_RIBBON);
+    }
+}
+
+// HnS (Sinjoh Ruins): Sky Ribbon for the whole party after catching Arceus.
+void GivePartyMonSkyRibbon(void)
+{
+    bool8 ribbonSet = TRUE;
+    u8 i;
+    struct Pokemon *mon;
+
+    IncrementGameStat(GAME_STAT_RECEIVED_RIBBONS);
+    FlagSet(FLAG_SYS_RIBBON_GET);
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        mon = &gPlayerParty[i];
+        if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+            continue;
+        SetMonData(mon, MON_DATA_SKY_RIBBON, &ribbonSet);
+        if (GetRibbonCount(mon) > NUM_CUTIES_RIBBONS)
+            TryPutSpotTheCutiesOnAir(mon, MON_DATA_SKY_RIBBON);
+    }
+}
+
 bool8 Special_AreLeadMonEVsMaxedOut(void)
 {
     if (GetMonEVCount(&gPlayerParty[GetLeadMonIndex()]) >= MAX_TOTAL_EVS)

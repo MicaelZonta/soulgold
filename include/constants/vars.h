@@ -451,7 +451,18 @@
 // Lucky Channel do radio (porte HnS, Fase 6): id sorteado do dia (16+16 bits).
 #define VAR_RADIO_LUCKY_ID                              0x413E
 #define VAR_RADIO_LUCKY_ID_HI                           0x413F
-// PROXIMA VAR NOVA: 0x4140 (livre ate VARS_END 0x42FF). Alocar aqui, em
+// Fase 8 - vars de Alola/Sinjoh (HnS).
+#define VAR_NOBLE_ARCANINE                              0x4140 // HnS: NewSinjoh_HotSprings, SinjohRuins_House1
+#define VAR_NOBLE_ELECTRODE                             0x4141 // HnS: SinjohRuins_House1
+#define VAR_NOBLE_KLEAVOR                               0x4142 // HnS: SinjohRuins_House1
+#define VAR_NOBLE_OVERQWIL                              0x4143 // HnS: SinjohRuins_House1
+#define VAR_NOBLE_SNEASLER                              0x4144 // HnS: SinjohRuins_House1, SnowsweptCavern
+#define VAR_NOBLE_TYPHLOSION                            0x4145 // HnS: NewSinjoh_House3, SinjohRuins_House1
+#define VAR_NOBLE_URSALUNA                              0x4146 // HnS: NewSinjoh_HotSprings, SinjohRuins_House1
+#define VAR_NOBLE_WYRDEER                               0x4147 // HnS: SinjohRuins_House1
+#define VAR_PLATECOUNTER                                0x4148 // HnS: NewSinjoh_HotSprings, NewSinjoh_House3
+#define VAR_REGIS_SCANNED                               0x4149 // HnS: SinjohRuins_Temple
+// PROXIMA VAR NOVA: 0x414A (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 

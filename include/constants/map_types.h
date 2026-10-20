@@ -33,4 +33,7 @@ enum MapBattleScene
     MAP_BATTLE_SCENE_ULTRA_SPACE,   // UltraSpaceArena: rift + gold stages (BATTLE_ENVIRONMENT_ULTRA_SPACE)
 };
 
+// TODO(hns): cenario de batalha dedicado do HnS (NewSinjoh_House3); por ora usa o normal.
+#define MAP_BATTLE_SCENE_INDOOR_2 MAP_BATTLE_SCENE_NORMAL
+
 #endif  // GUARD_CONSTANTS_MAP_TYPES_H

@@ -214,8 +214,8 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Zacian** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Zamazenta** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Eternatus** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
-| **Regieleki** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
-| **Regidrago** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
+| **Regieleki** | Sub-lendário | ✅ Boss Fight — `SinjohRuins_RegielekiRoom` Lv80 (Fase 8, 19/10/2026) |
+| **Regidrago** | Sub-lendário | ✅ Boss Fight — `SinjohRuins_RegidracoRoom` Lv80 (Fase 8, 19/10/2026) |
 | **Wo-Chien** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
 | **Ting-Lu** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
 | **Pecharunt** | Mítico | ❌ ainda sem fonte — DECISÃO 19/10/2026: ganhará evento próprio quando o Trio Leal inteiro estiver capturado (Okidogi + Munkidori + Fezandipiti) |
@@ -264,16 +264,16 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Raikou** | roamer (após Burned Tower / Hall of Fame) — `BurnedTower_B1F` |  |
 | **Entei** | roamer (após Burned Tower / Hall of Fame) — `BurnedTower_B1F` |  |
 | **Suicune** | encontro estático (seteventmon) — `Route25` Lv50; roamer (após Burned Tower / Hall of Fame) — `BurnedTower_B1F` |  |
-| **Regirock** | encontro estático — `RegirockChamber` Lv50 |  |
-| **Regice** | encontro estático — `SnowtopMountain_B1F_2` Lv50 |  |
-| **Registeel** | encontro estático — `RailwayCave_Registeel_Room` Lv50 |  |
+| **Regirock** | encontro estático — `RegirockChamber` Lv50; Boss Fight (2 barras) — `SinjohRuins_RegirockRoom` Lv80 (Fase 8) |  |
+| **Regice** | encontro estático — `SnowtopMountain_B1F_2` Lv50; Boss Fight (2 barras) — `SinjohRuins_RegiceRoom` Lv80 (Fase 8) |  |
+| **Registeel** | encontro estático — `RailwayCave_Registeel_Room` Lv50; Boss Fight (2 barras) — `SinjohRuins_RegisteelRoom` Lv80 (Fase 8) |  |
 | **Latias** | boss (bosslegendaryencounter) — `LatiTempleLatias` Lv80 | LATIAS, LATIAS_MEGA |
 | **Latios** | boss (bosslegendaryencounter) — `LatiTempleLatios` Lv80 | LATIOS, LATIOS_MEGA |
 | **Uxie** | encontro estático — `AcuityCavern` Lv50 |  |
 | **Mesprit** | encontro estático — `VerityCavern` Lv50 |  |
 | **Azelf** | encontro estático — `ValorCavern` Lv50 |  |
 | **Heatran** | boss (bosslegendaryencounter) — `MtMortar_Depths_1` Lv70 | HEATRAN, HEATRAN_MEGA |
-| **Regigigas** | boss (bosslegendaryencounter) — `MtSilver_1F_RegigigasRoom` Lv70 |  |
+| **Regigigas** | boss (bosslegendaryencounter) — `MtSilver_1F_RegigigasRoom` Lv70; Boss Fight (3 barras) — `SinjohRuins_RegigigasRoom` Lv80 (Fase 8; porta exige VAR_REGIS_SCANNED=5) |  |
 | **Cresselia** | boss (bosslegendaryencounter) — `LakeOfRageCresseliaDen` Lv60 |  |
 | **Cobalion** | boss (bosslegendaryencounter) — `RailwayCave_3F` Lv80 |  |
 | **Terrakion** | boss (bosslegendaryencounter) — `DarkCave_NorthSide` Lv80 |  |
@@ -282,10 +282,10 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Thundurus** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` | THUNDURUS_INCARNATE, THUNDURUS_THERIAN |
 | **Landorus** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` | LANDORUS_INCARNATE, LANDORUS_THERIAN |
 | **Type: Null** | presente (givemon) — `BlackthornCity` Lv50 |  |
-| **Tapu Koko** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
-| **Tapu Lele** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
-| **Tapu Bulu** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
-| **Tapu Fini** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` |  |
+| **Tapu Koko** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe`; Boss Fight (2 barras) — `MelemeleIsle` Lv60 (Fase 8, casa em Alola). Remoção do Café: PENDENTE até o autor confirmar |  |
+| **Tapu Lele** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe`; Boss Fight (2 barras) — `AkalaIsle` Lv60 (Fase 8, casa em Alola). Remoção do Café: PENDENTE até o autor confirmar |  |
+| **Tapu Bulu** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe`; Boss Fight (2 barras) — `UlaUla_Forest` Lv60 (Fase 8, casa em Alola). Remoção do Café: PENDENTE até o autor confirmar |  |
+| **Tapu Fini** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe`; Boss Fight (2 barras) — `PoniIsle` Lv60 (Fase 8, casa em Alola). Remoção do Café: PENDENTE até o autor confirmar |  |
 | **Kubfu** | presente (givemon) — `BlackthornCave` Lv5 |  |
 | **Urshifu** | evolui de Kubfu (item ITEM_SCROLL_OF_DARKNESS); evolui de Kubfu (item ITEM_SCROLL_OF_WATERS) | URSHIFU_SINGLE_STRIKE, URSHIFU_SINGLE_STRIKE_GMAX, URSHIFU_RAPID_STRIKE, URSHIFU_RAPID_STRIKE_GMAX |
 | **Enamorus** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` | ENAMORUS_INCARNATE, ENAMORUS_THERIAN |
@@ -297,7 +297,7 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 
 | Espécie | Como obter | Formas no engine |
 |---|---|---|
-| **Arceus** | ovo (giveegg) — `GoldenrodCity_RadioTower_2F` |  |
+| **Arceus** | Boss Fight em duas fases — `SinjohRuins_ArceusRoom` (fase 1 Arceus-Steel Lv100 NÃO capturável, 3 barras; fase 2 Arceus Lv80 capturável, 3 barras) (Fase 8). **O ovo do Oak (`GoldenrodCity_RadioTower_2F`) foi removido em 19/10/2026: com a Johto Dex completa o Oak agora dá um inicial de Kanto (Bulbasaur/Charmander/Squirtle Lv5).** |  |
 | **Genesect** | boss (bosslegendaryencounter) — `AbandonedRocketHideoutBackroom` Lv70 |  |
 | **Mew** | encontro estático — `FarawayIslandDepths` Lv55 |  |
 | **Celebi** | encontro estático (seteventmon) — `IlexForest` Lv40 |  |
@@ -357,5 +357,6 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 - **Necrozma** é presente no fim do clímax (`UltraSpaceArena`, Lv75). O Ultra Necrozma do boss não é capturável. Dusk Mane e Dawn Wings dependem de fusão com Solgaleo/Lunala.
 - **Evoluções customizadas:** Manaphy evolui de **Phione** no Lv58 (Phione é pescado na `Route33South_2`); Melmetal de Meltan no Lv60; Naganadel de Poipole no Lv50; Cosmog → Cosmoem (Lv43) → Solgaleo/Lunala (Lv53). Os pergaminhos do Urshifu são vendidos no `GoldenrodBattleAracdeLobby`.
 - **Battle Café** troca 5 pontos por um Lv70 de: Tornadus, Thundurus, Landorus, Enamorus, os quatro Tapus, e os quatro Tapus (e Diancie como presente à parte). FEITO 19/10: aves de Galar, Koraidon e Miraidon saíram do Café e viraram Boss Fights (casas próprias).
+- **Fase 8 (19/10/2026, Alola + Sinjoh):** Regieleki e Regidrago passaram a ter fonte (Boss Fight Lv80 em `SinjohRuins_*Room`; as contagens do Resumo acima não foram recalculadas: -2 em "Sem método"). Os cinco Regis e o Arceus ganharam uma segunda fonte em Sinjoh. Os quatro Tapus ganharam casa em Alola (Boss Fight Lv60) e **continuam no Battle Café**: tirá-los de lá fica para quando o autor confirmar (não mexi no Café). O ovo de Arceus do Oak foi trocado por escolha de inicial de Kanto. Acesso a Sinjoh: Mt. Silver (Waterfall Room) -> `SnowsweptCavern` -> `NewSinjoh` -> `SinjohRuins` (atalho provisório, ver `.claude/merge_hns/fase8_alola_sinjoh.md`).
 - **Celebi** tem uma entrada na tabela da Hidden Grotto, mas é a `HIDDEN_GROTTO_JOHTO_UNUSED2`; o método real é o evento da Ilex Forest.
 - **Lendários já capturados continuam elegíveis** no loop (design §10). Esta tabela diz só se há **algum** jeito de obter; não restringe o pool.

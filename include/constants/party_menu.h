@@ -137,6 +137,7 @@ enum PcMonSelectionType
     SELECT_PC_MON_MOVE_TUTOR,
     SELECT_PC_MON_MOVE_DELETER,
     SELECT_PC_MON_MOVE_RELEARNER,
+    SELECT_PC_MON_PLA_TUTOR,
 };
 
 enum CanMoveBeLearned

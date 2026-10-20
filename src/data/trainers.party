@@ -22669,3 +22669,928 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Shadow Ball
 - Hidden Power
 - Morning Sun
+
+=== TRAINER_SAMSON_OAK ===
+Name: SAMSON OAK
+Class: Scientist
+Pic: Samson Oak
+Gender: Male
+Music: Dp Elite Four
+Double Battle: No
+AI: Smart Trainer
+Mugshot: Green
+
+Raichu Alola
+Level: 70
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Nasty Plot
+- Thunderbolt
+- Psychic
+- Substitute
+
+Exeggutor Alola @ Choice Specs
+Level: 70
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 0 Atk / 0 Def / 252 SpA / 4 SpD / 252 Spe
+Modest Nature
+- Draco Meteor
+- Leaf Storm
+- Flamethrower
+- Giga Drain
+
+
+Ninetales Alola @ Light Clay
+Level: 70
+Ability: Snow Warning
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 0 Atk / 0 Def / 4 SpA / 0 SpD / 252 Spe
+Timid Nature
+- Freeze Dry
+- Hypnosis
+- Hail
+- Aurora Veil
+
+Golem Alola @ Choice Band
+Level: 70
+Ability: Magnet Pull
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 0 HP / 252 Atk / 0 Def / 4 SpA / 0 SpD / 252 Spe
+Adamant Nature
+- Stone Edge
+- Fire Punch
+- Earthquake
+- Volt Switch
+
+Muk Alola @ Assault Vest
+Level: 70
+Ability: Poison Touch
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 252 SpD / 0 Spe
+Adamant Nature
+- Pursuit
+- Gunk Shot
+- Knock Off
+- Fire Punch
+
+
+Tropius @ Sitrus Berry
+Level: 70
+Ability: Harvest
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 248 HP / 0 Atk / 252 Def / 0 SpA / 8 SpD / 0 Spe
+Bold Nature
+- Leech Seed
+- Substitute
+- Air Slash
+- Toxic
+
+=== TRAINER_MELEMELE_SWIMMER_1 ===
+Name: MIA
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move
+
+Politoed @ Damp Rock  
+Ability: Drizzle  
+Level: 63   
+Bold Nature  
+IVs: 0 Atk  
+- Weather Ball  
+- Icy Wind  
+- Whirlpool  
+- Perish Song  
+
+Mantine @ Leftovers  
+Ability: Swift Swim  
+Level: 63    
+Modest Nature  
+IVs: 0 Atk  
+- Hurricane  
+- Water Pulse  
+- Signal Beam  
+- Aqua Ring  
+
+Luvdisc (F) @ Big Root  
+Ability: Swift Swim  
+Level: 64  
+EVs: 248 Spe  
+Timid Nature  
+IVs: 0 Atk  
+- Attract  
+- Draining Kiss  
+- Scald  
+- Sweet Kiss  
+
+=== TRAINER_MELEMELE_SWIMMER_2 ===
+Name: JIMMY
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Hg Boy 2
+Double Battle: No
+AI: Check Bad Move
+
+Pelipper  
+Ability: Keen Eye  
+Level: 63  
+IVs: 0 Atk  
+- Surf  
+- Ice Beam  
+- Feather Dance  
+- Shock Wave  
+
+Poliwrath @ Life Orb  
+Ability: Water Absorb  
+Level: 63  
+- Darkest Lariat  
+- Drain Punch  
+- Liquidation  
+- Power-Up Punch  
+
+Huntail @ White Herb  
+Ability: Water Veil  
+Level: 68  
+- Shell Smash  
+- Super Fang  
+- Waterfall  
+- Scary Face  
+
+=== TRAINER_AKALA_SWIMMER_1 ===
+Name: KELSIE
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move
+
+Starmie @ Lagging Tail  
+Ability: Analytic  
+Level: 66    
+EVs: 140 HP / 204 Atk / 104 Def / 60 SpD  
+Adamant Nature  
+- Dive  
+- Avalanche  
+- Curse  
+- Recover  
+
+Seaking @ King's Rock  
+Ability: Lightning Rod  
+Level: 67    
+- Drill Run  
+- Acupressure  
+- Scale Shot  
+- Tail Whip  
+
+Golduck @ Scope Lens  
+Ability: Cloud Nine  
+Level: 60     
+Jolly Nature  
+- Cross Chop  
+- Aqua Jet  
+- Shadow Claw  
+- Yawn  
+
+=== TRAINER_AKALA_SWIMMER_2 ===
+Name: PORTIA
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move
+
+Corsola @ Zoom Lens  
+Ability: Hustle  
+Level: 65   
+Brave Nature  
+IVs: 0 Spe  
+- Liquidation  
+- Head Smash  
+- Recover  
+- Sucker Punch  
+
+Octillery @ Leftovers  
+Ability: Moody  
+Level: 65  
+- Protect  
+- Octazooka  
+- Gunk Shot  
+- Rock Blast  
+
+Mantine @ Assault Vest  
+Ability: Water Absorb  
+Level: 66      
+Careful Nature  
+- Mirror Coat  
+- Seed Bomb  
+- Aqua Tail  
+- Rock Blast  
+
+=== TRAINER_AKALA_SWIMMER_3 ===
+Name: GEOFF
+Class: Swimmer M
+Pic: Swimmer M
+Gender: Male
+Music: Hg Boy 2
+Double Battle: No
+AI: Check Bad Move
+
+Tentacruel  
+Ability: Liquid Ooze  
+Level: 64
+- Gunk Shot  
+- Flip Turn  
+- Toxic Spikes  
+- Rapid Spin  
+
+Gyarados  
+Ability: Moxie  
+Level: 64 
+- Crunch  
+- Earthquake  
+- Rage  
+- Scary Face  
+
+Kingdra @ Scope Lens  
+Ability: Sniper  
+Level: 64 
+IVs: 0 Atk  
+- Dragon Pulse  
+- Smokescreen  
+- Brine  
+- Focus Energy  
+
+=== TRAINER_PONI_SWIMMER_1 ===
+Name: JADE
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Female
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move
+
+Gorebyss  
+Ability: Hydration  
+Level: 63   
+EVs: 252 Def / 248 Spe  
+Timid Nature  
+- Scald  
+- Draining Kiss  
+- Bind  
+- Confuse Ray  
+
+Luvdisc  
+Ability: Swift Swim  
+Level: 63
+EVs: 252 Spe  
+Jolly Nature  
+- Charm  
+- Captivate  
+- Flip Turn  
+- Wish  
+
+Milotic (F)  
+Ability: Cute Charm  
+Level: 66
+EVs: 248 Atk / 248 SpD  
+Adamant Nature  
+- Tickle  
+- Avalanche  
+- Aqua Tail  
+- Coil  
+
+=== TRAINER_PONI_SWIMMER_2 ===
+Name: RODDY
+Class: Tuber M
+Pic: Tuber M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move
+
+Lanturn  
+Ability: Volt Absorb  
+Level: 61 
+EVs: 252 HP / 252 SpA  
+IVs: 0 Atk  
+- Discharge  
+- Ice Beam  
+- Charge  
+- Flash  
+
+Wailord @ Sitrus Berry  
+Ability: Pressure  
+Level: 61 
+EVs: 252 HP / 116 Def / 140 SpD  
+IVs: 0 Atk  
+- Water Spout  
+- Aqua Ring  
+- Noble Roar  
+- Ice Beam  
+
+Kingler @ Life Orb  
+Ability: Sheer Force  
+Level: 65 
+EVs: 8 HP / 248 Atk / 252 SpD  
+- Crabhammer  
+- Hone Claws  
+- Dig  
+- Guillotine  
+
+=== TRAINER_AKALA_HIKER ===
+Name: IAN
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move
+
+Lunatone @ Clear Amulet  
+Ability: Levitate  
+Level: 63   
+IVs: 0 Atk  
+- Cosmic Power  
+- Stored Power  
+- Calm Mind  
+- Power Gem  
+
+Solrock @ Heat Rock  
+Ability: Levitate  
+Level: 63   
+IVs: 0 Atk  
+- Sunny Day  
+- Weather Ball  
+- Morning Sun  
+- Solar Beam  
+
+Magmar @ Eviolite  
+Ability: Flame Body  
+Level: 65 
+- Flame Charge  
+- Substitute  
+- Focus Punch  
+- Double Team  
+
+=== TRAINER_AKALA_PICNICKER ===
+Name: TATIANA
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move
+
+Dustox @ Focus Sash  
+Ability: Compound Eyes  
+Level: 64   
+IVs: 0 Atk  
+- Venoshock  
+- Toxic  
+- Iron Defense  
+- Quiver Dance  
+
+Pinsir @ Life Orb  
+Ability: Moxie  
+Level: 61 
+- Storm Throw  
+- X-Scissor  
+- Guillotine  
+- Curse  
+
+Ludicolo  
+Ability: Rain Dish  
+Level: 63
+- Teeter Dance  
+- Scald  
+- Trailblaze  
+- Encore  
+
+=== TRAINER_AKALA_CAMPER ===
+Name: OLIVER
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move
+
+Swellow  
+Ability: Scrappy  
+Level: 63  
+- Boomburst  
+- Brave Bird  
+- Roost  
+- Tailwind  
+
+Beedrill @ Scope Lens  
+Ability: Sniper  
+Level: 65  
+- Poison Jab  
+- Drill Run  
+- Outrage  
+- Fell Stinger  
+
+Dustox  
+Ability: Shield Dust  
+Level: 66  
+IVs: 0 Atk  
+- Bug Buzz  
+- String Shot  
+- Shadow Ball  
+- Energy Ball  
+
+=== TRAINER_AKALA_FOREST_BUGCATCHER_1 ===
+Name: STANLEY
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move
+
+Pinsir @ Life Orb  
+Ability: Hyper Cutter  
+Level: 61  
+- Close Combat  
+- Double-Edge  
+- Outrage  
+- Rock Slide  
+
+Scyther @ Eviolite  
+Ability: Technician  
+Level: 63 
+- Psycho Cut  
+- Steel Wing  
+- Roost  
+- Bug Bite  
+
+=== TRAINER_AKALA_FOREST_BUGCATCHER_2 ===
+Name: SCOTTY
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move
+
+Butterfree @ Bright Powder  
+Ability: Compound Eyes  
+Level: 64   
+IVs: 0 Atk  
+- Hurricane  
+- Quiver Dance  
+- Signal Beam  
+- Sleep Powder  
+
+Heracross @ Flame Orb  
+Ability: Guts  
+Level: 61  
+- Facade  
+- Close Combat  
+- Throat Chop  
+- Megahorn  
+
+=== TRAINER_AKALA_CAVE_PICNICKER ===
+Name: MELISSA
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move
+
+Mankey @ Flying Gem  
+Ability: Vital Spirit  
+Level: 63   
+- Acrobatics  
+- Close Combat  
+- Taunt  
+- U-turn  
+
+Tangrowth @ Leftovers  
+Ability: Leaf Guard  
+Level: 61  
+- Ingrain  
+- Power Whip  
+- Leech Seed  
+- Protect  
+
+Tropius  
+Ability: Harvest  
+Level: 62   
+- Dragon Dance  
+- Dragon Hammer  
+- Petal Blizzard  
+- Safeguard  
+
+=== TRAINER_AKALA_CAVE_CAMPER ===
+Name: RONNY
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move
+
+Primeape  
+Ability: Anger Point  
+Level: 61  
+- Cross Chop  
+- Curse  
+- Rage Fist  
+- Ice Punch  
+
+Hariyama @ Loaded Dice  
+Ability: Thick Fat  
+Level: 61   
+- Earthquake  
+- Arm Thrust  
+- Bulk Up  
+- Knock Off  
+
+Machoke  
+Ability: No Guard  
+Level: 61  
+- Dynamic Punch  
+- Bullet Punch  
+- Bulk Up  
+- Dual Chop  
+
+=== TRAINER_AKALA_CAVE_HIKER ===
+Name: FRANK
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move
+
+Kangaskhan  
+Ability: Scrappy  
+Level: 62  
+Happiness: 254  
+- Return  
+- Power-Up Punch  
+- Beat Up  
+- Disable  
+
+Solrock  
+Ability: Levitate  
+Level: 64  
+- Ancient Power  
+- Acrobatics  
+- Flamethrower  
+- Reflect  
+
+Lunatone @ Normal Gem  
+Ability: Levitate  
+Level: 64  
+- Explosion  
+
+=== TRAINER_ULAULA_PICNICKER ===
+Name: MELISSA
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move
+
+Swellow  
+Ability: Scrappy  
+Level: 61  
+IVs: 0 Atk  
+- Heat Wave  
+- Air Cutter  
+- Feather Dance  
+- Supersonic  
+
+Tangela @ Eviolite  
+Ability: Chlorophyll  
+Level: 63    
+IVs: 0 Atk  
+- Giga Drain  
+- Toxic  
+- Substitute  
+- Sludge Bomb  
+
+Miltank  
+Ability: Thick Fat  
+Level: 61  
+- Retaliate  
+- Earthquake  
+- Heal Bell  
+- Milk Drink  
+
+=== TRAINER_ULAULA_YOUNGSTER ===
+Name: JOEY
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move
+
+Raticate-Alola  
+Ability: Hustle  
+Level: 61 
+- Crunch  
+- Bulk Up  
+- Last Resort  
+- Quick Attack  
+
+Scizor  
+Ability: Technician  
+Level: 61 
+- Brutal Swing  
+- Bullet Punch  
+- Swords Dance  
+- Sand Tomb  
+
+Leafeon @ Sitrus Berry  
+Ability: Leaf Guard  
+Level: 63  
+- Leaf Blade  
+- Iron Tail  
+- Wish  
+- Detect  
+
+=== TRAINER_ULAULA_HIKER ===
+Name: FRANK
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move
+
+Mawile  
+Ability: Intimidate  
+Level: 62  
+- Ice Fang  
+- Play Rough  
+- Stealth Rock  
+- Psychic Fangs  
+
+Magmar @ Sitrus Berry  
+Ability: Flame Body  
+Level: 63   
+- Fire Punch  
+- Belly Drum  
+- Mach Punch  
+- Dual Chop  
+
+Electivire @ Zoom Lens  
+Ability: Motor Drive  
+Level: 60 
+Brave Nature  
+IVs: 0 Spe  
+- Thunder Punch  
+- Dynamic Punch  
+- Charge  
+- Barrier  
+
+=== TRAINER_ULAULA_COOLTRAINER ===
+Name: LOIS
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Female
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move
+
+Skarmory  
+Ability: Keen Eye  
+Level: 61 
+- Iron Defense  
+- Autotomize  
+- Drill Peck  
+- Rock Slide  
+
+Primeape  
+Ability: Anger Point  
+Level: 64  
+Happiness: 0  
+- Frustration  
+- Close Combat  
+- Lash Out  
+- Taunt  
+
+Tauros @ Life Orb  
+Ability: Sheer Force  
+Level: 63 
+- Wild Charge  
+- Bulldoze  
+- Raging Bull  
+- Focus Energy  
+
+=== TRAINER_MILKMAN ===
+Name: MILKMAN
+Class: Policeman
+Pic: Policeman
+Gender: Male
+Music: Hg Boy 2
+Items: MooMoo Milk / MooMoo Milk / MooMoo Milk
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Miltank @ Leftovers
+Level: 70
+Ability: Thick Fat
+IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 156 HP / 0 Atk / 100 Def / 0 SpA / 252 SpD / 0 Spe
+- Milk Drink
+- Curse
+- Body Press 
+- Protect
+
+Miltank @ Charcoal
+Level: 70
+Ability: Sap Sipper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 0 Def / 0 SpA / 4 SpD / 0 Spe
+- Milk Drink
+- Fire Punch
+- Iron Head
+- Stealth Rock
+
+Miltank @ Leftovers
+Level: 70
+Ability: Thick Fat
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 248 HP / 8 Atk / 248 Def / 0 SpA / 4 SpD / 0 Spe
+- Milk Drink
+- Attract
+- Thunder Wave
+- Double-Edge
+
+Miltank @ Hard Stone
+Level: 70
+Ability: Sap Sipper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
+- Milk Drink
+- Defense Curl
+- Body Press 
+- RollOut
+
+Miltank @ Lagging Tail
+Level: 70
+Ability: Scrappy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
+EVs: 252 HP / 4 Atk / 252 Def / 0 SpA / 0 SpD / 0 Spe
+- Milk Drink
+- Toxic
+- Counter
+- Facade
+
+Miltank @ Silk Scarf
+Level: 80
+Ability: Scrappy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
+- Milk Drink
+- Double-Edge
+- Play Rough 
+- Power-Up Punch
+
+=== TRAINER_MIHARU ===
+Name: MIHARU
+Class: Kimono Girl
+Pic: Kimono Girl
+Gender: Female
+Music: Hg Kimono Girl
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+Mugshot: Green
+
+Leafeon @ Meadow Plate  
+Ability: Chlorophyll  
+Level: 70
+EVs: 4 HP / 252 Atk / 252 Def  
+Adamant Nature  
+- Leaf Blade  
+- Synthesis  
+- Iron Tail  
+- Yawn  
+
+=== TRAINER_YOUKO ===
+Name: YOUKO
+Class: Kimono Girl
+Pic: Kimono Girl
+Gender: Female
+Music: Hg Kimono Girl
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+Mugshot: Blue
+
+Glaceon @ Icicle Plate  
+Ability: Ice Body  
+Level: 70
+EVs: 252 HP / 252 SpA / 4 SpD  
+Modest Nature  
+IVs: 0 Atk  
+- Synchronoise
+- Blizzard  
+- Chilling Water  
+- Shadow Ball 
+
+=== TRAINER_SHIZUKO ===
+Name: SHIZUKO
+Class: Kimono Girl
+Pic: Kimono Girl
+Gender: Female
+Music: Hg Kimono Girl
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+Mugshot: Pink
+
+Sylveon @ Pixie Plate  
+Ability: Pixilate  
+Level: 70
+Happiness: 254   
+EVs: 124 HP / 252 Atk / 132 Def  
+Adamant Nature  
+- Skull Bash  
+- Iron Tail  
+- Curse  
+- Sing  
+
+=== TRAINER_MUALANI ===
+Name: MUALANI
+Class: Swimmer F
+Pic: Swimmer F
+Gender: female
+Music: Hg Girl 1
+Double Battle: Yes
+AI: Smart Trainer / Prediction
+
+Politoed @ Damp Rock  
+Ability: Drizzle  
+Level: 70
+EVs: 116 HP / 140 SpA / 252 SpD  
+Sassy Nature  
+IVs: 0 Atk  
+- Weather Ball  
+- Earth Power  
+- Seismic Toss  
+- Ice Beam  
+
+Whiscash @ Black Sludge    
+Level: 70 
+EVs: 252 HP / 92 Def / 72 SpA / 92 SpD  
+Quiet Nature  
+IVs: 0 Atk  
+- Clear Smog  
+- Scald  
+- Earth Power
+- Recover  
+
+Lanturn @ Assault Vest  
+Ability: Volt Absorb  
+Level: 70
+EVs: 252 HP / 4 SpA / 252 SpD  
+Sassy Nature  
+IVs: 0 Atk  
+- Discharge  
+- Signal Beam  
+- Volt Switch  
+- Dazzling Gleam  
+
+Blastoise (M) @ Leftovers  
+Ability: Rain Dish  
+Level: 70
+EVs: 36 HP / 252 Def / 220 SpD  
+Bold Nature  
+IVs: 0 Atk  
+- Aqua Ring  
+- Rain Dance  
+- Ice Beam  
+- Hydro Cannon  
+
+Huntail @ Shell Bell
+Ability: Swift Swim  
+Level: 70    
+EVs: 252 Atk / 252 Spe  
+Jolly Nature  
+- Aqua Tail  
+- Shell Smash  
+- Crunch  
+- Ice Fang  
+
+Pelipper @ Splash Plate  
+Ability: Drizzle  
+Level: 70  
+EVs: 192 HP / 64 SpA / 252 SpD  
+Modest Nature  
+IVs: 0 Atk  
+- Hurricane  
+- Hydro Pump  
+- Tailwind  
+- Feather Dance  
+

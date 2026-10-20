@@ -735,6 +735,13 @@ static const struct MenuAction MultichoiceList_LoyalTwo[] =
     { COMPOUND_STRING("Munkidori"), {NULL} },
 };
 
+static const struct MenuAction MultichoiceList_KantoStarters[] =
+{
+    { COMPOUND_STRING("Bulbasaur"), {NULL} },
+    { COMPOUND_STRING("Charmander"), {NULL} },
+    { COMPOUND_STRING("Squirtle"), {NULL} },
+};
+
 static const struct MenuAction MultichoiceList_TVLati[] =
 {
     {COMPOUND_STRING("RED")},
@@ -1069,6 +1076,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TOURNEY_NO_RECORD]          = MULTICHOICE(MultichoiceList_TourneyNoRecord),
     [MULTI_TV_LATI]                    = MULTICHOICE(MultichoiceList_TVLati),
     [MULTI_LOYAL_TWO]                  = MULTICHOICE(MultichoiceList_LoyalTwo),
+    [MULTI_KANTO_STARTERS]             = MULTICHOICE(MultichoiceList_KantoStarters),
     [MULTI_BATTLE_TOWER_FEELINGS]      = MULTICHOICE(MultichoiceList_BattleTowerFeelings),
     [MULTI_WHERES_RAYQUAZA]            = MULTICHOICE(MultichoiceList_WheresRayquaza),
     [MULTI_SLATEPORT_TENT_RULES]       = MULTICHOICE(MultichoiceList_SlateportTentRules),

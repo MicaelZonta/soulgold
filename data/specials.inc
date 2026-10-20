@@ -341,6 +341,8 @@ gSpecials::
 	def_special FoundAbandonedShipRoom6Key
 	def_special LeadMonHasEffortRibbon
 	def_special GiveLeadMonEffortRibbon
+	def_special GivePartyMonSkyRibbon
+	def_special GivePartyMonMarineRibbon
 	def_special Special_AreLeadMonEVsMaxedOut
 	def_special Script_FacePlayer
 	def_special Script_ClearHeldMovement

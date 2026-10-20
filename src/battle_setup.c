@@ -555,6 +555,10 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_AZELF:
         CreateBattleStartTask(B_TRANSITION_RIPPLE, MUS_DP_VS_UXIE_MESPRIT_AZELF);
         break;
+    case SPECIES_ARCEUS:
+    case SPECIES_ARCEUS_STEEL:
+        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_HG_VS_ARCEUS);
+        break;
     case SPECIES_HEATRAN:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_DP_VS_LEGEND);
         break;

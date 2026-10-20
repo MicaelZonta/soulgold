@@ -15,7 +15,7 @@
 #define SONG_MUS_DP_OREBURGH_DAY                        0
 #define SONG_MUS_DP_ETERNA_DAY                          0
 #define SONG_MUS_DP_HEARTHOME_DAY                       0
-#define SONG_MUS_DP_SNOWPOINT_DAY                       0
+#define SONG_MUS_DP_SNOWPOINT_DAY                       1
 #define SONG_MUS_DP_POKEMON_LEAGUE_DAY                  0
 #define SONG_MUS_DP_FIGHT_AREA_DAY                      0
 #define SONG_MUS_DP_ROUTE201_DAY                        0
@@ -65,8 +65,8 @@
 #define SONG_MUS_DP_GAME_CORNER                         0
 #define SONG_MUS_DP_TV_STATION                          0
 #define SONG_MUS_DP_GALACTIC_HQ_BASEMENT                0
-#define SONG_MUS_DP_AZURE_FLUTE                         0
-#define SONG_MUS_DP_HALL_OF_ORIGIN                      0
+#define SONG_MUS_DP_AZURE_FLUTE                         1
+#define SONG_MUS_DP_HALL_OF_ORIGIN                      1
 #define SONG_MUS_DP_GTS                                 0
 #define SONG_MUS_DP_VS_WILD                             1
 #define SONG_MUS_DP_VS_GALACTIC_BOSS                    0
@@ -195,7 +195,7 @@
 #define SONG_MUS_HG_VICTORY_FRONTIER_BRAIN              0
 #define SONG_MUS_HG_WFC                                 0
 #define SONG_MUS_HG_MYSTERY_GIFT                        0
-#define SONG_MUS_HG_WIFI_PLAZA                          0
+#define SONG_MUS_HG_WIFI_PLAZA                          1
 #define SONG_MUS_HG_WIFI_MINIGAMES                      0
 #define SONG_MUS_HG_WIFI_PARADE                         0
 #define SONG_MUS_HG_GLOBAL_TERMINAL                     0
@@ -212,7 +212,7 @@
 #define SONG_MUS_HG_RADIO_VARIETY                       0
 #define SONG_MUS_HG_VS_KYOGRE_GROUDON                   1
 #define SONG_MUS_HG_POKEWALKER                          0
-#define SONG_MUS_HG_VS_ARCEUS                           0
+#define SONG_MUS_HG_VS_ARCEUS                           1
 #define SONG_MUS_HG_OBTAIN_ACCESSORY                    0
 #define SONG_MUS_HG_DEX_RATING_1                        0
 #define SONG_MUS_HG_DEX_RATING_2                        0

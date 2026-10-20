@@ -40,6 +40,7 @@ static u32 IsMatchingSpecies(struct BoxPokemon *boxmon);
 static u32 CanMonDeleteMove(struct BoxPokemon *boxmon);
 static u32 CanMonLearnMove(struct BoxPokemon *boxmon);
 static u32 CanRelearnMoves(struct BoxPokemon *boxmon);
+static u32 CanMonLearnPLAMove(struct BoxPokemon *boxmon);
 
 static const struct PcMonSelection sPcMonSelectionTypes[] =
 {
@@ -48,7 +49,8 @@ static const struct PcMonSelection sPcMonSelectionTypes[] =
     [SELECT_PC_MON_DAYCARE] = {ChooseSendDaycareMon, IsNotEgg, NULL, TRUE},
     [SELECT_PC_MON_MOVE_TUTOR] = {ChooseMonForMoveTutor, CanMonLearnMove, MoveTutor_AfterChooseBoxMon, FALSE},
     [SELECT_PC_MON_MOVE_DELETER] = {ChoosePartyMon, CanMonDeleteMove, NULL, FALSE},
-    [SELECT_PC_MON_MOVE_RELEARNER] = {ChooseMonForMoveRelearner, CanRelearnMoves, NULL, FALSE}
+    [SELECT_PC_MON_MOVE_RELEARNER] = {ChooseMonForMoveRelearner, CanRelearnMoves, NULL, FALSE},
+    [SELECT_PC_MON_PLA_TUTOR] = {ChooseMonForMoveTutor, CanMonLearnPLAMove, MoveTutor_AfterChooseBoxMon, FALSE},
 };
 
 static u32 NoFilter(struct BoxPokemon *boxmon)
@@ -96,6 +98,138 @@ static u32 CanMonLearnMove(struct BoxPokemon *boxmon)
         return ALREADY_KNOWS_MOVE;
     if (CanLearnTeachableMove(GetBoxMonData(boxmon, MON_DATA_SPECIES), gSpecialVar_0x8005))
         return VALID_MON;
+    return CANNOT_LEARN_MOVE;
+}
+
+// HnS Fase 8: tutor de golpes "Legends: Arceus" em New Sinjoh (HotSprings).
+static const u16 sPLATutorLearnsets[][2] =
+{
+    {SPECIES_HITMONTOP,         MOVE_VICTORY_DANCE},
+    {SPECIES_BRELOOM,           MOVE_VICTORY_DANCE},
+    {SPECIES_SPINDA,            MOVE_VICTORY_DANCE},
+    {SPECIES_LUDICOLO,          MOVE_VICTORY_DANCE},
+    {SPECIES_BELLOSSOM,         MOVE_VICTORY_DANCE},
+
+    {SPECIES_GLALIE,            MOVE_MOUNTAIN_GALE},
+    {SPECIES_MAMOSWINE,         MOVE_MOUNTAIN_GALE},
+    {SPECIES_SANDSLASH_ALOLA,   MOVE_MOUNTAIN_GALE},
+    {SPECIES_KINGLER,           MOVE_MOUNTAIN_GALE},
+    {SPECIES_CRAWDAUNT,         MOVE_MOUNTAIN_GALE},
+    {SPECIES_LAPRAS,            MOVE_MOUNTAIN_GALE},
+    {SPECIES_FERALIGATR,        MOVE_MOUNTAIN_GALE},
+
+    {SPECIES_BANETTE,           MOVE_BITTER_MALICE},
+    {SPECIES_DUSCLOPS,          MOVE_BITTER_MALICE},
+    {SPECIES_DUSKNOIR,          MOVE_BITTER_MALICE},
+    {SPECIES_CORSOLA_GALAR,      MOVE_BITTER_MALICE},
+    {SPECIES_CURSOLA,           MOVE_BITTER_MALICE},
+    {SPECIES_GENGAR,            MOVE_BITTER_MALICE},
+    {SPECIES_MOLTRES_GALAR,     MOVE_BITTER_MALICE},
+    {SPECIES_MAROWAK_ALOLA,     MOVE_BITTER_MALICE},
+
+    {SPECIES_RAPIDASH_GALAR,    MOVE_SPRINGTIDE_STORM},
+    {SPECIES_MEGANIUM,          MOVE_SPRINGTIDE_STORM},
+    {SPECIES_ALTARIA,           MOVE_SPRINGTIDE_STORM},
+    {SPECIES_TOGETIC,           MOVE_SPRINGTIDE_STORM},
+    {SPECIES_TOGEKISS,          MOVE_SPRINGTIDE_STORM},
+
+    {SPECIES_CLEFABLE,          MOVE_LUNAR_BLESSING},
+    {SPECIES_NIDOQUEEN,         MOVE_LUNAR_BLESSING},
+    {SPECIES_LUNATONE,          MOVE_LUNAR_BLESSING},
+    {SPECIES_URSARING,          MOVE_LUNAR_BLESSING},
+    {SPECIES_URSALUNA,          MOVE_LUNAR_BLESSING},
+    {SPECIES_URSALUNA_BLOODMOON, MOVE_LUNAR_BLESSING},
+    {SPECIES_UMBREON,           MOVE_LUNAR_BLESSING},
+
+    {SPECIES_ARTICUNO,          MOVE_BLEAKWIND_STORM},
+
+    {SPECIES_ZAPDOS,            MOVE_WILDBOLT_STORM},
+
+    {SPECIES_MOLTRES,           MOVE_SANDSEAR_STORM},
+
+    {SPECIES_SHUCKLE,           MOVE_SHELTER},
+    {SPECIES_BLASTOISE,         MOVE_SHELTER},
+    {SPECIES_CLOYSTER,          MOVE_SHELTER},
+    {SPECIES_TORKOAL,           MOVE_SHELTER},
+
+    {SPECIES_XATU,              MOVE_ESPER_WING},
+    {SPECIES_ARTICUNO_GALAR,    MOVE_ESPER_WING},
+    {SPECIES_TOGETIC,           MOVE_ESPER_WING},
+    {SPECIES_TOGEKISS,          MOVE_ESPER_WING},
+    {SPECIES_LATIOS,            MOVE_ESPER_WING},
+    {SPECIES_LATIAS,            MOVE_ESPER_WING},
+
+    {SPECIES_GARDEVOIR,         MOVE_TAKE_HEART},
+    {SPECIES_EEVEE,             MOVE_TAKE_HEART},
+    {SPECIES_VAPOREON,          MOVE_TAKE_HEART},
+    {SPECIES_JOLTEON,           MOVE_TAKE_HEART},
+    {SPECIES_FLAREON,           MOVE_TAKE_HEART},
+    {SPECIES_ESPEON,            MOVE_TAKE_HEART},
+    {SPECIES_UMBREON,           MOVE_TAKE_HEART},
+    {SPECIES_LEAFEON,           MOVE_TAKE_HEART},
+    {SPECIES_GLACEON,           MOVE_TAKE_HEART},
+    {SPECIES_SYLVEON,           MOVE_TAKE_HEART},
+    {SPECIES_PICHU_SPIKY_EARED, MOVE_TAKE_HEART},
+    {SPECIES_PIKACHU,           MOVE_TAKE_HEART},
+    {SPECIES_RAICHU,            MOVE_TAKE_HEART},
+    {SPECIES_RAICHU_ALOLA,      MOVE_TAKE_HEART},
+    {SPECIES_CLEFAIRY,          MOVE_TAKE_HEART},
+    {SPECIES_CLEFABLE,          MOVE_TAKE_HEART},
+    {SPECIES_TOGEKISS,          MOVE_TAKE_HEART},
+    {SPECIES_DRAGONITE,         MOVE_TAKE_HEART},
+    {SPECIES_MEGANIUM,          MOVE_TAKE_HEART},
+    {SPECIES_MEW ,              MOVE_TAKE_HEART},
+    {SPECIES_CELEBI,            MOVE_TAKE_HEART},
+
+    {SPECIES_ALAKAZAM,          MOVE_MYSTICAL_POWER},
+    {SPECIES_MEDICHAM,          MOVE_MYSTICAL_POWER},
+    {SPECIES_ESPEON,            MOVE_MYSTICAL_POWER},
+    {SPECIES_XATU,              MOVE_MYSTICAL_POWER},
+    {SPECIES_SLOWKING,          MOVE_MYSTICAL_POWER},
+    {SPECIES_SLOWKING_GALAR,    MOVE_MYSTICAL_POWER},
+
+    {SPECIES_SWAMPERT,          MOVE_WAVE_CRASH},
+    {SPECIES_DRAGONAIR,          MOVE_WAVE_CRASH},
+    {SPECIES_DRAGONITE,         MOVE_WAVE_CRASH},
+    {SPECIES_KINGLER,           MOVE_WAVE_CRASH},
+    {SPECIES_CRAWDAUNT,         MOVE_WAVE_CRASH},
+    {SPECIES_SHARPEDO,          MOVE_WAVE_CRASH},
+    {SPECIES_KABUTOPS,          MOVE_WAVE_CRASH},
+    {SPECIES_FERALIGATR,        MOVE_WAVE_CRASH},
+    {SPECIES_GYARADOS,          MOVE_WAVE_CRASH},
+    {SPECIES_WALREIN,           MOVE_WAVE_CRASH},
+    {SPECIES_QUAGSIRE,           MOVE_WAVE_CRASH},
+    {SPECIES_MANTINE,            MOVE_WAVE_CRASH},
+    {SPECIES_RELICANTH,         MOVE_WAVE_CRASH},
+
+    {SPECIES_SHUCKLE,           MOVE_POWER_SHIFT},
+    {SPECIES_ALAKAZAM,          MOVE_POWER_SHIFT},
+    {SPECIES_GARDEVOIR,         MOVE_POWER_SHIFT},
+    {SPECIES_GALLADE,            MOVE_POWER_SHIFT},
+    {SPECIES_MEDICHAM,          MOVE_POWER_SHIFT},
+    {SPECIES_SLOWBRO,           MOVE_POWER_SHIFT},
+    {SPECIES_SLOWBRO_GALAR,     MOVE_POWER_SHIFT},
+};
+
+static u32 CanMonLearnPLAMove(struct BoxPokemon *boxmon)
+{
+    u16 species;
+    u16 move;
+    u32 i;
+
+    if (GetBoxMonData(boxmon, MON_DATA_IS_EGG))
+        return CANNOT_LEARN_MOVE_IS_EGG;
+    if (BoxMonKnowsMove(boxmon, gSpecialVar_0x8005))
+        return ALREADY_KNOWS_MOVE;
+
+    species = GetBoxMonData(boxmon, MON_DATA_SPECIES);
+    move = gSpecialVar_0x8005;
+
+    for (i = 0; i < ARRAY_COUNT(sPLATutorLearnsets); i++)
+    {
+        if (sPLATutorLearnsets[i][0] == species && sPLATutorLearnsets[i][1] == move)
+            return VALID_MON;
+    }
     return CANNOT_LEARN_MOVE;
 }
 

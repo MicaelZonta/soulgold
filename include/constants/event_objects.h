@@ -413,6 +413,8 @@
 #define OBJ_EVENT_GFX_TRAIN_WEST                 388
 #define OBJ_EVENT_GFX_GOLD_NORMAL                389
 #define OBJ_EVENT_GFX_KRIS_NORMAL                390
+#define OBJ_EVENT_GFX_SKIER_F                    391
+#define OBJ_EVENT_GFX_SKIER_M                    392
 // Aliases dos sprites do Kanto do HnS que o SoulGold ja tem com outro nome.
 #define OBJ_EVENT_GFX_OFFICER                    OBJ_EVENT_GFX_POLICEMAN
 #define OBJ_EVENT_GFX_ATTENDANT_F                OBJ_EVENT_GFX_ATTENDANT
@@ -420,11 +422,15 @@
 #define OBJ_EVENT_GFX_SAGE_ELDER                 OBJ_EVENT_GFX_SAGE
 #define OBJ_EVENT_GFX_MYSTERY_EVENT_DELIVERYMAN  OBJ_EVENT_GFX_MYSTERY_GIFT_MAN
 #define OBJ_EVENT_GFX_SMALL_LIGHT                OBJ_EVENT_GFX_LIGHT_SPRITE
+// Fase 8 (Alola/Sinjoh): aliases de sprites que o SoulGold ja tem.
+#define OBJ_EVENT_GFX_KIMONO                     OBJ_EVENT_GFX_KIMONO_GIRL
+#define OBJ_EVENT_GFX_LIGHT                      OBJ_EVENT_GFX_LIGHT_SPRITE
+#define OBJ_EVENT_GFX_SWIMMER_F_LAND             OBJ_EVENT_GFX_SWIMMER_F // swimmer_f e o boneco terrestre; _WATER e o nadando
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        391
+#define NUM_OBJ_EVENT_GFX                        393
 
 
 // These are dynamic object gfx ids.
@@ -694,6 +700,8 @@
 #define OBJ_EVENT_PAL_TAG_TRAIN_HNS                 0x11A5
 #define OBJ_EVENT_PAL_TAG_GOLD_HNS                  0x11A6
 #define OBJ_EVENT_PAL_TAG_KRIS_HNS                  0x11A7
+#define OBJ_EVENT_PAL_TAG_SKIER_F                   0x11A8
+#define OBJ_EVENT_PAL_TAG_SKIER_M                   0x11A9
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001

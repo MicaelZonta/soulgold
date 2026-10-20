@@ -935,10 +935,11 @@ static bool32 Achievement_PredicateObtainedWeatherGenies(void)
 
 static bool32 Achievement_PredicateObtainedTapus(void)
 {
-    return FlagGet(FLAG_BATTLE_CAFE_TAPU_KOKO_RECEIVED)
-        && FlagGet(FLAG_BATTLE_CAFE_TAPU_LELE_RECEIVED)
-        && FlagGet(FLAG_BATTLE_CAFE_TAPU_BULU_RECEIVED)
-        && FlagGet(FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED);
+    // Fase 8: Tapus viraram encontros em Alola (sairam do Cafe).
+    return Achievement_PredicateCaughtSpecies(SPECIES_TAPU_KOKO)
+        && Achievement_PredicateCaughtSpecies(SPECIES_TAPU_LELE)
+        && Achievement_PredicateCaughtSpecies(SPECIES_TAPU_BULU)
+        && Achievement_PredicateCaughtSpecies(SPECIES_TAPU_FINI);
 }
 
 static bool32 Achievement_PredicateObtainedParadoxLegends(void)

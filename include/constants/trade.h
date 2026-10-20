@@ -21,7 +21,10 @@ enum InGameTradeID
     INGAME_TRADE_BONSLY,
     INGAME_TRADE_STEELIX,
     INGAME_TRADE_SLOWPOKE, // Azalea Town
-    INGAME_TRADE_ROTOM // Route 39 North Gatehouse
+    INGAME_TRADE_ROTOM, // Route 39 North Gatehouse
+    INGAME_TRADE_TAUROS_WATER, // Melemele (HnS Fase 8)
+    INGAME_TRADE_TAUROS_FIGHT,
+    INGAME_TRADE_TAUROS_FIRE
 };
 
 // Return values for CanTradeSelectedMon and CanSpinTradeMon

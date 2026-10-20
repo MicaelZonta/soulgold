@@ -69,7 +69,7 @@
 #define FLAG_SYS_NO_BAG_USE                     0x23 // Unused Flag //DEBUG
 #define FLAG_SYS_NO_CATCHING                    0x24 // NAO USE: nada le esta flag. Para desligar captura use B_FLAG_NO_CATCHING (include/config/battle.h). Auditoria 7.2
 #define FLAG_SYS_PC_FROM_DEBUG_MENU             0x25 // Unused Flag //DEBUG
-#define FLAG_ARCEUS_EGG_GIVE                    0x26
+#define FLAG_ARCEUS_EGG_GIVE                    0x26 // desde 19/10/2026: 'Oak ja deu o starter de Kanto' (era o ovo de Arceus; Arceus agora vem de Sinjoh)
 #define FLAG_SYS_NO_BATTLE_DMG                  0x27 // Unused Flag //DEBUG
 #define FLAG_ONETIME_GROUDON                    0x28 
 #define FLAG_ONETIME_KYOGRE                     0x29
@@ -2111,8 +2111,87 @@
 #define FLAG_HIDE_MOLTRES_GALAR                      0x1122 // Victory Road Kanto B1F
 #define FLAG_HIDE_KORAIDON                           0x1123 // Seafoam SecretCave (sala do Groudon do HnS)
 #define FLAG_HIDE_MIRAIDON                           0x1124 // Route19_Cave (sala do Kyogre do HnS)
-#define CUSTOM_FLAGS_END                            FLAG_HIDE_MIRAIDON
-// PROXIMA FLAG NOVA: 0x1125 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+// Fase 8 - flags de Alola/Sinjoh/Snowswept (HnS).
+#define FLAG_AKALA_CAVE_HIDDEN_ITEM_1                        0x1125 // HnS: Akala_Cave
+#define FLAG_AKALA_CAVE_HIDDEN_ITEM_2                        0x1126 // HnS: Akala_Cave
+#define FLAG_AKALA_FOREST_HIDDEN_ITEM_1                      0x1127 // HnS: Akala_Forest
+#define FLAG_AKALA_FOREST_HIDDEN_ITEM_2                      0x1128 // HnS: Akala_Forest
+#define FLAG_AKALA_HIDDEN_ITEM_1                             0x1129 // HnS: AkalaIsle
+#define FLAG_AKALA_HIDDEN_ITEM_2                             0x112A // HnS: AkalaIsle
+#define FLAG_AKALA_HIDDEN_ITEM_3                             0x112B // HnS: AkalaIsle
+#define FLAG_AKALA_TOTEM_DAY                                 0x112C // HnS: AkalaIsle
+#define FLAG_BATTLED_DUGTRIO                                 0x112D // HnS: Akala_Cave
+#define FLAG_BATTLED_EXEGGUTOR                               0x112E // HnS: PoniIsle
+#define FLAG_BATTLED_MAROWAK                                 0x112F // HnS: Akala_Cave
+#define FLAG_BATTLED_NINETALES                               0x1130 // HnS: UlaUla_Cave
+#define FLAG_BATTLED_RAICHU                                  0x1131 // HnS: Akala_Forest
+#define FLAG_BATTLED_SANDSLASH                               0x1132 // HnS: UlaUla_Cave
+#define FLAG_BATTLED_TAPU_BULU                               0x1133 // HnS: AkalaIsle, MelemeleIsle
+#define FLAG_BATTLED_TAPU_FINI                               0x1134 // HnS: AkalaIsle, MelemeleIsle
+#define FLAG_BATTLED_TAPU_KOKO                               0x1135 // HnS: AkalaIsle, MelemeleIsle
+#define FLAG_BATTLED_TAPU_LELE                               0x1136 // HnS: AkalaIsle, MelemeleIsle
+#define FLAG_BROUGHT_REGICE                                  0x1137 // HnS: SinjohRuins_Temple
+#define FLAG_BROUGHT_REGIDRAGO                               0x1138 // HnS: SinjohRuins_Temple
+#define FLAG_BROUGHT_REGIELEKI                               0x1139 // HnS: SinjohRuins_Temple
+#define FLAG_BROUGHT_REGIROCK                                0x113A // HnS: SinjohRuins_Temple
+#define FLAG_BROUGHT_REGISTEEL                               0x113B // HnS: SinjohRuins_Temple
+#define FLAG_CAUGHT_ALL_AKALA                                0x113C // HnS: AkalaIsle, MelemeleIsle
+#define FLAG_CAUGHT_ALL_MELEMELE                             0x113D // HnS: AkalaIsle, MelemeleIsle
+#define FLAG_CAUGHT_ALL_PONI                                 0x113E // HnS: AkalaIsle, MelemeleIsle
+#define FLAG_CAUGHT_ALL_ULAULA                               0x113F // HnS: AkalaIsle, MelemeleIsle
+#define FLAG_COMPLETED_TAUROS_TRADE                          0x1140 // HnS: Melemele_House
+#define FLAG_DEFEATED_AKALA_TOTEM                            0x1141 // HnS: AkalaIsle, Melemele_PlayerHouse
+#define FLAG_DEFEATED_MELEMELE_TOTEM                         0x1142 // HnS: MelemeleIsle, Melemele_PlayerHouse
+#define FLAG_DEFEATED_PONI_TOTEM                             0x1143 // HnS: Melemele_PlayerHouse, PoniIsle
+#define FLAG_DEFEATED_SAMSON_OAK                             0x1144 // HnS: Melemele_PlayerHouse
+#define FLAG_DEFEATED_ULAULA_TOTEM                           0x1145 // HnS: Melemele_PlayerHouse, UlaUla_Forest
+#define FLAG_FLYOVER_TAPU_BULU                               0x1146 // HnS: Melemele_PlayerHouse
+#define FLAG_FLYOVER_TAPU_FINI                               0x1147 // HnS: Melemele_PlayerHouse, PoniIsle
+#define FLAG_FLYOVER_TAPU_KOKO                               0x1148 // HnS: MelemeleIsle, Melemele_PlayerHouse
+#define FLAG_FLYOVER_TAPU_LELE                               0x1149 // HnS: AkalaIsle, Melemele_PlayerHouse
+#define FLAG_GOT_FIST_PLATE                                  0x114A // HnS: SnowsweptCavern
+#define FLAG_HIDE_HOTSPRINGS_NOBLE_ARCANINE                  0x114B // HnS: NewSinjoh_HotSprings
+#define FLAG_HIDE_HOTSPRINGS_NOBLE_URSALUNA                  0x114C // HnS: NewSinjoh_HotSprings
+#define FLAG_HIDE_NEWSINJOH_HOUSE3_NOBLE_TYPHLOSION          0x114D // HnS: NewSinjoh_House3
+#define FLAG_HIDE_NEWSINJOH_STEVEN                           0x114E // HnS: NewSinjoh, SinjohRuins_ArceusRoom
+#define FLAG_HIDE_SINJOHRUINS_ARCEUSROOM_STEVEN              0x114F // HnS: SinjohRuins_ArceusRoom
+#define FLAG_HIDE_SINJOHRUINS_LAB_STEVEN                     0x1150 // HnS: SinjohRuins, SinjohRuins_House1
+#define FLAG_HIDE_SINJOHRUINS_STEVEN                         0x1151 // HnS: SinjohRuins, SinjohRuins_ArceusRoom
+#define FLAG_HIDE_SNOWSWEPT_NOBLE_SNEASLER                   0x1152 // HnS: SnowsweptCavern
+#define FLAG_MELEMELE_HIDDEN_ITEM                            0x1153 // HnS: MelemeleIsle
+#define FLAG_MELEMELE_TOTEM_DAY                              0x1154 // HnS: MelemeleIsle
+#define FLAG_NEWSINJOH_HIDDEN_NUGGET                         0x1155 // HnS: NewSinjoh
+#define FLAG_NEWSINJOH_HIDDEN_SNOWBALL                       0x1156 // HnS: NewSinjoh
+#define FLAG_NEWSINJOH_HOTSPRINGS_HIDDEN_ITEM1               0x1157 // HnS: NewSinjoh_HotSprings
+#define FLAG_NEWSINJOH_HOTSPRINGS_HIDDEN_ITEM2               0x1158 // HnS: NewSinjoh_HotSprings
+#define FLAG_NEWSINJOH_HOTSPRINGS_ITEM_LAVACOOKIE            0x1159 // HnS: NewSinjoh_HotSprings
+#define FLAG_NEWSINJOH_HOTSPRINGS_ITEM_MAXREVIVE             0x115A // HnS: NewSinjoh_HotSprings
+#define FLAG_NEWSINJOH_HOUSE1_ELIZABETH_GAVEWOOPER           0x115B // HnS: NewSinjoh_House1
+#define FLAG_NEWSINJOH_ITEM_DUSK_BALL                        0x115C // HnS: NewSinjoh
+#define FLAG_NEWSINJOH_POKEMONCENTER_ARTIST_GIFT             0x115D // HnS: NewSinjoh_PokemonCenter
+#define FLAG_NO_WILD_RUNNING                                 0x115E // HnS: AkalaIsle, MelemeleIsle
+#define FLAG_PONI_HIDDEN_ITEM_1                              0x115F // HnS: PoniIsle
+#define FLAG_SMART_WILD_AI                                   0x1160 // HnS: AkalaIsle, MelemeleIsle
+#define FLAG_SNOWSWEPT_HIDDEN_ICYROCK                        0x1161 // HnS: SnowsweptCavern
+#define FLAG_SNOWSWEPT_ITEM_NEVERMELTICE                     0x1162 // HnS: SnowsweptCavern
+#define FLAG_SNOWSWEPT_ITEM_ULTRABALL                        0x1163 // HnS: SnowsweptCavern
+#define FLAG_TRIGGERED_AKALA_TOTEM                           0x1164 // HnS: AkalaIsle
+#define FLAG_TRIGGERED_MELEMELE_TOTEM                        0x1165 // HnS: MelemeleIsle
+#define FLAG_TRIGGERED_PONI_TOTEM                            0x1166 // HnS: PoniIsle
+#define FLAG_TRIGGERED_ULAULA_TOTEM                          0x1167 // HnS: UlaUla_Forest
+#define FLAG_ULAULA_CAVE_HIDDEN_ITEM_1                       0x1168 // HnS: UlaUla_Cave
+#define FLAG_ULAULA_CAVE_HIDDEN_ITEM_2                       0x1169 // HnS: UlaUla_Cave
+#define FLAG_ULAULA_FOREST_HIDDEN_ITEM_1                     0x116A // HnS: UlaUla_Forest
+#define FLAG_ULAULA_TOTEM_DAY                                0x116B // HnS: UlaUla_Forest
+#define FLAG_VISITED_NEW_SINJOH                              0x116C // HnS: NewSinjoh
+#define FLAG_BATTLED_GOLEM                                   0x116D // HnS: Poni_Cave
+#define FLAG_PONI_CAVE_HIDDEN_ITEM_1                         0x116E // HnS: Poni_Cave
+#define FLAG_PONI_CAVE_HIDDEN_ITEM_2                         0x116F // HnS: Poni_Cave
+#define FLAG_ULAULA_HIDDEN_ITEM_1                            0x1170 // HnS: UlaulaIsle
+#define FLAG_ULAULA_HIDDEN_ITEM_2                            0x1171 // HnS: UlaulaIsle
+#define FLAG_ULAULA_MOVE_TUTOR_PAID                          0x1172 // HnS: UlaulaIsle
+#define CUSTOM_FLAGS_END                            FLAG_ULAULA_MOVE_TUTOR_PAID
+// PROXIMA FLAG NOVA: 0x1173 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

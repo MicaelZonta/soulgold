@@ -602,6 +602,18 @@
       "y": 6,
       "respawn_map": "MAP_ROUTE4_POKEMON_CENTER",
       "respawn_npc": "LOCALID_ROUTE4_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_MELEMELE_ISLE",
+      "map": "MAP_MELEMELE_ISLE",
+      "x": 28,
+      "y": 7
+    },
+    {
+      "id": "HEAL_LOCATION_NEW_SINJOH",
+      "map": "MAP_NEW_SINJOH",
+      "x": 39,
+      "y": 42
     }
   ]
 }

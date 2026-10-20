@@ -1193,6 +1193,51 @@ enum
     MAP_ULTRA_SPACE_ARENA = (1 | (35 << 8)),
     MAP_NEXUS             = (2 | (35 << 8)),
 
+    // gMapGroup_OutdoorAlola
+    MAP_AKALA_ISLE    = (0 | (36 << 8)),
+    MAP_ALOLA_WATER   = (1 | (36 << 8)),
+    MAP_MELEMELE_ISLE = (2 | (36 << 8)),
+    MAP_PONI_ISLE     = (3 | (36 << 8)),
+    MAP_ULAULA_ISLE   = (4 | (36 << 8)),
+
+    // gMapGroup_IndoorAlola
+    MAP_AKALA_CAVE            = (0 | (37 << 8)),
+    MAP_AKALA_FOREST          = (1 | (37 << 8)),
+    MAP_AKALA_HOUSE           = (2 | (37 << 8)),
+    MAP_MELEMELE_HOUSE        = (3 | (37 << 8)),
+    MAP_MELEMELE_HOUSE_2      = (4 | (37 << 8)),
+    MAP_MELEMELE_HOUSE_3      = (5 | (37 << 8)),
+    MAP_MELEMELE_HOUSE_4      = (6 | (37 << 8)),
+    MAP_MELEMELE_HOUSE_5      = (7 | (37 << 8)),
+    MAP_MELEMELE_HOUSE_6      = (8 | (37 << 8)),
+    MAP_MELEMELE_PLAYER_HOUSE = (9 | (37 << 8)),
+    MAP_ULA_ULA_CAVE          = (10 | (37 << 8)),
+    MAP_ULA_ULA_CAVE_2        = (11 | (37 << 8)),
+    MAP_ULA_ULA_FOREST        = (12 | (37 << 8)),
+    MAP_ULA_ULA_HOUSE         = (13 | (37 << 8)),
+    MAP_PONI_CAVE             = (14 | (37 << 8)),
+
+    // gMapGroup_Sinjoh
+    MAP_NEW_SINJOH                  = (0 | (38 << 8)),
+    MAP_NEWSINJOH_HOTSPRINGS        = (1 | (38 << 8)),
+    MAP_NEW_SINJOH_HOUSE1           = (2 | (38 << 8)),
+    MAP_NEW_SINJOH_HOUSE2           = (3 | (38 << 8)),
+    MAP_NEW_SINJOH_HOUSE3           = (4 | (38 << 8)),
+    MAP_NEW_SINJOH_HOUSE4           = (5 | (38 << 8)),
+    MAP_NEW_SINJOH_KIMONO_HIDEOUT   = (6 | (38 << 8)),
+    MAP_NEW_SINJOH_POKEMON_CENTER   = (7 | (38 << 8)),
+    MAP_SINJOH_RUINS                = (8 | (38 << 8)),
+    MAP_SINJOH_RUINS_ARCEUS_ROOM    = (9 | (38 << 8)),
+    MAP_SINJOH_RUINS_HOUSE1         = (10 | (38 << 8)),
+    MAP_SINJOH_RUINS_REGICE_ROOM    = (11 | (38 << 8)),
+    MAP_SINJOH_RUINS_REGIDRACO_ROOM = (12 | (38 << 8)),
+    MAP_SINJOH_RUINS_REGIELEKI_ROOM = (13 | (38 << 8)),
+    MAP_SINJOH_RUINS_REGIGIGAS_ROOM = (14 | (38 << 8)),
+    MAP_SINJOH_RUINS_REGIROCK_ROOM  = (15 | (38 << 8)),
+    MAP_SINJOH_RUINS_REGISTEEL_ROOM = (16 | (38 << 8)),
+    MAP_SINJOH_RUINS_TEMPLE         = (17 | (38 << 8)),
+    MAP_SNOWSWEPT_CAVERN            = (18 | (38 << 8)),
+
 };
 
 //Constants for unused maps
@@ -1509,6 +1554,6 @@ enum
 #define MAP_POKEMON_MANSION_3F                           31293
 #define MAP_POKEMON_MANSION_B1F                          31294
 
-#define MAP_GROUPS_COUNT 36
+#define MAP_GROUPS_COUNT 39
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

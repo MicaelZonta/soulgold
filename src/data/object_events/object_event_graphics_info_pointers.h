@@ -336,6 +336,8 @@ extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_SwimmingLa
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_TrainWest_hns;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_GoldNormal_hns;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_KrisNormal_hns;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_SkierF;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_SkierM;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Skyla;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Rosa;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Peony;
@@ -752,6 +754,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TRAIN_WEST] = &gObjectEventGraphicsInfo_TrainWest_hns,
     [OBJ_EVENT_GFX_GOLD_NORMAL] = &gObjectEventGraphicsInfo_GoldNormal_hns,
     [OBJ_EVENT_GFX_KRIS_NORMAL] = &gObjectEventGraphicsInfo_KrisNormal_hns,
+    [OBJ_EVENT_GFX_SKIER_F] = &gObjectEventGraphicsInfo_SkierF,
+    [OBJ_EVENT_GFX_SKIER_M] = &gObjectEventGraphicsInfo_SkierM,
     [OBJ_EVENT_GFX_SKYLA] =                       &gObjectEventGraphicsInfo_Skyla,
     [OBJ_EVENT_GFX_ROSA] =                        &gObjectEventGraphicsInfo_Rosa,
     [OBJ_EVENT_GFX_PEONY] =                       &gObjectEventGraphicsInfo_Peony,

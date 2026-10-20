@@ -3030,6 +3030,30 @@ static const struct SpriteFrameImage sPicTable_GoldNormal_hns[] = {
     overworld_frame(gObjectEventPic_GoldNormal_hns, 2, 4, 8),
 };
 
+static const struct SpriteFrameImage sPicTable_SkierF[] = {
+    overworld_frame(gObjectEventPic_SkierF, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SkierF, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SkierF, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SkierF, 4, 4, 3),
+    overworld_frame(gObjectEventPic_SkierF, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SkierF, 4, 4, 5),
+    overworld_frame(gObjectEventPic_SkierF, 4, 4, 6),
+    overworld_frame(gObjectEventPic_SkierF, 4, 4, 7),
+    overworld_frame(gObjectEventPic_SkierF, 4, 4, 8),
+};
+
+static const struct SpriteFrameImage sPicTable_SkierM[] = {
+    overworld_frame(gObjectEventPic_SkierM, 4, 4, 0),
+    overworld_frame(gObjectEventPic_SkierM, 4, 4, 1),
+    overworld_frame(gObjectEventPic_SkierM, 4, 4, 2),
+    overworld_frame(gObjectEventPic_SkierM, 4, 4, 3),
+    overworld_frame(gObjectEventPic_SkierM, 4, 4, 4),
+    overworld_frame(gObjectEventPic_SkierM, 4, 4, 5),
+    overworld_frame(gObjectEventPic_SkierM, 4, 4, 6),
+    overworld_frame(gObjectEventPic_SkierM, 4, 4, 7),
+    overworld_frame(gObjectEventPic_SkierM, 4, 4, 8),
+};
+
 static const struct SpriteFrameImage sPicTable_KrisNormal_hns[] = {
     overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 0),
     overworld_frame(gObjectEventPic_KrisNormal_hns, 2, 4, 1),

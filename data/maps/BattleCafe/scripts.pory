@@ -692,10 +692,6 @@ script BattleCafe_RewardMenu {
     dynmultipush("Thundurus - 5", 4)
     dynmultipush("Landorus - 5", 5)
     dynmultipush("Enamorus - 5", 6)
-    dynmultipush("Tapu Koko - 5", 16)
-    dynmultipush("Tapu Lele - 5", 17)
-    dynmultipush("Tapu Bulu - 5", 18)
-    dynmultipush("Tapu Fini - 5", 19)
     dynmultipush("Back", 15)
     dynmultistack(0, 0, FALSE, 6, FALSE, 10, DYN_MULTICHOICE_CB_NONE)
     switch (var(VAR_RESULT)) {
@@ -709,10 +705,6 @@ script BattleCafe_RewardMenu {
         case 10: goto(BattleCafe_ChooseVitaminSetAtk)
         case 11: goto(BattleCafe_ChooseVitaminSetDef)
         case 12: goto(BattleCafe_ChooseVitaminSetSpe)
-        case 16: goto(BattleCafe_ChooseTapuKoko)
-        case 17: goto(BattleCafe_ChooseTapuLele)
-        case 18: goto(BattleCafe_ChooseTapuBulu)
-        case 19: goto(BattleCafe_ChooseTapuFini)
         default: goto(BattleCafe_OwnerMenu)
     }
 }
@@ -761,49 +753,9 @@ script BattleCafe_ChooseEnamorus {
     goto(BattleCafe_ConfirmRewardMon)
 }
 
-script BattleCafe_ChooseTapuKoko {
-    if (flag(FLAG_BATTLE_CAFE_TAPU_KOKO_RECEIVED)) {
-        msgbox("I've already entrusted Tapu Koko
-                to you.")
-        goto(BattleCafe_RewardMenu)
-    }
-    setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_KOKO)
-    setvar(VAR_TEMP_B, 7)
-    goto(BattleCafe_ConfirmRewardMon)
-}
 
-script BattleCafe_ChooseTapuLele {
-    if (flag(FLAG_BATTLE_CAFE_TAPU_LELE_RECEIVED)) {
-        msgbox("I've already entrusted Tapu Lele
-                to you.")
-        goto(BattleCafe_RewardMenu)
-    }
-    setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_LELE)
-    setvar(VAR_TEMP_B, 8)
-    goto(BattleCafe_ConfirmRewardMon)
-}
 
-script BattleCafe_ChooseTapuBulu {
-    if (flag(FLAG_BATTLE_CAFE_TAPU_BULU_RECEIVED)) {
-        msgbox("I've already entrusted Tapu Bulu
-                to you.")
-        goto(BattleCafe_RewardMenu)
-    }
-    setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_BULU)
-    setvar(VAR_TEMP_B, 9)
-    goto(BattleCafe_ConfirmRewardMon)
-}
 
-script BattleCafe_ChooseTapuFini {
-    if (flag(FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED)) {
-        msgbox("I've already entrusted Tapu Fini
-                to you.")
-        goto(BattleCafe_RewardMenu)
-    }
-    setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_FINI)
-    setvar(VAR_TEMP_B, 10)
-    goto(BattleCafe_ConfirmRewardMon)
-}
 
 script BattleCafe_ConfirmRewardMon {
     if (var(VAR_BATTLE_CAFE_POINTS) < 5) {

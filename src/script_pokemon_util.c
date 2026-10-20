@@ -179,6 +179,36 @@ void CreateScriptedDoubleWildMon(u16 species1, u8 level1, enum Item item, enum I
     }
 }
 
+// HnS "wild boss" mon: species/level/item plus a curated moveset (MOVE_NONE in
+// the first slot keeps the level-up moveset). Fills gEnemyParty[slot]; slot 0
+// also zeroes the enemy party.
+void CreateScriptedWildBossMon(u8 slot, u16 species, u8 level, enum Item item, const enum Move moves[MAX_MON_MOVES])
+{
+    u8 heldItem[2];
+    struct Pokemon *mon = &gEnemyParty[slot];
+
+    if (slot == 0)
+        ZeroEnemyPartyMons();
+    u32 personality = GetMonPersonality(species,
+        GetSynchronizedGender(STATIC_WILDMON_ORIGIN, species),
+        GetSynchronizedNature(STATIC_WILDMON_ORIGIN, species),
+        RANDOM_UNOWN_LETTER);
+    CreateMonWithIVs(mon, species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    GiveMonInitialMoveset(mon);
+    if (moves[0] != MOVE_NONE)
+    {
+        for (u32 i = 0; i < MAX_MON_MOVES; i++)
+            if (moves[i] != MOVE_NONE)
+                SetMonMoveSlot(mon, moves[i], i);
+    }
+    if (item)
+    {
+        heldItem[0] = item;
+        heldItem[1] = item >> 8;
+        SetMonData(mon, MON_DATA_HELD_ITEM, heldItem);
+    }
+}
+
 void ScriptSetMonMoveSlot(u8 monIndex, enum Move move, u8 slot)
 {
 // Allows monIndex to go out of bounds of gPlayerParty. Doesn't occur in vanilla

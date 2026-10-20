@@ -2629,6 +2629,38 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     return FALSE;
 }
 
+// HnS setwildbossbattle: scripted wild mon(s) with item and curated moves.
+// Start with dowildbattle (or special BattleSetup_StartLegendaryBattle).
+void ScriptSetWildBossBattle(struct ScriptContext *ctx)
+{
+    u16 species = ScriptReadHalfword(ctx);
+    u8 level = ScriptReadByte(ctx);
+    enum Item item = ScriptReadHalfword(ctx);
+    enum Move moves[MAX_MON_MOVES];
+    enum Move moves2[MAX_MON_MOVES];
+    for (u32 i = 0; i < MAX_MON_MOVES; i++)
+        moves[i] = ScriptReadHalfword(ctx);
+
+    u16 species2 = ScriptReadHalfword(ctx);
+    u8 level2 = ScriptReadByte(ctx);
+    enum Item item2 = ScriptReadHalfword(ctx);
+    for (u32 i = 0; i < MAX_MON_MOVES; i++)
+        moves2[i] = ScriptReadHalfword(ctx);
+
+    Script_RequestEffects(SCREFF_V1);
+
+    CreateScriptedWildBossMon(0, species, level, item, moves);
+    if (species2 == SPECIES_NONE)
+    {
+        sIsScriptedWildDouble = FALSE;
+    }
+    else
+    {
+        CreateScriptedWildBossMon(1, species2, level2, item2, moves2);
+        sIsScriptedWildDouble = TRUE;
+    }
+}
+
 bool8 ScrCmd_setwildbattle2(struct ScriptContext *ctx)
 {
     u16 species = ScriptReadHalfword(ctx);

@@ -771,8 +771,8 @@
 #define TRAINER_UNUSED_031                  765  // Former TRAINER_MYLES; reserved after legacy-map removal.
 #define TRAINER_PAT                         766
 #define TRAINER_HILLARY                   767
-#define TRAINER_UNUSED_416        768  // Former TRAINER_MAY_RUSTBORO_TREECKO; Rustboro legacy triggers removed.
-#define TRAINER_UNUSED_417        769  // Former TRAINER_MAY_RUSTBORO_TORCHIC; Rustboro legacy triggers removed.
+#define TRAINER_SAMSON_OAK        768 // HnS Fase 8 (was TRAINER_UNUSED_416)  // Former TRAINER_MAY_RUSTBORO_TREECKO; Rustboro legacy triggers removed.
+#define TRAINER_MELEMELE_SWIMMER_1        769 // HnS Fase 8 (was TRAINER_UNUSED_417)  // Former TRAINER_MAY_RUSTBORO_TORCHIC; Rustboro legacy triggers removed.
 #define TRAINER_ROXANNE_2                   770
 #define TRAINER_ROXANNE_3                   771
 #define TRAINER_ROXANNE_4                   772
@@ -805,7 +805,7 @@
 #define TRAINER_JUAN_3                      799
 #define TRAINER_JUAN_4                      800
 #define TRAINER_JUAN_5                      801
-#define TRAINER_UNUSED_395                      802  // Former TRAINER_CARLENE; orphaned party removed.
+#define TRAINER_MELEMELE_SWIMMER_2                      802 // HnS Fase 8 (was TRAINER_UNUSED_395)  // Former TRAINER_CARLENE; orphaned party removed.
 #define TRAINER_JIN                      803
 #define TRAINER_STEVEN                      804
 #define TRAINER_BRET                      805
@@ -823,10 +823,10 @@
 #define TRAINER_HANK                      817
 #define TRAINER_HAROLD                      818
 #define TRAINER_HARRIS                      819
-#define TRAINER_UNUSED_367                     820  // Former TRAINER_PABLO_2; orphaned rematch variant.
-#define TRAINER_UNUSED_368                     821  // Former TRAINER_PABLO_3; orphaned rematch variant.
-#define TRAINER_UNUSED_369                     822  // Former TRAINER_PABLO_4; orphaned rematch variant.
-#define TRAINER_UNUSED_370                     823  // Former TRAINER_PABLO_5; orphaned rematch variant.
+#define TRAINER_AKALA_SWIMMER_1                     820 // HnS Fase 8 (was TRAINER_UNUSED_367)  // Former TRAINER_PABLO_2; orphaned rematch variant.
+#define TRAINER_AKALA_SWIMMER_2                     821 // HnS Fase 8 (was TRAINER_UNUSED_368)  // Former TRAINER_PABLO_3; orphaned rematch variant.
+#define TRAINER_AKALA_SWIMMER_3                     822 // HnS Fase 8 (was TRAINER_UNUSED_369)  // Former TRAINER_PABLO_4; orphaned rematch variant.
+#define TRAINER_PONI_SWIMMER_1                     823 // HnS Fase 8 (was TRAINER_UNUSED_370)  // Former TRAINER_PABLO_5; orphaned rematch variant.
 #define TRAINER_KOJI_2                      824
 #define TRAINER_KOJI_3                      825
 #define TRAINER_KOJI_4                      826
@@ -847,11 +847,11 @@
 #define TRAINER_ROSS                 841
 #define TRAINER_ROXANNE                 842
 #define TRAINER_ROY                 843
-#define TRAINER_UNUSED_335                    844  // Former TRAINER_THALIA_2; orphaned rematch variant.
-#define TRAINER_UNUSED_336                    845  // Former TRAINER_THALIA_3; orphaned rematch variant.
-#define TRAINER_UNUSED_337                    846  // Former TRAINER_THALIA_4; orphaned rematch variant.
-#define TRAINER_UNUSED_338                    847  // Former TRAINER_THALIA_5; orphaned rematch variant.
-#define TRAINER_UNUSED_009                  848  // Former TRAINER_MARIELA; reserved after legacy-map removal.
+#define TRAINER_PONI_SWIMMER_2                    844 // HnS Fase 8 (was TRAINER_UNUSED_335)  // Former TRAINER_THALIA_2; orphaned rematch variant.
+#define TRAINER_AKALA_HIKER                    845 // HnS Fase 8 (was TRAINER_UNUSED_336)  // Former TRAINER_THALIA_3; orphaned rematch variant.
+#define TRAINER_AKALA_PICNICKER                    846 // HnS Fase 8 (was TRAINER_UNUSED_337)  // Former TRAINER_THALIA_4; orphaned rematch variant.
+#define TRAINER_AKALA_CAMPER                    847 // HnS Fase 8 (was TRAINER_UNUSED_338)  // Former TRAINER_THALIA_5; orphaned rematch variant.
+#define TRAINER_AKALA_FOREST_BUGCATCHER_1                  848 // HnS Fase 8 (was TRAINER_UNUSED_009)  // Former TRAINER_MARIELA; reserved after legacy-map removal.
 #define TRAINER_BORIS                      849
 #define TRAINER_NICOLE                     850
 #define TRAINER_RED                         851
@@ -1021,19 +1021,19 @@
 #define TRAINER_NEXUS_JANINE         1040 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_176
 #define TRAINER_NEXUS_LEAF           1041 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_177
 #define TRAINER_NEXUS_LILLIE         1042 // Nexus (NEXUS_REGRAS R16), reclaimed from TRAINER_UNUSED_178
-#define TRAINER_UNUSED_179                1043
-#define TRAINER_UNUSED_180                1044
-#define TRAINER_UNUSED_181                1045
-#define TRAINER_UNUSED_182                1046
-#define TRAINER_UNUSED_183                1047
-#define TRAINER_UNUSED_184                1048
-#define TRAINER_UNUSED_185                1049
-#define TRAINER_UNUSED_186                1050
-#define TRAINER_UNUSED_187                1051
-#define TRAINER_UNUSED_188                1052
-#define TRAINER_UNUSED_189                1053
-#define TRAINER_UNUSED_190                1054
-#define TRAINER_UNUSED_191                1055
+#define TRAINER_AKALA_FOREST_BUGCATCHER_2                1043 // HnS Fase 8 (was TRAINER_UNUSED_179)
+#define TRAINER_AKALA_CAVE_PICNICKER                1044 // HnS Fase 8 (was TRAINER_UNUSED_180)
+#define TRAINER_AKALA_CAVE_CAMPER                1045 // HnS Fase 8 (was TRAINER_UNUSED_181)
+#define TRAINER_AKALA_CAVE_HIKER                1046 // HnS Fase 8 (was TRAINER_UNUSED_182)
+#define TRAINER_ULAULA_PICNICKER                1047 // HnS Fase 8 (was TRAINER_UNUSED_183)
+#define TRAINER_ULAULA_YOUNGSTER                1048 // HnS Fase 8 (was TRAINER_UNUSED_184)
+#define TRAINER_ULAULA_HIKER                1049 // HnS Fase 8 (was TRAINER_UNUSED_185)
+#define TRAINER_ULAULA_COOLTRAINER                1050 // HnS Fase 8 (was TRAINER_UNUSED_186)
+#define TRAINER_MILKMAN                1051 // HnS Fase 8 (was TRAINER_UNUSED_187)
+#define TRAINER_MIHARU                1052 // HnS Fase 8 (was TRAINER_UNUSED_188)
+#define TRAINER_YOUKO                1053 // HnS Fase 8 (was TRAINER_UNUSED_189)
+#define TRAINER_SHIZUKO                1054 // HnS Fase 8 (was TRAINER_UNUSED_190)
+#define TRAINER_MUALANI                1055 // HnS Fase 8 (was TRAINER_UNUSED_191)
 
 // Never use these, they are used by other flags
 #define TRAINER_UNUSED_192                1056

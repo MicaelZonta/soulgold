@@ -1709,6 +1709,58 @@
     {
       "id": "MAPSEC_SPEAR_PILLAR",
       "name": "Spear Pillar"
+    },
+    {
+      "id": "MAPSEC_AKALA_ISLAND",
+      "name": "Akala Isle"
+    },
+    {
+      "id": "MAPSEC_ULAULA_ISLAND",
+      "name": "Ula'ula Isle"
+    },
+    {
+      "id": "MAPSEC_MELEMELE_ISLAND",
+      "name": "Melemele Isle"
+    },
+    {
+      "id": "MAPSEC_PONI_ISLAND",
+      "name": "Poni Isle"
+    },
+    {
+      "id": "MAPSEC_ALOLA_OCEAN",
+      "name": "Alola Sea"
+    },
+    {
+      "id": "MAPSEC_AKALA_CAVE",
+      "name": "Akala Cave"
+    },
+    {
+      "id": "MAPSEC_AKALA_FOREST",
+      "name": "Akala Forest"
+    },
+    {
+      "id": "MAPSEC_PONI_CAVE",
+      "name": "Poni Cave"
+    },
+    {
+      "id": "MAPSEC_ULAULA_CAVE",
+      "name": "Ula'ula Cave"
+    },
+    {
+      "id": "MAPSEC_ULAULA_CAVE_2",
+      "name": "Ula'ula Cave"
+    },
+    {
+      "id": "MAPSEC_NEW_SINJOH",
+      "name": "New Sinjoh"
+    },
+    {
+      "id": "MAPSEC_SINJOH_RUINS",
+      "name": "Sinjoh Ruins"
+    },
+    {
+      "id": "MAPSEC_SNOWSWEPT_CAVERN",
+      "name": "Snowswept Cavern"
     }
   ]
 }

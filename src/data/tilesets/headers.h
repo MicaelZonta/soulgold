@@ -3097,3 +3097,115 @@ const struct Tileset gTileset_ssaqua_Hns =
     .metatileAttributes = gMetatileAttributes_ssaqua_Hns,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Lab_Frlg =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Lab_Frlg,
+    .palettes = gTilesetPalettes_Lab_Frlg,
+    .metatiles = gMetatiles_Lab_Frlg,
+    .metatileAttributes = gMetatileAttributes_Lab_Frlg,
+    .callback = NULL,
+};
+
+// HnS Fase 8 (Alola/Sinjoh)
+
+const struct Tileset gTileset_AlolaIsland =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_AlolaIsland,
+    .palettes = gTilesetPalettes_AlolaIsland,
+    .metatiles = gMetatiles_AlolaIsland,
+    .metatileAttributes = gMetatileAttributes_AlolaIsland,
+    .callback = NULL, // TODO(hns): InitTilesetAnim_AlolaIslands (agua/flores animadas) ainda nao portado
+};
+
+const struct Tileset gTileset_AlolaIslandSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_AlolaIslandSecondary,
+    .palettes = gTilesetPalettes_AlolaIslandSecondary,
+    .metatiles = gMetatiles_AlolaIslandSecondary,
+    .metatileAttributes = gMetatileAttributes_AlolaIslandSecondary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_ArceusRoom_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ArceusRoom_Hns,
+    .palettes = gTilesetPalettes_ArceusRoom_Hns,
+    .metatiles = gMetatiles_ArceusRoom_Hns,
+    .metatileAttributes = gMetatileAttributes_ArceusRoom_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_JohtoMart_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_JohtoMart_Hns,
+    .palettes = gTilesetPalettes_JohtoMart_Hns,
+    .metatiles = gMetatiles_JohtoMart_Hns,
+    .metatileAttributes = gMetatileAttributes_JohtoMart_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_MtEmber_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MtEmber_Hns,
+    .palettes = gTilesetPalettes_MtEmber_Hns,
+    .metatiles = gMetatiles_MtEmber_Hns,
+    .metatileAttributes = gMetatileAttributes_MtEmber_Hns,
+    .callback = InitTilesetAnim_MtEmber,
+};
+
+const struct Tileset gTileset_MtSilver_Ancient_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MtSilver_Ancient_Hns,
+    .palettes = gTilesetPalettes_MtSilver_Ancient_Hns,
+    .metatiles = gMetatiles_MtSilver_Ancient_Hns,
+    .metatileAttributes = gMetatileAttributes_MtSilver_Ancient_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_MtSilver_Exp_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_MtSilver_Exp_Hns,
+    .palettes = gTilesetPalettes_MtSilver_Exp_Hns,
+    .metatiles = gMetatiles_MtSilver_Exp_Hns,
+    .metatileAttributes = gMetatileAttributes_MtSilver_Exp_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_MtSilver_NewSinjoh_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MtSilver_NewSinjoh_Hns,
+    .palettes = gTilesetPalettes_MtSilver_NewSinjoh_Hns,
+    .metatiles = gMetatiles_MtSilver_NewSinjoh_Hns,
+    .metatileAttributes = gMetatileAttributes_MtSilver_NewSinjoh_Hns,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_RuinsOfAlphWriting_Hns =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_RuinsOfAlphWriting_Hns,
+    .palettes = gTilesetPalettes_RuinsOfAlphWriting_Hns,
+    .metatiles = gMetatiles_RuinsOfAlphWriting_Hns,
+    .metatileAttributes = gMetatileAttributes_RuinsOfAlphWriting_Hns,
+    .callback = NULL,
+};

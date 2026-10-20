@@ -443,7 +443,21 @@ Docs: `.claude/merge_hns/fase6_{radio,roamers,mom_surf_fanfarras}.md`.
   obtível; aves Galarian em Johto com flags novas; atualizar
   `POOL_LENDARIOS.md`.
 
-**Fase 8 — Alola + Sinjoh/Arceus**
+**Fase 8 — Alola + Sinjoh/Arceus** ✅ FEITA (19/10/2026). Doc:
+`merge_hns/fase8_alola_sinjoh.md`.
+- 39 mapas novos em 4 grupos próprios; 11 tilesets; 78+6 flags, 10 vars; 15
+  tabelas de encontro (águas de Alola = Clamperl/Remoraid/Octillery do
+  gacha); warps Route 13→Melemele e Waterfall→Snowswept religados.
+- 25 treinadores; skiers importados; bosses: 4 Tapus 60/2, 5 Regis 80/2,
+  Regigigas 80/3 (porta dos 5 scanners), **Arceus** Steel 100/3 incapturável
+  → 80/3 capturável, com MUS_HG_VS_ARCEUS.
+- **Oak**: dex de Johto completa agora dá **starter de Kanto** (multichoice
+  nova, checagem de espaço pela skill; FLAG_ARCEUS_EGG_GIVE ressignificada).
+- **Tapus removidos do Café** (política cumprida); achievement por captura.
+- Pendências: Route49/50 de Sinjoh do HnS colidem com nossas rotas custom —
+  atalho provisório Snowswept→NewSinjoh→Ruins com ponte de storyline
+  (importar depois como mapas renomeados + 15 flags); anim do tileset de
+  Alola; MAPSECs no mapa regional; viewer de screenshots; QA no jogo.
 - 41 mapas sem par no S + tilesets próprios (alola_island, arceus_room,
   mt_silver_ancient/newsinjoh) + `VAR_ALOLA_STATE`/`VAR_SINJOH_STORYLINE`.
   Mesmo pipeline do Kanto, escopo menor.

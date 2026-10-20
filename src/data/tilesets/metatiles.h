@@ -804,3 +804,35 @@ const u16 gMetatileAttributes_WhirlIslands_Hns[] = INCBIN_U16("data/tilesets/sec
 
 const u16 gMetatiles_ssaqua_Hns[] = INCBIN_U16("data/tilesets/secondary/ssaqua_hns/metatiles.bin");
 const u16 gMetatileAttributes_ssaqua_Hns[] = INCBIN_U16("data/tilesets/secondary/ssaqua_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_Lab_Frlg[] = INCBIN_U16("data/tilesets/secondary/lab_frlg/metatiles.bin");
+const u16 gMetatileAttributes_Lab_Frlg[] = INCBIN_U16("data/tilesets/secondary/lab_frlg/metatile_attributes.bin");
+
+// HnS Fase 8 (Alola/Sinjoh)
+
+const u16 gMetatiles_AlolaIsland[] = INCBIN_U16("data/tilesets/primary/alola_island/metatiles.bin");
+const u16 gMetatileAttributes_AlolaIsland[] = INCBIN_U16("data/tilesets/primary/alola_island/metatile_attributes.bin");
+
+const u16 gMetatiles_AlolaIslandSecondary[] = INCBIN_U16("data/tilesets/secondary/alola_island_secondary/metatiles.bin");
+const u16 gMetatileAttributes_AlolaIslandSecondary[] = INCBIN_U16("data/tilesets/secondary/alola_island_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_ArceusRoom_Hns[] = INCBIN_U16("data/tilesets/secondary/arceus_room_hns/metatiles.bin");
+const u16 gMetatileAttributes_ArceusRoom_Hns[] = INCBIN_U16("data/tilesets/secondary/arceus_room_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_JohtoMart_Hns[] = INCBIN_U16("data/tilesets/secondary/johto_mart_hns/metatiles.bin");
+const u16 gMetatileAttributes_JohtoMart_Hns[] = INCBIN_U16("data/tilesets/secondary/johto_mart_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_MtEmber_Hns[] = INCBIN_U16("data/tilesets/secondary/mt_ember_hns/metatiles.bin");
+const u16 gMetatileAttributes_MtEmber_Hns[] = INCBIN_U16("data/tilesets/secondary/mt_ember_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_MtSilver_Ancient_Hns[] = INCBIN_U16("data/tilesets/secondary/mt_silver_ancient_hns/metatiles.bin");
+const u16 gMetatileAttributes_MtSilver_Ancient_Hns[] = INCBIN_U16("data/tilesets/secondary/mt_silver_ancient_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_MtSilver_Exp_Hns[] = INCBIN_U16("data/tilesets/primary/mt_silver_exp_hns/metatiles.bin");
+const u16 gMetatileAttributes_MtSilver_Exp_Hns[] = INCBIN_U16("data/tilesets/primary/mt_silver_exp_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_MtSilver_NewSinjoh_Hns[] = INCBIN_U16("data/tilesets/secondary/mt_silver_newsinjoh_hns/metatiles.bin");
+const u16 gMetatileAttributes_MtSilver_NewSinjoh_Hns[] = INCBIN_U16("data/tilesets/secondary/mt_silver_newsinjoh_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_RuinsOfAlphWriting_Hns[] = INCBIN_U16("data/tilesets/secondary/ruins_of_alph_writing_hns/metatiles.bin");
+const u16 gMetatileAttributes_RuinsOfAlphWriting_Hns[] = INCBIN_U16("data/tilesets/secondary/ruins_of_alph_writing_hns/metatile_attributes.bin");

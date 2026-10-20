@@ -10406,6 +10406,396 @@
       "secondary_tileset": "gTileset_Inn",
       "border_filepath": "data/layouts/GreenfieldMansionAfter/border.bin",
       "blockdata_filepath": "data/layouts/GreenfieldMansionAfter/map.bin"
+    },
+    {
+      "id": "LAYOUT_AKALA_ISLE",
+      "name": "AkalaIsle_Layout",
+      "width": 52,
+      "height": 83,
+      "primary_tileset": "gTileset_AlolaIsland",
+      "secondary_tileset": "gTileset_AlolaIslandSecondary",
+      "border_filepath": "data/layouts/AkalaIsle/border.bin",
+      "blockdata_filepath": "data/layouts/AkalaIsle/map.bin"
+    },
+    {
+      "id": "LAYOUT_AKALA_CAVE",
+      "name": "Akala_Cave_Layout",
+      "width": 55,
+      "height": 38,
+      "primary_tileset": "gTileset_Johto_General_Hns",
+      "secondary_tileset": "gTileset_BlackthornGym_Hns",
+      "border_filepath": "data/layouts/Akala_Cave/border.bin",
+      "blockdata_filepath": "data/layouts/Akala_Cave/map.bin"
+    },
+    {
+      "id": "LAYOUT_AKALA_FOREST",
+      "name": "Akala_Forest_Layout",
+      "width": 31,
+      "height": 24,
+      "primary_tileset": "gTileset_AlolaIsland",
+      "secondary_tileset": "gTileset_AlolaIslandSecondary",
+      "border_filepath": "data/layouts/Akala_Forest/border.bin",
+      "blockdata_filepath": "data/layouts/Akala_Forest/map.bin"
+    },
+    {
+      "id": "LAYOUT_AKALA_HOUSE",
+      "name": "Akala_House_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_House_Lab_Hns",
+      "border_filepath": "data/layouts/Akala_House/border.bin",
+      "blockdata_filepath": "data/layouts/Akala_House/map.bin"
+    },
+    {
+      "id": "LAYOUT_ALOLA_WATER",
+      "name": "AlolaWater_Layout",
+      "width": 36,
+      "height": 28,
+      "primary_tileset": "gTileset_AlolaIsland",
+      "secondary_tileset": "gTileset_AlolaIslandSecondary",
+      "border_filepath": "data/layouts/AlolaWater/border.bin",
+      "blockdata_filepath": "data/layouts/AlolaWater/map.bin"
+    },
+    {
+      "id": "LAYOUT_MELEMELE_ISLE",
+      "name": "MelemeleIsle_Layout",
+      "width": 57,
+      "height": 38,
+      "primary_tileset": "gTileset_AlolaIsland",
+      "secondary_tileset": "gTileset_AlolaIslandSecondary",
+      "border_filepath": "data/layouts/MelemeleIsle/border.bin",
+      "blockdata_filepath": "data/layouts/MelemeleIsle/map.bin"
+    },
+    {
+      "id": "LAYOUT_MELEMELE_HOUSE",
+      "name": "Melemele_House_Layout",
+      "width": 16,
+      "height": 15,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_PokemonCenter_White_Hns",
+      "border_filepath": "data/layouts/Melemele_House/border.bin",
+      "blockdata_filepath": "data/layouts/Melemele_House/map.bin"
+    },
+    {
+      "id": "LAYOUT_MELEMELE_HOUSE_2",
+      "name": "Melemele_House_2_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_JohtoMart_Hns",
+      "border_filepath": "data/layouts/Melemele_House_2/border.bin",
+      "blockdata_filepath": "data/layouts/Melemele_House_2/map.bin"
+    },
+    {
+      "id": "LAYOUT_MELEMELE_HOUSE_3",
+      "name": "Melemele_House_3_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_House_Lab_Hns",
+      "border_filepath": "data/layouts/Melemele_House_3/border.bin",
+      "blockdata_filepath": "data/layouts/Melemele_House_3/map.bin"
+    },
+    {
+      "id": "LAYOUT_MELEMELE_HOUSE_4",
+      "name": "Melemele_House_4_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_House_Lab_Hns",
+      "border_filepath": "data/layouts/Melemele_House_4/border.bin",
+      "blockdata_filepath": "data/layouts/Melemele_House_4/map.bin"
+    },
+    {
+      "id": "LAYOUT_MELEMELE_HOUSE_5",
+      "name": "Melemele_House_5_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_House_Lab_Hns",
+      "border_filepath": "data/layouts/Melemele_House_5/border.bin",
+      "blockdata_filepath": "data/layouts/Melemele_House_5/map.bin"
+    },
+    {
+      "id": "LAYOUT_MELEMELE_HOUSE_6",
+      "name": "Melemele_House_6_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_House_Lab_Hns",
+      "border_filepath": "data/layouts/Melemele_House_6/border.bin",
+      "blockdata_filepath": "data/layouts/Melemele_House_6/map.bin"
+    },
+    {
+      "id": "LAYOUT_MELEMELE_PLAYER_HOUSE",
+      "name": "Melemele_PlayerHouse_Layout",
+      "width": 13,
+      "height": 10,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_PlayersHouse_Hns",
+      "border_filepath": "data/layouts/Melemele_PlayerHouse/border.bin",
+      "blockdata_filepath": "data/layouts/Melemele_PlayerHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_SINJOH",
+      "name": "NewSinjoh_Layout",
+      "width": 66,
+      "height": 51,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_MtSilver_NewSinjoh_Hns",
+      "border_filepath": "data/layouts/NewSinjoh/border.bin",
+      "blockdata_filepath": "data/layouts/NewSinjoh/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEWSINJOH_HOTSPRINGS",
+      "name": "NewSinjoh_HotSprings_Layout",
+      "width": 55,
+      "height": 42,
+      "primary_tileset": "gTileset_Kanto_General_Hns",
+      "secondary_tileset": "gTileset_MtEmber_Hns",
+      "border_filepath": "data/layouts/NewSinjoh_HotSprings/border.bin",
+      "blockdata_filepath": "data/layouts/NewSinjoh_HotSprings/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_SINJOH_HOUSE1",
+      "name": "NewSinjoh_House1_Layout",
+      "width": 15,
+      "height": 12,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_PlayersHouse_Hns",
+      "border_filepath": "data/layouts/NewSinjoh_House1/border.bin",
+      "blockdata_filepath": "data/layouts/NewSinjoh_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_SINJOH_HOUSE2",
+      "name": "NewSinjoh_House2_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_House_Lab_Hns",
+      "border_filepath": "data/layouts/NewSinjoh_House2/border.bin",
+      "blockdata_filepath": "data/layouts/NewSinjoh_House2/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_SINJOH_HOUSE3",
+      "name": "NewSinjoh_House3_Layout",
+      "width": 54,
+      "height": 23,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_SoulHouse_Hns",
+      "border_filepath": "data/layouts/NewSinjoh_House3/border.bin",
+      "blockdata_filepath": "data/layouts/NewSinjoh_House3/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_SINJOH_HOUSE4",
+      "name": "NewSinjoh_House4_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_Cafe_Hns",
+      "border_filepath": "data/layouts/NewSinjoh_House4/border.bin",
+      "blockdata_filepath": "data/layouts/NewSinjoh_House4/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_SINJOH_KIMONO_HIDEOUT",
+      "name": "NewSinjoh_KimonoHideout_Layout",
+      "width": 19,
+      "height": 13,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_EcruteakTheater_Hns",
+      "border_filepath": "data/layouts/NewSinjoh_KimonoHideout/border.bin",
+      "blockdata_filepath": "data/layouts/NewSinjoh_KimonoHideout/map.bin"
+    },
+    {
+      "id": "LAYOUT_NEW_SINJOH_POKEMON_CENTER",
+      "name": "NewSinjoh_PokemonCenter_Layout",
+      "width": 15,
+      "height": 12,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_PokemonCenter_White_Hns",
+      "border_filepath": "data/layouts/NewSinjoh_PokemonCenter/border.bin",
+      "blockdata_filepath": "data/layouts/NewSinjoh_PokemonCenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_PONI_ISLE",
+      "name": "PoniIsle_Layout",
+      "width": 51,
+      "height": 40,
+      "primary_tileset": "gTileset_AlolaIsland",
+      "secondary_tileset": "gTileset_AlolaIslandSecondary",
+      "border_filepath": "data/layouts/PoniIsle/border.bin",
+      "blockdata_filepath": "data/layouts/PoniIsle/map.bin"
+    },
+    {
+      "id": "LAYOUT_SINJOH_RUINS",
+      "name": "SinjohRuins_Layout",
+      "width": 50,
+      "height": 75,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_MtSilver_Ancient_Hns",
+      "border_filepath": "data/layouts/SinjohRuins/border.bin",
+      "blockdata_filepath": "data/layouts/SinjohRuins/map.bin"
+    },
+    {
+      "id": "LAYOUT_SINJOH_RUINS_ARCEUS_ROOM",
+      "name": "SinjohRuins_ArceusRoom_Layout",
+      "width": 37,
+      "height": 35,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_ArceusRoom_Hns",
+      "border_filepath": "data/layouts/SinjohRuins_ArceusRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SinjohRuins_ArceusRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SINJOH_RUINS_HOUSE1",
+      "name": "SinjohRuins_House1_Layout",
+      "width": 30,
+      "height": 13,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_Lab_Frlg",
+      "border_filepath": "data/layouts/SinjohRuins_House1/border.bin",
+      "blockdata_filepath": "data/layouts/SinjohRuins_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SINJOH_RUINS_REGICE_ROOM",
+      "name": "SinjohRuins_RegiceRoom_Layout",
+      "width": 9,
+      "height": 10,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_RuinsOfAlphWriting_Hns",
+      "border_filepath": "data/layouts/SinjohRuins_RegiceRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SinjohRuins_RegiceRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SINJOH_RUINS_REGIDRACO_ROOM",
+      "name": "SinjohRuins_RegidracoRoom_Layout",
+      "width": 9,
+      "height": 10,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_RuinsOfAlphWriting_Hns",
+      "border_filepath": "data/layouts/SinjohRuins_RegidracoRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SinjohRuins_RegidracoRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SINJOH_RUINS_REGIELEKI_ROOM",
+      "name": "SinjohRuins_RegielekiRoom_Layout",
+      "width": 9,
+      "height": 10,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_RuinsOfAlphWriting_Hns",
+      "border_filepath": "data/layouts/SinjohRuins_RegielekiRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SinjohRuins_RegielekiRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SINJOH_RUINS_REGIGIGAS_ROOM",
+      "name": "SinjohRuins_RegigigasRoom_Layout",
+      "width": 35,
+      "height": 21,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_RuinsOfAlphWriting_Hns",
+      "border_filepath": "data/layouts/SinjohRuins_RegigigasRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SinjohRuins_RegigigasRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SINJOH_RUINS_REGIROCK_ROOM",
+      "name": "SinjohRuins_RegirockRoom_Layout",
+      "width": 9,
+      "height": 10,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_RuinsOfAlphWriting_Hns",
+      "border_filepath": "data/layouts/SinjohRuins_RegirockRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SinjohRuins_RegirockRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SINJOH_RUINS_REGISTEEL_ROOM",
+      "name": "SinjohRuins_RegisteelRoom_Layout",
+      "width": 9,
+      "height": 10,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_RuinsOfAlphWriting_Hns",
+      "border_filepath": "data/layouts/SinjohRuins_RegisteelRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SinjohRuins_RegisteelRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SINJOH_RUINS_TEMPLE",
+      "name": "SinjohRuins_Temple_Layout",
+      "width": 38,
+      "height": 29,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_RuinsOfAlphWriting_Hns",
+      "border_filepath": "data/layouts/SinjohRuins_Temple/border.bin",
+      "blockdata_filepath": "data/layouts/SinjohRuins_Temple/map.bin"
+    },
+    {
+      "id": "LAYOUT_SNOWSWEPT_CAVERN",
+      "name": "SnowsweptCavern_Layout",
+      "width": 59,
+      "height": 70,
+      "primary_tileset": "gTileset_MtSilver_Exp_Hns",
+      "secondary_tileset": "gTileset_Cave_Ice_Hns",
+      "border_filepath": "data/layouts/SnowsweptCavern/border.bin",
+      "blockdata_filepath": "data/layouts/SnowsweptCavern/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULA_ULA_CAVE",
+      "name": "UlaUla_Cave_Layout",
+      "width": 33,
+      "height": 41,
+      "primary_tileset": "gTileset_Johto_General_Hns",
+      "secondary_tileset": "gTileset_Cave_Ice_Hns",
+      "border_filepath": "data/layouts/UlaUla_Cave/border.bin",
+      "blockdata_filepath": "data/layouts/UlaUla_Cave/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULA_ULA_CAVE_2",
+      "name": "UlaUla_Cave_2_Layout",
+      "width": 33,
+      "height": 20,
+      "primary_tileset": "gTileset_Johto_General_Hns",
+      "secondary_tileset": "gTileset_Cave_Green_Hns",
+      "border_filepath": "data/layouts/UlaUla_Cave_2/border.bin",
+      "blockdata_filepath": "data/layouts/UlaUla_Cave_2/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULA_ULA_FOREST",
+      "name": "UlaUla_Forest_Layout",
+      "width": 31,
+      "height": 18,
+      "primary_tileset": "gTileset_AlolaIsland",
+      "secondary_tileset": "gTileset_AlolaIslandSecondary",
+      "border_filepath": "data/layouts/UlaUla_Forest/border.bin",
+      "blockdata_filepath": "data/layouts/UlaUla_Forest/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULA_ULA_HOUSE",
+      "name": "UlaUla_House_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Johto_Building_Hns",
+      "secondary_tileset": "gTileset_House_Lab_Hns",
+      "border_filepath": "data/layouts/UlaUla_House/border.bin",
+      "blockdata_filepath": "data/layouts/UlaUla_House/map.bin"
+    },
+    {
+      "id": "LAYOUT_ULAULA_ISLE",
+      "name": "UlaulaIsle_Layout",
+      "width": 51,
+      "height": 83,
+      "primary_tileset": "gTileset_AlolaIsland",
+      "secondary_tileset": "gTileset_AlolaIslandSecondary",
+      "border_filepath": "data/layouts/UlaulaIsle/border.bin",
+      "blockdata_filepath": "data/layouts/UlaulaIsle/map.bin"
+    },
+    {
+      "id": "LAYOUT_PONI_CAVE",
+      "name": "Poni_Cave_Layout",
+      "width": 31,
+      "height": 24,
+      "primary_tileset": "gTileset_Johto_General_Hns",
+      "secondary_tileset": "gTileset_Cave_Default_Hns",
+      "border_filepath": "data/layouts/Poni_Cave/border.bin",
+      "blockdata_filepath": "data/layouts/Poni_Cave/map.bin"
     }
   ]
 }

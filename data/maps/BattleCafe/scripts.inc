@@ -726,10 +726,6 @@ BattleCafe_RewardMenu::
 	dynmultipush BattleCafe_RewardMenu_Text_8, 4
 	dynmultipush BattleCafe_RewardMenu_Text_9, 5
 	dynmultipush BattleCafe_RewardMenu_Text_10, 6
-	dynmultipush BattleCafe_RewardMenu_Text_11, 16
-	dynmultipush BattleCafe_RewardMenu_Text_12, 17
-	dynmultipush BattleCafe_RewardMenu_Text_13, 18
-	dynmultipush BattleCafe_RewardMenu_Text_14, 19
 	dynmultipush BattleCafe_OptionsMenu_Text_5, 15
 	dynmultistack 0, 0, FALSE, 6, FALSE, 10, DYN_MULTICHOICE_CB_NONE
 	switch VAR_RESULT
@@ -743,10 +739,6 @@ BattleCafe_RewardMenu::
 	case 10, BattleCafe_RewardMenu_9
 	case 11, BattleCafe_RewardMenu_10
 	case 12, BattleCafe_RewardMenu_11
-	case 16, BattleCafe_RewardMenu_12
-	case 17, BattleCafe_RewardMenu_13
-	case 18, BattleCafe_RewardMenu_14
-	case 19, BattleCafe_RewardMenu_15
 	goto BattleCafe_OwnerMenu
 	return
 
@@ -788,22 +780,6 @@ BattleCafe_RewardMenu_10:
 
 BattleCafe_RewardMenu_11:
 	goto BattleCafe_ChooseVitaminSetSpe
-	return
-
-BattleCafe_RewardMenu_12:
-	goto BattleCafe_ChooseTapuKoko
-	return
-
-BattleCafe_RewardMenu_13:
-	goto BattleCafe_ChooseTapuLele
-	return
-
-BattleCafe_RewardMenu_14:
-	goto BattleCafe_ChooseTapuBulu
-	return
-
-BattleCafe_RewardMenu_15:
-	goto BattleCafe_ChooseTapuFini
 	return
 
 
@@ -861,62 +837,6 @@ BattleCafe_ChooseEnamorus_2:
 	msgbox BattleCafe_ChooseEnamorus_Text_0
 	goto BattleCafe_RewardMenu
 	goto BattleCafe_ChooseEnamorus_1
-
-
-BattleCafe_ChooseTapuKoko::
-	goto_if_set FLAG_BATTLE_CAFE_TAPU_KOKO_RECEIVED, BattleCafe_ChooseTapuKoko_2
-BattleCafe_ChooseTapuKoko_1:
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_KOKO
-	setvar VAR_TEMP_B, 7
-	goto BattleCafe_ConfirmRewardMon
-	return
-
-BattleCafe_ChooseTapuKoko_2:
-	msgbox BattleCafe_ChooseTapuKoko_Text_0
-	goto BattleCafe_RewardMenu
-	goto BattleCafe_ChooseTapuKoko_1
-
-
-BattleCafe_ChooseTapuLele::
-	goto_if_set FLAG_BATTLE_CAFE_TAPU_LELE_RECEIVED, BattleCafe_ChooseTapuLele_2
-BattleCafe_ChooseTapuLele_1:
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_LELE
-	setvar VAR_TEMP_B, 8
-	goto BattleCafe_ConfirmRewardMon
-	return
-
-BattleCafe_ChooseTapuLele_2:
-	msgbox BattleCafe_ChooseTapuLele_Text_0
-	goto BattleCafe_RewardMenu
-	goto BattleCafe_ChooseTapuLele_1
-
-
-BattleCafe_ChooseTapuBulu::
-	goto_if_set FLAG_BATTLE_CAFE_TAPU_BULU_RECEIVED, BattleCafe_ChooseTapuBulu_2
-BattleCafe_ChooseTapuBulu_1:
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_BULU
-	setvar VAR_TEMP_B, 9
-	goto BattleCafe_ConfirmRewardMon
-	return
-
-BattleCafe_ChooseTapuBulu_2:
-	msgbox BattleCafe_ChooseTapuBulu_Text_0
-	goto BattleCafe_RewardMenu
-	goto BattleCafe_ChooseTapuBulu_1
-
-
-BattleCafe_ChooseTapuFini::
-	goto_if_set FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED, BattleCafe_ChooseTapuFini_2
-BattleCafe_ChooseTapuFini_1:
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_FINI
-	setvar VAR_TEMP_B, 10
-	goto BattleCafe_ConfirmRewardMon
-	return
-
-BattleCafe_ChooseTapuFini_2:
-	msgbox BattleCafe_ChooseTapuFini_Text_0
-	goto BattleCafe_RewardMenu
-	goto BattleCafe_ChooseTapuFini_1
 
 
 BattleCafe_ConfirmRewardMon::
@@ -1838,18 +1758,6 @@ BattleCafe_RewardMenu_Text_9:
 BattleCafe_RewardMenu_Text_10:
 	.string "Enamorus - 5$"
 
-BattleCafe_RewardMenu_Text_11:
-	.string "Tapu Koko - 5$"
-
-BattleCafe_RewardMenu_Text_12:
-	.string "Tapu Lele - 5$"
-
-BattleCafe_RewardMenu_Text_13:
-	.string "Tapu Bulu - 5$"
-
-BattleCafe_RewardMenu_Text_14:
-	.string "Tapu Fini - 5$"
-
 BattleCafe_ChooseTornadus_Text_0:
 	.string "I've already entrusted Tornadus\n"
 	.string "to you.$"
@@ -1864,22 +1772,6 @@ BattleCafe_ChooseLandorus_Text_0:
 
 BattleCafe_ChooseEnamorus_Text_0:
 	.string "I've already entrusted Enamorus\n"
-	.string "to you.$"
-
-BattleCafe_ChooseTapuKoko_Text_0:
-	.string "I've already entrusted Tapu Koko\n"
-	.string "to you.$"
-
-BattleCafe_ChooseTapuLele_Text_0:
-	.string "I've already entrusted Tapu Lele\n"
-	.string "to you.$"
-
-BattleCafe_ChooseTapuBulu_Text_0:
-	.string "I've already entrusted Tapu Bulu\n"
-	.string "to you.$"
-
-BattleCafe_ChooseTapuFini_Text_0:
-	.string "I've already entrusted Tapu Fini\n"
 	.string "to you.$"
 
 BattleCafe_ConfirmRewardMon_Text_0:
