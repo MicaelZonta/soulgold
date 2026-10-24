@@ -350,7 +350,8 @@ Alola_Ulaula_TrainerBattleYoungster_Text_1:
 Alola_Ulaula_TrainerBattleYoungster_Text_2:
 	.string "My dad never told me the real name of\n"
 	.string "this mountain.\p"
-	.string "We've always just called it Mt. Lanikala.$"
+	.string "We've always just called it\n"
+	.string "Mt. Lanikala.$"
 
 Alola_Ulaula_TrainerBattleHiker_Text_0:
 	.string "You must be tough to handle this\nrough terrain!$"

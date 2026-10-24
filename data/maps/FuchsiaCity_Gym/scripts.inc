@@ -106,8 +106,9 @@ FuchsiaCity_Gym_Text_Janine_GiveTM:
 	.string "special gift!$"
 
 FuchsiaCity_Gym_Text_Janine_ExplainTM:
-	.string "{SPEAKER NAME_JANINE}It's Poison Jab, a powerful Poison-type\n"
-	.string "move that may poison its victim.$"
+	.string "{SPEAKER NAME_JANINE}It's Poison Jab, a powerful\n"
+	.string "Poison-type move that may poison its\l"
+	.string "victim.$"
 
 FuchsiaCity_Gym_Text_Janine_ApplyMyself:
 	.string "{SPEAKER NAME_JANINE}I'm going to really apply\n"

@@ -169,7 +169,8 @@ Route15_Text_SchoolboyBillyAfterBattle:
 	.string "school, I'd be the best!$"
 
 Route15_Text_BillyRegister:
-	.string "I should've paid more attention in class.\n"
+	.string "I should've paid more attention in\n"
+	.string "class.\p"
 	.string "Can I have your number?$"
 
 Route15_Text_BillyRematchIntro:

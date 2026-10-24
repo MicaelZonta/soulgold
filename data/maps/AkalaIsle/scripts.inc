@@ -552,8 +552,9 @@ Alola_Akala_TrainerBattleHiker_Text_1:
 	.string "And down I tumble…$"
 
 Alola_Akala_TrainerBattleHiker_Text_2:
-	.string "Akala Isle has the best hiking!\n"
-	.string "It's got lush forests and rugged trails!$"
+	.string "Akala Isle has the best hiking!\p"
+	.string "It's got lush forests and\n"
+	.string "rugged trails!$"
 
 Alola_Akala_TrainerBattlePicnicker_Text_0:
 	.string "Ha! Didn't see me, did you?$"
@@ -572,8 +573,8 @@ Alola_Akala_TrainerBattleCamper_Text_1:
 	.string "Drat,\nthat's not going to help my case.$"
 
 Alola_Akala_TrainerBattleCamper_Text_2:
-	.string "There's a weird Totem further ahead but\n"
-	.string "I haven't seen a Totem Pokémon.$"
+	.string "There's a weird Totem further ahead\n"
+	.string "but I haven't seen a Totem Pokémon.$"
 
 Alola_Akala_TrainerBattleSwimmerLand_Text_0:
 	.string "Hey! No shoes on the beach!$"

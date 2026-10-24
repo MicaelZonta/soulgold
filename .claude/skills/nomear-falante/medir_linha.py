@@ -105,7 +105,12 @@ def linhas_do_arquivo(caminho):
             continue
         corpo = m.group(1)
         corpo = re.sub(r"(\\[nlp]|\$)$", "", corpo)
-        yield n, rotulo, corpo
+        # Uma .string pode trazer mais de uma linha ("a\\nb"): cada pedaco entre
+        # \\n, \\l e \\p e uma linha na tela, e e cada um que tem de caber nos
+        # 208 px. Medir a .string inteira dava estouro que nao existe.
+        for pedaco in re.split(r"\\[nlp]", corpo):
+            if pedaco:
+                yield n, rotulo, pedaco
 
 
 def main():

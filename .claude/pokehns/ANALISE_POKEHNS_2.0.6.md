@@ -568,23 +568,27 @@ snow/volcano/pond, apricorns/Kurt/gym rematch, rádio base (4 estações).
 - [ ] Fechar a Parte D (tabela de lendários P × S) com o autor — inclui Red
       do P × rival final do S no Summit, e times de ginásio (S ou P).
 - [ ] `map_graph.py info SnowtopMountainOutside` antes das aves Galarian.
-- [ ] Corrigir "428 B livres" na skill `limites-do-engine` → 140 B.
+- [x] Corrigir os números de save da skill `limites-do-engine` — feito
+      24/10/2026 (flash de 256 KB, 7412 B livres no SaveBlock1).
 - [ ] Adaptar o reset de flags do `LeaveBoat` (S.S. Aqua) à costura de
       pós-game do S (decisão: o navio volta a funcionar ida-e-volta).
 - [x] Conferir caixa (decap) do texto HnS importado (K8) — feito 24/10/2026.
-- [ ] 28 linhas acima de 208 px nos arquivos do HnS (fala de entrada de
-      treinador de Alola, na maioria): passe de largura próprio.
+- [x] Largura de linha nos arquivos do HnS — feito 24/10/2026. Eram **11**, não
+      28: o `medir_linha.py` media `"a\nb"` como uma linha só e inventava
+      estouro. Ferramenta corrigida (parte em `\n`/`\l`/`\p`) e as 11 reais
+      requebradas.
 - [ ] `MAPSEC_ROUTE_50` (Sinjoh) e nosso `MAPSEC_ROUTE50` têm o mesmo nome
       visível ("Route 50"); `Route49Sinjoh` divide `MAPSEC_ROUTE_49` com a
       nossa Route 49. Resolver com o mapa regional de Sinjoh (cosmético).
-- [ ] `FLAG_NO_WILD_CATCHING` (0x1114) ficou órfã depois do conserto do K8 —
-      aposentar ou reaproveitar.
+- [x] `FLAG_NO_WILD_CATCHING` (0x1114) aposentada — virou `FLAG_UNUSED_1114`
+      (24/10/2026).
 - [ ] Johto usa `NAME_SILVER` (texto fixo) nas falas do rival; com
       `NAME_RIVAL` existindo, trocar faria valer o nome que o jogador deu.
 - [x] App de telefone no Pokégear — feito 24/10/2026
       (`.claude/merge_hns/match_call_gsc.md` §7).
-- [ ] `OBJECT_EVENTS_COUNT` só sobe de 24 para 25 agora (o Match Call levou 60 B
-      do save); a skill `limites-do-engine` já foi corrigida.
+- [x] `OBJECT_EVENTS_COUNT` — resolvido por cima: flash de 256 KB, 64 setores e
+      o contador foi para **40** (24/10/2026). Cabem mais 205 no save; a parede
+      agora é sprite/OAM.
 
 ---
 

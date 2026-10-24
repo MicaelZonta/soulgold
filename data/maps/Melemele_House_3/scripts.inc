@@ -20,8 +20,8 @@ Melemele_House3_Man::
 
 Melemele_House3_Woman_Text_0:
 	.string "Island life here is so peaceful!\p"
-	.string "And it's nice that my grandkids are just\n"
-	.string "a quick boat ride away in Kanto!$"
+	.string "And it's nice that my grandkids are\n"
+	.string "just a quick boat ride away in Kanto!$"
 
 Melemele_House3_Man_Text_0:
 	.string "Dang tourists!\p"

@@ -344,8 +344,9 @@ SinjohRuins_Text_StevenReadytoBattle:
     .string "Are you ready?$"
 
 SinjohRuins_Text_ChallengeSteven:
-	.string "{SPEAKER NAME_STEVEN}Okay, {PLAYER}{KUN}, if you're going to mount\n"
-	.string "a serious challenge, expect the worst!$"
+	.string "{SPEAKER NAME_STEVEN}Okay, {PLAYER}{KUN}, if you're going\n"
+	.string "to mount a serious challenge, expect\l"
+	.string "the worst!$"
 
 SinjohRuins_Text_StevenDefeat:
 	.string "You...\n"

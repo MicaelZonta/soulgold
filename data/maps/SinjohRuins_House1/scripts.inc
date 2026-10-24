@@ -654,7 +654,8 @@ SinjohRuins_Lab_Text_Note4:
 	.string "The architecture of the main \n"
 	.string "structure indicates it may be of the\l"
 	.string "the ancient Celestica peoples...\p"
-	.string "Our ancestors. Before they moved north.\p"
+	.string "Our ancestors.\n"
+	.string "Before they moved north.\p"
 	.string "The boss wants that temple open as\n"
 	.string "soon as possible...$"
 

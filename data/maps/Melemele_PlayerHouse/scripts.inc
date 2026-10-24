@@ -714,9 +714,9 @@ Alola_Melemele_SamsonOakVilla_Dialogue_Text_24:
 	.string "on Akala Isle!$"
 
 Alola_Melemele_SamsonOakVilla_Dialogue_Text_25:
-	.string "Now that you've helped me validate that\n"
-	.string "all of the Alolan variants are present\l"
-	.string "on the Alola Isles.\p"
+	.string "Now that you've helped me validate\n"
+	.string "that all of the Alolan variants are\l"
+	.string "present on the Alola Isles.\p"
 	.string "I'd like you to help me with one more\n"
 	.string "thing…\p"
 	.string "Could you help me investigate the Totem\n"

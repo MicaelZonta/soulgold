@@ -98,7 +98,8 @@ NewSinjoh_MilkMan_text_BuyMilk:
 
 NewSinjoh_MilkMan_GotMilk:
 	.string "Here ya go!\n"
-	.string "It's fortified with what the world wants.$"
+	.string "It's fortified with what the world\l"
+	.string "wants.$"
 
 NewSinjoh_MilkMan_NoMoney:
 	.string "Sorry.\n"

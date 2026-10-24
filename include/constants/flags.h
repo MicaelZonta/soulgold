@@ -2062,7 +2062,10 @@
 #define FLAG_ITEM_VIRIDIAN_FOREST_TM_PSYCH_UP                0x1111 // HnS: ViridianForest
 #define FLAG_JOSE_HAS_PHONE_ITEM                             0x1112 // Match Call GSC (telefone), Route 27; veio na importacao do mapa
 #define FLAG_MT_SILVER_1F_HIDE_SCIENTIST                     0x1113 // HnS: MtSilver_1F_WaterfallRoom, SSAqua_1F
-#define FLAG_NO_WILD_CATCHING                                0x1114 // HnS: SaffronCity_FightingDojo
+#define FLAG_UNUSED_1114                                     0x1114 // livre desde 24/10/2026: era
+// FLAG_NO_WILD_CATCHING, do HnS, que script nenhum lia (quem desliga captura e
+// FLAG_NO_CATCHING, a que B_FLAG_NO_CATCHING le). Os 13 usos viraram
+// FLAG_NO_CATCHING no passe K8.
 #define FLAG_PEWTER_GYM_NPC_TRADE_COMPLETED                  0x1115 // HnS: PewterCity_Gym
 #define FLAG_PEWTER_NPC_TRADE_COMPLETED                      0x1116 // HnS: PewterCity_PokemonCenter
 #define FLAG_POWERPLANT_NPC_TRADE_COMPLETED                  0x1117 // HnS: Route10_PowerPlantEntrance
