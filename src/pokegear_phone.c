@@ -94,6 +94,7 @@ static const u8 sText_NoNumbers[] = _("No numbers yet.");
 static const u8 sText_NoNumbersHint[] = _("Beat a trainer and they may ask");
 static const u8 sText_NoNumbersHint2[] = _("for your number.");
 static const u8 sText_ListHelp[] = _("{A_BUTTON}Call  {B_BUTTON}Back");
+static const u8 sText_EmptyHelp[] = _("{B_BUTTON}Back");
 static const u8 sText_CallHelp[] = _("{A_BUTTON}Hang up");
 static const u8 sText_News[] = _("!");
 static const u8 sText_Space[] = _(" ");
@@ -282,7 +283,7 @@ static bool8 PokegearPhoneDoGfxSetup(void)
         PutWindowTilemap(sPhone->helpWindowId);
         PrintPhoneTitle(sText_PhoneTitle);
         DrawPhoneList();
-        DrawHelpBar(sText_ListHelp);
+        DrawHelpBar(sPhone->numEntries != 0 ? sText_ListHelp : sText_EmptyHelp);
         ScheduleBgCopyTilemapToVram(1);
         ScheduleBgCopyTilemapToVram(2);
         ShowBg(1);
@@ -391,7 +392,10 @@ static void StartPhoneCall(void)
     FillWindowPixelBuffer(sPhone->mainWindowId, PIXEL_FILL(1));
     // Limpa a lista antes de o printer comecar: ele so copia o que desenha.
     CopyWindowToVram(sPhone->mainWindowId, COPYWIN_GFX);
-    AddTextPrinterParameterized3(sPhone->mainWindowId, FONT_NORMAL, 2, 2,
+    // y = 0 de proposito: o \l rola exatamente a altura da fonte (16 px na
+    // FONT_NORMAL), entao qualquer margem no topo deixa o rabo das letras da
+    // pagina anterior pendurado la (QA 24/10, T05).
+    AddTextPrinterParameterized3(sPhone->mainWindowId, FONT_NORMAL, 2, 0,
                                  sPhoneTextColors, GetPlayerTextSpeedDelay(), gStringVar4);
     DrawHelpBar(sText_CallHelp);
     sPhone->mode = PHONE_MODE_CALLING;
@@ -448,7 +452,7 @@ static void Task_PokegearPhoneInput(u8 taskId)
             PlaySE(SE_POKENAV_HANG_UP);
             PrintPhoneTitle(sText_PhoneTitle);
             DrawPhoneList();
-            DrawHelpBar(sText_ListHelp);
+            DrawHelpBar(sPhone->numEntries != 0 ? sText_ListHelp : sText_EmptyHelp);
             sPhone->mode = PHONE_MODE_LIST;
         }
         break;
