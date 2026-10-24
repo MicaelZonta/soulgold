@@ -55,6 +55,7 @@ APELIDOS = {
     "prof. birch": "NAME_BIRCH",
     "baoba": "NAME_WARDEN_BAOBA",
     "???": "NAME_UNKNOWN",
+    "{rival}": "NAME_RIVAL",   # Silver, ou o nome que o jogador deu a ele
 }
 
 # "Algo: " no comeco da linha que NAO e alguem falando
@@ -79,6 +80,7 @@ NAO_FALANTES = {
     "power relay",      # terminal: "POWER RELAY: NOT DETECTED"
     "error",
     "heart rate",
+    "and listen",       # "And listen: the Magnet Train..."
 }
 
 

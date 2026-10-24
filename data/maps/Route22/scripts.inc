@@ -12,8 +12,8 @@ Route22_EventScript_Sign::
 	end
 
 Route22_Text_VictoryRoadEntranceSign:
-	.string "POKéMON LEAGUE\p"
-	.string "VICTORY ROAD ENTRANCE$"
+	.string "Pokémon League\p"
+	.string "Victory Road Entrance$"
 
 Route22_EventScript_ResetActivation::
 	setvar VAR_TEMP_0, 0
@@ -284,7 +284,7 @@ Route22_Movement_CelebiPush:
 
 
 Route22_Text_Silver1:
-	.string "{RIVAL}: You told me...\n"
+	.string "{SPEAKER NAME_RIVAL}You told me...\n"
 	.string "you were the number one in the whole\l"
 	.string "world!\p"
 	.string "Are you gonna quit?\p"
@@ -292,20 +292,20 @@ Route22_Text_Silver1:
 
 Route22_Text_Giovanni1:
 	.string "....................\p"
-	.string "GIOVANNI: One must acknowledge one's\n"
+	.string "{SPEAKER NAME_GIOVANNI}One must acknowledge one's\n"
 	.string "defeat before he can move on...\p"
 	.string "I will go solo... for now...\p"
 	.string "So that one day I will form a\n"
 	.string "stronger organization!$"
 
 Route22_Text_Silver2:
-	.string "{RIVAL}: What aspect of you was\n"
+	.string "{SPEAKER NAME_RIVAL}What aspect of you was\n"
 	.string "number one?\p"
 	.string "Gathering so many only to be\n"
 	.string "defeated by a mere child!$"
 
 Route22_Text_Giovanni2:
-	.string "GIOVANNI: Putting together the\n"
+	.string "{SPEAKER NAME_GIOVANNI}Putting together the\n"
 	.string "potential of many is how you\l"
 	.string "produce a huge power...\l"
 	.string "That's what an organization is...\l"
@@ -313,19 +313,19 @@ Route22_Text_Giovanni2:
 	.string "I failed... to make the best use of\n"
 	.string "my subordinates' potential...!\p"
 	.string "But you shall witness one day the\n"
-	.string "revival of me and my TEAM ROCKET!$"
+	.string "revival of me and my Team Rocket!$"
 
 Route22_Text_Silver3:
-	.string "{RIVAL}: I don't understand you!\p"
+	.string "{SPEAKER NAME_RIVAL}I don't understand you!\p"
 	.string "You don't make any sense!$"
 
 Route22_Text_Giovanni3:
 	.string ".......................\p"
-	.string "GIOVANNI: One day you will\n"
+	.string "{SPEAKER NAME_GIOVANNI}One day you will\n"
 	.string "understand.$"
 
 Route22_Text_Silver4:
-	.string "{RIVAL}: I don't want to\n"
+	.string "{SPEAKER NAME_RIVAL}I don't want to\n"
 	.string "understand you!\p"
 	.string "I will never become someone like\n"
 	.string "you.\p"
@@ -340,5 +340,5 @@ Route22_Text_Silver5:
 	.string "ALL BY MYSELF!$"
 
 Route22_Text_Silver6:
-	.string "{RIVAL}: ... What are you staring at?$"
+	.string "{SPEAKER NAME_RIVAL}... What are you staring at?$"
 

@@ -384,13 +384,13 @@ Alola_Poni_BattleExeggutor_Text_0:
 	.string "Gaah-aah!$"
 
 Alola_Poni_Island_Sign_Text_0:
-	.string "PONI ISLE$"
+	.string "Poni Isle$"
 
 Alola_Poni_TotemBattle_Text_0:
 	.string "Buzz!!$"
 
 Alola_Poni_TotemBattle_Text_1:
-	.string "Totem ELECTIVIRE was defeated!\n"
+	.string "Totem Electivire was defeated!\n"
 	.string "It scampered off somewhere…$"
 
 PoniIsle_Movement_FacePlayerUpAfterTotemWarp:
@@ -405,16 +405,16 @@ Alola_Poni_Totem_sign_Text_0:
 	.string "Isle?$"
 
 Alola_Poni_Totem_sign_Text_1:
-	.string "MELEMELE ISLE$"
+	.string "Melemele Isle$"
 
 Alola_Poni_Totem_sign_Text_2:
-	.string "AKALA ISLE$"
+	.string "Akala Isle$"
 
 Alola_Poni_Totem_sign_Text_3:
-	.string "ULA'ULA ISLE$"
+	.string "Ula'ula Isle$"
 
 Alola_Poni_Totem_sign_Text_4:
-	.string "CANCEL$"
+	.string "Cancel$"
 
 Alola_Poni_Totem_sign_Text_5:
 	.string "A strange totem stands here,\n"
@@ -430,7 +430,7 @@ Alola_Poni_TrainerBattleSwimmer1_Text_1:
 	.string "Gah, I forgot my sunscreen…$"
 
 Alola_Poni_TrainerBattleSwimmer1_Text_2:
-	.string "I've swam into so many cool POKéMON!\n"
+	.string "I've swam into so many cool Pokémon!\n"
 	.string "It must be something in the water.$"
 
 Alola_Poni_TrainerBattleSwimmer2_Text_0:
@@ -444,7 +444,7 @@ Alola_Poni_TrainerBattleSwimmer2_Text_2:
 	.string "I don't think I'll tube anywhere else!$"
 
 Alola_Poni_NPC_girl_Text_0:
-	.string "PONI ISLE is my favorite.\n"
+	.string "Poni Isle is my favorite.\n"
 	.string "The wilderness just speaks for itself!$"
 
 Alola_Poni_Bench_Heal_Text_0:

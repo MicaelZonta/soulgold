@@ -39,7 +39,7 @@ NewSinjoh_EventScript_Steven::
 	end
 
 NewSinjoh_Text_Steven:
-	.string "STEVEN: Ma'am, may I help you to\n"
+	.string "{SPEAKER NAME_STEVEN}Ma'am, may I help you to\n"
 	.string "the spring over there?\p"
 	.string "It seems there is plenty of room.$"
 
@@ -105,7 +105,7 @@ NewSinjoh_MilkMan_NoMoney:
 	.string "Get some cash, then you will get a sale!$"
 
 NewSinjoh_MilkMan_NoRoom:
-	.string "Look's like your PACK's full.$"
+	.string "Look's like your Pack's full.$"
 
 NewSinjoh_MilkMan_NoSale:
 	.string "Don't you want it?\n"
@@ -115,7 +115,7 @@ NewSinjoh_MilkMan_Text_WouldYouLikeAnother:
 	.string "How bout another?$"
 
 NewSinjoh_Text_GotMilk:
-	.string "{PLAYER} got MOOMOO MILK.$"
+	.string "{PLAYER} got Moomoo Milk.$"
 
 MilkMan_EventScript_Battle:: 
     msgbox MilkMan_Battle_text
@@ -172,7 +172,7 @@ NewSinjoh_Text_TravelBrother_Greeting:
     .string "All our goods are homemade\n"
 	.string "and grown locally!\p"
 	.string "My big sister opened up this shop,\n"
-	.string "because the POKéMART company\l"
+	.string "because the Pokémart company\l"
 	.string "won't open a location\l"
 	.string "this far out from a major town.$"
 
@@ -268,15 +268,15 @@ NewSinjoh_Text_SpringsSage:
 	.string "tourists alike.$"
 NewSinjoh_Text_SpringsSageAfter:
 	.string "Things have been better since\n"
-	.string "the legendary POKéMON were quelled.\p"
-	.string "Balance has returned to SINJOH.$"
+	.string "the legendary Pokémon were quelled.\p"
+	.string "Balance has returned to Sinjoh.$"
 
 NewSinjoh_EventScript_Sage2::
 	msgbox NewSinjoh_Text_Sage2, MSGBOX_NPC
 	end
 
 NewSinjoh_Text_Sage2:
-	.string "Times change, but the STANTLER\n"
+	.string "Times change, but the Stantler\n"
 	.string "still gather. For that, we can\l"
 	.string "be thankful.$"
 
@@ -311,21 +311,21 @@ NewSinjoh_EventScript_Welcome_Sign::
 	end
 
 NewSinjoh_Text_Welcome_Sign:
-	.string "NEW SINJOH$"
+	.string "New Sinjoh$"
 
 NewSinjoh_EventScript_Resturant_Sign::
 	msgbox NewSinjoh_Text_Resturant_Sign, MSGBOX_SIGN
 	end
 
 NewSinjoh_Text_Resturant_Sign:
-	.string "FAMILY CAFE$"
+	.string "Family Cafe$"
 
 NewSinjoh_EventScript_Cave_Sign::
 	msgbox NewSinjoh_Text_Cave_Sign, MSGBOX_SIGN
 	end
 
 NewSinjoh_Text_Cave_Sign:
-	.string "HOT SPRINGS CAVE$"
+	.string "Hot Springs Cave$"
 
 NewSinjoh_EventScript_Hiker::
 	goto_if_ge VAR_SINJOH_STORYLINE, 13, NewSinjoh_EventScript_HikerAfter

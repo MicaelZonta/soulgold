@@ -17,6 +17,11 @@ existente), antes de reportar.
 | `fase3_lote.md` | O lote de 168 mapas: tilesets, treinadores, sprites, encontros, itens |
 | `fase4_fronteiras.md` | As 12 fronteiras e a fiação restaurada |
 | `fase5_reaplicacao.md` | Reaplicação do conteúdo SoulGold (ginásios, fronteiras, casas, S.S. Aqua) |
+| `fase6_radio.md`, `fase6_roamers.md`, `fase6_mom_surf_fanfarras.md` | Fase 6: rádio de 12 estações, roamers, poupança da mãe, surf e fanfarras |
+| `fase7_trio_leal.md`, `fase7_bosses_e_casas.md` | Fase 7: Trio Leal, lendários em Boss Fight, casas novas, Café enxuto |
+| `fase8_alola_sinjoh.md` | Fase 8: Alola, New Sinjoh/Sinjoh Ruins, Snowswept Cavern |
+| `summit_red_rival.md` | Red × rival no topo do Mt. Silver (ovo de Terapagos) |
+| `k8_plaquinhas_e_decap.md` | K8: decap do texto HnS (`dev_scripts/decap_texto.py`) e plaquinhas `{SPEAKER}` |
 
 Branch: `kanto-hns-adoption` (fork `mysoulgoldfork`); rollback: tag
 `pre-kanto-hns`. Um commit por fase. Fonte HnS:

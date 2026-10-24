@@ -67,7 +67,7 @@ NewSinjoh_Cafe_EventScript_ScientistM::
 NewSinjoh_Cafe_Text_ScientistM:
 	.string "Please forgive my colleague...\p"
 	.string "The drinks here are stronger than\n"
-	.string "what we're used to in HOENN.\p"
+	.string "what we're used to in Hoenn.\p"
 	.string "I tried to warn her, but she said\n"
 	.string "she needed to unwind.\p"
 	.string "This research expedition has been\n"
@@ -80,7 +80,7 @@ NewSinjoh_Cafe_EventScript_Gentleman::
 NewSinjoh_Cafe_Text_Gentleman:
 	.string "What are you staring at, kid?\p"
 	.string "Nothin' wrong with a man and his\n"
-	.string "POKéMON eating at the same table.$"
+	.string "Pokémon eating at the same table.$"
 
 NewSinjoh_EventScript_Scyther::
 	lock

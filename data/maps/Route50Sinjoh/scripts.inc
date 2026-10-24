@@ -49,18 +49,18 @@ Route50Sinjoh_EventScript_WesselAfter::
 	end
 
 Route50Sinjoh_Text_WesselBefore:
-	.string "Incredible, A VOLTORB!\p"
+	.string "Incredible, A Voltorb!\p"
     .string "But it appears to be made\n"
     .string "of... Wood?\p"
     .string "My hypothesis that this route\n"
-    .string "would contain many STEEL TYPE\l"
-    .string "POKéMON is disproven yet again.\p"
+    .string "would contain many Steel Type\l"
+    .string "Pokémon is disproven yet again.\p"
     .string "But why else would I have found\n"
-    .string "this STEEL PLATE here?\p"
+    .string "this Steel Plate here?\p"
     .string "I must collect more data!$"
 
 Route50Sinjoh_Text_WesselBeforeBattle:
-	.string "You want this PLATE?\n"
+	.string "You want this Plate?\n"
 	.string "But I haven't analyzed it yet!\p"
 	.string "Fine, we will battle for it.$"
 
@@ -68,7 +68,7 @@ Route50Sinjoh_Text_WesselDefeat:
 	.string "My hypothesis was wrong...$"
 
 Route50Sinjoh_Text_WesselAfter:
-	.string "Take the PLATE. I don't want to\n"
+	.string "Take the Plate. I don't want to\n"
 	.string "talk about it.$"
 
 Route50Sinjoh_EventScript_Finley::
@@ -105,17 +105,17 @@ Route50Sinjoh_Text_FinleyBefore:
     .string "strangers.\p"
     .string "But meeting new people is one\n"
     .string "of life's greatest joys.\p"
-    .string "One day, I hope to meet CHAMPION\n"
-    .string "LANCE.\p"
+    .string "One day, I hope to meet Champion\n"
+    .string "Lance.\p"
     .string "He is a legendary dragon tamer,\n"
     .string "much like myself.\l"
     .string "Who am I?\p"
-    .string "Well, I am FINLEY, keeper of the\n"
-    .string "DRACO PLATE.$"
+    .string "Well, I am Finley, keeper of the\n"
+    .string "Draco Plate.$"
 
 Route50Sinjoh_Text_FinleyBeforeBattle:
-	.string "I know the KIMONO's have sent you\n"
-	.string "to collect these PLATES.\p"
+	.string "I know the Kimono's have sent you\n"
+	.string "to collect these Plates.\p"
 	.string "They say you are worthy...\n"
 	.string "But can you conquer my dragons?$"
 
@@ -124,7 +124,7 @@ Route50Sinjoh_Text_FinleyDefeat:
 
 Route50Sinjoh_Text_FinleyAfter:
 	.string "Perhaps you are even strong enough\n"
-	.string "to beat LANCE...$"
+	.string "to beat Lance...$"
 
 Route50Sinjoh_EventScript_Item_ULtraBall::
     finditem ITEM_ULTRA_BALL
@@ -195,7 +195,7 @@ Route50Sinjoh_EventScript_Kleavor::
 	waitmoncry
 	setwildbossbattle species=SPECIES_KLEAVOR, level=80, item=ITEM_SCOPE_LENS, move1_1=MOVE_STONE_AXE, move1_2=MOVE_CROSS_POISON, move1_3=MOVE_LUNGE move1_4=MOVE_FOCUS_ENERGY
 	settotemboost B_POSITION_OPPONENT_LEFT, 1, 2, 0, 0, 2, 0
-	setflag FLAG_NO_WILD_CATCHING
+	setflag FLAG_NO_CATCHING
 	setflag FLAG_NO_WILD_RUNNING
 	setflag FLAG_SMART_WILD_AI
 	setflag FLAG_NO_SHINY
@@ -216,7 +216,7 @@ Route50Sinjoh_EventScript_Kleavor::
     call_if_eq VAR_PLATECOUNTER, 12, SinjohRuins_Lab_EventScript_12Plates
     call_if_eq VAR_PLATECOUNTER, 15, SinjohRuins_Lab_EventScript_15Plates
     call_if_eq VAR_PLATECOUNTER, 16, SinjohRuins_Lab_EventScript_16Plates
-	clearflag FLAG_NO_WILD_CATCHING
+	clearflag FLAG_NO_CATCHING
 	clearflag FLAG_NO_WILD_RUNNING
 	clearflag FLAG_SMART_WILD_AI
 	clearflag FLAG_NO_SHINY
@@ -224,7 +224,7 @@ Route50Sinjoh_EventScript_Kleavor::
 	end
 
 Route50Sinjoh_EventScript_KleavorRan::
-	clearflag FLAG_NO_WILD_CATCHING
+	clearflag FLAG_NO_CATCHING
 	clearflag FLAG_NO_WILD_RUNNING
 	clearflag FLAG_SMART_WILD_AI
 	clearflag FLAG_NO_SHINY
@@ -308,7 +308,7 @@ Route50Sinjoh_EventScript_Electrode::
 	waitmoncry
 	setwildbossbattle species=SPECIES_ELECTRODE_HISUI, level=80, item=ITEM_BRIGHT_POWDER, move1_1=MOVE_FOUL_PLAY, move1_2=MOVE_ELECTRO_BALL, move1_3=MOVE_ENERGY_BALL move1_4=MOVE_CHLOROBLAST
 	settotemboost B_POSITION_OPPONENT_LEFT, 0, 3, 1, 0, 3, 0
-	setflag FLAG_NO_WILD_CATCHING
+	setflag FLAG_NO_CATCHING
 	setflag FLAG_NO_WILD_RUNNING
 	setflag FLAG_SMART_WILD_AI
 	setflag FLAG_NO_SHINY
@@ -329,7 +329,7 @@ Route50Sinjoh_EventScript_Electrode::
     call_if_eq VAR_PLATECOUNTER, 12, SinjohRuins_Lab_EventScript_12Plates
     call_if_eq VAR_PLATECOUNTER, 15, SinjohRuins_Lab_EventScript_15Plates
     call_if_eq VAR_PLATECOUNTER, 16, SinjohRuins_Lab_EventScript_16Plates
-	clearflag FLAG_NO_WILD_CATCHING
+	clearflag FLAG_NO_CATCHING
 	clearflag FLAG_NO_WILD_RUNNING
 	clearflag FLAG_SMART_WILD_AI
 	clearflag FLAG_NO_SHINY
@@ -337,7 +337,7 @@ Route50Sinjoh_EventScript_Electrode::
 	end
 
 Route50Sinjoh_EventScript_ElectrodeRan::
-	clearflag FLAG_NO_WILD_CATCHING
+	clearflag FLAG_NO_CATCHING
 	clearflag FLAG_NO_WILD_RUNNING
 	clearflag FLAG_SMART_WILD_AI
 	clearflag FLAG_NO_SHINY

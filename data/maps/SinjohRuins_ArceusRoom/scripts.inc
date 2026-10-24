@@ -277,7 +277,7 @@ SinjohRuins_ArceusRoom_EventScript_Arceus::
 	delay 40
 	waitmoncry
 	@ Fase 1 (Boss Fight, 3 barras): Arceus-Steel Lv100, NAO capturavel. B_FLAG_NO_CATCHING = FLAG_NO_CATCHING
-	@ (FLAG_NO_WILD_CATCHING do HnS nao e lida por nada no SoulGold).
+	@ (FLAG_NO_CATCHING do HnS nao e lida por nada no SoulGold).
 	setflag FLAG_NO_CATCHING
 	setflag FLAG_NO_WILD_RUNNING
 	setflag FLAG_SMART_WILD_AI
@@ -311,11 +311,11 @@ SinjohRuins_ArceusRoom_EventScript_ArceusRan::
 	end
 
 SinjohRuins_ArceusRoom_Text_CryArceus:
-    .string "ARCEUS: Dodogyuuun!$"
+    .string "{SPEAKER NAME_ARCEUS}Dodogyuuun!$"
 
 SinjohRuins_ArceusRoom_Text_CryArceus2:
-	.string "ARCEUS: Dodogyuuun!\p"
-	.string "The ARCEUS is weakened...\n"
+	.string "{SPEAKER NAME_ARCEUS}Dodogyuuun!\p"
+	.string "The Arceus is weakened...\n"
 	.string "Can be caught?$"
 
 SinjohRuins_ArceusRoom_TriggerSteven::
@@ -352,14 +352,14 @@ SinjohRuins_ArceusRoom_Movement_StevenWalkDown:
 	step_end
 
 SinjohRuins_ArceusRoom_Text_StevenCongrats:
-    .string "STEVEN: You did it, {PLAYER}!\p"
+    .string "{SPEAKER NAME_STEVEN}You did it, {PLAYER}!\p"
 	.string "That battle was breathtaking.\p"
 	.string "Seeing your power made me realize.\p"
-	.string "The KIMONO GIRLS didn't send you\n"
+	.string "The Kimono Girls didn't send you\n"
 	.string "to help our research.\p"
 	.string "I think they sent you because\n"
 	.string "you were the only one worthy of\l"
-	.string "taming the legendary POKéMON.\p"
+	.string "taming the legendary Pokémon.\p"
 	.string "They didn't trust my team and I\n"
 	.string "to handle it.\p"
 	.string "And after what I've just seen...\p"
@@ -369,6 +369,6 @@ SinjohRuins_ArceusRoom_Text_StevenCongrats:
 	.string "I think I'll spend some time\n"
 	.string "with the locals.\p"
 	.string "After all of this, you and your\n"
-	.string "POKéMON deserve some rest.\p"
+	.string "Pokémon deserve some rest.\p"
 	.string "I'll be at the village if you need me.\p"
 	.string "Fufufu, what could you need from me?$"

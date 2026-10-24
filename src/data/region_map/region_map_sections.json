@@ -1761,6 +1761,10 @@
     {
       "id": "MAPSEC_SNOWSWEPT_CAVERN",
       "name": "Snowswept Cavern"
+    },
+    {
+      "id": "MAPSEC_ROUTE_50",
+      "name": "Route 50"
     }
   ]
 }

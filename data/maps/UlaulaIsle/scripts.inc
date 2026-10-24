@@ -308,22 +308,22 @@ Alola_Ulaula_BattlePalossand_Text_0:
 
 Alola_Ulaula_MtLanikalaSign_Text_0:
 	.string "This mountain is affectionately\n"
-	.string "referred to as MT. LANIKALA by the\l"
+	.string "referred to as Mt. Lanikala by the\l"
 	.string "locals, as it is the tallest mountain\l"
-	.string "on the ALOLA ISLES.\p"
+	.string "on the Alola Isles.\p"
 	.string "The real name of this mountain has been\n"
 	.string "lost to time.$"
 
 Alola_Ulaula_UlaulaSign_Text_0:
-	.string "ULA'ULA ISLE$"
+	.string "Ula'ula Isle$"
 
 Alola_Ulaula_Phant_outside_Text_0:
 	.string "Hello there, {PLAYER}!\p"
 	.string "I'm the developer who built this\n"
 	.string "section of the game!\p"
-	.string "I hope you enjoyed this taste of ALOLA.\p"
+	.string "I hope you enjoyed this taste of Alola.\p"
 	.string "I'm working on a full demake of the\n"
-	.string "region called ULTRA ECLIPSE.$"
+	.string "region called Ultra Eclipse.$"
 
 Alola_Ulaula_Phant_outside_Text_1:
 	.string "Please come visit me at my house at\n"
@@ -339,18 +339,18 @@ Alola_Ulaula_TrainerBattlePicnicker_Text_1:
 Alola_Ulaula_TrainerBattlePicnicker_Text_2:
 	.string "I thought I saw something red flying\n"
 	.string "through the sky.\p"
-	.string "Could it have been a POKéMON?$"
+	.string "Could it have been a Pokémon?$"
 
 Alola_Ulaula_TrainerBattleYoungster_Text_0:
-	.string "Hey, I'm going to be the first to climb\nMT. LANIKALA!$"
+	.string "Hey, I'm going to be the first to climb\nMt. Lanikala!$"
 
 Alola_Ulaula_TrainerBattleYoungster_Text_1:
-	.string "It's not even the real MT. LANIKALA…$"
+	.string "It's not even the real Mt. Lanikala…$"
 
 Alola_Ulaula_TrainerBattleYoungster_Text_2:
 	.string "My dad never told me the real name of\n"
 	.string "this mountain.\p"
-	.string "We've always just called it MT. LANIKALA.$"
+	.string "We've always just called it Mt. Lanikala.$"
 
 Alola_Ulaula_TrainerBattleHiker_Text_0:
 	.string "You must be tough to handle this\nrough terrain!$"
@@ -359,10 +359,10 @@ Alola_Ulaula_TrainerBattleHiker_Text_1:
 	.string "Oof,\nI should've trained harder…$"
 
 Alola_Ulaula_TrainerBattleHiker_Text_2:
-	.string "ULA'ULA ISLE has the best hiking!\p"
+	.string "Ula'ula Isle has the best hiking!\p"
 	.string "The locals refer to this mountain as\n"
-	.string "MT. LANIKALA, as it is the tallest on\l"
-	.string "the ALOLA ISLES!$"
+	.string "Mt. Lanikala, as it is the tallest on\l"
+	.string "the Alola Isles!$"
 
 Alola_Ulaula_TrainerBattleCooltrainer_Text_0:
 	.string "This cave smells terrible!\nLet's battle to get my mind off of it!$"
@@ -375,7 +375,7 @@ Alola_Ulaula_TrainerBattleCooltrainer_Text_2:
 	.string "on going in that cave.$"
 
 Alola_Ulaula_LassNPC_Text_0:
-	.string "The sea by the ISLES is truly\n"
+	.string "The sea by the Isles is truly\n"
 	.string "breathtaking.\p"
 	.string "I could sit here all day and just\n"
 	.string "watch the waves.$"
@@ -595,12 +595,12 @@ Alola_Ulaula_Text_MoveTutorIntro:
 	.string "YOU!\p"
 	.string "Did the others send you here?\n"
 	.string "Did they tell you that I am the\l"
-	.string "master of POKéMON moves?\p"
+	.string "master of Pokémon moves?\p"
 	.string "........................\p"
-	.string "I can train your POKéMON in the\n"
-	.string "ways of the ISLES, but first, a\l"
+	.string "I can train your Pokémon in the\n"
+	.string "ways of the Isles, but first, a\l"
 	.string "small fee.\p"
-	.string "The price is 5 HEART SCALES.\p"
+	.string "The price is 5 Heart Scales.\p"
 	.string "Do you have them?$"
 
 Alola_Ulaula_Text_MoveTutorPaid:
@@ -609,10 +609,10 @@ Alola_Ulaula_Text_MoveTutorPaid:
 	.string "granted to you.$"
 
 Alola_Ulaula_Text_MoveTutorNoScales:
-	.string "Five HEART SCALES.\n"
+	.string "Five Heart Scales.\n"
 	.string "Not four.\p"
 	.string "Try smashing rocks.\n"
-	.string "With your POKéMON, or your fists!$"
+	.string "With your Pokémon, or your fists!$"
 
 Alola_Ulaula_Text_MoveTutorChoose:
 	.string "Which move would you like?$"
@@ -621,95 +621,95 @@ Alola_Ulaula_Text_MoveTutorConfirm:
 	.string "You'd like to learn {STR_VAR_1}?$"
 
 Alola_Ulaula_Text_MoveTutorWhichMon:
-	.string "Which POKéMON should learn it?$"
+	.string "Which Pokémon should learn it?$"
 
 Alola_Ulaula_Text_MoveTutorDone:
-	.string "EXCELLENT!\p"
-	.string "Your POKéMON holds the knowledge\n"
-	.string "of the ISLES.$"
+	.string "Excellent!\p"
+	.string "Your Pokémon holds the knowledge\n"
+	.string "of the Isles.$"
 
 Alola_Ulaula_Text_MoveTutorComeBack:
-	.string "The ISLES aren't going anywhere.\n"
+	.string "The Isles aren't going anywhere.\n"
 	.string "Come back anytime.$"
 
 Alola_Ulaula_Text_TutorMove_Acrobatics:
-	.string "ACROBATICS$"
+	.string "Acrobatics$"
 
 Alola_Ulaula_Text_TutorMove_AuroraVeil:
-	.string "AURORA VEIL$"
+	.string "Aurora Veil$"
 
 Alola_Ulaula_Text_TutorMove_BrutalSwing:
-	.string "BRUTAL SWING$"
+	.string "Brutal Swing$"
 
 Alola_Ulaula_Text_TutorMove_Bulldoze:
-	.string "BULLDOZE$"
+	.string "Bulldoze$"
 
 Alola_Ulaula_Text_TutorMove_Confide:
-	.string "CONFIDE$"
+	.string "Confide$"
 
 Alola_Ulaula_Text_TutorMove_DazzlingGleam:
-	.string "DAZZLING GLEAM$"
+	.string "Dazzling Gleam$"
 
 Alola_Ulaula_Text_TutorMove_DragonTail:
-	.string "DRAGON TAIL$"
+	.string "Dragon Tail$"
 
 Alola_Ulaula_Text_TutorMove_EchoedVoice:
-	.string "ECHOED VOICE$"
+	.string "Echoed Voice$"
 
 Alola_Ulaula_Text_TutorMove_FlameCharge:
-	.string "FLAME CHARGE$"
+	.string "Flame Charge$"
 
 Alola_Ulaula_Text_TutorMove_FrostBreath:
-	.string "FROST BREATH$"
+	.string "Frost Breath$"
 
 Alola_Ulaula_Text_TutorMove_Infestation:
-	.string "INFESTATION$"
+	.string "Infestation$"
 
 Alola_Ulaula_Text_TutorMove_LeechLife:
-	.string "LEECH LIFE$"
+	.string "Leech Life$"
 
 Alola_Ulaula_Text_TutorMove_LowSweep:
-	.string "LOW SWEEP$"
+	.string "Low Sweep$"
 
 Alola_Ulaula_Text_TutorMove_Psyshock:
-	.string "PSYSHOCK$"
+	.string "Psyshock$"
 
 Alola_Ulaula_Text_TutorMove_Quash:
-	.string "QUASH$"
+	.string "Quash$"
 
 Alola_Ulaula_Text_TutorMove_Round:
-	.string "ROUND$"
+	.string "Round$"
 
 Alola_Ulaula_Text_TutorMove_Scald:
-	.string "SCALD$"
+	.string "Scald$"
 
 Alola_Ulaula_Text_TutorMove_SkyDrop:
-	.string "SKY DROP$"
+	.string "Sky Drop$"
 
 Alola_Ulaula_Text_TutorMove_SludgeWave:
-	.string "SLUDGE WAVE$"
+	.string "Sludge Wave$"
 
 Alola_Ulaula_Text_TutorMove_SmackDown:
-	.string "SMACK DOWN$"
+	.string "Smack Down$"
 
 Alola_Ulaula_Text_TutorMove_SmartStrike:
-	.string "SMART STRIKE$"
+	.string "Smart Strike$"
 
 Alola_Ulaula_Text_TutorMove_Snarl:
-	.string "SNARL$"
+	.string "Snarl$"
 
 Alola_Ulaula_Text_TutorMove_Venoshock:
-	.string "VENOSHOCK$"
+	.string "Venoshock$"
 
 Alola_Ulaula_Text_TutorMove_VoltSwitch:
-	.string "VOLT SWITCH$"
+	.string "Volt Switch$"
 
 Alola_Ulaula_Text_TutorMove_WildCharge:
-	.string "WILD CHARGE$"
+	.string "Wild Charge$"
 
 Alola_Ulaula_Text_TutorMove_WorkUp:
-	.string "WORK UP$"
+	.string "Work Up$"
 
 Alola_Ulaula_Text_TutorMove_Cancel:
-	.string "CANCEL$"
+	.string "Cancel$"
 

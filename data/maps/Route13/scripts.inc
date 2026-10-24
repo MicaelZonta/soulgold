@@ -123,7 +123,7 @@ Route13_EventScript_DirectionsSign::
 	end
 
 Route13_Text_PokefanmAlexSeen:
-	.string "Bow down before my regal POKéMON!$"
+	.string "Bow down before my regal Pokémon!$"
 
 Route13_Text_PokefanmAlexBeaten:
 	.string "How… How dare you mock royalty!$"
@@ -148,29 +148,29 @@ Route13_Text_AlexPostRematch:
 
 Route13_Text_PokefanmJoshuaSeen:
 	.string "Nihihi! Would you like to battle\n"
-	.string "my PIKACHU gang?$"
+	.string "my Pikachu gang?$"
 
 Route13_Text_PokefanmJoshuaBeaten:
 	.string "PI-PIKACHU!$"
 
 Route13_Text_PokefanmJoshuaAfterBattle:
 	.string "You look like you have many\n"
-	.string "POKéMON, but PIKACHU\l"
+	.string "Pokémon, but Pikachu\l"
 	.string "is still the best.$"
 
 Route13_Text_BirdKeeperPerrySeen:
 	.string "Agility is the key attribute of\n"
-	.string "bird POKéMON.$"
+	.string "bird Pokémon.$"
 
 Route13_Text_BirdKeeperPerryBeaten:
 	.string "You beat me with your speed…$"
 
 Route13_Text_BirdKeeperPerryAfterBattle:
-	.string "Your POKéMON are remarkably well-\n"
+	.string "Your Pokémon are remarkably well-\n"
 	.string "trained.$"
 
 Route13_Text_BirdKeeperBretSeen:
-	.string "Check out my POKéMON. Just look\n"
+	.string "Check out my Pokémon. Just look\n"
 	.string "at their coloring and their\l"
 	.string "plumage.$"
 
@@ -178,12 +178,12 @@ Route13_Text_BirdKeeperBretBeaten:
 	.string "Shoot! Not good enough!$"
 
 Route13_Text_BirdKeeperBretAfterBattle:
-	.string "If you groom them, POKéMON get\n"
+	.string "If you groom them, Pokémon get\n"
 	.string "happy.$"
 
 Route13_Text_HikerKennySeen:
-	.string "I should go to ROCK TUNNEL to get\n"
-	.string "myself an ONIX.$"
+	.string "I should go to Rock Tunnel to get\n"
+	.string "myself an Onix.$"
 
 Route13_Text_HikerKennyBeaten:
 	.string "I lost…$"
@@ -195,7 +195,7 @@ Route13_Text_HikerKennyAfterBattle:
 	.string "by little.$"
 
 Route13_Text_KennyRegister:
-	.string "Maybe POKéMON change over time too.\n"
+	.string "Maybe Pokémon change over time too.\n"
 	.string "Let's battle again sometime!$"
 
 Route13_Text_KennyRematchIntro:
@@ -206,21 +206,21 @@ Route13_Text_KennyRematchDefeat:
 	.string "Still not enough…$"
 
 Route13_Text_KennyPostRematch:
-	.string "The power of POKéMON is like\n"
+	.string "The power of Pokémon is like\n"
 	.string "erosion. We will persevere!$"
 
 Route13_Text_TrainerTips:
-	.string "TRAINER TIPS\p"
+	.string "Trainer Tips\p"
 	.string "Look! Right there, at the left\n"
 	.string "side of the post.$"
 
 Route13_Text_Sign:
-	.string "ROUTE 13\p"
-	.string "NORTH TO SILENCE BRIDGE$"
+	.string "Route 13\p"
+	.string "North to Silence Bridge$"
 
 Route13_Text_DirectionsSign:
-	.string "NORTH TO LAVENDER TOWN\p"
-	.string "WEST TO FUCHSIA CITY$"
+	.string "North to Lavender Town\p"
+	.string "West to Fuchsia City$"
 
 Route13_GetOffBoat::
 	lock
@@ -425,12 +425,12 @@ Route13_Movement_BoatArrive:
 Route13_GetOffBoat_Text_0:
 	.string "Welcome back to mainland Kanto!\p"
 	.string "Come back if you'd like to take a trip\n"
-	.string "to the ALOLA ISLES!$"
+	.string "to the Alola Isles!$"
 
 Route13_TravelToAlola_Text_0:
 	.string "Ahoy there!\p"
 	.string "That's one strange souvenir.\n"
-	.string "You must be from the ISLES!$"
+	.string "You must be from the Isles!$"
 Route13_TravelToAlola_Text_0_5:
 	.string "Would you like to take the next ship?\n"
 	.string "It departs shortly!$"
@@ -444,12 +444,12 @@ Route13_TravelToAlola_Text_2:
 
 Route13_TravelToAlola_Text_3:
 	.string "Ah, it's you again!\n"
-	.string "Do you want to go to the ALOLA ISLES?$"
+	.string "Do you want to go to the Alola Isles?$"
 
 Route13_TravelToAlola_Text_4:
 	.string "Ahoy!\n"
 	.string "This port is for residents only.\p"
-	.string "All of the residents of these ISLES\n"
+	.string "All of the residents of these Isles\n"
 	.string "carry some… {PAUSE 30}strange souvenirs.\p"
 	.string "It makes them so easy to identify,\n"
 	.string "I don't even need to check tickets!$"

@@ -228,7 +228,9 @@ do S aceita o par Day/Night (nosso `wild_encounter.c` trata TIME_OF_DAY).
 **Gargalos**: etapas 7 (tilesets), 8 (behaviors) e 9 (reaplicar S). As etapas
 3 e 6 são mecânicas.
 
-## K8. Diálogos e texto
+## K8. Diálogos e texto ✅ FEITO (24/10/2026)
+
+Diário: `.claude/merge_hns/k8_plaquinhas_e_decap.md`.
 
 Os diálogos de Kanto **vêm de graça** com a adoção: trocar o `scripts.inc` é
 trocar o texto junto. E o texto do HnS é muito mais rico que o nosso Kanto
@@ -237,14 +239,21 @@ vs 227; trades in-game de Kanto, presentes por telefone, evento do Pichu de
 orelha espetada, times "Crystal Legacy"). O trabalho de texto é a camada
 **nossa** por cima:
 
-1. **Plaquinhas `{SPEAKER}`**: reaplicar nos 51 mapas (195 tags hoje) — regra
-   do projeto é todo "Nome:" virar plaquinha (skill `nomear-falante`).
-   Lembrar que o `{SPEAKER}` do HnS é outro formato (1 byte) — o texto deles
-   não traz plaquinha, traz "Nome:" cru ou nada.
-2. **Caixa/decap**: o S passou decap em massa nos textos; conferir o padrão de
-   caixa do texto HnS importado (se vier MAIÚSCULA GSC, rodar o mesmo decap).
-3. **Charmap**: texto do HnS com `{B_RIVAL_NAME}` (FD 48) colide com nosso
-   `B_EFF2_TEAM1` — remapear na importação.
+1. ✅ **Plaquinhas `{SPEAKER}`**: 140 prefixos `"Nome: "` convertidos +
+   33 blocos sem prefixo que deixavam a plaquinha piscando na mesma cena;
+   11 falantes novos (Miharu, Shizuko, Youko, Arceus, Jirachi, Magikarp, Natu,
+   Dennis, Radio, Linguist e `{RIVAL}`) — 288 no total. Continuam com
+   `"Nome: "`, de propósito: placa de estátua de ginásio e fala de derrota
+   dentro da batalha.
+2. ✅ **Caixa/decap**: veio MAIÚSCULA Gen 3/GSC mesmo (2 659 ocorrências em
+   165 arquivos). Ferramenta nova `dev_scripts/decap_texto.py` (decide por
+   bloco: placa vira Title Case, bloco misto só troca nome próprio conhecido,
+   ênfase do autor fica). Sobraram 109 ocorrências, todas intencionais
+   (TM/HM/PC/PP/OK, voz de máquina do Teleporter, gritos).
+3. ✅ **Charmap**: `{B_RIVAL_NAME}` não aparece em nenhum texto importado —
+   nada a remapear. O que apareceu foi `"{RIVAL}: "` (5 falas da Route 22),
+   que agora usa `SP_NAME_RIVAL = "{RIVAL}"` (expandido no desenho, como o
+   `NAME_NEIGHBOR`).
 4. Texto do jogo permanece em inglês (regra do projeto).
 
 ## K9. Roadmap de execução — por onde começar
@@ -383,8 +392,8 @@ orelha espetada, times "Crystal Legacy"). O trabalho de texto é a camada
   (↔Kitakami): sobrescrever interior preservando warps/conexões/eventos de
   ligação do S.
 
-**Fase 5 — Reaplicar o conteúdo SoulGold** ✅ FEITA (19/10/2026, exceto
-plaquinhas/decap = K8, passe próprio). Detalhes em
+**Fase 5 — Reaplicar o conteúdo SoulGold** ✅ FEITA (19/10/2026; plaquinhas/
+decap saíram no passe K8, 24/10/2026). Detalhes em
 `.claude/merge_hns/fase5_reaplicacao.md`: Achievement_CheckAll nos 8
 ginásios; expert da Route 27 + itens de fronteira + megastone; Pallet/
 Viridian/Bill's House fundidos; clerk do Celadon 4F no script do Goldenrod;
@@ -554,7 +563,16 @@ snow/volcano/pond, apricorns/Kurt/gym rematch, rádio base (4 estações).
 - [ ] Corrigir "428 B livres" na skill `limites-do-engine` → 140 B.
 - [ ] Adaptar o reset de flags do `LeaveBoat` (S.S. Aqua) à costura de
       pós-game do S (decisão: o navio volta a funcionar ida-e-volta).
-- [ ] Conferir caixa (decap) do texto HnS importado (K8).
+- [x] Conferir caixa (decap) do texto HnS importado (K8) — feito 24/10/2026.
+- [ ] 28 linhas acima de 208 px nos arquivos do HnS (fala de entrada de
+      treinador de Alola, na maioria): passe de largura próprio.
+- [ ] `MAPSEC_ROUTE_50` (Sinjoh) e nosso `MAPSEC_ROUTE50` têm o mesmo nome
+      visível ("Route 50"); `Route49Sinjoh` divide `MAPSEC_ROUTE_49` com a
+      nossa Route 49. Resolver com o mapa regional de Sinjoh (cosmético).
+- [ ] `FLAG_NO_WILD_CATCHING` (0x1114) ficou órfã depois do conserto do K8 —
+      aposentar ou reaproveitar.
+- [ ] Johto usa `NAME_SILVER` (texto fixo) nas falas do rival; com
+      `NAME_RIVAL` existindo, trocar faria valer o nome que o jogador deu.
 
 ---
 

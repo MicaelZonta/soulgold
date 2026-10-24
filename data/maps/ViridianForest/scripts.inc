@@ -68,12 +68,12 @@ ViridianForest_EventScript_Bugsy::
 	end
 
 ViridianForest_Text_Bugsy:
-	.string "BUGSY: I came to KANTO to look for\n"
-	.string "BUG-TYPE POKéMON, so I can become\l"
-	.string "a stronger BUG-TYPE POKéMON\l"
-	.string "TRAINER!\p"
+	.string "{SPEAKER NAME_BUGSY}I came to Kanto to look for\n"
+	.string "Bug-type Pokémon, so I can become\l"
+	.string "a stronger Bug-type Pokémon\l"
+	.string "Trainer!\p"
     .string "If you're ready for another match,\n"
-    .string "I'll be at the DOJO in SAFFRON!$"
+    .string "I'll be at the Dojo in Saffron!$"
 
 ViridianForest_TriggerScript_Pichu1::
 	lock

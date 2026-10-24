@@ -38,7 +38,7 @@ CeladonMansionRoofHouse_Text_PharmacistNotNight:
 CeladonMansionRoofHouse_Text_PharmacistStory:
 	.string "Once upon a time, there was a\n"
 	.string "little boy who was given a new\l"
-	.string "BICYCLE…\p"
+	.string "Bicycle…\p"
 	.string "He wanted to try it right away…\p"
 	.string "He was having so much fun that\n"
 	.string "he didn't notice the sun had set…\p"
@@ -55,15 +55,15 @@ CeladonMansionRoofHouse_Text_PharmacistStory:
 	.string "…\p"
 	.string "SHRIEEEEK!\p"
 	.string "The boy had been riding uphill on\n"
-	.string "CYCLING ROAD!\p"
+	.string "Cycling Road!\p"
 	.string "…\n"
 	.string "Ba-dum ba-dum!\p"
 	.string "For listening so patiently, you\n"
 	.string "may take this--TM82!$"
 
 CeladonMansionRoofHouse_Text_PharmacistCurse:
-	.string "TM82 is SLEEP TALK.\p"
-	.string "It will allow your POKéMON to use\n"
+	.string "TM82 is Sleep Talk.\p"
+	.string "It will allow your Pokémon to use\n"
 	.string "a random move while asleep.\p"
 	.string "But good luck sleeping after that\n"
 	.string "terrifying tale!$"

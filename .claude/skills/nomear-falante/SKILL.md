@@ -129,6 +129,12 @@ Ele troca o prefixo pelo código **sem reencaixar o parágrafo**: as quebras de
 linha do autor são batidas de cena, não acaso, e o código não ocupa pixel, então
 a linha só encurta. Edite sempre o `.pory` quando existir; o `.inc` é gerado.
 
+Texto vindo de fora costuma estar em CAIXA ALTA estilo GSC/Gen 3
+(`"LEADER: BROCK"`, `"POKéMON"`). Rode o decap **antes** do conversor:
+`python3 dev_scripts/decap_texto.py --conferir <arquivo>` (ele decide por bloco:
+placa vira Title Case, bloco misto só troca nome próprio conhecido, ênfase do
+autor fica). Receita e armadilhas em `.claude/merge_hns/k8_plaquinhas_e_decap.md`.
+
 O que ele já sabe (30/09/2026, quando o jogo inteiro foi convertido):
 
 - **Falantes conhecidos vêm da tabela** (`src/data/speaker_names.h`), sem

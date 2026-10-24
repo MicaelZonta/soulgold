@@ -17,7 +17,7 @@ Route27_EventScript_BaobaCall::
 	end
 
 Route27_Text_BaobaName:
-	.string "BAOBA$"
+	.string "Baoba$"
 
 Route27_EventScript_FirstSteps::
     lock
@@ -175,8 +175,8 @@ Route27_Text_FisherHey:
 Route27_Text_FisherMessage:
     .string "Do you know what you just did?\p"
     .string "You've taken your first step into\n"
-    .string "KANTO.\p"
-    .string "Check your POKéGEAR MAP and see.$"
+    .string "Kanto.\p"
+    .string "Check your Pokégear Map and see.$"
 
 Route27_Text_CooltrainermBlakeSeen:
     .string "You look pretty strong.\n"
@@ -203,7 +203,7 @@ Route27_Text_CooltrainermBrianAfter:
 
 Route27_Text_CooltrainerfReenaSeen:
     .string "You shouldn't underestimate the\n"
-    .string "wild POKéMON in these parts.$"
+    .string "wild Pokémon in these parts.$"
 
 Route27_Text_CooltrainerfReenaBeaten:
     .string "Oh! You're much too strong!$"
@@ -218,7 +218,7 @@ Route27_Text_ReenaRegister:
 
 Route27_Text_ReenaRematchIntro:
     .string "You shouldn't underestimate the\n"
-    .string "wild POKéMON in these parts.$"
+    .string "wild Pokémon in these parts.$"
 
 Route27_Text_ReenaRematchDefeat:
     .string "Oh! You're much too strong!$"
@@ -236,9 +236,9 @@ Route27_Text_CooltrainerfMeganBeaten:
 
 Route27_Text_CooltrainerfMeganAfter:
     .string "I'm checking out pre- and post-\n"
-    .string "evolution POKéMON.\p"
+    .string "evolution Pokémon.\p"
     .string "Evolution really does make\n"
-    .string "POKéMON stronger.\p"
+    .string "Pokémon stronger.\p"
     .string "But evolved forms also learn\n"
     .string "moves later on.$"
 
@@ -246,15 +246,15 @@ Route27_Text_PsychicGilbertSeen:
     .string "Don't say a thing!\p"
     .string "Let me guess what you're thinking.\p"
     .string "Mmmmmmm…\p"
-    .string "I got it! You're on the POKéMON\n"
-    .string "LEAGUE challenge!$"
+    .string "I got it! You're on the Pokémon\n"
+    .string "League challenge!$"
 
 Route27_Text_PsychicGilbertBeaten:
     .string "You're too much!$"
 
 Route27_Text_PsychicGilbertAfter:
     .string "With your skills, you'll do well at\n"
-    .string "the LEAGUE.\p"
+    .string "the League.\p"
     .string "That's what my premonition says.$"
 
 Route27_Text_BirdKeeperJoseSeen:
@@ -264,12 +264,12 @@ Route27_Text_BirdKeeperJoseBeaten:
     .string "Tweet!$"
 
 Route27_Text_BirdKeeperJoseAfter:
-    .string "BIRD KEEPERS like me mimic bird\n"
-    .string "whistles to command POKéMON.$"
+    .string "Bird Keepers like me mimic bird\n"
+    .string "whistles to command Pokémon.$"
 
 Route27_Text_JoseRegister:
-    .string "BIRD KEEPERS like me mimic bird\n"
-    .string "whistles to command POKéMON.$"
+    .string "Bird Keepers like me mimic bird\n"
+    .string "whistles to command Pokémon.$"
 
 Route27_Text_JoseRematchIntro:
     .string "Tweet! Tweet! Tetweet!$"
@@ -278,8 +278,8 @@ Route27_Text_JoseRematchDefeat:
     .string "Tweet!$"
 
 Route27_Text_JosePostRematch:
-    .string "BIRD KEEPERS like me mimic bird\n"
-    .string "whistles to command POKéMON.$"
+    .string "Bird Keepers like me mimic bird\n"
+    .string "whistles to command Pokémon.$"
 
 Route27_Text_JoseHasItem:
     .string "Hey! I found something\n"
@@ -288,29 +288,29 @@ Route27_Text_JoseHasItem:
 
 Route27_Text_JoseGaveItem:
     .string "I find all sorts of things\n"
-    .string "out here on ROUTE 27.\p"
+    .string "out here on Route 27.\p"
     .string "I'll let you know if I find\n"
     .string "anything else!$"
 
 Route27_Text_JoseNoRoom:
-    .string "Hmm, your BAG is full.\p"
+    .string "Hmm, your Bag is full.\p"
     .string "Come back when you have room.$"
 
 TohjoFalls_Text_Sign:
-    .string "TOHJO FALLS\p"
-    .string "THE LINK BETWEEN KANTO AND JOHTO$"
+    .string "Tohjo Falls\p"
+    .string "the Link Between Kanto and Johto$"
 
 Route27_Text_FisherScottSeen:
     .string "I'm feeling great today!\p"
     .string "I feel like I could boot even the\n"
-    .string "LEAGUE CHAMP!$"
+    .string "League Champ!$"
 
 Route27_Text_FisherScottBeaten:
     .string "No! Not in this battle!$"
 
 Route27_Text_FisherScottAfter:
     .string "Just like in fishing, it's all over\n"
-    .string "in POKéMON if you give up.$"
+    .string "in Pokémon if you give up.$"
 
 Route27_RouteExpert::
 	lock

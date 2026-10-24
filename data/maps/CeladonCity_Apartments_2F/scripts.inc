@@ -19,16 +19,16 @@ CeladonMansion2F_Text_Computer:
 	.string "…\p"
 	.string "Someone was in the middle of\n"
 	.string "composing an e-mail.\p"
-	.string "…I hope you'll come visit KANTO.\p"
+	.string "…I hope you'll come visit Kanto.\p"
 	.string "I think you'll be surprised at\n"
 	.string "how much things have changed here.\p"
-	.string "You'll also see many POKéMON that\n"
-	.string "aren't native to JOHTO.\p"
-	.string "To the PRODUCER\p"
+	.string "You'll also see many Pokémon that\n"
+	.string "aren't native to Johto.\p"
+	.string "To the Producer\p"
 	.string "…$"
 
 CeladonMansion2F_Text_DevOfficeSign:
-	.string "HEART & SOUL DEVELOPMENT OFFICE$"
+	.string "Heart & Soul Development Office$"
 
 CeladonMansion2F_EventScript_LilDill::
 	msgbox CeladonMansion2F_Text_LilDill, MSGBOX_NPC
@@ -57,37 +57,37 @@ CeladonMansion2F_EventScript_DaniRainbow::
 CeladonMansion2F_Text_LilDill:
 	.string "Hi all, Patch 15--\p"
 	.string "Sorry, I mean...\p"
-	.string "Hi there, I'm the GAME DIRECTOR!\p"
+	.string "Hi there, I'm the Game Director!\p"
 	.string "I built the maps, the tilesets, the\n"
 	.string "the scripts, and much more.\p"
 	.string "But I couldn't have done it without\n"
 	.string "the other devs and the playtesters.\p"
 	.string "Thank you for playing! I hope you've\n"
-	.string "enjoyed POKéMON HEART & SOUL.$"
+	.string "enjoyed Pokémon Heart & Soul.$"
 
 CeladonMansion2F_Text_InfiniteBacon:
 	.string "We're working to rebuild this game\n"
 	.string "in pokeemerald expansion!$"
 
 CeladonMansion2F_Text_TixoRebel:
-	.string "Have you heard of THE EGGENING?\n"
+	.string "Have you heard of The Eggening?\n"
 	.string "It was a bug from the playtest\l"
-	.string "that randomly changed POKéMON into\l"
-	.string "EGGs!\p"
+	.string "that randomly changed Pokémon into\l"
+	.string "Eggs!\p"
 	.string "I developed the fix for it!$"
 
 CeladonMansion2F_Text_Phant:
-	.string "I love DEMAKES!\p"
-	.string "Have you played SWORD AND SHIELD\n"
-	.string "ULTIMATE PLUS - ENGLISH?\l"
+	.string "I love Demakes!\p"
+	.string "Have you played Sword and Shield\n"
+	.string "Ultimate Plus - English?\l"
 	.string "I translated it!\p"
-	.string "For my next DEMAKE, I think I'll\n"
-	.string "do ALOLA!$"
+	.string "For my next Demake, I think I'll\n"
+	.string "do Alola!$"
 
 CeladonMansion2F_Text_Exclsior:
 	.string "I implemented the unique surfing\n"
-	.string "surfing sprites for each POKéMON!\p"
-	.string "Since the project is OPEN SOURCE,\n"
+	.string "surfing sprites for each Pokémon!\p"
+	.string "Since the project is open source,\n"
 	.string "you can add your own features too!$"
 
 CeladonMansion2F_Text_DaniRaibow:
@@ -95,8 +95,8 @@ CeladonMansion2F_Text_DaniRaibow:
 	.string "I am pretty good at finding problems,\n"
 	.string "and can fix little ones.\p"
     .string "Wanna hear a joke?\p"
-    .string "Lance tried to teach DRAGONITE the\n"
-    .string "move DRAGON BREATH.\p"
-    .string "However, DRAGONITE was moving too\n"
-    .string "fast from EXTREMESPEED; it couldn't\l"
+    .string "Lance tried to teach Dragonite the\n"
+    .string "move Dragon Breath.\p"
+    .string "However, Dragonite was moving too\n"
+    .string "fast from Extreme Speed; it couldn't\l"
     .string "catch it!$"

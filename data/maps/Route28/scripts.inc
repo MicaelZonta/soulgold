@@ -16,7 +16,7 @@ Route28_EventScript_Item_Flamethrower::
     end
 
 Route28_Text_Sign:
-	.string "ROUTE 28$"
+	.string "Route 28$"
 
 Route28_EventScript_Trigger_Scientist::
 	lock
@@ -74,17 +74,17 @@ Route28_Movement_ScientistLeave:
 Route28_Text_Scientist:
 	.string "Hiya, Boss.\p"
 	.string "Yes, I've found several artifacts,\n"
-	.string "but no sign of the AZURE FLUTE.\p"
-	.string "It may be inside the MOUNTAIN, but\n"
-	.string "the wild POKéMON here are strong,\l"
+	.string "but no sign of the Azure Flute.\p"
+	.string "It may be inside the Mountain, but\n"
+	.string "the wild Pokémon here are strong,\l"
 	.string "and my team needs some rest...\p"
 	.string "..................\p"
 	.string "You're breaking up...\l"
 	.string "Boss....?\p"
-	.string "I'm going to the POKéMON CENTER.\p"
-	.string "I'll call back if I find the FLUTE.$"
+	.string "I'm going to the Pokémon Center.\p"
+	.string "I'll call back if I find the Flute.$"
 
 Route28_Text_Scientist2:
 	.string ".......CLICK\p"
-	.string "The signal in SINJOH sucks...$"
+	.string "The signal in Sinjoh sucks...$"
 

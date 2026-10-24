@@ -356,7 +356,7 @@ GoldenrodCity_RadioTower_2F_Text_BuenaOffAir:
 	.string "then come see me here!$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaAlreadyPlayed:
-	.string "Sorry... You get just one\n"
+	.string "{SPEAKER NAME_BUENA}Sorry... You get just one\n"
 	.string "chance each day.\p"
 	.string "Come back tomorrow for\n"
 	.string "another try!$"

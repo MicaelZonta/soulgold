@@ -316,52 +316,52 @@ Route25_BillsHouse_Movement_ShowPlayer:
 	step_end
 
 Route25_BillsHouse_Text_Meowth:
-	.string "MEOWTH$"
+	.string "Meowth$"
 
 Route25_BillsHouse_Text_Ponyta:
-	.string "PONYTA$"
+	.string "Ponyta$"
 
 Route25_BillsHouse_Text_Rapidash:
-	.string "RAPIDASH$"
+	.string "Rapidash$"
 
 Route25_BillsHouse_Text_Slowpoke:
-	.string "SLOWPOKE$"
+	.string "Slowpoke$"
 
 Route25_BillsHouse_Text_Slowbro:
-	.string "SLOWBRO$"
+	.string "Slowbro$"
 
 Route25_BillsHouse_Text_Slowking:
-	.string "SLOWKING$"
+	.string "Slowking$"
 
 Route25_BillsHouse_Text_Farfetchd:
-	.string "FARFETCH'D$"
+	.string "Farfetch'd$"
 
 Route25_BillsHouse_Text_Weezing:
-	.string "WEEZING$"
+	.string "Weezing$"
 
 Route25_BillsHouse_Text_MrMime:
-	.string "MR. MIME$"
+	.string "Mr. Mime$"
 
 Route25_BillsHouse_Text_Articuno:
-	.string "ARTICUNO$"
+	.string "Articuno$"
 
 Route25_BillsHouse_Text_Zapdos:
-	.string "ZAPDOS$"
+	.string "Zapdos$"
 
 Route25_BillsHouse_Text_Moltres:
-	.string "MOLTRES$"
+	.string "Moltres$"
 
 Route25_BillsHouse_Text_Corsola:
-	.string "CORSOLA$"
+	.string "Corsola$"
 
 Route25_BillsHouse_Text_Zigzagoon:
-	.string "ZIGZAGOON$"
+	.string "Zigzagoon$"
 
 Route25_BillsHouse_Text_Linoone:
-	.string "LINOONE$"
+	.string "Linoone$"
 
 Route25_BillsHouse_Text_Cancel:
-	.string "CANCEL$"
+	.string "Cancel$"
 
 Route25_BillsHouse_Text_NotInParty:
 	.string "POKéMON NOT DETECTED.$"
@@ -617,56 +617,56 @@ Route25_BillsHouse_Movement_MonCelebration:
 	step_end
 
 Route25_BillsHouse_Text_GrandpaIntro:
-	.string "Hm? You know BILL? He's my\n"
+	.string "Hm? You know Bill? He's my\n"
 	.string "grandson.\p"
-	.string "He's in JOHTO. He does\n"
+	.string "He's in Johto. He does\n"
 	.string "something with PCs, so I'm\l"
 	.string "housesitting.$"
 
 Route25_BillsHouse_Text_GrampsMeowth:
-	.string "My grandson BILL told me about\n"
-	.string "a POKéMON that has sharp claws,\l"
+	.string "My grandson Bill told me about\n"
+	.string "a Pokémon that has sharp claws,\l"
 	.string "a charm on its head, and is\p"
 	.string "said to bring good fortune.$"
 
 Route25_BillsHouse_Text_GrampsZigzagoon:
-	.string "BILL mentioned a POKéMON that\n"
+	.string "Bill mentioned a Pokémon that\n"
 	.string "runs around in a zigzag\l"
 	.string "pattern.\p"
 	.string "It's quite the little\n"
 	.string "scavenger, I hear.$"
 
 Route25_BillsHouse_Text_GrampsPonyta:
-	.string "Do you know of a POKéMON with\n"
+	.string "Do you know of a Pokémon with\n"
 	.string "a fiery mane?\p"
 	.string "I hear it can run faster than\n"
 	.string "most trains.$"
 
 Route25_BillsHouse_Text_GrampsFarfetchd:
-	.string "BILL told me about a POKéMON\n"
+	.string "Bill told me about a Pokémon\n"
 	.string "that always carries a stalk\l"
 	.string "of leek with it.\p"
 	.string "Quite the peculiar creature.$"
 
 Route25_BillsHouse_Text_GrampsSlowpoke:
-	.string "Do you know the POKéMON that\n"
+	.string "Do you know the Pokémon that\n"
 	.string "is always staring blankly?\p"
 	.string "Its tail is often sold on the\n"
 	.string "black market.$"
 
 Route25_BillsHouse_Text_TeleporterUnlocked:
 	.string "Oh, one more thing!\p"
-	.string "BILL's TELEPORTER.\n"
+	.string "Bill's Teleporter.\n"
 	.string "That's the big machine over there.\p"
 	.string "He never quite got it working.\p"
 	.string "But it does curious things to\n"
-	.string "POKéMON.\p"
+	.string "Pokémon.\p"
 	.string "You're welcome to try it, if\n"
 	.string "you'd like!\p"
 	.string "Just use that computer over there.$"
 
 Route25_BillsHouse_Text_AskToSeeMon:
-	.string "If you have that POKéMON, may I\n"
+	.string "If you have that Pokémon, may I\n"
 	.string "see it, please?$"
 
 Route25_BillsHouse_Text_ExcitedToSee:
@@ -692,15 +692,15 @@ Route25_BillsHouse_Text_ComeAgain:
 
 Route25_BillsHouse_Text_ShownAll:
 	.string "Thanks for showing me so many\n"
-	.string "cute POKéMON.\p"
+	.string "cute Pokémon.\p"
 	.string "I really enjoyed myself. I'm\n"
 	.string "glad I've lived such a long life.\p"
-	.string "Feel free to use the TELEPORTER\n"
+	.string "Feel free to use the Teleporter\n"
 	.string "whenever you like.$"
 
 Route25_BillsHouse_Text_WrongPokemon:
 	.string "Hm?\p"
-	.string "That's not the POKéMON that I\n"
+	.string "That's not the Pokémon that I\n"
 	.string "was told about.$"
 
 Route25_BillsHouse_Text_Spinda:

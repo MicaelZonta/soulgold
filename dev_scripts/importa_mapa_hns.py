@@ -142,3 +142,42 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+def importa_novo(mapa: str, s_layouts: dict, s_groups: dict, grupo_s: str) -> None:
+    """Fase 8: mapa que NAO existe no S (Alola/Sinjoh/Snowswept)."""
+    cand = [mapa + "_hns", mapa]
+    p_dir = next((os.path.join(P, "data/maps", c) for c in cand
+                  if os.path.isdir(os.path.join(P, "data/maps", c))), None)
+    assert p_dir, mapa
+    s_dir = os.path.join(REPO, "data/maps", mapa)
+    os.makedirs(s_dir, exist_ok=True)
+    for nome in ("map.json", "scripts.inc"):
+        src = os.path.join(p_dir, nome)
+        texto = transforma(open(src, encoding="utf-8").read())
+        open(os.path.join(s_dir, nome), "w", encoding="utf-8").write(texto)
+
+    pj = json.load(open(os.path.join(p_dir, "map.json")))
+    p_layouts = json.load(open(os.path.join(P, "data/layouts/layouts.json")))
+    p_entry = next(l for l in p_layouts["layouts"] if l and l.get("id") == pj["layout"])
+    lay_dir = os.path.join(REPO, "data/layouts", mapa)
+    os.makedirs(lay_dir, exist_ok=True)
+    p_lay = os.path.join(P, os.path.dirname(p_entry["blockdata_filepath"]))
+    convert_map_bin(os.path.join(p_lay, "map.bin"), os.path.join(lay_dir, "map.bin"))
+    if os.path.exists(os.path.join(p_lay, "border.bin")):
+        convert_border_bin(os.path.join(p_lay, "border.bin"), os.path.join(lay_dir, "border.bin"))
+
+    novo = {
+        "id": transforma(p_entry["id"]),
+        "name": transforma(p_entry["name"]),
+        "width": p_entry["width"], "height": p_entry["height"],
+        "primary_tileset": p_entry["primary_tileset"],
+        "secondary_tileset": p_entry["secondary_tileset"],
+        "border_filepath": f"data/layouts/{mapa}/border.bin",
+        "blockdata_filepath": f"data/layouts/{mapa}/map.bin",
+    }
+    if not any(l and l.get("id") == novo["id"] for l in s_layouts["layouts"]):
+        s_layouts["layouts"].append(novo)
+    if mapa not in s_groups[grupo_s]:
+        s_groups[grupo_s].append(mapa)
+    print(f"  [NOVO {mapa}] layout {novo['id']} {novo['width']}x{novo['height']} -> {grupo_s}")

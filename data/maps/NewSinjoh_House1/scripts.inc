@@ -38,28 +38,28 @@ NewSinjoh_House1_EventScript_GiveWooperPaldea::
 NewSinjoh_House1_Text_Looking4Celebi:
     .string "Hey there, Trainer!\p"
 	.string "You came all the way from\n"
-	.string "NEW BARK TOWN?\p"
+	.string "New Bark Town?\p"
 	.string "I have a request for someone as\n"
 	.string "well traveled as you are.\l"
-	.string "You see, my favorite POKEMON in the\l"
+	.string "You see, my favorite Pokémon in the\l"
 	.string "whole world just so happens to be\l"
-	.string "the mythical POKEMON known as CELEBI.\p"
+	.string "the mythical Pokémon known as Celebi.\p"
 	.string "If you happen to have one, would\n"
 	.string "you mind showing it to me?$"
 
 NewSinjoh_House1_Text_NicePokemonButNotCelebi:
-    .string "That's a very wonderful POKEMON\n"
+    .string "That's a very wonderful Pokémon\n"
 	.string "you have there but that's\l"
 	.string "not exactly what I was looking for..$"
 
 NewSinjoh_House1_OffersWooper:
-    .string "That's it! That's a real living CELEBI!!\p"
+    .string "That's it! That's a real living Celebi!!\p"
 	.string "Thank you show much for bringing it\n"
 	.string "all the way up north for me to see.\p"
     .string "Here, my girlfriend happened to\n"
 	.string "catch a few too many of these during\l"
 	.string "her trip to a far away region..\p"
-    .string "Please take this special WOOPER as\n"
+    .string "Please take this special Wooper as\n"
 	.string "thanks, {PLAYER}.$"
 
 NewSinjoh_House1_Text_Decline:
@@ -67,7 +67,7 @@ NewSinjoh_House1_Text_Decline:
 	.string "to see one.$"
 
 NewSinjoh_House1_Text_TakeCareOfWooper:
-    .string "Take good care of that WOOPER\n"
+    .string "Take good care of that Wooper\n"
 	.string "for me okay?$"
 
 NewSinjoh_House1_EventScript_Elizabeth_AfterGift::
@@ -79,7 +79,7 @@ NewSinjoh_House1_Text_GoodToSeeYouAgain:
     .string "It's good to see you again,\n"
 	.string "{PLAYER}.\p"
 	.string "How have you been treating that\n"
-	.string "that WOOPER?$"
+	.string "that Wooper?$"
 
 NewSinjoh_House1_Bookshelf::
     lock

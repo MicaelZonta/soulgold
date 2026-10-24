@@ -99,7 +99,7 @@ SSAqua_RoomSSE_Text_GrandpaTravelling:
 SSAqua_RoomSSE_Text_GranddaughterWasPlaying:
     .string "Grandpa, here I am!\n"
     .string "I was playing with\l"
-    .string "the CAPTAIN and this person!$"
+    .string "the Captain and this person!$"
 
 SSAqua_RoomSSE_Text_GranddaughterHadFun:
     .string "I had lots of fun playing!$"

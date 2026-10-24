@@ -154,17 +154,17 @@ SinjohRuins_StairsScene::
     end
 
 SinjohRuins_Text_StevenGotoStairs1:
-    .string "STEVEN: This could only mean one thing.$"
+    .string "{SPEAKER NAME_STEVEN}This could only mean one thing.$"
 
 SinjohRuins_Text_StevenGotoStairs2:
-    .string "{PLAYER}. We were able to decipher\n"
+    .string "{SPEAKER NAME_STEVEN}{PLAYER}. We were able to decipher\n"
     .string "the rest of the glyphs...\p"
     .string "If the translation is right, \n"
-    .string "the POKéMON at the top of that\l"
+    .string "the Pokémon at the top of that\l"
     .string "staircase is the most powerful\l"
     .string "being in the universe.\p"
     .string "And it is my duty as former\n"
-    .string "CHAMPION of the HOENN LEAGUE\l"
+    .string "Champion of the Hoenn League\l"
     .string "to make sure you are strong\l"
     .string "enough to face it.\p"
     .string "Meet me at that landing\n"
@@ -321,30 +321,30 @@ SinjohRuins_EventScript_StevenBattle::
     return
 
 SinjohRuins_Text_HealParty::
-    .string "STEVEN: Let me heal your POKéMON\n"
+    .string "{SPEAKER NAME_STEVEN}Let me heal your Pokémon\n"
     .string "before you go.$"
 
 SinjohRuins_Text_StevenAfterPlate:
-    .string "STEVEN: Good luck, {PLAYER}\p"
+    .string "{SPEAKER NAME_STEVEN}Good luck, {PLAYER}\p"
     .string "Go on, I'm right behind you.$"
 
 SinjohRuins_Text_StevenAfterBattle:
-	.string "STEVEN: To think, another trainer \n"
+	.string "{SPEAKER NAME_STEVEN}To think, another trainer \n"
 	.string "would defeat me like this.\p"
     .string "Incredible.\p"
 	.string "Take this, it's the final plate.$"
 
 SinjohRuins_Text_StevenReadytoBattle:
-    .string "STEVEN: {PLAYER}.\p"
+    .string "{SPEAKER NAME_STEVEN}{PLAYER}.\p"
     .string "Ever since I first saw the\n"
     .string "determination in your eyes,\l"
     .string "I felt it would lead to this.\p"
     .string "I will test the bond between you\n"
-    .string "and your POKéMON.\p"
+    .string "and your Pokémon.\p"
     .string "Are you ready?$"
 
 SinjohRuins_Text_ChallengeSteven:
-	.string "Okay, {PLAYER}{KUN}, if you're going to mount\n"
+	.string "{SPEAKER NAME_STEVEN}Okay, {PLAYER}{KUN}, if you're going to mount\n"
 	.string "a serious challenge, expect the worst!$"
 
 SinjohRuins_Text_StevenDefeat:
@@ -360,5 +360,5 @@ SinjohRuins_EventScript_Sign::
     end
 
 SinjohRuins_Text_Sign:
-    .string "SINJOH RUINS$"
+    .string "Sinjoh Ruins$"
 

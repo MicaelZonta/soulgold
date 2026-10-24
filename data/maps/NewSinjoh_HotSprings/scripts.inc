@@ -42,14 +42,14 @@ NewSinjoh_HotSprings_Text_MualaniBefore:
     .string "If you must know, I'm a local.\p"
     .string "My family was among the first to\n"
     .string "enjoy these springs.\p"
-    .string "See, I even have this SPLASH PLATE\n"
+    .string "See, I even have this Splash Plate\n"
     .string "to prove it.$"
 
 NewSinjoh_HotSprings_Text_MualaniBeforeBattle:
 	.string "Wait...\p"
-	.string "You need the SPLASH PLATE\n"
-	.string "to tame the legendary POKéMON?\p"
-	.string "If the KIMONO GIRLS think you\n"
+	.string "You need the Splash Plate\n"
+	.string "to tame the legendary Pokémon?\p"
+	.string "If the Kimono Girls think you\n"
 	.string "are worthy, then so do I.\p"
 	.string "But you'll still need to earn\n"
 	.string "it.$"
@@ -71,16 +71,16 @@ NewSinjoh_HotSprings_EventScript_Sign1::
     end
 
 NewSinjoh_HotSprings_Text_Sign1:
-    .string "NEW SINJOH\n"
-    .string "HOT SPRINGS$"
+    .string "New Sinjoh\n"
+    .string "Hot Springs$"
 
 NewSinjoh_HotSprings_EventScript_Sign2::
     msgbox NewSinjoh_HotSprings_Text_Sign2, MSGBOX_SIGN
     end
 
 NewSinjoh_HotSprings_Text_Sign2:
-    .string "DANGER\n"
-    .string "WILD HIBERNATION DEN$"
+    .string "Danger\n"
+    .string "Wild Hibernation Den$"
 
 NewSinjoh_HotSprings_EventScript_SkierF::
     msgbox NewSinjoh_HotSprings_Text_SkierF, MSGBOX_NPC
@@ -241,7 +241,7 @@ NewSinjoh_HotSprings_EventScript_PLATutorDecline::
 NewSinjoh_HotSprings_Text_PLATutorIntro:
 	.string "The ancient power flows\n"
 	.string "through these springs.\p"
-	.string "I can teach your POKeMON moves\n"
+	.string "I can teach your Pokémon moves\n"
 	.string "from a forgotten age.\p"
 	.string "Interested?$"
 
@@ -252,59 +252,59 @@ NewSinjoh_HotSprings_Text_PLATutorConfirm:
 	.string "You'd like to learn {STR_VAR_1}?$"
 
 NewSinjoh_HotSprings_Text_PLATutorWhichMon:
-	.string "Which POKeMON should learn it?$"
+	.string "Which Pokémon should learn it?$"
 
 NewSinjoh_HotSprings_Text_PLATutorDone:
-	.string "Done! Your POKeMON has mastered\n"
+	.string "Done! Your Pokémon has mastered\n"
 	.string "the ancient technique.$"
 
 NewSinjoh_HotSprings_Text_PLATutorComeBack:
 	.string "Come back anytime.$"
 
 NewSinjoh_HotSprings_Text_PLAMove_VictoryDance:
-	.string "VICTORY DANCE$"
+	.string "Victory Dance$"
 
 NewSinjoh_HotSprings_Text_PLAMove_MountainGale:
-	.string "MOUNTAIN GALE$"
+	.string "Mountain Gale$"
 
 NewSinjoh_HotSprings_Text_PLAMove_BitterMalice:
-	.string "BITTER MALICE$"
+	.string "Bitter Malice$"
 
 NewSinjoh_HotSprings_Text_PLAMove_SpringtideStorm:
-	.string "SPRINGTIDE STORM$"
+	.string "Springtide Storm$"
 
 NewSinjoh_HotSprings_Text_PLAMove_LunarBlessing:
-	.string "LUNAR BLESSING$"
+	.string "Lunar Blessing$"
 
 NewSinjoh_HotSprings_Text_PLAMove_BleakwindStorm:
-	.string "BLEAKWIND STORM$"
+	.string "Bleakwind Storm$"
 
 NewSinjoh_HotSprings_Text_PLAMove_WildboltStorm:
-	.string "WILDBOLT STORM$"
+	.string "Wildbolt Storm$"
 
 NewSinjoh_HotSprings_Text_PLAMove_SandsearStorm:
-	.string "SANDSEAR STORM$"
+	.string "Sandsear Storm$"
 
 NewSinjoh_HotSprings_Text_PLAMove_Shelter:
-	.string "SHELTER$"
+	.string "Shelter$"
 
 NewSinjoh_HotSprings_Text_PLAMove_EsperWing:
-	.string "ESPER WING$"
+	.string "Esper Wing$"
 
 NewSinjoh_HotSprings_Text_PLAMove_TakeHeart:
-	.string "TAKE HEART$"
+	.string "Take Heart$"
 
 NewSinjoh_HotSprings_Text_PLAMove_MysticalPower:
-	.string "MYSTICAL POWER$"
+	.string "Mystical Power$"
 
 NewSinjoh_HotSprings_Text_PLAMove_WaveCrash:
-	.string "WAVE CRASH$"
+	.string "Wave Crash$"
 
 NewSinjoh_HotSprings_Text_PLAMove_PowerShift:
-	.string "POWER SHIFT$"
+	.string "Power Shift$"
 
 NewSinjoh_HotSprings_Text_PLAMove_Cancel:
-	.string "CANCEL$"
+	.string "Cancel$"
 
 
 NewSinjoh_HotSprings_EventScript_ActivateArcanine::

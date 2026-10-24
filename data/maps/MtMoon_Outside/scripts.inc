@@ -126,12 +126,12 @@ MtMoon_Outside_EventScript_Jirachi::
 
 
 MtMoon_Outside_Text_DontLitterSign:
-	.string "MT.MOON SQUARE\n"
-	.string "DON'T LITTER$"
+	.string "Mt.Moon Square\n"
+	.string "Don't Litter$"
 
 MtMoon_Outside_Text_Jirachi:
-    .string "JIRACHI: Chi!$"
+    .string "{SPEAKER NAME_JIRACHI}Chi!$"
 
 MtMoon_Outside_Text_Clefairy:
-    .string "CLEFAIRY: Pi pippippi!$"
+    .string "{SPEAKER NAME_CLEFAIRY}Pi pippippi!$"
 

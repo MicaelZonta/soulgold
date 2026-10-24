@@ -69,13 +69,13 @@ Alola_Melemele_Pokecenter_BugCatcher_Movement_0:
 	step_end
 
 Alola_Melemele_Pokecenter_AceTrainer_Text_0:
-	.string "There are so many unique POKéMON here!\n"
+	.string "There are so many unique Pokémon here!\n"
 	.string "I'm gonna catch 'em all!$"
 
 Alola_Melemele_Pokecenter_BugCatcher_Text_0:
-	.string "I found some brand new POKéMON\n"
-	.string "here on the ISLES!\p"
-	.string "Like my new friend RATTATA here!$"
+	.string "I found some brand new Pokémon\n"
+	.string "here on the Isles!\p"
+	.string "Like my new friend Rattata here!$"
 
 Alola_Melemele_Pokecenter_Grubbin_Text_0:
 	.string "Grrr!$"
@@ -158,14 +158,14 @@ Alola_Melemele_Pokecenter_Jessica_Text_WantToTrade:
 
 Alola_Melemele_Pokecenter_Jessica_Text_TakeCare:
 	.string "Thanks!\n"
-	.string "TORY, you take care!$"
+	.string "Tory, you take care!$"
 
 Alola_Melemele_Pokecenter_Jessica_Text_DeclineTrade:
 	.string "You don't want to trade? Aww...$"
 
 Alola_Melemele_Pokecenter_Jessica_Text_TradeCompleted:
-	.string "Hi, how's my old TORY doing?$"
+	.string "Hi, how's my old Tory doing?$"
 
 Alola_Melemele_Pokecenter_Map_Text_0:
 	.string "{PLAYER} took a closer look at the\n"
-	.string "ALOLA ISLES map.$"
+	.string "Alola Isles map.$"

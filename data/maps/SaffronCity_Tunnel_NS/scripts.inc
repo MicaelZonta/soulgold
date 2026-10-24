@@ -40,7 +40,7 @@ SaffronCity_Tunnel_NS_Text_BaldingManIntro:
 
 SaffronCity_Tunnel_NS_Text_BaldingManCandybarDetected:
 	.string "Aha!\n"
-	.string "That's a RAGE CANDYBAR!\p"
+	.string "That's a Rage Candybar!\p"
 	.string "Can I have it?\n"
 	.string "Please!$"
 

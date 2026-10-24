@@ -81,11 +81,11 @@ NewSinjoh_EventScript_FemAce::
 
 NewSinjoh_Text_FemAce:
 	.string "We don't have many modern\n"
-	.string "commodities in NEW SINJOH.\p"
+	.string "commodities in New Sinjoh.\p"
 	.string "But at least we have this\n"
-	.string "POKéMON CENTER.$"
+	.string "Pokémon Center.$"
 
 
 NewSinjoh_PokemonCenter_Text_0:
 	.string "{PLAYER} took a closer look at the\n"
-	.string "SINJOH map.$"
+	.string "Sinjoh map.$"

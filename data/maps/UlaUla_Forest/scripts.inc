@@ -335,14 +335,14 @@ Alola_Ulaula_TotemBattle_Text_0:
 	.string "Graah!$"
 
 Alola_Ulaula_TotemBattle_Text_1:
-	.string "Totem TANGROWTH was defeated!\n"
+	.string "Totem Tangrowth was defeated!\n"
 	.string "It scampered off somewhere…$"
 
 Alola_Ulaula_TotemBattle_Text_2:
 	.string "Graah!$"
 
 Alola_Ulaula_TotemBattle_Text_3:
-	.string "Totem PRIMEAPE was defeated!\n"
+	.string "Totem Primeape was defeated!\n"
 	.string "It scampered off somewhere…$"
 
 UlaUla_Forest_Movement_FacePlayerUpAfterTotemWarp:
@@ -357,19 +357,19 @@ Alola_Ulaula_Totem_sign_Text_0:
 	.string "Isle?$"
 
 Alola_Ulaula_Totem_sign_Text_1:
-	.string "MELEMELE ISLE$"
+	.string "Melemele Isle$"
 
 Alola_Ulaula_Totem_sign_Text_2:
-	.string "AKALA ISLE$"
+	.string "Akala Isle$"
 
 Alola_Ulaula_Totem_sign_Text_3:
-	.string "ULA'ULA ISLE$"
+	.string "Ula'ula Isle$"
 
 Alola_Ulaula_Totem_sign_Text_4:
-	.string "PONI ISLE$"
+	.string "Poni Isle$"
 
 Alola_Ulaula_Totem_sign_Text_5:
-	.string "CANCEL$"
+	.string "Cancel$"
 
 Alola_Ulaula_Totem_sign_Text_6:
 	.string "A strange totem stands here,\n"

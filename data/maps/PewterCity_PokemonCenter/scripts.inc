@@ -15,12 +15,12 @@ PewterCity_PokemonCenter_EventScript_BugCatcher::
 	end
 
 PewterCity_PokemonCenter1F_Text_Teacher:
-	.string "…Yeah, and the GYM in CINNABAR's gone.\p"
+	.string "…Yeah, and the Gym in Cinnabar's gone.\p"
 	.string "I was really amazed.\p"
 	.string "…Yes? I'm on the phone. Go away!$"
 
 PewterCity_PokemonCenter1F_Text_Jigglypuff:
-	.string "JIGGLYPUFF: Puu pupuu.$"
+	.string "{SPEAKER NAME_JIGGLYPUFF}Puu pupuu.$"
 
 PewterCity_PokemonCenter_EventScript_Mondo::
 	lock
@@ -59,18 +59,18 @@ PewterCity_PokemonCenter_Text_TakeCare:
 
 PewterCity_PokemonCenter_Text_DeclineTrade:
 	.string "No? That's too bad…\n"
-	.string "I think you'd like my HAUNTER.$"
+	.string "I think you'd like my Haunter.$"
 
 PewterCity_PokemonCenter_Text_NotRequestedMon:
 	.string "Hmm, that's not a {STR_VAR_1}.\n"
 	.string "That's not what I'm looking for.$"
 
 PewterCity_PokemonCenter_Text_TradeCompleted:
-	.string "How's that HAUNTER treating you?\n"
+	.string "How's that Haunter treating you?\n"
 	.string "It's a real trickster!$"
 
 PewterCity_PokemonCenter1F_Text_BugCatcher:
-	.string "Most POKéMON get drowsy if they hear a\n"
-	.string "JIGGLYPUFF singing.\p"
+	.string "Most Pokémon get drowsy if they hear a\n"
+	.string "Jigglypuff singing.\p"
 	.string "There are several moves that can be\n"
-	.string "used only while a POKéMON is asleep.$"
+	.string "used only while a Pokémon is asleep.$"

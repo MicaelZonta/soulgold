@@ -97,16 +97,16 @@ Route17_EventScript_RematchCharlesTryGiveItem::
 	end
 
 Route17_Text_BikerRileySeen:
-	.string "Hey, you! You're from JOHTO, huh?$"
+	.string "Hey, you! You're from Johto, huh?$"
 
 Route17_Text_BikerRileyBeaten:
 	.string "Whoa, you kick!$"
 
 Route17_Text_BikerRileyAfterBattle:
-	.string "Don't get cocky, you JOHTO punk!$"
+	.string "Don't get cocky, you Johto punk!$"
 
 Route17_Text_BikerJoelSeen:
-	.string "Wow. That's a cool BICYCLE!$"
+	.string "Wow. That's a cool Bicycle!$"
 
 Route17_Text_BikerJoelBeaten:
 	.string "But you don't just look cool…$"
@@ -124,7 +124,7 @@ Route17_Text_BikerGlennBeaten:
 
 Route17_Text_BikerGlennAfterBattle:
 	.string "Hands-free riding is considered\n"
-	.string "cool on CYCLING ROAD.$"
+	.string "cool on Cycling Road.$"
 
 Route17_Text_BikerCharlesSeen:
 	.string "We're fearless highway stars!$"
@@ -137,16 +137,16 @@ Route17_Text_BikerCharlesAfterBattle:
 	.string "Take it easy!$"
 
 Route17_Text_RileyRegister:
-	.string "Not bad for a JOHTO kid!$"
+	.string "Not bad for a Johto kid!$"
 
 Route17_Text_RileyRematchIntro:
-	.string "JOHTO punks can only win once!$"
+	.string "Johto punks can only win once!$"
 
 Route17_Text_RileyRematchDefeat:
 	.string "I got kicked...$"
 
 Route17_Text_RileyPostRematch:
-	.string "Maybe I should train in JOHTO\n"
+	.string "Maybe I should train in Johto\n"
 	.string "after all.$"
 
 Route17_Text_JoelRegister:
@@ -175,6 +175,6 @@ Route17_Text_CharlesRematchDefeat:
 	.string "Crashed and burned again!$"
 
 Route17_Text_CharlesPostRematch:
-	.string "I met a trainer like you in UNOVA.\n"
+	.string "I met a trainer like you in Unova.\n"
 	.string "Don't crash out!$"
 

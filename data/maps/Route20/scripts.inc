@@ -97,40 +97,40 @@ Route20_EventScript_Headlocker::
 	end
 
 Route20_Text_Dennis:
-	.string "DENNIS: SHAAAAAAAA!$"
+	.string "{SPEAKER NAME_DENNIS}SHAAAAAAAA!$"
 
 Route20_Text_Headlocker:
-	.string "There's a rare POKéMON on this\n"
+	.string "There's a rare Pokémon on this\n"
 	.string "route.\p"
 	.string "And sometimes it carries a rare\n"
 	.string "evolution item.\p"
 	.string "That's double rare!\p"
-	.string "I need to finish my POKéDEX, so\n"
+	.string "I need to finish my Pokédex, so\n"
 	.string "I've been fishing here for hours!$"
 
 Route20_Text_Seel:
-	.string "SEEL: Seel seel!$"
+	.string "{SPEAKER NAME_SEEL}Seel seel!$"
 
 Route20_Text_Dewgong:
-	.string "DEWGONG: Goooong!$"
+	.string "{SPEAKER NAME_DEWGONG}Goooong!$"
 
 Route20_Text_SeafoamSign:
-	.string "SEAFOAM ISLANDS$"
+	.string "Seafoam Islands$"
 
 Route20_Text_NicoleRegister:
-	.string "Your POKéMON swims fast!\n"
+	.string "Your Pokémon swims fast!\n"
 	.string "Let me get your number!$"
 
 Route20_Text_NicoleRematchIntro:
 	.string "All this swimming has made my\n"
-	.string "POKéMON stronger! Let's battle!$"
+	.string "Pokémon stronger! Let's battle!$"
 
 Route20_Text_NicoleRematchDefeat:
 	.string "Swept away again…$"
 
 Route20_Text_NicolePostRematch:
 	.string "Win or lose, I'm getting fit and\n"
-	.string "so are my POKéMON!$"
+	.string "so are my Pokémon!$"
 
 Route20_Text_SwimmerfNicoleSeen:
 	.string "I feel so much lighter in water.$"
@@ -144,18 +144,18 @@ Route20_Text_SwimmerfNicoleAfterBattle:
 
 Route20_Text_SwimmerfLoriSeen:
 	.string "What an impressive collection of\n"
-	.string "GYM BADGES. We should battle!$"
+	.string "Gym Badges. We should battle!$"
 
 Route20_Text_SwimmerfLoriBeaten:
 	.string "No!$"
 
 Route20_Text_SwimmerfLoriAfterBattle:
-	.string "SURF is no longer the only HM move\n"
+	.string "Surf is no longer the only HM move\n"
 	.string "you use in water.$"
 
 Route20_Text_SwimmermCameronSeen:
 	.string "I guess it's impossible to swim\n"
-	.string "all the way to JOHTO.$"
+	.string "all the way to Johto.$"
 
 Route20_Text_SwimmermCameronBeaten:
 	.string "Aiyah!$"
@@ -166,5 +166,5 @@ Route20_Text_SwimmermCameronAfterBattle:
 
 Route20_Text_CinnabarIsland_GymUnusedSign:
 	.string "What does this sign say?\p"
-	.string "CINNABAR GYM LEADER: BLAINE$"
+	.string "Cinnabar Gym Leader: Blaine$"
 

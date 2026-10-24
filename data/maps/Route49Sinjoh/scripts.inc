@@ -34,20 +34,20 @@ Route49Sinjoh_EventScript_SkylarAfter::
 	end
 
 Route49Sinjoh_Text_SkylarDefeat:
-	.string "OKAY, you can have the PLATE.$"
+	.string "Okay, you can have the Plate.$"
 
 Route49Sinjoh_Text_SkylarAfter:
-	.string "As cool as that PLATE is,\n"
+	.string "As cool as that Plate is,\n"
 	.string "you earned it fair and square.\p"
 	.string "I'll just buy something at the gift\n"
 	.string "shop instead.$"
 
 Route49Sinjoh_Text_SkylarBeforeBattle:
 	.string "What?\p"
-	.string "You want the PLATE?\n"
+	.string "You want the Plate?\n"
 	.string "It's an artifact imbued with an\l"
 	.string "ancient power with a connection\l"
-	.string "to the legendary POKéMON?!\p"
+	.string "to the legendary Pokémon?!\p"
 	.string "Well now I'm definitely keeping it.\p"
 	.string "Fine.\p"
 	.string "You'll just have to battle me for it.$"
@@ -55,7 +55,7 @@ Route49Sinjoh_Text_SkylarBeforeBattle:
 Route49Sinjoh_Text_SkylarBefore:
 	.string "When I was hitting the slopes, my\n"
 	.string "skis snagged on something.\p"
-	.string "It was this strange SKY-blue PLATE.\p"
+	.string "It was this strange Sky-blue Plate.\p"
 	.string "I think I'll hold onto it as a\n"
 	.string "souvenir!$"
 
@@ -118,7 +118,7 @@ Route49Sinjoh_Text_KimonoGirl:
 	.string "You must be {PLAYER}, correct?\n"
     .string "I've heard all about you and\l"
 	.string "your deeds from my cousins\l"
-	.string "in ECRUTEAK CITY.\p"
+	.string "in Ecruteak City.\p"
 	.string "My sisters wish to meet with you.\l"
 	.string "If you find the time, please\n"
 	.string "seek us out in the town up ahead.$"
@@ -137,7 +137,7 @@ Route49Sinjoh_EventScript_Sign::
 
 Route49Sinjoh_Text_Sign:
     .string "The sign is faded.\n"
-    .string "ROUTE 49$"
+    .string "Route 49$"
 
 Route49Sinjoh_EventScript_ActivateOverqwil::
     lock
@@ -204,7 +204,7 @@ Route49Sinjoh_EventScript_Overqwil::
 	waitmoncry
 	setwildbossbattle species=SPECIES_OVERQWIL, level=80, item=ITEM_BLACK_SLUDGE, move1_1=MOVE_BARB_BARRAGE, move1_2=MOVE_LIQUIDATION, move1_3=MOVE_TOXIC_SPIKES move1_4=MOVE_CURSE
 	settotemboost B_POSITION_OPPONENT_LEFT, 0, 2, 0, 0, 3, 0
-	setflag FLAG_NO_WILD_CATCHING
+	setflag FLAG_NO_CATCHING
 	setflag FLAG_NO_WILD_RUNNING
 	setflag FLAG_SMART_WILD_AI
 	setflag FLAG_NO_SHINY
@@ -225,7 +225,7 @@ Route49Sinjoh_EventScript_Overqwil::
     call_if_eq VAR_PLATECOUNTER, 12, SinjohRuins_Lab_EventScript_12Plates
     call_if_eq VAR_PLATECOUNTER, 15, SinjohRuins_Lab_EventScript_15Plates
     call_if_eq VAR_PLATECOUNTER, 16, SinjohRuins_Lab_EventScript_16Plates
-	clearflag FLAG_NO_WILD_CATCHING
+	clearflag FLAG_NO_CATCHING
 	clearflag FLAG_NO_WILD_RUNNING
 	clearflag FLAG_SMART_WILD_AI
 	clearflag FLAG_NO_SHINY
@@ -233,7 +233,7 @@ Route49Sinjoh_EventScript_Overqwil::
 	end
 
 Route49Sinjoh_EventScript_OverqwilRan::
-	clearflag FLAG_NO_WILD_CATCHING
+	clearflag FLAG_NO_CATCHING
 	clearflag FLAG_NO_WILD_RUNNING
 	clearflag FLAG_SMART_WILD_AI
 	clearflag FLAG_NO_SHINY
@@ -366,7 +366,7 @@ Route49Sinjoh_EventScript_Wyrdeer::
 	waitmoncry
 	setwildbossbattle species=SPECIES_WYRDEER, level=80, item=ITEM_CLEAR_AMULET, move1_1=MOVE_PSYSHIELD_BASH, move1_2=MOVE_LUNGE, move1_3=MOVE_CALM_MIND move1_4=MOVE_THUNDERBOLT
 	settotemboost B_POSITION_OPPONENT_LEFT, 0, 1, 2, 0, 1, 0
-	setflag FLAG_NO_WILD_CATCHING
+	setflag FLAG_NO_CATCHING
 	setflag FLAG_NO_WILD_RUNNING
 	setflag FLAG_SMART_WILD_AI
 	setflag FLAG_NO_SHINY
@@ -387,7 +387,7 @@ Route49Sinjoh_EventScript_Wyrdeer::
     call_if_eq VAR_PLATECOUNTER, 12, SinjohRuins_Lab_EventScript_12Plates
     call_if_eq VAR_PLATECOUNTER, 15, SinjohRuins_Lab_EventScript_15Plates
     call_if_eq VAR_PLATECOUNTER, 16, SinjohRuins_Lab_EventScript_16Plates
-	clearflag FLAG_NO_WILD_CATCHING
+	clearflag FLAG_NO_CATCHING
 	clearflag FLAG_NO_WILD_RUNNING
 	clearflag FLAG_SMART_WILD_AI
 	clearflag FLAG_NO_SHINY
@@ -395,7 +395,7 @@ Route49Sinjoh_EventScript_Wyrdeer::
 	end
 
 Route49Sinjoh_EventScript_WyrdeerRan::
-	clearflag FLAG_NO_WILD_CATCHING
+	clearflag FLAG_NO_CATCHING
 	clearflag FLAG_NO_WILD_RUNNING
 	clearflag FLAG_SMART_WILD_AI
 	clearflag FLAG_NO_SHINY

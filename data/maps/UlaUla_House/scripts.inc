@@ -172,10 +172,10 @@ Alola_Ulaula_House_Phant_Text_3:
 	.string "I think you've earned this.$"
 
 Alola_Ulaula_House_Phant_Text_4:
-	.string "You received an EGG from PHANTONOMY!$"
+	.string "You received an Egg from Phantonomy!$"
 
 Alola_Ulaula_House_Phant_Text_5:
-	.string "That EGG contains my favorite POKéMON.\p"
+	.string "That Egg contains my favorite Pokémon.\p"
 	.string "Please, take good care of it…$"
 
 Alola_Ulaula_House_Phant_Text_6:
@@ -183,9 +183,9 @@ Alola_Ulaula_House_Phant_Text_6:
 	.string "Come back when you're ready…$"
 
 Alola_Ulaula_House_Phant_Text_7:
-	.string "I hope you enjoyed this taste of ALOLA.\p"
+	.string "I hope you enjoyed this taste of Alola.\p"
 	.string "I'm working on a full demake of the\n"
-	.string "region called ULTRA ECLIPSE.$"
+	.string "region called Ultra Eclipse.$"
 
 Alola_Ulaula_House_Noivern_Text_0:
 	.string "Scree!$"
