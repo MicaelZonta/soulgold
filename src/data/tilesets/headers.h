@@ -3119,7 +3119,7 @@ const struct Tileset gTileset_AlolaIsland =
     .palettes = gTilesetPalettes_AlolaIsland,
     .metatiles = gMetatiles_AlolaIsland,
     .metatileAttributes = gMetatileAttributes_AlolaIsland,
-    .callback = NULL, // TODO(hns): InitTilesetAnim_AlolaIslands (agua/flores animadas) ainda nao portado
+    .callback = InitTilesetAnim_AlolaIsland, // agua correndo, flor e borda de areia (porte do HnS, 24/10/2026)
 };
 
 const struct Tileset gTileset_AlolaIslandSecondary =

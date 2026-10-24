@@ -8,6 +8,7 @@
 --   shot PATH                  screenshot PNG
 --   save PATH / load PATH      savestate
 --   r8/r16/r32 ADDR            le memoria (resultado vai para ACK_FILE)
+--   pc                         r0..r15 do ARM (r15 = PC): onde o jogo esta
 --   range ADDR LEN             le bloco em hex
 --   w8/w16/w32 ADDR VAL        escreve memoria
 --   quit
@@ -74,6 +75,12 @@ local function start(t)
   elseif c == "range" then
     local s = emu:readRange(tonumber(t[2]), tonumber(t[3]))
     out[#out + 1] = t[2] .. "=" .. (s:gsub(".", function(ch) return string.format("%02x", string.byte(ch)) end))
+  elseif c == "pc" then
+    -- registradores do ARM: serve para achar onde o jogo travou (o loop
+    -- principal parado com o VBlank vivo nao aparece em print nenhum)
+    local r = {}
+    for i = 0, 15 do r[#r + 1] = string.format("r%d=%08X", i, emu:readRegister("r" .. i)) end
+    out[#out + 1] = table.concat(r, " ")
   elseif c == "quit" then ack(); os.exit(0)
   else out[#out + 1] = "ERR unknown " .. c end
   return false
