@@ -213,6 +213,36 @@ não estima, e os `#if FREE_*` já estão resolvidos). Os maiores:
 Sobram **52 B** no último setor do SaveBlock1 (+ 24 de `futureReserved`), e cada
 objeto custa **36 B**. Ou seja: +1 objeto sem fazer nada.
 
+### Rota 0: o SaveBlock3 tem 1528 B livres (é por aqui)
+
+```bash
+python3 dev_scripts/mapa_saveblock.py SaveBlock3
+```
+
+`SaveBlock3` usa **96 de 1624 bytes**. O teto é
+`SAVE_BLOCK_3_CHUNK_SIZE (116) * NUM_SECTORS_PER_SLOT (14)`: cada setor do slot
+já reserva 116 B para ele, **fora** dos 3968 B de dados. Ou seja, esse espaço já
+está gravado e lido hoje, em todo save, sem custar setor novo.
+
+**1528 B livres / 36 B por objeto = +42 objetos**, levando `OBJECT_EVENTS_COUNT`
+de 24 para ~66 — mais do que o hardware de sprite aguenta (ver abaixo).
+
+Por que é a rota mais barata:
+- não mexe no layout do `SaveBlock1`, então nenhum `STATIC_ASSERT` de offset das
+  caixas 16-19 se mexe e o pull do upstream não conflita;
+- não precisa de flash novo nem de mudança no mGBA;
+- o único assert a atualizar é `SaveBlock3LegacySize` (`sizeof == 0x60`).
+
+O que muda: `objectEventsExtra` sai do fim do `SaveBlock1` e vai para o
+`SaveBlock3`; `SaveObjectEvents`/`LoadObjectEvents` (`src/load_save.c`) passam a
+ler de `gSaveBlock3Ptr`.
+
+**Ressalva honesta:** o pedaço de SaveBlock3 do setor fica **fora do checksum**
+(`CalculateChecksum(gReadWriteSector->data, SECTOR_DATA_SIZE)` cobre só `data`).
+Para estado de objeto isso é aceitável — o mapa recria tudo do template ao
+carregar, então lixo ali se conserta sozinho na próxima entrada no mapa. Não
+guarde lá nada que não se recupere.
+
 ### Três rotas para caber mais objeto, da mais barata para a mais cara
 
 **Rota A — reaproveitar dado morto de Hoenn, sem tocar no emulador.**
@@ -289,10 +319,11 @@ hardware de sprite trava de qualquer jeito. Passar disso exige subir
 `MAX_SPRITES` para 127 (+2 KB de EWRAM) e, acima de ~60, desligar sombra. A
 rota B só se paga quando o objetivo for outro dado grande, não mais NPC.
 
-**Recomendação:** rota A (a flag de link battle records + `contestWinners` +
-`trainerNameRecords`, em união para não mexer em offset) para chegar a ~44
-objetos; rota B quando precisarmos de espaço para outra coisa, e aí já
-nascendo como "setor de extras" genérico.
+**Recomendação:** **rota 0** (mover `objectEventsExtra` para o `SaveBlock3`):
+sozinha ela dá mais espaço do que os sprites aguentam, e é a única que não
+mexe em layout nem no emulador. A rota A vira reserva para quando o
+`SaveBlock1` em si apertar; a rota B, para quando precisarmos guardar outra
+coisa grande, e aí já nascendo como "setor de extras" genérico.
 
 ### Aumentar o save pelo mGBA
 
