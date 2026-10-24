@@ -34,7 +34,9 @@ OlivineLighthouse_Text_1FPokefanF:
 @2nd floor==============================================================================================================================
 
 OlivineLighthouse_EventScript_Huey::
-	trainerbattle_single TRAINER_HUEY, OlivineLighthouse_Text_SailorHueySeen, OlivineLighthouse_Text_SailorHueyBeaten
+	trainerbattle_single TRAINER_HUEY, OlivineLighthouse_Text_SailorHueySeen, OlivineLighthouse_Text_SailorHueyBeaten, OlivineLighthouse_EventScript_RegisterHuey
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, OlivineLighthouse_EventScript_RematchHuey
 	msgbox OlivineLighthouse_Text_SailorHueyAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -372,4 +374,31 @@ OlivineLighthouse_Text_AmphyBreathingLabored:
 OlivineLighthouse_Text_AmphyPaluPalulu:
 	.string "{SPEAKER NAME_AMPHY}Palu! Palulu!$"
 
+OlivineLighthouse_EventScript_RegisterHuey::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox OlivineLighthouse_Text_HueyRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_HUEY
+	release
+	end
 
+OlivineLighthouse_Text_HueyRegister:
+	.string "What power! How would you like\n"
+	.string "to sail the seas with me?$"
+
+OlivineLighthouse_EventScript_RematchHuey::
+	trainerbattle_rematch TRAINER_HUEY, OlivineLighthouse_Text_HueyRematchIntro, OlivineLighthouse_Text_HueyRematchDefeat
+	msgbox OlivineLighthouse_Text_HueyPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+OlivineLighthouse_Text_HueyRematchIntro:
+	.string "Men of the sea are always\n"
+	.string "spoiling for a good fight!$"
+
+OlivineLighthouse_Text_HueyRematchDefeat:
+	.string "Urf!\n"
+	.string "I lose!$"
+
+OlivineLighthouse_Text_HueyPostRematch:
+	.string "What power! How would you like\n"
+	.string "to sail the seas with me?$"

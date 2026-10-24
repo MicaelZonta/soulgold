@@ -108,12 +108,17 @@ NationalPark_Normal_Text_Persian:
 	.string "{SPEAKER NAME_PERSIAN}Fufushaa!$"
 
 NationalPark_Normal_EventScript_Jack::
-	trainerbattle_single TRAINER_JACK NationalPark_Normal_Text_SchoolboyJack1_Seen, NationalPark_Normal_Text_SchoolboyJack1_Beaten
+	trainerbattle_single TRAINER_JACK, NationalPark_Normal_Text_SchoolboyJack1_Seen, NationalPark_Normal_Text_SchoolboyJack1_Beaten, NationalPark_Normal_EventScript_RegisterJack
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, NationalPark_Normal_EventScript_RematchJack
 	msgbox NationalPark_Normal_Text_SchoolboyJack_After, MSGBOX_AUTOCLOSE
 	end
 
 NationalPark_Normal_EventScript_Beverly::
-	trainerbattle_single TRAINER_BEVERLY NationalPark_Normal_Text_PokefanFBeverly1_Seen, NationalPark_Normal_Text_PokefanFBeverly1_Beaten
+	trainerbattle_single TRAINER_BEVERLY, NationalPark_Normal_Text_PokefanFBeverly1_Seen, NationalPark_Normal_Text_PokefanFBeverly1_Beaten, NationalPark_Normal_EventScript_RegisterBeverly
+	goto_if_set FLAG_BEVERLY_HAS_PHONE_ITEM, NationalPark_Normal_EventScript_BeverlyGiveItem
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, NationalPark_Normal_EventScript_RematchBeverly
 	msgbox NationalPark_Normal_Text_PokefanFBeverly_After, MSGBOX_AUTOCLOSE
 	end
 
@@ -190,6 +195,85 @@ NationalPark_Normal_Text_TrainerTips:
 	.string "Trainer Tips\p"
 	.string "Print out Mail by opening it then\n"
 	.string "pressing Start.$"
+
+NationalPark_Normal_EventScript_RegisterJack::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox NationalPark_Normal_Text_JackRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_JACK
+	release
+	end
+
+NationalPark_Normal_Text_JackRegister:
+	.string "There is a lot to learn.\p"
+	.string "For example…\p"
+	.string "There are 92 kinds of TMs.\p"
+	.string "Traded Pokémon level up faster.$"
+
+NationalPark_Normal_EventScript_RematchJack::
+	trainerbattle_rematch TRAINER_JACK, NationalPark_Normal_Text_JackRematchIntro, NationalPark_Normal_Text_JackRematchDefeat
+	msgbox NationalPark_Normal_Text_JackPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+NationalPark_Normal_Text_JackRematchIntro:
+	.string "I've learned a lot since we\n"
+	.string "last battled! Let's go!$"
+
+NationalPark_Normal_Text_JackRematchDefeat:
+	.string "Wha-wha-what?$"
+
+NationalPark_Normal_Text_JackPostRematch:
+	.string "There is a lot to learn.\p"
+	.string "For example…\p"
+	.string "There are 92 kinds of TMs.\p"
+	.string "Traded Pokémon level up faster.$"
+
+NationalPark_Normal_EventScript_RegisterBeverly::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox NationalPark_Normal_Text_BeverlyRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_BEVERLY
+	release
+	end
+
+NationalPark_Normal_Text_BeverlyRegister:
+	.string "I must say, your Pokémon are quite\n"
+	.string "cute, too.$"
+
+NationalPark_Normal_EventScript_BeverlyGiveItem::
+	@ Espaco ANTES da oferta: depois do giveitem o VAR_RESULT ja foi
+	@ sobrescrito pelo Std_ObtainItem (checkitemtype), e a conferencia
+	@ de "nao cabe" nunca pegaria -- a flag seria limpa e o item sumiria.
+	checkitemspace VAR_BEVERLY_PHONE_ITEM
+	goto_if_eq VAR_RESULT, FALSE, NationalPark_Normal_EventScript_BeverlyNoRoom
+	msgbox NationalPark_Normal_Text_BeverlyHasItem, MSGBOX_DEFAULT
+	giveitem VAR_BEVERLY_PHONE_ITEM
+	clearflag FLAG_BEVERLY_HAS_PHONE_ITEM
+	msgbox NationalPark_Normal_Text_BeverlyGaveItem, MSGBOX_AUTOCLOSE
+	end
+
+NationalPark_Normal_Text_BeverlyHasItem:
+	.string "Oh, hello! I have something\n"
+	.string "for you.\p"
+	.string "Please take it as a token of\n"
+	.string "my appreciation!$"
+
+NationalPark_Normal_Text_BeverlyGaveItem:
+	.string "My darling Pokémon and I will\n"
+	.string "be cheering for you!$"
+
+NationalPark_Normal_EventScript_RematchBeverly::
+	trainerbattle_rematch TRAINER_BEVERLY, NationalPark_Normal_Text_PokefanFBeverly1_Seen, NationalPark_Normal_Text_PokefanFBeverly1_Beaten
+	msgbox NationalPark_Normal_Text_PokefanFBeverly_After, MSGBOX_AUTOCLOSE
+	end
+
+NationalPark_Normal_EventScript_BeverlyNoRoom::
+	msgbox NationalPark_Normal_Text_BeverlyNoRoom, MSGBOX_AUTOCLOSE
+	end
+
+NationalPark_Normal_Text_BeverlyNoRoom:
+	.string "Hmm, your Bag is full.\p"
+	.string "Come back when you have room.$"
 
 NationalPark_BugsyRematch::
 	lock

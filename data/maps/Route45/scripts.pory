@@ -13,7 +13,9 @@ Route45_EventScript_Michael::
 	end
 
 Route45_EventScript_Parry::
-	trainerbattle_single TRAINER_PARRY Route45_Text_HikerParrySeen, Route45_Text_HikerParryBeaten
+	trainerbattle_single TRAINER_PARRY, Route45_Text_HikerParrySeen, Route45_Text_HikerParryBeaten, Route45_EventScript_RegisterParry
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route45_EventScript_RematchParry
 	msgbox Route45_Text_HikerParryAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -23,7 +25,10 @@ Route45_EventScript_Timothy::
 	end
 
 Route45_EventScript_Kenji::
-	trainerbattle_single TRAINER_KENJI Route45_Text_BlackbeltKenjiSeen, Route45_Text_BlackbeltKenjiBeaten
+	trainerbattle_single TRAINER_KENJI, Route45_Text_BlackbeltKenjiSeen, Route45_Text_BlackbeltKenjiBeaten, Route45_EventScript_RegisterKenji
+	goto_if_set FLAG_KENJI_HAS_PHONE_ITEM, Route45_EventScript_KenjiGiveItem
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route45_EventScript_RematchKenji
 	msgbox Route45_Text_BlackbeltKenjiAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -165,6 +170,97 @@ Route45_Text_CamperQuentinAfter:
 Route45_Text_Sign:
     .string "Route 45\n"
     .string "Mountain Rd. Ahead$"
+
+Route45_EventScript_RegisterKenji::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route45_Text_KenjiRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_KENJI
+	release
+	end
+
+Route45_Text_KenjiRegister:
+    .string "This calls for extreme measures.\p"
+    .string "I must take to the hills and train\n"
+    .string "in solitude.$"
+
+Route45_EventScript_KenjiGiveItem::
+	@ Espaco ANTES da oferta: depois do giveitem o VAR_RESULT ja foi
+	@ sobrescrito pelo Std_ObtainItem (checkitemtype), e a conferencia
+	@ de "nao cabe" nunca pegaria -- a flag seria limpa e o item sumiria.
+	checkitemspace VAR_KENJI_PHONE_ITEM
+	goto_if_eq VAR_RESULT, FALSE, Route45_EventScript_KenjiNoRoom
+	msgbox Route45_Text_KenjiHasItem, MSGBOX_DEFAULT
+	giveitem VAR_KENJI_PHONE_ITEM
+	clearflag FLAG_KENJI_HAS_PHONE_ITEM
+	msgbox Route45_Text_KenjiGaveItem, MSGBOX_AUTOCLOSE
+	end
+
+Route45_Text_KenjiHasItem:
+    .string "Hey! I'm taking a break from\n"
+    .string "training.\p"
+    .string "I found something good while I\n"
+    .string "was out. Here, take it!$"
+
+Route45_Text_KenjiGaveItem:
+    .string "Use it well!\p"
+    .string "I need to get back to my\n"
+    .string "training. Oooooaaarrrgh!$"
+
+Route45_EventScript_RematchKenji::
+	trainerbattle_rematch TRAINER_KENJI, Route45_Text_KenjiRematchIntro, Route45_Text_KenjiRematchDefeat
+	msgbox Route45_Text_KenjiPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route45_Text_KenjiRematchIntro:
+    .string "I was training here alone.\p"
+    .string "Behold the fruits of my labor!$"
+
+Route45_Text_KenjiRematchDefeat:
+    .string "Waaaargh!$"
+
+Route45_Text_KenjiPostRematch:
+    .string "This calls for extreme measures.\p"
+    .string "I must take to the hills and train\n"
+    .string "in solitude.$"
+
+Route45_EventScript_KenjiNoRoom::
+	msgbox Route45_Text_KenjiNoRoom, MSGBOX_AUTOCLOSE
+	end
+
+Route45_Text_KenjiNoRoom:
+    .string "Hmm, your Bag is full.\p"
+    .string "Come back when you have room.$"
+
+Route45_EventScript_RegisterParry::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route45_Text_ParryRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_PARRY
+	release
+	end
+
+Route45_Text_ParryRegister:
+    .string "I'm not much good at thinking,\n"
+    .string "see?\p"
+    .string "So, I just plow ahead with power!$"
+
+Route45_EventScript_RematchParry::
+	trainerbattle_rematch TRAINER_PARRY, Route45_Text_ParryRematchIntro, Route45_Text_ParryRematchDefeat
+	msgbox Route45_Text_ParryPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route45_Text_ParryRematchIntro:
+    .string "My Pokémon are power packed!$"
+
+Route45_Text_ParryRematchDefeat:
+    .string "Wahahah! I'm the big loser!$"
+
+Route45_Text_ParryPostRematch:
+    .string "I'm not much good at thinking,\n"
+    .string "see?\p"
+    .string "So, I just plow ahead with power!$"
+
 `
 
 script R45KitakamiBorderSign {

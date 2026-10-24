@@ -441,7 +441,7 @@
 #define VAR_ALOLA_STATE                                 0x4134 // HnS: PokemonLeague_HallOfFame
 #define VAR_ALOLA_TRAVEL                                0x4135 // HnS: Route13
 #define VAR_CLEFAIRY_DOLL_STATE                         0x4136 // HnS: SSAqua_1F
-#define VAR_JOSE_ITEM                                   0x4137 // HnS: Route27
+#define VAR_JOSE_PHONE_ITEM                             0x4137 // Match Call GSC (telefone), Route 27; veio na importacao do mapa
 #define VAR_PEWTER_CITY_STATE                           0x4138 // HnS: MtMoon_Cave
 #define VAR_SINJOH_STORYLINE                            0x4139 // HnS: MtSilver_1F_WaterfallRoom, MtSilver_SummitDay
 #define VAR_TEMP_MTSILVER_RESUME_BLIZZARD_SE            0x413A // HnS: MtSilver_SummitDay
@@ -462,7 +462,20 @@
 #define VAR_NOBLE_WYRDEER                               0x4147 // HnS: SinjohRuins_House1
 #define VAR_PLATECOUNTER                                0x4148 // HnS: NewSinjoh_HotSprings, NewSinjoh_House3
 #define VAR_REGIS_SCANNED                               0x4149 // HnS: SinjohRuins_Temple
-// PROXIMA VAR NOVA: 0x414A (livre ate VARS_END 0x42FF). Alocar aqui, em
+// Match Call GSC (src/match_call.c): o item que o treinador guardou para o
+// jogador na ligacao, lido pelo script dele (giveitem VAR_*_PHONE_ITEM).
+#define VAR_WADE_PHONE_ITEM                             0x414A
+#define VAR_ALAN_PHONE_ITEM                             0x414B
+#define VAR_DANA_PHONE_ITEM                             0x414C
+#define VAR_DEREK_PHONE_ITEM                            0x414D
+#define VAR_TULLY_PHONE_ITEM                            0x414E
+#define VAR_WILTON_PHONE_ITEM                           0x414F
+#define VAR_KENJI_PHONE_ITEM                            0x4150
+#define VAR_BEVERLY_PHONE_ITEM                          0x4151
+// Passos dados no mapa atual, para a ligacao de rota do Match Call GSC
+// (HnsUpdateRouteStepCounter em src/match_call.c zera ao trocar de mapa).
+#define VAR_ROUTE_STEP_COUNTER                          0x4152
+// PROXIMA VAR NOVA: 0x4153 (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 

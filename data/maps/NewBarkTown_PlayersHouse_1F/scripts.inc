@@ -437,6 +437,9 @@ NewBarkTown_PlayersHouse_1F_EventScript_GivePokeGear::
 	setflag FLAG_RECEIVED_POKENAV
 	setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
 	setflag FLAG_REGISTER_RIVAL_POKENAV
+	@ Liga o telefone (Match Call GSC): sem esta flag ninguem liga para o
+	@ jogador nem pede o numero. A mae explica o telefone na fala seguinte.
+	setflag FLAG_HAS_MATCH_CALL
 	createfieldmugshot MUGSHOT_MOM
 	msgbox NewBarkTown_PlayersHouse_1F_Text_ExplainPokeGear, MSGBOX_DEFAULT
 	closemessage

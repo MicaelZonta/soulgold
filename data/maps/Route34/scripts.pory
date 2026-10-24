@@ -27,12 +27,16 @@ Route34_EventScript_YoungsterIan::
 	end
 
 Route34_EventScript_CamperTodd::
-	trainerbattle_single TRAINER_TODD Route34_Text_CamperTodd_Seen, Route34_Text_CamperTodd_Beaten
+	trainerbattle_single TRAINER_TODD, Route34_Text_CamperTodd_Seen, Route34_Text_CamperTodd_Beaten, Route34_EventScript_RegisterTodd
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route34_EventScript_RematchTodd
 	msgbox Route34_Text_CamperTodd_After, MSGBOX_AUTOCLOSE
 	end
 
 Route34_EventScript_PicnickerGina::
-	trainerbattle_single TRAINER_GINA Route34_Text_PicnickerGina_Seen, Route34_Text_PicnickerGina_Beaten
+	trainerbattle_single TRAINER_GINA, Route34_Text_PicnickerGina_Seen, Route34_Text_PicnickerGina_Beaten, Route34_EventScript_RegisterGina
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route34_EventScript_RematchGina
 	msgbox Route34_Text_PicnickerGina_After, MSGBOX_AUTOCLOSE
 	end
 
@@ -221,6 +225,53 @@ Route34_Text_CooltrainerKate_After:
 Route34_Text_Sign_DayCare:
 	.string "Day-Care\p"
 	.string "Let Us Raise Your Pokémon For You!$"
+
+Route34_EventScript_RegisterTodd::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route34_Text_ToddRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_TODD
+	release
+	end
+
+Route34_Text_ToddRegister:
+	.string "Maybe I should take one to Day-Care,\n"
+	.string "or maybe use some items…$"
+
+Route34_EventScript_RematchTodd::
+	trainerbattle_rematch TRAINER_TODD, Route34_Text_ToddRematchIntro, Route34_Text_ToddRematchDefeat
+	msgbox Route34_Text_ToddPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route34_Text_ToddRematchIntro:
+	.string "I'm confident in my ability to\n"
+	.string "raise Pokémon.\p"
+	.string "Want to see?$"
+
+Route34_Text_ToddRematchDefeat:
+	.string "Did I screw up my training?$"
+
+Route34_Text_ToddPostRematch:
+	.string "Maybe I should take one to Day-Care,\n"
+	.string "or maybe use some items…$"
+
+Route34_EventScript_RegisterGina::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route34_Text_GinaRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_GINA
+	release
+	end
+
+Route34_Text_GinaRegister:
+	.string "You're too strong to be a\n"
+	.string "practice partner.$"
+
+Route34_EventScript_RematchGina::
+	trainerbattle_rematch TRAINER_GINA, Route34_Text_PicnickerGina_Seen, Route34_Text_PicnickerGina_Beaten
+	msgbox Route34_Text_PicnickerGina_After, MSGBOX_AUTOCLOSE
+	end
+
 `
 
 script Route34_RivalEncounter {

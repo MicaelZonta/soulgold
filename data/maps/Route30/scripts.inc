@@ -66,7 +66,9 @@ Route30_EventScript_Youngster_Joey_Fighting::
 
 
 Route30_EventScript_Youngster_Joey::
-	trainerbattle_single TRAINER_JOEY, Route30_Text_YoungsterJoey1Seen, Route30_Text_YoungsterJoey1Beaten
+	trainerbattle_single TRAINER_JOEY, Route30_Text_YoungsterJoey1Seen, Route30_Text_YoungsterJoey1Beaten, Route30_EventScript_RegisterJoey
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route30_EventScript_RematchJoey
 	msgbox Route30_Text_YoungsterJoey1After, MSGBOX_AUTOCLOSE
 	end
 
@@ -469,3 +471,40 @@ Route30_Text_Elm_Disaster:
 
 Route30_Text_Poliwag:
 	.string "{SPEAKER NAME_POLIWAG}Wag waag!$"
+
+Route30_EventScript_RegisterJoey::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route30_Text_JoeyRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_JOEY
+	release
+	end
+
+Route30_Text_JoeyRegister:
+	.string "You're pretty good!\p"
+	.string "My Rattata's raring to go,\n"
+	.string "just like always.\p"
+	.string "It's the only one I have.\n"
+	.string "I'm going to become a great\l"
+	.string "Trainer with it!\p"
+	.string "Let's battle again sometime!$"
+
+Route30_EventScript_RematchJoey::
+	trainerbattle_rematch TRAINER_JOEY, Route30_Text_JoeyRematchIntro, Route30_Text_JoeyRematchDefeat
+	msgbox Route30_Text_JoeyPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route30_Text_JoeyRematchIntro:
+	.string "I promised things would be\n"
+	.string "different! Let's battle!$"
+
+Route30_Text_JoeyRematchDefeat:
+	.string "Ack! I lost again!\n"
+	.string "Doggone it!$"
+
+Route30_Text_JoeyPostRematch:
+	.string "I'm checking out my\n"
+	.string "Rattata's moves and devising\l"
+	.string "some strategies.\p"
+	.string "When I come up with a good\n"
+	.string "one, let's battle!$"

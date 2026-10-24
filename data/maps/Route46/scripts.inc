@@ -19,7 +19,9 @@ Route46_EventScript_Ted::
 	end
 
 Route46_EventScript_Erin::
-	trainerbattle_single TRAINER_ERIN, Route46_Text_PicnickerErinSeen, Route46_Text_PicnickerErinBeaten
+	trainerbattle_single TRAINER_ERIN, Route46_Text_PicnickerErinSeen, Route46_Text_PicnickerErinBeaten, Route46_EventScript_RegisterErin
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route46_EventScript_RematchErin
 	msgbox Route46_Text_PicnickerErinAfterBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -81,6 +83,36 @@ Route46_Text_PicnickerErin2Beaten:
 Route46_Text_Sign:
 	.string "Route 46\n"
 	.string "Mountain Rd. Ahead$"
+
+Route46_EventScript_RegisterErin::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route46_Text_ErinRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_ERIN
+	release
+	end
+
+Route46_Text_ErinRegister:
+	.string "I've been to many Gyms, but the\n"
+	.string "Gym in Goldenrod is my favorite.\p"
+	.string "It's filled with pretty flowers!$"
+
+Route46_EventScript_RematchErin::
+	trainerbattle_rematch TRAINER_ERIN, Route46_Text_ErinRematchIntro, Route46_Text_ErinRematchDefeat
+	msgbox Route46_Text_ErinPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route46_Text_ErinRematchIntro:
+	.string "I raise Pokémon too!\p"
+	.string "Will you battle with me?$"
+
+Route46_Text_ErinRematchDefeat:
+	.string "Oh, rats!$"
+
+Route46_Text_ErinPostRematch:
+	.string "I've been to many Gyms, but the\n"
+	.string "Gym in Goldenrod is my favorite.\p"
+	.string "It's filled with pretty flowers!$"
 
 Route46_ConfusedBugCatcher::
 	lock

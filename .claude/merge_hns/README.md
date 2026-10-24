@@ -21,6 +21,7 @@ existente), antes de reportar.
 | `fase7_trio_leal.md`, `fase7_bosses_e_casas.md` | Fase 7: Trio Leal, lendários em Boss Fight, casas novas, Café enxuto |
 | `fase8_alola_sinjoh.md` | Fase 8: Alola, New Sinjoh/Sinjoh Ruins, Snowswept Cavern |
 | `summit_red_rival.md` | Red × rival no topo do Mt. Silver (ovo de Terapagos) |
+| `match_call_gsc.md` | O telefone do Pokégear: agenda, ligações, revanches, itens e o custo de save |
 | `k8_plaquinhas_e_decap.md` | K8: decap do texto HnS (`dev_scripts/decap_texto.py`) e plaquinhas `{SPEAKER}` |
 
 Branch: `kanto-hns-adoption` (fork `mysoulgoldfork`); rollback: tag

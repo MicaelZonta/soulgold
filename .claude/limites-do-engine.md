@@ -72,7 +72,7 @@ o array enche, o NPC excedente **simplesmente não aparece**, sem erro.
    com o mesmo swap de bytes do `graphicsId` e o mesmo tratamento do
    follower.
 
-   Orçamento: `ObjectEvent` = 36 B. Sobram 428 B no último setor do
+   Orçamento: `ObjectEvent` = 36 B. Sobram 52 B no último setor do
    SaveBlock1, então cabem **+11 (máximo 27)** sem aumentar o save. O
    tamanho do chunk é `sizeof`, então o checksum cobre o que foi
    acrescentado sem mudança extra. Confirme ainda que nada escreve no
@@ -178,7 +178,7 @@ paletas, ou seja, muitas espécies diferentes na tela.
 | 28–29 | caixa 19 e Hall of Fame (reaproveitados; eram HoF/Trainer Hill) |
 | 30–31 | overflow das caixas extras (eram Recorded Battle) |
 
-`SaveBlock2` tem ~1,2 KB livres. `SaveBlock1` tem 428 B mais os 34 B de
+`SaveBlock2` tem ~1,2 KB livres. `SaveBlock1` tem 52 B mais os 24 B de
 `futureReserved`.
 
 ### Aumentar o save pelo mGBA
@@ -276,7 +276,7 @@ Após mudar o mGBA: `make mgba-windows` com o mGBA fechado.
   `test/save.c`.
 - **O mGBA não precisou mudar:** 128 entradas de OAM e 1024 tiles são o
   hardware normal do GBA. Só a Etapa B (save maior) mexe no emulador.
-- Folga depois: SaveBlock1 com 140 B no último setor (+3 objetos no
+- Folga depois: SaveBlock1 com 52 B no último setor (+1 objeto no
   máximo), EWRAM ~9 KB, IWRAM ~8,4 KB.
 
 **Paletas e VRAM** continuam hardware. Trate como regra de design, não

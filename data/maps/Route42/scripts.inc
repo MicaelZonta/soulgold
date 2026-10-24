@@ -159,7 +159,10 @@ Route42_Text_EusineWontGiveUp:
 
 
 Route42_EventScript_Tully::
-	trainerbattle_single TRAINER_TULLY Route42_Text_FisherTullySeen, Route42_Text_FisherTullyBeaten
+	trainerbattle_single TRAINER_TULLY, Route42_Text_FisherTullySeen, Route42_Text_FisherTullyBeaten, Route42_EventScript_RegisterTully
+	goto_if_set FLAG_TULLY_HAS_PHONE_ITEM, Route42_EventScript_TullyGiveItem
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route42_EventScript_RematchTully
 	msgbox Route42_Text_FisherTullyAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -253,3 +256,65 @@ Route42_Text_Sign1:
 Route42_Text_MtMortarSign1:
 	.string "Mt.Mortar\p"
 	.string "Waterfall Cave Inside$"
+
+Route42_EventScript_RegisterTully::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route42_Text_TullyRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_TULLY
+	release
+	end
+
+Route42_Text_TullyRegister:
+	.string "I want to become the trainer\n"
+	.string "Champ using the Pokémon I\l"
+	.string "caught myself.\p"
+	.string "That's the best part of fishing!$"
+
+Route42_EventScript_TullyGiveItem::
+	@ Espaco ANTES da oferta: depois do giveitem o VAR_RESULT ja foi
+	@ sobrescrito pelo Std_ObtainItem (checkitemtype), e a conferencia
+	@ de "nao cabe" nunca pegaria -- a flag seria limpa e o item sumiria.
+	checkitemspace VAR_TULLY_PHONE_ITEM
+	goto_if_eq VAR_RESULT, FALSE, Route42_EventScript_TullyNoRoom
+	msgbox Route42_Text_TullyHasItem, MSGBOX_DEFAULT
+	giveitem VAR_TULLY_PHONE_ITEM
+	clearflag FLAG_TULLY_HAS_PHONE_ITEM
+	msgbox Route42_Text_TullyGaveItem, MSGBOX_AUTOCLOSE
+	end
+
+Route42_Text_TullyHasItem:
+	.string "Hey! I found something\n"
+	.string "while I was fishing!\p"
+	.string "Here, you can have it!$"
+
+Route42_Text_TullyGaveItem:
+	.string "I'll let you know if I\n"
+	.string "reel in anything else!$"
+
+Route42_EventScript_RematchTully::
+	trainerbattle_rematch TRAINER_TULLY, Route42_Text_TullyRematchIntro, Route42_Text_TullyRematchDefeat
+	msgbox Route42_Text_TullyPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route42_Text_TullyRematchIntro:
+	.string "Let me demonstrate the power\n"
+	.string "of the Pokémon I caught!$"
+
+Route42_Text_TullyRematchDefeat:
+	.string "What? That's not right.\n"
+	.string "I can't believe this!$"
+
+Route42_Text_TullyPostRematch:
+	.string "I want to become the trainer\n"
+	.string "Champ using the Pokémon I\l"
+	.string "caught myself.\p"
+	.string "That's the best part of fishing!$"
+
+Route42_EventScript_TullyNoRoom::
+	msgbox Route42_Text_TullyNoRoom, MSGBOX_AUTOCLOSE
+	end
+
+Route42_Text_TullyNoRoom:
+	.string "Hmm, your Bag is full.\p"
+	.string "Come back when you have room.$"

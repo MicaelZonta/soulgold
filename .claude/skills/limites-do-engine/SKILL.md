@@ -1,6 +1,6 @@
 ---
 name: limites-do-engine
-description: Use ao aumentar ou diagnosticar limites do engine - quantos NPCs/objetos aparecem ao mesmo tempo (OBJECT_EVENTS_COUNT, 16), quantos sprites (MAX_SPRITES e gOamLimit, 64), paletas de sprite (16 slots), VRAM de sprite (1024 tiles), tamanho do save (flash de 128 KB cheio, SaveBlock1 com 428 B livres) e RAM (EWRAM/IWRAM), inclusive mudando o mGBA patchado (mais bancos de flash, mais RAM). Use tambem quando um NPC nao aparece num mapa cheio, aparece com a cor errada ou invisivel, a chuva falha, ou waitmovement trava com muitos objetos. Traz os scripts que medem a folga de save/RAM e o pior caso de objetos por mapa.
+description: Use ao aumentar ou diagnosticar limites do engine - quantos NPCs/objetos aparecem ao mesmo tempo (OBJECT_EVENTS_COUNT, 16), quantos sprites (MAX_SPRITES e gOamLimit, 64), paletas de sprite (16 slots), VRAM de sprite (1024 tiles), tamanho do save (flash de 128 KB cheio, SaveBlock1 com 52 B livres) e RAM (EWRAM/IWRAM), inclusive mudando o mGBA patchado (mais bancos de flash, mais RAM). Use tambem quando um NPC nao aparece num mapa cheio, aparece com a cor errada ou invisivel, a chuva falha, ou waitmovement trava com muitos objetos. Traz os scripts que medem a folga de save/RAM e o pior caso de objetos por mapa.
 ---
 
 # Limites do engine
@@ -26,7 +26,7 @@ python3 dev_scripts/limites_janela_objetos.py --mapa NewBarkTown
 
 | Limite | Hoje | Sobe? |
 |---|---|---|
-| Objetos na janela de spawn (`OBJECT_EVENTS_COUNT`) | 24, jogador incluso | sim; até 27 sem aumentar o save |
+| Objetos na janela de spawn (`OBJECT_EVENTS_COUNT`) | 24, jogador incluso | sim; só +1 (25) sem aumentar o save |
 | `MAX_SPRITES` | 96 | sim, até 127 (bitfields de 7 bits) |
 | `gOamLimit` (entradas de OAM por frame) | 128 | já no máximo do hardware |
 | Paletas de sprite | 16 | **não**: 4 bits no OAM |

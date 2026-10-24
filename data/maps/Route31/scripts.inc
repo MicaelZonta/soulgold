@@ -9,7 +9,10 @@ Route31_OnTransition:
 	end
 
 Route31_EventScript_Bugcatcher_Wade::
-	trainerbattle_single TRAINER_WADE, Route31_Text_BugCatcherWade1_Seen, Route31_Text_BugCatcherWade1_Beaten
+	trainerbattle_single TRAINER_WADE, Route31_Text_BugCatcherWade1_Seen, Route31_Text_BugCatcherWade1_Beaten, Route31_EventScript_RegisterWade
+	goto_if_set FLAG_WADE_HAS_PHONE_ITEM, Route31_EventScript_WadeGiveItem
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route31_EventScript_RematchWade
 	msgbox Route31_Text_BugCatcherWade1_After, MSGBOX_AUTOCLOSE
 	end
 
@@ -175,6 +178,73 @@ Route31_Text_Sign:
 
 Route31_Text_DarkCaveSign:
 	.string "Dark Cave$"
+
+Route31_EventScript_RegisterWade::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route31_Text_WadeRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_WADE
+	release
+	end
+
+Route31_Text_WadeRegister:
+	.string "You're awesome! I like you!\p"
+	.string "I look for Pokémon here every\n"
+	.string "day.\p"
+	.string "When I'm in the grass, I find\n"
+	.string "all kinds of berries.\p"
+	.string "If you'd like, I'll share\n"
+	.string "some.$"
+
+Route31_EventScript_WadeGiveItem::
+	@ Espaco ANTES da oferta: depois do giveitem o VAR_RESULT ja foi
+	@ sobrescrito pelo Std_ObtainItem (checkitemtype), e a conferencia
+	@ de "nao cabe" nunca pegaria -- a flag seria limpa e o item sumiria.
+	checkitemspace VAR_WADE_PHONE_ITEM
+	goto_if_eq VAR_RESULT, FALSE, Route31_EventScript_WadeNoRoom
+	msgbox Route31_Text_WadeHasItem, MSGBOX_DEFAULT
+	giveitem VAR_WADE_PHONE_ITEM
+	clearflag FLAG_WADE_HAS_PHONE_ITEM
+	msgbox Route31_Text_WadeGaveItem, MSGBOX_AUTOCLOSE
+	end
+
+Route31_Text_WadeHasItem:
+	.string "Hey! I've been looking for\n"
+	.string "you!\p"
+	.string "I found something while I\n"
+	.string "was in the grass.\p"
+	.string "Here, you can have it!$"
+
+Route31_Text_WadeGaveItem:
+	.string "I'll let you know if I find\n"
+	.string "anything else!$"
+
+Route31_EventScript_RematchWade::
+	trainerbattle_rematch TRAINER_WADE, Route31_Text_WadeRematchIntro, Route31_Text_WadeRematchDefeat
+	msgbox Route31_Text_WadePostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route31_Text_WadeRematchIntro:
+	.string "I was waiting for you.\n"
+	.string "Let's battle!$"
+
+Route31_Text_WadeRematchDefeat:
+	.string "Awwwww…$"
+
+Route31_Text_WadePostRematch:
+	.string "You'll hear from me as soon\n"
+	.string "as I find anything that you\l"
+	.string "might like.$"
+
+Route31_EventScript_WadeNoRoom::
+	msgbox Route31_Text_WadeNoRoom, MSGBOX_AUTOCLOSE
+	end
+
+Route31_Text_WadeNoRoom:
+	.string "Hmm, looks like your Bag\n"
+	.string "is full.\p"
+	.string "Come back when you have\n"
+	.string "room!$"
 
 Route31_Expert::
 	lock

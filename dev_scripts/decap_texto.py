@@ -223,6 +223,22 @@ PALAVRAS = {
     'OWNED': 'owned', 'LITTER': 'Litter', 'DETECTED': 'detected',
     'BETWEEN': 'Between', 'FAIREST': 'fairest', 'ONE': 'one', 'WAY': 'Way',
     'MYSELF': 'myself', 'CANCEL': 'Cancel',
+    # Match Call GSC: os 40 treinadores do telefone (eles se identificam na
+    # fala: "It's ALAN!")
+    'JOEY': 'Joey', 'WADE': 'Wade', 'RALPH': 'Ralph', 'LIZ': 'Liz',
+    'ANTHONY': 'Anthony', 'TODD': 'Todd', 'GINA': 'Gina', 'IRWIN': 'Irwin',
+    'ARNIE': 'Arnie', 'ALAN': 'Alan', 'DANA': 'Dana', 'CHAD': 'Chad',
+    'DEREK': 'Derek', 'TULLY': 'Tully', 'BRENT': 'Brent',
+    'TIFFANY': 'Tiffany', 'VANCE': 'Vance', 'WILTON': 'Wilton',
+    'KENJI': 'Kenji', 'PARRY': 'Parry', 'ERIN': 'Erin', 'JACK': 'Jack',
+    'BEVERLY': 'Beverly', 'HUEY': 'Huey', 'GAVEN': 'Gaven', 'BETH': 'Beth',
+    'JOSE': 'Jose', 'REENA': 'Reena', 'ALEX': 'Alex', 'RILEY': 'Riley',
+    'TREVOR': 'Trevor', 'KYLE': 'Kyle', 'CARTER': 'Carter',
+    'HILLARY': 'Hillary', 'ROB': 'Rob', 'NICOLE': 'Nicole', 'BILLY': 'Billy',
+    'KENNY': 'Kenny', 'JOEL': 'Joel', 'CHARLES': 'Charles',
+    'BERRIES': 'berries', 'NUGGETS': 'Nuggets', 'CHAMPS': 'Champs',
+    'TEACHER': 'Teacher', 'DAY-CARE': 'Day-Care', 'KO': 'KO',
+    'HIKERS': 'hikers', 'FANS': 'fans', 'FARM': 'Farm',
     # grito e onomatopeia: caixa alta e a entonacao, fica como esta
     'AGH': 'AGH', 'URGH': 'URGH', 'SHRIEEEEK': 'SHRIEEEEK',
     'TUUUUU': 'TUUUUU', 'KEEEEEEEEEEEE': 'KEEEEEEEEEEEE',
@@ -296,9 +312,15 @@ def eh_caixa_alta(tok):
 
 
 def chave(tok):
-    """Chave de dicionario: sem sufixo, sem acento de caixa."""
+    """Chave de dicionario sem a flexao: "EGGs" -> EGG."""
     miolo, _ = parte(tok)
     return miolo.upper().replace('É', 'é')
+
+
+def chave_crua(tok):
+    """Chave sem tirar flexao, so pontuacao. E a que monta o dicionario: tirar
+    o "s" de "Moltres" ao CADASTRAR deixaria a palavra inteira sem resposta."""
+    return tok.rstrip(".,!?;:'\u2026").upper().replace('É', 'é')
 
 
 def titulo(tok):
@@ -340,9 +362,8 @@ class Decap:
         self.blocos_placa = []
 
     def _add_frase(self, nome):
-        toks = [t for t in nome.split() if TOKEN.fullmatch(t) or True]
         toks = nome.split()
-        k = ' '.join(chave(t) for t in toks)
+        k = ' '.join(chave_crua(t) for t in toks)
         if len(toks) == 1:
             self.palavras.setdefault(k, nome)
         else:
@@ -392,7 +413,7 @@ class Decap:
                 seq = toks[j:j + n]
                 if not all(eh_caixa_alta(t[3]) for t in seq):
                     continue
-                k = ' '.join(chave(t[3]) for t in seq)
+                k = ' '.join(chave_crua(t[3]) for t in seq)
                 if k in self.frases:
                     achou = (n, self.frases[k])
                     break
@@ -404,8 +425,14 @@ class Decap:
                 j += n
                 inicio_sentenca = False
                 continue
-            k = chave(tok)
-            _, cauda = parte(tok)
+            k = chave_crua(tok)
+            cauda = tok[len(tok.rstrip(".,!?;:'\u2026")):]
+            if k not in self.palavras:
+                # tenta sem a flexao ("EGGs" -> EGG + "s")
+                k2 = chave(tok)
+                if k2 in self.palavras:
+                    k = k2
+                    _, cauda = parte(tok)
             if TM_HM.match(k):
                 j += 1
                 inicio_sentenca = False

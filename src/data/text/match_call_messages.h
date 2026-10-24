@@ -388,56 +388,18 @@ const u8 gText_MatchCallChampion_Wallace_Pokemon[] = _("I prefer POKéMON of gra
 const u8 gText_MatchCallChampion_Wallace_Intro1[] = _("I represent beauty as");
 const u8 gText_MatchCallChampion_Wallace_Intro2[] = _("well as intelligence.");
 
+// Texto da pagina "check" do Match Call (estrategia / Pokemon favorito / duas
+// linhas de apresentacao). So os treinadores especiais de Hoenn tem o seu: os 40
+// do telefone GSC ficam NULL e caem no texto genérico de
+// GetMatchCallFlavorText (src/pokenav_match_call_list.c) ate a agenda do
+// Pokegear existir. Ver .claude/merge_hns/match_call_gsc.md.
+const u8 gText_MatchCallGeneric_Strategy[] = _("Keeps in touch by phone.");
+const u8 gText_MatchCallGeneric_Pokemon[] = _("Whatever is on hand.");
+const u8 gText_MatchCallGeneric_Intro1[] = _("Call me whenever you");
+const u8 gText_MatchCallGeneric_Intro2[] = _("feel like a battle!");
+
 const u8 *const gMatchCallFlavorTexts[REMATCH_TABLE_ENTRIES][CHECK_PAGE_ENTRY_COUNT] =
 {
-    [REMATCH_ROSE] = MCFLAVOR(AromaLady_Rose),
-    [REMATCH_ANDRES] = MCFLAVOR(RuinManiac_Andres),
-    [REMATCH_DUSTY] = MCFLAVOR(RuinManiac_Dusty),
-    [REMATCH_LOLA] = MCFLAVOR(Tuber_Lola),
-    [REMATCH_RICKY] = MCFLAVOR(Tuber_Ricky),
-    [REMATCH_LILA_AND_ROY] = MCFLAVOR(SisAndBro_LilaAndRoy),
-    [REMATCH_CRISTIN] = MCFLAVOR(Cooltrainer_Cristin),
-    [REMATCH_BROOKE] = MCFLAVOR(Cooltrainer_Brooke),
-    [REMATCH_WILTON] = MCFLAVOR(Cooltrainer_Wilton),
-    [REMATCH_CINDY] = MCFLAVOR(Lady_Cindy),
-    [REMATCH_JESSICA] = MCFLAVOR(Beauty_Jessica),
-    [REMATCH_KOJI] = MCFLAVOR(BlackBelt_Koji),
-    [REMATCH_FERNANDO] = MCFLAVOR(Guitarist_Fernando),
-    [REMATCH_DALTON] = MCFLAVOR(Guitarist_Dalton),
-    [REMATCH_BERNIE] = MCFLAVOR(Kindler_Bernie),
-    [REMATCH_ETHAN] = MCFLAVOR(Camper_Ethan),
-    [REMATCH_JOHN_AND_JAY] = MCFLAVOR(OldCouple_JohnAndJay),
-    [REMATCH_JEFFREY] = MCFLAVOR(BugManiac_Jeffrey),
-    [REMATCH_CAMERON] = MCFLAVOR(Psychic_Cameron),
-    [REMATCH_JACKI] = MCFLAVOR(Psychic_Jacki),
-    [REMATCH_KAREN] = MCFLAVOR(SchoolKid_Karen),
-    [REMATCH_JERRY] = MCFLAVOR(SchoolKid_Jerry),
-    [REMATCH_ISABEL] = MCFLAVOR(Pokefan_Isabel),
-    [REMATCH_SHELBY] = MCFLAVOR(Expert_Shelby),
-    [REMATCH_CALVIN] = MCFLAVOR(Youngster_Calvin),
-    [REMATCH_ELLIOT] = MCFLAVOR(Fisherman_Elliot),
-    [REMATCH_ISAIAH] = MCFLAVOR(Triathlete_Isaiah),
-    [REMATCH_ABIGAIL] = MCFLAVOR(Triathlete_Abigail),
-    [REMATCH_DYLAN] = MCFLAVOR(Triathlete_Dylan),
-    [REMATCH_LAO] = MCFLAVOR(NinjaBoy_Lao),
-    [REMATCH_CYNDY] = MCFLAVOR(BattleGirl_Cyndy),
-    [REMATCH_MADELINE] = MCFLAVOR(ParasolLady_Madeline),
-    [REMATCH_JENNY] = MCFLAVOR(Swimmer_Jenny),
-    [REMATCH_DIANA] = MCFLAVOR(Picnicker_Diana),
-    [REMATCH_AMY_AND_LIV] = MCFLAVOR(Twins_AmyAndLiv),
-    [REMATCH_ERNEST] = MCFLAVOR(Sailor_Ernest),
-    [REMATCH_CORY] = MCFLAVOR(Sailor_Cory),
-    [REMATCH_EDWIN] = MCFLAVOR(Collector_Edwin),
-    [REMATCH_LYDIA] = MCFLAVOR(PkmnBreeder_Lydia),
-    [REMATCH_ISAAC] = MCFLAVOR(PkmnBreeder_Isaac),
-    [REMATCH_GABRIELLE] = MCFLAVOR(PkmnBreeder_Gabrielle),
-    [REMATCH_CATHERINE] = MCFLAVOR(PkmnRanger_Catherine),
-    [REMATCH_JACKSON] = MCFLAVOR(PkmnRanger_Jackson),
-    [REMATCH_HALEY] = MCFLAVOR(Lass_Haley),
-    [REMATCH_JAMES] = MCFLAVOR(BugCatcher_James),
-    [REMATCH_TRENT] = MCFLAVOR(Hiker_Trent),
-    [REMATCH_SAWYER] = MCFLAVOR(Hiker_Sawyer),
-    [REMATCH_KIRA_AND_DAN] = MCFLAVOR(YoungCouple_LoisAndHal),
     [REMATCH_WALLY_VR] = MCFLAVOR(PkmnTrainer_Wally),
     [REMATCH_ROXANNE] = MCFLAVOR(RockinWhiz_Roxanne),
     [REMATCH_BRAWLY] = MCFLAVOR(TheBigHit_Brawly),

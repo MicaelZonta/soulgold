@@ -119,4 +119,8 @@ s32 TrainerIdToRematchTableId(const struct RematchTrainer *table, u16 trainerId)
 s32 FirstBattleTrainerIdToRematchTableId(const struct RematchTrainer *table, u16 trainerId);
 u16 GetRematchTrainerIdFromTable(const struct RematchTrainer *table, u16 firstBattleTrainerId);
 
+// Usadas pelo Match Call GSC (src/match_call.c).
+bool32 TrainerIsMatchCallRegistered(s32 i);
+bool32 HasEnoughBadgesForRematch(void);
+
 #endif // GUARD_BATTLE_SETUP_H

@@ -900,6 +900,10 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
         ScriptContext_SetupScript(SSTidalCorridor_EventScript_ReachedStepCount);
         return TRUE;
     }
+    // Telefone GSC: a ligacao por rota (255 passos no mesmo mapa) vem antes da
+    // ligacao aleatoria do Match Call de Hoenn.
+    if (TryStartRouteMatchCall())
+        return TRUE;
     if (TryStartMatchCall())
         return TRUE;
     return FALSE;

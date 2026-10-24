@@ -40,6 +40,14 @@ static const u8 gText_CallCantBeMadeHere[] = _("A call can't be made from here."
 
 #include "data/text/match_call_messages.h"
 
+static const u8 *const sGenericFlavorTexts[CHECK_PAGE_ENTRY_COUNT] =
+{
+    [CHECK_PAGE_STRATEGY] = gText_MatchCallGeneric_Strategy,
+    [CHECK_PAGE_POKEMON]  = gText_MatchCallGeneric_Pokemon,
+    [CHECK_PAGE_INTRO_1]  = gText_MatchCallGeneric_Intro1,
+    [CHECK_PAGE_INTRO_2]  = gText_MatchCallGeneric_Intro2,
+};
+
 static const u8 sMatchCallOptionsNoCheckPage[] =
 {
     MATCH_CALL_OPTION_CALL,
@@ -383,6 +391,11 @@ const u8 *GetMatchCallFlavorText(int index, int checkPageEntry)
     {
         rematchId = state->matchCallEntries[index].headerId;
     }
+
+    // Os treinadores do telefone GSC nao tem texto proprio de check page (a
+    // agenda do Pokegear ainda nao existe): cai no genérico em vez de NULL.
+    if (gMatchCallFlavorTexts[rematchId][checkPageEntry] == NULL)
+        return sGenericFlavorTexts[checkPageEntry];
 
     return gMatchCallFlavorTexts[rematchId][checkPageEntry];
 }

@@ -141,8 +141,16 @@ STATIC_ASSERT(sizeof(((struct SaveBlock1 *)0)->pokemonStorageExtensionTail) == 1
 STATIC_ASSERT(offsetof(struct SaveBlock1, momSavings) == 0x3C50, SaveBlock1MomSavingsOffset); // HnS Fase 6
 STATIC_ASSERT(offsetof(struct SaveBlock1, futureReserved) == 0x3C58, SaveBlock1FutureReserveOffset);
 STATIC_ASSERT(sizeof(((struct SaveBlock1 *)0)->futureReserved) == 24, SaveBlock1FutureReserveSize); // 34-10 (momSavings+alinhamento)
-STATIC_ASSERT(offsetof(struct SaveBlock1, objectEventsExtra) == 0x3C70, SaveBlock1ObjectEventsExtraOffset);
-STATIC_ASSERT(sizeof(struct SaveBlock1) == 0x3C70 + sizeof(struct ObjectEvent) * (OBJECT_EVENTS_COUNT - OBJECT_EVENTS_SAVE_LEGACY_COUNT), SaveBlock1LegacySize);
+// +0x3C desde 24/10/2026: o Match Call GSC (FREE_MATCH_CALL FALSE) acrescentou
+// 60 bytes (trainerRematchStepCounter + trainerRematches[58]) no FIM da struct,
+// logo antes de objectEventsExtra. Emulator-only: sem compat de save.
+#if FREE_MATCH_CALL == FALSE
+#define SAVEBLOCK1_MATCH_CALL_BYTES (2 + MAX_REMATCH_ENTRIES)
+#else
+#define SAVEBLOCK1_MATCH_CALL_BYTES 0
+#endif
+STATIC_ASSERT(offsetof(struct SaveBlock1, objectEventsExtra) == 0x3C70 + SAVEBLOCK1_MATCH_CALL_BYTES, SaveBlock1ObjectEventsExtraOffset);
+STATIC_ASSERT(sizeof(struct SaveBlock1) == 0x3C70 + SAVEBLOCK1_MATCH_CALL_BYTES + sizeof(struct ObjectEvent) * (OBJECT_EVENTS_COUNT - OBJECT_EVENTS_SAVE_LEGACY_COUNT), SaveBlock1LegacySize);
 
 #define PKMN_STORAGE_REGULAR_SIZE (SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START + 1))
 #define PKMN_STORAGE_LEGACY_SIZE 34740

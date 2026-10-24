@@ -1257,6 +1257,7 @@ Common_Text_ReceivedMon:
 	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+	.include "data/text/match_call_phone.inc"
 	.include "data/scripts/dexnav.inc"
 	.include "data/scripts/sandpit.inc"
 	.include "data/maps/ShoalCave_LowTideIceRoom_Suicune/scripts.inc"

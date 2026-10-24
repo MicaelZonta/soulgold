@@ -9,7 +9,10 @@ Route44_OnTransition:
 	end
 
 Route44_EventScript_Wilton::
-	trainerbattle_single TRAINER_WILTON Route44_Text_FisherWilton1Seen, Route44_Text_FisherWilton1Beaten
+	trainerbattle_single TRAINER_WILTON, Route44_Text_FisherWilton1Seen, Route44_Text_FisherWilton1Beaten, Route44_EventScript_RegisterWilton
+	goto_if_set FLAG_WILTON_HAS_PHONE_ITEM, Route44_EventScript_WiltonGiveItem
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route44_EventScript_RematchWilton
 	msgbox Route44_Text_FisherWiltonHugePoliwag, MSGBOX_AUTOCLOSE
 	end
 
@@ -19,7 +22,9 @@ Route44_EventScript_Edgar::
 	end
 
 Route44_EventScript_Vance::
-	trainerbattle_single TRAINER_VANCE Route44_Text_BirdKeeperVance1Seen, Route44_Text_BirdKeeperVance1Beaten
+	trainerbattle_single TRAINER_VANCE, Route44_Text_BirdKeeperVance1Seen, Route44_Text_BirdKeeperVance1Beaten, Route44_EventScript_RegisterVance
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route44_EventScript_RematchVance
 	msgbox Route44_Text_BirdKeeperVanceBirds, MSGBOX_AUTOCLOSE
 	end
 
@@ -151,6 +156,101 @@ Route44_Text_Sign1:
 Route44_Text_Sign2:
     .string "Route 44\p"
     .string "Mahogany Town - Blackthorn City$"
+
+
+Route44_EventScript_RegisterVance::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route44_Text_VanceRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_VANCE
+	release
+	end
+
+Route44_Text_VanceRegister:
+    .string "Articuno, Zapdos and Moltres are\n"
+    .string "the three legendary bird Pokémon.\p"
+    .string "I heard there are other legendary\n"
+    .string "birds, though.$"
+
+Route44_EventScript_RematchVance::
+	trainerbattle_rematch TRAINER_VANCE, Route44_Text_VanceRematchIntro, Route44_Text_VanceRematchDefeat
+	msgbox Route44_Text_VancePostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route44_Text_VanceRematchIntro:
+    .string "Do you know about the legendary\n"
+    .string "bird Pokémon?$"
+
+Route44_Text_VanceRematchDefeat:
+    .string "Whew! You're hot stuff.$"
+
+Route44_Text_VancePostRematch:
+    .string "Articuno, Zapdos and Moltres are\n"
+    .string "the three legendary bird Pokémon.\p"
+    .string "I heard there are other legendary\n"
+    .string "birds, though.$"
+
+Route44_EventScript_RegisterWilton::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route44_Text_WiltonRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_WILTON
+	release
+	end
+
+Route44_Text_WiltonRegister:
+    .string "That Poliwag that got away…\n"
+    .string "it was huge.\p"
+    .string "I swear it must've been\n"
+    .string "16 feet long!$"
+
+Route44_EventScript_WiltonGiveItem::
+	@ Espaco ANTES da oferta: depois do giveitem o VAR_RESULT ja foi
+	@ sobrescrito pelo Std_ObtainItem (checkitemtype), e a conferencia
+	@ de "nao cabe" nunca pegaria -- a flag seria limpa e o item sumiria.
+	checkitemspace VAR_WILTON_PHONE_ITEM
+	goto_if_eq VAR_RESULT, FALSE, Route44_EventScript_WiltonNoRoom
+	msgbox Route44_Text_WiltonHasItem, MSGBOX_DEFAULT
+	giveitem VAR_WILTON_PHONE_ITEM
+	clearflag FLAG_WILTON_HAS_PHONE_ITEM
+	msgbox Route44_Text_WiltonGaveItem, MSGBOX_AUTOCLOSE
+	end
+
+Route44_Text_WiltonHasItem:
+    .string "Hey! I reeled in something\n"
+    .string "other than a Pokémon!\p"
+    .string "Here, you can have it!$"
+
+Route44_Text_WiltonGaveItem:
+    .string "I'll let you know if I\n"
+    .string "fish up anything else!$"
+
+Route44_EventScript_RematchWilton::
+	trainerbattle_rematch TRAINER_WILTON, Route44_Text_WiltonRematchIntro, Route44_Text_WiltonRematchDefeat
+	msgbox Route44_Text_WiltonPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route44_Text_WiltonRematchIntro:
+    .string "Aack!\p"
+    .string "You made me lose a Poliwag!\n"
+    .string "What are you going to do about it?$"
+
+Route44_Text_WiltonRematchDefeat:
+    .string "Just forget about it.$"
+
+Route44_Text_WiltonPostRematch:
+    .string "That Poliwag that got away…\n"
+    .string "it was huge.\p"
+    .string "I swear it must've been\n"
+    .string "16 feet long!$"
+
+Route44_EventScript_WiltonNoRoom::
+	msgbox Route44_Text_WiltonNoRoom, MSGBOX_AUTOCLOSE
+	end
+
+Route44_Text_WiltonNoRoom:
+    .string "Hmm, your Bag is full.\p"
+    .string "Come back when you have room.$"
 
 `
 script Route44_HiddenGrotto {

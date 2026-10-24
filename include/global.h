@@ -1173,10 +1173,6 @@ struct SaveBlock1
     /*0x9BC*/ u16 berryBlenderRecords[3];
     /*0x9C2*/ u8 unused_9C2[2];
               u32 dailySeed;
-#if FREE_MATCH_CALL == FALSE
-    /*0x9C8*/ u16 trainerRematchStepCounter;
-    /*0x9CA*/ u8 trainerRematches[MAX_REMATCH_ENTRIES];
-#endif //FREE_MATCH_CALL
     /*0xA2E*/ //u8 padding3[2];
     /*0xA30*/ struct ObjectEvent objectEvents[OBJECT_EVENTS_SAVE_LEGACY_COUNT];
     /*0xC70*/ struct ObjectEventTemplate objectEventTemplates[OBJECT_EVENT_TEMPLATES_COUNT];
@@ -1276,7 +1272,16 @@ struct SaveBlock1
     // SAVEBLOCK1_FUTURE_RESERVED_BYTES.
     /*0x3???*/ struct MomSavingsData momSavings;
     /*0x3C32*/ u8 futureReserved[SAVEBLOCK1_FUTURE_RESERVED_BYTES];
-    /*0x3C54*/ struct ObjectEvent objectEventsExtra[OBJECT_EVENTS_COUNT - OBJECT_EVENTS_SAVE_LEGACY_COUNT];
+#if FREE_MATCH_CALL == FALSE
+    // Match Call GSC (telefone): 2 + MAX_REMATCH_ENTRIES bytes. Fica AQUI, no
+    // fim, e nao no 0x9C8 do vanilla, porque os offsets do meio da struct estao
+    // presos por STATIC_ASSERT (caixas 16-19 do PC do upstream) em src/save.c.
+    // MAX_REMATCH_ENTRIES = 58 deixa 2+58 = 60 bytes, multiplo de 4, para
+    // objectEventsExtra nao ganhar padding.
+    /*0x3C70*/ u16 trainerRematchStepCounter;
+    /*0x3C72*/ u8 trainerRematches[MAX_REMATCH_ENTRIES];
+#endif //FREE_MATCH_CALL
+    /*0x3CAC*/ struct ObjectEvent objectEventsExtra[OBJECT_EVENTS_COUNT - OBJECT_EVENTS_SAVE_LEGACY_COUNT];
     // sizeof: 0x3C54 + 36 * (OBJECT_EVENTS_COUNT - 16)
 };
 

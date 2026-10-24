@@ -167,8 +167,105 @@ static void PopulateSpeciesFromTrainerLocation(int, u8 *);
 static void PopulateSpeciesFromTrainerParty(int, u8 *);
 static void PopulateBattleFrontierFacilityName(int, u8 *);
 static void PopulateBattleFrontierStreak(int, u8 *);
+static const struct PhoneTrainer *GetPhoneTrainer(u16 trainerId);
 
 #define TEXT_ID(topic, id) (((topic) << 8) | ((id) & 0xFF))
+
+// ---------------------------------------------------------------------------
+// Match Call GSC (telefone): os 40 treinadores que pedem o numero. Cada um tem
+// 2 ou 3 falas de conversa, uma de pedido de revanche e, nos nove de Johto que
+// catam coisa, um item guardado (a ligacao seta a flag e escreve o item na var;
+// o script do treinador entrega e limpa a flag). Ver
+// .claude/merge_hns/match_call_gsc.md.
+#define MAX_PHONE_GENERAL_TEXTS 3
+
+struct PhoneTrainer
+{
+    u16 trainerId;
+    const u8 *generalTexts[MAX_PHONE_GENERAL_TEXTS];
+    u8 numGeneralTexts;
+    const u8 *battleRequestText;
+    u16 itemFlag;
+    u16 itemVar;
+    const u16 *giftItems;
+    u8 numGiftItems;
+    const u8 *foundItemText;
+};
+
+static const u16 sWadeGiftItems[]    = { ITEM_ORAN_BERRY, ITEM_PECHA_BERRY, ITEM_CHERI_BERRY, ITEM_RAWST_BERRY };
+static const u16 sAlanGiftItems[]    = { ITEM_FIRE_STONE, ITEM_THUNDER_STONE, ITEM_WATER_STONE, ITEM_LEAF_STONE };
+static const u16 sDanaGiftItems[]    = { ITEM_THUNDER_STONE, ITEM_FIRE_STONE, ITEM_WATER_STONE };
+static const u16 sTullyGiftItems[]   = { ITEM_WATER_STONE, ITEM_SHARP_BEAK };
+static const u16 sWiltonGiftItems[]  = { ITEM_WATER_STONE, ITEM_HEAVY_BALL, ITEM_LURE_BALL };
+static const u16 sDerekGiftItems[]   = { ITEM_NUGGET };
+static const u16 sBeverlyGiftItems[] = { ITEM_NUGGET };
+static const u16 sJoseGiftItems[]    = { ITEM_SHARP_BEAK, ITEM_SILK_SCARF };
+static const u16 sKenjiGiftItems[]   = { ITEM_PP_UP };
+
+#define PHONE_2(name, trId) { \
+    .trainerId = trId, \
+    .generalTexts = { MatchCall_##name##_General1, MatchCall_##name##_General2 }, \
+    .numGeneralTexts = 2, \
+    .battleRequestText = MatchCall_##name##_Battle }
+
+#define PHONE_3(name, trId) { \
+    .trainerId = trId, \
+    .generalTexts = { MatchCall_##name##_General1, MatchCall_##name##_General2, MatchCall_##name##_General3 }, \
+    .numGeneralTexts = 3, \
+    .battleRequestText = MatchCall_##name##_Battle }
+
+#define PHONE_ITEM_3(name, trId, flag, var, items) { \
+    .trainerId = trId, \
+    .generalTexts = { MatchCall_##name##_General1, MatchCall_##name##_General2, MatchCall_##name##_General3 }, \
+    .numGeneralTexts = 3, \
+    .battleRequestText = MatchCall_##name##_Battle, \
+    .itemFlag = flag, .itemVar = var, \
+    .giftItems = items, .numGiftItems = ARRAY_COUNT(items), \
+    .foundItemText = MatchCall_##name##_FoundItem }
+
+static const struct PhoneTrainer sPhoneTrainers[] =
+{
+    PHONE_3(Joey,           TRAINER_JOEY),
+    PHONE_ITEM_3(Wade,      TRAINER_WADE,    FLAG_WADE_HAS_PHONE_ITEM,    VAR_WADE_PHONE_ITEM,    sWadeGiftItems),
+    PHONE_3(Ralph,          TRAINER_RALPH),
+    PHONE_3(Liz,            TRAINER_LIZ),
+    PHONE_3(Anthony,        TRAINER_ANTHONY),
+    PHONE_3(Todd,           TRAINER_TODD),
+    PHONE_3(Gina,           TRAINER_GINA),
+    PHONE_3(Irwin,          TRAINER_IRWIN),
+    PHONE_3(Arnie,          TRAINER_ARNIE),
+    PHONE_ITEM_3(Alan,      TRAINER_ALAN,    FLAG_ALAN_HAS_PHONE_ITEM,    VAR_ALAN_PHONE_ITEM,    sAlanGiftItems),
+    PHONE_ITEM_3(Dana,      TRAINER_DANA,    FLAG_DANA_HAS_PHONE_ITEM,    VAR_DANA_PHONE_ITEM,    sDanaGiftItems),
+    PHONE_3(Chad,           TRAINER_CHAD),
+    PHONE_ITEM_3(Derek,     TRAINER_DEREK,   FLAG_DEREK_HAS_PHONE_ITEM,   VAR_DEREK_PHONE_ITEM,   sDerekGiftItems),
+    PHONE_ITEM_3(Tully,     TRAINER_TULLY,   FLAG_TULLY_HAS_PHONE_ITEM,   VAR_TULLY_PHONE_ITEM,   sTullyGiftItems),
+    PHONE_3(Brent,          TRAINER_BRENT),
+    PHONE_3(Tiffany,        TRAINER_TIFFANY),
+    PHONE_3(Vance,          TRAINER_VANCE),
+    PHONE_ITEM_3(Wilton,    TRAINER_WILTON,  FLAG_WILTON_HAS_PHONE_ITEM,  VAR_WILTON_PHONE_ITEM,  sWiltonGiftItems),
+    PHONE_ITEM_3(Kenji,     TRAINER_KENJI,   FLAG_KENJI_HAS_PHONE_ITEM,   VAR_KENJI_PHONE_ITEM,   sKenjiGiftItems),
+    PHONE_3(Parry,          TRAINER_PARRY),
+    PHONE_3(Erin,           TRAINER_ERIN),
+    PHONE_3(Jack,           TRAINER_JACK),
+    PHONE_ITEM_3(Beverly,   TRAINER_BEVERLY, FLAG_BEVERLY_HAS_PHONE_ITEM, VAR_BEVERLY_PHONE_ITEM, sBeverlyGiftItems),
+    PHONE_2(Huey,           TRAINER_HUEY),
+    PHONE_3(Gaven,          TRAINER_GAVEN),
+    PHONE_3(Beth,           TRAINER_BETH),
+    PHONE_ITEM_3(Jose,      TRAINER_JOSE,    FLAG_JOSE_HAS_PHONE_ITEM,    VAR_JOSE_PHONE_ITEM,    sJoseGiftItems),
+    PHONE_3(Reena,          TRAINER_REENA),
+    PHONE_2(Alex,           TRAINER_ALEX),
+    PHONE_2(Riley,          TRAINER_RILEY),
+    PHONE_2(Trevor,         TRAINER_TREVOR),
+    PHONE_2(Kyle,           TRAINER_KYLE),
+    PHONE_2(Carter,         TRAINER_CARTER),
+    PHONE_2(Hillary,        TRAINER_HILLARY),
+    PHONE_2(Rob,            TRAINER_ROB),
+    PHONE_2(Nicole,         TRAINER_NICOLE),
+    PHONE_2(Billy,          TRAINER_BILLY),
+    PHONE_2(Kenny,          TRAINER_KENNY),
+    PHONE_2(Joel,           TRAINER_JOEL),
+    PHONE_2(Charles,        TRAINER_CHARLES),
+};
 
 static const struct MatchCallTrainerTextInfo sMatchCallTrainers[] =
 {
@@ -772,6 +869,99 @@ void InitMatchCallCounters(void)
     sMatchCallState.stepCounter = 0;
 }
 
+static const struct PhoneTrainer *GetPhoneTrainer(u16 trainerId)
+{
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sPhoneTrainers); i++)
+    {
+        if (sPhoneTrainers[i].trainerId == trainerId)
+            return &sPhoneTrainers[i];
+    }
+
+    return NULL;
+}
+
+// Ligacao de rota do Match Call GSC: a cada ROUTE_STEP_COUNTER_MAX passos DENTRO
+// DO MESMO MAPA, um dos treinadores daquele mapa que ja deu o numero e ja foi
+// derrotado liga. Uma em cinco vezes ele guardou um item em vez de pedir
+// revanche (flag + var; quem entrega e o script dele no mapa).
+// Chamada por src/field_control_avatar.c, antes de TryStartMatchCall.
+#define ROUTE_STEP_COUNTER_MAX 255
+
+static EWRAM_DATA u16 sRouteStepLastMap = 0;
+
+bool32 TryStartRouteMatchCall(void)
+{
+    u16 curMap = (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
+    u16 steps;
+
+    if (!FlagGet(FLAG_HAS_MATCH_CALL))
+        return FALSE;
+    if (!HasEnoughBadgesForRematch())
+        return FALSE;
+
+    if (curMap != sRouteStepLastMap)
+    {
+        sRouteStepLastMap = curMap;
+        VarSet(VAR_ROUTE_STEP_COUNTER, 0);
+    }
+
+    steps = VarGet(VAR_ROUTE_STEP_COUNTER) + 1;
+    if (steps < ROUTE_STEP_COUNTER_MAX)
+    {
+        VarSet(VAR_ROUTE_STEP_COUNTER, steps);
+        return FALSE;
+    }
+
+    VarSet(VAR_ROUTE_STEP_COUNTER, 0);
+
+    {
+        u16 mapGroup = gSaveBlock1Ptr->location.mapGroup;
+        u16 mapNum = gSaveBlock1Ptr->location.mapNum;
+        u8 candidates[REMATCH_SPECIAL_TRAINER_START];
+        u32 numCandidates = 0;
+        u32 i;
+
+        for (i = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
+        {
+            if (gRematchTable[i].mapGroup != mapGroup || gRematchTable[i].mapNum != mapNum)
+                continue;
+            if (!TrainerIsMatchCallRegistered(i))
+                continue;
+            if (!HasTrainerBeenFought(gRematchTable[i].trainerIds[0]))
+                continue;
+
+            candidates[numCandidates++] = i;
+        }
+
+        if (numCandidates == 0)
+            return FALSE;
+
+        {
+            u32 chosen = candidates[Random() % numCandidates];
+            u16 trainerId = gRematchTable[chosen].trainerIds[0];
+            const struct PhoneTrainer *phone = GetPhoneTrainer(trainerId);
+
+            if (phone != NULL && phone->itemFlag != 0 && (Random() % 5) == 0)
+            {
+                u32 itemIdx = Random() % phone->numGiftItems;
+                VarSet(phone->itemVar, phone->giftItems[itemIdx]);
+                FlagSet(phone->itemFlag);
+            }
+            else
+            {
+                UpdateRematchIfDefeated(chosen);
+            }
+
+            sMatchCallState.trainerId = trainerId;
+            sMatchCallState.triggeredFromScript = FALSE;
+            StartMatchCall();
+            return TRUE;
+        }
+    }
+}
+
 static u32 GetCurrentTotalMinutes(struct Time *time)
 {
     return time->days * 24 * 60 + time->hours * 60 + time->minutes;
@@ -805,17 +995,13 @@ static bool32 CheckMatchCallChance(void)
 
 static bool32 MapAllowsMatchCall(void)
 {
-    if (!Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) || gMapHeader.regionMapSectionId == MAPSEC_SAFARI_ZONE)
+    // Ao ar livre, mais caverna (como no HGSS). As checagens de Sootopolis e do
+    // Mt. Chimney do vanilla sairam: sao de historia de Hoenn, fora da ROM.
+    if (!Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType)
+     && gMapHeader.mapType != MAP_TYPE_UNDERGROUND)
         return FALSE;
 
-    if (gMapHeader.regionMapSectionId == MAPSEC_SOOTOPOLIS_CITY
-     && FlagGet(FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA) == TRUE
-     && FlagGet(FLAG_NEVER_SET_0x0DC) == FALSE)
-        return FALSE;
-
-    if (gMapHeader.regionMapSectionId == MAPSEC_MT_CHIMNEY
-     && FlagGet(FLAG_MET_ARCHIE_METEOR_FALLS) == TRUE
-     && FlagGet(FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY) == FALSE)
+    if (gMapHeader.regionMapSectionId == MAPSEC_SAFARI_ZONE)
         return FALSE;
 
     return TRUE;
@@ -823,7 +1009,9 @@ static bool32 MapAllowsMatchCall(void)
 
 static bool32 UpdateMatchCallStepCounter(void)
 {
-    if (++sMatchCallState.stepCounter >= 10)
+    // 30 e nao 10: com 40 numeros na agenda, de 10 em 10 passos o telefone nao
+    // para de tocar (valor do HnS).
+    if (++sMatchCallState.stepCounter >= 30)
     {
         sMatchCallState.stepCounter = 0;
         return TRUE;
@@ -836,7 +1024,7 @@ static bool32 UpdateMatchCallStepCounter(void)
 
 static bool32 SelectMatchCallTrainer(void)
 {
-    u32 matchCallId;
+    s32 matchCallIdx;
     u32 numRegistered = GetNumRegisteredTrainers();
     if (numRegistered == 0)
         return FALSE;
@@ -846,8 +1034,14 @@ static bool32 SelectMatchCallTrainer(void)
     if (sMatchCallState.trainerId == REMATCH_TABLE_ENTRIES)
         return FALSE;
 
-    matchCallId = GetTrainerMatchCallId(sMatchCallState.trainerId);
-    if (GetRematchTrainerLocation(matchCallId) == gMapHeader.regionMapSectionId && !TrainerIsEligibleForRematch(matchCallId))
+    // Pelo indice da tabela de revanche, nao por GetTrainerMatchCallId: aquele e
+    // um while(1) que nunca acha quem nao esta em sMatchCallTrainers (os 40 do
+    // telefone nao estao) e trava o jogo.
+    matchCallIdx = GetRematchIdxByTrainerIdx(sMatchCallState.trainerId);
+    if (matchCallIdx < 0)
+        return FALSE;
+
+    if (GetRematchTrainerLocation(matchCallIdx) == gMapHeader.regionMapSectionId && !TrainerIsEligibleForRematch(matchCallIdx))
         return FALSE;
 
     return TRUE;
@@ -895,10 +1089,11 @@ static u32 GetActiveMatchCallTrainerId(u32 activeMatchCallId)
 bool32 TryStartMatchCall(void)
 {
     if (FlagGet(FLAG_HAS_MATCH_CALL)
+        && HasEnoughBadgesForRematch()
+        && MapAllowsMatchCall()
         && UpdateMatchCallStepCounter()
         && UpdateMatchCallMinutesCounter()
         && CheckMatchCallChance()
-        && MapAllowsMatchCall()
         && SelectMatchCallTrainer())
     {
         StartMatchCall();
@@ -1061,7 +1256,10 @@ static bool32 MatchCall_PrintIntro(u8 taskId)
 
         // Ready the message (and the speaker's name if possible)
         if (!sMatchCallState.triggeredFromScript)
+        {
             SelectMatchCallMessage(sMatchCallState.trainerId, gStringVar4);
+            gSpeakerName = GetTrainerNameFromId(sMatchCallState.trainerId);
+        }
 
         TrySpawnAndShowNamebox(gSpeakerName, NAME_BOX_BASE_TILE_NUM);
         InitMatchCallTextPrinter(tWindowId, gStringVar4);
@@ -1278,6 +1476,42 @@ bool32 SelectMatchCallMessage(int trainerId, u8 *str)
     u32 matchCallId;
     const struct MatchCallText *matchCallText;
     bool32 newRematchRequest = FALSE;
+    const struct PhoneTrainer *phone = GetPhoneTrainer(trainerId);
+
+    // Telefone GSC: fala propria, escrita a mao, sem passar pelo montador de
+    // frases do Match Call de Hoenn (sMatchCallTrainers nao tem estes 40).
+    if (phone != NULL)
+    {
+        s32 rematchIdx = GetRematchIdxByTrainerIdx(trainerId);
+        const u8 *text;
+
+        if (rematchIdx >= 0 && GetActiveTrainerRematches(rematchIdx) != 0)
+        {
+            text = phone->battleRequestText;
+            newRematchRequest = TRUE;
+        }
+        else if (phone->itemFlag != 0 && FlagGet(phone->itemFlag))
+        {
+            text = phone->foundItemText;
+        }
+        else
+        {
+            text = phone->generalTexts[Random() % phone->numGeneralTexts];
+        }
+
+        // {STR_VAR_3} nas falas e um Pokemon do time que o jogador enfrentou.
+        {
+            u16 lastBeatenId = GetLastBeatenRematchTrainerId(trainerId);
+            const struct TrainerMon *party = GetTrainerPartyFromId(lastBeatenId);
+            u8 partySize = GetTrainerPartySizeFromId(lastBeatenId);
+
+            if (party != NULL && partySize != 0)
+                StringCopy(gStringVar3, GetSpeciesName(party[Random() % partySize].species));
+        }
+
+        StringExpandPlaceholders(str, text);
+        return newRematchRequest;
+    }
 
     matchCallId = GetTrainerMatchCallId(trainerId);
     sBattleFrontierStreakInfo.facilityId = 0;

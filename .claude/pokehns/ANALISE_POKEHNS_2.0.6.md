@@ -405,7 +405,8 @@ PCenter religado ao exterior.
   nosso), rival, ginásios, BP rewards, plaquinhas `{SPEAKER}` (K8).
 - `flag_audit.py --csv` + diff ao final (skill `catalogar-flags`).
 
-**Fase 6 — Sistemas** ✅ FEITA (19/10/2026, exceto Match Call — ver abaixo).
+**Fase 6 — Sistemas** ✅ FEITA (19/10/2026; Match Call GSC saiu em 24/10/2026,
+diário em `.claude/merge_hns/match_call_gsc.md`).
 Docs: `.claude/merge_hns/fase6_{radio,roamers,mom_surf_fanfarras}.md`.
 - **Rádio 12 estações** (Poké Flute/Hoenn Sound/P&P/Sing só em Kanto c/ EXPN
   Card; Lucky Channel diário; Evolution escondida até o evento de Mahogany;
@@ -421,9 +422,15 @@ Docs: `.claude/merge_hns/fase6_{radio,roamers,mom_surf_fanfarras}.md`.
   prêmio, saldo no cartão.
 - **Fanfarras HGSS**: 4 que faltavam (Bug Contest 1º/2º/3º, Obtain Egg).
 - **Surf Gen 4**: JÁ EXISTIA no S via upstream (nada copiado).
-- Pendências: Match Call GSC (fica para rodada própria — mexe em
-  FREE_MATCH_CALL/save), QA no jogo (rádio por posição, Snorlax, flash de
-  roamer, menu da mãe, "MOM:" sem plaquinha → passe K8).
+- ✅ **Match Call GSC** (24/10/2026): 40 treinadores na agenda (28 Johto + 12
+  Kanto), 102 times de revanche importados, `gRematchTable` reconstruída (a
+  antiga estava destroçada), ligação por rota (255 passos) + a do vanilla,
+  item por telefone (9 treinadores) e `FREE_MATCH_CALL FALSE` com os 60 B no
+  FIM do SaveBlock1 (os offsets do meio estão presos por STATIC_ASSERT).
+  Falta o **app de telefone no Pokégear** (ligar para a agenda) — rodada
+  própria, é interface.
+- Pendências: QA no jogo (rádio por posição, Snorlax, flash de roamer, menu da
+  mãe, telefone).
 - Ordem sugerida pela cadeia de dependências:
   1. **Rádio 12 estações** (pré-requisito do Snorlax e do Hoenn Sound);
   2. **S.S. Aqua** ida-e-volta (destrava Vermilion, Latis, ilhas; cuidado com
@@ -538,7 +545,7 @@ snow/volcano/pond, apricorns/Kurt/gym rematch, rádio base (4 estações).
 | Médio | Roamers Kanto | `ROAMER_COUNT 4`, `locationTableId`, latis, atração 2%/lendário |
 | Médio | Battle bgs "modern" + CAVE_WATER/GRAY_CAVE | arte agora disponível no dump; tabela `sMapDefaultEnvironments[]` é mais limpa que nossas funções |
 | Médio | Clock Type runtime (`UseFakeRtc`) | 1 bit SB3 |
-| Alto | Match Call GSC | conflita com `FREE_MATCH_CALL TRUE` |
+| ✅ FEITO | Match Call GSC | 24/10/2026; `FREE_MATCH_CALL FALSE` com os campos no fim do SaveBlock1 (60 B) |
 | Alto | GBS/GB Player | invasivo no m4a; testar no mGBA patchado |
 | Alto | Menu customização | não portar inteiro; cereja: Party Limit, Exp Mult, Shiny Chance, Item Drops |
 | — | Alola + Sinjoh/Arceus | 41 mapas que não temos; candidato a conteúdo extra futuro |
@@ -573,6 +580,10 @@ snow/volcano/pond, apricorns/Kurt/gym rematch, rádio base (4 estações).
       aposentar ou reaproveitar.
 - [ ] Johto usa `NAME_SILVER` (texto fixo) nas falas do rival; com
       `NAME_RIVAL` existindo, trocar faria valer o nome que o jogador deu.
+- [ ] App de telefone no Pokégear (ligar para quem está na agenda): o Match
+      Call hoje só recebe. Detalhes em `.claude/merge_hns/match_call_gsc.md`.
+- [ ] `OBJECT_EVENTS_COUNT` só sobe de 24 para 25 agora (o Match Call levou 60 B
+      do save); a skill `limites-do-engine` já foi corrigida.
 
 ---
 

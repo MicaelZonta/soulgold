@@ -174,7 +174,10 @@ Route36_EventScript_Mark::
 	end
 
 Route36_EventScript_Schoolboy::
-	trainerbattle_single TRAINER_ALAN Route36_Text_SchoolboyAlan1Seen, Route36_Text_SchoolboyAlan1Beaten
+	trainerbattle_single TRAINER_ALAN, Route36_Text_SchoolboyAlan1Seen, Route36_Text_SchoolboyAlan1Beaten, Route36_EventScript_RegisterAlan
+	goto_if_set FLAG_ALAN_HAS_PHONE_ITEM, Route36_EventScript_AlanGiveItem
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route36_EventScript_RematchAlan
 	msgbox Route36_Text_SchoolboyAlanAfter, MSGBOX_AUTOCLOSE
 	end
 
@@ -318,6 +321,65 @@ Route36_Text_Tips2:
 	.string "any place.\p"
 	.string "It is convenient for exploring\n"
 	.string "caves and other landmarks.$"
+
+Route36_EventScript_RegisterAlan::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route36_Text_AlanRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_ALAN
+	release
+	end
+
+Route36_Text_AlanRegister:
+	.string "Darn. I study five hours a day too.\p"
+	.string "There's more to learning than just\n"
+	.string "reading books.$"
+
+Route36_EventScript_AlanGiveItem::
+	@ Espaco ANTES da oferta: depois do giveitem o VAR_RESULT ja foi
+	@ sobrescrito pelo Std_ObtainItem (checkitemtype), e a conferencia
+	@ de "nao cabe" nunca pegaria -- a flag seria limpa e o item sumiria.
+	checkitemspace VAR_ALAN_PHONE_ITEM
+	goto_if_eq VAR_RESULT, FALSE, Route36_EventScript_AlanNoRoom
+	msgbox Route36_Text_AlanHasItem, MSGBOX_DEFAULT
+	giveitem VAR_ALAN_PHONE_ITEM
+	clearflag FLAG_ALAN_HAS_PHONE_ITEM
+	msgbox Route36_Text_AlanGaveItem, MSGBOX_AUTOCLOSE
+	end
+
+Route36_Text_AlanHasItem:
+	.string "Hey! I found something\n"
+	.string "while studying!\p"
+	.string "Here, you can have it!$"
+
+Route36_Text_AlanGaveItem:
+	.string "I'll let you know if I find\n"
+	.string "anything else!$"
+
+Route36_EventScript_RematchAlan::
+	trainerbattle_rematch TRAINER_ALAN, Route36_Text_AlanRematchIntro, Route36_Text_AlanRematchDefeat
+	msgbox Route36_Text_AlanPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Route36_Text_AlanRematchIntro:
+	.string "Thanks to my studies, I'm ready\n"
+	.string "for any Pokémon!$"
+
+Route36_Text_AlanRematchDefeat:
+	.string "Oops! Computation error?$"
+
+Route36_Text_AlanPostRematch:
+	.string "Darn. I study five hours a day too.\p"
+	.string "There's more to learning than just\n"
+	.string "reading books.$"
+
+Route36_EventScript_AlanNoRoom::
+	msgbox Route36_Text_AlanNoRoom, MSGBOX_AUTOCLOSE
+	end
+
+Route36_Text_AlanNoRoom:
+	.string "Hmm, your Bag is full.\p"
+	.string "Come back when you have room.$"
 
 Route36_SudowoodoHintLady::
 	lock

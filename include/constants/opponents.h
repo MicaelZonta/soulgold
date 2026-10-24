@@ -25,8 +25,8 @@
 #define TRAINER_FALKNER_1         19
 #define TRAINER_TODD               20
 #define TRAINER_TOM               21
-#define TRAINER_UNUSED_384         22  // Former TRAINER_VERONICA; orphaned party removed.
-#define TRAINER_UNUSED_385              23  // Former TRAINER_THERESA; orphaned party removed.
+#define TRAINER_JOEY_2                       22  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_384
+#define TRAINER_JOEY_3                       23  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_385
 #define TRAINER_TIM              24
 #define TRAINER_TIMOTHY              25
 #define TRAINER_FALKNER_2         26
@@ -42,7 +42,7 @@
 #define TRAINER_JEFFREY                        36
 #define TRAINER_GRUNT_33                       37
 #define TRAINER_NORMAN                        38
-#define TRAINER_UNUSED_019                   39  // Former TRAINER_VIOLET; reserved after legacy-map removal.
+#define TRAINER_JOEY_4                       39  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_019
 #define TRAINER_ROSE_2                       40
 #define TRAINER_ROSE_3                       41
 #define TRAINER_ROSE_4                       42
@@ -60,7 +60,7 @@
 #define TRAINER_RICKY               54
 #define TRAINER_ROB               55
 #define TRAINER_ROBERT               56
-#define TRAINER_UNUSED_475                       57  // Former TRAINER_LOLA_1; pending legacy battle removed.
+#define TRAINER_JOEY_5                       57  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_475
 #define TRAINER_CODY                      58
 #define TRAINER_GWEN                         59
 #define TRAINER_LOLA_2                       60
@@ -80,21 +80,21 @@
 #define TRAINER_BERKE                        74
 #define TRAINER_ELAINE                      75
 #define TRAINER_VINCENT                      76
-#define TRAINER_UNUSED_443                        77  // Former TRAINER_LEROY; pending legacy battle removed.
-#define TRAINER_UNUSED_444                     78  // Former TRAINER_WILTON_1; pending legacy battle removed.
+#define TRAINER_WADE_2                       77  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_443
+#define TRAINER_WADE_3                       78  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_444
 #define TRAINER_EDGAR                        79
 #define TRAINER_ALBERT                       80
 #define TRAINER_SAMUEL                       81
-#define TRAINER_UNUSED_001                   82  // Former TRAINER_VITO; reserved after legacy-map removal.
+#define TRAINER_WADE_4                       82  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_001
 #define TRAINER_OWEN                         83
 #define TRAINER_WILTON_2                     84
 #define TRAINER_WILTON_3                     85
 #define TRAINER_WILTON_4                     86
 #define TRAINER_WILTON_5                     87
 #define TRAINER_WARREN                       88
-#define TRAINER_UNUSED_441                         89  // Former TRAINER_MARY; pending legacy battle removed.
+#define TRAINER_WADE_5                       89  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_441
 #define TRAINER_BARNEY                       90
-#define TRAINER_UNUSED_442                         91  // Former TRAINER_JODY; pending legacy battle removed.
+#define TRAINER_RALPH_2                      91  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_442
 #define TRAINER_WENDY                        92
 #define TRAINER_KEIRA                        93
 #define TRAINER_EMMA                     94
@@ -102,17 +102,17 @@
 #define TRAINER_HOPE                         96
 #define TRAINER_SHANNON                      97
 #define TRAINER_MICHELLE                     98
-#define TRAINER_UNUSED_002                   99  // Former TRAINER_CAROLINE; reserved after legacy-map removal.
-#define TRAINER_UNUSED_003                  100  // Former TRAINER_JULIE; reserved after legacy-map removal.
+#define TRAINER_RALPH_3                      99  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_002
+#define TRAINER_RALPH_4                      100  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_003
 #define TRAINER_ERICK                    101
 #define TRAINER_ERIK                    102
 #define TRAINER_ERIN                    103
 #define TRAINER_ERNEST                    104
-#define TRAINER_UNUSED_004                  105  // Former TRAINER_PATRICIA; reserved after legacy-map removal.
-#define TRAINER_UNUSED_020                  106  // Former TRAINER_KINDRA; reserved after legacy-map removal.
+#define TRAINER_RALPH_5                      105  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_004
+#define TRAINER_LIZ_2                        106  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_020
 #define TRAINER_TAMMY                       107
-#define TRAINER_UNUSED_315                   108  // Former TRAINER_VALERIE_1; reserved after legacy-map removal.
-#define TRAINER_UNUSED_014                  109  // Former TRAINER_TASHA; reserved after legacy-map removal.
+#define TRAINER_LIZ_3                        108  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_315
+#define TRAINER_LIZ_4                        109  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_014
 #define TRAINER_EMA                   110
 #define TRAINER_JO                   111
 #define TRAINER_VALERIE_4                   112
@@ -122,13 +122,13 @@
 #define TRAINER_WAI        116
 #define TRAINER_GRUNT_19                     117
 #define TRAINER_ELLEN                     118
-#define TRAINER_UNUSED_425                       119  // Former TRAINER_NAOMI; pending legacy battle removed.
+#define TRAINER_LIZ_5                        119  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_425
 #define TRAINER_GRUNT_20                     120
 #define TRAINER_GRUNT_21                     121
 #define TRAINER_GRUNT_22                     122
 #define TRAINER_GRUNT_23                     123
-#define TRAINER_UNUSED_040                     124  // Former TRAINER_MELISSA; reserved after legacy-map removal.
-#define TRAINER_UNUSED_041                      125  // Former TRAINER_SHEILA; reserved after legacy-map removal.
+#define TRAINER_ANTHONY_2                    124  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_040
+#define TRAINER_ANTHONY_3                    125  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_041
 #define TRAINER_SHIRLEY                     126
 #define TRAINER_ARIANA_1                   127
 #define TRAINER_CONNIE                      128
@@ -139,15 +139,15 @@
 #define TRAINER_JESSICA_3                   133
 #define TRAINER_JESSICA_4                   134
 #define TRAINER_JESSICA_5                   135
-#define TRAINER_UNUSED_316                   136  // Former TRAINER_WINSTON_1; reserved after legacy-map removal.
-#define TRAINER_UNUSED_018                  137  // Former TRAINER_MOLLIE; reserved after legacy-map removal.
+#define TRAINER_ANTHONY_4                    136  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_316
+#define TRAINER_ANTHONY_5                    137  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_018
 #define TRAINER_GARRET                          138  // Retained for active S.S. Aqua and facility consumers.
 #define TRAINER_RODAROS                     139
 #define TRAINER_BELMARE                     140
 #define TRAINER_KENNEDY                     141
 #define TRAINER_WINSTON_5                   142
-#define TRAINER_UNUSED_317                     143  // Former TRAINER_STEVE_1; reserved after legacy-map removal.
-#define TRAINER_UNUSED_318                    144  // Former TRAINER_THALIA_1; reserved after legacy-map removal.
+#define TRAINER_TODD_2                       143  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_317
+#define TRAINER_TODD_3                       144  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_318
 #define TRAINER_MARK                        145
 #define TRAINER_TERU          146
 #define TRAINER_ALEX_2                          147
@@ -258,24 +258,24 @@
 #define TRAINER_RIVAL_CHIKORITA_2                     252
 #define TRAINER_RIVAL_CHIKORITA_3                     253
 #define TRAINER_WILL_POSTOBC                    254
-#define TRAINER_UNUSED_449                       255  // Former TRAINER_MICAH; pending legacy battle removed.
-#define TRAINER_UNUSED_450                      256  // Former TRAINER_THOMAS; pending legacy battle removed.
-#define TRAINER_UNUSED_347                    257  // Former TRAINER_WALTER_2; orphaned rematch variant.
-#define TRAINER_UNUSED_348                    258  // Former TRAINER_WALTER_3; orphaned rematch variant.
-#define TRAINER_UNUSED_349                    259  // Former TRAINER_WALTER_4; orphaned rematch variant.
-#define TRAINER_UNUSED_350                    260  // Former TRAINER_WALTER_5; orphaned rematch variant.
+#define TRAINER_TODD_4                       255  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_449
+#define TRAINER_TODD_5                       256  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_450
+#define TRAINER_GINA_2                       257  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_347
+#define TRAINER_GINA_3                       258  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_348
+#define TRAINER_GINA_4                       259  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_349
+#define TRAINER_GINA_5                       260  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_350
 #define TRAINER_SIDNEY                      261
-#define TRAINER_UNUSED_451                      262  // Former TRAINER_PHOEBE; pending legacy battle removed.
+#define TRAINER_IRWIN_2                      262  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_451
 #define TRAINER_GLACIA                      263
 #define TRAINER_KIP                       264
-#define TRAINER_UNUSED_452                   265  // Former TRAINER_ROXANNE_1; pending legacy battle removed.
+#define TRAINER_IRWIN_3                      265  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_452
 #define TRAINER_DICK                    266
-#define TRAINER_UNUSED_453                   267  // Former TRAINER_WATTSON_1; pending legacy battle removed.
+#define TRAINER_IRWIN_4                      267  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_453
 #define TRAINER_PING                  268
-#define TRAINER_UNUSED_454                    269  // Former TRAINER_NORMAN_1; pending legacy battle removed.
-#define TRAINER_UNUSED_455                    270  // Former TRAINER_WINONA_1; pending legacy battle removed.
-#define TRAINER_UNUSED_456             271  // Former TRAINER_TATE_AND_LIZA_1; pending legacy battle removed.
-#define TRAINER_UNUSED_457                      272  // Former TRAINER_JUAN_1; pending legacy battle removed.
+#define TRAINER_IRWIN_5                      269  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_454
+#define TRAINER_ARNIE_2                      270  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_455
+#define TRAINER_ARNIE_3                      271  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_456
+#define TRAINER_ARNIE_4                      272  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_457
 #define TRAINER_ARCHER_1                     273
 #define TRAINER_TED                         274
 #define TRAINER_PAUL                        275
@@ -284,39 +284,39 @@
 #define TRAINER_PETREL_2                     278
 #define TRAINER_PROTON_2                     279
 #define TRAINER_UNUSEDNAME_2                     280
-#define TRAINER_UNUSED_458                     281  // Former TRAINER_GEORGIA; pending legacy battle removed.
-#define TRAINER_UNUSED_386                     282  // Former TRAINER_BLUE_2; orphaned party removed.
+#define TRAINER_ARNIE_5                      281  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_458
+#define TRAINER_ALAN_2                       282  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_386
 #define TRAINER_KAREN_3                     283
 #define TRAINER_KAREN_4                     284
 #define TRAINER_KAREN_5                     285
-#define TRAINER_UNUSED_029                  286  // Former TRAINER_KATE_AND_JOY; reserved after legacy-map removal.
-#define TRAINER_UNUSED_322              287  // Former TRAINER_ANNA_AND_MEG_1; reserved after legacy-map removal.
-#define TRAINER_UNUSED_351              288  // Former TRAINER_ANNA_AND_MEG_2; orphaned rematch variant.
-#define TRAINER_UNUSED_352              289  // Former TRAINER_ANNA_AND_MEG_3; orphaned rematch variant.
-#define TRAINER_UNUSED_353              290  // Former TRAINER_ANNA_AND_MEG_4; orphaned rematch variant.
-#define TRAINER_UNUSED_354              291  // Former TRAINER_ANNA_AND_MEG_5; orphaned rematch variant.
+#define TRAINER_ALAN_3                       286  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_029
+#define TRAINER_ALAN_4                       287  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_322
+#define TRAINER_ALAN_5                       288  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_351
+#define TRAINER_DANA_2                       289  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_352
+#define TRAINER_DANA_3                       290  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_353
+#define TRAINER_DANA_4                       291  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_354
 #define TRAINER_VICTOR                          292  // Retained for active Goldenrod Gym battle.
-#define TRAINER_UNUSED_323                    293  // Former TRAINER_MIGUEL_1; reserved after legacy-map removal.
+#define TRAINER_DANA_5                       293  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_323
 #define TRAINER_GRUNT_26                      294
-#define TRAINER_UNUSED_355                    295  // Former TRAINER_MIGUEL_2; orphaned rematch variant.
-#define TRAINER_UNUSED_356                    296  // Former TRAINER_MIGUEL_3; orphaned rematch variant.
-#define TRAINER_UNUSED_357                    297  // Former TRAINER_MIGUEL_4; orphaned rematch variant.
-#define TRAINER_UNUSED_358                    298  // Former TRAINER_MIGUEL_5; orphaned rematch variant.
+#define TRAINER_CHAD_2                       295  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_355
+#define TRAINER_CHAD_3                       296  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_356
+#define TRAINER_CHAD_4                       297  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_357
+#define TRAINER_CHAD_5                       298  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_358
 #define TRAINER_VICTORIA                    299
-#define TRAINER_UNUSED_030                  300  // Former TRAINER_VANESSA; reserved after legacy-map removal.
-#define TRAINER_UNUSED_492                     301  // Former TRAINER_BETHANY; pending legacy battle removed.
+#define TRAINER_DEREK_2                      300  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_030
+#define TRAINER_DEREK_3                      301  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_492
 #define TRAINER_LTSURGE                    302
 #define TRAINER_ERIKA                    303
 #define TRAINER_SABRINA                    304
 #define TRAINER_JANINE                    305
 #define TRAINER_BLAINE                    306
-#define TRAINER_UNUSED_324                   307  // Former TRAINER_TIMOTHY_1; reserved after legacy-map removal.
+#define TRAINER_DEREK_4                      307  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_324
 #define TRAINER_BEARNESE                    308
 #define TRAINER_TIMOTHY_3                   309
 #define TRAINER_TIMOTHY_4                   310
 #define TRAINER_TIMOTHY_5                   311
-#define TRAINER_UNUSED_460                       312  // Former TRAINER_VICKY; pending legacy battle removed.
-#define TRAINER_UNUSED_491                    313  // Former TRAINER_SHELBY_1; pending legacy battle removed.
+#define TRAINER_DEREK_5                      312  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_460
+#define TRAINER_TULLY_2                      313  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_491
 #define TRAINER_SHELBY_2                    314
 #define TRAINER_SHELBY_3                    315
 #define TRAINER_SHELBY_4                    316
@@ -327,8 +327,8 @@
 #define TRAINER_TOMMY                       321
 #define TRAINER_JOEY                        322
 #define TRAINER_BEN                             323  // Retained for active Johto and legacy-map consumers.
-#define TRAINER_UNUSED_049                      324  // Former TRAINER_QUINCY; reserved after legacy-map removal.
-#define TRAINER_UNUSED_050                    325  // Former TRAINER_KATELYNN; reserved after legacy-map removal.
+#define TRAINER_TULLY_3                      324  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_049
+#define TRAINER_TULLY_4                      325  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_050
 #define TRAINER_RIVAL_TOTODILE_3                      326
 #define TRAINER_KENNETH                      327
 #define TRAINER_FIDEL                    328
@@ -337,14 +337,14 @@
 #define TRAINER_GAKU                    331
 #define TRAINER_EDDIE                       332
 #define TRAINER_ALLEN                       333
-#define TRAINER_UNUSED_051                       334  // Former TRAINER_TIMMY; reserved after legacy-map removal.
+#define TRAINER_BRENT_2                      334  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_051
 #define TRAINER_WALLACE                         335  // Retained for Battle Dome consumer.
 #define TRAINER_ANDREW                      336
 #define TRAINER_IVAN                        337
-#define TRAINER_UNUSED_052                      338  // Former TRAINER_CLAUDE; reserved after legacy-map removal.
+#define TRAINER_BRENT_3                      338  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_052
 #define TRAINER_MASA                    339
-#define TRAINER_UNUSED_463                         340  // Former TRAINER_NED; pending legacy battle removed.
-#define TRAINER_UNUSED_464                        341  // Former TRAINER_DALE; pending legacy battle removed.
+#define TRAINER_BRENT_4                      340  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_463
+#define TRAINER_TIFFANY_2                    341  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_464
 #define TRAINER_NOLAN                           342  // Retained for active S.S. Aqua battle.
 #define TRAINER_CYBIL                       343
 #define TRAINER_WADE                        344
@@ -356,11 +356,11 @@
 #define TRAINER_RONALD                      350
 #define TRAINER_RIVAL_CYNDAQUIL_2                       351
 #define TRAINER_ANTHONY                     352
-#define TRAINER_UNUSED_325                  353  // Former TRAINER_BENJAMIN_1; reserved after legacy-map removal.
-#define TRAINER_UNUSED_359                  354  // Former TRAINER_BENJAMIN_2; orphaned rematch variant.
-#define TRAINER_UNUSED_360                  355  // Former TRAINER_BENJAMIN_3; orphaned rematch variant.
-#define TRAINER_UNUSED_361                  356  // Former TRAINER_BENJAMIN_4; orphaned rematch variant.
-#define TRAINER_UNUSED_362                  357  // Former TRAINER_BENJAMIN_5; orphaned rematch variant.
+#define TRAINER_TIFFANY_3                    353  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_325
+#define TRAINER_TIFFANY_4                    354  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_359
+#define TRAINER_VANCE_2                      355  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_360
+#define TRAINER_VANCE_3                      356  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_361
+#define TRAINER_KENJI_2                      357  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_362
 #define TRAINER_ABE                   358
 #define TRAINER_JASMINE                         359  // Retained for active Johto, Kanto, and custom consumers.
 #define TRAINER_AL                   360
@@ -372,15 +372,15 @@
 #define TRAINER_LISA                     366
 #define TRAINER_LIZ                     367
 #define TRAINER_LLOYD                     368
-#define TRAINER_UNUSED_326                     369  // Former TRAINER_MARIA_1; reserved after legacy-map removal.
-#define TRAINER_UNUSED_363                     370  // Former TRAINER_MARIA_2; orphaned rematch variant.
-#define TRAINER_UNUSED_364                     371  // Former TRAINER_MARIA_3; orphaned rematch variant.
-#define TRAINER_UNUSED_365                     372  // Former TRAINER_MARIA_4; orphaned rematch variant.
-#define TRAINER_UNUSED_366                     373  // Former TRAINER_MARIA_5; orphaned rematch variant.
+#define TRAINER_PARRY_2                      369  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_326
+#define TRAINER_PARRY_3                      370  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_363
+#define TRAINER_ERIN_2                       371  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_364
+#define TRAINER_ERIN_3                       372  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_365
+#define TRAINER_JACK_2                       373  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_366
 #define TRAINER_GARRETT                      374
 #define TRAINER_JULIA                   375
 #define TRAINER_WILL_2                    376
-#define TRAINER_UNUSED_327                     377  // Former TRAINER_PABLO_1; reserved after legacy-map removal.
+#define TRAINER_JACK_3                       377  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_327
 #define TRAINER_GRUNT_14                       378
 #define TRAINER_BRUNO_1                    379
 #define TRAINER_BRUNO_2                    380
@@ -388,47 +388,47 @@
 #define TRAINER_KAREN_2                    382
 #define TRAINER_KOGA_1                      383
 #define TRAINER_KIM                       384
-#define TRAINER_UNUSED_053                       385  // Former TRAINER_TALIA; reserved after legacy-map removal.
-#define TRAINER_UNUSED_328                   386  // Former TRAINER_KATELYN_1; reserved after legacy-map removal.
+#define TRAINER_JACK_4                       385  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_053
+#define TRAINER_JACK_5                       386  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_328
 #define TRAINER_BOB                     387
-#define TRAINER_UNUSED_371                   388  // Former TRAINER_KATELYN_2; orphaned rematch variant.
-#define TRAINER_UNUSED_372                   389  // Former TRAINER_KATELYN_3; orphaned rematch variant.
-#define TRAINER_UNUSED_373                   390  // Former TRAINER_KATELYN_4; orphaned rematch variant.
-#define TRAINER_UNUSED_374                   391  // Former TRAINER_KATELYN_5; orphaned rematch variant.
-#define TRAINER_UNUSED_329                   392  // Former TRAINER_NICOLAS_1; reserved after legacy-map removal.
-#define TRAINER_UNUSED_375                   393  // Former TRAINER_NICOLAS_2; orphaned rematch variant.
-#define TRAINER_UNUSED_376                   394  // Former TRAINER_NICOLAS_3; orphaned rematch variant.
-#define TRAINER_UNUSED_377                   395  // Former TRAINER_NICOLAS_4; orphaned rematch variant.
-#define TRAINER_UNUSED_378                   396  // Former TRAINER_NICOLAS_5; orphaned rematch variant.
+#define TRAINER_BEVERLY_2                    388  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_371
+#define TRAINER_BEVERLY_3                    389  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_372
+#define TRAINER_BEVERLY_4                    390  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_373
+#define TRAINER_BEVERLY_5                    391  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_374
+#define TRAINER_HUEY_2                       392  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_329
+#define TRAINER_HUEY_3                       393  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_375
+#define TRAINER_HUEY_4                       394  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_376
+#define TRAINER_GAVEN_2                      395  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_377
+#define TRAINER_GAVEN_3                      396  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_378
 #define TRAINER_AARON                       397
 #define TRAINER_PERRY                       398
 #define TRAINER_HUGH                        399
 #define TRAINER_PHIL                        400
 #define TRAINER_JARED                       401
 #define TRAINER_CHUCK_2                    402
-#define TRAINER_UNUSED_054                     403  // Former TRAINER_PRESLEY; reserved after legacy-map removal.
+#define TRAINER_BETH_2                       403  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_054
 #define TRAINER_LOIS                     404
 #define TRAINER_COLIN                       405
-#define TRAINER_UNUSED_330                    406  // Former TRAINER_ROBERT_1; reserved after legacy-map removal.
+#define TRAINER_BETH_3                       406  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_330
 #define TRAINER_BENNY                       407
 #define TRAINER_GRUNT_15                     408
-#define TRAINER_UNUSED_379                    409  // Former TRAINER_ROBERT_2; orphaned rematch variant.
-#define TRAINER_UNUSED_380                    410  // Former TRAINER_ROBERT_3; orphaned rematch variant.
-#define TRAINER_UNUSED_381                    411  // Former TRAINER_ROBERT_4; orphaned rematch variant.
-#define TRAINER_UNUSED_382                    412  // Former TRAINER_ROBERT_5; orphaned rematch variant.
+#define TRAINER_JOSE_2                       409  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_379
+#define TRAINER_JOSE_3                       410  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_380
+#define TRAINER_REENA_2                      411  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_381
+#define TRAINER_REENA_3                      412  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_382
 #define TRAINER_ALEX                        413
 #define TRAINER_DANNY                        414
-#define TRAINER_UNUSED_033                  415  // Former TRAINER_YASU; reserved after legacy-map removal.
-#define TRAINER_UNUSED_034                  416  // Former TRAINER_TAKASHI; reserved after legacy-map removal.
+#define TRAINER_ALEX_3                       415  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_033
+#define TRAINER_RILEY_3                      416  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_034
 #define TRAINER_KENJI                      417
 #define TRAINER_JANI                            418  // Retained for active Kanto and facility consumers.
-#define TRAINER_UNUSED_494                  419  // Former TRAINER_LAO_1; legacy Route 113 battle removed.
+#define TRAINER_RILEY_4                      419  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_494
 #define TRAINER_LUNG                        420
 #define TRAINER_LAO_2                       421
 #define TRAINER_LAO_3                       422
 #define TRAINER_LAO_4                       423
 #define TRAINER_LAO_5                       424
-#define TRAINER_UNUSED_006                  425  // Former TRAINER_JOCELYN; reserved after legacy-map removal.
+#define TRAINER_TREVOR_3                     425  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_006
 #define TRAINER_LAURA                       426
 #define TRAINER_JASMINE_2                   427
 #define TRAINER_GRUNT_28                        428
@@ -437,32 +437,32 @@
 #define TRAINER_JAMES                     431
 #define TRAINER_JASON                     432
 #define TRAINER_JAY                     433
-#define TRAINER_UNUSED_495                  434  // Former TRAINER_MADELINE_1; legacy Route 113 battle removed.
+#define TRAINER_KYLE_3                       434  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_495
 #define TRAINER_CLARISSA                    435
-#define TRAINER_UNUSED_496                  436  // Former TRAINER_ANGELICA; legacy Route 120 battle removed.
+#define TRAINER_CARTER_3                     436  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_496
 #define TRAINER_MADELINE_2                  437
 #define TRAINER_MADELINE_3                  438
 #define TRAINER_MADELINE_4                  439
 #define TRAINER_MADELINE_5                  440
 #define TRAINER_BEVERLY                     441
 #define TRAINER_CHUCK_1_2                       442
-#define TRAINER_UNUSED_055                        443  // Former TRAINER_KYLA; reserved after legacy-map removal.
+#define TRAINER_HILLARY_3                    443  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_055
 #define TRAINER_DENISE                      444
 #define TRAINER_BETH                        445
-#define TRAINER_UNUSED_468                        446  // Former TRAINER_TARA; pending legacy battle removed.
-#define TRAINER_UNUSED_056                       447  // Former TRAINER_MISSY; reserved after legacy-map removal.
+#define TRAINER_ROB_3                        446  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_468
+#define TRAINER_NICOLE_3                     447  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_056
 #define TRAINER_ALICE                       448
-#define TRAINER_UNUSED_387                     449  // Former TRAINER_GRUNT_30; orphaned party removed.
+#define TRAINER_BILLY_3                      449  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_387
 #define TRAINER_GRACE                       450
 #define TRAINER_TANYA                       451
 #define TRAINER_SHARON                      452
 #define TRAINER_NIKKI                       453
-#define TRAINER_UNUSED_469                      454  // Former TRAINER_BRENDA; pending legacy battle removed.
-#define TRAINER_UNUSED_470                       455  // Former TRAINER_KATIE; pending legacy battle removed.
+#define TRAINER_KENNY_3                      454  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_469
+#define TRAINER_JOEL_3                       455  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_470
 #define TRAINER_SUSIE                       456
 #define TRAINER_KARA                        457
 #define TRAINER_DANA                        458
-#define TRAINER_UNUSED_057                      459  // Former TRAINER_SIENNA; reserved after legacy-map removal.
+#define TRAINER_CHARLES_3                    459  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_057
 #define TRAINER_DEBRA                       460
 #define TRAINER_LINDA                       461
 #define TRAINER_KAYLEE                      462

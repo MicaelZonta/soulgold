@@ -8,7 +8,7 @@
 #define FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1    TRUE   // Free up unused Pokédex seen flags (52 bytes).
 #define FREE_TRAINER_HILL                   TRUE   // Frees up Trainer Hill data (28 bytes).
 #define FREE_MYSTERY_EVENT_BUFFERS          TRUE   // Frees up ramScript (1104 bytes).
-#define FREE_MATCH_CALL                     TRUE   // Frees up match call and rematch / VS Seeker data. (104 bytes).
+#define FREE_MATCH_CALL                     FALSE  // Frees up match call and rematch / VS Seeker data. (2 + MAX_REMATCH_ENTRIES bytes). O Match Call GSC (telefone) precisa dele ligado: ver .claude/merge_hns/match_call_gsc.md
 #define FREE_UNION_ROOM_CHAT                TRUE   // Frees up union room chat (212 bytes).
 #define FREE_ENIGMA_BERRY                   TRUE   // Frees up E-Reader Enigma Berry data (52 bytes).
 #define FREE_LINK_BATTLE_RECORDS            FALSE   // Frees up link battle record data (88 bytes).

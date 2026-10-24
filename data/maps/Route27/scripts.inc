@@ -129,7 +129,7 @@ Route27_EventScript_Gilbert::
 
 Route27_EventScript_Jose::
 	trainerbattle_single TRAINER_JOSE, Route27_Text_BirdKeeperJoseSeen, Route27_Text_BirdKeeperJoseBeaten, Route27_EventScript_RegisterJose
-	goto_if_set FLAG_JOSE_HAS_ITEM, Route27_EventScript_JoseGiveItem
+	goto_if_set FLAG_JOSE_HAS_PHONE_ITEM, Route27_EventScript_JoseGiveItem
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route27_EventScript_RematchJose
 	msgbox Route27_Text_BirdKeeperJoseAfter, MSGBOX_AUTOCLOSE
@@ -149,10 +149,14 @@ Route27_EventScript_RematchJose::
 	end
 
 Route27_EventScript_JoseGiveItem::
-	msgbox Route27_Text_JoseHasItem, MSGBOX_DEFAULT
-	giveitem VAR_JOSE_ITEM
+	@ Espaco ANTES da oferta: depois do giveitem o VAR_RESULT ja foi
+	@ sobrescrito pelo Std_ObtainItem (checkitemtype), e a conferencia
+	@ de "nao cabe" nunca pegaria -- a flag seria limpa e o item sumiria.
+	checkitemspace VAR_JOSE_PHONE_ITEM
 	goto_if_eq VAR_RESULT, FALSE, Route27_EventScript_JoseNoRoom
-	clearflag FLAG_JOSE_HAS_ITEM
+	msgbox Route27_Text_JoseHasItem, MSGBOX_DEFAULT
+	giveitem VAR_JOSE_PHONE_ITEM
+	clearflag FLAG_JOSE_HAS_PHONE_ITEM
 	msgbox Route27_Text_JoseGaveItem, MSGBOX_AUTOCLOSE
 	end
 

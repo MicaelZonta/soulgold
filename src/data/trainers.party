@@ -21022,7 +21022,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Calm Mind
 
 === TRAINER_ALEX_2 ===
-Name: ALEX
+Name: Alex
 Class: Battle Girl
 Pic: Battle Girl
 Gender: Male
@@ -21043,7 +21043,7 @@ Kingdra
 Level: 53
 
 === TRAINER_BILLY_2 ===
-Name: BILLY
+Name: Billy
 Class: School Kid
 Pic: School Kid M
 Gender: Male
@@ -21064,7 +21064,7 @@ Ditto
 Level: 62
 
 === TRAINER_BLAINE_POSTOBC ===
-Name: BLAINE
+Name: Blaine
 Class: Leader
 Pic: Leader Blaine
 Gender: Male
@@ -21127,7 +21127,7 @@ IVs: 0 Atk
 - Earth Power
 
 === TRAINER_BLUE_POSTOBC ===
-Name: BLUE
+Name: Blue
 Class: Leader
 Pic: Leader Blue
 Gender: Male
@@ -21187,7 +21187,7 @@ IVs: 0 Atk
 - Shell Smash
 
 === TRAINER_BROCK_POSTOBC ===
-Name: BROCK
+Name: Brock
 Class: Leader
 Pic: Leader Brock
 Gender: Male
@@ -21247,7 +21247,7 @@ Level: 72
 - Charge
 
 === TRAINER_BRUNO_POSTOBC ===
-Name: BRUNO
+Name: Bruno
 Class: Elite Four
 Pic: Elite Four Bruno
 Gender: Male
@@ -21308,7 +21308,7 @@ Level: 79
 - Rock Slide
 
 === TRAINER_BUGSY_POSTOBC ===
-Name: BUGSY
+Name: Bugsy
 Class: Leader
 Pic: Leader Bugsy
 Gender: Male
@@ -21370,7 +21370,7 @@ Level: 69
 - Roost
 
 === TRAINER_CARTER_2 ===
-Name: CARTER
+Name: Carter
 Class: Pokefan
 Pic: Pokefan M
 Gender: Male
@@ -21388,7 +21388,7 @@ Charmander
 Level: 65
 
 === TRAINER_CHARLES_2 ===
-Name: CHARLES
+Name: Charles
 Class: Biker
 Pic: Biker
 Gender: Male
@@ -21409,7 +21409,7 @@ Mightyena
 Level: 58
 
 === TRAINER_CHUCK_POSTOBC ===
-Name: CHUCK
+Name: Chuck
 Class: Leader
 Pic: Leader Chuck
 Gender: Male
@@ -21468,7 +21468,7 @@ Level: 71
 - Skull Bash
 
 === TRAINER_CLAIR_POSTOBC ===
-Name: CLAIR
+Name: Clair
 Class: Leader
 Pic: Leader Clair
 Gender: Male
@@ -21528,7 +21528,7 @@ Level: 70
 - Hyper Beam
 
 === TRAINER_ERIKA_POSTOBC ===
-Name: ERIKA
+Name: Erika
 Class: Leader
 Pic: Leader Erika
 Gender: Male
@@ -21592,7 +21592,7 @@ IVs: 0 Atk
 - Double Team
 
 === TRAINER_FALKNER_POSTOBC ===
-Name: FALKNER
+Name: Falkner
 Class: Leader
 Pic: Leader Falkner
 Gender: Male
@@ -21653,7 +21653,7 @@ IVs: 0 Atk
 - Roost
 
 === TRAINER_HILLARY_2 ===
-Name: HILLARY
+Name: Hillary
 Class: Lass
 Pic: Lass
 Gender: Male
@@ -21671,7 +21671,7 @@ Cubone
 Level: 62
 
 === TRAINER_JANINE_POSTOBC ===
-Name: JANINE
+Name: Janine
 Class: Leader
 Pic: Leader Janine
 Gender: Male
@@ -21733,7 +21733,7 @@ IVs: 0 Atk
 - Toxic
 
 === TRAINER_JASMINE_POSTOBC ===
-Name: JASMINE
+Name: Jasmine
 Class: Leader
 Pic: Leader Jasmine
 Gender: Male
@@ -21796,7 +21796,7 @@ Level: 70
 - Heavy Slam
 
 === TRAINER_JOEL_2 ===
-Name: JOEL
+Name: Joel
 Class: Biker
 Pic: Biker
 Gender: Male
@@ -21820,7 +21820,7 @@ Roselia
 Level: 60
 
 === TRAINER_KAREN_POSTOBC ===
-Name: KAREN
+Name: Karen
 Class: Elite Four
 Pic: Elite Four Karen
 Gender: Male
@@ -21880,7 +21880,7 @@ Level: 79
 - Destiny Bond
 
 === TRAINER_KENNY_2 ===
-Name: KENNY
+Name: Kenny
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -21901,7 +21901,7 @@ Aggron
 Level: 60
 
 === TRAINER_KOGA_POSTOBC ===
-Name: KOGA
+Name: Koga
 Class: Elite Four
 Pic: Elite Four Koga
 Gender: Male
@@ -21964,7 +21964,7 @@ Level: 79
 - Confuse Ray
 
 === TRAINER_KYLE_2 ===
-Name: KYLE
+Name: Kyle
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
@@ -21985,7 +21985,7 @@ Seaking
 Level: 61
 
 === TRAINER_LANCE_POSTOBC ===
-Name: LANCE
+Name: Lance
 Class: Champion
 Pic: Champion Lance
 Gender: Male
@@ -22045,7 +22045,7 @@ Level: 79
 - Dragon Dance
 
 === TRAINER_LTSURGE_POSTOBC ===
-Name: LTSURGE
+Name: Lt. Surge
 Class: Leader
 Pic: Leader Surge
 Gender: Male
@@ -22106,7 +22106,7 @@ IVs: 0 Atk
 - Calm Mind
 
 === TRAINER_MISTY_POSTOBC ===
-Name: MISTY
+Name: Misty
 Class: Leader
 Pic: Leader Misty
 Gender: Male
@@ -22170,7 +22170,7 @@ IVs: 0 Atk
 - Recover
 
 === TRAINER_MORTY_POSTOBC ===
-Name: MORTY
+Name: Morty
 Class: Leader
 Pic: Leader Morty
 Gender: Male
@@ -22234,7 +22234,7 @@ IVs: 0 Atk
 - Thunderbolt
 
 === TRAINER_NICOLE_2 ===
-Name: NICOLE
+Name: Nicole
 Class: Swimmer F
 Pic: Swimmer F
 Gender: Male
@@ -22252,7 +22252,7 @@ Luvdisc
 Level: 66
 
 === TRAINER_PRYCE_POSTOBC ===
-Name: PRYCE
+Name: Pryce
 Class: Leader
 Pic: Leader Pryce
 Gender: Male
@@ -22315,7 +22315,7 @@ IVs: 0 Atk
 - Pain Split
 
 === TRAINER_RED_POSTOBC ===
-Name: RED
+Name: Red
 Class: Pkmn Trainer 1
 Pic: Red
 Gender: Male
@@ -22377,7 +22377,7 @@ Tera Type: Fighting
 - Throat Chop
 
 === TRAINER_RILEY_2 ===
-Name: RILEY
+Name: Riley
 Class: Biker
 Pic: Biker
 Gender: Male
@@ -22392,7 +22392,7 @@ Arbok
 Level: 60
 
 === TRAINER_ROB_2 ===
-Name: ROB
+Name: Rob
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -22410,7 +22410,7 @@ Beautifly
 Level: 63
 
 === TRAINER_SABRINA_POSTOBC ===
-Name: SABRINA
+Name: Sabrina
 Class: Leader
 Pic: Leader Sabrina
 Gender: Male
@@ -22473,7 +22473,7 @@ IVs: 0 Atk
 - Tri Attack
 
 === TRAINER_TREVOR_2 ===
-Name: TREVOR
+Name: Trevor
 Class: Juggler
 Pic: Juggler
 Gender: Male
@@ -22488,7 +22488,7 @@ Aipom
 Level: 40
 
 === TRAINER_WHITNEY_POSTOBC ===
-Name: WHITNEY
+Name: Whitney
 Class: Leader
 Pic: Leader Whitney
 Gender: Male
@@ -22549,7 +22549,7 @@ Level: 70
 - Baby-Doll Eyes
 
 === TRAINER_WILL_POSTOBC ===
-Name: WILL
+Name: Will
 Class: Elite Four
 Pic: Elite Four Will
 Gender: Male
@@ -22613,7 +22613,7 @@ IVs: 0 Atk
 - Protect
 
 === TRAINER_RED ===
-Name: RED
+Name: Red
 Class: Pkmn Trainer 1
 Pic: Red
 Gender: Male
@@ -22671,7 +22671,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Morning Sun
 
 === TRAINER_SAMSON_OAK ===
-Name: SAMSON OAK
+Name: Samson Oak
 Class: Scientist
 Pic: Samson Oak
 Gender: Male
@@ -22745,7 +22745,7 @@ Bold Nature
 - Toxic
 
 === TRAINER_MELEMELE_SWIMMER_1 ===
-Name: MIA
+Name: Mia
 Class: Swimmer F
 Pic: Swimmer F
 Gender: Female
@@ -22785,7 +22785,7 @@ IVs: 0 Atk
 - Sweet Kiss  
 
 === TRAINER_MELEMELE_SWIMMER_2 ===
-Name: JIMMY
+Name: Jimmy
 Class: Swimmer M
 Pic: Swimmer M
 Gender: Male
@@ -22819,7 +22819,7 @@ Level: 68
 - Scary Face  
 
 === TRAINER_AKALA_SWIMMER_1 ===
-Name: KELSIE
+Name: Kelsie
 Class: Swimmer F
 Pic: Swimmer F
 Gender: Female
@@ -22855,7 +22855,7 @@ Jolly Nature
 - Yawn  
 
 === TRAINER_AKALA_SWIMMER_2 ===
-Name: PORTIA
+Name: Portia
 Class: Swimmer F
 Pic: Swimmer F
 Gender: Female
@@ -22891,7 +22891,7 @@ Careful Nature
 - Rock Blast  
 
 === TRAINER_AKALA_SWIMMER_3 ===
-Name: GEOFF
+Name: Geoff
 Class: Swimmer M
 Pic: Swimmer M
 Gender: Male
@@ -22925,7 +22925,7 @@ IVs: 0 Atk
 - Focus Energy  
 
 === TRAINER_PONI_SWIMMER_1 ===
-Name: JADE
+Name: Jade
 Class: Swimmer F
 Pic: Swimmer F
 Gender: Female
@@ -22964,7 +22964,7 @@ Adamant Nature
 - Coil  
 
 === TRAINER_PONI_SWIMMER_2 ===
-Name: RODDY
+Name: Roddy
 Class: Tuber M
 Pic: Tuber M
 Gender: Male
@@ -23002,7 +23002,7 @@ EVs: 8 HP / 248 Atk / 252 SpD
 - Guillotine  
 
 === TRAINER_AKALA_HIKER ===
-Name: IAN
+Name: Ian
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -23037,7 +23037,7 @@ Level: 65
 - Double Team  
 
 === TRAINER_AKALA_PICNICKER ===
-Name: TATIANA
+Name: Tatiana
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
@@ -23071,7 +23071,7 @@ Level: 63
 - Encore  
 
 === TRAINER_AKALA_CAMPER ===
-Name: OLIVER
+Name: Oliver
 Class: Camper
 Pic: Camper
 Gender: Male
@@ -23105,7 +23105,7 @@ IVs: 0 Atk
 - Energy Ball  
 
 === TRAINER_AKALA_FOREST_BUGCATCHER_1 ===
-Name: STANLEY
+Name: Stanley
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -23130,7 +23130,7 @@ Level: 63
 - Bug Bite  
 
 === TRAINER_AKALA_FOREST_BUGCATCHER_2 ===
-Name: SCOTTY
+Name: Scotty
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -23156,7 +23156,7 @@ Level: 61
 - Megahorn  
 
 === TRAINER_AKALA_CAVE_PICNICKER ===
-Name: MELISSA
+Name: Melissa
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
@@ -23189,7 +23189,7 @@ Level: 62
 - Safeguard  
 
 === TRAINER_AKALA_CAVE_CAMPER ===
-Name: RONNY
+Name: Ronny
 Class: Camper
 Pic: Camper
 Gender: Male
@@ -23222,7 +23222,7 @@ Level: 61
 - Dual Chop  
 
 === TRAINER_AKALA_CAVE_HIKER ===
-Name: FRANK
+Name: Frank
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -23253,7 +23253,7 @@ Level: 64
 - Explosion  
 
 === TRAINER_ULAULA_PICNICKER ===
-Name: MELISSA
+Name: Melissa
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
@@ -23288,7 +23288,7 @@ Level: 61
 - Milk Drink  
 
 === TRAINER_ULAULA_YOUNGSTER ===
-Name: JOEY
+Name: Joey
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -23321,7 +23321,7 @@ Level: 63
 - Detect  
 
 === TRAINER_ULAULA_HIKER ===
-Name: FRANK
+Name: Frank
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -23356,7 +23356,7 @@ IVs: 0 Spe
 - Barrier  
 
 === TRAINER_ULAULA_COOLTRAINER ===
-Name: LOIS
+Name: Lois
 Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
@@ -23390,7 +23390,7 @@ Level: 63
 - Focus Energy  
 
 === TRAINER_MILKMAN ===
-Name: MILKMAN
+Name: Milkman
 Class: Policeman
 Pic: Policeman
 Gender: Male
@@ -23460,7 +23460,7 @@ EVs: 4 HP / 252 Atk / 0 Def / 0 SpA / 0 SpD / 252 Spe
 - Power-Up Punch
 
 === TRAINER_MIHARU ===
-Name: MIHARU
+Name: Miharu
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
@@ -23480,7 +23480,7 @@ Adamant Nature
 - Yawn  
 
 === TRAINER_YOUKO ===
-Name: YOUKO
+Name: Youko
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
@@ -23501,7 +23501,7 @@ IVs: 0 Atk
 - Shadow Ball 
 
 === TRAINER_SHIZUKO ===
-Name: SHIZUKO
+Name: Shizuko
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
@@ -23522,7 +23522,7 @@ Adamant Nature
 - Sing  
 
 === TRAINER_MUALANI ===
-Name: MUALANI
+Name: Mualani
 Class: Swimmer F
 Pic: Swimmer F
 Gender: female
@@ -23596,7 +23596,7 @@ IVs: 0 Atk
 
 
 === TRAINER_SKYLAR ===
-Name: SKYLAR
+Name: Skylar
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
@@ -23656,7 +23656,7 @@ Naive Nature
 
 
 === TRAINER_FINLEY ===
-Name: FINLEY
+Name: Finley
 Class: Sage
 Pic: Sage
 Music: Hg Sage
@@ -23706,7 +23706,7 @@ Level: 70
 
 
 === TRAINER_WESSEL ===
-Name: WESSEL
+Name: Wessel
 Class: Super Nerd
 Pic: Super Nerd
 Gender: Male
@@ -23764,3 +23764,2103 @@ Adamant Nature
 - Play Rough  
 - Trailblaze  
 
+
+=== TRAINER_JOEY_2 ===
+Name: Joey
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Rattata @ Silk Scarf
+Level: 27
+- Quick Attack
+- Hyper Fang
+- Pursuit
+- Mud-Slap
+
+=== TRAINER_JOEY_3 ===
+Name: Joey
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Rattata @ Silk Scarf
+Level: 30
+- Super Fang
+- Hyper Fang
+- Pursuit
+- Iron Tail
+
+=== TRAINER_JOEY_4 ===
+Name: Joey
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Rattata @ Silk Scarf
+Level: 40
+- Body Slam
+- Thunderbolt
+- Pursuit
+- Iron Tail
+
+=== TRAINER_JOEY_5 ===
+Name: Joey
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Rattata @ Silk Scarf
+Level: 65
+- Body Slam
+- Thunderbolt
+- Pursuit
+- Iron Tail
+
+=== TRAINER_WADE_2 ===
+Name: Wade
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Beedrill
+Level: 20
+
+Pineco
+Level: 20
+
+=== TRAINER_WADE_3 ===
+Name: Wade
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Butterfree
+Level: 25
+
+Beedrill
+Level: 25
+
+Pineco
+Level: 25
+
+=== TRAINER_WADE_4 ===
+Name: Wade
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Butterfree
+Level: 35
+
+Beedrill
+Level: 34
+
+Forretress
+Level: 35
+
+Ariados
+Level: 36
+
+=== TRAINER_WADE_5 ===
+Name: Wade
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Butterfree
+Level: 46
+
+Beedrill
+Level: 45
+
+Ledian
+Level: 46
+
+Forretress
+Level: 45
+
+Ariados
+Level: 47
+
+=== TRAINER_RALPH_2 ===
+Name: Ralph
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Goldeen
+Level: 24
+
+=== TRAINER_RALPH_3 ===
+Name: Ralph
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Qwilfish
+Level: 28
+
+Seaking
+Level: 28
+
+=== TRAINER_RALPH_4 ===
+Name: Ralph
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Qwilfish
+Level: 45
+- Toxic
+- Minimize
+- Surf
+- Pin Missile
+
+Seaking
+Level: 48
+- Waterfall
+- Megahorn
+- Rain Dance
+- Drill Peck
+
+Tentacruel
+Level: 45
+- Sludge Bomb
+- Surf
+- Acid Armor
+- Ice Beam
+
+=== TRAINER_RALPH_5 ===
+Name: Ralph
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Qwilfish
+Level: 55
+- Toxic
+- Minimize
+- Surf
+- Pin Missile
+
+Seaking
+Level: 58
+- Waterfall
+- Megahorn
+- Rain Dance
+- Drill Peck
+
+Tentacruel
+Level: 55
+- Sludge Bomb
+- Surf
+- Acid Armor
+- Ice Beam
+
+=== TRAINER_LIZ_2 ===
+Name: Liz
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Weepinbell
+Level: 24
+
+Nidorina
+Level: 25
+
+=== TRAINER_LIZ_3 ===
+Name: Liz
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Weepinbell
+Level: 29
+
+Nidorino
+Level: 29
+
+Nidoqueen
+Level: 30
+
+=== TRAINER_LIZ_4 ===
+Name: Liz
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Victreebel
+Level: 34
+
+Nidoking
+Level: 36
+
+Nidoqueen
+Level: 36
+
+=== TRAINER_LIZ_5 ===
+Name: Liz
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Victreebel
+Level: 50
+- Sleep Powder
+- Poison Powder
+- Stun Spore
+- Sludge Bomb
+
+Nidoking
+Level: 52
+- Earthquake
+- Double Kick
+- Sludge Bomb
+- Iron Tail
+
+Nidoqueen
+Level: 53
+- Earthquake
+- Double Kick
+- Sludge Bomb
+- Body Slam
+
+=== TRAINER_ANTHONY_2 ===
+Name: Anthony
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Geodude
+Level: 11
+
+Machop
+Level: 11
+
+=== TRAINER_ANTHONY_3 ===
+Name: Anthony
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Graveler
+Level: 35
+
+Machoke
+Level: 34
+
+Graveler
+Level: 35
+
+=== TRAINER_ANTHONY_4 ===
+Name: Anthony
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golem
+Level: 48
+
+Machamp
+Level: 50
+
+Golem
+Level: 48
+
+=== TRAINER_ANTHONY_5 ===
+Name: Anthony
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golem
+Level: 56
+- Earthquake
+- Explosion
+- Rock Slide
+- Rollout
+
+Machamp
+Level: 54
+- Cross Chop
+- Vital Throw
+- Headbutt
+- Dig
+
+Golem
+Level: 56
+- Earthquake
+- Explosion
+- Rock Slide
+- Rollout
+
+=== TRAINER_TODD_2 ===
+Name: Todd
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Azumarill
+Level: 25
+
+Geodude
+Level: 22
+
+Psyduck
+Level: 24
+
+=== TRAINER_TODD_3 ===
+Name: Todd
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Azumarill
+Level: 36
+
+Graveler
+Level: 35
+
+Golduck
+Level: 35
+
+=== TRAINER_TODD_4 ===
+Name: Todd
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Azumarill
+Level: 46
+
+Golem
+Level: 45
+
+Golduck
+Level: 46
+
+Magcargo
+Level: 45
+
+=== TRAINER_TODD_5 ===
+Name: Todd
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Azumarill
+Level: 56
+
+Golem
+Level: 55
+
+Golduck
+Level: 56
+
+Magcargo
+Level: 55
+
+=== TRAINER_GINA_2 ===
+Name: Gina
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Skiploom
+Level: 25
+
+Skiploom
+Level: 25
+
+Ivysaur
+Level: 27
+
+=== TRAINER_GINA_3 ===
+Name: Gina
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Jumpluff
+Level: 36
+
+Jumpluff
+Level: 36
+
+Ivysaur
+Level: 35
+
+=== TRAINER_GINA_4 ===
+Name: Gina
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Skiploom
+Level: 45
+
+Skiploom
+Level: 45
+
+Venusaur
+Level: 48
+
+=== TRAINER_GINA_5 ===
+Name: Gina
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Jumpluff
+Level: 52
+- Stun Spore
+- Sunny Day
+- Leech Seed
+- Giga Drain
+
+Jumpluff
+Level: 52
+- Sunny Day
+- Sleep Powder
+- Leech Seed
+- Giga Drain
+
+Venusaur
+Level: 55
+- Solar Beam
+- Razor Leaf
+- Body Slam
+- Mud-Slap
+
+=== TRAINER_IRWIN_2 ===
+Name: Irwin
+Class: Juggler
+Pic: Juggler
+Gender: Male
+Music: Hg Suspicious 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Voltorb
+Level: 25
+
+Pineco
+Level: 25
+
+Voltorb
+Level: 27
+
+=== TRAINER_IRWIN_3 ===
+Name: Irwin
+Class: Juggler
+Pic: Juggler
+Gender: Male
+Music: Hg Suspicious 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Electrode
+Level: 35
+
+Forretress
+Level: 36
+
+Voltorb
+Level: 35
+
+=== TRAINER_IRWIN_4 ===
+Name: Irwin
+Class: Juggler
+Pic: Juggler
+Gender: Male
+Music: Hg Suspicious 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Electrode
+Level: 45
+
+Forretress
+Level: 46
+
+Electrode
+Level: 45
+
+=== TRAINER_IRWIN_5 ===
+Name: Irwin
+Class: Juggler
+Pic: Juggler
+Gender: Male
+Music: Hg Suspicious 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Electrode
+Level: 55
+- Thunderbolt
+- Screech
+- Light Screen
+- Explosion
+
+Forretress
+Level: 56
+- Gyro Ball
+- Spikes
+- Protect
+- Explosion
+
+Electrode
+Level: 55
+- Thunder
+- Thunder Wave
+- Rollout
+- Explosion
+
+=== TRAINER_ARNIE_2 ===
+Name: Arnie
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Yanma
+Level: 28
+
+Venonat
+Level: 28
+
+=== TRAINER_ARNIE_3 ===
+Name: Arnie
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Venomoth
+Level: 38
+
+Yanma
+Level: 37
+
+Scyther
+Level: 38
+
+=== TRAINER_ARNIE_4 ===
+Name: Arnie
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Venomoth
+Level: 48
+
+Yanma
+Level: 47
+
+Scizor
+Level: 48
+
+Pinsir
+Level: 48
+
+=== TRAINER_ARNIE_5 ===
+Name: Arnie
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Venomoth
+Level: 58
+
+Yanma
+Level: 56
+
+Scizor
+Level: 57
+
+Pinsir
+Level: 56
+
+=== TRAINER_ALAN_2 ===
+Name: Alan
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Tangela
+Level: 24
+
+Growlithe
+Level: 25
+
+=== TRAINER_ALAN_3 ===
+Name: Alan
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Natu
+Level: 30
+
+Tangela
+Level: 35
+
+Quagsire
+Level: 33
+
+Arcanine
+Level: 32
+
+=== TRAINER_ALAN_4 ===
+Name: Alan
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Natu
+Level: 27
+
+Tangela
+Level: 27
+
+Quagsire
+Level: 30
+
+Yanma
+Level: 30
+
+=== TRAINER_ALAN_5 ===
+Name: Alan
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Xatu
+Level: 45
+
+Tangela
+Level: 45
+
+Quagsire
+Level: 43
+
+Arcanine
+Level: 44
+
+=== TRAINER_DANA_2 ===
+Name: Dana
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Flaaffy
+Level: 25
+- Tackle
+- Growl
+- Thunder Shock
+- Thunder Wave
+
+Psyduck
+Level: 25
+- Scratch
+- Tail Whip
+- Disable
+- Confusion
+
+=== TRAINER_DANA_3 ===
+Name: Dana
+Class: Lass
+Pic: Lass
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golduck
+Level: 37
+- Surf
+- Disable
+- Confusion
+- Screech
+
+Ampharos
+Level: 37
+- Headbutt
+- Thunder Punch
+- Thunder Wave
+- Cotton Spore
+
+=== TRAINER_DANA_4 ===
+Name: Dana
+Class: Lass
+Pic: Lass
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golduck
+Level: 44
+- Surf
+- Disable
+- Psychic
+- Screech
+
+Ampharos
+Level: 45
+- Headbutt
+- Thunder Punch
+- Thunder Wave
+- Cotton Spore
+
+=== TRAINER_DANA_5 ===
+Name: Dana
+Class: Lass
+Pic: Lass
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Golduck
+Level: 54
+- Surf
+- Disable
+- Psychic
+- Screech
+
+Ampharos
+Level: 55
+- Headbutt
+- Thunder Punch
+- Thunder Wave
+- Cotton Spore
+
+=== TRAINER_CHAD_2 ===
+Name: Chad
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Mr. Mime
+Level: 28
+
+Magnemite
+Level: 26
+
+=== TRAINER_CHAD_3 ===
+Name: Chad
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Mr. Mime
+Level: 37
+
+Magneton
+Level: 35
+
+=== TRAINER_CHAD_4 ===
+Name: Chad
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Mr. Mime
+Level: 46
+
+Magneton
+Level: 44
+
+=== TRAINER_CHAD_5 ===
+Name: Chad
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Mr. Mime
+Level: 54
+- Psychic
+- Light Screen
+- Reflect
+- Encore
+
+Magneton
+Level: 58
+- Thunder
+- Thunder Wave
+- Lock-On
+- Tri Attack
+
+=== TRAINER_DEREK_2 ===
+Name: Derek
+Class: Pokefan
+Pic: Pokefan M
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Pikachu
+Level: 25
+
+Ponyta
+Level: 27
+
+=== TRAINER_DEREK_3 ===
+Name: Derek
+Class: Pokefan
+Pic: Pokefan M
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Pikachu
+Level: 36
+
+Ponyta
+Level: 35
+
+=== TRAINER_DEREK_4 ===
+Name: Derek
+Class: Pokefan
+Pic: Pokefan M
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Pikachu
+Level: 45
+
+Rapidash
+Level: 46
+
+=== TRAINER_DEREK_5 ===
+Name: Derek
+Class: Pokefan
+Pic: Pokefan M
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Pikachu @ Light Ball
+Level: 55
+- Thunderbolt
+- Iron Tail
+- Quick Attack
+- Thunder Wave
+
+Rapidash
+Level: 56
+- Fire Blast
+- Bounce
+- Stomp
+- Sunny Day
+
+=== TRAINER_TULLY_2 ===
+Name: Tully
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Qwilfish
+Level: 24
+
+=== TRAINER_TULLY_3 ===
+Name: Tully
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Seaking
+Level: 42
+
+Qwilfish
+Level: 45
+
+Seaking
+Level: 42
+
+=== TRAINER_TULLY_4 ===
+Name: Tully
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Seaking
+Level: 52
+
+Qwilfish
+Level: 55
+
+Seaking
+Level: 52
+
+=== TRAINER_BRENT_2 ===
+Name: Brent
+Class: Pokemaniac
+Pic: Pokemaniac
+Gender: Male
+Music: Hg Suspicious 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Kangaskhan
+Level: 33
+
+=== TRAINER_BRENT_3 ===
+Name: Brent
+Class: Pokemaniac
+Pic: Pokemaniac
+Gender: Male
+Music: Hg Suspicious 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Porygon
+Level: 46
+- Recover
+- Psychic
+- Conversion
+- Tri Attack
+
+=== TRAINER_BRENT_4 ===
+Name: Brent
+Class: Pokemaniac
+Pic: Pokemaniac
+Gender: Male
+Music: Hg Suspicious 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Chansey
+Level: 53
+- Rollout
+- Attract
+- Egg Bomb
+- Soft-Boiled
+
+=== TRAINER_TIFFANY_2 ===
+Name: Tiffany
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Clefairy
+Level: 37
+- Encore
+- Double Slap
+- Minimize
+- Metronome
+
+=== TRAINER_TIFFANY_3 ===
+Name: Tiffany
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Clefable
+Level: 29
+- Encore
+- Sing
+- Double Slap
+- Minimize
+
+=== TRAINER_TIFFANY_4 ===
+Name: Tiffany
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Clefable
+Level: 53
+- Double Edge
+- Encore
+- Moonlight
+- Minimize
+
+Wigglytuff
+Level: 54
+- Sing
+- Double Slap
+- Defense Curl
+- Headbutt
+
+=== TRAINER_VANCE_2 ===
+Name: Vance
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Pidgeot
+Level: 46
+
+Murkrow
+Level: 48
+
+Xatu
+Level: 47
+
+Skarmory
+Level: 49
+
+=== TRAINER_VANCE_3 ===
+Name: Vance
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Pidgeot
+Level: 55
+
+Murkrow
+Level: 56
+
+Xatu
+Level: 54
+
+Skarmory
+Level: 55
+
+=== TRAINER_WILTON_2 ===
+Name: Wilton
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Qwilfish
+Level: 48
+
+Octillery
+Level: 46
+
+Seaking
+Level: 48
+
+=== TRAINER_WILTON_3 ===
+Name: Wilton
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Qwilfish
+Level: 58
+
+Octillery
+Level: 56
+
+Seaking
+Level: 56
+
+=== TRAINER_KENJI_2 ===
+Name: Kenji
+Class: Black Belt
+Pic: Black Belt
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Onix
+Level: 33
+- Bind
+- Rock Throw
+- Toxic
+- Dig
+
+Machamp
+Level: 38
+- Headbutt
+- Swagger
+- Foresight
+- Vital Throw
+
+Steelix
+Level: 33
+- Earthquake
+- Rock Throw
+- Iron Tail
+- Sandstorm
+
+Hitmonlee
+Level: 36
+- Double Team
+- Hi Jump Kick
+- Mud-Slap
+- Swift
+
+=== TRAINER_PARRY_2 ===
+Name: Parry
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Piloswine
+Level: 50
+- Earthquake
+- Blizzard
+- Rest
+- Take Down
+
+Dugtrio
+Level: 50
+- Magnitude
+- Dig
+- Mud-Slap
+- Slash
+
+Steelix
+Level: 50
+- Dig
+- Iron Tail
+- Sandstorm
+- Slam
+
+=== TRAINER_PARRY_3 ===
+Name: Parry
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Piloswine
+Level: 38
+
+Dugtrio
+Level: 38
+
+Steelix
+Level: 38
+
+=== TRAINER_ERIN_2 ===
+Name: Erin
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Rapidash
+Level: 44
+
+Nidoqueen
+Level: 42
+
+Raichu
+Level: 42
+
+Rapidash
+Level: 44
+
+=== TRAINER_ERIN_3 ===
+Name: Erin
+Class: Picnicker
+Pic: Picnicker
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Rapidash
+Level: 44
+- Double Team
+- Stomp
+- Flamethrower
+- Sunny Day
+
+Nidoqueen
+Level: 42
+- Body Slam
+- Surf
+- Earthquake
+- Sludge Bomb
+
+Raichu
+Level: 40
+- Swift
+- Mud-Slap
+- Quick Attack
+- Thunderbolt
+
+Rapidash
+Level: 44
+- Double Team
+- Stomp
+- Flamethrower
+- Sunny Day
+
+=== TRAINER_JACK_2 ===
+Name: Jack
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Sunflora
+Level: 24
+
+Voltorb
+Level: 23
+
+=== TRAINER_JACK_3 ===
+Name: Jack
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Gloom
+Level: 28
+
+Electrode
+Level: 31
+
+=== TRAINER_JACK_4 ===
+Name: Jack
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Sunflora
+Level: 40
+
+Arcanine
+Level: 43
+
+Electrode
+Level: 43
+
+=== TRAINER_JACK_5 ===
+Name: Jack
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Electrode
+Level: 35
+- Screech
+- Sonic Boom
+- Rollout
+- Light Screen
+
+Growlithe
+Level: 35
+- Sunny Day
+- Leer
+- Take Down
+- Flame Wheel
+
+Vileplume
+Level: 37
+- Solar Beam
+- Sleep Powder
+- Acid
+- Moonlight
+
+=== TRAINER_BEVERLY_2 ===
+Name: Beverly
+Class: Parasol Lady
+Pic: Parasol Lady
+Gender: Male
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Snubbull
+Level: 27
+
+=== TRAINER_BEVERLY_3 ===
+Name: Beverly
+Class: Parasol Lady
+Pic: Parasol Lady
+Gender: Male
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Granbull
+Level: 36
+
+=== TRAINER_BEVERLY_4 ===
+Name: Beverly
+Class: Parasol Lady
+Pic: Parasol Lady
+Gender: Male
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Granbull
+Level: 46
+
+=== TRAINER_BEVERLY_5 ===
+Name: Beverly
+Class: Parasol Lady
+Pic: Parasol Lady
+Gender: Male
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Granbull @ Sitrus Berry
+Level: 56
+- Play Rough
+- Crunch
+- Fire Fang
+- Rock Slide
+
+=== TRAINER_HUEY_2 ===
+Name: Huey
+Class: Sailor
+Pic: Sailor
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Poliwhirl
+Level: 28
+
+Poliwhirl
+Level: 28
+
+=== TRAINER_HUEY_3 ===
+Name: Huey
+Class: Sailor
+Pic: Sailor
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Poliwhirl
+Level: 34
+
+Poliwrath
+Level: 34
+
+=== TRAINER_HUEY_4 ===
+Name: Huey
+Class: Sailor
+Pic: Sailor
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Politoed
+Level: 38
+- Whirlpool
+- Rain Dance
+- Body Slam
+- Perish Song
+
+Poliwrath
+Level: 38
+- Surf
+- Strength
+- Ice Punch
+- Submission
+
+=== TRAINER_GAVEN_2 ===
+Name: Gaven
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Victreebel
+Level: 55
+- Protect
+- Toxic
+- Acid
+- Razor Leaf
+
+Kingler
+Level: 55
+- Vice Grip
+- Stomp
+- Surf
+- Protect
+
+Flareon
+Level: 55
+- Sand Attack
+- Quick Attack
+- Bite
+- Flamethrower
+
+Donphan
+Level: 55
+- Fury Attack
+- Earthquake
+- Rollout
+- Rock Smash
+
+Dragonite
+Level: 55
+- Dragon Breath
+- Fly
+- Wrap
+- Thunderbolt
+
+=== TRAINER_GAVEN_3 ===
+Name: Gaven
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Victreebel
+Level: 45
+- Protect
+- Toxic
+- Acid
+- Razor Leaf
+
+Kingler
+Level: 46
+- Vice Grip
+- Stomp
+- Surf
+- Protect
+
+Flareon
+Level: 45
+- Sand Attack
+- Quick Attack
+- Bite
+- Flamethrower
+
+Dragonair
+Level: 45
+- Dragon Breath
+- Surf
+- Wrap
+- Dragon Rage
+
+Porygon2
+Level: 44
+- Tri Attack
+- Ice Beam
+- Defense Curl
+- Recover
+
+=== TRAINER_BETH_2 ===
+Name: Beth
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Male
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Rapidash
+Level: 50
+- Stomp
+- Fire Spin
+- Fury Attack
+- Agility
+
+Ampharos
+Level: 50
+- Swift
+- Thunder Punch
+- Thunder Wave
+- Cotton Spore
+
+Miltank
+Level: 50
+- Rollout
+- Attract
+- Stomp
+- Milk Drink
+
+Lanturn
+Level: 50
+- Surf
+- Ice Beam
+- Thunderbolt
+- Thunder Wave
+
+Gengar
+Level: 50
+- Shadow Ball
+- Psychic
+- Thunder Punch
+
+=== TRAINER_BETH_3 ===
+Name: Beth
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Male
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Rapidash
+Level: 55
+- Stomp
+- Fire Spin
+- Fury Attack
+- Agility
+
+Ampharos
+Level: 55
+- Swift
+- Thunder Punch
+- Thunder Wave
+- Cotton Spore
+
+Miltank
+Level: 55
+- Rollout
+- Attract
+- Stomp
+- Milk Drink
+
+Lanturn
+Level: 55
+- Surf
+- Ice Beam
+- Thunderbolt
+- Thunder Wave
+
+Gengar
+Level: 55
+- Shadow Ball
+- Psychic
+- Thunder Punch
+
+=== TRAINER_JOSE_2 ===
+Name: Jose
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Fearow
+Level: 44
+
+Farfetchd
+Level: 44
+
+Pidgeot
+Level: 43
+
+Skarmory
+Level: 44
+
+=== TRAINER_JOSE_3 ===
+Name: Jose
+Class: Bird Keeper
+Pic: Bird Keeper
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Fearow
+Level: 48
+
+Farfetchd
+Level: 48
+
+Pidgeot
+Level: 48
+
+Dodrio
+Level: 48
+
+Skarmory
+Level: 48
+
+=== TRAINER_REENA_2 ===
+Name: Reena
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Male
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Starmie
+Level: 48
+
+Nidoqueen
+Level: 47
+
+Vileplume
+Level: 48
+
+Electrode
+Level: 47
+
+Starmie
+Level: 49
+
+=== TRAINER_REENA_3 ===
+Name: Reena
+Class: Cooltrainer
+Pic: Cooltrainer F
+Gender: Male
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Starmie
+Level: 55
+
+Nidoqueen
+Level: 55
+
+Vileplume
+Level: 54
+
+Electrode
+Level: 56
+
+Starmie
+Level: 57
+
+=== TRAINER_ALEX_3 ===
+Name: Alex
+Class: Battle Girl
+Pic: Battle Girl
+Gender: Male
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move
+
+Gallade
+Level: 55
+
+Nidoking
+Level: 60
+
+Slowking
+Level: 61
+
+Seaking
+Level: 62
+
+Kingdra
+Level: 57
+
+=== TRAINER_RILEY_3 ===
+Name: Riley
+Class: Biker
+Pic: Biker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move
+
+Weezing
+Level: 64
+
+Arbok
+Level: 62
+
+Seviper
+Level: 60
+
+=== TRAINER_RILEY_4 ===
+Name: Riley
+Class: Biker
+Pic: Biker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move
+
+Weezing
+Level: 66
+
+Arbok
+Level: 68
+
+Seviper
+Level: 65
+
+=== TRAINER_TREVOR_3 ===
+Name: Trevor
+Class: Juggler
+Pic: Juggler
+Gender: Male
+Music: Hg Suspicious 1
+Double Battle: No
+AI: Check Bad Move
+
+Scizor
+Level: 69
+
+Ambipom
+Level: 64
+
+=== TRAINER_KYLE_3 ===
+Name: Kyle
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move
+
+Qwilfish
+Level: 63
+
+Seaking
+Level: 62
+
+Poliwhirl
+Level: 62
+
+Seaking
+Level: 63
+
+=== TRAINER_CARTER_3 ===
+Name: Carter
+Class: Pokefan
+Pic: Pokefan M
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move
+
+Treecko
+Level: 65
+
+Torchic
+Level: 65
+
+Mudkip
+Level: 65
+
+=== TRAINER_HILLARY_3 ===
+Name: Hillary
+Class: Lass
+Pic: Lass
+Gender: Male
+Music: Hg Girl 2
+Double Battle: No
+AI: Check Bad Move
+
+Sunflora
+Level: 65
+
+Aipom
+Level: 63
+
+Cubone
+Level: 62
+
+=== TRAINER_ROB_3 ===
+Name: Rob
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move
+
+Beedrill
+Level: 64
+
+Butterfree
+Level: 64
+
+Beautifly
+Level: 64
+
+Dustox
+Level: 64
+
+=== TRAINER_NICOLE_3 ===
+Name: Nicole
+Class: Swimmer F
+Pic: Swimmer F
+Gender: Male
+Music: Hg Girl 1
+Double Battle: No
+AI: Check Bad Move
+
+Mantine
+Level: 65
+
+Lapras
+Level: 68
+
+Luvdisc
+Level: 69
+
+=== TRAINER_BILLY_3 ===
+Name: Billy
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Hg Boy 1
+Double Battle: No
+AI: Check Bad Move
+
+Mr. Mime
+Level: 62
+
+Parasect
+Level: 64
+
+Poliwrath
+Level: 66
+
+Ditto
+Level: 65
+
+Kecleon
+Level: 68
+
+=== TRAINER_KENNY_3 ===
+Name: Kenny
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move
+
+Sandslash
+Level: 62
+
+Golem
+Level: 61
+
+Golem
+Level: 62
+
+Aggron
+Level: 63
+
+=== TRAINER_JOEL_3 ===
+Name: Joel
+Class: Biker
+Pic: Biker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move
+
+Magmortar
+Level: 62
+
+Electivire
+Level: 62
+
+Tangrowth
+Level: 62
+
+Togekiss
+Level: 62
+
+Roserade
+Level: 62
+
+=== TRAINER_CHARLES_3 ===
+Name: Charles
+Class: Biker
+Pic: Biker
+Gender: Male
+Music: Hg Suspicious 2
+Double Battle: No
+AI: Check Bad Move
+
+Poliwrath
+Level: 60
+
+Slaking
+Level: 65
+
+Charizard
+Level: 60
+
+Weezing
+Level: 61
+
+Mightyena
+Level: 63

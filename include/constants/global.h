@@ -93,7 +93,12 @@ enum Language
 #define DECOR_MAX_PLAYERS_HOUSE 12
 #define APPRENTICE_COUNT 4
 #define APPRENTICE_MAX_QUESTIONS 9
-#define MAX_REMATCH_ENTRIES 100 // only REMATCH_TABLE_ENTRIES (78) are used
+// Tamanho de SaveBlock1.trainerRematches[] (1 B por entrada). Apertado para a
+// tabela do Match Call GSC (REMATCH_TABLE_ENTRIES = 54) + folga: cada byte
+// aqui sai dos 112 livres do ultimo setor do save. Nunca menor que
+// REMATCH_TABLE_ENTRIES (STATIC_ASSERT em src/battle_setup.c), e 58 mantem
+// 2+58 = 60 bytes (multiplo de 4) no fim do SaveBlock1.
+#define MAX_REMATCH_ENTRIES 58
 #define NUM_CONTEST_WINNERS 13
 #define UNION_ROOM_KB_ROW_COUNT 10
 #define GIFT_RIBBONS_COUNT 11
