@@ -6,6 +6,11 @@
 #define FLASH_WRITE(addr, data) ((*(vu8 *)(FLASH_BASE + (addr))) = (data))
 
 #define FLASH_ROM_SIZE_1M 131072 // 1 megabit ROM
+// SoulGold: 2 megabits (256 KB, 4 bancos de 64 KB). O mGBA do repo sobe o chip
+// de 1M para 2M quando o jogo pede o banco 2 (tools/mgba-master, savedata.c),
+// do mesmo jeito que ja subia de 512K para 1M. Emulator-only: em cartucho de
+// verdade nao existe flash desse tamanho.
+#define FLASH_ROM_SIZE_2M 262144
 
 #define SECTORS_PER_BANK 16
 

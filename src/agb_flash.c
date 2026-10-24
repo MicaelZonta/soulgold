@@ -147,7 +147,7 @@ void ReadFlash(u16 sectorNum, u32 offset, u8 *dest, u32 size)
 
     REG_WAITCNT = (REG_WAITCNT & ~WAITCNT_SRAM_MASK) | WAITCNT_SRAM_8;
 
-    if (gFlash->romSize == FLASH_ROM_SIZE_1M)
+    if (gFlash->romSize >= FLASH_ROM_SIZE_1M)
     {
         SwitchFlashBank(sectorNum / SECTORS_PER_BANK);
         sectorNum %= SECTORS_PER_BANK;
@@ -195,7 +195,7 @@ u32 VerifyFlashSector(u16 sectorNum, u8 *src)
 
     REG_WAITCNT = (REG_WAITCNT & ~WAITCNT_SRAM_MASK) | WAITCNT_SRAM_8;
 
-    if (gFlash->romSize == FLASH_ROM_SIZE_1M)
+    if (gFlash->romSize >= FLASH_ROM_SIZE_1M)
     {
         SwitchFlashBank(sectorNum / SECTORS_PER_BANK);
         sectorNum %= SECTORS_PER_BANK;
@@ -230,7 +230,7 @@ u32 VerifyFlashSectorNBytes(u16 sectorNum, u8 *src, u32 n)
     u8 *tgt;
     u32 (*verifyFlashSector_Core)(u8 *, u8 *, u32);
 
-    if (gFlash->romSize == FLASH_ROM_SIZE_1M)
+    if (gFlash->romSize >= FLASH_ROM_SIZE_1M)
     {
         SwitchFlashBank(sectorNum / SECTORS_PER_BANK);
         sectorNum %= SECTORS_PER_BANK;

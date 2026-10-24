@@ -314,8 +314,10 @@ DECL_BIT(GBASerializedMulticartFlags, Locked, 1);
 
 DECL_BITFIELD(GBASerializedSavedataFlags, uint8_t);
 DECL_BITS(GBASerializedSavedataFlags, FlashState, 0, 2);
-DECL_BIT(GBASerializedSavedataFlags, FlashBank, 4);
-DECL_BIT(GBASerializedSavedataFlags, DustSettling, 5);
+// SoulGold: 4 bancos de flash (256 KB) precisam de 2 bits; o DustSettling
+// desceu para o bit 6. Savestate antigo nao e compativel (emulator-only).
+DECL_BITS(GBASerializedSavedataFlags, FlashBank, 4, 2);
+DECL_BIT(GBASerializedSavedataFlags, DustSettling, 6);
 
 DECL_BITFIELD(GBASerializedMiscFlags, uint32_t);
 DECL_BIT(GBASerializedMiscFlags, Halted, 0);

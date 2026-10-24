@@ -25,7 +25,7 @@ Fidelidade ao GBA real não é requisito.
 | Entradas de OAM por frame | 128 | `gOamLimit = 128` em `ResetSpriteData`, `src/sprite.c` | software (hardware = 128) | sim, até 128 |
 | Paletas de sprite | 16 slots | `sSpritePaletteTags[16]`, `src/sprite.c` | **hardware** (4 bits no attr2 do OAM) | não |
 | VRAM de sprite | 1024 tiles | `sSpriteTileAllocBitmap[128]` | **hardware** (índice de 10 bits) | não |
-| Flash (save) | 128 KB = 32 setores, todos usados | `include/save.h` | cartucho | sim, via mGBA |
+| Flash (save) | 256 KB = 64 setores (28 livres) | `include/save.h` | cartucho | sim, via mGBA (feito em 24/10/2026) |
 | EWRAM / IWRAM | 256 KB / 32 KB | `ld_script_modern.ld` | hardware | sim, via mGBA (caro) |
 
 O patch que o mGBA já tem ("ROM linear de 96 MiB") só mexe no
@@ -167,9 +167,26 @@ Quando falta VRAM, `tileStart <= 0` e o objeto fica
 `invisible = TRUE`: aparece invisível, sem erro. O risco é o mesmo das
 paletas, ou seja, muitas espécies diferentes na tela.
 
-## 5. Save: flash de 128 KB, cheio
+## 5. Save: flash de 256 KB desde 24/10/2026
 
-`include/save.h` mostra os 32 setores de 4 KB todos ocupados:
+Era 128 KB (32 setores) com tudo ocupado. O mGBA do repo passou a aceitar
+**4 bancos de 64 KB** e o save virou **64 setores**, com o slot crescendo de 14
+para 16 setores — os dois a mais foram para o SaveBlock1. Como ficou:
+
+| Setores | Uso |
+|---|---|
+| 0-15 | slot 1 (SB2 em 0, **SaveBlock1 em 1-6**, caixas em 7-15) |
+| 16-31 | slot 2 |
+| 32-35 | caixa 19 / HoF e overflow das caixas (**banco 2**) |
+| 36-63 | livres |
+
+`SaveBlock1`: **16 396 de 23 808 B**, 7412 livres — cabem mais 205 objetos.
+Testado no jogo em 24/10/2026: jogo novo, salvar (o `.sav` cresce para 256 KB e
+os setores 33/35 aparecem com assinatura), fechar o emulador, abrir e carregar.
+
+### Como era antes (32 setores)
+
+`include/save.h` mostrava os 32 setores de 4 KB todos ocupados:
 
 | Setores | Uso |
 |---|---|
@@ -325,11 +342,46 @@ mexe em layout nem no emulador. A rota A vira reserva para quando o
 `SaveBlock1` em si apertar; a rota B, para quando precisarmos guardar outra
 coisa grande, e aí já nascendo como "setor de extras" genérico.
 
-### Aumentar o save pelo mGBA
+### O que foi mexido para chegar a 256 KB (feito, não é plano)
 
-O flash de 128 KB já é **2 bancos de 64 KB**, e o jogo já troca de banco
-(`SwitchFlashBank` em `src/agb_flash.c`, `SECTORS_PER_BANK 16`). Para
-512 KB ou 1 MB basta ter mais bancos.
+A detecção **não** precisou de marcador nem de override: o mGBA já subia de
+512K para 1M sozinho quando o jogo pedia o banco 1, e agora sobe de 1M para 2M
+quando pede o banco 2. Quem manda no tamanho é o descritor de chip do **jogo**.
+
+**mGBA** (`tools/mgba-master`):
+- `GBA_SIZE_FLASH2M = 0x40000` (memory.h) e `GBA_SAVEDATA_FLASH2M = 7`
+  (interface.h);
+- `savedata.c`: o tipo novo em deinit/clone/size/forceType/init, o
+  `value < 2` da troca de banco virou `< 4`, `_flashSwitchBank` ganhou o bloco
+  que sobe de 1M para 2M (espelho do que já existia para 512K→1M), erase total
+  e erase de setor, e o id respondido no comando ID;
+- `serialize.h`: o banco no savestate era **1 bit** (`DECL_BIT ... FlashBank, 4`)
+  com o `DustSettling` no bit 5; virou `DECL_BITS(..., 4, 2)` e o DustSettling
+  foi para o bit 6. **Savestate antigo não carrega** — emulator-only;
+- `memory.c` (2 testes de tipo) e `core.c` (tamanho do bloco de memória).
+
+**Jogo:**
+- `FLASH_ROM_SIZE_2M` e os três descritores de chip (`agb_flash_mx.c`,
+  `agb_flash_le.c`) com 262144 B e 64 setores — **os três**, senão o tamanho
+  depende de qual id o emulador responde;
+- `gFlash->romSize == FLASH_ROM_SIZE_1M` virou `>=` nos 3 pontos de
+  `src/agb_flash.c` que trocam de banco;
+- `include/save.h`: o mapa de setores acima;
+- `src/save.c`: dois `SAVEBLOCK_CHUNK(struct SaveBlock1, 4/5)` no
+  `sSaveSlotLayout`;
+- **`gDamagedSaveSectors` era `u32`** — 1 bit por setor, e com 64 setores
+  `1 << 32` é comportamento indefinido. Virou `u64` (e o `WipeSectors` junto).
+  Compila limpo e corromperia o save depois: é a armadilha da mudança.
+
+Depois de mexer no mGBA: `make mgba-windows` com o mGBA **fechado**, e o QA
+headless precisa de `make -j mgba-headless` na pasta de build dele
+(`/tmp/qa-build/mgba`), senão ele continua com o emulador velho e o teste mente.
+
+### Para passar de 256 KB
+
+O flash de 128 KB já era **2 bancos de 64 KB**, e o jogo já trocava de banco
+(`SwitchFlashBank` em `src/agb_flash.c`, `SECTORS_PER_BANK 16`). Para 512 KB ou
+1 MB é o mesmo caminho: mais bancos.
 
 **mGBA** (`tools/mgba-master/src/gba/savedata.c`):
 - `FLASH_COMMAND_SWITCH_BANK` rejeita `value < 2`: aceitar até N bancos;

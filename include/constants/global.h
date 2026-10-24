@@ -80,7 +80,7 @@ enum Language
 // capacities of various saveblock objects
 #define DAYCARE_MON_COUNT 2
 #define POKEBLOCKS_COUNT 40
-#define OBJECT_EVENTS_COUNT 24
+#define OBJECT_EVENTS_COUNT 40
 // SaveBlock1.objectEvents keeps the legacy 16 slots in place (offsets are
 // pinned by the extra PC boxes); the rest go to objectEventsExtra at the end.
 #define OBJECT_EVENTS_SAVE_LEGACY_COUNT 16

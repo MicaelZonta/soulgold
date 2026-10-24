@@ -142,7 +142,7 @@ static void CB2_FadeAndReturnToTitleScreen(void);
 static void CB2_ReturnToTitleScreen(void);
 static void VBlankCB_UpdateClockGraphics(void);
 static bool8 VerifySectorWipe(u16 sector);
-static bool8 WipeSectors(u32);
+static bool8 WipeSectors(u64);
 
 // Although this is a general text printer, it's only used in this file.
 static void SaveFailedScreenTextPrint(const u8 *text, u8 x, u8 y)
@@ -407,13 +407,13 @@ static bool8 WipeSector(u16 sector)
     return failed;
 }
 
-static bool8 WipeSectors(u32 sectorBits)
+static bool8 WipeSectors(u64 sectorBits)
 {
     u16 i;
 
     for (i = 0; i < SECTORS_COUNT; i++)
-        if ((sectorBits & (1 << i)) && !WipeSector(i))
-            sectorBits &= ~(1 << i);
+        if ((sectorBits & ((u64)1 << i)) && !WipeSector(i))
+            sectorBits &= ~((u64)1 << i);
 
     if (sectorBits == 0)
         return FALSE;

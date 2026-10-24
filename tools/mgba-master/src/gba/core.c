@@ -1126,6 +1126,7 @@ size_t _GBACoreListMemoryBlocks(const struct mCore* core, const struct mCoreMemo
 			memcpy(gbacore->memoryBlocks, _GBAMemoryBlocksFlash512, sizeof(_GBAMemoryBlocksFlash512));
 			gbacore->nMemoryBlocks = sizeof(_GBAMemoryBlocksFlash512) / sizeof(*_GBAMemoryBlocksFlash512);
 			break;
+		case GBA_SAVEDATA_FLASH2M:
 		case GBA_SAVEDATA_FLASH1M:
 			memcpy(gbacore->memoryBlocks, _GBAMemoryBlocksFlash1M, sizeof(_GBAMemoryBlocksFlash1M));
 			gbacore->nMemoryBlocks = sizeof(_GBAMemoryBlocksFlash1M) / sizeof(*_GBAMemoryBlocksFlash1M);
@@ -1204,7 +1205,9 @@ void* _GBACoreGetMemoryBlock(struct mCore* core, size_t id, size_t* sizeOut) {
 		*sizeOut = gba->memory.romSize;
 		return gba->memory.rom;
 	case GBA_REGION_SRAM:
-		if (gba->memory.savedata.type == GBA_SAVEDATA_FLASH1M) {
+		if (gba->memory.savedata.type == GBA_SAVEDATA_FLASH2M) {
+			*sizeOut = GBA_SIZE_FLASH2M;
+		} else if (gba->memory.savedata.type == GBA_SAVEDATA_FLASH1M) {
 			*sizeOut = GBA_SIZE_FLASH1M;
 			return gba->memory.savedata.currentBank;
 		}

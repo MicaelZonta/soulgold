@@ -71,6 +71,9 @@ enum {
 	GBA_SIZE_SRAM512 = 0x00010000,
 	GBA_SIZE_FLASH512 = 0x00010000,
 	GBA_SIZE_FLASH1M = 0x00020000,
+	// SoulGold: flash de 256 KB (4 bancos de 64 KB). O jogo pede o banco 2 e o
+	// mGBA sobe de 1M para ca, do mesmo jeito que ja subia de 512K para 1M.
+	GBA_SIZE_FLASH2M = 0x00040000,
 	GBA_SIZE_EEPROM = 0x00002000,
 	GBA_SIZE_EEPROM512 = 0x00000200,
 

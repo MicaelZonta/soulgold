@@ -18,11 +18,11 @@ const struct FlashSetupInfo LE26FV10N1TS =
     WaitForFlashWrite_Common,
     leMaxTime,
     {
-        131072, // ROM size
+        262144, // ROM size (SoulGold: 256 KB, 4 bancos)
         {
             4096, // sector size
               12, // bit shift to multiply by sector size (4096 == 1 << 12)
-              32, // number of sectors
+              64, // number of sectors (SoulGold)
                0  // appears to be unused
         },
         { 3, 1 }, // wait state setup data

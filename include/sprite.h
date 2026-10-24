@@ -2,7 +2,7 @@
 #define GUARD_SPRITE_H
 
 #define OAM_MATRIX_COUNT 32
-#define MAX_SPRITES 96 // <= 127: party menus keep sprite ids in 7-bit bitfields
+#define MAX_SPRITES 127 // teto do bitfield de 7 bits dos menus de party; cada objeto do mapa gasta 2 (sombra)
 #define SPRITE_NONE 0xFF
 #define TAG_NONE 0xFFFF
 

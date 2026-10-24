@@ -56,6 +56,7 @@ enum GBASavedataType {
 	GBA_SAVEDATA_EEPROM = 4,
 	GBA_SAVEDATA_EEPROM512 = 5,
 	GBA_SAVEDATA_SRAM512 = 6,
+	GBA_SAVEDATA_FLASH2M = 7, // SoulGold: 256 KB
 };
 
 enum GBAHardwareDevice {

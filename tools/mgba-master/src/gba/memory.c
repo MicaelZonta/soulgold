@@ -729,7 +729,7 @@ uint32_t GBALoad8(struct ARMCore* cpu, uint32_t address, int* cycleCounter) {
 			value = GBACartEReaderReadFlash(&memory->ereader, address);
 		} else if (memory->savedata.type == GBA_SAVEDATA_SRAM) {
 			value = memory->savedata.data[address & (GBA_SIZE_SRAM - 1)];
-		} else if (memory->savedata.type == GBA_SAVEDATA_FLASH512 || memory->savedata.type == GBA_SAVEDATA_FLASH1M) {
+		} else if (memory->savedata.type == GBA_SAVEDATA_FLASH512 || memory->savedata.type == GBA_SAVEDATA_FLASH1M || memory->savedata.type == GBA_SAVEDATA_FLASH2M) {
 			value = GBASavedataReadFlash(&memory->savedata, address);
 		} else if (memory->hw.devices & HW_TILT) {
 			value = GBAHardwareTiltRead(&memory->hw, address & OFFSET_MASK);
@@ -1073,7 +1073,7 @@ void GBAStore8(struct ARMCore* cpu, uint32_t address, int8_t value, int* cycleCo
 		}
 		if (memory->hw.devices & HW_EREADER && (address & 0xE00FF80) >= 0xE00FF80) {
 			GBACartEReaderWriteFlash(&memory->ereader, address, value);
-		} else if (memory->savedata.type == GBA_SAVEDATA_FLASH512 || memory->savedata.type == GBA_SAVEDATA_FLASH1M) {
+		} else if (memory->savedata.type == GBA_SAVEDATA_FLASH512 || memory->savedata.type == GBA_SAVEDATA_FLASH1M || memory->savedata.type == GBA_SAVEDATA_FLASH2M) {
 			GBASavedataWriteFlash(&memory->savedata, address, value);
 		} else if (memory->savedata.type == GBA_SAVEDATA_SRAM) {
 			if (memory->unl.type) {

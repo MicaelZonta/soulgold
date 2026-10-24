@@ -14,20 +14,24 @@
 // If the sector's signature field is not this value then the sector is either invalid or empty.
 #define SECTOR_SIGNATURE 0x8012025
 
+// Flash de 256 KB (64 setores) desde 24/10/2026: o mGBA do repo aceita 4 bancos
+// de 64 KB (tools/mgba-master/src/gba/savedata.c). O slot ganhou 2 setores, os
+// dois para o SaveBlock1, que e onde mora o estado dos objetos de mapa.
+// Emulator-only: save antigo nao carrega, e de proposito.
 #define SECTOR_ID_SAVEBLOCK2          0
 #define SECTOR_ID_SAVEBLOCK1_START    1
-#define SECTOR_ID_SAVEBLOCK1_END      4
-#define SECTOR_ID_PKMN_STORAGE_START  5
-#define SECTOR_ID_PKMN_STORAGE_END   13
-#define NUM_SECTORS_PER_SLOT         14
-// Save Slot 1: 0-13;  Save Slot 2: 14-27
-#define SECTOR_ID_BX19_AUXILIARY_1   28
-#define SECTOR_ID_BX19_AUXILIARY_2   29
+#define SECTOR_ID_SAVEBLOCK1_END      6
+#define SECTOR_ID_PKMN_STORAGE_START  7
+#define SECTOR_ID_PKMN_STORAGE_END   15
+#define NUM_SECTORS_PER_SLOT         16
+// Save Slot 1: 0-15;  Save Slot 2: 16-31
+#define SECTOR_ID_BX19_AUXILIARY_1   32
+#define SECTOR_ID_BX19_AUXILIARY_2   33
 #define SECTOR_ID_HOF_1              SECTOR_ID_BX19_AUXILIARY_1
 #define SECTOR_ID_HOF_2              SECTOR_ID_BX19_AUXILIARY_2
-#define SECTOR_ID_PKMN_STORAGE_OVERFLOW_1 30
-#define SECTOR_ID_PKMN_STORAGE_OVERFLOW_2 31
-#define SECTORS_COUNT                32
+#define SECTOR_ID_PKMN_STORAGE_OVERFLOW_1 34
+#define SECTOR_ID_PKMN_STORAGE_OVERFLOW_2 35
+#define SECTORS_COUNT                64
 
 #define NUM_HOF_SECTORS 2
 
@@ -92,7 +96,7 @@ struct SaveSector
 extern u16 gLastWrittenSector;
 extern u32 gLastSaveCounter;
 extern u16 gLastKnownGoodSector;
-extern u32 gDamagedSaveSectors;
+extern u64 gDamagedSaveSectors; // 1 bit por setor: com 64 setores nao cabe em u32
 extern u32 gSaveCounter;
 extern struct SaveSector *gFastSaveSector;
 extern u16 gIncrementalSectorId;

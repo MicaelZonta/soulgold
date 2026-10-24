@@ -89,7 +89,9 @@ struct
     SAVEBLOCK_CHUNK(struct SaveBlock1, 0), // SECTOR_ID_SAVEBLOCK1_START
     SAVEBLOCK_CHUNK(struct SaveBlock1, 1),
     SAVEBLOCK_CHUNK(struct SaveBlock1, 2),
-    SAVEBLOCK_CHUNK(struct SaveBlock1, 3), // SECTOR_ID_SAVEBLOCK1_END
+    SAVEBLOCK_CHUNK(struct SaveBlock1, 3),
+    SAVEBLOCK_CHUNK(struct SaveBlock1, 4),
+    SAVEBLOCK_CHUNK(struct SaveBlock1, 5), // SECTOR_ID_SAVEBLOCK1_END
 
     SAVEBLOCK_CHUNK(struct PokemonStorage, 0), // SECTOR_ID_PKMN_STORAGE_START
     SAVEBLOCK_CHUNK(struct PokemonStorage, 1),
@@ -225,7 +227,7 @@ STATIC_ASSERT((sizeof(struct Bx19AuxiliaryRecord) - offsetof(struct Bx19Auxiliar
 COMMON_DATA u16 gLastWrittenSector = 0;
 COMMON_DATA u32 gLastSaveCounter = 0;
 COMMON_DATA u16 gLastKnownGoodSector = 0;
-COMMON_DATA u32 gDamagedSaveSectors = 0;
+COMMON_DATA u64 gDamagedSaveSectors = 0;
 COMMON_DATA u32 gSaveCounter = 0;
 COMMON_DATA struct SaveSector *gReadWriteSector = NULL; // Pointer to a buffer for reading/writing a sector
 COMMON_DATA u16 gIncrementalSectorId = 0;
@@ -276,13 +278,13 @@ static bool32 SetDamagedSectorBits(u8 op, u8 sectorId)
     switch (op)
     {
     case ENABLE:
-        gDamagedSaveSectors |= ((u32)1 << sectorId);
+        gDamagedSaveSectors |= ((u64)1 << sectorId);
         break;
     case DISABLE:
-        gDamagedSaveSectors &= ~((u32)1 << sectorId);
+        gDamagedSaveSectors &= ~((u64)1 << sectorId);
         break;
     case CHECK: // unused
-        if (gDamagedSaveSectors & ((u32)1 << sectorId))
+        if (gDamagedSaveSectors & ((u64)1 << sectorId))
             retVal = TRUE;
         break;
     }
