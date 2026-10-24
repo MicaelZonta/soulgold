@@ -181,6 +181,119 @@ paletas, ou seja, muitas espécies diferentes na tela.
 `SaveBlock2` tem ~1,2 KB livres. `SaveBlock1` tem 52 B mais os 24 B de
 `futureReserved`.
 
+### Onde o SaveBlock1 gasta os 15 820 B (medido em 24/10/2026)
+
+```bash
+python3 dev_scripts/mapa_saveblock.py SaveBlock1   # offset e tamanho de cada campo
+```
+
+A tabela abaixo saiu dele (ele compila `offsetof` com o compilador do projeto,
+não estima, e os `#if FREE_*` já estão resolvidos). Os maiores:
+
+| Bytes | Campo | Vivo no SoulGold? |
+|---|---|---|
+| 2500 | `bag` | sim |
+| 1946 | `pokemonStorageExtensionTail` | sim (caixas 16-19) |
+| 1538 | `vars` | sim |
+| 1536 | `objectEventTemplates` | sim |
+| 1024 | `berryTrees` | sim (Berry Master) |
+| **900** | `tvShows` | **morto** (TV de Hoenn) — mas 214 referências no código |
+| 682 | `flags` | sim |
+| 576 | `mail` / `objectEvents` / `playerParty` | sim |
+| 512 | `mapView` | sim |
+| **416** | `contestWinners` | **morto** (Contest Hall está fora da ROM) — 15 referências |
+| 320 | `pokeblocks` | morto junto com os concursos — 28 referências |
+| 288 | `objectEventsExtra` | os objetos 17-24 |
+| **240** | `trainerNameRecords` | **morto** (record mixing por link) — 15 referências |
+| 172 | `secretBases` | morto — 68 referências |
+| **88** | `linkBattleRecords` | **morto**, e já tem `FREE_LINK_BATTLE_RECORDS` |
+| 64 | `lilycoveLady` / `oldMan` | mortos — 56 e 29 referências |
+| 60 | `pokeNews` | morto — 35 referências |
+
+Sobram **52 B** no último setor do SaveBlock1 (+ 24 de `futureReserved`), e cada
+objeto custa **36 B**. Ou seja: +1 objeto sem fazer nada.
+
+### Três rotas para caber mais objeto, da mais barata para a mais cara
+
+**Rota A — reaproveitar dado morto de Hoenn, sem tocar no emulador.**
+O que dá para colher por esforço:
+
+| Campo | Bytes | Objetos | Esforço |
+|---|---|---|---|
+| `FREE_LINK_BATTLE_RECORDS TRUE` | 88 | +2 | **1 linha** (a flag já existe) |
+| `contestWinners` | 416 | +11 | 15 referências para apagar/stubar |
+| `trainerNameRecords` | 240 | +6 | 15 referências |
+| `pokeblocks` | 320 | +8 | 28 referências |
+| `tvShows` + `pokeNews` | 960 | +26 | 249 referências — caro |
+
+**A armadilha:** encolher um campo do MEIO da struct desloca tudo que vem
+depois e quebra os `STATIC_ASSERT` de offset das caixas 16-19 (`src/save.c`).
+Para não mexer no layout, troque o campo morto por uma **união** com o array
+novo, mantendo o mesmo offset e o mesmo tamanho:
+
+```c
+union {
+    struct TVShow tvShows[TV_SHOWS_COUNT];     // morto
+    struct ObjectEvent objectEventsExtra2[25]; // 25 * 36 = 900 B
+} tvOrObjects;
+```
+
+A união **não** dispensa calar quem escreve no campo morto: se o código de TV
+continuar gravando, ele corrompe os objetos. Ela só evita o efeito dominó nos
+offsets.
+
+Colheita realista com esforço médio (os três primeiros da tabela): **744 B =
++20 objetos**, levando `OBJECT_EVENTS_COUNT` de 24 para ~44 sem tocar no mGBA.
+
+**Rota B — mais flash no mGBA e setores novos (32+).**
+É a rota para espaço de verdade, e a única que não mexe no layout do save
+atual (zero conflito no pull do upstream).
+
+- **mGBA** (`tools/mgba-master/src/gba/savedata.c`):
+  - `_flashSwitchBank` e o `case FLASH_COMMAND_SWITCH_BANK` recusam banco ≥ 2
+    (`if (address == 0 && value < 2)`): passar para 4 bancos (256 KB) ou 8;
+  - tipo novo ao lado de `GBA_SAVEDATA_FLASH1M` (hoje `GBA_SIZE_FLASH1M` =
+    0x20000 = 128 KB) com tamanho próprio em `GBASavedataSize`,
+    `GBASavedataClone`, `GBASavedataForceType`, `mappedMemoryFree` e no
+    `unmap/truncate` do `_flashSwitchBank`;
+  - detecção: o jogo publica `"FLASH1M_V103"` (`src/agb_flash_1m.c`), que é o
+    que o mGBA procura. Para o tamanho novo, ou um marcador próprio, ou uma
+    entrada em `src/gba/overrides.c` pelo game code;
+  - savestate: o banco atual cabe em **1 bit** hoje
+    (`GBASerializedSavedataFlagsFillFlashBank`); com 4 bancos precisa de 2.
+- **Jogo:** `SECTORS_COUNT` (32 → 64) em `include/save.h`, `FLASH_ROM_SIZE_1M`
+  em `src/agb_flash.c` e um chunk novo com assinatura e checksum próprios nos
+  setores 32+. O `agb_flash` já divide setor em banco e setor local
+  (`sectorNum / SECTORS_PER_BANK`), então essa parte não muda.
+- Ganho: **4 KB por setor = 113 objetos por setor**. Na prática, ilimitado.
+- Depois: `make mgba-windows` com o mGBA fechado.
+
+**Rota C — salvar só o que mudou.** O save guarda os 24 objetos inteiros, mas
+quase todos estão exatamente como o template do mapa. Guardar só os que
+diferem (moveu, sumiu) deixaria o custo por NPC perto de zero. É a mudança mais
+elegante e a mais arriscada: mexe em `SaveObjectEvents`/`LoadObjectEvents` e no
+respawn.
+
+### Mas o save não é a primeira parede
+
+Com sombra ligada, **cada objeto gasta 2 sprites**:
+
+| Objetos | Sprites | Cabe? |
+|---|---|---|
+| 24 (hoje) + jogador | ~50 (72 com chuva) | sim, de 96 |
+| 44 (rota A) | ~90 | no limite de `MAX_SPRITES` 96 |
+| 60 | ~122 | só com `MAX_SPRITES` 127, e **no teto do OAM** (128, hardware) |
+
+Ou seja: a rota A leva a `OBJECT_EVENTS_COUNT` ~44, que é mais ou menos onde o
+hardware de sprite trava de qualquer jeito. Passar disso exige subir
+`MAX_SPRITES` para 127 (+2 KB de EWRAM) e, acima de ~60, desligar sombra. A
+rota B só se paga quando o objetivo for outro dado grande, não mais NPC.
+
+**Recomendação:** rota A (a flag de link battle records + `contestWinners` +
+`trainerNameRecords`, em união para não mexer em offset) para chegar a ~44
+objetos; rota B quando precisarmos de espaço para outra coisa, e aí já
+nascendo como "setor de extras" genérico.
+
 ### Aumentar o save pelo mGBA
 
 O flash de 128 KB já é **2 bancos de 64 KB**, e o jogo já troca de banco

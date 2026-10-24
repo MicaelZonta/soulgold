@@ -702,6 +702,10 @@
 #define OBJ_EVENT_PAL_TAG_KRIS_HNS                  0x11A7
 #define OBJ_EVENT_PAL_TAG_SKIER_F                   0x11A8
 #define OBJ_EVENT_PAL_TAG_SKIER_M                   0x11A9
+// Paleta que veio com os sprites de Johto (commit 157d43f31d) e ficou sem
+// registro ate 24/10/2026: sem ela o Brock fica de cabelo rosa e o Surge de
+// cabelo azul, porque a arte deles usa as cores 5-13 da paleta certa.
+#define OBJ_EVENT_PAL_TAG_BROCK_SURGE               0x11AA
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
 #define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001
