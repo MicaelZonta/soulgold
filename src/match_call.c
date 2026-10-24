@@ -869,6 +869,14 @@ void InitMatchCallCounters(void)
     sMatchCallState.stepCounter = 0;
 }
 
+// Para a agenda do Pokegear (src/pokegear_phone.c): ele tem item guardado?
+bool32 DoesPhoneTrainerHaveItem(u16 trainerId)
+{
+    const struct PhoneTrainer *phone = GetPhoneTrainer(trainerId);
+
+    return phone != NULL && phone->itemFlag != 0 && FlagGet(phone->itemFlag);
+}
+
 static const struct PhoneTrainer *GetPhoneTrainer(u16 trainerId)
 {
     u32 i;

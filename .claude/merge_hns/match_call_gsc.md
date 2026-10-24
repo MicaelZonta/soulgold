@@ -1,12 +1,10 @@
 # Match Call GSC — o telefone do Pokégear (24/10/2026)
 
 Porte do telefone do pokehns 2.0.6: os treinadores pedem o número, ligam depois,
-pedem revanche e guardam itens. **Build limpo** (`make -j`), `flag_audit.py`
-regenerado, nenhuma linha acima de 208 px. **Não testado no jogo.**
-
-O que entrou é a parte de **receber**: o jogador não discursa a agenda (não
-existe app de telefone no Pokégear — ver §7). Na prática é o que o GSC faz 90%
-do tempo: você bate no treinador, ele pede o número, depois ele liga.
+pedem revanche e guardam itens — e o Pokégear ganhou a **agenda** para ligar de
+volta (§8, feita em 24/10/2026 na mesma rodada). **Build limpo** (`make -j`),
+`flag_audit.py` regenerado, nenhuma linha acima de 208 px. **Não testado no
+jogo.**
 
 ## 1. Como funciona, de ponta a ponta
 
@@ -124,16 +122,57 @@ cheia o teste falhava, a flag era limpa e **o item desaparecia**. Os nove
 blocos agora checam espaço **antes da oferta** (`checkitemspace`), como manda a
 regra do projeto. O José (Route 27) já estava com o bug no repo desde a Fase 3.
 
-## 7. O que falta (rodada própria)
+## 7. A agenda do Pokégear (`src/pokegear_phone.c`)
 
-- [ ] **App de telefone no Pokégear** (ligar para quem está na agenda). O
-      Pokégear tem 4 apps (Map/DexNav/Trophies/Radio) e nenhum de telefone; a
-      UI do Match Call do Pokénav existe no código mas não é alcançável. É
-      trabalho de interface, com arte.
+App novo, `POKEGEAR_APP_PHONE`, no fim do enum de propósito (o
+`registeredPokegearApps` do save guarda esses números; inserir no meio trocaria
+o atalho que o jogador já registrou). Aparece quando o jogador tem o Pokégear
+(`FLAG_HAS_MATCH_CALL`), a mesma flag que liga as ligações.
+
+**Lista**: quem deu o número, na ordem da tabela de revanche, com classe e nome
+("Youngster Joey"), 5 por tela, rolando. Um **`!`** marca quem está esperando
+revanche ou guardou um item — as duas coisas que a ligação recebida marca
+(`DoesPhoneTrainerHaveItem`, em `match_call.c`).
+
+**Ligar**: A liga, e a fala sai da **mesma** `SelectMatchCallMessage` que atende
+a ligação recebida no campo, com o nome de quem fala na plaquinha de cima.
+Ligar **não** muda estado: quem marca revanche é a ligação de rota. Quer dizer
+que a agenda é para conversar e para conferir quem está esperando — não dá para
+farmar revanche ligando.
+
+Desenho: reaproveita o fundo do próprio Pokégear (versão do menino e da menina),
+janela com moldura padrão para a lista/fala, barra de ajuda embaixo. Molde:
+`src/pokegear_radio.c`.
+
+### O que mudou no menu principal
+
+Cabiam 4 botões de 4 linhas nos 16 tiles do painel azul. Com 5 apps o botão
+passou a ocupar **3 linhas**: `DrawMainButtons` copia as duas primeiras linhas
+da arte e a última, pulando a segunda linha de preenchimento — **a arte não
+mudou** e o botão continua com borda em cima e embaixo. O texto e o ícone
+desceram junto (`GetButtonY(i) * 8 - 11` e `+ 12`).
+
+O ícone de celular (`icon_phone.png`) era usado pelo **DexNav**: voltou para o
+telefone, e o DexNav ganhou uma **lupa** desenhada por código
+(`graphics/pokegear/icon_dexnav.png`, mesma paleta e mesmo tamanho dos outros).
+
+### Armadilha que custaria tela corrompida
+
+A janela da lista tem 28x10 = **280 tiles** a partir do `baseBlock` 1; a moldura
+padrão (`DrawStdFrameWithCustomTileAndPalette`) estava com tile base 150, que o
+rádio usa porque a janela dele é pequena. Dentro dos 280, a moldura escreveria
+por cima do texto. Mapa do BG1 agora: lista 1-280, moldura 300-308, nome
+320-367, ajuda 370-417 (o bloco tem 512).
+
+## 8. O que falta (rodada própria)
+
 - [ ] Texto de "check page" por treinador: os 40 caem num genérico
-      (`gText_MatchCallGeneric_*`) em `GetMatchCallFlavorText`. Só aparece se o
-      app do telefone existir.
+      (`gText_MatchCallGeneric_*`) em `GetMatchCallFlavorText`. A agenda não usa
+      essa página — é a do Pokénav de Hoenn, que continua inalcançável.
+- [ ] Contato que não é treinador (mãe, Elm, Baoba): o Pokénav tem os headers
+      (`src/pokenav_match_call_data.c`), mas a agenda só lista treinador.
 - [ ] QA no jogo: pedir o número ao Joey, andar 255 passos na Route 30, receber
       a ligação, voltar e revanchar; ligação de item do Wade (Route 31) com a
-      bolsa cheia e vazia; confirmar que o telefone só começa com 3 medalhas.
+      bolsa cheia e vazia; confirmar que o telefone só começa com 3 medalhas; e
+      **a tela da agenda** (5 botões no menu, lista rolando, ligação com `\p`).
 - [ ] Decidir se as falas do rival no Johto passam a usar `NAME_RIVAL` (K8).

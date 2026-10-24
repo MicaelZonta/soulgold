@@ -14,6 +14,7 @@ s32 GetRematchIdxByTrainerIdx(s32 trainerIdx);
 void InitMatchCallCounters(void);
 bool32 TryStartMatchCall(void);
 bool32 TryStartRouteMatchCall(void);
+bool32 DoesPhoneTrainerHaveItem(u16 trainerId);
 bool32 IsMatchCallTaskActive(void);
 void StartMatchCallFromScript(const u8 *message);
 void BufferPokedexRatingForMatchCall(u8 *destStr);

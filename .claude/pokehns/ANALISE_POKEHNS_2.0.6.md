@@ -427,8 +427,9 @@ Docs: `.claude/merge_hns/fase6_{radio,roamers,mom_surf_fanfarras}.md`.
   antiga estava destroçada), ligação por rota (255 passos) + a do vanilla,
   item por telefone (9 treinadores) e `FREE_MATCH_CALL FALSE` com os 60 B no
   FIM do SaveBlock1 (os offsets do meio estão presos por STATIC_ASSERT).
-  Falta o **app de telefone no Pokégear** (ligar para a agenda) — rodada
-  própria, é interface.
+  O **app de telefone do Pokégear** (agenda: lista de quem deu o número, `!`
+  de quem espera revanche ou guardou item, e a ligação) entrou na mesma
+  rodada — `src/pokegear_phone.c`.
 - Pendências: QA no jogo (rádio por posição, Snorlax, flash de roamer, menu da
   mãe, telefone).
 - Ordem sugerida pela cadeia de dependências:
@@ -580,8 +581,8 @@ snow/volcano/pond, apricorns/Kurt/gym rematch, rádio base (4 estações).
       aposentar ou reaproveitar.
 - [ ] Johto usa `NAME_SILVER` (texto fixo) nas falas do rival; com
       `NAME_RIVAL` existindo, trocar faria valer o nome que o jogador deu.
-- [ ] App de telefone no Pokégear (ligar para quem está na agenda): o Match
-      Call hoje só recebe. Detalhes em `.claude/merge_hns/match_call_gsc.md`.
+- [x] App de telefone no Pokégear — feito 24/10/2026
+      (`.claude/merge_hns/match_call_gsc.md` §7).
 - [ ] `OBJECT_EVENTS_COUNT` só sobe de 24 para 25 agora (o Match Call levou 60 B
       do save); a skill `limites-do-engine` já foi corrigida.
 

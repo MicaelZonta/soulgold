@@ -7,6 +7,9 @@ enum PokegearApp
     POKEGEAR_APP_DEXNAV,
     POKEGEAR_APP_TROPHIES,
     POKEGEAR_APP_RADIO,
+    // Novo no fim de proposito: SaveBlock1.registeredPokegearApps guarda estes
+    // numeros, e inserir no meio trocaria o atalho que o jogador ja registrou.
+    POKEGEAR_APP_PHONE,
     POKEGEAR_APP_COUNT,
 };
 

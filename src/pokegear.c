@@ -15,6 +15,7 @@
 #include "overworld.h"
 #include "palette.h"
 #include "pokegear.h"
+#include "pokegear_phone.h"
 #include "pokegear_radio.h"
 #include "scanline_effect.h"
 #include "sound.h"
@@ -52,16 +53,21 @@ struct PokegearResources
 #define TAG_POKEGEAR_ICON_DEXNAV 0x6781
 #define TAG_POKEGEAR_ICON_TROPHY 0x6782
 #define TAG_POKEGEAR_ICON_RADIO   0x6783
+#define TAG_POKEGEAR_ICON_PHONE   0x6784
 
 
 #define POKEGEAR_BG_WIDTH 30
 #define POKEGEAR_BG_HEIGHT 20
 #define POKEGEAR_BUTTON_X 6
 #define POKEGEAR_BUTTON_W 18
-#define POKEGEAR_BUTTON_H 4
-#define POKEGEAR_BUTTON_SRC_H 8
+// O painel azul do aparelho tem 16 tiles de altura: com o telefone sao 5 apps,
+// entao o botao passou a ocupar 3 linhas em vez de 4. O desenho continua o
+// mesmo tilemap de 4 linhas, copiado sem a segunda linha de preenchimento
+// (DrawMainButtons) - a arte nao mudou.
+#define POKEGEAR_BUTTON_H 3      // linhas que o botao ocupa na tela
+#define POKEGEAR_BUTTON_SRC_H 4  // linhas por estado na arte (normal, selecionado)
 #define POKEGEAR_BUTTON_FIRST_Y 2
-#define POKEGEAR_BUTTON_Y_SPACING 4
+#define POKEGEAR_BUTTON_Y_SPACING 3
 
 static EWRAM_DATA struct PokegearResources *sPokegear = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
@@ -97,6 +103,7 @@ static void Task_PokegearOpenMap(u8 taskId);
 static void Task_PokegearOpenDexNav(u8 taskId);
 static void Task_PokegearOpenTrophies(u8 taskId);
 static void Task_PokegearOpenRadio(u8 taskId);
+static void Task_PokegearOpenPhone(u8 taskId);
 static void Task_PokegearRegisterApp(u8 taskId);
 
 static const u32 sPokegearBgTiles[] = INCBIN_U32("graphics/pokegear/tiles.4bpp.smol");
@@ -113,15 +120,19 @@ static const u32 sPokegearIconsGfx[] = INCBIN_U32("graphics/pokegear/icons.4bpp.
 static const u16 sPokegearIconsPal[] = INCBIN_U16("graphics/pokegear/icons.gbapal");
 
 static const u32 sPokegearIconMapGfx[]    = INCBIN_U32("graphics/pokegear/icon_map.4bpp.smol");
-static const u32 sPokegearIconDexNavGfx[] = INCBIN_U32("graphics/pokegear/icon_phone.4bpp.smol");
+static const u32 sPokegearIconDexNavGfx[] = INCBIN_U32("graphics/pokegear/icon_dexnav.4bpp.smol");
 static const u32 sPokegearIconTrophyGfx[] = INCBIN_U32("graphics/pokegear/icon_trophy.4bpp.smol");
 static const u32 sPokegearIconRadioGfx[] = INCBIN_U32("graphics/pokegear/icon_jukebox.4bpp.smol");
+// O celular era o icone do DexNav; com a agenda existindo ele voltou para o
+// telefone, e o DexNav ganhou a lupa (graphics/pokegear/icon_dexnav.png).
+static const u32 sPokegearIconPhoneGfx[] = INCBIN_U32("graphics/pokegear/icon_phone.4bpp.smol");
 
 
 static const u8 sText_Map[] = _("Map");
 static const u8 sText_DexNav[] = _("DexNav");
 static const u8 sText_Trophies[] = _("Trophies");
 static const u8 sText_Radio[] = _("Radio");
+static const u8 sText_Phone[] = _("Phone");
 static const u8 sText_Back[] = _("{B_BUTTON} Back");
 static const u8 sText_MainHelp[] = _("{SELECT_BUTTON}Reg. {B_BUTTON}Back");
 static const u8 sText_RegisterHelp[] = _("{DPAD_NONE}Slot {B_BUTTON}Back");
@@ -136,6 +147,7 @@ static const u8 *const sMainLabels[POKEGEAR_APP_COUNT] =
     [POKEGEAR_APP_DEXNAV] = sText_DexNav,
     [POKEGEAR_APP_TROPHIES] = sText_Trophies,
     [POKEGEAR_APP_RADIO] = sText_Radio,
+    [POKEGEAR_APP_PHONE] = sText_Phone,
 };
 
 static const u8 *const sRegisteredDirectionLabels[MAX_REGISTERED_ITEMS] =
@@ -217,6 +229,7 @@ static const struct CompressedSpriteSheet sSpriteSheets_PokegearIcons[] =
     { sPokegearIconDexNavGfx,  (64 * 32) / 2, TAG_POKEGEAR_ICON_DEXNAV },
     { sPokegearIconTrophyGfx,  (64 * 32) / 2, TAG_POKEGEAR_ICON_TROPHY },
     { sPokegearIconRadioGfx,   (64 * 32) / 2, TAG_POKEGEAR_ICON_RADIO  },
+    { sPokegearIconPhoneGfx,   (64 * 32) / 2, TAG_POKEGEAR_ICON_PHONE  },
 };
 
 static const struct SpritePalette sSpritePal_PokegearIcons =
@@ -278,6 +291,16 @@ static const struct SpriteTemplate sSpriteTemplates_PokegearIcons[] =
         .affineAnims = gDummySpriteAffineAnimTable,
         .callback   = SpriteCallbackDummy,
     },
+    [POKEGEAR_APP_PHONE] =
+    {
+        .tileTag    = TAG_POKEGEAR_ICON_PHONE,
+        .paletteTag = TAG_POKEGEAR_ICON_MAP,
+        .oam        = &sOamData_PokegearIcon,
+        .anims      = sSpriteAnimTable_PokegearIcons,
+        .images     = NULL,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback   = SpriteCallbackDummy,
+    },
 };
 
 void CB2_InitPokegear(void)
@@ -315,6 +338,9 @@ void OpenPokegearApp(enum PokegearApp app, MainCallback callback)
         break;
     case POKEGEAR_APP_RADIO:
         OpenPokegearRadio(callback);
+        break;
+    case POKEGEAR_APP_PHONE:
+        OpenPokegearPhone(callback);
         break;
     default:
         SetMainCallback2(callback);
@@ -499,6 +525,7 @@ static bool8 PokegearLoadGraphics(void)
         LoadCompressedSpriteSheet(&sSpriteSheets_PokegearIcons[1]);
         LoadCompressedSpriteSheet(&sSpriteSheets_PokegearIcons[2]);
         LoadCompressedSpriteSheet(&sSpriteSheets_PokegearIcons[3]);
+        LoadCompressedSpriteSheet(&sSpriteSheets_PokegearIcons[4]);
         LoadSpritePalette(&sSpritePal_PokegearIcons);
         sPokegear->gfxLoadState++;
         break;
@@ -585,6 +612,10 @@ bool32 IsPokegearAppUnlocked(enum PokegearApp app)
         return FALSE;
     if (app == POKEGEAR_APP_DEXNAV)
         return IsDexNavAppUnlocked();
+    // A agenda aparece com o telefone: e a mesma flag que deixa os treinadores
+    // pedirem o numero e ligarem (a mae entrega o Pokegear em New Bark).
+    if (app == POKEGEAR_APP_PHONE)
+        return FlagGet(FLAG_HAS_MATCH_CALL);
     return TRUE;
 }
 
@@ -649,18 +680,32 @@ static void DrawMainButtons(bool8 fullRedraw)
         if (!fullRedraw && i != prevPos && i != curPos)
             continue;
 
-        srcY = (i == curPos) ? POKEGEAR_BUTTON_H : 0;
+        // A arte tem 4 linhas por estado (0-3 normal, 4-7 selecionado) e o botao
+        // agora ocupa 3: copia as duas de cima e a de baixo, pulando a segunda
+        // linha de preenchimento. Assim nao precisou de arte nova.
+        srcY = (i == curPos) ? POKEGEAR_BUTTON_SRC_H : 0;
 
         CopyRectToBgTilemapBufferRect(1,
                                       sPokegearButtonTilemap,
                                       0,
                                       srcY,
                                       POKEGEAR_BUTTON_W,
-                                      POKEGEAR_BUTTON_H,
+                                      POKEGEAR_BUTTON_H - 1,
                                       POKEGEAR_BUTTON_X,
                                       GetButtonY(i),
                                       POKEGEAR_BUTTON_W,
-                                      POKEGEAR_BUTTON_H,
+                                      POKEGEAR_BUTTON_H - 1,
+                                      1, 1, 0);
+        CopyRectToBgTilemapBufferRect(1,
+                                      sPokegearButtonTilemap,
+                                      0,
+                                      srcY + POKEGEAR_BUTTON_SRC_H - 1,
+                                      POKEGEAR_BUTTON_W,
+                                      1,
+                                      POKEGEAR_BUTTON_X,
+                                      GetButtonY(i) + POKEGEAR_BUTTON_H - 1,
+                                      POKEGEAR_BUTTON_W,
+                                      1,
                                       1, 1, 0);
     }
     ScheduleBgCopyTilemapToVram(1);
@@ -681,7 +726,7 @@ static void DrawMainText(void)
             continue;
 
         registeredSlot = RegisteredPokegearAppIndex(i);
-        y = GetButtonY(i) * 8 - 7;
+        y = GetButtonY(i) * 8 - 11;  // centro do botao de 3 linhas (24 px)
         AddTextPrinterParameterized4(WIN_POKEGEAR_MAIN, FONT_NORMAL, x, y, 0, 0, sTextColor_White, 0, sMainLabels[i]);
         if (registeredSlot >= 0)
             AddTextPrinterParameterized4(WIN_POKEGEAR_MAIN, FONT_NORMAL, 170, y, 0, 0, sTextColor_White, 0, sRegisteredDirectionLabels[registeredSlot]);
@@ -710,7 +755,7 @@ static void CreateMainIcons(void)
         if (!IsPokegearAppUnlocked(i))
             continue;
 
-        spriteId = CreateSprite(&sSpriteTemplates_PokegearIcons[i], 76, GetButtonY(i) * 8 + 16, 0);
+        spriteId = CreateSprite(&sSpriteTemplates_PokegearIcons[i], 76, GetButtonY(i) * 8 + 12, 0);
         sPokegear->iconSpriteIds[i] = spriteId;
     }
 }
@@ -733,6 +778,7 @@ static void PokegearFreeResources(void)
     FreeSpriteTilesByTag(TAG_POKEGEAR_ICON_DEXNAV);
     FreeSpriteTilesByTag(TAG_POKEGEAR_ICON_TROPHY);
     FreeSpriteTilesByTag(TAG_POKEGEAR_ICON_RADIO);
+    FreeSpriteTilesByTag(TAG_POKEGEAR_ICON_PHONE);
     FreeSpritePaletteByTag(TAG_POKEGEAR_ICON_MAP);
     FreeAllWindowBuffers();
     TRY_FREE_AND_SET_NULL(sPokegear);
@@ -814,6 +860,10 @@ static void Task_PokegearMainMenu(u8 taskId)
         case POKEGEAR_APP_RADIO:
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
             gTasks[taskId].func = Task_PokegearOpenRadio;
+            break;
+        case POKEGEAR_APP_PHONE:
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_PokegearOpenPhone;
             break;
         }
     }
@@ -915,5 +965,15 @@ static void Task_PokegearOpenRadio(u8 taskId)
         PokegearFreeResources();
         DestroyTask(taskId);
         OpenPokegearApp(POKEGEAR_APP_RADIO, CB2_ReturnToPokegear);
+    }
+}
+
+static void Task_PokegearOpenPhone(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        PokegearFreeResources();
+        DestroyTask(taskId);
+        OpenPokegearApp(POKEGEAR_APP_PHONE, CB2_ReturnToPokegear);
     }
 }
