@@ -2204,8 +2204,9 @@
 #define FLAG_MET_FLANNERY                           0x118E // a Flannery ja se apresentou; setada em Flannery_EventScript_Roaming (data/scripts/flannery.inc)
 #define FLAG_MET_COLRESS                            0x118F // o Colress ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 #define FLAG_MET_SOLIERA                            0x1190 // a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
-#define CUSTOM_FLAGS_END                            FLAG_MET_SOLIERA
-// PROXIMA FLAG NOVA: 0x1191 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+#define FLAG_BIRTH_ISLAND_ITEM_METEORITE            0x1191 // o Meteorite da cratera ja foi pego; setada pelo finditem
+#define CUSTOM_FLAGS_END                            FLAG_BIRTH_ISLAND_ITEM_METEORITE
+// PROXIMA FLAG NOVA: 0x1192 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

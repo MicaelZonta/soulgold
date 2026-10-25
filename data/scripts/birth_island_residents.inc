@@ -42,6 +42,16 @@ BirthIsland_Residents_ShowSoliera:
 	cleartrainerflag TRAINER_SOLIERA
 	return
 
+@ O Meteorite da cratera. Ele e key item (importance 1, POCKET_KEY_ITEMS), entao
+@ nao se gasta: um so da o ciclo das quatro formas do Deoxys para sempre. A
+@ mecanica ja existia inteira em src/data/pokemon/form_change_tables.h; o que
+@ faltava era o item ter onde ser pego, porque as duas fontes dele (MtChimney e
+@ FallarborTown_CozmosHouse) estao fora da ROM.
+
+BirthIsland_EventScript_Item_Meteorite::
+	finditem ITEM_METEORITE
+	end
+
 @ ---------------------------------------------------------------- Colress
 
 BirthIsland_EventScript_Colress::

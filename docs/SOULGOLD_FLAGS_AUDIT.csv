@@ -1916,6 +1916,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x118E,4494,FLAG_MET_FLANNERY,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),a Flannery ja se apresentou; setada em Flannery_EventScript_Roaming (data/scripts/flannery.inc)
 0x118F,4495,FLAG_MET_COLRESS,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),o Colress ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 0x1190,4496,FLAG_MET_SOLIERA,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
+0x1191,4497,FLAG_BIRTH_ISLAND_ITEM_METEORITE,CUSTOM,EM_USO,0,0,1,BirthIsland_Exterior,MAPA_UNICO:BirthIsland_Exterior,o Meteorite da cratera ja foi pego; setada pelo finditem
 0x1500,5376,FLAG_0x1500,LIVRE,NUNCA_REFERENCIADA,0,0,0,,,
 0x1508,5384,FLAG_ROUTE32_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route32,MAPA_UNICO:HiddenGrotto_Route32,
 0x1509,5385,FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY,DAILY,EM_USO,4,4,5,,GLOBAL(codigo),
