@@ -176,7 +176,7 @@ SproutTower_Text_ElderLecturesRival:
 	.string "Pokémon are not tools of war…$"
 
 SproutTower_Text_RivalOnlyCaresStrong:
-	.string "{SPEAKER NAME_SILVER}…\n"
+	.string "{SPEAKER NAME_RIVAL}…\n"
 	.string "…Humph!\p"
 	.string "He claims to be the Elder but\n"
 	.string "he's weak.\p"

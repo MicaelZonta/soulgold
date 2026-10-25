@@ -567,7 +567,9 @@ snow/volcano/pond, apricorns/Kurt/gym rematch, rádio base (4 estações).
 ## Pendências abertas
 - [ ] Fechar a Parte D (tabela de lendários P × S) com o autor — inclui Red
       do P × rival final do S no Summit, e times de ginásio (S ou P).
-- [ ] `map_graph.py info SnowtopMountainOutside` antes das aves Galarian.
+- [x] `map_graph.py info SnowtopMountainOutside` antes das aves Galarian —
+      conferido 25/10/2026: **alcançável** (New Bark → … → Route 39 → Route 49
+      → Snowtop), com entrada por Route 49 e pela ChamponsRoad.
 - [x] Corrigir os números de save da skill `limites-do-engine` — feito
       24/10/2026 (flash de 256 KB, 7412 B livres no SaveBlock1).
 - [x] Adaptar o reset de flags do `LeaveBoat` (S.S. Aqua) — feito 24/10/2026.
@@ -587,8 +589,12 @@ snow/volcano/pond, apricorns/Kurt/gym rematch, rádio base (4 estações).
       nossa Route 49. Resolver com o mapa regional de Sinjoh (cosmético).
 - [x] `FLAG_NO_WILD_CATCHING` (0x1114) aposentada — virou `FLAG_UNUSED_1114`
       (24/10/2026).
-- [ ] Johto usa `NAME_SILVER` (texto fixo) nas falas do rival; com
-      `NAME_RIVAL` existindo, trocar faria valer o nome que o jogador deu.
+- [x] Johto usava `NAME_SILVER` (texto fixo) nas falas do rival — trocado por
+      `NAME_RIVAL` em 25/10/2026. O jogador batiza o rival em New Bark
+      (`special NameRival` + `FLAG_NAMED_SILVER`) e os 19 treinadores rivais já
+      lutavam como `{RIVAL}`; só a plaquinha do overworld continuava "Silver".
+      13 plaquinhas em 8 arquivos + 2 falas de NPC. `SP_NAME_SILVER` fica na
+      tabela (nunca se remove falante), mas **não deve ser usado para o rival**.
 - [x] App de telefone no Pokégear — feito 24/10/2026
       (`.claude/merge_hns/match_call_gsc.md` §7).
 - [x] `OBJECT_EVENTS_COUNT` — resolvido por cima: flash de 256 KB, 64 setores e

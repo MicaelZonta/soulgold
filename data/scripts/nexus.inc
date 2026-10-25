@@ -3183,7 +3183,7 @@ Nexus_Text_Silver_ChampionDefeat:
 	.string "…Tch. Still not enough. Not yet.$"
 
 Nexus_Text_Silver_ChampionAfter:
-	.string "{SPEAKER NAME_SILVER}That thing's been angry so long it\n"
+	.string "{SPEAKER NAME_RIVAL}That thing's been angry so long it\n"
 	.string "probably forgot why. It never got a\l"
 	.string "second chance. Just a door, and a lock.\p"
 	.string "I got one. Didn't want it. Took it\n"

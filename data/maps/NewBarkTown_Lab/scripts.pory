@@ -1165,7 +1165,7 @@ NewBarkTown_Lab_Text_Officer1:
 	.string "name?$"
 
 NewBarkTown_Lab_Text_Officer2:
-	.string "Ok! So Silver was his name.\p"
+	.string "Ok! So {RIVAL} was his name.\p"
 	.string "Thanks for helping my\n"
 	.string "investigation!$"
 

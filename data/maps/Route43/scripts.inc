@@ -75,7 +75,7 @@ Route43_Text_PokemaniacBrentAfter:
 
 Route43_Text_PokemaniacRonSeen:
     .string "Would you get this?\p"
-    .string "Some Silver guy made fun of my\n"
+    .string "Some {RIVAL} guy made fun of my\n"
     .string "Pokémon!\p"
     .string "Darn it! My Pokémon's great!$"
 
