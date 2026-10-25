@@ -347,7 +347,7 @@
     },
     {
       "x": 33,
-      "y": 27,
+      "y": 26,
       "elevation": 0,
       "dest_map": "MAP_VIRIDIAN_CITY_HOUSE2",
       "dest_warp_id": "0"
@@ -392,14 +392,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "ViridianCity_EventScript_CitySign2"
-    },
-    {
-      "type": "sign",
-      "x": 37,
-      "y": 27,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "LilycoveCity_EventScript_ContestHallSign"
     }
   ],
   "game_version": "hns",

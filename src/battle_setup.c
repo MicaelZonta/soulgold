@@ -738,11 +738,155 @@ static bool32 IsCurrentMap(u32 map)
          && gSaveBlock1Ptr->location.mapNum == MAP_NUM(map));
 }
 
+// Ambiente de batalha por mapa, portado da sMapDefaultEnvironments do HnS
+// 2.0.6 em 25/10/2026 (decisao do autor: "usa o padrao do HnS").
+//
+// O nosso motor DERIVA o ambiente do terreno - comportamento do metatile e
+// tipo de mapa - e so tinha quatro listas de excecao escritas a mao. Esta
+// tabela e a lista de excecao do HnS, e vale sobre a derivacao: numa rota de
+// montanha a batalha usa o fundo de montanha mesmo com o jogador em cima do
+// mato, que e como o HGSS se comporta.
+//
+// Duas correcoes em relacao ao porte cru:
+//   - MAP_ROUTE49 e MAP_ROUTE50 do HnS sao as rotas de SINJOH. Aqui elas
+//     foram renomeadas na importacao (commit 8db1fbf091) e viraram
+//     MAP_ROUTE49_SINJOH e MAP_ROUTE50_SINJOH; as nossas MAP_ROUTE49 e
+//     MAP_ROUTE50 sao de Johto e nao tem nada a ver. Tirar o sufixo _HNS sem
+//     olhar poria a neve de Sinjoh nas nossas duas rotas.
+//   - As 21 entradas de BLUE_BUILDING ficaram de fora: nao e um ambiente
+//     aqui (ver src/data/battle_environment.h).
+//
+// MOUNTAIN_SNOW e VOLCANO_CAVE deles sao os nossos SNOW_MOUNTAIN e VOLCANO.
+static const struct { u16 mapId; u16 environment; } sMapBattleEnvironments[] = {
+    // MOUNTAIN
+    {MAP_BLACKTHORN_CITY,                   BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_LAKE_OF_RAGE,                      BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_LAKE_OF_RAGE_LOW_TIDE,             BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_MAHOGANYTOWN,                      BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_MT_SILVER_OUTSIDE,                 BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_MT_SILVER_MOUNTAIN_SIDE,           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE3,                            BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE4,                            BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE9,                            BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE10,                           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE28,                           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE41,                           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE42,                           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE43,                           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE44,                           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE45,                           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE46,                           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE47,                           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_ROUTE48,                           BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_RUINS_OF_ALPH_OUTSIDE,             BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_SAFARI_ZONE1,                      BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_SAFARI_ZONE2,                      BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_SAFARI_ZONE3,                      BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_SAFARI_ZONE_ENTERANCE,             BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_SAFARI_ZONE_GATE,                  BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_SAFARI_ZONE_LOW_LEFT,              BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_SAFARI_ZONE_LOW_MID,               BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_SAFARI_ZONE_TOP_LEFT,              BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_SAFARI_ZONE_TOP_MID,               BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_SAFARI_ZONE_TOP_RIGHT,             BATTLE_ENVIRONMENT_MOUNTAIN},
+    {MAP_FUCHSIA_CITY_SAFARI_ZONE_MOUNTAIN, BATTLE_ENVIRONMENT_MOUNTAIN},
+    // SAND
+    {MAP_CIANWOOD_CITY,                     BATTLE_ENVIRONMENT_SAND},
+    {MAP_FUCHSIA_CITY_SAFARI_ZONE_BEACH,    BATTLE_ENVIRONMENT_SAND},
+    {MAP_CINNABAR_ISLAND,                   BATTLE_ENVIRONMENT_SAND},
+    {MAP_SAFARI_ZONE_TOP_RIGHT,             BATTLE_ENVIRONMENT_SAND},
+    // CAVE_WATER
+    {MAP_ROUTE19_CAVE,                      BATTLE_ENVIRONMENT_CAVE_WATER},
+    // CAVE
+    {MAP_EMBEDDED_TOWER,                    BATTLE_ENVIRONMENT_CAVE},
+    // RAYQUAZA
+    {MAP_TIN_TOWER_ROOF_DAY,                BATTLE_ENVIRONMENT_RAYQUAZA},
+    {MAP_TIN_TOWER_ROOF_NIGHT,              BATTLE_ENVIRONMENT_RAYQUAZA},
+    // GRAY_CAVE
+    {MAP_CERULEAN_CAVE_1F,                  BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_CERULEAN_CAVE_B1F,                 BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_CERULEAN_CAVE_B2F,                 BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_WHIRL_ISLANDS_1F,                  BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_WHIRL_ISLANDS_B1F,                 BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_WHIRL_ISLANDS_B1F_INNER,           BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_WHIRL_ISLANDS_B2F,                 BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_WHIRL_ISLANDS_B3F,                 BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_WHIRL_ISLANDS_DESCENT,             BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_WHIRL_ISLANDS_LUGIA_CHAMBER,       BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_MT_SILVER_1F_ITEM_ROOM,            BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_MT_SILVER_1F_WATERFALL_ROOM,       BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_MT_SILVER_1F_MOLTRES_ROOM,         BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_MT_SILVER_2F,                      BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_MT_SILVER_3F,                      BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_MT_MORTAR_1F_SOUTH,                BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_MT_MORTAR_1F_NORTH,                BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_MT_MORTAR_2F,                      BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_MT_MORTAR_B1F,                     BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_DRAGONS_DEN_ENTRANCE,              BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_DRAGONS_DEN_CAVERN,                BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_ROCK_TUNNEL_B1F,                   BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_ROCK_TUNNEL_1F,                    BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_SLOWPOKE_WELL_B1F,                 BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_SLOWPOKE_WELL_B2F,                 BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_SAFARI_ZONE_LOW_RIGHT,             BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_FUCHSIA_CITY_SAFARI_ZONE_CAVE,     BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_RUINS_OF_ALPH_B1F,                 BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_ULA_ULA_CAVE_2,                    BATTLE_ENVIRONMENT_GRAY_CAVE},
+    // ROCK_SNOW
+    {MAP_MT_SILVER_SNOW,                    BATTLE_ENVIRONMENT_ROCK_SNOW},
+    {MAP_ROUTE49_SINJOH,                    BATTLE_ENVIRONMENT_ROCK_SNOW},
+    {MAP_NEW_SINJOH,                        BATTLE_ENVIRONMENT_ROCK_SNOW},
+    {MAP_ROUTE50_SINJOH,                    BATTLE_ENVIRONMENT_ROCK_SNOW},
+    {MAP_SINJOH_RUINS,                      BATTLE_ENVIRONMENT_ROCK_SNOW},
+    // SNOW_MOUNTAIN
+    {MAP_MT_SILVER_SUMMIT_DAY,              BATTLE_ENVIRONMENT_SNOW_MOUNTAIN},
+    {MAP_MT_SILVER_SUMMIT_NIGHT,            BATTLE_ENVIRONMENT_SNOW_MOUNTAIN},
+    {MAP_SINJOH_RUINS_ARCEUS_ROOM,          BATTLE_ENVIRONMENT_SNOW_MOUNTAIN},
+    // VOLCANO
+    {MAP_BLACKTHORN_CITY_GYM,               BATTLE_ENVIRONMENT_VOLCANO},
+    {MAP_SEAFOAM_ISLANDS_GYM,               BATTLE_ENVIRONMENT_VOLCANO},
+    {MAP_SEAFOAM_ISLANDS_SECRET_CAVE,       BATTLE_ENVIRONMENT_VOLCANO},
+    {MAP_NEWSINJOH_HOTSPRINGS,              BATTLE_ENVIRONMENT_VOLCANO},
+    {MAP_AKALA_CAVE,                        BATTLE_ENVIRONMENT_VOLCANO},
+    // SNOW_CAVE
+    {MAP_ICE_PATH_1F,                       BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_ICE_PATH_B1F,                      BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_ICE_PATH_B2F,                      BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_ICE_PATH_B3F,                      BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_ICE_PATH_B4F,                      BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_SEAFOAM_ISLANDS_1F,                BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_SEAFOAM_ISLANDS_B1F,               BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_ULA_ULA_CAVE,                      BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_SNOWSWEPT_CAVERN,                  BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_SINJOH_RUINS_REGIROCK_ROOM,        BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_SINJOH_RUINS_REGICE_ROOM,          BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_SINJOH_RUINS_REGISTEEL_ROOM,       BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_SINJOH_RUINS_REGIELEKI_ROOM,       BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_SINJOH_RUINS_REGIDRACO_ROOM,       BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_SINJOH_RUINS_REGIGIGAS_ROOM,       BATTLE_ENVIRONMENT_SNOW_CAVE},
+    {MAP_SINJOH_RUINS_TEMPLE,               BATTLE_ENVIRONMENT_SNOW_CAVE},
+};
+
+// -1 quando o mapa atual nao esta na tabela.
+static s32 GetMapBattleEnvironmentOverride(void)
+{
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sMapBattleEnvironments); i++)
+    {
+        if (IsCurrentMap(sMapBattleEnvironments[i].mapId))
+            return sMapBattleEnvironments[i].environment;
+    }
+    return -1;
+}
+
 static bool32 IsCurrentMapSnowMountainBattleEnvironment(void)
 {
+    // MAP_MT_SILVER_SNOW saiu daqui: a tabela do HnS o poe em ROCK_SNOW e ela
+    // vale sobre esta lista. Duas fontes de verdade para o mesmo mapa so
+    // confundiriam quem for mexer depois.
     return (IsCurrentMap(MAP_SNOWTOP_MOUNTAIN_OUTSIDE)
          || IsCurrentMap(MAP_ICE_PATH_DEPTHS2)
-         || IsCurrentMap(MAP_MT_SILVER_SNOW)
          || IsCurrentMap(MAP_MT_SILVER_SUMMIT_DAY)
          || IsCurrentMap(MAP_MT_SILVER_SUMMIT_NIGHT));
 }
@@ -789,6 +933,13 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
     {
         if (MetatileBehavior_IsSurfableFishableWater(tileBehavior))
             return BATTLE_ENVIRONMENT_WATER;
+    }
+
+    {
+        s32 override = GetMapBattleEnvironmentOverride();
+
+        if (override >= 0)
+            return override;
     }
 
     if (IsCurrentMapSnowMountainBattleEnvironment())

@@ -169,15 +169,6 @@ ViridianCity_Text_TrainerHouseSign:
 	.string "Trainer House\p"
 	.string "The Club for Top Trainer Battles$"
 
-@ Copiado do LilycoveCity do HnS (o Lilycove do S esta fora da ROM e o
-@ filtro corta o scripts.inc dele; referencia local do map.json importado):
-LilycoveCity_EventScript_ContestHallSign::
-	msgbox LilycoveCity_Text_ContestHallSign, MSGBOX_SIGN
-	end
-LilycoveCity_Text_ContestHallSign:
-	.string "Pokémon Contest Hall\n"
-	.string "“The gathering place for Trainers!”$"
-
 ViridianCity_Text_FisherNoSpace:
 	.string "Your bag is full.\n"
 	.string "Make some room and come back.$"

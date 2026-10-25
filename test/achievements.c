@@ -401,16 +401,15 @@ TEST("Galarian Special requires all three exact Galarian bird forms")
     }
 }
 
-TEST("Existing Galarian bird rewards unlock Galarian Special")
-{
-    FlagSet(FLAG_BATTLE_CAFE_ARTICUNO_RECEIVED);
-    FlagSet(FLAG_BATTLE_CAFE_ZAPDOS_RECEIVED);
-    FlagSet(FLAG_BATTLE_CAFE_MOLTRES_RECEIVED);
-
-    Achievement_CheckAll();
-
-    EXPECT(Achievement_IsUnlocked(ACH_OBTAIN_GALARIAN_BIRDS));
-}
+// O teste "Existing Galarian bird rewards unlock Galarian Special" morava
+// aqui. Ele garantia que setar as FLAG_BATTLE_CAFE_*_RECEIVED sozinhas
+// destravava a conquista. A Fase 7 tirou as aves de Galar do Cafe e trocou o
+// predicado por Achievement_PredicateCaughtSpecies, entao essa garantia deixou
+// de existir por design e o teste ficou vermelho desde entao
+// (achievements.c:412, EXPECT failed). No jogo real a conquista continua
+// valendo para quem pegou a ave no Cafe, porque receber o mon marca a dex; era
+// so o teste que nao montava o cenario. O que importa esta coberto pelo
+// "Galarian Special requires all three exact Galarian bird forms", logo acima.
 
 TEST("Master of Wishes requires all four weather genies")
 {
