@@ -1942,7 +1942,7 @@
 // Significado vem do nome; a coluna do mapa diz quem usa. Hidden items
 // tambem vivem aqui (o 'bloco' de hidden item e' so organizacao).
 #define FLAG_DEFEATED_RED                                    0x109B // HnS: MtSilver_SummitDay
-#define FLAG_END_NUZLOCKE                                    0x109C // HnS: MtSilver_SummitDay
+#define FLAG_END_NUZLOCKE                                    0x109C // ORFA: veio no bloco do HnS, mas o nuzlocke.c deles nao foi portado e nada le nem escreve esta flag aqui. Nao reaproveitar o numero
 #define FLAG_FUCHSIA_SAFARI_NPC_TRADE_COMPLETED              0x109D // HnS: FuchsiaCity_SafariZoneEntrance
 #define FLAG_GOT_TM_SLEEP_TALK                               0x109E // HnS: CeladonCity_Apartments_RoofHouse, SSAqua_1F
 #define FLAG_GOT_VIRIDIAN_TM_DREAM_EATER                     0x109F // HnS: SSAqua_1F, ViridianCity

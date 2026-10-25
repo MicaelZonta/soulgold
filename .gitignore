@@ -78,3 +78,9 @@ src/data/docs_qr.h
 
 # configuracao pessoal do Claude Code (nao vai para o repo)
 .claude/settings.local.json
+
+# backups de editor/migracao: nunca versionados (180 map.json.bak de um sed
+# quebrado de 2025-12 estavam no repo e sujavam ate a auditoria de flags)
+*.bak
+*.orig
+*.rej
