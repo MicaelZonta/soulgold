@@ -23,6 +23,7 @@ existente), antes de reportar.
 | `summit_red_rival.md` | Red × rival no topo do Mt. Silver (ovo de Terapagos) |
 | `match_call_gsc.md` | O telefone do Pokégear: agenda, ligações, revanches, itens e o custo de save |
 | `bug_alola_trava.md` | **Resolvido** (24/10): Melemele Isle travava ao entrar — porta de Alola fora de `sDoorAnimGraphicsTable`, `gfx->size` em NULL virava `udf` |
+| `ssaqua_ida_e_volta.md` | S.S. Aqua nos dois sentidos e a retirada do flagheap que apagava progresso de Kanto no desembarque |
 | `k8_plaquinhas_e_decap.md` | K8: decap do texto HnS (`dev_scripts/decap_texto.py`) e plaquinhas `{SPEAKER}` |
 
 Branch: `kanto-hns-adoption` (fork `mysoulgoldfork`); rollback: tag

@@ -570,8 +570,13 @@ snow/volcano/pond, apricorns/Kurt/gym rematch, rádio base (4 estações).
 - [ ] `map_graph.py info SnowtopMountainOutside` antes das aves Galarian.
 - [x] Corrigir os números de save da skill `limites-do-engine` — feito
       24/10/2026 (flash de 256 KB, 7412 B livres no SaveBlock1).
-- [ ] Adaptar o reset de flags do `LeaveBoat` (S.S. Aqua) à costura de
-      pós-game do S (decisão: o navio volta a funcionar ida-e-volta).
+- [x] Adaptar o reset de flags do `LeaveBoat` (S.S. Aqua) — feito 24/10/2026.
+      O flagheap saiu (apagava insígnias de Kanto, devolvia itens, respawnava
+      lendário e esvaziava o Dojo dos líderes a cada viagem); o que era
+      inicialização foi para `new_game.inc`. O navio vai e volta: Olivine →
+      Vermilion com a história de bordo na primeira vez, direto depois, nos
+      dois sentidos (`.claude/merge_hns/ssaqua_ida_e_volta.md`). **Sem QA no
+      jogo ainda.**
 - [x] Conferir caixa (decap) do texto HnS importado (K8) — feito 24/10/2026.
 - [x] Largura de linha nos arquivos do HnS — feito 24/10/2026. Eram **11**, não
       28: o `medir_linha.py` media `"a\nb"` como uma linha só e inventava

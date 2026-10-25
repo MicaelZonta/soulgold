@@ -99,6 +99,21 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_SHADOW_LUGIA
 	setflag FLAG_HIDE_RIVAL_AZUMARILL
 	setflag FLAG_RELEASE_SHINY_ODDS
+
+	@ NPCs de evento de Kanto que comecam escondidos. Antes isso vivia no
+	@ flagheap do desembarque do S.S. Aqua (base HnS): la so valia para quem
+	@ chegasse de barco e, pior, rodava de novo a cada viagem. Aqui vale
+	@ sempre, inclusive para quem entra em Kanto a pe pela Route 28.
+	setflag FLAG_HIDE_COPYCAT_CLEFAIRY_DOLL
+	setflag FLAG_HIDE_CERULEAN_GYM_TRAINERS
+	setflag FLAG_HIDE_CELADON_EUSINE
+	setflag FLAG_HIDE_SEAFOAM_GYMGUY
+	setflag FLAG_HIDE_VIRIDIAN_BLUE
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU1
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU2
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU3
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_SPIKY_EARED_PICHU4
+	setflag FLAG_HIDE_ROUTE13_BOAT
 	
 	clearflag FLAG_COMPLETED_AERODACTYL_PUZZLE
 	clearflag FLAG_COMPLETED_HOOH_PUZZLE

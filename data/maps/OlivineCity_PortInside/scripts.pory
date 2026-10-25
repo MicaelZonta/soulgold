@@ -183,6 +183,23 @@ script OlivinePort_Sailor {
 			}
 		}
 	}
+	// S.S. Aqua para Kanto. O S.S.Ticket vem do Elm depois da Liga. A viagem
+	// inaugural -- o conves, o avo e a neta -- e esta, de Olivine para
+	// Vermilion (VAR_SSAQUA_STATE 1..7); feita uma vez, a travessia passa a
+	// ser direta, dos dois lados. Quem recusa cai no fluxo de sempre (Altar,
+	// Faraway), entao este bloco nunca tranca os outros destinos.
+	checkitem(ITEM_SS_TICKET)
+	if (var(VAR_RESULT) == TRUE) {
+		msgbox("{SPEAKER NAME_SAILOR}The Fast Ship S.S.Aqua sails for
+				Vermilion City. Will you be boarding?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			if (var(VAR_SSAQUA_STATE) >= 7) {
+				goto(OlivinePort_EventScript_SailVermilion)
+			}
+			goto(OlivinePort_EventScript_MaidenVoyage)
+		}
+	}
+
 	checkitem(ITEM_SUN_MOON_TICKET)
 	if (var(VAR_RESULT) == TRUE) {
 		if (flag(FLAG_CANSAIL_FARAWAYISLAND)) {
@@ -248,6 +265,57 @@ script OlivinePort_EventScript_SailFaraway {
 	waitstate
 	release
 	end
+}
+
+// Travessia normal para Kanto, ja com a historia do barco feita: so a
+// animacao de embarque e o desembarque do outro lado. O respawn vai para o
+// destino -- quem desmaiar em Kanto nao pode acordar em Johto.
+script OlivinePort_EventScript_SailVermilion {
+	msgbox(OlivinePort_Text_FlashTicket)
+	call(OlivinePort_EventScript_EnterShip)
+	setrespawn(HEAL_LOCATION_VERMILION_CITY)
+	warpsilent(MAP_VERMILION_CITY_PORT_INSIDE, 8, 9)
+	waitstate
+	release
+	end
+}
+
+// Viagem inaugural: entra no navio de verdade (SSAqua_1F) e a historia corre
+// la dentro ate a chegada em Vermilion. O respawn fica em Olivine: se o
+// jogador perder uma batalha no conves, volta para o porto de onde saiu e
+// pode embarcar de novo.
+script OlivinePort_EventScript_MaidenVoyage {
+	msgbox(OlivinePort_Text_FlashTicket)
+	call(OlivinePort_EventScript_EnterShip)
+	setvar(VAR_SSAQUA_STATE, 1)
+	clearflag(FLAG_HIDE_SSAQUA_1F_GRANDPA)
+	setflag(FLAG_HIDE_SSAQUA_ROOM_SSE_GRANDDAUGHTER)
+	clearflag(FLAG_HIDE_SSAQUA_SAILOR)
+	clearflag(FLAG_HIDE_SSAQUA_CAPTAINS_ROOM_GRANDDAUGHTER)
+	setrespawn(HEAL_LOCATION_OLIVINE_CITY)
+	warpsilent(MAP_SSAQUA_1F, 29, 3)
+	waitstate
+	release
+	end
+}
+
+script OlivinePort_EventScript_EnterShip {
+	msgbox(OlivinePort_Text_SailorGetOnBoard)
+	closemessage
+	delay(20)
+	applymovement(LOCALID_OLIVINEPORT_SAILOR, OlivinePort_Movement_SailorEnterBoat)
+	waitmovement(0)
+	playse(SE_EXIT)
+	applymovement(OBJ_EVENT_ID_PLAYER, OlivinePort_Movement_PlayerEnterBoat)
+	waitmovement(0)
+	special(SpawnCameraObject)
+	playse(SE_EXIT)
+	removeobject(OBJ_EVENT_ID_PLAYER)
+	delay(60)
+	applymovement(LOCALID_OLIVINEPORT_SAILOR, OlivinePort_Movement_BoatLeave)
+	applymovement(LOCALID_OLIVINEPORT_BOAT, OlivinePort_Movement_BoatLeave)
+	waitmovement(LOCALID_OLIVINEPORT_BOAT)
+	return
 }
 
 script OlivinePortBlaine {

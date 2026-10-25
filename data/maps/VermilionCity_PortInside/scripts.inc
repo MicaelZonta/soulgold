@@ -24,7 +24,7 @@ VermilionPort_EventScript_Sailor::
 	msgbox VermilionPort_Text_AskBoard, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_Refused
 	checkitem ITEM_SS_TICKET
-	goto_if_eq VAR_RESULT, TRUE, VermilionPort_EventScript_Sailor_MaidenVoyage
+	goto_if_eq VAR_RESULT, TRUE, VermilionPort_EventScript_Sailor_FirstSail
 	msgbox VermilionPort_Text_NoTicket, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -44,8 +44,11 @@ VermilionPort_EventScript_Sailor_AfterKanto::
 	case 1, VermilionPort_EventScript_ChoseSouthernIsland
 	case 2, VermilionPort_EventScript_ChoseBirthIsland
 	case 3, VermilionPort_EventScript_ChoseFarawayIsland
-	case 4, VermilionPort_EventScript_ChoseBattleFrontier
-	case 5, VermilionPort_EventScript_Sailor_Refused
+	@ A lista MULTI_VERMILION_HARBOR tem 5 itens e o 4 e "Exit": o case 4
+	@ mandava quem escolhesse Exit para o Battle Frontier, que esta em
+	@ rom_excluded_groups (fora do jogo). Para reabrir o Frontier um dia:
+	@ trocar para MULTI_VERMILION_HARBOR_RED e devolver o case 4 abaixo.
+	case 4, VermilionPort_EventScript_Sailor_Refused
 	case MULTI_B_PRESSED, VermilionPort_EventScript_Sailor_Refused
 	release
 	end
@@ -57,6 +60,10 @@ VermilionPort_EventScript_ChoseOlivine::
 	bufferitemname STR_VAR_1, ITEM_SS_TICKET
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_NoCredentials
 	call VermilionPort_EventScript_EnterShip
+	@ O EnterShip deixa o respawn em Vermilion (serve para as ilhas, que nao
+	@ tem Centro); indo para Johto o respawn tem que vir junto, senao quem
+	@ desmaiar em Johto acorda em Kanto.
+	setrespawn HEAL_LOCATION_OLIVINE_CITY
 	warpsilent MAP_OLIVINE_CITY_PORT_INSIDE, 8, 16
 	waitstate
 	release
@@ -98,6 +105,7 @@ VermilionPort_EventScript_ChoseFarawayIsland::
 	release
 	end	
 
+@ Sem uso hoje: o Battle Frontier esta fora do jogo (ver o case 4 acima).
 VermilionPort_EventScript_ChoseBattleFrontier::
 	closemessage
 	delay 20
@@ -107,11 +115,17 @@ VermilionPort_EventScript_ChoseBattleFrontier::
 	release
 	end	
 
-VermilionPort_EventScript_Sailor_MaidenVoyage::
+VermilionPort_EventScript_Sailor_FirstSail::
+	@ Em SoulGold da para chegar a Kanto a pe (Route 28), entao o jogador pode
+	@ estreitar o barco por este lado. A viagem inaugural -- o conves, o avo e a
+	@ neta -- e a de Olivine para Vermilion; daqui o barco so faz a travessia e
+	@ libera o porto dos dois lados. Antes isto mandava para dentro do S.S.
+	@ Aqua com VAR_SSAQUA_STATE 1: o navio "chegava em Vermilion" de novo, no
+	@ mesmo porto de onde saiu.
 	msgbox VermilionPort_Text_FlashTicket, MSGBOX_DEFAULT
 	call VermilionPort_EventScript_EnterShip
-	setvar VAR_SSAQUA_STATE, 1
-	warpsilent MAP_SSAQUA_1F, 29, 3
+	setvar VAR_SSAQUA_STATE, 7
+	warpsilent MAP_OLIVINE_CITY_PORT_INSIDE, 8, 16
 	waitstate
 	release
 	end

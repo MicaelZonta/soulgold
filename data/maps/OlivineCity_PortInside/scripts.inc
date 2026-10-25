@@ -169,14 +169,18 @@ OlivinePort_Sailor::
 	faceplayer
 	goto_if_set FLAG_EVENT_NECROZMA_ALTAR_UNLOCKED, OlivinePort_Sailor_2
 OlivinePort_Sailor_1:
-	checkitem ITEM_SUN_MOON_TICKET
+	checkitem ITEM_SS_TICKET
 	compare VAR_RESULT, TRUE
 	goto_if_eq OlivinePort_Sailor_5
 OlivinePort_Sailor_4:
-	goto_if_unset FLAG_CANSAIL_FARAWAYISLAND, OlivinePort_Sailor_10
-	msgbox OlivinePort_Sailor_Text_8, MSGBOX_YESNO
+	checkitem ITEM_SUN_MOON_TICKET
+	compare VAR_RESULT, TRUE
+	goto_if_eq OlivinePort_Sailor_10
+OlivinePort_Sailor_9:
+	goto_if_unset FLAG_CANSAIL_FARAWAYISLAND, OlivinePort_Sailor_17
+	msgbox OlivinePort_Sailor_Text_9, MSGBOX_YESNO
 	compare VAR_RESULT, NO
-	goto_if_eq OlivinePort_Sailor_18
+	goto_if_eq OlivinePort_Sailor_26
 	goto OlivinePort_EventScript_SailFaraway
 	return
 
@@ -187,57 +191,74 @@ OlivinePort_Sailor_2:
 	goto OlivinePort_Sailor_1
 
 OlivinePort_Sailor_5:
-	goto_if_set FLAG_CANSAIL_FARAWAYISLAND, OlivinePort_Sailor_13
-	msgbox OlivinePort_Sailor_Text_6, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq OlivinePort_Sailor_21
-	goto OlivinePort_EventScript_SailAltar
+	msgbox OlivinePort_Sailor_Text_1, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq OlivinePort_Sailor_12
 	goto OlivinePort_Sailor_4
 
 OlivinePort_Sailor_7:
 	msgbox OlivinePort_Sailor_Text_0
 	giveitem ITEM_SUN_MOON_TICKET
 	compare VAR_RESULT, FALSE
-	goto_if_eq OlivinePort_Sailor_15
+	goto_if_eq OlivinePort_Sailor_14
 	goto OlivinePort_Sailor_1
 
 OlivinePort_Sailor_10:
-	msgbox OlivinePort_Sailor_Text_7
-	release
-	end
-
-OlivinePort_Sailor_13:
-	msgbox OlivinePort_Sailor_Text_1
-	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, OlivinePort_Sailor_Text_2, OlivinePort_Sailor_Text_3, OlivinePort_Sailor_Text_4
-	switch VAR_RESULT
-	case 0, OlivinePort_Sailor_25
-	case 1, OlivinePort_Sailor_26
-OlivinePort_Sailor_23:
-	msgbox OlivinePort_Sailor_Text_5
-	release
-	end
-
-OlivinePort_Sailor_15:
-	release
-	end
-
-OlivinePort_Sailor_18:
-	msgbox OlivinePort_Sailor_Text_9
-	release
-	end
-
-OlivinePort_Sailor_21:
-	msgbox OlivinePort_Sailor_Text_5
-	release
-	end
-
-OlivinePort_Sailor_25:
+	goto_if_set FLAG_CANSAIL_FARAWAYISLAND, OlivinePort_Sailor_20
+	msgbox OlivinePort_Sailor_Text_7, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq OlivinePort_Sailor_29
 	goto OlivinePort_EventScript_SailAltar
-	goto OlivinePort_Sailor_23
+	goto OlivinePort_Sailor_9
+
+OlivinePort_Sailor_12:
+	compare VAR_SSAQUA_STATE, 7
+	goto_if_ge OlivinePort_Sailor_23
+OlivinePort_Sailor_22:
+	goto OlivinePort_EventScript_MaidenVoyage
+	goto OlivinePort_Sailor_4
+
+OlivinePort_Sailor_14:
+	release
+	end
+
+OlivinePort_Sailor_17:
+	msgbox OlivinePort_Sailor_Text_8
+	release
+	end
+
+OlivinePort_Sailor_20:
+	msgbox OlivinePort_Sailor_Text_2
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, OlivinePort_Sailor_Text_3, OlivinePort_Sailor_Text_4, OlivinePort_Sailor_Text_5
+	switch VAR_RESULT
+	case 0, OlivinePort_Sailor_33
+	case 1, OlivinePort_Sailor_34
+OlivinePort_Sailor_31:
+	msgbox OlivinePort_Sailor_Text_6
+	release
+	end
+
+OlivinePort_Sailor_23:
+	goto OlivinePort_EventScript_SailVermilion
+	goto OlivinePort_Sailor_22
 
 OlivinePort_Sailor_26:
+	msgbox OlivinePort_Sailor_Text_10
+	release
+	end
+
+OlivinePort_Sailor_29:
+	msgbox OlivinePort_Sailor_Text_6
+	release
+	end
+
+OlivinePort_Sailor_33:
+	goto OlivinePort_EventScript_SailAltar
+	goto OlivinePort_Sailor_31
+
+OlivinePort_Sailor_34:
 	goto OlivinePort_EventScript_SailFaraway
-	goto OlivinePort_Sailor_23
+	goto OlivinePort_Sailor_31
 
 
 OlivinePort_EventScript_SailAltar::
@@ -257,6 +278,50 @@ OlivinePort_EventScript_SailFaraway::
 	waitstate
 	release
 	end
+
+
+OlivinePort_EventScript_SailVermilion::
+	msgbox OlivinePort_Text_FlashTicket
+	call OlivinePort_EventScript_EnterShip
+	setrespawn HEAL_LOCATION_VERMILION_CITY
+	warpsilent MAP_VERMILION_CITY_PORT_INSIDE, 8, 9
+	waitstate
+	release
+	end
+
+
+OlivinePort_EventScript_MaidenVoyage::
+	msgbox OlivinePort_Text_FlashTicket
+	call OlivinePort_EventScript_EnterShip
+	setvar VAR_SSAQUA_STATE, 1
+	clearflag FLAG_HIDE_SSAQUA_1F_GRANDPA
+	setflag FLAG_HIDE_SSAQUA_ROOM_SSE_GRANDDAUGHTER
+	clearflag FLAG_HIDE_SSAQUA_SAILOR
+	clearflag FLAG_HIDE_SSAQUA_CAPTAINS_ROOM_GRANDDAUGHTER
+	setrespawn HEAL_LOCATION_OLIVINE_CITY
+	warpsilent MAP_SSAQUA_1F, 29, 3
+	waitstate
+	release
+	end
+
+
+OlivinePort_EventScript_EnterShip::
+	msgbox OlivinePort_Text_SailorGetOnBoard
+	closemessage
+	delay 20
+	applymovement LOCALID_OLIVINEPORT_SAILOR, OlivinePort_Movement_SailorEnterBoat
+	waitmovement 0
+	playse SE_EXIT
+	applymovement OBJ_EVENT_ID_PLAYER, OlivinePort_Movement_PlayerEnterBoat
+	waitmovement 0
+	special SpawnCameraObject
+	playse SE_EXIT
+	removeobject OBJ_EVENT_ID_PLAYER
+	delay 60
+	applymovement LOCALID_OLIVINEPORT_SAILOR, OlivinePort_Movement_BoatLeave
+	applymovement LOCALID_OLIVINEPORT_BOAT, OlivinePort_Movement_BoatLeave
+	waitmovement LOCALID_OLIVINEPORT_BOAT
+	return
 
 
 OlivinePortBlaine::
@@ -344,34 +409,38 @@ OlivinePort_Sailor_Text_0:
 	.string "Here you are.$"
 
 OlivinePort_Sailor_Text_1:
-	.string "{SPEAKER NAME_SAILOR}Where would you like to sail?$"
+	.string "{SPEAKER NAME_SAILOR}The Fast Ship S.S.Aqua sails for\n"
+	.string "Vermilion City. Will you be boarding?$"
 
 OlivinePort_Sailor_Text_2:
-	.string "Sun & Moon Altar$"
+	.string "{SPEAKER NAME_SAILOR}Where would you like to sail?$"
 
 OlivinePort_Sailor_Text_3:
-	.string "Faraway Island$"
+	.string "Sun & Moon Altar$"
 
 OlivinePort_Sailor_Text_4:
-	.string "Cancel$"
+	.string "Faraway Island$"
 
 OlivinePort_Sailor_Text_5:
-	.string "{SPEAKER NAME_SAILOR}I'll be here when you're ready.$"
+	.string "Cancel$"
 
 OlivinePort_Sailor_Text_6:
+	.string "{SPEAKER NAME_SAILOR}I'll be here when you're ready.$"
+
+OlivinePort_Sailor_Text_7:
 	.string "{SPEAKER NAME_SAILOR}The ship for the Sun and Moon Altar\n"
 	.string "is ready. Shall we set sail?$"
 
-OlivinePort_Sailor_Text_7:
+OlivinePort_Sailor_Text_8:
 	.string "Sorry, but the ship is not going to\n"
 	.string "leave anywhere anytime soon.$"
 
-OlivinePort_Sailor_Text_8:
+OlivinePort_Sailor_Text_9:
 	.string "I was told to sail you to this\n"
 	.string "oddly specific location. Do you\l"
 	.string "want to go now?$"
 
-OlivinePort_Sailor_Text_9:
+OlivinePort_Sailor_Text_10:
 	.string "Oh, alright...$"
 
 OlivinePort_EventScript_SailAltar_Text_0:
