@@ -185,6 +185,8 @@ static const u8 sDoorAnimTiles_DeptStoreElevator[] = INCBIN_U8("graphics/door_an
 static const u16 sDoorNullPalette71[16] = {};
 static const u8 sDoorAnimTiles_RocketElevator[] = INCBIN_U8("graphics/door_anims/rocket_elevator.4bpp");
 static const u16 sDoorNullPalette72[16] = {};
+static const u8 sDoorAnimTiles_AlolaDoor[] = INCBIN_U8("graphics/door_anims/alola_door.4bpp");
+static const u8 sDoorAnimTiles_AlolaPokeCenterDoor[] = INCBIN_U8("graphics/door_anims/alola_pokecenter_door.4bpp");
 static const u8 sDoorAnimTiles_SSAqua[] = INCBIN_U8("graphics/door_anims/ssaqua.4bpp");
 static const u16 sDoorNullPalette73[16] = {};
 static const u8 sDoorAnimTiles_GeneralJohto[] = INCBIN_U8("graphics/door_anims/johtogeneral.4bpp");
@@ -278,6 +280,7 @@ static const u8 sDoorAnimPalettes_Fuchsia_Red_Door[] = {9, 9, 9, 9, 9, 9, 9, 9, 
 static const u8 sDoorAnimPalettes_BlackthornCity_Door[] = {7, 7, 7, 7, 7, 7, 7, 7,};
 static const u8 sDoorAnimPalettes_DeptStore_Door[] = {8, 8, 8, 8, 8, 8, 8, 8,};
 static const u8 sDoorAnimPalettes_Rocket_Door[] = {2, 2, 2, 2, 2, 2, 2, 2,};
+static const u8 sDoorAnimPalettes_Alola[] = {2, 2, 2, 2, 2, 2, 2, 2};
 static const u8 sDoorAnimPalettes_SSAqua[] = {7, 7, 7, 7, 7, 7, 7, 7,};
 static const u8 sDoorAnimPalettes_OaksLabDoor[] = {10, 10, 10, 10, 10, 10, 10, 10};
 
@@ -426,6 +429,8 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_General_Frontier_East_MartDoor,               DOOR_SOUND_SLIDING, DOOR_SIZE_1x2, sDoorAnimTiles_PokeMart, sDoorAnimPalettes_PokeMart},
     {METATILE_Dojo_DoorLeft,                 DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_DewfordDojoLeft, sDoorAnimPalettes_DewfordDojoLeft},
     {METATILE_Dojo_DoorRight,                DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_DewfordDojoRight, sDoorAnimPalettes_DewfordDojoRight},
+    {METATILE_Alola_Door,                                   DOOR_SOUND_NORMAL,  DOOR_SIZE_1x1, sDoorAnimTiles_AlolaDoor, sDoorAnimPalettes_Alola},
+    {METATILE_Alola_Door_PokeCenter,                        DOOR_SOUND_SLIDING, DOOR_SIZE_1x1, sDoorAnimTiles_AlolaPokeCenterDoor, sDoorAnimPalettes_Alola},
     {},
 };
 
@@ -700,6 +705,11 @@ s8 FieldAnimateDoorClose(u32 x, u32 y)
         const struct DoorGraphics *gfx;
 
         gfx = GetDoorGraphics(sDoorAnimGraphicsTable, MapGridGetMetatileIdAt(x, y));
+        // Metatile com comportamento de porta fora da tabela: sem esta checagem o
+        // gfx->size abaixo le de NULL, o compilador troca o acesso por `udf #255`
+        // e o jogo morre no handler da BIOS (Melemele Isle, 24/10/2026).
+        if (gfx == NULL)
+            return -1;
         if (gfx->size == DOOR_SIZE_2x2)
             frames = sBigDoorCloseAnimFrames;
         else if (gfx->size == DOOR_SIZE_1x2)
@@ -721,6 +731,11 @@ s8 FieldAnimateDoorOpen(u32 x, u32 y)
         const struct DoorGraphics *gfx;
 
         gfx = GetDoorGraphics(sDoorAnimGraphicsTable, MapGridGetMetatileIdAt(x, y));
+        // Metatile com comportamento de porta fora da tabela: sem esta checagem o
+        // gfx->size abaixo le de NULL, o compilador troca o acesso por `udf #255`
+        // e o jogo morre no handler da BIOS (Melemele Isle, 24/10/2026).
+        if (gfx == NULL)
+            return -1;
         if (gfx->size == DOOR_SIZE_2x2)
             frames = sBigDoorOpenAnimFrames;
         else if (gfx->size == DOOR_SIZE_1x2)

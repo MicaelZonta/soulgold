@@ -1,6 +1,10 @@
 #ifndef GUARD_METATILE_LABELS_H
 #define GUARD_METATILE_LABELS_H
 
+// gTileset_AlolaIsland
+#define METATILE_Alola_Door            0x046
+#define METATILE_Alola_Door_PokeCenter 0x062
+
 // gTileset_BattleArena
 #define METATILE_BattleArena_Door  0x41B
 

@@ -1,64 +1,86 @@
-# Melemele Isle trava ao entrar (aberto, 24/10/2026)
+# Melemele Isle travava ao entrar — resolvido (24/10/2026)
 
-**Sintoma:** ao chegar na Melemele Isle o jogo para de responder. A plaquinha
-com o nome do mapa fica na tela para sempre, nenhum botão funciona, e o jogo
-nunca volta.
+**Sintoma:** ao chegar na Melemele Isle o jogo parava de responder. A plaquinha
+com o nome do mapa ficava na tela para sempre e nenhum botão funcionava. Não era
+tela preta nem reset: as interrupções continuavam (`gMain.vblankCounter1` subia
+60 por 60 quadros), mas o laço principal estava morto.
 
-Não é tela preta nem reset: a CPU continua viva (`gMain.vblankCounter1` avança
-60 por 60 quadros), os callbacks continuam `CB1_Overworld`/`CB2_Overworld`, mas
-o **laço principal não roda** (`UpdateTilesetAnimations` não é mais chamada).
+## Causa
 
-## Como reproduzir (QA headless)
+A porta da casa de Melemele é o metatile **70** do `gTileset_AlolaIsland`, com
+comportamento `MB_ANIMATED_DOOR`. Esse id **não estava** em
+`sDoorAnimGraphicsTable` (`src/field_door.c`) — a Fase 8 trouxe os mapas e o
+tileset de Alola, mas não as entradas de porta que o pokehns tem.
 
-```bash
-.claude/qa/setup.sh && QA_BUILD=/tmp/qa-build .claude/qa/start.sh   # background
-# jogo novo até o overworld, depois:
-. .claude/qa/lib.sh; python3 .claude/qa/q.py "$(warp 36 2 0)"      # Melemele Isle
-python3 .claude/qa/q.py "wait 300" "press START" "wait 90" "shot /tmp/qa/x.png"
+Ao sair pela porta, `Task_ExitDoor` (`src/field_screen_effect.c`, estado 2)
+chama `FieldAnimateDoorClose`, que fazia:
+
+```c
+gfx = GetDoorGraphics(sDoorAnimGraphicsTable, MapGridGetMetatileIdAt(x, y));
+if (gfx->size == DOOR_SIZE_2x2)   // gfx é NULL quando o id não está na tabela
 ```
 
-O START não abre menu nenhum. Para comparar, `warp 0 12 0` (Route 30) funciona
-normalmente no mesmo build.
+`GetDoorGraphics` devolve `NULL` quando o id não está na tabela. Ler `gfx->size`
+de `NULL` é comportamento indefinido, e o GCC **provou** isso e trocou o acesso
+por uma instrução indefinida:
 
-## O que já foi descartado
+```
+ 815d454:  beq.n  815d484        ; chegou ao terminador da tabela -> NULL
+ 815d484:  ldrb   r3, [r3, #3]   ; gfx->size com gfx == NULL
+ 815d486:  udf    #255           ; <- aqui o jogo morre
+```
 
-| Suspeito | Veredito |
+O ARM7TDMI desvia para o handler de instrução indefinida da BIOS, que fica em
+laço. Por isso tudo congelava com as interrupções ainda vivas — e por isso a
+plaquinha ficava: a tarefa dela roda no laço principal, que nunca mais rodou.
+
+Build limpo, nenhum aviso. Só aparece **no jogo**, e só em mapa cujo metatile de
+porta não está na tabela.
+
+## Conserto (3 partes)
+
+| Arquivo | O quê |
 |---|---|
-| Animação do tileset de Alola (porte de 24/10) | **não é**: trava igual com `.callback = NULL` |
-| `OBJECT_EVENTS_COUNT` 40 | **não é**: trava igual com 24 |
-| `MAX_SPRITES` 127 | idem (estava 127 nos dois testes) |
-| Flash de 256 KB / save novo | Route 30 e New Bark funcionam no mesmo build |
-| Índice fora da tabela de tema da plaquinha | **não é**: depois do desconto de Kanto (−106) o índice da Melemele é 210, dentro das 255 entradas de `sRegionMapSectionId_To_PopUpThemeIdMapping` |
+| `src/field_door.c` | `if (gfx == NULL) return -1;` em `FieldAnimateDoorClose` e `FieldAnimateDoorOpen` — porta não registrada agora só deixa de animar, nunca trava |
+| `src/field_door.c` | entradas `METATILE_Alola_Door` (70) e `METATILE_Alola_Door_PokeCenter` (98), com os gráficos do pokehns (`graphics/door_anims/alola_door.png`, `alola_pokecenter_door.png`, paleta 2, `DOOR_SIZE_1x1` = 3 quadros de 16x16) |
+| `include/constants/metatile_labels.h` | os dois rótulos novos, bloco `// gTileset_AlolaIsland` |
 
-Ou seja: o defeito **já existia** no conteúdo importado de Alola (Fase 8) e
-nunca apareceu porque ninguém jogou Alola — o QA de 24/10 ficou em Johto/Kanto.
+## Provado no jogo (24/10/2026, QA headless)
 
-## A pista
+- Melemele Isle (`warp 36 2 0`): plaquinha sobe e **sai**, o jogador anda, entra
+  na casa (`Task_DoDoorWarp` + `Task_AnimateDoor` ativos) e sai de novo pela
+  porta — o caminho que matava o jogo.
+- Akala (`36 0 0`), Ulaula (`36 4 0`) e Poni (`36 3 0`): carregam e andam.
+- A porta anima de verdade: `/tmp/qa/porta_zoom.png` mostra fechada → meia →
+  aberta, com a paleta da casa.
 
-Três leituras do PC durante o travamento caem todas dentro de
-`HBlankCB_DoublePopupWindow` (`src/menu.c`), chamado por `HBlankIntr`. Esse
-callback é instalado por `src/map_name_popup.c` quando
-`OW_POPUP_GENERATION == GEN_5` e só é retirado quando a tarefa da plaquinha
-termina — tarefa que roda no laço principal. Se o laço parou, a plaquinha fica
-e o HBlank também: por isso o sintoma se alimenta.
+## O que ficou de fora (de propósito)
 
-Falta saber **o que para o laço**. O próximo palpite a testar é o script do
-mapa: `MelemeleIsle_MapScripts_MAP_SCRIPT_ON_TRANSITION` faz
-`setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_SPECIES(RATICATE_ALOLA)` (ou LEAFEON de
-dia) — um objeto com sprite de **espécie**. Se a folha de overworld dessa
-espécie não existir ou vier com stream LZ quebrado, o descompressor entra em
-laço e o jogo para exatamente assim.
+- **Metatiles 114 e 122** do `gTileset_AlolaIsland` também são
+  `MB_ANIMATED_DOOR` e continuam sem gráfico — como no próprio pokehns. Nenhum
+  warp das ilhas cai neles (varredura de todos os `warp_events`), então são
+  porta de enfeite: não animam e, com a guarda, não travam.
+- A tabela casa a porta **só pelo id do metatile**, sem olhar o tileset (o
+  pokehns tem um campo `tileset` a mais). Hoje nenhum outro tileset usa 70 ou 98
+  como porta — a varredura abaixo confirma —, mas um tileset novo que use pode
+  herdar a porta de Alola sem erro de build.
+- A varredura achou 7 layouts de **Hoenn** (Lilycove, Mossdeep, Route 110,
+  Ever Grande, Fallarbor, Birth Island, Sootopolis) com metatile de porta fora
+  da tabela. São `map.bin` antigos, ainda no formato de 10 bits, em mapas que
+  ninguém alcança; com a guarda não travam mais. Não foram mexidos.
 
-## Como continuar
+## A ferramenta que achou
 
-1. Entrar em outro mapa de Alola que **não** use objeto de espécie (Akala
-   Forest, Ulaula) — se não travar, é o sprite da espécie.
-2. Trocar `OBJ_EVENT_GFX_SPECIES(RATICATE_ALOLA)` por um NPC comum no
-   `ON_TRANSITION` e ver se destrava.
-3. Conferir se `RATICATE_ALOLA` e `LEAFEON` têm folha de overworld no nosso
-   repositório (o HnS tinha a dele).
-4. O `pc` novo do `driver.lua` (r0..r15) é a ferramenta: com o jogo travado,
-   três leituras dizem onde ele está.
+`.claude/qa/driver.lua` ganhou o comando `pc` (r0..r15). Com o jogo travado:
+ler os registradores, achar o símbolo com `arm-none-eabi-addr2line`, e
+desmontar a região com `arm-none-eabi-objdump -d --start-address=...`. Foi o
+`udf #255` no desmonte que fechou o caso.
 
-Enquanto não estiver resolvido, **Alola não é jogável** — vale avisar antes de
-qualquer QA que passe por lá.
+**Armadilha:** o `pc` sozinho engana. O emulador pausa sempre no mesmo ponto do
+quadro, então quase toda amostra cai na espera de VBlank da BIOS ou no callback
+de HBlank — foi o que mandou a investigação para o lado errado antes. A prova de
+que o laço principal estava morto foi outra: escrever um valor em
+`gMain.heldKeys` e ver que `ReadKeys` nunca o apagava.
+
+A varredura de portas sem entrada na tabela está em
+`dev_scripts/portas_sem_grafico.py`.

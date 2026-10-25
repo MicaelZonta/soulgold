@@ -22,7 +22,7 @@ existente), antes de reportar.
 | `fase8_alola_sinjoh.md` | Fase 8: Alola, New Sinjoh/Sinjoh Ruins, Snowswept Cavern |
 | `summit_red_rival.md` | Red × rival no topo do Mt. Silver (ovo de Terapagos) |
 | `match_call_gsc.md` | O telefone do Pokégear: agenda, ligações, revanches, itens e o custo de save |
-| `bug_alola_trava.md` | **Aberto**: Melemele Isle trava ao entrar (defeito antigo do import, não do QA de 24/10) |
+| `bug_alola_trava.md` | **Resolvido** (24/10): Melemele Isle travava ao entrar — porta de Alola fora de `sDoorAnimGraphicsTable`, `gfx->size` em NULL virava `udf` |
 | `k8_plaquinhas_e_decap.md` | K8: decap do texto HnS (`dev_scripts/decap_texto.py`) e plaquinhas `{SPEAKER}` |
 
 Branch: `kanto-hns-adoption` (fork `mysoulgoldfork`); rollback: tag
