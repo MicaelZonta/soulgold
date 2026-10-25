@@ -43,6 +43,7 @@
       "flag": "FLAG_HIDE_DEOXYS"
     },
     {
+      "local_id": "LOCALID_BIRTH_ISLAND_COLRESS",
       "graphics_id": "OBJ_EVENT_GFX_COLRESS",
       "x": 10,
       "y": 16,
@@ -56,6 +57,7 @@
       "flag": "FLAG_TEMP_B"
     },
     {
+      "local_id": "LOCALID_BIRTH_ISLAND_SOLIERA",
       "graphics_id": "OBJ_EVENT_GFX_SOLIERA",
       "x": 20,
       "y": 16,

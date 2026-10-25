@@ -19,9 +19,9 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x9,9,FLAG_TEMP_BRAM_TUTORIAL_VISIT,TEMP,EM_USO,6,1,2,Route30_House,MAPA_UNICO:Route30_House,this visit was the tutorial
 0xA,10,FLAG_TEMP_A,TEMP,EM_USO,2,19,18,CherrygroveCity;GoldenrodCity_DepartmentStore_5F;IcePath_B4F;MtMortar_Depths_1,GLOBAL(codigo),Unused Flag
 0xA,10,FLAG_TEMP_HIDE_BRAM,TEMP,EM_USO,0,1,5,Route30;Route30_House,GLOBAL(codigo),
-0xB,11,FLAG_TEMP_B,TEMP,EM_USO,0,9,10,BirthIsland_Exterior;NewBarkTown;SunMoonAltar,GLOBAL(codigo),Unused Flag
+0xB,11,FLAG_TEMP_B,TEMP,EM_USO,0,10,10,BirthIsland_Exterior;NewBarkTown;SunMoonAltar,GLOBAL(codigo),Unused Flag
 0xB,11,FLAG_TEMP_HIDE_LAUREL,TEMP,EM_USO,2,4,5,Route30;Route30_House,GLOBAL(codigo),
-0xC,12,FLAG_TEMP_C,TEMP,EM_USO,0,8,10,BirthIsland_Exterior;NewBarkTown;SunMoonAltar,GLOBAL(codigo),Unused Flag
+0xC,12,FLAG_TEMP_C,TEMP,EM_USO,0,9,10,BirthIsland_Exterior;NewBarkTown;SunMoonAltar,GLOBAL(codigo),Unused Flag
 0xC,12,FLAG_TEMP_HIDE_TILLY,TEMP,EM_USO,0,0,3,Route30;Route30_House,GLOBAL(codigo),
 0xD,13,FLAG_TEMP_D,TEMP,EM_USO,1,3,10,CinnabarIsland;MtEmber_Exterior_Frlg;NewSinjoh_HotSprings;SeafoamIslands_Gym,GLOBAL(codigo),Unused Flag
 0xD,13,FLAG_TEMP_HIDE_BUGSY,TEMP,EM_USO,0,1,3,Route30,GLOBAL(codigo),
@@ -428,7 +428,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1AA,426,FLAG_DAILY_BEAT_SILVER,SCRIPT/EVENT,EM_USO,3,3,6,IndigoPlateau_PokemonCenter,GLOBAL(codigo),
 0x1AB,427,FLAG_SUS_RAILWAY_DOOR,SCRIPT/EVENT,EM_USO,2,2,2,RailwayCave_2F,MAPA_UNICO:RailwayCave_2F,
 0x1AC,428,FLAG_DEFEATED_DEOXYS,SCRIPT/EVENT,EM_USO,3,6,10,BirthIsland_Exterior;PokemonLeague_HallOfFame,GLOBAL(codigo),HnS
-0x1AD,429,FLAG_BATTLED_DEOXYS,SCRIPT/EVENT,EM_USO,9,5,12,BirthIsland_Exterior;PokemonLeague_HallOfFame,GLOBAL(codigo),HnS
+0x1AD,429,FLAG_BATTLED_DEOXYS,SCRIPT/EVENT,EM_USO,11,5,12,BirthIsland_Exterior;PokemonLeague_HallOfFame,GLOBAL(codigo),HnS
 0x1AE,430,FLAG_SHOWN_EON_TICKET,SCRIPT/EVENT,EM_USO,4,4,7,,GLOBAL(codigo),
 0x1AF,431,FLAG_SHOWN_AURORA_TICKET,SCRIPT/EVENT,EM_USO,6,5,8,,GLOBAL(codigo),
 0x1B0,432,FLAG_SHOWN_OLD_SEA_MAP,SCRIPT/EVENT,EM_USO,4,4,7,,GLOBAL(codigo),
@@ -1915,7 +1915,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x118D,4493,FLAG_MODERN_BATTLE_BG,CUSTOM,EM_USO,2,2,3,,GLOBAL(codigo),"Opcao ""Battle BGs"": setada = arte ""modern"" dos backgrounds de batalha (HnS 2.0.6); limpa = arte classica. So o menu de opcoes escreve"
 0x118E,4494,FLAG_MET_FLANNERY,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),a Flannery ja se apresentou; setada em Flannery_EventScript_Roaming (data/scripts/flannery.inc)
 0x118F,4495,FLAG_MET_COLRESS,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),o Colress ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
-0x1190,4496,FLAG_MET_SOLIERA,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
+0x1190,4496,FLAG_MET_SOLIERA,CUSTOM,SO_ESCRITA,0,1,1,,GLOBAL(codigo),a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 0x1191,4497,FLAG_BIRTH_ISLAND_ITEM_METEORITE,CUSTOM,EM_USO,0,0,1,BirthIsland_Exterior,MAPA_UNICO:BirthIsland_Exterior,o Meteorite da cratera ja foi pego; setada pelo finditem
 0x1500,5376,FLAG_0x1500,LIVRE,NUNCA_REFERENCIADA,0,0,0,,,
 0x1508,5384,FLAG_ROUTE32_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route32,MAPA_UNICO:HiddenGrotto_Route32,

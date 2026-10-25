@@ -475,7 +475,8 @@
 // Passos dados no mapa atual, para a ligacao de rota do Match Call GSC
 // (HnsUpdateRouteStepCounter em src/match_call.c zera ao trocar de mapa).
 #define VAR_ROUTE_STEP_COUNTER                          0x4152
-// PROXIMA VAR NOVA: 0x4153 (livre ate VARS_END 0x42FF). Alocar aqui, em
+#define VAR_BIRTH_ISLAND_SCENE                   0x4153 // 0 = so o Colress na ilha; 1 = a Soliera chegou e a discussao ja rolou. Escrita em data/scripts/birth_island_residents.inc
+// PROXIMA VAR NOVA: 0x4154 (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 
