@@ -17697,9 +17697,8 @@ const struct ItemInfo gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        // TODO(hns): icone proprio (P tem gItemIcon_AzureFlute); placeholder:
-        .iconPic = gItemIcon_PokeFlute,
-        .iconPalette = gItemIconPalette_PokeFlute,
+        .iconPic = gItemIcon_AzureFlute,
+        .iconPalette = gItemIconPalette_AzureFlute,
     },
 
     [ITEM_TM_AVALANCHE] =

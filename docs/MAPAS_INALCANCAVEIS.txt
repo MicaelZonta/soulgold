@@ -52,4 +52,3 @@ SafariZoneIndoor
 Saffron_Temp
 TestingMap
 Trees
-ViridianCity_House2

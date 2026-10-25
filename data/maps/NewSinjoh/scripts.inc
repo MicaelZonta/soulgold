@@ -6,8 +6,13 @@ NewSinjoh_On_Transition:
     setflag FLAG_VISITED_NEW_SINJOH
 	end
 
-@ TODO(hns): PONTE PROVISORIA. No HnS a Route 49 (cena da Kimono Girl) leva o storyline de 3 para 4 antes de
-@ New Sinjoh. A Route 49/50 do HnS ainda nao foram importadas (precisam de 15 flags novas); ate la o
+@ Nao e ponte provisoria - o comentario antigo dizia isso e estava errado nas
+@ duas pontas. As Route 49/50 do HnS foram importadas (commit 8db1fbf091) e a
+@ cena da Kimono Girl em Route49Sinjoh leva VAR_SINJOH_STORYLINE de 3 para 4
+@ (scripts.inc:6 e :87), como no HnS. Este gatilho e o do HnS, igualzinho:
+@ mesmas tres celulas (32..34, 6) e a mesma condicao VAR_SINJOH_STORYLINE == 4,
+@ ou seja, so empurra o jogador de volta na janela entre a cena da Kimono Girl
+@ e o proximo passo da historia.
 NewSinjoh_EventScript_TriggerNorthGate::
 	lock
 	msgbox NewSinjoh_Text_TriggerNorthGate, MSGBOX_DEFAULT

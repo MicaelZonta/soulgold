@@ -1891,6 +1891,9 @@ const u16 gItemIconPalette_PokeblockCase[] = INCBIN_U16("graphics/items/icon_pal
 const u32 gItemIcon_SootSack[] = INCBIN_U32("graphics/items/icons/soot_sack.4bpp.smol");
 const u16 gItemIconPalette_SootSack[] = INCBIN_U16("graphics/items/icon_palettes/soot_sack.gbapal");
 
+const u32 gItemIcon_AzureFlute[] = INCBIN_U32("graphics/items/icons/azure_flute.4bpp.smol");
+const u16 gItemIconPalette_AzureFlute[] = INCBIN_U16("graphics/items/icon_palettes/azure_flute.gbapal");
+
 const u32 gItemIcon_PokeFlute[] = INCBIN_U32("graphics/items/icons/poke_flute.4bpp.smol");
 const u16 gItemIconPalette_PokeFlute[] = INCBIN_U16("graphics/items/icon_palettes/poke_flute.gbapal");
 

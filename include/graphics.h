@@ -1764,6 +1764,8 @@ extern const u32 gItemIcon_PokeblockCase[];
 extern const u16 gItemIconPalette_PokeblockCase[];
 extern const u32 gItemIcon_SootSack[];
 extern const u16 gItemIconPalette_SootSack[];
+extern const u32 gItemIcon_AzureFlute[];
+extern const u16 gItemIconPalette_AzureFlute[];
 extern const u32 gItemIcon_PokeFlute[];
 extern const u16 gItemIconPalette_PokeFlute[];
 extern const u32 gItemIcon_FameChecker[];

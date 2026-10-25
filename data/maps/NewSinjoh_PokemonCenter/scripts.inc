@@ -33,7 +33,8 @@ NewSinjoh_PokemonCenter_Map::
 	setvar VAR_0x8000, 1 @ SCREENSHOT_SINJOH_MAP
 	msgbox NewSinjoh_PokemonCenter_Text_0, MSGBOX_DEFAULT
 	closemessage
-	@ TODO(hns): viewer de mapa (ui_screenshots.c do HnS) nao portado; so o texto.
+	callnative OpenScreenshotsFromScript
+	waitstate
 	releaseall
 	end
 

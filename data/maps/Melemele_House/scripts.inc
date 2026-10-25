@@ -27,7 +27,8 @@ Alola_Melemele_Pokecenter_Map::
 	setvar VAR_0x8000, 0 @ SCREENSHOT_ALOLA_MAP
 	msgbox Alola_Melemele_Pokecenter_Map_Text_0, MSGBOX_DEFAULT
 	closemessage
-	@ TODO(hns): viewer de mapa (ui_screenshots.c do HnS) nao portado; so o texto.
+	callnative OpenScreenshotsFromScript
+	waitstate
 	releaseall
 	end
 
