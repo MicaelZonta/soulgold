@@ -6,6 +6,7 @@ CinnabarIsland_MapScripts::
 CinnabarIsland_OnTransition:
 	setflag FLAG_VISITED_CINNABAR_ISLAND
 	callnative SetTimeBasedEncounters
+	call Flannery_OnTransition
 	end
 
 CinnabarIsland_EventScript_Blaine::

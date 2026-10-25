@@ -2201,8 +2201,9 @@
 #define FLAG_HIDE_KELDEO                                     0x118B // Keldeo na camara do Mt. Silver; recalculada no ON_TRANSITION de MtSilver_1F_RegigigasRoom e setada pela captura
 #define FLAG_CAUGHT_KELDEO                                   0x118C // Keldeo ja capturado; so o script da camara seta, para o ON_TRANSITION nao o trazer de volta
 #define FLAG_MODERN_BATTLE_BG                                0x118D // Opcao "Battle BGs": setada = arte "modern" dos backgrounds de batalha (HnS 2.0.6); limpa = arte classica. So o menu de opcoes escreve
-#define CUSTOM_FLAGS_END                            FLAG_MODERN_BATTLE_BG
-// PROXIMA FLAG NOVA: 0x118E (livre ate 0x14FF). Alocar aqui, em sequencia, com
+#define FLAG_MET_FLANNERY                           0x118E // a Flannery ja se apresentou; setada em Flannery_EventScript_Roaming (data/scripts/flannery.inc)
+#define CUSTOM_FLAGS_END                            FLAG_MET_FLANNERY
+// PROXIMA FLAG NOVA: 0x118F (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

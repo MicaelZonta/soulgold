@@ -2,6 +2,7 @@
 #include "config/battle.h"
 #include "config/item.h"
 #include "constants/global.h"
+#include "constants/npc_schedule.h"
 #include "constants/help_window.h"
 #include "constants/apprentice.h"
 #include "constants/apricorn_tree.h"
@@ -2124,6 +2125,7 @@ Common_Text_ReceivedMon:
 	.include "data/maps/Gate_Route40_TrainerHill_Courtyard/scripts.inc"
 
 	.include "data/scripts/apricorn_tree.inc"
+	.include "data/scripts/flannery.inc"
 
 	.include "data/maps/HiddenGrotto_Route32/scripts.inc"
 

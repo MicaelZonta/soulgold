@@ -752,3 +752,4 @@ gSpecials::
 	def_special AnimateTeleporterCable
 	def_special CheckRadioStation
 	def_special InitKantoRoamers
+	def_special IsScheduledNpcHere

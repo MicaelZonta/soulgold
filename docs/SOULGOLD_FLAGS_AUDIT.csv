@@ -23,7 +23,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0xB,11,FLAG_TEMP_HIDE_LAUREL,TEMP,EM_USO,2,4,5,Route30;Route30_House,GLOBAL(codigo),
 0xC,12,FLAG_TEMP_C,TEMP,EM_USO,0,6,8,NewBarkTown;SunMoonAltar,GLOBAL(codigo),Unused Flag
 0xC,12,FLAG_TEMP_HIDE_TILLY,TEMP,EM_USO,0,0,3,Route30;Route30_House,GLOBAL(codigo),
-0xD,13,FLAG_TEMP_D,TEMP,EM_USO,1,1,3,SunMoonAltar,GLOBAL(codigo),Unused Flag
+0xD,13,FLAG_TEMP_D,TEMP,EM_USO,1,3,10,CinnabarIsland;MtEmber_Exterior_Frlg;NewSinjoh_HotSprings;SeafoamIslands_Gym,GLOBAL(codigo),Unused Flag
 0xD,13,FLAG_TEMP_HIDE_BUGSY,TEMP,EM_USO,0,1,2,Route30,GLOBAL(codigo),
 0xE,14,FLAG_TEMP_E,TEMP,EM_USO,0,0,9,NewBarkTown,GLOBAL(codigo),"When set, follower pokemon won't be spawned"
 0xE,14,FLAG_TEMP_HIDE_FOLLOWER,TEMP,EM_USO,3,32,38,BattleFrontier_BattleDomeBattleRoom;DarkraiInn1;DarkraiInn1Ruined;DarkraiInnFinalRoom,GLOBAL(codigo),
@@ -106,7 +106,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x50,80,FLAG_GARBAGEFLAG_STILL,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,
 0x51,81,FLAG_SET_WALL_CLOCK,SCRIPT/EVENT,EM_USO,7,7,9,NewBarkTown_PlayersHouse_2F,GLOBAL(codigo),
 0x52,82,FLAG_RESCUED_BIRCH,SCRIPT/EVENT,EM_USO,6,3,10,,GLOBAL(codigo),
-0x53,83,FLAG_GARBAGEFLAG,SCRIPT/EVENT,EM_USO,276,546,318,BattleFrontier_ExchangeServiceCorner;BattleFrontier_Mart;BirthIsland_Exterior;DewfordTown_Hall,GLOBAL(codigo),used to store calls of removed flags
+0x53,83,FLAG_GARBAGEFLAG,SCRIPT/EVENT,EM_USO,274,542,316,BattleFrontier_ExchangeServiceCorner;BattleFrontier_Mart;BirthIsland_Exterior;DewfordTown_Hall,GLOBAL(codigo),used to store calls of removed flags
 0x54,84,FLAG_OW_LIGHTING,SCRIPT/EVENT,EM_USO,3,5,4,,GLOBAL(codigo),"true = disable ow dns effects (upstream, ex-FLAG_LIMIT_TO_50)"
 0x55,85,FLAG_BATTLE_LIGHTING,SCRIPT/EVENT,EM_USO,3,5,4,,GLOBAL(codigo),"true = disable battle dns effects (upstream, ex-FLAG_UNLOCK_DOGS)"
 0x56,86,FLAG_HIDE_CONTEST_POKE_BALL,SCRIPT/EVENT,EM_USO,0,3,8,ContestHall,GLOBAL(codigo),"Always set after new game, object it hides is added directly"
@@ -168,8 +168,8 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x8E,142,FLAG_DEVON_GOODS_STOLEN,SCRIPT/EVENT,EM_USO,10,4,11,,GLOBAL(codigo),fora da ROM
 0x8F,143,FLAG_RECOVERED_DEVON_GOODS,SCRIPT/EVENT,EM_USO,10,2,11,,GLOBAL(codigo),fora da ROM
 0x90,144,FLAG_RETURNED_DEVON_GOODS,SCRIPT/EVENT,EM_USO,8,2,7,,GLOBAL(codigo),fora da ROM
-0x91,145,FLAG_CAUGHT_LUGIA,SCRIPT/EVENT,EM_USO,8,7,12,EcruteakCity;WhirlIslands_LugiaChamber,GLOBAL(codigo),
-0x92,146,FLAG_CAUGHT_HO_OH,SCRIPT/EVENT,EM_USO,8,7,12,EcruteakCity;TinTower_RoofDay,GLOBAL(codigo),
+0x91,145,FLAG_CAUGHT_LUGIA,SCRIPT/EVENT,EM_USO,6,6,11,EcruteakCity;WhirlIslands_LugiaChamber,GLOBAL(codigo),
+0x92,146,FLAG_CAUGHT_HO_OH,SCRIPT/EVENT,EM_USO,6,6,11,EcruteakCity;TinTower_RoofDay,GLOBAL(codigo),
 0x93,147,FLAG_MR_BRINEY_SAILING_INTRO,SCRIPT/EVENT,EM_USO,2,2,5,,GLOBAL(codigo),fora da ROM
 0x94,148,FLAG_DOCK_REJECTED_DEVON_GOODS,SCRIPT/EVENT,EM_USO,4,2,7,,GLOBAL(codigo),fora da ROM
 0x95,149,FLAG_DELIVERED_DEVON_GOODS,SCRIPT/EVENT,EM_USO,12,2,17,,GLOBAL(codigo),
@@ -469,14 +469,14 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1D3,467,FLAG_ENABLE_ROXANNE_MATCH_CALL,SCRIPT/EVENT,EM_USO,0,2,7,RustboroCity_Gym,GLOBAL(codigo),
 0x1D4,468,FLAG_ENABLE_BRAWLY_MATCH_CALL,SCRIPT/EVENT,EM_USO,0,2,7,,GLOBAL(codigo),
 0x1D5,469,FLAG_ENABLE_WATTSON_MATCH_CALL,SCRIPT/EVENT,EM_USO,0,2,7,MauvilleCity_Gym,GLOBAL(codigo),
-0x1D6,470,FLAG_ENABLE_FLANNERY_MATCH_CALL,SCRIPT/EVENT,EM_USO,0,2,7,,GLOBAL(codigo),
+0x1D6,470,FLAG_ENABLE_FLANNERY_MATCH_CALL,SCRIPT/EVENT,EM_USO,0,2,8,,GLOBAL(codigo),
 0x1D7,471,FLAG_ENABLE_WINONA_MATCH_CALL,SCRIPT/EVENT,EM_USO,0,2,7,,GLOBAL(codigo),
 0x1D8,472,FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL,SCRIPT/EVENT,EM_USO,0,2,7,,GLOBAL(codigo),
 0x1D9,473,FLAG_ENABLE_JUAN_MATCH_CALL,SCRIPT/EVENT,EM_USO,0,2,7,SootopolisCity_Gym_1F,GLOBAL(codigo),
 0x1DA,474,FLAG_WT_ENABLED,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
 0x1DB,475,FLAG_SHOWN_MYSTIC_TICKET,SCRIPT/EVENT,EM_USO,6,5,8,,GLOBAL(codigo),
-0x1DC,476,FLAG_DEFEATED_HO_OH,SCRIPT/EVENT,EM_USO,2,6,9,EcruteakCity,GLOBAL(codigo),
-0x1DD,477,FLAG_DEFEATED_LUGIA,SCRIPT/EVENT,EM_USO,2,6,9,EcruteakCity,GLOBAL(codigo),
+0x1DC,476,FLAG_DEFEATED_HO_OH,SCRIPT/EVENT,EM_USO,1,5,8,EcruteakCity,GLOBAL(codigo),
+0x1DD,477,FLAG_DEFEATED_LUGIA,SCRIPT/EVENT,EM_USO,1,5,8,EcruteakCity,GLOBAL(codigo),
 0x1DE,478,FLAG_INFINITE_STUFF,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
 0x1DF,479,FLAG_INFINITE_STUFF_GIRL,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
 0x1E0,480,FLAG_KITAKAMIBORDER_MAX_ETHER,SCRIPT/EVENT,EM_USO,0,0,1,KitakamiBorder,MAPA_UNICO:KitakamiBorder,
@@ -800,8 +800,8 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x31D,797,FLAG_GOT_VERMILION_HP_UP,SCRIPT/EVENT,EM_USO,2,3,5,VermilionCity,GLOBAL(codigo),
 0x31E,798,FLAG_KURT_CRAFTED_MASTER_BALL,SCRIPT/EVENT,EM_USO,1,2,4,AzaleaTown_KurtsHouse,GLOBAL(codigo),
 0x31F,799,FLAG_HIDE_VERMILION_SNORLAX,SCRIPT/EVENT,EM_USO,2,5,11,PokemonLeague_HallOfFame;VermilionCity;VermilionCity_PokemonCenter,GLOBAL(codigo),
-0x320,800,FLAG_HIDE_LUGIA,SCRIPT/EVENT,EM_USO,1,30,19,EcruteakCity;PokemonLeague_HallOfFame;WhirlIslands_LugiaChamber,GLOBAL(codigo),
-0x321,801,FLAG_HIDE_HO_OH,SCRIPT/EVENT,EM_USO,0,24,21,EcruteakCity;PokemonLeague_HallOfFame;TinTower_RoofDay;TinTower_RoofNight,GLOBAL(codigo),
+0x320,800,FLAG_HIDE_LUGIA,SCRIPT/EVENT,EM_USO,1,28,17,EcruteakCity;PokemonLeague_HallOfFame;WhirlIslands_LugiaChamber,GLOBAL(codigo),
+0x321,801,FLAG_HIDE_HO_OH,SCRIPT/EVENT,EM_USO,0,22,19,EcruteakCity;PokemonLeague_HallOfFame;TinTower_RoofDay;TinTower_RoofNight,GLOBAL(codigo),
 0x322,802,FLAG_HIDE_FAN_CLUB_CLEFAIRY_DOLL,SCRIPT/EVENT,EM_USO,0,3,7,VermilionCity_FanClub,GLOBAL(codigo),
 0x323,803,FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES,SCRIPT/EVENT,EM_USO,9,4,8,VermilionCity_Gym,GLOBAL(codigo),
 0x324,804,FLAG_RETURNED_MACHINE_PART,SCRIPT/EVENT,EM_USO,30,8,37,CeruleanCity;Gate_SaffronCity_Route7;GoldenrodCity;GoldenrodCity_TrainStation,GLOBAL(codigo),
@@ -1614,9 +1614,9 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x101F,4127,FLAG_HIDE_ZERAORA,CUSTOM,EM_USO,0,6,3,TrainerHill_Courtyard,MAPA_UNICO:TrainerHill_Courtyard,
 0x1020,4128,FLAG_CAUGHT_ZERAORA,CUSTOM,EM_USO,4,3,5,BattleFrontier_BattleTowerLobby;PokemonLeague_HallOfFame;TrainerHill_Courtyard,MULTI_MAPA(3),
 0x1021,4129,FLAG_BATTLE_CAFE_DIANCIE_RECEIVED,CUSTOM,EM_USO,2,2,2,BattleCafe,MAPA_UNICO:BattleCafe,
-0x1022,4130,FLAG_BATTLE_CAFE_ARTICUNO_RECEIVED,CUSTOM,SO_ESCRITA,0,1,1,,GLOBAL(codigo),
-0x1023,4131,FLAG_BATTLE_CAFE_ZAPDOS_RECEIVED,CUSTOM,SO_ESCRITA,0,1,1,,GLOBAL(codigo),
-0x1024,4132,FLAG_BATTLE_CAFE_MOLTRES_RECEIVED,CUSTOM,SO_ESCRITA,0,1,1,,GLOBAL(codigo),
+0x1022,4130,FLAG_BATTLE_CAFE_ARTICUNO_RECEIVED,CUSTOM,EM_USO,0,0,1,,GLOBAL(codigo),
+0x1023,4131,FLAG_BATTLE_CAFE_ZAPDOS_RECEIVED,CUSTOM,EM_USO,0,0,1,,GLOBAL(codigo),
+0x1024,4132,FLAG_BATTLE_CAFE_MOLTRES_RECEIVED,CUSTOM,EM_USO,0,0,1,,GLOBAL(codigo),
 0x1025,4133,FLAG_BATTLE_CAFE_DIANCIE_READY,CUSTOM,EM_USO,2,4,2,BattleCafe,MAPA_UNICO:BattleCafe,
 0x1026,4134,FLAG_VISITED_ROUTE50,CUSTOM,EM_USO,1,3,6,BattleCafe,GLOBAL(codigo),
 0x1027,4135,FLAG_BATTLE_CAFE_TORNADUS_RECEIVED,CUSTOM,EM_USO,7,2,4,BattleCafe,GLOBAL(codigo),
@@ -1913,6 +1913,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x118B,4491,FLAG_HIDE_KELDEO,CUSTOM,EM_USO,0,6,3,MtSilver_1F_RegigigasRoom,MAPA_UNICO:MtSilver_1F_RegigigasRoom,Keldeo na camara do Mt. Silver; recalculada no ON_TRANSITION de MtSilver_1F_RegigigasRoom e setada pela captura
 0x118C,4492,FLAG_CAUGHT_KELDEO,CUSTOM,EM_USO,2,2,2,MtSilver_1F_RegigigasRoom,MAPA_UNICO:MtSilver_1F_RegigigasRoom,"Keldeo ja capturado; so o script da camara seta, para o ON_TRANSITION nao o trazer de volta"
 0x118D,4493,FLAG_MODERN_BATTLE_BG,CUSTOM,EM_USO,2,2,3,,GLOBAL(codigo),"Opcao ""Battle BGs"": setada = arte ""modern"" dos backgrounds de batalha (HnS 2.0.6); limpa = arte classica. So o menu de opcoes escreve"
+0x118E,4494,FLAG_MET_FLANNERY,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),a Flannery ja se apresentou; setada em Flannery_EventScript_Roaming (data/scripts/flannery.inc)
 0x1500,5376,FLAG_0x1500,LIVRE,NUNCA_REFERENCIADA,0,0,0,,,
 0x1508,5384,FLAG_ROUTE32_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route32,MAPA_UNICO:HiddenGrotto_Route32,
 0x1509,5385,FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY,DAILY,EM_USO,4,4,5,,GLOBAL(codigo),

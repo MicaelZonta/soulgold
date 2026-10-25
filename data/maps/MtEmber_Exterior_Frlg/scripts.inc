@@ -1,5 +1,10 @@
 MtEmber_Exterior_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MtEmber_Exterior_OnTransition
 	.byte 0
+
+MtEmber_Exterior_OnTransition:
+	call Flannery_OnTransition
+	end
 
 
 MtEmber_Exterior_EventScript_Grunt1::

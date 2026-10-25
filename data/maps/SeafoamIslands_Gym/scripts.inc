@@ -4,6 +4,7 @@ SeafoamIslands_Gym_MapScripts::
 
 SeafoamIslands_Gym_OnTransition: 
 	setflag FLAG_TEMP_1
+	call Flannery_OnTransition
 	end
 
 SeafoamIslands_Gym_EventScript_Blaine::

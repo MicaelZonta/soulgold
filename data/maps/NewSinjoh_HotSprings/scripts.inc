@@ -1,5 +1,10 @@
 NewSinjoh_HotSprings_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, NewSinjoh_HotSprings_OnTransition
 	.byte 0
+
+NewSinjoh_HotSprings_OnTransition:
+	call Flannery_OnTransition
+	end
 
 NewSinjoh_HotSprings_EventScript_Item_MaxRevive::
     finditem ITEM_MAX_REVIVE

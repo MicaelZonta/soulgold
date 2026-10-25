@@ -1130,7 +1130,7 @@
 #define TRAINER_UNUSED_283                1147
 #define TRAINER_UNUSED_284                1148
 #define TRAINER_UNUSED_285                1149
-#define TRAINER_UNUSED_286                1150
+#define TRAINER_FLANNERY                  1150 // lider de Lavaridge que roda pelo mundo; agenda em src/data/npc_schedule.h
 #define TRAINER_UNUSED_287                1151
 #define TRAINER_UNUSED_288                1152
 #define TRAINER_UNUSED_289                1153
