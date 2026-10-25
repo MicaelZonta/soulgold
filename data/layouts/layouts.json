@@ -10746,6 +10746,56 @@
       "secondary_tileset": "gTileset_MtSilver_Ancient_Hns",
       "border_filepath": "data/layouts/Route50Sinjoh/border.bin",
       "blockdata_filepath": "data/layouts/Route50Sinjoh/map.bin"
+    },
+    {
+      "id": "LAYOUT_NAVEL_ROCK_ENTRANCE",
+      "name": "NavelRock_Entrance_Layout",
+      "width": 21,
+      "height": 14,
+      "primary_tileset": "gTileset_Kanto_General_Hns",
+      "secondary_tileset": "gTileset_MtEmber_Hns",
+      "border_filepath": "data/layouts/NavelRock_Entrance/border.bin",
+      "blockdata_filepath": "data/layouts/NavelRock_Entrance/map.bin"
+    },
+    {
+      "id": "LAYOUT_NAVEL_ROCK_SHAFT",
+      "name": "NavelRock_Shaft_Layout",
+      "width": 21,
+      "height": 30,
+      "primary_tileset": "gTileset_Kanto_General_Hns",
+      "secondary_tileset": "gTileset_MtEmber_Hns",
+      "border_filepath": "data/layouts/NavelRock_Shaft/border.bin",
+      "blockdata_filepath": "data/layouts/NavelRock_Shaft/map.bin"
+    },
+    {
+      "id": "LAYOUT_NAVEL_ROCK_FIRE_VENT",
+      "name": "NavelRock_FireVent_Layout",
+      "width": 19,
+      "height": 14,
+      "primary_tileset": "gTileset_Kanto_General_Hns",
+      "secondary_tileset": "gTileset_MtEmber_Hns",
+      "border_filepath": "data/layouts/NavelRock_FireVent/border.bin",
+      "blockdata_filepath": "data/layouts/NavelRock_FireVent/map.bin"
+    },
+    {
+      "id": "LAYOUT_NAVEL_ROCK_SEA_BREACH",
+      "name": "NavelRock_SeaBreach_Layout",
+      "width": 19,
+      "height": 14,
+      "primary_tileset": "gTileset_Kanto_General_Hns",
+      "secondary_tileset": "gTileset_MtEmber_Hns",
+      "border_filepath": "data/layouts/NavelRock_SeaBreach/border.bin",
+      "blockdata_filepath": "data/layouts/NavelRock_SeaBreach/map.bin"
+    },
+    {
+      "id": "LAYOUT_NAVEL_ROCK_STEAM_CHAMBER",
+      "name": "NavelRock_SteamChamber_Layout",
+      "width": 24,
+      "height": 20,
+      "primary_tileset": "gTileset_Kanto_General_Hns",
+      "secondary_tileset": "gTileset_MtEmber_Hns",
+      "border_filepath": "data/layouts/NavelRock_SteamChamber/border.bin",
+      "blockdata_filepath": "data/layouts/NavelRock_SteamChamber/map.bin"
     }
   ]
 }

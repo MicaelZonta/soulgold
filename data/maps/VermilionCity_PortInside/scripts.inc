@@ -44,11 +44,13 @@ VermilionPort_EventScript_Sailor_AfterKanto::
 	case 1, VermilionPort_EventScript_ChoseSouthernIsland
 	case 2, VermilionPort_EventScript_ChoseBirthIsland
 	case 3, VermilionPort_EventScript_ChoseFarawayIsland
-	@ A lista MULTI_VERMILION_HARBOR tem 5 itens e o 4 e "Exit": o case 4
-	@ mandava quem escolhesse Exit para o Battle Frontier, que esta em
-	@ rom_excluded_groups (fora do jogo). Para reabrir o Frontier um dia:
-	@ trocar para MULTI_VERMILION_HARBOR_RED e devolver o case 4 abaixo.
-	case 4, VermilionPort_EventScript_Sailor_Refused
+	case 4, VermilionPort_EventScript_ChoseNavelRock
+	@ A lista MULTI_VERMILION_HARBOR tem 6 itens desde que o Navel Rock
+	@ entrou, e o ultimo e "Exit". O case do Exit mandava quem o escolhesse
+	@ para o Battle Frontier, que esta em rom_excluded_groups (fora do jogo).
+	@ Para reabrir o Frontier um dia: trocar para MULTI_VERMILION_HARBOR_RED
+	@ e devolver o destino no case abaixo.
+	case 5, VermilionPort_EventScript_Sailor_Refused
 	case MULTI_B_PRESSED, VermilionPort_EventScript_Sailor_Refused
 	release
 	end
@@ -89,6 +91,21 @@ VermilionPort_EventScript_ChoseBirthIsland::
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_NoCredentials
 	call VermilionPort_EventScript_EnterShip
 	warpsilent MAP_BIRTH_ISLAND_EXTERIOR, 15, 24
+	waitstate
+	release
+	end
+
+@ Navel Rock. A pedra so aparece nos instrumentos quando esta soltando vapor,
+@ entao o capitao precisa do Mystic Ticket para aceitar navegar para uma coisa
+@ que nao esta na carta.
+VermilionPort_EventScript_ChoseNavelRock::
+	closemessage
+	delay 20
+	checkitem ITEM_MYSTIC_TICKET
+	bufferitemname STR_VAR_1, ITEM_MYSTIC_TICKET
+	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_NoCredentials
+	call VermilionPort_EventScript_EnterShip
+	warpsilent MAP_NAVEL_ROCK_EXTERIOR, 10, 18
 	waitstate
 	release
 	end

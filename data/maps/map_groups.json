@@ -716,7 +716,14 @@
     "SouthernIsland_Interior",
     "BirthIsland_Exterior",
     "FarawayIsland_Entrance",
-    "FarawayIsland_Interior"
+    "FarawayIsland_Interior",
+    "NavelRock_Harbor",
+    "NavelRock_Exterior",
+    "NavelRock_Entrance",
+    "NavelRock_Shaft",
+    "NavelRock_FireVent",
+    "NavelRock_SeaBreach",
+    "NavelRock_SteamChamber"
   ],
   "gMapGroup_Emerald1": [
     "InsideOfTruck",
@@ -1142,8 +1149,6 @@
     "TrainerHill_3F",
     "TrainerHill_4F",
     "TrainerHill_Roof",
-    "NavelRock_Exterior",
-    "NavelRock_Harbor",
     "TrainerHill_Elevator",
     "Route104_Prototype",
     "Route104_PrototypePrettyPetalFlowerShop",

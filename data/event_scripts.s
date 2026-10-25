@@ -2128,6 +2128,11 @@ Common_Text_ReceivedMon:
 	.include "data/scripts/flannery.inc"
 	.include "data/scripts/birth_island_residents.inc"
 	.include "data/scripts/meteor_shower.inc"
+	.include "data/maps/NavelRock_Entrance/scripts.inc"
+	.include "data/maps/NavelRock_Shaft/scripts.inc"
+	.include "data/maps/NavelRock_FireVent/scripts.inc"
+	.include "data/maps/NavelRock_SeaBreach/scripts.inc"
+	.include "data/maps/NavelRock_SteamChamber/scripts.inc"
 
 	.include "data/maps/HiddenGrotto_Route32/scripts.inc"
 
