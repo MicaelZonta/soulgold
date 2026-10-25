@@ -12,7 +12,9 @@
 // #define, nao enum: o setvar do script e montado pelo assembler, que so
 // enxerga o que o cpp ja substituiu.
 #define SCHEDULED_NPC_FLANNERY  0
-#define SCHEDULED_NPC_COUNT     1
+#define SCHEDULED_NPC_COLRESS   1
+#define SCHEDULED_NPC_SOLIERA   2
+#define SCHEDULED_NPC_COUNT     3
 
 // VAR_DAY_OF_WEEK e 0 = domingo (src/overworld.c, UpdateTimeOfDay).
 #define SCHED_SUN   (1 << 0)

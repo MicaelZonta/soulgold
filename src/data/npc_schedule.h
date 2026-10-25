@@ -26,7 +26,27 @@ static const struct NpcScheduleSlot sFlannerySchedule[] =
     { SCHED_EVERY_DAY,                 SCHED_DARK,     MAP_GROUP(MAP_NEWSINJOH_HOTSPRINGS), MAP_NUM(MAP_NEWSINJOH_HOTSPRINGS) },
 };
 
+// Os dois que ficaram na Birth Island depois da historia. Os dois sao do
+// Nexus e nao existiam em lugar nenhum do mundo ate agora.
+//
+// Sabado os dois estao la ao mesmo tempo, de proposito: e o unico dia em que
+// o jogador ve os dois discordando sobre o que fazer com a cratera.
+
+static const struct NpcScheduleSlot sColressSchedule[] =
+{
+    { SCHED_MON | SCHED_WED | SCHED_FRI | SCHED_SAT, SCHED_ANY_TIME,
+      MAP_GROUP(MAP_BIRTH_ISLAND_EXTERIOR), MAP_NUM(MAP_BIRTH_ISLAND_EXTERIOR) },
+};
+
+static const struct NpcScheduleSlot sSolieraSchedule[] =
+{
+    { SCHED_TUE | SCHED_THU | SCHED_SAT, SCHED_ANY_TIME,
+      MAP_GROUP(MAP_BIRTH_ISLAND_EXTERIOR), MAP_NUM(MAP_BIRTH_ISLAND_EXTERIOR) },
+};
+
 static const struct NpcSchedule sNpcSchedules[SCHEDULED_NPC_COUNT] =
 {
     [SCHEDULED_NPC_FLANNERY] = { sFlannerySchedule, ARRAY_COUNT(sFlannerySchedule) },
+    [SCHEDULED_NPC_COLRESS]  = { sColressSchedule,  ARRAY_COUNT(sColressSchedule)  },
+    [SCHEDULED_NPC_SOLIERA]  = { sSolieraSchedule,  ARRAY_COUNT(sSolieraSchedule)  },
 };

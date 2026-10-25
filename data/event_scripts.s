@@ -2126,6 +2126,7 @@ Common_Text_ReceivedMon:
 
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/flannery.inc"
+	.include "data/scripts/birth_island_residents.inc"
 
 	.include "data/maps/HiddenGrotto_Route32/scripts.inc"
 

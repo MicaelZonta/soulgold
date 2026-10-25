@@ -25934,3 +25934,123 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Fiery Dance
 - Bug Buzz
 - Giga Drain
+
+=== TRAINER_COLRESS ===
+Name: Colress
+Class: Scientist
+Pic: Colress
+Gender: Male
+Music: Male
+Items: Full Restore / Full Restore / Hyper Potion
+Double Battle: No
+AI: Smart Trainer
+
+Magnezone @ Choice Specs
+Modest Nature
+Level: 70
+Ability: Analytic
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Thunderbolt
+- Flash Cannon
+- Volt Switch
+- Tri Attack
+
+Porygon-Z @ Life Orb
+Timid Nature
+Level: 70
+Ability: Adaptability
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Tri Attack
+- Dark Pulse
+- Thunderbolt
+- Nasty Plot
+
+Klinklang @ Leftovers
+Jolly Nature
+Level: 69
+Ability: Clear Body
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Shift Gear
+- Gear Grind
+- Wild Charge
+- Substitute
+
+Golurk @ Sitrus Berry
+Adamant Nature
+Level: 69
+Ability: Iron Fist
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Shadow Punch
+- Earthquake
+- Ice Punch
+- Rock Slide
+
+Metagross @ Occa Berry
+Adamant Nature
+Level: 70
+Ability: Clear Body
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Meteor Mash
+- Bullet Punch
+- Earthquake
+- Agility
+
+=== TRAINER_SOLIERA ===
+Name: Soliera
+Class: Pkmn Ranger
+Pic: Pokemon Ranger F
+Gender: Female
+Music: Female
+Items: Full Restore / Full Restore / Hyper Potion
+Double Battle: No
+AI: Smart Trainer
+
+Dragapult @ Choice Band
+Jolly Nature
+Level: 70
+Ability: Clear Body
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Dragon Darts
+- Phantom Force
+- U-turn
+- Sucker Punch
+
+Crobat @ Sitrus Berry
+Jolly Nature
+Level: 69
+Ability: Inner Focus
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Brave Bird
+- Cross Poison
+- Roost
+- Taunt
+
+Drapion @ Leftovers
+Adamant Nature
+Level: 69
+Ability: Battle Armor
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Knock Off
+- Poison Jab
+- Earthquake
+- Swords Dance
+
+Beedrill @ Life Orb
+Jolly Nature
+Level: 69
+Ability: Swarm
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Poison Jab
+- X-Scissor
+- Drill Run
+- Swords Dance
+
+Latios @ Soul Dew
+Timid Nature
+Level: 70
+Ability: Levitate
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Draco Meteor
+- Psychic
+- Aura Sphere
+- Recover

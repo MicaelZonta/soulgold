@@ -15,6 +15,7 @@ BirthIsland_Exterior_OnTransition:
 	setvar VAR_DEOXYS_ROCK_LEVEL, 0
 	call_if_set FLAG_BATTLED_DEOXYS, BirthIsland_Exterior_EventScript_HideDeoxysAndPuzzle
 	call_if_unset FLAG_BATTLED_DEOXYS, BirthIsland_Exterior_EventScript_TryShowDeoxysPuzzle
+	call BirthIsland_Residents_OnTransition
 	end
 
 BirthIsland_Exterior_EventScript_HideDeoxysAndPuzzle::
