@@ -172,6 +172,7 @@ static const u8 sRegionMapPlayerIcon_LeafGfx[] = INCBIN_U8("graphics/pokenav/reg
 #include "data/region_map/region_map_layout_kanto.h"
 #include "data/region_map/region_map_layout_sevii123.h"
 #include "data/region_map/region_map_layout_alola.h"
+#include "data/region_map/region_map_layout_sinjoh.h"
 #include "data/region_map/region_map_layout_sevii45.h"
 #include "data/region_map/region_map_layout_sevii67.h"
 #include "data/region_map/region_map_entries.h"
@@ -182,9 +183,11 @@ static const u8 sRegionMapPlayerIcon_LeafGfx[] = INCBIN_U8("graphics/pokenav/reg
 // e a rampa de verdes que o mapa de Johto ja usava.
 #define REGION_MAP_SECOND_PAGE_LAYOUT sRegionMapSections_Alola
 
-// Enquanto a arte do quadrante nao existir, o layout fica NULL e a pagina e
-// invalida: IsRegionMapPageValid barra a navegacao para ela.
-#define REGION_MAP_FOURTH_PAGE_LAYOUT NULL
+// Sinjoh ocupa a pagina de baixo-direita (linhas 20-39, colunas 30-59 da BG).
+// A regiao e um vale, nao um arquipelago, entao a forma foi desenhada: os cinco
+// lugares seguem a cadeia do jogo, de sul (Snowswept Cavern, a entrada vinda do
+// Mt. Silver) para norte (as Ruinas).
+#define REGION_MAP_FOURTH_PAGE_LAYOUT sRegionMapSections_Sinjoh
 #define REGION_MAP_THIRD_PAGE_LAYOUT sRegionMapSections_Sevii123
 //#define REGION_MAP_THIRD_PAGE_LAYOUT NULL
 

@@ -1792,19 +1792,43 @@
     },
     {
       "id": "MAPSEC_NEW_SINJOH",
-      "name": "New Sinjoh"
+      "name": "New Sinjoh",
+      "x": 9,
+      "y": 6,
+      "width": 5,
+      "height": 3
     },
     {
       "id": "MAPSEC_SINJOH_RUINS",
-      "name": "Sinjoh Ruins"
+      "name": "Sinjoh Ruins",
+      "x": 6,
+      "y": 1,
+      "width": 5,
+      "height": 2
     },
     {
       "id": "MAPSEC_SNOWSWEPT_CAVERN",
-      "name": "Snowswept Cavern"
+      "name": "Snowswept Cavern",
+      "x": 6,
+      "y": 11,
+      "width": 4,
+      "height": 3
     },
     {
       "id": "MAPSEC_ROUTE_50",
-      "name": "Sinjoh Route 50"
+      "name": "Sinjoh Route 50",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "height": 5
+    },
+    {
+      "id": "MAPSEC_ROUTE_49_SINJOH",
+      "name": "Sinjoh Route 49",
+      "x": 10,
+      "y": 9,
+      "width": 2,
+      "height": 4
     }
   ]
 }
