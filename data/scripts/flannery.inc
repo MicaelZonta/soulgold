@@ -44,9 +44,19 @@ Flannery_EventScript_Roaming::
 	end
 
 Flannery_EventScript_Known:
+	goto_if_eq VAR_NAVELROCK_QUEST, 2, Flannery_EventScript_NavelRock
 	msgbox Flannery_Text_Known, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_FLANNERY, Flannery_Text_RematchDefeat
 	msgbox Flannery_Text_RematchAfter, MSGBOX_AUTOCLOSE
+	end
+
+@ A leitura que o Bill mandou. Ela reconhece o ritmo na hora, porque e o que
+@ o avo dela ensinou a ler, e reescreve em tabua de mares - o unico idioma em
+@ que um marinheiro confia.
+Flannery_EventScript_NavelRock:
+	msgbox NavelRockQuest_Text_FlanneryRecognises, MSGBOX_DEFAULT
+	setvar VAR_NAVELROCK_QUEST, 3
+	release
 	end
 
 Flannery_Text_FirstMeeting:

@@ -79,6 +79,22 @@ BillHouse_Text_SisterStorageSystem:
 GoldenrodCity_Bill_GiveEeveeOrPikachu::
 	lock
 	faceplayer
+	goto_if_eq VAR_NAVELROCK_QUEST, 1, GoldenrodCity_Bill_NavelRock
+	goto GoldenrodCity_Bill_Normal
+	end
+
+@ A leitura velha do Blaine. O Bill acha o ritmo de tres dias e manda para a
+@ Flannery, que e quem sabe ler respiracao de fenda.
+GoldenrodCity_Bill_NavelRock:
+	msgbox NavelRockQuest_Text_BillReads, MSGBOX_DEFAULT
+	setvar VAR_NAVELROCK_QUEST, 2
+	closemessage
+	release
+	end
+
+GoldenrodCity_Bill_Normal:
+	lock
+	faceplayer
 	goto_if_unset FLAG_GOT_BILL_GIFTMON, GoldenrodCity_Bill_GiveEeveeOrPikachu_2
 	msgbox GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_6
 	release

@@ -36,6 +36,10 @@ SeafoamIslands_Gym_EventScript_Blaine::
 SeafoamIslands_Gym_EventScript_Blaine_Defeated::
 	goto_if_set FLAG_CAUGHT_VOLCANION, SeafoamIslands_Gym_EventScript_Blaine_Answered
 	msgbox SeafoamIslands_Gym_Text_BlaineRiddle, MSGBOX_DEFAULT
+	goto_if_ne VAR_NAVELROCK_QUEST, 0, SeafoamIslands_Gym_EventScript_Blaine_RiddleEnd
+	msgbox NavelRockQuest_Text_BlaineHandsReading, MSGBOX_DEFAULT
+	setvar VAR_NAVELROCK_QUEST, 1
+SeafoamIslands_Gym_EventScript_Blaine_RiddleEnd:
 	closemessage
 	release
 	end
