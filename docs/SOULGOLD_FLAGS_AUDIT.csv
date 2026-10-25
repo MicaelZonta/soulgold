@@ -19,9 +19,9 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x9,9,FLAG_TEMP_BRAM_TUTORIAL_VISIT,TEMP,EM_USO,6,1,2,Route30_House,MAPA_UNICO:Route30_House,this visit was the tutorial
 0xA,10,FLAG_TEMP_A,TEMP,EM_USO,2,19,18,CherrygroveCity;GoldenrodCity_DepartmentStore_5F;IcePath_B4F;MtMortar_Depths_1,GLOBAL(codigo),Unused Flag
 0xA,10,FLAG_TEMP_HIDE_BRAM,TEMP,EM_USO,0,1,5,Route30;Route30_House,GLOBAL(codigo),
-0xB,11,FLAG_TEMP_B,TEMP,EM_USO,0,10,10,BirthIsland_Exterior;NewBarkTown;SunMoonAltar,GLOBAL(codigo),Unused Flag
+0xB,11,FLAG_TEMP_B,TEMP,EM_USO,0,10,12,BirthIsland_Exterior;NewBarkTown;SunMoonAltar;VermilionCity_PortOutside,GLOBAL(codigo),Unused Flag
 0xB,11,FLAG_TEMP_HIDE_LAUREL,TEMP,EM_USO,2,4,5,Route30;Route30_House,GLOBAL(codigo),
-0xC,12,FLAG_TEMP_C,TEMP,EM_USO,0,9,10,BirthIsland_Exterior;NewBarkTown;SunMoonAltar,GLOBAL(codigo),Unused Flag
+0xC,12,FLAG_TEMP_C,TEMP,EM_USO,0,9,12,BirthIsland_Exterior;NewBarkTown;SunMoonAltar;VermilionCity_PortOutside,GLOBAL(codigo),Unused Flag
 0xC,12,FLAG_TEMP_HIDE_TILLY,TEMP,EM_USO,0,0,3,Route30;Route30_House,GLOBAL(codigo),
 0xD,13,FLAG_TEMP_D,TEMP,EM_USO,1,3,10,CinnabarIsland;MtEmber_Exterior_Frlg;NewSinjoh_HotSprings;SeafoamIslands_Gym,GLOBAL(codigo),Unused Flag
 0xD,13,FLAG_TEMP_HIDE_BUGSY,TEMP,EM_USO,0,1,3,Route30,GLOBAL(codigo),
@@ -829,7 +829,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x33A,826,FLAG_HIDE_ROUTE14_EUSINE,SCRIPT/EVENT,EM_USO,0,5,7,Route14,GLOBAL(codigo),
 0x33B,827,FLAG_HIDE_ROUTE14_SUICUNE,SCRIPT/EVENT,EM_USO,0,5,9,Route14;VermilionCity,GLOBAL(codigo),
 0x33C,828,FLAG_IN_KANTO_SAFARI_ZONE,SCRIPT/EVENT,EM_USO,4,10,9,FuchsiaCity_SafariZoneEntrance,GLOBAL(codigo),
-0x33D,829,FLAG_IS_KANTO_CHAMPION,SCRIPT/EVENT,EM_USO,32,4,25,FuchsiaCity_SafariZoneEntrance;OlivineCity;PalletTown_Lab,GLOBAL(codigo),
+0x33D,829,FLAG_IS_KANTO_CHAMPION,SCRIPT/EVENT,EM_USO,33,4,26,FuchsiaCity_SafariZoneEntrance;OlivineCity;PalletTown_Lab,GLOBAL(codigo),
 0x33E,830,FLAG_HIDE_LEAGUE_BLACKBELT,SCRIPT/EVENT,EM_USO,0,7,11,IndigoPlateau_PokemonCenter;PokemonLeague_HallOfFame;ViridianCity_Gym,GLOBAL(codigo),
 0x33F,831,FLAG_GOT_ROUTE2_NUGGET,SCRIPT/EVENT,EM_USO,2,3,5,Route2_House,GLOBAL(codigo),
 0x340,832,FLAG_GOT_VIRIDIAN_TM_SLUDGE_BOMB,SCRIPT/EVENT,EM_USO,1,1,1,ViridianCity,MAPA_UNICO:ViridianCity,
@@ -1917,6 +1917,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x118F,4495,FLAG_MET_COLRESS,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),o Colress ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 0x1190,4496,FLAG_MET_SOLIERA,CUSTOM,SO_ESCRITA,0,1,1,,GLOBAL(codigo),a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 0x1191,4497,FLAG_BIRTH_ISLAND_ITEM_METEORITE,CUSTOM,EM_USO,0,0,1,BirthIsland_Exterior,MAPA_UNICO:BirthIsland_Exterior,o Meteorite da cratera ja foi pego; setada pelo finditem
+0x1192,4498,FLAG_SAW_METEOR_SHOWER,CUSTOM,EM_USO,2,1,2,OlivineCity,GLOBAL(codigo),"o jogador viu a chuva de meteoros no cais de Vermilion, a noite; e o que destrava o bilhete da Birth Island"
 0x1500,5376,FLAG_0x1500,LIVRE,NUNCA_REFERENCIADA,0,0,0,,,
 0x1508,5384,FLAG_ROUTE32_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route32,MAPA_UNICO:HiddenGrotto_Route32,
 0x1509,5385,FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY,DAILY,EM_USO,4,4,5,,GLOBAL(codigo),

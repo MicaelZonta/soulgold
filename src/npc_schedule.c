@@ -58,3 +58,11 @@ bool8 IsScheduledNpcHere(void)
 
     return FALSE;
 }
+
+// O script nao tinha como perguntar a hora do dia; GetTimeOfDay so existia em C.
+// Devolve TIME_MORNING / TIME_DAY / TIME_EVENING / TIME_NIGHT em VAR_RESULT.
+u16 GetTimeOfDayForScript(void)
+{
+    gSpecialVar_Result = GetTimeOfDay();
+    return gSpecialVar_Result;
+}

@@ -16,5 +16,6 @@ struct NpcSchedule
 };
 
 bool8 IsScheduledNpcHere(void);
+u16 GetTimeOfDayForScript(void);
 
 #endif // GUARD_NPC_SCHEDULE_H

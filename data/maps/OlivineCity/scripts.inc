@@ -298,7 +298,16 @@ OlivineCity_EventScript_EonTicketWoman::
 	faceplayer
 	checkitem ITEM_AURORA_TICKET
 	goto_if_eq VAR_RESULT, TRUE, OlivineCity_EventScript_EonTicketWomanAfter
+	goto_if_unset FLAG_SAW_METEOR_SHOWER, OlivineCity_EventScript_EonTicketWoman_NoShower
 	goto_if_set FLAG_IS_KANTO_CHAMPION, OlivineCity_EventScript_EonTicketWomanChamp
+	msgbox OlivineCity_Text_EonTicketWoman1, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+@ Sem ter visto a chuva de meteoros no cais de Vermilion, ela nao tem motivo
+@ para falar da ilha nova: a carta nautica ainda nao foi corrigida.
+OlivineCity_EventScript_EonTicketWoman_NoShower::
 	msgbox OlivineCity_Text_EonTicketWoman1, MSGBOX_DEFAULT
 	closemessage
 	release

@@ -29,6 +29,13 @@
 #define SCHED_WEEKEND   (SCHED_SAT | SCHED_SUN)
 #define SCHED_EVERY_DAY (SCHED_WEEKDAYS | SCHED_WEEKEND)
 
+// Os mesmos valores em #define, para o script poder comparar com o que o
+// special GetTimeOfDayForScript devolve: enum de C o assembler nao enxerga.
+#define SCRIPT_TIME_MORNING  0
+#define SCRIPT_TIME_DAY      1
+#define SCRIPT_TIME_EVENING  2
+#define SCRIPT_TIME_NIGHT    3
+
 // Espelha enum TimeOfDay (include/constants/rtc.h).
 #define SCHED_MORNING (1 << TIME_MORNING)
 #define SCHED_DAY     (1 << TIME_DAY)

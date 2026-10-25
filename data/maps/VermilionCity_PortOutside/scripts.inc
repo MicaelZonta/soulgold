@@ -1,4 +1,5 @@
 VermilionCity_PortOutside_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, VermilionPort_OnFrame
 	.byte 0
 
 VermilionCity_PortOutside_EventScript_Fisher::

@@ -2205,8 +2205,9 @@
 #define FLAG_MET_COLRESS                            0x118F // o Colress ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 #define FLAG_MET_SOLIERA                            0x1190 // a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 #define FLAG_BIRTH_ISLAND_ITEM_METEORITE            0x1191 // o Meteorite da cratera ja foi pego; setada pelo finditem
-#define CUSTOM_FLAGS_END                            FLAG_BIRTH_ISLAND_ITEM_METEORITE
-// PROXIMA FLAG NOVA: 0x1192 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+#define FLAG_SAW_METEOR_SHOWER                      0x1192 // o jogador viu a chuva de meteoros no cais de Vermilion, a noite; e o que destrava o bilhete da Birth Island
+#define CUSTOM_FLAGS_END                            FLAG_SAW_METEOR_SHOWER
+// PROXIMA FLAG NOVA: 0x1193 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

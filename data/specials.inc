@@ -753,3 +753,4 @@ gSpecials::
 	def_special CheckRadioStation
 	def_special InitKantoRoamers
 	def_special IsScheduledNpcHere
+	def_special GetTimeOfDayForScript

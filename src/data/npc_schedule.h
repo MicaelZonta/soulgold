@@ -26,21 +26,28 @@ static const struct NpcScheduleSlot sFlannerySchedule[] =
     { SCHED_EVERY_DAY,                 SCHED_DARK,     MAP_GROUP(MAP_NEWSINJOH_HOTSPRINGS), MAP_NUM(MAP_NEWSINJOH_HOTSPRINGS) },
 };
 
-// Os dois que ficaram na Birth Island depois da historia. Os dois sao do
-// Nexus e nao existiam em lugar nenhum do mundo ate agora.
+// Os dois que ficaram na Birth Island depois da historia. Nenhum dos dois
+// existia em lugar nenhum do mundo antes disto.
 //
-// Sabado os dois estao la ao mesmo tempo, de proposito: e o unico dia em que
-// o jogador ve os dois discordando sobre o que fazer com a cratera.
+// Os dois tem dia E hora, nao so dia, e os horarios dizem quem e cada um.
+// O Colress trabalha de dia, porque e quando da para ler instrumento. A
+// Soliera monta guarda a noite, porque foi uma luz que a trouxe ate aqui e e
+// no escuro que da para ver luz. Entao eles quase nao se encontram - e sabado
+// e o unico dia em que os turnos se tocam, de tarde, que e quando o jogador
+// pode ver os dois discordando sobre o que fazer com a cratera.
 
 static const struct NpcScheduleSlot sColressSchedule[] =
 {
-    { SCHED_MON | SCHED_WED | SCHED_FRI | SCHED_SAT, SCHED_ANY_TIME,
+    // Sabado ele estica ate a tarde, e e so por isso que os dois se cruzam.
+    { SCHED_SAT,                                     SCHED_DAYLIGHT | SCHED_EVENING,
+      MAP_GROUP(MAP_BIRTH_ISLAND_EXTERIOR), MAP_NUM(MAP_BIRTH_ISLAND_EXTERIOR) },
+    { SCHED_MON | SCHED_WED | SCHED_FRI,             SCHED_DAYLIGHT,
       MAP_GROUP(MAP_BIRTH_ISLAND_EXTERIOR), MAP_NUM(MAP_BIRTH_ISLAND_EXTERIOR) },
 };
 
 static const struct NpcScheduleSlot sSolieraSchedule[] =
 {
-    { SCHED_TUE | SCHED_THU | SCHED_SAT, SCHED_ANY_TIME,
+    { SCHED_TUE | SCHED_THU | SCHED_SAT,             SCHED_DARK,
       MAP_GROUP(MAP_BIRTH_ISLAND_EXTERIOR), MAP_NUM(MAP_BIRTH_ISLAND_EXTERIOR) },
 };
 
