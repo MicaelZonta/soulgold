@@ -60,11 +60,13 @@ BirthIsland_EventScript_ColressKnown:
 	end
 
 BirthIsland_Text_ColressFirst:
-	.string "{SPEAKER NAME_COLRESS}The crater is cooling at a rate I\n"
-	.string "cannot account for.\p"
-	.string "Everyone keeps telling me the\n"
-	.string "interesting part left on a boat.\l"
-	.string "The interesting part is the hole.$"
+	.string "{SPEAKER NAME_COLRESS}Everyone keeps telling me the\n"
+	.string "interesting part left on a boat.\p"
+	.string "The interesting part was never the\n"
+	.string "creature. It was the thing that\l"
+	.string "rewrote it.\p"
+	.string "I have that on tape now. I am staying\n"
+	.string "for the rest.$"
 
 BirthIsland_Text_ColressKnown:
 	.string "{SPEAKER NAME_COLRESS}Every Pokemon I carry was built or\n"
@@ -78,8 +80,10 @@ BirthIsland_Text_ColressDefeat:
 	.string "{SPEAKER NAME_COLRESS}Good. That was data.$"
 
 BirthIsland_Text_ColressAfter:
-	.string "{SPEAKER NAME_COLRESS}Come back. You keep changing, and I\n"
-	.string "am the only one here measuring it.$"
+	.string "{SPEAKER NAME_COLRESS}The paper is nearly finished.\p"
+	.string "Nobody has told me to stop, and I\n"
+	.string "would like you to notice that this is\l"
+	.string "not the same as permission.$"
 
 @ ---------------------------------------------------------------- Soliera
 
@@ -99,14 +103,12 @@ BirthIsland_EventScript_SolieraKnown:
 	end
 
 BirthIsland_Text_SolieraFirst:
-	.string "{SPEAKER NAME_SOLIERA}I am told you were here when it\n"
-	.string "opened.\p"
-	.string "My squad crossed on purpose, with\n"
-	.string "instruments, and we remember all of\l"
-	.string "it. Your investigator crossed by\l"
-	.string "accident and remembers none.\p"
-	.string "I do not know which of us got the\n"
-	.string "better arrangement.$"
+	.string "{SPEAKER NAME_SOLIERA}He kept the recording. He will\n"
+	.string "publish it.\p"
+	.string "I am not here to arrest him. There is\n"
+	.string "nothing to arrest him for.\p"
+	.string "I am here because my people did this\n"
+	.string "once, and we live under lamps now.$"
 
 BirthIsland_Text_SolieraKnown:
 	.string "{SPEAKER NAME_SOLIERA}The scientist wants to open the\n"
