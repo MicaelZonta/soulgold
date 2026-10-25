@@ -680,6 +680,13 @@ enum BattleEnvironments
     BATTLE_ENVIRONMENT_KOGA,
     BATTLE_ENVIRONMENT_BRUNO,
     BATTLE_ENVIRONMENT_KAREN,
+    // HnS 2.0.6 (25/10/2026). GRAY_CAVE e GRAY_CAVE_WATER so se distinguem da
+    // caverna normal com a arte "modern" ligada: la elas usam o mesmo tileset
+    // com uma paleta cinza. Com a arte classica desenham a caverna de sempre.
+    BATTLE_ENVIRONMENT_GRAY_CAVE,
+    BATTLE_ENVIRONMENT_CAVE_WATER,
+    BATTLE_ENVIRONMENT_GRAY_CAVE_WATER,
+    BATTLE_ENVIRONMENT_ROCK_SNOW,
     BATTLE_ENVIRONMENT_COUNT,
 };
 

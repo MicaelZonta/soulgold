@@ -87,6 +87,7 @@ enum
     MENUITEM_BATTLE_FORMAT,
     MENUITEM_FOLLOWER_MEGA,
     MENUITEM_SHINY_RATE,
+    MENUITEM_BATTLE_BGS,
     MENUITEM_COUNT_PG3,
 };
 
@@ -181,6 +182,7 @@ static u8 DarkBattleUi_ProcessInput(u8 selection);
 static void DarkBattleUi_DrawChoices(u8 selection);
 static u8 Lighting_ProcessInput(u8 selection);
 static void Lighting_DrawChoices(u8 selection);
+static void BattleBgs_DrawChoices(u8 selection);
 static u8 FastMegas_ProcessInput(u8 selection);
 static void FastMegas_DrawChoices(u8 selection);
 static void ShinyRate_DrawChoices(u8 selection);
@@ -205,6 +207,7 @@ EWRAM_DATA static bool8 sUiAnimationsOff = FALSE;
 EWRAM_DATA static bool8 sDarkBattleUi = FALSE;
 EWRAM_DATA static bool8 sOverworldLighting = FALSE;
 EWRAM_DATA static bool8 sBattleLighting = FALSE;
+EWRAM_DATA static bool8 sBattleBgsModern = FALSE;
 EWRAM_DATA static bool8 sFastMegas = FALSE;
 EWRAM_DATA static bool8 sFollowerMega = FALSE;
 EWRAM_DATA static u8 sShinyRate = 0;
@@ -331,6 +334,7 @@ static const u8 *const sOptionMenuItemsNames_Pg3[MENUITEM_COUNT_PG3] =
     [MENUITEM_BATTLE_LIGHTING] = COMPOUND_STRING("Battle lighting"),
     [MENUITEM_FOLLOWER_MEGA] = COMPOUND_STRING("Follower Mega"),
     [MENUITEM_SHINY_RATE] = COMPOUND_STRING("Shiny odds"),
+    [MENUITEM_BATTLE_BGS] = COMPOUND_STRING("Battle BGs"),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING("Fast megas"),
     [MENUITEM_FAST_WEATHER] = COMPOUND_STRING("Fast weather"),
     [MENUITEM_FAST_HMS] = COMPOUND_STRING("Fast HMs"),
@@ -438,6 +442,11 @@ static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
         "lack overworld sprites currently."),
     [MENUITEM_SHINY_RATE] = COMPOUND_STRING(
         "Odds of finding shiny Pokémon."),
+    [MENUITEM_BATTLE_BGS] = COMPOUND_STRING(
+        "Art used for battle backgrounds.\n"
+        "Modern uses the Gen 4 style set,\n"
+        "with its own morning and night\n"
+        "paintings instead of a tint."),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING(
         "On uses a near-instant Mega\n"
         "Evolution animation. Off plays\n"
@@ -553,6 +562,7 @@ static void ReadAllCurrentSettings(u8 taskId)
         sDarkBattleUi = gSaveBlock2Ptr->optionsDarkBattleUi;
         sOverworldLighting = !FlagGet(FLAG_OW_LIGHTING);
         sBattleLighting = !FlagGet(FLAG_BATTLE_LIGHTING);
+        sBattleBgsModern = FlagGet(FLAG_MODERN_BATTLE_BG);
         sFastMegas = gSaveBlock2Ptr->optionsFastMegas;
         sFollowerMega = IsFollowerMegaEnabled();
         sShinyRate = GetShinyRateOption();
@@ -749,6 +759,9 @@ static void DrawOptionChoices(u8 taskId, u8 option)
     case OPTION_MENU_PG3_START + MENUITEM_BATTLE_LIGHTING:
         Lighting_DrawChoices(sBattleLighting);
         break;
+    case OPTION_MENU_PG3_START + MENUITEM_BATTLE_BGS:
+        BattleBgs_DrawChoices(sBattleBgsModern);
+        break;
     case OPTION_MENU_PG3_START + MENUITEM_FOLLOWER_MEGA:
         FastMegas_DrawChoices(sFollowerMega);
         break;
@@ -894,6 +907,12 @@ static void ProcessOptionInput(u8 taskId)
         sBattleLighting = Lighting_ProcessInput(sBattleLighting);
         if (previousOption != sBattleLighting)
             Lighting_DrawChoices(sBattleLighting);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_BATTLE_BGS:
+        previousOption = sBattleBgsModern;
+        sBattleBgsModern = Lighting_ProcessInput(sBattleBgsModern);
+        if (previousOption != sBattleBgsModern)
+            BattleBgs_DrawChoices(sBattleBgsModern);
         break;
     case OPTION_MENU_PG3_START + MENUITEM_FOLLOWER_MEGA:
         sFollowerMega = FastMegas_ProcessInput(sFollowerMega);
@@ -1098,6 +1117,10 @@ static void SaveCurrentSettings(u8 taskId)
         FlagClear(FLAG_BATTLE_LIGHTING);
     else
         FlagSet(FLAG_BATTLE_LIGHTING);
+    if (sBattleBgsModern)
+        FlagSet(FLAG_MODERN_BATTLE_BG);
+    else
+        FlagClear(FLAG_MODERN_BATTLE_BG);
     gSaveBlock2Ptr->optionsFastMegas = sFastMegas;
     VarSet(VAR_FOLLOWER_MEGA_OFF, !sFollowerMega);
     VarSet(VAR_SHINY_RATE, sShinyRate);
@@ -1688,6 +1711,19 @@ static u8 Lighting_ProcessInput(u8 selection)
     }
 
     return selection;
+}
+
+static void BattleBgs_DrawChoices(u8 selection)
+{
+    static const u8 sText_BgsClassic[] = _("Classic");
+    static const u8 sText_BgsModern[] = _("Modern");
+    u8 styles[2] = {0};
+
+    if (selection > TRUE)
+        selection = FALSE;
+    styles[selection] = 1;
+    DrawOptionMenuChoice(sText_BgsClassic, 104, sOptionDrawY, styles[FALSE]);
+    DrawOptionMenuChoice(sText_BgsModern, GetStringRightAlignXOffset(FONT_NORMAL, sText_BgsModern, 198), sOptionDrawY, styles[TRUE]);
 }
 
 static void Lighting_DrawChoices(u8 selection)

@@ -189,6 +189,74 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .battleIntroSlide = BattleIntroSlide1,
     },
 
+    [BATTLE_ENVIRONMENT_GRAY_CAVE] =
+    {
+        .name = _("Gray Cave"),
+        .naturePower = CAVE_NATURE_POWER,
+        .secretPowerAnimation = CAVE_SECRET_POWER_ANIMATION,
+        .secretPowerEffect = CAVE_SECRET_POWER_EFFECT,
+        .camouflageType = CAVE_CAMOUFLAGE_TYPE,
+        .camouflageBlend = CAVE_CAMOUFLAGE_BLEND,
+        .entry = ENVIRONMENT_ENTRY(Cave),
+        .background = ENVIRONMENT_BACKGROUND(Cave),
+        .palette = gBattleEnvironmentPalette_Cave,
+        .battleIntroSlide = CAVE_BATTLE_INTRO_SLIDE,
+    },
+
+    [BATTLE_ENVIRONMENT_CAVE_WATER] =
+    {
+        .name = _("Cave Water"),
+        .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_HYDRO_PUMP : MOVE_BUBBLE_BEAM,
+        .secretPowerAnimation = B_SECRET_POWER_ANIMATION >= GEN_4 ? gBattleAnimMove_WaterPulse : gBattleAnimMove_BubbleBeam,
+        .secretPowerEffect = B_SECRET_POWER_EFFECT >= GEN_4 ? MOVE_EFFECT_ATK_MINUS_1 : MOVE_EFFECT_SPD_MINUS_1,
+        .camouflageType = TYPE_WATER,
+        .camouflageBlend = RGB(11, 22, 31),
+        .entry = ENVIRONMENT_ENTRY(Cave),
+        .background = ENVIRONMENT_BACKGROUND(Cave),
+        .palette = gBattleEnvironmentPalette_Cave,
+        .battleIntroSlide = CAVE_BATTLE_INTRO_SLIDE,
+    },
+
+    [BATTLE_ENVIRONMENT_GRAY_CAVE_WATER] =
+    {
+        .name = _("Gray Cave Water"),
+        .naturePower = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_HYDRO_PUMP : MOVE_BUBBLE_BEAM,
+        .secretPowerAnimation = B_SECRET_POWER_ANIMATION >= GEN_4 ? gBattleAnimMove_WaterPulse : gBattleAnimMove_BubbleBeam,
+        .secretPowerEffect = B_SECRET_POWER_EFFECT >= GEN_4 ? MOVE_EFFECT_ATK_MINUS_1 : MOVE_EFFECT_SPD_MINUS_1,
+        .camouflageType = TYPE_WATER,
+        .camouflageBlend = RGB(11, 22, 31),
+        .entry = ENVIRONMENT_ENTRY(Cave),
+        .background = ENVIRONMENT_BACKGROUND(Cave),
+        .palette = gBattleEnvironmentPalette_Cave,
+        .battleIntroSlide = CAVE_BATTLE_INTRO_SLIDE,
+    },
+
+    [BATTLE_ENVIRONMENT_ROCK_SNOW] =
+    {
+        .name = _("Snowy Rock"),
+    #if B_NATURE_POWER_MOVES >= GEN_6
+        .naturePower = MOVE_EARTH_POWER,
+    #elif B_NATURE_POWER_MOVES >= GEN_5
+        .naturePower = MOVE_EARTHQUAKE,
+    #else
+        .naturePower = MOVE_ROCK_SLIDE,
+    #endif
+        .secretPowerAnimation = B_SECRET_POWER_ANIMATION >= GEN_5 ? gBattleAnimMove_MudSlap : gBattleAnimMove_RockThrow,
+    #if B_SECRET_POWER_EFFECT >= GEN_5
+        .secretPowerEffect = MOVE_EFFECT_ACC_MINUS_1,
+    #elif B_SECRET_POWER_EFFECT == GEN_4
+        .secretPowerEffect = MOVE_EFFECT_FLINCH,
+    #else
+        .secretPowerEffect = MOVE_EFFECT_CONFUSION,
+    #endif
+        .camouflageType = B_CAMOUFLAGE_TYPES >= GEN_5 ? TYPE_GROUND : TYPE_ROCK,
+        .camouflageBlend = RGB(22, 16, 10),
+        .entry = ENVIRONMENT_ENTRY(RockSnow),
+        .background = ENVIRONMENT_BACKGROUND(RockSnow),
+        .palette = gBattleEnvironmentPalette_RockSnow,
+        .battleIntroSlide = BattleIntroSlide1,
+    },
+
     [BATTLE_ENVIRONMENT_CAVE] =
     {
         .name = _("Cave"),
@@ -658,4 +726,256 @@ static const struct {
     {MAP_BATTLE_SCENE_BRUNO,    BATTLE_ENVIRONMENT_BRUNO},
     {MAP_BATTLE_SCENE_KAREN,    BATTLE_ENVIRONMENT_KAREN},
     {MAP_BATTLE_SCENE_ULTRA_SPACE, BATTLE_ENVIRONMENT_ULTRA_SPACE},
+    {MAP_BATTLE_SCENE_GRAY_CAVE,       BATTLE_ENVIRONMENT_GRAY_CAVE},
+    {MAP_BATTLE_SCENE_CAVE_WATER,      BATTLE_ENVIRONMENT_CAVE_WATER},
+    {MAP_BATTLE_SCENE_GRAY_CAVE_WATER, BATTLE_ENVIRONMENT_GRAY_CAVE_WATER},
+    {MAP_BATTLE_SCENE_ROCK_SNOW,       BATTLE_ENVIRONMENT_ROCK_SNOW},
+};
+
+
+// ---------------------------------------------------------------------------
+// Backgrounds "modern" do HnS 2.0.6, portados em 25/10/2026.
+//
+// Conjunto alternativo de arte para os mesmos ambientes, ligado pela opcao
+// "Battle BGs" (FLAG_MODERN_BATTLE_BG). Campo NULL quer dizer "mantem o
+// classico para este ambiente", entao a tabela so precisa listar o que muda.
+//
+// As paletas de manha e de noite que vem com o conjunto ja sao arte pronta,
+// ao contrario das classicas, que o nosso DNS tinge em tempo real. Quando uma
+// delas e usada, LoadBattleEnvironmentGfx NAO chama TimeMixBattleBgPalette,
+// senao a noite seria aplicada duas vezes.
+//
+// BLUE_BUILDING ficou de fora: nao e um ambiente aqui (a pasta de arte
+// classica existe no repo, mas sem declaracao nenhuma).
+// ---------------------------------------------------------------------------
+// Modern battle environment graphics override table.
+// NULL fields mean "keep the vanilla value for this environment."
+struct ModernBattleGfx
+{
+    struct BattleBackground background;
+    struct BattleBackgroundEntry entry;
+    const void *palette;
+    const void *paletteTwilight;
+    const void *paletteNight;
+};
+
+#define MODERN_BACKGROUND(Name) { .tileset = gBattleEnvironmentTiles_##Name, .tilemap = gBattleEnvironmentTilemap_##Name }
+#define MODERN_ENTRY(Name)      { .tileset = gBattleEnvironmentAnimTiles_##Name, .tilemap = gBattleEnvironmentAnimTilemap_##Name }
+
+static const struct ModernBattleGfx sModernBattleGfx[BATTLE_ENVIRONMENT_COUNT] =
+{
+    [BATTLE_ENVIRONMENT_GRASS] =
+    {
+        .background = MODERN_BACKGROUND(TallGrassModern),
+        .entry = MODERN_ENTRY(TallGrassModern),
+        .palette = gBattleEnvironmentPalette_TallGrassModern,
+        .paletteTwilight = gBattleEnvironmentPalette_TallGrassModernMorning,
+        .paletteNight = gBattleEnvironmentPalette_TallGrassModernNight,
+    },
+    [BATTLE_ENVIRONMENT_LONG_GRASS] =
+    {
+        .background = MODERN_BACKGROUND(LongGrassModern),
+        .entry = MODERN_ENTRY(LongGrassModern),
+        .palette = gBattleEnvironmentPalette_LongGrassModern,
+        .paletteNight = gBattleEnvironmentPalette_LongGrassModernNight,
+    },
+    [BATTLE_ENVIRONMENT_SAND] =
+    {
+        .background = MODERN_BACKGROUND(SandModern),
+        .entry = MODERN_ENTRY(SandModern),
+        .palette = gBattleEnvironmentPalette_SandModern,
+        .paletteTwilight = gBattleEnvironmentPalette_SandModernMorning,
+        .paletteNight = gBattleEnvironmentPalette_SandModernNight,
+    },
+    [BATTLE_ENVIRONMENT_UNDERWATER] =
+    {
+        .background = MODERN_BACKGROUND(UnderwaterModern),
+        .entry = MODERN_ENTRY(UnderwaterModern),
+        .palette = gBattleEnvironmentPalette_UnderwaterModern,
+    },
+    [BATTLE_ENVIRONMENT_WATER] =
+    {
+        .background = MODERN_BACKGROUND(WaterModern),
+        .entry = MODERN_ENTRY(WaterModern),
+        .palette = gBattleEnvironmentPalette_WaterModern,
+        .paletteTwilight = gBattleEnvironmentPalette_WaterModernMorning,
+        .paletteNight = gBattleEnvironmentPalette_WaterModernNight,
+    },
+    [BATTLE_ENVIRONMENT_POND] =
+    {
+        .background = MODERN_BACKGROUND(PondWaterModern),
+        .entry = MODERN_ENTRY(PondWaterModern),
+        .palette = gBattleEnvironmentPalette_PondWaterModern,
+        .paletteTwilight = gBattleEnvironmentPalette_PondWaterModernMorning,
+        .paletteNight = gBattleEnvironmentPalette_PondWaterModernNight,
+    },
+    [BATTLE_ENVIRONMENT_MOUNTAIN] =
+    {
+        .background = MODERN_BACKGROUND(RockModern),
+        .entry = MODERN_ENTRY(RockModern),
+        .palette = gBattleEnvironmentPalette_RockModern,
+        .paletteTwilight = gBattleEnvironmentPalette_RockModernMorning,
+        .paletteNight = gBattleEnvironmentPalette_RockModernNight,
+    },
+    [BATTLE_ENVIRONMENT_CAVE] =
+    {
+        .background = MODERN_BACKGROUND(CaveModern),
+        .entry = MODERN_ENTRY(CaveModern),
+        .palette = gBattleEnvironmentPalette_CaveModern,
+    },
+    [BATTLE_ENVIRONMENT_BUILDING] =
+    {
+        .background = MODERN_BACKGROUND(BuildingModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+        .palette = gBattleEnvironmentPalette_BuildingModern,
+    },
+    [BATTLE_ENVIRONMENT_PLAIN] =
+    {
+        .background = MODERN_BACKGROUND(PlainModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+        .palette = gBattleEnvironmentPalette_PlainModern,
+        .paletteNight = gBattleEnvironmentPalette_PlainModernNight,
+    },
+    [BATTLE_ENVIRONMENT_FRONTIER] =
+    {
+        .background = MODERN_BACKGROUND(BuildingModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+        .palette = gBattleEnvironmentPalette_FrontierModern,
+    },
+    [BATTLE_ENVIRONMENT_GYM] =
+    {
+        .background = MODERN_BACKGROUND(BuildingModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+    },
+    [BATTLE_ENVIRONMENT_LEADER] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+        .palette = gBattleEnvironmentPalette_StadiumLeaderModern,
+    },
+    [BATTLE_ENVIRONMENT_MAGMA] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+    },
+    [BATTLE_ENVIRONMENT_AQUA] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+    },
+    [BATTLE_ENVIRONMENT_SIDNEY] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+    },
+    [BATTLE_ENVIRONMENT_PHOEBE] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+    },
+    [BATTLE_ENVIRONMENT_GLACIA] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+    },
+    [BATTLE_ENVIRONMENT_DRAKE] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+    },
+    [BATTLE_ENVIRONMENT_CHAMPION] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+        .palette = gBattleEnvironmentPalette_StadiumLance,
+    },
+    [BATTLE_ENVIRONMENT_GROUDON] =
+    {
+        .background = MODERN_BACKGROUND(CaveModern),
+        .entry = MODERN_ENTRY(CaveModern),
+        .palette = gBattleEnvironmentPalette_GroudonModern,
+    },
+    [BATTLE_ENVIRONMENT_KYOGRE] =
+    {
+        .background = MODERN_BACKGROUND(WaterModern),
+        .entry = MODERN_ENTRY(UnderwaterModern),
+        .palette = gBattleEnvironmentPalette_KyogreModern,
+    },
+    [BATTLE_ENVIRONMENT_RAYQUAZA] =
+    {
+        .background = MODERN_BACKGROUND(SkyModern),
+        .entry = MODERN_ENTRY(SkyModern),
+        .palette = gBattleEnvironmentPalette_SkyModern,
+        .paletteNight = gBattleEnvironmentPalette_SkyModernNight,
+    },
+    [BATTLE_ENVIRONMENT_GRAY_CAVE] =
+    {
+        .background = MODERN_BACKGROUND(CaveModern),
+        .entry = MODERN_ENTRY(CaveModern),
+        .palette = gBattleEnvironmentPalette_GrayCaveModern,
+    },
+    [BATTLE_ENVIRONMENT_CAVE_WATER] =
+    {
+        .background = MODERN_BACKGROUND(CaveWaterModern),
+        .entry = MODERN_ENTRY(CaveWaterModern),
+        .palette = gBattleEnvironmentPalette_CaveWaterModern,
+    },
+    [BATTLE_ENVIRONMENT_GRAY_CAVE_WATER] =
+    {
+        .background = MODERN_BACKGROUND(CaveWaterModern),
+        .entry = MODERN_ENTRY(CaveWaterModern),
+        .palette = gBattleEnvironmentPalette_GrayCaveWaterModern,
+    },
+    [BATTLE_ENVIRONMENT_WILL] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+        .palette = gBattleEnvironmentPalette_StadiumWill,
+    },
+    [BATTLE_ENVIRONMENT_KOGA] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+        .palette = gBattleEnvironmentPalette_StadiumKoga,
+    },
+    [BATTLE_ENVIRONMENT_BRUNO] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+        .palette = gBattleEnvironmentPalette_StadiumBruno,
+    },
+    [BATTLE_ENVIRONMENT_KAREN] =
+    {
+        .background = MODERN_BACKGROUND(StadiumModern),
+        .entry = MODERN_ENTRY(BuildingModern),
+        .palette = gBattleEnvironmentPalette_StadiumKaren,
+    },
+    [BATTLE_ENVIRONMENT_ROCK_SNOW] =
+    {
+        .background = MODERN_BACKGROUND(RockSnowModern),
+        .entry = MODERN_ENTRY(RockSnowModern),
+        .palette = gBattleEnvironmentPalette_RockSnowModern,
+        .paletteTwilight = gBattleEnvironmentPalette_RockSnowModernMorning,
+        .paletteNight = gBattleEnvironmentPalette_RockSnowModernNight,
+    },
+    [BATTLE_ENVIRONMENT_SNOW_MOUNTAIN] =
+    {
+        .background = MODERN_BACKGROUND(MountainSnowModern),
+        .entry = MODERN_ENTRY(MountainSnowModern),
+        .palette = gBattleEnvironmentPalette_MountainSnowModern,
+        .paletteTwilight = gBattleEnvironmentPalette_MountainSnowModernMorning,
+        .paletteNight = gBattleEnvironmentPalette_MountainSnowModernNight,
+    },
+    [BATTLE_ENVIRONMENT_VOLCANO] =
+    {
+        .background = MODERN_BACKGROUND(VolcanoModern),
+        .entry = MODERN_ENTRY(VolcanoModern),
+        .palette = gBattleEnvironmentPalette_VolcanoModern,
+    },
+    [BATTLE_ENVIRONMENT_SNOW_CAVE] =
+    {
+        .background = MODERN_BACKGROUND(SnowCaveModern),
+        .entry = MODERN_ENTRY(SnowCaveModern),
+        .palette = gBattleEnvironmentPalette_SnowCaveModern,
+    },
 };

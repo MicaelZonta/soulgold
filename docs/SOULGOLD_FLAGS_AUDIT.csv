@@ -1912,6 +1912,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x118A,4490,FLAG_BEVERLY_HAS_PHONE_ITEM,CUSTOM,EM_USO,2,2,4,NationalPark_Normal,GLOBAL(codigo),
 0x118B,4491,FLAG_HIDE_KELDEO,CUSTOM,EM_USO,0,6,3,MtSilver_1F_RegigigasRoom,MAPA_UNICO:MtSilver_1F_RegigigasRoom,Keldeo na camara do Mt. Silver; recalculada no ON_TRANSITION de MtSilver_1F_RegigigasRoom e setada pela captura
 0x118C,4492,FLAG_CAUGHT_KELDEO,CUSTOM,EM_USO,2,2,2,MtSilver_1F_RegigigasRoom,MAPA_UNICO:MtSilver_1F_RegigigasRoom,"Keldeo ja capturado; so o script da camara seta, para o ON_TRANSITION nao o trazer de volta"
+0x118D,4493,FLAG_MODERN_BATTLE_BG,CUSTOM,EM_USO,2,2,3,,GLOBAL(codigo),"Opcao ""Battle BGs"": setada = arte ""modern"" dos backgrounds de batalha (HnS 2.0.6); limpa = arte classica. So o menu de opcoes escreve"
 0x1500,5376,FLAG_0x1500,LIVRE,NUNCA_REFERENCIADA,0,0,0,,,
 0x1508,5384,FLAG_ROUTE32_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route32,MAPA_UNICO:HiddenGrotto_Route32,
 0x1509,5385,FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY,DAILY,EM_USO,4,4,5,,GLOBAL(codigo),

@@ -28,6 +28,9 @@
 #include "constants/trainers.h"
 #include "constants/battle_anim.h"
 #include "constants/battle_partner.h"
+#include "rtc.h"
+#include "constants/rtc.h"
+#include "event_data.h"
 #include "data/battle_environment.h"
 
 // .rodata
@@ -676,27 +679,105 @@ static u8 GetBattleEnvironmentByMapScene(u8 mapBattleScene)
     return BATTLE_ENVIRONMENT_PLAIN;
 }
 
+// "Battle BGs: Modern" in the options menu. The classic art stays the default.
+static bool32 UseModernBattleEnvironment(void)
+{
+    return FlagGet(FLAG_MODERN_BATTLE_BG);
+}
+
+enum
+{
+    BATTLE_BG_TIME_DAY,
+    BATTLE_BG_TIME_TWILIGHT,
+    BATTLE_BG_TIME_NIGHT,
+};
+
+static u32 GetBattleBgTimeOfDay(void)
+{
+    switch (GetTimeOfDay())
+    {
+    case TIME_DAY:
+        return BATTLE_BG_TIME_DAY;
+    case TIME_MORNING:
+    case TIME_EVENING:
+        return BATTLE_BG_TIME_TWILIGHT;
+    default:
+        // The first hour of night is still fading down from evening outside,
+        // so keep the sunset palette through it.
+        if (IsBetweenHours(gLocalTime.hours, NIGHT_HOUR_BEGIN, NIGHT_HOUR_BEGIN + 1))
+            return BATTLE_BG_TIME_TWILIGHT;
+        return BATTLE_BG_TIME_NIGHT;
+    }
+}
+
 // Loads the initial battle environment.
 static void LoadBattleEnvironmentGfx(u16 environment)
 {
+    const void *tileset, *tilemap, *palette;
+    bool32 paletteAlreadyTimed = FALSE;
+
     if (environment >= NELEMS(gBattleEnvironmentInfo))
         environment = BATTLE_ENVIRONMENT_PLAIN;  // If higher than the number of entries in gBattleEnvironmentInfo, use the default.
+
+    tileset = gBattleEnvironmentInfo[environment].background.tileset;
+    tilemap = gBattleEnvironmentInfo[environment].background.tilemap;
+    palette = gBattleEnvironmentInfo[environment].palette;
+
+    if (UseModernBattleEnvironment())
+    {
+        const struct ModernBattleGfx *modern = &sModernBattleGfx[environment];
+
+        if (modern->background.tileset)
+            tileset = modern->background.tileset;
+        if (modern->background.tilemap)
+            tilemap = modern->background.tilemap;
+        if (modern->palette)
+        {
+            u32 time = GetBattleBgTimeOfDay();
+
+            palette = modern->palette;
+            if (time == BATTLE_BG_TIME_NIGHT && modern->paletteNight)
+                palette = modern->paletteNight, paletteAlreadyTimed = TRUE;
+            else if (time == BATTLE_BG_TIME_TWILIGHT && modern->paletteTwilight)
+                palette = modern->paletteTwilight, paletteAlreadyTimed = TRUE;
+        }
+    }
+
     // Copy to bg3
-    DecompressDataWithHeaderVram(gBattleEnvironmentInfo[environment].background.tileset, (void *)(BG_CHAR_ADDR(2)));
-    DecompressDataWithHeaderVram(gBattleEnvironmentInfo[environment].background.tilemap, (void *)(BG_SCREEN_ADDR(26)));
-    LoadPalette(gBattleEnvironmentInfo[environment].palette, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-    TimeMixBattleBgPalette(FALSE);
+    DecompressDataWithHeaderVram(tileset, (void *)(BG_CHAR_ADDR(2)));
+    DecompressDataWithHeaderVram(tilemap, (void *)(BG_SCREEN_ADDR(26)));
+    LoadPalette(palette, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+    // The modern set ships painted morning/night palettes; tinting one again
+    // with our own day/night mix would darken it twice.
+    if (!paletteAlreadyTimed)
+        TimeMixBattleBgPalette(FALSE);
 }
 
 // Loads the entry associated with the battle environment.
 // This can be the grass moving on the screen at the start of a wild encounter in tall grass.
 static void LoadBattleEnvironmentEntryGfx(u16 environment)
 {
+    const void *tileset, *tilemap;
+
     if (environment >= NELEMS(gBattleEnvironmentInfo))
         environment = BATTLE_ENVIRONMENT_PLAIN;
+
+    tileset = gBattleEnvironmentInfo[environment].entry.tileset;
+    tilemap = gBattleEnvironmentInfo[environment].entry.tilemap;
+
+    if (UseModernBattleEnvironment())
+    {
+        const struct ModernBattleGfx *modern = &sModernBattleGfx[environment];
+
+        if (modern->entry.tileset)
+            tileset = modern->entry.tileset;
+        if (modern->entry.tilemap)
+            tilemap = modern->entry.tilemap;
+    }
+
     // Copy to bg1
-    DecompressDataWithHeaderVram(gBattleEnvironmentInfo[environment].entry.tileset, (void *)BG_CHAR_ADDR(1));
-    DecompressDataWithHeaderVram(gBattleEnvironmentInfo[environment].entry.tilemap, (void *)BG_SCREEN_ADDR(28));
+    DecompressDataWithHeaderVram(tileset, (void *)BG_CHAR_ADDR(1));
+    DecompressDataWithHeaderVram(tilemap, (void *)BG_SCREEN_ADDR(28));
 }
 
 static u8 GetBattleEnvironmentOverride(void)
