@@ -584,20 +584,29 @@ ReceptionGate_Text_CosmogLegend:
 
 
 @ ---------------------------------------------------------------------------
-@ Side exits (bug/B07 closed). The two wings of the HnS gate were painted
-@ over, so the Route 28 and Route 22 doors now sit in the corridor walls:
+@ Side exits (bug/B07 closed). The two wings of the gate had been painted
+@ over - 83 of the 462 cells were turned into metatile 8, solid - and the
+@ Route 28 and Route 22 doors went with them. The wings are back, copied
+@ cell for cell from the HnS layout, so both exits are exactly the ones
+@ HnS has:
 @
-@        x= 8  9 10 11 12 13
-@   y=9     D  .  .  .  D        D = door, held direction warps out
-@   y=10    d  .  .  .  d        d = door sill, walkable
+@   warp 3 (1,9)  -> Route 28, in the back wall of the west wing
+@   warp 4 (20,9) -> Route 22, in the back wall of the east wing
 @
-@ West door (9,9)  = metatile 7  MB_WEST_ARROW_WARP -> warp 3, Route 28
-@ East door (12,9) = metatile 29 MB_EAST_ARROW_WARP -> warp 4, Route 22
+@ Both sit on the red mat (secondary 67, MB_SOUTH_ARROW_WARP) with the mat's
+@ lower half blocked below them, the same piece as the Route 26 exit at
+@ (11,19). Every one of the 46 metatiles the HnS map uses exists in our own
+@ tilesets at the same index with identical art, so the port is a straight
+@ copy; only the block format changes (10-bit metatile with collision in
+@ bits 10-11 -> 11-bit metatile with collision in bit 11).
 @
-@ Both are arrow warps: the player holds the direction while standing on the
-@ tile. Arriving from either route lands on the door facing the corridor
-@ (GetAdjustedInitialDirection). The old (1,9) warp was inside the painted
-@ over wing - walking in from Route 28 dropped the player inside the wall of
-@ an indoor map with no Fly and no escape. The "crack in the west wall"
-@ easter egg that stood in for the Route 22 door until now is gone with it.
+@ Before this, warp 3 stood at (1,9) with the wing painted over: metatile 8
+@ with collision, and so were its four neighbours. Walking in from Route 28
+@ dropped the player inside the wall of an indoor map with no Fly and
+@ allow_escaping false. The "crack in the west wall" easter egg that stood
+@ in for the Route 22 door until now is gone with it.
+@
+@ The wings are empty. ReceptionGate_EventScript_SilverGuard and
+@ ReceptionGate_EventScript_KantoGuard above are the two guards HnS keeps at
+@ (7,7) and (14,7); they have no object event yet.
 @ ---------------------------------------------------------------------------

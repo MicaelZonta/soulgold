@@ -35,26 +35,39 @@ se repete com o Silver escondido. Trocar por uma var ou flag própria
 `LilycoveCity_MoveDeletersHouse`. Vale 1 e o objeto 1 de Blackthorn é o próprio
 Move Deleter — funciona por coincidência; quebra se a ordem dos objetos mudar.
 
-## Fechado (25/10/2026) — as duas portas laterais do ReceptionGate
+## Fechado (25/10/2026) — as alas do ReceptionGate de volta
 
-O provisório acabou: as duas aberturas laterais do portão viraram portas de
-verdade no corredor, como no HnS.
+As duas alas do portão tinham sido apagadas (83 das 462 células viraram o
+metatile 8, sólido) e as duas saídas laterais foram junto. O `warp 3` ficou
+para trás em **(1,9)**, metatile 8 com colisão, e os quatro vizinhos também:
+entrar pela porta da Route 28 largava o jogador dentro da parede, em mapa
+indoor, sem Fly e com `allow_escaping: false`. Soft-lock de verdade.
+BFS a pé de (11,19) no mapa antigo: 65 células alcançáveis, nenhuma delas (1,9).
 
-- `warp 3` saiu de **(1,9)** — que era metatile 8, sólido, dentro da ala
-  apagada, sem vizinho andável — para a **porta oeste (9,9)**, metatile 7
-  (`MB_WEST_ARROW_WARP`) → Route 28. Era soft-lock de verdade: entrar pela
-  porta da Route 28 largava o jogador dentro da parede, em mapa indoor, sem
-  Fly e com `allow_escaping: false`.
-- `warp 4` saiu de (9,9) — chão comum sem arte — para a **porta leste
-  (12,9)**, metatile 29 (`MB_EAST_ARROW_WARP`) → Route 22.
-- A rachadura na parede oeste (`bg_event` em (8,9) +
-  `ReceptionGate_EventScript_HiddenPassage`) foi removida: ela existia só
-  para dar uma volta da Route 22, e agora disputaria a mesma célula (9,9)
-  com a porta da Route 28.
+As alas voltaram, copiadas célula a célula do layout do HnS, e com elas as
+duas saídas dele:
 
-Desenho: peças 7/15 (oeste) e 29/37 (leste) do primário `Johto_Building`, as
-mesmas portas laterais dos portões de Johto (ver `Gate_Route31_VioletCity`).
-Quatro células do `map.bin` mudaram, nenhuma outra.
+- `warp 3` **(1,9)** → Route 28, na parede de trás da ala oeste
+- `warp 4` **(20,9)** → Route 22, na parede de trás da ala leste
+
+As duas ficam no tapete vermelho (secundário 67, `MB_SOUTH_ARROW_WARP`), a
+mesma peça da saída da Route 26 em (11,19). BFS agora: 101 células, e os cinco
+warps estão entre elas.
+
+O porte é cópia direta: os **46 metatiles distintos** que o mapa do HnS usa
+existem nos nossos tilesets **no mesmo índice e com arte idêntica** (conferido
+renderizando metatile por metatile). Só o formato do bloco muda — metatile de
+10 bits com colisão nos bits 10-11 vira metatile de 11 bits com colisão no bit
+11.
+
+A rachadura na parede oeste (`bg_event` em (8,9) +
+`ReceptionGate_EventScript_HiddenPassage`) foi removida: ela existia só para
+dar uma volta da Route 22, que agora tem porta própria.
+
+As alas estão vazias. `ReceptionGate_EventScript_SilverGuard` e
+`ReceptionGate_EventScript_KantoGuard`, que já estavam no `scripts.inc` sem
+dono, são os dois guardas que o HnS mantém em (7,7) e (14,7) — decisão do
+autor se entram.
 
 ## Correção aplicada (30/09/2026)
 
