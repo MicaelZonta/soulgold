@@ -88,7 +88,7 @@ VermilionPort_EventScript_ChoseBirthIsland::
 	bufferitemname STR_VAR_1, ITEM_AURORA_TICKET
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_NoCredentials
 	call VermilionPort_EventScript_EnterShip
-	warpsilent MAP_BIRTH_ISLAND_EXTERIOR, 13, 23
+	warpsilent MAP_BIRTH_ISLAND_EXTERIOR, 15, 24
 	waitstate
 	release
 	end
