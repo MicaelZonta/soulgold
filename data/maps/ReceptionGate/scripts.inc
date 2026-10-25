@@ -583,37 +583,21 @@ ReceptionGate_Text_CosmogLegend:
 	.string "only ones who changed.$"
 
 
-@ Easter egg (author, 30/09/2026, bug/B07): a crack in the west wall of the
-@ gate. Before the League it is just a draft; after the Hall of Fame the player
-@ can squeeze through to Route 22 (warp 0, the door at (12,9)). The Route 22
-@ door lands here, on warp 4 at (9,9), right beside the crack. Placeholder
-@ until the real Route 22 connection is designed.
-ReceptionGate_EventScript_HiddenPassage::
-	lockall
-	goto_if_set FLAG_SYS_GAME_CLEAR, ReceptionGate_EventScript_HiddenPassageOpen
-	msgbox ReceptionGate_Text_HiddenPassageClosed, MSGBOX_DEFAULT
-	releaseall
-	end
-
-ReceptionGate_EventScript_HiddenPassageOpen::
-	msgbox ReceptionGate_Text_HiddenPassageOpen, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, ReceptionGate_EventScript_HiddenPassageStay
-	closemessage
-	warp MAP_ROUTE22, 0
-	waitstate
-	releaseall
-	end
-
-ReceptionGate_EventScript_HiddenPassageStay::
-	closemessage
-	releaseall
-	end
-
-ReceptionGate_Text_HiddenPassageClosed:
-	.string "A faint draft is coming through\n"
-	.string "a crack in the wall…$"
-
-ReceptionGate_Text_HiddenPassageOpen:
-	.string "The crack in the wall has grown\n"
-	.string "wide enough to squeeze through!\p"
-	.string "Squeeze through the wall?$"
+@ ---------------------------------------------------------------------------
+@ Side exits (bug/B07 closed). The two wings of the HnS gate were painted
+@ over, so the Route 28 and Route 22 doors now sit in the corridor walls:
+@
+@        x= 8  9 10 11 12 13
+@   y=9     D  .  .  .  D        D = door, held direction warps out
+@   y=10    d  .  .  .  d        d = door sill, walkable
+@
+@ West door (9,9)  = metatile 7  MB_WEST_ARROW_WARP -> warp 3, Route 28
+@ East door (12,9) = metatile 29 MB_EAST_ARROW_WARP -> warp 4, Route 22
+@
+@ Both are arrow warps: the player holds the direction while standing on the
+@ tile. Arriving from either route lands on the door facing the corridor
+@ (GetAdjustedInitialDirection). The old (1,9) warp was inside the painted
+@ over wing - walking in from Route 28 dropped the player inside the wall of
+@ an indoor map with no Fly and no escape. The "crack in the west wall"
+@ easter egg that stood in for the Route 22 door until now is gone with it.
+@ ---------------------------------------------------------------------------
