@@ -20,27 +20,39 @@
 @ As falas sao do gpt-6-sol pelo Codex, com briefing de personalidade por
 @ personagem; a encenacao e as coordenadas sao medidas do map.bin.
 
+@ So a Birth Island chama este: antes do Deoxys a cena manda e o dia nao
+@ conta. Depois do Deoxys cai na mesma avaliacao de agenda dos outros mapas.
 BirthIsland_Residents_OnTransition::
 	setflag FLAG_TEMP_B
 	setflag FLAG_TEMP_C
-	goto_if_set FLAG_BATTLED_DEOXYS, BirthIsland_Residents_ScheduleMode
+	goto_if_set FLAG_BATTLED_DEOXYS, ScheduledNpcs_Evaluate
 	clearflag FLAG_TEMP_B
-	goto_if_eq VAR_BIRTH_ISLAND_SCENE, 0, BirthIsland_Residents_Done
+	goto_if_eq VAR_BIRTH_ISLAND_SCENE, 0, ScheduledNpcs_Done
 	clearflag FLAG_TEMP_C
 	cleartrainerflag TRAINER_COLRESS
 	cleartrainerflag TRAINER_SOLIERA
 	return
 
-BirthIsland_Residents_ScheduleMode:
+@ Os outros mapas anfitrioes chamam este: so a agenda decide. E ninguem
+@ aparece fora da ilha antes de o jogador ter conhecido a pessoa la - antes
+@ disso eles nao existem no mundo, que e o ponto do evento.
+ScheduledNpcs_OnTransition::
+	setflag FLAG_TEMP_B
+	setflag FLAG_TEMP_C
+
+ScheduledNpcs_Evaluate:
+	goto_if_unset FLAG_MET_COLRESS, ScheduledNpcs_SkipColress
 	setvar VAR_0x8004, SCHEDULED_NPC_COLRESS
 	special IsScheduledNpcHere
 	call_if_eq VAR_RESULT, TRUE, BirthIsland_Residents_ShowColress
+
+ScheduledNpcs_SkipColress:
+	goto_if_unset FLAG_MET_SOLIERA, ScheduledNpcs_Done
 	setvar VAR_0x8004, SCHEDULED_NPC_SOLIERA
 	special IsScheduledNpcHere
 	call_if_eq VAR_RESULT, TRUE, BirthIsland_Residents_ShowSoliera
-	return
 
-BirthIsland_Residents_Done:
+ScheduledNpcs_Done:
 	return
 
 BirthIsland_Residents_ShowColress:
@@ -196,3 +208,39 @@ BirthIsland_Text_SolieraAfterDeoxys:
 	.string "This came from another source.\p"
 	.string "The stone remains active.\n"
 	.string "I will stay and observe it.$"
+
+@ ------------------------------------------------- onde eles ficam no resto
+@
+@ Regra do autor: personagem de agenda tem que estar em ALGUM lugar sempre.
+@ Quando nao estao na ilha, o Colress esta no laboratorio das Ruinas de Alph
+@ (ele e visita e esta usando o equipamento dos outros) e a Soliera no alto do
+@ farol de Olivine. Os dois mapas chamam o mesmo ON_TRANSITION, que ja decide
+@ por mapa: o special responde se e AQUI que a pessoa esta agora.
+
+RuinsOfAlph_Lab_EventScript_Colress::
+	lock
+	faceplayer
+	msgbox RuinsOfAlph_Lab_Text_Colress, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_COLRESS, BirthIsland_Text_ColressDefeat
+	msgbox BirthIsland_Text_ColressDefeat, MSGBOX_AUTOCLOSE
+	end
+
+OlivineLighthouse_EventScript_Soliera::
+	lock
+	faceplayer
+	msgbox OlivineLighthouse_Text_Soliera, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_SOLIERA, BirthIsland_Text_SolieraDefeat
+	msgbox BirthIsland_Text_SolieraDefeat, MSGBOX_AUTOCLOSE
+	end
+
+RuinsOfAlph_Lab_Text_Colress:
+	.string "{SPEAKER NAME_COLRESS}I'm a guest in this lab.\n"
+	.string "The island lacks its instruments.\p"
+	.string "The script may reveal true strength.\n"
+	.string "I'd enjoy being proved wrong.$"
+
+OlivineLighthouse_Text_Soliera:
+	.string "{SPEAKER NAME_SOLIERA}I have no duty here.\n"
+	.string "The lamp keeps ships off the rocks.\p"
+	.string "At noon, our streets require lamps.\n"
+	.string "This beam reaches open water.$"

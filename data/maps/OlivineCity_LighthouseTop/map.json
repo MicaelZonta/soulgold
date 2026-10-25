@@ -27,6 +27,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Lighthousetop_Zapdos",
       "flag": "FLAG_HIDE_ZAPDOS_GALAR"
+    },
+    {
+      "local_id": "LOCALID_LIGHTHOUSETOP_SOLIERA",
+      "graphics_id": "OBJ_EVENT_GFX_SOLIERA",
+      "x": 11,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OlivineLighthouse_EventScript_Soliera",
+      "flag": "FLAG_TEMP_C"
     }
   ],
   "warp_events": [

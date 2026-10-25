@@ -4,6 +4,7 @@ RuinsOfAlph_Lab_MapScripts::
 	.byte 0
 
 RuinsOfAlph_Lab_OnTransition:
+	call ScheduledNpcs_OnTransition
 	end
 
 RuinsOfAlph_Lab_EventScript_Scientist1::

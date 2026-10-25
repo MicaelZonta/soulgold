@@ -3,8 +3,11 @@
 // Regras da tabela:
 //  - As fatias de um personagem sao lidas na ordem; a primeira que casar com o
 //    dia E a hora ganha. Entao a ultima fatia pode ser o "resto da semana".
-//  - Um personagem nao precisa estar em lugar nenhum: se nada casar, ele some
-//    de todos os mapas naquele horario, e isso e legitimo.
+//  - REGRA DO AUTOR: um personagem de agenda tem que estar em ALGUM lugar
+//    sempre. A ultima fatia de cada um e um curinga (SCHED_EVERY_DAY +
+//    SCHED_ANY_TIME) que cobre o que sobrou, entao nao existe horario em que
+//    ele desapareca do mundo. Quem acrescentar personagem aqui mantem isso:
+//    o teste e simples, as 7 x 4 combinacoes tem que casar com alguma fatia.
 //  - O mapa so precisa estar aqui se o object_event dele existir la, escondido
 //    por FLAG_TEMP_D.
 
@@ -43,12 +46,22 @@ static const struct NpcScheduleSlot sColressSchedule[] =
       MAP_GROUP(MAP_BIRTH_ISLAND_EXTERIOR), MAP_NUM(MAP_BIRTH_ISLAND_EXTERIOR) },
     { SCHED_MON | SCHED_WED | SCHED_FRI,             SCHED_DAYLIGHT,
       MAP_GROUP(MAP_BIRTH_ISLAND_EXTERIOR), MAP_NUM(MAP_BIRTH_ISLAND_EXTERIOR) },
+    // O resto da semana no laboratorio das Ruinas de Alph, que ja e cheio de
+    // gente estudando uma escrita que ninguem decifrou. Ele e visita e esta
+    // usando o equipamento dos outros.
+    { SCHED_EVERY_DAY,                               SCHED_ANY_TIME,
+      MAP_GROUP(MAP_RUINS_OF_ALPH_LAB), MAP_NUM(MAP_RUINS_OF_ALPH_LAB) },
 };
 
 static const struct NpcScheduleSlot sSolieraSchedule[] =
 {
     { SCHED_TUE | SCHED_THU | SCHED_SAT,             SCHED_DARK,
       MAP_GROUP(MAP_BIRTH_ISLAND_EXTERIOR), MAP_NUM(MAP_BIRTH_ISLAND_EXTERIOR) },
+    // O resto no alto do farol de Olivine. O povo dela vive sob lampada
+    // artificial desde que o mundo deles escureceu; esta aqui e enorme e so
+    // existe para manter barco longe da pedra. Ela nao tem funcao nenhuma la.
+    { SCHED_EVERY_DAY,                               SCHED_ANY_TIME,
+      MAP_GROUP(MAP_OLIVINE_CITY_LIGHTHOUSE_TOP), MAP_NUM(MAP_OLIVINE_CITY_LIGHTHOUSE_TOP) },
 };
 
 static const struct NpcSchedule sNpcSchedules[SCHEDULED_NPC_COUNT] =

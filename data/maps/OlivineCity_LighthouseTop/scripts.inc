@@ -3,6 +3,7 @@ OlivineCity_LighthouseTop_MapScripts::
 	.byte 0
 
 OlivineCity_LighthouseTop_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call ScheduledNpcs_OnTransition
 	goto_if_unset FLAG_HIDE_ZAPDOS_GALAR, OlivineCity_LighthouseTop_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	setweather WEATHER_NONE
 	return
