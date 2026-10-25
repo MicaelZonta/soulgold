@@ -46,6 +46,19 @@
 #define MAPCURSOR_Y_MIN 1
 #define MAPCURSOR_X_MAX (MAPCURSOR_X_MIN + MAP_WIDTH - 1)
 #define MAPCURSOR_Y_MAX (MAPCURSOR_Y_MIN + MAP_HEIGHT - 1)
+// A BG do mapa e AFIM (BG2 no modo 1), entao o tilemap e de 1 byte por tile,
+// nao 2. Os 4096 bytes de johtomap.bin sao 64x64 tiles = 512x512 pixels, que e
+// o screenSize 2 de uma BG afim. A janela visivel tem 240x160, entao cabem
+// QUATRO paginas nessa mesma BG, sem mexer em VRAM nenhuma:
+//
+//     (0,0)     pagina MAIN     linhas 0-19,  colunas 0-29
+//     (240,0)   pagina SECOND   linhas 0-19,  colunas 30-59
+//     (0,160)   pagina THIRD    linhas 20-39, colunas 0-29
+//     (240,160) pagina FOURTH   linhas 20-39, colunas 30-59
+//
+// Hoje so a regiao de cima a esquerda tem desenho (243 dos 256 tiles). O que
+// falta para Alola e Sinjoh e ARTE, nao espaco: e preencher as linhas/colunas
+// das paginas SECOND e FOURTH em johtomap.bin e escrever os layouts de MAPSEC.
 #define MAP_PAGE_SCROLL_X DISPLAY_WIDTH
 #define MAP_PAGE_SCROLL_Y DISPLAY_HEIGHT
 #define MAP_PAGE_SCROLL_DURATION 20
@@ -163,7 +176,10 @@ static const u8 sRegionMapPlayerIcon_LeafGfx[] = INCBIN_U8("graphics/pokenav/reg
 #include "data/region_map/region_map_entries.h"
 
 // Set this to the second region's sRegionMapSections_ layout when its map is ready.
+// Enquanto a arte do quadrante nao existir, o layout fica NULL e a pagina e
+// invalida: IsRegionMapPageValid barra a navegacao para ela.
 #define REGION_MAP_SECOND_PAGE_LAYOUT NULL
+#define REGION_MAP_FOURTH_PAGE_LAYOUT NULL
 #define REGION_MAP_THIRD_PAGE_LAYOUT sRegionMapSections_Sevii123
 //#define REGION_MAP_THIRD_PAGE_LAYOUT NULL
 
@@ -172,6 +188,7 @@ static const mapsec_u16_t (*const sRegionMapPageLayouts[REGION_MAP_PAGE_COUNT])[
     [REGION_MAP_PAGE_MAIN] = sRegionMap_MapSectionLayout,
     [REGION_MAP_PAGE_SECOND] = REGION_MAP_SECOND_PAGE_LAYOUT,
     [REGION_MAP_PAGE_THIRD] = REGION_MAP_THIRD_PAGE_LAYOUT,
+    [REGION_MAP_PAGE_FOURTH] = REGION_MAP_FOURTH_PAGE_LAYOUT,
 };
 
 static const s16 sRegionMapPageScrollOffsets[REGION_MAP_PAGE_COUNT][2] =
@@ -179,6 +196,7 @@ static const s16 sRegionMapPageScrollOffsets[REGION_MAP_PAGE_COUNT][2] =
     [REGION_MAP_PAGE_MAIN] = {0, 0},
     [REGION_MAP_PAGE_SECOND] = {MAP_PAGE_SCROLL_X, 0},
     [REGION_MAP_PAGE_THIRD] = {0, MAP_PAGE_SCROLL_Y},
+    [REGION_MAP_PAGE_FOURTH] = {MAP_PAGE_SCROLL_X, MAP_PAGE_SCROLL_Y},
 };
 
 static const mapsec_u16_t sRegionMapMainPageExtraSections[] =
@@ -886,6 +904,61 @@ static u8 TryScrollRegionMapPage_Full(void)
             return MAP_INPUT_MOVE_CONT;
 
         SetRegionMapPage_Full(REGION_MAP_PAGE_MAIN);
+        FinishRegionMapPageScroll_Full();
+        return MAP_INPUT_MOVE_END;
+    }
+
+    // A quarta pagina e o quadrante da diagonal: da segunda descendo, ou da
+    // terceira indo para a direita. Enquanto o layout dela for NULL,
+    // IsRegionMapPageValid barra a entrada e estes dois casos nunca disparam.
+    if (JOY_HELD(DPAD_DOWN)
+        && sRegionMap->mapPage == REGION_MAP_PAGE_SECOND
+        && sRegionMap->cursorPosY == GetRegionMapPageCursorYMax(REGION_MAP_PAGE_SECOND)
+        && IsRegionMapPageValid(REGION_MAP_PAGE_FOURTH))
+    {
+        if (StartRegionMapPageScroll_Full(REGION_MAP_PAGE_FOURTH))
+            return MAP_INPUT_MOVE_CONT;
+
+        SetRegionMapPage_Full(REGION_MAP_PAGE_FOURTH);
+        FinishRegionMapPageScroll_Full();
+        return MAP_INPUT_MOVE_END;
+    }
+
+    if (JOY_HELD(DPAD_RIGHT)
+        && sRegionMap->mapPage == REGION_MAP_PAGE_THIRD
+        && sRegionMap->cursorPosX == MAPCURSOR_X_MAX
+        && IsRegionMapPageValid(REGION_MAP_PAGE_FOURTH))
+    {
+        if (StartRegionMapPageScroll_Full(REGION_MAP_PAGE_FOURTH))
+            return MAP_INPUT_MOVE_CONT;
+
+        SetRegionMapPage_Full(REGION_MAP_PAGE_FOURTH);
+        FinishRegionMapPageScroll_Full();
+        return MAP_INPUT_MOVE_END;
+    }
+
+    if (JOY_HELD(DPAD_UP)
+        && sRegionMap->mapPage == REGION_MAP_PAGE_FOURTH
+        && sRegionMap->cursorPosY == MAPCURSOR_Y_MIN
+        && IsRegionMapPageValid(REGION_MAP_PAGE_SECOND))
+    {
+        if (StartRegionMapPageScroll_Full(REGION_MAP_PAGE_SECOND))
+            return MAP_INPUT_MOVE_CONT;
+
+        SetRegionMapPage_Full(REGION_MAP_PAGE_SECOND);
+        FinishRegionMapPageScroll_Full();
+        return MAP_INPUT_MOVE_END;
+    }
+
+    if (JOY_HELD(DPAD_LEFT)
+        && sRegionMap->mapPage == REGION_MAP_PAGE_FOURTH
+        && sRegionMap->cursorPosX == MAPCURSOR_X_MIN
+        && IsRegionMapPageValid(REGION_MAP_PAGE_THIRD))
+    {
+        if (StartRegionMapPageScroll_Full(REGION_MAP_PAGE_THIRD))
+            return MAP_INPUT_MOVE_CONT;
+
+        SetRegionMapPage_Full(REGION_MAP_PAGE_THIRD);
         FinishRegionMapPageScroll_Full();
         return MAP_INPUT_MOVE_END;
     }
