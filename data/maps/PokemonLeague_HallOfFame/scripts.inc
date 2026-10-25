@@ -102,7 +102,9 @@ PokemonLeague_HallOfFame_EventScript_SetGameClearFlags::
 	clearflag FLAG_HIDE_HEATRAN
 	clearflag FLAG_HIDE_SUDOWOODO
 	clearflag FLAG_HIDE_VIRIZION
-	clearflag FLAG_HIDE_REGIGIGAS 
+	@ FLAG_HIDE_REGIGIGAS saiu daqui: a camara do Mt. Silver virou a do Keldeo
+	@ e o Regigigas vem de Sinjoh (Parte D). A visibilidade do Keldeo e
+	@ recalculada no ON_TRANSITION da camara, nao por este flagheap.
 	clearflag FLAG_HIDE_MARSHADOW 
 	clearflag FLAG_HIDE_CHI_YU
 	clearflag FLAG_CAUGHT_MELOETTA

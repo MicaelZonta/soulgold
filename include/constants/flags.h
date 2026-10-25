@@ -99,7 +99,7 @@
 #define FLAG_DEFEATED_DUSKNOIR                  0x41  // livre desde 24/09/2026
 #define FLAG_SYS_BRAILLE_REGIGIGAS_COMPLETED    0x42  // livre desde 24/09/2026
 #define FLAG_DEFEATED_REGIGIGAS                 0x43  // livre desde 24/09/2026
-#define FLAG_HIDE_REGIGIGAS                     0x44 
+#define FLAG_HIDE_REGIGIGAS                     0x44 // APOSENTADA: a camara do Mt. Silver virou a do Keldeo e o Regigigas vem de Sinjoh (Parte D). Ninguem le nem escreve; nao reaproveitar o numero, que esta ligado em saves antigos 
 #define FLAG_DEFEATED_ARTICUNO                  0x45  // fora da ROM
 #define FLAG_DEFEATED_ZAPDOS                    0x46  // fora da ROM
 #define FLAG_DEFEATED_MOLTRES                   0x47  // fora da ROM
@@ -2198,8 +2198,10 @@
 #define FLAG_WILTON_HAS_PHONE_ITEM                           0x1188
 #define FLAG_KENJI_HAS_PHONE_ITEM                            0x1189
 #define FLAG_BEVERLY_HAS_PHONE_ITEM                          0x118A
-#define CUSTOM_FLAGS_END                            FLAG_BEVERLY_HAS_PHONE_ITEM
-// PROXIMA FLAG NOVA: 0x118B (livre ate 0x14FF). Alocar aqui, em sequencia, com
+#define FLAG_HIDE_KELDEO                                     0x118B // Keldeo na camara do Mt. Silver; recalculada no ON_TRANSITION de MtSilver_1F_RegigigasRoom e setada pela captura
+#define FLAG_CAUGHT_KELDEO                                   0x118C // Keldeo ja capturado; so o script da camara seta, para o ON_TRANSITION nao o trazer de volta
+#define CUSTOM_FLAGS_END                            FLAG_CAUGHT_KELDEO
+// PROXIMA FLAG NOVA: 0x118D (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

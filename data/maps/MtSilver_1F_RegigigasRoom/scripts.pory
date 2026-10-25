@@ -1,43 +1,47 @@
-mapscripts MtSilver_1F_RegigigasRoom_MapScripts {}
+// The chamber that used to hold Regigigas. Sinjoh is the priority source for
+// the Regis now (Parte D), so the room was handed over to Keldeo.
+//
+// Keldeo only shows itself to a trainer carrying the three Swords of Justice.
+// checkspecies walks gPlayerParty only - the PC does not count - so all three
+// have to be in the team at the same time, which is the same rule the chamber
+// used for the three Regis, and the rule the real games use for Secret Sword.
+//
+// FLAG_HIDE_KELDEO is recomputed on every entry, so it is never a stale
+// "already seen" flag; FLAG_CAUGHT_KELDEO is what keeps it from coming back
+// once the player has it. Losing or fleeing leaves both alone, so the fight
+// can be retried.
 
-script MtSilver_Regigigas {
-    lock
-    checkspecies(SPECIES_REGISTEEL)
-    if (var(VAR_RESULT) == TRUE) {
-        checkspecies(SPECIES_REGIROCK)
-        if (var(VAR_RESULT) == TRUE) {
-            checkspecies(SPECIES_REGICE)
+mapscripts MtSilver_1F_RegigigasRoom_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_HIDE_KELDEO)
+        if (!flag(FLAG_CAUGHT_KELDEO)) {
+            checkspecies(SPECIES_COBALION)
             if (var(VAR_RESULT) == TRUE) {
-                msgbox("...!
-                
-                        The statue suddenly started moving
-                        in reaction to your Pokémon!
-                        
-                        The statue attacked!")
-                bosslegendaryencounter(SPECIES_REGIGIGAS, 70, LOCALID_MTSILVER_REGIGIGAS, FLAG_HIDE_REGIGIGAS, 4, SPECIES_NONE, 110)
-                release
-                end
-            } else {
-                goto(RegigigasSlumbers)
+                checkspecies(SPECIES_TERRAKION)
+                if (var(VAR_RESULT) == TRUE) {
+                    checkspecies(SPECIES_VIRIZION)
+                    if (var(VAR_RESULT) == TRUE) {
+                        clearflag(FLAG_HIDE_KELDEO)
+                    }
+                }
             }
-        } else {
-            goto(RegigigasSlumbers)
         }
-    } else {
-        goto(RegigigasSlumbers)
     }
-    release
-    end
-
 }
 
-script RegigigasSlumbers {
-    msgbox("A large, almost statue-like Pokémon
-            seems to be resting here.
-             
-            ...
-            
-            It does not react to your presence.")
+script MtSilver_Keldeo {
+    lock
+    faceplayer
+    msgbox("The water at the far wall has not
+            stopped moving since you walked in.\p
+            Something steps out of it, and it
+            is looking straight past you, at
+            the three it came for.")
+    closemessage
+    bosslegendaryencounter(SPECIES_KELDEO, 80, LOCALID_MTSILVER_KELDEO, FLAG_HIDE_KELDEO, 2, SPECIES_NONE, 110)
+    if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+        setflag(FLAG_CAUGHT_KELDEO)
+    }
     release
     end
 }
