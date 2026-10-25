@@ -171,14 +171,19 @@ static const u8 sRegionMapPlayerIcon_LeafGfx[] = INCBIN_U8("graphics/pokenav/reg
 #include "data/region_map/region_map_layout.h"
 #include "data/region_map/region_map_layout_kanto.h"
 #include "data/region_map/region_map_layout_sevii123.h"
+#include "data/region_map/region_map_layout_alola.h"
 #include "data/region_map/region_map_layout_sevii45.h"
 #include "data/region_map/region_map_layout_sevii67.h"
 #include "data/region_map/region_map_entries.h"
 
 // Set this to the second region's sRegionMapSections_ layout when its map is ready.
+// Alola ocupa a pagina da direita (linhas 0-19, colunas 30-59 da BG), desenhada
+// com o proprio vocabulario de tiles do mapa: o jogo de costa dos slots 243-254
+// e a rampa de verdes que o mapa de Johto ja usava.
+#define REGION_MAP_SECOND_PAGE_LAYOUT sRegionMapSections_Alola
+
 // Enquanto a arte do quadrante nao existir, o layout fica NULL e a pagina e
 // invalida: IsRegionMapPageValid barra a navegacao para ela.
-#define REGION_MAP_SECOND_PAGE_LAYOUT NULL
 #define REGION_MAP_FOURTH_PAGE_LAYOUT NULL
 #define REGION_MAP_THIRD_PAGE_LAYOUT sRegionMapSections_Sevii123
 //#define REGION_MAP_THIRD_PAGE_LAYOUT NULL
