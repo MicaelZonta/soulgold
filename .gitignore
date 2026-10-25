@@ -75,3 +75,6 @@ dev_scripts/kanto_rows.json
 src/data/docs_qr.h
 /Soulgold*.png
 /*.pal
+
+# configuracao pessoal do Claude Code (nao vai para o repo)
+.claude/settings.local.json

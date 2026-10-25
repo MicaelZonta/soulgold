@@ -788,10 +788,12 @@ script BattleCafe_ConfirmRewardMon {
         case 4: setflag(FLAG_BATTLE_CAFE_THUNDURUS_RECEIVED)
         case 5: setflag(FLAG_BATTLE_CAFE_LANDORUS_RECEIVED)
         case 6: setflag(FLAG_BATTLE_CAFE_ENAMORUS_RECEIVED)
-        case 7: setflag(FLAG_BATTLE_CAFE_TAPU_KOKO_RECEIVED)
-        case 8: setflag(FLAG_BATTLE_CAFE_TAPU_LELE_RECEIVED)
-        case 9: setflag(FLAG_BATTLE_CAFE_TAPU_BULU_RECEIVED)
-        case 10: setflag(FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED)
+        // The four Tapus used to sit at 7..10 here. They are Alola encounters
+        // now (MelemeleIsle, AkalaIsle, UlaUla_Forest, PoniIsle), the menu
+        // above no longer offers them, and VAR_TEMP_B only ever carries 3..6
+        // into this script - so those cases were dead and the numbers they
+        // used now belong to the Shiny Genome / Gold Caps / money / vitamin
+        // entries of the reward menu.
     }
     special(Achievement_CheckAll)
     if (var(VAR_TEMP_B) >= 3 && var(VAR_TEMP_B) <= 6) {

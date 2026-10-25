@@ -2,10 +2,13 @@ mapscripts RegirockChamber_MapScripts {
 
 }
 
-script RegirockChamber_Regirock {
+// Sinjoh is the source for the Regis now (Parte D), so this chamber was handed
+// over to Ting-Lu. Level, bars and multiplier match Chien-Pao in
+// IcePath_Depths2, the other member of the Ruinous quartet already in game.
+script RegirockChamber_TingLu {
     lock
     faceplayer
-    legendaryencounter(SPECIES_REGIROCK, 50, 1, FLAG_HIDE_REGIROCK)
+    bosslegendaryencounter(SPECIES_TING_LU, 70, 1, FLAG_HIDE_TING_LU, 3, SPECIES_NONE, 110)
     release
     end
 }

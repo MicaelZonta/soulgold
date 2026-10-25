@@ -197,11 +197,11 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Reshiram** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Zekrom** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Kyurem** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
-| **Keldeo** | Mítico | ❌ nenhuma referência de obtenção no código |
+| **Keldeo** | Mítico | ✅ Boss Fight — `MtSilver_1F_RegigigasRoom` Lv80 (25/10/2026), só aparece com Cobalion + Terrakion + Virizion no time. **A câmara ainda não tem porta** — ver `bug/B09` e a proposta de entrada |
 | **Xerneas** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Yveltal** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Zygarde** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
-| **Volcanion** | Mítico | ❌ nenhuma referência de obtenção no código |
+| **Volcanion** | Mítico | ✅ Boss Fight — `SnowtopMountain_B1F_2` Lv70 (25/10/2026), na câmara que era do Regice |
 | **Nihilego** | Ultra Beast | 🚫 só aparece em batalha sem captura: `NewBarkTown` |
 | **Buzzwole** | Ultra Beast | 🚫 só aparece em batalha sem captura: `BlackthornCity` |
 | **Pheromosa** | Ultra Beast | 🚫 só aparece em batalha sem captura: `BlackthornCity` |
@@ -217,7 +217,7 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Regieleki** | Sub-lendário | ✅ Boss Fight — `SinjohRuins_RegielekiRoom` Lv80 (Fase 8, 19/10/2026) |
 | **Regidrago** | Sub-lendário | ✅ Boss Fight — `SinjohRuins_RegidracoRoom` Lv80 (Fase 8, 19/10/2026) |
 | **Wo-Chien** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
-| **Ting-Lu** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
+| **Ting-Lu** | Sub-lendário | ✅ Boss Fight — `RegirockChamber` Lv70, 3 barras (25/10/2026), na câmara que era do Regirock; mesmos números do Chien-Pao |
 | **Pecharunt** | Mítico | ❌ ainda sem fonte — DECISÃO 19/10/2026: ganhará evento próprio quando o Trio Leal inteiro estiver capturado (Okidogi + Munkidori + Fezandipiti) |
 
 ## Com método de obtenção
@@ -282,10 +282,10 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Thundurus** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` | THUNDURUS_INCARNATE, THUNDURUS_THERIAN |
 | **Landorus** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` | LANDORUS_INCARNATE, LANDORUS_THERIAN |
 | **Type: Null** | presente (givemon) — `BlackthornCity` Lv50 |  |
-| **Tapu Koko** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe`; Boss Fight (2 barras) — `MelemeleIsle` Lv60 (Fase 8, casa em Alola). Remoção do Café: PENDENTE até o autor confirmar |  |
-| **Tapu Lele** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe`; Boss Fight (2 barras) — `AkalaIsle` Lv60 (Fase 8, casa em Alola). Remoção do Café: PENDENTE até o autor confirmar |  |
-| **Tapu Bulu** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe`; Boss Fight (2 barras) — `UlaUla_Forest` Lv60 (Fase 8, casa em Alola). Remoção do Café: PENDENTE até o autor confirmar |  |
-| **Tapu Fini** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe`; Boss Fight (2 barras) — `PoniIsle` Lv60 (Fase 8, casa em Alola). Remoção do Café: PENDENTE até o autor confirmar |  |
+| **Tapu Koko** | Boss Fight (2 barras) — `MelemeleIsle` Lv60. Saiu do Battle Café em 25/10/2026 (decisão do autor); a conquista ACH_OBTAIN_TAPUS já era por espécie capturada desde a Fase 8 |  |
+| **Tapu Lele** | Boss Fight (2 barras) — `AkalaIsle` Lv60. Saiu do Battle Café em 25/10/2026 (decisão do autor); a conquista ACH_OBTAIN_TAPUS já era por espécie capturada desde a Fase 8 |  |
+| **Tapu Bulu** | Boss Fight (2 barras) — `UlaUla_Forest` Lv60. Saiu do Battle Café em 25/10/2026 (decisão do autor); a conquista ACH_OBTAIN_TAPUS já era por espécie capturada desde a Fase 8 |  |
+| **Tapu Fini** | Boss Fight (2 barras) — `PoniIsle` Lv60. Saiu do Battle Café em 25/10/2026 (decisão do autor); a conquista ACH_OBTAIN_TAPUS já era por espécie capturada desde a Fase 8 |  |
 | **Kubfu** | presente (givemon) — `BlackthornCave` Lv5 |  |
 | **Urshifu** | evolui de Kubfu (item ITEM_SCROLL_OF_DARKNESS); evolui de Kubfu (item ITEM_SCROLL_OF_WATERS) | URSHIFU_SINGLE_STRIKE, URSHIFU_SINGLE_STRIKE_GMAX, URSHIFU_RAPID_STRIKE, URSHIFU_RAPID_STRIKE_GMAX |
 | **Enamorus** | recompensa do Battle Café (5 pontos, Lv70) — `BattleCafe` | ENAMORUS_INCARNATE, ENAMORUS_THERIAN |
@@ -301,7 +301,7 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Genesect** | boss (bosslegendaryencounter) — `AbandonedRocketHideoutBackroom` Lv70 |  |
 | **Mew** | encontro estático — `FarawayIslandDepths` Lv55 |  |
 | **Celebi** | encontro estático (seteventmon) — `IlexForest` Lv40 |  |
-| **Jirachi** | ovo (giveegg) — `MtSilver_SummitDay` |  |
+| **Jirachi** | Boss Fight — `MtMoon_Outside` Lv50 (fonte do HnS, Parte D). O ovo do `MtSilver_SummitDay` é de **Terapagos**, não de Jirachi: a troca foi feita em 19/10/2026 e esta linha estava velha (conferido no código em 25/10/2026) |  |
 | **Phione** | selvagem (fishing) — `Route33South_2` Lv5-5; selvagem (fishing) — `Route33South_2` Lv40-45; breeding: ovo de Manaphy |  |
 | **Manaphy** | evolui de Phione (Lv58) |  |
 | **Darkrai** | boss (bosslegendaryencounter) — `DarkraiInnFinalRoom` Lv70 | DARKRAI, DARKRAI_MEGA |

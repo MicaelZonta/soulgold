@@ -452,25 +452,30 @@ TEST("Existing weather genie rewards unlock Master of Wishes")
     EXPECT(Achievement_IsUnlocked(ACH_MASTER_OF_WISHES));
 }
 
-TEST("Island Guardians requires all four Battle Cafe Tapus")
+// Fase 8: the Tapus left the Battle Cafe and became Alola encounters, so the
+// achievement went from the four FLAG_BATTLE_CAFE_TAPU_*_RECEIVED flags to
+// Achievement_PredicateCaughtSpecies. This test still set the old flags and
+// had been failing ever since (test/achievements.c:473, EXPECT_EQ(0, 1)).
+TEST("Island Guardians requires all four Tapus")
 {
-    static const u16 receivedFlags[] =
+    static const u16 species[] =
     {
-        FLAG_BATTLE_CAFE_TAPU_KOKO_RECEIVED,
-        FLAG_BATTLE_CAFE_TAPU_LELE_RECEIVED,
-        FLAG_BATTLE_CAFE_TAPU_BULU_RECEIVED,
-        FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED,
+        SPECIES_TAPU_KOKO,
+        SPECIES_TAPU_LELE,
+        SPECIES_TAPU_BULU,
+        SPECIES_TAPU_FINI,
     };
     const struct Achievement *achievement = Achievement_GetById(ACH_OBTAIN_TAPUS);
+    struct Pokemon mon;
     u8 i;
 
     EXPECT(achievement != NULL);
     EXPECT_EQ(achievement->tier, ACH_TIER_GOLD);
-    for (i = 0; i < ARRAY_COUNT(receivedFlags); i++)
+    for (i = 0; i < ARRAY_COUNT(species); i++)
     {
-        FlagSet(receivedFlags[i]);
-        Achievement_CheckAll();
-        EXPECT_EQ(Achievement_IsUnlocked(ACH_OBTAIN_TAPUS), i == ARRAY_COUNT(receivedFlags) - 1);
+        CreateMon(&mon, species[i], 60, 0, OTID_STRUCT_PLAYER_ID);
+        EXPECT_NE(GiveScriptedMonToPlayer(&mon, PARTY_SIZE), MON_CANT_GIVE);
+        EXPECT_EQ(Achievement_IsUnlocked(ACH_OBTAIN_TAPUS), i == ARRAY_COUNT(species) - 1);
     }
 }
 

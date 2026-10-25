@@ -2,10 +2,10 @@ SnowtopMountain_B1F_2_MapScripts::
 	.byte 0
 
 
-RegiceChamber_Regice::
+SnowtopMountain_Volcanion::
 	lock
 	faceplayer
-	legendaryencounter SPECIES_REGICE, 50, 1, FLAG_HIDE_REGICE
+	bosslegendaryencounter SPECIES_VOLCANION, 70, 1, FLAG_HIDE_VOLCANION, 2, SPECIES_NONE, 110
 	release
 	end
 

@@ -987,8 +987,8 @@
 #define FLAG_HIDE_GOLDENROD_RADIOTOWER_PETREL                       0x3A4
 #define FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2                   0x3A5
 #define FLAG_RELEASED_BEASTS                                        0x3A6
-#define FLAG_HIDE_REGIROCK                                          0x3A7
-#define FLAG_HIDE_REGICE                                            0x3A8
+#define FLAG_HIDE_TING_LU                                          0x3A7 // Era FLAG_HIDE_REGIROCK; a camara virou do Ting-Lu (Parte D). Numero mantido: renomear e de graca, renumerar mexe em save alheio
+#define FLAG_HIDE_VOLCANION                                            0x3A8 // Era FLAG_HIDE_REGICE; a camara virou do Volcanion (Parte D). Numero mantido
 #define FLAG_HIDE_REGISTEEL                                         0x3A9
 #define FLAG_AMPHAROS_HEALED                                        0x3AA
 #define FLAG_HIDE_ECRUTEAK_BILL                                     0x3AB
@@ -1758,10 +1758,10 @@
 #define FLAG_BATTLE_FACILITY_NO_INNATES             0x1031
 #define FLAG_BATTLE_CAFE_MIRAIDON_RECEIVED          0x1032
 #define FLAG_BATTLE_CAFE_KORAIDON_RECEIVED          0x1033
-#define FLAG_BATTLE_CAFE_TAPU_KOKO_RECEIVED         0x1034
-#define FLAG_BATTLE_CAFE_TAPU_LELE_RECEIVED         0x1035
-#define FLAG_BATTLE_CAFE_TAPU_BULU_RECEIVED         0x1036
-#define FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED         0x1037
+#define FLAG_BATTLE_CAFE_TAPU_KOKO_RECEIVED         0x1034 // APOSENTADA: o Tapu saiu do Cafe e virou encontro em Alola (Parte D). Nao reaproveitar o numero
+#define FLAG_BATTLE_CAFE_TAPU_LELE_RECEIVED         0x1035 // APOSENTADA: o Tapu saiu do Cafe e virou encontro em Alola (Parte D). Nao reaproveitar o numero
+#define FLAG_BATTLE_CAFE_TAPU_BULU_RECEIVED         0x1036 // APOSENTADA: o Tapu saiu do Cafe e virou encontro em Alola (Parte D). Nao reaproveitar o numero
+#define FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED         0x1037 // APOSENTADA: o Tapu saiu do Cafe e virou encontro em Alola (Parte D). Nao reaproveitar o numero
 #define FLAG_ROUTE31_EXPERT_QUALIFIED               0x1038
 #define FLAG_GOLDENRODSHORE_EXPERT_QUALIFIED        0x1039
 #define FLAG_ROUTE43_EXPERT_QUALIFIED               0x103A

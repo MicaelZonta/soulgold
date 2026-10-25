@@ -1,10 +1,13 @@
 mapscripts SnowtopMountain_B1F_2_MapScripts {}
 
 
-script RegiceChamber_Regice {
+// Same move as the Regirock chamber: Sinjoh owns the Regis (Parte D) and this
+// one is Volcanion's now. Level 70 is where the other mythicals of its weight
+// sit (Heatran in MtMortar_Depths_1, Genesect in the Rocket backroom).
+script SnowtopMountain_Volcanion {
     lock
     faceplayer
-    legendaryencounter(SPECIES_REGICE, 50, 1, FLAG_HIDE_REGICE)
+    bosslegendaryencounter(SPECIES_VOLCANION, 70, 1, FLAG_HIDE_VOLCANION, 2, SPECIES_NONE, 110)
     release
     end
 }

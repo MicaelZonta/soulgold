@@ -864,15 +864,11 @@ BattleCafe_ConfirmRewardMon_14:
 	case 4, BattleCafe_ConfirmRewardMon_22
 	case 5, BattleCafe_ConfirmRewardMon_23
 	case 6, BattleCafe_ConfirmRewardMon_24
-	case 7, BattleCafe_ConfirmRewardMon_25
-	case 8, BattleCafe_ConfirmRewardMon_26
-	case 9, BattleCafe_ConfirmRewardMon_27
-	case 10, BattleCafe_ConfirmRewardMon_28
 BattleCafe_ConfirmRewardMon_19:
 	special Achievement_CheckAll
 	compare VAR_TEMP_B, 3
-	goto_if_ge BattleCafe_ConfirmRewardMon_31
-BattleCafe_ConfirmRewardMon_29:
+	goto_if_ge BattleCafe_ConfirmRewardMon_27
+BattleCafe_ConfirmRewardMon_25:
 	msgbox BattleCafe_ConfirmRewardMon_Text_2
 	goto BattleCafe_RewardMenu
 	return
@@ -926,37 +922,21 @@ BattleCafe_ConfirmRewardMon_24:
 	setflag FLAG_BATTLE_CAFE_ENAMORUS_RECEIVED
 	goto BattleCafe_ConfirmRewardMon_19
 
-BattleCafe_ConfirmRewardMon_25:
-	setflag FLAG_BATTLE_CAFE_TAPU_KOKO_RECEIVED
-	goto BattleCafe_ConfirmRewardMon_19
-
 BattleCafe_ConfirmRewardMon_26:
-	setflag FLAG_BATTLE_CAFE_TAPU_LELE_RECEIVED
-	goto BattleCafe_ConfirmRewardMon_19
-
-BattleCafe_ConfirmRewardMon_27:
-	setflag FLAG_BATTLE_CAFE_TAPU_BULU_RECEIVED
-	goto BattleCafe_ConfirmRewardMon_19
-
-BattleCafe_ConfirmRewardMon_28:
-	setflag FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED
-	goto BattleCafe_ConfirmRewardMon_19
-
-BattleCafe_ConfirmRewardMon_30:
 	checkitem ITEM_REVEAL_GLASS
 	compare VAR_RESULT, FALSE
-	goto_if_eq BattleCafe_ConfirmRewardMon_34
-	goto BattleCafe_ConfirmRewardMon_29
+	goto_if_eq BattleCafe_ConfirmRewardMon_30
+	goto BattleCafe_ConfirmRewardMon_25
 
-BattleCafe_ConfirmRewardMon_31:
+BattleCafe_ConfirmRewardMon_27:
 	compare VAR_TEMP_B, 6
-	goto_if_le BattleCafe_ConfirmRewardMon_30
-	goto BattleCafe_ConfirmRewardMon_29
+	goto_if_le BattleCafe_ConfirmRewardMon_26
+	goto BattleCafe_ConfirmRewardMon_25
 
-BattleCafe_ConfirmRewardMon_34:
+BattleCafe_ConfirmRewardMon_30:
 	msgbox BattleCafe_ConfirmRewardMon_Text_1
 	giveitem ITEM_REVEAL_GLASS
-	goto BattleCafe_ConfirmRewardMon_29
+	goto BattleCafe_ConfirmRewardMon_25
 
 
 BattleCafe_ChooseShinyGenome::
