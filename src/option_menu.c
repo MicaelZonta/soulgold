@@ -1715,8 +1715,11 @@ static u8 Lighting_ProcessInput(u8 selection)
 
 static void BattleBgs_DrawChoices(u8 selection)
 {
-    static const u8 sText_BgsClassic[] = _("Classic");
-    static const u8 sText_BgsModern[] = _("Modern");
+    // O prefixo de cor nao e enfeite: DrawOptionMenuChoiceWithFont troca dst[2] e
+    // dst[5] pelos codigos de destaque, que sao justamente os bytes de {COLOR} e
+    // {SHADOW}. Sem o prefixo ele sobrescreve letras de verdade ("ClAssIc").
+    static const u8 sText_BgsClassic[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Classic");
+    static const u8 sText_BgsModern[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Modern");
     u8 styles[2] = {0};
 
     if (selection > TRUE)

@@ -1116,70 +1116,50 @@ enum
     MAP_TRAINER_HILL_ROOF                            = (7 | (33 << 8)),
     MAP_NAVEL_ROCK_EXTERIOR                          = (8 | (33 << 8)),
     MAP_NAVEL_ROCK_HARBOR                            = (9 | (33 << 8)),
-    MAP_NAVEL_ROCK_ENTRANCE                          = (10 | (33 << 8)),
-    MAP_NAVEL_ROCK_B1F                               = (11 | (33 << 8)),
-    MAP_NAVEL_ROCK_FORK                              = (12 | (33 << 8)),
-    MAP_NAVEL_ROCK_UP1                               = (13 | (33 << 8)),
-    MAP_NAVEL_ROCK_UP2                               = (14 | (33 << 8)),
-    MAP_NAVEL_ROCK_UP3                               = (15 | (33 << 8)),
-    MAP_NAVEL_ROCK_UP4                               = (16 | (33 << 8)),
-    MAP_NAVEL_ROCK_TOP                               = (17 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN01                            = (18 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN02                            = (19 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN03                            = (20 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN04                            = (21 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN05                            = (22 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN06                            = (23 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN07                            = (24 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN08                            = (25 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN09                            = (26 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN10                            = (27 | (33 << 8)),
-    MAP_NAVEL_ROCK_DOWN11                            = (28 | (33 << 8)),
-    MAP_NAVEL_ROCK_BOTTOM                            = (29 | (33 << 8)),
-    MAP_TRAINER_HILL_ELEVATOR                        = (30 | (33 << 8)),
-    MAP_ROUTE104_PROTOTYPE                           = (31 | (33 << 8)),
-    MAP_ROUTE104_PROTOTYPE_PRETTY_PETAL_FLOWER_SHOP  = (32 | (33 << 8)),
-    MAP_ROUTE109_SEASHORE_HOUSE                      = (33 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_ENTRANCE                = (34 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_END                     = (35 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_CORRIDOR                = (36 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_PUZZLE1                 = (37 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_PUZZLE2                 = (38 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_PUZZLE3                 = (39 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_PUZZLE4                 = (40 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_PUZZLE5                 = (41 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_PUZZLE6                 = (42 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_PUZZLE7                 = (43 | (33 << 8)),
-    MAP_ROUTE110_TRICK_HOUSE_PUZZLE8                 = (44 | (33 << 8)),
-    MAP_ROUTE110_SEASIDE_CYCLING_ROAD_NORTH_ENTRANCE = (45 | (33 << 8)),
-    MAP_ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE = (46 | (33 << 8)),
-    MAP_ROUTE113_GLASS_WORKSHOP                      = (47 | (33 << 8)),
-    MAP_ROUTE123_BERRY_MASTERS_HOUSE                 = (48 | (33 << 8)),
-    MAP_ROUTE119_WEATHER_INSTITUTE_1F                = (49 | (33 << 8)),
-    MAP_ROUTE119_WEATHER_INSTITUTE_2F                = (50 | (33 << 8)),
-    MAP_ROUTE119_HOUSE                               = (51 | (33 << 8)),
-    MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE       = (52 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_LOUNGE1                      = (53 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_EXCHANGE_SERVICE_CORNER      = (54 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_LOUNGE2                      = (55 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_LOUNGE3                      = (56 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_LOUNGE4                      = (57 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_SCOTTS_HOUSE                 = (58 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_LOUNGE5                      = (59 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_LOUNGE6                      = (60 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_LOUNGE7                      = (61 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_RECEPTION_GATE               = (62 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_LOUNGE8                      = (63 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_LOUNGE9                      = (64 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F            = (65 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F            = (66 | (33 << 8)),
-    MAP_BATTLE_FRONTIER_MART                         = (67 | (33 << 8)),
-    MAP_BIRTH_ISLAND_HARBOR                          = (68 | (33 << 8)),
-    MAP_UNION_ROOM                                   = (69 | (33 << 8)),
-    MAP_SAFARI_ZONE_NORTHWEST                        = (70 | (33 << 8)),
-    MAP_SAFARI_ZONE_NORTH                            = (71 | (33 << 8)),
-    MAP_SAFARI_ZONE_SOUTHWEST                        = (72 | (33 << 8)),
-    MAP_SAFARI_ZONE_SOUTH                            = (73 | (33 << 8)),
+    MAP_TRAINER_HILL_ELEVATOR                        = (10 | (33 << 8)),
+    MAP_ROUTE104_PROTOTYPE                           = (11 | (33 << 8)),
+    MAP_ROUTE104_PROTOTYPE_PRETTY_PETAL_FLOWER_SHOP  = (12 | (33 << 8)),
+    MAP_ROUTE109_SEASHORE_HOUSE                      = (13 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_ENTRANCE                = (14 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_END                     = (15 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_CORRIDOR                = (16 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_PUZZLE1                 = (17 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_PUZZLE2                 = (18 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_PUZZLE3                 = (19 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_PUZZLE4                 = (20 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_PUZZLE5                 = (21 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_PUZZLE6                 = (22 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_PUZZLE7                 = (23 | (33 << 8)),
+    MAP_ROUTE110_TRICK_HOUSE_PUZZLE8                 = (24 | (33 << 8)),
+    MAP_ROUTE110_SEASIDE_CYCLING_ROAD_NORTH_ENTRANCE = (25 | (33 << 8)),
+    MAP_ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE = (26 | (33 << 8)),
+    MAP_ROUTE113_GLASS_WORKSHOP                      = (27 | (33 << 8)),
+    MAP_ROUTE123_BERRY_MASTERS_HOUSE                 = (28 | (33 << 8)),
+    MAP_ROUTE119_WEATHER_INSTITUTE_1F                = (29 | (33 << 8)),
+    MAP_ROUTE119_WEATHER_INSTITUTE_2F                = (30 | (33 << 8)),
+    MAP_ROUTE119_HOUSE                               = (31 | (33 << 8)),
+    MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE       = (32 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_LOUNGE1                      = (33 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_EXCHANGE_SERVICE_CORNER      = (34 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_LOUNGE2                      = (35 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_LOUNGE3                      = (36 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_LOUNGE4                      = (37 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_SCOTTS_HOUSE                 = (38 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_LOUNGE5                      = (39 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_LOUNGE6                      = (40 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_LOUNGE7                      = (41 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_RECEPTION_GATE               = (42 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_LOUNGE8                      = (43 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_LOUNGE9                      = (44 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F            = (45 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F            = (46 | (33 << 8)),
+    MAP_BATTLE_FRONTIER_MART                         = (47 | (33 << 8)),
+    MAP_BIRTH_ISLAND_HARBOR                          = (48 | (33 << 8)),
+    MAP_UNION_ROOM                                   = (49 | (33 << 8)),
+    MAP_SAFARI_ZONE_NORTHWEST                        = (50 | (33 << 8)),
+    MAP_SAFARI_ZONE_NORTH                            = (51 | (33 << 8)),
+    MAP_SAFARI_ZONE_SOUTHWEST                        = (52 | (33 << 8)),
+    MAP_SAFARI_ZONE_SOUTH                            = (53 | (33 << 8)),
 
     // gMapGroup_IndoorRinto
     MAP_RINTO_POEMON_CENTER = (0 | (34 << 8)),
@@ -1246,6 +1226,26 @@ enum
 #define MAP_ROUTE104_PRETTY_PETAL_FLOWER_SHOP            29030
 #define MAP_ROUTE114_LANETTES_HOUSE                      29037
 #define MAP_ROUTE121_SAFARI_ZONE_ENTRANCE                29040
+#define MAP_NAVEL_ROCK_ENTRANCE                          29954
+#define MAP_NAVEL_ROCK_B1F                               29955
+#define MAP_NAVEL_ROCK_FORK                              29956
+#define MAP_NAVEL_ROCK_UP1                               29957
+#define MAP_NAVEL_ROCK_UP2                               29958
+#define MAP_NAVEL_ROCK_UP3                               29959
+#define MAP_NAVEL_ROCK_UP4                               29960
+#define MAP_NAVEL_ROCK_TOP                               29961
+#define MAP_NAVEL_ROCK_DOWN01                            29962
+#define MAP_NAVEL_ROCK_DOWN02                            29963
+#define MAP_NAVEL_ROCK_DOWN03                            29964
+#define MAP_NAVEL_ROCK_DOWN04                            29965
+#define MAP_NAVEL_ROCK_DOWN05                            29966
+#define MAP_NAVEL_ROCK_DOWN06                            29967
+#define MAP_NAVEL_ROCK_DOWN07                            29968
+#define MAP_NAVEL_ROCK_DOWN08                            29969
+#define MAP_NAVEL_ROCK_DOWN09                            29970
+#define MAP_NAVEL_ROCK_DOWN10                            29971
+#define MAP_NAVEL_ROCK_DOWN11                            29972
+#define MAP_NAVEL_ROCK_BOTTOM                            29973
 #define MAP_BATTLE_COLOSSEUM_2P_FRLG                     29997
 #define MAP_TRADE_CENTER_FRLG                            29998
 #define MAP_RECORD_CORNER_FRLG                           29999
