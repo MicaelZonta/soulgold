@@ -1918,6 +1918,10 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1190,4496,FLAG_MET_SOLIERA,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 0x1191,4497,FLAG_BIRTH_ISLAND_ITEM_METEORITE,CUSTOM,EM_USO,0,0,1,BirthIsland_Exterior,MAPA_UNICO:BirthIsland_Exterior,o Meteorite da cratera ja foi pego; setada pelo finditem
 0x1192,4498,FLAG_SAW_METEOR_SHOWER,CUSTOM,EM_USO,2,1,2,OlivineCity,GLOBAL(codigo),"o jogador viu a chuva de meteoros no cais de Vermilion, a noite; e o que destrava o bilhete da Birth Island"
+0x1193,4499,FLAG_NAVELROCK_FIRE_VENT,CUSTOM,EM_USO,3,1,1,,GLOBAL(codigo),a fenda do alto do Navel Rock foi desentupida; o calor sobe
+0x1194,4500,FLAG_NAVELROCK_SEA_BREACH,CUSTOM,EM_USO,4,1,1,,GLOBAL(codigo),a brecha do fundo do Navel Rock foi aberta; o mar desce
+0x1195,4501,FLAG_HIDE_VOLCANION,CUSTOM,EM_USO,0,3,2,NavelRock_SteamChamber,GLOBAL(codigo),recalculada em todo ON_TRANSITION da Camara do Vapor: so limpa com as duas valvulas abertas
+0x1196,4502,FLAG_CAUGHT_VOLCANION,CUSTOM,EM_USO,3,1,2,SeafoamIslands_Gym,GLOBAL(codigo),o Volcanion ja foi capturado; e o que impede ele de voltar
 0x1500,5376,FLAG_0x1500,LIVRE,NUNCA_REFERENCIADA,0,0,0,,,
 0x1508,5384,FLAG_ROUTE32_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route32,MAPA_UNICO:HiddenGrotto_Route32,
 0x1509,5385,FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY,DAILY,EM_USO,4,4,5,,GLOBAL(codigo),

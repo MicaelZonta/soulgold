@@ -30,7 +30,23 @@ SeafoamIslands_Gym_EventScript_Blaine::
 	release
 	end
 
+@ Depois de derrotado ele passa a fazer a charada do Navel Rock, e so para de
+@ fazer quando o jogador traz a resposta. Ele nunca confirma nada: a charada e
+@ literalmente a mecanica das duas valvulas, e a graca e o jogador ler isso.
 SeafoamIslands_Gym_EventScript_Blaine_Defeated::
+	goto_if_set FLAG_CAUGHT_VOLCANION, SeafoamIslands_Gym_EventScript_Blaine_Answered
+	msgbox SeafoamIslands_Gym_Text_BlaineRiddle, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+SeafoamIslands_Gym_EventScript_Blaine_Answered::
+	msgbox SeafoamIslands_Gym_Text_BlaineAnswered, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+SeafoamIslands_Gym_EventScript_Blaine_OldAfterBattle::
 	msgbox SeafoamIslands_Gym_Text_BlaineAfterBattle, MSGBOX_DEFAULT
 	closemessage
 	release
@@ -137,3 +153,15 @@ SeafoamIslands_Gym_Text_GymGuideWin2:
 	.string "A Pokémon Gym can be anywhere as\n"
 	.string "long as the Gym Leader is there.\p"
 	.string "There's no need for a building.$"
+
+SeafoamIslands_Gym_Text_BlaineRiddle:
+	.string "{SPEAKER NAME_BLAINE}When fire climbs,\n"
+	.string "and the sea falls, what wakes?\p"
+	.string "You want my hypothesis?\n"
+	.string "Go gather your own evidence.$"
+
+SeafoamIslands_Gym_Text_BlaineAnswered:
+	.string "{SPEAKER NAME_BLAINE}Your Poke Ball is warm.\n"
+	.string "The sea left its mark on it, too.\p"
+	.string "You went and got your evidence.\n"
+	.string "What do you make of it?$"

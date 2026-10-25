@@ -1,2 +1,4 @@
 NavelRock_SteamChamber_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, NavelRock_SteamChamber_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, NavelRock_SteamChamber_OnFrame
 	.byte 0

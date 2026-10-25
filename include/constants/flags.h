@@ -2206,8 +2206,12 @@
 #define FLAG_MET_SOLIERA                            0x1190 // a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 #define FLAG_BIRTH_ISLAND_ITEM_METEORITE            0x1191 // o Meteorite da cratera ja foi pego; setada pelo finditem
 #define FLAG_SAW_METEOR_SHOWER                      0x1192 // o jogador viu a chuva de meteoros no cais de Vermilion, a noite; e o que destrava o bilhete da Birth Island
-#define CUSTOM_FLAGS_END                            FLAG_SAW_METEOR_SHOWER
-// PROXIMA FLAG NOVA: 0x1193 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+#define FLAG_NAVELROCK_FIRE_VENT                    0x1193 // a fenda do alto do Navel Rock foi desentupida; o calor sobe
+#define FLAG_NAVELROCK_SEA_BREACH                   0x1194 // a brecha do fundo do Navel Rock foi aberta; o mar desce
+#define FLAG_HIDE_VOLCANION                         0x1195 // recalculada em todo ON_TRANSITION da Camara do Vapor: so limpa com as duas valvulas abertas
+#define FLAG_CAUGHT_VOLCANION                       0x1196 // o Volcanion ja foi capturado; e o que impede ele de voltar
+#define CUSTOM_FLAGS_END                            FLAG_CAUGHT_VOLCANION
+// PROXIMA FLAG NOVA: 0x1197 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 

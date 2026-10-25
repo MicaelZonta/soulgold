@@ -2133,6 +2133,7 @@ Common_Text_ReceivedMon:
 	.include "data/maps/NavelRock_FireVent/scripts.inc"
 	.include "data/maps/NavelRock_SeaBreach/scripts.inc"
 	.include "data/maps/NavelRock_SteamChamber/scripts.inc"
+	.include "data/scripts/navel_rock.inc"
 
 	.include "data/maps/HiddenGrotto_Route32/scripts.inc"
 
