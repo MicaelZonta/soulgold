@@ -2,12 +2,13 @@ mapscripts SnowtopMountain_B1F_2_MapScripts {}
 
 
 // Same move as the Regirock chamber: Sinjoh owns the Regis (Parte D) and this
-// one is Volcanion's now. Level 70 is where the other mythicals of its weight
-// sit (Heatran in MtMortar_Depths_1, Genesect in the Rocket backroom).
-script SnowtopMountain_Volcanion {
+// one is Kyurem's now - a restricted legendary in a cave of ice, which is what
+// the room always looked like. Level 80 with 4 bars puts it with Groudon and
+// Kyogre, a step above the sub-legendaries in the other two chambers.
+script SnowtopMountain_Kyurem {
     lock
     faceplayer
-    bosslegendaryencounter(SPECIES_VOLCANION, 70, 1, FLAG_HIDE_VOLCANION, 2, SPECIES_NONE, 110)
+    bosslegendaryencounter(SPECIES_KYUREM, 80, 1, FLAG_HIDE_KYUREM, 4, SPECIES_NONE, 110)
     release
     end
 }

@@ -196,12 +196,12 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Deoxys** | Mítico | ⚠️ só em mapa fora da ROM: `BirthIsland_Exterior` |
 | **Reshiram** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Zekrom** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
-| **Kyurem** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
-| **Keldeo** | Mítico | ✅ Boss Fight — `MtSilver_1F_RegigigasRoom` Lv80 (25/10/2026), só aparece com Cobalion + Terrakion + Virizion no time. **A câmara ainda não tem porta** — ver `bug/B09` e a proposta de entrada |
+| **Kyurem** | Lendário restrito | ✅ Boss Fight — `SnowtopMountain_B1F_2` Lv80, 4 barras (25/10/2026), na câmara que era do Regice |
+| **Keldeo** | Mítico | ✅ Boss Fight — `MtSilver_1F_RegigigasRoom` Lv80 (25/10/2026), só aparece com Cobalion + Terrakion + Virizion no time. Entra-se pela porta nova em (45,31) da `MtSilver_1F_WaterfallRoom`, no paredão abaixo do lago |
 | **Xerneas** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Yveltal** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Zygarde** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
-| **Volcanion** | Mítico | ✅ Boss Fight — `SnowtopMountain_B1F_2` Lv70 (25/10/2026), na câmara que era do Regice |
+| **Volcanion** | Mítico | ❌ **sem fonte de novo** — chegou a ficar em `SnowtopMountain_B1F_2` em 25/10/2026, mas o autor preferiu o Kyurem ali (caverna de gelo). Precisa de casa |
 | **Nihilego** | Ultra Beast | 🚫 só aparece em batalha sem captura: `NewBarkTown` |
 | **Buzzwole** | Ultra Beast | 🚫 só aparece em batalha sem captura: `BlackthornCity` |
 | **Pheromosa** | Ultra Beast | 🚫 só aparece em batalha sem captura: `BlackthornCity` |
@@ -216,7 +216,7 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Eternatus** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Regieleki** | Sub-lendário | ✅ Boss Fight — `SinjohRuins_RegielekiRoom` Lv80 (Fase 8, 19/10/2026) |
 | **Regidrago** | Sub-lendário | ✅ Boss Fight — `SinjohRuins_RegidracoRoom` Lv80 (Fase 8, 19/10/2026) |
-| **Wo-Chien** | Sub-lendário | ❌ nenhuma referência de obtenção no código |
+| **Wo-Chien** | Sub-lendário | ✅ Boss Fight — `RailwayCave_Registeel_Room` Lv70, 3 barras (25/10/2026), na câmara que era do Registeel, com musgo tomando a caverna |
 | **Ting-Lu** | Sub-lendário | ✅ Boss Fight — `RegirockChamber` Lv70, 3 barras (25/10/2026), na câmara que era do Regirock; mesmos números do Chien-Pao |
 | **Pecharunt** | Mítico | ❌ ainda sem fonte — DECISÃO 19/10/2026: ganhará evento próprio quando o Trio Leal inteiro estiver capturado (Okidogi + Munkidori + Fezandipiti) |
 

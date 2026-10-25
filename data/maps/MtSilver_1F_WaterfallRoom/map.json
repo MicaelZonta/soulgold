@@ -319,6 +319,13 @@
       "elevation": 0,
       "dest_map": "MAP_SNOWSWEPT_CAVERN",
       "dest_warp_id": 0
+    },
+    {
+      "x": 45,
+      "y": 31,
+      "elevation": 0,
+      "dest_map": "MAP_MT_SILVER_1F_REGIGIGAS_ROOM",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [],

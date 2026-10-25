@@ -988,8 +988,8 @@
 #define FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2                   0x3A5
 #define FLAG_RELEASED_BEASTS                                        0x3A6
 #define FLAG_HIDE_TING_LU                                          0x3A7 // Era FLAG_HIDE_REGIROCK; a camara virou do Ting-Lu (Parte D). Numero mantido: renomear e de graca, renumerar mexe em save alheio
-#define FLAG_HIDE_VOLCANION                                            0x3A8 // Era FLAG_HIDE_REGICE; a camara virou do Volcanion (Parte D). Numero mantido
-#define FLAG_HIDE_REGISTEEL                                         0x3A9
+#define FLAG_HIDE_KYUREM                                            0x3A8 // Era FLAG_HIDE_REGICE; a camara de Snowtop virou do Kyurem (Parte D). Numero mantido
+#define FLAG_HIDE_WO_CHIEN                                         0x3A9 // Era FLAG_HIDE_REGISTEEL; a camara da RailwayCave virou do Wo-Chien (Parte D). Numero mantido
 #define FLAG_AMPHAROS_HEALED                                        0x3AA
 #define FLAG_HIDE_ECRUTEAK_BILL                                     0x3AB
 #define FLAG_HIDE_ECRUTEAK_ROCKET                                   0x3AC

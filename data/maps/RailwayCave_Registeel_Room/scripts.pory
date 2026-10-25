@@ -1,9 +1,12 @@
 mapscripts RailwayCave_Registeel_Room_MapScripts {}
 
-script RegisteelChamber_Registeel {
+// Third of the Regi chambers handed over (Parte D): Wo-Chien took this one.
+// Same numbers as Chien-Pao in IcePath_Depths2 and Ting-Lu in RegirockChamber,
+// the rest of the Ruinous quartet.
+script RailwayCave_WoChien {
     lock
     faceplayer
-    legendaryencounter(SPECIES_REGISTEEL, 50, 1, FLAG_HIDE_REGISTEEL)
+    bosslegendaryencounter(SPECIES_WO_CHIEN, 70, 1, FLAG_HIDE_WO_CHIEN, 3, SPECIES_NONE, 110)
     release
     end
 }

@@ -2,10 +2,10 @@ SnowtopMountain_B1F_2_MapScripts::
 	.byte 0
 
 
-SnowtopMountain_Volcanion::
+SnowtopMountain_Kyurem::
 	lock
 	faceplayer
-	bosslegendaryencounter SPECIES_VOLCANION, 70, 1, FLAG_HIDE_VOLCANION, 2, SPECIES_NONE, 110
+	bosslegendaryencounter SPECIES_KYUREM, 80, 1, FLAG_HIDE_KYUREM, 4, SPECIES_NONE, 110
 	release
 	end
 

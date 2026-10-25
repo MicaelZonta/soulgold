@@ -936,8 +936,8 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x3A5,933,FLAG_HIDE_GOLDENROD_RADIOTOWER_DIRECTOR_2,SCRIPT/EVENT,EM_USO,0,10,9,GoldenrodCity;GoldenrodCity_RadioTower_5F,GLOBAL(codigo),
 0x3A6,934,FLAG_RELEASED_BEASTS,SCRIPT/EVENT,EM_USO,3,5,6,BurnedTower_B1F;EcruteakCity,GLOBAL(codigo),
 0x3A7,935,FLAG_HIDE_TING_LU,SCRIPT/EVENT,EM_USO,0,4,6,PokemonLeague_HallOfFame;RegirockChamber,MULTI_MAPA(2),"Era FLAG_HIDE_REGIROCK; a camara virou do Ting-Lu (Parte D). Numero mantido: renomear e de graca, renumerar mexe em save alheio"
-0x3A8,936,FLAG_HIDE_VOLCANION,SCRIPT/EVENT,EM_USO,0,4,6,IslandCave;PokemonLeague_HallOfFame;SnowtopMountain_B1F_2,MULTI_MAPA(3),Era FLAG_HIDE_REGICE; a camara virou do Volcanion (Parte D). Numero mantido
-0x3A9,937,FLAG_HIDE_REGISTEEL,SCRIPT/EVENT,EM_USO,0,5,11,PokemonLeague_HallOfFame;RailwayCave_Registeel_Room,GLOBAL(codigo),
+0x3A8,936,FLAG_HIDE_KYUREM,SCRIPT/EVENT,EM_USO,0,4,6,IslandCave;PokemonLeague_HallOfFame;SnowtopMountain_B1F_2,MULTI_MAPA(3),Era FLAG_HIDE_REGICE; a camara de Snowtop virou do Kyurem (Parte D). Numero mantido
+0x3A9,937,FLAG_HIDE_WO_CHIEN,SCRIPT/EVENT,EM_USO,0,4,6,PokemonLeague_HallOfFame;RailwayCave_Registeel_Room,MULTI_MAPA(2),Era FLAG_HIDE_REGISTEEL; a camara da RailwayCave virou do Wo-Chien (Parte D). Numero mantido
 0x3AA,938,FLAG_AMPHAROS_HEALED,SCRIPT/EVENT,EM_USO,7,7,15,CianwoodCity;CliffEdgeGate;EcruteakCity;OlivineCity,GLOBAL(codigo),
 0x3AB,939,FLAG_HIDE_ECRUTEAK_BILL,SCRIPT/EVENT,EM_USO,0,5,8,EcruteakCity;EcruteakCity_PokemonCenter,GLOBAL(codigo),
 0x3AC,940,FLAG_HIDE_ECRUTEAK_ROCKET,SCRIPT/EVENT,EM_USO,0,6,8,EcruteakCity;EcruteakCity_Theater,GLOBAL(codigo),

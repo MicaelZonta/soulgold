@@ -20,7 +20,7 @@ AncientTomb_OnTransition:
 	end
 
 AncientTomb_EventScript_ShowRegisteel::
-	clearflag FLAG_HIDE_REGISTEEL
+	clearflag FLAG_HIDE_WO_CHIEN
 	return
 
 AncientTomb_OnLoad:

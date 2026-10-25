@@ -97,8 +97,8 @@ PokemonLeague_HallOfFame_EventScript_SetGameClearFlags::
 	clearflag FLAG_HIDE_IRONVALIANT
 	clearflag FLAG_HIDE_FLUTTERMANE
 	clearflag FLAG_HIDE_TING_LU
-	clearflag FLAG_HIDE_REGISTEEL
-	clearflag FLAG_HIDE_VOLCANION
+	clearflag FLAG_HIDE_WO_CHIEN
+	clearflag FLAG_HIDE_KYUREM
 	clearflag FLAG_HIDE_HEATRAN
 	clearflag FLAG_HIDE_SUDOWOODO
 	clearflag FLAG_HIDE_VIRIZION
