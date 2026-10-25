@@ -25985,15 +25985,15 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Ice Punch
 - Rock Slide
 
-Metagross @ Occa Berry
-Adamant Nature
+Beheeyem @ Occa Berry
+Quiet Nature
 Level: 70
-Ability: Clear Body
+Ability: Analytic
 IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
-- Meteor Mash
-- Bullet Punch
-- Earthquake
-- Agility
+- Psychic
+- Energy Ball
+- Thunderbolt
+- Trick Room
 
 === TRAINER_SOLIERA ===
 Name: Soliera
