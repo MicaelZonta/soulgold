@@ -41,7 +41,6 @@ FuchsiaCity_Route19_Gate
 GoldenrodCity_DepartmentStore_7FNight
 GoldenrodCity_GameCorner
 LakeOfRageLowTide
-MtSilver_1F_RegigigasRoom
 MtSilver_SummitNight
 NewMap1
 OneIsland_PokemonCenter_2F_Frlg
