@@ -982,6 +982,14 @@ u32 GetItemFlingPower(enum Item itemId)
 u32 GetItemStatus1Mask(enum Item itemId)
 {
     const u8 *effect = GetItemEffect(itemId);
+
+    // GetItemEffect answers NULL for ITEM_ENIGMA_BERRY_E_READER while
+    // FREE_ENIGMA_BERRY is TRUE. The berry is not obtainable today, but
+    // without this guard the read below is a provable NULL dereference and
+    // GCC compiles the path into udf #255 (bug/B09).
+    if (effect == NULL)
+        return 0;
+
     switch (effect[3])
     {
     case ITEM3_PARALYSIS:

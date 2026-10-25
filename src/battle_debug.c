@@ -1577,6 +1577,25 @@ static const u32 GetBitfieldValue(u32 value, u32 currBit, u32 bitsCount)
 static void UpdateBattlerValue(struct BattleDebugMenu *data)
 {
     u32 i;
+
+    // Not every list item fills modifiedValPtr: the cases listed here work on
+    // gBattleMons directly. For all the others GCC can prove the pointer is
+    // still NULL on some path and turns the write into udf #255 (bug/B09).
+    if (data->modifyArrows.modifiedValPtr == NULL)
+    {
+        switch (data->modifyArrows.typeOfVal)
+        {
+        case VAL_ALL_STAT_STAGES:
+        case VAL_VOLATILE:
+        case VAL_HAZARDS:
+        case VAR_SIDE_STATUS:
+        case VAR_IN_LOVE:
+            break;
+        default:
+            return;
+        }
+    }
+
     switch (data->modifyArrows.typeOfVal)
     {
     case VAL_U8:
@@ -1612,8 +1631,16 @@ static void UpdateBattlerValue(struct BattleDebugMenu *data)
         ChangeHazardsValue(data);
         break;
     case VAR_SIDE_STATUS:
-        *GetSideStatusValue(data, TRUE, data->modifyArrows.currValue != 0) = data->modifyArrows.currValue;
+    {
+        // GetSideStatusValue has a default: return NULL. Dereferencing it
+        // unchecked is a provable NULL write, which GCC compiles into
+        // udf #255 (bug/B09).
+        u16 *sideStatus = GetSideStatusValue(data, TRUE, data->modifyArrows.currValue != 0);
+
+        if (sideStatus != NULL)
+            *sideStatus = data->modifyArrows.currValue;
         break;
+    }
     case VAR_SHOW_HP:
         (*(struct BattleSpriteInfo*)(data->modifyArrows.modifiedValPtr)).hpNumbersNoBars = data->modifyArrows.currValue;
         break;
@@ -2068,7 +2095,12 @@ static void SetUpModifyArrows(struct BattleDebugMenu *data)
         data->modifyArrows.maxDigits = 2;
         data->modifyArrows.modifiedValPtr = &gSideStatuses[GetBattlerSide(data->battlerId)];
         data->modifyArrows.typeOfVal = VAR_SIDE_STATUS;
-        data->modifyArrows.currValue = *GetSideStatusValue(data, FALSE, FALSE);
+        {
+            // Same NULL return as in UpdateBattlerValue (bug/B09).
+            const u16 *sideStatus = GetSideStatusValue(data, FALSE, FALSE);
+
+            data->modifyArrows.currValue = (sideStatus != NULL) ? *sideStatus : 0;
+        }
         break;
     }
 

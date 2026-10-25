@@ -1099,8 +1099,21 @@ static void AddMovePoints(u8 caseId, u16 arg1, u8 arg2, u8 arg3)
         // If hit Light Screen with damaging special move
         if (IsBattleMoveSpecial(move) && power != 0 && tvPtr->side[defSide].lightScreenMonId != 0)
         {
-            u32 id = (tvPtr->side[defSide].lightScreenMonId - 1) * 4;
-            movePoints->points[defSide][id + tvPtr->side[defSide].lightScreenMoveSlot] += sPointsArray[caseId][0];
+            // sPointsArray only has entries for PTS_EFFECTIVENESS, PTS_SET_UP
+            // and PTS_STATUS_DMG; sPointsArray[PTS_LIGHT_SCREEN] is NULL, so
+            // the read below is a provable NULL dereference and GCC compiles
+            // the path into udf #255 (bug/B09). Only link battles get here
+            // (BattleTv_SetDataBasedOnMove returns early without
+            // BATTLE_TYPE_LINK), which is why nothing ever hit it. The Reflect
+            // case right above scores a flat 3; swap NULL for that table if
+            // Light Screen should score too.
+            const u16 *points = sPointsArray[caseId];
+
+            if (points != NULL)
+            {
+                u32 id = (tvPtr->side[defSide].lightScreenMonId - 1) * 4;
+                movePoints->points[defSide][id + tvPtr->side[defSide].lightScreenMoveSlot] += points[0];
+            }
         }
         break;
 #undef move

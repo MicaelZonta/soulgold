@@ -3544,13 +3544,21 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                     }
                     classLength = 0;
                     nameLength = 0;
-                    while (classString[classLength] != EOS)
+                    // classString stays NULL for B_POSITION_PLAYER_RIGHT
+                    // outside a partner battle - the player's own second mon
+                    // in an ordinary double battle. Reading it unchecked is a
+                    // provable NULL dereference and GCC compiles the path into
+                    // udf #255 (bug/B09). With no class, print the name alone.
+                    if (classString != NULL)
                     {
-                        textStart[classLength] = classString[classLength];
-                        classLength++;
+                        while (classString[classLength] != EOS)
+                        {
+                            textStart[classLength] = classString[classLength];
+                            classLength++;
+                        }
+                        textStart[classLength] = CHAR_SPACE;
+                        textStart += 1 + classLength;
                     }
-                    textStart[classLength] = CHAR_SPACE;
-                    textStart += 1 + classLength;
                     nameString = BattleStringGetTrainerName(textStart, multiplayerId, gBattlerAttacker);
                     if (nameString != textStart)
                     {

@@ -12545,8 +12545,16 @@ static void Cmd_averagestats(void)
 
     u16 *stat1 = GetBattlerStat(&gBattleMons[gBattlerAttacker], cmd->stat);
     u16 *stat2 = GetBattlerStat(&gBattleMons[gBattlerTarget], cmd->stat);
-    u16 avg = (*stat1 + *stat2) / 2;
-    *stat1 = *stat2 = avg;
+
+    // GetBattlerStat only answers for ATK, DEF, SPATK and SPDEF; everything
+    // else gives NULL. Power Split and Guard Split are the only callers today
+    // and they pass the four valid ones, but an averagestats STAT_SPEED in a
+    // new move compiles clean and lands on a udf #255 here (bug/B09).
+    if (stat1 != NULL && stat2 != NULL)
+    {
+        u16 avg = (*stat1 + *stat2) / 2;
+        *stat1 = *stat2 = avg;
+    }
 
     gBattlescriptCurrInstr = cmd->nextInstr;
 }

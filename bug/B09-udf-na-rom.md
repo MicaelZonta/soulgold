@@ -16,6 +16,64 @@ No build de teste de 25/10/2026 são **8**. `addr2line` não ajuda (o build
 passa por `cpp` e a linha fica `<stdin>:?`), então a triagem foi feita pelo
 par desmontagem + fonte.
 
+## Resolvido (25/10/2026) — a ROM está com **zero** `udf`
+
+```
+arm-none-eabi-objdump -d Soulgold.elf | grep -c udf   # 8 -> 0
+```
+
+Os oito eram três raízes distintas, todas atrás de uma guarda que faltava.
+Nenhuma mudança altera comportamento de jogo: cada guarda só cobre o caminho
+que hoje é indefinido.
+
+| # | função | guarda aplicada |
+|---|---|---|
+| 1 | `UpdateBattlerValue` | `modifiedValPtr` nulo volta cedo, menos nos cinco casos que não usam o ponteiro |
+| 1,2 | `UpdateBattlerValue`, `SetUpModifyArrows` | `GetSideStatusValue` tem `default: return NULL` e os dois chamadores desreferenciavam direto |
+| 3 | `BattleStringExpandPlaceholders` | `classString` nulo imprime só o nome, sem a classe |
+| 4 | `Cmd_averagestats` | só faz a média se os dois ponteiros vierem |
+| 5 | `AddMovePoints` | `sPointsArray[PTS_LIGHT_SCREEN]` é NULL; agora checa antes de ler |
+| 6 | `GetItemStatus1Mask` | efeito nulo devolve 0 |
+| 7 | `UseStatIncreaseItem` | efeito nulo devolve o buffer sem mexer |
+| 8 | `ChooseRockSmashItem` | `count == 0 \|\| totalWeight == 0` devolve `ITEM_NONE`, e `TryGetRockSmashItem` trata como "não saiu item" |
+
+De brinde, `ChooseFishingItem` ganhou a mesma guarda: é o mesmo desenho, e só
+não virou trap porque os dois `count` são `ARRAY_COUNT` de array estático.
+
+**Como achar a linha, que era o que faltava.** O `addr2line` não serve (o
+build passa por `cpp` e a linha vira `<stdin>:?`), mas o próprio GCC diz, com
+`-Wnull-dereference` no arquivo pré-processado:
+
+```bash
+F=battle_tv
+arm-none-eabi-cpp -iquote include -Wno-trigraphs -DMODERN=1 -DTESTING=0 -DEMERALD \
+    -std=gnu17 src/$F.c | tools/preproc/preproc -i src/$F.c charmap.txt > /tmp/$F.i
+/usr/lib/gcc/arm-none-eabi/14.2.1/cc1 -quiet -mthumb -mthumb-interwork -O2 \
+    -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -std=gnu17 -Wnull-dereference \
+    -Wno-pointer-to-int-cast -Wno-strict-aliasing -o /dev/null /tmp/$F.i
+# src/battle_tv.c:1103:111: warning: null pointer dereference
+```
+
+Foi assim que os dois últimos saíram em dois minutos, depois de um bom tempo
+lendo desmontagem.
+
+### Os dois que eram bug de verdade, não só caminho impossível
+
+**`AddMovePoints` / `sPointsArray`.** A tabela só tem três entradas
+preenchidas (`PTS_EFFECTIVENESS`, `PTS_SET_UP`, `PTS_STATUS_DMG`); todo o
+resto é NULL. A linha do Light Screen lia `sPointsArray[PTS_LIGHT_SCREEN][0]`,
+que é `NULL[0]`. Não explodia porque `BattleTv_SetDataBasedOnMove` sai cedo
+sem `BATTLE_TYPE_LINK` — ou seja, só em batalha de link. O caso do Reflect
+logo acima soma um 3 literal; se o Light Screen também devesse pontuar, é
+trocar o NULL da tabela.
+
+**`BattleStringExpandPlaceholders` / `classString`.** No
+`B_TXT_ATK_TRAINER_NAME_WITH_CLASS`, a posição `B_POSITION_PLAYER_RIGHT` só
+preenche a classe com `BATTLE_TYPE_INGAME_PARTNER`. Fora de batalha com
+parceiro, essa posição é **o segundo Pokémon do próprio jogador numa dupla
+comum** — e aí `classString` ficava NULL e a cópia lia do endereço 0. Esse era
+o único dos oito em caminho de jogo normal.
+
 ## Resumo
 
 | # | endereço | função | arquivo | o que o GCC provou | alcançável hoje |

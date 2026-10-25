@@ -1163,6 +1163,15 @@ static enum Item ChooseRockSmashItem(const struct RockSmashItemTable *table)
     for (i = 0; i < count; i++)
         totalWeight += items[i].weight;
 
+    // A table with count 0, or with every weight at 0, turns the line below
+    // into a division by zero. GCC proves that path is undefined and compiles
+    // it into udf #255, so the game runs an illegal instruction instead of
+    // handing out an item (bug/B09). count 0 also breaks the loop underneath,
+    // because count is a u8 and count - 1 promotes to int -1, which the u32 i
+    // compares against as 0xFFFFFFFF.
+    if (count == 0 || totalWeight == 0)
+        return ITEM_NONE;
+
     roll = Random() % totalWeight;
     for (i = 0; i < count - 1; i++)
     {
@@ -1190,7 +1199,15 @@ void TryGetRockSmashItem(void)
         return;
     }
 
-    gSpecialVar_0x8000 = ChooseRockSmashItem(table);
+    enum Item item = ChooseRockSmashItem(table);
+
+    if (item == ITEM_NONE)
+    {
+        gSpecialVar_Result = FALSE;
+        return;
+    }
+
+    gSpecialVar_0x8000 = item;
     gSpecialVar_0x8001 = 1;
     gSpecialVar_Result = TRUE;
 }
@@ -1226,6 +1243,11 @@ static enum Item ChooseFishingItem(u8 rod)
 
     for (i = 0; i < count; i++)
         totalWeight += items[i].weight;
+
+    // Same shape as ChooseRockSmashItem. No trap in the ROM today only
+    // because both counts are ARRAY_COUNT of a non-empty static array.
+    if (count == 0 || totalWeight == 0)
+        return ITEM_NONE;
 
     roll = Random() % totalWeight;
     for (i = 0; i < count - 1; i++)

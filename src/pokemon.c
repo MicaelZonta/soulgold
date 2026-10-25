@@ -4252,6 +4252,11 @@ u8 *UseStatIncreaseItem(enum Item itemId)
 
     gPotentialItemEffectBattler = gBattlerInMenuId;
 
+    // Outside battle the Enigma Berry has no effect data while
+    // FREE_ENIGMA_BERRY is TRUE, so itemEffect is NULL here. See bug/B09.
+    if (itemEffect == NULL)
+        return gDisplayedStringBattle;
+
     if (itemEffect[0] & ITEM0_DIRE_HIT)
     {
         gBattlerAttacker = gBattlerInMenuId;
