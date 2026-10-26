@@ -93,6 +93,16 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 16,
+      "elevation": 3,
+      "var": "VAR_BIRTH_ISLAND_SCENE",
+      "var_value": "0",
+      "script": "BirthIsland_EventScript_SolieraArrives"
+    }
+  ],
   "bg_events": []
 }

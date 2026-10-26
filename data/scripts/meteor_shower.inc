@@ -28,6 +28,10 @@ VermilionPort_EventScript_MeteorShower::
 	call VermilionPort_EventScript_Streak
 	delay 15
 	call VermilionPort_EventScript_Streak
+	setvar VAR_0x8004, 1  @ pan vertical
+	setvar VAR_0x8005, 1  @ pan horizontal
+	setvar VAR_0x8006, 14  @ numero de tremores
+	setvar VAR_0x8007, 4  @ atraso entre eles
 	special ShakeCamera
 	waitstate
 	delay 40

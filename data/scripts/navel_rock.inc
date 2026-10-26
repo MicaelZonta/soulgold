@@ -23,6 +23,10 @@ NavelRock_EventScript_FireVent::
 	goto_if_set FLAG_NAVELROCK_FIRE_VENT, NavelRock_EventScript_FireVentOpen
 	msgbox NavelRock_Text_VentBlocked, MSGBOX_DEFAULT
 	closemessage
+	setvar VAR_0x8004, 1  @ pan vertical
+	setvar VAR_0x8005, 1  @ pan horizontal
+	setvar VAR_0x8006, 8  @ numero de tremores
+	setvar VAR_0x8007, 4  @ atraso entre eles
 	special ShakeCamera
 	waitstate
 	msgbox NavelRock_Text_VentOpened, MSGBOX_DEFAULT
@@ -44,6 +48,10 @@ NavelRock_EventScript_SeaBreach::
 	goto_if_set FLAG_NAVELROCK_SEA_BREACH, NavelRock_EventScript_SeaBreachOpen
 	msgbox NavelRock_Text_BreachClosed, MSGBOX_DEFAULT
 	closemessage
+	setvar VAR_0x8004, 1  @ pan vertical
+	setvar VAR_0x8005, 1  @ pan horizontal
+	setvar VAR_0x8006, 8  @ numero de tremores
+	setvar VAR_0x8007, 4  @ atraso entre eles
 	special ShakeCamera
 	waitstate
 	msgbox NavelRock_Text_BreachOpened, MSGBOX_DEFAULT

@@ -315,7 +315,15 @@ OlivineCity_EventScript_EonTicketWoman_NoShower::
 
 OlivineCity_EventScript_EonTicketWomanChamp::
 	msgbox OlivineCity_Text_EonTicketWoman2, MSGBOX_DEFAULT
+	checkitemspace ITEM_AURORA_TICKET
+	goto_if_eq VAR_RESULT, FALSE, OlivineCity_EventScript_EonTicketWoman_NoRoom
 	giveitem ITEM_AURORA_TICKET
+	closemessage
+	release
+	end
+
+OlivineCity_EventScript_EonTicketWoman_NoRoom::
+	msgbox OlivineCity_Text_EonTicketWoman1, MSGBOX_DEFAULT
 	closemessage
 	release
 	end

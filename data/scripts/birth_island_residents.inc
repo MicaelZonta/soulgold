@@ -75,6 +75,10 @@ BirthIsland_OnFrame::
 BirthIsland_EventScript_SolieraArrives::
 	lockall
 	delay 20
+	setvar VAR_0x8004, 1  @ pan vertical
+	setvar VAR_0x8005, 1  @ pan horizontal
+	setvar VAR_0x8006, 10  @ numero de tremores
+	setvar VAR_0x8007, 4  @ atraso entre eles
 	special ShakeCamera
 	waitstate
 	fadescreenswapbuffers FADE_TO_WHITE
