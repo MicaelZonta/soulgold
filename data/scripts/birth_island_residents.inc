@@ -3,7 +3,7 @@
 @ Os dois saem do Nexus e ate agora nao existiam em lugar nenhum do mundo:
 @ tinham ficha, time e sprite, e nenhuma presenca fora do loop pos-Necrozma.
 @
-@ Dois modos. ANTES de enfrentar o Deoxys a cena manda, e quem esta na ilha
+@ Dois modos. ANTES de enfrentar o Deoxys (VAR_BIRTH_ISLAND_SCENE < 2) a cena manda, e quem esta na ilha
 @ nao depende do dia: o Colress esta sempre la (foi ele que chegou primeiro) e
 @ a Soliera aparece quando VAR_BIRTH_ISLAND_SCENE passa de 0. DEPOIS do
 @ Deoxys a agenda (src/data/npc_schedule.h) assume e os dois se revezam:
@@ -25,7 +25,7 @@
 BirthIsland_Residents_OnTransition::
 	setflag FLAG_TEMP_B
 	setflag FLAG_TEMP_C
-	goto_if_set FLAG_BATTLED_DEOXYS, ScheduledNpcs_Evaluate
+	goto_if_ge VAR_BIRTH_ISLAND_SCENE, 2, ScheduledNpcs_Evaluate
 	clearflag FLAG_TEMP_B
 	goto_if_eq VAR_BIRTH_ISLAND_SCENE, 0, ScheduledNpcs_Done
 	clearflag FLAG_TEMP_C
@@ -111,14 +111,16 @@ BirthIsland_EventScript_Item_Meteorite::
 
 @ ---------------------------------------------------------------- Colress
 
+@ As duas falas de convite terminam perguntando, entao a pergunta e de
+@ verdade: antes a batalha comecava mesmo para quem respondesse que nao.
 BirthIsland_EventScript_Colress::
 	lock
 	faceplayer
-	goto_if_set FLAG_BATTLED_DEOXYS, BirthIsland_EventScript_ColressAfter
+	goto_if_ge VAR_BIRTH_ISLAND_SCENE, 2, BirthIsland_EventScript_ColressAfter
 	goto_if_unset FLAG_MET_COLRESS, BirthIsland_EventScript_ColressIntro
-	msgbox BirthIsland_Text_ColressBattleRequest, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_COLRESS, BirthIsland_Text_ColressDefeat
-	msgbox BirthIsland_Text_ColressDefeat, MSGBOX_AUTOCLOSE
+	msgbox BirthIsland_Text_ColressBattleRequest, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BirthIsland_EventScript_NoBattle
+	goto BirthIsland_EventScript_ColressFight
 	end
 
 BirthIsland_EventScript_ColressIntro:
@@ -128,7 +130,9 @@ BirthIsland_EventScript_ColressIntro:
 	end
 
 BirthIsland_EventScript_ColressAfter:
-	msgbox BirthIsland_Text_ColressAfterDeoxys, MSGBOX_DEFAULT
+	msgbox BirthIsland_Text_ColressAfterDeoxys, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BirthIsland_EventScript_NoBattle
+BirthIsland_EventScript_ColressFight:
 	trainerbattle_no_intro TRAINER_COLRESS, BirthIsland_Text_ColressDefeat
 	msgbox BirthIsland_Text_ColressDefeat, MSGBOX_AUTOCLOSE
 	end
@@ -138,17 +142,24 @@ BirthIsland_EventScript_ColressAfter:
 BirthIsland_EventScript_Soliera::
 	lock
 	faceplayer
-	goto_if_set FLAG_BATTLED_DEOXYS, BirthIsland_EventScript_SolieraAfter
-	msgbox BirthIsland_Text_SolieraBattleRequest, MSGBOX_DEFAULT
 	setflag FLAG_MET_SOLIERA
+	goto_if_ge VAR_BIRTH_ISLAND_SCENE, 2, BirthIsland_EventScript_SolieraAfter
+	msgbox BirthIsland_Text_SolieraBattleRequest, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BirthIsland_EventScript_NoBattle
+	goto BirthIsland_EventScript_SolieraFight
+	end
+
+BirthIsland_EventScript_SolieraAfter:
+	msgbox BirthIsland_Text_SolieraAfterDeoxys, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BirthIsland_EventScript_NoBattle
+BirthIsland_EventScript_SolieraFight:
 	trainerbattle_no_intro TRAINER_SOLIERA, BirthIsland_Text_SolieraDefeat
 	msgbox BirthIsland_Text_SolieraDefeat, MSGBOX_AUTOCLOSE
 	end
 
-BirthIsland_EventScript_SolieraAfter:
-	msgbox BirthIsland_Text_SolieraAfterDeoxys, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_SOLIERA, BirthIsland_Text_SolieraDefeat
-	msgbox BirthIsland_Text_SolieraDefeat, MSGBOX_AUTOCLOSE
+BirthIsland_EventScript_NoBattle:
+	closemessage
+	release
 	end
 
 @ ---------------------------------------------------------------- falas

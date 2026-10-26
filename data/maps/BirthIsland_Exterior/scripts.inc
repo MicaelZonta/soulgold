@@ -89,6 +89,11 @@ BirthIsland_Exterior_EventScript_Deoxys::
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_GARBAGEFLAG
+	@ A ilha sai do modo "cena" aconteca o que acontecer na batalha. A
+	@ FLAG_BATTLED_DEOXYS abaixo so e alcancada quando o jogador NAO vence nem
+	@ foge, entao ela nao serve para isso: quem vencesse sem capturar deixava
+	@ o Colress e a Soliera presos fora da agenda para sempre.
+	setvar VAR_BIRTH_ISLAND_SCENE, 2
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, BirthIsland_Exterior_EventScript_DefeatedDeoxys
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, BirthIsland_Exterior_EventScript_RanFromDeoxys

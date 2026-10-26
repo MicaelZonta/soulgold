@@ -19,9 +19,9 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x9,9,FLAG_TEMP_BRAM_TUTORIAL_VISIT,TEMP,EM_USO,6,1,2,Route30_House,MAPA_UNICO:Route30_House,this visit was the tutorial
 0xA,10,FLAG_TEMP_A,TEMP,EM_USO,2,19,18,CherrygroveCity;GoldenrodCity_DepartmentStore_5F;IcePath_B4F;MtMortar_Depths_1,GLOBAL(codigo),Unused Flag
 0xA,10,FLAG_TEMP_HIDE_BRAM,TEMP,EM_USO,0,1,5,Route30;Route30_House,GLOBAL(codigo),
-0xB,11,FLAG_TEMP_B,TEMP,EM_USO,0,11,13,BirthIsland_Exterior;NewBarkTown;RuinsOfAlph_Lab;SunMoonAltar,GLOBAL(codigo),Unused Flag
+0xB,11,FLAG_TEMP_B,TEMP,EM_USO,0,12,14,BirthIsland_Exterior;NewBarkTown;RuinsOfAlph_Lab;SunMoonAltar,GLOBAL(codigo),Unused Flag
 0xB,11,FLAG_TEMP_HIDE_LAUREL,TEMP,EM_USO,2,4,5,Route30;Route30_House,GLOBAL(codigo),
-0xC,12,FLAG_TEMP_C,TEMP,EM_USO,0,10,13,BirthIsland_Exterior;NewBarkTown;OlivineCity_LighthouseTop;SunMoonAltar,GLOBAL(codigo),Unused Flag
+0xC,12,FLAG_TEMP_C,TEMP,EM_USO,0,11,14,BirthIsland_Exterior;NewBarkTown;OlivineCity_LighthouseTop;SunMoonAltar,GLOBAL(codigo),Unused Flag
 0xC,12,FLAG_TEMP_HIDE_TILLY,TEMP,EM_USO,0,0,3,Route30;Route30_House,GLOBAL(codigo),
 0xD,13,FLAG_TEMP_D,TEMP,EM_USO,1,3,10,CinnabarIsland;MtEmber_Exterior_Frlg;NewSinjoh_HotSprings;SeafoamIslands_Gym,GLOBAL(codigo),Unused Flag
 0xD,13,FLAG_TEMP_HIDE_BUGSY,TEMP,EM_USO,0,1,3,Route30,GLOBAL(codigo),
@@ -428,7 +428,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1AA,426,FLAG_DAILY_BEAT_SILVER,SCRIPT/EVENT,EM_USO,3,3,6,IndigoPlateau_PokemonCenter,GLOBAL(codigo),
 0x1AB,427,FLAG_SUS_RAILWAY_DOOR,SCRIPT/EVENT,EM_USO,2,2,2,RailwayCave_2F,MAPA_UNICO:RailwayCave_2F,
 0x1AC,428,FLAG_DEFEATED_DEOXYS,SCRIPT/EVENT,EM_USO,3,6,10,BirthIsland_Exterior;PokemonLeague_HallOfFame,GLOBAL(codigo),HnS
-0x1AD,429,FLAG_BATTLED_DEOXYS,SCRIPT/EVENT,EM_USO,11,5,12,BirthIsland_Exterior;PokemonLeague_HallOfFame,GLOBAL(codigo),HnS
+0x1AD,429,FLAG_BATTLED_DEOXYS,SCRIPT/EVENT,EM_USO,8,5,11,BirthIsland_Exterior;PokemonLeague_HallOfFame,GLOBAL(codigo),HnS
 0x1AE,430,FLAG_SHOWN_EON_TICKET,SCRIPT/EVENT,EM_USO,4,4,7,,GLOBAL(codigo),
 0x1AF,431,FLAG_SHOWN_AURORA_TICKET,SCRIPT/EVENT,EM_USO,6,5,8,,GLOBAL(codigo),
 0x1B0,432,FLAG_SHOWN_OLD_SEA_MAP,SCRIPT/EVENT,EM_USO,4,4,7,,GLOBAL(codigo),
@@ -1917,7 +1917,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x118F,4495,FLAG_MET_COLRESS,CUSTOM,EM_USO,2,1,1,,GLOBAL(codigo),o Colress ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 0x1190,4496,FLAG_MET_SOLIERA,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 0x1191,4497,FLAG_BIRTH_ISLAND_ITEM_METEORITE,CUSTOM,EM_USO,0,0,1,BirthIsland_Exterior,MAPA_UNICO:BirthIsland_Exterior,o Meteorite da cratera ja foi pego; setada pelo finditem
-0x1192,4498,FLAG_SAW_METEOR_SHOWER,CUSTOM,EM_USO,2,1,2,OlivineCity,GLOBAL(codigo),"o jogador viu a chuva de meteoros no cais de Vermilion, a noite; e o que destrava o bilhete da Birth Island"
+0x1192,4498,FLAG_SAW_METEOR_SHOWER,CUSTOM,EM_USO,3,1,3,OlivineCity,GLOBAL(codigo),"o jogador viu a chuva de meteoros no cais de Vermilion, a noite; e o que destrava o bilhete da Birth Island"
 0x1193,4499,FLAG_NAVELROCK_FIRE_VENT,CUSTOM,EM_USO,3,1,1,,GLOBAL(codigo),a fenda do alto do Navel Rock foi desentupida; o calor sobe
 0x1194,4500,FLAG_NAVELROCK_SEA_BREACH,CUSTOM,EM_USO,4,1,1,,GLOBAL(codigo),a brecha do fundo do Navel Rock foi aberta; o mar desce
 0x1195,4501,FLAG_HIDE_VOLCANION,CUSTOM,EM_USO,0,3,2,NavelRock_SteamChamber,GLOBAL(codigo),recalculada em todo ON_TRANSITION da Camara do Vapor: so limpa com as duas valvulas abertas

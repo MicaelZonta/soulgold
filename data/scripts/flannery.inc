@@ -40,14 +40,26 @@ Flannery_EventScript_Roaming::
 	goto_if_set FLAG_MET_FLANNERY, Flannery_EventScript_Known
 	msgbox Flannery_Text_FirstMeeting, MSGBOX_DEFAULT
 	setflag FLAG_MET_FLANNERY
+	@ Se o jogador chega aqui ja com a leitura do Bill, ela reconhece o ritmo
+	@ na MESMA conversa. Antes era preciso falar duas vezes: a apresentacao
+	@ saia e o beat da corrente so era conferido na proxima.
+	goto_if_eq VAR_NAVELROCK_QUEST, 2, Flannery_EventScript_NavelRock
 	release
 	end
 
 Flannery_EventScript_Known:
 	goto_if_eq VAR_NAVELROCK_QUEST, 2, Flannery_EventScript_NavelRock
-	msgbox Flannery_Text_Known, MSGBOX_DEFAULT
+	@ A fala dela termina perguntando, entao a pergunta e de verdade: antes
+	@ a batalha comecava mesmo para quem respondesse que nao.
+	msgbox Flannery_Text_Known, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Flannery_EventScript_NoBattle
 	trainerbattle_no_intro TRAINER_FLANNERY, Flannery_Text_RematchDefeat
 	msgbox Flannery_Text_RematchAfter, MSGBOX_AUTOCLOSE
+	end
+
+Flannery_EventScript_NoBattle:
+	closemessage
+	release
 	end
 
 @ A leitura que o Bill mandou. Ela reconhece o ritmo na hora, porque e o que
