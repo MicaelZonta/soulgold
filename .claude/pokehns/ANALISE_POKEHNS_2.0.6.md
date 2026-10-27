@@ -565,8 +565,16 @@ snow/volcano/pond, apricorns/Kurt/gym rematch, rádio base (4 estações).
    opostas (eles GEN_3, nós GEN_LATEST) — nunca copiar `include/config/*`.
 
 ## Pendências abertas
-- [ ] Fechar a Parte D (tabela de lendários P × S) com o autor — inclui Red
-      do P × rival final do S no Summit, e times de ginásio (S ou P).
+- [x] Fechar a Parte D (tabela de lendários P × S) com o autor — fechada em
+      27/10/2026. Red × rival no Summit foi feito (`summit_red_rival.md`) e os
+      **times de ginásio de Kanto são os do HnS**, com +15 níveis para caber
+      entre a liga de Johto (68–71) e a revanche da Elite (85). Os 19
+      treinadores de encosto dos ginásios levaram o mesmo +15 e o Lance da
+      revanche, que tinha ficado em Lv69–70 no import, subiu para 86–88.
+      **Em aberto, decisão do autor:** o resto de Kanto continua na curva de
+      meio de jogo do HnS — 71 treinadores de rota com nível máximo médio 58,
+      165 tabelas de encontro com máximo médio 41, e Articuno/Zapdos/Moltres/
+      Jirachi em Lv50.
 - [x] `map_graph.py info SnowtopMountainOutside` antes das aves Galarian —
       conferido 25/10/2026: **alcançável** (New Bark → … → Route 39 → Route 49
       → Snowtop), com entrada por Route 49 e pela ChamponsRoad.
@@ -584,9 +592,9 @@ snow/volcano/pond, apricorns/Kurt/gym rematch, rádio base (4 estações).
       28: o `medir_linha.py` media `"a\nb"` como uma linha só e inventava
       estouro. Ferramenta corrigida (parte em `\n`/`\l`/`\p`) e as 11 reais
       requebradas.
-- [ ] `MAPSEC_ROUTE_50` (Sinjoh) e nosso `MAPSEC_ROUTE50` têm o mesmo nome
-      visível ("Route 50"); `Route49Sinjoh` divide `MAPSEC_ROUTE_49` com a
-      nossa Route 49. Resolver com o mapa regional de Sinjoh (cosmético).
+- [x] `MAPSEC_ROUTE_50` (Sinjoh) virou "Sinjoh Route 50" (f4cc4bf917) e a
+      `Route49Sinjoh` ganhou MAPSEC próprio com a página de Sinjoh do mapa
+      regional (f30b357d6f).
 - [x] `FLAG_NO_WILD_CATCHING` (0x1114) aposentada — virou `FLAG_UNUSED_1114`
       (24/10/2026).
 - [x] Johto usava `NAME_SILVER` (texto fixo) nas falas do rival — trocado por
