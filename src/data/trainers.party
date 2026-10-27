@@ -188,7 +188,7 @@ AI: Basic Trainer
 
 
 Azumarill
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 
@@ -258,45 +258,51 @@ Double Battle: No
 AI: Basic Trainer
 
 Golem @ Quick Claw
-Level: 66
+Level: 81
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Curse
-- Rock Slide
+- Stone Edge
 - Body Slam
 - Earthquake
 
 Aerodactyl @ Hard Stone
-Level: 66
+Level: 81
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Ancient Power
 - Sky Attack
 - Earthquake
-- Fire Blast
+- Fire Fang
 
 Kabutops @ Scope Lens
-Level: 66
+Level: 81
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Surf
 - Ancient Power
-- Cut
+- Night Slash
 - Swords Dance
 
-Archeops @ Focus Band
-Level: 66
+Omastar @ Focus Band
+Level: 81
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Ancient Power
+- Ice Beam
+- Surf
+- Toxic
 
-
-Garganacl @ Hard Stone
-Level: 66
+Relicanth @ Hard Stone
+Level: 81
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-
+- Hydro Pump
+- Rock Slide
+- Curse
+- Thunderbolt
 
 Kleavor @ Quick Claw
-Level: 66
+Level: 81
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Swords Dance
-- Rock Slide
-- Twineedle
+- Stone Axe
+- X Scissor
 - Agility
 
 === TRAINER_ROLAND ===
@@ -509,47 +515,47 @@ Double Battle: No
 AI: Basic Trainer
 
 Rhyperior @ Sitrus Berry
-Level: 69
+Level: 84
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Earthquake
-- Rock Slide
+- Drill Run
+- Stone Edge
 - Rest
 - Toxic
 
 Pidgeot @ Sharp Beak
-Level: 68
+Level: 83
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Sky Attack
-- Sand Attack
+- Hurricane
+- Giga Impact
 - Air Slash
 - Feather Dance
 
 Machamp @ Scope Lens
-Level: 67
+Level: 82
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Cross Chop
 - Rock Slide
 - Earthquake
-- Body Slam
+- Dual Chop
 
 Exeggutor @ Leftovers
-Level: 68
+Level: 83
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Leech Seed
-- Sleep Powder
+- Trick Room
 - Psychic
-- Giga Drain
+- Seed Bomb
 
 Tyranitar @ Focus Band
-Level: 68
+Level: 83
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Dragon Pulse
-- Dark Pulse
-- Focus Blast
-- Hyper Beam
+- Stone Edge
+- Payback
+- Crunch
+- Thunder Fang
 
 Arcanine @ Silk Scarf
-Level: 69
+Level: 84
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Flamethrower
 - Curse
@@ -1022,15 +1028,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Jumpluff @ Focus Band
-Level: 61
+Level: 76
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Giga Drain
+- Acrobatics
+- U Turn
 - Sleep Powder
-- Encore
 - Leech Seed
 
 Roserade
-Level: 60
+Level: 75
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Synthesis
 - Grass Whistle
@@ -1038,15 +1044,15 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Petal Dance
 
 Tangrowth
-Level: 60
+Level: 75
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Mega Drain
-- Bind
+- Power Whip
+- Wring Out
+- Grassy Terrain
 - Tickle
-- Block
 
 Venusaur @ Leftovers
-Level: 61
+Level: 76
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Sunny Day
 - Solar Beam
@@ -1054,20 +1060,20 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Sleep Powder
 
 Victreebel @ Poison Barb
-Level: 62
+Level: 77
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Sludge Bomb
-- Giga Drain
+- Leaf Blade
 - Swords Dance
 - Sleep Powder
 
 Bellossom @ Miracle Seed
-Level: 62
+Level: 77
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Sunny Day
-- Synthesis
-- Sleep Powder
-- Solar Beam
+- Petal Blizzard
+- Quiver Dance
+- Stun Spore
+- Attract
 
 === TRAINER_KAYLEE ===
 Name: Kaylee
@@ -1350,15 +1356,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Jumpluff
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Jumpluff
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Jumpluff
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_STANLY ===
@@ -1627,7 +1633,7 @@ AI: Smart Trainer
 Mugshot: Purple
 
 Salamence
-Level: 69
+Level: 87
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dragon Claw
 - Air Slash
@@ -1635,7 +1641,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Thunderbolt
 
 Dragonite @ Sitrus Berry
-Level: 68
+Level: 86
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Blizzard
 - Extreme Speed
@@ -1643,7 +1649,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hyper Beam
 
 Gyarados @ Quick Claw
-Level: 69
+Level: 87
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Hidden Power
 - Hyper Beam
@@ -1651,7 +1657,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fire Blast
 
 Charizard @ Leftovers
-Level: 68
+Level: 86
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Fire Blast
 - Crunch
@@ -1659,7 +1665,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Swords Dance
 
 Aerodactyl @ Scope Lens
-Level: 69
+Level: 87
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Sky Attack
 - Rock Slide
@@ -1667,7 +1673,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Iron Tail
 
 Altaria @ Silk Scarf
-Level: 70
+Level: 88
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dragon Dance
 - Play Rough
@@ -2758,11 +2764,11 @@ Double Battle: No
 AI: Basic Trainer
 
 Tentacruel
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Nidoqueen
-Level: 60
+Level: 75
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TIFFANY ===
@@ -3326,11 +3332,11 @@ Double Battle: No
 AI: Basic Trainer
 
 Pikachu
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Ampharos
-Level: 56
+Level: 71
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_SIMON ===
@@ -3648,24 +3654,32 @@ Items: Full Restore / Full Restore
 Double Battle: No
 AI: Basic Trainer
 
-Quagsire @ Quick Claw
-Level: 62
+Golduck
+Level: 77
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Surf
+- Aqua Tail
+- Psychic
+- Wonder Room
+- Cross Chop
+
+Quagsire @ Quick Claw
+Level: 77
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Muddy Water
 - Amnesia
 - Earthquake
 - Rain Dance
 
 Vaporeon @ Leftovers
-Level: 61
+Level: 76
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Surf
+- Hydro Pump
 - Ice Beam
 - Acid Armor
 - Shadow Ball
 
 Milotic
-Level: 61
+Level: 76
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Hydro Pump
 - Ice Beam
@@ -3673,15 +3687,15 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Sleep Talk
 
 Lapras @ Never Melt Ice
-Level: 62
+Level: 77
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Surf
+- Hydro Pump
 - Ice Beam
 - Rain Dance
 - Reflect
 
 Starmie @ Mystic Water
-Level: 63
+Level: 78
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Surf
 - Psychic
@@ -4089,23 +4103,23 @@ Double Battle: No
 AI: Basic Trainer
 
 Weezing @ Leftovers
-Level: 63
+Level: 78
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Sludge Bomb
-- Fire Blast
-- Destiny Bond
+- Flamethrower
+- Belch
 - Amnesia
 
 Muk
-Level: 62
+Level: 77
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Minimize
-- Sludge Bomb
+- Gunk Shot
 - Toxic
 - Acid Armor
 
-Toxapex
-Level: 61
+Swalot
+Level: 76
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Swallow
 - Stockpile
@@ -4113,26 +4127,26 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Spit Up
 
 Nidoqueen @ Quick Claw
-Level: 62
+Level: 77
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Earthquake
-- Sludge Bomb
-- Thunderbolt
-- Submission
+- Cross Poison
+- Thunder
+- Superpower
 
 Crobat
-Level: 63
+Level: 78
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Pursuit
-- Sludge Bomb
+- Air Slash
+- Venoshock
 - Toxic
 - Confuse Ray
 
-Muk Alola @ Bright Powder
-Level: 64
+Venomoth @ Bright Powder
+Level: 79
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Giga Drain
-- Psychic
+- Signal Beam
+- Poison Fang
 - Toxic
 - Double Team
 
@@ -4361,15 +4375,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Seadra
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Gyarados
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Seadra
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_KELLY ===
@@ -4514,15 +4528,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Rapidash @ Quick Claw
-Level: 66
+Level: 81
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Double Edge
+- Bounce
 - Sunny Day
-- Fire Blast
+- Flare Blitz
 - Solar Beam
 
 Magmortar @ Sitrus Berry
-Level: 65
+Level: 80
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thunder Punch
 - Fire Blast
@@ -4530,15 +4544,23 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Confuse Ray
 
 Houndoom @ Miracle Seed
-Level: 66
+Level: 81
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Fire Blast
 - Sunny Day
-- Solar Beam
+- Thunder Fang
 - Crunch
 
+Magcargo @ Leftovers
+Level: 80
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Flamethrower
+- Recover
+- Amnesia
+- Hypnosis
+
 Torkoal @ White Herb
-Level: 67
+Level: 82
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Curse
 - Iron Defense
@@ -4546,7 +4568,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Heat Wave
 
 Camerupt @ Charcoal
-Level: 67
+Level: 82
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Earth Power
 - Eruption
@@ -4754,15 +4776,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Electrode @ Focus Band
-Level: 57
+Level: 72
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Thunder
+- Shock Wave
 - Rain Dance
 - Thunder Wave
 - Explosion
 
 Magnezone
-Level: 59
+Level: 74
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thunder
 - Reflect
@@ -4770,23 +4792,23 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Double Edge
 
 Lanturn @ Leftovers
-Level: 58
+Level: 73
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Surf
-- Thunderbolt
-- Ice Beam
-- Confuse Ray
+- Ion Deluge
+- Hydro Pump
+- Discharge
+- Confuse ray
 
 Manectric
-Level: 58
+Level: 73
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Wild Charge
 - Charge
-- Thunder
-- Thunder Wave
 - Crunch
+- Electric Terrain
 
 Electivire @ Scope Lens
-Level: 59
+Level: 74
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thunderbolt
 - Fire Punch
@@ -4794,7 +4816,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Submission
 
 Raichu @ Magnet
-Level: 60
+Level: 75
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Thunder
 - Rain Dance
@@ -5704,15 +5726,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Unown
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Mr Mime
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Exeggutor
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENT ===
@@ -6306,15 +6328,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Venusaur
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Qwilfish
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Muk
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_WALT ===
@@ -6361,11 +6383,11 @@ Double Battle: No
 AI: Basic Trainer
 
 Bellossom
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Exeggutor
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 
@@ -6786,11 +6808,11 @@ Double Battle: No
 AI: Basic Trainer
 
 Cloyster
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Corsola
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BORIS ===
@@ -6954,7 +6976,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Alakazam
-Level: 60
+Level: 75
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUNG ===
@@ -7351,7 +7373,7 @@ AI: Basic Trainer
 
 
 Espathra
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 
@@ -7851,19 +7873,19 @@ Double Battle: No
 AI: Basic Trainer
 
 Magneton
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Electrode
-Level: 55
+Level: 70
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Magneton
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Jolteon
-Level: 55
+Level: 70
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DENISE ===
@@ -8009,15 +8031,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Dugtrio
-Level: 60
+Level: 75
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Sandslash
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Donphan
-Level: 60
+Level: 75
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DON ===
@@ -8368,23 +8390,23 @@ Double Battle: No
 AI: Basic Trainer
 
 Mr Mime @ Quick Claw
-Level: 65
+Level: 80
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Magical Leaf
 - Psychic
-- Thunder Wave
-- Encore
-- Ice Punch
+- Substitute
+- Reflect
 
-Indeedee
-Level: 64
+Jynx
+Level: 79
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Psychic
-- Calm Mind
-- Energy Ball
-- Dazzling Gleam
+- Ice Beam
+- Lovely Kiss
+- Grass Knot
 
 Slowbro @ Chesto Berry
-Level: 64
+Level: 79
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Rest
 - Sleep Talk
@@ -8392,7 +8414,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Surf
 
 Wobbuffet @ Leftovers
-Level: 64
+Level: 79
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Mirror Coat
 - Counter
@@ -8400,7 +8422,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Destiny Bond
 
 Espeon
-Level: 65
+Level: 80
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Psychic
 - Morning Sun
@@ -8408,12 +8430,12 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Power Gem
 
 Alakazam @ Twisted Spoon
-Level: 66
+Level: 81
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Shadow Ball
 - Psychic
 - Recover
-- Thunder Punch
+- Calm Mind
 
 === TRAINER_RIVAL_CHIKORITA_5 ===
 Name: {RIVAL}
@@ -8863,15 +8885,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Vileplume
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Arbok
-Level: 59
+Level: 74
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Vileplume
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRANT ===
@@ -9277,19 +9299,19 @@ Double Battle: No
 AI: Basic Trainer
 
 Electrode
-Level: 56
+Level: 71
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Electrode
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Electrode
-Level: 56
+Level: 71
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Electrode
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RIVAL_CHIKORITA_4 ===
@@ -9357,11 +9379,11 @@ Double Battle: Yes
 AI: Basic Trainer
 
 Victreebel
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Vileplume
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RIVAL_CYNDAQUIL_1 ===
@@ -9723,11 +9745,11 @@ Double Battle: No
 AI: Basic Trainer
 
 Tentacruel
-Level: 57
+Level: 72
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Nidoking
-Level: 60
+Level: 75
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_REX ===
@@ -9921,15 +9943,15 @@ Double Battle: No
 AI: Basic Trainer
 
 Noctowl
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Slowbro
-Level: 59
+Level: 74
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Xatu
-Level: 58
+Level: 73
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MARKUS ===
@@ -10717,7 +10739,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Exeggutor
-Level: 56
+Level: 71
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ERIC ===
