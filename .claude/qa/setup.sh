@@ -13,6 +13,15 @@ if ! command -v arm-none-eabi-gcc >/dev/null; then
     binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev \
     liblua5.4-dev zlib1g-dev libsqlite3-dev libelf-dev libedit-dev pkg-config >/dev/null
 fi
+# O bloco acima so roda quando falta o toolchain da ROM. Numa maquina que ja
+# compila o SoulGold, o liblua5.4-dev nunca era instalado - e sem ele o cmake
+# monta um mGBA sem Lua: o qa-headless sobe, o driver.lua nao carrega e o QA
+# inteiro para (achado no QA de 27/10/2026). Por isso o Lua tem checagem propria.
+if ! pkg-config --exists lua5.4 2>/dev/null && [ ! -f /usr/include/lua5.4/lua.h ]; then
+  apt-get update -qq
+  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    liblua5.4-dev pkg-config >/dev/null
+fi
 python3 -c "import PIL" 2>/dev/null || pip install -q pillow
 
 # mGBA headless com Lua (libzip desligado: o cmake do Ubuntu quebra com ele)
