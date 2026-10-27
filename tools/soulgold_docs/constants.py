@@ -275,19 +275,16 @@ TYPE_RESIST_BERRY_ITEMS = (
     "ITEM_ROSELI_BERRY",
 )
 
+# Mapas que o site ignora. Ate 25/10/2026 esta lista escondia TODO o Kanto,
+# porque o SoulGold tinha fechado o acesso a ele; com o Kanto do HnS adotado
+# (197 mapas, alcancaveis a partir do quarto do jogador) a lista passou a
+# mentir: Articuno do Seafoam, Zapdos da Route 10, Koraidon, Miraidon, Jirachi
+# do Mt. Moon e os treinadores/itens/encontros de Kanto inteiro apareciam como
+# "sem fonte". Agora so ficam de fora os mapas que o jogador nao pode mesmo
+# visitar: os grupos fora da ROM (rom_excluded_groups de map_groups.json) e os
+# mapas de desenvolvimento. Reachability de verdade e assunto do
+# dev_scripts/map_graph.py.
 EXCLUDED_TRAINER_MAP_GROUPS = {
-    "gMapGroup_IndoorPallet",
-    "gMapGroup_IndoorViridian",
-    "gMapGroup_IndoorPewter",
-    "gMapGroup_IndoorCerulean",
-    "gMapGroup_IndoorVermilion",
-    "gMapGroup_IndoorLavender",
-    "gMapGroup_IndoorCeladon",
-    "gMapGroup_IndoorSaffron",
-    "gMapGroup_IndoorFuchsia",
-    "gMapGroup_IndoorCinnabar",
-    "gMapGroup_IndoorIndigo",
-    "gMapGroup_IndoorKantoRoutes",
     "gMapGroup_Emerald1",
     "gMapGroup_Emerald2",
     "gMapGroup_Emerald3",
@@ -296,59 +293,13 @@ EXCLUDED_TRAINER_MAP_GROUPS = {
 }
 
 EXCLUDED_TRAINER_MAP_NAMES = {
-    "PalletTown",
-    "ViridianCity",
-    "PewterCity",
-    "CeruleanCity",
-    "VermilionCity",
-    "LavenderTown",
-    "CeladonCity",
-    "SaffronCity",
-    "FuchsiaCity",
-    "CinnabarIsland",
-    "IndigoPlateau",
-    "Route1",
-    "Route2",
-    "Route3",
-    "Route4",
-    "Route5",
-    "Route6",
-    "Route7",
-    "Route8",
-    "Route9",
-    "Route10",
-    "Route11",
-    "Route12",
-    "Route13",
-    "Route14",
-    "Route15",
-    "Route16",
-    "Route17",
-    "Route18",
-    "Route19",
-    "Route20",
-    "Route21",
-    "Route22",
-    "Route23",
-    "Route24",
-    "Route25",
-    "OneIsland",
-    "OneIsland_KindleRoad_Frlg",
-    "OneIsland_TreasureBeach_Frlg",
-    "OneIsland_KindleRoad_EmberSpa_Frlg",
+    "NewMap1",
+    "TestingMap",
+    "Trees",
     "Saffron_Temp",
 }
 
-EXCLUDED_TRAINER_MAP_PREFIXES = (
-    "DiglettsCave",
-    "MtEmber",
-    "MtMoon",
-    "PewterCity",
-    "RockTunnel",
-    "Route19_Cave",
-    "SeafoamIslands",
-    "ViridianForest",
-)
+EXCLUDED_TRAINER_MAP_PREFIXES = ()
 
 ALWAYS_INCLUDED_TRAINER_CONSTANTS = {
     "TRAINER_WILL_1",

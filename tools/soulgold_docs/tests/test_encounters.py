@@ -20,13 +20,17 @@ class WildEncounterAggregationTests(unittest.TestCase):
 
         self.assertNotIn("MAP_BATTLE_CAFE", {encounter["map"] for encounter in encounters})
 
-    def test_kanto_and_legacy_encounters_are_hidden(self) -> None:
+    def test_kanto_encounters_are_listed(self) -> None:
+        # Este teste pedia o contrario ate 27/10/2026: Kanto estava escondido do
+        # site porque o SoulGold tinha fechado o acesso a ele. Com o Kanto do HnS
+        # adotado, esconder passou a ser a mentira.
         encounters = parse_wild_encounters({})
         maps = {encounter["map"] for encounter in encounters}
 
-        self.assertNotIn("MAP_VERMILION_CITY_PORT_OUTSIDE", maps)
-        self.assertNotIn("MAP_SOUTHERN_ISLAND_EXTERIOR", maps)
         self.assertIn("MAP_ROUTE28", maps)
+        self.assertIn("MAP_ROUTE10", maps)
+        self.assertIn("MAP_VERMILION_CITY_PORT_OUTSIDE", maps)
+        self.assertIn("MAP_SEAFOAM_ISLANDS_B1F", maps)
 
     def test_repeated_rotom_slots_are_combined(self) -> None:
         encounters = parse_wild_encounters(

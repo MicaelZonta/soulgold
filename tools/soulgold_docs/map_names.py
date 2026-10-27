@@ -93,8 +93,11 @@ def map_constant_display_name(map_constant: str) -> str:
 
 
 def is_docs_excluded_map(map_name: str, group_name: str) -> bool:
+    # O sufixo _Frlg nao quer dizer "fora do jogo": os 21 mapas _Frlg (One
+    # Island e Mt. Ember) estao na ROM e tem conteudo vivo - o marinheiro do
+    # Mystic Ticket, o Moltres do Summit, a Flannery em rota pelo Mt. Ember.
     if group_name in EXCLUDED_TRAINER_MAP_GROUPS:
         return True
     if map_name in EXCLUDED_TRAINER_MAP_NAMES:
         return True
-    return map_name.endswith("_Frlg") or map_name.startswith(EXCLUDED_TRAINER_MAP_PREFIXES)
+    return bool(EXCLUDED_TRAINER_MAP_PREFIXES) and map_name.startswith(EXCLUDED_TRAINER_MAP_PREFIXES)

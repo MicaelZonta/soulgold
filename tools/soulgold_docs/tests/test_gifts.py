@@ -12,22 +12,27 @@ from tools.soulgold_docs.parsers.gifts import FOSSIL_REVIVAL_ITEMS, add_gift_spe
 
 
 class GiftLocationTests(unittest.TestCase):
-    def test_arceus_is_identified_as_oaks_pokedex_completion_reward(self) -> None:
+    def test_oaks_pokedex_reward_is_the_manaphy_mystery_egg(self) -> None:
+        # O ovo do Oak era de Arceus. Decisao de 19/10/2026: o Arceus vem das
+        # Sinjoh Ruins e o Oak passou a dar o Mystery Egg (Manaphy).
         locations = {}
 
         add_gift_species_locations(  # type: ignore[arg-type]
             locations,
-            {"SPECIES_ARCEUS_NORMAL": object()},
+            {"SPECIES_MANAPHY": object(), "SPECIES_ARCEUS_NORMAL": object()},
         )
 
-        self.assertEqual(len(locations["SPECIES_ARCEUS_NORMAL"]), 1)
-        location = locations["SPECIES_ARCEUS_NORMAL"][0]
-        self.assertEqual(location["map"], "MAP_GOLDENROD_CITY_RADIO_TOWER_2F")
-        self.assertEqual(
-            location["name"],
-            "Gift from Oak (Pokédex completion reward)",
-        )
-        self.assertEqual(location["method"], "Gift Egg")
+        oak = [
+            location for location in locations["SPECIES_MANAPHY"]
+            if location["map"] == "MAP_GOLDENROD_CITY_RADIO_TOWER_2F"
+        ]
+        self.assertEqual(len(oak), 1)
+        self.assertEqual(oak[0]["name"], "Gift from Oak (Pokédex completion reward)")
+        self.assertEqual(oak[0]["method"], "Gift Egg")
+        self.assertFalse(any(
+            location["map"] == "MAP_GOLDENROD_CITY_RADIO_TOWER_2F"
+            for location in locations.get("SPECIES_ARCEUS_NORMAL", [])
+        ))
 
     def test_achievement_rewards_include_their_trophy_milestones(self) -> None:
         expected = {
@@ -82,14 +87,20 @@ class GiftLocationTests(unittest.TestCase):
                 self.assertEqual(exchange["maxLevel"], 15)
 
     def test_battle_cafe_prizes_are_point_exchange_sources(self) -> None:
+        # O Cafe vai sendo esvaziado: toda especie que ganha fonte no mundo sai
+        # do balcao de pontos (politica do autor, 19/10/2026). Ja sairam as aves
+        # de Galar, os quatro Tapus, Koraidon e Miraidon; sobraram as Forcas da
+        # Natureza.
         prizes = {
-            "SPECIES_ARTICUNO_GALAR",
-            "SPECIES_ZAPDOS_GALAR",
-            "SPECIES_MOLTRES_GALAR",
             "SPECIES_TORNADUS_INCARNATE",
             "SPECIES_THUNDURUS_INCARNATE",
             "SPECIES_LANDORUS_INCARNATE",
             "SPECIES_ENAMORUS_INCARNATE",
+        }
+        removed = {
+            "SPECIES_ARTICUNO_GALAR",
+            "SPECIES_ZAPDOS_GALAR",
+            "SPECIES_MOLTRES_GALAR",
             "SPECIES_TAPU_KOKO",
             "SPECIES_TAPU_LELE",
             "SPECIES_TAPU_BULU",
@@ -98,7 +109,7 @@ class GiftLocationTests(unittest.TestCase):
             "SPECIES_KORAIDON",
         }
         other_species = {"SPECIES_DIANCIE", "SPECIES_ZAPDOS"}
-        by_species = {species: object() for species in prizes | other_species}
+        by_species = {species: object() for species in prizes | removed | other_species}
         locations = {}
 
         for _ in range(2):
@@ -119,6 +130,13 @@ class GiftLocationTests(unittest.TestCase):
                     "maxLevel": 70,
                     "rate": None,
                 }])
+
+        for species in removed:
+            with self.subTest(removed=species):
+                self.assertFalse(any(
+                    location["map"] == "MAP_BATTLE_CAFE"
+                    for location in locations.get(species, [])
+                ))
 
         diancie = [
             location for location in locations["SPECIES_DIANCIE"]
@@ -189,10 +207,15 @@ class ScriptedEncounterTests(unittest.TestCase):
                 self.assertEqual(matches[0]["method"], "Static encounter")
                 self.assertIsNone(matches[0]["rate"])
 
-    def test_live_kanto_snorlax_is_not_listed(self) -> None:
+    def test_live_kanto_snorlax_is_listed(self) -> None:
+        # Kanto saiu da lista de exclusao do site em 27/10/2026, junto com a
+        # adocao do Kanto do HnS: o Snorlax da Vermilion e conteudo alcancavel.
         locations = {}
         add_scripted_encounter_species_locations(locations, {"SPECIES_SNORLAX": object()})
-        self.assertNotIn("SPECIES_SNORLAX", locations)
+        matches = [row for row in locations["SPECIES_SNORLAX"]
+                   if row["map"] == "MAP_VERMILION_CITY"]
+        self.assertEqual(len(matches), 1)
+        self.assertEqual(matches[0]["minLevel"], 50)
 
     def test_live_route41_tentacruel_guardians_are_not_listed(self) -> None:
         locations = {}
