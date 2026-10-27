@@ -4,6 +4,8 @@ RuinsOfAlph_Lab_MapScripts::
 	.byte 0
 
 RuinsOfAlph_Lab_OnTransition:
+	@ Anfitriao de personagem de agenda (Colress/Soliera):
+	@ data/scripts/birth_island_residents.inc
 	call ScheduledNpcs_OnTransition
 	end
 

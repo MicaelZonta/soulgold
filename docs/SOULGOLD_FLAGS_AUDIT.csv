@@ -829,7 +829,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x33A,826,FLAG_HIDE_ROUTE14_EUSINE,SCRIPT/EVENT,EM_USO,0,5,7,Route14,GLOBAL(codigo),
 0x33B,827,FLAG_HIDE_ROUTE14_SUICUNE,SCRIPT/EVENT,EM_USO,0,5,9,Route14;VermilionCity,GLOBAL(codigo),
 0x33C,828,FLAG_IN_KANTO_SAFARI_ZONE,SCRIPT/EVENT,EM_USO,4,10,9,FuchsiaCity_SafariZoneEntrance,GLOBAL(codigo),
-0x33D,829,FLAG_IS_KANTO_CHAMPION,SCRIPT/EVENT,EM_USO,33,4,26,FuchsiaCity_SafariZoneEntrance;OlivineCity;PalletTown_Lab,GLOBAL(codigo),
+0x33D,829,FLAG_IS_KANTO_CHAMPION,SCRIPT/EVENT,EM_USO,33,4,27,FuchsiaCity_SafariZoneEntrance;OlivineCity;PalletTown_Lab,GLOBAL(codigo),
 0x33E,830,FLAG_HIDE_LEAGUE_BLACKBELT,SCRIPT/EVENT,EM_USO,0,7,11,IndigoPlateau_PokemonCenter;PokemonLeague_HallOfFame;ViridianCity_Gym,GLOBAL(codigo),
 0x33F,831,FLAG_GOT_ROUTE2_NUGGET,SCRIPT/EVENT,EM_USO,2,3,5,Route2_House,GLOBAL(codigo),
 0x340,832,FLAG_GOT_VIRIDIAN_TM_SLUDGE_BOMB,SCRIPT/EVENT,EM_USO,1,1,1,ViridianCity,MAPA_UNICO:ViridianCity,

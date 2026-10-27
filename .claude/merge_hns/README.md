@@ -25,6 +25,8 @@ existente), antes de reportar.
 | `bug_alola_trava.md` | **Resolvido** (24/10): Melemele Isle travava ao entrar — porta de Alola fora de `sDoorAnimGraphicsTable`, `gfx->size` em NULL virava `udf` |
 | `ssaqua_ida_e_volta.md` | S.S. Aqua nos dois sentidos e a retirada do flagheap que apagava progresso de Kanto no desembarque |
 | `k8_plaquinhas_e_decap.md` | K8: decap do texto HnS (`dev_scripts/decap_texto.py`) e plaquinhas `{SPEAKER}` |
+| `navel_rock_e_birth_island.md` | As duas ilhas que entraram na ROM: Deoxys, Volcanion, a agenda de NPC e a armadilha do `.inc` gerado |
+| `kanto_no_site.md` | A lista que escondia Kanto inteiro do site de docs, e a suíte de testes que estava vermelha desde o import |
 
 Branch: `kanto-hns-adoption` (fork `mysoulgoldfork`); rollback: tag
 `pre-kanto-hns`. Um commit por fase. Fonte HnS:

@@ -4,7 +4,7 @@ Inventário das formas alternativas e dos itens de forma do SoulGold. Existe
 para duas coisas: saber **onde** cada forma se consegue hoje, e lembrar quais
 fontes são **provisórias** e ainda esperam um lugar ou evento definitivo.
 
-Atualizado em 28/09/2026. Ao mudar uma fonte, mude aqui, rode o site
+Atualizado em 27/10/2026. Ao mudar uma fonte, mude aqui, rode o site
 (`~/.venvs/soulgold-docs/bin/python tools/soulgold_docs/build_docs.py`) e
 confira que a forma não voltou a aparecer "sem fonte".
 
@@ -29,16 +29,23 @@ gerações — a fonte deles é serem iniciais) e **roamer** (Raikou, Entei e
 Suicune vagam por Johto desde a Burned Tower, nível 40; os covis de Hoenn deles
 estão fora da ROM).
 
-Retrato de 29/09/2026 (famílias, pela forma de nome mais curto):
+Retrato de 27/10/2026, depois da adoção do Kanto do HnS (famílias, pela forma
+de nome mais curto; saída de `dev_scripts/fontes_legitimas.py`):
 
 | Só vem de | Quantas | Quem |
 |---|---|---|
-| Nexus | 49 | UBs (Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Stakataka, Blacephalon), Celebi, Heatran, Regieleki, Regidrago, Reshiram, Zekrom, Kyurem, Keldeo, Xerneas, Yveltal, Zygarde, Volcanion, Zacian, Zamazenta, Eternatus, Calyrex/Glastrier/Spectrier, Deoxys, Chi-Yu, Ting-Lu e Wo-Chien, Okidogi e Munkidori (Loyal Three), Pecharunt, Terapagos — e as formas por item que só o Nexus dá (Drives do Genesect, DNA Splicers, Reins of Unity, Zygarde Cube) |
-| Gachapon | 12 | Togepi, Cleffa, Sentret, Lotad, Seedot, Remoraid, Spinda, Castform, Relicanth, Clamperl/Huntail, Pichu Spiky-eared, Gimmighoul Roaming |
-| Battle Cafe (e Nexus) | 18 | Tapus, aves de Galar, Koraidon, Miraidon, o quarteto das Forças da Natureza (Incarnate e Therian), Diancie |
+| Nexus | 29 | UBs (Blacephalon, Buzzwole, Kartana, Xurkitree), Eternatus, Heatran, Pecharunt, Reshiram, Zekrom, Xerneas, Yveltal, Zacian, Zamazenta, Chi-Yu — e as formas por item que só o Nexus dá: Deoxys Attack/Defense/Speed, Kyurem Black/White, Calyrex Ice/Shadow Rider, Zygarde 10%/50% e Power Construct, os quatro Drives do Genesect |
+| Battle Cafe (e Nexus) | 9 | o quarteto das Forças da Natureza (Incarnate e Therian) e Diancie |
 | Troféus (Route 40) | 5 | Floette Eternal, Greninja (Battle Bond), Magearna Original, Poipole, Zarude |
+| Gachapon | 2 | Togepi, Gimmighoul Roaming |
 | Game Corner + Gachapon | 1 | Porygon |
-| **Nada** | — | só formas de batalha (Castform, Cherrim, Cramorant, Minior Core, Palafin Hero, Xerneas Active, Greninja Ash) |
+| **Nada** | — | formas de batalha (Castform, Cherrim, Cramorant, Minior Core, Palafin Hero, Xerneas Active, Greninja Ash) e **Phione**, que desde 19/10/2026 só vem de breeding de Manaphy |
+
+O import do Kanto/HnS pagou quase toda a dívida de uma vez: as famílias presas
+ao Nexus caíram de 47 para 29 e as presas ao Gachapon de 12 para 2 (Safari de
+Fuchsia, Pichu de orelha espetada, Clamperl, Remoraid, Sentret, Cleffa, Lotad,
+Seedot, Spinda, Castform e Relicanth ganharam encontro de verdade). Saíram
+também do Café: aves de Galar, os quatro Tapus, Koraidon e Miraidon.
 
 Ao criar evento, rota ou NPC novo, olhe esta tabela: é o estoque de espécies
 esperando um lugar.
@@ -63,7 +70,7 @@ esperando um lugar.
 | Zygarde Cube | Zygarde 10% / Power Construct | Nexus, boss Zygarde, uma vez | `Nexus_EventScript_Zygarde_AfterBoss` |
 | N-Solarizer / N-Lunarizer | Necrozma Dusk Mane / Dawn Wings | revanche diária da Lusamine no Altar (seg/qua/sáb): 1ª vitória dá o Solarizer, a seguinte o Lunarizer, cada um com fala própria | `SunMoonAltar_EventScript_LusamineFusionItem` |
 | Reins of Unity | Calyrex Ice/Shadow Rider (fundindo com Glastrier/Spectrier, que também vêm do Nexus) | Nexus, boss Calyrex, enquanto não tiver | `Nexus_EventScript_Calyrex_AfterBoss` |
-| Meteorite | Deoxys Attack/Defense/Speed | **fora da ROM** (Mt. Chimney). As Formes vêm do fragmento do Nexus, sorteadas | `sDeoxysFragmentForms`, `src/nexus.c` |
+| Meteorite | Deoxys Attack/Defense/Speed | **cratera da Birth Island** (`finditem`, 25/10/2026) — um por save. O de Mt. Chimney continua fora da ROM; as Formes também vêm do fragmento do Nexus, sorteadas | `data/scripts/birth_island_residents.inc`, `sDeoxysFragmentForms` em `src/nexus.c` |
 | Nectars (4) | Oricorio Baile/Pom-Pom/Pa'u/Sensu | loja de Olivine City | `OlivineCity/scripts.inc` |
 | Máscaras (3) | Ogerpon Wellspring/Hearthflame/Cornerstone | Kitakami Temple Storage | `Kitakami_Temple_Storage` |
 | Chipped Pot / Cracked Pot | Polteageist Antique / Phony | portão da Safari Zone | `SafariZoneGate` |

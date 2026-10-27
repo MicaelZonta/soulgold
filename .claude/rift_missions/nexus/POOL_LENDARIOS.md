@@ -17,17 +17,17 @@ Conferido no código em 25/09/2026.
 
 | | Espécies |
 |---|---|
-| ✅ Tem método | **99** |
-| ⚠️ Só em mapa fora da ROM | **1** |
+| ✅ Tem método | **101** |
+| ⚠️ Só em mapa fora da ROM | **0** |
 | 🚫 Só batalha sem captura | **9** |
-| ❌ Nenhum método | **19** |
+| ❌ Nenhum método | **18** |
 | **Total** | **128** |
 
 | Categoria | Total | ✅ | Sem método (⚠️ + 🚫 + ❌) |
 |---|---|---|---|
 | Lendário restrito | 27 | 17 | 10 |
 | Sub-lendário | 47 | 41 | 6 |
-| Mítico | 23 | 19 | 4 |
+| Mítico | 23 | 21 | 2 |
 | Ultra Beast | 11 | 2 | 9 |
 | Paradoxo | 20 | 20 | 0 |
 
@@ -193,7 +193,6 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 
 | Espécie | Categoria | Situação |
 |---|---|---|
-| **Deoxys** | Mítico | ⚠️ só em mapa fora da ROM: `BirthIsland_Exterior` |
 | **Reshiram** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Zekrom** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Kyurem** | Lendário restrito | ✅ Boss Fight — `SnowtopMountain_B1F_2` Lv80, 4 barras (25/10/2026), na câmara que era do Regice |
@@ -201,7 +200,6 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Xerneas** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Yveltal** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
 | **Zygarde** | Lendário restrito | ❌ nenhuma referência de obtenção no código |
-| **Volcanion** | Mítico | ❌ **sem fonte de novo** — chegou a ficar em `SnowtopMountain_B1F_2` em 25/10/2026, mas o autor preferiu o Kyurem ali (caverna de gelo). Precisa de casa |
 | **Nihilego** | Ultra Beast | 🚫 só aparece em batalha sem captura: `NewBarkTown` |
 | **Buzzwole** | Ultra Beast | 🚫 só aparece em batalha sem captura: `BlackthornCity` |
 | **Pheromosa** | Ultra Beast | 🚫 só aparece em batalha sem captura: `BlackthornCity` |
@@ -297,13 +295,14 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 
 | Espécie | Como obter | Formas no engine |
 |---|---|---|
-| **Arceus** | Boss Fight em duas fases — `SinjohRuins_ArceusRoom` (fase 1 Arceus-Steel Lv100 NÃO capturável, 3 barras; fase 2 Arceus Lv80 capturável, 3 barras) (Fase 8). **O ovo do Oak (`GoldenrodCity_RadioTower_2F`) foi removido em 19/10/2026: com a Johto Dex completa o Oak agora dá um inicial de Kanto (Bulbasaur/Charmander/Squirtle Lv5).** |  |
+| **Arceus** | Boss Fight em duas fases — `SinjohRuins_ArceusRoom` (fase 1 Arceus-Steel Lv100 NÃO capturável, 3 barras; fase 2 Arceus Lv80 capturável, 3 barras) (Fase 8). **O ovo de Arceus do Oak (`GoldenrodCity_RadioTower_2F`) saiu em 19/10/2026; com a Johto Dex completa o Oak passou a dar o Mystery Egg, que é de Manaphy (conferido no código em 27/10/2026 — a linha antiga dizia "inicial de Kanto" e isso nunca foi implementado).** |  |
 | **Genesect** | boss (bosslegendaryencounter) — `AbandonedRocketHideoutBackroom` Lv70 |  |
 | **Mew** | encontro estático — `FarawayIslandDepths` Lv55 |  |
 | **Celebi** | encontro estático (seteventmon) — `IlexForest` Lv40 |  |
 | **Jirachi** | Boss Fight — `MtMoon_Outside` Lv50 (fonte do HnS, Parte D). O ovo do `MtSilver_SummitDay` é de **Terapagos**, não de Jirachi: a troca foi feita em 19/10/2026 e esta linha estava velha (conferido no código em 25/10/2026) |  |
 | **Phione** | selvagem (fishing) — `Route33South_2` Lv5-5; selvagem (fishing) — `Route33South_2` Lv40-45; breeding: ovo de Manaphy |  |
 | **Manaphy** | evolui de Phione (Lv58) |  |
+| **Deoxys** | Boss Fight — `BirthIsland_Exterior` Lv70, 3 barras (25/10/2026). A ilha entrou na ROM; o Aurora Ticket vem da mulher de Olivine, que só fala depois da chuva de meteoros no `VermilionCity_PortOutside` (noite + `FLAG_IS_KANTO_CHAMPION`), e a balsa sai do `VermilionCity_PortInside` | DEOXYS_NORMAL, DEOXYS_ATTACK, DEOXYS_DEFENSE, DEOXYS_SPEED |
 | **Darkrai** | boss (bosslegendaryencounter) — `DarkraiInnFinalRoom` Lv70 | DARKRAI, DARKRAI_MEGA |
 | **Shaymin** | encontro estático — `DreamGarden` Lv50 | SHAYMIN_LAND, SHAYMIN_SKY |
 | **Victini** | presente (givemon) — `KitakamiRoad_House` Lv50 |  |
@@ -315,6 +314,7 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Zeraora** | boss (bosslegendaryencounter) — `TrainerHill_Courtyard` Lv80 | ZERAORA, ZERAORA_MEGA |
 | **Meltan** | troca in-game — `RintoHouse3` |  |
 | **Melmetal** | evolui de Meltan (Lv60) | MELMETAL, MELMETAL_GMAX |
+| **Volcanion** | Boss Fight — `NavelRock_SteamChamber` Lv70, 3 barras (25/10/2026). O Navel Rock entrou na ROM com cinco salas novas; só aparece com a fenda de fogo **e** a brecha do mar abertas (a câmara tem três estados). O Mystic Ticket vem da corrente Blaine → Bill → Flannery → marinheiro de One Island (`VAR_NAVELROCK_QUEST`) |  |
 | **Zarude** | presente (givemon) — `Route40_House4` Lv50 | ZARUDE, ZARUDE_DADA |
 
 ### Ultra Beast
@@ -351,12 +351,12 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 
 ## Observações
 
-- **Métodos duplicados em mapas mortos.** Vários lendários de Johto/Kanto também têm o encontro original do Emerald num mapa **fora da ROM** (Articuno em `MeteorFalls_Articuno`, Mewtwo em `CeruleanCave3`, Raikou em `NewMauville_Inside_Raikou`, Kyogre/Groudon/Rayquaza em Marine/Terra Cave e Sky Pillar, Lugia/Ho-Oh em Navel Rock, Latias/Latios em Southern Island, Mew em `FarawayIsland_Interior`). Não fazem falta, porque cada um tem outro método alcançável, mas continuam na ROM.
-- **Deoxys** só existe na Birth Island do Emerald, que está fora da ROM. Na prática, sem método.
+- **Métodos duplicados em mapas mortos.** Vários lendários de Johto/Kanto também têm o encontro original do Emerald num mapa **fora da ROM** (Articuno em `MeteorFalls_Articuno`, Mewtwo em `CeruleanCave3`, Raikou em `NewMauville_Inside_Raikou`, Kyogre/Groudon/Rayquaza em Marine/Terra Cave e Sky Pillar, Latias/Latios em Southern Island, Mew em `FarawayIsland_Interior`). Não fazem falta, porque cada um tem outro método alcançável, mas continuam na ROM.
+- **Birth Island e Navel Rock entraram na ROM (25/10/2026)**, e com elas as duas últimas espécies sem casa: **Deoxys** (`BirthIsland_Exterior`, Lv70) e **Volcanion** (`NavelRock_SteamChamber`, Lv70). O Navel Rock foi redesenhado — a geometria do original ficou, mas o andar de cima virou a fenda de fogo e o de baixo a brecha do mar, porque Lugia e Ho-Oh já têm casa. Detalhes em [`.claude/merge_hns/navel_rock_e_birth_island.md`](../../merge_hns/navel_rock_e_birth_island.md). As contagens do Resumo já incluem as duas.
 - **As 7 UBs das missões + Stakataka e Blacephalon** aparecem só como batalha sem captura (Rift Missions). O design prevê a Anabel vendendo Beast Balls no `UltraSpaceArena` (§10), o que já aponta para o loop como o lugar onde elas passam a ser capturáveis.
 - **Necrozma** é presente no fim do clímax (`UltraSpaceArena`, Lv75). O Ultra Necrozma do boss não é capturável. Dusk Mane e Dawn Wings dependem de fusão com Solgaleo/Lunala.
 - **Evoluções customizadas:** Manaphy evolui de **Phione** no Lv58 (Phione é pescado na `Route33South_2`); Melmetal de Meltan no Lv60; Naganadel de Poipole no Lv50; Cosmog → Cosmoem (Lv43) → Solgaleo/Lunala (Lv53). Os pergaminhos do Urshifu são vendidos no `GoldenrodBattleAracdeLobby`.
 - **Battle Café** troca 5 pontos por um Lv70 de: Tornadus, Thundurus, Landorus, Enamorus, os quatro Tapus, e os quatro Tapus (e Diancie como presente à parte). FEITO 19/10: aves de Galar, Koraidon e Miraidon saíram do Café e viraram Boss Fights (casas próprias).
-- **Fase 8 (19/10/2026, Alola + Sinjoh):** Regieleki e Regidrago passaram a ter fonte (Boss Fight Lv80 em `SinjohRuins_*Room`; as contagens do Resumo acima não foram recalculadas: -2 em "Sem método"). Os cinco Regis e o Arceus ganharam uma segunda fonte em Sinjoh. Os quatro Tapus ganharam casa em Alola (Boss Fight Lv60) e **continuam no Battle Café**: tirá-los de lá fica para quando o autor confirmar (não mexi no Café). O ovo de Arceus do Oak foi trocado por escolha de inicial de Kanto. Acesso a Sinjoh: Mt. Silver (Waterfall Room) -> `SnowsweptCavern` -> `NewSinjoh` -> `SinjohRuins` (atalho provisório, ver `.claude/merge_hns/fase8_alola_sinjoh.md`).
+- **Fase 8 (19/10/2026, Alola + Sinjoh):** Regieleki e Regidrago passaram a ter fonte (Boss Fight Lv80 em `SinjohRuins_*Room`; as contagens do Resumo acima não foram recalculadas: -2 em "Sem método"). Os cinco Regis e o Arceus ganharam uma segunda fonte em Sinjoh. Os quatro Tapus ganharam casa em Alola (Boss Fight Lv60) e **continuam no Battle Café**: tirá-los de lá fica para quando o autor confirmar (não mexi no Café). O ovo de Arceus do Oak foi trocado pelo Mystery Egg (Manaphy). Acesso a Sinjoh: Mt. Silver (Waterfall Room) -> `SnowsweptCavern` -> `NewSinjoh` -> `SinjohRuins` (atalho provisório, ver `.claude/merge_hns/fase8_alola_sinjoh.md`).
 - **Celebi** tem uma entrada na tabela da Hidden Grotto, mas é a `HIDDEN_GROTTO_JOHTO_UNUSED2`; o método real é o evento da Ilex Forest.
 - **Lendários já capturados continuam elegíveis** no loop (design §10). Esta tabela diz só se há **algum** jeito de obter; não restringe o pool.

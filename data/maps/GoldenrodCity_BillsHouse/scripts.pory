@@ -80,6 +80,16 @@ BillHouse_Text_SisterStorageSystem:
 script GoldenrodCity_Bill_GiveEeveeOrPikachu {
     lock
     faceplayer
+    // A leitura velha do Blaine. O Bill acha o ritmo de tres dias e manda para
+    // a Flannery, que e quem sabe ler respiracao de fenda. Corrente do
+    // Volcanion: data/scripts/navel_rock_quest.inc
+    if (var(VAR_NAVELROCK_QUEST) == 1) {
+        msgbox(NavelRockQuest_Text_BillReads, MSGBOX_DEFAULT)
+        setvar(VAR_NAVELROCK_QUEST, 2)
+        closemessage
+        release
+        end
+    }
     if (flag(FLAG_GOT_BILL_GIFTMON) == FALSE) {
         msgbox("{SPEAKER NAME_BILL}Hi, {PLAYER}! Do us a favor and
                 take one of these two Pokémon. 

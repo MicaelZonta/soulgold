@@ -79,38 +79,31 @@ BillHouse_Text_SisterStorageSystem:
 GoldenrodCity_Bill_GiveEeveeOrPikachu::
 	lock
 	faceplayer
-	goto_if_eq VAR_NAVELROCK_QUEST, 1, GoldenrodCity_Bill_NavelRock
-	goto GoldenrodCity_Bill_Normal
+	compare VAR_NAVELROCK_QUEST, 1
+	goto_if_eq GoldenrodCity_Bill_GiveEeveeOrPikachu_2
+	goto_if_unset FLAG_GOT_BILL_GIFTMON, GoldenrodCity_Bill_GiveEeveeOrPikachu_5
+	msgbox GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_6
+	release
 	end
 
-@ A leitura velha do Blaine. O Bill acha o ritmo de tres dias e manda para a
-@ Flannery, que e quem sabe ler respiracao de fenda.
-GoldenrodCity_Bill_NavelRock:
+GoldenrodCity_Bill_GiveEeveeOrPikachu_2:
 	msgbox NavelRockQuest_Text_BillReads, MSGBOX_DEFAULT
 	setvar VAR_NAVELROCK_QUEST, 2
 	closemessage
 	release
 	end
 
-GoldenrodCity_Bill_Normal:
-	lock
-	faceplayer
-	goto_if_unset FLAG_GOT_BILL_GIFTMON, GoldenrodCity_Bill_GiveEeveeOrPikachu_2
-	msgbox GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_6
-	release
-	end
-
-GoldenrodCity_Bill_GiveEeveeOrPikachu_2:
+GoldenrodCity_Bill_GiveEeveeOrPikachu_5:
 	msgbox GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_0
 	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_1, GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_2, GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_3
 	switch VAR_RESULT
-	case 0, GoldenrodCity_Bill_GiveEeveeOrPikachu_5
-	case 1, GoldenrodCity_Bill_GiveEeveeOrPikachu_6
+	case 0, GoldenrodCity_Bill_GiveEeveeOrPikachu_8
+	case 1, GoldenrodCity_Bill_GiveEeveeOrPikachu_9
 	msgbox GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_5
 	release
 	end
 
-GoldenrodCity_Bill_GiveEeveeOrPikachu_5:
+GoldenrodCity_Bill_GiveEeveeOrPikachu_8:
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EEVEE_STARTER
 	bufferspeciesname STR_VAR_1, SPECIES_EEVEE_STARTER
 	givemon SPECIES_EEVEE_STARTER, 25
@@ -123,7 +116,7 @@ GoldenrodCity_Bill_GiveEeveeOrPikachu_5:
 	release
 	end
 
-GoldenrodCity_Bill_GiveEeveeOrPikachu_6:
+GoldenrodCity_Bill_GiveEeveeOrPikachu_9:
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_PIKACHU_STARTER
 	bufferspeciesname STR_VAR_1, SPECIES_PIKACHU_STARTER
 	givemon SPECIES_PIKACHU_STARTER, 25

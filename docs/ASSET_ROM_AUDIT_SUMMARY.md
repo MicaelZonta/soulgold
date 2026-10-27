@@ -145,6 +145,14 @@ mesma commit por uma sessão anterior — os números de espécie/obtenibilidade
 | 14 de 17 formas Gigantamax travadas (`B_FLAG_DYNAMAX_BATTLE=0`, item não obtenível) | ~77.000 (calculado, ver nota) | Total G-Max medido = 94.219 B / 17 formas; proporção 14/17 aplicada |
 | Blacephalon (família desligada) — sobra de asset de animação de golpe | 408 | `nm`, achado incidental |
 
+> **Nota de 27/10/2026.** A linha dos 24 lendários é o retrato da data da
+> auditoria e não vale mais: a adoção do Kanto/HnS e as fases seguintes deram
+> casa a quase todos. Deoxys ficou na `BirthIsland_Exterior` e Volcanion na
+> `NavelRock_SteamChamber` (25/10/2026); Kyurem, Keldeo, Regieleki, Regidrago,
+> Terapagos, Glastrier/Spectrier e a linha Cosmog também têm fonte hoje. A
+> lista viva sai de `dev_scripts/fontes_legitimas.py` depois de rodar
+> `tools/soulgold_docs/build_docs.py`; os bytes medidos continuam válidos.
+
 **Isso não é um bug técnico** — é conteúdo que existe no binário porque a *espécie* está ligada
 na config, mas ninguém conectou uma rota de obtenção (script, encontro, presente, evolução). A
 mesma flag que os liga também os desliga: **desabilitar `P_FAMILY_*` recupera o espaço por

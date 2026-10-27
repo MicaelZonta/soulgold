@@ -1,5 +1,8 @@
 mapscripts OlivineCity_LighthouseTop_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
+        // Anfitriao de personagem de agenda (Colress/Soliera):
+        // data/scripts/birth_island_residents.inc
+        call(ScheduledNpcs_OnTransition)
         if (flag(FLAG_HIDE_ZAPDOS_GALAR) == FALSE) {
             setweather(WEATHER_RAIN_THUNDERSTORM)
         } else {
