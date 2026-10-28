@@ -132,3 +132,64 @@ done
   Meteorite deixou de ser "fora da ROM".
 - `tools/soulgold_docs/constants.py`: a lista que escondia Kanto inteiro do site
   saiu (ver `kanto_no_site.md`).
+
+## Os dois exteriores remontados do zero (27/10/2026)
+
+O autor abriu o `NavelRock_Exterior` no Porymap e viu lixo: uma coluna de pedra
+onde devia haver cais e, no mar, um bloco de 8×4 que era **uma fatia da folha
+do tileset** carimbada no mapa. A Birth Island tinha o mesmo defeito na área do
+cais.
+
+**Não era conversão.** Testei a hipótese do deslocamento de ID (+384 do HnS em
+vez de +512 do Emerald): aplicada, piora. A causa é outra, e é simples: as duas
+ilhas são mapas do **Emerald** e eram as duas únicas do Emerald dentro da ROM.
+O layout delas apontava para `gTileset_General + gTileset_Dewford`, e o nosso
+`dewford` **não é mais o dewford do Emerald** — foi recortado/reaproveitado. Os
+IDs continuavam apontando para os índices antigos e saía arte de outra coisa.
+O mesmo vale para os 239 layouts de Hoenn do repositório (todos fora da ROM;
+o `DewfordTown` nem renderiza, ID fora da faixa).
+
+Decisão do autor: **montar do zero com os tilesets novos**, sem tentar salvar o
+dado do Emerald. Os dois passaram para `gTileset_Kanto_General_Hns +
+gTileset_MtEmber_Hns`, o mesmo par das cinco salas internas do Navel Rock.
+
+### Vocabulário aprendido do `kanto_general_hns`
+
+Nada escolhido no olho: tudo saiu de `learn_edges`/`neighbours_of` sobre os 42
+mapas do repositório que já usam esse primário.
+
+| Peça | Metatile |
+|---|---|
+| Mar | 299 (comportamento 0x15; aqui com colisão 1, ilha fechada) |
+| Areia / grama | 220 / **8** — atenção: **13 é `MB_TALL_GRASS`**, mato de encontro |
+| Praia (areia×mar) | N 269, S 285, O 276, L 278; cantos NO 268, NE 270, SO 284, SE 286 |
+| Areia com grama | N 212, S 228, O 219, L 221; cantos NO 211, NE 210, SO 227, SE 226 |
+| Maciço de rocha | topo 104/115/113/117/106, corpo 112/.../114, parede 123/124/125, base 120/121/122 |
+| Boca de caverna | **169** (colisão 0) — achada lendo o metatile embaixo de cada warp que leva a caverna |
+
+Cuidado com 112/114: são a transição da rocha para **grama** e ficam com pixel
+verde se usados na areia. Terminar o maciço em 115/117.
+
+### O que cada mapa virou
+
+- **NavelRock_Exterior** (21×24): ilha de areia ovalada com um maciço de rocha
+  de 9 de largura e a boca da caverna no meio. Warps preservados onde estavam:
+  (10,10) caverna e (10,18) desembarque. 154 células andáveis, desembarque →
+  caverna conferido por BFS.
+- **BirthIsland_Exterior** (30×30): ilha de grama com anel de praia e uma
+  cratera de areia no centro. **Todas as células autorais preservadas e
+  conferidas por BFS a partir do desembarque**: (15,24) desembarque, (15,16)
+  gatilho da Soliera, (12,16) Meteorite, (10,16) Colress, (20,16) Soliera,
+  (15,12) triângulo e a coluna x=15 por onde o Deoxys desce de (15,3).
+
+O `border.bin` dos dois também foi regravado (era do tileset velho: a moldura
+fora da tela mostraria lixo no jogo).
+
+Scripts geradores (não ficam no repositório, são protótipo):
+`navel_ext.py` e `birth.py` no scratchpad da sessão.
+
+**Pendências pequenas para o Porymap:** a cratera tem alguns degraus de canto
+no lado leste e a praia tem "dentes" de uma célula nas pontas N/S/L/O. Ambos
+são retoque a mão. O `map.json` da Birth Island é `MAP_TYPE_INDOOR`, então a
+ilha não troca de cor com o horário; se o autor quiser dia/noite, vira
+`MAP_TYPE_ROUTE`.
