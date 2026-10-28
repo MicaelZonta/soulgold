@@ -193,3 +193,30 @@ no lado leste e a praia tem "dentes" de uma célula nas pontas N/S/L/O. Ambos
 são retoque a mão. O `map.json` da Birth Island é `MAP_TYPE_INDOOR`, então a
 ilha não troca de cor com o horário; se o autor quiser dia/noite, vira
 `MAP_TYPE_ROUTE`.
+
+## Os dois portos apagados (27/10/2026)
+
+Revisando o grupo inteiro no Porymap, sobravam dois mapas de porto, e os dois
+estavam quebrados:
+
+- **`NavelRock_Harbor`** (na ROM, alcançável): usava o `LAYOUT_ISLAND_HARBOR`
+  = `General + IslandHarbor`, o mesmo par estragado dos exteriores — o layout
+  **nem renderiza**, tem ID fora da faixa do tileset. Pior: o marinheiro dele
+  mandava o jogador para `MAP_LILYCOVE_CITY_HARBOR`, que está **fora da ROM**.
+- **`BirthIsland_Harbor`** (fora da ROM): morto. Só era citado pelo
+  `LilycoveCity_Harbor`, que também é de Hoenn e está fora da ROM.
+
+Os dois saíram. A saída do Navel Rock em (10,18) agora vai **direto para o
+`VermilionCity_PortInside`**, que é exatamente o que a Birth Island já fazia em
+(15,24) — as duas ilhas passam a se comportar igual, e a cerimônia da balsa
+continua acontecendo do lado de Vermilion, nos dois sentidos.
+
+Limpeza junto: `LAYOUT_ISLAND_HARBOR` e `data/layouts/IslandHarbor` (ninguém
+mais usava), os dois `.include` em `data/event_scripts.s`, os dois textos de
+marinheiro órfãos em `data/text/event_ticket_2.inc`, e os quatro warps do
+`LilycoveCity_Harbor` que apontavam para os mapas apagados (mapa morto, mas é
+montado no build). **864 bytes de ROM a menos.**
+
+Armadilha do build: apagar mapa não basta. O `build/emerald/data/*.d` guarda a
+dependência antiga e o make morre com "No such file"; apague
+`event_scripts`, `map_events` e `maps` (.o e .d) do build.

@@ -59,14 +59,14 @@ LilycoveCity_Harbor_EventScript_GoToSouthernIsland::
 
 LilycoveCity_Harbor_EventScript_GoToNavelRock::
 	call LilycoveCity_Harbor_EventScript_BoardFerry
-	warp MAP_NAVEL_ROCK_HARBOR, 8, 4
+	warp MAP_VERMILION_CITY_PORT_INSIDE, 0, 0  @ destino morto: o NavelRock_Harbor foi apagado em 27/10/2026
 	waitstate
 	release
 	end
 
 LilycoveCity_Harbor_EventScript_GoToBirthIsland::
 	call LilycoveCity_Harbor_EventScript_BoardFerry
-	warp MAP_BIRTH_ISLAND_HARBOR, 8, 4
+	warp MAP_VERMILION_CITY_PORT_INSIDE, 0, 0  @ destino morto: o BirthIsland_Harbor foi apagado em 27/10/2026
 	waitstate
 	release
 	end
@@ -214,7 +214,7 @@ LilycoveCity_Harbor_EventScript_AuroraTicketFirstTime::
 LilycoveCity_Harbor_EventScript_GoToBirthIslandFirstTime::
 	closemessage
 	call LilycoveCity_Harbor_EventScript_BoardFerryWithSailor
-	warp MAP_BIRTH_ISLAND_HARBOR, 8, 4
+	warp MAP_VERMILION_CITY_PORT_INSIDE, 0, 0  @ destino morto: o BirthIsland_Harbor foi apagado em 27/10/2026
 	waitstate
 	release
 	end
@@ -272,7 +272,7 @@ LilycoveCity_Harbor_EventScript_MysticTicketFirstTime::
 LilycoveCity_Harbor_EventScript_GoToNavelRockFirstTime::
 	closemessage
 	call LilycoveCity_Harbor_EventScript_BoardFerryWithSailor
-	warp MAP_NAVEL_ROCK_HARBOR, 8, 4
+	warp MAP_VERMILION_CITY_PORT_INSIDE, 0, 0  @ destino morto: o NavelRock_Harbor foi apagado em 27/10/2026
 	waitstate
 	release
 	end

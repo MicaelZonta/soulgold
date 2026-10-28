@@ -36,10 +36,6 @@ FarawayIsland_Entrance_Text_SailorReturn:
 	.string "fickle…\p"
 	.string "Do you want to return to LILYCOVE?$"
 
-BirthIsland_Harbor_Text_SailorReturn:
-	.string "What an oddly shaped island, eh?\n"
-	.string "Do you want to return to LILYCOVE?$"
-
 EventTicket_Text_OddTicketsWhereTo:
 	.string "Is it you who brought those\n"
 	.string "odd tickets?\p"
@@ -52,12 +48,6 @@ EventTicket_Text_OddTicketsWhereTo:
 	.string "as a sailing man!\p"
 	.string "Get on board, youngster!\n"
 	.string "Where shall we sail first?$"
-
-NavelRock_Harbor_Text_SailorReturn:
-	.string "Did… Did you hear that?\n"
-	.string "That low growling from deep in there.\p"
-	.string "Are you sure it's safe?\n"
-	.string "Do you think we should leave?$"
 
 FarawayIsland_Entrance_Text_Sign:
 	.string "The writing is fading as if it was\n"

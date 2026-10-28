@@ -4022,16 +4022,6 @@
       "blockdata_filepath": "data/layouts/BirthIsland_Exterior/map.bin"
     },
     {
-      "id": "LAYOUT_ISLAND_HARBOR",
-      "name": "IslandHarbor_Layout",
-      "width": 17,
-      "height": 13,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_IslandHarbor",
-      "border_filepath": "data/layouts/IslandHarbor/border.bin",
-      "blockdata_filepath": "data/layouts/IslandHarbor/map.bin"
-    },
-    {
       "id": "LAYOUT_UNDERWATER_MARINE_CAVE",
       "name": "Underwater_MarineCave_Layout",
       "width": 20,

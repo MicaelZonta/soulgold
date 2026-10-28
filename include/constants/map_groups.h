@@ -689,13 +689,12 @@ enum
     MAP_BIRTH_ISLAND_EXTERIOR            = (31 | (28 << 8)),
     MAP_FARAWAY_ISLAND_ENTRANCE          = (32 | (28 << 8)),
     MAP_FARAWAY_ISLAND_INTERIOR          = (33 | (28 << 8)),
-    MAP_NAVEL_ROCK_HARBOR                = (34 | (28 << 8)),
-    MAP_NAVEL_ROCK_EXTERIOR              = (35 | (28 << 8)),
-    MAP_NAVEL_ROCK_ENTRANCE              = (36 | (28 << 8)),
-    MAP_NAVEL_ROCK_SHAFT                 = (37 | (28 << 8)),
-    MAP_NAVEL_ROCK_FIRE_VENT             = (38 | (28 << 8)),
-    MAP_NAVEL_ROCK_SEA_BREACH            = (39 | (28 << 8)),
-    MAP_NAVEL_ROCK_STEAM_CHAMBER         = (40 | (28 << 8)),
+    MAP_NAVEL_ROCK_EXTERIOR              = (34 | (28 << 8)),
+    MAP_NAVEL_ROCK_ENTRANCE              = (35 | (28 << 8)),
+    MAP_NAVEL_ROCK_SHAFT                 = (36 | (28 << 8)),
+    MAP_NAVEL_ROCK_FIRE_VENT             = (37 | (28 << 8)),
+    MAP_NAVEL_ROCK_SEA_BREACH            = (38 | (28 << 8)),
+    MAP_NAVEL_ROCK_STEAM_CHAMBER         = (39 | (28 << 8)),
 
     // gMapGroup_Emerald1
     MAP_INSIDE_OF_TRUCK                         = (0 | (29 << 8)),
@@ -1159,12 +1158,11 @@ enum
     MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F            = (43 | (33 << 8)),
     MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F            = (44 | (33 << 8)),
     MAP_BATTLE_FRONTIER_MART                         = (45 | (33 << 8)),
-    MAP_BIRTH_ISLAND_HARBOR                          = (46 | (33 << 8)),
-    MAP_UNION_ROOM                                   = (47 | (33 << 8)),
-    MAP_SAFARI_ZONE_NORTHWEST                        = (48 | (33 << 8)),
-    MAP_SAFARI_ZONE_NORTH                            = (49 | (33 << 8)),
-    MAP_SAFARI_ZONE_SOUTHWEST                        = (50 | (33 << 8)),
-    MAP_SAFARI_ZONE_SOUTH                            = (51 | (33 << 8)),
+    MAP_UNION_ROOM                                   = (46 | (33 << 8)),
+    MAP_SAFARI_ZONE_NORTHWEST                        = (47 | (33 << 8)),
+    MAP_SAFARI_ZONE_NORTH                            = (48 | (33 << 8)),
+    MAP_SAFARI_ZONE_SOUTHWEST                        = (49 | (33 << 8)),
+    MAP_SAFARI_ZONE_SOUTH                            = (50 | (33 << 8)),
 
     // gMapGroup_IndoorRinto
     MAP_RINTO_POEMON_CENTER = (0 | (34 << 8)),
@@ -1231,6 +1229,8 @@ enum
 #define MAP_ROUTE104_PRETTY_PETAL_FLOWER_SHOP            29030
 #define MAP_ROUTE114_LANETTES_HOUSE                      29037
 #define MAP_ROUTE121_SAFARI_ZONE_ENTRANCE                29040
+#define MAP_BIRTH_ISLAND_HARBOR                          29755
+#define MAP_NAVEL_ROCK_HARBOR                            29953
 #define MAP_NAVEL_ROCK_B1F                               29955
 #define MAP_NAVEL_ROCK_FORK                              29956
 #define MAP_NAVEL_ROCK_UP1                               29957
