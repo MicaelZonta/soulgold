@@ -148,6 +148,11 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Suicune** — `Nexus_EventScript_Misty_Suicune_ChampionFight` (falas `Nexus_Text_Misty_Suicune_Champion*`)
+
+
 **Kyogre** — exemplo aprovado no design (`SOULGOLD_RIFT_MISSIONS_DESIGN.md` §10, "Estrutura do loop"). Aprovado só como associação; nada implementado. O Kyogre tem **dois** campeões (Misty e Archie): as falas do fragmento e a ficha do Looker ficam aqui; a ficha do Archie só tem a fala de campeão dele.
 
 #### Kyogre

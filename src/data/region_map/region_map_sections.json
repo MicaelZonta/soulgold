@@ -573,7 +573,7 @@
     },
     {
       "id": "MAPSEC_POKEMON_MANSION",
-      "name": "Pokémon Mansion"
+      "name": "Pok\u00e9mon Mansion"
     },
     {
       "id": "MAPSEC_KANTO_SAFARI_ZONE",
@@ -581,7 +581,7 @@
     },
     {
       "id": "MAPSEC_POKEMON_LEAGUE",
-      "name": "Pokémon League",
+      "name": "Pok\u00e9mon League",
       "x": 24,
       "y": 4,
       "width": 1,
@@ -601,7 +601,7 @@
     },
     {
       "id": "MAPSEC_POKEMON_TOWER",
-      "name": "Pokémon Tower"
+      "name": "Pok\u00e9mon Tower"
     },
     {
       "id": "MAPSEC_CERULEAN_CAVE",
@@ -1829,6 +1829,118 @@
       "y": 9,
       "width": 2,
       "height": 4
+    },
+    {
+      "id": "MAPSEC_ABUNDANCE_ISLE",
+      "name": "Abundance Isle",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_HARVEST_FIELDS",
+      "name": "Harvest Fields",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SPRING_GROVE",
+      "name": "Spring Grove",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_WINDSWEPT_CAPE",
+      "name": "Windswept Cape",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_GALE_SHORE",
+      "name": "Gale Shore",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_GALE_CAVE",
+      "name": "Gale Cave",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_FROSTFALL_CRATER",
+      "name": "Frostfall Crater",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_THUNDER_RIDGE",
+      "name": "Thunder Ridge",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_THUNDERSPIRE",
+      "name": "Thunderspire",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_PLASMA_FRIGATE",
+      "name": "Plasma Frigate",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SUNSET_STRAIT",
+      "name": "Sunset Strait",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_EMBERDUNE_ISLE",
+      "name": "Emberdune Isle",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_TRUTHSAND_RUINS",
+      "name": "Truthsand Ruins",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_SHRINE_OF_THE_FIRST_DRAGON",
+      "name": "First Dragon Shrine",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
     }
   ]
 }

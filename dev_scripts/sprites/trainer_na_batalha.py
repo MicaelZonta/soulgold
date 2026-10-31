@@ -46,7 +46,7 @@ TRAINERS = {
     'Shelly': dict(f='Trainer - Swizzler121.png'),
     # lote de 03/10/2026
     'Alister': dict(ia=9), 'Avery': dict(grid=2), 'Bea': dict(ia=8), 'Green': {}, 'Klara': dict(grid=4),
-    'Mustard': {}, 'Nemona': {}, 'Nessa': {}, 'Peonia': {}, 'Peony': {}, 'Rosa': dict(ia=8), 'Skyla': dict(ia=8),
+    'Mustard': {}, 'Nemona': {}, 'Nessa': dict(f='Trainer - GeroisBlackboots.png'),'Peonia': {}, 'Peony': {}, 'Rosa': dict(ia=8), 'Skyla': dict(ia=8),
     'Molly adulta': dict(ia=7),
     'Dawn': dict(f='Trainer - oficial DP.png'),   # escolha do autor (03/10); a de Platinum ficou em outras/
     'Lenora': dict(f='Trainer - desconhecido.png', grid=4),
@@ -71,6 +71,23 @@ TRAINERS = {
     'Soliera': dict(atual='soliera'),
     'Steven': dict(atual='steven', grid=1452 / 76),
     'Volkner': dict(atual='volkner'),
+    # Novo Lote (31/10/2026). Recortes de folha: a folha inteira fica em outras/.
+    # RHcks = folha dos lideres de Paldea (JPG, fundo azul liso).
+    'AZ': {}, 'Brycen': dict(jpg=True), 'Cilan': dict(jpg=True), 'Gloria': {}, 'Hop': {},
+    'Hassel': dict(grid=12.4),   # arte HD (974 px): mediana de cada bloco, como o Colress
+    'Korrina': {}, 'Melony': {}, 'Plasma Grunt Female': {}, 'Plasma Grunt Male': {},
+    'Prof Rowan': dict(grid=2), 'Serena XY': {}, 'Valerie': {}, 'Viola': {},
+    'Lysandre': dict(grid=2),   # Rowan e Lysandre: 2x com poucos pixels soltos (escala_detectada da 1)
+    'Clive': dict(f='Trainer - desconhecido.png', grid=8.6),   # arte HD, duas roupas
+    'Clive (azul)': dict(pasta='Clive', f='Trainer - desconhecido (azul).png', grid=8.6),
+    'Ghetsis': dict(ia=4),                  # GIF animado, quadro 0; pixel de 4 a 5 px
+    'Larry': dict(f='Trainer - desconhecido.png', grid=5),   # GIF animado, quadro 0, 5x
+    'Larry (RHcks)': dict(pasta='Larry', f='Trainer - RHcks.png', jpg=True),
+    'Katy': dict(f='Trainer - Mid117.png'),
+    'Katy (RHcks)': dict(pasta='Katy', f='Trainer - RHcks.png', jpg=True),
+    'Grusha': dict(jpg=True), 'Iono': dict(jpg=True), 'Tulip': dict(jpg=True),
+    'Iris': dict(jpg=True), 'Juniper': dict(jpg=True), 'Marnie': dict(jpg=True),
+    'Nessa (Novo Lote)': dict(pasta='Nessa', f='Trainer - desconhecido (Novo Lote).png', atual='nessa'),
 }
 
 TELA = (240, 160)

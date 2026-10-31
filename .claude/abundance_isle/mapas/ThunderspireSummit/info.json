@@ -1,0 +1,159 @@
+{
+ "map": "ThunderspireSummit",
+ "ingame": "Thunderspire Summit",
+ "w": 40,
+ "h": 45,
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_SpearPillar",
+ "map_type": "MAP_TYPE_UNDERGROUND",
+ "warps": [
+  {
+   "x": 15,
+   "y": 34,
+   "dest_map": "MAP_THUNDERSPIRE_3F",
+   "dest_warp_id": "1",
+   "nota": "chegada vinda do 3F"
+  }
+ ],
+ "connections": [],
+ "objects": [
+  {
+   "local_id": "ITEM_ZAPPLATE",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 12,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire_EventScript_ItemZapPlate",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_DRAGONFANG",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 31,
+   "y": 21,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire_EventScript_ItemDragonFang",
+   "flag": "0"
+  },
+  {
+   "local_id": "GHETSIS",
+   "graphics_id": "OBJ_EVENT_GFX_SAGE",
+   "x": 20,
+   "y": 15,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire_EventScript_Ghetsis",
+   "flag": "0"
+  },
+  {
+   "local_id": "N",
+   "graphics_id": "OBJ_EVENT_GFX_N",
+   "x": 16,
+   "y": 15,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire_EventScript_N",
+   "flag": "0"
+  },
+  {
+   "local_id": "TORNADUS_SKY",
+   "graphics_id": "OBJ_EVENT_GFX_SPECIES(TORNADUS)",
+   "x": 6,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "NULL",
+   "flag": "0"
+  },
+  {
+   "local_id": "THUNDURUS_SKY",
+   "graphics_id": "OBJ_EVENT_GFX_SPECIES(THUNDURUS)",
+   "x": 33,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "NULL",
+   "flag": "0"
+  },
+  {
+   "local_id": "ZEKROM",
+   "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZEKROM)",
+   "x": 18,
+   "y": 14,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire_EventScript_Zekrom",
+   "flag": "0"
+  },
+  {
+   "local_id": "N_AFTER",
+   "graphics_id": "OBJ_EVENT_GFX_N",
+   "x": 16,
+   "y": 15,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire_EventScript_NAfter",
+   "flag": "0"
+  },
+  {
+   "local_id": "HILDA_AFTER",
+   "graphics_id": "OBJ_EVENT_GFX_HILDA",
+   "x": 20,
+   "y": 15,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire_EventScript_HildaAfter",
+   "flag": "0"
+  }
+ ],
+ "explorar": [
+  "Espiral de colunas tombadas ate o altar (78 passos)",
+  "Corredor sem saida com Zap Plate",
+  "Dragon Fang no canto do patio",
+  "Hilda chega ao fim do climax e testemunha o Zekrom escolher o jogador"
+ ],
+ "historia": "Ato 4: Ghetsis tenta acordar a Pedra Escura; Zekrom desperta e testa o jogador; N entrega os DNA Splicers.",
+ "estados": {
+  "dia": "Depois (Zekrom)",
+  "estado": "Climax na tempestade"
+ },
+ "conferido": "BFS chegada->altar 78 passos; check_objects ok"
+}

@@ -1,0 +1,197 @@
+{
+ "map": "AbundanceIsle_FestivalArena",
+ "ingame": "Festival Arena",
+ "primary": "gTileset_ArcadeBattle",
+ "secondary": "gTileset_ArcadeLobby",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 11,
+   "y": 17,
+   "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+   "dest_warp_id": "5",
+   "nota": "saída para a porta da arena na Cape (31,27)"
+  },
+  {
+   "x": 12,
+   "y": 17,
+   "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+   "dest_warp_id": "5",
+   "nota": "segunda célula do capacho"
+  }
+ ],
+ "connections": [],
+ "bg_events": [
+  {
+   "type": "sign",
+   "x": 11,
+   "y": 8,
+   "script": "FestivalArena_EventScript_TodaysBoard",
+   "nota": "telão: \"Today's Challengers\" (rodízio diário; sábado: N & Hilda)"
+  },
+  {
+   "type": "sign",
+   "x": 12,
+   "y": 8,
+   "script": "FestivalArena_EventScript_TodaysBoard",
+   "nota": "mesma placa (telão tem 2 de largura útil)"
+  }
+ ],
+ "explorar": [
+  "Arena pós-jogo com arquibancada cheia de torcedores, telão e campo no centro (base: sala de batalha do Battle Arcade de Goldenrod, alargada).",
+  "Telão = quadro \"Today's Challengers\": diz quem está hoje. Rodízio diário do elenco do Nexus nos quatro lugares dos bancos laterais (exemplo no render: Leon, Cynthia, Diantha, Volkner).",
+  "Aos sábados os bancos ficam vazios e N e Hilda esperam juntos à beira do campo para uma batalha em dupla.",
+  "Recepcionista perto da porta explica as regras (uma revanche por desafiante por dia).",
+  "Torcedores na arquibancada (cenário, atrás do parapeito; script NULL ou fala por placa no parapeito)."
+ ],
+ "historia": "Pós-jogo da ilha: depois da primavera, a vila do cabo faz um festival e os campeões que vieram pela tempestade ficam para revanches.",
+ "estados": {
+  "dia": "Dia comum: quatro desafiantes de exemplo nos bancos.",
+  "estado": "Sábado: N e Hilda à beira do campo, bancos vazios."
+ },
+ "conferido": "Peças só de GoldenrodBattleArcadeBattleRoom (mesmo par de tilesets), alargada repetindo colunas de chão e a fileira de assentos; BFS da porta até todos os NPCs e o telão; check_objects. Atenção: o mapa original não tem warp — o capacho 77 é bloqueado, por isso o warp está na célula de chão logo acima; conferir o comportamento de saída na instalação.",
+ "w": 24,
+ "h": 19,
+ "objects": [
+  {
+   "local_id": "RECEPTIONIST",
+   "graphics_id": "OBJ_EVENT_GFX_NURSE",
+   "x": 14,
+   "y": 15,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FestivalArena_EventScript_Receptionist",
+   "flag": "0"
+  },
+  {
+   "local_id": "SEAT_LEFT_1",
+   "graphics_id": "OBJ_EVENT_GFX_LEON",
+   "x": 3,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FestivalArena_EventScript_ChallengerLeft1",
+   "flag": "FLAG_TEMP_11"
+  },
+  {
+   "local_id": "SEAT_LEFT_2",
+   "graphics_id": "OBJ_EVENT_GFX_CYNTHIA",
+   "x": 3,
+   "y": 12,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FestivalArena_EventScript_ChallengerLeft2",
+   "flag": "FLAG_TEMP_12"
+  },
+  {
+   "local_id": "SEAT_RIGHT_1",
+   "graphics_id": "OBJ_EVENT_GFX_DIANTHA",
+   "x": 20,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FestivalArena_EventScript_ChallengerRight1",
+   "flag": "FLAG_TEMP_13"
+  },
+  {
+   "local_id": "SEAT_RIGHT_2",
+   "graphics_id": "OBJ_EVENT_GFX_VOLKNER",
+   "x": 20,
+   "y": 12,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FestivalArena_EventScript_ChallengerRight2",
+   "flag": "FLAG_TEMP_14"
+  },
+  {
+   "local_id": "FAN_1",
+   "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+   "x": 6,
+   "y": 3,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FestivalArena_EventScript_Fan1",
+   "flag": "0"
+  },
+  {
+   "local_id": "FAN_2",
+   "graphics_id": "OBJ_EVENT_GFX_LASS",
+   "x": 15,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FestivalArena_EventScript_Fan2",
+   "flag": "0"
+  },
+  {
+   "local_id": "FAN_3",
+   "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
+   "x": 18,
+   "y": 3,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FestivalArena_EventScript_Fan3",
+   "flag": "0"
+  },
+  {
+   "local_id": "SAT_N",
+   "graphics_id": "OBJ_EVENT_GFX_N",
+   "x": 9,
+   "y": 10,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FestivalArena_EventScript_SaturdayN",
+   "flag": "FLAG_TEMP_15"
+  },
+  {
+   "local_id": "SAT_HILDA",
+   "graphics_id": "OBJ_EVENT_GFX_HILDA",
+   "x": 9,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FestivalArena_EventScript_SaturdayHilda",
+   "flag": "FLAG_TEMP_15"
+  }
+ ]
+}

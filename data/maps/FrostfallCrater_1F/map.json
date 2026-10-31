@@ -1,0 +1,137 @@
+{
+  "id": "MAP_FROSTFALL_CRATER_1F",
+  "name": "FrostfallCrater_1F",
+  "layout": "LAYOUT_FROSTFALL_CRATER_1F",
+  "music": "MUS_HG_ICE_PATH",
+  "region_map_section": "MAPSEC_FROSTFALL_CRATER",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_FROSTFALL_CRATER_1F_GRUNT_1",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_F",
+      "x": 16,
+      "y": 18,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "FrostfallCrater_1F_EventScript_Grunt1",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_FROSTFALL_CRATER_1F_GRUNT_2",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_F",
+      "x": 17,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "FrostfallCrater_1F_EventScript_Grunt2",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_FROSTFALL_CRATER_1F_ITEM_SNOWBALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 9,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_SNOWBALL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_FROSTFALL_CRATER_1F_SNOWBALL"
+    },
+    {
+      "local_id": "LOCALID_FROSTFALL_CRATER_1F_ITEM_ICEHEAL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 2,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_ICE_HEAL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_FROSTFALL_CRATER_1F_ICE_HEAL"
+    },
+    {
+      "local_id": "LOCALID_FROSTFALL_CRATER_1F_HIKER",
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 22,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "FrostfallCrater_1F_EventScript_Hiker",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_FROSTFALL_CRATER_1F_LORELEI",
+      "graphics_id": "OBJ_EVENT_GFX_LORELEI",
+      "x": 15,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "FrostfallCrater_1F_EventScript_Lorelei",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 16,
+      "y": 25,
+      "elevation": 0,
+      "dest_map": "MAP_ABUNDANCE_ISLE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 12,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_FROSTFALL_CRATER_B1F",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 30,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_FROSTFALL_CRATER_LAB",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 20,
+      "y": 20,
+      "elevation": 0,
+      "item": "ITEM_COMET_SHARD",
+      "flag": "FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_1F_COMET_SHARD",
+      "quantity": 1
+    }
+  ]
+}

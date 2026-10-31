@@ -1,0 +1,125 @@
+{
+ "map": "FROSTFALL_CRATER_B1F",
+ "ingame": "Frostfall Crater B1F",
+ "map_type": "MAP_TYPE_UNDERGROUND",
+ "connections": [],
+ "explorar": [
+  "Salao de gelo 16x16: 11 movimentos ate a escada do laboratorio",
+  "Never-Melt Ice no canto mais dificil do gelo (7 movimentos)",
+  "Buraco secreto numa ilha de pedra no meio do gelo (9 movimentos): cai no Core",
+  "Lago congelado com Icy Rock numa ilha, alcancada deslizando",
+  "Byron (mineiro, Canalave) no lago estudando lascas do meteorito: explica que a rocha \"nao e deste mundo\" e aponta o fundo da cratera; batalha opcional",
+  "Cientista do Plasma vigiando a passagem do lago para o salao; Camper treinando no gelo"
+ ],
+ "historia": "Andar do frio puro: o fragmento do meteorito congelou o lago subterraneo. O caminho ao laboratorio exige atravessar o salao de gelo.",
+ "estados": {
+  "dia": "Andar com o quebra-cabeca (rosa no mapa de colisao = solucao ate o laboratorio)."
+ },
+ "conferido": "check_objects ok; quebra-cabeca gerado por busca e conferido por BFS com deslize sobre o map.bin final: escada (30,4) -> meta, item, buraco e escada do Core.",
+ "w": 36,
+ "h": 30,
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_Cave_Ice",
+ "warps": [
+  {
+   "x": 30,
+   "y": 3,
+   "dest_map": "MAP_FROSTFALL_CRATER_1F",
+   "dest_warp_id": "1",
+   "nota": "sobe para a camara norte do 1F (12,4)"
+  },
+  {
+   "x": 2,
+   "y": 10,
+   "dest_map": "MAP_FROSTFALL_CRATER_LAB",
+   "dest_warp_id": "0",
+   "nota": "meta do quebra-cabeca: desce para o laboratorio"
+  },
+  {
+   "x": 33,
+   "y": 26,
+   "dest_map": "MAP_FROSTFALL_CRATER_CORE",
+   "dest_warp_id": "0",
+   "nota": "escada no canto do lago para o Core (o buraco e o atalho secreto)"
+  },
+  {
+   "x": 15,
+   "y": 6,
+   "dest_map": "MAP_FROSTFALL_CRATER_CORE",
+   "dest_warp_id": "1",
+   "nota": "buraco secreto numa ilha de pedra no meio do gelo: cai no Core"
+  }
+ ],
+ "objects": [
+  {
+   "local_id": "BYRON",
+   "graphics_id": "OBJ_EVENT_GFX_BYRON",
+   "x": 26,
+   "y": 12,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_B1F_EventScript_Byron",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_ICYROCK",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 28,
+   "y": 19,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_B1F_EventScript_ItemIcyRock",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_NEVERMELT",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 5,
+   "y": 3,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_B1F_EventScript_ItemNeverMeltIce",
+   "flag": "0"
+  },
+  {
+   "local_id": "SCIENTIST",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 22,
+   "y": 19,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "FrostfallCrater_B1F_EventScript_PlasmaScientist",
+   "flag": "0"
+  },
+  {
+   "local_id": "BOARDER",
+   "graphics_id": "OBJ_EVENT_GFX_CAMPER",
+   "x": 13,
+   "y": 20,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "2",
+   "script": "FrostfallCrater_B1F_EventScript_Camper",
+   "flag": "0"
+  }
+ ]
+}

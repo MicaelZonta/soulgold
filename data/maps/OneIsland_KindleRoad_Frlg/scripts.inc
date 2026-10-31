@@ -1,5 +1,10 @@
 OneIsland_KindleRoad_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, OneIsland_KindleRoad_OnTransition
 	.byte 0
+
+OneIsland_KindleRoad_OnTransition:
+	call MtEmberResidents_OnTransition
+	end
 
 OneIsland_KindleRoad_EventScript_RouteSign::
 	msgbox OneIsland_KindleRoad_Text_RouteSign, MSGBOX_SIGN

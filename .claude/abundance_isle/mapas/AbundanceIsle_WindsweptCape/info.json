@@ -1,0 +1,256 @@
+{
+ "map": "AbundanceIsle_WindsweptCape",
+ "ingame": "Windswept Cape",
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_CianwoodCity",
+ "map_type": "MAP_TYPE_TOWN",
+ "warps": [
+  {
+   "x": 16,
+   "y": 18,
+   "dest_map": "MAP_ABUNDANCE_ISLE_POKEMON_CENTER",
+   "dest_warp_id": "0",
+   "nota": "porta do PC"
+  },
+  {
+   "x": 18,
+   "y": 37,
+   "dest_map": "MAP_PLASMA_FRIGATE_DECK",
+   "dest_warp_id": "0",
+   "nota": "prancha no fim do cais -> convés do Plasma Frigate (fork C)"
+  },
+  {
+   "x": 31,
+   "y": 13,
+   "dest_map": "MAP_ABUNDANCE_ISLE_GALE_CAVE",
+   "dest_warp_id": "0",
+   "nota": "boca da Gale Cave no pé do penhasco"
+  },
+  {
+   "x": 21,
+   "y": 18,
+   "dest_map": "MAP_ABUNDANCE_ISLE_SKYLA_HANGAR",
+   "dest_warp_id": "0",
+   "nota": "casa 1 -> Skyla's Hangar"
+  },
+  {
+   "x": 14,
+   "y": 23,
+   "dest_map": "MAP_ABUNDANCE_ISLE_ELDER_HOUSE",
+   "dest_warp_id": "0",
+   "nota": "casa 2 -> Elder's House"
+  },
+  {
+   "x": 31,
+   "y": 27,
+   "dest_map": "MAP_ABUNDANCE_ISLE_FESTIVAL_ARENA",
+   "dest_warp_id": "0",
+   "nota": "porta da Festival Arena (fachada = ginasio de Cianwood)"
+  }
+ ],
+ "connections": [
+  {
+   "direction": "west",
+   "map": "MAP_ABUNDANCE_ISLE",
+   "offset": 0,
+   "nota": "mar dos dois lados: chega-se de Surf vindo do hub"
+  }
+ ],
+ "explorar": [
+  "Vila do cabo com o único Centro Pokémon da ilha, o galpão do avião da Skyla e a casa do ancião que toca o sino às 18h.",
+  "Penhasco em dois níveis: escada leva ao mirante, onde está Skyla, a piloto de Unova presa pela tempestade; ela vigia o céu e conta que viu dois vultos (Tornadus e Thundurus) brigando nas nuvens. Batalha opcional depois que a tempestade acaba.",
+  "Pretty Feather no mirante e Star Piece numa ponta do penhasco.",
+  "Quebra-mar (língua de areia) a oeste: Nessa treina seus Pokémon de Água nas ondas da tempestade; batalha opcional e fala sobre o mar quente demais para essa neve (pista do plano do Ghetsis).",
+  "Cais ao sul com o Plasma Frigate ancorado; três recrutas fecham o cais até o ato 2.",
+  "Festival Arena (fachada de ginásio) no prado sul: revanches do elenco do Nexus em rodízio diário; placa na porta.",
+  "Boca da Gale Cave ao pé do penhasco (passagem para a Gale Shore).",
+  "Bosque com item escondido, prado de capim alto e pedras no mar castigadas pelo vento."
+ ],
+ "historia": "Porto do cabo, onde o Plasma Frigate está ancorado. É a base de apoio do Ghetsis na ilha; o cais fica fechado pelos recrutas até a máquina da cratera parar.",
+ "estados": {
+  "dia": "Cabo com o navio do Plasma (placeholder: SS Tidal) e os guardas no cais."
+ },
+ "conferido": "BFS a partir do PC: Gale Cave, mirante, itens, quebra-mar e casas alcançáveis; cais do navio fechado com os guardas e livre sem eles; check_objects.",
+ "frigate_dock": {
+  "warp": [
+   18,
+   37
+  ],
+  "navio": [
+   21,
+   37
+  ]
+ },
+ "w": 44,
+ "h": 42,
+ "objects": [
+  {
+   "local_id": "PLASMA_FRIGATE",
+   "graphics_id": "OBJ_EVENT_GFX_SS_TIDAL",
+   "x": 21,
+   "y": 37,
+   "elevation": 1,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "0x0",
+   "flag": "0"
+  },
+  {
+   "local_id": "GRUNT_DOCK_1",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 16,
+   "y": 31,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "WindsweptCape_EventScript_DockGuard1",
+   "flag": "0"
+  },
+  {
+   "local_id": "GRUNT_DOCK_2",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 17,
+   "y": 31,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "WindsweptCape_EventScript_DockGuard2",
+   "flag": "0"
+  },
+  {
+   "local_id": "GRUNT_DOCK_3",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 18,
+   "y": 31,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "WindsweptCape_EventScript_DockGuard3",
+   "flag": "0"
+  },
+  {
+   "local_id": "NESSA",
+   "graphics_id": "OBJ_EVENT_GFX_NESSA",
+   "x": 4,
+   "y": 20,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "WindsweptCape_EventScript_Nessa",
+   "flag": "0"
+  },
+  {
+   "local_id": "SKYLA",
+   "graphics_id": "OBJ_EVENT_GFX_SKYLA",
+   "x": 33,
+   "y": 6,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "WindsweptCape_EventScript_Skyla",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_LOOKOUT",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 35,
+   "y": 5,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "WindsweptCape_EventScript_ItemPrettyFeather",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_GROVE",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 22,
+   "y": 7,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "WindsweptCape_EventScript_ItemWindStoneShard",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_CLIFF",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 38,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "WindsweptCape_EventScript_ItemStarPiece",
+   "flag": "0"
+  },
+  {
+   "local_id": "SAILOR",
+   "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+   "x": 22,
+   "y": 21,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "WindsweptCape_EventScript_Sailor",
+   "flag": "0"
+  },
+  {
+   "local_id": "BIRDKEEPER",
+   "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+   "x": 30,
+   "y": 19,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "WindsweptCape_EventScript_Youngster",
+   "flag": "0"
+  },
+  {
+   "local_id": "FISHERMAN",
+   "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
+   "x": 37,
+   "y": 26,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "2",
+   "script": "WindsweptCape_EventScript_Fisherman",
+   "flag": "0"
+  }
+ ]
+}

@@ -690,11 +690,10 @@ enum
     MAP_FARAWAY_ISLAND_ENTRANCE          = (32 | (28 << 8)),
     MAP_FARAWAY_ISLAND_INTERIOR          = (33 | (28 << 8)),
     MAP_NAVEL_ROCK_EXTERIOR              = (34 | (28 << 8)),
-    MAP_NAVEL_ROCK_ENTRANCE              = (35 | (28 << 8)),
-    MAP_NAVEL_ROCK_SHAFT                 = (36 | (28 << 8)),
-    MAP_NAVEL_ROCK_FIRE_VENT             = (37 | (28 << 8)),
-    MAP_NAVEL_ROCK_SEA_BREACH            = (38 | (28 << 8)),
-    MAP_NAVEL_ROCK_STEAM_CHAMBER         = (39 | (28 << 8)),
+    MAP_NAVEL_ROCK_FIRE_VENT             = (35 | (28 << 8)),
+    MAP_NAVEL_ROCK_SEA_BREACH            = (36 | (28 << 8)),
+    MAP_NAVEL_ROCK_STEAM_GALLERY         = (37 | (28 << 8)),
+    MAP_NAVEL_ROCK_STEAM_CHAMBER         = (38 | (28 << 8)),
 
     // gMapGroup_Emerald1
     MAP_INSIDE_OF_TRUCK                         = (0 | (29 << 8)),
@@ -1223,6 +1222,43 @@ enum
     MAP_ROUTE49_SINJOH              = (19 | (38 << 8)),
     MAP_ROUTE50_SINJOH              = (20 | (38 << 8)),
 
+    // gMapGroup_AbundanceIsle
+    MAP_ABUNDANCE_ISLE                          = (0 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_BARN                     = (1 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_FARMHOUSE                = (2 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_HARVEST_FIELDS           = (3 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_KEEPER_HOUSE             = (4 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_SPRING_GROVE             = (5 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE           = (6 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_POKEMON_CENTER           = (7 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_SKYLA_HANGAR             = (8 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_ELDER_HOUSE              = (9 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_GALE_SHORE               = (10 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_GALE_CAVE                = (11 | (39 << 8)),
+    MAP_FROSTFALL_CRATER_1F                     = (12 | (39 << 8)),
+    MAP_FROSTFALL_CRATER_B1F                    = (13 | (39 << 8)),
+    MAP_FROSTFALL_CRATER_LAB                    = (14 | (39 << 8)),
+    MAP_FROSTFALL_CRATER_CORE                   = (15 | (39 << 8)),
+    MAP_THUNDER_RIDGE                           = (16 | (39 << 8)),
+    MAP_THUNDERSPIRE_1F                         = (17 | (39 << 8)),
+    MAP_THUNDERSPIRE_2F                         = (18 | (39 << 8)),
+    MAP_THUNDERSPIRE_SUMMIT                     = (19 | (39 << 8)),
+    MAP_PLASMA_FRIGATE_DECK                     = (20 | (39 << 8)),
+    MAP_PLASMA_FRIGATE_HOLD                     = (21 | (39 << 8)),
+    MAP_PLASMA_FRIGATE_CABINS                   = (22 | (39 << 8)),
+    MAP_PLASMA_FRIGATE_ENGINE_ROOM              = (23 | (39 << 8)),
+    MAP_THUNDERSPIRE_3F                         = (24 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_FESTIVAL_ARENA           = (25 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_SUNSET_STRAIT            = (26 | (39 << 8)),
+    MAP_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER = (27 | (39 << 8)),
+    MAP_SUNKEN_TRUTH_SHIP                       = (28 | (39 << 8)),
+    MAP_SHRINE_OF_THE_FIRST_DRAGON              = (29 | (39 << 8)),
+    MAP_EMBERDUNE_ISLE                          = (30 | (39 << 8)),
+    MAP_NS_ROOM                                 = (31 | (39 << 8)),
+    MAP_TRUTHSAND_RUINS_1F                      = (32 | (39 << 8)),
+    MAP_TRUTHSAND_RUINS_B1F                     = (33 | (39 << 8)),
+    MAP_TRUTHSAND_RUINS_HALL_OF_TRUTH           = (34 | (39 << 8)),
+
 };
 
 //Constants for unused maps
@@ -1231,6 +1267,7 @@ enum
 #define MAP_ROUTE121_SAFARI_ZONE_ENTRANCE                29040
 #define MAP_BIRTH_ISLAND_HARBOR                          29755
 #define MAP_NAVEL_ROCK_HARBOR                            29953
+#define MAP_NAVEL_ROCK_ENTRANCE                          29954
 #define MAP_NAVEL_ROCK_B1F                               29955
 #define MAP_NAVEL_ROCK_FORK                              29956
 #define MAP_NAVEL_ROCK_UP1                               29957
@@ -1560,6 +1597,6 @@ enum
 #define MAP_POKEMON_MANSION_3F                           31293
 #define MAP_POKEMON_MANSION_B1F                          31294
 
-#define MAP_GROUPS_COUNT 39
+#define MAP_GROUPS_COUNT 40
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

@@ -1,0 +1,104 @@
+{
+  "id": "MAP_ABUNDANCE_ISLE_ELDER_HOUSE",
+  "name": "AbundanceIsle_ElderHouse",
+  "layout": "LAYOUT_ABUNDANCE_ISLE_ELDER_HOUSE",
+  "music": "MUS_HG_CIANWOOD",
+  "region_map_section": "MAPSEC_WINDSWEPT_CAPE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_ELDER_HOUSE_ELDER",
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "x": 5,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_ElderHouse_EventScript_Elder",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_ELDER_HOUSE_GRANDDAUGHTER",
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "x": 2,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_ElderHouse_EventScript_Granddaughter",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_ELDER_HOUSE_ELDER_BELL",
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "x": 9,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_ElderHouse_EventScript_ElderBellTime",
+      "flag": "FLAG_TEMP_12"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+      "dest_warp_id": "4"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 0,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AbundanceIsle_ElderHouse_EventScript_BookYearWithoutHarvest"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AbundanceIsle_ElderHouse_EventScript_BookForcesOfNature"
+    },
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AbundanceIsle_ElderHouse_EventScript_BookHeraldOfSpring"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AbundanceIsle_ElderHouse_EventScript_BellRope"
+    }
+  ]
+}

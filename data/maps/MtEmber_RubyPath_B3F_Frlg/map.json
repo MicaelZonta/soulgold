@@ -156,6 +156,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_StrengthBoulder",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OLIVIA",
+      "x": 22,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MtEmberResidents_EventScript_Olivia",
+      "flag": "FLAG_TEMP_8"
     }
   ],
   "warp_events": [

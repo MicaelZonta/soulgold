@@ -151,6 +151,12 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Marshadow** — `Nexus_EventScript_Phoebe_Marshadow_ChampionFight` (falas `Nexus_Text_Phoebe_Marshadow_Champion*`)
+- **Lunala** — `Nexus_EventScript_Phoebe_Lunala_ChampionFight` (falas `Nexus_Text_Phoebe_Lunala_Champion*`)
+
+
 #### Flutter Mane
 
 ✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_FlutterMane_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.

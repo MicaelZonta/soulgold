@@ -6,19 +6,19 @@ Aparece no checklist como:
 
 - **Agatha — Fantasma** (Kanto · Elite Four e Campeões) — veterana ligada ao passado do Professor Oak, famosa por seu Gengar.
 
-**Pronto para o Nexus:** ❌ não — tem sprite de overworld, falta o battle sprite (front pic) registrado no código.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Agatha/` (o overworld já está registrado; a front pic ainda não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Agatha/`, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Agatha/`, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta de 30/09/2026 abaixo (validada), fora do código
-- [ ] Associado a um lendário — 📝 proposta de 30/09/2026: Spectrier (cedido pelo Morty)
-- [ ] Diálogo genérico escrito — 📝 proposta de 30/09/2026 (3 variações)
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta de 30/09/2026 (3 variações)
+- [x] Time para as Rift Missions definido — 📝 proposta de 30/09/2026 abaixo (validada), fora do código
+- [x] Associado a um lendário — 📝 proposta de 30/09/2026: Spectrier (cedido pelo Morty)
+- [x] Diálogo genérico escrito — 📝 proposta de 30/09/2026 (3 variações)
+- [x] Diálogo associado ao lendário escrito — 📝 proposta de 30/09/2026 (3 variações)
 
 ## Referências no repositório
 
@@ -53,34 +53,15 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_AGATHA`, ID **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163), campeã do Spectrier. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). **Pic provisória** (`Hex Maniac`) até registrar a arte.
-
-⚠️ **O Spectrier é semi-lendário neste engine** (`isSubLegendary`, igual no time do Morty, que leva o Ho-Oh como lendário). Por isso ele ocupa a vaga de **semi-lendário**, e a vaga de lendário vai para outro: **Marshadow** (mítico que o R10 conta como lendário). O validador confirma: `L=MARSHADOW S=SPECTRIER`.
-
-Lendário **Marshadow**, o Pokémon que vive escondido na sombra dos outros: para a Agatha, uma sombra que anda atrás dela desde menina e que ela nunca tentou mandar embora. Semi-lendário **Spectrier**, o corcel de sombra do rei, que ela atraiu com as cenouras escuras do próprio jardim (ver "Lendário associado" e o diário). Mega **Gengar** (`Ghostite`), o Pokémon-assinatura dela desde Red/Blue ("famosa por seu Gengar"). Mais **Arbok** e **Crobat** (o Golbat de RBY, evoluído — ironia: evolui por amizade, e ela diz que Pokémon são para batalhar) e **Marowak de Alola**, Fantasma/Fogo: o eco do Marowak-mãe da Pokémon Tower de Lavender.
-
-*Plano (Singles):* "truques de velha raposa" — status e punição. O Arbok entra com Intimidate e paralisa com Glare; a Mega Gengar prende com Shadow Tag, queima com Will-O-Wisp e bate com Hex (dobra em alvo com status); o Crobat usa Taunt contra quem quer montar e sai de U-turn; o Marshadow pune qualquer setup com Spectral Thief (rouba os boosts) e fecha com Shadow Sneak; o Spectrier, com Nasty Plot atrás de Protect, vira bola de neve com Grim Neigh; o Marowak de Alola com Thick Club quebra muralhas com Shadow Bone e Flare Blitz.
-
-*Plano (Doubles):* o Crobat põe Tailwind no primeiro turno (Inner Focus: não recua de Fake Out); o Arbok abaixa o Ataque dos dois com Intimidate e paralisa o mais rápido com Glare; o Marowak de Alola, com Lightning Rod, puxa os golpes elétricos que iam no Crobat e no Gengar; a Mega Gengar prende os dois oponentes com Shadow Tag. Nenhum golpe do time acerta o parceiro (Bonemerang e Shadow Bone são de alvo único).
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Marshadow | Life Orb | Technician | Jolly | Spectral Thief, Close Combat, Shadow Sneak, Protect |
-| Spectrier | Life Orb | Grim Neigh | Timid | Shadow Ball, Dark Pulse, Nasty Plot, Protect |
-| Gengar | Ghostite | Cursed Body | Timid | Hex, Sludge Bomb, Will-O-Wisp, Protect |
-| Crobat | Sitrus Berry | Inner Focus | Jolly | Brave Bird, Taunt, Tailwind, U-turn |
-| Marowak-Alola | Thick Club | Lightning Rod | Adamant | Shadow Bone, Flare Blitz, Bonemerang, Protect |
-| Arbok | Black Sludge | Intimidate | Adamant | Glare, Gunk Shot, Sucker Punch, Coil |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e categorias)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_AGATHA` = **1165** (bloco 2, flag `0xB01`), luta genérica `Nexus_EventScript_Agatha_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_AGATHA ===
 Name: Agatha
 Class: Elite Four
-Pic: Hex Maniac
+Pic: Agatha
 Gender: Female
-Music: Elite Four
+Music: Female
 Double Battle: No
 AI: Smart Trainer
 
@@ -151,9 +132,14 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Coil
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Spectrier** — `Nexus_EventScript_Agatha_Spectrier_ChampionFight` (falas `Nexus_Text_Agatha_Spectrier_Champion*`)
+- **Marshadow** — `Nexus_EventScript_Agatha_Marshadow_ChampionFight` (falas `Nexus_Text_Agatha_Marshadow_Champion*`)
+- **Giratina Altered** — `Nexus_EventScript_Agatha_Giratina_ChampionFight` (falas `Nexus_Text_Agatha_Giratina_Champion*`)
+
 
 #### Spectrier
 
@@ -193,103 +179,17 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando a Agatha cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)). Três ângulos: apresentação e a velha briga: Pokémon são para batalhar (1); o rival de juventude (Oak, nunca nomeado) — cinquenta anos de discussão (2); R21: no fragmento dela a Elite Four nunca perdeu, e a sala do Campeão junta poeira (3).
-
-#### Variação 1
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Agatha_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
 > Hah! Another youngster. I'm Agatha. I was battling with ghosts before your grandparents learned to walk.
 >
-> People call me scary. Nonsense! I'm only honest. Pokémon are for battling, child, and I'll prove it.
+> People call me scary. Nonsense! I'm only honest. Pokemon are for battling, child, and I'll prove it.
 
 **Derrota**
 
 > Oh ho! You're something special, child!
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Agatha_Intro:
-	.string "Hah! Another youngster. I'm Agatha. I\n"
-	.string "was battling with ghosts before your\l"
-	.string "grandparents learned to walk.\p"
-	.string "People call me scary. Nonsense! I'm\n"
-	.string "only honest. Pokémon are for battling,\l"
-	.string "child, and I'll prove it.$"
-
-Nexus_Text_Agatha_Defeat:
-	.string "Oh ho! You're something special, child!$"
-```
-
-</details>
-
-#### Variação 2
-
-**Antes da luta**
-
-> There was a boy in my town who wanted to study Pokémon instead of battling them. We argued about it for fifty years.
->
-> He'd say, 'Look how they live!' I'd say, 'Look how they fight!' We were both right. Neither of us ever said so.
->
-> Well? Which kind are you? Show me!
-
-**Derrota**
-
-> Hmph. You battle the way he did. Kindly. …It still works. How annoying.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Agatha_Intro2:
-	.string "There was a boy in my town who wanted\n"
-	.string "to study Pokémon instead of battling\l"
-	.string "them. We argued about it for fifty\l"
-	.string "years.\p"
-	.string "He'd say, 'Look how they live!' I'd\n"
-	.string "say, 'Look how they fight!' We were\l"
-	.string "both right. Neither of us ever said so.\p"
-	.string "Well? Which kind are you? Show me!$"
-
-Nexus_Text_Agatha_Defeat2:
-	.string "Hmph. You battle the way he did. Kindly.\n"
-	.string "…It still works. How annoying.$"
-```
-
-</details>
-
-#### Variação 3
-
-**Antes da luta**
-
-> Forty years in the League, and not one Trainer ever got past my room. Not one!
->
-> The room after mine is full of dust. Sometimes I open the door just to let it breathe.
->
-> Well? Are you going to be the first? Hah! Let's find out!
-
-**Derrota**
-
-> Oh ho! So that's what the next door looks like from this side. …Dusty.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Agatha_Intro3:
-	.string "Forty years in the League, and not one\n"
-	.string "Trainer ever got past my room. Not one!\p"
-	.string "The room after mine is full of dust.\n"
-	.string "Sometimes I open the door just to let\l"
-	.string "it breathe.\p"
-	.string "Well? Are you going to be the first?\n"
-	.string "Hah! Let's find out!$"
-
-Nexus_Text_Agatha_Defeat3:
-	.string "Oh ho! So that's what the next door\n"
-	.string "looks like from this side. …Dusty.$"
-```
-
-</details>
 
 ### Diálogo associado ao lendário
 

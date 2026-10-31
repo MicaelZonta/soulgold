@@ -21,15 +21,18 @@ REPO = Path(__file__).resolve().parents[2]
 METATILE_ID_MASK, COLLISION_MASK, NUM_PRIMARY = 0x07FF, 0x0800, 1024
 
 
-def load(mapname, objs=None):
+def load(mapname, objs=None, cells=None):
     """objs: posicoes dos objetos VIVOS (ir.py le da RAM). Sem isso, todo
-    object_event do map.json bloqueia, inclusive os escondidos por flag."""
+    object_event do map.json bloqueia, inclusive os escondidos por flag.
+    cells: grade VIVA do mapa (ir.py le gBackupMapLayout), que ja traz o que
+    setmetatile mudou (portao aberto, gelo derretido). Sem isso, usa o map.bin."""
     m = json.load(open(REPO / f"data/maps/{mapname}/map.json"))
     layouts = json.load(open(REPO / "data/layouts/layouts.json"))["layouts"]
     lay = next(l for l in layouts if l["id"] == m["layout"])
     raw = open(REPO / lay["blockdata_filepath"], "rb").read()
     w, h = lay["width"], lay["height"]
-    cells = struct.unpack(f"<{w*h}H", raw)
+    if cells is None:
+        cells = struct.unpack(f"<{w*h}H", raw)
     block = {(x, y) for y in range(h) for x in range(w) if cells[y * w + x] & COLLISION_MASK}
     if objs is None:
         objs = {(o["x"], o["y"]) for o in m.get("object_events", [])}
@@ -47,7 +50,7 @@ def load(mapname, objs=None):
                 continue
             name = names[struct.unpack_from("<H", a, i * 2)[0] & 0xFF]
             # agua (so com Surf), cachoeira e ledge (pulo de mao unica): fora da rota a pe
-            if any(k in name for k in ("WATER", "POND", "OCEAN", "WATERFALL", "JUMP_", "DIVE")):
+            if "SHALLOW" not in name and any(k in name for k in ("WATER", "POND", "OCEAN", "WATERFALL", "JUMP_", "DIVE")):   # agua rasa anda a pe
                 block.add((x, y))
             for side in ("NORTH", "SOUTH", "EAST", "WEST"):
                 if name.startswith("MB_IMPASSABLE_") and side in name.replace("MB_IMPASSABLE_", ""):
@@ -71,8 +74,8 @@ def behavior_names():
 DIRS = {"UP": (0, -1), "DOWN": (0, 1), "LEFT": (-1, 0), "RIGHT": (1, 0)}
 
 
-def path(mapname, a, b, objs=None):
-    w, h, block, edges = load(mapname, objs)
+def path(mapname, a, b, objs=None, cells=None):
+    w, h, block, edges = load(mapname, objs, cells)
     goals = {b} if b not in block else {(b[0] - d[0], b[1] - d[1]) for d in DIRS.values()}
     prev = {a: None}
     q = deque([a])

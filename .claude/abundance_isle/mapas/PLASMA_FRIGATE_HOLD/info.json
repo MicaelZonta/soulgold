@@ -1,0 +1,152 @@
+{
+ "map": "PLASMA_FRIGATE_HOLD",
+ "ingame": "Plasma Frigate Hold",
+ "w": 40,
+ "h": 16,
+ "primary": "gTileset_Johto_General_Hns",
+ "secondary": "gTileset_ssaqua_Hns",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 36,
+   "y": 12,
+   "dest_map": "MAP_PLASMA_FRIGATE_DECK",
+   "dest_warp_id": "1",
+   "nota": "escada do convés (Deck 35,15)"
+  },
+  {
+   "x": 3,
+   "y": 12,
+   "dest_map": "MAP_PLASMA_FRIGATE_ENGINE_ROOM",
+   "dest_warp_id": "0",
+   "nota": "casa de máquinas / DNA Lab; o guarda só sai da frente com o uniforme Plasma"
+  }
+ ],
+ "connections": [],
+ "objects": [
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_HOLD_ENGINE_GUARD",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 3,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "PlasmaFrigateHold_EventScript_EngineGuard",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_HOLD_RESEARCHER",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 7,
+   "y": 10,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "2",
+   "script": "PlasmaFrigateHold_EventScript_Researcher",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_HOLD_GRUNT_BUNK_1",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 17,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "PlasmaFrigateHold_EventScript_Grunt4",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_HOLD_GRUNT_BUNK_2",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 28,
+   "y": 14,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "PlasmaFrigateHold_EventScript_Grunt5",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_HOLD_GRUNT_HALL",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 14,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "6",
+   "script": "PlasmaFrigateHold_EventScript_Grunt6",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_HOLD_ITEM_LAB",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 12,
+   "y": 14,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "PlasmaFrigateHold_EventScript_ItemDuskBall",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_HOLD_ITEM_BUNK",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 31,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "PlasmaFrigateHold_EventScript_ItemNeverMeltIce",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_HOLD_ITEM_HALL",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 1,
+   "y": 3,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "PlasmaFrigateHold_EventScript_ItemMaxElixir",
+   "flag": "0"
+  }
+ ],
+ "explorar": [
+  "Porão em U: corredor roxo por cima, laboratório à esquerda, alojamento comprido no meio, escada do convés à direita.",
+  "Laboratório (as mesas do refeitório viram bancadas): o pesquisador do Plasma tem as notas do 'Projeto Ideal Negro' — fundir Zekrom e Kyurem com os DNA Splicers — e luta para protegê-las. Dusk Ball no canto.",
+  "Alojamento com fileiras de beliches: Never-Melt Ice esquecido entre as camas; dois recrutas de folga.",
+  "Max Elixir no canto noroeste do corredor, vigiado por um recruta de visão longa.",
+  "Escada da casa de máquinas guardada: 'Authorized personnel only.' Com o uniforme Plasma (missão Undercover da Rosa) o guarda deixa passar para o DNA Lab."
+ ],
+ "historia": "Onde o jogador lê o plano do Ghetsis por escrito (Kyurem Black). Opcional, mas dá a recompensa e o contexto antes do cume.",
+ "estados": {
+  "dia": "Tripulação do Plasma a bordo."
+ },
+ "conferido": "check_objects sem bloqueio; BFS da escada do convés: {\"ENGINE_GUARD\": 47, \"RESEARCHER\": 42, \"GRUNT_BUNK_1\": 33, \"GRUNT_BUNK_2\": 25, \"GRUNT_HALL\": 29, \"ITEM_LAB\": 49, \"ITEM_BUNK\": 25, \"ITEM_HALL\": 43}"
+}

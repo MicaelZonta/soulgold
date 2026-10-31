@@ -1,0 +1,77 @@
+{
+  "id": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER",
+  "name": "AbundanceIsle_SunsetStrait_Underwater",
+  "layout": "LAYOUT_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER",
+  "music": "MUS_HG_ROUTE38",
+  "region_map_section": "MAPSEC_SUNSET_STRAIT",
+  "requires_flash": false,
+  "weather": "WEATHER_UNDERWATER_BUBBLES",
+  "map_type": "MAP_TYPE_UNDERWATER",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT",
+      "offset": 0,
+      "direction": "emerge"
+    }
+  ],
+  "object_events": [
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_ITEM_REEF",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 33,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_DEEP_SEA_SCALE",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_DEEP_SEA_SCALE"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_ITEM_HULL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 28,
+      "y": 35,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_HEART_SCALE",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_HEART_SCALE"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_ITEM_SOUTH",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 34,
+      "y": 50,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_DEEP_SEA_TOOTH",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_DEEP_SEA_TOOTH"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 19,
+      "y": 33,
+      "elevation": 0,
+      "dest_map": "MAP_SUNKEN_TRUTH_SHIP",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

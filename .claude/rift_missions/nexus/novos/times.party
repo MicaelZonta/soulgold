@@ -1,0 +1,3974 @@
+=== TRAINER_NEXUS_AZ ===
+Name: AZ
+Class: Pkmn Trainer 1
+Pic: AZ
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Sigilyph @ Flame Orb
+Timid Nature
+Level: 100
+Ability: Magic Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Psycho Shift
+- Air Slash
+- Roost
+- Tailwind
+
+Xerneas @ Power Herb
+Modest Nature
+Level: 100
+Ability: Fairy Aura
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Geomancy
+- Moonblast
+- Protect
+- Focus Blast
+
+Celebi @ Leftovers
+Bold Nature
+Level: 100
+Ability: Natural Cure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Giga Drain
+- Psychic
+- Recover
+- Leech Seed
+
+Floette-Eternal @ Fairytite
+Timid Nature
+Level: 100
+Ability: Flower Veil
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Light of Ruin
+- Moonblast
+- Giga Drain
+- Protect
+
+Golurk @ Assault Vest
+Adamant Nature
+Level: 100
+Ability: Iron Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- High Horsepower
+- Shadow Punch
+- Ice Punch
+- Drain Punch
+
+Torkoal @ Heat Rock
+Bold Nature
+Level: 100
+Ability: Drought
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Heat Wave
+- Solar Beam
+- Yawn
+- Rapid Spin
+
+=== TRAINER_NEXUS_AGATHA ===
+Name: Agatha
+Class: Elite Four
+Pic: Agatha
+Gender: Female
+Music: Elite Four
+Double Battle: No
+AI: Smart Trainer
+
+Spectrier @ Life Orb
+Timid Nature
+Level: 100
+Ability: Grim Neigh
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shadow Ball
+- Dark Pulse
+- Nasty Plot
+- Protect
+
+Marshadow @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Technician
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Spectral Thief
+- Close Combat
+- Shadow Sneak
+- Protect
+
+Gengar @ Ghostite
+Timid Nature
+Level: 100
+Ability: Cursed Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hex
+- Sludge Bomb
+- Will-O-Wisp
+- Protect
+
+Crobat @ Sitrus Berry
+Jolly Nature
+Level: 100
+Ability: Inner Focus
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Taunt
+- Tailwind
+- U-turn
+
+Marowak-Alola @ Thick Club
+Adamant Nature
+Level: 100
+Ability: Lightning Rod
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shadow Bone
+- Flare Blitz
+- Bonemerang
+- Protect
+
+Arbok @ Black Sludge
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Glare
+- Gunk Shot
+- Sucker Punch
+- Coil
+
+=== TRAINER_NEXUS_ALDER ===
+Name: Alder
+Class: Champion
+Pic: Alder
+Gender: Male
+Music: Hg Champion
+Double Battle: No
+AI: Smart Trainer
+
+Groudon @ Leftovers
+Adamant Nature
+Level: 100
+Ability: Drought
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Precipice Blades
+- Heat Crash
+- Stealth Rock
+- Protect
+
+Slither Wing @ Choice Band
+Adamant Nature
+Level: 100
+Ability: Protosynthesis
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- First Impression
+- Close Combat
+- Flare Blitz
+- U-turn
+
+Scolipede @ Poisontite
+Jolly Nature
+Level: 100
+Ability: Speed Boost
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Megahorn
+- Poison Jab
+- Protect
+- Swords Dance
+
+Volcarona @ Heavy-Duty Boots
+Timid Nature
+Level: 100
+Ability: Flame Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Quiver Dance
+- Fiery Dance
+- Giga Drain
+- Rage Powder
+
+Bouffalant @ Assault Vest
+Adamant Nature
+Level: 100
+Ability: Sap Sipper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Head Charge
+- Rock Slide
+- Megahorn
+- Iron Head
+
+Druddigon @ Rocky Helmet
+Adamant Nature
+Level: 100
+Ability: Rough Skin
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Claw
+- Dragon Tail
+- Sucker Punch
+- Glare
+
+=== TRAINER_NEXUS_ALLISTER ===
+Name: Allister
+Class: Leader
+Pic: Allister
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Mimikyu @ Mental Herb
+Jolly Nature
+Level: 100
+Ability: Disguise
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Play Rough
+- Shadow Sneak
+- Thunder Wave
+- Swords Dance
+
+Lunala @ Leftovers
+Timid Nature
+Level: 100
+Ability: Shadow Shield
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Moongeist Beam
+- Psyshock
+- Moonblast
+- Calm Mind
+
+Spectrier @ Life Orb
+Timid Nature
+Level: 100
+Ability: Grim Neigh
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shadow Ball
+- Dark Pulse
+- Nasty Plot
+- Protect
+
+Gengar @ Ghostite
+Timid Nature
+Level: 100
+Ability: Cursed Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shadow Ball
+- Sludge Bomb
+- Focus Blast
+- Protect
+
+Cursola @ Power Herb
+Quiet Nature
+Level: 100
+Ability: Perish Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Meteor Beam
+- Shadow Ball
+- Earth Power
+- Protect
+
+Dusknoir @ Sitrus Berry
+Brave Nature
+Level: 100
+Ability: Frisk
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Poltergeist
+- Icy Wind
+- Shadow Sneak
+- Protect
+
+=== TRAINER_NEXUS_AVERY ===
+Name: Avery
+Class: Pkmn Trainer 1
+Pic: Avery
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Indeedee-F @ Sitrus Berry
+Bold Nature
+Level: 100
+Ability: Psychic Surge
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Follow Me
+- Psychic
+- Dazzling Gleam
+- Healing Wish
+
+Mewtwo @ Leftovers
+Timid Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Psystrike
+- Aura Sphere
+- Ice Beam
+- Calm Mind
+
+Articuno-Galar @ Leftovers
+Timid Nature
+Level: 100
+Ability: Competitive
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Freezing Glare
+- Hurricane
+- Tailwind
+- Recover
+
+Alakazam @ Psychite
+Timid Nature
+Level: 100
+Ability: Magic Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Psychic
+- Focus Blast
+- Shadow Ball
+- Dazzling Gleam
+
+Slowking-Galar @ Colbur Berry
+Calm Nature
+Level: 100
+Ability: Regenerator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sludge Bomb
+- Psyshock
+- Slack Off
+- Chilly Reception
+
+Espeon @ Life Orb
+Timid Nature
+Level: 100
+Ability: Magic Bounce
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Psyshock
+- Dazzling Gleam
+- Shadow Ball
+- Calm Mind
+
+=== TRAINER_NEXUS_BARRY ===
+Name: Barry
+Class: Rival
+Pic: Barry
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Deoxys-Speed @ Focus Sash
+Hasty Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Psycho Boost
+- Knock Off
+- Taunt
+- Stealth Rock
+
+Staraptor @ Flyingite
+Jolly Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Close Combat
+- Tailwind
+- U-turn
+
+Uxie @ Sitrus Berry
+Bold Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Psychic
+- Yawn
+- U-turn
+- Thunder Wave
+
+Empoleon @ Leftovers
+Modest Nature
+Level: 100
+Ability: Competitive
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hydro Pump
+- Flash Cannon
+- Ice Beam
+- Grass Knot
+
+Heracross @ Flame Orb
+Jolly Nature
+Level: 100
+Ability: Guts
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Megahorn
+- Knock Off
+- Facade
+
+Snorlax @ Sitrus Berry
+Adamant Nature
+Level: 100
+Ability: Thick Fat
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Belly Drum
+- Double-Edge
+- Crunch
+- Protect
+
+=== TRAINER_NEXUS_BEA ===
+Name: Bea
+Class: Leader
+Pic: Bea
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Marshadow @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Technician
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Spectral Thief
+- Close Combat
+- Shadow Sneak
+- Bulk Up
+
+Urshifu-Rapid-Strike @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Unseen Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn
+
+Hawlucha @ Fightite
+Jolly Nature
+Level: 100
+Ability: Unburden
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Brave Bird
+- Swords Dance
+- Detect
+
+Hitmontop @ Rocky Helmet
+Impish Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Close Combat
+- Rapid Spin
+- Wide Guard
+
+Sirfetchd @ Leek
+Adamant Nature
+Level: 100
+Ability: Scrappy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Leaf Blade
+- Knock Off
+- Quick Guard
+
+Falinks @ Sitrus Berry
+Jolly Nature
+Level: 100
+Ability: Defiant
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Throat Chop
+- No Retreat
+- Protect
+
+=== TRAINER_NEXUS_BRYCEN ===
+Name: Brycen
+Class: Leader
+Pic: Brycen
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Kyurem @ Life Orb
+Modest Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blizzard
+- Freeze-Dry
+- Draco Meteor
+- Earth Power
+
+Articuno @ Heavy-Duty Boots
+Modest Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blizzard
+- Hurricane
+- Roost
+- Haze
+
+Abomasnow @ Icetite
+Quiet Nature
+Level: 100
+Ability: Snow Warning
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blizzard
+- Giga Drain
+- Earth Power
+- Protect
+
+Beartic @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Slush Rush
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Icicle Crash
+- Close Combat
+- Aqua Jet
+- Protect
+
+Mamoswine @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Thick Fat
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Icicle Crash
+- High Horsepower
+- Ice Shard
+- Stealth Rock
+
+Froslass @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Cursed Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Icy Wind
+- Shadow Ball
+- Will-O-Wisp
+- Destiny Bond
+
+=== TRAINER_NEXUS_CHEREN ===
+Name: Cheren
+Class: Leader
+Pic: Cheren
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Kyurem @ Life Orb
+Modest Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Ice Beam
+- Draco Meteor
+- Earth Power
+- Freeze-Dry
+
+Cobalion @ Chople Berry
+Jolly Nature
+Level: 100
+Ability: Justified
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Iron Head
+- Close Combat
+- Swords Dance
+- Stone Edge
+
+Kangaskhan @ Normalite
+Adamant Nature
+Level: 100
+Ability: Scrappy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Double-Edge
+- Sucker Punch
+- Drain Punch
+
+Samurott @ Sitrus Berry
+Adamant Nature
+Level: 100
+Ability: Torrent
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Razor Shell
+- Aqua Jet
+- Megahorn
+- Swords Dance
+
+Liepard @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Prankster
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Encore
+- Thunder Wave
+- Foul Play
+
+Stoutland @ Leftovers
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Return
+- Crunch
+- Wild Charge
+- Protect
+
+=== TRAINER_NEXUS_CILAN ===
+Name: Cilan
+Class: Leader
+Pic: Cilan
+Gender: Male
+Music: Male
+Double Battle: Yes
+AI: Smart Trainer
+
+Groudon @ Leftovers
+Adamant Nature
+Level: 100
+Ability: Drought
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Precipice Blades
+- Heat Crash
+- Stealth Rock
+- Protect
+
+Whimsicott @ Covert Cloak
+Timid Nature
+Level: 100
+Ability: Prankster
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Moonblast
+- Tailwind
+- Encore
+- Sunny Day
+
+Virizion @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Justified
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Leaf Blade
+- Close Combat
+- Stone Edge
+- Protect
+
+Sceptile @ Grasstite
+Timid Nature
+Level: 100
+Ability: Overgrow
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Solar Beam
+- Dragon Pulse
+- Focus Blast
+- Protect
+
+Simisage @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: Overgrow
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Seed Bomb
+- Knock Off
+- Rock Slide
+- Taunt
+
+Crustle @ White Herb
+Adamant Nature
+Level: 100
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shell Smash
+- Rock Slide
+- X-Scissor
+- Knock Off
+
+=== TRAINER_NEXUS_CYNTHIA ===
+Name: Cynthia
+Class: Champion
+Pic: Cynthia
+Gender: Female
+Music: Hg Champion
+Double Battle: No
+AI: Smart Trainer
+
+Giratina-Origin @ Griseous Core
+Adamant Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Poltergeist
+- Dragon Claw
+- Shadow Sneak
+- Earth Power
+
+Azelf @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Mind Float
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Stealth Rock
+- Taunt
+- Psychic
+- U-turn
+
+Garchomp @ Groundite
+Jolly Nature
+Level: 100
+Ability: Rough Skin
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Swords Dance
+- Stomping Tantrum
+- Dragon Claw
+- Stone Edge
+
+Spiritomb @ Leftovers
+Careful Nature
+Level: 100
+Ability: Infiltrator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Foul Play
+- Will-O-Wisp
+- Sucker Punch
+- Pain Split
+
+Milotic @ Leftovers
+Bold Nature
+Level: 100
+Ability: Competitive
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Scald
+- Ice Beam
+- Recover
+- Haze
+
+Togekiss @ Sitrus Berry
+Timid Nature
+Level: 100
+Ability: Serene Grace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Air Slash
+- Dazzling Gleam
+- Follow Me
+- Roost
+
+=== TRAINER_NEXUS_CYRUS ===
+Name: Cyrus
+Class: Pkmn Trainer 1
+Pic: Cyrus
+Gender: Male
+Music: Dp Intense
+Double Battle: No
+AI: Smart Trainer
+
+Dialga-Origin @ Adamant Crystal
+Modest Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Draco Meteor
+- Flash Cannon
+- Earth Power
+- Thunder Wave
+
+Mesprit @ Sitrus Berry
+Bold Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Stealth Rock
+- Psychic
+- U-turn
+- Healing Wish
+
+Gyarados @ Watertite
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Dance
+- Waterfall
+- Crunch
+- Ice Fang
+
+Weavile @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Pickpocket
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Knock Off
+- Icicle Crash
+- Ice Shard
+
+Honchkrow @ Scope Lens
+Adamant Nature
+Level: 100
+Ability: Super Luck
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Night Slash
+- Sucker Punch
+- Protect
+
+Crobat @ Black Sludge
+Jolly Nature
+Level: 100
+Ability: Infiltrator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Cross Poison
+- Taunt
+- Tailwind
+- U-turn
+
+=== TRAINER_NEXUS_DAWN ===
+Name: Dawn
+Class: Pkmn Trainer 1
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Smart Trainer
+
+Palkia @ Life Orb
+Modest Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Spacial Rend
+- Hydro Pump
+- Thunder
+- Fire Blast
+
+Cresselia @ Leftovers
+Bold Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Moonblast
+- Psyshock
+- Moonlight
+- Thunder Wave
+
+Lopunny @ Normalite
+Jolly Nature
+Level: 100
+Ability: Limber
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Return
+- Close Combat
+- Ice Punch
+
+Empoleon @ Leftovers
+Modest Nature
+Level: 100
+Ability: Competitive
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hydro Pump
+- Flash Cannon
+- Ice Beam
+- Grass Knot
+
+Togekiss @ Sitrus Berry
+Timid Nature
+Level: 100
+Ability: Serene Grace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Air Slash
+- Dazzling Gleam
+- Follow Me
+- Roost
+
+Mamoswine @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Thick Fat
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Icicle Crash
+- High Horsepower
+- Ice Shard
+- Stealth Rock
+
+=== TRAINER_NEXUS_DIANTHA ===
+Name: Diantha
+Class: Champion
+Pic: Diantha
+Gender: Female
+Music: Hg Champion
+Double Battle: Yes
+AI: Smart Trainer
+
+Xerneas @ Power Herb
+Modest Nature
+Level: 100
+Ability: Fairy Aura
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Geomancy
+- Moonblast
+- Dazzling Gleam
+- Focus Blast
+
+Iron Valiant @ Booster Energy
+Naive Nature
+Level: 100
+Ability: Quark Drive
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Moonblast
+- Close Combat
+- Knock Off
+- Encore
+
+Gardevoir @ Fairytite
+Timid Nature
+Level: 100
+Ability: Trace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Psychic
+- Mystical Fire
+- Protect
+
+Hawlucha @ White Herb
+Jolly Nature
+Level: 100
+Ability: Unburden
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Brave Bird
+- Swords Dance
+- Taunt
+
+Tyrantrum @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Rock Head
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Head Smash
+- Dragon Claw
+- Rock Slide
+- Dragon Dance
+
+Gourgeist @ Sitrus Berry
+Impish Nature
+Level: 100
+Ability: Frisk
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Will-O-Wisp
+- Poltergeist
+- Leech Seed
+- Protect
+
+=== TRAINER_NEXUS_GARDENIA ===
+Name: Gardenia
+Class: Leader
+Pic: Gardenia
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Cherrim @ Heat Rock
+Modest Nature
+Level: 100
+Ability: Flower Gift
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sunny Day
+- Weather Ball
+- Giga Drain
+- Healing Wish
+
+Zygarde-50-Power-Construct @ Leftovers
+Adamant Nature
+Level: 100
+Ability: Power Construct
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Dance
+- Thousand Arrows
+- Scale Shot
+- Stone Edge
+
+Shaymin-Sky @ Leftovers
+Timid Nature
+Level: 100
+Ability: Serene Grace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Seed Flare
+- Air Slash
+- Earth Power
+- Tailwind
+
+Meganium @ Bondstone
+Modest Nature
+Level: 100
+Ability: Overgrow
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Work Up
+- Solar Beam
+- Dazzling Gleam
+- Synthesis
+
+Roserade @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Natural Cure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sleep Powder
+- Giga Drain
+- Sludge Bomb
+- Spikes
+
+Torterra @ Leftovers
+Adamant Nature
+Level: 100
+Ability: Shell Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Wood Hammer
+- High Horsepower
+- Stone Edge
+- Synthesis
+
+=== TRAINER_NEXUS_GHETSIS ===
+Name: Ghetsis
+Class: Team Plasma
+Pic: Ghetsis
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Cobalion @ Chople Berry
+Jolly Nature
+Level: 100
+Ability: Justified
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Iron Head
+- Close Combat
+- Thunder Wave
+- Stone Edge
+
+Kyurem-White @ Life Orb
+Modest Nature
+Level: 100
+Ability: Turboblaze
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Ice Beam
+- Draco Meteor
+- Fusion Flare
+- Protect
+
+Gyarados @ Watertite
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Dance
+- Waterfall
+- Crunch
+- Ice Fang
+
+Hydreigon @ Life Orb
+Timid Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dark Pulse
+- Draco Meteor
+- Flamethrower
+- Protect
+
+Eelektross @ Assault Vest
+Modest Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunderbolt
+- Flamethrower
+- Giga Drain
+- Knock Off
+
+Cofagrigus @ Leftovers
+Relaxed Nature
+Level: 100
+Ability: Mummy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shadow Ball
+- Will-O-Wisp
+- Icy Wind
+- Protect
+
+=== TRAINER_NEXUS_GLORIA ===
+Name: Gloria
+Class: Champion
+Pic: Gloria
+Gender: Female
+Music: Hg Champion
+Double Battle: Yes
+AI: Smart Trainer
+
+Rillaboom @ Assault Vest
+Adamant Nature
+Level: 100
+Ability: Grassy Surge
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- U-turn
+
+Zacian @ Rusted Sword
+Jolly Nature
+Level: 100
+Ability: Intrepid Sword
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Iron Head
+- Play Rough
+- Close Combat
+- Swords Dance
+
+Urshifu-Rapid-Strike @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Unseen Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn
+
+Lucario @ Fightite
+Jolly Nature
+Level: 100
+Ability: Justified
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Meteor Mash
+- Extreme Speed
+- Swords Dance
+
+Corviknight @ Rocky Helmet
+Impish Nature
+Level: 100
+Ability: Mirror Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Body Press
+- Tailwind
+- Roost
+
+Inteleon @ Scope Lens
+Timid Nature
+Level: 100
+Ability: Sniper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Snipe Shot
+- Ice Beam
+- Dark Pulse
+- Protect
+
+=== TRAINER_NEXUS_GRUSHA ===
+Name: Grusha
+Class: Leader
+Pic: Grusha
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Ninetales-Alola @ Light Clay
+Timid Nature
+Level: 100
+Ability: Snow Warning
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Aurora Veil
+- Blizzard
+- Moonblast
+- Encore
+
+Kyurem @ Life Orb
+Modest Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blizzard
+- Freeze-Dry
+- Draco Meteor
+- Earth Power
+
+Chien-Pao @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: Sword of Ruin
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Icicle Crash
+- Sacred Sword
+- Sucker Punch
+- Protect
+
+Altaria @ Dragotite
+Modest Nature
+Level: 100
+Ability: Natural Cure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Flamethrower
+- Tailwind
+- Roost
+
+Cetitan @ Sitrus Berry
+Adamant Nature
+Level: 100
+Ability: Slush Rush
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Belly Drum
+- Ice Spinner
+- High Horsepower
+- Ice Shard
+
+Frosmoth @ Heavy-Duty Boots
+Modest Nature
+Level: 100
+Ability: Ice Scales
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Quiver Dance
+- Ice Beam
+- Bug Buzz
+- Wide Guard
+
+=== TRAINER_NEXUS_HASSEL ===
+Name: Hassel
+Class: Elite Four
+Pic: Hassel
+Gender: Male
+Music: Elite Four
+Double Battle: No
+AI: Smart Trainer
+
+Rayquaza @ Life Orb
+Naive Nature
+Level: 100
+Ability: Air Lock
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Draco Meteor
+- Extreme Speed
+- Flamethrower
+- Protect
+
+Regidrago @ Dragon Fang
+Modest Nature
+Level: 100
+Ability: Dragons Maw
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Energy
+- Dragon Pulse
+- Ancient Power
+- Protect
+
+Salamence @ Dragotite
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Double-Edge
+- Dragon Claw
+- Brick Break
+- Dragon Dance
+
+Baxcalibur @ Loaded Dice
+Adamant Nature
+Level: 100
+Ability: Thermal Exchange
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Icicle Spear
+- Scale Shot
+- High Horsepower
+- Protect
+
+Noivern @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Infiltrator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Tailwind
+- Hurricane
+- Flamethrower
+- U-turn
+
+Dragalge @ Assault Vest
+Modest Nature
+Level: 100
+Ability: Adaptability
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sludge Bomb
+- Draco Meteor
+- Hydro Pump
+- Focus Blast
+
+=== TRAINER_NEXUS_HAU ===
+Name: Hau
+Class: Rival
+Pic: Hau
+Gender: Male
+Music: Hg Boy 1
+Double Battle: Yes
+AI: Smart Trainer
+
+Solgaleo @ Weakness Policy
+Adamant Nature
+Level: 100
+Ability: Full Metal Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sunsteel Strike
+- Psychic Fangs
+- Flare Blitz
+- Protect
+
+Tapu Koko @ Life Orb
+Timid Nature
+Level: 100
+Ability: Electric Surge
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunderbolt
+- Dazzling Gleam
+- Volt Switch
+- Roost
+
+Crabominable @ Icetite
+Adamant Nature
+Level: 100
+Ability: Iron Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Ice Hammer
+- Drain Punch
+- Thunder Punch
+- Protect
+
+Raichu-Alola @ Choice Specs
+Timid Nature
+Level: 100
+Ability: Surge Surfer
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunderbolt
+- Psychic
+- Focus Blast
+- Volt Switch
+
+Tauros @ Choice Band
+Jolly Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Double-Edge
+- Close Combat
+- Rock Slide
+- Zen Headbutt
+
+Decidueye @ Sitrus Berry
+Adamant Nature
+Level: 100
+Ability: Long Reach
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Spirit Shackle
+- Leaf Blade
+- Knock Off
+- Protect
+
+=== TRAINER_NEXUS_HILDA ===
+Name: Hilda
+Class: Pkmn Trainer 1
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Reshiram @ Life Orb
+Modest Nature
+Level: 100
+Ability: Turboblaze
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blue Flare
+- Draco Meteor
+- Earth Power
+- Heat Wave
+
+Tornadus @ Covert Cloak
+Timid Nature
+Level: 100
+Ability: Prankster
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Bleakwind Storm
+- Tailwind
+- Taunt
+- Protect
+
+Emboar @ Firetite
+Adamant Nature
+Level: 100
+Ability: Reckless
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Flare Blitz
+- Close Combat
+- Head Smash
+- Protect
+
+Excadrill @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: Mold Breaker
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- High Horsepower
+- Iron Head
+- Rock Slide
+- Swords Dance
+
+Jellicent @ Leftovers
+Calm Nature
+Level: 100
+Ability: Water Absorb
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Scald
+- Shadow Ball
+- Will-O-Wisp
+- Recover
+
+Galvantula @ Choice Specs
+Timid Nature
+Level: 100
+Ability: Compound Eyes
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunder
+- Bug Buzz
+- Electroweb
+- Volt Switch
+
+=== TRAINER_NEXUS_HOP ===
+Name: Hop
+Class: Rival
+Pic: Hop
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Zamazenta @ Rusted Shield
+Impish Nature
+Level: 100
+Ability: Dauntless Shield
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Body Press
+- Iron Defense
+- Iron Head
+- Wide Guard
+
+Silvally @ Life Orb
+Adamant Nature
+Level: 100
+Ability: RKS System
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Multi-Attack
+- Crunch
+- Flamethrower
+- Parting Shot
+
+Snorlax @ Normalite
+Careful Nature
+Level: 100
+Ability: Thick Fat
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Body Slam
+- Heavy Slam
+- Curse
+- High Horsepower
+
+Dubwool @ Leftovers
+Impish Nature
+Level: 100
+Ability: Fluffy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Body Press
+- Cotton Guard
+- Rest
+- Sleep Talk
+
+Corviknight @ Rocky Helmet
+Impish Nature
+Level: 100
+Ability: Mirror Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Body Press
+- Tailwind
+- Roost
+
+Cramorant @ Heavy-Duty Boots
+Timid Nature
+Level: 100
+Ability: Gulp Missile
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dive
+- Hurricane
+- Roost
+- Tailwind
+
+=== TRAINER_NEXUS_IONO ===
+Name: Iono
+Class: Leader
+Pic: Iono
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Kilowattrel @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Competitive
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunderbolt
+- Air Slash
+- Volt Switch
+- Tailwind
+
+Miraidon @ Choice Specs
+Timid Nature
+Level: 100
+Ability: Hadron Engine
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Electro Drift
+- Draco Meteor
+- Volt Switch
+- Dazzling Gleam
+
+Regieleki @ Life Orb
+Timid Nature
+Level: 100
+Ability: Transistor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunderbolt
+- Electroweb
+- Volt Switch
+- Extreme Speed
+
+Eelektross @ Electrite
+Modest Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunderbolt
+- Flamethrower
+- Giga Drain
+- Knock Off
+
+Rotom-Wash @ Leftovers
+Bold Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunderbolt
+- Will-O-Wisp
+- Volt Switch
+- Protect
+
+Mismagius @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shadow Ball
+- Mystical Fire
+- Will-O-Wisp
+- Taunt
+
+=== TRAINER_NEXUS_IRIS ===
+Name: Iris
+Class: Champion
+Pic: Iris
+Gender: Female
+Music: Hg Champion
+Double Battle: No
+AI: Smart Trainer
+
+Reshiram @ Life Orb
+Modest Nature
+Level: 100
+Ability: Turboblaze
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blue Flare
+- Draco Meteor
+- Heat Wave
+- Earth Power
+
+Latias @ Soul Dew
+Timid Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Draco Meteor
+- Psyshock
+- Recover
+- Calm Mind
+
+Salamence @ Dragotite
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Double-Edge
+- Dragon Claw
+- Brick Break
+- Dragon Dance
+
+Haxorus @ Lum Berry
+Jolly Nature
+Level: 100
+Ability: Mold Breaker
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Dance
+- Dragon Claw
+- Poison Jab
+- Stomping Tantrum
+
+Lapras @ Assault Vest
+Modest Nature
+Level: 100
+Ability: Water Absorb
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Freeze-Dry
+- Hydro Pump
+- Ice Shard
+- Thunderbolt
+
+Archeops @ Sitrus Berry
+Jolly Nature
+Level: 100
+Ability: Defeatist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Acrobatics
+- Rock Slide
+- Tailwind
+- Protect
+
+=== TRAINER_NEXUS_JESSIE_JAMES ===
+Name: Jess&James
+Class: Team Rocket
+Pic: Jessie James
+Gender: Female
+Music: Rocket
+Double Battle: Yes
+AI: Smart Trainer
+
+Mewtwo @ Life Orb
+Timid Nature
+Level: 100
+Ability: Unnerve
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Psystrike
+- Aura Sphere
+- Ice Beam
+- Recover
+
+Mew @ Mental Herb
+Timid Nature
+Level: 100
+Ability: Synchronize
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Stealth Rock
+- Will-O-Wisp
+- Tailwind
+- Knock Off
+
+Gyarados @ Watertite
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Dance
+- Waterfall
+- Crunch
+- Ice Fang
+
+Arbok @ Black Sludge
+Jolly Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Gunk Shot
+- Glare
+- Sucker Punch
+- Knock Off
+
+Victreebel @ Life Orb
+Modest Nature
+Level: 100
+Ability: Chlorophyll
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sludge Bomb
+- Leaf Storm
+- Sleep Powder
+- Sucker Punch
+
+Meowth @ Eviolite
+Jolly Nature
+Level: 100
+Ability: Technician
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Feint
+- Knock Off
+- U-turn
+
+=== TRAINER_NEXUS_JUNIPER ===
+Name: Juniper
+Class: Pkmn Trainer 1
+Pic: Juniper
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Smart Trainer
+
+Amoonguss @ Rocky Helmet
+Bold Nature
+Level: 100
+Ability: Regenerator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Spore
+- Rage Powder
+- Pollen Puff
+- Clear Smog
+
+Genesect @ Choice Scarf
+Naive Nature
+Level: 100
+Ability: Download
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- U-turn
+- Iron Head
+- Thunderbolt
+- Flamethrower
+
+Meloetta @ Throat Spray
+Timid Nature
+Level: 100
+Ability: Serene Grace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Psychic
+- Focus Blast
+- U-turn
+
+Audino @ Normalite
+Bold Nature
+Level: 100
+Ability: Healer
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Dazzling Gleam
+- Calm Mind
+- Heal Pulse
+
+Cinccino @ Loaded Dice
+Jolly Nature
+Level: 100
+Ability: Skill Link
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Tail Slap
+- Bullet Seed
+- Rock Blast
+- Protect
+
+Sawsbuck @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Sap Sipper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Horn Leech
+- Double-Edge
+- High Horsepower
+- Swords Dance
+
+=== TRAINER_NEXUS_KATY ===
+Name: Katy
+Class: Leader
+Pic: Katy
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Genesect @ Choice Scarf
+Naive Nature
+Level: 100
+Ability: Download
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- U-turn
+- Iron Head
+- Thunderbolt
+- Flamethrower
+
+Slither Wing @ Booster Energy
+Adamant Nature
+Level: 100
+Ability: Protosynthesis
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- First Impression
+- Close Combat
+- Leech Life
+- Protect
+
+Beedrill @ Bugtite
+Jolly Nature
+Level: 100
+Ability: Sniper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Poison Jab
+- Fell Stinger
+- U-turn
+- Drill Run
+
+Ursaring @ Flame Orb
+Adamant Nature
+Level: 100
+Ability: Guts
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Facade
+- Close Combat
+- Crunch
+- Protect
+
+Vivillon @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Compound Eyes
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sleep Powder
+- Hurricane
+- Quiver Dance
+- Protect
+
+Forretress @ Leftovers
+Relaxed Nature
+Level: 100
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Gyro Ball
+- Body Press
+- Rapid Spin
+- Spikes
+
+=== TRAINER_NEXUS_KLARA ===
+Name: Klara
+Class: Pkmn Trainer 1
+Pic: Klara
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Eternatus @ Life Orb
+Timid Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dynamax Cannon
+- Sludge Bomb
+- Flamethrower
+- Recover
+
+Munkidori @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Toxic Chain
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Sludge Bomb
+- Psychic
+- U-turn
+
+Beedrill @ Bugtite
+Jolly Nature
+Level: 100
+Ability: Sniper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Poison Jab
+- Fell Stinger
+- U-turn
+- Drill Run
+
+Slowbro-Galar @ Assault Vest
+Modest Nature
+Level: 100
+Ability: Regenerator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shell Side Arm
+- Psychic
+- Flamethrower
+- Ice Beam
+
+Scolipede @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Speed Boost
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Megahorn
+- Poison Jab
+- Swords Dance
+- Protect
+
+Weezing @ Black Sludge
+Bold Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Will-O-Wisp
+- Toxic Spikes
+- Sludge Bomb
+- Taunt
+
+=== TRAINER_NEXUS_KORRINA ===
+Name: Korrina
+Class: Leader
+Pic: Korrina
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Smart Trainer
+
+Mienshao @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: Regenerator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Close Combat
+- Knock Off
+- Wide Guard
+
+Koraidon @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Orichalcum Pulse
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Collision Course
+- Flare Blitz
+- Dragon Claw
+- U-turn
+
+Urshifu @ Choice Band
+Adamant Nature
+Level: 100
+Ability: Unseen Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Wicked Blow
+- Close Combat
+- Sucker Punch
+- U-turn
+
+Lucario @ Fightite
+Jolly Nature
+Level: 100
+Ability: Justified
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Meteor Mash
+- Extreme Speed
+- Swords Dance
+
+Hawlucha @ White Herb
+Jolly Nature
+Level: 100
+Ability: Unburden
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Brave Bird
+- Swords Dance
+- Taunt
+
+Hitmontop @ Rocky Helmet
+Impish Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Close Combat
+- Rapid Spin
+- Wide Guard
+
+=== TRAINER_NEXUS_LARRY ===
+Name: Larry
+Class: Elite Four
+Pic: Larry
+Gender: Male
+Music: Elite Four
+Double Battle: No
+AI: Smart Trainer
+
+Terapagos @ Leftovers
+Modest Nature
+Level: 100
+Ability: Tera Shift
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Tera Starstorm
+- Earth Power
+- Calm Mind
+- Protect
+
+Tornadus @ Covert Cloak
+Timid Nature
+Level: 100
+Ability: Prankster
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Bleakwind Storm
+- Tailwind
+- Taunt
+- Protect
+
+Pidgeot @ Flyingite
+Timid Nature
+Level: 100
+Ability: Keen Eye
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hurricane
+- Heat Wave
+- Tailwind
+- Roost
+
+Staraptor @ Choice Scarf
+Jolly Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Close Combat
+- Double-Edge
+- U-turn
+
+Dudunsparce @ Leftovers
+Careful Nature
+Level: 100
+Ability: Serene Grace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Body Slam
+- Coil
+- Roost
+- Rock Slide
+
+Flamigo @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Scrappy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Brave Bird
+- Tailwind
+- Protect
+
+=== TRAINER_NEXUS_LENORA ===
+Name: Lenora
+Class: Leader
+Pic: Lenora
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Kangaskhan @ Normalite
+Adamant Nature
+Level: 100
+Ability: Scrappy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Double-Edge
+- Sucker Punch
+- Drain Punch
+- Fake Out
+
+Arceus @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Multitype
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Extreme Speed
+- Swords Dance
+- Shadow Claw
+- Recover
+
+Meloetta @ Throat Spray
+Timid Nature
+Level: 100
+Ability: Serene Grace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Psychic
+- Focus Blast
+- U-turn
+
+Stoutland @ Leftovers
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Return
+- Crunch
+- Wild Charge
+- Protect
+
+Watchog @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: Illuminate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hypnosis
+- Super Fang
+- Knock Off
+- Low Kick
+
+Braviary @ Sharp Beak
+Adamant Nature
+Level: 100
+Ability: Defiant
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Close Combat
+- Tailwind
+- Rock Slide
+
+=== TRAINER_NEXUS_LEON ===
+Name: Leon
+Class: Champion
+Pic: Leon
+Gender: Male
+Music: Hg Champion
+Double Battle: No
+AI: Smart Trainer
+
+Eternatus @ Power Herb
+Timid Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Meteor Beam
+- Dynamax Cannon
+- Sludge Bomb
+- Flamethrower
+
+Urshifu @ Choice Band
+Adamant Nature
+Level: 100
+Ability: Unseen Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Wicked Blow
+- Close Combat
+- Sucker Punch
+- U-turn
+
+Charizard @ Gigantatite
+Timid Nature
+Level: 100
+Ability: Blaze
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Heat Wave
+- Air Slash
+- Focus Blast
+- Roost
+
+Dragapult @ Light Clay
+Jolly Nature
+Level: 100
+Ability: Infiltrator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Darts
+- Reflect
+- Light Screen
+- Will-O-Wisp
+
+Aegislash @ Leftovers
+Quiet Nature
+Level: 100
+Ability: Stance Change
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- King's Shield
+- Shadow Ball
+- Flash Cannon
+- Shadow Sneak
+
+Seismitoad @ Sitrus Berry
+Modest Nature
+Level: 100
+Ability: Water Absorb
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Muddy Water
+- Earth Power
+- Stealth Rock
+- Knock Off
+
+=== TRAINER_NEXUS_LORELEI ===
+Name: Lorelei
+Class: Elite Four
+Pic: Lorelei
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Slowbro @ Mental Herb
+Relaxed Nature
+Level: 100
+Ability: Regenerator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Trick Room
+- Scald
+- Psychic
+- Slack Off
+
+Glastrier @ Weakness Policy
+Brave Nature
+Level: 100
+Ability: Chilling Neigh
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Icicle Crash
+- High Horsepower
+- Close Combat
+- Protect
+
+Kyurem @ Choice Specs
+Modest Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Freeze-Dry
+- Draco Meteor
+- Earth Power
+- Ice Beam
+
+Lapras @ Icetite
+Quiet Nature
+Level: 100
+Ability: Water Absorb
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Freeze-Dry
+- Thunderbolt
+- Protect
+
+Cloyster @ White Herb
+Adamant Nature
+Level: 100
+Ability: Skill Link
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shell Smash
+- Icicle Spear
+- Rock Blast
+- Ice Shard
+
+Jynx @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Dry Skin
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Lovely Kiss
+- Ice Beam
+- Psychic
+- Trick Room
+
+=== TRAINER_NEXUS_LYSANDRE ===
+Name: Lysandre
+Class: Pkmn Trainer 1
+Pic: Lysandre
+Gender: Male
+Music: Intense
+Double Battle: No
+AI: Smart Trainer
+
+Yveltal @ Life Orb
+Naive Nature
+Level: 100
+Ability: Dark Aura
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dark Pulse
+- Oblivion Wing
+- Heat Wave
+- Sucker Punch
+
+Volcanion @ Assault Vest
+Modest Nature
+Level: 100
+Ability: Water Absorb
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Steam Eruption
+- Heat Wave
+- Sludge Bomb
+- Earth Power
+
+Gyarados @ Watertite
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Dance
+- Waterfall
+- Crunch
+- Ice Fang
+
+Pyroar @ Life Orb
+Timid Nature
+Level: 100
+Ability: Unnerve
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Heat Wave
+- Hyper Voice
+- Dark Pulse
+- Protect
+
+Mienshao @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: Regenerator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Close Combat
+- Knock Off
+- Wide Guard
+
+Honchkrow @ Scope Lens
+Adamant Nature
+Level: 100
+Ability: Super Luck
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Night Slash
+- Sucker Punch
+- Protect
+
+=== TRAINER_NEXUS_MARNIE ===
+Name: Marnie
+Class: Leader
+Pic: Marnie
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Smart Trainer
+
+Grimmsnarl @ Light Clay
+Careful Nature
+Level: 100
+Ability: Prankster
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Reflect
+- Light Screen
+- Spirit Break
+- Fake Out
+
+Moltres-Galar @ Weakness Policy
+Modest Nature
+Level: 100
+Ability: Berserk
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fiery Wrath
+- Hurricane
+- Nasty Plot
+- Protect
+
+Yveltal @ Life Orb
+Naive Nature
+Level: 100
+Ability: Dark Aura
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dark Pulse
+- Oblivion Wing
+- Heat Wave
+- Sucker Punch
+
+Absol @ Darktite
+Jolly Nature
+Level: 100
+Ability: Super Luck
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Knock Off
+- Sucker Punch
+- Play Rough
+- Swords Dance
+
+Morpeko @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: Hunger Switch
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Aura Wheel
+- Parting Shot
+- Protect
+
+Toxicroak @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Dry Skin
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Drain Punch
+- Gunk Shot
+- Sucker Punch
+- Protect
+
+=== TRAINER_NEXUS_MELONY ===
+Name: Melony
+Class: Leader
+Pic: Melony
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Ninetales-Alola @ Light Clay
+Timid Nature
+Level: 100
+Ability: Snow Warning
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Aurora Veil
+- Blizzard
+- Moonblast
+- Encore
+
+Calyrex-Ice @ Leftovers
+Brave Nature
+Level: 100
+Ability: As One Ice Rider
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Glacial Lance
+- High Horsepower
+- Trick Room
+- Protect
+
+Articuno @ Heavy-Duty Boots
+Modest Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blizzard
+- Hurricane
+- Roost
+- Haze
+
+Lapras @ Icetite
+Modest Nature
+Level: 100
+Ability: Water Absorb
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Freeze-Dry
+- Hydro Pump
+- Thunderbolt
+- Ice Shard
+
+Frosmoth @ Heavy-Duty Boots
+Modest Nature
+Level: 100
+Ability: Ice Scales
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Quiver Dance
+- Ice Beam
+- Bug Buzz
+- Wide Guard
+
+Mr Rime @ Heavy-Duty Boots
+Timid Nature
+Level: 100
+Ability: Ice Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Freeze-Dry
+- Psychic
+- Rapid Spin
+- Fake Out
+
+=== TRAINER_NEXUS_MOLLY ===
+Name: Molly
+Class: Pkmn Trainer 1
+Pic: Molly Hale
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Clefable @ Fairytite
+Calm Nature
+Level: 100
+Ability: Magic Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Moonblast
+- Moonlight
+- Follow Me
+- Thunder Wave
+
+Xerneas @ Power Herb
+Modest Nature
+Level: 100
+Ability: Fairy Aura
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Geomancy
+- Moonblast
+- Protect
+- Focus Blast
+
+Entei @ Assault Vest
+Adamant Nature
+Level: 100
+Ability: Inner Focus
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sacred Fire
+- Extreme Speed
+- Stomping Tantrum
+- Snarl
+
+Kingdra @ Scope Lens
+Modest Nature
+Level: 100
+Ability: Sniper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Focus Energy
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+
+Ursaring @ Flame Orb
+Adamant Nature
+Level: 100
+Ability: Guts
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Facade
+- Close Combat
+- Crunch
+- Protect
+
+Granbull @ Sitrus Berry
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Play Rough
+- Close Combat
+- Thunder Wave
+- Protect
+
+=== TRAINER_NEXUS_MUSTARD ===
+Name: Mustard
+Class: Expert
+Pic: Mustard
+Gender: Male
+Music: Male
+Double Battle: Yes
+AI: Smart Trainer
+
+Mienshao @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: Regenerator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Close Combat
+- Knock Off
+- Wide Guard
+
+Koraidon @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Orichalcum Pulse
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Collision Course
+- Flare Blitz
+- Dragon Claw
+- U-turn
+
+Urshifu @ Choice Band
+Adamant Nature
+Level: 100
+Ability: Unseen Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Wicked Blow
+- Close Combat
+- Sucker Punch
+- U-turn
+
+Lucario @ Fightite
+Jolly Nature
+Level: 100
+Ability: Justified
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Meteor Mash
+- Extreme Speed
+- Swords Dance
+
+Corviknight @ Rocky Helmet
+Impish Nature
+Level: 100
+Ability: Mirror Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Body Press
+- Tailwind
+- Roost
+
+Luxray @ Choice Band
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Wild Charge
+- Crunch
+- Ice Fang
+- Play Rough
+
+=== TRAINER_NEXUS_N ===
+Name: N
+Class: Pkmn Trainer 1
+Pic: N
+Gender: Male
+Music: Intense
+Double Battle: Yes
+AI: Smart Trainer
+
+Zekrom @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Teravolt
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Bolt Strike
+- Dragon Claw
+- Crunch
+- Protect
+
+Thundurus @ Sitrus Berry
+Timid Nature
+Level: 100
+Ability: Prankster
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunderbolt
+- Thunder Wave
+- Taunt
+- Nasty Plot
+
+Audino @ Normalite
+Bold Nature
+Level: 100
+Ability: Healer
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Dazzling Gleam
+- Calm Mind
+- Heal Pulse
+
+Zoroark @ Choice Scarf
+Timid Nature
+Level: 100
+Ability: Illusion
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Night Daze
+- Flamethrower
+- Focus Blast
+- U-turn
+
+Carracosta @ White Herb
+Adamant Nature
+Level: 100
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shell Smash
+- Liquidation
+- Stone Edge
+- Aqua Jet
+
+Klinklang @ Leftovers
+Adamant Nature
+Level: 100
+Ability: Clear Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shift Gear
+- Gear Grind
+- Wild Charge
+- Protect
+
+=== TRAINER_NEXUS_NEMONA ===
+Name: Nemona
+Class: Rival
+Pic: Nemona
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Pawmot @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: Iron Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Double Shock
+- Close Combat
+- Revival Blessing
+
+Koraidon @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Orichalcum Pulse
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Collision Course
+- Flare Blitz
+- Dragon Claw
+- U-turn
+
+Walking Wake @ Choice Specs
+Timid Nature
+Level: 100
+Ability: Protosynthesis
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hydro Steam
+- Draco Meteor
+- Flamethrower
+- Flip Turn
+
+Gallade @ Psychite
+Jolly Nature
+Level: 100
+Ability: Sharpness
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sacred Sword
+- Psycho Cut
+- Leaf Blade
+- Swords Dance
+
+Goodra-Hisui @ Assault Vest
+Modest Nature
+Level: 100
+Ability: Sap Sipper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Draco Meteor
+- Fire Blast
+- Sludge Bomb
+- Thunderbolt
+
+Meowscarada @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Protean
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Flower Trick
+- Knock Off
+- U-turn
+- Protect
+
+=== TRAINER_NEXUS_NESSA ===
+Name: Nessa
+Class: Leader
+Pic: Nessa
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Pelipper @ Damp Rock
+Bold Nature
+Level: 100
+Ability: Drizzle
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hurricane
+- Tailwind
+- Roost
+- Protect
+
+Kyogre @ Choice Specs
+Modest Nature
+Level: 100
+Ability: Drizzle
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Water Spout
+- Origin Pulse
+- Ice Beam
+- Thunder
+
+Suicune @ Leftovers
+Bold Nature
+Level: 100
+Ability: Inner Focus
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Scald
+- Snarl
+- Calm Mind
+- Protect
+
+Gyarados @ Watertite
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Dance
+- Waterfall
+- Crunch
+- Ice Fang
+
+Drednaw @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Swift Swim
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Liquidation
+- Rock Slide
+- High Horsepower
+- Protect
+
+Barraskewda @ Choice Band
+Adamant Nature
+Level: 100
+Ability: Swift Swim
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Liquidation
+- Close Combat
+- Psychic Fangs
+- Flip Turn
+
+=== TRAINER_NEXUS_OLIVIA ===
+Name: Olivia
+Class: Pkmn Trainer 1
+Pic: Olivia
+Gender: Female
+Music: Elite Four
+Double Battle: Yes
+AI: Smart Trainer
+
+Necrozma @ Life Orb
+Modest Nature
+Level: 100
+Ability: Prism Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Photon Geyser
+- Earth Power
+- Power Gem
+- Calm Mind
+
+Tapu Lele @ Choice Specs
+Timid Nature
+Level: 100
+Ability: Psychic Surge
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Psychic
+- Moonblast
+- Dazzling Gleam
+- Focus Blast
+
+Aerodactyl @ Rocktite
+Jolly Nature
+Level: 100
+Ability: Unnerve
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Rock Slide
+- Dual Wingbeat
+- Tailwind
+- Protect
+
+Lycanroc-Midnight @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: No Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Stone Edge
+- Close Combat
+- Crunch
+- Rock Slide
+
+Probopass @ Assault Vest
+Modest Nature
+Level: 100
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Power Gem
+- Earth Power
+- Thunderbolt
+- Flash Cannon
+
+Carbink @ Light Clay
+Bold Nature
+Level: 100
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Reflect
+- Light Screen
+- Stealth Rock
+- Moonblast
+
+=== TRAINER_NEXUS_PEONIA ===
+Name: Peonia
+Class: Pkmn Trainer 1
+Pic: Peonia
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Lugia @ Leftovers
+Timid Nature
+Level: 100
+Ability: Multiscale
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Aeroblast
+- Ice Beam
+- Calm Mind
+- Roost
+
+Suicune @ Leftovers
+Bold Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Scald
+- Snarl
+- Calm Mind
+- Tailwind
+
+Aerodactyl @ Rocktite
+Jolly Nature
+Level: 100
+Ability: Unnerve
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Rock Slide
+- Dual Wingbeat
+- Ice Fang
+- Tailwind
+
+Tyrantrum @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Rock Head
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Head Smash
+- Dragon Claw
+- Rock Slide
+- Dragon Dance
+
+Toxtricity @ Throat Spray
+Modest Nature
+Level: 100
+Ability: Punk Rock
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Overdrive
+- Sludge Bomb
+- Volt Switch
+- Protect
+
+Rotom-Wash @ Sitrus Berry
+Modest Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Will-O-Wisp
+- Thunderbolt
+- Volt Switch
+- Protect
+
+=== TRAINER_NEXUS_PEONY ===
+Name: Peony
+Class: Pkmn Trainer 1
+Pic: Peony
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Perrserker @ Sitrus Berry
+Adamant Nature
+Level: 100
+Ability: Steely Spirit
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Iron Head
+- Close Combat
+- U-turn
+
+Dialga @ Adamant Orb
+Quiet Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Trick Room
+- Draco Meteor
+- Flash Cannon
+- Fire Blast
+
+Registeel @ Leftovers
+Careful Nature
+Level: 100
+Ability: Clear Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Iron Head
+- Body Press
+- Protect
+- Iron Defense
+
+Aggron @ Steeltite
+Adamant Nature
+Level: 100
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Heavy Slam
+- Body Press
+- Rock Slide
+- Protect
+
+Copperajah @ Assault Vest
+Adamant Nature
+Level: 100
+Ability: Heavy Metal
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Heavy Slam
+- Power Whip
+- High Horsepower
+- Rock Slide
+
+Bronzong @ Mental Herb
+Sassy Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Trick Room
+- Iron Head
+- Hypnosis
+- Reflect
+
+=== TRAINER_NEXUS_ROWAN ===
+Name: Rowan
+Class: Pkmn Trainer 1
+Pic: Rowan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Infernape @ Focus Sash
+Jolly Nature
+Level: 100
+Ability: Iron Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Close Combat
+- Fire Punch
+- Mach Punch
+
+Dialga @ Adamant Orb
+Quiet Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Thunder Wave
+- Draco Meteor
+- Flash Cannon
+- Fire Blast
+
+Uxie @ Light Clay
+Bold Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Psychic
+- Reflect
+- Light Screen
+- U-turn
+
+Gallade @ Psychite
+Jolly Nature
+Level: 100
+Ability: Sharpness
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sacred Sword
+- Psycho Cut
+- Leaf Blade
+- Swords Dance
+
+Torterra @ Leftovers
+Adamant Nature
+Level: 100
+Ability: Shell Armor
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Wood Hammer
+- High Horsepower
+- Stone Edge
+- Synthesis
+
+Empoleon @ Leftovers
+Modest Nature
+Level: 100
+Ability: Competitive
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hydro Pump
+- Flash Cannon
+- Ice Beam
+- Grass Knot
+
+=== TRAINER_NEXUS_ROSA ===
+Name: Rosa
+Class: Pkmn Trainer 1
+Pic: Rosa
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Reshiram @ Life Orb
+Modest Nature
+Level: 100
+Ability: Turboblaze
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blue Flare
+- Draco Meteor
+- Heat Wave
+- Earth Power
+
+Virizion @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Justified
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Leaf Blade
+- Close Combat
+- Stone Edge
+- Protect
+
+Lucario @ Fightite
+Jolly Nature
+Level: 100
+Ability: Justified
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Meteor Mash
+- Extreme Speed
+- Swords Dance
+
+Serperior @ Life Orb
+Timid Nature
+Level: 100
+Ability: Contrary
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Leaf Storm
+- Dragon Pulse
+- Glare
+- Substitute
+
+Chandelure @ Choice Scarf
+Modest Nature
+Level: 100
+Ability: Flash Fire
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shadow Ball
+- Heat Wave
+- Energy Ball
+- Trick
+
+Braviary @ Sharp Beak
+Adamant Nature
+Level: 100
+Ability: Defiant
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Close Combat
+- Tailwind
+- Rock Slide
+
+=== TRAINER_NEXUS_SERENA ===
+Name: Serena
+Class: Pkmn Trainer 1
+Pic: Serena
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Smart Trainer
+
+Meowstic @ Light Clay
+Timid Nature
+Level: 100
+Ability: Prankster
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Reflect
+- Light Screen
+- Psychic
+- Thunder Wave
+
+Xerneas @ Power Herb
+Modest Nature
+Level: 100
+Ability: Fairy Aura
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Geomancy
+- Moonblast
+- Grass Knot
+- Focus Blast
+
+Diancie @ Fairytite
+Modest Nature
+Level: 100
+Ability: Clear Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Diamond Storm
+- Moonblast
+- Earth Power
+- Protect
+
+Delphox @ Life Orb
+Timid Nature
+Level: 100
+Ability: Blaze
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Heat Wave
+- Psychic
+- Grass Knot
+- Protect
+
+Pangoro @ Assault Vest
+Adamant Nature
+Level: 100
+Ability: Scrappy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Drain Punch
+- Knock Off
+- Gunk Shot
+- Bullet Punch
+
+Sylveon @ Throat Spray
+Modest Nature
+Level: 100
+Ability: Pixilate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Psyshock
+- Mystical Fire
+- Protect
+
+=== TRAINER_NEXUS_SHELLY ===
+Name: Shelly
+Class: Pkmn Trainer 1
+Pic: Shelly
+Gender: Female
+Music: Aqua
+Double Battle: Yes
+AI: Smart Trainer
+
+Kyogre @ Choice Specs
+Modest Nature
+Level: 100
+Ability: Drizzle
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Water Spout
+- Origin Pulse
+- Ice Beam
+- Thunder
+
+Manaphy @ Leftovers
+Calm Nature
+Level: 100
+Ability: Hydration
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Take Heart
+- Scald
+- Energy Ball
+- Rest
+
+Sharpedo @ Watertite
+Adamant Nature
+Level: 100
+Ability: Speed Boost
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Liquidation
+- Crunch
+- Psychic Fangs
+- Protect
+
+Mightyena @ Sitrus Berry
+Jolly Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sucker Punch
+- Play Rough
+- Taunt
+- Yawn
+
+Crobat @ Mental Herb
+Jolly Nature
+Level: 100
+Ability: Infiltrator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Tailwind
+- Brave Bird
+- Taunt
+- U-turn
+
+Ludicolo @ Life Orb
+Modest Nature
+Level: 100
+Ability: Swift Swim
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Hydro Pump
+- Giga Drain
+- Ice Beam
+
+=== TRAINER_NEXUS_SKYLA ===
+Name: Skyla
+Class: Leader
+Pic: Skyla
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Smart Trainer
+
+Tornadus @ Covert Cloak
+Timid Nature
+Level: 100
+Ability: Prankster
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Bleakwind Storm
+- Tailwind
+- Taunt
+- Protect
+
+Lugia @ Leftovers
+Timid Nature
+Level: 100
+Ability: Multiscale
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Aeroblast
+- Ice Beam
+- Calm Mind
+- Roost
+
+Pidgeot @ Flyingite
+Timid Nature
+Level: 100
+Ability: Keen Eye
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hurricane
+- Heat Wave
+- Tailwind
+- Roost
+
+Swanna @ Heavy-Duty Boots
+Timid Nature
+Level: 100
+Ability: Hydration
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Scald
+- Hurricane
+- Tailwind
+- Roost
+
+Skarmory @ Rocky Helmet
+Impish Nature
+Level: 100
+Ability: Sturdy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Spikes
+- Tailwind
+- Brave Bird
+- Roost
+
+Swoobat @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Simple
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Calm Mind
+- Stored Power
+- Air Slash
+- Protect
+
+=== TRAINER_NEXUS_TULIP ===
+Name: Tulip
+Class: Leader
+Pic: Tulip
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Farigiraf @ Sitrus Berry
+Quiet Nature
+Level: 100
+Ability: Armor Tail
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Psychic
+- Thunder Wave
+- Helping Hand
+
+Lunala @ Leftovers
+Timid Nature
+Level: 100
+Ability: Shadow Shield
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Moongeist Beam
+- Psyshock
+- Moonblast
+- Calm Mind
+
+Cresselia @ Leftovers
+Bold Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Moonblast
+- Psyshock
+- Moonlight
+- Thunder Wave
+
+Gardevoir @ Fairytite
+Timid Nature
+Level: 100
+Ability: Trace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Psychic
+- Mystical Fire
+- Protect
+
+Espathra @ Leftovers
+Modest Nature
+Level: 100
+Ability: Speed Boost
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Lumina Crash
+- Dazzling Gleam
+- Calm Mind
+- Protect
+
+Medicham @ Choice Band
+Jolly Nature
+Level: 100
+Ability: Pure Power
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Zen Headbutt
+- Ice Punch
+- Rock Slide
+
+=== TRAINER_NEXUS_VALERIE ===
+Name: Valerie
+Class: Leader
+Pic: Valerie
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Mr Mime @ Light Clay
+Timid Nature
+Level: 100
+Ability: Filter
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Reflect
+- Light Screen
+- Dazzling Gleam
+- Psychic
+
+Xerneas @ Power Herb
+Modest Nature
+Level: 100
+Ability: Fairy Aura
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Geomancy
+- Moonblast
+- Grass Knot
+- Focus Blast
+
+Diancie @ Fairytite
+Modest Nature
+Level: 100
+Ability: Clear Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Diamond Storm
+- Moonblast
+- Earth Power
+- Protect
+
+Sylveon @ Throat Spray
+Modest Nature
+Level: 100
+Ability: Pixilate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Psyshock
+- Mystical Fire
+- Protect
+
+Mawile @ Assault Vest
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Play Rough
+- Iron Head
+- Sucker Punch
+- Fire Fang
+
+Aromatisse @ Leftovers
+Quiet Nature
+Level: 100
+Ability: Aroma Veil
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Moonblast
+- Protect
+- Wish
+- Heal Pulse
+
+=== TRAINER_NEXUS_VIOLA ===
+Name: Viola
+Class: Leader
+Pic: Viola
+Gender: Female
+Music: Female
+Double Battle: Yes
+AI: Smart Trainer
+
+Masquerain @ Heavy-Duty Boots
+Timid Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sticky Web
+- Hydro Pump
+- Air Slash
+- Tailwind
+
+Genesect @ Choice Scarf
+Naive Nature
+Level: 100
+Ability: Download
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- U-turn
+- Iron Head
+- Thunderbolt
+- Flamethrower
+
+Buzzwole @ Leftovers
+Adamant Nature
+Level: 100
+Ability: Beast Boost
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Leech Life
+- Drain Punch
+- Ice Punch
+- Bulk Up
+
+Beedrill @ Bugtite
+Jolly Nature
+Level: 100
+Ability: Sniper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Poison Jab
+- Fell Stinger
+- U-turn
+- Drill Run
+
+Vivillon @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Compound Eyes
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sleep Powder
+- Hurricane
+- Quiver Dance
+- Protect
+
+Frosmoth @ Heavy-Duty Boots
+Modest Nature
+Level: 100
+Ability: Ice Scales
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Quiver Dance
+- Ice Beam
+- Bug Buzz
+- Wide Guard
+
+=== TRAINER_NEXUS_ZINNIA ===
+Name: Zinnia
+Class: Pkmn Trainer 1
+Pic: Zinnia
+Gender: Female
+Music: Hg Champion
+Double Battle: No
+AI: Smart Trainer
+
+Rayquaza @ Life Orb
+Naive Nature
+Level: 100
+Ability: Air Lock
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Dragon Ascent
+- Extreme Speed
+- Draco Meteor
+- Dragon Dance
+
+Jirachi @ Leftovers
+Careful Nature
+Level: 100
+Ability: Serene Grace
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Iron Head
+- Doom Desire
+- Wish
+- Helping Hand
+
+Salamence @ Sitrus Berry
+Timid Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Draco Meteor
+- Hurricane
+- Fire Blast
+- Protect
+
+Goodra @ Assault Vest
+Modest Nature
+Level: 100
+Ability: Sap Sipper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Draco Meteor
+- Fire Blast
+- Sludge Bomb
+- Thunderbolt
+
+Noivern @ Sitrus Berry
+Timid Nature
+Level: 100
+Ability: Infiltrator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hurricane
+- Super Fang
+- Tailwind
+- Roost
+
+Exploud @ Choice Specs
+Modest Nature
+Level: 100
+Ability: Scrappy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Hyper Voice
+- Fire Blast
+- Focus Blast
+- Ice Beam

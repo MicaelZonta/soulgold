@@ -1,0 +1,151 @@
+{
+ "map": "PLASMA_FRIGATE_DECK",
+ "ingame": "Plasma Frigate",
+ "w": 37,
+ "h": 21,
+ "primary": "gTileset_Johto_General_Hns",
+ "secondary": "gTileset_ssaqua_Hns",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 28,
+   "y": 1,
+   "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+   "dest_warp_id": "1",
+   "nota": "prancha; Cape (18,37)"
+  },
+  {
+   "x": 35,
+   "y": 15,
+   "dest_map": "MAP_PLASMA_FRIGATE_HOLD",
+   "dest_warp_id": "0",
+   "nota": "escada para o porão"
+  },
+  {
+   "x": 18,
+   "y": 17,
+   "dest_map": "MAP_PLASMA_FRIGATE_CABINS",
+   "dest_warp_id": "0",
+   "nota": "porta: aposentos do Ghetsis"
+  },
+  {
+   "x": 10,
+   "y": 17,
+   "dest_map": "MAP_PLASMA_FRIGATE_CABINS",
+   "dest_warp_id": "1",
+   "nota": "porta: vestiário do Plasma"
+  }
+ ],
+ "connections": [],
+ "objects": [
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_GANG",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 28,
+   "y": 6,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "PlasmaFrigateDeck_EventScript_GangwayGuard",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_N",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 8,
+   "y": 8,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "5",
+   "script": "PlasmaFrigateDeck_EventScript_Grunt1",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_S",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 24,
+   "y": 19,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "5",
+   "script": "PlasmaFrigateDeck_EventScript_Grunt2",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_E",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 34,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "PlasmaFrigateDeck_EventScript_Grunt3",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_DECK_ROSA",
+   "graphics_id": "OBJ_EVENT_GFX_ROSA",
+   "x": 2,
+   "y": 19,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "PlasmaFrigateDeck_EventScript_Rosa",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_DECK_ITEM_WEST",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 1,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "PlasmaFrigateDeck_EventScript_ItemFullRestore",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_DECK_ITEM_STERN",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 35,
+   "y": 19,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "PlasmaFrigateDeck_EventScript_ItemPPUp",
+   "flag": "0"
+  }
+ ],
+ "explorar": [
+  "Convés em anel ao redor dos camarotes: a prancha chega no alto e a escada do porão fica na popa, do lado oposto; quatro recrutas patrulham as duas voltas.",
+  "Camarotes: duas portas abrem (sul, x=10 vestiário e x=18 aposentos do Ghetsis, no mapa Cabins); as outras 12 são trancadas (amarelo no mapa de colisão).",
+  "Full Restore no canto oeste, PP Up na popa.",
+  "Rosa (protagonista do BW2) escondida no canto sudoeste: entrou no navio atrás dos DNA Splicers; cura a equipe e conta que o Colress-substituto guarda as notas no porão. Some depois do ato 4."
+ ],
+ "historia": "Base de apoio do Neo Plasma, ancorada no cabo. Visita opcional entre os atos 2 e 4: aqui o jogador descobre o plano Kyurem Black.",
+ "estados": {
+  "dia": "Navio com a tripulação do Plasma."
+ },
+ "conferido": "check_objects sem bloqueio; BFS da prancha: {\"escada\": 19, \"rosa\": 42, \"item oeste\": 33, \"item popa\": 23}"
+}

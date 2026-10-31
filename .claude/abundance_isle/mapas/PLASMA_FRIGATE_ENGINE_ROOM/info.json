@@ -1,0 +1,127 @@
+{
+ "map": "PLASMA_FRIGATE_ENGINE_ROOM",
+ "ingame": "Plasma Frigate Engine Room",
+ "w": 26,
+ "h": 16,
+ "primary": "gTileset_Johto_Building_Hns",
+ "secondary": "gTileset_PowerPlant_GeneratorRoom_Hns",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 20,
+   "y": 15,
+   "dest_map": "MAP_PLASMA_FRIGATE_HOLD",
+   "dest_warp_id": "1",
+   "nota": "capacho: escada da casa de máquinas do Hold (3,12)"
+  }
+ ],
+ "connections": [],
+ "objects": [
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_CHIEF",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 13,
+   "y": 5,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "PlasmaFrigateEngine_EventScript_ChiefScientist",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_ASSIST_1",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 5,
+   "y": 7,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "PlasmaFrigateEngine_EventScript_Assistant1",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_ASSIST_2",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 22,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "PlasmaFrigateEngine_EventScript_Assistant2",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_ITEM_BARRELS",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 2,
+   "y": 12,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "PlasmaFrigateEngine_EventScript_ItemIceStone",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_ITEM_CONSOLE",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 22,
+   "y": 3,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "PlasmaFrigateEngine_EventScript_ItemUpGrade",
+   "flag": "0"
+  }
+ ],
+ "bg_events": [
+  {
+   "type": "sign",
+   "x": 19,
+   "y": 8,
+   "script": "PlasmaFrigateEngine_EventScript_DNAConsole",
+   "nota": "consoles: dados dos DNA Splicers"
+  },
+  {
+   "type": "sign",
+   "x": 11,
+   "y": 4,
+   "script": "PlasmaFrigateEngine_EventScript_ColdCondenser",
+   "nota": "condensadores: amostra do frio do meteorito"
+  },
+  {
+   "type": "sign",
+   "x": 1,
+   "y": 4,
+   "script": "PlasmaFrigateEngine_EventScript_ColdStorageDoor",
+   "nota": "porta vermelha trancada (câmara fria)"
+  }
+ ],
+ "explorar": [
+  "Casa de máquinas virada laboratório: dois condensadores puxam o frio da amostra do meteorito (o mesmo que a Frostfall Crater bombeia); consoles com os dados de fusão dos DNA Splicers.",
+  "Salão de baixo e galeria de cima ligados por um corredor estreito guardado por um assistente.",
+  "Cientista-chefe do Plasma diante dos condensadores: batalha; depois explica que a fusão só funciona com o Zekrom desperto.",
+  "Nicho atrás da pilha de barris, alcançado só pela fresta da parede oeste: Ice Stone.",
+  "Up-Grade no canto da galeria, atrás dos condensadores.",
+  "Porta vermelha da câmara fria trancada (gancho futuro)."
+ ],
+ "historia": "Coração técnico do Plasma no navio: liga a cratera (frio) ao plano do cume (fusão). Só se entra com o uniforme da missão 'Undercover' da Rosa.",
+ "estados": {
+  "dia": "Equipe científica a bordo."
+ },
+ "conferido": "check_objects sem bloqueio; BFS do capacho: {\"CHIEF\": 30, \"ASSIST_1\": 22, \"ASSIST_2\": 5, \"ITEM_BARRELS\": 26, \"ITEM_CONSOLE\": 41}"
+}

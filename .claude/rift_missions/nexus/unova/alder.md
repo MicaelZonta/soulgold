@@ -6,19 +6,19 @@ Aparece no checklist como:
 
 - **Alder — Campeão** (Unova · Elite Four e Campeões) — viajante experiente que ensina sobre os vínculos com Pokémon.
 
-**Pronto para o Nexus:** ❌ não — tem sprite de overworld, falta o battle sprite (front pic), obrigatório.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Alder/` (o overworld já está registrado no código; a front pic ainda não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_ALDER` (registrado no merge de 30/09/2026)
-- [ ] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Alder/`, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Alder/`, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta nesta ficha (30/09/2026), fora do código
-- [ ] Associado a um lendário — 📝 proposta nesta ficha (Slither Wing), fora do código
-- [ ] Diálogo genérico escrito — 📝 proposta nesta ficha (3 variações), fora do código
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta nesta ficha (3 variações), fora do código
+- [x] Time para as Rift Missions definido — 📝 proposta nesta ficha (30/09/2026), fora do código
+- [x] Associado a um lendário — 📝 proposta nesta ficha (Slither Wing), fora do código
+- [x] Diálogo genérico escrito — 📝 proposta nesta ficha (3 variações), fora do código
+- [x] Diálogo associado ao lendário escrito — 📝 proposta nesta ficha (3 variações), fora do código
 
 ## Referências no repositório
 
@@ -51,32 +51,15 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_ALDER`, campeão do Slither Wing. ID: **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163). Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). **Pic provisória** (`Expert M`) até registrar a arte.
-
-O Slither Wing é **Paradoxo** (`isParadox`), então ocupa a vaga de semi-lendário. Lendário **Groudon**: o Alder traz o próprio sol. A lenda da Volcarona diz que, quando cinzas vulcânicas taparam o céu, o fogo dela substituiu o sol; o Groudon é a terra que levanta os vulcões e **devolve** o sol (Drought). Semi-lendário **Slither Wing**, o ancestral da Volcarona que anda porque ainda não voa. Mega **Scolipede** (Poisontite, Mega com Shell Armor): o Alder anda com insetos (Volcarona, Accelgor, Escavalier em *Black/White*). Mais **Volcarona** (o ás dele), **Bouffalant** (o cabelo dele, em Pokémon) e **Druddigon**, do time de campeão.
-
-*Plano (Singles):* sol. O Groudon põe Drought e Stealth Rock; no sol, o Slither Wing ativa Protosynthesis **sem precisar de Booster Energy** e abre com First Impression de Choice Band; a Volcarona sobe Quiver Dance com Fiery Dance reforçado; a Mega Scolipede (Speed Boost antes da Mega) sobe Swords Dance. O Druddigon (Rough Skin, Rocky Helmet) arrasta com Dragon Tail e paralisa com Glare.
-
-*Plano (Doubles):* Groudon + Volcarona na frente: Rage Powder da Volcarona puxa os golpes e o Groudon bate Precipice Blades nos dois. O Bouffalant (Sap Sipper) cobre golpe de planta mirado no Groudon. Nenhum golpe do time acerta o parceiro (Precipice Blades e Rock Slide só acertam os oponentes).
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Groudon | Leftovers | Drought | Adamant | Precipice Blades, Heat Crash, Stealth Rock, Protect |
-| Slither Wing | Choice Band | Protosynthesis | Adamant | First Impression, Close Combat, Flare Blitz, U-turn |
-| Scolipede | Poisontite | Speed Boost | Jolly | Megahorn, Poison Jab, Protect, Swords Dance |
-| Volcarona | Heavy-Duty Boots | Flame Body | Timid | Quiver Dance, Fiery Dance, Giga Drain, Rage Powder |
-| Bouffalant | Assault Vest | Sap Sipper | Adamant | Head Charge, Rock Slide, Megahorn, Iron Head |
-| Druddigon | Rocky Helmet | Rough Skin | Adamant | Dragon Claw, Dragon Tail, Sucker Punch, Glare |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e categorias)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_ALDER` = **1166** (bloco 2, flag `0xB02`), luta genérica `Nexus_EventScript_Alder_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_ALDER ===
 Name: Alder
 Class: Champion
-Pic: Expert M
+Pic: Alder
 Gender: Male
-Music: Hg Champion
+Music: Male
 Double Battle: No
 AI: Smart Trainer
 
@@ -147,9 +130,14 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Glare
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Slither Wing** — `Nexus_EventScript_Alder_SlitherWing_ChampionFight` (falas `Nexus_Text_Alder_SlitherWing_Champion*`)
+- **Groudon** — `Nexus_EventScript_Alder_Groudon_ChampionFight` (falas `Nexus_Text_Alder_Groudon_Champion*`)
+- **Ho Oh** — `Nexus_EventScript_Alder_HoOh_ChampionFight` (falas `Nexus_Text_Alder_HoOh_Champion*`)
+
 
 #### Slither Wing
 
@@ -173,102 +161,17 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando Alder cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)). Ainda não há nada no `nexus.inc`: as três variações são novas.
-
-O Alder ri alto ("Ha ha!"), chama todo mundo de jovem, fala de laços e de andar. As três variações: o viajante que recebe todo mundo, o luto pelo primeiro parceiro (o lado triste que ele esconde) e o campeão que nunca estava na Liga (e perdeu o título para o rapaz do dragão negro, com humor).
-
-#### Variação 1 — o viajante
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Alder_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
-> Ha ha! Another traveler! Sit, sit… No? Battle first? Just like the young ones!
+> Ha ha! Another traveler! Sit, sit... No? Battle first? Just like the young ones!
 >
-> Very well! Show me how you and your Pokémon get along!
+> Very well! Show me how you and your Pokemon get along!
 
 **Derrota**
 
 > Ha! Wonderful! That's a team that eats dinner together.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Alder_Intro:
-	.string "Ha ha! Another traveler! Sit, sit… No?\n"
-	.string "Battle first? Just like the young ones!\p"
-	.string "Very well! Show me how you and your\n"
-	.string "Pokémon get along!$"
-
-Nexus_Text_Alder_Defeat:
-	.string "Ha! Wonderful! That's a team that eats\n"
-	.string "dinner together.$"
-```
-
-</details>
-
-#### Variação 2 — o primeiro parceiro
-
-**Antes da luta**
-
-> My first partner and I walked every road in Unova. Then one day, I walked alone.
->
-> I kept walking. It took me years to notice I wasn't only grieving. I was also seeing things.
->
-> Let me see something new! Battle!
-
-**Derrota**
-
-> There it is. Something new. Thank you.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Alder_Intro2:
-	.string "My first partner and I walked every\n"
-	.string "road in Unova. Then one day, I walked\l"
-	.string "alone.\p"
-	.string "I kept walking. It took me years to\n"
-	.string "notice I wasn't only grieving. I was\l"
-	.string "also seeing things.\p"
-	.string "Let me see something new! Battle!$"
-
-Nexus_Text_Alder_Defeat2:
-	.string "There it is. Something new. Thank you.$"
-```
-
-</details>
-
-#### Variação 3 — o campeão que nunca estava
-
-**Antes da luta**
-
-> They called me Champion, and I was hardly ever at the League. I was out here, with people.
->
-> A young man with a black dragon took the title while I was out. Ha! Served me right.
->
-> Come, let's have a proper battle!
-
-**Derrota**
-
-> Beaten by the young again. It never gets old!
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Alder_Intro3:
-	.string "They called me Champion, and I was\n"
-	.string "hardly ever at the League. I was out\l"
-	.string "here, with people.\p"
-	.string "A young man with a black dragon took\n"
-	.string "the title while I was out. Ha! Served me\l"
-	.string "right.\p"
-	.string "Come, let's have a proper battle!$"
-
-Nexus_Text_Alder_Defeat3:
-	.string "Beaten by the young again. It never\n"
-	.string "gets old!$"
-```
-
-</details>
 
 ### Diálogo associado ao lendário
 

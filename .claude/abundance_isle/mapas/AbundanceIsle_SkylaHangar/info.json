@@ -1,0 +1,112 @@
+{
+ "map": "AbundanceIsle_SkylaHangar",
+ "ingame": "Skyla's Hangar",
+ "primary": "gTileset_Johto_Building",
+ "secondary": "gTileset_Goldenrod_Underground_Storage",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 4,
+   "y": 12,
+   "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+   "dest_warp_id": "3",
+   "nota": "porta da casa 1 da Windswept Cape (21,18)"
+  }
+ ],
+ "connections": [],
+ "explorar": [
+  "Missão \"Grounded\": o avião de carga da Skyla está preso no galpão pela tempestade; ela não decola enquanto Tornadus e Thundurus brigarem no céu.",
+  "Mecânico conserta o motor e comenta que a neve congelou o combustível (pista do frio artificial da cratera).",
+  "Caixotes de carga de Unova pelo galpão; Zoom Lens atrás de uma pilha.",
+  "Depois do ato 3, Skyla espera na porta: oferece levar o jogador de volta a Johto num voo (viagem rápida ilha <-> Johto) e uma batalha opcional."
+ ],
+ "historia": "Galpão da Skyla no cabo. Enquanto a tempestade durar o avião fica preso (\"Grounded\"); quando o céu limpa ela vira o transporte de volta a Johto.",
+ "estados": {
+  "dia": "Ato 1-2: Skyla olhando o avião preso, mecânico trabalhando.",
+  "estado": "Depois do ato 3: Skyla pronta para voar, perto da porta."
+ },
+ "conferido": "Peças do galpão de GoldenrodCity_UndergroundStorage (paredes 408/409/40c/410/411/414, chão 401/402, caixotes 490/491/498/499, sombra 403); capacho do primário Johto_Building como nas casas; BFS da porta até todos os NPCs e itens; check_objects.",
+ "desenho_novo": {
+  "nome": "avião da Skyla",
+  "area": "4x3 metatiles em (6,3)",
+  "propostas": [
+   [
+    "A",
+    "Cargueiro azul (bimotor)"
+   ],
+   [
+    "B",
+    "Biplano de entregas"
+   ],
+   [
+    "C",
+    "Hidroavião"
+   ],
+   [
+    "D",
+    "Coberto pela lona (preso pela tempestade)"
+   ]
+  ],
+  "pasta": "props/"
+ },
+ "w": 18,
+ "h": 14,
+ "objects": [
+  {
+   "local_id": "SKYLA",
+   "graphics_id": "OBJ_EVENT_GFX_SKYLA",
+   "x": 7,
+   "y": 7,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SkylaHangar_EventScript_SkylaGrounded",
+   "flag": "0"
+  },
+  {
+   "local_id": "MECHANIC",
+   "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+   "x": 10,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SkylaHangar_EventScript_Mechanic",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_CARGO",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 3,
+   "y": 8,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SkylaHangar_EventScript_ItemZoomLens",
+   "flag": "0"
+  },
+  {
+   "local_id": "SKYLA_READY",
+   "graphics_id": "OBJ_EVENT_GFX_SKYLA",
+   "x": 5,
+   "y": 10,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SkylaHangar_EventScript_SkylaFlight",
+   "flag": "0"
+  }
+ ]
+}

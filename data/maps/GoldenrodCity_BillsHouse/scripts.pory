@@ -83,12 +83,28 @@ script GoldenrodCity_Bill_GiveEeveeOrPikachu {
     // A leitura velha do Blaine. O Bill acha o ritmo de tres dias e manda para
     // a Flannery, que e quem sabe ler respiracao de fenda. Corrente do
     // Volcanion: data/scripts/navel_rock_quest.inc
+    // Desde 28/10/2026 ele tambem abre a One Island: o barco do Celio veio
+    // busca-lo e ele leva o jogador junto (data/scripts/one_island.inc).
     if (var(VAR_NAVELROCK_QUEST) == 1) {
-        msgbox(NavelRockQuest_Text_BillReads, MSGBOX_DEFAULT)
         setvar(VAR_NAVELROCK_QUEST, 2)
-        closemessage
-        release
-        end
+        if (var(VAR_ONE_ISLAND_STATE) == 2) {
+            msgbox(OneIsland_Text_BillAlreadyBeen, MSGBOX_DEFAULT)
+            closemessage
+            release
+            end
+        }
+        msgbox(NavelRockQuest_Text_BillReads, MSGBOX_YESNO)
+        goto(OneIsland_EventScript_BillAnswer)
+    }
+    if (var(VAR_NAVELROCK_QUEST) == 2) {
+        if (var(VAR_ONE_ISLAND_STATE) == 2) {
+            msgbox(OneIsland_Text_BillAfterTrip, MSGBOX_DEFAULT)
+            closemessage
+            release
+            end
+        }
+        msgbox(OneIsland_Text_BillStillWaiting, MSGBOX_YESNO)
+        goto(OneIsland_EventScript_BillAnswer)
     }
     if (flag(FLAG_GOT_BILL_GIFTMON) == FALSE) {
         msgbox("{SPEAKER NAME_BILL}Hi, {PLAYER}! Do us a favor and

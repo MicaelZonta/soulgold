@@ -6,19 +6,19 @@ Aparece no checklist como:
 
 - **Diantha — Campeã** (Kalos · Elite Four e Campeã) — famosa atriz e poderosa treinadora de Kalos.
 
-**Pronto para o Nexus:** ❌ não — o overworld próprio entrou no código em 30/09/2026 (`OBJ_EVENT_GFX_DIANTHA`), mas falta a front pic (obrigatória).
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Diantha/` (o overworld já registrado; a front pic, não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_DIANTHA`, 30/09/2026
-- [ ] Battle sprite / front pic *(obrigatório)* — arte disponível, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte disponível, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026), fora do código
-- [ ] Associado a um lendário — 📝 proposta: Xerneas (cedido pelo Wallace)
-- [ ] Diálogo genérico escrito — 📝 proposta abaixo, 3 variações
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta abaixo, 3 variações
+- [x] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026), fora do código
+- [x] Associado a um lendário — 📝 proposta: Xerneas (cedido pelo Wallace)
+- [x] Diálogo genérico escrito — 📝 proposta abaixo, 3 variações
+- [x] Diálogo associado ao lendário escrito — 📝 proposta abaixo, 3 variações
 
 ## Referências no repositório
 
@@ -53,35 +53,16 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_DIANTHA`, ID **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163), campeã do **Xerneas**. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
-
-Pic `Beauty` — **pic provisória até registrar a arte**. Classe `Champion`, música `Hg Champion`.
-
-Lendário **Xerneas**, a vida que não acaba, para a atriz que um dia disse, brincando, que queria ficar bonita para sempre. Semi-lendário **Iron Valiant**, o Paradoxo que vem do futuro de Gardevoir e Gallade: a beleza que durou tanto que virou metal. Mega **Gardevoir** (Fairytite, Pixilate), a Mega dela em X/Y. Mais **Hawlucha**, **Tyrantrum** e **Gourgeist**, do time de campeã dela (saem o Aurorus, fraco demais a Aço e Lutador, e o Goodra). Time de Fada com o Fairy Aura do Xerneas empurrando tudo: o Hyper Voice da Mega Gardevoir vira Fada e ganha o aura também.
-
-*Plano (Singles):* o Gourgeist abre com Will-O-Wisp e Leech Seed e gasta o adversário; o Xerneas faz Geomancy num turno só (Power Herb) e limpa; o Hawlucha usa Close Combat, a White Herb desfaz a queda e liga o Unburden; o Tyrantrum arma Dragon Dance e bate Head Smash sem recuo (Rock Head); o Iron Valiant, rápido pela Booster Energy, prende quem se prepara com Encore.
-
-*Plano (Doubles):* o formato em que o time brilha (`Double Battle: Yes`). Hyper Voice da Mega Gardevoir e Dazzling Gleam do Xerneas nos dois oponentes, os dois com Fairy Aura; o Iron Valiant tranca setup com Encore; o Hawlucha usa Taunt no Trick Room ou no suporte do outro lado; o Tyrantrum espalha Rock Slide. Nenhum golpe do time acerta o parceiro.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Xerneas | Power Herb | Fairy Aura | Modest | Geomancy, Moonblast, Dazzling Gleam, Focus Blast |
-| Iron Valiant | Booster Energy | Quark Drive | Naive | Moonblast, Close Combat, Knock Off, Encore |
-| Gardevoir | Fairytite | Trace | Timid | Hyper Voice, Psychic, Mystical Fire, Protect |
-| Hawlucha | White Herb | Unburden | Jolly | Close Combat, Brave Bird, Swords Dance, Taunt |
-| Tyrantrum | Life Orb | Rock Head | Adamant | Head Smash, Dragon Claw, Rock Slide, Dragon Dance |
-| Gourgeist | Sitrus Berry | Frisk | Impish | Will-O-Wisp, Poltergeist, Leech Seed, Protect |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e categorias)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_DIANTHA` = **1177** (bloco 2, flag `0xB0D`), luta genérica `Nexus_EventScript_Diantha_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_DIANTHA ===
 Name: Diantha
 Class: Champion
-Pic: Beauty
+Pic: Diantha
 Gender: Female
-Music: Hg Champion
-Double Battle: Yes
+Music: Female
+Double Battle: No
 AI: Smart Trainer
 
 Xerneas @ Power Herb
@@ -149,12 +130,16 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Poltergeist
 - Leech Seed
 - Protect
-
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Xerneas** — `Nexus_EventScript_Diantha_Xerneas_ChampionFight` (falas `Nexus_Text_Diantha_Xerneas_Champion*`)
+- **Iron Valiant** — `Nexus_EventScript_Diantha_IronValiant_ChampionFight` (falas `Nexus_Text_Diantha_IronValiant_Champion*`)
+- **Meloetta** — `Nexus_EventScript_Diantha_Meloetta_ChampionFight` (falas `Nexus_Text_Diantha_Meloetta_Champion*`)
+
 
 #### Xerneas
 
@@ -176,9 +161,7 @@ O caderno da Diantha (três páginas) está em [`diario_looker/diantha/`](diario
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando a Diantha cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
-
-A Diantha dos jogos trata qualquer luta como uma estreia. Esta é a mesma estrela, com cansaço de décadas por baixo do rosto que não mudou.
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Diantha_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
@@ -193,98 +176,6 @@ A Diantha dos jogos trata qualquer luta como uma estreia. Esta é a mesma estrel
 > Bravo! Truly.
 >
 > I'd give you a standing ovation, but I'm already standing.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Diantha_Intro:
-	.string "Oh! An audience. How wonderful.\p"
-	.string "I've played queens, thieves and\n"
-	.string "ghosts. Tonight, I'll play your\l"
-	.string "opponent.\p"
-	.string "Don't worry. I never break character.\n"
-	.string "Shall we begin?$"
-
-Nexus_Text_Diantha_Defeat:
-	.string "Bravo! Truly.\p"
-	.string "I'd give you a standing ovation, but\n"
-	.string "I'm already standing.$"
-```
-
-</details>
-
-#### Variações 2 e 3 (📝 proposta de 30/09/2026)
-
-**Variação 2** — a lembrança do café e a pergunta do homem de juba vermelha (nunca nomeado).
-
-**Antes da luta**
-
-> Once, in a café, a man with a magnificent red mane asked me a question.
->
-> “If you could stay just as you are forever, would you?” I laughed and said yes.
->
-> I was joking, you know. Mostly. Now, let's see what you would say!
-
-**Derrota**
-
-> Wonderful. You battle like someone who plans to grow old.
->
-> I envy that more than you know.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Diantha_Intro2:
-	.string "Once, in a café, a man with a\n"
-	.string "magnificent red mane asked me a\l"
-	.string "question.\p"
-	.string "“If you could stay just as you are\n"
-	.string "forever, would you?” I laughed and\l"
-	.string "said yes.\p"
-	.string "I was joking, you know. Mostly. Now,\n"
-	.string "let's see what you would say!$"
-
-Nexus_Text_Diantha_Defeat2:
-	.string "Wonderful. You battle like someone who\n"
-	.string "plans to grow old.\p"
-	.string "I envy that more than you know.$"
-```
-
-</details>
-
-**Variação 3** — a atriz que ama cenas finais.
-
-**Antes da luta**
-
-> Every role I ever played had a final scene. I adored final scenes.
->
-> Tears, a bow, the lights go down, and everyone goes home.
->
-> Let's give this one a proper ending, shall we?
-
-**Derrota**
-
-> And… scene. Oh, that was lovely.
->
-> Take a bow, darling. You've earned it.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Diantha_Intro3:
-	.string "Every role I ever played had a final\n"
-	.string "scene. I adored final scenes.\p"
-	.string "Tears, a bow, the lights go down, and\n"
-	.string "everyone goes home.\p"
-	.string "Let's give this one a proper ending,\n"
-	.string "shall we?$"
-
-Nexus_Text_Diantha_Defeat3:
-	.string "And… scene. Oh, that was lovely.\p"
-	.string "Take a bow, darling. You've earned it.$"
-```
-
-</details>
 
 ### Diálogo associado ao lendário
 

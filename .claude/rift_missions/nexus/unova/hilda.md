@@ -8,19 +8,19 @@ Aparece no checklist como:
 
 Ficha separada da do **Hilbert** desde 30/09/2026 (protagonista masculino da mesma dupla): ele não tem arte nenhuma ainda, então fica em [`hilbert.md`](hilbert.md), fora do Nexus.
 
-**Pronto para o Nexus:** ❌ não — tem sprite de overworld, falta o battle sprite (front pic), obrigatório.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Hilda/` (o overworld já está registrado no código; a front pic ainda não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_HILDA` (registrado no merge de 30/09/2026)
-- [ ] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Hilda/`, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Hilda/`, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta nesta ficha (30/09/2026), fora do código
-- [ ] Associado a um lendário — 📝 proposta nesta ficha (Reshiram), fora do código
-- [ ] Diálogo genérico escrito — 📝 proposta nesta ficha (3 variações), fora do código
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta nesta ficha (3 variações), fora do código
+- [x] Time para as Rift Missions definido — 📝 proposta nesta ficha (30/09/2026), fora do código
+- [x] Associado a um lendário — 📝 proposta nesta ficha (Reshiram), fora do código
+- [x] Diálogo genérico escrito — 📝 proposta nesta ficha (3 variações), fora do código
+- [x] Diálogo associado ao lendário escrito — 📝 proposta nesta ficha (3 variações), fora do código
 
 ## Referências no repositório
 
@@ -54,30 +54,13 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_HILDA`, campeã do Reshiram. ID: **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163). Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). **Pic provisória** (`Cooltrainer F`) até registrar a arte.
-
-Lendário **Reshiram**, o dragão da verdade, o de *Pokémon Black* (em *Black* é a protagonista quem fica com ele, e o N com o Zekrom). Semi-lendário **Tornadus**, o gênio do vento que só aparece em *Black*: a Hilda corre, e ele empurra. Mega **Emboar** (Firetite, a pedra de tipo do hack; a Mega tem Mold Breaker): o Tepig dela, o inicial de fogo que combina com a chama branca. Mais **Excadrill** e **Galvantula**, da campanha de Unova, e **Jellicent**, que segura o que ameaça os dois de fogo. É o time de quem **chega primeiro**.
-
-*Plano (Singles):* velocidade. O Tornadus (Prankster) põe Tailwind ou Taunt antes de qualquer um; com o vento, o Reshiram (Turboblaze, ignora Flash Fire e afins) bate Blue Flare e Draco Meteor, a Mega Emboar entra de Flare Blitz/Close Combat e o Galvantula (Compound Eyes) acerta Thunder a 91%. O Excadrill, de Focus Sash, sobe Swords Dance e segura as pedras. O Jellicent (Water Absorb) entra contra água/terra/luta e desgasta com Scald e Will-O-Wisp.
-
-*Plano (Doubles):* Tailwind de prioridade no turno 1 + Heat Wave do Reshiram; o Galvantula prende com Electroweb; o Jellicent come os golpes de água mirados nos dois de fogo. Nenhum golpe do time acerta o parceiro (o Excadrill usa High Horsepower, não Earthquake).
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Reshiram | Life Orb | Turboblaze | Modest | Blue Flare, Draco Meteor, Earth Power, Heat Wave |
-| Tornadus | Covert Cloak | Prankster | Timid | Bleakwind Storm, Tailwind, Taunt, Protect |
-| Emboar | Firetite | Reckless | Adamant | Flare Blitz, Close Combat, Head Smash, Protect |
-| Excadrill | Focus Sash | Mold Breaker | Jolly | High Horsepower, Iron Head, Rock Slide, Swords Dance |
-| Jellicent | Leftovers | Water Absorb | Calm | Scald, Shadow Ball, Will-O-Wisp, Recover |
-| Galvantula | Choice Specs | Compound Eyes | Timid | Thunder, Bug Buzz, Electroweb, Volt Switch |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e categorias)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_HILDA` = **1184** (bloco 2, flag `0xB14`), luta genérica `Nexus_EventScript_Hilda_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_HILDA ===
 Name: Hilda
 Class: Pkmn Trainer 1
-Pic: Cooltrainer F
+Pic: Hilda
 Gender: Female
 Music: Female
 Double Battle: No
@@ -150,9 +133,14 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Volt Switch
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Reshiram** — `Nexus_EventScript_Hilda_Reshiram_ChampionFight` (falas `Nexus_Text_Hilda_Reshiram_Champion*`)
+- **Tornadus Incarnate** — `Nexus_EventScript_Hilda_Tornadus_ChampionFight` (falas `Nexus_Text_Hilda_Tornadus_Champion*`)
+- **Victini** — `Nexus_EventScript_Hilda_Victini_ChampionFight` (falas `Nexus_Text_Hilda_Victini_Champion*`)
+
 
 #### Reshiram
 
@@ -176,11 +164,7 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando Hilda cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)). Ainda não há nada no `nexus.inc`: as três variações são novas.
-
-A Hilda dos jogos não fala (é a protagonista). Aqui ela ganha voz: direta, sempre com pressa, corajosa e um pouco fugindo de casa. As três variações são três ângulos: a pressa (quem ela persegue), a casa (as cartas da mãe que ela não abre) e a infância (os três amigos de Nuvema).
-
-#### Variação 1 — a pressa
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Hilda_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
@@ -188,94 +172,11 @@ A Hilda dos jogos não fala (é a protagonista). Aqui ela ganha voz: direta, sem
 >
 > Somebody left without saying where he was going. I'm going to catch up.
 >
-> You're standing between me and the next door. So… battle!
+> You're standing between me and the next door. So... battle!
 
 **Derrota**
 
 > Fine. This one's yours. I still have to keep going.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Hilda_Intro:
-	.string "Sorry, I'm in a hurry. I've been in a\n"
-	.string "hurry for about two years now.\p"
-	.string "Somebody left without saying where he\n"
-	.string "was going. I'm going to catch up.\p"
-	.string "You're standing between me and the\n"
-	.string "next door. So… battle!$"
-
-Nexus_Text_Hilda_Defeat:
-	.string "Fine. This one's yours. I still have to\n"
-	.string "keep going.$"
-```
-
-</details>
-
-#### Variação 2 — as cartas
-
-**Antes da luta**
-
-> My mom sends a letter to every Pokémon Center I might pass through. I've collected forty.
->
-> I haven't opened one. If I open one, I'll go home.
->
-> …Let's battle before I think about that too hard.
-
-**Derrota**
-
-> Okay. Okay. Maybe I'll open one tonight.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Hilda_Intro2:
-	.string "My mom sends a letter to every Pokémon\n"
-	.string "Center I might pass through. I've\l"
-	.string "collected forty.\p"
-	.string "I haven't opened one. If I open one,\n"
-	.string "I'll go home.\p"
-	.string "…Let's battle before I think about\n"
-	.string "that too hard.$"
-
-Nexus_Text_Hilda_Defeat2:
-	.string "Okay. Okay. Maybe I'll open one\n"
-	.string "tonight.$"
-```
-
-</details>
-
-#### Variação 3 — os três de Nuvema
-
-**Antes da luta**
-
-> Back home there were three of us. One wanted to be strong. One wanted to be free.
->
-> Me? I just wanted to go first. Out the door, down the road, first.
->
-> I still do. Let's go!
-
-**Derrota**
-
-> Second place. Cheren would have a speech ready for this.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Hilda_Intro3:
-	.string "Back home there were three of us. One\n"
-	.string "wanted to be strong. One wanted to be\l"
-	.string "free.\p"
-	.string "Me? I just wanted to go first. Out the\n"
-	.string "door, down the road, first.\p"
-	.string "I still do. Let's go!$"
-
-Nexus_Text_Hilda_Defeat3:
-	.string "Second place. Cheren would have a\n"
-	.string "speech ready for this.$"
-```
-
-</details>
 
 ### Diálogo associado ao lendário
 

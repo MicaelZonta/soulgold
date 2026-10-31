@@ -45,8 +45,9 @@ flags temporárias ou textos do mapa.
 ### Receitas
 
 **Treinador novo no pool**
-1. Time `TRAINER_NEXUS_<NOME>` no `.party` (ID aposentado < 1056, R16) e o
-   `#define` em `opponents.h`.
+1. Time `TRAINER_NEXUS_<NOME>` no `.party` e o `#define` em `opponents.h`, com um ID do
+   **bloco 2** (1164+, renomeando um `TRAINER_UNUSED_<n>`; `ids_livres.py` lista). Lote grande:
+   `novos/integrar.py` valida R10–R13 (inclusive habilidade legal) e grava `.party`, `nexus.inc` e `trainers.h`.
 2. `Nexus_EventScript_<Nome>_Fight` e `_ChampionFight` em
    `data/scripts/nexus.inc` (copiar um par existente).
 3. Uma linha `X(NOME, Nome, TRAINER_NEXUS_NOME, OBJ_EVENT_GFX_NOME)` em

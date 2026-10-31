@@ -38,6 +38,19 @@ struct NexusPrizeGroup
 extern const struct NexusTrainer gNexusTrainers[];
 extern const struct NexusLegendary gNexusLegendaries[];
 
+// Extra champions (src/data/nexus/champions.h): a legendary can have several
+// trainers who champion it; the champion of the day is drawn among its line in
+// gNexusLegendaries and its rows here (R5, same draw all day).
+struct NexusExtraChampion
+{
+    u16 species;                // matches gNexusLegendaries[].species
+    u16 champion;               // NEXUS_TRAINER_*
+    const u8 *championScript;   // <Name>_<Legendary>_ChampionFight
+};
+
+extern const struct NexusExtraChampion gNexusExtraChampions[];
+extern const u32 gNexusExtraChampionCount;
+
 bool32 Nexus_IsNexusTrainer(u16 trainerId);
 
 #endif // GUARD_NEXUS_H

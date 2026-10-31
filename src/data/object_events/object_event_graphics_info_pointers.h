@@ -325,6 +325,30 @@ extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Byron;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Fantina;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Cynthia;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_BrendanHoenn;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Viola;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Juniper;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Hop;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Valerie;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Tulip;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Serena;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Rowan;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_PlasmaGruntM;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_PlasmaGruntF;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Melony;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Marnie;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Lysandre;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Larry;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Korrina;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Katy;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Iris;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Iono;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Hassel;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Grusha;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Gloria;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Ghetsis;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Cilan;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Brycen;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_AZ;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_MollyChild;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_MollyHale;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_KingsCarrotIce;
@@ -338,6 +362,12 @@ extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_GoldNormal
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_KrisNormal_hns;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_SkierF;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_SkierM;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_DarkStone;
+extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_LightStone;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SpiritCandle;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SpiritCandleLit;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MuralObelisk;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlasmaFrigate;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Skyla;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Rosa;
 extern const struct ObjectEventGraphicsInfo  gObjectEventGraphicsInfo_Peony;
@@ -743,6 +773,30 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_FANTINA] =                     &gObjectEventGraphicsInfo_Fantina,
     [OBJ_EVENT_GFX_CYNTHIA] =                     &gObjectEventGraphicsInfo_Cynthia,
     [OBJ_EVENT_GFX_BRENDAN_HOENN] =               &gObjectEventGraphicsInfo_BrendanHoenn,
+    [OBJ_EVENT_GFX_VIOLA] =                       &gObjectEventGraphicsInfo_Viola,
+    [OBJ_EVENT_GFX_JUNIPER] =                     &gObjectEventGraphicsInfo_Juniper,
+    [OBJ_EVENT_GFX_HOP] =                         &gObjectEventGraphicsInfo_Hop,
+    [OBJ_EVENT_GFX_VALERIE] =                     &gObjectEventGraphicsInfo_Valerie,
+    [OBJ_EVENT_GFX_TULIP] =                       &gObjectEventGraphicsInfo_Tulip,
+    [OBJ_EVENT_GFX_SERENA] =                      &gObjectEventGraphicsInfo_Serena,
+    [OBJ_EVENT_GFX_ROWAN] =                       &gObjectEventGraphicsInfo_Rowan,
+    [OBJ_EVENT_GFX_PLASMA_GRUNT_M] =              &gObjectEventGraphicsInfo_PlasmaGruntM,
+    [OBJ_EVENT_GFX_PLASMA_GRUNT_F] =              &gObjectEventGraphicsInfo_PlasmaGruntF,
+    [OBJ_EVENT_GFX_MELONY] =                      &gObjectEventGraphicsInfo_Melony,
+    [OBJ_EVENT_GFX_MARNIE] =                      &gObjectEventGraphicsInfo_Marnie,
+    [OBJ_EVENT_GFX_LYSANDRE] =                    &gObjectEventGraphicsInfo_Lysandre,
+    [OBJ_EVENT_GFX_LARRY] =                       &gObjectEventGraphicsInfo_Larry,
+    [OBJ_EVENT_GFX_KORRINA] =                     &gObjectEventGraphicsInfo_Korrina,
+    [OBJ_EVENT_GFX_KATY] =                        &gObjectEventGraphicsInfo_Katy,
+    [OBJ_EVENT_GFX_IRIS] =                        &gObjectEventGraphicsInfo_Iris,
+    [OBJ_EVENT_GFX_IONO] =                        &gObjectEventGraphicsInfo_Iono,
+    [OBJ_EVENT_GFX_HASSEL] =                      &gObjectEventGraphicsInfo_Hassel,
+    [OBJ_EVENT_GFX_GRUSHA] =                      &gObjectEventGraphicsInfo_Grusha,
+    [OBJ_EVENT_GFX_GLORIA] =                      &gObjectEventGraphicsInfo_Gloria,
+    [OBJ_EVENT_GFX_GHETSIS] =                     &gObjectEventGraphicsInfo_Ghetsis,
+    [OBJ_EVENT_GFX_CILAN] =                       &gObjectEventGraphicsInfo_Cilan,
+    [OBJ_EVENT_GFX_BRYCEN] =                      &gObjectEventGraphicsInfo_Brycen,
+    [OBJ_EVENT_GFX_AZ] =                          &gObjectEventGraphicsInfo_AZ,
     [OBJ_EVENT_GFX_MOLLY_CHILD] =                 &gObjectEventGraphicsInfo_MollyChild,
     [OBJ_EVENT_GFX_MOLLY_HALE] =                  &gObjectEventGraphicsInfo_MollyHale,
     [OBJ_EVENT_GFX_KINGS_CARROT_ICE] =            &gObjectEventGraphicsInfo_KingsCarrotIce,
@@ -756,6 +810,12 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_KRIS_NORMAL] = &gObjectEventGraphicsInfo_KrisNormal_hns,
     [OBJ_EVENT_GFX_SKIER_F] = &gObjectEventGraphicsInfo_SkierF,
     [OBJ_EVENT_GFX_SKIER_M] = &gObjectEventGraphicsInfo_SkierM,
+    [OBJ_EVENT_GFX_DARK_STONE] = &gObjectEventGraphicsInfo_DarkStone,
+    [OBJ_EVENT_GFX_LIGHT_STONE] = &gObjectEventGraphicsInfo_LightStone,
+    [OBJ_EVENT_GFX_SPIRIT_CANDLE] = &gObjectEventGraphicsInfo_SpiritCandle,
+    [OBJ_EVENT_GFX_SPIRIT_CANDLE_LIT] = &gObjectEventGraphicsInfo_SpiritCandleLit,
+    [OBJ_EVENT_GFX_MURAL_OBELISK] = &gObjectEventGraphicsInfo_MuralObelisk,
+    [OBJ_EVENT_GFX_PLASMA_FRIGATE] = &gObjectEventGraphicsInfo_PlasmaFrigate,
     [OBJ_EVENT_GFX_SKYLA] =                       &gObjectEventGraphicsInfo_Skyla,
     [OBJ_EVENT_GFX_ROSA] =                        &gObjectEventGraphicsInfo_Rosa,
     [OBJ_EVENT_GFX_PEONY] =                       &gObjectEventGraphicsInfo_Peony,

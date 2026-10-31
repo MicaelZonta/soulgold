@@ -1,0 +1,193 @@
+{
+  "id": "MAP_ABUNDANCE_ISLE_FESTIVAL_ARENA",
+  "name": "AbundanceIsle_FestivalArena",
+  "layout": "LAYOUT_ABUNDANCE_ISLE_FESTIVAL_ARENA",
+  "music": "MUS_HG_POKE_CENTER",
+  "region_map_section": "MAPSEC_WINDSWEPT_CAPE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_FESTIVAL_ARENA_RECEPTIONIST",
+      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "x": 14,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_FestivalArena_EventScript_Receptionist",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_FESTIVAL_ARENA_SEAT_LEFT_1",
+      "graphics_id": "OBJ_EVENT_GFX_LEON",
+      "x": 3,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_FestivalArena_EventScript_ChallengerLeft1",
+      "flag": "FLAG_TEMP_16"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_FESTIVAL_ARENA_SEAT_LEFT_2",
+      "graphics_id": "OBJ_EVENT_GFX_CYNTHIA",
+      "x": 3,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_FestivalArena_EventScript_ChallengerLeft2",
+      "flag": "FLAG_TEMP_16"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_FESTIVAL_ARENA_SEAT_RIGHT_1",
+      "graphics_id": "OBJ_EVENT_GFX_DIANTHA",
+      "x": 20,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_FestivalArena_EventScript_ChallengerRight1",
+      "flag": "FLAG_TEMP_16"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_FESTIVAL_ARENA_SEAT_RIGHT_2",
+      "graphics_id": "OBJ_EVENT_GFX_VOLKNER",
+      "x": 20,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_FestivalArena_EventScript_ChallengerRight2",
+      "flag": "FLAG_TEMP_16"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_FESTIVAL_ARENA_FAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 6,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_FestivalArena_EventScript_Fan1",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_FESTIVAL_ARENA_FAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 15,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_FestivalArena_EventScript_Fan2",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_FESTIVAL_ARENA_FAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
+      "x": 18,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_FestivalArena_EventScript_Fan3",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_FESTIVAL_ARENA_SAT_N",
+      "graphics_id": "OBJ_EVENT_GFX_N",
+      "x": 9,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_FestivalArena_EventScript_SaturdayN",
+      "flag": "FLAG_TEMP_15"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_FESTIVAL_ARENA_SAT_HILDA",
+      "graphics_id": "OBJ_EVENT_GFX_HILDA",
+      "x": 9,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_FestivalArena_EventScript_SaturdayHilda",
+      "flag": "FLAG_TEMP_15"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 11,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 12,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+      "dest_warp_id": "5"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AbundanceIsle_FestivalArena_EventScript_TodaysBoard"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "AbundanceIsle_FestivalArena_EventScript_TodaysBoard"
+    }
+  ]
+}

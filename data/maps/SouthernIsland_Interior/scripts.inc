@@ -145,3 +145,18 @@ SouthernIsland_Interior_Movement_LatiApproach:
 	walk_down
 	walk_down
 	step_end
+
+@ A saida. As duas celulas do fundo (13,18)/(14,18) sao grama comum, sem
+@ comportamento de warp, entao o warp_event delas nunca disparava e quem
+@ entrava ficava preso. Os coord_events (VAR_TEMP_F sempre 0) levam de
+@ volta; chegar por elas nao dispara, so pisar.
+SouthernIsland_Interior_EventScript_ExitWest::
+	warp MAP_SOUTHERN_ISLAND_EXTERIOR, 0
+	waitstate
+	end
+
+SouthernIsland_Interior_EventScript_ExitEast::
+	warp MAP_SOUTHERN_ISLAND_EXTERIOR, 1
+	waitstate
+	end
+

@@ -38,6 +38,7 @@
 
 #include "data/nexus/trainers.h"
 #include "data/nexus/legendaries.h"
+#include "data/nexus/champions.h"
 #include "data/nexus/prizes.h"
 #include "data/nexus/mythicals.h"
 
@@ -132,6 +133,7 @@ enum
     SALT_PRIZE_GROUP,
     SALT_PRIZE_ITEM,
     SALT_BOSS_FORM,
+    SALT_CHAMPION = SALT_BOSS_FORM + 8, // SALT_BOSS_FORM + step is used for the form draw
 };
 
 static u32 DailyHash(u32 salt)
@@ -178,6 +180,36 @@ static const struct NexusLegendary *GetTodaysLegendary(void)
     return &gNexusLegendaries[eligible[DailyHash(SALT_LEGENDARY) % count]];
 }
 
+// R5: the champion of the day. The legendary's own line plus its rows in
+// gNexusExtraChampions; one of them is drawn, the same all day.
+static u32 GetTodaysChampion(const u8 **script)
+{
+    const struct NexusLegendary *legendary = GetTodaysLegendary();
+    u32 i, count = 1, pick;
+
+    for (i = 0; i < gNexusExtraChampionCount; i++)
+    {
+        if (gNexusExtraChampions[i].species == legendary->species)
+            count++;
+    }
+    pick = DailyHash(SALT_CHAMPION) % count;
+    if (pick != 0)
+    {
+        for (i = 0; i < gNexusExtraChampionCount; i++)
+        {
+            if (gNexusExtraChampions[i].species == legendary->species && --pick == 0)
+            {
+                if (script != NULL)
+                    *script = gNexusExtraChampions[i].championScript;
+                return gNexusExtraChampions[i].champion;
+            }
+        }
+    }
+    if (script != NULL)
+        *script = legendary->championScript;
+    return legendary->champion;
+}
+
 // ===========================================================================
 // R5 / R5.1. The trainers behind the doors. Each room shuffles the pool
 // minus the champion of the day and minus the trio of the room before it,
@@ -190,7 +222,7 @@ static const struct NexusLegendary *GetTodaysLegendary(void)
 static void GetRoomTrio(u32 targetRoom, u8 *trio)
 {
     u8 prev[NEXUS_DOORS_PER_ROOM];
-    u32 champion = GetTodaysLegendary()->champion;
+    u32 champion = GetTodaysChampion(NULL);
     u32 room, i, d;
 
     for (d = 0; d < NEXUS_DOORS_PER_ROOM; d++)
@@ -242,7 +274,7 @@ static u32 GetRoomDoorTrainer(u32 room, u32 door)
     u8 trio[NEXUS_DOORS_PER_ROOM];
 
     if (room == NEXUS_ROOM_CHAMPION)
-        return (door == NEXUS_DOOR_CHAMPION) ? GetTodaysLegendary()->champion : NEXUS_NO_TRAINER;
+        return (door == NEXUS_DOOR_CHAMPION) ? GetTodaysChampion(NULL) : NEXUS_NO_TRAINER;
     if (room >= NEXUS_TRAINER_ROOMS || door >= NEXUS_DOORS_PER_ROOM)
         return NEXUS_NO_TRAINER;
 
@@ -671,7 +703,12 @@ void Nexus_CallDoorFight(struct ScriptContext *ctx)
     if (trainer == NEXUS_NO_TRAINER)
         return;
     if (room == NEXUS_ROOM_CHAMPION)
-        ScriptCall(ctx, GetTodaysLegendary()->championScript);
+    {
+        const u8 *script;
+
+        GetTodaysChampion(&script);
+        ScriptCall(ctx, script);
+    }
     else
         ScriptCall(ctx, gNexusTrainers[trainer].fightScript);
 }

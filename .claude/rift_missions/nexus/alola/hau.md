@@ -7,19 +7,19 @@ Aparece no checklist como:
 - **Hau** (Alola · Rivais) — rival otimista e neto do Kahuna Hala.
 - **Hau** (Alola · Elite Four e Campeões) — desafiante final da Liga em *Ultra Sun/Ultra Moon*.
 
-**Pronto para o Nexus:** ❌ não — o overworld próprio entrou no código em 30/09/2026 (`OBJ_EVENT_GFX_HAU`), mas falta a front pic (obrigatória).
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Hau/` (o overworld já registrado; a front pic, não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_HAU`, 30/09/2026
-- [ ] Battle sprite / front pic *(obrigatório)* — arte disponível, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte disponível, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026), fora do código
-- [ ] Associado a um lendário — 📝 proposta: Tapu Koko (cedido pelo Kukui)
-- [ ] Diálogo genérico escrito — 📝 proposta abaixo, 3 variações
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta abaixo, 3 variações
+- [x] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026), fora do código
+- [x] Associado a um lendário — 📝 proposta: Tapu Koko (cedido pelo Kukui)
+- [x] Diálogo genérico escrito — 📝 proposta abaixo, 3 variações
+- [x] Diálogo associado ao lendário escrito — 📝 proposta abaixo, 3 variações
 
 ## Referências no repositório
 
@@ -54,35 +54,16 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_HAU`, ID **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163), campeão do **Tapu Koko**. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
-
-Pic `Youngster` — **pic provisória até registrar a arte**. Classe `Rival`, música `Hg Boy 1`.
-
-Lendário **Solgaleo**: em Sun, é o Hau quem toca a Sun Flute no Altar of the Sunne ao lado da Lillie; neste fragmento, o sol respondeu a ele. Semi-lendário **Tapu Koko**, o guardião de Melemele, de quem ele é campeão; o Electric Surge liga o Surge Surfer do Raichu. Mega **Crabominable** (Icetite, Iron Fist), o Crabrawler/Crabominable do time dele. Mais **Raichu** de Alola (o ás dele desde o Pichu/Pikachu do começo), **Tauros** e **Decidueye** (o inicial do Rowlet; o Hau pega o inicial que ganha do jogador, e aqui fica o de Planta porque Incineroar e Primarina já estão com Kukui e Lillie).
-
-*Plano (Singles):* o Tapu Koko liga o Electric Terrain e pivota de Volt Switch; o Raichu de Alola dobra a velocidade no terreno e bate de Choice Specs; o Solgaleo entra nos golpes super efetivos e aproveita a Weakness Policy; a Mega Crabominable soca com Iron Fist (Ice Hammer, Drain Punch, Thunder Punch reforçado pelo terreno); o Tauros de Intimidate bate forte de Choice Band; o Decidueye prende quem não quer ficar com Spirit Shackle.
-
-*Plano (Doubles):* o formato em que o time brilha (`Double Battle: Yes`). Tapu Koko e Raichu juntos no primeiro turno: terreno, Surge Surfer e dois atacantes especiais rápidos; o Tauros abre de Intimidate e Rock Slide; o Electric Terrain também impede o sono dos aliados no chão. Nenhum golpe do time acerta o parceiro.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Solgaleo | Weakness Policy | Full Metal Body | Adamant | Sunsteel Strike, Psychic Fangs, Flare Blitz, Protect |
-| Tapu Koko | Life Orb | Electric Surge | Timid | Thunderbolt, Dazzling Gleam, Volt Switch, Roost |
-| Crabominable | Icetite | Iron Fist | Adamant | Ice Hammer, Drain Punch, Thunder Punch, Protect |
-| Raichu-Alola | Choice Specs | Surge Surfer | Timid | Thunderbolt, Psychic, Focus Blast, Volt Switch |
-| Tauros | Choice Band | Intimidate | Jolly | Double-Edge, Close Combat, Rock Slide, Zen Headbutt |
-| Decidueye | Sitrus Berry | Long Reach | Adamant | Spirit Shackle, Leaf Blade, Knock Off, Protect |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e categorias)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_HAU` = **1183** (bloco 2, flag `0xB13`), luta genérica `Nexus_EventScript_Hau_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_HAU ===
 Name: Hau
 Class: Rival
-Pic: Youngster
+Pic: Hau
 Gender: Male
-Music: Hg Boy 1
-Double Battle: Yes
+Music: Male
+Double Battle: No
 AI: Smart Trainer
 
 Solgaleo @ Weakness Policy
@@ -150,12 +131,16 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Leaf Blade
 - Knock Off
 - Protect
-
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Tapu Koko** — `Nexus_EventScript_Hau_TapuKoko_ChampionFight` (falas `Nexus_Text_Hau_TapuKoko_Champion*`)
+- **Solgaleo** — `Nexus_EventScript_Hau_Solgaleo_ChampionFight` (falas `Nexus_Text_Hau_Solgaleo_Champion*`)
+- **Tapu Lele** — `Nexus_EventScript_Hau_TapuLele_ChampionFight` (falas `Nexus_Text_Hau_TapuLele_Champion*`)
+
 
 #### Tapu Koko
 
@@ -177,9 +162,7 @@ O caderno do Hau (três páginas) está em [`diario_looker/hau/`](diario_looker/
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando o Hau cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
-
-O Hau dos jogos ri de tudo, pensa em malasada e só às vezes deixa ver o peso do avô. Este vem de um fragmento em que ninguém novo chegou a Alola; ele acha isso estranho, e brinca (R21) com a ideia de que talvez o jogador seja "o novo".
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Hau_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
@@ -193,99 +176,7 @@ O Hau dos jogos ri de tudo, pensa em malasada e só às vezes deixa ver o peso d
 
 > Ahaha! Aw man, that was awesome!
 >
-> Okay, okay. The malasada's yours. …Half of it.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Hau_Intro:
-	.string "Hey! Alola! Wanna battle? 'Course you\n"
-	.string "do! Everybody does!\p"
-	.string "I've got a malasada in my bag for\n"
-	.string "after. Maybe even two, if you win.\p"
-	.string "Let's make this one fun, yeah?$"
-
-Nexus_Text_Hau_Defeat:
-	.string "Ahaha! Aw man, that was awesome!\p"
-	.string "Okay, okay. The malasada's yours.\n"
-	.string "…Half of it.$"
-```
-
-</details>
-
-#### Variações 2 e 3 (📝 proposta de 30/09/2026)
-
-**Variação 2** — o avô, e crescer para ser ele mesmo.
-
-**Antes da luta**
-
-> My tutu -- my grandpa -- he's the Kahuna back home. Big guy. Even bigger laugh.
->
-> Everybody thought I'd grow up to be just like him. I kinda thought so too.
->
-> Turns out I grew up to be me! That's way more fun. Let's go!
-
-**Derrota**
-
-> Aw… Tutu would've laughed so hard at that one.
->
-> Me too, honestly! Ahaha!
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Hau_Intro2:
-	.string "My tutu -- my grandpa -- he's the\n"
-	.string "Kahuna back home. Big guy. Even bigger\l"
-	.string "laugh.\p"
-	.string "Everybody thought I'd grow up to be\n"
-	.string "just like him. I kinda thought so too.\p"
-	.string "Turns out I grew up to be me! That's\n"
-	.string "way more fun. Let's go!$"
-
-Nexus_Text_Hau_Defeat2:
-	.string "Aw… Tutu would've laughed so hard at\n"
-	.string "that one.\p"
-	.string "Me too, honestly! Ahaha!$"
-```
-
-</details>
-
-**Variação 3** — "o novo" que nunca chegou (R21: brinca sem depender de o jogador ser lembrado).
-
-**Antes da luta**
-
-> You know what's weird? I always thought somebody new would show up someday.
->
-> Some kid from far away. We'd be rivals, and we'd battle all the time.
->
-> …Wait. Are you them? Nah, can't be. Let's battle anyway!
-
-**Derrota**
-
-> Ahaha! Okay, you're pretty much exactly how I pictured them.
->
-> …Just saying.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Hau_Intro3:
-	.string "You know what's weird? I always\n"
-	.string "thought somebody new would show up\l"
-	.string "someday.\p"
-	.string "Some kid from far away. We'd be rivals,\n"
-	.string "and we'd battle all the time.\p"
-	.string "…Wait. Are you them? Nah, can't be.\n"
-	.string "Let's battle anyway!$"
-
-Nexus_Text_Hau_Defeat3:
-	.string "Ahaha! Okay, you're pretty much\n"
-	.string "exactly how I pictured them.\p"
-	.string "…Just saying.$"
-```
-
-</details>
+> Okay, okay. The malasada's yours. ...Half of it.
 
 ### Diálogo associado ao lendário
 

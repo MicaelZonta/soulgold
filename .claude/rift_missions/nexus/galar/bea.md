@@ -6,17 +6,17 @@ Aparece no checklist como:
 
 - **Bea — Lutador** (Galar · Líderes de Ginásio) — Líder exclusiva de *Sword*, séria e dedicada às artes marciais.
 
-**Pronto para o Nexus:** ✅ sim — tem sprite e battle sprite (03/10/2026). Falta o time e as falas irem para o código.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_BEA`, 03/10/2026
 - [x] Battle sprite / front pic *(obrigatório)* — `TRAINER_PIC_FRONT_BEA` (64x64 + 80x80), 03/10/2026
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -46,15 +46,107 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-_Não definido._
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_BEA` = **1170** (bloco 2, flag `0xB06`), luta genérica `Nexus_EventScript_Bea_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
+
+```
+=== TRAINER_NEXUS_BEA ===
+Name: Bea
+Class: Leader
+Pic: Bea
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Marshadow @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Technician
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Spectral Thief
+- Close Combat
+- Shadow Sneak
+- Bulk Up
+
+Urshifu-Rapid-Strike @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Unseen Fist
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn
+
+Hawlucha @ Fightite
+Jolly Nature
+Level: 100
+Ability: Unburden
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Brave Bird
+- Swords Dance
+- Detect
+
+Hitmontop @ Rocky Helmet
+Impish Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Fake Out
+- Close Combat
+- Rapid Spin
+- Wide Guard
+
+Sirfetchd @ Leek
+Adamant Nature
+Level: 100
+Ability: Scrappy
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Leaf Blade
+- Knock Off
+- Quick Guard
+
+Falinks @ Sitrus Berry
+Jolly Nature
+Level: 100
+Ability: Defiant
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Throat Chop
+- No Retreat
+- Protect
+```
 
 ### Lendário associado
 
-_Nenhum ainda._
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Marshadow** — `Nexus_EventScript_Bea_Marshadow_ChampionFight` (falas `Nexus_Text_Bea_Marshadow_Champion*`)
+- **Urshifu Single Strike** — `Nexus_EventScript_Bea_Urshifu_ChampionFight` (falas `Nexus_Text_Bea_Urshifu_Champion*`)
+- **Zapdos Galar** — `Nexus_EventScript_Bea_GalarianZapdos_ChampionFight` (falas `Nexus_Text_Bea_GalarianZapdos_Champion*`)
+
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Bea_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
+
+**Antes da luta**
+
+> Training teaches you to stand when your legs say you cannot.
+>
+> My partners and I have practiced. Let us see what we have learned.
+
+**Derrota**
+
+> A clean victory. I must train harder. Thank you.
 
 ### Diálogo associado ao lendário
 

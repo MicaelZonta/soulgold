@@ -172,9 +172,114 @@ na ficha da [Soliera](alola/soliera.md).
 | Terapagos | Lendário restrito | [Roxanne](hoenn/roxanne.md) | campeão no código (fala em `nexus.inc`), 27/09 |
 | Pecharunt | Mítico | [Koga](kanto/koga.md) | campeão no código (fala em `nexus.inc`), 27/09 |
 
+### Campeões extras (31/10/2026, no código)
+
+Desde 31/10/2026 **um lendário pode ter vários campeões**: o da tabela acima (linha em
+`src/data/nexus/legendaries.h`) e os extras de `src/data/nexus/champions.h`. O campeão do dia é sorteado entre
+eles pela semente diária (`GetTodaysChampion`, `src/nexus.c`) e fica o mesmo o dia inteiro (R3). Meta do autor:
+**todo treinador do pool campeão de pelo menos 3 lendários** — cumprida (121 treinadores × 3). As 241 associações
+e as falas de campeão (R16) foram montadas pelo Codex e conferidas por `novos/campeoes.py`.
+A proposta de 30/09 abaixo ficou para trás (ninguém cedeu lendário: os novos entraram como extras).
+
+| Lendário | Campeões possíveis | Extras |
+|---|---|---|
+| Arceus | 3 | Cynthia, Lenora |
+| Articuno | 7 | Brycen, Falkner, Grusha, Lorelei, Melony, Peonia |
+| Articuno Galar | 3 | Avery, Tulip |
+| Azelf | 2 | Barry |
+| Buzzwole | 5 | Chuck, Greta, Guzma, Viola |
+| Calyrex | 4 | Melony, Peony, Spenser |
+| Celebi | 4 | Az, Gardenia, Leaf |
+| Celesteela | 2 | Skyla |
+| Chi Yu | 2 | Proton |
+| Chien Pao | 2 | Grusha |
+| Cobalion | 3 | Cheren, Ghetsis |
+| Cresselia | 4 | Dawn, Molly, Tulip |
+| Darkrai | 3 | Marnie, Silver |
+| Deoxys | 4 | Barry, Brendan, Zinnia |
+| Dialga | 4 | Cyrus, Peony, Rowan |
+| Diancie | 5 | Olivia, Serena, Steven, Valerie |
+| Enamorus Incarnate | 2 | Ariana |
+| Entei | 3 | Flannery, Molly |
+| Eternatus | 4 | Gloria, Klara, Leon |
+| Fezandipiti | 4 | Ariana, Klara, Petrel |
+| Genesect | 7 | Bugsy, Colress, Juniper, Katy, Noland, Viola |
+| Giratina Altered | 3 | Agatha, Cynthia |
+| Glastrier | 3 | Lorelei, Melony |
+| Gouging Fire | 2 | Blaine |
+| Groudon | 3 | Alder, Cilan |
+| Ho Oh | 2 | Alder |
+| Hoopa Confined | 4 | Avery, Jessie James, Will |
+| Iron Valiant | 3 | Diantha, Nemona |
+| Jirachi | 2 | Zinnia |
+| Kartana | 2 | Viola |
+| Keldeo | 2 | Wally |
+| Koraidon | 4 | Korrina, Mustard, Nemona |
+| Kyogre | 3 | Nessa, Shelly |
+| Kyurem | 6 | Brycen, Cheren, Ghetsis, Grusha, Lorelei |
+| Landorus Incarnate | 2 | Giovanni |
+| Latias | 6 | Clair, Hassel, Iris, May, Serena |
+| Lugia | 6 | Archie, Falkner, Peonia, Skyla, Winona |
+| Lunala | 6 | Allister, Anabel, Morty, Phoebe, Tulip |
+| Manaphy | 4 | Archie, Juan, Shelly |
+| Marshadow | 8 | Agatha, Allister, Bea, Fantina, Janine, Mustard, Phoebe |
+| Melmetal | 2 | Byron |
+| Meloetta | 11 | Diantha, Elesa, Fantina, Jessie James, Juniper, Lenora, Rosa, Tucker, Wallace, Whitney |
+| Mesprit | 3 | Cyrus, Dawn |
+| Mew | 2 | Juniper |
+| Mewtwo | 4 | Avery, Gladion, Red |
+| Miraidon | 2 | Iono |
+| Moltres Galar | 3 | Marnie, Sidney |
+| Munkidori | 3 | Klara, Koga |
+| Necrozma | 3 | Olivia, Soliera |
+| Nihilego | 3 | Lusamine, Soliera |
+| Okidogi | 3 | Guzma, Koga |
+| Palkia | 4 | Cynthia, Cyrus, Dawn |
+| Pecharunt | 2 | Ghetsis |
+| Pheromosa | 3 | Katy, Valerie |
+| Rayquaza | 4 | Drake, Hassel, Zinnia |
+| Regice | 4 | Brycen, Glacia, Pryce |
+| Regidrago | 4 | Clair, Hassel, Iris |
+| Regieleki | 3 | Iono, Volkner |
+| Regigigas | 3 | Larry, Norman |
+| Regirock | 4 | Brock, Lenora, Roxanne |
+| Registeel | 5 | Byron, Jasmine, Peony, Steven |
+| Reshiram | 5 | Hilda, Iris, N, Rosa |
+| Shaymin Land | 4 | Cilan, Gardenia, Ramos |
+| Silvally | 6 | Colress, Hop, N, Rowan, Silver |
+| Slither Wing | 3 | Alder, Katy |
+| Solgaleo | 3 | Hau, Lillie |
+| Spectrier | 4 | Agatha, Allister, Lucy |
+| Suicune | 5 | Hop, Misty, Nessa, Peonia |
+| Tapu Bulu | 2 | Erika |
+| Tapu Fini | 2 | Nessa |
+| Tapu Koko | 2 | Hau |
+| Tapu Lele | 3 | Hau, Olivia |
+| Terapagos | 2 | Larry |
+| Terrakion | 2 | Bruno |
+| Tornadus Incarnate | 4 | Hilda, Larry, Skyla |
+| Urshifu Single Strike | 7 | Bea, Brawly, Bruno, Korrina, Leon, Mustard |
+| Uxie | 4 | Barry, Rowan, Sabrina |
+| Victini | 2 | Hilda |
+| Virizion | 3 | Cilan, Rosa |
+| Volcanion | 4 | Lysandre, Maxie, Shelly |
+| Walking Wake | 2 | Nemona |
+| Wo Chien | 2 | Ramos |
+| Xerneas | 7 | Az, Diantha, Lysandre, Molly, Serena, Valerie |
+| Xurkitree | 3 | Iono, Wattson |
+| Yveltal | 4 | Az, Lysandre, Marnie |
+| Zacian | 3 | Gloria, Leon |
+| Zamazenta | 5 | Archer, Cheren, Gloria, Hop |
+| Zapdos | 2 | Red |
+| Zapdos Galar | 2 | Bea |
+| Zarude | 2 | Karen |
+| Zekrom | 4 | Blue, N, Volkner |
+| Zeraora | 4 | Elesa, Korrina, Kukui |
+| Zygarde | 4 | Gardenia, Jessie James, Lance |
+
 ### Proposta de 30/09/2026: campeões para os treinadores novos
 
-📝 **Aguardando o autor; a tabela acima continua sendo o que está no código.**
+🗄️ **Superada em 31/10/2026** pelos campeões extras (seção acima).
 Os 17 treinadores com arte nova (`.filetransfer/.trainers/`) precisam de um
 lendário cada. A proposta tira **um** lendário de quem campeia dois ou mais
 (ninguém fica sem) e faz a **Cynthia co-campeã do Giratina** com o Silver,
@@ -216,7 +321,7 @@ Estes são os candidatos naturais para o pool do loop: existem no jogo e o jogad
 | **Regidrago** | Sub-lendário | ✅ Boss Fight — `SinjohRuins_RegidracoRoom` Lv80 (Fase 8, 19/10/2026) |
 | **Wo-Chien** | Sub-lendário | ✅ Boss Fight — `RailwayCave_Registeel_Room` Lv70, 3 barras (25/10/2026), na câmara que era do Registeel, com musgo tomando a caverna |
 | **Ting-Lu** | Sub-lendário | ✅ Boss Fight — `RegirockChamber` Lv70, 3 barras (25/10/2026), na câmara que era do Regirock; mesmos números do Chien-Pao |
-| **Pecharunt** | Mítico | ❌ ainda sem fonte — DECISÃO 19/10/2026: ganhará evento próprio quando o Trio Leal inteiro estiver capturado (Okidogi + Munkidori + Fezandipiti) |
+| **Pecharunt** | Mítico | ✅ Boss Fight — `MtEmber_RubyPath_B5F_Frlg` Lv75, 3 barras (28/10/2026); só aparece com o Trio Leal inteiro capturado (Okidogi + Munkidori + Fezandipiti), como decidido em 19/10. No Nexus passou a exigir captura (R1) |
 
 ## Com método de obtenção
 

@@ -81,29 +81,53 @@ GoldenrodCity_Bill_GiveEeveeOrPikachu::
 	faceplayer
 	compare VAR_NAVELROCK_QUEST, 1
 	goto_if_eq GoldenrodCity_Bill_GiveEeveeOrPikachu_2
-	goto_if_unset FLAG_GOT_BILL_GIFTMON, GoldenrodCity_Bill_GiveEeveeOrPikachu_5
+GoldenrodCity_Bill_GiveEeveeOrPikachu_1:
+	compare VAR_NAVELROCK_QUEST, 2
+	goto_if_eq GoldenrodCity_Bill_GiveEeveeOrPikachu_5
+GoldenrodCity_Bill_GiveEeveeOrPikachu_4:
+	goto_if_unset FLAG_GOT_BILL_GIFTMON, GoldenrodCity_Bill_GiveEeveeOrPikachu_11
 	msgbox GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_6
 	release
 	end
 
 GoldenrodCity_Bill_GiveEeveeOrPikachu_2:
-	msgbox NavelRockQuest_Text_BillReads, MSGBOX_DEFAULT
 	setvar VAR_NAVELROCK_QUEST, 2
+	compare VAR_ONE_ISLAND_STATE, 2
+	goto_if_eq GoldenrodCity_Bill_GiveEeveeOrPikachu_8
+	msgbox NavelRockQuest_Text_BillReads, MSGBOX_YESNO
+	goto OneIsland_EventScript_BillAnswer
+	goto GoldenrodCity_Bill_GiveEeveeOrPikachu_1
+
+GoldenrodCity_Bill_GiveEeveeOrPikachu_5:
+	compare VAR_ONE_ISLAND_STATE, 2
+	goto_if_eq GoldenrodCity_Bill_GiveEeveeOrPikachu_14
+	msgbox OneIsland_Text_BillStillWaiting, MSGBOX_YESNO
+	goto OneIsland_EventScript_BillAnswer
+	goto GoldenrodCity_Bill_GiveEeveeOrPikachu_4
+
+GoldenrodCity_Bill_GiveEeveeOrPikachu_8:
+	msgbox OneIsland_Text_BillAlreadyBeen, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
 
-GoldenrodCity_Bill_GiveEeveeOrPikachu_5:
+GoldenrodCity_Bill_GiveEeveeOrPikachu_11:
 	msgbox GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_0
 	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_1, GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_2, GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_3
 	switch VAR_RESULT
-	case 0, GoldenrodCity_Bill_GiveEeveeOrPikachu_8
-	case 1, GoldenrodCity_Bill_GiveEeveeOrPikachu_9
+	case 0, GoldenrodCity_Bill_GiveEeveeOrPikachu_17
+	case 1, GoldenrodCity_Bill_GiveEeveeOrPikachu_18
 	msgbox GoldenrodCity_Bill_GiveEeveeOrPikachu_Text_5
 	release
 	end
 
-GoldenrodCity_Bill_GiveEeveeOrPikachu_8:
+GoldenrodCity_Bill_GiveEeveeOrPikachu_14:
+	msgbox OneIsland_Text_BillAfterTrip, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+GoldenrodCity_Bill_GiveEeveeOrPikachu_17:
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EEVEE_STARTER
 	bufferspeciesname STR_VAR_1, SPECIES_EEVEE_STARTER
 	givemon SPECIES_EEVEE_STARTER, 25
@@ -116,7 +140,7 @@ GoldenrodCity_Bill_GiveEeveeOrPikachu_8:
 	release
 	end
 
-GoldenrodCity_Bill_GiveEeveeOrPikachu_9:
+GoldenrodCity_Bill_GiveEeveeOrPikachu_18:
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_PIKACHU_STARTER
 	bufferspeciesname STR_VAR_1, SPECIES_PIKACHU_STARTER
 	givemon SPECIES_PIKACHU_STARTER, 25

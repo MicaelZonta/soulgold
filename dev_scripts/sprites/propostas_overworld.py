@@ -179,6 +179,37 @@ CHARS = {
     # segunda arte da Shelly (a Swizzler121 16x19 e forma pronta: esta e so alternativa)
     'Shelly DiegoWT': dict(pasta='Shelly', f='Shelly/Sprite - DiegoWT.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='DiegoWT'),
     'Skyla': dict(f='Skyla/Sprite - Miused.png', k=1, cell=(32, 48), x0=0, y0=0, px=32, py=48, grade=True, frames=RPG, metodo='bloco', cred='Miused'),
+    # Novo Lote (31/10/2026): todas 4x4 (baixo, esq, dir, cima). 128x192 = 2x de 16x24 encostados
+    # (como Dawn/Green); 256x384 = 4x de 16x24 (como Peonia); 256x256 = 2x de 32x32 (como DiegoWT).
+    # Hop, Juniper e Viola: 256x256 em 2x exato por celula, mas as linhas de frente e costas
+    # comecam o pixel em x impar: par_celula=64 reduz cada celula com a propria paridade
+    # (o reamostrar por mediana apagou o olho do Hop e quebrou Juniper e Viola, autor 31/10).
+    'AZ': dict(f='AZ/Sprite - desconhecido.png', k=2, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='desconhecido'),
+    'Brycen': dict(f='Brycen/Sprite - desconhecido.png', k=2, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='desconhecido'),
+    'Korrina': dict(f='Korrina/Sprite - desconhecido.png', k=2, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='desconhecido'),
+    'Marnie': dict(f='Marnie/Sprite - desconhecido.png', k=2, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='desconhecido'),
+    'Prof Rowan': dict(f='Prof Rowan/Sprite - desconhecido.png', k=2, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='desconhecido'),
+    'Valerie': dict(f='Valerie/Sprite - desconhecido.png', k=2, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='desconhecido'),
+    'Nessa (Novo Lote)': dict(pasta='Nessa', f='Nessa/Sprite - desconhecido (Novo Lote).png', k=2, cell=(16, 24), x0=0, y0=0, px=16, py=24,
+                              grade=True, frames=RPG, cred='desconhecido', atual=SP + 'nessa.png'),
+    'Iris': dict(f='Iris/Sprite - desconhecido.png', k=2, cell=(18, 24), x0=0, y0=0, px=18, py=24, grade=True, frames=RPG, cred='desconhecido'),
+    'Gloria': dict(f='Gloria/Sprite - desconhecido.png', k=4, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='desconhecido'),
+    'Katy': dict(f='Katy/Sprite - desconhecido.png', k=4, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='desconhecido'),
+    'Larry': dict(f='Larry/Sprite - desconhecido.png', k=4, cell=(16, 24), x0=0, y0=0, px=16, py=24, grade=True, frames=RPG, cred='desconhecido'),
+    'Cilan': dict(f='Cilan/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Ghetsis': dict(f='Ghetsis/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Grusha': dict(f='Grusha/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Hassel': dict(f='Hassel/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Iono': dict(f='Iono/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Lysandre': dict(f='Lysandre/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Melony': dict(f='Melony/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Plasma Grunt Female': dict(f='Plasma Grunt Female/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Plasma Grunt Male': dict(f='Plasma Grunt Male/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Serena XY': dict(f='Serena XY/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Tulip': dict(f='Tulip/Sprite - desconhecido.png', k=2, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Hop': dict(f='Hop/Sprite - desconhecido.png', k=2, par_celula=64, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Juniper': dict(f='Juniper/Sprite - desconhecido.png', k=2, par_celula=64, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
+    'Viola': dict(f='Viola/Sprite - desconhecido.png', k=2, par_celula=64, cell=(32, 32), x0=0, y0=0, px=32, py=32, frames=RPG, cred='desconhecido'),
 }
 GRUPOS = [0, 1, 2, 0, 0, 1, 1, 2, 2, 3, 3, 3]
 
@@ -328,6 +359,28 @@ def desfazer_ampliacao_ia(im, C, N):
     return im
 
 
+def reduzir_2x_por_celula(im, C):
+    """folha 2x exata em que o pixel comeca em x/y par numa celula e impar em outra
+    (Hop, Juniper, Viola: linhas de frente e costas deslocadas 1 px). Cada celula de C
+    px vira C/2 com a paridade que repete mais pares; a mediana do `reamostrar` misturava
+    pixels vizinhos e apagava o olho."""
+    import numpy as np
+    A = np.asarray(im.convert('RGBA'))
+    out = np.zeros((A.shape[0] // 2, A.shape[1] // 2, 4), np.uint8)
+    for y in range(0, A.shape[0] // C * C, C):
+        for x in range(0, A.shape[1] // C * C, C):
+            cel = A[y:y + C, x:x + C].astype(int)
+            def pares(ox, oy):
+                b = cel[oy:oy + C - 2, ox:ox + C - 2]
+                return (b[:, 1::2] == b[:, 0::2]).all(-1).mean() + (b[1::2] == b[0::2]).all(-1).mean()
+            ox, oy = max(((ox, oy) for ox in (0, 1) for oy in (0, 1)), key=lambda o: pares(*o))
+            n = C // 2
+            src = np.zeros((C + 2, C + 2, 4), np.uint8)
+            src[:C, :C] = cel
+            out[y // 2:y // 2 + n, x // 2:x // 2 + n] = src[oy:oy + C:2, ox:ox + C:2]
+    return Image.fromarray(out, 'RGBA')
+
+
 def frames_nativos(c, big=False):
     im = Image.open(os.path.join(FT, c['f'])).convert('RGBA')
     if 'crop' in c:
@@ -336,6 +389,8 @@ def frames_nativos(c, big=False):
         im = desfazer_ampliacao_ia(im, *c['reamostrar'])
     e = 2 if big else 1
     f = c['k'] // e      # folha em 4x (Peonia): nativo = /4, arte 2x = /2
+    if f == 2 and 'par_celula' in c:
+        im, f = reduzir_2x_por_celula(im, c['par_celula']), 1
     if f > 1:
         im = mediana2(im) if c.get('jpg') else im.resize((im.width // f, im.height // f), Image.NEAREST)
     im = sem_fundo(im, c.get('jpg'), c.get('bgs', ()))

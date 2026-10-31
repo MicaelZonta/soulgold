@@ -1,5 +1,10 @@
 OneIsland_TreasureBeach_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, OneIsland_TreasureBeach_OnTransition
 	.byte 0
+
+OneIsland_TreasureBeach_OnTransition:
+	call MtEmberResidents_OnTransition
+	end
 
 OneIsland_TreasureBeach_EventScript_Boy::
 	msgbox OneIsland_TreasureBeach_Text_GoodThingsWashUpOnBeach, MSGBOX_NPC

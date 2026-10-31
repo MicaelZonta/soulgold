@@ -1,0 +1,752 @@
+{
+ "item_flags": [
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_DAMP_ROCK",
+   "ITEM_DAMP_ROCK",
+   "AbundanceIsle"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_THUNDER_STONE",
+   "ITEM_THUNDER_STONE",
+   "AbundanceIsle"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_HARD_STONE",
+   "ITEM_HARD_STONE",
+   "AbundanceIsle"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_MIRACLE_SEED",
+   "ITEM_MIRACLE_SEED",
+   "AbundanceIsle"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_BARN_LEFTOVERS",
+   "ITEM_LEFTOVERS",
+   "AbundanceIsle_Barn"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_FARMHOUSE_BIG_ROOT",
+   "ITEM_BIG_ROOT",
+   "AbundanceIsle_Farmhouse"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_REVIVE",
+   "ITEM_REVIVE",
+   "AbundanceIsle_HarvestFields"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_SITRUS_BERRY",
+   "ITEM_SITRUS_BERRY",
+   "AbundanceIsle_HarvestFields"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_SOFT_SAND",
+   "ITEM_SOFT_SAND",
+   "AbundanceIsle_HarvestFields"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_PEARL",
+   "ITEM_PEARL",
+   "AbundanceIsle_HarvestFields"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_KEEPER_HOUSE_SOOTHE_BELL",
+   "ITEM_SOOTHE_BELL",
+   "AbundanceIsle_KeeperHouse"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SPRING_GROVE_SHINY_STONE",
+   "ITEM_SHINY_STONE",
+   "AbundanceIsle_SpringGrove"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SPRING_GROVE_MIRACLE_SEED",
+   "ITEM_MIRACLE_SEED",
+   "AbundanceIsle_SpringGrove"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SPRING_GROVE_SWEET_APPLE",
+   "ITEM_SWEET_APPLE",
+   "AbundanceIsle_SpringGrove"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_WINDSWEPT_CAPE_PRETTY_FEATHER",
+   "ITEM_PRETTY_FEATHER",
+   "AbundanceIsle_WindsweptCape"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_WINDSWEPT_CAPE_WIDE_LENS",
+   "ITEM_WIDE_LENS",
+   "AbundanceIsle_WindsweptCape"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_WINDSWEPT_CAPE_STAR_PIECE",
+   "ITEM_STAR_PIECE",
+   "AbundanceIsle_WindsweptCape"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SKYLA_HANGAR_ZOOM_LENS",
+   "ITEM_ZOOM_LENS",
+   "AbundanceIsle_SkylaHangar"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_FLOAT_STONE",
+   "ITEM_FLOAT_STONE",
+   "AbundanceIsle_GaleShore"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_PEARL_STRING",
+   "ITEM_PEARL_STRING",
+   "AbundanceIsle_GaleShore"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_AIR_BALLOON",
+   "ITEM_AIR_BALLOON",
+   "AbundanceIsle_GaleShore"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_GALE_CAVE_SMOOTH_ROCK",
+   "ITEM_SMOOTH_ROCK",
+   "AbundanceIsle_GaleCave"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_GALE_CAVE_BIG_PEARL",
+   "ITEM_BIG_PEARL",
+   "AbundanceIsle_GaleCave"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_GALE_CAVE_SHARP_BEAK",
+   "ITEM_SHARP_BEAK",
+   "AbundanceIsle_GaleCave"
+  ],
+  [
+   "FLAG_ITEM_FROSTFALL_CRATER_1F_SNOWBALL",
+   "ITEM_SNOWBALL",
+   "FrostfallCrater_1F"
+  ],
+  [
+   "FLAG_ITEM_FROSTFALL_CRATER_1F_ICE_HEAL",
+   "ITEM_ICE_HEAL",
+   "FrostfallCrater_1F"
+  ],
+  [
+   "FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_1F_COMET_SHARD",
+   "ITEM_COMET_SHARD",
+   "FrostfallCrater_1F"
+  ],
+  [
+   "FLAG_ITEM_FROSTFALL_CRATER_B1F_ICY_ROCK",
+   "ITEM_ICY_ROCK",
+   "FrostfallCrater_B1F"
+  ],
+  [
+   "FLAG_ITEM_FROSTFALL_CRATER_B1F_NEVER_MELT_ICE",
+   "ITEM_NEVER_MELT_ICE",
+   "FrostfallCrater_B1F"
+  ],
+  [
+   "FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_B1F_COMET_SHARD",
+   "ITEM_COMET_SHARD",
+   "FrostfallCrater_B1F"
+  ],
+  [
+   "FLAG_ITEM_FROSTFALL_CRATER_LAB_TM_BLIZZARD",
+   "ITEM_TM_BLIZZARD",
+   "FrostfallCrater_Lab"
+  ],
+  [
+   "FLAG_ITEM_FROSTFALL_CRATER_LAB_MAX_REVIVE",
+   "ITEM_MAX_REVIVE",
+   "FrostfallCrater_Lab"
+  ],
+  [
+   "FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_LAB_COMET_SHARD",
+   "ITEM_COMET_SHARD",
+   "FrostfallCrater_Lab"
+  ],
+  [
+   "FLAG_ITEM_FROSTFALL_CRATER_CORE_ICICLE_PLATE",
+   "ITEM_ICICLE_PLATE",
+   "FrostfallCrater_Core"
+  ],
+  [
+   "FLAG_ITEM_FROSTFALL_CRATER_CORE_DRAGON_FANG",
+   "ITEM_DRAGON_FANG",
+   "FrostfallCrater_Core"
+  ],
+  [
+   "FLAG_ITEM_FROSTFALL_CRATER_CORE_COMET_SHARD",
+   "ITEM_COMET_SHARD",
+   "FrostfallCrater_Core"
+  ],
+  [
+   "FLAG_ITEM_THUNDER_RIDGE_ELECTIRIZER",
+   "ITEM_ELECTIRIZER",
+   "ThunderRidge"
+  ],
+  [
+   "FLAG_ITEM_THUNDER_RIDGE_MAX_REVIVE",
+   "ITEM_MAX_REVIVE",
+   "ThunderRidge"
+  ],
+  [
+   "FLAG_ITEM_THUNDER_RIDGE_THUNDER_STONE",
+   "ITEM_THUNDER_STONE",
+   "ThunderRidge"
+  ],
+  [
+   "FLAG_ITEM_THUNDER_RIDGE_RARE_CANDY",
+   "ITEM_RARE_CANDY",
+   "ThunderRidge"
+  ],
+  [
+   "FLAG_ITEM_THUNDERSPIRE_1F_DRAGON_SCALE",
+   "ITEM_DRAGON_SCALE",
+   "Thunderspire_1F"
+  ],
+  [
+   "FLAG_ITEM_THUNDERSPIRE_1F_ZINC",
+   "ITEM_ZINC",
+   "Thunderspire_1F"
+  ],
+  [
+   "FLAG_ITEM_THUNDERSPIRE_2F_SPELL_TAG",
+   "ITEM_SPELL_TAG",
+   "Thunderspire_2F"
+  ],
+  [
+   "FLAG_ITEM_THUNDERSPIRE_2F_DRAGON_FANG",
+   "ITEM_DRAGON_FANG",
+   "Thunderspire_2F"
+  ],
+  [
+   "FLAG_ITEM_THUNDERSPIRE_SUMMIT_ZAP_PLATE",
+   "ITEM_ZAP_PLATE",
+   "Thunderspire_Summit"
+  ],
+  [
+   "FLAG_ITEM_THUNDERSPIRE_SUMMIT_DRAGON_FANG",
+   "ITEM_DRAGON_FANG",
+   "Thunderspire_Summit"
+  ],
+  [
+   "FLAG_ITEM_PLASMA_FRIGATE_DECK_FULL_RESTORE",
+   "ITEM_FULL_RESTORE",
+   "PlasmaFrigate_Deck"
+  ],
+  [
+   "FLAG_ITEM_PLASMA_FRIGATE_DECK_PP_UP",
+   "ITEM_PP_UP",
+   "PlasmaFrigate_Deck"
+  ],
+  [
+   "FLAG_ITEM_PLASMA_FRIGATE_HOLD_DUSK_BALL",
+   "ITEM_DUSK_BALL",
+   "PlasmaFrigate_Hold"
+  ],
+  [
+   "FLAG_ITEM_PLASMA_FRIGATE_HOLD_NEVER_MELT_ICE",
+   "ITEM_NEVER_MELT_ICE",
+   "PlasmaFrigate_Hold"
+  ],
+  [
+   "FLAG_ITEM_PLASMA_FRIGATE_HOLD_MAX_ELIXIR",
+   "ITEM_MAX_ELIXIR",
+   "PlasmaFrigate_Hold"
+  ],
+  [
+   "FLAG_ITEM_PLASMA_FRIGATE_CABINS_RARE_CANDY",
+   "ITEM_RARE_CANDY",
+   "PlasmaFrigate_Cabins"
+  ],
+  [
+   "FLAG_ITEM_PLASMA_FRIGATE_ENGINE_ROOM_ICE_STONE",
+   "ITEM_ICE_STONE",
+   "PlasmaFrigate_EngineRoom"
+  ],
+  [
+   "FLAG_ITEM_PLASMA_FRIGATE_ENGINE_ROOM_UP_GRADE",
+   "ITEM_UP_GRADE",
+   "PlasmaFrigate_EngineRoom"
+  ],
+  [
+   "FLAG_ITEM_THUNDERSPIRE_3F_CELL_BATTERY",
+   "ITEM_CELL_BATTERY",
+   "Thunderspire_3F"
+  ],
+  [
+   "FLAG_HIDDEN_ITEM_THUNDERSPIRE_3F_MAGNET",
+   "ITEM_MAGNET",
+   "Thunderspire_3F"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_MYSTIC_WATER",
+   "ITEM_MYSTIC_WATER",
+   "AbundanceIsle_SunsetStrait"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_BIG_PEARL",
+   "ITEM_BIG_PEARL",
+   "AbundanceIsle_SunsetStrait"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_DRAGON_SCALE",
+   "ITEM_DRAGON_SCALE",
+   "AbundanceIsle_SunsetStrait"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_SHELL_BELL",
+   "ITEM_SHELL_BELL",
+   "AbundanceIsle_SunsetStrait"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_DEEP_SEA_SCALE",
+   "ITEM_DEEP_SEA_SCALE",
+   "AbundanceIsle_SunsetStrait_Underwater"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_HEART_SCALE",
+   "ITEM_HEART_SCALE",
+   "AbundanceIsle_SunsetStrait_Underwater"
+  ],
+  [
+   "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_DEEP_SEA_TOOTH",
+   "ITEM_DEEP_SEA_TOOTH",
+   "AbundanceIsle_SunsetStrait_Underwater"
+  ],
+  [
+   "FLAG_ITEM_SUNKEN_TRUTH_SHIP_RELIC_GOLD",
+   "ITEM_RELIC_GOLD",
+   "SunkenTruthShip"
+  ],
+  [
+   "FLAG_ITEM_SUNKEN_TRUTH_SHIP_FLAME_PLATE",
+   "ITEM_FLAME_PLATE",
+   "SunkenTruthShip"
+  ],
+  [
+   "FLAG_ITEM_SUNKEN_TRUTH_SHIP_BOTTLE_CAP",
+   "ITEM_BOTTLE_CAP",
+   "SunkenTruthShip"
+  ],
+  [
+   "FLAG_ITEM_SUNKEN_TRUTH_SHIP_RELIC_CROWN",
+   "ITEM_RELIC_CROWN",
+   "SunkenTruthShip"
+  ],
+  [
+   "FLAG_ITEM_SHRINE_OF_THE_FIRST_DRAGON_DRACO_PLATE",
+   "ITEM_DRACO_PLATE",
+   "ShrineOfTheFirstDragon"
+  ],
+  [
+   "FLAG_ITEM_EMBERDUNE_ISLE_HEAT_ROCK",
+   "ITEM_HEAT_ROCK",
+   "EmberduneIsle"
+  ],
+  [
+   "FLAG_ITEM_EMBERDUNE_ISLE_SUN_STONE",
+   "ITEM_SUN_STONE",
+   "EmberduneIsle"
+  ],
+  [
+   "FLAG_ITEM_EMBERDUNE_ISLE_SOFT_SAND",
+   "ITEM_SOFT_SAND",
+   "EmberduneIsle"
+  ],
+  [
+   "FLAG_ITEM_EMBERDUNE_ISLE_FIRE_STONE",
+   "ITEM_FIRE_STONE",
+   "EmberduneIsle"
+  ],
+  [
+   "FLAG_ITEM_NS_ROOM_SOOTHE_BELL",
+   "ITEM_SOOTHE_BELL",
+   "NsRoom"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_1F_RELIC_GOLD",
+   "ITEM_RELIC_GOLD",
+   "TruthsandRuins_1F"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_1F_RELIC_COPPER",
+   "ITEM_RELIC_COPPER",
+   "TruthsandRuins_1F"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_1F_SOFT_SAND",
+   "ITEM_SOFT_SAND",
+   "TruthsandRuins_1F"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_1F_STARDUST",
+   "ITEM_STARDUST",
+   "TruthsandRuins_1F"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_B1F_HARD_STONE",
+   "ITEM_HARD_STONE",
+   "TruthsandRuins_B1F"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_B1F_RELIC_SILVER",
+   "ITEM_RELIC_SILVER",
+   "TruthsandRuins_B1F"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_B1F_CHARCOAL",
+   "ITEM_CHARCOAL",
+   "TruthsandRuins_B1F"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_B1F_RELIC_CROWN",
+   "ITEM_RELIC_CROWN",
+   "TruthsandRuins_B1F"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_HALL_OF_TRUTH_FLAME_PLATE",
+   "ITEM_FLAME_PLATE",
+   "TruthsandRuins_HallOfTruth"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_HALL_OF_TRUTH_FIRE_STONE",
+   "ITEM_FIRE_STONE",
+   "TruthsandRuins_HallOfTruth"
+  ],
+  [
+   "FLAG_ITEM_TRUTHSAND_RUINS_HALL_OF_TRUTH_RELIC_VASE",
+   "ITEM_RELIC_VASE",
+   "TruthsandRuins_HallOfTruth"
+  ]
+ ],
+ "trainers": {
+  "LOCALID_ABUNDANCE_ISLE_HIKER": [
+   "AbundanceIsle",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_PICNICKER": [
+   "AbundanceIsle",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_FISHERMAN": [
+   "AbundanceIsle",
+   "2"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_HARVEST_FIELDS_JESSIE": [
+   "AbundanceIsle_HarvestFields",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_HARVEST_FIELDS_JAMES": [
+   "AbundanceIsle_HarvestFields",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_HARVEST_FIELDS_FARMHAND": [
+   "AbundanceIsle_HarvestFields",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_HARVEST_FIELDS_LASS": [
+   "AbundanceIsle_HarvestFields",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_SPRING_GROVE_GARDENIA": [
+   "AbundanceIsle_SpringGrove",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_SPRING_GROVE_PICNICKER": [
+   "AbundanceIsle_SpringGrove",
+   "4"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_WINDSWEPT_CAPE_BIRDKEEPER": [
+   "AbundanceIsle_WindsweptCape",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_WINDSWEPT_CAPE_FISHERMAN": [
+   "AbundanceIsle_WindsweptCape",
+   "2"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_FISHERMAN": [
+   "AbundanceIsle_GaleShore",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_BEAUTY": [
+   "AbundanceIsle_GaleShore",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_HIKER": [
+   "AbundanceIsle_GaleShore",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_GALE_CAVE_HIKER": [
+   "AbundanceIsle_GaleCave",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_GALE_CAVE_GRUNT": [
+   "AbundanceIsle_GaleCave",
+   "4"
+  ],
+  "LOCALID_FROSTFALL_CRATER_1F_GRUNT_1": [
+   "FROSTFALL_CRATER_1F",
+   "3"
+  ],
+  "LOCALID_FROSTFALL_CRATER_1F_GRUNT_2": [
+   "FROSTFALL_CRATER_1F",
+   "3"
+  ],
+  "LOCALID_FROSTFALL_CRATER_1F_HIKER": [
+   "FROSTFALL_CRATER_1F",
+   "4"
+  ],
+  "LOCALID_FROSTFALL_CRATER_B1F_SCIENTIST": [
+   "FROSTFALL_CRATER_B1F",
+   "3"
+  ],
+  "LOCALID_FROSTFALL_CRATER_B1F_BOARDER": [
+   "FROSTFALL_CRATER_B1F",
+   "2"
+  ],
+  "LOCALID_FROSTFALL_CRATER_LAB_GRUNT_3": [
+   "FROSTFALL_CRATER_LAB",
+   "4"
+  ],
+  "LOCALID_FROSTFALL_CRATER_LAB_GRUNT_4": [
+   "FROSTFALL_CRATER_LAB",
+   "3"
+  ],
+  "LOCALID_THUNDER_RIDGE_HIKER": [
+   "THUNDER_RIDGE",
+   "4"
+  ],
+  "LOCALID_THUNDER_RIDGE_BLACK_BELT": [
+   "THUNDER_RIDGE",
+   "4"
+  ],
+  "LOCALID_THUNDER_RIDGE_GRUNT": [
+   "THUNDER_RIDGE",
+   "3"
+  ],
+  "LOCALID_THUNDER_RIDGE_VOLKNER": [
+   "THUNDER_RIDGE",
+   "3"
+  ],
+  "LOCALID_THUNDER_RIDGE_ELESA": [
+   "THUNDER_RIDGE",
+   "3"
+  ],
+  "LOCALID_THUNDERSPIRE_1F_GRUNT_1": [
+   "THUNDERSPIRE_1F",
+   "4"
+  ],
+  "LOCALID_THUNDERSPIRE_1F_GRUNT_2": [
+   "THUNDERSPIRE_1F",
+   "3"
+  ],
+  "LOCALID_THUNDERSPIRE_2F_GRUNT_3": [
+   "THUNDERSPIRE_2F",
+   "3"
+  ],
+  "LOCALID_THUNDERSPIRE_2F_GRUNT_4": [
+   "THUNDERSPIRE_2F",
+   "5"
+  ],
+  "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_GANG": [
+   "PLASMA_FRIGATE_DECK",
+   "3"
+  ],
+  "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_N": [
+   "PLASMA_FRIGATE_DECK",
+   "5"
+  ],
+  "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_S": [
+   "PLASMA_FRIGATE_DECK",
+   "5"
+  ],
+  "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_E": [
+   "PLASMA_FRIGATE_DECK",
+   "3"
+  ],
+  "LOCALID_PLASMA_FRIGATE_HOLD_RESEARCHER": [
+   "PLASMA_FRIGATE_HOLD",
+   "2"
+  ],
+  "LOCALID_PLASMA_FRIGATE_HOLD_GRUNT_BUNK_1": [
+   "PLASMA_FRIGATE_HOLD",
+   "3"
+  ],
+  "LOCALID_PLASMA_FRIGATE_HOLD_GRUNT_BUNK_2": [
+   "PLASMA_FRIGATE_HOLD",
+   "4"
+  ],
+  "LOCALID_PLASMA_FRIGATE_HOLD_GRUNT_HALL": [
+   "PLASMA_FRIGATE_HOLD",
+   "6"
+  ],
+  "LOCALID_PLASMA_FRIGATE_CABINS_GHETSIS_GUARD": [
+   "PLASMA_FRIGATE_CABINS",
+   "4"
+  ],
+  "LOCALID_PLASMA_FRIGATE_CABINS_GRUNT_LOCKER_1": [
+   "PLASMA_FRIGATE_CABINS",
+   "3"
+  ],
+  "LOCALID_PLASMA_FRIGATE_CABINS_GRUNT_LOCKER_2": [
+   "PLASMA_FRIGATE_CABINS",
+   "3"
+  ],
+  "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_CHIEF": [
+   "PLASMA_FRIGATE_ENGINE_ROOM",
+   "3"
+  ],
+  "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_ASSIST_1": [
+   "PLASMA_FRIGATE_ENGINE_ROOM",
+   "4"
+  ],
+  "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_ASSIST_2": [
+   "PLASMA_FRIGATE_ENGINE_ROOM",
+   "4"
+  ],
+  "LOCALID_THUNDERSPIRE_3F_GRUNT_1": [
+   "THUNDERSPIRE_3F",
+   "4"
+  ],
+  "LOCALID_THUNDERSPIRE_3F_GRUNT_2": [
+   "THUNDERSPIRE_3F",
+   "3"
+  ],
+  "LOCALID_THUNDERSPIRE_3F_GRUNT_3": [
+   "THUNDERSPIRE_3F",
+   "3"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_1": [
+   "AbundanceIsle_SunsetStrait",
+   "4"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_2": [
+   "AbundanceIsle_SunsetStrait",
+   "4"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_3": [
+   "AbundanceIsle_SunsetStrait",
+   "4"
+  ],
+  "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_4": [
+   "AbundanceIsle_SunsetStrait",
+   "4"
+  ],
+  "LOCALID_EMBERDUNE_ISLE_DIGGER_1": [
+   "EmberduneIsle",
+   "3"
+  ],
+  "LOCALID_EMBERDUNE_ISLE_DIGGER_2": [
+   "EmberduneIsle",
+   "3"
+  ],
+  "LOCALID_EMBERDUNE_ISLE_HIKER": [
+   "EmberduneIsle",
+   "3"
+  ],
+  "LOCALID_EMBERDUNE_ISLE_RUIN_MANIAC": [
+   "EmberduneIsle",
+   "3"
+  ],
+  "LOCALID_TRUTHSAND_RUINS_1F_GRUNT_LADDER": [
+   "TRUTHSAND_RUINS_1F",
+   "2"
+  ],
+  "LOCALID_TRUTHSAND_RUINS_1F_GRUNT_CAMP": [
+   "TRUTHSAND_RUINS_1F",
+   "4"
+  ],
+  "LOCALID_TRUTHSAND_RUINS_1F_RUIN_MANIAC": [
+   "TRUTHSAND_RUINS_1F",
+   "3"
+  ],
+  "LOCALID_TRUTHSAND_RUINS_B1F_PLASMA_CHIEF": [
+   "TRUTHSAND_RUINS_B1F",
+   "3"
+  ],
+  "LOCALID_TRUTHSAND_RUINS_B1F_GRUNT": [
+   "TRUTHSAND_RUINS_B1F",
+   "3"
+  ],
+  "LOCALID_TRUTHSAND_RUINS_B1F_RUIN_MANIAC": [
+   "TRUTHSAND_RUINS_B1F",
+   "4"
+  ]
+ },
+ "old2new": {
+  "MAP_ABUNDANCE_ISLE": "MAP_ABUNDANCE_ISLE",
+  "MAP_ABUNDANCE_ISLE_BARN": "MAP_ABUNDANCE_ISLE_BARN",
+  "MAP_ABUNDANCE_ISLE_FARMHOUSE": "MAP_ABUNDANCE_ISLE_FARMHOUSE",
+  "MAP_ABUNDANCE_ISLE_HARVEST_FIELDS": "MAP_ABUNDANCE_ISLE_HARVEST_FIELDS",
+  "MAP_ABUNDANCE_ISLE_KEEPER_HOUSE": "MAP_ABUNDANCE_ISLE_KEEPER_HOUSE",
+  "MAP_ABUNDANCE_ISLE_SPRING_GROVE": "MAP_ABUNDANCE_ISLE_SPRING_GROVE",
+  "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+  "MAP_ABUNDANCE_ISLE_POKEMON_CENTER": "MAP_ABUNDANCE_ISLE_POKEMON_CENTER",
+  "MAP_ABUNDANCE_ISLE_SKYLA_HANGAR": "MAP_ABUNDANCE_ISLE_SKYLA_HANGAR",
+  "MAP_ABUNDANCE_ISLE_ELDER_HOUSE": "MAP_ABUNDANCE_ISLE_ELDER_HOUSE",
+  "MAP_ABUNDANCE_ISLE_GALE_SHORE": "MAP_ABUNDANCE_ISLE_GALE_SHORE",
+  "MAP_ABUNDANCE_ISLE_GALE_CAVE": "MAP_ABUNDANCE_ISLE_GALE_CAVE",
+  "MAP_FROSTFALL_CRATER_1F": "MAP_FROSTFALL_CRATER_1F",
+  "MAP_FROSTFALL_CRATER_B1F": "MAP_FROSTFALL_CRATER_B1F",
+  "MAP_FROSTFALL_CRATER_LAB": "MAP_FROSTFALL_CRATER_LAB",
+  "MAP_FROSTFALL_CRATER_CORE": "MAP_FROSTFALL_CRATER_CORE",
+  "MAP_THUNDER_RIDGE": "MAP_THUNDER_RIDGE",
+  "MAP_THUNDERSPIRE_1F": "MAP_THUNDERSPIRE_1F",
+  "MAP_THUNDERSPIRE_2F": "MAP_THUNDERSPIRE_2F",
+  "MAP_THUNDERSPIRE_SUMMIT": "MAP_THUNDERSPIRE_SUMMIT",
+  "MAP_PLASMA_FRIGATE_DECK": "MAP_PLASMA_FRIGATE_DECK",
+  "MAP_PLASMA_FRIGATE_HOLD": "MAP_PLASMA_FRIGATE_HOLD",
+  "MAP_PLASMA_FRIGATE_CABINS": "MAP_PLASMA_FRIGATE_CABINS",
+  "MAP_PLASMA_FRIGATE_ENGINE_ROOM": "MAP_PLASMA_FRIGATE_ENGINE_ROOM",
+  "MAP_THUNDERSPIRE_3F": "MAP_THUNDERSPIRE_3F",
+  "MAP_ABUNDANCE_ISLE_FESTIVAL_ARENA": "MAP_ABUNDANCE_ISLE_FESTIVAL_ARENA",
+  "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT",
+  "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER",
+  "MAP_SUNKEN_TRUTH_SHIP": "MAP_SUNKEN_TRUTH_SHIP",
+  "MAP_SHRINE_OF_THE_FIRST_DRAGON": "MAP_SHRINE_OF_THE_FIRST_DRAGON",
+  "MAP_EMBERDUNE_ISLE": "MAP_EMBERDUNE_ISLE",
+  "MAP_NS_ROOM": "MAP_NS_ROOM",
+  "MAP_TRUTHSAND_RUINS_1F": "MAP_TRUTHSAND_RUINS_1F",
+  "MAP_TRUTHSAND_RUINS_B1F": "MAP_TRUTHSAND_RUINS_B1F",
+  "MAP_TRUTHSAND_RUINS_HALL_OF_TRUTH": "MAP_TRUTHSAND_RUINS_HALL_OF_TRUTH"
+ },
+ "names": [
+  "AbundanceIsle",
+  "AbundanceIsle_Barn",
+  "AbundanceIsle_Farmhouse",
+  "AbundanceIsle_HarvestFields",
+  "AbundanceIsle_KeeperHouse",
+  "AbundanceIsle_SpringGrove",
+  "AbundanceIsle_WindsweptCape",
+  "AbundanceIsle_PokemonCenter",
+  "AbundanceIsle_SkylaHangar",
+  "AbundanceIsle_ElderHouse",
+  "AbundanceIsle_GaleShore",
+  "AbundanceIsle_GaleCave",
+  "FrostfallCrater_1F",
+  "FrostfallCrater_B1F",
+  "FrostfallCrater_Lab",
+  "FrostfallCrater_Core",
+  "ThunderRidge",
+  "Thunderspire_1F",
+  "Thunderspire_2F",
+  "Thunderspire_Summit",
+  "PlasmaFrigate_Deck",
+  "PlasmaFrigate_Hold",
+  "PlasmaFrigate_Cabins",
+  "PlasmaFrigate_EngineRoom",
+  "Thunderspire_3F",
+  "AbundanceIsle_FestivalArena",
+  "AbundanceIsle_SunsetStrait",
+  "AbundanceIsle_SunsetStrait_Underwater",
+  "SunkenTruthShip",
+  "ShrineOfTheFirstDragon",
+  "EmberduneIsle",
+  "NsRoom",
+  "TruthsandRuins_1F",
+  "TruthsandRuins_B1F",
+  "TruthsandRuins_HallOfTruth"
+ ]
+}

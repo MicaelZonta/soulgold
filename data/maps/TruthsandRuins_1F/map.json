@@ -1,0 +1,270 @@
+{
+  "id": "MAP_TRUTHSAND_RUINS_1F",
+  "name": "TruthsandRuins_1F",
+  "layout": "LAYOUT_TRUTHSAND_RUINS_1F",
+  "music": "MUS_HG_UNION_CAVE",
+  "region_map_section": "MAPSEC_TRUTHSAND_RUINS",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_SPENSER",
+      "graphics_id": "OBJ_EVENT_GFX_SPENSER",
+      "x": 18,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TruthsandRuins_1F_EventScript_Spenser",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_LUCY",
+      "graphics_id": "OBJ_EVENT_GFX_LUCY",
+      "x": 14,
+      "y": 24,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TruthsandRuins_1F_EventScript_Lucy",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_GRUNT_LADDER",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_F",
+      "x": 7,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "TruthsandRuins_1F_EventScript_GruntLadder",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_GRUNT_CAMP",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_F",
+      "x": 4,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "TruthsandRuins_1F_EventScript_GruntCamp",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_RUIN_MANIAC",
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 31,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "TruthsandRuins_1F_EventScript_RuinManiac",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_ROCK",
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 11,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_ITEM_VAULT",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 8,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_RELIC_GOLD",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_TRUTHSAND_RUINS_1F_RELIC_GOLD"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_ITEM_CAMP",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 2,
+      "y": 24,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_RELIC_COPPER",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_TRUTHSAND_RUINS_1F_RELIC_COPPER"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_ITEM_FOSSIL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 31,
+      "y": 21,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_SOFT_SAND",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_TRUTHSAND_RUINS_1F_SOFT_SAND"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_ITEM_GALLERY",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 34,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_STARDUST",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_TRUTHSAND_RUINS_1F_STARDUST"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_MURAL_1",
+      "graphics_id": "OBJ_EVENT_GFX_MURAL_OBELISK",
+      "x": 16,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TruthsandRuins_1F_EventScript_Mural1",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_TRUTHSAND_RUINS_1F_MURAL_2",
+      "graphics_id": "OBJ_EVENT_GFX_MURAL_OBELISK",
+      "x": 30,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TruthsandRuins_1F_EventScript_Mural2",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 17,
+      "y": 29,
+      "elevation": 0,
+      "dest_map": "MAP_EMBERDUNE_ISLE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 7,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_TRUTHSAND_RUINS_B1F",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 29,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_TRUTHSAND_RUINS_B1F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 33,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_TRUTHSAND_RUINS_B1F",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 29,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_TRUTHSAND_RUINS_B1F",
+      "dest_warp_id": "3"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TruthsandRuins_1F_EventScript_WarpTrigger2"
+    },
+    {
+      "type": "trigger",
+      "x": 33,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TruthsandRuins_1F_EventScript_WarpTrigger3"
+    },
+    {
+      "type": "trigger",
+      "x": 29,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TruthsandRuins_1F_EventScript_WarpTrigger4"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TruthsandRuins_1F_EventScript_MuralTruth"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 25,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TruthsandRuins_1F_EventScript_Sign"
+    }
+  ]
+}

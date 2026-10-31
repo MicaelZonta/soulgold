@@ -57,11 +57,13 @@ Ferramentas:
 
 | Script | Faz |
 |---|---|
-| `ir.py Mapa X Y` | anda até (X,Y) com rota BFS e confere a posição na RAM a cada passo; se o alvo é bloqueado (NPC, árvore, cova), para ao lado **virado para ele**. Desvia só dos objetos **vivos** (lidos da RAM): NPC escondido por flag não tranca a rota |
-| `rota.py Mapa X0 Y0 X1 Y1` | só calcula a rota (colisão do `map.bin` no bit 11, água e ledge pelo comportamento, bordas direcionais; sozinho, trata **todo** objeto do `map.json` como bloqueio, inclusive os escondidos) |
+| `ir.py Mapa X Y` | anda até (X,Y) com rota BFS sobre a grade **viva** do mapa (`gBackupMapLayout`, reflete `setmetatile`: portão aberto, gelo derretido) e confere a posição na RAM a cada passo; se o alvo é bloqueado (NPC, árvore, cova), para ao lado **virado para ele**. Desvia só dos objetos **vivos** (lidos da RAM): NPC escondido por flag não tranca a rota |
+| `rota.py Mapa X0 Y0 X1 Y1` | só calcula a rota (colisão do `map.bin` no bit 11, água e ledge pelo comportamento — água rasa anda a pé, bordas direcionais; sozinho, trata **todo** objeto do `map.json` como bloqueio, inclusive os escondidos) |
 | `conversa.py PREFIXO --abrir --respostas NY` | conduz uma conversa: um print por caixa, responde Yes/No pela lista, para em menus que não são Yes/No |
 | `bolsa.py [berries\|items\|key]` | lê um bolso da bolsa da RAM (quantidade decifrada) — prova objetiva de "recebeu X" |
 | `objetos.py` | lista os `gObjectEvents` ativos — prova se um NPC/árvore foi criado |
+| `var.py VAR_X [valor]` | lê ou muda uma var do save na RAM (mesmo esquema do `flag.py`) — pular a história para um estado |
+| `win.py` | Instant Win confiável: aperta B até o menu de ação aparecer (comparado a `menu_acao_ref.png`) e só então abre o debug de batalha; SELECT durante o texto de abertura não faz nada |
 | `flag.py FLAG_X [0\|1]` / `flag.py --dex N…` | lê ou muda uma flag do save (ex.: insígnia) e marca espécies como capturadas na Pokédex, direto na RAM; números e offsets compilados dos headers |
 | `sprites.py` | lista os `gSprites` vivos com os tiles de VRAM e aponta sprite desenhando nos tiles de um objeto (gráfico “listrado”) |
 | `grid.py OUT a.png b.png…` / `zoom.py` / `crop.py` | junta prints em grade, amplia, recorta a mesma região de vários prints lado a lado |

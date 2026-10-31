@@ -1241,6 +1241,10 @@ static const struct LockedTownDoors sLockedTownDoors[] =
     { FLAG_EVENT_ULTRABEAST_MAHOGANY,   MAP_MAHOGANYTOWN,    MAP_MAHOGANY_TOWN_POKEMON_CENTER,   0, Mahoganytown_EventScript_DoorLocked },
     { FLAG_EVENT_ULTRABEAST_CHERRYGROVE, MAP_CHERRYGROVE_CITY, MAP_CHERRYGROVE_CITY_POKEMON_CENTER, 0, CherrygroveCity_EventScript_DoorLocked },
     { FLAG_EVENT_ULTRABEAST_NEWBARK,    MAP_NEW_BARK_TOWN,   MAP_NEW_BARK_TOWN_LAB, MAP_NEW_BARK_TOWN_PLAYERS_HOUSE_1F, NewBarkTown_EventScript_DoorLocked },
+    // Abundance Isle at night (FLAG_TEMP_1E, set on the map's ON_TRANSITION from the clock):
+    // the villagers are home; only the Pokemon Center (and the farm, on the hub) stay open.
+    { FLAG_TEMP_1E, MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE, MAP_ABUNDANCE_ISLE_POKEMON_CENTER, MAP_ABUNDANCE_ISLE_GALE_CAVE, AbundanceIsle_WindsweptCape_EventScript_DoorLocked },
+    { FLAG_TEMP_1E, MAP_ABUNDANCE_ISLE_HARVEST_FIELDS, MAP_ABUNDANCE_ISLE_SPRING_GROVE, 0, AbundanceIsle_HarvestFields_EventScript_DoorLocked },
 };
 
 static bool8 TryLockedDoorScript(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)

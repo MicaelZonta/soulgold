@@ -1,0 +1,194 @@
+{
+ "map": "NsRoom",
+ "ingame": "N's Room",
+ "w": 17,
+ "h": 12,
+ "primary": "gTileset_Johto_Building",
+ "secondary": "gTileset_NsRoom",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 8,
+   "y": 11,
+   "dest_map": "MAP_EMBERDUNE_ISLE",
+   "dest_warp_id": "4",
+   "nota": "porta da casinha no oasis oeste da Emberdune"
+  }
+ ],
+ "connections": [],
+ "objects": [
+  {
+   "local_id": "LOCALID_NS_ROOM_DOLL_PIKACHU",
+   "graphics_id": "OBJ_EVENT_GFX_PIKACHU_DOLL",
+   "x": 13,
+   "y": 2,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "NsRoom_EventScript_Dolls",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_NS_ROOM_DOLL_TEPIG",
+   "graphics_id": "OBJ_EVENT_GFX_CYNDAQUIL_DOLL",
+   "x": 14,
+   "y": 2,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "NsRoom_EventScript_Dolls",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_NS_ROOM_DOLL_DITTO",
+   "graphics_id": "OBJ_EVENT_GFX_DITTO_DOLL",
+   "x": 15,
+   "y": 3,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "NsRoom_EventScript_Dolls",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_NS_ROOM_CUSHION",
+   "graphics_id": "OBJ_EVENT_GFX_BALL_CUSHION",
+   "x": 6,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "NsRoom_EventScript_Cushion",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_NS_ROOM_ITEM_TOYBOX",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 15,
+   "y": 10,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "NsRoom_EventScript_ItemSootheBell",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_NS_ROOM_N",
+   "graphics_id": "OBJ_EVENT_GFX_N",
+   "x": 10,
+   "y": 5,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "NsRoom_EventScript_N",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_NS_ROOM_HILDA",
+   "graphics_id": "OBJ_EVENT_GFX_HILDA",
+   "x": 7,
+   "y": 6,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "NsRoom_EventScript_Hilda",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_NS_ROOM_ZORUA",
+   "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZORUA)",
+   "x": 11,
+   "y": 5,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "0x0",
+   "flag": "0"
+  }
+ ],
+ "bg_events": [
+  {
+   "type": "sign",
+   "x": 1,
+   "y": 1,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+   "script": "NsRoom_EventScript_PC"
+  },
+  {
+   "type": "sign",
+   "x": 8,
+   "y": 1,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+   "script": "NsRoom_EventScript_Bookshelf"
+  },
+  {
+   "type": "sign",
+   "x": 12,
+   "y": 8,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+   "script": "NsRoom_EventScript_ToyTrain"
+  }
+ ],
+ "desenho_novo": {
+  "nome": "canto de brinquedos do N",
+  "area": "4x3 metatiles em (11,6)",
+  "propostas": [
+   [
+    "A",
+    "Oval com o trem"
+   ],
+   [
+    "B",
+    "Trilho em oito"
+   ],
+   [
+    "C",
+    "Aro de basquete e trilho"
+   ],
+   [
+    "D",
+    "Brinquedos no tatame"
+   ]
+  ],
+  "pasta": "props/"
+ },
+ "explorar": [
+  "Homenagem ao quarto do castelo do N no BW: canto de brinquedos com trilho de trem, bola de basquete e skate (desenho novo, 4 propostas).",
+  "Bonecos de Pokemon na prateleira e uma almofada de Poke Ball; o PC tem anotacoes do N sobre \"verdade e ideais\".",
+  "Estante: livros infantis e um caderno com desenhos de Pokemon que ele \"ouviu\".",
+  "Soothe Bell na caixa de brinquedos."
+ ],
+ "historia": "Ato 6, antes das ruinas: momento pessoal do N e da Hilda. Ele mostra o quarto que montou \"para lembrar que um dia foi so uma crianca\"; a Hilda conta quando o Reshiram a escolheu. O Zorua, primeiro amigo do N, fica no canto.",
+ "estados": {
+  "dia": "Quarto vazio (proposta A do canto de brinquedos).",
+  "estado": "Cena: N, Hilda e o Zorua."
+ },
+ "conferido": "check_objects: []; BFS da porta: tudo alcancavel"
+}

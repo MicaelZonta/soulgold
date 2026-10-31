@@ -58,7 +58,26 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "SouthernIsland_Interior_EventScript_ExitWest"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_F",
+      "var_value": "0",
+      "script": "SouthernIsland_Interior_EventScript_ExitEast"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

@@ -1,1 +1,8 @@
-mapscripts MtGoldOutside_MapScripts {}
+// As tres portas daqui levam para dentro do Mt. Ember. As saidas de dentro
+// voltam para o exterior por onde o jogador entrou (VAR_MT_EMBER_SIDE e
+// MtEmber_EventScript_SetExit, em data/scripts/mt_ember_residents.inc).
+mapscripts MtGoldOutside_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        setvar(VAR_MT_EMBER_SIDE, 1)
+    }
+}

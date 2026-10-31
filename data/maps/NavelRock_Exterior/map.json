@@ -13,21 +13,35 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SS_TIDAL",
+      "x": 3,
+      "y": 37,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "0"
+    }
+  ],
   "warp_events": [
     {
-      "x": 10,
-      "y": 18,
+      "x": 9,
+      "y": 38,
       "elevation": 0,
       "dest_map": "MAP_VERMILION_CITY_PORT_INSIDE",
       "dest_warp_id": "0"
     },
     {
       "x": 10,
-      "y": 10,
+      "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_NAVEL_ROCK_ENTRANCE",
-      "dest_warp_id": 0
+      "dest_map": "MAP_NAVEL_ROCK_SEA_BREACH",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

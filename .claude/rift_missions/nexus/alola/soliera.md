@@ -145,6 +145,12 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Necrozma** — `Nexus_EventScript_Soliera_Necrozma_ChampionFight` (falas `Nexus_Text_Soliera_Necrozma_Champion*`)
+- **Nihilego** — `Nexus_EventScript_Soliera_Nihilego_ChampionFight` (falas `Nexus_Text_Soliera_Nihilego_Champion*`)
+
+
 ✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Soliera_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
 
 **Proposta de 26/09/2026:** **Naganadel** (UB Stinger). Soliera é o campeão dela: a quinta luta do Daily, logo antes da boss battle. **R1:** o Naganadel evolui do Poipole, que é presente em `Route40_House4`; este fragmento só entra no sorteio depois de o jogador capturar um Naganadel.

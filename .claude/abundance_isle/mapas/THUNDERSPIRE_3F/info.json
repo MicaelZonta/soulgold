@@ -1,0 +1,194 @@
+{
+ "map": "THUNDERSPIRE_3F",
+ "ingame": "Thunderspire 3F",
+ "w": 29,
+ "h": 25,
+ "primary": "gTileset_Johto_Building",
+ "secondary": "gTileset_BurnedTower",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 26,
+   "y": 22,
+   "dest_map": "MAP_THUNDERSPIRE_2F",
+   "dest_warp_id": "1",
+   "nota": "desce ao 2F (escada do 2F em 26,22)"
+  },
+  {
+   "x": 17,
+   "y": 5,
+   "dest_map": "MAP_THUNDERSPIRE_SUMMIT",
+   "dest_warp_id": "0",
+   "nota": "sobe ao cume; chegada em (15,34)"
+  }
+ ],
+ "connections": [],
+ "objects": [
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_3F_GRUNT_1",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 8,
+   "y": 7,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "Thunderspire3F_EventScript_Grunt5",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_3F_GRUNT_2",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 18,
+   "y": 12,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "Thunderspire3F_EventScript_Grunt6",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_3F_GRUNT_3",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 21,
+   "y": 5,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "Thunderspire3F_EventScript_Grunt7",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_3F_ITEM_EAST",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 27,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire3F_EventScript_ItemCellBattery",
+   "flag": "0"
+  }
+ ],
+ "bg_events": [
+  {
+   "type": "sign",
+   "x": 10,
+   "y": 18,
+   "script": "Thunderspire3F_EventScript_Mural",
+   "nota": "mural: \"First the earth wakes, then the wind rises, then the thunder falls; only then may the ideal be struck.\""
+  },
+  {
+   "type": "sign",
+   "x": 4,
+   "y": 20,
+   "script": "Thunderspire3F_EventScript_RodEarth",
+   "nota": "para-raios Earth: alterna portões A"
+  },
+  {
+   "type": "sign",
+   "x": 3,
+   "y": 6,
+   "script": "Thunderspire3F_EventScript_RodWind",
+   "nota": "para-raios Wind: alterna portões A+B"
+  },
+  {
+   "type": "sign",
+   "x": 26,
+   "y": 13,
+   "script": "Thunderspire3F_EventScript_RodThunder",
+   "nota": "para-raios Thunder: alterna portões B+C"
+  },
+  {
+   "type": "sign",
+   "x": 26,
+   "y": 5,
+   "script": "Thunderspire3F_EventScript_RodIdeal",
+   "nota": "para-raios Ideal: alterna portões C+D"
+  },
+  {
+   "type": "hidden_item",
+   "x": 2,
+   "y": 4,
+   "item": "ITEM_MAGNET",
+   "flag": "a alocar"
+  }
+ ],
+ "puzzle": {
+  "portoes": {
+   "A": [
+    6,
+    16
+   ],
+   "B": [
+    14,
+    12
+   ],
+   "C": [
+    20,
+    9
+   ],
+   "D": [
+    17,
+    6
+   ]
+  },
+  "para_raios": {
+   "Earth": [
+    4,
+    20
+   ],
+   "Wind": [
+    3,
+    6
+   ],
+   "Thunder": [
+    26,
+    13
+   ],
+   "Ideal": [
+    26,
+    5
+   ]
+  },
+  "alterna": {
+   "Earth": "A",
+   "Wind": "AB",
+   "Thunder": "BC",
+   "Ideal": "CD"
+  },
+  "ordem": [
+   "Earth",
+   "Wind",
+   "Thunder",
+   "Ideal"
+  ],
+  "implementacao": "portão fechado = 0x407 (entulho, bloqueado); aberto = 0x400 (chão). Cada para-raios faz setmetatile nos portões que alterna + special DrawWholeMapView; estado em 1 VAR (bits A-D) restaurado no ON_LOAD.",
+  "estados_explorados": 8,
+  "travas": []
+ },
+ "explorar": [
+  "Quebra-cabeça dos para-raios: quatro pilares (Terra, Vento, Trovão, Ideal), um por sala; cada um alterna portões de entulho entre as salas.",
+  "Mural ao lado da chegada dá a ordem em verso: terra, vento, trovão e, por último, o ideal — o mesmo que Volkner e Elesa contaram sobre os raios na Thunder Ridge.",
+  "Ordem certa: Terra abre a sala oeste; Vento fecha a passagem de volta e abre a leste; Trovão fecha a leste e abre a norte; Ideal abre o nicho da escada do cume. Tocar fora de ordem só desfaz um passo — não há trava (provado por busca de estados).",
+  "Magnet escondido no canto noroeste da sala oeste; Cell Battery na ponta da sala leste.",
+  "Três recrutas do Plasma, um por sala."
+ ],
+ "historia": "O andar onde Ghetsis canaliza os raios para o cume: ligar os para-raios na ordem da lenda desvia a energia e abre o caminho até ele.",
+ "estados": {
+  "dia": "Todos os portões fechados (início).",
+  "estado": "Depois da sequência certa: só o portão D (nicho da escada) aberto, recrutas vencidos."
+ },
+ "conferido": "check_objects sem bloqueio; busca de estados (portões × posição): ordem mínima ['Earth', 'Wind', 'Thunder', 'Ideal'], 8 estados, travas []"
+}

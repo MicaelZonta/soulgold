@@ -477,7 +477,17 @@
 #define VAR_ROUTE_STEP_COUNTER                          0x4152
 #define VAR_BIRTH_ISLAND_SCENE                   0x4153 // 0 = so o Colress na ilha; 1 = a Soliera chegou e a discussao ja rolou. Escrita em data/scripts/birth_island_residents.inc
 #define VAR_NAVELROCK_QUEST                      0x4154 // corrente do Volcanion: 0 nada, 1 o Blaine deu a leitura, 2 o Bill achou o ritmo, 3 a Flannery escreveu a tabua de mares, 4 bilhete emitido
-// PROXIMA VAR NOVA: 0x4155 (livre ate VARS_END 0x42FF). Alocar aqui, em
+#define VAR_ONE_ISLAND_STATE                     0x4155 // abertura da One Island: 0 nao convidado, 1 a caminho com o Bill, 2 ja visitou (libera a balsa Vermilion <-> One Island)
+#define VAR_MT_EMBER_SIDE                        0x4156 // por qual exterior o jogador entrou no Mt. Ember: 0 o das Sevii, 1 o MtGoldOutside; as saidas dos interiores voltam para o mesmo
+#define VAR_ABUNDANCE_ISLE_STATE                 0x4157 // historia da Abundance Isle: 0 nao chegou, 1 inverno, 2 entrou na cratera, 3 venceu o Ghetsis no lab, 4 maquina desligada, 5 viu os planos no Frigate, 6 venceu o Ghetsis no cume, 7 Zekrom resolvido e DNA Splicers, 8 Landorus e Reveal Glass, 9 Enamorus, 10 despedida, 11 Lenora decifrou (ato 6), 12 Ghetsis 3 vencido, 13 Reshiram resolvido, 14 dupla final vencida
+#define VAR_ABUNDANCE_CYNTHIA_SCROLLS            0x4158 // pergaminhos que a Cynthia ja leu (0..4, missao Scrolls of the Four)
+#define VAR_ABUNDANCE_ROCKET_STAGE               0x4159 // Jessie e James: 0 na plantacao, 1 no celeiro, 2 no Frigate, 3 batalha final feita
+#define VAR_ABUNDANCE_BYRON_TRADES               0x415A // trocas de Comet Shard feitas com o Byron (missao Frozen Stars)
+#define VAR_ABUNDANCE_IDEALS                     0x415B // respostas ao Alder: quantas foram para os ideais (0..3); muda a fala do N no cume
+#define VAR_ABUNDANCE_GARDEN_DAYS                0x415C // dias em que o jogador regou os canteiros do Spring Grove (0..3)
+#define VAR_ABUNDANCE_ARENA_PICK                 0x415D // desafiante do dia na Festival Arena (0..3), sorteado quando FLAG_DAILY_ABUNDANCE_ARENA esta limpa
+#define VAR_ABUNDANCE_STORM                      0x415E // 1 = hoje e dia de tempestade na Abundance Isle (pos-jogo, sorteado 1x por dia com FLAG_DAILY_ABUNDANCE_STORM_ROLLED)
+// PROXIMA VAR NOVA: 0x415F (livre ate VARS_END 0x42FF). Alocar aqui, em
 // sequencia, com comentario dizendo o que guarda e quem escreve, e mover
 // este marcador. Skill: .claude/skills/alocar-flag/SKILL.md
 

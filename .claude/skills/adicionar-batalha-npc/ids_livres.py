@@ -5,7 +5,8 @@
     python3 .claude/skills/adicionar-batalha-npc/ids_livres.py --todos
 
 Por que existe: a flag de "derrotado" de um treinador e derivada do ID
-(TRAINER_FLAGS_START 0x500 + ID). Escolher o ID E escolher a flag. Uma faixa
+(bloco 1, IDs < 1164: 0x500 + ID; bloco 2, IDs 1164+: TRAINER_FLAGS_2_START
+0xB00 + ID - 1164, ver TRAINER_FLAG() em constants/flags.h). Escolher o ID E escolher a flag. Uma faixa
 anotada num guia envelhece assim que alguem cria um treinador novo - e usar
 um ID ja tomado faz o treinador compartilhar flag com outro evento
 (vencer um dispara o outro). Entao confira aqui, nao na memoria.
@@ -32,13 +33,17 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..")
 TRAINER_FLAGS_START = 0x500
 
 
+def flag_of(i, block1, start2):
+    return TRAINER_FLAGS_START + i if i < block1 else start2 + i - block1
+
+
 def main():
     mostrar_todos = "--todos" in sys.argv
 
     ids = {}
     for ln in open(os.path.join(ROOT, "include/constants/opponents.h")):
         m = re.match(r"#define\s+(TRAINER_\w+)\s+(\d+)", ln)
-        if m:
+        if m and not m.group(1).endswith("_COUNT"):   # TRAINERS_COUNT, TRAINER_FLAG_BLOCK1_COUNT...
             ids.setdefault(int(m.group(2)), []).append(m.group(1))
 
     party = open(os.path.join(ROOT, "src/data/trainers.party")).read()
@@ -49,6 +54,12 @@ def main():
 
     m = re.search(r"#define\s+MAX_TRAINERS_COUNT\s+(\d+)", opp_txt)
     max_trainers = int(m.group(1)) if m else 1164
+    m = re.search(r"#define\s+TRAINER_FLAG_BLOCK1_COUNT\s+(\d+)", opp_txt)
+    block1 = int(m.group(1)) if m else max_trainers
+    m = re.search(r"#define\s+TRAINER_FLAGS_2_START\s+(0x[0-9A-Fa-f]+)", flags_txt)
+    start2 = int(m.group(1), 16) if m else 0
+    fl = lambda i: flag_of(i, block1, start2)
+    por_valor = {fl(i): i for i in range(max_trainers)}
 
     # toda flag nomeada que caiu dentro do espaco de treinador: aquele ID
     # pertence a um evento de historia, nao a um treinador.
@@ -57,8 +68,8 @@ def main():
         m = re.match(r"#define\s+(FLAG_\w+)\s+(0x[0-9A-Fa-f]+)\s*(//.*)?$", ln.strip())
         if m:
             v = int(m.group(2), 0)
-            if TRAINER_FLAGS_START <= v < TRAINER_FLAGS_START + max_trainers:
-                flag_tomada[v - TRAINER_FLAGS_START] = m.group(1)
+            if v in por_valor:
+                flag_tomada[por_valor[v]] = m.group(1)
 
     livres, fora, por_flag = [], [], []
     for i, nomes in ids.items():
@@ -96,8 +107,7 @@ def main():
         blocos = faixas(sorted(i for i, _ in por_flag))
         print(f"\n{len(por_flag)} IDs NAO usaveis: a flag virou flag de historia")
         for a, b in blocos:
-            print(f"   IDs {a}-{b}  (flags {hex(TRAINER_FLAGS_START + a)}-"
-                  f"{hex(TRAINER_FLAGS_START + b)}), ex.: {dict(por_flag)[a]}")
+            print(f"   IDs {a}-{b}  (flags {hex(fl(a))}-{hex(fl(b))}), ex.: {dict(por_flag)[a]}")
     if fora:
         for i, nomes in sorted(fora):
             print(f"\n{i} = {', '.join(nomes)}: fora do range, NUNCA use")
@@ -106,7 +116,7 @@ def main():
     for a, b in faixas(livres):
         n = b - a + 1
         exemplo = ids[a][0]
-        print(f"  {a:>5}-{b:<5} ({n:>3} slots)  ex.: {exemplo} -> flag {hex(TRAINER_FLAGS_START + a)}")
+        print(f"  {a:>5}-{b:<5} ({n:>3} slots)  ex.: {exemplo} -> flag {hex(fl(a))}{'  (bloco 2)' if a >= block1 else ''}")
 
     if mostrar_todos:
         print("\ntodos os IDs livres:")

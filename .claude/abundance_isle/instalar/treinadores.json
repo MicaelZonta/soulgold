@@ -1,0 +1,350 @@
+{
+ "LOCALID_ABUNDANCE_ISLE_FISHERMAN": {
+  "const": "TRAINER_ABUNDANCE_FISHERMAN",
+  "sight": "2",
+  "cls": "FISHERMAN",
+  "map": "AbundanceIsle"
+ },
+ "LOCALID_ABUNDANCE_ISLE_GALE_CAVE_GRUNT": {
+  "const": "TRAINER_ABUNDANCE_GALE_CAVE_GRUNT",
+  "sight": "4",
+  "cls": "PLASMA",
+  "map": "AbundanceIsle_GaleCave"
+ },
+ "LOCALID_ABUNDANCE_ISLE_GALE_CAVE_HIKER": {
+  "const": "TRAINER_ABUNDANCE_GALE_CAVE_HIKER",
+  "sight": "3",
+  "cls": "HIKER",
+  "map": "AbundanceIsle_GaleCave"
+ },
+ "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_BEAUTY": {
+  "const": "TRAINER_ABUNDANCE_GALE_SHORE_BEAUTY",
+  "sight": "3",
+  "cls": "BEAUTY",
+  "map": "AbundanceIsle_GaleShore"
+ },
+ "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_FISHERMAN": {
+  "const": "TRAINER_ABUNDANCE_GALE_SHORE_FISHERMAN",
+  "sight": "3",
+  "cls": "FISHERMAN",
+  "map": "AbundanceIsle_GaleShore"
+ },
+ "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_HIKER": {
+  "const": "TRAINER_ABUNDANCE_GALE_SHORE_HIKER",
+  "sight": "3",
+  "cls": "HIKER",
+  "map": "AbundanceIsle_GaleShore"
+ },
+ "LOCALID_ABUNDANCE_ISLE_HARVEST_FIELDS_FARMHAND": {
+  "const": "TRAINER_ABUNDANCE_HARVEST_FIELDS_FARMHAND",
+  "sight": "3",
+  "cls": "CAMPER",
+  "map": "AbundanceIsle_HarvestFields"
+ },
+ "LOCALID_ABUNDANCE_ISLE_HARVEST_FIELDS_LASS": {
+  "const": "TRAINER_ABUNDANCE_HARVEST_FIELDS_LASS",
+  "sight": "3",
+  "cls": "LASS",
+  "map": "AbundanceIsle_HarvestFields"
+ },
+ "LOCALID_ABUNDANCE_ISLE_HIKER": {
+  "const": "TRAINER_ABUNDANCE_HIKER",
+  "sight": "3",
+  "cls": "HIKER",
+  "map": "AbundanceIsle"
+ },
+ "LOCALID_ABUNDANCE_ISLE_PICNICKER": {
+  "const": "TRAINER_ABUNDANCE_PICNICKER",
+  "sight": "3",
+  "cls": "PICNICKER",
+  "map": "AbundanceIsle"
+ },
+ "LOCALID_ABUNDANCE_ISLE_SPRING_GROVE_PICNICKER": {
+  "const": "TRAINER_ABUNDANCE_SPRING_GROVE_PICNICKER",
+  "sight": "4",
+  "cls": "PICNICKER",
+  "map": "AbundanceIsle_SpringGrove"
+ },
+ "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_1": {
+  "const": "TRAINER_ABUNDANCE_SUNSET_STRAIT_SWIMMER_1",
+  "sight": "4",
+  "cls": "SWIMMER_M",
+  "map": "AbundanceIsle_SunsetStrait"
+ },
+ "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_2": {
+  "const": "TRAINER_ABUNDANCE_SUNSET_STRAIT_SWIMMER_2",
+  "sight": "4",
+  "cls": "SWIMMER_F",
+  "map": "AbundanceIsle_SunsetStrait"
+ },
+ "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_3": {
+  "const": "TRAINER_ABUNDANCE_SUNSET_STRAIT_SWIMMER_3",
+  "sight": "4",
+  "cls": "SWIMMER_M",
+  "map": "AbundanceIsle_SunsetStrait"
+ },
+ "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_4": {
+  "const": "TRAINER_ABUNDANCE_SUNSET_STRAIT_SWIMMER_4",
+  "sight": "4",
+  "cls": "SWIMMER_F",
+  "map": "AbundanceIsle_SunsetStrait"
+ },
+ "LOCALID_ABUNDANCE_ISLE_WINDSWEPT_CAPE_BIRDKEEPER": {
+  "const": "TRAINER_ABUNDANCE_WINDSWEPT_CAPE_BIRDKEEPER",
+  "sight": "3",
+  "cls": "BIRD",
+  "map": "AbundanceIsle_WindsweptCape"
+ },
+ "LOCALID_ABUNDANCE_ISLE_WINDSWEPT_CAPE_FISHERMAN": {
+  "const": "TRAINER_ABUNDANCE_WINDSWEPT_CAPE_FISHERMAN",
+  "sight": "2",
+  "cls": "FISHERMAN",
+  "map": "AbundanceIsle_WindsweptCape"
+ },
+ "LOCALID_EMBERDUNE_ISLE_DIGGER_1": {
+  "const": "TRAINER_ABUNDANCE_EMBERDUNE_ISLE_DIGGER_1",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "EmberduneIsle"
+ },
+ "LOCALID_EMBERDUNE_ISLE_DIGGER_2": {
+  "const": "TRAINER_ABUNDANCE_EMBERDUNE_ISLE_DIGGER_2",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "EmberduneIsle"
+ },
+ "LOCALID_EMBERDUNE_ISLE_HIKER": {
+  "const": "TRAINER_ABUNDANCE_EMBERDUNE_ISLE_HIKER",
+  "sight": "3",
+  "cls": "HIKER",
+  "map": "EmberduneIsle"
+ },
+ "LOCALID_EMBERDUNE_ISLE_RUIN_MANIAC": {
+  "const": "TRAINER_ABUNDANCE_EMBERDUNE_ISLE_RUIN_MANIAC",
+  "sight": "3",
+  "cls": "RUIN",
+  "map": "EmberduneIsle"
+ },
+ "LOCALID_FROSTFALL_CRATER_1F_GRUNT_1": {
+  "const": "TRAINER_ABUNDANCE_FROSTFALL_CRATER_1F_GRUNT_1",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "FROSTFALL_CRATER_1F"
+ },
+ "LOCALID_FROSTFALL_CRATER_1F_GRUNT_2": {
+  "const": "TRAINER_ABUNDANCE_FROSTFALL_CRATER_1F_GRUNT_2",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "FROSTFALL_CRATER_1F"
+ },
+ "LOCALID_FROSTFALL_CRATER_1F_HIKER": {
+  "const": "TRAINER_ABUNDANCE_FROSTFALL_CRATER_1F_HIKER",
+  "sight": "4",
+  "cls": "HIKER",
+  "map": "FROSTFALL_CRATER_1F"
+ },
+ "LOCALID_FROSTFALL_CRATER_B1F_BOARDER": {
+  "const": "TRAINER_ABUNDANCE_FROSTFALL_CRATER_B1F_BOARDER",
+  "sight": "2",
+  "cls": "CAMPER",
+  "map": "FROSTFALL_CRATER_B1F"
+ },
+ "LOCALID_FROSTFALL_CRATER_B1F_SCIENTIST": {
+  "const": "TRAINER_ABUNDANCE_FROSTFALL_CRATER_B1F_SCIENTIST",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "FROSTFALL_CRATER_B1F"
+ },
+ "LOCALID_FROSTFALL_CRATER_LAB_GRUNT_3": {
+  "const": "TRAINER_ABUNDANCE_FROSTFALL_CRATER_LAB_GRUNT_3",
+  "sight": "4",
+  "cls": "PLASMA",
+  "map": "FROSTFALL_CRATER_LAB"
+ },
+ "LOCALID_FROSTFALL_CRATER_LAB_GRUNT_4": {
+  "const": "TRAINER_ABUNDANCE_FROSTFALL_CRATER_LAB_GRUNT_4",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "FROSTFALL_CRATER_LAB"
+ },
+ "LOCALID_PLASMA_FRIGATE_CABINS_GHETSIS_GUARD": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_CABINS_GHETSIS_GUARD",
+  "sight": "4",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_CABINS"
+ },
+ "LOCALID_PLASMA_FRIGATE_CABINS_GRUNT_LOCKER_1": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_CABINS_GRUNT_LOCKER_1",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_CABINS"
+ },
+ "LOCALID_PLASMA_FRIGATE_CABINS_GRUNT_LOCKER_2": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_CABINS_GRUNT_LOCKER_2",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_CABINS"
+ },
+ "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_E": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_DECK_GRUNT_E",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_DECK"
+ },
+ "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_GANG": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_DECK_GRUNT_GANG",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_DECK"
+ },
+ "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_N": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_DECK_GRUNT_N",
+  "sight": "5",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_DECK"
+ },
+ "LOCALID_PLASMA_FRIGATE_DECK_GRUNT_S": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_DECK_GRUNT_S",
+  "sight": "5",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_DECK"
+ },
+ "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_ASSIST_1": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_ENGINE_ROOM_ASSIST_1",
+  "sight": "4",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_ENGINE_ROOM"
+ },
+ "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_ASSIST_2": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_ENGINE_ROOM_ASSIST_2",
+  "sight": "4",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_ENGINE_ROOM"
+ },
+ "LOCALID_PLASMA_FRIGATE_ENGINE_ROOM_CHIEF": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_ENGINE_ROOM_CHIEF",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_ENGINE_ROOM"
+ },
+ "LOCALID_PLASMA_FRIGATE_HOLD_GRUNT_BUNK_1": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_HOLD_GRUNT_BUNK_1",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_HOLD"
+ },
+ "LOCALID_PLASMA_FRIGATE_HOLD_GRUNT_BUNK_2": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_HOLD_GRUNT_BUNK_2",
+  "sight": "4",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_HOLD"
+ },
+ "LOCALID_PLASMA_FRIGATE_HOLD_GRUNT_HALL": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_HOLD_GRUNT_HALL",
+  "sight": "6",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_HOLD"
+ },
+ "LOCALID_PLASMA_FRIGATE_HOLD_RESEARCHER": {
+  "const": "TRAINER_ABUNDANCE_PLASMA_FRIGATE_HOLD_RESEARCHER",
+  "sight": "2",
+  "cls": "PLASMA",
+  "map": "PLASMA_FRIGATE_HOLD"
+ },
+ "LOCALID_THUNDERSPIRE_1F_GRUNT_1": {
+  "const": "TRAINER_ABUNDANCE_THUNDERSPIRE_1F_GRUNT_1",
+  "sight": "4",
+  "cls": "PLASMA",
+  "map": "THUNDERSPIRE_1F"
+ },
+ "LOCALID_THUNDERSPIRE_1F_GRUNT_2": {
+  "const": "TRAINER_ABUNDANCE_THUNDERSPIRE_1F_GRUNT_2",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "THUNDERSPIRE_1F"
+ },
+ "LOCALID_THUNDERSPIRE_2F_GRUNT_3": {
+  "const": "TRAINER_ABUNDANCE_THUNDERSPIRE_2F_GRUNT_3",
+  "sight": "5",
+  "cls": "PLASMA",
+  "map": "THUNDERSPIRE_2F"
+ },
+ "LOCALID_THUNDERSPIRE_2F_GRUNT_4": {
+  "const": "TRAINER_ABUNDANCE_THUNDERSPIRE_2F_GRUNT_4",
+  "sight": "5",
+  "cls": "PLASMA",
+  "map": "THUNDERSPIRE_2F"
+ },
+ "LOCALID_THUNDERSPIRE_3F_GRUNT_1": {
+  "const": "TRAINER_ABUNDANCE_THUNDERSPIRE_3F_GRUNT_1",
+  "sight": "4",
+  "cls": "PLASMA",
+  "map": "THUNDERSPIRE_3F"
+ },
+ "LOCALID_THUNDERSPIRE_3F_GRUNT_2": {
+  "const": "TRAINER_ABUNDANCE_THUNDERSPIRE_3F_GRUNT_2",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "THUNDERSPIRE_3F"
+ },
+ "LOCALID_THUNDERSPIRE_3F_GRUNT_3": {
+  "const": "TRAINER_ABUNDANCE_THUNDERSPIRE_3F_GRUNT_3",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "THUNDERSPIRE_3F"
+ },
+ "LOCALID_THUNDER_RIDGE_BLACK_BELT": {
+  "const": "TRAINER_ABUNDANCE_THUNDER_RIDGE_BLACK_BELT",
+  "sight": "4",
+  "cls": "BLACK_BELT",
+  "map": "THUNDER_RIDGE"
+ },
+ "LOCALID_THUNDER_RIDGE_GRUNT": {
+  "const": "TRAINER_ABUNDANCE_THUNDER_RIDGE_GRUNT",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "THUNDER_RIDGE"
+ },
+ "LOCALID_THUNDER_RIDGE_HIKER": {
+  "const": "TRAINER_ABUNDANCE_THUNDER_RIDGE_HIKER",
+  "sight": "4",
+  "cls": "HIKER",
+  "map": "THUNDER_RIDGE"
+ },
+ "LOCALID_TRUTHSAND_RUINS_1F_GRUNT_CAMP": {
+  "const": "TRAINER_ABUNDANCE_TRUTHSAND_RUINS_1F_GRUNT_CAMP",
+  "sight": "4",
+  "cls": "PLASMA",
+  "map": "TRUTHSAND_RUINS_1F"
+ },
+ "LOCALID_TRUTHSAND_RUINS_1F_GRUNT_LADDER": {
+  "const": "TRAINER_ABUNDANCE_TRUTHSAND_RUINS_1F_GRUNT_LADDER",
+  "sight": "2",
+  "cls": "PLASMA",
+  "map": "TRUTHSAND_RUINS_1F"
+ },
+ "LOCALID_TRUTHSAND_RUINS_1F_RUIN_MANIAC": {
+  "const": "TRAINER_ABUNDANCE_TRUTHSAND_RUINS_1F_RUIN_MANIAC",
+  "sight": "3",
+  "cls": "RUIN",
+  "map": "TRUTHSAND_RUINS_1F"
+ },
+ "LOCALID_TRUTHSAND_RUINS_B1F_GRUNT": {
+  "const": "TRAINER_ABUNDANCE_TRUTHSAND_RUINS_B1F_GRUNT",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "TRUTHSAND_RUINS_B1F"
+ },
+ "LOCALID_TRUTHSAND_RUINS_B1F_PLASMA_CHIEF": {
+  "const": "TRAINER_ABUNDANCE_TRUTHSAND_RUINS_B1F_PLASMA_CHIEF",
+  "sight": "3",
+  "cls": "PLASMA",
+  "map": "TRUTHSAND_RUINS_B1F"
+ },
+ "LOCALID_TRUTHSAND_RUINS_B1F_RUIN_MANIAC": {
+  "const": "TRAINER_ABUNDANCE_TRUTHSAND_RUINS_B1F_RUIN_MANIAC",
+  "sight": "4",
+  "cls": "RUIN",
+  "map": "TRUTHSAND_RUINS_B1F"
+ }
+}

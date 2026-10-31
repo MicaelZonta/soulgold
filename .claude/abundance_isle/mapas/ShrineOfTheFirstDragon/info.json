@@ -1,0 +1,169 @@
+{
+ "map": "ShrineOfTheFirstDragon",
+ "ingame": "Shrine of the First Dragon",
+ "w": 24,
+ "h": 20,
+ "primary": "gTileset_Johto_Building",
+ "secondary": "gTileset_DragonsDen_Shrine",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 11,
+   "y": 18,
+   "dest_map": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT",
+   "dest_warp_id": "0",
+   "nota": "tapete da porta -> gruta do rochedo da Sunset Strait"
+  }
+ ],
+ "connections": [],
+ "objects": [
+  {
+   "local_id": "LOCALID_SHRINE_OF_THE_FIRST_DRAGON_N",
+   "graphics_id": "OBJ_EVENT_GFX_N",
+   "x": 10,
+   "y": 10,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "ShrineFirstDragon_EventScript_N",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SHRINE_OF_THE_FIRST_DRAGON_HILDA",
+   "graphics_id": "OBJ_EVENT_GFX_HILDA",
+   "x": 12,
+   "y": 10,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "ShrineFirstDragon_EventScript_Hilda",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SHRINE_OF_THE_FIRST_DRAGON_LIZA",
+   "graphics_id": "OBJ_EVENT_GFX_LIZA",
+   "x": 13,
+   "y": 16,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "ShrineFirstDragon_EventScript_Liza",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SHRINE_OF_THE_FIRST_DRAGON_LEON",
+   "graphics_id": "OBJ_EVENT_GFX_LEON",
+   "x": 18,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "ShrineFirstDragon_EventScript_Leon",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SHRINE_OF_THE_FIRST_DRAGON_DIANTHA",
+   "graphics_id": "OBJ_EVENT_GFX_DIANTHA",
+   "x": 4,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "ShrineFirstDragon_EventScript_Diantha",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SHRINE_OF_THE_FIRST_DRAGON_ITEM_HIDDEN",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 19,
+   "y": 16,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "ShrineFirstDragon_EventScript_ItemDracoPlate",
+   "flag": "0"
+  }
+ ],
+ "bg_events": [
+  {
+   "type": "sign",
+   "x": 5,
+   "y": 4,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+   "script": "ShrineFirstDragon_EventScript_MuralTruth"
+  },
+  {
+   "type": "sign",
+   "x": 11,
+   "y": 4,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+   "script": "ShrineFirstDragon_EventScript_MuralFirstDragon"
+  },
+  {
+   "type": "sign",
+   "x": 17,
+   "y": 4,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+   "script": "ShrineFirstDragon_EventScript_MuralIdeals"
+  },
+  {
+   "type": "sign",
+   "x": 11,
+   "y": 8,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+   "script": "ShrineFirstDragon_EventScript_AltarVoid"
+  },
+  {
+   "type": "sign",
+   "x": 5,
+   "y": 8,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+   "script": "ShrineFirstDragon_EventScript_AltarTruth"
+  },
+  {
+   "type": "sign",
+   "x": 17,
+   "y": 8,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+   "script": "ShrineFirstDragon_EventScript_AltarIdeals"
+  }
+ ],
+ "explorar": [
+  "Tres murais no alto: o Heroi da Verdade com o dragao branco, o Primeiro Dragao inteiro (centro) e o Heroi dos Ideais com o dragao negro.",
+  "Tres altares: Verdade (Reshiram), Vazio (Kyurem) e Ideais (Zekrom). Com Kyurem e um dos dois na equipe, o altar do Vazio oferece a cerimonia dos DNA Splicers (Kyurem Black ou White).",
+  "Liza, irma gemea do Tate que guarda a gruta la fora: \"dois herois, dois gemeos\" (fala de lore; batalha dupla Tate+Liza depois do fecho).",
+  "Diantha estuda os murais e conta a versao de Kalos de \"um poder que se divide\" (batalha opcional).",
+  "Leon, o campeao de Galar, veio ver a lenda e desafia quem venceu N e Hilda (superchefe opcional, revanche semanal).",
+  "Draco Plate escondida atras da estatua do canto leste."
+ ],
+ "historia": "Fecho do ato 6 (e de toda a historia): N e Hilda esperam diante do altar do Vazio; batalha dupla final contra o jogador. Depois, os murais completos e a cerimonia do Kyurem com os DNA Splicers.",
+ "estados": {
+  "dia": "Santuario sem N e Hilda (pos-jogo: Leon, Diantha e Liza).",
+  "estado": "Fecho: N e Hilda diante do altar do Vazio."
+ },
+ "conferido": "check_objects: []; BFS a partir da porta: tudo alcancavel"
+}

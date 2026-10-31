@@ -6,19 +6,19 @@ Aparece no checklist como:
 
 - **Lorelei — Gelo** (Kanto · Elite Four e Campeões) — primeira integrante da Elite Four de Kanto, com preferência por Pokémon de Água e Gelo.
 
-**Pronto para o Nexus:** ❌ não — tem sprite de overworld, falta o battle sprite (front pic) registrado no código.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Lorelei/` (o overworld já está registrado; a front pic ainda não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Lorelei/`, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Lorelei/`, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta de 30/09/2026 abaixo (validada), fora do código
-- [ ] Associado a um lendário — 📝 proposta de 30/09/2026: Glastrier (cedido pelo Pryce)
-- [ ] Diálogo genérico escrito — 📝 proposta de 30/09/2026 (3 variações)
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta de 30/09/2026 (3 variações)
+- [x] Time para as Rift Missions definido — 📝 proposta de 30/09/2026 abaixo (validada), fora do código
+- [x] Associado a um lendário — 📝 proposta de 30/09/2026: Glastrier (cedido pelo Pryce)
+- [x] Diálogo genérico escrito — 📝 proposta de 30/09/2026 (3 variações)
+- [x] Diálogo associado ao lendário escrito — 📝 proposta de 30/09/2026 (3 variações)
 
 ## Referências no repositório
 
@@ -54,36 +54,28 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_LORELEI`, ID **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163), campeã do Glastrier. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). **Pic provisória** (`Elite Four Glacia`, a outra dama do gelo da Elite Four) até registrar a arte.
-
-⚠️ **O Glastrier é semi-lendário neste engine** (`isSubLegendary`; o Pryce, que o campeia hoje, nem o leva no time: leva o Calyrex-Ice e o Articuno). Por isso ele ocupa a vaga de **semi-lendário**, e a vaga de lendário vai para outro: **Kyurem**. O validador confirma: `L=KYUREM S=GLASTRIER`.
-
-Lendário **Kyurem**, o dragão de gelo vazio que perdeu a metade de si (a verdade e o ideal foram embora nos outros dois dragões): combina com uma treinadora que só mostra a moldura dos óculos. Semi-lendário **Glastrier**, o corcel de gelo do rei (ver "Lendário associado" e o diário). Mega **Lapras** (`Icetite`, que neste hack vira a forma Gigantamax como Mega: Arctic Aura, abaixa o Ataque dos oponentes no fim de cada turno): a Lorelei de FireRed/LeafGreen salva os Lapras de Icefall Cave, em Four Island, da Team Rocket. Mais **Slowbro**, **Cloyster** e **Jynx**, do time dela em Red/Blue (o Dewgong fica no banco: o Glastrier cobre o papel de tanque lento de gelo).
-
-*Plano (Singles):* dois ritmos. **Trick Room:** o Slowbro (Regenerator) ou a Jynx armam o Trick Room, e o Glastrier (Brave, velocidade base 30) entra com Weakness Policy e vira bola de neve com Chilling Neigh; a Mega Lapras segura tudo com Arctic Aura e bate com Hyper Voice (vira Água pelo inato Liquid Voice) e Freeze-Dry. **Sem Trick Room:** o Cloyster usa Shell Smash (White Herb devolve as defesas) e varre com Skill Link; o Kyurem de Choice Specs quebra com Freeze-Dry, Draco Meteor e Earth Power.
-
-*Plano (Doubles):* dois armadores de Trick Room (Slowbro e Jynx), para um Taunt só não bastar; a Jynx põe um dos oponentes para dormir com Lovely Kiss. Dentro do Trick Room, a Mega Lapras acerta os dois oponentes com Hyper Voice e abaixa o Ataque dos dois com Arctic Aura, o Kyurem acerta os dois com Blizzard e o Glastrier bate com High Horsepower (alvo único: não acerta o parceiro, ao contrário de Earthquake). Nenhum golpe do time acerta o parceiro.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Kyurem | Choice Specs | Pressure | Modest | Freeze-Dry, Draco Meteor, Earth Power, Blizzard |
-| Glastrier | Weakness Policy | Chilling Neigh | Brave | Icicle Crash, High Horsepower, Close Combat, Protect |
-| Lapras | Icetite | Water Absorb | Quiet | Hyper Voice, Freeze-Dry, Thunderbolt, Protect |
-| Slowbro | Colbur Berry | Regenerator | Relaxed | Trick Room, Scald, Psychic, Slack Off |
-| Cloyster | White Herb | Skill Link | Adamant | Shell Smash, Icicle Spear, Rock Blast, Ice Shard |
-| Jynx | Focus Sash | Dry Skin | Timid | Lovely Kiss, Ice Beam, Psychic, Trick Room |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e categorias)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado e revisado para Singles/Doubles pelo Codex — `novos/revisao_singles_doubles.md` — e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_LORELEI` = **1196** (bloco 2, flag `0xB20`), luta genérica `Nexus_EventScript_Lorelei_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_LORELEI ===
 Name: Lorelei
 Class: Elite Four
-Pic: Elite Four Glacia
+Pic: Lorelei
 Gender: Female
-Music: Elite Four
-Double Battle: Yes
+Music: Female
+Double Battle: No
 AI: Smart Trainer
+
+Slowbro @ Mental Herb
+Relaxed Nature
+Level: 100
+Ability: Regenerator
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Trick Room
+- Scald
+- Psychic
+- Slack Off
 
 Glastrier @ Weakness Policy
 Brave Nature
@@ -105,7 +97,7 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Freeze-Dry
 - Draco Meteor
 - Earth Power
-- Blizzard
+- Ice Beam
 
 Lapras @ Icetite
 Quiet Nature
@@ -117,17 +109,6 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Freeze-Dry
 - Thunderbolt
 - Protect
-
-Slowbro @ Colbur Berry
-Relaxed Nature
-Level: 100
-Ability: Regenerator
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
-- Trick Room
-- Scald
-- Psychic
-- Slack Off
 
 Cloyster @ White Herb
 Adamant Nature
@@ -152,9 +133,14 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Trick Room
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Glastrier** — `Nexus_EventScript_Lorelei_Glastrier_ChampionFight` (falas `Nexus_Text_Lorelei_Glastrier_Champion*`)
+- **Kyurem** — `Nexus_EventScript_Lorelei_Kyurem_ChampionFight` (falas `Nexus_Text_Lorelei_Kyurem_Champion*`)
+- **Articuno** — `Nexus_EventScript_Lorelei_Articuno_ChampionFight` (falas `Nexus_Text_Lorelei_Articuno_Champion*`)
+
 
 #### Glastrier
 
@@ -194,103 +180,17 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando a Lorelei cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)). Três ângulos: apresentação clássica (RBY/FRLG): ninguém a vence no gelo (1); a coleção de bonecos de pelúcia (FRLG, a casa dela em Four Island) (2); R21: os Lapras da caverna de gelo e os ladrões — no fragmento dela, ela era criança quando eles vieram (3).
-
-#### Variação 1
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Lorelei_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
-> Welcome. I am Lorelei. No one can best me when it comes to icy Pokémon.
+> Welcome. I am Lorelei. No one can best me when it comes to icy Pokemon.
 >
-> Freezing moves are powerful. Your Pokémon will be at my mercy when they are frozen solid! …Are you ready?
+> Freezing moves are powerful. Your Pokemon will be at my mercy when they are frozen solid! ...Are you ready?
 
 **Derrota**
 
-> …Things shouldn't be this way!
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Lorelei_Intro:
-	.string "Welcome. I am Lorelei. No one can best\n"
-	.string "me when it comes to icy Pokémon.\p"
-	.string "Freezing moves are powerful. Your\n"
-	.string "Pokémon will be at my mercy when they\l"
-	.string "are frozen solid! …Are you ready?$"
-
-Nexus_Text_Lorelei_Defeat:
-	.string "…Things shouldn't be this way!$"
-```
-
-</details>
-
-#### Variação 2
-
-**Antes da luta**
-
-> Please don't laugh. At home, I keep a collection of plush dolls. Hundreds of them.
->
-> Each one reminds me of a Trainer I battled. The ones who beat me go on the front shelf.
->
-> The front shelf is very empty. Let's keep it that way!
-
-**Derrota**
-
-> …I'll have to find a doll that looks like you. Please hold still.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Lorelei_Intro2:
-	.string "Please don't laugh. At home, I keep a\n"
-	.string "collection of plush dolls. Hundreds of\l"
-	.string "them.\p"
-	.string "Each one reminds me of a Trainer I\n"
-	.string "battled. The ones who beat me go on\l"
-	.string "the front shelf.\p"
-	.string "The front shelf is very empty. Let's\n"
-	.string "keep it that way!$"
-
-Nexus_Text_Lorelei_Defeat2:
-	.string "…I'll have to find a doll that looks\n"
-	.string "like you. Please hold still.$"
-```
-
-</details>
-
-#### Variação 3
-
-**Antes da luta**
-
-> Where I grew up, the island was all ice caves and cold water. And Lapras, singing in the dark.
->
-> Once, some bad people came to take them away. I was very small, and very angry.
->
-> I'm not small anymore. I'm still a little angry. Let's battle!
-
-**Derrota**
-
-> Hm. You battle like someone protecting something. Good. Keep doing that.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Lorelei_Intro3:
-	.string "Where I grew up, the island was all ice\n"
-	.string "caves and cold water. And Lapras,\l"
-	.string "singing in the dark.\p"
-	.string "Once, some bad people came to take\n"
-	.string "them away. I was very small, and very\l"
-	.string "angry.\p"
-	.string "I'm not small anymore. I'm still a\n"
-	.string "little angry. Let's battle!$"
-
-Nexus_Text_Lorelei_Defeat3:
-	.string "Hm. You battle like someone protecting\n"
-	.string "something. Good. Keep doing that.$"
-```
-
-</details>
+> ...Things shouldn't be this way!
 
 ### Diálogo associado ao lendário
 

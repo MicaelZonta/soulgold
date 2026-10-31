@@ -6,19 +6,19 @@ Aparece no checklist como:
 
 - **Cyrus** (Sinnoh · Team Galactic) — líder que pretende destruir o universo e criar um mundo sem emoções.
 
-**Pronto para o Nexus:** ❌ não — tem sprite de overworld, falta o battle sprite (front pic), obrigatório.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld (já registrado) e front pic em `.filetransfer/.trainers/Cyrus/`.
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)* — 📦 arte pronta em `.filetransfer`, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — 📦 arte pronta em `.filetransfer`, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026)
-- [ ] Associado a um lendário — 📝 proposta abaixo (30/09/2026)
-- [ ] Diálogo genérico escrito — 📝 proposta abaixo (30/09/2026)
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta abaixo (30/09/2026)
+- [x] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026)
+- [x] Associado a um lendário — 📝 proposta abaixo (30/09/2026)
+- [x] Diálogo genérico escrito — 📝 proposta abaixo (30/09/2026)
+- [x] Diálogo associado ao lendário escrito — 📝 proposta abaixo (30/09/2026)
 
 ## Referências no repositório
 
@@ -51,32 +51,15 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_CYRUS` (ID **a alocar**: livre abaixo de 1056, nunca 1056–1163), campeão de Dialga. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). Validado com `python3 dev_scripts/nexus_validar_time.py` (✓). **Pic provisória `Gentleman`** (o terno) até registrar a arte; classe `Mystery Man` (não há classe da Galactic).
-
-Lendário **Dialga, Forma Origem** (Adamant Crystal), de que ele é campeão: a forma “original” de Legends: Arceus, para o homem que quis voltar o mundo ao começo e parou nele. Semi-lendário **Mesprit**, o Ser da Emoção que ele arrancou do Lago Verity para forjar a Red Chain — preso, no fragmento dele, numa redoma sobre a mesa. Mega **Gyarados** (Watertite; Mega Água/Sombrio), do time dele em Platinum. Mais **Weavile**, **Honchkrow** e **Crobat** (o Golbat dele desde o primeiro encontro), todos do time dele. O Houndoom sai: a Mega dele tem Solar Power e o time não tem sol.
-
-*Plano (Singles):* frieza e controle. O Mesprit põe Stealth Rock e sai de U-turn; o Crobat usa Taunt e Tailwind; o Dialga “para” o mais rápido com Thunder Wave e bate com Draco Meteor e Earth Power; o Honchkrow de Super Luck + Scope Lens faz de todo Night Slash um crítico; a Mega Gyarados sobe Dragon Dance e limpa. Quando alguém importante cai, o Mesprit volta e usa Healing Wish — a emoção se sacrifica para curar a máquina.
-
-*Plano (Doubles):* Fake Out do Weavile e Tailwind do Crobat no primeiro turno; o Intimidate do Gyarados na entrada; Sucker Punch do Honchkrow contra quem tentar bater primeiro; Healing Wish do Mesprit traz o Dialga de volta inteiro. Nenhum golpe do time acerta o parceiro.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Dialga-Origin | Adamant Crystal | Pressure | Modest | Draco Meteor, Flash Cannon, Earth Power, Thunder Wave |
-| Mesprit | Sitrus Berry | Levitate | Bold | Stealth Rock, Psychic, U-turn, Healing Wish |
-| Gyarados | Watertite | Intimidate | Adamant | Dragon Dance, Waterfall, Crunch, Ice Fang |
-| Weavile | Life Orb | Pickpocket | Jolly | Fake Out, Knock Off, Icicle Crash, Ice Shard |
-| Honchkrow | Scope Lens | Super Luck | Adamant | Brave Bird, Night Slash, Sucker Punch, Protect |
-| Crobat | Black Sludge | Infiltrator | Jolly | Cross Poison, Taunt, Tailwind, U-turn |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e vagas)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_CYRUS` = **1175** (bloco 2, flag `0xB0B`), luta genérica `Nexus_EventScript_Cyrus_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_CYRUS ===
 Name: Cyrus
-Class: Mystery Man
-Pic: Gentleman
+Class: Pkmn Trainer 1
+Pic: Cyrus
 Gender: Male
-Music: Dp Intense
+Music: Male
 Double Battle: No
 AI: Smart Trainer
 
@@ -147,9 +130,14 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - U-turn
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Dialga** — `Nexus_EventScript_Cyrus_Dialga_ChampionFight` (falas `Nexus_Text_Cyrus_Dialga_Champion*`)
+- **Palkia** — `Nexus_EventScript_Cyrus_Palkia_ChampionFight` (falas `Nexus_Text_Cyrus_Palkia_Champion*`)
+- **Mesprit** — `Nexus_EventScript_Cyrus_Mesprit_ChampionFight` (falas `Nexus_Text_Cyrus_Mesprit_Champion*`)
+
 
 #### Dialga
 
@@ -190,9 +178,7 @@ O File L-483 foi escrito para o Spenser (“an old man who would not ask it for 
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando Cyrus cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
-
-Voz do Cyrus de DP/Pt: frio, educado, frases completas e sem pressa, vocabulário de engenheiro; trata emoção como defeito de fabricação. As três variações: a tese (o coração como máquina incompleta), o mundo parado dele (a solidão que ele não admite) e a infância desmontando relógios na casa do avô, em Veilstone.
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Cyrus_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
@@ -204,87 +190,7 @@ Voz do Cyrus de DP/Pt: frio, educado, frases completas e sem pressa, vocabulári
 
 **Derrota**
 
-> …Irregular. I will have to recalculate what I expected of you.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Cyrus_Intro:
-	.string "I am Cyrus. I once believed the heart\n"
-	.string "was an incomplete machine.\p"
-	.string "Fear. Pride. Grief. Noise, which makes a\n"
-	.string "person hesitate at the precise moment\l"
-	.string "it matters.\p"
-	.string "You seem hesitant. Allow me to correct\n"
-	.string "that.$"
-
-Nexus_Text_Cyrus_Defeat:
-	.string "…Irregular. I will have to recalculate\n"
-	.string "what I expected of you.$"
-```
-
-</details>
-
-#### Variações 2 e 3 (📝 proposta de 30/09/2026)
-
-**Variação 2** — o mundo parado de onde ele vem, contado como se fosse uma virtude
-
-**Antes da luta**
-
-> Where I come from, nothing moves. I arranged it that way. It is very quiet.
->
-> People used to ask whether I was lonely. The question assumes loneliness is a flaw.
->
-> I find it restful. …Let us see whether you are restful, too.
-
-**Derrota**
-
-> …You moved too much. It was difficult to predict you.
-
-**Variação 3** — os relógios desmontados na casa do avô
-
-**Antes da luta**
-
-> As a child, I took apart every clock in my grandfather's house. I wanted to see where the time was kept.
->
-> There was nothing inside. Gears. Springs. No time at all.
->
-> I have been looking for it ever since. Perhaps it is in you.
-
-**Derrota**
-
-> …Nothing in you either. Only spirit. Hm.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Cyrus_Intro2:
-	.string "Where I come from, nothing moves. I\n"
-	.string "arranged it that way. It is very quiet.\p"
-	.string "People used to ask whether I was\n"
-	.string "lonely. The question assumes\l"
-	.string "loneliness is a flaw.\p"
-	.string "I find it restful. …Let us see whether\n"
-	.string "you are restful, too.$"
-
-Nexus_Text_Cyrus_Defeat2:
-	.string "…You moved too much. It was difficult\n"
-	.string "to predict you.$"
-
-Nexus_Text_Cyrus_Intro3:
-	.string "As a child, I took apart every clock in\n"
-	.string "my grandfather's house. I wanted to\l"
-	.string "see where the time was kept.\p"
-	.string "There was nothing inside. Gears.\n"
-	.string "Springs. No time at all.\p"
-	.string "I have been looking for it ever since.\n"
-	.string "Perhaps it is in you.$"
-
-Nexus_Text_Cyrus_Defeat3:
-	.string "…Nothing in you either. Only spirit. Hm.$"
-```
-
-</details>
+> ...Irregular. I will have to recalculate what I expected of you.
 
 ### Diálogo associado ao lendário
 

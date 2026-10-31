@@ -145,6 +145,12 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Genesect** — `Nexus_EventScript_Colress_Genesect_ChampionFight` (falas `Nexus_Text_Colress_Genesect_Champion*`)
+- **Silvally** — `Nexus_EventScript_Colress_Silvally_ChampionFight` (falas `Nexus_Text_Colress_Silvally_Champion*`)
+
+
 ✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Colress_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
 
 **Proposta de 26/09/2026:** **Nihilego** (UB-01 Symbiont). Colress é o campeão dela: a quinta luta do Daily, logo antes da boss battle.

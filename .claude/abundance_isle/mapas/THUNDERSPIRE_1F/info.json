@@ -1,0 +1,111 @@
+{
+ "map": "THUNDERSPIRE_1F",
+ "ingame": "Thunderspire 1F",
+ "w": 29,
+ "h": 25,
+ "primary": "gTileset_Johto_Building",
+ "secondary": "gTileset_BurnedTower",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 17,
+   "y": 22,
+   "dest_map": "MAP_THUNDER_RIDGE",
+   "dest_warp_id": "1",
+   "nota": "entrada (tapete); Thunder Ridge porta em (18,10)"
+  },
+  {
+   "x": 3,
+   "y": 5,
+   "dest_map": "MAP_THUNDERSPIRE_2F",
+   "dest_warp_id": "0",
+   "nota": "escada para o 2F"
+  }
+ ],
+ "connections": [],
+ "objects": [
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_1F_CHEREN",
+   "graphics_id": "OBJ_EVENT_GFX_CHEREN",
+   "x": 14,
+   "y": 20,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire1F_EventScript_Cheren",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_1F_ITEM_ISLAND",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 18,
+   "y": 10,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire1F_EventScript_ItemDragonScale",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_1F_ITEM_CORNER",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 26,
+   "y": 21,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire1F_EventScript_ItemZinc",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_1F_GRUNT_1",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 9,
+   "y": 21,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "Thunderspire1F_EventScript_Grunt1",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_1F_GRUNT_2",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 11,
+   "y": 7,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "Thunderspire1F_EventScript_Grunt2",
+   "flag": "0"
+  }
+ ],
+ "explorar": [
+  "Buracos abertos pelos raios cortam o andar: a escada fica no canto oposto à entrada e é preciso contornar pelos corredores de tábua.",
+  "Ilha de tábua no meio do buraco central, alcançada por uma ponte estreita que desce do fundo: Dragon Scale.",
+  "Zinc no canto sudeste, atrás do entulho.",
+  "Estátuas de dragão ladeando a entrada (os heróis gêmeos).",
+  "Cheren (professor) estuda as estátuas e conta a lenda dos heróis gêmeos e das pedras Clara e Escura; volta a falar depois do ato 4.",
+  "Dois recrutas do Plasma no caminho."
+ ],
+ "historia": "Primeiro andar da torre em ruínas que leva ao cume. Os recrutas seguram o jogador enquanto Ghetsis sobe; Cheren dá o contexto da Pedra Escura.",
+ "estados": {
+  "dia": "Ato 4: recrutas e Cheren."
+ },
+ "conferido": "check_objects sem bloqueio; BFS da entrada: {\"escada\": 46, \"item ilha\": 38, \"item canto\": 11}"
+}

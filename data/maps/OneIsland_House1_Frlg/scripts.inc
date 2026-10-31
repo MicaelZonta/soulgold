@@ -2,11 +2,43 @@ OneIsland_House1_Frlg_MapScripts::
 	.byte 0
 
 OneIsland_House1_EventScript_OldMan::
-	msgbox OneIsland_House1_Text_GazeUponVolcanoOnSunnyDays, MSGBOX_NPC
+	lock
+	faceplayer
+	call Pecharunt_GetState
+	goto_if_eq VAR_RESULT, 1, OneIsland_House1_EventScript_OldManHunt
+	goto_if_eq VAR_RESULT, 2, OneIsland_House1_EventScript_OldManAfter
+	msgbox OneIsland_House1_Text_GazeUponVolcanoOnSunnyDays
+	release
+	end
+
+OneIsland_House1_EventScript_OldManHunt:
+	msgbox OneIsland_House1_Text_OldManHunt
+	release
+	end
+
+OneIsland_House1_EventScript_OldManAfter:
+	msgbox OneIsland_House1_Text_OldManAfter
+	release
 	end
 
 OneIsland_House1_EventScript_OldWoman::
-	msgbox OneIsland_House1_Text_LastTimeMtEmberErupted, MSGBOX_NPC
+	lock
+	faceplayer
+	call Pecharunt_GetState
+	goto_if_eq VAR_RESULT, 1, OneIsland_House1_EventScript_OldWomanHunt
+	goto_if_eq VAR_RESULT, 2, OneIsland_House1_EventScript_OldWomanAfter
+	msgbox OneIsland_House1_Text_LastTimeMtEmberErupted
+	release
+	end
+
+OneIsland_House1_EventScript_OldWomanHunt:
+	msgbox OneIsland_House1_Text_OldWomanHunt
+	release
+	end
+
+OneIsland_House1_EventScript_OldWomanAfter:
+	msgbox OneIsland_House1_Text_OldWomanAfter
+	release
 	end
 
 OneIsland_House1_Text_GazeUponVolcanoOnSunnyDays::

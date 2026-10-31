@@ -1,0 +1,199 @@
+{
+ "map": "FROSTFALL_CRATER_LAB",
+ "ingame": "Frostfall Crater Lab",
+ "map_type": "MAP_TYPE_UNDERGROUND",
+ "connections": [],
+ "explorar": [
+  "Salao da maquina com o chao congelado em volta: duas poças de gelo com pedras de neve",
+  "Almoxarifado do Plasma: TM Blizzard e Max Revive",
+  "Corredor guardado por dois recrutas (um olha o corredor, outro a saida para o salao)",
+  "Escada do atalho para o 1F atras de gelo: derrete quando a maquina para",
+  "Depois: Ice Stone onde estava o Ghetsis; N fica examinando o meteorito"
+ ],
+ "historia": "Ghetsis explica o plano (frio do meteorito -> tempestades -> raios na Pedra Escura -> Zekrom + Kyurem). Batalha; ele foge para o cume. O jogador desliga a maquina.",
+ "estados": {
+  "dia": "Climax: Ghetsis e os cientistas diante da maquina (arte proposta A).",
+  "estado": "Depois: atalho aberto, Ice Stone e N no lugar do Ghetsis."
+ },
+ "maquina": {
+  "x": 15,
+  "y": 3,
+  "w": 3,
+  "h": 2
+ },
+ "conferido": "check_objects ok; BFS da escada do B1F (4,17) ate o Ghetsis e os dois itens; atalho (29,16) fechado antes e aberto depois (com o Ghetsis e os cientistas fora).",
+ "w": 34,
+ "h": 26,
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_Cave_Ice",
+ "warps": [
+  {
+   "x": 4,
+   "y": 16,
+   "dest_map": "MAP_FROSTFALL_CRATER_B1F",
+   "dest_warp_id": "1",
+   "nota": "sobe para o salao de gelo (2,10)"
+  },
+  {
+   "x": 29,
+   "y": 16,
+   "dest_map": "MAP_FROSTFALL_CRATER_1F",
+   "dest_warp_id": "2",
+   "nota": "atalho para a camara leste do 1F (30,4)"
+  }
+ ],
+ "objects": [
+  {
+   "local_id": "GHETSIS",
+   "graphics_id": "OBJ_EVENT_GFX_SAGE",
+   "x": 16,
+   "y": 6,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Lab_EventScript_Ghetsis",
+   "flag": "0"
+  },
+  {
+   "local_id": "SCIENTIST_A",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 14,
+   "y": 5,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Lab_EventScript_ScientistA",
+   "flag": "0"
+  },
+  {
+   "local_id": "SCIENTIST_B",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 18,
+   "y": 5,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Lab_EventScript_ScientistB",
+   "flag": "0"
+  },
+  {
+   "local_id": "GRUNT_3",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 17,
+   "y": 17,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "FrostfallCrater_Lab_EventScript_Grunt3",
+   "flag": "0"
+  },
+  {
+   "local_id": "GRUNT_4",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 13,
+   "y": 13,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "FrostfallCrater_Lab_EventScript_Grunt4",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_TM",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 19,
+   "y": 18,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Lab_EventScript_ItemTMBlizzard",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_MAXREVIVE",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 15,
+   "y": 21,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Lab_EventScript_ItemMaxRevive",
+   "flag": "0"
+  },
+  {
+   "local_id": "N_LAB",
+   "graphics_id": "OBJ_EVENT_GFX_N",
+   "x": 14,
+   "y": 7,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Lab_EventScript_N",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_ICESTONE",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 16,
+   "y": 6,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Lab_EventScript_ItemIceStone",
+   "flag": "0"
+  }
+ ],
+ "bg_events": [
+  {
+   "type": "sign",
+   "x": 15,
+   "y": 4,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+   "script": "FrostfallCrater_Lab_EventScript_Machine"
+  },
+  {
+   "type": "sign",
+   "x": 16,
+   "y": 4,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+   "script": "FrostfallCrater_Lab_EventScript_Machine"
+  },
+  {
+   "type": "sign",
+   "x": 17,
+   "y": 4,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+   "script": "FrostfallCrater_Lab_EventScript_Machine"
+  }
+ ]
+}

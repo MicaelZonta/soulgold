@@ -1,0 +1,260 @@
+{
+ "map": "TRUTHSAND_RUINS_HALL_OF_TRUTH",
+ "ingame": "Truthsand Ruins - Hall of Truth",
+ "map_type": "MAP_TYPE_UNDERGROUND",
+ "explorar": [
+  "Antecamara de pouso (quem cai pelo sumidouro da Trilha): Relic Vase e a escada de volta ao B1F",
+  "Salao grande: avenida de estatuas ate o altar em degraus; a Light Stone dorme no degrau de cima, diante da porta selada",
+  "Murais dos dois lados do altar: os herois gemeos e o dragao partido (verdade x ideais); a porta do altar tem a inscricao final",
+  "Nicho oeste atras de pedra de Rock Smash: Fire Stone; nicho leste: Flame Plate (a placa do Reshiram, par da Zap Plate do cume)",
+  "Esqueletos fosseis e dunas: o salao estava enterrado ha seculos"
+ ],
+ "historia": "Ato 6, climax: Ghetsis (ou o que sobrou do Plasma) chega primeiro e tenta acordar a Light Stone. Hilda e Lenora chegam com o jogador. A pedra desperta, o Reshiram recusa o Ghetsis e testa o jogador (captura). Hilda: no BW foi ela a escolhida; aqui ela deixa o Reshiram escolher de novo.",
+ "estados": {
+  "dia": "Salao em silencio, Light Stone no altar (proposta C, gemea da Pedra Escura C).",
+  "estado": "Climax: Ghetsis no degrau diante da Light Stone, dois recrutas, Hilda e Lenora chegando.",
+  "depois": "Reshiram desperto no altar; Hilda assiste."
+ },
+ "light_stone": {
+  "x": 16,
+  "y": 6,
+  "gfx": "OBJ_EVENT_GFX_LIGHT_STONE (novo, 32x32, 1 quadro, como a Pedra Escura)",
+  "propostas": [
+   [
+    "A",
+    "Oval com veios de fogo"
+   ],
+   [
+    "B",
+    "No pedestal de arenito"
+   ],
+   [
+    "C",
+    "Escama em espiral (gemea da Pedra Escura C)"
+   ],
+   [
+    "D",
+    "Despertando (aura de chamas)"
+   ]
+  ],
+  "pasta": "props/"
+ },
+ "conferido": "check_objects ok; BFS do pouso ate altar, murais, escada e itens (nicho oeste so com Rock Smash)",
+ "w": 33,
+ "h": 32,
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_Desert",
+ "warps": [
+  {
+   "x": 5,
+   "y": 25,
+   "dest_map": "MAP_TRUTHSAND_RUINS_B1F",
+   "dest_warp_id": "4",
+   "nota": "pouso do sumidouro da Trilha (so chegada)"
+  },
+  {
+   "x": 3,
+   "y": 28,
+   "dest_map": "MAP_TRUTHSAND_RUINS_B1F",
+   "dest_warp_id": "5",
+   "nota": "escada de volta a Trilha da Verdade"
+  }
+ ],
+ "objects": [
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_ROCK",
+   "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+   "x": 5,
+   "y": 10,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "EventScript_RockSmash",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_ITEM_EAST",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 30,
+   "y": 12,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_ItemFlamePlate",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_ITEM_WEST",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 2,
+   "y": 8,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_ItemFireStone",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_ITEM_LANDING",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 9,
+   "y": 29,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_ItemRelicVase",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_LIGHT_STONE",
+   "graphics_id": "OBJ_EVENT_GFX_LIGHT_STONE",
+   "x": 16,
+   "y": 6,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_LightStone",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_GHETSIS",
+   "graphics_id": "OBJ_EVENT_GFX_SAGE",
+   "x": 16,
+   "y": 8,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_Ghetsis",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_GRUNT_1",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 14,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_Grunt1",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_GRUNT_2",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 18,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_Grunt2",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_HILDA",
+   "graphics_id": "OBJ_EVENT_GFX_HILDA",
+   "x": 15,
+   "y": 14,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_Hilda",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_LENORA",
+   "graphics_id": "OBJ_EVENT_GFX_LENORA",
+   "x": 17,
+   "y": 15,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_Lenora",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_RESHIRAM",
+   "graphics_id": "OBJ_EVENT_GFX_SPECIES(RESHIRAM)",
+   "x": 16,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_Reshiram",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_HALL_OF_TRUTH_HILDA_AFTER",
+   "graphics_id": "OBJ_EVENT_GFX_HILDA",
+   "x": 15,
+   "y": 13,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsHall_EventScript_HildaAfter",
+   "flag": "0"
+  }
+ ],
+ "bg_events": [
+  {
+   "type": "sign",
+   "x": 9,
+   "y": 4,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+   "script": "TruthsandRuinsHall_EventScript_MuralTwinHeroes"
+  },
+  {
+   "type": "sign",
+   "x": 23,
+   "y": 4,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+   "script": "TruthsandRuinsHall_EventScript_MuralTruth"
+  },
+  {
+   "type": "sign",
+   "x": 16,
+   "y": 5,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+   "script": "TruthsandRuinsHall_EventScript_AltarDoor"
+  }
+ ],
+ "connections": []
+}

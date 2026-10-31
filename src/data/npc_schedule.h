@@ -64,9 +64,44 @@ static const struct NpcScheduleSlot sSolieraSchedule[] =
       MAP_GROUP(MAP_OLIVINE_CITY_LIGHTHOUSE_TOP), MAP_NUM(MAP_OLIVINE_CITY_LIGHTHOUSE_TOP) },
 };
 
+// Os tres de Alola que vieram para o Mt. Ember. Sao as pessoas DESTE mundo,
+// nao os fragmentos do Nexus (NEXUS_REGRAS R21): nao conhecem o jogador.
+// Cada um tem um motivo ligado a montanha, e a agenda diz qual e:
+//  - Guzma treina onde ninguem ve ele perder: de noite no cume, de dia na
+//    encosta, e o resto do tempo emburrado na praia.
+//  - Hau veio pela comida do spa: de dia la, de tarde na cidade, e o resto
+//    do tempo andando pela Kindle Road.
+//  - Olivia caca o rubi que deu nome ao Ruby Path: dia util la embaixo, toda
+//    noite no spa, e o resto na cidade.
+// Scripts e falas: data/scripts/mt_ember_residents.inc.
+
+static const struct NpcScheduleSlot sGuzmaSchedule[] =
+{
+    { SCHED_EVERY_DAY, SCHED_DARK,     MAP_GROUP(MAP_MT_EMBER_SUMMIT),            MAP_NUM(MAP_MT_EMBER_SUMMIT)            },
+    { SCHED_WEEKDAYS,  SCHED_DAYLIGHT, MAP_GROUP(MAP_MT_EMBER_EXTERIOR),          MAP_NUM(MAP_MT_EMBER_EXTERIOR)          },
+    { SCHED_EVERY_DAY, SCHED_ANY_TIME, MAP_GROUP(MAP_ONE_ISLAND_TREASURE_BEACH),  MAP_NUM(MAP_ONE_ISLAND_TREASURE_BEACH)  },
+};
+
+static const struct NpcScheduleSlot sHauSchedule[] =
+{
+    { SCHED_EVERY_DAY, SCHED_DAYLIGHT, MAP_GROUP(MAP_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA), MAP_NUM(MAP_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA) },
+    { SCHED_EVERY_DAY, SCHED_EVENING,  MAP_GROUP(MAP_ONE_ISLAND),                       MAP_NUM(MAP_ONE_ISLAND)                       },
+    { SCHED_EVERY_DAY, SCHED_ANY_TIME, MAP_GROUP(MAP_ONE_ISLAND_KINDLE_ROAD),           MAP_NUM(MAP_ONE_ISLAND_KINDLE_ROAD)           },
+};
+
+static const struct NpcScheduleSlot sOliviaSchedule[] =
+{
+    { SCHED_WEEKDAYS,  SCHED_DAYLIGHT, MAP_GROUP(MAP_MT_EMBER_RUBY_PATH_B3F),           MAP_NUM(MAP_MT_EMBER_RUBY_PATH_B3F)           },
+    { SCHED_EVERY_DAY, SCHED_DARK,     MAP_GROUP(MAP_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA), MAP_NUM(MAP_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA) },
+    { SCHED_EVERY_DAY, SCHED_ANY_TIME, MAP_GROUP(MAP_ONE_ISLAND),                       MAP_NUM(MAP_ONE_ISLAND)                       },
+};
+
 static const struct NpcSchedule sNpcSchedules[SCHEDULED_NPC_COUNT] =
 {
     [SCHEDULED_NPC_FLANNERY] = { sFlannerySchedule, ARRAY_COUNT(sFlannerySchedule) },
     [SCHEDULED_NPC_COLRESS]  = { sColressSchedule,  ARRAY_COUNT(sColressSchedule)  },
     [SCHEDULED_NPC_SOLIERA]  = { sSolieraSchedule,  ARRAY_COUNT(sSolieraSchedule)  },
+    [SCHEDULED_NPC_GUZMA]    = { sGuzmaSchedule,    ARRAY_COUNT(sGuzmaSchedule)    },
+    [SCHEDULED_NPC_HAU]      = { sHauSchedule,      ARRAY_COUNT(sHauSchedule)      },
+    [SCHEDULED_NPC_OLIVIA]   = { sOliviaSchedule,   ARRAY_COUNT(sOliviaSchedule)   },
 };

@@ -6,19 +6,19 @@ Aparece no checklist como:
 
 - **Barry** (Sinnoh · Rival) — rival hiperativo, competitivo e filho do Frontier Brain Palmer.
 
-**Pronto para o Nexus:** ❌ não — tem sprite de overworld, falta o battle sprite (front pic), obrigatório.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld (já registrado) e front pic em `.filetransfer/.trainers/Barry/`.
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)* — 📦 arte pronta em `.filetransfer`, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — 📦 arte pronta em `.filetransfer`, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026)
-- [ ] Associado a um lendário — 📝 proposta abaixo (30/09/2026)
-- [ ] Diálogo genérico escrito — 📝 proposta abaixo (30/09/2026)
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta abaixo (30/09/2026)
+- [x] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026)
+- [x] Associado a um lendário — 📝 proposta abaixo (30/09/2026)
+- [x] Diálogo genérico escrito — 📝 proposta abaixo (30/09/2026)
+- [x] Diálogo associado ao lendário escrito — 📝 proposta abaixo (30/09/2026)
 
 ## Referências no repositório
 
@@ -51,33 +51,16 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_BARRY` (ID **a alocar**: livre abaixo de 1056, nunca 1056–1163), campeão de Uxie. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). Validado com `python3 dev_scripts/nexus_validar_time.py` (✓). **Pic provisória `Youngster`** até registrar a arte; classe `Rival`. `Double Battle: Yes`: em Platinum o Barry luta em dupla com o jogador; o plano vale nos dois.
-
-O Uxie é **semi-lendário** (R10), então o time leva também um lendário. Lendário **Deoxys, Forma Speed** ([R21](../NEXUS_REGRAS.md)): no fragmento dele, a única coisa que já correu mais que o Barry caiu do céu perto de Twinleaf, e ele a seguiu até ela desistir. Semi-lendário **Uxie**, de que ele é campeão: o lago que em Diamond/Pearl ele não conseguiu proteger. Mega **Staraptor** (Flyingite; Mega Lutador/Voador com **Contrary**: cada Close Combat sobe as defesas em vez de baixar), o Starly dele desde a Rota 201. Mais **Empoleon** (o Piplup, uma das escolhas de inicial dele), **Heracross** e **Snorlax**, do time dele em Platinum.
-
-*Plano (Singles):* pressa. O Deoxys-S de Focus Sash põe Stealth Rock, Taunt e bate com Psycho Boost; o Uxie põe o alvo para dormir com Yawn e pivota com U-turn; a Mega Staraptor fica mais dura a cada Close Combat; o Heracross de Guts com Flame Orb bate de Facade; o Empoleon de Competitive pune quem baixa os status dele; o Snorlax, o único do time sem pressa, sobe Belly Drum no fim.
-
-*Plano (Doubles):* Intimidate do Staraptor na entrada e Tailwind no primeiro turno; Helping Hand do Uxie no Snorlax ou no Heracross; Taunt do Deoxys no suporte adversário. Nenhum golpe do time acerta o parceiro.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Deoxys-Speed | Focus Sash | Pressure | Hasty | Psycho Boost, Knock Off, Taunt, Stealth Rock |
-| Uxie | Sitrus Berry | Levitate | Bold | Psychic, Yawn, U-turn, Helping Hand |
-| Staraptor | Flyingite | Intimidate | Jolly | Brave Bird, Close Combat, Tailwind, U-turn |
-| Empoleon | Leftovers | Competitive | Modest | Hydro Pump, Flash Cannon, Ice Beam, Grass Knot |
-| Heracross | Flame Orb | Guts | Jolly | Close Combat, Megahorn, Knock Off, Facade |
-| Snorlax | Sitrus Berry | Thick Fat | Adamant | Belly Drum, Double-Edge, Crunch, Heavy Slam |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e vagas)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado e revisado para Singles/Doubles pelo Codex — `novos/revisao_singles_doubles.md` — e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_BARRY` = **1169** (bloco 2, flag `0xB05`), luta genérica `Nexus_EventScript_Barry_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_BARRY ===
 Name: Barry
 Class: Rival
-Pic: Youngster
+Pic: Barry
 Gender: Male
-Music: Dp Ace Trainer
-Double Battle: Yes
+Music: Male
+Double Battle: No
 AI: Smart Trainer
 
 Deoxys-Speed @ Focus Sash
@@ -91,17 +74,6 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Taunt
 - Stealth Rock
 
-Uxie @ Sitrus Berry
-Bold Nature
-Level: 100
-Ability: Levitate
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
-- Psychic
-- Yawn
-- U-turn
-- Helping Hand
-
 Staraptor @ Flyingite
 Jolly Nature
 Level: 100
@@ -112,6 +84,17 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Close Combat
 - Tailwind
 - U-turn
+
+Uxie @ Sitrus Berry
+Bold Nature
+Level: 100
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Psychic
+- Yawn
+- U-turn
+- Thunder Wave
 
 Empoleon @ Leftovers
 Modest Nature
@@ -144,12 +127,17 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Belly Drum
 - Double-Edge
 - Crunch
-- Heavy Slam
+- Protect
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Uxie** — `Nexus_EventScript_Barry_Uxie_ChampionFight` (falas `Nexus_Text_Barry_Uxie_Champion*`)
+- **Deoxys** — `Nexus_EventScript_Barry_Deoxys_ChampionFight` (falas `Nexus_Text_Barry_Deoxys_Champion*`)
+- **Azelf** — `Nexus_EventScript_Barry_Azelf_ChampionFight` (falas `Nexus_Text_Barry_Azelf_Champion*`)
+
 
 #### Uxie
 
@@ -211,13 +199,11 @@ Nexus_Text_Uxie_LookerFile:
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando Barry cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
-
-Voz do Barry de DP/Pt: fala correndo, grita, se atropela, ameaça multar todo mundo em dez milhões e sempre chega atrasado. As três variações: a apresentação (a multa e o pai), o caderno de multas com nomes em branco (o que ele perdeu no fragmento, sem explicar) e a mania de chegar atrasado.
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Barry_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
-> Whoa, whoa! You're in my way! …Wait, no, I'm in yours. Whatever! Battle!
+> Whoa, whoa! You're in my way! ...Wait, no, I'm in yours. Whatever! Battle!
 >
 > I'm Barry! I'm gonna be the strongest Trainer ever. Stronger than my dad, even!
 >
@@ -226,90 +212,6 @@ Voz do Barry de DP/Pt: fala correndo, grita, se atropela, ameaça multar todo mu
 **Derrota**
 
 > Aaargh! How?! Okay, okay. I'll fine myself this time. Ten million. Ouch.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Barry_Intro:
-	.string "Whoa, whoa! You're in my way! …Wait, no,\n"
-	.string "I'm in yours. Whatever! Battle!\p"
-	.string "I'm Barry! I'm gonna be the strongest\n"
-	.string "Trainer ever. Stronger than my dad,\l"
-	.string "even!\p"
-	.string "And if you're slow about it, I'm fining\n"
-	.string "you ten million! Let's GO!$"
-
-Nexus_Text_Barry_Defeat:
-	.string "Aaargh! How?! Okay, okay. I'll fine\n"
-	.string "myself this time. Ten million. Ouch.$"
-```
-
-</details>
-
-#### Variações 2 e 3 (📝 proposta de 30/09/2026)
-
-**Variação 2** — o caderno de multas com os nomes em branco
-
-**Antes da luta**
-
-> Hold on! I gotta write this down. I write down everybody who owes me a fine.
->
-> See? Pages and pages! …Huh. This one's got no name. Neither does this one. Weird.
->
-> Whatever! You're getting a page WITH a name! Battle!
-
-**Derrota**
-
-> Fine, fine, you win! …Hey, can you spell your name for me? Slowly? I keep losing them.
-
-**Variação 3** — o atraso, o pai e a indignação de ter chegado cedo
-
-**Antes da luta**
-
-> My dad says I've never been on time for anything. Not once. Not even being born!
->
-> That's not true! I was early for this! I've been waiting here, like, forever!
->
-> …Okay, five minutes. That still counts! Battle!
-
-**Derrota**
-
-> I lost AND I was early?! That's not how it works! I'm filing a complaint! With me!
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Barry_Intro2:
-	.string "Hold on! I gotta write this down. I\n"
-	.string "write down everybody who owes me a\l"
-	.string "fine.\p"
-	.string "See? Pages and pages! …Huh. This one's\n"
-	.string "got no name. Neither does this one.\l"
-	.string "Weird.\p"
-	.string "Whatever! You're getting a page WITH a\n"
-	.string "name! Battle!$"
-
-Nexus_Text_Barry_Defeat2:
-	.string "Fine, fine, you win! …Hey, can you spell\n"
-	.string "your name for me? Slowly? I keep losing\l"
-	.string "them.$"
-
-Nexus_Text_Barry_Intro3:
-	.string "My dad says I've never been on time\n"
-	.string "for anything. Not once. Not even being\l"
-	.string "born!\p"
-	.string "That's not true! I was early for this!\n"
-	.string "I've been waiting here, like, forever!\p"
-	.string "…Okay, five minutes. That still counts!\n"
-	.string "Battle!$"
-
-Nexus_Text_Barry_Defeat3:
-	.string "I lost AND I was early?! That's not how\n"
-	.string "it works! I'm filing a complaint! With\l"
-	.string "me!$"
-```
-
-</details>
 
 ### Diálogo associado ao lendário
 

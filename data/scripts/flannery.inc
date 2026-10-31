@@ -49,6 +49,11 @@ Flannery_EventScript_Roaming::
 
 Flannery_EventScript_Known:
 	goto_if_eq VAR_NAVELROCK_QUEST, 2, Flannery_EventScript_NavelRock
+	@ O cheiro doce do Pecharunt (data/scripts/pecharunt.inc): ela comenta
+	@ antes da pergunta de sempre, quando o Trio Leal ja foi capturado.
+	call Pecharunt_GetState
+	call_if_eq VAR_RESULT, 1, Flannery_EventScript_PecharuntHunt
+	call_if_eq VAR_RESULT, 2, Flannery_EventScript_PecharuntAfter
 	@ A fala dela termina perguntando, entao a pergunta e de verdade: antes
 	@ a batalha comecava mesmo para quem respondesse que nao.
 	msgbox Flannery_Text_Known, MSGBOX_YESNO
@@ -56,6 +61,14 @@ Flannery_EventScript_Known:
 	trainerbattle_no_intro TRAINER_FLANNERY, Flannery_Text_RematchDefeat
 	msgbox Flannery_Text_RematchAfter, MSGBOX_AUTOCLOSE
 	end
+
+Flannery_EventScript_PecharuntHunt:
+	msgbox Flannery_Text_PecharuntHunt, MSGBOX_DEFAULT
+	return
+
+Flannery_EventScript_PecharuntAfter:
+	msgbox Flannery_Text_PecharuntAfter, MSGBOX_DEFAULT
+	return
 
 Flannery_EventScript_NoBattle:
 	closemessage

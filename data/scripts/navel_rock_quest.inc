@@ -39,12 +39,16 @@ NavelRockQuest_EventScript_FlanneryDone:
 OneIsland_Harbor_EventScript_Sailor::
 	lock
 	faceplayer
-	goto_if_ge VAR_NAVELROCK_QUEST, 4, OneIsland_Harbor_EventScript_SailorAfter
 	goto_if_eq VAR_NAVELROCK_QUEST, 3, OneIsland_Harbor_EventScript_SailorAccepts
-	msgbox OneIsland_Harbor_Text_SailorRefuses, MSGBOX_DEFAULT
-	closemessage
-	release
-	end
+	@ Desde a abertura da One Island (data/scripts/one_island.inc) ele tambem
+	@ faz a volta para Vermilion; o Navel Rock continua pedindo o bilhete.
+	message OneIsland_Harbor_Text_SailorWhere
+	waitmessage
+	dynmultichoice 18, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, OneIsland_Harbor_Text_ChoiceVermilion, OneIsland_Harbor_Text_ChoiceNavelRock, OneIsland_Harbor_Text_ChoiceExit
+	switch VAR_RESULT
+	case 0, OneIsland_Harbor_EventScript_SailVermilion
+	case 1, OneIsland_Harbor_EventScript_SailNavelRock
+	goto OneIsland_Harbor_EventScript_SailorNoTrip
 
 OneIsland_Harbor_EventScript_SailorAccepts::
 	msgbox OneIsland_Harbor_Text_SailorAccepts, MSGBOX_DEFAULT
@@ -62,14 +66,21 @@ OneIsland_Harbor_EventScript_SailorNoRoom::
 	release
 	end
 
-OneIsland_Harbor_EventScript_SailorAfter::
-	msgbox OneIsland_Harbor_Text_SailorAfter, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, OneIsland_Harbor_EventScript_SailorNoTrip
+OneIsland_Harbor_EventScript_SailVermilion:
+	closemessage
+	delay 20
+	warpsilent MAP_VERMILION_CITY_PORT_INSIDE, 8, 9
+	waitstate
+	release
+	end
+
+OneIsland_Harbor_EventScript_SailNavelRock:
+	goto_if_lt VAR_NAVELROCK_QUEST, 4, OneIsland_Harbor_EventScript_SailorNoTicket
 	checkitem ITEM_MYSTIC_TICKET
 	goto_if_eq VAR_RESULT, FALSE, OneIsland_Harbor_EventScript_SailorNoTicket
 	closemessage
 	delay 20
-	warpsilent MAP_NAVEL_ROCK_EXTERIOR, 10, 18
+	warpsilent MAP_NAVEL_ROCK_EXTERIOR, 9, 37
 	waitstate
 	release
 	end
@@ -93,13 +104,20 @@ NavelRockQuest_Text_BlaineHandsReading:
 	.string "Here. Take it to Bill.\n"
 	.string "He measures things for a living.$"
 
+@ Desde 28/10/2026 o Bill termina convidando para a One Island (o barco do
+@ Celio veio busca-lo). Abertura em data/scripts/one_island.inc.
 NavelRockQuest_Text_BillReads:
-	.string "{SPEAKER NAME_BILL}Two days a signal, then gone.\n"
-	.string "Third day, blank. Every time!\p"
-	.string "Since before I was born! Oh, wow.\n"
-	.string "I can't go; my system needs me.\p"
-	.string "No captain sails to an uncharted\n"
-	.string "rock. Try Flannery; she knows heat.$"
+	.string "{SPEAKER NAME_BILL}Two days, a signal. Then gone.\n"
+	.string "Third day: blank. Every time!\p"
+	.string "Since before I was born... wow.\n"
+	.string "This rhythm is real, {PLAYER}.\p"
+	.string "CELIO sent his boat for me.\n"
+	.string "I was heading to ONE ISLAND.\p"
+	.string "Those sailors know strange water\n"
+	.string "better than anyone I know.\p"
+	.string "FLANNERY wanders hot places.\n"
+	.string "MT. EMBER may ring a bell to her.\p"
+	.string "Come along, {PLAYER}?$"
 
 NavelRockQuest_Text_FlanneryRecognises:
 	.string "{SPEAKER NAME_FLANNERY}As heir to this gym, I\n"
@@ -123,6 +141,15 @@ OneIsland_Harbor_Text_SailorNoRoom:
 	.string "{SPEAKER NAME_SAILOR}Your Key Items pocket is full.\n"
 	.string "Make room and come back.$"
 
-OneIsland_Harbor_Text_SailorAfter:
-	.string "{SPEAKER NAME_SAILOR}Boat's running again.\n"
-	.string "Sailing out to the rock?$"
+OneIsland_Harbor_Text_SailorWhere:
+	.string "{SPEAKER NAME_SAILOR}NAVEL ROCK today?\n"
+	.string "Or VERMILION CITY?$"
+
+OneIsland_Harbor_Text_ChoiceVermilion:
+	.string "Vermilion City$"
+
+OneIsland_Harbor_Text_ChoiceNavelRock:
+	.string "Navel Rock$"
+
+OneIsland_Harbor_Text_ChoiceExit:
+	.string "Exit$"

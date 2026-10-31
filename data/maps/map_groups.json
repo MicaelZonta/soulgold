@@ -38,7 +38,8 @@
     "gMapGroup_RiftMissions",
     "gMapGroup_OutdoorAlola",
     "gMapGroup_IndoorAlola",
-    "gMapGroup_Sinjoh"
+    "gMapGroup_Sinjoh",
+    "gMapGroup_AbundanceIsle"
   ],
   "gMapGroup_TownsAndRoutes": [
     "NewBarkTown",
@@ -718,10 +719,9 @@
     "FarawayIsland_Entrance",
     "FarawayIsland_Interior",
     "NavelRock_Exterior",
-    "NavelRock_Entrance",
-    "NavelRock_Shaft",
     "NavelRock_FireVent",
     "NavelRock_SeaBreach",
+    "NavelRock_SteamGallery",
     "NavelRock_SteamChamber"
   ],
   "gMapGroup_Emerald1": [
@@ -1311,5 +1311,42 @@
     "SnowsweptCavern",
     "Route49Sinjoh",
     "Route50Sinjoh"
+  ],
+  "gMapGroup_AbundanceIsle": [
+    "AbundanceIsle",
+    "AbundanceIsle_Barn",
+    "AbundanceIsle_Farmhouse",
+    "AbundanceIsle_HarvestFields",
+    "AbundanceIsle_KeeperHouse",
+    "AbundanceIsle_SpringGrove",
+    "AbundanceIsle_WindsweptCape",
+    "AbundanceIsle_PokemonCenter",
+    "AbundanceIsle_SkylaHangar",
+    "AbundanceIsle_ElderHouse",
+    "AbundanceIsle_GaleShore",
+    "AbundanceIsle_GaleCave",
+    "FrostfallCrater_1F",
+    "FrostfallCrater_B1F",
+    "FrostfallCrater_Lab",
+    "FrostfallCrater_Core",
+    "ThunderRidge",
+    "Thunderspire_1F",
+    "Thunderspire_2F",
+    "Thunderspire_Summit",
+    "PlasmaFrigate_Deck",
+    "PlasmaFrigate_Hold",
+    "PlasmaFrigate_Cabins",
+    "PlasmaFrigate_EngineRoom",
+    "Thunderspire_3F",
+    "AbundanceIsle_FestivalArena",
+    "AbundanceIsle_SunsetStrait",
+    "AbundanceIsle_SunsetStrait_Underwater",
+    "SunkenTruthShip",
+    "ShrineOfTheFirstDragon",
+    "EmberduneIsle",
+    "NsRoom",
+    "TruthsandRuins_1F",
+    "TruthsandRuins_B1F",
+    "TruthsandRuins_HallOfTruth"
   ]
 }

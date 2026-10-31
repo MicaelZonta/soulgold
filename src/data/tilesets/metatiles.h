@@ -836,3 +836,34 @@ const u16 gMetatileAttributes_MtSilver_NewSinjoh_Hns[] = INCBIN_U16("data/tilese
 
 const u16 gMetatiles_RuinsOfAlphWriting_Hns[] = INCBIN_U16("data/tilesets/secondary/ruins_of_alph_writing_hns/metatiles.bin");
 const u16 gMetatileAttributes_RuinsOfAlphWriting_Hns[] = INCBIN_U16("data/tilesets/secondary/ruins_of_alph_writing_hns/metatile_attributes.bin");
+
+const u16 gMetatiles_NavelRock_Island[] = INCBIN_U16("data/tilesets/secondary/navel_rock_island/metatiles.bin");
+const u16 gMetatileAttributes_NavelRock_Island[] = INCBIN_U16("data/tilesets/secondary/navel_rock_island/metatile_attributes.bin");
+
+const u16 gMetatiles_NavelRock_TideGrotto[] = INCBIN_U16("data/tilesets/secondary/navel_rock_tide_grotto/metatiles.bin");
+const u16 gMetatileAttributes_NavelRock_TideGrotto[] = INCBIN_U16("data/tilesets/secondary/navel_rock_tide_grotto/metatile_attributes.bin");
+
+const u16 gMetatiles_NavelRock_HotSprings[] = INCBIN_U16("data/tilesets/secondary/navel_rock_hot_springs/metatiles.bin");
+const u16 gMetatileAttributes_NavelRock_HotSprings[] = INCBIN_U16("data/tilesets/secondary/navel_rock_hot_springs/metatile_attributes.bin");
+
+const u16 gMetatiles_NavelRock_SteamGallery[] = INCBIN_U16("data/tilesets/secondary/navel_rock_steam_gallery/metatiles.bin");
+const u16 gMetatileAttributes_NavelRock_SteamGallery[] = INCBIN_U16("data/tilesets/secondary/navel_rock_steam_gallery/metatile_attributes.bin");
+
+const u16 gMetatiles_NavelRock_Sanctum[] = INCBIN_U16("data/tilesets/secondary/navel_rock_sanctum/metatiles.bin");
+const u16 gMetatileAttributes_NavelRock_Sanctum[] = INCBIN_U16("data/tilesets/secondary/navel_rock_sanctum/metatile_attributes.bin");
+
+const u16 gMetatiles_AbundanceFarmland[] = INCBIN_U16("data/tilesets/secondary/abundance_farmland/metatiles.bin");
+const u16 gMetatileAttributes_AbundanceFarmland[] = INCBIN_U16("data/tilesets/secondary/abundance_farmland/metatile_attributes.bin");
+
+const u16 gMetatiles_FrostfallCrater[] = INCBIN_U16("data/tilesets/secondary/frostfall_crater/metatiles.bin");
+const u16 gMetatileAttributes_FrostfallCrater[] = INCBIN_U16("data/tilesets/secondary/frostfall_crater/metatile_attributes.bin");
+
+const u16 gMetatiles_SkylaHangar[] = INCBIN_U16("data/tilesets/secondary/skyla_hangar/metatiles.bin");
+const u16 gMetatileAttributes_SkylaHangar[] = INCBIN_U16("data/tilesets/secondary/skyla_hangar/metatile_attributes.bin");
+
+const u16 gMetatiles_ThunderRidge[] = INCBIN_U16("data/tilesets/secondary/thunder_ridge/metatiles.bin");
+const u16 gMetatileAttributes_ThunderRidge[] = INCBIN_U16("data/tilesets/secondary/thunder_ridge/metatile_attributes.bin");
+
+const u16 gMetatiles_NsRoom[] = INCBIN_U16("data/tilesets/secondary/ns_room/metatiles.bin");
+const u16 gMetatileAttributes_NsRoom[] = INCBIN_U16("data/tilesets/secondary/ns_room/metatile_attributes.bin");
+

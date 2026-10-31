@@ -490,6 +490,39 @@
 #define METATILE_MtEmber_CaveEntrance    0x4C6
 #define METATILE_MtEmber_MtEmberButton   0x440
 
+// gTileset_NavelRock_HotSprings
+#define METATILE_NavelRock_HotSprings_VentOpen_r0c1  0x4B2
+#define METATILE_NavelRock_HotSprings_VentOpen_r1c1  0x4B3
+#define METATILE_NavelRock_HotSprings_VentOpen_r2c0  0x4B4
+#define METATILE_NavelRock_HotSprings_VentOpen_r2c1  0x4B5
+#define METATILE_NavelRock_HotSprings_VentOpen_r2c2  0x4B6
+
+// gTileset_NavelRock_SteamGallery
+#define METATILE_NavelRock_SteamGallery_GateOpen_r0c0  0x4DF
+#define METATILE_NavelRock_SteamGallery_GateOpen_r0c1  0x4E0
+#define METATILE_NavelRock_SteamGallery_GateOpen_r0c2  0x4E1
+#define METATILE_NavelRock_SteamGallery_GateOpen_r0c3  0x4E2
+#define METATILE_NavelRock_SteamGallery_GateOpen_r0c4  0x4CD
+#define METATILE_NavelRock_SteamGallery_GateOpen_r1c0  0x4E3
+#define METATILE_NavelRock_SteamGallery_GateOpen_r1c1  0x4E4
+#define METATILE_NavelRock_SteamGallery_GateOpen_r1c2  0x4E5
+#define METATILE_NavelRock_SteamGallery_GateOpen_r1c3  0x4E6
+#define METATILE_NavelRock_SteamGallery_GateOpen_r1c4  0x4E7
+#define METATILE_NavelRock_SteamGallery_GateOpen_r2c0  0x4E8
+#define METATILE_NavelRock_SteamGallery_GateOpen_r2c1  0x4E9
+#define METATILE_NavelRock_SteamGallery_GateOpen_r2c2  0x4EA
+#define METATILE_NavelRock_SteamGallery_GateOpen_r2c3  0x4EB
+#define METATILE_NavelRock_SteamGallery_GateOpen_r2c4  0x4EC
+#define METATILE_NavelRock_SteamGallery_GateOpen_r3c0  0x4ED
+#define METATILE_NavelRock_SteamGallery_GateOpen_r3c1  0x4EE
+#define METATILE_NavelRock_SteamGallery_GateOpen_r3c2  0x4EF
+#define METATILE_NavelRock_SteamGallery_GateOpen_r3c3  0x4F0
+#define METATILE_NavelRock_SteamGallery_GateOpen_r3c4  0x4F1
+
+// gTileset_NavelRock_TideGrotto
+#define METATILE_NavelRock_TideGrotto_BreachOpen_r0c0  0x4BC
+#define METATILE_NavelRock_TideGrotto_BreachOpen_r1c0  0x4BD
+
 // gTileset_NewBarkTown
 #define METATILE_NewBarkTown_Door_Blue    0x44B
 #define METATILE_NewBarkTown_Door_Red     0x43D

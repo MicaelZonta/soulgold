@@ -362,10 +362,9 @@ registros** de fala, na própria ficha:
 - O nome da espécie não aparece na fala; ela aparece na batalha.
 - A relação lendário → campeão fica em [`POOL_LENDARIOS.md`](POOL_LENDARIOS.md).
 - **No código:** cada luta do Nexus é um `TRAINER_NEXUS_*` próprio (flag de
-  treinador exclusiva). O jogo está no teto de treinadores (`MAX_TRAINERS_COUNT`
-  = 1164), os IDs 1056–1163 não servem (`RECLAIMED_TRAINER_FLAGS`) e subir o
-  teto desloca o bloco `SYSTEM_FLAGS`; reaproveitar IDs aposentados abaixo de
-  1056 é o caminho mais barato. `_ChampionAfter` usa a plaquinha de fala
+  treinador exclusiva). Desde 31/10/2026 há o **bloco 2** de IDs (1164–1419, flags
+  `0xB00..0xBFF`, `TRAINER_FLAG()` em `constants/flags.h`): treinador novo do Nexus
+  usa um ID dali. `_ChampionAfter` usa a plaquinha de fala
   (skill `nomear-falante`), que pede um `SP_NAME_*` por treinador.
 
 ## R17. O fim da run: só um fragmento

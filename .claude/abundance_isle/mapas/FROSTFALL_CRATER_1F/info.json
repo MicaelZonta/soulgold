@@ -1,0 +1,133 @@
+{
+ "map": "FROSTFALL_CRATER_1F",
+ "ingame": "Frostfall Crater 1F",
+ "map_type": "MAP_TYPE_UNDERGROUND",
+ "connections": [],
+ "explorar": [
+  "Lago congelado: a Snowball fica numa ilha de pedra, alcancada deslizando (17 movimentos)",
+  "Nicho escondido a oeste, entre estalactites: Ice Heal",
+  "Posto de controle do Plasma: dois recrutas no corredor estreito, impossivel passar sem lutar",
+  "Escada da camara leste presa atras de gelo: atalho direto ao laboratorio, abre quando a maquina para",
+  "Hiker preso pelo frio na caverna central",
+  "Lorelei (mestre de gelo de Kanto) na beira do lago congelado, investigando o frio fora de epoca: explica que o gelo \"nao e natural, tem a assinatura de um dragao\"; batalha opcional depois do evento (revanche do Nexus fora do loop)"
+ ],
+ "historia": "Boca da cratera, guardada pelo Neo Plasma. O frio sai do fundo e congela ate o lago da entrada.",
+ "estados": {
+  "dia": "Antes da maquina parar (atalho fechado).",
+  "estado": "Depois: parede de gelo do atalho derretida."
+ },
+ "conferido": "check_objects ok; BFS com deslize da entrada (16,24) ao item do lago, ao nicho e a escada do B1F; atalho (30,4) inalcancavel antes do evento.",
+ "w": 34,
+ "h": 28,
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_Cave_Ice",
+ "warps": [
+  {
+   "x": 16,
+   "y": 25,
+   "dest_map": "MAP_ABUNDANCE_ISLE",
+   "dest_warp_id": "0",
+   "nota": "boca da cratera no hub (11,16)"
+  },
+  {
+   "x": 12,
+   "y": 4,
+   "dest_map": "MAP_FROSTFALL_CRATER_B1F",
+   "dest_warp_id": "0",
+   "nota": "desce para o salao de gelo"
+  },
+  {
+   "x": 30,
+   "y": 4,
+   "dest_map": "MAP_FROSTFALL_CRATER_LAB",
+   "dest_warp_id": "1",
+   "nota": "atalho: so depois que a maquina para (parede de gelo em 25-26,3)"
+  }
+ ],
+ "objects": [
+  {
+   "local_id": "GRUNT_1",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 16,
+   "y": 18,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "FrostfallCrater_1F_EventScript_Grunt1",
+   "flag": "0"
+  },
+  {
+   "local_id": "GRUNT_2",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 17,
+   "y": 15,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "FrostfallCrater_1F_EventScript_Grunt2",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_SNOWBALL",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 9,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_1F_EventScript_ItemSnowball",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_ICEHEAL",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 2,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_1F_EventScript_ItemIceHeal",
+   "flag": "0"
+  },
+  {
+   "local_id": "HIKER",
+   "graphics_id": "OBJ_EVENT_GFX_HIKER",
+   "x": 22,
+   "y": 13,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "FrostfallCrater_1F_EventScript_Hiker",
+   "flag": "0"
+  },
+  {
+   "local_id": "LORELEI",
+   "graphics_id": "OBJ_EVENT_GFX_LORELEI",
+   "x": 15,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_1F_EventScript_Lorelei",
+   "flag": "0"
+  }
+ ]
+}

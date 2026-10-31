@@ -7,19 +7,19 @@ Aparece no checklist como:
 - **Olivia — Pedra** (Alola · Island Kahunas) — Kahuna de Akala e joalheira.
 - **Olivia — Pedra** (Alola · Elite Four e Campeões) — representa Akala na Elite Four.
 
-**Pronto para o Nexus:** ❌ não — o overworld próprio entrou no código em 30/09/2026 (`OBJ_EVENT_GFX_OLIVIA`), mas falta a front pic (obrigatória).
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Olivia/` (o overworld já registrado; a front pic, não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_OLIVIA`, 30/09/2026
-- [ ] Battle sprite / front pic *(obrigatório)* — arte disponível, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte disponível, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026), fora do código
-- [ ] Associado a um lendário — 📝 proposta: Tapu Lele (cedida pela Lillie)
-- [ ] Diálogo genérico escrito — 📝 proposta abaixo, 3 variações
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta abaixo, 3 variações
+- [x] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026), fora do código
+- [x] Associado a um lendário — 📝 proposta: Tapu Lele (cedida pela Lillie)
+- [x] Diálogo genérico escrito — 📝 proposta abaixo, 3 variações
+- [x] Diálogo associado ao lendário escrito — 📝 proposta abaixo, 3 variações
 
 ## Referências no repositório
 
@@ -57,35 +57,16 @@ Homônimo que **não** é a personagem: `TRAINER_OLIVIA` (ID 130, classe Beauty,
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_OLIVIA`, ID **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163), campeã da **Tapu Lele**. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
-
-Pic `Cooltrainer F` — **pic provisória até registrar a arte**. Classe `Elite Four`, música `Elite Four`.
-
-Lendário **Necrozma**, o prisma: uma pedra negra que come luz, para a joalheira que vive de pedras que devolvem a luz. Semi-lendário **Tapu Lele**, a guardiã de Akala, de quem ela é Kahuna e campeã; o Psychic Surge reforça o Photon Geyser do Necrozma. Mega **Aerodactyl** (Rocktite, Tough Claws): o fóssil que volta do Old Amber, a gema que uma joalheira guardaria na vitrine. Mais **Lycanroc** Midnight (o ás dela, do Z-Move Continental Crush), **Probopass** e **Carbink** (a joia viva), do time dela na Elite Four.
-
-*Plano (Singles):* o Carbink põe Stealth Rock e Reflect/Light Screen com Light Clay; a Tapu Lele de Choice Specs bate no Psychic Terrain; o Necrozma arma Calm Mind atrás do Prism Armor e das telas; o Lycanroc de Focus Sash acerta Stone Edge sempre (No Guard); o Probopass de Assault Vest segura os especiais.
-
-*Plano (Doubles):* o formato em que o time brilha (`Double Battle: Yes`). O Psychic Terrain tira a prioridade do outro lado (nada de Fake Out nos aliados no chão); a Mega Aerodactyl põe Tailwind e as duas pedras — dela e do Lycanroc, que nunca erra — caem de Rock Slide nos dois oponentes; o Carbink sustenta as telas. Nenhum golpe do time acerta o parceiro.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Necrozma | Life Orb | Prism Armor | Modest | Photon Geyser, Earth Power, Power Gem, Calm Mind |
-| Tapu Lele | Choice Specs | Psychic Surge | Timid | Psychic, Moonblast, Dazzling Gleam, Focus Blast |
-| Aerodactyl | Rocktite | Unnerve | Jolly | Rock Slide, Dual Wingbeat, Tailwind, Protect |
-| Lycanroc-Midnight | Focus Sash | No Guard | Jolly | Stone Edge, Close Combat, Crunch, Rock Slide |
-| Probopass | Assault Vest | Sturdy | Modest | Power Gem, Earth Power, Thunderbolt, Flash Cannon |
-| Carbink | Light Clay | Sturdy | Bold | Reflect, Light Screen, Stealth Rock, Moonblast |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e categorias)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_OLIVIA` = **1205** (bloco 2, flag `0xB29`), luta genérica `Nexus_EventScript_Olivia_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_OLIVIA ===
 Name: Olivia
-Class: Elite Four
-Pic: Cooltrainer F
+Class: Pkmn Trainer 1
+Pic: Olivia
 Gender: Female
-Music: Elite Four
-Double Battle: Yes
+Music: Female
+Double Battle: No
 AI: Smart Trainer
 
 Necrozma @ Life Orb
@@ -153,12 +134,16 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Light Screen
 - Stealth Rock
 - Moonblast
-
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Tapu Lele** — `Nexus_EventScript_Olivia_TapuLele_ChampionFight` (falas `Nexus_Text_Olivia_TapuLele_Champion*`)
+- **Necrozma** — `Nexus_EventScript_Olivia_Necrozma_ChampionFight` (falas `Nexus_Text_Olivia_Necrozma_Champion*`)
+- **Diancie** — `Nexus_EventScript_Olivia_Diancie_ChampionFight` (falas `Nexus_Text_Olivia_Diancie_Champion*`)
+
 
 #### Tapu Lele
 
@@ -180,9 +165,7 @@ O caderno da Olivia (três páginas) está em [`diario_looker/olivia/`](diario_l
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando a Olivia cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
-
-A Olivia dos jogos fala alto, faz trocadilho com pedra e muda de humor ao lembrar do último namorado. Esta é a única pessoa do fragmento dela que ainda sabe ficar triste — e acha isso um luxo.
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Olivia_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
@@ -197,96 +180,6 @@ A Olivia dos jogos fala alto, faz trocadilho com pedra e muda de humor ao lembra
 > Oof. You cut clean. Nice facets.
 >
 > I'd put you right in the front window.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Olivia_Intro:
-	.string "Alola! Kahuna of Akala, part-time\n"
-	.string "jeweler, full-time rock enthusiast.\p"
-	.string "You know what gems are? Just rocks\n"
-	.string "that got squeezed hard enough, for\l"
-	.string "long enough.\p"
-	.string "So let's squeeze. Hard!$"
-
-Nexus_Text_Olivia_Defeat:
-	.string "Oof. You cut clean. Nice facets.\p"
-	.string "I'd put you right in the front window.$"
-```
-
-</details>
-
-#### Variações 2 e 3 (📝 proposta de 30/09/2026)
-
-**Variação 2** — o coração partido, com humor.
-
-**Antes da luta**
-
-> Word of advice? Never date a guy who calls rocks “just rocks.”
->
-> Never date a guy who forgets your anniversary three years running, either.
->
-> Actually, forget dating. Battling is way more honest. Let's go!
-
-**Derrota**
-
-> …Great. Dumped by a battle, too.
->
-> Kidding! Mostly. You were great.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Olivia_Intro2:
-	.string "Word of advice? Never date a guy who\n"
-	.string "calls rocks “just rocks.”\p"
-	.string "Never date a guy who forgets your\n"
-	.string "anniversary three years running,\l"
-	.string "either.\p"
-	.string "Actually, forget dating. Battling is\n"
-	.string "way more honest. Let's go!$"
-
-Nexus_Text_Olivia_Defeat2:
-	.string "…Great. Dumped by a battle, too.\p"
-	.string "Kidding! Mostly. You were great.$"
-```
-
-</details>
-
-**Variação 3** — o anel esquecido no balcão pelo homem de sobretudo (fio 3 do diário).
-
-**Antes da luta**
-
-> A man in a long coat bought a ring at my shop once. Paid in full.
->
-> Then he walked off and left it on the counter. Never came back for it.
->
-> Some people just leave things behind, huh? Let's battle!
-
-**Derrota**
-
-> Ha! Solid as bedrock. You're a keeper.
->
-> Don't let anybody leave you on a counter, got it?
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Olivia_Intro3:
-	.string "A man in a long coat bought a ring at my\n"
-	.string "shop once. Paid in full.\p"
-	.string "Then he walked off and left it on the\n"
-	.string "counter. Never came back for it.\p"
-	.string "Some people just leave things behind,\n"
-	.string "huh? Let's battle!$"
-
-Nexus_Text_Olivia_Defeat3:
-	.string "Ha! Solid as bedrock. You're a keeper.\p"
-	.string "Don't let anybody leave you on a\n"
-	.string "counter, got it?$"
-```
-
-</details>
 
 ### Diálogo associado ao lendário
 

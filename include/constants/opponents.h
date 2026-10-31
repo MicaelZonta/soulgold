@@ -283,7 +283,7 @@
 #define TRAINER_ARCHER_5                     277
 #define TRAINER_PETREL_2                     278
 #define TRAINER_PROTON_2                     279
-#define TRAINER_UNUSEDNAME_2                     280
+#define TRAINER_ABUNDANCE_FISHERMAN 280
 #define TRAINER_ARNIE_5                      281  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_458
 #define TRAINER_ALAN_2                       282  // Match Call GSC (revanche de telefone); was TRAINER_UNUSED_386
 #define TRAINER_KAREN_3                     283
@@ -466,16 +466,16 @@
 #define TRAINER_DEBRA                       460
 #define TRAINER_LINDA                       461
 #define TRAINER_KAYLEE                      462
-#define TRAINER_UNUSED_024                  463  // Former TRAINER_LAUREL; reserved after legacy-map removal.
-#define TRAINER_UNUSED_436                      464  // Former TRAINER_GRUNT; orphaned party removed.
+#define TRAINER_ABUNDANCE_GALE_CAVE_GRUNT 463  // Former TRAINER_LAUREL; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_GALE_CAVE_HIKER 464  // Former TRAINER_GRUNT; orphaned party removed.
 #define TRAINER_GRUNT_31                     465
-#define TRAINER_UNUSED_388                     466  // Former TRAINER_GRUNT_32; orphaned party removed.
+#define TRAINER_ABUNDANCE_GALE_SHORE_BEAUTY 466  // Former TRAINER_GRUNT_32; orphaned party removed.
 #define TRAINER_PETREL_1                     467
 #define TRAINER_ARCHER                     468
 #define TRAINER_HEIDI                       469
 #define TRAINER_DARIN                       470
 #define TRAINER_CAROL                       471
-#define TRAINER_UNUSED_058                       472  // Former TRAINER_NANCY; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_GALE_SHORE_FISHERMAN 472  // Former TRAINER_NANCY; reserved after legacy-map removal.
 #define TRAINER_MARTHA                      473
 #define TRAINER_KAZU                     474
 #define TRAINER_GRUNT_8                      475
@@ -487,7 +487,7 @@
 #define TRAINER_AMY_AND_MAY               481
 #define TRAINER_ANN_AND_ANNE               482
 #define TRAINER_RUTH              483
-#define TRAINER_UNUSED_021                  484  // Former TRAINER_MIU_AND_YUKI; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_GALE_SHORE_HIKER 484  // Former TRAINER_MIU_AND_YUKI; reserved after legacy-map removal.
 #define TRAINER_AMY_AND_LIV_3               485
 #define TRAINER_RYAN              486
 #define TRAINER_AMY_AND_LIV_4               487
@@ -507,22 +507,22 @@
 #define TRAINER_ELI                             501  // Retained for Battle Tent and Frontier consumers.
 #define TRAINER_CARRIE                      502
 #define TRAINER_RIVAL_TOTODILE_4                      503
-#define TRAINER_UNUSED_022                  504  // Former TRAINER_JONAS; reserved after legacy-map removal.
-#define TRAINER_UNUSED_023                  505  // Former TRAINER_KAYLEY; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_HARVEST_FIELDS_FARMHAND 504  // Former TRAINER_JONAS; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_HARVEST_FIELDS_LASS 505  // Former TRAINER_KAYLEY; reserved after legacy-map removal.
 #define TRAINER_CLYDE                       506
-#define TRAINER_UNUSED_025                  507  // Former TRAINER_KELVIN; reserved after legacy-map removal.
-#define TRAINER_UNUSED_026                  508  // Former TRAINER_MARLEY; reserved after legacy-map removal.
-#define TRAINER_UNUSED_027                  509  // Former TRAINER_REYNA; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_HIKER 507  // Former TRAINER_KELVIN; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_PICNICKER 508  // Former TRAINER_MARLEY; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_SPRING_GROVE_PICNICKER 509  // Former TRAINER_REYNA; reserved after legacy-map removal.
 #define TRAINER_CHUCK_1                      510
 #define TRAINER_GRUNT_27                       511
 #define TRAINER_LOLA                     512
 #define TRAINER_JASMINE_1                      513
-#define TRAINER_UNUSED_472            514  // Former TRAINER_TABITHA_MOSSDEEP; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_CRATER_GUARD 514  // Former TRAINER_TABITHA_MOSSDEEP; pending legacy battle removed.
 #define TRAINER_LORI                     515
 #define TRAINER_MARGRET                     516
 #define TRAINER_MARKUS                     517
 #define TRAINER_MARTIN                     518
-#define TRAINER_UNUSED_473                  519  // Former TRAINER_WALLY_VR_1; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_WINDSWEPT_CAPE_BIRDKEEPER 519  // Former TRAINER_WALLY_VR_1; pending legacy battle removed.
 #define TRAINER_THOM_AND_KAE    520
 #define TRAINER_DUFF_AND_EDA    521
 #define TRAINER_BRASS_TOMO    522  // Berry Master, the Brass Tower memory (part 15); was TRAINER_UNUSED_401 (Brendan Route 119 Mudkip)
@@ -537,88 +537,88 @@
 #define TRAINER_GARDEN_PEONIA_DUO  531  // Berry Master (part 16); was TRAINER_UNUSED_404 (Former TRAINER_MAY_ROUTE_119_MUDKIP; Route 119 legacy trigger removed.)
 #define TRAINER_GARDEN_MUSTARD  532  // Berry Master (part 16); was TRAINER_UNUSED_410 (Former TRAINER_MAY_ROUTE_103_TREECKO; Route 103 legacy trigger removed.)
 #define TRAINER_GARDEN_MOLLY    533  // Berry Master, Molly Hale after the white path (rematch for fun); was TRAINER_UNUSED_399 (Former TRAINER_MAY_ROUTE_110_TREECKO)
-#define TRAINER_UNUSED_405       534  // Former TRAINER_MAY_ROUTE_119_TREECKO; Route 119 legacy trigger removed.
-#define TRAINER_UNUSED_411       535  // Former TRAINER_MAY_ROUTE_103_TORCHIC; Route 103 legacy trigger removed.
-#define TRAINER_UNUSED_400       536  // Former TRAINER_MAY_ROUTE_110_TORCHIC; Route 110 legacy trigger removed.
-#define TRAINER_UNUSED_406       537  // Former TRAINER_MAY_ROUTE_119_TORCHIC; Route 119 legacy trigger removed.
+#define TRAINER_ABUNDANCE_WINDSWEPT_CAPE_FISHERMAN 534  // Former TRAINER_MAY_ROUTE_119_TREECKO; Route 119 legacy trigger removed.
+#define TRAINER_ABUNDANCE_EMBERDUNE_ISLE_DIGGER_1 535  // Former TRAINER_MAY_ROUTE_103_TORCHIC; Route 103 legacy trigger removed.
+#define TRAINER_ABUNDANCE_EMBERDUNE_ISLE_DIGGER_2 536  // Former TRAINER_MAY_ROUTE_110_TORCHIC; Route 110 legacy trigger removed.
+#define TRAINER_ABUNDANCE_EMBERDUNE_ISLE_HIKER 537  // Former TRAINER_MAY_ROUTE_119_TORCHIC; Route 119 legacy trigger removed.
 #define TRAINER_CHUCK_1_3                     538
 #define TRAINER_JOE                       539
-#define TRAINER_UNUSED_059                    540  // Former TRAINER_MITCHELL; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_EMBERDUNE_ISLE_RUIN_MANIAC 540  // Former TRAINER_MITCHELL; reserved after legacy-map removal.
 #define TRAINER_CLAIR_1                     541
 #define TRAINER_CLAIR_2                     542
 #define TRAINER_BROCK                     543
 #define TRAINER_MISTY                     544
-#define TRAINER_UNUSED_474                     545  // Former TRAINER_LYDIA_1; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_FROSTFALL_CRATER_1F_GRUNT_1 545  // Former TRAINER_LYDIA_1; pending legacy battle removed.
 #define TRAINER_PRYCE_1                       546
-#define TRAINER_UNUSED_437                    547  // Former TRAINER_RUSS; orphaned party removed.
+#define TRAINER_ABUNDANCE_FROSTFALL_CRATER_1F_GRUNT_2 547  // Former TRAINER_RUSS; orphaned party removed.
 #define TRAINER_LYDIA_2                     548
 #define TRAINER_LYDIA_3                     549
 #define TRAINER_LYDIA_4                     550
 #define TRAINER_LYDIA_5                     551
 #define TRAINER_RIVAL_CHIKORITA_4                   552
-#define TRAINER_UNUSED_061                     553  // Former TRAINER_LORENZO; reserved after legacy-map removal.
-#define TRAINER_UNUSED_062                   554  // Former TRAINER_SEBASTIAN; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_FROSTFALL_CRATER_1F_HIKER 553  // Former TRAINER_LORENZO; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_FROSTFALL_CRATER_B1F_BOARDER 554  // Former TRAINER_SEBASTIAN; reserved after legacy-map removal.
 #define TRAINER_RIVAL_CHIKORITA_5                   555
 #define TRAINER_RIVAL_CHIKORITA_6                   556
 #define TRAINER_RIVAL_CHIKORITA_7                   557
 #define TRAINER_RIVAL_CYNDAQUIL_1                   558
 #define TRAINER_GRUNT_3                 559
 #define TRAINER_EUSINE                       560
-#define TRAINER_UNUSED_063                      561  // Former TRAINER_SOPHIA; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_FROSTFALL_CRATER_B1F_SCIENTIST 561  // Former TRAINER_SOPHIA; reserved after legacy-map removal.
 #define TRAINER_GRUNT_4                 562
 #define TRAINER_GRUNT_5                 563
 #define TRAINER_GRUNT_6                 564
 #define TRAINER_GRUNT_7                 565
-#define TRAINER_UNUSED_010                  566  // Former TRAINER_JULIO; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_FROSTFALL_CRATER_LAB_GRUNT_3 566  // Former TRAINER_JULIO; reserved after legacy-map removal.
 #define TRAINER_VANCE     567
 #define TRAINER_STEVEN2                     568
 #define TRAINER_TOBY             569
 #define TRAINER_TERRELL           570
 #define TRAINER_MARC                        571
-#define TRAINER_UNUSED_007                  572  // Former TRAINER_BRENDEN; reserved after legacy-map removal.
-#define TRAINER_UNUSED_008                  573  // Former TRAINER_LILITH; reserved after legacy-map removal.
-#define TRAINER_UNUSED_389                    574  // Former TRAINER_HARVEY; orphaned party removed.
-#define TRAINER_UNUSED_064                      575  // Former TRAINER_SYLVIA; reserved after legacy-map removal.
-#define TRAINER_UNUSED_065                    576  // Former TRAINER_LEONARDO; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_FROSTFALL_CRATER_LAB_GRUNT_4 572  // Former TRAINER_BRENDEN; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_CABINS_GHETSIS_GUARD 573  // Former TRAINER_LILITH; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_CABINS_GRUNT_LOCKER_1 574  // Former TRAINER_HARVEY; orphaned party removed.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_CABINS_GRUNT_LOCKER_2 575  // Former TRAINER_SYLVIA; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_DECK_GRUNT_E 576  // Former TRAINER_LEONARDO; reserved after legacy-map removal.
 #define TRAINER_CHOW                      577
 #define TRAINER_PRYCE_1_2                    578
 #define TRAINER_THEO          579
-#define TRAINER_UNUSED_390                    580  // Former TRAINER_GRUNT_24; orphaned party removed.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_DECK_GRUNT_GANG 580  // Former TRAINER_GRUNT_24; orphaned party removed.
 #define TRAINER_TERRY                       581
 #define TRAINER_NATE                        582
-#define TRAINER_UNUSED_066                    583  // Former TRAINER_KATHLEEN; reserved after legacy-map removal.
-#define TRAINER_UNUSED_067                    584  // Former TRAINER_CLIFFORD; reserved after legacy-map removal.
-#define TRAINER_UNUSED_068                    585  // Former TRAINER_NICHOLAS; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_DECK_GRUNT_N 583  // Former TRAINER_KATHLEEN; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_DECK_GRUNT_S 584  // Former TRAINER_CLIFFORD; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_ENGINE_ROOM_ASSIST_1 585  // Former TRAINER_NICHOLAS; reserved after legacy-map removal.
 #define TRAINER_WALT        586
-#define TRAINER_UNUSED_391        587  // Former TRAINER_WALTER; orphaned party removed.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_ENGINE_ROOM_ASSIST_2 587  // Former TRAINER_WALTER; orphaned party removed.
 #define TRAINER_WILTON        588
 #define TRAINER_YOSHI        589
 #define TRAINER_ZACH        590
-#define TRAINER_UNUSED_069                       591  // Former TRAINER_MACEY; reserved after legacy-map removal.
-#define TRAINER_UNUSED_412    592  // Former TRAINER_BRENDAN_RUSTBORO_TREECKO; Rustboro legacy triggers removed.
-#define TRAINER_UNUSED_413     593  // Former TRAINER_BRENDAN_RUSTBORO_MUDKIP; Rustboro legacy triggers removed.
-#define TRAINER_UNUSED_070                      594  // Former TRAINER_PAXTON; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_ENGINE_ROOM_CHIEF 591  // Former TRAINER_MACEY; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_HOLD_GRUNT_BUNK_1 592  // Former TRAINER_BRENDAN_RUSTBORO_TREECKO; Rustboro legacy triggers removed.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_HOLD_GRUNT_BUNK_2 593  // Former TRAINER_BRENDAN_RUSTBORO_MUDKIP; Rustboro legacy triggers removed.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_HOLD_GRUNT_HALL 594  // Former TRAINER_PAXTON; reserved after legacy-map removal.
 #define TRAINER_BLUE                    595
 #define TRAINER_BUGSY_1        596
-#define TRAINER_UNUSED_476          597  // Former TRAINER_TABITHA_MT_CHIMNEY; pending legacy battle removed.
-#define TRAINER_UNUSED_071                    598  // Former TRAINER_JONATHAN; reserved after legacy-map removal.
-#define TRAINER_UNUSED_414    599  // Former TRAINER_BRENDAN_RUSTBORO_TORCHIC; Rustboro legacy triggers removed.
-#define TRAINER_UNUSED_415         600  // Former TRAINER_MAY_RUSTBORO_MUDKIP; Rustboro legacy triggers removed.
-#define TRAINER_UNUSED_477         601  // Former TRAINER_MAXIE_MAGMA_HIDEOUT; pending legacy battle removed.
-#define TRAINER_UNUSED_478            602  // Former TRAINER_MAXIE_MT_CHIMNEY; pending legacy battle removed.
-#define TRAINER_UNUSED_479                       603  // Former TRAINER_TIANA; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_PLASMA_FRIGATE_HOLD_RESEARCHER 597  // Former TRAINER_TABITHA_MT_CHIMNEY; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_THUNDERSPIRE_1F_GRUNT_1 598  // Former TRAINER_JONATHAN; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_THUNDERSPIRE_1F_GRUNT_2 599  // Former TRAINER_BRENDAN_RUSTBORO_TORCHIC; Rustboro legacy triggers removed.
+#define TRAINER_ABUNDANCE_THUNDERSPIRE_2F_GRUNT_3 600  // Former TRAINER_MAY_RUSTBORO_MUDKIP; Rustboro legacy triggers removed.
+#define TRAINER_ABUNDANCE_THUNDERSPIRE_2F_GRUNT_4 601  // Former TRAINER_MAXIE_MAGMA_HIDEOUT; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_THUNDERSPIRE_3F_GRUNT_1 602  // Former TRAINER_MAXIE_MT_CHIMNEY; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_THUNDERSPIRE_3F_GRUNT_2 603  // Former TRAINER_TIANA; pending legacy battle removed.
 #define TRAINER_WHITNEY_1                     604
 #define TRAINER_RIVAL_TOTODILE_1                      605
-#define TRAINER_UNUSED_480                        606  // Former TRAINER_VIVI; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_THUNDERSPIRE_3F_GRUNT_3 606  // Former TRAINER_VIVI; pending legacy battle removed.
 #define TRAINER_WHITNEY_2                     607
 #define TRAINER_MORTY_1                     608
 #define TRAINER_MORTY_2                     609
 #define TRAINER_JAMIE                    610
-#define TRAINER_UNUSED_073                       611  // Former TRAINER_SALLY; reserved after legacy-map removal.
-#define TRAINER_UNUSED_074                       612  // Former TRAINER_ROBIN; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_THUNDER_RIDGE_BLACK_BELT 611  // Former TRAINER_SALLY; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_THUNDER_RIDGE_GRUNT 612  // Former TRAINER_ROBIN; reserved after legacy-map removal.
 #define TRAINER_BRIAN                      613
 #define TRAINER_HARRY                      614
-#define TRAINER_UNUSED_497                  615  // Former TRAINER_RICK; legacy Route 102 battle removed.
+#define TRAINER_ABUNDANCE_THUNDER_RIDGE_HIKER 615  // Former TRAINER_RICK; legacy Route 102 battle removed.
 #define TRAINER_LYLE                        616
 #define TRAINER_JOSE                        617
 #define TRAINER_DOUG                        618
@@ -630,72 +630,72 @@
 #define TRAINER_RIVAL_CYNDAQUIL_7                     624
 #define TRAINER_RIVAL_TOTODILE_2                     625
 #define TRAINER_ELLIOT                       626
-#define TRAINER_UNUSED_498                  627  // Former TRAINER_TRENT_1; legacy Route 112 battle removed.
-#define TRAINER_UNUSED_075                       628  // Former TRAINER_LENNY; reserved after legacy-map removal.
-#define TRAINER_UNUSED_076                     629  // Former TRAINER_LUCAS_1; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_TRUTHSAND_RUINS_1F_GRUNT_CAMP 627  // Former TRAINER_TRENT_1; legacy Route 112 battle removed.
+#define TRAINER_ABUNDANCE_TRUTHSAND_RUINS_1F_GRUNT_LADDER 628  // Former TRAINER_LENNY; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_TRUTHSAND_RUINS_1F_RUIN_MANIAC 629  // Former TRAINER_LUCAS_1; reserved after legacy-map removal.
 #define TRAINER_ALAN                        630
-#define TRAINER_UNUSED_077                       631  // Former TRAINER_CLARK; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_TRUTHSAND_RUINS_B1F_GRUNT 631  // Former TRAINER_CLARK; reserved after legacy-map removal.
 #define TRAINER_ERIC                        632
 #define TRAINER_LUCAS_2                     633
 #define TRAINER_MIKE_1                      634
-#define TRAINER_UNUSED_078                      635  // Former TRAINER_MIKE_2; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_TRUTHSAND_RUINS_B1F_PLASMA_CHIEF 635  // Former TRAINER_MIKE_2; reserved after legacy-map removal.
 #define TRAINER_TRENT_2                     636
 #define TRAINER_TRENT_3                     637
 #define TRAINER_TRENT_4                     638
 #define TRAINER_TRENT_5                     639
-#define TRAINER_UNUSED_017                  640  // Former TRAINER_DEZ_AND_LUKE; reserved after legacy-map removal.
-#define TRAINER_UNUSED_447                 641  // Former TRAINER_LEA_AND_JED; pending legacy battle removed.
-#define TRAINER_UNUSED_448              642  // Former TRAINER_KIRA_AND_DAN_1; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_TRUTHSAND_RUINS_B1F_RUIN_MANIAC 640  // Former TRAINER_DEZ_AND_LUKE; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_GHETSIS_1 641  // Former TRAINER_LEA_AND_JED; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_GHETSIS_2 642  // Former TRAINER_KIRA_AND_DAN_1; pending legacy battle removed.
 #define TRAINER_KIRA_AND_DAN_2              643
 #define TRAINER_KIRA_AND_DAN_3              644
 #define TRAINER_KIRA_AND_DAN_4              645
 #define TRAINER_KIRA_AND_DAN_5              646
-#define TRAINER_UNUSED_499                  647  // Former TRAINER_JOHANNA; legacy Route 109 Seashore House battle removed.
+#define TRAINER_ABUNDANCE_GHETSIS_3 647  // Former TRAINER_JOHANNA; legacy Route 109 Seashore House battle removed.
 #define TRAINER_RUSSELL                      648
-#define TRAINER_UNUSED_079                      649  // Former TRAINER_VIVIAN; reserved after legacy-map removal.
-#define TRAINER_UNUSED_438                    650  // Former TRAINER_KENDRA; orphaned party removed.
+#define TRAINER_ABUNDANCE_N_AND_HILDA 649  // Former TRAINER_VIVIAN; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_SUNSET_STRAIT_SWIMMER_1 650  // Former TRAINER_KENDRA; orphaned party removed.
 #define TRAINER_JASMINE_1_2                       651
-#define TRAINER_UNUSED_081                       652  // Former TRAINER_KEIGO; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_SUNSET_STRAIT_SWIMMER_2 652  // Former TRAINER_KEIGO; reserved after legacy-map removal.
 #define TRAINER_RILEY                       653
 #define TRAINER_RAY                       654
 #define TRAINER_CHARLES                      655
-#define TRAINER_UNUSED_445              656  // Former TRAINER_WALLY_MAUVILLE; pending legacy battle removed.
-#define TRAINER_UNUSED_446                  657  // Former TRAINER_WALLY_VR_2; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_SUNSET_STRAIT_SWIMMER_3 656  // Former TRAINER_WALLY_MAUVILLE; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_SUNSET_STRAIT_SWIMMER_4 657  // Former TRAINER_WALLY_VR_2; pending legacy battle removed.
 #define TRAINER_WALLY_VR_3                  658
 #define TRAINER_WALLY_VR_4                  659
 #define TRAINER_WALLY_VR_5                  660
-#define TRAINER_UNUSED_418     661  // Former TRAINER_BRENDAN_LILYCOVE_MUDKIP; Lilycove legacy trigger removed.
-#define TRAINER_UNUSED_419    662  // Former TRAINER_BRENDAN_LILYCOVE_TREECKO; Lilycove legacy trigger removed.
-#define TRAINER_UNUSED_420    663  // Former TRAINER_BRENDAN_LILYCOVE_TORCHIC; Lilycove legacy trigger removed.
-#define TRAINER_UNUSED_421         664  // Former TRAINER_MAY_LILYCOVE_MUDKIP; Lilycove legacy trigger removed.
-#define TRAINER_UNUSED_422        665  // Former TRAINER_MAY_LILYCOVE_TREECKO; Lilycove legacy trigger removed.
-#define TRAINER_UNUSED_423        666  // Former TRAINER_MAY_LILYCOVE_TORCHIC; Lilycove legacy trigger removed.
+#define TRAINER_ABUNDANCE_LENORA 661  // Former TRAINER_BRENDAN_LILYCOVE_MUDKIP; Lilycove legacy trigger removed.
+#define TRAINER_ABUNDANCE_CYNTHIA 662  // Former TRAINER_BRENDAN_LILYCOVE_TREECKO; Lilycove legacy trigger removed.
+#define TRAINER_ABUNDANCE_JESSIE_JAMES 663  // Former TRAINER_BRENDAN_LILYCOVE_TORCHIC; Lilycove legacy trigger removed.
+#define TRAINER_ABUNDANCE_VOLKNER 664  // Former TRAINER_MAY_LILYCOVE_MUDKIP; Lilycove legacy trigger removed.
+#define TRAINER_ABUNDANCE_ELESA 665  // Former TRAINER_MAY_LILYCOVE_TREECKO; Lilycove legacy trigger removed.
+#define TRAINER_ABUNDANCE_WINONA 666  // Former TRAINER_MAY_LILYCOVE_TORCHIC; Lilycove legacy trigger removed.
 #define TRAINER_JONAH                       667
 #define TRAINER_HENRY                       668
-#define TRAINER_UNUSED_080                  669  // Former TRAINER_ROGER; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_BYRON 669  // Former TRAINER_ROGER; reserved after legacy-map removal.
 #define TRAINER_BAILEY                       670
-#define TRAINER_UNUSED_500                  671  // Former TRAINER_RUBEN; legacy Route 128 battle removed.
-#define TRAINER_UNUSED_501                  672  // Former TRAINER_KOJI_1; legacy Route 127 battle removed.
+#define TRAINER_ABUNDANCE_ZINNIA 671  // Former TRAINER_RUBEN; legacy Route 128 battle removed.
+#define TRAINER_ABUNDANCE_GARDENIA 672  // Former TRAINER_KOJI_1; legacy Route 127 battle removed.
 #define TRAINER_WAYNE                       673
-#define TRAINER_UNUSED_392                       674  // Former TRAINER_ANDY; orphaned party removed.
-#define TRAINER_UNUSED_082                        675  // Former TRAINER_REED; reserved after legacy-map removal.
-#define TRAINER_UNUSED_083                       676  // Former TRAINER_TISHA; reserved after legacy-map removal.
-#define TRAINER_UNUSED_036                  677  // Former TRAINER_TORI_AND_TIA; reserved after legacy-map removal.
-#define TRAINER_UNUSED_485                678  // Former TRAINER_KIM_AND_IRIS; pending legacy battle removed.
-#define TRAINER_UNUSED_486                679  // Former TRAINER_TYRA_AND_IVY; pending legacy battle removed.
-#define TRAINER_UNUSED_487                680  // Former TRAINER_MEL_AND_PAUL; pending legacy battle removed.
-#define TRAINER_UNUSED_481              681  // Former TRAINER_JOHN_AND_JAY_1; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_NEMONA 674  // Former TRAINER_ANDY; orphaned party removed.
+#define TRAINER_ABUNDANCE_BARRY 675  // Former TRAINER_REED; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_LUCY 676  // Former TRAINER_TISHA; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_SPENSER 677  // Former TRAINER_TORI_AND_TIA; reserved after legacy-map removal.
+#define TRAINER_ABUNDANCE_TATE_LIZA 678  // Former TRAINER_KIM_AND_IRIS; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_GRETA 679  // Former TRAINER_TYRA_AND_IVY; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_NOLAND 680  // Former TRAINER_MEL_AND_PAUL; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_ARENA_LEON 681  // Former TRAINER_JOHN_AND_JAY_1; pending legacy battle removed.
 #define TRAINER_JOHN_AND_JAY_2              682
 #define TRAINER_JOHN_AND_JAY_3              683
 #define TRAINER_JOHN_AND_JAY_4              684
 #define TRAINER_JOHN_AND_JAY_5              685
-#define TRAINER_UNUSED_482                686  // Former TRAINER_RELI_AND_IAN; pending legacy battle removed.
-#define TRAINER_UNUSED_483              687  // Former TRAINER_LILA_AND_ROY_1; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_ARENA_CYNTHIA 686  // Former TRAINER_RELI_AND_IAN; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_ARENA_DIANTHA 687  // Former TRAINER_LILA_AND_ROY_1; pending legacy battle removed.
 #define TRAINER_LILA_AND_ROY_2              688
 #define TRAINER_LILA_AND_ROY_3              689
 #define TRAINER_LILA_AND_ROY_4              690
 #define TRAINER_LILA_AND_ROY_5              691
-#define TRAINER_UNUSED_484                692  // Former TRAINER_LISA_AND_RAY; pending legacy battle removed.
+#define TRAINER_ABUNDANCE_ARENA_VOLKNER 692  // Former TRAINER_LISA_AND_RAY; pending legacy battle removed.
 #define TRAINER_GRUNT_17                       693
 #define TRAINER_JOEL                      694
 #define TRAINER_UNUSED_084                       695  // Former TRAINER_SARAH; reserved after legacy-map removal.
@@ -723,9 +723,9 @@
 #define TRAINER_RICHARDO       717
 #define TRAINER_NARD       718
 #define TRAINER_UNUSED_091       719  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_4; reserved after legacy-map removal.
-#define TRAINER_UNUSED_092       720  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_5; reserved after legacy-map removal.
-#define TRAINER_UNUSED_093       721  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_6; reserved after legacy-map removal.
-#define TRAINER_UNUSED_094       722  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_7; reserved after legacy-map removal.
+#define TRAINER_GUZMA            720  // mora no Mt. Ember por agenda (src/data/npc_schedule.h); era TRAINER_UNUSED_092
+#define TRAINER_HAU              721  // Ember Spa / One Island / Kindle Road por agenda; era TRAINER_UNUSED_093
+#define TRAINER_KAHUNA_OLIVIA    722  // Ruby Path / Ember Spa / One Island por agenda; era TRAINER_UNUSED_094
 #define TRAINER_UNUSED_095       723  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_8; reserved after legacy-map removal.
 #define TRAINER_UNUSED_096       724  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_9; reserved after legacy-map removal.
 #define TRAINER_UNUSED_097      725  // Former TRAINER_GRUNT_MAGMA_HIDEOUT_10; reserved after legacy-map removal.
@@ -1144,14 +1144,275 @@
 #define TRAINER_UNUSED_297                1161
 #define TRAINER_UNUSED_298                1162
 #define TRAINER_UNUSED_299                1163
-#define TRAINER_UNUSED_300                1164 // This is out of range, don't touch (it refers to FLAG_SYS_POKEMON_GET)
 
-// NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
-//       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
-//       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
+// Bloco 2 de treinadores (31/10/2026): IDs 1164..1419. A flag de derrotado NAO e 0x500 + ID:
+// fica em TRAINER_FLAGS_2_START + (ID - TRAINER_FLAG_BLOCK1_COUNT), ver TRAINER_FLAG() em constants/flags.h.
+// Para usar: renomeie o TRAINER_UNUSED_<ID> mantendo o numero (ids_livres.py lista os livres).
+#define TRAINER_NEXUS_AZ                  1164  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_AGATHA              1165  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_ALDER               1166  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_ALLISTER            1167  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_AVERY               1168  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_BARRY               1169  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_BEA                 1170  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_BRYCEN              1171  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_CHEREN              1172  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_CILAN               1173  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_CYNTHIA             1174  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_CYRUS               1175  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_DAWN                1176  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_DIANTHA             1177  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_GARDENIA            1178  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_GHETSIS             1179  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_GLORIA              1180  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_GRUSHA              1181  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_HASSEL              1182  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_HAU                 1183  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_HILDA               1184  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_HOP                 1185  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_IONO                1186  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_IRIS                1187  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_JESSIE_JAMES        1188  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_JUNIPER             1189  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_KATY                1190  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_KLARA               1191  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_KORRINA             1192  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_LARRY               1193  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_LENORA              1194  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_LEON                1195  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_LORELEI             1196  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_LYSANDRE            1197  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_MARNIE              1198  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_MELONY              1199  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_MOLLY               1200  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_MUSTARD             1201  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_N                   1202  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_NEMONA              1203  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_NESSA               1204  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_OLIVIA              1205  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_PEONIA              1206  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_PEONY               1207  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_ROWAN               1208  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_ROSA                1209  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_SERENA              1210  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_SHELLY              1211  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_SKYLA               1212  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_TULIP               1213  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_VALERIE             1214  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_VIOLA               1215  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_NEXUS_ZINNIA              1216  // Nexus, lote de 31/10/2026 (bloco 2)
+#define TRAINER_UNUSED_1217              1217
+#define TRAINER_UNUSED_1218              1218
+#define TRAINER_UNUSED_1219              1219
+#define TRAINER_UNUSED_1220              1220
+#define TRAINER_UNUSED_1221              1221
+#define TRAINER_UNUSED_1222              1222
+#define TRAINER_UNUSED_1223              1223
+#define TRAINER_UNUSED_1224              1224
+#define TRAINER_UNUSED_1225              1225
+#define TRAINER_UNUSED_1226              1226
+#define TRAINER_UNUSED_1227              1227
+#define TRAINER_UNUSED_1228              1228
+#define TRAINER_UNUSED_1229              1229
+#define TRAINER_UNUSED_1230              1230
+#define TRAINER_UNUSED_1231              1231
+#define TRAINER_UNUSED_1232              1232
+#define TRAINER_UNUSED_1233              1233
+#define TRAINER_UNUSED_1234              1234
+#define TRAINER_UNUSED_1235              1235
+#define TRAINER_UNUSED_1236              1236
+#define TRAINER_UNUSED_1237              1237
+#define TRAINER_UNUSED_1238              1238
+#define TRAINER_UNUSED_1239              1239
+#define TRAINER_UNUSED_1240              1240
+#define TRAINER_UNUSED_1241              1241
+#define TRAINER_UNUSED_1242              1242
+#define TRAINER_UNUSED_1243              1243
+#define TRAINER_UNUSED_1244              1244
+#define TRAINER_UNUSED_1245              1245
+#define TRAINER_UNUSED_1246              1246
+#define TRAINER_UNUSED_1247              1247
+#define TRAINER_UNUSED_1248              1248
+#define TRAINER_UNUSED_1249              1249
+#define TRAINER_UNUSED_1250              1250
+#define TRAINER_UNUSED_1251              1251
+#define TRAINER_UNUSED_1252              1252
+#define TRAINER_UNUSED_1253              1253
+#define TRAINER_UNUSED_1254              1254
+#define TRAINER_UNUSED_1255              1255
+#define TRAINER_UNUSED_1256              1256
+#define TRAINER_UNUSED_1257              1257
+#define TRAINER_UNUSED_1258              1258
+#define TRAINER_UNUSED_1259              1259
+#define TRAINER_UNUSED_1260              1260
+#define TRAINER_UNUSED_1261              1261
+#define TRAINER_UNUSED_1262              1262
+#define TRAINER_UNUSED_1263              1263
+#define TRAINER_UNUSED_1264              1264
+#define TRAINER_UNUSED_1265              1265
+#define TRAINER_UNUSED_1266              1266
+#define TRAINER_UNUSED_1267              1267
+#define TRAINER_UNUSED_1268              1268
+#define TRAINER_UNUSED_1269              1269
+#define TRAINER_UNUSED_1270              1270
+#define TRAINER_UNUSED_1271              1271
+#define TRAINER_UNUSED_1272              1272
+#define TRAINER_UNUSED_1273              1273
+#define TRAINER_UNUSED_1274              1274
+#define TRAINER_UNUSED_1275              1275
+#define TRAINER_UNUSED_1276              1276
+#define TRAINER_UNUSED_1277              1277
+#define TRAINER_UNUSED_1278              1278
+#define TRAINER_UNUSED_1279              1279
+#define TRAINER_UNUSED_1280              1280
+#define TRAINER_UNUSED_1281              1281
+#define TRAINER_UNUSED_1282              1282
+#define TRAINER_UNUSED_1283              1283
+#define TRAINER_UNUSED_1284              1284
+#define TRAINER_UNUSED_1285              1285
+#define TRAINER_UNUSED_1286              1286
+#define TRAINER_UNUSED_1287              1287
+#define TRAINER_UNUSED_1288              1288
+#define TRAINER_UNUSED_1289              1289
+#define TRAINER_UNUSED_1290              1290
+#define TRAINER_UNUSED_1291              1291
+#define TRAINER_UNUSED_1292              1292
+#define TRAINER_UNUSED_1293              1293
+#define TRAINER_UNUSED_1294              1294
+#define TRAINER_UNUSED_1295              1295
+#define TRAINER_UNUSED_1296              1296
+#define TRAINER_UNUSED_1297              1297
+#define TRAINER_UNUSED_1298              1298
+#define TRAINER_UNUSED_1299              1299
+#define TRAINER_UNUSED_1300              1300
+#define TRAINER_UNUSED_1301              1301
+#define TRAINER_UNUSED_1302              1302
+#define TRAINER_UNUSED_1303              1303
+#define TRAINER_UNUSED_1304              1304
+#define TRAINER_UNUSED_1305              1305
+#define TRAINER_UNUSED_1306              1306
+#define TRAINER_UNUSED_1307              1307
+#define TRAINER_UNUSED_1308              1308
+#define TRAINER_UNUSED_1309              1309
+#define TRAINER_UNUSED_1310              1310
+#define TRAINER_UNUSED_1311              1311
+#define TRAINER_UNUSED_1312              1312
+#define TRAINER_UNUSED_1313              1313
+#define TRAINER_UNUSED_1314              1314
+#define TRAINER_UNUSED_1315              1315
+#define TRAINER_UNUSED_1316              1316
+#define TRAINER_UNUSED_1317              1317
+#define TRAINER_UNUSED_1318              1318
+#define TRAINER_UNUSED_1319              1319
+#define TRAINER_UNUSED_1320              1320
+#define TRAINER_UNUSED_1321              1321
+#define TRAINER_UNUSED_1322              1322
+#define TRAINER_UNUSED_1323              1323
+#define TRAINER_UNUSED_1324              1324
+#define TRAINER_UNUSED_1325              1325
+#define TRAINER_UNUSED_1326              1326
+#define TRAINER_UNUSED_1327              1327
+#define TRAINER_UNUSED_1328              1328
+#define TRAINER_UNUSED_1329              1329
+#define TRAINER_UNUSED_1330              1330
+#define TRAINER_UNUSED_1331              1331
+#define TRAINER_UNUSED_1332              1332
+#define TRAINER_UNUSED_1333              1333
+#define TRAINER_UNUSED_1334              1334
+#define TRAINER_UNUSED_1335              1335
+#define TRAINER_UNUSED_1336              1336
+#define TRAINER_UNUSED_1337              1337
+#define TRAINER_UNUSED_1338              1338
+#define TRAINER_UNUSED_1339              1339
+#define TRAINER_UNUSED_1340              1340
+#define TRAINER_UNUSED_1341              1341
+#define TRAINER_UNUSED_1342              1342
+#define TRAINER_UNUSED_1343              1343
+#define TRAINER_UNUSED_1344              1344
+#define TRAINER_UNUSED_1345              1345
+#define TRAINER_UNUSED_1346              1346
+#define TRAINER_UNUSED_1347              1347
+#define TRAINER_UNUSED_1348              1348
+#define TRAINER_UNUSED_1349              1349
+#define TRAINER_UNUSED_1350              1350
+#define TRAINER_UNUSED_1351              1351
+#define TRAINER_UNUSED_1352              1352
+#define TRAINER_UNUSED_1353              1353
+#define TRAINER_UNUSED_1354              1354
+#define TRAINER_UNUSED_1355              1355
+#define TRAINER_UNUSED_1356              1356
+#define TRAINER_UNUSED_1357              1357
+#define TRAINER_UNUSED_1358              1358
+#define TRAINER_UNUSED_1359              1359
+#define TRAINER_UNUSED_1360              1360
+#define TRAINER_UNUSED_1361              1361
+#define TRAINER_UNUSED_1362              1362
+#define TRAINER_UNUSED_1363              1363
+#define TRAINER_UNUSED_1364              1364
+#define TRAINER_UNUSED_1365              1365
+#define TRAINER_UNUSED_1366              1366
+#define TRAINER_UNUSED_1367              1367
+#define TRAINER_UNUSED_1368              1368
+#define TRAINER_UNUSED_1369              1369
+#define TRAINER_UNUSED_1370              1370
+#define TRAINER_UNUSED_1371              1371
+#define TRAINER_UNUSED_1372              1372
+#define TRAINER_UNUSED_1373              1373
+#define TRAINER_UNUSED_1374              1374
+#define TRAINER_UNUSED_1375              1375
+#define TRAINER_UNUSED_1376              1376
+#define TRAINER_UNUSED_1377              1377
+#define TRAINER_UNUSED_1378              1378
+#define TRAINER_UNUSED_1379              1379
+#define TRAINER_UNUSED_1380              1380
+#define TRAINER_UNUSED_1381              1381
+#define TRAINER_UNUSED_1382              1382
+#define TRAINER_UNUSED_1383              1383
+#define TRAINER_UNUSED_1384              1384
+#define TRAINER_UNUSED_1385              1385
+#define TRAINER_UNUSED_1386              1386
+#define TRAINER_UNUSED_1387              1387
+#define TRAINER_UNUSED_1388              1388
+#define TRAINER_UNUSED_1389              1389
+#define TRAINER_UNUSED_1390              1390
+#define TRAINER_UNUSED_1391              1391
+#define TRAINER_UNUSED_1392              1392
+#define TRAINER_UNUSED_1393              1393
+#define TRAINER_UNUSED_1394              1394
+#define TRAINER_UNUSED_1395              1395
+#define TRAINER_UNUSED_1396              1396
+#define TRAINER_UNUSED_1397              1397
+#define TRAINER_UNUSED_1398              1398
+#define TRAINER_UNUSED_1399              1399
+#define TRAINER_UNUSED_1400              1400
+#define TRAINER_UNUSED_1401              1401
+#define TRAINER_UNUSED_1402              1402
+#define TRAINER_UNUSED_1403              1403
+#define TRAINER_UNUSED_1404              1404
+#define TRAINER_UNUSED_1405              1405
+#define TRAINER_UNUSED_1406              1406
+#define TRAINER_UNUSED_1407              1407
+#define TRAINER_UNUSED_1408              1408
+#define TRAINER_UNUSED_1409              1409
+#define TRAINER_UNUSED_1410              1410
+#define TRAINER_UNUSED_1411              1411
+#define TRAINER_UNUSED_1412              1412
+#define TRAINER_UNUSED_1413              1413
+#define TRAINER_UNUSED_1414              1414
+#define TRAINER_UNUSED_1415              1415
+#define TRAINER_UNUSED_1416              1416
+#define TRAINER_UNUSED_1417              1417
+#define TRAINER_UNUSED_1418              1418
+#define TRAINER_UNUSED_1419              1419
 
-#define TRAINERS_COUNT                      1164
-#define MAX_TRAINERS_COUNT                  1164
+// Cada treinador tem uma flag de "derrotado". IDs 0..1163 (bloco 1) usam TRAINER_FLAGS_START + ID;
+// IDs 1164..1419 (bloco 2) usam TRAINER_FLAGS_2_START + (ID - 1164). Use sempre TRAINER_FLAG(id).
+// O bloco 1 nao pode crescer: logo depois dele comecam as flags de sistema (FLAG_SYS_POKEMON_GET).
+// Para mais treinadores, aumente TRAINERS_COUNT ate o fim da faixa do bloco 2 (assert em global.h).
+
+#define TRAINER_FLAG_BLOCK1_COUNT           1164
+#define TRAINERS_COUNT                      1420
+#define MAX_TRAINERS_COUNT                  1420
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

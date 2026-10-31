@@ -35,6 +35,7 @@ voltar) exe/nro com a ROM embutida. O build regenera sozinho tudo que é derivad
 | Tileset novo ou portado; mapa com desenho deslocado | `adicionar-tileset` |
 | Criar a arte/paletas de um tileset por código; peças do primário em outra cor; troca dia/noite | `montar-tileset` |
 | Protótipo de mapa (map.bin gerado, renders, NPCs) e a página de proposta | `prototipo-de-mapa` |
+| Aventura/região nova com vários mapas (história, lore, missões, desenho dos mapas, página de proposta); mapa gerado que ficou chapado ou clipando | `criar-aventura` |
 | O que tem numa cidade/rota (casas, ginásio…), por onde se entra, se um mapa está ligado ao mundo | `mapa-de-ligacoes` |
 | Bordas, árvores, montanha; revisar mapa; aprender com retoque do autor no Porymap | `acabamento-de-mapa` |
 | Treinador batalhável (ID, time, raio de visão) | `adicionar-batalha-npc` |

@@ -1,0 +1,153 @@
+{
+ "map": "AbundanceIsle_GaleCave",
+ "ingame": "Gale Cave",
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_Cave_Default",
+ "map_type": "MAP_TYPE_UNDERGROUND",
+ "warps": [
+  {
+   "x": 19,
+   "y": 26,
+   "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+   "dest_warp_id": "2",
+   "nota": "boca da caverna na Windswept Cape"
+  },
+  {
+   "x": 33,
+   "y": 2,
+   "dest_map": "MAP_ABUNDANCE_ISLE_GALE_SHORE",
+   "dest_warp_id": "0",
+   "nota": "buraco na parede norte -> Gale Shore"
+  }
+ ],
+ "connections": [],
+ "explorar": [
+  "Salão dos Ventos com fileiras de pedras formando corredores curtos; Sharp Beak no canto do labirinto.",
+  "Um lago corta o salão de norte a sul: a saída para a Gale Shore e a Smooth Rock só com Surf.",
+  "Pedra de Rock Smash esconde uma sala a sudoeste com a Big Pearl.",
+  "Pedra de Strength no meio do salão (atalho entre as fileiras).",
+  "Desafio escondido na sala secreta: Noland (Frontier Brain da Battle Factory) treina ali longe da tempestade; batalha opcional forte, uma vez.",
+  "Batedor do Plasma vigia o lado leste do lago; Hiker na sala da entrada."
+ ],
+ "historia": "Passagem por baixo do cabo ligando a Windswept Cape à Gale Shore. O vento da tempestade assobia pelas fendas (texto de ambiente); o batedor do Plasma procura o lugar onde o Tornadus vai cair.",
+ "estados": {
+  "dia": "Caverna com objetos (pedra quebrável, pedra de Strength, itens, treinadores, Noland)."
+ },
+ "conferido": "Paredes pela tabela aprendida (cave_wall) de UnionCave/DarkCave; peças do lago de UnionCave_1F (elevação 1); saídas 0x407/0x449 e 0x40c/0x414 como nos mapas originais; BFS: saída norte só com Surf, sala secreta só com Rock Smash; check_objects.",
+ "w": 40,
+ "h": 28,
+ "objects": [
+  {
+   "local_id": "BREAKABLE_ROCK",
+   "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+   "x": 5,
+   "y": 18,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "EventScript_RockSmash",
+   "flag": "0"
+  },
+  {
+   "local_id": "BOULDER",
+   "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+   "x": 20,
+   "y": 12,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "EventScript_StrengthBoulder",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_SMOOTHROCK",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 35,
+   "y": 16,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "GaleCave_EventScript_ItemSmoothRock",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_BIGPEARL",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 4,
+   "y": 21,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "GaleCave_EventScript_ItemBigPearl",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_SHARPBEAK",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 15,
+   "y": 8,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "GaleCave_EventScript_ItemSharpBeak",
+   "flag": "0"
+  },
+  {
+   "local_id": "HIKER",
+   "graphics_id": "OBJ_EVENT_GFX_HIKER",
+   "x": 21,
+   "y": 21,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "GaleCave_EventScript_Hiker",
+   "flag": "0"
+  },
+  {
+   "local_id": "GRUNT",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 31,
+   "y": 8,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "GaleCave_EventScript_PlasmaScout",
+   "flag": "0"
+  },
+  {
+   "local_id": "NOLAND",
+   "graphics_id": "OBJ_EVENT_GFX_NOLAND",
+   "x": 7,
+   "y": 22,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "GaleCave_EventScript_Noland",
+   "flag": "0"
+  }
+ ]
+}

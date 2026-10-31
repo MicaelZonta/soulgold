@@ -415,6 +415,8 @@
 #define OBJ_EVENT_GFX_KRIS_NORMAL                390
 #define OBJ_EVENT_GFX_SKIER_F                    391
 #define OBJ_EVENT_GFX_SKIER_M                    392
+#define OBJ_EVENT_GFX_DARK_STONE                 393 // Pedra Escura do Zekrom (Thunderspire Summit), 32x32, 1 quadro
+#define OBJ_EVENT_GFX_LIGHT_STONE                394 // Light Stone do Reshiram (Hall of Truth), 32x32, 1 quadro
 // Aliases dos sprites do Kanto do HnS que o SoulGold ja tem com outro nome.
 #define OBJ_EVENT_GFX_OFFICER                    OBJ_EVENT_GFX_POLICEMAN
 #define OBJ_EVENT_GFX_ATTENDANT_F                OBJ_EVENT_GFX_ATTENDANT
@@ -426,11 +428,39 @@
 #define OBJ_EVENT_GFX_KIMONO                     OBJ_EVENT_GFX_KIMONO_GIRL
 #define OBJ_EVENT_GFX_LIGHT                      OBJ_EVENT_GFX_LIGHT_SPRITE
 #define OBJ_EVENT_GFX_SWIMMER_F_LAND             OBJ_EVENT_GFX_SWIMMER_F // swimmer_f e o boneco terrestre; _WATER e o nadando
+#define OBJ_EVENT_GFX_AZ                             395
+#define OBJ_EVENT_GFX_BRYCEN                         396
+#define OBJ_EVENT_GFX_CILAN                          397
+#define OBJ_EVENT_GFX_GHETSIS                        398
+#define OBJ_EVENT_GFX_GLORIA                         399
+#define OBJ_EVENT_GFX_GRUSHA                         400
+#define OBJ_EVENT_GFX_HASSEL                         401
+#define OBJ_EVENT_GFX_IONO                           402
+#define OBJ_EVENT_GFX_IRIS                           403
+#define OBJ_EVENT_GFX_KATY                           404
+#define OBJ_EVENT_GFX_KORRINA                        405
+#define OBJ_EVENT_GFX_LARRY                          406
+#define OBJ_EVENT_GFX_LYSANDRE                       407
+#define OBJ_EVENT_GFX_MARNIE                         408
+#define OBJ_EVENT_GFX_MELONY                         409
+#define OBJ_EVENT_GFX_PLASMA_GRUNT_F                 410
+#define OBJ_EVENT_GFX_PLASMA_GRUNT_M                 411
+#define OBJ_EVENT_GFX_ROWAN                          412
+#define OBJ_EVENT_GFX_SERENA                         413
+#define OBJ_EVENT_GFX_TULIP                          414
+#define OBJ_EVENT_GFX_VALERIE                        415
+#define OBJ_EVENT_GFX_HOP                            416
+#define OBJ_EVENT_GFX_JUNIPER                        417
+#define OBJ_EVENT_GFX_VIOLA                          418
+#define OBJ_EVENT_GFX_SPIRIT_CANDLE                  419 // vela espiritual apagada (Thunderspire, Abundance Isle), 16x32, 1 quadro
+#define OBJ_EVENT_GFX_SPIRIT_CANDLE_LIT              420 // a mesma vela acesa, chama azul
+#define OBJ_EVENT_GFX_MURAL_OBELISK                  421 // placa de mural das Truthsand Ruins (obelisco com os dois dragoes), 16x32
+#define OBJ_EVENT_GFX_PLASMA_FRIGATE                 422 // navio Plasma Frigate (SS Tidal repintado), 96x40
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        393
+#define NUM_OBJ_EVENT_GFX                        423
 
 
 // These are dynamic object gfx ids.
@@ -702,6 +732,35 @@
 #define OBJ_EVENT_PAL_TAG_KRIS_HNS                  0x11A7
 #define OBJ_EVENT_PAL_TAG_SKIER_F                   0x11A8
 #define OBJ_EVENT_PAL_TAG_SKIER_M                   0x11A9
+#define OBJ_EVENT_PAL_TAG_DARK_STONE                0x11AB
+#define OBJ_EVENT_PAL_TAG_LIGHT_STONE               0x11AC
+#define OBJ_EVENT_PAL_TAG_AZ                         0x11AD
+#define OBJ_EVENT_PAL_TAG_BRYCEN                     0x11AE
+#define OBJ_EVENT_PAL_TAG_CILAN                      0x11AF
+#define OBJ_EVENT_PAL_TAG_GHETSIS                    0x11B0
+#define OBJ_EVENT_PAL_TAG_GLORIA                     0x11B1
+#define OBJ_EVENT_PAL_TAG_GRUSHA                     0x11B2
+#define OBJ_EVENT_PAL_TAG_HASSEL                     0x11B3
+#define OBJ_EVENT_PAL_TAG_IONO                       0x11B4
+#define OBJ_EVENT_PAL_TAG_IRIS                       0x11B5
+#define OBJ_EVENT_PAL_TAG_KATY                       0x11B6
+#define OBJ_EVENT_PAL_TAG_KORRINA                    0x11B7
+#define OBJ_EVENT_PAL_TAG_LARRY                      0x11B8
+#define OBJ_EVENT_PAL_TAG_LYSANDRE                   0x11B9
+#define OBJ_EVENT_PAL_TAG_MARNIE                     0x11BA
+#define OBJ_EVENT_PAL_TAG_MELONY                     0x11BB
+#define OBJ_EVENT_PAL_TAG_PLASMA_GRUNT_F             0x11BC
+#define OBJ_EVENT_PAL_TAG_PLASMA_GRUNT_M             0x11BD
+#define OBJ_EVENT_PAL_TAG_ROWAN                      0x11BE
+#define OBJ_EVENT_PAL_TAG_SERENA                     0x11BF
+#define OBJ_EVENT_PAL_TAG_TULIP                      0x11C0
+#define OBJ_EVENT_PAL_TAG_VALERIE                    0x11C1
+#define OBJ_EVENT_PAL_TAG_HOP                        0x11C2
+#define OBJ_EVENT_PAL_TAG_JUNIPER                    0x11C3
+#define OBJ_EVENT_PAL_TAG_VIOLA                      0x11C4
+#define OBJ_EVENT_PAL_TAG_SPIRIT_CANDLE              0x11C5
+#define OBJ_EVENT_PAL_TAG_MURAL_OBELISK              0x11C6
+#define OBJ_EVENT_PAL_TAG_PLASMA_FRIGATE             0x11C7
 // Paleta que veio com os sprites de Johto (commit 157d43f31d) e ficou sem
 // registro ate 24/10/2026: sem ela o Brock fica de cabelo rosa e o Surge de
 // cabelo azul, porque a arte deles usa as cores 5-13 da paleta certa.

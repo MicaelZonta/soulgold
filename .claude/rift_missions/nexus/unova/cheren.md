@@ -7,19 +7,19 @@ Aparece no checklist como:
 - **Cheren** (Unova · Rivais) — rival estudioso que busca força e posteriormente vira Líder de Ginásio.
 - **Cheren — Normal** (Unova · Líderes de Ginásio) — novo Líder de Aspertia em *Black 2/White 2*.
 
-**Pronto para o Nexus:** ❌ não — tem sprite de overworld, falta o battle sprite (front pic), obrigatório.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Cheren/` (o overworld já está registrado no código; a front pic ainda não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_CHEREN` (registrado no merge de 30/09/2026)
-- [ ] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Cheren/`, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Cheren/`, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta nesta ficha (30/09/2026), fora do código
-- [ ] Associado a um lendário — 📝 proposta nesta ficha (Cobalion), fora do código
-- [ ] Diálogo genérico escrito — 📝 proposta nesta ficha (3 variações), fora do código
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta nesta ficha (3 variações), fora do código
+- [x] Time para as Rift Missions definido — 📝 proposta nesta ficha (30/09/2026), fora do código
+- [x] Associado a um lendário — 📝 proposta nesta ficha (Cobalion), fora do código
+- [x] Diálogo genérico escrito — 📝 proposta nesta ficha (3 variações), fora do código
+- [x] Diálogo associado ao lendário escrito — 📝 proposta nesta ficha (3 variações), fora do código
 
 ## Referências no repositório
 
@@ -52,30 +52,13 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_CHEREN`, campeão do Cobalion. ID: **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163). Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). **Pic provisória** (`Cooltrainer M`) até registrar a arte.
-
-O Cobalion é **semi-lendário** (`isSubLegendary`), então ocupa a vaga de semi-lendário, não a de lendário. Lendário **Kyurem**, o terceiro dragão, o que ninguém levou: no fragmento dele, o dragão do Giant Chasm recusou o Cheren e depois passou a voltar para perto dele mesmo assim (diário, páginas 2 e 3). O Kyurem vai na forma base (sem DNA Splicers). Semi-lendário **Cobalion**, o líder dos Swords of Justice, que ficou do lado dele na frente dos alunos. Mega **Kangaskhan** (Normalite, Parental Bond): o Líder de Ginásio de tipo Normal de *Black 2/White 2*, e a força que carrega uma criança — é o professor. Mais o **Samurott** (o inicial que ele escolhe quando a heroína pega o Tepig), o **Liepard** do time de rival e o **Stoutland** do Ginásio de Aspertia.
-
-*Plano (Singles):* metódico. O Liepard (Prankster) entra de Fake Out, Encore e Thunder Wave: tranca o adversário no golpe errado. A Mega Kangaskhan bate duas vezes com Fake Out, Double-Edge e Drain Punch; o Cobalion (Justified) sobe Swords Dance quando o adversário tenta Dark; o Kyurem limpa com Freeze-Dry, Ice Beam e Earth Power; o Samurott fecha com Aqua Jet.
-
-*Plano (Doubles):* Fake Out duplo (Liepard + Kangaskhan) no turno 1, Intimidate do Stoutland, e o Cobalion atrás. Nenhum golpe do time acerta o parceiro.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Kyurem | Life Orb | Pressure | Modest | Ice Beam, Draco Meteor, Earth Power, Freeze-Dry |
-| Cobalion | Chople Berry | Justified | Jolly | Iron Head, Close Combat, Swords Dance, Stone Edge |
-| Kangaskhan | Normalite | Scrappy | Adamant | Fake Out, Double-Edge, Sucker Punch, Drain Punch |
-| Samurott | Sitrus Berry | Torrent | Adamant | Razor Shell, Aqua Jet, Megahorn, Swords Dance |
-| Liepard | Focus Sash | Prankster | Timid | Fake Out, Encore, Thunder Wave, Foul Play |
-| Stoutland | Leftovers | Intimidate | Adamant | Return, Crunch, Wild Charge, Protect |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e categorias)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_CHEREN` = **1172** (bloco 2, flag `0xB08`), luta genérica `Nexus_EventScript_Cheren_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_CHEREN ===
 Name: Cheren
 Class: Leader
-Pic: Cooltrainer M
+Pic: Cheren
 Gender: Male
 Music: Male
 Double Battle: No
@@ -148,9 +131,14 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Protect
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Cobalion** — `Nexus_EventScript_Cheren_Cobalion_ChampionFight` (falas `Nexus_Text_Cheren_Cobalion_Champion*`)
+- **Kyurem** — `Nexus_EventScript_Cheren_Kyurem_ChampionFight` (falas `Nexus_Text_Cheren_Kyurem_Champion*`)
+- **Zamazenta** — `Nexus_EventScript_Cheren_Zamazenta_ChampionFight` (falas `Nexus_Text_Cheren_Zamazenta_Champion*`)
+
 
 #### Cobalion
 
@@ -174,11 +162,7 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando Cheren cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)). Ainda não há nada no `nexus.inc`: as três variações são novas.
-
-O Cheren é lógico, sério, empurra os óculos e hoje é professor. As três variações: a pergunta que ele faz a toda turma ("what is strength for?"), o planejamento excessivo (com a Bianca, sem nome, puxando a orelha dele) e a carteira vazia na primeira fila.
-
-#### Variação 1 — a pergunta do primeiro dia
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Cheren_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
@@ -189,85 +173,6 @@ O Cheren é lógico, sério, empurra os óculos e hoje é professor. As três va
 **Derrota**
 
 > That was an answer. I'll need to write it down.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Cheren_Intro:
-	.string "On the first day, I ask every student\n"
-	.string "the same question: what is strength\l"
-	.string "for?\p"
-	.string "No one has given me the right answer\n"
-	.string "yet. Including me. Let's see if you can.$"
-
-Nexus_Text_Cheren_Defeat:
-	.string "That was an answer. I'll need to write\n"
-	.string "it down.$"
-```
-
-</details>
-
-#### Variação 2 — o plano
-
-**Antes da luta**
-
-> I planned this battle. Three turns ahead, five alternatives each.
->
-> A friend once told me plans are just nerves wearing a nice outfit. …She was right. Annoyingly.
->
-> Begin!
-
-**Derrota**
-
-> Six alternatives. I needed six.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Cheren_Intro2:
-	.string "I planned this battle. Three turns\n"
-	.string "ahead, five alternatives each.\p"
-	.string "A friend once told me plans are just\n"
-	.string "nerves wearing a nice outfit. …She was\l"
-	.string "right. Annoyingly.\p"
-	.string "Begin!$"
-
-Nexus_Text_Cheren_Defeat2:
-	.string "Six alternatives. I needed six.$"
-```
-
-</details>
-
-#### Variação 3 — a carteira vazia
-
-**Antes da luta**
-
-> There's an empty desk in the front row of my classroom. I keep it for someone who went away.
->
-> The students think it's for the best student who will ever come. I let them.
->
-> Show me if it's you!
-
-**Derrota**
-
-> Not the desk's owner. But close.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Cheren_Intro3:
-	.string "There's an empty desk in the front row\n"
-	.string "of my classroom. I keep it for someone\l"
-	.string "who went away.\p"
-	.string "The students think it's for the best\n"
-	.string "student who will ever come. I let them.\p"
-	.string "Show me if it's you!$"
-
-Nexus_Text_Cheren_Defeat3:
-	.string "Not the desk's owner. But close.$"
-```
-
-</details>
 
 ### Diálogo associado ao lendário
 

@@ -1,11 +1,37 @@
 OneIsland_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, OneIsland_OnTransition
 	.byte 0
+
+@ Quem chega a pe pelo Mt. Ember antes do convite do Bill ja libera a balsa
+@ (VAR_ONE_ISLAND_STATE 2); a viagem com o Bill so faz sentido para quem
+@ nunca esteve aqui. Abertura: data/scripts/one_island.inc.
+OneIsland_OnTransition:
+	call_if_eq VAR_ONE_ISLAND_STATE, 0, OneIsland_EventScript_ArrivedOnFoot
+	call MtEmberResidents_OnTransition
+	end
+
+OneIsland_EventScript_ArrivedOnFoot:
+	setvar VAR_ONE_ISLAND_STATE, 2
+	return
 
 OneIsland_EventScript_OldMan::
 	lock
 	faceplayer
+	call Pecharunt_GetState
+	goto_if_eq VAR_RESULT, 1, OneIsland_EventScript_OldManHunt
+	goto_if_eq VAR_RESULT, 2, OneIsland_EventScript_OldManAfter
 	goto_if_set FLAG_IS_CHAMPION, OneIsland_EventScript_OldManLinkHoenn
 	msgbox OneIsland_Text_LuckyToHaveCelioHere
+	release
+	end
+
+OneIsland_EventScript_OldManHunt:
+	msgbox OneIsland_Text_OldManHunt
+	release
+	end
+
+OneIsland_EventScript_OldManAfter:
+	msgbox OneIsland_Text_OldManAfter
 	release
 	end
 
@@ -30,18 +56,6 @@ OneIsland_EventScript_IslandSign::
 OneIsland_EventScript_PokemonNetCenterSign::
 	msgbox OneIsland_Text_PokemonNetCenterSign, MSGBOX_SIGN
 	end
-
-OneIsland_Text_BillLetsGoSeeCelio::
-	.string "{SPEAKER NAME_BILL}Here we are!\n"
-	.string "This is ONE ISLAND.\p"
-	.string "There are several islands around\n"
-	.string "here, and this is one of them.\p"
-	.string "My friend CELIO sent the boat to\n"
-	.string "fetch me here.\p"
-	.string "He's in charge of the island's PC\n"
-	.string "network by his lonesome.\p"
-	.string "…Why am I telling you this now?\n"
-	.string "Let's just go see CELIO!$"
 
 Text_WhereDoYouWantToSail::
 	.string "Ahoy, there!\n"

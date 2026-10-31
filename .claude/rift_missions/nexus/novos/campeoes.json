@@ -1,0 +1,1207 @@
+[
+  {
+    "trainer": "COLRESS",
+    "species": "SPECIES_GENESECT",
+    "script": "Colress_Genesect"
+  },
+  {
+    "trainer": "COLRESS",
+    "species": "SPECIES_SILVALLY",
+    "script": "Colress_Silvally"
+  },
+  {
+    "trainer": "BRUNO",
+    "species": "SPECIES_URSHIFU_SINGLE_STRIKE",
+    "script": "Bruno_Urshifu"
+  },
+  {
+    "trainer": "BRUNO",
+    "species": "SPECIES_TERRAKION",
+    "script": "Bruno_Terrakion"
+  },
+  {
+    "trainer": "ELESA",
+    "species": "SPECIES_ZERAORA",
+    "script": "Elesa_Zeraora"
+  },
+  {
+    "trainer": "ELESA",
+    "species": "SPECIES_MELOETTA",
+    "script": "Elesa_Meloetta"
+  },
+  {
+    "trainer": "VOLKNER",
+    "species": "SPECIES_REGIELEKI",
+    "script": "Volkner_Regieleki"
+  },
+  {
+    "trainer": "VOLKNER",
+    "species": "SPECIES_ZEKROM",
+    "script": "Volkner_Zekrom"
+  },
+  {
+    "trainer": "STEVEN",
+    "species": "SPECIES_DIANCIE",
+    "script": "Steven_Diancie"
+  },
+  {
+    "trainer": "STEVEN",
+    "species": "SPECIES_REGISTEEL",
+    "script": "Steven_Registeel"
+  },
+  {
+    "trainer": "RAMOS",
+    "species": "SPECIES_WO_CHIEN",
+    "script": "Ramos_WoChien"
+  },
+  {
+    "trainer": "RAMOS",
+    "species": "SPECIES_SHAYMIN_LAND",
+    "script": "Ramos_Shaymin"
+  },
+  {
+    "trainer": "GUZMA",
+    "species": "SPECIES_BUZZWOLE",
+    "script": "Guzma_Buzzwole"
+  },
+  {
+    "trainer": "GUZMA",
+    "species": "SPECIES_OKIDOGI",
+    "script": "Guzma_Okidogi"
+  },
+  {
+    "trainer": "SOLIERA",
+    "species": "SPECIES_NECROZMA",
+    "script": "Soliera_Necrozma"
+  },
+  {
+    "trainer": "SOLIERA",
+    "species": "SPECIES_NIHILEGO",
+    "script": "Soliera_Nihilego"
+  },
+  {
+    "trainer": "BYRON",
+    "species": "SPECIES_REGISTEEL",
+    "script": "Byron_Registeel"
+  },
+  {
+    "trainer": "BYRON",
+    "species": "SPECIES_MELMETAL",
+    "script": "Byron_Melmetal"
+  },
+  {
+    "trainer": "FANTINA",
+    "species": "SPECIES_MELOETTA",
+    "script": "Fantina_Meloetta"
+  },
+  {
+    "trainer": "FANTINA",
+    "species": "SPECIES_MARSHADOW",
+    "script": "Fantina_Marshadow"
+  },
+  {
+    "trainer": "RED",
+    "species": "SPECIES_MEWTWO",
+    "script": "Red_Mewtwo"
+  },
+  {
+    "trainer": "RED",
+    "species": "SPECIES_ZAPDOS",
+    "script": "Red_Zapdos"
+  },
+  {
+    "trainer": "BLUE",
+    "species": "SPECIES_ZEKROM",
+    "script": "Blue_Zekrom"
+  },
+  {
+    "trainer": "BROCK",
+    "species": "SPECIES_REGIROCK",
+    "script": "Brock_Regirock"
+  },
+  {
+    "trainer": "MISTY",
+    "species": "SPECIES_SUICUNE",
+    "script": "Misty_Suicune"
+  },
+  {
+    "trainer": "ERIKA",
+    "species": "SPECIES_TAPU_BULU",
+    "script": "Erika_TapuBulu"
+  },
+  {
+    "trainer": "KOGA",
+    "species": "SPECIES_MUNKIDORI",
+    "script": "Koga_Munkidori"
+  },
+  {
+    "trainer": "KOGA",
+    "species": "SPECIES_OKIDOGI",
+    "script": "Koga_Okidogi"
+  },
+  {
+    "trainer": "SABRINA",
+    "species": "SPECIES_UXIE",
+    "script": "Sabrina_Uxie"
+  },
+  {
+    "trainer": "BLAINE",
+    "species": "SPECIES_GOUGING_FIRE",
+    "script": "Blaine_GougingFire"
+  },
+  {
+    "trainer": "GIOVANNI",
+    "species": "SPECIES_LANDORUS_INCARNATE",
+    "script": "Giovanni_Landorus"
+  },
+  {
+    "trainer": "LANCE",
+    "species": "SPECIES_ZYGARDE",
+    "script": "Lance_Zygarde"
+  },
+  {
+    "trainer": "ARCHER",
+    "species": "SPECIES_ZAMAZENTA",
+    "script": "Archer_Zamazenta"
+  },
+  {
+    "trainer": "ARIANA",
+    "species": "SPECIES_FEZANDIPITI",
+    "script": "Ariana_Fezandipiti"
+  },
+  {
+    "trainer": "ARIANA",
+    "species": "SPECIES_ENAMORUS_INCARNATE",
+    "script": "Ariana_Enamorus"
+  },
+  {
+    "trainer": "PROTON",
+    "species": "SPECIES_CHI_YU",
+    "script": "Proton_ChiYu"
+  },
+  {
+    "trainer": "PETREL",
+    "species": "SPECIES_FEZANDIPITI",
+    "script": "Petrel_Fezandipiti"
+  },
+  {
+    "trainer": "SILVER",
+    "species": "SPECIES_SILVALLY",
+    "script": "Silver_Silvally"
+  },
+  {
+    "trainer": "SILVER",
+    "species": "SPECIES_DARKRAI",
+    "script": "Silver_Darkrai"
+  },
+  {
+    "trainer": "FALKNER",
+    "species": "SPECIES_LUGIA",
+    "script": "Falkner_Lugia"
+  },
+  {
+    "trainer": "FALKNER",
+    "species": "SPECIES_ARTICUNO",
+    "script": "Falkner_Articuno"
+  },
+  {
+    "trainer": "BUGSY",
+    "species": "SPECIES_GENESECT",
+    "script": "Bugsy_Genesect"
+  },
+  {
+    "trainer": "WHITNEY",
+    "species": "SPECIES_MELOETTA",
+    "script": "Whitney_Meloetta"
+  },
+  {
+    "trainer": "MORTY",
+    "species": "SPECIES_LUNALA",
+    "script": "Morty_Lunala"
+  },
+  {
+    "trainer": "CHUCK",
+    "species": "SPECIES_BUZZWOLE",
+    "script": "Chuck_Buzzwole"
+  },
+  {
+    "trainer": "JASMINE",
+    "species": "SPECIES_REGISTEEL",
+    "script": "Jasmine_Registeel"
+  },
+  {
+    "trainer": "PRYCE",
+    "species": "SPECIES_REGICE",
+    "script": "Pryce_Regice"
+  },
+  {
+    "trainer": "CLAIR",
+    "species": "SPECIES_REGIDRAGO",
+    "script": "Clair_Regidrago"
+  },
+  {
+    "trainer": "CLAIR",
+    "species": "SPECIES_LATIAS",
+    "script": "Clair_Latias"
+  },
+  {
+    "trainer": "WILL",
+    "species": "SPECIES_HOOPA_CONFINED",
+    "script": "Will_Hoopa"
+  },
+  {
+    "trainer": "KAREN",
+    "species": "SPECIES_ZARUDE",
+    "script": "Karen_Zarude"
+  },
+  {
+    "trainer": "BRENDAN",
+    "species": "SPECIES_DEOXYS",
+    "script": "Brendan_Deoxys"
+  },
+  {
+    "trainer": "MAY",
+    "species": "SPECIES_LATIAS",
+    "script": "May_Latias"
+  },
+  {
+    "trainer": "WALLY",
+    "species": "SPECIES_KELDEO",
+    "script": "Wally_Keldeo"
+  },
+  {
+    "trainer": "ROXANNE",
+    "species": "SPECIES_REGIROCK",
+    "script": "Roxanne_Regirock"
+  },
+  {
+    "trainer": "BRAWLY",
+    "species": "SPECIES_URSHIFU_SINGLE_STRIKE",
+    "script": "Brawly_Urshifu"
+  },
+  {
+    "trainer": "WATTSON",
+    "species": "SPECIES_XURKITREE",
+    "script": "Wattson_Xurkitree"
+  },
+  {
+    "trainer": "FLANNERY",
+    "species": "SPECIES_ENTEI",
+    "script": "Flannery_Entei"
+  },
+  {
+    "trainer": "NORMAN",
+    "species": "SPECIES_REGIGIGAS",
+    "script": "Norman_Regigigas"
+  },
+  {
+    "trainer": "WINONA",
+    "species": "SPECIES_LUGIA",
+    "script": "Winona_Lugia"
+  },
+  {
+    "trainer": "WALLACE",
+    "species": "SPECIES_MELOETTA",
+    "script": "Wallace_Meloetta"
+  },
+  {
+    "trainer": "JUAN",
+    "species": "SPECIES_MANAPHY",
+    "script": "Juan_Manaphy"
+  },
+  {
+    "trainer": "SIDNEY",
+    "species": "SPECIES_MOLTRES_GALAR",
+    "script": "Sidney_GalarianMoltres"
+  },
+  {
+    "trainer": "PHOEBE",
+    "species": "SPECIES_MARSHADOW",
+    "script": "Phoebe_Marshadow"
+  },
+  {
+    "trainer": "PHOEBE",
+    "species": "SPECIES_LUNALA",
+    "script": "Phoebe_Lunala"
+  },
+  {
+    "trainer": "GLACIA",
+    "species": "SPECIES_REGICE",
+    "script": "Glacia_Regice"
+  },
+  {
+    "trainer": "DRAKE",
+    "species": "SPECIES_RAYQUAZA",
+    "script": "Drake_Rayquaza"
+  },
+  {
+    "trainer": "NOLAND",
+    "species": "SPECIES_GENESECT",
+    "script": "Noland_Genesect"
+  },
+  {
+    "trainer": "GRETA",
+    "species": "SPECIES_BUZZWOLE",
+    "script": "Greta_Buzzwole"
+  },
+  {
+    "trainer": "TUCKER",
+    "species": "SPECIES_MELOETTA",
+    "script": "Tucker_Meloetta"
+  },
+  {
+    "trainer": "LUCY",
+    "species": "SPECIES_SPECTRIER",
+    "script": "Lucy_Spectrier"
+  },
+  {
+    "trainer": "SPENSER",
+    "species": "SPECIES_CALYREX",
+    "script": "Spenser_Calyrex"
+  },
+  {
+    "trainer": "ANABEL",
+    "species": "SPECIES_LUNALA",
+    "script": "Anabel_Lunala"
+  },
+  {
+    "trainer": "MAXIE",
+    "species": "SPECIES_VOLCANION",
+    "script": "Maxie_Volcanion"
+  },
+  {
+    "trainer": "ARCHIE",
+    "species": "SPECIES_MANAPHY",
+    "script": "Archie_Manaphy"
+  },
+  {
+    "trainer": "ARCHIE",
+    "species": "SPECIES_LUGIA",
+    "script": "Archie_Lugia"
+  },
+  {
+    "trainer": "GLADION",
+    "species": "SPECIES_MEWTWO",
+    "script": "Gladion_Mewtwo"
+  },
+  {
+    "trainer": "KUKUI",
+    "species": "SPECIES_ZERAORA",
+    "script": "Kukui_Zeraora"
+  },
+  {
+    "trainer": "LUSAMINE",
+    "species": "SPECIES_NIHILEGO",
+    "script": "Lusamine_Nihilego"
+  },
+  {
+    "trainer": "JANINE",
+    "species": "SPECIES_MARSHADOW",
+    "script": "Janine_Marshadow"
+  },
+  {
+    "trainer": "LEAF",
+    "species": "SPECIES_CELEBI",
+    "script": "Leaf_Celebi"
+  },
+  {
+    "trainer": "AZ",
+    "species": "SPECIES_XERNEAS",
+    "script": "AZ_Xerneas"
+  },
+  {
+    "trainer": "AZ",
+    "species": "SPECIES_YVELTAL",
+    "script": "AZ_Yveltal"
+  },
+  {
+    "trainer": "AZ",
+    "species": "SPECIES_CELEBI",
+    "script": "AZ_Celebi"
+  },
+  {
+    "trainer": "AGATHA",
+    "species": "SPECIES_SPECTRIER",
+    "script": "Agatha_Spectrier"
+  },
+  {
+    "trainer": "AGATHA",
+    "species": "SPECIES_MARSHADOW",
+    "script": "Agatha_Marshadow"
+  },
+  {
+    "trainer": "AGATHA",
+    "species": "SPECIES_GIRATINA_ALTERED",
+    "script": "Agatha_Giratina"
+  },
+  {
+    "trainer": "ALDER",
+    "species": "SPECIES_SLITHER_WING",
+    "script": "Alder_SlitherWing"
+  },
+  {
+    "trainer": "ALDER",
+    "species": "SPECIES_GROUDON",
+    "script": "Alder_Groudon"
+  },
+  {
+    "trainer": "ALDER",
+    "species": "SPECIES_HO_OH",
+    "script": "Alder_HoOh"
+  },
+  {
+    "trainer": "ALLISTER",
+    "species": "SPECIES_LUNALA",
+    "script": "Allister_Lunala"
+  },
+  {
+    "trainer": "ALLISTER",
+    "species": "SPECIES_SPECTRIER",
+    "script": "Allister_Spectrier"
+  },
+  {
+    "trainer": "ALLISTER",
+    "species": "SPECIES_MARSHADOW",
+    "script": "Allister_Marshadow"
+  },
+  {
+    "trainer": "AVERY",
+    "species": "SPECIES_MEWTWO",
+    "script": "Avery_Mewtwo"
+  },
+  {
+    "trainer": "AVERY",
+    "species": "SPECIES_ARTICUNO_GALAR",
+    "script": "Avery_GalarianArticuno"
+  },
+  {
+    "trainer": "AVERY",
+    "species": "SPECIES_HOOPA_CONFINED",
+    "script": "Avery_Hoopa"
+  },
+  {
+    "trainer": "BARRY",
+    "species": "SPECIES_UXIE",
+    "script": "Barry_Uxie"
+  },
+  {
+    "trainer": "BARRY",
+    "species": "SPECIES_DEOXYS",
+    "script": "Barry_Deoxys"
+  },
+  {
+    "trainer": "BARRY",
+    "species": "SPECIES_AZELF",
+    "script": "Barry_Azelf"
+  },
+  {
+    "trainer": "BEA",
+    "species": "SPECIES_MARSHADOW",
+    "script": "Bea_Marshadow"
+  },
+  {
+    "trainer": "BEA",
+    "species": "SPECIES_URSHIFU_SINGLE_STRIKE",
+    "script": "Bea_Urshifu"
+  },
+  {
+    "trainer": "BEA",
+    "species": "SPECIES_ZAPDOS_GALAR",
+    "script": "Bea_GalarianZapdos"
+  },
+  {
+    "trainer": "BRYCEN",
+    "species": "SPECIES_KYUREM",
+    "script": "Brycen_Kyurem"
+  },
+  {
+    "trainer": "BRYCEN",
+    "species": "SPECIES_ARTICUNO",
+    "script": "Brycen_Articuno"
+  },
+  {
+    "trainer": "BRYCEN",
+    "species": "SPECIES_REGICE",
+    "script": "Brycen_Regice"
+  },
+  {
+    "trainer": "CHEREN",
+    "species": "SPECIES_COBALION",
+    "script": "Cheren_Cobalion"
+  },
+  {
+    "trainer": "CHEREN",
+    "species": "SPECIES_KYUREM",
+    "script": "Cheren_Kyurem"
+  },
+  {
+    "trainer": "CHEREN",
+    "species": "SPECIES_ZAMAZENTA",
+    "script": "Cheren_Zamazenta"
+  },
+  {
+    "trainer": "CILAN",
+    "species": "SPECIES_VIRIZION",
+    "script": "Cilan_Virizion"
+  },
+  {
+    "trainer": "CILAN",
+    "species": "SPECIES_GROUDON",
+    "script": "Cilan_Groudon"
+  },
+  {
+    "trainer": "CILAN",
+    "species": "SPECIES_SHAYMIN_LAND",
+    "script": "Cilan_Shaymin"
+  },
+  {
+    "trainer": "CYNTHIA",
+    "species": "SPECIES_GIRATINA_ALTERED",
+    "script": "Cynthia_Giratina"
+  },
+  {
+    "trainer": "CYNTHIA",
+    "species": "SPECIES_PALKIA",
+    "script": "Cynthia_Palkia"
+  },
+  {
+    "trainer": "CYNTHIA",
+    "species": "SPECIES_ARCEUS",
+    "script": "Cynthia_Arceus"
+  },
+  {
+    "trainer": "CYRUS",
+    "species": "SPECIES_DIALGA",
+    "script": "Cyrus_Dialga"
+  },
+  {
+    "trainer": "CYRUS",
+    "species": "SPECIES_PALKIA",
+    "script": "Cyrus_Palkia"
+  },
+  {
+    "trainer": "CYRUS",
+    "species": "SPECIES_MESPRIT",
+    "script": "Cyrus_Mesprit"
+  },
+  {
+    "trainer": "DAWN",
+    "species": "SPECIES_PALKIA",
+    "script": "Dawn_Palkia"
+  },
+  {
+    "trainer": "DAWN",
+    "species": "SPECIES_CRESSELIA",
+    "script": "Dawn_Cresselia"
+  },
+  {
+    "trainer": "DAWN",
+    "species": "SPECIES_MESPRIT",
+    "script": "Dawn_Mesprit"
+  },
+  {
+    "trainer": "DIANTHA",
+    "species": "SPECIES_XERNEAS",
+    "script": "Diantha_Xerneas"
+  },
+  {
+    "trainer": "DIANTHA",
+    "species": "SPECIES_IRON_VALIANT",
+    "script": "Diantha_IronValiant"
+  },
+  {
+    "trainer": "DIANTHA",
+    "species": "SPECIES_MELOETTA",
+    "script": "Diantha_Meloetta"
+  },
+  {
+    "trainer": "GARDENIA",
+    "species": "SPECIES_SHAYMIN_LAND",
+    "script": "Gardenia_Shaymin"
+  },
+  {
+    "trainer": "GARDENIA",
+    "species": "SPECIES_ZYGARDE",
+    "script": "Gardenia_Zygarde"
+  },
+  {
+    "trainer": "GARDENIA",
+    "species": "SPECIES_CELEBI",
+    "script": "Gardenia_Celebi"
+  },
+  {
+    "trainer": "GHETSIS",
+    "species": "SPECIES_KYUREM",
+    "script": "Ghetsis_Kyurem"
+  },
+  {
+    "trainer": "GHETSIS",
+    "species": "SPECIES_COBALION",
+    "script": "Ghetsis_Cobalion"
+  },
+  {
+    "trainer": "GHETSIS",
+    "species": "SPECIES_PECHARUNT",
+    "script": "Ghetsis_Pecharunt"
+  },
+  {
+    "trainer": "GLORIA",
+    "species": "SPECIES_ZACIAN",
+    "script": "Gloria_Zacian"
+  },
+  {
+    "trainer": "GLORIA",
+    "species": "SPECIES_ZAMAZENTA",
+    "script": "Gloria_Zamazenta"
+  },
+  {
+    "trainer": "GLORIA",
+    "species": "SPECIES_ETERNATUS",
+    "script": "Gloria_Eternatus"
+  },
+  {
+    "trainer": "GRUSHA",
+    "species": "SPECIES_KYUREM",
+    "script": "Grusha_Kyurem"
+  },
+  {
+    "trainer": "GRUSHA",
+    "species": "SPECIES_CHIEN_PAO",
+    "script": "Grusha_ChienPao"
+  },
+  {
+    "trainer": "GRUSHA",
+    "species": "SPECIES_ARTICUNO",
+    "script": "Grusha_Articuno"
+  },
+  {
+    "trainer": "HASSEL",
+    "species": "SPECIES_RAYQUAZA",
+    "script": "Hassel_Rayquaza"
+  },
+  {
+    "trainer": "HASSEL",
+    "species": "SPECIES_REGIDRAGO",
+    "script": "Hassel_Regidrago"
+  },
+  {
+    "trainer": "HASSEL",
+    "species": "SPECIES_LATIAS",
+    "script": "Hassel_Latias"
+  },
+  {
+    "trainer": "HAU",
+    "species": "SPECIES_TAPU_KOKO",
+    "script": "Hau_TapuKoko"
+  },
+  {
+    "trainer": "HAU",
+    "species": "SPECIES_SOLGALEO",
+    "script": "Hau_Solgaleo"
+  },
+  {
+    "trainer": "HAU",
+    "species": "SPECIES_TAPU_LELE",
+    "script": "Hau_TapuLele"
+  },
+  {
+    "trainer": "HILDA",
+    "species": "SPECIES_RESHIRAM",
+    "script": "Hilda_Reshiram"
+  },
+  {
+    "trainer": "HILDA",
+    "species": "SPECIES_TORNADUS_INCARNATE",
+    "script": "Hilda_Tornadus"
+  },
+  {
+    "trainer": "HILDA",
+    "species": "SPECIES_VICTINI",
+    "script": "Hilda_Victini"
+  },
+  {
+    "trainer": "HOP",
+    "species": "SPECIES_ZAMAZENTA",
+    "script": "Hop_Zamazenta"
+  },
+  {
+    "trainer": "HOP",
+    "species": "SPECIES_SILVALLY",
+    "script": "Hop_Silvally"
+  },
+  {
+    "trainer": "HOP",
+    "species": "SPECIES_SUICUNE",
+    "script": "Hop_Suicune"
+  },
+  {
+    "trainer": "IONO",
+    "species": "SPECIES_MIRAIDON",
+    "script": "Iono_Miraidon"
+  },
+  {
+    "trainer": "IONO",
+    "species": "SPECIES_REGIELEKI",
+    "script": "Iono_Regieleki"
+  },
+  {
+    "trainer": "IONO",
+    "species": "SPECIES_XURKITREE",
+    "script": "Iono_Xurkitree"
+  },
+  {
+    "trainer": "IRIS",
+    "species": "SPECIES_RESHIRAM",
+    "script": "Iris_Reshiram"
+  },
+  {
+    "trainer": "IRIS",
+    "species": "SPECIES_LATIAS",
+    "script": "Iris_Latias"
+  },
+  {
+    "trainer": "IRIS",
+    "species": "SPECIES_REGIDRAGO",
+    "script": "Iris_Regidrago"
+  },
+  {
+    "trainer": "JESSIE_JAMES",
+    "species": "SPECIES_MELOETTA",
+    "script": "JessieJames_Meloetta"
+  },
+  {
+    "trainer": "JESSIE_JAMES",
+    "species": "SPECIES_ZYGARDE",
+    "script": "JessieJames_Zygarde"
+  },
+  {
+    "trainer": "JESSIE_JAMES",
+    "species": "SPECIES_HOOPA_CONFINED",
+    "script": "JessieJames_Hoopa"
+  },
+  {
+    "trainer": "JUNIPER",
+    "species": "SPECIES_GENESECT",
+    "script": "Juniper_Genesect"
+  },
+  {
+    "trainer": "JUNIPER",
+    "species": "SPECIES_MELOETTA",
+    "script": "Juniper_Meloetta"
+  },
+  {
+    "trainer": "JUNIPER",
+    "species": "SPECIES_MEW",
+    "script": "Juniper_Mew"
+  },
+  {
+    "trainer": "KATY",
+    "species": "SPECIES_GENESECT",
+    "script": "Katy_Genesect"
+  },
+  {
+    "trainer": "KATY",
+    "species": "SPECIES_SLITHER_WING",
+    "script": "Katy_SlitherWing"
+  },
+  {
+    "trainer": "KATY",
+    "species": "SPECIES_PHEROMOSA",
+    "script": "Katy_Pheromosa"
+  },
+  {
+    "trainer": "KLARA",
+    "species": "SPECIES_MUNKIDORI",
+    "script": "Klara_Munkidori"
+  },
+  {
+    "trainer": "KLARA",
+    "species": "SPECIES_ETERNATUS",
+    "script": "Klara_Eternatus"
+  },
+  {
+    "trainer": "KLARA",
+    "species": "SPECIES_FEZANDIPITI",
+    "script": "Klara_Fezandipiti"
+  },
+  {
+    "trainer": "KORRINA",
+    "species": "SPECIES_URSHIFU_SINGLE_STRIKE",
+    "script": "Korrina_Urshifu"
+  },
+  {
+    "trainer": "KORRINA",
+    "species": "SPECIES_KORAIDON",
+    "script": "Korrina_Koraidon"
+  },
+  {
+    "trainer": "KORRINA",
+    "species": "SPECIES_ZERAORA",
+    "script": "Korrina_Zeraora"
+  },
+  {
+    "trainer": "LARRY",
+    "species": "SPECIES_TERAPAGOS",
+    "script": "Larry_Terapagos"
+  },
+  {
+    "trainer": "LARRY",
+    "species": "SPECIES_TORNADUS_INCARNATE",
+    "script": "Larry_Tornadus"
+  },
+  {
+    "trainer": "LARRY",
+    "species": "SPECIES_REGIGIGAS",
+    "script": "Larry_Regigigas"
+  },
+  {
+    "trainer": "LENORA",
+    "species": "SPECIES_ARCEUS",
+    "script": "Lenora_Arceus"
+  },
+  {
+    "trainer": "LENORA",
+    "species": "SPECIES_MELOETTA",
+    "script": "Lenora_Meloetta"
+  },
+  {
+    "trainer": "LENORA",
+    "species": "SPECIES_REGIROCK",
+    "script": "Lenora_Regirock"
+  },
+  {
+    "trainer": "LEON",
+    "species": "SPECIES_ETERNATUS",
+    "script": "Leon_Eternatus"
+  },
+  {
+    "trainer": "LEON",
+    "species": "SPECIES_ZACIAN",
+    "script": "Leon_Zacian"
+  },
+  {
+    "trainer": "LEON",
+    "species": "SPECIES_URSHIFU_SINGLE_STRIKE",
+    "script": "Leon_Urshifu"
+  },
+  {
+    "trainer": "LORELEI",
+    "species": "SPECIES_GLASTRIER",
+    "script": "Lorelei_Glastrier"
+  },
+  {
+    "trainer": "LORELEI",
+    "species": "SPECIES_KYUREM",
+    "script": "Lorelei_Kyurem"
+  },
+  {
+    "trainer": "LORELEI",
+    "species": "SPECIES_ARTICUNO",
+    "script": "Lorelei_Articuno"
+  },
+  {
+    "trainer": "LYSANDRE",
+    "species": "SPECIES_YVELTAL",
+    "script": "Lysandre_Yveltal"
+  },
+  {
+    "trainer": "LYSANDRE",
+    "species": "SPECIES_XERNEAS",
+    "script": "Lysandre_Xerneas"
+  },
+  {
+    "trainer": "LYSANDRE",
+    "species": "SPECIES_VOLCANION",
+    "script": "Lysandre_Volcanion"
+  },
+  {
+    "trainer": "MARNIE",
+    "species": "SPECIES_MOLTRES_GALAR",
+    "script": "Marnie_GalarianMoltres"
+  },
+  {
+    "trainer": "MARNIE",
+    "species": "SPECIES_YVELTAL",
+    "script": "Marnie_Yveltal"
+  },
+  {
+    "trainer": "MARNIE",
+    "species": "SPECIES_DARKRAI",
+    "script": "Marnie_Darkrai"
+  },
+  {
+    "trainer": "MELONY",
+    "species": "SPECIES_CALYREX",
+    "script": "Melony_Calyrex"
+  },
+  {
+    "trainer": "MELONY",
+    "species": "SPECIES_ARTICUNO",
+    "script": "Melony_Articuno"
+  },
+  {
+    "trainer": "MELONY",
+    "species": "SPECIES_GLASTRIER",
+    "script": "Melony_Glastrier"
+  },
+  {
+    "trainer": "MOLLY",
+    "species": "SPECIES_ENTEI",
+    "script": "Molly_Entei"
+  },
+  {
+    "trainer": "MOLLY",
+    "species": "SPECIES_XERNEAS",
+    "script": "Molly_Xerneas"
+  },
+  {
+    "trainer": "MOLLY",
+    "species": "SPECIES_CRESSELIA",
+    "script": "Molly_Cresselia"
+  },
+  {
+    "trainer": "MUSTARD",
+    "species": "SPECIES_URSHIFU_SINGLE_STRIKE",
+    "script": "Mustard_Urshifu"
+  },
+  {
+    "trainer": "MUSTARD",
+    "species": "SPECIES_KORAIDON",
+    "script": "Mustard_Koraidon"
+  },
+  {
+    "trainer": "MUSTARD",
+    "species": "SPECIES_MARSHADOW",
+    "script": "Mustard_Marshadow"
+  },
+  {
+    "trainer": "N",
+    "species": "SPECIES_ZEKROM",
+    "script": "N_Zekrom"
+  },
+  {
+    "trainer": "N",
+    "species": "SPECIES_RESHIRAM",
+    "script": "N_Reshiram"
+  },
+  {
+    "trainer": "N",
+    "species": "SPECIES_SILVALLY",
+    "script": "N_Silvally"
+  },
+  {
+    "trainer": "NEMONA",
+    "species": "SPECIES_KORAIDON",
+    "script": "Nemona_Koraidon"
+  },
+  {
+    "trainer": "NEMONA",
+    "species": "SPECIES_WALKING_WAKE",
+    "script": "Nemona_WalkingWake"
+  },
+  {
+    "trainer": "NEMONA",
+    "species": "SPECIES_IRON_VALIANT",
+    "script": "Nemona_IronValiant"
+  },
+  {
+    "trainer": "NESSA",
+    "species": "SPECIES_KYOGRE",
+    "script": "Nessa_Kyogre"
+  },
+  {
+    "trainer": "NESSA",
+    "species": "SPECIES_TAPU_FINI",
+    "script": "Nessa_TapuFini"
+  },
+  {
+    "trainer": "NESSA",
+    "species": "SPECIES_SUICUNE",
+    "script": "Nessa_Suicune"
+  },
+  {
+    "trainer": "OLIVIA",
+    "species": "SPECIES_TAPU_LELE",
+    "script": "Olivia_TapuLele"
+  },
+  {
+    "trainer": "OLIVIA",
+    "species": "SPECIES_NECROZMA",
+    "script": "Olivia_Necrozma"
+  },
+  {
+    "trainer": "OLIVIA",
+    "species": "SPECIES_DIANCIE",
+    "script": "Olivia_Diancie"
+  },
+  {
+    "trainer": "PEONIA",
+    "species": "SPECIES_LUGIA",
+    "script": "Peonia_Lugia"
+  },
+  {
+    "trainer": "PEONIA",
+    "species": "SPECIES_SUICUNE",
+    "script": "Peonia_Suicune"
+  },
+  {
+    "trainer": "PEONIA",
+    "species": "SPECIES_ARTICUNO",
+    "script": "Peonia_Articuno"
+  },
+  {
+    "trainer": "PEONY",
+    "species": "SPECIES_REGISTEEL",
+    "script": "Peony_Registeel"
+  },
+  {
+    "trainer": "PEONY",
+    "species": "SPECIES_CALYREX",
+    "script": "Peony_Calyrex"
+  },
+  {
+    "trainer": "PEONY",
+    "species": "SPECIES_DIALGA",
+    "script": "Peony_Dialga"
+  },
+  {
+    "trainer": "ROWAN",
+    "species": "SPECIES_DIALGA",
+    "script": "Rowan_Dialga"
+  },
+  {
+    "trainer": "ROWAN",
+    "species": "SPECIES_UXIE",
+    "script": "Rowan_Uxie"
+  },
+  {
+    "trainer": "ROWAN",
+    "species": "SPECIES_SILVALLY",
+    "script": "Rowan_Silvally"
+  },
+  {
+    "trainer": "ROSA",
+    "species": "SPECIES_RESHIRAM",
+    "script": "Rosa_Reshiram"
+  },
+  {
+    "trainer": "ROSA",
+    "species": "SPECIES_VIRIZION",
+    "script": "Rosa_Virizion"
+  },
+  {
+    "trainer": "ROSA",
+    "species": "SPECIES_MELOETTA",
+    "script": "Rosa_Meloetta"
+  },
+  {
+    "trainer": "SERENA",
+    "species": "SPECIES_XERNEAS",
+    "script": "Serena_Xerneas"
+  },
+  {
+    "trainer": "SERENA",
+    "species": "SPECIES_DIANCIE",
+    "script": "Serena_Diancie"
+  },
+  {
+    "trainer": "SERENA",
+    "species": "SPECIES_LATIAS",
+    "script": "Serena_Latias"
+  },
+  {
+    "trainer": "SHELLY",
+    "species": "SPECIES_MANAPHY",
+    "script": "Shelly_Manaphy"
+  },
+  {
+    "trainer": "SHELLY",
+    "species": "SPECIES_KYOGRE",
+    "script": "Shelly_Kyogre"
+  },
+  {
+    "trainer": "SHELLY",
+    "species": "SPECIES_VOLCANION",
+    "script": "Shelly_Volcanion"
+  },
+  {
+    "trainer": "SKYLA",
+    "species": "SPECIES_TORNADUS_INCARNATE",
+    "script": "Skyla_Tornadus"
+  },
+  {
+    "trainer": "SKYLA",
+    "species": "SPECIES_LUGIA",
+    "script": "Skyla_Lugia"
+  },
+  {
+    "trainer": "SKYLA",
+    "species": "SPECIES_CELESTEELA",
+    "script": "Skyla_Celesteela"
+  },
+  {
+    "trainer": "TULIP",
+    "species": "SPECIES_LUNALA",
+    "script": "Tulip_Lunala"
+  },
+  {
+    "trainer": "TULIP",
+    "species": "SPECIES_CRESSELIA",
+    "script": "Tulip_Cresselia"
+  },
+  {
+    "trainer": "TULIP",
+    "species": "SPECIES_ARTICUNO_GALAR",
+    "script": "Tulip_GalarianArticuno"
+  },
+  {
+    "trainer": "VALERIE",
+    "species": "SPECIES_XERNEAS",
+    "script": "Valerie_Xerneas"
+  },
+  {
+    "trainer": "VALERIE",
+    "species": "SPECIES_DIANCIE",
+    "script": "Valerie_Diancie"
+  },
+  {
+    "trainer": "VALERIE",
+    "species": "SPECIES_PHEROMOSA",
+    "script": "Valerie_Pheromosa"
+  },
+  {
+    "trainer": "VIOLA",
+    "species": "SPECIES_GENESECT",
+    "script": "Viola_Genesect"
+  },
+  {
+    "trainer": "VIOLA",
+    "species": "SPECIES_BUZZWOLE",
+    "script": "Viola_Buzzwole"
+  },
+  {
+    "trainer": "VIOLA",
+    "species": "SPECIES_KARTANA",
+    "script": "Viola_Kartana"
+  },
+  {
+    "trainer": "ZINNIA",
+    "species": "SPECIES_RAYQUAZA",
+    "script": "Zinnia_Rayquaza"
+  },
+  {
+    "trainer": "ZINNIA",
+    "species": "SPECIES_JIRACHI",
+    "script": "Zinnia_Jirachi"
+  },
+  {
+    "trainer": "ZINNIA",
+    "species": "SPECIES_DEOXYS",
+    "script": "Zinnia_Deoxys"
+  },
+  {
+    "trainer": "LILLIE",
+    "species": "SPECIES_SOLGALEO",
+    "script": "Lillie_Solgaleo"
+  }
+]

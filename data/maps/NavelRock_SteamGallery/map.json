@@ -1,0 +1,44 @@
+{
+  "id": "MAP_NAVEL_ROCK_STEAM_GALLERY",
+  "name": "NavelRock_SteamGallery",
+  "layout": "LAYOUT_NAVEL_ROCK_STEAM_GALLERY",
+  "music": "MUS_RG_SEVII_CAVE",
+  "region_map_section": "MAPSEC_NAVEL_ROCK",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 1,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_NAVEL_ROCK_FIRE_VENT",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 14,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_NAVEL_ROCK_STEAM_CHAMBER",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "NavelRock_EventScript_Gate"
+    }
+  ]
+}

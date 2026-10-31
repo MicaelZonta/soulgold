@@ -1344,11 +1344,16 @@
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER                                           0x4FF // Unused Flag
 
 // Trainer Flags
-// Trainer flags occupy TRAINER_FLAGS_START through TRAINER_FLAGS_END.
-// See constants/opponents.h. The trainer ID + TRAINER_FLAGS_START is the flag ID.
+// Bloco 1: IDs 0..TRAINER_FLAG_BLOCK1_COUNT-1, flag = TRAINER_FLAGS_START + ID (0x500..0x98B).
+// Bloco 2: IDs TRAINER_FLAG_BLOCK1_COUNT..MAX_TRAINERS_COUNT-1, flag = TRAINER_FLAGS_2_START + (ID - 1164).
+// O bloco 2 mora na reserva vaga entre as flags de sistema e as CUSTOM (0xB00..0xBFF).
+// Codigo C usa sempre TRAINER_FLAG(id); nunca TRAINER_FLAGS_START + id.
 
 #define TRAINER_FLAGS_START                                         0x500
-#define TRAINER_FLAGS_END                                           (TRAINER_FLAGS_START + MAX_TRAINERS_COUNT - 1)
+#define TRAINER_FLAGS_END                                           (TRAINER_FLAGS_START + TRAINER_FLAG_BLOCK1_COUNT - 1)
+#define TRAINER_FLAGS_2_START                                       0xB00
+#define TRAINER_FLAGS_2_END                                         (TRAINER_FLAGS_2_START + MAX_TRAINERS_COUNT - TRAINER_FLAG_BLOCK1_COUNT - 1)
+#define TRAINER_FLAG(id)                                            ((id) < TRAINER_FLAG_BLOCK1_COUNT ? TRAINER_FLAGS_START + (id) : TRAINER_FLAGS_2_START + (id) - TRAINER_FLAG_BLOCK1_COUNT)
 
 // System Flags
 
@@ -2206,12 +2211,137 @@
 #define FLAG_MET_SOLIERA                            0x1190 // a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 #define FLAG_BIRTH_ISLAND_ITEM_METEORITE            0x1191 // o Meteorite da cratera ja foi pego; setada pelo finditem
 #define FLAG_SAW_METEOR_SHOWER                      0x1192 // o jogador viu a chuva de meteoros no cais de Vermilion, a noite; e o que destrava o bilhete da Birth Island
-#define FLAG_NAVELROCK_FIRE_VENT                    0x1193 // a fenda do alto do Navel Rock foi desentupida; o calor sobe
-#define FLAG_NAVELROCK_SEA_BREACH                   0x1194 // a brecha do fundo do Navel Rock foi aberta; o mar desce
+#define FLAG_NAVELROCK_FIRE_VENT                    0x1193 // a fenda das Fontes Termais do Navel Rock foi desentupida; com a brecha, abre o portao das Galerias (desde 27/10/2026)
+#define FLAG_NAVELROCK_SEA_BREACH                   0x1194 // a brecha da Gruta das Mares do Navel Rock foi aberta; com a fenda, abre o portao das Galerias (desde 27/10/2026)
 #define FLAG_HIDE_VOLCANION                         0x1195 // recalculada em todo ON_TRANSITION da Camara do Vapor: so limpa com as duas valvulas abertas
 #define FLAG_CAUGHT_VOLCANION                       0x1196 // o Volcanion ja foi capturado; e o que impede ele de voltar
-#define CUSTOM_FLAGS_END                            FLAG_CAUGHT_VOLCANION
-// PROXIMA FLAG NOVA: 0x1197 (livre ate 0x14FF). Alocar aqui, em sequencia, com
+#define FLAG_HIDE_PECHARUNT                         0x1197 // recalculada em todo ON_TRANSITION do Ruby Path B5F: so limpa com o Trio Leal capturado e o Pecharunt solto
+#define FLAG_CAUGHT_PECHARUNT                       0x1198 // o Pecharunt ja foi capturado (Ruby Path B5F); e o que impede ele de voltar e o estado AFTER da One Island
+#define FLAG_ABUNDANCE_TORNADUS_DONE                0x1199 // o Tornadus da Gale Shore foi capturado ou vencido; setada no script dele (Abundance Isle)
+#define FLAG_ABUNDANCE_THUNDURUS_DONE               0x119A // o Thundurus da Thunder Ridge foi capturado ou vencido; setada no script dele
+#define FLAG_ABUNDANCE_LANDORUS_DONE                0x119B // o Landorus do santuario da Abundance Isle foi capturado ou vencido
+#define FLAG_ABUNDANCE_ENAMORUS_DONE                0x119C // o Enamorus do Spring Grove foi capturado ou vencido
+#define FLAG_ABUNDANCE_ZEKROM_DONE                  0x119D // o Zekrom do Thunderspire Summit foi capturado ou vencido
+#define FLAG_ABUNDANCE_RESHIRAM_DONE                0x119E // o Reshiram do Hall of Truth (Truthsand Ruins) foi capturado ou vencido
+#define FLAG_ITEM_ABUNDANCE_ISLE_DAMP_ROCK          0x119F // ITEM_DAMP_ROCK em AbundanceIsle (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_THUNDER_STONE      0x11A0 // ITEM_THUNDER_STONE em AbundanceIsle (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_HARD_STONE         0x11A1 // ITEM_HARD_STONE em AbundanceIsle (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_MIRACLE_SEED       0x11A2 // ITEM_MIRACLE_SEED em AbundanceIsle (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_BARN_LEFTOVERS     0x11A3 // ITEM_LEFTOVERS em AbundanceIsle_Barn (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_FARMHOUSE_BIG_ROOT 0x11A4 // ITEM_BIG_ROOT em AbundanceIsle_Farmhouse (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_REVIVE 0x11A5 // ITEM_REVIVE em AbundanceIsle_HarvestFields (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_SITRUS_BERRY 0x11A6 // ITEM_SITRUS_BERRY em AbundanceIsle_HarvestFields (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_SOFT_SAND 0x11A7 // ITEM_SOFT_SAND em AbundanceIsle_HarvestFields (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_PEARL 0x11A8 // ITEM_PEARL em AbundanceIsle_HarvestFields (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_KEEPER_HOUSE_SOOTHE_BELL 0x11A9 // ITEM_SOOTHE_BELL em AbundanceIsle_KeeperHouse (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SPRING_GROVE_SHINY_STONE 0x11AA // ITEM_SHINY_STONE em AbundanceIsle_SpringGrove (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SPRING_GROVE_MIRACLE_SEED 0x11AB // ITEM_MIRACLE_SEED em AbundanceIsle_SpringGrove (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SPRING_GROVE_SWEET_APPLE 0x11AC // ITEM_SWEET_APPLE em AbundanceIsle_SpringGrove (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_WINDSWEPT_CAPE_PRETTY_FEATHER 0x11AD // ITEM_PRETTY_FEATHER em AbundanceIsle_WindsweptCape (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_WINDSWEPT_CAPE_WIDE_LENS 0x11AE // ITEM_WIDE_LENS em AbundanceIsle_WindsweptCape (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_WINDSWEPT_CAPE_STAR_PIECE 0x11AF // ITEM_STAR_PIECE em AbundanceIsle_WindsweptCape (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SKYLA_HANGAR_ZOOM_LENS 0x11B0 // ITEM_ZOOM_LENS em AbundanceIsle_SkylaHangar (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_FLOAT_STONE 0x11B1 // ITEM_FLOAT_STONE em AbundanceIsle_GaleShore (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_PEARL_STRING 0x11B2 // ITEM_PEARL_STRING em AbundanceIsle_GaleShore (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_AIR_BALLOON 0x11B3 // ITEM_AIR_BALLOON em AbundanceIsle_GaleShore (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_GALE_CAVE_SMOOTH_ROCK 0x11B4 // ITEM_SMOOTH_ROCK em AbundanceIsle_GaleCave (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_GALE_CAVE_BIG_PEARL 0x11B5 // ITEM_BIG_PEARL em AbundanceIsle_GaleCave (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_GALE_CAVE_SHARP_BEAK 0x11B6 // ITEM_SHARP_BEAK em AbundanceIsle_GaleCave (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_FROSTFALL_CRATER_1F_SNOWBALL      0x11B7 // ITEM_SNOWBALL em FrostfallCrater_1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_FROSTFALL_CRATER_1F_ICE_HEAL      0x11B8 // ITEM_ICE_HEAL em FrostfallCrater_1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_FROSTFALL_CRATER_B1F_ICY_ROCK     0x11B9 // ITEM_ICY_ROCK em FrostfallCrater_B1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_FROSTFALL_CRATER_B1F_NEVER_MELT_ICE 0x11BA // ITEM_NEVER_MELT_ICE em FrostfallCrater_B1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_FROSTFALL_CRATER_LAB_TM_BLIZZARD  0x11BB // ITEM_TM_BLIZZARD em FrostfallCrater_Lab (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_FROSTFALL_CRATER_LAB_MAX_REVIVE   0x11BC // ITEM_MAX_REVIVE em FrostfallCrater_Lab (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_FROSTFALL_CRATER_CORE_ICICLE_PLATE 0x11BD // ITEM_ICICLE_PLATE em FrostfallCrater_Core (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_FROSTFALL_CRATER_CORE_DRAGON_FANG 0x11BE // ITEM_DRAGON_FANG em FrostfallCrater_Core (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_FROSTFALL_CRATER_CORE_COMET_SHARD 0x11BF // ITEM_COMET_SHARD em FrostfallCrater_Core (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDER_RIDGE_ELECTIRIZER         0x11C0 // ITEM_ELECTIRIZER em ThunderRidge (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDER_RIDGE_MAX_REVIVE          0x11C1 // ITEM_MAX_REVIVE em ThunderRidge (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDER_RIDGE_THUNDER_STONE       0x11C2 // ITEM_THUNDER_STONE em ThunderRidge (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDER_RIDGE_RARE_CANDY          0x11C3 // ITEM_RARE_CANDY em ThunderRidge (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDERSPIRE_1F_DRAGON_SCALE      0x11C4 // ITEM_DRAGON_SCALE em Thunderspire_1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDERSPIRE_1F_ZINC              0x11C5 // ITEM_ZINC em Thunderspire_1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDERSPIRE_2F_SPELL_TAG         0x11C6 // ITEM_SPELL_TAG em Thunderspire_2F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDERSPIRE_2F_DRAGON_FANG       0x11C7 // ITEM_DRAGON_FANG em Thunderspire_2F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDERSPIRE_SUMMIT_ZAP_PLATE     0x11C8 // ITEM_ZAP_PLATE em Thunderspire_Summit (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDERSPIRE_SUMMIT_DRAGON_FANG   0x11C9 // ITEM_DRAGON_FANG em Thunderspire_Summit (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_PLASMA_FRIGATE_DECK_FULL_RESTORE  0x11CA // ITEM_FULL_RESTORE em PlasmaFrigate_Deck (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_PLASMA_FRIGATE_DECK_PP_UP         0x11CB // ITEM_PP_UP em PlasmaFrigate_Deck (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_PLASMA_FRIGATE_HOLD_DUSK_BALL     0x11CC // ITEM_DUSK_BALL em PlasmaFrigate_Hold (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_PLASMA_FRIGATE_HOLD_NEVER_MELT_ICE 0x11CD // ITEM_NEVER_MELT_ICE em PlasmaFrigate_Hold (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_PLASMA_FRIGATE_HOLD_MAX_ELIXIR    0x11CE // ITEM_MAX_ELIXIR em PlasmaFrigate_Hold (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_PLASMA_FRIGATE_CABINS_RARE_CANDY  0x11CF // ITEM_RARE_CANDY em PlasmaFrigate_Cabins (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_PLASMA_FRIGATE_ENGINE_ROOM_ICE_STONE 0x11D0 // ITEM_ICE_STONE em PlasmaFrigate_EngineRoom (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_PLASMA_FRIGATE_ENGINE_ROOM_UP_GRADE 0x11D1 // ITEM_UP_GRADE em PlasmaFrigate_EngineRoom (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_THUNDERSPIRE_3F_CELL_BATTERY      0x11D2 // ITEM_CELL_BATTERY em Thunderspire_3F (Abundance Isle); setada pelo finditem
+#define FLAG_HIDDEN_ITEM_THUNDERSPIRE_3F_MAGNET     0x11D3 // ITEM_MAGNET em Thunderspire_3F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_MYSTIC_WATER 0x11D4 // ITEM_MYSTIC_WATER em AbundanceIsle_SunsetStrait (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_BIG_PEARL 0x11D5 // ITEM_BIG_PEARL em AbundanceIsle_SunsetStrait (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_DRAGON_SCALE 0x11D6 // ITEM_DRAGON_SCALE em AbundanceIsle_SunsetStrait (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_SHELL_BELL 0x11D7 // ITEM_SHELL_BELL em AbundanceIsle_SunsetStrait (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_DEEP_SEA_SCALE 0x11D8 // ITEM_DEEP_SEA_SCALE em AbundanceIsle_SunsetStrait_Underwater (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_HEART_SCALE 0x11D9 // ITEM_HEART_SCALE em AbundanceIsle_SunsetStrait_Underwater (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_DEEP_SEA_TOOTH 0x11DA // ITEM_DEEP_SEA_TOOTH em AbundanceIsle_SunsetStrait_Underwater (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_SUNKEN_TRUTH_SHIP_RELIC_GOLD      0x11DB // ITEM_RELIC_GOLD em SunkenTruthShip (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_SUNKEN_TRUTH_SHIP_FLAME_PLATE     0x11DC // ITEM_FLAME_PLATE em SunkenTruthShip (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_SUNKEN_TRUTH_SHIP_BOTTLE_CAP      0x11DD // ITEM_BOTTLE_CAP em SunkenTruthShip (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_SUNKEN_TRUTH_SHIP_RELIC_CROWN     0x11DE // ITEM_RELIC_CROWN em SunkenTruthShip (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_SHRINE_OF_THE_FIRST_DRAGON_DRACO_PLATE 0x11DF // ITEM_DRACO_PLATE em ShrineOfTheFirstDragon (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_EMBERDUNE_ISLE_HEAT_ROCK          0x11E0 // ITEM_HEAT_ROCK em EmberduneIsle (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_EMBERDUNE_ISLE_SUN_STONE          0x11E1 // ITEM_SUN_STONE em EmberduneIsle (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_EMBERDUNE_ISLE_SOFT_SAND          0x11E2 // ITEM_SOFT_SAND em EmberduneIsle (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_EMBERDUNE_ISLE_FIRE_STONE         0x11E3 // ITEM_FIRE_STONE em EmberduneIsle (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_NS_ROOM_SOOTHE_BELL               0x11E4 // ITEM_SOOTHE_BELL em NsRoom (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_1F_RELIC_GOLD     0x11E5 // ITEM_RELIC_GOLD em TruthsandRuins_1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_1F_RELIC_COPPER   0x11E6 // ITEM_RELIC_COPPER em TruthsandRuins_1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_1F_SOFT_SAND      0x11E7 // ITEM_SOFT_SAND em TruthsandRuins_1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_1F_STARDUST       0x11E8 // ITEM_STARDUST em TruthsandRuins_1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_B1F_HARD_STONE    0x11E9 // ITEM_HARD_STONE em TruthsandRuins_B1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_B1F_RELIC_SILVER  0x11EA // ITEM_RELIC_SILVER em TruthsandRuins_B1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_B1F_CHARCOAL      0x11EB // ITEM_CHARCOAL em TruthsandRuins_B1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_B1F_RELIC_CROWN   0x11EC // ITEM_RELIC_CROWN em TruthsandRuins_B1F (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_HALL_OF_TRUTH_FLAME_PLATE 0x11ED // ITEM_FLAME_PLATE em TruthsandRuins_HallOfTruth (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_HALL_OF_TRUTH_FIRE_STONE 0x11EE // ITEM_FIRE_STONE em TruthsandRuins_HallOfTruth (Abundance Isle); setada pelo finditem
+#define FLAG_ITEM_TRUTHSAND_RUINS_HALL_OF_TRUTH_RELIC_VASE 0x11EF // ITEM_RELIC_VASE em TruthsandRuins_HallOfTruth (Abundance Isle); setada pelo finditem
+#define FLAG_ABUNDANCE_STELE_1                      0x11F0 // fragmento 1 da estela da Lenora encontrado (missao The Broken Stele)
+#define FLAG_ABUNDANCE_STELE_2                      0x11F1 // fragmento 2 da estela da Lenora encontrado (missao The Broken Stele)
+#define FLAG_ABUNDANCE_STELE_3                      0x11F2 // fragmento 3 da estela da Lenora encontrado (missao The Broken Stele)
+#define FLAG_ABUNDANCE_STELE_4                      0x11F3 // fragmento 4 da estela da Lenora encontrado (missao The Broken Stele)
+#define FLAG_ABUNDANCE_STELE_REWARD                 0x11F4 // Lenora ja deu a recompensa da estela completa
+#define FLAG_ABUNDANCE_SEED_1                       0x11F5 // saco de sementes 1 devolvido (missao Seeds in the Storm)
+#define FLAG_ABUNDANCE_SEED_2                       0x11F6 // saco de sementes 2 devolvido (missao Seeds in the Storm)
+#define FLAG_ABUNDANCE_SEED_3                       0x11F7 // saco de sementes 3 devolvido (missao Seeds in the Storm)
+#define FLAG_ABUNDANCE_SEED_4                       0x11F8 // saco de sementes 4 devolvido (missao Seeds in the Storm)
+#define FLAG_ABUNDANCE_SEED_5                       0x11F9 // saco de sementes 5 devolvido (missao Seeds in the Storm)
+#define FLAG_ABUNDANCE_SEED_6                       0x11FA // saco de sementes 6 devolvido (missao Seeds in the Storm)
+#define FLAG_ABUNDANCE_SEEDS_DONE                   0x11FB // fazendeiro recebeu os 6 sacos; abre a barraca diaria
+#define FLAG_ABUNDANCE_SKYLA_PLATE                  0x11FC // Skyla ja deu a Sky Plate (missao Grounded)
+#define FLAG_ABUNDANCE_STORM_GAUGE                  0x11FD // Winona entregou o medidor de tempestade (missao Eye of the Storm)
+#define FLAG_ABUNDANCE_STORM_DATA_DONE              0x11FE // Volkner recebeu as medicoes; recompensas entregues
+#define FLAG_ABUNDANCE_ZINNIA_TALE                  0x11FF // Zinnia contou a lenda do meteoro (Kyurem na equipe) e deu a Draco Plate
+#define FLAG_ABUNDANCE_CANDLE_1                     0x1200 // vela espiritual 1 da Thunderspire acesa (missao Candles of the Spire)
+#define FLAG_ABUNDANCE_CANDLE_2                     0x1201 // vela espiritual 2 da Thunderspire acesa (missao Candles of the Spire)
+#define FLAG_ABUNDANCE_CANDLE_3                     0x1202 // vela espiritual 3 da Thunderspire acesa (missao Candles of the Spire)
+#define FLAG_ABUNDANCE_CANDLE_4                     0x1203 // vela espiritual 4 da Thunderspire acesa (missao Candles of the Spire)
+#define FLAG_ABUNDANCE_CANDLES_DONE                 0x1204 // Allister deu a recompensa das 4 velas
+#define FLAG_ABUNDANCE_PLASMA_UNIFORM               0x1205 // jogador pegou o uniforme do Plasma no vestiario do Frigate (missao Undercover)
+#define FLAG_ABUNDANCE_ROSA_REWARD                  0x1206 // Rosa deu a recompensa depois da sala de maquinas
+#define FLAG_ABUNDANCE_ALDER_DONE                   0x1207 // Alder fez as tres perguntas e deu o Expert Belt
+#define FLAG_ABUNDANCE_MURAL_1                      0x1208 // placa de mural 1 das Truthsand Ruins lida (missao Sands of Truth)
+#define FLAG_ABUNDANCE_MURAL_2                      0x1209 // placa de mural 2 das Truthsand Ruins lida (missao Sands of Truth)
+#define FLAG_ABUNDANCE_MURAL_3                      0x120A // placa de mural 3 das Truthsand Ruins lida (missao Sands of Truth)
+#define FLAG_ABUNDANCE_MURAL_4                      0x120B // placa de mural 4 das Truthsand Ruins lida (missao Sands of Truth)
+#define FLAG_ABUNDANCE_MURAL_5                      0x120C // placa de mural 5 das Truthsand Ruins lida (missao Sands of Truth)
+#define FLAG_ABUNDANCE_MURALS_DONE                  0x120D // Lucy deu a recompensa dos 5 murais
+#define FLAG_ABUNDANCE_GARDEN_DONE                  0x120E // Ramos deu a recompensa do jardim (3 dias regando)
+#define FLAG_ABUNDANCE_ROCKET_REWARD                0x120F // Jessie e James largaram o Amulet Coin depois da batalha final
+#define FLAG_ABUNDANCE_N_LETTER                     0x1210 // jogador leu a carta do N na casa do guardiao
+#define FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_1F_COMET_SHARD 0x1211 // Comet Shard escondido na Frostfall Crater 1F (missao Frozen Stars); setada pelo item escondido
+#define FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_B1F_COMET_SHARD 0x1212 // Comet Shard escondido na Frostfall Crater B1F (missao Frozen Stars); setada pelo item escondido
+#define FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_LAB_COMET_SHARD 0x1213 // Comet Shard escondido na Frostfall Crater LAB (missao Frozen Stars); setada pelo item escondido
+#define CUSTOM_FLAGS_END                            FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_LAB_COMET_SHARD
+// PROXIMA FLAG NOVA: 0x1214 (livre ate 0x14FF). Alocar aqui, em sequencia, com
 // comentario dizendo o que significa e quem seta, e mover CUSTOM_FLAGS_END para
 // ela. Skill: .claude/skills/alocar-flag/SKILL.md
 
@@ -2232,14 +2362,14 @@
 #define FLAG_ROUTE33_GROTTO                         (DAILY_FLAGS_START + 0x8)
 #define FLAG_ROUTE44_GROTTO                         (DAILY_FLAGS_START + 0x9)
 #define FLAG_DAILY_PICKED_LOTO_TICKET               (DAILY_FLAGS_START + 0xA)
-#define FLAG_DAILY_ROUTE_114_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xB)  // livre desde 24/09/2026
-#define FLAG_DAILY_ROUTE_111_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xC)  // livre desde 24/09/2026
+#define FLAG_DAILY_ABUNDANCE_FARM_STAND             (DAILY_FLAGS_START + 0xB)  // barraca da fazenda da Abundance Isle (missao Seeds in the Storm): uma baga por dia (desde 30/10/2026)
+#define FLAG_DAILY_ABUNDANCE_NEMONA                 (DAILY_FLAGS_START + 0xC)  // revanche diaria da Nemona (Pokemon Center da Windswept Cape) (desde 30/10/2026)
 #define FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY      (DAILY_FLAGS_START + 0xD)
-#define FLAG_DAILY_ROUTE_120_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xE)  // livre desde 24/09/2026
-#define FLAG_DAILY_LILYCOVE_RECEIVED_BERRY          (DAILY_FLAGS_START + 0xF)  // livre desde 24/09/2026
+#define FLAG_DAILY_ABUNDANCE_ARENA                  (DAILY_FLAGS_START + 0xE)  // desafiante do dia da Festival Arena ja foi enfrentado (desde 30/10/2026)
+#define FLAG_DAILY_ABUNDANCE_GARDEN                 (DAILY_FLAGS_START + 0xF)  // canteiros do Spring Grove ja regados hoje (missao The Herald's Garden) (desde 30/10/2026)
 #define FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY       (DAILY_FLAGS_START + 0x10)
 #define FLAG_DAILY_BERRY_MASTERS_WIFE               (DAILY_FLAGS_START + 0x11) // Route 30 Berry Master's wife: one rare Berry a day, post-Hall of Fame (.claude/KURT_BALL_CRAFT_DESIGN.md section 5.4). Was allocated and never used by anything
-#define FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY        (DAILY_FLAGS_START + 0x12)  // livre desde 24/09/2026
+#define FLAG_DAILY_ABUNDANCE_DUO                    (DAILY_FLAGS_START + 0x12)  // revanche diaria de N e Hilda no Shrine of the First Dragon (desde 30/10/2026)
 #define FLAG_LAKEOFRAGE_GROTTO                      (DAILY_FLAGS_START + 0x13)
 #define FLAG_DAILY_APPRENTICE_LEAVES                (DAILY_FLAGS_START + 0x14)
 
@@ -2300,8 +2430,8 @@
 #define FLAG_DAILY_GARDEN_NEW_DAY                   (DAILY_FLAGS_START + 0x32) // VAR_GARDEN_TODAY already reset today (GardenRollDay)
 #define FLAG_UNUSED_0x953                           (DAILY_FLAGS_START + 0x33) // Unused Flag
 #define FLAG_DAILY_DAISY_GROOMED                    (DAILY_FLAGS_START + 0x34) // Daisy (Pallet Town House 2) groomed a Pokemon today. Set by PalletTown_House2_EventScript_DaisyGrooming
-#define FLAG_UNUSED_0x955                           (DAILY_FLAGS_START + 0x35) // Unused Flag
-#define FLAG_UNUSED_0x956                           (DAILY_FLAGS_START + 0x36) // Unused Flag
+#define FLAG_DAILY_ABUNDANCE_OFFERING               (DAILY_FLAGS_START + 0x35) // oferenda de sabado no santuario do hub da Abundance Isle ja deu o item de hoje (desde 31/10/2026)
+#define FLAG_DAILY_ABUNDANCE_STORM_ROLLED           (DAILY_FLAGS_START + 0x36) // tempestade de hoje da Abundance Isle ja sorteada em VAR_ABUNDANCE_STORM (desde 31/10/2026)
 #define FLAG_UNUSED_0x957                           (DAILY_FLAGS_START + 0x37) // Unused Flag
 #define FLAG_UNUSED_0x958                           (DAILY_FLAGS_START + 0x38) // Unused Flag
 #define FLAG_UNUSED_0x959                           (DAILY_FLAGS_START + 0x39) // Unused Flag

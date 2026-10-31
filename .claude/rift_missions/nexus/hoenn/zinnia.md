@@ -6,19 +6,19 @@ Aparece no checklist como:
 
 - **Zinnia** (Hoenn · Outros notáveis) — Lorekeeper do povo Draconid que conduz os eventos do Delta Episode.
 
-**Pronto para o Nexus:** ❌ não — o overworld próprio entrou no código em 30/09/2026 (`OBJ_EVENT_GFX_ZINNIA`), mas falta a front pic (obrigatória).
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Zinnia/` (o overworld já registrado; a front pic, não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_ZINNIA`, 30/09/2026
-- [ ] Battle sprite / front pic *(obrigatório)* — arte disponível, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte disponível, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026), fora do código
-- [ ] Associado a um lendário — 📝 proposta: Rayquaza (cedido pelo Lance)
-- [ ] Diálogo genérico escrito — 📝 proposta abaixo, 3 variações
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta abaixo, 3 variações
+- [x] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026), fora do código
+- [x] Associado a um lendário — 📝 proposta: Rayquaza (cedido pelo Lance)
+- [x] Diálogo genérico escrito — 📝 proposta abaixo, 3 variações
+- [x] Diálogo associado ao lendário escrito — 📝 proposta abaixo, 3 variações
 
 ## Referências no repositório
 
@@ -53,34 +53,15 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_ZINNIA`, ID **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163), campeã do **Rayquaza**. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler).
-
-Pic `Hex Maniac` — **pic provisória até registrar a arte** (capa escura, a mais perto do capuz da Zinnia entre as que já existem). Classe `Dragon Tamer`, música `Hg Champion`.
-
-Lendário **Rayquaza**, com **Dragon Ascent**: é a Mega Rayquaza, lendário **e** Mega na mesma peça (R10; o validador conta Dragon Ascent como Mega). O Delta Episode inteiro é a Zinnia tentando fazer o dragão do céu aprender esse golpe; aqui ele aprendeu. Semi-lendário **Jirachi**, a estrela dos desejos que acorda com o cometa: para a guardiã de um povo que lê o céu, e com Doom Desire, a estrela que cai depois. É também o Aço que segura Fada e Gelo pelos dragões. Mais **Salamence** (a Mega dela em ORAS; aqui sem pedra, porque a vaga é do Rayquaza), **Goodra** e **Noivern**, do time dela em ORAS, e **Exploud**: a Aster, a Whismur que ela carrega em ORAS, crescida neste fragmento.
-
-*Plano (Singles):* a Mega Rayquaza põe Delta Stream (tira as fraquezas de Voador) e arma Dragon Dance, depois limpa com Dragon Ascent e Extreme Speed; o Jirachi dá Wish e planta Doom Desire para o turno seguinte; o Salamence entra de Intimidate; o Goodra de Assault Vest segura os especiais; o Noivern tira metade de qualquer tanque com Super Fang; o Exploud de Choice Specs bate Hyper Voice em Fantasma graças ao Scrappy.
-
-*Plano (Doubles):* o Noivern põe Tailwind enquanto o Jirachi dá Helping Hand no Exploud, e o Hyper Voice pega os dois oponentes; o Salamence abre de Intimidate; a Mega Rayquaza entra com o vento já soprando. Nenhum golpe do time acerta o parceiro.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Rayquaza | Life Orb | Air Lock | Naive | Dragon Ascent, Extreme Speed, Draco Meteor, Dragon Dance |
-| Jirachi | Leftovers | Serene Grace | Careful | Iron Head, Doom Desire, Wish, Helping Hand |
-| Salamence | Sitrus Berry | Intimidate | Timid | Draco Meteor, Hurricane, Fire Blast, Protect |
-| Goodra | Assault Vest | Sap Sipper | Modest | Draco Meteor, Fire Blast, Sludge Bomb, Thunderbolt |
-| Noivern | Sitrus Berry | Infiltrator | Timid | Hurricane, Super Fang, Tailwind, Roost |
-| Exploud | Choice Specs | Scrappy | Modest | Hyper Voice, Fire Blast, Focus Blast, Ice Beam |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e categorias)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_ZINNIA` = **1216** (bloco 2, flag `0xB34`), luta genérica `Nexus_EventScript_Zinnia_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_ZINNIA ===
 Name: Zinnia
-Class: Dragon Tamer
-Pic: Hex Maniac
+Class: Pkmn Trainer 1
+Pic: Zinnia
 Gender: Female
-Music: Hg Champion
+Music: Female
 Double Battle: No
 AI: Smart Trainer
 
@@ -149,12 +130,16 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Fire Blast
 - Focus Blast
 - Ice Beam
-
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Rayquaza** — `Nexus_EventScript_Zinnia_Rayquaza_ChampionFight` (falas `Nexus_Text_Zinnia_Rayquaza_Champion*`)
+- **Jirachi** — `Nexus_EventScript_Zinnia_Jirachi_ChampionFight` (falas `Nexus_Text_Zinnia_Jirachi_Champion*`)
+- **Deoxys** — `Nexus_EventScript_Zinnia_Deoxys_ChampionFight` (falas `Nexus_Text_Zinnia_Deoxys_Champion*`)
+
 
 #### Rayquaza
 
@@ -176,15 +161,11 @@ O caderno da Zinnia (três páginas) está em [`diario_looker/zinnia/`](diario_l
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando a Zinnia cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
-
-A Zinnia dos jogos é leve, provocadora e some quando quer; de repente fica séria e fala de coisas grandes demais. Esta chega sempre por último (fio "Hoenn" do diário) e acha graça nisso.
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Zinnia_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
-> Hey! You made it. Everybody makes it here eventually.
->
-> Me? I'm always last. Last one to the party, last one out the door.
+> Hey! I'm always last. Last one to the party, last one out the door.
 >
 > Doesn't mean I lose, though. C'mon, let's see if you can keep up!
 
@@ -193,98 +174,6 @@ A Zinnia dos jogos é leve, provocadora e some quando quer; de repente fica sér
 > Ahaha! Wow. Okay, you're good.
 >
 > Guess I'm last again. I'm used to it.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Zinnia_Intro:
-	.string "Hey! You made it. Everybody makes it\n"
-	.string "here eventually.\p"
-	.string "Me? I'm always last. Last one to the\n"
-	.string "party, last one out the door.\p"
-	.string "Doesn't mean I lose, though. C'mon,\n"
-	.string "let's see if you can keep up!$"
-
-Nexus_Text_Zinnia_Defeat:
-	.string "Ahaha! Wow. Okay, you're good.\p"
-	.string "Guess I'm last again. I'm used to it.$"
-```
-
-</details>
-
-#### Variações 2 e 3 (📝 proposta de 30/09/2026)
-
-**Variação 2** — a Lorekeeper: a história na cabeça dela não bate mais com a de fora.
-
-**Antes da luta**
-
-> My people have one job. We remember the story, word for word, so nobody else has to.
->
-> Thing is, the story in my head doesn't match the one out there anymore.
->
-> Maybe I got a line wrong. Or maybe the world did. Let's battle and find out!
-
-**Derrota**
-
-> Huh. That's not how the story goes.
->
-> …Or maybe it is, now. Guess I'll have to learn it again.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Zinnia_Intro2:
-	.string "My people have one job. We remember\n"
-	.string "the story, word for word, so nobody\l"
-	.string "else has to.\p"
-	.string "Thing is, the story in my head doesn't\n"
-	.string "match the one out there anymore.\p"
-	.string "Maybe I got a line wrong. Or maybe the\n"
-	.string "world did. Let's battle and find out!$"
-
-Nexus_Text_Zinnia_Defeat2:
-	.string "Huh. That's not how the story goes.\p"
-	.string "…Or maybe it is, now. Guess I'll have to\n"
-	.string "learn it again.$"
-```
-
-</details>
-
-**Variação 3** — a Aster, que gritava pequena e grita grande.
-
-**Antes da luta**
-
-> See this one? When we met, it was tiny and it wouldn't stop shouting.
->
-> Now it's huge and it still won't stop shouting. Some things never change.
->
-> Her name's Aster. After a flower. After somebody. Don't ask! Let's go!
-
-**Derrota**
-
-> Aster's gonna sulk all day. Thanks a lot!
->
-> …Nah, she'll be fine. We lose, we shout, we get back up.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Zinnia_Intro3:
-	.string "See this one? When we met, it was tiny\n"
-	.string "and it wouldn't stop shouting.\p"
-	.string "Now it's huge and it still won't stop\n"
-	.string "shouting. Some things never change.\p"
-	.string "Her name's Aster. After a flower. After\n"
-	.string "somebody. Don't ask! Let's go!$"
-
-Nexus_Text_Zinnia_Defeat3:
-	.string "Aster's gonna sulk all day. Thanks a\n"
-	.string "lot!\p"
-	.string "…Nah, she'll be fine. We lose, we shout,\n"
-	.string "we get back up.$"
-```
-
-</details>
 
 ### Diálogo associado ao lendário
 

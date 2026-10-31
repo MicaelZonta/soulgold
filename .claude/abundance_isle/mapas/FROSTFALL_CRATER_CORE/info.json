@@ -1,0 +1,96 @@
+{
+ "map": "FROSTFALL_CRATER_CORE",
+ "ingame": "Frostfall Crater Core",
+ "map_type": "MAP_TYPE_UNDERGROUND",
+ "connections": [],
+ "explorar": [
+  "Camara da cratera: lago de gelo cercado de pedras de neve; o Icicle Plate fica na ilha do centro, alcancada deslizando (3 movimentos)",
+  "Nicho escondido a leste, atras de estalactites (passagem de 1 celula): Zinnia e uma Dragon Fang",
+  "Zinnia (guardia da lore dos meteoros e dragoes) conta que o Kyurem caiu num meteorito de gelo e e a \"casca vazia\" do dragao original; batalha opcional; se o jogador tem Kyurem na equipe, fala especial",
+  "Comet Shard escondido no canto sudeste (lasca do meteorito)",
+  "So se chega aqui pelo buraco do salao de gelo ou pela escada do canto do lago (B1F)"
+ ],
+ "historia": "O fundo da cratera, onde o fragmento do meteorito do Kyurem caiu. Andar opcional: segredo e lore.",
+ "estados": {
+  "dia": "Camara com a Zinnia no nicho."
+ },
+ "conferido": "check_objects ok; BFS do pouso do buraco (12,18) ate a escada, a ilha do centro, o nicho da Zinnia e o Comet Shard.",
+ "w": 28,
+ "h": 24,
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_Cave_Ice",
+ "warps": [
+  {
+   "x": 5,
+   "y": 5,
+   "dest_map": "MAP_FROSTFALL_CRATER_B1F",
+   "dest_warp_id": "2",
+   "nota": "sobe para o canto do lago do B1F (33,26)"
+  },
+  {
+   "x": 12,
+   "y": 18,
+   "dest_map": "MAP_FROSTFALL_CRATER_B1F",
+   "dest_warp_id": "3",
+   "nota": "pouso do buraco do salao de gelo (warp de chegada)"
+  }
+ ],
+ "objects": [
+  {
+   "local_id": "ZINNIA",
+   "graphics_id": "OBJ_EVENT_GFX_ZINNIA",
+   "x": 25,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Core_EventScript_Zinnia",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_ICICLEPLATE",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 12,
+   "y": 11,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Core_EventScript_ItemIciclePlate",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_DRAGONFANG",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 26,
+   "y": 13,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Core_EventScript_ItemDragonFang",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_HIDDEN_NUGGET",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 21,
+   "y": 18,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "FrostfallCrater_Core_EventScript_ItemCometShard",
+   "flag": "0"
+  }
+ ]
+}

@@ -1,0 +1,222 @@
+{
+ "map": "AbundanceIsle_SunsetStrait",
+ "ingame": "Sunset Strait",
+ "w": 40,
+ "h": 56,
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_CianwoodCity",
+ "map_type": "MAP_TYPE_ROUTE",
+ "warps": [
+  {
+   "x": 30,
+   "y": 29,
+   "dest_map": "MAP_SHRINE_OF_THE_FIRST_DRAGON",
+   "dest_warp_id": "0",
+   "nota": "gruta no pe do rochedo da ilhota B"
+  }
+ ],
+ "connections": [
+  {
+   "direction": "up",
+   "map": "MAP_ABUNDANCE_ISLE_HARVEST_FIELDS",
+   "offset": 0,
+   "nota": "mar dos dois lados; o cais da Harvest Fields (x 16..18) continua aqui e termina no mar"
+  },
+  {
+   "direction": "down",
+   "map": "MAP_EMBERDUNE_ISLE",
+   "offset": 0,
+   "nota": "mar dos dois lados"
+  },
+  {
+   "direction": "dive",
+   "map": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER",
+   "offset": 0,
+   "nota": "agua funda 3x3 em (22,7) e (5,48)"
+  }
+ ],
+ "dive_spots": [
+  {
+   "x": 22,
+   "y": 7,
+   "w": 3,
+   "h": 3
+  },
+  {
+   "x": 5,
+   "y": 48,
+   "w": 3,
+   "h": 3
+  }
+ ],
+ "objects": [
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_SWIMMER_1",
+   "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M_WATER",
+   "x": 12,
+   "y": 6,
+   "elevation": 1,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "SunsetStrait_EventScript_Swimmer1",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_SWIMMER_2",
+   "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F_WATER",
+   "x": 26,
+   "y": 10,
+   "elevation": 1,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "SunsetStrait_EventScript_Swimmer2",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_SWIMMER_3",
+   "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M_WATER",
+   "x": 6,
+   "y": 28,
+   "elevation": 1,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "SunsetStrait_EventScript_Swimmer3",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_SWIMMER_4",
+   "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F_WATER",
+   "x": 32,
+   "y": 42,
+   "elevation": 1,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "SunsetStrait_EventScript_Swimmer4",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_SHELLY",
+   "graphics_id": "OBJ_EVENT_GFX_SHELLY",
+   "x": 11,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunsetStrait_EventScript_Shelly",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_JUAN",
+   "graphics_id": "OBJ_EVENT_GFX_JUAN",
+   "x": 19,
+   "y": 45,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunsetStrait_EventScript_Juan",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_TATE",
+   "graphics_id": "OBJ_EVENT_GFX_TATE",
+   "x": 29,
+   "y": 31,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunsetStrait_EventScript_Tate",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_ITEM_ISLET_A",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 5,
+   "y": 12,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunsetStrait_EventScript_ItemMysticWater",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_ITEM_SANDBAR",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 8,
+   "y": 37,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunsetStrait_EventScript_ItemBigPearl",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_ITEM_ROCK",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 33,
+   "y": 23,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunsetStrait_EventScript_ItemDragonScale",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_ITEM_ISLET_D",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 22,
+   "y": 47,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunsetStrait_EventScript_ItemShellBell",
+   "flag": "0"
+  }
+ ],
+ "explorar": [
+  "Fim do cais da Harvest Fields: daqui so de Surf; recifes 2x2 formam corredores ate o sul.",
+  "Ilhota A com bosque e flores: Shelly (ex-admin da Equipe Aqua) estuda as correntes quentes que trazem o verao; Mystic Water no bosque.",
+  "Rochedo da ilhota B: gruta no pe do penhasco leva ao Shrine of the First Dragon; Tate guarda a entrada (\"so os dois juntos abrem\"; a Liza esta la dentro); Dragon Scale no alto, subindo pela escada do rochedo.",
+  "Banco de areia C escondido entre recifes: Big Pearl.",
+  "Ilhota D com capim alto (encontros) e Juan, mestre de Agua que pinta o por do sol do estreito (batalha opcional); Shell Bell.",
+  "Quatro nadadores (treinadores) espalhados pelos corredores.",
+  "Duas manchas de agua funda (Dive): perto do fim do cais e no sudoeste. Embaixo, o casco do Sunken Truth Ship."
+ ],
+ "historia": "Ato 6: caminho por mar ate a Emberdune Isle. O rochedo com a gruta guarda o Shrine of the First Dragon, palco do fecho (N e Hilda) e do uso dos DNA Splicers.",
+ "estados": {
+  "dia": "Estreito com nadadores, Shelly, Juan e Tate."
+ },
+ "conferido": "check_objects: []; alcance com Surf a partir do cais: gruta=True, borda sul=True"
+}

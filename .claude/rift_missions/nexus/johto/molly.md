@@ -6,17 +6,17 @@ Aparece no checklist como:
 
 - **Molly Hale** (Johto · Outros notáveis) — filha do Professor Hale, de Greenfield; adulta no hack, mora na Mansão Hale com o Entei de lembrança.
 
-**Pronto para o Nexus:** ✅ sim — tem sprite e battle sprite (03/10/2026). Falta o time e as falas irem para o código.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_MOLLY_HALE`, 03/10/2026
 - [x] Battle sprite / front pic *(obrigatório)* — `TRAINER_PIC_FRONT_MOLLY_HALE` (64x64 + 80x80), 03/10/2026
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -53,16 +53,110 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-_Não definido._
+✅ **Implementado em 31/10/2026** (lote novo, time montado e revisado para Singles/Doubles pelo Codex — `novos/revisao_singles_doubles.md` — e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_MOLLY` = **1200** (bloco 2, flag `0xB24`), luta genérica `Nexus_EventScript_Molly_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
+
+```
+=== TRAINER_NEXUS_MOLLY ===
+Name: Molly
+Class: Pkmn Trainer 1
+Pic: Molly Hale
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Clefable @ Fairytite
+Calm Nature
+Level: 100
+Ability: Magic Guard
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Moonblast
+- Moonlight
+- Follow Me
+- Thunder Wave
+
+Xerneas @ Power Herb
+Modest Nature
+Level: 100
+Ability: Fairy Aura
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Geomancy
+- Moonblast
+- Protect
+- Focus Blast
+
+Entei @ Assault Vest
+Adamant Nature
+Level: 100
+Ability: Inner Focus
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Sacred Fire
+- Extreme Speed
+- Stomping Tantrum
+- Snarl
+
+Kingdra @ Scope Lens
+Modest Nature
+Level: 100
+Ability: Sniper
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Focus Energy
+- Hydro Pump
+- Draco Meteor
+- Ice Beam
+
+Ursaring @ Flame Orb
+Adamant Nature
+Level: 100
+Ability: Guts
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Facade
+- Close Combat
+- Crunch
+- Protect
+
+Granbull @ Sitrus Berry
+Adamant Nature
+Level: 100
+Ability: Intimidate
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Play Rough
+- Close Combat
+- Thunder Wave
+- Protect
+```
 
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Entei** — `Nexus_EventScript_Molly_Entei_ChampionFight` (falas `Nexus_Text_Molly_Entei_Champion*`)
+- **Xerneas** — `Nexus_EventScript_Molly_Xerneas_ChampionFight` (falas `Nexus_Text_Molly_Xerneas_Champion*`)
+- **Cresselia** — `Nexus_EventScript_Molly_Cresselia_ChampionFight` (falas `Nexus_Text_Molly_Cresselia_Champion*`)
+
 
 _Nenhum ainda._ (Entei é a ligação natural da personagem, mas depende de aprovação
 do autor e do [`POOL_LENDARIOS.md`](../POOL_LENDARIOS.md).)
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Molly_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
+
+**Antes da luta**
+
+> I used to make up friends who could never lose.
+>
+> These ones stayed even after I learned that losing was real. Want to meet them?
+
+**Derrota**
+
+> We lost... but nobody disappeared. Let's all stay friends, okay?
 
 ### Diálogo associado ao lendário
 

@@ -1,0 +1,153 @@
+{
+ "map": "AbundanceIsle_GaleShore",
+ "ingame": "Gale Shore",
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_CianwoodCity",
+ "map_type": "MAP_TYPE_ROUTE",
+ "warps": [
+  {
+   "x": 11,
+   "y": 9,
+   "dest_map": "MAP_ABUNDANCE_ISLE_GALE_CAVE",
+   "dest_warp_id": "1",
+   "nota": "boca da caverna no pé do penhasco -> saída norte da Gale Cave"
+  }
+ ],
+ "connections": [
+  {
+   "direction": "south",
+   "map": "MAP_ABUNDANCE_ISLE",
+   "offset": 0,
+   "nota": "mar dos dois lados: Surf a partir da praia norte do hub"
+  }
+ ],
+ "explorar": [
+  "Círculo de pedras esculpidas pelo vento, com o capim deitado: é onde o Tornadus cai exausto (ato 3). Air Balloon no canto do círculo.",
+  "Winona (especialista em voadores, de Hoenn) estuda o Tornadus na beira do círculo: explica que ele está ferido, não bravo, e depois da captura oferece batalha opcional.",
+  "Penhasco em dois níveis com a saída da Gale Cave; Float Stone no topo.",
+  "Laguna fechada por pedras no mar a sudoeste, com uma ilhota de areia: Pearl String, só de Surf.",
+  "Prado de capim alto a oeste (encontros de voadores); praia larga ao sul onde se chega de Surf vindo do hub; pescador, Beauty e Hiker como treinadores."
+ ],
+ "historia": "Praia ao norte, atrás da montanha do hub. Depois que a máquina da cratera para, o Tornadus cai no círculo de pedras: batalha de captura (ato 3).",
+ "estados": {
+  "dia": "Praia antes do ato 3 (sem o Tornadus).",
+  "estado": "Ato 3: Tornadus pousado no círculo de pedras, Winona observando."
+ },
+ "conferido": "BFS da saída da caverna: círculo, platô e itens alcançáveis a pé; ilhota só com Surf; praia sul alcançável de Surf; check_objects.",
+ "w": 46,
+ "h": 32,
+ "objects": [
+  {
+   "local_id": "WINONA",
+   "graphics_id": "OBJ_EVENT_GFX_WINONA",
+   "x": 32,
+   "y": 10,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "GaleShore_EventScript_Winona",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_PLATEAU",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 20,
+   "y": 5,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "GaleShore_EventScript_ItemFloatStone",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_ISLET",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 7,
+   "y": 23,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "GaleShore_EventScript_ItemPearlString",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_RING",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 39,
+   "y": 8,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "GaleShore_EventScript_ItemAirBalloon",
+   "flag": "0"
+  },
+  {
+   "local_id": "FISHERMAN",
+   "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
+   "x": 22,
+   "y": 19,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "GaleShore_EventScript_Fisherman",
+   "flag": "0"
+  },
+  {
+   "local_id": "BEAUTY",
+   "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+   "x": 30,
+   "y": 13,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "GaleShore_EventScript_Beauty",
+   "flag": "0"
+  },
+  {
+   "local_id": "HIKER",
+   "graphics_id": "OBJ_EVENT_GFX_HIKER",
+   "x": 26,
+   "y": 6,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "GaleShore_EventScript_Hiker",
+   "flag": "0"
+  },
+  {
+   "local_id": "TORNADUS",
+   "graphics_id": "OBJ_EVENT_GFX_SPECIES(TORNADUS)",
+   "x": 37,
+   "y": 10,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "GaleShore_EventScript_Tornadus",
+   "flag": "FLAG_HIDE_GALE_SHORE_TORNADUS"
+  }
+ ]
+}

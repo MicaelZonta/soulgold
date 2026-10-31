@@ -1,12 +1,53 @@
 OneIsland_KindleRoad_EmberSpa_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, OneIsland_KindleRoad_EmberSpa_OnTransition
 	.byte 0
 
+OneIsland_KindleRoad_EmberSpa_OnTransition:
+	call MtEmberResidents_OnTransition
+	end
+
+@ Quatro banhistas mudam com o Pecharunt (data/scripts/pecharunt.inc): com o
+@ Trio Leal capturado eles comeram mochi e ficaram moles; depois da captura
+@ voltam, sem graca. O do "therapeutic" e a piscina continuam como sempre.
+
 OneIsland_KindleRoad_EmberSpa_EventScript_OldMan::
-	msgbox OneIsland_KindleRoad_EmberSpa_Text_WaterWarmsMeToCore, MSGBOX_NPC
+	lock
+	faceplayer
+	call Pecharunt_GetState
+	goto_if_eq VAR_RESULT, 1, OneIsland_KindleRoad_EmberSpa_EventScript_OldManHunt
+	goto_if_eq VAR_RESULT, 2, OneIsland_KindleRoad_EmberSpa_EventScript_OldManAfter
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_WaterWarmsMeToCore
+	release
+	end
+
+OneIsland_KindleRoad_EmberSpa_EventScript_OldManHunt:
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_OldManHunt
+	release
+	end
+
+OneIsland_KindleRoad_EmberSpa_EventScript_OldManAfter:
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_OldManAfter
+	release
 	end
 
 OneIsland_KindleRoad_EmberSpa_EventScript_BaldingMan1::
-	msgbox OneIsland_KindleRoad_EmberSpa_Text_EnjoyBowlOfChowder, MSGBOX_NPC
+	lock
+	faceplayer
+	call Pecharunt_GetState
+	goto_if_eq VAR_RESULT, 1, OneIsland_KindleRoad_EmberSpa_EventScript_BaldingMan1Hunt
+	goto_if_eq VAR_RESULT, 2, OneIsland_KindleRoad_EmberSpa_EventScript_BaldingMan1After
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_EnjoyBowlOfChowder
+	release
+	end
+
+OneIsland_KindleRoad_EmberSpa_EventScript_BaldingMan1Hunt:
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_ChowderHunt
+	release
+	end
+
+OneIsland_KindleRoad_EmberSpa_EventScript_BaldingMan1After:
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_ChowderAfter
+	release
 	end
 
 OneIsland_KindleRoad_EmberSpa_EventScript_BaldingMan2::
@@ -14,7 +55,23 @@ OneIsland_KindleRoad_EmberSpa_EventScript_BaldingMan2::
 	end
 
 OneIsland_KindleRoad_EmberSpa_EventScript_OldWoman::
-	msgbox OneIsland_KindleRoad_EmberSpa_Text_SeeHowSmoothMySkinIs, MSGBOX_NPC
+	lock
+	faceplayer
+	call Pecharunt_GetState
+	goto_if_eq VAR_RESULT, 1, OneIsland_KindleRoad_EmberSpa_EventScript_OldWomanHunt
+	goto_if_eq VAR_RESULT, 2, OneIsland_KindleRoad_EmberSpa_EventScript_OldWomanAfter
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_SeeHowSmoothMySkinIs
+	release
+	end
+
+OneIsland_KindleRoad_EmberSpa_EventScript_OldWomanHunt:
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_SkinHunt
+	release
+	end
+
+OneIsland_KindleRoad_EmberSpa_EventScript_OldWomanAfter:
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_SkinAfter
+	release
 	end
 
 OneIsland_KindleRoad_EmberSpa_EventScript_BlackBelt::
@@ -27,7 +84,20 @@ OneIsland_KindleRoad_EmberSpa_EventScript_BlackBelt::
 OneIsland_KindleRoad_EmberSpa_EventScript_RockSmashMan::
 	lock
 	faceplayer
+	call Pecharunt_GetState
+	goto_if_eq VAR_RESULT, 1, OneIsland_KindleRoad_EmberSpa_EventScript_RockSmashManHunt
+	goto_if_eq VAR_RESULT, 2, OneIsland_KindleRoad_EmberSpa_EventScript_RockSmashManAfter
 	msgbox OneIsland_KindleRoad_EmberSpa_Text_ExplainHM06
+	release
+	end
+
+OneIsland_KindleRoad_EmberSpa_EventScript_RockSmashManHunt:
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_HewerHunt
+	release
+	end
+
+OneIsland_KindleRoad_EmberSpa_EventScript_RockSmashManAfter:
+	msgbox OneIsland_KindleRoad_EmberSpa_Text_HewerAfter
 	release
 	end
 

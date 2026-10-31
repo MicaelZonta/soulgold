@@ -147,6 +147,12 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Wo Chien** — `Nexus_EventScript_Ramos_WoChien_ChampionFight` (falas `Nexus_Text_Ramos_WoChien_Champion*`)
+- **Shaymin Land** — `Nexus_EventScript_Ramos_Shaymin_ChampionFight` (falas `Nexus_Text_Ramos_Shaymin_Champion*`)
+
+
 ✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Ramos_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
 
 **Proposta de 26/09/2026:** **Kartana** (UB-04 Blade). Ramos é o campeão dela: a quinta luta do Daily, logo antes da boss battle.

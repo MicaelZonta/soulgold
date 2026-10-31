@@ -1,0 +1,125 @@
+{
+ "map": "THUNDERSPIRE_2F",
+ "ingame": "Thunderspire 2F",
+ "w": 29,
+ "h": 25,
+ "primary": "gTileset_Johto_Building",
+ "secondary": "gTileset_BurnedTower",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 3,
+   "y": 5,
+   "dest_map": "MAP_THUNDERSPIRE_1F",
+   "dest_warp_id": "1",
+   "nota": "desce ao 1F (escada do 1F em 3,5)"
+  },
+  {
+   "x": 26,
+   "y": 22,
+   "dest_map": "MAP_THUNDERSPIRE_3F",
+   "dest_warp_id": "0",
+   "nota": "sobe ao 3F (chega em 26,22)"
+  }
+ ],
+ "connections": [],
+ "objects": [
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_2F_ALISTER",
+   "graphics_id": "OBJ_EVENT_GFX_ALISTER",
+   "x": 3,
+   "y": 21,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire2F_EventScript_Alister",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_2F_ROCK",
+   "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+   "x": 27,
+   "y": 8,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "EventScript_RockSmash",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_2F_ITEM_LEDGE",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 27,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire2F_EventScript_ItemSpellTag",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_2F_ITEM_GAP",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 2,
+   "y": 15,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Thunderspire2F_EventScript_ItemDragonFang",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_2F_GRUNT_3",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 26,
+   "y": 13,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "Thunderspire2F_EventScript_Grunt3",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_THUNDERSPIRE_2F_GRUNT_4",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 18,
+   "y": 20,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "5",
+   "script": "Thunderspire2F_EventScript_Grunt4",
+   "flag": "0"
+  }
+ ],
+ "explorar": [
+  "O andar quase todo desabou: três buracos enormes deixam só um caminho em S da chegada até a escada do 3F.",
+  "Beirada nordeste com Spell Tag, num corredor estreito fechado por uma pedra de Rock Smash.",
+  "Vão entre buracos à esquerda com Dragon Fang.",
+  "Alister, num canto escuro das ruínas: diz ter visto 'a sombra de um dragão negro' dormindo no alto; fica ali como fantasma da torre e conta histórias diferentes à noite.",
+  "Dois recrutas do Plasma no caminho em S."
+ ],
+ "historia": "Andar do meio da torre. Os recrutas são a última barreira antes do Ghetsis; Alister prepara o clima sobrenatural do despertar.",
+ "estados": {
+  "dia": "Ato 4: recrutas no caminho em S.",
+  "estado": "Depois (noite): só Alister nas ruínas."
+ },
+ "conferido": "check_objects sem bloqueio; BFS da chegada (pedra no lugar): {\"escada cume\": 75, \"item beirada\": null, \"item vao\": 50, \"alister\": 55}"
+}

@@ -1,0 +1,105 @@
+<section id="lore">
+  <div class="eyebrow">Lore da ilha</div>
+  <h2>As três lendas de Abundance Isle</h2>
+  <p>A ilha tem a própria mitologia, montada sobre a lore oficial: as Forças da Natureza vêm de Fūjin (vento), Raijin (trovão) e Inari (colheita, com raposas mensageiras e torii vermelhos). A elas se somam o meteorito de gelo que, segundo Lacunosa, trouxe o Kyurem, e os heróis gêmeos de Unova. Cada lenda é contada por um personagem diferente e fica completa ao longo da aventura.</p>
+  <div class="two">
+    <div class="open">
+      <div class="hi"><b>1 · “The Three Who Tend the Sky”</b> (guardião, Lenora, Cynthia)<br>
+      Os primeiros lavradores rezavam para o céu alimentar a terra. O vento trazia as nuvens (Tornadus), o raio rachava e adubava o chão (Thundurus). Os dois brigaram e a ilha passou fome, até o Senhor da Terra Fértil descer e pôr fim à briga (Landorus). Desde então se faz uma oferenda de colheita no santuário. A raposa de pedra do santuário é a mensageira dele, como em Inari.</div>
+      <div class="hi"><b>2 · “The Year Without Harvest”</b> (Zinnia, Byron, aldeões)<br>
+      Uma estrela gelada caiu no norte e abriu a Frostfall Crater. Naquele ano o inverno não acabou. Os mais velhos ainda tocam o sino ao entardecer e ninguém anda pelos campos em noite de neve, como em Lacunosa. Diz-se que “algo que come o calor” dorme no meteorito.</div>
+      <div class="hi"><b>3 · “The Spire of Ideals”</b> (Cheren, Alder, murais da torre)<br>
+      Depois da guerra dos irmãos de Unova, os seguidores do herói dos ideais trouxeram a Pedra Escura pelo mar e ergueram a Thunderspire, onde caem mais raios. A profecia gravada no 2F diz que só uma tempestade nascida do frio a acordaria. Ghetsis achou a profecia nos arquivos do Plasma e decidiu provocar essa tempestade.</div>
+    </div>
+    <div class="open">
+      <div><b>Enamorus, a quarta</b> (Ramos, Gardenia): nenhuma lenda da ilha cita o Enamorus. Os canteiros do Spring Grove, porém, foram plantados pelos fundadores “para quem vem do mar quando o inverno acaba”. O Arauto da Primavera é a resposta que ninguém lembrava.</div>
+      <div><b>A Reveal Glass</b>: o espelho do guardião mostra a “forma verdadeira” das quatro Forças, como o espelho que revela demônios no folclore chinês. Ele explica que as formas Therian são como os quatro aparecem para quem acredita.</div>
+      <div class="hi"><b>4 · “The Hidden Light”</b> (Lenora, Hilda, murais das Truthsand Ruins)<br>Os seguidores do Herói da Verdade não levaram a Light Stone para a torre: enterraram-na sob as areias de Emberdune, numa cidadela como a Relic Castle, onde a areia “engole quem tem pressa”. A estela da Lenora termina com uma frase que ninguém entendeu: <i>“the light sleeps where the sun sets on sand.”</i></div>
+      <div><b>O Kyurem</b>: Zinnia e Cheren contam versões opostas, a do meteorito e a da casca do dragão partido. O jogo nunca decide qual é a verdadeira, como no BW2.</div>
+    </div>
+  </div>
+  <h3>Textos no jogo (exemplos, em inglês)</h3>
+  <div class="table-scroll"><table><thead><tr><th>Onde</th><th>Texto</th></tr></thead><tbody>
+  <tr><td>Placa do santuário</td><td>ABUNDANT SHRINE / “When wind and thunder quarrel, the land goes hungry. When they are calmed, the land gives thanks.”</td></tr>
+  <tr><td>Estela, fragmento 1 (Harvest Fields)</td><td>“...the Wind Genie carried the clouds, the Thunder Genie broke the hard earth...”</td></tr>
+  <tr><td>Estela, fragmento 2 (Gale Cave)</td><td>“...but each wished the sky for itself, and the fields turned to dust...”</td></tr>
+  <tr><td>Estela, fragmento 3 (Thunderspire 1F)</td><td>“...the Lord of the Fertile Land came down only when both stood before it together...”</td></tr>
+  <tr><td>Estela, fragmento 4 (Frostfall Core)</td><td>“...and the year the cold star fell, no lord came at all.”</td></tr>
+  <tr><td>Placa da cratera</td><td>FROSTFALL CRATER / Elders' warning: Do not linger after dusk. The cold here is hungry.</td></tr>
+  <tr><td>Mural, Thunderspire 2F</td><td>“The black stone sleeps until a storm born of frost calls it. Only one who holds an ideal may answer it.”</td></tr>
+  <tr><td>Quadro de avisos do PC (ato 1)</td><td>NOTICE: Ferry delayed. Snow in harvest season?! Farmers' meeting at the barn tonight.</td></tr>
+  <tr><td>Carta do N (epílogo)</td><td>“The winds sound happy now. I wanted you to know. — N”</td></tr>
+  <tr><td>Mural, Hall of Truth</td><td>“Truth is not a thing to be owned. It is a fire that shows what is.”</td></tr>
+  <tr><td>Mural, Shrine of the First Dragon</td><td>“Once there was one dragon, and two brothers who loved it. When they quarreled, it became three.”</td></tr>
+  </tbody></table></div>
+</section>
+
+<section id="eventos">
+  <div class="eyebrow">Eventos principais</div>
+  <h2>A história, cena por cena (21 cenas)</h2>
+  <p>Cada cena com o gatilho, quem está nela, a batalha e o que muda. As flags são só nomes de trabalho: serão alocadas com a skill <code>alocar-flag</code> na implementação.</p>
+  <div class="table-scroll"><table><thead><tr><th>#</th><th>Cena</th><th>Gatilho / onde</th><th>O que acontece</th><th>Batalha</th><th>Muda</th></tr></thead><tbody>
+  <tr><td class=num>1</td><td>Chegada na neve</td><td>Cais da Abundance Isle (cena automática)</td><td>O marinheiro estranha a neve. N e Hilda no lago: N ouve os ventos.</td><td>—</td><td>Neve (WEATHER_SNOW) até a cena 6</td></tr>
+  <tr><td class=num>2</td><td>Reunião no celeiro</td><td>Celeiro, à noite (ou ao entrar depois da cena 1)</td><td>Fazendeiros discutem a colheita perdida. O guardião conta a lenda 1. Jessie e James escutam pela janela.</td><td>—</td><td>Abre a missão “Seeds in the Storm”</td></tr>
+  <tr><td class=num>3</td><td>Recrutas na cratera</td><td>Boca da Frostfall Crater</td><td>Dois recrutas bloqueiam. N chega e convence um deles a sair (“your Pokémon is shivering”); o outro luta.</td><td>Recruta Plasma</td><td>Libera a entrada</td></tr>
+  <tr><td class=num>4</td><td>Lorelei</td><td>Frostfall 1F</td><td>Lorelei mede o frio: “This isn't ice. It's something drinking the warmth.” Dá a primeira pista do meteorito.</td><td>Opcional</td><td>—</td></tr>
+  <tr><td class=num>5</td><td>O plano do Ghetsis</td><td>Frostfall Lab</td><td>Ghetsis explica a máquina e o Kyurem Black e despreza o N (“a broken tool”). Se o jogador tem o Kyurem, o meteorito ressoa.</td><td>Ghetsis 1 (Cofagrigus, Seismitoad, Bouffalant, Bisharp, Eelektross, Hydreigon; o time do BW2)</td><td>Ghetsis foge para o cume</td></tr>
+  <tr><td class=num>6</td><td>Desligar a máquina</td><td>Frostfall Lab (falar com a máquina)</td><td>A tela embranquece e a neve para na ilha inteira. N fica examinando o meteorito.</td><td>—</td><td>Fim da neve; atalhos de gelo derretem; Ice Stone no lugar do Ghetsis</td></tr>
+  <tr><td class=num>7</td><td>Tornadus cai</td><td>Gale Shore, círculo de pedras</td><td>Winona avisa que algo caiu. O Tornadus está exausto no centro.</td><td>Tornadus Lv 70 (captura)</td><td>Some ao capturar/derrotar</td></tr>
+  <tr><td class=num>8</td><td>Thundurus cai</td><td>Thunder Ridge, alto (Rock Smash)</td><td>Volkner e Elesa medem os últimos raios. O Thundurus está no ponto mais alto.</td><td>Thundurus Lv 70 (captura)</td><td>Idem</td></tr>
+  <tr><td class=num>9</td><td>O Frigate</td><td>Windswept Cape → Deck → Hold</td><td>Rosa, infiltrada, cura e indica o porão. Lá estão os planos do DNA Splicers e a rota do Ghetsis até a torre.</td><td>Recrutas; cientista-chefe</td><td>Libera a Thunder Ridge (o alpinista sai da trilha)</td></tr>
+  <tr><td class=num>10</td><td>A torre</td><td>Thunderspire 1F/2F</td><td>Cheren conta a lenda 3 e Allister guarda o 2F. O mural da profecia.</td><td>Recrutas; Allister opcional</td><td>—</td></tr>
+  <tr><td class=num>11</td><td>Clímax no cume</td><td>Thunderspire Summit (cena ao chegar ao altar)</td><td>Ghetsis tenta acordar a pedra com o que sobrou da tempestade. N se põe na frente. A pedra desperta e o Zekrom recusa o Ghetsis.</td><td>Ghetsis 2 (mesmo time, +4 níveis)</td><td>Ghetsis foge e deixa cair os DNA Splicers</td></tr>
+  <tr><td class=num>12</td><td>O Zekrom</td><td>Summit</td><td>N explica que o Zekrom quer conhecer os ideais do jogador. A resposta dada ao Alder muda a fala dele. Hilda chega.</td><td>Zekrom Lv 75 (captura)</td><td>N entrega os DNA Splicers</td></tr>
+  <tr><td class=num>13</td><td>Landorus</td><td>Santuário, com Tornadus e Thundurus na equipe</td><td>A raposa de pedra brilha, o Landorus desce e a terra “respira”.</td><td>Landorus Lv 70 (captura)</td><td>O guardião entrega a Reveal Glass</td></tr>
+  <tr><td class=num>14</td><td>Arauto da Primavera</td><td>Spring Grove, depois da cena 13 (de manhã)</td><td>As flores do jardim abrem. Ramos: “Someone is coming from the sea.” O Enamorus pousa.</td><td>Enamorus Lv 70 (captura)</td><td>O jardim fica florido de vez</td></tr>
+  <tr><td class=num>15</td><td>Despedida</td><td>Cais</td><td>N e Hilda partem. O N fala do Kyurem e deixa um gancho para a Light Stone.</td><td>—</td><td>Carta do N chega à casa do guardião uma semana depois</td></tr>
+  <tr><td class=num>16</td><td>A última frase da estela</td><td>Harvest Fields, Lenora, depois da cena 15 (e com a estela completa)</td><td>Lenora decifra “where the sun sets on sand”: a ilha de areia ao sul. A Hilda reconhece a Light Stone na lenda.</td><td>—</td><td>Abre a Sunset Strait (o pescador do cais sul passa a levar de barco; ou Surf)</td></tr>
+  <tr><td class=num>17</td><td>Sunset Strait</td><td>Rota de mar ao sul</td><td>Ilhotas, nadadores e a Shelly; uma ilhota tem uma porta selada com dois símbolos (o santuário).</td><td>Treinadores</td><td>—</td></tr>
+  <tr><td class=num>18</td><td>Escavação do Plasma</td><td>Emberdune Isle</td><td>O resto do Plasma escava a entrada das Truthsand Ruins. A Hilda chega para ajudar.</td><td>Recrutas</td><td>Entrada liberada</td></tr>
+  <tr><td class=num>19</td><td>A areia que engole</td><td>Truthsand Ruins 1F/B1F</td><td>Areia movediça derruba de andar; Lucy e Spenser estudam os murais. O Plasma chega antes ao Hall.</td><td>Recrutas, cientista</td><td>—</td></tr>
+  <tr><td class=num>20</td><td>A luz da verdade</td><td>Hall of Truth</td><td>Ghetsis tenta despertar a Light Stone. A pedra brilha para a Hilda, não para ele, e o Reshiram desperta e recusa o Plasma. Ghetsis é derrotado de vez.</td><td>Ghetsis 3; depois Reshiram Lv 75 (captura)</td><td>O Ghetsis é levado pela polícia (Looker, opcional)</td></tr>
+  <tr><td class=num>21</td><td>O Primeiro Dragão</td><td>Shrine of the First Dragon (ilhota da Sunset Strait)</td><td>A porta selada abre com Reshiram e Zekrom na equipe. Murais do dragão original. N e Hilda: batalha dupla final. Ali os DNA Splicers fazem o Kyurem Black e o White com uma cena própria.</td><td>N e Hilda (dupla)</td><td>Fim da aventura; revanche semanal da dupla</td></tr>
+  </tbody></table></div>
+</section>
+
+<section id="missoes">
+  <div class="eyebrow">Missões secundárias</div>
+  <h2>16 missões que espalham a exploração pelos 30 mapas</h2>
+  <div class="table-scroll"><table><thead><tr><th>Missão</th><th>Quem</th><th>O que fazer</th><th>Recompensa</th><th>Lore que revela</th></tr></thead><tbody>
+  <tr><td><b>The Broken Stele</b></td><td>Lenora (Harvest Fields)</td><td>Achar os 4 fragmentos da estela: Harvest Fields, sala secreta da Gale Cave (Rock Smash), Thunderspire 1F, Frostfall Core.</td><td>Batalha com a Lenora; Big Nugget</td><td>A lenda 1 inteira, incluindo a condição do Landorus (os dois juntos)</td></tr>
+  <tr><td><b>Scrolls of the Four</b></td><td>Cynthia (Keeper House)</td><td>Voltar a cada ato: ela lê um pergaminho novo por ato (vento, raio, terra, primavera).</td><td>Batalha com a Cynthia no fim; Shiny Stone</td><td>Por que o Enamorus foi esquecido</td></tr>
+  <tr><td><b>Seeds in the Storm</b></td><td>Fazendeiro (celeiro)</td><td>A tempestade espalhou 6 sacos de sementes: hub, Harvest Fields (2), Gale Shore, Windswept Cape, Spring Grove.</td><td>Abre a barraca da fazenda (bagas diárias, Moomoo Milk)</td><td>Os campos voltam a produzir: o “abundance” do nome</td></tr>
+  <tr><td><b>The Scarecrow Scheme</b></td><td>Jessie e James</td><td>3 encontros: disfarçados de espantalho na plantação, escondidos no feno do celeiro, vendendo segredos no Frigate.</td><td>Batalha dupla final; Amulet Coin</td><td>Eles descobrem o plano do Ghetsis antes de todo mundo (e tentam vendê-lo)</td></tr>
+  <tr><td><b>Grounded</b></td><td>Skyla (Windswept Cape)</td><td>O avião dela está preso pela tempestade. Depois da cena 6 ela pode levar o jogador de volta a Johto e buscar de novo.</td><td>Sky Plate; resolve o acesso à ilha (sugestão)</td><td>Rota aérea entre Olivine e a ilha</td></tr>
+  <tr><td><b>Eye of the Storm</b></td><td>Winona + Volkner e Elesa</td><td>Antes da cena 5, medir vento na Gale Shore e raios na Thunder Ridge.</td><td>Damp Rock, Electirizer</td><td>Pista opcional: as tempestades giram em torno da cratera</td></tr>
+  <tr><td><b>Frozen Stars</b></td><td>Byron (Frostfall B1F)</td><td>Trazer lascas do meteorito (Comet Shard) achadas nos 4 andares.</td><td>Troca por Never-Melt Ice, Icicle Plate, Dragon Fang</td><td>O meteorito “não é deste mundo” (eco de Lacunosa)</td></tr>
+  <tr><td><b>Draconid Tale</b></td><td>Zinnia (Frostfall Core)</td><td>Voltar com o Kyurem na equipe.</td><td>Batalha com a Zinnia; Draco Plate</td><td>A versão do meteorito sobre o Kyurem</td></tr>
+  <tr><td><b>Candles of the Spire</b></td><td>Allister (Thunderspire 2F)</td><td>Acender 4 velas espirituais nos dois andares (uma atrás de Rock Smash).</td><td>Spell Tag, Reaper Cloth; o fantasma de um construtor aparece</td><td>Quem trouxe a Pedra Escura para a ilha</td></tr>
+  <tr><td><b>Undercover</b></td><td>Rosa (Plasma Frigate)</td><td>Pegar um uniforme do Plasma no armário do porão para passar pelos guardas do convés.</td><td>Batalha dupla com a Rosa contra os admins; Max Revive</td><td>Os documentos dos DNA Splicers</td></tr>
+  <tr><td><b>Race to the Spire</b></td><td>Barry (Pokémon Center)</td><td>Corrida da base da Thunder Ridge até o 2F (contador de passos).</td><td>Quick Claw; revanche diária</td><td>—</td></tr>
+  <tr><td><b>Battle Every Day</b></td><td>Nemona (Pokémon Center)</td><td>Revanche diária que sobe de nível.</td><td>Itens de treino alternados</td><td>—</td></tr>
+  <tr><td><b>Questions of Ideals</b></td><td>Alder (Thunder Ridge)</td><td>Três perguntas sobre verdade e ideais. A resposta fica guardada.</td><td>Muda a fala do Zekrom e do N; Expert Belt</td><td>A lenda 3; gancho para o Reshiram</td></tr>
+  <tr><td><b>Sands of Truth</b></td><td>Lucy e Spenser (Truthsand Ruins)</td><td>Achar as 5 placas de mural nos três andares das ruínas (duas só caindo pela areia movediça).</td><td>Batalha com cada um; Sun Stone, Fire Stone</td><td>A lenda 4 completa</td></tr>
+  <tr><td><b>Twin Mirrors</b></td><td>Tate e Liza (Shrine of the First Dragon)</td><td>Batalha dupla dos gêmeos, que espelham os irmãos da lenda.</td><td>Revanche; Twisted Spoon</td><td>Os dois irmãos e o terceiro pedaço</td></tr>
+  <tr><td><b>The Herald's Garden</b></td><td>Ramos e Gardenia (Spring Grove)</td><td>Plantar bagas nos 3 canteiros e voltar em dias diferentes para regar.</td><td>Batalha com a Gardenia; Miracle Seed, Big Root</td><td>Os canteiros “para quem vem do mar”</td></tr>
+  </tbody></table></div>
+</section>
+
+<section id="mundo">
+  <div class="eyebrow">Eventos de mundo</div>
+  <h2>O que faz a ilha parecer viva</h2>
+  <div class="two">
+    <div class="open">
+      <div><b>O sino do entardecer</b>: às 18h um velho toca o sino. À noite os aldeões ficam em casa, as portas da vila trancam e só a fazenda atende. No ato 1, andar pela plantação à noite tem um encontro raro “do frio”.</div>
+      <div><b>Festival da Colheita</b> (pós-jogo, sábados): barraca da fazenda com bagas e Mulch, a oferenda no santuário dá um item aleatório da colheita, e Jessie e James aparecem com uma barraca “honesta”.</div>
+      <div><b>Dias de tempestade</b> (pós-jogo): chuva com raios na Thunder Ridge e vento na Gale Shore em dias sorteados. Os encontros Elétricos e Voadores aumentam e Volkner/Elesa e Winona ficam disponíveis para revanche.</div>
+    </div>
+    <div class="open">
+      <div><b>Quadro de avisos do PC</b>: muda a cada ato (balsa atrasada, neve, “Plasma ship at the cape”, “Snow stopped!”, festival).</div>
+      <div><b>Kyurem Black</b>: na primeira vez que o jogador usa os DNA Splicers, o N aparece numa cena curta: “It isn't empty anymore.”</div>
+      <div><b>Carta do N</b>: uma semana depois, na casa do guardião. Ela leva ao ato 6 (Light Stone), que encerra a aventura.</div>
+      <div><b>Reveal Glass</b>: usada perto do santuário, o guardião comenta cada forma Therian.</div>
+    </div>
+  </div>
+</section>

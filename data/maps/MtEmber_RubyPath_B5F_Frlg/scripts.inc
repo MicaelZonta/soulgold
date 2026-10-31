@@ -1,7 +1,8 @@
 MtEmber_RubyPath_B5F_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MtEmber_RubyPath_B5F_MapOnTransition
 	.byte 0
 
-MtEmber_RubyPath_B5F_EventScript_BrailleMessage::
-	lockall
-	releaseall
+@ O Pecharunt e a placa em braille: data/scripts/pecharunt.inc.
+MtEmber_RubyPath_B5F_MapOnTransition:
+	call MtEmber_RubyPath_B5F_OnTransition
 	end

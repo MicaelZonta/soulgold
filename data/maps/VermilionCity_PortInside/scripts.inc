@@ -38,19 +38,22 @@ VermilionPort_EventScript_SailorCantSail::
 
 VermilionPort_EventScript_Sailor_AfterKanto::
 	message VermilionPort_Text_WhereSail
-	multichoice 20, 0, MULTI_VERMILION_HARBOR, FALSE
+	@ Lista com rolagem: com 7 destinos a lista fixa (MULTI_VERMILION_HARBOR)
+	@ passava por baixo da caixa de texto e o "Exit" sumia. Mostra 5 por vez.
+	dynmultichoice 19, 0, FALSE, 5, 0, DYN_MULTICHOICE_CB_NONE, VermilionPort_Text_ChoiceOlivine, VermilionPort_Text_ChoiceSouthernIsland, VermilionPort_Text_ChoiceBirthIsland, VermilionPort_Text_ChoiceFarawayIsland, VermilionPort_Text_ChoiceNavelRock, VermilionPort_Text_ChoiceOneIsland, VermilionPort_Text_ChoiceExit
 	switch VAR_RESULT
 	case 0, VermilionPort_EventScript_ChoseOlivine
 	case 1, VermilionPort_EventScript_ChoseSouthernIsland
 	case 2, VermilionPort_EventScript_ChoseBirthIsland
 	case 3, VermilionPort_EventScript_ChoseFarawayIsland
 	case 4, VermilionPort_EventScript_ChoseNavelRock
-	@ A lista MULTI_VERMILION_HARBOR tem 6 itens desde que o Navel Rock
-	@ entrou, e o ultimo e "Exit". O case do Exit mandava quem o escolhesse
+	case 5, VermilionPort_EventScript_ChoseOneIsland
+	@ A lista tem 7 itens desde que a One Island
+	@ entrou (28/10/2026), e o ultimo e "Exit". O case do Exit mandava quem o escolhesse
 	@ para o Battle Frontier, que esta em rom_excluded_groups (fora do jogo).
 	@ Para reabrir o Frontier um dia: trocar para MULTI_VERMILION_HARBOR_RED
 	@ e devolver o destino no case abaixo.
-	case 5, VermilionPort_EventScript_Sailor_Refused
+	case 6, VermilionPort_EventScript_Sailor_Refused
 	case MULTI_B_PRESSED, VermilionPort_EventScript_Sailor_Refused
 	release
 	end
@@ -68,6 +71,25 @@ VermilionPort_EventScript_ChoseOlivine::
 	setrespawn HEAL_LOCATION_OLIVINE_CITY
 	warpsilent MAP_OLIVINE_CITY_PORT_INSIDE, 8, 16
 	waitstate
+	release
+	end
+
+@ One Island. A rota abre com a viagem do Bill (ou quando o jogador chega la
+@ a pe pelo Mt. Ember): VAR_ONE_ISLAND_STATE 2. Abertura em
+@ data/scripts/one_island.inc.
+VermilionPort_EventScript_ChoseOneIsland::
+	closemessage
+	delay 20
+	goto_if_ne VAR_ONE_ISLAND_STATE, 2, VermilionPort_EventScript_OneIslandClosed
+	call VermilionPort_EventScript_EnterShip
+	warpsilent MAP_ONE_ISLAND_HARBOR, 8, 14
+	waitstate
+	release
+	end
+
+VermilionPort_EventScript_OneIslandClosed:
+	msgbox OneIsland_Text_FerryNotRunning, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 
@@ -105,7 +127,7 @@ VermilionPort_EventScript_ChoseNavelRock::
 	bufferitemname STR_VAR_1, ITEM_MYSTIC_TICKET
 	goto_if_eq VAR_RESULT, FALSE, VermilionPort_EventScript_Sailor_NoCredentials
 	call VermilionPort_EventScript_EnterShip
-	warpsilent MAP_NAVEL_ROCK_EXTERIOR, 10, 18
+	warpsilent MAP_NAVEL_ROCK_EXTERIOR, 9, 37
 	waitstate
 	release
 	end
@@ -241,3 +263,24 @@ VermilionPort_Text_NoTicket:
     .string "Sorry!\n"
     .string "You may board only\l"
     .string "if you have an S.S.Ticket.$"
+
+VermilionPort_Text_ChoiceOlivine:
+	.string "Olivine$"
+
+VermilionPort_Text_ChoiceSouthernIsland:
+	.string "Southern Island$"
+
+VermilionPort_Text_ChoiceBirthIsland:
+	.string "Birth Island$"
+
+VermilionPort_Text_ChoiceFarawayIsland:
+	.string "Faraway Island$"
+
+VermilionPort_Text_ChoiceNavelRock:
+	.string "Navel Rock$"
+
+VermilionPort_Text_ChoiceOneIsland:
+	.string "One Island$"
+
+VermilionPort_Text_ChoiceExit:
+	.string "Exit$"

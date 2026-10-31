@@ -1,0 +1,131 @@
+{
+ "map": "AbundanceIsle_PokemonCenter",
+ "ingame": "Abundance Isle Pokemon Center",
+ "primary": "gTileset_Johto_Building",
+ "secondary": "gTileset_Kanto_PokemonCenter",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 7,
+   "y": 8,
+   "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+   "dest_warp_id": "0",
+   "nota": "porta do PC na Windswept Cape"
+  }
+ ],
+ "connections": [],
+ "explorar": [
+  "Marinheiro conta que o navio escuro no cais chegou junto com a primeira neve.",
+  "Velhinha da ilha recita o verso da lenda: \"when the winter breaks, love comes from across the sea\" (pista do Enamorus).",
+  "Menina da fazenda pede para ver um Pokémon de Tipo Terra (pista do Landorus).",
+  "Nemona veio de férias e quer batalhar com todo mundo: batalha opcional, repetível uma vez por dia.",
+  "Barry, apressado, entrou correndo para fugir da neve; reclama que o barco atrasou e aponta o navio escuro no cais (pista do Plasma Frigate). Multa o jogador por esbarrar nele (piada dele)."
+ ],
+ "historia": "Único Centro Pokémon da ilha, no cabo. Layout padrão de PC (cópia do CianwoodPokecenter); as falas dos NPCs plantam pistas da lenda.",
+ "estados": {
+  "dia": "Interior padrão com enfermeira, Chansey e três moradores."
+ },
+ "conferido": "Layout copiado de CianwoodPokecenter (mesmo par de tilesets); BFS da porta até todos os NPCs; check_objects.",
+ "w": 16,
+ "h": 10,
+ "objects": [
+  {
+   "local_id": "NURSE",
+   "graphics_id": "OBJ_EVENT_GFX_NURSE",
+   "x": 7,
+   "y": 2,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_NONE",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "Common_EventScript_Nurse",
+   "flag": "0"
+  },
+  {
+   "local_id": "CHANSEY",
+   "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
+   "x": 8,
+   "y": 2,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "NULL",
+   "flag": "0"
+  },
+  {
+   "local_id": "FARMER_GIRL",
+   "graphics_id": "OBJ_EVENT_GFX_LASS",
+   "x": 3,
+   "y": 6,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "AbundanceIsle_PokemonCenter_EventScript_Girl",
+   "flag": "0"
+  },
+  {
+   "local_id": "SAILOR",
+   "graphics_id": "OBJ_EVENT_GFX_SAILOR",
+   "x": 12,
+   "y": 5,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "AbundanceIsle_PokemonCenter_EventScript_Sailor",
+   "flag": "0"
+  },
+  {
+   "local_id": "OLD_WOMAN",
+   "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
+   "x": 14,
+   "y": 6,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "AbundanceIsle_PokemonCenter_EventScript_OldWoman",
+   "flag": "0"
+  },
+  {
+   "local_id": "NEMONA",
+   "graphics_id": "OBJ_EVENT_GFX_NEMONA",
+   "x": 10,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "AbundanceIsle_PokemonCenter_EventScript_Nemona",
+   "flag": "0"
+  },
+  {
+   "local_id": "BARRY",
+   "graphics_id": "OBJ_EVENT_GFX_BARRY",
+   "x": 6,
+   "y": 7,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "AbundanceIsle_PokemonCenter_EventScript_Barry",
+   "flag": "0"
+  }
+ ]
+}

@@ -38,7 +38,15 @@ Duas regras que não mudam:
 | Faixa | Status |
 |---|---|
 | `1056-1163` | ❌ flags `0x920-0x98B` viraram `FLAG_SNOWTOP_*`, `FLAG_VAJRAPYRAMID*`, `FLAG_LATITEMPLE_*`… |
-| `1164` e acima | ❌ fora do range (`MAX_TRAINERS_COUNT`) |
+| `1164-1419` | ✅ **bloco 2** (31/10/2026): flag em `0xB00 + (ID - 1164)`, não `0x500 + ID` |
+| `1420` e acima | ❌ fora do range (`MAX_TRAINERS_COUNT`) |
+
+**Bloco 2.** O bloco 1 (`0x500 + ID`) não cresce: logo depois dele vêm as flags de sistema
+(`FLAG_SYS_POKEMON_GET` = `0x98C`, travada por assert). Os IDs novos usam `TRAINER_FLAG(id)`
+(`include/constants/flags.h`), que manda o bloco 2 para `0xB00..0xBFF`. Em C, **nunca** escreva
+`TRAINER_FLAGS_START + id`: use `TRAINER_FLAG(id)`. Precisa de mais? Suba `TRAINERS_COUNT`/
+`MAX_TRAINERS_COUNT` e acrescente `TRAINER_UNUSED_<n>`; o assert `TrainerFlags2OverlapCustomFlags`
+segura até `0xFFF` (3.236 IDs).
 
 Antes de fechar num ID, confirme que ele não é citado em outro lugar:
 
@@ -78,6 +86,7 @@ Renomeie o `TRAINER_UNUSED_*` daquele ID, **mantendo o número**.
 | Texto pós-batalha nunca aparece | Ele só roda ao **falar** com o treinador já derrotado — correto |
 | Treinador invisível | É sprite, não batalha → skill `adicionar-npc` |
 | Treinador certo, mas ninguém nunca enfrenta | Mapa `INALCANCAVEL` ou `fora da ROM` (ex.: SS Aqua). Confira com `python3 dev_scripts/map_graph.py info <Mapa>` → skill `mapa-de-ligacoes` |
+| NPC diz a fala "depois da batalha" sem nunca ter lutado | `checktrainerflag X` + `goto_if_eq VAR_RESULT, TRUE, ...`: o comando grava no **resultado de comparação**, não em `VAR_RESULT` (que tem lixo). Use `goto_if_defeated X, label` / `goto_if_not_defeated` (achado no QA da Abundance Isle, 31/10/2026) |
 | **Build limpo, batalha estoura ao começar** | `Ability:` que a espécie não tem. O trainerproc aceita qualquer ability; quem valida é `CreateNPCTrainerPartyFromTrainer`, em runtime (`assertf(... "illegal ability %S for %S")`, `src/battle_main.c:2131`) |
 
 ## Ability: conferir contra a espécie

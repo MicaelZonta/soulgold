@@ -95,3 +95,68 @@ Front pic registrada: só a Lenora (IA, 64x64 + 80x80).
 > Klara, Mustard, Rosa, Skyla, e também Alder, Diantha e Zinnia) são ampliadas
 > 2x — descoberto em 03/10. Os já escolhidos ficam como estão (forma pronta);
 > a versão nativa de cada um sai com `k=2` se o autor pedir.
+
+## Novo Lote de 31/10/2026
+
+Veio em `.filetransfer/Novo Lote/` (lá continua o original) e foi organizado nas
+pastas no formato padrão. Crédito `desconhecido` onde o arquivo não trazia autor.
+Recortes de folha: a folha inteira fica em `outras/`. Nenhum deles está no jogo
+(só a Nessa, que já tem a sua). Entradas novas em `CHARS` (`propostas_overworld.py`)
+e `TRAINERS` (`trainer_na_batalha.py`).
+
+| Personagem | Sprite | Trainer | Overworld nativo | Trainer (figura) | Nota |
+|---|---|---|---|---|---|
+| AZ | desconhecido | desconhecido | 16x23 | 85x116 → 80x80 | folha 2x de 16x24 |
+| Brycen | desconhecido | desconhecido | 16x22 | 57x78 | trainer recortado da folha de líderes de BW2 (JPG) |
+| Cilan | desconhecido | desconhecido | 17x29 | 42x74 | JPG |
+| Clive | — | desconhecido | — | 23x77 | **sem overworld**; arte HD reduzida (`grid=8.6`), duas roupas: laranja e `Clive (azul)` |
+| Ghetsis | desconhecido | desconhecido | 21x27 | 53x75 | trainer é GIF animado: quadro 0, `ia=4` |
+| Gloria | desconhecido | desconhecido | 14x22 (quadro 16x32) | 42x67 | folha 4x |
+| Grusha | desconhecido | RHcks | 20x29 | 35x63 | trainer da folha dos líderes de Paldea do RHcks (encomenda do Darklight177) |
+| Hassel | desconhecido | desconhecido | 21x29 | 31x79 | trainer é arte HD oficial reduzida (`grid=12.4`): perde detalhe, vale arte em pixel |
+| Hop | desconhecido | desconhecido | 17x27 | 47x68 | folha com paridade de pixel trocada por célula: `reamostrar=(64, 32)` |
+| Iono | desconhecido | RHcks | 28x31 | 64x64 | a de moldura dourada foi para `outras/` (fundo com redemoinho dourado, não sai limpo) |
+| Iris | desconhecido | desconhecido | 18x23 | 72x74 | trainer recortado da folha (JPG) |
+| Juniper | desconhecido | desconhecido | 20x30 | 29x79 | trainer recortado do lado do pai (JPG); `reamostrar` como Hop |
+| Katy | desconhecido | Mid117 | 16x22 | 36x80 | o Mid117 traz contorno branco de adesivo; alternativa `Katy (RHcks)` 36x64 |
+| Korrina | desconhecido | desconhecido | 16x22 | 56x75 | |
+| Larry | desconhecido | desconhecido | 16x23 | 34x90 | trainer é GIF animado 5x, quadro 0; alternativa `Larry (RHcks)` 34x64 |
+| Lysandre | desconhecido | desconhecido | 21x27 | 57x77 | trainer 2x (`grid=2`) |
+| Marnie | desconhecido | desconhecido | 16x22 | 49x65 | trainer do meio da folha (JPG), a versão pequena; as grandes são a mesma em 2x |
+| Melony | desconhecido | desconhecido | 25x27 | 51x79 | trainer recortado da folha 6x6 de Galar |
+| Nessa (Novo Lote) | desconhecido | desconhecido | 16x22 | 41x79 | **segunda arte**: a da Nessa no jogo (17x24 DiegoWT, GeroisBlackboots) é forma pronta; folhas com sufixo |
+| Plasma Grunt Female | desconhecido | desconhecido | 17x26 | 68x138 | |
+| Plasma Grunt Male | desconhecido | desconhecido | 17x26 | 86x133 | |
+| Prof Rowan | desconhecido | desconhecido | 16x22 | 39x71 | trainer 2x (`grid=2`) |
+| Serena XY | desconhecido | desconhecido | 23x24 | 40x70 | chibi de cabeça grande |
+| Tulip | desconhecido | RHcks | 23x27 | 31x64 | a de moldura dourada foi para `outras/` |
+| Valerie | desconhecido | desconhecido | 16x21 | 96x76 | |
+| Viola | desconhecido | desconhecido | 21x25 | 24x72 | `reamostrar` como Hop |
+
+> Arquivos repetidos no lote: `Nessa Trainer.png` = `Melony Trainer.png` (folha 6x6 de
+> Galar, tem também Gloria, Hop e Marnie) e `Iono Trainer.png` = `Tulip Trainer.png`
+> (8 líderes de Paldea com moldura dourada). A folha do RHcks (`Grusha Trainer.jpg`)
+> também traz overworlds de 9 quadros dos 8 líderes de Paldea, como alternativa.
+
+### Escolhas do autor (31/10/2026) — overworld no jogo, forma pronta
+
+Gravados com `final` e registrados com `registrar_overworld.py` (12 quadros,
+paleta própria cada), build limpo.
+
+Front pics (regra do autor, 31/10: **sempre a maior**): 80x80 `TRAINER_SPRITE_LARGE` + 64x64
+para todos, menos Grusha, Iono e Tulip (cabem em 64x64, só o 64x64). Katy = Mid117 e
+Larry = GIF (as maiores; RHcks ficou de alternativa). Clive e Nessa (Novo Lote) não registrados.
+
+**AZ 16x23 · Brycen 16x22 · Cilan 16x27 · Ghetsis 21x27 · Gloria 14x22 · Grusha 16x23 ·
+Hassel 18x25 · Iono 24x27 · Iris 18x23 · Katy 16x22 · Korrina 16x22 · Larry 16x23 ·
+Lysandre 18x23 · Marnie 16x22 · Melony 18x19 · Plasma Grunt Female 16x24 ·
+Plasma Grunt Male 16x24 · Prof Rowan 16x22 (`OBJ_EVENT_GFX_ROWAN`) · Serena 21x22 ·
+Tulip 19x22 · Valerie 16x21 (nativo) · Hop 16x25 · Juniper 17x26 · Viola 19x23**
+
+- Correção do autor no mesmo dia: Valerie 16x21 e Plasma Grunt Male 16x24 (os 17x21 e
+  17x24 de antes foram engano de leitura; o 17x21 da Valerie perdia o olho).
+- Plasma Grunt Female/Male: **não entram no Nexus**, só na história.
+- Clive: espera um sprite de overworld.
+- Hop ("sem olho"), Juniper ("quebrou") e Viola: refeitos com `par_celula=64` (a folha
+  é 2x exata por célula, com as linhas de frente e costas deslocadas 1 px; a mediana do
+  `reamostrar` apagava o olho). Escolhidos Hop 16x25, Juniper 17x26 e Viola 19x23.

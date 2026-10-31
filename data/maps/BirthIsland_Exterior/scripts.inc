@@ -122,3 +122,41 @@ BirthIsland_Exterior_Movement_DeoxysApproach:
 	walk_slow_down
 	walk_slow_down
 	step_end
+
+@ A volta para Vermilion. O warp (15,24) do map.json e so o ponto de chegada
+@ do barco: a ilha nao tem porta, entao quem chegava ficava preso. Mesmo
+@ padrao do marinheiro da Southern Island.
+BirthIsland_Exterior_EventScript_Sailor::
+	lock
+	faceplayer
+	msgbox BirthIsland_Exterior_Text_SailBack, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BirthIsland_Exterior_EventScript_SailorWait
+	msgbox BirthIsland_Exterior_Text_AllAboard, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	delay 30
+	hideobjectat LOCALID_BIRTH_ISLAND_SAILOR, MAP_BIRTH_ISLAND_EXTERIOR
+	setvar VAR_0x8004, LOCALID_BIRTH_ISLAND_SS_TIDAL
+	call Common_EventScript_FerryDepartIsland
+	warpsilent MAP_VERMILION_CITY_PORT_INSIDE, 8, 9
+	waitstate
+	release
+	end
+
+BirthIsland_Exterior_EventScript_SailorWait:
+	msgbox BirthIsland_Exterior_Text_SailorWait, MSGBOX_DEFAULT
+	release
+	end
+
+BirthIsland_Exterior_Text_SailBack:
+	.string "{SPEAKER NAME_SAILOR}Seen enough of the crater?\n"
+	.string "Shall we head back to VERMILION?$"
+
+BirthIsland_Exterior_Text_AllAboard:
+	.string "{SPEAKER NAME_SAILOR}Aye. All aboard!$"
+
+BirthIsland_Exterior_Text_SailorWait:
+	.string "{SPEAKER NAME_SAILOR}Take your time.\n"
+	.string "I'll be right here.$"
+

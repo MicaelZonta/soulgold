@@ -513,6 +513,15 @@ u16 GetCurrentMapWildMonHeaderId(void)
                 i += alteringCaveId;
             }
 
+            // Abundance Isle storm days (post-game): the next header in wild_encounters.json is the
+            // storm table of the same map (.claude/abundance_isle/instalar/selvagens.py).
+            if ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_THUNDER_RIDGE) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_THUNDER_RIDGE))
+             || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ABUNDANCE_ISLE_GALE_SHORE) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ABUNDANCE_ISLE_GALE_SHORE)))
+            {
+                if (VarGet(VAR_ABUNDANCE_STORM) == 1)
+                    i++;
+            }
+
             return i;
         }
     }

@@ -1,0 +1,96 @@
+{
+ "map": "AbundanceIsle_SunsetStrait_Underwater",
+ "ingame": "Sunset Strait",
+ "w": 40,
+ "h": 56,
+ "primary": "gTileset_underwater",
+ "secondary": "gTileset_CianwoodCity",
+ "map_type": "MAP_TYPE_UNDERWATER",
+ "music": "MUS_UNDERWATER",
+ "weather": "WEATHER_UNDERWATER",
+ "warps": [
+  {
+   "x": 19,
+   "y": 33,
+   "dest_map": "MAP_SUNKEN_TRUTH_SHIP",
+   "dest_warp_id": "0",
+   "nota": "rombo no casco (boca 0x82 na face sul da massa do naufragio)"
+  }
+ ],
+ "connections": [
+  {
+   "direction": "emerge",
+   "map": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT",
+   "offset": 0,
+   "nota": "sobe nos dois pontos claros (mesmas coordenadas da agua funda da superficie)"
+  }
+ ],
+ "dive_spots": [
+  {
+   "x": 22,
+   "y": 7,
+   "w": 3,
+   "h": 3
+  },
+  {
+   "x": 5,
+   "y": 48,
+   "w": 3,
+   "h": 3
+  }
+ ],
+ "objects": [
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_UNDERWATER_ITEM_REEF",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 33,
+   "y": 15,
+   "elevation": 0,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunsetStraitUnderwater_EventScript_ItemDeepSeaScale",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_UNDERWATER_ITEM_HULL",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 28,
+   "y": 35,
+   "elevation": 0,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunsetStraitUnderwater_EventScript_ItemHeartScale",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNSET_STRAIT_UNDERWATER_ITEM_SOUTH",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 34,
+   "y": 50,
+   "elevation": 0,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunsetStraitUnderwater_EventScript_ItemDeepSeaTooth",
+   "flag": "0"
+  }
+ ],
+ "explorar": [
+  "Dois pontos de mergulho (agua funda 3x3 na superficie): um perto do cais, outro no sudoeste.",
+  "A massa escura no meio e o casco do navio dos seguidores do Heroi da Verdade; o rombo na face sul leva ao interior (bolsa de ar).",
+  "Tres rochedos submarinos escondem itens: Deep Sea Scale, Heart Scale ao pe do casco e Deep Sea Tooth no fundo sul."
+ ],
+ "historia": "Ato 6 (opcional antes das ruinas): o navio que trouxe a Light Stone afundou aqui; o mural de bordo conta onde ela foi escondida.",
+ "estados": {
+  "dia": "Fundo do estreito."
+ },
+ "conferido": "check_objects: []; BFS a partir do ponto A: {'REEF': True, 'HULL': True, 'SOUTH': True, 'casco': True, 'ponto B': True}"
+}

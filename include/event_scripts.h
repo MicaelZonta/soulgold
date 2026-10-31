@@ -724,6 +724,8 @@ extern const u8 EventScript_MovedTooFast[];
 
 extern const u8 MoveTutor_AfterChooseBoxMon[];
 extern const u8 BlackthornCity_EventScript_DoorLocked[];
+extern const u8 AbundanceIsle_WindsweptCape_EventScript_DoorLocked[];
+extern const u8 AbundanceIsle_HarvestFields_EventScript_DoorLocked[];
 extern const u8 Mahoganytown_EventScript_DoorLocked[];
 extern const u8 CherrygroveCity_EventScript_DoorLocked[];
 extern const u8 NewBarkTown_EventScript_DoorLocked[];

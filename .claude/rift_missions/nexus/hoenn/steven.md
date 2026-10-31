@@ -153,6 +153,12 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Diancie** — `Nexus_EventScript_Steven_Diancie_ChampionFight` (falas `Nexus_Text_Steven_Diancie_Champion*`)
+- **Registeel** — `Nexus_EventScript_Steven_Registeel_ChampionFight` (falas `Nexus_Text_Steven_Registeel_Champion*`)
+
+
 ✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Steven_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
 
 **Proposta de 26/09/2026:** **Celesteela** (UB-04 Blaster). Steven é o campeão dela: a quinta luta do Daily, logo antes da boss battle.

@@ -1,0 +1,161 @@
+{
+  "id": "MAP_ABUNDANCE_ISLE_GALE_SHORE",
+  "name": "AbundanceIsle_GaleShore",
+  "layout": "LAYOUT_ABUNDANCE_ISLE_GALE_SHORE",
+  "music": "MUS_DP_ROUTE216_DAY",
+  "region_map_section": "MAPSEC_GALE_SHORE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_ABUNDANCE_ISLE",
+      "offset": 0,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_WINONA",
+      "graphics_id": "OBJ_EVENT_GFX_WINONA",
+      "x": 32,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_GaleShore_EventScript_Winona",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_ITEM_PLATEAU",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 20,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_FLOAT_STONE",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_FLOAT_STONE"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_ITEM_ISLET",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 7,
+      "y": 23,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_PEARL_STRING",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_PEARL_STRING"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_ITEM_RING",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 39,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_AIR_BALLOON",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_AIR_BALLOON"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_FISHERMAN",
+      "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
+      "x": 22,
+      "y": 19,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "AbundanceIsle_GaleShore_EventScript_Fisherman",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "x": 30,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "AbundanceIsle_GaleShore_EventScript_Beauty",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_HIKER",
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 26,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "AbundanceIsle_GaleShore_EventScript_Hiker",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_TORNADUS",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TORNADUS)",
+      "x": 37,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_GaleShore_EventScript_Tornadus",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_GALE_SHORE_SEED_4",
+      "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
+      "x": 16,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_GaleShore_EventScript_Seed4",
+      "flag": "FLAG_ABUNDANCE_SEED_4"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 11,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_ABUNDANCE_ISLE_GALE_CAVE",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

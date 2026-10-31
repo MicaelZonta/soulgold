@@ -154,6 +154,11 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Regice** — `Nexus_EventScript_Pryce_Regice_ChampionFight` (falas `Nexus_Text_Pryce_Regice_Champion*`)
+
+
 #### Articuno
 
 ✅ **Aprovado em 27/09/2026:** fragmento e ficha do Looker (`Nexus_EventScript_Articuno_LookerFile`) implementados em `data/scripts/nexus.inc` e `src/data/nexus/legendaries.h`. O sorteio do Daily que usa esta ligação ainda não existe.

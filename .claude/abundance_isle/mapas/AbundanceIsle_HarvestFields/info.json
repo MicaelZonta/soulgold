@@ -1,0 +1,188 @@
+{
+ "map": "AbundanceIsle_HarvestFields",
+ "ingame": "Harvest Fields",
+ "w": 40,
+ "h": 54,
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_Route38_Farmland",
+ "map_type": "MAP_TYPE_ROUTE",
+ "warps": [
+  {
+   "x": 7,
+   "y": 30,
+   "dest_map": "MAP_ABUNDANCE_ISLE_KEEPER_HOUSE",
+   "dest_warp_id": "0",
+   "nota": "porta da casa do guardiao"
+  },
+  {
+   "x": 17,
+   "y": 5,
+   "dest_map": "MAP_ABUNDANCE_ISLE_SPRING_GROVE",
+   "dest_warp_id": "0",
+   "nota": "boca do bosque ao norte; chega em (16,36) no Spring Grove"
+  },
+  {
+   "x": 18,
+   "y": 5,
+   "dest_map": "MAP_ABUNDANCE_ISLE_SPRING_GROVE",
+   "dest_warp_id": "0",
+   "nota": "segunda celula da boca do bosque"
+  }
+ ],
+ "connections": [
+  {
+   "direction": "east",
+   "map": "MAP_ABUNDANCE_ISLE",
+   "offset": 0,
+   "nota": "borda leste e mar (x 34..39); o hub tem mar na borda oeste. Chega-se de Surf. Tambem ha um cais ao sul (y 52) para barco"
+  },
+  {
+   "direction": "down",
+   "map": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT",
+   "offset": 0
+  }
+ ],
+ "objects": [
+  {
+   "local_id": "JESSIE",
+   "graphics_id": "OBJ_EVENT_GFX_JESSIE",
+   "x": 28,
+   "y": 33,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "HarvestFields_EventScript_JessieJames",
+   "flag": "0"
+  },
+  {
+   "local_id": "JAMES",
+   "graphics_id": "OBJ_EVENT_GFX_JAMES",
+   "x": 28,
+   "y": 34,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "HarvestFields_EventScript_JessieJames",
+   "flag": "0"
+  },
+  {
+   "local_id": "LENORA",
+   "graphics_id": "OBJ_EVENT_GFX_LENORA",
+   "x": 12,
+   "y": 36,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "HarvestFields_EventScript_Lenora",
+   "flag": "0"
+  },
+  {
+   "local_id": "FARMHAND",
+   "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+   "x": 22,
+   "y": 18,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "HarvestFields_EventScript_Farmhand",
+   "flag": "0"
+  },
+  {
+   "local_id": "LASS",
+   "graphics_id": "OBJ_EVENT_GFX_LASS",
+   "x": 6,
+   "y": 21,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "HarvestFields_EventScript_Lass",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_REVIVE",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 5,
+   "y": 33,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "HarvestFields_EventScript_ItemRevive",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_SITRUS",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 13,
+   "y": 42,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "HarvestFields_EventScript_ItemSitrusBerry",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_FIELD",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 29,
+   "y": 14,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "HarvestFields_EventScript_ItemSoftSand",
+   "flag": "0"
+  },
+  {
+   "local_id": "ITEM_BEACH",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 9,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "HarvestFields_EventScript_ItemPearl",
+   "flag": "0"
+  }
+ ],
+ "explorar": [
+  "Dois campos cercados de plantacao (capim alto com encontros), cada um com duas porteiras: da para cortar caminho por dentro ou rodear.",
+  "Jessie e James escondidos atras do celeiro de graos, \"tramando roubar a colheita e os lendarios\": batalha dupla opcional; depois do ato 5 voltam com outro plano (revanche).",
+  "Lenora diante da estela antiga na pracinha: le a inscricao das Forcas da Natureza e pede ao jogador que veja o santuario do hub; depois do Landorus, batalha opcional.",
+  "Casa do guardiao (oeste), com Revive no gramado ao lado.",
+  "Pomar ao sul: Sitrus Berry entre as fileiras.",
+  "Canto nordeste do campo leste: Soft Sand. Pearl na beira norte, atras do pinheiral.",
+  "Pinheiral ao norte: a trilha de grama entre as arvores leva a boca do Spring Grove (placa no comeco). Da para contornar o pinheiral pela beira da praia, onde fica o Pearl.",
+  "Treinadores: peao no campo leste, Lass no campo oeste."
+ ],
+ "historia": "Atos 1 e 5: casa do guardiao (pergaminhos, Reveal Glass) e passagem para o Spring Grove do Enamorus; Jessie e James sao o alivio comico.",
+ "estados": {
+  "dia": "Dia, com todos os NPCs."
+ },
+ "conferido": "check_objects=[]; BFS do cais alcanca: {'JESSIE': True, 'JAMES': True, 'LENORA': True, 'FARMHAND': True, 'LASS': True, 'ITEM_REVIVE': True, 'ITEM_SITRUS': True, 'ITEM_FIELD': True, 'ITEM_BEACH': True, 'WARP_GROVE': True, 'DOOR_KEEPER': True}"
+}

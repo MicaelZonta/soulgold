@@ -145,6 +145,12 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Meloetta** — `Nexus_EventScript_Fantina_Meloetta_ChampionFight` (falas `Nexus_Text_Fantina_Meloetta_Champion*`)
+- **Marshadow** — `Nexus_EventScript_Fantina_Marshadow_ChampionFight` (falas `Nexus_Text_Fantina_Marshadow_Champion*`)
+
+
 ✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Fantina_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
 
 **Proposta de 26/09/2026:** **Blacephalon** (UB Burst). Fantina é o campeão dela: a quinta luta do Daily, logo antes da boss battle.

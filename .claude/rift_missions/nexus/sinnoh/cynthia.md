@@ -7,7 +7,7 @@ Aparece no checklist como:
 - **Cynthia — Campeã** (Sinnoh · Elite Four e Campeã) — arqueóloga, pesquisadora de mitos e uma das Campeãs mais poderosas.
 - **Cynthia** (Unova · Outros notáveis) — Campeã visitante que pode ser desafiada em Undella Town.
 
-**Pronto para o Nexus:** ✅ sim — tem sprite e battle sprite.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Cynthia/` — e os dois **já registrados** no código (ver abaixo).
 
@@ -16,10 +16,10 @@ Aparece no checklist como:
 - [x] Sprite de overworld *(obrigatório)*
 - [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026)
-- [ ] Associado a um lendário — 📝 proposta abaixo (30/09/2026)
-- [ ] Diálogo genérico escrito — 📝 proposta abaixo (30/09/2026)
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta abaixo (30/09/2026)
+- [x] Time para as Rift Missions definido — 📝 proposta abaixo (30/09/2026)
+- [x] Associado a um lendário — 📝 proposta abaixo (30/09/2026)
+- [x] Diálogo genérico escrito — 📝 proposta abaixo (30/09/2026)
+- [x] Diálogo associado ao lendário escrito — 📝 proposta abaixo (30/09/2026)
 
 ## Referências no repositório
 
@@ -51,24 +51,7 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_CYNTHIA` (ID **a alocar**: livre abaixo de 1056, nunca 1056–1163), campeã de Giratina (co-campeã com o Silver). Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). Validado com `python3 dev_scripts/nexus_validar_time.py` (✓). Pic `Cynthia` (`TRAINER_PIC_FRONT_CYNTHIA`, já no código).
-
-Lendário **Giratina, Forma Origem** (Griseous Core), de que ela é co-campeã: a estudiosa de mitos que, em Platinum, entra no Mundo Distorção atrás do Cyrus, e a descendente do homem de Hisui que pediu poder a ele. Semi-lendário **Azelf**, o Ser da Vontade: em Platinum o trio dos lagos surge em Spear Pillar para segurar a corrente, logo antes de ela e o jogador entrarem no Mundo Distorção. Mega **Garchomp** (Groundite), o ás dela desde Diamond/Pearl. Mais **Spiritomb** (a abertura clássica dela), **Milotic** e **Togekiss**, do time de Platinum. O Lucario e a Roserade saem: a Togekiss e a Milotic cobrem melhor o plano, e em Doubles o Earthquake da Garchomp não acerta a Giratina, o Azelf (Levitate) nem a Togekiss (Voador).
-
-*Plano (Singles):* o Azelf de Focus Sash abre com Stealth Rock e Taunt e sai de U-turn; a Spiritomb queima com Will-O-Wisp e castiga o atacante com Foul Play; a Milotic segura especiais com Recover e apaga boosts com Haze; a Giratina-O bate com Poltergeist e fecha com Shadow Sneak; a Mega Garchomp sobe Swords Dance quando o campo está limpo e varre no fim.
-
-*Plano (Doubles):* a Togekiss puxa tudo com Follow Me enquanto a Mega Garchomp sobe Swords Dance; depois a Garchomp solta Earthquake ao lado de quem é imune (Giratina, Azelf, Togekiss). A Milotic de Competitive castiga o Intimidate do jogador; a Spiritomb queima o atacante físico.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Giratina-Origin | Griseous Core | Levitate | Adamant | Poltergeist, Dragon Claw, Shadow Sneak, Earthquake |
-| Azelf | Focus Sash | Levitate | Timid | Stealth Rock, Taunt, Psychic, U-turn |
-| Garchomp | Groundite | Rough Skin | Jolly | Swords Dance, Earthquake, Dragon Claw, Stone Edge |
-| Spiritomb | Leftovers | Infiltrator | Careful | Foul Play, Will-O-Wisp, Sucker Punch, Pain Split |
-| Milotic | Leftovers | Competitive | Bold | Scald, Ice Beam, Recover, Haze |
-| Togekiss | Sitrus Berry | Serene Grace | Timid | Air Slash, Dazzling Gleam, Follow Me, Roost |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e vagas)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_CYNTHIA` = **1174** (bloco 2, flag `0xB0A`), luta genérica `Nexus_EventScript_Cynthia_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_CYNTHIA ===
@@ -76,7 +59,7 @@ Name: Cynthia
 Class: Champion
 Pic: Cynthia
 Gender: Female
-Music: Hg Champion
+Music: Female
 Double Battle: No
 AI: Smart Trainer
 
@@ -89,12 +72,12 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Poltergeist
 - Dragon Claw
 - Shadow Sneak
-- Earthquake
+- Earth Power
 
 Azelf @ Focus Sash
 Timid Nature
 Level: 100
-Ability: Levitate
+Ability: Mind Float
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Stealth Rock
@@ -109,7 +92,7 @@ Ability: Rough Skin
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Swords Dance
-- Earthquake
+- Stomping Tantrum
 - Dragon Claw
 - Stone Edge
 
@@ -147,9 +130,14 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Roost
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Giratina Altered** — `Nexus_EventScript_Cynthia_Giratina_ChampionFight` (falas `Nexus_Text_Cynthia_Giratina_Champion*`)
+- **Palkia** — `Nexus_EventScript_Cynthia_Palkia_ChampionFight` (falas `Nexus_Text_Cynthia_Palkia_Champion*`)
+- **Arceus** — `Nexus_EventScript_Cynthia_Arceus_ChampionFight` (falas `Nexus_Text_Cynthia_Arceus_Champion*`)
+
 
 #### Giratina
 
@@ -188,9 +176,7 @@ O File L-487 fala do Silver (“a young man who ran from his father”). **Manti
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando Cynthia cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)).
-
-Voz da Cynthia de DP/Pt: calma, culta, gentil, com a curiosidade de quem estuda mitos e a segurança de quem nunca perdeu. As três variações: quem ela é (a pesquisadora), o cansaço de quem está no topo há tempo demais, e a avó de Celestic.
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Cynthia_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
@@ -202,88 +188,7 @@ Voz da Cynthia de DP/Pt: calma, culta, gentil, com a curiosidade de quem estuda 
 
 **Derrota**
 
-> …Wonderful. I'll have to write this down before it turns into a legend.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Cynthia_Intro:
-	.string "I'm Cynthia. I study myths -- the\n"
-	.string "stories people tell when they can't\l"
-	.string "explain what they saw.\p"
-	.string "Every myth I've read began with\n"
-	.string "someone who stood where you're\l"
-	.string "standing, and decided to look closer.\p"
-	.string "So. Let me see what you've decided.$"
-
-Nexus_Text_Cynthia_Defeat:
-	.string "…Wonderful. I'll have to write this\n"
-	.string "down before it turns into a legend.$"
-```
-
-</details>
-
-#### Variações 2 e 3 (📝 proposta de 30/09/2026)
-
-**Variação 2** — o cansaço do topo (e um aceno ao lugar sem manhã de onde ela veio, sem citá-lo)
-
-**Antes da luta**
-
-> Pardon me. I've been awake a very long time. Where I've been, there isn't a morning to wake up to.
->
-> I've been Champion for so long, I've forgotten what it feels like to be the one climbing.
->
-> Remind me. And please, don't hold back.
-
-**Derrota**
-
-> Ah… so this is the view from the bottom of the stairs. I'd missed it.
-
-**Variação 3** — a avó de Celestic e as ruínas como carta ao futuro
-
-**Antes da luta**
-
-> My grandmother says the old ruins in our town are a letter, written to someone in the future.
->
-> I've spent my whole life trying to read it. I never once asked who it was addressed to.
->
-> Maybe it was you. Show me.
-
-**Derrota**
-
-> The letter's still unfinished, then. Good. I'd hate for it to end here.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Cynthia_Intro2:
-	.string "Pardon me. I've been awake a very long\n"
-	.string "time. Where I've been, there isn't a\l"
-	.string "morning to wake up to.\p"
-	.string "I've been Champion for so long, I've\n"
-	.string "forgotten what it feels like to be the\l"
-	.string "one climbing.\p"
-	.string "Remind me. And please, don't hold back.$"
-
-Nexus_Text_Cynthia_Defeat2:
-	.string "Ah… so this is the view from the bottom\n"
-	.string "of the stairs. I'd missed it.$"
-
-Nexus_Text_Cynthia_Intro3:
-	.string "My grandmother says the old ruins in\n"
-	.string "our town are a letter, written to\l"
-	.string "someone in the future.\p"
-	.string "I've spent my whole life trying to read\n"
-	.string "it. I never once asked who it was\l"
-	.string "addressed to.\p"
-	.string "Maybe it was you. Show me.$"
-
-Nexus_Text_Cynthia_Defeat3:
-	.string "The letter's still unfinished, then.\n"
-	.string "Good. I'd hate for it to end here.$"
-```
-
-</details>
+> ...Wonderful. I'll have to write this down before it turns into a legend.
 
 ### Diálogo associado ao lendário
 

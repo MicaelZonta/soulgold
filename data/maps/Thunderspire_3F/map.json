@@ -1,0 +1,142 @@
+{
+  "id": "MAP_THUNDERSPIRE_3F",
+  "name": "Thunderspire_3F",
+  "layout": "LAYOUT_THUNDERSPIRE_3F",
+  "music": "MUS_HG_BURNED_TOWER",
+  "region_map_section": "MAPSEC_THUNDERSPIRE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_THUNDERSPIRE_3F_GRUNT_1",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_M",
+      "x": 8,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "Thunderspire_3F_EventScript_Grunt5",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_THUNDERSPIRE_3F_GRUNT_2",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_M",
+      "x": 18,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Thunderspire_3F_EventScript_Grunt6",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_THUNDERSPIRE_3F_GRUNT_3",
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_GRUNT_M",
+      "x": 21,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Thunderspire_3F_EventScript_Grunt7",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_THUNDERSPIRE_3F_ITEM_EAST",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 27,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_CELL_BATTERY",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_THUNDERSPIRE_3F_CELL_BATTERY"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 26,
+      "y": 22,
+      "elevation": 0,
+      "dest_map": "MAP_THUNDERSPIRE_2F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 17,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_THUNDERSPIRE_SUMMIT",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 18,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Thunderspire_3F_EventScript_Mural"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 20,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Thunderspire_3F_EventScript_RodEarth"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Thunderspire_3F_EventScript_RodWind"
+    },
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Thunderspire_3F_EventScript_RodThunder"
+    },
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Thunderspire_3F_EventScript_RodIdeal"
+    },
+    {
+      "type": "hidden_item",
+      "x": 2,
+      "y": 4,
+      "elevation": 0,
+      "item": "ITEM_MAGNET",
+      "flag": "FLAG_HIDDEN_ITEM_THUNDERSPIRE_3F_MAGNET",
+      "quantity": 1
+    }
+  ]
+}

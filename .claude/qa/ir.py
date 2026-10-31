@@ -56,11 +56,23 @@ def live_objects():
     return objs
 
 
+def live_cells():
+    """Grade do mapa atual lida da RAM (gBackupMapLayout tem MAP_OFFSET=7 de borda a esquerda e em cima;
+    em cada lado). Reflete setmetatile; o map.bin nao."""
+    base = sym("gBackupMapLayout")
+    hx = q.run([f"range {base} 12"]).split("=")[1]
+    bw, bh, ptr = struct.unpack("<iiI", bytes.fromhex(hx))
+    raw = bytes.fromhex(q.run([f"range {ptr} {bw * bh * 2}"]).split("=")[1])
+    full = struct.unpack(f"<{bw * bh}H", raw)
+    w, h = bw - 15, bh - 14   # MAP_OFFSET_W = 2*7+1, MAP_OFFSET_H = 2*7 (fieldmap.h)
+    return [full[(y + 7) * bw + x + 7] for y in range(h) for x in range(w)]
+
+
 def go(mapname, target):
     q.run(["press B 6 24"] * 8)   # fecha caixa de texto que tenha ficado aberta
     for _ in range(200):
         cur = pos()
-        steps, face = path(mapname, cur, target, live_objects())
+        steps, face = path(mapname, cur, target, live_objects(), live_cells())
         if not steps:
             if face:
                 q.run([f"press {face} 10 12"])   # < 8 quadros nao chega a virar

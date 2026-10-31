@@ -1,0 +1,85 @@
+{
+  "id": "MAP_ABUNDANCE_ISLE_SKYLA_HANGAR",
+  "name": "AbundanceIsle_SkylaHangar",
+  "layout": "LAYOUT_ABUNDANCE_ISLE_SKYLA_HANGAR",
+  "music": "MUS_HG_CIANWOOD",
+  "region_map_section": "MAPSEC_WINDSWEPT_CAPE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SKYLA_HANGAR_SKYLA",
+      "graphics_id": "OBJ_EVENT_GFX_SKYLA",
+      "x": 7,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_SkylaHangar_EventScript_SkylaGrounded",
+      "flag": "FLAG_TEMP_11"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SKYLA_HANGAR_MECHANIC",
+      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+      "x": 10,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_SkylaHangar_EventScript_Mechanic",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SKYLA_HANGAR_ITEM_CARGO",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 3,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_ZOOM_LENS",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_SKYLA_HANGAR_ZOOM_LENS"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SKYLA_HANGAR_SKYLA_READY",
+      "graphics_id": "OBJ_EVENT_GFX_SKYLA",
+      "x": 5,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_SkylaHangar_EventScript_SkylaFlight",
+      "flag": "FLAG_TEMP_12"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+      "dest_warp_id": "3"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

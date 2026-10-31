@@ -6,19 +6,19 @@ Aparece no checklist como:
 
 - **Leon — Campeão** (Galar · Campeão e Champion Cup) — Campeão invicto de Galar, famoso por seu Charizard e péssimo senso de direção.
 
-**Pronto para o Nexus:** ❌ não — tem sprite de overworld, falta o battle sprite (front pic) registrado no código.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/Leon/` (o overworld já está registrado; a front pic ainda não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Leon/`, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/Leon/`, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta de 30/09/2026 abaixo (validada), fora do código
-- [ ] Associado a um lendário — 📝 proposta de 30/09/2026: Eternatus (cedido pelo Tucker)
-- [ ] Diálogo genérico escrito — 📝 proposta de 30/09/2026 (3 variações)
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta de 30/09/2026 (3 variações)
+- [x] Time para as Rift Missions definido — 📝 proposta de 30/09/2026 abaixo (validada), fora do código
+- [x] Associado a um lendário — 📝 proposta de 30/09/2026: Eternatus (cedido pelo Tucker)
+- [x] Diálogo genérico escrito — 📝 proposta de 30/09/2026 (3 variações)
+- [x] Diálogo associado ao lendário escrito — 📝 proposta de 30/09/2026 (3 variações)
 
 ## Referências no repositório
 
@@ -53,32 +53,15 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_LEON`, ID **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163), campeão de Eternatus. Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). **Pic provisória** (`Cooltrainer M`) até registrar a arte.
-
-Lendário **Eternatus**, a criatura que ele segura sozinho no fragmento dele (ver "Lendário associado"). Semi-lendário **Urshifu** (Single Strike), o Pokémon do Master Dojo da Isle of Armor: foi lá que o Mustard, ex-Campeão, treinou o Leon menino. Mega **Charizard Gigantamax** (`Gigantatite`, a "Mega" das Gmax neste hack; ver [`evolucoes.md`](../../../evolucoes.md) — o autor já pensa numa GMAX Adventure com o Leon como fonte definitiva da pedra): o parceiro dele desde Postwick e a foto de capa de todo pôster da Liga. Mais Dragapult, Aegislash e Seismitoad, do time de Campeão em Sword/Shield. O Haxorus e o Rhyperior ficam no banco: o Rhyperior já está com o Blue, e o Seismitoad cobre melhor as fraquezas do Charizard.
-
-*Plano (Singles):* "Champion Time" — tudo gira em torno de preparar o palco para a entrada da estrela. O Seismitoad abre com Stealth Rock e bate com Knock Off; o Dragapult põe Reflect e Light Screen (Light Clay, 8 turnos) e sai queimando alguém com Will-O-Wisp; atrás das telas, o Eternatus usa Meteor Beam com Power Herb no primeiro turno (+1 SpA sem carregar) e varre com Dynamax Cannon, Sludge Bomb e Flamethrower (este para aço). O Urshifu de Choice Band limpa o que resistir, e o Charizard Gmax fecha com Heat Wave/Air Slash e Roost. O Aegislash segura a linha com King's Shield e Shadow Sneak.
-
-*Plano (Doubles):* telas do Dragapult no primeiro turno enquanto o Seismitoad abre com Muddy Water nos dois lados; Heat Wave do Charizard e Dragon Darts do Dragapult também são de área e nenhum golpe do time acerta o parceiro (Seismitoad com Water Absorb, sem ataque de água amigo). O Urshifu tem **Unseen Fist**: Wicked Blow e Close Combat atravessam Protect, o que desmonta os times de Doubles que vivem de Protect. O Aegislash pune contato com King's Shield e cobre o Eternatus contra Fairy e Ice.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Eternatus | Power Herb | Pressure | Timid | Meteor Beam, Dynamax Cannon, Sludge Bomb, Flamethrower |
-| Urshifu (Single Strike) | Choice Band | Unseen Fist | Adamant | Wicked Blow, Close Combat, Sucker Punch, U-turn |
-| Charizard | Gigantatite | Blaze | Timid | Heat Wave, Air Slash, Focus Blast, Roost |
-| Dragapult | Light Clay | Infiltrator | Jolly | Dragon Darts, Reflect, Light Screen, Will-O-Wisp |
-| Aegislash | Leftovers | Stance Change | Quiet | King's Shield, Shadow Ball, Flash Cannon, Shadow Sneak |
-| Seismitoad | Sitrus Berry | Water Absorb | Modest | Muddy Water, Earth Power, Stealth Rock, Knock Off |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: ✓ L=ETERNATUS S=URSHIFU_SINGLE_STRIKE M=CHARIZARD→CHARIZARD_GMAX)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_LEON` = **1195** (bloco 2, flag `0xB1F`), luta genérica `Nexus_EventScript_Leon_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_LEON ===
 Name: Leon
 Class: Champion
-Pic: Cooltrainer M
+Pic: Leon
 Gender: Male
-Music: Hg Champion
+Music: Male
 Double Battle: No
 AI: Smart Trainer
 
@@ -149,9 +132,14 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Knock Off
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Eternatus** — `Nexus_EventScript_Leon_Eternatus_ChampionFight` (falas `Nexus_Text_Leon_Eternatus_Champion*`)
+- **Zacian** — `Nexus_EventScript_Leon_Zacian_ChampionFight` (falas `Nexus_Text_Leon_Zacian_Champion*`)
+- **Urshifu Single Strike** — `Nexus_EventScript_Leon_Urshifu_ChampionFight` (falas `Nexus_Text_Leon_Urshifu_Champion*`)
+
 
 #### Eternatus
 
@@ -191,13 +179,11 @@ O "showman who loves an audience a little too much" serve para o Leon tão bem q
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando o Leon cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)). Três ângulos: o senso de direção e o Champion Time (1), o irmão mais novo (2), o peso da palavra "invicto" (3).
-
-#### Variação 1
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Leon_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
-> Well, hello! I was looking for the stadium. It was left, wasn't it? Or… the other left?
+> Well, hello! I was looking for the stadium. It was left, wasn't it? Or... the other left?
 >
 > Never mind! Wherever there's a battle, that's where I was headed all along.
 >
@@ -206,77 +192,6 @@ O "showman who loves an audience a little too much" serve para o Leon tão bem q
 **Derrota**
 
 > Ha! Brilliant! That's the kind of battle that brings a whole stadium to its feet!
-
-#### Variação 2
-
-**Antes da luta**
-
-> You've got the same look my little brother gets right before a battle. Like he's already won and just has to prove it.
->
-> He's always wanted to be the one who beats me.
->
-> Show me everything you've got!
-
-**Derrota**
-
-> Oh, don't tell my brother. He'll be cross that someone got there first!
-
-#### Variação 3
-
-**Antes da luta**
-
-> People call me unbeatable. I've never much liked that word.
->
-> It makes it sound like nobody's ever tried. I'd much rather someone tried!
->
-> My partner's fired up. Are you?
-
-**Derrota**
-
-> So that's what it feels like! Huh. It's not bad at all.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_Leon_Intro:
-	.string "Well, hello! I was looking for the\n"
-	.string "stadium. It was left, wasn't it? Or…\l"
-	.string "the other left?\p"
-	.string "Never mind! Wherever there's a battle,\n"
-	.string "that's where I was headed all along.\p"
-	.string "Let's have a champion time!$"
-
-Nexus_Text_Leon_Defeat:
-	.string "Ha! Brilliant! That's the kind of\n"
-	.string "battle that brings a whole stadium to\l"
-	.string "its feet!$"
-
-Nexus_Text_Leon_Intro2:
-	.string "You've got the same look my little\n"
-	.string "brother gets right before a battle.\l"
-	.string "Like he's already won and just has to\l"
-	.string "prove it.\p"
-	.string "He's always wanted to be the one who\n"
-	.string "beats me.\p"
-	.string "Show me everything you've got!$"
-
-Nexus_Text_Leon_Defeat2:
-	.string "Oh, don't tell my brother. He'll be\n"
-	.string "cross that someone got there first!$"
-
-Nexus_Text_Leon_Intro3:
-	.string "People call me unbeatable. I've never\n"
-	.string "much liked that word.\p"
-	.string "It makes it sound like nobody's ever\n"
-	.string "tried. I'd much rather someone tried!\p"
-	.string "My partner's fired up. Are you?$"
-
-Nexus_Text_Leon_Defeat3:
-	.string "So that's what it feels like! Huh.\n"
-	.string "It's not bad at all.$"
-```
-
-</details>
 
 ### Diálogo associado ao lendário
 

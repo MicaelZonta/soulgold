@@ -145,6 +145,12 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Buzzwole** — `Nexus_EventScript_Guzma_Buzzwole_ChampionFight` (falas `Nexus_Text_Guzma_Buzzwole_Champion*`)
+- **Okidogi** — `Nexus_EventScript_Guzma_Okidogi_ChampionFight` (falas `Nexus_Text_Guzma_Okidogi_Champion*`)
+
+
 ✅ **Aprovado em 26/09/2026:** a fala de campeão implementada (`Nexus_EventScript_Guzma_ChampionFight`) é sobre este lendário. O sorteio do Daily que usa a ligação ainda não existe.
 
 **Proposta de 26/09/2026:** **Guzzlord** (UB-05 Glutton). Guzma é o campeão dela: a quinta luta do Daily, logo antes da boss battle.

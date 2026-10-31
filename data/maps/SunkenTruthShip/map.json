@@ -1,0 +1,138 @@
+{
+  "id": "MAP_SUNKEN_TRUTH_SHIP",
+  "name": "SunkenTruthShip",
+  "layout": "LAYOUT_SUNKEN_TRUTH_SHIP",
+  "music": "MUS_HG_SS_AQUA",
+  "region_map_section": "MAPSEC_SUNSET_STRAIT",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_PHOEBE",
+      "graphics_id": "OBJ_EVENT_GFX_PHOEBE",
+      "x": 6,
+      "y": 14,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SunkenTruthShip_EventScript_Phoebe",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_PLANK",
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 22,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_ITEM_RELIC_GOLD",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 2,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_RELIC_GOLD",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_SUNKEN_TRUTH_SHIP_RELIC_GOLD"
+    },
+    {
+      "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_ITEM_FLAME_PLATE",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 16,
+      "y": 14,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_FLAME_PLATE",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_SUNKEN_TRUTH_SHIP_FLAME_PLATE"
+    },
+    {
+      "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_ITEM_BOTTLE_CAP",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 25,
+      "y": 14,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_BOTTLE_CAP",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_SUNKEN_TRUTH_SHIP_BOTTLE_CAP"
+    },
+    {
+      "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_ITEM_RELIC_CROWN",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 25,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_RELIC_CROWN",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_SUNKEN_TRUTH_SHIP_RELIC_CROWN"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 16,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SunkenTruthShip_EventScript_MuralLightStone"
+    },
+    {
+      "type": "sign",
+      "x": 21,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SunkenTruthShip_EventScript_CaptainsLog"
+    },
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SunkenTruthShip_EventScript_Figurehead"
+    }
+  ]
+}

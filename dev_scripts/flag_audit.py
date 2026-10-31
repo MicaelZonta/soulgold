@@ -200,6 +200,8 @@ def block_of(v, ns):
         return "TRAINER"
     if v <= ns['TRAINER_FLAGS_END']:
         return "RECLAIMED_TRAINER"
+    if ns.get('TRAINER_FLAGS_2_START') is not None and ns['TRAINER_FLAGS_2_START'] <= v <= ns['TRAINER_FLAGS_2_END']:
+        return "TRAINER_2"
     if v < ns['CUSTOM_FLAGS_START']:
         return "SYSTEM"
     if v <= ns['CUSTOM_FLAGS_END']:
@@ -236,7 +238,8 @@ def main():
     named = {f['value'] for f in flags}
     holes = []
     for v in range(0x20, ns['FLAGS_COUNT']):
-        if ns['TRAINER_FLAGS_START'] <= v <= ns['TRAINER_FLAGS_END'] or v in named:
+        if ns['TRAINER_FLAGS_START'] <= v <= ns['TRAINER_FLAGS_END'] or v in named \
+                or ns.get('TRAINER_FLAGS_2_START', -1) <= v <= ns.get('TRAINER_FLAGS_2_END', -2):
             continue
         if holes and v == holes[-1][1] + 1:
             holes[-1][1] = v

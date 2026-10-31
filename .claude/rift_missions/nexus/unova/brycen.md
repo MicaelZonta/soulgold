@@ -6,17 +6,17 @@ Aparece no checklist como:
 
 - **Brycen — Gelo** (Unova · Líderes de Ginásio) — antigo ator e Líder de Icirrus.
 
-**Pronto para o Nexus:** ❌ não — falta sprite de overworld e battle sprite (os dois são obrigatórios).
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 ## Checklist
 
-- [ ] Sprite de overworld *(obrigatório)*
-- [ ] Battle sprite / front pic *(obrigatório)*
+- [x] Sprite de overworld *(obrigatório)*
+- [x] Battle sprite / front pic *(obrigatório)*
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -40,15 +40,107 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-_Não definido._
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_BRYCEN` = **1171** (bloco 2, flag `0xB07`), luta genérica `Nexus_EventScript_Brycen_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
+
+```
+=== TRAINER_NEXUS_BRYCEN ===
+Name: Brycen
+Class: Leader
+Pic: Brycen
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Smart Trainer
+
+Kyurem @ Life Orb
+Modest Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blizzard
+- Freeze-Dry
+- Draco Meteor
+- Earth Power
+
+Articuno @ Heavy-Duty Boots
+Modest Nature
+Level: 100
+Ability: Pressure
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blizzard
+- Hurricane
+- Roost
+- Haze
+
+Abomasnow @ Icetite
+Quiet Nature
+Level: 100
+Ability: Snow Warning
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blizzard
+- Giga Drain
+- Earth Power
+- Protect
+
+Beartic @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Slush Rush
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Icicle Crash
+- Close Combat
+- Aqua Jet
+- Protect
+
+Mamoswine @ Life Orb
+Adamant Nature
+Level: 100
+Ability: Thick Fat
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Icicle Crash
+- High Horsepower
+- Ice Shard
+- Stealth Rock
+
+Froslass @ Focus Sash
+Timid Nature
+Level: 100
+Ability: Cursed Body
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Icy Wind
+- Shadow Ball
+- Will-O-Wisp
+- Destiny Bond
+```
 
 ### Lendário associado
 
-_Nenhum ainda._
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Kyurem** — `Nexus_EventScript_Brycen_Kyurem_ChampionFight` (falas `Nexus_Text_Brycen_Kyurem_Champion*`)
+- **Articuno** — `Nexus_EventScript_Brycen_Articuno_ChampionFight` (falas `Nexus_Text_Brycen_Articuno_Champion*`)
+- **Regice** — `Nexus_EventScript_Brycen_Regice_ChampionFight` (falas `Nexus_Text_Brycen_Regice_Champion*`)
+
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Brycen_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
+
+**Antes da luta**
+
+> I once spoke for an audience. Now my partners speak for me.
+>
+> Watch their movements. There is no wasted motion.
+
+**Derrota**
+
+> Your resolve did not freeze. Well done.
 
 ### Diálogo associado ao lendário
 

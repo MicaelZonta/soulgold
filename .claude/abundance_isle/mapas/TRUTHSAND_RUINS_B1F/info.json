@@ -1,0 +1,226 @@
+{
+ "map": "TRUTHSAND_RUINS_B1F",
+ "ingame": "Truthsand Ruins B1F",
+ "map_type": "MAP_TYPE_UNDERGROUND",
+ "explorar": [
+  "Cada sumidouro do 1F cai num lugar diferente: sala desabada (oeste), cava do Plasma (leste) ou a Trilha da Verdade (sul)",
+  "Cava do Plasma: o chefe da escavacao (batalha) e a escada que eles cavaram; Relic Silver no fundo",
+  "Labirinto de estatuas e dunas no centro: Greta (Arena Tycoon) cacando tesouro, batalha opcional; Ruin Maniac",
+  "Portao da Trilha: duas pedras de Rock Smash; quem nao tem precisa voltar e escolher o 3o sumidouro (a pista do Spenser: a verdade fica ao sul)",
+  "Trilha da Verdade: avenida de estatuas ate o sumidouro que desce ao Hall of Truth; Relic Crown escondida no canto; escada de volta do Hall"
+ ],
+ "historia": "Ato 6: o Plasma achou o caminho errado (a cava deles nao chega ao Hall). So quem segue a inscricao, andando reto pela Trilha da Verdade, cai na camara da Light Stone.",
+ "estados": {
+  "dia": "Escavacao do Plasma no leste; Trilha da Verdade isolada ao sul."
+ },
+ "conferido": "check_objects ok; BFS de cada pouso (A, B, C) para escada, sumidouro do Hall e itens; Trilha so pelo pouso C ou com Rock Smash",
+ "w": 36,
+ "h": 31,
+ "primary": "gTileset_Johto_General",
+ "secondary": "gTileset_Desert",
+ "warps": [
+  {
+   "x": 28,
+   "y": 5,
+   "dest_map": "MAP_TRUTHSAND_RUINS_1F",
+   "dest_warp_id": "1",
+   "nota": "escada do Plasma (sobe ao 1F)"
+  },
+  {
+   "x": 6,
+   "y": 6,
+   "dest_map": "MAP_TRUTHSAND_RUINS_1F",
+   "dest_warp_id": "2",
+   "nota": "pouso do sumidouro 1 (so chegada)"
+  },
+  {
+   "x": 30,
+   "y": 6,
+   "dest_map": "MAP_TRUTHSAND_RUINS_1F",
+   "dest_warp_id": "3",
+   "nota": "pouso do sumidouro 2 (so chegada)"
+  },
+  {
+   "x": 12,
+   "y": 24,
+   "dest_map": "MAP_TRUTHSAND_RUINS_1F",
+   "dest_warp_id": "4",
+   "nota": "pouso do sumidouro 3 (so chegada)"
+  },
+  {
+   "x": 17,
+   "y": 28,
+   "dest_map": "MAP_TRUTHSAND_RUINS_HALL_OF_TRUTH",
+   "dest_warp_id": "0",
+   "nota": "sumidouro da Trilha: cai no Hall of Truth"
+  },
+  {
+   "x": 24,
+   "y": 23,
+   "dest_map": "MAP_TRUTHSAND_RUINS_HALL_OF_TRUTH",
+   "dest_warp_id": "1",
+   "nota": "escada que volta do Hall"
+  }
+ ],
+ "objects": [
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_B1F_PLASMA_CHIEF",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 27,
+   "y": 8,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "TruthsandRuinsB1F_EventScript_PlasmaChief",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_B1F_GRUNT",
+   "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+   "x": 28,
+   "y": 12,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "3",
+   "script": "TruthsandRuinsB1F_EventScript_Grunt",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_B1F_GRETA",
+   "graphics_id": "OBJ_EVENT_GFX_GRETA",
+   "x": 20,
+   "y": 16,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsB1F_EventScript_Greta",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_B1F_RUIN_MANIAC",
+   "graphics_id": "OBJ_EVENT_GFX_HIKER",
+   "x": 5,
+   "y": 18,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NORMAL",
+   "trainer_sight_or_berry_tree_id": "4",
+   "script": "TruthsandRuinsB1F_EventScript_RuinManiac",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_B1F_ROCK_1",
+   "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+   "x": 17,
+   "y": 20,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "EventScript_RockSmash",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_B1F_ROCK_2",
+   "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+   "x": 18,
+   "y": 20,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "EventScript_RockSmash",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_B1F_ITEM_A",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 2,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsB1F_EventScript_ItemHardStone",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_B1F_ITEM_DIG",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 33,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsB1F_EventScript_ItemRelicSilver",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_B1F_ITEM_MAZE",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 33,
+   "y": 19,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsB1F_EventScript_ItemCharcoal",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_TRUTHSAND_RUINS_B1F_ITEM_TRAIL",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 25,
+   "y": 28,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "TruthsandRuinsB1F_EventScript_ItemRelicCrown",
+   "flag": "0"
+  }
+ ],
+ "bg_events": [
+  {
+   "type": "sign",
+   "x": 17,
+   "y": 21,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+   "script": "TruthsandRuinsB1F_EventScript_GateInscription"
+  },
+  {
+   "type": "sign",
+   "x": 18,
+   "y": 22,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+   "script": "TruthsandRuinsB1F_EventScript_TrailInscription"
+  }
+ ],
+ "connections": []
+}

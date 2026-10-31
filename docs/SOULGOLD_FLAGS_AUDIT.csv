@@ -9,21 +9,21 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x4,4,FLAG_TEMP_GARDEN_REFORM_TALKED,TEMP,EM_USO,1,2,2,Route30_House,MAPA_UNICO:Route30_House,"reform offer, once per visit"
 0x5,5,FLAG_TEMP_5,TEMP,EM_USO,12,92,97,BlackthornCity;CeladonCity;CeruleanCave_1F;CeruleanCave_B1F,GLOBAL(codigo),Unused Flag
 0x5,5,FLAG_TEMP_HIDE_GARDEN_B,TEMP,EM_USO,0,1,3,Route30,MAPA_UNICO:Route30,
-0x6,6,FLAG_TEMP_6,TEMP,EM_USO,5,37,68,BlackthornCity;CeruleanCave_1F;CeruleanCave_B1F;CherrygroveCity,GLOBAL(codigo),Unused Flag
+0x6,6,FLAG_TEMP_6,TEMP,EM_USO,5,39,72,BlackthornCity;CeruleanCave_1F;CeruleanCave_B1F;CherrygroveCity,GLOBAL(codigo),Unused Flag
 0x6,6,FLAG_TEMP_HIDE_KINGS_PLOT,TEMP,EM_USO,0,1,3,Route30,MAPA_UNICO:Route30,
-0x7,7,FLAG_TEMP_7,TEMP,EM_USO,3,36,49,BlackthornCity;CeruleanCave_1F;CeruleanCave_B1F;CherrygroveCity,GLOBAL(codigo),Unused Flag
+0x7,7,FLAG_TEMP_7,TEMP,EM_USO,3,38,53,BlackthornCity;CeruleanCave_1F;CeruleanCave_B1F;CherrygroveCity,GLOBAL(codigo),Unused Flag
 0x7,7,FLAG_TEMP_GARDEN_ORDER_REMINDED,TEMP,EM_USO,1,2,1,Route30_House,MAPA_UNICO:Route30_House,"order reminder, once per visit"
-0x8,8,FLAG_TEMP_8,TEMP,EM_USO,2,27,39,CeruleanCave_1F;CeruleanCave_B1F;CherrygroveCity;CliffEdgeCave,GLOBAL(codigo),Unused Flag
+0x8,8,FLAG_TEMP_8,TEMP,EM_USO,2,29,43,CeruleanCave_1F;CeruleanCave_B1F;CherrygroveCity;CliffEdgeCave,GLOBAL(codigo),Unused Flag
 0x8,8,FLAG_TEMP_LAUREL_HINTED,TEMP,EM_USO,2,2,2,Route30_House,MAPA_UNICO:Route30_House,"Laurel's recipe hint, once per visit"
-0x9,9,FLAG_TEMP_9,TEMP,EM_USO,2,19,28,CeruleanCave_1F;CeruleanCave_B1F;CherrygroveCity;CliffEdgeCave,GLOBAL(codigo),Unused Flag
+0x9,9,FLAG_TEMP_9,TEMP,EM_USO,2,21,31,CeruleanCave_1F;CeruleanCave_B1F;CherrygroveCity;CliffEdgeCave,GLOBAL(codigo),Unused Flag
 0x9,9,FLAG_TEMP_BRAM_TUTORIAL_VISIT,TEMP,EM_USO,6,1,2,Route30_House,MAPA_UNICO:Route30_House,this visit was the tutorial
 0xA,10,FLAG_TEMP_A,TEMP,EM_USO,2,19,18,CherrygroveCity;GoldenrodCity_DepartmentStore_5F;IcePath_B4F;MtMortar_Depths_1,GLOBAL(codigo),Unused Flag
 0xA,10,FLAG_TEMP_HIDE_BRAM,TEMP,EM_USO,0,1,5,Route30;Route30_House,GLOBAL(codigo),
-0xB,11,FLAG_TEMP_B,TEMP,EM_USO,0,12,14,BirthIsland_Exterior;NewBarkTown;RuinsOfAlph_Lab;SunMoonAltar,GLOBAL(codigo),Unused Flag
+0xB,11,FLAG_TEMP_B,TEMP,EM_USO,0,12,15,BirthIsland_Exterior;NewBarkTown;RuinsOfAlph_Lab;SunMoonAltar,GLOBAL(codigo),Unused Flag
 0xB,11,FLAG_TEMP_HIDE_LAUREL,TEMP,EM_USO,2,4,5,Route30;Route30_House,GLOBAL(codigo),
-0xC,12,FLAG_TEMP_C,TEMP,EM_USO,0,11,14,BirthIsland_Exterior;NewBarkTown;OlivineCity_LighthouseTop;SunMoonAltar,GLOBAL(codigo),Unused Flag
+0xC,12,FLAG_TEMP_C,TEMP,EM_USO,0,11,15,BirthIsland_Exterior;NewBarkTown;OlivineCity_LighthouseTop;SunMoonAltar,GLOBAL(codigo),Unused Flag
 0xC,12,FLAG_TEMP_HIDE_TILLY,TEMP,EM_USO,0,0,3,Route30;Route30_House,GLOBAL(codigo),
-0xD,13,FLAG_TEMP_D,TEMP,EM_USO,1,3,10,CinnabarIsland;MtEmber_Exterior_Frlg;NewSinjoh_HotSprings;SeafoamIslands_Gym,GLOBAL(codigo),Unused Flag
+0xD,13,FLAG_TEMP_D,TEMP,EM_USO,1,3,11,CinnabarIsland;MtEmber_Exterior_Frlg;NewSinjoh_HotSprings;SeafoamIslands_Gym,GLOBAL(codigo),Unused Flag
 0xD,13,FLAG_TEMP_HIDE_BUGSY,TEMP,EM_USO,0,1,3,Route30,GLOBAL(codigo),
 0xE,14,FLAG_TEMP_E,TEMP,EM_USO,0,0,9,NewBarkTown,GLOBAL(codigo),"When set, follower pokemon won't be spawned"
 0xE,14,FLAG_TEMP_HIDE_FOLLOWER,TEMP,EM_USO,3,32,38,BattleFrontier_BattleDomeBattleRoom;DarkraiInn1;DarkraiInn1Ruined;DarkraiInnFinalRoom,GLOBAL(codigo),
@@ -31,21 +31,21 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0xF,15,FLAG_TEMP_F,TEMP,EM_USO,0,3,4,SunMoonAltar,GLOBAL(codigo),Unused Flag
 0x10,16,FLAG_TEMP_10,TEMP,EM_USO,2,2,11,CeruleanCave_B1F;CliffEdgeCave;Kitakami_Houses,GLOBAL(codigo),Unused Flag
 0x10,16,FLAG_TEMP_HIDE_KLARA,TEMP,EM_USO,0,2,4,Route30,GLOBAL(codigo),Route30: Klara's morning raid (part 11)
-0x11,17,FLAG_TEMP_11,TEMP,EM_USO,0,0,60,Route110_TrickHousePuzzle4;Route120;SnowsweptCavern,GLOBAL(codigo),
+0x11,17,FLAG_TEMP_11,TEMP,EM_USO,0,54,108,AbundanceIsle;AbundanceIsle_Barn;AbundanceIsle_ElderHouse;AbundanceIsle_GaleShore,GLOBAL(codigo),
 0x11,17,FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE,TEMP,EM_USO,0,1,6,,GLOBAL(codigo),fora da ROM
-0x12,18,FLAG_TEMP_12,TEMP,EM_USO,0,2,88,MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B1F_Stairs_Frlg;MtEmber_RubyPath_B2F_Frlg,GLOBAL(codigo),
+0x12,18,FLAG_TEMP_12,TEMP,EM_USO,0,28,112,AbundanceIsle;AbundanceIsle_ElderHouse;AbundanceIsle_SkylaHangar;FrostfallCrater_Lab,GLOBAL(codigo),
 0x12,18,FLAG_TEMP_HIDE_SPECTRIER,TEMP,EM_USO,1,2,5,Route30,GLOBAL(codigo),Route30: Act 2's night visitor (part 12)
-0x13,19,FLAG_TEMP_13,TEMP,EM_USO,0,2,72,MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B2F_Frlg;MtEmber_RubyPath_B2F_Stairs_Frlg,GLOBAL(codigo),
+0x13,19,FLAG_TEMP_13,TEMP,EM_USO,0,16,84,AbundanceIsle;MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B2F_Frlg,GLOBAL(codigo),
 0x13,19,FLAG_TEMP_HIDE_PEONY,TEMP,EM_USO,0,2,4,Route30;Route30_House,GLOBAL(codigo),"Route30 and house: Peony, the guest (part 13)"
-0x14,20,FLAG_TEMP_14,TEMP,EM_USO,0,2,53,IlexForest;MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B2F_Frlg,GLOBAL(codigo),
+0x14,20,FLAG_TEMP_14,TEMP,EM_USO,0,6,62,AbundanceIsle;IlexForest;MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg,GLOBAL(codigo),
 0x14,20,FLAG_TEMP_HIDE_PEONIA,TEMP,EM_USO,0,2,4,Route30;Route30_House,GLOBAL(codigo),Route30 and house: Peonia
-0x15,21,FLAG_TEMP_15,TEMP,EM_USO,0,2,53,MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B1F_Frlg;MtEmber_RubyPath_B2F_Frlg;MtEmber_RubyPath_B3F_Frlg,GLOBAL(codigo),
+0x15,21,FLAG_TEMP_15,TEMP,EM_USO,2,14,69,AbundanceIsle;AbundanceIsle_FestivalArena;AbundanceIsle_HarvestFields;MtEmber_RubyPath_1F_Frlg,GLOBAL(codigo),
 0x15,21,FLAG_TEMP_HIDE_CALYREX,TEMP,EM_USO,2,4,5,Route30,GLOBAL(codigo),"Route30: Act 5 and Act 7 (parts 13, 16)"
-0x16,22,FLAG_TEMP_16,TEMP,EM_USO,0,2,42,MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B3F_Frlg;MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle1,GLOBAL(codigo),
+0x16,22,FLAG_TEMP_16,TEMP,EM_USO,2,8,50,AbundanceIsle_FestivalArena;MtEmber_RubyPath_1F_Frlg;MtEmber_RubyPath_B3F_Frlg;MtEmber_SummitPath_2F_Frlg,GLOBAL(codigo),
 0x16,22,FLAG_TEMP_HIDE_AVERY,TEMP,EM_USO,0,0,2,Route30,GLOBAL(codigo),"Route30: Avery, Fridays after the story (part 16)"
-0x17,23,FLAG_TEMP_17,TEMP,EM_USO,0,2,30,MtEmber_RubyPath_B3F_Frlg;MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle1;Route110_TrickHousePuzzle4,GLOBAL(codigo),
+0x17,23,FLAG_TEMP_17,TEMP,EM_USO,2,6,33,MtEmber_RubyPath_B3F_Frlg;MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle1;Route110_TrickHousePuzzle4,GLOBAL(codigo),
 0x17,23,FLAG_TEMP_HIDE_MUSTARD,TEMP,EM_USO,0,1,2,Route30,GLOBAL(codigo),"Route30: Mustard, a rare Sunday morning (part 16)"
-0x18,24,FLAG_TEMP_18,TEMP,EM_USO,0,2,21,MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle1;Route110_TrickHousePuzzle4,GLOBAL(codigo),
+0x18,24,FLAG_TEMP_18,TEMP,EM_USO,2,6,24,MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle1;Route110_TrickHousePuzzle4;Thunderspire_3F,GLOBAL(codigo),
 0x18,24,FLAG_TEMP_HIDE_ICEROOT_PLANT,TEMP,EM_USO,0,2,3,Route30,MAPA_UNICO:Route30,Route30: the King's carrot in Laurel's plot (act 5b)
 0x19,25,FLAG_TEMP_19,TEMP,EM_USO,0,2,23,MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle1;Route110_TrickHousePuzzle4,GLOBAL(codigo),
 0x19,25,FLAG_TEMP_HIDE_SHADEROOT_PLANT,TEMP,EM_USO,0,2,2,Route30,MAPA_UNICO:Route30,"Route30: the same, Shaderoot"
@@ -53,7 +53,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1B,27,FLAG_TEMP_1B,TEMP,EM_USO,0,2,15,Route110_TrickHousePuzzle1,GLOBAL(codigo),
 0x1C,28,FLAG_TEMP_1C,TEMP,EM_USO,0,2,12,Route110_TrickHousePuzzle1,GLOBAL(codigo),
 0x1D,29,FLAG_TEMP_1D,TEMP,EM_USO,0,2,8,,GLOBAL(codigo),fora da ROM
-0x1E,30,FLAG_TEMP_1E,TEMP,EM_USO,0,2,10,Route110_TrickHousePuzzle1,GLOBAL(codigo),
+0x1E,30,FLAG_TEMP_1E,TEMP,EM_USO,0,6,16,AbundanceIsle_HarvestFields;AbundanceIsle_WindsweptCape;Route110_TrickHousePuzzle1,GLOBAL(codigo),
 0x1F,31,FLAG_TEMP_1F,TEMP,EM_USO,0,2,9,,GLOBAL(codigo),fora da ROM
 0x20,32,FLAG_SYS_NO_COLLISION,SCRIPT/EVENT,SO_EM_DOC,0,0,1,,,Unused Flag //DEBUG
 0x21,33,FLAG_SYS_NO_ENCOUNTER,SCRIPT/EVENT,EM_USO,0,0,2,,GLOBAL(codigo),Unused Flag //DEBUG
@@ -97,7 +97,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x47,71,FLAG_DEFEATED_MOLTRES,SCRIPT/EVENT,SO_MAPAS_FORA_DA_ROM,1,2,1,,,fora da ROM
 0x48,72,FLAG_HIDE_ARTICUNO,SCRIPT/EVENT,EM_USO,0,8,17,PokemonLeague_HallOfFame;SeafoamIslands_B1F,GLOBAL(codigo),
 0x49,73,FLAG_HIDE_ZAPDOS,SCRIPT/EVENT,EM_USO,0,8,16,PokemonLeague_HallOfFame;Route10,GLOBAL(codigo),
-0x4A,74,FLAG_HIDE_MOLTRES,SCRIPT/EVENT,EM_USO,0,9,17,MtEmber_Summit_Frlg;MtSilver_1F_MoltresRoom;PokemonLeague_HallOfFame,GLOBAL(codigo),
+0x4A,74,FLAG_HIDE_MOLTRES,SCRIPT/EVENT,EM_USO,0,8,16,MtSilver_1F_MoltresRoom;PokemonLeague_HallOfFame,GLOBAL(codigo),
 0x4B,75,FLAG_DEFEATED_MEWTWO,SCRIPT/EVENT,SO_MAPAS_FORA_DA_ROM,1,2,1,,,fora da ROM
 0x4C,76,FLAG_HIDE_MEWTWO,SCRIPT/EVENT,EM_USO,0,11,16,CeruleanCave_B2F;PokemonLeague_HallOfFame,GLOBAL(codigo),
 0x4D,77,FLAG_UNLOCK_BIRDS,SCRIPT/EVENT,SO_MAPAS_FORA_DA_ROM,3,0,3,,,fora da ROM
@@ -428,7 +428,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1AA,426,FLAG_DAILY_BEAT_SILVER,SCRIPT/EVENT,EM_USO,3,3,6,IndigoPlateau_PokemonCenter,GLOBAL(codigo),
 0x1AB,427,FLAG_SUS_RAILWAY_DOOR,SCRIPT/EVENT,EM_USO,2,2,2,RailwayCave_2F,MAPA_UNICO:RailwayCave_2F,
 0x1AC,428,FLAG_DEFEATED_DEOXYS,SCRIPT/EVENT,EM_USO,3,6,10,BirthIsland_Exterior;PokemonLeague_HallOfFame,GLOBAL(codigo),HnS
-0x1AD,429,FLAG_BATTLED_DEOXYS,SCRIPT/EVENT,EM_USO,8,5,11,BirthIsland_Exterior;PokemonLeague_HallOfFame,GLOBAL(codigo),HnS
+0x1AD,429,FLAG_BATTLED_DEOXYS,SCRIPT/EVENT,EM_USO,8,5,12,BirthIsland_Exterior;PokemonLeague_HallOfFame,GLOBAL(codigo),HnS
 0x1AE,430,FLAG_SHOWN_EON_TICKET,SCRIPT/EVENT,EM_USO,4,4,7,,GLOBAL(codigo),
 0x1AF,431,FLAG_SHOWN_AURORA_TICKET,SCRIPT/EVENT,EM_USO,6,5,8,,GLOBAL(codigo),
 0x1B0,432,FLAG_SHOWN_OLD_SEA_MAP,SCRIPT/EVENT,EM_USO,4,4,7,,GLOBAL(codigo),
@@ -803,7 +803,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x320,800,FLAG_HIDE_LUGIA,SCRIPT/EVENT,EM_USO,1,28,17,EcruteakCity;PokemonLeague_HallOfFame;WhirlIslands_LugiaChamber,GLOBAL(codigo),
 0x321,801,FLAG_HIDE_HO_OH,SCRIPT/EVENT,EM_USO,0,22,19,EcruteakCity;PokemonLeague_HallOfFame;TinTower_RoofDay;TinTower_RoofNight,GLOBAL(codigo),
 0x322,802,FLAG_HIDE_FAN_CLUB_CLEFAIRY_DOLL,SCRIPT/EVENT,EM_USO,0,3,7,VermilionCity_FanClub,GLOBAL(codigo),
-0x323,803,FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES,SCRIPT/EVENT,EM_USO,9,4,8,VermilionCity_Gym,GLOBAL(codigo),
+0x323,803,FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES,SCRIPT/EVENT,EM_USO,9,4,9,VermilionCity_Gym,GLOBAL(codigo),
 0x324,804,FLAG_RETURNED_MACHINE_PART,SCRIPT/EVENT,EM_USO,30,8,37,CeruleanCity;Gate_SaffronCity_Route7;GoldenrodCity;GoldenrodCity_TrainStation,GLOBAL(codigo),
 0x325,805,FLAG_HIDE_COPYCAT_CLEFAIRY_DOLL,SCRIPT/EVENT,EM_USO,0,4,8,SaffronCity_CopyCatsHouse_2F,GLOBAL(codigo),
 0x326,806,FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY,SCRIPT/EVENT,EM_USO,0,5,10,MauvilleCity,GLOBAL(codigo),
@@ -829,7 +829,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x33A,826,FLAG_HIDE_ROUTE14_EUSINE,SCRIPT/EVENT,EM_USO,0,5,7,Route14,GLOBAL(codigo),
 0x33B,827,FLAG_HIDE_ROUTE14_SUICUNE,SCRIPT/EVENT,EM_USO,0,5,9,Route14;VermilionCity,GLOBAL(codigo),
 0x33C,828,FLAG_IN_KANTO_SAFARI_ZONE,SCRIPT/EVENT,EM_USO,4,10,9,FuchsiaCity_SafariZoneEntrance,GLOBAL(codigo),
-0x33D,829,FLAG_IS_KANTO_CHAMPION,SCRIPT/EVENT,EM_USO,33,4,27,FuchsiaCity_SafariZoneEntrance;OlivineCity;PalletTown_Lab,GLOBAL(codigo),
+0x33D,829,FLAG_IS_KANTO_CHAMPION,SCRIPT/EVENT,EM_USO,33,4,28,FuchsiaCity_SafariZoneEntrance;OlivineCity;PalletTown_Lab,GLOBAL(codigo),
 0x33E,830,FLAG_HIDE_LEAGUE_BLACKBELT,SCRIPT/EVENT,EM_USO,0,7,11,IndigoPlateau_PokemonCenter;PokemonLeague_HallOfFame;ViridianCity_Gym,GLOBAL(codigo),
 0x33F,831,FLAG_GOT_ROUTE2_NUGGET,SCRIPT/EVENT,EM_USO,2,3,5,Route2_House,GLOBAL(codigo),
 0x340,832,FLAG_GOT_VIRIDIAN_TM_SLUDGE_BOMB,SCRIPT/EVENT,EM_USO,1,1,1,ViridianCity,MAPA_UNICO:ViridianCity,
@@ -1388,11 +1388,11 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x989,2441,FLAG_LATITEMPLE_SWITCH5,RECLAIMED_TRAINER,EM_USO,4,6,2,LatiTempleLatias,MAPA_UNICO:LatiTempleLatias,
 0x98A,2442,FLAG_CAUGHT_LATIAS,RECLAIMED_TRAINER,EM_USO,4,2,4,LatiTempleLatias;LatiTempleLobby,MULTI_MAPA(2),
 0x98B,2443,FLAG_CAUGHT_LATIOS,RECLAIMED_TRAINER,EM_USO,4,2,4,LatiTempleLatios;LatiTempleLobby,MULTI_MAPA(2),
-0x98C,2444,FLAG_SYS_POKEMON_GET,SYSTEM,EM_USO,26,22,29,NewBarkTown_Lab,GLOBAL(codigo),
+0x98C,2444,FLAG_SYS_POKEMON_GET,SYSTEM,EM_USO,26,22,30,NewBarkTown_Lab,GLOBAL(codigo),
 0x98D,2445,FLAG_SYS_POKEDEX_GET,SYSTEM,EM_USO,41,12,31,CherrygroveCity;Route30_MrPokemonsHouse,GLOBAL(codigo),
 0x98E,2446,FLAG_SYS_POKENAV_GET,SYSTEM,EM_USO,12,7,10,NewBarkTown_PlayersHouse_1F,GLOBAL(codigo),
 0x98F,2447,FLAG_STARTED_SEASONAL_PERFUME_QUEST,SYSTEM,EM_USO,3,1,3,GoldenrodCity_FlowerShop;NewBarkTown_PlayersHouse_1F,MULTI_MAPA(2),Mom noticed Deerling/Sawsbuck's coat and mentioned the Flower Shop's perfume
-0x990,2448,FLAG_SYS_GAME_CLEAR,SYSTEM,EM_USO,129,13,82,BattleFrontier_ExchangeServiceCorner;CianwoodCity;GoldenrodCity_BikeShop;Route30_House,GLOBAL(codigo),
+0x990,2448,FLAG_SYS_GAME_CLEAR,SYSTEM,EM_USO,131,13,84,BattleFrontier_ExchangeServiceCorner;CianwoodCity;GoldenrodCity_BikeShop;OlivineCity_PortOutside,GLOBAL(codigo),
 0x991,2449,FLAG_SYS_CHAT_USED,SYSTEM,EM_USO,2,2,7,,GLOBAL(codigo),
 0x992,2450,FLAG_UNLOCKED_TRENDY_SAYINGS,SYSTEM,EM_USO,4,2,7,,GLOBAL(codigo),
 0x993,2451,FLAG_BADGE01_GET,SYSTEM,EM_USO,18,17,46,VioletCity_Gym,GLOBAL(codigo),
@@ -1804,7 +1804,7 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x111E,4382,FLAG_RIVAL_SUMMIT_EGG_PENDING,CUSTOM,EM_USO,2,4,3,MtSilver_SummitDay,MAPA_UNICO:MtSilver_SummitDay,
 0x111F,4383,FLAG_MOM_HAS_GIFT,CUSTOM,EM_USO,4,10,6,,GLOBAL(codigo),
 0x1120,4384,FLAG_HIDE_ARTICUNO_GALAR,CUSTOM,EM_USO,0,2,4,SnowtopMountainOutside,MAPA_UNICO:SnowtopMountainOutside,Snowtop Mountain
-0x1121,4385,FLAG_HIDE_ZAPDOS_GALAR,CUSTOM,EM_USO,2,2,4,OlivineCity_LighthouseTop,MAPA_UNICO:OlivineCity_LighthouseTop,farol de Olivine
+0x1121,4385,FLAG_HIDE_ZAPDOS_GALAR,CUSTOM,EM_USO,2,2,5,OlivineCity_LighthouseTop,MAPA_UNICO:OlivineCity_LighthouseTop,farol de Olivine
 0x1122,4386,FLAG_HIDE_MOLTRES_GALAR,CUSTOM,EM_USO,0,2,4,VictoryRoadKanto_B1F,MAPA_UNICO:VictoryRoadKanto_B1F,Victory Road Kanto B1F
 0x1123,4387,FLAG_HIDE_KORAIDON,CUSTOM,EM_USO,0,1,3,SeafoamIslands_SecretCave,MAPA_UNICO:SeafoamIslands_SecretCave,Seafoam SecretCave (sala do Groudon do HnS)
 0x1124,4388,FLAG_HIDE_MIRAIDON,CUSTOM,EM_USO,0,1,3,Route19_Cave,MAPA_UNICO:Route19_Cave,Route19_Cave (sala do Kyogre do HnS)
@@ -1914,14 +1914,139 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x118C,4492,FLAG_CAUGHT_KELDEO,CUSTOM,EM_USO,2,2,2,MtSilver_1F_RegigigasRoom,MAPA_UNICO:MtSilver_1F_RegigigasRoom,"Keldeo ja capturado; so o script da camara seta, para o ON_TRANSITION nao o trazer de volta"
 0x118D,4493,FLAG_MODERN_BATTLE_BG,CUSTOM,EM_USO,2,2,3,,GLOBAL(codigo),"Opcao ""Battle BGs"": setada = arte ""modern"" dos backgrounds de batalha (HnS 2.0.6); limpa = arte classica. So o menu de opcoes escreve"
 0x118E,4494,FLAG_MET_FLANNERY,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),a Flannery ja se apresentou; setada em Flannery_EventScript_Roaming (data/scripts/flannery.inc)
-0x118F,4495,FLAG_MET_COLRESS,CUSTOM,EM_USO,2,1,1,,GLOBAL(codigo),o Colress ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
-0x1190,4496,FLAG_MET_SOLIERA,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
+0x118F,4495,FLAG_MET_COLRESS,CUSTOM,EM_USO,2,1,2,,GLOBAL(codigo),o Colress ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
+0x1190,4496,FLAG_MET_SOLIERA,CUSTOM,EM_USO,1,1,2,,GLOBAL(codigo),a Soliera ja se apresentou na Birth Island; setada em data/scripts/birth_island_residents.inc
 0x1191,4497,FLAG_BIRTH_ISLAND_ITEM_METEORITE,CUSTOM,EM_USO,0,0,1,BirthIsland_Exterior,MAPA_UNICO:BirthIsland_Exterior,o Meteorite da cratera ja foi pego; setada pelo finditem
 0x1192,4498,FLAG_SAW_METEOR_SHOWER,CUSTOM,EM_USO,3,1,3,OlivineCity,GLOBAL(codigo),"o jogador viu a chuva de meteoros no cais de Vermilion, a noite; e o que destrava o bilhete da Birth Island"
-0x1193,4499,FLAG_NAVELROCK_FIRE_VENT,CUSTOM,EM_USO,3,1,1,,GLOBAL(codigo),a fenda do alto do Navel Rock foi desentupida; o calor sobe
-0x1194,4500,FLAG_NAVELROCK_SEA_BREACH,CUSTOM,EM_USO,4,1,1,,GLOBAL(codigo),a brecha do fundo do Navel Rock foi aberta; o mar desce
-0x1195,4501,FLAG_HIDE_VOLCANION,CUSTOM,EM_USO,0,3,2,NavelRock_SteamChamber,GLOBAL(codigo),recalculada em todo ON_TRANSITION da Camara do Vapor: so limpa com as duas valvulas abertas
-0x1196,4502,FLAG_CAUGHT_VOLCANION,CUSTOM,EM_USO,3,1,2,SeafoamIslands_Gym,GLOBAL(codigo),o Volcanion ja foi capturado; e o que impede ele de voltar
+0x1193,4499,FLAG_NAVELROCK_FIRE_VENT,CUSTOM,EM_USO,6,1,1,,GLOBAL(codigo),"a fenda das Fontes Termais do Navel Rock foi desentupida; com a brecha, abre o portao das Galerias (desde 27/10/2026)"
+0x1194,4500,FLAG_NAVELROCK_SEA_BREACH,CUSTOM,EM_USO,8,1,1,,GLOBAL(codigo),"a brecha da Gruta das Mares do Navel Rock foi aberta; com a fenda, abre o portao das Galerias (desde 27/10/2026)"
+0x1195,4501,FLAG_HIDE_VOLCANION,CUSTOM,EM_USO,0,3,3,NavelRock_SteamChamber,GLOBAL(codigo),recalculada em todo ON_TRANSITION da Camara do Vapor: so limpa com as duas valvulas abertas
+0x1196,4502,FLAG_CAUGHT_VOLCANION,CUSTOM,EM_USO,3,1,3,SeafoamIslands_Gym,GLOBAL(codigo),o Volcanion ja foi capturado; e o que impede ele de voltar
+0x1197,4503,FLAG_HIDE_PECHARUNT,CUSTOM,EM_USO,0,3,2,MtEmber_RubyPath_B5F_Frlg,GLOBAL(codigo),recalculada em todo ON_TRANSITION do Ruby Path B5F: so limpa com o Trio Leal capturado e o Pecharunt solto
+0x1198,4504,FLAG_CAUGHT_PECHARUNT,CUSTOM,EM_USO,1,1,1,,GLOBAL(codigo),o Pecharunt ja foi capturado (Ruby Path B5F); e o que impede ele de voltar e o estado AFTER da One Island
+0x1199,4505,FLAG_ABUNDANCE_TORNADUS_DONE,CUSTOM,EM_USO,2,2,6,AbundanceIsle;AbundanceIsle_GaleShore,MULTI_MAPA(2),o Tornadus da Gale Shore foi capturado ou vencido; setada no script dele (Abundance Isle)
+0x119A,4506,FLAG_ABUNDANCE_THUNDURUS_DONE,CUSTOM,EM_USO,2,2,6,AbundanceIsle;ThunderRidge,MULTI_MAPA(2),o Thundurus da Thunder Ridge foi capturado ou vencido; setada no script dele
+0x119B,4507,FLAG_ABUNDANCE_LANDORUS_DONE,CUSTOM,EM_USO,1,2,5,AbundanceIsle,MAPA_UNICO:AbundanceIsle,o Landorus do santuario da Abundance Isle foi capturado ou vencido
+0x119C,4508,FLAG_ABUNDANCE_ENAMORUS_DONE,CUSTOM,EM_USO,1,2,5,AbundanceIsle_SpringGrove,MAPA_UNICO:AbundanceIsle_SpringGrove,o Enamorus do Spring Grove foi capturado ou vencido
+0x119D,4509,FLAG_ABUNDANCE_ZEKROM_DONE,CUSTOM,EM_USO,2,2,4,Thunderspire_Summit,MAPA_UNICO:Thunderspire_Summit,o Zekrom do Thunderspire Summit foi capturado ou vencido
+0x119E,4510,FLAG_ABUNDANCE_RESHIRAM_DONE,CUSTOM,EM_USO,1,2,5,TruthsandRuins_HallOfTruth,MAPA_UNICO:TruthsandRuins_HallOfTruth,o Reshiram do Hall of Truth (Truthsand Ruins) foi capturado ou vencido
+0x119F,4511,FLAG_ITEM_ABUNDANCE_ISLE_DAMP_ROCK,CUSTOM,EM_USO,0,0,3,AbundanceIsle,MAPA_UNICO:AbundanceIsle,ITEM_DAMP_ROCK em AbundanceIsle (Abundance Isle); setada pelo finditem
+0x11A0,4512,FLAG_ITEM_ABUNDANCE_ISLE_THUNDER_STONE,CUSTOM,EM_USO,0,0,3,AbundanceIsle,MAPA_UNICO:AbundanceIsle,ITEM_THUNDER_STONE em AbundanceIsle (Abundance Isle); setada pelo finditem
+0x11A1,4513,FLAG_ITEM_ABUNDANCE_ISLE_HARD_STONE,CUSTOM,EM_USO,0,0,3,AbundanceIsle,MAPA_UNICO:AbundanceIsle,ITEM_HARD_STONE em AbundanceIsle (Abundance Isle); setada pelo finditem
+0x11A2,4514,FLAG_ITEM_ABUNDANCE_ISLE_MIRACLE_SEED,CUSTOM,EM_USO,0,0,3,AbundanceIsle,MAPA_UNICO:AbundanceIsle,ITEM_MIRACLE_SEED em AbundanceIsle (Abundance Isle); setada pelo finditem
+0x11A3,4515,FLAG_ITEM_ABUNDANCE_ISLE_BARN_LEFTOVERS,CUSTOM,EM_USO,0,0,3,AbundanceIsle_Barn,MAPA_UNICO:AbundanceIsle_Barn,ITEM_LEFTOVERS em AbundanceIsle_Barn (Abundance Isle); setada pelo finditem
+0x11A4,4516,FLAG_ITEM_ABUNDANCE_ISLE_FARMHOUSE_BIG_ROOT,CUSTOM,EM_USO,0,0,3,AbundanceIsle_Farmhouse,MAPA_UNICO:AbundanceIsle_Farmhouse,ITEM_BIG_ROOT em AbundanceIsle_Farmhouse (Abundance Isle); setada pelo finditem
+0x11A5,4517,FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_REVIVE,CUSTOM,EM_USO,0,0,3,AbundanceIsle_HarvestFields,MAPA_UNICO:AbundanceIsle_HarvestFields,ITEM_REVIVE em AbundanceIsle_HarvestFields (Abundance Isle); setada pelo finditem
+0x11A6,4518,FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_SITRUS_BERRY,CUSTOM,EM_USO,0,0,3,AbundanceIsle_HarvestFields,MAPA_UNICO:AbundanceIsle_HarvestFields,ITEM_SITRUS_BERRY em AbundanceIsle_HarvestFields (Abundance Isle); setada pelo finditem
+0x11A7,4519,FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_SOFT_SAND,CUSTOM,EM_USO,0,0,3,AbundanceIsle_HarvestFields,MAPA_UNICO:AbundanceIsle_HarvestFields,ITEM_SOFT_SAND em AbundanceIsle_HarvestFields (Abundance Isle); setada pelo finditem
+0x11A8,4520,FLAG_ITEM_ABUNDANCE_ISLE_HARVEST_FIELDS_PEARL,CUSTOM,EM_USO,0,0,3,AbundanceIsle_HarvestFields,MAPA_UNICO:AbundanceIsle_HarvestFields,ITEM_PEARL em AbundanceIsle_HarvestFields (Abundance Isle); setada pelo finditem
+0x11A9,4521,FLAG_ITEM_ABUNDANCE_ISLE_KEEPER_HOUSE_SOOTHE_BELL,CUSTOM,EM_USO,0,0,3,AbundanceIsle_KeeperHouse,MAPA_UNICO:AbundanceIsle_KeeperHouse,ITEM_SOOTHE_BELL em AbundanceIsle_KeeperHouse (Abundance Isle); setada pelo finditem
+0x11AA,4522,FLAG_ITEM_ABUNDANCE_ISLE_SPRING_GROVE_SHINY_STONE,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SpringGrove,MAPA_UNICO:AbundanceIsle_SpringGrove,ITEM_SHINY_STONE em AbundanceIsle_SpringGrove (Abundance Isle); setada pelo finditem
+0x11AB,4523,FLAG_ITEM_ABUNDANCE_ISLE_SPRING_GROVE_MIRACLE_SEED,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SpringGrove,MAPA_UNICO:AbundanceIsle_SpringGrove,ITEM_MIRACLE_SEED em AbundanceIsle_SpringGrove (Abundance Isle); setada pelo finditem
+0x11AC,4524,FLAG_ITEM_ABUNDANCE_ISLE_SPRING_GROVE_SWEET_APPLE,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SpringGrove,MAPA_UNICO:AbundanceIsle_SpringGrove,ITEM_SWEET_APPLE em AbundanceIsle_SpringGrove (Abundance Isle); setada pelo finditem
+0x11AD,4525,FLAG_ITEM_ABUNDANCE_ISLE_WINDSWEPT_CAPE_PRETTY_FEATHER,CUSTOM,EM_USO,0,0,3,AbundanceIsle_WindsweptCape,MAPA_UNICO:AbundanceIsle_WindsweptCape,ITEM_PRETTY_FEATHER em AbundanceIsle_WindsweptCape (Abundance Isle); setada pelo finditem
+0x11AE,4526,FLAG_ITEM_ABUNDANCE_ISLE_WINDSWEPT_CAPE_WIDE_LENS,CUSTOM,EM_USO,0,0,3,AbundanceIsle_WindsweptCape,MAPA_UNICO:AbundanceIsle_WindsweptCape,ITEM_WIDE_LENS em AbundanceIsle_WindsweptCape (Abundance Isle); setada pelo finditem
+0x11AF,4527,FLAG_ITEM_ABUNDANCE_ISLE_WINDSWEPT_CAPE_STAR_PIECE,CUSTOM,EM_USO,0,0,3,AbundanceIsle_WindsweptCape,MAPA_UNICO:AbundanceIsle_WindsweptCape,ITEM_STAR_PIECE em AbundanceIsle_WindsweptCape (Abundance Isle); setada pelo finditem
+0x11B0,4528,FLAG_ITEM_ABUNDANCE_ISLE_SKYLA_HANGAR_ZOOM_LENS,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SkylaHangar,MAPA_UNICO:AbundanceIsle_SkylaHangar,ITEM_ZOOM_LENS em AbundanceIsle_SkylaHangar (Abundance Isle); setada pelo finditem
+0x11B1,4529,FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_FLOAT_STONE,CUSTOM,EM_USO,0,0,3,AbundanceIsle_GaleShore,MAPA_UNICO:AbundanceIsle_GaleShore,ITEM_FLOAT_STONE em AbundanceIsle_GaleShore (Abundance Isle); setada pelo finditem
+0x11B2,4530,FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_PEARL_STRING,CUSTOM,EM_USO,0,0,3,AbundanceIsle_GaleShore,MAPA_UNICO:AbundanceIsle_GaleShore,ITEM_PEARL_STRING em AbundanceIsle_GaleShore (Abundance Isle); setada pelo finditem
+0x11B3,4531,FLAG_ITEM_ABUNDANCE_ISLE_GALE_SHORE_AIR_BALLOON,CUSTOM,EM_USO,0,0,3,AbundanceIsle_GaleShore,MAPA_UNICO:AbundanceIsle_GaleShore,ITEM_AIR_BALLOON em AbundanceIsle_GaleShore (Abundance Isle); setada pelo finditem
+0x11B4,4532,FLAG_ITEM_ABUNDANCE_ISLE_GALE_CAVE_SMOOTH_ROCK,CUSTOM,EM_USO,0,0,3,AbundanceIsle_GaleCave,MAPA_UNICO:AbundanceIsle_GaleCave,ITEM_SMOOTH_ROCK em AbundanceIsle_GaleCave (Abundance Isle); setada pelo finditem
+0x11B5,4533,FLAG_ITEM_ABUNDANCE_ISLE_GALE_CAVE_BIG_PEARL,CUSTOM,EM_USO,0,0,3,AbundanceIsle_GaleCave,MAPA_UNICO:AbundanceIsle_GaleCave,ITEM_BIG_PEARL em AbundanceIsle_GaleCave (Abundance Isle); setada pelo finditem
+0x11B6,4534,FLAG_ITEM_ABUNDANCE_ISLE_GALE_CAVE_SHARP_BEAK,CUSTOM,EM_USO,0,0,3,AbundanceIsle_GaleCave,MAPA_UNICO:AbundanceIsle_GaleCave,ITEM_SHARP_BEAK em AbundanceIsle_GaleCave (Abundance Isle); setada pelo finditem
+0x11B7,4535,FLAG_ITEM_FROSTFALL_CRATER_1F_SNOWBALL,CUSTOM,EM_USO,0,0,3,FrostfallCrater_1F,MAPA_UNICO:FrostfallCrater_1F,ITEM_SNOWBALL em FrostfallCrater_1F (Abundance Isle); setada pelo finditem
+0x11B8,4536,FLAG_ITEM_FROSTFALL_CRATER_1F_ICE_HEAL,CUSTOM,EM_USO,0,0,3,FrostfallCrater_1F,MAPA_UNICO:FrostfallCrater_1F,ITEM_ICE_HEAL em FrostfallCrater_1F (Abundance Isle); setada pelo finditem
+0x11B9,4537,FLAG_ITEM_FROSTFALL_CRATER_B1F_ICY_ROCK,CUSTOM,EM_USO,0,0,3,FrostfallCrater_B1F,MAPA_UNICO:FrostfallCrater_B1F,ITEM_ICY_ROCK em FrostfallCrater_B1F (Abundance Isle); setada pelo finditem
+0x11BA,4538,FLAG_ITEM_FROSTFALL_CRATER_B1F_NEVER_MELT_ICE,CUSTOM,EM_USO,0,0,3,FrostfallCrater_B1F,MAPA_UNICO:FrostfallCrater_B1F,ITEM_NEVER_MELT_ICE em FrostfallCrater_B1F (Abundance Isle); setada pelo finditem
+0x11BB,4539,FLAG_ITEM_FROSTFALL_CRATER_LAB_TM_BLIZZARD,CUSTOM,EM_USO,0,0,3,FrostfallCrater_Lab,MAPA_UNICO:FrostfallCrater_Lab,ITEM_TM_BLIZZARD em FrostfallCrater_Lab (Abundance Isle); setada pelo finditem
+0x11BC,4540,FLAG_ITEM_FROSTFALL_CRATER_LAB_MAX_REVIVE,CUSTOM,EM_USO,0,0,3,FrostfallCrater_Lab,MAPA_UNICO:FrostfallCrater_Lab,ITEM_MAX_REVIVE em FrostfallCrater_Lab (Abundance Isle); setada pelo finditem
+0x11BD,4541,FLAG_ITEM_FROSTFALL_CRATER_CORE_ICICLE_PLATE,CUSTOM,EM_USO,0,0,3,FrostfallCrater_Core,MAPA_UNICO:FrostfallCrater_Core,ITEM_ICICLE_PLATE em FrostfallCrater_Core (Abundance Isle); setada pelo finditem
+0x11BE,4542,FLAG_ITEM_FROSTFALL_CRATER_CORE_DRAGON_FANG,CUSTOM,EM_USO,0,0,3,FrostfallCrater_Core,MAPA_UNICO:FrostfallCrater_Core,ITEM_DRAGON_FANG em FrostfallCrater_Core (Abundance Isle); setada pelo finditem
+0x11BF,4543,FLAG_ITEM_FROSTFALL_CRATER_CORE_COMET_SHARD,CUSTOM,EM_USO,0,0,3,FrostfallCrater_Core,MAPA_UNICO:FrostfallCrater_Core,ITEM_COMET_SHARD em FrostfallCrater_Core (Abundance Isle); setada pelo finditem
+0x11C0,4544,FLAG_ITEM_THUNDER_RIDGE_ELECTIRIZER,CUSTOM,EM_USO,0,0,3,ThunderRidge,MAPA_UNICO:ThunderRidge,ITEM_ELECTIRIZER em ThunderRidge (Abundance Isle); setada pelo finditem
+0x11C1,4545,FLAG_ITEM_THUNDER_RIDGE_MAX_REVIVE,CUSTOM,EM_USO,0,0,3,ThunderRidge,MAPA_UNICO:ThunderRidge,ITEM_MAX_REVIVE em ThunderRidge (Abundance Isle); setada pelo finditem
+0x11C2,4546,FLAG_ITEM_THUNDER_RIDGE_THUNDER_STONE,CUSTOM,EM_USO,0,0,3,ThunderRidge,MAPA_UNICO:ThunderRidge,ITEM_THUNDER_STONE em ThunderRidge (Abundance Isle); setada pelo finditem
+0x11C3,4547,FLAG_ITEM_THUNDER_RIDGE_RARE_CANDY,CUSTOM,EM_USO,0,0,3,ThunderRidge,MAPA_UNICO:ThunderRidge,ITEM_RARE_CANDY em ThunderRidge (Abundance Isle); setada pelo finditem
+0x11C4,4548,FLAG_ITEM_THUNDERSPIRE_1F_DRAGON_SCALE,CUSTOM,EM_USO,0,0,3,Thunderspire_1F,MAPA_UNICO:Thunderspire_1F,ITEM_DRAGON_SCALE em Thunderspire_1F (Abundance Isle); setada pelo finditem
+0x11C5,4549,FLAG_ITEM_THUNDERSPIRE_1F_ZINC,CUSTOM,EM_USO,0,0,3,Thunderspire_1F,MAPA_UNICO:Thunderspire_1F,ITEM_ZINC em Thunderspire_1F (Abundance Isle); setada pelo finditem
+0x11C6,4550,FLAG_ITEM_THUNDERSPIRE_2F_SPELL_TAG,CUSTOM,EM_USO,0,0,3,Thunderspire_2F,MAPA_UNICO:Thunderspire_2F,ITEM_SPELL_TAG em Thunderspire_2F (Abundance Isle); setada pelo finditem
+0x11C7,4551,FLAG_ITEM_THUNDERSPIRE_2F_DRAGON_FANG,CUSTOM,EM_USO,0,0,3,Thunderspire_2F,MAPA_UNICO:Thunderspire_2F,ITEM_DRAGON_FANG em Thunderspire_2F (Abundance Isle); setada pelo finditem
+0x11C8,4552,FLAG_ITEM_THUNDERSPIRE_SUMMIT_ZAP_PLATE,CUSTOM,EM_USO,0,0,3,Thunderspire_Summit,MAPA_UNICO:Thunderspire_Summit,ITEM_ZAP_PLATE em Thunderspire_Summit (Abundance Isle); setada pelo finditem
+0x11C9,4553,FLAG_ITEM_THUNDERSPIRE_SUMMIT_DRAGON_FANG,CUSTOM,EM_USO,0,0,3,Thunderspire_Summit,MAPA_UNICO:Thunderspire_Summit,ITEM_DRAGON_FANG em Thunderspire_Summit (Abundance Isle); setada pelo finditem
+0x11CA,4554,FLAG_ITEM_PLASMA_FRIGATE_DECK_FULL_RESTORE,CUSTOM,EM_USO,0,0,3,PlasmaFrigate_Deck,MAPA_UNICO:PlasmaFrigate_Deck,ITEM_FULL_RESTORE em PlasmaFrigate_Deck (Abundance Isle); setada pelo finditem
+0x11CB,4555,FLAG_ITEM_PLASMA_FRIGATE_DECK_PP_UP,CUSTOM,EM_USO,0,0,3,PlasmaFrigate_Deck,MAPA_UNICO:PlasmaFrigate_Deck,ITEM_PP_UP em PlasmaFrigate_Deck (Abundance Isle); setada pelo finditem
+0x11CC,4556,FLAG_ITEM_PLASMA_FRIGATE_HOLD_DUSK_BALL,CUSTOM,EM_USO,0,0,3,PlasmaFrigate_Hold,MAPA_UNICO:PlasmaFrigate_Hold,ITEM_DUSK_BALL em PlasmaFrigate_Hold (Abundance Isle); setada pelo finditem
+0x11CD,4557,FLAG_ITEM_PLASMA_FRIGATE_HOLD_NEVER_MELT_ICE,CUSTOM,EM_USO,0,0,3,PlasmaFrigate_Hold,MAPA_UNICO:PlasmaFrigate_Hold,ITEM_NEVER_MELT_ICE em PlasmaFrigate_Hold (Abundance Isle); setada pelo finditem
+0x11CE,4558,FLAG_ITEM_PLASMA_FRIGATE_HOLD_MAX_ELIXIR,CUSTOM,EM_USO,0,0,3,PlasmaFrigate_Hold,MAPA_UNICO:PlasmaFrigate_Hold,ITEM_MAX_ELIXIR em PlasmaFrigate_Hold (Abundance Isle); setada pelo finditem
+0x11CF,4559,FLAG_ITEM_PLASMA_FRIGATE_CABINS_RARE_CANDY,CUSTOM,EM_USO,0,0,3,PlasmaFrigate_Cabins,MAPA_UNICO:PlasmaFrigate_Cabins,ITEM_RARE_CANDY em PlasmaFrigate_Cabins (Abundance Isle); setada pelo finditem
+0x11D0,4560,FLAG_ITEM_PLASMA_FRIGATE_ENGINE_ROOM_ICE_STONE,CUSTOM,EM_USO,0,0,3,PlasmaFrigate_EngineRoom,MAPA_UNICO:PlasmaFrigate_EngineRoom,ITEM_ICE_STONE em PlasmaFrigate_EngineRoom (Abundance Isle); setada pelo finditem
+0x11D1,4561,FLAG_ITEM_PLASMA_FRIGATE_ENGINE_ROOM_UP_GRADE,CUSTOM,EM_USO,0,0,3,PlasmaFrigate_EngineRoom,MAPA_UNICO:PlasmaFrigate_EngineRoom,ITEM_UP_GRADE em PlasmaFrigate_EngineRoom (Abundance Isle); setada pelo finditem
+0x11D2,4562,FLAG_ITEM_THUNDERSPIRE_3F_CELL_BATTERY,CUSTOM,EM_USO,0,0,3,Thunderspire_3F,MAPA_UNICO:Thunderspire_3F,ITEM_CELL_BATTERY em Thunderspire_3F (Abundance Isle); setada pelo finditem
+0x11D3,4563,FLAG_HIDDEN_ITEM_THUNDERSPIRE_3F_MAGNET,CUSTOM,EM_USO,0,0,3,Thunderspire_3F,MAPA_UNICO:Thunderspire_3F,ITEM_MAGNET em Thunderspire_3F (Abundance Isle); setada pelo finditem
+0x11D4,4564,FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_MYSTIC_WATER,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SunsetStrait,MAPA_UNICO:AbundanceIsle_SunsetStrait,ITEM_MYSTIC_WATER em AbundanceIsle_SunsetStrait (Abundance Isle); setada pelo finditem
+0x11D5,4565,FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_BIG_PEARL,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SunsetStrait,MAPA_UNICO:AbundanceIsle_SunsetStrait,ITEM_BIG_PEARL em AbundanceIsle_SunsetStrait (Abundance Isle); setada pelo finditem
+0x11D6,4566,FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_DRAGON_SCALE,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SunsetStrait,MAPA_UNICO:AbundanceIsle_SunsetStrait,ITEM_DRAGON_SCALE em AbundanceIsle_SunsetStrait (Abundance Isle); setada pelo finditem
+0x11D7,4567,FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_SHELL_BELL,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SunsetStrait,MAPA_UNICO:AbundanceIsle_SunsetStrait,ITEM_SHELL_BELL em AbundanceIsle_SunsetStrait (Abundance Isle); setada pelo finditem
+0x11D8,4568,FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_DEEP_SEA_SCALE,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SunsetStrait_Underwater,MAPA_UNICO:AbundanceIsle_SunsetStrait_Underwater,ITEM_DEEP_SEA_SCALE em AbundanceIsle_SunsetStrait_Underwater (Abundance Isle); setada pelo finditem
+0x11D9,4569,FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_HEART_SCALE,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SunsetStrait_Underwater,MAPA_UNICO:AbundanceIsle_SunsetStrait_Underwater,ITEM_HEART_SCALE em AbundanceIsle_SunsetStrait_Underwater (Abundance Isle); setada pelo finditem
+0x11DA,4570,FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER_DEEP_SEA_TOOTH,CUSTOM,EM_USO,0,0,3,AbundanceIsle_SunsetStrait_Underwater,MAPA_UNICO:AbundanceIsle_SunsetStrait_Underwater,ITEM_DEEP_SEA_TOOTH em AbundanceIsle_SunsetStrait_Underwater (Abundance Isle); setada pelo finditem
+0x11DB,4571,FLAG_ITEM_SUNKEN_TRUTH_SHIP_RELIC_GOLD,CUSTOM,EM_USO,0,0,3,SunkenTruthShip,MAPA_UNICO:SunkenTruthShip,ITEM_RELIC_GOLD em SunkenTruthShip (Abundance Isle); setada pelo finditem
+0x11DC,4572,FLAG_ITEM_SUNKEN_TRUTH_SHIP_FLAME_PLATE,CUSTOM,EM_USO,0,0,3,SunkenTruthShip,MAPA_UNICO:SunkenTruthShip,ITEM_FLAME_PLATE em SunkenTruthShip (Abundance Isle); setada pelo finditem
+0x11DD,4573,FLAG_ITEM_SUNKEN_TRUTH_SHIP_BOTTLE_CAP,CUSTOM,EM_USO,0,0,3,SunkenTruthShip,MAPA_UNICO:SunkenTruthShip,ITEM_BOTTLE_CAP em SunkenTruthShip (Abundance Isle); setada pelo finditem
+0x11DE,4574,FLAG_ITEM_SUNKEN_TRUTH_SHIP_RELIC_CROWN,CUSTOM,EM_USO,0,0,3,SunkenTruthShip,MAPA_UNICO:SunkenTruthShip,ITEM_RELIC_CROWN em SunkenTruthShip (Abundance Isle); setada pelo finditem
+0x11DF,4575,FLAG_ITEM_SHRINE_OF_THE_FIRST_DRAGON_DRACO_PLATE,CUSTOM,EM_USO,0,0,3,ShrineOfTheFirstDragon,MAPA_UNICO:ShrineOfTheFirstDragon,ITEM_DRACO_PLATE em ShrineOfTheFirstDragon (Abundance Isle); setada pelo finditem
+0x11E0,4576,FLAG_ITEM_EMBERDUNE_ISLE_HEAT_ROCK,CUSTOM,EM_USO,0,0,3,EmberduneIsle,MAPA_UNICO:EmberduneIsle,ITEM_HEAT_ROCK em EmberduneIsle (Abundance Isle); setada pelo finditem
+0x11E1,4577,FLAG_ITEM_EMBERDUNE_ISLE_SUN_STONE,CUSTOM,EM_USO,0,0,3,EmberduneIsle,MAPA_UNICO:EmberduneIsle,ITEM_SUN_STONE em EmberduneIsle (Abundance Isle); setada pelo finditem
+0x11E2,4578,FLAG_ITEM_EMBERDUNE_ISLE_SOFT_SAND,CUSTOM,EM_USO,0,0,3,EmberduneIsle,MAPA_UNICO:EmberduneIsle,ITEM_SOFT_SAND em EmberduneIsle (Abundance Isle); setada pelo finditem
+0x11E3,4579,FLAG_ITEM_EMBERDUNE_ISLE_FIRE_STONE,CUSTOM,EM_USO,0,0,3,EmberduneIsle,MAPA_UNICO:EmberduneIsle,ITEM_FIRE_STONE em EmberduneIsle (Abundance Isle); setada pelo finditem
+0x11E4,4580,FLAG_ITEM_NS_ROOM_SOOTHE_BELL,CUSTOM,EM_USO,0,0,3,NsRoom,MAPA_UNICO:NsRoom,ITEM_SOOTHE_BELL em NsRoom (Abundance Isle); setada pelo finditem
+0x11E5,4581,FLAG_ITEM_TRUTHSAND_RUINS_1F_RELIC_GOLD,CUSTOM,EM_USO,0,0,3,TruthsandRuins_1F,MAPA_UNICO:TruthsandRuins_1F,ITEM_RELIC_GOLD em TruthsandRuins_1F (Abundance Isle); setada pelo finditem
+0x11E6,4582,FLAG_ITEM_TRUTHSAND_RUINS_1F_RELIC_COPPER,CUSTOM,EM_USO,0,0,3,TruthsandRuins_1F,MAPA_UNICO:TruthsandRuins_1F,ITEM_RELIC_COPPER em TruthsandRuins_1F (Abundance Isle); setada pelo finditem
+0x11E7,4583,FLAG_ITEM_TRUTHSAND_RUINS_1F_SOFT_SAND,CUSTOM,EM_USO,0,0,3,TruthsandRuins_1F,MAPA_UNICO:TruthsandRuins_1F,ITEM_SOFT_SAND em TruthsandRuins_1F (Abundance Isle); setada pelo finditem
+0x11E8,4584,FLAG_ITEM_TRUTHSAND_RUINS_1F_STARDUST,CUSTOM,EM_USO,0,0,3,TruthsandRuins_1F,MAPA_UNICO:TruthsandRuins_1F,ITEM_STARDUST em TruthsandRuins_1F (Abundance Isle); setada pelo finditem
+0x11E9,4585,FLAG_ITEM_TRUTHSAND_RUINS_B1F_HARD_STONE,CUSTOM,EM_USO,0,0,3,TruthsandRuins_B1F,MAPA_UNICO:TruthsandRuins_B1F,ITEM_HARD_STONE em TruthsandRuins_B1F (Abundance Isle); setada pelo finditem
+0x11EA,4586,FLAG_ITEM_TRUTHSAND_RUINS_B1F_RELIC_SILVER,CUSTOM,EM_USO,0,0,3,TruthsandRuins_B1F,MAPA_UNICO:TruthsandRuins_B1F,ITEM_RELIC_SILVER em TruthsandRuins_B1F (Abundance Isle); setada pelo finditem
+0x11EB,4587,FLAG_ITEM_TRUTHSAND_RUINS_B1F_CHARCOAL,CUSTOM,EM_USO,0,0,3,TruthsandRuins_B1F,MAPA_UNICO:TruthsandRuins_B1F,ITEM_CHARCOAL em TruthsandRuins_B1F (Abundance Isle); setada pelo finditem
+0x11EC,4588,FLAG_ITEM_TRUTHSAND_RUINS_B1F_RELIC_CROWN,CUSTOM,EM_USO,0,0,3,TruthsandRuins_B1F,MAPA_UNICO:TruthsandRuins_B1F,ITEM_RELIC_CROWN em TruthsandRuins_B1F (Abundance Isle); setada pelo finditem
+0x11ED,4589,FLAG_ITEM_TRUTHSAND_RUINS_HALL_OF_TRUTH_FLAME_PLATE,CUSTOM,EM_USO,0,0,3,TruthsandRuins_HallOfTruth,MAPA_UNICO:TruthsandRuins_HallOfTruth,ITEM_FLAME_PLATE em TruthsandRuins_HallOfTruth (Abundance Isle); setada pelo finditem
+0x11EE,4590,FLAG_ITEM_TRUTHSAND_RUINS_HALL_OF_TRUTH_FIRE_STONE,CUSTOM,EM_USO,0,0,3,TruthsandRuins_HallOfTruth,MAPA_UNICO:TruthsandRuins_HallOfTruth,ITEM_FIRE_STONE em TruthsandRuins_HallOfTruth (Abundance Isle); setada pelo finditem
+0x11EF,4591,FLAG_ITEM_TRUTHSAND_RUINS_HALL_OF_TRUTH_RELIC_VASE,CUSTOM,EM_USO,0,0,3,TruthsandRuins_HallOfTruth,MAPA_UNICO:TruthsandRuins_HallOfTruth,ITEM_RELIC_VASE em TruthsandRuins_HallOfTruth (Abundance Isle); setada pelo finditem
+0x11F0,4592,FLAG_ABUNDANCE_STELE_1,CUSTOM,EM_USO,4,2,2,AbundanceIsle_HarvestFields,MAPA_UNICO:AbundanceIsle_HarvestFields,fragmento 1 da estela da Lenora encontrado (missao The Broken Stele)
+0x11F1,4593,FLAG_ABUNDANCE_STELE_2,CUSTOM,EM_USO,4,2,4,AbundanceIsle_GaleCave;AbundanceIsle_HarvestFields,MULTI_MAPA(2),fragmento 2 da estela da Lenora encontrado (missao The Broken Stele)
+0x11F2,4594,FLAG_ABUNDANCE_STELE_3,CUSTOM,EM_USO,4,2,4,AbundanceIsle_HarvestFields;Thunderspire_1F,MULTI_MAPA(2),fragmento 3 da estela da Lenora encontrado (missao The Broken Stele)
+0x11F3,4595,FLAG_ABUNDANCE_STELE_4,CUSTOM,EM_USO,4,2,4,AbundanceIsle_HarvestFields;FrostfallCrater_Core,MULTI_MAPA(2),fragmento 4 da estela da Lenora encontrado (missao The Broken Stele)
+0x11F4,4596,FLAG_ABUNDANCE_STELE_REWARD,CUSTOM,EM_USO,2,2,3,AbundanceIsle_HarvestFields,MAPA_UNICO:AbundanceIsle_HarvestFields,Lenora ja deu a recompensa da estela completa
+0x11F5,4597,FLAG_ABUNDANCE_SEED_1,CUSTOM,EM_USO,4,2,5,AbundanceIsle,MAPA_UNICO:AbundanceIsle,saco de sementes 1 devolvido (missao Seeds in the Storm)
+0x11F6,4598,FLAG_ABUNDANCE_SEED_2,CUSTOM,EM_USO,4,2,7,AbundanceIsle;AbundanceIsle_HarvestFields,MULTI_MAPA(2),saco de sementes 2 devolvido (missao Seeds in the Storm)
+0x11F7,4599,FLAG_ABUNDANCE_SEED_3,CUSTOM,EM_USO,4,2,7,AbundanceIsle;AbundanceIsle_HarvestFields,MULTI_MAPA(2),saco de sementes 3 devolvido (missao Seeds in the Storm)
+0x11F8,4600,FLAG_ABUNDANCE_SEED_4,CUSTOM,EM_USO,4,2,7,AbundanceIsle;AbundanceIsle_GaleShore,MULTI_MAPA(2),saco de sementes 4 devolvido (missao Seeds in the Storm)
+0x11F9,4601,FLAG_ABUNDANCE_SEED_5,CUSTOM,EM_USO,4,2,7,AbundanceIsle;AbundanceIsle_WindsweptCape,MULTI_MAPA(2),saco de sementes 5 devolvido (missao Seeds in the Storm)
+0x11FA,4602,FLAG_ABUNDANCE_SEED_6,CUSTOM,EM_USO,4,2,7,AbundanceIsle;AbundanceIsle_SpringGrove,MULTI_MAPA(2),saco de sementes 6 devolvido (missao Seeds in the Storm)
+0x11FB,4603,FLAG_ABUNDANCE_SEEDS_DONE,CUSTOM,EM_USO,2,2,3,AbundanceIsle,MAPA_UNICO:AbundanceIsle,fazendeiro recebeu os 6 sacos; abre a barraca diaria
+0x11FC,4604,FLAG_ABUNDANCE_SKYLA_PLATE,CUSTOM,EM_USO,2,2,3,AbundanceIsle_SkylaHangar,MAPA_UNICO:AbundanceIsle_SkylaHangar,Skyla ja deu a Sky Plate (missao Grounded)
+0x11FD,4605,FLAG_ABUNDANCE_STORM_GAUGE,CUSTOM,EM_USO,4,2,5,AbundanceIsle_GaleShore;ThunderRidge,MULTI_MAPA(2),Winona entregou o medidor de tempestade (missao Eye of the Storm)
+0x11FE,4606,FLAG_ABUNDANCE_STORM_DATA_DONE,CUSTOM,EM_USO,2,2,3,ThunderRidge,MAPA_UNICO:ThunderRidge,Volkner recebeu as medicoes; recompensas entregues
+0x11FF,4607,FLAG_ABUNDANCE_ZINNIA_TALE,CUSTOM,EM_USO,2,2,3,FrostfallCrater_Core,MAPA_UNICO:FrostfallCrater_Core,Zinnia contou a lenda do meteoro (Kyurem na equipe) e deu a Draco Plate
+0x1200,4608,FLAG_ABUNDANCE_CANDLE_1,CUSTOM,EM_USO,4,2,4,Thunderspire_1F;Thunderspire_2F,MULTI_MAPA(2),vela espiritual 1 da Thunderspire acesa (missao Candles of the Spire)
+0x1201,4609,FLAG_ABUNDANCE_CANDLE_2,CUSTOM,EM_USO,4,2,4,Thunderspire_1F;Thunderspire_2F,MULTI_MAPA(2),vela espiritual 2 da Thunderspire acesa (missao Candles of the Spire)
+0x1202,4610,FLAG_ABUNDANCE_CANDLE_3,CUSTOM,EM_USO,4,2,2,Thunderspire_2F,MAPA_UNICO:Thunderspire_2F,vela espiritual 3 da Thunderspire acesa (missao Candles of the Spire)
+0x1203,4611,FLAG_ABUNDANCE_CANDLE_4,CUSTOM,EM_USO,4,2,2,Thunderspire_2F,MAPA_UNICO:Thunderspire_2F,vela espiritual 4 da Thunderspire acesa (missao Candles of the Spire)
+0x1204,4612,FLAG_ABUNDANCE_CANDLES_DONE,CUSTOM,EM_USO,2,2,3,Thunderspire_2F,MAPA_UNICO:Thunderspire_2F,Allister deu a recompensa das 4 velas
+0x1205,4613,FLAG_ABUNDANCE_PLASMA_UNIFORM,CUSTOM,EM_USO,3,2,5,PlasmaFrigate_Cabins;PlasmaFrigate_Hold,MULTI_MAPA(2),jogador pegou o uniforme do Plasma no vestiario do Frigate (missao Undercover)
+0x1206,4614,FLAG_ABUNDANCE_ROSA_REWARD,CUSTOM,EM_USO,2,2,3,PlasmaFrigate_Deck,MAPA_UNICO:PlasmaFrigate_Deck,Rosa deu a recompensa depois da sala de maquinas
+0x1207,4615,FLAG_ABUNDANCE_ALDER_DONE,CUSTOM,EM_USO,2,2,3,ThunderRidge,MAPA_UNICO:ThunderRidge,Alder fez as tres perguntas e deu o Expert Belt
+0x1208,4616,FLAG_ABUNDANCE_MURAL_1,CUSTOM,EM_USO,2,2,2,TruthsandRuins_1F,MAPA_UNICO:TruthsandRuins_1F,placa de mural 1 das Truthsand Ruins lida (missao Sands of Truth)
+0x1209,4617,FLAG_ABUNDANCE_MURAL_2,CUSTOM,EM_USO,2,2,2,TruthsandRuins_1F,MAPA_UNICO:TruthsandRuins_1F,placa de mural 2 das Truthsand Ruins lida (missao Sands of Truth)
+0x120A,4618,FLAG_ABUNDANCE_MURAL_3,CUSTOM,EM_USO,2,2,4,TruthsandRuins_1F;TruthsandRuins_B1F,MULTI_MAPA(2),placa de mural 3 das Truthsand Ruins lida (missao Sands of Truth)
+0x120B,4619,FLAG_ABUNDANCE_MURAL_4,CUSTOM,EM_USO,2,2,4,TruthsandRuins_1F;TruthsandRuins_B1F,MULTI_MAPA(2),placa de mural 4 das Truthsand Ruins lida (missao Sands of Truth)
+0x120C,4620,FLAG_ABUNDANCE_MURAL_5,CUSTOM,EM_USO,2,2,5,TruthsandRuins_1F;TruthsandRuins_HallOfTruth,MULTI_MAPA(2),placa de mural 5 das Truthsand Ruins lida (missao Sands of Truth)
+0x120D,4621,FLAG_ABUNDANCE_MURALS_DONE,CUSTOM,EM_USO,2,2,3,TruthsandRuins_1F,MAPA_UNICO:TruthsandRuins_1F,Lucy deu a recompensa dos 5 murais
+0x120E,4622,FLAG_ABUNDANCE_GARDEN_DONE,CUSTOM,EM_USO,2,2,3,AbundanceIsle_SpringGrove,MAPA_UNICO:AbundanceIsle_SpringGrove,Ramos deu a recompensa do jardim (3 dias regando)
+0x120F,4623,FLAG_ABUNDANCE_ROCKET_REWARD,CUSTOM,EM_USO,2,2,3,PlasmaFrigate_Deck,MAPA_UNICO:PlasmaFrigate_Deck,Jessie e James largaram o Amulet Coin depois da batalha final
+0x1210,4624,FLAG_ABUNDANCE_N_LETTER,CUSTOM,EM_USO,2,2,3,AbundanceIsle_KeeperHouse,MAPA_UNICO:AbundanceIsle_KeeperHouse,jogador leu a carta do N na casa do guardiao
+0x1211,4625,FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_1F_COMET_SHARD,CUSTOM,EM_USO,0,0,5,FrostfallCrater_1F,MAPA_UNICO:FrostfallCrater_1F,Comet Shard escondido na Frostfall Crater 1F (missao Frozen Stars); setada pelo item escondido
+0x1212,4626,FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_B1F_COMET_SHARD,CUSTOM,EM_USO,0,0,5,FrostfallCrater_B1F,MAPA_UNICO:FrostfallCrater_B1F,Comet Shard escondido na Frostfall Crater B1F (missao Frozen Stars); setada pelo item escondido
+0x1213,4627,FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_LAB_COMET_SHARD,CUSTOM,EM_USO,0,0,5,FrostfallCrater_Lab,MAPA_UNICO:FrostfallCrater_Lab,Comet Shard escondido na Frostfall Crater LAB (missao Frozen Stars); setada pelo item escondido
 0x1500,5376,FLAG_0x1500,LIVRE,NUNCA_REFERENCIADA,0,0,0,,,
 0x1508,5384,FLAG_ROUTE32_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route32,MAPA_UNICO:HiddenGrotto_Route32,
 0x1509,5385,FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY,DAILY,EM_USO,4,4,5,,GLOBAL(codigo),
@@ -1934,14 +2059,14 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x1510,5392,FLAG_ROUTE33_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route33,MAPA_UNICO:HiddenGrotto_Route33,
 0x1511,5393,FLAG_ROUTE44_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route44,MAPA_UNICO:HiddenGrotto_Route44,
 0x1512,5394,FLAG_DAILY_PICKED_LOTO_TICKET,DAILY,EM_USO,4,4,7,GoldenrodCity_RadioTower_1F,GLOBAL(codigo),
-0x1513,5395,FLAG_DAILY_ROUTE_114_RECEIVED_BERRY,DAILY,EM_USO,1,1,4,,GLOBAL(codigo),livre desde 24/09/2026
-0x1514,5396,FLAG_DAILY_ROUTE_111_RECEIVED_BERRY,DAILY,EM_USO,1,1,4,,GLOBAL(codigo),livre desde 24/09/2026
+0x1513,5395,FLAG_DAILY_ABUNDANCE_FARM_STAND,DAILY,EM_USO,2,2,3,AbundanceIsle,MAPA_UNICO:AbundanceIsle,barraca da fazenda da Abundance Isle (missao Seeds in the Storm): uma baga por dia (desde 30/10/2026)
+0x1514,5396,FLAG_DAILY_ABUNDANCE_NEMONA,DAILY,EM_USO,2,2,3,AbundanceIsle_PokemonCenter,MAPA_UNICO:AbundanceIsle_PokemonCenter,revanche diaria da Nemona (Pokemon Center da Windswept Cape) (desde 30/10/2026)
 0x1515,5397,FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY,DAILY,EM_USO,5,5,10,Route30_House,GLOBAL(codigo),
-0x1516,5398,FLAG_DAILY_ROUTE_120_RECEIVED_BERRY,DAILY,EM_USO,1,1,4,,GLOBAL(codigo),livre desde 24/09/2026
-0x1517,5399,FLAG_DAILY_LILYCOVE_RECEIVED_BERRY,DAILY,EM_USO,1,1,4,,GLOBAL(codigo),livre desde 24/09/2026
+0x1516,5398,FLAG_DAILY_ABUNDANCE_ARENA,DAILY,EM_USO,12,10,4,AbundanceIsle_FestivalArena,GLOBAL(codigo),desafiante do dia da Festival Arena ja foi enfrentado (desde 30/10/2026)
+0x1517,5399,FLAG_DAILY_ABUNDANCE_GARDEN,DAILY,EM_USO,2,2,3,AbundanceIsle_SpringGrove,MAPA_UNICO:AbundanceIsle_SpringGrove,canteiros do Spring Grove ja regados hoje (missao The Herald's Garden) (desde 30/10/2026)
 0x1518,5400,FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY,DAILY,EM_USO,3,3,6,GoldenrodCity_FlowerShop,GLOBAL(codigo),
 0x1519,5401,FLAG_DAILY_BERRY_MASTERS_WIFE,DAILY,EM_USO,3,4,10,Route30_House,GLOBAL(codigo),"Route 30 Berry Master's wife: one rare Berry a day, post-Hall of Fame (.claude/KURT_BALL_CRAFT_DESIGN.md section 5.4). Was allocated and never used by anything"
-0x151A,5402,FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY,DAILY,EM_USO,1,1,4,,GLOBAL(codigo),livre desde 24/09/2026
+0x151A,5402,FLAG_DAILY_ABUNDANCE_DUO,DAILY,EM_USO,2,2,3,ShrineOfTheFirstDragon,MAPA_UNICO:ShrineOfTheFirstDragon,revanche diaria de N e Hilda no Shrine of the First Dragon (desde 30/10/2026)
 0x151B,5403,FLAG_LAKEOFRAGE_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Lakeofrage,MAPA_UNICO:HiddenGrotto_Lakeofrage,
 0x151C,5404,FLAG_DAILY_APPRENTICE_LEAVES,DAILY,EM_USO,6,2,9,BattleFrontier_BattleTowerLobby,GLOBAL(codigo),
 0x151D,5405,FLAG_ROUTE47_GROTTO,DAILY,EM_USO,0,16,3,HiddenGrotto_Route47,MAPA_UNICO:HiddenGrotto_Route47,
@@ -1976,8 +2101,8 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x153A,5434,FLAG_DAILY_GARDEN_NEW_DAY,DAILY,EM_USO,2,7,5,,GLOBAL(codigo),VAR_GARDEN_TODAY already reset today (GardenRollDay)
 0x153B,5435,FLAG_UNUSED_0x953,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
 0x153C,5436,FLAG_DAILY_DAISY_GROOMED,DAILY,EM_USO,2,2,5,PalletTown_House2,GLOBAL(codigo),Daisy (Pallet Town House 2) groomed a Pokemon today. Set by PalletTown_House2_EventScript_DaisyGrooming
-0x153D,5437,FLAG_UNUSED_0x955,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
-0x153E,5438,FLAG_UNUSED_0x956,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
+0x153D,5437,FLAG_DAILY_ABUNDANCE_OFFERING,DAILY,EM_USO,2,2,3,AbundanceIsle,MAPA_UNICO:AbundanceIsle,oferenda de sabado no santuario do hub da Abundance Isle ja deu o item de hoje (desde 31/10/2026)
+0x153E,5438,FLAG_DAILY_ABUNDANCE_STORM_ROLLED,DAILY,EM_USO,4,4,6,AbundanceIsle_GaleShore;ThunderRidge,GLOBAL(codigo),tempestade de hoje da Abundance Isle ja sorteada em VAR_ABUNDANCE_STORM (desde 31/10/2026)
 0x153F,5439,FLAG_UNUSED_0x957,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
 0x1540,5440,FLAG_UNUSED_0x958,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag
 0x1541,5441,FLAG_UNUSED_0x959,DAILY,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag

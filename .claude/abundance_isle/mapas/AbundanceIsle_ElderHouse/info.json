@@ -1,0 +1,104 @@
+{
+ "map": "AbundanceIsle_ElderHouse",
+ "ingame": "Elder's House",
+ "primary": "gTileset_Johto_Building",
+ "secondary": "gTileset_House_Lab",
+ "map_type": "MAP_TYPE_INDOOR",
+ "warps": [
+  {
+   "x": 4,
+   "y": 8,
+   "dest_map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+   "dest_warp_id": "4",
+   "nota": "porta da casa 2 da Windswept Cape (14,23)"
+  }
+ ],
+ "connections": [],
+ "bg_events": [
+  {
+   "type": "sign",
+   "x": 0,
+   "y": 1,
+   "script": "ElderHouse_EventScript_BookYearWithoutHarvest",
+   "nota": "\"The Year Without Harvest\": a estrela gelada que caiu no mar e o inverno que durou um verão inteiro"
+  },
+  {
+   "type": "sign",
+   "x": 7,
+   "y": 1,
+   "script": "ElderHouse_EventScript_BookForcesOfNature",
+   "nota": "livro dos gênios do vento e do trovão e do Senhor da Terra Fértil"
+  },
+  {
+   "type": "sign",
+   "x": 9,
+   "y": 1,
+   "script": "ElderHouse_EventScript_BookHeraldOfSpring",
+   "nota": "o Arauto da Primavera que vem pelo mar"
+  },
+  {
+   "type": "sign",
+   "x": 10,
+   "y": 7,
+   "script": "ElderHouse_EventScript_BellRope",
+   "nota": "corda do sino (só texto: o sino fica no telhado)"
+  }
+ ],
+ "explorar": [
+  "O ancião conta \"The Year Without Harvest\": há muito tempo uma estrela gelada caiu no mar perto da ilha e um inverno durou o verão inteiro; desde então ninguém anda nos campos em noite de neve (eco de Lacunosa e do meteorito do Kyurem).",
+  "Às 18h ele não está à mesa: fica junto à corda do sino (ELDER_BELL) e toca o sino do cabo; quem fala com ele nessa hora ouve por que o sino avisa a noite.",
+  "Três estantes com livros de lore lidos como placas: o ano sem colheita, os gênios do vento e do trovão e o Senhor da Terra Fértil, e o Arauto da Primavera.",
+  "A neta conta que viu \"olhos amarelos\" no gelo da cratera (pista do Kyurem, sem spoiler)."
+ ],
+ "historia": "Casa do ancião do cabo. Liga o inverno do Ghetsis à lenda antiga da estrela gelada: a ilha já viveu isso antes, e é assim que o jogador entende de onde vem o frio da Frostfall Crater.",
+ "estados": {
+  "dia": "De dia: ancião à mesa com o livro aberto, neta perto da estante. (ELDER e ELDER_BELL são o mesmo NPC em horários diferentes.)"
+ },
+ "conferido": "Layout de EcruteakCity_House2 com duas estantes extras (peças 13d/13e/145/146/14d/14e da própria casa); BFS da porta até NPCs e às 4 placas; check_objects.",
+ "w": 13,
+ "h": 10,
+ "objects": [
+  {
+   "local_id": "ELDER",
+   "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+   "x": 5,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "ElderHouse_EventScript_Elder",
+   "flag": "0"
+  },
+  {
+   "local_id": "GRANDDAUGHTER",
+   "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+   "x": 2,
+   "y": 6,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "ElderHouse_EventScript_Granddaughter",
+   "flag": "0"
+  },
+  {
+   "local_id": "ELDER_BELL",
+   "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+   "x": 9,
+   "y": 7,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "ElderHouse_EventScript_ElderBellTime",
+   "flag": "0"
+  }
+ ]
+}

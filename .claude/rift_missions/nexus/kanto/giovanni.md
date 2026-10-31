@@ -146,6 +146,11 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Lendário associado
 
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Landorus Incarnate** — `Nexus_EventScript_Giovanni_Landorus_ChampionFight` (falas `Nexus_Text_Giovanni_Landorus_Champion*`)
+
+
 **Mewtwo** ou **Genesect** — exemplo aprovado no design (`SOULGOLD_RIFT_MISSIONS_DESIGN.md` §10, "Estrutura do loop": "Giovanni podendo anteceder Mewtwo ou Genesect"). Aprovado só como associação; nada implementado. As fichas abaixo são a proposta de fragmento e falas para cada um.
 
 #### Mewtwo

@@ -47,6 +47,49 @@ OlivineCity_PortOutside_Text_PortFisherman1:
 
 OlivineCity_PortOutside_Text_Fisherman2:
 	.string "Aw yeah, I'm fishin'.$"
+
+@ Barco para a Abundance Isle (depois da Liga). Volta pelo marinheiro do cais da ilha.
+OlivineCity_PortOutside_EventScript_AbundanceSailor::
+	lock
+	faceplayer
+	goto_if_unset FLAG_SYS_GAME_CLEAR, OlivineCity_PortOutside_EventScript_AbundanceSailorNotYet
+	msgbox OlivineCity_PortOutside_Text_AbundanceSailorOffer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, OlivineCity_PortOutside_EventScript_AbundanceSailorNo
+	msgbox OlivineCity_PortOutside_Text_AbundanceSailorGo, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_ABUNDANCE_ISLE, 23, 49
+	waitstate
+	release
+	end
+
+OlivineCity_PortOutside_EventScript_AbundanceSailorNotYet::
+	msgbox OlivineCity_PortOutside_Text_AbundanceSailorNotYet, MSGBOX_DEFAULT
+	release
+	end
+
+OlivineCity_PortOutside_EventScript_AbundanceSailorNo::
+	msgbox OlivineCity_PortOutside_Text_AbundanceSailorNo, MSGBOX_DEFAULT
+	release
+	end
+
+OlivineCity_PortOutside_Text_AbundanceSailorNotYet:
+	.string "There's a farming island far to the\n"
+	.string "south called Abundance Isle.\p"
+	.string "Only League Champions get a seat\n"
+	.string "on my boat, though. Rules are rules!$"
+
+OlivineCity_PortOutside_Text_AbundanceSailorOffer:
+	.string "Word is Abundance Isle got snow\n"
+	.string "in the middle of harvest season...\p"
+	.string "Want me to take you there?$"
+
+OlivineCity_PortOutside_Text_AbundanceSailorGo:
+	.string "Hold on tight! Next stop,\n"
+	.string "Abundance Isle!$"
+
+OlivineCity_PortOutside_Text_AbundanceSailorNo:
+	.string "Come back anytime. The boat's\n"
+	.string "always ready for a Champion.$"
 `
 
 script OlivinePortFisher {

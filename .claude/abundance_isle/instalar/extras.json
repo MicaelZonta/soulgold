@@ -1,0 +1,653 @@
+{
+ "extras": {
+  "AbundanceIsle": {
+   "bg": [
+    {
+     "type": "sign",
+     "x": 9,
+     "y": 21,
+     "elevation": 0,
+     "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+     "script": "X_EventScript_Offering"
+    },
+    {
+     "type": "sign",
+     "x": 11,
+     "y": 21,
+     "elevation": 0,
+     "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+     "script": "X_EventScript_Offering"
+    }
+   ],
+   "objects": [
+    {
+     "local_id": "SEED_1",
+     "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
+     "x": 34,
+     "y": 27,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Seed1",
+     "flag": "FLAG_ABUNDANCE_SEED_1",
+     "keep_flag": true
+    },
+    {
+     "local_id": "JESSIE_STAND",
+     "graphics_id": "OBJ_EVENT_GFX_JESSIE",
+     "x": 34,
+     "y": 25,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_HonestStand",
+     "flag": "0"
+    },
+    {
+     "local_id": "JAMES_STAND",
+     "graphics_id": "OBJ_EVENT_GFX_JAMES",
+     "x": 35,
+     "y": 25,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_HonestStand",
+     "flag": "0"
+    }
+   ]
+  },
+  "AbundanceIsle_HarvestFields": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "STELE_1",
+     "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
+     "x": 12,
+     "y": 33,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Stele1",
+     "flag": "0",
+     "keep_flag": true
+    },
+    {
+     "local_id": "SEED_2",
+     "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
+     "x": 14,
+     "y": 20,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Seed2",
+     "flag": "FLAG_ABUNDANCE_SEED_2",
+     "keep_flag": true
+    },
+    {
+     "local_id": "SEED_3",
+     "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
+     "x": 24,
+     "y": 21,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Seed3",
+     "flag": "FLAG_ABUNDANCE_SEED_3",
+     "keep_flag": true
+    }
+   ]
+  },
+  "AbundanceIsle_GaleCave": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "STELE_2",
+     "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
+     "x": 10,
+     "y": 16,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Stele2",
+     "flag": "0",
+     "keep_flag": true
+    }
+   ]
+  },
+  "THUNDERSPIRE_1F": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "STELE_3",
+     "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
+     "x": 11,
+     "y": 21,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Stele3",
+     "flag": "0",
+     "keep_flag": true
+    },
+    {
+     "local_id": "CANDLE_LIT_1",
+     "graphics_id": "OBJ_EVENT_GFX_SPIRIT_CANDLE_LIT",
+     "x": 6,
+     "y": 7,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Candle1",
+     "flag": "0"
+    },
+    {
+     "local_id": "CANDLE_1",
+     "graphics_id": "OBJ_EVENT_GFX_SPIRIT_CANDLE",
+     "x": 6,
+     "y": 7,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Candle1",
+     "flag": "FLAG_ABUNDANCE_CANDLE_1",
+     "keep_flag": true
+    },
+    {
+     "local_id": "CANDLE_LIT_2",
+     "graphics_id": "OBJ_EVENT_GFX_SPIRIT_CANDLE_LIT",
+     "x": 19,
+     "y": 21,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Candle2",
+     "flag": "0"
+    },
+    {
+     "local_id": "CANDLE_2",
+     "graphics_id": "OBJ_EVENT_GFX_SPIRIT_CANDLE",
+     "x": 19,
+     "y": 21,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Candle2",
+     "flag": "FLAG_ABUNDANCE_CANDLE_2",
+     "keep_flag": true
+    }
+   ]
+  },
+  "FROSTFALL_CRATER_CORE": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "STELE_4",
+     "graphics_id": "OBJ_EVENT_GFX_DEOXYS_TRIANGLE",
+     "x": 20,
+     "y": 8,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Stele4",
+     "flag": "0",
+     "keep_flag": true
+    }
+   ]
+  },
+  "AbundanceIsle_GaleShore": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "SEED_4",
+     "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
+     "x": 16,
+     "y": 12,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Seed4",
+     "flag": "FLAG_ABUNDANCE_SEED_4",
+     "keep_flag": true
+    }
+   ]
+  },
+  "AbundanceIsle_WindsweptCape": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "SEED_5",
+     "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
+     "x": 12,
+     "y": 26,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Seed5",
+     "flag": "FLAG_ABUNDANCE_SEED_5",
+     "keep_flag": true
+    }
+   ]
+  },
+  "AbundanceIsle_SpringGrove": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "SEED_6",
+     "graphics_id": "OBJ_EVENT_GFX_BIRCHS_BAG",
+     "x": 7,
+     "y": 23,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Seed6",
+     "flag": "FLAG_ABUNDANCE_SEED_6",
+     "keep_flag": true
+    }
+   ]
+  },
+  "THUNDERSPIRE_2F": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "CANDLE_LIT_3",
+     "graphics_id": "OBJ_EVENT_GFX_SPIRIT_CANDLE_LIT",
+     "x": 4,
+     "y": 19,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Candle3",
+     "flag": "0"
+    },
+    {
+     "local_id": "CANDLE_3",
+     "graphics_id": "OBJ_EVENT_GFX_SPIRIT_CANDLE",
+     "x": 4,
+     "y": 19,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Candle3",
+     "flag": "FLAG_ABUNDANCE_CANDLE_3",
+     "keep_flag": true
+    },
+    {
+     "local_id": "CANDLE_LIT_4",
+     "graphics_id": "OBJ_EVENT_GFX_SPIRIT_CANDLE_LIT",
+     "x": 26,
+     "y": 10,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Candle4",
+     "flag": "0"
+    },
+    {
+     "local_id": "CANDLE_4",
+     "graphics_id": "OBJ_EVENT_GFX_SPIRIT_CANDLE",
+     "x": 26,
+     "y": 10,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Candle4",
+     "flag": "FLAG_ABUNDANCE_CANDLE_4",
+     "keep_flag": true
+    }
+   ]
+  },
+  "TRUTHSAND_RUINS_1F": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "MURAL_1",
+     "graphics_id": "OBJ_EVENT_GFX_MURAL_OBELISK",
+     "x": 16,
+     "y": 7,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Mural1",
+     "flag": "0",
+     "keep_flag": true
+    },
+    {
+     "local_id": "MURAL_2",
+     "graphics_id": "OBJ_EVENT_GFX_MURAL_OBELISK",
+     "x": 30,
+     "y": 9,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Mural2",
+     "flag": "0",
+     "keep_flag": true
+    }
+   ]
+  },
+  "TRUTHSAND_RUINS_B1F": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "MURAL_3",
+     "graphics_id": "OBJ_EVENT_GFX_MURAL_OBELISK",
+     "x": 8,
+     "y": 8,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Mural3",
+     "flag": "0",
+     "keep_flag": true
+    },
+    {
+     "local_id": "MURAL_4",
+     "graphics_id": "OBJ_EVENT_GFX_MURAL_OBELISK",
+     "x": 14,
+     "y": 15,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_NONE",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_Mural4",
+     "flag": "0",
+     "keep_flag": true
+    }
+   ]
+  },
+  "AbundanceIsle_PokemonCenter": {
+   "bg": [
+    {
+     "type": "sign",
+     "x": 3,
+     "y": 1,
+     "elevation": 0,
+     "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+     "script": "X_EventScript_NoticeBoard"
+    }
+   ],
+   "objects": []
+  },
+  "FROSTFALL_CRATER_1F": {
+   "bg": [
+    {
+     "type": "hidden_item",
+     "x": 20,
+     "y": 20,
+     "elevation": 0,
+     "item": "ITEM_COMET_SHARD",
+     "flag": "FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_1F_COMET_SHARD",
+     "quantity": 1
+    }
+   ],
+   "objects": []
+  },
+  "FROSTFALL_CRATER_B1F": {
+   "bg": [
+    {
+     "type": "hidden_item",
+     "x": 24,
+     "y": 26,
+     "elevation": 0,
+     "item": "ITEM_COMET_SHARD",
+     "flag": "FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_B1F_COMET_SHARD",
+     "quantity": 1
+    }
+   ],
+   "objects": []
+  },
+  "FROSTFALL_CRATER_LAB": {
+   "bg": [
+    {
+     "type": "hidden_item",
+     "x": 8,
+     "y": 19,
+     "elevation": 0,
+     "item": "ITEM_COMET_SHARD",
+     "flag": "FLAG_HIDDEN_ITEM_FROSTFALL_CRATER_LAB_COMET_SHARD",
+     "quantity": 1
+    }
+   ],
+   "objects": []
+  },
+  "AbundanceIsle_Barn": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "JESSIE",
+     "graphics_id": "OBJ_EVENT_GFX_JESSIE",
+     "x": 9,
+     "y": 15,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_JessieBarn",
+     "flag": "0"
+    },
+    {
+     "local_id": "JAMES",
+     "graphics_id": "OBJ_EVENT_GFX_JAMES",
+     "x": 10,
+     "y": 15,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_JessieBarn",
+     "flag": "0"
+    }
+   ]
+  },
+  "PLASMA_FRIGATE_DECK": {
+   "bg": [],
+   "objects": [
+    {
+     "local_id": "JESSIE",
+     "graphics_id": "OBJ_EVENT_GFX_JESSIE",
+     "x": 20,
+     "y": 18,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_JessieDeck",
+     "flag": "0"
+    },
+    {
+     "local_id": "JAMES",
+     "graphics_id": "OBJ_EVENT_GFX_JAMES",
+     "x": 21,
+     "y": 18,
+     "elevation": 3,
+     "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+     "movement_range_x": 0,
+     "movement_range_y": 0,
+     "trainer_type": "TRAINER_TYPE_NONE",
+     "trainer_sight_or_berry_tree_id": "0",
+     "script": "X_EventScript_JessieDeck",
+     "flag": "0"
+    }
+   ]
+  }
+ },
+ "vis": {
+  "AbundanceIsle_HarvestFields": {
+   "FLAG_TEMP_15": [
+    "rocket0",
+    [
+     "JESSIE",
+     "JAMES"
+    ]
+   ],
+   "FLAG_TEMP_1E": [
+    "notnight",
+    []
+   ]
+  },
+  "AbundanceIsle_Barn": {
+   "FLAG_TEMP_11": [
+    "rocket1",
+    [
+     "JESSIE",
+     "JAMES"
+    ]
+   ]
+  },
+  "PLASMA_FRIGATE_DECK": {
+   "FLAG_TEMP_11": [
+    "rocket2",
+    [
+     "JESSIE",
+     "JAMES"
+    ]
+   ]
+  },
+  "PLASMA_FRIGATE_HOLD": {
+   "FLAG_TEMP_11": [
+    "nouniform",
+    [
+     "ENGINE_GUARD"
+    ]
+   ]
+  },
+  "AbundanceIsle_FestivalArena": {
+   "FLAG_TEMP_15": [
+    "sat14",
+    [
+     "SAT_N",
+     "SAT_HILDA"
+    ]
+   ],
+   "FLAG_TEMP_16": [
+    "notsat",
+    [
+     "SEAT_LEFT_1",
+     "SEAT_LEFT_2",
+     "SEAT_RIGHT_1",
+     "SEAT_RIGHT_2"
+    ]
+   ]
+  },
+  "AbundanceIsle": {
+   "FLAG_TEMP_15": [
+    "rocketsat",
+    [
+     "JESSIE_STAND",
+     "JAMES_STAND"
+    ]
+   ]
+  },
+  "AbundanceIsle_WindsweptCape": {
+   "FLAG_TEMP_1E": [
+    "notnight",
+    []
+   ]
+  },
+  "THUNDERSPIRE_1F": {
+   "FLAG_TEMP_1A": [
+    "flag:FLAG_ABUNDANCE_CANDLE_1",
+    [
+     "CANDLE_LIT_1"
+    ]
+   ],
+   "FLAG_TEMP_1B": [
+    "flag:FLAG_ABUNDANCE_CANDLE_2",
+    [
+     "CANDLE_LIT_2"
+    ]
+   ]
+  },
+  "THUNDERSPIRE_2F": {
+   "FLAG_TEMP_1A": [
+    "flag:FLAG_ABUNDANCE_CANDLE_3",
+    [
+     "CANDLE_LIT_3"
+    ]
+   ],
+   "FLAG_TEMP_1B": [
+    "flag:FLAG_ABUNDANCE_CANDLE_4",
+    [
+     "CANDLE_LIT_4"
+    ]
+   ]
+  }
+ }
+}

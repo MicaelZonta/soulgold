@@ -4,7 +4,7 @@ Inventário das formas alternativas e dos itens de forma do SoulGold. Existe
 para duas coisas: saber **onde** cada forma se consegue hoje, e lembrar quais
 fontes são **provisórias** e ainda esperam um lugar ou evento definitivo.
 
-Atualizado em 27/10/2026. Ao mudar uma fonte, mude aqui, rode o site
+Atualizado em 30/10/2026 (Abundance Isle: Zekrom, Reshiram, Tornadus, Thundurus, Landorus, Enamorus, DNA Splicers e Reveal Glass ganharam fonte de verdade). Ao mudar uma fonte, mude aqui, rode o site
 (`~/.venvs/soulgold-docs/bin/python tools/soulgold_docs/build_docs.py`) e
 confira que a forma não voltou a aparecer "sem fonte".
 
@@ -34,8 +34,8 @@ de nome mais curto; saída de `dev_scripts/fontes_legitimas.py`):
 
 | Só vem de | Quantas | Quem |
 |---|---|---|
-| Nexus | 29 | UBs (Blacephalon, Buzzwole, Kartana, Xurkitree), Eternatus, Heatran, Pecharunt, Reshiram, Zekrom, Xerneas, Yveltal, Zacian, Zamazenta, Chi-Yu — e as formas por item que só o Nexus dá: Deoxys Attack/Defense/Speed, Kyurem Black/White, Calyrex Ice/Shadow Rider, Zygarde 10%/50% e Power Construct, os quatro Drives do Genesect |
-| Battle Cafe (e Nexus) | 9 | o quarteto das Forças da Natureza (Incarnate e Therian) e Diancie |
+| Nexus | 25 | UBs (Blacephalon, Buzzwole, Kartana, Xurkitree), Eternatus, Heatran, Pecharunt, Xerneas, Yveltal, Zacian, Zamazenta, Chi-Yu — e as formas por item que só o Nexus dá: Deoxys Attack/Defense/Speed, Calyrex Ice/Shadow Rider, Zygarde 10%/50% e Power Construct, os quatro Drives do Genesect |
+| Battle Cafe (e Nexus) | 1 | Diancie |
 | Troféus (Route 40) | 5 | Floette Eternal, Greninja (Battle Bond), Magearna Original, Poipole, Zarude |
 | Gachapon | 2 | Togepi, Gimmighoul Roaming |
 | Game Corner + Gachapon | 1 | Porygon |
@@ -47,6 +47,8 @@ Fuchsia, Pichu de orelha espetada, Clamperl, Remoraid, Sentret, Cleffa, Lotad,
 Seedot, Spinda, Castform e Relicanth ganharam encontro de verdade). Saíram
 também do Café: aves de Galar, os quatro Tapus, Koraidon e Miraidon.
 
+**31/10/2026:** a Abundance Isle deu fonte selvagem aos três presos ao Gachapon: Togetic no Spring Grove (cria Togepi), Gimmighoul Roaming no Sunken Truth Ship e Porygon2 na sala de máquinas do Plasma Frigate (cria Porygon).
+
 Ao criar evento, rota ou NPC novo, olhe esta tabela: é o estoque de espécies
 esperando um lugar.
 
@@ -54,11 +56,18 @@ esperando um lugar.
 
 | O quê | Fonte hoje | O que o autor quer |
 |---|---|---|
-| **DNA Splicers** (Kyurem Black/White) | drop do Nexus quando o boss é Kyurem (NEXUS_REGRAS R22) | um **lugar certo** no mundo |
 | **Sinistea Antique / Poltchageist Artisan** | colecionadora de chá, casa 3 de Kitakami (¥20.000 cada, Lv 30) | um **evento** no lugar da loja |
-| **Gimmighoul Roaming** | Gachapon Great, Rare | "for now" — pode ganhar fonte própria |
+| **Gimmighoul Roaming** | Gachapon Great, Rare; **selvagem no Sunken Truth Ship (Abundance Isle, 31/10/2026)** | resolvido pela ilha; o Gachapon fica como fonte extra |
 | **Pichu Spiky-eared** | Gachapon Basic, Ultra Rare | — |
 | **Gigantatite** (a "Mega" das Gmax de 21 espécies: Venusaur, Charizard, Blastoise, Pikachu, Meowth, Gengar, Kingler, Eevee, Garbodor, Melmetal, Orbeetle, Drednaw, Coalossal, Flapple, Appletun, Hatterene, Grimmsnarl, Alcremie, Copperajah, Duraludon, Urshifu Single Strike) | Elm entrega junto com a Bondstone (`NewBarkTown_Lab_GiveStarterMega`, depois do Mega Ring). Save que já passou dessa cena não recebe | **repensar no futuro**: ideia do autor (29/09/2026) é uma **GMAX Adventure com o Leon**, provavelmente a fonte definitiva da Gigantatite |
+
+## Itens de evolução: todos à venda (31/10/2026)
+
+Pedido do autor: todo item de evolução disponível **de forma infinita**. Os 53 itens usados em evoluções
+(`EVO_ITEM*`, troca segurando, `IF_HOLD_ITEM`) têm loja. Os 19 que só tinham fonte única (chão, presente, troca)
+entraram no **Stone Merchant da Indigo Plateau** (`IndigoPlateau_StoneMerchantMart`): Oval Stone, Razor Claw,
+Razor Fang, Electirizer, Magmarizer, Protector, Reaper Cloth, Deep Sea Tooth/Scale, Prism Scale, Metal Alloy,
+Leader's Crest e os 7 Sweets da Alcremie. Conferir de novo depois de mexer em evoluções ou lojas.
 
 ## Itens de forma
 
@@ -66,7 +75,8 @@ esperando um lugar.
 |---|---|---|---|
 | Memories (17) | Silvally de cada tipo | revanche semanal do Gladion em Cianwood (ter/qua/sáb, estado ≥ 16): cada vitória dá uma Memory que o jogador ainda não tem, sorteada | `CianwoodCity_EventScript_PostGladionMemory` |
 | Drives (4) | Genesect Douse/Shock/Burn/Chill | Nexus, boss Genesect: um Drive que falta, 1 por dia | `Nexus_EventScript_Genesect_AfterBoss` |
-| DNA Splicers | Kyurem Black/White | Nexus, boss Kyurem (**provisório**) | `Nexus_EventScript_Kyurem_AfterBoss` |
+| DNA Splicers | Kyurem Black/White | **Abundance Isle** (30/10/2026): o N entrega no Thunderspire Summit depois do Zekrom; o drop do Nexus (boss Kyurem) continua como fonte extra | `Thunderspire_Summit_EventScript_NAfter`, `Nexus_EventScript_Kyurem_AfterBoss` |
+| Reveal Glass | Formas Therian das quatro Forças | **Abundance Isle**: o guardião do santuário entrega depois do Landorus; o Battle Café continua dando | `AbundanceIsle_EventScript_KeeperGlass` |
 | Zygarde Cube | Zygarde 10% / Power Construct | Nexus, boss Zygarde, uma vez | `Nexus_EventScript_Zygarde_AfterBoss` |
 | N-Solarizer / N-Lunarizer | Necrozma Dusk Mane / Dawn Wings | revanche diária da Lusamine no Altar (seg/qua/sáb): 1ª vitória dá o Solarizer, a seguinte o Lunarizer, cada um com fala própria | `SunMoonAltar_EventScript_LusamineFusionItem` |
 | Reins of Unity | Calyrex Ice/Shadow Rider (fundindo com Glastrier/Spectrier, que também vêm do Nexus) | Nexus, boss Calyrex, enquanto não tiver | `Nexus_EventScript_Calyrex_AfterBoss` |

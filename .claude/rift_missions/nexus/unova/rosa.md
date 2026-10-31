@@ -6,17 +6,17 @@ Aparece no checklist como:
 
 - **Rosa** (Unova · Rivais) — protagonista feminina de *Black 2/White 2*.
 
-**Pronto para o Nexus:** ✅ sim — tem sprite e battle sprite (03/10/2026). Falta o time e as falas irem para o código.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_ROSA`, 03/10/2026
 - [x] Battle sprite / front pic *(obrigatório)* — `TRAINER_PIC_FRONT_ROSA` (64x64 + 80x80), 03/10/2026
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido
-- [ ] Associado a um lendário
-- [ ] Diálogo genérico escrito
-- [ ] Diálogo associado ao lendário escrito
+- [x] Time para as Rift Missions definido
+- [x] Associado a um lendário
+- [x] Diálogo genérico escrito
+- [x] Diálogo associado ao lendário escrito
 
 ## Referências no repositório
 
@@ -46,15 +46,107 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-_Não definido._
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_ROSA` = **1209** (bloco 2, flag `0xB2D`), luta genérica `Nexus_EventScript_Rosa_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
+
+```
+=== TRAINER_NEXUS_ROSA ===
+Name: Rosa
+Class: Pkmn Trainer 1
+Pic: Rosa
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Smart Trainer
+
+Reshiram @ Life Orb
+Modest Nature
+Level: 100
+Ability: Turboblaze
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Blue Flare
+- Draco Meteor
+- Heat Wave
+- Earth Power
+
+Virizion @ Life Orb
+Jolly Nature
+Level: 100
+Ability: Justified
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Leaf Blade
+- Close Combat
+- Stone Edge
+- Protect
+
+Lucario @ Fightite
+Jolly Nature
+Level: 100
+Ability: Justified
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Close Combat
+- Meteor Mash
+- Extreme Speed
+- Swords Dance
+
+Serperior @ Life Orb
+Timid Nature
+Level: 100
+Ability: Contrary
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Leaf Storm
+- Dragon Pulse
+- Glare
+- Substitute
+
+Chandelure @ Choice Scarf
+Modest Nature
+Level: 100
+Ability: Flash Fire
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Shadow Ball
+- Heat Wave
+- Energy Ball
+- Trick
+
+Braviary @ Sharp Beak
+Adamant Nature
+Level: 100
+Ability: Defiant
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
+- Brave Bird
+- Close Combat
+- Tailwind
+- Rock Slide
+```
 
 ### Lendário associado
 
-_Nenhum ainda._
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Reshiram** — `Nexus_EventScript_Rosa_Reshiram_ChampionFight` (falas `Nexus_Text_Rosa_Reshiram_Champion*`)
+- **Virizion** — `Nexus_EventScript_Rosa_Virizion_ChampionFight` (falas `Nexus_Text_Rosa_Virizion_Champion*`)
+- **Meloetta** — `Nexus_EventScript_Rosa_Meloetta_ChampionFight` (falas `Nexus_Text_Rosa_Meloetta_Champion*`)
+
 
 ### Diálogo genérico
 
-_Não escrito._ (texto do jogo em inglês)
+✅ **Implementado em 31/10/2026:** `Nexus_Text_Rosa_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
+
+**Antes da luta**
+
+> I'm Rosa! I've tried smiling for the camera, but my team always knows when I'm faking it.
+>
+> A battle gets a real smile out of me. Let's see if it does the same for you!
+
+**Derrota**
+
+> There it is! Even after a loss, I can't stop smiling!
 
 ### Diálogo associado ao lendário
 

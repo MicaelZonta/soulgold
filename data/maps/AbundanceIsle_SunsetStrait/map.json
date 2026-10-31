@@ -1,0 +1,199 @@
+{
+  "id": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT",
+  "name": "AbundanceIsle_SunsetStrait",
+  "layout": "LAYOUT_ABUNDANCE_ISLE_SUNSET_STRAIT",
+  "music": "MUS_HG_ROUTE38",
+  "region_map_section": "MAPSEC_SUNSET_STRAIT",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_ABUNDANCE_ISLE_HARVEST_FIELDS",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_EMBERDUNE_ISLE",
+      "offset": 0,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER",
+      "offset": 0,
+      "direction": "dive"
+    }
+  ],
+  "object_events": [
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_1",
+      "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M_WATER",
+      "x": 12,
+      "y": 6,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "AbundanceIsle_SunsetStrait_EventScript_Swimmer1",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_2",
+      "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F_WATER",
+      "x": 26,
+      "y": 10,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "AbundanceIsle_SunsetStrait_EventScript_Swimmer2",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_3",
+      "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M_WATER",
+      "x": 6,
+      "y": 28,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "AbundanceIsle_SunsetStrait_EventScript_Swimmer3",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SWIMMER_4",
+      "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F_WATER",
+      "x": 32,
+      "y": 42,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "AbundanceIsle_SunsetStrait_EventScript_Swimmer4",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_SHELLY",
+      "graphics_id": "OBJ_EVENT_GFX_SHELLY",
+      "x": 11,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_SunsetStrait_EventScript_Shelly",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_JUAN",
+      "graphics_id": "OBJ_EVENT_GFX_JUAN",
+      "x": 19,
+      "y": 45,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_SunsetStrait_EventScript_Juan",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_TATE",
+      "graphics_id": "OBJ_EVENT_GFX_TATE",
+      "x": 29,
+      "y": 31,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "AbundanceIsle_SunsetStrait_EventScript_Tate",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_ITEM_ISLET_A",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 5,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_MYSTIC_WATER",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_MYSTIC_WATER"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_ITEM_SANDBAR",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 8,
+      "y": 37,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_BIG_PEARL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_BIG_PEARL"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_ITEM_ROCK",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 33,
+      "y": 23,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_DRAGON_SCALE",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_DRAGON_SCALE"
+    },
+    {
+      "local_id": "LOCALID_ABUNDANCE_ISLE_SUNSET_STRAIT_ITEM_ISLET_D",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 22,
+      "y": 47,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_SHELL_BELL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ABUNDANCE_ISLE_SUNSET_STRAIT_SHELL_BELL"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 30,
+      "y": 29,
+      "elevation": 0,
+      "dest_map": "MAP_SHRINE_OF_THE_FIRST_DRAGON",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

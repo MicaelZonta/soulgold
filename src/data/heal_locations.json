@@ -614,6 +614,14 @@
       "map": "MAP_NEW_SINJOH",
       "x": 39,
       "y": 42
+    },
+    {
+      "id": "HEAL_LOCATION_WINDSWEPT_CAPE",
+      "map": "MAP_ABUNDANCE_ISLE_WINDSWEPT_CAPE",
+      "x": 16,
+      "y": 19,
+      "respawn_map": "MAP_ABUNDANCE_ISLE_POKEMON_CENTER",
+      "respawn_npc": "LOCALID_ABUNDANCE_ISLE_POKEMON_CENTER_NURSE"
     }
   ]
 }

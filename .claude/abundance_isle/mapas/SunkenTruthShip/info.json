@@ -1,0 +1,145 @@
+{
+ "map": "SunkenTruthShip",
+ "ingame": "Sunken Truth Ship",
+ "w": 28,
+ "h": 18,
+ "primary": "gTileset_Johto_Building",
+ "secondary": "gTileset_BurnedTower",
+ "map_type": "MAP_TYPE_INDOOR",
+ "music": "MUS_HG_BURNED_TOWER",
+ "warps": [
+  {
+   "x": 16,
+   "y": 15,
+   "dest_map": "MAP_ABUNDANCE_ISLE_SUNSET_STRAIT_UNDERWATER",
+   "dest_warp_id": "0",
+   "nota": "volta ao rombo do casco no fundo do mar"
+  }
+ ],
+ "connections": [],
+ "objects": [
+  {
+   "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_PHOEBE",
+   "graphics_id": "OBJ_EVENT_GFX_PHOEBE",
+   "x": 6,
+   "y": 14,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_UP",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunkenTruthShip_EventScript_Phoebe",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_PLANK",
+   "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+   "x": 22,
+   "y": 9,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "EventScript_RockSmash",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_ITEM_RELIC_GOLD",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 2,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunkenTruthShip_EventScript_ItemRelicGold",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_ITEM_FLAME_PLATE",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 16,
+   "y": 14,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunkenTruthShip_EventScript_ItemFlamePlate",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_ITEM_BOTTLE_CAP",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 25,
+   "y": 14,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunkenTruthShip_EventScript_ItemBottleCap",
+   "flag": "0"
+  },
+  {
+   "local_id": "LOCALID_SUNKEN_TRUTH_SHIP_ITEM_RELIC_CROWN",
+   "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+   "x": 25,
+   "y": 4,
+   "elevation": 3,
+   "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+   "movement_range_x": 0,
+   "movement_range_y": 0,
+   "trainer_type": "TRAINER_TYPE_NONE",
+   "trainer_sight_or_berry_tree_id": "0",
+   "script": "SunkenTruthShip_EventScript_ItemRelicCrown",
+   "flag": "0"
+  }
+ ],
+ "bg_events": [
+  {
+   "type": "sign",
+   "x": 11,
+   "y": 3,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+   "script": "SunkenTruthShip_EventScript_MuralLightStone"
+  },
+  {
+   "type": "sign",
+   "x": 21,
+   "y": 4,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+   "script": "SunkenTruthShip_EventScript_CaptainsLog"
+  },
+  {
+   "type": "sign",
+   "x": 13,
+   "y": 6,
+   "elevation": 0,
+   "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+   "script": "SunkenTruthShip_EventScript_Figurehead"
+  }
+ ],
+ "explorar": [
+  "Bolsa de ar dentro do casco: madeira podre, rombos que dao para a agua escura (cair nao e possivel; sao paredes).",
+  "Mural de bordo (parede norte): a Light Stone num bau, o navio partindo de Unova e uma ilha de areia ao sul - a pista das Truthsand Ruins.",
+  "Figura de proa caida: um dragao branco esculpido.",
+  "Cabine do capitao atras de uma tabua quebravel (Rock Smash): diario de bordo (\"we buried it beneath the dune, where only truth may enter\") e uma Relic Crown.",
+  "Relic Gold, Flame Plate (a placa do tipo do Reshiram) e Bottle Cap pelo casco.",
+  "Phoebe, da Elite dos Quatro de Hoenn, sente os espiritos do navio e desafia o jogador (batalha opcional, Fantasma)."
+ ],
+ "historia": "Ato 6 (opcional): prova de que a Light Stone veio de Unova por mar; o diario de bordo confirma o esconderijo sob a duna.",
+ "estados": {
+  "dia": "Interior do naufragio."
+ },
+ "conferido": "check_objects: []; BFS da saida: tudo menos a cabine sem Rock Smash; com Rock Smash tudo: True"
+}

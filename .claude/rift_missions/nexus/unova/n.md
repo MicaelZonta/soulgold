@@ -6,19 +6,19 @@ Aparece no checklist como:
 
 - **N** (Unova · Team Plasma) — jovem capaz de ouvir Pokémon, criado para ser o rei do Team Plasma.
 
-**Pronto para o Nexus:** ❌ não — tem sprite de overworld, falta o battle sprite (front pic), obrigatório.
+**Pronto para o Nexus:** ✅ sim — no pool desde 31/10/2026 (lote novo, bloco 2 de IDs).
 
 **Arte disponível:** ✅ overworld e front pic em `.filetransfer/.trainers/N/` (o overworld já está registrado no código; a front pic ainda não).
 
 ## Checklist
 
 - [x] Sprite de overworld *(obrigatório)* — `OBJ_EVENT_GFX_N` (registrado no merge de 30/09/2026)
-- [ ] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/N/`, falta registrar
+- [x] Battle sprite / front pic *(obrigatório)* — arte em `.filetransfer/.trainers/N/`, falta registrar
 - [ ] Field mugshot (retrato na caixa de diálogo)
-- [ ] Time para as Rift Missions definido — 📝 proposta nesta ficha (30/09/2026), fora do código
-- [ ] Associado a um lendário — 📝 proposta nesta ficha (Zekrom), fora do código
-- [ ] Diálogo genérico escrito — 📝 proposta nesta ficha (3 variações), fora do código
-- [ ] Diálogo associado ao lendário escrito — 📝 proposta nesta ficha (3 variações), fora do código
+- [x] Time para as Rift Missions definido — 📝 proposta nesta ficha (30/09/2026), fora do código
+- [x] Associado a um lendário — 📝 proposta nesta ficha (Zekrom), fora do código
+- [x] Diálogo genérico escrito — 📝 proposta nesta ficha (3 variações), fora do código
+- [x] Diálogo associado ao lendário escrito — 📝 proposta nesta ficha (3 variações), fora do código
 
 ## Referências no repositório
 
@@ -52,33 +52,16 @@ Nenhuma. Ao criar, seguir a skill `adicionar-batalha-npc` (e `alocar-flag` se pr
 
 ### Time das Rift Missions
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** `TRAINER_NEXUS_N`, campeão do Zekrom. ID: **a alocar** (IDs livres abaixo de 1056; não usar 1056–1163). Segue [R10–R13](../NEXUS_REGRAS.md): 1 lendário, 1 semi-lendário e 1 Mega; 31 IV e 252 EV em tudo; nível pelo R2 (o `Level: 100` é só teto do scaler). **Pic provisória** (`Psychic M`) até registrar a arte.
-
-Lendário **Zekrom**, o dragão do ideal, o que segue o N em *Pokémon Black*. Semi-lendário **Thundurus**, o gênio do trovão: nuvem de tempestade com a nuvem de tempestade. Mega **Audino** (Normalite, Mega com Healer, Normal/Fada): o Pokémon que **escuta** batimentos com as antenas das orelhas, para o garoto que escuta a voz dos Pokémon. Mais três do time dele em *Black/White*: **Zoroark** (o primeiro amigo, a ilusão), **Carracosta** e **Klinklang** (as engrenagens do quarto de brinquedos e da fórmula).
-
-*Plano (Singles):* o Thundurus (Prankster) paralisa com Thunder Wave e trava com Taunt; com o adversário lento, o Carracosta (Sturdy + White Herb) usa Shell Smash sem medo de cair no turno, e o Klinklang sobe Shift Gear. O Zekrom (Teravolt, ignora habilidades) fecha com Bolt Strike. O Zoroark entra disfarçado de outro do time e bate com Choice Scarf.
-
-*Plano (Doubles):* o formato favorito dele (`Double Battle: Yes`). Thunder Wave de prioridade + Heal Pulse/Helping Hand da Mega Audino (Healer cura status do parceiro). O Zekrom recebe Helping Hand e bate; o Carracosta sobe Shell Smash enquanto a Audino segura. Nenhum golpe do time acerta o parceiro.
-
-| Pokémon | Item | Habilidade | Nature | Golpes |
-|---|---|---|---|---|
-| Zekrom | Life Orb | Teravolt | Adamant | Bolt Strike, Dragon Claw, Crunch, Protect |
-| Thundurus | Sitrus Berry | Prankster | Timid | Thunderbolt, Thunder Wave, Taunt, Nasty Plot |
-| Audino | Normalite | Healer | Bold | Heal Pulse, Helping Hand, Dazzling Gleam, Protect |
-| Zoroark | Choice Scarf | Illusion | Timid | Night Daze, Flamethrower, Focus Blast, U-turn |
-| Carracosta | White Herb | Sturdy | Adamant | Shell Smash, Liquidation, Stone Edge, Aqua Jet |
-| Klinklang | Leftovers | Clear Body | Adamant | Shift Gear, Gear Grind, Wild Charge, Protect |
-
-<details><summary>Bloco para o <code>src/data/trainers.party</code> (conferido com <code>dev_scripts/nexus_validar_time.py</code>: trainerproc, constantes, learnsets e categorias)</summary>
+✅ **Implementado em 31/10/2026** (lote novo, time montado pelo Codex e conferido pelo `novos/integrar.py`: R10–R13 e habilidades): `TRAINER_NEXUS_N` = **1202** (bloco 2, flag `0xB26`), luta genérica `Nexus_EventScript_N_Fight` em `data/scripts/nexus.inc`, linha em `src/data/nexus/trainers.h`. Ainda não é campeão de nenhum lendário.
 
 ```
 === TRAINER_NEXUS_N ===
 Name: N
 Class: Pkmn Trainer 1
-Pic: Psychic M
+Pic: N
 Gender: Male
-Music: Intense
-Double Battle: Yes
+Music: Male
+Double Battle: No
 AI: Smart Trainer
 
 Zekrom @ Life Orb
@@ -109,10 +92,10 @@ Level: 100
 Ability: Healer
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
-- Heal Pulse
-- Helping Hand
+- Hyper Voice
 - Dazzling Gleam
-- Protect
+- Calm Mind
+- Heal Pulse
 
 Zoroark @ Choice Scarf
 Timid Nature
@@ -148,9 +131,14 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 - Protect
 ```
 
-</details>
-
 ### Lendário associado
+
+✅ **Campeão extra desde 31/10/2026** (lendário com vários campeões; o do dia é sorteado, `src/data/nexus/champions.h`; associações e falas montadas pelo Codex):
+
+- **Zekrom** — `Nexus_EventScript_N_Zekrom_ChampionFight` (falas `Nexus_Text_N_Zekrom_Champion*`)
+- **Reshiram** — `Nexus_EventScript_N_Reshiram_ChampionFight` (falas `Nexus_Text_N_Reshiram_Champion*`)
+- **Silvally** — `Nexus_EventScript_N_Silvally_ChampionFight` (falas `Nexus_Text_N_Silvally_Champion*`)
+
 
 #### Zekrom
 
@@ -174,103 +162,17 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe
 
 ### Diálogo genérico
 
-📝 **Proposta de 30/09/2026, aguardando o autor.** Quando N cai numa das **quatro primeiras salas**, em qualquer fragmento e com qualquer lendário. Fala de si, sem citar o lugar nem a criatura do dia ([R16](../NEXUS_REGRAS.md)). Ainda não há nada no `nexus.inc`: as três variações são novas.
-
-O N fala rápido, em frases longas, com palavras de matemática, e sempre conta o que os Pokémon **do outro** estão dizendo. As três variações: ele ouvindo os Pokémon do jogador (a assinatura dele nos jogos), o quarto de brinquedos sem janela (o trem que anda em círculo) e a fórmula que não fechou.
-
-#### Variação 1 — o que os seus Pokémon dizem
+✅ **Implementado em 31/10/2026:** `Nexus_Text_N_Intro` / `_Defeat` em `data/scripts/nexus.inc`.
 
 **Antes da luta**
 
-> Your Pokémon are talking. They say you walk too fast, and that you apologize to them afterward.
+> Your Pokemon are talking. They say you walk too fast, and that you apologize to them afterward.
 >
-> …Interesting. Mine say I think too much. Shall we find out which of us is right?
+> ...Interesting. Mine say I think too much. Shall we find out which of us is right?
 
 **Derrota**
 
 > Their voices were so clear. Clearer than mine. Hm.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_N_Intro:
-	.string "Your Pokémon are talking. They say you\n"
-	.string "walk too fast, and that you apologize\l"
-	.string "to them afterward.\p"
-	.string "…Interesting. Mine say I think too\n"
-	.string "much. Shall we find out which of us is\l"
-	.string "right?$"
-
-Nexus_Text_N_Defeat:
-	.string "Their voices were so clear. Clearer than\n"
-	.string "mine. Hm.$"
-```
-
-</details>
-
-#### Variação 2 — o quarto de brinquedos
-
-**Antes da luta**
-
-> I grew up in a room full of toys and no windows. A train that ran in a circle. A ramp nobody used.
->
-> I thought the whole world was that circle. It isn't. It's so much larger.
->
-> Show me more of it!
-
-**Derrota**
-
-> Another piece of the world. I'll keep it.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_N_Intro2:
-	.string "I grew up in a room full of toys and no\n"
-	.string "windows. A train that ran in a circle. A\l"
-	.string "ramp nobody used.\p"
-	.string "I thought the whole world was that\n"
-	.string "circle. It isn't. It's so much larger.\p"
-	.string "Show me more of it!$"
-
-Nexus_Text_N_Defeat2:
-	.string "Another piece of the world. I'll keep\n"
-	.string "it.$"
-```
-
-</details>
-
-#### Variação 3 — a fórmula
-
-**Antes da luta**
-
-> I believed the world was a formula. Solve it, and every Pokémon would be free.
->
-> The formula had a variable I never counted. People. People like you.
->
-> Let's calculate it again!
-
-**Derrota**
-
-> Unsolved. That's… not an unpleasant feeling.
-
-<details><summary><code>.inc</code></summary>
-
-```asm
-Nexus_Text_N_Intro3:
-	.string "I believed the world was a formula.\n"
-	.string "Solve it, and every Pokémon would be\l"
-	.string "free.\p"
-	.string "The formula had a variable I never\n"
-	.string "counted. People. People like you.\p"
-	.string "Let's calculate it again!$"
-
-Nexus_Text_N_Defeat3:
-	.string "Unsolved. That's… not an unpleasant\n"
-	.string "feeling.$"
-```
-
-</details>
 
 ### Diálogo associado ao lendário
 
