@@ -1,5 +1,5 @@
 valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
-0x1,1,FLAG_TEMP_1,TEMP,EM_USO,26,128,203,BattleFrontier_BattleDomePreBattleRoom;BlackthornCity;BlackthornCity_House3;BrassTowerMemory_1F,GLOBAL(codigo),
+0x1,1,FLAG_TEMP_1,TEMP,EM_USO,26,128,204,BattleFrontier_BattleDomePreBattleRoom;BlackthornCity;BlackthornCity_House3;BrassTowerMemory_1F,GLOBAL(codigo),
 0x1,1,FLAG_TEMP_SKIP_GABBY_INTERVIEW,TEMP,EM_USO,2,4,6,,GLOBAL(codigo),
 0x2,2,FLAG_TEMP_2,TEMP,EM_USO,53,134,187,BattleFrontier_BattleTowerMultiBattleRoom;BlackthornCity;BrassTowerMemory_Roof;CeladonCity,GLOBAL(codigo),
 0x2,2,FLAG_TEMP_REGICE_PUZZLE_STARTED,TEMP,EM_USO,2,4,6,,GLOBAL(codigo),
@@ -49,8 +49,8 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x18,24,FLAG_TEMP_HIDE_ICEROOT_PLANT,TEMP,EM_USO,0,2,3,Route30,MAPA_UNICO:Route30,Route30: the King's carrot in Laurel's plot (act 5b)
 0x19,25,FLAG_TEMP_19,TEMP,EM_USO,0,2,23,MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle1;Route110_TrickHousePuzzle4,GLOBAL(codigo),
 0x19,25,FLAG_TEMP_HIDE_SHADEROOT_PLANT,TEMP,EM_USO,0,2,2,Route30,MAPA_UNICO:Route30,"Route30: the same, Shaderoot"
-0x1A,26,FLAG_TEMP_1A,TEMP,EM_USO,0,2,16,MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle4,GLOBAL(codigo),
-0x1B,27,FLAG_TEMP_1B,TEMP,EM_USO,0,2,15,Route110_TrickHousePuzzle1,GLOBAL(codigo),
+0x1A,26,FLAG_TEMP_1A,TEMP,EM_USO,0,10,26,MtEmber_SummitPath_2F_Frlg;Route110_TrickHousePuzzle4;Thunderspire_1F;Thunderspire_2F,GLOBAL(codigo),
+0x1B,27,FLAG_TEMP_1B,TEMP,EM_USO,0,10,25,Route110_TrickHousePuzzle1;Thunderspire_1F;Thunderspire_2F,GLOBAL(codigo),
 0x1C,28,FLAG_TEMP_1C,TEMP,EM_USO,0,2,12,Route110_TrickHousePuzzle1,GLOBAL(codigo),
 0x1D,29,FLAG_TEMP_1D,TEMP,EM_USO,0,2,8,,GLOBAL(codigo),fora da ROM
 0x1E,30,FLAG_TEMP_1E,TEMP,EM_USO,0,6,16,AbundanceIsle_HarvestFields;AbundanceIsle_WindsweptCape;Route110_TrickHousePuzzle1,GLOBAL(codigo),
@@ -63,8 +63,8 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x25,37,FLAG_SYS_PC_FROM_DEBUG_MENU,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag //DEBUG
 0x26,38,FLAG_ARCEUS_EGG_GIVE,SCRIPT/EVENT,EM_USO,2,2,5,GoldenrodCity_RadioTower_2F,MAPA_UNICO:GoldenrodCity_RadioTower_2F,desde 19/10/2026: 'Oak ja deu o Mystery Egg (Manaphy)' (era o ovo de Arceus; Arceus vem de Sinjoh)
 0x27,39,FLAG_SYS_NO_BATTLE_DMG,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,Unused Flag //DEBUG
-0x28,40,FLAG_ONETIME_GROUDON,SCRIPT/EVENT,EM_USO,4,2,4,NewBarkTown_House3;Route50UnderwaterCave2,MULTI_MAPA(2),
-0x29,41,FLAG_ONETIME_KYOGRE,SCRIPT/EVENT,EM_USO,4,2,4,NewBarkTown_House3;Route33South_UnderwaterCave,MULTI_MAPA(2),
+0x28,40,FLAG_ONETIME_GROUDON,SCRIPT/EVENT,EM_USO,8,2,6,IndigoPlateau_PokemonCenter;NewBarkTown_House3;Route50UnderwaterCave2,MULTI_MAPA(3),
+0x29,41,FLAG_ONETIME_KYOGRE,SCRIPT/EVENT,EM_USO,8,2,6,IndigoPlateau_PokemonCenter;NewBarkTown_House3;Route33South_UnderwaterCave,MULTI_MAPA(3),
 0x2A,42,FLAG_SNOWTOP_ABILITY_PATCH,SCRIPT/EVENT,EM_USO,0,0,1,SnowtopMountain_B1F,MAPA_UNICO:SnowtopMountain_B1F,
 0x2B,43,FLAG_SYS_SET_BATTLE_BGM,SCRIPT/EVENT,SO_MAPAS_FORA_DA_ROM,0,7,3,,,Changes BGM - fora da ROM
 0x2C,44,FLAG_WONDERTRADE_FIRSTIME,SCRIPT/EVENT,NUNCA_REFERENCIADA,0,0,0,,,livre desde 24/09/2026
@@ -74,12 +74,12 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x30,48,FLAG_GOT_REDORB,SCRIPT/EVENT,EM_USO,2,2,2,Route50UnderwaterCave2,MAPA_UNICO:Route50UnderwaterCave2,
 0x31,49,FLAG_GOT_BLUEORB,SCRIPT/EVENT,EM_USO,2,2,2,Route33South_UnderwaterCave,MAPA_UNICO:Route33South_UnderwaterCave,
 0x32,50,FLAG_HIDE_POSTGAME_OAK,SCRIPT/EVENT,EM_USO,0,4,3,GoldenrodCity_RadioTower_2F,MAPA_UNICO:GoldenrodCity_RadioTower_2F,
-0x33,51,FLAG_GOT_GRISEOUS_ORB,SCRIPT/EVENT,EM_USO,2,2,2,SpearPillarTop,MAPA_UNICO:SpearPillarTop,
+0x33,51,FLAG_GOT_GRISEOUS_ORB,SCRIPT/EVENT,EM_USO,4,2,4,IndigoPlateau_PokemonCenter;SpearPillarTop,MULTI_MAPA(2),
 0x34,52,FLAG_HIDE_BATTLE_CAFE_OPPONENT,SCRIPT/EVENT,EM_USO,0,2,3,BattleCafe,MAPA_UNICO:BattleCafe,
 0x35,53,FLAG_CAUGHT_MELOETTA,SCRIPT/EVENT,EM_USO,1,2,2,EcruteakCity_Theater;PokemonLeague_HallOfFame,MULTI_MAPA(2),
 0x36,54,FLAG_CAFE_INTRO_DONE,SCRIPT/EVENT,EM_USO,2,2,2,BattleCafe,MAPA_UNICO:BattleCafe,
-0x37,55,FLAG_GOT_ADAMANT_ORB,SCRIPT/EVENT,EM_USO,2,2,2,SpearPillarTop,MAPA_UNICO:SpearPillarTop,
-0x38,56,FLAG_GOT_LUSTROUS_ORB,SCRIPT/EVENT,EM_USO,2,2,2,SpearPillarTop,MAPA_UNICO:SpearPillarTop,
+0x37,55,FLAG_GOT_ADAMANT_ORB,SCRIPT/EVENT,EM_USO,4,2,4,IndigoPlateau_PokemonCenter;SpearPillarTop,MULTI_MAPA(2),
+0x38,56,FLAG_GOT_LUSTROUS_ORB,SCRIPT/EVENT,EM_USO,4,2,4,IndigoPlateau_PokemonCenter;SpearPillarTop,MULTI_MAPA(2),
 0x39,57,FLAG_TM_TORMENT,SCRIPT/EVENT,EM_USO,0,0,1,BurnedTower_1F,MAPA_UNICO:BurnedTower_1F,
 0x3A,58,FLAG_PENDING_DAYCARE_EGG_SHINY,SCRIPT/EVENT,EM_USO,3,7,4,Route34_DayCare,GLOBAL(codigo),
 0x3B,59,FLAG_ROCKETWARNING_SET,SCRIPT/EVENT,EM_USO,1,1,1,MahoganyTown_Shop,MAPA_UNICO:MahoganyTown_Shop,"upstream (Eemeliri), ex-FLAG_DEFEATED_REGIELEKI"
@@ -2027,10 +2027,10 @@ valor,dec,nome,bloco,status,leituras,escritas,arquivos,mapas,escopo,comentario
 0x11FD,4605,FLAG_ABUNDANCE_STORM_GAUGE,CUSTOM,EM_USO,4,2,5,AbundanceIsle_GaleShore;ThunderRidge,MULTI_MAPA(2),Winona entregou o medidor de tempestade (missao Eye of the Storm)
 0x11FE,4606,FLAG_ABUNDANCE_STORM_DATA_DONE,CUSTOM,EM_USO,2,2,3,ThunderRidge,MAPA_UNICO:ThunderRidge,Volkner recebeu as medicoes; recompensas entregues
 0x11FF,4607,FLAG_ABUNDANCE_ZINNIA_TALE,CUSTOM,EM_USO,2,2,3,FrostfallCrater_Core,MAPA_UNICO:FrostfallCrater_Core,Zinnia contou a lenda do meteoro (Kyurem na equipe) e deu a Draco Plate
-0x1200,4608,FLAG_ABUNDANCE_CANDLE_1,CUSTOM,EM_USO,4,2,4,Thunderspire_1F;Thunderspire_2F,MULTI_MAPA(2),vela espiritual 1 da Thunderspire acesa (missao Candles of the Spire)
-0x1201,4609,FLAG_ABUNDANCE_CANDLE_2,CUSTOM,EM_USO,4,2,4,Thunderspire_1F;Thunderspire_2F,MULTI_MAPA(2),vela espiritual 2 da Thunderspire acesa (missao Candles of the Spire)
-0x1202,4610,FLAG_ABUNDANCE_CANDLE_3,CUSTOM,EM_USO,4,2,2,Thunderspire_2F,MAPA_UNICO:Thunderspire_2F,vela espiritual 3 da Thunderspire acesa (missao Candles of the Spire)
-0x1203,4611,FLAG_ABUNDANCE_CANDLE_4,CUSTOM,EM_USO,4,2,2,Thunderspire_2F,MAPA_UNICO:Thunderspire_2F,vela espiritual 4 da Thunderspire acesa (missao Candles of the Spire)
+0x1200,4608,FLAG_ABUNDANCE_CANDLE_1,CUSTOM,EM_USO,5,2,9,Thunderspire_1F;Thunderspire_2F,MULTI_MAPA(2),vela espiritual 1 da Thunderspire acesa (missao Candles of the Spire)
+0x1201,4609,FLAG_ABUNDANCE_CANDLE_2,CUSTOM,EM_USO,5,2,9,Thunderspire_1F;Thunderspire_2F,MULTI_MAPA(2),vela espiritual 2 da Thunderspire acesa (missao Candles of the Spire)
+0x1202,4610,FLAG_ABUNDANCE_CANDLE_3,CUSTOM,EM_USO,5,2,7,Thunderspire_2F,MAPA_UNICO:Thunderspire_2F,vela espiritual 3 da Thunderspire acesa (missao Candles of the Spire)
+0x1203,4611,FLAG_ABUNDANCE_CANDLE_4,CUSTOM,EM_USO,5,2,7,Thunderspire_2F,MAPA_UNICO:Thunderspire_2F,vela espiritual 4 da Thunderspire acesa (missao Candles of the Spire)
 0x1204,4612,FLAG_ABUNDANCE_CANDLES_DONE,CUSTOM,EM_USO,2,2,3,Thunderspire_2F,MAPA_UNICO:Thunderspire_2F,Allister deu a recompensa das 4 velas
 0x1205,4613,FLAG_ABUNDANCE_PLASMA_UNIFORM,CUSTOM,EM_USO,3,2,5,PlasmaFrigate_Cabins;PlasmaFrigate_Hold,MULTI_MAPA(2),jogador pegou o uniforme do Plasma no vestiario do Frigate (missao Undercover)
 0x1206,4614,FLAG_ABUNDANCE_ROSA_REWARD,CUSTOM,EM_USO,2,2,3,PlasmaFrigate_Deck,MAPA_UNICO:PlasmaFrigate_Deck,Rosa deu a recompensa depois da sala de maquinas
